@@ -15,13 +15,13 @@
     BOOL _gradientOutOfDate;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (BOOL)isOpaque;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)update;
-- (void)updateImage:(struct CGSize)arg1;
 - (void)allocateImage:(struct CGSize)arg1;
+- (void)updateImage:(struct CGSize)arg1;
+- (void)update;
+- (void)drawRect:(struct CGRect)arg1;
+- (BOOL)isOpaque;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

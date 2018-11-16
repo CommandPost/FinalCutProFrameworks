@@ -13,12 +13,12 @@
 {
 }
 
-+ (Class)DSClassDescriptionClass;
 + (id)copyClassDescription;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (BOOL)writeToFileUsingPath:(id)arg1 error:(id *)arg2;
++ (Class)DSClassDescriptionClass;
 - (id)displayName;
+- (BOOL)writeToFileUsingPath:(id)arg1 error:(id *)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

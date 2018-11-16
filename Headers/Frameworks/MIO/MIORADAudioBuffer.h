@@ -21,15 +21,15 @@ __attribute__((visibility("hidden")))
     NSData *_masteracl;
 }
 
-- (char *)dataPointer;
-- (void)setAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (void)setAudioBufferList:(struct AudioBufferList *)arg1;
-- (void)setAudioBufferListBlockBuffer:(struct OpaqueCMBlockBuffer *)arg1;
-- (void)setAudioStreamPacketDescription:(id)arg1;
-- (void)setMasterAudioBufferList:(id)arg1;
-- (void)setMasterAudioStreamBasicDescription:(id)arg1;
-- (void)setMasterAudioChannelLayout:(id)arg1;
 - (void)dealloc;
+- (void)setMasterAudioChannelLayout:(id)arg1;
+- (void)setMasterAudioStreamBasicDescription:(id)arg1;
+- (void)setMasterAudioBufferList:(id)arg1;
+- (void)setAudioStreamPacketDescription:(id)arg1;
+- (void)setAudioBufferListBlockBuffer:(struct OpaqueCMBlockBuffer *)arg1;
+- (void)setAudioBufferList:(struct AudioBufferList *)arg1;
+- (void)setAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (char *)dataPointer;
 
 @end
 

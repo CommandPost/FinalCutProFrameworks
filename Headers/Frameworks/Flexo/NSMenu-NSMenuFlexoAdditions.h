@@ -7,7 +7,7 @@
 #import "NSMenu.h"
 
 @interface NSMenu (NSMenuFlexoAdditions)
-- (id)addItemWithCommandSelector:(SEL)arg1;
 - (id)addItemWithCommandSelector:(SEL)arg1 tag:(long long)arg2;
+- (id)addItemWithCommandSelector:(SEL)arg1;
 @end
 

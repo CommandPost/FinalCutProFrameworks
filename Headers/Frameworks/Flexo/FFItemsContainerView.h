@@ -24,20 +24,20 @@ __attribute__((visibility("hidden")))
     BOOL _showfirstLaunch;
 }
 
-@property(retain, nonatomic) NSView *mainView; // @synthesize mainView=_mainView;
-@property(retain, nonatomic) NSView *headerView; // @synthesize headerView=_headerView;
-@property(retain, nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
-@property(copy, nonatomic) NSString *infoText;
-@property(nonatomic) BOOL showsHeaderView;
-- (void)setShowsHeaderView:(BOOL)arg1 animated:(BOOL)arg2;
-@property(nonatomic) BOOL showsInfoView;
-- (void)setShowsInfoView:(BOOL)arg1 animated:(BOOL)arg2;
 @property(nonatomic) BOOL showEmptyOptions; // @synthesize showEmptyOptions=_showEmptyOptions;
 @property(nonatomic) BOOL showFirstLaunch; // @synthesize showFirstLaunch=_showfirstLaunch;
-- (void)layoutSubviews;
-- (BOOL)isFlipped;
-- (void)layoutSubviewsAnimated:(BOOL)arg1;
+@property(retain, nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
+@property(retain, nonatomic) NSView *mainView; // @synthesize mainView=_mainView;
+@property(retain, nonatomic) NSView *headerView; // @synthesize headerView=_headerView;
 - (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
+- (void)layoutSubviewsAnimated:(BOOL)arg1;
+- (BOOL)isFlipped;
+- (void)layoutSubviews;
+- (void)setShowsInfoView:(BOOL)arg1 animated:(BOOL)arg2;
+@property(nonatomic) BOOL showsInfoView;
+@property(copy, nonatomic) NSString *infoText;
+- (void)setShowsHeaderView:(BOOL)arg1 animated:(BOOL)arg2;
+@property(nonatomic) BOOL showsHeaderView;
 
 @end
 

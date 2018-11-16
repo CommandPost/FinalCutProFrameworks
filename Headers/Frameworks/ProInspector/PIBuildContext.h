@@ -18,25 +18,25 @@
     BOOL shouldDisplayAnimIndicator;
 }
 
-- (id)initWithIsHUD:(BOOL)arg1 bundleID:(struct __CFString *)arg2;
-- (void)dealloc;
-- (id)description;
-- (BOOL)isHUD;
-- (struct __CFString *)bundleID;
-- (BOOL)isMotionHUD;
-- (BOOL)isRigDisplay;
-- (BOOL)shouldDisplayParameterMenu;
-- (double)rowHeight;
-- (struct CGSize)frameSize;
-- (double)headingRowHeight;
-- (struct CGSize)headingFrameSize;
-- (double)controlHeight;
-- (void)configureSizeAndThemeVariantForControl:(id)arg1;
-- (void)setValue:(id)arg1 forKey:(id)arg2;
-- (id)valueForKey:(id)arg1;
 @property(nonatomic) BOOL shouldDiscloseCompoundChans; // @synthesize shouldDiscloseCompoundChans=_shouldDiscloseCompoundChans;
 @property(nonatomic) BOOL shouldDisplayAnimIndicator; // @synthesize shouldDisplayAnimIndicator;
 @property(nonatomic) BOOL isRoot; // @synthesize isRoot;
+- (id)valueForKey:(id)arg1;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
+- (void)configureSizeAndThemeVariantForControl:(id)arg1;
+- (double)controlHeight;
+- (struct CGSize)headingFrameSize;
+- (double)headingRowHeight;
+- (struct CGSize)frameSize;
+- (double)rowHeight;
+- (BOOL)shouldDisplayParameterMenu;
+- (BOOL)isRigDisplay;
+- (BOOL)isMotionHUD;
+- (struct __CFString *)bundleID;
+- (BOOL)isHUD;
+- (id)description;
+- (void)dealloc;
+- (id)initWithIsHUD:(BOOL)arg1 bundleID:(struct __CFString *)arg2;
 
 @end
 

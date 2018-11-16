@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     FFResponderLayerHostView *_hostView;
 }
 
-- (id)initWithHostView:(id)arg1;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseMoved:(id)arg1;
 - (void)mouseExited:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (id)initWithHostView:(id)arg1;
 
 @end
 

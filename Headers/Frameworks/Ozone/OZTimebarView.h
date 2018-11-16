@@ -10,16 +10,16 @@
 {
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (BOOL)movePlayHeadWithPlayRange;
-- (void)findSnaps;
-- (const struct PCTimeRange *)getDisplayRange;
-- (const struct PCTimeRange *)getActiveRange;
-- (CDStruct_1b6d18a9)getCurrentTime;
-- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
-- (struct PCTimeRange)getPlayRange;
-- (void)setPlayRange:(const struct PCTimeRange *)arg1;
 - (void)addPlayRangeToUndo:(const struct PCString *)arg1;
+- (void)setPlayRange:(const struct PCTimeRange *)arg1;
+- (struct PCTimeRange)getPlayRange;
+- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
+- (CDStruct_1b6d18a9)getCurrentTime;
+- (const struct PCTimeRange *)getActiveRange;
+- (const struct PCTimeRange *)getDisplayRange;
+- (void)findSnaps;
+- (BOOL)movePlayHeadWithPlayRange;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

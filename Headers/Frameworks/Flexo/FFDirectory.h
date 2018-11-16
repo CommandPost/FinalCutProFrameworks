@@ -6,7 +6,7 @@
 
 #import <Flexo/FFDirectoryItem.h>
 
-@class NSEnumerator, NSMapTable, NSURL;
+@class NSEnumerator, NSMapTable;
 
 __attribute__((visibility("hidden")))
 @interface FFDirectory : FFDirectoryItem
@@ -18,26 +18,23 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)newFromURL:(id)arg1 itemURLs:(id)arg2 error:(id *)arg3;
-- (void)_insertItems:(id)arg1;
-- (void)_removeItems:(id)arg1;
-- (id)_readURLs:(unsigned long long)arg1 error:(id *)arg2;
-- (id)_newItem:(id)arg1 error:(id *)arg2;
-- (id)_syncToURLs:(id)arg1 error:(id *)arg2;
-- (void)dealloc;
-- (id)initWithURL:(id)arg1 itemURLs:(id)arg2 error:(id *)arg3;
-- (id)initWithURL:(id)arg1;
-@property(readonly, nonatomic) unsigned long long countOfItems;
-- (id)syncWithOptions:(unsigned long long)arg1 error:(id *)arg2;
-- (void)_keysAndValuesDo:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSEnumerator *items;
-- (id)objectForKey:(id)arg1;
-- (id)description;
-- (int)fileDescriptor;
-- (int)open;
 - (BOOL)close;
-
-// Remaining properties
-@property(readonly, nonatomic) NSURL *URL; // @dynamic URL;
+- (int)open;
+- (int)fileDescriptor;
+- (id)description;
+- (id)objectForKey:(id)arg1;
+@property(readonly, nonatomic) NSEnumerator *items;
+- (void)_keysAndValuesDo:(CDUnknownBlockType)arg1;
+- (id)syncWithOptions:(unsigned long long)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) unsigned long long countOfItems;
+- (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 itemURLs:(id)arg2 error:(id *)arg3;
+- (void)dealloc;
+- (id)_syncToURLs:(id)arg1 error:(id *)arg2;
+- (id)_newItem:(id)arg1 error:(id *)arg2;
+- (id)_readURLs:(unsigned long long)arg1 error:(id *)arg2;
+- (void)_removeItems:(id)arg1;
+- (void)_insertItems:(id)arg1;
 
 @end
 

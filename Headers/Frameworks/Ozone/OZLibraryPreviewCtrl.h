@@ -15,16 +15,17 @@
     BOOL _shouldDeleteDoc;
 }
 
-- (id)initWithRenderNode:(struct OZRenderNode *)arg1 scene:(struct OZScene *)arg2;
-- (void)dealloc;
-- (void)setShouldDeleteDocument:(BOOL)arg1;
-- (void)setTimeRange:(const struct PCTimeRange *)arg1;
-- (void)update:(const CDStruct_1b6d18a9 *)arg1;
-- (void)togglePlay:(id)arg1;
-- (void)stopPlaying;
-- (BOOL)isPlaying;
-- (CDStruct_1b6d18a9)nextPlayTime:(const CDStruct_1b6d18a9 *)arg1;
+- (id).cxx_construct;
 - (double)frameInterval;
+- (CDStruct_1b6d18a9)nextPlayTime:(const CDStruct_1b6d18a9 *)arg1;
+- (BOOL)isPlaying;
+- (void)stopPlaying;
+- (void)togglePlay:(id)arg1;
+- (void)update:(const CDStruct_1b6d18a9 *)arg1;
+- (void)setTimeRange:(const struct PCTimeRange *)arg1;
+- (void)setShouldDeleteDocument:(BOOL)arg1;
+- (void)dealloc;
+- (id)initWithRenderNode:(struct OZRenderNode *)arg1 scene:(struct OZScene *)arg2;
 
 @end
 

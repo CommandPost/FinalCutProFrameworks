@@ -6,26 +6,25 @@
 
 #import "LKViewModule.h"
 
-@class LKModuleLayout, OZProTabPaneCapSegmentedControl;
+@class OZProTabPaneCapSegmentedControl;
 
 @interface OZProTabWrapperModule : LKViewModule
 {
     OZProTabPaneCapSegmentedControl *_tabSegmentControl;
-    LKModuleLayout *_moduleTabLayout;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)oz_buildPaneTabs;
-- (void)oz_refreshTabStatus;
-- (id)moduleHeaderAccessoryView;
-- (void)tabSelectionAction:(id)arg1;
-- (BOOL)isModuleShown:(id)arg1;
-- (void)togglePaneWithAnimation:(long long)arg1;
 - (void)showHideTabbedModuleAtIndex:(long long)arg1 withAnimation:(long long)arg2;
+- (void)togglePaneWithAnimation:(long long)arg1;
+- (BOOL)isModuleShown:(id)arg1;
+- (void)tabSelectionAction:(id)arg1;
+- (id)moduleHeaderAccessoryView;
+- (void)oz_refreshTabStatus;
+- (void)oz_buildPaneTabs;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

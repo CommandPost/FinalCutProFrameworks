@@ -16,20 +16,20 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
-- (id)initWithEffectID:(id)arg1;
-- (void)dealloc;
-- (BOOL)writeDefaultChannels;
-- (struct HGNode *)newNodeForContext:(id)arg1;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6;
-- (void)createChannelsInFolder:(id)arg1;
-- (id)primaryAnimationChannel;
-- (id)inputKeys;
-- (double)_getChannelValue:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 isConstant:(_Bool *)arg3 subSegmentRange:(CDStruct_e83c9415 *)arg4 channelOffset:(CDStruct_1b6d18a9)arg5 sampleDur:(CDStruct_1b6d18a9)arg6;
-- (id)simplifiesToPassThruAtTime:(CDStruct_1b6d18a9)arg1 forInputSource:(id)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
-- (CDStruct_e83c9415)effectSubSegmentForTime:(CDStruct_1b6d18a9)arg1 channelOffset:(CDStruct_1b6d18a9)arg2 sampleDur:(CDStruct_1b6d18a9)arg3;
-- (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
-- (BOOL)useSourcePixelSpace;
 - (id)blendModeChannel;
+- (BOOL)useSourcePixelSpace;
+- (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
+- (CDStruct_e83c9415)effectSubSegmentForTime:(CDStruct_1b6d18a9)arg1 channelOffset:(CDStruct_1b6d18a9)arg2 sampleDur:(CDStruct_1b6d18a9)arg3;
+- (id)simplifiesToPassThruAtTime:(CDStruct_1b6d18a9)arg1 forInputSource:(id)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
+- (double)_getChannelValue:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 isConstant:(_Bool *)arg3 subSegmentRange:(CDStruct_e83c9415 *)arg4 channelOffset:(CDStruct_1b6d18a9)arg5 sampleDur:(CDStruct_1b6d18a9)arg6;
+- (id)inputKeys;
+- (id)primaryAnimationChannel;
+- (void)createChannelsInFolder:(id)arg1;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6;
+- (struct HGNode *)newNodeForContext:(id)arg1;
+- (BOOL)writeDefaultChannels;
+- (void)dealloc;
+- (id)initWithEffectID:(id)arg1;
 
 @end
 

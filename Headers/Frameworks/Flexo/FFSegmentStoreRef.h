@@ -14,22 +14,22 @@
     FFRenderProps *_renderProps;
 }
 
-- (id)initWithPaths:(id)arg1 renderProps:(id)arg2;
-- (void)dealloc;
+- (CDStruct_bdcb2b0d)onDiskMD5ForBaseMD5:(CDStruct_bdcb2b0d)arg1;
+- (void)updateSegmentInfo:(CDStruct_bdcb2b0d)arg1;
+- (id)storedFrameIndexes:(CDStruct_bdcb2b0d)arg1;
+- (void)hintDoneWritingForNow:(CDStruct_bdcb2b0d)arg1;
+- (int)writeBuffer:(id)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 sampleNumber:(long long)arg3 cost:(double)arg4 mustWrite:(BOOL)arg5;
+- (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 segmentMD5:(CDStruct_bdcb2b0d)arg4 sampleNumber:(long long)arg5 cost:(double)arg6 mustWrite:(BOOL)arg7;
+- (id)newBufferAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2;
+- (id)newImageAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 decodeQuality:(int)arg3;
+- (id)newImageAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2;
+- (id)newCachedBufferTokenForTime:(CDStruct_1b6d18a9)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 sampleNumber:(long long)arg3;
+- (id)newCachedFrameTokenForTime:(CDStruct_1b6d18a9)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 sampleNumber:(long long)arg3 decodeQuality:(int)arg4;
+- (id)newCachedFrameTokenForTime:(CDStruct_1b6d18a9)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 sampleNumber:(long long)arg3;
+- (BOOL)frameExistsAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2;
 - (id)description;
-- (BOOL)frameExistsAtOffset:(long long)arg1 segmentMD5:(CDStruct_60067b7e)arg2;
-- (id)newCachedFrameTokenForTime:(CDStruct_1b6d18a9)arg1 segmentMD5:(CDStruct_60067b7e)arg2 sampleNumber:(long long)arg3;
-- (id)newCachedFrameTokenForTime:(CDStruct_1b6d18a9)arg1 segmentMD5:(CDStruct_60067b7e)arg2 sampleNumber:(long long)arg3 decodeQuality:(int)arg4;
-- (id)newCachedBufferTokenForTime:(CDStruct_1b6d18a9)arg1 segmentMD5:(CDStruct_60067b7e)arg2 sampleNumber:(long long)arg3;
-- (id)newImageAtOffset:(long long)arg1 segmentMD5:(CDStruct_60067b7e)arg2;
-- (id)newImageAtOffset:(long long)arg1 segmentMD5:(CDStruct_60067b7e)arg2 decodeQuality:(int)arg3;
-- (id)newBufferAtOffset:(long long)arg1 segmentMD5:(CDStruct_60067b7e)arg2;
-- (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 segmentMD5:(CDStruct_60067b7e)arg4 sampleNumber:(long long)arg5 cost:(double)arg6 mustWrite:(BOOL)arg7;
-- (int)writeBuffer:(id)arg1 segmentMD5:(CDStruct_60067b7e)arg2 sampleNumber:(long long)arg3 cost:(double)arg4 mustWrite:(BOOL)arg5;
-- (void)hintDoneWritingForNow:(CDStruct_60067b7e)arg1;
-- (id)storedFrameIndexes:(CDStruct_60067b7e)arg1;
-- (void)updateSegmentInfo:(CDStruct_60067b7e)arg1;
-- (CDStruct_60067b7e)onDiskMD5ForBaseMD5:(CDStruct_60067b7e)arg1;
+- (void)dealloc;
+- (id)initWithPaths:(id)arg1 renderProps:(id)arg2;
 
 @end
 

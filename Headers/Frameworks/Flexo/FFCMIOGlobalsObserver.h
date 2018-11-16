@@ -11,16 +11,16 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)_validateDeviceUID;
-+ (void)_setup;
-+ (void)registerVideoModule:(id)arg1;
-+ (void)unregisterVideoModule:(id)arg1;
-+ (void)_updateVideoModules;
-+ (void)buildDeviceListStart:(id)arg1;
-+ (void)buildDeviceListEnd:(id)arg1;
-+ (void)newCMIODeviceAvailable:(id)arg1;
-+ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 + (BOOL)canUseCMIODevices;
++ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
++ (void)newCMIODeviceAvailable:(id)arg1;
++ (void)buildDeviceListEnd:(id)arg1;
++ (void)buildDeviceListStart:(id)arg1;
++ (void)_updateVideoModules;
++ (void)unregisterVideoModule:(id)arg1;
++ (void)registerVideoModule:(id)arg1;
++ (void)_setup;
++ (void)_validateDeviceUID;
 
 @end
 

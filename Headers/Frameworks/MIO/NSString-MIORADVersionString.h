@@ -7,7 +7,7 @@
 #import "NSString.h"
 
 @interface NSString (MIORADVersionString)
-- (long long)mioRADCompareRevisions:(id)arg1 withRevision:(id)arg2;
 - (long long)mioRADCompareVersions:(id)arg1;
+- (long long)mioRADCompareRevisions:(id)arg1 withRevision:(id)arg2;
 @end
 

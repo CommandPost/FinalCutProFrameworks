@@ -10,17 +10,17 @@
 {
 }
 
-- (BOOL)acceptsFirstResponder;
-- (BOOL)acceptsFirstMouse:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (BOOL)needsPanelToBecomeKey;
-- (unsigned long long)draggingEntered:(id)arg1;
-- (BOOL)performDragOperation:(id)arg1;
-- (long long)draggingDestinationFeedbackStyle;
-- (void)drawRect:(struct CGRect)arg1;
-- (id)menuForEvent:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1;
+- (id)menuForEvent:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (long long)draggingDestinationFeedbackStyle;
+- (BOOL)performDragOperation:(id)arg1;
+- (unsigned long long)draggingEntered:(id)arg1;
+- (BOOL)needsPanelToBecomeKey;
+- (void)mouseDown:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (BOOL)acceptsFirstMouse:(id)arg1;
+- (BOOL)acceptsFirstResponder;
 
 @end
 

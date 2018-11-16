@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)makeNewLayerAsMaskLayerOf:(id)arg1;
-- (id)init;
-@property int rightEdgeType;
-@property int leftEdgeType;
-- (void)drawInContext:(struct CGContext *)arg1;
 @property BOOL isStill; // @synthesize isStill=_isStill;
+- (void)drawInContext:(struct CGContext *)arg1;
+@property int leftEdgeType;
+@property int rightEdgeType;
+- (id)init;
 
 @end
 

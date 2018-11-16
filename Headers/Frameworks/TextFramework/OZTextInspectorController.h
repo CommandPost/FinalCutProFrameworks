@@ -11,7 +11,7 @@
 @interface OZTextInspectorController : OZViewCtlrRoot
 {
     struct TXTextLayout *_text;
-    list_6eff4338 *_styles;
+    list_ff0a6df5 *_styles;
     NSView *_pMainView;
     NSBox *_pBox;
     NSMatrix *_pMatrix;
@@ -23,32 +23,32 @@
     OZAutoTextLayoutController *_pLayoutController;
     OZViewControllerGroup *_pCurrController;
     BOOL _capturingChannels;
-    list_699e9227 *_textList;
+    list_1192f13f *_textList;
     PIBuildContext *_pContext;
 }
 
-- (id)initWithSceneNodes:(list_699e9227 *)arg1 viewCtlrDelegate:(id)arg2;
-- (id)initWithSceneNodes:(list_699e9227 *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
-- (void)dealloc;
-- (id)mainView;
-- (id)getNSFontForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_1b6d18a9)arg2;
-- (id)createNSShadowForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_1b6d18a9)arg2;
-- (BOOL)isFontPanelVisible;
-- (void)syncFontPanelIfNeeded:(BOOL)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)fontPanelWillOpen:(id)arg1;
-- (void)textSelectionChanged:(id)arg1;
-- (BOOL)isEnabled;
-- (void)enable;
-- (void)disable;
-- (void)switchPane:(id)arg1;
-- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
-- (void)setAssociatedStyle:(struct TXTextStyle *)arg1;
-- (void)setAssociatedStyles:(list_6eff4338 *)arg1 force:(BOOL)arg2;
-- (id)createFormatControllerWithSceneNode:(struct OZSceneNode *)arg1;
 - (_Bool)useGlyphTool;
+- (id)createFormatControllerWithSceneNode:(struct OZSceneNode *)arg1;
+- (void)setAssociatedStyles:(list_ff0a6df5 *)arg1 force:(BOOL)arg2;
+- (void)setAssociatedStyle:(struct TXTextStyle *)arg1;
+- (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
+- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
+- (void)switchPane:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (BOOL)isEnabled;
+- (void)textSelectionChanged:(id)arg1;
+- (void)fontPanelWillOpen:(id)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)syncFontPanelIfNeeded:(BOOL)arg1;
+- (BOOL)isFontPanelVisible;
+- (id)createNSShadowForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_198678f7)arg2;
+- (id)getNSFontForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_198678f7)arg2;
+- (id)mainView;
+- (void)dealloc;
+- (id)initWithSceneNodes:(list_1192f13f *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
+- (id)initWithSceneNodes:(list_1192f13f *)arg1 viewCtlrDelegate:(id)arg2;
 
 @end
 

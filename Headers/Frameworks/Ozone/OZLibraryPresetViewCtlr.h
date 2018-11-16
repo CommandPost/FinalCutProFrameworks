@@ -10,9 +10,9 @@
 {
 }
 
-- (void)loadPasteboard:(id)arg1 into:(struct OZChannelBase *)arg2;
-- (void)loadPreset:(struct OZPasteList *)arg1 sender:(id)arg2;
 - (void)loadPreset:(struct OZPasteList *)arg1;
+- (void)loadPreset:(struct OZPasteList *)arg1 sender:(id)arg2;
+- (void)loadPasteboard:(id)arg1 into:(struct OZChannelBase *)arg2;
 
 @end
 

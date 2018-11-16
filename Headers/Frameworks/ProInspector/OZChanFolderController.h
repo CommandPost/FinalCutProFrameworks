@@ -15,24 +15,24 @@
     NSMutableSet *_pCtlrsHiddenWhenCollapsed;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)initResetButton;
-- (void)dealloc;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)didBuildUI;
-- (float)suggestedMaxParamWidth;
-- (void)setIsResetButtonHidden:(BOOL)arg1;
-- (void)removeController:(id)arg1;
-- (void)hideSubcontrollerWhenCollapsed:(id)arg1;
-- (void)didTwiddle:(BOOL)arg1;
-- (void)resetChannel:(id)arg1;
-- (void)resetOneChannel:(struct OZChannelBase *)arg1;
-- (id)blueBoldStringForString:(id)arg1;
-- (void)mouseEnteredRow:(id)arg1;
-- (void)mouseExitedRow:(id)arg1;
 - (void)toggleDisclosure:(id)arg1;
+- (void)mouseExitedRow:(id)arg1;
+- (void)mouseEnteredRow:(id)arg1;
+- (id)blueBoldStringForString:(id)arg1;
+- (void)resetOneChannel:(struct OZChannelBase *)arg1;
+- (void)resetChannel:(id)arg1;
+- (void)didTwiddle:(BOOL)arg1;
+- (void)hideSubcontrollerWhenCollapsed:(id)arg1;
+- (void)removeController:(id)arg1;
+- (void)setIsResetButtonHidden:(BOOL)arg1;
+- (float)suggestedMaxParamWidth;
+- (void)didBuildUI;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)dealloc;
+- (void)initResetButton;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

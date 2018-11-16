@@ -10,8 +10,8 @@
 {
 }
 
-- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (id)setUpFieldEditorAttributes:(id)arg1;
+- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 
 @end
 

@@ -10,13 +10,13 @@
 {
 }
 
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-- (struct OZChannelCrop *)ozChannel;
-- (id)leftChannel;
-- (id)rightChannel;
-- (id)bottomChannel;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 - (id)topChannel;
+- (id)bottomChannel;
+- (id)rightChannel;
+- (id)leftChannel;
+- (struct OZChannelCrop *)ozChannel;
 
 @end
 

@@ -10,10 +10,10 @@
 {
 }
 
-- (id)initWithName:(id)arg1 appDelegate:(id)arg2;
-- (void)filterList;
-- (void)refresh:(unsigned int)arg1 snapshot:(BOOL)arg2;
 - (void)addObjectsAffectedByBehavior:(struct OZChannelObjectRootBase *)arg1 toCurveSet:(id)arg2 numberOfSamples:(unsigned int)arg3;
+- (void)refresh:(unsigned int)arg1 snapshot:(BOOL)arg2;
+- (void)filterList;
+- (id)initWithName:(id)arg1 appDelegate:(id)arg2;
 
 @end
 

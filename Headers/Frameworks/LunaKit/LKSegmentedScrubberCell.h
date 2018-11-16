@@ -10,11 +10,11 @@
 {
 }
 
-- (id)_scrubbingArrowsFacetForStyle:(long long)arg1;
-- (id)_stepperArrowsFacet;
-- (id)_caretFacet;
-- (id)_baseFacet;
 - (id)_squareBezelFacet;
+- (id)_baseFacet;
+- (id)_caretFacet;
+- (id)_stepperArrowsFacet;
+- (id)_scrubbingArrowsFacetForStyle:(long long)arg1;
 
 @end
 

@@ -17,16 +17,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *lumaBumps;
 }
 
-- (id)init;
-- (id)initWithColorMatchAdjustment:(id)arg1;
-- (void)setDefaultState;
-- (id)description;
-- (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)setWithColorMatchAdjustment:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(retain, nonatomic) NSMutableArray *lumaBumps; // @synthesize lumaBumps;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setWithColorMatchAdjustment:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)dealloc;
+- (id)description;
+- (void)setDefaultState;
+- (id)initWithColorMatchAdjustment:(id)arg1;
+- (id)init;
 
 @end
 

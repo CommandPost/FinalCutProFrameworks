@@ -10,10 +10,10 @@
 {
 }
 
-- (id)initWithTimeline:(id)arg1;
-- (int)checkMouseInBars:(id)arg1 startingLocation:(struct CGPoint)arg2 rootList:(set_90ccbad6 *)arg3 selected:(char *)arg4 selectRange:(struct PCTimeRange *)arg5 dragRange:(struct PCTimeRange *)arg6;
-- (void)buildout;
 - (BOOL)topped;
+- (void)buildout;
+- (int)checkMouseInBars:(id)arg1 startingLocation:(struct CGPoint)arg2 rootList:(set_6f566e68 *)arg3 selected:(char *)arg4 selectRange:(struct PCTimeRange *)arg5 dragRange:(struct PCTimeRange *)arg6;
+- (id)initWithTimeline:(id)arg1;
 
 @end
 

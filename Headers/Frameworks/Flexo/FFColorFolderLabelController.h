@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
     LKButton *_toggleButton;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)didBuildUI;
-- (void)update;
 - (void)toggleColor:(id)arg1;
+- (void)update;
+- (void)didBuildUI;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

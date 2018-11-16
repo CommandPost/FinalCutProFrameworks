@@ -23,19 +23,19 @@ __attribute__((visibility("hidden")))
     LKButtonCell *_checkBoxCell;
 }
 
-- (void)awakeFromNib;
-- (void)dealloc;
-- (id)filterDict;
-- (void)setFilterDict:(id)arg1;
-- (void)setRoleSets:(id)arg1 selectedRoles:(id)arg2;
-- (id)tileTypeFacet;
-- (void)_setAllToState:(unsigned long long)arg1;
-- (void)selectAllKeywords:(id)arg1;
-- (void)deselectAllKeywords:(id)arg1;
-- (id)comparisonTypesAllowed;
-- (void)keywordButtonClicked:(id)arg1;
 @property(retain, nonatomic) NSMutableSet *selectedRolesSet; // @synthesize selectedRolesSet=_selectedRolesSet;
 @property(retain, nonatomic) NSArray *roleSetsArray; // @synthesize roleSetsArray=_roleSetsArray;
+- (void)keywordButtonClicked:(id)arg1;
+- (id)comparisonTypesAllowed;
+- (void)deselectAllKeywords:(id)arg1;
+- (void)selectAllKeywords:(id)arg1;
+- (void)_setAllToState:(unsigned long long)arg1;
+- (id)tileTypeFacet;
+- (void)setRoleSets:(id)arg1 selectedRoles:(id)arg2;
+- (void)setFilterDict:(id)arg1;
+- (id)filterDict;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

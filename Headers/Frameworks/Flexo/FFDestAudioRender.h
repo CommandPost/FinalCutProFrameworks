@@ -8,23 +8,25 @@
 
 #import "FFDestRenderUnitProtocol.h"
 
-@class FFDestRenderUnit, FFNRTFigClock;
+@class FFDestRenderUnit, FFNRTFigClock, NSLock;
 
 __attribute__((visibility("hidden")))
 @interface FFDestAudioRender : FFDestAudio <FFDestRenderUnitProtocol>
 {
     double m_sampleRate;
     FFNRTFigClock *m_clock;
+    NSLock *m_renderUnitLock;
     FFDestRenderUnit *m_renderUnit;
 }
 
-- (id)initWithSampleRate:(double)arg1;
-- (void *)figClock;
-- (void)advanceClock;
-- (void)pushBufferHook:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned long long)arg3;
-- (void)pushBuffer:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned long long)arg3;
-- (void)beginRenderWithDelegate:(id)arg1 context:(void *)arg2;
 - (void)endRender;
+- (void)beginRenderWithDelegate:(id)arg1 context:(void *)arg2;
+- (void)pushBuffer:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned long long)arg3;
+- (void)pushBufferHook:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned long long)arg3;
+- (void)advanceClock;
+- (void *)figClock;
+- (void)dealloc;
+- (id)initWithSampleRate:(double)arg1;
 
 @end
 

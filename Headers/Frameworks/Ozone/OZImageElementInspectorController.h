@@ -11,10 +11,10 @@
     struct OZImageElement *_pImageElement;
 }
 
-- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
-- (BOOL)buildUIWithSceneNodes:(list_699e9227 *)arg1 context:(id)arg2;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
 - (void)notify:(unsigned int)arg1;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
+- (BOOL)buildUIWithSceneNodes:(list_1192f13f *)arg1 context:(id)arg2;
+- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
 
 @end
 

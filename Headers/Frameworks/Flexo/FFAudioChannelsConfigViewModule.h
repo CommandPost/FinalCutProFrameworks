@@ -6,59 +6,56 @@
 
 #import "LKViewModule.h"
 
-@class FFAnchoredCollection, FFAnchoredObject, FFMediaSource, FFOutlineView, FFSkimmingModule, LKScrollView, NSMutableArray;
+@class FFAudioChannelsConfigTileView, FFSkimmingModule, NSArray;
 
 @interface FFAudioChannelsConfigViewModule : LKViewModule
 {
-    FFOutlineView *m_sourceList;
-    LKScrollView *m_sourceListScrollView;
-    FFAnchoredCollection *m_referenceObject;
-    BOOL m_supportsChannelEditing;
-    id <FFAudioChannelsConfigViewModuleDelegate> m_delegate;
-    NSMutableArray *m_mediaSources;
-    FFMediaSource *m_trashSource;
+    FFAudioChannelsConfigTileView *m_tileView;
+    NSArray *m_selectedObjects;
+    id <FFAudioChannelsConfigViewModuleDelegate> m_audioChannelsViewModuleDelegate;
     FFSkimmingModule *m_skimmingModule;
+    int m_mouseEntered;
+    int m_suspendObserving;
+    BOOL m_observingFirstResponderChanged;
+    id <FFAudioChannelsConfigTextEditDelegate> m_activeTextEditItem;
 }
 
-- (id)initWithObject:(id)arg1 andDelegate:(id)arg2;
-- (void)dealloc;
-- (id)enclosingContainerItemView;
-- (void)_makeFirstResponder;
-- (void)_firstResponderChanged:(id)arg1;
-- (void)viewDidLoad;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)awakeFromNib;
-- (void)_setupEditor;
-- (void)_tearDownEditor;
-- (void)reloadEditor;
-- (void)updateAssociatedObjects:(id)arg1;
-- (BOOL)_isCustomLayout;
-- (void)_setupSourceList;
-- (void)_updateViewFrameSize;
-- (BOOL)_shouldMoveChannelToTrash:(id)arg1;
-- (id)_mediaSourceAtIndexPath:(id)arg1;
-- (BOOL)_supportsChannelEditing;
-- (id)_filmstripSkimmingModule;
-- (id)targetModules;
-- (void)_updatePlayerSettingsForPlayback;
-- (void)_toggleAudioPlayEnableForFilmstrip:(id)arg1;
-- (void)toggleEnable:(id)arg1;
-- (void)enableOrDisableEdit:(id)arg1;
-- (void)playPause:(id)arg1;
-- (void)playSelected:(id)arg1;
-- (void)_moveSkimmingToFilmstripAtIndex:(int)arg1;
-- (void)up:(id)arg1;
-- (void)down:(id)arg1;
-- (void)previousEdit:(id)arg1;
+@property(nonatomic) id <FFAudioChannelsConfigViewModuleDelegate> audioChannelsViewModuleDelegate; // @synthesize audioChannelsViewModuleDelegate=m_audioChannelsViewModuleDelegate;
 - (void)nextEdit:(id)arg1;
-- (long long)outlineView:(id)arg1 numberOfRowsAtIndexPath:(id)arg2;
-- (id)outlineView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (BOOL)outlineView:(id)arg1 isRowExpandableAtIndexPath:(id)arg2;
-- (double)outlineView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
-- (BOOL)outlineView:(id)arg1 shouldSelectRowAtIndexPath:(id)arg2;
-@property(readonly, nonatomic) FFAnchoredObject *referenceObject; // @synthesize referenceObject=m_referenceObject;
-@property(readonly, nonatomic) id <FFAudioChannelsConfigViewModuleDelegate> delegate; // @synthesize delegate=m_delegate;
+- (void)previousEdit:(id)arg1;
+- (void)down:(id)arg1;
+- (void)up:(id)arg1;
+- (void)_moveSkimmingFromChannelView:(id)arg1 withMoveOffset:(int)arg2;
+- (void)_moveTextEditingFromChannelView:(id)arg1 withMoveOffset:(int)arg2;
+- (id)_moveFromChannelView:(id)arg1 withMoveOffset:(int)arg2;
+- (void)playSelected:(id)arg1;
+- (void)playPause:(id)arg1;
+- (void)enableOrDisableEdit:(id)arg1;
+- (void)_updatePlayerSettingsForPlayback;
+- (id)targetModules;
+- (id)activeTextEditItem;
+- (void)setActiveTextEditItem:(id)arg1;
+- (id)skimmingModule;
+- (void)_updateTileViewFrame;
+- (void)_updateViewFrameSize;
+- (void)reloadEditor;
+- (void)_tearDownEditor;
+- (void)_setupEditor;
+- (void)awakeFromNib;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (BOOL)_isObservingSuspended;
+- (void)_resumeObserving;
+- (void)_suspendObserving;
+- (void)_mouseExited;
+- (void)_mouseEntered;
+- (void)_removeFirstResponderObserving;
+- (void)_firstResponderChanged:(id)arg1;
+- (void)_makeFirstResponder;
+- (id)enclosingContainerItemView;
+- (void)addAssociatedObject:(id)arg1;
+- (void)dealloc;
+- (id)initWithObject:(id)arg1;
 
 @end
 

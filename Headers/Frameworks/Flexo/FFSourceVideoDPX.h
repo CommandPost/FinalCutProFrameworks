@@ -11,12 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)type;
 + (Class)streamClass;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (CDStruct_1b6d18a9)duration;
++ (id)type;
+- (BOOL)segmentMD5:(CDStruct_bdcb2b0d *)arg1 sampleOffset:(long long *)arg2 forSampleDuration:(CDStruct_1b6d18a9)arg3 atTime:(CDStruct_1b6d18a9)arg4 context:(id)arg5 range:(CDStruct_e83c9415 *)arg6;
 - (id)nativeVideoProps;
-- (BOOL)segmentMD5:(CDStruct_60067b7e *)arg1 sampleOffset:(long long *)arg2 forSampleDuration:(CDStruct_1b6d18a9)arg3 atTime:(CDStruct_1b6d18a9)arg4 context:(id)arg5 range:(CDStruct_e83c9415 *)arg6;
+- (CDStruct_1b6d18a9)duration;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 
 @end
 

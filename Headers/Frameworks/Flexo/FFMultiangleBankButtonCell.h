@@ -6,6 +6,8 @@
 
 #import "NSButtonCell.h"
 
+@class NSSet;
+
 __attribute__((visibility("hidden")))
 @interface FFMultiangleBankButtonCell : NSButtonCell
 {
@@ -13,20 +15,21 @@ __attribute__((visibility("hidden")))
     long long colCount;
     long long angleCount;
     long long videoIndex;
-    long long audioIndex;
+    NSSet *audioIndices;
 }
 
-+ (id)avAngleFacet;
-+ (id)audioAngleFacet;
-+ (id)videoAngleFacet;
 + (id)emptyAngleFacet;
-- (id)init;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-@property(nonatomic) long long rowCount; // @synthesize rowCount;
-@property(nonatomic) long long colCount; // @synthesize colCount;
-@property(nonatomic) long long angleCount; // @synthesize angleCount;
++ (id)videoAngleFacet;
++ (id)audioAngleFacet;
++ (id)avAngleFacet;
+@property(retain, nonatomic) NSSet *audioIndices; // @synthesize audioIndices;
 @property(nonatomic) long long videoIndex; // @synthesize videoIndex;
-@property(nonatomic) long long audioIndex; // @synthesize audioIndex;
+@property(nonatomic) long long angleCount; // @synthesize angleCount;
+@property(nonatomic) long long colCount; // @synthesize colCount;
+@property(nonatomic) long long rowCount; // @synthesize rowCount;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)dealloc;
+- (id)init;
 
 @end
 

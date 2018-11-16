@@ -15,14 +15,14 @@
     LKTextField *_textField;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)update;
-- (void)textDone:(id)arg1;
-- (id)firstKeyView;
-- (id)lastKeyView;
-- (void)enable;
-- (void)disable;
 - (void)controlTextDidChange:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (id)lastKeyView;
+- (id)firstKeyView;
+- (void)textDone:(id)arg1;
+- (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -11,15 +11,15 @@
     struct OZPublishSettings *_pSettings;
 }
 
-- (id)initWithScene:(struct OZScene *)arg1;
-- (void)select:(BOOL)arg1 forChan:(struct OZChannelBase *)arg2;
-- (BOOL)controllerDoesOverrideName:(id)arg1;
-- (id)controllerOverriddenName:(id)arg1;
-- (void)controller:(id)arg1 setName:(id)arg2;
-- (BOOL)controller:(id)arg1 shouldDragChannel:(struct OZChannelBase *)arg2;
-- (void)controller:(id)arg1 writeChannels:(list_ee649c21 *)arg2 toPasteboard:(id)arg3;
-- (unsigned long long)controller:(id)arg1 draggingSourceOperationMaskForChannel:(struct OZChannelBase *)arg2 forLocal:(BOOL)arg3;
 - (void)setupDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 channel:(struct OZChannelBase *)arg3 location:(unsigned int)arg4;
+- (unsigned long long)controller:(id)arg1 draggingSourceOperationMaskForChannel:(struct OZChannelBase *)arg2 forLocal:(BOOL)arg3;
+- (void)controller:(id)arg1 writeChannels:(list_eea5731a *)arg2 toPasteboard:(id)arg3;
+- (BOOL)controller:(id)arg1 shouldDragChannel:(struct OZChannelBase *)arg2;
+- (void)controller:(id)arg1 setName:(id)arg2;
+- (id)controllerOverriddenName:(id)arg1;
+- (BOOL)controllerDoesOverrideName:(id)arg1;
+- (void)select:(BOOL)arg1 forChan:(struct OZChannelBase *)arg2;
+- (id)initWithScene:(struct OZScene *)arg1;
 
 @end
 

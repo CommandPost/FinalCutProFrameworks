@@ -16,18 +16,22 @@
     NSMutableSet *_actionRedirectionTargets;
 }
 
-+ (void)initialize;
 + (BOOL)isFCP;
-- (void)dealloc;
-- (void)finishLaunching;
-- (void)addEventFilter:(id)arg1;
-- (void)removeEventFilter:(id)arg1;
-- (void)addActionRedirectionTarget:(id)arg1;
-- (void)removeActionRedirectionTarget:(id)arg1;
-- (id)targetForAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;
-- (BOOL)sendAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;
-- (void)sendEvent:(id)arg1;
++ (void)initialize;
+- (void)shutDownDueToCorruptDatabase:(id)arg1;
 - (void)terminate:(id)arg1;
+- (void)sendEvent:(id)arg1;
+- (BOOL)sendAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;
+- (id)targetForAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;
+- (void)removeActionRedirectionTarget:(id)arg1;
+- (void)addActionRedirectionTarget:(id)arg1;
+- (void)removeEventFilter:(id)arg1;
+- (void)addEventFilter:(id)arg1;
+- (void)finishLaunching;
+- (void)dealloc;
+- (void)_checkForCorruptDatabases;
+- (void)_scanKnownDatabasesAndReplace:(id)arg1;
+- (void)_scanForEmptyDatabases;
 
 @end
 

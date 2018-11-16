@@ -4,7 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSDictionary;
+
 @protocol FFProviderRenderOptions
-- (void)setRenderOptions:(id)arg1;
+- (void)setRenderOptions:(NSDictionary *)arg1;
 @end
 

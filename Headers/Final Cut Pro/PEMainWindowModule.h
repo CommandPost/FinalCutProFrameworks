@@ -10,10 +10,10 @@
 {
 }
 
-- (struct CGSize)viewMinSize;
-- (id)windowTitle;
-- (id)contentLayoutDictionary;
 - (void)setWindow:(id)arg1;
+- (id)contentLayoutDictionary;
+- (id)windowTitle;
+- (struct CGSize)viewMinSize;
 
 @end
 

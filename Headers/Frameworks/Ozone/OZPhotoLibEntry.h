@@ -13,15 +13,15 @@
     NSString *_thumbnailPath;
 }
 
-+ (id)buildTree:(id)arg1;
 + (BOOL)validateTree:(id)arg1;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
-- (id)getAbsolutePath:(BOOL)arg1 rootFlags:(unsigned int)arg2;
-- (void)setThumbnailPath:(id)arg1;
-- (id)getThumbnailPath;
++ (id)buildTree:(id)arg1;
 - (BOOL)shouldBeArchived;
+- (id)getThumbnailPath;
+- (void)setThumbnailPath:(id)arg1;
+- (id)getAbsolutePath:(BOOL)arg1 rootFlags:(unsigned int)arg2;
+- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 
 @end
 

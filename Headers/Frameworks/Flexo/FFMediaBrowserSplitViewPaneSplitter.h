@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)setDividerStyle:(long long)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

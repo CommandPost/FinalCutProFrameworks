@@ -19,20 +19,20 @@ __attribute__((visibility("hidden")))
     MIORADManager *_radManager;
 }
 
-- (id)initWithPlugin:(id)arg1 andUndoManager:(id)arg2 radManager:(id)arg3;
-- (void)dealloc;
-- (id)name;
-- (void)addPath:(id)arg1;
-- (BOOL)mountPath:(id)arg1;
-- (void)scanPaths;
-- (id)createVolumeForPath:(id)arg1 error:(id *)arg2;
-- (id)volumeWithPath:(id)arg1 error:(id *)arg2;
 @property MIORADManager *radManager; // @synthesize radManager=_radManager;
 @property NSUndoManager *undoManager; // @synthesize undoManager=_undoManager;
 @property BOOL done; // @synthesize done=_done;
-@property(readonly, retain) NSMutableArray *pathArray; // @synthesize pathArray=_pathArray;
-@property(readonly, retain) NSConditionLock *lock; // @synthesize lock=_lock;
+@property(readonly) NSMutableArray *pathArray; // @synthesize pathArray=_pathArray;
+@property(readonly) NSConditionLock *lock; // @synthesize lock=_lock;
 @property(readonly, nonatomic) id <MIORADPlugin><NSObject> plugin; // @synthesize plugin=_plugin;
+- (id)volumeWithPath:(id)arg1 error:(id *)arg2;
+- (id)createVolumeForPath:(id)arg1 error:(id *)arg2;
+- (void)scanPaths;
+- (BOOL)mountPath:(id)arg1;
+- (void)addPath:(id)arg1;
+- (id)name;
+- (void)dealloc;
+- (id)initWithPlugin:(id)arg1 andUndoManager:(id)arg2 radManager:(id)arg3;
 
 @end
 

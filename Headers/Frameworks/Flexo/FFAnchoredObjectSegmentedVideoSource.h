@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface FFAnchoredObjectSegmentedVideoSource : FFSourceVideo
 {
-    struct list<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem*, std::allocator<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem*>> _segmentSourceCache;
-    struct list<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem*, std::allocator<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem*>> _segmentMD5InfoCache;
-    struct vector<FFAnchoredObjectSegmentedVideoStream*, std::allocator<FFAnchoredObjectSegmentedVideoStream*>> _openStreams;
+    struct list<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem *, std::allocator<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem *>> _segmentSourceCache;
+    struct list<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem *, std::allocator<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem *>> _segmentMD5InfoCache;
+    struct vector<FFAnchoredObjectSegmentedVideoStream *, std::allocator<FFAnchoredObjectSegmentedVideoStream *>> _openStreams;
     long long _effectCount;
     NSString *_videoAngle;
     long long _toLane;
@@ -25,29 +25,30 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
-- (id)anchoredObject;
-- (CDStruct_e83c9415)timeRange;
-- (id)_videoProps;
-- (id)nativeVideoProps;
-- (double)preferredScaleFactorForQuality:(int)arg1;
-- (void)updateMagicFrame;
-- (void)rangeInvalidated:(id)arg1;
-- (id)initWithProvider:(id)arg1 effectCount:(long long)arg2 videoAngle:(id)arg3 toLane:(long long)arg4 showOnlyObjects:(id)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8;
-- (long long)effectCount;
-- (void)dealloc;
-- (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
-- (void)_removeStreamFromOpenStreamsList:(id)arg1;
-- (id)_newSubRangeMD5InfoFromCacheForSDandQualitySettings:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (void)_addSubRangeMD5InfoToCache:(id)arg1 forSD:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (id)_dumpCache;
-- (id)_newSegmentSourceAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 offset:(CDStruct_1b6d18a9 *)arg3 range:(CDStruct_e83c9415 *)arg4 streamid:(id *)arg5;
-- (void)_invalidateSegmentMD5InfoCacheForRange:(const CDStruct_e83c9415 *)arg1;
-- (void)_invalidateSegmentSourceCacheForRange:(const CDStruct_e83c9415 *)arg1;
-- (CDStruct_1b6d18a9)magicFrameTime;
-- (id)deepDescriptionWithIndent:(long long)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (long long)timecodeDisplayDropFrame;
+- (id)deepDescriptionWithIndent:(long long)arg1;
+- (CDStruct_1b6d18a9)magicFrameTime;
+- (void)_invalidateSegmentSourceCacheForRange:(const CDStruct_e83c9415 *)arg1;
+- (void)_invalidateSegmentMD5InfoCacheForRange:(const CDStruct_e83c9415 *)arg1;
+- (id)_newSegmentSourceAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 offset:(CDStruct_1b6d18a9 *)arg3 range:(CDStruct_e83c9415 *)arg4 streamid:(id *)arg5;
+- (id)_dumpCache;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (void)_addSubRangeMD5InfoToCache:(id)arg1 forSD:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)_newSubRangeMD5InfoFromCacheForSDandQualitySettings:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (void)_removeStreamFromOpenStreamsList:(id)arg1;
+- (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
+- (void)dealloc;
+- (long long)effectCount;
+- (id)initWithProvider:(id)arg1 effectCount:(long long)arg2 videoAngle:(id)arg3 toLane:(long long)arg4 showOnlyObjects:(id)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8;
+- (void)rangeInvalidated:(id)arg1;
+- (void)updateMagicFrame;
+- (double)preferredScaleFactorForQuality:(int)arg1;
+- (id)nativeVideoProps;
+- (id)_videoProps;
+- (CDStruct_e83c9415)timeRange;
+- (id)anchoredObject;
 
 @end
 

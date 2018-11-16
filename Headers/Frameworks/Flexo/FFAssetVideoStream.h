@@ -10,19 +10,21 @@ __attribute__((visibility("hidden")))
 @interface FFAssetVideoStream : FFStreamVideo
 {
     FFStreamVideo *_inputStream;
+    BOOL _alreadyFoundCachedStill;
 }
 
-- (id)asset;
-- (id)_inputVideoStream;
-- (id)initWithSource:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
-- (void)dealloc;
-- (id)videoProps;
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
-- (void)prerollEnd;
-- (void)setRate:(double)arg1;
-- (id)_downgradedContextBasedOnDownStreamPT:(id)arg1 context:(id)arg2;
-- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(struct CGRect *)arg5;
 - (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
+- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
+- (BOOL)_maybeQueueToStillCache:(CDStruct_1b6d18a9)arg1 context:(id)arg2 adjustedContext:(id)arg3 downstreamPT:(id)arg4;
+- (id)_downgradedContextBasedOnDownStreamPT:(id)arg1 context:(id)arg2;
+- (void)setRate:(double)arg1;
+- (void)prerollEnd;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
+- (id)videoProps;
+- (void)dealloc;
+- (id)initWithSource:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
+- (id)_inputVideoStream;
+- (id)asset;
 
 @end
 

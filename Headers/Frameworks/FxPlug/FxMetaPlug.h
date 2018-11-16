@@ -13,21 +13,21 @@
     struct FxMetaPlugPriv *_priv;
 }
 
-+ (id)fxMetaPlugWithWrapper:(id)arg1 andData:(id)arg2;
-+ (id)syntheticUUIDBasedOnString:(id)arg1;
 + (id)syntheticUUIDBasedOnIndex:(int)arg1;
-- (id)initWithWrapper:(id)arg1 andData:(id)arg2;
-- (void)dealloc;
-- (id)wrapper;
-- (id)data;
-- (id)fxPlugDescriptor;
-- (id)fxPlugProperties;
-- (id)displayName;
-- (id)uuid;
-- (id)version;
-- (id)versionDisplayName;
-- (id)groupDisplayName;
++ (id)syntheticUUIDBasedOnString:(id)arg1;
++ (id)fxMetaPlugWithWrapper:(id)arg1 andData:(id)arg2;
 - (id)groupUUID;
+- (id)groupDisplayName;
+- (id)versionDisplayName;
+- (id)version;
+- (id)uuid;
+- (id)displayName;
+- (id)fxPlugProperties;
+- (id)fxPlugDescriptor;
+- (id)data;
+- (id)wrapper;
+- (void)dealloc;
+- (id)initWithWrapper:(id)arg1 andData:(id)arg2;
 
 @end
 

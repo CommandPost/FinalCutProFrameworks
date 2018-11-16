@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     NSString *_dataFilePath;
 }
 
-- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 clip:(id)arg2 asset:(id)arg3;
-- (void)dealloc;
-- (int)createDataFiles;
 @property(readonly, nonatomic) NSString *dataFilePath; // @synthesize dataFilePath=_dataFilePath;
 @property(readonly, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObject;
+- (int)createDataFiles;
+- (void)dealloc;
+- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 clip:(id)arg2 asset:(id)arg3;
 
 @end
 

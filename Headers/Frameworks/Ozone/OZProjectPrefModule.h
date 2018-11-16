@@ -23,21 +23,21 @@
     LKButtonCell *_newProjectLabelCell;
 }
 
-- (void)initializeFromDefaults;
-- (BOOL)isResizable;
-- (void)setProjectDuration:(id)arg1;
-- (void)setProjectDurationFormat:(id)arg1;
-- (void)setProjectBackgroundColor:(id)arg1;
-- (void)setObjectDurMode:(id)arg1;
-- (void)setStillDuration:(id)arg1;
-- (void)setStillDurationFormat:(id)arg1;
-- (void)setCreateObjectAt:(id)arg1;
-- (void)setScaleLargeImages:(id)arg1;
-- (void)setupDurationFormatterForTextField:(id)arg1 isDisplayingInFrames:(BOOL)arg2;
-- (void)setNewProjectPref:(id)arg1;
-- (void)chooseDocument:(id)arg1;
-- (void)setNewProjectCellLabel;
 - (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)setNewProjectCellLabel;
+- (void)chooseDocument:(id)arg1;
+- (void)setNewProjectPref:(id)arg1;
+- (void)setupDurationFormatterForTextField:(id)arg1 isDisplayingInFrames:(BOOL)arg2;
+- (void)setScaleLargeImages:(id)arg1;
+- (void)setCreateObjectAt:(id)arg1;
+- (void)setStillDurationFormat:(id)arg1;
+- (void)setStillDuration:(id)arg1;
+- (void)setObjectDurMode:(id)arg1;
+- (void)setProjectBackgroundColor:(id)arg1;
+- (void)setProjectDurationFormat:(id)arg1;
+- (void)setProjectDuration:(id)arg1;
+- (BOOL)isResizable;
+- (void)initializeFromDefaults;
 
 @end
 

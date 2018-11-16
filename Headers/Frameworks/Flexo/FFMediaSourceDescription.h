@@ -20,24 +20,24 @@ __attribute__((visibility("hidden")))
     NSArray *m_audioChannelRoutingMap;
 }
 
-+ (id)descriptionWithMedia:(id)arg1 sourceKey:(id)arg2;
-+ (id)descriptionWithMedia:(id)arg1 sourceKey:(id)arg2 channelMap:(id)arg3;
-+ (id)descriptionWithMedia:(id)arg1 sourceKey:(id)arg2 channelIndex:(int)arg3;
-+ (BOOL)isEqualChannelMaps:(id)arg1 compare:(id)arg2;
 + (BOOL)isEqualAudioChannelRoutingMaps:(id)arg1 compare:(id)arg2;
-- (void)dealloc;
-- (id)initWithMedia:(id)arg1 sourceKey:(id)arg2 channelMap:(id)arg3;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)description;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
-- (id)defaultMediaSourceName;
++ (BOOL)isEqualChannelMaps:(id)arg1 compare:(id)arg2;
++ (id)descriptionWithMedia:(id)arg1 sourceKey:(id)arg2 channelIndex:(int)arg3;
++ (id)descriptionWithMedia:(id)arg1 sourceKey:(id)arg2 channelMap:(id)arg3;
++ (id)descriptionWithMedia:(id)arg1 sourceKey:(id)arg2;
 @property(retain, nonatomic) NSArray *audioChannelRoutingMap; // @synthesize audioChannelRoutingMap=m_audioChannelRoutingMap;
 @property(retain, nonatomic) NSArray *channelMap; // @synthesize channelMap=m_channelMap;
 @property(retain, nonatomic) NSString *sourceKey; // @synthesize sourceKey=m_sourceKey;
 @property(retain, nonatomic) FFMedia *media; // @synthesize media=m_media;
+- (id)defaultMediaSourceName;
+- (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithMedia:(id)arg1 sourceKey:(id)arg2 channelMap:(id)arg3;
+- (void)dealloc;
 
 @end
 

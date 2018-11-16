@@ -13,10 +13,10 @@
     int _mode;
 }
 
-- (id)initWithBlendOptions:(id)arg1;
-- (int)getBlendMode;
-- (void)setBlendMode:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setBlendMode:(int)arg1;
+- (int)getBlendMode;
+- (id)initWithBlendOptions:(id)arg1;
 
 @end
 

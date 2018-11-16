@@ -10,5 +10,8 @@
 {
 }
 
++ (id)_triangleFacet;
+- (id)_baseFacet;
+
 @end
 

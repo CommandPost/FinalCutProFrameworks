@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     NSString *_accessibilityTitle;
 }
 
-- (void)dealloc;
-- (id)accessibilityAttributeNames;
-- (id)accessibilityAttributeValue:(id)arg1;
 @property(copy, nonatomic) NSString *accessibilityTitle; // @synthesize accessibilityTitle=_accessibilityTitle;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (void)dealloc;
 
 @end
 

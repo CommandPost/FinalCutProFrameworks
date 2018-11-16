@@ -5,6 +5,6 @@
 //
 
 @protocol FFContextMeterObserver
-- (void)contextMeterUpdate:(const float *)arg1 channels:(unsigned long long)arg2 levels:(const float *)arg3 channels:(unsigned long long)arg4;
+- (void)contextMeterUpdate:(const float *)arg1 channels:(unsigned long long)arg2;
 @end
 

@@ -11,14 +11,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)anchoredVideoMediaComponent;
-- (BOOL)isAnalyzingStillImage;
-- (struct CGColorSpace *)colorSpace;
-- (id)supportedPixelFormats;
-- (BOOL)wantsDithering:(id)arg1;
-- (void)pushFrame:(id)arg1;
-- (BOOL)reuseDataForAnalyzing;
 - (int)analyzeImage:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (BOOL)reuseDataForAnalyzing;
+- (void)pushFrame:(id)arg1;
+- (BOOL)wantsDithering:(id)arg1;
+- (id)supportedPixelFormats;
+- (struct CGColorSpace *)colorSpace;
+- (BOOL)isAnalyzingStillImage;
+- (id)anchoredVideoMediaComponent;
 
 @end
 

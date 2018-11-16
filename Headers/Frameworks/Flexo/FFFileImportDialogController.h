@@ -9,7 +9,7 @@
 #import "NSAnimationDelegate.h"
 #import "NSOpenSavePanelDelegate.h"
 
-@class FFEventLibraryModule, FFFileImportAccessoryView, FFFileImportOpenPanel, FFFileImporter, FFMediaEventProject, NSArray, NSButton, NSMutableArray;
+@class FFEventLibraryModule, FFFileImportAccessoryView, FFFileImporter, FFMediaEventProject, NSArray, NSButton, NSMutableArray, NSOpenPanel;
 
 @interface FFFileImportDialogController : NSViewController <NSAnimationDelegate, NSOpenSavePanelDelegate>
 {
@@ -18,29 +18,29 @@
     NSMutableArray *_urlsToValidate;
     NSArray *_selectedFilesInDialog;
     FFEventLibraryModule *_eventOrganizerModule;
-    FFFileImportOpenPanel *_openPanel;
+    NSOpenPanel *_openPanel;
     FFFileImportAccessoryView *_accessoryView;
     FFFileImporter *_fileImporter;
     FFMediaEventProject *_destinationEvent;
     NSArray *_importedMediaRanges;
 }
 
-- (id)initWithEventLibraryModule:(id)arg1;
-- (void)showDuplicateEventDialog;
-- (id)createNewEvent;
-- (BOOL)validateFiles;
-- (void)processFiles;
-- (BOOL)importFiles;
-- (id)runFileImportWithInitialEvent:(id)arg1 keywordNames:(id)arg2;
-- (void)dealloc;
-- (id)stringFromFourCharCode:(unsigned int)arg1;
-- (BOOL)subPathContainsValidFiles:(id)arg1;
-- (BOOL)needsOptimizationForURL:(id)arg1;
-- (void)panelSelectionDidChange:(id)arg1;
-- (BOOL)panel:(id)arg1 validateURL:(id)arg2 error:(id *)arg3;
-- (BOOL)checkIfPackageOrHidden:(id)arg1;
-- (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
 - (void)panel:(id)arg1 didChangeToDirectoryURL:(id)arg2;
+- (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
+- (BOOL)checkIfPackageOrHidden:(id)arg1;
+- (BOOL)panel:(id)arg1 validateURL:(id)arg2 error:(id *)arg3;
+- (void)panelSelectionDidChange:(id)arg1;
+- (BOOL)needsOptimizationForURL:(id)arg1;
+- (BOOL)subPathContainsValidFiles:(id)arg1;
+- (id)stringFromFourCharCode:(unsigned int)arg1;
+- (void)dealloc;
+- (id)runFileImportWithInitialEvent:(id)arg1 keywordNames:(id)arg2;
+- (BOOL)importFiles;
+- (void)processFiles;
+- (BOOL)validateFiles;
+- (id)createNewEvent;
+- (void)showDuplicateEventDialog;
+- (id)initWithEventLibraryModule:(id)arg1;
 
 @end
 

@@ -17,26 +17,26 @@
     OZViewController *_lineSpacingCtrl;
     TXAlignmentColorController *_alignmentCtrl;
     BOOL _capturingChannels;
-    list_6eff4338 *_styles;
+    list_ff0a6df5 *_styles;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (void)addOrResetAssociatedStyle:(struct TXTextStyle *)arg1 isAdd:(BOOL)arg2;
-- (void)setAssociatedStyles:(list_6eff4338 *)arg1;
-- (void)updateLineSpacingController:(list_2c251165 *)arg1;
-- (void)setAssociatedLineSpacingChannels:(vector_1f4c2fc3 *)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)textSelectionChanged:(id)arg1;
-- (_Bool)useGlyphTool;
 @property(retain, nonatomic) OZViewController *lineSpacingCtrl; // @synthesize lineSpacingCtrl=_lineSpacingCtrl;
 @property(retain, nonatomic) OZViewController *trackingCtrl; // @synthesize trackingCtrl=_trackingCtrl;
 @property(retain, nonatomic) OZViewController *sizeCtrl; // @synthesize sizeCtrl=_sizeCtrl;
 @property(retain, nonatomic) TXAlignmentColorController *alignmentCtrl; // @synthesize alignmentCtrl=_alignmentCtrl;
 @property(retain, nonatomic) OZViewController *fontCtrl; // @synthesize fontCtrl=_fontCtrl;
 @property(retain, nonatomic) OZViewController *presetCtrl; // @synthesize presetCtrl=_presetCtrl;
+- (_Bool)useGlyphTool;
+- (void)textSelectionChanged:(id)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)setAssociatedLineSpacingChannels:(vector_cd78f990 *)arg1;
+- (void)updateLineSpacingController:(list_37573188 *)arg1;
+- (void)setAssociatedStyles:(list_ff0a6df5 *)arg1;
+- (void)addOrResetAssociatedStyle:(struct TXTextStyle *)arg1 isAdd:(BOOL)arg2;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
+- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

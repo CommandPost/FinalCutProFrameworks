@@ -16,16 +16,16 @@
     int _lrMode;
 }
 
-- (id)initWithLRBlendOptions:(id)arg1;
-- (float)getAmount;
-- (void)setAmount:(float)arg1;
-- (float)getIntensity;
-- (void)setIntensity:(float)arg1;
-- (float)getOpacity;
-- (void)setOpacity:(float)arg1;
-- (int)getLRBlendMode;
-- (void)setLRBlendMode:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setLRBlendMode:(int)arg1;
+- (int)getLRBlendMode;
+- (void)setOpacity:(float)arg1;
+- (float)getOpacity;
+- (void)setIntensity:(float)arg1;
+- (float)getIntensity;
+- (void)setAmount:(float)arg1;
+- (float)getAmount;
+- (id)initWithLRBlendOptions:(id)arg1;
 
 @end
 

@@ -20,16 +20,16 @@
     float _desiredLabelWidth;
 }
 
-- (id)initWithWidget:(struct OZRigWidget *)arg1 isNested:(BOOL)arg2 context:(id)arg3;
-- (id)initHUDWithWidget:(struct OZRigWidget *)arg1 context:(id)arg2;
-- (void)updateEnableState;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (id)newEditModeController:(id)arg1;
+- (id)newPopUpOptionsControllers:(id)arg1;
+- (id)newSliderOptionsControllers:(id)arg1;
+- (id)newSnapshotControllers:(id)arg1;
 - (void)startEditMode:(id)arg1;
-- (id)createSnapshotControllers:(id)arg1;
-- (id)createSliderOptionsControllers:(id)arg1;
-- (id)createPopUpOptionsControllers:(id)arg1;
-- (id)createEditModeController:(id)arg1;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
+- (void)updateEnableState;
+- (id)initHUDWithWidget:(struct OZRigWidget *)arg1 context:(id)arg2;
+- (id)initWithWidget:(struct OZRigWidget *)arg1 isNested:(BOOL)arg2 context:(id)arg3;
 
 @end
 

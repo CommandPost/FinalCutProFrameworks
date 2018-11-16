@@ -10,10 +10,10 @@
 {
 }
 
-- (void)installModuleLayoutMenuItems;
 - (void)finishLaunching;
-- (void)orderFrontStandardAboutPanel:(id)arg1;
+- (void)installModuleLayoutMenuItems;
 - (id)copyrightYearString;
+- (void)orderFrontStandardAboutPanel:(id)arg1;
 
 @end
 

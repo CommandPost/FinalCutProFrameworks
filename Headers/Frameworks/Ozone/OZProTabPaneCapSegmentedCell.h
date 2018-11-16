@@ -10,10 +10,10 @@
 {
 }
 
-- (id)_baseFacet;
-- (id)_separatorFacet;
-- (long long)_indexForFirstSeparator;
 - (long long)_numberOfSeparatorsToDraw;
+- (long long)_indexForFirstSeparator;
+- (id)_separatorFacet;
+- (id)_baseFacet;
 
 @end
 

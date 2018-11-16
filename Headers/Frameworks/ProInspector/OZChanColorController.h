@@ -16,20 +16,20 @@
     BOOL _inhibitChannelChange;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)update;
-- (BOOL)isEnabled;
-- (void)enable;
-- (void)disable;
-- (BOOL)hasControls;
-- (void)setChannelValue:(id)arg1;
-- (void)setChannelValue:(id)arg1 andEncloseInAboutToAndDidChangeChannel:(BOOL)arg2;
-- (void)setInhibitChannelChange;
-- (void)startColorChange:(id)arg1;
-- (void)endColorChange:(id)arg1;
-- (void)activateColorPanel;
 - (void)setChannelColor:(struct PCColor *)arg1;
+- (void)activateColorPanel;
+- (void)endColorChange:(id)arg1;
+- (void)startColorChange:(id)arg1;
+- (void)setInhibitChannelChange;
+- (void)setChannelValue:(id)arg1 andEncloseInAboutToAndDidChangeChannel:(BOOL)arg2;
+- (void)setChannelValue:(id)arg1;
+- (BOOL)hasControls;
+- (void)disable;
+- (void)enable;
+- (BOOL)isEnabled;
+- (void)update;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -19,21 +19,21 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_metadataEntryWindowControllers;
 }
 
-- (id)initWithEffectStack:(id)arg1;
-- (id)_metadataEntryPopupWindowControllerForPerson:(id)arg1 playerView:(id)arg2;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
-- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
-- (BOOL)hitTest:(struct CGPoint)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (BOOL)isAvailableDuringPlayback;
-- (struct CGRect)_currentMediaBounds;
-- (struct CGRect)_faceRectForFace:(id)arg1 mediaBounds:(struct CGRect)arg2;
-- (struct CGRect)_closeButtonRectForFaceRect:(struct CGRect)arg1;
-- (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2;
-- (BOOL)isSelectionBased;
 - (void)dealloc;
+- (BOOL)isSelectionBased;
+- (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2;
+- (struct CGRect)_closeButtonRectForFaceRect:(struct CGRect)arg1;
+- (struct CGRect)_faceRectForFace:(id)arg1 mediaBounds:(struct CGRect)arg2;
+- (struct CGRect)_currentMediaBounds;
+- (BOOL)isAvailableDuringPlayback;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (BOOL)hitTest:(struct CGPoint)arg1;
+- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
+- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (id)_metadataEntryPopupWindowControllerForPerson:(id)arg1 playerView:(id)arg2;
+- (id)initWithEffectStack:(id)arg1;
 
 @end
 

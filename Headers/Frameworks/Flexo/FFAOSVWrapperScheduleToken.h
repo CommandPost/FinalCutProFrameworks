@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithStream:(id)arg1 andSubToken:(id)arg2;
 - (void)dealloc;
+- (id)initWithStream:(id)arg1 andSubToken:(id)arg2;
 
 @end
 

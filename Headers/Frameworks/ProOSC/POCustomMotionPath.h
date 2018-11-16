@@ -14,38 +14,38 @@
 }
 
 + (void)maybeInitResources;
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (unsigned int)getPathActivePart;
-- (id)getCursorWithEvent:(id)arg1 addCursor:(BOOL)arg2;
-- (id)menuForEvent:(id)arg1;
-- (BOOL)canAddVertex;
-- (void)processHits;
-- (void)drawVertexHandleInViewCoords:(const PCMatrix44Tmpl_e98c85ee *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 texture:(const PCPtr_df275998 *)arg5;
-- (void)drawVertices:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
-- (int)getShapeSamplesX:(vector_419cd555 *)arg1 Y:(vector_419cd555 *)arg2 Z:(vector_419cd555 *)arg3 T:(vector_419cd555 *)arg4;
-- (void)drawPath;
-- (void)drawCurve:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2 keyPoints:(BOOL)arg3;
-- (void)deleteSelected:(list_5245b10b *)arg1;
-- (void)moveSelected:(list_5245b10b *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
-- (_Bool)useControlPolygon;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (_Bool)projectPointOnObjectZPlane:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
-- (struct OZChannelPosition *)getEndPointChan;
-- (struct OZChanRotoshapeRefWithPicker *)getGeometryChan;
-- (struct OZChannelPercent *)getOffsetChan;
-- (struct OZChannel2D *)getRadiusChan;
-- (struct OZChannel2D *)getRectSizeChan;
-- (struct OZChannelDouble *)getWaveAmplitudeChan;
-- (struct OZChannelDouble *)getWaveFrequencyChan;
-- (struct OZChannelAngle *)getWavePhaseChan;
-- (struct OZChannelDouble *)getWaveDampingChan;
-- (unsigned int)getShape;
-- (_Bool)transformPath;
-- (BOOL)allowsCurveOffset;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)allowsCurveOffset;
+- (_Bool)transformPath;
+- (unsigned int)getShape;
+- (struct OZChannelDouble *)getWaveDampingChan;
+- (struct OZChannelAngle *)getWavePhaseChan;
+- (struct OZChannelDouble *)getWaveFrequencyChan;
+- (struct OZChannelDouble *)getWaveAmplitudeChan;
+- (struct OZChannel2D *)getRectSizeChan;
+- (struct OZChannel2D *)getRadiusChan;
+- (struct OZChannelPercent *)getOffsetChan;
+- (struct OZChanRotoshapeRefWithPicker *)getGeometryChan;
+- (struct OZChannelPosition *)getEndPointChan;
+- (_Bool)projectPointOnObjectZPlane:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (_Bool)useControlPolygon;
+- (void)moveSelected:(list_816acb53 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
+- (void)deleteSelected:(list_816acb53 *)arg1;
+- (void)drawCurve:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2 keyPoints:(BOOL)arg3;
+- (void)drawPath;
+- (int)getShapeSamplesX:(vector_3396ec90 *)arg1 Y:(vector_3396ec90 *)arg2 Z:(vector_3396ec90 *)arg3 T:(vector_3396ec90 *)arg4;
+- (void)drawVertices:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
+- (void)drawVertexHandleInViewCoords:(const PCMatrix44Tmpl_e98c85ee *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 texture:(const PCPtr_df275998 *)arg5;
+- (void)processHits;
+- (BOOL)canAddVertex;
+- (id)menuForEvent:(id)arg1;
+- (id)getCursorWithEvent:(id)arg1 addCursor:(BOOL)arg2;
+- (unsigned int)getPathActivePart;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

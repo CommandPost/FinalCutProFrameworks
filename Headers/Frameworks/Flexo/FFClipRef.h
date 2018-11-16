@@ -12,16 +12,19 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-- (id)primaryObject;
-- (id)assetRefs;
-- (id)clipRefs;
-- (BOOL)proxyAvailable;
-- (BOOL)highQualityAvailable;
-- (BOOL)originalAvailable;
-- (BOOL)mediaAvailable;
-- (int)proxyOfflineReason;
-- (int)highQualityOfflineReason;
+- (BOOL)isClipRef;
+- (id)videoProps;
 - (void)invalidate;
+- (int)highQualityOfflineReason;
+- (int)proxyOfflineReason;
+- (BOOL)mediaAvailable;
+- (BOOL)originalAvailable;
+- (BOOL)highQualityAvailable;
+- (BOOL)proxyAvailable;
+- (id)clipRefs;
+- (id)assetRefs;
+- (id)primaryObject;
+- (id)referencedSequence;
 
 @end
 

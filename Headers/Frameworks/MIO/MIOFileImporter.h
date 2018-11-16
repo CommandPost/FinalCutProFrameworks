@@ -27,15 +27,6 @@
 }
 
 + (id)importerWithSourceURL:(id)arg1 destURL:(id)arg2 inTime:(CDStruct_1b6d18a9)arg3 outTime:(CDStruct_1b6d18a9)arg4;
-- (id)initWithSourceURL:(id)arg1 destURL:(id)arg2 inTime:(CDStruct_1b6d18a9)arg3 outTime:(CDStruct_1b6d18a9)arg4;
-- (void)dealloc;
-- (void)start;
-- (void)stop;
-@property(nonatomic) struct OpaqueCMIOGraph *graph; // @synthesize graph=_graph;
-- (void)updateProgress:(CDStruct_1b6d18a9)arg1;
-- (void)handleCMIOFileWriterCallback:(struct OpaqueFileWritingControlToken *)arg1;
-- (void)fileCompletion;
-- (void)fileCompletionMainThread;
 @property(nonatomic) int error; // @synthesize error=_error;
 @property(nonatomic) double percentDone; // @synthesize percentDone=_percentDone;
 @property(nonatomic) int status; // @synthesize status=_status;
@@ -44,6 +35,15 @@
 @property(retain, nonatomic) NSURL *destURL; // @synthesize destURL=_destURL;
 @property(retain, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
 @property(retain, nonatomic) MIORADIngestObject *ingestObject; // @synthesize ingestObject=_ingestObject;
+@property(nonatomic) struct OpaqueCMIOGraph *graph; // @synthesize graph=_graph;
+- (void)fileCompletionMainThread;
+- (void)fileCompletion;
+- (void)handleCMIOFileWriterCallback:(struct OpaqueFileWritingControlToken *)arg1;
+- (void)updateProgress:(CDStruct_1b6d18a9)arg1;
+- (void)stop;
+- (void)start;
+- (void)dealloc;
+- (id)initWithSourceURL:(id)arg1 destURL:(id)arg2 inTime:(CDStruct_1b6d18a9)arg3 outTime:(CDStruct_1b6d18a9)arg4;
 
 @end
 

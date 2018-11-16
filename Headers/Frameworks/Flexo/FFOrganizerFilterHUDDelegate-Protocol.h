@@ -4,9 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFOrganizerFilterHUD, NSArray, NSSet;
+
 @protocol FFOrganizerFilterHUDDelegate
-- (void)filterHUDDidUpdate:(id)arg1;
-- (id)keywordsForCurrentProject;
-- (id)roleSetsForCurrentProject;
+- (NSArray *)roleSetsForCurrentProject;
+- (NSSet *)keywordsForCurrentProject;
+- (void)filterHUDDidUpdate:(FFOrganizerFilterHUD *)arg1;
 @end
 

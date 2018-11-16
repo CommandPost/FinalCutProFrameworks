@@ -11,38 +11,39 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)initialize;
-+ (void)releaseSharedInstance;
-+ (id)addRoleDefinition:(id)arg1;
-+ (void)removeRoleDefinition:(id)arg1;
-+ (id)roleDefinitions;
-+ (id)roleSetForRole:(id)arg1;
-+ (id)rolesForRoleSet:(id)arg1;
-+ (id)roleSets;
-+ (id)nameForRoleDefinition:(id)arg1;
-+ (id)nameForRoleSet:(id)arg1;
-+ (int)typeOfRole:(id)arg1;
-+ (int)typeOfRoleSet:(id)arg1;
-+ (id)roleDefinitionWithType:(int)arg1 roleSetName:(id)arg2 roleName:(id)arg3;
-+ (id)genericRoleDefinitionWithType:(int)arg1 roleSetName:(id)arg2;
-+ (id)roleSetWithType:(int)arg1 roleSetName:(id)arg2;
-+ (id)roleDefinitionWithRoleSet:(id)arg1 roleName:(id)arg2;
-+ (id)genericRoleDefinitionWithRoleSet:(id)arg1;
-+ (id)fcpDefinedRoles;
-+ (id)fcpDefinedRoleSets;
-+ (id)allAudioRoles;
-+ (id)allAudioRoleSets;
-+ (id)allVideoRoles;
-+ (id)allVideoRoleSets;
-+ (id)localizedStringForRole:(id)arg1;
-+ (id)localizedStringForRoleSet:(id)arg1;
-+ (id)audioUndefinedRole;
-+ (id)videoUndefinedRole;
-+ (BOOL)isGenericRole:(id)arg1;
-+ (BOOL)isRoleSet:(id)arg1;
-+ (BOOL)shouldEnablePlaybackOfType:(int)arg1 forObject:(id)arg2 withRequestedRoles:(id)arg3;
-+ (CDUnknownBlockType)roleSetComparator;
 + (CDUnknownBlockType)roleComparator;
++ (CDUnknownBlockType)roleSetComparator;
++ (BOOL)shouldEnablePlaybackOfType:(int)arg1 forRoles:(id)arg2 withRequestedRoles:(id)arg3;
++ (BOOL)shouldEnablePlaybackOfType:(int)arg1 forObject:(id)arg2 withRequestedRoles:(id)arg3;
++ (BOOL)isRoleSet:(id)arg1;
++ (BOOL)isGenericRole:(id)arg1;
++ (id)videoUndefinedRole;
++ (id)audioUndefinedRole;
++ (id)localizedStringForRoleSet:(id)arg1;
++ (id)localizedStringForRole:(id)arg1;
++ (id)allVideoRoleSets;
++ (id)allVideoRoles;
++ (id)allAudioRoleSets;
++ (id)allAudioRoles;
++ (id)fcpDefinedRoleSets;
++ (id)fcpDefinedRoles;
++ (id)genericRoleDefinitionWithRoleSet:(id)arg1;
++ (id)roleDefinitionWithRoleSet:(id)arg1 roleName:(id)arg2;
++ (id)roleSetWithType:(int)arg1 roleSetName:(id)arg2;
++ (id)genericRoleDefinitionWithType:(int)arg1 roleSetName:(id)arg2;
++ (id)roleDefinitionWithType:(int)arg1 roleSetName:(id)arg2 roleName:(id)arg3;
++ (int)typeOfRoleSet:(id)arg1;
++ (int)typeOfRole:(id)arg1;
++ (id)nameForRoleSet:(id)arg1;
++ (id)nameForRoleDefinition:(id)arg1;
++ (id)roleSets;
++ (id)rolesForRoleSet:(id)arg1;
++ (id)roleSetForRole:(id)arg1;
++ (id)roleDefinitions;
++ (void)removeRoleDefinition:(id)arg1;
++ (id)addRoleDefinition:(id)arg1;
++ (void)releaseSharedInstance;
++ (void)initialize;
 
 @end
 

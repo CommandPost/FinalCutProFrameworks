@@ -16,31 +16,27 @@
     NSDictionary *_docToCreateDict;
 }
 
-- (id)dictionaryForDefaultDocument;
-- (void)closeAllDocuments:(id)arg1;
-- (void)documentController:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(void *)arg3;
+@property NSDictionary *dictionaryForPendingDocument; // @synthesize dictionaryForPendingDocument=_docToCreateDict;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)generateTemplatePreviewsInDirectory:(id)arg1 withSaveOptions:(int)arg2;
+- (void)updateAutosaveVault;
+- (id)openUntitledDocumentAndDisplay:(BOOL)arg1 error:(id *)arg2;
+- (id)openDocumentWithContentsOfURL:(id)arg1 display:(BOOL)arg2 error:(id *)arg3;
+- (void)restoreDocumentFromAutosave:(id)arg1 setDocFileURL:(id)arg2 setDocType:(int)arg3;
+- (void)releaseResourcesOfDocuments;
+- (void)closeUntouchedDocuments;
+- (void)savePathsOfOpenDocuments;
+- (void)openPreviouslyOpenDocuments;
+- (id)makeUntitledDocumentOfType:(id)arg1 error:(id *)arg2;
+- (void)importMicaLayerTreeAsDocument:(id)arg1;
+- (void)importAsDocument:(id)arg1;
+- (long long)runModalOpenPanel:(id)arg1 forTypes:(id)arg2;
 - (void)newDocument:(id)arg1;
 - (void)newDocumentFromProjectBrowser:(id)arg1;
-- (void)documentControllerHandlingNewDocumentFromProjectBrowser:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(CDStruct_178f0333 *)arg3;
-- (void)documentControllerHandlingNewDocument:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(CDStruct_178f0333 *)arg3;
-- (long long)runModalOpenPanel:(id)arg1 forTypes:(id)arg2;
-- (void)openDocument:(id)arg1;
-- (void)documentControllerHandlingOpenDocument:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(void *)arg3;
-- (void)importAsDocument:(id)arg1;
-- (void)documentControllerHandlingImportAsDocument:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(CDStruct_178f0333 *)arg3;
-- (id)makeUntitledDocumentOfType:(id)arg1 error:(id *)arg2;
-- (void)openPreviouslyOpenDocuments;
-- (void)savePathsOfOpenDocuments;
-- (void)closeUntouchedDocuments;
-- (void)releaseResourcesOfDocuments;
-- (void)restoreDocumentFromAutosave:(id)arg1 setDocFileURL:(id)arg2 setDocType:(int)arg3;
-- (id)openDocumentWithContentsOfURL:(id)arg1 display:(BOOL)arg2 error:(id *)arg3;
-- (id)openUntitledDocumentAndDisplay:(BOOL)arg1 error:(id *)arg2;
-- (void)updateAutosaveVault;
-- (void)generateTemplatePreviewsInDirectory:(id)arg1 withSaveOptions:(int)arg2;
-- (BOOL)validateMenuItem:(id)arg1;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-@property NSDictionary *dictionaryForPendingDocument; // @synthesize dictionaryForPendingDocument=_docToCreateDict;
+- (void)documentController:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(void *)arg3;
+- (void)closeAllDocuments:(id)arg1;
+- (id)dictionaryForDefaultDocument;
 
 @end
 

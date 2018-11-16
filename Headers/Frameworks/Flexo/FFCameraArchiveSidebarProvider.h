@@ -6,34 +6,39 @@
 
 #import <Flexo/FFBaseSidebarProvider.h>
 
-@class FFCameraArchiveController, FFStorageManager, MIORADManager, NSArray;
+#import "FFOrganizerMasterItemDropTarget.h"
+
+@class FFCameraArchiveController, FFStorageManager, MIORADManager, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface FFCameraArchiveSidebarProvider : FFBaseSidebarProvider
+@interface FFCameraArchiveSidebarProvider : FFBaseSidebarProvider <FFOrganizerMasterItemDropTarget>
 {
     FFCameraArchiveController *_cameraArchiveController;
     MIORADManager *_radManager;
     FFStorageManager *_storageManager;
-    NSArray *_archiveSortDescriptors;
     BOOL _observingArchives;
+    NSMutableArray *_hiddenVolumeProviders;
 }
 
++ (id)readableTypesForPasteboard:(id)arg1;
 + (double)itemRowExtraHeight;
-- (id)init;
-- (void)dealloc;
-- (id)itemDisplayName;
-- (id)itemIcon;
-- (id)itemPersistentIdentifier;
-- (double)itemRowHeight;
-- (void)addArchives:(id)arg1;
-- (void)removeArchives:(id)arg1;
-- (void)replaceOldArchives:(id)arg1 withNewArchiveVolumes:(id)arg2;
-- (BOOL)updateWithRADVolume:(id)arg1 isRemoving:(BOOL)arg2;
-- (void)refreshStorageLocations;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(retain) FFStorageManager *storageManager; // @synthesize storageManager=_storageManager;
 @property(retain) MIORADManager *radManager; // @synthesize radManager=_radManager;
 @property(retain) FFCameraArchiveController *cameraArchiveController; // @synthesize cameraArchiveController=_cameraArchiveController;
+- (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
+- (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)refreshStorageLocations;
+- (BOOL)updateWithRADVolume:(id)arg1 isRemoving:(BOOL)arg2;
+- (void)replaceOldArchives:(id)arg1 withNewArchiveVolumes:(id)arg2;
+- (void)removeArchives:(id)arg1;
+- (void)addArchives:(id)arg1;
+- (double)itemRowHeight;
+- (id)itemPersistentIdentifier;
+- (id)itemIcon;
+- (id)itemDisplayName;
+- (void)dealloc;
+- (id)init;
 
 @end
 

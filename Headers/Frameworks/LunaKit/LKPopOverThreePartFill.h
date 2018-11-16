@@ -24,20 +24,20 @@
     NSObject<NSProThemeGradientDrawing> *bottom;
 }
 
-- (void)dealloc;
-@property float cornerRadius; // @synthesize cornerRadius;
-@property float arrowHeight; // @synthesize arrowHeight;
-- (id)init;
 @property float innerArrowWidth; // @synthesize innerArrowWidth;
 @property float arrowWidth; // @synthesize arrowWidth;
 @property float innerArrowHeight; // @synthesize innerArrowHeight;
+@property(nonatomic) float arrowHeight; // @synthesize arrowHeight;
 @property float innerCornerRadius; // @synthesize innerCornerRadius;
+@property(nonatomic) float cornerRadius; // @synthesize cornerRadius;
 @property(retain) NSObject<NSProThemeGradientDrawing> *bottom; // @synthesize bottom;
 @property(retain) NSObject<NSProThemeGradientDrawing> *fill; // @synthesize fill;
 @property(retain) NSObject<NSProThemeGradientDrawing> *top; // @synthesize top;
 @property float bottomHeight; // @synthesize bottomHeight;
 @property float topHeight; // @synthesize topHeight;
 @property float thickness; // @synthesize thickness;
+- (id)init;
+- (void)dealloc;
 
 @end
 

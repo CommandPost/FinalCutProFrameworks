@@ -14,12 +14,12 @@
     NSMapTable *_itemEdgesTOC;
 }
 
-- (id)init;
-- (void)dealloc;
-- (id)description;
-- (void)addItemEdgeInfoForItem:(id)arg1 layoutFrame:(struct CGRect)arg2 isAnchored:(BOOL)arg3;
-- (void)removeItemEdgeInfoForItem:(id)arg1;
 @property(copy, nonatomic) NSArray *itemEdges; // @synthesize itemEdges=_itemEdges;
+- (void)removeItemEdgeInfoForItem:(id)arg1;
+- (void)addItemEdgeInfoForItem:(id)arg1 layoutFrame:(struct CGRect)arg2 isAnchored:(BOOL)arg3;
+- (id)description;
+- (void)dealloc;
+- (id)init;
 
 @end
 

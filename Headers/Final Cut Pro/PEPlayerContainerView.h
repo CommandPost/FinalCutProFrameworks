@@ -15,12 +15,14 @@
     BOOL _hasEffect;
 }
 
-- (void)awakeFromNib;
-- (void)dealloc;
-- (BOOL)_pasteboardHasEffect:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)drawDividerInRect:(struct CGRect)arg1;
+- (void)viewDidMoveToWindow;
+- (void)viewWillMoveToWindow:(id)arg1;
 - (double)dividerThickness;
+- (void)drawDividerInRect:(struct CGRect)arg1;
+- (void)mouseDown:(id)arg1;
+- (BOOL)_pasteboardHasEffect:(id)arg1;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

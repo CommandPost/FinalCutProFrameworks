@@ -15,17 +15,17 @@
     PCVector2_7e488b7d _prev;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (void)buildExposeList:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
-- (void)draw;
-- (void)calculateDepth;
-- (void)enable:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
-- (void)setOpenGLProjection;
-- (int)hitCheck:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
 - (id).cxx_construct;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (int)hitCheck:(id)arg1;
+- (void)setOpenGLProjection;
+- (void)enable:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
+- (void)calculateDepth;
+- (void)draw;
+- (void)buildExposeList:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

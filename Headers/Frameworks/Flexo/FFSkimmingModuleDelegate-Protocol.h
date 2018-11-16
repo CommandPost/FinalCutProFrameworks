@@ -6,24 +6,26 @@
 
 #import "NSObject.h"
 
+@class CALayer, FFContext, FFSkimmingModule;
+
 @protocol FFSkimmingModuleDelegate <NSObject>
-- (struct NSObject *)skimmingModule:(id)arg1 skimmableObjectAtPoint:(struct CGPoint)arg2;
-- (id)skimmingModule:(id)arg1 skimmingLayerForSkimmable:(struct NSObject *)arg2;
-- (double)skimmingModule:(id)arg1 timePerHorizontalPixelForSkimmingLayer:(id)arg2;
-- (CDStruct_1b6d18a9)skimmingModule:(id)arg1 startTimeForSkimmingLayer:(id)arg2;
-- (BOOL)skimmingModuleCanStartSkimming:(id)arg1;
+- (BOOL)skimmingModuleCanStartSkimming:(FFSkimmingModule *)arg1;
+- (CDStruct_1b6d18a9)skimmingModule:(FFSkimmingModule *)arg1 startTimeForSkimmingLayer:(CALayer *)arg2;
+- (double)skimmingModule:(FFSkimmingModule *)arg1 timePerHorizontalPixelForSkimmingLayer:(CALayer *)arg2;
+- (CALayer *)skimmingModule:(FFSkimmingModule *)arg1 skimmingLayerForSkimmable:(struct NSObject *)arg2;
+- (struct NSObject *)skimmingModule:(FFSkimmingModule *)arg1 skimmableObjectAtPoint:(struct CGPoint)arg2;
 
 @optional
-- (CDStruct_1b6d18a9)skimmingModule:(id)arg1 skimmingTimeForPoint:(struct CGPoint)arg2;
-- (struct CGRect)skimmingModule:(id)arg1 skimmingRectForTime:(CDStruct_1b6d18a9)arg2;
-- (BOOL)skimmingModuleShowVideoThumbnail:(id)arg1;
-- (struct CGRect)skimmingModule:(id)arg1 videoThumbnailFrameForLayer:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (id)skimmingModule:(id)arg1 videoThumbnailLayerForSkimmingLayer:(id)arg2;
-- (BOOL)skimmingModule:(id)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4;
-- (void)skimmingModuleStopSkimmingInViewer:(id)arg1;
-- (BOOL)skimmingModule:(id)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
-- (id)skimmingModule:(id)arg1 skimmingLensLayerForSkimmingLayer:(id)arg2;
-- (long long)skimmingModule:(id)arg1 effectCountForSkimmable:(struct NSObject *)arg2;
-- (id)skimmingModule:(id)arg1 newContextForSkimmable:(struct NSObject *)arg2;
+- (FFContext *)skimmingModule:(FFSkimmingModule *)arg1 newContextForSkimmable:(struct NSObject *)arg2;
+- (long long)skimmingModule:(FFSkimmingModule *)arg1 effectCountForSkimmable:(struct NSObject *)arg2;
+- (CALayer *)skimmingModule:(FFSkimmingModule *)arg1 skimmingLensLayerForSkimmingLayer:(CALayer *)arg2;
+- (BOOL)skimmingModule:(FFSkimmingModule *)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
+- (void)skimmingModuleStopSkimmingInViewer:(FFSkimmingModule *)arg1;
+- (BOOL)skimmingModule:(FFSkimmingModule *)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(FFContext *)arg3 effectCount:(long long)arg4;
+- (CALayer *)skimmingModule:(FFSkimmingModule *)arg1 videoThumbnailLayerForSkimmingLayer:(CALayer *)arg2;
+- (struct CGRect)skimmingModule:(FFSkimmingModule *)arg1 videoThumbnailFrameForLayer:(CALayer *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (BOOL)skimmingModuleShowVideoThumbnail:(FFSkimmingModule *)arg1;
+- (struct CGRect)skimmingModule:(FFSkimmingModule *)arg1 skimmingRectForTime:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_1b6d18a9)skimmingModule:(FFSkimmingModule *)arg1 skimmingTimeForPoint:(struct CGPoint)arg2;
 @end
 

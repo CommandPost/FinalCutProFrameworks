@@ -13,10 +13,10 @@
     NSView *_tlkCornerView;
 }
 
-- (void)_commonSetup;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)awakeAfterUsingCoder:(id)arg1;
 - (void)tile;
+- (id)awakeAfterUsingCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)_commonSetup;
 
 @end
 

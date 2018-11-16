@@ -16,26 +16,28 @@
     BOOL _showBothFields;
 }
 
-- (id)init;
-- (void)dealloc;
-- (id)destVideo;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)willStopPlayingWithPlayer:(id)arg1;
-- (void)didStartPlayingWithPlayer:(id)arg1;
-- (void)setSkimmable:(id)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)moduleDidHide;
-- (void)moduleDidUnhide;
-@property(nonatomic) BOOL showBothFields;
-- (BOOL)shouldDrawVideoDest:(id)arg1;
-- (void)setDrawingEnabled:(BOOL)arg1;
-- (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
-- (struct CGRect)bounds;
-- (void)setViewProperties:(id)arg1;
-- (id)viewProperties;
 - (void)updatePlayerAndDest:(id)arg1;
+- (id)viewProperties;
+- (void)setViewProperties:(id)arg1;
+- (struct CGRect)bounds;
+- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
+- (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)setDrawingEnabled:(BOOL)arg1;
+- (BOOL)shouldDrawVideoDest:(id)arg1;
+@property(nonatomic) BOOL showBothFields;
+- (void)moduleDidUnhide;
+- (void)moduleDidHide;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
+- (void)didStartPlayingWithPlayer:(id)arg1;
+- (void)willStopPlayingWithPlayer:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (struct CGSize)viewMaxSize;
+- (struct CGSize)viewMinSize;
+- (id)destVideo;
+- (void)dealloc;
+- (id)init;
 
 @end
 

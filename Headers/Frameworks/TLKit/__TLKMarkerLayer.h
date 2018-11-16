@@ -11,8 +11,8 @@
     CDStruct_1b6d18a9 _markerTime;
 }
 
-- (id)init;
 @property CDStruct_1b6d18a9 markerTime; // @synthesize markerTime=_markerTime;
+- (id)init;
 
 @end
 

@@ -39,27 +39,6 @@
     PEOverloadLayer *_overload_RS;
 }
 
-- (id)init;
-- (void)layoutSublayers;
-- (void)layoutDB;
-- (void)layoutDBlines;
-- (void)layoutBackground;
-- (void)layoutChannels;
-- (void)layoutIndicators;
-- (void)layoutMeters;
-- (void)playbackChanged:(BOOL)arg1;
-- (void)updateMeterValue:(double)arg1 forChannel:(double)arg2;
-- (void)setupLayers;
-- (void)resetOverload;
-- (int)fontSizeToUse;
-- (double)leftMarginWidth;
-- (double)rightMarginWidth;
-- (double)widthOfMeterArea;
-- (double)widthOfEachMeter;
-- (double)widthOfLFEDivider;
-- (double)meterStart;
-- (float)positionFromDBValue:(float)arg1;
-- (float)calculateUntaperPosition:(float)arg1;
 @property(retain, nonatomic) PEMeterBackgroundLayer *background; // @synthesize background=_background;
 @property(retain, nonatomic) PEOverloadLayer *overloadMaster; // @synthesize overloadMaster=_overload_master;
 @property(retain, nonatomic) PEOverloadLayer *overloadLFE; // @synthesize overloadLFE=_overload_LFE;
@@ -80,6 +59,27 @@
 @property(retain, nonatomic) PEMeterLayer *meterC; // @synthesize meterC=_meter_C;
 @property(retain, nonatomic) PEMeterLayer *meterR; // @synthesize meterR=_meter_R;
 @property(retain, nonatomic) PEMeterLayer *meterL; // @synthesize meterL=_meter_L;
+- (float)calculateUntaperPosition:(float)arg1;
+- (float)positionFromDBValue:(float)arg1;
+- (double)meterStart;
+- (double)widthOfLFEDivider;
+- (double)widthOfEachMeter;
+- (double)widthOfMeterArea;
+- (double)rightMarginWidth;
+- (double)leftMarginWidth;
+- (int)fontSizeToUse;
+- (void)resetOverload;
+- (void)setupLayers;
+- (void)updateMeterValue:(double)arg1 forChannel:(double)arg2;
+- (void)playbackChanged:(BOOL)arg1;
+- (void)layoutMeters;
+- (void)layoutIndicators;
+- (void)layoutChannels;
+- (void)layoutBackground;
+- (void)layoutDBlines;
+- (void)layoutDB;
+- (void)layoutSublayers;
+- (id)init;
 
 @end
 

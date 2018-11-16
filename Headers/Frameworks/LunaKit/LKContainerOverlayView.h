@@ -10,11 +10,11 @@
 {
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (BOOL)isOpaque;
-- (BOOL)isFlipped;
-- (id)hitTest:(struct CGPoint)arg1;
 - (void)drawRect:(struct CGRect)arg1;
+- (id)hitTest:(struct CGPoint)arg1;
+- (BOOL)isFlipped;
+- (BOOL)isOpaque;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

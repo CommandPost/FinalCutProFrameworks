@@ -33,30 +33,30 @@ __attribute__((visibility("hidden")))
     FFEventsSuperModule *_organizerDelegate;
 }
 
-- (void)awakeFromNib;
-- (void)viewWillBeRemoved;
-- (void)dealloc;
-- (void)matchAnyAllPopUpAction:(id)arg1;
-- (void)stacksOnlyCheckBoxAction:(id)arg1;
-- (void)addFilterPullDownAction:(id)arg1;
-- (id)_nibNameForFilterType:(id)arg1;
-- (id)_keywordsForTile:(id)arg1;
-- (id)_roleSetsForTile:(id)arg1;
-- (void)_addTileWithNibName:(id)arg1 filterDict:(id)arg2;
-- (void)newSmartCollectionButtonAction:(id)arg1;
-- (void)setHUDTitle:(id)arg1;
-- (void)setNewSmartCollecitonButtonHidden:(BOOL)arg1;
-- (id)filtersDict;
-- (void)setFiltersDict:(id)arg1;
-- (void)focusFirstTextTileField;
-- (void)updateKeywordsForTile:(id)arg1;
-- (void)updateRolesForTile:(id)arg1;
-- (void)_invalidateFilters;
-- (void)removeTile:(id)arg1;
-- (void)tileUpdated:(id)arg1;
 @property(retain, nonatomic) NSDictionary *initialFiltersDictionary; // @synthesize initialFiltersDictionary=_initialFiltersDictionary;
 @property(retain, nonatomic) FFEventsSuperModule *organizerDelegate; // @synthesize organizerDelegate=_organizerDelegate;
 @property(retain, nonatomic) NSObject<FFOrganizerFilterHUDDelegate> *HUDDelegate; // @synthesize HUDDelegate=_HUDDelegate;
+- (void)tileUpdated:(id)arg1;
+- (void)removeTile:(id)arg1;
+- (void)_invalidateFilters;
+- (void)updateRolesForTile:(id)arg1;
+- (void)updateKeywordsForTile:(id)arg1;
+- (void)focusFirstTextTileField;
+- (void)setFiltersDict:(id)arg1;
+- (id)filtersDict;
+- (void)setNewSmartCollecitonButtonHidden:(BOOL)arg1;
+- (void)setHUDTitle:(id)arg1;
+- (void)newSmartCollectionButtonAction:(id)arg1;
+- (void)_addTileWithNibName:(id)arg1 filterDict:(id)arg2;
+- (id)_roleSetsForTile:(id)arg1;
+- (id)_keywordsForTile:(id)arg1;
+- (id)_nibNameForFilterType:(id)arg1;
+- (void)addFilterPullDownAction:(id)arg1;
+- (void)stacksOnlyCheckBoxAction:(id)arg1;
+- (void)matchAnyAllPopUpAction:(id)arg1;
+- (void)dealloc;
+- (void)viewWillBeRemoved;
+- (void)awakeFromNib;
 
 @end
 

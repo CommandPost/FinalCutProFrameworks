@@ -16,16 +16,16 @@
     BOOL _areAllChansEqual;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 indent:(BOOL)arg3;
-- (void)setGlyphs;
-- (struct OZChannelEnum *)horizontalAlignmentChannel;
-- (void)setHorizontalAlignmentValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)clearHorizontalAlignmentSelection;
-- (void)clearJustificationSelection;
-- (void)setHorizontalAlignment:(id)arg1;
-- (BOOL)areAllChannelsEqual;
 - (void)update;
+- (BOOL)areAllChannelsEqual;
+- (void)setHorizontalAlignment:(id)arg1;
+- (void)clearJustificationSelection;
+- (void)clearHorizontalAlignmentSelection;
+- (void)setHorizontalAlignmentValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_198678f7)arg3;
+- (struct OZChannelEnum *)horizontalAlignmentChannel;
+- (void)setGlyphs;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 indent:(BOOL)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

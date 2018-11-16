@@ -7,7 +7,7 @@
 #import "CHChannelFolder.h"
 
 @interface CHChannelFolder (FFCHChannelFolderAdditions)
-- (id)descendantsChannelState:(BOOL)arg1;
 - (void)setDescendantsChannelState:(id)arg1;
+- (id)descendantsChannelState:(BOOL)arg1;
 @end
 

@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     void *_backingObject;
 }
 
-- (id)init:(void *)arg1;
 - (void)dealloc;
+- (id)init:(void *)arg1;
 
 @end
 

@@ -15,15 +15,17 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_renderInfos;
 }
 
-+ (id)sharedInstance;
 + (void)teardown;
-- (id)init;
-- (void)drainQueue;
-- (void)dealloc;
-- (struct HGRenderQueue *)queue;
-- (struct _CGLContextObject *)getContextObjForLocation:(int)arg1;
-- (void)ensureRendererForLocation:(int)arg1;
++ (id)sharedInstance;
+- (void)setMinExecutionPriority:(int)arg1;
 - (id)description;
+- (void)ensureRendererForLocation:(int)arg1;
+- (struct _CGLContextObject *)getContextObjForLocation:(int)arg1;
+- (struct HGRenderQueue *)queue;
+- (void)dealloc;
+- (void)drainQueue;
+- (id)init;
+- (void)appWillTerminate:(id)arg1;
 
 @end
 

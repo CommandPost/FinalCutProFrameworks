@@ -11,28 +11,28 @@
 @interface OZSliderTextFieldCell : LKSliderCell
 {
     LKTextFieldCell *_textField;
-    BOOL _isVertical;
-    BOOL _isVerticallyAligned;
+    long long _isVertical;
+    long long _isVerticallyAligned;
 }
 
-- (id)initTextCell:(id)arg1;
-- (void)setFormat:(id)arg1;
-- (BOOL)isVertical;
-- (void)setIsVertical:(BOOL)arg1;
-- (BOOL)isVerticallyAligned;
-- (void)setIsVerticallyAligned:(BOOL)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (void)setObjectValue:(id)arg1;
-- (id)objectValue;
-- (struct CGRect)sliderCellRect:(struct CGRect)arg1;
-- (struct CGRect)textFieldCellRect:(struct CGRect)arg1;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
-- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
-- (void)endEditing:(id)arg1;
-- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
 - (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
+- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
+- (void)endEditing:(id)arg1;
+- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
+- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (struct CGRect)textFieldCellRect:(struct CGRect)arg1;
+- (struct CGRect)sliderCellRect:(struct CGRect)arg1;
+- (id)objectValue;
+- (void)setObjectValue:(id)arg1;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setIsVerticallyAligned:(long long)arg1;
+- (long long)isVerticallyAligned;
+- (void)setIsVertical:(long long)arg1;
+- (long long)isVertical;
+- (void)setFormat:(id)arg1;
+- (id)initTextCell:(id)arg1;
 
 @end
 

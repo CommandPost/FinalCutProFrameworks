@@ -13,7 +13,7 @@
 }
 
 + (id)instance;
-- (BOOL)panel:(id)arg1 shouldShowFilename:(id)arg2;
+- (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
 
 @end
 

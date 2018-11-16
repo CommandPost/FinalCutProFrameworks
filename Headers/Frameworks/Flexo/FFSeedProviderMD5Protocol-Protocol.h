@@ -4,8 +4,10 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSString;
+
 @protocol FFSeedProviderMD5Protocol
-- (void)setMD5Seed:(id)arg1;
-- (id)MD5Seed;
+- (NSString *)MD5Seed;
+- (void)setMD5Seed:(NSString *)arg1;
 @end
 

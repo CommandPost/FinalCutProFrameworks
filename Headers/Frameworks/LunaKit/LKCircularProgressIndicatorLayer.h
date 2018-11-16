@@ -20,17 +20,17 @@
     CATextLayer *_percentSignLayer;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)layoutSublayers;
-@property(nonatomic) double value; // @synthesize value=_value;
-@property(nonatomic) double dialGapAngle; // @synthesize dialGapAngle=_dialGapAngle;
 @property(nonatomic) double dialLineWidth; // @synthesize dialLineWidth=_dialLineWidth;
-@property void *font;
-@property double fontSize;
-- (void)_configureDialLayers;
-- (void)_updateDial:(double)arg1;
+@property(nonatomic) double dialGapAngle; // @synthesize dialGapAngle=_dialGapAngle;
+@property(nonatomic) double value; // @synthesize value=_value;
 - (void)_updateValueText:(double)arg1;
+- (void)_updateDial:(double)arg1;
+- (void)_configureDialLayers;
+@property double fontSize;
+@property void *font;
+- (void)layoutSublayers;
+- (void)dealloc;
+- (id)init;
 
 @end
 

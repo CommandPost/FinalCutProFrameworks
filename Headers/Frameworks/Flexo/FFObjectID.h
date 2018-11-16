@@ -12,15 +12,15 @@
 {
 }
 
-+ (id)identifierForObject:(id)arg1;
-+ (id)resolveObjectIdentifier:(id)arg1 error:(id *)arg2;
-+ (id)URLFromID:(id)arg1;
-+ (id)IDFromURL:(id)arg1;
-+ (id)copyFromURL:(id)arg1;
-+ (id)fromObject:(id)arg1;
-+ (id)copyFromObject:(id)arg1;
-+ (id)uuid:(id)arg1;
 + (id)resolveObject:(id)arg1 error:(id *)arg2;
++ (id)uuid:(id)arg1;
++ (id)copyFromObject:(id)arg1;
++ (id)fromObject:(id)arg1;
++ (id)copyFromURL:(id)arg1;
++ (id)IDFromURL:(id)arg1;
++ (id)URLFromID:(id)arg1;
++ (id)resolveObjectIdentifier:(id)arg1 error:(id *)arg2;
++ (id)identifierForObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

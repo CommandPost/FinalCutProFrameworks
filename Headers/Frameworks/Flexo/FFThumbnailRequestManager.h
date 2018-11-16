@@ -6,14 +6,18 @@
 
 #import "NSObject.h"
 
-@class FFBackgroundTask, FFStreamVideoCache, NSConditionLock, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>;
+#import "FFBackgroundTaskTarget.h"
+
+@class FFBackgroundTask, FFStreamVideoCache, NSConditionLock, NSLock, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface FFThumbnailRequestManager : NSObject
+@interface FFThumbnailRequestManager : NSObject <FFBackgroundTaskTarget>
 {
-    struct FFLocklessQueue<FFThumbnailRequest*> *_requests;
-    struct FFLocklessQueue<FFThumbnailRequest*> *_highPriorityRequests;
-    NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *_lastImageMedia;
+    NSMutableArray *_requests;
+    NSLock *_requestsLock;
+    NSMutableArray *_highPriorityRequests;
+    NSLock *_highPriorityRequestsLock;
+    struct NSObject *_lastImageMedia;
     CDStruct_1b6d18a9 _lastTimeInLastImageMedia;
     FFStreamVideoCache *_streamVideoCache;
     FFBackgroundTask *_bTask;
@@ -25,34 +29,37 @@ __attribute__((visibility("hidden")))
     BOOL _isAudio;
 }
 
-+ (struct CGImage *)_copyThemeCGImage:(long long)arg1;
-+ (id)sharedInstanceAudio;
-+ (void)releaseSharedInstanceAudio;
-+ (id)sharedInstanceVideo;
-+ (void)releaseSharedInstanceVideo;
-+ (CDStruct_60067b7e)cachedMD5ForRequest:(id)arg1;
-+ (struct CGImage *)copyOldCachedImageForRequest:(id)arg1;
-+ (void)FFRangeInvalidationNotification:(id)arg1;
 + (void)initialize;
-- (void)_waveformPreferenceChanged:(id)arg1;
-- (id)initForAudio:(BOOL)arg1;
-- (void)dealloc;
-- (id)streamVideoCache;
-- (struct CGImage *)_copyCachedCGImageForKey:(CDStruct_60067b7e)arg1;
-- (void)_cacheImage:(struct CGImage *)arg1 request:(id)arg2 cost:(double)arg3;
-- (struct CGImage *)_copySegmentStoreCGImageForMD5:(id)arg1 offset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4;
-- (struct CGImage *)_actuallyCreateAudioWaveformImageFromImageRequest:(id)arg1 andPeaks:(id)arg2;
-- (BOOL)_newAudioImage:(struct CGImage **)arg1 request:(id)arg2 synchronously:(BOOL)arg3;
-- (void)uiPlaybackStateChange:(id)arg1;
-- (void)canceledTask:(id)arg1;
-- (void)flushCompressorsWithOldStream:(id)arg1 segStore:(id)arg2 lastMD5:(CDStruct_60067b7e)arg3;
-- (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
-- (void)_startBackgroundTask;
-- (void)_cancelBGTask;
-- (void)_waitForBGTaskToFinish;
-- (void)addAsyncImageRequest:(id)arg1;
-- (BOOL)newImage:(struct CGImage **)arg1 forRequest:(id)arg2;
++ (void)FFRangeInvalidationNotification:(id)arg1;
++ (struct CGImage *)copyOldCachedImageForRequest:(id)arg1;
++ (CDStruct_bdcb2b0d)cachedMD5ForRequest:(id)arg1;
++ (void)releaseSharedInstanceVideo;
++ (id)sharedInstanceVideo;
++ (void)releaseSharedInstanceAudio;
++ (id)sharedInstanceAudio;
++ (struct CGImage *)_copyThemeCGImage:(long long)arg1;
+- (id).cxx_construct;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
 - (void)appWillTerminate:(id)arg1;
+- (BOOL)newImage:(struct CGImage **)arg1 forRequest:(id)arg2;
+- (void)addAsyncImageRequest:(id)arg1;
+- (void)_waitForBGTaskToFinish;
+- (void)_cancelBGTask;
+- (void)_startBackgroundTask;
+- (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
+- (void)flushCompressorsWithOldStream:(id)arg1 segStore:(id)arg2 lastMD5:(CDStruct_bdcb2b0d)arg3;
+- (void)canceledTask:(id)arg1;
+- (void)uiPlaybackStateChange:(id)arg1;
+- (BOOL)_newAudioImage:(struct CGImage **)arg1 request:(id)arg2 synchronously:(BOOL)arg3;
+- (struct CGImage *)_newAudioWaveformImageFromImageRequest:(id)arg1 andPeaks:(id)arg2;
+- (struct CGImage *)_copySegmentStoreCGImageForMD5:(id)arg1 offset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4;
+- (void)_cacheImage:(struct CGImage *)arg1 request:(id)arg2 cost:(double)arg3;
+- (struct CGImage *)_copyCachedCGImageForKey:(CDStruct_bdcb2b0d)arg1;
+- (id)streamVideoCache;
+- (void)dealloc;
+- (id)initForAudio:(BOOL)arg1;
+- (void)_waveformPreferenceChanged:(id)arg1;
 
 @end
 

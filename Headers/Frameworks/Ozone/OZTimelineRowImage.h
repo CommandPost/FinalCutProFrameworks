@@ -10,9 +10,9 @@
 {
 }
 
-- (void)imageReady:(unsigned int)arg1;
-- (void)drawImage:(const struct OZChannelObjectRoot *)arg1 andName:(const id)arg2 color:(int)arg3 selected:(BOOL)arg4 clipRect:(struct CGRect)arg5 barRect:(struct CGRect)arg6 secondsPerPixel:(CDStruct_1b6d18a9)arg7 isGroup:(BOOL)arg8;
 - (void)drawMidground:(const struct OZTimelineBar *)arg1 clipRect:(struct CGRect)arg2 barRect:(struct CGRect)arg3 pixelsPerSecond:(double)arg4 secondsPerPixel:(CDStruct_1b6d18a9)arg5;
+- (void)drawImage:(const struct OZChannelObjectRoot *)arg1 andName:(id)arg2 color:(int)arg3 selected:(BOOL)arg4 clipRect:(struct CGRect)arg5 barRect:(struct CGRect)arg6 secondsPerPixel:(CDStruct_1b6d18a9)arg7 isGroup:(BOOL)arg8;
+- (void)imageReady:(unsigned int)arg1;
 
 @end
 

@@ -4,23 +4,25 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFAnchoredObject, FFCBController, NSArray, NSDictionary;
+
 @protocol CBControllerDataSource
 
 @optional
-- (void)controller:(id)arg1 switchToDataForAnchoredObject:(id)arg2;
-- (void)controller:(id)arg1 switchToDataForDefaultCorrectionForAnchoredObject:(id)arg2;
-- (void)controller:(id)arg1 switchToDataForCorrection:(id)arg2;
-- (id)currentAnchoredObjectForController:(id)arg1;
-- (id)arrayOfCorrectionIDs;
-- (id)arrayOfCorrectionNames;
-- (long long)currentCorrectionID;
-- (unsigned long long)correctionCount;
-- (void)setCurrentCorrectionID:(long long)arg1;
-- (BOOL)isCurrentCorrectionInner;
-- (void)setCurrentCorrectionInner:(BOOL)arg1;
-- (BOOL)isEnabledForCorrectionID:(long long)arg1;
-- (BOOL)isColorCorrectionsEnabled;
-- (void)setColorCorrectionsEnabled:(BOOL)arg1;
 - (BOOL)isMaskedForCorrectionID:(long long)arg1;
+- (void)setColorCorrectionsEnabled:(BOOL)arg1;
+- (BOOL)isColorCorrectionsEnabled;
+- (BOOL)isEnabledForCorrectionID:(long long)arg1;
+- (void)setCurrentCorrectionInner:(BOOL)arg1;
+- (BOOL)isCurrentCorrectionInner;
+- (void)setCurrentCorrectionID:(long long)arg1;
+- (unsigned long long)correctionCount;
+- (long long)currentCorrectionID;
+- (NSArray *)arrayOfCorrectionNames;
+- (NSArray *)arrayOfCorrectionIDs;
+- (FFAnchoredObject *)currentAnchoredObjectForController:(FFCBController *)arg1;
+- (void)controller:(FFCBController *)arg1 switchToDataForCorrection:(NSDictionary *)arg2;
+- (void)controller:(FFCBController *)arg1 switchToDataForDefaultCorrectionForAnchoredObject:(FFAnchoredObject *)arg2;
+- (void)controller:(FFCBController *)arg1 switchToDataForAnchoredObject:(FFAnchoredObject *)arg2;
 @end
 

@@ -18,9 +18,10 @@ __attribute__((visibility("hidden")))
     char *mBuffer;
 }
 
-- (id)initWithByteStream:(struct OpaqueCMByteStream *)arg1 chunkSize:(unsigned long long)arg2;
+- (struct OpaqueCMByteStream *)byteStream;
+- (unsigned long long)read:(unsigned long long)arg1 offset:(long long)arg2 dest:(void *)arg3;
 - (void)dealloc;
-- (void)read:(unsigned long long)arg1 offset:(long long)arg2 dest:(void *)arg3;
+- (id)initWithByteStream:(struct OpaqueCMByteStream *)arg1 chunkSize:(unsigned long long)arg2;
 
 @end
 

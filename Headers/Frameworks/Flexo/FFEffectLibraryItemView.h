@@ -21,25 +21,27 @@ __attribute__((visibility("hidden")))
     BOOL _requestedIcon;
 }
 
-- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
-- (id)initWithEffect:(id)arg1;
-- (void)dealloc;
-- (void)viewWillDraw;
-- (void)loadIcon;
-@property(nonatomic) BOOL selected; // @synthesize selected=_selected;
-- (BOOL)isFlipped;
-- (void)setEmphasized:(BOOL)arg1;
-- (BOOL)acceptsFirstResponder;
-- (id)effectItem;
-- (void)effectIconReady:(id)arg1;
-- (void)beginDraggingEffectIcon:(id)arg1;
-- (id)menu;
-- (void)openEffectInEditor:(id)arg1;
-- (BOOL)accessibilityIsIgnored;
-- (id)accessibilityAttributeNames;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 @property(readonly) CALayer *skimmingLayer; // @synthesize skimmingLayer=_iconLayer;
+@property(nonatomic) BOOL selected; // @synthesize selected=_selected;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (BOOL)accessibilityIsIgnored;
+- (void)makeDefaultVideoTransition:(id)arg1;
+- (void)openEffectInEditor:(id)arg1;
+- (id)menu;
+- (void)beginDraggingEffectIcon:(id)arg1;
+- (void)effectIconReady:(id)arg1;
+- (id)effectItem;
+- (BOOL)canBecomeKeyView;
+- (BOOL)acceptsFirstResponder;
+- (void)setEmphasized:(BOOL)arg1;
+- (BOOL)isFlipped;
+- (void)loadIcon;
+- (void)viewWillDraw;
+- (void)dealloc;
+- (id)initWithEffect:(id)arg1;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 
 @end
 

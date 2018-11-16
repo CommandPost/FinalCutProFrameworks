@@ -13,11 +13,11 @@
     struct CGPoint _totalDelta;
 }
 
-- (id)initWithDelta:(struct CGPoint)arg1;
-- (void)setCurrentProgress:(float)arg1;
 @property struct CGPoint totalDelta; // @synthesize totalDelta=_totalDelta;
 @property struct CGPoint endPoint; // @synthesize endPoint=_endPoint;
 @property struct CGPoint startPoint; // @synthesize startPoint=_startPoint;
+- (void)setCurrentProgress:(float)arg1;
+- (id)initWithDelta:(struct CGPoint)arg1;
 
 @end
 

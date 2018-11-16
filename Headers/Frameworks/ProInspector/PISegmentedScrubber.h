@@ -11,8 +11,8 @@
 }
 
 + (void)initialize;
-- (void)setIsAutokeyTintEnabled:(BOOL)arg1;
 - (BOOL)isAutokeyTintEnabled;
+- (void)setIsAutokeyTintEnabled:(BOOL)arg1;
 
 @end
 

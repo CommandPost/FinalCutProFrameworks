@@ -12,12 +12,12 @@
 }
 
 + (id)fxPlugGroupWithDescriptor:(id)arg1;
-- (id)initWithDescriptor:(id)arg1;
-- (void)dealloc;
-- (id)descriptor;
-- (void)addFxPlugDescriptor:(id)arg1;
-- (id)fxPlugDescriptorAtIndex:(int)arg1;
 - (unsigned int)count;
+- (id)fxPlugDescriptorAtIndex:(int)arg1;
+- (void)addFxPlugDescriptor:(id)arg1;
+- (id)descriptor;
+- (void)dealloc;
+- (id)initWithDescriptor:(id)arg1;
 
 @end
 

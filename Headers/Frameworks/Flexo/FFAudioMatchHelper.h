@@ -20,18 +20,19 @@ __attribute__((visibility("hidden")))
     BOOL _matchCompleted;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)cancelOnSelectionOnMatchTool:(id)arg1;
-- (void)completeOnSelectionOnMatchTool:(id)arg1;
-- (void)matchToolWasAssigned:(id)arg1;
-- (void)matchToolWasResigned:(id)arg1;
-- (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
-- (BOOL)allowsReferenceChangeFromOrganizerListView;
-- (id)footerText;
-- (id)accessoryTitle;
 @property BOOL matchCompleted; // @synthesize matchCompleted=_matchCompleted;
 @property(retain) FFEnhanceAudioManager *analysisManager; // @synthesize analysisManager=_analysisManager;
+- (id)accessoryTitle;
+- (id)footerText;
+- (BOOL)allowsReferenceChangeFromOrganizerListView;
+- (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
+- (void)matchToolWasResigned:(id)arg1;
+- (void)matchToolWasAssigned:(id)arg1;
+- (id)copyCompliantObjectsFromSelection:(id)arg1;
+- (void)completeOnSelectionOnMatchTool:(id)arg1;
+- (void)cancelOnSelectionOnMatchTool:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

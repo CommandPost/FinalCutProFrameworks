@@ -6,15 +6,16 @@
 
 #import <Flexo/FFProOSC.h>
 
-@class CHChannelDouble, CHChannelFolder, CHChannelPosition, FFColorSecondaryEffect, FFPixelBuffer, PCMatrix44Double;
+@class CHChannelDouble, CHChannelFolder, FFColorSecondaryEffect, FFPixelBuffer, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFColorIsolationOSC : FFProOSC
 {
     FFColorSecondaryEffect *_colorSecondaryEffect;
     CHChannelFolder *_parentChannel;
-    CHChannelPosition *_position;
-    CHChannelDouble *_radius;
+    float _positionX;
+    float _positionY;
+    float _radius;
     CHChannelDouble *_isolationMatrix00;
     CHChannelDouble *_isolationMatrix01;
     CHChannelDouble *_isolationMatrix02;
@@ -30,38 +31,35 @@ __attribute__((visibility("hidden")))
     CHChannelDouble *_sof;
     FFPixelBuffer *_buffer;
     PCMatrix44Double *_bufferPT;
-    int _manip;
     BOOL _active;
     BOOL _visible;
     int _actionMode;
     BOOL _mouseAction;
-    vector_9190dcc8 *_samples;
-    vector_9190dcc8 *_samplesCurrent;
+    vector_391ea44b *_samples;
+    vector_391ea44b *_samplesCurrent;
     CDStruct_1b6d18a9 _samplesFigTime;
     struct Mat4f *_mBwOriginalMatrix;
-    struct {
-        unsigned int isPendingTransaction:1;
-    } _state;
 }
 
 + (struct CGColorSpace *)processingColorSpace;
-- (id)initWithChannelFolder:(id)arg1 effectStack:(id)arg2 colorSecondaryEffect:(id)arg3;
-- (void)dealloc;
-- (id)parentChannel;
-- (CDStruct_1b6d18a9)getChannelTime;
-- (BOOL)mouseCreatesUndo;
-- (void)setCursor;
-- (void)flagsChanged:(id)arg1;
-- (void)proOSCMouseDownInitialize:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)readBuffer;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
-- (struct Vec3f)addSamples:(vector_9190dcc8 *)arg1;
-- (void)setMatrix;
-- (id)getCursor;
 @property(nonatomic) BOOL visible; // @synthesize visible=_visible;
 @property(nonatomic) BOOL active; // @synthesize active=_active;
+- (id).cxx_construct;
+- (id)getCursor;
+- (void)setMatrix;
+- (struct Vec3f)addSamples:(vector_391ea44b *)arg1;
+- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (void)readBuffer;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)proOSCMouseDownInitialize:(id)arg1;
+- (void)flagsChanged:(id)arg1;
+- (void)setCursor;
+- (BOOL)mouseCreatesUndo;
+- (CDStruct_1b6d18a9)getChannelTime;
+- (id)parentChannel;
+- (void)dealloc;
+- (id)initWithChannelFolder:(id)arg1 effectStack:(id)arg2 colorSecondaryEffect:(id)arg3;
 
 @end
 

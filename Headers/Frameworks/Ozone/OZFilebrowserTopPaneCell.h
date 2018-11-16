@@ -13,16 +13,16 @@
     NSImage *mImage;
 }
 
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)setImage:(id)arg1;
-- (id)image;
-- (struct CGRect)_imageRectForCellRect:(struct CGRect)arg1 inView:(id)arg2;
-- (struct CGRect)_textRectForCellRect:(struct CGRect)arg1 inView:(id)arg2;
-- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
-- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (struct CGSize)cellSize;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
+- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
+- (struct CGRect)_textRectForCellRect:(struct CGRect)arg1 inView:(id)arg2;
+- (struct CGRect)_imageRectForCellRect:(struct CGRect)arg1 inView:(id)arg2;
+- (id)image;
+- (void)setImage:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 
 @end
 

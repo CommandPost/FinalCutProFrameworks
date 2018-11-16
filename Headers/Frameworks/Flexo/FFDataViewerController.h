@@ -14,15 +14,15 @@
     LKOutlineView *_outlineView;
 }
 
-- (id)initWithObject:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)windowWillClose:(id)arg1;
-- (id)outlineView:(id)arg1 child:(int)arg2 ofItem:(id)arg3;
-- (BOOL)outlineView:(id)arg1 isItemExpandable:(id)arg2;
-- (long long)outlineView:(id)arg1 numberOfChildrenOfItem:(id)arg2;
-- (id)outlineView:(id)arg1 objectValueForTableColumn:(id)arg2 byItem:(id)arg3;
 @property(retain, nonatomic) FFDataViewerNode *rootNode; // @synthesize rootNode=_rootNode;
+- (id)outlineView:(id)arg1 objectValueForTableColumn:(id)arg2 byItem:(id)arg3;
+- (long long)outlineView:(id)arg1 numberOfChildrenOfItem:(id)arg2;
+- (BOOL)outlineView:(id)arg1 isItemExpandable:(id)arg2;
+- (id)outlineView:(id)arg1 child:(int)arg2 ofItem:(id)arg3;
+- (void)windowWillClose:(id)arg1;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithObject:(id)arg1;
 
 @end
 

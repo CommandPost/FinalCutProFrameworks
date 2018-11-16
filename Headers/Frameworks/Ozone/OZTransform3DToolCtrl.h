@@ -43,28 +43,28 @@
 }
 
 + (id)getDialog;
-- (id)init;
-- (void)dealloc;
-- (void)windowDidLoad;
-- (void)readSettings;
-- (void)readState;
-- (void)open:(id)arg1 toolState:(struct OZTransform3DToolState *)arg2;
-- (void)changeArrow:(id)arg1;
-- (void)borderChanged:(id)arg1;
-- (void)hideRings:(id)arg1;
-- (void)hideTools:(id)arg1;
-- (void)ringColoursToggled:(id)arg1;
-- (void)sensitivityChanged:(id)arg1;
-- (void)setAlpha:(id)arg1;
-- (void)setColor:(id)arg1;
-- (void)setLighting:(id)arg1;
-- (void)setRingBackStyle:(id)arg1;
-- (void)setRingWidth:(id)arg1;
-- (void)setRotationMode:(id)arg1;
-- (void)setScale:(id)arg1;
-- (void)setScaleBoxSize:(id)arg1;
-- (void)setScaleLocation:(id)arg1;
 - (void)dumpSettings:(id)arg1;
+- (void)setScaleLocation:(id)arg1;
+- (void)setScaleBoxSize:(id)arg1;
+- (void)setScale:(id)arg1;
+- (void)setRotationMode:(id)arg1;
+- (void)setRingWidth:(id)arg1;
+- (void)setRingBackStyle:(id)arg1;
+- (void)setLighting:(id)arg1;
+- (void)setColor:(id)arg1;
+- (void)setAlpha:(id)arg1;
+- (void)sensitivityChanged:(id)arg1;
+- (void)ringColoursToggled:(id)arg1;
+- (void)hideTools:(id)arg1;
+- (void)hideRings:(id)arg1;
+- (void)borderChanged:(id)arg1;
+- (void)changeArrow:(id)arg1;
+- (void)open:(id)arg1 toolState:(struct OZTransform3DToolState *)arg2;
+- (void)readState;
+- (void)readSettings;
+- (void)windowDidLoad;
+- (void)dealloc;
+- (id)init;
 
 @end
 

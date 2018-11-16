@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     FFStorageLocation *_location;
 }
 
-- (id)init;
 @property FFStorageLocation *location; // @synthesize location=_location;
+- (id)init;
 
 @end
 

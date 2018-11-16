@@ -18,34 +18,34 @@ __attribute__((visibility("hidden")))
     int _providerRetainCount;
 }
 
-+ (void)_sendAngleCountNotification:(id)arg1;
-+ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-+ (void)initialize;
 + (Class)streamClass;
-- (id)aosProvider;
-- (CDStruct_e83c9415)timeRange;
-- (CDStruct_1b6d18a9)magicFrameTime;
-- (id)nativeVideoProps;
-- (void)videoRangeInvalidated:(id)arg1;
-- (void)anglesVideoRangeInvalidated:(id)arg1;
-- (void)makeAnglesSource:(BOOL)arg1;
-- (id)initWithProvider:(id)arg1 chosenVideo:(id)arg2;
-- (void)dealloc;
-- (int)providerRetainCount;
-- (void)setAnglesCount:(long long)arg1 andOffset:(long long)arg2;
-- (long long)anglesCount;
-- (long long)anglesOffset;
-- (id)angles;
-- (id)newContextForAnglesSource:(id)arg1;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (long long)timecodeDisplayDropFrame;
-- (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (void)_writeLock;
-- (void)_writeUnlock;
-- (void)_readLock;
-- (void)_readUnlock;
-- (void)_multiAngleOffsetOrCountHasChangedSelectorOnMainThread:(id)arg1;
++ (void)initialize;
++ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
++ (void)_sendAngleCountNotification:(id)arg1;
 @property(readonly, nonatomic) FFSourceVideo *chosen; // @synthesize chosen=_chosen;
+- (void)_multiAngleOffsetOrCountHasChangedSelectorOnMainThread:(id)arg1;
+- (void)_readUnlock;
+- (void)_readLock;
+- (void)_writeUnlock;
+- (void)_writeLock;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
+- (long long)timecodeDisplayDropFrame;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)newContextForAnglesSource:(id)arg1;
+- (id)angles;
+- (long long)anglesOffset;
+- (long long)anglesCount;
+- (void)setAnglesCount:(long long)arg1 andOffset:(long long)arg2;
+- (int)providerRetainCount;
+- (void)dealloc;
+- (id)initWithProvider:(id)arg1 chosenVideo:(id)arg2;
+- (void)makeAnglesSource:(BOOL)arg1;
+- (void)anglesVideoRangeInvalidated:(id)arg1;
+- (void)videoRangeInvalidated:(id)arg1;
+- (id)nativeVideoProps;
+- (CDStruct_1b6d18a9)magicFrameTime;
+- (CDStruct_e83c9415)timeRange;
+- (id)aosProvider;
 
 @end
 

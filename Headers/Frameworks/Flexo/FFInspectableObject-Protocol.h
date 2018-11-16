@@ -4,12 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSString;
+
 @protocol FFInspectableObject
-- (id)inspectorClassName;
+- (NSString *)inspectorClassName;
 
 @optional
-- (id)inspectorIdentifier;
-- (id)audioInfoInspectorText;
-- (id)videoInfoInspectorText;
+- (BOOL)rebuildForOldTool:(Class)arg1 newTool:(Class)arg2;
+- (NSString *)videoInfoInspectorText;
+- (NSString *)audioInfoInspectorText;
+- (NSString *)inspectorIdentifier;
 @end
 

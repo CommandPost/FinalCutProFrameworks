@@ -16,14 +16,14 @@
     struct OZRigWidget *_pRigWidget;
 }
 
-- (id)initWithChan:(struct OZChannelEnumWithList *)arg1 context:(id)arg2;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (struct OZChannelEnumWithList *)enumChannel;
-- (void)addRemoveEntry:(id)arg1;
-- (void)setEntryName:(id)arg1;
 - (void)renameEntry:(id)arg1;
+- (void)setEntryName:(id)arg1;
+- (void)addRemoveEntry:(id)arg1;
+- (struct OZChannelEnumWithList *)enumChannel;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

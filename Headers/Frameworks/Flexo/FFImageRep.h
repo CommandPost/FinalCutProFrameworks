@@ -16,25 +16,25 @@
     unsigned long long _approximateMemoryUsage;
 }
 
-- (id)initWithColorSpace:(struct CGColorSpace *)arg1 pixelTransform:(id)arg2;
-- (id)initWithRepresentation:(id)arg1;
-- (void)dealloc;
-- (id)nativePixelFormat;
-- (id)type;
-- (struct CGRect)imageSpaceBounds;
-- (struct CGRect)pixelSpaceBounds;
-- (unsigned int)field;
-- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
-- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
-- (id)pixelTransform;
-- (void)setPixelTransform:(id)arg1;
-- (struct CGColorSpace *)colorSpace;
-- (void)setColorSpace:(struct CGColorSpace *)arg1;
-- (_Bool)nativelyPremulBlack;
-- (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
-- (BOOL)disable422InputFiltering;
-- (void)getSampleBuffer:(struct opaqueCMSampleBuffer **)arg1 alphaKnownToBeFullyOpaque:(char *)arg2;
 @property unsigned long long approximateMemoryUsage; // @synthesize approximateMemoryUsage=_approximateMemoryUsage;
+- (void)getSampleBuffer:(struct opaqueCMSampleBuffer **)arg1 alphaKnownToBeFullyOpaque:(char *)arg2;
+- (BOOL)disable422InputFiltering;
+- (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (_Bool)nativelyPremulBlack;
+- (void)setColorSpace:(struct CGColorSpace *)arg1;
+- (struct CGColorSpace *)colorSpace;
+- (void)setPixelTransform:(id)arg1;
+- (id)pixelTransform;
+- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
+- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (unsigned int)field;
+- (struct CGRect)pixelSpaceBounds;
+- (struct CGRect)imageSpaceBounds;
+- (id)type;
+- (id)nativePixelFormat;
+- (void)dealloc;
+- (id)initWithRepresentation:(id)arg1;
+- (id)initWithColorSpace:(struct CGColorSpace *)arg1 pixelTransform:(id)arg2;
 
 @end
 

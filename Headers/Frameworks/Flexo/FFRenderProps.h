@@ -20,17 +20,17 @@
 }
 
 + (id)renderPropsForName:(id)arg1;
-- (id)initWithName:(id)arg1 codecType:(unsigned int)arg2 pixelFormats:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 videoFormats:(id)arg5;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)name;
-- (unsigned int)codecType;
-- (id)pixelFormats;
-- (struct CGColorSpace *)colorSpace;
-- (CDStruct_60067b7e)md5ForProps;
-- (id)requiredVideoFormats;
-- (id)description;
 @property(readonly, nonatomic) int colorSpaceEnum; // @synthesize colorSpaceEnum=_colorSpaceEnum;
+- (id)description;
+- (id)requiredVideoFormats;
+- (CDStruct_bdcb2b0d)md5ForProps;
+- (struct CGColorSpace *)colorSpace;
+- (id)pixelFormats;
+- (unsigned int)codecType;
+- (id)name;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithName:(id)arg1 codecType:(unsigned int)arg2 pixelFormats:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 videoFormats:(id)arg5;
 
 @end
 

@@ -12,19 +12,19 @@
     BOOL _mouseDown;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (void)updateInfoBarWithScale:(const PCVector3_457fd1f0 *)arg1 andChange:(const PCVector3_457fd1f0 *)arg2;
-- (void)updateInfoBarWithScale;
-- (BOOL)isDependentOnBounds;
-- (BOOL)hasFocus;
-- (void)draw;
-- (void)updateScale:(const PCVector3_457fd1f0 *)arg1 translate:(const PCVector3_457fd1f0 *)arg2;
-- (id)getCursor;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
 - (BOOL)postRedisplayOnActivePartChange;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (id)getCursor;
+- (void)updateScale:(const PCVector3_457fd1f0 *)arg1 translate:(const PCVector3_457fd1f0 *)arg2;
+- (void)draw;
+- (BOOL)hasFocus;
+- (BOOL)isDependentOnBounds;
+- (void)updateInfoBarWithScale;
+- (void)updateInfoBarWithScale:(const PCVector3_457fd1f0 *)arg1 andChange:(const PCVector3_457fd1f0 *)arg2;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

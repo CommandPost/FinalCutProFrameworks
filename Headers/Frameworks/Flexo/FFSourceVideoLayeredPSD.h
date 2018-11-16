@@ -6,12 +6,12 @@
 
 #import <Flexo/FFSourceVideo.h>
 
-@class FFMutableVideoProps, NSString, ProPSDLayerRef;
+@class FFVideoProps, NSString, ProPSDLayerRef;
 
 __attribute__((visibility("hidden")))
 @interface FFSourceVideoLayeredPSD : FFSourceVideo
 {
-    FFMutableVideoProps *_videoProps;
+    FFVideoProps *_videoProps;
     ProPSDLayerRef *_layerRef;
     NSString *_displayName;
     CDStruct_bdcb2b0d _md5;
@@ -19,22 +19,22 @@ __attribute__((visibility("hidden")))
     BOOL _disabled;
 }
 
-+ (id)type;
 + (Class)streamClass;
-- (id)initWithProvider:(id)arg1;
-- (void)dealloc;
-- (CDStruct_60067b7e)_md5WithContext:(id)arg1;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (CDStruct_e83c9415)timeRange;
-- (id)nativeVideoProps;
-- (BOOL)segmentMD5:(CDStruct_60067b7e *)arg1 sampleOffset:(long long *)arg2 forSampleDuration:(CDStruct_1b6d18a9)arg3 atTime:(CDStruct_1b6d18a9)arg4 context:(id)arg5 range:(CDStruct_e83c9415 *)arg6;
-- (struct CGPoint)origin;
-- (double)opacity;
-- (id)displayName;
-- (int)blendMode;
++ (id)type;
 @property BOOL disabled; // @synthesize disabled=_disabled;
 @property int layerNumber; // @synthesize layerNumber=_layerNumber;
 @property(retain) ProPSDLayerRef *layerRef; // @synthesize layerRef=_layerRef;
+- (int)blendMode;
+- (id)displayName;
+- (double)opacity;
+- (struct CGPoint)origin;
+- (BOOL)segmentMD5:(CDStruct_bdcb2b0d *)arg1 sampleOffset:(long long *)arg2 forSampleDuration:(CDStruct_1b6d18a9)arg3 atTime:(CDStruct_1b6d18a9)arg4 context:(id)arg5 range:(CDStruct_e83c9415 *)arg6;
+- (id)nativeVideoProps;
+- (CDStruct_e83c9415)timeRange;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (CDStruct_bdcb2b0d)_md5WithContext:(id)arg1;
+- (void)dealloc;
+- (id)initWithProvider:(id)arg1;
 
 @end
 

@@ -21,27 +21,27 @@
     NSUndoManager *_undoManager;
 }
 
-+ (id)keyPathsForValuesAffectingStereo;
 + (id)audioChannelWithChannelMap:(id)arg1;
-- (id)initWithChannelMap:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)description;
-- (void)setIsEnabled:(BOOL)arg1;
-- (BOOL)isEnabled;
-- (void)setStereo:(BOOL)arg1;
-- (BOOL)stereo;
-- (void)setGroup:(id)arg1;
-- (id)group;
-- (void)setLabel:(unsigned int)arg1;
-- (unsigned int)label;
-- (void)setLevel:(double)arg1;
-- (double)level;
-- (void)setPeakLevel:(double)arg1;
-- (double)peakLevel;
-- (void)setUndoManager:(id)arg1;
++ (id)keyPathsForValuesAffectingStereo;
 - (id)undoManager;
+- (void)setUndoManager:(id)arg1;
+- (double)peakLevel;
+- (void)setPeakLevel:(double)arg1;
+- (double)level;
+- (void)setLevel:(double)arg1;
+- (unsigned int)label;
+- (void)setLabel:(unsigned int)arg1;
+- (id)group;
+- (void)setGroup:(id)arg1;
+- (BOOL)stereo;
+- (void)setStereo:(BOOL)arg1;
+- (BOOL)isEnabled;
+- (void)setIsEnabled:(BOOL)arg1;
+- (id)description;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithChannelMap:(id)arg1;
 
 @end
 

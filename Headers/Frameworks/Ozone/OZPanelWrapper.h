@@ -14,11 +14,11 @@
     BOOL _isFadingOut;
 }
 
-- (void)makeHUDKeyWindow;
-- (BOOL)canBecomeKeyWindow;
-- (void)restoreKeyWindow;
-- (void)setIsHUDFadingOut:(BOOL)arg1;
 - (void)sendEvent:(id)arg1;
+- (void)setIsHUDFadingOut:(BOOL)arg1;
+- (void)restoreKeyWindow;
+- (BOOL)canBecomeKeyWindow;
+- (void)makeHUDKeyWindow;
 
 @end
 

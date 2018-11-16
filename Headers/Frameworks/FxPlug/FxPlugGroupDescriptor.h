@@ -12,11 +12,11 @@
 }
 
 + (id)fxPlugGroupDescriptorWithUUID:(id)arg1 andDisplayName:(id)arg2;
-- (id)initWithUUID:(id)arg1 andDisplayName:(id)arg2;
-- (void)dealloc;
-- (id)displayName;
-- (id)uuid;
 - (BOOL)isEqual:(id)arg1;
+- (id)uuid;
+- (id)displayName;
+- (void)dealloc;
+- (id)initWithUUID:(id)arg1 andDisplayName:(id)arg2;
 
 @end
 

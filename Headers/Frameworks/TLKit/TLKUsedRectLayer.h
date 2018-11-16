@@ -10,8 +10,8 @@
 {
 }
 
-- (id)init;
 - (id)hitTest:(struct CGPoint)arg1;
+- (id)init;
 
 @end
 

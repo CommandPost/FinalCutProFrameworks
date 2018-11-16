@@ -14,12 +14,12 @@
     id <OZCompare><NSObject> _pSecond;
 }
 
-- (id)initWithFirst:(id)arg1 second:(id)arg2;
-- (void)dealloc;
-- (id)first;
-- (id)second;
-- (long long)compare:(id)arg1;
 - (id)description;
+- (long long)compare:(id)arg1;
+- (id)second;
+- (id)first;
+- (void)dealloc;
+- (id)initWithFirst:(id)arg1 second:(id)arg2;
 
 @end
 

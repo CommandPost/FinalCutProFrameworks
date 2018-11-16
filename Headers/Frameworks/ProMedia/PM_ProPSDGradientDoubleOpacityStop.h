@@ -13,15 +13,15 @@
     double leadOutOpacity;
 }
 
-+ (void)initialize;
 + (id)doubleOpacityStopWithLocation:(double)arg1 leadInOpacity:(double)arg2 leadOutOpacity:(double)arg3;
-- (id)initWithLocation:(double)arg1 leadInOpacity:(double)arg2 leadOutOpacity:(double)arg3;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (double)leadInOpacity;
-- (double)leadOutOpacity;
-- (BOOL)isDoubleStop;
++ (void)initialize;
 - (id)description;
+- (BOOL)isDoubleStop;
+- (double)leadOutOpacity;
+- (double)leadInOpacity;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithLocation:(double)arg1 leadInOpacity:(double)arg2 leadOutOpacity:(double)arg3;
 
 @end
 

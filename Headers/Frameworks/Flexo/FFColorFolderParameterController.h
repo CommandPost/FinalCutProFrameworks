@@ -16,16 +16,16 @@ __attribute__((visibility("hidden")))
     LKButton *_disclosureButton;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)didBuildUI;
-- (void)update;
-- (void)mouseEnteredRow:(id)arg1;
-- (void)mouseExitedRow:(id)arg1;
-- (void)didTwiddle:(BOOL)arg1;
-- (void)reset:(id)arg1;
-- (void)addCorrection:(id)arg1;
 - (void)toggleDisclosure:(id)arg1;
+- (void)addCorrection:(id)arg1;
+- (void)reset:(id)arg1;
+- (void)didTwiddle:(BOOL)arg1;
+- (void)mouseExitedRow:(id)arg1;
+- (void)mouseEnteredRow:(id)arg1;
+- (void)update;
+- (void)didBuildUI;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

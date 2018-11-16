@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)drawImage:(id)arg1 withFrame:(struct CGRect)arg2 inView:(id)arg3;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

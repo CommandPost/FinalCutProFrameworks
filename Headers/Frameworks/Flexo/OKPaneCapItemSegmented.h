@@ -20,22 +20,22 @@ __attribute__((visibility("hidden")))
     unsigned long long _trackingMode;
 }
 
-- (id)init;
-- (void)setHidden:(BOOL)arg1;
-- (void)setEnabled:(BOOL)arg1;
-@property(retain, nonatomic) NSProThemeFacet *glyph; // @synthesize glyph=_glyph;
-@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
-- (void)setToolTip:(id)arg1;
-@property unsigned long long trackingMode; // @synthesize trackingMode=_trackingMode;
-- (void)dealloc;
-- (void)disconnectFromView;
-- (id)description;
 @property(retain, nonatomic) NSProFont *preferredFont; // @synthesize preferredFont=_preferredFont;
+@property(nonatomic) unsigned long long trackingMode; // @synthesize trackingMode=_trackingMode;
 @property(copy, nonatomic) NSString *tooltip; // @synthesize tooltip=_tooltip;
-@property(readonly) NSProSegmentedControl *segmentedControl;
-- (void)setSegmentedControl:(id)arg1 segmentIndex:(unsigned long long)arg2;
-@property(readonly) unsigned long long segmentIndex;
+@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property(retain, nonatomic) NSProThemeFacet *glyph; // @synthesize glyph=_glyph;
+- (id)description;
+- (void)disconnectFromView;
+- (void)dealloc;
+- (void)setToolTip:(id)arg1;
+- (void)setEnabled:(BOOL)arg1;
+- (void)setHidden:(BOOL)arg1;
+- (id)init;
 - (void)refreshSegmentedControl;
+@property(readonly) unsigned long long segmentIndex;
+- (void)setSegmentedControl:(id)arg1 segmentIndex:(unsigned long long)arg2;
+@property(readonly) NSProSegmentedControl *segmentedControl;
 
 @end
 

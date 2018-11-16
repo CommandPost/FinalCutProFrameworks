@@ -21,26 +21,27 @@ __attribute__((visibility("hidden")))
     BOOL _mouseIsDown;
 }
 
-- (id)initWithHeXFormEffect:(id)arg1 effectStack:(id)arg2 proOSC:(id)arg3 resignOnMouseUpToOSC:(id)arg4;
-- (id)initWithEffectStack:(id)arg1 proOSC:(id)arg2 resignOnMouseUpToOSC:(id)arg3;
-- (void)dealloc;
-- (BOOL)supportsTool:(Class)arg1;
-- (void)_offsetPosition:(const PCVector3_515d8d1c *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)getLocalToWorld:(PCMatrix44Tmpl_93ed1289 *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (PCRay3_021fa152)_computeRay:(const PCVector3_515d8d1c *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)_moveObjectFrom:(struct CGPoint)arg1 to:(struct CGPoint)arg2;
-- (struct CGPoint)mousePointInFilm:(id)arg1;
-- (BOOL)hitTest:(struct CGPoint)arg1;
-- (id)_selectedItemForOSC;
-- (struct OZChannelBase *)undoChannel;
-- (void)mouseDown:(id)arg1;
-- (BOOL)oscHandlesScroll;
-- (void)scrollWheel:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)keyDown:(id)arg1;
-- (void)keyUp:(id)arg1;
+- (id).cxx_construct;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (void)keyUp:(id)arg1;
+- (void)keyDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)scrollWheel:(id)arg1;
+- (BOOL)oscHandlesScroll;
+- (void)mouseDown:(id)arg1;
+- (struct OZChannelBase *)undoChannel;
+- (id)_selectedItemForOSC;
+- (BOOL)hitTest:(struct CGPoint)arg1;
+- (struct CGPoint)mousePointInFilm:(id)arg1;
+- (void)_moveObjectFrom:(struct CGPoint)arg1 to:(struct CGPoint)arg2;
+- (PCRay3_021fa152)_computeRay:(const PCVector3_515d8d1c *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)getLocalToWorld:(PCMatrix44Tmpl_93ed1289 *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)_offsetPosition:(const PCVector3_515d8d1c *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (BOOL)supportsTool:(Class)arg1;
+- (void)dealloc;
+- (id)initWithEffectStack:(id)arg1 proOSC:(id)arg2 resignOnMouseUpToOSC:(id)arg3;
+- (id)initWithHeXFormEffect:(id)arg1 effectStack:(id)arg2 proOSC:(id)arg3 resignOnMouseUpToOSC:(id)arg4;
 
 @end
 

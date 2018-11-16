@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithLocation:(struct CGPoint)arg1 time:(CDStruct_1b6d18a9)arg2 width:(double)arg3 asset:(id)arg4 parentLayer:(id)arg5 belowLayer:(id)arg6 timeline:(id)arg7;
-- (void)setLocation:(struct CGPoint)arg1;
-- (void)setWidth:(double)arg1;
-- (void)setLocation:(struct CGPoint)arg1 andWidth:(double)arg2;
 - (double)width;
+- (void)setLocation:(struct CGPoint)arg1 andWidth:(double)arg2;
+- (void)setWidth:(double)arg1;
+- (void)setLocation:(struct CGPoint)arg1;
+- (id)initWithLocation:(struct CGPoint)arg1 time:(CDStruct_1b6d18a9)arg2 width:(double)arg3 asset:(id)arg4 parentLayer:(id)arg5 belowLayer:(id)arg6 timeline:(id)arg7;
 
 @end
 

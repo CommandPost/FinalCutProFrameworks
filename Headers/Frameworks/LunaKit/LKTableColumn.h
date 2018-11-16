@@ -10,8 +10,8 @@
 {
 }
 
-+ (Class)_headerCellClass;
 + (Class)_dataCellClass;
++ (Class)_headerCellClass;
 
 @end
 

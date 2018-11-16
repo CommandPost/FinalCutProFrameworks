@@ -18,14 +18,14 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)newFromName:(struct ID)arg1 object:(id)arg2 userInfo:(id)arg3;
-- (void)dealloc;
-- (id)retain;
-- (void)release;
-- (id)name;
-- (id)object;
-- (id)userInfo;
-- (id)description;
 - (id).cxx_construct;
+- (id)description;
+- (id)userInfo;
+- (id)object;
+- (id)name;
+- (oneway void)release;
+- (id)retain;
+- (void)dealloc;
 
 @end
 

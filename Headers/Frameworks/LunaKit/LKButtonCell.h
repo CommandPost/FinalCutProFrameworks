@@ -15,20 +15,20 @@
     NSProThemeFacet *customFacet;
 }
 
-- (void)dealloc;
-@property(retain) NSProThemeFacet *customFacet; // @synthesize customFacet;
-- (id)_baseFacet;
-- (id)initWithCoder:(id)arg1;
-- (void)_setupForProButtonType:(int)arg1;
-- (id)_gradientFacet;
-- (id)_disclosureKnobGlyphFacet;
-- (id)_disclosureTriangleFacet;
-- (void)setProButtonType:(int)arg1;
-- (float)_heightNeeded;
-- (void)autosizeControlHeight;
-- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 @property long long partID; // @synthesize partID;
 @property long long elementID; // @synthesize elementID;
+- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)autosizeControlHeight;
+- (float)_heightNeeded;
+- (void)setProButtonType:(int)arg1;
+- (id)_disclosureTriangleFacet;
+- (id)_disclosureKnobGlyphFacet;
+- (id)_gradientFacet;
+- (void)_setupForProButtonType:(int)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)_baseFacet;
+@property(retain) NSProThemeFacet *customFacet;
+- (void)dealloc;
 
 @end
 

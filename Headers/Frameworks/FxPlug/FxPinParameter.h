@@ -13,12 +13,12 @@
     struct FxPinParameterPriv *_paramPriv;
 }
 
-- (id)init;
-- (void)dealloc;
-- (id)defaultValue;
-- (void)setDefaultValue:(id)arg1;
-- (Class)customPinControl;
 - (void)setCustomPinControl:(Class)arg1;
+- (Class)customPinControl;
+- (void)setDefaultValue:(id)arg1;
+- (id)defaultValue;
+- (void)dealloc;
+- (id)init;
 
 @end
 

@@ -20,13 +20,13 @@
     void *_reserved6;
 }
 
-- (id)init;
-- (void)beginSheetForWindow:(id)arg1 modalDelegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
-- (void)awakeFromNib;
-- (void)windowDidLoad;
-- (void)save:(id)arg1;
-- (void)cancel:(id)arg1;
 - (void)controlTextDidChange:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)save:(id)arg1;
+- (void)windowDidLoad;
+- (void)awakeFromNib;
+- (void)beginSheetForWindow:(id)arg1 modalDelegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
+- (id)init;
 
 @end
 

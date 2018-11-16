@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)init;
 - (void)drawInContext:(struct CGContext *)arg1;
+- (id)init;
 
 @end
 

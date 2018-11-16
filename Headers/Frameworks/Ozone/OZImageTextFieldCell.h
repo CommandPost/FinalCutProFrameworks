@@ -13,15 +13,14 @@
     NSImage *_image;
 }
 
-- (id)initTextCell:(id)arg1;
-- (id)initImageCell:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)image;
-- (void)setImage:(id)arg1;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
+@property(retain) NSImage *image; // @synthesize image=_image;
 - (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
+- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initImageCell:(id)arg1;
+- (id)initTextCell:(id)arg1;
 
 @end
 

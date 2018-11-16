@@ -4,14 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSArray, NSMutableSet, NSSet;
+
 @protocol FFAssetContainerProtocol
-- (id)assets;
-- (void)addAssetsToSet:(id)arg1;
-- (id)assetRefs;
-- (void)addAssetRefsToSet:(id)arg1;
-- (id)clipRefs;
-- (void)addClipRefsToSet:(id)arg1;
-- (id)mediaRefs;
-- (id)fileURLs:(int)arg1;
+- (NSArray *)fileURLs:(int)arg1;
+- (NSSet *)mediaRefs;
+- (void)addClipRefsToSet:(NSMutableSet *)arg1;
+- (NSSet *)clipRefs;
+- (void)addAssetRefsToSet:(NSMutableSet *)arg1;
+- (NSSet *)assetRefs;
+- (void)addAssetsToSet:(NSMutableSet *)arg1;
+- (NSSet *)assets;
 @end
 

@@ -10,8 +10,8 @@
 {
 }
 
-- (BOOL)canBecomeKeyWindow;
 - (void)performClose:(id)arg1;
+- (BOOL)canBecomeKeyWindow;
 
 @end
 

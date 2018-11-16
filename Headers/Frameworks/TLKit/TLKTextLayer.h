@@ -6,7 +6,7 @@
 
 #import "CALayer.h"
 
-@class NSAttributedString, NSMutableAttributedString, NSString;
+@class NSAttributedString, NSColor, NSMutableAttributedString, NSString;
 
 @interface TLKTextLayer : CALayer
 {
@@ -14,22 +14,26 @@
     NSMutableAttributedString *_attrStr;
     struct CGRect _visibleBounds;
     double _fontSize;
+    NSColor *_selectedTextColor;
+    NSColor *_textColor;
+    NSColor *_textShadowColor;
     unsigned int _selected:1;
-    unsigned int _shadow:1;
     unsigned int reserved:30;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)drawInContext:(struct CGContext *)arg1;
-- (void)_updateString:(id)arg1;
-@property(copy) NSString *string;
-@property(readonly) NSAttributedString *attributedString;
-@property(readonly) struct CGSize stringSize;
-@property BOOL selected;
-@property double fontSize;
-@property BOOL shadow;
+@property NSColor *textShadowColor; // @synthesize textShadowColor=_textShadowColor;
+@property(retain) NSColor *textColor; // @synthesize textColor=_textColor;
+@property(retain) NSColor *selectedTextColor; // @synthesize selectedTextColor=_selectedTextColor;
 - (void)setContentsScale:(double)arg1;
+@property double fontSize;
+@property BOOL selected;
+@property(readonly) struct CGSize stringSize;
+@property(readonly) NSAttributedString *attributedString;
+@property(copy) NSString *string;
+- (void)_updateString:(id)arg1;
+- (void)drawInContext:(struct CGContext *)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

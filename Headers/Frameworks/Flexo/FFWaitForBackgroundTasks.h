@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)waitForNoTasksWithAlert;
-- (id)init;
-- (void)dealloc;
 - (BOOL)waitForNoTasksWithAlert;
+- (void)dealloc;
+- (id)init;
 
 @end
 

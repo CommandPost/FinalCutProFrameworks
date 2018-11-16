@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)filterDict;
-- (id)tileTypeFacet;
 - (id)sortKeywords:(id)arg1;
+- (id)tileTypeFacet;
+- (id)filterDict;
 
 @end
 

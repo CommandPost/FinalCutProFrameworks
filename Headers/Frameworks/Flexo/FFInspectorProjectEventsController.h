@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFInspectorProjectEventsView, FFMedia, NSButton, NSMutableSet, NSScrollView, NSSet, NSString, NSTextField, NSWindow;
+@class FFAnchoredObject, FFInspectorProjectEventsView, FFMedia, NSButton, NSMutableSet, NSScrollView, NSSet, NSString, NSTextField, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorProjectEventsController : NSObject
@@ -27,15 +27,10 @@ __attribute__((visibility("hidden")))
     BOOL _modifiedLocations;
     NSString *_titleText;
     NSString *_subTitleText;
+    FFAnchoredObject *_inspectedItem;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)_addEventToList:(id)arg1 inProject:(id)arg2;
-- (void)startSheetInWindow:(id)arg1 forEvents:(id)arg2 inProject:(id)arg3;
-- (void)reprioritiseSheetCancelled:(id)arg1;
-- (void)reprioritiseSheetDidClose:(id)arg1;
-- (void)didEndPrioritiseSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+@property(retain, nonatomic) FFAnchoredObject *inspectedItem; // @synthesize inspectedItem=_inspectedItem;
 @property(retain, nonatomic) FFMedia *media; // @synthesize media=_media;
 @property(retain, nonatomic) NSWindow *sheet; // @synthesize sheet=_sheet;
 @property(retain, nonatomic) NSScrollView *scrollView; // @synthesize scrollView=_scrollView;
@@ -46,6 +41,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSButton *reprioritiseEventsButton; // @synthesize reprioritiseEventsButton=_reprioritiseEventsButton;
 @property(retain, nonatomic) NSButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(retain, nonatomic) NSWindow *reprioritiseSheet; // @synthesize reprioritiseSheet=_reprioritiseSheet;
+- (void)didEndPrioritiseSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)reprioritiseSheetDidClose:(id)arg1;
+- (void)reprioritiseSheetCancelled:(id)arg1;
+- (void)startSheetInWindow:(id)arg1 forEvents:(id)arg2 inProject:(id)arg3;
+- (void)_addEventToList:(id)arg1 inProject:(id)arg2;
+- (void)dealloc;
+- (id)init;
 
 @end
 

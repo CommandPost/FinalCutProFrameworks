@@ -14,10 +14,8 @@
     int _type;
 }
 
-- (id)controller;
-- (void)setController:(id)arg1;
-- (int)type;
-- (void)setType:(int)arg1;
+@property int type; // @synthesize type=_type;
+@property(retain) OZViewController *controller; // @synthesize controller=_pController;
 
 @end
 

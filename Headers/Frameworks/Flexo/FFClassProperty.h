@@ -19,14 +19,14 @@
     NSString *_typeName;
 }
 
-- (SEL)selector;
-- (int)propertyType;
-- (id)typeName;
-- (id)xmlKey;
-- (BOOL)isDeprecated;
-- (id)initWithSelector:(SEL)arg1 type:(int)arg2 xmlKey:(id)arg3 entity:(const char *)arg4 deprecated:(BOOL)arg5;
-- (void)dealloc;
 - (id)description;
+- (void)dealloc;
+- (id)initWithSelector:(SEL)arg1 type:(int)arg2 xmlKey:(id)arg3 entity:(const char *)arg4 deprecated:(BOOL)arg5;
+- (BOOL)isDeprecated;
+- (id)xmlKey;
+- (id)typeName;
+- (int)propertyType;
+- (SEL)selector;
 
 @end
 

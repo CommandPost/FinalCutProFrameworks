@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)canBecomeMainWindow;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (BOOL)canBecomeMainWindow;
 
 @end
 

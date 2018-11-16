@@ -10,8 +10,8 @@
 {
 }
 
-+ (Class)backgroundViewClass;
 + (void)initialize;
++ (Class)backgroundViewClass;
 
 @end
 

@@ -14,12 +14,12 @@
     NSMutableArray *_editPointLayers;
 }
 
-+ (void)initialize;
 + (double)heightOfBar;
-- (id)init;
-- (void)dealloc;
-- (void)layoutSublayers;
++ (void)initialize;
 @property TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
+- (void)layoutSublayers;
+- (void)dealloc;
+- (id)init;
 
 @end
 

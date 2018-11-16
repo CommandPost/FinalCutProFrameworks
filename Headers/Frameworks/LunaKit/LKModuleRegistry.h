@@ -15,14 +15,14 @@
 }
 
 + (id)sharedInstance;
-- (id)init;
-- (void)dealloc;
-- (id)moduleWithIdentifier:(id)arg1 inContext:(id)arg2;
-- (void)registerModule:(id)arg1 inContext:(id)arg2;
-- (void)unregisterModule:(id)arg1 inContext:(id)arg2;
-- (void)unregisterModulesInContext:(id)arg1;
-- (id)registeredModulesInContext:(id)arg1;
 - (BOOL)isModuleRegistered:(id)arg1;
+- (id)registeredModulesInContext:(id)arg1;
+- (void)unregisterModulesInContext:(id)arg1;
+- (void)unregisterModule:(id)arg1 inContext:(id)arg2;
+- (void)registerModule:(id)arg1 inContext:(id)arg2;
+- (id)moduleWithIdentifier:(id)arg1 inContext:(id)arg2;
+- (void)dealloc;
+- (id)init;
 
 @end
 

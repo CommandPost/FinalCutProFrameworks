@@ -13,23 +13,23 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)changePhaseVector:(id)arg1;
-- (void)changePhaseMark3:(id)arg1;
-- (void)changeBarTarget100p:(id)arg1;
-- (void)changeBarTarget75p:(id)arg1;
-- (void)toggleSkinToneIndicator:(id)arg1;
-- (void)showHistogram:(id)arg1;
-- (void)showVectorscope:(id)arg1;
-- (void)showWaveform:(id)arg1;
-- (void)changeBrightness:(id)arg1;
-- (void)toggleMonochrome:(id)arg1;
-- (void)viewWasInstalled;
-- (void)viewWillBeRemoved;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)updateLabel;
-- (void)setViewProperties:(id)arg1;
-- (id)viewProperties;
 - (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (id)viewProperties;
+- (void)setViewProperties:(id)arg1;
+- (void)updateLabel;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)viewWillBeRemoved;
+- (void)viewWasInstalled;
+- (void)toggleMonochrome:(id)arg1;
+- (void)changeBrightness:(id)arg1;
+- (void)showWaveform:(id)arg1;
+- (void)showVectorscope:(id)arg1;
+- (void)showHistogram:(id)arg1;
+- (void)toggleSkinToneIndicator:(id)arg1;
+- (void)changeBarTarget75p:(id)arg1;
+- (void)changeBarTarget100p:(id)arg1;
+- (void)changePhaseMark3:(id)arg1;
+- (void)changePhaseVector:(id)arg1;
 
 @end
 

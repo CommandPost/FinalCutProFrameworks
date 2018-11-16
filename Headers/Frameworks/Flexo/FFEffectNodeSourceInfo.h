@@ -16,13 +16,14 @@ __attribute__((visibility("hidden")))
     NSString *_identifier;
 }
 
-- (id)initWithSource:(id)arg1 offset:(CDStruct_1b6d18a9)arg2 identifier:(id)arg3;
-- (void)dealloc;
-- (CDStruct_e83c9415)srcTimeRange;
-- (CDStruct_e83c9415)srcTimeRangeInOffsetCoords;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 offset; // @synthesize offset=_offset;
 @property(readonly, nonatomic) FFSource *source; // @synthesize source=_source;
+- (id).cxx_construct;
+- (CDStruct_e83c9415)srcTimeRangeInOffsetCoords;
+- (CDStruct_e83c9415)srcTimeRange;
+- (void)dealloc;
+- (id)initWithSource:(id)arg1 offset:(CDStruct_1b6d18a9)arg2 identifier:(id)arg3;
 
 @end
 

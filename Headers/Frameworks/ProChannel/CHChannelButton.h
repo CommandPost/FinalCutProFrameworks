@@ -10,12 +10,12 @@
 {
 }
 
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-- (struct OZChannelButton *)ozChannel;
-- (CDUnknownBlockType)callback;
-- (void)setCallback:(CDUnknownBlockType)arg1;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 - (void)performCallback;
+- (void)setCallback:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)callback;
+- (struct OZChannelButton *)ozChannel;
 
 @end
 

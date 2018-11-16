@@ -7,6 +7,7 @@
 #import "NSURL.h"
 
 @interface NSURL (symlinkAdditions)
+- (id)URLByResolvingSymlinksAndAliases;
 - (id)URLByReallyResolvingSymlinksInPath;
 @end
 

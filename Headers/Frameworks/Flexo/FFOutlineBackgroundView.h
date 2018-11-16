@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
     NSColor *_color;
 }
 
-- (id)menuForEvent:(id)arg1;
 @property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_color;
 - (id)makeBackingLayer;
+- (id)menuForEvent:(id)arg1;
 
 @end
 

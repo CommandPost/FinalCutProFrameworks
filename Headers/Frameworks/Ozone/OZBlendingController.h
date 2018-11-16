@@ -16,10 +16,10 @@
     OZLabelText *_opacityLabel;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (struct OZChannelBlendMode *)blendModeChannel;
 - (struct OZChannelPercent *)opacityChannel;
+- (struct OZChannelBlendMode *)blendModeChannel;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

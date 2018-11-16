@@ -18,20 +18,20 @@ __attribute__((visibility("hidden")))
     unsigned long long _maskIndex;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)didBuildUI;
-- (void)update;
-- (float)suggestedMaxParamWidth;
-- (void)reset:(id)arg1;
-- (void)showColorBoard:(id)arg1;
-- (void)enableKeyer:(id)arg1;
-- (void)addShape:(id)arg1;
-- (id)facetForShowColorBoardButton;
-- (id)effect;
-- (BOOL)isBasemem;
-- (BOOL)shouldEnableShowColorBoard;
 - (BOOL)wasAddWithPerformBlock:(CDUnknownBlockType)arg1 action:(id)arg2 error:(id *)arg3;
+- (BOOL)shouldEnableShowColorBoard;
+- (BOOL)isBasemem;
+- (id)effect;
+- (id)facetForShowColorBoardButton;
+- (void)addShape:(id)arg1;
+- (void)enableKeyer:(id)arg1;
+- (void)showColorBoard:(id)arg1;
+- (void)reset:(id)arg1;
+- (float)suggestedMaxParamWidth;
+- (void)update;
+- (void)didBuildUI;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -13,17 +13,17 @@
 }
 
 + (void)maybeInitResources;
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (void)draw;
-- (PCPtr_fc939811)getVertexAsset:(int)arg1;
-- (double)getPixelAspectRatio;
-- (void)calcInitialOffset;
-- (void)convertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
-- (void)inverseConvertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
-- (PCVector3_457fd1f0)calculateOwnerOffset;
-- (int)hitCheck:(id)arg1;
 - (id).cxx_construct;
+- (int)hitCheck:(id)arg1;
+- (PCVector3_457fd1f0)calculateOwnerOffset;
+- (void)inverseConvertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
+- (void)convertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
+- (void)calcInitialOffset;
+- (double)getPixelAspectRatio;
+- (PCPtr_fc939811)getVertexAsset:(int)arg1;
+- (void)draw;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

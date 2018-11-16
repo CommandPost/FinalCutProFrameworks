@@ -11,18 +11,18 @@
     struct CGPoint _startPoint;
 }
 
-+ (void)initialize;
-+ (id)displayName;
-+ (id)toolTip;
-+ (id)toolbarFacet;
 + (id)cursor;
++ (id)toolbarFacet;
++ (id)toolTip;
++ (id)displayName;
++ (void)initialize;
 + (id)TLKEventHandlerID;
-- (void)_updateCursorWithEvent:(id)arg1;
-- (void)cursorUpdate:(id)arg1;
-- (void)flagsChanged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)flagsChanged:(id)arg1;
+- (void)cursorUpdate:(id)arg1;
+- (void)_updateCursorWithEvent:(id)arg1;
 
 @end
 

@@ -16,22 +16,22 @@
 }
 
 + (float)indentAmount;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 generateUI:(BOOL)arg3;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)setAnimStatusClass:(Class)arg1;
-- (id)labelTextForChannel:(struct OZChannelBase *)arg1;
-- (void)setCustomLabelString:(id)arg1;
-- (void)setChannelName:(id)arg1;
-- (BOOL)isLeftJustified;
-- (void)didBuildUI;
-- (float)suggestedMinLabelWidth;
-- (void)highlightChannel:(struct OZChannelBase *)arg1;
-- (void)doDrag:(list_ee649c21 *)arg1 viewList:(id)arg2;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
+- (void)doDrag:(list_eea5731a *)arg1 viewList:(id)arg2;
+- (void)highlightChannel:(struct OZChannelBase *)arg1;
+- (float)suggestedMinLabelWidth;
+- (void)didBuildUI;
+- (BOOL)isLeftJustified;
+- (void)setChannelName:(id)arg1;
+- (void)setCustomLabelString:(id)arg1;
+- (id)labelTextForChannel:(struct OZChannelBase *)arg1;
+- (void)setAnimStatusClass:(Class)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 generateUI:(BOOL)arg3;
 
 @end
 

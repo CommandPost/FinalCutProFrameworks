@@ -4,8 +4,10 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSString;
+
 @protocol FxOptionalParameterCreationAPI
-- (BOOL)addHistogramWithName:(id)arg1 parmId:(unsigned int)arg2 parmFlags:(unsigned int)arg3;
-- (BOOL)addGradientWithName:(id)arg1 parmId:(unsigned int)arg2 parmFlags:(unsigned int)arg3;
+- (BOOL)addGradientWithName:(NSString *)arg1 parmId:(unsigned int)arg2 parmFlags:(unsigned int)arg3;
+- (BOOL)addHistogramWithName:(NSString *)arg1 parmId:(unsigned int)arg2 parmFlags:(unsigned int)arg3;
 @end
 

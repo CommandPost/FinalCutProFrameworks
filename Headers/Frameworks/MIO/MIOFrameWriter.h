@@ -14,11 +14,11 @@
 }
 
 + (id)frameWriter;
-- (void)dealloc;
-- (void)writeFrameToFile:(id)arg1 atPresentationTime:(CDStruct_1b6d18a9)arg2 usingMovie:(id)arg3;
-- (void)writeFrameToFile:(id)arg1 atPresentationTime:(CDStruct_1b6d18a9)arg2 usingFormatReader:(struct OpaqueFigFormatReader *)arg3 byteStream:(struct OpaqueCMByteStream *)arg4;
-- (void)writeFrameToFile:(id)arg1 usingCMSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
 @property(retain) NSString *outputPath; // @synthesize outputPath=_outputPath;
+- (void)writeFrameToFile:(id)arg1 usingCMSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
+- (void)writeFrameToFile:(id)arg1 atPresentationTime:(CDStruct_1b6d18a9)arg2 usingFormatReader:(struct OpaqueFigFormatReader *)arg3 byteStream:(struct OpaqueCMByteStream *)arg4;
+- (void)writeFrameToFile:(id)arg1 atPresentationTime:(CDStruct_1b6d18a9)arg2 usingMovie:(id)arg3;
+- (void)dealloc;
 
 @end
 

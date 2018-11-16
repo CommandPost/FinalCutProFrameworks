@@ -11,14 +11,14 @@
     struct FxParameterAnglePriv *_anglePriv;
 }
 
-- (id)init;
-- (void)dealloc;
-- (double)startValue;
-- (void)setStartValue:(double)arg1;
-- (double)stepValue;
-- (void)setStepValue:(double)arg1;
-- (BOOL)isClockwise;
 - (void)setIsClockwise:(BOOL)arg1;
+- (BOOL)isClockwise;
+- (void)setStepValue:(double)arg1;
+- (double)stepValue;
+- (void)setStartValue:(double)arg1;
+- (double)startValue;
+- (void)dealloc;
+- (id)init;
 
 @end
 

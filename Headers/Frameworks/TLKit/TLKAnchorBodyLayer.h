@@ -13,12 +13,12 @@
     TLKAnchorHeadLayer *_headLayer;
 }
 
-- (id)init;
-- (void)invalidate;
-- (void)removeAttachedAnchors;
-- (void)setAnchorDirection:(int)arg1;
-- (void)setAnchorHeadLayer:(id)arg1;
 - (id)anchorHeadLayer;
+- (void)setAnchorHeadLayer:(id)arg1;
+- (void)setAnchorDirection:(int)arg1;
+- (void)removeAttachedAnchors;
+- (void)invalidate;
+- (id)init;
 
 @end
 

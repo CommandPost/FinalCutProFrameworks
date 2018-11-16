@@ -20,20 +20,20 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedMultiAngleProgressController;
-- (id)progressIndicator;
-- (void)setHeader:(id)arg1;
-- (id)header;
-- (void)setMessage:(id)arg1;
-- (id)message;
-- (void)setProgress:(double)arg1;
-- (double)progress;
-- (void)setMinProgress:(double)arg1;
-- (void)setMaxProgress:(double)arg1;
-- (void)beginSheetModalForWindow:(id)arg1 modalDelegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
-- (void)endSheet;
-- (void)clickedCancel:(id)arg1;
-- (BOOL)isCanceled;
 @property(retain, nonatomic) id delegate; // @synthesize delegate=_delegate;
+- (BOOL)isCanceled;
+- (void)clickedCancel:(id)arg1;
+- (void)endSheet;
+- (void)beginSheetModalForWindow:(id)arg1 modalDelegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
+- (void)setMaxProgress:(double)arg1;
+- (void)setMinProgress:(double)arg1;
+- (double)progress;
+- (void)setProgress:(double)arg1;
+- (id)message;
+- (void)setMessage:(id)arg1;
+- (id)header;
+- (void)setHeader:(id)arg1;
+- (id)progressIndicator;
 
 @end
 

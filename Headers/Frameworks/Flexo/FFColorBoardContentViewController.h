@@ -24,31 +24,6 @@ __attribute__((visibility("hidden")))
     NSView *_correctionDisabledMessageView;
 }
 
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)dealloc;
-- (void)loadView;
-- (void)installPanel:(id)arg1;
-- (id)colorboardContentView;
-- (void)setColorBoardIsActive:(BOOL)arg1;
-- (void)addNotificationObservers;
-- (void)removeNotificationObservers;
-- (void)notificationHandler:(id)arg1;
-- (void)changeTabAction:(id)arg1;
-- (void)syncToCurrentColorCorrection;
-- (void)syncToClip;
-- (void)adjustViewLayouts;
-- (void)toggleColorCorrectionOff;
-- (void)setToDefaultTab;
-- (void)switchToTab:(int)arg1;
-- (void)cycleToNextTab;
-- (void)cycleToPreviousTab;
-- (void)cycleToNextPuck;
-- (void)cycleToPreviousPuck;
-- (int)selectedPuckTypeForBoard:(int)arg1;
-- (void)nudgePuck:(struct CGPoint)arg1;
-- (void)resetSelectedPuck;
-- (void)resetPucksOnCurrentBoard;
-- (void)resetAllPucks;
 @property(retain, nonatomic) NSView *correctionDisabledMessageView; // @synthesize correctionDisabledMessageView=_correctionDisabledMessageView;
 @property(retain, nonatomic) NSView *messageView; // @synthesize messageView=_messageView;
 @property(retain, nonatomic) FFColorBoardPanelView *exposurePanel; // @synthesize exposurePanel=_exposurePanel;
@@ -60,6 +35,31 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFColorBoardTabButton *colorTabButton; // @synthesize colorTabButton=_colorTabButton;
 @property(retain, nonatomic) NSView *tabBarGroupView; // @synthesize tabBarGroupView=_tabBarGroupView;
 @property(retain, nonatomic) FFColorBoardImageView *tabBarView; // @synthesize tabBarView=_tabBarView;
+- (void)resetAllPucks;
+- (void)resetPucksOnCurrentBoard;
+- (void)resetSelectedPuck;
+- (void)nudgePuck:(struct CGPoint)arg1;
+- (int)selectedPuckTypeForBoard:(int)arg1;
+- (void)cycleToPreviousPuck;
+- (void)cycleToNextPuck;
+- (void)cycleToPreviousTab;
+- (void)cycleToNextTab;
+- (void)switchToTab:(int)arg1;
+- (void)setToDefaultTab;
+- (void)toggleColorCorrectionOff;
+- (void)adjustViewLayouts;
+- (void)syncToClip;
+- (void)syncToCurrentColorCorrection;
+- (void)changeTabAction:(id)arg1;
+- (void)notificationHandler:(id)arg1;
+- (void)removeNotificationObservers;
+- (void)addNotificationObservers;
+- (void)setColorBoardIsActive:(BOOL)arg1;
+- (id)colorboardContentView;
+- (void)installPanel:(id)arg1;
+- (void)loadView;
+- (void)dealloc;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 @end
 

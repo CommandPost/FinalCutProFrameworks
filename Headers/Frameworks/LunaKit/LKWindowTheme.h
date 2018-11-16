@@ -12,15 +12,15 @@
 {
 }
 
-+ (id)_windowBorderFacetForStyleMask:(unsigned long long)arg1;
-+ (id)_titlebarFacetForStyleMask:(unsigned long long)arg1;
-+ (id)_controlFacetForButton:(int)arg1 styleMask:(unsigned long long)arg2;
-+ (id)_resizeCornerFacetForStyleMask:(unsigned long long)arg1;
-+ (id)_metricsFacetForStyleMask:(unsigned long long)arg1;
-+ (double)_windowBorderThicknessForStyleMask:(unsigned long long)arg1;
-+ (double)_roundedCornerRadiusForStyleMask:(unsigned long long)arg1;
-+ (double)_titleFontSizeForStyleMask:(unsigned long long)arg1;
 + (id)_titleFontForStyleMask:(unsigned long long)arg1 isKey:(BOOL)arg2 isMain:(BOOL)arg3;
++ (double)_titleFontSizeForStyleMask:(unsigned long long)arg1;
++ (double)_roundedCornerRadiusForStyleMask:(unsigned long long)arg1;
++ (double)_windowBorderThicknessForStyleMask:(unsigned long long)arg1;
++ (id)_metricsFacetForStyleMask:(unsigned long long)arg1;
++ (id)_resizeCornerFacetForStyleMask:(unsigned long long)arg1;
++ (id)_controlFacetForButton:(int)arg1 styleMask:(unsigned long long)arg2;
++ (id)_titlebarFacetForStyleMask:(unsigned long long)arg1;
++ (id)_windowBorderFacetForStyleMask:(unsigned long long)arg1;
 
 @end
 

@@ -17,13 +17,13 @@
     OZHistogramGutterIn *_gutterIn;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)setDelegate:(id)arg1;
-- (void)setLevelsChannel:(struct OZChannelLevels *)arg1;
-- (void)setViewController:(id)arg1;
-- (void)awakeFromNib;
 - (void)update;
+- (void)awakeFromNib;
+- (void)setViewController:(id)arg1;
+- (void)setLevelsChannel:(struct OZChannelLevels *)arg1;
+- (void)setDelegate:(id)arg1;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

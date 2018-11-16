@@ -10,24 +10,25 @@
 
 @interface OZHistogramCallback : NSObject
 {
-    shared_ptr_0fec1de5 *_bitmap;
+    shared_ptr_0279a08d *_bitmap;
     struct CGSize _size;
     int _width;
     int _height;
     OZHistogramView *_histView;
 }
 
-- (void)dealloc;
-- (void)setBitmap:(const shared_ptr_0fec1de5 *)arg1;
-- (void)setSize:(struct CGSize)arg1;
-- (void)setWidth:(int)arg1;
-- (void)setHeight:(int)arg1;
-- (void)setHistogramView:(id)arg1;
-- (struct PCBitmap *)bitmap;
-- (struct CGSize)size;
-- (int)width;
-- (int)height;
+- (id).cxx_construct;
 - (id)histogramView;
+- (int)height;
+- (int)width;
+- (struct CGSize)size;
+- (struct PCBitmap *)bitmap;
+- (void)setHistogramView:(id)arg1;
+- (void)setHeight:(int)arg1;
+- (void)setWidth:(int)arg1;
+- (void)setSize:(struct CGSize)arg1;
+- (void)setBitmap:(const shared_ptr_0279a08d *)arg1;
+- (void)dealloc;
 
 @end
 

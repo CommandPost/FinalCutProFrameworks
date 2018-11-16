@@ -27,20 +27,20 @@
     BOOL _restartAtTop;
 }
 
-+ (void)showAboutBox;
-+ (void)showSplashScreen;
-+ (void)dismissSplashScreen;
 + (id)controller;
-- (id)init;
-- (void)dealloc;
++ (void)dismissSplashScreen;
++ (void)showSplashScreen;
++ (void)showAboutBox;
 - (void)awakeFromNib;
-- (void)allocWindow;
-- (void)showSplashScreen;
-- (void)showAboutBox;
-- (void)updateAboutBoxText:(id)arg1;
-- (void)scrollText:(id)arg1;
-- (void)endModalSession;
+- (void)dealloc;
+- (id)init;
 - (void)hideSplashScreen:(id)arg1;
+- (void)endModalSession;
+- (void)scrollText:(id)arg1;
+- (void)updateAboutBoxText:(id)arg1;
+- (void)showAboutBox;
+- (void)showSplashScreen;
+- (void)allocWindow;
 
 @end
 

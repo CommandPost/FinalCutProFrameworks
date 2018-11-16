@@ -19,20 +19,20 @@
     LKPanel *_panel;
 }
 
-- (struct OZScene *)scene;
-- (int)getRecordingOptions;
-- (void)setRecordingOptions:(int)arg1;
-- (BOOL)getRecordKeyFrames;
-- (void)setRecordKeyFrames:(BOOL)arg1;
-- (void)load;
-- (void)save;
-- (id)init;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)windowWillClose:(id)arg1;
-- (void)openDialog;
-- (void)recordOk:(id)arg1;
 - (void)recordCancel:(id)arg1;
+- (void)recordOk:(id)arg1;
+- (void)openDialog;
+- (void)windowWillClose:(id)arg1;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)init;
+- (void)save;
+- (void)load;
+- (void)setRecordKeyFrames:(BOOL)arg1;
+- (BOOL)getRecordKeyFrames;
+- (void)setRecordingOptions:(int)arg1;
+- (int)getRecordingOptions;
+- (struct OZScene *)scene;
 
 @end
 

@@ -12,10 +12,10 @@
 {
 }
 
-- (Class)plugInClass;
-- (id)plugInTypeUUID;
-- (id)defaultFolderURLs;
 - (id)fxMetaPlugsInFolderURLs:(id)arg1 includingBuiltIns:(BOOL)arg2;
+- (id)defaultFolderURLs;
+- (id)plugInTypeUUID;
+- (Class)plugInClass;
 
 @end
 

@@ -10,10 +10,10 @@
 {
 }
 
-+ (void)releaseSingletons;
 + (void)addSingleton:(id)arg1;
-- (id)init;
++ (void)releaseSingletons;
 - (void)dealloc;
+- (id)init;
 
 @end
 

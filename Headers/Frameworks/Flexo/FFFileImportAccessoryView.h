@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSButton *_keywordCollectionsCheckBox;
     NSButton *_optimizeMediaCheckBox;
     NSButton *_createProxyMediaCheckBox;
+    NSButton *_createStillCacheCheckBox;
     NSButton *_colorAutoCorrectCheckBox;
     NSButton *_faceDetectionCheckBox;
     NSButton *_findPeopleConsolidateResultsCheckBox;
@@ -36,21 +37,21 @@ __attribute__((visibility("hidden")))
     FFEventNameFormatter *_eventNameFormatter;
 }
 
-- (void)setPanel:(id)arg1;
-- (void)selectTargetEvent:(id)arg1;
-- (void)selectTargetLocation:(id)arg1;
-- (void)findPeopleAction:(id)arg1;
-- (void)smartCollectionAction:(id)arg1;
-- (id)eventName;
-- (void)setDefaultNewEventString;
-- (void)awakeFromNib;
-- (void)cleanup;
-- (void)eventRadioButtonMatrixAction:(id)arg1;
-- (id)currentLocation;
-- (id)currentEvent;
 @property BOOL shouldCreateNewEvent; // @synthesize shouldCreateNewEvent=_shouldCreateNewEvent;
 @property id selectedLocation; // @synthesize selectedLocation=_selectedLocation;
 @property id selectedEvent; // @synthesize selectedEvent=_selectedEvent;
+- (id)currentEvent;
+- (id)currentLocation;
+- (void)eventRadioButtonMatrixAction:(id)arg1;
+- (void)cleanup;
+- (void)awakeFromNib;
+- (void)setDefaultNewEventString;
+- (id)eventName;
+- (void)smartCollectionAction:(id)arg1;
+- (void)findPeopleAction:(id)arg1;
+- (void)selectTargetLocation:(id)arg1;
+- (void)selectTargetEvent:(id)arg1;
+- (void)setPanel:(id)arg1;
 
 @end
 

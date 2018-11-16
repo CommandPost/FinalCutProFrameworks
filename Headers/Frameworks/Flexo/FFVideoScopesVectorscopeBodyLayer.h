@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)waveformBody;
-- (void)setDelegate:(id)arg1;
 - (id)actionForKey:(id)arg1;
+- (void)setDelegate:(id)arg1;
 
 @end
 

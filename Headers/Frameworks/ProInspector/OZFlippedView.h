@@ -30,34 +30,35 @@
     OZViewController *_pController;
 }
 
-+ (double)BrickVerticalMargin;
-+ (double)BrickHorizontalMargin;
 + (double)BrickVerticalGap;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (BOOL)isFlipped;
-- (void)drawRect:(struct CGRect)arg1;
-- (BOOL)canBecomeKeyView;
-- (BOOL)acceptsFirstResponder;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
-- (void)setIsPrimarySeparatorEnabled:(_Bool)arg1;
-- (void)setIsSecondarySeparatorEnabled:(_Bool)arg1;
-@property(nonatomic) BOOL isCollapsed; // @synthesize isCollapsed=_isCollapsed;
-@property(nonatomic) BOOL isSelected; // @synthesize isSelected=_isSelected;
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
++ (double)BrickHorizontalMargin;
++ (double)BrickVerticalMargin;
 @property(nonatomic) OZViewController *viewController; // @synthesize viewController=_pController;
 @property(nonatomic) id resizeDelegate; // @synthesize resizeDelegate=_pResizeDelegate;
 @property(nonatomic) id target; // @synthesize target=_pTarget;
 @property(nonatomic) SEL doubleClickAction; // @synthesize doubleClickAction=_doubleClickAction;
 @property(nonatomic) BOOL isSelectable; // @synthesize isSelectable=_isSelectable;
+@property(nonatomic) BOOL isSelected; // @synthesize isSelected=_isSelected;
 @property(nonatomic) BOOL isBrickHeading; // @synthesize isBrickHeading=_isBrickHeading;
 @property(nonatomic) BOOL isRow; // @synthesize isRow=_isRow;
 @property(nonatomic) BOOL isInnerGroup; // @synthesize isInnerGroup=_isInnerGroup;
 @property(nonatomic) BOOL isOuterGroup; // @synthesize isOuterGroup=_isOuterGroup;
+@property(nonatomic) BOOL isCollapsed; // @synthesize isCollapsed=_isCollapsed;
 @property(nonatomic) BOOL isBrick; // @synthesize isBrick=_isBrick;
+- (id).cxx_construct;
+- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
+- (void)setIsSecondarySeparatorEnabled:(_Bool)arg1;
+- (void)setIsPrimarySeparatorEnabled:(_Bool)arg1;
+- (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)canBecomeKeyView;
+- (void)drawRect:(struct CGRect)arg1;
+- (BOOL)isFlipped;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

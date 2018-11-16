@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_dict;
 }
 
-- (id)init;
-- (void)dealloc;
-- (id)mdValueForKey:(id)arg1;
 - (id)mdSetValue:(id)arg1 forKey:(id)arg2;
+- (id)mdValueForKey:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

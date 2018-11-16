@@ -6,9 +6,11 @@
 
 #import "NSObject.h"
 
+#import "FFBackgroundTaskTarget.h"
+
 @class FFBackgroundTask, FFMultiAngleManager, NSLock, NSMutableArray;
 
-@interface FFMultiAngleAudioSyncTask : NSObject
+@interface FFMultiAngleAudioSyncTask : NSObject <FFBackgroundTaskTarget>
 {
     NSLock *_bgTaskIVarLock;
     FFBackgroundTask *_backgroundCalculationTask;
@@ -27,31 +29,33 @@
     FFMultiAngleManager *_manager;
 }
 
-- (id)initWithAngles:(id)arg1 refAngles:(id)arg2 multiAngleManager:(id)arg3;
-- (id)initWithItems:(id)arg1 refAngles:(id)arg2 multiAngleManager:(id)arg3;
-- (void)dealloc;
-- (void)_updateProgress:(id)arg1;
-- (void)_updateProgressUI:(id)arg1;
-- (void)clickedCancel:(id)arg1;
-- (void)_startProgressController:(id)arg1;
-- (void)_endProgressController;
-- (BOOL)_anglesSyncedByAudio:(id)arg1;
-- (BOOL)_itemsSyncedByAudio:(id)arg1;
-- (BOOL)_anyItemsSyncedByAudio:(id)arg1;
-- (void)_prepareIntersectItems;
-- (BOOL)_setupIntersectItems;
-- (struct FFAudioSyncHelperResults)_synchronizeItem:(id)arg1 itemSyncTime:(CDStruct_1b6d18a9)arg2 refItem:(id)arg3 refItemSyncTime:(CDStruct_1b6d18a9)arg4 syncDuration:(CDStruct_1b6d18a9)arg5 useFullRange:(BOOL)arg6;
-- (void)_resetFineSyncInfo;
-- (BOOL)_fineSyncItemsInAngles:(BOOL)arg1;
-- (BOOL)_fullRangeSyncItemsInAngles:(BOOL)arg1;
-- (BOOL)_peakSyncAngles:(id)arg1 toRefAngle:(id)arg2 findMaxConfidence:(BOOL)arg3;
-- (BOOL)_syncAngles:(id)arg1 toRefAngle:(id)arg2 findMaxConfidence:(BOOL)arg3;
-- (void)_fixItems:(id)arg1 inAngles:(id)arg2;
-- (void)_synchronize:(id)arg1 onTask:(id)arg2;
-- (BOOL)syncAngles:(char *)arg1;
-- (BOOL)syncItems:(char *)arg1;
-- (BOOL)syncAngles:(BOOL)arg1 syncItems:(BOOL)arg2 taskCanceled:(char *)arg3;
 @property BOOL useFullMediaRange; // @synthesize useFullMediaRange=_useFullMediaRange;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
+- (BOOL)syncAngles:(BOOL)arg1 syncItems:(BOOL)arg2 taskCanceled:(char *)arg3;
+- (BOOL)syncItems:(char *)arg1;
+- (BOOL)syncAngles:(char *)arg1;
+- (void)_synchronize:(id)arg1 onTask:(id)arg2;
+- (void)_fixItems:(id)arg1 inAngles:(id)arg2;
+- (BOOL)_syncAngles:(id)arg1 toRefAngle:(id)arg2 findMaxConfidence:(BOOL)arg3;
+- (BOOL)_peakSyncAngles:(id)arg1 toRefAngle:(id)arg2 findMaxConfidence:(BOOL)arg3;
+- (BOOL)_fullRangeSyncItemsInAngles:(BOOL)arg1;
+- (BOOL)_fineSyncItemsInAngles:(BOOL)arg1;
+- (void)_resetFineSyncInfo;
+- (struct FFAudioSyncHelperResults)_synchronizeItem:(id)arg1 itemSyncTime:(CDStruct_1b6d18a9)arg2 refItem:(id)arg3 refItemSyncTime:(CDStruct_1b6d18a9)arg4 syncDuration:(CDStruct_1b6d18a9)arg5 useFullRange:(BOOL)arg6;
+- (BOOL)_setupIntersectItems;
+- (void)_prepareIntersectItems;
+- (BOOL)_anyItemsSyncedByAudio:(id)arg1;
+- (BOOL)_itemsSyncedByAudio:(id)arg1;
+- (BOOL)_anglesSyncedByAudio:(id)arg1;
+- (void)_endProgressController;
+- (void)_startProgressController:(id)arg1;
+- (void)clickedCancel:(id)arg1;
+- (void)_updateProgressUI:(id)arg1;
+- (void)_updateProgress:(id)arg1;
+- (void)dealloc;
+- (id)initWithItems:(id)arg1 refAngles:(id)arg2 multiAngleManager:(id)arg3;
+- (id)initWithAngles:(id)arg1 refAngles:(id)arg2 multiAngleManager:(id)arg3;
 
 @end
 

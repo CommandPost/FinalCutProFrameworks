@@ -14,13 +14,13 @@
     BOOL _displayBox;
 }
 
-- (id)initTextCell:(id)arg1;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)setFillColor:(id)arg1;
-- (void)setFillColor:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
-- (void)setDisplayBox:(BOOL)arg1;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)setDisplayBox:(BOOL)arg1;
+- (void)setFillColor:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
+- (void)setFillColor:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)initTextCell:(id)arg1;
 
 @end
 

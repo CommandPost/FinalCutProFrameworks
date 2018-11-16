@@ -12,13 +12,13 @@
 }
 
 + (id)sharedDrawingWatcher;
-- (void)startWatching;
-- (void)_startWatching;
-- (void)_delayedRun:(id)arg1;
-- (void)_notifyOfFirstDrawing:(id)arg1;
-- (void)_notifyDrawingIsAllDone:(id)arg1;
-- (double)timeSpentDrawing;
 - (double)waitTime;
+- (double)timeSpentDrawing;
+- (void)_notifyDrawingIsAllDone:(id)arg1;
+- (void)_notifyOfFirstDrawing:(id)arg1;
+- (void)_delayedRun:(id)arg1;
+- (void)_startWatching;
+- (void)startWatching;
 
 @end
 

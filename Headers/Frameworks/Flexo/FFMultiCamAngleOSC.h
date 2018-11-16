@@ -16,16 +16,16 @@ __attribute__((visibility("hidden")))
     NSString *_lastTextKey;
 }
 
-- (id)init;
-- (void)_setupTextures:(struct _CGLContextObject *)arg1;
-- (void)dealloc;
-- (CDStruct_1b6d18a9)channelTimeForTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)currentChannelTime;
-- (void)simpleTextRectangle:(id)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(const id)arg4 attributes:(id)arg5 attributeCode:(int)arg6 paddingX:(double)arg7 paddingY:(double)arg8;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
-- (BOOL)isAvailableDuringPlayback;
-- (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
+- (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
+- (BOOL)isAvailableDuringPlayback;
+- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (void)simpleTextRectangle:(id)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(id)arg4 attributes:(id)arg5 attributeCode:(int)arg6 paddingX:(double)arg7 paddingY:(double)arg8;
+- (CDStruct_1b6d18a9)currentChannelTime;
+- (CDStruct_1b6d18a9)channelTimeForTime:(CDStruct_1b6d18a9)arg1;
+- (void)dealloc;
+- (void)_setupTextures:(struct _CGLContextObject *)arg1;
+- (id)init;
 
 @end
 

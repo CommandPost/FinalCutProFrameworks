@@ -18,16 +18,16 @@
 }
 
 + (id)instanceWithOpenPanel:(id)arg1;
-- (id)initWithOpenPanel:(id)arg1;
-- (void)dealloc;
-- (id)view;
-- (void)setOriginalPath:(id)arg1;
-- (void)setShowMatchingName:(BOOL)arg1;
-- (void)hideSkip:(BOOL)arg1;
-- (void)showMatchingOnly:(id)arg1;
-- (void)skipFile:(id)arg1;
+- (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
 - (void)skipRemainingFiles:(id)arg1;
-- (BOOL)panel:(id)arg1 shouldShowFilename:(id)arg2;
+- (void)skipFile:(id)arg1;
+- (void)showMatchingOnly:(id)arg1;
+- (void)hideSkip:(BOOL)arg1;
+- (void)setShowMatchingName:(BOOL)arg1;
+- (void)setOriginalPath:(id)arg1;
+- (id)view;
+- (void)dealloc;
+- (id)initWithOpenPanel:(id)arg1;
 
 @end
 

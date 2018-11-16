@@ -12,10 +12,10 @@
 }
 
 + (id)commandsToForward;
-- (void)sendEvent:(id)arg1;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)cancelOperation:(id)arg1;
 @property(retain, nonatomic) id parentModule; // @synthesize parentModule=_parentModule;
+- (void)cancelOperation:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)sendEvent:(id)arg1;
 
 @end
 

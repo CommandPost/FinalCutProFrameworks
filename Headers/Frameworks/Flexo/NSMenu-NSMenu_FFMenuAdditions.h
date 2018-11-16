@@ -7,15 +7,15 @@
 #import "NSMenu.h"
 
 @interface NSMenu (NSMenu_FFMenuAdditions)
-- (id)submenuItemWithTitle:(id)arg1 createIfNeeded:(BOOL)arg2;
-- (void)alphabatizeMenu;
-- (void)configureVideoFiltersMenuForModule:(id)arg1;
-- (void)configureAudioEffectsMenuForModule:(id)arg1 action:(SEL)arg2 channelCount:(long long)arg3 tag:(long long)arg4;
-- (void)configureAudioEffectsMenuForModule:(id)arg1 items:(id)arg2;
-- (void)configureVideoTransitionsMenuForModule:(id)arg1;
-- (void)configureDefaultVideoTransitionsMenuForModule:(id)arg1;
-- (void)configureAudioTransitionsMenuForModule:(id)arg1;
-- (void)configureVideoGeneratorsMenuForModule:(id)arg1;
 - (void)configureTimelineRowHeightMenuForModule:(id)arg1;
+- (void)configureVideoGeneratorsMenuForModule:(id)arg1;
+- (void)configureAudioTransitionsMenuForModule:(id)arg1;
+- (void)configureDefaultVideoTransitionsMenuForModule:(id)arg1;
+- (void)configureVideoTransitionsMenuForModule:(id)arg1;
+- (void)configureAudioEffectsMenuForModule:(id)arg1 items:(id)arg2;
+- (void)configureAudioEffectsMenuForModule:(id)arg1 action:(SEL)arg2 channelCount:(long long)arg3 tag:(long long)arg4;
+- (void)configureVideoFiltersMenuForModule:(id)arg1;
+- (void)alphabatizeMenu;
+- (id)submenuItemWithTitle:(id)arg1 createIfNeeded:(BOOL)arg2;
 @end
 

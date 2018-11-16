@@ -7,16 +7,16 @@
 #import "NSString.h"
 
 @interface NSString (Utilities)
-+ (id)stringWithBytes:(const void *)arg1 length:(unsigned int)arg2 encoding:(unsigned long long)arg3;
-+ (id)universallyUniqueString;
-+ (unsigned int)universallyUniqueStringLength;
-+ (id)universallyUniqueStringForFileNames;
-+ (id)pseudoUniversallyUniqueAlphaNumericString;
 + (id)stringFromOSType:(unsigned int)arg1;
-- (long long)userFriendlyCompare:(id)arg1;
-- (long long)_longestPathCompare:(id)arg1;
-- (id)volumeName;
-- (id)uniqueDuplicateNameWithSet:(id)arg1 suffix:(id)arg2;
++ (id)pseudoUniversallyUniqueAlphaNumericString;
++ (id)universallyUniqueStringForFileNames;
++ (unsigned int)universallyUniqueStringLength;
++ (id)universallyUniqueString;
++ (id)stringWithBytes:(const void *)arg1 length:(unsigned int)arg2 encoding:(unsigned long long)arg3;
 - (id)uniqueNameWithSet:(id)arg1;
+- (id)uniqueDuplicateNameWithSet:(id)arg1 suffix:(id)arg2;
+- (id)volumeName;
+- (long long)_longestPathCompare:(id)arg1;
+- (long long)userFriendlyCompare:(id)arg1;
 @end
 

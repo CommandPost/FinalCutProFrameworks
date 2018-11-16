@@ -8,20 +8,20 @@
 
 @interface TLKAnchorLayer : TLKThemeBackedLayer
 {
-    id _representedObject;
+    id <TLKTimelineItem> _representedObject;
     int _anchorDirection;
     int _itemType;
     int _avContainmentType;
 }
 
-- (id)init;
-- (void)setItemType:(int)arg1 andContainmentMask:(int)arg2;
-- (int)itemType;
-- (int)aVContainmentType;
-- (void)updateAppearance;
-- (void)invalidate;
 @property int anchorDirection; // @synthesize anchorDirection=_anchorDirection;
 @property id <TLKTimelineItem> representedObject; // @synthesize representedObject=_representedObject;
+- (void)invalidate;
+- (void)updateAppearance;
+- (int)aVContainmentType;
+- (int)itemType;
+- (void)setItemType:(int)arg1 andContainmentMask:(int)arg2;
+- (id)init;
 
 @end
 

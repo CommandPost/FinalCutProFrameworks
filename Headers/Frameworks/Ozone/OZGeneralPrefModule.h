@@ -6,7 +6,7 @@
 
 #import "NSProPreferencesModule.h"
 
-@class NSBox, NSButton, NSPopUpButton, NSSlider, NSTextField;
+@class NSButton, NSPopUpButton, NSSlider;
 
 @interface OZGeneralPrefModule : NSProPreferencesModule
 {
@@ -16,26 +16,18 @@
     NSButton *_pLibraryCreateIcons;
     NSPopUpButton *_pLibraryDisplayFolders;
     NSButton *_pLibraryClickToPlay;
-    NSTextField *_pAEPluginPathTF;
     NSButton *_pRemoveUnusedMediaButton;
-    NSBox *_pAEPluginBox;
-    NSBox *_pBeforeAEPluginBox;
 }
 
-- (id)viewForPreferenceNamed:(id)arg1;
-- (void)initializeFromDefaults;
-- (BOOL)isResizable;
-- (void)setStartupAction:(id)arg1;
-- (void)setDropPaletteDelay:(id)arg1;
-- (void)setShowToolTipsFlag:(id)arg1;
-- (void)setLibraryCreateIcons:(id)arg1;
-- (void)setLibraryFolderDisplay:(id)arg1;
-- (void)setLibraryClickToPlay:(id)arg1;
-- (void)chooseAEPluginPath:(id)arg1;
-- (void)clearAEPluginPath:(id)arg1;
-- (void)didEndChooseAEPath:(id)arg1 returnCode:(int)arg2 contextInfo:(void *)arg3;
-- (void)showTheAEAlert:(id)arg1;
 - (void)toggleRemoveUnusedMedia:(id)arg1;
+- (void)setLibraryClickToPlay:(id)arg1;
+- (void)setLibraryFolderDisplay:(id)arg1;
+- (void)setLibraryCreateIcons:(id)arg1;
+- (void)setShowToolTipsFlag:(id)arg1;
+- (void)setDropPaletteDelay:(id)arg1;
+- (void)setStartupAction:(id)arg1;
+- (BOOL)isResizable;
+- (void)initializeFromDefaults;
 
 @end
 

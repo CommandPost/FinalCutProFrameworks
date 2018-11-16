@@ -4,14 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFProvider, NSString;
+
 @protocol FFMediaDisplayProtocol
-- (id)newProvider;
-- (id)displayName;
-- (CDStruct_e83c9415)mediaRange;
-- (CDStruct_1b6d18a9)timeOffset;
-- (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (long long)timecodeDisplayDropFrame;
-- (double)audioSampleRate;
 - (CDStruct_e83c9415)mediaRangeForType:(int)arg1;
+- (double)audioSampleRate;
+- (long long)timecodeDisplayDropFrame;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
+- (CDStruct_1b6d18a9)timeOffset;
+- (CDStruct_e83c9415)mediaRange;
+- (NSString *)displayName;
+- (FFProvider *)newProvider;
 @end
 

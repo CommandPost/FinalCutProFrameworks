@@ -15,13 +15,13 @@
     id _placeholderDelegate;
 }
 
-- (id)layer;
-- (void)dealloc;
-- (void)play;
-- (BOOL)isPlaceholderMovie;
-- (void)setIsPlaceholderMovie:(BOOL)arg1;
-- (void)setPlaceholderDelegate:(id)arg1;
 - (id)placeholderDelegate;
+- (void)setPlaceholderDelegate:(id)arg1;
+- (void)setIsPlaceholderMovie:(BOOL)arg1;
+- (BOOL)isPlaceholderMovie;
+- (void)play;
+- (void)dealloc;
+- (id)layer;
 
 @end
 

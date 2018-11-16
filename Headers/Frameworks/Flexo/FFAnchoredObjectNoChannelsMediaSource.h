@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithAnchoredObject:(id)arg1;
-- (id)sourceType;
-- (void)setChannels:(id)arg1;
 - (id)copySourceDescription;
+- (void)setChannels:(id)arg1;
+- (id)sourceType;
+- (id)initWithAnchoredObject:(id)arg1;
 
 @end
 

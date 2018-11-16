@@ -16,10 +16,11 @@ __attribute__((visibility("hidden")))
     CDStruct_554002f2 _action_opt;
 }
 
-- (void)setBarTarget:(long long)arg1;
-- (id)actionForKey:(id)arg1;
-- (void)setupDefaultProperties;
+- (id).cxx_construct;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
+- (void)setupDefaultProperties;
+- (id)actionForKey:(id)arg1;
+- (void)setBarTarget:(long long)arg1;
 
 @end
 

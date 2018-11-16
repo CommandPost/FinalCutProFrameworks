@@ -55,33 +55,33 @@
     PEAudioCleanupContainerModule *_controller;
 }
 
-- (void)awakeFromNib;
-- (void)setupControls;
-- (void)updatePanel;
-- (void)hideEnhanceUI:(BOOL)arg1;
-- (void)_setPanelToAnalyzing:(id)arg1;
-- (void)setPanelToAnalyzing:(BOOL)arg1;
-- (void)_stopSpinner:(id)arg1;
-- (void)stopSpinner:(id)arg1;
-- (void)hideSpinners;
-- (void)setHeaderNameText:(id)arg1;
-- (void)setHeaderDurationText:(id)arg1;
-- (void)setLoudAmountText:(double)arg1;
-- (void)setLoudUniformText:(double)arg1;
-- (void)setNoiseAmountText:(double)arg1;
-- (void)setBackgroundColor:(id)arg1;
-- (void)_setAutoEnhanceButtonEnabled:(id)arg1;
-- (void)setAutoEnhanceButtonEnabled:(BOOL)arg1;
-- (void)_updateSliderValues;
-- (void)_updateWarnings;
-- (void)_syncEffectStateToUI;
-- (void)_setAllInfoText:(id)arg1;
-- (void)_setupNothingToEnhanceText;
-- (void)_layoutHeaderAndFooter;
-- (void)_layoutBoxElements;
-- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 @property PEAudioCleanupContainerModule *controller; // @synthesize controller=_controller;
 @property BOOL panelEnabled; // @synthesize panelEnabled=_panelEnabled;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
+- (void)_layoutBoxElements;
+- (void)_layoutHeaderAndFooter;
+- (void)_setupNothingToEnhanceText;
+- (void)_setAllInfoText:(id)arg1;
+- (void)_syncEffectStateToUI;
+- (void)_updateWarnings;
+- (void)_updateSliderValues;
+- (void)setAutoEnhanceButtonEnabled:(BOOL)arg1;
+- (void)_setAutoEnhanceButtonEnabled:(id)arg1;
+- (void)setBackgroundColor:(id)arg1;
+- (void)setNoiseAmountText:(double)arg1;
+- (void)setLoudUniformText:(double)arg1;
+- (void)setLoudAmountText:(double)arg1;
+- (void)setHeaderDurationText:(id)arg1;
+- (void)setHeaderNameText:(id)arg1;
+- (void)hideSpinners;
+- (void)stopSpinner:(id)arg1;
+- (void)_stopSpinner:(id)arg1;
+- (void)setPanelToAnalyzing:(BOOL)arg1;
+- (void)_setPanelToAnalyzing:(id)arg1;
+- (void)hideEnhanceUI:(BOOL)arg1;
+- (void)updatePanel;
+- (void)setupControls;
+- (void)awakeFromNib;
 
 @end
 

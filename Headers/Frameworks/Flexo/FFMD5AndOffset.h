@@ -16,17 +16,18 @@ __attribute__((visibility("hidden")))
     CDStruct_bdcb2b0d _compositeMD5;
 }
 
-+ (CDStruct_60067b7e)compositeMD5FromMD5:(CDStruct_60067b7e)arg1 andOffset:(long long)arg2;
-- (id)initWithMD5:(CDStruct_60067b7e)arg1 andOffset:(long long)arg2;
-- (id)description;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
++ (CDStruct_bdcb2b0d)compositeMD5FromMD5:(CDStruct_bdcb2b0d)arg1 andOffset:(long long)arg2;
 @property(readonly) CDStruct_bdcb2b0d compositeMD5; // @synthesize compositeMD5=_compositeMD5;
 @property(readonly) long long offset; // @synthesize offset=_offset;
 @property(readonly) CDStruct_bdcb2b0d baseMD5; // @synthesize baseMD5=_baseMD5;
+- (BOOL)isNull;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (id)description;
+- (id)initWithMD5:(CDStruct_bdcb2b0d)arg1 andOffset:(long long)arg2;
 
 @end
 

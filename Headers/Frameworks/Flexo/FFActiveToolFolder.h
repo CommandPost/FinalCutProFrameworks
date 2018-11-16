@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)addFactory;
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-- (id)activeToolClassName;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
++ (void)addFactory;
 - (void)setActiveToolClassName:(id)arg1;
+- (id)activeToolClassName;
 
 @end
 

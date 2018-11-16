@@ -21,23 +21,23 @@
     int _quality;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)windowDidLoad;
-- (void)windowWillClose:(id)arg1;
-- (BOOL)openDialog:(struct OZDocument *)arg1;
-- (void)initUIFromProjectSettings;
-- (void)_updateCustomQuality;
-- (void)setQuality:(id)arg1;
-- (void)setCustomQuality:(id)arg1;
-- (void)setHighQualityResampling:(id)arg1;
-- (void)setTextQuality:(id)arg1;
-- (void)setShapeAntialiasing:(id)arg1;
-- (void)setIntersectionAntialiasing:(id)arg1;
-- (void)setFloatingPointMovies:(id)arg1;
-- (void)storeProjectSettings;
-- (void)okEdit:(id)arg1;
 - (void)cancelEdit:(id)arg1;
+- (void)okEdit:(id)arg1;
+- (void)storeProjectSettings;
+- (void)setFloatingPointMovies:(id)arg1;
+- (void)setIntersectionAntialiasing:(id)arg1;
+- (void)setShapeAntialiasing:(id)arg1;
+- (void)setTextQuality:(id)arg1;
+- (void)setHighQualityResampling:(id)arg1;
+- (void)setCustomQuality:(id)arg1;
+- (void)setQuality:(id)arg1;
+- (void)_updateCustomQuality;
+- (void)initUIFromProjectSettings;
+- (BOOL)openDialog:(struct OZDocument *)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)windowDidLoad;
+- (void)dealloc;
+- (id)init;
 
 @end
 

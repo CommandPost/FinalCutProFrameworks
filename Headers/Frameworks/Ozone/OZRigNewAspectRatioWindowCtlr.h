@@ -24,17 +24,18 @@
 }
 
 + (void)runModalForWidget:(struct OZRigWidget *)arg1 listCtlr:(id)arg2 time:(const CDStruct_1b6d18a9 *)arg3;
-- (void)windowDidLoad;
-- (void)setWidget:(struct OZRigWidget *)arg1 listCtlr:(id)arg2 time:(const CDStruct_1b6d18a9 *)arg3;
-- (void)setDARPreset:(id)arg1;
-- (void)setAspectRatio:(id)arg1;
-- (void)setPixelARFromPopUp:(id)arg1;
-- (void)setPixelARFromTF:(id)arg1;
-- (void)setSampleWidth:(id)arg1;
-- (void)setSampleHeight:(id)arg1;
-- (void)done:(id)arg1;
-- (void)cancel:(id)arg1;
+- (id).cxx_construct;
 - (void)updateCustomDisplayAspect;
+- (void)cancel:(id)arg1;
+- (void)done:(id)arg1;
+- (void)setSampleHeight:(id)arg1;
+- (void)setSampleWidth:(id)arg1;
+- (void)setPixelARFromTF:(id)arg1;
+- (void)setPixelARFromPopUp:(id)arg1;
+- (void)setAspectRatio:(id)arg1;
+- (void)setDARPreset:(id)arg1;
+- (void)setWidget:(struct OZRigWidget *)arg1 listCtlr:(id)arg2 time:(const CDStruct_1b6d18a9 *)arg3;
+- (void)windowDidLoad;
 
 @end
 

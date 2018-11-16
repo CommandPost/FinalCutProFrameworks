@@ -14,17 +14,17 @@
     TLKItemEdgeTable *_itemEdgeTable;
 }
 
-- (id)init;
-- (void)dealloc;
-- (id)description;
-- (void)addContainerSegmentsObject:(id)arg1;
-- (void)removeContainerSegmentsObject:(id)arg1;
-- (void)addManagedItemsObject:(id)arg1 withFrame:(struct CGRect)arg2 isAnchored:(BOOL)arg3;
-- (void)removeManagedItemsObject:(id)arg1 fromContainerSegment:(id)arg2;
-- (void)calculateSegments;
-- (id)invalidSegments;
-- (id)findInvalidItemsForItems:(id)arg1;
 @property(copy, nonatomic) NSArray *containerSegments; // @synthesize containerSegments=_containerSegments;
+- (id)findInvalidItemsForItems:(id)arg1;
+- (id)invalidSegments;
+- (void)calculateSegments;
+- (void)removeManagedItemsObject:(id)arg1 fromContainerSegment:(id)arg2;
+- (void)addManagedItemsObject:(id)arg1 withFrame:(struct CGRect)arg2 isAnchored:(BOOL)arg3;
+- (void)removeContainerSegmentsObject:(id)arg1;
+- (void)addContainerSegmentsObject:(id)arg1;
+- (id)description;
+- (void)dealloc;
+- (id)init;
 
 @end
 

@@ -16,13 +16,13 @@
     NSArray *_pFilenames;
 }
 
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)windowWillClose:(id)arg1;
-- (void)openWithFilenames:(id)arg1;
-- (void)okNotify:(id)arg1;
-- (int)numberOfRowsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
+- (int)numberOfRowsInTableView:(id)arg1;
+- (void)okNotify:(id)arg1;
+- (void)openWithFilenames:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)awakeFromNib;
+- (void)dealloc;
 
 @end
 

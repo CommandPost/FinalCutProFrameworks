@@ -13,23 +13,23 @@
     double _alpha;
 }
 
-- (id)initWithImageRef:(struct CGImage *)arg1;
-- (void)dealloc;
-- (void)finalize;
-- (struct CGPattern *)newCGPattern;
-- (struct CGPattern *)pattern;
-- (void)set;
-- (id)colorUsingColorSpaceName:(id)arg1 device:(id)arg2;
-- (id)colorSpaceName;
-- (id)description;
-- (struct CGImage *)patternImageRef;
-- (id)patternImage;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)setAlpha:(double)arg1;
 - (double)alpha;
+- (void)setAlpha:(double)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (id)patternImage;
+- (struct CGImage *)patternImageRef;
+- (id)description;
+- (id)colorSpaceName;
+- (id)colorUsingColorSpaceName:(id)arg1 device:(id)arg2;
+- (void)set;
+- (struct CGPattern *)pattern;
+- (struct CGPattern *)newCGPattern;
+- (void)finalize;
+- (void)dealloc;
+- (id)initWithImageRef:(struct CGImage *)arg1;
 
 @end
 

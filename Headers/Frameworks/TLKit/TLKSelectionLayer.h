@@ -12,6 +12,8 @@
 {
     CALayer *_rootLayer;
     CALayer *_emphasizedLayer;
+    CALayer *_emphasizedRingLayer;
+    CALayer *_emphasizedInnerShadowLayer;
     CALayer *_normalLayer;
     CALayer *_normalRingLayer;
     CALayer *_normalInnerShadowLayer;
@@ -21,18 +23,19 @@
     unsigned int reserved:30;
 }
 
-- (id)init;
-- (void)dealloc;
-@property BOOL containingViewFirstResponder;
-- (void)_updateLayers:(id)arg1;
-- (void)invalidate;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
-- (void)setDelegate:(id)arg1;
-- (void)layoutSublayers;
-- (void)setCornerRadius:(double)arg1;
-@property BOOL ignoresHitTesting;
-- (id)hitTest:(struct CGPoint)arg1;
 - (id)shadowedLayer;
+- (id)hitTest:(struct CGPoint)arg1;
+@property BOOL ignoresHitTesting;
+- (void)setCornerRadius:(double)arg1;
+- (void)layoutSublayers;
+- (void)setDelegate:(id)arg1;
+- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
+- (void)invalidate;
+- (void)_updateLayers:(id)arg1;
+@property BOOL containingViewFirstResponder;
+- (void)_updateFirstResponderStatus;
+- (void)dealloc;
+- (id)init;
 
 @end
 

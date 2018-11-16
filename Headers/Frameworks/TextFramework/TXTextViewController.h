@@ -19,32 +19,32 @@
     BOOL _isChangingText;
 }
 
-- (void)setTabChars:(struct PCString *)arg1;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 inTextInspector:(BOOL)arg3;
-- (void)dealloc;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (BOOL)isEnabled;
-- (void)checkGrammarInParagraph:(struct TXParagraphStyle *)arg1;
-- (void)checkSpellingAtCursor;
-- (void)textChanged:(id)arg1;
-- (void)textDeleted:(id)arg1;
-- (struct TXTextInput *)text;
-- (void)textSelectionChanged:(id)arg1;
-- (void)notify:(unsigned int)arg1;
-- (id)findMotionEffect;
-- (int)textOperation;
-- (BOOL)textView:(id)arg1 doCommandBySelector:(SEL)arg2;
-- (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
-- (void)textViewDidChangeSelection:(id)arg1;
-- (struct _NSRange)textView:(id)arg1 willChangeSelectionFromCharacterRange:(struct _NSRange)arg2 toCharacterRange:(struct _NSRange)arg3;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (id)notificationUserInfo;
-- (id)inspectorModule;
-- (void)viewDidResignFirstResponder;
 @property(retain, nonatomic) FFMotionEffect *motionEffect; // @synthesize motionEffect=_motionEffect;
+- (void)viewDidResignFirstResponder;
+- (id)inspectorModule;
+- (id)notificationUserInfo;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (struct _NSRange)textView:(id)arg1 willChangeSelectionFromCharacterRange:(struct _NSRange)arg2 toCharacterRange:(struct _NSRange)arg3;
+- (void)textViewDidChangeSelection:(id)arg1;
+- (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (BOOL)textView:(id)arg1 doCommandBySelector:(SEL)arg2;
+- (int)textOperation;
+- (id)findMotionEffect;
+- (void)notify:(unsigned int)arg1;
+- (void)textSelectionChanged:(id)arg1;
+- (struct TXTextInput *)text;
+- (void)textDeleted:(id)arg1;
+- (void)textChanged:(id)arg1;
+- (void)checkSpellingAtCursor;
+- (void)checkGrammarInParagraph:(struct TXParagraphStyle *)arg1;
+- (BOOL)isEnabled;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 inTextInspector:(BOOL)arg3;
+- (void)setText:(struct TXTextInput *)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

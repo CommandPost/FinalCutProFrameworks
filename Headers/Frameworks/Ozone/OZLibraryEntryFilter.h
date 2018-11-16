@@ -18,22 +18,22 @@
     unsigned int _excludeType[4];
 }
 
-- (id)init;
-- (id)initWithType:(int)arg1 includeID1:(const struct PCUUID *)arg2 includeID2:(const struct PCUUID *)arg3 excludeID:(const struct PCUUID *)arg4 name:(id)arg5 theme:(id)arg6;
-- (void)setEntryType:(int)arg1;
-- (int)getEntryType;
-- (void)setIncludeType1:(const struct PCUUID *)arg1;
-- (struct PCUUID)getIncludeType1;
-- (void)setIncludeType2:(const struct PCUUID *)arg1;
-- (struct PCUUID)getIncludeType2;
-- (void)setExcludeType:(const struct PCUUID *)arg1;
-- (struct PCUUID)getExcludeType;
-- (void)setName:(id)arg1;
-- (id)getName;
-- (void)setTheme:(id)arg1;
-- (id)getTheme;
-- (BOOL)isAllowed:(id)arg1;
 - (BOOL)allAllowed;
+- (BOOL)isAllowed:(id)arg1;
+- (id)getTheme;
+- (void)setTheme:(id)arg1;
+- (id)getName;
+- (void)setName:(id)arg1;
+- (struct PCUUID)getExcludeType;
+- (void)setExcludeType:(const struct PCUUID *)arg1;
+- (struct PCUUID)getIncludeType2;
+- (void)setIncludeType2:(const struct PCUUID *)arg1;
+- (struct PCUUID)getIncludeType1;
+- (void)setIncludeType1:(const struct PCUUID *)arg1;
+- (int)getEntryType;
+- (void)setEntryType:(int)arg1;
+- (id)initWithType:(int)arg1 includeID1:(const struct PCUUID *)arg2 includeID2:(const struct PCUUID *)arg3 excludeID:(const struct PCUUID *)arg4 name:(id)arg5 theme:(id)arg6;
+- (id)init;
 
 @end
 

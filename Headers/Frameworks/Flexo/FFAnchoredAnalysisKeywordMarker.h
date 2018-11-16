@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-- (id)type;
-- (id)trackType;
-- (id)displayName;
 - (void)setDisplayName:(id)arg1;
+- (id)displayName;
+- (id)trackType;
+- (id)type;
 
 @end
 

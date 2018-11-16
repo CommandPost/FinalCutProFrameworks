@@ -14,6 +14,7 @@
     LKButton *_addFolderKeywordsCheckBox;
     LKButton *_optimizeMediaCheckBox;
     LKButton *_createProxyMediaCheckBox;
+    LKButton *_createStillCacheCheckBox;
     LKButton *_autoColorBalance;
     LKButton *_autoStabilization;
     LKButton *_autoFaceDetection;
@@ -24,11 +25,12 @@
     LKButton *_autoCleanupAudio;
 }
 
-- (void)awakeFromNib;
-- (void)dealloc;
-- (id)titleForIdentifier:(id)arg1;
-- (BOOL)findPeopleEnabled;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (BOOL)findPeopleEnabled;
+- (id)titleForIdentifier:(id)arg1;
+- (void)dealloc;
+- (void)awakeFromNib;
+- (BOOL)isResizable;
 
 @end
 

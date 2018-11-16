@@ -10,7 +10,7 @@
 
 @interface OZTransform3DHUDButton : LKButton
 {
-    PCVector2_79efa81a *_startPoint;
+    PCVector2_79efa81a _startPoint;
     BOOL _isSettingTransform;
     BOOL _setCoarse;
     BOOL _setFine;
@@ -24,18 +24,19 @@
     NSImage *_altPressedImage;
 }
 
-- (void)dealloc;
-- (void)setImage:(id)arg1;
-- (void)setPressedImage:(id)arg1;
-- (void)setAltActionImage:(id)arg1;
-- (void)setAltPressedImage:(id)arg1;
-- (void)checkModifiers:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)setController:(id)arg1;
-- (id)controller;
+- (id).cxx_construct;
 - (void)swapImages;
+- (id)controller;
+- (void)setController:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)checkModifiers:(id)arg1;
+- (void)setAltPressedImage:(id)arg1;
+- (void)setAltActionImage:(id)arg1;
+- (void)setPressedImage:(id)arg1;
+- (void)setImage:(id)arg1;
+- (void)dealloc;
 
 @end
 

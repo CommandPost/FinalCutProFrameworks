@@ -14,8 +14,8 @@
 }
 
 + (id)commandsToForward;
-- (id)undoManager;
 @property(retain, nonatomic) FFAnchoredTimeMarker *marker; // @synthesize marker=_marker;
+- (id)undoManager;
 
 @end
 

@@ -10,11 +10,11 @@
 {
 }
 
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
+- (void)getScaleAtTime:(CDStruct_198678f7)arg1 curveX:(double *)arg2 curveY:(double *)arg3;
+- (void)getScaleAtTime:(CDStruct_198678f7)arg1 x:(double *)arg2 y:(double *)arg3;
 - (struct OZChannelScale *)ozChannel;
-- (void)getScaleAtTime:(CDStruct_1b6d18a9)arg1 x:(double *)arg2 y:(double *)arg3;
-- (void)getScaleAtTime:(CDStruct_1b6d18a9)arg1 curveX:(double *)arg2 curveY:(double *)arg3;
 
 @end
 

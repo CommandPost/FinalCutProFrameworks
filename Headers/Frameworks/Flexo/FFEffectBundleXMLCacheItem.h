@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)cacheItemWithXMLDocument:(id)arg1;
-- (id)initWithXMLDocument:(id)arg1;
-- (void)dealloc;
-- (void)updateLastAccessTime;
 @property(readonly, nonatomic) double lastAccessTime; // @synthesize lastAccessTime=_lastAccessTime;
 @property(readonly, nonatomic) NSXMLDocument *document; // @synthesize document=_document;
+- (void)updateLastAccessTime;
+- (void)dealloc;
+- (id)initWithXMLDocument:(id)arg1;
 
 @end
 

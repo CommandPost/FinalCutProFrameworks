@@ -12,16 +12,16 @@
     long long _startingFrame;
 }
 
-- (id)init;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)stringForObjectValue:(id)arg1;
-- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_setupInitialValues;
-- (void)_setupObservation;
-- (void)_invalidateObservation;
 @property(nonatomic) BOOL isDuration; // @synthesize isDuration=_isDuration;
+- (void)_invalidateObservation;
+- (void)_setupObservation;
+- (void)_setupInitialValues;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
+- (id)stringForObjectValue:(id)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

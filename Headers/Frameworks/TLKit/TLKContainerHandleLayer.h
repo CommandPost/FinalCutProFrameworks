@@ -11,9 +11,9 @@
     CALayer *_selectionLayer;
 }
 
-- (id)init;
-- (id)selectionLayer;
 - (void)setDelegate:(id)arg1;
+- (id)selectionLayer;
+- (id)init;
 
 @end
 

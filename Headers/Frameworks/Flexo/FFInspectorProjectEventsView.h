@@ -20,21 +20,6 @@ __attribute__((visibility("hidden")))
     FFInspectorProjectEventsRow *_draggedRow;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)clearContentRowList;
-- (BOOL)hasValidContentRowInList;
-- (void)prepareToLoadEventList;
-- (void)completeLoadingEventList;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (BOOL)isFlipped;
-- (id)rowAtPoint:(struct CGPoint)arg1;
-- (BOOL)isContentRowView:(id)arg1;
-- (void)rearrangeRows:(id)arg1;
-- (void)rearrangeRowsAtPoint:(struct CGPoint)arg1 mouseUpwardMovement:(BOOL)arg2;
-- (void)addRow:(id)arg1;
 @property(retain) FFInspectorProjectEventsRow *draggedRow; // @synthesize draggedRow=_draggedRow;
 @property(retain) FFInspectorProjectEventsRow *bottomRow; // @synthesize bottomRow=_bottomRow;
 @property(retain) NSMutableArray *eventsRowList; // @synthesize eventsRowList=_eventsRowList;
@@ -42,6 +27,21 @@ __attribute__((visibility("hidden")))
 @property struct CGPoint mouseDownPoint; // @synthesize mouseDownPoint=_mouseDownPoint;
 @property long long targetRowIndex; // @synthesize targetRowIndex=_targetRowIndex;
 @property long long draggedRowOriginalIndex; // @synthesize draggedRowOriginalIndex=_draggedRowOriginalIndex;
+- (void)addRow:(id)arg1;
+- (void)rearrangeRowsAtPoint:(struct CGPoint)arg1 mouseUpwardMovement:(BOOL)arg2;
+- (void)rearrangeRows:(id)arg1;
+- (BOOL)isContentRowView:(id)arg1;
+- (id)rowAtPoint:(struct CGPoint)arg1;
+- (BOOL)isFlipped;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)completeLoadingEventList;
+- (void)prepareToLoadEventList;
+- (BOOL)hasValidContentRowInList;
+- (void)clearContentRowList;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

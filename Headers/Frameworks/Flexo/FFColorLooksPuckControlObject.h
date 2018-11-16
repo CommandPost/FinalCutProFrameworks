@@ -16,14 +16,14 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-- (id)initWithPuckControlGroups:(id)arg1 name:(id)arg2;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithLegacyColorBoardPresetData:(id)arg1;
-- (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (id)displayName;
 @property(retain, nonatomic) NSArray *puckControlGroups; // @synthesize puckControlGroups=_puckControlGroups;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+- (id)displayName;
+- (void)encodeWithCoder:(id)arg1;
+- (void)dealloc;
+- (id)initWithLegacyColorBoardPresetData:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithPuckControlGroups:(id)arg1 name:(id)arg2;
 
 @end
 

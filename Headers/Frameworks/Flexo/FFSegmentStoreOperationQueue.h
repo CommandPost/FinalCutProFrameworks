@@ -18,13 +18,13 @@ __attribute__((visibility("hidden")))
     unsigned int _unfinishedOps;
 }
 
-- (id)initWithThreadCount:(long long)arg1 queueLength:(unsigned int)arg2;
-- (void)dealloc;
-- (void)enqueue:(id)arg1 mustQueue:(BOOL)arg2;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)cancelPendingOperations;
-- (void)addInvocationWhenPendingSamplesFinish:(id)arg1;
 - (void)waitForAllOperationsToFinish;
+- (void)addInvocationWhenPendingSamplesFinish:(id)arg1;
+- (void)cancelPendingOperations;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)enqueue:(id)arg1 mustQueue:(BOOL)arg2;
+- (void)dealloc;
+- (id)initWithThreadCount:(long long)arg1 queueLength:(unsigned int)arg2;
 
 @end
 

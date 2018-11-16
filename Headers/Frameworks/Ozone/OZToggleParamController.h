@@ -15,11 +15,11 @@
     OZViewController *_pCollapsedController;
 }
 
-- (id)initWithLabelController:(id)arg1 withExpandedParamController:(id)arg2 withCollapsedParamController:(id)arg3 isHUD:(BOOL)arg4;
-- (void)swapView:(id)arg1 withView:(id)arg2;
-- (void)notify:(unsigned int)arg1;
-- (void)twiddle;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)twiddle;
+- (void)notify:(unsigned int)arg1;
+- (void)swapView:(id)arg1 withView:(id)arg2;
+- (id)initWithLabelController:(id)arg1 withExpandedParamController:(id)arg2 withCollapsedParamController:(id)arg3 isHUD:(BOOL)arg4;
 
 @end
 

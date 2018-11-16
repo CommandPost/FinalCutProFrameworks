@@ -11,13 +11,13 @@
 @interface LKAutounbinderBinding : NSObject
 {
     NSString *_name;
-    NSString *_boundObject;
+    NSObject *_boundObject;
 }
 
-- (id)initWithName:(id)arg1 boundObject:(id)arg2;
-- (void)dealloc;
-- (BOOL)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (void)dealloc;
+- (id)initWithName:(id)arg1 boundObject:(id)arg2;
 
 @end
 

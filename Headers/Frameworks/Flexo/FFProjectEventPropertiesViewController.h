@@ -6,7 +6,7 @@
 
 #import "NSViewController.h"
 
-@class FFAssetRef, FFMediaEventProject, FFSequenceProject, LKImageView, LKTextField, NSProThemeFacet, NSProThemeImageView, NSSet;
+@class FFAnchoredObject, FFAssetRef, FFMediaEventProject, FFSequenceProject, LKImageView, LKTextField, NSProThemeFacet, NSProThemeImageView, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface FFProjectEventPropertiesViewController : NSViewController
@@ -25,26 +25,30 @@ __attribute__((visibility("hidden")))
     NSProThemeFacet *_okEventFacet;
     NSProThemeFacet *_notOkEventFacet;
     NSSet *_clipRefs;
+    BOOL _isForProjectInspector;
+    FFAnchoredObject *_inspectedItem;
 }
 
-- (void)dealloc;
-- (void)setSequence:(id)arg1;
-- (void)_createFacets;
-- (void)_add:(id)arg1 toUniqueSet:(id)arg2;
-- (void)_intersect:(id)arg1 usingIdsIn:(id)arg2;
-@property(retain, nonatomic) FFMediaEventProject *project; // @synthesize project=_project;
-- (void)setAssetRef:(id)arg1;
-- (void)useLargeFacet;
-- (void)moveDriveIconAndClipsFoundWithRightOffset:(int)arg1;
+@property(retain, nonatomic) FFAnchoredObject *inspectedItem; // @synthesize inspectedItem=_inspectedItem;
+@property BOOL isForProjectInspector; // @synthesize isForProjectInspector=_isForProjectInspector;
 @property(retain, nonatomic) NSSet *clipRefs; // @synthesize clipRefs=_clipRefs;
 @property BOOL mergeFoundClipsCountAndName; // @synthesize mergeFoundClipsCountAndName=_mergeFoundClipsCountAndName;
 @property int numberOfOnlineClips; // @synthesize numberOfOnlineClips=_numOnlineClips;
 @property(readonly) int numberOfOfflineClips; // @synthesize numberOfOfflineClips=_numOfflineClips;
 @property(retain, nonatomic) LKTextField *clipsMissing; // @synthesize clipsMissing=_clipsMissing;
+@property(retain, nonatomic) FFMediaEventProject *project; // @synthesize project=_project;
 @property(retain, nonatomic) LKTextField *driveName; // @synthesize driveName=_driveName;
 @property(retain, nonatomic) LKImageView *driveImageView; // @synthesize driveImageView=_driveImageView;
 @property(retain, nonatomic) LKTextField *eventName; // @synthesize eventName=_eventName;
 @property(retain, nonatomic) NSProThemeImageView *eventImageView; // @synthesize eventImageView=_eventImageView;
+- (void)moveDriveIconAndClipsFoundWithRightOffset:(int)arg1;
+- (void)useLargeFacet;
+- (void)setAssetRef:(id)arg1;
+- (void)_intersect:(id)arg1 usingIdsIn:(id)arg2;
+- (void)_add:(id)arg1 toUniqueSet:(id)arg2;
+- (void)_createFacets;
+- (void)setSequence:(id)arg1;
+- (void)dealloc;
 
 @end
 

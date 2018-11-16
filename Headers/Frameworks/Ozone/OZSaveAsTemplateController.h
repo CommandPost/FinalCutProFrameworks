@@ -28,36 +28,38 @@
     int _categoryType;
     TMTheme *_lastSelectedTheme;
     struct map<unsigned int, unsigned int, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned int>>> _dropZonesFootageIDs;
+    CDUnknownBlockType _completionHandler;
 }
 
 + (void)initialize;
-- (void)setInformativeText;
-- (id)init;
-- (void)dealloc;
-- (void)windowDidLoad;
-- (void)openModalSheetForDocument:(id)arg1;
-- (void)createNewCollection:(id)arg1;
-- (void)selectTheme:(id)arg1;
-- (void)selectNoTheme:(id)arg1;
-- (void)didSelectPublishAsFCPGenButton:(id)arg1;
-- (void)createNewTheme:(id)arg1;
-- (void)populateThemePopUpAndSelectTheme:(id)arg1;
-- (void)cancel:(id)arg1;
-- (void)save:(id)arg1;
-- (void)selectUnused:(id)arg1;
-- (vector_77d837c3)replaceDropZonesForDocument:(id)arg1;
-- (void)undoReplaceDropZonesForDocument:(id)arg1 lockedDropZoneIDs:(vector_77d837c3)arg2;
-- (void)generatePosterFrameForDocument:(id)arg1 name:(id)arg2 size:(struct CGSize)arg3;
-- (void)generatePosterFramesForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;
-- (void)generateQuicktimePreviewForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;
-- (void)generatePosterFramesAndQTPreviewForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;
-- (void)reloadCollectionPopUp;
-- (void)saveStickyPrefs;
-- (struct CGSize)scaleSize:(struct CGSize)arg1 toSize:(struct CGSize)arg2;
-- (void)selectCollection:(id)arg1;
-- (void)sheetDidEnd:(id)arg1 returnCode:(int)arg2 contextInfo:(void *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)createNewCollection:(id)arg1;
+- (void)selectCollection:(id)arg1;
+- (struct CGSize)scaleSize:(struct CGSize)arg1 toSize:(struct CGSize)arg2;
+- (void)reloadCollectionPopUp;
+- (void)createNewTheme:(id)arg1;
+- (void)selectNoTheme:(id)arg1;
+- (void)selectTheme:(id)arg1;
+- (void)populateThemePopUpAndSelectTheme:(id)arg1;
+- (void)generatePosterFramesAndQTPreviewForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;
+- (void)generateQuicktimePreviewForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;
+- (void)generatePosterFramesForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;
+- (void)generatePosterFrameForDocument:(id)arg1 name:(id)arg2 size:(struct CGSize)arg3;
+- (void)undoReplaceDropZonesForDocument:(id)arg1 lockedDropZoneIDs:(vector_77d837c3)arg2;
+- (vector_77d837c3)replaceDropZonesForDocument:(id)arg1;
+- (BOOL)isValidFilenameForPath:(id)arg1;
+- (BOOL)isEnoughDiskSpaceAtPath:(id)arg1 withSize:(unsigned long long)arg2;
+- (void)closeWithCode:(long long)arg1;
+- (void)save:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)didSelectPublishAsFCPGenButton:(id)arg1;
+- (void)beginSheetModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)windowDidLoad;
+- (void)dealloc;
+- (id)init;
+- (void)setInformativeText;
 
 @end
 

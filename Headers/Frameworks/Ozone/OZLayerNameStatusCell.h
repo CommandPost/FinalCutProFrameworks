@@ -24,33 +24,33 @@
     long long _trackingColumn;
 }
 
-- (id)initTextCell:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)controlView;
-- (void)setControlView:(id)arg1;
-- (id)image;
-- (void)setImage:(id)arg1;
-- (id)badge;
-- (void)setBadge:(id)arg1;
-- (void)setEnabled:(BOOL)arg1;
-- (void)setTextColor:(id)arg1;
-- (void)setNameValue:(id)arg1 isActive:(BOOL)arg2;
-- (void)setTransparentValues:(unsigned int)arg1;
-- (void)setStateValues:(unsigned int)arg1;
-- (void)setEnabledValues:(unsigned int)arg1;
-- (void)setIsolateState:(int)arg1;
-- (struct CGRect)nameFieldCellRect:(struct CGRect)arg1;
-- (struct CGRect)buttonCellRect:(struct CGRect)arg1 atIndex:(long long)arg2;
-- (struct CGRect)isolateCellRect:(struct CGRect)arg1;
-- (BOOL)pointInName:(struct CGRect)arg1 inView:(id)arg2 event:(id)arg3;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
-- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
-- (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
-- (void)changeButtonValue:(id)arg1;
-- (void)isolate:(id)arg1;
 - (id)menuForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
+- (void)isolate:(id)arg1;
+- (void)changeButtonValue:(id)arg1;
+- (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
+- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
+- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (BOOL)pointInName:(struct CGRect)arg1 inView:(id)arg2 event:(id)arg3;
+- (struct CGRect)isolateCellRect:(struct CGRect)arg1;
+- (struct CGRect)buttonCellRect:(struct CGRect)arg1 atIndex:(long long)arg2;
+- (struct CGRect)nameFieldCellRect:(struct CGRect)arg1;
+- (void)setIsolateState:(int)arg1;
+- (void)setEnabledValues:(unsigned int)arg1;
+- (void)setStateValues:(unsigned int)arg1;
+- (void)setTransparentValues:(unsigned int)arg1;
+- (void)setNameValue:(id)arg1 isActive:(BOOL)arg2;
+- (void)setTextColor:(id)arg1;
+- (void)setEnabled:(BOOL)arg1;
+- (void)setBadge:(id)arg1;
+- (id)badge;
+- (void)setImage:(id)arg1;
+- (id)image;
+- (void)setControlView:(id)arg1;
+- (id)controlView;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initTextCell:(id)arg1;
 
 @end
 

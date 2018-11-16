@@ -10,10 +10,10 @@
 {
 }
 
-- (id)_showColorsItemFacet;
-- (id)_showFontsItemFacet;
-- (id)_customizeToolbarItemFacet;
 - (id)_printItemFacet;
+- (id)_customizeToolbarItemFacet;
+- (id)_showFontsItemFacet;
+- (id)_showColorsItemFacet;
 
 @end
 

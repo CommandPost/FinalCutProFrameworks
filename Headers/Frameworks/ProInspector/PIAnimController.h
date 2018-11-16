@@ -14,11 +14,11 @@
 }
 
 + (id)addAnimControllerToController:(id)arg1 channel:(struct OZChannelBase *)arg2 context:(id)arg3;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)update;
-- (void)enable;
-- (void)disable;
 - (void)reset;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

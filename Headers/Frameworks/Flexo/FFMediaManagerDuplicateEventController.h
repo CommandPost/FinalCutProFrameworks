@@ -15,13 +15,13 @@
 }
 
 + (void)showMediaManagerDuplicateEventSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 isMove:(BOOL)arg4 sourceEvents:(id)arg5 destinationLocation:(id)arg6;
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)finishMMOperation;
-- (void)updateAssetRefsInCompoundClipAfterDuplicatingEvent:(id)arg1;
-- (void)OK:(id)arg1;
-- (void)showMediaManagerDuplicateEventSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 isMove:(BOOL)arg4 sourceEvents:(id)arg5 destinationLocation:(id)arg6;
 @property(retain) NSArray *sourceEvents; // @synthesize sourceEvents=_sourceEvents;
+- (void)showMediaManagerDuplicateEventSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 isMove:(BOOL)arg4 sourceEvents:(id)arg5 destinationLocation:(id)arg6;
+- (void)OK:(id)arg1;
+- (void)updateAssetRefsAfterDuplicatingEvent:(id)arg1;
+- (void)finishMMOperation;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

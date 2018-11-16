@@ -10,11 +10,11 @@
 {
 }
 
-+ (id)layerListBackgroundColor;
-+ (id)timelineBackgroundColor;
-+ (id)timelineRowSelectedRangeBorderColor;
-+ (id)timelinePlayRangeDividingLineColor;
 + (id)timelinePlayRangeDividingAdjacentLineColor;
++ (id)timelinePlayRangeDividingLineColor;
++ (id)timelineRowSelectedRangeBorderColor;
++ (id)timelineBackgroundColor;
++ (id)layerListBackgroundColor;
 
 @end
 

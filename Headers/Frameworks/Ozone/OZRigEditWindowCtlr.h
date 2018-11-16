@@ -16,15 +16,15 @@
     struct OZRigWidget *_pWidget;
 }
 
-+ (id)widgetToCtlrMap;
-+ (void)startEditModeForWidget:(struct OZRigWidget *)arg1;
 + (void)cancelEditingModeForWidget:(struct OZRigWidget *)arg1;
-- (id)initWithWidget:(struct OZRigWidget *)arg1;
-- (void)windowDidLoad;
-- (void)windowWillClose:(id)arg1;
-- (void)cleanup;
-- (void)stopEditMode:(id)arg1;
++ (void)startEditModeForWidget:(struct OZRigWidget *)arg1;
++ (id)widgetToCtlrMap;
 - (void)cancel:(id)arg1;
+- (void)stopEditMode:(id)arg1;
+- (void)cleanup;
+- (void)windowWillClose:(id)arg1;
+- (void)windowDidLoad;
+- (id)initWithWidget:(struct OZRigWidget *)arg1;
 
 @end
 

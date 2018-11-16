@@ -10,21 +10,24 @@ __attribute__((visibility("hidden")))
 @interface FFAnchoredMarker : FFAnchoredObject
 {
     CDStruct_1b6d18a9 _duration;
+    CDStruct_e83c9415 _unclippedRange;
 }
 
++ (void)removeSelectionMarkersBeforePasteForObject:(id)arg1;
 + (id)copyClassDescription;
-- (id)type;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (CDStruct_1b6d18a9)duration;
-- (void)setDuration:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_e83c9415)unclippedRange;
-- (BOOL)isMarker;
-- (void)setMetadata:(id)arg1;
-- (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (long long)timecodeDisplayDropFrame;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
+- (void)setMetadata:(id)arg1;
+- (BOOL)contributesToCompoundClip;
+- (BOOL)isMarker;
+- (CDStruct_e83c9415)unclippedRange;
+- (void)setDuration:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)duration;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
+- (id)type;
 - (CDStruct_e83c9415)visibleClippedRangeInParentSpace;
 
 @end

@@ -10,8 +10,8 @@
 {
 }
 
-- (id)_baseFacet;
 - (id)searchFieldButtonFacetForButtonCode:(long long)arg1;
+- (id)_baseFacet;
 
 @end
 

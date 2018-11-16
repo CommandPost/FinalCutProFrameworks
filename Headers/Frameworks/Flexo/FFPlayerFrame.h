@@ -17,6 +17,7 @@
     FFImage *_image2;
     struct CGRect _bounds;
     double _rate;
+    unsigned int _timecodeType;
     BOOL _viewed;
     BOOL _isErrorFrame;
     BOOL _isBlankFrame;
@@ -24,27 +25,28 @@
     NSMapTable *_drawProperties;
 }
 
-- (id)initWithTime:(CDStruct_1b6d18a9)arg1 timeRepresented:(CDStruct_1b6d18a9)arg2 nativeFrameDur:(CDStruct_1b6d18a9)arg3 bounds:(struct CGRect)arg4 forRate:(double)arg5;
-- (BOOL)hasSecondField;
-- (void)setDrawProperties:(id)arg1;
-- (id)drawProperties;
-- (void)setOverlayTexture:(id)arg1;
-- (id)overlayTexture;
-- (void)setViewed;
-- (BOOL)viewed;
-- (void)setImage1:(id)arg1;
-- (void)setImage2:(id)arg1;
-- (id)image1;
-- (id)image2;
-- (id)description;
-- (void)dealloc;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 nativeFrameDur; // @synthesize nativeFrameDur=_nativeFrameDur;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
+@property(readonly, nonatomic) unsigned int timecodeType; // @synthesize timecodeType=_timecodeType;
 @property BOOL isBlankFrame; // @synthesize isBlankFrame=_isBlankFrame;
 @property BOOL isErrorFrame; // @synthesize isErrorFrame=_isErrorFrame;
 @property(readonly, nonatomic) double rate; // @synthesize rate=_rate;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 timeRepresented; // @synthesize timeRepresented=_timeRepresented;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
+- (void)dealloc;
+- (id)description;
+- (id)image2;
+- (id)image1;
+- (void)setImage2:(id)arg1;
+- (void)setImage1:(id)arg1;
+- (BOOL)viewed;
+- (void)setViewed;
+- (id)overlayTexture;
+- (void)setOverlayTexture:(id)arg1;
+- (id)drawProperties;
+- (void)setDrawProperties:(id)arg1;
+- (BOOL)hasSecondField;
+- (id)initWithTime:(CDStruct_1b6d18a9)arg1 timeRepresented:(CDStruct_1b6d18a9)arg2 nativeFrameDur:(CDStruct_1b6d18a9)arg3 bounds:(struct CGRect)arg4 forRate:(double)arg5 forTimecodeType:(unsigned int)arg6;
 
 @end
 

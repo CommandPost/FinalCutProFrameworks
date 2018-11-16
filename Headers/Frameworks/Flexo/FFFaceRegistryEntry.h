@@ -24,24 +24,24 @@ __attribute__((visibility("hidden")))
     double sumBodyHeight;
 }
 
-- (id)init:(int)arg1;
-- (BOOL)mustKeep;
-- (void)incNumOfAppearances;
-- (void)incNumOfAppearancesByN:(int)arg1;
-- (void)resetShotSizeStats:(id)arg1;
-- (void)updateShotSizeStats:(id)arg1 nFrames:(int)arg2;
-- (double)getAvgFaceArea;
-- (double)getApproxVarInFaceArea;
-- (double)getAvgFaceHeight;
-- (double)getAvgBodyHeight;
-- (void)debugLog:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 @property BOOL reject; // @synthesize reject;
 @property int endingFrameIdx; // @synthesize endingFrameIdx;
 @property int startingFrameIdx; // @synthesize startingFrameIdx;
 @property int nAppearances; // @synthesize nAppearances;
 @property int uniqueID; // @synthesize uniqueID;
 @property double certainty; // @synthesize certainty;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)debugLog:(id)arg1;
+- (double)getAvgBodyHeight;
+- (double)getAvgFaceHeight;
+- (double)getApproxVarInFaceArea;
+- (double)getAvgFaceArea;
+- (void)updateShotSizeStats:(id)arg1 nFrames:(int)arg2;
+- (void)resetShotSizeStats:(id)arg1;
+- (void)incNumOfAppearancesByN:(int)arg1;
+- (void)incNumOfAppearances;
+- (BOOL)mustKeep;
+- (id)init:(int)arg1;
 
 @end
 

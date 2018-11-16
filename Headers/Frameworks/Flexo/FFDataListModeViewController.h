@@ -14,21 +14,21 @@ __attribute__((visibility("hidden")))
     FFDataListModule *_dataListModule;
 }
 
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)reloadData;
-- (id)dataListItems;
-- (id)dataListArrangedItems;
-- (id)dataListRootItem;
-- (id)dataListImageForItem:(id)arg1;
-- (id)dataListInfoStringForProposedString:(id)arg1;
-- (void)syncToSelectedIndexes:(id)arg1;
-- (void)syncToDisplayedItemsType:(long long)arg1;
-- (id)selectedIndexes;
-- (void)displayDataListPlayheadAtIndex:(long long)arg1 andPosition:(int)arg2 animate:(BOOL)arg3;
-- (BOOL)supportsSearch;
 @property(retain, nonatomic) FFDataListModule *dataListModule; // @synthesize dataListModule=_dataListModule;
+- (BOOL)supportsSearch;
+- (void)displayDataListPlayheadAtIndex:(long long)arg1 andPosition:(int)arg2 animate:(BOOL)arg3;
+- (id)selectedIndexes;
+- (void)syncToDisplayedItemsType:(long long)arg1;
+- (void)syncToSelectedIndexes:(id)arg1;
+- (id)dataListInfoStringForProposedString:(id)arg1;
+- (id)dataListImageForItem:(id)arg1;
+- (id)dataListRootItem;
+- (id)dataListArrangedItems;
+- (id)dataListItems;
+- (void)reloadData;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 @end
 

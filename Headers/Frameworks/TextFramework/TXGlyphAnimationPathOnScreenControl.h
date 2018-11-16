@@ -15,28 +15,28 @@
     struct OZChannelRef *_pChannelRef;
 }
 
-- (void)init;
-- (void)setTextObject:(struct TXTextObject *)arg1;
-- (PCPtr_3bd68a10)getTextObject;
-- (void)dealloc;
-- (struct OZChannelPosition3D *)getPosition;
-- (void)drawCurve:(const struct OZRenderState *)arg1 viewTransformation:(const PCMatrix44Tmpl_e98c85ee *)arg2 mode:(unsigned int)arg3 keyPoints:(BOOL)arg4 positionChannel:(struct OZChannelPosition3D *)arg5;
-- (void)clipPath:(vector_8d17e539 *)arg1 edges:(vector_8d17e539 *)arg2 visible:(vector_69938c0b *)arg3;
-- (void)getLocalToWorld:(PCMatrix44Tmpl_e98c85ee *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
-- (void)getWorldToLocal:(PCMatrix44Tmpl_e98c85ee *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
-- (void)setChannelRef:(struct OZChannelBase *)arg1;
-- (void)_splitStyleRuns;
-- (_Bool)didSplitStyleRun;
-- (void)resetDidSplitStyleRun;
-- (void)menuAdd:(id)arg1;
-- (void)menuDelete:(id)arg1;
-- (void)menuSetInterpolation:(id)arg1;
-- (void)menuLock:(id)arg1;
-- (void)menuDisable:(id)arg1;
-- (void)menuBreakTangent:(id)arg1;
-- (void)menuAlignTangents:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)menuAlignTangents:(id)arg1;
+- (void)menuBreakTangent:(id)arg1;
+- (void)menuDisable:(id)arg1;
+- (void)menuLock:(id)arg1;
+- (void)menuSetInterpolation:(id)arg1;
+- (void)menuDelete:(id)arg1;
+- (void)menuAdd:(id)arg1;
+- (void)resetDidSplitStyleRun;
+- (_Bool)didSplitStyleRun;
+- (void)_splitStyleRuns;
+- (void)setChannelRef:(struct OZChannelBase *)arg1;
+- (void)getWorldToLocal:(PCMatrix44Tmpl_93ed1289 *)arg1 atTime:(const CDStruct_198678f7 *)arg2;
+- (void)getLocalToWorld:(PCMatrix44Tmpl_93ed1289 *)arg1 atTime:(const CDStruct_198678f7 *)arg2;
+- (void)clipPath:(vector_8d17e539 *)arg1 edges:(vector_8d17e539 *)arg2 visible:(vector_69938c0b *)arg3;
+- (void)drawCurve:(const struct OZRenderState *)arg1 viewTransformation:(const PCMatrix44Tmpl_93ed1289 *)arg2 mode:(unsigned int)arg3 keyPoints:(BOOL)arg4 positionChannel:(struct OZChannelPosition3D *)arg5;
+- (struct OZChannelPosition3D *)getPosition;
+- (void)dealloc;
+- (PCPtr_3bd68a10)getTextObject;
+- (void)setTextObject:(struct TXTextObject *)arg1;
+- (id)init;
 
 @end
 

@@ -15,17 +15,23 @@ __attribute__((visibility("hidden")))
     long long _offset;
     FFSegmentStore *_store;
     id _sample;
-    BOOL _hasStarted;
+    int _svPriority;
 }
 
-- (id)initWithOffset:(long long)arg1 store:(id)arg2;
-- (void)dealloc;
-- (id)description;
-- (void)waitForFinished;
-- (id)sample;
-- (void)cancel;
-@property BOOL hasStarted; // @synthesize hasStarted=_hasStarted;
++ (void)initialize;
 @property(readonly) long long offset; // @synthesize offset=_offset;
+- (void)cancel;
+- (void)main;
+- (int)svPriority;
+- (void)setSvPriority:(int)arg1;
+- (id)sample;
+- (void)waitForFinished;
+- (void)waitForState:(int)arg1 why:(id)arg2;
+- (void)warnAboutState:(int)arg1 why:(id)arg2;
+- (_Bool)sampleFinished;
+- (id)description;
+- (void)dealloc;
+- (id)initWithOffset:(long long)arg1 store:(id)arg2 priority:(int)arg3;
 
 @end
 

@@ -18,11 +18,11 @@
     _Bool _used;
 }
 
-- (id)initWithList:(id)arg1;
-- (void)dealloc;
-- (void)dirty;
-- (id)imageFor:(struct OZSceneNode *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2 scene:(struct OZScene *)arg3 view:(id)arg4;
 - (void)_imageReady:(id)arg1;
+- (id)imageFor:(struct OZSceneNode *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2 scene:(struct OZScene *)arg3 view:(id)arg4;
+- (void)dirty;
+- (void)dealloc;
+- (id)initWithList:(id)arg1;
 
 @end
 

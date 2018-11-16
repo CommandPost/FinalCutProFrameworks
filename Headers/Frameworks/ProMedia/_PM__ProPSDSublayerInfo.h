@@ -12,11 +12,11 @@
     unsigned int *_sublayers;
 }
 
-- (id)initWithSublayerCount:(unsigned int)arg1 indexSet:(id)arg2;
-- (void)dealloc;
-- (void)finalize;
-- (unsigned int)numberOfSublayers;
 - (unsigned int)sublayerAtIndex:(unsigned int)arg1 isValid:(char *)arg2;
+- (unsigned int)numberOfSublayers;
+- (void)finalize;
+- (void)dealloc;
+- (id)initWithSublayerCount:(unsigned int)arg1 indexSet:(id)arg2;
 
 @end
 

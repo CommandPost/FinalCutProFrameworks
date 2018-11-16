@@ -21,27 +21,27 @@
     BOOL _allowsSelfReference;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (struct OZScene *)thisScene;
-- (id)menu;
-- (void)update;
-- (void)notify:(unsigned int)arg1;
-- (void)enable;
-- (void)disable;
-- (void)allowSelfReference:(BOOL)arg1;
-- (BOOL)doesAllowSelfReference;
-- (BOOL)doesAllowLink:(struct OZObjectManipulator *)arg1;
-- (BOOL)linkSceneNode:(struct OZObjectManipulator *)arg1;
-- (BOOL)doesAllowDelete;
-- (BOOL)areAllChannelsEqual;
-- (void)setChannelValue:(id)arg1;
-- (id)addMenuItem:(struct OZObjectManipulator *)arg1 ignoreObjID:(unsigned int)arg2 inputMenu:(id)arg3;
-- (id)buildObjectMenu:(id)arg1 ignoreObjID:(unsigned int)arg2;
-- (void)buildMenu:(struct OZChannelBase *)arg1;
-- (void)buildDummyMenu;
-- (void)menuNeedsUpdate:(id)arg1;
 - (struct OZDocument *)document;
+- (void)menuNeedsUpdate:(id)arg1;
+- (void)buildDummyMenu;
+- (void)buildMenu:(struct OZChannelBase *)arg1;
+- (id)buildObjectMenu:(id)arg1 ignoreObjID:(unsigned int)arg2;
+- (id)addMenuItem:(struct OZObjectManipulator *)arg1 ignoreObjID:(unsigned int)arg2 inputMenu:(id)arg3;
+- (void)setChannelValue:(id)arg1;
+- (BOOL)areAllChannelsEqual;
+- (BOOL)doesAllowDelete;
+- (BOOL)linkSceneNode:(struct OZObjectManipulator *)arg1;
+- (BOOL)doesAllowLink:(struct OZObjectManipulator *)arg1;
+- (BOOL)doesAllowSelfReference;
+- (void)allowSelfReference:(BOOL)arg1;
+- (void)disable;
+- (void)enable;
+- (void)notify:(unsigned int)arg1;
+- (void)update;
+- (id)menu;
+- (struct OZScene *)thisScene;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

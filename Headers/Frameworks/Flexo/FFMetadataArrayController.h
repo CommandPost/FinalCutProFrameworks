@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)setValue:(id)arg1 forKey:(id)arg2;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
 
 @end
 

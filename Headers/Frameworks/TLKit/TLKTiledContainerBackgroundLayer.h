@@ -13,8 +13,8 @@
     CALayer *_unfocusedTrack;
 }
 
-- (id)init;
 @property BOOL focused;
+- (id)init;
 
 @end
 

@@ -10,8 +10,8 @@
 {
 }
 
-- (id)stringForObjectValue:(id)arg1;
 - (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
+- (id)stringForObjectValue:(id)arg1;
 
 @end
 

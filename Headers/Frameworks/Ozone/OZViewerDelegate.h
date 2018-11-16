@@ -10,12 +10,12 @@
 {
 }
 
-- (id)init;
-- (void)willRenderFrame:(const CDStruct_1b6d18a9 *)arg1;
-- (void)viewerWillPlay:(const CDStruct_1b6d18a9 *)arg1;
-- (void)viewerDidPause:(const CDStruct_1b6d18a9 *)arg1;
-- (BOOL)viewerShouldPause;
 - (BOOL)shouldPlayAudio;
+- (BOOL)viewerShouldPause;
+- (void)viewerDidPause:(const CDStruct_1b6d18a9 *)arg1;
+- (void)viewerWillPlay:(const CDStruct_1b6d18a9 *)arg1;
+- (void)willRenderFrame:(const CDStruct_1b6d18a9 *)arg1;
+- (id)init;
 
 @end
 

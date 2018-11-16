@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)findSubRangeFirstFrame:(int *)arg1 lastFrame:(int *)arg2 mediaRep:(id)arg3 endFrame:(int)arg4 step:(int)arg5;
 + (void)offloadTransformDataFromTracker:(void *)arg1 mediaRep:(id)arg2 inSubRange:(struct _NSRange)arg3 fieldDominance:(int)arg4 width:(int)arg5 squareWidth:(int)arg6 height:(int)arg7 rowBytes:(int)arg8 pixelFormat:(int)arg9;
++ (void)findSubRangeFirstFrame:(int *)arg1 lastFrame:(int *)arg2 mediaRep:(id)arg3 endFrame:(int)arg4 step:(int)arg5;
 
 @end
 

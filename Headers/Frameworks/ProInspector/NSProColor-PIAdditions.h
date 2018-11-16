@@ -7,8 +7,8 @@
 #import "NSProColor.h"
 
 @interface NSProColor (PIAdditions)
-+ (id)ozGradientViewEmptyColor;
-+ (id)ozHistogramInOutColor;
 + (id)ozHistogramGutterColor;
++ (id)ozHistogramInOutColor;
++ (id)ozGradientViewEmptyColor;
 @end
 

@@ -10,14 +10,14 @@
 {
 }
 
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-- (struct OZChannelHistogramSample *)ozChannel;
-- (id)blackInChannel;
-- (id)blackOutChannel;
-- (id)whiteInChannel;
-- (id)whiteOutChannel;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 - (id)gammaChannel;
+- (id)whiteOutChannel;
+- (id)whiteInChannel;
+- (id)blackOutChannel;
+- (id)blackInChannel;
+- (struct OZChannelHistogramSample *)ozChannel;
 
 @end
 

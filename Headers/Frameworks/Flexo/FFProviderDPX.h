@@ -17,15 +17,16 @@ __attribute__((visibility("hidden")))
     NSRecursiveLock *_lock;
 }
 
-+ (id)utis;
 + (id)extensions;
-- (id)initWithAssetFileID:(id)arg1;
-- (void)dealloc;
-- (id)_newImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3;
-- (void)_setupSources;
-- (CDStruct_1b6d18a9)duration;
++ (id)utis;
+- (id).cxx_construct;
+- (CDStruct_bdcb2b0d)_md5WithContext:(id)arg1;
 - (id)nativeVideoProps;
-- (CDStruct_60067b7e)_md5WithContext:(id)arg1;
+- (CDStruct_1b6d18a9)duration;
+- (void)_setupSources;
+- (id)_newImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3;
+- (void)dealloc;
+- (id)initWithAssetFileID:(id)arg1;
 
 @end
 

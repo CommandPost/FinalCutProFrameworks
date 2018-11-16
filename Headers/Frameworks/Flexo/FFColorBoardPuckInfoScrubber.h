@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
     FFCBPuckController *_puckController;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)mouseDown:(id)arg1;
 @property(retain, nonatomic) FFCBPuckController *puckController; // @synthesize puckController=_puckController;
 @property(nonatomic) BOOL isMouseDown; // @synthesize isMouseDown=_isMouseDown;
+- (void)mouseDown:(id)arg1;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

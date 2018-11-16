@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) struct CGPoint location; // @synthesize location=_location;
 @property(nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
+- (id).cxx_construct;
 
 @end
 

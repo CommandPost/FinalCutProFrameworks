@@ -10,25 +10,25 @@
 {
 }
 
-+ (id)defaultFileExtension;
-+ (Class)documentModuleClass;
 + (void)initialize;
-- (id)windowForSheet;
-- (void)makeWindowControllers;
-- (void)showWindows;
-- (void)close;
-- (void)didCloseDocumentModule:(id)arg1;
-- (void)didCloseEditor:(id)arg1;
-- (void)didMoveEditor:(id)arg1 toContainer:(id)arg2;
-- (void)makeSequenceActive:(id)arg1;
-- (id)editorModuleForAnchoredSequence:(id)arg1;
-- (id)selectedItemsForAnchoredSequence:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)revertDocumentToSaved:(id)arg1;
-- (void)saveDocumentAs:(id)arg1;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)printDocument:(id)arg1;
++ (Class)documentModuleClass;
++ (id)defaultFileExtension;
 - (void)_makeSequenceModules;
+- (void)printDocument:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)saveDocumentAs:(id)arg1;
+- (void)revertDocumentToSaved:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)selectedItemsForAnchoredSequence:(id)arg1;
+- (id)editorModuleForAnchoredSequence:(id)arg1;
+- (void)makeSequenceActive:(id)arg1;
+- (void)didMoveEditor:(id)arg1 toContainer:(id)arg2;
+- (void)didCloseEditor:(id)arg1;
+- (void)didCloseDocumentModule:(id)arg1;
+- (void)close;
+- (void)showWindows;
+- (void)makeWindowControllers;
+- (id)windowForSheet;
 
 @end
 

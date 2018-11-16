@@ -6,13 +6,57 @@
 
 #import "LKWindowModuleController.h"
 
-@interface OZWindowModuleController : LKWindowModuleController
+#import "NSUserInterfaceValidations.h"
+
+@interface OZWindowModuleController : LKWindowModuleController <NSUserInterfaceValidations>
 {
 }
 
-- (void)setDocument:(id)arg1;
-- (BOOL)shouldCascadeWindows;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)ozwmc_moveCanvasModuleToMainWindow;
+- (void)ozwmc_moveTimingModuleToMainWindow;
+- (void)ozwmc_moveWorkspaceModuleToFullscreen:(id)arg1 withLabel:(id)arg2;
+- (void)tearDownFullscreenWindowModule:(id)arg1;
+- (BOOL)isModuleOnSecondScreen:(id)arg1;
+- (void)toggleTimingOnSecondScreen:(id)arg1;
+- (void)toggleCanvasOnSecondScreen:(id)arg1;
+- (void)revertToOriginalLayout:(id)arg1;
+- (void)togglePlayerMode:(id)arg1;
+- (void)toggleProjectPane:(id)arg1;
+- (void)toggleUtilityPane:(id)arg1;
+- (void)toggleTaskList:(id)arg1;
+- (void)toggleHUD:(id)arg1;
+- (void)toggleTimingVisibility:(id)arg1;
+- (void)toggleCurveEditor:(id)arg1;
+- (void)toggleAudioTimeline:(id)arg1;
+- (void)toggleVideoTimeline:(id)arg1;
+- (void)toggleMainTimingModuleWhenTogglingModule:(id)arg1;
+- (id)mainToolbarModule;
+- (id)mainTimingControlModule;
+- (id)mainTimelineModule;
+- (id)mainTimelineCurveEditorModule;
+- (id)mainLibraryModule;
+- (id)mainLayerListModule;
+- (id)mainInspectorModule;
+- (id)secondaryFooterModule;
+- (id)mainFooterModule;
+- (id)mainFootageListModule;
+- (id)mainFileBrowserModule;
+- (id)mainCurveEditorModule;
+- (id)mainCanvasModule;
+- (id)mainTimingModule;
+- (id)mainLibraryInspectorContainerModule;
+- (id)mainLayerAudioContainerModule;
+- (id)ozwmc_secondaryContainerModule;
+- (id)mainContainerModule;
+- (id)secondaryWindowModule;
+- (id)mainWindowModule;
 - (void)windowWillClose:(id)arg1;
+- (BOOL)windowHasAttachedSheet;
+- (void)setDocument:(id)arg1;
+- (void)setRootModule:(id)arg1;
+- (void)dealloc;
+- (id)initWithWindowModule:(id)arg1;
 
 @end
 

@@ -7,7 +7,7 @@
 #import "NSMenu.h"
 
 @interface NSMenu (LunaKitAdditions)
-+ (id)menuArrowsFacet;
 + (id)contextualProMenuDefaultFontForView:(id)arg1 suggestedFont:(id)arg2;
++ (id)menuArrowsFacet;
 @end
 

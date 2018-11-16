@@ -19,29 +19,29 @@ __attribute__((visibility("hidden")))
     NSArray *m_observedChannels;
     FFChannelChangeController *m_channelChangeController;
     OZViewController *m_delegateController;
-    NSMapTable *m_channelToObjectMap;
+    NSMapTable *m_channelToEffectStackMap;
 }
 
-- (id)initWithSurroundPannerEffectBundle:(id)arg1;
-- (void)dealloc;
-- (void)setFrame:(struct CGRect)arg1;
-- (void)channelParameterChanged:(id)arg1;
-- (void)update;
-- (id)_channelForParameter:(unsigned long long)arg1;
-- (void)_handleTouch:(BOOL)arg1 forChannel:(id)arg2 addKeyframe:(BOOL)arg3 withValue:(double)arg4;
-- (float)parameterMinValue:(unsigned long long)arg1;
-- (float)parameterMaxValue:(unsigned long long)arg1;
-- (float)parameterDefaultValue:(unsigned long long)arg1;
-- (float)updateParameter:(unsigned long long)arg1;
-- (void)pannerDidChangeSurroundPan:(struct CGPoint)arg1;
-- (void)pannerDidSetValue:(float)arg1 forSurroundParameter:(unsigned long long)arg2;
-- (void)pannerDidToggleSurroundParameter:(unsigned long long)arg1;
-- (void)pannerDidTouchSurroundParameter:(unsigned long long)arg1 touched:(BOOL)arg2;
-- (void)pannerDidTouchSurroundPanner:(BOOL)arg1;
-- (int)pannerAudioChannelCount;
-@property(nonatomic) NSMapTable *channelToObjectMap; // @synthesize channelToObjectMap=m_channelToObjectMap;
+@property(nonatomic) NSMapTable *channelToEffectStackMap; // @synthesize channelToEffectStackMap=m_channelToEffectStackMap;
 @property(nonatomic) OZViewController *delegateController; // @synthesize delegateController=m_delegateController;
 @property(retain, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=m_channelChangeController;
+- (int)pannerAudioChannelCount;
+- (void)pannerDidTouchSurroundPanner:(BOOL)arg1;
+- (void)pannerDidTouchSurroundParameter:(unsigned long long)arg1 touched:(BOOL)arg2;
+- (void)pannerDidToggleSurroundParameter:(unsigned long long)arg1;
+- (void)pannerDidSetValue:(float)arg1 forSurroundParameter:(unsigned long long)arg2;
+- (void)pannerDidChangeSurroundPan:(struct CGPoint)arg1;
+- (float)updateParameter:(unsigned long long)arg1;
+- (float)parameterDefaultValue:(unsigned long long)arg1;
+- (float)parameterMaxValue:(unsigned long long)arg1;
+- (float)parameterMinValue:(unsigned long long)arg1;
+- (void)_handleTouch:(BOOL)arg1 forChannel:(id)arg2 addKeyframe:(BOOL)arg3 withValue:(double)arg4;
+- (id)_channelForParameter:(unsigned long long)arg1;
+- (void)update;
+- (void)channelParameterChanged:(id)arg1;
+- (void)setFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (id)initWithSurroundPannerEffectBundle:(id)arg1;
 
 @end
 

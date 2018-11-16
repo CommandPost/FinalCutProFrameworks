@@ -11,31 +11,36 @@
     BOOL _prefetched;
 }
 
-+ (id)projectInfo:(id)arg1;
-+ (id)defaultFileExtension;
-+ (id)projectsRootName;
-+ (id)temporaryRootName;
-+ (id)defaultLocation;
-+ (void)setDefaultLocation:(id)arg1;
-+ (id)defaultDocumentName;
 + (Class)documentModuleClass;
-- (id)newDefaultProject:(id)arg1 type:(id)arg2;
-- (id)initWithEventURL:(id)arg1 catalog:(id)arg2 create:(BOOL)arg3 error:(id *)arg4;
-- (BOOL)update_addAudioSourceDicts;
-- (BOOL)update_migrateEffectBundleFormat;
-- (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
-- (id)rootObject;
-- (id)mediaEventProject;
-- (void)makeWindowControllers;
-- (void)_actionBeginEditing;
-- (BOOL)_actionEndEditing:(BOOL)arg1 error:(id *)arg2;
-- (void)actionBegin:(id)arg1;
-- (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
-- (void)_undoRecycleURLs:(id)arg1;
-- (void)_recycleURLs:(id)arg1;
-- (BOOL)actionMoveAssetFilesToTrash:(id)arg1 useTrash:(BOOL)arg2 error:(id *)arg3;
-- (void)_moveClipsToTrashActionEnd:(id)arg1;
++ (id)defaultDocumentName;
++ (void)setDefaultLocation:(id)arg1;
++ (id)defaultLocation;
++ (id)temporaryRootName;
++ (id)projectsRootName;
++ (id)defaultFileExtension;
++ (id)projectInfo:(id)arg1;
 - (void)_moveClipsToTrashActionBegin:(id)arg1;
+- (void)_moveClipsToTrashActionEnd:(id)arg1;
+- (BOOL)actionMoveAssetFilesToTrash:(id)arg1 useTrash:(BOOL)arg2 error:(id *)arg3;
+- (void)_recycleURLs:(id)arg1;
+- (BOOL)_recycleURLsOSWrapper:(id)arg1 newURLs:(id *)arg2 error:(id *)arg3;
+- (void)_undoRecycleURLs:(id)arg1;
+- (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
+- (void)actionBegin:(id)arg1;
+- (BOOL)_actionEndEditing:(BOOL)arg1 error:(id *)arg2;
+- (void)_actionBeginEditing;
+- (void)makeWindowControllers;
+- (id)mediaEventProject;
+- (id)rootObject;
+- (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
+- (BOOL)update_compoundToClipref;
+- (BOOL)update_migrateAudioIntrinsics;
+- (BOOL)update_cropAndTrimEffect;
+- (BOOL)update_fixLoudnessAnalysisEffect;
+- (BOOL)update_migrateEffectBundleFormat;
+- (BOOL)update_addAudioSourceDicts;
+- (id)initWithEventURL:(id)arg1 catalog:(id)arg2 create:(BOOL)arg3 error:(id *)arg4;
+- (id)newDefaultProject:(id)arg1 type:(id)arg2;
 
 @end
 

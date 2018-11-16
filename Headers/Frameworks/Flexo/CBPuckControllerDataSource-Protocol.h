@@ -4,11 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFCBPuckController, NSValue;
+
 @protocol CBPuckControllerDataSource
 
 @optional
-- (void)resetPuckData:(id)arg1;
-- (id)dataForPuck:(id)arg1;
-- (void)setData:(id)arg1 forPuck:(id)arg2;
+- (void)setData:(NSValue *)arg1 forPuck:(FFCBPuckController *)arg2;
+- (NSValue *)dataForPuck:(FFCBPuckController *)arg1;
+- (void)resetPuckData:(FFCBPuckController *)arg1;
 @end
 

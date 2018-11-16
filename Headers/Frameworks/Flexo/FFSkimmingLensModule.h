@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)init;
-- (BOOL)shouldDrawVideoDest:(id)arg1;
-- (void)addOSC:(id)arg1;
-- (BOOL)acceptsFirstResponder;
 - (BOOL)playerUsesLayers;
+- (BOOL)acceptsFirstResponder;
+- (void)addOSC:(id)arg1;
+- (BOOL)shouldDrawVideoDest:(id)arg1;
+- (id)init;
 
 @end
 

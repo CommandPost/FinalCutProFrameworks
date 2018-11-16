@@ -6,34 +6,36 @@
 
 #import "NSObject.h"
 
-@class NSMutableArray, NSProView, NSView;
+#import "OKPaneCapItemOwner.h"
+
+@class NSMutableArray, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFCapsController : NSObject
+@interface FFCapsController : NSObject <OKPaneCapItemOwner>
 {
-    NSProView *_headerContents;
-    NSProView *_footerContents;
+    NSView *_headerContents;
+    NSView *_footerContents;
     NSMutableArray *_headerItems;
     NSMutableArray *_footerItems;
 }
 
-- (id)init;
-- (id)headerContents;
-- (id)footerContents;
-@property(readonly) NSView *moduleHeaderAccessoryView;
-@property(readonly) NSView *moduleFooterAccessoryView;
-- (void)awakeFromNib;
-- (id)_newHeaderSegmentedControl;
-- (id)_newDarkFooterSegmentedControl;
-- (id)_newLightFooterSegmentedControl;
-- (void)layoutPaneCapViews:(id)arg1 edgeMargin:(double)arg2;
-- (void)_layoutPaneCapContents:(id)arg1 withPaneCapItems:(id)arg2 segmentedControlFactoryMethod:(SEL)arg3 edgeMargin:(double)arg4;
-- (void)_layoutPaneCapContents:(unsigned long long)arg1;
-- (void)addPaneCapItem:(id)arg1;
-- (void)removePaneCapItem:(id)arg1;
-- (void)paneCapItemRefresh:(id)arg1;
-- (void)paneCapItemActionHandler:(id)arg1;
 - (void)dealloc;
+- (void)paneCapItemActionHandler:(id)arg1;
+- (void)paneCapItemRefresh:(id)arg1;
+- (void)removePaneCapItem:(id)arg1;
+- (void)addPaneCapItem:(id)arg1;
+- (void)_layoutPaneCapContents:(unsigned long long)arg1;
+- (void)_layoutPaneCapContents:(id)arg1 withPaneCapItems:(id)arg2 segmentedControlFactoryMethod:(SEL)arg3 edgeMargin:(double)arg4;
+- (void)layoutPaneCapViews:(id)arg1 edgeMargin:(double)arg2;
+- (id)_makeLightFooterSegmentedControl;
+- (id)_makeDarkFooterSegmentedControl;
+- (id)_makeHeaderSegmentedControl;
+- (void)awakeFromNib;
+@property(readonly) NSView *moduleFooterAccessoryView;
+@property(readonly) NSView *moduleHeaderAccessoryView;
+- (id)footerContents;
+- (id)headerContents;
+- (id)init;
 
 @end
 

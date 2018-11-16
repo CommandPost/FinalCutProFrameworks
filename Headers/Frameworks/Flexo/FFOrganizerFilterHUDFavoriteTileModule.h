@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
     LKPopUpButton *_popUpButton;
 }
 
-- (void)awakeFromNib;
-- (void)favoriteFilterMenu:(id)arg1;
-- (void)setFilterDict:(id)arg1;
-- (id)filterDict;
 - (id)tileTypeFacet;
+- (id)filterDict;
+- (void)setFilterDict:(id)arg1;
+- (void)favoriteFilterMenu:(id)arg1;
+- (void)awakeFromNib;
 
 @end
 

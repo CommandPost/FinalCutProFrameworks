@@ -14,13 +14,14 @@
     LKPopUpButton *_regionButton;
 }
 
-- (id)initWithText:(struct TXTextGenerator *)arg1;
-- (void)dealloc;
-- (void)_updateRegionPopup:(id)arg1;
-- (void)update;
-- (struct TXTextGenerator *)text;
-- (void)setLocale:(id)arg1;
 - (void)setCurrentLocale:(id)arg1;
+- (void)setLocale:(id)arg1;
+- (struct TXTextGenerator *)text;
+- (void)update;
+- (void)_updateRegionPopup:(id)arg1;
+- (void)dealloc;
+- (id)countryFromDisplayName:(id)arg1;
+- (id)initWithText:(struct TXTextGenerator *)arg1;
 
 @end
 

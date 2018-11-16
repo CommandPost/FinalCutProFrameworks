@@ -19,26 +19,26 @@ __attribute__((visibility("hidden")))
     NSArray *_folderChildren;
 }
 
-- (id)initWithFolderURL:(id)arg1 displayName:(id)arg2 folderIcon:(id)arg3;
-- (id)folderURL;
-- (id)containerURL;
-- (id)displayName;
-- (id)folderIcon;
-- (id)folderChildren;
-- (void)setFolderChildren:(id)arg1;
-- (id)documentsInFolder;
-- (void)dealloc;
-- (id)description;
-@property(readonly, nonatomic) NSString *itemDisplayName;
-@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
-- (void)setItemDisplayName:(id)arg1;
-@property(readonly, nonatomic) NSImage *itemIcon;
-@property(readonly, nonatomic) NSArray *items;
-@property(readonly, nonatomic) BOOL hasMasterSubitems;
-@property(readonly, nonatomic) NSArray *masterSubitems;
-@property(readonly, nonatomic) NSArray *detailSubitems;
-@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
 - (id)itemPersistentIdentifierForDisplayName:(id)arg1;
+@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
+@property(readonly, nonatomic) NSArray *detailSubitems;
+@property(readonly, nonatomic) NSArray *masterSubitems;
+@property(readonly, nonatomic) BOOL hasMasterSubitems;
+@property(readonly, nonatomic) NSArray *items;
+@property(readonly, nonatomic) NSImage *itemIcon;
+- (void)setItemDisplayName:(id)arg1;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
+@property(readonly, nonatomic) NSString *itemDisplayName;
+- (id)description;
+- (void)dealloc;
+- (id)documentsInFolder;
+- (void)setFolderChildren:(id)arg1;
+- (id)folderChildren;
+- (id)folderIcon;
+- (id)displayName;
+- (id)containerURL;
+- (id)folderURL;
+- (id)initWithFolderURL:(id)arg1 displayName:(id)arg2 folderIcon:(id)arg3;
 
 // Remaining properties
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;

@@ -16,12 +16,12 @@ __attribute__((visibility("hidden")))
     unsigned int _useMenuDelay:1;
 }
 
-@property(readonly, getter=isPopUp) BOOL popUp;
-@property(readonly) BOOL useMenuDelay;
-- (void)setMenu:(id)arg1 isPopUp:(BOOL)arg2 useMenuDelay:(BOOL)arg3;
-- (void)refreshSegmentedControl;
+@property(readonly) LKMenu *menu; // @synthesize menu=_menu;
 - (void)dealloc;
-@property(readonly, retain) LKMenu *menu; // @synthesize menu=_menu;
+- (void)refreshSegmentedControl;
+- (void)setMenu:(id)arg1 isPopUp:(BOOL)arg2 useMenuDelay:(BOOL)arg3;
+@property(readonly) BOOL useMenuDelay;
+@property(readonly, getter=isPopUp) BOOL popUp;
 
 @end
 

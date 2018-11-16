@@ -8,7 +8,7 @@
 - (void)notify:(unsigned int)arg1;
 
 @optional
-- (BOOL)isObserving;
 - (void)setIsObserving;
+- (BOOL)isObserving;
 @end
 

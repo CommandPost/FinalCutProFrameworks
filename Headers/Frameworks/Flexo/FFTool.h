@@ -11,35 +11,36 @@
     id _currentTarget;
 }
 
-+ (id)displayName;
-+ (id)groups;
-+ (id)toolTip;
-+ (id)cursor;
 + (id)toolbarFacet;
-+ (id)TLKEventHandlerID;
++ (id)cursor;
++ (id)toolTip;
++ (id)groups;
++ (id)displayName;
 + (BOOL)isToolForTLKEventHandler:(id)arg1;
-- (void)cursorUpdate:(id)arg1;
-- (id)currentTarget;
-- (void)setCurrentTarget:(id)arg1;
-- (void)becomeActiveTool;
-- (void)resignActiveTool;
-- (BOOL)handlesSelection;
-- (BOOL)hitTest:(id)arg1;
-- (void)didMouseDownOnCanvas:(id)arg1 target:(id)arg2;
-- (BOOL)skims;
-- (BOOL)supportsMultipleSelection;
-- (BOOL)handlesItem:(id)arg1 target:(id)arg2 event:(id)arg3;
-- (BOOL)editsItem:(id)arg1 target:(id)arg2 event:(id)arg3;
-- (void)mouseDown:(id)arg1;
-- (void)selectedItemsChanged:(id)arg1;
-- (BOOL)allowInspectorToTrackSelection;
-- (id)playerFooterView;
-- (id)playerAccessoryView;
++ (id)TLKEventHandlerID;
 - (id)matchWindow;
-- (id)TLKEventHandlerForTimeline:(id)arg1;
-- (void)willSetAsHandlerForTimeline:(id)arg1;
-- (void)willRemoveAsHandlerForTimeline:(id)arg1;
+- (id)playerAccessoryView;
+- (id)playerFooterView;
+- (BOOL)allowsEffectOSCs;
+- (BOOL)allowInspectorToTrackSelection;
+- (void)selectedItemsChanged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (BOOL)editsItem:(id)arg1 target:(id)arg2 event:(id)arg3;
+- (BOOL)handlesItem:(id)arg1 target:(id)arg2 event:(id)arg3;
+- (BOOL)supportsMultipleSelection;
+- (BOOL)skims;
+- (void)didMouseDownOnCanvas:(id)arg1 target:(id)arg2;
+- (BOOL)hitTest:(id)arg1;
+- (BOOL)handlesSelection;
+- (void)resignActiveTool;
+- (void)becomeActiveTool;
+- (void)setCurrentTarget:(id)arg1;
+- (id)currentTarget;
+- (void)cursorUpdate:(id)arg1;
 - (void)didRemoveAsHandlerForTimeline:(id)arg1;
+- (void)willRemoveAsHandlerForTimeline:(id)arg1;
+- (void)willSetAsHandlerForTimeline:(id)arg1;
+- (id)TLKEventHandlerForTimeline:(id)arg1;
 
 @end
 

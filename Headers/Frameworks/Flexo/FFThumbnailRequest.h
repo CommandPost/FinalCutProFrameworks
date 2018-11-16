@@ -36,31 +36,31 @@ __attribute__((visibility("hidden")))
     BOOL _useAudioPeaksAvailable;
 }
 
-- (struct CGImage *)dummyImage;
-- (id)initWithSkimmable:(struct NSObject *)arg1 imageTimeRange:(CDStruct_e83c9415)arg2 imageSize:(struct CGSize)arg3 contentsScale:(double)arg4 requestAudio:(BOOL)arg5 target:(id)arg6 imageReadySelector:(SEL)arg7 requestTimeType:(int)arg8 constrainedTimeRange:(CDStruct_e83c9415)arg9 highPriority:(BOOL)arg10 useAudioPeaksAvailable:(BOOL)arg11 effectCount:(long long)arg12;
-- (id)initWithSegmentStoreMD5:(id)arg1 segmentStoreOffset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4;
-- (void)dealloc;
-- (oneway void)release;
-- (id)description;
-- (BOOL)highPriority;
-- (BOOL)newImage:(struct CGImage **)arg1;
-- (void)setImage:(struct CGImage *)arg1;
-- (void)notifyImageReady;
-- (CDStruct_e83c9415)sampleTimeRange;
-- (void)cancelRequest;
-- (BOOL)canceled;
-- (BOOL)isAudio;
-- (void)addImageToSegmentStore;
-- (CDStruct_60067b7e)imageMD5Cached;
-- (CDStruct_60067b7e)imageMD5;
-- (CDStruct_60067b7e)audioMD5;
-- (CDStruct_60067b7e)cachedMD5;
-- (void)setVideoImageMD5:(id)arg1;
-- (void)recalculateImageMD5:(id)arg1;
-- (id)segmentStoreMD5;
-- (long long)segmentStoreOffset;
-- (id)project;
 - (int)thumbQuality;
+- (id)project;
+- (long long)segmentStoreOffset;
+- (id)segmentStoreMD5;
+- (void)recalculateImageMD5:(id)arg1;
+- (void)setVideoImageMD5:(id)arg1;
+- (CDStruct_bdcb2b0d)cachedMD5;
+- (CDStruct_bdcb2b0d)audioMD5;
+- (CDStruct_bdcb2b0d)imageMD5;
+- (CDStruct_bdcb2b0d)imageMD5Cached;
+- (void)addImageToSegmentStore;
+- (BOOL)isAudio;
+- (BOOL)canceled;
+- (void)cancelRequest;
+- (CDStruct_e83c9415)sampleTimeRange;
+- (void)notifyImageReady;
+- (void)setImage:(struct CGImage *)arg1;
+- (BOOL)newImage:(struct CGImage **)arg1;
+- (BOOL)highPriority;
+- (id)description;
+- (oneway void)release;
+- (void)dealloc;
+- (id)initWithSegmentStoreMD5:(id)arg1 segmentStoreOffset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4;
+- (id)initWithSkimmable:(struct NSObject *)arg1 imageTimeRange:(CDStruct_e83c9415)arg2 imageSize:(struct CGSize)arg3 contentsScale:(double)arg4 requestAudio:(BOOL)arg5 target:(id)arg6 imageReadySelector:(SEL)arg7 requestTimeType:(int)arg8 constrainedTimeRange:(CDStruct_e83c9415)arg9 highPriority:(BOOL)arg10 useAudioPeaksAvailable:(BOOL)arg11 effectCount:(long long)arg12;
+- (struct CGImage *)dummyImage;
 
 @end
 

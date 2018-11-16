@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
     BOOL _showOffsetsInPercentage;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

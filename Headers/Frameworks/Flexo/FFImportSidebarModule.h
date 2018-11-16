@@ -9,17 +9,20 @@
 __attribute__((visibility("hidden")))
 @interface FFImportSidebarModule : FFSidebarModule
 {
+    BOOL _isReloading;
 }
 
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)viewDidLoad;
-- (void)reloadOutlineViewNowWithSidebarProvider:(struct NSObject *)arg1;
-- (BOOL)outlineView:(id)arg1 keyDown:(id)arg2;
-- (BOOL)outlineView:(id)arg1 shouldSelectRowAtIndexPath:(id)arg2;
-- (void)removeVolumeForRowAtIndexPath:(id)arg1;
-- (id)cellIdentifierForNode:(id)arg1;
-- (id)createCellWithIdentifier:(id)arg1 forNode:(id)arg2;
+- (id)defaultsValueForKeyPath:(id)arg1;
 - (void)updateCell:(id)arg1 forNode:(id)arg2;
+- (id)createCellWithIdentifier:(id)arg1 forNode:(id)arg2;
+- (id)cellIdentifierForNode:(id)arg1;
+- (void)resetSelection;
+- (void)removeVolumeForRowAtIndexPath:(id)arg1;
+- (BOOL)outlineView:(id)arg1 shouldSelectRowAtIndexPath:(id)arg2;
+- (BOOL)outlineView:(id)arg1 keyDown:(id)arg2;
+- (void)reloadOutlineViewNowWithSidebarProvider:(struct NSObject *)arg1;
+- (void)viewDidLoad;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
 
 @end
 

@@ -5,9 +5,9 @@
 //
 
 @protocol FFDestAnalyzerProtocol
-- (void)startAnalyzing;
-- (void)finishAnalyzing;
 - (BOOL)reuseDataForAnalyzing;
+- (void)finishAnalyzing;
+- (void)startAnalyzing;
 
 @optional
 - (void)cancelAnalyzing;

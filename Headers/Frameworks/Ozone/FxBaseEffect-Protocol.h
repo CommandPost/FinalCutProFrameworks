@@ -4,13 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSDictionary;
+
 @protocol FxBaseEffect
-- (BOOL)variesOverTime;
+- (NSDictionary *)properties;
 - (BOOL)addParameters;
-- (id)properties;
+- (BOOL)variesOverTime;
 
 @optional
-- (BOOL)parameterChanged:(unsigned int)arg1;
 - (BOOL)finishInitialSetup:(id *)arg1;
+- (BOOL)parameterChanged:(unsigned int)arg1;
 @end
 

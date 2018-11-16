@@ -7,7 +7,7 @@
 #import "NSMenu.h"
 
 @interface NSMenu (PEVOUtilities)
-- (void)setAllItemsToOffState;
 - (void)setAllSubmenuItemsToOffState;
+- (void)setAllItemsToOffState;
 @end
 

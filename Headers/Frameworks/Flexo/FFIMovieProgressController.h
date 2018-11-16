@@ -17,11 +17,11 @@
     int _importType;
 }
 
-- (id)initWithProgressType:(int)arg1;
-- (void)dealloc;
-- (void)cancelImport:(id)arg1;
-- (void)beginImportForName:(id)arg1;
 - (void)endImport;
+- (void)beginImportForName:(id)arg1;
+- (void)cancelImport:(id)arg1;
+- (void)dealloc;
+- (id)initWithProgressType:(int)arg1;
 
 @end
 

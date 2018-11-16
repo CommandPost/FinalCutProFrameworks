@@ -14,17 +14,17 @@
     NSTextField *_pName;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
-- (struct OZScene *)thisScene;
-- (void)update;
-- (void)notify:(unsigned int)arg1;
-- (void)enable;
-- (void)disable;
-- (BOOL)doesAllowLink:(struct OZSceneNode *)arg1;
-- (BOOL)linkSceneNode:(struct OZSceneNode *)arg1;
-- (BOOL)doesAllowDelete;
 - (BOOL)areAllChannelsEqual;
+- (BOOL)doesAllowDelete;
+- (BOOL)linkSceneNode:(struct OZSceneNode *)arg1;
+- (BOOL)doesAllowLink:(struct OZSceneNode *)arg1;
+- (void)disable;
+- (void)enable;
+- (void)notify:(unsigned int)arg1;
+- (void)update;
+- (struct OZScene *)thisScene;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

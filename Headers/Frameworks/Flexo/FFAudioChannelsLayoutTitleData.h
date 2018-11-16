@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)layoutTitleDataWithChannelValence:(unsigned int)arg1;
-- (id)initWithChannelValence:(unsigned int)arg1;
 @property(nonatomic) unsigned int itemCount; // @synthesize itemCount=m_itemCount;
 @property(readonly, nonatomic) unsigned int channelValence; // @synthesize channelValence=m_channelValence;
+- (id)initWithChannelValence:(unsigned int)arg1;
 
 @end
 

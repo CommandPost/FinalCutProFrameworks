@@ -18,18 +18,18 @@
 }
 
 + (id)partWithPartCode:(int)arg1 representedObject:(id)arg2;
-- (id)initWithPartCode:(int)arg1 representedObject:(id)arg2;
-- (void)dealloc;
-- (BOOL)isEqualToAccessoryPart:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)description;
-- (id)debugDescription;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)partIdentifier;
 @property(retain) NSMenu *contextMenu; // @synthesize contextMenu=_contextMenu;
 @property(retain) id representedObject; // @synthesize representedObject=_representedObject;
 @property int partCode; // @synthesize partCode=_partCode;
+- (id)partIdentifier;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)debugDescription;
+- (id)description;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToAccessoryPart:(id)arg1;
+- (void)dealloc;
+- (id)initWithPartCode:(int)arg1 representedObject:(id)arg2;
 
 @end
 

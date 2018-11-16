@@ -24,32 +24,32 @@
     _Bool _isNTSC;
 }
 
-- (struct OZDocument *)oz_currentOZDocument;
-- (id)init;
-- (void)setIsDuration:(BOOL)arg1;
-- (void)setUseSceneTimes:(BOOL)arg1;
-- (void)setFrameRate:(double)arg1 isNTSC:(_Bool)arg2;
-- (double)getFrameRate;
-- (_Bool)getIsNTSC;
-- (unsigned int)firstFrameNumber;
-- (BOOL)canDoMath;
-- (void)setCanDoMath:(BOOL)arg1;
-- (BOOL)wasDelta;
-- (void)resetWasDelta;
-- (BOOL)useStrictInterpretation;
-- (void)setUseStrictInterpretation:(BOOL)arg1;
-- (struct PCTimecodeMode *)getTimecodeMode;
-- (unsigned int)displayMode;
-- (id)stringForObjectValue:(id)arg1;
-- (id)editingStringForObjectValue:(id)arg1;
-- (int)timeIndexFromString:(id)arg1 decrementIfNecessary:(BOOL)arg2;
-- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
-- (void)setMinimum:(id)arg1;
-- (id)minimum;
-- (void)setMaximum:(id)arg1;
-- (id)maximum;
-- (void)setOverrideMode:(unsigned int)arg1;
 - (void)setUseSceneStartTimecode:(BOOL)arg1;
+- (void)setOverrideMode:(unsigned int)arg1;
+- (id)maximum;
+- (void)setMaximum:(id)arg1;
+- (id)minimum;
+- (void)setMinimum:(id)arg1;
+- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
+- (int)timeIndexFromString:(id)arg1 decrementIfNecessary:(BOOL)arg2;
+- (id)editingStringForObjectValue:(id)arg1;
+- (id)stringForObjectValue:(id)arg1;
+- (unsigned int)displayMode;
+- (struct PCTimecodeMode *)getTimecodeMode;
+- (void)setUseStrictInterpretation:(BOOL)arg1;
+- (BOOL)useStrictInterpretation;
+- (void)resetWasDelta;
+- (BOOL)wasDelta;
+- (void)setCanDoMath:(BOOL)arg1;
+- (BOOL)canDoMath;
+- (unsigned int)firstFrameNumber;
+- (_Bool)getIsNTSC;
+- (double)getFrameRate;
+- (void)setFrameRate:(double)arg1 isNTSC:(_Bool)arg2;
+- (void)setUseSceneTimes:(BOOL)arg1;
+- (void)setIsDuration:(BOOL)arg1;
+- (id)init;
+- (struct OZDocument *)oz_currentOZDocument;
 
 @end
 

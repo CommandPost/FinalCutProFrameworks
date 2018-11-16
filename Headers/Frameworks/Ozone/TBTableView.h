@@ -10,10 +10,10 @@
 {
 }
 
-- (void)delete:(id)arg1;
-- (void)rippleDelete:(id)arg1;
-- (void)keyDown:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)keyDown:(id)arg1;
+- (void)rippleDelete:(id)arg1;
+- (void)delete:(id)arg1;
 
 @end
 

@@ -19,37 +19,39 @@
     NSMutableArray *_offsetsToMerge;
 }
 
-+ (BOOL)checkHasAudio:(id)arg1;
-+ (id)_getMarkersInRangeAndObject:(id)arg1;
-+ (CDStruct_1b6d18a9)_getMarkerFigTimePos:(id)arg1;
-+ (CDStruct_e83c9415)_getExtendedFigTimeRangeFromMarker:(id)arg1;
-+ (BOOL)_checkDate:(id)arg1 isBetweenStart:(id)arg2 andEnd:(id)arg3;
-+ (id)_getCreationDate:(id)arg1;
-+ (_Bool)checkCancelOrPauseOn:(id)arg1;
-+ (double)getRMSFor:(id)arg1 onTask:(id)arg2;
-+ (_Bool)_spectrallySimilar:(id)arg1 andClip:(id)arg2 wasStereo:(BOOL)arg3 onTask:(id)arg4;
-+ (double)ZCRCompareClip:(id)arg1 toClip:(id)arg2 onTask:(id)arg3;
-+ (BOOL)timecodeOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
-+ (BOOL)markerOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
-+ (BOOL)creationDateOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
-+ (BOOL)xCorrCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3 andDownsample:(_Bool)arg4 useNewStatistics:(_Bool)arg5 cachedUtilB:(id *)arg6;
-+ (BOOL)xCorrCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3 andDownsample:(_Bool)arg4;
-+ (BOOL)xCorrPeaksCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3 useNewStatistics:(_Bool)arg4;
-+ (BOOL)markerCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
-+ (BOOL)startingTimecodeCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
-+ (BOOL)creationDateCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
-+ (BOOL)synchronizeRnOByAudio:(id)arg1 referenceRnO:(id)arg2;
-+ (CDStruct_1b6d18a9)synchronizeByAudio:(id)arg1 itemRange:(CDStruct_e83c9415)arg2 referenceItem:(id)arg3 referenceItemRange:(CDStruct_e83c9415)arg4 usePeaksOnly:(BOOL)arg5 confidence:(float *)arg6 cachedUtilB:(id *)arg7;
 + (void)synchronizeRnOWithAudio:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3;
-- (id)initWithRangesAndObjects:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3;
-- (void)dealloc;
-- (void)canceledTask:(id)arg1;
-- (void)postNotificationToRefresh;
-- (void)mergedClipTypeUpdate:(id)arg1;
-- (void)_adjustOffsetsOfItems:(id)arg1 withOffsets:(id)arg2;
-- (void)_setAnchoredPairFromDictionary:(id)arg1;
-- (void)_synchronizeWithAudio:(id)arg1 onTask:(id)arg2;
++ (CDStruct_1b6d18a9)synchronizeByAudio:(id)arg1 itemRange:(CDStruct_e83c9415)arg2 referenceItem:(id)arg3 referenceItemRange:(CDStruct_e83c9415)arg4 usePeaksOnly:(BOOL)arg5 confidence:(float *)arg6 cachedUtilB:(id *)arg7;
++ (BOOL)synchronizeRnOByAudio:(id)arg1 referenceRnO:(id)arg2;
++ (BOOL)creationDateCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)startingTimecodeCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)markerCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)xCorrPeaksCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3 useNewStatistics:(_Bool)arg4;
++ (BOOL)xCorrCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3 andDownsample:(_Bool)arg4;
++ (BOOL)xCorrCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3 andDownsample:(_Bool)arg4 useNewStatistics:(_Bool)arg5 cachedUtilB:(id *)arg6;
++ (BOOL)creationDateOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)markerOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)timecodeOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (double)ZCRCompareClip:(id)arg1 toClip:(id)arg2 onTask:(id)arg3;
++ (_Bool)_spectrallySimilar:(id)arg1 andClip:(id)arg2 wasStereo:(BOOL)arg3 onTask:(id)arg4;
++ (double)getRMSFor:(id)arg1 onTask:(id)arg2;
++ (_Bool)checkCancelOrPauseOn:(id)arg1;
++ (id)_getCreationDate:(id)arg1;
++ (BOOL)_checkDate:(id)arg1 isBetweenStart:(id)arg2 andEnd:(id)arg3;
++ (CDStruct_e83c9415)_getExtendedFigTimeRangeFromMarker:(id)arg1;
++ (CDStruct_1b6d18a9)_getMarkerFigTimePos:(id)arg1;
++ (id)_getMarkersInRangeAndObject:(id)arg1;
++ (BOOL)checkHasAudio:(id)arg1;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
 - (void)synchronizeRnO:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3 withAudio:(BOOL)arg4;
+- (void)_synchronizeWithAudio:(id)arg1 onTask:(id)arg2;
+- (void)_setAnchoredPairFromDictionary:(id)arg1;
+- (void)_adjustOffsetsOfItems:(id)arg1 withOffsets:(id)arg2;
+- (void)mergedClipTypeUpdate:(id)arg1;
+- (void)postNotificationToRefresh;
+- (void)canceledTask:(id)arg1;
+- (void)dealloc;
+- (id)initWithRangesAndObjects:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3;
 
 @end
 

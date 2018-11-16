@@ -26,30 +26,30 @@
     NSArray *_namingTokens;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)windowDidLoad;
-- (void)viewSetsControlAction:(id)arg1;
-- (void)stopModal:(id)arg1;
-- (void)addNewPreset:(id)arg1;
-- (void)duplicatePreset:(id)arg1;
-- (void)bind;
-- (void)unbind;
-- (long long)runModalWithNewPreset:(BOOL)arg1;
-- (void)windowWillClose:(id)arg1;
-- (BOOL)tableView:(id)arg1 writeRowsWithIndexes:(id)arg2 toPasteboard:(id)arg3;
-- (unsigned long long)tableView:(id)arg1 validateDrop:(id)arg2 proposedRow:(long long)arg3 proposedDropOperation:(unsigned long long)arg4;
-- (BOOL)tableView:(id)arg1 acceptDrop:(id)arg2 row:(long long)arg3 dropOperation:(unsigned long long)arg4;
-- (long long)numberOfRowsInTableView:(id)arg1;
-- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
-- (id)tokenField:(id)arg1 completionsForSubstring:(id)arg2 indexOfToken:(long long)arg3 indexOfSelectedItem:(long long *)arg4;
-- (id)tokenField:(id)arg1 displayStringForRepresentedObject:(id)arg2;
-- (id)tokenField:(id)arg1 editingStringForRepresentedObject:(id)arg2;
-- (id)tokenField:(id)arg1 representedObjectForEditingString:(id)arg2;
-- (unsigned long long)tokenField:(id)arg1 styleForRepresentedObject:(id)arg2;
-- (void)controlTextDidChange:(id)arg1;
 @property(retain) LKSegmentedControl *viewsetsSegmentControl; // @synthesize viewsetsSegmentControl=_viewsetsSegmentControl;
 @property(retain) NSArrayController *presetsArrayController; // @synthesize presetsArrayController=_presetsArrayController;
+- (void)controlTextDidChange:(id)arg1;
+- (unsigned long long)tokenField:(id)arg1 styleForRepresentedObject:(id)arg2;
+- (id)tokenField:(id)arg1 representedObjectForEditingString:(id)arg2;
+- (id)tokenField:(id)arg1 editingStringForRepresentedObject:(id)arg2;
+- (id)tokenField:(id)arg1 displayStringForRepresentedObject:(id)arg2;
+- (id)tokenField:(id)arg1 completionsForSubstring:(id)arg2 indexOfToken:(long long)arg3 indexOfSelectedItem:(long long *)arg4;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
+- (long long)numberOfRowsInTableView:(id)arg1;
+- (BOOL)tableView:(id)arg1 acceptDrop:(id)arg2 row:(long long)arg3 dropOperation:(unsigned long long)arg4;
+- (unsigned long long)tableView:(id)arg1 validateDrop:(id)arg2 proposedRow:(long long)arg3 proposedDropOperation:(unsigned long long)arg4;
+- (BOOL)tableView:(id)arg1 writeRowsWithIndexes:(id)arg2 toPasteboard:(id)arg3;
+- (void)windowWillClose:(id)arg1;
+- (long long)runModalWithNewPreset:(BOOL)arg1;
+- (void)unbind;
+- (void)bind;
+- (void)duplicatePreset:(id)arg1;
+- (void)addNewPreset:(id)arg1;
+- (void)stopModal:(id)arg1;
+- (void)viewSetsControlAction:(id)arg1;
+- (void)windowDidLoad;
+- (void)dealloc;
+- (id)init;
 
 @end
 

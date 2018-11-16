@@ -8,45 +8,40 @@
 
 #import "FFChannelChangeControllerDivorcedDelegate.h"
 
-@class CHChannel, FFAnchoredObject;
+@class FFAnchoredObject;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectBundleSurroundPanner : FFEffectBundleInternalBundle <FFChannelChangeControllerDivorcedDelegate>
 {
     FFAnchoredObject *m_object;
-    CHChannel *m_amountChannel;
-    BOOL m_lastAmountChannelIsModified;
     BOOL m_defaultPartIsInMonoMode;
 }
 
-+ (id)pannerEffectBundleParts;
-+ (id)surroundPannerPresetNames;
-+ (id)copyClassDescription;
 + (void)unrigChannel:(id)arg1 inPanner:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)dealloc;
-- (id)keyframeableChannels;
-- (id)unriggedChannels;
-- (id)channelByXMLName:(id)arg1;
-- (id)XMLNameForChannel:(id)arg1;
-- (id)channelChangeDelegate;
-- (void)sender:(id)arg1 beginChannelChange:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (BOOL)isStereoMode;
-- (BOOL)_isInDefaultPanMode;
-- (void)_updateDefaultPanMode;
-- (void)_addAnchoredObjectObserving;
-- (void)_removeAnchoredObjectObserving;
-- (void)_addAmountChannelObserving;
-- (void)_removeAmountChannelObserving;
-- (void)setEffectStack:(id)arg1;
-- (void)effectStackAnchoredObjectDidChange;
-- (void)_amountChannelChanged:(id)arg1;
-- (id)presetNames;
-- (id)bundlePartAtIndex:(int)arg1;
-- (id)copyBundlePartAtIndex:(int)arg1;
-- (void)partChanged;
-- (id)initialEffectBundleParts;
-- (void)createActivePartEffectChannelsInFolder:(id)arg1;
++ (id)copyClassDescription;
++ (id)surroundPannerPresetNames;
++ (id)pannerEffectBundleParts;
 - (int)bundleEncodingOptions;
+- (void)createActivePartEffectChannelsInFolder:(id)arg1;
+- (id)initialEffectBundleParts;
+- (void)partChanged;
+- (id)copyBundlePartAtIndex:(int)arg1;
+- (id)bundlePartAtIndex:(int)arg1;
+- (id)presetNames;
+- (void)effectStackAnchoredObjectDidChange;
+- (void)setEffectStack:(id)arg1;
+- (void)_removeAnchoredObjectObserving;
+- (void)_addAnchoredObjectObserving;
+- (void)_updateDefaultPanMode;
+- (BOOL)_isInDefaultPanMode;
+- (BOOL)isStereoMode;
+- (void)sender:(id)arg1 beginChannelChange:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (id)channelChangeDelegate;
+- (id)XMLNameForChannel:(id)arg1;
+- (id)channelByXMLName:(id)arg1;
+- (id)unriggedChannels;
+- (id)keyframeableChannels;
+- (void)dealloc;
 
 @end
 

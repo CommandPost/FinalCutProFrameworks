@@ -29,33 +29,33 @@ __attribute__((visibility("hidden")))
     id <PROPlugInDelegate> delegate;
 }
 
-- (id)initWithDictionary:(id)arg1 bundle:(id)arg2 delegate:(id)arg3;
-- (void)dealloc;
-- (id)bundle;
-- (BOOL)isEqualToPlugIn:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)delegate;
-- (void)setDelegate:(id)arg1;
-- (struct __CFUUID *)uuid;
-- (id)uuidString;
-- (void)reportError:(id)arg1;
-- (id)sharedPlugInInstance;
-- (id)className;
-- (Class)plugInClass;
-- (id)plugInInstance;
-- (id)group;
-- (id)displayName;
-- (id)helpURL;
-- (id)version;
-- (id)infoString;
-- (id)icon;
-- (id)vendorName;
-- (id)description;
-- (id)implementedProtocols;
-- (id)infoDictionary;
 - (id)apiUsedByPlugInForProtocol:(id)arg1;
+- (id)infoDictionary;
+- (id)implementedProtocols;
+- (id)description;
+- (id)vendorName;
+- (id)icon;
+- (id)infoString;
+- (id)version;
+- (id)helpURL;
+- (id)displayName;
+- (id)group;
+- (id)plugInInstance;
+- (Class)plugInClass;
+- (id)className;
+- (id)sharedPlugInInstance;
+- (void)reportError:(id)arg1;
+- (id)uuidString;
+- (struct __CFUUID *)uuid;
+- (void)setDelegate:(id)arg1;
+- (id)delegate;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToPlugIn:(id)arg1;
+- (id)bundle;
+- (void)dealloc;
+- (id)initWithDictionary:(id)arg1 bundle:(id)arg2 delegate:(id)arg3;
 
 @end
 

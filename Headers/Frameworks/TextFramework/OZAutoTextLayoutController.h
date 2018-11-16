@@ -33,20 +33,20 @@
     unsigned int _numTabs;
 }
 
-- (void)dealloc;
-- (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
-- (void)interlockMarginChannels:(struct OZChannelBase *)arg1;
-- (void)_updateOnFlattenChange;
-- (void)_updateOnFaceCameraChange;
-- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
-- (void)delayedRelease;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (void)delayedReleaseCB:(id)arg1;
-- (void)layoutMethodChanged:(id)arg1;
-- (void)enableDisableLayoutUI:(int)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)showHidePathChannels:(int)arg1;
 - (struct TXTextStyle *)getCurrentStyle;
+- (void)showHidePathChannels:(int)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)enableDisableLayoutUI:(int)arg1;
+- (void)layoutMethodChanged:(id)arg1;
+- (void)delayedReleaseCB:(id)arg1;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
+- (void)delayedRelease;
+- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
+- (void)_updateOnFaceCameraChange;
+- (void)_updateOnFlattenChange;
+- (void)interlockMarginChannels:(struct OZChannelBase *)arg1;
+- (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
+- (void)dealloc;
 
 @end
 

@@ -17,13 +17,13 @@ __attribute__((visibility("hidden")))
     BOOL _allMediaIsAvailable;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)didBuildUI;
-- (void)update;
-- (void)toggleMatchTo:(id)arg1;
-- (void)assetInvalidated:(id)arg1;
 - (id)checkMediaAvailability;
+- (void)assetInvalidated:(id)arg1;
+- (void)toggleMatchTo:(id)arg1;
+- (void)update;
+- (void)didBuildUI;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

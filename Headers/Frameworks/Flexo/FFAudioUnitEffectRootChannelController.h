@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
     NSButton *effectEditorButton;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)didBuildUI;
-- (float)suggestedMaxParamWidth;
-- (id)_retrieveContext;
 - (void)showEffectEditor:(id)arg1;
+- (id)_retrieveContext;
+- (float)suggestedMaxParamWidth;
+- (void)didBuildUI;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

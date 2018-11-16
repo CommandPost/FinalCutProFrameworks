@@ -14,15 +14,15 @@
     BOOL mSettingValue;
 }
 
-- (id)initWithCMIODALControlID:(unsigned int)arg1 classID:(unsigned int)arg2;
-- (id)exposedBindings;
-- (id)name;
-@property BOOL value;
-@property(readonly) NSString *label;
-- (void)propertyDidChange:(const struct CMIOObjectPropertyAddress *)arg1;
-- (id)properties;
-- (void)setProperties:(id)arg1;
 @property(readonly) BOOL settable; // @synthesize settable=mSettable;
+- (void)setProperties:(id)arg1;
+- (id)properties;
+- (void)propertyDidChange:(const struct CMIOObjectPropertyAddress *)arg1;
+@property(readonly) NSString *label;
+@property BOOL value;
+- (id)name;
+- (id)exposedBindings;
+- (id)initWithCMIODALControlID:(unsigned int)arg1 classID:(unsigned int)arg2;
 
 @end
 

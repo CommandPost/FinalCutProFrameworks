@@ -15,21 +15,21 @@ __attribute__((visibility("hidden")))
     FFFacetTextures *_facetTextures;
 }
 
-- (id)_initWithFacet:(id)arg1;
-- (id)_initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 theme:(unsigned long long)arg4;
-- (id)initWithElement:(long long)arg1 part:(long long)arg2;
-- (void)dealloc;
-- (struct CGSize)_textureSizeInPoints;
-- (id)_textureForContext:(struct _CGLContextObject *)arg1 destView:(id)arg2 colorSync:(BOOL)arg3 state:(long long)arg4 dimension1:(long long)arg5 value:(long long)arg6 createIfNeeded:(BOOL)arg7;
-- (void)drawFacetTiledinRect:(struct CGRect)arg1 fromLeft:(BOOL)arg2 fromBottom:(BOOL)arg3 inContext:(struct _CGLContextObject *)arg4 destView:(id)arg5 colorSync:(BOOL)arg6;
-- (void)drawFacetForState:(long long)arg1 dimension1:(long long)arg2 value:(long long)arg3 inRect:(struct CGRect)arg4 inContext:(struct _CGLContextObject *)arg5 destView:(id)arg6 colorSync:(BOOL)arg7;
-- (void)drawFacetForState:(long long)arg1 inRect:(struct CGRect)arg2 inContext:(struct _CGLContextObject *)arg3 destView:(id)arg4 colorSync:(BOOL)arg5;
-- (void)drawFacetScaledToRect:(struct CGRect)arg1 inContext:(struct _CGLContextObject *)arg2 destView:(id)arg3 colorSync:(BOOL)arg4;
-- (struct CGSize)facetSizeForDimension1:(long long)arg1;
-- (struct CGSize)facetSize;
-- (BOOL)hitTestPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2;
-- (BOOL)useCenterPart;
 - (void)setUseCenterPart:(BOOL)arg1;
+- (BOOL)useCenterPart;
+- (BOOL)hitTestPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2;
+- (struct CGSize)facetSize;
+- (struct CGSize)facetSizeForDimension1:(long long)arg1;
+- (void)drawFacetScaledToRect:(struct CGRect)arg1 inContext:(struct _CGLContextObject *)arg2 destView:(id)arg3 colorSync:(BOOL)arg4;
+- (void)drawFacetForState:(long long)arg1 inRect:(struct CGRect)arg2 inContext:(struct _CGLContextObject *)arg3 destView:(id)arg4 colorSync:(BOOL)arg5;
+- (void)drawFacetForState:(long long)arg1 dimension1:(long long)arg2 value:(long long)arg3 inRect:(struct CGRect)arg4 inContext:(struct _CGLContextObject *)arg5 destView:(id)arg6 colorSync:(BOOL)arg7;
+- (void)drawFacetTiledinRect:(struct CGRect)arg1 fromLeft:(BOOL)arg2 fromBottom:(BOOL)arg3 inContext:(struct _CGLContextObject *)arg4 destView:(id)arg5 colorSync:(BOOL)arg6;
+- (id)_textureForContext:(struct _CGLContextObject *)arg1 destView:(id)arg2 colorSync:(BOOL)arg3 state:(long long)arg4 dimension1:(long long)arg5 value:(long long)arg6 createIfNeeded:(BOOL)arg7;
+- (struct CGSize)_textureSizeInPoints;
+- (void)dealloc;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2;
+- (id)_initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 theme:(unsigned long long)arg4;
+- (id)_initWithFacet:(id)arg1;
 
 @end
 

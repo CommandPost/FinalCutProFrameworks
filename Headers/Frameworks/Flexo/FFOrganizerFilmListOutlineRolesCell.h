@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
-- (struct CGRect)expansionFrameWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)drawWithExpansionFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (struct CGRect)expansionFrameWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

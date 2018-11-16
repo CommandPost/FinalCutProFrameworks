@@ -15,16 +15,16 @@
     BOOL _audioShown;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)viewDidLoad;
-- (void)updateBrowserViewMode:(long long)arg1;
-- (void)stopPreview:(id)arg1;
-- (void)writeSelectionToPasteboard:(id)arg1;
-- (BOOL)mediaBrowserView:(id)arg1 shouldDisplayMediaObject:(id)arg2;
-- (id)mediaBrowserView:(id)arg1 displayNameForMediaGroup:(id)arg2;
 - (void)setInitialSplitPositionForBrowserType:(long long)arg1;
+- (id)mediaBrowserView:(id)arg1 displayNameForMediaGroup:(id)arg2;
+- (BOOL)mediaBrowserView:(id)arg1 shouldDisplayMediaObject:(id)arg2;
+- (void)writeSelectionToPasteboard:(id)arg1;
+- (void)stopPreview:(id)arg1;
+- (void)updateBrowserViewMode:(long long)arg1;
+- (void)viewDidLoad;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)init;
 
 @end
 

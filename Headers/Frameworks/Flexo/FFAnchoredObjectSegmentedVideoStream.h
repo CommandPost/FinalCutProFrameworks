@@ -11,35 +11,35 @@
 __attribute__((visibility("hidden")))
 @interface FFAnchoredObjectSegmentedVideoStream : FFStreamVideo
 {
-    struct list<PEObjectSegmentedVideoStreamUtils::SegmentStreamCacheItem*, std::allocator<PEObjectSegmentedVideoStreamUtils::SegmentStreamCacheItem*>> _segmentStreamCache;
+    struct list<PEObjectSegmentedVideoStreamUtils::SegmentStreamCacheItem *, std::allocator<PEObjectSegmentedVideoStreamUtils::SegmentStreamCacheItem *>> _segmentStreamCache;
     BOOL _prerolling;
     double _rate;
     FFPrerollSync *_prerollSync;
     int _outstandingSchedTokens;
 }
 
-- (id)anchoredObject;
-- (id)videoProps;
-- (id)renderFormat;
-- (id)pixelTransformToFrameForQuality:(int)arg1;
-- (id)pixelTransformToField1ForQuality:(int)arg1;
-- (id)pixelTransformToField2ForQuality:(int)arg1;
-- (id)objectVideoSource;
-- (void)dealloc;
-- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(struct CGRect *)arg5;
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
-- (void)prerollEnd;
-- (void)setRate:(double)arg1;
-- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
-- (int)_trimSegmentStreamWithRetSizeAfterTrim:(unsigned long long *)arg1;
-- (id)_copySegmentStreamIfFoundAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 timeOffset:(CDStruct_1b6d18a9 *)arg3;
-- (id)_newSegmentStreamAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 timeOffset:(CDStruct_1b6d18a9 *)arg3;
-- (void)_prerollEnd;
-- (void)_invalidateSegmentStreamCacheForRange:(CDStruct_e83c9415)arg1;
-- (void)_trimCacheDueToTokenCount:(id)arg1;
-- (void)_adjustScheduleTokenCount:(int)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_adjustScheduleTokenCount:(int)arg1;
+- (void)_trimCacheDueToTokenCount:(id)arg1;
+- (void)_invalidateSegmentStreamCacheForRange:(CDStruct_e83c9415)arg1;
+- (void)_prerollEnd;
+- (id)_newSegmentStreamAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 timeOffset:(CDStruct_1b6d18a9 *)arg3;
+- (id)_copySegmentStreamIfFoundAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 timeOffset:(CDStruct_1b6d18a9 *)arg3;
+- (int)_trimSegmentStreamWithRetSizeAfterTrim:(unsigned long long *)arg1;
+- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
+- (void)setRate:(double)arg1;
+- (void)prerollEnd;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
+- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
+- (void)dealloc;
+- (id)objectVideoSource;
+- (id)pixelTransformToField2ForQuality:(int)arg1;
+- (id)pixelTransformToField1ForQuality:(int)arg1;
+- (id)pixelTransformToFrameForQuality:(int)arg1;
+- (id)renderFormat;
+- (id)videoProps;
+- (id)anchoredObject;
 
 @end
 

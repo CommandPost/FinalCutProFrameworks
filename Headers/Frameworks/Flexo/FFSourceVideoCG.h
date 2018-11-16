@@ -16,20 +16,20 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)type;
 + (Class)streamClass;
-- (CDStruct_e83c9415)timeRange;
-- (id)nativeVideoProps;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (int)getNativeAlphaType;
-- (id)supportedOverrideAlphaModes;
-- (void)setOverrideAlphaValue:(int)arg1;
-- (void)setInvertAlpha:(_Bool)arg1;
-- (struct CGColorSpace *)getNativeColorSpace;
-- (BOOL)isOverrideColorSpaceSupported:(struct CGColorSpace *)arg1;
-- (int)depth;
-- (BOOL)hasAlpha;
++ (id)type;
 - (id)colorModel;
+- (BOOL)hasAlpha;
+- (int)depth;
+- (BOOL)isOverrideColorSpaceSupported:(struct CGColorSpace *)arg1;
+- (struct CGColorSpace *)getNativeColorSpace;
+- (void)setInvertAlpha:(_Bool)arg1;
+- (void)setOverrideAlphaValue:(int)arg1;
+- (id)supportedOverrideAlphaModes;
+- (int)getNativeAlphaType;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)nativeVideoProps;
+- (CDStruct_e83c9415)timeRange;
 
 @end
 

@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
     CALayer *_effectDisabledSelected;
 }
 
-- (id)init;
-- (void)setBackgroundType:(int)arg1;
-- (void)setBackgroundState:(int)arg1;
 - (void)layoutSublayers;
+- (void)setBackgroundState:(int)arg1;
+- (void)setBackgroundType:(int)arg1;
+- (id)init;
 
 @end
 

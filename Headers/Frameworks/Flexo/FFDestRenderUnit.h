@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
     void *m_delegateContext;
 }
 
-- (id)initWithDest:(id)arg1 delegate:(id)arg2 context:(void *)arg3;
-- (void)dealloc;
-- (void)beginRenderFrames:(CDStruct_e83c9415)arg1;
 - (void)endRenderFrames:(CDStruct_e83c9415)arg1;
+- (void)beginRenderFrames:(CDStruct_e83c9415)arg1;
+- (void)dealloc;
+- (id)initWithDest:(id)arg1 delegate:(id)arg2 context:(void *)arg3;
 
 @end
 

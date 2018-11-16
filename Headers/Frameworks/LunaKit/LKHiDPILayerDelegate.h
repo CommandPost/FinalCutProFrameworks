@@ -10,8 +10,8 @@
 {
 }
 
-+ (void)initialize;
 + (id)sharedInstance;
++ (void)initialize;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 
 @end

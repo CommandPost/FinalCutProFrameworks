@@ -13,16 +13,16 @@
     SPODDetector *m_spodDetector;
 }
 
-- (void)_reportExceptionToUser:(id)arg1;
-- (void)reportException:(id)arg1;
-- (void)finishLaunching;
-- (void)dealloc;
-- (void)miniaturizeAll:(id)arg1;
 - (BOOL)hideTitlebarWhenFullScreen;
-- (id)objectSpecifierForChild:(id)arg1;
-- (id)newScriptingObjectOfClass:(Class)arg1 forValueForKey:(id)arg2 withContentsValue:(id)arg3 properties:(id)arg4;
-- (void)importToEventViaAppleScript:(id)arg1;
+- (void)miniaturizeAll:(id)arg1;
+- (void)dealloc;
+- (void)finishLaunching;
+- (void)reportException:(id)arg1;
+- (void)_reportExceptionToUser:(id)arg1;
 - (id)scriptingEvents;
+- (void)importToEventViaAppleScript:(id)arg1;
+- (id)newScriptingObjectOfClass:(Class)arg1 forValueForKey:(id)arg2 withContentsValue:(id)arg3 properties:(id)arg4;
+- (id)objectSpecifierForChild:(id)arg1;
 
 @end
 

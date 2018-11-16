@@ -13,15 +13,15 @@
     TXGlyphToolHUDController *_txcontroller;
 }
 
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)setController:(id)arg1;
-- (id)controller;
-- (unsigned int)getGlyphSelectionSize;
-- (struct OZChannelPosition3D *)getOffsetChannel:(struct TXTextStyle *)arg1;
-- (struct OZChannelScale *)getScaleChannel:(struct TXTextStyle *)arg1;
 - (struct OZChannelRotation3D *)getRotationChannel:(struct TXTextStyle *)arg1;
+- (struct OZChannelScale *)getScaleChannel:(struct TXTextStyle *)arg1;
+- (struct OZChannelPosition3D *)getOffsetChannel:(struct TXTextStyle *)arg1;
+- (unsigned int)getGlyphSelectionSize;
+- (id)controller;
+- (void)setController:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
 
 @end
 

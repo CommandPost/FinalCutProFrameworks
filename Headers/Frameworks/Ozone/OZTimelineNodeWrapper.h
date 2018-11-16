@@ -10,9 +10,9 @@
 {
 }
 
-- (BOOL)isAudioTrack;
-- (BOOL)hasValidChildren:(struct OZChannelObjectRoot *)arg1;
 - (BOOL)displayAsGroup;
+- (BOOL)hasValidChildren:(struct OZChannelObjectRoot *)arg1;
+- (BOOL)isAudioTrack;
 
 @end
 

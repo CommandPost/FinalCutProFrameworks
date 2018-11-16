@@ -13,12 +13,12 @@
     struct OZDocument *_pDoc;
 }
 
-- (id)init;
-- (void)windowDidLoad;
-- (void)doBake:(struct OZDocument *)arg1;
-- (void)windowWillClose:(id)arg1;
-- (void)okBake:(id)arg1;
 - (void)cancelBake:(id)arg1;
+- (void)okBake:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)doBake:(struct OZDocument *)arg1;
+- (void)windowDidLoad;
+- (id)init;
 
 @end
 

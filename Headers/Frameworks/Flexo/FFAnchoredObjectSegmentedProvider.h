@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     FFAnchoredObject<FFSegmentedSourceProtocol> *_anchoredObject;
     long long _effectCount;
-    NSString *_audioAngle;
+    NSSet *_audioAngles;
     NSString *_videoAngle;
     long long _toLane;
     long long _angleOffset;
@@ -25,28 +25,28 @@ __attribute__((visibility("hidden")))
     NSSet *_roles;
 }
 
-+ (id)utis;
 + (id)extensions;
-- (id)initWithAnchoredObject:(id)arg1 effectCount:(long long)arg2 audioAngle:(id)arg3 videoAngle:(id)arg4 toLane:(long long)arg5 showOnlyObjects:(id)arg6 roles:(id)arg7 angleOffset:(long long)arg8 angleCount:(long long)arg9;
-- (id)object;
-- (long long)effectCount;
-- (id)videoAngle;
-- (id)audioAngle;
-- (long long)toLane;
-@property(readonly, nonatomic) long long angleOffset;
-@property(readonly, nonatomic) long long angleCount;
-- (void)dealloc;
-- (void)_setupSources;
-- (id)displayName;
-- (void)_writeLock;
-- (void)_writeUnlock;
-- (void)_readLock;
-- (void)_readUnlock;
-- (id)newSettingsModule;
-- (id)newConfirmSettingsModule;
++ (id)utis;
+@property(readonly, nonatomic) NSSet *roles; // @synthesize roles=_roles;
+@property(readonly, nonatomic) NSSet *showOnlyObjects; // @synthesize showOnlyObjects=_showOnlyObjects;
 - (id)anchoredObject;
-@property(readonly, retain, nonatomic) NSSet *roles; // @synthesize roles=_roles;
-@property(readonly, retain, nonatomic) NSSet *showOnlyObjects; // @synthesize showOnlyObjects=_showOnlyObjects;
+- (id)newConfirmSettingsModule;
+- (id)newSettingsModule;
+- (void)_readUnlock;
+- (void)_readLock;
+- (void)_writeUnlock;
+- (void)_writeLock;
+- (id)displayName;
+- (void)_setupSources;
+- (void)dealloc;
+@property(readonly, nonatomic) long long angleCount;
+@property(readonly, nonatomic) long long angleOffset;
+- (long long)toLane;
+- (id)audioAngles;
+- (id)videoAngle;
+- (long long)effectCount;
+- (id)object;
+- (id)initWithAnchoredObject:(id)arg1 effectCount:(long long)arg2 audioAngles:(id)arg3 videoAngle:(id)arg4 toLane:(long long)arg5 showOnlyObjects:(id)arg6 roles:(id)arg7 angleOffset:(long long)arg8 angleCount:(long long)arg9;
 
 @end
 

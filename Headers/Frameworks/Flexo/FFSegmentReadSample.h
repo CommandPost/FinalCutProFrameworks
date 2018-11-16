@@ -12,25 +12,28 @@ __attribute__((visibility("hidden")))
 @interface FFSegmentReadSample : FFSegmentSample
 {
     int _needCount;
-    _Bool _diskReadFinished;
     NSDictionary *_sampleData;
-    BOOL _asyncDecomp;
+    BOOL _needsDecompression;
     int _quality;
+    BOOL _propagateSampleBuf;
 }
 
-- (id)initWithOffset:(long long)arg1 store:(id)arg2 doAsynchronousDecompression:(BOOL)arg3 requestedQuality:(int)arg4;
-- (void)dealloc;
-- (id)copyAndIncrementNeedCountIfReusable:(id)arg1 offset:(long long)arg2 requestedQuality:(int)arg3;
-- (void)decrementNeedCount;
-- (void)_setSample:(id)arg1;
-- (void)setSample:(id)arg1;
-- (void)_setSampleData:(id)arg1;
-- (id)sampleData;
-- (void)main;
-- (void)cancel;
-- (id)description;
+@property(readonly) BOOL propagateSampleBuf; // @synthesize propagateSampleBuf=_propagateSampleBuf;
 @property(readonly) int quality; // @synthesize quality=_quality;
-@property _Bool diskReadFinished; // @synthesize diskReadFinished=_diskReadFinished;
+- (id)store;
+- (id)newPendingImageForSampleNumber:(long long)arg1 requestedQuality:(int)arg2 colorSpace:(struct CGColorSpace *)arg3;
+- (id)description;
+- (void)cancel;
+- (void)main;
+- (id)copyReadResults:(_Bool)arg1;
+- (unsigned int)scheduleStatusInformation;
+- (id)sampleData;
+- (void)setSample:(id)arg1;
+- (void)_setSample:(id)arg1;
+- (void)decrementNeedCount;
+- (id)copyAndIncrementNeedCountIfReusable:(id)arg1 offset:(long long)arg2 requestedQuality:(int)arg3;
+- (void)dealloc;
+- (id)initWithOffset:(long long)arg1 store:(id)arg2 needsDecompression:(BOOL)arg3 requestedQuality:(int)arg4 priority:(int)arg5;
 
 @end
 

@@ -10,14 +10,14 @@
 {
 }
 
-- (BOOL)shouldSkimItem:(id)arg1;
-- (void)performSelection:(id)arg1;
-- (void)startSelection:(id)arg1;
-- (void)cancelSelection:(id)arg1;
-- (void)stopSelection:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
-- (void)flagsChanged:(id)arg1;
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (void)flagsChanged:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
+- (void)stopSelection:(id)arg1;
+- (void)cancelSelection:(id)arg1;
+- (void)startSelection:(id)arg1;
+- (void)performSelection:(id)arg1;
+- (BOOL)shouldSkimItem:(id)arg1;
 
 @end
 

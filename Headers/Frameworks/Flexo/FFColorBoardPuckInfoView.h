@@ -23,22 +23,6 @@ __attribute__((visibility("hidden")))
     NSTextField *_yDataSuffix;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)setBoardType:(int)arg1 andPuckType:(int)arg2;
-@property(nonatomic) BOOL selected; // @synthesize selected=_selected;
-@property(nonatomic) BOOL usingMinimalLayout; // @synthesize usingMinimalLayout=_usingMinimalLayout;
-- (void)addNotificationObservers;
-- (void)removeNotificationObservers;
-- (void)notificationHandler:(id)arg1;
-- (void)infoTextValueChangedAction:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)syncToSelection;
-- (void)syncToBoardAndPuckType;
-- (void)drawRect:(struct CGRect)arg1;
-- (long long)integerValueFormattedControl:(id)arg1;
 @property(retain, nonatomic) NSTextField *yDataSuffix; // @synthesize yDataSuffix=_yDataSuffix;
 @property(retain, nonatomic) FFColorBoardPuckInfoScrubber *yDataScrubber; // @synthesize yDataScrubber=_yDataScrubber;
 @property(retain, nonatomic) LKTextField *xDataSuffix; // @synthesize xDataSuffix=_xDataSuffix;
@@ -47,6 +31,22 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFColorBoardPuckInfoLegendView *legendView; // @synthesize legendView=_legendView;
 @property(nonatomic) int boardType; // @synthesize boardType=_boardType;
 @property(nonatomic) int puckType; // @synthesize puckType=_puckType;
+@property(nonatomic) BOOL usingMinimalLayout; // @synthesize usingMinimalLayout=_usingMinimalLayout;
+@property(nonatomic) BOOL selected; // @synthesize selected=_selected;
+- (long long)integerValueFormattedControl:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)syncToBoardAndPuckType;
+- (void)syncToSelection;
+- (void)mouseDown:(id)arg1;
+- (void)infoTextValueChangedAction:(id)arg1;
+- (void)notificationHandler:(id)arg1;
+- (void)removeNotificationObservers;
+- (void)addNotificationObservers;
+- (void)setBoardType:(int)arg1 andPuckType:(int)arg2;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

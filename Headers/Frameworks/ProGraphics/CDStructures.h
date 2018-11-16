@@ -31,6 +31,7 @@ struct PCBitmap {
     _Bool _field10;
     void *_field11;
     int _field12;
+    _Bool _field13;
 };
 
 struct PCColorSpaceHandle {
@@ -39,19 +40,19 @@ struct PCColorSpaceHandle {
 
 struct PCImage;
 
-struct _Sp_counted_base<_S_atomic>;
+struct _Sp_counted_base<2>;
 
 struct shared_ptr<PCBitmap> {
     struct PCBitmap *_field1;
-    struct __shared_count<_S_atomic> {
-        struct _Sp_counted_base<_S_atomic> *_M_pi;
+    struct __shared_count<2> {
+        struct _Sp_counted_base<2> *_field1;
     } _field2;
 };
 
 struct weak_ptr<PCImage> {
     struct PCImage *_field1;
-    struct __weak_count<_S_atomic> {
-        struct _Sp_counted_base<_S_atomic> *_field1;
+    struct __weak_count<2> {
+        struct _Sp_counted_base<2> *_field1;
     } _field2;
 };
 

@@ -18,13 +18,13 @@
     OZScrubberController *_blurCtlr;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (struct OZChannelDouble *)widthChannel;
-- (struct OZChannel2D *)blurChannel;
-- (struct OZChannelColorNoAlpha *)colorChannel:(struct OZChannelFolder *)arg1;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (void)didTwiddle:(BOOL)arg1;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (struct OZChannelColorNoAlpha *)colorChannel:(struct OZChannelFolder *)arg1;
+- (struct OZChannel2D *)blurChannel;
+- (struct OZChannelDouble *)widthChannel;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

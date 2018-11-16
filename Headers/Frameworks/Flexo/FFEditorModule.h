@@ -17,31 +17,34 @@
     BOOL _movingDeeper;
 }
 
-- (id)init;
-- (void)dealloc;
 @property(nonatomic) BOOL showsStoryOutline; // @synthesize showsStoryOutline=_showsStoryOutline;
-- (id)inspectorClassName;
-- (void)setDelegate:(id)arg1;
-- (id)labelTextForItem:(id)arg1;
-- (id)rootItemsHeirarchy;
-- (id)previousRootItems;
-- (id)nextRootItems;
-- (void)activeRootItemWillChange;
-- (void)activeRootItemDidChange;
-- (id)rootContainerForActiveItem;
-- (void)pushRootItem:(id)arg1;
-- (BOOL)canNavigateToRootItem:(BOOL)arg1;
-- (void)validateHistory:(id)arg1;
-- (void)gotoPreviousRootItem:(id)arg1;
-- (void)gotoNextRootItem:(id)arg1;
-- (unsigned long long)indexOfItem:(id)arg1;
-- (void)gotoRootItem:(id)arg1;
-- (id)rootItem;
-@property(readonly) FFContext *context;
-@property(readonly) FFProvider *provider;
-- (id)sequence;
-- (BOOL)movingDeeper;
 - (BOOL)hasSelection;
+- (BOOL)movingDeeper;
+- (id)sequence;
+@property(readonly) FFProvider *provider;
+@property(readonly) FFContext *context;
+- (id)rootItem;
+- (void)gotoRootItem:(id)arg1;
+- (unsigned long long)indexOfItem:(id)arg1;
+- (void)gotoNextRootItem:(id)arg1;
+- (void)gotoPreviousRootItem:(id)arg1;
+- (void)validateHistory:(id)arg1;
+- (BOOL)canNavigateToRootItem:(BOOL)arg1;
+- (void)pushRootItem:(id)arg1;
+- (id)rootContainerForActiveItem;
+- (void)activeRootItemDidChange;
+- (void)activeRootItemWillChange;
+- (id)nextRootItems;
+- (id)previousRootItems;
+- (id)rootItemsHeirarchy;
+- (id)rootItems;
+- (id)currentItemInfo;
+- (void)setCurrentItemInfo:(id)arg1;
+- (id)labelTextForItem:(id)arg1;
+- (void)setDelegate:(id)arg1;
+- (id)inspectorClassName;
+- (void)dealloc;
+- (id)init;
 
 @end
 

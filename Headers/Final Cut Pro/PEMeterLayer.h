@@ -25,13 +25,13 @@
     CALayer *_peakLayer;
 }
 
-- (id)init;
-- (void)setupMeterLayers;
-- (void)layoutSublayers;
-- (void)_calculateMaskRatio:(double)arg1;
-- (void)maskToHeight:(double)arg1;
-- (void)setPlaying:(BOOL)arg1;
 @property BOOL stopAnimations; // @synthesize stopAnimations=_stopAnimations;
+- (void)setPlaying:(BOOL)arg1;
+- (void)maskToHeight:(double)arg1;
+- (void)_calculateMaskRatio:(double)arg1;
+- (void)layoutSublayers;
+- (void)setupMeterLayers;
+- (id)init;
 
 @end
 

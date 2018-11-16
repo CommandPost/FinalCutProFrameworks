@@ -6,11 +6,13 @@
 
 #import "NSObject.h"
 
+@class FFRolesMenuController, NSSet, NSString;
+
 @protocol FFRolesMenuDelegate <NSObject>
-- (id)anchoredObjectsForRolesMenuController:(id)arg1;
-- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 toAnchoredObjects:(id)arg3;
+- (void)rolesMenuController:(FFRolesMenuController *)arg1 shouldAddRole:(NSString *)arg2 toAnchoredObjects:(NSSet *)arg3;
+- (NSSet *)anchoredObjectsForRolesMenuController:(FFRolesMenuController *)arg1;
 
 @optional
-- (void)shouldEditRolesForRolesMenuController:(id)arg1;
+- (void)shouldEditRolesForRolesMenuController:(FFRolesMenuController *)arg1;
 @end
 

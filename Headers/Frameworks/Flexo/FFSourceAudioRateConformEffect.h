@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
-- (CDStruct_e83c9415)timeRange;
-- (CDStruct_1b6d18a9)mapTime:(CDStruct_1b6d18a9)arg1;
 - (id)rateConformEffect;
+- (CDStruct_1b6d18a9)mapTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_e83c9415)timeRange;
 
 @end
 

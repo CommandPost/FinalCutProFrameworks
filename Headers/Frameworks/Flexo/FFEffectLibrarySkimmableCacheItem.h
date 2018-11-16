@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)cacheItemWithSkimmable:(struct NSObject *)arg1;
-- (id)initWithSkimmable:(struct NSObject *)arg1;
-- (void)dealloc;
-- (void)updateLastAccessTime;
 @property(readonly, nonatomic) double lastAccessTime; // @synthesize lastAccessTime=_lastAccessTime;
 @property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable; // @synthesize skimmable=_skimmable;
+- (void)updateLastAccessTime;
+- (void)dealloc;
+- (id)initWithSkimmable:(struct NSObject *)arg1;
 
 @end
 

@@ -20,19 +20,20 @@
     CDStruct_1b6d18a9 _playTime;
 }
 
-- (id)initWithRenderNode:(struct OZRenderNode *)arg1 scene:(struct OZScene *)arg2;
-- (void)dealloc;
-- (void)previewDidResize:(id)arg1;
-- (void)viewDidLoad;
-- (void)togglePlayNoLock;
-- (void)togglePlay:(id)arg1;
-- (void)stopPlaying;
-- (BOOL)isPlaying;
-- (void)update:(const CDStruct_1b6d18a9 *)arg1;
-- (struct OZRenderNode *)getRenderNode;
-- (void)renderComplete:(id)arg1;
-- (void)playCB:(id)arg1;
 @property(nonatomic) OZImagePreview *imagePreviewView; // @synthesize imagePreviewView=_pImagePreview;
+- (id).cxx_construct;
+- (void)playCB:(id)arg1;
+- (void)renderComplete:(id)arg1;
+- (struct OZRenderNode *)getRenderNode;
+- (void)update:(const CDStruct_1b6d18a9 *)arg1;
+- (BOOL)isPlaying;
+- (void)stopPlaying;
+- (void)togglePlay:(id)arg1;
+- (void)togglePlayNoLock;
+- (void)viewDidLoad;
+- (void)previewDidResize:(id)arg1;
+- (void)dealloc;
+- (id)initWithRenderNode:(struct OZRenderNode *)arg1 scene:(struct OZScene *)arg2;
 
 @end
 

@@ -10,22 +10,22 @@
 {
 }
 
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-- (struct OZChannel3D *)ozChannel;
-- (void)getDoubleValuesAtTime:(CDStruct_1b6d18a9)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
-- (void)getDoubleValuesAtTime:(CDStruct_1b6d18a9)arg1 curveX:(double *)arg2 curveY:(double *)arg3 curveZ:(double *)arg4;
-- (void)setDoubleValuesAtTime:(CDStruct_1b6d18a9)arg1 curveX:(double)arg2 curveY:(double)arg3 curveZ:(double)arg4 options:(unsigned int)arg5;
-- (void)offsetDoubleValuesAtTime:(CDStruct_1b6d18a9)arg1 deltaX:(double)arg2 deltaY:(double)arg3 deltaZ:(double)arg4 options:(unsigned int)arg5;
-- (void)getDefaultCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
-- (void)setDefaultCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
-- (void)getMinCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
-- (void)setMinCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
-- (void)getMaxCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
-- (void)setMaxCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
-- (id)xChannel;
-- (id)yChannel;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 - (id)zChannel;
+- (id)yChannel;
+- (id)xChannel;
+- (void)setMaxCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
+- (void)getMaxCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
+- (void)setMinCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
+- (void)getMinCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
+- (void)setDefaultCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
+- (void)getDefaultCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
+- (void)offsetDoubleValuesAtTime:(CDStruct_198678f7)arg1 deltaX:(double)arg2 deltaY:(double)arg3 deltaZ:(double)arg4 options:(unsigned int)arg5;
+- (void)setDoubleValuesAtTime:(CDStruct_198678f7)arg1 curveX:(double)arg2 curveY:(double)arg3 curveZ:(double)arg4 options:(unsigned int)arg5;
+- (void)getDoubleValuesAtTime:(CDStruct_198678f7)arg1 curveX:(double *)arg2 curveY:(double *)arg3 curveZ:(double *)arg4;
+- (void)getDoubleValuesAtTime:(CDStruct_198678f7)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
+- (struct OZChannel3D *)ozChannel;
 
 @end
 

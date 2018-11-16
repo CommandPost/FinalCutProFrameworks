@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (Class)transformedValueClass;
 + (BOOL)allowsReverseTransformation;
++ (Class)transformedValueClass;
 - (id)transformedValue:(id)arg1;
 
 @end

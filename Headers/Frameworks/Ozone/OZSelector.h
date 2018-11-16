@@ -11,9 +11,9 @@
     SEL _selector;
 }
 
-- (id)initWithSelector:(SEL)arg1;
-- (SEL)selector;
 - (void)setSelector:(SEL)arg1;
+- (SEL)selector;
+- (id)initWithSelector:(SEL)arg1;
 
 @end
 

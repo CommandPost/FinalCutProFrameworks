@@ -10,8 +10,8 @@
 {
 }
 
-- (struct CGSize)viewMinSize;
 - (struct CGSize)viewMaxSize;
+- (struct CGSize)viewMinSize;
 
 @end
 

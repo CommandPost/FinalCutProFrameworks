@@ -44,8 +44,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)fileData;
-- (id)init;
-- (id)description;
 @property(nonatomic) unsigned long long requestCount; // @synthesize requestCount=_requestCount;
 @property(nonatomic) BOOL includeRenderFiles; // @synthesize includeRenderFiles;
 @property(nonatomic) BOOL includeAnalysisFiles; // @synthesize includeAnalysisFiles;
@@ -69,6 +67,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSURL *sourceFileURL; // @synthesize sourceFileURL=_sourceFileURL;
 @property(retain, nonatomic) FFAnchoredSequence *clip; // @synthesize clip=_clip;
 @property(retain, nonatomic) FFAssetRef *assetRef; // @synthesize assetRef=_assetRef;
+- (id)description;
+- (id)init;
 
 @end
 

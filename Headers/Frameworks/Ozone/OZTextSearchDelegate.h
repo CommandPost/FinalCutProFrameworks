@@ -15,36 +15,36 @@
 }
 
 + (id)getInstance;
-- (id)init;
-- (BOOL)canSearchInSequence;
-- (id)getNextTextObjectFromTime:(const CDStruct_1b6d18a9 *)arg1 andAfterTextObject:(id *)arg2 wrapAround:(BOOL)arg3;
-- (id)getPrevTextObjectFromTime:(const CDStruct_1b6d18a9 *)arg1 andBeforeTextObject:(id *)arg2 wrapAround:(BOOL)arg3;
-- (void)updateCanvas;
-- (void)textEdited:(id)arg1;
-- (void)notify:(unsigned int)arg1;
-- (BOOL)active;
-- (void)setActive:(BOOL)arg1;
-- (void)didSelectNewObject;
-- (vector_d1504541)results;
-- (void)performSearch;
-- (void)goToNextResult;
-- (void)goToPreviousResult;
-- (id)getCurrentTextObject;
-- (CDStruct_1b6d18a9)getCurrentTime;
-- (void)setCurrentObject:(id *)arg1;
-- (BOOL)getSearchResults:(vector_d1504541 *)arg1 forString:(const id)arg2 fromTextObject:(id)arg3 withFlags:(unsigned int)arg4 searchForward:(BOOL)arg5 jumpTo:(struct FFTextSearchResult *)arg6;
-- (void)getNextTextObject:(id *)arg1 after:(id *)arg2 flags:(unsigned int)arg3 searchForward:(BOOL)arg4;
-- (void)notifySearchOSC:(id)arg1;
-- (void)didFindResult:(id)arg1 setSelectionForResult:(struct FFTextSearchResult)arg2;
-- (void)willReplace:(id)arg1;
-- (void)didReplace:(id)arg1 didSetNewSelection:(BOOL)arg2;
-- (int)currentTextSelectionLength;
-- (BOOL)textToolIsActive;
-- (void)updateStrings:(id)arg1;
-- (void)willReplaceAll:(struct vector<std::vector<FFTextSearchResult, std::allocator<FFTextSearchResult>>, std::allocator<std::vector<FFTextSearchResult, std::allocator<FFTextSearchResult>>>> *)arg1 textObjects:(vector_1e3759f0 *)arg2;
-- (void)didReplaceAll:(struct vector<std::vector<FFTextSearchResult, std::allocator<FFTextSearchResult>>, std::allocator<std::vector<FFTextSearchResult, std::allocator<FFTextSearchResult>>>> *)arg1 textObjects:(vector_1e3759f0 *)arg2;
 @property(nonatomic) BOOL inhibitUndo; // @synthesize inhibitUndo=_inhibitUndo;
 @property(nonatomic) struct OZDocument *document; // @synthesize document=_document;
+- (void)didReplaceAll:(struct vector<std::vector<FFTextSearchResult, std::allocator<FFTextSearchResult>>, std::allocator<std::vector<FFTextSearchResult, std::allocator<FFTextSearchResult>>>> *)arg1 textObjects:(vector_8a98cfff *)arg2;
+- (void)willReplaceAll:(struct vector<std::vector<FFTextSearchResult, std::allocator<FFTextSearchResult>>, std::allocator<std::vector<FFTextSearchResult, std::allocator<FFTextSearchResult>>>> *)arg1 textObjects:(vector_8a98cfff *)arg2;
+- (void)updateStrings:(id)arg1;
+- (BOOL)textToolIsActive;
+- (int)currentTextSelectionLength;
+- (void)didReplace:(id)arg1 didSetNewSelection:(BOOL)arg2;
+- (void)willReplace:(id)arg1;
+- (void)didFindResult:(id)arg1 setSelectionForResult:(struct FFTextSearchResult)arg2;
+- (void)notifySearchOSC:(id)arg1;
+- (void)getNextTextObject:(id *)arg1 after:(id *)arg2 flags:(unsigned int)arg3 searchForward:(BOOL)arg4;
+- (BOOL)getSearchResults:(vector_d1504541 *)arg1 forString:(id)arg2 fromTextObject:(id)arg3 withFlags:(unsigned int)arg4 searchForward:(BOOL)arg5 jumpTo:(struct FFTextSearchResult *)arg6;
+- (void)setCurrentObject:(id *)arg1;
+- (CDStruct_1b6d18a9)getCurrentTime;
+- (id)getCurrentTextObject;
+- (void)goToPreviousResult;
+- (void)goToNextResult;
+- (void)performSearch;
+- (vector_d1504541)results;
+- (void)didSelectNewObject;
+- (void)setActive:(BOOL)arg1;
+- (BOOL)active;
+- (void)notify:(unsigned int)arg1;
+- (void)textEdited:(id)arg1;
+- (void)updateCanvas;
+- (id)getPrevTextObjectFromTime:(const CDStruct_1b6d18a9 *)arg1 andBeforeTextObject:(id *)arg2 wrapAround:(BOOL)arg3;
+- (id)getNextTextObjectFromTime:(const CDStruct_1b6d18a9 *)arg1 andAfterTextObject:(id *)arg2 wrapAround:(BOOL)arg3;
+- (BOOL)canSearchInSequence;
+- (id)init;
 
 @end
 

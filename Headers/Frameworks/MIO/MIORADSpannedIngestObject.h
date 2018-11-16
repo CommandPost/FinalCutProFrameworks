@@ -26,23 +26,23 @@ __attribute__((visibility("hidden")))
     int mCurrentIngestObjectIndex;
 }
 
-- (id)initWithIngestObjects:(id)arg1 andPathSets:(id)arg2 andRefCons:(id)arg3 andDurations:(id)arg4 andMediaRate:(double)arg5;
-- (id)ingestObjects;
-- (void)dealloc;
-- (void)performSelector:(SEL)arg1 onObjects:(id)arg2 withObjects:(id)arg3;
-- (int)initialize:(void *)arg1;
-- (int)teardown:(void *)arg1;
-- (int)start:(void *)arg1;
-- (int)stop:(void *)arg1;
-- (int)cleanup:(void *)arg1;
-- (int)reset:(void *)arg1;
-- (int)setPathSet:(id)arg1 inRefCon:(void *)arg2;
-- (int)setInPoint:(CDStruct_1b6d18a9)arg1 inRefCon:(void *)arg2;
-- (int)setOutPoint:(CDStruct_1b6d18a9)arg1 inRefCon:(void *)arg2;
-- (int)setKeepMediaVideoRate:(BOOL)arg1 inRefCon:(void *)arg2;
-- (int)getNextMedia:(struct MIORADPlugInMediaSpecifier *)arg1 inRefCon:(void *)arg2;
-- (int)getNextMedia_Deprecated:(struct MIORADPlugInMediaSpecifier_Deprecated *)arg1 inRefCon:(void *)arg2;
 - (BOOL)useCMTime;
+- (int)getNextMedia_Deprecated:(struct MIORADPlugInMediaSpecifier_Deprecated *)arg1 inRefCon:(void *)arg2;
+- (int)getNextMedia:(struct MIORADPlugInMediaSpecifier *)arg1 inRefCon:(void *)arg2;
+- (int)setKeepMediaVideoRate:(BOOL)arg1 inRefCon:(void *)arg2;
+- (int)setOutPoint:(CDStruct_1b6d18a9)arg1 inRefCon:(void *)arg2;
+- (int)setInPoint:(CDStruct_1b6d18a9)arg1 inRefCon:(void *)arg2;
+- (int)setPathSet:(id)arg1 inRefCon:(void *)arg2;
+- (int)reset:(void *)arg1;
+- (int)cleanup:(void *)arg1;
+- (int)stop:(void *)arg1;
+- (int)start:(void *)arg1;
+- (int)teardown:(void *)arg1;
+- (int)initialize:(void *)arg1;
+- (void)performSelector:(SEL)arg1 onObjects:(id)arg2 withObjects:(id)arg3;
+- (void)dealloc;
+- (id)ingestObjects;
+- (id)initWithIngestObjects:(id)arg1 andPathSets:(id)arg2 andRefCons:(id)arg3 andDurations:(id)arg4 andMediaRate:(double)arg5;
 
 @end
 

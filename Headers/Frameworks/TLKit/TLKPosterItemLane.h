@@ -13,12 +13,12 @@
     NSMutableArray *_posterPinLayerArray;
 }
 
-- (void)dealloc;
-- (void)setHeight:(double)arg1;
-- (void)updateFromSelection:(id)arg1;
-- (void)removeAllPosterPins;
-- (void)_addPins:(id)arg1 forItem:(id)arg2;
 - (void)updatePositionOfItem:(id)arg1;
+- (void)_addPins:(id)arg1 forItem:(id)arg2;
+- (void)removeAllPosterPins;
+- (void)updateFromSelection:(id)arg1;
+- (void)setHeight:(double)arg1;
+- (void)dealloc;
 
 @end
 

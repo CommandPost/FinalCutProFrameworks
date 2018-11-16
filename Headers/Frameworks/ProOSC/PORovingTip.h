@@ -16,28 +16,28 @@
     int _distance;
 }
 
-+ (int)getMoveFromAngle:(double)arg1;
-+ (void)startTip:(int)arg1 who:(id)arg2;
-+ (void)startTip:(int)arg1 andDistance:(int)arg2 who:(id)arg3;
-+ (void)updateTip:(id)arg1;
-+ (void)updateTip:(id)arg1 atPoint:(struct CGPoint)arg2;
-+ (void)updateTip:(id)arg1 withFrame:(struct CGRect)arg2;
-+ (struct CGSize)tipSize:(id)arg1;
-+ (void)hideTip;
-+ (BOOL)isTipUp;
-+ (void)endTip;
 + (void)endTip:(id)arg1;
-- (id)initWithMove:(int)arg1 andDistance:(int)arg2;
-- (id)initWithMove:(int)arg1;
-- (void)dealloc;
-- (void)initializeContents:(struct CGRect)arg1;
-- (void)setStringValue:(id)arg1 windowFrame:(struct CGRect)arg2;
-- (void)updateString:(id)arg1;
-- (void)updateString:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (void)updateString:(id)arg1 withFrame:(struct CGRect)arg2;
-- (struct CGSize)sizeWithString:(id)arg1;
-- (void)hide;
++ (void)endTip;
++ (BOOL)isTipUp;
++ (void)hideTip;
++ (struct CGSize)tipSize:(id)arg1;
++ (void)updateTip:(id)arg1 withFrame:(struct CGRect)arg2;
++ (void)updateTip:(id)arg1 atPoint:(struct CGPoint)arg2;
++ (void)updateTip:(id)arg1;
++ (void)startTip:(int)arg1 andDistance:(int)arg2 who:(id)arg3;
++ (void)startTip:(int)arg1 who:(id)arg2;
++ (int)getMoveFromAngle:(double)arg1;
 - (id)text;
+- (void)hide;
+- (struct CGSize)sizeWithString:(id)arg1;
+- (void)updateString:(id)arg1 withFrame:(struct CGRect)arg2;
+- (void)updateString:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (void)updateString:(id)arg1;
+- (void)setStringValue:(id)arg1 windowFrame:(struct CGRect)arg2;
+- (void)initializeContents:(struct CGRect)arg1;
+- (void)dealloc;
+- (id)initWithMove:(int)arg1;
+- (id)initWithMove:(int)arg1 andDistance:(int)arg2;
 
 @end
 

@@ -12,11 +12,11 @@
 {
     char *_baseAddress;
     BOOL _ownPixels;
+    struct __CFAllocator *_allocator;
     struct CGRect _bounds;
     FFPixelFormat *_pixelFormat;
     unsigned int _bytesPerRow;
     id _backingObject;
-    BOOL _flipped;
     double _cost;
     int _alphaType;
     _Bool _needPremultClamp;
@@ -24,28 +24,28 @@
 }
 
 + (id)newFrameFromFirstField:(id)arg1 secondField:(id)arg2 fieldDominance:(int)arg3;
-- (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 flipped:(BOOL)arg5 alphaType:(int)arg6;
-- (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 flipped:(BOOL)arg5;
-- (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2 alphaType:(int)arg3;
-- (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2 alphaType:(int)arg3 clearBuffer:(BOOL)arg4;
-- (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (_Bool)isPremultipliedBlack;
-- (void)dealloc;
-- (char *)baseAddress;
-- (struct CGRect)bounds;
-- (id)pixelFormat;
-- (unsigned int)bytesPerRow;
-- (double)width;
-- (double)height;
-- (BOOL)isFlipped;
-- (void)setBackingObject:(id)arg1;
-- (void)setCost:(double)arg1;
-- (double)cost;
-- (BOOL)fillFrameWithFirstField:(id)arg1 secondField:(id)arg2 fieldDominance:(int)arg3;
 @property _Bool invertAlpha; // @synthesize invertAlpha=_invertAlpha;
 @property _Bool needPremultClamp; // @synthesize needPremultClamp=_needPremultClamp;
 @property(readonly) int alphaType; // @synthesize alphaType=_alphaType;
+- (BOOL)fillFrameWithFirstField:(id)arg1 secondField:(id)arg2 fieldDominance:(int)arg3;
+- (double)cost;
+- (void)setCost:(double)arg1;
+- (void)setBackingObject:(id)arg1;
+- (double)height;
+- (double)width;
+- (unsigned int)bytesPerRow;
+- (id)pixelFormat;
+- (struct CGRect)bounds;
+- (char *)baseAddress;
+- (void)dealloc;
+- (_Bool)isPremultipliedBlack;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2 clearBuffer:(BOOL)arg3 allocator:(struct __CFAllocator *)arg4;
+- (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2 alphaType:(int)arg3 clearBuffer:(BOOL)arg4 allocator:(struct __CFAllocator *)arg5;
+- (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2;
+- (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2 alphaType:(int)arg3;
+- (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4;
+- (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 alphaType:(int)arg5;
 
 @end
 

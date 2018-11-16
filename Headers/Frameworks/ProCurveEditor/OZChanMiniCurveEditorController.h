@@ -13,20 +13,20 @@
     OZMiniCurveEditor *_pMiniCurveEditor;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (id)initWithChan:(struct OZChannelBase *)arg1 controlFlags:(unsigned int)arg2 context:(id)arg3;
-- (void)dealloc;
-- (void)setTotalRange:(const CDStruct_1b6d18a9 *)arg1 duration:(const CDStruct_1b6d18a9 *)arg2;
-- (void)setDisplayRange:(const CDStruct_1b6d18a9 *)arg1 duration:(const CDStruct_1b6d18a9 *)arg2;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
-- (void)enable;
-- (void)disable;
-- (void)updateEnableState;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (void)notify:(unsigned int)arg1;
-- (void)update;
-- (BOOL)needsRefresh;
 - (id)getMiniCurveEditor;
+- (BOOL)needsRefresh;
+- (void)update;
+- (void)notify:(unsigned int)arg1;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)updateEnableState;
+- (void)disable;
+- (void)enable;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (void)setDisplayRange:(const CDStruct_1b6d18a9 *)arg1 duration:(const CDStruct_1b6d18a9 *)arg2;
+- (void)setTotalRange:(const CDStruct_1b6d18a9 *)arg1 duration:(const CDStruct_1b6d18a9 *)arg2;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 controlFlags:(unsigned int)arg2 context:(id)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

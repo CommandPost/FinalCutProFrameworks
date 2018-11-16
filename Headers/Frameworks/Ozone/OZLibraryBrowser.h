@@ -10,16 +10,16 @@
 {
 }
 
-- (BOOL)needsPanelToBecomeKey;
-- (void)copy:(id)arg1;
-- (void)cut:(id)arg1;
-- (void)paste:(id)arg1;
-- (void)duplicate:(id)arg1;
-- (void)delete:(id)arg1;
-- (void)librayDelete:(id)arg1;
-- (void)selectAll:(id)arg1;
-- (void)selectNone:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
+- (void)selectNone:(id)arg1;
+- (void)selectAll:(id)arg1;
+- (void)librayDelete:(id)arg1;
+- (void)delete:(id)arg1;
+- (void)duplicate:(id)arg1;
+- (void)paste:(id)arg1;
+- (void)cut:(id)arg1;
+- (void)copy:(id)arg1;
+- (BOOL)needsPanelToBecomeKey;
 
 @end
 

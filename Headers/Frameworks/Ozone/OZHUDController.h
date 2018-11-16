@@ -9,29 +9,32 @@
 @interface OZHUDController : OZProViewModule
 {
     struct OZScene *_pScene;
-    list_2c251165 *_pObjects;
-    list_909ba1c0 *_pObjectIDs;
+    list_37573188 *_pObjects;
+    list_89d338e7 *_pObjectIDs;
     vector_77d837c3 *_pMagicNumbers;
     struct CGRect _prevViewFrame;
 }
 
-- (id)initWithObjectList:(list_34700237 *)arg1;
-- (void)dealloc;
-- (list_2c251165 *)objectList;
-- (BOOL)representedObjectsExist;
-- (void)viewDidLoad;
-- (void)update;
-- (BOOL)isEmpty;
-- (id)title;
-- (struct OZScene *)scene;
-- (void)willUpdateHideShowState;
-- (void)didUpdateHideShowState;
-- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1;
-- (void)windowMinimized:(id)arg1;
-- (void)windowDeminimized:(id)arg1;
-- (BOOL)allObjectsAreSameType:(const list_34700237 *)arg1;
-- (void)encloseInCenteringView;
+@property(readonly, nonatomic) struct OZScene *scene; // @synthesize scene=_pScene;
+- (id).cxx_construct;
 - (void)updateViewFinalFrame;
+- (void)encloseInCenteringView;
+- (BOOL)allObjectsAreSameType:(const list_0555a7a2 *)arg1;
+- (void)windowDeminimized:(id)arg1;
+- (void)windowMinimized:(id)arg1;
+- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1;
+- (void)didUpdateHideShowState;
+- (void)willUpdateHideShowState;
+- (id)title;
+- (BOOL)isEmpty;
+- (void)update;
+- (void)viewDidLoad;
+- (BOOL)representedObjectsExist;
+- (list_37573188 *)objectList;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)dealloc;
+- (id)initWithObjectList:(list_0555a7a2 *)arg1;
 
 @end
 

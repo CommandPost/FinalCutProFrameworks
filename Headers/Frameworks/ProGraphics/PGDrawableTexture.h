@@ -19,23 +19,23 @@
     _Bool _hasDrawingBegun;
 }
 
-- (id)init;
-- (id)initWithNSImage:(id)arg1;
-- (id)initWithNSImage:(id)arg1 size:(struct CGSize)arg2;
-- (id)initWithFacet:(id)arg1 scale:(double)arg2 state:(long long)arg3;
-- (void)dealloc;
-- (void)setWidth:(int)arg1 andHeight:(int)arg2;
-- (void)beginDrawingInto;
-- (void)endDrawingInto;
-- (unsigned int)getTextureID;
-- (struct PCBitmap *)getBitmap;
-- (int)getWidth;
-- (int)getHeight;
-- (void)drawAtPoint:(struct CGPoint)arg1;
-- (void)drawAtPoint:(struct CGPoint)arg1 withOpacity:(double)arg2;
-- (void)drawAtPoint:(struct CGPoint)arg1 withScaleX:(double)arg2 withScaleY:(double)arg3;
-- (void)drawAtPoint:(struct CGPoint)arg1 rotatedBy:(double)arg2 aroundPivot:(struct CGPoint)arg3;
 - (void)drawAtPoint:(struct CGPoint)arg1 rotatedBy:(double)arg2 aroundPivot:(struct CGPoint)arg3 withScaleX:(double)arg4 withScaleY:(double)arg5 withOpacity:(double)arg6;
+- (void)drawAtPoint:(struct CGPoint)arg1 rotatedBy:(double)arg2 aroundPivot:(struct CGPoint)arg3;
+- (void)drawAtPoint:(struct CGPoint)arg1 withScaleX:(double)arg2 withScaleY:(double)arg3;
+- (void)drawAtPoint:(struct CGPoint)arg1 withOpacity:(double)arg2;
+- (void)drawAtPoint:(struct CGPoint)arg1;
+- (int)getHeight;
+- (int)getWidth;
+- (struct PCBitmap *)getBitmap;
+- (unsigned int)getTextureID;
+- (void)endDrawingInto;
+- (void)beginDrawingInto;
+- (void)setWidth:(int)arg1 andHeight:(int)arg2;
+- (void)dealloc;
+- (id)initWithFacet:(id)arg1 scale:(double)arg2 state:(long long)arg3;
+- (id)initWithNSImage:(id)arg1 size:(struct CGSize)arg2;
+- (id)initWithNSImage:(id)arg1;
+- (id)init;
 
 @end
 

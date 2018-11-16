@@ -22,10 +22,10 @@ __attribute__((visibility("hidden")))
     BOOL _assetsInitialised;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)initAssets;
-- (void)dealloc;
 - (void)updatePopUpMenu:(BOOL)arg1;
+- (void)dealloc;
+- (void)initAssets;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -6,16 +6,18 @@
 
 #import <Flexo/FFInspectorModule.h>
 
-@class CKShareStatus, FFInspectorShareTileView, FFSequenceProject, NSProThemeImageView, NSTextField;
+#import "FFInspectorShareMetadataTileProtocol.h"
+
+@class CKShareStatus, FFInspectorShareTileView, FFSequenceProject, NSArray, NSMutableArray, NSProImageView, NSProThemeImageView, NSProView, NSTextField;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorModuleProjectSharing : FFInspectorModule
+@interface FFInspectorModuleProjectSharing : FFInspectorModule <FFInspectorShareMetadataTileProtocol>
 {
     FFInspectorShareTileView *_shareTilesView;
     FFSequenceProject *_inspectedProject;
     CKShareStatus *_ckShareStatus;
     NSProThemeImageView *_sharingHeaderView;
-    NSProThemeImageView *_sharingProjectImage;
+    NSProImageView *_sharingProjectImage;
     NSTextField *_sharingClipName;
     NSTextField *_sharingDuration;
     NSTextField *_sharingTextDate;
@@ -25,26 +27,52 @@ __attribute__((visibility("hidden")))
     NSTextField *_sharingTextAudioChannels;
     NSProThemeImageView *_sharingFormatRightBadge;
     NSProThemeImageView *_sharingFormatLeftBadge;
+    NSProView *_emptyView;
     BOOL _projectIsInSyncWithShareMedia;
+    NSMutableArray *_proxyObjs;
+    NSArray *_shareMetadataDefinitions;
+    NSMutableArray *_visibleShareMetadata;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)updateHeaderUI;
-- (id)getShareStatusImage:(BOOL)arg1;
-- (id)getRevealImage;
-- (id)getStatusImageString;
-- (BOOL)isVideoPathLocal:(id)arg1;
-- (void)addNewTileFor:(id)arg1 withArray:(id)arg2 withFingerPrint:(id)arg3;
-- (id)latestDateFromArray:(id)arg1;
-- (id)sortShareArray:(id)arg1 withID:(id)arg2;
-- (id)sortItemsArray:(id)arg1;
-- (void)rebuildShareTilesView:(BOOL)arg1;
-- (void)_assetsChangedNotification:(id)arg1;
-- (void)setCurrentItems:(id)arg1;
-- (void)shareNotification:(id)arg1;
-- (void)tellAFriendOfSharedItem:(id)arg1;
+- (void)controlTextDidChange:(id)arg1;
+- (void)changeEditState:(id)arg1;
+- (void)editFields:(id)arg1;
+- (void)updateToDefault:(id)arg1;
+- (void)saveAsDefault:(id)arg1;
+- (void)showDefaultFields:(id)arg1;
+- (void)showAllFields:(id)arg1;
 - (void)removeSharedItem:(id)arg1;
+- (void)tellAFriendOfSharedItem:(id)arg1;
+- (void)shareMetadataChanged:(id)arg1;
+- (void)shareNotification:(id)arg1;
+- (void)setCurrentItems:(id)arg1;
+- (void)_assetsChangedNotification:(id)arg1;
+- (id)_sequenceFromInspectedProject:(id)arg1;
+- (void)rebuildShareTilesView:(BOOL)arg1;
+- (id)sortItemsArray:(id)arg1;
+- (id)sortShareArray:(id)arg1 withID:(id)arg2;
+- (id)latestDateFromArray:(id)arg1;
+- (void)addNewTileFor:(id)arg1 withArray:(id)arg2 withFingerPrint:(id)arg3;
+- (BOOL)isVideoPathLocal:(id)arg1;
+- (id)getStatusImageString;
+- (id)getRevealImage;
+- (id)getShareStatusImage:(BOOL)arg1;
+- (void)updateMetadataTile;
+- (void)addNewTileForMetadata;
+- (BOOL)isMetadataVisible:(id)arg1;
+- (void)initShareMetadataArray;
+- (void)initVisibleShareMetadataArray;
+- (BOOL)isDefaultKey:(id)arg1;
+- (void)updateHeaderUICommon:(id)arg1;
+- (void)updateHeaderUIFor:(id)arg1;
+- (void)updateHeaderUIForItems:(id)arg1;
+- (void)showSingleFormat:(id)arg1;
+- (void)showDoubleFormat:(id)arg1 with:(id)arg2;
+- (id)valueForKeyPath:(id)arg1;
+- (void)setValue:(id)arg1 forKeyPath:(id)arg2;
+- (BOOL)areVlauesForKeyPathSame:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

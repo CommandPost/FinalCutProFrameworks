@@ -15,16 +15,17 @@
 }
 
 + (id)segmentWithStartTime:(CDStruct_1b6d18a9)arg1 endTime:(CDStruct_1b6d18a9)arg2;
-- (id)initWithStartTime:(CDStruct_1b6d18a9)arg1 endTime:(CDStruct_1b6d18a9)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)description;
-- (BOOL)isEntirelyBeforeSegment:(id)arg1;
-- (BOOL)isContinuousUnionWithSegment:(id)arg1;
-- (void)expandByMergingWithSegment:(id)arg1;
-- (BOOL)containsTime:(CDStruct_1b6d18a9)arg1;
 @property CDStruct_1b6d18a9 endTime; // @synthesize endTime=_endTime;
 @property CDStruct_1b6d18a9 startTime; // @synthesize startTime=_startTime;
+- (id).cxx_construct;
+- (BOOL)containsTime:(CDStruct_1b6d18a9)arg1;
+- (void)expandByMergingWithSegment:(id)arg1;
+- (BOOL)isContinuousUnionWithSegment:(id)arg1;
+- (BOOL)isEntirelyBeforeSegment:(id)arg1;
+- (id)description;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithStartTime:(CDStruct_1b6d18a9)arg1 endTime:(CDStruct_1b6d18a9)arg2;
 
 @end
 

@@ -13,15 +13,15 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)footerNibName;
-- (id)footerText;
-- (id)accessoryTitle;
-- (void)cancelOnSelectionOnMatchTool:(id)arg1;
-- (void)completeOnSelectionOnMatchTool:(id)arg1;
-- (void)matchToolWasAssigned:(id)arg1;
-- (void)matchToolWasResigned:(id)arg1;
-- (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
 - (BOOL)matchToolShouldCancelOnUndo:(id)arg1;
+- (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
+- (void)matchToolWasResigned:(id)arg1;
+- (void)matchToolWasAssigned:(id)arg1;
+- (void)completeOnSelectionOnMatchTool:(id)arg1;
+- (void)cancelOnSelectionOnMatchTool:(id)arg1;
+- (id)accessoryTitle;
+- (id)footerText;
+- (id)footerNibName;
 
 @end
 

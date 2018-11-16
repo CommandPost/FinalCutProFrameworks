@@ -24,41 +24,35 @@
     NSTextField *_pFreezeCacheMaxSizeTF;
     NSPopUpButton *_pFreezeCacheMaxSizePopUp;
     NSTextField *_pFreezeCachePathTF;
-    NSButton *_pLTCacheLiveFontSizesButton;
-    NSTextField *_pLTCachePathTextField;
     NSMatrix *_pOpticalFlowCacheMatrix;
     NSTextField *_pOpticalFlowCachePathTF;
     NSButton *_pDeleteRetimingCacheButton;
 }
 
-- (void)initializeFromDefaults;
-- (BOOL)isResizable;
-- (void)setProjectCacheSize:(id)arg1;
-- (void)setCacheFootageFlag:(id)arg1;
-- (void)setAutosave:(id)arg1;
-- (void)setAutosaveInterval:(id)arg1;
-- (void)setAutosaveCopiesPerProject:(id)arg1;
-- (void)setAutosaveMaxProjects:(id)arg1;
-- (void)chooseAutosaveVaultPath:(id)arg1;
-- (void)resetAutosaveVaultPath:(id)arg1;
-- (void)recursiveEnable:(BOOL)arg1 view:(id)arg2;
-- (void)setFreezePreset:(id)arg1;
-- (void)setFreezeUpdating:(id)arg1;
-- (void)setFreezeCacheLimit:(id)arg1;
-- (void)setFreezeCacheSize:(id)arg1;
-- (void)setFreezeCacheSizeUnit:(id)arg1;
-- (void)chooseFreezeCachePath:(id)arg1;
-- (BOOL)_alertDeleteFreezeCache;
-- (void)deleteFreezeCache:(id)arg1;
-- (void)buildPresetList;
-- (void)toggleLiveFontCache:(id)arg1;
-- (void)chooseLTCachePath:(id)arg1;
-- (void)didEndChooseLTPath:(id)arg1 returnCode:(int)arg2 contextInfo:(void *)arg3;
-- (void)deleteLiveFontCache:(id)arg1;
-- (void)setOpticalFlowCacheMode:(id)arg1;
-- (void)chooseOpticalFlowCachePath:(id)arg1;
-- (void)deleteRetimingCache:(id)arg1;
 - (void)revealRetimingCache:(id)arg1;
+- (void)deleteRetimingCache:(id)arg1;
+- (void)chooseOpticalFlowCachePath:(id)arg1;
+- (void)setOpticalFlowCacheMode:(id)arg1;
+- (void)buildPresetList;
+- (void)deleteFreezeCache:(id)arg1;
+- (BOOL)_alertDeleteFreezeCache;
+- (void)chooseFreezeCachePath:(id)arg1;
+- (void)setFreezeCacheSizeUnit:(id)arg1;
+- (void)setFreezeCacheSize:(id)arg1;
+- (void)setFreezeCacheLimit:(id)arg1;
+- (void)setFreezeUpdating:(id)arg1;
+- (void)setFreezePreset:(id)arg1;
+- (void)recursiveEnable:(BOOL)arg1 view:(id)arg2;
+- (void)resetAutosaveVaultPath:(id)arg1;
+- (void)chooseAutosaveVaultPath:(id)arg1;
+- (void)setAutosaveMaxProjects:(id)arg1;
+- (void)setAutosaveCopiesPerProject:(id)arg1;
+- (void)setAutosaveInterval:(id)arg1;
+- (void)setAutosave:(id)arg1;
+- (void)setCacheFootageFlag:(id)arg1;
+- (void)setProjectCacheSize:(id)arg1;
+- (BOOL)isResizable;
+- (void)initializeFromDefaults;
 
 @end
 

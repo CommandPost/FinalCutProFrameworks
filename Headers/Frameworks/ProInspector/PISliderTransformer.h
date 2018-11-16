@@ -10,9 +10,9 @@
 {
 }
 
-+ (double)sliderValueFromParameterValue:(double)arg1 forChannel:(struct OZChannel *)arg2;
-+ (double)parameterValueFromSliderValue:(double)arg1 forChannel:(struct OZChannel *)arg2;
 + (void)sliderMin:(double *)arg1 sliderMax:(double *)arg2 forChannel:(struct OZChannel *)arg3 isHUD:(BOOL)arg4;
++ (double)parameterValueFromSliderValue:(double)arg1 forChannel:(struct OZChannel *)arg2;
++ (double)sliderValueFromParameterValue:(double)arg1 forChannel:(struct OZChannel *)arg2;
 
 @end
 

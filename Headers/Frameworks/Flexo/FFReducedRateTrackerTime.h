@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
     _Bool _requested;
 }
 
-- (id)initWithFigTime:(CDStruct_1b6d18a9)arg1 requested:(_Bool)arg2;
-- (id)description;
 @property _Bool requested; // @synthesize requested=_requested;
+- (id)description;
+- (id)initWithFigTime:(CDStruct_1b6d18a9)arg1 requested:(_Bool)arg2;
 
 @end
 

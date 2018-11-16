@@ -10,33 +10,33 @@
 {
 }
 
-- (void)showBehavior:(id)arg1;
-- (void)revealTargetRiggedParameter:(id)arg1;
-- (void)showWidget:(id)arg1;
-- (void)removeFromWidget:(id)arg1;
-- (void)addCheckboxToRig:(id)arg1;
-- (void)addPopUpToRig:(id)arg1;
-- (void)addSliderToRig:(id)arg1;
-- (void)addWidgetType:(unsigned int)arg1 toRig:(struct OZRig *)arg2;
-- (void)addToWidget:(id)arg1;
-- (void)updateState:(id)arg1;
-- (id)enableAnimMenuImage;
-- (BOOL)doAllChannelsHaveEnableButton;
-- (const struct OZChannelBase *)publishChannelForChannel:(const struct OZChannelBase *)arg1;
-- (BOOL)areAllSubchannelsPublished:(const struct OZChannelBase *)arg1;
-- (BOOL)areAllSubchannelsPublished;
-- (BOOL)isChanDescendantOfPublishedGradient:(const struct OZChannelBase *)arg1;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)addCustomMenuItems:(id)arg1;
-- (BOOL)allowsShowInCurveEditor;
-- (void)addPublishedChanMenuItems:(id)arg1;
-- (void)addAddToRigMenu:(id)arg1;
-- (void)addApplyBehaviorMenu:(id)arg1;
-- (id)buildMenuForPresets:(const struct OZLibraryPresetsMap *)arg1;
-- (void)addGoToAndRemoveWidgetMenuItem:(id)arg1 behavior:(struct OZRigBehavior *)arg2;
-- (void)applyBehavior:(id)arg1;
-- (void)revealOriginalPublishedParameter:(id)arg1;
 - (void)publish:(id)arg1;
+- (void)revealOriginalPublishedParameter:(id)arg1;
+- (void)applyBehavior:(id)arg1;
+- (void)addGoToAndRemoveWidgetMenuItem:(id)arg1 behavior:(struct OZRigBehavior *)arg2;
+- (id)buildMenuForPresets:(const struct OZLibraryPresetsMap *)arg1;
+- (void)addApplyBehaviorMenu:(id)arg1;
+- (void)addAddToRigMenu:(id)arg1;
+- (void)addPublishedChanMenuItems:(id)arg1;
+- (BOOL)allowsShowInCurveEditor;
+- (void)addCustomMenuItems:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
+- (BOOL)isChanDescendantOfPublishedGradient:(const struct OZChannelBase *)arg1;
+- (BOOL)areAllSubchannelsPublished;
+- (BOOL)areAllSubchannelsPublished:(const struct OZChannelBase *)arg1;
+- (const struct OZChannelBase *)publishChannelForChannel:(const struct OZChannelBase *)arg1;
+- (BOOL)doAllChannelsHaveEnableButton;
+- (id)enableAnimMenuImage;
+- (void)updateState:(id)arg1;
+- (void)addToWidget:(id)arg1;
+- (void)addWidgetType:(unsigned int)arg1 toRig:(struct OZRig *)arg2;
+- (void)addSliderToRig:(id)arg1;
+- (void)addPopUpToRig:(id)arg1;
+- (void)addCheckboxToRig:(id)arg1;
+- (void)removeFromWidget:(id)arg1;
+- (void)showWidget:(id)arg1;
+- (void)revealTargetRiggedParameter:(id)arg1;
+- (void)showBehavior:(id)arg1;
 
 @end
 

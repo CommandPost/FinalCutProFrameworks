@@ -17,11 +17,11 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _definedRangeToUseFromInput;
 }
 
-- (_Bool)infiniteSource;
-- (id)initWithRange:(CDStruct_e83c9415)arg1 definedRangeToUseFromInput:(CDStruct_e83c9415)arg2 input:(id)arg3 identifier:(id)arg4;
-- (void)dealloc;
-- (CDStruct_e83c9415)range;
 - (void)_setupSources;
+- (CDStruct_e83c9415)range;
+- (void)dealloc;
+- (id)initWithRange:(CDStruct_e83c9415)arg1 definedRangeToUseFromInput:(CDStruct_e83c9415)arg2 input:(id)arg3 identifier:(id)arg4;
+- (_Bool)infiniteSource;
 
 @end
 

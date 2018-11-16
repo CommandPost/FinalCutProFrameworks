@@ -10,21 +10,21 @@
 {
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (id)getName;
-- (id)getTooltip;
-- (struct PCUUID)getClassID;
-- (id)getDefaultCursor;
-- (void)endWithDocument:(struct OZDocument *)arg1;
-- (void)addToScene:(struct OZScene *)arg1;
-- (void)draw;
-- (BOOL)testPoint:(id)arg1 xpos:(double)arg2 ypos:(double)arg3;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (BOOL)keyDownOSC:(id)arg1;
 - (BOOL)keyUpOSC:(id)arg1;
+- (BOOL)keyDownOSC:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (BOOL)testPoint:(id)arg1 xpos:(double)arg2 ypos:(double)arg3;
+- (void)draw;
+- (void)addToScene:(struct OZScene *)arg1;
+- (void)endWithDocument:(struct OZDocument *)arg1;
+- (id)getDefaultCursor;
+- (struct PCUUID)getClassID;
+- (id)getTooltip;
+- (id)getName;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

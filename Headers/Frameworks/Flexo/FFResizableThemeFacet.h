@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     struct CGPoint _slicePositions[9];
 }
 
-- (id)_initWithFacet:(id)arg1;
-- (struct CGSize)_textureSizeInPoints;
-- (void)drawFacetForState:(long long)arg1 dimension1:(long long)arg2 value:(long long)arg3 inRect:(struct CGRect)arg4 inContext:(struct _CGLContextObject *)arg5 destView:(id)arg6 colorSync:(BOOL)arg7;
-- (BOOL)useCenterPart;
 - (void)setUseCenterPart:(BOOL)arg1;
+- (BOOL)useCenterPart;
+- (void)drawFacetForState:(long long)arg1 dimension1:(long long)arg2 value:(long long)arg3 inRect:(struct CGRect)arg4 inContext:(struct _CGLContextObject *)arg5 destView:(id)arg6 colorSync:(BOOL)arg7;
+- (struct CGSize)_textureSizeInPoints;
+- (id)_initWithFacet:(id)arg1;
 
 @end
 

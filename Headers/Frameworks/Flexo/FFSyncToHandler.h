@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)toolClass;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (BOOL)shouldSkimPlayhead;
-- (BOOL)isValidObject:(id)arg1;
-- (void)matchReference:(id)arg1;
 - (id)_staticClipFromAnchoredObject:(id)arg1;
+- (void)matchReference:(id)arg1;
+- (BOOL)isValidObject:(id)arg1;
+- (BOOL)shouldSkimPlayhead;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 
 @end
 

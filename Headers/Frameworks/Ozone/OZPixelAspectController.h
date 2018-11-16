@@ -15,13 +15,13 @@
 }
 
 + (void)initialize;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)updatePopUp:(double)arg1;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)setPreset:(id)arg1;
 - (void)setCustom:(id)arg1;
+- (void)setPreset:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)updatePopUp:(double)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

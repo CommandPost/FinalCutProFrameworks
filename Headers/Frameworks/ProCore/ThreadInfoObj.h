@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
     void *arg;
 }
 
-- (id)initWithFunc:(CDUnknownFunctionPointerType)arg1 arg:(void *)arg2;
-- (void)dealloc;
 - (void)doThreadedProcess;
+- (void)dealloc;
+- (id)initWithFunc:(CDUnknownFunctionPointerType)arg1 arg:(void *)arg2;
 
 @end
 

@@ -10,8 +10,8 @@
 {
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)doButtonAction:(id)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

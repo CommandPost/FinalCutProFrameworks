@@ -15,17 +15,17 @@
     NSString *mAccessibilityTitle;
 }
 
-- (void)setDefaultValue:(double)arg1;
-- (double)defaultValue;
-- (void)_sliderTouched:(BOOL)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
 - (void)dealloc;
-- (BOOL)accessibilityIsIgnored;
-- (id)accessibilityAttributeNames;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)_sliderTouched:(BOOL)arg1;
+- (double)defaultValue;
+- (void)setDefaultValue:(double)arg1;
 - (void)accessibilitySetValue:(id)arg1 forAttribute:(id)arg2;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (BOOL)accessibilityIsIgnored;
 
 @end
 

@@ -15,14 +15,14 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 inOutRange;
 }
 
-+ (id)copyClassDescription;
 + (id)faceTimelineElementWithFace:(id)arg1 inOutRange:(CDStruct_e83c9415)arg2;
-- (id)initWithFace:(id)arg1 inOutRange:(CDStruct_e83c9415)arg2;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
++ (id)copyClassDescription;
 @property CDStruct_e83c9415 inOutRange; // @synthesize inOutRange;
 @property(retain, nonatomic) FFFace *face; // @synthesize face;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFace:(id)arg1 inOutRange:(CDStruct_e83c9415)arg2;
 
 @end
 

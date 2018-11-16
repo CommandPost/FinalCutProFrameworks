@@ -6,7 +6,9 @@
 
 #import "NSObject.h"
 
+@class FFVORecorder;
+
 @protocol FFVORecorderMeterDelegate <NSObject>
-- (void)voiceoverRecorder:(id)arg1 updateMeters:(const float *)arg2 channelCount:(unsigned long long)arg3;
+- (void)voiceoverRecorder:(FFVORecorder *)arg1 updateMeters:(const float *)arg2 channelCount:(unsigned long long)arg3;
 @end
 

@@ -10,8 +10,8 @@
 {
 }
 
-- (id)_backgroundFacet;
 - (id)_gradientFacet;
+- (id)_backgroundFacet;
 
 @end
 

@@ -15,21 +15,19 @@
     FFPixelFormat *_pixelFormat;
     int _virtualScreen;
     id _backingObject;
-    BOOL _flipped;
 }
 
-+ (void)initialize;
 + (void)teardown;
-- (id)initWithTexture:(unsigned int)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 virtualScreen:(int)arg4 isFlipped:(BOOL)arg5;
-- (void)dealloc;
-- (unsigned int)texture;
-- (struct CGRect)bounds;
-- (id)pixelFormat;
-- (int)virtualScreen;
-- (double)width;
-- (double)height;
-- (BOOL)isFlipped;
++ (void)initialize;
 - (void)setBackingObject:(id)arg1;
+- (double)height;
+- (double)width;
+- (int)virtualScreen;
+- (id)pixelFormat;
+- (struct CGRect)bounds;
+- (unsigned int)texture;
+- (void)dealloc;
+- (id)initWithTexture:(unsigned int)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 virtualScreen:(int)arg4;
 
 @end
 

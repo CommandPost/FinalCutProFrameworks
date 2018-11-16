@@ -7,8 +7,8 @@
 #import "CALayer.h"
 
 @interface CALayer (TLKAdditions)
-- (id)tlkFindConstraint:(int)arg1 offset:(double)arg2 inLayer:(id)arg3;
-- (void)tlkChangeConstraints:(id)arg1 constraint:(id)arg2 withOffset:(double)arg3;
 - (void)tlkUpdateLayers:(id)arg1 withDelegate:(id)arg2;
+- (void)tlkChangeConstraints:(id)arg1 constraint:(id)arg2 withOffset:(double)arg3;
+- (id)tlkFindConstraint:(int)arg1 offset:(double)arg2 inLayer:(id)arg3;
 @end
 

@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     NSDictionary *_intByStr;
 }
 
-- (id)initWithValues:(const CDStruct_c22e37be *)arg1;
-- (void)dealloc;
-- (int)intValueForString:(id)arg1;
 - (id)stringValueForInt:(int)arg1;
+- (int)intValueForString:(id)arg1;
+- (void)dealloc;
+- (id)initWithValues:(const CDStruct_c22e37be *)arg1;
 
 @end
 

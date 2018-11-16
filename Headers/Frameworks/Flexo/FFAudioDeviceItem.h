@@ -18,14 +18,14 @@ __attribute__((visibility("hidden")))
     BOOL _isInput;
 }
 
-- (id)initWithString:(id)arg1 deviceID:(unsigned int)arg2 audioStreamID:(unsigned int)arg3 asbd:(struct AudioStreamBasicDescription)arg4 isInput:(BOOL)arg5;
-- (void)dealloc;
-- (id)description;
 @property(readonly) BOOL isInput; // @synthesize isInput=_isInput;
 @property(readonly) struct AudioStreamBasicDescription audioStreamFormat; // @synthesize audioStreamFormat=_audioStreamFormat;
 @property(readonly) unsigned int audioStreamID; // @synthesize audioStreamID=_audioStreamID;
 @property(readonly) unsigned int audioDeviceID; // @synthesize audioDeviceID=_audioDeviceID;
 @property(readonly) NSString *deviceName; // @synthesize deviceName=_deviceName;
+- (id)description;
+- (void)dealloc;
+- (id)initWithString:(id)arg1 deviceID:(unsigned int)arg2 audioStreamID:(unsigned int)arg3 asbd:(struct AudioStreamBasicDescription)arg4 isInput:(BOOL)arg5;
 
 @end
 

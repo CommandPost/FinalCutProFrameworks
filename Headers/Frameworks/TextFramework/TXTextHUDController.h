@@ -14,14 +14,14 @@
     OZViewController *_opacityCtrl;
 }
 
-- (void)_resizeRowCtrl:(id)arg1 width:(double)arg2;
-- (BOOL)loadView;
-- (void)dealloc;
-- (void)buildUIWithObjectList:(list_2c251165 *)arg1 viewController:(id)arg2 context:(id)arg3;
-- (void)notify:(unsigned int)arg1;
-- (_Bool)useGlyphTool;
 @property(retain, nonatomic) OZViewController *blendingCtrl; // @synthesize blendingCtrl=_blendingCtrl;
 @property(retain, nonatomic) OZViewController *opacityCtrl; // @synthesize opacityCtrl=_opacityCtrl;
+- (_Bool)useGlyphTool;
+- (void)notify:(unsigned int)arg1;
+- (void)buildUIWithObjectList:(list_37573188 *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)dealloc;
+- (BOOL)loadView;
+- (void)_resizeRowCtrl:(id)arg1 width:(double)arg2;
 
 @end
 

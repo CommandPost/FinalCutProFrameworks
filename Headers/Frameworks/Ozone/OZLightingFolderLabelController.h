@@ -10,8 +10,8 @@
 {
 }
 
-- (BOOL)enableBadge;
 - (void)notify:(unsigned int)arg1;
+- (BOOL)enableBadge;
 
 @end
 

@@ -14,18 +14,18 @@ __attribute__((visibility("hidden")))
     id _key;
 }
 
-- (id)initWithURL:(id)arg1;
-@property(readonly, nonatomic) NSURL *URL;
-- (BOOL)getResourceValue:(id *)arg1 forKey:(id)arg2 error:(id *)arg3;
-- (id)getResourceValue:(id)arg1;
-- (id)name;
-- (BOOL)isFile;
-- (BOOL)isDirectory;
-- (BOOL)isSymbolicLink;
-- (BOOL)isHidden;
-- (id)modificationDate;
-- (id)description;
 - (void)dealloc;
+- (id)description;
+- (id)modificationDate;
+- (BOOL)isHidden;
+- (BOOL)isSymbolicLink;
+- (BOOL)isDirectory;
+- (BOOL)isFile;
+- (id)name;
+- (id)getResourceValue:(id)arg1;
+- (BOOL)getResourceValue:(id *)arg1 forKey:(id)arg2 error:(id *)arg3;
+@property(readonly, nonatomic) NSURL *URL;
+- (id)initWithURL:(id)arg1;
 
 @end
 

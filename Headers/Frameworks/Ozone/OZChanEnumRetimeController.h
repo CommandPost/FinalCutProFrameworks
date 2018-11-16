@@ -10,9 +10,9 @@
 {
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
-- (void)dealloc;
 - (void)setChannelValue:(id)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
 
 @end
 

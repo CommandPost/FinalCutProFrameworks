@@ -21,20 +21,20 @@
     BOOL _spacebarMode;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (void)setSpacebarMode:(BOOL)arg1 zoomOut:(BOOL)arg2;
-- (id)getName;
-- (id)getTooltip;
-- (struct PCUUID)getClassID;
-- (id)getDefaultCursor;
-- (void)iconDoubleClick;
-- (BOOL)displayDefaultOnScreenControls;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (BOOL)flagsChanged:(id)arg1;
 - (void)draw;
+- (BOOL)flagsChanged:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (BOOL)displayDefaultOnScreenControls;
+- (void)iconDoubleClick;
+- (id)getDefaultCursor;
+- (struct PCUUID)getClassID;
+- (id)getTooltip;
+- (id)getName;
+- (void)setSpacebarMode:(BOOL)arg1 zoomOut:(BOOL)arg2;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

@@ -29,28 +29,29 @@
     double _peakExpirationTime;
 }
 
-- (id)_localImageNamed:(long long)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)setMeterImage:(id)arg1 active:(BOOL)arg2;
-- (void)setPeakImage:(id)arg1 active:(BOOL)arg2;
-- (void)setEmbossImage:(id)arg1 active:(BOOL)arg2;
-- (void)_drawVerticalMeter:(struct CGRect)arg1 usingPeak:(id)arg2;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)_redraw;
-- (void)_ensureValidValue;
-- (double)_levelAdjustForDetent:(double)arg1;
-- (void)setMinValue:(double)arg1;
-- (double)minValue;
-- (void)setValue:(double)arg1;
-- (void)resetValue;
-- (double)value;
-- (void)setMaxValue:(double)arg1;
-- (double)maxValue;
-- (void)setPeakLightValue:(double)arg1;
-- (double)peakLightValue;
-- (void)_resetPeakIndicator:(id)arg1;
+- (id).cxx_construct;
 - (void)mouseDown:(id)arg1;
+- (void)_resetPeakIndicator:(id)arg1;
+- (double)peakLightValue;
+- (void)setPeakLightValue:(double)arg1;
+- (double)maxValue;
+- (void)setMaxValue:(double)arg1;
+- (double)value;
+- (void)resetValue;
+- (void)setValue:(double)arg1;
+- (double)minValue;
+- (void)setMinValue:(double)arg1;
+- (double)_levelAdjustForDetent:(double)arg1;
+- (void)_ensureValidValue;
+- (void)_redraw;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)_drawVerticalMeter:(struct CGRect)arg1 usingPeak:(id)arg2;
+- (void)setEmbossImage:(id)arg1 active:(BOOL)arg2;
+- (void)setPeakImage:(id)arg1 active:(BOOL)arg2;
+- (void)setMeterImage:(id)arg1 active:(BOOL)arg2;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)_localImageNamed:(long long)arg1;
 
 @end
 

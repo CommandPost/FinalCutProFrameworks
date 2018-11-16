@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)setThemeVariant:(long long)arg1;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)setThemeVariant:(long long)arg1;
 
 @end
 

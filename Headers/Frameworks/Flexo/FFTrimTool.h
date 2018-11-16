@@ -10,10 +10,10 @@
 {
 }
 
-+ (void)initialize;
-+ (id)displayName;
-+ (id)toolTip;
 + (id)toolbarFacet;
++ (id)toolTip;
++ (id)displayName;
++ (void)initialize;
 + (id)TLKEventHandlerID;
 - (BOOL)handlesSelection;
 

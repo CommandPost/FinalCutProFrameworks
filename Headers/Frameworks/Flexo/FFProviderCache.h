@@ -18,18 +18,18 @@ __attribute__((visibility("hidden")))
     unsigned long long _nextPrune;
 }
 
-+ (void)initialize;
-+ (id)sharedInstance;
 + (void)releaseSharedInstance;
-- (id)initWithCacheSize:(unsigned long long)arg1;
-- (void)dealloc;
-- (void)possibleSwapAndCacheProvider:(id *)arg1 forKey:(id)arg2;
-- (id)newProviderForKey:(id)arg1;
-- (void)sourceInvalidated:(id)arg1;
-- (void)invalidateProvider:(id)arg1;
-- (void)prune;
-- (void)pruneIgnoring:(id)arg1;
++ (id)sharedInstance;
++ (void)initialize;
 - (void)purgeCacheOfSequence:(id)arg1;
+- (void)pruneIgnoring:(id)arg1;
+- (void)prune;
+- (void)invalidateProvider:(id)arg1;
+- (void)sourceInvalidated:(id)arg1;
+- (id)newProviderForKey:(id)arg1;
+- (void)possibleSwapAndCacheProvider:(id *)arg1 forKey:(id)arg2;
+- (void)dealloc;
+- (id)initWithCacheSize:(unsigned long long)arg1;
 
 @end
 

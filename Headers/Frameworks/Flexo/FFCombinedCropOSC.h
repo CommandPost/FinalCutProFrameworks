@@ -31,31 +31,32 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_channelsToCheckForkeyFramesTrim;
 }
 
-- (id)initWithHeCropEffect:(id)arg1 effectStack:(id)arg2;
-- (void)setKenBurnsObjectOnMainThread:(id)arg1;
-- (void)setAnchoredObjectSingledOutValue:(BOOL)arg1 immediate:(BOOL)arg2;
-- (void)cleanUpPlayerLoop;
-- (void)dealloc;
-- (BOOL)supportsTool:(Class)arg1;
-- (struct OZChannelBase *)undoChannel;
-- (BOOL)oscHandlesTranslation;
-- (void)removeOverlayWindowForNoRangeOverlap;
-- (void)enableOverlayWindowForNoRangeOverlap;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)_setButtonStateForCropType:(int)arg1;
-- (void)flipCombinedCropOSC:(id)arg1;
-- (void)setCropTypeCombinedCropOSC:(id)arg1;
-- (void)exitCombinedCropOSC:(id)arg1;
-- (void)playCombinedCropOSC:(id)arg1;
-- (id)channelsToCheckForKeyframes;
-- (id)keyFrameButton;
-- (void)keyFrameCombinedCrop:(id)arg1;
-- (void)setPlayerVideoModule:(id)arg1;
-- (void)timeRateChangedForContext:(id)arg1;
-- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
-- (void)checkChannelParameterChanged:(id)arg1;
+- (id).cxx_construct;
 - (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
+- (void)checkChannelParameterChanged:(id)arg1;
+- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
+- (void)timeRateChangedForContext:(id)arg1;
+- (void)setPlayerVideoModule:(id)arg1;
+- (void)keyFrameCombinedCrop:(id)arg1;
+- (id)keyFrameButton;
+- (id)channelsToCheckForKeyframes;
+- (void)playCombinedCropOSC:(id)arg1;
+- (void)exitCombinedCropOSC:(id)arg1;
+- (void)setCropTypeCombinedCropOSC:(id)arg1;
+- (void)flipCombinedCropOSC:(id)arg1;
+- (void)_setButtonStateForCropType:(int)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)enableOverlayWindowForNoRangeOverlap;
+- (void)removeOverlayWindowForNoRangeOverlap;
+- (BOOL)oscHandlesTranslation;
+- (struct OZChannelBase *)undoChannel;
+- (BOOL)supportsTool:(Class)arg1;
+- (void)dealloc;
+- (void)cleanUpPlayerLoop;
+- (void)setAnchoredObjectSingledOutValue:(BOOL)arg1 immediate:(BOOL)arg2;
+- (void)setKenBurnsObjectOnMainThread:(id)arg1;
+- (id)initWithHeCropEffect:(id)arg1 effectStack:(id)arg2;
 
 @end
 

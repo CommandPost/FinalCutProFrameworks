@@ -23,31 +23,31 @@ __attribute__((visibility("hidden")))
     BOOL _impliedTimes;
 }
 
-- (void)dealloc;
-- (id)init;
-- (id)initWithName:(id)arg1;
-- (void)timesAndValuesDo:(CDUnknownBlockType)arg1;
-- (unsigned long long)keyframeIndexForObject:(id)arg1 startingAtIndex:(unsigned long long)arg2;
-- (void)setValue:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2;
-- (void)setTimes:(id)arg1 values:(id)arg2;
-- (CDStruct_1b6d18a9)fadeInDuration;
-- (CDStruct_1b6d18a9)fadeOutDuration;
-- (int)fadeInCurve;
-- (int)fadeOutCurve;
-- (void)setFadeInType:(int)arg1 duration:(CDStruct_1b6d18a9)arg2;
-- (void)setFadeOutType:(int)arg1 duration:(CDStruct_1b6d18a9)arg2;
-- (unsigned long long)countOfSubnodes;
-- (id)subnodes;
-- (id)subnodeAtIndex:(unsigned long long)arg1;
-- (void)insertObject:(id)arg1 inSubnodesAtIndex:(unsigned long long)arg2;
-- (void)removeObjectFromSubnodesAtIndex:(unsigned long long)arg1;
-- (BOOL)_checkUniformKeyframes:(id *)arg1 count:(unsigned long long)arg2;
-@property(nonatomic) BOOL isDefault; // @synthesize isDefault=_isDefault;
-- (BOOL)isVector;
-- (id)copyAsVector;
 @property(nonatomic) BOOL impliedTimes; // @synthesize impliedTimes=_impliedTimes;
+@property(nonatomic) BOOL isDefault; // @synthesize isDefault=_isDefault;
 @property(copy, nonatomic) NSString *initialValue; // @synthesize initialValue=_value;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+- (id)copyAsVector;
+- (BOOL)isVector;
+- (BOOL)_checkUniformKeyframes:(id *)arg1 count:(unsigned long long)arg2;
+- (void)removeObjectFromSubnodesAtIndex:(unsigned long long)arg1;
+- (void)insertObject:(id)arg1 inSubnodesAtIndex:(unsigned long long)arg2;
+- (id)subnodeAtIndex:(unsigned long long)arg1;
+- (id)subnodes;
+- (unsigned long long)countOfSubnodes;
+- (void)setFadeOutType:(int)arg1 duration:(CDStruct_1b6d18a9)arg2;
+- (void)setFadeInType:(int)arg1 duration:(CDStruct_1b6d18a9)arg2;
+- (int)fadeOutCurve;
+- (int)fadeInCurve;
+- (CDStruct_1b6d18a9)fadeOutDuration;
+- (CDStruct_1b6d18a9)fadeInDuration;
+- (void)setTimes:(id)arg1 values:(id)arg2;
+- (void)setValue:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2;
+- (unsigned long long)keyframeIndexForObject:(id)arg1 startingAtIndex:(unsigned long long)arg2;
+- (void)timesAndValuesDo:(CDUnknownBlockType)arg1;
+- (id)initWithName:(id)arg1;
+- (id)init;
+- (void)dealloc;
 
 @end
 

@@ -13,11 +13,11 @@
     struct vector<PCQuat<double>, std::allocator<PCQuat<double>>> _previousQuats;
 }
 
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
 
 @end
 

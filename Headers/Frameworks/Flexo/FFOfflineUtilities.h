@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+#import "FFBackgroundTaskTarget.h"
+
 @class FFAnchoredObject, FFCHObservableFolder, FFStreamAudio, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFOfflineUtilities : NSObject
+@interface FFOfflineUtilities : NSObject <FFBackgroundTaskTarget>
 {
     FFAnchoredObject *_object;
     BOOL _copied;
@@ -26,37 +28,40 @@ __attribute__((visibility("hidden")))
     unsigned int downsampledRate;
 }
 
-+ (BOOL)needsRenderFor:(id)arg1;
-+ (id)getRenderStream:(id)arg1;
 + (void)updateAUFromChannel:(id)arg1 andAudioUnit:(struct ComponentInstanceRecord *)arg2;
-- (id)initWithObject:(id)arg1;
-- (id)initWithObjectCopy:(id)arg1;
-- (void)dealloc;
-- (id)copiedObject;
-- (id)removeEffectsUpTo:(int)arg1;
-- (id)addEffect:(id)arg1;
-- (void)makeIOFiles;
-- (id)inputFilePath;
-- (void)createStreamWithOptionFlags:(unsigned long long)arg1;
-- (void)createStream;
-- (void)pokeStream;
-- (id)stream;
-- (CDStruct_1b6d18a9)start;
-- (void)setStart:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)duration;
-- (void)setDuration:(CDStruct_1b6d18a9)arg1;
-- (struct FFAudioBufferList *)buffer;
-- (void)setBuffer:(struct FFAudioBufferList *)arg1;
-- (unsigned int)downsampledRate;
-- (void)setDownsampledRate:(unsigned int)arg1;
-- (int)pull;
-- (int)pullOnTask:(id)arg1;
-- (int)pullToFilePath:(id)arg1 onTask:(id)arg2;
-- (int)pullToFilePath:(id)arg1 onTask:(id)arg2 taskPercentage:(float)arg3;
-- (void)updateEffect:(id)arg1 atIndex:(unsigned int)arg2;
-- (int)renderAUOL:(struct AudioComponentDescription)arg1 WithPreset:(void *)arg2 andDuration:(CDStruct_1b6d18a9)arg3 onTask:(id)arg4;
-- (void)prerollRenderFile:(id)arg1;
++ (id)newRenderStream:(id)arg1;
++ (BOOL)needsRenderFor:(id)arg1;
+- (id).cxx_construct;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
 - (void)prepareAndPostNotification:(id)arg1;
+- (void)prerollRenderFile:(id)arg1;
+- (int)renderAUOL:(struct AudioComponentDescription)arg1 WithPreset:(void *)arg2 andDuration:(CDStruct_1b6d18a9)arg3 onTask:(id)arg4;
+- (void)updateEffect:(id)arg1 atIndex:(unsigned int)arg2;
+- (int)pullToFilePath:(id)arg1 onTask:(id)arg2 taskPercentage:(float)arg3;
+- (int)pullToFilePath:(id)arg1 onTask:(id)arg2;
+- (int)pullOnTask:(id)arg1;
+- (int)pull;
+- (void)setDownsampledRate:(unsigned int)arg1;
+- (unsigned int)downsampledRate;
+- (void)setBuffer:(struct FFAudioBufferList *)arg1;
+- (struct FFAudioBufferList *)buffer;
+- (void)setDuration:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)duration;
+- (void)setStart:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)start;
+- (id)stream;
+- (void)pokeStream;
+- (void)createStream;
+- (void)createStreamWithOptionFlags:(unsigned long long)arg1;
+- (id)inputFilePath;
+- (void)makeIOFiles;
+- (id)addEffect:(id)arg1;
+- (id)removeEffectsUpTo:(int)arg1;
+- (id)copiedObject;
+- (void)dealloc;
+- (id)initWithObjectCopy:(id)arg1;
+- (id)initWithObject:(id)arg1;
 
 @end
 

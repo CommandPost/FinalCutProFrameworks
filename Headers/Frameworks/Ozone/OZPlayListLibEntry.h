@@ -11,15 +11,15 @@
     int _playlistType;
 }
 
-- (id)initWithParent:(id)arg1 name:(id)arg2 playListtype:(int)arg3;
-- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
-- (id)getSmallPreviewIconForEntry:(BOOL)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)shouldBeArchived;
-- (long long)compareDisplayName:(id)arg1;
-- (BOOL)hasDescendants:(id)arg1;
-- (unsigned int)numberOfDescendants:(id)arg1;
 - (id)getDescendant:(unsigned int)arg1 withFilter:(id)arg2;
+- (unsigned int)numberOfDescendants:(id)arg1;
+- (BOOL)hasDescendants:(id)arg1;
+- (long long)compareDisplayName:(id)arg1;
+- (BOOL)shouldBeArchived;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)getSmallPreviewIconForEntry:(BOOL)arg1;
+- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
+- (id)initWithParent:(id)arg1 name:(id)arg2 playListtype:(int)arg3;
 
 @end
 

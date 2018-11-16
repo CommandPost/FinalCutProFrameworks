@@ -14,12 +14,12 @@ __attribute__((visibility("hidden")))
     NSUndoManager *_undoManager;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (id)undoManager;
-- (void)undo:(id)arg1;
-- (void)redo:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
+- (void)redo:(id)arg1;
+- (void)undo:(id)arg1;
+- (id)undoManager;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

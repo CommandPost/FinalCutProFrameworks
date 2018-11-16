@@ -19,16 +19,16 @@ __attribute__((visibility("hidden")))
     FFRendererPool *_rendererPool;
 }
 
-- (id)initWithLocation:(int)arg1;
-- (void)dealloc;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (int)location;
-- (struct HGRenderer *)renderer;
-- (id)qcContext;
-- (void)addHGObjectForRelease:(struct HGObject *)arg1;
-- (void)setRendererPool:(id)arg1;
-- (id)rendererPool;
 - (void)releaseHGObjects;
+- (id)rendererPool;
+- (void)setRendererPool:(id)arg1;
+- (void)addHGObjectForRelease:(struct HGObject *)arg1;
+- (struct _CGLContextObject *)cglContextObj;
+- (struct HGRenderer *)renderer;
+- (int)location;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)dealloc;
+- (id)initWithLocation:(int)arg1;
 
 @end
 

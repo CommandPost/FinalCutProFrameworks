@@ -15,15 +15,15 @@
     TXTextTool *_textTool;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)stopAnimating;
-- (void)dealloc;
-- (void)setText:(struct TXTextLayout *)arg1;
-- (struct TXTextLayout *)getTextLayout;
-- (void)setTextTool:(id)arg1;
-- (void)selectionDidChange:(id)arg1;
-- (void)animate:(id)arg1;
 - (void)draw;
+- (void)animate:(id)arg1;
+- (void)selectionDidChange:(id)arg1;
+- (void)setTextTool:(id)arg1;
+- (struct TXTextLayout *)getTextLayout;
+- (void)setText:(struct TXTextLayout *)arg1;
+- (void)dealloc;
+- (void)stopAnimating;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

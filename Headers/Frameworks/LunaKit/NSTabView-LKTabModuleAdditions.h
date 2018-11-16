@@ -7,7 +7,7 @@
 #import "NSTabView.h"
 
 @interface NSTabView (LKTabModuleAdditions)
-- (id)menuForEvent:(id)arg1;
 - (void)selectTabViewItemWithIdentifier:(id)arg1;
+- (id)menuForEvent:(id)arg1;
 @end
 

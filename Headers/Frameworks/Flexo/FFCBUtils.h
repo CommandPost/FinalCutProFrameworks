@@ -11,21 +11,21 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)uniqueIDString;
-+ (struct CGRect)insetNSRect:(struct CGRect)arg1 withSides:(CDStruct_d2b197d1)arg2;
-+ (struct CGRect)insetCGRect:(struct CGRect)arg1 withSides:(CDStruct_d2b197d1)arg2;
-+ (struct CGRect)centerRect:(struct CGRect)arg1 inRect:(struct CGRect)arg2;
-+ (id)imageWithName:(id)arg1;
-+ (struct CGRect)imageRect:(id)arg1;
-+ (struct CGImage *)newCGImageRefFromImage:(id)arg1;
-+ (id)imageForElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
-+ (id)pressedImageForElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
-+ (id)imageForElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 dimension2:(long long)arg4;
-+ (id)imageForThemeElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 dimension2:(long long)arg4 state:(long long)arg5 value:(long long)arg6 variant:(long long)arg7;
-+ (struct CGSize)imageSizeForElement:(long long)arg1 part:(long long)arg2;
-+ (void)drawFacetForElement:(long long)arg1 part:(long long)arg2 inFrame:(struct CGRect)arg3;
-+ (id)facetForElement:(long long)arg1 part:(long long)arg2;
 + (void)drawFacet:(id)arg1 inFrame:(struct CGRect)arg2;
++ (id)facetForElement:(long long)arg1 part:(long long)arg2;
++ (void)drawFacetForElement:(long long)arg1 part:(long long)arg2 inFrame:(struct CGRect)arg3;
++ (struct CGSize)imageSizeForElement:(long long)arg1 part:(long long)arg2;
++ (id)imageForThemeElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 dimension2:(long long)arg4 state:(long long)arg5 value:(long long)arg6 variant:(long long)arg7;
++ (id)imageForElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 dimension2:(long long)arg4;
++ (id)pressedImageForElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
++ (id)imageForElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
++ (struct CGImage *)newCGImageRefFromImage:(id)arg1;
++ (struct CGRect)imageRect:(id)arg1;
++ (id)imageWithName:(id)arg1;
++ (struct CGRect)centerRect:(struct CGRect)arg1 inRect:(struct CGRect)arg2;
++ (struct CGRect)insetCGRect:(struct CGRect)arg1 withSides:(CDStruct_d2b197d1)arg2;
++ (struct CGRect)insetNSRect:(struct CGRect)arg1 withSides:(CDStruct_d2b197d1)arg2;
++ (id)uniqueIDString;
 
 @end
 

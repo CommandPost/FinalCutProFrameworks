@@ -14,18 +14,18 @@ __attribute__((visibility("hidden")))
     FigTimeRangeAndObject *_range;
 }
 
-+ (unsigned long long)_themeRef;
-+ (id)_importedFacet;
-+ (id)_keywordFacet;
-+ (id)_rejectFacet;
-+ (id)_favoriteFacet;
-+ (id)_analysisFacet;
-+ (struct CGRect)frameForRangeLayer:(id)arg1 placementLayer:(id)arg2 superlayer:(id)arg3 timeToXCoordFunction:(CDUnknownBlockType)arg4;
 + (id)positionedRangeLayerForRange:(id)arg1 placementLayer:(id)arg2 superlayer:(id)arg3 timeToXCoordFunction:(CDUnknownBlockType)arg4;
-- (id)initWithRange:(id)arg1;
-- (void)dealloc;
-- (void)_updateFacetFromRangeProperties;
++ (struct CGRect)frameForRangeLayer:(id)arg1 placementLayer:(id)arg2 superlayer:(id)arg3 timeToXCoordFunction:(CDUnknownBlockType)arg4;
++ (id)_analysisFacet;
++ (id)_favoriteFacet;
++ (id)_rejectFacet;
++ (id)_keywordFacet;
++ (id)_importedFacet;
++ (unsigned long long)_themeRef;
 @property(retain, nonatomic) FigTimeRangeAndObject *range; // @synthesize range=_range;
+- (void)_updateFacetFromRangeProperties;
+- (void)dealloc;
+- (id)initWithRange:(id)arg1;
 
 @end
 

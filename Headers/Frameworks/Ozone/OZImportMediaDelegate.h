@@ -15,10 +15,10 @@
 }
 
 + (id)instanceWithOpenPanel:(id)arg1 flags:(unsigned int)arg2;
-- (id)initWithOpenPanel:(id)arg1 flags:(unsigned int)arg2;
-- (id)view;
-- (BOOL)importAllTracks;
 - (void)panelSelectionDidChange:(id)arg1;
+- (BOOL)importAllTracks;
+- (id)view;
+- (id)initWithOpenPanel:(id)arg1 flags:(unsigned int)arg2;
 
 @end
 

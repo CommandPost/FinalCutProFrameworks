@@ -12,22 +12,22 @@ __attribute__((visibility("hidden")))
     id delegate;
 }
 
-- (BOOL)acceptsFirstResponder;
-- (void)keyDown:(id)arg1;
-- (void)scrollWheel:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (unsigned long long)draggingEntered:(id)arg1;
-- (BOOL)performDragOperation:(id)arg1;
-- (id)accessibilityAttributeNames;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
-- (BOOL)accessibilityIsIgnored;
-- (id)accessibilityHitTest:(struct CGPoint)arg1;
-- (id)accessibilityFocusedUIElement;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
+- (id)accessibilityFocusedUIElement;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (BOOL)accessibilityIsIgnored;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (BOOL)performDragOperation:(id)arg1;
+- (unsigned long long)draggingEntered:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)scrollWheel:(id)arg1;
+- (void)keyDown:(id)arg1;
+- (BOOL)acceptsFirstResponder;
 
 @end
 

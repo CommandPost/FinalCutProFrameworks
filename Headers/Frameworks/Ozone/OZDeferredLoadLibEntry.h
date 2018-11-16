@@ -12,11 +12,11 @@
     BOOL _isLoaded;
 }
 
-- (id)initWithParent:(id)arg1 name:(id)arg2 entryClass:(Class)arg3;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (BOOL)doDeferredLoad;
 - (BOOL)isLoaded;
+- (BOOL)doDeferredLoad;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithParent:(id)arg1 name:(id)arg2 entryClass:(Class)arg3;
 
 @end
 

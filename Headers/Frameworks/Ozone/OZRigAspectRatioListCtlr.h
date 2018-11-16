@@ -9,7 +9,7 @@
 #import "NSTableViewDataSource.h"
 #import "NSTableViewDelegate.h"
 
-@class LKSegmentedControl, NSButton, NSTableView;
+@class LKSegmentedControl, NSButton, NSMutableArray, NSTableView;
 
 @interface OZRigAspectRatioListCtlr : OZViewController <NSTableViewDataSource, NSTableViewDelegate>
 {
@@ -19,29 +19,32 @@
     struct OZRigWidget *_pWidget;
     struct OZRigSnapshot *_pCurrSnapshot;
     unsigned int _numSnapshots;
+    NSMutableArray *_pSnapshotNames;
 }
 
-+ (id)getARToStringMap;
 + (id)stringForAspectRatio:(double)arg1;
-- (id)initWithWidget:(struct OZRigWidget *)arg1 context:(id)arg2;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (void)enable;
-- (void)disable;
-- (void)updateEnableState;
-- (void)update;
-- (long long)numberOfRowsInTableView:(id)arg1;
-- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
-- (void)tableViewSelectionDidChange:(id)arg1;
-- (struct OZRigSnapshot *)snapshotForIndex:(unsigned int)arg1;
-- (unsigned int)indexForSnapshot:(struct OZRigSnapshot *)arg1;
-- (void)setAspectRatio:(double)arg1;
-- (BOOL)addDARSnapshot:(double)arg1;
-- (void)addRemoveEntry:(id)arg1;
-- (void)startCustomizeMode:(id)arg1;
-- (void)addPredefinedDAR:(id)arg1;
-- (void)addCustomDAR:(id)arg1;
++ (id)getARToStringMap;
+- (id)newDARMenu;
 - (BOOL)validateMenuItem:(id)arg1;
-- (id)createDARMenu;
+- (void)addCustomDAR:(id)arg1;
+- (void)addPredefinedDAR:(id)arg1;
+- (void)startCustomizeMode:(id)arg1;
+- (void)addRemoveEntry:(id)arg1;
+- (BOOL)addDARSnapshot:(double)arg1;
+- (void)setAspectRatio:(double)arg1;
+- (unsigned int)indexForSnapshot:(struct OZRigSnapshot *)arg1;
+- (struct OZRigSnapshot *)snapshotForIndex:(unsigned int)arg1;
+- (void)tableViewSelectionDidChange:(id)arg1;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
+- (long long)numberOfRowsInTableView:(id)arg1;
+- (void)updateSnapshotNames;
+- (void)update;
+- (void)updateEnableState;
+- (void)disable;
+- (void)enable;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)dealloc;
+- (id)initWithWidget:(struct OZRigWidget *)arg1 context:(id)arg2;
 
 @end
 

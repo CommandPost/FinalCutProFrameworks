@@ -11,19 +11,20 @@
     struct TLKCRectArray *_rectArray;
 }
 
-- (id)init;
-- (id)initWithCapacity:(unsigned long long)arg1;
-- (void)dealloc;
-- (unsigned long long)count;
-- (void)appendRect:(struct CGRect)arg1;
-- (void)insertRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
-- (void)removeRectAtIndex:(unsigned long long)arg1;
-- (void)removeAllRects;
-- (struct CGRect)rectAtIndex:(unsigned long long)arg1;
-- (void)setRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToRectArray:(id)arg1;
 - (id)description;
+- (struct CGRect)lastRect;
+- (BOOL)isEqualToRectArray:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (void)setRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
+- (struct CGRect)rectAtIndex:(unsigned long long)arg1;
+- (void)removeAllRects;
+- (void)removeRectAtIndex:(unsigned long long)arg1;
+- (void)insertRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
+- (void)appendRect:(struct CGRect)arg1;
+- (unsigned long long)count;
+- (void)dealloc;
+- (id)initWithCapacity:(unsigned long long)arg1;
+- (id)init;
 
 @end
 

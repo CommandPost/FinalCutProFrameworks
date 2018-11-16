@@ -17,9 +17,9 @@
     NSString *_sortColumn;
 }
 
-- (id)initWithController:(id)arg1;
-- (void)dealloc;
 - (void)setDisplayState:(id)arg1;
+- (void)dealloc;
+- (id)initWithController:(id)arg1;
 
 @end
 

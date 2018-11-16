@@ -19,29 +19,29 @@
 }
 
 + (id)_newCacheKeyForFacet:(id)arg1;
-- (id)init;
-- (void)dealloc;
-- (id)_imageForFacet:(id)arg1;
-- (struct CGRect)_centerRectForFacet:(id)arg1;
-- (struct CGRect)_centerRectForFacet;
-- (id)themeImage;
-- (id)_renditionKey;
-@property long long themeElement;
-@property long long themePart;
-@property long long themeSize;
-@property long long themeDirection;
-@property long long themeVariant;
-@property long long themeValue;
-@property long long themeTint;
-@property long long themeDimension1;
-@property long long themeDimension2;
-@property long long themeState;
-@property long long themeLayer;
-- (id)hitTest:(struct CGPoint)arg1;
-- (void)_updateContents;
-@property(retain) NSProThemeFacet *themeFacet;
-- (void)setContentsScale:(double)arg1;
 - (void)setIgnoresHitTesting:(BOOL)arg1;
+- (void)setContentsScale:(double)arg1;
+@property(retain) NSProThemeFacet *themeFacet;
+- (void)_updateContents;
+- (id)hitTest:(struct CGPoint)arg1;
+@property long long themeLayer;
+@property long long themeState;
+@property long long themeDimension2;
+@property long long themeDimension1;
+@property long long themeTint;
+@property long long themeValue;
+@property long long themeVariant;
+@property long long themeDirection;
+@property long long themeSize;
+@property long long themePart;
+@property long long themeElement;
+- (id)_renditionKey;
+- (id)themeImage;
+- (struct CGRect)_centerRectForFacet;
+- (struct CGRect)_centerRectForFacet:(id)arg1;
+- (id)_imageForFacet:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

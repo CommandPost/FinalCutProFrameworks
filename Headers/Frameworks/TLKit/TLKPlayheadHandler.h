@@ -11,11 +11,11 @@
     CDStruct_1b6d18a9 _initialTime;
 }
 
-- (int)autoscrollDirection;
-- (BOOL)startTracking:(id)arg1;
-- (BOOL)continueTracking:(id)arg1;
-- (void)cancelTracking:(id)arg1;
 - (BOOL)stopTracking:(id)arg1;
+- (void)cancelTracking:(id)arg1;
+- (BOOL)continueTracking:(id)arg1;
+- (BOOL)startTracking:(id)arg1;
+- (int)autoscrollDirection;
 
 @end
 

@@ -10,8 +10,8 @@
 {
 }
 
-- (id)_separatorFacet;
 - (id)_baseFacet;
+- (id)_separatorFacet;
 
 @end
 

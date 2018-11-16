@@ -14,9 +14,9 @@
     unsigned int _nodeID;
 }
 
-- (id)initWithController:(id)arg1 nodeID:(unsigned int)arg2;
-- (unsigned int)nodeID;
 - (id)valueForKey:(id)arg1;
+- (unsigned int)nodeID;
+- (id)initWithController:(id)arg1 nodeID:(unsigned int)arg2;
 
 @end
 

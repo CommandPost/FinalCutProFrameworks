@@ -6,14 +6,14 @@
 
 #import "NSObject.h"
 
-@class NSFileHandle, NSLock, NSMutableData, NSMutableIndexSet;
+@class NSData, NSFileHandle, NSLock, NSMutableIndexSet;
 
 __attribute__((visibility("hidden")))
 @interface FFSegmentStoreFile : NSObject
 {
     NSLock *_lock;
     NSFileHandle *_fileHandle;
-    NSMutableData *_headerData;
+    NSData *_headerData;
     long long _startFrame;
     unsigned long long _fileSize;
     struct _SegmentStoreFileHeader *_fileHeader;
@@ -21,14 +21,14 @@ __attribute__((visibility("hidden")))
     NSMutableIndexSet *_frameInfosNeedingWrite;
 }
 
-- (id)initWithPath:(id)arg1 count:(unsigned long long)arg2 startFrame:(long long)arg3;
-- (void)_flushFramesNeedingWrite;
-- (void)ensureFlushedToDisk;
-- (id)newFrameData:(long long)arg1 isSecondField:(_Bool)arg2 pixelTransformIndex:(unsigned long long *)arg3 sampleObj:(id)arg4;
-- (int)setFrameData:(id)arg1 sampleNumber:(unsigned int)arg2 pixelTransformIndex1:(unsigned long long)arg3 pixelTransformIndex2:(unsigned long long)arg4;
-- (long long)startFrame;
-- (BOOL)frameExists:(unsigned int)arg1;
 - (void)dealloc;
+- (BOOL)frameExists:(unsigned int)arg1;
+- (long long)startFrame;
+- (int)setFrameData:(id)arg1 sampleNumber:(unsigned int)arg2 pixelTransformIndex1:(unsigned long long)arg3 pixelTransformIndex2:(unsigned long long)arg4;
+- (id)newFrameData:(long long)arg1 isSecondField:(_Bool)arg2 pixelTransformIndex:(unsigned long long *)arg3 sampleObj:(id)arg4;
+- (void)ensureFlushedToDisk;
+- (void)_flushFramesNeedingWrite;
+- (id)initWithPath:(id)arg1 count:(unsigned long long)arg2 startFrame:(long long)arg3;
 
 @end
 

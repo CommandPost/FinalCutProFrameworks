@@ -6,28 +6,21 @@
 
 #import "LKTextFieldCell.h"
 
-@class LKImageCell, NSImage;
-
 @interface TMHeaderCell : LKTextFieldCell
 {
-    LKImageCell *_imageCell;
-    NSImage *_folderImage;
 }
 
-- (id)init;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)font;
-- (void)setObjectValue:(id)arg1;
-- (BOOL)_allowsContextMenus;
-- (BOOL)pointInText:(struct CGRect)arg1 inView:(id)arg2 event:(id)arg3;
-- (int)textHeight;
-- (struct CGRect)textFrameForBounds:(struct CGRect)arg1;
-- (struct CGRect)imageFrameForBounds:(struct CGRect)arg1;
-- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
-- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
 - (id)proTextAttributes;
+- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
+- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
+- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (struct CGRect)imageFrameForBounds:(struct CGRect)arg1;
+- (struct CGRect)textFrameForBounds:(struct CGRect)arg1;
+- (int)textHeight;
+- (BOOL)pointInText:(struct CGRect)arg1 inView:(id)arg2 event:(id)arg3;
+- (BOOL)_allowsContextMenus;
+- (void)setObjectValue:(id)arg1;
+- (id)font;
 
 @end
 

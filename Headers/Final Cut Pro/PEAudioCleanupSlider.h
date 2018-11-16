@@ -14,9 +14,9 @@
     id _delegate;
 }
 
-- (void)mouseDown:(id)arg1;
 @property(nonatomic) id <PEAudioCleanupSliderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSString *actionName; // @synthesize actionName=_actionName;
+- (void)mouseDown:(id)arg1;
 
 @end
 

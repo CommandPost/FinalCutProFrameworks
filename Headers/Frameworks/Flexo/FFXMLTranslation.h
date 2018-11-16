@@ -10,9 +10,9 @@
 {
 }
 
-+ (id)importPublicXMLFile:(id)arg1 storageLocation:(id)arg2 warnings:(id *)arg3 error:(id *)arg4;
-+ (BOOL)exportXMLForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
 + (id)XMLDataForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
++ (BOOL)exportXMLForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
++ (id)importPublicXMLFile:(id)arg1 storageLocation:(id)arg2 warnings:(id *)arg3 error:(id *)arg4;
 
 @end
 

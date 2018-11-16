@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     NSDictionary *_effectProperties;
 }
 
-- (id)initWithClass:(Class)arg1 andProperties:(id)arg2;
-- (oneway void)dealloc;
-- (Class)effectClass;
 - (id)effectProperties;
+- (Class)effectClass;
+- (oneway void)dealloc;
+- (id)initWithClass:(Class)arg1 andProperties:(id)arg2;
 
 @end
 

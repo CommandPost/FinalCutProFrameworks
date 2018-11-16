@@ -32,28 +32,6 @@
     long long _matchState;
 }
 
-- (void)becomeActiveTool;
-- (void)resignActiveTool;
-- (void)updatePlayheadTime;
-- (void)selectedItemsChanged:(id)arg1;
-- (BOOL)allowInspectorToTrackSelection;
-- (BOOL)skims;
-- (void)completedMatchOnSelection;
-- (void)cancelledMatchOnSelection;
-- (void)handleFFNotification:(id)arg1;
-- (void)handleNotification:(id)arg1;
-- (void)_startObservingUndoRedoChangeNotifications;
-- (void)_stopObservingUndoRedoChangeNotifications;
-- (void)_startObservingOrganizerListViewNotifications;
-- (void)_stopObservingOrganizerListViewNotifications;
-- (void)referenceChanged:(id)arg1;
-- (id)checkForMatchEvents:(id)arg1;
-- (id)playerFooterView;
-- (id)playerAccessoryView;
-- (void)_enableApplyButton:(BOOL)arg1;
-- (void)matchDone:(id)arg1;
-- (void)matchCancel:(id)arg1;
-- (BOOL)_shouldCloseOnUndo;
 @property(nonatomic) int displayAreaMode; // @synthesize displayAreaMode=_displayAreaMode;
 @property(nonatomic) struct CGPoint canvasOrigin; // @synthesize canvasOrigin=_canvasOrigin;
 @property(nonatomic) float canvasZoomFactor; // @synthesize canvasZoomFactor=_canvasZoomFactor;
@@ -61,6 +39,30 @@
 @property(copy, nonatomic) NSArray *selectedItems; // @synthesize selectedItems=_selectedItems;
 @property(retain, nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
+- (id).cxx_construct;
+- (BOOL)_shouldCloseOnUndo;
+- (void)matchCancel:(id)arg1;
+- (void)matchDone:(id)arg1;
+- (void)_enableApplyButton:(BOOL)arg1;
+- (id)playerAccessoryView;
+- (id)playerFooterView;
+- (id)checkForMatchEvents:(id)arg1;
+- (void)referenceChanged:(id)arg1;
+- (void)_stopObservingOrganizerListViewNotifications;
+- (void)_startObservingOrganizerListViewNotifications;
+- (void)_stopObservingUndoRedoChangeNotifications;
+- (void)_startObservingUndoRedoChangeNotifications;
+- (void)handleNotification:(id)arg1;
+- (void)handleFFNotification:(id)arg1;
+- (void)cancelledMatchOnSelection;
+- (void)completedMatchOnSelection;
+- (BOOL)skims;
+- (BOOL)allowsEffectOSCs;
+- (BOOL)allowInspectorToTrackSelection;
+- (void)selectedItemsChanged:(id)arg1;
+- (void)updatePlayheadTime;
+- (void)resignActiveTool;
+- (void)becomeActiveTool;
 
 @end
 

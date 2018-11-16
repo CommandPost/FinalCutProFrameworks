@@ -15,12 +15,12 @@
     OZViewController *_paramPulldownCtlr;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 indent:(BOOL)arg3;
-- (void)dealloc;
-- (struct OZChannelEnum *)fontFamilyChannelForChannel:(struct OZChannelBase *)arg1;
-- (struct OZChannelEnum *)fontTypefaceChannelForChannel:(struct OZChannelBase *)arg1;
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (struct OZChannelEnum *)fontTypefaceChannelForChannel:(struct OZChannelBase *)arg1;
+- (struct OZChannelEnum *)fontFamilyChannelForChannel:(struct OZChannelBase *)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 indent:(BOOL)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -17,26 +17,26 @@
     BOOL _isInteractive;
 }
 
-+ (void)setIsGlobalAnimationEnabled:(BOOL)arg1;
 + (BOOL)isGlobalAnimationEnabled;
-- (id)initWithView:(id)arg1 context:(id)arg2;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)didBuildUI;
-- (void)resizedSubview:(id)arg1 byDeltaY:(float)arg2;
-- (id)delegate;
-- (void)setDelegate:(id)arg1;
-- (_Bool)isAnimationEnabled;
-@property(nonatomic) BOOL isInteractive;
-- (void)addAnimation:(id)arg1;
-- (void)startAnimation;
-- (void)flushAnimation;
-- (void)animView:(id)arg1 setHidden:(BOOL)arg2;
-- (void)animView:(id)arg1 setFrame:(struct CGRect)arg2;
-- (void)animView:(id)arg1 setFrameOrigin:(struct CGPoint)arg2;
-- (void)animView:(id)arg1 setFrameSize:(struct CGSize)arg2;
-- (void)encloseViewInScrollView;
++ (void)setIsGlobalAnimationEnabled:(BOOL)arg1;
 - (void)adjustLabelAndParamWidthsForView:(id)arg1;
+- (void)encloseViewInScrollView;
+- (void)animView:(id)arg1 setFrameSize:(struct CGSize)arg2;
+- (void)animView:(id)arg1 setFrameOrigin:(struct CGPoint)arg2;
+- (void)animView:(id)arg1 setFrame:(struct CGRect)arg2;
+- (void)animView:(id)arg1 setHidden:(BOOL)arg2;
+- (void)flushAnimation;
+- (void)startAnimation;
+- (void)addAnimation:(id)arg1;
+@property(nonatomic) BOOL isInteractive;
+- (_Bool)isAnimationEnabled;
+- (void)setDelegate:(id)arg1;
+- (id)delegate;
+- (void)resizedSubview:(id)arg1 byDeltaY:(float)arg2;
+- (void)didBuildUI;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)initWithView:(id)arg1 context:(id)arg2;
 
 @end
 

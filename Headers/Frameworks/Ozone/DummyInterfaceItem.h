@@ -14,9 +14,9 @@
     int _tag;
 }
 
-- (id)initWithAction:(SEL)arg1 andTag:(int)arg2;
-- (SEL)action;
 - (int)tag;
+- (SEL)action;
+- (id)initWithAction:(SEL)arg1 andTag:(int)arg2;
 
 @end
 

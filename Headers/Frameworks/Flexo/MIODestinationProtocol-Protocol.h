@@ -4,11 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSNotification, NSString;
+
 @protocol MIODestinationProtocol
-- (id)displayName;
-- (void)mioClipDidIngest:(id)arg1;
+- (void)mioClipDidIngest:(NSNotification *)arg1;
+- (NSString *)displayName;
 
 @optional
-- (void)mioClipWillIngest:(id)arg1;
+- (void)mioClipWillIngest:(NSNotification *)arg1;
 @end
 

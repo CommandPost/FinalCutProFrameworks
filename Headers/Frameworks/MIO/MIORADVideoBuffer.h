@@ -17,12 +17,12 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_objectsToRelease;
 }
 
-- (id)init;
-- (char *)dataPointer;
-- (void)setVideoSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (void)setImageDescription:(struct OpaqueCMBlockBuffer *)arg1;
-- (void)addObjectToRelease:(id)arg1;
 - (void)dealloc;
+- (void)addObjectToRelease:(id)arg1;
+- (void)setImageDescription:(struct OpaqueCMBlockBuffer *)arg1;
+- (void)setVideoSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (char *)dataPointer;
+- (id)init;
 
 @end
 

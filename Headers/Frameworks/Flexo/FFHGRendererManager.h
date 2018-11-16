@@ -16,17 +16,17 @@
 }
 
 + (id)sharedManager;
-- (id)init;
-- (void)dealloc;
-- (id)rendererPoolForLocation:(int)arg1;
-- (id)rendererForLocation:(int)arg1;
-- (void)releaseRenderer:(id)arg1;
-- (BOOL)processLinear;
-- (_Bool)isManagedRenderer:(struct HGRenderer *)arg1;
-- (struct HGRenderer *)renderQueueRendererForCurrentThread;
-- (void)setRenderQueueRendererForCurrentThread:(struct HGRenderer *)arg1;
-- (_Bool)threadAccessedRenderQueueRenderer;
 - (_Bool)canFitTextureWithBounds:(struct CGRect)arg1;
+- (_Bool)threadAccessedRenderQueueRenderer;
+- (void)setRenderQueueRendererForCurrentThread:(struct HGRenderer *)arg1;
+- (struct HGRenderer *)renderQueueRendererForCurrentThread;
+- (_Bool)isManagedRenderer:(struct HGRenderer *)arg1;
+- (BOOL)processLinear;
+- (void)releaseRenderer:(id)arg1;
+- (id)rendererForLocation:(int)arg1;
+- (id)rendererPoolForLocation:(int)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

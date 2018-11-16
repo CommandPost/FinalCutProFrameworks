@@ -17,36 +17,36 @@
     NSProView *_footerView;
 }
 
-+ (id)colorModule;
 + (id)currentColorContentModule;
-- (id)initWithModuleNibName:(id)arg1;
-- (void)dealloc;
-- (void)viewDidLoad;
-- (id)identifier;
-- (void)syncToPrefs;
-- (void)doSwitchContentModule:(id)arg1;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (id)targetModules;
-- (void)removeAllSubmodules;
-- (BOOL)hasSubmoduleWithClass:(Class)arg1;
-- (id)currentContentModule;
-- (void)switchContentModule:(int)arg1;
-- (void)installSubmoduleContentView:(id)arg1;
-- (id)firstKeyView;
-- (id)lastKeyView;
-- (BOOL)wantsHeaderBar;
-- (id)moduleHeaderAccessoryView;
-- (void)installSubmoduleHeaderView:(id)arg1;
-- (BOOL)wantsFooterBar;
-- (id)moduleFooterAccessoryView;
-- (void)installSubmoduleFooterView:(id)arg1;
-- (void)setAnchoredObjects:(id)arg1 withContext:(id)arg2;
-- (id)currentWorkspace;
++ (id)colorModule;
 @property(retain) NSProView *footerView; // @synthesize footerView=_footerView;
 @property(retain) NSProView *headerView; // @synthesize headerView=_headerView;
 @property(retain) NSProView *contentHeaderContainerView; // @synthesize contentHeaderContainerView=_contentHeaderContainerView;
 @property(retain) LKPaneCapSegmentedControl *contentModuleControl; // @synthesize contentModuleControl=_contentModuleControl;
 @property int curContentModule; // @synthesize curContentModule=_curContentModule;
+- (id)currentWorkspace;
+- (void)setAnchoredObjects:(id)arg1 withContext:(id)arg2;
+- (void)installSubmoduleFooterView:(id)arg1;
+- (id)moduleFooterAccessoryView;
+- (BOOL)wantsFooterBar;
+- (void)installSubmoduleHeaderView:(id)arg1;
+- (id)moduleHeaderAccessoryView;
+- (BOOL)wantsHeaderBar;
+- (id)lastKeyView;
+- (id)firstKeyView;
+- (void)installSubmoduleContentView:(id)arg1;
+- (void)switchContentModule:(int)arg1;
+- (id)currentContentModule;
+- (BOOL)hasSubmoduleWithClass:(Class)arg1;
+- (void)removeAllSubmodules;
+- (id)targetModules;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)doSwitchContentModule:(id)arg1;
+- (void)syncToPrefs;
+- (id)identifier;
+- (void)viewDidLoad;
+- (void)dealloc;
+- (id)initWithModuleNibName:(id)arg1;
 
 @end
 

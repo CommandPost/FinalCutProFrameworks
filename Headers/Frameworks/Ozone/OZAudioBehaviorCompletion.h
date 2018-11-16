@@ -13,14 +13,11 @@
     struct OZProcessControl *_control;
 }
 
-- (id)init;
+@property struct OZProcessControl *control; // @synthesize control=_control;
+@property unsigned int audioBehaviorID; // @synthesize audioBehaviorID=_audioBehaviorID;
+@property struct OZScene *scene; // @synthesize scene=_scene;
 - (void)dealloc;
-- (struct OZScene *)scene;
-- (void)setScene:(struct OZScene *)arg1;
-- (unsigned int)audioBehaviorID;
-- (void)setAudioBehaviorID:(unsigned int)arg1;
-- (struct OZProcessControl *)control;
-- (void)setControl:(struct OZProcessControl *)arg1;
+- (id)init;
 
 @end
 

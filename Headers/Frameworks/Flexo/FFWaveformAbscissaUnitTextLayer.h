@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
     long long _compositeVideoUnits;
 }
 
-- (void)setupDefaultProperties;
-- (void)setZoomFactor:(float)arg1;
-- (void)setCode:(long long)arg1;
-- (void)setCompositeVideoUnits:(long long)arg1;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
+- (void)setCompositeVideoUnits:(long long)arg1;
+- (void)setCode:(long long)arg1;
+- (void)setZoomFactor:(float)arg1;
+- (void)setupDefaultProperties;
 
 @end
 

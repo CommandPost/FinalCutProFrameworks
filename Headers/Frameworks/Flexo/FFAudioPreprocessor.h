@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+#import "FFBackgroundTaskTarget.h"
+
 @class FFAnchoredObject, FFAudioUnitAnalyzingEffect, FFSharedAudioUnit;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioPreprocessor : NSObject
+@interface FFAudioPreprocessor : NSObject <FFBackgroundTaskTarget>
 {
     FFAnchoredObject *_object;
     FFAudioUnitAnalyzingEffect *_effect;
@@ -19,26 +21,28 @@ __attribute__((visibility("hidden")))
     BOOL _cachedState;
 }
 
-+ (void)performProcessingIfNecessary:(id)arg1 index:(unsigned long long)arg2;
 + (id)newPreprocessorFactory:(id)arg1 object:(id)arg2 index:(unsigned int)arg3;
-- (id)initWithObject:(id)arg1 andEffect:(id)arg2 andIndex:(unsigned int)arg3;
-- (void)dealloc;
-- (void)analyzeObject:(id)arg1 onTask:(id)arg2;
-- (void)kickoffBackgroundProcess;
-- (void)configureEffects:(id)arg1;
-- (void)process:(id)arg1 onTask:(id)arg2;
-- (int)preRender;
-- (int)postRender;
-- (int)storePreset;
-- (void)enableEffect;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)_matchEQChannelForID:(unsigned int)arg1;
-- (int)preRenderMatchEQForPass:(int)arg1;
-- (int)postRenderMatchEQForPass:(int)arg1;
-- (int)setMatchEQToMatchMode;
++ (void)performProcessingIfNecessary:(id)arg1 index:(unsigned long long)arg2;
 @property BOOL cachedState; // @synthesize cachedState=_cachedState;
 @property struct ComponentInstanceRecord *audioUnit; // @synthesize audioUnit=_audioUnit;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
+- (int)setMatchEQToMatchMode;
+- (int)postRenderMatchEQForPass:(int)arg1;
+- (int)preRenderMatchEQForPass:(int)arg1;
+- (id)_matchEQChannelForID:(unsigned int)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)enableEffect;
+- (int)storePreset;
+- (int)postRender;
+- (int)preRender;
+- (void)process:(id)arg1 onTask:(id)arg2;
+- (void)configureEffects:(id)arg1;
+- (void)kickoffBackgroundProcess;
+- (void)analyzeObject:(id)arg1 onTask:(id)arg2;
+- (void)dealloc;
+- (id)initWithObject:(id)arg1 andEffect:(id)arg2 andIndex:(unsigned int)arg3;
 
 @end
 

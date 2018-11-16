@@ -16,19 +16,19 @@ __attribute__((visibility("hidden")))
     BOOL _active;
 }
 
-@property(nonatomic) id <FFEffectLibraryModuleDelegate> delegate;
-- (void)didChangeArrangedItems:(id)arg1;
-- (void)module:(id)arg1 didDoubleClickWithEffectID:(id)arg2;
-- (void)module:(id)arg1 didDoubleClickWithEffect:(id)arg2;
-- (void)updateFilter;
-- (void)redrawCollectionView;
-- (id)targetModules;
-- (void)writeSelectionToPasteboard:(id)arg1;
-- (void)firstResponderChanged:(id)arg1;
-- (void)viewWasInstalled;
-- (void)viewWillBeRemoved;
 @property(retain) NSString *searchString; // @synthesize searchString=_searchString;
 @property(readonly) FFEffectLibraryCollectionView *effectCollectionView; // @synthesize effectCollectionView=_effectCollectionView;
+- (void)viewWillBeRemoved;
+- (void)viewWasInstalled;
+- (void)firstResponderChanged:(id)arg1;
+- (void)writeSelectionToPasteboard:(id)arg1;
+- (id)targetModules;
+- (void)redrawCollectionView;
+- (void)updateFilter;
+- (void)module:(id)arg1 didDoubleClickWithEffect:(id)arg2;
+- (void)module:(id)arg1 didDoubleClickWithEffectID:(id)arg2;
+- (void)didChangeArrangedItems:(id)arg1;
+@property(nonatomic) id <FFEffectLibraryModuleDelegate> delegate;
 
 @end
 

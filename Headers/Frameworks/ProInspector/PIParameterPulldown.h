@@ -16,12 +16,12 @@
 }
 
 + (id)parameterPulldownWithFrame:(struct CGRect)arg1 viewController:(id)arg2 context:(id)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 viewController:(id)arg2 context:(id)arg3;
-- (void)dealloc;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseEnteredRow:(id)arg1;
 - (void)mouseExitedRow:(id)arg1;
+- (void)mouseEnteredRow:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 viewController:(id)arg2 context:(id)arg3;
 
 @end
 

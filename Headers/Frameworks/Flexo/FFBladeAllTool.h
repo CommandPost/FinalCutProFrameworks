@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)initialize;
-+ (id)displayName;
 + (id)toolbarFacet;
++ (id)displayName;
++ (void)initialize;
 
 @end
 

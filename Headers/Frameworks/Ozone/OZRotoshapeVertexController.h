@@ -13,28 +13,28 @@
     LKButton *_behavior;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
-- (void)update;
-- (void)dealloc;
-- (void *)associatedHandleX;
-- (void *)associatedHandleY;
-- (void)enableBehaviors:(id)arg1;
-- (struct OZRotoshape *)getRotoshape;
-- (BOOL)isEnabled;
-- (double)getX:(struct OZChannelBase *)arg1;
-- (void)set:(struct OZChannelBase *)arg1 X:(double)arg2;
-- (double)getY:(struct OZChannelBase *)arg1;
-- (void)set:(struct OZChannelBase *)arg1 Y:(double)arg2;
-- (void)get:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3;
-- (void)set:(struct OZChannelBase *)arg1 X:(double)arg2 Y:(double)arg3;
-- (double)valueScale;
-- (id)suffixString;
-- (double)sliderMin;
-- (double)sliderMax;
-- (double)chanMin;
-- (double)chanMax;
-- (double)fineIncrement;
 - (double)coarseIncrement;
+- (double)fineIncrement;
+- (double)chanMax;
+- (double)chanMin;
+- (double)sliderMax;
+- (double)sliderMin;
+- (id)suffixString;
+- (double)valueScale;
+- (void)set:(struct OZChannelBase *)arg1 X:(double)arg2 Y:(double)arg3;
+- (void)get:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3;
+- (void)set:(struct OZChannelBase *)arg1 Y:(double)arg2;
+- (double)getY:(struct OZChannelBase *)arg1;
+- (void)set:(struct OZChannelBase *)arg1 X:(double)arg2;
+- (double)getX:(struct OZChannelBase *)arg1;
+- (BOOL)isEnabled;
+- (struct OZRotoshape *)getRotoshape;
+- (void)enableBehaviors:(id)arg1;
+- (void *)associatedHandleY;
+- (void *)associatedHandleX;
+- (void)dealloc;
+- (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
 
 @end
 

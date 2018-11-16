@@ -22,20 +22,20 @@
 }
 
 + (CDUnknownBlockType)containerSegmentComparator;
-- (id)init;
-- (void)dealloc;
-@property(nonatomic) struct _TLKRange locationRange; // @synthesize locationRange=_locationRange;
-- (BOOL)locationRangeNeedsUpdate;
-@property(nonatomic) BOOL needsLayout;
-- (void)addAnchoredItemsObject:(id)arg1;
-- (void)removeAnchoredItemsObject:(id)arg1;
-- (void)addSpineItemsObject:(id)arg1;
-- (void)removeSpineItemsObject:(id)arg1;
-- (long long)compareContainerSegment:(id)arg1;
-- (id)description;
 @property(nonatomic) TLKContainerSegmentTable *containerSegmentTable; // @synthesize containerSegmentTable=_containerSegmentTable;
 @property(copy, nonatomic) NSSet *spineItems; // @synthesize spineItems=_spineItems;
 @property(copy, nonatomic) NSSet *anchoredItems; // @synthesize anchoredItems=_anchoredItems;
+- (id)description;
+- (long long)compareContainerSegment:(id)arg1;
+- (void)removeSpineItemsObject:(id)arg1;
+- (void)addSpineItemsObject:(id)arg1;
+- (void)removeAnchoredItemsObject:(id)arg1;
+- (void)addAnchoredItemsObject:(id)arg1;
+@property(nonatomic) BOOL needsLayout;
+- (BOOL)locationRangeNeedsUpdate;
+@property(nonatomic) struct _TLKRange locationRange; // @synthesize locationRange=_locationRange;
+- (void)dealloc;
+- (id)init;
 
 @end
 

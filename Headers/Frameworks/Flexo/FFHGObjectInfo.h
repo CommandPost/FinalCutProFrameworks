@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     FFRendererInfo *_rendererInfo;
 }
 
-- (struct HGObject *)hgObject;
-- (id)rendererInfo;
-- (id)initWithHGObject:(struct HGObject *)arg1 rendererInfo:(id)arg2;
 - (void)dealloc;
+- (id)initWithHGObject:(struct HGObject *)arg1 rendererInfo:(id)arg2;
+- (id)rendererInfo;
+- (struct HGObject *)hgObject;
 
 @end
 

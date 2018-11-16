@@ -13,16 +13,16 @@
     TXTextViewController *_controller;
 }
 
-- (BOOL)isFieldEditor;
-- (id)colorFactory;
-- (BOOL)becomeFirstResponder;
-- (BOOL)resignFirstResponder;
-- (void)drawRect:(struct CGRect)arg1;
-- (id)getUndoManager;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)undo:(id)arg1;
-- (void)redo:(id)arg1;
 @property(nonatomic) TXTextViewController *controller; // @synthesize controller=_controller;
+- (void)redo:(id)arg1;
+- (void)undo:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
+- (id)getUndoManager;
+- (void)drawRect:(struct CGRect)arg1;
+- (BOOL)resignFirstResponder;
+- (BOOL)becomeFirstResponder;
+- (id)colorFactory;
+- (BOOL)isFieldEditor;
 
 @end
 

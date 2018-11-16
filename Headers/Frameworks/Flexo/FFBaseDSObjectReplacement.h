@@ -13,10 +13,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)initWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

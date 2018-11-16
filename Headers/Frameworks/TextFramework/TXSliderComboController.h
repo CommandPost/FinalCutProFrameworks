@@ -20,17 +20,17 @@
     _Bool _aboutToChangeCalled;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 suffix:(const char *)arg2 context:(id)arg3;
-- (void)startSliderAction:(id)arg1;
-- (void)endSliderAction:(id)arg1;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)changeChannel:(id)arg1;
-- (void)setChannelValue:(id)arg1;
-- (id)comboBox;
-- (void)comboBoxSelectionIsChanging:(id)arg1;
 - (void)comboBoxSelectionDidChange:(id)arg1;
+- (void)comboBoxSelectionIsChanging:(id)arg1;
+- (id)comboBox;
+- (void)setChannelValue:(id)arg1;
+- (void)changeChannel:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)endSliderAction:(id)arg1;
+- (void)startSliderAction:(id)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 suffix:(const char *)arg2 context:(id)arg3;
 
 @end
 

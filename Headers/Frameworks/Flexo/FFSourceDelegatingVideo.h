@@ -12,21 +12,21 @@
 }
 
 + (Class)streamClass;
-- (void)delegateVideoRangeInvalidated:(id)arg1;
-- (id)initWithProvider:(id)arg1 delegatingTo:(id)arg2;
-- (void)dealloc;
-- (CDStruct_e83c9415)timeRange;
-- (CDStruct_1b6d18a9)nativeSampleDuration;
-- (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (long long)timecodeDisplayDropFrame;
-- (id)displayName;
-- (id)nativeVideoProps;
-- (CDStruct_1b6d18a9)magicFrameTime;
-- (int)rotationDegrees;
-- (double)preferredScaleFactorForQuality:(int)arg1;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (id)description;
 @property(readonly, nonatomic) FFSourceVideo *delegateSource; // @synthesize delegateSource=_delegateSource;
+- (id)description;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (double)preferredScaleFactorForQuality:(int)arg1;
+- (int)rotationDegrees;
+- (CDStruct_1b6d18a9)magicFrameTime;
+- (id)nativeVideoProps;
+- (id)displayName;
+- (long long)timecodeDisplayDropFrame;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
+- (CDStruct_1b6d18a9)nativeSampleDuration;
+- (CDStruct_e83c9415)timeRange;
+- (void)dealloc;
+- (id)initWithProvider:(id)arg1 delegatingTo:(id)arg2;
+- (void)delegateVideoRangeInvalidated:(id)arg1;
 
 @end
 

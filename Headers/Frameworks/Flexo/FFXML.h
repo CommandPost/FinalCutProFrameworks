@@ -10,9 +10,9 @@
 {
 }
 
-+ (BOOL)exportProject:(id)arg1 stream:(id)arg2 error:(id *)arg3;
-+ (BOOL)exportClip:(id)arg1 stream:(id)arg2 error:(id *)arg3;
 + (id)import:(id)arg1 storageLocation:(id)arg2 warnings:(id *)arg3 error:(id *)arg4;
++ (BOOL)exportClip:(id)arg1 stream:(id)arg2 error:(id *)arg3;
++ (BOOL)exportProject:(id)arg1 toURL:(id)arg2 stream:(id)arg3 error:(id *)arg4;
 
 @end
 

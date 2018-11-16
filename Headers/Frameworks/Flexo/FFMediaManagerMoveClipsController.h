@@ -13,12 +13,12 @@
     NSMutableSet *_filesToRemoveWhenDone;
 }
 
-+ (BOOL)isMoveOnSameDrive:(id)arg1 destinationEvent:(id)arg2;
 + (void)moveClips:(id)arg1 destinationEvent:(id)arg2 isCopy:(BOOL)arg3 keywordNames:(id)arg4;
-- (id)init;
-- (void)finishMMOperation;
-- (id)_filesToTransferForClips:(id)arg1 isCopy:(BOOL)arg2 options:(id)arg3;
++ (BOOL)isMoveOnSameDrive:(id)arg1 destinationEvent:(id)arg2;
 - (void)moveClips:(id)arg1 destinationEvent:(id)arg2 isCopy:(BOOL)arg3 keywordNames:(id)arg4;
+- (id)_filesToTransferForClips:(id)arg1 isCopy:(BOOL)arg2 options:(id)arg3;
+- (void)finishMMOperation;
+- (id)init;
 
 @end
 

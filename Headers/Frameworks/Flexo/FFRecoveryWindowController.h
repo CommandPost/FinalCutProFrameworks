@@ -32,33 +32,33 @@ __attribute__((visibility("hidden")))
     NSImage *_normalImage;
 }
 
-- (id)initWithWindowNibName:(id)arg1 badProjects:(id)arg2 badEvents:(id)arg3;
-- (void)awakeFromNib;
-- (void)dealloc;
-- (long long)numberOfRowsInTableView:(id)arg1;
-- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 row:(long long)arg4;
-- (void)quitPressed:(id)arg1;
-- (void)fixAndContinuePressed:(id)arg1;
-- (void)revealInFinderPressed:(id)arg1;
-- (void)syncUI;
-- (BOOL)canRestoreAProject;
-- (BOOL)canRestoreAnEvent;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)newProject:(id)arg1;
-- (void)showProviderSettings:(id)arg1;
-- (void)importPanel:(id)arg1;
-- (void)importIMovieProject:(id)arg1;
-- (void)importAlliMovieEvents:(id)arg1;
-- (void)consolidateFiles:(id)arg1;
-- (void)findAndReplace:(id)arg1;
-- (void)editRoles:(id)arg1;
-- (void)showPreferences:(id)arg1;
 @property(retain, nonatomic) NSImageView *cautionImage; // @synthesize cautionImage=_cautionImage;
 @property(retain, nonatomic) NSTableView *list; // @synthesize list=_list;
 @property(retain, nonatomic) NSButton *restoreBtn; // @synthesize restoreBtn=_restoreBtn;
 @property(retain, nonatomic) NSTextField *informationText; // @synthesize informationText=_informationText;
 @property(retain, nonatomic) NSTextField *titleText; // @synthesize titleText=_titleText;
+- (void)showPreferences:(id)arg1;
+- (void)editRoles:(id)arg1;
+- (void)findAndReplace:(id)arg1;
+- (void)consolidateFiles:(id)arg1;
+- (void)importAlliMovieEvents:(id)arg1;
+- (void)importIMovieProject:(id)arg1;
+- (void)importPanel:(id)arg1;
+- (void)showProviderSettings:(id)arg1;
+- (void)newProject:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)syncUI;
+- (BOOL)_hasOnlyEventsWithoutBackup;
+- (BOOL)_hasOnlyProjectsWithoutBackup;
+- (void)revealInFinderPressed:(id)arg1;
+- (void)fixAndContinuePressed:(id)arg1;
+- (void)quitPressed:(id)arg1;
+- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 row:(long long)arg4;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
+- (long long)numberOfRowsInTableView:(id)arg1;
+- (void)dealloc;
+- (void)awakeFromNib;
+- (id)initWithWindowNibName:(id)arg1 badProjects:(id)arg2 badEvents:(id)arg3;
 
 @end
 

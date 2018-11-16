@@ -20,13 +20,13 @@ __attribute__((visibility("hidden")))
     BOOL _infoAdjusted;
 }
 
-- (void)awakeFromNib;
-@property(nonatomic) BOOL showsInfoView;
-- (void)setShowsInfoView:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)layoutSubviews;
-- (void)layoutSubviewsAnimated:(BOOL)arg1;
-- (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
 @property(nonatomic) double mainViewWidth; // @synthesize mainViewWidth=_mainViewWidth;
+- (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
+- (void)layoutSubviewsAnimated:(BOOL)arg1;
+- (void)layoutSubviews;
+- (void)setShowsInfoView:(BOOL)arg1 animated:(BOOL)arg2;
+@property(nonatomic) BOOL showsInfoView;
+- (void)awakeFromNib;
 
 @end
 

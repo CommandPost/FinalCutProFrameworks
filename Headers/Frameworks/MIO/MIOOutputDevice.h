@@ -23,22 +23,22 @@
     unsigned int mOutputStream;
 }
 
-- (id)initWithDeviceConnection:(id)arg1;
-- (void)dealloc;
-- (BOOL)prepareDeviceForClip:(int)arg1;
-- (BOOL)setVideoOn:(BOOL)arg1 audioOn:(BOOL)arg2 destFPS:(unsigned int)arg3;
-- (BOOL)setOutputting:(BOOL)arg1;
-- (BOOL)isOutputting;
-- (BOOL)isCMIOOutputDone;
-- (BOOL)refreshIsCMIOOutputDone;
-- (void)setCMIODroppedFrames:(BOOL)arg1;
-- (BOOL)cmioReportedDroppedFrames;
-- (void)setOutputBufferQueueSize:(unsigned int)arg1;
-- (void)setOutputBuffersRequiredForStartup:(unsigned int)arg1;
-- (unsigned int)outputLatencyInFrames;
-- (int)minimumInFlightFramesForThrottledPlayback;
 @property(retain) id cmioAProducer; // @synthesize cmioAProducer=mCMIOAProducer;
 @property(retain) id cmioVProducer; // @synthesize cmioVProducer=mCMIOVProducer;
+- (int)minimumInFlightFramesForThrottledPlayback;
+- (unsigned int)outputLatencyInFrames;
+- (void)setOutputBuffersRequiredForStartup:(unsigned int)arg1;
+- (void)setOutputBufferQueueSize:(unsigned int)arg1;
+- (BOOL)cmioReportedDroppedFrames;
+- (void)setCMIODroppedFrames:(BOOL)arg1;
+- (BOOL)refreshIsCMIOOutputDone;
+- (BOOL)isCMIOOutputDone;
+- (BOOL)isOutputting;
+- (BOOL)setOutputting:(BOOL)arg1;
+- (BOOL)setVideoOn:(BOOL)arg1 audioOn:(BOOL)arg2 destFPS:(unsigned int)arg3;
+- (BOOL)prepareDeviceForClip:(int)arg1;
+- (void)dealloc;
+- (id)initWithDeviceConnection:(id)arg1;
 
 @end
 

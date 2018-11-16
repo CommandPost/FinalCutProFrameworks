@@ -19,19 +19,20 @@
     struct OZChannelBase *_overlayChan;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)setOverlayChan:(struct OZChannelBase *)arg1;
-- (void)dealloc;
-- (int)getDrawingOrder;
-- (void)setText:(struct TXTextLayout *)arg1;
-- (void)setNewObjectDelegateForSceneNode:(struct OZSceneNode *)arg1;
-- (struct TXTextLayout *)getTextLayout;
-- (_Bool)getOverlayIsOn;
-- (void)setAlphaOfElements;
-- (void)startAlphaTimer;
-- (void)stopAlphaTimer;
+- (id).cxx_construct;
+- (double)calcScaleFactorForPoint:(PCVector3_457fd1f0 *)arg1 objToView:(PCMatrix44Tmpl_93ed1289 *)arg2;
 - (double)getSecondsSince:(struct timeval *)arg1;
-- (double)calcScaleFactorForPoint:(PCVector3_457fd1f0 *)arg1 objToView:(PCMatrix44Tmpl_e98c85ee *)arg2;
+- (void)stopAlphaTimer;
+- (void)startAlphaTimer;
+- (void)setAlphaOfElements;
+- (_Bool)getOverlayIsOn;
+- (struct TXTextLayout *)getTextLayout;
+- (void)setNewObjectDelegateForSceneNode:(struct OZSceneNode *)arg1;
+- (void)setText:(struct TXTextLayout *)arg1;
+- (int)getDrawingOrder;
+- (void)dealloc;
+- (void)setOverlayChan:(struct OZChannelBase *)arg1;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

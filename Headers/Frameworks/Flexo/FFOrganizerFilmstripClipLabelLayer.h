@@ -18,25 +18,25 @@ __attribute__((visibility("hidden")))
     int _clipLabelSize;
 }
 
-+ (double)fontSizeForLabelSize:(int)arg1;
-+ (struct FFEdgeInsets)textInsets;
-+ (id)fontName;
-+ (void)setupCommonSettingsForTextLayer:(id)arg1 forLabelSize:(int)arg2;
-+ (struct CGSize)preferredSizeOfString:(id)arg1 forLabelSize:(int)arg2;
 + (double)heightForLabelSize:(int)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 labelSize:(int)arg2;
-- (id)init;
-@property(readonly, nonatomic) CATextLayer *nameLayer;
-@property(readonly, nonatomic) CATextLayer *typeLayer;
-@property(readonly, nonatomic) struct CGRect maxFrame;
-- (void)setContentsScale:(double)arg1;
-- (void)applyTextToLayers;
-@property(copy, nonatomic) NSString *nameText;
-@property(copy, nonatomic) NSString *typeText;
-@property(nonatomic) int clipLabelSize;
-- (void)layoutSublayers;
-- (BOOL)nameContainsPoint:(struct CGPoint)arg1;
++ (struct CGSize)preferredSizeOfString:(id)arg1 forLabelSize:(int)arg2;
++ (void)setupCommonSettingsForTextLayer:(id)arg1 forLabelSize:(int)arg2;
++ (id)fontName;
++ (struct FFEdgeInsets)textInsets;
++ (double)fontSizeForLabelSize:(int)arg1;
 - (void)dealloc;
+- (BOOL)nameContainsPoint:(struct CGPoint)arg1;
+- (void)layoutSublayers;
+@property(nonatomic) int clipLabelSize;
+@property(copy, nonatomic) NSString *typeText;
+@property(copy, nonatomic) NSString *nameText;
+- (void)applyTextToLayers;
+- (void)setContentsScale:(double)arg1;
+@property(readonly, nonatomic) struct CGRect maxFrame;
+@property(readonly, nonatomic) CATextLayer *typeLayer;
+@property(readonly, nonatomic) CATextLayer *nameLayer;
+- (id)init;
+- (id)initWithFrame:(struct CGRect)arg1 labelSize:(int)arg2;
 
 @end
 

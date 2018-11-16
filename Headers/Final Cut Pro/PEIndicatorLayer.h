@@ -11,9 +11,9 @@
     double _maskRatio;
 }
 
-- (id)init;
-- (void)layoutSublayers;
 - (void)maskToWidth:(double)arg1;
+- (void)layoutSublayers;
+- (id)init;
 
 @end
 

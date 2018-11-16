@@ -15,17 +15,17 @@
     NSTimer *_pSweepTimer;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (BOOL)submitRenderFor:(struct OZElement *)arg1 atTime:(CDStruct_1b6d18a9)arg2 view:(id)arg3;
-- (id)imageFor:(struct OZElement *)arg1 atTime:(CDStruct_1b6d18a9)arg2 view:(id)arg3;
-- (void)verticalZoomChanged;
-- (void)updatePreviews;
-- (id)allocRow:(int)arg1;
-- (void)clearImages;
-- (void)sweepImages:(id)arg1;
-- (void)imageReady:(id)arg1;
 - (void)stopTimers;
+- (void)imageReady:(id)arg1;
+- (void)sweepImages:(id)arg1;
+- (void)clearImages;
+- (id)allocRow:(int)arg1;
+- (void)updatePreviews;
+- (void)verticalZoomChanged;
+- (id)imageFor:(struct OZElement *)arg1 atTime:(CDStruct_1b6d18a9)arg2 view:(id)arg3;
+- (BOOL)submitRenderFor:(struct OZElement *)arg1 atTime:(CDStruct_1b6d18a9)arg2 view:(id)arg3;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

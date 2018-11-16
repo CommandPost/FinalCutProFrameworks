@@ -23,21 +23,10 @@ __attribute__((visibility("hidden")))
     BOOL isUnknownPerson;
 }
 
-+ (id)copyClassDescription;
-+ (id)_displayPropertyKeyPaths;
-+ (id)personWithCharacterName:(id)arg1 labelColor:(id)arg2;
 + (id)uniqueUnknownPersonWithLabelColor:(id)arg1;
-- (id)description;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
-- (id)init;
-- (id)initWithCharacterName:(id)arg1 labelColor:(id)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)addObserver:(id)arg1 forAllDisplayPropertyChangesWithOptions:(unsigned long long)arg2 context:(void *)arg3;
-- (void)removeObserverForAllDisplayPropertyChanges:(id)arg1;
-- (void)dealloc;
++ (id)personWithCharacterName:(id)arg1 labelColor:(id)arg2;
++ (id)_displayPropertyKeyPaths;
++ (id)copyClassDescription;
 @property BOOL isUnknownPerson; // @synthesize isUnknownPerson;
 @property(retain, nonatomic) NSString *personUID; // @synthesize personUID;
 @property BOOL isHighlighted; // @synthesize isHighlighted;
@@ -45,6 +34,17 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *actorName; // @synthesize actorName;
 @property(retain, nonatomic) NSString *characterName; // @synthesize characterName;
 @property(retain, nonatomic) NSColor *labelColor; // @synthesize labelColor;
+- (void)dealloc;
+- (void)removeObserverForAllDisplayPropertyChanges:(id)arg1;
+- (void)addObserver:(id)arg1 forAllDisplayPropertyChangesWithOptions:(unsigned long long)arg2 context:(void *)arg3;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithCharacterName:(id)arg1 labelColor:(id)arg2;
+- (id)init;
+- (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)description;
 
 @end
 

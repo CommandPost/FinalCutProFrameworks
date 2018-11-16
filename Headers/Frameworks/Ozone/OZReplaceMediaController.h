@@ -13,12 +13,12 @@
     LKButton *_pButton;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (void)doButtonAction:(id)arg1;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)type;
 + (Class)streamClass;
-- (CDStruct_e83c9415)timeRange;
-- (id)nativeVideoProps;
++ (id)type;
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)nativeVideoProps;
+- (CDStruct_e83c9415)timeRange;
 
 @end
 

@@ -12,14 +12,14 @@
     struct OZFactories *_factories;
 }
 
-- (id)init;
-- (void)dealloc;
-- (BOOL)animate;
-- (void)setAnimate:(BOOL)arg1;
-- (BOOL)shouldOffset;
+- (void)setCurrentTime:(CDStruct_198678f7)arg1;
+- (CDStruct_198678f7)currentTime;
 - (void)setShouldOffset:(BOOL)arg1;
-- (CDStruct_1b6d18a9)currentTime;
-- (void)setCurrentTime:(CDStruct_1b6d18a9)arg1;
+- (BOOL)shouldOffset;
+- (void)setAnimate:(BOOL)arg1;
+- (BOOL)animate;
+- (void)dealloc;
+- (id)init;
 
 @end
 

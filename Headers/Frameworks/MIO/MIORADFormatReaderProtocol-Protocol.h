@@ -6,14 +6,16 @@
 
 #import "NSObject.h"
 
+@class NSArray, NSString;
+
 @protocol MIORADFormatReaderProtocol <NSObject>
-- (id)trackReaders;
+- (NSArray *)trackReaders;
 
 @optional
-- (id)propertyForKey:(id)arg1;
-- (CDStruct_1b6d18a9)duration;
-- (long long)timescale;
-- (long long)locationOffset;
 - (long long)locationSize;
+- (long long)locationOffset;
+- (long long)timescale;
+- (CDStruct_1b6d18a9)duration;
+- (id)propertyForKey:(NSString *)arg1;
 @end
 

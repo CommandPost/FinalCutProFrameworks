@@ -6,31 +6,35 @@
 
 #import "NSObject.h"
 
+#import "FFBackgroundTaskTarget.h"
+
 @class FFBackgroundTask, FFSegmentStoreRef;
 
 __attribute__((visibility("hidden")))
-@interface FFEffectLibraryThumbnailRequestManager : NSObject
+@interface FFEffectLibraryThumbnailRequestManager : NSObject <FFBackgroundTaskTarget>
 {
-    struct FFLocklessQueue<FFEffectLibraryItemView*> *_requests;
+    struct FFLocklessQueue<FFEffectLibraryItemView *> *_requests;
     FFBackgroundTask *_bTask;
     unsigned int _progressStep;
     unsigned int _progressTotal;
     FFSegmentStoreRef *_segmentStoreRef;
 }
 
-+ (id)sharedInstance;
 + (void)releaseSharedInstance;
-- (id)init;
-- (void)dealloc;
-- (CDStruct_60067b7e)_iconCacheKeyForItem:(id)arg1;
-- (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
-- (void)_startBackgroundTask;
-- (void)_cancelBGTask;
-- (void)_waitForBGTaskToFinish;
-- (void)_stopBackgroundTask:(id)arg1;
-- (void)queueRequestForItem:(id)arg1;
-- (id)copyCachedImageForItem:(id)arg1;
++ (id)sharedInstance;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
 - (id)segmentStoreRef;
+- (id)copyCachedImageForItem:(id)arg1;
+- (void)queueRequestForItem:(id)arg1;
+- (void)_stopBackgroundTask:(id)arg1;
+- (void)_waitForBGTaskToFinish;
+- (void)_cancelBGTask;
+- (void)_startBackgroundTask;
+- (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
+- (CDStruct_bdcb2b0d)_iconCacheKeyForItem:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

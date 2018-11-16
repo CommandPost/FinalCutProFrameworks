@@ -19,18 +19,18 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _maximumRange;
 }
 
-- (id)initWithSource:(id)arg1 unmodifiedRange:(CDStruct_e83c9415)arg2 holdBefore:(CDStruct_1b6d18a9)arg3 holdAfter:(CDStruct_1b6d18a9)arg4 gapBefore:(CDStruct_1b6d18a9)arg5 gapAfter:(CDStruct_1b6d18a9)arg6 identifier:(id)arg7;
-- (id)initWithSource:(id)arg1 unmodifiedRange:(CDStruct_e83c9415)arg2 holdBefore:(CDStruct_1b6d18a9)arg3 holdAfter:(CDStruct_1b6d18a9)arg4 identifier:(id)arg5;
-- (id)initWithRange:(CDStruct_e83c9415)arg1 definedRangeToUseFromInput:(CDStruct_e83c9415)arg2 input:(id)arg3 identifier:(id)arg4;
-- (void)dealloc;
-- (void)_setupSources;
-- (CDStruct_1b6d18a9)_mapRequestedTimeToInputTime:(CDStruct_1b6d18a9)arg1 adjustedDuration:(CDStruct_1b6d18a9 *)arg2;
 @property(readonly, nonatomic) CDStruct_e83c9415 maximumRange; // @synthesize maximumRange=_maximumRange;
 @property(readonly, nonatomic) CDStruct_e83c9415 holdAfterRange; // @synthesize holdAfterRange=_holdAfterRange;
 @property(readonly, nonatomic) CDStruct_e83c9415 holdBeforeRange; // @synthesize holdBeforeRange=_holdBeforeRange;
 @property(readonly, nonatomic) CDStruct_e83c9415 unmodifiedRange; // @synthesize unmodifiedRange=_unmodifiedRange;
 @property(readonly, nonatomic) NSString *inputIdentifier; // @synthesize inputIdentifier=_inputIdentifier;
 @property(readonly, nonatomic) FFSource *inputSource; // @synthesize inputSource=_inputSource;
+- (CDStruct_1b6d18a9)_mapRequestedTimeToInputTime:(CDStruct_1b6d18a9)arg1 adjustedDuration:(CDStruct_1b6d18a9 *)arg2;
+- (void)_setupSources;
+- (void)dealloc;
+- (id)initWithRange:(CDStruct_e83c9415)arg1 definedRangeToUseFromInput:(CDStruct_e83c9415)arg2 input:(id)arg3 identifier:(id)arg4;
+- (id)initWithSource:(id)arg1 unmodifiedRange:(CDStruct_e83c9415)arg2 holdBefore:(CDStruct_1b6d18a9)arg3 holdAfter:(CDStruct_1b6d18a9)arg4 identifier:(id)arg5;
+- (id)initWithSource:(id)arg1 unmodifiedRange:(CDStruct_e83c9415)arg2 holdBefore:(CDStruct_1b6d18a9)arg3 holdAfter:(CDStruct_1b6d18a9)arg4 gapBefore:(CDStruct_1b6d18a9)arg5 gapAfter:(CDStruct_1b6d18a9)arg6 identifier:(id)arg7;
 
 @end
 

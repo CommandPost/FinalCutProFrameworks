@@ -12,26 +12,27 @@
 {
     OZTimelineViewMulti *_pTimelineView;
     unsigned int _elementID;
-    shared_ptr_211f3873 *_pImage;
+    shared_ptr_92745eb9 *_pImage;
     struct PCHash128 *_pImageHash;
     CDStruct_1b6d18a9 _nodeRelativeTime;
     double _pixelAspectRatio;
 }
 
-- (id)init;
-- (void)dealloc;
-- (id)timelineView;
-- (void)setTimelineView:(id)arg1;
-- (unsigned int)elementID;
-- (void)setElementID:(unsigned int)arg1;
-- (shared_ptr_211f3873)image;
-- (void)setImage:(shared_ptr_211f3873)arg1;
-- (CDStruct_1b6d18a9)nodeRelativeTime;
-- (void)setNodeRelativeTime:(CDStruct_1b6d18a9)arg1;
-- (double)pixelAspectRatio;
-- (void)setPixelAspectRatio:(double)arg1;
-- (const struct PCHash128 *)imageHash;
+- (id).cxx_construct;
 - (void)setImageHash:(const struct PCHash128 *)arg1;
+- (const struct PCHash128 *)imageHash;
+- (void)setPixelAspectRatio:(double)arg1;
+- (double)pixelAspectRatio;
+- (void)setNodeRelativeTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)nodeRelativeTime;
+- (void)setImage:(shared_ptr_92745eb9)arg1;
+- (shared_ptr_92745eb9)image;
+- (void)setElementID:(unsigned int)arg1;
+- (unsigned int)elementID;
+- (void)setTimelineView:(id)arg1;
+- (id)timelineView;
+- (void)dealloc;
+- (id)init;
 
 @end
 

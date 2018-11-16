@@ -4,14 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FaceRecognitionInfo, NSArray, NSDate, NSMutableString, NSString;
+
 @protocol FaceRecognitionManagerDetectionDelegate
-- (struct CGImage *)getCGImageOfPhoto:(void *)arg1 userInfo:(void **)arg2 maxDimension:(double)arg3 sender:(id)arg4 context:(void *)arg5;
-- (void)releaseCGImage:(struct CGImage *)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
-- (id)getDateOriginalOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 shutterSpeedValue:(double *)arg3 apertureValue:(double *)arg4 ISOSpeedRating:(double *)arg5 sender:(id)arg6 context:(void *)arg7;
-- (struct CGAffineTransform)transformForProvidedImageSpaceToOriginalImageOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 sender:(id)arg3 context:(void *)arg4;
+- (void)logDetectFace:(FaceRecognitionInfo *)arg1 ofPhoto:(void *)arg2 debugString:(NSString *)arg3 sender:(id)arg4 context:(void *)arg5;
+- (BOOL)writeDetectionAndThumbnailInfoOfFaces:(NSArray *)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
+- (BOOL)validateFace:(FaceRecognitionInfo *)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5 debugString:(NSMutableString *)arg6;
 - (struct CGAffineTransform)transformForOriginalImageSpaceToPovidedImageSpaceOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 sender:(id)arg3 context:(void *)arg4;
-- (BOOL)validateFace:(id)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5 debugString:(id)arg6;
-- (BOOL)writeDetectionAndThumbnailInfoOfFaces:(id)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
-- (void)logDetectFace:(id)arg1 ofPhoto:(void *)arg2 debugString:(id)arg3 sender:(id)arg4 context:(void *)arg5;
+- (struct CGAffineTransform)transformForProvidedImageSpaceToOriginalImageOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 sender:(id)arg3 context:(void *)arg4;
+- (NSDate *)getDateOriginalOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 shutterSpeedValue:(double *)arg3 apertureValue:(double *)arg4 ISOSpeedRating:(double *)arg5 sender:(id)arg6 context:(void *)arg7;
+- (void)releaseCGImage:(struct CGImage *)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
+- (struct CGImage *)getCGImageOfPhoto:(void *)arg1 userInfo:(void **)arg2 maxDimension:(double)arg3 sender:(id)arg4 context:(void *)arg5;
 @end
 

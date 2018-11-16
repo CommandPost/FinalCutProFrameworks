@@ -17,18 +17,18 @@
     double _height;
 }
 
-- (id)init;
-- (void)setTimelineView:(id)arg1;
-- (id)timelineView;
-- (struct CGRect)frame;
-- (double)width;
-- (void)reloadVisibleLayers;
-- (void)sizeToFit;
-- (void)setScrolling:(BOOL)arg1;
-- (id)partIdentifier;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
 @property double height; // @synthesize height=_height;
 @property struct CGPoint origin; // @synthesize origin=_laneOrigin;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)partIdentifier;
+- (void)setScrolling:(BOOL)arg1;
+- (void)sizeToFit;
+- (void)reloadVisibleLayers;
+- (double)width;
+- (struct CGRect)frame;
+- (id)timelineView;
+- (void)setTimelineView:(id)arg1;
+- (id)init;
 
 @end
 

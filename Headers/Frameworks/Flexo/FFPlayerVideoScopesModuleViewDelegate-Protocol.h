@@ -4,9 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFImage, NSMenu;
+
 @protocol FFPlayerVideoScopesModuleViewDelegate
-- (void)drawScopeViewWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (id)menuForVideoScopeOptions;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id <NSValidatedUserInterfaceItem>)arg1;
+- (NSMenu *)menuForVideoScopeOptions;
+- (void)drawScopeViewWithFrame:(FFImage *)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 @end
 

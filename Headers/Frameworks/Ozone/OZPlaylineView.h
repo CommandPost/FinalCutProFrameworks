@@ -19,37 +19,36 @@
     struct CGRect _outLineRect;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)autorelease;
-- (void)dealloc;
-- (void)timelineViewDidResize;
-- (void)timelineViewDidResize:(id)arg1;
-- (BOOL)isOpaque;
-- (id)playheadFacet:(BOOL)arg1;
-- (void)drawPlayhead:(struct CGRect)arg1;
-- (id)inPointFacet:(BOOL)arg1;
-- (id)outPointFacet:(BOOL)arg1;
-- (struct PCTimeRange)getPlayRange;
-- (void)drawPlayRangeHandles;
-- (void)drawInOutLines:(struct CGRect)arg1;
-- (struct CGRect)playLineRect;
-- (void)drawRect:(struct CGRect)arg1;
-- (struct CGRect)_inLineRect;
-- (struct CGRect)_outLineRect;
-- (struct CGRect)_playLineRect;
-- (void)notify:(unsigned int)arg1;
-- (void)setTimingCoordinator:(id)arg1;
-- (id)timingCoordinator;
-- (void)timeDisplayRangeModified;
-- (void)renewGState;
-- (void)_setViewPositionAndSize;
-- (struct OZDocument *)oz_currentOZDocument;
-- (id)oz_currentDocument;
-- (const struct PCTimeRange *)getDisplayRange;
-- (const struct PCTimeRange *)getActiveRange;
-- (CDStruct_1b6d18a9)getCurrentTime;
-- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
+- (id).cxx_construct;
 - (struct CGRect)controlBounds;
+- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
+- (CDStruct_1b6d18a9)getCurrentTime;
+- (const struct PCTimeRange *)getActiveRange;
+- (const struct PCTimeRange *)getDisplayRange;
+- (void)_setViewPositionAndSize;
+- (void)renewGState;
+- (void)timeDisplayRangeModified;
+- (id)timingCoordinator;
+- (void)setTimingCoordinator:(id)arg1;
+- (void)notify:(unsigned int)arg1;
+- (struct CGRect)_playLineRect;
+- (struct CGRect)_outLineRect;
+- (struct CGRect)_inLineRect;
+- (void)drawRect:(struct CGRect)arg1;
+- (struct CGRect)playLineRect;
+- (void)drawInOutLines:(struct CGRect)arg1;
+- (void)drawPlayRangeHandles;
+- (struct PCTimeRange)getPlayRange;
+- (id)outPointFacet:(BOOL)arg1;
+- (id)inPointFacet:(BOOL)arg1;
+- (void)drawPlayhead:(struct CGRect)arg1;
+- (id)playheadFacet:(BOOL)arg1;
+- (BOOL)isOpaque;
+- (void)timelineViewDidResize:(id)arg1;
+- (void)timelineViewDidResize;
+- (void)dealloc;
+- (id)autorelease;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

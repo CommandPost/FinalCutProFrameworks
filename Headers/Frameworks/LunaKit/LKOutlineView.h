@@ -10,10 +10,10 @@
 {
 }
 
-+ (Class)_headerViewClass;
 + (Class)_cornerCellClass;
-- (Class)ibDefaultTableColumnClassForInsertion;
++ (Class)_headerViewClass;
 - (id)_disclosureImageSource;
+- (Class)ibDefaultTableColumnClassForInsertion;
 
 @end
 

@@ -7,10 +7,10 @@
 #import "CHChannelBase.h"
 
 @interface CHChannelBase (FFCHChannelBaseAdditions)
-- (id)_findDelegate;
-- (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3;
-- (id)associatedModelObject;
-- (void)operationBegin;
 - (void)operationEnd;
+- (void)operationBegin;
+- (id)associatedModelObject;
+- (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3;
+- (id)_findDelegate;
 @end
 

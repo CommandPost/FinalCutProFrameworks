@@ -8,13 +8,13 @@
 
 #import "FFOrganizerMasterItem.h"
 
-@class FFMediaEventController, FFStorageManagerDispatch, NSArray, NSImage, NSMutableArray, NSString;
+@class FFMediaEventController, FFStorageManager, NSArray, NSImage, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaEventSidebarProvider : FFOrganizerItem <FFOrganizerMasterItem>
 {
     FFMediaEventController *_mediaEventController;
-    FFStorageManagerDispatch *_storageManagerDispatch;
+    FFStorageManager *_storageManagerDispatch;
     BOOL _groupEventsByDisk;
     unsigned long long _groupEventsByDate;
     BOOL _arrangeEventsByMostRecent;
@@ -22,31 +22,31 @@ __attribute__((visibility("hidden")))
     BOOL _itemsUpToDate;
 }
 
-+ (id)keyPathsForValuesAffectingMasterSubitems;
 + (id)readableTypesForPasteboard:(id)arg1;
-- (id)sortEvents:(id)arg1;
-@property(nonatomic) BOOL groupEventsByDisk; // @synthesize groupEventsByDisk=_groupEventsByDisk;
-@property(nonatomic) unsigned long long groupEventsByDate; // @synthesize groupEventsByDate=_groupEventsByDate;
++ (id)keyPathsForValuesAffectingMasterSubitems;
 @property(nonatomic) BOOL arrangeEventsByMostRecent; // @synthesize arrangeEventsByMostRecent=_arrangeEventsByMostRecent;
-@property(readonly, nonatomic) NSArray *sortDescriptorsForEvents;
-@property(readonly, nonatomic) NSArray *items;
-- (void)setItemsUpToDate:(id)arg1;
-@property(readonly, nonatomic) BOOL hasMasterSubitems;
-@property(readonly, nonatomic) BOOL hasItems;
-@property(readonly, nonatomic) NSArray *detailSubitems;
-@property(readonly, nonatomic) BOOL hasDetailSubitems;
-@property(readonly, nonatomic) NSString *itemDisplayName;
-@property(readonly, nonatomic) NSImage *itemIcon;
-@property(readonly, nonatomic) NSArray *masterSubitems;
-- (id)init;
-- (void)dealloc;
+@property(nonatomic) unsigned long long groupEventsByDate; // @synthesize groupEventsByDate=_groupEventsByDate;
+@property(nonatomic) BOOL groupEventsByDisk; // @synthesize groupEventsByDisk=_groupEventsByDisk;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_rebuildItems;
-- (id)_getAllVolumes;
-- (id)_sortedEvents:(id)arg1;
-- (id)_eventDateKey;
-- (void)_addEventObservers;
+- (void)dealloc;
+- (id)init;
+@property(readonly, nonatomic) NSArray *masterSubitems;
+@property(readonly, nonatomic) NSImage *itemIcon;
+@property(readonly, nonatomic) NSString *itemDisplayName;
+@property(readonly, nonatomic) BOOL hasDetailSubitems;
+@property(readonly, nonatomic) NSArray *detailSubitems;
+@property(readonly, nonatomic) BOOL hasItems;
+@property(readonly, nonatomic) BOOL hasMasterSubitems;
+- (void)setItemsUpToDate:(id)arg1;
+@property(readonly, nonatomic) NSArray *items;
+@property(readonly, nonatomic) NSArray *sortDescriptorsForEvents;
+- (id)sortEvents:(id)arg1;
 - (void)_removeEventObservers;
+- (void)_addEventObservers;
+- (id)_eventDateKey;
+- (id)_sortedEvents:(id)arg1;
+- (id)_getAllVolumes;
+- (void)_rebuildItems;
 
 // Remaining properties
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;

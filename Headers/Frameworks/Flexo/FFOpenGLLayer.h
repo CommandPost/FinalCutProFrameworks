@@ -17,20 +17,20 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)shouldRenderOnBackgroundThread;
-- (void)dealloc;
-- (BOOL)canDrawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
-- (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
-- (void)setContentsScale:(double)arg1;
-- (struct _CGLContextObject *)copyCGLContextForPixelFormat:(struct _CGLPixelFormatObject *)arg1;
-- (void)releaseCGLContext:(struct _CGLContextObject *)arg1;
-- (struct _CGLPixelFormatObject *)copyCGLPixelFormatForDisplayMask:(unsigned int)arg1;
-- (void)releaseCGLPixelFormat:(struct _CGLPixelFormatObject *)arg1;
-- (void)setLayerContext:(struct _CGLContextObject *)arg1;
-- (struct _CGLContextObject *)layerContext;
-- (void)setVirtualScreen:(int)arg1;
-- (int)virtualScreen;
-- (void)setPlayerView:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setPlayerView:(id)arg1;
+- (int)virtualScreen;
+- (void)setVirtualScreen:(int)arg1;
+- (struct _CGLContextObject *)layerContext;
+- (void)setLayerContext:(struct _CGLContextObject *)arg1;
+- (void)releaseCGLPixelFormat:(struct _CGLPixelFormatObject *)arg1;
+- (struct _CGLPixelFormatObject *)copyCGLPixelFormatForDisplayMask:(unsigned int)arg1;
+- (void)releaseCGLContext:(struct _CGLContextObject *)arg1;
+- (struct _CGLContextObject *)copyCGLContextForPixelFormat:(struct _CGLPixelFormatObject *)arg1;
+- (void)setContentsScale:(double)arg1;
+- (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
+- (BOOL)canDrawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
+- (void)dealloc;
 
 @end
 

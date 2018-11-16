@@ -17,13 +17,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)getSmallBlueAttributedString:(id)arg1;
-- (void)awakeFromNib;
-- (void)dealloc;
 @property(retain, nonatomic) NSTrackingArea *trackingArea; // @synthesize trackingArea=_trackingArea;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseExited:(id)arg1;
 @property(retain, nonatomic) NSAttributedString *altTitleString; // @synthesize altTitleString=_altTitleString;
 @property(retain, nonatomic) NSAttributedString *titleString; // @synthesize titleString=_titleString;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

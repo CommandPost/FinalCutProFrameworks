@@ -15,7 +15,7 @@
     double _baseSplitItemHeight;
     double _audioWaveFormProportion;
     double _itemHeightAdjustment;
-    double _splitItemSpacingHeight;
+    double _splitItemOffsetSpacing;
     struct CGSize _itemSpacing;
     int _clipDisplayMode;
     struct {
@@ -24,20 +24,21 @@
     } _tlkLayoutFlags;
 }
 
-- (id)init;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-@property(nonatomic) BOOL showClipTitlesOnly;
-@property(readonly, nonatomic) double spineItemHeight;
-- (double)anchoredItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
-- (double)splitItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
+@property(nonatomic) double splitItemOffsetSpacing; // @synthesize splitItemOffsetSpacing=_splitItemOffsetSpacing;
 @property(nonatomic) int displayMode; // @synthesize displayMode=_clipDisplayMode;
-@property(nonatomic) double splitItemSpacingHeight; // @synthesize splitItemSpacingHeight=_splitItemSpacingHeight;
 @property(nonatomic) struct CGSize itemSpacing; // @synthesize itemSpacing=_itemSpacing;
 @property(nonatomic) double itemHeightAdjustment; // @synthesize itemHeightAdjustment=_itemHeightAdjustment;
 @property(nonatomic) double audioWaveFormProportion; // @synthesize audioWaveFormProportion=_audioWaveFormProportion;
 @property(nonatomic) double baseSplitItemHeight; // @synthesize baseSplitItemHeight=_baseSplitItemHeight;
 @property(nonatomic) double baseAnchoredItemHeight; // @synthesize baseAnchoredItemHeight=_baseAnchoredItemHeight;
 @property(nonatomic) double baseSpineItemHeight; // @synthesize baseSpineItemHeight=_baseSpineItemHeight;
+- (double)audioComponentItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
+- (double)splitItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
+- (double)anchoredItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
+@property(readonly, nonatomic) double spineItemHeight;
+@property(nonatomic) BOOL showClipTitlesOnly;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 
 @end
 

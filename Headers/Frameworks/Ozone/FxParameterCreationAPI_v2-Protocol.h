@@ -6,7 +6,9 @@
 
 #import "FxParameterCreationAPI.h"
 
+@class NSString;
+
 @protocol FxParameterCreationAPI_v2 <FxParameterCreationAPI>
-- (BOOL)addStringParameterWithName:(id)arg1 parmId:(unsigned int)arg2 defaultValue:(id)arg3 parmFlags:(unsigned int)arg4;
+- (BOOL)addStringParameterWithName:(NSString *)arg1 parmId:(unsigned int)arg2 defaultValue:(NSString *)arg3 parmFlags:(unsigned int)arg4;
 @end
 

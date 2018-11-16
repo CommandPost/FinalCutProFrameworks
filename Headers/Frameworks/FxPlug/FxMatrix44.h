@@ -11,16 +11,17 @@
     double _mat[4][4];
 }
 
-- (id)init;
-- (id)initWithMatrix44Data:(double [4][4])arg1;
-- (id)initWithFxMatrix:(id)arg1;
-- (void)setToIdentity;
-- (void)setMatrix:(double [4][4])arg1;
-- (double (*)[4][4])matrix;
-- (BOOL)invert;
-- (struct CGPoint)transform2DPoint:(struct CGPoint)arg1;
-- (struct FxPoint3D)transform3DPoint:(struct FxPoint3D)arg1;
 - (id)description;
+- (struct FxPoint3D)transform3DPoint:(struct FxPoint3D)arg1;
+- (struct CGPoint)transform2DPoint:(struct CGPoint)arg1;
+- (BOOL)invert;
+- (BOOL)_planarInverseZ;
+- (double (*)[4][4])matrix;
+- (void)setMatrix:(double [4][4])arg1;
+- (void)setToIdentity;
+- (id)initWithFxMatrix:(id)arg1;
+- (id)initWithMatrix44Data:(double [4][4])arg1;
+- (id)init;
 
 @end
 

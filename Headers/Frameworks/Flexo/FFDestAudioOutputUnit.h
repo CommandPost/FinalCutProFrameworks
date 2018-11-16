@@ -18,21 +18,21 @@
     struct FFDestAudioStartTimebaseRenderHook *_startTimebaseHook;
 }
 
-- (id)initWithDeviceID:(id)arg1 playbackContext:(id)arg2;
-- (id)initWithOutputUnit:(const struct ComponentDescription *)arg1 playbackContext:(id)arg2;
-- (void)dealloc;
-- (struct ComponentInstanceRecord *)outputUnit;
-- (BOOL)matchesSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
-- (void)setSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
-- (unsigned long long)maximumChannels;
-- (unsigned long long)maximumBufferFrames;
-- (void)setPullGraph:(struct FFAudioGraph *)arg1 node:(struct FFAudioNode *)arg2 elem:(unsigned int)arg3;
-- (void)setPullCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
-- (void *)figClock;
-- (void)start:(id)arg1;
-- (void)stop;
-- (BOOL)isRunning;
 - (void)reset;
+- (BOOL)isRunning;
+- (void)stop;
+- (void)start:(id)arg1;
+- (void *)figClock;
+- (void)setPullCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
+- (void)setPullGraph:(struct FFAudioGraph *)arg1 node:(struct FFAudioNode *)arg2 elem:(unsigned int)arg3;
+- (unsigned long long)maximumBufferFrames;
+- (unsigned long long)maximumChannels;
+- (void)setSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
+- (BOOL)matchesSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
+- (struct ComponentInstanceRecord *)outputUnit;
+- (void)dealloc;
+- (id)initWithOutputUnit:(const struct ComponentDescription *)arg1 playbackContext:(id)arg2;
+- (id)initWithDeviceID:(id)arg1 playbackContext:(id)arg2;
 
 @end
 

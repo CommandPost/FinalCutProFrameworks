@@ -5,15 +5,15 @@
 //
 
 @protocol FxParameterSettingAPI
-- (BOOL)setFloatValue:(double)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
-- (BOOL)setIntValue:(int)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
-- (BOOL)setBoolValue:(BOOL)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
-- (BOOL)setRedValue:(double)arg1 GreenValue:(double)arg2 BlueValue:(double)arg3 toParm:(unsigned int)arg4 atTime:(double)arg5;
-- (BOOL)setRedValue:(double)arg1 greenValue:(double)arg2 blueValue:(double)arg3 toParm:(unsigned int)arg4 atTime:(double)arg5;
-- (BOOL)setRedValue:(double)arg1 GreenValue:(double)arg2 BlueValue:(double)arg3 AlphaValue:(double)arg4 toParm:(unsigned int)arg5 atTime:(double)arg6;
-- (BOOL)setRedValue:(double)arg1 greenValue:(double)arg2 blueValue:(double)arg3 alphaValue:(double)arg4 toParm:(unsigned int)arg5 atTime:(double)arg6;
-- (BOOL)setXValue:(double)arg1 YValue:(double)arg2 toParm:(unsigned int)arg3 atTime:(double)arg4;
-- (BOOL)setCustomParameterValue:(id)arg1 toParm:(unsigned int)arg2;
 - (BOOL)setParameterFlags:(unsigned int)arg1 toParm:(unsigned int)arg2;
+- (BOOL)setCustomParameterValue:(id <NSCoding>)arg1 toParm:(unsigned int)arg2;
+- (BOOL)setXValue:(double)arg1 YValue:(double)arg2 toParm:(unsigned int)arg3 atTime:(double)arg4;
+- (BOOL)setRedValue:(double)arg1 greenValue:(double)arg2 blueValue:(double)arg3 alphaValue:(double)arg4 toParm:(unsigned int)arg5 atTime:(double)arg6;
+- (BOOL)setRedValue:(double)arg1 GreenValue:(double)arg2 BlueValue:(double)arg3 AlphaValue:(double)arg4 toParm:(unsigned int)arg5 atTime:(double)arg6;
+- (BOOL)setRedValue:(double)arg1 greenValue:(double)arg2 blueValue:(double)arg3 toParm:(unsigned int)arg4 atTime:(double)arg5;
+- (BOOL)setRedValue:(double)arg1 GreenValue:(double)arg2 BlueValue:(double)arg3 toParm:(unsigned int)arg4 atTime:(double)arg5;
+- (BOOL)setBoolValue:(BOOL)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
+- (BOOL)setIntValue:(int)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
+- (BOOL)setFloatValue:(double)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
 @end
 

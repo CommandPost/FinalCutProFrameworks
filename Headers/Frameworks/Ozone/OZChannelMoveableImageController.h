@@ -11,8 +11,8 @@
     struct OZChannelMoveableImage *_imageChannel;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (struct OZChannelMoveableImage *)getImageChannel;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

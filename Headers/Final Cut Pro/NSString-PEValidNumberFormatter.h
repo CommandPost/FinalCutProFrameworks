@@ -7,10 +7,10 @@
 #import "NSString.h"
 
 @interface NSString (PEValidNumberFormatter)
-- (BOOL)isValidPositiveInteger;
-- (BOOL)isNonNegativeInteger;
-- (BOOL)isValidInteger;
-- (BOOL)isValidNumber;
 - (BOOL)isValidPositive:(char *)arg1 integer:(char *)arg2 zero:(char *)arg3;
+- (BOOL)isValidNumber;
+- (BOOL)isValidInteger;
+- (BOOL)isNonNegativeInteger;
+- (BOOL)isValidPositiveInteger;
 @end
 

@@ -8,23 +8,20 @@
 
 #import "NSWindowDelegate.h"
 
-@class OZDocumentKeyResponder;
-
 @interface OZWindowModule : LKWindowModule <NSWindowDelegate>
 {
-    OZDocumentKeyResponder *_documentKeyResponder;
 }
 
 + (Class)windowControllerClass;
-- (id)windowTitle;
-- (id)initWithModuleNibName:(id)arg1;
-- (void)dealloc;
-- (void)windowWillBeginSheet:(id)arg1;
++ (Class)windowClass;
+- (void)windowDidBecomeMain:(id)arg1;
 - (void)windowDidEndSheet:(id)arg1;
-- (void)viewDidLoad;
-- (BOOL)isDoingSheet;
+- (void)windowWillBeginSheet:(id)arg1;
 - (void)swipeWithEvent:(id)arg1;
-@property(readonly) OZDocumentKeyResponder *documentKeyResponder; // @synthesize documentKeyResponder=_documentKeyResponder;
+- (void)viewDidLoad;
+- (void)dealloc;
+- (id)initWithModuleNibName:(id)arg1;
+- (id)windowTitle;
 
 @end
 

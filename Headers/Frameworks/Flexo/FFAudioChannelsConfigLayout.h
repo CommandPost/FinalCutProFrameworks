@@ -4,32 +4,24 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <Flexo/FFAudioComponentsLayout.h>
 
-#import "NSCoding.h"
-
-@class NSArray, NSMutableArray, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioChannelsConfigLayout : NSObject <NSCoding>
+@interface FFAudioChannelsConfigLayout : FFAudioComponentsLayout
 {
     NSString *m_layoutName;
-    int m_numChannels;
-    NSMutableArray *m_layoutItems;
 }
 
 + (id)layoutWithName:(id)arg1 numChannels:(int)arg2;
-- (id)initWithName:(id)arg1 numChannels:(int)arg2;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
-- (BOOL)addLayoutItem:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isEquivalentLayoutTo:(id)arg1;
-- (id)description;
-@property(readonly, nonatomic) NSArray *layoutItems; // @synthesize layoutItems=m_layoutItems;
-@property(readonly, nonatomic) int numChannels; // @synthesize numChannels=m_numChannels;
 @property(retain, nonatomic) NSString *layoutName; // @synthesize layoutName=m_layoutName;
+- (BOOL)isEqualToLayout:(id)arg1;
+- (id)description;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithName:(id)arg1 numChannels:(int)arg2;
 
 @end
 

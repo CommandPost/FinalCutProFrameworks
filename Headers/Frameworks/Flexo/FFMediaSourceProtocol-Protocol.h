@@ -4,15 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFMedia, NSArray, NSString;
+
 @protocol FFMediaSourceProtocol
-- (id)media;
-- (void)setMedia:(id)arg1;
-- (id)providerSourceKey;
-- (void)setProviderSourceKey:(id)arg1;
-- (id)sourceChannelMap;
-- (void)setSourceChannelMap:(id)arg1;
-- (id)audioChannelRoutingMap;
-- (void)setAudioChannelRoutingMap:(id)arg1;
-- (void)setMedia:(id)arg1 providerSourceKey:(id)arg2 sourceChannelMap:(id)arg3 audioChannelRoutingMap:(id)arg4 updateFlags:(int)arg5;
+- (void)setMedia:(FFMedia *)arg1 providerSourceKey:(NSString *)arg2 sourceChannelMap:(NSArray *)arg3 audioChannelRoutingMap:(NSArray *)arg4 updateFlags:(int)arg5;
+- (void)setAudioChannelRoutingMap:(NSArray *)arg1;
+- (NSArray *)audioChannelRoutingMap;
+- (void)setSourceChannelMap:(NSArray *)arg1;
+- (NSArray *)sourceChannelMap;
+- (void)setProviderSourceKey:(NSString *)arg1;
+- (NSString *)providerSourceKey;
+- (void)setMedia:(FFMedia *)arg1;
+- (FFMedia *)media;
 @end
 

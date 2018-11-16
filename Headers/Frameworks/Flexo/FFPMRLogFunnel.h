@@ -19,9 +19,9 @@ __attribute__((visibility("hidden")))
     int _highWaterMark;
 }
 
-- (id)initWithInstrName:(id)arg1;
-- (void)dealloc;
 - (void)funnelLog:(CDUnknownBlockType)arg1;
+- (void)dealloc;
+- (id)initWithInstrName:(id)arg1;
 
 @end
 

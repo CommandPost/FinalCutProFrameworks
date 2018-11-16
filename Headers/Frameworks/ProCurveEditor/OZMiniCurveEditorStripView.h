@@ -20,14 +20,15 @@
     double *_keypointsY;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)reshape;
-- (void)setChannel:(struct OZChannelBase *)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)sample;
-- (void)update;
+- (id).cxx_construct;
 - (void)setController:(id)arg1;
+- (void)update;
+- (void)sample;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)setChannel:(struct OZChannelBase *)arg1;
+- (void)reshape;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

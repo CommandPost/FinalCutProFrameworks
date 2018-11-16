@@ -13,25 +13,25 @@
     void *_reserved15;
 }
 
-+ (void)initialize;
-+ (void)setShouldInstallDocuments:(BOOL)arg1;
 + (void)setDraggedModule:(id)arg1;
-- (long long)numberOfDocuments;
-- (void)dealloc;
-- (BOOL)loadView;
-- (void)removeFromSupermodule;
-- (void)configureSubmodules:(id)arg1;
-- (id)label;
-- (id)submoduleLayoutArray;
-- (void)performClose:(id)arg1;
-- (void)_closeAllDocuments;
-- (void)_documentController:(id)arg1 didCloseDocuments:(BOOL)arg2 contextInfo:(void *)arg3;
-- (BOOL)tabView:(id)arg1 canInsertTabViewItem:(id)arg2;
-- (void)tabView:(id)arg1 willSelectTabViewItem:(id)arg2;
-- (id)newTabViewForWinModule:(id)arg1 usingLayout:(id)arg2;
-- (id)tabView:(id)arg1 contextMenuForTabViewItem:(id)arg2;
-- (void)windowWillClose:(id)arg1;
++ (void)setShouldInstallDocuments:(BOOL)arg1;
++ (void)initialize;
 - (BOOL)_loadLazy;
+- (void)windowWillClose:(id)arg1;
+- (id)tabView:(id)arg1 contextMenuForTabViewItem:(id)arg2;
+- (id)newTabViewForWinModule:(id)arg1 usingLayout:(id)arg2;
+- (void)tabView:(id)arg1 willSelectTabViewItem:(id)arg2;
+- (BOOL)tabView:(id)arg1 canInsertTabViewItem:(id)arg2;
+- (void)_documentController:(id)arg1 didCloseDocuments:(BOOL)arg2 contextInfo:(void *)arg3;
+- (void)_closeAllDocuments;
+- (void)performClose:(id)arg1;
+- (id)submoduleLayoutArray;
+- (id)label;
+- (void)configureSubmodules:(id)arg1;
+- (void)removeFromSupermodule;
+- (BOOL)loadView;
+- (void)dealloc;
+- (long long)numberOfDocuments;
 
 @end
 

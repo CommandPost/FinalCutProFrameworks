@@ -19,17 +19,17 @@
     double _moviePAR;
 }
 
-+ (void)showViewerWithNSURL:(id)arg1;
 + (void)showViewer:(const struct PCURL *)arg1;
-- (id)init;
-- (void)dealloc;
-- (id)windowNibName;
-- (void)windowDidLoad;
-- (void)windowWillClose:(id)arg1;
-- (void)setURL:(const struct PCURL *)arg1;
-- (const struct PCURL *)getURL;
-- (void)updateMovie;
++ (void)showViewerWithNSURL:(id)arg1;
 - (struct CGSize)windowWillResize:(id)arg1 toSize:(struct CGSize)arg2;
+- (void)updateMovie;
+- (const struct PCURL *)getURL;
+- (void)setURL:(const struct PCURL *)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)windowDidLoad;
+- (id)windowNibName;
+- (void)dealloc;
+- (id)init;
 
 @end
 

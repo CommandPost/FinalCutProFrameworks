@@ -6,7 +6,7 @@
 
 #import <Flexo/FFMediaManagerController.h>
 
-@class NSButton, NSImageView, NSMatrix, NSMutableArray, NSString, NSTextField, NSURL;
+@class NSButton, NSImageView, NSMatrix, NSMutableArray, NSPopUpButton, NSString, NSTextField, NSURL;
 
 @interface FFMediaManagerConsolidateProjectController : FFMediaManagerController
 {
@@ -14,34 +14,49 @@
     NSTextField *_referencedEventsTextField;
     NSMatrix *_consolidateTypeMatrix;
     NSButton *_includeRenderFilesCheckBox;
+    NSMatrix *_duplicateTypeMatrix;
+    NSTextField *_compoundClipLocationLabel;
+    NSPopUpButton *_compoundClipLocation;
     NSImageView *_imageView1;
     NSImageView *_imageView2;
     NSImageView *_imageView3;
     NSImageView *_imageView4;
     NSImageView *_imageView5;
     NSImageView *_imageView6;
+    NSTextField *_duplicateDescriptionTextField;
     NSMutableArray *_referencedEvents;
     NSMutableArray *_referencedAssets;
     NSURL *_hideFileURL;
     NSString *_destProjectName;
+    BOOL _compoundClipsOnly;
 }
 
-+ (void)showMediaManagerConsolidateProjectSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 project:(id)arg4;
-+ (void)showMediaManagerDuplicateProjectSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 destinationLocation:(id)arg4 destinationProjectFolderURL:(id)arg5 project:(id)arg6;
 + (void)showMediaManagerMoveProjectSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 destinationLocation:(id)arg4 destinationProjectFolderURL:(id)arg5 project:(id)arg6;
-- (void)awakeFromNib;
-- (id)initWithWindowNibName:(id)arg1;
-- (void)dealloc;
-- (void)finishMMOperation;
-- (void)setConsolidateType:(id)arg1;
-- (void)copyClipObjects:(id)arg1;
-- (id)filesAndClipsReferencedByProjectWithOptions:(id)arg1;
-- (void)updateAssetRefsInAllProjectsForMovedEvent:(id)arg1;
-- (void)updateAssetRefsAfterCopyingEventsInProject:(id)arg1 eventDict:(id)arg2;
-- (void)updateMediaRefsInProject:(id)arg1 destEvent:(id)arg2;
-- (void)OK:(id)arg1;
-- (void)showMediaManagerConsolidateProjectSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 destinationLocation:(id)arg4 destinationProjectFolderURL:(id)arg5 project:(id)arg6;
++ (void)showMediaManagerDuplicateProjectSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 destinationLocation:(id)arg4 destinationProjectFolderURL:(id)arg5 project:(id)arg6;
++ (void)showMediaManagerConsolidateProjectSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 project:(id)arg4;
 @property(copy, nonatomic) NSString *destProjectName; // @synthesize destProjectName=_destProjectName;
+- (void)showMediaManagerConsolidateProjectSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 destinationLocation:(id)arg4 destinationProjectFolderURL:(id)arg5 project:(id)arg6;
+- (void)OK:(id)arg1;
+- (id)_deepMediaReferencesForRefs:(id)arg1;
+- (BOOL)updateMediaRefsForCopiedProject:(id)arg1 destEvent:(id)arg2 clipsToCopy:(id)arg3 compoundClipsOnly:(BOOL)arg4 error:(id *)arg5;
+- (BOOL)makeNewMediaFromRef:(id)arg1 clipsToCopy:(id)arg2 compoundClipsOnly:(BOOL)arg3 event:(id)arg4 eventID:(id)arg5 withMap:(id)arg6 error:(id *)arg7;
+- (id)makeNewClipFromClip:(id)arg1 destEvent:(id)arg2 copiedMedia:(id)arg3 error:(id *)arg4;
+- (void)fixupRefs:(id)arg1 destEventID:(id)arg2 copiedMedia:(id)arg3;
+- (id)mediaRefsFromMedia:(id)arg1;
+- (id)primaryClipForMedia:(id)arg1;
+- (id)copyObject:(id)arg1 error:(id *)arg2;
+- (void)ensureUniqueClipName:(id)arg1 inEvent:(id)arg2;
+- (void)updateAssetRefsInAllProjectsForMovedEvent:(id)arg1;
+- (id)filesAndClipsReferencedByProjectWithOptions:(id)arg1;
+- (void)locationSelectionDidChange:(id)arg1;
+- (void)eventsMenuSelectionDidChange:(id)arg1;
+- (void)setUsedClipsType:(id)arg1;
+- (void)setConsolidateType:(id)arg1;
+- (void)repopulateEventsList;
+- (void)finishMMOperation;
+- (void)dealloc;
+- (id)initWithWindowNibName:(id)arg1;
+- (void)awakeFromNib;
 
 @end
 

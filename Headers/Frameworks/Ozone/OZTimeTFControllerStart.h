@@ -10,14 +10,14 @@
 {
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 withRetimeController:(id)arg2 useSceneStartTimecode:(BOOL)arg3 context:(id)arg4;
-- (double)getValueFromChannel:(struct OZChannelBase *)arg1;
-- (double)getMinValueFromChannel:(struct OZChannelBase *)arg1;
-- (double)getMaxValueFromChannel:(struct OZChannelBase *)arg1;
-- (void)setValue:(double)arg1 forRoots:(map_fb141d32 *)arg2 constrainToDependents:(_Bool)arg3;
-- (void)setValue:(double)arg1 forFootage:(struct OZFootage *)arg2;
+- (double)getInitialValue:(_Rb_tree_iterator_774d8848 *)arg1;
 - (void)startScrubberAction:(id)arg1;
-- (double)getInitialValue:(_Rb_tree_iterator_844e2a22 *)arg1;
+- (void)setValue:(double)arg1 forFootage:(struct OZFootage *)arg2;
+- (void)setValue:(double)arg1 forRoots:(map_9704587f *)arg2 constrainToDependents:(_Bool)arg3;
+- (double)getMaxValueFromChannel:(struct OZChannelBase *)arg1;
+- (double)getMinValueFromChannel:(struct OZChannelBase *)arg1;
+- (double)getValueFromChannel:(struct OZChannelBase *)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 withRetimeController:(id)arg2 useSceneStartTimecode:(BOOL)arg3 context:(id)arg4;
 
 @end
 

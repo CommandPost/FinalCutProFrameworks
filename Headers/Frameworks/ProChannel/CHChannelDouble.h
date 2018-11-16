@@ -10,34 +10,34 @@
 {
 }
 
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-- (double)doubleValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (double)curveDoubleValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (void)getExtremaBetweenStart:(CDStruct_1b6d18a9)arg1 end:(CDStruct_1b6d18a9)arg2 minDoubleValue:(double *)arg3 maxDoubleValue:(double *)arg4;
-- (unsigned int)sampleCurve:(double **)arg1 timeSamples:(struct **)arg2 count:(unsigned int *)arg3 overRange:(CDStruct_5c5366e1)arg4 withStep:(CDStruct_1b6d18a9)arg5;
-- (unsigned int)sampleRamps:(double **)arg1 timeSamples:(struct **)arg2 count:(unsigned int *)arg3 overRange:(CDStruct_5c5366e1)arg4 withStep:(CDStruct_1b6d18a9)arg5;
-- (void)setCurveDoubleValue:(double)arg1 atTime:(CDStruct_1b6d18a9)arg2 options:(unsigned int)arg3;
-- (double)initialCurveDoubleValue;
-- (void)setInitialCurveDoubleValue:(double)arg1;
-- (double)defaultCurveDoubleValue;
-- (void)setDefaultCurveDoubleValue:(double)arg1;
-- (double)minCurveDoubleValue;
-- (void)setMinCurveDoubleValue:(double)arg1;
-- (double)maxCurveDoubleValue;
-- (void)setMaxCurveDoubleValue:(double)arg1;
-- (double)minUIDoubleValue;
-- (void)setMinUIDoubleValue:(double)arg1;
-- (double)maxUIDoubleValue;
-- (void)setMaxUIDoubleValue:(double)arg1;
-- (double)coarseDeltaDoubleValue;
-- (void)setCoarseDeltaDoubleValue:(double)arg1;
-- (double)fineDeltaDoubleValue;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
+- (BOOL)getKeyframeBeforeTime:(CDStruct_198678f7)arg1 time:(CDStruct_198678f7 *)arg2 curveDoubleValue:(double *)arg3;
+- (BOOL)getKeyframeAfterTime:(CDStruct_198678f7)arg1 time:(CDStruct_198678f7 *)arg2 curveDoubleValue:(double *)arg3;
+- (BOOL)getLastKeyframeTime:(CDStruct_198678f7 *)arg1 curveDoubleValue:(double *)arg2;
+- (BOOL)getFirstKeyframeTime:(CDStruct_198678f7 *)arg1 curveDoubleValue:(double *)arg2;
 - (void)setFineDeltaDoubleValue:(double)arg1;
-- (BOOL)getFirstKeyframeTime:(CDStruct_1b6d18a9 *)arg1 curveDoubleValue:(double *)arg2;
-- (BOOL)getLastKeyframeTime:(CDStruct_1b6d18a9 *)arg1 curveDoubleValue:(double *)arg2;
-- (BOOL)getKeyframeAfterTime:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9 *)arg2 curveDoubleValue:(double *)arg3;
-- (BOOL)getKeyframeBeforeTime:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9 *)arg2 curveDoubleValue:(double *)arg3;
+- (double)fineDeltaDoubleValue;
+- (void)setCoarseDeltaDoubleValue:(double)arg1;
+- (double)coarseDeltaDoubleValue;
+- (void)setMaxUIDoubleValue:(double)arg1;
+- (double)maxUIDoubleValue;
+- (void)setMinUIDoubleValue:(double)arg1;
+- (double)minUIDoubleValue;
+- (void)setMaxCurveDoubleValue:(double)arg1;
+- (double)maxCurveDoubleValue;
+- (void)setMinCurveDoubleValue:(double)arg1;
+- (double)minCurveDoubleValue;
+- (void)setDefaultCurveDoubleValue:(double)arg1;
+- (double)defaultCurveDoubleValue;
+- (void)setInitialCurveDoubleValue:(double)arg1;
+- (double)initialCurveDoubleValue;
+- (void)setCurveDoubleValue:(double)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
+- (unsigned int)sampleRamps:(double **)arg1 timeSamples:(struct **)arg2 count:(unsigned int *)arg3 overRange:(CDStruct_3c1748cc)arg4 withStep:(CDStruct_198678f7)arg5;
+- (unsigned int)sampleCurve:(double **)arg1 timeSamples:(struct **)arg2 count:(unsigned int *)arg3 overRange:(CDStruct_3c1748cc)arg4 withStep:(CDStruct_198678f7)arg5;
+- (void)getExtremaBetweenStart:(CDStruct_198678f7)arg1 end:(CDStruct_198678f7)arg2 minDoubleValue:(double *)arg3 maxDoubleValue:(double *)arg4;
+- (double)curveDoubleValueAtTime:(CDStruct_198678f7)arg1;
+- (double)doubleValueAtTime:(CDStruct_198678f7)arg1;
 
 @end
 

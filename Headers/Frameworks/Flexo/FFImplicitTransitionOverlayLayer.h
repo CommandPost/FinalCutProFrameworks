@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
     BOOL _leadingEdge;
 }
 
-- (id)init;
 @property BOOL leadingEdge;
+- (id)init;
 
 @end
 

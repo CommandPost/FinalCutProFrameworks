@@ -12,18 +12,22 @@ __attribute__((visibility("hidden")))
 @interface FFAnchoredTimelineModuleUndoState : NSObject
 {
     FFAnchoredObject *_rootItem;
+    id <NSObject> _itemInfo;
     NSArray *_selection;
     NSArray *_rangeSelection;
     CDStruct_1b6d18a9 _time;
     BOOL _actionType;
+    BOOL _showsInOutMarker;
 }
 
-- (void)dealloc;
+@property(nonatomic) BOOL showsInOutMarker; // @synthesize showsInOutMarker=_showsInOutMarker;
 @property(nonatomic) BOOL actionType; // @synthesize actionType=_actionType;
 @property(nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 @property(retain, nonatomic) NSArray *rangeSelection; // @synthesize rangeSelection=_rangeSelection;
 @property(retain, nonatomic) NSArray *selection; // @synthesize selection=_selection;
+@property(retain, nonatomic) id <NSObject> itemInfo; // @synthesize itemInfo=_itemInfo;
 @property(retain, nonatomic) FFAnchoredObject *rootItem; // @synthesize rootItem=_rootItem;
+- (void)dealloc;
 
 @end
 

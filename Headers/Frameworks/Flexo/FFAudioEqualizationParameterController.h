@@ -8,7 +8,7 @@
 
 #import "FFEnhanceAudioDelegate.h"
 
-@class FFAnchoredObject, FFChannelChangeController, FFEffectStack, FFEnhanceAudioManager, FFInspectorModulePopUpButton, LKButton, NSMutableArray, NSProProgressIndicator;
+@class FFChannelChangeController, FFEffectStack, FFEnhanceAudioManager, FFInspectorModulePopUpButton, LKButton, NSMutableArray, NSProProgressIndicator;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioEqualizationParameterController : OZViewController <FFEnhanceAudioDelegate>
@@ -16,34 +16,33 @@ __attribute__((visibility("hidden")))
     FFInspectorModulePopUpButton *_eqPopUp;
     LKButton *_matchButton;
     LKButton *_advancedUIButton;
-    FFAnchoredObject *_object;
+    FFEffectStack *_effectStack;
     FFEnhanceAudioManager *_analysisManager;
     FFChannelChangeController *_channelChangeController;
     FFEffectStack *_savedEffectStack;
     NSProProgressIndicator *_analysisSpinner;
     int _warningState;
     BOOL _currentlyMatching;
-    NSMutableArray *m_objectList;
+    NSMutableArray *_managerList;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 object:(id)arg3;
-- (void)dealloc;
-- (void)addAnchoredObject:(id)arg1;
-- (id)anchoredObjects;
-- (void)didBuildUI;
-- (void)update;
-- (void)_configureEQMenu:(id)arg1;
-- (void)_animateSpinner:(id)arg1;
-- (void)hideSpinner;
-- (void)matchStarted;
-- (void)matchComplete;
-- (void)determineWarningState;
-- (void)selectEQMenuItems:(id)arg1;
-- (id)retrieveContext;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)activeToolChanged:(id)arg1;
 @property(retain, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
-@property(retain) FFAnchoredObject *object; // @synthesize object=_object;
+- (void)activeToolChanged:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)retrieveContext;
+- (void)selectEQMenuItems:(id)arg1;
+- (void)determineWarningState;
+- (void)matchComplete;
+- (void)matchStarted;
+- (void)hideSpinner;
+- (void)_animateSpinner:(id)arg1;
+- (void)_updateEQMenu;
+- (id)_effectStacksFromManagerList;
+- (void)update;
+- (void)didBuildUI;
+- (void)addAssociatedChannel:(struct OZChannelBase *)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

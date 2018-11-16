@@ -20,14 +20,14 @@
     OZHistogramGutterOut *_gutterOut;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)setDelegate:(id)arg1;
-- (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
-- (void)setViewController:(id)arg1;
-- (void)awakeFromNib;
-- (void)update;
 - (void)setChannelValue:(id)arg1;
+- (void)update;
+- (void)awakeFromNib;
+- (void)setViewController:(id)arg1;
+- (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
+- (void)setDelegate:(id)arg1;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

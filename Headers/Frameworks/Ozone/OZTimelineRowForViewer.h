@@ -10,12 +10,12 @@
 {
 }
 
-- (id)initWithTimeline:(id)arg1;
-- (void)buildout;
-- (void)findRootsFrom:(struct OZChannelObjectRoot *)arg1 matching:(const struct PCTimeRange *)arg2 includeRoot:(BOOL)arg3 rootList:(set_90ccbad6 *)arg4 selectedOnly:(BOOL)arg5;
-- (void)findRootsFrom:(struct OZChannelObjectRoot *)arg1 mouseTime:(CDStruct_1b6d18a9)arg2 rootList:(set_90ccbad6 *)arg3;
-- (void)checkMouseInOverlaps:(CDStruct_1b6d18a9)arg1 selectRange:(struct PCTimeRange *)arg2 dragRange:(struct PCTimeRange *)arg3;
 - (BOOL)topped;
+- (void)checkMouseInOverlaps:(CDStruct_1b6d18a9)arg1 selectRange:(struct PCTimeRange *)arg2 dragRange:(struct PCTimeRange *)arg3;
+- (void)findRootsFrom:(struct OZChannelObjectRoot *)arg1 mouseTime:(CDStruct_1b6d18a9)arg2 rootList:(set_6f566e68 *)arg3;
+- (void)findRootsFrom:(struct OZChannelObjectRoot *)arg1 matching:(const struct PCTimeRange *)arg2 includeRoot:(BOOL)arg3 rootList:(set_6f566e68 *)arg4 selectedOnly:(BOOL)arg5;
+- (void)buildout;
+- (id)initWithTimeline:(id)arg1;
 
 @end
 

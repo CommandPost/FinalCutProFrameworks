@@ -18,10 +18,10 @@
 }
 
 + (id)instance;
-- (id)initWithSequencesButton:(id)arg1;
-- (BOOL)doSequenceSearch;
-- (BOOL)panel:(id)arg1 shouldShowFilename:(id)arg2;
 - (void)panelSelectionDidChange:(id)arg1;
+- (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
+- (BOOL)doSequenceSearch;
+- (id)initWithSequencesButton:(id)arg1;
 
 @end
 

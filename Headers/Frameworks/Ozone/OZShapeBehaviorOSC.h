@@ -11,24 +11,24 @@
     unsigned int _behaviorID;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (struct OZRotoshape *)getRotoshapeObj;
-- (struct OZShapeBehavior *)getBehavior;
-- (BOOL)activeOnFullCanvas:(id)arg1;
-- (void)setupAssets;
-- (BOOL)isSelected:(struct OZVertex2D)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (BOOL)selectAll:(id)arg1;
-- (BOOL)selectNone:(id)arg1;
-- (int)hitCheck:(id)arg1;
-- (void)draw;
-- (void)drawWithDrawProperties:(id)arg1;
-- (id)menuForEvent:(id)arg1;
 - (id)getCursorWithEvent:(id)arg1 addCursor:(BOOL)arg2;
+- (id)menuForEvent:(id)arg1;
+- (void)drawWithDrawProperties:(id)arg1;
+- (void)draw;
+- (int)hitCheck:(id)arg1;
+- (BOOL)selectNone:(id)arg1;
+- (BOOL)selectAll:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (BOOL)isSelected:(struct OZVertex2D)arg1;
+- (void)setupAssets;
+- (BOOL)activeOnFullCanvas:(id)arg1;
+- (struct OZShapeBehavior *)getBehavior;
+- (struct OZRotoshape *)getRotoshapeObj;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

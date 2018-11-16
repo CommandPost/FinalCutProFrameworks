@@ -16,32 +16,27 @@
     NSProView *_footerView;
     NSProView *_transportControlsFooterView;
     LKSegmentedControl *_previousNextEditControl;
-    LKSegmentedControl *_playControl;
-    LKSegmentedControl *_previousNextFrameControl;
-    LKSegmentedControl *_loopControl;
-    BOOL _isLooping;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (BOOL)wantsFooterBar;
-- (id)moduleFooterAccessoryView;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (struct CGSize)viewMinSize;
-- (struct CGSize)viewMaxSize;
-- (BOOL)wantsHeaderBar;
-- (id)submoduleLayoutArray;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
-- (id)playerVideoModule;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)playSegmentedControlAction:(id)arg1;
-- (void)toggleLoopPlayback:(id)arg1;
-- (void)previousNextFrame:(id)arg1;
-- (void)previousNextEdit:(id)arg1;
 @property(retain) FFPlayerModule *playerModule; // @synthesize playerModule=_playerModule;
+@property(nonatomic) BOOL layoutScopesVertically;
+- (void)previousNextEdit:(id)arg1;
+- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)playerVideoModule;
+- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (id)submoduleLayoutArray;
+- (BOOL)wantsHeaderBar;
+- (struct CGSize)viewMaxSize;
+- (struct CGSize)viewMinSize;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (id)moduleFooterAccessoryView;
+- (BOOL)wantsFooterBar;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)init;
 
 @end
 

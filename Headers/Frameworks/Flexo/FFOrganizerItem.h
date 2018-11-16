@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)keyPathsForValuesAffectingDetailSubitems;
-@property(readonly, nonatomic) NSString *itemDisplayName;
-- (void)setItemDisplayName:(id)arg1;
-@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
-@property(readonly, nonatomic) NSImage *itemIcon;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
+@property(readonly, nonatomic) NSImage *itemIcon;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
+- (void)setItemDisplayName:(id)arg1;
+@property(readonly, nonatomic) NSString *itemDisplayName;
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;

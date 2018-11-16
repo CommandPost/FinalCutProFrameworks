@@ -11,9 +11,9 @@
 }
 
 + (void)initialize;
-- (void)drawFocusRingMaskWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (id)_baseFacet;
 - (void)drawWithExpansionFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)_baseFacet;
+- (void)drawFocusRingMaskWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 
 @end
 

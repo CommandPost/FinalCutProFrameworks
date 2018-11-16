@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
     unsigned int _nodeBasicMD5OringFlags;
 }
 
-- (void)_setupSources;
-- (id)sortedAllInputKeys;
-- (void)setNodeBasicMD5OringFlags:(unsigned int)arg1;
 - (unsigned int)nodeBasicMD5OringFlags;
+- (void)setNodeBasicMD5OringFlags:(unsigned int)arg1;
+- (id)sortedAllInputKeys;
+- (void)_setupSources;
 
 @end
 

@@ -21,20 +21,20 @@
     long long _trackingColumn;
 }
 
-- (id)initTextCell:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)controlView;
-- (void)setControlView:(id)arg1;
-- (void)setTransparentValues:(unsigned int)arg1;
-- (void)setStateValues:(unsigned int)arg1;
-- (void)setEnabledValues:(unsigned int)arg1;
-- (struct CGRect)buttonCellRect:(struct CGRect)arg1 atIndex:(long long)arg2;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
-- (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
-- (void)changeButtonValue:(id)arg1;
 - (long long)pointInButton:(struct CGRect)arg1 inView:(id)arg2 event:(id)arg3;
+- (void)changeButtonValue:(id)arg1;
+- (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
+- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (struct CGRect)buttonCellRect:(struct CGRect)arg1 atIndex:(long long)arg2;
+- (void)setEnabledValues:(unsigned int)arg1;
+- (void)setStateValues:(unsigned int)arg1;
+- (void)setTransparentValues:(unsigned int)arg1;
+- (void)setControlView:(id)arg1;
+- (id)controlView;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initTextCell:(id)arg1;
 
 @end
 

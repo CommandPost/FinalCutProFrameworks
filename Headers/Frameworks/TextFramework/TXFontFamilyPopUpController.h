@@ -18,27 +18,27 @@
     BOOL _isMenuOpen;
 }
 
-+ (void)rebuildImageCache:(double)arg1;
 + (void)initialize;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)collectionChanged:(id)arg1;
-- (void)windowDidChangeBackingProperties:(id)arg1;
-- (BOOL)areAllChannelsEqual;
-- (struct TXFontCollection *)getCurrentCollection;
-- (void)updatePopUpMenu:(BOOL)arg1;
-- (void)selectItemAtIndex:(int)arg1;
-- (void)reset;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)changeChannel:(id)arg1;
-- (void)setChannelValue:(id)arg1;
-- (void)menuWillOpen:(id)arg1;
-- (void)menuDidClose:(id)arg1;
-- (void)menu:(id)arg1 willHighlightItem:(id)arg2;
-- (void)saveDefaultFont:(int)arg1;
++ (void)rebuildImageCache:(double)arg1;
 @property(retain, nonatomic) LKPopUpButton *popUpButton; // @synthesize popUpButton=_popUpButton;
+- (void)saveDefaultFont:(int)arg1;
+- (void)menu:(id)arg1 willHighlightItem:(id)arg2;
+- (void)menuDidClose:(id)arg1;
+- (void)menuWillOpen:(id)arg1;
+- (void)setChannelValue:(id)arg1;
+- (void)changeChannel:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)reset;
+- (void)selectItemAtIndex:(int)arg1;
+- (void)updatePopUpMenu:(BOOL)arg1;
+- (struct TXFontCollection *)getCurrentCollection;
+- (BOOL)areAllChannelsEqual;
+- (void)windowDidChangeBackingProperties:(id)arg1;
+- (void)collectionChanged:(id)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

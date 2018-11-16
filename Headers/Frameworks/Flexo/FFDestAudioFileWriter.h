@@ -18,11 +18,12 @@ __attribute__((visibility("hidden")))
     struct AudioStreamBasicDescription m_clientFormat;
 }
 
-- (id)initWithPath:(id)arg1 fileType:(unsigned int)arg2 fileFormat:(struct AudioStreamBasicDescription)arg3 clientFormat:(struct AudioStreamBasicDescription)arg4;
-- (void)dealloc;
-- (void)beginRenderWithDelegate:(id)arg1 context:(void *)arg2;
-- (void)pushBufferHook:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned long long)arg3;
+- (id).cxx_construct;
 - (void)endRender;
+- (void)pushBufferHook:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned long long)arg3;
+- (void)beginRenderWithDelegate:(id)arg1 context:(void *)arg2;
+- (void)dealloc;
+- (id)initWithPath:(id)arg1 fileType:(unsigned int)arg2 fileFormat:(struct AudioStreamBasicDescription)arg3 clientFormat:(struct AudioStreamBasicDescription)arg4;
 
 @end
 

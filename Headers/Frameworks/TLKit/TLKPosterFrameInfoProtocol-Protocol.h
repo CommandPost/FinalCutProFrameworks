@@ -6,9 +6,11 @@
 
 #import "NSObject.h"
 
+@class NSString;
+
 @protocol TLKPosterFrameInfoProtocol <NSObject>
-- (CDStruct_1b6d18a9)posterTime;
-- (id)label;
 - (BOOL)defaultPosition;
+- (NSString *)label;
+- (CDStruct_1b6d18a9)posterTime;
 @end
 

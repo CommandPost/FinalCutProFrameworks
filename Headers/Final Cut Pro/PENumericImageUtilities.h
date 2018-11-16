@@ -10,8 +10,8 @@
 {
 }
 
-+ (void)initialize;
 + (id)imageForInt:(int)arg1 minDigits:(int)arg2 numerals:(int)arg3 spacerSize:(int)arg4;
++ (void)initialize;
 
 @end
 

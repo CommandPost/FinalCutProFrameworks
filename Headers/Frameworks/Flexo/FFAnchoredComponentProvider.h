@@ -15,14 +15,14 @@ __attribute__((visibility("hidden")))
     long long _effectCount;
 }
 
-+ (id)utis;
 + (id)extensions;
-- (id)initWithAnchoredComponent:(id)arg1 effectCount:(long long)arg2;
-- (void)dealloc;
-- (long long)effectCount;
-- (void)_setupSources;
-- (id)displayName;
++ (id)utis;
 - (id)object;
+- (id)displayName;
+- (void)_setupSources;
+- (long long)effectCount;
+- (void)dealloc;
+- (id)initWithAnchoredComponent:(id)arg1 effectCount:(long long)arg2;
 
 @end
 

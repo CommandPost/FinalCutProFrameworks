@@ -11,13 +11,13 @@
     struct OZFactoryBase *_pSaveItem;
 }
 
-+ (struct CGSize)iconSize;
-+ (void)openWithFactoryBase:(struct OZFactoryBase *)arg1 andPresetType:(const struct PCUUID *)arg2;
++ (id)getPreviewImage:(id)arg1 resolution:(double)arg2 width:(unsigned int *)arg3 height:(unsigned int *)arg4 style:(struct TXTextStyle *)arg5 dependentObjects:(list_1192f13f *)arg6;
 + (double)getResolution:(id)arg1 style:(struct TXTextStyle *)arg2;
-+ (id)getPreviewImage:(id)arg1 resolution:(double)arg2 width:(unsigned int *)arg3 height:(unsigned int *)arg4 style:(struct TXTextStyle *)arg5 dependentObjects:(list_699e9227 *)arg6;
-- (void)_openWithFactoryBase:(struct OZFactoryBase *)arg1 andPresetType:(const struct PCUUID *)arg2;
-- (void)saveNotify:(id)arg1;
++ (void)openWithFactoryBase:(struct OZFactoryBase *)arg1 andPresetType:(const struct PCUUID *)arg2;
++ (struct CGSize)iconSize;
 - (void)cancelNotify:(id)arg1;
+- (void)saveNotify:(id)arg1;
+- (void)_openWithFactoryBase:(struct OZFactoryBase *)arg1 andPresetType:(const struct PCUUID *)arg2;
 
 @end
 

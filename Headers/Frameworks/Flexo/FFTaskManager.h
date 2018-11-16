@@ -20,16 +20,16 @@ __attribute__((visibility("hidden")))
     FFTaskManagerClient *_activeClient;
 }
 
-+ (id)sharedInstance;
 + (void)shutdown;
-- (void)taskDispatcherMain:(id)arg1;
-- (id)init;
-- (void)dealloc;
-- (void)pause;
-- (void)resume;
-- (void)registerClient:(id)arg1;
-- (void)removeClient:(id)arg1;
++ (id)sharedInstance;
 - (void)shutdown;
+- (void)removeClient:(id)arg1;
+- (void)registerClient:(id)arg1;
+- (void)resume;
+- (void)pause;
+- (void)dealloc;
+- (id)init;
+- (void)taskDispatcherMain:(id)arg1;
 
 @end
 

@@ -27,28 +27,36 @@
     unsigned long long _startFrame;
     unsigned long long _endFrame;
     NSString *_appName;
+    BOOL _shouldConductUI;
+    BOOL _includeChapters;
+    NSDictionary *_metadata;
 }
 
-+ (id)exporterForSequence:(id)arg1 toFile:(id)arg2 flags:(unsigned int)arg3 application:(id)arg4;
 + (id)exporterForMedia:(id)arg1 toFile:(id)arg2 withFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5;
-- (id)initWithSequence:(id)arg1 toFile:(id)arg2 flags:(unsigned int)arg3 application:(id)arg4;
-- (id)initWithMedia:(id)arg1 toFile:(id)arg2 withFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5;
-- (void)dealloc;
-- (void)setExportRangeWithStartFrame:(unsigned long long)arg1 endFrame:(unsigned long long)arg2;
-- (void)start;
-- (void)cancel;
-- (double)progress;
-- (BOOL)done;
-- (void)cancelWithError:(id)arg1;
-- (void)cancelWithError:(int)arg1 description:(id)arg2;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_performAudioOnlyMovieExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 movieWriter:(id)arg4;
-- (void)_performAudioFileExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 fileNames:(id)arg4 fileFormat:(id)arg5;
-- (void)_runExport;
++ (id)exporterForSequence:(id)arg1 toFile:(id)arg2 flags:(unsigned int)arg3 application:(id)arg4;
+@property(retain) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property(readonly) NSError *error; // @synthesize error=_error;
+@property BOOL includeChapters; // @synthesize includeChapters=_includeChapters;
+@property BOOL shouldConductUI; // @synthesize shouldConductUI=_shouldConductUI;
 @property(readonly) NSString *toFile; // @synthesize toFile=_toFile;
 @property(readonly) FFMedia *media; // @synthesize media=_media;
 @property(retain) NSArray *trackRoles; // @synthesize trackRoles=_trackRoles;
 @property(retain) NSDictionary *customData; // @synthesize customData=_customData;
+- (void)_runExport;
+- (void)_performAudioFileExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 fileNames:(id)arg4 fileFormat:(id)arg5;
+- (void)_performAudioOnlyMovieExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 movieWriter:(id)arg4;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)cancelWithError:(int)arg1 description:(id)arg2;
+- (void)cancelWithError:(id)arg1;
+- (void)waitUntilDone;
+- (BOOL)done;
+- (double)progress;
+- (void)cancel;
+- (void)start;
+- (void)setExportRangeWithStartFrame:(unsigned long long)arg1 endFrame:(unsigned long long)arg2;
+- (void)dealloc;
+- (id)initWithMedia:(id)arg1 toFile:(id)arg2 withFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5;
+- (id)initWithSequence:(id)arg1 toFile:(id)arg2 flags:(unsigned int)arg3 application:(id)arg4;
 
 @end
 

@@ -15,12 +15,13 @@ __attribute__((visibility("hidden")))
     CDStruct_554002f2 _action_opt;
 }
 
-- (void)setCode:(long long)arg1;
-- (void)setViewMode:(long long)arg1;
-- (void)setCompositeVideoUnits:(long long)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
-- (id)actionForKey:(id)arg1;
+- (id).cxx_construct;
 - (void)drawInContext:(struct CGContext *)arg1;
+- (id)actionForKey:(id)arg1;
+- (struct CGRect)frameForBounds:(struct CGRect)arg1;
+- (void)setCompositeVideoUnits:(long long)arg1;
+- (void)setViewMode:(long long)arg1;
+- (void)setCode:(long long)arg1;
 
 @end
 

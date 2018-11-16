@@ -10,24 +10,18 @@
 {
 }
 
-- (id)initWithImageRef:(id)arg1 layerIndex:(unsigned int)arg2;
-- (void)dealloc;
-- (struct CGImage *)createCGImage;
-- (id)createImage;
-- (id)createImageIsZeroSizeImage:(char *)arg1;
-- (id)createImageFromSlice:(unsigned int)arg1;
-- (id)createImageFromSlice:(unsigned int)arg1 isEmptyImage:(char *)arg2;
-- (id)createPatternColorFromSlice:(unsigned int)arg1;
-- (id)createPatternColorFromSlice:(unsigned int)arg1 isZeroSizeImage:(char *)arg2;
-- (id)createMaskFromSlice:(unsigned int)arg1;
-- (id)fillSample;
 - (id)gradient;
-
-// Remaining properties
-@property(readonly) unsigned int blendMode; // @dynamic blendMode;
-@property(readonly) struct CGRect bounds; // @dynamic bounds;
-@property(readonly) double opacity; // @dynamic opacity;
-@property(readonly) BOOL visibility; // @dynamic visibility;
+- (id)fillSample;
+- (id)createMaskFromSlice:(unsigned int)arg1;
+- (id)createPatternColorFromSlice:(unsigned int)arg1 isZeroSizeImage:(char *)arg2;
+- (id)createPatternColorFromSlice:(unsigned int)arg1;
+- (id)createImageFromSlice:(unsigned int)arg1 isEmptyImage:(char *)arg2;
+- (id)createImageFromSlice:(unsigned int)arg1;
+- (id)createImageIsZeroSizeImage:(char *)arg1;
+- (id)createImage;
+- (struct CGImage *)createCGImage;
+- (void)dealloc;
+- (id)initWithImageRef:(id)arg1 layerIndex:(unsigned int)arg2;
 
 @end
 

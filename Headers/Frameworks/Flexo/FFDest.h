@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void *)figClock;
-- (void)start:(id)arg1;
-- (void)stop;
-- (BOOL)isRunning;
 - (void)updateObservedValuesForContext:(void *)arg1;
+- (BOOL)isRunning;
+- (void)stop;
+- (void)start:(id)arg1;
+- (void *)figClock;
 
 @end
 

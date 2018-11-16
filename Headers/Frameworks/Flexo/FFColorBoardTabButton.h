@@ -12,14 +12,14 @@ __attribute__((visibility("hidden")))
     int _tabType;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
 @property(nonatomic) int tabType; // @synthesize tabType=_tabType;
-- (void)addNotificationObservers;
-- (void)removeNotificationObservers;
 - (void)notificationHandler:(id)arg1;
+- (void)removeNotificationObservers;
+- (void)addNotificationObservers;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -16,11 +16,11 @@
     NSArrayController *_locationsArrayController;
 }
 
-- (id)init;
-- (void)setCustomStorageLocationButton:(id)arg1;
-- (void)clearCustomStorageLocationButton:(id)arg1;
-- (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
 - (BOOL)panel:(id)arg1 validateURL:(id)arg2 error:(id *)arg3;
+- (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
+- (void)clearCustomStorageLocationButton:(id)arg1;
+- (void)setCustomStorageLocationButton:(id)arg1;
+- (id)init;
 
 @end
 

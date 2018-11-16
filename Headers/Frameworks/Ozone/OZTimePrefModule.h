@@ -20,17 +20,17 @@
     NSButton *_pAllowSubFrameKeyframing;
 }
 
-- (void)initializeFromDefaults;
-- (BOOL)isResizable;
-- (void)setTimeDisplay:(id)arg1;
-- (void)setFirstFrame:(id)arg1;
-- (void)setTimeViewUpdateMode:(id)arg1;
-- (void)setAudioSyncMode:(id)arg1;
-- (void)setLimitFrameRate:(id)arg1;
-- (void)setAudioScrubLooping:(id)arg1;
-- (void)toggleLockKeyframesInTime:(id)arg1;
-- (void)toggleAllowSubframeKeyframing:(id)arg1;
 - (void)setupDurationFormatterForTextField:(id)arg1 isDisplayingInFrames:(BOOL)arg2;
+- (void)toggleAllowSubframeKeyframing:(id)arg1;
+- (void)toggleLockKeyframesInTime:(id)arg1;
+- (void)setAudioScrubLooping:(id)arg1;
+- (void)setLimitFrameRate:(id)arg1;
+- (void)setAudioSyncMode:(id)arg1;
+- (void)setTimeViewUpdateMode:(id)arg1;
+- (void)setFirstFrame:(id)arg1;
+- (void)setTimeDisplay:(id)arg1;
+- (BOOL)isResizable;
+- (void)initializeFromDefaults;
 
 @end
 

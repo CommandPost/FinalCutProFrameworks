@@ -14,27 +14,27 @@
     unsigned int _saveMethod;
     unsigned int _saveTemplateMethod;
     BOOL _inclUnused;
-    struct vector<OZSceneNode*, std::allocator<OZSceneNode*>> *_footageList;
+    struct vector<OZSceneNode *, std::allocator<OZSceneNode *>> *_footageList;
     NSArray *_oldPathList;
 }
 
 + (id)sharedInstance;
-- (id)init;
-- (void)dealloc;
-- (void)setDoc:(id)arg1;
-- (void)setSaveMethod:(unsigned int)arg1;
-- (void)setSaveTemplateMethod:(unsigned int)arg1;
-- (void)setIncludeUnused:(BOOL)arg1;
-- (unsigned int)saveMethod;
-- (unsigned int)saveTemplateMethod;
-- (BOOL)includeUnused;
-- (void)collectForSave:(id)arg1;
-- (void)collectForSaveAs:(id)arg1;
-- (BOOL)collectForTemplate:(id)arg1;
-- (void)buildFootageListForDocument:(id)arg1;
-- (BOOL)findExternalMediaForDocument:(id)arg1;
-- (unsigned long long)mediaSize;
 - (unsigned int)footageListSize;
+- (unsigned long long)mediaSize;
+- (BOOL)findExternalMediaForDocument:(id)arg1;
+- (void)buildFootageListForDocument:(id)arg1;
+- (BOOL)collectForTemplate:(id)arg1;
+- (void)collectForSaveAs:(id)arg1;
+- (void)collectForSave:(id)arg1;
+- (BOOL)includeUnused;
+- (unsigned int)saveTemplateMethod;
+- (unsigned int)saveMethod;
+- (void)setIncludeUnused:(BOOL)arg1;
+- (void)setSaveTemplateMethod:(unsigned int)arg1;
+- (void)setSaveMethod:(unsigned int)arg1;
+- (void)setDoc:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

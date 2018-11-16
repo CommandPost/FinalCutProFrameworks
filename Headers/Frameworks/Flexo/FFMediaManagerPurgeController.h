@@ -15,8 +15,8 @@
 }
 
 + (void)showMediaManagerPurgeSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 project:(id)arg4;
-- (void)OK:(id)arg1;
 - (void)showMediaManagerPurgeSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 project:(id)arg4;
+- (void)OK:(id)arg1;
 
 @end
 

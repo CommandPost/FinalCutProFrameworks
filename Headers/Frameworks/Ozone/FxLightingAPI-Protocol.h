@@ -5,7 +5,7 @@
 //
 
 @protocol FxLightingAPI
-- (unsigned long long)numberOfLightsAtTime:(double)arg1;
 - (void)lightInfo:(struct FxLightInfo *)arg1 forLight:(unsigned long long)arg2 atTime:(double)arg3 error:(id *)arg4;
+- (unsigned long long)numberOfLightsAtTime:(double)arg1;
 @end
 

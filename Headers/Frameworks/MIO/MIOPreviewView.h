@@ -10,9 +10,9 @@
 {
 }
 
-- (void)setFillColor:(id)arg1;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)awakeFromNib;
+- (void)setFrame:(struct CGRect)arg1;
+- (void)setFillColor:(id)arg1;
 
 @end
 

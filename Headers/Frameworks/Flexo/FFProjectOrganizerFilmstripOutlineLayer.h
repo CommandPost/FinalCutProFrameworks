@@ -16,12 +16,12 @@ __attribute__((visibility("hidden")))
     BOOL _isSelected;
 }
 
-+ (id)_facetRoundedNormalOutline;
 + (id)_facetRoundedSelectedOutline;
-@property(nonatomic) BOOL isSelected;
-- (id)init;
-- (void)dealloc;
++ (id)_facetRoundedNormalOutline;
 - (void)layoutSublayers;
+- (void)dealloc;
+- (id)init;
+@property(nonatomic) BOOL isSelected;
 
 @end
 

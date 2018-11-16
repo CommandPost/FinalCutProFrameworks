@@ -26,8 +26,8 @@
     BOOL _isFinderIcon;
 }
 
-- (id)initWithWidth:(unsigned int)arg1 height:(unsigned int)arg2 frameRate:(double)arg3 frames:(unsigned int)arg4 depthName:(id)arg5 pixelAspectRatio:(double)arg6 codeName:(id)arg7 audioTracks:(unsigned int)arg8 audioChannels:(unsigned int)arg9 audioSamples:(unsigned long long)arg10 audioSampleRate:(double)arg11 audioBytesPerSample:(unsigned int)arg12 audioCodecName:(id)arg13 isFinderIcon:(BOOL)arg14;
 - (void)dealloc;
+- (id)initWithWidth:(unsigned int)arg1 height:(unsigned int)arg2 frameRate:(double)arg3 frames:(unsigned int)arg4 depthName:(id)arg5 pixelAspectRatio:(double)arg6 codeName:(id)arg7 audioTracks:(unsigned int)arg8 audioChannels:(unsigned int)arg9 audioSamples:(unsigned long long)arg10 audioSampleRate:(double)arg11 audioBytesPerSample:(unsigned int)arg12 audioCodecName:(id)arg13 isFinderIcon:(BOOL)arg14;
 
 @end
 

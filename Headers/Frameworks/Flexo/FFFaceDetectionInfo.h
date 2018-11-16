@@ -29,17 +29,6 @@ __attribute__((visibility("hidden")))
     FFFaceRegistryEntry *regEntry;
 }
 
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithFaceInfo:(id)arg1 srcImageWidth:(int)arg2 srcImageHeight:(int)arg3;
-- (int)uniqueID;
-- (double)_overlapWithFace:(id)arg1;
-- (int)findFaceWithMostOverlap:(id)arg1;
-- (BOOL)isSimilarTo:(id)arg1;
-- (void)debugLog;
-- (void)debugLog:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (struct CGPoint)faceCenter;
 @property(readonly) unsigned long long srcImageHeight; // @synthesize srcImageHeight;
 @property(readonly) unsigned long long srcImageWidth; // @synthesize srcImageWidth;
 @property FFFaceRegistryEntry *regEntry; // @synthesize regEntry;
@@ -49,6 +38,17 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct CGPoint faceBottomRight; // @synthesize faceBottomRight;
 @property(readonly) struct CGPoint faceTopLeft; // @synthesize faceTopLeft;
 @property(readonly) unsigned long long faceIndex; // @synthesize faceIndex;
+- (struct CGPoint)faceCenter;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)debugLog:(id)arg1;
+- (void)debugLog;
+- (BOOL)isSimilarTo:(id)arg1;
+- (int)findFaceWithMostOverlap:(id)arg1;
+- (double)_overlapWithFace:(id)arg1;
+- (int)uniqueID;
+- (id)initWithFaceInfo:(id)arg1 srcImageWidth:(int)arg2 srcImageHeight:(int)arg3;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

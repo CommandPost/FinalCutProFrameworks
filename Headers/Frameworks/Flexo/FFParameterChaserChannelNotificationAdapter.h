@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
     struct FFParameterChaser *chaser;
 }
 
-- (void)channelChanged:(id)arg1;
-- (void)beginChannelRecording:(id)arg1;
-- (void)endChannelRecording:(id)arg1;
-- (id)initWithChaser:(struct FFParameterChaser *)arg1 channel:(id)arg2 recordingAware:(BOOL)arg3;
 - (void)dealloc;
+- (id)initWithChaser:(struct FFParameterChaser *)arg1 channel:(id)arg2 recordingAware:(BOOL)arg3;
+- (void)endChannelRecording:(id)arg1;
+- (void)beginChannelRecording:(id)arg1;
+- (void)channelChanged:(id)arg1;
 
 @end
 

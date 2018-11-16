@@ -17,30 +17,30 @@
     double _animationDuration;
 }
 
-+ (void)initialize;
-+ (id)popOverWindowWithDocumentView:(id)arg1 arrowDirection:(int)arg2;
-+ (id)callOutPopOverWindowWithDocumentView:(id)arg1 arrowDirection:(int)arg2;
 + (double)animationDuration;
-- (BOOL)canBecomeKeyWindow;
-- (void)_popOverCommonSetup;
-- (Class)popUpViewClass;
-- (void)_setupAnimations;
-- (void)_removeAnimations;
-- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
-- (BOOL)presentWithTargetRect:(struct CGRect)arg1 inParentWindow:(id)arg2 displayRect:(struct CGRect)arg3 makeKey:(BOOL)arg4 animationStyle:(int)arg5;
-- (BOOL)presentWithTargetRect:(struct CGRect)arg1 inParentWindow:(id)arg2 displayRect:(struct CGRect)arg3 makeKey:(BOOL)arg4 animationStyle:(int)arg5 arrowDirection:(int)arg6;
-- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
-- (void)orderOutWithAnimationStyle:(int)arg1 autorelease:(BOOL)arg2;
-- (void)_updateWindowPosition;
-- (void)updateWindowFrame;
-- (void)_setFrameCommon:(struct CGRect)arg1 display:(BOOL)arg2 stashSize:(BOOL)arg3;
-@property double animationDuration;
-@property struct CGRect targetRect;
-@property struct CGRect displayRect;
-@property int arrowDirection;
-@property NSView *documentView;
-@property(readonly) LKPopOverView *popOverView;
++ (id)callOutPopOverWindowWithDocumentView:(id)arg1 arrowDirection:(int)arg2;
++ (id)popOverWindowWithDocumentView:(id)arg1 arrowDirection:(int)arg2;
++ (void)initialize;
 @property(readonly) BOOL validWindowLocationFound;
+@property(readonly) LKPopOverView *popOverView;
+@property NSView *documentView;
+@property int arrowDirection;
+@property(nonatomic) struct CGRect displayRect;
+@property(nonatomic) struct CGRect targetRect;
+@property(nonatomic) double animationDuration;
+- (void)_setFrameCommon:(struct CGRect)arg1 display:(BOOL)arg2 stashSize:(BOOL)arg3;
+- (void)updateWindowFrame;
+- (void)_updateWindowPosition;
+- (void)orderOutWithAnimationStyle:(int)arg1 autorelease:(BOOL)arg2;
+- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (BOOL)presentWithTargetRect:(struct CGRect)arg1 inParentWindow:(id)arg2 displayRect:(struct CGRect)arg3 makeKey:(BOOL)arg4 animationStyle:(int)arg5 arrowDirection:(int)arg6;
+- (BOOL)presentWithTargetRect:(struct CGRect)arg1 inParentWindow:(id)arg2 displayRect:(struct CGRect)arg3 makeKey:(BOOL)arg4 animationStyle:(int)arg5;
+- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
+- (void)_removeAnimations;
+- (void)_setupAnimations;
+- (Class)popUpViewClass;
+- (void)_popOverCommonSetup;
+- (BOOL)canBecomeKeyWindow;
 
 @end
 

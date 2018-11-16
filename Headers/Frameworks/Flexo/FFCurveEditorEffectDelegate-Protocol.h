@@ -6,7 +6,9 @@
 
 #import "NSObject.h"
 
+@class NSArray;
+
 @protocol FFCurveEditorEffectDelegate <NSObject>
-- (id)effectsToDisplay;
+- (NSArray *)effectsToDisplay;
 @end
 

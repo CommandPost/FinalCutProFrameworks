@@ -21,24 +21,25 @@
 }
 
 + (id)newProvider;
-- (id)init;
-- (void)_setupSourcesForVideo:(CDStruct_e83c9415)arg1 andAudio:(BOOL)arg2;
-- (void)_setupSourcesForAudio:(CDStruct_e83c9415)arg1;
-- (id)_newImageForOfflineReason:(int)arg1;
-- (id)_descriptionForOfflineReason:(int)arg1;
-- (id)_imageForOfflineReason:(int)arg1 wants4x3:(BOOL)arg2;
-- (id)initWithMedia:(id)arg1 offlineReason:(int)arg2;
-- (id)initWithMedia:(id)arg1;
-- (void)dealloc;
-- (void)_setupSources;
-- (id)nativeVideoProps;
-- (id)displayName;
-- (id)newOfflineImage;
 @property(readonly) long long audioSourceCount; // @synthesize audioSourceCount=_audioSourceCount;
 @property(readonly) long long audioChannelCount; // @synthesize audioChannelCount=_audioChannelCount;
 @property(readonly) double audioSampleRate; // @synthesize audioSampleRate=_audioSampleRate;
 @property(readonly) int offlineReason; // @synthesize offlineReason=_offlineReason;
 @property(retain) FFMedia *media; // @synthesize media=_media;
+- (id).cxx_construct;
+- (id)newOfflineImage;
+- (id)displayName;
+- (id)nativeVideoProps;
+- (void)_setupSources;
+- (void)dealloc;
+- (id)initWithMedia:(id)arg1;
+- (id)initWithMedia:(id)arg1 offlineReason:(int)arg2;
+- (id)_imageForOfflineReason:(int)arg1 wants4x3:(BOOL)arg2;
+- (id)_descriptionForOfflineReason:(int)arg1;
+- (id)_newImageForOfflineReason:(int)arg1;
+- (void)_setupSourcesForAudio:(CDStruct_e83c9415)arg1;
+- (void)_setupSourcesForVideo:(CDStruct_e83c9415)arg1 andAudio:(BOOL)arg2;
+- (id)init;
 
 @end
 

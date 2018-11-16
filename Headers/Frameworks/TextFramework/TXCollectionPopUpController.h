@@ -15,13 +15,13 @@
     struct OZChannelEnum *_collectionChan;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)updatePopUpMenu:(int)arg1;
-- (void)update;
-- (void)enable;
-- (void)disable;
 - (void)setChannelValue:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)updatePopUpMenu:(int)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

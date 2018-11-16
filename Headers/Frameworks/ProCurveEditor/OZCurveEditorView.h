@@ -14,33 +14,33 @@
     BOOL _showAudio;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (BOOL)isOpaque;
-- (id)getCoordinates:(id)arg1 time:(CDStruct_1b6d18a9)arg2 value:(double)arg3;
-- (unsigned int)numberOfTickMarks;
-- (void)drawOverlays:(struct CGRect)arg1;
-- (void)drawCurrentTime:(struct CGRect)arg1;
-- (void)drawEndpoints;
-- (void)drawMarkers:(struct CGRect)arg1;
-- (void)getCurveSnapshot:(id)arg1;
-- (void)currentFrameChanged;
-- (void)setShowAudio:(BOOL)arg1;
-- (BOOL)showAudio;
-- (void)setInitialTime:(CDStruct_e83c9415 *)arg1;
-- (void)resetZoomX;
-- (void)resetPanX;
-- (void)setDisplayRange:(const CDStruct_1b6d18a9 *)arg1 duration:(const CDStruct_1b6d18a9 *)arg2;
-- (void)displayRangeModified:(CDStruct_e83c9415)arg1;
-- (BOOL)openTimingMoveWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 timeValue:(double *)arg3 timeIsDelta:(char *)arg4;
-- (void)mouseDownSketch:(id)arg1;
-- (void)keyDown:(id)arg1;
-- (void)drawGrid;
-- (void)drawCurveUnits;
-- (void)zoom:(double)arg1 y:(double)arg2;
-- (void)zoomWithFactor:(double)arg1 y:(double)arg2;
-- (void)pan:(double)arg1 y:(double)arg2;
 - (void)panWithPage:(double)arg1 y:(double)arg2;
+- (void)pan:(double)arg1 y:(double)arg2;
+- (void)zoomWithFactor:(double)arg1 y:(double)arg2;
+- (void)zoom:(double)arg1 y:(double)arg2;
+- (void)drawCurveUnits;
+- (void)drawGrid;
+- (void)keyDown:(id)arg1;
+- (void)mouseDownSketch:(id)arg1;
+- (BOOL)openTimingMoveWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 timeValue:(double *)arg3 timeIsDelta:(char *)arg4;
+- (void)displayRangeModified:(CDStruct_e83c9415)arg1;
+- (void)setDisplayRange:(const CDStruct_1b6d18a9 *)arg1 duration:(const CDStruct_1b6d18a9 *)arg2;
+- (void)resetPanX;
+- (void)resetZoomX;
+- (void)setInitialTime:(CDStruct_e83c9415 *)arg1;
+- (BOOL)showAudio;
+- (void)setShowAudio:(BOOL)arg1;
+- (void)currentFrameChanged;
+- (void)getCurveSnapshot:(id)arg1;
+- (void)drawMarkers:(struct CGRect)arg1;
+- (void)drawEndpoints;
+- (void)drawCurrentTime:(struct CGRect)arg1;
+- (void)drawOverlays:(struct CGRect)arg1;
+- (unsigned int)numberOfTickMarks;
+- (id)getCoordinates:(id)arg1 time:(CDStruct_1b6d18a9)arg2 value:(double)arg3;
+- (BOOL)isOpaque;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

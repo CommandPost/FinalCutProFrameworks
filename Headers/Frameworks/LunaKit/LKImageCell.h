@@ -10,8 +10,8 @@
 {
 }
 
-- (id)_baseFacet;
 - (id)_bezelFacet;
+- (id)_baseFacet;
 
 @end
 

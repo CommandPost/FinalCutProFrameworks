@@ -14,12 +14,12 @@
     struct OZRigWidget *_pWidget;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)aboutToChangeChannel;
 - (void)didChangeChannel;
+- (void)aboutToChangeChannel;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -19,20 +19,20 @@
     BOOL _areAllChansEqual;
 }
 
-- (id)initWithAlignmentChan:(struct OZChannelBase *)arg1 fontSizeChan:(struct OZChannelBase *)arg2 context:(id)arg3;
-- (void)dealloc;
-- (void)setGlyphs;
-- (struct OZChannelEnum *)horizontalAlignmentChannel;
-- (struct OZChannelEnum *)verticalAlignmentChannel:(struct TXChannelAlignment *)arg1;
-- (void)setHorizontalAlignmentValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)clearHorizontalAlignmentSelection;
-- (void)setHorizontalAlignment:(id)arg1;
-- (BOOL)areAllChannelsEqual;
-- (void)setVerticalAlignmentValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setVerticalAlignment:(id)arg1;
-- (void)update;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 fontChannel:(struct OZChannelBase *)arg2 isAdd:(BOOL)arg3 force:(BOOL)arg4;
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 fontChannel:(struct OZChannelBase *)arg2 isAdd:(BOOL)arg3 force:(BOOL)arg4;
+- (void)update;
+- (void)setVerticalAlignment:(id)arg1;
+- (void)setVerticalAlignmentValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_198678f7)arg3;
+- (BOOL)areAllChannelsEqual;
+- (void)setHorizontalAlignment:(id)arg1;
+- (void)clearHorizontalAlignmentSelection;
+- (void)setHorizontalAlignmentValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_198678f7)arg3;
+- (struct OZChannelEnum *)verticalAlignmentChannel:(struct TXChannelAlignment *)arg1;
+- (struct OZChannelEnum *)horizontalAlignmentChannel;
+- (void)setGlyphs;
+- (void)dealloc;
+- (id)initWithAlignmentChan:(struct OZChannelBase *)arg1 fontSizeChan:(struct OZChannelBase *)arg2 context:(id)arg3;
 
 @end
 

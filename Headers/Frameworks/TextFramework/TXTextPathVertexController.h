@@ -10,11 +10,12 @@
 {
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
-- (void)localToGlobal:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
-- (void)globalToLocal:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
-- (BOOL)isEnabled;
+- (void)updateScrubberColor:(id)arg1;
 - (void)setObjectTranslation:(struct OZChannelBase *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
+- (BOOL)isEnabled;
+- (void)globalToLocal:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
+- (void)localToGlobal:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
+- (id)initWithChan:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
 
 @end
 

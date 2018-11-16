@@ -6,31 +6,34 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
+#import "NSCopying.h"
 #import "NSFastEnumeration.h"
 
 @class NSMutableSet;
 
 __attribute__((visibility("hidden")))
-@interface FFObjectDict : FFBaseDSObject <NSFastEnumeration>
+@interface FFObjectDict : FFBaseDSObject <NSCopying, NSFastEnumeration>
 {
     NSMutableSet *_values;
 }
 
-+ (Class)DSClassDescriptionClass;
 + (id)copyClassDescription;
-- (void)dealloc;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)value;
-- (id)allValues;
-- (id)allKeys;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
-- (unsigned long long)count;
-- (void)addValueObject:(id)arg1;
-- (void)removeValueObject:(id)arg1;
-- (id)objectForKey:(id)arg1;
++ (Class)DSClassDescriptionClass;
+- (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (id)objectForKey:(id)arg1;
+- (void)removeValueObject:(id)arg1;
+- (void)addValueObject:(id)arg1;
+- (unsigned long long)count;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (id)allKeys;
+- (id)allValues;
+- (id)value;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (void)dealloc;
 
 @end
 

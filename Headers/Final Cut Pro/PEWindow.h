@@ -10,9 +10,14 @@
 {
 }
 
-- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)dealloc;
 - (id)_findDragTargetFrom:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)_windowWillEnterFullScreen:(id)arg1;
+- (void)_windowDidResize:(id)arg1;
+- (void)_windowDidExitFullScreen:(id)arg1;
+- (void)swapButtons;
+- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
 
 @end
 

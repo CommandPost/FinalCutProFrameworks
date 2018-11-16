@@ -17,29 +17,29 @@
     NSMutableSet *_animationEnabledTextLayers;
 }
 
-- (id)init;
-@property(readonly, nonatomic) FFOutlineView *outlineView;
-@property(readonly, nonatomic) FFOutlineViewCell *outlineViewCell;
-- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
-@property(readonly, nonatomic) CALayer *imageLayer;
-- (BOOL)isAnimationDisabledForCurrentEvent;
-- (id)animationEnabledTextLayers;
-- (void)enableNextContentsAnimationForTextLayer:(id)arg1;
-- (BOOL)isContentsAnimationDisabledForLayer:(id)arg1;
-- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
-- (void)setupTextLayer:(id)arg1;
-- (void)setupDetailsTextLayer:(id)arg1;
-@property(readonly, nonatomic) CATextLayer *detailsTextLayer;
-@property(readonly, nonatomic) CATextLayer *textLayer;
-@property(readonly, nonatomic) CALayer *existingImageLayer;
-@property(readonly, nonatomic) CATextLayer *existingTextLayer;
-@property(nonatomic) struct CGSize preferredImageFrameSize;
-- (void)prepareForReuse;
-- (void)layoutSublayers;
-- (void)getFramesOfImageLayer:(struct CGRect *)arg1 textLayer:(struct CGRect *)arg2 detailsTextLayer:(struct CGRect *)arg3;
-- (void)performLayoutSublayers;
-- (struct CGSize)preferredFrameSize;
 - (void)dealloc;
+- (struct CGSize)preferredFrameSize;
+- (void)performLayoutSublayers;
+- (void)getFramesOfImageLayer:(struct CGRect *)arg1 textLayer:(struct CGRect *)arg2 detailsTextLayer:(struct CGRect *)arg3;
+- (void)layoutSublayers;
+- (void)prepareForReuse;
+@property(nonatomic) struct CGSize preferredImageFrameSize;
+@property(readonly, nonatomic) CATextLayer *existingTextLayer;
+@property(readonly, nonatomic) CALayer *existingImageLayer;
+@property(readonly, nonatomic) CATextLayer *textLayer;
+@property(readonly, nonatomic) CATextLayer *detailsTextLayer;
+- (void)setupDetailsTextLayer:(id)arg1;
+- (void)setupTextLayer:(id)arg1;
+- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
+- (BOOL)isContentsAnimationDisabledForLayer:(id)arg1;
+- (void)enableNextContentsAnimationForTextLayer:(id)arg1;
+- (id)animationEnabledTextLayers;
+- (BOOL)isAnimationDisabledForCurrentEvent;
+@property(readonly, nonatomic) CALayer *imageLayer;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
+@property(readonly, nonatomic) FFOutlineViewCell *outlineViewCell;
+@property(readonly, nonatomic) FFOutlineView *outlineView;
+- (id)init;
 
 @end
 

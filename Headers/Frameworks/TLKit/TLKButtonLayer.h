@@ -8,18 +8,24 @@
 
 #import "TLKPartInfo.h"
 
+@class NSString;
+
 @interface TLKButtonLayer : TLKThemeBackedLayer <TLKPartInfo>
 {
     CDUnknownBlockType _pressedHandler;
     long long _tag;
+    NSString *_toolTip;
 }
 
-- (void)dealloc;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)partIdentifier;
-- (void)setPressedHandler:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)pressedHandler;
+@property(copy) NSString *toolTip; // @synthesize toolTip=_toolTip;
 @property long long tag; // @synthesize tag=_tag;
+- (CDUnknownBlockType)pressedHandler;
+- (void)setPressedHandler:(CDUnknownBlockType)arg1;
+- (id)partIdentifier;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)hitTest:(struct CGPoint)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

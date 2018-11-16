@@ -18,20 +18,20 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)formatReaderWithClip:(id)arg1;
-- (id)initWithClip:(id)arg1;
-- (void)dealloc;
-- (id)tracks;
-- (BOOL)implementsDuration;
-- (CDStruct_1b6d18a9)duration;
-- (BOOL)implementsTimescale;
-- (long long)timescale;
-- (BOOL)implementsLocationOffset;
-- (long long)locationOffset;
-- (BOOL)implementsLocationSize;
-- (long long)locationSize;
-- (id)description;
 @property(retain) NSMutableArray *trackReaders; // @synthesize trackReaders=_trackReaders;
 @property(retain) NSMutableArray *formatReaders; // @synthesize formatReaders=_formatReaders;
+- (id)description;
+- (long long)locationSize;
+- (BOOL)implementsLocationSize;
+- (long long)locationOffset;
+- (BOOL)implementsLocationOffset;
+- (long long)timescale;
+- (BOOL)implementsTimescale;
+- (CDStruct_1b6d18a9)duration;
+- (BOOL)implementsDuration;
+- (id)tracks;
+- (void)dealloc;
+- (id)initWithClip:(id)arg1;
 
 @end
 

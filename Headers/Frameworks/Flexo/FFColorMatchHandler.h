@@ -15,14 +15,14 @@ __attribute__((visibility("hidden")))
     FFMedia *_media;
 }
 
-- (void)dealloc;
-- (void)startHandling:(id)arg1;
-- (void)stopHandling:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
-- (void)updateSkimming:(id)arg1;
-- (void)stopSkimming:(id)arg1;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (void)_resetPlayheadSkimming:(id)arg1;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (void)stopSkimming:(id)arg1;
+- (void)updateSkimming:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
+- (void)stopHandling:(id)arg1;
+- (void)startHandling:(id)arg1;
+- (void)dealloc;
 
 @end
 

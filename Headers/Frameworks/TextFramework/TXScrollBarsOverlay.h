@@ -59,24 +59,24 @@
     struct PCPtr<POMultiResTexture> _arrowButtonBottom;
 }
 
-- (void)initTextures;
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)setText:(struct TXTextLayout *)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)draw;
-- (void)setBarScale:(const struct OZRenderState *)arg1;
-- (void)drawPreview:(struct GL *)arg1 state:(const struct OZRenderState *)arg2 viewTransformation:(const PCMatrix44Tmpl_e98c85ee *)arg3;
-- (void)drawContainer:(struct GL *)arg1 drawScrollbar:(_Bool)arg2 asOutline:(_Bool)arg3 asTicker:(_Bool)arg4;
-- (void)drawContainerBG:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
-- (void)drawContainerPit:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
-- (void)drawScrollButtons:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
-- (void)drawScrollBar:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
-- (id)getCursorWithEvent:(id)arg1;
-- (BOOL)enablePreview;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)enablePreview;
+- (id)getCursorWithEvent:(id)arg1;
+- (void)drawScrollBar:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
+- (void)drawScrollButtons:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
+- (void)drawContainerPit:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
+- (void)drawContainerBG:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
+- (void)drawContainer:(struct GL *)arg1 drawScrollbar:(_Bool)arg2 asOutline:(_Bool)arg3 asTicker:(_Bool)arg4;
+- (void)drawPreview:(struct GL *)arg1 state:(const struct OZRenderState *)arg2 viewTransformation:(const PCMatrix44Tmpl_93ed1289 *)arg3;
+- (void)setBarScale:(const struct OZRenderState *)arg1;
+- (void)draw;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)setText:(struct TXTextLayout *)arg1;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)initTextures;
 
 @end
 

@@ -10,9 +10,9 @@
 {
 }
 
-- (id)initWithGenerator:(struct OZImageGenerator *)arg1;
-- (void)dealloc;
 - (void)twiddle;
+- (void)dealloc;
+- (id)initWithGenerator:(struct OZImageGenerator *)arg1;
 
 @end
 

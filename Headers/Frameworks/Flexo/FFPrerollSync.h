@@ -13,12 +13,12 @@
     NSConditionLock *_lock;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)wait;
-- (void)increment:(id)arg1;
-- (BOOL)timedWait:(double)arg1;
 - (void)decrement:(id)arg1;
+- (BOOL)timedWait:(double)arg1;
+- (void)increment:(id)arg1;
+- (void)wait;
+- (void)dealloc;
+- (id)init;
 
 @end
 

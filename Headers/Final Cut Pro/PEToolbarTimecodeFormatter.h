@@ -12,11 +12,11 @@
     BOOL _showsSubframes;
 }
 
-- (id)init;
-- (struct _NSRange)rangeOfLeadingZeros:(id)arg1;
-- (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
 @property BOOL showSubframes; // @synthesize showSubframes=_showsSubframes;
 @property BOOL numericEntryActive; // @synthesize numericEntryActive=_numericEntryActive;
+- (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
+- (struct _NSRange)rangeOfLeadingZeros:(id)arg1;
+- (id)init;
 
 @end
 

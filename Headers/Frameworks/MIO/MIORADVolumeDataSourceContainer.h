@@ -12,18 +12,19 @@
 }
 
 + (id)volumeWithDataSource:(id)arg1 undoManager:(id)arg2;
-- (id)__dataSource;
-- (id)initWithDataSource:(id)arg1 undoManager:(id)arg2;
-- (void)dealloc;
-- (BOOL)isEqualTo:(id)arg1;
-- (id)name;
-- (id)icon;
-- (id)path;
-- (id)description;
-- (id)defaultReelName;
-- (BOOL)supportsSpannedClips;
-- (void)willUnmount;
 - (void)didUnmount;
+- (void)willUnmount;
+- (BOOL)supportsSpannedClips;
+- (id)defaultReelName;
+- (id)description;
+- (id)volumeClipURLs;
+- (id)path;
+- (id)icon;
+- (id)name;
+- (BOOL)isEqualTo:(id)arg1;
+- (void)dealloc;
+- (id)initWithDataSource:(id)arg1 undoManager:(id)arg2;
+- (id)__dataSource;
 
 @end
 

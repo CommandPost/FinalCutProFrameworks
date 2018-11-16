@@ -11,22 +11,22 @@
 @interface OZSetChanController : OZChooseChanController
 {
     NSTextField *_pTF;
-    struct list<OZSingleChannelBehavior*, std::allocator<OZSingleChannelBehavior*>> *_pSingleChanBHs;
+    struct list<OZSingleChannelBehavior *, std::allocator<OZSingleChannelBehavior *>> *_pSingleChanBHs;
 }
 
-- (id)initWithBehaviors:(list_06b59fe9 *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (struct OZDocument *)document;
-- (struct OZObjectManipulator *)appliedToObject;
-- (BOOL)shouldIgnoreSubchannels:(struct OZChannelFolder *)arg1;
-- (BOOL)shouldIgnoreChannel:(struct OZChannelBase *)arg1;
-- (void)addToMenu:(id)arg1 forCompoundChannel:(struct OZCompoundChannel *)arg2;
-- (void)delayedAction:(id)arg1;
-- (void)setChannelCB:(id)arg1;
 - (id)getStringForExcludeFlags:(unsigned int)arg1;
+- (void)setChannelCB:(id)arg1;
+- (void)delayedAction:(id)arg1;
+- (void)addToMenu:(id)arg1 forCompoundChannel:(struct OZCompoundChannel *)arg2;
+- (BOOL)shouldIgnoreChannel:(struct OZChannelBase *)arg1;
+- (BOOL)shouldIgnoreSubchannels:(struct OZChannelFolder *)arg1;
+- (struct OZObjectManipulator *)appliedToObject;
+- (struct OZDocument *)document;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)dealloc;
+- (id)initWithBehaviors:(list_94e47a03 *)arg1 context:(id)arg2;
 
 @end
 

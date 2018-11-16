@@ -15,13 +15,13 @@
     struct OZFxPlugSharedBase *_plugin;
 }
 
-- (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
-- (void)startAction:(id)arg1;
-- (void)endAction:(id)arg1;
-- (double)currentTime;
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (id)_parmHandler;
 - (struct CGRect)documentBounds;
+- (id)_parmHandler;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
+- (double)currentTime;
+- (void)endAction:(id)arg1;
+- (void)startAction:(id)arg1;
+- (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
 
 @end
 

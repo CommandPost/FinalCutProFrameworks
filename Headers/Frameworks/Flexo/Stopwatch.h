@@ -13,20 +13,20 @@
     CDUnknownFunctionPointerType m_timeFN;
 }
 
-+ (id)stopwatch;
 + (id)cpuStopwatch;
-- (id)initForCPUTime:(BOOL)arg1;
-- (void)start;
-- (BOOL)isRunning;
-- (void)stop;
-- (void)reset;
-- (double)seconds;
-- (double)milliseconds;
-- (double)microseconds;
-- (unsigned long long)absoluteTicks;
-- (unsigned long long)nanoseconds;
-- (double)absoluteTicksPerNanosecond;
++ (id)stopwatch;
 - (id)init;
+- (double)absoluteTicksPerNanosecond;
+- (unsigned long long)nanoseconds;
+- (unsigned long long)absoluteTicks;
+- (double)microseconds;
+- (double)milliseconds;
+- (double)seconds;
+- (void)reset;
+- (void)stop;
+- (BOOL)isRunning;
+- (void)start;
+- (id)initForCPUTime:(BOOL)arg1;
 
 @end
 

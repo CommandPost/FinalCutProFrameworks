@@ -20,25 +20,25 @@
     _Bool _aboutToChangeCalled;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 textLayout:(struct TXTextLayout *)arg2 context:(id)arg3;
-- (void)setAssociatedTextLayout:(struct TXTextLayout *)arg1;
-- (void)dealloc;
-- (void)fontTypeChanged:(id)arg1;
-- (void)collectionChanged:(id)arg1;
-- (void)updateComboBox:(BOOL)arg1;
-- (void)selectItemAtIndex:(int)arg1;
-- (BOOL)control:(id)arg1 isValidObject:(id)arg2;
-- (BOOL)areAllChannelsEqual;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)_saveDefaultFont:(int)arg1;
-- (void)changeChannel:(id)arg1;
-- (void)setChannelValue:(id)arg1;
-- (void)comboBoxSelectionIsChanging:(id)arg1;
-- (void)comboBoxSelectionDidChange:(id)arg1;
-- (void)comboBoxWillPopUp:(id)arg1;
 - (void)comboBoxWillDismiss:(id)arg1;
+- (void)comboBoxWillPopUp:(id)arg1;
+- (void)comboBoxSelectionDidChange:(id)arg1;
+- (void)comboBoxSelectionIsChanging:(id)arg1;
+- (void)setChannelValue:(id)arg1;
+- (void)changeChannel:(id)arg1;
+- (void)_saveDefaultFont:(int)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (BOOL)areAllChannelsEqual;
+- (BOOL)control:(id)arg1 isValidObject:(id)arg2;
+- (void)selectItemAtIndex:(int)arg1;
+- (void)updateComboBox:(BOOL)arg1;
+- (void)collectionChanged:(id)arg1;
+- (void)fontTypeChanged:(id)arg1;
+- (void)dealloc;
+- (void)setAssociatedTextLayout:(struct TXTextLayout *)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 textLayout:(struct TXTextLayout *)arg2 context:(id)arg3;
 
 @end
 

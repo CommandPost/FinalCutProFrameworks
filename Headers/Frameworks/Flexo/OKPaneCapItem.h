@@ -19,23 +19,23 @@ __attribute__((visibility("hidden")))
     unsigned int _horizontalOrder:3;
 }
 
-- (id)init;
-@property(getter=isEnabled) BOOL enabled;
-@property(getter=isHidden) BOOL hidden;
-@property unsigned long long verticalLocation;
-@property unsigned long long horizontalLocation;
-@property unsigned long long horizontalOrder;
-- (void)setHorizontalLocation:(unsigned long long)arg1 order:(unsigned long long)arg2;
-- (id)description;
 @property double maxWidth; // @synthesize maxWidth=_maxWidth;
 @property double minWidth; // @synthesize minWidth=_minWidth;
-- (void)disconnectFromView;
-@property id <OKPaneCapItemOwner> owner;
-@property(readonly) BOOL isResizable;
-@property(readonly) BOOL isLeft;
-@property(readonly) BOOL isCenter;
-@property(readonly) BOOL isRight;
+- (id)description;
+- (void)setHorizontalLocation:(unsigned long long)arg1 order:(unsigned long long)arg2;
+@property unsigned long long horizontalOrder;
+@property unsigned long long horizontalLocation;
+@property unsigned long long verticalLocation;
+@property(getter=isHidden) BOOL hidden;
+@property(getter=isEnabled) BOOL enabled;
+- (id)init;
 @property(readonly) unsigned long long horizontalSortOrder;
+@property(readonly) BOOL isRight;
+@property(readonly) BOOL isCenter;
+@property(readonly) BOOL isLeft;
+@property(readonly) BOOL isResizable;
+@property id <OKPaneCapItemOwner> owner;
+- (void)disconnectFromView;
 
 @end
 

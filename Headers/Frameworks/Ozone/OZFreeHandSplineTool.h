@@ -10,13 +10,13 @@
 
 @interface OZFreeHandSplineTool : OZSplineTool
 {
-    vector_61369161 *_vertices;
+    vector_9ae9b2a4 *_vertices;
     vector_419cd555 *_lengths;
     vector_419cd555 *_pressures;
-    vector_61369161 *_tilts;
+    vector_9ae9b2a4 *_tilts;
     vector_419cd555 *_times;
     struct PCMutex *_interactiveValuesLock;
-    vector_58ebe158 *_missingFootage;
+    vector_25e13bfd *_missingFootage;
     struct OZFreeHandEvent _eventRingBuffer[4];
     int _currEventIndex;
     int _numEvents;
@@ -35,42 +35,42 @@
 }
 
 + (id)changedStrokeWidthNotificationString;
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (id)getName;
-- (id)getTooltip;
-- (struct PCUUID)getClassID;
-- (id)getDefaultCursor;
-- (id)getCursorWithEvent:(id)arg1;
-- (void)endWithDocument:(struct OZDocument *)arg1;
-- (void)setViewMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 state:(const struct OZRenderState *)arg2;
-- (void)draw;
-- (void)getCentrePoint:(PCVector2_79efa81a *)arg1;
-- (void)addVertices:(CDStruct_1b6d18a9)arg1 isClosed:(_Bool)arg2;
-- (void)setupGaussianKernel:(double *)arg1 sigma:(double)arg2 radius:(int)arg3;
-- (void)simplify:(CDStruct_1b6d18a9)arg1 isClosed:(_Bool)arg2;
-- (void)applyPressures:(vector_419cd555 *)arg1;
-- (void)applyTilts:(vector_419cd555 *)arg1;
-- (void)applySpeeds:(vector_419cd555 *)arg1;
-- (void)applyTiming:(vector_419cd555 *)arg1;
-- (void)calculateLengths:(vector_419cd555 *)arg1;
-- (struct OZRotoshape *)getRotoshape;
-- (void)setPreviewDelegate:(id)arg1;
-- (void)addToScene:(struct OZScene *)arg1;
-- (void)didCancelDrawing;
-- (void)addEventToRotoChans:(const struct OZFreeHandEvent *)arg1;
-- (BOOL)projectPoint:(id)arg1 xpos:(double *)arg2 ypos:(double *)arg3;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)handlePaintMouseDragged:(id)arg1;
-- (void)loadPasteboard:(id)arg1 intoSceneNode:(struct OZSceneNode *)arg2;
-- (void)loadPreset:(struct OZPasteList *)arg1;
-- (void)setCreationName:(id)arg1;
-- (void)setMinStrokeWidth:(double)arg1;
-- (BOOL)shouldDrawStrokeWidthOSC;
 - (id).cxx_construct;
+- (BOOL)shouldDrawStrokeWidthOSC;
+- (void)setMinStrokeWidth:(double)arg1;
+- (void)setCreationName:(id)arg1;
+- (void)loadPreset:(struct OZPasteList *)arg1;
+- (void)loadPasteboard:(id)arg1 intoSceneNode:(struct OZSceneNode *)arg2;
+- (void)handlePaintMouseDragged:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (BOOL)projectPoint:(id)arg1 xpos:(double *)arg2 ypos:(double *)arg3;
+- (void)addEventToRotoChans:(const struct OZFreeHandEvent *)arg1;
+- (void)didCancelDrawing;
+- (void)addToScene:(struct OZScene *)arg1;
+- (void)setPreviewDelegate:(id)arg1;
+- (struct OZRotoshape *)getRotoshape;
+- (void)calculateLengths:(vector_419cd555 *)arg1;
+- (void)applyTiming:(vector_419cd555 *)arg1;
+- (void)applySpeeds:(vector_419cd555 *)arg1;
+- (void)applyTilts:(vector_419cd555 *)arg1;
+- (void)applyPressures:(vector_419cd555 *)arg1;
+- (void)simplify:(CDStruct_1b6d18a9)arg1 isClosed:(_Bool)arg2;
+- (void)setupGaussianKernel:(double *)arg1 sigma:(double)arg2 radius:(int)arg3;
+- (void)addVertices:(CDStruct_1b6d18a9)arg1 isClosed:(_Bool)arg2;
+- (void)getCentrePoint:(PCVector2_79efa81a *)arg1;
+- (void)draw;
+- (void)setViewMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 state:(const struct OZRenderState *)arg2;
+- (void)endWithDocument:(struct OZDocument *)arg1;
+- (id)getCursorWithEvent:(id)arg1;
+- (id)getDefaultCursor;
+- (struct PCUUID)getClassID;
+- (id)getTooltip;
+- (id)getName;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

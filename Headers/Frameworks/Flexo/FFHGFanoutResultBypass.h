@@ -16,12 +16,12 @@ __attribute__((visibility("hidden")))
     int _location;
 }
 
-- (id)initWithImage:(id)arg1 pixelFormat:(id)arg2 location:(int)arg3;
-- (void)dealloc;
-- (int)location;
-- (struct CGColorSpace *)colorSpace;
-- (id)newImage;
 - (id)description;
+- (id)newImage;
+- (struct CGColorSpace *)colorSpace;
+- (int)location;
+- (void)dealloc;
+- (id)initWithImage:(id)arg1 pixelFormat:(id)arg2 location:(int)arg3;
 
 @end
 

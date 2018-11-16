@@ -11,8 +11,8 @@
 }
 
 + (void)initialize;
-- (void)viewWillMoveToWindow:(id)arg1;
 - (void)viewDidMoveToWindow;
+- (void)viewWillMoveToWindow:(id)arg1;
 
 @end
 

@@ -13,13 +13,13 @@
     OZMiniCurveEditor *_pMiniCurveEditor;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 withMiniCurveEditor:(id)arg2 context:(id)arg3;
-- (CDStruct_1b6d18a9)currentTime;
-- (void)calcRatio;
-- (void)startScrubberAction:(id)arg1;
-- (void)update;
-- (void)setChannelValue:(id)arg1;
 - (BOOL)isEnabled;
+- (void)setChannelValue:(id)arg1;
+- (void)update;
+- (void)startScrubberAction:(id)arg1;
+- (void)calcRatio;
+- (CDStruct_1b6d18a9)currentTime;
+- (id)initWithChan:(struct OZChannelBase *)arg1 withMiniCurveEditor:(id)arg2 context:(id)arg3;
 
 @end
 

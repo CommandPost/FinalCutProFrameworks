@@ -20,15 +20,16 @@
 }
 
 + (id)dividerWithRect:(struct CGRect)arg1 leftView:(id)arg2 rightView:(id)arg3;
-- (id)init;
-- (void)dealloc;
-- (struct CGRect)bounds;
-- (void)cenerLine:(struct CGPoint *)arg1 point2:(struct CGPoint *)arg2;
-- (BOOL)isHorizontal;
-- (BOOL)isVertical;
-- (void)addLeftView:(id)arg1;
-- (void)addRightView:(id)arg1;
+- (id).cxx_construct;
 - (void)addAttachedDivider:(id)arg1;
+- (void)addRightView:(id)arg1;
+- (void)addLeftView:(id)arg1;
+- (BOOL)isVertical;
+- (BOOL)isHorizontal;
+- (void)cenerLine:(struct CGPoint *)arg1 point2:(struct CGPoint *)arg2;
+- (struct CGRect)bounds;
+- (void)dealloc;
+- (id)init;
 
 @end
 

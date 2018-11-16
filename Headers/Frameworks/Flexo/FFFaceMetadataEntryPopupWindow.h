@@ -14,14 +14,14 @@ __attribute__((visibility("hidden")))
     NSWindow *_cachedMetadataEntryParentWindow;
 }
 
-- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
-- (BOOL)canBecomeKeyWindow;
-- (void)sendEvent:(id)arg1;
-- (void)setLevel:(long long)arg1;
-- (void)setParentWindow:(id)arg1;
-- (void)hideChildWindow:(id)arg1;
-- (void)showChildWindow:(id)arg1;
 - (void)dealloc;
+- (void)showChildWindow:(id)arg1;
+- (void)hideChildWindow:(id)arg1;
+- (void)setParentWindow:(id)arg1;
+- (void)setLevel:(long long)arg1;
+- (void)sendEvent:(id)arg1;
+- (BOOL)canBecomeKeyWindow;
+- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
 
 @end
 

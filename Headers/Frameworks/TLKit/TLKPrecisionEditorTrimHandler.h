@@ -10,11 +10,11 @@
 {
 }
 
-- (id)clickedItem:(id)arg1;
-- (id)partToDrag:(id)arg1;
-- (void)selectItem:(id)arg1;
-- (BOOL)shouldPerformRoll:(id)arg1;
 - (BOOL)shouldPerformRipple:(id)arg1;
+- (BOOL)shouldPerformRoll:(id)arg1;
+- (void)selectItem:(id)arg1;
+- (id)partToDrag:(id)arg1;
+- (id)clickedItem:(id)arg1;
 
 @end
 

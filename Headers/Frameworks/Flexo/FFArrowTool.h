@@ -12,16 +12,16 @@
     BOOL _imageReady;
 }
 
-+ (id)displayName;
-+ (id)toolTip;
 + (id)toolbarFacet;
++ (id)toolTip;
++ (id)displayName;
 + (id)TLKEventHandlerID;
-- (id)cursor;
-- (BOOL)handlesSelection;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)thumbImageReady:(id)arg1;
 - (void)mouseDragged:(id)arg1;
+- (void)thumbImageReady:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (BOOL)handlesSelection;
+- (id)cursor;
 
 @end
 

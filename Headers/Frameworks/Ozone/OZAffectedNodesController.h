@@ -15,19 +15,19 @@
     NSButton *_pDeleteButton;
     struct OZTransitiveBehavior *_pBehavior;
     struct OZScene *_pScene;
-    list_909ba1c0 *_pNodeIDs;
+    list_89d338e7 *_pNodeIDs;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
-- (void)dealloc;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)removeNodes:(id)arg1;
-- (int)numberOfRowsInTableView:(id)arg1;
-- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
-- (unsigned long long)tableView:(id)arg1 validateDrop:(id)arg2 proposedRow:(int)arg3 proposedDropOperation:(unsigned long long)arg4;
 - (BOOL)tableView:(id)arg1 acceptDrop:(id)arg2 row:(int)arg3 dropOperation:(unsigned long long)arg4;
+- (unsigned long long)tableView:(id)arg1 validateDrop:(id)arg2 proposedRow:(int)arg3 proposedDropOperation:(unsigned long long)arg4;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
+- (int)numberOfRowsInTableView:(id)arg1;
+- (void)removeNodes:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
 
 @end
 

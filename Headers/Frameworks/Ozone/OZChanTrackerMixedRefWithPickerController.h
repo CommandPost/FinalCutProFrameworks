@@ -10,14 +10,14 @@
 {
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)awakeFromNib;
-- (void)dealloc;
-- (id)buildObjectMenu:(id)arg1 ignoreObjID:(unsigned int)arg2;
-- (id)addMenuItem:(struct OZObjectManipulator *)arg1 ignoreObjID:(unsigned int)arg2 inputMenu:(id)arg3;
-- (void)buildMenu:(struct OZChannelBase *)arg1;
-- (void)buildDummyMenu;
 - (BOOL)doesAllowLink:(struct OZObjectManipulator *)arg1;
+- (void)buildDummyMenu;
+- (void)buildMenu:(struct OZChannelBase *)arg1;
+- (id)addMenuItem:(struct OZObjectManipulator *)arg1 ignoreObjID:(unsigned int)arg2 inputMenu:(id)arg3;
+- (id)buildObjectMenu:(id)arg1 ignoreObjID:(unsigned int)arg2;
+- (void)dealloc;
+- (void)awakeFromNib;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

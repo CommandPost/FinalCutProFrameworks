@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+#import "FFBackgroundTaskTarget.h"
+
 @class FFBackgroundTask, FFRenderStateTracker, FFRenderer, FFSourceVideo, NSIndexSet;
 
 __attribute__((visibility("hidden")))
-@interface FFBackgroundRenderJob : NSObject
+@interface FFBackgroundRenderJob : NSObject <FFBackgroundTaskTarget>
 {
     FFRenderStateTracker *_tracker;
     FFSourceVideo *_source;
@@ -25,26 +27,30 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _amtJobHasAlreadyRendered;
 }
 
-- (id)initWithStates:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 autoStartInfo:(id)arg4;
-- (void)dealloc;
-- (id)sequence;
-- (void)readLockSeq:(id)arg1;
-- (void)readUnlockSeq;
-- (_Bool)autoStarted;
-- (CDStruct_e83c9415)rangeInProgress;
-- (void)_updateProgress:(float)arg1 task:(id)arg2;
-- (CDStruct_e83c9415)getFirstKnownRangeInState:(id)arg1 searchRange:(CDStruct_e83c9415)arg2 onTask:(id)arg3;
-- (BOOL)_renderOnTask:(id)arg1;
-- (void)pausedTask:(id)arg1;
-- (void)resumedTask:(id)arg1;
-- (BOOL)confirmIsPaused:(id)arg1;
-- (void)canceledTask:(id)arg1;
-- (void)renderToSegmentStore:(id)arg1 onTask:(id)arg2;
-- (void)_newRenderFilesAvailableTransferToMainThread:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
++ (void)initialize;
 @property _Bool programmaticallyCancelled; // @synthesize programmaticallyCancelled=_programmaticallyCancelled;
 @property(readonly) FFRenderStateTracker *tracker; // @synthesize tracker=_tracker;
 @property(retain) id autoStartInfo; // @synthesize autoStartInfo=_autoStartInfo;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_newRenderFilesAvailableByMD5TransferToMainThread:(id)arg1;
+- (void)_newRenderFilesAvailableTransferToMainThread:(id)arg1;
+- (void)renderToSegmentStore:(id)arg1 onTask:(id)arg2;
+- (void)canceledTask:(id)arg1;
+- (BOOL)confirmIsPaused:(id)arg1;
+- (void)resumedTask:(id)arg1;
+- (void)pausedTask:(id)arg1;
+- (BOOL)_renderOnTask:(id)arg1;
+- (CDStruct_e83c9415)getFirstKnownRangeInState:(id)arg1 searchRange:(CDStruct_e83c9415)arg2 onTask:(id)arg3;
+- (void)_updateProgress:(float)arg1 task:(id)arg2;
+- (CDStruct_e83c9415)rangeInProgress;
+- (_Bool)autoStarted;
+- (void)readUnlockSeq;
+- (void)readLockSeq:(id)arg1;
+- (id)sequence;
+- (void)dealloc;
+- (id)initWithStates:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 autoStartInfo:(id)arg4;
 
 @end
 

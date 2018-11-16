@@ -30,29 +30,29 @@ __attribute__((visibility("hidden")))
     PROPlugInFirewall *apiAccessPoint;
 }
 
-- (id)initWithBundle:(id)arg1;
-- (void)dealloc;
-- (void)reportError:(id)arg1;
-- (BOOL)isEqualToBundleHandler:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (id)groupsDictionary;
-- (id)delegate;
-- (void)setDelegate:(id)arg1;
-- (id)apiManager;
-- (void)setAPIManager:(id)arg1;
-- (id)plugIns;
-- (BOOL)isPrincipalClassAvailable;
-- (id)principalClassInstance;
-- (id)apiManagerForPlugInInstances;
-- (BOOL)_plugInHasReservedUUID:(id)arg1;
-- (void)addPlugIn:(id)arg1;
-- (void)registerPlugIns;
-- (id)apiForProtocol:(id)arg1;
-- (void)plugInFirewall:(id)arg1 receivedBadMessage:(SEL)arg2;
-- (void)plugInCouldNotInitialize:(id)arg1;
-- (void)plugIn:(id)arg1 didError:(id)arg2;
-- (id)plugInGroupWithUUID:(struct __CFUUID *)arg1;
 - (BOOL)plugInShouldLoadPlugInInstanceForTheFirstTime:(id)arg1;
+- (id)plugInGroupWithUUID:(struct __CFUUID *)arg1;
+- (void)plugIn:(id)arg1 didError:(id)arg2;
+- (void)plugInCouldNotInitialize:(id)arg1;
+- (void)plugInFirewall:(id)arg1 receivedBadMessage:(SEL)arg2;
+- (id)apiForProtocol:(id)arg1;
+- (void)registerPlugIns;
+- (void)addPlugIn:(id)arg1;
+- (BOOL)_plugInHasReservedUUID:(id)arg1;
+- (id)apiManagerForPlugInInstances;
+- (id)principalClassInstance;
+- (BOOL)isPrincipalClassAvailable;
+- (id)plugIns;
+- (void)setAPIManager:(id)arg1;
+- (id)apiManager;
+- (void)setDelegate:(id)arg1;
+- (id)delegate;
+- (id)groupsDictionary;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToBundleHandler:(id)arg1;
+- (void)reportError:(id)arg1;
+- (void)dealloc;
+- (id)initWithBundle:(id)arg1;
 
 @end
 

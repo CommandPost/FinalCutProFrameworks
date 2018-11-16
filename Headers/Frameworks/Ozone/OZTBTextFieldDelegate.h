@@ -15,8 +15,8 @@
     OZTemplateBrowserController *_templateBrowserController;
 }
 
-- (void)setTBController:(id)arg1;
 - (void)controlTextDidChange:(id)arg1;
+- (void)setTBController:(id)arg1;
 
 @end
 

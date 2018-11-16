@@ -17,13 +17,13 @@ __attribute__((visibility("hidden")))
     NSString *_persistentIdentifier;
 }
 
-- (id)initWithMonth:(unsigned long long)arg1 year:(unsigned long long)arg2 parentItem:(id)arg3;
-- (id)itemDisplayName;
-- (id)itemPersistentIdentifier;
-- (id)itemIcon;
-- (void)dealloc;
 @property(readonly, nonatomic) long long year; // @synthesize year=_year;
 @property(readonly, nonatomic) long long month; // @synthesize month=_month;
+- (void)dealloc;
+- (id)itemIcon;
+- (id)itemPersistentIdentifier;
+- (id)itemDisplayName;
+- (id)initWithMonth:(unsigned long long)arg1 year:(unsigned long long)arg2 parentItem:(id)arg3;
 
 @end
 

@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)initialize;
-- (void)dealloc;
-@property(retain, nonatomic) id titleObjectValue; // @synthesize titleObjectValue=_titleObjectValue;
 @property(retain, nonatomic) NSFormatter *titleFormatter; // @synthesize titleFormatter=_titleFormatter;
+@property(retain, nonatomic) id titleObjectValue; // @synthesize titleObjectValue=_titleObjectValue;
+- (void)dealloc;
 
 @end
 

@@ -10,13 +10,13 @@
 {
 }
 
-+ (void)initialize;
-+ (id)displayName;
 + (id)cursor;
++ (id)displayName;
++ (void)initialize;
 + (id)TLKEventHandlerID;
 - (void)becomeActiveTool;
-- (void)willSetAsHandlerForTimeline:(id)arg1;
 - (void)didRemoveAsHandlerForTimeline:(id)arg1;
+- (void)willSetAsHandlerForTimeline:(id)arg1;
 
 @end
 

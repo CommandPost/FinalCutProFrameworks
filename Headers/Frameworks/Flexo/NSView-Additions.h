@@ -7,21 +7,21 @@
 #import "NSView.h"
 
 @interface NSView (Additions)
-- (void)drawTopFadedEdge;
-- (void)drawLeftFadedEdge;
-- (struct CGPoint)globalPointFor:(struct CGPoint)arg1;
-- (struct CGRect)globalFrameFor:(struct CGRect)arg1;
-- (struct CGRect)globalFrame;
-- (struct CGRect)frameFromGlobalFrame:(struct CGRect)arg1;
-- (void)performSelectorOnAllSubviews:(SEL)arg1 withObject:(id)arg2;
-- (void)performSelectorOnAllSubviews:(SEL)arg1;
-- (void)offsetFrameBy:(struct CGPoint)arg1;
-- (BOOL)isFirstResponder;
-- (BOOL)isVisibleInWindow;
-- (id)duplicate;
-- (id)snapshotImage;
-- (id)_highestLayeredAncestor;
-- (void)_recursiveToggleWantsLayerInner;
 - (void)recursiveToggleWantsLayer;
+- (void)_recursiveToggleWantsLayerInner;
+- (id)_highestLayeredAncestor;
+- (id)snapshotImage;
+- (id)duplicate;
+- (BOOL)isVisibleInWindow;
+- (BOOL)isFirstResponder;
+- (void)offsetFrameBy:(struct CGPoint)arg1;
+- (void)performSelectorOnAllSubviews:(SEL)arg1;
+- (void)performSelectorOnAllSubviews:(SEL)arg1 withObject:(id)arg2;
+- (struct CGRect)frameFromGlobalFrame:(struct CGRect)arg1;
+- (struct CGRect)globalFrame;
+- (struct CGRect)globalFrameFor:(struct CGRect)arg1;
+- (struct CGPoint)globalPointFor:(struct CGPoint)arg1;
+- (void)drawLeftFadedEdge;
+- (void)drawTopFadedEdge;
 @end
 

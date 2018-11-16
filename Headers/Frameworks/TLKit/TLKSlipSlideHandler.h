@@ -8,20 +8,20 @@
 
 @interface TLKSlipSlideHandler : TLKDragEdgesHandler
 {
-    id _leftItem;
-    id _rightItem;
+    id <TLKTimelineItem> _leftItem;
+    id <TLKTimelineItem> _rightItem;
 }
 
-- (BOOL)startTracking:(id)arg1;
-- (void)selectItem:(id)arg1;
-- (id)partToDrag:(id)arg1;
-- (void)updateDraggedItem:(id)arg1;
-- (void)updateClickedLayer:(id)arg1;
-- (void)restoreClickedLayer:(id)arg1;
-- (void)adjustFramesOfItems:(id)arg1 trimmedBy:(double)arg2;
-- (BOOL)stopTrackingWithCommit:(BOOL)arg1;
-- (BOOL)shouldMoveEdgeUsingDelta:(id)arg1;
 - (CDStruct_1b6d18a9)timeToKeepStatic;
+- (BOOL)shouldMoveEdgeUsingDelta:(id)arg1;
+- (BOOL)stopTrackingWithCommit:(BOOL)arg1;
+- (void)adjustFramesOfItems:(id)arg1;
+- (void)restoreClickedLayer:(id)arg1;
+- (void)updateClickedLayer:(id)arg1;
+- (void)updateDraggedItem:(id)arg1;
+- (id)partToDrag:(id)arg1;
+- (void)selectItem:(id)arg1;
+- (BOOL)startTracking:(id)arg1;
 
 @end
 

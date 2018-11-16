@@ -16,16 +16,16 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 faceValidityDuration;
 }
 
-- (id)initWithMedia:(id)arg1;
-- (void)cleanMarkerNoise;
-- (void)applyMarkersToMedia;
-- (void)addObservedFace:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (id)faceMarkersAtTime:(CDStruct_1b6d18a9)arg1;
-- (id)shotType;
-- (id)shotSize;
-- (void)dealloc;
 @property CDStruct_1b6d18a9 faceValidityDuration; // @synthesize faceValidityDuration;
 @property(retain, nonatomic) FFMedia *media; // @synthesize media;
+- (void)dealloc;
+- (id)shotSize;
+- (id)shotType;
+- (id)faceMarkersAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)addObservedFace:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)applyMarkersToMedia;
+- (void)cleanMarkerNoise;
+- (id)initWithMedia:(id)arg1;
 
 @end
 

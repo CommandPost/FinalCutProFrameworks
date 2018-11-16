@@ -11,19 +11,19 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)puck;
-- (id)puckController;
-- (BOOL)isPuckEnabled;
-- (BOOL)inPuckMouseEvent;
-- (int)puckBoardType;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)drawNormalPuckImage;
-- (void)drawDisabledPuckImage;
 - (void)drawPressedPuckImage;
+- (void)drawDisabledPuckImage;
+- (void)drawNormalPuckImage;
+- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (int)puckBoardType;
+- (BOOL)inPuckMouseEvent;
+- (BOOL)isPuckEnabled;
+- (id)puckController;
+- (id)puck;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

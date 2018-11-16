@@ -6,12 +6,14 @@
 
 #import "NSObject.h"
 
+@class FFColorLooksListItem, NSString;
+
 @protocol FFColorLooksListDataSource <NSObject>
+- (FFColorLooksListItem *)colorLooksListItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;
-- (id)colorLooksListItemAtIndex:(unsigned long long)arg1;
 
 @optional
-- (id)listPath;
-- (id)uniqueFilePathForName:(id)arg1;
+- (NSString *)uniqueFilePathForName:(NSString *)arg1;
+- (NSString *)listPath;
 @end
 

@@ -10,7 +10,7 @@
 
 @interface OZInsetViewOverlay : OZOverlay
 {
-    shared_ptr_211f3873 *_image;
+    shared_ptr_92745eb9 *_image;
     struct PCMutex *_imageLock;
     PGDrawableTexture *_cameraNameTexture;
     struct PCString _cameraName;
@@ -19,21 +19,21 @@
     struct PCPtr<POMultiResMultiPartTexture> _border;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (int)getDrawingOrder;
-- (BOOL)is3DOSC;
-- (void)dealloc;
-- (void)drawGradArcQuadrant:(int)arg1 x:(float)arg2 y:(float)arg3 radius:(float)arg4 alpha:(float)arg5;
-- (void)drawArcQuadrant:(int)arg1 x:(float)arg2 y:(float)arg3 radius:(float)arg4;
-- (void)drawGradientRectX:(float)arg1 y:(float)arg2 width:(float)arg3 height:(float)arg4 alpha:(float)arg5 direction:(int)arg6;
-- (struct CGSize)getPreviewSizeForViewSize:(struct CGSize)arg1 andScene:(struct OZScene *)arg2 returningScale:(float *)arg3;
-- (void)draw;
-- (void)updateTip;
-- (void)renderFrame;
-- (void)notify:(unsigned int)arg1;
-- (id)getCursorWithEvent:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)getCursorWithEvent:(id)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)renderFrame;
+- (void)updateTip;
+- (void)draw;
+- (struct CGSize)getPreviewSizeForViewSize:(struct CGSize)arg1 andScene:(struct OZScene *)arg2 returningScale:(float *)arg3;
+- (void)drawGradientRectX:(float)arg1 y:(float)arg2 width:(float)arg3 height:(float)arg4 alpha:(float)arg5 direction:(int)arg6;
+- (void)drawArcQuadrant:(int)arg1 x:(float)arg2 y:(float)arg3 radius:(float)arg4;
+- (void)drawGradArcQuadrant:(int)arg1 x:(float)arg2 y:(float)arg3 radius:(float)arg4 alpha:(float)arg5;
+- (void)dealloc;
+- (BOOL)is3DOSC;
+- (int)getDrawingOrder;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

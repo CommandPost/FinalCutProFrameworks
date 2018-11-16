@@ -10,19 +10,19 @@
 {
 }
 
-+ (void)initialize;
-+ (id)displayName;
-+ (id)toolbarFacet;
 + (id)cursor;
-- (void)resignActiveTool;
-- (BOOL)handlesSelection;
-- (BOOL)_itemHasDropZone:(id)arg1 setEffect:(id *)arg2;
-- (BOOL)itemHasDropZone:(id)arg1;
-- (BOOL)handlesItem:(id)arg1 target:(id)arg2 event:(id)arg3;
-- (BOOL)editsItem:(id)arg1 target:(id)arg2 event:(id)arg3;
-- (BOOL)supportsMultipleSelection;
-- (void)mouseDown:(id)arg1;
++ (id)toolbarFacet;
++ (id)displayName;
++ (void)initialize;
 - (void)didMouseDownOnCanvas:(id)arg1 target:(id)arg2;
+- (void)mouseDown:(id)arg1;
+- (BOOL)supportsMultipleSelection;
+- (BOOL)editsItem:(id)arg1 target:(id)arg2 event:(id)arg3;
+- (BOOL)handlesItem:(id)arg1 target:(id)arg2 event:(id)arg3;
+- (BOOL)itemHasDropZone:(id)arg1;
+- (BOOL)_itemHasDropZone:(id)arg1 setEffect:(id *)arg2;
+- (BOOL)handlesSelection;
+- (void)resignActiveTool;
 
 @end
 

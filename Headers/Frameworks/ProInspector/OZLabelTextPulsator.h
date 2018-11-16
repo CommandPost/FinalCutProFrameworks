@@ -17,10 +17,10 @@
     double _duration;
 }
 
-- (id)initWithLabelText:(id)arg1;
-- (void)dealloc;
-- (void)pulseTimerCB:(id)arg1;
 - (void)stop;
+- (void)pulseTimerCB:(id)arg1;
+- (void)dealloc;
+- (id)initWithLabelText:(id)arg1;
 
 @end
 

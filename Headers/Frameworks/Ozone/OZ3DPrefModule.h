@@ -20,15 +20,15 @@
     NSTextField *_pInsetViewSizeTF;
 }
 
-- (void)initializeFromDefaults;
-- (BOOL)isResizable;
-- (void)setGroundPlaneColor1:(id)arg1;
-- (void)setGroundPlaneColor2:(id)arg1;
-- (void)setGroundPlaneSpacing:(id)arg1;
-- (void)setDefaultGroupType:(id)arg1;
-- (void)setInsetViewMode:(id)arg1;
-- (void)setInsetViewSize:(id)arg1;
 - (void)updateCanvas;
+- (void)setInsetViewSize:(id)arg1;
+- (void)setInsetViewMode:(id)arg1;
+- (void)setDefaultGroupType:(id)arg1;
+- (void)setGroundPlaneSpacing:(id)arg1;
+- (void)setGroundPlaneColor2:(id)arg1;
+- (void)setGroundPlaneColor1:(id)arg1;
+- (BOOL)isResizable;
+- (void)initializeFromDefaults;
 
 @end
 

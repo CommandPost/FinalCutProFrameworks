@@ -19,33 +19,33 @@
 }
 
 + (id)audioChannelMapWithChannelCount:(unsigned long long)arg1;
-- (id)initWithChannelCount:(unsigned long long)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)description;
-- (void)setChannels:(id)arg1;
-- (void)setGroups:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)setChannelCount:(unsigned long long)arg1;
-- (unsigned int)channelCount;
-- (id)channels;
-- (void)setEnabled:(BOOL)arg1 forChannel:(unsigned int)arg2;
-- (void)setAllChannelsEnabled:(BOOL)arg1;
-- (BOOL)isChannelEnabled:(unsigned int)arg1;
-- (void)setLevel:(double)arg1 forChannel:(unsigned int)arg2;
-- (void)setPeakLevel:(double)arg1 forChannel:(unsigned int)arg2;
-- (void)setLevelsForAllChannels:(double *)arg1 count:(unsigned int)arg2;
-- (unsigned int)adjacentChannelToChannel:(unsigned int)arg1;
-- (void)createStereoGroupWithAdjacentChannelForChannel:(unsigned int)arg1;
-- (void)removeGroupForChannel:(unsigned int)arg1;
-- (id)groupForChannel:(unsigned int)arg1;
-- (unsigned int)qtMovieTrackCount;
-- (void)setupToMatchChannelMap:(id)arg1;
-- (void)setStereoMixDown:(BOOL)arg1;
-- (BOOL)stereoMixDown;
-- (void)setUndoManager:(id)arg1;
 - (id)undoManager;
+- (void)setUndoManager:(id)arg1;
+- (BOOL)stereoMixDown;
+- (void)setStereoMixDown:(BOOL)arg1;
+- (void)setupToMatchChannelMap:(id)arg1;
+- (unsigned int)qtMovieTrackCount;
+- (id)groupForChannel:(unsigned int)arg1;
+- (void)removeGroupForChannel:(unsigned int)arg1;
+- (void)createStereoGroupWithAdjacentChannelForChannel:(unsigned int)arg1;
+- (unsigned int)adjacentChannelToChannel:(unsigned int)arg1;
+- (void)setLevelsForAllChannels:(double *)arg1 count:(unsigned int)arg2;
+- (void)setPeakLevel:(double)arg1 forChannel:(unsigned int)arg2;
+- (void)setLevel:(double)arg1 forChannel:(unsigned int)arg2;
+- (BOOL)isChannelEnabled:(unsigned int)arg1;
+- (void)setAllChannelsEnabled:(BOOL)arg1;
+- (void)setEnabled:(BOOL)arg1 forChannel:(unsigned int)arg2;
+- (id)channels;
+- (unsigned int)channelCount;
+- (void)setChannelCount:(unsigned long long)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setGroups:(id)arg1;
+- (void)setChannels:(id)arg1;
+- (id)description;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithChannelCount:(unsigned long long)arg1;
 
 @end
 

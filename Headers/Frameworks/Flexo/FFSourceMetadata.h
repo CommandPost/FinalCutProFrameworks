@@ -10,10 +10,10 @@
 {
 }
 
-+ (Class)streamClass;
 + (id)spotlightMetadataForURL:(id)arg1;
-- (id)type;
++ (Class)streamClass;
 - (id)newStream:(id)arg1 options:(id)arg2;
+- (id)type;
 
 @end
 

@@ -6,13 +6,15 @@
 
 #import "NSObject.h"
 
+@class FFChannelChangeController, FFContext, FFEffectStack;
+
 @protocol FFEnhanceAudioDelegate <NSObject>
 
 @optional
-- (id)channelChangeController;
-- (void)analysisDidStart:(id)arg1;
-- (void)analysisDidComplete:(id)arg1;
-- (void)analysisDidCancel:(id)arg1;
-- (id)retrieveContext;
+- (FFContext *)retrieveContext;
+- (void)analysisDidCancel:(FFEffectStack *)arg1;
+- (void)analysisDidComplete:(FFEffectStack *)arg1;
+- (void)analysisDidStart:(FFEffectStack *)arg1;
+- (FFChannelChangeController *)channelChangeController;
 @end
 

@@ -6,26 +6,26 @@
 
 #import <Flexo/FFStreamAudio.h>
 
+#import "FFStreamAudioScopingWindowProtocol.h"
+
 __attribute__((visibility("hidden")))
-@interface FFCommonSequenceAudioStream : FFStreamAudio
+@interface FFCommonSequenceAudioStream : FFStreamAudio <FFStreamAudioScopingWindowProtocol>
 {
     unsigned int _sampleRate;
-    unsigned int _numChannels;
-    struct AudioDynamicScopingWindow *_dynamicScopingWindow;
+    struct FFAudioDynamicScopingWindow *_dynamicScopingWindow;
 }
 
-- (id)anchoredSequenceSource;
-- (id)anchoredObject;
-- (void)_prerollBeginSetup;
-- (void)_prerollBeginFinish:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
-- (void)prerollEnd;
-- (void)setRate:(double)arg1;
-- (void)_advanceScopingWindow:(id)arg1;
-- (void)_pushChildStreamScopes:(vector_a48f3066 *)arg1;
-- (BOOL)_hasStreamScopeThatNeedsUpdate;
-- (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3 rootItem:(id)arg4;
 - (void)dealloc;
+- (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3 rootItem:(id)arg4;
+- (CDStruct_e83c9415)calculateScopingWindowTimeRange:(CDStruct_e83c9415)arg1;
+- (void)advanceScopingWindow:(id)arg1;
+- (void)setRate:(double)arg1;
+- (void)prerollEnd;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
+- (void)_prerollBeginFinish:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
+- (void)_prerollBeginSetup;
+- (id)anchoredObject;
+- (id)anchoredSequenceSource;
 
 @end
 

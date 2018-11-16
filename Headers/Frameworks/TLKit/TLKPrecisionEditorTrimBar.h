@@ -20,26 +20,26 @@
     TLKThemeBackedLayer *_editHandleLayer;
     TLKThemeBackedLayer *_transitionHandleLayer;
     TLKThemeBackedLayer *_bowTieLayer;
-    id _leftItem;
-    id _rightItem;
+    id <TLKTimelineItem> _leftItem;
+    id <TLKTimelineItem> _rightItem;
     struct {
         unsigned int split:1;
         unsigned int RESERVED:31;
     } _tbFlags;
 }
 
-- (id)init;
-- (void)dealloc;
-- (id)actionForKey:(id)arg1;
-- (void)layoutSublayers;
-- (struct CGRect)rectForPart:(id)arg1;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)partIdentifier;
-- (void)reloadVisibleLayers;
-- (void)setDelegate:(id)arg1;
 @property(nonatomic) id <TLKTimelineItem> rightItem; // @synthesize rightItem=_rightItem;
 @property(nonatomic) id <TLKTimelineItem> leftItem; // @synthesize leftItem=_leftItem;
 @property(nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
+- (void)setDelegate:(id)arg1;
+- (void)reloadVisibleLayers;
+- (id)partIdentifier;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (struct CGRect)rectForPart:(id)arg1;
+- (void)layoutSublayers;
+- (id)actionForKey:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

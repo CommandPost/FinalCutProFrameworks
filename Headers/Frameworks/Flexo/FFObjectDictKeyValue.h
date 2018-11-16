@@ -15,14 +15,14 @@ __attribute__((visibility("hidden")))
     DSObject *_value;
 }
 
-+ (Class)DSClassDescriptionClass;
 + (id)copyClassDescription;
-- (id)initWithKey:(id)arg1 object:(id)arg2;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
++ (Class)DSClassDescriptionClass;
 @property(retain, nonatomic) DSObject *value; // @synthesize value=_value;
 @property(readonly, nonatomic) NSString *key; // @synthesize key=_key;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithKey:(id)arg1 object:(id)arg2;
 
 @end
 

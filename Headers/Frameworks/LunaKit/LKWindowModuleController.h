@@ -16,36 +16,36 @@
 }
 
 + (id)windowControllerWithModule:(id)arg1;
-- (void)_installModuleView;
-- (void)_removeModuleView;
-- (id)initWithWindow:(id)arg1;
-- (id)initWithWindowModule:(id)arg1;
-- (id)initWithWindowNibName:(id)arg1;
-- (id)initWithWindowNibName:(id)arg1 owner:(id)arg2;
-- (id)initWithWindowNibPath:(id)arg1 owner:(id)arg2;
-- (id)init;
-- (void)dealloc;
-- (id)rootModule;
-- (id)window;
-- (void)setRootModule:(id)arg1;
-- (id)windowTitleForDocumentDisplayName:(id)arg1;
-- (void)moduleUpdateStatusDidChange:(id)arg1;
-- (id)activeModule;
-- (void)windowDidUpdate:(id)arg1;
-- (void)updateModulesIfNeeded;
-- (void)windowWillClose:(id)arg1;
-- (id)description;
-- (void)installDocument:(id)arg1;
-- (void)installOneDocument;
-- (void)installAllDocuments;
-- (void)installAllDocumentsForcefully:(BOOL)arg1;
-- (void)setDocument:(id)arg1;
-- (void)removeDocument:(id)arg1;
-- (void)tabView:(id)arg1 willSelectTabViewItem:(id)arg2;
-- (void)tabView:(id)arg1 didSelectTabViewItem:(id)arg2;
-- (void)windowDidBecomeMain:(id)arg1;
-- (id)customContentSeparatorColorForState:(BOOL)arg1;
 @property LKDocumentTabModule *documentTabModule; // @synthesize documentTabModule=_documentTabModule;
+- (id)customContentSeparatorColorForState:(BOOL)arg1;
+- (void)windowDidBecomeMain:(id)arg1;
+- (void)tabView:(id)arg1 didSelectTabViewItem:(id)arg2;
+- (void)tabView:(id)arg1 willSelectTabViewItem:(id)arg2;
+- (void)removeDocument:(id)arg1;
+- (void)setDocument:(id)arg1;
+- (void)installAllDocumentsForcefully:(BOOL)arg1;
+- (void)installAllDocuments;
+- (void)installOneDocument;
+- (void)installDocument:(id)arg1;
+- (id)description;
+- (void)windowWillClose:(id)arg1;
+- (void)updateModulesIfNeeded;
+- (void)windowDidUpdate:(id)arg1;
+- (id)activeModule;
+- (void)moduleUpdateStatusDidChange:(id)arg1;
+- (id)windowTitleForDocumentDisplayName:(id)arg1;
+- (void)setRootModule:(id)arg1;
+- (id)window;
+- (id)rootModule;
+- (void)dealloc;
+- (id)init;
+- (id)initWithWindowNibPath:(id)arg1 owner:(id)arg2;
+- (id)initWithWindowNibName:(id)arg1 owner:(id)arg2;
+- (id)initWithWindowNibName:(id)arg1;
+- (id)initWithWindowModule:(id)arg1;
+- (id)initWithWindow:(id)arg1;
+- (void)_removeModuleView;
+- (void)_installModuleView;
 
 @end
 

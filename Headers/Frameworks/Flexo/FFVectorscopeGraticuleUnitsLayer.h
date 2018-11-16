@@ -14,12 +14,13 @@ __attribute__((visibility("hidden")))
     CDStruct_d36b2e56 _state;
 }
 
-- (void)setPhase:(long long)arg1;
-- (void)setBarTarget:(long long)arg1;
-- (void)setShowIandQ:(BOOL)arg1;
-- (void)setShowSkinToneIndicator:(BOOL)arg1;
-- (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;
+- (id).cxx_construct;
 - (void)drawInContext:(struct CGContext *)arg1;
+- (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;
+- (void)setShowSkinToneIndicator:(BOOL)arg1;
+- (void)setShowIandQ:(BOOL)arg1;
+- (void)setBarTarget:(long long)arg1;
+- (void)setPhase:(long long)arg1;
 
 @end
 

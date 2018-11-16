@@ -16,22 +16,22 @@
     NSProgressIndicator *_pOpticalFlowProgress;
 }
 
-- (id)_canvas;
-- (void)_performPlaySelector:(SEL)arg1;
-- (BOOL)wantsHeaderBar;
-- (struct CGSize)viewMinSize;
-- (struct CGSize)viewMaxSize;
-- (BOOL)wantsFirstResponder;
-- (BOOL)acceptsFirstResponder;
-- (void)viewDidLoad;
-- (void)toggleFrameDisplay:(id)arg1;
-- (void)durationAction:(id)arg1;
-- (void)currentFrameAction:(id)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)updateCurrentFrameTextField:(double)arg1;
-- (void)startProgressSpinner;
-- (void)stopProgressSpinner;
 @property(readonly, nonatomic) LKSegmentedScrubber *currentTimeScrubber; // @synthesize currentTimeScrubber=_currentTimeScrubber;
+- (void)stopProgressSpinner;
+- (void)startProgressSpinner;
+- (void)updateCurrentFrameTextField:(double)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)currentFrameAction:(id)arg1;
+- (void)durationAction:(id)arg1;
+- (void)toggleFrameDisplay:(id)arg1;
+- (void)viewDidLoad;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)wantsFirstResponder;
+- (struct CGSize)viewMaxSize;
+- (struct CGSize)viewMinSize;
+- (BOOL)wantsHeaderBar;
+- (void)_performPlaySelector:(SEL)arg1;
+- (id)_canvas;
 
 @end
 

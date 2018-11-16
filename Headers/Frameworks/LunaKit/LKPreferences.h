@@ -12,12 +12,12 @@
 }
 
 + (Class)defaultPreferencesClass;
-- (Class)_proToolbarClass;
-- (void)addPreferenceNamed:(id)arg1 owner:(id)arg2;
-- (void)showPreferencesPanelForOwner:(id)arg1;
-- (void)cancel:(id)arg1;
-- (BOOL)windowShouldClose:(id)arg1;
 - (BOOL)preferencesOpen;
+- (BOOL)windowShouldClose:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)showPreferencesPanelForOwner:(id)arg1;
+- (void)addPreferenceNamed:(id)arg1 owner:(id)arg2;
+- (Class)_proToolbarClass;
 
 @end
 

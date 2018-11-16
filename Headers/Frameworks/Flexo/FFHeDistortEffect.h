@@ -15,24 +15,24 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
-- (id)initWithEffectID:(id)arg1;
-- (void)dealloc;
-- (id)newChannelFolderWithParent:(id)arg1 name:(id)arg2;
-- (unsigned int)attributeCopyingFlags;
-- (BOOL)isNoOp;
-- (BOOL)writeDefaultChannels;
-- (id)fourCornerChannel;
-- (struct HGNode *)newNodeForContext:(id)arg1;
-- (void)getFourCornerTransform:(PCMatrix44Tmpl_93ed1289 *)arg1 withBounds:(struct CGRect)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (struct CGRect)getFourCornerBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (BOOL)isAnimated;
-- (void)calcTransform:(PCMatrix44Tmpl_93ed1289 *)arg1 withBounds:(struct CGRect)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
-- (void)modifyImageTransform:(id)arg1 andImageSpaceBounds:(struct CGRect *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2 pixelTransform:(id)arg3;
-- (void)createChannelsInFolder:(id)arg1;
-- (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (id)inputKeys;
+- (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
+- (void)createChannelsInFolder:(id)arg1;
+- (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2 pixelTransform:(id)arg3;
+- (void)modifyImageTransform:(id)arg1 andImageSpaceBounds:(struct CGRect *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (void)calcTransform:(PCMatrix44Tmpl_93ed1289 *)arg1 withBounds:(struct CGRect)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (BOOL)isAnimated;
+- (struct CGRect)getFourCornerBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)getFourCornerTransform:(PCMatrix44Tmpl_93ed1289 *)arg1 withBounds:(struct CGRect)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (struct HGNode *)newNodeForContext:(id)arg1;
+- (id)fourCornerChannel;
+- (BOOL)writeDefaultChannels;
+- (BOOL)isNoOp;
+- (unsigned int)attributeCopyingFlags;
+- (id)newChannelFolderWithParent:(id)arg1 name:(id)arg2;
+- (void)dealloc;
+- (id)initWithEffectID:(id)arg1;
 
 @end
 

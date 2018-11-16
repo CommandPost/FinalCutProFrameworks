@@ -11,19 +11,23 @@ __attribute__((visibility("hidden")))
 {
     int _state;
     CDStruct_bdcb2b0d _internalUseMD5s[2];
+    char _internalUseHasData[2];
 }
 
-- (id)initWithFigTimeRange:(CDStruct_e83c9415)arg1 state:(int)arg2 md5s:(CDStruct_60067b7e *)arg3;
-- (id)stringForState;
-- (id)description;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (_Bool)canMergeWith:(id)arg1 ignoreMD5:(_Bool)arg2;
-- (_Bool)canMergeWith:(id)arg1;
-- (CDStruct_60067b7e)internalMD5:(int)arg1;
-- (int)renderState;
-- (CDStruct_e83c9415)renderTimeRange;
-- (id)renderDescription;
 @property(readonly) int state; // @synthesize state=_state;
+- (id).cxx_construct;
+- (id)renderDescription;
+- (CDStruct_e83c9415)renderTimeRange;
+- (int)renderState;
+- (BOOL)needsRenderFile;
+- (BOOL)hasRenderData:(int)arg1;
+- (CDStruct_bdcb2b0d)internalMD5:(int)arg1;
+- (_Bool)canMergeWith:(id)arg1;
+- (_Bool)canMergeWith:(id)arg1 ignoreMD5:(_Bool)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)stringForState;
+- (id)initWithFigTimeRange:(CDStruct_e83c9415)arg1 state:(int)arg2 md5s:(CDStruct_bdcb2b0d *)arg3 hasData:(char *)arg4;
 
 @end
 

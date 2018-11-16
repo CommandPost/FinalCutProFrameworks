@@ -8,47 +8,49 @@
 
 #import "FFFilmstripCellDelegate.h"
 
-@class FFAnchoredObject, NSMapTable, NSMutableArray, TLKThemeBackedLayer;
+@class CAReplicatorLayer, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>, TLKThemeBackedLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFFilmstripLayer : CALayer <FFFilmstripCellDelegate>
 {
-    FFAnchoredObject *_anchoredObject;
+    struct NSObject *_skimmableObject;
     CDStruct_e83c9415 _clippedRange;
     CDStruct_e83c9415 _unclippedRange;
     double _timePerHorizontalPixel;
     int _filmstripMode;
     NSMutableArray *_cellArray;
-    NSMapTable *_creases;
+    CAReplicatorLayer *_creaseLayer;
     CDStruct_1b6d18a9 _timePerCell;
     struct CGRect _visibleBounds;
     unsigned long long _totalCellCount;
     double _totalWidth;
     TLKThemeBackedLayer *_videoLayerInnerShadow;
-    id _priorityDelegate;
+    id <FFFilmstripLayerDelegate> _priorityDelegate;
     unsigned int _forceNoUpdate:1;
     unsigned int _forceUpdate:1;
+    unsigned int _forceVideoColor:1;
 }
 
-- (id)init;
-- (void)dealloc;
-@property(retain, nonatomic) FFAnchoredObject *anchoredObject;
-@property(nonatomic) CDStruct_e83c9415 clippedRange;
-@property(nonatomic) double timePerHorizontalPixel;
-@property(nonatomic) int filmstripMode;
-@property(nonatomic) struct CGRect visibleBounds;
-@property(nonatomic) BOOL forceNoUpdate;
-@property(nonatomic) BOOL forceUpdate;
-- (id)_createFilmstripCellWithframe:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3 startIndex:(unsigned long long *)arg4;
-- (void)_recomputeCells;
-- (void)layoutSublayers;
-- (double)_frameAspectRatio;
-- (double)_cellWidth;
-- (void)_invalidateCells;
-- (void)updateIfNeeded;
-- (BOOL)highPriorityThumbnailGeneration;
-- (void)setContentsScale:(double)arg1;
 @property(nonatomic) id <FFFilmstripLayerDelegate> priorityDelegate; // @synthesize priorityDelegate=_priorityDelegate;
+- (void)setContentsScale:(double)arg1;
+- (BOOL)highPriorityThumbnailGeneration;
+- (void)updateIfNeeded;
+- (void)_invalidateCells;
+- (double)_cellWidth;
+- (double)_frameAspectRatio;
+- (void)layoutSublayers;
+- (void)_recomputeCells;
+- (id)_createFilmstripCellWithframe:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3 startIndex:(unsigned long long *)arg4;
+@property(nonatomic) BOOL forceVideoColor;
+@property(nonatomic) BOOL forceUpdate;
+@property(nonatomic) BOOL forceNoUpdate;
+@property(nonatomic) struct CGRect visibleBounds;
+@property(nonatomic) int filmstripMode;
+@property(nonatomic) double timePerHorizontalPixel;
+@property(nonatomic) CDStruct_e83c9415 clippedRange;
+@property(retain, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmableObject;
+- (void)dealloc;
+- (id)init;
 
 @end
 

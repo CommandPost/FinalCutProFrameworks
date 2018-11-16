@@ -13,19 +13,18 @@
     NSString *_previewName;
 }
 
-+ (BOOL)groupContainsValidPlugins:(id)arg1;
 + (void)buildInternalTreeWithRoot:(id)arg1;
-+ (void)buildImageUnitTreeWithRoot:(id)arg1;
-- (id)initWithParent:(id)arg1 name:(id)arg2 factory:(struct OZFactory *)arg3;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)shouldBeArchived;
-- (BOOL)getPasteEntries:(struct OZPasteList *)arg1;
-- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
-- (void)setPreviewName:(id)arg1;
-- (id)getPreviewPath;
-- (int)getPreviewType;
-- (id)getPreviewMovie;
++ (BOOL)groupContainsValidPlugins:(id)arg1;
 - (id)getSmallPreviewIconForEntry:(BOOL)arg1;
+- (id)getPreviewMovie;
+- (int)getPreviewType;
+- (id)getPreviewPath;
+- (void)setPreviewName:(id)arg1;
+- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
+- (BOOL)getPasteEntries:(struct OZPasteList *)arg1;
+- (BOOL)shouldBeArchived;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithParent:(id)arg1 name:(id)arg2 factory:(struct OZFactory *)arg3;
 
 @end
 

@@ -13,9 +13,10 @@
     NSView *_view;
 }
 
-- (void)clearUserDefaults:(id)arg1;
-- (void)clearUserDefaultsAlertsDidEnd:(id)arg1 returnCode:(int)arg2 contextInfo:(void *)arg3;
 - (id)titleForIdentifier:(id)arg1;
+- (void)clearUserDefaultsAlertsDidEnd:(id)arg1 returnCode:(int)arg2 contextInfo:(void *)arg3;
+- (void)clearUserDefaults:(id)arg1;
+- (BOOL)isResizable;
 
 @end
 

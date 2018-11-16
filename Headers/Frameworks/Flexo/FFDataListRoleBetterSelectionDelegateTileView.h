@@ -12,13 +12,13 @@ __attribute__((visibility("hidden")))
     BOOL _isExtendingSelection;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)keyDown:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)selectTileIndexes:(id)arg1 byExtendingSelection:(BOOL)arg2;
 - (void)deselectTile:(id)arg1;
+- (void)selectTileIndexes:(id)arg1 byExtendingSelection:(BOOL)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)keyDown:(id)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
     CHChannelBase *_observedChannel;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)didBuildUI;
-- (void)update;
-- (id)stringForLabel;
 - (void)autoBalanceChanged:(id)arg1;
+- (id)stringForLabel;
+- (void)update;
+- (void)didBuildUI;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
-- (CDStruct_e83c9415)timeRange;
-- (id)effect;
 - (id)newStreamForInputSource:(id)arg1 context:(id)arg2 options:(id)arg3;
+- (id)effect;
+- (CDStruct_e83c9415)timeRange;
 
 @end
 

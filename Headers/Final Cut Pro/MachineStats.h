@@ -16,12 +16,12 @@
     NSString *_appString;
 }
 
-- (void)_parseData;
-- (void)_statsThreadProc:(id)arg1;
-- (id)init;
-- (void)dealloc;
-- (void)waitUntilComplete;
 @property(retain, nonatomic) NSString *statsText; // @synthesize statsText=_statsText;
+- (void)waitUntilComplete;
+- (void)dealloc;
+- (id)init;
+- (void)_statsThreadProc:(id)arg1;
+- (void)_parseData;
 
 @end
 

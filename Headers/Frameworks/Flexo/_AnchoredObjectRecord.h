@@ -22,20 +22,20 @@ __attribute__((visibility("hidden")))
     NSData *_keptStateChannelFolder;
 }
 
-- (void)dealloc;
-@property(nonatomic) FFEffect *trackedEffectContainer; // @dynamic trackedEffectContainer;
-- (void)setDatedCopyChannelFolder:(id)arg1;
-- (void)setDatedCopyChannelStateForChannelFolder:(id)arg1;
-- (void)keepIntermediateStateChannelFolder:(id)arg1;
-- (void)setKeptIntermediateChannelStateForChannelFolder:(id)arg1;
-@property(readonly) BOOL hadPriorEffect; // @dynamic hadPriorEffect;
-@property(readonly) BOOL hadPriorAdjustment; // @dynamic hadPriorAdjustment;
 @property(nonatomic) CHChannelFolder *parentFolder; // @synthesize parentFolder=_parentFolder;
 @property(nonatomic) FFEffect *trackedEffect; // @synthesize trackedEffect=_trackedEffect;
 @property(nonatomic) FFEffectStack *trackedEffectStack; // @synthesize trackedEffectStack=_trackedEffectStack;
 @property unsigned int intermediateChannelFolderID; // @synthesize intermediateChannelFolderID=_intermediateChannelFolderID;
 @property(retain, nonatomic) FFEffect *intermediateEffect; // @synthesize intermediateEffect=_intermediateEffect;
 @property(nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObject;
+@property(readonly) BOOL hadPriorAdjustment; // @dynamic hadPriorAdjustment;
+@property(readonly) BOOL hadPriorEffect; // @dynamic hadPriorEffect;
+- (void)setKeptIntermediateChannelStateForChannelFolder:(id)arg1;
+- (void)keepIntermediateStateChannelFolder:(id)arg1;
+- (void)setDatedCopyChannelStateForChannelFolder:(id)arg1;
+- (void)setDatedCopyChannelFolder:(id)arg1;
+@property(nonatomic) FFEffect *trackedEffectContainer; // @dynamic trackedEffectContainer;
+- (void)dealloc;
 
 @end
 

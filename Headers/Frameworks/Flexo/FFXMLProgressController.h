@@ -17,9 +17,9 @@
     int _progressType;
 }
 
-- (id)initProgressForType:(int)arg1;
-- (void)beginProgressForName:(id)arg1;
 - (void)endProgress;
+- (void)beginProgressForName:(id)arg1;
+- (id)initProgressForType:(int)arg1;
 
 @end
 

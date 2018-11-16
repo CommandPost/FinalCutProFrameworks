@@ -10,12 +10,12 @@
 {
 }
 
-- (id)init;
-- (struct CGSize)viewMinSize;
-- (void)toggleLayerListModule;
-- (void)toggleMediaListModule;
-- (void)toggleAudioListModule;
 - (void)showMediaListModule;
+- (void)toggleAudioListModule;
+- (void)toggleMediaListModule;
+- (void)toggleLayerListModule;
+- (struct CGSize)viewMinSize;
+- (id)init;
 
 @end
 

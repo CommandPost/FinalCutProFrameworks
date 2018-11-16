@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
     FigTimeRangeObj *_range;
 }
 
-- (id)initWithKey:(id)arg1 value:(id)arg2 range:(CDStruct_e83c9415)arg3;
-- (void)dealloc;
-- (id)key;
-- (id)value;
 - (CDStruct_e83c9415)range;
+- (id)value;
+- (id)key;
+- (void)dealloc;
+- (id)initWithKey:(id)arg1 value:(id)arg2 range:(CDStruct_e83c9415)arg3;
 
 @end
 

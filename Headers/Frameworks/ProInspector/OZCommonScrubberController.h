@@ -15,9 +15,9 @@
     double _origMin;
 }
 
-- (void)dealloc;
-- (BOOL)hasControls;
 - (void)updateDecibelScrubber:(id)arg1 areAllChannelsEqual:(BOOL)arg2;
+- (BOOL)hasControls;
+- (void)dealloc;
 
 @end
 

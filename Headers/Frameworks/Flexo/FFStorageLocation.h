@@ -32,34 +32,12 @@ __attribute__((visibility("hidden")))
     NSString *_hostName;
 }
 
-+ (id)sharedPrefsDirectory;
-+ (long long)sizeInBytesOfFileAtURL:(id)arg1;
-+ (id)actualDevicePathIfPathIsDiskImage:(id)arg1;
-+ (id)valueStringWithUnitFromByteValue:(double)arg1;
 + (id)createPath:(id)arg1;
-- (BOOL)stringIsIPAddress:(id)arg1;
-- (id)initWithVolumeRefNum:(short)arg1 storageManager:(id)arg2 networkPath:(id)arg3 inUse:(char *)arg4;
-- (void)dealloc;
-- (id)description;
-- (void)updateName;
-- (BOOL)isTimeMachineVolume;
-- (BOOL)isCaseSensitive;
-- (long long)availableSpaceInBytes;
-- (BOOL)_isOutOfDiskSpace;
-- (void)_dealWithOutOfDiskSpace;
-- (void)_checkAvailableDiskSpace;
-- (BOOL)addOutOfDiskSpaceObserver:(id)arg1;
-- (BOOL)removeOutOfDiskSpaceObserver:(id)arg1;
-- (unsigned int)usedPercentage;
-@property(readonly) NSAttributedString *capacityString;
-@property(readonly) NSAttributedString *availableSpaceString;
-@property(readonly) NSAttributedString *usableSpaceString;
-- (id)volumePath;
-@property BOOL use;
-- (id)locationNameWithAvailableSize;
-- (void)renameVolume:(id)arg1;
-- (BOOL)lock;
-- (BOOL)unlock;
++ (id)valueStringWithUnitFromByteValue:(double)arg1;
++ (id)actualDevicePathIfPathIsDiskImage:(id)arg1;
++ (long long)sizeInBytesOfFileAtURL:(id)arg1;
++ (id)sharedPrefsDirectory;
+@property(readonly) short volumeRefNum; // @synthesize volumeRefNum=_volumeRefNum;
 @property(readonly) NSString *hostName; // @synthesize hostName=_hostName;
 @property(readonly) BOOL isNetworkVolume; // @synthesize isNetworkVolume=_isNetworkVolume;
 @property(readonly) BOOL isMoviesVolume; // @synthesize isMoviesVolume=_isMoviesVolume;
@@ -68,6 +46,29 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSURL *volumeURL; // @synthesize volumeURL=_volumeURL;
 @property(readonly) NSString *locationName; // @synthesize locationName=_locationName;
 @property(readonly) NSString *diskUUID; // @synthesize diskUUID=_diskUUID;
+- (BOOL)unlock;
+- (BOOL)lock;
+- (void)renameVolume:(id)arg1;
+- (id)locationNameWithAvailableSize;
+@property BOOL use;
+- (id)volumePath;
+@property(readonly) NSAttributedString *usableSpaceString;
+@property(readonly) NSAttributedString *availableSpaceString;
+@property(readonly) NSAttributedString *capacityString;
+- (unsigned int)usedPercentage;
+- (BOOL)removeOutOfDiskSpaceObserver:(id)arg1;
+- (BOOL)addOutOfDiskSpaceObserver:(id)arg1;
+- (void)_checkAvailableDiskSpace;
+- (void)_dealWithOutOfDiskSpace;
+- (BOOL)_isOutOfDiskSpace;
+- (long long)availableSpaceInBytes;
+- (BOOL)isCaseSensitive;
+- (BOOL)isTimeMachineVolume;
+- (void)updateName;
+- (id)description;
+- (void)dealloc;
+- (id)initWithVolumeRefNum:(short)arg1 storageManager:(id)arg2 networkPath:(id)arg3 inUse:(char *)arg4;
+- (BOOL)stringIsIPAddress:(id)arg1;
 
 @end
 

@@ -4,13 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class CHChannelFolder, FFAnchoredObject, FFEffect, FFEffectStack, NSString;
+
 @protocol FFRollbackRecordProtocol
-- (id)effectStackToRecordForAnchoredObject:(id)arg1;
-- (id)effectToRecordForAnchoredObject:(id)arg1;
-- (id)channelFolderToRecordForAnchoredObject:(id)arg1;
-- (id)actionStringForSaveChanges;
+- (NSString *)actionStringForSaveChanges;
+- (CHChannelFolder *)channelFolderToRecordForAnchoredObject:(FFAnchoredObject *)arg1;
+- (FFEffect *)effectToRecordForAnchoredObject:(FFAnchoredObject *)arg1;
+- (FFEffectStack *)effectStackToRecordForAnchoredObject:(FFAnchoredObject *)arg1;
 
 @optional
-- (id)effectContainerToRecordForAnchoredObject:(id)arg1;
+- (FFEffect *)effectContainerToRecordForAnchoredObject:(FFAnchoredObject *)arg1;
 @end
 

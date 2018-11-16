@@ -14,15 +14,15 @@
 }
 
 + (id)genericUserDefaultsForApplicationId:(id)arg1;
-- (id)initWithApplicationId:(id)arg1;
-- (void)dealloc;
-- (BOOL)hasKey:(id)arg1;
-- (id)objectForKey:(id)arg1;
-- (void)setObject:(id)arg1 forKey:(id)arg2;
-- (void)removeObjectForKey:(id)arg1;
-- (BOOL)boolForKey:(id)arg1;
-- (void)setBool:(BOOL)arg1 forKey:(id)arg2;
 - (BOOL)synchronize;
+- (void)setBool:(BOOL)arg1 forKey:(id)arg2;
+- (BOOL)boolForKey:(id)arg1;
+- (void)removeObjectForKey:(id)arg1;
+- (void)setObject:(id)arg1 forKey:(id)arg2;
+- (id)objectForKey:(id)arg1;
+- (BOOL)hasKey:(id)arg1;
+- (void)dealloc;
+- (id)initWithApplicationId:(id)arg1;
 
 @end
 

@@ -16,16 +16,16 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)_selectInitiallyCreatedProject:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-@property(readonly, nonatomic) FFMediaEventSidebarProvider *eventProvider;
-@property(readonly, nonatomic) FFOrganizerFilmstripModule *filmstripModule;
-- (void)viewDidLoad;
-- (void)openItemAtIndexPath:(id)arg1 atLocation:(struct CGRect)arg2;
-- (void)reloadOutlineView;
-- (void)reloadOutlineViewNow;
-- (id)indexPathForItem:(struct NSObject *)arg1;
-- (BOOL)outlineView:(id)arg1 acceptDrop:(id)arg2 atIndexPath:(id)arg3 childInsertionIndex:(long long)arg4;
 - (id)defaultSelectedNode;
+- (BOOL)outlineView:(id)arg1 acceptDrop:(id)arg2 atIndexPath:(id)arg3 childInsertionIndex:(long long)arg4;
+- (id)indexPathForItem:(struct NSObject *)arg1;
+- (void)reloadOutlineViewNow;
+- (void)reloadOutlineView;
+- (void)openItemAtIndexPath:(id)arg1 atLocation:(struct CGRect)arg2;
+- (void)viewDidLoad;
+@property(readonly, nonatomic) FFOrganizerFilmstripModule *filmstripModule;
+@property(readonly, nonatomic) FFMediaEventSidebarProvider *eventProvider;
+- (void)moduleViewWillBeRemoved:(id)arg1;
 
 @end
 

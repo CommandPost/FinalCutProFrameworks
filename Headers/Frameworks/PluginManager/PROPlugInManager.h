@@ -10,29 +10,29 @@
 {
 }
 
-+ (id)sharedPlugInManager;
 + (id)allocWithZone:(struct _NSZone *)arg1;
-- (id)delegate;
-- (void)setDelegate:(id)arg1;
-- (BOOL)requiresProtocolsToBePresentWhenLoading;
-- (void)setRequiresProtocolsToBePresentWhenLoading:(BOOL)arg1;
-- (void)addPlugInSearchDirectory:(id)arg1;
-- (void)setPlugInSearchDirectories:(id)arg1;
-- (id)plugInSearchDirectories;
-- (void)scanForPlugIns;
-- (void)scanForPlugInsInDirectory:(id)arg1;
-- (void)scanForPlugInsInBundle:(id)arg1;
-- (void)removeAllPlugIns;
-- (id)plugInGroups;
-- (id)plugIns;
-- (id)plugInsForProtocol:(id)arg1;
-- (id)plugInsForProtocols:(id)arg1;
-- (id)plugInWithUUID:(struct __CFUUID *)arg1;
-- (id)plugInWithClassName:(id)arg1;
-- (id)plugInGroupWithUUID:(struct __CFUUID *)arg1;
-- (void)registerAPIObject:(id)arg1 forProtocol:(id)arg2 version:(unsigned int)arg3;
-- (void)unregisterAPIForProtocol:(id)arg1 version:(unsigned int)arg2;
++ (id)sharedPlugInManager;
 - (void)unregisterAPIForProtocol:(id)arg1;
+- (void)unregisterAPIForProtocol:(id)arg1 version:(unsigned int)arg2;
+- (void)registerAPIObject:(id)arg1 forProtocol:(id)arg2 version:(unsigned int)arg3;
+- (id)plugInGroupWithUUID:(struct __CFUUID *)arg1;
+- (id)plugInWithClassName:(id)arg1;
+- (id)plugInWithUUID:(struct __CFUUID *)arg1;
+- (id)plugInsForProtocols:(id)arg1;
+- (id)plugInsForProtocol:(id)arg1;
+- (id)plugIns;
+- (id)plugInGroups;
+- (void)removeAllPlugIns;
+- (void)scanForPlugInsInBundle:(id)arg1;
+- (void)scanForPlugInsInDirectory:(id)arg1;
+- (void)scanForPlugIns;
+- (id)plugInSearchDirectories;
+- (void)setPlugInSearchDirectories:(id)arg1;
+- (void)addPlugInSearchDirectory:(id)arg1;
+- (void)setRequiresProtocolsToBePresentWhenLoading:(BOOL)arg1;
+- (BOOL)requiresProtocolsToBePresentWhenLoading;
+- (void)setDelegate:(id)arg1;
+- (id)delegate;
 
 @end
 

@@ -21,14 +21,15 @@ __attribute__((visibility("hidden")))
     } _state;
 }
 
-- (id)init;
-- (void)dealloc;
-- (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
-- (BOOL)continueTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3;
-- (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
 @property(nonatomic) FFColorSecondaryEffect *colorSecondaryEffect; // @synthesize colorSecondaryEffect=_colorSecondaryEffect;
 @property(nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObject;
 @property(nonatomic) FFHeColorEffect *colorEffect; // @synthesize colorEffect=_colorEffect;
+- (id).cxx_construct;
+- (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
+- (BOOL)continueTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3;
+- (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
+- (void)dealloc;
+- (id)init;
 
 @end
 

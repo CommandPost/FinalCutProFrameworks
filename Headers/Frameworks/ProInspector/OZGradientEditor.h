@@ -27,30 +27,30 @@
     LKButton *_alphaFlop;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)setDelegate:(id)arg1;
-- (void)setGradientChannel:(struct OZChannelGradient *)arg1 andController:(id)arg2;
-- (struct OZChannelGradient *)getGradientChannel;
-- (void)setSelectedSample:(struct OZChannelGradientSample *)arg1 middleSelected:(BOOL)arg2 doubleClick:(BOOL)arg3;
-- (struct OZChannelGradientSample *)getSelectedSample;
-- (BOOL)getMiddleSelected;
-- (void)aboutToChangeSelectedSampleRGB;
-- (void)didChangeSelectedSampleRGB;
-- (void)updateSelectedSampleRGBFrom:(id)arg1;
-- (void)aboutToChangeSelectedSampleAlpha;
-- (void)didChangeSelectedSampleAlpha;
-- (void)updateSelectedSampleAlphaFrom:(id)arg1;
-- (void)awakeFromNib;
-- (BOOL)manageSubview:(id)arg1 on:(BOOL)arg2;
-- (void)update;
-- (void)_addKeyframeToChannel:(struct OZChannelBase *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)_aboutToChangeGradientAtTime:(CDStruct_1b6d18a9)arg1;
-- (void)rgbSpread:(id)arg1;
-- (void)rgbFlop:(id)arg1;
-- (void)alphaSpread:(id)arg1;
-- (void)alphaFlop:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;
+- (void)alphaFlop:(id)arg1;
+- (void)alphaSpread:(id)arg1;
+- (void)rgbFlop:(id)arg1;
+- (void)rgbSpread:(id)arg1;
+- (void)_aboutToChangeGradientAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)_addKeyframeToChannel:(struct OZChannelBase *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)update;
+- (BOOL)manageSubview:(id)arg1 on:(BOOL)arg2;
+- (void)awakeFromNib;
+- (void)updateSelectedSampleAlphaFrom:(id)arg1;
+- (void)didChangeSelectedSampleAlpha;
+- (void)aboutToChangeSelectedSampleAlpha;
+- (void)updateSelectedSampleRGBFrom:(id)arg1;
+- (void)didChangeSelectedSampleRGB;
+- (void)aboutToChangeSelectedSampleRGB;
+- (BOOL)getMiddleSelected;
+- (struct OZChannelGradientSample *)getSelectedSample;
+- (void)setSelectedSample:(struct OZChannelGradientSample *)arg1 middleSelected:(BOOL)arg2 doubleClick:(BOOL)arg3;
+- (struct OZChannelGradient *)getGradientChannel;
+- (void)setGradientChannel:(struct OZChannelGradient *)arg1 andController:(id)arg2;
+- (void)setDelegate:(id)arg1;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

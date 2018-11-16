@@ -8,11 +8,12 @@
 
 #import "FFRolesMenuDelegate.h"
 #import "NSMenuDelegate.h"
+#import "NSTokenFieldDelegate.h"
 
-@class FFColouredView, FFInspectorMetadataContentRow, FFInspectorMetadataContentView, FFInspectorProjectEventsController, FFMedia, FFProFlippedView, FFRolesMenuController, LKButton, LKSegmentedControl, LKTextField, NSArray, NSArrayController, NSMenu, NSMutableArray, NSMutableDictionary, NSPopUpButton, NSProImageView, NSProThemeImageView, NSScrollView, NSSet, NSTextField, NSView, NSWindow;
+@class FFAnchoredObject, FFColouredView, FFInspectorMetadataContentRow, FFInspectorMetadataContentView, FFInspectorProjectEventsController, FFMedia, FFProFlippedView, FFRolesMenuController, LKButton, LKSegmentedControl, LKTextField, NSArray, NSArrayController, NSMenu, NSMutableArray, NSMutableDictionary, NSPopUpButton, NSProImageView, NSProThemeImageView, NSScrollView, NSSet, NSTextField, NSView, NSWindow;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorModuleMetadata : FFInspectorModule <NSMenuDelegate, FFRolesMenuDelegate>
+@interface FFInspectorModuleMetadata : FFInspectorModule <NSMenuDelegate, FFRolesMenuDelegate, NSTokenFieldDelegate>
 {
     BOOL _currentItemsContainBinObject;
     BOOL _isShowingEventRefs;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
     FFInspectorMetadataContentRow *_metadataTintColorControlGroup;
     FFInspectorMetadataContentRow *_metadataRolesControlGroup;
     FFInspectorMetadataContentRow *_metadataMultiCamAngleControlGroup;
+    FFInspectorMetadataContentRow *_metadataTokenFieldControlGroup;
     LKSegmentedControl *_metadataActionControl;
     NSWindow *_addCustomMetadataWindow;
     NSTextField *_customMetadataNameTextField;
@@ -71,6 +73,7 @@ __attribute__((visibility("hidden")))
     NSTextField *_ccEventContainsClips;
     LKButton *_ccModifyButton;
     FFProFlippedView *_ccEventScrolledView;
+    LKButton *_ccModifyRedRawSettingsButton;
     FFColouredView *_ccEventInfoSeparator;
     FFColouredView *_ccEventAMRSeparator;
     FFColouredView *_ccEventFileSeparator;
@@ -79,85 +82,94 @@ __attribute__((visibility("hidden")))
     LKButton *_ccEventGenerateProxyButton;
     FFColouredView *_missingEffectSep;
     LKTextField *_missingEffectTitle;
+    NSView *_redRawMultipleView;
     struct CGRect _proxyTextFrame;
     struct CGRect _proxyIconFrame;
     NSArray *_currentItemsProxies;
     NSSet *_currentItemsSequences;
     BOOL _itemsChangedThroughRangeInvalidation;
+    FFAnchoredObject *_inspectedItem;
 }
 
-- (id)init;
-- (void)dealloc;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)_createFacets;
-- (void)_rangeInvalidated:(id)arg1;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)viewDidLoad;
-- (id)moduleFooterAccessoryView;
-- (id)selectionOwner;
-- (void)setCurrentItems:(id)arg1;
-- (BOOL)isCurrentItemACompoundClip;
-- (BOOL)isCurrentItemAMultiAngle;
-- (BOOL)isCurrentItemASequence;
-- (void)_sequenceSettingsChanged:(int)arg1 inspectedItem:(id)arg2;
-- (void)showEditCompoundClipSettings:(id)arg1;
-- (void)_growScrollView;
-- (void)_shrinkScrollView;
-- (void)_updateLCD:(BOOL)arg1;
-- (int)_calculateOfflineClipsCountIn:(id)arg1;
-- (id)_eventNameFromUrl:(id)arg1;
-- (void)_updateMediaRefs:(id)arg1 remap:(BOOL)arg2 sequence:(id)arg3 selection:(id)arg4;
-- (void)_removeOldSubviews;
-- (void)_updateReferencedEventsForItems:(id)arg1;
-- (void)_setUpAnglePopupUpButton:(id)arg1 withItems:(id)arg2 useAudio:(BOOL)arg3;
-- (void)_clearAnglePopupButton:(id)arg1;
-- (void)_populateAnglePopupButton:(id)arg1 withMultiCamItems:(id)arg2;
-- (void)_setAnglePopupButton:(id)arg1 forMultiCamItems:(id)arg2 useAudioAngle:(BOOL)arg3;
-- (BOOL)_hasSameMultiCamItems:(id)arg1;
-- (void)_setAngleID:(id)arg1 onMultiCamItems:(id)arg2 popupButton:(id)arg3 useAudio:(BOOL)arg4;
-- (void)videoAnglePopupAction:(id)arg1;
-- (void)audioAnglePopupAction:(id)arg1;
-- (void)generateProxy:(id)arg1;
-- (void)reprioritiseButtonPressed:(id)arg1;
-- (void)reprioritiseCCButtonPressed:(id)arg1;
-- (id)metadataViewState;
-- (void)_setupMetadata;
-- (id)_controlGroupFromMetadataDefinition:(id)arg1;
-- (id)firstKeyView;
-- (void)_setMetadataViewControls;
-- (void)toggleClipReferences:(id)arg1;
-- (void)_setMetadataViewSetFrom:(id)arg1;
-- (void)rowDidMove:(id)arg1;
-- (void)updateForChangedItems;
-- (void)_rangeInvalidatedForMetadata:(id)arg1;
-- (void)_addObservingForCurrentItems;
-- (void)_removeObservingForCurrentItems;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)addCustomMetadataAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)addCustomMetadataSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)addCustomMetadataAction:(id)arg1;
-- (void)addCustomMetadata:(id)arg1;
-- (void)removeProperty:(id)arg1;
-- (void)saveMetadataView:(id)arg1;
-- (void)saveMetadataViewAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)saveMetadataViewSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)saveMetadataViewAction:(id)arg1;
-- (void)saveMetadataViewAs:(id)arg1;
-- (void)editMetadataView:(id)arg1;
-- (void)showNewPresetsWindow:(id)arg1;
-- (void)showEditPresetsWindow:(id)arg1;
-- (void)applyNamePreset:(id)arg1;
-- (void)updateNamePresetMenuItems;
-- (id)anchoredObjectsForRolesMenuController:(id)arg1;
-- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 toAnchoredObjects:(id)arg3;
-- (void)shouldEditRolesForRolesMenuController:(id)arg1;
++ (void)initialize;
+@property(retain, nonatomic) FFAnchoredObject *inspectedItem; // @synthesize inspectedItem=_inspectedItem;
 @property(retain, nonatomic) NSSet *currentItemsSequences; // @synthesize currentItemsSequences=_currentItemsSequences;
 @property(retain, nonatomic) NSArray *currentItemsProxies; // @synthesize currentItemsProxies=_currentItemsProxies;
 @property(retain, nonatomic) NSPopUpButton *activeAudioAnglePopup; // @synthesize activeAudioAnglePopup=_activeAudioAnglePopup;
 @property(retain, nonatomic) NSPopUpButton *activeVideoAnglePopup; // @synthesize activeVideoAnglePopup=_activeVideoAnglePopup;
 @property(retain, nonatomic) LKSegmentedControl *metadataActionControl; // @synthesize metadataActionControl=_metadataActionControl;
 @property(retain, nonatomic) LKSegmentedControl *metadataViewSetControl; // @synthesize metadataViewSetControl=_metadataViewSetControl;
+- (id).cxx_construct;
+- (unsigned long long)tokenField:(id)arg1 styleForRepresentedObject:(id)arg2;
+- (id)tokenField:(id)arg1 representedObjectForEditingString:(id)arg2;
+- (id)tokenField:(id)arg1 editingStringForRepresentedObject:(id)arg2;
+- (id)tokenField:(id)arg1 displayStringForRepresentedObject:(id)arg2;
+- (id)tokenField:(id)arg1 completionsForSubstring:(id)arg2 indexOfToken:(long long)arg3 indexOfSelectedItem:(long long *)arg4;
+- (void)shouldEditRolesForRolesMenuController:(id)arg1;
+- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 toAnchoredObjects:(id)arg3;
+- (id)anchoredObjectsForRolesMenuController:(id)arg1;
+- (void)updateNamePresetMenuItems;
+- (void)applyNamePreset:(id)arg1;
+- (void)showEditPresetsWindow:(id)arg1;
+- (void)showNewPresetsWindow:(id)arg1;
+- (void)editMetadataView:(id)arg1;
+- (void)saveMetadataViewAs:(id)arg1;
+- (void)saveMetadataViewAction:(id)arg1;
+- (void)saveMetadataViewSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)saveMetadataViewAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)saveMetadataView:(id)arg1;
+- (void)removeProperty:(id)arg1;
+- (void)addCustomMetadata:(id)arg1;
+- (void)addCustomMetadataAction:(id)arg1;
+- (void)addCustomMetadataSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)addCustomMetadataAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_removeObservingForCurrentItems;
+- (void)_addObservingForCurrentItems;
+- (void)_rangeInvalidatedForMetadata:(id)arg1;
+- (void)updateForChangedItems;
+- (void)rowDidMove:(id)arg1;
+- (void)_setMetadataViewSetFrom:(id)arg1;
+- (void)toggleClipReferences:(id)arg1;
+- (void)_setMetadataViewControls;
+- (id)firstKeyView;
+- (id)_controlGroupFromMetadataDefinition:(id)arg1;
+- (void)_setupMetadata;
+- (id)metadataViewState;
+- (void)reprioritiseCCButtonPressed:(id)arg1;
+- (void)reprioritiseButtonPressed:(id)arg1;
+- (void)modifyRedRawSettingsButtonPressed:(id)arg1;
+- (void)generateProxy:(id)arg1;
+- (void)audioAnglePopupAction:(id)arg1;
+- (void)videoAnglePopupAction:(id)arg1;
+- (void)_setAngleID:(id)arg1 onMultiCamItems:(id)arg2 popupButton:(id)arg3 useAudio:(BOOL)arg4;
+- (BOOL)_hasSameMultiCamItems:(id)arg1;
+- (void)_setAnglePopupButton:(id)arg1 forMultiCamItems:(id)arg2 useAudioAngle:(BOOL)arg3;
+- (void)_populateAnglePopupButton:(id)arg1 withMultiCamItems:(id)arg2;
+- (void)_clearAnglePopupButton:(id)arg1;
+- (void)_setUpAnglePopupUpButton:(id)arg1 withItems:(id)arg2 useAudio:(BOOL)arg3;
+- (void)_updateReferencedEventsForItems:(id)arg1;
+- (void)_removeOldSubviews;
+- (void)_updateMediaRefs:(id)arg1 remap:(BOOL)arg2 sequence:(id)arg3 selection:(id)arg4;
+- (id)_eventNameFromUrl:(id)arg1;
+- (int)_calculateOfflineClipsCountIn:(id)arg1;
+- (void)_updateLCD:(BOOL)arg1;
+- (void)_shrinkScrollView;
+- (void)_growScrollView;
+- (void)showEditCompoundClipSettings:(id)arg1;
+- (void)_sequenceSettingsChanged:(int)arg1 inspectedItem:(id)arg2;
+- (void)currentItemSettings:(char *)arg1 isCompundClip:(char *)arg2 isReferenceClip:(char *)arg3 isMultiAngleClip:(char *)arg4 isFreezeFrameClip:(char *)arg5;
+- (void)setCurrentItems:(id)arg1;
+- (id)selectionOwner;
+- (id)moduleFooterAccessoryView;
+- (void)viewDidLoad;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)_rangeInvalidated:(id)arg1;
+- (void)_createFacets;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

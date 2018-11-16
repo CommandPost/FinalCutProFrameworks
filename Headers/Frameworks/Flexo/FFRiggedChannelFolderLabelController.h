@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)syncToDisclosureLevel:(BOOL)arg1;
 - (void)setParentController:(id)arg1;
+- (void)syncToDisclosureLevel:(BOOL)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

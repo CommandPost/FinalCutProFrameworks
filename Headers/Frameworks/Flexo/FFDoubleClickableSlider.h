@@ -13,10 +13,10 @@ __attribute__((visibility("hidden")))
     BOOL _hasSetDefaultValue;
 }
 
-- (void)setDefaultValue:(double)arg1;
-- (double)defaultValue;
-- (void)_sliderTouched:(BOOL)arg1;
 - (void)mouseDown:(id)arg1;
+- (void)_sliderTouched:(BOOL)arg1;
+- (double)defaultValue;
+- (void)setDefaultValue:(double)arg1;
 
 @end
 

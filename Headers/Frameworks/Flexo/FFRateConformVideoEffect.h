@@ -16,19 +16,19 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
-- (void)dealloc;
-- (long long)frameSampleMode;
-- (void)setFrameSampleMode:(long long)arg1;
-- (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
-- (id)blendedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 sampleDuration:(CDStruct_1b6d18a9)arg5 roi:(struct CGRect *)arg6;
-- (void)_performFlowAnalysis;
-- (id)flowInterpolatedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 sampleDuration:(CDStruct_1b6d18a9)arg5 roi:(struct CGRect *)arg6;
-- (id)newImageWithFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 inputImage:(id)arg2 stream:(id)arg3;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(struct CGRect *)arg7;
-- (void)createChannelsInFolder:(id)arg1;
-- (BOOL)waitingForAnalysis;
-- (id)inputKeys;
 - (id)newEffectNode;
+- (id)inputKeys;
+- (BOOL)waitingForAnalysis;
+- (void)createChannelsInFolder:(id)arg1;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (id)newImageWithFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 inputImage:(id)arg2 stream:(id)arg3;
+- (id)newFlowInterpolatedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 sampleDuration:(CDStruct_1b6d18a9)arg5 roi:(const struct CGRect *)arg6;
+- (void)_performFlowAnalysis;
+- (id)newBlendedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 sampleDuration:(CDStruct_1b6d18a9)arg5 roi:(const struct CGRect *)arg6;
+- (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
+- (void)setFrameSampleMode:(long long)arg1;
+- (long long)frameSampleMode;
+- (void)dealloc;
 
 @end
 

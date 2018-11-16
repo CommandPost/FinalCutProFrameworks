@@ -21,37 +21,37 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)puckControllerForPuckType:(int)arg1 boardType:(int)arg2;
-- (id)initWithPuckType:(int)arg1 boardType:(int)arg2;
-- (void)dealloc;
-- (id)puckUI;
-- (void)setPuckUI:(id)arg1;
-- (struct CGSize)puckSize;
-- (double)puckHitAreaInset;
-- (id)puckImage;
-- (id)pressedPuckImage;
-- (id)legendImage;
-- (BOOL)puckHasFocus;
-- (void)setPuckFocus:(BOOL)arg1;
-- (void)addNotificationObservers;
-- (void)notificationHandler:(id)arg1;
-- (void)updatePuckUI;
-- (void)resetData;
-- (void)movePuckUIToCenterPosition:(struct CGPoint)arg1;
-- (struct CGPoint)puckCurrentNormalizedPosition;
-- (struct CGPoint)puckCurrentUICenterPosition;
-- (BOOL)isYAxisConstrained;
-- (BOOL)isXAxisConstrained;
 @property(nonatomic) id <CBPuckControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void)syncToDataSourceWithAnimation:(BOOL)arg1;
-- (struct CGPoint)defaultNormalizedPosition;
-- (void)setPuckNormalizedPosition:(struct CGPoint)arg1;
-- (struct CGPoint)puckNormalizedPosition;
 @property(nonatomic) id <CBPuckControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) FFColorBoardPuckButton *puckView; // @synthesize puckView=_puckView;
 @property(retain, nonatomic) NSString *puckID; // @synthesize puckID=_puckID;
 @property(nonatomic) int boardType; // @synthesize boardType=_boardType;
 @property(nonatomic) int puckType; // @synthesize puckType=_puckType;
 @property(nonatomic) long long puckDragEventCount; // @synthesize puckDragEventCount=_puckDragEventCount;
+- (struct CGPoint)puckNormalizedPosition;
+- (void)setPuckNormalizedPosition:(struct CGPoint)arg1;
+- (struct CGPoint)defaultNormalizedPosition;
+- (void)syncToDataSourceWithAnimation:(BOOL)arg1;
+- (BOOL)isXAxisConstrained;
+- (BOOL)isYAxisConstrained;
+- (struct CGPoint)puckCurrentUICenterPosition;
+- (struct CGPoint)puckCurrentNormalizedPosition;
+- (void)movePuckUIToCenterPosition:(struct CGPoint)arg1;
+- (void)resetData;
+- (void)updatePuckUI;
+- (void)notificationHandler:(id)arg1;
+- (void)addNotificationObservers;
+- (void)setPuckFocus:(BOOL)arg1;
+- (BOOL)puckHasFocus;
+- (id)legendImage;
+- (id)pressedPuckImage;
+- (id)puckImage;
+- (double)puckHitAreaInset;
+- (struct CGSize)puckSize;
+- (void)setPuckUI:(id)arg1;
+- (id)puckUI;
+- (void)dealloc;
+- (id)initWithPuckType:(int)arg1 boardType:(int)arg2;
 
 @end
 

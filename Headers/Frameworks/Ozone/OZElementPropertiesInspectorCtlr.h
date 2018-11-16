@@ -10,9 +10,9 @@
 {
 }
 
-- (BOOL)buildUIWithSceneNodes:(list_699e9227 *)arg1 context:(id)arg2;
-- (BOOL)isChannelA:(struct OZChannelBase *)arg1 compatibleWithChannelB:(struct OZChannelBase *)arg2;
 - (int)numberVisibleDescendants:(struct OZChannelFolder *)arg1;
+- (BOOL)isChannelA:(struct OZChannelBase *)arg1 compatibleWithChannelB:(struct OZChannelBase *)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_1192f13f *)arg1 context:(id)arg2;
 
 @end
 

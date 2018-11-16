@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithIsHUD:(BOOL)arg1 bundleID:(struct __CFString *)arg2;
 - (BOOL)isRigDisplay;
+- (id)initWithIsHUD:(BOOL)arg1 bundleID:(struct __CFString *)arg2;
 
 @end
 

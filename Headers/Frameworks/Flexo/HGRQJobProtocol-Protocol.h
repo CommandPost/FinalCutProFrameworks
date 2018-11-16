@@ -5,7 +5,7 @@
 //
 
 @protocol HGRQJobProtocol
-- (void)jobStarted;
 - (void)jobFinished;
+- (void)jobStarted;
 @end
 

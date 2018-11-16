@@ -11,23 +11,18 @@ __attribute__((visibility("hidden")))
 {
     struct CGColorSpace *_colorSpace;
     struct ColorSyncProfile *_colorSyncProfile;
-    struct __CFArray *_colorProfTags;
-    struct {
-        unsigned char digest[16];
-    } _profileMD5;
+    struct __CFArray *_colorProfRelevantTagSignatures;
     struct __CFData *_iccData;
     int _colorSpaceEnum;
 }
 
-- (id)initWithColorSpace:(struct CGColorSpace *)arg1;
-- (id)initWithColorSyncProfile:(struct ColorSyncProfile *)arg1;
-- (void)dealloc;
-- (struct CGColorSpace *)colorSpace;
-- (struct ColorSyncProfile *)colorSyncProfile;
-- (CDStruct_60067b7e)colorProfileMD5;
-- (struct __CFData *)copyICCColorSpaceData;
+@property(readonly, nonatomic) struct __CFData *iccColorSpaceData; // @synthesize iccColorSpaceData=_iccData;
 @property(nonatomic) int colorSpaceEnum; // @synthesize colorSpaceEnum=_colorSpaceEnum;
-@property(readonly, nonatomic) struct __CFArray *colorProfTags; // @synthesize colorProfTags=_colorProfTags;
+@property(readonly, nonatomic) struct __CFArray *colorProfRelevantTagSignatures; // @synthesize colorProfRelevantTagSignatures=_colorProfRelevantTagSignatures;
+@property(readonly, nonatomic) struct ColorSyncProfile *colorSyncProfile; // @synthesize colorSyncProfile=_colorSyncProfile;
+@property(readonly, nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
+- (void)dealloc;
+- (id)initWithColorSpace:(struct CGColorSpace *)arg1;
 
 @end
 

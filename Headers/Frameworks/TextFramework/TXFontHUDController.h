@@ -16,18 +16,18 @@
     OZColorWell *_fontColorCW;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 textLayout:(struct TXTextLayout *)arg2 context:(id)arg3;
-- (void)dealloc;
-- (void)update;
-- (void)updateEnableState;
-- (void)enable;
-- (void)disable;
-- (void)changeChannel:(id)arg1;
-- (void)setChannelValue:(id)arg1;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (id)familyController;
-- (id)typefaceController;
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (id)typefaceController;
+- (id)familyController;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)setChannelValue:(id)arg1;
+- (void)changeChannel:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)updateEnableState;
+- (void)update;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 textLayout:(struct TXTextLayout *)arg2 context:(id)arg3;
 
 @end
 

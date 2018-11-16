@@ -8,16 +8,20 @@
 
 @interface FFMediaRefChannelPickerTool : FFMatchTool
 {
+    CDStruct_1b6d18a9 _sourceOffset;
 }
 
-+ (void)initialize;
-+ (id)displayName;
 + (id)cursor;
++ (id)displayName;
++ (void)initialize;
 + (id)TLKEventHandlerID;
-- (void)becomeActiveTool;
+- (CDStruct_1b6d18a9)sourceOffset;
+- (void)setSourceOffset:(CDStruct_1b6d18a9)arg1;
 - (void)dealloc;
-- (void)willSetAsHandlerForTimeline:(id)arg1;
+- (void)becomeActiveTool;
+- (id)init;
 - (void)didRemoveAsHandlerForTimeline:(id)arg1;
+- (void)willSetAsHandlerForTimeline:(id)arg1;
 
 @end
 

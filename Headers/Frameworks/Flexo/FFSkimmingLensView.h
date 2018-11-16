@@ -6,27 +6,25 @@
 
 #import <Flexo/FFPlayerItemView.h>
 
-@class FFFrameSpread, FFPlayerView;
+@class FFPlayerView;
 
 __attribute__((visibility("hidden")))
 @interface FFSkimmingLensView : FFPlayerItemView
 {
-    FFFrameSpread *framespread;
     struct CGPoint offsetMousePosition;
     FFPlayerView *_playerView;
     struct CGSize _playerViewSize;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)viewDidMoveToSuperview;
-- (void)viewWillMoveToWindow:(id)arg1;
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
-- (void)mouseDown:(id)arg1;
-- (void)scrollWheel:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (BOOL)acceptsFirstResponder;
 @property(nonatomic) struct CGPoint offsetMousePosition; // @synthesize offsetMousePosition;
-@property(nonatomic) FFFrameSpread *framespread; // @synthesize framespread;
+- (BOOL)acceptsFirstResponder;
+- (void)rightMouseDown:(id)arg1;
+- (void)scrollWheel:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
+- (void)viewWillMoveToWindow:(id)arg1;
+- (void)viewDidMoveToSuperview;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

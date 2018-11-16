@@ -15,17 +15,17 @@
     NSMutableArray *_verticesController;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)didBuildUI;
-- (void)select:(BOOL)arg1;
-- (void)select:(BOOL)arg1 excludeChannel:(struct OZChannelBase *)arg2;
-- (void)updateLockFlags;
-- (BOOL)isSelected;
-- (void)notify:(unsigned int)arg1;
-- (unsigned int)getNumberOfVertices:(struct OZChannelBase *)arg1;
-- (id)addVertexController:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
 - (id)addMainController:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)addVertexController:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
+- (unsigned int)getNumberOfVertices:(struct OZChannelBase *)arg1;
+- (void)notify:(unsigned int)arg1;
+- (BOOL)isSelected;
+- (void)updateLockFlags;
+- (void)select:(BOOL)arg1 excludeChannel:(struct OZChannelBase *)arg2;
+- (void)select:(BOOL)arg1;
+- (void)didBuildUI;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

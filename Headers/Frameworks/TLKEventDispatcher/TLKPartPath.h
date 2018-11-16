@@ -14,14 +14,14 @@
 }
 
 + (id)partPathWithParts:(id)arg1;
-- (id)initWithParts:(id)arg1;
-- (void)dealloc;
-- (id)allParts;
-- (id)firstPart;
-- (id)lastPart;
-- (id)partWithIdentifier:(id)arg1;
-- (id)path;
 - (id)description;
+- (id)path;
+- (id)partWithIdentifier:(id)arg1;
+- (id)lastPart;
+- (id)firstPart;
+- (id)allParts;
+- (void)dealloc;
+- (id)initWithParts:(id)arg1;
 
 @end
 

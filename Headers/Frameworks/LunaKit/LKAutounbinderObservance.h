@@ -15,10 +15,10 @@
     void *_context;
 }
 
-- (id)initWithObserver:(id)arg1 keyPath:(id)arg2 context:(void *)arg3;
-- (void)dealloc;
-- (id)description;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)description;
+- (void)dealloc;
+- (id)initWithObserver:(id)arg1 keyPath:(id)arg2 context:(void *)arg3;
 
 @end
 

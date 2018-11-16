@@ -16,15 +16,15 @@ __attribute__((visibility("hidden")))
     NSString *_accessibilityTitle;
 }
 
-- (void)dealloc;
-- (void)configureWithState:(long long)arg1;
 @property(nonatomic) long long state; // @synthesize state=_state;
-@property(nonatomic) BOOL allowsMixedState;
-- (long long)_nextState;
-- (void)_handleButtonActuated;
-- (id)accessibilityAttributeNames;
-- (id)accessibilityAttributeValue:(id)arg1;
 @property(copy, nonatomic) NSString *accessibilityTitle; // @synthesize accessibilityTitle=_accessibilityTitle;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (void)_handleButtonActuated;
+- (long long)_nextState;
+@property(nonatomic) BOOL allowsMixedState;
+- (void)configureWithState:(long long)arg1;
+- (void)dealloc;
 
 @end
 

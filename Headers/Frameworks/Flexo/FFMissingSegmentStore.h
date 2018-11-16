@@ -15,11 +15,12 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_paths;
 }
 
-- (id)initWithMD5:(CDStruct_60067b7e)arg1;
-- (void)dealloc;
-- (BOOL)matches:(CDStruct_60067b7e *)arg1;
-- (BOOL)pathsInclude:(id)arg1;
+- (id).cxx_construct;
 - (void)addPaths:(id)arg1;
+- (BOOL)pathsInclude:(id)arg1;
+- (BOOL)matches:(CDStruct_bdcb2b0d *)arg1;
+- (void)dealloc;
+- (id)initWithMD5:(CDStruct_bdcb2b0d)arg1;
 
 @end
 

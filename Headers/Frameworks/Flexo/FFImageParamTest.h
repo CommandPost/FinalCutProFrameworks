@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
-- (id)inputKeys;
 - (BOOL)_useYellowPins;
+- (id)inputKeys;
 
 @end
 

@@ -16,15 +16,15 @@
     NSLock *_lock;
 }
 
-- (id)initWithTimeIncrement:(CDStruct_1b6d18a9)arg1;
-- (void)dealloc;
-- (struct OpaqueFigClock *)figClock;
-- (void)incrementTime;
-- (void)incrementTimeByDuration:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)getTime;
-- (double)getRate;
-- (void)setTimeIncrement:(CDStruct_1b6d18a9)arg1;
 - (id)description;
+- (void)setTimeIncrement:(CDStruct_1b6d18a9)arg1;
+- (double)getRate;
+- (CDStruct_1b6d18a9)getTime;
+- (void)incrementTimeByDuration:(CDStruct_1b6d18a9)arg1;
+- (void)incrementTime;
+- (struct OpaqueFigClock *)figClock;
+- (void)dealloc;
+- (id)initWithTimeIncrement:(CDStruct_1b6d18a9)arg1;
 
 @end
 

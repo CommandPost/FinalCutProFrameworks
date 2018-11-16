@@ -10,13 +10,13 @@
 
 @interface TLKPlaceholderLayer : TLKItemBackgroundLayer
 {
-    id _representedObject;
+    id <TLKTimelineItem> _representedObject;
     CALayer *_itemBackgroundLayer;
 }
 
-- (id)init;
-- (void)dealloc;
 @property(retain) id <TLKTimelineItem> representedObject;
+- (void)dealloc;
+- (id)init;
 
 @end
 

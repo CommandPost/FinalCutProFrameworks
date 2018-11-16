@@ -14,17 +14,17 @@
     BOOL _isVectorMask;
 }
 
-- (id)initLayerMaskWithLayerRef:(id)arg1;
-- (id)initVectorMaskWithLayerRef:(id)arg1;
-- (void)dealloc;
-- (id)layerRef;
-- (BOOL)isLinked;
-- (BOOL)isEnabled;
-- (BOOL)isInvertedWhenBlending;
-- (struct CGRect)bounds;
-- (id)bezierPath;
-- (id)bezierPathAtScale:(double)arg1;
 - (struct CGImage *)createCGImageMask;
+- (id)bezierPathAtScale:(double)arg1;
+- (id)bezierPath;
+- (struct CGRect)bounds;
+- (BOOL)isInvertedWhenBlending;
+- (BOOL)isEnabled;
+- (BOOL)isLinked;
+- (id)layerRef;
+- (void)dealloc;
+- (id)initVectorMaskWithLayerRef:(id)arg1;
+- (id)initLayerMaskWithLayerRef:(id)arg1;
 
 @end
 

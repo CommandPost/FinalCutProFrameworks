@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
     double _Cr;
 }
 
-- (id)newRGB;
-- (double)saturation;
 @property(nonatomic) double Cr; // @synthesize Cr=_Cr;
 @property(nonatomic) double Cb; // @synthesize Cb=_Cb;
 @property(nonatomic) double Y; // @synthesize Y=_Y;
+- (double)saturation;
+- (id)newRGB;
 
 @end
 

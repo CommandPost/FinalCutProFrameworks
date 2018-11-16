@@ -14,9 +14,9 @@
 }
 
 + (id)iconForItems:(id)arg1;
-- (void)dealloc;
-- (id)inspectedItem;
 @property(retain, nonatomic) FFContext *context; // @synthesize context=_context;
+- (id)inspectedItem;
+- (void)dealloc;
 
 @end
 

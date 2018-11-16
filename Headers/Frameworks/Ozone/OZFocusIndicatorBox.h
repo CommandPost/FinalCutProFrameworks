@@ -12,12 +12,12 @@
 }
 
 + (void)initialize;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)viewWillMoveToWindow:(id)arg1;
-- (void)needsDisplayWrapper:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)needsDisplayWrapper:(id)arg1;
+- (void)viewWillMoveToWindow:(id)arg1;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

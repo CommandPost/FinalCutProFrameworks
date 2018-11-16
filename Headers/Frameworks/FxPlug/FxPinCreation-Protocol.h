@@ -4,15 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FxPin, NSArray;
+
 @protocol FxPinCreation
-- (Class)canvasControlClass;
+- (void)valueChangedForPin:(FxPin *)arg1;
+- (FxPin *)transitionImageBInputPin;
+- (FxPin *)transitionImageAInputPin;
+- (FxPin *)filterImageInputPin;
+- (FxPin *)imageOutputPin;
+- (NSArray *)createOutputPinArray;
+- (NSArray *)createInputPinArray;
 - (void)setCanvasControlClass:(Class)arg1;
-- (id)createInputPinArray;
-- (id)createOutputPinArray;
-- (id)imageOutputPin;
-- (id)filterImageInputPin;
-- (id)transitionImageAInputPin;
-- (id)transitionImageBInputPin;
-- (void)valueChangedForPin:(id)arg1;
+- (Class)canvasControlClass;
 @end
 

@@ -11,12 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithObject:(id)arg1 topToBottom:(BOOL)arg2 timeline:(id)arg3;
-- (void)addAngleObservers;
-- (void)removeAngleObservers;
-- (BOOL)observeAngleForKey:(id)arg1;
-- (id)effectsToDisplay;
 - (id)effectStack;
+- (id)effectsToDisplay;
+- (BOOL)observeAngleForKey:(id)arg1;
+- (void)removeAngleObservers;
+- (void)addAngleObservers;
+- (id)initWithObject:(id)arg1 topToBottom:(BOOL)arg2 timeline:(id)arg3;
 
 @end
 

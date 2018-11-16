@@ -20,13 +20,13 @@
     struct OZScene *_pScene;
 }
 
-- (id)initWithScene:(struct OZScene *)arg1 type:(unsigned int)arg2;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (int)getAnswer;
-- (void)cancel:(id)arg1;
-- (void)keep2D:(id)arg1;
 - (void)switchTo3D:(id)arg1;
+- (void)keep2D:(id)arg1;
+- (void)cancel:(id)arg1;
+- (int)getAnswer;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithScene:(struct OZScene *)arg1 type:(unsigned int)arg2;
 
 @end
 

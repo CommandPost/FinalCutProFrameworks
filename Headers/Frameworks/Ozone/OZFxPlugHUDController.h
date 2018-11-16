@@ -10,9 +10,9 @@
 {
 }
 
-- (void)buildUIWithObjectList:(list_2c251165 *)arg1 viewController:(id)arg2 context:(id)arg3;
-- (id)createViewControllerWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)doLoadWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)createViewControllerWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)buildUIWithObjectList:(list_37573188 *)arg1 viewController:(id)arg2 context:(id)arg3;
 
 @end
 

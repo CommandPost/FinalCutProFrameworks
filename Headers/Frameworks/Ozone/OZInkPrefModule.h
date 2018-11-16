@@ -16,16 +16,16 @@
     LKButton *inkInAirButton;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)initializeFromDefaults;
-- (BOOL)isResizable;
-- (void)toggleApplicationGestures:(id)arg1;
-- (void)openInkPreferencePane:(id)arg1;
-- (void)setInkTriggerMethod:(id)arg1;
-- (void)toggleInkInAir:(id)arg1;
-- (void)engenderInk;
 - (void)inkStateChanged:(id)arg1;
+- (void)engenderInk;
+- (void)toggleInkInAir:(id)arg1;
+- (void)setInkTriggerMethod:(id)arg1;
+- (void)openInkPreferencePane:(id)arg1;
+- (void)toggleApplicationGestures:(id)arg1;
+- (BOOL)isResizable;
+- (void)initializeFromDefaults;
+- (void)dealloc;
+- (id)init;
 
 @end
 

@@ -10,8 +10,8 @@
 {
 }
 
-- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (void)drawRect:(struct CGRect)arg1;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 
 @end
 

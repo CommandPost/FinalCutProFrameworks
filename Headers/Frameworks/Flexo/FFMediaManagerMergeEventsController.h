@@ -16,16 +16,16 @@
 }
 
 + (void)showMediaManagerMergeEventsSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 projectOrganizerModule:(id)arg4 eventsToMerge:(id)arg5 destinationLocation:(id)arg6 newEventName:(id)arg7;
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)finishMMOperation;
-- (id)renderFileURLsForClip:(id)arg1;
-- (id)filesToTransferInEvents:(id)arg1 isMergeOnSameDrive:(BOOL)arg2 options:(id)arg3;
-- (void)updateAssetRefsInAllProjectsForMergedEvents:(id)arg1;
-- (BOOL)isMergeOnSameDrive:(id)arg1;
-- (void)OK:(id)arg1;
-- (void)showMediaManagerMergeEventsSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 projectOrganizerModule:(id)arg4 eventsToMerge:(id)arg5 destinationLocation:(id)arg6 newEventName:(id)arg7;
 @property(retain) NSArray *eventsToMerge; // @synthesize eventsToMerge=_eventsToMerge;
+- (void)showMediaManagerMergeEventsSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 projectOrganizerModule:(id)arg4 eventsToMerge:(id)arg5 destinationLocation:(id)arg6 newEventName:(id)arg7;
+- (void)OK:(id)arg1;
+- (BOOL)isMergeOnSameDrive:(id)arg1;
+- (void)updateAssetRefsInAllProjectsForMergedEvents:(id)arg1 mediaMap:(id)arg2;
+- (id)filesToTransferInEvents:(id)arg1 isMergeOnSameDrive:(BOOL)arg2 options:(id)arg3;
+- (id)renderFileURLsForClip:(id)arg1;
+- (void)finishMMOperation;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

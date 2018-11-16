@@ -17,17 +17,17 @@ __attribute__((visibility("hidden")))
     struct __FSEventStream *m_eventStream;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)populateMenu;
-- (id)appendUserPresets:(id)arg1 toMenu:(id)arg2 currentPreset:(id)arg3;
-- (void)_addObservers;
-- (void)_removeObservers;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_postPresetChangedNotification;
-- (void)selectPresetMenuCommandItem:(id)arg1;
-- (void)selectUserPresetMenuItem:(id)arg1;
 - (void)selectFactoryPresetMenuItem:(id)arg1;
+- (void)selectUserPresetMenuItem:(id)arg1;
+- (void)selectPresetMenuCommandItem:(id)arg1;
+- (void)_postPresetChangedNotification;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_removeObservers;
+- (void)_addObservers;
+- (id)appendUserPresets:(id)arg1 toMenu:(id)arg2 currentPreset:(id)arg3;
+- (void)populateMenu;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

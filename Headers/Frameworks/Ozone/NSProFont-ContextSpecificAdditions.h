@@ -7,31 +7,31 @@
 #import "NSProFont.h"
 
 @interface NSProFont (ContextSpecificAdditions)
-+ (id)headerTextAttributes;
-+ (id)labelTextAttributes;
-+ (id)selectedLabelTextAttributes;
-+ (id)italicizedLabelTextAttributes;
-+ (id)popUpLabelTextAttributesUsingForegroundColor;
-+ (id)inactiveLabelTextAttributesUsingForegroundColor;
-+ (id)windowFooterLabelTextAttributes;
-+ (id)toolbarMenuRegularLabelTextAttributes;
-+ (id)canvasHeaderRegularLabelTextAttributes;
-+ (id)canvasHeaderInactiveMiniLabelTextAttributes;
-+ (id)canvasHeaderInactiveRegularLabelTextAttributes;
-+ (id)timebarDefaultTextAttributes;
-+ (id)timebarSelectedTextAttributes;
-+ (id)dropMenuMainTextAttributes;
-+ (id)dropMenuSubTextAttributes;
-+ (id)headerTextFont;
-+ (id)timelineRulerTextFont;
-+ (id)regularLabelTextFont;
-+ (id)labelTextFont;
-+ (id)selectedLabelTextFont;
-+ (id)miniLabelTextFont;
-+ (id)italicizedLabelFont;
-+ (id)windowFooterTextFont;
-+ (id)timebarFont;
-+ (id)dropMenuMainTextFont;
 + (id)oz_MediumUIFont;
++ (id)dropMenuMainTextFont;
++ (id)timebarFont;
++ (id)windowFooterTextFont;
++ (id)italicizedLabelFont;
++ (id)miniLabelTextFont;
++ (id)selectedLabelTextFont;
++ (id)labelTextFont;
++ (id)regularLabelTextFont;
++ (id)timelineRulerTextFont;
++ (id)headerTextFont;
++ (id)dropMenuSubTextAttributes;
++ (id)dropMenuMainTextAttributes;
++ (id)timebarSelectedTextAttributes;
++ (id)timebarDefaultTextAttributes;
++ (id)canvasHeaderInactiveRegularLabelTextAttributes;
++ (id)canvasHeaderInactiveMiniLabelTextAttributes;
++ (id)canvasHeaderRegularLabelTextAttributes;
++ (id)toolbarMenuRegularLabelTextAttributes;
++ (id)windowFooterLabelTextAttributes;
++ (id)inactiveLabelTextAttributesUsingForegroundColor;
++ (id)popUpLabelTextAttributesUsingForegroundColor;
++ (id)italicizedLabelTextAttributes;
++ (id)selectedLabelTextAttributes;
++ (id)labelTextAttributes;
++ (id)headerTextAttributes;
 @end
 

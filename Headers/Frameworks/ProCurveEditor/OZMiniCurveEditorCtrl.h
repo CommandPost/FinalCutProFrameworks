@@ -10,24 +10,24 @@
 {
 }
 
-- (id)initWithView:(id)arg1 andChannel:(struct OZChannelBase *)arg2;
-- (void)dealloc;
-- (void)buildDefaultMenu;
-- (BOOL)validateMenuItem:(id)arg1;
-- (BOOL)validateDefaultMenuItem:(id)arg1;
-- (void)menuSetCurvePreExtrapolation:(id)arg1;
-- (void)menuSetCurvePostExtrapolation:(id)arg1;
-- (void)menuLockChannel:(id)arg1 channel:(struct OZChannel *)arg2;
-- (void)menuSetCurveInterpolation:(id)arg1 channel:(struct OZChannel *)arg2;
-- (void)selectionChangedTo:(id)arg1;
-- (BOOL)hasSelection;
-- (id)sketchedChannels;
-- (unsigned int)numberOfSketchedChannels;
-- (void)moveSelectedInY:(id)arg1 y:(double)arg2;
-- (void)moveSelectedInX:(id)arg1 x:(CDStruct_1b6d18a9)arg2;
-- (CDStruct_1b6d18a9)getSelectedValueX;
-- (double)getSelectedValueY;
 - (void)update;
+- (double)getSelectedValueY;
+- (CDStruct_1b6d18a9)getSelectedValueX;
+- (void)moveSelectedInX:(id)arg1 x:(CDStruct_1b6d18a9)arg2;
+- (void)moveSelectedInY:(id)arg1 y:(double)arg2;
+- (unsigned int)numberOfSketchedChannels;
+- (id)sketchedChannels;
+- (BOOL)hasSelection;
+- (void)selectionChangedTo:(id)arg1;
+- (void)menuSetCurveInterpolation:(id)arg1 channel:(struct OZChannel *)arg2;
+- (void)menuLockChannel:(id)arg1 channel:(struct OZChannel *)arg2;
+- (void)menuSetCurvePostExtrapolation:(id)arg1;
+- (void)menuSetCurvePreExtrapolation:(id)arg1;
+- (BOOL)validateDefaultMenuItem:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)buildDefaultMenu;
+- (void)dealloc;
+- (id)initWithView:(id)arg1 andChannel:(struct OZChannelBase *)arg2;
 
 @end
 

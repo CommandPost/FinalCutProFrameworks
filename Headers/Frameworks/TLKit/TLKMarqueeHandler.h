@@ -26,22 +26,23 @@
     } _mhFlags;
 }
 
-- (void)dealloc;
-- (void)startSelection:(id)arg1;
-- (void)cancelSelection:(id)arg1;
-- (void)stopSelection:(id)arg1;
-- (struct CGRect)marqueeRect;
-- (void)_removeMarqueeLayer;
-- (void)_updateMarqueeLayer;
-- (struct CGRect)_marqueeRectFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
-- (void)_addEdits:(id)arg1 intersectingRect:(struct CGRect)arg2 inLayoutManager:(id)arg3;
-- (void)_updateSelectionForItems:(id)arg1;
-- (void)performSelection:(id)arg1;
-- (BOOL)startTracking:(id)arg1;
-- (BOOL)continueTracking:(id)arg1;
-- (void)cancelTracking:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
+- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (BOOL)stopTracking:(id)arg1;
+- (void)cancelTracking:(id)arg1;
+- (BOOL)continueTracking:(id)arg1;
+- (BOOL)startTracking:(id)arg1;
+- (void)performSelection:(id)arg1;
+- (void)_updateSelectionForItems:(id)arg1;
+- (void)_addEdits:(id)arg1 intersectingRect:(struct CGRect)arg2 inLayoutManager:(id)arg3;
+- (struct CGRect)_marqueeRectFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
+- (void)_updateMarqueeLayer;
+- (void)_removeMarqueeLayer;
+- (struct CGRect)marqueeRect;
+- (void)stopSelection:(id)arg1;
+- (void)cancelSelection:(id)arg1;
+- (void)startSelection:(id)arg1;
+- (void)dealloc;
 
 @end
 

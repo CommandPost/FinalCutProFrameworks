@@ -18,19 +18,19 @@ __attribute__((visibility("hidden")))
     int m_playEnable;
 }
 
-- (id)init;
-- (id)initWithName:(id)arg1 sourceType:(id)arg2;
-- (id)initWithSourceDescription:(id)arg1;
-- (id)initWithAnchoredObject:(id)arg1 audioSourceDict:(id)arg2;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)sourceName;
-- (id)sourceType;
-- (int)playEnable;
-- (void)setSourceName:(id)arg1;
 - (void)setPlayEnable:(int)arg1;
+- (void)setSourceName:(id)arg1;
+- (int)playEnable;
+- (id)sourceType;
+- (id)sourceName;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)initWithAnchoredObject:(id)arg1 audioSourceDict:(id)arg2;
+- (id)initWithSourceDescription:(id)arg1;
+- (id)initWithName:(id)arg1 sourceType:(id)arg2;
+- (id)init;
 
 @end
 

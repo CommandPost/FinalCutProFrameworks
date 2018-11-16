@@ -10,15 +10,15 @@
 {
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (int)getDrawingOrder;
-- (BOOL)is3DOSC;
-- (void)dealloc;
-- (void)getAllCameraNodes:(vector_e037a3dd *)arg1 forScene:(struct OZScene *)arg2;
-- (void)draw;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)draw;
+- (void)getAllCameraNodes:(vector_5a1dfb64 *)arg1 forScene:(struct OZScene *)arg2;
+- (void)dealloc;
+- (BOOL)is3DOSC;
+- (int)getDrawingOrder;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

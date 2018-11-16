@@ -23,19 +23,6 @@
     FFImage *_images[2];
 }
 
-- (id)initWithStream:(id)arg1 time:(CDStruct_1b6d18a9)arg2 timeRepresented:(CDStruct_1b6d18a9)arg3 nativeFrameDur:(CDStruct_1b6d18a9)arg4 nativeSampleDur:(CDStruct_1b6d18a9)arg5 token1:(id)arg6 token2:(id)arg7 context1:(id)arg8 context2:(id)arg9 bounds:(struct CGRect)arg10;
-- (void)dealloc;
-- (unsigned int)scheduleStatusInformation;
-- (BOOL)readyToImage;
-- (BOOL)inputSourcesReady;
-- (void)waitForInputSourcesBeforeDate:(id)arg1;
-- (_Bool)hasImageForField:(int)arg1;
-- (_Bool)hasRepresentationalImages;
-- (void)hintWillImageFieldSoon:(int)arg1;
-- (_Bool)ensureRepresentationalImageForField:(int)arg1;
-- (id)imageForField:(int)arg1;
-- (id)statusInfo;
-- (id)description;
 @property(readonly) int fieldCount; // @synthesize fieldCount=_fieldCount;
 @property(readonly) CDStruct_1b6d18a9 timeRepresented; // @synthesize timeRepresented=_timeRepresented;
 @property(readonly) CDStruct_1b6d18a9 time; // @synthesize time=_time;
@@ -43,6 +30,19 @@
 @property(readonly) CDStruct_1b6d18a9 nativeFrameDur; // @synthesize nativeFrameDur=_nativeFrameDur;
 @property(readonly) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(readonly) FFStreamVideo *stream; // @synthesize stream=_stream;
+- (id)description;
+- (id)statusInfo;
+- (id)imageForField:(int)arg1;
+- (_Bool)ensureRepresentationalImageForField:(int)arg1;
+- (void)hintWillImageFieldSoon:(int)arg1;
+- (_Bool)hasRepresentationalImages;
+- (_Bool)hasImageForField:(int)arg1;
+- (void)waitForInputSourcesBeforeDate:(id)arg1;
+- (BOOL)inputSourcesReady;
+- (BOOL)readyToImage;
+- (unsigned int)scheduleStatusInformation;
+- (void)dealloc;
+- (id)initWithStream:(id)arg1 time:(CDStruct_1b6d18a9)arg2 timeRepresented:(CDStruct_1b6d18a9)arg3 nativeFrameDur:(CDStruct_1b6d18a9)arg4 nativeSampleDur:(CDStruct_1b6d18a9)arg5 token1:(id)arg6 token2:(id)arg7 context1:(id)arg8 context2:(id)arg9 bounds:(struct CGRect)arg10;
 
 @end
 

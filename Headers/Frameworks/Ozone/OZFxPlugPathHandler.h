@@ -13,29 +13,29 @@
     struct OZFxPlugSharedBase *_plugin;
 }
 
-- (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
-- (id)_pathErrorWithCode:(long long)arg1 andString:(id)arg2 inMethod:(const char *)arg3;
-- (struct OZElement *)_element;
-- (id)_rotoshape:(struct OZRotoshape **)arg1 forPathID:(void *)arg2;
-- (unsigned long long)_interpToPathStyle:(unsigned int)arg1;
-- (struct OZRenderState)_renderState;
-- (struct CGPoint)_parametricallyEvaluateLinearVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(double)arg4 error:(id *)arg5;
-- (struct CGPoint)_parametricallyEvaluateBezierVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(double)arg4 error:(id *)arg5;
-- (struct CGPoint)_parametricallyEvaluateXSplineVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(double)arg4 error:(id *)arg5;
-- (unsigned long long)numberOfPathsAtTime:(double)arg1;
-- (void *)pathIDForIndex:(unsigned long long)arg1 error:(id *)arg2;
-- (id)nameOfPath:(void *)arg1 error:(id *)arg2;
-- (BOOL)isPath:(void *)arg1 openAtTime:(double)arg2 error:(id *)arg3;
-- (BOOL)isPath:(void *)arg1 invertedAtTime:(double)arg2 error:(id *)arg3;
-- (unsigned long long)styleOfPath:(void *)arg1 error:(id *)arg2;
-- (double)lengthOfPath:(void *)arg1 atTime:(double)arg2 error:(id *)arg3;
-- (unsigned long long)numberOfVerticesInPath:(void *)arg1 atTime:(double)arg2 error:(id *)arg3;
-- (void)vertex:(struct FxVertex *)arg1 atIndex:(unsigned long long)arg2 ofPath:(void *)arg3 atTime:(double)arg4 error:(id *)arg5;
-- (struct CGPoint)pointAtPercentageOfDistance:(double)arg1 alongPath:(void *)arg2 atTime:(double)arg3 error:(id *)arg4;
-- (struct CGPoint)pointAtPercentageOfParameter:(double)arg1 alongPath:(void *)arg2 atTime:(double)arg3 error:(id *)arg4;
-- (double)lengthOfSegment:(unsigned long long)arg1 ofPath:(void *)arg2 atTime:(double)arg3 error:(id *)arg4;
-- (unsigned long long)blendModeOfPath:(void *)arg1 error:(id *)arg2;
 - (void)setPath:(void *)arg1 color:(unsigned long long)arg2 error:(id *)arg3;
+- (unsigned long long)blendModeOfPath:(void *)arg1 error:(id *)arg2;
+- (double)lengthOfSegment:(unsigned long long)arg1 ofPath:(void *)arg2 atTime:(double)arg3 error:(id *)arg4;
+- (struct CGPoint)pointAtPercentageOfParameter:(double)arg1 alongPath:(void *)arg2 atTime:(double)arg3 error:(id *)arg4;
+- (struct CGPoint)pointAtPercentageOfDistance:(double)arg1 alongPath:(void *)arg2 atTime:(double)arg3 error:(id *)arg4;
+- (void)vertex:(struct FxVertex *)arg1 atIndex:(unsigned long long)arg2 ofPath:(void *)arg3 atTime:(double)arg4 error:(id *)arg5;
+- (unsigned long long)numberOfVerticesInPath:(void *)arg1 atTime:(double)arg2 error:(id *)arg3;
+- (double)lengthOfPath:(void *)arg1 atTime:(double)arg2 error:(id *)arg3;
+- (unsigned long long)styleOfPath:(void *)arg1 error:(id *)arg2;
+- (BOOL)isPath:(void *)arg1 invertedAtTime:(double)arg2 error:(id *)arg3;
+- (BOOL)isPath:(void *)arg1 openAtTime:(double)arg2 error:(id *)arg3;
+- (id)nameOfPath:(void *)arg1 error:(id *)arg2;
+- (void *)pathIDForIndex:(unsigned long long)arg1 error:(id *)arg2;
+- (unsigned long long)numberOfPathsAtTime:(double)arg1;
+- (struct CGPoint)_parametricallyEvaluateXSplineVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(double)arg4 error:(id *)arg5;
+- (struct CGPoint)_parametricallyEvaluateBezierVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(double)arg4 error:(id *)arg5;
+- (struct CGPoint)_parametricallyEvaluateLinearVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(double)arg4 error:(id *)arg5;
+- (struct OZRenderState)_renderState;
+- (unsigned long long)_interpToPathStyle:(unsigned int)arg1;
+- (id)_rotoshape:(struct OZRotoshape **)arg1 forPathID:(void *)arg2;
+- (struct OZElement *)_element;
+- (id)_pathErrorWithCode:(long long)arg1 andString:(id)arg2 inMethod:(const char *)arg3;
+- (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
 
 @end
 

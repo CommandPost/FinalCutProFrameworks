@@ -19,18 +19,18 @@ __attribute__((visibility("hidden")))
     FFPerson *person;
 }
 
-+ (id)copyClassDescription;
 + (id)faceWithFaceRecognitionInfo:(id)arg1 person:(id)arg2;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithFaceRecognitionInfo:(id)arg1 person:(id)arg2;
-@property(retain, nonatomic) FFPerson *person; // @synthesize person;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)description;
-@property(retain, nonatomic) NSString *personUID;
++ (id)copyClassDescription;
 @property(retain, nonatomic) FFFaceRecognitionInfo *faceRecognitionInfo; // @synthesize faceRecognitionInfo;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(retain, nonatomic) FFPerson *person; // @synthesize person;
 - (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(retain, nonatomic) NSString *personUID;
+- (id)description;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)initWithFaceRecognitionInfo:(id)arg1 person:(id)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

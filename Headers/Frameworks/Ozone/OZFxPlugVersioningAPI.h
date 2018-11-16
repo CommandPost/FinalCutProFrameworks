@@ -14,9 +14,10 @@
     struct OZFxPlugSharedBase *_plugin;
 }
 
-- (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
-- (unsigned int)versionAtCreation;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
+- (BOOL)updateVersionAtCreation:(unsigned int)arg1;
+- (unsigned int)versionAtCreation;
+- (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
 
 @end
 

@@ -6,7 +6,9 @@
 
 #import "NSObject.h"
 
+@class FFAnchoredSequence;
+
 @protocol FFAnchoredSequenceSettingsModuleDelegate <NSObject>
-- (id)currentProjectSequence;
+- (FFAnchoredSequence *)currentProjectSequence;
 @end
 
