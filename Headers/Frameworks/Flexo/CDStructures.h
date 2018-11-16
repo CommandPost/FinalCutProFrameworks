@@ -26,17 +26,6 @@ struct ASC_CDL_Container {
     double _field9;
 };
 
-struct AURenderCallbackStruct {
-    CDUnknownFunctionPointerType inputProc;
-    void *inputProcRefCon;
-};
-
-struct AnalysisResults {
-    float _field1;
-    float _field2;
-    CDStruct_1b6d18a9 _field3;
-};
-
 struct AudioBuffer {
     unsigned int _field1;
     unsigned int _field2;
@@ -69,7 +58,11 @@ struct AudioComponentDescription {
     unsigned int componentFlagsMask;
 };
 
-struct AudioQueueLevelMeterState;
+struct AudioObjectPropertyAddress {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+};
 
 struct AudioStreamBasicDescription {
     double mSampleRate;
@@ -105,17 +98,7 @@ struct AudioUnitProperty {
     unsigned int _field4;
 };
 
-struct AudioValueRange {
-    double mMinimum;
-    double mMaximum;
-};
-
-struct CAMutex {
-    CDUnknownFunctionPointerType *_field1;
-    char *_field2;
-    struct _opaque_pthread_t *_field3;
-    struct _opaque_pthread_mutex_t _field4;
-};
+struct CARingBuffer;
 
 struct CAStreamBasicDescription {
     double _field1;
@@ -258,6 +241,16 @@ struct DepthBufferManager;
 
 struct ElementBase;
 
+struct FFAudioBeepBuffer;
+
+struct FFAudioBeepsPlaybackUnit {
+    CDUnknownFunctionPointerType *_field1;
+    struct auto_ptr<FFAudioGraph> _field2;
+    struct auto_ptr<FFAudioBeepBuffer> _field3;
+    struct FFAudioNode *_field4;
+    unsigned int _field5;
+};
+
 struct FFAudioBufferList {
     CDUnknownFunctionPointerType *_field1;
     CDStruct_1b6d18a9 _field2;
@@ -268,30 +261,7 @@ struct FFAudioBufferList {
     struct AudioStreamBasicDescription _field7;
 };
 
-struct FFAudioBufferListCircularBuffer {
-    CDUnknownFunctionPointerType *_field1;
-    struct auto_array<FFAudioBufferList *> _field2;
-    unsigned long long _field3;
-    long long _field4;
-    long long _field5;
-    struct OpaqueAudioConverter *_field6;
-    struct CAMutex *_field7;
-};
-
 struct FFAudioBuss;
-
-struct FFAudioDiskWriteTask {
-    CDUnknownFunctionPointerType *_field1;
-    void *_field2;
-    struct FFAudioBufferListCircularBuffer *_field3;
-    struct FFAudioFile *_field4;
-    struct CAStreamBasicDescription _field5;
-    struct CAStreamBasicDescription _field6;
-    struct OpaqueAudioConverter *_field7;
-    struct FFAudioBufferList *_field8;
-    unsigned int _field9;
-    float _field10;
-};
 
 struct FFAudioDuckingChannelData {
     id _field1;
@@ -310,40 +280,41 @@ struct FFAudioDynamicScopingWindow {
     CDUnknownFunctionPointerType *_field3;
     _Bool _field4;
     _Bool _field5;
-    struct Thread *_field6;
-    struct Synchronizable _field7;
+    _Bool _field6;
+    struct Thread *_field7;
     struct Synchronizable _field8;
-    unsigned int _field9;
-    _Bool _field10;
+    struct Synchronizable _field9;
+    unsigned int _field10;
     _Bool _field11;
-    struct list<FFAudioSourceScope, std::allocator<FFAudioSourceScope>> _field12;
-    struct vector<FFAudioStreamScope *, std::allocator<FFAudioStreamScope *>> _field13;
+    _Bool _field12;
+    struct list<FFAudioSourceScope, std::allocator<FFAudioSourceScope>> _field13;
     struct vector<FFAudioStreamScope *, std::allocator<FFAudioStreamScope *>> _field14;
     struct vector<FFAudioStreamScope *, std::allocator<FFAudioStreamScope *>> _field15;
-    long long _field16;
+    struct vector<FFAudioStreamScope *, std::allocator<FFAudioStreamScope *>> _field16;
     long long _field17;
     long long _field18;
     long long _field19;
     long long _field20;
     long long _field21;
-    id _field22;
+    long long _field22;
     id _field23;
     id _field24;
-    _Bool _field25;
+    id _field25;
     _Bool _field26;
-    double _field27;
+    _Bool _field27;
     double _field28;
-    struct FFAudioGraph *_field29;
-    struct FFAudioNode *_field30;
+    double _field29;
+    struct FFAudioGraph *_field30;
     struct FFAudioNode *_field31;
     struct FFAudioNode *_field32;
     struct FFAudioNode *_field33;
     struct FFAudioNode *_field34;
-    unsigned long long _field35;
-    id _field36;
-    struct auto_ptr<FFAudioBuss> _field37;
-    id _field38;
+    struct FFAudioNode *_field35;
+    unsigned long long _field36;
+    id _field37;
+    struct auto_ptr<FFAudioBuss> _field38;
     id _field39;
+    id _field40;
 };
 
 struct FFAudioEffectChain;
@@ -413,61 +384,77 @@ struct FFAudioPlayer {
     id _field5;
     struct CAStreamBasicDescription _field6;
     unsigned int _field7;
-    struct auto_ptr<FFAudioPlayerMeteringHook> _field8;
-    struct auto_ptr<FFAudioPlaybackUnit> _field9;
-    int _field10;
-    CDStruct_1b6d18a9 _field11;
-    double _field12;
-    double _field13;
-    _Bool _field14;
-    _Bool _field15;
-    _Bool _field16;
-    _Bool _field17;
-    _Bool _field18;
-    struct FFSemaphore *_field19;
-    struct auto_ptr<FFAudioBufferList> _field20;
-    struct auto_ptr<FFAudioBufferList> _field21;
-    struct CAStreamBasicDescription _field22;
-    int _field23;
-    id _field24;
-    CDStruct_1b6d18a9 _field25;
-    CDStruct_1b6d18a9 _field26;
+    struct auto_ptr<FFAudioGraph> _field8;
+    struct FFAudioNode *_field9;
+    struct FFAudioNode *_field10;
+    struct FFAudioNode *_field11;
+    struct FFAudioNode *_field12;
+    struct map<unsigned int, FFAudioPlayerSourceInfo *, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, FFAudioPlayerSourceInfo *>>> _field13;
+    struct auto_ptr<FFAudioPlayerMeteringHook> _field14;
+    struct auto_ptr<FFAudioPlaybackUnit> _field15;
+    struct FFAudioPlaybackUnit *_field16;
+    int _field17;
+    CDStruct_1b6d18a9 _field18;
+    double _field19;
+    double _field20;
+    _Bool _field21;
+    _Bool _field22;
+    _Bool _field23;
+    _Bool _field24;
+    _Bool _field25;
+    struct FFSemaphore *_field26;
     struct auto_ptr<FFAudioBufferList> _field27;
-    struct Synchronizable _field28;
+    struct auto_ptr<FFAudioBufferList> _field28;
+    id _field29;
+    CDStruct_1b6d18a9 _field30;
+    CDStruct_1b6d18a9 _field31;
+    struct auto_ptr<FFAudioBufferList> _field32;
+    struct Synchronizable _field33;
+    _Bool _field34;
+    int _field35;
 };
 
 struct FFAudioPlayerMeteringHook;
 
 struct FFAudioRecorder {
-    struct OpaqueAudioQueue *_field1;
-    struct OpaqueAudioQueue *_field2;
-    unsigned char _field3;
-    unsigned char _field4;
-    unsigned char _field5;
-    unsigned int _field6;
-    float _field7;
-    float _field8;
-    id _field9;
-    id _field10;
-    unsigned char _field11;
-    unsigned char _field12;
-    id _field13;
-    struct FFLocklessQueue<AudioQueueBuffer *> _field14;
-    struct auto_ptr<FFRecordBufferCopyThread> _field15;
-    struct auto_ptr<WorkerThread> _field16;
-    struct OpaqueAudioFileID *_field17;
-    id _field18;
-    id _field19;
-    struct AudioStreamBasicDescription _field20;
+    struct auto_ptr<FFAudioGraph> _field1;
+    struct auto_ptr<FFAudioGraph> _field2;
+    id _field3;
+    struct auto_ptr<FFAudioBufferList> _field4;
+    struct auto_ptr<FFAudioRecorderMeteringHook> _field5;
+    _Bool _field6;
+    _Bool _field7;
+    _Bool _field8;
+    unsigned int _field9;
+    unsigned int _field10;
+    id _field11;
+    id _field12;
+    float _field13;
+    id _field14;
+    id _field15;
+    unsigned int _field16;
+    struct OpaqueCMTimebase *_field17;
+    struct auto_ptr<FFAudioRecorderBufferWriteTaskQueue> _field18;
+    struct auto_ptr<CARingBuffer> _field19;
+    struct auto_ptr<WorkerThread> _field20;
     id _field21;
-    CDStruct_1b6d18a9 _field22;
-    unsigned int _field23;
-    unsigned int _field24;
-    unsigned long long _field25;
-    struct auto_array<AudioQueueLevelMeterState> _field26;
-    unsigned long long _field27;
-    unsigned long long _field28;
+    id _field22;
+    struct auto_ptr<FFAudioFile> _field23;
+    id _field24;
+    id _field25;
+    struct AudioStreamBasicDescription _field26;
+    id _field27;
+    CDStruct_1b6d18a9 _field28;
+    _Bool _field29;
+    double _field30;
+    double _field31;
+    unsigned long long _field32;
+    int _field33;
 };
+
+struct FFAudioRecorderBufferWriteTaskQueue;
+
+struct FFAudioRecorderMeteringHook;
 
 struct FFAudioRetimingBuffer;
 
@@ -610,16 +597,6 @@ struct FFKVOAdapterClient {
     CDUnknownFunctionPointerType *_field1;
 };
 
-struct FFLocklessQueue<AudioQueueBuffer *> {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    struct ElementBase *_field3;
-    struct ElementBase *_field4;
-    struct ElementBase *_field5;
-    CDUnknownFunctionPointerType _field6;
-    void *_field7;
-};
-
 struct FFLocklessQueue<FFEffectLibraryItemView *> {
     CDUnknownFunctionPointerType *_field1;
     int _field2;
@@ -640,6 +617,16 @@ struct FFLocklessQueue<FigTimeRangeAndObject *> {
     void *_field7;
 };
 
+struct FFLocklessQueue<NSArray *> {
+    CDUnknownFunctionPointerType *_field1;
+    int _field2;
+    struct ElementBase *_field3;
+    struct ElementBase *_field4;
+    struct ElementBase *_field5;
+    CDUnknownFunctionPointerType _field6;
+    void *_field7;
+};
+
 struct FFLocklessQueue<NSSet *> {
     CDUnknownFunctionPointerType *_vptr$FFLocklessQueueBase;
     int m_sortOption;
@@ -648,6 +635,16 @@ struct FFLocklessQueue<NSSet *> {
     struct ElementBase *m_freeList;
     CDUnknownFunctionPointerType m_freeElementProc;
     void *m_freeElementProcRefCon;
+};
+
+struct FFLocklessQueue<void (^)()> {
+    CDUnknownFunctionPointerType *_field1;
+    int _field2;
+    struct ElementBase *_field3;
+    struct ElementBase *_field4;
+    struct ElementBase *_field5;
+    CDUnknownFunctionPointerType _field6;
+    void *_field7;
 };
 
 struct FFPMRContextImpl {
@@ -680,15 +677,16 @@ struct FFParameterChaser {
     long long _field5;
     long long _field6;
     double _field7;
-    CDStruct_1b6d18a9 _field8;
-    _Bool _field9;
-    long long _field10;
-    _Bool _field11;
-    id _field12;
-    _Bool _field13;
+    unsigned int _field8;
+    CDStruct_1b6d18a9 _field9;
+    _Bool _field10;
+    long long _field11;
+    _Bool _field12;
+    id _field13;
     _Bool _field14;
     _Bool _field15;
     _Bool _field16;
+    _Bool _field17;
 };
 
 struct FFPeaks {
@@ -704,7 +702,7 @@ struct FFPlayerHealthMeter {
     float _field6[60];
     float _field7[60];
     int _field8[60];
-    _Bool _field9[60];
+    long long _field9[60];
     _Bool _field10[60];
     _Bool _field11[60];
     _Bool _field12[60];
@@ -712,50 +710,51 @@ struct FFPlayerHealthMeter {
     _Bool _field14[60];
     _Bool _field15[60];
     _Bool _field16[60];
-    float _field17[60];
+    _Bool _field17[60];
     float _field18[60];
     float _field19[60];
     float _field20[60];
     float _field21[60];
     float _field22[60];
     float _field23[60];
-    CDStruct_1b6d18a9 _field24[60];
-    int _field25[60];
+    float _field24[60];
+    CDStruct_1b6d18a9 _field25[60];
     int _field26[60];
     int _field27[60];
     int _field28[60];
-    float _field29[60];
-    int _field30;
+    int _field29[60];
+    float _field30[60];
     int _field31;
     int _field32;
     int _field33;
-    float _field34;
+    int _field34;
     float _field35;
     float _field36;
     float _field37;
-    int _field38;
+    float _field38;
     int _field39;
     int _field40;
     int _field41;
     int _field42;
-    float _field43;
+    int _field43;
     float _field44;
     float _field45;
     float _field46;
     float _field47;
-    int _field48;
-    float _field49;
+    float _field48;
+    int _field49;
     float _field50;
     float _field51;
     float _field52;
-    int _field53;
+    float _field53;
     int _field54;
-    float _field55;
-    int _field56;
-    float _field57;
+    int _field55;
+    float _field56;
+    int _field57;
     float _field58;
     float _field59;
-    unsigned int _field60;
+    float _field60;
+    unsigned int _field61;
 };
 
 struct FFPooledTextureImpl {
@@ -772,8 +771,6 @@ struct FFProcrastinatedDispatch_t {
     void *workContext;
     struct FFProcrastinatedDispatch_t **executionContext;
 };
-
-struct FFRecordBufferCopyThread;
 
 struct FFRetimingAudioSegment;
 
@@ -830,6 +827,11 @@ struct FFTextSearchResult {
     unsigned int _field4;
 };
 
+struct FFTimeAndTimebasePair {
+    void *_tb;
+    CDStruct_1b6d18a9 _t;
+};
+
 struct FFUnitAttachedParameterChaser;
 
 struct FFVideoDecoderRED {
@@ -884,11 +886,6 @@ struct FFVideoScopesWaveformViewPrivate {
 
 struct FSRef {
     unsigned char _field1[80];
-};
-
-struct FigTimePair {
-    CDStruct_1b6d18a9 first;
-    CDStruct_1b6d18a9 second;
 };
 
 struct GainStageParameterChaser;
@@ -963,6 +960,75 @@ struct HGCache {
 };
 
 struct HGCacheEntry;
+
+struct HGColorConform {
+    CDUnknownFunctionPointerType *_field1;
+    unsigned int _field2;
+    int _field3;
+    int _field4;
+    void *_field5;
+    int _field6;
+    int _field7;
+    float *_field8;
+    int _field9;
+    struct HGShaderEntry *_field10;
+    struct HGNodeInput **_field11;
+    int _field12;
+    struct HGBitmap *_field13;
+    _Bool _field14;
+    struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field15;
+    int _field16;
+    struct HGNode *_field17;
+    struct HGRect _field18;
+    struct HGRect _field19;
+    struct HGRenderer *_field20;
+    struct HGBitmap *_field21;
+    int _field22;
+    int _field23;
+    int _field24;
+    struct HGShaderBinding _field25;
+    struct HGNodeChain *_field26;
+    struct HGShaderEntry *_field27;
+    int _field28;
+    struct HGNode *_field29;
+    struct HGNode *_field30;
+    struct HGColorConformNodeListCacheItem *_field31;
+    _Bool _field32;
+    int _field33;
+    int _field34;
+    int _field35;
+    int _field36;
+    int _field37;
+    struct HGRect _field38;
+    _Bool _field39;
+    _Bool _field40;
+    float _field41;
+    float _field42;
+    int _field43;
+    struct __CFData *_field44;
+    float _field45;
+    float _field46;
+    unsigned long long _field47;
+    unsigned long long _field48;
+    unsigned long long _field49;
+    _Bool _field50;
+    int _field51;
+    struct vector<unsigned char, std::allocator<unsigned char>> _field52;
+    float _field53;
+    float _field54;
+    float _field55;
+    float _field56;
+    _Bool _field57;
+    float _field58[3];
+    float _field59[3];
+    float _field60[3];
+    float _field61;
+    _Bool _field62;
+    float _field63;
+    _Bool _field64;
+};
+
+struct HGColorConformNodeListCacheItem;
 
 struct HGDotTree {
     struct __sFILE *_field1;
@@ -1103,26 +1169,27 @@ struct HGRenderJob {
     int _field6;
     int _field7;
     int _field8;
-    double _field9;
+    unsigned long long _field9;
     double _field10;
-    struct HGRenderer *_field11;
-    int _field12;
+    double _field11;
+    struct HGRenderer *_field12;
     int _field13;
-    unsigned char _field14;
-    unsigned long long _field15;
-    void *_field16;
-    char *_field17;
-    struct HGRenderQueue *_field18;
-    struct HGRenderContext *_field19;
-    CDUnknownFunctionPointerType _field20;
-    unsigned long long _field21;
+    int _field14;
+    unsigned char _field15;
+    unsigned long long _field16;
+    void *_field17;
+    char *_field18;
+    struct HGRenderQueue *_field19;
+    struct HGRenderContext *_field20;
+    CDUnknownFunctionPointerType _field21;
     unsigned long long _field22;
-    unsigned int _field23;
+    unsigned long long _field23;
     unsigned int _field24;
     unsigned int _field25;
-    struct HGSynchronizable *_field26;
+    unsigned int _field26;
     struct HGSynchronizable *_field27;
-    struct vector<HGRenderNode *, std::allocator<HGRenderNode *>> _field28;
+    struct HGSynchronizable *_field28;
+    struct vector<HGRenderNode *, std::allocator<HGRenderNode *>> _field29;
 };
 
 struct HGRenderNode {
@@ -1365,25 +1432,6 @@ struct NSObject {
     Class _field1;
 };
 
-struct NSXMLElement {
-    Class _field1;
-    id _field2;
-    id _field3;
-    unsigned int :4;
-    unsigned int :28;
-    int _field4;
-    id _field5;
-    id _field6;
-    id _field7;
-    id _field8;
-    char _field9;
-    char _field10;
-    char _field11;
-    unsigned char _field12;
-    id _field13;
-    long long _field14;
-};
-
 struct OMHistoAnalysis {
     CDUnknownFunctionPointerType *_field1;
     struct vector<HistoRange, std::allocator<HistoRange>> _field2;
@@ -1409,6 +1457,8 @@ struct OMHistoAnalysis {
     struct vector<int, std::allocator<int>> _field22;
     struct vector<float, std::allocator<float>> _field23;
     struct vector<float, std::allocator<float>> _field24;
+    float _field25;
+    float _field26;
 };
 
 struct OMHistoLumRegion;
@@ -1457,6 +1507,7 @@ struct OZChannelAngle {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelBase {
@@ -1495,6 +1546,7 @@ struct OZChannelDouble {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelEnum {
@@ -1516,10 +1568,11 @@ struct OZChannelEnum {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
-    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
-    struct vector<int, std::allocator<int>> _field20;
-    struct PCString _field21;
-    unsigned int _field22;
+    struct OZCurve *_field19;
+    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
+    struct vector<int, std::allocator<int>> _field21;
+    struct PCString _field22;
+    unsigned int _field23;
 };
 
 struct OZChannelEnumInterpMode {
@@ -1541,10 +1594,11 @@ struct OZChannelEnumInterpMode {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
-    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
-    struct vector<int, std::allocator<int>> _field20;
-    struct PCString _field21;
-    unsigned int _field22;
+    struct OZCurve *_field19;
+    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
+    struct vector<int, std::allocator<int>> _field21;
+    struct PCString _field22;
+    unsigned int _field23;
 };
 
 struct OZChannelFolder {
@@ -1683,6 +1737,7 @@ struct OZChannelPercent {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelPosition {
@@ -1805,15 +1860,11 @@ struct OZChannelScale3D {
 
 struct OZChannelTimeConverter;
 
+struct OZCurve;
+
 struct OZFactory;
 
 struct OpaqueAUGraph;
-
-struct OpaqueAudioConverter;
-
-struct OpaqueAudioFileID;
-
-struct OpaqueAudioQueue;
 
 struct OpaqueCMClock;
 
@@ -1903,6 +1954,11 @@ struct PCVector3<double> {
     double _field1;
     double _field2;
     double _field3;
+};
+
+struct PC_CMTimePair {
+    CDStruct_1b6d18a9 first;
+    CDStruct_1b6d18a9 second;
 };
 
 struct PC_Sp_counted_base;
@@ -2013,20 +2069,25 @@ struct Vec4f {
 };
 
 struct VoiceOverPlayerState {
+    char mIsValid;
     char mIsLooping;
     char mPlayPastLoopEnd;
+    CDStruct_1b6d18a9 mPlaybackPreroll;
+    int mDropTrackerWarningLimit;
+    CDStruct_e83c9415 mLoopRange;
 };
 
 struct WorkerThread {
     CDUnknownFunctionPointerType *_field1;
-    struct auto_ptr<Thread> _field2;
-    struct auto_ptr<WorkerThread::TaskQueue> _field3;
-    _Bool _field4;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field2;
+    struct auto_ptr<Thread> _field3;
+    struct auto_ptr<WorkerThread::TaskQueue> _field4;
     _Bool _field5;
-    struct Synchronizable _field6;
+    _Bool _field6;
     struct Synchronizable _field7;
-    unsigned int _field8;
-    void *_field9;
+    struct Synchronizable _field8;
+    unsigned int _field9;
+    void *_field10;
 };
 
 struct _Alloc_hider {
@@ -3150,6 +3211,10 @@ struct _Rb_tree<HGPixelBufferObj *, std::pair<HGPixelBufferObj *const, unsigned 
     struct _Rb_tree_impl<std::less<HGPixelBufferObj *>, false> _field1;
 };
 
+struct _Rb_tree<NSString *, std::pair<NSString *const, NSArray *>, std::_Select1st<std::pair<NSString *const, NSArray *>>, std::less<NSString *>, std::allocator<std::pair<NSString *const, NSArray *>>> {
+    struct _Rb_tree_impl<std::less<NSString *>, false> _field1;
+};
+
 struct _Rb_tree<int, std::pair<const int, HGSynchronizable *>, std::_Select1st<std::pair<const int, HGSynchronizable *>>, std::less<int>, std::allocator<std::pair<const int, HGSynchronizable *>>> {
     struct _Rb_tree_impl<std::less<int>, false> _field1;
 };
@@ -3164,6 +3229,10 @@ struct _Rb_tree<int, std::pair<const int, unsigned long long>, std::_Select1st<s
 
 struct _Rb_tree<std::tr1::shared_ptr<FFAudioInputAdapter>, std::tr1::shared_ptr<FFAudioInputAdapter>, std::_Identity<std::tr1::shared_ptr<FFAudioInputAdapter>>, std::less<std::tr1::shared_ptr<FFAudioInputAdapter>>, std::allocator<std::tr1::shared_ptr<FFAudioInputAdapter>>> {
     struct _Rb_tree_impl<std::less<std::tr1::shared_ptr<FFAudioInputAdapter>>, false> _field1;
+};
+
+struct _Rb_tree<unsigned int, std::pair<const unsigned int, FFAudioPlayerSourceInfo *>, std::_Select1st<std::pair<const unsigned int, FFAudioPlayerSourceInfo *>>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, FFAudioPlayerSourceInfo *>>> {
+    struct _Rb_tree_impl<std::less<unsigned int>, false> _field1;
 };
 
 struct _Rb_tree_impl<std::less<ComponentInstanceRecord *>, false> {
@@ -3196,6 +3265,12 @@ struct _Rb_tree_impl<std::less<HGPixelBufferObj *>, false> {
     unsigned long long _field3;
 };
 
+struct _Rb_tree_impl<std::less<NSString *>, false> {
+    struct less<NSString *> _field1;
+    struct _Rb_tree_node_base _field2;
+    unsigned long long _field3;
+};
+
 struct _Rb_tree_impl<std::less<int>, false> {
     struct less<int> _field1;
     struct _Rb_tree_node_base _field2;
@@ -3204,6 +3279,12 @@ struct _Rb_tree_impl<std::less<int>, false> {
 
 struct _Rb_tree_impl<std::less<std::tr1::shared_ptr<FFAudioInputAdapter>>, false> {
     struct less<std::tr1::shared_ptr<FFAudioInputAdapter>> _field1;
+    struct _Rb_tree_node_base _field2;
+    unsigned long long _field3;
+};
+
+struct _Rb_tree_impl<std::less<unsigned int>, false> {
+    struct less<unsigned int> _field1;
     struct _Rb_tree_node_base _field2;
     unsigned long long _field3;
 };
@@ -3294,16 +3375,6 @@ struct _xPy {
     double _field1;
 };
 
-struct auto_array<AudioQueueLevelMeterState> {
-    struct AudioQueueLevelMeterState *_field1;
-    unsigned long long _field2;
-};
-
-struct auto_array<FFAudioBufferList *> {
-    struct FFAudioBufferList **_field1;
-    unsigned long long _field2;
-};
-
 struct auto_array<char> {
     char *_field1;
     unsigned long long _field2;
@@ -3312,6 +3383,14 @@ struct auto_array<char> {
 struct auto_array<unsigned long long> {
     unsigned long long *_field1;
     unsigned long long _field2;
+};
+
+struct auto_ptr<CARingBuffer> {
+    struct CARingBuffer *_field1;
+};
+
+struct auto_ptr<FFAudioBeepBuffer> {
+    struct FFAudioBeepBuffer *_field1;
 };
 
 struct auto_ptr<FFAudioBufferList> {
@@ -3330,6 +3409,10 @@ struct auto_ptr<FFAudioEffectsBuss::GainStageParameterChaser> {
     struct GainStageParameterChaser *_field1;
 };
 
+struct auto_ptr<FFAudioFile> {
+    struct FFAudioFile *_field1;
+};
+
 struct auto_ptr<FFAudioGraph> {
     struct FFAudioGraph *_field1;
 };
@@ -3342,12 +3425,16 @@ struct auto_ptr<FFAudioPlayerMeteringHook> {
     struct FFAudioPlayerMeteringHook *_field1;
 };
 
-struct auto_ptr<FFDestAudioStartTimebaseRenderHook::StartTimebaseTask> {
-    struct StartTimebaseTask *_field1;
+struct auto_ptr<FFAudioRecorderBufferWriteTaskQueue> {
+    struct FFAudioRecorderBufferWriteTaskQueue *_field1;
 };
 
-struct auto_ptr<FFRecordBufferCopyThread> {
-    struct FFRecordBufferCopyThread *_field1;
+struct auto_ptr<FFAudioRecorderMeteringHook> {
+    struct FFAudioRecorderMeteringHook *_field1;
+};
+
+struct auto_ptr<FFDestAudioStartTimebaseRenderHook::StartTimebaseTask> {
+    struct StartTimebaseTask *_field1;
 };
 
 struct auto_ptr<FFScopedEffect> {
@@ -3375,6 +3462,10 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
 };
 
 struct cache_s;
+
+struct cachedPathsForQuals {
+    struct map<NSString *, NSArray *, std::less<NSString *>, std::allocator<std::pair<NSString *const, NSArray *>>> _field1;
+};
 
 struct cc_rgb {
     float _field1;
@@ -3459,9 +3550,17 @@ struct less<HGNodeInput *>;
 
 struct less<HGPixelBufferObj *>;
 
+struct less<NSString *>;
+
 struct less<int>;
 
 struct less<std::tr1::shared_ptr<FFAudioInputAdapter>>;
+
+struct less<unsigned int>;
+
+struct list<CMTime, std::allocator<CMTime>> {
+    struct _List_impl _M_impl;
+};
 
 struct list<FFAudioSourceScope, std::allocator<FFAudioSourceScope>> {
     struct _List_impl _field1;
@@ -3547,6 +3646,10 @@ struct map<HGPixelBufferObj *, unsigned long long, std::less<HGPixelBufferObj *>
     struct _Rb_tree<HGPixelBufferObj *, std::pair<HGPixelBufferObj *const, unsigned long long>, std::_Select1st<std::pair<HGPixelBufferObj *const, unsigned long long>>, std::less<HGPixelBufferObj *>, std::allocator<std::pair<HGPixelBufferObj *const, unsigned long long>>> _field1;
 };
 
+struct map<NSString *, NSArray *, std::less<NSString *>, std::allocator<std::pair<NSString *const, NSArray *>>> {
+    struct _Rb_tree<NSString *, std::pair<NSString *const, NSArray *>, std::_Select1st<std::pair<NSString *const, NSArray *>>, std::less<NSString *>, std::allocator<std::pair<NSString *const, NSArray *>>> _field1;
+};
+
 struct map<int, HGSynchronizable *, std::less<int>, std::allocator<std::pair<const int, HGSynchronizable *>>> {
     struct _Rb_tree<int, std::pair<const int, HGSynchronizable *>, std::_Select1st<std::pair<const int, HGSynchronizable *>>, std::less<int>, std::allocator<std::pair<const int, HGSynchronizable *>>> _field1;
 };
@@ -3557,6 +3660,10 @@ struct map<int, bool, std::less<int>, std::allocator<std::pair<const int, bool>>
 
 struct map<int, unsigned long long, std::less<int>, std::allocator<std::pair<const int, unsigned long long>>> {
     struct _Rb_tree<int, std::pair<const int, unsigned long long>, std::_Select1st<std::pair<const int, unsigned long long>>, std::less<int>, std::allocator<std::pair<const int, unsigned long long>>> _field1;
+};
+
+struct map<unsigned int, FFAudioPlayerSourceInfo *, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, FFAudioPlayerSourceInfo *>>> {
+    struct _Rb_tree<unsigned int, std::pair<const unsigned int, FFAudioPlayerSourceInfo *>, std::_Select1st<std::pair<const unsigned int, FFAudioPlayerSourceInfo *>>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, FFAudioPlayerSourceInfo *>>> _field1;
 };
 
 struct multiset<std::tr1::shared_ptr<FFAudioInputAdapter>, std::less<std::tr1::shared_ptr<FFAudioInputAdapter>>, std::allocator<std::tr1::shared_ptr<FFAudioInputAdapter>>> {
@@ -3821,6 +3928,14 @@ struct vector<std::vector<FFTextSearchResult, std::allocator<FFTextSearchResult>
     } _field1;
 };
 
+struct vector<unsigned char, std::allocator<unsigned char>> {
+    struct _Vector_impl {
+        char *_field1;
+        char *_field2;
+        char *_field3;
+    } _field1;
+};
+
 struct vector<unsigned int, std::allocator<unsigned int>> {
     struct _Vector_impl {
         unsigned int *_M_start;
@@ -3982,8 +4097,8 @@ typedef struct {
 typedef struct {
     int _nestDepth;
     long long _startTimes[5];
-    long long _blockedTimes[16];
-} CDStruct_18280053;
+    long long _blockedTimes[18];
+} CDStruct_4cc81c56;
 
 typedef struct {
     int width;

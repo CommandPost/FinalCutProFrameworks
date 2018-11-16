@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     FFTextureBuffer *_tb;
 }
 
+- (id)description;
 - (_Bool)hasTextureBuffer;
 - (id)copyTextureBuffer;
 - (void)setTextureBuffer:(id)arg1;

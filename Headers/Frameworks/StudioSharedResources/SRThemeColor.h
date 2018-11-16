@@ -336,6 +336,8 @@
 + (id)lcdTimecodeTrimmingEnteredText;
 + (id)lcdTimecodeText;
 + (id)lcdTimecodeLeadingZeros;
++ (id)lcdTimecodeEditingdBLeadingZeros;
++ (id)lcdTimecodeEditingdBEnteredText;
 + (id)layerEffectBackgroundSelectedEmphasized;
 + (id)layerEffectBackgroundSelected;
 + (id)layerEffectBackground;

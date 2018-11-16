@@ -6,18 +6,21 @@
 
 #import "NSWindowController.h"
 
-@class LKButton, NSBox, NSImageView, NSTabView, NSView, PEHyperlinkLabel;
+@class LKButton, NSBox, NSImageView, NSTabView, NSTextView, NSView, PEHyperlinkLabel;
 
 @interface CEWelcomeScreenWindowController : NSWindowController
 {
     NSTabView *_tabView;
     LKButton *_continueButton;
     LKButton *_getStartedButton;
+    BOOL _isWelcome;
+    LKButton *_continueAndCloseButton;
     PEHyperlinkLabel *_legalLabel;
     NSBox *_contentContainerView;
     NSView *_welcomeView;
     NSView *_whatsNewView;
     NSView *_whatsNewTitleContainer;
+    NSView *_standaloneWhatsNewView;
     NSImageView *_designBullet;
     NSView *_designContainer;
     NSImageView *_sharingBullet;
@@ -28,11 +31,13 @@
     NSView *_editingContainer;
     NSImageView *_theaterBullet;
     NSView *_theaterContainer;
+    NSImageView *_appIconView;
+    NSTextView *_whatsNewText;
 }
 
 + (void)closeIfLoaded;
-+ (void)delayedSharedInstanceRelease;
-+ (void)displayImmediately;
+@property NSTextView *whatsNewText; // @synthesize whatsNewText=_whatsNewText;
+@property NSImageView *appIconView; // @synthesize appIconView=_appIconView;
 @property NSView *theaterContainer; // @synthesize theaterContainer=_theaterContainer;
 @property NSImageView *theaterBullet; // @synthesize theaterBullet=_theaterBullet;
 @property NSView *editingContainer; // @synthesize editingContainer=_editingContainer;
@@ -43,11 +48,13 @@
 @property NSImageView *sharingBullet; // @synthesize sharingBullet=_sharingBullet;
 @property NSView *designContainer; // @synthesize designContainer=_designContainer;
 @property NSImageView *designBullet; // @synthesize designBullet=_designBullet;
+@property NSView *standaloneWhatsNewView; // @synthesize standaloneWhatsNewView=_standaloneWhatsNewView;
 @property NSView *whatsNewTitleContainer; // @synthesize whatsNewTitleContainer=_whatsNewTitleContainer;
 @property NSView *whatsNewView; // @synthesize whatsNewView=_whatsNewView;
 @property NSView *welcomeView; // @synthesize welcomeView=_welcomeView;
 @property NSBox *contentContainerView; // @synthesize contentContainerView=_contentContainerView;
 @property PEHyperlinkLabel *legalLabel; // @synthesize legalLabel=_legalLabel;
+@property LKButton *continueAndCloseButton; // @synthesize continueAndCloseButton=_continueAndCloseButton;
 @property LKButton *getStartedButton; // @synthesize getStartedButton=_getStartedButton;
 @property LKButton *continueButton; // @synthesize continueButton=_continueButton;
 - (BOOL)windowShouldClose:(id)arg1;
@@ -63,7 +70,12 @@
 - (void)showWhatsNew:(id)arg1;
 - (BOOL)acceptsMouseMovedEvents;
 - (void)dealloc;
-- (id)initAndDisplayImmediately:(BOOL)arg1;
+- (id)initAndDisplayImmediately:(BOOL)arg1 isWelcomeScreen:(BOOL)arg2;
+- (void)whatsNewViewSetup;
+- (void)welcomeScreenViewSetup;
+- (id)whatsNewDetails;
+- (id)attributedStringWithItems:(id)arg1 textFontSize:(double)arg2 bulletFontSize:(double)arg3 bulletBaseline:(double)arg4 indent:(double)arg5 paragraphSpacing:(double)arg6;
+- (void)delayedRelease;
 
 @end
 

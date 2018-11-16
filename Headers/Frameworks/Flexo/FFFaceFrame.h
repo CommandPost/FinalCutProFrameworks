@@ -8,24 +8,15 @@
 
 #import "NSCoding.h"
 
-@class NSMutableSet;
-
 __attribute__((visibility("hidden")))
 @interface FFFaceFrame : FFBaseDSObject <NSCoding>
 {
     struct CGImage *cgImage;
-    NSMutableSet *facesInFrame;
 }
 
 + (id)copyClassDescription;
-@property(retain, nonatomic) NSMutableSet *facesInFrame; // @synthesize facesInFrame;
 @property(nonatomic) struct CGImage *cgImage; // @synthesize cgImage;
 - (void)dealloc;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)detectAndRemoveDeadFaces;
-- (void)removeFacesInFrameObject:(id)arg1;
-- (void)addFacesInFrameObject:(id)arg1;
-- (void)addFace:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

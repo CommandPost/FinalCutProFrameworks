@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     CHChannelPosition *_chAnchor;
 }
 
+- (BOOL)supportsReentrancy;
 - (BOOL)isAnimated;
 - (id)inputKeys;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;

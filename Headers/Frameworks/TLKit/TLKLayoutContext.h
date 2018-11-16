@@ -13,12 +13,17 @@
     TLKContainerInfo *_containerInfo;
     TLKLineFragment *_lineFragment;
     struct CGRect _bounds;
+    NSMutableSet *_sublayoutContexts;
     NSMutableSet *_itemComponentFragments;
     NSMutableSet *_itemLaneFragments;
     TLKContainerLayer *_layer;
+    TLKLayoutContext *_enclosingLayoutContext;
+    struct CGPoint _position;
 }
 
 @property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
+@property(nonatomic) struct CGPoint position; // @synthesize position=_position;
+@property(nonatomic) TLKLayoutContext *enclosingLayoutContext; // @synthesize enclosingLayoutContext=_enclosingLayoutContext;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toLayoutContext:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromLayoutContext:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toLayoutContext:(id)arg2;
@@ -30,6 +35,11 @@
 - (void)removeItemLaneFragmentsObject:(id)arg1;
 - (void)addItemLaneFragmentsObject:(id)arg1;
 @property(copy, nonatomic) NSSet *itemLaneFragments;
+- (void)enumerateSublayoutContextsWithBlock:(CDUnknownBlockType)arg1;
+- (void)removeSublayoutContextsObject:(id)arg1;
+- (void)addSublayoutContextsObject:(id)arg1;
+@property(copy, nonatomic) NSSet *sublayoutContexts;
+- (void)enumerateItemComponentFragmentsWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeItemComponentFragmentsObject:(id)arg1;
 - (void)addItemComponentFragmentsObject:(id)arg1;
 @property(copy, nonatomic) NSSet *itemComponentFragments;

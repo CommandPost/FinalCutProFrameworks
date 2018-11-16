@@ -12,7 +12,7 @@
 
 + (id)copyClassDescription;
 - (BOOL)isUpgradeProxyAsset;
-- (id)initWithDictionary:(id)arg1 mediaIdentifier:(id)arg2 displayName:(id)arg3 manageFileType:(int)arg4 project:(id)arg5;
+- (id)initWithAttributes:(id)arg1 mediaIdentifier:(id)arg2 displayName:(id)arg3 manageFileType:(int)arg4 project:(id)arg5;
 - (BOOL)mediaAvailable;
 - (BOOL)highQualityAvailable;
 - (BOOL)originalAvailable;

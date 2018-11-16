@@ -14,9 +14,12 @@
 }
 
 @property(retain, nonatomic) FFMediaEventProject *activeSequenceEvent; // @synthesize activeSequenceEvent=_activeSequenceEvent;
+- (void)sidebarDidAutonomouslySelectNode:(id)arg1;
 - (void)sidebarDidSelectNodes:(id)arg1;
 - (void)selectSidebarItem:(id)arg1;
 - (void)importiMovieProject:(BOOL)arg1;
+- (void)shiftDelete:(id)arg1;
+- (void)delete:(id)arg1;
 - (void)moveItemsToLibrary:(id)arg1;
 - (void)moveToLibrary:(id)arg1;
 - (void)copyItemsToLibrary:(id)arg1;
@@ -31,6 +34,10 @@
 - (void)moveToTrash:(id)arg1;
 - (void)closeLibrary:(id)arg1;
 - (void)revealInFinder:(id)arg1;
+- (void)sortByDate:(id)arg1;
+- (void)sortByName:(id)arg1;
+- (void)sortDescending:(id)arg1;
+- (void)sortAscending:(id)arg1;
 - (id)localModuleActions;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -38,8 +45,13 @@
 - (void)removeNotifications;
 - (void)installNotifications;
 - (id)newSidebarController;
+- (void)sidebarDidRepopulate;
+- (void)sidebarDidDepopulate;
 - (void)viewWillBeRemoved;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
 - (void)viewWasInstalled;
+- (void)viewDidLoad;
 - (id)eventSidebarController;
 - (void)revealObjects:(id)arg1;
 - (void)dealloc;

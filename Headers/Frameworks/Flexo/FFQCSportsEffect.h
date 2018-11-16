@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
-- (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
+- (id)designatedChannelsForXMLExport;
 - (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)createChannelsInFolder:(id)arg1;
 - (struct CGPoint)team2Anchor16x9;
@@ -24,21 +24,22 @@ __attribute__((visibility("hidden")))
 - (BOOL)showPlayer;
 - (BOOL)showTeam2;
 - (BOOL)showTeam1;
-- (BOOL)inEditMode;
 - (id)player;
 - (id)team2;
 - (id)team1;
 - (void)setPlayer:(id)arg1;
 - (void)setTeam2:(id)arg1;
 - (void)setTeam1:(id)arg1;
-- (id)textForField:(unsigned long long)arg1 fontScaleToHeight:(double)arg2;
-- (id)fontScaleToHeight:(double)arg1 textIndex:(unsigned long long)arg2;
-- (struct CGRect)boundingBoxForField:(unsigned long long)arg1 componentBounds:(struct CGRect)arg2;
-- (id)textFieldTextColor;
+- (struct CGRect)boundingBoxForField:(unsigned long long)arg1;
+- (unsigned long long)characterCaseModeForField:(unsigned long long)arg1;
+- (BOOL)scaleFieldHeightToTextHeight;
+- (BOOL)allowsFontEditing;
+- (BOOL)wrapLines;
+- (BOOL)shrinkToFit;
+- (struct CGRect)documentBounds;
 - (unsigned long long)textFieldCount;
-- (id)defaultSecondTextStringForEffectID:(id)arg1;
 - (BOOL)hasSecondTitleForEffectID:(id)arg1;
-- (id)defaultTextStringForEffectID:(id)arg1;
+- (id)defaultTextForField:(unsigned long long)arg1;
 - (id)title2InputKey;
 - (id)title1InputKey;
 - (BOOL)hasTitles;

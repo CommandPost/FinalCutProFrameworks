@@ -12,6 +12,7 @@
 {
     NSButton *_disclosureButton;
     NSTextField *_idleText;
+    NSTextField *_subtitleText;
     LKTileView *_tasksTileView;
     NSString *_taskGroup;
     long long _completedTaskCount;

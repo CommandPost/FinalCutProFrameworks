@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
+- (BOOL)supportsReentrancy;
 - (id)primaryAnimationChannel;
 - (void)getKenBurnsChannelValueAtTime:(CDStruct_1b6d18a9)arg1 left:(double *)arg2 right:(double *)arg3 top:(double *)arg4 bottom:(double *)arg5;
 - (void)channelsWereReset;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_e83c9415)_kenBurnsRange;
 - (BOOL)effectDurationImpactsMD5;
 - (id)inputKeys;
+- (id)onScreenControlsForToolForEffect;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)setupCropChannel:(id *)arg1 folder:(id)arg2 name:(id)arg3 channelID:(unsigned int)arg4 defaultCurve:(double)arg5 minCurve:(double)arg6 minUI:(double)arg7 maxUI:(double)arg8 hidden:(BOOL)arg9;

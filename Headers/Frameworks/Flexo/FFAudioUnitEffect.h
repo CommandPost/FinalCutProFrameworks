@@ -24,7 +24,9 @@
     FFAnchoredObject *_observedObject;
 }
 
++ (void)clearAllCachedUnits;
 + (BOOL)isPreset:(id)arg1 equalToPreset:(id)arg2;
++ (void)initialize;
 + (id)copyClassDescription;
 + (id)_edelEffectBundle;
 + (id)audioUnitManufacturers;
@@ -47,6 +49,8 @@
 + (id)effectIdentifierForType:(unsigned int)arg1 subType:(unsigned int)arg2 manufacturer:(unsigned int)arg3;
 + (id)effectIdentifierWithTypeString:(id)arg1 subType:(id)arg2 manufacturer:(id)arg3;
 + (struct OpaqueAudioComponent *)componentForEffectIdentifier:(id)arg1;
++ (id)loggingStringForEffectID:(id)arg1;
++ (id)loggingStringForEffectID:(id)arg1 includeName:(BOOL)arg2;
 + (BOOL)componentDescription:(struct AudioComponentDescription *)arg1 forEffectIdentifier:(id)arg2;
 + (BOOL)update_disableAudioUnitEffectClumpFolderResetForEffectStack:(id)arg1;
 + (BOOL)update_useRelativeAudioPresetPathForEffectStack:(id)arg1;
@@ -75,6 +79,7 @@
 - (void)_addAnchoredObjectObserving;
 - (void)_updateObjectAudioProperties;
 - (void)clearCachedUnit;
+- (void)_clearCachedUnitDuringDealloc:(BOOL)arg1;
 - (int)saveCurrentEffectState;
 - (id)effectState;
 - (void)setEffectStateWithNoUpdate:(id)arg1;
@@ -87,6 +92,7 @@
 - (id)defaultPreset;
 - (id)preset;
 - (void)setPreset:(id)arg1;
+- (void)switchToPreset:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_postInit:(id)arg1;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;

@@ -32,12 +32,20 @@ __attribute__((visibility("hidden")))
 
 + (int)syncStatusCount;
 + (struct NSObject *)readSyncInfo:(id)arg1 error:(id *)arg2;
++ (id)uniqueExternalURLWithMediaRepType:(id)arg1 tempMediaURL:(id)arg2 srcMediaIdentifier:(id)arg3 proposedDstDirectoryURL:(id)arg4 dstFileName:(id)arg5 createdSymlink:(char *)arg6 error:(id *)arg7;
++ (id)createLinkToExistingExternalMediaRepType:(id)arg1 fileName:(id)arg2 forAsset:(id)arg3;
++ (id)commitTemporaryMediaAtURL:(id)arg1 mediaRepType:(id)arg2 fileName:(id)arg3 forAsset:(id)arg4 inProject:(id)arg5 proposedlibraryURL:(id)arg6 libraryURL:(id *)arg7;
++ (id)dateStringForAsset:(id)arg1;
++ (id)fileSystemCompatibleStringForDate:(id)arg1;
++ (id)mediaIdentifierOfItemAtURL:(id)arg1 withMediaRepType:(id)arg2;
++ (id)nextFolderURLForURL:(id)arg1 fcpTag:(BOOL)arg2;
 + (id)uniqueURLforURL:(id)arg1;
 + (id)nextURLforURL:(id)arg1;
 + (BOOL)URLHasCameraTag:(id)arg1;
-+ (int)indexFromFilename:(id)arg1;
-+ (id)urlFromFolderURL:(id)arg1 baseFilename:(id)arg2 cameraTag:(BOOL)arg3 index:(int)arg4 extension:(id)arg5;
-+ (id)baseFilenameFromURL:(id)arg1;
++ (int)indexFromFilename:(id)arg1 fcpTag:(BOOL)arg2;
++ (id)urlFromFolderURL:(id)arg1 baseFilename:(id)arg2 cameraTag:(BOOL)arg3 fcpTag:(BOOL)arg4 index:(int)arg5 extension:(id)arg6;
++ (id)baseNameFromString:(id)arg1 fcpTag:(BOOL)arg2;
++ (id)baseFilenameFromURL:(id)arg1 fcpTag:(BOOL)arg2;
 + (id)filenameFromURL:(id)arg1;
 + (id)extensionFromURL:(id)arg1;
 + (id)_adjustedAssetPath:(id)arg1 originalURL:(id)arg2;
@@ -61,14 +69,17 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)mergeMetadataToMediaRep:(id)arg1;
-- (void)setupProjectRelativeFileNamed:(id)arg1 manageFileType:(int)arg2 project:(id)arg3 externalFolderURL:(id)arg4;
+- (void)setupProjectRelativeFileNamed:(id)arg1 manageFileType:(int)arg2 project:(id)arg3 externalFolderURL:(id)arg4 foundExistingFile:(char *)arg5;
 - (void)organizeIntoEvent:(id)arg1;
 @property(readonly, nonatomic) BOOL mediaAvailable;
-- (void)purgeBookmarkData;
 @property(readonly, nonatomic) int syncStatus;
 - (void)setSyncStatus:(int)arg1;
 - (BOOL)syncBookmarkData:(id)arg1 forceUpdate:(BOOL)arg2;
+- (void)purgeBookmarkData;
+- (id)bookmarkData;
+- (void)setBookmarkData:(id)arg1;
 - (int)syncWithMedia:(id)arg1 options:(unsigned int)arg2 needsUpdate:(char *)arg3 error:(id *)arg4;
+- (BOOL)isRMD;
 - (BOOL)usingSubfolder;
 - (BOOL)_updateLastModifiedFileDate:(int)arg1;
 - (BOOL)updateSyncStatus:(int)arg1;
@@ -94,11 +105,11 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithFileURL:(id)arg1 media:(id)arg2 repType:(id)arg3 manageFileType:(int)arg4 project:(id)arg5;
 - (id)initWithFileURL:(id)arg1 media:(id)arg2 repType:(id)arg3 manageFileType:(int)arg4 project:(id)arg5 showRepAsMissing:(BOOL)arg6;
-- (id)_projectRelativePathForURL:(id)arg1 recommendedName:(id)arg2 project:(id)arg3;
+- (id)_projectRelativePathForURL:(id)arg1 recommendedName:(id)arg2 project:(id)arg3 usingExternalMedia:(BOOL)arg4;
 - (void)_checkCreationDate:(id)arg1;
-- (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2;
-- (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2 externalFolderURL:(id)arg3;
-- (id)_externalFileURL:(id)arg1;
+- (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2 copyQueued:(char *)arg3;
+- (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2 externalFolderURL:(id)arg3 copyQueued:(char *)arg4;
+- (id)proposedExternalDirectoryURLWithSourceURL:(id)arg1 project:(id)arg2 proposedFileName:(id *)arg3;
 - (void)setPersistentFileURL:(id)arg1;
 - (id)persistentFileURL;
 - (void)setOrganizeStateString:(id)arg1;
@@ -110,8 +121,10 @@ __attribute__((visibility("hidden")))
 - (void)setRelativePath:(id)arg1;
 - (void)setProjectRelativePath:(id)arg1;
 - (id)projectRelativePath;
+- (id)targetProject;
 - (id)assetFileID;
 - (void)setRepType:(id)arg1;
+- (void)resetMedia:(id)arg1;
 - (void)setMedia:(id)arg1;
 - (id)_readOriginalFileURL:(id *)arg1;
 - (void)_prepareAssetCopy:(id)arg1;
@@ -119,8 +132,8 @@ __attribute__((visibility("hidden")))
 - (void)_copyCompleted:(id)arg1;
 - (void)_synchronousCopyCompleted;
 - (void)_setOrganizeState:(int)arg1;
-- (void)_mediaRepPrivateCacheEnsureMutable;
-- (id)_mediaRepPrivateCache:(BOOL)arg1;
+- (void)setMediaRepPrivateCacheValue:(id)arg1 forKey:(id)arg2;
+- (id)mediaRepPrivateCacheValueForKey:(id)arg1;
 
 @end
 

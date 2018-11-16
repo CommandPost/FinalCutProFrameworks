@@ -13,11 +13,10 @@
     PCMatrix44Double *_pixelTransform;
     struct CGColorSpace *_colorSpace;
     unsigned int _field;
-    unsigned long long _approximateMemoryUsage;
+    CDUnknownBlockType _approximateMemoryUsageBlock;
     int _errorCode;
 }
 
-@property unsigned long long approximateMemoryUsage; // @synthesize approximateMemoryUsage=_approximateMemoryUsage;
 - (void)getSampleBuffer:(struct opaqueCMSampleBuffer **)arg1 alphaKnownToBeFullyOpaque:(char *)arg2;
 - (BOOL)disable422InputFiltering;
 - (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
@@ -26,6 +25,7 @@
 - (_Bool)alphaWantsInversion;
 - (int)nativeAlphaType;
 - (void)setColorSpace:(struct CGColorSpace *)arg1;
+- (id)logProcessingInfo;
 - (struct CGColorSpace *)colorSpace;
 - (void)setPixelTransform:(id)arg1;
 - (id)pixelTransform;
@@ -40,6 +40,9 @@
 - (id)nativePixelFormat;
 - (void)setErrorCode:(int)arg1;
 - (int)errorCode;
+- (unsigned long long)approximateMemoryUsage;
+- (void)setApproximateMemoryUsage:(unsigned long long)arg1;
+- (void)setApproximateMemoryUsageBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithRepresentation:(id)arg1;
 - (id)initWithColorSpace:(struct CGColorSpace *)arg1 pixelTransform:(id)arg2;

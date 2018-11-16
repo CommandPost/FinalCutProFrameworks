@@ -35,7 +35,7 @@
 - (void)threadedFindMissingFootage;
 - (void)cancelSearch:(id)arg1;
 - (void)updateProgressDisplay:(id)arg1;
-- (int)askForMissingFootage:(struct OZFootage *)arg1 hasMultipleFiles:(BOOL)arg2;
+- (long long)askForMissingFootage:(struct OZFootage *)arg1 hasMultipleFiles:(BOOL)arg2;
 - (void)scanForMissingFootage:(vector_25e13bfd *)arg1 searchDirectories:(id)arg2 searchDepth:(unsigned int)arg3 showUI:(BOOL)arg4;
 - (void)scanForMissingFootage:(vector_25e13bfd *)arg1 isSequence:(vector_69938c0b *)arg2 missingFileName:(id)arg3 directory:(id)arg4 searchDepth:(unsigned int)arg5 showUI:(BOOL)arg6;
 - (void)tryFileCandidate:(id)arg1;

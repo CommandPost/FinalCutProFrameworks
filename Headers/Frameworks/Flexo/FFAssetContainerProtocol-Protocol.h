@@ -9,6 +9,7 @@
 @protocol FFAssetContainerProtocol
 - (NSArray *)fileURLs:(int)arg1;
 - (NSSet *)mediaRefs;
+- (void)_clipRefs:(NSMutableSet *)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)addClipRefsToSet:(NSMutableSet *)arg1;
 - (NSSet *)clipRefs;
 - (void)addAssetRefsToSet:(NSMutableSet *)arg1;

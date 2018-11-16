@@ -19,6 +19,7 @@
 }
 
 @property(retain, nonatomic) FFAnchoredSequence *currentSequence; // @synthesize currentSequence=_currentSequence;
+- (double)rightDraggableExclusionMargin;
 - (void)firstResponderChanged:(id)arg1;
 - (void)updateFilter:(id)arg1;
 - (void)notificationHandler:(id)arg1;

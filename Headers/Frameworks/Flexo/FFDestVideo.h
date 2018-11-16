@@ -6,7 +6,7 @@
 
 #import <Flexo/FFDest.h>
 
-@class FFPlayer, FFReducedRateTracker;
+@class FFPlayer, FFReducedRateTracker, NSMutableArray, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
 @interface FFDestVideo : FFDest
@@ -19,6 +19,9 @@ __attribute__((visibility("hidden")))
     struct CGRect _sequenceBounds;
     FFReducedRateTracker *_rrt;
     BOOL _enableDrawAllAngles;
+    BOOL _enableDropDetection;
+    NSObject<OS_dispatch_queue> *_dropInfosLock;
+    NSMutableArray *_dropInfos;
 }
 
 + (BOOL)automaticallyNotifiesObserversForEnableDrawAllAngles;
@@ -30,6 +33,11 @@ __attribute__((visibility("hidden")))
 @property(readonly) CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
 @property(readonly) CDStruct_1b6d18a9 sampleDuration; // @synthesize sampleDuration=_sampleDuration;
 - (id).cxx_construct;
+- (void)resetDropInfos;
+- (id)copyDropInfosByPopping;
+- (void)recordDropInfo:(id)arg1;
+- (BOOL)enableDropDetection;
+- (void)setEnableDropDetection:(BOOL)arg1;
 - (_Bool)performOverfullRecovery;
 - (_Bool)supportsOverfullRecovery;
 - (_Bool)usesOSThrottlingForAllDiskIO;

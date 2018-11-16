@@ -24,7 +24,6 @@
 - (id)sequenceInfo;
 - (id)sequence;
 - (id)project;
-- (id)defaultLibraryItem;
 - (id)documentType;
 
 @end

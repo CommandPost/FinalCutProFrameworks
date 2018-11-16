@@ -18,8 +18,9 @@
 + (id)queryAllInstances;
 + (id)copyClassDescription;
 + (Class)DSClassDescriptionClass;
-- (void)property:(id)arg1 change:(id)arg2;
++ (void)initialize;
 - (BOOL)_hasWriteLock;
+- (BOOL)writerIsWaiting;
 - (void)_writeUnlock;
 - (void)_writeLock;
 - (void)_readUnlock;

@@ -11,7 +11,7 @@
 #import "NSOpenSavePanelDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFImportGoToFolderSheetController, FFImportNavigationController, FFImportOrganizerFilmstripModule, FFImportOrganizerOptionsSheetConnector, FFImportOrganizerSplitView, FFImportSeparator, FFImportTapeModule, FFLibrary, FFMediaEventProject, FFNavHeaderView, LKButton, LKImageView, LKPaneCapView, LKPopOverWindow, LKPopUpButton, LKProgressIndicator, LKSegmentedControl, LKSlider, LKTextField, LKViewModule, NSProButton, NSProTextField, NSProThemeImageView, NSProView, NSSet, NSTextField, NSView, NSWindow, OKPaneCapItemView;
+@class FFImportGoToFolderSheetController, FFImportNavigationController, FFImportOrganizerFilmstripModule, FFImportOrganizerOptionsSheetConnector, FFImportOrganizerSplitView, FFImportSeparator, FFImportTapeModule, FFLibrary, FFMediaEventProject, FFNavHeaderView, LKBox, LKButton, LKImageView, LKPaneCapView, LKPopOverWindow, LKPopUpButton, LKProgressIndicator, LKSegmentedControl, LKSlider, LKTextField, LKViewModule, NSProButton, NSProTextField, NSProThemeImageView, NSProView, NSSet, NSString, NSTextField, NSView, NSWindow, OKPaneCapItemView;
 
 @interface FFImportOrganizerModule : FFEventsSuperModule <NSWindowDelegate, FFImportTapeModuleDelegate, NSOpenSavePanelDelegate, NSMenuDelegate>
 {
@@ -75,13 +75,18 @@
     NSTextField *_eventTextField;
     NSWindow *_newEventPanel;
     LKPopUpButton *_photoVideoPopup;
+    LKButton *_hideImportedClipsCheckbox_Nav;
+    LKBox *_hideImportedClipsDivider;
+    LKButton *_noItemsButton;
     FFLibrary *_eventLibrary;
     FFMediaEventProject *_currentEvent;
+    NSString *_noFilteredItemsStatusString;
 }
 
 + (void)targetInfoForItems:(id)arg1 targetInfo:(CDStruct_7da301ea *)arg2;
 + (void)initialize;
 + (id)keyPathsForValuesAffectingCanArchive;
+@property(retain) NSString *noFilteredItemsStatusString; // @synthesize noFilteredItemsStatusString=_noFilteredItemsStatusString;
 @property(retain, nonatomic) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
 @property(retain, nonatomic) FFLibrary *eventLibrary; // @synthesize eventLibrary=_eventLibrary;
 @property NSTextField *eventTextField; // @synthesize eventTextField=_eventTextField;
@@ -98,6 +103,7 @@
 - (id)sidebarItemForMenuEvent;
 - (void)selectSidebarItem:(id)arg1;
 - (id)selectedSidebarItem;
+- (void)updateNoItemsButton;
 - (id)validateAndCreateEvent;
 - (void)newEventSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)newEventSheetOKButton:(id)arg1;
@@ -159,6 +165,7 @@
 - (void)createCameraArchive:(id)arg1;
 - (BOOL)canArchiveItem:(id)arg1;
 @property(readonly) BOOL canArchive;
+- (void)cameraArchiveStateChanged:(id)arg1;
 - (id)volumeToArchiveAtCurrentNode;
 - (void)finishedLoadingChanged;
 - (BOOL)finishedLoading;

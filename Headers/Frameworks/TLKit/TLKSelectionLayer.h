@@ -6,11 +6,11 @@
 
 #import "CALayer.h"
 
-@class NSArray, NSDictionary;
+@class NSArray, NSMutableDictionary;
 
 @interface TLKSelectionLayer : CALayer
 {
-    NSDictionary *_mapping;
+    NSMutableDictionary *_mapping;
     CALayer *_rootLayer;
     CALayer *_emphasizedLayer;
     CALayer *_emphasizedRingLayer;
@@ -40,6 +40,7 @@
 @property int displayMode;
 - (void)dealloc;
 - (id)init;
+- (id)initWithArchive:(id)arg1;
 
 @end
 

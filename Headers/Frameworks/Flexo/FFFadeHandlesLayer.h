@@ -38,8 +38,8 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)_timeFromLocation:(double)arg1;
 - (double)_locationForTime:(CDStruct_1b6d18a9)arg1;
 - (void)_showTimecodeDisplayForHandleAtIndex:(unsigned long long)arg1;
-- (struct CGRect)_frameForHandleAtIndex:(unsigned long long)arg1;
-- (struct CGRect)_frameForCurveAtIndex:(unsigned long long)arg1;
+- (struct CGRect)_frameForHandleAtIndex:(unsigned long long)arg1 timeRange:(CDStruct_e83c9415)arg2;
+- (struct CGRect)_frameForCurveAtIndex:(unsigned long long)arg1 timeRange:(CDStruct_e83c9415)arg2;
 - (id)_fadeCurveContextMenuForHandleAtIndex:(unsigned long long)arg1;
 - (void)_drawFadeWithBounds:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 curvature:(unsigned int)arg3 enabled:(BOOL)arg4 forFadeIn:(BOOL)arg5;
 - (void)_channelChanged:(id)arg1;

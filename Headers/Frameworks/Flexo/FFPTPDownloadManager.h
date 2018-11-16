@@ -39,9 +39,11 @@
 - (id)librariesInUse;
 - (id)assetsInUse;
 - (void)downloadProgress:(id)arg1 onTask:(id)arg2;
+- (void)showCameraFileDownloadErrorAlertMain:(id)arg1;
 - (void)showCameraFileDownloadErrorAlert:(id)arg1;
 - (void)cameraFileDownloadError:(id)arg1 error:(id)arg2;
 - (void)cameraFileDownloadCanceled:(id)arg1;
+- (void)cameraFileDidDownloadMain:(id)arg1;
 - (void)cameraFileDidDownload:(id)arg1;
 - (void)removeDestinationFolderForDownloadRequest:(id)arg1;
 - (void)cameraFileWillDownload:(id)arg1;
@@ -50,13 +52,14 @@
 - (void)downloadRequestsRemovedFromQueue:(id)arg1;
 - (void)downloadRequestsAddedToQueue:(id)arg1;
 - (void)updateDownloadPercentageForClipID:(id)arg1;
-- (unsigned long long)removeCanceledDownloadRequestsForDevice:(id)arg1;
+- (id)removeCanceledDownloadRequestsForDevice:(id)arg1;
 - (void)cancelAll;
 - (void)resetImportedRangeMarkerForDownloadRequest:(id)arg1;
 - (id)importRangesOfMedia:(id)arg1 toEvent:(id)arg2 keywords:(id)arg3 importStartDate:(id)arg4;
 - (id)ptpDeviceManager;
 - (void)appWillTerminate:(id)arg1;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

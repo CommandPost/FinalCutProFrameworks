@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFAsset, FFAssetFileIdentifier;
+@class FFAsset, FFAssetFileIdentifier, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAssetCopyRequest : NSObject
@@ -25,8 +25,12 @@ __attribute__((visibility("hidden")))
     id _customObject;
     id _customObject2;
     FFAssetCopyRequest *_duplicateRequest;
+    NSString *_displayName;
+    unsigned long long _sourceAndTargetPathHash;
 }
 
+@property(readonly, nonatomic) unsigned long long sourceAndTargetPathHash; // @synthesize sourceAndTargetPathHash=_sourceAndTargetPathHash;
+@property(readonly) NSString *displayName; // @synthesize displayName=_displayName;
 @property(readonly, nonatomic) long long bytesCopied; // @synthesize bytesCopied=_bytesCopied;
 @property(readonly, nonatomic) long long bytesToCopy; // @synthesize bytesToCopy=_bytesToCopy;
 @property(retain) id customObject2; // @synthesize customObject2=_customObject2;

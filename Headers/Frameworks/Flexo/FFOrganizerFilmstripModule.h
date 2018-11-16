@@ -10,13 +10,14 @@
 #import "FFNumericEntrySource.h"
 #import "FFOrganizerFilmstripClusteringDelegate.h"
 #import "FFOrganizerFilmstripViewDelegate.h"
+#import "FFOrganizerImportDropController.h"
 #import "FFRolesMenuDelegate.h"
 #import "FFSharableContent.h"
 #import "NSWindowDelegate.h"
 
-@class FFAnalyzeMediaWindowController, FFKeywordEditor, FFMediaSidebarModule, FFModifyContentCreationDateWindowController, FFNumericEntry, FFOrganizerFilmListViewController, FFOrganizerFilmstripViewController, FFOrganizerZoomBezelSegmentedControl, FFResponderLayerHostView, FFResponderLayerPushButton, FFRolesMenuController, FFShareHelper, FFTranscodeMediaWindowController, LKMenu, LKPopOverWindow, LKPopUpButton, LKSlider, LKTextField, NSArray, NSDictionary, NSMenuItem, NSMutableArray, NSMutableDictionary, NSProButton, NSProThemeImageView, NSProView, NSString, OKPaneCapItemButton, OKPaneCapItemSlider, OKPaneCapItemView;
+@class FFAnalyzeMediaWindowController, FFKeywordEditor, FFModifyContentCreationDateWindowController, FFNumericEntry, FFOrganizerFilmListViewController, FFOrganizerFilmstripViewController, FFOrganizerImportDropResponderLayerHostView, FFOrganizerZoomBezelSegmentedControl, FFResponderLayerHostView, FFResponderLayerPushButton, FFRolesMenuController, FFShareHelper, FFTranscodeMediaWindowController, LKMenu, LKPopOverWindow, LKPopUpButton, LKSlider, LKTextField, NSArray, NSDictionary, NSMenuItem, NSMutableArray, NSMutableDictionary, NSProButton, NSProThemeImageView, NSProView, NSString, OKPaneCapItemButton, OKPaneCapItemSlider, OKPaneCapItemView;
 
-@interface FFOrganizerFilmstripModule : FFEventsDetailModule <FFOrganizerFilmstripViewDelegate, FFSharableContent, FFOrganizerFilmstripClusteringDelegate, FFNumericEntrySource, FFRolesMenuDelegate, NSWindowDelegate, FFEditActionSourceProtocol>
+@interface FFOrganizerFilmstripModule : FFEventsDetailModule <FFOrganizerFilmstripViewDelegate, FFSharableContent, FFOrganizerFilmstripClusteringDelegate, FFNumericEntrySource, FFRolesMenuDelegate, NSWindowDelegate, FFEditActionSourceProtocol, FFOrganizerImportDropController>
 {
     NSProView *_frameDurationContainer;
     LKSlider *_frameDurationSlider;
@@ -49,13 +50,17 @@
     NSProButton *_editButton;
     NSProThemeImageView *_smallZoomImage;
     NSProThemeImageView *_largeZoomImage;
-    FFResponderLayerHostView *_emptyPaneView;
+    FFOrganizerImportDropResponderLayerHostView *_emptyPaneView;
     NSProView *_emptySearchResultsView;
     FFResponderLayerPushButton *_emptyPaneButton;
     BOOL _clusterDirection;
     BOOL _arrangeDirection;
+    BOOL _allProjectsArrangeDirection;
+    BOOL _playProject;
     long long _clusterType;
+    int _clusterMode;
     long long _arrangeType;
+    long long _allProjectsArrangeType;
     BOOL _isAllProjectsMode;
     NSString *_allProjectDefaultSelectionMediaIdentifier;
     int _curDisplayViewType;
@@ -85,7 +90,6 @@
     long long _favoriteFilterType;
     BOOL _paintCommand;
     CDStruct_1b6d18a9 _paintBeginTime;
-    FFMediaSidebarModule *_mediaSidebarModule;
     NSArray *_activeSelection;
     NSDictionary *_filmstripContentLayout;
     NSDictionary *_filmListContentLayout;
@@ -99,20 +103,23 @@
 @property(readonly) BOOL isAllProjectsMode; // @synthesize isAllProjectsMode=_isAllProjectsMode;
 @property(nonatomic) NSProView *emptySearchResultsView; // @synthesize emptySearchResultsView=_emptySearchResultsView;
 @property(nonatomic) FFResponderLayerHostView *emptyPaneView; // @synthesize emptyPaneView=_emptyPaneView;
-@property(nonatomic) FFMediaSidebarModule *mediaSidebarModule; // @synthesize mediaSidebarModule=_mediaSidebarModule;
 @property(retain) FFOrganizerFilmListViewController *filmlistViewController; // @synthesize filmlistViewController=_filmlistViewController;
 @property(retain) FFOrganizerFilmstripViewController *filmstripViewController; // @synthesize filmstripViewController=_filmstripViewController;
 @property FFOrganizerFilmstripViewController *currentFilmViewController; // @synthesize currentFilmViewController=_currentFilmViewController;
 @property int curDisplayViewType; // @synthesize curDisplayViewType=_curDisplayViewType;
+@property long long allProjectsArrangeType; // @synthesize allProjectsArrangeType=_allProjectsArrangeType;
 @property long long arrangeType; // @synthesize arrangeType=_arrangeType;
+@property int clusterMode; // @synthesize clusterMode=_clusterMode;
 @property long long clusterType; // @synthesize clusterType=_clusterType;
+@property BOOL allProjectsArrangeDirection; // @synthesize allProjectsArrangeDirection=_allProjectsArrangeDirection;
 @property BOOL arrangeDirection; // @synthesize arrangeDirection=_arrangeDirection;
 @property BOOL clusterDirection; // @synthesize clusterDirection=_clusterDirection;
 - (void)exportXML:(id)arg1;
 - (BOOL)canExportXML;
 - (void)exportToFinalCut:(id)arg1;
-- (BOOL)canExportToFinalCut;
-- (id)exportXMLItems;
+- (BOOL)canExportToFinalCut:(unsigned long long *)arg1;
+- (id)exportToFinalCutEventClips;
+- (id)exportXMLEventClips;
 - (struct CGRect)animationStartRectForEditAction:(id)arg1;
 - (id)animationViewForEditAction:(id)arg1;
 - (struct CGImage *)newAnimationImageForEditAction:(id)arg1;
@@ -123,7 +130,8 @@
 - (void)pasteAdjustmentsAudioEffect:(id)arg1;
 - (void)pasteAdjustmentsVideoEffect:(id)arg1;
 - (void)pasteAdjustmentsAudioLevels:(id)arg1;
-- (void)pasteAdjustmentsColor:(id)arg1;
+- (void)pasteAdjustmentsColorCorrection:(id)arg1;
+- (void)pasteAdjustmentsColorBalance:(id)arg1;
 - (void)pasteAdjustmentsAll:(id)arg1;
 - (void)pasteAdjustmentsCore:(int)arg1;
 - (BOOL)operationForPasteAdjustments:(int)arg1 targetObject:(id)arg2 sourceObject:(id)arg3 error:(id *)arg4;
@@ -207,14 +215,18 @@
 - (void)selectPreviousVariantInSelection:(id)arg1;
 - (void)_selectVariantInSelection:(BOOL)arg1;
 - (void)doMute:(id)arg1;
+- (void)adjustVolumeAbsolute:(id)arg1;
+- (void)adjustVolumeRelative:(id)arg1;
 - (void)volumeDown:(id)arg1;
 - (void)volumeUp:(id)arg1;
-- (void)_performVolumeAdjustment:(double)arg1 actionName:(id)arg2;
+- (void)_performAdjustVolumeByAmount:(double)arg1 isRelative:(BOOL)arg2 actionName:(id)arg3;
 - (void)moveItemsToLibrary:(id)arg1;
 - (void)moveToLibrary:(id)arg1;
 - (void)copyItemsToLibrary:(id)arg1;
 - (void)copyToLibrary:(id)arg1;
 - (void)_mmToLibrary:(id)arg1 isCopy:(BOOL)arg2;
+- (void)crossCorrelateUsingPeakData:(id)arg1;
+- (void)crossCorrelateUsingAudioSamples:(id)arg1;
 - (void)mergeClips:(id)arg1;
 - (void)allowTimelineEditing:(id)arg1;
 - (BOOL)allowTimelineEditingState;
@@ -261,9 +273,12 @@
 - (void)createMultiAngleClip:(id)arg1;
 - (void)settingsSheetClosing:(int)arg1 sequence:(id)arg2 actionName:(id)arg3 settingsModule:(id)arg4;
 - (id)createClip:(id)arg1;
-- (void)_workOnMultiAngleCreationSequence:(id)arg1 project:(id)arg2 actionName:(id)arg3 selection:(id)arg4;
+- (BOOL)_workOnSynchronizedClipCreationSequence:(id)arg1 event:(id)arg2 actionName:(id)arg3 selection:(id)arg4;
+- (BOOL)_workOnMultiAngleCreationSequence:(id)arg1 project:(id)arg2 actionName:(id)arg3 selection:(id)arg4;
+- (id)_editsFromSelection:(id)arg1 inEvent:(id)arg2;
 - (void)_addSelectedEdits:(id)arg1 toSequence:(id)arg2;
-- (void)_arrangeEditsIntoAngles:(id)arg1 arrangeBy:(int)arg2 syncBy:(int)arg3 orderBy:(int)arg4 fineSyncByAudio:(int)arg5;
+- (BOOL)_arrangeEditsIntoAnglesForSynchronizedClip:(id)arg1 itemsToSync:(id)arg2 syncBy:(int)arg3 fineSyncByAudio:(int)arg4 isMixedTCTracksClockTime:(BOOL)arg5;
+- (BOOL)_arrangeEditsIntoAngles:(id)arg1 itemsToSync:(id)arg2 arrangeBy:(int)arg3 orderBy:(int)arg4 syncBy:(int)arg5 fineSyncByAudio:(int)arg6 isMixedTCTracksClockTime:(BOOL)arg7;
 - (void)extendFavoriteRangeFromPreviousMoment:(id)arg1;
 - (void)delete:(id)arg1;
 - (void)reject:(id)arg1;
@@ -312,6 +327,7 @@
 - (int)_getNumericEntryType;
 - (void)numericEntryDidEndWithType:(int)arg1 timecode:(id)arg2 direction:(int)arg3;
 - (BOOL)canToggleDeltaAndAbsolute:(int)arg1;
+- (BOOL)doesNumericEntryOfType:(int)arg1 endOnKeyDownEvent:(id)arg2;
 - (id)runtimeTimecode;
 - (id)timecodeFormatter;
 - (id)numericEntry;
@@ -327,6 +343,8 @@
 - (void)nextMarker:(id)arg1;
 - (void)previousEdit:(id)arg1;
 - (void)nextEdit:(id)arg1;
+- (void)convertToProject:(id)arg1;
+- (void)_reopenSequence:(id)arg1;
 - (void)playProject:(id)arg1;
 - (void)playRateMinus32X:(id)arg1;
 - (void)playRateMinus16X:(id)arg1;
@@ -368,6 +386,7 @@
 - (void)stopPlayingDown:(id)arg1;
 - (void)stopPlaying:(id)arg1;
 - (void)playPause:(id)arg1;
+- (void)goToTimelineAndPlay;
 - (BOOL)canDisplayPlayer;
 - (void)revealAncestor:(id)arg1;
 - (void)modifyContentCreationDate:(id)arg1;
@@ -407,6 +426,11 @@
 - (void)cut:(id)arg1;
 - (void)snapshotClip:(id)arg1;
 - (void)importClipsWithKeywords:(id)arg1 toEvent:(id)arg2;
+- (void)delayedPostImportDidBeginNotification;
+- (BOOL)performImportDropOperation:(id)arg1;
+- (unsigned long long)shouldAcceptImportDrop:(id)arg1;
+- (unsigned long long)_dragOperationForEvent:(id)arg1 andInfo:(id)arg2;
+- (BOOL)wantsImportDragAndDrop;
 - (void)displayClipInPlayer:(id)arg1;
 - (id)_skimmingOrSelectedMediaItems;
 - (id)_skimmingMediaItems;
@@ -479,11 +503,13 @@
 - (id)project;
 - (id)_extractReferenceClipsForProjects:(id)arg1;
 - (void)_updateUnfilteredRanges;
-- (id)sidebarRanges;
+- (id)newSidebarRanges;
 - (void)_selectMostRecentlySelectedProjectInAllProjects;
 - (id)_filteredMediaRanges:(id)arg1 usingFolder:(id)arg2;
 - (id)_filteredMediaRanges:(id)arg1 forFiltersDictionary:(id)arg2;
+- (void)addMediaRangesForClipSetToArray:(id)arg1 toArray:(id)arg2;
 - (id)mediaRangesForClipSet:(id)arg1;
+- (void)addMediaRangesForClipArrayToArray:(id)arg1 toArray:(id)arg2;
 - (id)mediaRangesForClipArray:(id)arg1;
 - (void)shareDestinationPicker:(id)arg1;
 - (id)shareSelection:(id)arg1;
@@ -557,15 +583,15 @@
 - (BOOL)_isContentItemAtIndex:(long long)arg1 ofTypeClass:(Class)arg2;
 - (id)_itemsArrangeByMetadata:(id)arg1;
 - (void)reclusterContents:(BOOL)arg1;
+- (void)setAllProjectsArrangeByMetadataKey:(id)arg1;
 - (void)setArrangeByMetadataKey:(id)arg1;
 - (id)_arrangeByMetadataKey;
 - (id)_clusteringMetadataKey;
+- (void)sortBy:(id)arg1;
 - (void)arrangebySortOrderAction:(id)arg1;
 - (void)clusteringSortOrderAction:(id)arg1;
 - (void)arrangingingPopUpAction:(id)arg1;
 - (void)clusteringPopUpAction:(id)arg1;
-- (BOOL)_sidebarSelectionIsMultipleProjects;
-- (BOOL)_shouldClusterBySidebarGroup;
 - (BOOL)isClustering;
 - (void)bezelHUDDidResignKey:(id)arg1;
 - (void)reenableZoomBezel;
@@ -615,11 +641,13 @@
 - (BOOL)selectionHasNoMulticamClips;
 - (BOOL)selectionCanBecomeAMulticamClip;
 - (BOOL)hasAngles:(id)arg1;
-- (BOOL)selectionCanSynchOrTranscode;
+- (BOOL)selectionCanSynchronizeClips;
 - (BOOL)selectionCanTranscode;
 - (BOOL)_isReadOnly;
 - (BOOL)containedInImportModule;
 - (void)moduleDidBecomeVisible:(id)arg1;
+- (id)eventSidebarModule;
+- (id)sidebarModule;
 - (void)setDelegate:(id)arg1;
 - (id)identifier;
 - (void)dealloc;

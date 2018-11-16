@@ -8,17 +8,15 @@
 
 #import "FFOrganizerFilmstripViewProtocol.h"
 
-@class FFOrganizerFilmstripView, NSString;
+@class FFOrganizerFilmstripView;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripViewController : NSViewController <FFOrganizerFilmstripViewProtocol>
 {
     FFOrganizerFilmstripView *_filmstripView;
     BOOL _selectedRangesObserverAttached;
-    NSString *_clipLabelSizeDefaultKey;
 }
 
-@property(retain) NSString *clipLabelSizeDefaultKey; // @synthesize clipLabelSizeDefaultKey=_clipLabelSizeDefaultKey;
 @property BOOL selectedRangesObserverAttached; // @synthesize selectedRangesObserverAttached=_selectedRangesObserverAttached;
 @property(retain) FFOrganizerFilmstripView *filmstripView; // @synthesize filmstripView=_filmstripView;
 - (void)performEditAction;
@@ -72,9 +70,10 @@ __attribute__((visibility("hidden")))
 - (void)moveToSelectionEnd;
 - (void)moveToSelectionStart;
 - (void)activeSelectionDidChange;
-- (void)revealAndSelectRange:(id)arg1 playheadTime:(CDStruct_1b6d18a9)arg2;
+- (BOOL)revealAndSelectRange:(id)arg1 playheadTime:(CDStruct_1b6d18a9)arg2;
 - (void)selectionDidChangeToTime:(CDStruct_e83c9415)arg1 inObject:(id)arg2;
 - (void)selectionDidChangeToObject:(id)arg1;
+- (id)rangeToSelectAfterDelete;
 - (void)syncMarkerToRange:(id)arg1;
 - (void)syncSelectionToRange:(id)arg1;
 - (void)matchSelectionToPreviousModeSelection:(id)arg1;
@@ -133,9 +132,9 @@ __attribute__((visibility("hidden")))
 - (void)willRemoveFromModule;
 - (void)didInstallInModule;
 - (void)willInstallInModule;
+- (void)loadView;
 - (void)reloadData;
 - (void)dealloc;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)init;
 
 @end

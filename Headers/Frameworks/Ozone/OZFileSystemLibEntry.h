@@ -26,6 +26,7 @@
 }
 
 + (BOOL)saveXMLCache;
++ (void)waitForThumbnailThread;
 + (void)readThumbnail:(id)arg1 keyPath:(id)arg2;
 + (id)buildTreeForPath:(id)arg1 rootName:(id)arg2 flags:(unsigned int)arg3 withOwner:(id)arg4;
 + (void)validateTree:(id)arg1;

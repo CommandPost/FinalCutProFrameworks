@@ -149,6 +149,7 @@
 - (void)switchMultiangleBank:(id)arg1;
 - (void)_updateAngleModeSwitchButtons;
 - (void)_updateNextPrevAngleBankButtons;
+- (void)_makeActiveCropOSC:(id)arg1;
 - (void)_updateAngleBankSelector;
 - (BOOL)isAngleEnabledForDisplayRectAtIndex:(unsigned long long)arg1;
 - (id)_makeAngleBankSelectorButton;

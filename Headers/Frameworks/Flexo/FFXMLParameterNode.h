@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, NSXMLElement;
 
 __attribute__((visibility("hidden")))
 @interface FFXMLParameterNode : NSObject
@@ -21,14 +21,14 @@ __attribute__((visibility("hidden")))
     int _fadeInType;
     int _fadeOutType;
     BOOL _isDefault;
-    BOOL _impliedTimes;
+    NSXMLElement *_sourceXMLElement;
 }
 
-@property(nonatomic) BOOL impliedTimes; // @synthesize impliedTimes=_impliedTimes;
+@property(retain, nonatomic) NSXMLElement *sourceXMLElement; // @synthesize sourceXMLElement=_sourceXMLElement;
 @property(nonatomic) BOOL isDefault; // @synthesize isDefault=_isDefault;
-@property(copy, nonatomic) NSString *initialValue; // @synthesize initialValue=_value;
-@property(copy, nonatomic) NSString *paramKey; // @synthesize paramKey=_paramKey;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(retain, nonatomic) NSString *initialValue; // @synthesize initialValue=_value;
+@property(retain, nonatomic) NSString *paramKey; // @synthesize paramKey=_paramKey;
+@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)copyAsVector;
 - (BOOL)isVector;
 - (BOOL)_checkUniformKeyframes:(id *)arg1 count:(unsigned long long)arg2;
@@ -43,10 +43,9 @@ __attribute__((visibility("hidden")))
 - (int)fadeInCurve;
 - (CDStruct_1b6d18a9)fadeOutDuration;
 - (CDStruct_1b6d18a9)fadeInDuration;
-- (void)setTimes:(id)arg1 values:(id)arg2;
-- (void)setValue:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2;
+- (void)setValue:(id)arg1 interpolation:(id)arg2 forTime:(CDStruct_1b6d18a9)arg3;
 - (unsigned long long)keyframeIndexForObject:(id)arg1 startingAtIndex:(unsigned long long)arg2;
-- (void)timesAndValuesDo:(CDUnknownBlockType)arg1;
+- (id)keyframes;
 - (id)initWithName:(id)arg1;
 - (id)init;
 - (void)dealloc;

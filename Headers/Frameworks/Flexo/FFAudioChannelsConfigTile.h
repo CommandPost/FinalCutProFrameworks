@@ -51,9 +51,10 @@ __attribute__((visibility("hidden")))
 - (void)_addObservers;
 - (void)_rebuildTile;
 - (void)updateFrameSize;
+- (void)updateUI:(BOOL)arg1;
 - (void)updateUI;
 - (void)_teardownTile;
-- (void)_setupTile;
+- (void)_setupTile:(BOOL)arg1;
 - (BOOL)_showFilmstrips;
 - (void)_setupChannelViews;
 - (void)dealloc;

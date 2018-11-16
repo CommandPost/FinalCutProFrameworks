@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (int)numTokensNotReady;
+- (BOOL)anyBlockers;
 - (int)numTokens;
 - (void)wait;
 - (void)addBlockingToken:(id)arg1;

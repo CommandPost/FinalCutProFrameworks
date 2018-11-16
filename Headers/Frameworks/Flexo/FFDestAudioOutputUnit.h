@@ -10,7 +10,6 @@
 {
     struct FFAudioGraph *_graph;
     struct FFAudioNode *_channelConformer;
-    struct FFAudioNode *_levelNode;
     struct ComponentInstanceRecord *_outputUnit;
     BOOL _connected;
     struct OpaqueCMTimebase *_timebase;
@@ -19,7 +18,6 @@
     struct FFDestAudioStartTimebaseRenderHook *_startTimebaseHook;
 }
 
-- (void)setMute:(BOOL)arg1;
 - (void)reset;
 - (BOOL)isRunning;
 - (void)stop;

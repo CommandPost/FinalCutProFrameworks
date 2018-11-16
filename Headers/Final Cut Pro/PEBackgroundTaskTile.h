@@ -6,7 +6,7 @@
 
 #import "LKTile.h"
 
-@class NSArray, NSButton, NSDate, NSDictionary, NSMutableArray, NSProgressIndicator, NSString, NSTextField, NSTrackingArea, NSView;
+@class NSArray, NSDate, NSDictionary, NSMutableArray, NSProgressIndicator, NSString, NSTextField, NSTrackingArea, NSView, PETaskActionButton;
 
 @interface PEBackgroundTaskTile : LKTile
 {
@@ -15,8 +15,8 @@
     NSTextField *_pausedText;
     NSTextField *_progressText;
     NSProgressIndicator *_progressBar;
-    NSButton *_pauseResumeButton;
-    NSButton *_cancelShowButton;
+    PETaskActionButton *_pauseResumeButton;
+    PETaskActionButton *_cancelShowButton;
     NSTextField *_timeRemainingText;
     NSString *_title;
     NSView *_tasksView;
@@ -26,10 +26,9 @@
     BOOL _ready;
     BOOL _showElementsAffectedByTracking;
     NSDictionary *_textLabelAttributes;
+    NSDictionary *_subtitleTextLabelAttributes;
     NSDictionary *_timeRemainingTextLabelAttributes;
     NSDate *_startProcessingDate;
-    double _startProcessingValue;
-    double _lastTaskProgress;
     NSTrackingArea *_tileTrackingArea;
     NSArray *_originalPendingJobNames;
     unsigned long long _originalPendingJobNameIndex;
@@ -46,6 +45,7 @@
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *timeRemainingTextLabelAttributes; // @synthesize timeRemainingTextLabelAttributes=_timeRemainingTextLabelAttributes;
+@property(readonly, nonatomic) NSDictionary *subtitleTextLabelAttributes;
 @property(readonly, nonatomic) NSDictionary *textLabelAttributes; // @synthesize textLabelAttributes=_textLabelAttributes;
 - (void)willRemoveFromTileView;
 - (void)cancelShowTasks:(id)arg1;

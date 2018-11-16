@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (void)addClipRefsToSet:(id)arg1;
 - (id)clipRefs;
 - (id)eventName;
+- (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)addAssetRefsToSet:(id)arg1;
 - (id)assetRefs;
 - (id)mdTargetForKey:(id)arg1;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)flowMediaRep;
 - (void)createFlowMediaRep;
 - (BOOL)isAssetRef;
+- (BOOL)isProject;
 - (int)highQualityOfflineReason;
 - (int)proxyOfflineReason;
 - (BOOL)isPSD;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)originalMediaURL;
 - (BOOL)verifyFileCompatibility:(id)arg1 returnIsIdentical:(char *)arg2 returnIsCompatible:(char *)arg3 returnNewMediaRange:(CDStruct_e83c9415 *)arg4 returnAssetID:(id *)arg5 returnAudioSourceDict:(id *)arg6 error:(id *)arg7;
 - (id)asset;
+- (id)newAssetProxyAttributesFromScrapedData:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithAsset:(id)arg1 assetEvent:(id)arg2;
 

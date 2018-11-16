@@ -22,8 +22,8 @@
 - (void)encodeFrameExtractionMode:(int)arg1 forKey:(id)arg2;
 - (int)decodeSearchTypeForKey:(id)arg1;
 - (void)encodeSearchType:(int)arg1 forKey:(id)arg2;
-- (struct FigTimePair)decodeFigTimePairForKey:(id)arg1;
-- (void)encodeFigTimePair:(struct FigTimePair)arg1 forKey:(id)arg2;
+- (struct PC_CMTimePair)decodeFigTimePairForKey:(id)arg1;
+- (void)encodeFigTimePair:(struct PC_CMTimePair)arg1 forKey:(id)arg2;
 - (CDStruct_e83c9415)decodeFigTimeRangeForKey:(id)arg1;
 - (void)encodeFigTimeRange:(CDStruct_e83c9415)arg1 forKey:(id)arg2;
 - (CDStruct_1b6d18a9)decodeFigTimeForKey:(id)arg1;

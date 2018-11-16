@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     FFMovieInstanceFig *_readerForStream;
 }
 
++ (void)addDVRecordDateMetadataTo:(id)arg1 fromReader:(struct OpaqueFigFormatReader *)arg2;
 - (id)metadata;
 - (void)addGrowingFileMetadata:(id)arg1;
 - (void)addMetadataTo:(id)arg1 fromReader:(struct OpaqueFigFormatReader *)arg2 forReader:(struct __CFString *)arg3;

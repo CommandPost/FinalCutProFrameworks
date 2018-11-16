@@ -30,6 +30,7 @@
 + (BOOL)pathIsValidVolume:(id)arg1;
 + (id)volumeWithPath:(id)arg1 undoManager:(id)arg2;
 - (id).cxx_construct;
+- (id)metadata;
 - (BOOL)isiOSDevice;
 - (BOOL)isFolder;
 - (BOOL)isArchive;

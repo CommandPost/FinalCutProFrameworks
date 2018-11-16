@@ -31,8 +31,6 @@ __attribute__((visibility("hidden")))
 - (void)nudgePuck:(struct CGPoint)arg1;
 - (void)setPuckCenterPosition:(struct CGPoint)arg1 withAnimation:(BOOL)arg2;
 - (struct CGPoint)puckCenterPosition;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (BOOL)_wantsKeyDownForEvent:(id)arg1;
 - (BOOL)performKeyEquivalent:(id)arg1;

@@ -6,12 +6,14 @@
 
 #import <Flexo/FFDestVideo.h>
 
+#import "FFDestDisplayNameProtocol.h"
 #import "FFDestVideoDeviceManaging.h"
+#import "MIOCoreDelegateProtocol.h"
 
 @class FFPrerollSync, MIODeviceConnection, MIOOutputCore, NSLock, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFDestVideoCMIO : FFDestVideo <FFDestVideoDeviceManaging>
+@interface FFDestVideoCMIO : FFDestVideo <FFDestDisplayNameProtocol, FFDestVideoDeviceManaging, MIOCoreDelegateProtocol>
 {
     NSLock *_queueLock;
     NSMutableArray *_renderedFrames;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
+- (void)mioOutputDroppedFrames:(id)arg1;
 - (id)description;
 - (struct SMPTETime)getPlayerFrameSMPTETime;
 - (CDStruct_1b6d18a9)getPlayerFrameduration;
@@ -92,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)registerForOutputDevice;
 - (void)setPlayer:(id)arg1;
 - (id)deviceUID;
+- (id)displayName;
 - (void)dealloc;
 - (id)initWithDeviceUID:(id)arg1;
 

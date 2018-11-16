@@ -24,6 +24,7 @@
 - (id)player;
 - (id)context;
 - (BOOL)revealObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2 atPlayhead:(CDStruct_1b6d18a9)arg3;
+- (void)showInspectorForSidebarModule:(id)arg1;
 - (void)showImportPanelWithKeywords:(id)arg1 forEvent:(id)arg2;
 - (void)ensureSidebarVisible;
 - (void)newEventUsingDefaultLibrary:(id)arg1;

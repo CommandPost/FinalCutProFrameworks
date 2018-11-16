@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
     struct CGColorSpace *_fileNativeColorSpace;
     int _depth;
     NSString *_colorModel;
+    unsigned int _colorHandlingFlags;
     NSString *_uti;
     struct CGImageSource *_cachedImgSourceRef;
     unsigned long long _cachedImgSourceDisposeAfterTime;

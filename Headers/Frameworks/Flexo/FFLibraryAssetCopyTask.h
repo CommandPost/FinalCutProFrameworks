@@ -25,16 +25,19 @@ __attribute__((visibility("hidden")))
     NSError *_error;
     int _status;
     BOOL _srcOpened;
+    NSURL *_srcURL;
 }
 
+@property(retain, nonatomic) NSURL *srcURL; // @synthesize srcURL=_srcURL;
 @property(retain) NSError *error; // @synthesize error=_error;
 - (BOOL)saveTask:(id *)arg1;
 - (void)taskCleanup;
 - (void)taskFinished:(id)arg1;
-- (void)taskWasCancelled:(id)arg1;
+- (void)taskWasCancelled:(id)arg1 queuedRequests:(id)arg2;
 - (void)runWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)requestCompleted:(id)arg1;
 - (id)preflightCopyRequests:(id *)arg1;
+- (BOOL)_buildCopyRequestFor:(id)arg1 to:(id)arg2 withFileID:(id)arg3 isRestore:(BOOL)arg4 asyncFolder:(id)arg5 requests:(id)arg6 error:(id *)arg7;
 - (void)setError:(id)arg1 forMediaIdentifier:(id)arg2;
 - (id)newSource:(id)arg1 async:(id)arg2 error:(id *)arg3;
 - (BOOL)finishedAllMedia;

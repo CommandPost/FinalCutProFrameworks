@@ -6,25 +6,28 @@
 
 #import <Flexo/FFEventMediaSidebarModule.h>
 
-@class FFProjectExtrasSidebarController, LKMenu, NSDictionary;
+@class FFProjectExtrasSidebarController, LKMenu;
 
 @interface FFConsumerMediaSidebarModule : FFEventMediaSidebarModule
 {
     FFProjectExtrasSidebarController *_contentLibrarySidebarController;
     LKMenu *_contextualMenu;
-    NSDictionary *_persistentContentLibrarySidebarState;
 }
 
 + (id)defaultModuleNibName;
-@property(copy, nonatomic) NSDictionary *persistentContentLibrarySidebarState; // @synthesize persistentContentLibrarySidebarState=_persistentContentLibrarySidebarState;
 @property(retain, nonatomic) LKMenu *contextualMenu; // @synthesize contextualMenu=_contextualMenu;
 @property(retain, nonatomic) FFProjectExtrasSidebarController *contentLibrarySidebarController; // @synthesize contentLibrarySidebarController=_contentLibrarySidebarController;
 - (void)selectDisplayType:(int)arg1;
 - (void)debug_toggleProjectExtrasSidebarAction:(id)arg1;
 - (void)projectExtrasDidSelectNodes:(id)arg1;
 - (void)sidebarDidSelectNodes:(id)arg1;
+- (void)exportToFinalCut:(id)arg1;
+- (void)sortBy:(id)arg1;
+- (void)arrangebySortOrderAction:(id)arg1;
+- (void)arrangingingPopUpAction:(id)arg1;
+- (void)sortByDate:(id)arg1;
+- (void)sortByName:(id)arg1;
 - (void)newEvent:(id)arg1;
-- (void)toggleArrangeEventsByMostRecent:(id)arg1;
 - (id)localModuleActions;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)hideContentLibrarySidebar:(BOOL)arg1;
@@ -33,7 +36,6 @@
 - (void)setupContentLibrarySidebar;
 - (void)syncSidebar;
 - (id)contentLayoutDictionary;
-- (void)handleAppWillTermininate:(id)arg1;
 - (void)viewDidLoad;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;

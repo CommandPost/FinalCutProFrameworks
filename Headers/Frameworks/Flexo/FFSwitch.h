@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class CALayer, CATextLayer, _KnobLayer;
+@class CALayer, _SwitchLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFSwitch : NSView
@@ -15,20 +15,21 @@ __attribute__((visibility("hidden")))
     SEL _action;
     long long _state;
     BOOL _enabled;
+    _SwitchLayer *_controlLayer;
     CALayer *_maskLayer;
-    CALayer *_containerLayer;
-    CALayer *_lightLayer;
-    CATextLayer *_labelOnLayer;
-    CATextLayer *_labelOffLayer;
-    _KnobLayer *_knobLayer;
+    _SwitchLayer *_grooveOnLayer;
+    _SwitchLayer *_knobLayer;
+    struct {
+        unsigned int animateStateChanges:1;
+    } _s_flags;
 }
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 @property SEL action; // @synthesize action=_action;
 @property(retain, nonatomic) id target; // @synthesize target=_target;
-- (void)adjustKnobPositionWithPositiveParametricValue:(float)arg1;
+- (void)adjustKnobPositionWithAnimation:(BOOL)arg1;
 - (void)updateLayersToEnableChange;
-- (void)updateLayersToStateChange;
+- (void)updateLayersToStateChangeWithAnimation:(BOOL)arg1;
 - (BOOL)accessibilityIsIgnored;
 - (void)accessibilityPerformAction:(id)arg1;
 - (id)accessibilityActionDescription:(id)arg1;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
 - (BOOL)_sendAction;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (void)mouseDown:(id)arg1;
 - (BOOL)sendAction:(SEL)arg1 to:(id)arg2;
 - (void)sizeToFit;

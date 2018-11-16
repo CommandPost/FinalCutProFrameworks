@@ -45,7 +45,6 @@
 @property(readonly) double height;
 - (void)layerDidBecomeVisible:(BOOL)arg1;
 - (void)dealloc;
-- (id)init;
 
 @end
 

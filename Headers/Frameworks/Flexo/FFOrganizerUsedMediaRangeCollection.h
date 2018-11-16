@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_gatherUsedMediaVideoRangesForObjectOfFigTimeRangeAndObject:(id)arg1;
++ (id)_newGatherUsedMediaVideoRangesForObjectOfFigTimeRangeAndObject:(id)arg1;
 + (id)_addUsedMediaRanges:(id)arg1 ofAsset:(id)arg2 forClip:(id)arg3;
 + (id)updateVideoRangeInfo:(id)arg1 forClip:(id)arg2;
 + (id)gatherRangesForClip:(id)arg1;

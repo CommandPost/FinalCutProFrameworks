@@ -18,6 +18,7 @@
     BOOL _willCloseDown;
     BOOL _wasCancelled;
     NSMapTable *_clipAnalysesQueue;
+    struct FFProcrastinatedDispatch_t _procrastinatedOutOfDiskSpaceWarningContext;
 }
 
 + (BOOL)needsOptimizationForFourCharCode:(unsigned int)arg1;
@@ -45,10 +46,12 @@
 - (void)warnAboutOutOfDiskSpaceWithDetails:(id)arg1;
 - (BOOL)verifyDiskSpaceAvailable:(id)arg1;
 - (void)analyzeAndOptimizeClipBackgroundThread:(id)arg1 onTask:(id)arg2;
+- (id)_commitTemporaryMediaAtURL:(id)arg1 mediaRepType:(id)arg2 fileName:(id)arg3 forAsset:(id)arg4;
 - (id)_tmpFilenameFromName:(id)arg1 identifier:(id)arg2 proxy:(BOOL)arg3;
 - (id)_optimizedVideoFormatForCodec:(unsigned int)arg1;
 - (struct AudioStreamBasicDescription)_optimizedAudioFileFormatForFormat:(struct AudioStreamBasicDescription)arg1;
 - (void)_assetCopyQueueCompleted:(id)arg1;
+- (void)transcodeAudioOnlyAsset:(id)arg1;
 - (void)_analyzeAndOptimizeClip:(id)arg1 forAssetImport:(BOOL)arg2;
 - (void)_audioAnalyzeClipForAssetImport:(id)arg1;
 - (void)_audioAnalyzeClip:(id)arg1 forAssetImport:(BOOL)arg2;
@@ -64,11 +67,13 @@
 - (id)clipsFromCoumpoundClip:(id)arg1;
 - (id)clipsFromStack:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_addMediaRepForURLMainThread:(id)arg1;
+- (void)_addMediaRepForAsset:(id)arg1 libraryMediaRepURL:(id)arg2 mediaRepType:(id)arg3;
+- (void)_addMediaRepHelper:(id)arg1;
 - (id)eventForClip:(id)arg1;
 - (id)displayName;
 - (void)_appWillTerminate:(id)arg1;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

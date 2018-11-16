@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)workspaceVolumeWillUnmount:(id)arg1;
 - (void)workspaceVolumeDidMount:(id)arg1;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 - (void)removeTempFileSystemSidebarItemForURL:(id)arg1;
 - (void)addFileSystemSidebarItemForURL:(id)arg1;

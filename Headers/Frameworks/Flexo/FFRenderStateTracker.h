@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableIndexSet *_statesEncountered;
     NSRecursiveLock *_rbLock;
     int _rbLockCount;
-    int _stateFullyKnownAtLockTime;
+    _Bool _stateFullyKnownAtLockTime;
     NSThread *_rbLockHolder;
     CDStruct_e83c9415 _primaryInterestTimeRange;
     NSLock *_bgTaskIVarLock;

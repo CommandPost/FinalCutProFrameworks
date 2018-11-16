@@ -51,6 +51,7 @@
 - (void)removeSubmodule:(id)arg1;
 - (void)removeSubmodules:(id)arg1;
 - (void)insertSubmodule:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)moduleViewWasInstalled:(id)arg1;
 - (void)updateTabAccessoryView;
 - (void)viewDidLoad;
 - (BOOL)loadView;

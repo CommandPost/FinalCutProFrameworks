@@ -13,6 +13,7 @@
 @interface TLKContainerInfo : NSObject <NSCopying>
 {
     NSMutableSet *_itemInfoRecords;
+    NSMutableSet *_subcontainerInfoRecords;
     NSMutableSet *_layoutContexts;
     NSMutableArray *_itemLaneInfoRecords;
     id _representedObject;
@@ -26,6 +27,8 @@
     id _precisionEditorTransitionItem;
     int _precisionEditorState;
     BOOL _precisionEditorIsChangingEditPoint;
+    TLKContainerInfo *_enclosingContainerInfo;
+    unsigned long long _trackIndex;
     id _savedWrappingState;
 }
 
@@ -40,18 +43,24 @@
 @property(readonly, nonatomic) TLKLayoutSegmentTable *segmentTableAboveSpine; // @synthesize segmentTableAboveSpine=_segmentTableAboveSpine;
 @property(retain, nonatomic) TLKContainerMetrics *containerMetrics; // @synthesize containerMetrics=_containerMetrics;
 @property(copy, nonatomic) NSArray *spineItems; // @synthesize spineItems=_spineItems;
+@property(nonatomic) unsigned long long trackIndex; // @synthesize trackIndex=_trackIndex;
 @property(nonatomic) BOOL isTrack; // @synthesize isTrack=_isTrack;
-- (CDStruct_e83c9415)timeRange;
+@property(nonatomic) TLKContainerInfo *enclosingContainerInfo; // @synthesize enclosingContainerInfo=_enclosingContainerInfo;
 @property(readonly, nonatomic) NSSet *timelineItems;
 - (void)removeItemLaneInfoRecordsObject:(id)arg1;
 - (void)addItemLaneInfoRecordsObject:(id)arg1;
 @property(copy, nonatomic) NSArray *itemLaneInfoRecords;
+- (void)enumerateSubcontainerInfoRecordsWithBlock:(CDUnknownBlockType)arg1;
+- (void)removeSubcontainerInfoRecordsObject:(id)arg1;
+- (void)addSubcontainerInfoRecordsObject:(id)arg1;
+@property(copy, nonatomic) NSSet *subcontainerInfoRecords;
 - (void)removeLayoutContextsObject:(id)arg1;
 - (void)addLayoutContextsObject:(id)arg1;
 @property(copy, nonatomic) NSSet *layoutContexts;
 - (void)removeItemInfoRecordsObject:(id)arg1;
 - (void)addItemInfoRecordsObject:(id)arg1;
 @property(readonly, nonatomic) id representedObject;
+- (CDStruct_e83c9415)timeRange;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

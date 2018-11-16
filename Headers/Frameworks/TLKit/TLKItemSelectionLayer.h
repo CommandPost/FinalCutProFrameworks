@@ -19,6 +19,7 @@
 - (void)setDisplayMode:(int)arg1;
 @property BOOL containingViewFirstResponder;
 - (id)init;
+- (id)initWithArchive:(id)arg1;
 
 @end
 

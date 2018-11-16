@@ -6,19 +6,21 @@
 
 #import <Flexo/FFMicaEffect.h>
 
+#import "FFEffectAdjustmentDelegate.h"
 #import "FFIMTitleWithLocation.h"
 #import "FFTitleDelegate.h"
 
 @class MicaTitleAnimator;
 
 __attribute__((visibility("hidden")))
-@interface FFMicaTitle : FFMicaEffect <FFTitleDelegate, FFIMTitleWithLocation>
+@interface FFMicaTitle : FFMicaEffect <FFTitleDelegate, FFIMTitleWithLocation, FFEffectAdjustmentDelegate>
 {
     BOOL m_creditsNeedUpdating;
     BOOL m_disableStartAnimations;
     BOOL m_disableEndAnimations;
     BOOL m_editMode;
     double m_editFieldHeight;
+    BOOL m_haveFlattenedStartEndAnimations;
 }
 
 + (id)copyClassDescription;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL disableStartAnimations; // @synthesize disableStartAnimations=m_disableStartAnimations;
 @property(nonatomic) double editFieldHeight; // @synthesize editFieldHeight=m_editFieldHeight;
 @property(nonatomic) BOOL editMode; // @synthesize editMode=m_editMode;
+- (Class)defaultAdjustmentToolForEffect;
 - (id)locationChannel;
 - (void)setLocation:(id)arg1;
 - (id)location;

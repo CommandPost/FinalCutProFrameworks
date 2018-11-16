@@ -10,14 +10,18 @@
 {
 }
 
++ (id)newBackgroundPurgeUnusedEventRenderFilesTaskForSequence:(id)arg1 taskRunGroup:(id)arg2;
++ (id)newBackgroundPurgeUnusedEventRenderFilesTask:(id)arg1 taskRunGroup:(id)arg2;
 - (void)purgeEventShareFiles:(id)arg1 purgeType:(int)arg2;
 - (void)purgeProjectRenderFiles:(id)arg1 purgeType:(int)arg2;
 - (void)purgeEventRenderFiles:(id)arg1 purgeType:(int)arg2;
+- (_Bool)purgeEventRenderFiles:(id)arg1 purgeType:(int)arg2 checkCancelBlock:(CDUnknownBlockType)arg3 purgeEventShareFiles:(_Bool)arg4;
 - (id)renderFileDirectoriesForEventRecord:(id)arg1 quality:(int)arg2;
 - (void)purgeSequenceRenderFiles:(id)arg1 fileURLS:(id)arg2 purgeType:(int)arg3;
-- (id)usedRenderFilesForSequences:(id)arg1 renderFilesPaths:(id)arg2;
+- (_Bool)purgeSequenceRenderFiles:(id)arg1 fileURLS:(id)arg2 purgeType:(int)arg3 testForCancelBlock:(CDUnknownBlockType)arg4;
+- (id)usedRenderFilesForSequences:(id)arg1 renderFilesPaths:(id)arg2 testForCancelBlock:(CDUnknownBlockType)arg3;
 - (void)invalidateRenderStateForSequences:(id)arg1;
-- (void)refreshRenderFileStateForTracker:(id)arg1;
+- (_Bool)refreshRenderFileStateForTracker:(id)arg1 testForCancelBlock:(CDUnknownBlockType)arg2;
 
 @end
 

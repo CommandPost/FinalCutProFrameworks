@@ -16,12 +16,15 @@
 
 + (struct CGRect)computeROI:(id)arg1 forSquared:(BOOL)arg2 full:(BOOL)arg3 quality:(int)arg4;
 - (id)newPTforRequestSquared:(BOOL)arg1 field:(unsigned int)arg2 quality:(int)arg3 Ydown:(BOOL)arg4;
+- (int)actualQualityFromRequestedQuality:(int)arg1;
 - (id)newFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4;
+- (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4 quality:(int)arg5;
 - (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4;
+- (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4 quality:(int)arg5 useStreamROI:(BOOL)arg6;
 - (id)newFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3;
 - (id)newSquaredFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 quality:(int)arg2 temporalQuality:(int)arg3 bypassSegmentStore:(BOOL)arg4 backgroundColor:(id)arg5 returnImageMD5:(id *)arg6;
 - (id)newSquaredFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 quality:(int)arg2 temporalQuality:(int)arg3 bypassSegmentStore:(BOOL)arg4 returnImageMD5:(id *)arg5;
-- (id)newForcedGPURenderedThumbnail:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 pixelFormat:(id)arg5;
+- (id)newForcedGPURenderedThumbnail:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 pixelFormat:(id)arg5 execLoc:(int)arg6;
 - (id)newThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 returnImageMD5:(id *)arg3 contentsScale:(double)arg4;
 - (void)_saveThumbnailImageForMD5AndOffset:(CDStruct_bdcb2b0d)arg1 sampleOffset:(long long)arg2 image:(id)arg3;
 - (id)_newThumbnailImageForMD5AndOffset:(CDStruct_bdcb2b0d)arg1 sampleOffset:(long long)arg2;
@@ -42,8 +45,8 @@
 - (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3 roi:(const struct CGRect *)arg4;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
-- (id)newTokOrImageFromCache:(CDStruct_1b6d18a9)arg1 context:(id)arg2 scheduleOnly:(_Bool)arg3 videoProps:(id)arg4;
-- (id)copySegmentStoreImageAtTime:(CDStruct_1b6d18a9)arg1 lookupContext:(id)arg2 lookupInfo:(id)arg3 tagInfo:(id)arg4 decodeQuality:(int)arg5 videoProps:(id)arg6 costAtTime:(double)arg7 useIdeal:(_Bool)arg8 justSchedule:(_Bool)arg9;
+- (id)newTokOrImageFromCache:(CDStruct_1b6d18a9)arg1 context:(id)arg2 scheduleOnly:(_Bool)arg3 videoProps:(id)arg4 localCache:(struct cachedPathsForQuals *)arg5;
+- (id)copySegmentStoreImageAtTime:(CDStruct_1b6d18a9)arg1 lookupContext:(id)arg2 lookupInfo:(id)arg3 tagInfo:(id)arg4 decodeQuality:(int)arg5 videoProps:(id)arg6 costAtTime:(double)arg7 useIdeal:(_Bool)arg8 justSchedule:(_Bool)arg9 localCache:(struct cachedPathsForQuals *)arg10;
 - (id)pixelTransformToField2ForQuality:(int)arg1;
 - (id)pixelTransformToField1ForQuality:(int)arg1;
 - (id)pixelTransformToFrameForQuality:(int)arg1;

@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1 withContext:(id)arg2;
 - (CDStruct_e83c9415)untimeRange:(CDStruct_e83c9415)arg1;
 - (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1;
+- (BOOL)_timeOnDownSlope:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)curveLookup:(CDStruct_1b6d18a9)arg1;
 - (double)untimeToSeconds:(CDStruct_1b6d18a9)arg1;
 - (BOOL)mapMediaTime:(CDStruct_1b6d18a9)arg1 toComponentTime:(CDStruct_1b6d18a9 *)arg2 inComponentTimeRange:(CDStruct_e83c9415)arg3;
@@ -52,10 +53,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)mapMediaTimeInSeconds:(double)arg1 toComponentKeyTime:(CDStruct_1b6d18a9 *)arg2 inComponentTimeRange:(CDStruct_e83c9415)arg3;
 - (int)segmentCount;
 - (double)mediaTimeAlongPrevSegment:(CDStruct_1b6d18a9)arg1 keyIndex:(unsigned int)arg2;
+- (int)UIsegmentIndexForRange:(CDStruct_e83c9415)arg1 rate:(double *)arg2;
 - (double)retimingRateForRange:(CDStruct_e83c9415)arg1;
 - (int)evalSegmentIndexForComponentTime:(CDStruct_1b6d18a9)arg1;
 - (int)UIsegmentIndexForComponentTime:(CDStruct_1b6d18a9)arg1;
 - (int)_segmentIndexForChannel:(id)arg1 componentTime:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_e83c9415)UISegmentTimeRangeAtIndex:(int)arg1;
 - (CDStruct_e83c9415)evalSegmentTimeRangeAtIndex:(int)arg1;
 - (CDStruct_e83c9415)evalSegmentTimeRangeAtUIIndex:(int)arg1;
 - (CDStruct_e83c9415)_segmentTimeRangeForChannel:(id)arg1 segmentIndex:(int)arg2;
@@ -84,7 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)copyKeyValueWithTransitionFalloff:(void *)arg1 toTime:(CDStruct_1b6d18a9)arg2;
 - (void)addKeyWithNoTransitionAtTime:(CDStruct_1b6d18a9)arg1 value:(double)arg2;
 - (void)addKeyWithDefaultTransitionAtTime:(CDStruct_1b6d18a9)arg1 value:(double)arg2;
-- (struct FigTimePair)transitionTimesForKeyframe:(void *)arg1;
+- (struct PC_CMTimePair)transitionTimesForKeyframe:(void *)arg1;
 - (void)deriveEvalCurve;
 - (void)computeSmoothBezierTangents;
 - (CDStruct_1b6d18a9)constantRetimedTimeFromUntimedTime:(CDStruct_1b6d18a9)arg1 useAbosoluteSpeed:(BOOL)arg2;

@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)drawLabel:(id)arg1 type:(int)arg2 height:(int)arg3;
 - (id)sourceMapOfType:(int)arg1;
 - (oneway void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

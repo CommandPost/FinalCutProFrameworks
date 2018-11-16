@@ -100,7 +100,7 @@
 - (void)theaterMenu:(id)arg1 cancelOperation:(id)arg2 forItem:(id)arg3;
 - (BOOL)theaterMenu:(id)arg1 canCancelOperation:(id)arg2 forItem:(id)arg3;
 - (void)theaterMenu:(id)arg1 setUbiquitous:(BOOL)arg2 forItem:(id)arg3;
-- (BOOL)theaterMenu:(id)arg1 canSetUbiquitous:(BOOL)arg2 forItem:(id)arg3;
+- (BOOL)theaterMenu:(id)arg1 canSetUbiquitous:(BOOL)arg2 forItem:(id)arg3 error:(id *)arg4;
 - (void)theaterMenu:(id)arg1 goToProjectForItem:(id)arg2;
 - (BOOL)theaterMenu:(id)arg1 canGoToProjectForItem:(id)arg2;
 - (void)theaterMenu:(id)arg1 renameItem:(id)arg2;
@@ -144,6 +144,7 @@
 - (void)_startObservingItems:(id)arg1;
 - (void)setContentsScale:(double)arg1;
 - (void)windowBackingScaleFactorChanged:(id)arg1;
+- (void)doMute:(id)arg1;
 - (void)showHideLibraryAction:(id)arg1;
 - (void)showHideTheaterAction:(id)arg1;
 - (void)toggleInspector:(id)arg1;
@@ -156,9 +157,11 @@
 - (void)delete:(id)arg1;
 - (void)unfavorite:(id)arg1;
 - (void)favorite:(id)arg1;
+- (void)loop:(id)arg1;
 - (void)toggleAudioScrubbing:(id)arg1;
 - (void)toggleSnappingDown:(id)arg1;
-- (void)arrangingPopupAction:(id)arg1;
+- (void)arrangebySortOrderAction:(id)arg1;
+- (void)arrangingingPopUpAction:(id)arg1;
 - (void)zoomToFit:(id)arg1;
 - (void)zoomOut:(id)arg1;
 - (void)zoomIn:(id)arg1;
@@ -166,7 +169,7 @@
 - (void)showSkimmerInfo:(id)arg1;
 - (void)showUsedMediaRanges:(id)arg1;
 - (void)toggleAudioWaveforms:(id)arg1;
-- (void)clusteringPopupAction:(id)arg1;
+- (void)clusteringPopUpAction:(id)arg1;
 - (void)searchAction:(id)arg1;
 - (void)insertKeyDown:(id)arg1;
 - (void)anchorWithSelectedMedia:(id)arg1;
@@ -176,6 +179,7 @@
 - (void)selectAll:(id)arg1;
 - (void)importAlliMovieEvents:(id)arg1;
 - (void)mergeEvents:(id)arg1;
+- (void)convertToProject:(id)arg1;
 - (void)duplicate:(id)arg1;
 - (void)revealInFinder:(id)arg1;
 - (void)revealAncestor:(id)arg1;

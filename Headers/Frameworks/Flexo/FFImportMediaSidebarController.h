@@ -19,9 +19,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)outlineView:(id)arg1 keyDown:(id)arg2;
 - (BOOL)acceptDrop:(id)arg1 onNode:(id)arg2 atChildIndex:(long long)arg3;
 - (unsigned long long)validateDrop:(id)arg1 onNode:(id)arg2 atChildIndex:(long long)arg3;
-- (void)addNodes:(id)arg1 toPasteboard:(id)arg2;
-- (id)dragTypesForNodes:(id)arg1;
-- (BOOL)containsOnlyDraggableNodes:(id)arg1;
 - (id)supportedDragTypes;
 - (void)ensureSidebarSelection;
 - (void)outlineViewSelectionDidChange:(id)arg1;

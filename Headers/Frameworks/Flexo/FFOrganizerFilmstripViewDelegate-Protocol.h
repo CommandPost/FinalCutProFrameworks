@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import "FFOrganizerImportDropController.h"
 
 @class FFAnchoredObject, FFAnchoredTimeMarker, FFContext, FFEditorModule, FFMarkerLayer, FFOrganizerFilmstripView, FigTimeRangeAndObject, LKPopOverWindow, LKViewModule, NSArray, NSMenu, NSPasteboard, NSSet, NSString, NSTreeNode;
 
-@protocol FFOrganizerFilmstripViewDelegate <NSObject>
+@protocol FFOrganizerFilmstripViewDelegate <FFOrganizerImportDropController>
 - (BOOL)shouldAlwaysPlacePlayhead;
 - (void)performEditAction;
 - (BOOL)editActionAllowed;
@@ -48,7 +48,7 @@
 
 @optional
 - (NSArray *)filterRanges:(NSArray *)arg1;
-- (NSArray *)sidebarRanges;
+- (NSArray *)newSidebarRanges;
 - (NSArray *)unfilteredRanges;
 - (void)filmstripView:(FFOrganizerFilmstripView *)arg1 didCreatePlayheadInfoPopover:(LKPopOverWindow *)arg2;
 - (BOOL)shouldDisableRangeSelectionForObject:(id)arg1;

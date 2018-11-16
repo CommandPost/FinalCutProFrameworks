@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)setToolTip:(id)arg1 forCellClass:(Class)arg2;
 - (id)_cellForClass:(Class)arg1;
 - (void)_calcRigidBodyRectsWithFrame:(struct CGRect)arg1 isFlipped:(BOOL)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
 

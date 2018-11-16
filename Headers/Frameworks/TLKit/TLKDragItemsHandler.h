@@ -48,6 +48,7 @@
         unsigned int needsLayout:1;
         unsigned int placeholdersForAnchoredItems:1;
         unsigned int showTransitionPlaceholders:1;
+        unsigned int overlapingTransitionModel:1;
         unsigned int updateTimecodeDisplay:1;
         unsigned int showInvalidCursor:1;
         unsigned int showTimecodeDisplay:1;
@@ -130,8 +131,10 @@
 - (int)_rectEdgeOfFrame:(struct CGRect)arg1 closestToRect:(struct CGRect)arg2;
 - (struct CGSize)_anchoredSpineTargetPadding;
 - (void)_resolveCollisionsForAnchoredItems:(id)arg1 inLayoutContext:(id)arg2;
+- (void)_updateLayoutSegmentTablesForItemInfoIfNeeded:(id)arg1 aboveSpine:(BOOL)arg2;
 - (void)_populateCollisionRecordsForItems:(id)arg1 inLayoutContext:(id)arg2 isAboveSpine:(BOOL)arg3;
-- (id)_invalidItemsForItem:(id)arg1 inLayoutContext:(id)arg2 withFrame:(struct CGRect)arg3;
+- (id)_invalidItemsForItemInfo:(id)arg1 inLayoutContext:(id)arg2 withFrame:(struct CGRect)arg3;
+- (id)_OLD_invalidItemsForItemInfo:(id)arg1 inLayoutContext:(id)arg2 withFrame:(struct CGRect)arg3;
 - (id)itemsInRect:(struct CGRect)arg1 forLayoutContext:(id)arg2;
 - (void)_updateTimecodeDisplay;
 - (void)_removeFrameAnimationsForItems:(id)arg1;
@@ -143,6 +146,7 @@
 - (BOOL)_resizeLayersForItemsIfNeeded:(id)arg1;
 - (void)_moveLayersForItems:(id)arg1 byOffset:(struct CGPoint)arg2 fromLayer:(id)arg3 animate:(BOOL)arg4;
 - (void)_moveLayersForItems:(id)arg1 byOffset:(struct CGPoint)arg2 referenceItemFragment:(id)arg3 referenceLayoutFrame:(struct CGRect)arg4 referenceLayerFrame:(struct CGRect)arg5 referenceLayoutContext:(id)arg6 animate:(BOOL)arg7;
+- (void)_reloadMarkerLayerForItemComponentFragment:(id)arg1;
 - (id)_layerForItemComponentFragment:(id)arg1;
 - (void)_fixGlobalLayersShiftedByViewSizeChanged:(struct CGPoint)arg1;
 - (void)showInsertionBarFeedbackForItems:(id)arg1;

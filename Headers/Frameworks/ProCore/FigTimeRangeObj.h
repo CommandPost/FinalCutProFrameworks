@@ -33,6 +33,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithCMTimeRange:(CDStruct_e83c9415)arg1;
 - (id)initWithFigTimeRange:(CDStruct_e83c9415)arg1;
 - (id)copyWithRange:(CDStruct_e83c9415)arg1;
 

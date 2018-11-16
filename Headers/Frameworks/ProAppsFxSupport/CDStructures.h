@@ -237,6 +237,7 @@ struct OZChannel {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelFolder {
@@ -264,6 +265,8 @@ struct OZChannelImpl;
 struct OZChannelInfo;
 
 struct OZChannelTimeConverter;
+
+struct OZCurve;
 
 struct OZFactory;
 

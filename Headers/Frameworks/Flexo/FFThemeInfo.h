@@ -65,11 +65,12 @@
 - (void)autoFillTokenizedRGCString:(id)arg1 titleParent:(id)arg2 withLatitude:(double)arg3 withLongitude:(double)arg4 sequence:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (BOOL)_hasRGCMetaDataForObject:(id)arg1;
 - (void)_storeRGCMetadataForObject:(id)arg1 placemarks:(id)arg2;
+- (BOOL)copyStringsFromTitle:(id)arg1 toTitle:(id)arg2;
 - (BOOL)autoFillTitle:(id)arg1 titleType:(int)arg2 titleIndex:(unsigned long long)arg3 sequence:(id)arg4;
 - (void)_autoFillWithStringTokensReplaced:(id)arg1 textField:(id)arg2 titleIndex:(unsigned long long)arg3 titleObject:(id)arg4 sequence:(id)arg5;
 - (void)_autoFill_RGC:(id)arg1 titleObject:(id)arg2 textField:(id)arg3 titleIndex:(unsigned long long)arg4 sequence:(id)arg5;
 - (void)_fillTextField:(id)arg1 textFieldIndex:(unsigned long long)arg2 titleObject:(id)arg3 titleParent:(id)arg4 withString:(id)arg5;
-- (id)_findReplacementTitleObject:(id)arg1 textFieldIndex:(unsigned long long)arg2 titleObject:(id)arg3 titleParent:(id)arg4 withString:(id)arg5;
+- (id)_findReplacementTitleObject:(id)arg1 textFieldIndex:(unsigned long long)arg2 titleObject:(id)arg3 titleParent:(id)arg4;
 - (void)_autoFillTokenizedRGCString:(id)arg1 titleParent:(id)arg2 isLookupFailure:(BOOL)arg3 lookupPending:(BOOL)arg4;
 - (void)_autoFill_RGC_SMART_USE_SHORTFORM:(BOOL)arg1 autoFillString:(id)arg2 titleParent:(id)arg3 isLookupFailure:(BOOL)arg4 lookupPending:(BOOL)arg5;
 - (id)_RGCStatusStringLookupPending:(BOOL)arg1 isLookupFailure:(BOOL)arg2;

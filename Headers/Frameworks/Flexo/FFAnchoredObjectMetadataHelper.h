@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property NSObject<FFMetadataProtocol> *wrapped; // @synthesize wrapped=_ao;
+- (BOOL)writerIsWaiting;
 - (void)_readUnlock;
 - (void)_readLock;
 - (void)_writeUnlock;

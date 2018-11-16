@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)setThemeAction:(id)arg1;
 - (void)trimBackgroundMusicAction:(id)arg1;
 - (void)autoContentAction:(id)arg1;
+- (void)_autoContentAction:(BOOL)arg1;
 - (void)doneEditingAction:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)notificationHandler:(id)arg1;

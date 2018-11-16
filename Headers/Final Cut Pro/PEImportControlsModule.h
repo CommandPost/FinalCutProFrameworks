@@ -6,13 +6,14 @@
 
 #import "LKViewModule.h"
 
-@class LKButton, NSMutableSet;
+@class LKButton, LKTextField, NSMutableSet;
 
 @interface PEImportControlsModule : LKViewModule
 {
     LKButton *_closeWindowAfterImportCheckbox;
     LKButton *_stopImportButton;
     LKButton *_importButton;
+    LKTextField *_statusText;
     BOOL _closeWindowAfterImport;
     BOOL _fileOrRADIsImporting;
     NSMutableSet *_importBackgroundTasks;

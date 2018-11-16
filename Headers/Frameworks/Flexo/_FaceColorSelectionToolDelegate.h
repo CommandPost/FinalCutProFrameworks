@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     NSArray *_activeEffects;
 }
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)sharedDelegate;
 - (void)channelParameterChanged:(id)arg1;
 - (id)extendedDataToRecordForAnchoredObject:(id)arg1;
@@ -37,12 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)setActiveEffects:(id)arg1;
 - (void)_resyncToolControls;
 - (void)selectedItemsChanged:(id)arg1;
-- (unsigned long long)retainCount;
-- (id)autorelease;
-- (oneway void)release;
-- (id)retain;
 - (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

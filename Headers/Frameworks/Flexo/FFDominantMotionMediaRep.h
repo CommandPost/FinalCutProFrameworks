@@ -35,9 +35,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)analysisURLs;
 - (id)analysisURL;
-- (void)requestAnalysisForRange:(CDStruct_e83c9415)arg1 algorithmRequested:(long long)arg2;
-- (void)requestAnalysisForRange:(CDStruct_e83c9415)arg1;
-- (void)_requestAnalysisForRange:(CDStruct_e83c9415)arg1 algorithmRequested:(long long)arg2 inertiaCamLowConfidence:(BOOL)arg3;
+- (void)requestAnalysisForRange:(CDStruct_e83c9415)arg1 effect:(id)arg2 algorithmRequested:(long long)arg3;
+- (void)requestAnalysisForRange:(CDStruct_e83c9415)arg1 effect:(id)arg2;
+- (void)_requestAnalysisForRange:(CDStruct_e83c9415)arg1 effect:(id)arg2 algorithmRequested:(long long)arg3 inertiaCamLowConfidence:(BOOL)arg4;
 - (id)correctionTransformsForRange:(CDStruct_e83c9415)arg1 correctionAmount:(float)arg2;
 - (id)correctionTransformsForRangeDT:(CDStruct_e83c9415)arg1 correctionAmount:(float)arg2;
 - (id)smoothTransformsForRange:(CDStruct_e83c9415)arg1 smoothingAmount:(float)arg2 canDoTripod:(char *)arg3 wantToDoTripod:(BOOL)arg4 referenceFrameIndex:(long long)arg5;
@@ -79,7 +79,7 @@ __attribute__((visibility("hidden")))
 - (int)_analyzeUseRendererForRange:(struct _NSRange)arg1 visibleRange:(struct _NSRange)arg2 useInertiaCam:(BOOL)arg3 forceInertiaCam:(BOOL)arg4 runningTask:(id)arg5;
 - (void)_reportTime:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_notifyDoneWithRange:(CDStruct_e83c9415)arg1 algorithmUsed:(int)arg2 algorithmRequested:(int)arg3;
+- (void)_notifyDoneWithRange:(CDStruct_e83c9415)arg1 effect:(id)arg2 algorithmUsed:(int)arg3 algorithmRequested:(int)arg4;
 - (id)backgroundTask;
 - (int)allFrames;
 - (void)increaseFinishedFrames:(float)arg1;

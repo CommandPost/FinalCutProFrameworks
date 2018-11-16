@@ -42,6 +42,7 @@ struct OZChannel {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelBase {
@@ -135,6 +136,8 @@ struct OZCompoundChannel {
     unsigned int _field17;
     _Bool _field18;
 };
+
+struct OZCurve;
 
 struct OZCurveSetListSerializer {
     CDUnknownFunctionPointerType *_field1;

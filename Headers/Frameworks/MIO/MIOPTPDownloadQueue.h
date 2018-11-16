@@ -21,6 +21,7 @@
 }
 
 + (id)clipIDForCameraFile:(id)arg1;
++ (BOOL)isPTPClipID:(id)arg1;
 + (id)creationDateForCameraFile:(id)arg1;
 + (id)serialNumberForCameraDevice:(id)arg1;
 + (void)addMetadataToMetadataArray:(id)arg1 key:(id)arg2 object:(id)arg3;

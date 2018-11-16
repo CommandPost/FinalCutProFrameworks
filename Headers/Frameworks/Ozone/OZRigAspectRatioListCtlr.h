@@ -30,8 +30,11 @@
 - (void)addPredefinedDAR:(id)arg1;
 - (void)startCustomizeMode:(id)arg1;
 - (void)addRemoveEntry:(id)arg1;
+- (void)rigDeleteKeyPressed:(id)arg1;
+- (void)deleteCurrentSnapshot;
 - (BOOL)addDARSnapshot:(double)arg1;
 - (void)setAspectRatio:(double)arg1;
+- (BOOL)canDeleteCurrentSnapshot;
 - (unsigned int)indexForSnapshot:(struct OZRigSnapshot *)arg1;
 - (struct OZRigSnapshot *)snapshotForIndex:(unsigned int)arg1;
 - (void)tableViewSelectionDidChange:(id)arg1;

@@ -30,6 +30,13 @@
     unsigned int _closing:1;
 }
 
+- (void)_timingModelDidChangeNotification:(id)arg1;
+- (CDStruct_1b6d18a9)_spineTimePerPoint;
+- (double)_spineClipWidth;
+- (CDStruct_1b6d18a9)_unscaledTimePerPoint;
+- (double)_unscaledClipWidth;
+- (double)_scaleFactorOfClipWithTimePerPoint:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)timePerPoint;
 - (id)clipTrimmerLayer;
 - (struct CGRect)adjustItemSkimmerFrame:(struct CGRect)arg1 atLocation:(double)arg2;
 - (struct _TLKRange)locationRangeForTime:(CDStruct_1b6d18a9)arg1;
@@ -37,10 +44,11 @@
 - (CDStruct_1b6d18a9)_startTimeOfClip;
 - (void)reloadVisibleLayers;
 - (void)_adjustClipTrimmer;
-- (void)_adjustEditingLayer;
+- (void)_adjustEditingLayerAdjustSize:(BOOL)arg1;
 - (void)_firstStepOfEditingLayer;
 - (double)_xPositionOfStartTime;
 - (void)_adjustDoneButton;
+- (void)_finalStep;
 - (void)_slideInContainerToRect:(id)arg1;
 - (void)_setupInitialState;
 - (void)_doneButtonClicked:(id)arg1;

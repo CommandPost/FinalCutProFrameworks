@@ -32,18 +32,23 @@
     NSMutableSet *_clipsToThumbnail;
     FFPTPDownloadManager *_ptpDownloadManager;
     NSSet *_keywords;
+    NSMutableDictionary *_destinationTempFolders;
     BOOL _autoCorrect;
 }
 
++ (void)removeFileImportUserNotifications;
 + (id)radVolumeForPTPDeviceSerial:(id)arg1;
 + (void)postUserNotificationForPTPDeviceSerial:(id)arg1;
 + (void)removeRADVolumeUserNotificationPTPDeviceSerial:(id)arg1;
 + (void)removeRADVolumeUserNotificationForURL:(id)arg1;
 + (void)removeUserNotificationOnRADVolume:(id)arg1;
 + (void)ejectRADVolumeAtPath:(id)arg1;
-+ (void)restoreOriginalClipIfNecessaryForAsset:(id)arg1 inEvent:(id)arg2;
 + (void)addOwnedClipsToEventMainThread:(id)arg1;
 + (id)generateClipNameFromClip:(id)arg1;
++ (BOOL)moveSourceURL:(id)arg1 toExternalFileURL:(id)arg2 withSymlinkAtTargetURL:(id)arg3;
++ (id)rangeStringWithRADClip:(id)arg1;
++ (id)stringWithFilename:(id)arg1 rangeString:(id)arg2;
++ (BOOL)isFullClipImport:(CDStruct_e83c9415)arg1 mediaRange:(CDStruct_e83c9415)arg2 frameDuration:(CDStruct_1b6d18a9)arg3;
 + (void)removeClipsFromEvent:(id)arg1;
 + (void)addKeywords:(id)arg1 toClip:(id)arg2 inEvent:(id)arg3;
 + (id)radCore;
@@ -58,8 +63,11 @@
 @property(retain) NSCondition *condition; // @synthesize condition=_condition;
 @property(retain) FFBackgroundTask *ingestBackgroundTask; // @synthesize ingestBackgroundTask=_ingestBackgroundTask;
 @property(retain) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
+- (void)removeTempFolderForSubSegment:(id)arg1;
+- (void)clipRemovedFromQueue:(id)arg1;
 - (id)_importStatusTextDescription;
 - (id)sidebarCameraItems;
+- (void)postFileImportCompleteUserNotification;
 - (void)postIngestCompleteUserNotificationOnRADVolume:(id)arg1;
 - (BOOL)isPTPDownloadRequestPendingOnRADVolume:(id)arg1;
 - (BOOL)isIngestPendingOnRADVolume:(id)arg1;
@@ -76,6 +84,7 @@
 - (void)unregisterRADAssetForVolumeNotifications:(id)arg1;
 - (void)registerRADAssetForVolumeNotifications:(id)arg1;
 - (id)importRangesOfMedia:(id)arg1;
+- (void)restoreOriginalClipIfNecessaryForAsset:(id)arg1 inEvent:(id)arg2;
 - (void)markImportedRange:(CDStruct_e83c9415)arg1 onClipsWithID:(id)arg2 inVolumes:(id)arg3 originalClip:(id)arg4;
 - (void)canceledTask:(id)arg1;
 - (void)resumedTask:(id)arg1;
@@ -100,7 +109,9 @@
 - (BOOL)showReimportDialog;
 - (BOOL)ingestClipFFMIORADAsset:(id)arg1 clippedRange:(id)arg2 newClip:(id)arg3 sourceClip:(id)arg4 event:(id)arg5 isReimport:(BOOL)arg6 ingestStartDate:(id)arg7;
 - (void)backgroundIngestProgress:(id)arg1 task:(id)arg2;
+- (void)mioIngestErrorMain:(id)arg1;
 - (void)mioIngestError:(id)arg1;
+- (void)mioClipDidIngestMain:(id)arg1;
 - (void)mioClipDidIngest:(id)arg1;
 - (void)mioClipWillIngest:(id)arg1;
 - (id)displayName;
@@ -110,6 +121,7 @@
 - (BOOL)importing;
 - (id)ptpDownloadManager;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 - (id)radCore;
 

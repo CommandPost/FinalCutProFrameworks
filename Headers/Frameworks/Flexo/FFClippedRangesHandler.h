@@ -6,46 +6,39 @@
 
 #import "NSObject.h"
 
-@class NSMapTable, NSMutableArray;
+@class NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFClippedRangesHandler : NSObject
 {
-    NSMutableArray *_changes;
-    NSMapTable *_currentAnchoredObjects;
-    NSMapTable *_currentAssetMap;
-    NSMapTable *_changedAssetMap;
+    NSMapTable *_objectMap;
+    NSMapTable *_objectRanges;
+    NSMapTable *_usedRangesMediaIdentifierToBrowserSequence;
     BOOL _showsRanges;
     BOOL _sortUnused;
     BOOL _listview;
-    BOOL _organiserIsFocussed;
     BOOL _procrastinate;
+    BOOL _processModified;
+    NSString *_currentProjectAngleID;
 }
 
 + (id)sharedInstance;
-- (void)organiserDidUnfocus:(id)arg1;
-- (void)organiserDidFocus:(id)arg1;
 - (void)timelineChanged:(id)arg1;
+- (void)_addObject:(id)arg1 andRecordChanges:(id)arg2;
+- (void)_removeObject:(id)arg1 andRecordChanges:(id)arg2;
+- (void)_removeFirstInstanceOf:(id)arg1 from:(id)arg2;
+- (void)_replaceRangeClosestTo:(id)arg1 in:(id)arg2;
 - (void)_refreshUsedMediaIndicators:(id)arg1;
-- (void)_updateAssetMap;
-- (void)_processChanges;
-- (void)_processModifiedObject:(id)arg1;
-- (void)_processAddedObject:(id)arg1;
-- (void)_processRemovedObject:(id)arg1;
-- (CDStruct_e83c9415)_clippedRangeOf:(id)arg1;
-- (void)_clearCurrentCache;
-- (id)_changedAssetMap;
-- (void)_setChangedAssetMap:(id)arg1;
-- (id)_currentAssetMap;
-- (void)_setCurrentAssetMap:(id)arg1;
-- (id)_generateAssetMap;
+- (void)setSequence:(id)arg1 forUsedRangesMediaIdentifier:(id)arg2;
+- (id)sequenceForUsedRangesMediaIdentifier:(id)arg1;
+- (id)usedRangesMediaIdentifierForObject:(id)arg1;
 - (void)setListview:(BOOL)arg1;
 - (BOOL)listview;
 - (void)setSortUnused:(BOOL)arg1;
 - (BOOL)sortUnused;
 - (void)setShowsRanges:(BOOL)arg1;
 - (BOOL)showsRanges;
-- (id)rangesForAsset:(id)arg1;
+- (id)rangesForUsedRangesMediaIdentifier:(id)arg1;
 - (id)init;
 
 @end

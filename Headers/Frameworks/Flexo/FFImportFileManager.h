@@ -25,6 +25,7 @@
 - (void)rejectedSheetDidEnd:(id)arg1;
 - (id)importFiles:(id)arg1 keywords:(id)arg2 window:(id)arg3 isValid:(char *)arg4;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

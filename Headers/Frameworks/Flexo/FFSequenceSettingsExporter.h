@@ -15,6 +15,9 @@
     FFRenderFormat *_format;
     unsigned int _flags;
     FFRenderer *_renderer;
+    BOOL _trialRunPass;
+    float _endOfTrialRunPassProgress;
+    float _lastReportedProgress;
     float _audioProgress;
     NSOperationQueue *_operationQueue;
     BOOL _operationStarted;

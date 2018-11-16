@@ -21,10 +21,11 @@
     NSObject<HGRQJobProtocol> *_cbObj;
     _Bool _dumpGraph;
     _Bool _dumpDotFile;
-    CDStruct_18280053 _blockedInfo;
+    CDStruct_4cc81c56 _blockedInfo;
     struct _opaque_pthread_t *_threadThatInstalledBlockedInfo;
     long long _bypassCostUSec;
-    CDStruct_18280053 _bypassBlockedInfo;
+    CDStruct_4cc81c56 _bypassBlockedInfo;
+    int _amortizationCount;
     _Bool _dumpRenderStats;
 }
 
@@ -33,8 +34,10 @@
 @property _Bool dumpGraph; // @synthesize dumpGraph=_dumpGraph;
 @property struct HGRenderer *specificRenderer; // @synthesize specificRenderer=_specificRenderer;
 - (id).cxx_construct;
+- (int)amortizationCount;
+- (void)incrementAmortizationCount;
 - (int)virtualScreen;
-- (CDStruct_18280053 *)graphExecBlockedInfo;
+- (CDStruct_4cc81c56 *)graphExecBlockedInfo;
 - (double)totalBufferCopyTime;
 - (_Bool)cancel;
 - (_Bool)enqueueToRenderLocation:(int)arg1 priority:(int)arg2;

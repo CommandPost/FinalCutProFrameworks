@@ -41,6 +41,9 @@
 - (id)accessibilityParent;
 - (id)accessibilityDescription;
 - (id)accessibilityRole;
+- (id)accessibilityDescriptionForMarkerType:(int)arg1;
+- (id)accessibilityDelimiterString;
+- (id)accessibilityLocalizedString:(id)arg1;
 - (void)layoutSublayers;
 - (id)contextMenu;
 - (void)_updatePosterPin;

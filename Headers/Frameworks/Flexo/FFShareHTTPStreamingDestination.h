@@ -10,6 +10,7 @@
 {
 }
 
++ (id)setting;
 + (id)defaultName;
 + (id)defaultDestinationURL;
 - (BOOL)requiresSettingActionOutputURL;
@@ -17,6 +18,7 @@
 - (long long)iconIndex;
 - (id)largeImage;
 - (id)image;
+- (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
 

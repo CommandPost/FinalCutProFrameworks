@@ -9,6 +9,7 @@
 - (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
 
 @optional
+- (int)currentVirtualScreen;
 - (void)resumePlaybackAfterAbort;
 - (void)pausePlaybackAfterAbort;
 - (BOOL)isLooping;

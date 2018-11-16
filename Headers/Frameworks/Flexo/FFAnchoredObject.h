@@ -26,7 +26,7 @@
 @interface FFAnchoredObject : FFBaseDSObject <TLKTimelineItem, NSCoding, NSCopying, FFDataModelProtocol, FFSkimmableProtocol, FFAnchoredParentProtocol, FFMetadataProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, FFMD5Protocol, FFAssetContainerProtocol, FFEffectContainerProtocol>
 {
     NSString *_displayName;
-    struct FigTimePair _anchorPair;
+    struct PC_CMTimePair _anchorPair;
     CDStruct_e83c9415 _clippedRange;
     NSMutableDictionary *_metadata;
     unsigned int _aoFlags;
@@ -38,10 +38,12 @@
     int _playEnable;
     int _anchoredLane;
     id _parentItem;
+    NSString *_usedRangesMediaIdentifier;
     FFAnchoredObject *_transitionObjectLeft;
     FFAnchoredObject *_transitionObjectRight;
     CDStruct_1b6d18a9 _cachedLocalToParentOffset;
     CDStruct_e83c9415 _cachedClippedRangeInParentSpace;
+    CDStruct_e83c9415 _cachedEffectiveRangeOfObjectClippedByTransitions;
     int _cachedAVContainmentType;
     NSArray *_cachedSortedLocalizedRoles;
     unsigned int _cachedFlags;
@@ -53,6 +55,7 @@
 
 + (id)newCoalescedTimeRangesAndObjectsFromArray:(id)arg1;
 + (id)newExtendedSourceWithSource:(id)arg1 unclippedRangeRequired:(CDStruct_e83c9415)arg2 identifier:(id *)arg3;
++ (id)clipForAudioComponent:(id)arg1;
 + (id)promoteAudioComponentSourcesToParentObjects:(id)arg1;
 + (void)initialize;
 + (id)copyClassDescription;
@@ -64,10 +67,11 @@
 @property(readonly, nonatomic) unsigned int aoFlags; // @synthesize aoFlags=_aoFlags;
 @property(nonatomic) int playEnable; // @synthesize playEnable=_playEnable;
 @property(retain, nonatomic) NSSet *anchoredItems; // @synthesize anchoredItems=_anchoredItems;
-@property(nonatomic) struct FigTimePair anchorPair; // @synthesize anchorPair=_anchorPair;
+@property(nonatomic) struct PC_CMTimePair anchorPair; // @synthesize anchorPair=_anchorPair;
 @property(nonatomic) id parentItem; // @synthesize parentItem=_parentItem;
 - (BOOL)update_conformLumaBumpsFromChannelsToData;
 - (BOOL)update_isTitle;
+- (BOOL)update_hasObjectNonDefaultEffectStack;
 - (BOOL)update_hasObjectReferenceAndNonIntrinsicEffects;
 - (BOOL)update_cropAndTrimEffect;
 - (BOOL)update_fixLoudnessAnalysisEffect;
@@ -77,9 +81,10 @@
 - (void)setupFaceData:(CDStruct_1b6d18a9)arg1;
 - (id)fullPath;
 - (unsigned long long)validateAndRepair:(BOOL)arg1 report:(int)arg2 error:(id *)arg3;
+- (unsigned long long)_basicValidateAndRepair:(BOOL)arg1 report:(int)arg2 error:(id *)arg3;
 - (unsigned long long)_basicTimingValidateAndRepair:(BOOL)arg1 report:(int)arg2 error:(id *)arg3;
 - (CDStruct_e83c9415)_convertRangeScale:(CDStruct_e83c9415)arg1 toTimescale:(CDStruct_1b6d18a9)arg2;
-- (struct FigTimePair)_clearRoundingPair:(struct FigTimePair)arg1;
+- (struct PC_CMTimePair)_clearRoundingPair:(struct PC_CMTimePair)arg1;
 - (CDStruct_e83c9415)_clearRoundingRange:(CDStruct_e83c9415)arg1;
 - (CDStruct_1b6d18a9)_clearRoundingTime:(CDStruct_1b6d18a9)arg1;
 - (void)addThumbMD5Info:(id)arg1 imageQuality:(int)arg2;
@@ -110,12 +115,17 @@
 - (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_e83c9415)globalEffectiveRange;
 - (BOOL)hasRateConformScale;
+- (BOOL)hasTrimEffect;
 - (BOOL)hasRateConform;
 - (BOOL)hasArtisticRetime;
 - (BOOL)isRetimed;
 - (BOOL)canBeRetimed;
 - (void)setIsTitle:(BOOL)arg1;
 - (BOOL)isTitle;
+- (void)setHasNonDefaultAudioEffectStack:(BOOL)arg1;
+- (BOOL)hasNonDefaultAudioEffectStack;
+- (void)setHasNonDefaultVideoEffectStack:(BOOL)arg1;
+- (BOOL)hasNonDefaultVideoEffectStack;
 - (void)setHasNonIntrinsicAudioEffects:(BOOL)arg1;
 - (BOOL)hasNonIntrinsicAudioEffects;
 - (void)setHasNonIntrinsicVideoEffects:(BOOL)arg1;
@@ -233,6 +243,7 @@
 - (double)videoAspectRatio;
 - (id)mediaVideoProps;
 - (id)sequence;
+- (id)componentForTrim;
 - (id)firstAudioAnchoredComponent;
 - (id)firstVideoAnchoredComponent;
 - (id)firstAnchoredComponent;
@@ -253,6 +264,7 @@
 - (void)_throughEditDetailForLeft:(id)arg1 andRight:(id)arg2 throughVideo:(char *)arg3 throughAudio:(char *)arg4;
 - (BOOL)isPullingSourceFromBelowForRight;
 - (BOOL)isPullingSourceFromBelowForLeft;
+- (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
@@ -265,6 +277,7 @@
 - (BOOL)isPSD;
 - (BOOL)isMediaComponent;
 - (BOOL)isComponent;
+- (BOOL)isTrimmed;
 - (BOOL)isCollection;
 - (BOOL)isSequence;
 - (BOOL)isStack;
@@ -278,6 +291,7 @@
 - (BOOL)isSpine;
 - (BOOL)isProject;
 - (BOOL)isCompoundClip;
+- (BOOL)hasDefaultEditingAdjustment;
 - (BOOL)isAdjustment;
 - (BOOL)isMultiAngleGap;
 - (BOOL)isSyncronized;
@@ -293,7 +307,9 @@
 - (BOOL)wantsGammaCompositing;
 - (BOOL)wantsAutoKenBurns;
 - (BOOL)isInCropOrKenBurnsCropMode;
-- (void)addEffectsIfNecessaryWithContainer:(id)arg1 retimeIfHFR:(BOOL)arg2;
+- (BOOL)addSpatialEffectsIfNecessaryWithContainer:(id)arg1;
+- (BOOL)addTemporalEffectsIfNecessaryWithContainer:(id)arg1 autoRetimed:(char *)arg2;
+- (BOOL)anchoredComponentContainsValidTrim;
 - (void)conformToVideoProps:(id)arg1 forceNoRateConformScale:(BOOL)arg2 forceSourceSampleDuration:(CDStruct_1b6d18a9)arg3;
 - (void)conformToVideoProps:(id)arg1 forceNoRateConformScale:(BOOL)arg2;
 - (void)conformToVideoProps:(id)arg1;
@@ -303,11 +319,14 @@
 - (void)_effectWasAdded:(id)arg1;
 - (void)_updateRetimingFlagsForModifiedEffect:(id)arg1;
 - (void)_ensureRetimeCurveUpdatedIfNeededOrWarnOnly:(BOOL)arg1;
+- (void)_updateTrimFlag;
 - (void)_updateRetimingFlags;
+- (BOOL)_calcHasTrimEffect;
 - (BOOL)_calcHasRateConformScale;
 - (BOOL)_calcHasRateConform;
 - (BOOL)_calcHasArtisticRetime;
 - (void)updateHasObjectReferenceAndNonIntrinsicEffects;
+- (void)updateHasObjectNonDefaultEffectStack;
 - (id)secondaryEffectStack;
 - (id)primaryEffectStack;
 - (id)audioEffect;
@@ -323,7 +342,7 @@
 - (BOOL)canRemoveChannel:(id)arg1;
 - (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
 - (BOOL)canReorderChannel:(id)arg1;
-- (BOOL)containsChannel:(id)arg1;
+- (BOOL)containsChannel:(id)arg1 associatedModelObject:(id)arg2;
 - (id)representedToolObject;
 - (id)inspectorToolMapsClassNames;
 - (id)inspectorToolTitleClassNames;
@@ -377,6 +396,7 @@
 - (id)availableMultiAngleIDs;
 - (id)availableMultiAngleObjects;
 - (id)metadataAudioChannelConfig;
+- (id)metadataAudioSampleRate;
 - (id)metadataAudioChannelCount;
 - (id)metadataSelectionDuration;
 - (void)setMetadataSelectionDuration:(id)arg1;
@@ -487,7 +507,6 @@
 - (CDStruct_1b6d18a9)localToParentTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)childToParentOffsetForChild:(id)arg1;
 - (CDStruct_1b6d18a9)localToContainerOffset:(id)arg1;
-- (void)collectClippedRangesOfMediaInto:(id)arg1 forRange:(CDStruct_e83c9415)arg2;
 - (CDStruct_1b6d18a9)parentToLocalOffset;
 - (CDStruct_1b6d18a9)localToParentOffset;
 - (void)informAudioComponentsLayoutChanged:(id)arg1;
@@ -497,21 +516,26 @@
 - (void)informParentEffectsChanged;
 - (void)informParentIsCompoundClipChanged:(BOOL)arg1;
 - (void)informParentContainedItemsChanged:(BOOL)arg1;
+@property(retain, nonatomic) NSString *usedRangesMediaIdentifier;
+- (id)createUsedRangesMediaIdentifier;
 - (void)clearCachedAVContainmentType;
 - (void)clearRolesCacheIfSet;
 - (void)clearCalculatedVideoProps;
 - (void)clearCachedValues;
+- (void)clearParentOffsets;
+- (void)setParentItemNoParentInform:(id)arg1;
+- (void)_setParentItem:(id)arg1 informParent:(BOOL)arg2;
 - (long long)getFirstSetAnchoredLaneValueInParentsAndSelfWithValidLane:(id)arg1;
 - (long long)getFirstSetAnchoredLaneValueInParentsAndSelf:(id)arg1;
 - (long long)actualAnchoredLane;
 - (void)removeAnchoredItemsOfTypes:(id)arg1;
 - (BOOL)removeAnchoredObject:(id)arg1;
-- (void)setAnchorPair:(struct FigTimePair)arg1 alignedToParentForRetiming:(id)arg2;
-- (void)setAnchorPair:(struct FigTimePair)arg1 alignedToParent:(id)arg2;
-- (struct FigTimePair)_computeAlignedAnchorPair:(struct FigTimePair)arg1 alignedToParent:(id)arg2 forRetiming:(BOOL)arg3;
-- (struct FigTimePair)_alignAnchorPair:(struct FigTimePair)arg1 forParent:(id)arg2 forRetiming:(BOOL)arg3;
-- (BOOL)_anchorPairIsAligned:(struct FigTimePair)arg1 forParent:(id)arg2;
-- (struct FigTimePair)_conformAnchorPairTimescale:(struct FigTimePair)arg1 forParent:(id)arg2;
+- (void)setAnchorPair:(struct PC_CMTimePair)arg1 alignedToParentForRetiming:(id)arg2;
+- (void)setAnchorPair:(struct PC_CMTimePair)arg1 alignedToParent:(id)arg2;
+- (struct PC_CMTimePair)_computeAlignedAnchorPair:(struct PC_CMTimePair)arg1 alignedToParent:(id)arg2 forRetiming:(BOOL)arg3;
+- (struct PC_CMTimePair)_alignAnchorPair:(struct PC_CMTimePair)arg1 forParent:(id)arg2 forRetiming:(BOOL)arg3;
+- (BOOL)_anchorPairIsAligned:(struct PC_CMTimePair)arg1 forParent:(id)arg2;
+- (struct PC_CMTimePair)_conformAnchorPairTimescale:(struct PC_CMTimePair)arg1 forParent:(id)arg2;
 - (CDStruct_1b6d18a9)_sampleDurationForContainerOfParent:(id)arg1 hasVideo:(char *)arg2;
 - (BOOL)removeAudioOrVideo:(BOOL)arg1 includingAnchoredItems:(BOOL)arg2;
 - (void)removeAllAnchoredItemsObjects;
@@ -555,6 +579,8 @@
 - (id)copyWithoutAnchoredItems;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (CDStruct_e83c9415)_cachedEffectiveRangeOfObjectClippedByTransitionsForContainer:(id)arg1;
+- (void)_setCachedEffectiveRangeOfObjectClippedByTransitionsIfContainerIsContainer:(id)arg1;
 - (BOOL)shouldEncodeAnchoredItems;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
@@ -579,8 +605,12 @@
 - (void)addArtisticRetime;
 - (void)resetConstantRetimingRateFromFreeze;
 - (BOOL)retimeSetTransitionFallOffsAtKey:(unsigned int)arg1 leftFallOff:(double)arg2 rightFallOff:(double)arg3 error:(id *)arg4;
-- (BOOL)moveComponentKey:(unsigned int)arg1 deltaTime:(CDStruct_1b6d18a9)arg2 ripple:(BOOL)arg3 error:(id *)arg4;
-- (BOOL)moveMediaKey:(unsigned int)arg1 toMediaTime:(double)arg2 error:(id *)arg3;
+- (BOOL)moveComponentKey:(unsigned int)arg1 deltaTime:(CDStruct_1b6d18a9)arg2 minDeltaToPrevSegment:(double)arg3 ripple:(BOOL)arg4 error:(id *)arg5;
+- (BOOL)moveMediaKey:(unsigned int)arg1 toMediaTime:(double)arg2 minDeltaToPrevSegment:(double)arg3 minDeltaToNextSegment:(double)arg4 error:(id *)arg5;
+- (void)_adjustAnchorsAfterMoveKeyForRetime:(id)arg1 keyIndex:(int)arg2 timescale:(int)arg3 anchoredSecondMediaTimes:(double *)arg4 anchoredSecondSegmentIndices:(int *)arg5 anchoredSecondComponentDeltaTimes:(double *)arg6 anchoredFirstMediaTime:(double)arg7 anchoredFirstSegmentIndex:(int)arg8 anchoredFirstComponentDeltaTime:(double)arg9;
+- (void)_computeAnchorTimeAfterRetime:(id)arg1 segmentIndex:(int)arg2 keyIndex:(int)arg3 anchoredMediaTime:(double)arg4 anchoredComponentDeltaTime:(double)arg5 timescale:(int)arg6 anchorTime:(CDStruct_1b6d18a9 *)arg7;
+- (void)_collectAnchorInforBeforeMoveKeyForRetime:(id)arg1 anchoredSecondMediaTimes:(double **)arg2 anchoredSecondSegmentIndices:(int **)arg3 anchoredSecondComponentDeltaTimes:(double **)arg4 anchoredFirstMediaTime:(double *)arg5 anchoredFirstSegmentIndex:(int *)arg6 anchoredFirstComponentDeltaTime:(double *)arg7;
+- (CDStruct_e83c9415)_visibleRange;
 - (void)setRetimeInterpolation:(long long)arg1;
 - (BOOL)applyBladeSpeedPresetAtComponentTime:(CDStruct_1b6d18a9)arg1 newComponentTime:(CDStruct_1b6d18a9 *)arg2 error:(id *)arg3;
 - (BOOL)applyHoldPresetAtComponentTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 newHoldComponentTime:(CDStruct_1b6d18a9 *)arg3 error:(id *)arg4;
@@ -595,11 +625,12 @@
 - (id)bladeAndInstantReplay:(CDStruct_e83c9415)arg1 rate:(double)arg2 addTitle:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)_addInstantReplayTitleAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 rootItem:(id)arg3;
 - (id)bladeAndRetime:(CDStruct_e83c9415)arg1 rate:(double)arg2 error:(id *)arg3;
-- (BOOL)applyConstantRetiming:(double)arg1 ripple:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)applyConstantRetiming:(double)arg1 ripple:(BOOL)arg2 fixTransitions:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)setRetimingPreservesPitch:(BOOL)arg1;
 - (BOOL)retimeAndTrimToRate:(double)arg1 error:(id *)arg2;
 - (BOOL)editEffectStack:(id)arg1 setVariableRetiming:(double)arg2 aroundTime:(CDStruct_1b6d18a9)arg3 segmentIndex:(int)arg4 scaleToRight:(BOOL)arg5 ripple:(BOOL)arg6 error:(id *)arg7;
 - (BOOL)editResetRetimingWithRipple:(BOOL)arg1;
-- (BOOL)editSetConstantRetiming:(double)arg1 currentRate:(double)arg2 scaleToRight:(BOOL)arg3 ripple:(BOOL)arg4 error:(id *)arg5;
+- (BOOL)editSetConstantRetiming:(double)arg1 currentRate:(double)arg2 scaleToRight:(BOOL)arg3 ripple:(BOOL)arg4 fixTransitions:(BOOL)arg5 error:(id *)arg6;
 - (CDStruct_1b6d18a9)constantRetimedEditDuration:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 currentRate:(double)arg3;
 - (id)objectSpecifierForChild:(id)arg1;
 - (id)newScriptingObjectOfClass:(Class)arg1 forValueForKey:(id)arg2 withContentsValue:(id)arg3 properties:(id)arg4;

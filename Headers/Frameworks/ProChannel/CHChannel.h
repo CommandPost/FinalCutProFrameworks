@@ -15,7 +15,7 @@
 - (double)scale;
 - (void)setSuffix:(id)arg1;
 - (id)suffix;
-- (BOOL)getTime:(CDStruct_198678f7 *)arg1 forCurveDoubleValue:(double)arg2 inRange:(CDStruct_3c1748cc)arg3 options:(unsigned int)arg4;
+- (BOOL)getTime:(CDStruct_198678f7 *)arg1 forCurveDoubleValue:(double)arg2 inRange:(CDStruct_3c1748cc)arg3 frameDuration:(CDStruct_198678f7)arg4 options:(unsigned int)arg5;
 - (CDStruct_198678f7)globalToLocalTime:(CDStruct_198678f7)arg1;
 - (CDStruct_198678f7)localToGlobalTime:(CDStruct_198678f7)arg1;
 - (BOOL)getKeyframeBeforeTime:(CDStruct_198678f7)arg1 time:(CDStruct_198678f7 *)arg2 curveValueAsDouble:(double *)arg3;

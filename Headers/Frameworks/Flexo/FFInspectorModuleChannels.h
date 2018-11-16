@@ -23,6 +23,7 @@
     NSSet *_currentItemsSet;
     BOOL _needToRebuildInspector;
     BOOL _currentItemsReadLockHeld;
+    long long _suspendEffectsChangedObserving;
 }
 
 - (BOOL)_timeInRangeOfCurrentItems:(CDStruct_1b6d18a9)arg1 container:(id)arg2;
@@ -54,6 +55,8 @@
 - (void)_mediaInvalidated:(id)arg1;
 - (void)_updateMedia;
 - (void)_updateChannels;
+- (void)resumeEffectsChangedObserving;
+- (void)suspendEffectsChangedObserving;
 - (void)_filtersChanged:(id)arg1;
 - (void)_filtersChangedAllmostFinal;
 - (void)_filtersChangedFinal;

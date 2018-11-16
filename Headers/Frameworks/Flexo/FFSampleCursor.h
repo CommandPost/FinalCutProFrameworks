@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)saveCurrentLocation;
 - (int)stepInPresentationOrder:(int)arg1;
 - (int)stepInDecodeOrder:(int)arg1;
-- (struct opaqueCMSampleBuffer *)createSampleBuffer;
+- (struct opaqueCMSampleBuffer *)createSampleBuffer:(int)arg1;
 - (void)prefetch:(id)arg1;
 - (BOOL)supportLongGOP;
 - (CDStruct_e83c9415)getPresentationRange;

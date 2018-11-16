@@ -55,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)updateArchiveSourceVolume:(id)arg1;
 - (id)sourceVolumeForPath:(id)arg1;
 - (void)stopWritingFilesToLocation:(id)arg1;
-- (void)taskWasCancelled:(id)arg1;
+- (void)taskWasCancelled:(id)arg1 queuedRequests:(id)arg2;
 - (void)finalizeCopyQueueForCopyRequest:(id)arg1 canceled:(BOOL)arg2;
 - (void)addArchiveToFavorites:(id)arg1;
 - (void)copyCompleted:(id)arg1;
@@ -72,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)beginOptionsSheetForWindow:(id)arg1 volume:(id)arg2;
 - (void)beginOptionsSheetForWindow:(id)arg1 tapeDevice:(id)arg2;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

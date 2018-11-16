@@ -9,7 +9,7 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFObjectDict, NSDictionary, NSObject<FFAudioComponentsLayoutMapDelegate>, NSSet;
+@class FFObjectDict, NSDictionary, NSObject<FFAudioComponentsLayoutMapDelegate>;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioComponentsLayoutMap : FFBaseDSObject <NSCoding, NSCopying>
@@ -17,13 +17,11 @@ __attribute__((visibility("hidden")))
     NSObject<FFAudioComponentsLayoutMapDelegate> *m_delegate;
     FFObjectDict *m_layoutMap;
     NSDictionary *m_useReferenceLayoutMap;
-    NSSet *m_expandedKeys;
     long long m_changeCount;
 }
 
 + (Class)layoutClass;
 + (id)copyClassDescription;
-@property(retain, nonatomic) NSSet *expandedKeys; // @synthesize expandedKeys=m_expandedKeys;
 @property(nonatomic) NSObject<FFAudioComponentsLayoutMapDelegate> *delegate; // @synthesize delegate=m_delegate;
 @property(retain, nonatomic) NSDictionary *useReferenceLayoutMap; // @synthesize useReferenceLayoutMap=m_useReferenceLayoutMap;
 @property(retain, nonatomic) FFObjectDict *layoutMap; // @synthesize layoutMap=m_layoutMap;
@@ -50,8 +48,6 @@ __attribute__((visibility("hidden")))
 - (id)allLocalKeys;
 - (void)syncWithReferenceLayoutMap;
 - (void)resetLayoutMap;
-- (void)setAudioChannelsConfigCollapsed:(BOOL)arg1 forKey:(id)arg2;
-- (BOOL)isAudioChannelsConfigCollapsedForKey:(id)arg1;
 - (void)setUseReferenceLayout:(BOOL)arg1 forKey:(id)arg2;
 - (BOOL)useReferenceLayoutForKey:(id)arg1;
 - (id)demandMutableLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;

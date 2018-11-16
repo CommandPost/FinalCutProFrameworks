@@ -6,11 +6,11 @@
 
 #import <Flexo/FFDestVideo.h>
 
-#import "FFDestRenderUnitProtocol.h"
+#import "FFDestRenderProtocol.h"
 
-@class FFDestRenderUnit, FFNRTFigClock, FFRenderProps, NSArray, NSLock;
+@class FFNRTFigClock, FFRenderProps, FFRenderer, NSArray, NSLock;
 
-@interface FFDestRenderer : FFDestVideo <FFDestRenderUnitProtocol>
+@interface FFDestRenderer : FFDestVideo <FFDestRenderProtocol>
 {
     FFNRTFigClock *_clock;
     NSLock *_lock;
@@ -20,7 +20,8 @@
     BOOL _needsUpdate;
     FFRenderProps *_renderProps;
     NSArray *_renderFilesPaths;
-    FFDestRenderUnit *_renderUnit;
+    FFRenderer *_renderer;
+    BOOL _isLastRenderDest;
 }
 
 - (_Bool)usesOSThrottlingForAllDiskIO;
@@ -40,8 +41,9 @@
 - (void)stop;
 - (void)start:(id)arg1;
 - (void)endRender;
-- (void)beginRenderWithDelegate:(id)arg1 context:(void *)arg2;
+- (void)beginRenderWithRenderer:(id)arg1 forLastDest:(BOOL)arg2;
 - (void)finishedProcessing:(CDStruct_1b6d18a9)arg1;
+- (void)haveRenderCheckForPause;
 - (void)startingToProcess:(CDStruct_1b6d18a9)arg1;
 - (void)flush:(BOOL)arg1;
 - (void)setPlayer:(id)arg1;

@@ -34,6 +34,7 @@
 - (void)drawGradientRectX:(float)arg1 y:(float)arg2 width:(float)arg3 height:(float)arg4 alpha:(float)arg5 direction:(int)arg6;
 - (void)drawArcQuadrant:(int)arg1 x:(float)arg2 y:(float)arg3 radius:(float)arg4;
 - (void)drawGradArcQuadrant:(int)arg1 x:(float)arg2 y:(float)arg3 radius:(float)arg4 alpha:(float)arg5;
+- (void)willBeRemoved;
 - (void)dealloc;
 - (BOOL)is3DOSC;
 - (int)getDrawingOrder;

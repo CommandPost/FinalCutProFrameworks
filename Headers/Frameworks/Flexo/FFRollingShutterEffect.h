@@ -38,8 +38,10 @@ __attribute__((visibility("hidden")))
 - (id)persistentData;
 - (void)createChannelsInFolder:(id)arg1;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (void)_maybeRequestCorrectionTransform:(id)arg1;
 - (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5;
-- (void)requestCorrectionTransform;
+- (void)requestOrRetrieveCorrectionTransform;
+- (void)_requestCorrectionTransform;
 - (void)_retrieveCorrectionTransform:(CDStruct_e83c9415)arg1;
 - (void)_setCorrectionTransformsIfNoPendingRequest:(id)arg1;
 - (void)_setCorrectionTransforms:(id)arg1;

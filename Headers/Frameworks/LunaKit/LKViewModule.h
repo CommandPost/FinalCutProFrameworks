@@ -47,6 +47,14 @@
 + (id)_mappedClassName:(id)arg1;
 + (id)defaultModuleNibName;
 @property BOOL loadNibFailed; // @synthesize loadNibFailed;
+- (double)bottomDraggableExclusionMargin;
+- (double)topDraggableExclusionMargin;
+- (double)rightDraggableExclusionMargin;
+- (double)leftDraggableExclusionMargin;
+- (double)rightDraggableMargin;
+- (double)leftDraggableMargin;
+- (double)bottomDraggableMargin;
+- (double)topDraggableMargin;
 - (BOOL)canBeInspected;
 - (id)selectedItems;
 - (void)setSelectedItems:(id)arg1;

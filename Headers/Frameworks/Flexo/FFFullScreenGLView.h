@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     FFImageDisplay *_imageDisplay;
 }
 
+- (void)reshape;
 - (id)imageDisplay;
 - (struct _CGLContextObject *)cglContext;
 - (void)drawRect:(struct CGRect)arg1;

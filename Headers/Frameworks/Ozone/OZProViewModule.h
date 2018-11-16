@@ -23,6 +23,7 @@
 - (void)moduleViewWasInstalled:(id)arg1;
 - (struct OZDocument *)oz_currentOZDocument;
 - (id)oz_currentDocument;
+- (struct CGSize)viewMaxSize;
 - (unsigned long long)revealAnimationStyle;
 
 @end

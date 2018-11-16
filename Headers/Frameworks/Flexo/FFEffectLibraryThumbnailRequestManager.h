@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
 - (CDStruct_bdcb2b0d)_iconCacheKeyForItem:(id)arg1;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

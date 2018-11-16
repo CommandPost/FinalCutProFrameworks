@@ -23,7 +23,7 @@
 - (void)startSettingPickedColor;
 - (void)setChannelValue:(id)arg1;
 - (void)dealloc;
-- (id)canvasModuleForScene:(struct OZScene *)arg1;
+- (id)canvasModule;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end

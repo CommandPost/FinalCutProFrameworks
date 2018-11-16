@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)contentFrameChanged:(id)arg1;
 - (long long)numberOfColumnsForCurrentBounds;
 - (void)refreshCellsToContent;
+- (id)sortArray:(id)arg1;
 - (void)reloadData;
 - (void)unbind:(id)arg1;
 - (void)bind:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;

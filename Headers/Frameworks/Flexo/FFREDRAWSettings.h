@@ -61,7 +61,6 @@ __attribute__((visibility("hidden")))
     BOOL _cachedScrubHQ;
 }
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)shared;
 @property(nonatomic) LKTextField *itemLabel; // @synthesize itemLabel=_itemLabel;
 @property(nonatomic) NSImageView *itemIcon; // @synthesize itemIcon=_itemIcon;
@@ -90,10 +89,6 @@ __attribute__((visibility("hidden")))
 - (void)appWillTerminate:(id)arg1;
 - (id)_complimentaryControlForControl:(id)arg1;
 - (void)awakeFromNib;
-- (unsigned long long)retainCount;
-- (id)autorelease;
-- (oneway void)release;
-- (id)retain;
 - (void)reloadData;
 - (void)setPlayer:(id)arg1;
 - (BOOL)isHUDVisible;
@@ -101,7 +96,6 @@ __attribute__((visibility("hidden")))
 - (void)openHUD;
 - (void)dealloc;
 - (id)init;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

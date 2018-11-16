@@ -7,12 +7,11 @@
 #import <Flexo/FFDestVideoAnalyzerController.h>
 
 #import "FFDestAnalyzerProtocol.h"
-#import "FaceRecognitionManagerDetectionDelegate.h"
 
-@class FFFaceDetectionInfoCollection, NSMutableArray;
+@class FCEFaceDetector, FFFaceDetectionInfoCollection, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface FFFaceDetection : FFDestVideoAnalyzerController <FaceRecognitionManagerDetectionDelegate, FFDestAnalyzerProtocol>
+@interface FFFaceDetection : FFDestVideoAnalyzerController <FFDestAnalyzerProtocol>
 {
     int _downSampleRate;
     int _numFramesReceived;
@@ -29,6 +28,7 @@ __attribute__((visibility("hidden")))
     BOOL _skipPerFrameAnalysis;
     BOOL _createSmartCollectionFolders;
     BOOL _consolidateFindPeopleResults;
+    FCEFaceDetector *_fcFaceDetector;
 }
 
 - (BOOL)doesSupportDataFilesWithMediaEventProject:(id)arg1 subPath:(id *)arg2 type:(id *)arg3;
@@ -37,14 +37,6 @@ __attribute__((visibility("hidden")))
 - (void)startAnalyzing;
 - (int)analyzeImage:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)dealloc;
-- (void)logDetectFace:(id)arg1 ofPhoto:(void *)arg2 debugString:(id)arg3 sender:(id)arg4 context:(void *)arg5;
-- (BOOL)writeDetectionAndThumbnailInfoOfFaces:(id)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
-- (BOOL)validateFace:(id)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5 debugString:(id)arg6;
-- (struct CGAffineTransform)transformForOriginalImageSpaceToPovidedImageSpaceOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 sender:(id)arg3 context:(void *)arg4;
-- (struct CGAffineTransform)transformForProvidedImageSpaceToOriginalImageOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 sender:(id)arg3 context:(void *)arg4;
-- (id)getDateOriginalOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 shutterSpeedValue:(double *)arg3 apertureValue:(double *)arg4 ISOSpeedRating:(double *)arg5 sender:(id)arg6 context:(void *)arg7;
-- (void)releaseCGImage:(struct CGImage *)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
-- (struct CGImage *)getCGImageOfPhoto:(void *)arg1 userInfo:(void **)arg2 maxDimension:(double)arg3 sender:(id)arg4 context:(void *)arg5;
 - (void)_saveFaceDetectionData;
 - (void)endFaceDetection;
 - (void)_summarizeFaceDetectionRanges;
@@ -53,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)_printRanges:(id)arg1;
 - (void)performFaceDetectionOnFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)_processFrameImage:(struct CGImage *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (BOOL)_saveFacesInFrame:(id)arg1 frameImage:(struct CGImage *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 clip:(id)arg2 asset:(id)arg3 createSmartCollectionFolders:(BOOL)arg4 consolidateFindPeopleResults:(BOOL)arg5;
 - (void)_removeExistingKeywords:(id)arg1;
 

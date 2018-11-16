@@ -8,7 +8,7 @@
 
 #import "FFOrganizerFilmListOutlineViewDragging.h"
 
-@class NSArray;
+@class FFOrganizerFilmstripView, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface FFImportOrganizerFilmListViewController : FFOrganizerFilmListViewController <FFOrganizerFilmListOutlineViewDragging>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     struct FFProcrastinatedDispatch_t _importProcrastinatedUpdateItemsString;
     struct FFProcrastinatedDispatch_t _importProcrastinatedReloadData;
     NSArray *_redURLs;
+    FFOrganizerFilmstripView *_retainedRemovedFilmStripView;
 }
 
 - (void)filmstripView:(id)arg1 didCreatePlayheadInfoPopover:(id)arg2;
@@ -48,6 +49,9 @@ __attribute__((visibility("hidden")))
 - (id)outlineView:(id)arg1 dataCellForTableColumn:(id)arg2 item:(id)arg3;
 - (void)outlineDoubleClicked:(id)arg1;
 - (void)outlineClicked:(id)arg1;
+- (void)removeObserversAndNotifications:(id)arg1;
+- (void)attachObserversAndNotifications:(id)arg1;
+- (void)treeNodeChildNodesDidChange:(id)arg1;
 - (void)takeContentLayoutDictionary:(id)arg1;
 - (void)playPause;
 - (void)synchronousReloadData;

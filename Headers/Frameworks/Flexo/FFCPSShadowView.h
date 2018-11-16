@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)dealloc;
+- (void)awakeFromNib;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

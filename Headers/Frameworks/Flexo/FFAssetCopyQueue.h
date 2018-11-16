@@ -9,7 +9,7 @@
 #import "FFBackgroundTaskTarget.h"
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 
-@class FFAssetCopyRequest, FFBackgroundTaskWithPauseCondition, FFStorageLocation, NSMutableArray, NSRecursiveLock, NSString;
+@class FFAssetCopyRequest, FFBackgroundTaskWithPauseCondition, FFStorageLocation, NSMutableArray, NSMutableSet, NSRecursiveLock, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAssetCopyQueue : NSObject <FFStorageLocationOutOfDiskSpaceProtocol, FFBackgroundTaskTarget>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSRecursiveLock *_lock;
     FFBackgroundTaskWithPauseCondition *_backgroundTask;
     NSMutableArray *_queuedRequests;
+    NSMutableSet *_queuedRequestSet;
     FFAssetCopyRequest *_processingRequest;
     int _backgroundProgressFilesCompleted;
     int _backgroundProgressFilesTotal;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)inFlightTransactionCount;
 - (void)queueRequest:(id)arg1;
 - (void)dealloc;
+- (oneway void)release;
 - (id)initWithTaskName:(id)arg1 taskType:(int)arg2;
 - (id)init;
 - (void)stopWritingFilesToLocation:(id)arg1;

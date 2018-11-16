@@ -12,10 +12,14 @@ __attribute__((visibility("hidden")))
 @interface FFCPSClapperboardView : NSView
 {
     NSImage *_posterImage;
+    NSImage *_clapperImage;
+    NSView *_shadowView;
     BOOL _showClapper;
 }
 
+@property(nonatomic) NSView *shadowView; // @synthesize shadowView=_shadowView;
 @property(nonatomic) BOOL showClapper; // @synthesize showClapper=_showClapper;
+@property(retain, nonatomic) NSImage *clapperImage; // @synthesize clapperImage=_clapperImage;
 @property(retain, nonatomic) NSImage *posterImage; // @synthesize posterImage=_posterImage;
 - (void)drawDarkTransparentOverlay;
 - (void)drawClapper;
@@ -23,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setImageRef:(struct CGImage *)arg1;
 - (void)dealloc;
+- (void)awakeFromNib;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

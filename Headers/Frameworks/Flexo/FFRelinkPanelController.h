@@ -11,7 +11,7 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFImportLocationPopUpController, FFLibrary, FFRelinkOpenAccessoryViewController, LKBox, LKButton, LKPopUpButton, LKScrollView, LKTableView, LKTextField, NSArray, NSCondition, NSMatrix, NSMutableArray, NSProThemeImageView, NSString, NSTextView, NSURL, NSView;
+@class FFLibrary, FFRelinkOpenAccessoryViewController, LKBox, LKButton, LKScrollView, LKTableView, LKTextField, NSArray, NSCondition, NSMatrix, NSMutableArray, NSProThemeImageView, NSString, NSTextView, NSURL, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFRelinkPanelController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSOpenSavePanelDelegate>
@@ -56,8 +56,6 @@ __attribute__((visibility("hidden")))
     LKScrollView *_matchedTableScrollView;
     LKTableView *_matchedTableView;
     LKButton *_copyFilesCheckBox;
-    FFImportLocationPopUpController *_importLocationPopUpController;
-    LKPopUpButton *_importLocationPopUpButton;
     LKButton *_connectMatchedButton;
 }
 
@@ -88,6 +86,9 @@ __attribute__((visibility("hidden")))
 - (void)_adjustLayout:(id)arg1;
 - (void)_matchSelectedTo:(id)arg1 selectedRowAssetRefs:(id)arg2;
 - (id)_findMatchesInFolder:(id)arg1 incompatibleFileCount:(int *)arg2 error:(id *)arg3;
+- (id)_findMatchesInFolderDeep:(id)arg1 incompatibleFileCount:(int *)arg2 error:(id *)arg3;
+- (id)_cullDuplicateMatches:(id)arg1;
+- (BOOL)_shouldTraverseFolder:(id)arg1;
 - (void)_rootsForURL1:(id)arg1 URL2:(id)arg2 root1:(id *)arg3 root2:(id *)arg4 compareOptions:(unsigned long long)arg5;
 - (id)_findTreeMatchesForAssetRefs:(id)arg1 oldRootPath:(id)arg2 newRootPath:(id)arg3 compareOptions:(unsigned long long)arg4 incompatibleFileCount:(int *)arg5 error:(id *)arg6;
 - (id)_findMatchForAssetRef:(id)arg1 filesDict:(id)arg2 baseNameDict:(id)arg3 rootNameDict:(id)arg4 isCaseSensitive:(BOOL)arg5 incompatibleFileCount:(int *)arg6 error:(id *)arg7;

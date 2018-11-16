@@ -16,13 +16,16 @@ __attribute__((visibility("hidden")))
     NSNumber *_manageFileType;
     NSURL *_assetImportURL;
     NSURL *_libraryURL;
+    BOOL _suppressWarnings;
 }
 
+@property(readonly, nonatomic) BOOL suppressWarnings; // @synthesize suppressWarnings=_suppressWarnings;
 @property(readonly, nonatomic) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
 @property(readonly, nonatomic) NSNumber *manageFileType; // @synthesize manageFileType=_manageFileType;
+- (void)adjustForiMovieUpgrade;
 @property(readonly, nonatomic) NSURL *assetImportURL; // @synthesize assetImportURL=_assetImportURL;
 - (void)adjustForInvalidAssetImportURL;
-- (void)adjustWithXMLElement:(id)arg1 isGlobalOptions:(BOOL)arg2;
+- (void)adjustWithXMLElement:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 

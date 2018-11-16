@@ -39,6 +39,7 @@
 @property(retain, nonatomic) LKPopOverWindow *clipAppearanceHUD; // @synthesize clipAppearanceHUD;
 @property(retain, nonatomic) OKPaneCapItemMenu *filterMenuPaneCapItem; // @synthesize filterMenuPaneCapItem;
 @property(retain, nonatomic) NSView *headerView; // @synthesize headerView;
+- (double)rightDraggableExclusionMargin;
 - (id)localModuleActions;
 - (void)refreshFilterMenu;
 - (id)filterPulldownMenu;

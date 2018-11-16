@@ -48,10 +48,14 @@
         unsigned int shouldHandleDraggingUpdated:1;
         unsigned int clickAndHoldPerformed:1;
         unsigned int clickAndHoldPerformedCalled:1;
-        unsigned int RESERVED:21;
+        unsigned int pressAndHoldSupported:1;
+        unsigned int RESERVED:20;
     } _edFlags;
+    BOOL _eventDispatchEnabled;
+    BOOL _draggingEnteredCanceled;
 }
 
+@property(nonatomic) BOOL eventDispatchEnabled; // @synthesize eventDispatchEnabled=_eventDispatchEnabled;
 - (id)initialPartArray;
 - (id)currentPartArray;
 - (struct CGPoint)currentPoint;
@@ -148,6 +152,7 @@
 - (void)_startWaitingForMouseDown;
 - (void)_cancelClickAndHold;
 - (void)_clearWaitingForMouseDown;
+- (void)setPressAndHoldSupported:(BOOL)arg1;
 - (id)eventDescriptionForIdentifier:(id)arg1;
 - (id)_handlerForEventDescription:(id)arg1;
 - (id)_findEventDescription:(id)arg1 withAction:(SEL)arg2;

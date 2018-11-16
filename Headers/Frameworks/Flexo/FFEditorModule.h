@@ -38,6 +38,7 @@
 - (unsigned long long)indexOfItem:(id)arg1;
 - (void)gotoNextRootItem:(id)arg1;
 - (void)gotoPreviousRootItem:(id)arg1;
+- (void)notifiyHistoryChanged;
 - (void)validateHistory:(id)arg1;
 - (void)_projectChanged:(id)arg1;
 - (BOOL)canNavigateToRootItem:(BOOL)arg1;

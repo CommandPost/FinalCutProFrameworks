@@ -6,16 +6,18 @@
 
 #import <Flexo/FFDestRenderer.h>
 
-@class FFAnchoredObject, NSString;
+@class FFAnchoredObject, FFAsset, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFDestAnalyzerController : FFDestRenderer
 {
     FFAnchoredObject *_anchoredObject;
+    FFAsset *_asset;
     NSString *_dataFilePath;
 }
 
 @property(readonly, nonatomic) NSString *dataFilePath; // @synthesize dataFilePath=_dataFilePath;
+@property(readonly, nonatomic) FFAsset *asset; // @synthesize asset=_asset;
 @property(readonly, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObject;
 - (int)createDataFiles;
 - (void)dealloc;

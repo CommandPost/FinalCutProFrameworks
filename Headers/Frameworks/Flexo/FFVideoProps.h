@@ -27,6 +27,7 @@
     int _paspV;
     struct CGRect _cachedImageSpaceBounds;
     BOOL _frameRateUndefined;
+    CDStruct_bdcb2b0d _cachedObjectMD5;
 }
 
 + (unsigned int)temporalFieldForTime:(CDStruct_1b6d18a9)arg1 withVideoProps:(id)arg2;
@@ -37,6 +38,8 @@
 + (id)newPropsFromCType:(unsigned int)arg1 dimensions:(CDStruct_79c71658)arg2 extensionsDict:(id)arg3 frameDuration:(CDStruct_1b6d18a9)arg4 anamorphicHint:(BOOL)arg5 ambiguous:(char *)arg6;
 + (id)newPropsFromVideoFormatDescription:(struct opaqueCMFormatDescription *)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 anamorphicHint:(BOOL)arg3 isRotated:(BOOL)arg4 ambiguous:(char *)arg5;
 + (id)newPropsFromVideoFormat:(id)arg1;
++ (CDStruct_1b6d18a9)sampleDurationFromFrameDuration:(CDStruct_1b6d18a9)arg1 fieldOrder:(int)arg2;
++ (CDStruct_1b6d18a9)frameDurationFromSampleDuration:(CDStruct_1b6d18a9)arg1 fieldOrder:(int)arg2;
 + (void)initialize;
 + (void)releaseSharedInstance;
 + (Class)classForKeyedUnarchiver;
@@ -68,6 +71,8 @@
 + (id)pixelTransformToHalfWidth;
 + (id)pixelTransformIdentity;
 - (id).cxx_construct;
+- (CDStruct_bdcb2b0d)vidPropsMD5;
+- (BOOL)canCacheMD5;
 - (id)bestSupportedFormatForEditing;
 - (BOOL)_heightCloserTo720Than1080:(float)arg1;
 - (BOOL)supportedForEditing;

@@ -10,6 +10,7 @@
 {
 }
 
++ (id)setting;
 + (id)defaultName;
 - (BOOL)requiresTargetDestinationURL;
 - (id)iconTitle;
@@ -17,9 +18,10 @@
 - (id)largeImage;
 - (id)image;
 - (BOOL)requiresVideo;
+- (BOOL)forCurrentFrameOnly;
+- (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
-- (BOOL)forCurrentFrameOnly;
 
 @end
 

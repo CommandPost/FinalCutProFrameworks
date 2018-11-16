@@ -26,6 +26,7 @@
 + (id)viewSets;
 + (void)setViewSets:(id)arg1;
 + (id)defaultViewSets;
++ (id)generalMetadataKeys;
 + (id)externalViewSets;
 + (id)viewSetFromDict:(id)arg1;
 + (void)releaseSharedInstance;

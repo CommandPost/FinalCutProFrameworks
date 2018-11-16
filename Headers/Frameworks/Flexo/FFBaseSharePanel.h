@@ -11,7 +11,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSTokenFieldDelegate.h"
 
-@class CALayer, CKBatch, CKSource, FFShareDestination, FFShareDestinationController, LKButton, NSArray, NSDictionary, NSImage, NSImageView, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTrackingArea, NSURL, NSView;
+@class CALayer, CKBatch, CKSource, FFShareDestination, FFShareDestinationController, LKButton, NSArray, NSColor, NSDictionary, NSImage, NSImageView, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTrackingArea, NSURL, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFBaseSharePanel : NSWindowController <NSOpenSavePanelDelegate, NSTextFieldDelegate, NSTokenFieldDelegate, FFAutoexpandingTextFieldDelegate>
@@ -44,12 +44,15 @@ __attribute__((visibility("hidden")))
     NSView *_infoView;
     NSDictionary *_metadataFields;
     NSSet *_requiredMetadataKeys;
+    NSImage *_previewImage;
     NSMutableSet *_validFileNames;
     NSArray *_errors;
 }
 
 + (id)keyPathsForValuesAffectingCanSelectPrevious;
 + (id)keyPathsForValuesAffectingCanSelectNext;
++ (id)keyPathsForValuesAffectingErrorDescriptionColor;
++ (id)keyPathsForValuesAffectingErrorIcon;
 + (id)keyPathsForValuesAffectingErrorDescription;
 + (id)keyPathsForValuesAffectingHasErrors;
 + (id)keyPathsForValuesAffectingBatch;
@@ -99,6 +102,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)exportSelection;
 - (struct CGRect)previewFrame;
 - (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)doSubmitAnimation:(id)arg1 toDestination:(struct CGRect)arg2;
+- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (id)newPreviewImageRep;
 - (void)closeWithCode:(long long)arg1;
 - (BOOL)isSheet;
 - (void)beginSheetModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -114,9 +120,11 @@ __attribute__((visibility("hidden")))
 - (void)showUserAgreementPanelForDestination:(id)arg1 contextInfo:(id)arg2;
 - (void)showPanelsWithContextInfo:(id)arg1;
 - (void)ok:(id)arg1;
+@property(readonly, nonatomic) NSColor *errorDescriptionColor;
 @property(readonly, nonatomic) NSString *errorDescription;
 @property(readonly, nonatomic) NSImage *errorIcon;
 @property(readonly, nonatomic) BOOL hasErrors;
+- (BOOL)hasUserVisibleMajorError;
 - (id)userVisibleErrors;
 @property(readonly, nonatomic) BOOL canSelectPrevious;
 @property(readonly, nonatomic) BOOL canSelectNext;

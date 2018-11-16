@@ -10,6 +10,7 @@
 {
 }
 
++ (id)setting;
 + (id)defaultName;
 - (id)iconTitle;
 - (long long)iconIndex;

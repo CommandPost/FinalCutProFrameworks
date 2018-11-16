@@ -17,9 +17,11 @@
     unsigned long long _toolPickerGlyph;
     NSString *_label;
     NSString *_toolTip;
+    NSString *_messageTracerLabel;
 }
 
-+ (id)SegmentObjectWithToolID:(struct PCUUID)arg1 action:(SEL)arg2 mode:(long long)arg3 type:(long long)arg4 toolPickerGlyph:(unsigned long long)arg5 label:(id)arg6 toolTip:(id)arg7;
++ (id)SegmentObjectWithToolID:(struct PCUUID)arg1 action:(SEL)arg2 mode:(long long)arg3 type:(long long)arg4 toolPickerGlyph:(unsigned long long)arg5 label:(id)arg6 toolTip:(id)arg7 messageTracerLabel:(id)arg8;
+@property(readonly, nonatomic) NSString *messageTracerLabel; // @synthesize messageTracerLabel=_messageTracerLabel;
 @property(readonly, nonatomic) NSString *toolTip; // @synthesize toolTip=_toolTip;
 @property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property(readonly, nonatomic) unsigned long long toolPickerGlyph; // @synthesize toolPickerGlyph=_toolPickerGlyph;

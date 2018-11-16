@@ -11,9 +11,12 @@
 @interface PEDocument : FFLibraryDocument
 {
     FFAnchoredSequence *_activeSequence;
+    unsigned int _locationsAlertCount;
+    double _locationsAlertTime;
 }
 
 + (void)failureToCloseUndoScope:(id)arg1;
++ (void)checkAndRepairLocations;
 + (void)stopBackgroundTasks:(id)arg1 forReason:(int)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 + (void)cancelTasks:(id)arg1 forReason:(int)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (id)cancelableTasksForDocument:(id)arg1 error:(id *)arg2;
@@ -27,11 +30,15 @@
 + (Class)documentModuleClass;
 + (id)defaultDocumentName;
 + (id)defaultFileExtension;
++ (void)initialize;
+@property(nonatomic) unsigned int locationsAlertCount; // @synthesize locationsAlertCount=_locationsAlertCount;
+@property(nonatomic) double locationsAlertTime; // @synthesize locationsAlertTime=_locationsAlertTime;
 @property(retain, nonatomic) FFAnchoredSequence *activeSequence; // @synthesize activeSequence=_activeSequence;
 - (void)printDocument:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)saveDocumentAs:(id)arg1;
 - (void)revertDocumentToSaved:(id)arg1;
+- (void)shutDownDueToCorruptDatabase:(id)arg1 exception:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)commitCatalogFailed:(id)arg1;
 - (id)alertForCommitFailure:(id)arg1;
@@ -40,6 +47,9 @@
 - (id)makeDefaultEvent:(id *)arg1;
 - (void)makeSequenceActive:(id)arg1;
 - (void)canCloseDocumentWithDelegate:(id)arg1 shouldCloseSelector:(SEL)arg2 contextInfo:(void *)arg3;
+- (void)saveDocumentAfterUpdate;
+- (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
+- (id)newRootObject:(id)arg1 type:(id)arg2;
 - (void)showWindows;
 - (void)makeWindowControllers;
 - (id)windowForSheet;

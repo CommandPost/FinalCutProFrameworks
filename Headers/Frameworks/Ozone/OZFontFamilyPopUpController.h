@@ -19,7 +19,7 @@
 
 + (void)initialize;
 + (void)rebuildImageCache:(double)arg1;
-+ (id)createImageForFontMenuItem:(id)arg1 size:(struct CGSize)arg2 backingScaleFactor:(double)arg3;
++ (id)newImageForFontMenuItem:(id)arg1 size:(struct CGSize)arg2 backingScaleFactor:(double)arg3;
 @property(retain, nonatomic) LKPopUpButton *popUpButton; // @synthesize popUpButton=_popUpButton;
 - (void)saveDefaultFont:(int)arg1;
 - (void)menu:(id)arg1 willHighlightItem:(id)arg2;

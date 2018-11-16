@@ -29,7 +29,9 @@
 + (id)displaySizesForFormat:(id)arg1;
 + (id)displaySizesInOrderForFormat:(id)arg1;
 + (id)displayRatesInOrder;
-+ (id)displayProgressiveRateForSampleDuration:(CDStruct_1b6d18a9)arg1;
++ (id)displayRateForSampleDuration:(CDStruct_1b6d18a9)arg1 fieldOrder:(int)arg2;
++ (id)_displayInterlacedRateForSampleDuration:(CDStruct_1b6d18a9)arg1;
++ (id)_displayProgressiveRateForSampleDuration:(CDStruct_1b6d18a9)arg1;
 + (id)displayProgressiveRatesInOrder;
 + (id)displayFormatsInOrder;
 + (void)addFormat:(id)arg1 withName:(id)arg2;

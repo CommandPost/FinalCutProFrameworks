@@ -33,6 +33,7 @@
 + (id)toolTip;
 + (id)toolbarFacetSelected;
 + (id)toolbarFacet;
++ (id)toolTipDescriptionDisabled;
 + (id)displayName;
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;

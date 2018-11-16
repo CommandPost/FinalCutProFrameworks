@@ -29,16 +29,24 @@ __attribute__((visibility("hidden")))
     BOOL _hasVideo;
     BOOL _isTrailer;
     BOOL _requiresLegacyUpgrade;
+    long long _editCount;
+    long long _effectCount;
+    long long _transitionCount;
     NSMutableDictionary *_thumbnailRequestsKeyedByQuality;
     NSMutableDictionary *_thumbnailReadyBlocksKeyedByQuality;
     double _audioSampleRate;
+    long long _audioChannelCount;
 }
 
 + (id)sequenceMDKeysToCache;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 + (void)initialize;
+@property long long audioChannelCount; // @synthesize audioChannelCount=_audioChannelCount;
 @property double audioSampleRate; // @synthesize audioSampleRate=_audioSampleRate;
+@property long long transitionCount; // @synthesize transitionCount=_transitionCount;
+@property long long effectCount; // @synthesize effectCount=_effectCount;
+@property long long editCount; // @synthesize editCount=_editCount;
 @property(nonatomic) BOOL requiresLegacyUpgrade; // @synthesize requiresLegacyUpgrade=_requiresLegacyUpgrade;
 @property(nonatomic) BOOL isTrailer; // @synthesize isTrailer=_isTrailer;
 @property(retain, nonatomic) NSMutableDictionary *thumbnailMD5sKeyedByQuality; // @synthesize thumbnailMD5sKeyedByQuality=_thumbnailMD5sKeyedByQuality;

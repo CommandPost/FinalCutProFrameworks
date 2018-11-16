@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)peaksDataForRequest:(id)arg1 synchronously:(BOOL)arg2 wasFinalQuality:(char *)arg3 waveformHandlePixels:(unsigned int)arg4;
 - (id)peaksDataForRequest:(id)arg1 synchronously:(BOOL)arg2 wasFinalQuality:(char *)arg3;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

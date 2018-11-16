@@ -6,12 +6,12 @@
 
 #import <Flexo/FFScheduleToken.h>
 
-@class FFStreamFigRequestedDecode;
+@class FFScheduleTokenVTDecode;
 
 __attribute__((visibility("hidden")))
 @interface FFStreamFigExternalToken : FFScheduleToken
 {
-    FFStreamFigRequestedDecode *_internalSchedRec;
+    FFScheduleTokenVTDecode *_internalSchedRec;
 }
 
 - (id)description;

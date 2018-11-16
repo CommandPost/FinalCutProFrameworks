@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     _Bool _consolidateMedia;
     _Bool _includeOptimizedMedia;
     _Bool _includeProxyMedia;
+    _Bool _leaveExternalMediaInPlace;
     NSURL *_consolidateMediaLocation;
 }
 
+@property(nonatomic) _Bool leaveExternalMediaInPlace; // @synthesize leaveExternalMediaInPlace=_leaveExternalMediaInPlace;
 @property(nonatomic) _Bool includeProxyMedia; // @synthesize includeProxyMedia=_includeProxyMedia;
 @property(nonatomic) _Bool includeOptimizedMedia; // @synthesize includeOptimizedMedia=_includeOptimizedMedia;
 @property(nonatomic) _Bool consolidateMedia; // @synthesize consolidateMedia=_consolidateMedia;

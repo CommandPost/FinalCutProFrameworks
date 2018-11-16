@@ -223,7 +223,6 @@
 - (void)computeVerticalTickMarks;
 - (unsigned int)numberOfTickMarks;
 - (unsigned int)linenShadowAssetAtSize:(struct CGSize)arg1;
-- (unsigned int)linenAsset:(struct CGPoint *)arg1;
 - (unsigned int)tangentAsset:(struct CGPoint *)arg1;
 - (unsigned int)keyframeAsset:(unsigned int)arg1 state:(unsigned int)arg2 index:(unsigned int)arg3 assetSize:(struct CGPoint *)arg4;
 - (id)curveColor:(unsigned int)arg1;

@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 
 + (id)findOneLargeAndCentralAmongFaces:(id)arg1;
 + (id)findLargestAmongFaces:(id)arg1;
-+ (id)faceDetectionInfoCollectionForAnchoredObject:(id)arg1;
++ (id)faceDetectionInfoCollectionForObject:(id)arg1;
 + (id)newInfoRetrievedFromFile:(id)arg1;
 @property int downsampleRate; // @synthesize downsampleRate;
 @property(readonly) int minNumFramesForAcceptance; // @synthesize minNumFramesForAcceptance;

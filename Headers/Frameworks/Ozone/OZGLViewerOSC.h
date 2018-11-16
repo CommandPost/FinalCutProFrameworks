@@ -41,6 +41,9 @@
     NSTrackingArea *_trackingArea;
 }
 
+@property(retain, nonatomic) NSMenu *objectContextMenu; // @synthesize objectContextMenu=_objectContextMenu;
+@property(retain, nonatomic) NSMenu *nonObjectContextMenu; // @synthesize nonObjectContextMenu=_nonObjectContextMenu;
+@property(nonatomic) BOOL isMouseDown; // @synthesize isMouseDown=_isMouseDown;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
@@ -202,7 +205,6 @@
 - (struct CGSize)minSize;
 - (id)hitControl;
 - (void)clearIsMouseDown;
-- (BOOL)isMouseDown;
 - (id)overlays;
 - (id)onScreenControls;
 - (struct CGRect)availableBounds;

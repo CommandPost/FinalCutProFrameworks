@@ -21,6 +21,7 @@
     OZViewerDelegate *_viewerDelegate;
 }
 
+@property __weak OZGLViewer *loadedOZGLViewer; // @synthesize loadedOZGLViewer=_loadedOZGLViewer;
 @property(retain) OZViewerDelegate *viewerDelegate; // @synthesize viewerDelegate=_viewerDelegate;
 @property BOOL isRebuilding; // @synthesize isRebuilding=_isRebuilding;
 - (id).cxx_construct;

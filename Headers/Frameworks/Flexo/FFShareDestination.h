@@ -25,6 +25,7 @@
     NSString *_uuid;
 }
 
++ (id)setting;
 + (id)defaultName;
 + (id)requiredMetatdataKeys;
 + (id)logoForDestinationType:(id)arg1;

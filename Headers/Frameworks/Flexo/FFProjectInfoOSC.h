@@ -6,26 +6,26 @@
 
 #import <Flexo/FFOSC.h>
 
-@class FFAnchoredSequence, LKTextField, NSProThemeImageView, NSView;
+@class FFAnchoredSequence, FFCPSClapperboardView, FFCPSShadowView, NSView;
 
 @interface FFProjectInfoOSC : FFOSC
 {
     FFAnchoredSequence *projectSequence;
     NSView *projectInfoView;
-    NSProThemeImageView *_projectIconView;
-    LKTextField *_projectNameField;
+    FFCPSClapperboardView *projectPosterView;
+    FFCPSShadowView *_shadowView;
 }
 
-@property(nonatomic) LKTextField *projectNameField; // @synthesize projectNameField=_projectNameField;
-@property(nonatomic) NSProThemeImageView *projectIconView; // @synthesize projectIconView=_projectIconView;
+@property(retain, nonatomic) FFCPSShadowView *shadowView; // @synthesize shadowView=_shadowView;
+@property(retain, nonatomic) FFCPSClapperboardView *projectPosterView; // @synthesize projectPosterView;
 @property(retain, nonatomic) NSView *projectInfoView; // @synthesize projectInfoView;
 @property(retain, nonatomic) FFAnchoredSequence *projectSequence; // @synthesize projectSequence;
 - (void)_projectChanged:(id)arg1;
 - (void)loadEventProject:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_updateProjectName;
+- (void)_updateProjectPoster;
+- (void)setPosterViewForEvent:(id)arg1;
 - (struct CGSize)minSize;
-- (void)setOverlayView:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

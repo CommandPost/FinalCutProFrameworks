@@ -10,7 +10,6 @@
 
 @class FFBackgroundTaskWithPauseCondition, NSCondition, NSLock, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface FFThumbnailGenerator : NSObject <FFBackgroundTaskTarget>
 {
     int _outstandingThumbRequests;
@@ -35,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_cancelBGTask;
 - (void)_startBackgroundTask;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 - (void)thumbImageReady:(id)arg1;
 

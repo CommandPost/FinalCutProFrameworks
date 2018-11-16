@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     FFSVContext *_context;
     PCMatrix44Double *_downstreamPT;
     int _maxPrioritySeen;
+    _Bool _enableNoMotionCompensation;
     struct CGRect _expectedROI;
     CDStruct_1b6d18a9 _t1;
     CDStruct_1b6d18a9 _t2;
@@ -41,7 +42,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedCache;
-+ (id)newDeinterlaceTokenBySchedulingOrCacheLookup:(id)arg1 inStream:(id)arg2 key:(CDStruct_bdcb2b0d)arg3 time:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 context:(id)arg6 downstreamPT:(id)arg7 isScheduling:(BOOL)arg8 roiHint:(const struct CGRect *)arg9;
++ (id)newDeinterlaceTokenBySchedulingOrCacheLookup:(id)arg1 inStream:(id)arg2 key:(CDStruct_bdcb2b0d)arg3 time:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 context:(id)arg6 downstreamPT:(id)arg7 isScheduling:(BOOL)arg8 roiHint:(const struct CGRect *)arg9 enableNoMotionCompensation:(_Bool)arg10;
 + (void)initialize;
 - (id).cxx_construct;
 - (_Bool)hiPriority;
@@ -64,7 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)addEntriesFromDictionary:(id)arg1;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 inputStream:(id)arg2 key:(CDStruct_bdcb2b0d)arg3 time:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 context:(id)arg6 downstreamPT:(id)arg7;
+- (id)initWithStream:(id)arg1 inputStream:(id)arg2 key:(CDStruct_bdcb2b0d)arg3 time:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 context:(id)arg6 downstreamPT:(id)arg7 enableNoMotionCompensation:(_Bool)arg8;
 
 @end
 

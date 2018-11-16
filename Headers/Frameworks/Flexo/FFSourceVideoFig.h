@@ -11,7 +11,7 @@
 #import "FFSourceVideoOverrideAlphaProtocol.h"
 #import "FFSourceVideoOverrideFieldDominance.h"
 
-@class FFVideoProps, NSCondition, NSMutableArray, NSObject<OS_dispatch_queue>;
+@class FFLogProcessingInfo, FFVideoProps, NSCondition, NSMutableArray, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
 @interface FFSourceVideoFig : FFSourceVideo <FFSourceVideoOverrideAlphaProtocol, FFSourceVideoInvertAlphaProtocol, FFSourceVideoOverrideFieldDominance, FFSourceVideoLogProcessingProtocol>
@@ -45,8 +45,7 @@ __attribute__((visibility("hidden")))
     NSCondition *_lockForImageInfoQualityCache;
     struct __CFDictionary *_imageInfoForQualityCache;
     struct CGRect _opaqueBounds;
-    int _logEncodingType;
-    int _logProcessingMode;
+    FFLogProcessingInfo *_logProcessingInfo;
     _Bool _reportedNonStandardNCLC;
     _Bool _reportedAwfulFigNCLCGuess;
     int _nativeAlphaType;
@@ -74,14 +73,14 @@ __attribute__((visibility("hidden")))
 - (void)lookupCachedPixelSpaceBoundsForQuality:(int)arg1 lineSel:(int)arg2 retPixelSpaceBounds:(struct CGRect *)arg3;
 - (id)lookupCachedPixelFormatForQuality:(int)arg1;
 - (id)lookupCachedPTForQuality:(int)arg1 lineSel:(int)arg2;
+- (id)_lookupCachedPTForQualityAlreadyLocked:(int)arg1 lineSel:(int)arg2;
 - (id)_getCachedInfo:(int)arg1;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)_newSubRangeMD5InfoForSampleDurationFromCache:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)_newSubRangeMD5InfoForSampleDurationUncached:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (void)setLogProcessingMode:(int)arg1 forLogEncodingType:(int)arg2;
-- (int)logProcessingMode;
-- (int)logEncodingType;
+- (void)setLogProcessingInfo:(id)arg1;
+- (id)logProcessingInfo;
 - (int)getNativeTaggedDominance;
 - (_Bool)invertAlpha;
 - (void)setInvertAlpha:(_Bool)arg1;

@@ -108,7 +108,7 @@
 - (void)applyKenBurnsToClip:(id)arg1 edit:(id)arg2 component:(id)arg3 sequence:(id)arg4;
 - (BOOL)applySBSAsCompositeEffectToAnchorItem:(id)arg1 slideDuration:(double)arg2 seq:(id)arg3 sbsType:(int)arg4;
 - (BOOL)applySBSToAnchorItem:(id)arg1 parentItem:(id)arg2 atTimeRange:(CDStruct_e83c9415)arg3 anchorParentOffset:(CDStruct_1b6d18a9)arg4 transitionDuration:(CDStruct_1b6d18a9)arg5 seq:(id)arg6 sbsType:(int)arg7;
-- (void)applyKeyerToClip:(id)arg1 sequence:(id)arg2 keyerProperties:(id)arg3 placementMode:(int)arg4;
+- (void)applyKeyerToClip:(id)arg1 sequence:(id)arg2 keyerProperties:(id)arg3 placementMode:(int)arg4 originalAspectRatio:(float)arg5;
 - (struct CGPoint)pointForVector:(id)arg1 clipBounds:(struct CGRect)arg2 seqBounds:(struct CGRect)arg3;
 - (void)applyPIPAsCompositeEffectToClip:(id)arg1 vector:(id)arg2 cutawayProperties:(id)arg3 sequence:(id)arg4;
 - (void)applyPIPToClip:(id)arg1 vector:(id)arg2 cutawayProperties:(id)arg3 sequence:(id)arg4;
@@ -126,6 +126,7 @@
 - (CDStruct_1b6d18a9)secondsToFigTimeForSequenceVideo:(float)arg1 sequence:(id)arg2;
 - (void)retimeClip:(id)arg1 toRate:(double)arg2;
 - (void)processVideoColor:(id)arg1 forClip:(id)arg2;
+- (void)applyCreationDate:(id)arg1 toClip:(id)arg2;
 - (void)processAudioProperties:(id)arg1 forClip:(id)arg2 frameDuration:(CDStruct_1b6d18a9)arg3;
 - (void)applyNoiseReductionFrom:(id)arg1 toClip:(id)arg2;
 - (void)applyEQFrom:(id)arg1 toClip:(id)arg2;
@@ -137,6 +138,7 @@
 - (void)applyParametersToAudioEffect:(id)arg1 forEffectName:(id)arg2;
 - (void)importAlliMovieData;
 - (void)addiMovieDataAtPath:(id)arg1 toMediaItem:(id)arg2;
+- (void)addDateProperties:(id)arg1 toMediaObject:(id)arg2 forMediaName:(id)arg3;
 - (void)addColorProperties:(id)arg1 toMediaObject:(id)arg2 forMediaName:(id)arg3;
 - (void)addAudioStyleProperties:(id)arg1 toMediaObject:(id)arg2 forMediaName:(id)arg3;
 - (void)addAudioProperties:(id)arg1 toMediaObject:(id)arg2 forMediaName:(id)arg3;

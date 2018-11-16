@@ -6,10 +6,13 @@
 
 #import <Flexo/FFModelObject.h>
 
+#import "FFInspectableObject.h"
+#import "FFInspectorTabDataSource.h"
+
 @class FFLibrary, FFMediaEventProject, FFModelDocument, NSDictionary, NSMutableSet, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFLibraryItem : FFModelObject
+@interface FFLibraryItem : FFModelObject <FFInspectableObject, FFInspectorTabDataSource>
 {
     FFLibraryItem *_parentItem;
     NSString *_relativePath;
@@ -26,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)owningTrashLibrary;
 - (BOOL)isTemporary;
 - (BOOL)isInTrash;
+- (BOOL)removeFiles:(id *)arg1;
 - (id)defaultLibraryItem;
 - (BOOL)hasEventRecords;
 - (id)allRecords;
@@ -33,6 +37,8 @@ __attribute__((visibility("hidden")))
 - (id)allSequenceRecords;
 - (id)_findItems:(CDUnknownBlockType)arg1;
 - (BOOL)actionMoveLibraryItemToItem:(id)arg1 actionName:(id)arg2 error:(id *)arg3;
+- (void)addMediaIdentifiesFromLibraryToSet:(id)arg1 clipsToExcludeSet:(id)arg2;
+- (BOOL)referencesExistForMediaIdentifier:(id)arg1 excludingTheseClips:(id)arg2 projectsInExcludeSet:(id)arg3 targetSeqRecsInExcludeSet:(id)arg4;
 - (BOOL)referencesExistForMediaIdentifier:(id)arg1 excludingTheseClips:(id)arg2;
 - (BOOL)referencesExistForMediaIdentifier:(id)arg1;
 - (BOOL)clipReferencesExistToLibraryItems:(id)arg1;
@@ -40,6 +46,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FFMediaEventProject *projectIfLoaded;
 @property(readonly, nonatomic) FFMediaEventProject *project;
 - (void)sync;
+- (void)didSetDocumentURL:(id)arg1;
+- (void)willSetDocumentURL:(id)arg1;
+- (void)documentDidClose;
 - (void)documentWillClose;
 - (id)cachedURLAtClose;
 - (id)URL;
@@ -60,6 +69,11 @@ __attribute__((visibility("hidden")))
 - (id)uniqueRelativePath:(id)arg1;
 - (id)uniqueDisplayName;
 @property(readonly, nonatomic) NSString *displayName;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
+- (id)inspectorTabClassNames;
+- (id)inspectorIdentifier;
+- (id)inspectorClassName;
 - (id)identifierForProxyEvent;
 - (void)setIdentifierForProxyEvent:(id)arg1;
 @property(copy, nonatomic) NSString *relativePath;

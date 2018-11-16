@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_hasWriteLock;
 - (void)_writeUnlock;
 - (void)_writeLock;
+- (BOOL)writerIsWaiting;
 - (void)_readUnlock;
 - (void)_readLock;
 - (id)mdTargetForKey:(id)arg1;

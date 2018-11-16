@@ -6,14 +6,14 @@
 
 #import "NSObject.h"
 
-@class NSData, NSFileHandle, NSLock, NSMutableIndexSet;
+@class NSLock, NSMutableData, NSMutableIndexSet;
 
 __attribute__((visibility("hidden")))
 @interface FFSegmentStoreFile : NSObject
 {
     NSLock *_lock;
-    NSFileHandle *_fileHandle;
-    NSData *_headerData;
+    int _fileDescriptor;
+    NSMutableData *_headerData;
     long long _startFrame;
     unsigned long long _fileSize;
     struct _SegmentStoreFileHeader *_fileHeader;
@@ -28,7 +28,8 @@ __attribute__((visibility("hidden")))
 - (id)newFrameData:(long long)arg1 isSecondField:(_Bool)arg2 pixelTransformIndex:(unsigned long long *)arg3 sampleObj:(id)arg4;
 - (void)ensureFlushedToDisk;
 - (void)_flushFramesNeedingWrite;
-- (id)initWithPath:(id)arg1 count:(unsigned long long)arg2 startFrame:(long long)arg3;
+- (int)fileDescriptor;
+- (id)initWithPath:(id)arg1 count:(unsigned long long)arg2 startFrame:(long long)arg3 createIfMissing:(BOOL)arg4;
 
 @end
 

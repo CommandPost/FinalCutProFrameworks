@@ -4,12 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import "NSOperation.h"
 
 @class FFDirectory, NSArray, NSDictionary, NSError, NSMapTable, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFMediaRepSyncRequest : NSObject
+@interface FFMediaRepSyncRequest : NSOperation
 {
     NSMapTable *_mediaReps;
     FFDirectory *_mediaDir;
@@ -19,7 +19,8 @@ __attribute__((visibility("hidden")))
     NSError *_error;
 }
 
-- (BOOL)execute:(id *)arg1;
+- (BOOL)hasChanges;
+- (void)main;
 - (id)_syncMediaRepsByFileName:(id)arg1 URLs:(id)arg2 error:(id *)arg3;
 - (id)_readMediaURLs:(id)arg1 error:(id *)arg2;
 - (id)keysInserted;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)mediaRepForKey:(id)arg1;
 - (id)mediaDirectory;
 - (void)setError:(id)arg1 force:(BOOL)arg2;
+- (id)error;
 - (void)dealloc;
 - (id)initWithMediaReps:(id)arg1 directoryURL:(id)arg2;
 

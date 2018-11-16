@@ -8,12 +8,12 @@
 
 #import "FFModelLocking.h"
 
-@class NSCondition, NSString;
+@class NSCondition;
 
 @interface FFSharedLock : NSObject <FFModelLocking>
 {
     NSCondition *_guard;
-    NSString *_identifier;
+    unsigned long long _holdsReadLockKey;
     struct __CFBag *_readers;
     struct FFThread *_writer;
     int _writeRequested;
@@ -24,6 +24,8 @@
 
 + (id)globalLock;
 + (void)initialize;
+- (BOOL)hasReadLockScope;
+- (BOOL)writerIsWaiting;
 - (BOOL)_hasWriteLock;
 - (void)_writeUnlock;
 - (void)_writeLock;

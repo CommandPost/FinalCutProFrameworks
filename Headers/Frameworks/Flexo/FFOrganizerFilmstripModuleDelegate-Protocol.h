@@ -6,13 +6,14 @@
 
 #import "FFEventsDetailModuleDelegate.h"
 
-@class FFAnchoredObject, FFAnchoredStack, FFAnchoredTimeMarker, FFContext, FFEditorModule, FFMarkerLayer, FFMediaEventProject, FFProject, FFSettingsModule, FigTimeRangeAndObject, LKMenu, LKPopOverWindow, NSArray, NSError, NSProView, NSSet, OKPaneCapItem;
+@class FFAnchoredObject, FFAnchoredStack, FFAnchoredTimeMarker, FFContext, FFEditorModule, FFMarkerLayer, FFMediaEventProject, FFMediaSidebarModule, FFProject, FFSettingsModule, FigTimeRangeAndObject, LKMenu, LKPopOverWindow, NSArray, NSError, NSProView, NSSet, OKPaneCapItem;
 
 @protocol FFOrganizerFilmstripModuleDelegate <FFEventsDetailModuleDelegate>
 
 @optional
 - (void)clipAttributesPopOverWindowDidResign:(LKPopOverWindow *)arg1;
 - (NSProView *)customClipAttributesPopOverView;
+- (FFMediaSidebarModule *)sidebarModule;
 - (FFMediaEventProject *)defaultEventForNewProject;
 - (NSProView *)clipActionOptionsView;
 - (FFProject *)project;

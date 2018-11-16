@@ -4,60 +4,69 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <Flexo/FFXMLBase.h>
 
-@class FFAnchoredSequence, FFLibrary, FFMediaEventProject, FFProject, NSMapTable, NSMutableArray, NSURL, NSXMLDocument;
+@class FFLibrary, NSDictionary, NSMapTable, NSMutableArray, NSMutableSet, NSURL, NSXMLDocument;
 
 __attribute__((visibility("hidden")))
-@interface FFXMLImporter : NSObject
+@interface FFXMLImporter : FFXMLBase
 {
     NSXMLDocument *_xmlDoc;
     NSURL *_baseURL;
     unsigned int _version;
-    FFProject *_project;
-    FFMediaEventProject *_eventProject;
-    FFAnchoredSequence *_sequence;
     FFLibrary *_library;
     NSMapTable *_resByResID;
     NSMutableArray *_errors;
     NSMutableArray *_warnings;
+    NSMutableSet *_warnedParamElements;
     NSMapTable *_audioOnlyMap;
     unsigned long long _audioOnlyCheck;
     NSMapTable *_textStyleMap;
     BOOL _isiMovieUpgrade;
     NSMutableArray *_importOptionsStack;
-    NSMapTable *_newMediaRefEventMap;
+    NSMutableArray *_importContextStack;
+    NSMapTable *_newMediaEventMap;
+    NSMapTable *_xmlUIDMap;
+    NSMapTable *_resourceUIDMap;
+    NSMapTable *_projectRefMap;
+    NSMapTable *_importedKeywordsMap;
+    NSDictionary *_customMetadataRepresentationDict;
 }
 
 - (void)dealloc;
-- (id)initWithURL:(id)arg1 error:(id *)arg2;
+- (id)initWithURL:(id)arg1 taskDelegate:(id)arg2 error:(id *)arg3;
 - (id)prepareDocument:(id)arg1 error:(id *)arg2;
 - (id)import:(id)arg1 error:(id *)arg2;
 - (void)validateCopyAssetsLocation;
-- (id)importEventProject:(struct NSXMLElement *)arg1 error:(id *)arg2;
+- (id)importPreV1_4Project:(id)arg1 error:(id *)arg2;
+- (id)importProjects:(id)arg1 error:(id *)arg2;
+- (id)insertNewEventProject:(id)arg1 error:(id *)arg2;
+- (BOOL)importResources:(id)arg1 error:(id *)arg2;
+- (BOOL)importSequenceXMLElement:(id)arg1 intoSequenceProject:(id)arg2 error:(id *)arg3;
+- (BOOL)importEventXMLElement:(id)arg1 intoEventProject:(id)arg2 error:(id *)arg3;
+- (id)createSequenceProject:(id)arg1 name:(id)arg2 error:(id *)arg3;
+- (id)eventProjectForXMLUID:(id)arg1;
+- (id)createEventProject:(id)arg1 forXMLUID:(id)arg2 error:(id *)arg3;
+- (void)_closeAndDeleteDocumentFiles:(id)arg1;
 - (id)smartCollectionFilter:(id)arg1;
 - (id)newMediaEventSmartCollection:(id)arg1;
 - (void)addMediaEventObject:(id)arg1 toFolder:(id)arg2;
 - (BOOL)isSupportedMediaEventObject:(id)arg1;
 - (id)newEventStillClipOwnedClipsItem:(id)arg1;
 - (BOOL)isEventStillClip:(id)arg1;
+- (BOOL)addSequenceProject:(id)arg1 error:(id *)arg2;
 - (id)newAuditionOwnedClipsItem:(id)arg1;
 - (id)newRefOwnedClipsItem:(id)arg1;
 - (id)newClipOwnedClipsItem:(id)arg1;
 - (id)newMulticamOwnedClipsItem:(id)arg1;
-- (id)importSequenceProject:(struct NSXMLElement *)arg1 error:(id *)arg2;
-- (void)closeAndDeleteDocumentFiles:(id)arg1;
-- (id)insertNewProject:(id)arg1 isEvent:(BOOL)arg2 error:(id *)arg3;
-- (id)bindExternalEvent:(id)arg1 defaultEventID:(id)arg2 project:(id)arg3 error:(id *)arg4;
-- (id)createEventDocument:(id)arg1 name:(id)arg2 error:(id *)arg3;
 - (id)copyAssetRef:(id)arg1 error:(id *)arg2;
 - (id)copyClipRef:(id)arg1 type:(id)arg2 error:(id *)arg3;
-- (id)registerProjectRef:(id)arg1;
 - (id)resolveEvent:(id)arg1 create:(BOOL)arg2 error:(id *)arg3;
 - (id)newAssetRefFromResource:(id)arg1 eventProject:(id)arg2 error:(id *)arg3;
 - (void)addSequenceKeywords:(id)arg1 forSequence:(id)arg2;
 - (void)addMetadata:(id)arg1 toObject:(id)arg2;
 - (id)metadataValueForElement:(id)arg1 andKey:(id)arg2;
+- (id)getMetadataValueWithCustomRepresentationForKey:(id)arg1 FromElement:(id)arg2;
 - (BOOL)allowEditing:(id)arg1;
 - (id)newOfflineAssetRef:(id)arg1 eventProject:(id)arg2 error:(id *)arg3;
 - (int)importAssetManageFileTypeWithEventProject:(id)arg1;
@@ -68,8 +77,9 @@ __attribute__((visibility("hidden")))
 - (void)addTimeMapNode:(id)arg1 toObject:(id)arg2;
 - (void)addMarkerNode:(id)arg1 toObject:(id)arg2;
 - (void)addRatingNode:(id)arg1 toObject:(id)arg2;
-- (void)addShotMarkerNode:(id)arg1 toObject:(id)arg2;
+- (void)addAnalysisMarkerNode:(id)arg1 toObject:(id)arg2;
 - (void)addKeywordNode:(id)arg1 toObject:(id)arg2;
+- (void)_addKeywords:(id)arg1 withRange:(CDStruct_e83c9415)arg2 note:(id)arg3 eventProject:(id)arg4 toObject:(id)arg5;
 - (void)addNoteNode:(id)arg1 toObject:(id)arg2;
 - (void)addMuteNode:(id)arg1 toObject:(id)arg2;
 - (void)addFilterNode:(id)arg1 toObject:(id)arg2;
@@ -86,7 +96,6 @@ __attribute__((visibility("hidden")))
 - (void)addRefClipNode:(id)arg1 toObject:(id)arg2;
 - (void)addMulticamClipNode:(id)arg1 toObject:(id)arg2;
 - (void)addAudioNode:(id)arg1 toObject:(id)arg2;
-- (void)_promoteStillPSDClipToLayeredPSDClip:(id)arg1 parent:(id)arg2 node:(id)arg3;
 - (void)addVideoNode:(id)arg1 toObject:(id)arg2;
 - (id)addAVNode:(id)arg1 toObject:(id)arg2 type:(id)arg3;
 - (void)addGapNode:(id)arg1 toObject:(id)arg2;
@@ -102,23 +111,26 @@ __attribute__((visibility("hidden")))
 - (id)newEffectComponentFromNode:(id)arg1;
 - (id)newMediaComponentFromNode:(id)arg1 sourceKey:(id)arg2 sourceType:(id)arg3;
 - (void)updateDisplayName:(id)arg1 node:(id)arg2;
-- (void)setOrientation:(id)arg1 toObject:(id)arg2;
+- (void)setVideoReservedData:(id)arg1 toObject:(id)arg2;
 - (void)setAVOverrideState:(id)arg1 toObject:(id)arg2;
 - (void)addAngleData:(id)arg1 toObject:(id)arg2;
 - (void)addClipAudioLayout:(id)arg1 toObject:(id)arg2;
 - (void)_addAudioSourceNodes:(id)arg1 toObject:(id)arg2 angleID:(id)arg3;
+- (void)addRetiming:(id)arg1 toObject:(id)arg2;
 - (void)addIntrinsicChannels:(id)arg1 toObject:(id)arg2;
-- (void)addAudioPanner:(id)arg1 toObject:(id)arg2;
-- (void)addMatchEQ:(id)arg1 toObject:(id)arg2;
-- (void)addEQ:(id)arg1 toObject:(id)arg2;
-- (void)addHumReduction:(id)arg1 toObject:(id)arg2;
-- (void)addNoiseReduction:(id)arg1 toObject:(id)arg2;
-- (void)addLoudness:(id)arg1 toObject:(id)arg2;
-- (void)addRollingShutterAdjustment:(id)arg1 toObject:(id)arg2;
-- (void)addStabilizationAdjustment:(id)arg1 toObject:(id)arg2;
-- (void)addBlendAdjustment:(id)arg1 toObject:(id)arg2;
-- (void)addCropInfo:(id)arg1 toObject:(id)arg2;
-- (void)addAdjustment:(id)arg1 type:(CDUnknownFunctionPointerType)arg2 toObject:(id)arg3;
+- (void)addAudioIntrinsicChannels:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addVideoIntrinsicChannels:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addAudioPanner:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addMatchEQ:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addEQ:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addHumReduction:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addNoiseReduction:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addLoudness:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addRollingShutterAdjustment:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addStabilizationAdjustment:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addBlendAdjustment:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addCropInfo:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addAdjustment:(id)arg1 type:(CDUnknownFunctionPointerType)arg2 effectStack:(id)arg3 toObject:(id)arg4;
 - (void)addAttributes:(id)arg1 map:(id)arg2 toObject:(id)arg3;
 - (void)finishedLoadingParametersForEffect:(id)arg1;
 - (void)prepareEffectForParamElements:(id)arg1 effect:(id)arg2;
@@ -129,7 +141,7 @@ __attribute__((visibility("hidden")))
 - (void)addParameterNode:(id)arg1 channel:(id)arg2 toObject:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)addFadeOut:(id)arg1 channel:(id)arg2 toObject:(id)arg3;
 - (void)addFadeIn:(id)arg1 channel:(id)arg2 toObject:(id)arg3;
-- (void)addColorInfo:(id)arg1 toObject:(id)arg2;
+- (void)addColorInfo:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
 - (void)addRoles:(id)arg1 toObject:(id)arg2;
 - (void)addAttributes:(id)arg1 toObject:(id)arg2;
 - (void)addAudioRouting:(id)arg1 toObject:(id)arg2;
@@ -140,17 +152,35 @@ __attribute__((visibility("hidden")))
 - (BOOL)allowAdjustmentsForObject:(id)arg1;
 - (id)newParameterNode:(id)arg1;
 - (void)setChannel:(id)arg1 stringValue:(id)arg2;
-- (void)setChannel:(id)arg1 stringValue:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3 isRadians:(BOOL)arg4;
-- (BOOL)processNewMediaRefEventMap:(id *)arg1;
-- (void)addNewMediaRef:(id)arg1 forEvent:(id)arg2;
-- (void)makeDefaultClipsForNewMedia:(id)arg1;
+- (void)setChannel:(id)arg1 stringValue:(id)arg2 interpolation:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4 isRadians:(BOOL)arg5;
+- (BOOL)importPostProcess:(id *)arg1;
+- (BOOL)processImportedKeywordsMap:(id *)arg1;
+- (BOOL)processNewMediaEventMap:(id *)arg1;
+- (void)addNewMedia:(id)arg1 forEvent:(id)arg2;
+- (void)makeDefaultClipsForNewMedia:(id)arg1 inEvent:(id)arg2;
+- (id)resourceElementForAttribute:(id)arg1 allowedElementTypes:(id)arg2;
+- (id)resourceElementForAttribute:(id)arg1 allowedElementType:(id)arg2;
 - (id)reservedDataForElement:(id)arg1;
+- (id)mappedUIDForResourceID:(id)arg1;
+- (void)setMappedUID:(id)arg1 forResourceID:(id)arg2;
+- (id)mappedUIDForXMLUID:(id)arg1;
+- (void)setMappedUID:(id)arg1 forXMLUID:(id)arg2;
+- (id)importContextSequence;
+- (id)importContextEvent;
+- (id)importContextProject;
+- (void)popImportContext;
+- (void)pushImportContextWithSequence:(id)arg1;
+- (void)pushImportContextWithProject:(id)arg1 event:(id)arg2 sequence:(id)arg3;
 - (id)currentImportOptions;
 - (void)popImportOptions;
-- (void)pushImportOptions:(id)arg1 isGlobalOptions:(BOOL)arg2;
+- (void)pushImportOptions:(id)arg1;
 - (void)initImportOptions;
+- (void)warnUnsupportedParamKeyframeInterpolation:(id)arg1;
+- (BOOL)cancelImport;
+@property(readonly, nonatomic) BOOL suppressWarnings;
 - (id)warnings;
 - (void)log:(id)arg1 warningOnly:(BOOL)arg2;
+- (void)log:(id)arg1 warningOnly:(BOOL)arg2 minVersion:(unsigned int)arg3;
 - (id)error:(id)arg1 node:(id)arg2 elementName:(id)arg3;
 - (id)error:(id)arg1 node:(id)arg2 attr:(id)arg3;
 - (id)error:(id)arg1 detail:(id)arg2;

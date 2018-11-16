@@ -45,6 +45,7 @@
 - (BOOL)allowedOperationForEdge:(id)arg1;
 - (void)setAllowedOperation:(BOOL)arg1 forEdge:(id)arg2;
 - (struct CGRect)rectForPart:(id)arg1;
+- (BOOL)partIsHidden:(id)arg1;
 - (void)setPart:(id)arg1 hidden:(BOOL)arg2;
 - (void)layoutSublayers;
 - (void)audioWaveFormProportionChanged;

@@ -14,10 +14,12 @@
     FFRenderProps *_renderProps;
 }
 
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 - (CDStruct_bdcb2b0d)onDiskMD5ForBaseMD5:(CDStruct_bdcb2b0d)arg1;
-- (void)updateSegmentInfo:(CDStruct_bdcb2b0d)arg1;
 - (id)storedFrameIndexes:(CDStruct_bdcb2b0d)arg1;
 - (void)hintDoneWritingForNow:(CDStruct_bdcb2b0d)arg1;
+- (void)hintDoneEnqueuingWritesForMD5:(CDStruct_bdcb2b0d)arg1;
 - (int)writeBuffer:(id)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 sampleNumber:(long long)arg3 cost:(double)arg4 mustWrite:(BOOL)arg5;
 - (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 segmentMD5:(CDStruct_bdcb2b0d)arg4 sampleNumber:(long long)arg5 cost:(double)arg6 mustWrite:(BOOL)arg7;
 - (id)newBufferAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2;

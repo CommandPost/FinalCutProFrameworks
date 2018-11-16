@@ -18,6 +18,7 @@
 - (void)setCornerRadius:(double)arg1;
 - (void)updateAppearanceType:(int)arg1 withMask:(int)arg2 split:(BOOL)arg3 sourceSplit:(BOOL)arg4;
 - (void)invalidate;
+- (id)hitTest:(struct CGPoint)arg1;
 - (id)init;
 
 @end

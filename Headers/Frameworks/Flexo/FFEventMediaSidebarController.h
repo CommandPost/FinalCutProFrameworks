@@ -10,6 +10,9 @@
 {
     BOOL _silenceSelectionChange;
     BOOL _appLaunchCompleted;
+    BOOL _showYears;
+    int _sortType;
+    int _sortDirection;
 }
 
 + (BOOL)deleteEvents:(id)arg1 error:(id *)arg2;
@@ -18,13 +21,13 @@
 + (id)projectForTargetInfo:(const CDStruct_4cb9d06e *)arg1;
 + (id)creationNodeForTargetInfo:(const CDStruct_4cb9d06e *)arg1 folder:(id *)arg2;
 + (id)eventMediaSidebarController;
+@property(nonatomic) int sortDirection; // @synthesize sortDirection=_sortDirection;
+@property(nonatomic) int sortType; // @synthesize sortType=_sortType;
+@property(nonatomic) BOOL showYears; // @synthesize showYears=_showYears;
 @property(nonatomic) BOOL appLaunchCompleted; // @synthesize appLaunchCompleted=_appLaunchCompleted;
 @property(nonatomic) BOOL silenceSelectionChange; // @synthesize silenceSelectionChange=_silenceSelectionChange;
-- (void)_handleDocumentRemoved:(id)arg1;
-- (void)_selectFirstEventInSomeOtherLibraryDocument:(id)arg1;
 - (id)nodeToSelectAfterDeletionForTargetInfo:(const CDStruct_4cb9d06e *)arg1;
 - (BOOL)deleteEventSubNodes:(id)arg1 nodeToSelect:(id)arg2 error:(id *)arg3;
-- (BOOL)performDrop:(id)arg1 onNode:(id)arg2 atChildIndex:(long long)arg3;
 - (BOOL)nodesOnlyContainEventSubItemTypes:(id)arg1;
 - (BOOL)nodesOnlyContainEventRelatedItemTypes:(id)arg1;
 - (void)addANode:(id)arg1 toMediaDetailSet:(id)arg2 ignoreIfNode:(id)arg3;
@@ -32,6 +35,9 @@
 - (id)cellForNode:(id)arg1 atTableColumn:(id)arg2;
 - (id)outlineView:(id)arg1 toolTipForCell:(id)arg2 rect:(struct CGRect *)arg3 tableColumn:(id)arg4 item:(id)arg5 mouseLocation:(struct CGPoint)arg6;
 - (id)outlineView:(id)arg1 selectionIndexesForProposedSelection:(id)arg2;
+- (void)outlineViewSelectionDidChangeAutonomously:(id)arg1;
+- (void)outlineViewRootDidRepopulate:(id)arg1;
+- (void)outlineViewRootDidDepopulate:(id)arg1;
 - (void)outlineViewSelectionDidChange:(id)arg1;
 - (BOOL)acceptDrop:(id)arg1 onNode:(id)arg2 atChildIndex:(long long)arg3;
 - (unsigned long long)validateDrop:(id)arg1 onNode:(id)arg2 atChildIndex:(long long)arg3;
@@ -46,13 +52,28 @@
 - (void)selectAndRevealAllEvents;
 - (void)_selectAndRevealFirstNodeWithClass:(Class)arg1;
 - (void)selectAndRevealEvents:(id)arg1;
+- (void)revealEvents:(id)arg1;
+- (void)_revealEvents:(id)arg1 select:(BOOL)arg2;
+- (void)editEvent:(id)arg1;
+- (void)revealEvent:(id)arg1;
 - (void)selectAndRevealEvent:(id)arg1;
+- (id)_parentNodeForEvent:(id)arg1;
 - (void)setSelectionToNodesWithParentNodeOfClass:(Class)arg1;
 - (id)allVideoEventRecords;
 - (id)selectedVideoEventRecords;
+- (id)libraryForCurrentSelection;
+- (id)selectedLibraries;
 - (id)selectedEvents;
 - (id)activeProjectEvent;
 - (id)activeProject;
+- (SEL)_endDateSelector;
+- (SEL)_startDateSelector;
+- (long long)_yearForSortingEvent:(id)arg1;
+- (long long)yearForSortingEventRecord:(id)arg1;
+- (id)sortedEventRecords:(id)arg1 forYear:(long long)arg2;
+- (id)sortedYearsForEventRecords:(id)arg1;
+- (void)sortEventRecords:(id)arg1;
+- (void)sortEvents:(id)arg1;
 - (void)configureSidebar;
 - (void)configureDefaultSelectionAndExpansionAfterUpgradeAtLaunch:(id)arg1;
 - (void)configureDefaultSelectionAndExpansion;

@@ -17,14 +17,13 @@
 }
 
 + (id)fieldWithDefinition:(id)arg1 withProxy:(id)arg2;
-+ (id)valuesFor:(id)arg1 afterResolvingTokensWithProxy:(id)arg2;
-+ (id)allValuesAfterResolvingTokensWithProxy:(id)arg1;
++ (id)valuesFor:(id)arg1 afterResolvingTokensWithProxy:(id)arg2 withRange:(CDStruct_e83c9415)arg3;
 @property(retain) FFSharingCustomToken *customToken; // @synthesize customToken=_customToken;
 @property(retain) FFMetadataDefinition *definition; // @synthesize definition=_definition;
 @property(retain) NSArray *currentValue; // @synthesize currentValue=_currentValue;
 @property(readonly) NSString *name; // @synthesize name=_name;
-- (id)valueAfterResolvingTokensWithProxy:(id)arg1;
-- (id)valueForShareToken:(id)arg1 withProxy:(id)arg2;
+- (id)valueAfterResolvingTokensWithProxy:(id)arg1 withRange:(CDStruct_e83c9415)arg2;
+- (id)valueForShareToken:(id)arg1 withProxy:(id)arg2 withRange:(CDStruct_e83c9415)arg3;
 - (id)description;
 - (void)dealloc;
 - (id)initWithDefinition:(id)arg1 withProxy:(id)arg2;

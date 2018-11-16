@@ -10,14 +10,15 @@
 #import "FFEditActionSourceProtocol.h"
 #import "FFErrorReportingProtocol.h"
 #import "FFRolesMenuDelegate.h"
+#import "FFSharePanelAnimationProtocol.h"
 #import "NSApplicationDelegate.h"
 #import "NSMenuDelegate.h"
 #import "NSUserInterfaceValidations.h"
 #import "PEFullScreenWindowDelegate.h"
 
-@class FFAnchoredSequence, FFEditActionMgr, LKWindow, NSAlert, NSMenu, NSMenuItem, NSMutableArray, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceoverRecordController, Stopwatch;
+@class CEWelcomeScreenWindowController, FFAnchoredSequence, FFEditActionMgr, LKWindow, NSAlert, NSMenu, NSMenuItem, NSMutableArray, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceOverWindowController, Stopwatch;
 
-@interface PEAppController : NSObject <FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol>
+@interface PEAppController : NSObject <FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol>
 {
     NSMenuItem *_openLibraryMenuItem;
     NSMenuItem *_closeLibraryMenuItem;
@@ -52,10 +53,11 @@
     NSMenuItem *_sendToFCPXMenuItem;
     PEEditorContainerModule *_activeEditorContainer;
     id _projectTranslator;
-    PEVoiceoverRecordController *_voiceoverRecordController;
+    PEVoiceOverWindowController *_voiceoverRecordController;
     Stopwatch *_startupTimer;
     LKWindow *_stacksPopOverWindow;
     PEVariantsContainerModule *_stacksMod;
+    BOOL _stacksModClosing;
     PEMarkerEditorContainerModule *_markerEditorContainerModule;
     PEMediaSourceEditorContainerModule *_mediaSourceEditorContainerModule;
     PESpeedEditorContainerModule *_speedEditorContainerModule;
@@ -71,6 +73,7 @@
         unsigned int inspectorWasVisible:1;
     } _flags;
     FFEditActionMgr *_editActionMgr;
+    CEWelcomeScreenWindowController *_welcomeScreen;
 }
 
 + (id)appController;
@@ -95,6 +98,8 @@
 - (double)defaultEditDuration;
 - (id)_gatherMediaForInsertion;
 - (void)mainWindowChangedScreens:(id)arg1;
+- (void)appWillUnhide:(id)arg1;
+- (void)appWillHide:(id)arg1;
 - (void)documentRemoved:(id)arg1;
 - (void)documentAdded:(id)arg1;
 - (void)moduleLayoutDidChange:(id)arg1;
@@ -110,7 +115,6 @@
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (id)moduleForAction:(SEL)arg1;
 - (BOOL)_isActionDisallowed:(SEL)arg1 forModule:(id)arg2;
-- (void)throwAnException:(id)arg1;
 - (void)removeFromYouTube:(id)arg1;
 - (void)removeFromVimeo:(id)arg1;
 - (void)removeFromFacebook:(id)arg1;
@@ -119,6 +123,9 @@
 - (void)newThemedProject:(id)arg1;
 - (void)exportMovieModal:(id)arg1;
 - (void)exportShareArchive:(id)arg1;
+- (void)shareAnimationDidEnd;
+- (void)shareAnimationWillBegin;
+- (struct CGRect)shareAnimationDestinationRect;
 - (void)exportEffectBrowserThumbnails:(id)arg1;
 - (void)editDestinations:(id)arg1;
 - (void)newDestination:(id)arg1;
@@ -148,6 +155,10 @@
 - (void)insertPlaceholder:(id)arg1;
 - (void)stamp:(id)arg1;
 - (void)lift:(id)arg1;
+- (void)whatsNewInIMovie:(id)arg1;
+- (void)welcomeToIMovie:(id)arg1;
+- (void)cleanupWelcomeScreen;
+- (void)toggleSportsTeamEditor:(id)arg1;
 - (void)layoutForAudioEditing:(id)arg1;
 - (void)layoutForDefault:(id)arg1;
 - (void)layoutForCoreEditing:(id)arg1;
@@ -157,7 +168,12 @@
 - (BOOL)canSnapshotProject;
 - (void)duplicate:(id)arg1;
 - (BOOL)canDuplicate:(id)arg1;
+- (BOOL)timelineHasExplicitSelection;
 - (void)showProviderSettings:(id)arg1;
+- (void)showLibraryProperties:(id)arg1;
+- (id)currentLibraryInSidebar;
+- (id)_libraryForCurrentSelectionIncludingOtherModules:(BOOL)arg1;
+- (id)_libraryForCurrentSelection;
 - (void)switchTemporalResolutionMode:(id)arg1;
 - (void)switchPlacementEditingMode:(id)arg1;
 - (void)switchTrimEditingMode:(id)arg1;
@@ -230,6 +246,7 @@
 - (void)toggleFullscreenOrganizer:(id)arg1;
 - (void)showFCPServiceAndSupport:(id)arg1;
 - (void)showFCPFeedback:(id)arg1;
+- (void)showPreferencesHelp:(id)arg1;
 - (void)showSupportedCameras:(id)arg1;
 - (void)showKeyboardShortcuts:(id)arg1;
 - (void)showUpdatingToLibraries:(id)arg1;
@@ -243,6 +260,8 @@
 - (void)showTrailersInTimeline:(id)arg1;
 - (void)importClipBundle:(id)arg1;
 - (void)exportClipBundle:(id)arg1;
+- (void)dumpNextAudioGraphPlayedToConsole:(id)arg1;
+- (void)viewNextAudioGraphPlayedAsPdf:(id)arg1;
 - (void)dumpSelectionAsModelObjectToDotFile:(id)arg1;
 - (void)dumpSelectedEventAsModelObjectToDotFile:(id)arg1;
 - (BOOL)_dumpSingleObjectToDotFile:(id)arg1;
@@ -276,6 +295,7 @@
 - (id)inspectorModule;
 - (id)consumerToolbarModule;
 - (id)toolbarModule;
+- (BOOL)isMultiAngleEditor;
 - (BOOL)isEventBrowserHidden;
 - (BOOL)isMediaEventBrowserFullscreen;
 - (id)mediaDetailsContainer;
@@ -303,6 +323,7 @@
 - (void)cancelActiveNonArrowTool;
 - (BOOL)disableGradationChanges;
 - (void)applicationWillBecomeActive:(id)arg1;
+- (void)applicationDidBecomeActive:(id)arg1;
 - (BOOL)application:(id)arg1 openFile:(id)arg2;
 - (void)applicationDidMiniaturizeAll:(id)arg1;
 - (BOOL)applicationShouldHandleReopen:(id)arg1 hasVisibleWindows:(BOOL)arg2;

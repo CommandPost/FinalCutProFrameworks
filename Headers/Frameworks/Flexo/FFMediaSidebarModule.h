@@ -8,7 +8,7 @@
 
 #import "FFMediaSidebarSelectionSource.h"
 
-@class FFMediaSidebarController, FFMediaSidebarOutlineView, NSDictionary, NSView;
+@class FFMediaSidebarController, FFMediaSidebarOutlineView, NSView;
 
 @interface FFMediaSidebarModule : LKViewModule <FFMediaSidebarSelectionSource>
 {
@@ -16,11 +16,9 @@
     FFMediaSidebarController *_sidebarController;
     NSView *_sidebarContainerView;
     FFMediaSidebarOutlineView *_outlineView;
-    NSDictionary *_persistentSidebarState;
 }
 
 + (id)defaultModuleNibName;
-@property(copy, nonatomic) NSDictionary *persistentSidebarState; // @synthesize persistentSidebarState=_persistentSidebarState;
 @property(retain, nonatomic) FFMediaSidebarOutlineView *outlineView; // @synthesize outlineView=_outlineView;
 @property(retain, nonatomic) NSView *sidebarContainerView; // @synthesize sidebarContainerView=_sidebarContainerView;
 @property(retain, nonatomic) FFMediaSidebarController *sidebarController; // @synthesize sidebarController=_sidebarController;
@@ -34,9 +32,6 @@
 - (void)clearSelection;
 - (void)syncSidebar;
 - (void)sidebarDidSelectNodes:(id)arg1;
-- (void)handleAppWillTermininate:(id)arg1;
-- (void)removeNotifications;
-- (void)installNotifications;
 - (id)moduleHeaderAccessoryView;
 - (BOOL)wantsHeaderBar;
 - (void)setSidebarConnections:(id)arg1;
@@ -49,7 +44,6 @@
 - (void)viewDidLoad;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
-- (void)dealloc;
 
 @end
 

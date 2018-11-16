@@ -34,6 +34,7 @@
 + (BOOL)forceLayoutOnDrag;
 + (BOOL)showItemLaneIndex;
 + (BOOL)disableOptimizedDrawing;
++ (BOOL)disableOptimizedDragging;
 + (BOOL)disableClipSublayers;
 + (BOOL)debugLogLevel;
 + (BOOL)allowNegativeTimeAfterTrim;

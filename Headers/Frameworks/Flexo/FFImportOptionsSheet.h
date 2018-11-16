@@ -6,7 +6,7 @@
 
 #import "NSPanel.h"
 
-@class FFEventRecord, FFImportLocationPopUpController, FFLibrary, FFMediaEventProject, NSButton, NSMatrix, NSPopUpButton;
+@class FFEventRecord, FFLibrary, FFMediaEventProject, NSButton, NSMatrix, NSPopUpButton;
 
 __attribute__((visibility("hidden")))
 @interface FFImportOptionsSheet : NSPanel
@@ -20,10 +20,9 @@ __attribute__((visibility("hidden")))
     struct CGRect _expandedWindowRect;
     struct CGRect _collapsedWindowRect;
     long long _lastRemovePulldownState;
-    FFImportLocationPopUpController *_importLocationPopUpController;
-    id _importLocationPopUpButton;
     NSMatrix *_importLocationRadioButtonMatrix;
     NSButton *_importFoldersAsKeywordsCheckBox;
+    NSButton *_importTagsAsKeywordsCheckBox;
     NSButton *_optimizeMediaCheckBox;
     NSButton *_createProxyMediaCheckBox;
     NSButton *_createStillCacheCheckBox;
@@ -46,9 +45,8 @@ __attribute__((visibility("hidden")))
 - (void)import:(id)arg1;
 - (void)eventRadioButtonMatrixAction:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)updateImportLocationPopupLibraryName;
+- (void)updateImportLocationTextField;
 - (void)dealloc;
-- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
 - (void)cleanup;
 - (void)awakeFromNib;
 - (void)rebuildEventMenu;
@@ -59,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)smartCollectionAction:(id)arg1;
 - (void)setNeedsOptimizing:(BOOL)arg1;
 - (void)setRemovePulldownCheckBoxEnabled:(BOOL)arg1;
-- (void)setImportFoldersAsKeywordsCheckBoxEnabled:(BOOL)arg1;
+- (void)setImportFoldersAndTagsAsKeywordsCheckBoxesEnabled:(BOOL)arg1;
 - (void)setDefaultNewEventString;
 - (void)selectTargetEvent:(id)arg1;
 @property(readonly, nonatomic) FFMediaEventProject *selectedEvent;

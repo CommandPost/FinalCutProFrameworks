@@ -6,7 +6,7 @@
 
 #import "OZViewController.h"
 
-@class FFMotionEffect, TXTextView;
+@class FFMotionEffect, LKScrollView, TXMsgTracerLogger, TXTextView;
 
 @interface TXTextViewController : OZViewController
 {
@@ -17,8 +17,11 @@
     BOOL _inTextInspector;
     FFMotionEffect *_motionEffect;
     BOOL _isChangingText;
+    LKScrollView *_textScrollView;
+    TXMsgTracerLogger *_msgTracerLogger;
 }
 
+@property(retain, nonatomic) TXMsgTracerLogger *msgTracerLogger; // @synthesize msgTracerLogger=_msgTracerLogger;
 @property(retain, nonatomic) FFMotionEffect *motionEffect; // @synthesize motionEffect=_motionEffect;
 - (id)txTextView;
 - (void)viewDidResignFirstResponder;

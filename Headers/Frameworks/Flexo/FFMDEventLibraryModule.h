@@ -38,12 +38,15 @@
 - (id)dataForEditAction:(id)arg1;
 - (BOOL)canSourceDataForEditAction:(id)arg1;
 - (void)matrixSelectionDidChange:(id)arg1;
-- (void)makeKeyThumbnail:(id)arg1;
-- (void)cancelOperation:(id)arg1;
+- (void)sortBy:(id)arg1;
 - (void)arrangebySortOrderAction:(id)arg1;
 - (void)arrangingingPopUpAction:(id)arg1;
+- (void)makeKeyThumbnail:(id)arg1;
+- (void)cancelOperation:(id)arg1;
 - (void)moveToTrash:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (id)eventSidebarController;
+- (id)sidebarModule;
 - (void)cellDoubleClicked:(id)arg1;
 - (void)libraryView:(id)arg1 didSetKeyThumbnailForItem:(id)arg2 cell:(id)arg3 toThumbnailAtIndex:(long long)arg4;
 - (BOOL)libraryView:(id)arg1 canSetKeyThumbnailForItem:(id)arg2;
@@ -61,6 +64,8 @@
 - (void)eventsControllerReload;
 - (id)eventsController;
 - (id)eventsForItems:(id)arg1;
+- (void)viewWillBeRemoved;
+- (void)viewWasInstalled;
 - (void)viewDidLoad;
 - (void)dealloc;
 

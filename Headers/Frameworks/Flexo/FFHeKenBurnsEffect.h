@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
+- (BOOL)supportsReentrancy;
 - (id)inputKeys;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (void)createChannelsInFolder:(id)arg1;

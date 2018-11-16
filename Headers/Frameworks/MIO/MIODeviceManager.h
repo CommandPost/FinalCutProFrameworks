@@ -27,7 +27,7 @@
 @property(retain) NSMutableArray *outputDeviceConnections; // @synthesize outputDeviceConnections=mOutputDeviceConnections;
 @property(retain) NSMutableArray *inputDeviceConnections; // @synthesize inputDeviceConnections=mInputDeviceConnections;
 @property(retain) NSMutableArray *deviceConnections; // @synthesize deviceConnections=mDeviceConnections;
-- (struct __CFArray *)getNSScreenHDMIIgnoreList;
+- (struct __CFArray *)copyNSScreenHDMIIgnoreList;
 - (void)removeNSScreenIndexFromHDMIIgnoreList:(unsigned long long)arg1;
 - (void)addNSScreenIndexToHDMIIgnoreList:(unsigned long long)arg1;
 - (unsigned int)getHDMIPluginID;

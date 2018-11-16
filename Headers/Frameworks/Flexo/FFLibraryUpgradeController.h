@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 + (void)showUnexpectedErrorAlert:(id)arg1 url:(id)arg2;
 + (void)showDuplicateEventAlert;
 + (BOOL)didAskForInitialUpgrade;
-@property BOOL isInitialUpgrade; // @synthesize isInitialUpgrade=_isInitialUpgrade;
+@property(readonly) BOOL isInitialUpgrade; // @synthesize isInitialUpgrade=_isInitialUpgrade;
 @property BOOL sanLocationInUseAlertShown; // @synthesize sanLocationInUseAlertShown=_sanLocationInUseAlertShown;
 - (void)hideProgressWindow;
 - (void)updateProgressWindowWithLibraryName:(id)arg1 projectName:(id)arg2 isEvent:(BOOL)arg3;
@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)loadNib;
 - (id)upgradeProjectsAndEvents;
 - (void)dealloc;
-- (id)init;
+- (id)initWithInitialUpgrade:(BOOL)arg1;
 
 @end
 

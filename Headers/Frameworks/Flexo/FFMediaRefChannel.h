@@ -45,6 +45,7 @@
 - (BOOL)requiresVideo;
 - (void)setAnchoredObject:(id)arg1;
 - (id)anchoredObject;
+- (BOOL)canAcceptAnchoredObject:(id)arg1;
 - (void)setMediaRefChannelDelegate:(id)arg1;
 - (id)mediaRefChannelDelegate;
 - (void)dealloc;

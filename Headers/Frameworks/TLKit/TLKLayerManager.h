@@ -36,12 +36,13 @@
 - (void)_logChangedLayers:(id)arg1 changeType:(id)arg2;
 - (void)_logChangedLayer:(id)arg1 changeType:(id)arg2;
 - (id)closestTrackLayerAtPoint:(struct CGPoint)arg1;
+- (void)tilePrecisionEditorDividerBar;
 - (void)tile;
 - (void)_tileRuler;
+- (void)_tileContentLayer;
 - (void)_updateBackgroundMusicLaneMaskIfNeeded;
 - (void)_tileNonWrappingBackgroundMusicLayer;
-- (void)_tileContentLayerInVerticalCenter;
-- (void)_tileContentLayerAgainstTopEdge;
+- (void)_verticallyShiftContentLayerBoundsIfNeeded;
 - (void)sizeToFitWithVisibleRectState:(id)arg1;
 - (void)sizeToFit;
 @property(nonatomic) double bottomPadding;
@@ -50,8 +51,6 @@
 - (void)_sizeToFitMultipleTracks;
 - (void)_invalidateIntrinsicBounds;
 - (struct CGRect)intrinsicBounds;
-- (struct CGRect)_expandRootBounds:(struct CGRect)arg1 toIncludeVisibleRect:(struct CGRect)arg2;
-- (struct CGRect)_expandRootBoundsToIncludePlayhead:(struct CGRect)arg1 visibleRect:(struct CGRect)arg2;
 - (void)layoutDatabaseDidChange:(id)arg1;
 - (void)processPendingChangesWithClipRect:(struct CGRect)arg1;
 - (void)_removeLayersForLineFragments:(id)arg1;
@@ -62,7 +61,7 @@
 - (void)_removeLayersForLayoutContexts:(id)arg1;
 - (void)_reloadLayersForLayoutContexts:(id)arg1;
 - (void)reloadMarkerLayersForItemComponentFragment:(id)arg1;
-- (void)_reloadLayerForMarker:(id)arg1 onItemComponentFragment:(id)arg2;
+- (void)_reloadLayersForMarkers:(id)arg1 onItemComponentFragment:(id)arg2;
 - (void)_removeLayersForItemLaneFragments:(id)arg1;
 - (void)_reloadLayersForItemLaneFragments:(id)arg1;
 - (void)reloadVisibleLayersForItems:(id)arg1;

@@ -27,8 +27,9 @@
 - (CDStruct_1b6d18a9)nativeSampleDuration;
 - (unsigned int)numberOfChannelsForStreamAudioFlags:(unsigned long long)arg1;
 - (unsigned int)numberOfChannels;
-- (id)newStreamForRenderWithOptions:(id)arg1;
 - (id)newStreamForRender;
+- (id)newStreamForRenderWithOptions:(id)arg1;
+- (id)newStreamForRender:(id)arg1 withOptions:(id)arg2;
 - (id)newStream:(id)arg1 options:(id)arg2;
 - (id)type;
 

@@ -44,6 +44,7 @@
 - (long long)nativeFramecountWithInterpStyle:(int)arg1;
 - (double)interpFramecountWithDropAdjust:(_Bool)arg1 andRollover:(_Bool)arg2;
 - (double)nativeFramecountWithDropAdjust:(_Bool)arg1 andRollover:(_Bool)arg2;
+- (id)stringValueNoDelimiters;
 - (id)stringValue;
 - (BOOL)useInterpRate;
 - (void)setUseInterpRate:(BOOL)arg1;

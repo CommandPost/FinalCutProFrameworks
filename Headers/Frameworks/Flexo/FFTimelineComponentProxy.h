@@ -22,6 +22,7 @@
     CHChannelFolder *_intrinsicChannels;
 }
 
++ (CDStruct_1b6d18a9)fadeSampleDurationForObj:(id)arg1;
 + (id)proxiesForAudioComponentsForObject:(id)arg1 demandAudioComponentSources:(BOOL)arg2;
 + (id)proxiesForAudioComponentsForObject:(id)arg1;
 + (BOOL)objectSupportsAudioComponents:(id)arg1;

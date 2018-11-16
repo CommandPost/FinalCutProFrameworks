@@ -21,20 +21,22 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)eventDocumentIDAndPath;
 - (id)projectRelativePath;
+- (id)owningLibraryItem;
 - (id)projectURL;
+- (id)libraryURL;
 - (void)resetURL;
 - (id)URL;
-- (void)setPath:(id)arg1;
-- (id)path;
-- (void)setEventDocumentID:(id)arg1;
-- (id)eventDocumentID;
-- (id)libraryID;
+@property(readonly, nonatomic) NSString *path;
+@property(readonly, nonatomic) NSString *eventDocumentID;
+@property(readonly, nonatomic) NSString *libraryID;
 - (id)newFileIdentifierWithPath:(id)arg1;
 - (id)copyFileIdentifierForProject:(id)arg1 libraryID:(id)arg2;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1 eventDocumentID:(id)arg2 libraryID:(id)arg3;
+- (id)initWithPath:(id)arg1 document:(id)arg2;
 - (id)initWithPath:(id)arg1 project:(id)arg2;
 - (id)initWithAbsolutePath:(id)arg1 project:(id)arg2;
+- (id)initWithAbsolutePath:(id)arg1 document:(id)arg2;
 
 @end
 

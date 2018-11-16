@@ -6,21 +6,27 @@
 
 #import <Flexo/FFQCEffect.h>
 
+#import "FFEffectAdjustmentDelegate.h"
 #import "FFTitleDelegate.h"
 
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface FFQCIMEffect : FFQCEffect <FFTitleDelegate>
+@interface FFQCIMEffect : FFQCEffect <FFTitleDelegate, FFEffectAdjustmentDelegate>
 {
     NSMutableArray *_textGroups;
 }
 
 + (id)attributesForTitle:(id)arg1 atIndex:(unsigned long long)arg2;
++ (id)paragraphStyleForTitle:(id)arg1 atIndex:(unsigned long long)arg2;
 + (id)colorForTitle:(id)arg1 atIndex:(unsigned long long)arg2;
 + (id)fontForTitle:(id)arg1 atIndex:(unsigned long long)arg2;
 + (void)registerEffects;
 + (void)loadQCPlugins;
+- (Class)defaultAdjustmentToolForEffect;
+- (id)designatedChannelsForXMLExport;
+- (BOOL)hasDesignatedChannelsForXMLExport;
+- (id)defaultTextForField:(unsigned long long)arg1;
 - (BOOL)setLightGrayBackgroundForField:(unsigned long long)arg1;
 - (BOOL)shrinkToFit;
 - (BOOL)allowsFontEditing;
@@ -40,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasBackgroundInput;
 - (BOOL)needsClamping;
 - (BOOL)handlesCompositing;
+- (void)willReplace:(id)arg1;
 @property(nonatomic) unsigned long long backgroundIndex2;
 @property(nonatomic) unsigned long long backgroundIndex;
 - (id)backgroundIndex2Channel;
@@ -47,10 +54,9 @@ __attribute__((visibility("hidden")))
 - (void)createChannelsInFolder:(id)arg1;
 - (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)usesBackgroundComposition;
+- (id)_ensureSomeNonwhitespace:(id)arg1;
 - (BOOL)_splitMultipleLines;
-- (id)defaultSecondTextStringForEffectID:(id)arg1;
 - (BOOL)hasSecondTitleForEffectID:(id)arg1;
-- (id)defaultTextStringForEffectID:(id)arg1;
 - (id)title2InputKey;
 - (id)title1InputKey;
 - (BOOL)hasTitles;

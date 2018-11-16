@@ -11,7 +11,6 @@
 + (id)urlEncodedUuid:(id)arg1;
 + (id)stringWithHFSUniStr255:(struct HFSUniStr255)arg1;
 + (id)stringDescribingNumberOfBytes:(long long)arg1;
-+ (id)stringWithFourCharacterCode:(unsigned long long)arg1;
 - (long long)numberOfBytes;
 @end
 

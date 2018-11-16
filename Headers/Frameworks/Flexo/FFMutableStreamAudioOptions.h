@@ -12,6 +12,7 @@
 
 - (void)setComponentsPlaybackInfo:(id)arg1 forPlayObject:(id)arg2;
 - (void)setComponentsPlaybackInfo:(id)arg1;
+- (void)setSourceChannelMap:(id)arg1;
 - (void)setAudioEffects:(id)arg1;
 - (void)setEffectPrerollScopeRange:(CDStruct_e83c9415)arg1;
 - (void)setPrerollScopeRange:(CDStruct_e83c9415)arg1;

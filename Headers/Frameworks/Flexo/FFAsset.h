@@ -24,7 +24,6 @@
     long long _fieldDominanceOverride;
     long long _colorSpaceOverride;
     long long _anamorphicType;
-    int _logEncodingType;
     long long _logProcessingMode;
     BOOL _isUnmounting;
     FFMediaRep *_optimizedMediaRep;
@@ -37,6 +36,7 @@
     NSIndexSet *_supportedDominanceOverrides;
     NSIndexSet *_supportedColorSpaceOverrides;
     NSIndexSet *_supportedLogProcessingModes;
+    NSDictionary *_logProcessingInfoDictionary;
     BOOL _useTimecodeZero;
     NSDictionary *_audioSourceDict;
     NSDictionary *_videoSourceDict;
@@ -75,10 +75,13 @@
 - (void)setMetadataAlphaHandling:(long long)arg1;
 - (long long)metadataAlphaHandling;
 - (id)mdTargetForKey:(id)arg1;
+- (id)assetFileDescs:(unsigned int)arg1 forCopy:(id)arg2;
+- (id)assetFileDescForID:(id)arg1 mediaRep:(id)arg2;
 - (id)assetFileIDs:(unsigned int)arg1 forCopy:(id)arg2;
 - (id)analysisFileURLs;
-- (id)_analysisFileURLs:(BOOL)arg1;
+- (id)_analysisFileURLs:(BOOL)arg1 targetProject:(id)arg2;
 - (id)fileURLs:(int)arg1;
+- (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)addClipRefsToSet:(id)arg1;
 - (id)clipRefs;
 - (void)addAssetRefsToSet:(id)arg1;
@@ -116,6 +119,7 @@
 - (BOOL)proxyAvailable;
 - (id)currentRep;
 - (BOOL)relinkMedia:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 fileContentChanged:(BOOL)arg4 error:(id *)arg5;
+- (void)_assetCollection:(id)arg1;
 - (void)invalidate;
 - (void)invalidateAndSendSourceChange:(BOOL)arg1;
 - (void)invalidateProviders;
@@ -124,11 +128,14 @@
 - (void)deferredInvalidate;
 - (void)_mainThreadInvalidate;
 - (void)purgeTranscodedMedia;
+- (void)purgeProxyMedia;
+- (void)purgeOptimizedMedia;
 - (void)purgeGeneratedMedia;
 - (BOOL)isPSD;
 - (void)setMediaIdentifierForOfflineAsset:(id)arg1;
 - (void)setOriginalRelativePath:(id)arg1;
 - (id)assetFilename;
+- (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
 @property(nonatomic) long long logProcessingMode;
 - (BOOL)supportsColorSpaceOverride;
@@ -178,7 +185,7 @@
 - (id)originalMediaURL;
 - (BOOL)_supportsProxyMedia;
 - (void)dealloc;
-- (BOOL)addMediaRepForURL:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 project:(id)arg4;
+- (id)addMediaRepForURL:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 project:(id)arg4;
 - (void)_updateVideoProps:(int)arg1;
 - (BOOL)update_addAudioSourceDict;
 - (void)rebuildAudioProperties;

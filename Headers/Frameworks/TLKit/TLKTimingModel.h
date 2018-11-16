@@ -42,6 +42,8 @@
 - (BOOL)useTrimmingAdjustment;
 - (struct _TLKRange)_mappedLocationRange;
 - (void)reloadWithContainer:(id)arg1 inLayoutDatabase:(id)arg2;
+- (void)setLocationRange:(struct _TLKRange)arg1 forTimeSegmentAtIndex:(unsigned long long)arg2;
+- (struct _TLKRange)locationRangeForTimeSegmentAtIndex:(unsigned long long)arg1;
 - (void)setLocationRanges:(struct _TLKRange *)arg1 forTimeRanges:(CDStruct_e83c9415 *)arg2 count:(unsigned long long)arg3;
 - (void)setTimeSegments:(id)arg1;
 - (id)timeSegments;

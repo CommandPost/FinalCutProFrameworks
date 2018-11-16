@@ -25,13 +25,13 @@ struct CGSize {
     double _field2;
 };
 
-struct FigTimePair {
-    CDStruct_1b6d18a9 first;
-    CDStruct_1b6d18a9 second;
-};
-
 struct PCMatrix44Tmpl<double> {
     double _field1[4][4];
+};
+
+struct PC_CMTimePair {
+    CDStruct_1b6d18a9 first;
+    CDStruct_1b6d18a9 second;
 };
 
 #pragma mark Typedef'd Structures

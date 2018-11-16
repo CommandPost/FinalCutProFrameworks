@@ -36,13 +36,17 @@
     NSSet *_insertedItems;
     NSSet *_deletedItems;
     NSSet *_updatedItems;
+    NSMapTable *_movedItemsContainerMap;
+    NSMapTable *_removedItemsContainerMap;
     CDStruct_1b6d18a9 _logicalStartTime;
     int _rulerPlacementMode;
     int _layoutRoundingMode;
     id <TLKLayoutManagerDelegate> _delegate;
     NSSet *_draggedItems;
-    unsigned int _showsTransitionPlaceholders:1;
-    unsigned int RESERVED:31;
+    struct {
+        unsigned int showsTransitionPlaceholders:1;
+        unsigned int RESERVED:31;
+    } _ldFlags;
     struct {
         unsigned int didCompleteLayoutForTile:1;
         unsigned int willUseLayoutFrameForItem:1;
@@ -53,6 +57,8 @@
 }
 
 @property(readonly, nonatomic) TLKChangeLog *changeLog; // @synthesize changeLog=_changeLog;
+@property(retain, nonatomic) NSMapTable *removedItemsContainerMap; // @synthesize removedItemsContainerMap=_removedItemsContainerMap;
+@property(retain, nonatomic) NSMapTable *movedItemsContainerMap; // @synthesize movedItemsContainerMap=_movedItemsContainerMap;
 @property(nonatomic) CDStruct_e83c9415 trimmingTimeRift; // @synthesize trimmingTimeRift=_trimmingTimeRift;
 @property(retain, nonatomic) TLKTimingModel *timingModel; // @synthesize timingModel=_timingModel;
 @property(retain, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
@@ -69,6 +75,7 @@
 - (unsigned long long)countOfItemLaneFragments;
 - (void)setLayoutContext:(id)arg1 forContainer:(id)arg2 inLineFragment:(id)arg3;
 - (id)layoutContextForContainer:(id)arg1 inLineFragment:(id)arg2;
+- (void)enumerateLayoutContextsWithBlock:(CDUnknownBlockType)arg1;
 - (id)layoutContexts;
 - (void)removeLineFragment:(id)arg1;
 - (void)addLineFragment:(id)arg1;
@@ -88,12 +95,13 @@
 - (void)reloadWithTracksAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 timelineView:(id)arg4;
 - (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)_deleteReferencesToRemovedItems:(id)arg1;
+- (void)_updateRemovedItemsContainerMapForItems:(id)arg1;
 - (void)_cacheLayoutInfoForItems:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (void)_cacheLayoutInfoForItem:(id)arg1 withContainerInfo:(id)arg2 createIfNeeded:(BOOL)arg3;
 - (void)_cacheItemComponentsForItem:(id)arg1 expansionStyle:(int)arg2;
 - (void)_discardContainerInfoForContainers:(id)arg1;
-- (void)_cacheContainerInfoForContainers:(id)arg1;
-- (void)_cacheContainerInfoForContainer:(id)arg1;
+- (void)_reloadCachedSpineItemsIfNeeded;
+- (void)_cacheContainerInfoForContainer:(id)arg1 enclosingContainerInfo:(id)arg2;
 - (BOOL)_validateItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (id)_invalidContainersForItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (id)_invalidSpineItemsForModifiedContainers:(id)arg1;
@@ -109,6 +117,7 @@
 - (void)setInsertedItems:(id)arg1;
 - (id)insertedItems;
 @property(nonatomic) BOOL showsTransitionPlaceholders;
+- (void)enumerateTracksWithBlock:(CDUnknownBlockType)arg1;
 - (void)setTracks:(id)arg1 timelineView:(id)arg2;
 - (void)setTracks:(id)arg1;
 @property(readonly, nonatomic) NSArray *tracks;

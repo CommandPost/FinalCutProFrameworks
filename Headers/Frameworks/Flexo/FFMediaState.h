@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-- (double)rawMediaAudioSampleRate;
 - (void)setOkIconImageRequest:(id)arg1;
 - (id)okIconImageRequest;
 - (void)setLastMarkerNumber:(unsigned long long)arg1;

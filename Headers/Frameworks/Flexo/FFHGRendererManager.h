@@ -18,7 +18,10 @@
 + (void)initialize;
 + (void)initOnMainThread:(id)arg1;
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
++ (int)getPrimaryGPUImageLocation;
 + (id)sharedManager;
+- (_Bool)hasGPUPreventingMotionCompensatedDeinterlacing;
+- (_Bool)hasGPUPreventingMGPU;
 - (_Bool)hasBuiltInGPU;
 - (_Bool)hasMultipleMatchedGPUs;
 - (int)getGPUCount;
@@ -29,9 +32,11 @@
 - (struct HGRenderer *)renderQueueRendererForCurrentThread;
 - (_Bool)isManagedRenderer:(struct HGRenderer *)arg1;
 - (BOOL)processLinear;
+- (_Bool)threadHoldsImmediateModeRenderer;
 - (void)releaseRenderer:(id)arg1;
 - (id)rendererForLocation:(int)arg1;
 - (id)rendererPoolForLocation:(int)arg1;
+- (int)resolveIfSingleImageLocation:(int)arg1;
 - (void)dealloc;
 - (id)init;
 

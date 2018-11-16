@@ -16,6 +16,10 @@ __attribute__((visibility("hidden")))
     BOOL _keepLockFile;
 }
 
++ (BOOL)unlockDirectory:(id)arg1 error:(id *)arg2;
++ (BOOL)lockDirectory:(id)arg1 error:(id *)arg2;
++ (id)lockForDirectory:(id)arg1 withCreate:(id *)arg2;
++ (void)initialize;
 @property(nonatomic) BOOL keepLockFile; // @synthesize keepLockFile=_keepLockFile;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 - (BOOL)isUnsupported;

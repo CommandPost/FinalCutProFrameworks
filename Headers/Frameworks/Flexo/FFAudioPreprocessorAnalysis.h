@@ -15,7 +15,6 @@
     float _crossCorrelationPeakValue;
     int _crossCorrelationPeakIndex;
     float _crossCorrelationConfidence;
-    float _crossCorrelationMAD;
     BOOL _downsampling;
     unsigned int _downsamplerate;
     unsigned int _sampleRate;
@@ -23,7 +22,6 @@
     struct AudioStreamBasicDescription _lowerSRformat;
     unsigned int _adjustedsize;
     double _longestDuration;
-    BOOL _useNewStatistics;
     BOOL _waitForPeakData;
 }
 
@@ -31,7 +29,6 @@
 + (_Bool)updateProgressCheckTaskCancelled;
 + (void)setUpdateProgressGranularity:(unsigned long long)arg1;
 @property BOOL waitForPeakData; // @synthesize waitForPeakData=_waitForPeakData;
-@property BOOL useNewStatistics; // @synthesize useNewStatistics=_useNewStatistics;
 - (id).cxx_construct;
 - (_Bool)isSpectrallySimilar:(id)arg1 andUtilB:(id)arg2 wasStereo:(BOOL)arg3 onTask:(id)arg4;
 - (_Bool)hasSilence:(id)arg1 onTask:(id)arg2;
@@ -42,7 +39,6 @@
 - (void)setDownsampleRate:(unsigned int)arg1;
 - (BOOL)getDownsampling;
 - (void)setDownsampling:(BOOL)arg1;
-- (float)getCrossCorrelationFunctionMAD;
 - (float)getCrossCorrelationFunctionConfidence;
 - (CDStruct_1b6d18a9)getCrossCorrelationFunctionPeakIndex;
 - (float)getCrossCorrelationFunctionPeakValue;

@@ -9,8 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface FFMediaSidebarOutlineView : LKOutlineView
 {
+    BOOL _isHandlingTabKeyDown;
 }
 
+- (BOOL)isHandlingTabKeyDown;
+- (void)_postRootDidRepopulate;
+- (void)_postRootDidDepopulate;
 - (id)menuForEvent:(id)arg1;
 - (void)keyDown:(id)arg1;
 - (void)highlightSelectionInClipRect:(struct CGRect)arg1;
@@ -19,9 +23,13 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)frameOfOutlineCellAtRow:(long long)arg1;
 - (BOOL)_hasSections;
 - (id)preparedCellAtColumn:(long long)arg1 row:(long long)arg2;
+- (void)reloadItem:(id)arg1 reloadChildren:(BOOL)arg2;
+- (void)selectRowAutonomously:(long long)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)_handleFocusChanged:(id)arg1;
 - (BOOL)isOpaque;
+- (id)delegate;
+- (void)setDelegate:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;
 

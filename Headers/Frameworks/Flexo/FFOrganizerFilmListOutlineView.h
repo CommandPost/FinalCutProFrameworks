@@ -10,19 +10,20 @@ __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmListOutlineView : LKOutlineView
 {
     BOOL _ignoresCommandUpDownArrowKeys;
+    BOOL _overrideDisclosureTriangleBehaivor;
     long long _lastRowClicked;
 }
 
 @property(readonly) long long lastRowClicked; // @synthesize lastRowClicked=_lastRowClicked;
 @property BOOL ignoresCommandUpDownArrowKeys; // @synthesize ignoresCommandUpDownArrowKeys=_ignoresCommandUpDownArrowKeys;
-- (BOOL)performDragOperation:(id)arg1;
 - (void)draggingExited:(id)arg1;
-- (unsigned long long)draggingEntered:(id)arg1;
 - (void)adjustSelectionForContextualMenu:(id)arg1;
 - (void)windowDidBecomeKey:(id)arg1;
 - (void)viewDidMoveToWindow;
 - (BOOL)becomeFirstResponder;
 - (void)mouseDown:(id)arg1;
+- (void)collapseItem:(id)arg1 collapseChildren:(BOOL)arg2;
+- (void)expandItem:(id)arg1 expandChildren:(BOOL)arg2;
 - (void)keyDown:(id)arg1;
 - (id)menuForEvent:(id)arg1;
 - (void)dealloc;

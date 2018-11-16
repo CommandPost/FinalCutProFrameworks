@@ -6,14 +6,16 @@
 
 #import "NSWindowController.h"
 
-@class NSProgressIndicator;
+@class NSProgressIndicator, NSTextField;
 
 __attribute__((visibility("hidden")))
 @interface FFRADIngestProgressWindowController : NSWindowController
 {
     NSProgressIndicator *_progressIndicator;
+    NSTextField *_textField;
 }
 
+@property(readonly) NSTextField *textField; // @synthesize textField=_textField;
 @property(readonly) NSProgressIndicator *progressIndicator; // @synthesize progressIndicator=_progressIndicator;
 
 @end

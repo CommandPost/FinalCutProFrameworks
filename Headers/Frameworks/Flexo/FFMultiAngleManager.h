@@ -13,7 +13,8 @@
 @interface FFMultiAngleManager : NSObject <FFBackgroundTaskTarget>
 {
     BOOL _isTesting;
-    BOOL _isProcessingAudio;
+    BOOL _forSyncNotMulticamClip;
+    id _spineItemForSyncClip;
     NSMutableArray *_itemInfos;
     NSMutableArray *_itemAngles;
     NSMutableDictionary *_devices;
@@ -57,10 +58,14 @@
     CDStruct_1b6d18a9 _audioSyncRefAngleStart;
 }
 
++ (id)defaultNameForNewSyncClipFromSelection:(id)arg1;
 + (void)enableLogging:(BOOL)arg1;
+@property(readonly) BOOL forSyncNotMulticamClip; // @synthesize forSyncNotMulticamClip=_forSyncNotMulticamClip;
 @property BOOL isTesting; // @synthesize isTesting=_isTesting;
 - (id)librariesInUse;
 - (id)assetsInUse;
+- (BOOL)arrangeItemsInNewSyncClip;
+- (id)spineObjectForSyncClipSelection:(id)arg1;
 - (BOOL)arrangeItemsByAngleAndWrapIntoStorylines:(BOOL)arg1;
 - (BOOL)_applySyncAngleToMonitorAngleChanges;
 - (BOOL)_applyChanges;
@@ -70,11 +75,7 @@
 - (id)angleItemsForItems:(id)arg1;
 - (id)itemForItemObject:(id)arg1;
 - (id)angleForAngleContainer:(id)arg1;
-- (BOOL)fineSyncItemsByAudio;
-- (BOOL)_fineSyncAllItemsByAudio;
 - (CDStruct_e83c9415)_syncRangeForItem:(id)arg1 syncOffset:(CDStruct_1b6d18a9)arg2 syncDuration:(CDStruct_1b6d18a9)arg3;
-- (BOOL)_synchronizeItemByAudio:(id)arg1 itemSyncTime:(CDStruct_1b6d18a9)arg2 refItem:(id)arg3 refItemSyncTime:(CDStruct_1b6d18a9)arg4 syncDuration:(CDStruct_1b6d18a9)arg5 useFullRange:(BOOL)arg6;
-- (CDStruct_1b6d18a9)_synchronizedAudioOffsetForItem:(id)arg1 itemSyncTime:(CDStruct_1b6d18a9)arg2 toRefItem:(id)arg3 refItemSyncTime:(CDStruct_1b6d18a9)arg4 syncDuration:(CDStruct_1b6d18a9)arg5 useFullRange:(BOOL)arg6 confidence:(float *)arg7;
 - (BOOL)shouldFineSyncByAudio;
 - (BOOL)anglesSyncedByAudio;
 - (void)_endProgressController;
@@ -83,9 +84,6 @@
 - (void)_startProgressController:(id)arg1 maxSteps:(unsigned long long)arg2;
 - (void)clickedCancel:(id)arg1;
 - (void)cancelBackgroundOps;
-- (void)_synchronizeAnglesWithAudio:(id)arg1 onTask:(id)arg2;
-- (BOOL)_syncAnglesByAudioToRefAngle:(id)arg1 usePeaksOnly:(BOOL)arg2;
-- (BOOL)_fineSyncAnglesByAudioToRefAngle:(id)arg1;
 - (BOOL)syncItemsByAuto;
 - (BOOL)canSyncByTC;
 - (id)_findReferenceAngle;
@@ -110,7 +108,7 @@
 - (BOOL)arrangeAngleByAuto;
 - (id)_findAngleByName:(id)arg1;
 - (void)_assignItemToAngle:(id)arg1 deviceUID:(id)arg2;
-- (BOOL)angleIntersects:(id)arg1;
+- (BOOL)angle:(id)arg1 intersectsAnAngleIn:(id)arg2;
 - (void)updateIntersectedItemsForItem:(id)arg1;
 - (void)setupIntersectItems;
 - (BOOL)isSynced;
@@ -125,7 +123,7 @@
 - (void)resetAngleInfo;
 - (void)releaseItems;
 - (id)initWithContainer:(id)arg1 forAngles:(id)arg2;
-- (id)initWithSequence:(id)arg1;
+- (id)initWithSequence:(id)arg1 itemsToSync:(id)arg2 forSyncNotMulticamClip:(BOOL)arg3 isMixedTCTracksClockTime:(BOOL)arg4;
 - (id)initWithItems:(id)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 isDropTC:(BOOL)arg3;
 - (id)description;
 - (id)_syncedByFlagsDescription;

@@ -25,6 +25,7 @@
 + (id)canonicalTrailerDictForID:(id)arg1;
 + (id)trailerInfoForID:(id)arg1;
 + (id)legacyTrailers;
++ (id)localizedTitleFontNameForID:(id)arg1;
 @property(retain, nonatomic) struct CGImage *cachedThumbnail; // @synthesize cachedThumbnail=_cachedThumbnail;
 @property(retain, nonatomic) NSAttributedString *thumbnailLabel; // @synthesize thumbnailLabel=_thumbnailLabel;
 @property(retain, nonatomic) NSString *trailerID; // @synthesize trailerID=_trailerID;

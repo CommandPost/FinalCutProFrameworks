@@ -20,7 +20,8 @@
 @property(nonatomic) int sidesToShow; // @synthesize sidesToShow=_sizesToShow;
 @property(nonatomic) int edgeType; // @synthesize edgeType=_edgeType;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
-- (BOOL)_aboveTrimBar:(struct CGPoint)arg1;
+- (BOOL)_insideDividerBar:(struct CGPoint)arg1;
+- (BOOL)_aboveDividerBar:(struct CGPoint)arg1;
 - (id)timelineView;
 - (id)partIdentifier;
 - (void)setDelegate:(id)arg1;

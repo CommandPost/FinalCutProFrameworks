@@ -6,23 +6,28 @@
 
 #import "NSTextView.h"
 
-@class TXTextViewController;
+@class FFAnchoredTimelineModule, TXTextViewController;
 
 @interface TXTextView : NSTextView
 {
     TXTextViewController *_controller;
+    FFAnchoredTimelineModule *_timelineModule;
 }
 
+@property(nonatomic) FFAnchoredTimelineModule *timelineModule; // @synthesize timelineModule=_timelineModule;
 @property(nonatomic) TXTextViewController *controller; // @synthesize controller=_controller;
 - (void)redo:(id)arg1;
 - (void)undo:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
 - (id)getUndoManager;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)closeOpenUndoGroup;
 - (BOOL)resignFirstResponder;
 - (BOOL)becomeFirstResponder;
 - (id)colorFactory;
 - (BOOL)isFieldEditor;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)timelineModuleFromMotionEffect:(id)arg1;
 
 @end
 

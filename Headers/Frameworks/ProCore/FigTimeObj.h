@@ -27,6 +27,7 @@
 - (void)getValue:(CDStruct_1b6d18a9 *)arg1;
 - (void)setTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)time;
+- (id)initWithCMTime:(CDStruct_1b6d18a9)arg1;
 - (id)initWithFigTime:(CDStruct_1b6d18a9)arg1;
 
 @end

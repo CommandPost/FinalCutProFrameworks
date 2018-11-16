@@ -8,7 +8,7 @@
 
 #import "NSTextInput.h"
 
-@class NSMenu, NSResponder, NSView, TXParagraphOSC, TXRulersOverlay, TXScrollBarsOverlay, TXTextResponder;
+@class NSMenu, NSResponder, NSView, TXMsgTracerLogger, TXParagraphOSC, TXRulersOverlay, TXScrollBarsOverlay, TXTextResponder;
 
 @interface TXTextTool : OZTool <NSTextInput>
 {
@@ -35,6 +35,7 @@
     double _startObjZ;
     float _alpha;
     BOOL _runningInFlexo;
+    TXMsgTracerLogger *_msgTracerLogger;
 }
 
 @property float alpha; // @synthesize alpha=_alpha;

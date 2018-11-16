@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)selectAll:(id)arg1;
 - (void)_hidePlayheadInfoWindowWithAnimation:(BOOL)arg1;
 - (void)_photoViewFrameDidChange:(id)arg1;
 - (void)_photoViewDidScroll:(id)arg1;

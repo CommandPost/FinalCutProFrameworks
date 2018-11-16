@@ -24,8 +24,8 @@
 @property(nonatomic) BOOL layoutScopesVertically;
 - (void)previousNextEdit:(id)arg1;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
+- (void)playerViewFrameDidChange:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)playerVideoModule;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
 - (id)submoduleLayoutArray;

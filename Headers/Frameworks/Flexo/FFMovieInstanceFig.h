@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFMIORADAsset, NSURL;
+@class FFMIORADAsset, NSDictionary, NSURL;
 
 @interface FFMovieInstanceFig : NSObject
 {
@@ -22,6 +22,7 @@
     int _storageType;
     unsigned long long _keepAliveTime;
     struct stat _statbuf;
+    NSDictionary *_growthInfo;
 }
 
 + (id)copyFFMovieInstanceFigForRADAsset:(id)arg1;
@@ -34,6 +35,8 @@
 @property(readonly) int status; // @synthesize status=_status;
 - (id)description;
 - (int)storageTypeMustBeSSD;
+- (void)setGrowthInfo:(id)arg1;
+- (id)growthInfo;
 - (id)radAsset;
 - (void)_openMovie:(id)arg1;
 - (void)_cacheMovieBuffer:(struct OpaqueCMBlockBuffer *)arg1 forKey:(id)arg2;

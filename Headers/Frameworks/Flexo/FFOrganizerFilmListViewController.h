@@ -6,16 +6,16 @@
 
 #import <Flexo/FFOrganizerFilmstripViewController.h>
 
+#import "FFOrganizerFilmListOutlineViewDelegate.h"
 #import "FFOrganizerFilmstripViewDelegate.h"
 #import "FFRolesMenuDelegate.h"
 #import "NSOutlineViewDataSource.h"
-#import "NSOutlineViewDelegate.h"
 #import "NSSplitViewDelegate.h"
 
 @class FFOrganizerFilmListClusterCell, FFOrganizerFilmListOutlineView, FigTimeRangeAndObject, LKMenu, LKSplitView, LKTableColumn, NSArray, NSDictionary, NSMenuItem, NSTreeNode;
 
 __attribute__((visibility("hidden")))
-@interface FFOrganizerFilmListViewController : FFOrganizerFilmstripViewController <FFOrganizerFilmstripViewDelegate, NSOutlineViewDelegate, NSOutlineViewDataSource, NSSplitViewDelegate, FFRolesMenuDelegate>
+@interface FFOrganizerFilmListViewController : FFOrganizerFilmstripViewController <FFOrganizerFilmstripViewDelegate, FFOrganizerFilmListOutlineViewDelegate, NSOutlineViewDataSource, NSSplitViewDelegate, FFRolesMenuDelegate>
 {
     BOOL _needsData;
     BOOL _syncingListWithFilmstrip;
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _listViewWasFocusedLast;
     id <FFOrganizerFilmstripViewDelegate> _filmstripViewDelegate;
     NSTreeNode *_filmOutlineRootNode;
+    long long _currentClusterMode;
     FFOrganizerFilmListClusterCell *_clusterCell;
     BOOL _ignoreOultineViewSelectionDidChange;
     FigTimeRangeAndObject *_deferredFilmstripArbitrarySelection;
@@ -70,6 +71,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL syncingFilmstripWithList; // @synthesize syncingFilmstripWithList=_syncingFilmstripWithList;
 @property(nonatomic) BOOL syncingListWithFilmstrip; // @synthesize syncingListWithFilmstrip=_syncingListWithFilmstrip;
 @property(nonatomic) BOOL needsData; // @synthesize needsData=_needsData;
+- (BOOL)outlineView:(id)arg1 acceptDrop:(id)arg2 item:(id)arg3 childIndex:(long long)arg4;
+- (unsigned long long)outlineView:(id)arg1 validateDrop:(id)arg2 proposedItem:(id)arg3 proposedChildIndex:(long long)arg4;
 - (BOOL)shouldAlwaysPlacePlayhead;
 - (void)performEditAction;
 - (BOOL)editActionAllowed;
@@ -135,6 +138,11 @@ __attribute__((visibility("hidden")))
 - (void)moveToStartOfClip;
 - (void)setMaintianFilmstripSelectionOnNextUpdate:(BOOL)arg1;
 - (void)scrollSelectionIntoView;
+- (id)rangeToSelectAfterDelete;
+- (id)_rangeAfterNode:(id)arg1;
+- (id)_nextNodeToSelect:(id)arg1;
+- (id)_nextClipNodeAfterNode:(id)arg1;
+- (id)_nextSiblingNodeAfterNode:(id)arg1;
 - (void)syncMarkerToRange:(id)arg1;
 - (void)syncSelectionToRange:(id)arg1;
 - (void)setSelectionEndTime:(CDStruct_1b6d18a9)arg1 clearExistingSelection:(BOOL)arg2;
@@ -148,7 +156,7 @@ __attribute__((visibility("hidden")))
 - (void)_highlightClipInList:(id)arg1;
 - (void)addArbitraryRange:(id)arg1 byExtendingSelection:(BOOL)arg2;
 - (void)selectArbitraryRange:(id)arg1 byExtendingSelection:(BOOL)arg2;
-- (void)revealAndSelectRange:(id)arg1 playheadTime:(CDStruct_1b6d18a9)arg2;
+- (BOOL)revealAndSelectRange:(id)arg1 playheadTime:(CDStruct_1b6d18a9)arg2;
 - (void)setSelectedRangesOfMedia:(id)arg1 byExtendingSelection:(BOOL)arg2;
 - (void)setSelectedRangesOfMedia:(id)arg1 byExtendingSelection:(BOOL)arg2 onlyClearAffected:(BOOL)arg3;
 - (void)matchSelectionToPreviousModeSelection:(id)arg1;
@@ -188,6 +196,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)allClustersClosed;
 - (void)expandClusteredItems;
 - (void)_recursiveExpandClusteredItemsForRootNode:(id)arg1;
+- (void)_recursiveCollapseClusteredItemsForRootNode:(id)arg1;
 - (BOOL)rootNodeContainsClusteredItems;
 - (BOOL)nodeContainsClusteredItems:(id)arg1;
 - (void)addChildNodeWithData:(id)arg1 toTreeNode:(id)arg2;
@@ -222,6 +231,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)outlineView:(id)arg1 isItemExpandable:(id)arg2;
 - (id)outlineView:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;
 - (void)adjustRolesCell:(id)arg1 forDataNode:(id)arg2;
+- (void)ultratoggleForRow:(long long)arg1;
 - (void)outlineViewSelectionDidChange:(id)arg1;
 - (id)outlineView:(id)arg1 selectionIndexesForProposedSelection:(id)arg2;
 - (BOOL)outlineView:(id)arg1 shouldEditTableColumn:(id)arg2 item:(id)arg3;
@@ -241,6 +251,9 @@ __attribute__((visibility("hidden")))
 - (id)treeNodeMatchingFigTimeRangeAndObject:(id)arg1 dataType:(int)arg2;
 - (id)treeNodeContainingFigTimeRangeAndObject:(id)arg1 dataType:(int)arg2;
 - (id)treeNodeContainingOrMatchingFigTimeRangeAndObject:(id)arg1 dataType:(int)arg2 checkMatching:(BOOL)arg3;
+- (BOOL)areAllNodeAncestorsExpanded:(id)arg1;
+- (id)firstExpandedClipAncestorOfNode:(id)arg1;
+- (id)firstClipAncestorOfNode:(id)arg1;
 - (void)expandAllParentsOfTreeNode:(id)arg1;
 - (void)reloadChildrenOfTreeNode:(id)arg1;
 - (void)addTimeMarker:(id)arg1 toTreeNode:(id)arg2;
@@ -269,6 +282,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)validateMenuItem:(id)arg1;
 - (BOOL)canDisplayPlayer;
 - (void)notificationHandler:(id)arg1;
+- (void)_contentDidChange;
+- (void)_rootNode:(id)arg1 hasProjectCluster:(id *)arg2 AndClipsCluster:(id *)arg3;
 - (id)lastKeyView;
 - (id)firstKeyView;
 - (void)loadView;

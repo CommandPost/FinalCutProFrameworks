@@ -59,6 +59,8 @@
 @property(nonatomic) long long searchType; // @synthesize searchType=_searchType;
 @property(nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property(nonatomic, getter=isPlaying) BOOL playing; // @synthesize playing=_playing;
+- (double)rightDraggableExclusionMargin;
+- (double)leftDraggableExclusionMargin;
 - (struct CGRect)animationStartRectForEditAction:(id)arg1;
 - (id)animationViewForEditAction:(id)arg1;
 - (struct CGImage *)newAnimationImageForEditAction:(id)arg1;
@@ -197,8 +199,8 @@
 - (void)viewWillBeRemoved;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;
-- (void)installPlayerObserver;
-- (void)uninstallPlayerObserver;
+- (void)setupPlayer;
+- (void)teardownPlayer;
 - (void)writeModulePrefsToDict:(id)arg1;
 - (void)readModulePrefsFromDict:(id)arg1;
 - (id)mediaPlugInLoadCompletionNotificationName;

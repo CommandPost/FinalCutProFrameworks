@@ -38,6 +38,8 @@
 - (id)itemComponentFragmentsGroupedByLayoutContext;
 - (id)itemComponentFragmentsForLayoutContext:(id)arg1;
 - (id)itemComponentFragments;
+- (void)enumerateItemComponentFragmentsWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateItemComponentInfoRecordsWithBlock:(CDUnknownBlockType)arg1;
 - (id)secondaryItemComponents;
 - (id)secondaryItemComponentRecords;
 - (id)primaryItemComponent;

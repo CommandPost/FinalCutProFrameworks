@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
 - (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
+- (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
 - (struct CGRect)expansionFrameWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)calcRectsFromCellRect:(struct CGRect)arg1 imageRect:(struct CGRect *)arg2 textRect:(struct CGRect *)arg3;
 - (double)availableIconWidth;

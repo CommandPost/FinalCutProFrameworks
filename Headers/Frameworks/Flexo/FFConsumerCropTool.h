@@ -6,7 +6,7 @@
 
 #import <Flexo/FFAdjustmentTool.h>
 
-@class FFSegmentedControl, LKButton, NSArray, NSView;
+@class FFAdjustmentToolLabel, FFSegmentedControl, LKButton, NSArray, NSView;
 
 @interface FFConsumerCropTool : FFAdjustmentTool
 {
@@ -16,6 +16,8 @@
     LKButton *_rotateAntiClockwize;
     LKButton *_flipKenBurns;
     FFSegmentedControl *_cropMode;
+    LKButton *_setSourceCrop;
+    FFAdjustmentToolLabel *_tooLabel;
 }
 
 + (id)toolTip;
@@ -25,6 +27,7 @@
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;
 + (id)groups;
+- (BOOL)isToolClassOrSubToolClassOf:(Class)arg1;
 - (void)resetTool:(id)arg1;
 - (void)onOK:(id)arg1;
 - (void)flipKenBurns:(id)arg1;
@@ -34,10 +37,12 @@
 - (BOOL)forceIntoCropModeIfTrim;
 - (void)setCropType:(id)arg1;
 - (void)setCropMode:(int)arg1;
+- (void)setSourceCrop:(id)arg1;
 - (id)adjustmentsToolbarView;
 - (void)setAdjustmentStateFromDictionary:(id)arg1;
 - (void)resetChannelsForObject:(id)arg1;
 - (id)newAdjustmentDictionaryForSelection:(id)arg1;
+- (id)trimEffectForObject:(id)arg1;
 - (id)cropEffectForObject:(id)arg1 ensureIntrinsic:(BOOL)arg2;
 - (id)playerVideoModule;
 - (id)intrinsicEffectRequiredIDs;

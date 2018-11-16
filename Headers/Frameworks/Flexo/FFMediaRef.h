@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
 
 + (id)scrapedOldRefDataForObject:(id)arg1 createIfNotFound:(BOOL)arg2;
 + (id)mediaIdentifiersForMediaRefs:(id)arg1;
++ (void)_notifyMediaAvailable:(id)arg1;
++ (void)updateMediaAvailable;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 @property(retain, nonatomic) NSString *cachedLibraryID; // @synthesize cachedLibraryID=_cachedLibraryID;
@@ -69,7 +71,6 @@ __attribute__((visibility("hidden")))
 - (void)releaseFinal;
 - (oneway void)release;
 - (id)initWithMedia:(id)arg1 mediaEvent:(id)arg2;
-- (void)_deferredNotification;
 - (id)init;
 - (id)legacyEventDocumentID;
 - (id)eventDocumentID;

@@ -77,6 +77,7 @@ __attribute__((visibility("hidden")))
     BOOL _keepSelection;
     int _direction;
     FFCurveEditorSelection *_rolloverSelection;
+    CDStruct_1b6d18a9 _draggedTimeResidual;
     BOOL _isOverlay;
     BOOL _isAudio;
     struct CGRect _clippedRect;
@@ -84,6 +85,7 @@ __attribute__((visibility("hidden")))
     FFAnchoredTimelineModule *_timeline;
     NSString *_actionName;
     id _item;
+    CDStruct_1b6d18a9 _sequenceTimecodeFrameDuration;
     FFChannelChangeController *_changeController;
     id <FFChannelChangeControllerDivorcedDelegate> _channelChangeDelegate;
     BOOL _isModelLayer;
@@ -126,6 +128,7 @@ __attribute__((visibility("hidden")))
 - (void)handleNudgeLeft:(id)arg1;
 - (void)handleNudgeDown:(id)arg1;
 - (void)handleNudgeUp:(id)arg1;
+- (void)handleDeleteAllKeyframes:(id)arg1;
 - (void)handleDelete:(id)arg1;
 - (void)nudgeUpDown:(double)arg1;
 - (void)menuDeleteKeyframes:(id)arg1;
@@ -144,6 +147,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldHandlePaste;
 - (BOOL)shouldHandleCopy;
 - (BOOL)shouldHandleNudge;
+- (BOOL)shouldHandleDeleteAllKeyframes;
 - (BOOL)shouldHandleDelete:(BOOL)arg1;
 - (BOOL)hasSelectedKeyframes;
 - (void)collapseEffect;
@@ -203,8 +207,13 @@ __attribute__((visibility("hidden")))
 - (void)updateSelection;
 - (void)setRolloverSelection:(id)arg1;
 - (void)selectedTimeRangeWithMinTime:(CDStruct_1b6d18a9 *)arg1 maxTime:(CDStruct_1b6d18a9 *)arg2;
-- (void)showValueDisplayAtPoint:(struct CGPoint)arg1 string:(id)arg2 direction:(int)arg3;
+- (BOOL)isValueDisplayHidden;
+- (void)updateValueDisplay;
+- (void)updateValueDisplayForDirection:(int)arg1;
+- (id)valueTipStringForTime:(CDStruct_1b6d18a9)arg1 value:(double *)arg2;
+- (void)showValueDisplayAtPoint:(struct CGPoint)arg1 string:(id)arg2;
 - (struct CGPoint)adjustValueDisplayLocationForDirection:(int)arg1 point:(struct CGPoint)arg2;
+- (CDStruct_1b6d18a9)adjustTimeToFrameBoundary:(CDStruct_1b6d18a9)arg1 floorValue:(BOOL)arg2;
 - (void)removeMaskLayer;
 - (void)setMaskLayer:(struct CGRect)arg1;
 - (void)drawForegroundLayerWithContext:(struct CGContext *)arg1;

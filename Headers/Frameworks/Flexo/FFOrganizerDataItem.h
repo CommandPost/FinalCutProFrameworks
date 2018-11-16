@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_hasWriteLock;
 - (void)_writeUnlock;
 - (void)_writeLock;
+- (BOOL)writerIsWaiting;
 - (void)_readUnlock;
 - (void)_readLock;
 - (id)sequenceInflateIfNecessary:(BOOL)arg1;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
 - (id)representedToolObject;
 - (id)primaryObject;
+- (id)sortObject;
 - (BOOL)isEqualTo:(id)arg1;
 - (void)dealloc;
 - (id)initWithSequenceRecord:(id)arg1;

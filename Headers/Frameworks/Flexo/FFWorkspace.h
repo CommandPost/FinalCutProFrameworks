@@ -20,9 +20,11 @@
     NSMenu *_moveToLibraryMenu;
     NSArray *_tagNames;
     NSMutableSet *_documentsUpgradedAtLaunch;
+    BOOL _closingDocumentsForAppTermination;
 }
 
 + (id)defaultWorkspace;
++ (BOOL)noSuchFileError:(id)arg1;
 + (BOOL)isFileInTrash:(id)arg1;
 + (BOOL)useSecurityBookmarks;
 + (id)resolveBookmark:(id)arg1 isStale:(char *)arg2 error:(id *)arg3;
@@ -33,6 +35,7 @@
 - (void)undoNewLibrary:(id)arg1;
 - (void)redoNewLibrary:(id)arg1;
 - (id)makeNewLibrary:(id)arg1 createDefaultEvent:(BOOL)arg2 error:(id *)arg3;
+- (id)makeNewLibrary:(id)arg1 withSettingsFrom:(id)arg2 error:(id *)arg3;
 - (id)makeNewLibrary:(id)arg1 error:(id *)arg2;
 - (id)uniqueLibraryName:(id)arg1;
 - (id)defaultLibraryName;
@@ -60,8 +63,10 @@
 - (void)notifyDocumentRemoved:(id)arg1;
 - (void)notifyDocumentAdded:(id)arg1;
 - (id)readActiveDocumentURLs;
-- (void)rememberActiveDocuments;
-- (void)rememberActiveDocumentsSoon;
+- (void)closeDocumentsForApplicationTermination;
+- (void)_documentController:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(void *)arg3;
+- (void)_rememberActiveDocuments;
+- (void)_rememberActiveDocumentsSoon;
 - (id)documentsUpgradedAtLaunch;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1;

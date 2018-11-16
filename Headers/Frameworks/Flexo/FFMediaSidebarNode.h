@@ -18,18 +18,23 @@
 
 + (id)persistentIdForDSObject:(id)arg1;
 + (id)representedObjectsForNodes:(id)arg1;
-+ (void)sortModelObjects:(id)arg1 stringSelector:(SEL)arg2;
++ (void)sortModelObjects:(id)arg1 stringSelector:(SEL)arg2 ascending:(BOOL)arg3;
 + (id)childNodesForRepresentedObjects:(id)arg1 reusingNodes:(id)arg2 nodeWithObjectBlock:(CDUnknownBlockType)arg3;
++ (id)pasteboardType;
 @property(nonatomic, getter=isObservingChildNodes) BOOL observingChildNodes; // @synthesize observingChildNodes=_observingChildNodes;
 @property(nonatomic) FFMediaSidebarNode *parentNode; // @synthesize parentNode=_parentNode;
 @property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 - (id)debugDescription;
 - (id)_descriptionWithDescendantsAtIndentLevel:(unsigned int)arg1;
 - (id)description;
+- (BOOL)acceptDrop:(id)arg1 childIndex:(long long)arg2;
+- (BOOL)acceptDrop:(id)arg1 childIndex:(long long)arg2 operationBefore:(CDUnknownBlockType)arg3 operationAfter:(CDUnknownBlockType)arg4;
+- (unsigned long long)validateDrop:(id)arg1 childIndex:(long long)arg2;
 - (void)updateNodeAndChildren:(BOOL)arg1;
 - (void)_updateNodeAndChildrenAndOutlineView;
-- (BOOL)_updateNodeAndChildren;
+- (BOOL)_updateNodeAndChildren:(id)arg1;
 - (void)reload:(BOOL)arg1;
+- (id)sidebarController;
 - (BOOL)_isRootOfOutlineView;
 - (id)outlineView;
 - (void)configureAsRootOfOutlineView:(id)arg1;
@@ -48,6 +53,7 @@
 - (double)iconAreaWidth;
 - (id)persistentID;
 - (double)rowHeight;
+- (id)toolTip;
 - (id)titleFont:(BOOL)arg1;
 - (id)titleColor:(BOOL)arg1;
 - (void)setTitle:(id)arg1;
@@ -55,6 +61,7 @@
 - (id)title;
 - (id)organizerItem;
 - (id)indexPath;
+- (id)_updateChildNodesExpandingNodes;
 - (void)updateChildNodes;
 - (id)childNodeWithRepresentedObject:(id)arg1;
 - (id)representedObjectsForChildNodes;

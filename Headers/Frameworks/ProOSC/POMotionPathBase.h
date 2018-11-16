@@ -91,6 +91,7 @@
 + (void)maybeInitResources;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)shouldShowSpeed;
 - (void)setPlayerOSCMotionPathStroke:(struct POColor *)arg1;
 - (BOOL)allowsCurveOffset;
 - (void)updateSpeedCurve;
@@ -130,7 +131,7 @@
 - (void)alignTangents:(struct POPathSelection *)arg1;
 - (void)breakTangents:(struct POPathSelection *)arg1;
 - (void)setInterpolationSelected:(list_816acb53 *)arg1 mode:(unsigned int)arg2;
-- (void)flattenSelected:(list_816acb53 *)arg1;
+- (void)flattenSelected:(list_816acb53 *)arg1 valueOnly:(BOOL)arg2;
 - (void)disableSelected:(list_816acb53 *)arg1;
 - (void)lockSelected:(list_816acb53 *)arg1;
 - (void)deleteAll;

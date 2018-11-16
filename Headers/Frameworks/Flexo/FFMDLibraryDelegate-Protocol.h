@@ -6,11 +6,13 @@
 
 #import "NSObject.h"
 
-@class FFMDAbstractLibraryCell, FFMDAbstractLibraryView, NSString;
+@class FFEventMediaSidebarController, FFEventMediaSidebarModule, FFMDAbstractLibraryCell, FFMDAbstractLibraryView, NSString;
 
 @protocol FFMDLibraryDelegate <NSObject>
 
 @optional
+- (FFEventMediaSidebarController *)eventSidebarController;
+- (FFEventMediaSidebarModule *)sidebarModule;
 - (void)libraryView:(FFMDAbstractLibraryView *)arg1 didSetKeyThumbnailForItem:(id)arg2 cell:(FFMDAbstractLibraryCell *)arg3 toThumbnailAtIndex:(long long)arg4;
 - (BOOL)libraryView:(FFMDAbstractLibraryView *)arg1 canSetKeyThumbnailForItem:(id)arg2;
 - (void)libraryView:(FFMDAbstractLibraryView *)arg1 didRenameItem:(id)arg2 toName:(NSString *)arg3;

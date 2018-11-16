@@ -6,7 +6,7 @@
 
 #import "NSProView.h"
 
-@class LKTextField, NSBox, NSString, NSView;
+@class FFEventLibraryModule, FFOrganizerImportDropResponderLayerHostView, LKTextField, NSBox, NSString, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFItemsContainerView : NSProView
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     NSView *_headerView;
     NSView *_mainView;
     NSView *_footerView;
-    NSView *_infoView;
+    FFOrganizerImportDropResponderLayerHostView *_infoView;
     LKTextField *_infoTextView;
     NSProView *_infoViewFirstLaunch;
     NSBox *_emptyEventsOptions;
@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
     BOOL _showsInfoView;
     BOOL _showEmptyOptions;
     BOOL _showfirstLaunch;
+    FFEventLibraryModule *_eventLibraryModule;
 }
 
+@property(nonatomic) FFEventLibraryModule *eventLibraryModule; // @synthesize eventLibraryModule=_eventLibraryModule;
 @property(nonatomic) BOOL showEmptyOptions; // @synthesize showEmptyOptions=_showEmptyOptions;
 @property(nonatomic) BOOL showFirstLaunch; // @synthesize showFirstLaunch=_showfirstLaunch;
 @property(retain, nonatomic) NSView *footerView; // @synthesize footerView=_footerView;

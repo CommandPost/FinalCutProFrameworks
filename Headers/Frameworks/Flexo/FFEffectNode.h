@@ -27,6 +27,7 @@
 - (void)_ensureCachedUnionedStuff;
 - (void)setChannelOffset:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)channelOffset;
+- (void)iterateOverAllInputsWithBlock:(CDUnknownBlockType)arg1;
 - (id)allInputKeysEnumerator;
 - (id)allInputKeys;
 - (id)inputIdentifierForKey:(id)arg1;

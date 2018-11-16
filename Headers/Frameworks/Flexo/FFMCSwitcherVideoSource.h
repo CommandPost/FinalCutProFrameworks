@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (void)_sendAngleCountNotification:(id)arg1;
 @property(readonly, nonatomic) FFSourceVideo *chosen; // @synthesize chosen=_chosen;
 - (void)_multiAngleOffsetOrCountHasChangedSelectorOnMainThread:(id)arg1;
+- (BOOL)writerIsWaiting;
 - (void)_readUnlock;
 - (void)_readLock;
 - (void)_writeUnlock;

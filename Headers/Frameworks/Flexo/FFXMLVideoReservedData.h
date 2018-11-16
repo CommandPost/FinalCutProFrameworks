@@ -8,15 +8,21 @@
 
 #import "NSCoding.h"
 
+@class NSDictionary;
+
 __attribute__((visibility("hidden")))
 @interface FFXMLVideoReservedData : NSObject <NSCoding>
 {
     int _rotationAngle;
+    NSDictionary *_HETrimValues;
 }
 
+@property(retain, nonatomic) NSDictionary *HETrimValues; // @synthesize HETrimValues=_HETrimValues;
 @property(nonatomic) int rotationAngle; // @synthesize rotationAngle=_rotationAngle;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

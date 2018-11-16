@@ -19,7 +19,6 @@
 - (void)finishLaunching;
 - (void)reportException:(id)arg1;
 - (BOOL)useOverlayScrollers;
-- (void)_reportExceptionToUser:(id)arg1;
 
 @end
 

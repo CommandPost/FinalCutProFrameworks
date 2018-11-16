@@ -10,6 +10,7 @@
 {
 }
 
++ (id)pasteboardType;
 - (void)setTitle:(id)arg1;
 - (id)title;
 - (id)persistentID;

@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (id)description;
+- (void)_recordDroppedFrame:(id)arg1;
 - (_Bool)performOverfullRecovery;
 - (_Bool)supportsOverfullRecovery;
 - (void)setViewBounds:(struct CGRect)arg1;

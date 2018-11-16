@@ -21,6 +21,9 @@
 - (unsigned long long)textFieldCount;
 
 @optional
+- (void)setShrinkToFitEnabled:(BOOL)arg1;
+- (BOOL)shrinkToFitEnabled;
+- (BOOL)prefersShrinkToFit;
 - (NSAttributedString *)shrinkToFit:(NSAttributedString *)arg1 forField:(unsigned long long)arg2;
 - (BOOL)setLightGrayBackgroundForField:(unsigned long long)arg1;
 - (void)titleOSCChangedText:(unsigned long long)arg1 string:(NSAttributedString *)arg2;

@@ -22,12 +22,15 @@ __attribute__((visibility("hidden")))
     NSDate *_downloadStartDate;
     BOOL _downloadCanceled;
     NSString *_clipID;
+    NSString *deviceName;
     id _userData;
     NSString *_customFileName;
     NSString *_customCameraName;
+    NSString *_deviceName;
 }
 
 @property(retain) id userData; // @synthesize userData=_userData;
+@property(readonly) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property(readonly) NSString *clipID; // @synthesize clipID=_clipID;
 @property BOOL downloadCanceled; // @synthesize downloadCanceled=_downloadCanceled;
 @property(retain) NSDate *downloadStartDate; // @synthesize downloadStartDate=_downloadStartDate;

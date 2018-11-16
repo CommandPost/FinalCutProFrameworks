@@ -34,6 +34,7 @@
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)newMonoSubsetAudioComponentsLayoutItem:(int)arg1;
 - (id)initWithAudioComponentsLayoutItem:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 channelMap:(id)arg2;
