@@ -36,6 +36,7 @@
 - (void)operationApplyState:(id)arg1 toChannel:(id)arg2;
 - (void)operationInsertChannel:(id)arg1 toParentFolder:(id)arg2 inEffect:(id)arg3 atIndex:(unsigned long long)arg4 delegate:(id)arg5;
 - (void)operationRemoveChannel:(id)arg1 fromParentFolder:(id)arg2 inEffect:(id)arg3 atIndex:(unsigned long long)arg4 delegate:(id)arg5;
+- (void)operationMoveChannel:(id)arg1 inParentFolder:(id)arg2 inEffect:(id)arg3 toIndex:(unsigned long long)arg4 delegate:(id)arg5;
 - (void)operationSetFlag:(unsigned long long)arg1 onChannel:(id)arg2 delegate:(id)arg3;
 - (void)operationResetFlag:(unsigned long long)arg1 onChannel:(id)arg2 delegate:(id)arg3;
 - (void)_actionBegin:(id)arg1;

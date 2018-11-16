@@ -8,6 +8,7 @@
 
 @interface FFImage (CVImageBuffer)
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5;
+- (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5 disable422Filtering:(BOOL)arg6;
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 pixelFormat:(id)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 field:(unsigned int)arg5;
 - (struct __CVBuffer *)newCVPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 flipped:(BOOL)arg5;
 @end

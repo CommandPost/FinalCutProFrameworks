@@ -13,18 +13,23 @@ __attribute__((visibility("hidden")))
 {
     NSProThemeFacet *_facet;
     FFFacetTextures *_facetTextures;
+    struct CGSize _slicePositions[9];
+    BOOL _drawCenter;
 }
 
-- (id)_initWithFacet:(id)arg1;
-- (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 theme:(unsigned long long)arg4;
+- (id)_initWithFacet:(id)arg1 drawCenter:(BOOL)arg2;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 theme:(unsigned long long)arg4 drawCenter:(BOOL)arg5;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 drawCenter:(BOOL)arg4;
 - (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2 theme:(unsigned long long)arg3 drawCenter:(BOOL)arg4;
 - (id)initWithElement:(long long)arg1 part:(long long)arg2 theme:(unsigned long long)arg3;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2 drawCenter:(BOOL)arg3;
 - (id)initWithElement:(long long)arg1 part:(long long)arg2;
 - (void)dealloc;
 - (id)_textureForContext:(struct _CGLContextObject *)arg1 state:(long long)arg2 dimension1:(long long)arg3 value:(long long)arg4 size:(struct CGSize)arg5 createIfNeeded:(BOOL)arg6 colorSync:(BOOL)arg7;
 - (void)drawFacetForState:(long long)arg1 dimension1:(long long)arg2 value:(long long)arg3 inRect:(struct CGRect)arg4 inContext:(struct _CGLContextObject *)arg5 colorSync:(BOOL)arg6;
 - (void)drawFacetForState:(long long)arg1 inRect:(struct CGRect)arg2 inContext:(struct _CGLContextObject *)arg3 colorSync:(BOOL)arg4;
-- (void)_drawFacetForState:(long long)arg1 scaledToRect:(struct CGRect)arg2 inContext:(struct _CGLContextObject *)arg3 colorSync:(BOOL)arg4;
+- (void)_drawFacetForState:(long long)arg1 scaledToRect:(struct CGRect)arg2 inContext:(struct _CGLContextObject *)arg3 dimension1:(long long)arg4 colorSync:(BOOL)arg5;
 - (struct CGSize)facetSizeForDimension1:(long long)arg1;
 - (struct CGSize)facetSize;
 - (BOOL)hitTestPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2;

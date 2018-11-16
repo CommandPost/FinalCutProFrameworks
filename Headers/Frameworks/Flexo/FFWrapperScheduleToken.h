@@ -10,14 +10,15 @@ __attribute__((visibility("hidden")))
 @interface FFWrapperScheduleToken : FFScheduleToken
 {
     FFScheduleToken *_subToken;
-    _Bool _assignedToCodec;
+    unsigned int _knownClearFlags;
 }
 
 - (id)initWithStream:(id)arg1 andSubToken:(id)arg2;
 - (void)dealloc;
 - (unsigned int)scheduleStatusInformation;
+- (_Bool)areStatusFlagsClear:(unsigned int)arg1;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
-- (void)hintWillImageSoon;
+- (_Bool)hintWillImageSoon;
 - (void)hintCacheData:(unsigned int)arg1;
 - (id)description;
 

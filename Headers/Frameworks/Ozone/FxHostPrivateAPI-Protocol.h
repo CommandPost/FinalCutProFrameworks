@@ -5,9 +5,6 @@
 //
 
 @protocol FxHostPrivateAPI
-- (BOOL)getLayerBlendMode:(int *)arg1;
-- (BOOL)setLayerBlendMode:(int)arg1;
-- (BOOL)enableLayerBlendModeChannel:(BOOL)arg1;
 - (BOOL)navigateToTime:(double)arg1;
 - (BOOL)giveEffectUIFocus;
 @end

@@ -42,6 +42,7 @@
 - (id)resolveStillPath:(id)arg1;
 - (id)filePathForEdit:(id)arg1 fileExists:(char *)arg2;
 - (id)mediaItemFromEvent:(id)arg1 atPath:(id)arg2;
+- (id)newOfflineMediaForEdit:(id)arg1 inSequence:(id)arg2 url:(id)arg3 eventProject:(id)arg4;
 - (id)newAnchoredObjectForEdit:(id)arg1 inSequence:(id)arg2;
 - (id)newImportMediaWithURL:(id)arg1 pathPtr:(id *)arg2 error:(id *)arg3;
 - (id)keywordForiMovieKey:(id)arg1;
@@ -116,6 +117,7 @@
 - (double)dict:(id)arg1 doubleForKey:(id)arg2 withDefault:(double)arg3;
 - (BOOL)dict:(id)arg1 boolForKey:(id)arg2 withDefault:(BOOL)arg3;
 - (struct _NSRange)dict:(id)arg1 rangeForKey:(id)arg2 withDefault:(struct _NSRange)arg3;
+- (id)dict:(id)arg1 objectForKey:(id)arg2 withDefault:(id)arg3;
 - (BOOL)rgbColorEquals:(id)arg1 red:(float)arg2 blue:(float)arg3 green:(float)arg4;
 
 @end

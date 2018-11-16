@@ -18,6 +18,7 @@
     BOOL _hasRootFolderChildren;
     FFMediaEventProjectData *_projectData;
     BOOL _mediaIsSyncing;
+    BOOL _isLoadingProjectData;
 }
 
 + (BOOL)classIsAbstract;
@@ -30,6 +31,7 @@
 - (void)_updateMediaFromFileSystem:(BOOL)arg1;
 - (void)updateMediaFromFileSystem;
 - (void)updateMediaFromFileSystemKeepTempFiles;
+- (id)newAssetRefFromURL:(id)arg1 manageFileType:(int)arg2 foundExistingFile:(char *)arg3;
 - (id)newAssetRefFromURL:(id)arg1 manageFileType:(int)arg2;
 - (void)setEventEarliestDate:(id)arg1;
 - (void)setEventLatestDate:(id)arg1;
@@ -84,9 +86,9 @@
 - (id)defaultMediaEvent;
 - (id)resolveAsset:(id)arg1;
 - (void)thumbnailMediaSet:(id)arg1;
-- (BOOL)referencesExistForAssetRef:(id)arg1 excludingTheseClips:(id)arg2;
-- (BOOL)referencesExistForAssetRef:(id)arg1;
-- (id)eventClipsForAssetRefs:(id)arg1;
+- (BOOL)referencesExistForMediaRef:(id)arg1 excludingTheseClips:(id)arg2;
+- (BOOL)referencesExistForMediaRef:(id)arg1;
+- (id)eventClipsForMediaRefs:(id)arg1;
 - (id)recommendedAssetOriginalURLForURL:(id)arg1 hasCameraTag:(BOOL)arg2 fileIsAlreadyAtURL:(BOOL)arg3 assetID:(id)arg4;
 - (void)updateDateRangeWithMedia:(id)arg1 ignoreExistingDates:(BOOL)arg2;
 @property(nonatomic) BOOL mediaIsSyncing;
@@ -95,6 +97,7 @@
 - (id)newTableOfMediaRepsByFilename:(SEL)arg1;
 - (id)effectReferences;
 - (id)assetReferences;
+- (id)clipReferences;
 - (void)_rangeInvalidated:(id)arg1;
 - (id)volumeName;
 - (id)sourceURL;

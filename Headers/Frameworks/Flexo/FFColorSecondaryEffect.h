@@ -18,9 +18,14 @@ __attribute__((visibility("hidden")))
     FFHeColorEffect *_colorEffect;
     FFErfCache *_erfCache;
     _Bool _overlayAlpha;
+    struct {
+        unsigned int hasOuterChannel:1;
+        unsigned int hasColorIsolation:1;
+    } _cachedInfoState;
 }
 
 + (void)registerEffects;
++ (id)copyClassDescription;
 + (id)createChannel2DInFolder:(id)arg1 name:(id)arg2 channelID:(unsigned int)arg3 withDefaultValue:(id)arg4;
 + (id)createChannelDoubleInFolder:(id)arg1 name:(id)arg2 channelID:(unsigned int)arg3 withDefaultValue:(id)arg4;
 + (id)createChannelPositionInFolder:(id)arg1 name:(id)arg2 channelID:(unsigned int)arg3 withDefaultValue:(id)arg4;
@@ -29,11 +34,14 @@ __attribute__((visibility("hidden")))
 + (id)effectID;
 - (id)initWithEffectID:(id)arg1;
 - (void)dealloc;
+@property(readonly) BOOL hasOuterChannel; // @dynamic hasOuterChannel;
+@property(readonly) BOOL hasColorIsolation; // @dynamic hasColorIsolation;
 - (id)newOuterColorCorrectionChannelFolder;
 - (void)createColorCorrectionChannelsInFolder:(id)arg1;
 - (id)newShapeChannelsWithChannelID:(unsigned int)arg1;
 - (id)newShapeChannelFolder;
 - (id)newIsolationChannelFolder;
+- (unsigned long long)preferredChannelFolderIndexForChannelID:(unsigned int)arg1;
 - (BOOL)_isColorIsolationEnabled;
 - (BOOL)isColorIsolationEnabled;
 - (void)createChannelsInFolder:(id)arg1;
@@ -68,10 +76,21 @@ __attribute__((visibility("hidden")))
 - (id)shapeChannelAtIndex:(unsigned long long)arg1;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (id)getColorIsolationAverageColor:(CDStruct_1b6d18a9)arg1;
+- (struct ASC_CDL_Container *)newAmericanSocietyOfCinematographersColorDecisionListContainerFromInnerCorrection:(BOOL)arg1;
+- (void)setAmericanSocietyOfCinematographersColorDecisionListContainer:(struct ASC_CDL_Container *)arg1 toInnerCorrection:(BOOL)arg2;
+- (struct Color_Pucks_Container *)newColorPucksContainerFromInnerCorrection:(BOOL)arg1;
+- (void)setColorPucksContainer:(struct Color_Pucks_Container *)arg1 toInnerCorrection:(BOOL)arg2;
 - (void)setColorEffect:(id)arg1;
-- (void)setEnabled:(BOOL)arg1;
+- (id)colorEffect;
 - (BOOL)isAtDefaultSettings;
+- (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
+- (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
+- (void)_postInit:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned int)nextAvailableShapeChannelID;
+- (unsigned long long)_preferredChannelFolderIndexForChannelID:(unsigned int)arg1 inFolder:(id)arg2;
+- (void)updateCacheInfo;
+- (void)didInsertChannel:(id)arg1 intoFolder:(id)arg2 inEffect:(id)arg3 atIndex:(unsigned long long)arg4;
 @property _Bool overlayAlpha; // @synthesize overlayAlpha=_overlayAlpha;
 
 @end

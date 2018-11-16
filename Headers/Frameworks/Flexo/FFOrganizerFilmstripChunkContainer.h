@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
 - (void)replaceChunk:(id)arg1 withChunk:(id)arg2;
 - (BOOL)chunkShouldHaveVariantBadge:(id)arg1;
 - (BOOL)chunkShouldHaveComposedBadge:(id)arg1;
+- (BOOL)chunkShouldHaveMultiBadge:(id)arg1;
+- (BOOL)chunkShouldHavePSDBadge:(id)arg1;
 - (void)addChunk:(id)arg1;
 - (BOOL)hasLayer;
 - (void)setSelectedRangesOfMedia:(id)arg1;

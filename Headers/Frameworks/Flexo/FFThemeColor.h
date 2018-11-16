@@ -80,12 +80,11 @@
 + (id)auditionPanelTextColor;
 + (id)curveEditorAudioGuideline;
 + (id)curveEditorAudioGuidelineShadow;
-+ (id)curveEditorCurveAudio;
-+ (id)curveEditorCurveAudioPressed;
-+ (id)curveEditorCurveAudioRollover;
-+ (id)curveEditorCurveVideo;
-+ (id)curveEditorCurveVideoPressed;
-+ (id)curveEditorCurveVideoRollover;
++ (id)curveEditorCurve;
++ (id)curveEditorCurveBlack;
++ (id)curveEditorCurvePressed;
++ (id)curveEditorCurvePressedOutline;
++ (id)curveEditorCurveRollover;
 + (id)curveEditorFadeFill;
 + (id)curveEditorFadeLine;
 + (id)curveEditorGuidelineMajor;

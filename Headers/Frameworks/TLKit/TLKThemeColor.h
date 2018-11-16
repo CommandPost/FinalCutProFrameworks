@@ -15,8 +15,16 @@
 + (id)accessoryItemAudioUnSelectedColor;
 + (id)accessoryItemSecondarySelectedColor;
 + (id)accessoryItemSelectedColor;
++ (id)audioOnlyClipBackgroundColor;
++ (id)audioOnlyHighlightedClipBackgroundColor;
++ (id)avClipBackgroundColor;
++ (id)avClipHighlightedClipBackgroundColor;
++ (id)disabledAudioBackgroundColor;
 + (id)edgeAllowedColor;
 + (id)edgeNotAllowedColor;
++ (id)filmstripDividerBackgroundColor;
++ (id)generatorClipBackgroundColor;
++ (id)generatorHightlightedClipBackgroundColor;
 + (id)guideLineColor;
 + (id)itemRulerTickColor;
 + (id)itemTextColor;
@@ -34,16 +42,14 @@
 + (id)slimContainerClipBorderColor;
 + (id)slimGapClipBorderColor;
 + (id)slimGeneratorClipBorderColor;
-+ (id)slimMotionPlaceholderClipBorderColor;
 + (id)slimTitleClipBorderColor;
 + (id)slimTransitionlipBorderColor;
-+ (id)soloAudioShadowColor;
-+ (id)soloVideoShadowColor;
 + (id)timelineBackgroundColor;
 + (id)timelineBackgroundDisabledColor;
 + (id)timelineGuidelineSnappingHeavyColor;
 + (id)timelineGuidelineSnappingLightColor;
-+ (id)videoFilmstripBorderColor;
++ (id)titleClipBackgroundColor;
++ (id)titleHightlightedClipBackgroundColor;
 
 @end
 

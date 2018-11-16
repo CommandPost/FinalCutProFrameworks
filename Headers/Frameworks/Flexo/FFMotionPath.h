@@ -13,11 +13,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)maybeInitResources;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (void)dealloc;
 - (struct OZSceneNode *)getSceneNode;
 - (struct OZSceneNode *)getAssociatedSceneNode;
-- (struct POVertexAsset *)initAsset:(unsigned int)arg1;
 - (id)motionPathOSCColor;
 - (_Bool)getSamples:(const PCMatrix44Tmpl_93ed1289 *)arg1;
 - (struct OZObjectManipulator *)getObjectManipulator;
@@ -50,9 +50,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)transformPath;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (void)drawPath;
+- (PCPtr_fc939811)getVertexAsset:(int)arg1;
 - (void)convertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
 - (void)inverseConvertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
-- (struct POVertexAsset *)initAsset:(unsigned int)arg1 largeAssets:(_Bool)arg2;
+- (PCPtr_fc939811)initAsset:(unsigned int)arg1 largeAssets:(_Bool)arg2;
 - (void)drawVertices:(const PCMatrix44Tmpl_93ed1289 *)arg1 mode:(unsigned int)arg2;
 - (void)buildPointMenu;
 - (void)menu:(id)arg1 willHighlightItem:(id)arg2;

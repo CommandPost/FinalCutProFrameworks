@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
+- (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
 - (BOOL)isAvailableDuringPlayback;

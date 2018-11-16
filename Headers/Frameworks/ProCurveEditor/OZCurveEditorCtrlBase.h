@@ -125,6 +125,7 @@
 - (void)duplicateSelected:(id)arg1;
 - (void)moveSelected:(id)arg1 x:(CDStruct_1b6d18a9)arg2 y:(double)arg3 useSelectionOrder:(BOOL)arg4 isConstraining:(BOOL)arg5;
 - (void)offsetSelected:(id)arg1 x:(CDStruct_1b6d18a9)arg2 y:(double)arg3;
+- (void)offsetCurve:(id)arg1 x:(CDStruct_1b6d18a9)arg2 y:(double)arg3;
 - (struct CGPoint)getKeypointPosition:(id)arg1;
 - (_Bool)shouldDeleteKeypoints;
 - (void)easeInSelected:(id)arg1;

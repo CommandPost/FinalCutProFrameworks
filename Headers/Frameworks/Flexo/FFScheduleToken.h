@@ -17,12 +17,15 @@
 - (id)initWithStream:(id)arg1;
 - (void)dealloc;
 - (unsigned int)scheduleStatusInformation;
+- (_Bool)areStatusFlagsClear:(unsigned int)arg1;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
-- (void)hintWillImageSoon;
+- (_Bool)hintWillImageSoon;
 - (void)hintCacheData:(unsigned int)arg1;
 - (id)description;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)addEntriesFromDictionary:(id)arg1;
 - (id)objectForKey:(id)arg1;
+- (id)newTokenForPassThruStream:(id)arg1;
 
 @end
 

@@ -6,13 +6,17 @@
 
 #import "FFApplication.h"
 
+@class SPODDetector;
+
 @interface PEApplication : FFApplication
 {
+    SPODDetector *m_spodDetector;
 }
 
 - (void)_reportExceptionToUser:(id)arg1;
 - (void)reportException:(id)arg1;
 - (void)finishLaunching;
+- (void)dealloc;
 - (void)miniaturizeAll:(id)arg1;
 - (BOOL)hideTitlebarWhenFullScreen;
 

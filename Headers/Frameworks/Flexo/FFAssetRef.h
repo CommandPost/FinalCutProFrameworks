@@ -4,93 +4,59 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFMedia.h>
+#import <Flexo/FFMediaRef.h>
 
-#import "FFSkimmableProtocol.h"
-#import "NSCoding.h"
-#import "NSCopying.h"
-
-@class FFAsset, FFVideoProps, NSString, NSURL;
+@class FFVideoProps, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFAssetRef : FFMedia <NSCoding, NSCopying, FFSkimmableProtocol>
+@interface FFAssetRef : FFMediaRef
 {
-    NSString *_eventDocumentID;
-    NSString *_assetIdentifier;
     NSString *_cameraClipID;
     NSURL *_originalMediaURL;
+    NSString *_uttype;
     FFVideoProps *_videoProps;
     NSString *_videoFormatName;
-    FFAsset *_asset;
-    BOOL _changingAsset;
-    int _offlineReason;
 }
 
-+ (BOOL)classIsAbstract;
 + (id)copyClassDescription;
-+ (id)assetRefComparisonSetFromAssetRefSet:(id)arg1;
-+ (id)assetRefComparisonSetFromAssetRefArray:(id)arg1;
-+ (BOOL)assetRefArrayContents:(id)arg1 matchArray:(id)arg2;
-- (id)eventDocumentID;
-- (void)setEventDocumentID:(id)arg1;
-- (id)init;
++ (id)keyPathsForValuesAffectingAsset;
 - (id)initWithAsset:(id)arg1 assetEvent:(id)arg2;
 - (void)dealloc;
-- (void)_deferredNotification;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)asset;
-- (BOOL)isEqualToRef:(id)arg1;
-- (id)assetRefComparisonValue;
+- (BOOL)verifyFileCompatibility:(id)arg1 returnIsIdentical:(char *)arg2 returnIsCompatible:(char *)arg3 returnNewMediaRange:(CDStruct_e83c9415 *)arg4 returnAssetID:(id *)arg5 returnAudioSourceDict:(id *)arg6 error:(id *)arg7;
 - (id)originalMediaRep;
 - (id)optimizedMediaRep;
 - (id)proxyMediaRep;
-- (id)event;
-@property(readonly, nonatomic) BOOL proxyAvailable;
-@property(readonly, nonatomic) BOOL highQualityAvailable;
+- (BOOL)proxyAvailable;
+- (BOOL)highQualityAvailable;
 - (BOOL)originalAvailable;
-@property(readonly, nonatomic) BOOL mediaAvailable;
-@property(readonly, nonatomic) int proxyOfflineReason;
-@property(readonly, nonatomic) int highQualityOfflineReason;
+- (BOOL)mediaAvailable;
+- (int)proxyOfflineReason;
+- (int)highQualityOfflineReason;
+- (void)invalidate;
 - (void)createFlowMediaRep;
 - (void)setFlowVectors:(CDStruct_e83c9415)arg1;
 - (id)flowMediaRep;
 - (id)newDominantMotionMediaRep;
 - (id)dominantMotionMediaRep;
 - (void)setDescriptionText:(id)arg1;
-- (id)descriptionText;
-- (void)setDisplayName:(id)arg1;
-- (void)setMediaRange:(CDStruct_e83c9415)arg1;
-- (void)setHasAudio:(BOOL)arg1;
-- (void)setHasVideo:(BOOL)arg1;
-- (void)setTimecodeFrameDuration:(CDStruct_1b6d18a9)arg1;
-- (void)setAudioChannelCount:(long long)arg1;
-- (void)setAudioSampleRate:(double)arg1;
-- (void)setIsGood:(BOOL)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
-- (id)description;
-- (id)assets;
-- (id)assetRefs;
-- (id)fileURLs:(int)arg1;
 - (void)_forceSetVideoProps:(id)arg1;
 - (void)_updateRefState;
-- (id)_offlineCacheIdentifier;
-- (void)sourceRangeInvalidated:(id)arg1;
-- (void)undidMoveToTrash:(id)arg1;
+@property(readonly, retain, nonatomic) FFVideoProps *videoProps; // @synthesize videoProps=_videoProps;
 - (id)videoFormatName;
 - (void)setVideoFormatName:(id)arg1;
-- (id)originalMediaURL;
+@property(readonly, nonatomic) NSURL *originalMediaURL; // @synthesize originalMediaURL=_originalMediaURL;
 - (void)setOriginalMediaURL:(id)arg1;
-- (id)newProvider;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
-- (id)newProviderWithEffectCount:(long long)arg1;
-@property(readonly, retain, nonatomic) FFVideoProps *videoProps;
-- (id)eventName;
 - (id)mdMappedKeyPathForKey:(id)arg1;
-@property(readonly, nonatomic) int offlineReason; // @synthesize offlineReason=_offlineReason;
+- (id)assetRefs;
+- (id)eventName;
+- (id)clipRefs;
+- (BOOL)isPSD;
+@property(retain, nonatomic) NSString *uttype; // @synthesize uttype=_uttype;
 @property(readonly, nonatomic) NSString *cameraClipID; // @synthesize cameraClipID=_cameraClipID;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_assetIdentifier;
 
 @end
 

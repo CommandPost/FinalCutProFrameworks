@@ -18,12 +18,16 @@
     float _crossCorrelationMAD;
     BOOL _downsampling;
     unsigned int _downsamplerate;
+    unsigned int _referenceSampleRate;
     struct AudioStreamBasicDescription _lowerSRformat;
     unsigned int _adjustedsize;
     double _longestDuration;
+    BOOL _useNewStatistics;
 }
 
-+ (_Bool)taskCancelled;
++ (void)setUpdateProgressGranularity:(unsigned long long)arg1;
++ (_Bool)updateProgressCheckTaskCancelled;
++ (void)resetProgress:(float)arg1;
 - (struct AudioStreamBasicDescription)formatInfo:(id)arg1;
 - (id)initWithObject:(id)arg1 andUtil:(id *)arg2;
 - (id)initWithObject:(id)arg1 andObjectB:(id)arg2 andUtilA:(id *)arg3 andUtilB:(id *)arg4;
@@ -33,13 +37,17 @@
 - (double)getCorrCoeff;
 - (double)calculateCorrCoeff:(id)arg1 andUtilB:(id)arg2;
 - (int)getXCorrZeroPaddedSize:(unsigned int)arg1;
+- (unsigned int)calculateDurationAndUpdateMax:(id)arg1 forXCorr:(_Bool)arg2;
+- (void)calculateReasonableSizeAndRates:(id)arg1 b:(id)arg2;
 - (void)setupPullToBuffer:(id)arg1 forXCorr:(_Bool)arg2;
 - (void)calculateCrossCorrelationFunction:(id)arg1 andUtilB:(id)arg2 withPhaseCorr:(_Bool)arg3;
-- (id)getPeaksData:(id)arg1 andObject:(id)arg2 andSamplesPerPeak:(float)arg3;
+- (id)getPeaksData:(id)arg1 andObject:(id)arg2 andSamplesPerPeak:(float)arg3 synchronously:(_Bool)arg4;
 - (void)adjustRangesForSecondPass:(int)arg1 utilA:(id)arg2 utilB:(id)arg3;
+- (void)adjustAndCenterRangesForSecondPass:(int)arg1 utilA:(id)arg2 utilB:(id)arg3;
+- (id)eventClip:(id)arg1;
 - (void)calculateCrossCorrelationFunctionUsingPeaks:(id)arg1 andUtilB:(id)arg2 withPhaseCorr:(_Bool)arg3;
 - (float)getCrossCorrelationFunctionPeakValue;
-- (int)getCrossCorrelationFunctionPeakIndex;
+- (CDStruct_1b6d18a9)getCrossCorrelationFunctionPeakIndex;
 - (float)getCrossCorrelationFunctionConfidence;
 - (float)getCrossCorrelationFunctionMAD;
 - (void)setDownsampling:(BOOL)arg1;
@@ -51,6 +59,7 @@
 - (double)getRMS:(id)arg1;
 - (_Bool)hasSilence:(id)arg1 onTask:(id)arg2;
 - (_Bool)isSpectrallySimilar:(id)arg1 andUtilB:(id)arg2 wasStereo:(BOOL)arg3 onTask:(id)arg4;
+@property BOOL useNewStatistics; // @synthesize useNewStatistics=_useNewStatistics;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <Flexo/FFDest.h>
 
-@class FFPlayer;
+@class FFPlayer, FFReducedRateTracker;
 
 __attribute__((visibility("hidden")))
 @interface FFDestVideo : FFDest
@@ -18,8 +18,11 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _frameDuration;
     int _fieldDominance;
     struct CGRect _sequenceBounds;
+    FFReducedRateTracker *_rrt;
+    BOOL _enableDrawAllAngles;
 }
 
++ (BOOL)automaticallyNotifiesObserversForEnableDrawAllAngles;
 - (id)init;
 - (void)dealloc;
 - (void)setDelegate:(id)arg1;
@@ -37,15 +40,20 @@ __attribute__((visibility("hidden")))
 - (BOOL)wantsDithering:(id)arg1;
 - (void)flush:(BOOL)arg1;
 - (void)pushFrame:(id)arg1;
-- (BOOL)wantsMoreFrames;
+- (int)getFrameQueueStatus;
+- (const char *)_getFrameQueueStatusString;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (int)drawFieldsInterlaced;
+- (BOOL)enableDrawAllAngles;
+- (void)setEnableDrawAllAngles:(BOOL)arg1;
 - (struct CGRect)sequenceBounds;
 - (void)setNeedsUpdate:(BOOL)arg1;
 - (_Bool)shouldSkipFrame:(CDStruct_1b6d18a9)arg1 playRate:(double)arg2;
-- (void)skippedFrame:(CDStruct_1b6d18a9)arg1;
-- (void)setLastHealthMetric:(float)arg1;
+- (void)skippedFrame:(CDStruct_1b6d18a9)arg1 outOfSequence:(BOOL)arg2;
+- (void)setLastHealthMetric:(float)arg1 diskHealth:(float)arg2;
 - (id)description;
+- (unsigned int)outputLatencyInFrames;
+@property(retain) FFReducedRateTracker *reducedRateTracker; // @synthesize reducedRateTracker=_rrt;
 @property(readonly) CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
 @property(readonly) CDStruct_1b6d18a9 sampleDuration; // @synthesize sampleDuration=_sampleDuration;
 

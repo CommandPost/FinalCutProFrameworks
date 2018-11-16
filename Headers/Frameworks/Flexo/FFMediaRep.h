@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSString *_md5Seed;
     FFAssetFileIdentifier *_assetFileID;
     id _syncInfo;
+    int _lastModifiedFileDate;
 }
 
 + (BOOL)classIsAbstract;
@@ -75,13 +76,14 @@ __attribute__((visibility("hidden")))
 - (id)newProvider;
 @property(readonly, nonatomic) NSURL *fileURL;
 - (id)fileTypes;
-- (BOOL)verifyFileContentChanged;
+- (BOOL)verifyFileContentIdentical;
 @property(readonly, nonatomic) NSString *md5Seed;
 - (BOOL)_initSyncInfo:(id)arg1 error:(id *)arg2;
 - (int)checkSyncStatus:(id)arg1 error:(id *)arg2;
 - (BOOL)updateSyncStatus:(int)arg1;
+- (BOOL)_updateLastModifiedFileDate:(int)arg1;
 - (int)syncWithMedia:(id)arg1 options:(unsigned int)arg2 needsUpdate:(char *)arg3 error:(id *)arg4;
-- (BOOL)syncBookmarkData:(id)arg1;
+- (BOOL)syncBookmarkData:(id)arg1 forceUpdate:(BOOL)arg2;
 - (void)setSyncStatus:(int)arg1;
 @property(readonly, nonatomic) int syncStatus;
 @property(readonly, nonatomic) BOOL mediaAvailable;
@@ -98,6 +100,8 @@ __attribute__((visibility("hidden")))
 - (id)mdMappedKeyPathForKey:(id)arg1;
 - (void)mdSetValue:(id)arg1 forKey:(id)arg2;
 - (id)mdValueForKey:(id)arg1;
+- (id)metadataContentCreated;
+- (void)setMetadataContentCreated:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 - (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
 - (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;

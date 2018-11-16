@@ -58,6 +58,8 @@
 - (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
 - (void)unmountVolume:(id)arg1;
 - (void)revealVolumeInFinder:(id)arg1;
+- (void)renameCameraVolume:(id)arg1;
+- (void)revertCameraVolumeName:(id)arg1;
 - (void)importOptionsSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)importClips:(id)arg1;
 - (BOOL)finishedLoading;
@@ -66,7 +68,6 @@
 - (BOOL)canArchiveItem:(id)arg1;
 - (void)createCameraArchive:(id)arg1;
 - (void)stopImport:(id)arg1;
-- (void)tapeArchiveStoppedAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)selectAll:(id)arg1;
 - (void)deselectAll:(id)arg1;
 - (BOOL)windowShouldClose:(id)arg1;

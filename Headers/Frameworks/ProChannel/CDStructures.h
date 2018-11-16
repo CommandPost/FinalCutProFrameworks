@@ -237,6 +237,30 @@ struct OZChannelBool {
     struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
+struct OZChannelBool3D {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString _field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    _Bool _field18;
+    struct OZChannelBool _field19;
+    struct OZChannelBool _field20;
+    struct OZChannelBool _field21;
+};
+
 struct OZChannelButton {
     CDUnknownFunctionPointerType *_field1;
     struct OZFactory *_field2;
@@ -596,6 +620,7 @@ struct OZChannelGradient {
     struct OZChannelDouble _field20;
     struct OZChannelEnum _field21;
     int _field22;
+    _Bool _field23;
 };
 
 struct OZChannelGradientAlphaFolder {
@@ -641,7 +666,8 @@ struct OZChannelGradientExtras {
     struct OZChannelDouble _field20;
     struct OZChannelEnum _field21;
     int _field22;
-    struct OZChannelEnum _field23;
+    _Bool _field23;
+    struct OZChannelEnum _field24;
 };
 
 struct OZChannelGradientFolder {
@@ -687,9 +713,10 @@ struct OZChannelGradientPositioned {
     struct OZChannelDouble _field20;
     struct OZChannelEnum _field21;
     int _field22;
-    struct OZChannelEnum _field23;
-    struct OZChannelPosition _field24;
+    _Bool _field23;
+    struct OZChannelEnum _field24;
     struct OZChannelPosition _field25;
+    struct OZChannelPosition _field26;
 };
 
 struct OZChannelGradientRGBFolder {
@@ -806,8 +833,9 @@ struct OZChannelGradientWithAngle {
     struct OZChannelDouble _field20;
     struct OZChannelEnum _field21;
     int _field22;
-    struct OZChannelEnum _field23;
-    struct OZChannelAngle _field24;
+    _Bool _field23;
+    struct OZChannelEnum _field24;
+    struct OZChannelAngle _field25;
 };
 
 struct OZChannelHistogram {
@@ -1220,6 +1248,7 @@ struct OZChannelText {
     unsigned int _field20;
     struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
     struct PCString _field22;
+    _Bool _field23;
 };
 
 struct OZChannelTimeConverter;

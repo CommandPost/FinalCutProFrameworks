@@ -8,13 +8,14 @@
 
 #import "NSMenuDelegate.h"
 
-@class FFAnalyzeMediaWindowController, FFEventSidebarModule, FFMediaEventSidebarProvider, FFOrganizerFilmstripModule, FFTranscodeMediaWindowController, OKPaneCapItemButton;
+@class FFAnalyzeMediaWindowController, FFEventSidebarModule, FFMediaEventSidebarProvider, FFModifyContentCreationDateWindowController, FFOrganizerFilmstripModule, FFTranscodeMediaWindowController, OKPaneCapItemButton;
 
 @interface FFEventLibraryModule : FFEventsSuperModule <NSMenuDelegate>
 {
     FFMediaEventSidebarProvider *_eventProvider;
     FFTranscodeMediaWindowController *_transcodeController;
     FFAnalyzeMediaWindowController *_analyzeController;
+    FFModifyContentCreationDateWindowController *_creationDateWindowController;
     OKPaneCapItemButton *_listViewPaneCapItem;
     id _objectForContextualMenu;
 }
@@ -48,6 +49,7 @@
 - (void)revealObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2 atPlayhead:(CDStruct_1b6d18a9)arg3;
 - (id)context;
 - (void)importFile:(id)arg1;
+- (void)relinkFiles:(id)arg1;
 - (void)newEvent:(id)arg1;
 - (void)newKeyword:(id)arg1;
 - (void)newProjectFolder:(id)arg1;
@@ -62,6 +64,7 @@
 - (void)toggleArrangeEventsByMostRecent:(id)arg1;
 - (void)transcodeMedia:(id)arg1;
 - (void)analyzeAndFix:(id)arg1;
+- (void)modifyContentCreationDate:(id)arg1;
 - (BOOL)_deleteFolderObjects:(id)arg1 types:(int)arg2 error:(id *)arg3;
 - (BOOL)_deleteEvents:(id)arg1 error:(id *)arg2;
 - (void)moveToTrash:(id)arg1;

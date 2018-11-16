@@ -31,8 +31,10 @@
 - (BOOL)shouldDrawVideoDest:(id)arg1;
 - (void)setDrawingEnabled:(BOOL)arg1;
 - (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
 - (struct CGRect)bounds;
+- (void)setViewProperties:(id)arg1;
+- (id)viewProperties;
 - (void)updatePlayerAndDest:(id)arg1;
 
 @end

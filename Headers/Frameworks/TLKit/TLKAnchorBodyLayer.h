@@ -14,6 +14,7 @@
 }
 
 - (id)init;
+- (void)invalidate;
 - (void)removeAttachedAnchors;
 - (void)setAnchorDirection:(int)arg1;
 - (void)setAnchorHeadLayer:(id)arg1;

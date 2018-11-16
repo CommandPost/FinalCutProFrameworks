@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned char digest[16];
     } _profileMD5;
+    struct __CFData *_iccData;
     int _colorSpaceEnum;
 }
 

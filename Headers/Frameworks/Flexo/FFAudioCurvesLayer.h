@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithObject:(id)arg1 topToBottom:(BOOL)arg2 timeline:(id)arg3;
 - (id)initWithItem:(id)arg1 splitEdit:(BOOL)arg2 timeline:(id)arg3;
 - (void)dealloc;
+- (void)addAngleObservers;
+- (void)removeAngleObservers;
+- (BOOL)observeAngleForKey:(id)arg1;
 - (BOOL)isValidAudioChannelForObject:(id)arg1;
 - (id)selectedLayer;
 - (id)selectedLayers;

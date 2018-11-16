@@ -31,6 +31,10 @@
 + (id)markerLineTeal;
 + (id)markerLineYellow;
 + (id)projectBrowserThumbnailViewBGColor;
++ (id)timebarAudioWaveform;
++ (id)timebarAudioWaveformDisabled;
++ (id)timebarAudioWaveformNormal;
++ (id)timebarAudioWaveformSelected;
 + (id)timelineAudioWaveformChannel;
 + (id)timelineClipTextBlue;
 + (id)timelineClipTextGreen;

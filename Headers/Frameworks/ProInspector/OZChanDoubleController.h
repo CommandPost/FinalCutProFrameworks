@@ -50,6 +50,7 @@
 - (double)sliderUserValueRange:(struct OZChannel *)arg1;
 - (double)valueBias;
 - (id)formatterClassName;
+- (id)sliderClassName;
 
 @end
 

@@ -16,7 +16,6 @@
 - (void)dealloc;
 - (void)setHeight:(double)arg1;
 - (void)updateFromSelection:(id)arg1;
-- (void)_updatePinsForSelection:(id)arg1;
 - (void)removeAllPosterPins;
 - (void)_addPins:(id)arg1 forItem:(id)arg2;
 - (void)updatePositionOfItem:(id)arg1;

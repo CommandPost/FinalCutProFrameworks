@@ -14,9 +14,10 @@
 - (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
 
 @optional
+- (BOOL)matchToolShouldCancelOnUndo:(id)arg1;
 - (BOOL)allowsReferenceChangeFromOrganizerListView;
 - (id)copyCompliantObjectsFromSelection:(id)arg1;
-- (id)windowNibName;
+- (id)footerNibName;
 - (id)footerText;
 - (id)accessoryTitle;
 - (id)okButtonTitle;

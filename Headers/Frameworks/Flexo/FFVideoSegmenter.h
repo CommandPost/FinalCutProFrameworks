@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)sequence;
 - (id)anchoredCollection;
 - (void)dealloc;
-- (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 angle:(long long)arg6 toLane:(long long)arg7 showOnlyObjects:(id)arg8 roles:(id)arg9 clippedByContainer:(BOOL)arg10;
+- (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 audioAngle:(id)arg6 videoAngle:(id)arg7 toLane:(long long)arg8 showOnlyObjects:(id)arg9 roles:(id)arg10 angleOffset:(long long)arg11 angleCount:(long long)arg12 clippedByContainer:(BOOL)arg13;
 
 @end
 

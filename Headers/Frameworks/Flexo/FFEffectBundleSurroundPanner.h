@@ -8,16 +8,51 @@
 
 #import "FFChannelChangeControllerDivorcedDelegate.h"
 
+@class CHChannel, FFAnchoredObject;
+
 __attribute__((visibility("hidden")))
 @interface FFEffectBundleSurroundPanner : FFEffectBundle <FFChannelChangeControllerDivorcedDelegate>
 {
+    FFAnchoredObject *m_object;
+    CHChannel *m_amountChannel;
+    BOOL m_lastAmountChannelIsModified;
+    BOOL m_defaultPartIsInMonoMode;
+    BOOL m_needToMigrateChannelFolder;
 }
 
++ (id)pannerEffectBundleParts;
++ (id)copyClassDescription;
 + (void)unrigChannel:(id)arg1 inPanner:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)dealloc;
+- (void)_postInit:(id)arg1;
+- (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
+- (void)setActivePresetIndex:(int)arg1;
+- (int)activePresetIndex;
+- (id)channelFolder;
 - (id)keyframeableChannels;
+- (id)unriggedChannels;
+- (id)channelByXMLName:(id)arg1;
+- (id)XMLNameForChannel:(id)arg1;
 - (id)channelChangeDelegate;
 - (void)sender:(id)arg1 beginChannelChange:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (BOOL)isStereoMode;
+- (BOOL)_isInDefaultPanMode;
+- (void)_updateDefaultPanMode;
+- (void)_addAnchoredObjectObserving;
+- (void)_removeAnchoredObjectObserving;
+- (void)_addAmountChannelObserving;
+- (void)_removeAmountChannelObserving;
+- (void)setEffectStack:(id)arg1;
+- (void)effectStackAnchoredObjectDidChange;
+- (void)_amountChannelChanged:(id)arg1;
+- (void)partChanged;
+- (id)presetNames;
+- (unsigned long long)activePartIndex;
+- (id)readEffectBundlePartsFromFile;
+- (void)createActivePartEffectChannels;
+- (void)setEffectBundleParts:(id)arg1;
 
 @end
 

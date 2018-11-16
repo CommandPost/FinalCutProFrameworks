@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)dealloc;
+- (void)didBuildUI;
 - (void)update;
 - (void)toggleColor:(id)arg1;
 

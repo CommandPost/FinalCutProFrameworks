@@ -70,6 +70,7 @@
     int _lastRenderHeight;
     float _monitorGamma;
     double _rate;
+    BOOL _didPreroll;
     struct FFPMRSimpleTimer *_pmrTimer;
     struct OZProxyScrub _proxyScrub;
     int _proxyRendCount;
@@ -83,6 +84,7 @@
 - (void)dealloc;
 - (void)awakeFromNib;
 - (const struct OZRenderState *)getRenderState;
+- (void)setIgnoreTransformationsForElement:(struct OZTransformNode *)arg1;
 - (struct OZAudioMixer *)getAudioMixer;
 - (int)getResolutionMode;
 - (void)setResolutionMode:(int)arg1;
@@ -148,6 +150,8 @@
 - (void)thinKeyframes;
 - (void)stopPause;
 - (_Bool)isPlaying;
+- (BOOL)didPreroll;
+- (void)setDidPreroll:(BOOL)arg1;
 - (void)setPlayForward:(_Bool)arg1;
 - (_Bool)isPlayingForward;
 - (_Bool)isAnimatingCamera;

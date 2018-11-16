@@ -6,17 +6,19 @@
 
 #import <Flexo/FFDestVideoAnalyzerController.h>
 
-@class FFImage, FFPixelBuffer;
+#import "FFDestAnalyzerProtocol.h"
+
+@class FFPixelBuffer, FFPlayerFrame;
 
 __attribute__((visibility("hidden")))
-@interface FFDominantMotionTracker : FFDestVideoAnalyzerController
+@interface FFDominantMotionTracker : FFDestVideoAnalyzerController <FFDestAnalyzerProtocol>
 {
     struct _NSRange _calculationRange;
     struct _NSRange _scanRange;
-    int _fieldDominance;
-    FFImage *_incomingImage;
-    FFImage *_cachedImage;
-    FFPixelBuffer *_pixelBufferCtx;
+    int _hdmtiFieldDominance;
+    FFPlayerFrame *_incomingFrame;
+    FFPixelBuffer *_pixelBufferCtx0;
+    FFPixelBuffer *_pixelBufferCtx1;
     struct {
         unsigned int shouldTerminate:1;
         unsigned int estimationInProgress:1;
@@ -24,29 +26,26 @@ __attribute__((visibility("hidden")))
         unsigned int createSmartCollectionFolders:1;
         unsigned int isReusingAnalysisResults:1;
     } _state;
-    CDUnknownBlockType _analyzeImage;
     void *_FFDominantMotionTrackerPrivate;
 }
 
-+ (id)dominantMotionTrackerWithAnchoredObject:(id)arg1;
-- (id)initWithAnchoredObject:(id)arg1 createSmartCollectionFolders:(BOOL)arg2;
+- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 clip:(id)arg2 asset:(id)arg3 createSmartCollectionFolders:(BOOL)arg4;
 - (void)dealloc;
-- (void)start;
-- (CDUnknownBlockType)analyzeImage;
-- (void)finish;
-- (void)cancel;
-- (void)pause;
-- (void)resume;
+- (int)analyzePlayerFrame:(id)arg1;
+- (void)startAnalyzing;
+- (void)finishAnalyzing;
+- (void)cancelAnalyzing;
 - (BOOL)reuseDataForAnalyzing;
-- (void)startEstimatedMotionOnImage:(id)arg1;
+- (void)startEstimatedMotionOnFrame:(id)arg1;
 - (void)endEstimation;
 - (void)joinTrackerThread;
 - (void)storeResultsInAsset;
 - (void)terminate;
-- (int)pushImageFromDest:(void **)arg1;
+- (int)pushFrameFromDest:(void **)arg1;
+- (int)pushFrameFromDest:(void **)arg1 buffer2:(void **)arg2;
 - (id)newDominantMotionMediaRep;
-- (id)assignAnalyzeImageCallback;
-- (id)setIncomingImage:(id)arg1;
+- (id)setIncomingFrame:(id)arg1;
+- (BOOL)isProgressive;
 
 @end
 

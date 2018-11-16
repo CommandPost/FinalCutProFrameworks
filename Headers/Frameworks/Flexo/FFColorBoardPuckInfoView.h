@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class FFColorBoardPuckInfoLegendView, LKTextField;
+@class FFColorBoardPuckInfoLegendView, FFColorBoardPuckInfoScrubber, LKTextField, NSTextField;
 
 __attribute__((visibility("hidden")))
 @interface FFColorBoardPuckInfoView : NSView
@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
     int _boardType;
     FFColorBoardPuckInfoLegendView *_legendView;
     LKTextField *_puckTypeTextField;
-    LKTextField *_xDataTextField;
-    LKTextField *_yDataTextField;
+    FFColorBoardPuckInfoScrubber *_xDataScrubber;
+    LKTextField *_xDataSuffix;
+    FFColorBoardPuckInfoScrubber *_yDataScrubber;
+    NSTextField *_yDataSuffix;
 }
 
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -31,11 +33,16 @@ __attribute__((visibility("hidden")))
 - (void)addNotificationObservers;
 - (void)removeNotificationObservers;
 - (void)notificationHandler:(id)arg1;
+- (void)infoTextValueChangedAction:(id)arg1;
+- (void)mouseDown:(id)arg1;
 - (void)syncToSelection;
 - (void)syncToBoardAndPuckType;
 - (void)drawRect:(struct CGRect)arg1;
-@property(retain, nonatomic) LKTextField *yDataTextField; // @synthesize yDataTextField=_yDataTextField;
-@property(retain, nonatomic) LKTextField *xDataTextField; // @synthesize xDataTextField=_xDataTextField;
+- (long long)integerValueFormattedControl:(id)arg1;
+@property(retain, nonatomic) NSTextField *yDataSuffix; // @synthesize yDataSuffix=_yDataSuffix;
+@property(retain, nonatomic) FFColorBoardPuckInfoScrubber *yDataScrubber; // @synthesize yDataScrubber=_yDataScrubber;
+@property(retain, nonatomic) LKTextField *xDataSuffix; // @synthesize xDataSuffix=_xDataSuffix;
+@property(retain, nonatomic) FFColorBoardPuckInfoScrubber *xDataScrubber; // @synthesize xDataScrubber=_xDataScrubber;
 @property(retain, nonatomic) LKTextField *puckTypeTextField; // @synthesize puckTypeTextField=_puckTypeTextField;
 @property(retain, nonatomic) FFColorBoardPuckInfoLegendView *legendView; // @synthesize legendView=_legendView;
 @property(nonatomic) int boardType; // @synthesize boardType=_boardType;

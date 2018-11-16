@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSProProgressIndicator *_analysisSpinner;
     int _warningState;
     NSMutableArray *m_objectList;
+    NSMutableArray *m_effectStackList;
 }
 
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 object:(id)arg3;
@@ -45,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property BOOL analyzed; // @synthesize analyzed=_analyzed;
 @property(retain, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
-@property(retain) FFEnhanceAudioManager *analysisManager; // @synthesize analysisManager=_analysisManager;
 @property(retain) FFAnchoredObject *object; // @synthesize object=_object;
 
 @end

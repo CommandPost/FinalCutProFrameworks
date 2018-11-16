@@ -15,8 +15,8 @@
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (void)startHandling:(id)arg1;
 - (void)stopHandling:(id)arg1;
+- (BOOL)itemLevelSkimmingEnabled;
 - (void)splitAtCurrentLocation:(id)arg1;
-- (BOOL)shouldSkimItem:(id)arg1;
 - (void)updateSkimming:(id)arg1;
 
 @end

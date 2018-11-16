@@ -17,6 +17,7 @@
 - (unsigned long long)packedBytesPerRowForWidth:(unsigned int)arg1;
 - (unsigned long long)optimalBytesPerRowForWidth:(unsigned int)arg1;
 - (BOOL)isYCbCr;
+- (BOOL)isSubsampled;
 - (BOOL)hasAlpha;
 - (int)alphaType;
 - (unsigned int)QTPixelFormat;

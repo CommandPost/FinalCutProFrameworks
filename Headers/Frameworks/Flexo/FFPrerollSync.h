@@ -17,6 +17,7 @@
 - (void)dealloc;
 - (void)wait;
 - (void)increment:(id)arg1;
+- (BOOL)timedWait:(double)arg1;
 - (void)decrement:(id)arg1;
 
 @end

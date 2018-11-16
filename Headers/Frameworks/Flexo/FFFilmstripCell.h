@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     CDStruct_bdcb2b0d _ir2MD5;
     struct FFProcrastinatedDispatch_t _procrastinatedContext;
     long long _effectCount;
+    id <FFFilmstripCellDelegate> _priorityDelegate;
 }
 
 + (id)_loadingFacet;
@@ -60,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelRequest;
 - (BOOL)isEquavilentToFilmstripCell:(id)arg1;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
+@property(nonatomic) id <FFFilmstripCellDelegate> priorityDelegate; // @synthesize priorityDelegate=_priorityDelegate;
 @property(nonatomic) BOOL transparentBackground; // @synthesize transparentBackground=_transparentBackground;
 @property(nonatomic) double audioHeight; // @synthesize audioHeight=_audioHeight;
 @property(retain, nonatomic) TLKThemeBackedLayer *thumbLoadingLayer; // @synthesize thumbLoadingLayer=_thumbLoadingLayer;

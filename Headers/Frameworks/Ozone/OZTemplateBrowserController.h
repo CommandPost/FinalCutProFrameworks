@@ -113,7 +113,6 @@
 - (void)_getFrameRate:(double *)arg1 andNTSC:(char *)arg2;
 - (void)openTemplate:(id)arg1;
 - (double)getPARFromPopup;
-- (void)documentControllerHandlingOpenTemplate:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(CDStruct_183fa7cb *)arg3;
 - (void)toggleDurationDisplay:(id)arg1;
 - (float)iconSliderValue;
 - (void)resizeTemplateIcons:(id)arg1;

@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_mediaSet;
     NSMutableSet *_assetSet;
     FFMediaEventFolder *_rootFolder;
-    NSMapTable *_identifierToAssetMap;
+    NSMapTable *_mediaIdentifierToAssetMap;
     NSMapTable *_fileNameToAssetMap;
     NSMutableSet *_undoneAssetSet;
     NSMutableSet *_mediaSetToProcess;
@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (id)displayMediaSet;
 - (id)resolveAsset:(id)arg1;
 - (id)newAnchoredSequenceFromURL:(id)arg1 manageFileType:(int)arg2 keywords:(id)arg3 validateFiles:(BOOL)arg4;
-- (id)identifierToAssetMap;
+- (id)mediaIdentifierToAssetMap;
 - (id)fileNameToAssetMap;
 - (id)eventSimpleClipForClip:(id)arg1;
 - (void)cleanupInDirectory:(id)arg1;

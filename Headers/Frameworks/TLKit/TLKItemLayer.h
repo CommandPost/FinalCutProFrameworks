@@ -13,7 +13,7 @@
 @interface TLKItemLayer : TLKTimelineLayer <TLKPartInfo>
 {
     TLKItemBackgroundLayer *_backgroundLayer;
-    CALayer *_shadowLayer;
+    CALayer *_filmstripDividerLayer;
     TLKEdgeSelectionLayer *_edgeSelectionLayer;
     TLKTextLayer *_textLayer;
     TLKItemContentsLayer *_overlayContentsLayer;
@@ -46,7 +46,6 @@
 @property(readonly) struct CGRect usedMediaRect;
 - (void)_updatePrecisionEditorAppearance;
 - (void)_updateSelectionAppearance;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
 - (void)addSublayer:(id)arg1;

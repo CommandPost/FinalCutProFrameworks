@@ -7,6 +7,7 @@
 #import <Flexo/FFImage.h>
 
 @interface FFImage (FFPixelBuffer)
+- (id)initWithFFPixelBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 disable422Filtering:(BOOL)arg5;
 - (id)initWithFFPixelBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4;
 @end
 

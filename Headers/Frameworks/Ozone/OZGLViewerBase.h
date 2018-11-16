@@ -50,6 +50,7 @@
 - (PCVector2_7e488b7d)getCenterInFilmCoords;
 - (CDStruct_1b6d18a9)getRenderTime;
 - (const struct OZRenderState *)getRenderState;
+- (void)setIgnoreTransformsForElement:(struct OZSceneNode *)arg1;
 - (double)getPixelAspectRatio;
 - (struct LiCamera *)getCameraAtTime:(CDStruct_1b6d18a9)arg1;
 - (struct LiCamera *)getCamera;

@@ -12,19 +12,20 @@
 {
     FFImageRep *_representation;
     struct opaqueCMSampleBuffer *_sampleBuffer;
+    BOOL _sampleBufferAlphaKnownToBeFullyOpaque;
     NSMutableDictionary *_dict;
 }
 
 + (_Bool)isYdownPixelTransform:(id)arg1;
-+ (void)copyPixelBufferData:(id)arg1 toBuffer:(id)arg2 field:(unsigned int)arg3;
 + (id)newFrameAtLocation:(int)arg1 withField1:(id)arg2 field2:(id)arg3 fieldDominance:(int)arg4 framePixelTransform:(id)arg5;
 - (id)initWithRepresentation:(id)arg1;
 - (id)initWithImage:(id)arg1;
 - (void)dealloc;
 - (id)mutableCopy;
 - (id)representation;
-- (void)setSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (void)setSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 knownToBeFullyOpaque:(BOOL)arg2;
 - (struct opaqueCMSampleBuffer *)sampleBuffer;
+- (BOOL)sampleBufferAlphaKnownToBeFullyOpaque;
 - (struct CGRect)imageSpaceBounds;
 - (struct CGRect)pixelSpaceBounds;
 - (unsigned int)field;
@@ -44,6 +45,7 @@
 - (id)newFFImageWithBackground:(struct CGRect)arg1 bgColor:(id)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
 - (id)newFlattenedFFImageWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 field:(unsigned int)arg6;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)addEntriesFromDictionary:(id)arg1;
 - (id)objectForKey:(id)arg1;
 - (id)description;
 - (BOOL)dumpImage;

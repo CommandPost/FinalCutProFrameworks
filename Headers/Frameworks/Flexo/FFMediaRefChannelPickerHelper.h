@@ -27,7 +27,6 @@
 - (id)channelFolderToRecordForAnchoredObject:(id)arg1;
 - (id)effectContainerToRecordForAnchoredObject:(id)arg1;
 - (id)actionStringForSaveChanges;
-- (id)windowNibName;
 - (id)footerText;
 - (id)accessoryTitle;
 - (id)okButtonTitle;

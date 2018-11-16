@@ -61,6 +61,7 @@
     BOOL _mouseIsDown;
     BOOL _snapCursor;
     BOOL _lockInU;
+    BOOL _didAddPoint;
     BOOL _shouldDrawProcessedCurve;
     BOOL _needsAutoZoom;
     NSMutableDictionary *_textAttribs;

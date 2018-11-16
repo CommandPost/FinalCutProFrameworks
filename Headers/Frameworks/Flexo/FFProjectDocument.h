@@ -62,6 +62,10 @@
 + (void)_undoRecycleURLs:(id)arg1 containedDocuments:(id)arg2;
 + (void)_recycleURLs:(id)arg1 containedDocuments:(id)arg2;
 + (void)_undoNewFolder:(id)arg1;
++ (id)findLatestBackupInDirectory:(id)arg1;
++ (id)documentPathForFolderURL:(id)arg1;
++ (BOOL)checkDocumentIsValidAtFolderURL:(id)arg1;
++ (BOOL)ensureDocumentIsValidAtFolderURL:(id)arg1;
 - (id)newDefaultProject:(id)arg1 type:(id)arg2;
 - (id)newDocumentCatalog:(id *)arg1;
 - (BOOL)undoManagerIsShared;
@@ -95,6 +99,7 @@
 - (double)lastBackupTime;
 - (void)setLastBackupTime:(double)arg1;
 - (BOOL)readFromURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
+- (void)limitBackupsTo:(int)arg1 in:(id)arg2;
 - (BOOL)writeSafelyToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)saveToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 error:(id *)arg4;
 - (void)saveDocument:(id)arg1;

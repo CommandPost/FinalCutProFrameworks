@@ -31,7 +31,6 @@
 - (id)hitTest:(struct CGPoint)arg1;
 @property int draggingHandle;
 @property BOOL containingViewFirstResponder;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
 - (void)setDelegate:(id)arg1;
 @property double hitRegionHeight; // @synthesize hitRegionHeight=_hitRegionHeight;
 

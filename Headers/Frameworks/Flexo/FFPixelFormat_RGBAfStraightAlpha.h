@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (int)bitsPerBlock;
 - (int)pixelBlockWidth;
 - (BOOL)isYCbCr;
+- (BOOL)isSubsampled;
 - (BOOL)hasAlpha;
 - (int)alphaType;
 - (unsigned int)QTPixelFormat;

@@ -7,9 +7,9 @@
 #import "NSObject.h"
 
 @protocol FFEnhanceAudioDelegate <NSObject>
-- (id)channelChangeController;
 
 @optional
+- (id)channelChangeController;
 - (void)analysisDidStart:(id)arg1;
 - (void)analysisDidComplete:(id)arg1;
 - (void)analysisDidCancel:(id)arg1;

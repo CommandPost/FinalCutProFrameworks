@@ -8,7 +8,7 @@
 
 #import "MIORADIngestObject.h"
 
-@class MIORADBufferManager, MIORADClip, MIORADMediaReader, NSMutableArray;
+@class MIORADBufferManager, MIORADClip, MIORADMediaReader, NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface MIORADIngestObject : NSObject <MIORADIngestObject>
@@ -32,9 +32,11 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _videoPulled;
     CDStruct_1b6d18a9 _audioPulled;
     MIORADClip *_clip;
+    NSArray *_pathSet;
 }
 
 - (id)initWithClip:(id)arg1;
+- (id)init;
 - (void)dealloc;
 @property(readonly) BOOL hasValidTimecode;
 - (int)initialize:(void *)arg1;
@@ -53,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)mediaTimeFromEditTime_EditCursor:(CDStruct_1b6d18a9)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2;
 - (CDStruct_1b6d18a9)mediaTimeFromEditTime:(CDStruct_1b6d18a9)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2;
 - (int)getNextMedia:(struct MIORADPlugInMediaSpecifier *)arg1 inRefCon:(void *)arg2;
+@property(retain) NSArray *pathSet; // @synthesize pathSet=_pathSet;
 @property(retain) MIORADClip *clip; // @synthesize clip=_clip;
 @property BOOL useCMTime; // @synthesize useCMTime=_useCMTime;
 @property(retain) MIORADBufferManager *bufferManager; // @synthesize bufferManager=_bufferManager;

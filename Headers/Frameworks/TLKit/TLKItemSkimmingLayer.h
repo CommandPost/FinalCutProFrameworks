@@ -16,6 +16,7 @@
 
 - (id)init;
 @property BOOL snapped;
+- (id)hitTest:(struct CGPoint)arg1;
 
 @end
 

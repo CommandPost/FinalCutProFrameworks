@@ -20,6 +20,7 @@
     BOOL mAudioEnabled;
     id mCMIOVProducer;
     id mCMIOAProducer;
+    unsigned int mOutputStream;
 }
 
 - (id)initWithDeviceConnection:(id)arg1;

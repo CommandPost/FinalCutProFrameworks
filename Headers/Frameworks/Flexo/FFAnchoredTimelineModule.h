@@ -7,6 +7,7 @@
 #import <Flexo/FFEditorModule.h>
 
 #import "FFControllerProtocol.h"
+#import "FFFilmstripLayerDelegate.h"
 #import "FFNumericEntrySource.h"
 #import "FFRolesMenuDelegate.h"
 #import "FFSequenceEditingActions.h"
@@ -14,7 +15,7 @@
 
 @class FFAnchoredObject, FFAnchoredObject<FFSkimmableProtocol>, FFAnchoredSequence, FFAnchoredTimeMarker, FFContext, FFNUpDisplay, FFNumericEntry, FFPasteboard, FFRenderStateTracker, FFShareHelper, FFSnappingCalculation, FFTimelineToolController, FFVideoFormat, NSArray, NSMenu, NSMenuItem, NSPasteboard, NSString, TLKTimelineView;
 
-@interface FFAnchoredTimelineModule : FFEditorModule <FFSequenceEditingActions, FFSharableContent, FFControllerProtocol, FFNumericEntrySource, FFRolesMenuDelegate>
+@interface FFAnchoredTimelineModule : FFEditorModule <FFSequenceEditingActions, FFSharableContent, FFControllerProtocol, FFNumericEntrySource, FFRolesMenuDelegate, FFFilmstripLayerDelegate>
 {
     TLKTimelineView *timelineView;
     NSMenu *dropMenu;
@@ -29,6 +30,7 @@
     NSMenu *_anchoredComponentContextMenu;
     NSMenu *_gapContextMenu;
     NSMenu *_gearMenu;
+    NSMenu *_multiAngleMenu;
     NSMenuItem *_gearEffectCountMenuItem;
     NSMenuItem *_gearColorMenuItem;
     NSMenuItem *_gearStabilizeItem;
@@ -47,15 +49,20 @@
     SEL _nUpDisplayAction;
     id _nUpDisplayObject;
     FFSnappingCalculation *_snappingCalculation;
+    FFContext *_selectionContext;
     FFContext *_skimmingContext;
     FFAnchoredSequence *_sequence;
     FFAnchoredObject<FFSkimmableProtocol> *_skimmedObject;
+    FFAnchoredObject *_lastItemSkimmed;
     FFAnchoredObject *_kenBurnsObject;
     BOOL _tempToolOverrideActive;
+    BOOL _playbackStarted;
     id _gearMenuObject;
+    id _multiAngleMenuObject;
     FFNumericEntry *_numericEntry;
     CDStruct_1b6d18a9 _cumulativeTrimOffset;
     CDStruct_1b6d18a9 _componentSkimmingPlayheadTime;
+    BOOL _sendReloadOntimeRateChangedForContext;
     struct {
         unsigned int deferredDropWantsPopupMenu:1;
         unsigned int needConfirmSequenceSetting:1;
@@ -70,17 +77,20 @@
         unsigned int animatePlayhead:1;
         unsigned int snappingEnabled:1;
         unsigned int settingSkimmingContextTime:1;
+        unsigned int settingSelectionContextTime:1;
+        unsigned int selectionContextShowsSkimming:1;
         unsigned int changeSettingsSheetOpen:1;
         unsigned int transientCommandMode:1;
         unsigned int placementTrimHasGap:1;
         unsigned int initialDropCreatedGap:1;
         unsigned int wasSkimmingComponent:1;
-        unsigned int reserved:14;
+        unsigned int reserved:12;
     } _editorFlags;
     FFRenderStateTracker *_renderStateTracker;
     NSPasteboard *_deferredDropDraggingPasteboard;
     struct CGPoint _deferredDropDragLocation;
     FFAnchoredObject *_deferredDropTargetItem;
+    BOOL _droppingItemsIncludeMulticam;
     NSArray *_deferredDropAddedItems;
     FFAnchoredObject *_deferredDropRootItem;
     FFVideoFormat *_deferredDropBestGuess;
@@ -92,6 +102,7 @@
     BOOL _disableSkimming;
     BOOL _activeToolSkims;
     unsigned long long _willChangeSelectedItemsCount;
+    int lastDirectionChange;
 }
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
@@ -100,7 +111,7 @@
 - (CDStruct_1b6d18a9)_localConformTimescale:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)_conformTimescale:(CDStruct_1b6d18a9)arg1 oldTime:(CDStruct_1b6d18a9)arg2;
 @property(retain, nonatomic) FFAnchoredTimeMarker *activeMarker; // @synthesize activeMarker=_activeMarker;
-- (CDStruct_1b6d18a9)_toolSkimmingTimeOrPlayheadTime;
+- (CDStruct_1b6d18a9)skimmingTime;
 - (CDStruct_1b6d18a9)_conformedPlayheadTime;
 - (CDStruct_1b6d18a9)_startTimeOfSelectedObjects;
 - (CDStruct_e83c9415)_anchoredObjectRangeInTimelineSpace:(id)arg1;
@@ -154,6 +165,9 @@
 - (BOOL)canAddKeyframe;
 - (void)addKeyframe:(id)arg1;
 - (void)showExampleTimelineAccessory:(id)arg1;
+- (BOOL)shouldShowAudioSplitForItem:(id)arg1;
+- (void)setShouldShowAudioSplit:(BOOL)arg1 forItem:(id)arg2;
+- (void)makeAudioSplitVisible:(BOOL)arg1 forItems:(id)arg2;
 - (id)numericEntry;
 - (id)timecodeFormatter;
 - (BOOL)canToggleDeltaAndAbsolute:(int)arg1;
@@ -200,7 +214,6 @@
 - (void)splitEdit:(id)arg1;
 - (void)clearSplitEdit:(id)arg1;
 - (void)addTransition:(id)arg1;
-- (void)addVideoOnlyTransition:(id)arg1;
 - (void)removeTransitions:(id)arg1;
 - (void)volumeUp:(id)arg1;
 - (void)volumeDown:(id)arg1;
@@ -213,20 +226,19 @@
 - (BOOL)soloActive;
 - (BOOL)canCreateCompoundClip;
 - (void)createCompoundClip:(id)arg1;
-- (void)createMultiCamClip:(id)arg1;
 - (BOOL)canBreakApartClipItems;
 - (void)breakApartClipItems:(id)arg1;
 - (BOOL)canRevealInFinder;
 - (void)revealInFinder:(id)arg1;
+- (id)openInTimelineMenuTitle;
 - (BOOL)canOpenInTimeline;
 - (void)openInTimeline:(id)arg1;
 - (BOOL)canAllowTimelineEditing;
 - (BOOL)allowTimelineEditingState;
 - (void)allowTimelineEditing:(id)arg1;
-- (void)transitionAll:(id)arg1;
-- (void)transitionHalf:(id)arg1;
-- (void)transitionHalfCreate:(id)arg1;
 - (void)addSampleMedia:(id)arg1;
+- (BOOL)canRelinkFiles;
+- (void)relinkFiles:(id)arg1;
 - (BOOL)canRevealAncestor;
 - (void)revealAncestor:(id)arg1;
 - (void)changeSettingsSheetClosing:(int)arg1 pasteboardName:(id)arg2 editsToAdd:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4 pasteMode:(int)arg5 backtimed:(BOOL)arg6 rangeOfMedia:(CDStruct_e83c9415)arg7;
@@ -235,6 +247,9 @@
 - (void)_addItemsWithPasteboard:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 pasteMode:(int)arg3 backtimed:(BOOL)arg4 useSelectedRange:(BOOL)arg5 trackType:(id)arg6 container:(id)arg7;
 - (BOOL)_actionReplaceItemAndAddToAudition:(id)arg1 withItemsOnPasteboard:(id)arg2;
 - (BOOL)_actionAddToAudition:(id)arg1 withItemsOnPasteboard:(id)arg2;
+- (CDStruct_1b6d18a9)_totalDurationFromEdits:(id)arg1;
+- (void)_constrainEdits:(id)arg1 toDuration:(CDStruct_1b6d18a9)arg2 toBeReplaced:(id)arg3 fromStart:(BOOL)arg4 fromEnd:(BOOL)arg5;
+- (void)_transferAnchorsFromObject:(id)arg1 toObjects:(id)arg2 anchors:(id)arg3 relativeToFromTime:(CDStruct_1b6d18a9)arg4 toObjectPlayhead:(CDStruct_1b6d18a9)arg5;
 - (BOOL)_actionReplaceItem:(id)arg1 withItemsOnPasteboard:(id)arg2 replaceActionType:(int)arg3;
 - (BOOL)_warnAboutInsufficientMediaInSource;
 - (void)insertWithPasteboard:(id)arg1 backtimed:(BOOL)arg2 trackType:(id)arg3;
@@ -244,6 +259,9 @@
 - (void)anchorWithPasteboard:(id)arg1 backtimed:(BOOL)arg2 trackType:(id)arg3;
 - (id)_rootItemForSelection;
 - (CDStruct_1b6d18a9)_playheadForRootItem:(id)arg1;
+- (void)changeSettingsSheetClosing:(int)arg1 forGap:(BOOL)arg2;
+- (void)_confirmSequenceSettingForGapOrPlaceholder:(BOOL)arg1;
+- (BOOL)_needConfirmSequenceSettingForGapOrPlaceholder;
 - (void)insertPlaceholder;
 - (void)insertGap;
 - (void)_selectTool:(id)arg1 class:(Class)arg2;
@@ -258,19 +276,23 @@
 - (void)selectToolZoom:(id)arg1;
 - (id)timelineView;
 - (id)selectedItems;
+@property(readonly, retain) FFContext *selectionContext; // @synthesize selectionContext=_selectionContext;
 - (id)contextRootObject;
 - (BOOL)showRetimeEditorForSelected;
 - (BOOL)selectedItemsIncludesAnchoredSpine;
 - (BOOL)selectedItemsIncludesGap;
+- (BOOL)selectedItemsIncludesMultiangle;
 - (void)setSelectedItems:(id)arg1;
 - (BOOL)hasSelection;
 - (BOOL)disableActionWhileTracking:(SEL)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1 withSelectedItems:(id)arg2;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)timeRateChangedForContext:(id)arg1;
 - (void)validateSequence:(id)arg1;
 - (void)validateAndRepairSequence:(id)arg1;
 - (void)zoomIn:(id)arg1;
 - (void)zoomOut:(id)arg1;
+- (void)toggleItemSkimming:(id)arg1;
 - (void)zoomToFit:(id)arg1;
 - (void)zoomtoSubframes:(id)arg1;
 - (void)toggleTransitionNilSourceFillType:(id)arg1;
@@ -283,7 +305,7 @@
 - (void)selectClipAtPlayhead:(id)arg1;
 - (CDStruct_e83c9415)rangeOfMediaForSelectedRangesOfMedia:(id)arg1 useClippedRange:(BOOL)arg2;
 - (void)_selectRange:(CDStruct_e83c9415)arg1 extendRange:(BOOL)arg2;
-- (id)_validateRangesForSelection:(id)arg1;
+- (id)_validateRangesForSelection:(id)arg1 container:(id)arg2;
 - (void)setSelectionStart:(id)arg1;
 - (void)setSelectionEnd:(id)arg1;
 - (void)clearSelectionStart:(id)arg1;
@@ -291,6 +313,7 @@
 - (void)clearSelection:(id)arg1;
 - (struct CGRect)screenRectForMarkerLayer:(id)arg1;
 - (struct CGRect)selectedRangeFrame;
+- (BOOL)dropItemsAllowAuditionCreation;
 - (BOOL)selectionAllowsAuditionCreation;
 - (BOOL)selectionAllowsAuditionCommands;
 - (void)selectPreviousVariantInSelection:(id)arg1;
@@ -298,6 +321,9 @@
 - (void)finalizePickOfSelectedVariant:(id)arg1;
 - (void)newVariantFromCurrentInSelection:(id)arg1;
 - (void)newVariantFromActiveNoEffects:(id)arg1;
+- (void)setActiveVideoAngle:(id)arg1;
+- (void)setActiveAudioAngle:(id)arg1;
+- (void)audioFineSyncMultiAngleAngle:(id)arg1;
 - (CDStruct_1b6d18a9)firstTimeOfObjects:(id)arg1;
 - (CDStruct_1b6d18a9)firstTimeOfRangesOfMedia:(id)arg1;
 - (void)_deleteCore:(id)arg1 replaceWithGap:(BOOL)arg2 removeOperation:(int)arg3;
@@ -344,6 +370,7 @@
 - (void)selectLeftRightEdgeAudio:(id)arg1;
 - (void)openStack:(id)arg1;
 - (void)prepGearMenuWithObject:(id)arg1;
+- (void)prepMultiAngleMenuWithObject:(id)arg1;
 - (void)openColorEditorForObjectOfSender:(id)arg1;
 - (void)openColorEditorForItem:(id)arg1;
 - (void)reloadTimelineView:(id)arg1;
@@ -353,6 +380,16 @@
 - (void)showTransformForRepresentedObject:(id)arg1;
 - (void)showCropForRepresentedObject:(id)arg1;
 - (void)showAudioEnhancementsForRepresentedObject:(id)arg1;
+- (void)selectClipsInAngle:(id)arg1;
+- (void)deleteAngle:(id)arg1;
+- (void)addAngle:(id)arg1;
+- (void)setMonitoringAngleWithSkimmedObject:(id)arg1;
+- (void)setEnableAudioMonitorigingWithSkimmedObject:(id)arg1;
+- (void)setVideoMonitoringAngle:(id)arg1;
+- (void)_updateSolo;
+- (void)monitorAngleAudio:(id)arg1;
+- (void)syncToMonitoringAngle:(id)arg1;
+- (void)toggleColorCorrectionOff:(id)arg1;
 - (void)toggleBalanceColor:(id)arg1;
 - (BOOL)retimeEditorAlreadyOpenForItem:(id)arg1;
 - (void)openRetimeEditorForItem:(id)arg1 toggle:(BOOL)arg2;
@@ -407,6 +444,7 @@
 - (id)_allMarkersInTimelineRange:(CDStruct_e83c9415)arg1;
 - (id)_allMarkersInTimeline;
 - (id)_chosenAnchoredObjectForMarkerOperationsInRange:(CDStruct_e83c9415)arg1;
+- (CDStruct_1b6d18a9)_timeForAddMarker;
 - (id)_chosenAnchoredObjectForMarkerOperationsAtPlayhead;
 - (id)_chosenMarkerAtPlayhead;
 - (id)_preferredMarkerForPlayhead;
@@ -423,8 +461,10 @@
 - (void)showSplitsForAll:(id)arg1;
 - (void)hideSplitsForAll:(id)arg1;
 - (void)showSplitsForEdited:(id)arg1;
-- (void)setDisplayCollapsedCurveEditor:(BOOL)arg1;
-- (BOOL)displayCollapsedCurveEditor;
+- (BOOL)_canJoinMultiAngleThroughEdit;
+- (BOOL)_multiAngleClipContainsRetimedClip;
+- (BOOL)_canAudioFineSyncMultiAngleAngle;
+- (void)joinMultiAngleThroughEdit:(id)arg1;
 - (void)togglePrecisionEditor:(id)arg1;
 - (BOOL)canOpenPrecisionEditor;
 - (void)enableTransientAnchoredSpinesMode:(id)arg1;
@@ -460,9 +500,9 @@
 - (void)sequenceFormatChanged:(id)arg1;
 - (void)_dataListItemChanged:(id)arg1;
 - (BOOL)isArrowToolActive;
-- (BOOL)_oldTimelineViewShouldDisplayObject:(id)arg1;
-- (BOOL)_newTimelineViewShouldDisplayObject:(id)arg1;
 - (BOOL)_timelineViewShouldDisplayObject:(id)arg1;
+- (BOOL)highPriorityThumbnailGeneration;
+@property(retain) id multiAngleMenuObject; // @synthesize multiAngleMenuObject=_multiAngleMenuObject;
 @property(retain) id gearMenuObject; // @synthesize gearMenuObject=_gearMenuObject;
 @property(copy, nonatomic) NSString *handlerActionName; // @synthesize handlerActionName=_handlerActionName;
 

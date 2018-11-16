@@ -80,7 +80,6 @@
 - (void)appendWithSelectedMedia:(id)arg1;
 - (void)overwriteWithSelectedMedia:(id)arg1;
 - (void)overwriteWithSelectedMediaBacktimed:(id)arg1;
-- (void)insertWithSelectedMediaBacktimed:(id)arg1;
 - (void)anchorWithSelectedMediaBacktimed:(id)arg1;
 - (void)insertKeyDown:(id)arg1;
 

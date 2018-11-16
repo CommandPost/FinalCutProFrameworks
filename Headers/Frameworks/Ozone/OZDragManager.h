@@ -27,7 +27,7 @@
     _Bool _undoSet;
     _Bool _pastingOnlyAudioTracks;
     _Bool _pastingOnlyLightsOrCameras;
-    struct vector<unsigned int, std::allocator<unsigned int>> *_convertedClips;
+    vector_77d837c3 *_convertedClips;
 }
 
 + (id)dragManager;

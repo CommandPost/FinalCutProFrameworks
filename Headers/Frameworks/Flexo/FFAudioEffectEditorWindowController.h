@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)awakeFromNib;
 - (struct ComponentInstanceRecord *)audioUnit;
-- (id)effectPreset;
 - (id)name;
 - (id)effectID;
 - (id)effect;

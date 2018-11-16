@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (void)matchToolWasResigned:(id)arg1;
 - (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
 - (BOOL)allowsReferenceChangeFromOrganizerListView;
-- (id)windowNibName;
 - (id)footerText;
 - (id)accessoryTitle;
 @property BOOL matchCompleted; // @synthesize matchCompleted=_matchCompleted;

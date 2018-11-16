@@ -15,7 +15,7 @@
     unsigned int _hitNodeID;
     NSMutableDictionary *_textAttribs;
     PGDrawableTexture *_textTexture;
-    struct vector<unsigned int, std::allocator<unsigned int>> _objectsArray;
+    vector_77d837c3 _objectsArray;
 }
 
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;

@@ -9,6 +9,7 @@
 @protocol FFColorSubEffect <NSObject>
 + (id)effectID;
 - (void)setColorEffect:(id)arg1;
+- (id)colorEffect;
 
 @optional
 + (unsigned long long)numberOfAllowedInstances;

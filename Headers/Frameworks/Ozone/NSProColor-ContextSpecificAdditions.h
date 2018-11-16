@@ -63,7 +63,6 @@
 + (id)ozTimelineRowKeyframeEndsColor;
 + (id)ozTimelineRowSelectedRangeColor;
 + (id)ozTimelineBarOverlapTextColor;
-+ (id)ozTimelineBarAudioWaveFormColor;
 + (id)ozTimelineBarKeyFrameSelectedColor;
 + (id)ozTimelineBarKeyFrameColor;
 + (id)ozTimeBarBackgroundColor;
@@ -276,7 +275,6 @@
 + (id)ozPopUpMatrixHighlightColor;
 + (id)ozCurveEditorVisableColor;
 + (id)ozHistogramInOutColor;
-+ (id)ozHistogramGutterColor;
 + (id)ozGLViewerAlphaOverlayColor;
 + (id)ozGLViewerInvertedAlphaColor;
 + (id)ozGLViewerDefaultLineColor;

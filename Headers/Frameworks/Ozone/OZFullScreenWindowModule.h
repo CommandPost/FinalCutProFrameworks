@@ -20,6 +20,7 @@
 - (id)containerModule:(id)arg1 willAddViewOfSubmodule:(id)arg2 inContext:(id)arg3;
 - (void)setWidth:(struct CGRect)arg1 ofModuleWithIdentifier:(id)arg2;
 - (id)initWithWindowClass:(Class)arg1 windowStyleMask:(unsigned long long)arg2;
+- (void)dealloc;
 - (void)screenParametersChanged:(id)arg1;
 - (void)_setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
 - (void)setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
@@ -30,6 +31,8 @@
 - (void)takeContentLayoutFromDictionary:(id)arg1;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
+- (void)windowDidMiniaturize:(id)arg1;
+- (void)windowDidDeminiaturize:(id)arg1;
 
 @end
 

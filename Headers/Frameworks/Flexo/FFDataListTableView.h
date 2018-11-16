@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
-- (void)setPlayheadRow:(long long)arg1 andPosition:(int)arg2;
+- (void)setPlayheadRow:(long long)arg1 andPosition:(int)arg2 animate:(BOOL)arg3;
 @property(retain, nonatomic) FFDataListPlayheadView *playheadView; // @synthesize playheadView=_playheadView;
 @property(nonatomic) int playheadPosition; // @synthesize playheadPosition=_playheadPosition;
 @property(nonatomic) long long playheadRow; // @synthesize playheadRow=_playheadRow;

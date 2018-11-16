@@ -15,10 +15,13 @@ __attribute__((visibility("hidden")))
     unsigned long long _histogramIsaIndex;
     long long _viewMode;
     long long _displayColorMode;
+    float _traceBrightness;
     CDStruct_3de7261d _state;
     CDStruct_69458254 _action_opt;
 }
 
+- (id)init;
+- (void)setTraceBrightness:(float)arg1;
 - (void)setHistogramContext:(struct FFVideoScopesHistogramViewPrivate *)arg1;
 - (void)setViewMode:(long long)arg1;
 - (void)setDisplayColorMode:(long long)arg1;
@@ -29,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (struct _CGLPixelFormatObject *)copyCGLPixelFormatForDisplayMask:(unsigned int)arg1;
 - (void)releaseCGLPixelFormat:(struct _CGLPixelFormatObject *)arg1;
 - (struct _CGLContextObject *)copyCGLContextForPixelFormat:(struct _CGLPixelFormatObject *)arg1;
+- (void)releaseCGLContext:(struct _CGLContextObject *)arg1;
 - (BOOL)canDrawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
 - (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
 - (id)accessibilityAttributeValue:(id)arg1;

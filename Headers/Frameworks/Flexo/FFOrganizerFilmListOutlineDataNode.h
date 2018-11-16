@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isClusterNode;
 - (BOOL)isClipNode;
 - (BOOL)isStillClipNode;
+- (BOOL)isMultiCamClip;
 - (BOOL)isMarkerNode;
 - (BOOL)isTimeMarkerNode;
 - (id)cellImage;
@@ -53,6 +54,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)canEditClipDurationTimeCode;
 - (id)clipDurationTimeCode;
 - (void)setClipDurationTimeCode:(id)arg1;
+- (BOOL)canEditCameraAngle;
+- (id)cameraAngle;
+- (void)setCameraAngle:(id)arg1;
 - (BOOL)canEditNotes;
 - (id)notes;
 - (void)setNotes:(id)arg1;
@@ -70,6 +74,9 @@ __attribute__((visibility("hidden")))
 - (void)setRoles:(id)arg1;
 - (id)rolesSet;
 - (void)setRolesSet:(id)arg1;
+- (BOOL)canEditCameraName;
+- (id)cameraName;
+- (void)setCameraName:(id)arg1;
 - (id)mediaStart;
 - (id)mediaEnd;
 - (id)mediaDuration;

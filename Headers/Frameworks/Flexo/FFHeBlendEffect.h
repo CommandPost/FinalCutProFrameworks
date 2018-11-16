@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)writeDefaultChannels;
 - (struct HGNode *)newNodeForContext:(id)arg1;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6;
 - (void)createChannelsInFolder:(id)arg1;
 - (id)primaryAnimationChannel;
 - (id)inputKeys;

@@ -43,6 +43,7 @@
 - (id)sourceObjectForTime:(CDStruct_1b6d18a9 *)arg1;
 - (id)copyStreamForSourceObject:(id)arg1;
 - (void)purgeChannelCachedData:(id)arg1;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 priority:(int)arg5 spatialQuality:(int)arg6 temporalQuality:(int)arg7;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 priority:(int)arg3 spatialQuality:(int)arg4 temporalQuality:(int)arg5;
 - (id)newNSThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2;
 

@@ -6,27 +6,30 @@
 
 #import "CALayer.h"
 
-@class NSColor, NSMutableAttributedString, NSString;
+@class NSAttributedString, NSMutableAttributedString, NSString;
 
 @interface TLKTextLayer : CALayer
 {
     struct CGSize _stringSize;
     NSMutableAttributedString *_attrStr;
     struct CGRect _visibleBounds;
+    double _fontSize;
     unsigned int _selected:1;
-    unsigned int reserved:31;
+    unsigned int _shadow:1;
+    unsigned int reserved:30;
 }
 
 - (id)init;
 - (void)dealloc;
 - (id)hitTest:(struct CGPoint)arg1;
-@property(readonly) NSColor *selectedTextColor;
-@property(readonly) NSColor *textColor;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)_updateString:(id)arg1;
 @property(copy) NSString *string;
+@property(readonly) NSAttributedString *attributedString;
 @property(readonly) struct CGSize stringSize;
 @property BOOL selected;
+@property double fontSize;
+@property BOOL shadow;
 
 @end
 

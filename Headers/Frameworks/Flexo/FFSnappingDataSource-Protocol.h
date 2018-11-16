@@ -28,6 +28,7 @@
 - (id)snappingCalc:(id)arg1 clipsAnchoredToClip:(id)arg2;
 - (id)snappingCalc:(id)arg1 clipsInStoryline:(id)arg2;
 - (CDStruct_e83c9415)snappingCalc:(id)arg1 timeRangeOfClip:(id)arg2;
+- (CDStruct_e83c9415)snappingCalc:(id)arg1 timeRangeLimitsOfClip:(id)arg2;
 - (CDStruct_e83c9415)snappingCalc:(id)arg1 audioTimeRangeOfClip:(id)arg2;
 - (int)snappingCalc:(id)arg1 temporalResolutionForClip:(id)arg2;
 - (BOOL)snappingCalc:(id)arg1 clipHasSplitAudio:(id)arg2;

@@ -37,12 +37,15 @@
 - (CDStruct_1b6d18a9)currentTimeForChannel:(id)arg1;
 - (CDStruct_1b6d18a9)griddedTimeForChannel:(id)arg1;
 - (void)setCurrentTime:(CDStruct_1b6d18a9)arg1 forChannel:(id)arg2;
+- (void)updateChannelHeaderForItems:(id)arg1;
 - (void)_scheduleDeferredAction:(SEL)arg1;
 - (void)_handledDeferredAction:(SEL)arg1;
 - (void)_filtersChangedFinal;
 - (void)_filtersChangedAllmostFinal;
 - (void)_filtersChanged:(id)arg1;
 - (void)_updateChannels;
+- (void)_updateMedia;
+- (void)_mediaInvalidated:(id)arg1;
 - (void)_inspectorChannelChanged:(id)arg1;
 - (void)_effectSelectionStateChanged:(id)arg1;
 - (void)_effectEnabledStateChanged:(id)arg1;
@@ -50,6 +53,8 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)_isVideoChannel:(id)arg1;
 - (BOOL)shouldDragChannel:(id)arg1;
+- (unsigned long long)_validateDropForChannel:(id)arg1 sender:(id)arg2 proposedDropLocation:(unsigned int)arg3;
+- (BOOL)_canReorderChannel:(id)arg1 sender:(id)arg2 dropLocation:(unsigned int)arg3;
 - (BOOL)reorderChannels:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
 - (BOOL)canRemoveChannel:(id)arg1;
 - (BOOL)_canRemoveSelectedChannels;

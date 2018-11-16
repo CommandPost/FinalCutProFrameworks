@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)presentationTimeStamp;
 - (struct opaqueCMFormatDescription *)formatDescription;
 - (CDStruct_1b6d18a9)playableHorizon;
+- (BOOL)implementsSampleDependencyAttributes;
 - (id)sampleDependencyAttributes;
 - (CDStruct_1b6d18a9)duration;
 - (BOOL)implementsTimecodeCounter;
@@ -38,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)implementsDecodeTimeStamp;
 - (CDStruct_1b6d18a9)decodeTimeStamp;
 - (BOOL)implementsDependencyInfoWithFullSync;
-- (void)dependencyInfoWithFullSync:(char *)arg1 partialSync:(char *)arg2 partialSyncThreshold:(long long *)arg3 droppable:(char *)arg4;
+- (void)dependencyInfoWithFullSync:(char *)arg1 partialSync:(char *)arg2 partialSyncThreshold:(int *)arg3 droppable:(char *)arg4;
 - (BOOL)implementsMpeg2FrameType;
 - (BOOL)mpeg2FrameType:(char *)arg1 brokenLink:(char *)arg2;
 - (BOOL)implementsTestReorderingBoundaryWithCursor;

@@ -43,6 +43,7 @@
 - (struct OZChannelDouble *)getWaveDampingChan;
 - (unsigned int)getShape;
 - (_Bool)transformPath;
+- (BOOL)allowsCurveOffset;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 

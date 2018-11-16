@@ -24,6 +24,7 @@
 + (BOOL)_objectIsMergedClip:(id)arg1;
 + (void)_addObject:(id)arg1 toSequence:(id)arg2;
 + (void)synchronizeItems:(id)arg1;
++ (BOOL)hasRunningBackgroundTasks:(id)arg1 withBeep:(BOOL)arg2;
 + (void)performAudioIngestProcessingForMedia:(id)arg1 withMediaSet:(id)arg2 options:(id)arg3;
 
 @end

@@ -17,6 +17,8 @@
 + (void)setDefaultLocation:(id)arg1;
 + (id)defaultDocumentName;
 + (BOOL)canResetUniqueIdentifierAtOpen:(id)arg1;
++ (void)ensureProjectsHaveShallowLoaded;
++ (id)projectFolderTree;
 - (id)newDefaultProject:(id)arg1 type:(id)arg2;
 - (id)initWithType:(id)arg1 project:(id)arg2 sequence:(id)arg3 error:(id *)arg4;
 - (id)initWithCatalog:(id)arg1 store:(id)arg2 ofType:(id)arg3 validate:(BOOL)arg4 error:(id *)arg5;

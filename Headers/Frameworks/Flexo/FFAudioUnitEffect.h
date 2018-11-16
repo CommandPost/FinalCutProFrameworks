@@ -35,10 +35,16 @@
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
 - (void)_postInit:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-@property(retain, nonatomic) NSDictionary *preset; // @synthesize preset=_preset;
-- (void)setEffectState:(id)arg1;
+- (void)setPreset:(id)arg1;
+- (id)preset;
+- (id)defaultPreset;
+- (void)setAudioUnitEffectStateAsPreset:(id)arg1;
 - (void)useDefaultPreset;
+- (void)setPresetWithID:(int)arg1;
+- (int)presetID;
+- (void)setEffectState:(id)arg1;
 - (void)setEffectStateWithNoUpdate:(id)arg1;
+- (id)effectState;
 - (int)saveCurrentEffectState;
 - (void)revertToCurrentPreset;
 - (void)_clearCachedUnit;
@@ -47,13 +53,12 @@
 - (id)primaryAnimationChannel;
 - (id)keyframeableChannelsFrom:(id)arg1;
 - (id)keyframeableChannels;
-- (void)channelParameterChanged:(id)arg1;
 - (void)effectWasRemovedFromStack;
-- (id)effectData;
-- (void)setEffectData:(id)arg1;
-@property(readonly, nonatomic) NSDictionary *effectState; // @synthesize effectState=_effectState;
+- (void)loadEffectWithXMLElement:(id)arg1;
+- (id)exportAsXMLElementWithExcludedChannels:(id)arg1;
+- (id)exportAsXMLElement;
+- (id)exportAsXMLElementWithDeprecatedEffectData:(id)arg1;
 @property(nonatomic) BOOL presetDirty; // @synthesize presetDirty=_presetDirty;
-@property(readonly, nonatomic) NSDictionary *defaultPreset; // @synthesize defaultPreset=_defaultPreset;
 @property(readonly) unsigned int numChannels; // @synthesize numChannels=_numChannels;
 @property(readonly) double sampleRate; // @synthesize sampleRate=_sampleRate;
 

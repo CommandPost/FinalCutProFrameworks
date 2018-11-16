@@ -23,7 +23,8 @@
 - (id)enableAnimMenuImage;
 - (BOOL)doAllChannelsHaveEnableButton;
 - (const struct OZChannelBase *)publishChannelForChannel:(const struct OZChannelBase *)arg1;
-- (BOOL)areAllChannelsPublished:(const struct OZChannelBase *)arg1;
+- (BOOL)areAllSubchannelsPublished:(const struct OZChannelBase *)arg1;
+- (BOOL)areAllSubchannelsPublished;
 - (BOOL)isChanDescendantOfPublishedGradient:(const struct OZChannelBase *)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)addCustomMenuItems:(id)arg1;

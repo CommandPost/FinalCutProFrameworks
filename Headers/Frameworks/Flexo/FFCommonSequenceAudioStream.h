@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 - (void)prerollEnd;
 - (void)setRate:(double)arg1;
 - (void)_advanceScopingWindow:(id)arg1;
+- (void)_pushChildStreamScopes:(vector_a48f3066 *)arg1;
+- (BOOL)_hasStreamScopeThatNeedsUpdate;
 - (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3 rootItem:(id)arg4;
 - (void)dealloc;
 

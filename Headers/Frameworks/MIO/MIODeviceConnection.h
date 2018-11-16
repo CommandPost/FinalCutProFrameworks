@@ -39,6 +39,7 @@
     BOOL mIsiSight;
     BOOL miSightHasIris;
     int miSightStatus;
+    NSString *_customName;
 }
 
 + (id)deviceConnectionWithCMIOObjectID:(unsigned int)arg1;
@@ -65,6 +66,8 @@
 - (id)modelUID;
 - (id)deviceName;
 - (id)displayName;
+- (void)setCustomName:(id)arg1;
+- (id)customName;
 - (id)framerateString;
 - (BOOL)ntscRate;
 - (void)setMultiplexerMode:(unsigned int)arg1;
@@ -76,16 +79,16 @@
 - (id)currentFormat;
 - (id)presentationDimensions;
 - (id)availableFormats;
-@property(retain) NSArray *inputFormats; // @synthesize inputFormats=mInputFormats;
+@property(readonly, retain) NSArray *inputFormats; // @synthesize inputFormats=mInputFormats;
 @property(retain) NSString *currentInputFormat;
 - (struct opaqueCMFormatDescription *)currentInputFormatDescription;
-@property(retain) NSArray *inputFrameRates; // @synthesize inputFrameRates=mInputFrameRates;
-@property(retain) NSArray *outputFormats; // @synthesize outputFormats=mOutputFormats;
+@property(readonly, retain) NSArray *inputFrameRates; // @synthesize inputFrameRates=mInputFrameRates;
+@property(readonly, retain) NSArray *outputFormats; // @synthesize outputFormats=mOutputFormats;
 @property(retain) NSString *currentOutputFormat;
 - (struct opaqueCMFormatDescription *)currentOutputFormatDescription;
 - (struct OpaqueFigClock *)clock;
 - (void)refreshFormats;
-@property(retain) NSArray *controls; // @synthesize controls=mControls;
+@property(readonly, retain) NSArray *controls; // @synthesize controls=mControls;
 @property(retain) NSNumber *currentInputFrameRate;
 @property BOOL inputting;
 - (unsigned int)width;
@@ -97,6 +100,7 @@
 - (BOOL)canDoInput;
 - (BOOL)canDoOutput;
 @property NSDictionary *properties;
+- (unsigned int)outputStreamLatencyInFrames;
 @property int iSightStatus; // @synthesize iSightStatus=miSightStatus;
 @property BOOL iSightHasIris; // @synthesize iSightHasIris=miSightHasIris;
 @property BOOL isiSight; // @synthesize isiSight=mIsiSight;

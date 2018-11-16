@@ -9,5 +9,7 @@
 
 @optional
 - (id)inspectorIdentifier;
+- (id)audioInfoInspectorText;
+- (id)videoInfoInspectorText;
 @end
 

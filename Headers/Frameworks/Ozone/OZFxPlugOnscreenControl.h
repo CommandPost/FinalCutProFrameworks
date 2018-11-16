@@ -20,6 +20,7 @@
     unsigned long long _curModifiers;
     NSProCursor *_cursor;
     struct OZChannel *_trackChannel;
+    int _startCaptureModifiedChannels;
 }
 
 + (BOOL)validate:(struct OZChannelBase *)arg1;

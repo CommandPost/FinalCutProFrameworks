@@ -34,7 +34,6 @@
 @property BOOL containingViewFirstResponder;
 - (id)hitTest:(struct CGPoint)arg1;
 - (void)_updateLayers:(id)arg1;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
 - (void)addSublayer:(id)arg1;

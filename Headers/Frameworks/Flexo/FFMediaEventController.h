@@ -21,6 +21,9 @@
 }
 
 + (id)keyPathsForValuesAffectingMediaEvents;
++ (id)_mediaComponentReferencesInObject:(id)arg1 eventID:(id)arg2 mediaID:(id)arg3 includeAnchored:(BOOL)arg4;
++ (id)mediaComponentReferencesToEventID:(id)arg1 mediaID:(id)arg2 inSelection:(id)arg3;
++ (id)mediaComponentReferencesToEventID:(id)arg1 mediaID:(id)arg2;
 + (void)initialize;
 + (id)sharedInstance;
 + (void)releaseSharedInstance;
@@ -34,7 +37,7 @@
 - (void)addMediaEvents:(id)arg1;
 - (void)removeMediaEvents:(id)arg1;
 @property(nonatomic) BOOL mediaIsSyncing;
-- (void)_updateModifiedMediaRep:(id)arg1 isCurrent:(BOOL)arg2;
+- (void)_updateModifiedMediaRep:(id)arg1 returnIsIncompatibleOriginal:(char *)arg2;
 - (id)_findSyncInfo:(id)arg1 identifier:(id)arg2;
 - (void)_registerSyncRequest:(id)arg1;
 - (void)_unregisterSyncRequest:(id)arg1;
@@ -51,17 +54,19 @@
 - (void)dealloc;
 - (id)undoHandler;
 - (id)eventsURLForLocation:(id)arg1;
+- (id)projectsURLForLocation:(id)arg1;
 - (id)newTemporaryEvent:(id *)arg1;
 - (id)newEventAtURL:(id)arg1 error:(id *)arg2;
 - (id)newEventAtLocation:(id)arg1 name:(id)arg2 error:(id *)arg3;
 - (id)defaultMediaEvent;
 - (void)setDefaultMediaEvent:(id)arg1;
 - (id)loadEventAtURL:(id)arg1;
-- (BOOL)externalEventReferencesExistForAssetRef:(id)arg1 excludingTheseClips:(id)arg2;
-- (id)eventClipsForAssetRefs:(id)arg1;
+- (BOOL)externalEventReferencesExistForMediaRef:(id)arg1 excludingTheseClips:(id)arg2;
+- (id)eventClipsForMediaRefs:(id)arg1;
 - (BOOL)_eventsToAddForLocation:(id)arg1 returnEvents:(id *)arg2 error:(id *)arg3;
 @property(nonatomic) BOOL autoLoadEvents;
 - (BOOL)loadAllEvents:(id *)arg1;
+- (void)_validateProjectsAndEvents;
 - (BOOL)_loadEvents:(id *)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)description;

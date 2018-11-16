@@ -6,19 +6,17 @@
 
 #import "NSDocumentController.h"
 
-@class NSDictionary, OZObjCDocument, OZProjectPreset;
+@class NSDictionary;
 
 @interface OZDocumentController : NSDocumentController
 {
     struct vector<PCString, std::allocator<PCString>> *_importList;
     unsigned int _importFlags;
     NSDictionary *_importSequenceSettings;
-    BOOL _calledByAppleScript;
-    BOOL _calledByDocumentBrowser;
-    OZObjCDocument *_docToCreate;
-    OZProjectPreset *_selectedPreset;
+    NSDictionary *_docToCreateDict;
 }
 
+- (id)dictionaryForDefaultDocument;
 - (void)closeAllDocuments:(id)arg1;
 - (void)documentController:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(void *)arg3;
 - (void)newDocument:(id)arg1;
@@ -30,22 +28,19 @@
 - (void)documentControllerHandlingOpenDocument:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(void *)arg3;
 - (void)importAsDocument:(id)arg1;
 - (void)documentControllerHandlingImportAsDocument:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(CDStruct_178f0333 *)arg3;
-- (id)newDocumentPickPreset;
 - (id)makeUntitledDocumentOfType:(id)arg1 error:(id *)arg2;
 - (void)openPreviouslyOpenDocuments;
 - (void)savePathsOfOpenDocuments;
 - (void)closeUntouchedDocuments;
 - (void)releaseResourcesOfDocuments;
-- (id)_setupOpenPanel;
 - (void)restoreDocumentFromAutosave:(id)arg1 setDocFileURL:(id)arg2 setDocType:(int)arg3;
 - (id)openDocumentWithContentsOfURL:(id)arg1 display:(BOOL)arg2 error:(id *)arg3;
 - (id)openUntitledDocumentAndDisplay:(BOOL)arg1 error:(id *)arg2;
 - (void)updateAutosaveVault;
-- (void)makeNewDocumentWithObjCDoc:(id)arg1;
-- (void)makeNewDocumentWithPreset:(id)arg1;
-- (void)importFileAsDocument:(id)arg1 asSequence:(_Bool)arg2 withAudioAs:(unsigned int)arg3 withPreset:(id)arg4;
-- (void)errPrompt:(int)arg1 string:(id)arg2;
 - (void)generateTemplatePreviewsInDirectory:(id)arg1 withSaveOptions:(int)arg2;
+- (BOOL)validateMenuItem:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+@property NSDictionary *dictionaryForPendingDocument; // @synthesize dictionaryForPendingDocument=_docToCreateDict;
 
 @end
 

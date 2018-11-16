@@ -114,6 +114,7 @@
 - (void)copy:(id)arg1;
 - (void)toggleFavoritesAndAllFilters:(id)arg1;
 - (void)createCompoundClip:(id)arg1;
+- (void)createMultiAngleClip:(id)arg1;
 - (void)consolidateFiles:(id)arg1;
 - (void)duplicate:(id)arg1;
 - (void)breakApartClipItems:(id)arg1;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSArray *_contents;
     NSDictionary *_filtersDictionary;
     FFSidebarModule *_sidebarModule;
+    CDUnknownBlockType _UIUpdateBlock;
 }
 
 @property(retain, nonatomic) NSDictionary *filtersDictionary; // @synthesize filtersDictionary=_filtersDictionary;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)finishedLoading;
 - (id)init;
 - (void)dealloc;
+@property(copy, nonatomic) CDUnknownBlockType UIUpdateBlock; // @synthesize UIUpdateBlock=_UIUpdateBlock;
 @property(nonatomic) FFSidebarModule *sidebarModule; // @synthesize sidebarModule=_sidebarModule;
 
 @end

@@ -23,7 +23,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (unsigned int)makeParameterChannelsForAudioUnit:(struct ComponentInstanceRecord *)arg1 withinFolder:(id)arg2 addedParams:(struct FFAudioUnitParameterList *)arg3 createdParamFolder:(id *)arg4;
 @property(retain) FFAudioPreprocessor *processor; // @synthesize processor=_processor;
 @property CDStruct_1b6d18a9 startTimecode; // @synthesize startTimecode=_startTimecode;
 @property double results; // @synthesize results=_results;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (void)releaseSharedInstance;
 - (id)init;
 - (void)dealloc;
+- (void)appWillTerminate:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end

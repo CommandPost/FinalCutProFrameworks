@@ -21,6 +21,7 @@
 - (id)filteredRanges;
 - (void)selectedRangesOfMediaDidChange;
 - (void)selectionDidChangeToObject:(id)arg1;
+- (void)selectionDidChangeToTime:(CDStruct_e83c9415)arg1 inObject:(id)arg2;
 - (BOOL)canBeginSkimming;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
 - (id)editorModule;

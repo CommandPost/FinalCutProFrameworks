@@ -6,7 +6,7 @@
 
 #import <Flexo/FFResponderLayerHostView.h>
 
-@class FFDestVideoScopesGL;
+@class FFDestVideoScopesGL, NSProSlider;
 
 __attribute__((visibility("hidden")))
 @interface FFVideoScopesView : FFResponderLayerHostView
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     float _zoomFactor;
     BOOL _drawingEnabled;
     FFDestVideoScopesGL *_destVideo;
+    NSProSlider *_traceBrightnessSlider;
     void *_FFVideoScopesViewPrivate;
 }
 
@@ -26,6 +27,10 @@ __attribute__((visibility("hidden")))
 - (float)zoomFactor;
 - (void)setDrawingEnabled:(BOOL)arg1;
 - (BOOL)isDrawingEnabled;
+- (float)traceBrightness;
+- (void)setTraceBrightness:(float)arg1;
+- (BOOL)monochrome;
+- (void)setMonochrome:(BOOL)arg1;
 - (BOOL)accessibilityIsIgnored;
 - (id)accessibilityAttributeNames;
 - (id)accessibilityAttributeValue:(id)arg1;

@@ -61,6 +61,7 @@
 + (struct CGColorSpace *)guessYCbCrColorSpaceFromHeight:(int)arg1;
 + (CDStruct_1b6d18a9)defaultSampleDurationForStillImage;
 + (BOOL)isReallyClose16x9s:(struct CGRect)arg1 bounds2:(struct CGRect)arg2;
++ (unsigned int)temporalFieldForTime:(CDStruct_1b6d18a9)arg1 withVideoProps:(id)arg2;
 - (id)initWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 fieldDominance:(int)arg3 sampleDuration:(CDStruct_1b6d18a9)arg4 frame:(id)arg5 field1:(id)arg6 field2:(id)arg7 paspH:(int)arg8 paspV:(int)arg9 frameRateUndefined:(BOOL)arg10;
 - (id)initWithPList:(id)arg1;
 - (id)initWithProxyVideoProps:(id)arg1;
@@ -99,6 +100,7 @@
 - (struct CGRect)squareFrameBounds;
 - (BOOL)frameRateUndefined;
 - (BOOL)frameRateDefined;
+- (BOOL)possibleToDisplayDropFrame;
 - (void)_updateCachedPixelTransforms;
 - (void)_updateCachedImageSpaceBounds;
 - (struct CGRect)imageSpaceBounds;

@@ -36,7 +36,6 @@
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)partIdentifier;
 - (void)reloadVisibleLayers;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
 - (void)setDelegate:(id)arg1;
 @property(nonatomic) id <TLKTimelineItem> rightItem; // @synthesize rightItem=_rightItem;
 @property(nonatomic) id <TLKTimelineItem> leftItem; // @synthesize leftItem=_leftItem;

@@ -4,17 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <ProInspector/OZViewController.h>
+#import <ProInspector/OZViewControllerGroup.h>
 
 @class LKButton, LKTextField;
 
-@interface OZChanSeedController : OZViewController
+@interface OZChanSeedController : OZViewControllerGroup
 {
     LKButton *_pCreateSeedButton;
     LKTextField *_pTF;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)startSliderAction:(id)arg1;
 - (void)endSliderAction:(id)arg1;
 - (void)update;

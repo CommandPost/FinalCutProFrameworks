@@ -21,6 +21,7 @@
 + (id)timecodeWithString:(id)arg1 framerate:(double)arg2 iFramerate:(double)arg3 format:(int)arg4;
 + (id)timecodeWithTimecode:(id)arg1;
 + (id)timecodeWithFigTime:(CDStruct_1b6d18a9)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 interpFrameDuration:(CDStruct_1b6d18a9)arg3 drop:(BOOL)arg4;
++ (id)timecodeWithSMPTETime:(struct SMPTETime)arg1;
 + (id)timecodeByAdding:(id)arg1 to:(id)arg2;
 + (id)timecodeBySubtracting:(id)arg1 from:(id)arg2;
 - (id)initWithTimecode:(struct OpaqueTimecode *)arg1 useInterpRate:(BOOL)arg2;

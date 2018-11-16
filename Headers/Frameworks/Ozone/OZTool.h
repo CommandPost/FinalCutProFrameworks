@@ -11,6 +11,7 @@
     struct OZDocument *_doc;
     double _startX;
     double _startY;
+    struct PCMutex _mutex;
     _Bool _hit;
 }
 
@@ -39,6 +40,8 @@
 - (double)startX;
 - (double)startY;
 - (struct OZDocument *)document;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 
 @end
 

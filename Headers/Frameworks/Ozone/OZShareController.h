@@ -28,15 +28,14 @@
     struct OZExportSettings *_tmpSettings;
 }
 
-- (id)init;
 - (id)initWithObjCDocument:(id)arg1;
+- (void)awakeFromNib;
 - (void)dealloc;
 - (void)buildCameraList;
 - (void)setResolution:(id)arg1;
 - (void)setColor:(id)arg1;
 - (void)setPremultiplyAlpha:(id)arg1;
 - (void)_updateCustomQualityFromExportSettings;
-- (void)_updateCustomQualityFromUserInfo:(id)arg1;
 - (void)setRenderQuality:(id)arg1;
 - (void)setCustomRenderQuality:(id)arg1;
 - (void)setFields:(id)arg1;

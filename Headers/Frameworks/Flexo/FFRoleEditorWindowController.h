@@ -10,21 +10,22 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKButton, LKPopUpButton, LKTableView, NSArray, NSMutableSet, NSString;
+@class LKButton, LKOutlineView, LKPopUpButton, LKTableView, NSArray, NSMutableSet, NSString;
 
 @interface FFRoleEditorWindowController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate>
 {
-    LKTableView *_roleSetTableView;
-    LKTableView *_roleTableView;
-    LKPopUpButton *_addRoleSetPopUpButton;
-    LKButton *_addRoleButton;
+    BOOL _runningModal;
+    BOOL _saveBeforeClosing;
     NSArray *_arrangedRoleSets;
     NSArray *_arrangedRolesInSelectedRoleSet;
     NSString *_selectedRoleSet;
     NSMutableSet *_addedRoles;
     NSMutableSet *_addedRoleSets;
-    BOOL _runningModal;
-    BOOL _saveBeforeClosing;
+    LKTableView *_roleSetTableView;
+    LKTableView *_roleTableView;
+    LKPopUpButton *_addRoleSetPopUpButton;
+    LKButton *_addRoleButton;
+    LKOutlineView *_roleOutlineView;
 }
 
 - (id)init;
@@ -32,29 +33,46 @@
 - (long long)runModal;
 - (void)windowDidLoad;
 - (void)windowWillClose:(id)arg1;
-@property(retain, nonatomic) NSArray *arrangedRoleSets; // @synthesize arrangedRoleSets=_arrangedRoleSets;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)_rearrangeRoleSets;
-- (long long)numberOfRowsInTableView:(id)arg1;
-- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
-- (void)tableView:(id)arg1 setObjectValue:(id)arg2 forTableColumn:(id)arg3 row:(long long)arg4;
-- (void)_syncRoleSetSelectionWithRolesTable;
-- (void)tableViewSelectionDidChange:(id)arg1;
-- (BOOL)tableView:(id)arg1 shouldEditTableColumn:(id)arg2 row:(long long)arg3;
-- (void)delete:(id)arg1;
-- (id)_nameForNewRoleSetOfType:(int)arg1;
-- (id)_nameForNewRoleInRoleSet:(id)arg1;
-- (void)_newRoleSetOfType:(int)arg1;
-- (BOOL)_canEditRole:(id)arg1;
-- (BOOL)_canEditRoleSet:(id)arg1;
 - (void)saveAndCloseEditorWindow:(id)arg1;
 - (void)cancelEditorWindow:(id)arg1;
 - (void)newAudioRoleSet:(id)arg1;
 - (void)newVideoRoleSet:(id)arg1;
 - (void)newRole:(id)arg1;
-@property(nonatomic) BOOL saveBeforeClosing; // @synthesize saveBeforeClosing=_saveBeforeClosing;
+- (void)delete:(id)arg1;
+- (long long)numberOfRowsInTableView:(id)arg1;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
+- (void)tableView:(id)arg1 setObjectValue:(id)arg2 forTableColumn:(id)arg3 row:(long long)arg4;
+- (BOOL)tableView:(id)arg1 shouldSelectRow:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldEditTableColumn:(id)arg2 row:(long long)arg3;
+- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 row:(long long)arg4;
+- (void)tableViewSelectionDidChange:(id)arg1;
+- (id)audioRoleSets;
+- (id)videoRoleSets;
+- (BOOL)isValidIndex:(long long)arg1 forTable:(id)arg2;
+- (void)_addGroupHeadersToRoleSetsArray;
+- (void)_removeGroupHeadersToRoleSetsArray;
+- (BOOL)_isRowIndexGroupHeaderRoleSet:(long long)arg1;
+- (BOOL)_isGroupHeaderRoleSet:(id)arg1;
+- (BOOL)_canEditRole:(id)arg1;
+- (BOOL)_canEditRoleSet:(id)arg1;
+- (void)_rearrangeRoleSets;
+- (void)_newRoleSetOfType:(int)arg1;
+- (id)_nameForNewRoleSetOfType:(int)arg1;
+- (id)_nameForNewRoleInRoleSet:(id)arg1;
+- (void)_syncRoleSetSelectionWithRolesTable;
+@property(retain, nonatomic) LKOutlineView *roleOutlineView; // @synthesize roleOutlineView=_roleOutlineView;
+@property(retain, nonatomic) LKButton *addRoleButton; // @synthesize addRoleButton=_addRoleButton;
+@property(retain, nonatomic) LKPopUpButton *addRoleSetPopUpButton; // @synthesize addRoleSetPopUpButton=_addRoleSetPopUpButton;
+@property(retain, nonatomic) LKTableView *roleTableView; // @synthesize roleTableView=_roleTableView;
+@property(retain, nonatomic) LKTableView *roleSetTableView; // @synthesize roleSetTableView=_roleSetTableView;
+@property(retain, nonatomic) NSMutableSet *addedRoleSets; // @synthesize addedRoleSets=_addedRoleSets;
+@property(retain, nonatomic) NSMutableSet *addedRoles; // @synthesize addedRoles=_addedRoles;
 @property(retain, nonatomic) NSString *selectedRoleSet; // @synthesize selectedRoleSet=_selectedRoleSet;
 @property(retain, nonatomic) NSArray *arrangedRolesInSelectedRoleSet; // @synthesize arrangedRolesInSelectedRoleSet=_arrangedRolesInSelectedRoleSet;
+@property(retain, nonatomic) NSArray *arrangedRoleSets; // @synthesize arrangedRoleSets=_arrangedRoleSets;
+@property(nonatomic) BOOL saveBeforeClosing; // @synthesize saveBeforeClosing=_saveBeforeClosing;
+@property(nonatomic) BOOL runningModal; // @synthesize runningModal=_runningModal;
 
 @end
 

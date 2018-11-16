@@ -26,6 +26,7 @@
     _Bool _effectHasDynamicParams;
     NSMutableArray *_channelObjectRefs;
     BOOL _isOffline;
+    int _cachedIsNoOp;
     FFMD5AndOffset *_cachedAudioMD5;
     int _videoStreamsOpenOnEffect;
     int _pendingVideoStreamCloses;
@@ -34,6 +35,8 @@
 
 + (id)copyClassDescription;
 + (void)registerEffects;
++ (id)newEffectWithXMLElement:(id)arg1;
++ (id)effectIDFromXMLElement:(id)arg1;
 - (id)initWithEffectID:(id)arg1;
 - (void)dealloc;
 - (void)cleanUpChannelFolderDecendentsAsModelObjectsBackingHaveBeenDeleted;
@@ -55,6 +58,7 @@
 - (BOOL)needsAnalysis;
 - (BOOL)analysisAvailable;
 - (BOOL)isLoadingInBackground;
+- (void)increaseBackgroundLoadPriority;
 - (void)waitForBackgroundLoad;
 - (void)cancelBackgroundLoad;
 - (void)setLoadsInForeground:(BOOL)arg1;
@@ -82,6 +86,8 @@
 - (void)createChannelsInFolder:(id)arg1;
 - (BOOL)channelFolderIsLoaded;
 - (id)channelFolder;
+- (void)_resetCachedIsNoOp;
+- (BOOL)_cachedIsNoOp;
 - (void)channelParameterChanged:(id)arg1;
 - (void)channelsWereReset;
 - (void)_channelParameterChanged:(id)arg1;
@@ -115,6 +121,7 @@
 - (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
 - (id)effectStack;
 - (void)setEffectStack:(id)arg1;
+- (void)effectStackAnchoredObjectDidChange;
 - (unsigned int)attributeCopyingFlags;
 - (CDStruct_1b6d18a9)suggestedDuration;
 - (BOOL)enabled;
@@ -124,8 +131,6 @@
 - (BOOL)isRetimeEffect;
 - (BOOL)isRateConformEffect;
 - (BOOL)shouldChannelBeAdjustedByRetime:(id)arg1;
-- (id)effectData;
-- (void)setEffectData:(id)arg1;
 - (BOOL)isNoOp;
 - (BOOL)isAtDefaultSettings;
 - (BOOL)hasAnimatedKeyframes;
@@ -135,6 +140,7 @@
 - (BOOL)effectStartAndDurationImpactMD5;
 - (BOOL)effectDurationImpactsMD5;
 - (CDStruct_1b6d18a9)durationToUseForMD5Calcs;
+- (CDStruct_60067b7e)getContextBasedMD5Adjustment:(id)arg1;
 - (BOOL)pointIsOverEffect:(struct CGPoint)arg1 playerVideoModule:(id)arg2 options:(id)arg3;
 - (id)newEffectNode;
 - (id)newEffectNodeWithInput:(id)arg1 forKey:(id)arg2 withOffset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4;
@@ -147,13 +153,21 @@
 - (void)lastVideoStreamClosedOnEffect;
 - (void)videoStreamOpened:(id)arg1;
 - (void)_videoStreamClosedInternal:(id)arg1;
-- (void)_installVideoStreamClosedSelectorOnMainThread:(id)arg1;
+- (void)_processEffectsNeedingVideoStreamClose:(id)arg1;
+- (void)_processEffectsNeedingVideoStreamCloseViaTimer:(id)arg1;
+- (void)_installVideoStreamClosedSelectorOutsideOfLockScopes:(id)arg1;
 - (void)videoStreamClosed:(id)arg1;
 - (id)assets;
 - (id)assetRefs;
+- (id)clipRefs;
+- (id)mediaRefs;
 - (id)fileURLs:(int)arg1;
 - (CDStruct_1b6d18a9)sampleDurationOfContainer;
 - (id)effectController;
+- (void)loadEffectWithXMLElement:(id)arg1;
+- (id)exportAsXMLElement;
+- (id)exportAsXMLElementWithExcludedChannels:(id)arg1;
+- (id)exportAsXMLElementWithDeprecatedEffectData:(id)arg1;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 
 @end

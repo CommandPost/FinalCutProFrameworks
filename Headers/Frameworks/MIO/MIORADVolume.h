@@ -17,6 +17,7 @@
     BOOL _isNameEditable;
     struct FSRef _fsRef;
     NSString *_path;
+    NSString *_customName;
     NSUndoManager *_undoManager;
     NSImage *_icon;
     BOOL _isUnmounting;
@@ -24,6 +25,7 @@
 
 + (id)volumeWithPath:(id)arg1 undoManager:(id)arg2;
 + (BOOL)pathIsValidVolume:(id)arg1;
++ (short)volumeRefNumFromPath:(id)arg1;
 - (id)initWithPath:(id)arg1 undoManager:(id)arg2;
 - (void)dealloc;
 - (void)addClip:(id)arg1;
@@ -31,6 +33,8 @@
 - (void)removeFromFlatClipsArray;
 - (id)description;
 - (id)name;
+- (void)setCustomName:(id)arg1;
+- (id)customName;
 - (id)path;
 - (id)defaultReelName;
 - (void)setDefaultReelName:(id)arg1;
@@ -39,6 +43,7 @@
 - (BOOL)isWritable;
 - (BOOL)supportsSpannedClips;
 - (unsigned int)volumeID;
+- (id)cameraID;
 - (void)postMIOSpannedClipDidComplete;
 - (void)updateSpannedClipsAfterMounting;
 - (void)willUnmount;

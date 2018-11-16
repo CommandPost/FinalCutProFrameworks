@@ -13,6 +13,7 @@
     FFVideoProps *_videoProps;
     FFStreamVideoCache *_streamCache;
     int _layerIndex;
+    BOOL _streamIsForUIUse;
 }
 
 - (id)initWithVideoProps:(id)arg1 streamCache:(id)arg2;
@@ -22,6 +23,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToStreamVideoOptions:(id)arg1;
 - (unsigned long long)hash;
+@property(nonatomic) BOOL streamIsForUIUse; // @synthesize streamIsForUIUse=_streamIsForUIUse;
 @property(nonatomic) int layerIndex; // @synthesize layerIndex=_layerIndex;
 
 @end

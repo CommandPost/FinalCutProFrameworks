@@ -13,7 +13,6 @@
 }
 
 - (BOOL)startTracking:(id)arg1;
-- (BOOL)shouldPerformRoll:(id)arg1;
 - (void)selectItem:(id)arg1;
 - (id)partToDrag:(id)arg1;
 - (void)updateDraggedItem:(id)arg1;

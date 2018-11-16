@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithName:(id)arg1 sourceType:(id)arg2;
 - (id)initWithSourceDescription:(id)arg1;
+- (id)initWithAnchoredObject:(id)arg1 audioSourceDict:(id)arg2;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isEqual:(id)arg1;

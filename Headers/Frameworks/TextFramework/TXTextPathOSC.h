@@ -14,13 +14,14 @@
     struct OZChannelRef *_pChannelRef;
 }
 
++ (void)maybeInitResources;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (void)dealloc;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (double)getPixelAspectRatio;
-- (struct POVertexAsset *)initAsset:(unsigned int)arg1 largeAssets:(_Bool)arg2;
+- (PCPtr_fc939811)getVertexAsset:(int)arg1;
 - (void)draw;
 - (id)motionPathOSCColor;
 - (id)motionPathLockedColor;

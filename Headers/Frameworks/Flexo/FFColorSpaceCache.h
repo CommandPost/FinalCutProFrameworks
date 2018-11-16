@@ -20,6 +20,7 @@
     struct CGColorSpace *_sanyo_611_NCLC_Space;
     NSArray *_standardEnumeratedSpaces;
     NSMutableDictionary *_oddballCachedColorSpaces;
+    NSMutableArray *_recentUnknownColorSpaces;
 }
 
 + (id)sharedInstance;

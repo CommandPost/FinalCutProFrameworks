@@ -11,6 +11,9 @@
 }
 
 - (void)layoutMeters;
+- (void)layoutDB;
+- (void)layoutDBlines;
+- (void)layoutSublayers;
 - (float)positionFromDBValue:(float)arg1;
 
 @end

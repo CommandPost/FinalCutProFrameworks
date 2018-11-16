@@ -27,7 +27,7 @@
 - (BOOL)editsContainVideo:(id)arg1;
 - (BOOL)editsContainSpineAndOffSpine:(id)arg1 endEdits:(id)arg2;
 - (BOOL)resolveAdjacentEdits:(id *)arg1 endEdits:(id *)arg2 error:(id *)arg3;
-- (int)_resolveTemporalResolutionForSelection:(int)arg1 startEdits:(id)arg2 endEdits:(id)arg3 edgeType:(int)arg4;
+- (int)_resolveTemporalResolutionForSelection:(int)arg1 startEdits:(id)arg2 endEdits:(id)arg3 edgeType:(int)arg4 trimCommand:(int)arg5;
 - (BOOL)resolveTrimCommandParticulars:(id *)arg1 endEdits:(id *)arg2 edgeType:(int)arg3 trimCommand:(int *)arg4 temporalResolutionMode:(int *)arg5 sampleDuration:(CDStruct_1b6d18a9 *)arg6 error:(id *)arg7;
 - (CDStruct_e83c9415)_trimContainerEffectiveRange:(id)arg1 edgeType:(int)arg2;
 - (CDStruct_e83c9415)_trimContainerEffectiveRangeClippedByTransitions:(id)arg1 edgeType:(int)arg2;

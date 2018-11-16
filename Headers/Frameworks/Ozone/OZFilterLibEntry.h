@@ -13,6 +13,7 @@
     NSString *_previewName;
 }
 
++ (BOOL)groupContainsValidPlugins:(id)arg1;
 + (void)buildInternalTreeWithRoot:(id)arg1;
 + (void)buildImageUnitTreeWithRoot:(id)arg1;
 - (id)initWithParent:(id)arg1 name:(id)arg2 factory:(struct OZFactory *)arg3;

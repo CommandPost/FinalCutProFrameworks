@@ -16,8 +16,11 @@
 
 + (id)effectIdentifierForAnalysisOperation:(int)arg1;
 + (void)setupEqualizationMenu:(id)arg1;
++ (void)setPresetIDOnMainThread:(id)arg1;
++ (void)updateExistingEffectFromSavedEffect:(id)arg1;
 + (void)analyzeForCleanup:(id)arg1 onTask:(id)arg2;
 + (id)getAnchoredObjectFromObject:(id)arg1;
++ (BOOL)objectValidForAnalysis:(id)arg1;
 + (id)getAudioAnchoredObjectsFromObjects:(id)arg1;
 + (BOOL)fixAudioProblems:(id)arg1 error:(id *)arg2;
 + (void)enhanceAudio:(id)arg1 aggressively:(BOOL)arg2;
@@ -65,6 +68,7 @@
 - (int)_savedEqualizationPresetChannel;
 - (void)_setSavedEqualizationPresetChannel:(int)arg1;
 - (void)_analyzeForCleanup:(id)arg1 onTask:(id)arg2;
+- (void)_fireRangeInvalidationNotificationOnMainThread:(id)arg1;
 - (BOOL)_hasOnlyMatchEQData;
 @property(readonly, nonatomic) id <FFEnhanceAudioDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain) FFAnchoredObject *object; // @synthesize object=_object;

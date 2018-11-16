@@ -7,7 +7,7 @@
 #import "NSCoder.h"
 
 @interface NSCoder (flexoExtensions)
-- (id)_encodedStringForFigTime:(CDStruct_1b6d18a9)arg1;
+- (id)_copyEncodedStringForFigTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)_decodedFigTimeForString:(id)arg1;
 - (void)encodeFigTime:(CDStruct_1b6d18a9)arg1 forKey:(id)arg2;
 - (CDStruct_1b6d18a9)decodeFigTimeForKey:(id)arg1;

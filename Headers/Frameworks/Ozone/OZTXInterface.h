@@ -31,8 +31,6 @@
 - (unsigned int)getResultID;
 - (unsigned int)getParentID;
 - (vector_d1504541)getTextIDs;
-- (void)wLock;
-- (void)wUnlock;
 - (void)deleteTextAtTime:(const CDStruct_1b6d18a9 *)arg1 at:(unsigned int)arg2 length:(unsigned int)arg3 ID:(unsigned int)arg4;
 - (void)insertText:(const struct PCString *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2 at:(unsigned int)arg3 ID:(unsigned int)arg4;
 - (BOOL)hasAtLeastOneInstanceOf:(const struct PCString *)arg1 withFlags:(unsigned int)arg2;

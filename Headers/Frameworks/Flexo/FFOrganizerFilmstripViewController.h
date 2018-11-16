@@ -71,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)syncSelectionToRange:(id)arg1;
 - (void)syncMarkerToRange:(id)arg1;
 - (void)selectionDidChangeToObject:(id)arg1;
+- (void)selectionDidChangeToTime:(CDStruct_e83c9415)arg1 inObject:(id)arg2;
 - (void)moveToSelectionStart;
 - (void)moveToSelectionEnd;
 - (void)moveToFirstSelectedClip;

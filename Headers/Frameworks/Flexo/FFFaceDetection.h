@@ -6,13 +6,13 @@
 
 #import <Flexo/FFDestVideoAnalyzerController.h>
 
-#import "FFDestAnalyzerControllerDelegate.h"
+#import "FFDestAnalyzerProtocol.h"
 #import "FaceRecognitionManagerDetectionDelegate.h"
 
 @class FFFaceDetectionInfoCollection, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface FFFaceDetection : FFDestVideoAnalyzerController <FaceRecognitionManagerDetectionDelegate, FFDestAnalyzerControllerDelegate>
+@interface FFFaceDetection : FFDestVideoAnalyzerController <FaceRecognitionManagerDetectionDelegate, FFDestAnalyzerProtocol>
 {
     int _downSampleRate;
     int _numFramesReceived;
@@ -26,14 +26,13 @@ __attribute__((visibility("hidden")))
     NSMutableArray *rangesOfFramesContainingShotType[3];
     NSMutableArray *rangesOfFramesContainingOneSetOfKeywords[9];
     FFFaceDetectionInfoCollection *collectionOfPerFrameData;
-    CDUnknownBlockType _analyzeImage;
     BOOL _skipPerFrameAnalysis;
     BOOL _createSmartCollectionFolders;
     BOOL _consolidateFindPeopleResults;
 }
 
 - (void)_removeExistingKeywords:(id)arg1;
-- (id)initWithAnchoredObject:(id)arg1 createSmartCollectionFolders:(BOOL)arg2 consolidateFindPeopleResults:(BOOL)arg3;
+- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 clip:(id)arg2 asset:(id)arg3 createSmartCollectionFolders:(BOOL)arg4 consolidateFindPeopleResults:(BOOL)arg5;
 - (void)_processFrameImage:(struct CGImage *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)performFaceDetectionOnFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)_printRanges:(id)arg1;
@@ -51,13 +50,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)writeDetectionAndThumbnailInfoOfFaces:(id)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
 - (void)logDetectFace:(id)arg1 ofPhoto:(void *)arg2 debugString:(id)arg3 sender:(id)arg4 context:(void *)arg5;
 - (void)dealloc;
-- (void)start;
-- (CDUnknownBlockType)analyzeImage;
-- (void)finish;
-- (void)cancel;
+- (int)analyzeImage:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)startAnalyzing;
+- (void)finishAnalyzing;
 - (BOOL)reuseDataForAnalyzing;
 - (BOOL)doesSupportDataFilesWithMediaEventProject:(id)arg1 subPath:(id *)arg2 type:(id *)arg3;
-- (id)assignAnalyzeImageCallback;
 
 @end
 

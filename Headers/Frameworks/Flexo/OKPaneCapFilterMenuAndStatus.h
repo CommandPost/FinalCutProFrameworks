@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     LKButton *_keywordTypeFilterButton;
     LKButton *_gearTypeFilterButton;
     LKButton *_mediaTypeFilterButton;
+    LKButton *_clipTypeFilterButton;
     LKButton *_checkTypeFilterButton;
     LKButton *_ingestTypeFilterButton;
     LKButton *_dateTypeFilterButton;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)setSearchText:(id)arg1;
 - (void)setShowTextFilter:(BOOL)arg1;
 - (void)setShowMediaFilter:(BOOL)arg1;
+- (void)setShowClipFilter:(BOOL)arg1;
 - (void)setShowKeywordFilter:(BOOL)arg1;
 - (void)setShowAnalysisFilter:(BOOL)arg1;
 - (void)setShowTypeFilter:(BOOL)arg1;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)menuForEvent:(id)arg1;
+- (BOOL)becomeFirstResponder;
 - (void)adjustSelectionForContextualMenu:(id)arg1;
 
 @end

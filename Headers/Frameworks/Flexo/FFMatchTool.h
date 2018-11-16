@@ -6,7 +6,7 @@
 
 #import <Flexo/FFTool.h>
 
-@class FFContext, FFEventFilter, LKButton, LKTextField, LKWindow, NSArray, NSProView;
+@class FFContext, FFEventFilter, LKButton, LKTextField, NSArray, NSProView;
 
 @interface FFMatchTool : FFTool
 {
@@ -15,13 +15,14 @@
     FFContext *_context;
     id _delegate;
     CDStruct_1b6d18a9 _playheadTime;
-    LKWindow *_matchWindow;
+    float _canvasZoomFactor;
+    struct CGPoint _canvasOrigin;
+    int _displayAreaMode;
     NSProView *_matchFooterView;
     LKTextField *_matchFooterText;
     NSProView *_matchAccessoryView;
     LKTextField *_matchAccessoryTitle;
     LKButton *_matchOkButton;
-    LKButton *_matchCancelButton;
     struct {
         unsigned int isTrackingUndoRedoChanges:1;
         unsigned int isTrackingOrganizerListViewChanges:1;
@@ -33,6 +34,7 @@
 
 - (void)becomeActiveTool;
 - (void)resignActiveTool;
+- (void)updatePlayheadTime;
 - (void)selectedItemsChanged:(id)arg1;
 - (BOOL)allowInspectorToTrackSelection;
 - (BOOL)skims;
@@ -46,12 +48,15 @@
 - (void)_stopObservingOrganizerListViewNotifications;
 - (void)referenceChanged:(id)arg1;
 - (id)checkForMatchEvents:(id)arg1;
-- (id)matchWindow;
 - (id)playerFooterView;
 - (id)playerAccessoryView;
 - (void)_enableApplyButton:(BOOL)arg1;
 - (void)matchDone:(id)arg1;
 - (void)matchCancel:(id)arg1;
+- (BOOL)_shouldCloseOnUndo;
+@property(nonatomic) int displayAreaMode; // @synthesize displayAreaMode=_displayAreaMode;
+@property(nonatomic) struct CGPoint canvasOrigin; // @synthesize canvasOrigin=_canvasOrigin;
+@property(nonatomic) float canvasZoomFactor; // @synthesize canvasZoomFactor=_canvasZoomFactor;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 playheadTime; // @synthesize playheadTime=_playheadTime;
 @property(copy, nonatomic) NSArray *selectedItems; // @synthesize selectedItems=_selectedItems;
 @property(retain, nonatomic) id delegate; // @synthesize delegate=_delegate;

@@ -20,10 +20,10 @@ __attribute__((visibility("hidden")))
     BOOL _isOpaque;
     _Bool _canFitAsTexture;
     int _rotationDegrees;
-    char _unsupportedQuality[4];
-    CDStruct_bdcb2b0d _md5s[4];
-    FFSubRangeMD5Info *_md5Infos[4];
-    int _useTextureCacher[4];
+    char _unsupportedQuality[5];
+    CDStruct_bdcb2b0d _md5s[5];
+    FFSubRangeMD5Info *_md5Infos[5];
+    int _useTextureCacher[5];
     int _openStreams;
     NSRecursiveLock *_privateLock;
     NSString *_MD5Seed;

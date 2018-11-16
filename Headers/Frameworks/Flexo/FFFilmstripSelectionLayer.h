@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 + (id)_rightFacetHandle;
 + (id)_facetFrameForWidth:(double)arg1 forStillImage:(BOOL)arg2;
 - (id)init;
+- (void)dealloc;
 - (void)layoutSublayers;
 - (void)_updateFrameProperties;
 @property(nonatomic) CDStruct_1b6d18a9 leftTime; // @synthesize leftTime=_leftTime;
@@ -49,7 +50,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL forStillImage; // @synthesize forStillImage=_forStillImage;
 @property(nonatomic) CDStruct_1b6d18a9 rightBoundaryTime; // @synthesize rightBoundaryTime=_rightBoundaryTime;
 @property(nonatomic) CDStruct_1b6d18a9 leftBoundaryTime; // @synthesize leftBoundaryTime=_leftBoundaryTime;
-@property(nonatomic) FFFilmstrip *filmstrip; // @synthesize filmstrip=_filmstrip;
+@property(retain, nonatomic) FFFilmstrip *filmstrip; // @synthesize filmstrip=_filmstrip;
 
 @end
 

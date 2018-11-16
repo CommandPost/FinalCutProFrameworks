@@ -12,7 +12,6 @@
 
 @class FFNamingPresetManager, LKPopUpButton, LKSegmentedControl, LKTableView, LKTextField, LKTokenField, NSArray, NSArrayController;
 
-__attribute__((visibility("hidden")))
 @interface FFNamingPresetWindowController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTokenFieldDelegate>
 {
     NSArrayController *_presetsArrayController;

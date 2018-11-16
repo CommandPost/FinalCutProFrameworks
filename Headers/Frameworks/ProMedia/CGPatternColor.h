@@ -16,7 +16,7 @@
 - (id)initWithImageRef:(struct CGImage *)arg1;
 - (void)dealloc;
 - (void)finalize;
-- (struct CGPattern *)_createPattern;
+- (struct CGPattern *)newCGPattern;
 - (struct CGPattern *)pattern;
 - (void)set;
 - (id)colorUsingColorSpaceName:(id)arg1 device:(id)arg2;

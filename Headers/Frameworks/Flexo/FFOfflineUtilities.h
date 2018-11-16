@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     long long _sourceLengthFrames;
     FFCHObservableFolder *_effectChannelFolder;
     struct FFAudioBufferList *_buffer;
+    unsigned int downsampledRate;
 }
 
 + (BOOL)needsRenderFor:(id)arg1;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)addEffect:(id)arg1;
 - (void)makeIOFiles;
 - (id)inputFilePath;
+- (void)createStreamWithOptionFlags:(unsigned long long)arg1;
 - (void)createStream;
 - (void)pokeStream;
 - (id)stream;
@@ -45,9 +47,12 @@ __attribute__((visibility("hidden")))
 - (void)setDuration:(CDStruct_1b6d18a9)arg1;
 - (struct FFAudioBufferList *)buffer;
 - (void)setBuffer:(struct FFAudioBufferList *)arg1;
+- (unsigned int)downsampledRate;
+- (void)setDownsampledRate:(unsigned int)arg1;
 - (int)pull;
 - (int)pullOnTask:(id)arg1;
 - (int)pullToFilePath:(id)arg1 onTask:(id)arg2;
+- (int)pullToFilePath:(id)arg1 onTask:(id)arg2 taskPercentage:(float)arg3;
 - (void)updateEffect:(id)arg1 atIndex:(unsigned int)arg2;
 - (int)renderAUOL:(struct AudioComponentDescription)arg1 WithPreset:(void *)arg2 andDuration:(CDStruct_1b6d18a9)arg3 onTask:(id)arg4;
 - (void)prerollRenderFile:(id)arg1;

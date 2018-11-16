@@ -11,25 +11,38 @@
 __attribute__((visibility("hidden")))
 @interface FFDataListRoleSetTile : FFInspectorShareAutoresizingTile
 {
+    BOOL _isMinimized;
+    long long _state;
+    NSString *_roleSet;
     LKButton *_enabledCheckbox;
+    LKButton *_minimizeButton;
+    LKButton *_showHideButton;
     LKTextField *_roleSetNameLabel;
     LKTileView *_childTileView;
-    LKButton *_minimizeButton;
-    NSString *_roleSet;
-    long long _state;
-    BOOL _isMinimized;
 }
 
-- (void)awakeFromNib;
 - (void)dealloc;
-- (void)toggleEnabled:(id)arg1;
-- (void)toggleMinimized:(id)arg1;
-- (BOOL)isExpandable;
+- (void)awakeFromNib;
 @property(retain, nonatomic) NSString *roleSet; // @synthesize roleSet=_roleSet;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(nonatomic) BOOL isMinimized; // @synthesize isMinimized=_isMinimized;
+- (BOOL)isExpandable;
+- (void)registerNotifications;
+- (void)releaseNotifications;
+- (void)notificationHandler:(id)arg1;
+- (void)syncShowHideButton:(BOOL)arg1;
+- (void)toggleHidden:(id)arg1;
+- (void)toggleEnabled:(id)arg1;
+- (void)toggleMinimized:(id)arg1;
+- (void)setExpanded:(BOOL)arg1;
+- (void)setExpanded:(BOOL)arg1 animate:(BOOL)arg2;
+- (BOOL)currentMouseInTile;
 - (id)_enableCheckboxFacet;
 @property(retain, nonatomic) LKTileView *childTileView; // @synthesize childTileView=_childTileView;
+@property(retain, nonatomic) LKTextField *roleSetNameLabel; // @synthesize roleSetNameLabel=_roleSetNameLabel;
+@property(retain, nonatomic) LKButton *showHideButton; // @synthesize showHideButton=_showHideButton;
+@property(retain, nonatomic) LKButton *minimizeButton; // @synthesize minimizeButton=_minimizeButton;
+@property(retain, nonatomic) LKButton *enabledCheckbox; // @synthesize enabledCheckbox=_enabledCheckbox;
 
 @end
 

@@ -30,6 +30,10 @@ __attribute__((visibility("hidden")))
 + (id)genericRoleDefinitionWithRoleSet:(id)arg1;
 + (id)fcpDefinedRoles;
 + (id)fcpDefinedRoleSets;
++ (id)allAudioRoles;
++ (id)allAudioRoleSets;
++ (id)allVideoRoles;
++ (id)allVideoRoleSets;
 + (id)localizedStringForRole:(id)arg1;
 + (id)localizedStringForRoleSet:(id)arg1;
 + (id)audioUndefinedRole;

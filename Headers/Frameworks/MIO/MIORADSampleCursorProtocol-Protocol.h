@@ -23,7 +23,7 @@
 - (id)propertyForKey:(id)arg1;
 - (long long)timecodeCounter;
 - (CDStruct_1b6d18a9)decodeTimeStamp;
-- (void)dependencyInfoWithFullSync:(char *)arg1 partialSync:(char *)arg2 partialSyncThreshold:(long long *)arg3 droppable:(char *)arg4;
+- (void)dependencyInfoWithFullSync:(char *)arg1 partialSync:(char *)arg2 partialSyncThreshold:(int *)arg3 droppable:(char *)arg4;
 - (BOOL)mpeg2FrameType:(char *)arg1 brokenLink:(char *)arg2;
 - (BOOL)testReorderingBoundaryWithCursor:(id)arg1 boundaryType:(long long)arg2;
 - (void)chunkDetails:(id *)arg1 chunkOffset:(long long *)arg2 chunkSize:(unsigned long long *)arg3 sampleCount:(long long *)arg4 sampleIndex:(long long *)arg5 allSameSize:(char *)arg6 allSameDuration:(char *)arg7 allSameFormatDescription:(char *)arg8;

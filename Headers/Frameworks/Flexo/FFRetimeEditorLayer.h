@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     TLKItemLayer *_itemLayer;
     int _startThumbnailIdx;
     int _endThumbnailIdx;
+    BOOL _isMouseDown;
     NSProThemeFacet *_segmentGrabberFacet;
     NSProThemeFacet *_sourcePickerFacet;
     NSImage *_grabberImage;
@@ -94,10 +95,11 @@ __attribute__((visibility("hidden")))
 - (void)mouseExited:(id)arg1;
 - (void)becomeFocusOwner;
 - (void)resignFocusOwner;
+- (BOOL)shouldAutoscroll:(id)arg1;
 - (void)_adjustAfterRetime;
 - (BOOL)moveMediaTimeKey:(unsigned int)arg1 toTime:(double)arg2 event:(id)arg3;
 - (BOOL)moveComponentTimeKey:(unsigned int)arg1 deltaTime:(CDStruct_1b6d18a9)arg2 event:(id)arg3;
-- (void)_retimeChannelChanged:(id)arg1;
+- (void)updateLayout:(id)arg1;
 
 @end
 

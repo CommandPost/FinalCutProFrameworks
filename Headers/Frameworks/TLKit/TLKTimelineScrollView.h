@@ -6,26 +6,17 @@
 
 #import "LKScrollView.h"
 
-@class NSMutableArray;
+@class NSView;
 
 @interface TLKTimelineScrollView : LKScrollView
 {
-    id <TLKTimelineScrollViewDataSource> _dataSaurce;
-    NSMutableArray *_scrollers;
-    NSMutableArray *_cornerViews;
-    id <TLKTimelineScrollViewDataSource> _dataSource;
+    NSView *_tlkCornerView;
 }
 
-- (void)dealloc;
 - (void)_commonSetup;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)awakeAfterUsingCoder:(id)arg1;
-- (void)scrollWheel:(id)arg1;
 - (void)tile;
-- (void)invalidateScrollers;
-- (void)_scrollVertically:(id)arg1;
-- (void)_scrollVertically:(id)arg1 hitPart:(long long)arg2 multiplier:(double)arg3;
-@property(nonatomic) id <TLKTimelineScrollViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 
 @end
 

@@ -14,6 +14,7 @@
     OZViewController *_fontCtrl;
     OZViewController *_sizeCtrl;
     OZViewController *_trackingCtrl;
+    OZViewController *_lineSpacingCtrl;
     TXAlignmentColorController *_alignmentCtrl;
     BOOL _capturingChannels;
     list_6eff4338 *_styles;
@@ -25,9 +26,12 @@
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
 - (void)addOrResetAssociatedStyle:(struct TXTextStyle *)arg1 isAdd:(BOOL)arg2;
 - (void)setAssociatedStyles:(list_6eff4338 *)arg1;
+- (void)updateLineSpacingController:(list_2c251165 *)arg1;
+- (void)setAssociatedLineSpacingChannels:(vector_1f4c2fc3 *)arg1;
 - (void)notify:(unsigned int)arg1;
 - (void)textSelectionChanged:(id)arg1;
 - (_Bool)useGlyphTool;
+@property(retain, nonatomic) OZViewController *lineSpacingCtrl; // @synthesize lineSpacingCtrl=_lineSpacingCtrl;
 @property(retain, nonatomic) OZViewController *trackingCtrl; // @synthesize trackingCtrl=_trackingCtrl;
 @property(retain, nonatomic) OZViewController *sizeCtrl; // @synthesize sizeCtrl=_sizeCtrl;
 @property(retain, nonatomic) TXAlignmentColorController *alignmentCtrl; // @synthesize alignmentCtrl=_alignmentCtrl;

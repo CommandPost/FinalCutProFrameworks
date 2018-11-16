@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
-@class FFAssetCopyRequest, FFBackgroundTaskWithPauseCondition, NSMutableArray, NSRecursiveLock, NSString;
+#import "FFStorageLocationOutOfDiskSpaceProtocol.h"
+
+@class FFAssetCopyRequest, FFBackgroundTaskWithPauseCondition, FFStorageLocation, NSMutableArray, NSRecursiveLock, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFAssetCopyQueue : NSObject
+@interface FFAssetCopyQueue : NSObject <FFStorageLocationOutOfDiskSpaceProtocol>
 {
     NSRecursiveLock *_lock;
     FFBackgroundTaskWithPauseCondition *_backgroundTask;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSString *_taskName;
     int _taskType;
     id <FFAssetCopyQueueDelegateProtocol> _delegate;
+    FFStorageLocation *_currentStorageLocation;
 }
 
 + (id)sharedInstance;
@@ -32,11 +35,15 @@ __attribute__((visibility("hidden")))
 - (void)_waitForBGTaskToFinish;
 - (void)_updateProgress;
 - (void)_ensureBackgroundTask;
+- (void)_registerAsDiskSpaceObserverForURL:(id)arg1;
+- (void)_unregisterAsDiskSpaceObserver;
+- (void)_queueRequests:(id)arg1;
 - (void)pausedTask:(id)arg1;
 - (void)resumedTask:(id)arg1;
 - (void)canceledTask:(id)arg1;
 - (void)_statusCallback:(id)arg1 stage:(unsigned int)arg2 osstatus:(int)arg3;
 - (void)_runBackgroundTask:(id)arg1 onTask:(id)arg2;
+- (void)stopWritingFilesToLocation:(id)arg1;
 - (id)init;
 - (id)initWithTaskName:(id)arg1 taskType:(int)arg2;
 - (void)dealloc;

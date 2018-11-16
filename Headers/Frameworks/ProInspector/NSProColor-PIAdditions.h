@@ -8,5 +8,7 @@
 
 @interface NSProColor (PIAdditions)
 + (id)ozGradientViewEmptyColor;
++ (id)ozHistogramInOutColor;
++ (id)ozHistogramGutterColor;
 @end
 

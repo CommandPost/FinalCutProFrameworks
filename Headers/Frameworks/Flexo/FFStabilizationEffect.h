@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned int)attributeCopyingFlags;
+- (BOOL)_cachedIsNoOp;
 - (BOOL)isNoOp;
 - (BOOL)writeDefaultChannels;
 - (BOOL)effectStartAndDurationImpactMD5;

@@ -29,6 +29,8 @@
 - (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 appendHGGraph:(HGRef_265f9e4c)arg4;
 - (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 withROI:(struct HGRect *)arg4;
 - (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 withROI:(struct HGRect *)arg4 appendHGGraph:(HGRef_265f9e4c)arg5;
+- (HGRef_265f9e4c)getFlexoInputNodeAtTime:(CDStruct_1b6d18a9)arg1 sourceOnly:(BOOL)arg2 imageType:(id)arg3 bounds:(PCRect_07ce470f *)arg4;
+- (void)retrieveRenderer:(struct HGRenderer **)arg1 rendererInfo:(id *)arg2 withTempContext:(struct TemporalAPIContext *)arg3 andImageType:(id)arg4;
 - (id)textureAndBitmapRetriever:(id)arg1;
 - (BOOL)retrieveInput:(id *)arg1 requestInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 retriever:(SEL)arg4 imageType:(id)arg5 useSource:(BOOL)arg6;
 - (BOOL)getInputTexture:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;

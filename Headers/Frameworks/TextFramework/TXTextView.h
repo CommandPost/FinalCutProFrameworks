@@ -13,6 +13,8 @@
     TXTextViewController *_controller;
 }
 
+- (BOOL)isFieldEditor;
+- (id)colorFactory;
 - (BOOL)becomeFirstResponder;
 - (BOOL)resignFirstResponder;
 - (void)drawRect:(struct CGRect)arg1;

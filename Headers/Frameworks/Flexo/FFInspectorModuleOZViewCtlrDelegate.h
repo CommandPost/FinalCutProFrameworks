@@ -57,6 +57,7 @@
 - (BOOL)controller:(id)arg1 shouldDragChannel:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 writeChannels:(list_ee649c21 *)arg2 toPasteboard:(id)arg3;
 - (unsigned long long)controller:(id)arg1 draggingSourceOperationMaskForChannel:(struct OZChannelBase *)arg2 forLocal:(BOOL)arg3;
+- (void)controllerFinishedDrag:(id)arg1;
 - (id)controller:(id)arg1 droppedTypes:(id)arg2;
 - (unsigned long long)controller:(id)arg1 validateDrop:(id)arg2 proposedDropLocation:(unsigned int)arg3;
 - (BOOL)controller:(id)arg1 prepareForDragOperation:(id)arg2 dropLocation:(unsigned int)arg3;

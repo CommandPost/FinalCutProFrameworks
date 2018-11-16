@@ -203,6 +203,7 @@
 - (void)orbit:(const PCVector3_457fd1f0 *)arg1 withState:(const struct OZRenderState *)arg2;
 - (struct OZScene *)getScene;
 - (const struct OZRenderState *)getRenderState;
+- (void)setIgnoreTransformsForElement:(struct OZSceneNode *)arg1;
 - (BOOL)canEnableTransformPoints;
 - (void)transformPointsWithTime:(CDStruct_1b6d18a9 *)arg1;
 - (void)thinKeyframes;

@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupTabSelector;
 - (void)_selectInspectorTab:(unsigned long long)arg1;
 - (void)_setupFooter;
+- (void)_validateCurrentTabsForActiveVariant;
 - (BOOL)tabView:(id)arg1 shouldSelectTabViewItem:(id)arg2;
 - (void)tabView:(id)arg1 willSelectTabViewItem:(id)arg2;
 - (void)tabView:(id)arg1 didSelectTabViewItem:(id)arg2;

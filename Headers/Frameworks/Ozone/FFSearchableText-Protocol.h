@@ -12,8 +12,6 @@
 - (unsigned int)getLength;
 - (CDStruct_1b6d18a9)getTimeOffset:(id)arg1;
 - (CDStruct_1b6d18a9)getTimeOffsetForResult:(id)arg1;
-- (void)wLock;
-- (void)wUnlock;
 - (void)setSelectionRangeFrom:(unsigned int)arg1 to:(unsigned int)arg2;
 - (void)setSelectionRangeForResult:(struct FFTextSearchResult)arg1;
 - (void)resetSelection:(BOOL)arg1;

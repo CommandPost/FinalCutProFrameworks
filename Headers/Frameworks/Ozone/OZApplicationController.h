@@ -18,9 +18,7 @@
     NSMenu *blendMenu;
     NSMenu *fileMenu;
     NSMenuItem *publishMenuItem;
-    BOOL _hasValidLicense;
     id _greentreeObject;
-    id _myProApplication;
     NSAlert *_coRunningAlert;
 }
 
@@ -85,17 +83,12 @@
 - (void)moduleLayoutWillChange:(id)arg1;
 - (void)moduleLayoutDidChange:(id)arg1;
 - (BOOL)shouldInstallModuleLayoutMenu;
-- (void)checkLicensing;
 - (id)copyrightYearString;
 - (void)showRepresentedPath:(id)arg1;
 - (void)showRepresentedURL:(id)arg1;
 - (void)createSupportProfile:(id)arg1;
 - (void)oz_registerCriticalDefaults;
 - (BOOL)oz_buildHelpMenu;
-- (BOOL)application:(id)arg1 delegateHandlesKey:(id)arg2;
-- (void)insertInOrderedDocuments:(id)arg1;
-- (id)orderedDocuments;
-@property(nonatomic) BOOL hasValidLicense; // @synthesize hasValidLicense=_hasValidLicense;
 
 @end
 

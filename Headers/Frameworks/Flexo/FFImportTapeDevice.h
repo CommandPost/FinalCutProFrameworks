@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL _isProcessing;
     BOOL _canProcess;
     BOOL _isTapeRolling;
+    BOOL _ingestStopped;
     BOOL _isArchivable;
 }
 
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL isProcessing; // @synthesize isProcessing=_isProcessing;
 @property(readonly, nonatomic) BOOL canProcess;
 - (BOOL)isControllable;
+@property(nonatomic) BOOL ingestStopped; // @synthesize ingestStopped=_ingestStopped;
 @property(nonatomic) BOOL isArchivable; // @synthesize isArchivable=_isArchivable;
 @property BOOL isSeeking; // @synthesize isSeeking=_isSeeking;
 @property BOOL isTapeRolling; // @synthesize isTapeRolling=_isTapeRolling;

@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedPrefsDirectory;
 + (long long)sizeInBytesOfFileAtURL:(id)arg1;
++ (id)actualDevicePathIfPathIsDiskImage:(id)arg1;
 + (id)valueStringWithUnitFromByteValue:(double)arg1;
 + (id)createPath:(id)arg1;
 - (BOOL)stringIsIPAddress:(id)arg1;

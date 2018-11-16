@@ -22,8 +22,6 @@ __attribute__((visibility("hidden")))
 - (int)playEnable;
 - (void)setPlayEnable:(int)arg1;
 - (id)anchoredObject;
-- (BOOL)_readSourceChannels:(id)arg1;
-- (id)_findChannelWithSourceType:(id)arg1 media:(id)arg2 sourceKey:(id)arg3 channelIndex:(int)arg4 inSourceChannels:(id)arg5;
 - (void)_channelsChanged;
 
 @end

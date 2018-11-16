@@ -7,6 +7,8 @@
 @protocol FFAssetContainerProtocol
 - (id)assets;
 - (id)assetRefs;
+- (id)clipRefs;
+- (id)mediaRefs;
 - (id)fileURLs:(int)arg1;
 @end
 

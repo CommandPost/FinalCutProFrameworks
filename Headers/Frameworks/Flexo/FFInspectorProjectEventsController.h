@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFAsset, FFInspectorProjectEventsView, NSButton, NSMutableSet, NSScrollView, NSSet, NSString, NSTextField, NSWindow;
+@class FFInspectorProjectEventsView, FFMedia, NSButton, NSMutableSet, NSScrollView, NSSet, NSString, NSTextField, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorProjectEventsController : NSObject
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     NSScrollView *_scrollView;
     NSWindow *_sheet;
     NSSet *_clipRefs;
-    FFAsset *_asset;
+    FFMedia *_media;
     BOOL _modifiedLocations;
     NSString *_titleText;
     NSString *_subTitleText;
@@ -31,12 +31,12 @@ __attribute__((visibility("hidden")))
 
 - (id)init;
 - (void)dealloc;
-- (void)_addEventToList:(id)arg1 inProject:(id)arg2 withRefs:(id)arg3;
-- (void)startSheetInWindow:(id)arg1 forEvents:(id)arg2 andRefs:(id)arg3 inProject:(id)arg4;
+- (void)_addEventToList:(id)arg1 inProject:(id)arg2;
+- (void)startSheetInWindow:(id)arg1 forEvents:(id)arg2 inProject:(id)arg3;
 - (void)reprioritiseSheetCancelled:(id)arg1;
 - (void)reprioritiseSheetDidClose:(id)arg1;
 - (void)didEndPrioritiseSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-@property(retain, nonatomic) FFAsset *asset; // @synthesize asset=_asset;
+@property(retain, nonatomic) FFMedia *media; // @synthesize media=_media;
 @property(retain, nonatomic) NSWindow *sheet; // @synthesize sheet=_sheet;
 @property(retain, nonatomic) NSScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) NSTextField *subTitle; // @synthesize subTitle=_subTitle;

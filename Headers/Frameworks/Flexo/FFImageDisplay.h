@@ -67,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)makeNewStencilBufferForContext:(struct _CGLContextObject *)arg1 fbo:(unsigned int)arg2 drawRect:(struct CGRect)arg3 fieldOffset:(float)arg4;
 - (void)setupFBOForInterlacing:(struct _CGLContextObject *)arg1 drawRect:(struct CGRect)arg2;
 - (unsigned int)drawInterlacedFrameToContext:(struct _CGLContextObject *)arg1 textureID:(unsigned int)arg2 fieldRect:(struct CGRect)arg3 fieldType:(unsigned int)arg4 imageIsUpright:(BOOL)arg5;
-- (BOOL)drawImageHe:(id)arg1 CGLContext:(struct _CGLContextObject *)arg2 colorSpace:(struct CGColorSpace *)arg3 viewBounds:(struct CGRect)arg4 drawRect:(struct CGRect)arg5 imageSourceRect:(struct CGRect)arg6 lockedContext:(char *)arg7 drawInterlaced:(BOOL)arg8 drawFieldsAlternately:(BOOL)arg9 overlayTextureBuffer:(id)arg10 overlayEnabled:(BOOL)arg11 forThumbnail:(BOOL)arg12 fieldType:(unsigned int)arg13 howLate:(double)arg14 backgroundColor:(id)arg15;
+- (BOOL)drawImageHe:(id)arg1 CGLContext:(struct _CGLContextObject *)arg2 colorSpace:(struct CGColorSpace *)arg3 viewBounds:(struct CGRect)arg4 drawRect:(struct CGRect)arg5 imageSourceRect:(struct CGRect)arg6 angleSourceRects:(struct CGRect *)arg7 angleDrawRects:(struct CGRect *)arg8 angleCount:(long long)arg9 lockedContext:(char *)arg10 drawInterlaced:(BOOL)arg11 drawFieldsAlternately:(BOOL)arg12 overlayTextureBuffer:(id)arg13 overlayEnabled:(BOOL)arg14 forThumbnail:(BOOL)arg15 fieldType:(unsigned int)arg16 howLate:(double)arg17 backgroundColor:(id)arg18;
 
 @end
 

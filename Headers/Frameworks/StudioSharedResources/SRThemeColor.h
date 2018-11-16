@@ -122,6 +122,8 @@
 + (id)navPanelSidebarHighlightColorNonKeyBacking;
 + (id)navPanelSidebarHighlightColorNonKeyEnd;
 + (id)navPanelSidebarHighlightColorNonKeyStart;
++ (id)playerAngleChooserBackground;
++ (id)playerMetadataOverlayBackground;
 + (id)projectBrowserFilmstripCellSeparatorDashed;
 + (id)projectBrowserFilmstripEmptyCell;
 + (id)projectBrowserFilmstripOutlineDashed;
@@ -136,9 +138,12 @@
 + (id)rulerCycleRegionOverlayRuler;
 + (id)rulerCycleRegionOverlayTracks;
 + (id)scopesGraphGradientBottom;
++ (id)scopesGraphGradientCenter;
++ (id)scopesGraphGradientEdge;
 + (id)scopesGraphGradientTop;
 + (id)scopesHistogramBlueFill;
 + (id)scopesHistogramBlueOutline;
++ (id)scopesHistogramChannelShadow;
 + (id)scopesHistogramCyanFill;
 + (id)scopesHistogramGreenFill;
 + (id)scopesHistogramGreenOutline;
@@ -149,6 +154,7 @@
 + (id)scopesHistogramWhiteFillLuma;
 + (id)scopesHistogramWhiteOutlineLuma;
 + (id)scopesHistogramYellowFill;
++ (id)scopesWaveformMonochrome;
 + (id)studioTestColor;
 + (id)timelineBackgroundTickMajor;
 + (id)timelineBackgroundTickMinor;
@@ -246,6 +252,8 @@
 + (id)videoScopesUnitsLabelMajor;
 + (id)videoScopesUnitsLabelMinor;
 + (id)videoWaveformBlue;
++ (id)videoWaveformCb;
++ (id)videoWaveformCr;
 + (id)videoWaveformGreen;
 + (id)videoWaveformRed;
 + (id)viewerZoomMenuDarkerGray;

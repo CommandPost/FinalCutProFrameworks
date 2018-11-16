@@ -17,12 +17,12 @@
 }
 
 - (id)initWithStream:(id)arg1 subTokens:(id)arg2 retainOnlyObjects:(id)arg3;
-- (id)initWithStream:(id)arg1 andSubToken:(id)arg2;
 - (id)initWithStream:(id)arg1 andRetainOnlyObject:(id)arg2;
 - (void)dealloc;
-- (void)hintWillImageSoon;
+- (_Bool)hintWillImageSoon;
 - (void)hintCacheData:(unsigned int)arg1;
 - (unsigned int)scheduleStatusInformation;
+- (_Bool)areStatusFlagsClear:(unsigned int)arg1;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (id)description;
 

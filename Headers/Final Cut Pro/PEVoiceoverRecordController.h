@@ -9,7 +9,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFMedia, FFMediaEventProject, FFVORecorder, LKButton, LKPopUpButton, LKSlider, LKTextField, NSArrayController, NSColor, NSURL, PERecorderMeterView;
+@class FFMedia, FFMediaEventProject, FFPlayerModule, FFVORecorder, LKButton, LKPopUpButton, LKSlider, LKTextField, NSArrayController, NSColor, NSURL, PERecorderMeterView;
 
 @interface PEVoiceoverRecordController : NSWindowController <NSWindowDelegate, NSTextFieldDelegate>
 {
@@ -34,8 +34,8 @@
     NSColor *_statusTextInitialColor;
     BOOL _transportWasRollingAtRecordStart;
     FFMedia *_previousSelectedSequence;
-    unsigned int _observerCount;
     CDStruct_1b6d18a9 _playerTimeAtRecordStart;
+    FFPlayerModule *_playerModule;
 }
 
 - (void)_setSubmenuItemActions:(SEL)arg1 forMenu:(id)arg2;
@@ -44,9 +44,9 @@
 - (void)_setUpRecordGainSlider;
 - (void)controlTextDidChange:(id)arg1;
 - (void)_setUpGainTextFields;
-- (void)_setUpTrackArrayObserver;
+- (void)_unregisterPlayPauseNotification;
+- (void)_registerPlayPauseNotification;
 - (void)_createVORecorder;
-- (void)_removeUsAsTrackArrayObserver;
 - (void)_releaseVORecorder;
 - (void)_recreateVORecorder;
 - (void)_setEnableRecordButtonFromRate:(double)arg1;
@@ -55,7 +55,6 @@
 - (BOOL)actionAddMediaObjects:(id)arg1 toEvent:(id)arg2 error:(id *)arg3;
 - (void)_editSequenceClipFromRecordedFile:(id)arg1 displayName:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)_playerModuleDidPlayPause:(id)arg1;
-- (void)_playerDidSetPlayRate:(id)arg1;
 - (void)changeMediaEventTarget:(id)arg1;
 - (id)init;
 - (void)dealloc;

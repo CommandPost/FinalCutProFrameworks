@@ -42,6 +42,7 @@
 - (id)getName;
 - (id)getTooltip;
 - (struct PCUUID)getClassID;
+- (struct OZScene *)getScene;
 - (void)initTextID;
 - (BOOL)textPathSelected;
 - (void)clearTextPathSelection;
@@ -69,6 +70,7 @@
 - (void)endWithDocument:(struct OZDocument *)arg1;
 - (void)endWithDocumentFromFlexo:(struct OZDocument *)arg1;
 - (id)getDefaultCursor;
+- (id)getCursorWithEvent:(id)arg1;
 - (struct TXTextInput *)text;
 - (struct TXTextGenerator *)textGenerator;
 - (void)notify:(unsigned int)arg1;

@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)process:(id)arg1 onTask:(id)arg2;
 - (int)preRender;
 - (int)postRender;
-- (int)loadPreset;
 - (int)storePreset;
 - (void)enableEffect;
 - (void)encodeWithCoder:(id)arg1;

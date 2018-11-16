@@ -31,6 +31,7 @@
 - (id)projectURL;
 - (id)projectRelativePath;
 - (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

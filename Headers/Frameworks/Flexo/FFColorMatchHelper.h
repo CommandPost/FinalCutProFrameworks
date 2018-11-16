@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)isObjectCompliant:(id)arg1;
 - (id)init;
 - (void)dealloc;
+- (id)histoRef;
 - (void)cancelOnSelectionOnMatchTool:(id)arg1;
 - (void)completeOnSelectionOnMatchTool:(id)arg1;
 - (void)matchToolWasAssigned:(id)arg1;
@@ -39,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (id)effectContainerToRecordForAnchoredObject:(id)arg1;
 - (id)actionStringForSaveChanges;
 - (id)_newColorMatchHueAdjustmentWithRef:(id)arg1 forDest:(id)arg2;
-- (id)windowNibName;
 - (id)footerText;
 - (id)accessoryTitle;
 

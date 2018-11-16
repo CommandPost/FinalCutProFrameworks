@@ -35,6 +35,10 @@
 - (void)postSearchOverlayNotification:(BOOL)arg1;
 - (void)willReplaceAll:(vector_cb3c6831 *)arg1 textObjects:(vector_1e3759f0 *)arg2;
 - (void)didReplaceAll:(vector_cb3c6831 *)arg1 textObjects:(vector_1e3759f0 *)arg2;
+- (void)wLock;
+- (void)wUnlock;
+- (void)rLock;
+- (void)rUnlock;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 

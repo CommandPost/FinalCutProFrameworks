@@ -11,6 +11,9 @@
 - (BOOL)leftEdgeSelected;
 - (BOOL)rightEdgeSelected;
 - (void)addEffect:(id)arg1;
+- (void)addBasicTitleOrLowerThirdFromPasteboard;
+- (void)addBasicTitle:(id)arg1;
+- (void)addBasicLowerThird:(id)arg1;
 - (void)addVideoTransition:(id)arg1 audioTransition:(id)arg2;
 - (void)addVideoGenerator:(id)arg1;
 - (void)addVideoTransition:(id)arg1;

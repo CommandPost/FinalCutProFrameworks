@@ -6,23 +6,31 @@
 
 #import <Flexo/FFHeliumEffect.h>
 
-@class CHChannelEnum;
-
 __attribute__((visibility("hidden")))
 @interface FFHeMultiCamEffect : FFHeliumEffect
 {
-    CHChannelEnum *_chCameraAngleChannel;
+    long long _angle;
+    long long _numberOfRows;
+    long long _numberOfCols;
 }
 
 + (void)registerEffects;
++ (id)getMultiCamNumberedInputKeysArray;
++ (id)getInputKeyForMultiCamAngle:(long long)arg1;
++ (long long)getAngleNumberForMulticamInputString:(id)arg1;
++ (void)multiAngleRowsAndColumnCountFromNumberOfAngles:(long long)arg1 rows:(long long *)arg2 columns:(long long *)arg3;
++ (long long)adjustedAngleOffsetUsingCount:(long long)arg1 angleOffset:(long long)arg2 angleCount:(long long)arg3;
 - (id)initWithEffectID:(id)arg1;
-- (void)dealloc;
 - (struct HGNode *)newNodeForContext:(id)arg1;
-- (id)cameraAngleChannel;
-- (void)createChannelsInFolder:(id)arg1;
-- (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (id)inputKeys;
--     // Error parsing type: ^{HGTransform=^^?I($_4944=[4][16f][16d])}64@0:8q16q24{CGRect={CGPoint=dd}{CGSize=dd}}32, name: newHGTransformForAngleCount:angle:bounds:
+- (void)setAngle:(unsigned long long)arg1;
+- (void)setNumberOfRows:(unsigned long long)arg1;
+- (void)setNumberOfCols:(unsigned long long)arg1;
+- (long long)_workingScale;
+- (int)_column;
+- (int)_row;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (CDStruct_60067b7e)md5;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(struct CGRect *)arg7;
 
 @end

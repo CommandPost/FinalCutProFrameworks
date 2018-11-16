@@ -82,6 +82,7 @@
 - (id)angle;
 - (BOOL)isGood;
 - (id)reelName;
+- (id)cameraID;
 - (id)radSDKVersion;
 - (id)extendedProperties;
 - (id)valueForUndefinedKey:(id)arg1;

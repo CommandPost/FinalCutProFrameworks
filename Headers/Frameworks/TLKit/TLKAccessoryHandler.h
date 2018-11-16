@@ -21,7 +21,8 @@
 - (void)exitRollover:(id)arg1;
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (void)flagsChanged:(id)arg1;
-- (BOOL)autoscrollHorizontallyOnly;
+- (BOOL)shouldAutoscroll:(id)arg1;
+- (int)autoscrollDirection;
 
 @end
 

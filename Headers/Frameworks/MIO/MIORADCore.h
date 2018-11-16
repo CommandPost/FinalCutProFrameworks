@@ -31,7 +31,7 @@
 - (id)metadataKeys;
 - (id)metadataKeysForLogging;
 - (id)metadataDictionaryWithType:(id)arg1 formatter:(id)arg2 description:(id)arg3;
-- (id)extendedMetadataDictionaryWithType:(id)arg1 formatter:(id)arg2 valueTransformer:(id)arg3 description:(id)arg4;
+- (id)extendedMetadataDictionaryWithType:(id)arg1 formatter:(id)arg2 valueTransformer:(id)arg3 description:(id)arg4 editable:(BOOL)arg5;
 - (id)metadataDefinitions;
 - (void)updateRADMetadataInDictionary:(id)arg1;
 @property(retain, nonatomic) MIOInputDevice *inputDevice; // @synthesize inputDevice=mInputDevice;

@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class CALayer, CATextLayer, FFOutlineView, FFOutlineViewCellContentLayer, FFOutlineViewRow, NSButton, NSColor, NSString, NSTextField;
+@class CALayer, CATextLayer, FFOutlineView, FFOutlineViewCellContentLayer, FFOutlineViewRow, NSButton, NSColor, NSDictionary, NSString, NSTextField, NSTimer;
 
 @interface FFOutlineViewCell : NSView
 {
@@ -33,6 +33,9 @@
     BOOL _drawRule;
     NSColor *_ruleViewColor;
     NSString *_accessibilityDescription;
+    NSDictionary *_cameraNames;
+    NSTimer *_showCompletionTimer;
+    NSString *_lastText;
 }
 
 - (id)initWithReuseIdentifier:(id)arg1;
@@ -94,6 +97,7 @@
 - (void)commitAndEndEditing;
 - (void)controlTextDidEndEditing:(id)arg1;
 - (struct CGRect)editFieldFrame;
+- (void)noOpSelector:(id)arg1;
 @property(readonly, nonatomic) NSTextField *editField;
 - (void)installEditorAnimated:(BOOL)arg1;
 - (void)removeEditorAnimated:(BOOL)arg1;
@@ -104,6 +108,9 @@
 @property(nonatomic, getter=isEditing) BOOL editing;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateEditingAnimated:(BOOL)arg1;
+- (void)showCompletion:(id)arg1;
+- (void)controlTextDidChange:(id)arg1;
+- (id)control:(id)arg1 textView:(id)arg2 completions:(id)arg3 forPartialWordRange:(struct _NSRange)arg4 indexOfSelectedItem:(long long *)arg5;
 - (BOOL)acceptsFirstMouse:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (id)menuForEvent:(id)arg1;

@@ -21,7 +21,6 @@
 @property BOOL containingViewFirstResponder;
 - (void)_updateLayers:(id)arg1;
 - (void)invalidate;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)layoutSublayers;
 - (void)setCornerRadius:(double)arg1;

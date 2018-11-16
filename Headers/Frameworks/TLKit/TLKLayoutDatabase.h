@@ -6,37 +6,53 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSMapTable;
+@class NSArray, NSMapTable, TLKLayoutMetrics;
 
 @interface TLKLayoutDatabase : NSObject
 {
     NSMapTable *_layoutInfoMap;
     NSMapTable *_layoutManagerMap;
     unsigned long long _layoutTrackingLevel;
-    NSArray *_topLevelContainers;
+    NSArray *_tracks;
+    TLKLayoutMetrics *_sharedLayoutMetrics;
+    BOOL _showClipTitlesOnly;
+    double _heightAdjustment;
+    int _clipDisplayMode;
 }
 
 - (id)init;
 - (void)dealloc;
 - (id)layoutManagers;
 - (id)timelineItems;
+- (id)managedItems;
 - (id)layoutInfoEntries;
 - (id)itemsGroupedByLayoutManager:(id)arg1;
+- (id)containerForItem:(id)arg1;
 - (id)containersForItem:(id)arg1;
 - (id)layoutManagerForContainer:(id)arg1;
 - (void)setLayoutManager:(id)arg1 forContainer:(id)arg2;
 - (id)layoutInfoForItem:(id)arg1;
 - (void)setLayoutInfo:(id)arg1 forItem:(id)arg2;
+- (unsigned long long)numberOfTracks;
+- (unsigned long long)indexOfObjectInTracks:(id)arg1;
+- (id)objectAtIndexInTracks:(unsigned long long)arg1;
+@property(copy, nonatomic) NSArray *tracks; // @synthesize tracks=_tracks;
+- (void)_setupLayoutManagerForTrack:(id)arg1 timelineView:(id)arg2;
+- (void)_tearDownLayoutManagerForTrack:(id)arg1;
+- (void)setTracks:(id)arg1 timelineView:(id)arg2;
+@property(nonatomic) BOOL showClipTitlesOnly;
+@property(nonatomic) int clipDisplayMode;
+@property(nonatomic) double heightAdjustment;
 - (BOOL)isTrackingItemsNeedingLayout;
 - (void)startTrackingItemsNeedingLayout;
 - (void)stopTrackingItemsNeedingLayout;
+- (id)itemsNeedingLayout;
 - (id)itemsNeedingLayoutByLayoutManager;
 - (void)_updateManagedItems:(id)arg1;
-- (void)_updateLayoutMetricsForAddedContainers:(id)arg1;
 - (void)updateLayoutInfoForItems:(id)arg1 timelineView:(id)arg2;
 - (void)invalidateLayoutInfoForItems:(id)arg1;
 - (void)removeLayoutInfoForItems:(id)arg1;
-@property(copy, nonatomic) NSArray *topLevelContainers; // @synthesize topLevelContainers=_topLevelContainers;
+@property(retain, nonatomic) TLKLayoutMetrics *sharedLayoutMetrics; // @synthesize sharedLayoutMetrics=_sharedLayoutMetrics;
 
 @end
 

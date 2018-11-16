@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
+- (void)keyDown:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)selectTileIndexes:(id)arg1 byExtendingSelection:(BOOL)arg2;
 - (void)deselectTile:(id)arg1;
-- (void)keyDown:(id)arg1;
 
 @end
 

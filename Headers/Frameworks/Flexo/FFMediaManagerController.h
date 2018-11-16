@@ -100,7 +100,7 @@
 - (BOOL)copyFile:(id)arg1;
 - (BOOL)copyEvent:(id)arg1;
 - (void)copyClipObjects:(id)arg1 keywordNames:(id)arg2;
-- (void)updateAssetRefsInProjectsForMovedClips:(id)arg1 destEvent:(id)arg2;
+- (void)updateMediaRefsInProjectsForMovedClips:(id)arg1 destEvent:(id)arg2;
 - (void)refreshRenderFileStateForTracker:(id)arg1;
 - (BOOL)_checkPermissions:(id)arg1;
 @property(nonatomic) unsigned int consolidateSheetType; // @synthesize consolidateSheetType=_consolidateSheetType;

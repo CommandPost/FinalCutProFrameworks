@@ -26,8 +26,11 @@
 - (void)dealloc;
 - (void)addDeviceConnectionOnMainThread:(id)arg1;
 - (id)addDeviceConnectionForProMediaIODevice:(unsigned int)arg1;
+- (void)buildDeviceListStart:(id)arg1;
+- (void)buildDeviceListEnd:(id)arg1;
 - (void)buildDeviceList;
 - (void)removeDeviceList;
+- (void)populateOutputDeviceMenu:(id)arg1;
 - (id)deviceConnectionForProMediaIODevice:(unsigned int)arg1;
 - (id)deviceConnectionWithFormat:(int)arg1 forInput:(BOOL)arg2;
 - (id)deviceConnectionWithCodecType:(unsigned int)arg1 forOutputToPath:(id)arg2;
