@@ -8,7 +8,7 @@
 
 #import "FFInspectorModuleDelegate.h"
 
-@class NSArray, NSTextField, NSView, PEInspectorContainerBackgroundView;
+@class NSArray, NSDictionary, NSTextField, NSView, PEInspectorContainerBackgroundView;
 
 @interface PEInspectorContainerModule : LKInspectorModule <FFInspectorModuleDelegate>
 {
@@ -17,9 +17,11 @@
     NSView *_accessoryFooterView;
     NSTextField *_paneCapTitle;
     NSArray *_heldItemsWhileInspectorIsLocked;
+    NSDictionary *_inspectorLayouts;
 }
 
 + (id)defaultModuleNibName;
+@property(retain, nonatomic) NSDictionary *inspectorLayouts; // @synthesize inspectorLayouts=_inspectorLayouts;
 - (void)goToInspectorViewer:(id)arg1;
 - (void)importClips:(id)arg1;
 - (void)playInToOutInViewer:(id)arg1;
@@ -31,7 +33,7 @@
 - (void)setSelectionStart:(id)arg1;
 - (void)_setupFooter;
 - (void)_updateInspectorWithItems:(id)arg1;
-- (id)_inspectorForCurrentItems;
+- (id)_inspectorForCurrentItems:(id)arg1;
 - (id)_inspectorIdentifierForItems:(id)arg1;
 - (id)_inspectorClassForItems:(id)arg1;
 - (void)_setupAccessoryViewForCurrentInspector;
@@ -45,10 +47,16 @@
 - (void)windowDidUpdate:(id)arg1;
 - (void)setCurrentInspector:(id)arg1;
 - (BOOL)_contentsJustMovedToAnotherContainer;
-- (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
-- (void)stopSkimmingForOwner:(id)arg1;
-- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
-- (BOOL)canBeginSkimming;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
+- (id)contentLayoutDictionary;
+- (void)displayPostAutoLayout;
+- (void)endSuspendSelectionChangesForInspectorModule:(id)arg1;
+- (void)beginSuspendSelectionChangesForInspectorModule:(id)arg1;
+- (void)inspectorModule:(id)arg1 selectObjects:(id)arg2;
+- (BOOL)inspectorModule:(id)arg1 isSkimmingSkimmable:(struct NSObject *)arg2 owner:(id)arg3;
+- (void)inspectorModule:(id)arg1 stopSkimmingForOwner:(id)arg2;
+- (BOOL)inspectorModule:(id)arg1 startSkimmingWithSkimmable:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4 allowPlayback:(BOOL)arg5 owner:(id)arg6;
+- (BOOL)inspectorModule:(id)arg1 canBeginSkimmingForOwner:(id)arg2;
 - (void)openSettingsWithModule:(id)arg1;
 - (id)selectionOwner;
 - (id)moduleFooterAccessoryView;

@@ -10,6 +10,7 @@
 {
 }
 
+- (void)showAudioListModule;
 - (void)showMediaListModule;
 - (void)toggleAudioListModule;
 - (void)toggleMediaListModule;

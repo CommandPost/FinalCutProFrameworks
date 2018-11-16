@@ -11,12 +11,12 @@
 @interface FFEventMediaSidebarModule : FFMediaSidebarModule
 {
     FFMediaEventProject *_activeSequenceEvent;
+    long long _nodeSet;
 }
 
 @property(retain, nonatomic) FFMediaEventProject *activeSequenceEvent; // @synthesize activeSequenceEvent=_activeSequenceEvent;
 - (void)sidebarDidAutonomouslySelectNode:(id)arg1;
 - (void)sidebarDidSelectNodes:(id)arg1;
-- (void)selectSidebarItem:(id)arg1;
 - (void)importiMovieProject:(BOOL)arg1;
 - (void)shiftDelete:(id)arg1;
 - (void)delete:(id)arg1;
@@ -29,7 +29,7 @@
 - (void)showImportPanel:(id)arg1;
 - (void)importIMovieEvent:(id)arg1;
 - (void)importIMovieProject:(id)arg1;
-- (void)updateProjectsAndEvents:(id)arg1;
+- (void)consolidateMotionTemplates:(id)arg1;
 - (void)consolidateFiles:(id)arg1;
 - (void)moveToTrash:(id)arg1;
 - (void)closeLibrary:(id)arg1;
@@ -52,14 +52,13 @@
 - (void)sidebarDidDepopulate;
 - (void)_cleanupKVOObservers:(id)arg1;
 - (void)viewWillBeRemoved;
-- (id)contentLayoutDictionary;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
 - (void)viewWasInstalled;
 - (void)viewDidLoad;
 - (id)eventSidebarController;
 - (void)revealObjects:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)initWithNodeSet:(long long)arg1;
 
 @end
 

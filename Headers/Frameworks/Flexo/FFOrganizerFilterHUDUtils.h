@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)filtersDictHasOneTextFilterWithSearchTextOrMore:(id)arg1;
 + (int)clipTypeFilterTypeForString:(id)arg1;
 + (id)analysisKeywords;
 + (unsigned long long)indexForFormatInfoMetadataKey:(id)arg1;
@@ -23,18 +24,18 @@ __attribute__((visibility("hidden")))
 + (id)_roundedDateFromDate:(id)arg1 early:(BOOL)arg2;
 + (id)_coalesceRanges:(id)arg1;
 + (id)_performUsedFilter:(id)arg1 onRange:(id)arg2;
-+ (id)_performRoleFilter:(id)arg1 onRange:(id)arg2;
++ (id)_performRoleUIDFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performTimeFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performStabilizationFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performTextFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performClipTypeFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performMediaTypeFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performImportMediaTypeFilter:(id)arg1 onRange:(id)arg2;
-+ (BOOL)_rangeObjectIsPhoto:(id)arg1;
-+ (BOOL)_rangeObjectIsVideo:(id)arg1;
 + (id)_performKeywordsFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performFormatInfoFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performFavoriteFilter:(id)arg1 onRange:(id)arg2;
++ (BOOL)rangeObjectIsPhoto:(id)arg1;
++ (BOOL)rangeObjectIsVideo:(id)arg1;
 + (id)filterRange:(id)arg1 withFilterDict:(id)arg2;
 + (BOOL)shouldProcessFilter:(id)arg1;
 + (id)filterRangeOfMediaFromMediaRange:(id)arg1 withFilterDict:(id)arg2 addRangeWhenNoFilters:(BOOL)arg3;
@@ -42,7 +43,7 @@ __attribute__((visibility("hidden")))
 + (id)_FigTimeRangesObjANDMask_AllowsEmpty:(id)arg1 mask:(id)arg2;
 + (CDStruct_e83c9415)_FigTimeRangesIntersectOrAreEmpty:(CDStruct_e83c9415)arg1 range2:(CDStruct_e83c9415)arg2;
 + (id)generateUsedDictActive:(BOOL)arg1 showUsed:(BOOL)arg2;
-+ (id)generateRoleDictActive:(BOOL)arg1 comparisonType:(int)arg2 roleSets:(id)arg3 selectedRoles:(id)arg4;
++ (id)generateRoleUIDDictActive:(BOOL)arg1 comparisonType:(int)arg2 selectedRoleUIDs:(id)arg3;
 + (id)generateTimeDictActive:(BOOL)arg1 dateMetadataKey:(id)arg2 comparisonType:(int)arg3 timeString:(id)arg4 date:(id)arg5 timeUnits:(int)arg6 shouldRoundDate:(BOOL)arg7;
 + (id)generateStabilizationDictActive:(BOOL)arg1 show:(BOOL)arg2;
 + (id)generateClipTypeDictActive:(BOOL)arg1 comparisonType:(int)arg2 clipType:(int)arg3;

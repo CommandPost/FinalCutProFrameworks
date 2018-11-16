@@ -8,12 +8,16 @@
 
 #import "FxLightingAPI.h"
 #import "FxLightingAPI_v2.h"
+#import "PROAPIObject.h"
 
-@interface OZFxLightingAPIHandler : NSObject <FxLightingAPI, FxLightingAPI_v2>
+@class NSString;
+
+@interface OZFxLightingAPIHandler : NSObject <PROAPIObject, FxLightingAPI, FxLightingAPI_v2>
 {
     struct OZFxPlugSharedBase *_plugin;
 }
 
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 - (void)lightInfo:(struct FxLightInfo *)arg1 forLight:(unsigned long long)arg2 atFxTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
 - (unsigned long long)numberOfLightsAtFxTime:(CDUnion_2516e51e)arg1;
 - (void)lightInfo:(struct FxLightInfo *)arg1 forLight:(unsigned long long)arg2 atTime:(double)arg3 error:(id *)arg4;
@@ -21,6 +25,12 @@
 - (void)endLightAccess;
 - (void)beginLightAccess:(const struct OZRenderParams *)arg1;
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

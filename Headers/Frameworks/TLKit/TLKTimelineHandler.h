@@ -49,7 +49,7 @@
 - (BOOL)audioOnlyClip:(id)arg1;
 - (id)_topPartItemInfo:(id)arg1;
 - (BOOL)insideRangeSelection:(id)arg1;
-- (void)doubleClickedItemBackground:(id)arg1;
+- (void)doubleClickedItemComponent:(id)arg1;
 - (void)doubleClickedPlaceHolder:(id)arg1;
 - (void)movePlayheadToCurrentPosition:(id)arg1;
 - (void)exitRollover:(id)arg1;
@@ -70,6 +70,7 @@
 - (void)_becomeFirstResponder;
 - (void)_clearTimer;
 - (void)_startTimer:(BOOL)arg1;
+- (BOOL)shouldUpdateSkimmerPosition;
 - (void)updateItemSkimmingForItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 snapped:(BOOL)arg3;
 - (BOOL)itemSkimmingIndicatorActive;
 - (void)stopItemSkimming;
@@ -91,6 +92,7 @@
 - (CDStruct_1b6d18a9)timeForPoint:(struct CGPoint)arg1;
 - (void)_updateGearFactorIsActiveWithModifierFlags:(unsigned long long)arg1;
 - (double)gearFactor;
+- (void)setGearDownActive:(BOOL)arg1;
 - (BOOL)isGearDownActive;
 - (void)restoreVisibleRectState:(id)arg1 withCurrentPoint:(struct CGPoint *)arg2 previousPoint:(struct CGPoint *)arg3;
 - (id)savedVisibleRectStateIgnoringItems:(id)arg1 withCurrentPoint:(struct CGPoint)arg2 previousPoint:(struct CGPoint)arg3;
@@ -102,6 +104,7 @@
 @property id <TLKTimelineItem> curveEditorDraggedItem;
 - (id)draggedItem;
 - (BOOL)isDraggingLeadingEdge;
+- (int)trimType;
 - (int)autoscrollDirection;
 @property(readonly) TLKTimelineView *timelineView;
 - (void)dealloc;

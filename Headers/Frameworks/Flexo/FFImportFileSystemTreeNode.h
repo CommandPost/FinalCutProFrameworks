@@ -17,8 +17,9 @@ __attribute__((visibility("hidden")))
     BOOL _isObservingFFMIORADVolume;
     BOOL _isProcessing;
     NSMutableSet *_unhiddenURLs;
-    struct __FSEventStream *_fsEventStreamRef;
-    NSString *_fsEventWatchPath;
+    struct __FSEventStream *_fsEventStreamFileEventsRef;
+    struct __FSEventStream *_fsEventStreamDirectoryEventsRef;
+    NSString *_fsEventStreamWatchPath;
     BOOL _isHidden;
 }
 
@@ -40,18 +41,18 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL isProcessing; // @synthesize isProcessing=_isProcessing;
 - (void)addFFMIORADVolumeObserver;
 - (void)removeFFMIORADVolumeObserver;
-- (void)fsEventAtPaths:(id)arg1;
 - (BOOL)isChildNodesInstantiated;
 - (void)invalidateChildNodes:(BOOL)arg1;
 - (id)childNodesDictionary;
 - (id)childNodes;
-- (void)addTreeNodeForURL:(id)arg1 dataNode:(id)arg2 newChildNodesDictionary:(id)arg3 newChildNodes:(id)arg4 isHidden:(BOOL)arg5;
+- (void)addTreeNodeForURL:(id)arg1 outlineViewController:(id)arg2 newChildNodesDictionary:(id)arg3 newChildNodes:(id)arg4 isHidden:(BOOL)arg5;
 - (void)unhideURL:(id)arg1;
 - (id)url;
-- (void)scheduleFSeventStream;
 - (void)_setParentNodeSimple:(id)arg1;
 - (void)setRepresentedObject:(id)arg1;
 - (void)dealloc;
+- (void)fsEventsAtPaths:(id)arg1 numEvents:(unsigned long long)arg2 eventFlags:(const unsigned int *)arg3 eventIDs:(const unsigned long long *)arg4;
+- (void)scheduleFSEventStream;
 - (id)initWithRepresentedObject:(id)arg1;
 
 @end

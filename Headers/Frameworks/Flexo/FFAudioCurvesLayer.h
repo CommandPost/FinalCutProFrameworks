@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)audioVolumeOverlay:(id)arg1 splitEdit:(BOOL)arg2 timeline:(id)arg3;
+- (BOOL)sender:(id)arg1 willSetChannel:(id)arg2;
 - (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
 - (void)_rangeChanged;
 - (void)_performRangeChangedOnMainThread;

@@ -4,26 +4,49 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFMDModule.h>
+#import <Flexo/FFMDLibraryContentModule.h>
 
-@class FFAlwaysHitButton, FFAnchoredSequence, FFEffectLibraryCollectionView, LKImageView, NSDictionary, NSScrollView;
+#import "FFOrganizerMediaDetailSearchHeaderDelegate.h"
+#import "NSPopoverDelegate.h"
 
-@interface FFMDTitleModule : FFMDModule
+@class FFAnchoredSequence, FFOrganizerEffectLibraryCollectionView, LKButton, LKImageView, LKPopUpButton, NSArray, NSDictionary, NSPopover, NSScrollView, NSString;
+
+@interface FFMDTitleModule : FFMDLibraryContentModule <FFOrganizerMediaDetailSearchHeaderDelegate, NSPopoverDelegate>
 {
     NSScrollView *_scrollView;
-    FFEffectLibraryCollectionView *_effectCollectionView;
+    FFOrganizerEffectLibraryCollectionView *_effectCollectionView;
     LKImageView *_headerIcon;
-    FFAlwaysHitButton *_toggleSidebarButton;
-    FFAlwaysHitButton *_dividerLine;
+    LKButton *_searchButton;
+    LKButton *_gearButton;
+    NSPopover *_clipAttributesPopOver;
+    LKButton *show4KContentButton;
+    LKPopUpButton *_contentLibraryPopupButton;
     id _skimmingDelegate;
     FFAnchoredSequence *_currentSequence;
     NSDictionary *_sortOrder;
+    NSString *_searchString;
+    NSArray *_categories;
 }
 
+@property(retain, nonatomic) NSArray *categories; // @synthesize categories=_categories;
+@property(retain, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property(retain, nonatomic) FFAnchoredSequence *currentSequence; // @synthesize currentSequence=_currentSequence;
+- (void)show4KContentAction:(id)arg1;
+- (BOOL)_shouldOnlyShow4KContent;
+- (void)contentLibraryAction:(id)arg1;
+- (void)updateContentLibraryPopup;
 - (double)rightDraggableExclusionMargin;
 - (void)firstResponderChanged:(id)arg1;
+- (void)searchButtonAction:(id)arg1;
+- (void)_updateFilterForCategoryName:(id)arg1;
+- (id)titlesFilteredByContentLocation:(id)arg1;
+- (void)libraryRenamed:(id)arg1;
 - (void)updateFilter:(id)arg1;
+- (void)searchHeaderWasDismissed;
+- (void)searchHeaderSearchFieldAction:(id)arg1;
+- (id)searchFieldToolTip;
+- (BOOL)shouldFocusSearchFieldWhenInstalled;
+- (BOOL)shouldShowHUDButton;
 - (void)notificationHandler:(id)arg1;
 - (void)removeNotifications;
 - (void)installNotifications;
@@ -33,10 +56,17 @@
 - (BOOL)writeDataForEditAction:(id)arg1 toPasteboardWithName:(id)arg2;
 - (id)dataForEditAction:(id)arg1;
 - (BOOL)canSourceDataForEditAction:(id)arg1;
+- (void)setContents:(id)arg1;
 - (void)viewWasInstalled;
 - (id)titlesArray;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

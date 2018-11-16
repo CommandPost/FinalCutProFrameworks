@@ -23,7 +23,7 @@ struct OZChannel2D {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -46,7 +46,7 @@ struct OZChannel2DOverRange {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -135,7 +135,7 @@ struct OZChannelColorNoAlpha {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -166,12 +166,12 @@ struct OZChannelDiscreteColor {
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
     struct OZCurve *_field19;
-    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
+    struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long>> _field20;
     struct PCString _field21;
-    struct vector<int, std::allocator<int>> _field22;
+    struct vector<int, std::__1::allocator<int>> _field22;
     unsigned int _field23;
     struct PCString _field24;
-    struct vector<PCString, std::allocator<PCString>> _field25;
+    struct vector<PCString, std::__1::allocator<PCString>> _field25;
 };
 
 struct OZChannelDouble {
@@ -216,12 +216,12 @@ struct OZChannelEnum {
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
     struct OZCurve *_field19;
-    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
+    struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long>> _field20;
     struct PCString _field21;
-    struct vector<int, std::allocator<int>> _field22;
+    struct vector<int, std::__1::allocator<int>> _field22;
     unsigned int _field23;
     struct PCString _field24;
-    struct vector<PCString, std::allocator<PCString>> _field25;
+    struct vector<PCString, std::__1::allocator<PCString>> _field25;
 };
 
 struct OZChannelFolder {
@@ -239,7 +239,7 @@ struct OZChannelFolder {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
 };
@@ -259,7 +259,7 @@ struct OZChannelGradientAlphaFolder {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
 };
@@ -279,7 +279,7 @@ struct OZChannelGradientPositioned {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     struct OZChannelGradientRGBFolder _field18;
@@ -309,7 +309,7 @@ struct OZChannelGradientRGBFolder {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
 };
@@ -378,7 +378,7 @@ struct OZChannelPosition {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -386,11 +386,11 @@ struct OZChannelPosition {
     struct OZChannelDouble _field20;
     _Bool _field21;
     struct PCMatrix44Tmpl<double> _field22;
-    struct vector<double, std::allocator<double>> _field23;
-    struct vector<double, std::allocator<double>> _field24;
-    struct vector<double, std::allocator<double>> _field25;
-    struct vector<double, std::allocator<double>> _field26;
-    struct vector<double, std::allocator<double>> _field27;
+    struct vector<double, std::__1::allocator<double>> _field23;
+    struct vector<double, std::__1::allocator<double>> _field24;
+    struct vector<double, std::__1::allocator<double>> _field25;
+    struct vector<double, std::__1::allocator<double>> _field26;
+    struct vector<double, std::__1::allocator<double>> _field27;
     unsigned int _field28;
     struct PCSpinLock _field29;
 };
@@ -426,8 +426,8 @@ struct OZChannelShape {
     _Bool _field28;
     _Bool _field29;
     void *_field30;
-    struct vector<double, std::allocator<double>> _field31;
-    struct vector<double, std::allocator<double>> _field32;
+    struct vector<double, std::__1::allocator<double>> _field31;
+    struct vector<double, std::__1::allocator<double>> _field32;
     struct OZShape *_field33;
 };
 
@@ -494,7 +494,7 @@ struct OZChannelVertexFolder {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     struct OZChannel *_field18;
@@ -511,22 +511,23 @@ struct OZDynamicCurve {
 struct OZDynamicSpline {
     CDUnknownFunctionPointerType *_field1;
     struct PCSpinLock _field2;
-    struct vector<OZVertex *, std::allocator<OZVertex *>> _field3;
-    struct __normal_iterator<OZVertex **, std::vector<OZVertex *, std::allocator<OZVertex *>>> _field4;
-    struct __normal_iterator<OZVertex **, std::vector<OZVertex *, std::allocator<OZVertex *>>> _field5;
+    struct vector<OZVertex *, std::__1::allocator<OZVertex *>> _field3;
+    struct __wrap_iter<OZVertex **> _field4;
+    struct __wrap_iter<OZVertex **> _field5;
     struct OZVertex *_field6;
     struct OZVertex *_field7;
-    struct __normal_iterator<OZVertex **, std::vector<OZVertex *, std::allocator<OZVertex *>>> _field8;
-    struct __normal_iterator<OZVertex **, std::vector<OZVertex *, std::allocator<OZVertex *>>> _field9;
-    struct vector<OZVertex *, std::allocator<OZVertex *>> _field10;
+    struct __wrap_iter<OZVertex **> _field8;
+    struct __wrap_iter<OZVertex **> _field9;
+    struct vector<OZVertex *, std::__1::allocator<OZVertex *>> _field10;
     _Bool _field11;
-    int _field12;
-    int _field13;
-    _Bool _field14;
+    long long _field12;
+    long long _field13;
+    long long _field14;
     _Bool _field15;
-    struct OZInterpolators *_field16;
-    struct OZSplineNode *_field17;
-    struct OZSplineState *_field18;
+    _Bool _field16;
+    struct OZInterpolators *_field17;
+    struct OZSplineNode *_field18;
+    struct OZSplineState *_field19;
 };
 
 struct OZFactory;
@@ -551,71 +552,73 @@ struct OZShape {
     struct PCVector2<double> _field13;
     struct OZShapeRenderParams *_field14;
     struct OZShapeRenderParams *_field15;
-    struct list<OZShapeContour *, std::allocator<OZShapeContour *>> _field16;
-    struct list<OZShapeContour *, std::allocator<OZShapeContour *>> _field17;
-    struct list<OZShapeReparametrizedContour *, std::allocator<OZShapeReparametrizedContour *>> _field18;
-    struct OZChannelFolder _field19;
-    struct OZChannelEnum _field20;
-    struct OZChannelColorNoAlpha _field21;
-    struct OZChannelPercent _field22;
-    struct OZChannelGradientPositioned _field23;
-    struct OZChannelFolder _field24;
-    struct OZChannelEnum _field25;
-    struct OZChannelColorNoAlpha _field26;
-    struct OZChannelPercent _field27;
-    struct OZChannelUint32 _field28;
-    struct OZChannelBool _field29;
-    struct OZChannelEnum _field30;
-    struct OZChannelEnum _field31;
+    struct list<OZShapeContour *, std::__1::allocator<OZShapeContour *>> _field16;
+    struct list<OZShapeContour *, std::__1::allocator<OZShapeContour *>> _field17;
+    struct list<OZShapeReparametrizedContour *, std::__1::allocator<OZShapeReparametrizedContour *>> _field18;
+    struct OZChannelShape *_field19;
+    struct vector<OZVertex2D, std::__1::allocator<OZVertex2D>> _field20;
+    struct OZChannelFolder _field21;
+    struct OZChannelEnum _field22;
+    struct OZChannelColorNoAlpha _field23;
+    struct OZChannelPercent _field24;
+    struct OZChannelGradientPositioned _field25;
+    struct OZChannelFolder _field26;
+    struct OZChannelEnum _field27;
+    struct OZChannelColorNoAlpha _field28;
+    struct OZChannelPercent _field29;
+    struct OZChannelUint32 _field30;
+    struct OZChannelBool _field31;
     struct OZChannelEnum _field32;
-    struct OZChannelDouble _field33;
-    struct OZChannelDouble _field34;
-    struct OZChannelEnum _field35;
-    struct OZChannelPercent _field36;
-    struct OZChannelPercent _field37;
-    struct OZChannelPercentOverRange _field38;
-    struct OZChannelBool _field39;
-    struct OZChannelDouble _field40;
-    struct OZChannelPercentOverRange _field41;
-    struct OZChannel2DOverRange _field42;
+    struct OZChannelEnum _field33;
+    struct OZChannelEnum _field34;
+    struct OZChannelDouble _field35;
+    struct OZChannelDouble _field36;
+    struct OZChannelEnum _field37;
+    struct OZChannelPercent _field38;
+    struct OZChannelPercent _field39;
+    struct OZChannelPercentOverRange _field40;
+    struct OZChannelBool _field41;
+    struct OZChannelDouble _field42;
     struct OZChannelPercentOverRange _field43;
-    struct OZChannelDouble _field44;
-    struct OZChannelDouble _field45;
-    struct OZChannelEnum _field46;
-    struct OZChannelPercent _field47;
-    struct OZChannel2D _field48;
-    struct OZChannelButton _field49;
-    struct OZChannelBool _field50;
-    struct OZChannelEnum _field51;
+    struct OZChannel2DOverRange _field44;
+    struct OZChannelPercentOverRange _field45;
+    struct OZChannelDouble _field46;
+    struct OZChannelDouble _field47;
+    struct OZChannelEnum _field48;
+    struct OZChannelPercent _field49;
+    struct OZChannel2D _field50;
+    struct OZChannelButton _field51;
     struct OZChannelBool _field52;
-    struct OZChannelDouble _field53;
-    struct OZChannelDouble _field54;
-    struct OZChannelBool _field55;
-    struct OZChannelBool _field56;
-    struct OZChannelDiscreteColor _field57;
+    struct OZChannelEnum _field53;
+    struct OZChannelBool _field54;
+    struct OZChannelDouble _field55;
+    struct OZChannelDouble _field56;
+    struct OZChannelBool _field57;
     struct OZChannelBool _field58;
-    struct OZChannelText _field59;
-    struct OZChannelPosition _field60;
-    struct OZChannelPosition _field61;
+    struct OZChannelDiscreteColor _field59;
+    struct OZChannelBool _field60;
+    struct OZChannelText _field61;
     struct OZChannelPosition _field62;
     struct OZChannelPosition _field63;
-    struct OZChannelDouble _field64;
+    struct OZChannelPosition _field64;
     struct OZChannelPosition _field65;
-    CDStruct_198678f7 _field66;
-    double _field67;
-    double _field68;
+    struct OZChannelDouble _field66;
+    struct OZChannelPosition _field67;
+    CDStruct_198678f7 _field68;
     double _field69;
-    struct vector<PSHVertexData, std::allocator<PSHVertexData>> _field70;
-    _Bool _field71;
-    double _field72;
-    double _field73;
+    double _field70;
+    double _field71;
+    struct vector<PSHVertexData, std::__1::allocator<PSHVertexData>> _field72;
+    _Bool _field73;
     double _field74;
     double _field75;
     double _field76;
     double _field77;
     double _field78;
     double _field79;
-    struct OZGradientGroupShader *_field80;
+    double _field80;
+    double _field81;
+    struct OZGradientGroupShader *_field82;
 };
 
 struct OZShapeRenderParams;
@@ -637,15 +640,18 @@ struct OZSplineState {
 
 struct OZVertex;
 
+struct OZVertex2D;
+
 struct PCMatrix44Tmpl<double> {
     double _field1[4][4];
 };
 
 struct PCRecursiveMutex {
+    CDUnknownFunctionPointerType *_field1;
     struct _opaque_pthread_mutex_t {
         long long _field1;
         char _field2[56];
-    } _field1;
+    } _field2;
 };
 
 struct PCSpinLock {
@@ -663,75 +669,90 @@ struct PCVector2<double> {
 
 struct PSHVertexData;
 
-struct _List_impl {
-    struct _List_node_base _field1;
-};
-
-struct _List_node_base {
-    struct _List_node_base *_field1;
-    struct _List_node_base *_field2;
-};
-
-struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> {
-    struct _Rb_tree_node_base *_field1;
-};
-
-struct _Rb_tree_node_base;
-
 struct __CFString;
 
-struct __normal_iterator<OZVertex **, std::vector<OZVertex *, std::allocator<OZVertex *>>> {
+struct __list_node<OZShapeContour *, void *>;
+
+struct __list_node<OZShapeReparametrizedContour *, void *>;
+
+struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long>> {
+    struct __tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long> {
+        struct __tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *> *_field1;
+    } _field1;
+};
+
+struct __wrap_iter<OZVertex **> {
     struct OZVertex **_field1;
 };
 
-struct list<OZShapeContour *, std::allocator<OZShapeContour *>> {
-    struct _List_impl _field1;
+struct list<OZShapeContour *, std::__1::allocator<OZShapeContour *>> {
+    struct __list_node_base<OZShapeContour *, void *> {
+        struct __list_node<OZShapeContour *, void *> *_field1;
+        struct __list_node<OZShapeContour *, void *> *_field2;
+    } _field1;
+    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZShapeContour *, void *>>> {
+        unsigned long long _field1;
+    } _field2;
 };
 
-struct list<OZShapeReparametrizedContour *, std::allocator<OZShapeReparametrizedContour *>> {
-    struct _List_impl _field1;
+struct list<OZShapeReparametrizedContour *, std::__1::allocator<OZShapeReparametrizedContour *>> {
+    struct __list_node_base<OZShapeReparametrizedContour *, void *> {
+        struct __list_node<OZShapeReparametrizedContour *, void *> *_field1;
+        struct __list_node<OZShapeReparametrizedContour *, void *> *_field2;
+    } _field1;
+    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZShapeReparametrizedContour *, void *>>> {
+        unsigned long long _field1;
+    } _field2;
 };
 
-struct vector<OZChannelBase *, std::allocator<OZChannelBase *>>;
+struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>>;
 
-struct vector<OZVertex *, std::allocator<OZVertex *>> {
-    struct _Vector_impl {
+struct vector<OZVertex *, std::__1::allocator<OZVertex *>> {
+    struct OZVertex **_field1;
+    struct OZVertex **_field2;
+    struct __compressed_pair<OZVertex **, std::__1::allocator<OZVertex *>> {
         struct OZVertex **_field1;
-        struct OZVertex **_field2;
-        struct OZVertex **_field3;
-    } _field1;
+    } _field3;
 };
 
-struct vector<PCString, std::allocator<PCString>> {
-    struct _Vector_impl {
+struct vector<OZVertex2D, std::__1::allocator<OZVertex2D>> {
+    struct OZVertex2D *_field1;
+    struct OZVertex2D *_field2;
+    struct __compressed_pair<OZVertex2D *, std::__1::allocator<OZVertex2D>> {
+        struct OZVertex2D *_field1;
+    } _field3;
+};
+
+struct vector<PCString, std::__1::allocator<PCString>> {
+    struct PCString *_field1;
+    struct PCString *_field2;
+    struct __compressed_pair<PCString *, std::__1::allocator<PCString>> {
         struct PCString *_field1;
-        struct PCString *_field2;
-        struct PCString *_field3;
-    } _field1;
+    } _field3;
 };
 
-struct vector<PSHVertexData, std::allocator<PSHVertexData>> {
-    struct _Vector_impl {
+struct vector<PSHVertexData, std::__1::allocator<PSHVertexData>> {
+    struct PSHVertexData *_field1;
+    struct PSHVertexData *_field2;
+    struct __compressed_pair<PSHVertexData *, std::__1::allocator<PSHVertexData>> {
         struct PSHVertexData *_field1;
-        struct PSHVertexData *_field2;
-        struct PSHVertexData *_field3;
-    } _field1;
+    } _field3;
 };
 
-struct vector<double, std::allocator<double>> {
-    struct _Vector_impl {
+struct vector<double, std::__1::allocator<double>> {
+    double *_field1;
+    double *_field2;
+    struct __compressed_pair<double *, std::__1::allocator<double>> {
         double *_field1;
-        double *_field2;
-        double *_field3;
-    } _field1;
+    } _field3;
 };
 
-struct vector<int, std::allocator<int>> {
-    struct _Vector_impl {
+struct vector<int, std::__1::allocator<int>> {
+    int *_field1;
+    int *_field2;
+    struct __compressed_pair<int *, std::__1::allocator<int>> {
         int *_field1;
-        int *_field2;
-        int *_field3;
-    } _field1;
+    } _field3;
 };
 
 #pragma mark Typedef'd Structures

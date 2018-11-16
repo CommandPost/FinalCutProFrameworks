@@ -8,7 +8,7 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBackgroundTask, FFSegmentStoreManagerRunLock, FFSegmentStoreOperationQueue, NSCondition, NSMutableArray, NSObject<OS_dispatch_source>, NSString;
+@class FFBackgroundTask, FFSegmentStoreManagerRunLock, NSCondition, NSMutableArray, NSObject<OS_dispatch_source>, NSString;
 
 @interface FFSegmentStoreManager : NSObject <FFBackgroundTaskTarget>
 {
@@ -16,8 +16,8 @@
     NSMutableArray *_recentMisses;
     NSString *_currentPath;
     NSMutableArray *_paths;
-    FFSegmentStoreOperationQueue *_readOperationQueue;
-    FFSegmentStoreOperationQueue *_writeOperationQueue;
+    int _decodeThreadCount;
+    int _writeThreadCount;
     FFSegmentStoreManagerRunLock *_runLock;
     int _segmentStoreIdleCompressors;
     NSObject<OS_dispatch_source> *_idleCompressorTimer;
@@ -32,43 +32,38 @@
 
 + (void)teardown;
 + (id)sharedInstance;
-- (BOOL)migrateRenderFiles:(id)arg1 flags:(unsigned int)arg2 renderPropsFilter:(id)arg3 progressBlock:(CDUnknownBlockType)arg4 error:(id *)arg5;
+- (BOOL)migrateRenderFiles:(id)arg1 flags:(unsigned int)arg2 renderPropsFilter:(id)arg3 progressBlock:(CDUnknownBlockType)arg4 writesFinishedBlock:(CDUnknownBlockType)arg5 error:(id *)arg6;
 - (BOOL)migrateRenderFilesFrom:(id)arg1 to:(id)arg2 flags:(unsigned int)arg3 filter:(CDUnknownBlockType)arg4 progressBlock:(CDUnknownBlockType)arg5 error:(id *)arg6;
 - (BOOL)migrateSegmentStore:(id)arg1 toLocation:(id)arg2 flags:(unsigned int)arg3 filter:(CDUnknownBlockType)arg4 progressBlock:(CDUnknownBlockType)arg5 error:(id *)arg6;
 - (BOOL)waitForStopOrCancel:(_Bool *)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (BOOL)mergeSegmentStoreDataFrom:(id)arg1 to:(id)arg2 flags:(unsigned int)arg3 progressBlock:(CDUnknownBlockType)arg4 error:(id *)arg5;
 - (BOOL)shuttingDown;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (_Bool)waitUntilPendingStillsBelow:(unsigned long long)arg1 beforeDate:(id)arg2;
 - (unsigned long long)numPendingStills;
-- (void)queueNonReadyStillToSegmentStore:(id)arg1 token:(id)arg2 requestedPT:(id)arg3 md5Info:(id)arg4 videoProps:(id)arg5 renderFilePaths:(id)arg6 renderProps:(id)arg7 asset:(id)arg8;
+- (void)queueNonReadyStillToSegmentStore:(id)arg1 token:(id)arg2 requestedPT:(id)arg3 md5Info:(id)arg4 videoProps:(id)arg5 renderFilePaths:(id)arg6 renderInfo:(id)arg7 asset:(id)arg8;
 - (void)_saveStillsInBackground:(id)arg1 onTask:(id)arg2;
 - (void)performBlockWhenPendingWritesFinish:(CDUnknownBlockType)arg1;
-- (void)performInvocationWhenPendingWritesFinish:(id)arg1;
 - (BOOL)flushSegmentsWithPathRoots:(id)arg1;
 - (BOOL)flushSegmentsAtPath:(id)arg1;
 - (BOOL)deleteSegmentsAtPath:(id)arg1 error:(id *)arg2;
 - (BOOL)_flushSegmentsAtPath:(id)arg1 andDeleteFromDisk:(BOOL)arg2 error:(id *)arg3;
-- (BOOL)deleteSegment:(CDStruct_bdcb2b0d)arg1 path:(id)arg2 renderProps:(id)arg3 error:(id *)arg4;
-- (void)addPaths:(id)arg1;
+- (BOOL)deleteSegment:(CDStruct_bdcb2b0d)arg1 path:(id)arg2 renderInfo:(id)arg3 error:(id *)arg4;
 - (id)copyCurrentPath;
-- (id)copyPaths;
 - (void)returnDecompressionSessionToPool:(id)arg1;
 - (id)newAcquireDecompressionSession:(struct opaqueCMFormatDescription *)arg1 pixelFormat:(unsigned int)arg2 quality:(int)arg3;
 - (void)adjustIdleCompressors:(int)arg1;
 - (void)decrementIdleCompressors;
 - (void)incrementIdleCompressors;
-- (id)writeOperationQueue;
-- (id)readOperationQueue;
-- (void)addPath:(id)arg1;
 - (id)findSegmentStore:(CDStruct_bdcb2b0d)arg1 paths:(id)arg2;
-- (id)copySegmentStoreForMD5:(CDStruct_bdcb2b0d)arg1 openFlags:(unsigned int)arg2 paths:(id)arg3 renderProps:(id)arg4 error:(id *)arg5;
+- (id)copySegmentStoreForMD5:(CDStruct_bdcb2b0d)arg1 openFlags:(unsigned int)arg2 paths:(id)arg3 renderInfo:(id)arg4 error:(id *)arg5;
 - (id)copySegmentStoreForDiskMD5:(CDStruct_bdcb2b0d)arg1 openFlags:(unsigned int)arg2 paths:(id)arg3 renderPropsForCreation:(id)arg4 error:(id *)arg5;
-- (id)copySegmentStoreForMD5:(CDStruct_bdcb2b0d)arg1 createIfNeeded:(BOOL)arg2 paths:(id)arg3 renderProps:(id)arg4 error:(id *)arg5;
 - (void)checkForAgingDecompressors;
 - (void)checkForAgingCompressors;
-- (CDStruct_bdcb2b0d)md5ForSegmentStore:(CDStruct_bdcb2b0d)arg1 renderProps:(id)arg2;
+- (CDStruct_bdcb2b0d)md5ForSegmentStore:(CDStruct_bdcb2b0d)arg1 renderInfo:(id)arg2;
+- (void)enqueueSegmentStoreWrite:(id)arg1 mustQueue:(BOOL)arg2 forPriority:(int)arg3;
+- (void)enqueueSegmentStoreRead:(id)arg1 forPriority:(int)arg2;
 - (id)runLock;
 - (void)start;
 - (void)stop;

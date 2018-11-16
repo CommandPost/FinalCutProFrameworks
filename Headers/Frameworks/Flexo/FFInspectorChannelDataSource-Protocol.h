@@ -4,11 +4,10 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class CHChannelBase, FFAnchoredSequence, FFCHRootChannel, FFUndoHandler, NSArray, NSString;
+@class CHChannelBase, FFCHRootChannel, FFUndoHandler, NSArray, NSString;
 
 @protocol FFInspectorChannelDataSource
 - (BOOL)containsChannel:(CHChannelBase *)arg1 associatedModelObject:(id)arg2;
-- (FFAnchoredSequence *)sequence;
 - (NSArray *)inspectableChannelsForIdentifier:(NSString *)arg1;
 
 @optional

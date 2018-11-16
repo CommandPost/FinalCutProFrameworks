@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     struct CGRect _itemRect;
     id _module;
     CDStruct_e83c9415 _retimedRange;
-    CALayer *_backgroundLayer;
     NSMutableArray *_segmentLayers;
 }
 

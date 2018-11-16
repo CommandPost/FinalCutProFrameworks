@@ -11,7 +11,8 @@
 }
 
 + (id)cursor;
-+ (id)toolbarFacet;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 - (void)didMouseDownOnCanvas:(id)arg1 target:(id)arg2;
@@ -20,7 +21,6 @@
 - (BOOL)editsItem:(id)arg1 target:(id)arg2 event:(id)arg3;
 - (BOOL)handlesItem:(id)arg1 target:(id)arg2 event:(id)arg3;
 - (BOOL)itemHasDropZone:(id)arg1;
-- (BOOL)_itemHasDropZone:(id)arg1 setEffect:(id *)arg2;
 - (BOOL)handlesSelection;
 - (void)resignActiveTool;
 

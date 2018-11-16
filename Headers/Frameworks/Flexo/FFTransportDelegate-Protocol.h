@@ -11,6 +11,7 @@
 - (void)setRate:(double)arg1;
 
 @optional
+- (void)doReject;
 - (void)doFavorite;
 - (void)exitFullScreen;
 - (void)enterFullScreen;

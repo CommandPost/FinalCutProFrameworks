@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_XGPURenderInfos;
 }
 
++ (void)installSensoLockOrderingCheck;
 + (void)teardown;
 + (id)sharedInstance;
 - (void)setMinExecutionPriority:(int)arg1;

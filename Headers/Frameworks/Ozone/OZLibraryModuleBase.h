@@ -11,11 +11,11 @@
 #import "NSOutlineViewDelegate.h"
 #import "OZPreviewModule.h"
 
-@class CALayer, LKButton, LKImageView, LKPaneCapSegmentedControl, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSImageView, NSMatrix, NSMutableArray, NSOutlineView, NSPasteboard, NSProThemeImageView, NSProView, NSScrollView, NSSplitView, NSString, NSTimer, OZLibraryEntry, OZLibraryEntryFilter, OZLibraryPreviewCtrl, OZPreviewBackgroundView, OZPreviewPlayButtonView, OZQTMovieLayer, OZSelectedObjectPreview;
+@class CALayer, LKButton, LKImageView, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSImageView, NSMatrix, NSMutableArray, NSOutlineView, NSPasteboard, NSScrollView, NSSplitView, NSString, NSTimer, NSView, OZLibraryEntry, OZLibraryEntryFilter, OZLibraryPreviewCtrl, OZPreviewBackgroundView, OZPreviewPlayButtonView, OZQTMovieLayer, OZSelectedObjectPreview;
 
 @interface OZLibraryModuleBase : OZProViewModule <NSMatrixDelegate, NSOutlineViewDataSource, NSOutlineViewDelegate, OZPreviewModule>
 {
-    LKPaneCapSegmentedControl *_pathPopup;
+    LKPopUpButton *_pathPopup;
     OZPreviewBackgroundView *_previewView;
     NSOutlineView *_outlineView;
     NSScrollView *_outlineScrollView;
@@ -24,10 +24,8 @@
     NSSplitView *_splitView;
     id _zoomMinButton;
     id _zoomMaxButton;
-    LKPaneCapSegmentedControl *_backForwardSegmentedControl;
+    LKSegmentedControl *_backForwardSegmentedControl;
     LKSegmentedControl *_viewModeSegmentedControl;
-    id _addRemoveButton;
-    id _createFolderButton;
     LKImageView *_dummyImageView;
     CALayer *_playButtonLayer;
     CALayer *_selectedObjPrevLayer;
@@ -37,7 +35,7 @@
     LKImageView *_imagePreview;
     NSImageView *_previewSmallIcon;
     OZSelectedObjectPreview *_previewBackground;
-    NSProThemeImageView *_backgroundView;
+    NSImageView *_backgroundView;
     LKTextField *_desciption1TextField;
     LKTextField *_desciption2TextField;
     LKTextField *_desciption3TextField;
@@ -48,9 +46,9 @@
     LKButton *_playAudioButton;
     LKSearchField *_searchField;
     LKSlider *_zoomSlider;
-    NSProThemeImageView *_smallZoomImage;
-    NSProThemeImageView *_largeZoomImage;
-    NSProView *_slideUpSearchView;
+    NSImageView *_smallZoomImage;
+    NSImageView *_largeZoomImage;
+    NSView *_slideUpSearchView;
     LKSegmentedControl *_contentsControl;
     OZLibraryEntry *_rootEntry;
     OZLibraryEntry *_topEntry;

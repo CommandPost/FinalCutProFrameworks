@@ -23,16 +23,17 @@
     CALayer *_panelLayer;
     _Bool _renderingSelected;
     _Bool _resetSoloFlag;
-    vector_77d837c3 _soloedNodeIDs;
+    vector_a9c0768e _soloedNodeIDs;
     NSConditionLock *_backgroundTaskConditionLock;
     FFBackgroundTask *_backgroundTask;
     CKTranscodingOperation *_transcodingOperation;
     NSError *_transcodingError;
+    double _previewTime;
 }
 
++ (void)initializeShareSubmenuInToolbarOverflowMenu:(id)arg1;
 + (BOOL)isCompressorKitLoaded;
 + (id)TemplatePreviewSetting;
-+ (id)CompressorSettingWithName:(id)arg1;
 + (id)shareHistoryDirectoryPath;
 + (id)sharePathWithDocument:(id)arg1;
 + (id)shareManagerWithDocument:(id)arg1;
@@ -44,6 +45,7 @@
 - (void).cxx_destruct;
 - (void)logShareDestination:(Class)arg1;
 - (void)setPreviewTime:(double)arg1;
+- (void)redrawPreview;
 - (id)previewLayer;
 - (void)submitBatch:(id)arg1 toCluster:(id)arg2 progressIsIndeterminate:(BOOL)arg3 forWindow:(id)arg4;
 - (void)exportSequence:(id)arg1 withSetting:(id)arg2 atInTime:(CDStruct_1b6d18a9)arg3 outTime:(CDStruct_1b6d18a9)arg4;
@@ -60,8 +62,8 @@
 - (void)operationStatusChanged:(id)arg1;
 - (void)performShareOperation:(id)arg1 task:(id)arg2;
 - (void)canceledTask:(id)arg1;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)exportHTTPLiveStreamingModalForWindow:(id)arg1;
 - (void)exportSelectionMovieModalForWindow:(id)arg1;
 - (void)exportImageSequenceModalForWindow:(id)arg1;

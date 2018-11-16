@@ -4,7 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSArray, NSAttributedString, NSEvent, NSProCursor, NSView, OZTool, POOnScreenControl;
+@class LKCursor, NSArray, NSAttributedString, NSEvent, NSView, OZTool, POOnScreenControl;
 
 @protocol POViewDelegate
 - (void)performSelectForEvent:(NSEvent *)arg1 osc:(POOnScreenControl *)arg2;
@@ -45,7 +45,7 @@
 - (OZTool *)getCurrentTool;
 - (void)clearOSCCursor;
 - (void)setCursorForOSC:(POOnScreenControl *)arg1 event:(NSEvent *)arg2;
-- (void)setCursor:(NSProCursor *)arg1;
+- (void)setCursor:(LKCursor *)arg1;
 - (int)oscMode;
 - (BOOL)showToolInfo;
 - (struct OZSceneNode *)getIsolatedNode;

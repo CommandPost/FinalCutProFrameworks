@@ -22,7 +22,7 @@
 - (CDStruct_1b6d18a9)getTime;
 - (void)incrementTimeByDuration:(CDStruct_1b6d18a9)arg1;
 - (void)incrementTime;
-- (struct OpaqueCMClock *)figClock;
+- (void *)figClock;
 - (void)dealloc;
 - (id)initWithTimeIncrement:(CDStruct_1b6d18a9)arg1;
 

@@ -6,20 +6,12 @@
 
 #import "NSView.h"
 
-@class NSImage;
-
 __attribute__((visibility("hidden")))
 @interface FFDataListHeaderView : NSView
 {
-    NSImage *_backgroundImage;
 }
 
-@property(retain, nonatomic) NSImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
-- (void)drawRect:(struct CGRect)arg1;
 - (void)awakeFromNib;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

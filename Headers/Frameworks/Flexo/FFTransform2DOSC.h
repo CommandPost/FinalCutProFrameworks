@@ -6,13 +6,13 @@
 
 #import <Flexo/FFProOSC.h>
 
-@class FFCHObservableFolder, NSMutableArray, NSProSegmentedControl, NSView;
+@class FFCHObservableFolder, LKSegmentedControl, NSMutableArray, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFTransform2DOSC : FFProOSC
 {
-    NSProSegmentedControl *_keyframeButton;
-    NSProSegmentedControl *_exitButton;
+    LKSegmentedControl *_keyframeButton;
+    LKSegmentedControl *_exitButton;
     NSView *_transformOverlayView;
     FFCHObservableFolder *_channelFolder;
     NSMutableArray *_channelsToCheckForkeyFrames;

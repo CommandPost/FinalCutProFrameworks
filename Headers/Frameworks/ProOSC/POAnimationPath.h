@@ -18,7 +18,6 @@
 
 + (void)maybeInitResources:(_Bool)arg1;
 + (int)largeAssetFlagToIndex:(_Bool)arg1;
-- (id).cxx_construct;
 - (BOOL)shouldShowSpeed;
 - (BOOL)allowsCurveOffset;
 - (CDStruct_1b6d18a9)getVertexUInfo:(CDStruct_1b6d18a9)arg1;
@@ -32,7 +31,7 @@
 - (void)drawPath;
 - (void)drawCurve:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2 keyPoints:(BOOL)arg3;
 - (BOOL)sameKeyPoint:(struct POPathSelection *)arg1 keyPoint:(const struct POKeypoint *)arg2;
-- (void)clipPath:(vector_8d17e539 *)arg1 edges:(vector_8d17e539 *)arg2 visible:(vector_69938c0b *)arg3;
+- (void)clipPath:(vector_ced1dec3 *)arg1 edges:(vector_ced1dec3 *)arg2 visible:(vector_a7cf9eda *)arg3;
 - (void)drawWithVertices:(BOOL)arg1;
 - (void)draw;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;

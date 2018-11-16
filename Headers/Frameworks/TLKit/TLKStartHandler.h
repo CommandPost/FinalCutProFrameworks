@@ -10,6 +10,7 @@
 {
 }
 
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)cancel:(id)arg1;
 

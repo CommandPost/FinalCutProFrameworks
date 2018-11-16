@@ -12,11 +12,12 @@
 {
     id <TLKTimelineItem> _representedObject;
     CALayer *_itemBackgroundLayer;
-    unsigned int _showTransitionsAsPlaceholder:1;
+    BOOL _showTransitionsAsPlaceholder;
 }
 
+@property BOOL showTransitionsAsPlaceholder; // @synthesize showTransitionsAsPlaceholder=_showTransitionsAsPlaceholder;
+- (void)setRepresentedObject:(id)arg1 contentsMask:(int)arg2;
 @property id <TLKTimelineItem> representedObject;
-@property BOOL showTransitionsAsPlaceholder;
 - (void)dealloc;
 - (id)init;
 

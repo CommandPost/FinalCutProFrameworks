@@ -15,7 +15,6 @@
     CDStruct_1b6d18a9 _endTime;
 }
 
-- (id).cxx_construct;
 - (id)segmentArchive;
 - (int)condensedState;
 - (id)segments;

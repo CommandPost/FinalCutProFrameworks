@@ -27,9 +27,10 @@
 @property(readonly, nonatomic) NSArray *videoStompSettings;
 @property(readonly, nonatomic) NSArray *audioStompSettings;
 - (BOOL)requiresTargetDestinationURL;
-- (long long)iconIndex;
 - (id)iconTitle;
+- (id)smallImage;
 - (id)largeImage;
+- (id)pressedImage;
 - (id)image;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -6,35 +6,46 @@
 
 #import "PEOrganizerBaseContainerModule.h"
 
-@class FFEventLibraryModule;
+#import "FFOrganizerDelegate.h"
+#import "FFOrganizerMarkerEditorDelegate.h"
 
-@interface PEMediaEventOrganizerContainerModule : PEOrganizerBaseContainerModule
+@class FFEventLibraryModule, NSString;
+
+@interface PEMediaEventOrganizerContainerModule : PEOrganizerBaseContainerModule <FFOrganizerDelegate, FFOrganizerMarkerEditorDelegate>
 {
     BOOL _isOrganizerActive;
     BOOL _isSidebarActive;
 }
 
+- (id)mediaSidebarModule;
+- (id)defaultEventForNewProject;
+- (void)openSettingsWithModule:(id)arg1;
+- (double)defaultEditDuration;
 - (void)showInspectorForSidebarModule:(id)arg1;
 - (void)_showInspectorForSidebarModule:(id)arg1;
 - (void)sidebarModuleDidChangeSelection:(id)arg1;
+- (BOOL)canPerformEditAction:(id)arg1 withSource:(id)arg2;
+- (void)doubleClickWithEffectID:(id)arg1;
 - (id)getActiveMediaBrowser;
 - (void)setNumericEntryShowsSubframes:(BOOL)arg1;
-- (void)setNumericEntryDirection:(long long)arg1;
-- (void)setNumericEntryType:(unsigned long long)arg1;
+- (void)setNumericEntryDirection:(int)arg1;
+- (void)setNumericEntryType:(int)arg1;
 - (void)setNumericEntryValue:(id)arg1;
 - (void)numericEntryDidEnd;
 - (void)numericEntryWillBegin;
 - (void)_firstResponderChanged:(id)arg1;
-- (void)setKeywordEditorVisible:(BOOL)arg1;
 - (BOOL)markerEditorIsShown;
 - (void)hideMarkerEditor;
 - (void)showMarkerEditorForMarkerLayer:(id)arg1 object:(id)arg2;
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
+- (id)markerEditorDelegate;
 - (void)openStack:(id)arg1;
 - (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_5c5366e1)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)insertGap:(id)arg1;
 - (void)insertPlaceholder:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
+- (void)postLayout:(id)arg1;
+- (void)preLayout:(id)arg1;
 - (id)contentLayoutDictionary;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
 - (void)ensureSidebarVisible;
@@ -46,6 +57,12 @@
 - (struct CGSize)viewMinSize;
 - (Class)organizerModuleClass;
 @property(readonly) FFEventLibraryModule *activeOrganizerModule;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

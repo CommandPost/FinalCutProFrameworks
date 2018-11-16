@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)updateCurvesLayout:(id)arg1;
 - (void)layerDidBecomeVisible:(BOOL)arg1;
 - (void)collapseLayer:(id)arg1;
+- (void)colorSchemeHasChanged;
 - (void)expandLayer:(id)arg1;
 - (void)updateHeight;
 - (double)requiredHeight;

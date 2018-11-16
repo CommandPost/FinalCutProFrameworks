@@ -45,6 +45,7 @@
 - (void)populateOutputDeviceMenu:(id)arg1;
 - (BOOL)outputDeviceAvailable;
 - (void)removeDeviceList;
+- (int)deviceListChangedForProperty:(unsigned int)arg1 address:(struct CMIOObjectPropertyAddress)arg2;
 - (void)buildDeviceList;
 - (void)buildDeviceListEnd:(id)arg1;
 - (void)buildDeviceListStart:(id)arg1;

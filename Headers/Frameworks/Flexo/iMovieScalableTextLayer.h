@@ -30,11 +30,11 @@
 - (id)glyphBackgroundLayers;
 - (id)glyphLayers;
 - (void)shrinkToFitContainerLayer:(id)arg1;
-- (void)mergeJoinedGlyphs;
+- (void)mergeJoinedGlyphsFromJoinedGlyphSublayers:(id)arg1;
 - (void)organizeSublayersIntoWords;
-- (void)addGlyph:(unsigned short)arg1 font:(struct __CTFont *)arg2 isEmojiFont:(BOOL)arg3 color:(struct CGColor *)arg4 linePosition:(struct CGPoint)arg5 glyphMatrix:(struct CGAffineTransform)arg6 flipped:(BOOL)arg7 containerLayer:(id)arg8;
-- (void)addRun:(struct __CTRun *)arg1 linePosition:(struct CGPoint *)arg2 containerLayer:(id)arg3;
-- (void)addLine:(struct __CTLine *)arg1 linePosition:(struct CGPoint)arg2 containerLayer:(id)arg3;
+- (id)addGlyph:(unsigned short)arg1 font:(struct __CTFont *)arg2 isEmojiFont:(BOOL)arg3 color:(struct CGColor *)arg4 linePosition:(struct CGPoint)arg5 glyphMatrix:(struct CGAffineTransform)arg6 flipped:(BOOL)arg7 containerLayer:(id)arg8;
+- (id)addRun:(struct __CTRun *)arg1 linePosition:(struct CGPoint *)arg2 containerLayer:(id)arg3;
+- (void)addLine:(struct __CTLine *)arg1 linePosition:(struct CGPoint)arg2 containerLayer:(id)arg3 joinedGlyphSublayers:(id)arg4;
 - (void)buildRasterizedTextLayer;
 - (void)removeRasterizedTextLayer;
 - (id)rasterizedTextLayer;

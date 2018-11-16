@@ -8,16 +8,18 @@
 
 @class FFAnchoredObject;
 
+__attribute__((visibility("hidden")))
 @interface FFAudioMatchRequest : NSObject
 {
     FFAnchoredObject *_object;
     int _pass;
 }
 
-@property int pass; // @synthesize pass=_pass;
-@property(retain) FFAnchoredObject *object; // @synthesize object=_object;
+@property(readonly, nonatomic) FFAnchoredObject *modelLockingObject; // @synthesize modelLockingObject=_object;
+@property(readonly, nonatomic) int pass; // @synthesize pass=_pass;
+- (id)objectForMatch;
 - (void)dealloc;
-- (id)initWithRequestObject:(id)arg1 andPass:(int)arg2;
+- (id)initWithObject:(id)arg1 andPass:(int)arg2;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "FFContextMeterObserver.h"
 
-@class FFContext, PEAudioLayeredMeterView;
+@class FFContext, NSObject<PEAudioMeterControllerProtocol>, NSString, PEAudioLayeredMeterView;
 
 @interface PEAudioMeterController : NSObject <FFContextMeterObserver>
 {
@@ -19,24 +19,31 @@
     BOOL _isPlaying;
     BOOL _moduleIsShowing;
     BOOL _observingMeterUpdates;
+    NSString *_roleUIDToMeter;
     FFContext *_playbackContext;
     FFContext *_skimmingContext;
+    NSObject<PEAudioMeterControllerProtocol> *_delegate;
 }
 
+@property(nonatomic) NSObject<PEAudioMeterControllerProtocol> *delegate; // @synthesize delegate=_delegate;
+- (void)setMeteringContext:(id)arg1;
 - (void)playbackStopped:(id)arg1;
 - (void)playbackStarted:(id)arg1;
+- (void)setMeterMode:(int)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)resetOverloadIndicators;
+- (void)resetMeters;
 - (void)moduleDidHide;
 - (void)moduleViewWillBeRemoved;
 - (void)moduleDidUnhide;
 - (void)moduleViewWasInstalled:(BOOL)arg1;
-- (void)contextMeterUpdate:(const float *)arg1 channels:(unsigned long long)arg2;
+- (void)contextMeterUpdate:(unsigned long long)arg1 peakValues:(const float *)arg2 loudnessValues:(CDStruct_818bb265 *)arg3;
 - (void)timeRateChangedForContext:(id)arg1;
 - (void)_updatePlaybackContext:(id)arg1;
 - (void)_updateSkimmingContext:(id)arg1;
 - (void)_updateContext;
 - (void)_setContext:(id)arg1;
+- (void)setRoleMeterToObserve:(id)arg1;
 - (void)_addContextMeteringObservers;
 - (void)_removeContextMeteringObservers;
 - (id)context;

@@ -10,8 +10,9 @@
 {
 }
 
-- (void)setColorConformPresetAndParameters:(struct HGColorConform *)arg1;
-- (id)init;
+- (void)setColorConformPresetAndParameters:(struct HGColorConform *)arg1 toConvertToColorSpace:(int)arg2;
+- (int)targetColorSpaceFor:(int)arg1;
+- (id)initForFilm4K:(BOOL)arg1;
 
 @end
 

@@ -10,7 +10,7 @@
 {
 }
 
-+ (unsigned long long)themeIndex;
++ (long long)themeIndex;
 
 @end
 

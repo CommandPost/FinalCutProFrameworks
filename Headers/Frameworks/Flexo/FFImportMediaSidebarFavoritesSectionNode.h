@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)_copyFavoritesItems;
 - (id)favoritesSidebarCollection;
 - (id)title;
+- (id)titleFont:(BOOL)arg1;
 - (id)initWithRepresentedObject:(id)arg1;
 
 @end

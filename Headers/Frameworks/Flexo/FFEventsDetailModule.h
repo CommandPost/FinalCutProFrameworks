@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSSet *observedProjects; // @synthesize observedProjects=_observedProjects;
 @property(copy, nonatomic) CDUnknownBlockType UIUpdateBlock; // @synthesize UIUpdateBlock=_UIUpdateBlock;
 @property(retain, nonatomic) NSDictionary *filtersDictionary; // @synthesize filtersDictionary=_filtersDictionary;
+- (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (BOOL)finishedLoading;
@@ -32,8 +33,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)contentsEqual:(id)arg1 newContents:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_didCloseUndo:(id)arg1;
-- (void)_didRedo:(id)arg1;
-- (void)_didUndo:(id)arg1;
 - (void)_refreshOrganizer;
 - (void)stopObservingContents;
 - (void)startObservingContents;
@@ -43,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)moveSelectionToNextItem;
 @property(readonly, nonatomic) NSArray *selectedItems;
 @property(readonly, nonatomic) NSArray *unfilteredRanges;
+- (void)updateHeaderUI;
 - (int)favFilterType;
 - (void)setFavoriteFilter:(int)arg1;
 

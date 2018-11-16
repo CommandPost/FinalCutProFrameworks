@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)mouseDragged:(id)arg1;
 - (BOOL)mouseDown:(id)arg1;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
+- (void)hostLayerChanged;
 - (void)setNeedsHeightChanged:(double)arg1;
 - (void)resignFocusOwner;
 - (void)becomeFocusOwner;

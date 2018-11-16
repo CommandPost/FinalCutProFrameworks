@@ -26,9 +26,9 @@
 + (double)getRMSFor:(id)arg1 onTask:(id)arg2;
 + (_Bool)checkCancelOrPauseOn:(id)arg1;
 + (BOOL)checkHasAudio:(id)arg1;
-- (id)librariesInUse;
-- (id)assetsChanging;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsChanging:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)canceledTask:(id)arg1;
 - (void)dealloc;
 - (id)initWithRangesAndObjects:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3;

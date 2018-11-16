@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class CALayer, FFContext, FFPlayerModule, NSProThemeFacet;
+@class CALayer, FFContext, FFPlayerModule, NSImage;
 
 __attribute__((visibility("hidden")))
 @interface FFSkimmingModule : NSObject
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
     CALayer *m_playheadLayer;
     double m_playheadWidth;
     CALayer *m_videoPlayerLayer;
-    NSProThemeFacet *m_skimmingCursorFacet;
+    NSImage *m_skimmingCursorImage;
 }
 
 + (id)newDefaultContextForSkimmable:(struct NSObject *)arg1;

@@ -12,16 +12,16 @@
 {
     NSPopUpButton *_typeButton;
     BOOL _areAllChansEqual;
-    struct set<int, std::less<int>, std::allocator<int>> *_pDisabledItemIndices;
-    struct map<int, int, std::less<int>, std::allocator<std::pair<const int, int>>> *_pDisplayValueMap;
-    struct vector<unsigned int, std::allocator<unsigned int>> *_pStringsTableChangeCounts;
+    struct set<int, std::__1::less<int>, std::__1::allocator<int>> *_pDisabledItemIndices;
+    struct map<int, int, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, int>>> *_pDisplayValueMap;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> *_pStringsTableChangeCounts;
 }
 
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)enableItemForValue:(unsigned int)arg1 isEnabled:(BOOL)arg2;
 - (void)mapValue:(int)arg1 toDisplayValue:(int)arg2;
 - (void)deleteThis;
-- (void)doDrag:(list_e802f8b8 *)arg1 viewList:(id)arg2;
+- (void)doDrag:(list_e5c8e430 *)arg1 viewList:(id)arg2;
 - (id)labelTextForChannel:(struct OZChannelBase *)arg1;
 - (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 materialLayer:(struct OZMaterialLayerBase *)arg3 atTime:(CDStruct_198678f7)arg4;
 - (id)materialController;
@@ -36,6 +36,7 @@
 - (BOOL)areAllLayerTypeChannelsEqual;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 hasDisclosureButton:(BOOL)arg3 hideEnableButton:(BOOL)arg4;
+- (BOOL)rejectsTwoColumnLayout;
 
 @end
 

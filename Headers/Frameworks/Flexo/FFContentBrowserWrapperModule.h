@@ -12,17 +12,21 @@
 {
     FFContentBrowserModule *_contentBrowserModule;
     NSView *_contentBrowserModuleView;
+    NSView *_separatorView;
     LKSegmentedControl *_segmentedControl;
+    LKSegmentedControl *_toggleSideBarButton;
     LKSearchField *_searchField;
     LKTextField *_itemCount;
 }
 
+- (void)setCollectionTitle:(id)arg1;
 - (void)writeSelectionToPasteboard:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)module:(id)arg1 setItemCountTextField:(id)arg2;
 - (void)module:(id)arg1 setCategoryTextField:(id)arg2;
 - (void)module:(id)arg1 didDoubleClickWithEffect:(id)arg2;
 - (void)module:(id)arg1 didDoubleClickWithEffectID:(id)arg2;
+- (void)updateEffectOwnerFilter:(id)arg1;
 - (void)updateFilter:(id)arg1;
 - (void)toggleSidebar:(id)arg1;
 - (id)contentLayoutDictionary;

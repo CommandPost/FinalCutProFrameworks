@@ -14,7 +14,7 @@
     NSMenu *_pColorInterpolationMenu;
     NSMenu *_pOpacityInterpolationMenu;
     NSMenu *_pPresetsMenu;
-    vector_b0298db6 *_pPositions;
+    vector_386daaa8 *_pPositions;
     PCVector2_79efa81a *_pStart;
     PCVector2_79efa81a *_pEnd;
     struct OZChannelGradientSample *_pSample;
@@ -31,12 +31,12 @@
 
 + (BOOL)validate:(struct OZChannelBase *)arg1;
 + (BOOL)hasChannelGradientPositioned:(struct OZChannelFolder *)arg1;
-+ (void)findChannelGradientPositioned:(struct OZChannelFolder *)arg1 foundChannels:(vector_b0298db6 *)arg2;
++ (void)findChannelGradientPositioned:(struct OZChannelFolder *)arg1 foundChannels:(vector_386daaa8 *)arg2;
 - (BOOL)needsRightMouseEvents;
 - (BOOL)postRedisplayOnActivePartChange;
 - (void)drawWithDrawProperties:(id)arg1;
 - (void)draw;
-- (void)drawTags:(map_ebcf14c8)arg1 color:(BOOL)arg2 renderMode:(int)arg3 start:(const PCVector3_457fd1f0 *)arg4 end:(const PCVector3_457fd1f0 *)arg5 matrix:(const PCMatrix44Tmpl_e98c85ee *)arg6 state:(const struct OZRenderState *)arg7 direction:(PCVector2_79efa81a)arg8 perpendicular:(PCVector2_79efa81a)arg9 handle:(int *)arg10;
+- (void)drawTags:(map_a68768bf)arg1 color:(BOOL)arg2 renderMode:(int)arg3 start:(const PCVector3_457fd1f0 *)arg4 end:(const PCVector3_457fd1f0 *)arg5 matrix:(const PCMatrix44Tmpl_e98c85ee *)arg6 state:(const struct OZRenderState *)arg7 direction:(PCVector2_79efa81a)arg8 perpendicular:(PCVector2_79efa81a)arg9 handle:(int *)arg10;
 - (id)menuForEvent:(id)arg1;
 - (void)fillInterpolationMenu:(id)arg1 from:(struct OZChannelGradientFolder *)arg2 interpolation:(struct OZChannelEnum **)arg3 at:(double)arg4 time:(CDStruct_1b6d18a9)arg5 action:(SEL)arg6;
 - (void)setOpacityInterpolation:(id)arg1;

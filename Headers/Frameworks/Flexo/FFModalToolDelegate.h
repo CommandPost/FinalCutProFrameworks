@@ -19,7 +19,10 @@ __attribute__((visibility("hidden")))
     BOOL _hasPendingChanges;
 }
 
-@property(readonly, nonatomic) NSArray *selectedItems; // @synthesize selectedItems=_selectedItems;
+- (id)selectedItems;
+- (void)modalTool:(id)arg1 selectedItemsChanged:(id)arg2;
+- (void)cancelledSelection;
+- (void)completedSelection;
 - (void)willResignModalTool:(id)arg1;
 - (void)didActivateModalTool:(id)arg1;
 - (id)modalTool:(id)arg1 handleFilteredEvent:(id)arg2;
@@ -30,9 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)selectedItemsVideoEffectStackChanged;
 - (CDUnknownBlockType)objectPerformBlock;
 - (id)effectForObject:(id)arg1;
-- (void)selectedItemsChanged:(id)arg1;
-- (void)cancelledSelection;
-- (void)completedSelection;
 - (void)dealloc;
 - (void)_unregisterEffectStackObservers;
 - (void)_registerVideoEffectStackObserversAndIntermediateEffects;

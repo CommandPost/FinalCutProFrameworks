@@ -27,10 +27,10 @@ __attribute__((visibility("hidden")))
 - (void)updateNumericEntryWithEvent:(id)arg1;
 - (void)endNumericEntry:(BOOL)arg1;
 - (id)timecodeFormatter;
-@property long long numericEntryDirection;
+@property int numericEntryDirection;
 @property(readonly) BOOL numericEntryModified;
 @property BOOL showsSubframes;
-@property long long numericEntryType;
+@property int numericEntryType;
 - (void)setNumericEntryValue:(id)arg1;
 - (void)numericEntryDidEnd;
 - (void)numericEntryWillBegin;

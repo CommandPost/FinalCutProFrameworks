@@ -6,47 +6,31 @@
 
 #import "LKViewModule.h"
 
-@class LKPaneCapSegmentedControl, NSProView;
+@class FFContext, NSArray;
 
 @interface FFColorModule : LKViewModule
 {
-    int _curContentModule;
-    LKPaneCapSegmentedControl *_contentModuleControl;
-    NSProView *_contentHeaderContainerView;
-    NSProView *_headerView;
-    NSProView *_footerView;
+    NSArray *_currentItems;
+    FFContext *_currentContext;
+    BOOL _cachedHasSetupItems;
 }
 
-+ (id)currentColorContentModule;
-+ (id)colorModule;
-@property(retain) NSProView *footerView; // @synthesize footerView=_footerView;
-@property(retain) NSProView *headerView; // @synthesize headerView=_headerView;
-@property(retain) NSProView *contentHeaderContainerView; // @synthesize contentHeaderContainerView=_contentHeaderContainerView;
-@property(retain) LKPaneCapSegmentedControl *contentModuleControl; // @synthesize contentModuleControl=_contentModuleControl;
-@property int curContentModule; // @synthesize curContentModule=_curContentModule;
-- (id)currentWorkspace;
-- (void)setAnchoredObjects:(id)arg1 withContext:(id)arg2;
-- (void)installSubmoduleFooterView:(id)arg1;
-- (id)moduleFooterAccessoryView;
-- (BOOL)wantsFooterBar;
-- (void)installSubmoduleHeaderView:(id)arg1;
-- (id)moduleHeaderAccessoryView;
-- (BOOL)wantsHeaderBar;
+- (void)viewDidLoad;
+- (void)moduleDidUnhide;
+- (void)moduleDidHide;
 - (id)lastKeyView;
 - (id)firstKeyView;
-- (void)installSubmoduleContentView:(id)arg1;
-- (void)switchContentModule:(int)arg1;
-- (id)currentContentModule;
-- (BOOL)hasSubmoduleWithClass:(Class)arg1;
-- (void)removeAllSubmodules;
+- (id)moduleFooterAccessoryView;
+- (BOOL)wantsFooterBar;
+- (id)moduleHeaderAccessoryView;
+- (BOOL)wantsHeaderBar;
 - (id)targetModules;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)doSwitchContentModule:(id)arg1;
-- (void)syncToPrefs;
 - (id)identifier;
-- (void)viewDidLoad;
+- (void)setAnchoredObjects:(id)arg1 withContext:(id)arg2;
+- (void)_setupCurrentItems;
+- (id)_currentContentModule;
 - (void)dealloc;
-- (id)initWithModuleNibName:(id)arg1;
 
 @end
 

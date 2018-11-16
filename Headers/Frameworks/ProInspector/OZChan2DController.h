@@ -17,11 +17,14 @@
     LKTextField *_pSuffixXTF;
     LKTextField *_pSuffixYTF;
     BOOL _isOffsetting;
-    struct list<PCVector2<double>, std::allocator<PCVector2<double>>> *_pMouseDownValues;
+    struct list<PCVector2<double>, std::__1::allocator<PCVector2<double>>> *_pMouseDownValues;
     double _xScale;
     double _yScale;
+    float _minWidth;
 }
 
+- (float)suggestedMaxParamWidth;
+- (float)suggestedMinParamWidth;
 - (double)coarseIncrement;
 - (double)fineIncrement;
 - (double)chanMax;
@@ -41,7 +44,6 @@
 - (double)getY:(struct OZChannelBase *)arg1;
 - (void)set:(struct OZChannelBase *)arg1 X:(double)arg2;
 - (double)getX:(struct OZChannelBase *)arg1;
-- (void)setupLabelTF:(id)arg1;
 - (void)didTwiddle:(BOOL)arg1;
 - (void)setChannelValue:(id)arg1;
 - (void)disable;

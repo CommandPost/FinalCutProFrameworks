@@ -6,12 +6,12 @@
 
 #import "OZViewController.h"
 
-@class NSProSegmentedControl;
+@class LKSegmentedControl;
 
 __attribute__((visibility("hidden")))
 @interface FFMotionPathSwitchCtlr : OZViewController
 {
-    NSProSegmentedControl *_pSegmentedControl;
+    LKSegmentedControl *_pSegmentedControl;
 }
 
 - (void)toggleValue:(id)arg1;

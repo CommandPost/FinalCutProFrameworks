@@ -23,7 +23,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (long long)iconIndex;
+- (id)smallImage;
 - (id)largeImage;
 - (id)image;
 - (BOOL)requiresAudio;

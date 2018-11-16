@@ -19,18 +19,22 @@
     NSPopUpButton *_exportPopUpButton;
     NSPopUpButton *_videoPresetPopUpButton;
     NSPopUpButton *_videoResolutionPopUpButton;
+    NSPopUpButton *_colorSpacePopUpButton;
     NSPopUpButton *_audioPresetPopUpButton;
     NSPopUpButton *_openWithPopUpButton;
     NSPopUpButton *_rolePresetPopUpButton;
     NSArrayController *_roleOutputsController;
     LKTextField *_videoPresetTextField;
     LKTextField *_videoResolutionTextField;
+    LKTextField *_colorSpaceTextField;
     LKTextField *_audioPresetTextField;
     NSView *_rolesView;
     NSView *_roleOutputsView;
 }
 
++ (id)keyPathsForValuesAffectingMultipassIndex;
 + (id)keyPathsForValuesAffectingActionMenuLabelName;
++ (id)keyPathsForValuesAffectingCanIncludeChapter;
 + (id)keyPathsForValuesAffectingCanAddAudioRoleOutput;
 + (id)keyPathsForValuesAffectingCanAddVideoRoleOutput;
 + (id)keyPathsForValuesAffectingAddAudioRoleOutputLabel;
@@ -39,12 +43,14 @@
 @property(nonatomic) NSView *roleOutputsView; // @synthesize roleOutputsView=_roleOutputsView;
 @property(nonatomic) NSView *rolesView; // @synthesize rolesView=_rolesView;
 @property(nonatomic) LKTextField *audioPresetTextField; // @synthesize audioPresetTextField=_audioPresetTextField;
+@property(nonatomic) LKTextField *colorSpaceTextField; // @synthesize colorSpaceTextField=_colorSpaceTextField;
 @property(nonatomic) LKTextField *videoResolutionTextField; // @synthesize videoResolutionTextField=_videoResolutionTextField;
 @property(nonatomic) LKTextField *videoPresetTextField; // @synthesize videoPresetTextField=_videoPresetTextField;
 @property(nonatomic) NSArrayController *roleOutputsController; // @synthesize roleOutputsController=_roleOutputsController;
 @property(nonatomic) NSPopUpButton *rolePresetPopUpButton; // @synthesize rolePresetPopUpButton=_rolePresetPopUpButton;
 @property(nonatomic) NSPopUpButton *openWithPopUpButton; // @synthesize openWithPopUpButton=_openWithPopUpButton;
 @property(nonatomic) NSPopUpButton *audioPresetPopUpButton; // @synthesize audioPresetPopUpButton=_audioPresetPopUpButton;
+@property(nonatomic) NSPopUpButton *colorSpacePopUpButton; // @synthesize colorSpacePopUpButton=_colorSpacePopUpButton;
 @property(nonatomic) NSPopUpButton *videoResolutionPopUpButton; // @synthesize videoResolutionPopUpButton=_videoResolutionPopUpButton;
 @property(nonatomic) NSPopUpButton *videoPresetPopUpButton; // @synthesize videoPresetPopUpButton=_videoPresetPopUpButton;
 @property(nonatomic) NSPopUpButton *exportPopUpButton; // @synthesize exportPopUpButton=_exportPopUpButton;
@@ -54,9 +60,11 @@
 - (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 delegate:(id)arg3 didRecoverSelector:(SEL)arg4 contextInfo:(void *)arg5;
 - (BOOL)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
 - (BOOL)panel:(id)arg1 validateName:(id)arg2 error:(id *)arg3;
+- (void)setConformingSettings:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)validateMenuItem:(id)arg1;
 - (struct CGSize)optimalVideoResolution;
+- (BOOL)canIncludeChapter;
 - (BOOL)canAddAudioRoleOutput;
 - (BOOL)canAddVideoRoleOutput;
 - (id)addAudioRoleOutputLabel;
@@ -64,12 +72,20 @@
 - (void)saveUserRolePresets;
 - (void)loadUserRolePresets;
 - (id)readUserRolePresetsFromDirectoryURL:(id)arg1;
+- (void)setMultipassIndex:(long long)arg1;
+- (long long)multipassIndex;
 @property(readonly) NSString *actionMenuLabelName;
 - (void)addRecentApplication:(id)arg1;
 - (id)recentApplications;
+- (void)updateVideoStompSetting:(id)arg1;
+- (void)updateRolesOutputView;
 - (void)updateRolePresetsMenu;
 - (void)updateApplicationMenu;
+- (void)updateIncludeChapter;
 - (void)updateAudioPresetsMenu;
+- (void)updateColorSpaceMenu;
+- (void)setDoesntFitWarning;
+- (id)_renderFormatForStompSetting:(id)arg1;
 - (void)updateVideoResolutionMenu;
 - (void)updateVideoPresetsMenu;
 - (void)updateExportMenu;
@@ -84,6 +100,7 @@
 - (void)chooseApplication:(id)arg1;
 - (void)selectAction:(id)arg1;
 - (void)selectAudioPreset:(id)arg1;
+- (void)selectColorSpace:(id)arg1;
 - (void)selectVideoResolution:(id)arg1;
 - (void)selectVideoPreset:(id)arg1;
 - (void)selectExportOption:(id)arg1;

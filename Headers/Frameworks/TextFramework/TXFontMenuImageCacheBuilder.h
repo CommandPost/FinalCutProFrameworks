@@ -10,6 +10,7 @@
 
 @interface TXFontMenuImageCacheBuilder : NSObject
 {
+    BOOL _imageCacheIsBuilding;
     BOOL _imageCacheBuildFinished;
     BOOL _imageCacheReady;
     NSMutableDictionary *_cache;
@@ -19,8 +20,9 @@
 @property(readonly) NSMutableDictionary *cache; // @synthesize cache=_cache;
 @property(readonly) BOOL imageCacheReady; // @synthesize imageCacheReady=_imageCacheReady;
 @property(readonly) BOOL imageCacheBuildFinished; // @synthesize imageCacheBuildFinished=_imageCacheBuildFinished;
+@property(readonly) BOOL imageCacheIsBuilding; // @synthesize imageCacheIsBuilding=_imageCacheIsBuilding;
 - (void)rebuildImageCache:(double)arg1;
-- (id)createImageForFontMenuItem:(id)arg1 size:(struct CGSize)arg2 backingScaleFactor:(double)arg3;
+- (id)newImageForFontMenuItem:(id)arg1 size:(struct CGSize)arg2 backingScaleFactor:(double)arg3;
 - (id)init;
 
 @end

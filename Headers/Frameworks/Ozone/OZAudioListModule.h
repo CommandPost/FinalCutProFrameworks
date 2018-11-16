@@ -8,7 +8,7 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class LKButton, LKDial, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSArrayController, NSCollectionViewItem, NSMutableArray, NSPredicate, NSProThemeImageView, NSScrollView, NSString, NSTimer, NSView, OZAudioListCollectionView, OZAudioListPrototypeView, OZAudioPeakMeter;
+@class LKButton, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSArrayController, NSBox, NSButton, NSCollectionViewItem, NSImageView, NSMutableArray, NSPredicate, NSScrollView, NSSlider, NSString, NSTimer, NSView, OZAudioListCollectionView, OZAudioListPrototypeView, OZAudioPeakMeter;
 
 @interface OZAudioListModule : OZProViewModule <NSTextFieldDelegate>
 {
@@ -16,30 +16,34 @@
     OZAudioListCollectionView *_collectionView;
     NSCollectionViewItem *_collectionViewItem;
     OZAudioListPrototypeView *_prototypeView;
-    LKButton *_enabledCheckbox;
+    NSButton *_enabledCheckbox;
     LKTextField *_nameTextField;
     LKSlider *_gainSlider;
     LKSegmentedScrubber *_gainSegmentedScrubber;
-    NSProThemeImageView *_minimumGainImage;
-    NSProThemeImageView *_maximumGainImage;
-    LKDial *_balanceDial;
+    NSImageView *_minimumGainImage;
+    NSImageView *_maximumGainImage;
+    NSSlider *_balanceDial;
     LKSegmentedScrubber *_balanceSegmentedScrubber;
     LKButton *_muteButton;
     LKButton *_soloButton;
     LKButton *_linkButton;
     LKButton *_lockButton;
     LKPopUpButton *_outputBusPopUpButton;
+    NSBox *_verticalSep1;
+    NSBox *_verticalSep2;
+    NSBox *_masterVerticalSep1;
+    NSBox *_masterVerticalSep2;
     NSView *_masterContainerView;
     OZAudioListCollectionView *_masterCollectionView;
     NSCollectionViewItem *_masterCollectionViewItem;
     OZAudioListPrototypeView *_masterPrototypeView;
-    LKButton *_masterEnabledCheckbox;
+    NSButton *_masterEnabledCheckbox;
     LKTextField *_masterNameTextField;
     LKSlider *_masterGainSlider;
     LKSegmentedScrubber *_masterGainSegmentedScrubber;
-    NSProThemeImageView *_masterMinimumGainImage;
-    NSProThemeImageView *_masterMaximumGainImage;
-    LKDial *_masterBalanceDial;
+    NSImageView *_masterMinimumGainImage;
+    NSImageView *_masterMaximumGainImage;
+    NSSlider *_masterBalanceDial;
     LKSegmentedScrubber *_masterBalanceSegmentedScrubber;
     LKButton *_masterMuteButton;
     LKButton *_masterLinkButton;
@@ -49,8 +53,8 @@
     OZAudioPeakMeter *_peakMeterRight;
     LKSearchField *_searchField;
     LKSlider *_zoomSlider;
-    NSProThemeImageView *_smallZoomImage;
-    NSProThemeImageView *_largeZoomImage;
+    NSImageView *_smallZoomImage;
+    NSImageView *_largeZoomImage;
     NSView *_slideUpSearchView;
     LKSegmentedControl *_contentsControl;
     NSArrayController *_contentArrayController;

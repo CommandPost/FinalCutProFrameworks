@@ -17,7 +17,7 @@
 
 - (void)buildRemoveChanMenu:(struct OZAddRemoveChanIF *)arg1;
 - (void)buildAddChanMenu:(struct OZAddRemoveChanIF *)arg1;
-- (id)buildChannelMenu:(id)arg1 withItems:(const vector_53b492d6 *)arg2 isAdd:(_Bool)arg3;
+- (id)buildChannelMenu:(id)arg1 withItems:(const vector_b71873ec *)arg2 isAdd:(_Bool)arg3;
 - (void)removeChannelCB:(id)arg1;
 - (void)addChannelCB:(id)arg1;
 - (void)delayedRelease;

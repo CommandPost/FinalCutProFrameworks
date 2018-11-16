@@ -10,7 +10,7 @@
 
 @interface TXGlyphToolHUDController : OZViewControllerGroup
 {
-    list_dab3ab9d *_pTNodes;
+    list_3c5d753a *_pTNodes;
     struct TXTextLayout *_text;
     TXZTranslate3DHUDButton *_zTransButton;
     TXXYTranslate3DHUDButton *_xyTransButton;
@@ -29,7 +29,7 @@
 }
 
 - (void)transformOSCFlagsChanged:(id)arg1;
-- (list_dab3ab9d *)nodeList;
+- (list_3c5d753a *)nodeList;
 - (struct TXTextLayout *)getTextLayout;
 - (int)getOSCMode;
 - (int)getAxes;

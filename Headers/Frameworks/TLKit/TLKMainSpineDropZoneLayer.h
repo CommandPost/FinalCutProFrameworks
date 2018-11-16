@@ -28,6 +28,7 @@
 - (void)positionDropZoneVideoLayerCoveringVisibleRect;
 - (void)setDelegate:(id)arg1;
 - (void)setInstanceCount:(long long)arg1;
+@property(readonly) unsigned long long mainSpineSegmentPadding;
 @property(readonly) NSView *parentView;
 - (void)dealloc;
 - (id)init;

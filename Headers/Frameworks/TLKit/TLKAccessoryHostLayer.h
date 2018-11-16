@@ -6,28 +6,35 @@
 
 #import "CALayer.h"
 
-@class NSString, TLKAccessoryLayer, TLKAccessoryTitleLayer, TLKItemLayer, TLKTimelineView;
+@class NSColor, NSString, TLKAccessoryLayer, TLKAccessoryTitleLayer, TLKItemLayer, TLKTimelineView;
 
 @interface TLKAccessoryHostLayer : CALayer
 {
-    TLKItemLayer *_itemLayer;
-    CALayer *_rootLayer;
-    CALayer *_backgroundLayer;
     CALayer *_glossMaskLayer;
     CALayer *_glossLayer;
     TLKAccessoryLayer *_upperAccessoryLayer;
     TLKAccessoryLayer *_lowerAccessoryLayer;
-    TLKAccessoryTitleLayer *_titleLayer;
     TLKTimelineView *_timelineView;
-    NSString *_title;
     BOOL _isSplitComponent;
+    NSString *_title;
+    NSColor *_tintColor;
     double _backgroundBorderWidth;
     double _titleHeight;
+    TLKItemLayer *_itemLayer;
+    TLKAccessoryTitleLayer *_titleLayer;
+    CALayer *_rootLayer;
+    CALayer *_backgroundLayer;
 }
 
+@property(retain) CALayer *backgroundLayer; // @synthesize backgroundLayer=_backgroundLayer;
+@property(retain) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 @property BOOL isSplitComponent; // @synthesize isSplitComponent=_isSplitComponent;
+@property TLKAccessoryTitleLayer *titleLayer; // @synthesize titleLayer=_titleLayer;
+@property TLKItemLayer *itemLayer; // @synthesize itemLayer=_itemLayer;
 @property double titleHeight; // @synthesize titleHeight=_titleHeight;
 @property double backgroundBorderWidth; // @synthesize backgroundBorderWidth=_backgroundBorderWidth;
+@property(retain, nonatomic) NSColor *tintColor; // @synthesize tintColor=_tintColor;
+@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 - (void)syntheticUIElement:(id)arg1 performAction:(id)arg2;
 - (id)syntheticUIElementActions:(id)arg1;
@@ -50,6 +57,7 @@
 - (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)layoutSublayers;
+- (void)setBackgroundBorderWidthTo:(double)arg1;
 - (void)updateAppearance;
 @property(readonly) double lowerHeight;
 @property(readonly) double upperHeight;
@@ -61,8 +69,6 @@
 - (void)setUpperAccessoryLayer:(id)arg1 lowerAccessoryLayer:(id)arg2;
 - (void)setNeedsLayout;
 @property(readonly) id <TLKTimelineItem> representedObject;
-@property TLKItemLayer *itemLayer;
-@property(retain) NSString *title;
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)init;
 

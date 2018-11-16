@@ -10,7 +10,8 @@
 {
 }
 
-+ (id)toolbarFacet;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetImageOn;
 + (id)toolTip;
 + (id)displayName;
 + (void)initialize;

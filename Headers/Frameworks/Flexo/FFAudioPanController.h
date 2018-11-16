@@ -8,25 +8,23 @@
 
 #import "FFOZViewControllerChannelChangeDelegate.h"
 
-@class FFChannelChangeController, FFEffectStack, NSArray, NSCountedSet, NSMapTable, NSMutableArray, NSMutableSet, NSString, OZLabeledParamController, OZViewControllerGroup;
+@class FFAudioPanDishView, FFAudioPanModeController, FFChannelChangeController, NSArray, NSCountedSet, NSLayoutConstraint, NSMapTable, NSMutableSet, NSString, PIBuildContext;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioPanController : OZFolderGroupController <FFOZViewControllerChannelChangeDelegate>
 {
-    FFEffectStack *m_primaryEffectStack;
+    PIBuildContext *m_buildContext;
+    NSArray *m_selectedEffectStacks;
     FFChannelChangeController *m_channelChangeController;
     NSString *m_channelChangeControllerActionName;
     NSCountedSet *m_channelChangeControllerObjects;
     NSMapTable *m_channelToEffectStackMap;
-    NSMutableArray *m_selectedEffectStacks;
     NSMutableSet *m_observedBundleParts;
     NSMutableSet *m_observedSurroundBundles;
-    OZViewControllerGroup *m_panGroupController;
-    OZLabeledParamController *m_panModeController;
-    OZLabeledParamController *m_panAmountController;
-    OZFolderGroupController *m_panParametersFolderController;
-    OZLabeledParamController *m_panDishController;
-    NSArray *m_advancedSettingsControllers;
+    OZFolderGroupController *m_panSettingsController;
+    FFAudioPanModeController *m_panModePopUpController;
+    NSLayoutConstraint *m_panModePopUpWidthConstraint;
+    FFAudioPanDishView *m_panDishView;
 }
 
 - (void)controller:(id)arg1 didSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
@@ -36,11 +34,13 @@ __attribute__((visibility("hidden")))
 - (void)_removeObservingForSurroundPanner:(id)arg1;
 - (void)_addObservingForSurroundPanner:(id)arg1;
 - (void)_updatePanModeMenu;
-- (void)_releaseSurroundControllers;
 - (void)selectPanMode:(id)arg1;
 - (void)update;
-- (id)getSubgroup;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (void)didBuildUI;
+- (void)_setupPanModePopUp;
+- (id)_newPanAmountControllerForChannels:(vector_b71873ec *)arg1;
+- (id)_newPanSettingsHeadingControllerUsingChannel:(struct OZChannelBase *)arg1 showResetButton:(BOOL)arg2;
+- (id)_newPanModeController;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

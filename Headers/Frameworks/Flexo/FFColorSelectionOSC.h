@@ -4,40 +4,43 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFComponentOSC.h>
+#import <Flexo/FFProOSC.h>
 
-@class FFPixelBuffer, NSArray;
+@class FFPixelBuffer, PCMatrix44Double;
 
-@interface FFColorSelectionOSC : FFComponentOSC
+@interface FFColorSelectionOSC : FFProOSC
 {
     id <FFColorSelectionOSCDelegate> _delegate;
-    NSArray *_selectedItems;
     Class _toolClass;
-    CDStruct_1b6d18a9 _initCurrentTime;
-    _Bool _cancelTool;
+    int _workingSpace;
     FFPixelBuffer *_buffer;
+    PCMatrix44Double *_bufferPT;
+    void *_scosc_private;
 }
 
-+ (struct CGColorSpace *)processingColorSpace;
++ (id)cursorForModifierFlags:(long long)arg1;
++ (void)initialize;
+@property(readonly) int workingSpace; // @synthesize workingSpace=_workingSpace;
 @property(nonatomic) id <FFColorSelectionOSCDelegate> delegate; // @synthesize delegate=_delegate;
-- (id).cxx_construct;
-- (void)readBuffer;
-- (void)convertPointFromSpace:(unsigned long long)arg1 fromX:(double)arg2 fromY:(double)arg3 toSpace:(unsigned long long)arg4 toX:(double *)arg5 toY:(double *)arg6;
+- (id)getCursor;
+- (void)flagsChanged:(id)arg1;
+- (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
 - (void)mouseUp:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
+- (void)mouseDragged:(id)arg1;
+- (void)proOSCMouseDownInitialize:(id)arg1;
+- (void)_sendEvent:(id)arg1 toDelegate:(id)arg2;
+- (void)_readBuffer;
+- (BOOL)_sampleBufferFromEvent:(id)arg1 averageValue:(struct rgb_t<float> *)arg2;
+- (void)_sample:(vector_4b61cd02 *)arg1 radius:(long long)arg2 step:(long long)arg3 offstep:(long long)arg4 px:(unsigned long long)arg5 py:(unsigned long long)arg6 src:(const char *)arg7 w:(unsigned long long)arg8 h:(unsigned long long)arg9 bpr:(unsigned int)arg10 group:(id)arg11 queue:(id)arg12;
 - (BOOL)mouseCreatesUndo;
 - (BOOL)hitTest:(struct CGPoint)arg1;
 - (void)setCursor;
 - (BOOL)isSelectionBased;
-- (void)cancelTool:(id)arg1;
 - (BOOL)isToolBased;
-- (id)effect;
-- (long long)effectCountForReference;
-- (void)modifyAdjustmentsWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 bufferData:(char *)arg4 bufferWidth:(double)arg5 bufferHeight:(double)arg6 bytesPerRow:(unsigned int)arg7;
+@property(copy, nonatomic) PCMatrix44Double *colorMatrix; // @dynamic colorMatrix;
 - (void)dealloc;
-- (id)initWithEffectStack:(id)arg1 selectedItems:(id)arg2 toolClass:(Class)arg3;
+- (id)initWithEffectStack:(id)arg1 channelFolder:(id)arg2 toolClass:(Class)arg3;
 
 @end
 

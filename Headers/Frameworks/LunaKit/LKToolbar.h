@@ -4,14 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProToolbar.h"
+#import "NSToolbar.h"
 
-@interface LKToolbar : NSProToolbar
+@interface LKToolbar : NSToolbar
 {
+    BOOL _useAppleAppsMode;
 }
 
-+ (Class)_proToolbarItemClass;
-- (id)labelFont;
+@property(nonatomic) BOOL useAppleAppsMode; // @synthesize useAppleAppsMode=_useAppleAppsMode;
+- (BOOL)_allowsDisplayMode:(unsigned long long)arg1;
 
 @end
 

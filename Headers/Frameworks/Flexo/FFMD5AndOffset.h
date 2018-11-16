@@ -8,13 +8,13 @@
 
 #import "NSCoding.h"
 
-__attribute__((visibility("hidden")))
 @interface FFMD5AndOffset : NSObject <NSCoding>
 {
     CDStruct_bdcb2b0d _baseMD5;
     long long _offset;
     CDStruct_bdcb2b0d _compositeMD5;
     unsigned int _internalFlags;
+    BOOL _useBaseMD5Only;
 }
 
 + (CDStruct_bdcb2b0d)compositeMD5FromMD5:(CDStruct_bdcb2b0d)arg1 andOffset:(long long)arg2;
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)_internalIsEqual:(id)arg1;
 - (CDStruct_bdcb2b0d)compositeMD5;
 - (const CDStruct_bdcb2b0d *)compositeMD5Ptr;
 - (void)_ensureCompositeMD5;

@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     _AddMaskButton *_addMaskButton;
 }
 
+- (BOOL)rejectsTwoColumnLayout;
+- (void)didBuildUI;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)showMatte:(id)arg1;
 - (void)invertMasks:(id)arg1;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)disclosureButtonShouldHide;
 - (void)setEnable:(id)arg1;
 - (void)update;
+- (id)_effect;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

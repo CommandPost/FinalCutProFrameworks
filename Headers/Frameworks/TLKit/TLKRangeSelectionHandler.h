@@ -39,6 +39,7 @@
 - (BOOL)startTracking:(id)arg1;
 - (void)prepareForPressAndHold:(id)arg1;
 - (void)setSelectedRangeFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
+- (id)primaryItemForItem:(id)arg1;
 - (BOOL)_initializeTrackingState:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)rangeLayerAtCurrentPoint:(struct CGPoint)arg1;
 - (id)clickedLayer;

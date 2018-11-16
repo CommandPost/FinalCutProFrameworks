@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _duration;
 }
 
-- (id).cxx_construct;
 - (CDStruct_1b6d18a9)duration;
 - (long long)rate;
 - (CDStruct_1b6d18a9)time;

@@ -4,13 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
 @class LKTextField, OZMiniCurveEditorCtrl, OZMiniCurveEditorView;
 
-@interface OZMiniCurveEditor : NSProView
+@interface OZMiniCurveEditor : NSView
 {
-    NSProView *_masterView;
+    NSView *_masterView;
     OZMiniCurveEditorView *_curveEditorView;
     LKTextField *_axisX;
     LKTextField *_axisY;

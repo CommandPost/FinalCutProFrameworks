@@ -6,13 +6,11 @@
 
 #import "NSOpenGLView.h"
 
-@class NSMapTable, NSMutableDictionary, NSTrackingArea, OZCurveEditorCtrlBase, OZCurveSelectionList, PCEDrawableTexture, ProThemeImageSource;
+@class NSDate, NSImage, NSMapTable, NSMutableDictionary, NSTrackingArea, OZCurveEditorCtrlBase, OZCurveSelectionList, PCEDrawableTexture;
 
 @interface OZCurveEditorViewBase : NSOpenGLView
 {
     OZCurveEditorCtrlBase *_controller;
-    ProThemeImageSource *_pImageKp;
-    ProThemeImageSource *_pImageKpSelected;
     struct CGRect _currentViewVolume;
     struct CGRect _originalViewVolume;
     struct CGRect _selectionViewVolume;
@@ -66,6 +64,9 @@
     BOOL _needsAutoZoom;
     NSMutableDictionary *_textAttribs;
     PCEDrawableTexture *_horizontalTextTexture;
+    NSImage *_keyframeAssets[8][4][2];
+    struct KeyframeAsset _keyframeTextures[8][4][2];
+    NSImage *_tangentAssets[2];
     struct CGPoint _fourCornersTopLeft;
     struct CGPoint _fourCornersTopRight;
     struct CGPoint _fourCornersBottomLeft;
@@ -92,9 +93,9 @@
     CDStruct_e83c9415 _totalRange;
     CDStruct_1b6d18a9 _currentTime;
     CDStruct_1b6d18a9 _lastTime;
+    NSDate *_lastMouseDraggedEvent;
 }
 
-- (id).cxx_construct;
 - (void)panWithPage:(double)arg1 y:(double)arg2;
 - (void)pan:(double)arg1 y:(double)arg2;
 - (void)setVerticalZoom:(double)arg1 offsetPercentage:(double)arg2;
@@ -110,7 +111,7 @@
 - (struct CGRect)getEditBox;
 - (void)prepareSelectedHandles;
 - (void)validateSelectedHandles:(id)arg1;
-- (vector_53b492d6)channelsForSelection;
+- (vector_b71873ec)channelsForSelection;
 - (struct CGPoint)getMouseOrigin;
 - (void)updateDrag:(double)arg1 y:(double)arg2;
 - (struct CGPoint)getOffsetFromOriginWorld:(double)arg1 deltaY:(double)arg2;
@@ -150,6 +151,7 @@
 - (void)delete:(id)arg1;
 - (BOOL)customKeyEquivalent:(id)arg1;
 - (void)currentToolChanged;
+- (void)resetBoxDeformation;
 - (void)getBoxLimits:(struct CGPoint *)arg1 boxTopRight:(struct CGPoint *)arg2 boxBottomLeft:(struct CGPoint *)arg3 boxBottomRight:(struct CGPoint *)arg4 pWidth:(double *)arg5 pHeight:(double *)arg6 pCenterX:(double *)arg7 pCenterY:(double *)arg8;
 - (void)mouseDraggedBox:(id)arg1;
 - (void)mouseDraggedSketch:(id)arg1;
@@ -209,22 +211,28 @@
 - (void)setAutoPan:(BOOL)arg1;
 - (BOOL)autoZoom;
 - (void)setAutoZoom:(BOOL)arg1;
+- (double)getZoomPadding;
 - (id)getCoordinates:(id)arg1 time:(CDStruct_1b6d18a9)arg2 value:(double)arg3;
 - (void)drawOverlays:(struct CGRect)arg1;
 - (void)drawPoints:(id)arg1 mode:(unsigned int)arg2 drawTangents:(BOOL)arg3;
+- (void)drawKeypoint:(void **)arg1 tangentU:(double)arg2 tangentV:(double)arg3 u:(const CDStruct_1b6d18a9 *)arg4 v:(double)arg5 whichTangent:(unsigned int)arg6 withItem:(id)arg7 tangentSize:(struct CGPoint)arg8 rasterSize:(struct CGPoint)arg9 tangentTextureID:(unsigned int)arg10 tangentLineArray:(vector_d5fe817d *)arg11 tangentHandleArray:(vector_c3eb4401 *)arg12;
+- (void)drawSelectedKeypoint:(void **)arg1 tangentU:(double)arg2 tangentV:(double)arg3 u:(const CDStruct_1b6d18a9 *)arg4 v:(double)arg5 whichTangent:(unsigned int)arg6 withItem:(id)arg7 tangentSize:(struct CGPoint)arg8 rasterSize:(struct CGPoint)arg9;
+- (void)calculateDrawTangentU:(double *)arg1 tangentV:(double *)arg2 deltaU:(double *)arg3 deltaV:(double *)arg4 forU:(const CDStruct_1b6d18a9 *)arg5 v:(double)arg6 rasterSize:(struct CGPoint)arg7 withItem:(id)arg8;
+- (void)drawKeypoint:(void **)arg1 u:(const CDStruct_1b6d18a9 *)arg2 v:(double)arg3 selected:(_Bool)arg4 enabled:(_Bool)arg5 locked:(_Bool)arg6 forItem:(id)arg7 assets:(struct KeyframeAsset [6])arg8 rasterSize:(struct CGPoint *)arg9 quadVector:(vector_bf37bbef *)arg10;
+- (void)drawSelectedKeypoint:(void **)arg1 u:(const CDStruct_1b6d18a9 *)arg2 v:(double)arg3 forItem:(id)arg4 colorIndex:(unsigned int)arg5;
+- (void)assetQuad:(struct OZTexturedQuad2Df *)arg1 atPos:(struct CGPoint)arg2 withSize:(struct CGPoint)arg3 texSize:(struct CGPoint)arg4;
 - (void)drawProcessedCurve:(id)arg1;
 - (void)drawOriginalCurve:(id)arg1 mode:(unsigned int)arg2;
 - (void)drawCurveEditor:(struct CGRect)arg1;
 - (void)drawBackground;
 - (void)drawFourCornerBox:(unsigned int)arg1;
-- (void)drawAsset:(unsigned int)arg1 atPos:(struct CGPoint)arg2 withSize:(struct CGPoint)arg3 texSize:(struct CGPoint)arg4;
 - (id)getScale:(id)arg1 value:(double)arg2;
 - (void)drawProjection:(unsigned int)arg1;
 - (void)drawSelectionRect;
 - (void)glPrint:(id)arg1 atPos:(struct CGPoint)arg2;
 - (void)computeVerticalTickMarks;
 - (unsigned int)numberOfTickMarks;
-- (unsigned int)linenShadowAssetAtSize:(struct CGSize)arg1;
+- (void)loadAssets;
 - (unsigned int)tangentAsset:(struct CGPoint *)arg1;
 - (unsigned int)keyframeAsset:(unsigned int)arg1 state:(unsigned int)arg2 index:(unsigned int)arg3 assetSize:(struct CGPoint *)arg4;
 - (id)curveColor:(unsigned int)arg1;
@@ -232,11 +240,13 @@
 - (id)backgroundColor;
 - (id)selectionColor;
 - (id)textColor;
+- (id)endpointsColor;
 - (id)gridColor;
 - (id)playheadColor;
 - (BOOL)wantsBestResolutionOpenGLSurface;
 - (void)reshape;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)viewDidMoveToWindow;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -13,6 +13,7 @@
 - (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
 
 @optional
+- (int)thumbnailAudioOptionsForFilmstripCell:(FFFilmstripCell *)arg1;
 - (BOOL)filmstripCell:(FFFilmstripCell *)arg1 shouldUpdateThumbnailWithSkimmable:(struct NSObject *)arg2;
 @end
 

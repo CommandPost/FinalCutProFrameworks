@@ -6,13 +6,18 @@
 
 #import <TLKit/TLKAbstractPrecisionEditorVerticalLinesLayer.h>
 
-@class CALayer;
+@class CALayer, NSDictionary;
 
 @interface TLKPrecisionEditorVerticalLinesLayer : TLKAbstractPrecisionEditorVerticalLinesLayer
 {
     CALayer *_rootLayer;
+    NSDictionary *_mappingTable;
+    int _layerState;
 }
 
+- (int)layerState;
+- (void)setLayerState:(int)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

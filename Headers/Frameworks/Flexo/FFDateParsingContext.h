@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)_copyFormatterWithDateStyle:(unsigned long long)arg1 calendar:(id)arg2;
 - (id)_copyFormatterWithTemplate:(id)arg1 calendar:(id)arg2;
 @property(readonly) NSString *identifier;
+- (void)dealloc;
 - (id)initWithCalendar:(id)arg1;
 
 @end

@@ -4,14 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFMDModule.h>
+#import <Flexo/FFMDToggleSidebarModule.h>
 
 #import "FFOrganizerFilmstripViewDelegate.h"
+#import "FFOrganizerMediaDetailSearchHeaderDelegate.h"
 #import "NSTableViewDataSource.h"
 
-@class FFEditAction, FFMDMusicDataItem, FFMDMusicMessageView, FFMDMusicTableData, FFMDMusicTableView, FFOrganizerFilmstripView, ILMediaGroup, ILMediaManager, LKMenu, LKPopUpButton, LKTextField, NSArray, NSString, NSView;
+@class FFEditAction, FFMDMusicDataItem, FFMDMusicMessageView, FFMDMusicTableData, FFMDMusicTableView, FFOrganizerFilmstripView, ILMediaGroup, ILMediaManager, LKMenu, LKPopUpButton, LKTextField, NSArray, NSLayoutConstraint, NSString, NSView;
 
-@interface FFMDMusicModule : FFMDModule <FFOrganizerFilmstripViewDelegate, NSTableViewDataSource>
+@interface FFMDMusicModule : FFMDToggleSidebarModule <FFOrganizerMediaDetailSearchHeaderDelegate, FFOrganizerFilmstripViewDelegate, NSTableViewDataSource>
 {
     BOOL _tryToLocalizeDataItemDisplayName;
     BOOL _playing;
@@ -33,6 +34,7 @@
     NSString *_pluginIdentifier;
     NSString *_loadCompletionNotificationName;
     LKPopUpButton *_mediaPopup;
+    LKPopUpButton *_proMediaPopup;
     FFMDMusicTableView *_musicTableView;
     NSView *_audioMediaContainerView;
     NSView *_audioContainerView;
@@ -40,10 +42,10 @@
     NSView *_emptyPaneView;
     LKMenu *_searchFieldMenu;
     LKMenu *_contextualMenu;
-    LKTextField *_selectionMessageLine1;
-    LKTextField *_selectionMessageLine2;
+    LKTextField *_selectionMessageLine;
     FFMDMusicMessageView *_messageView;
     FFOrganizerFilmstripView *_filmStripView;
+    NSLayoutConstraint *_messageViewBottomConstraint;
 }
 
 @property(retain, nonatomic) LKMenu *contextualMenu; // @synthesize contextualMenu=_contextualMenu;
@@ -128,6 +130,8 @@
 - (void)openItemFromRangeObject:(id)arg1;
 - (void)organizerFilmstripViewDidReloadData:(id)arg1;
 - (unsigned long long)filmstripView:(id)arg1 writeRangesOfMedia:(id)arg2 toPasteboard:(id)arg3;
+- (id)markerEditorDelegate;
+- (id)skimmingDelegate;
 - (id)module;
 - (void)_debug_displayAlert:(id)arg1 subString:(id)arg2;
 - (id)_debug_allDataItems;
@@ -158,11 +162,16 @@
 - (void)appendGroupToPopup:(id)arg1 indentationLevel:(long long)arg2;
 - (id)localizedNameForGroup:(id)arg1;
 - (void)loadMusicPopup:(id)arg1;
+- (id)_iconForMediaGroup:(id)arg1;
 - (void)togglePlayForDataItem:(id)arg1;
 - (void)markCurrentlyPlayingItem:(id)arg1;
 - (void)stopPlayback;
 - (void)pausePlayback;
 - (void)resumePlayback;
+- (void)searchHeaderWasDismissed;
+- (id)searchFieldToolTip;
+- (BOOL)shouldFocusSearchFieldWhenInstalled;
+- (BOOL)shouldShowHUDButton;
 - (void)loadNewTableData:(id)arg1;
 - (void)filterData:(id)arg1;
 - (id)searchPredicateForFilterString:(id)arg1;
@@ -184,10 +193,12 @@
 - (id)firstKeyView;
 - (void)doMute:(id)arg1;
 - (void)revealInFinder:(id)arg1;
+- (void)playPause:(id)arg1;
 - (void)musicTablePlayBtnAction:(id)arg1;
 - (void)musicTableDoubleClickAction:(id)arg1;
 - (void)searchCategoryAction:(id)arg1;
 - (void)searchFieldAction:(id)arg1;
+- (void)searchHeaderSearchFieldAction:(id)arg1;
 - (void)musicPopupAction:(id)arg1;
 - (void)copy:(id)arg1;
 - (id)localModuleActions;
@@ -197,6 +208,7 @@
 - (void)reloadMediaPlugin;
 - (void)loadMediaPlugin;
 - (void)viewWillBeRemoved;
+- (void)viewWasInstalled;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;
 - (void)setupPlayer;
@@ -207,6 +219,7 @@
 - (id)mediaPlugInIdentifier;
 - (void)awakeFromNib;
 - (void)viewDidLoad;
+- (void)initContentSearchPaths;
 - (void)dealloc;
 - (id)init;
 - (id)customGenreForGroupID:(id)arg1;

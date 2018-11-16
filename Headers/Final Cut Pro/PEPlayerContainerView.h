@@ -6,20 +6,20 @@
 
 #import "LKSplitView.h"
 
-@class NSProThemeFacet, PEPlayerContainerModule;
+@class NSImage, PEPlayerContainerModule;
 
 @interface PEPlayerContainerView : LKSplitView
 {
     PEPlayerContainerModule *_playerContainerModule;
     BOOL _hasMedia;
     BOOL _hasEffect;
-    NSProThemeFacet *_shadowFacet;
+    NSImage *_shadowFacetImage;
 }
 
 - (void)viewDidMoveToWindow;
 - (void)viewWillMoveToWindow:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
-- (id)shadowFacet;
+- (id)shadowFacetImage;
 - (double)dividerThickness;
 - (void)drawDividerInRect:(struct CGRect)arg1;
 - (void)mouseDown:(id)arg1;

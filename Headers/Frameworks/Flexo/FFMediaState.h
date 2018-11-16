@@ -6,12 +6,12 @@
 
 #import <Flexo/FFMedia.h>
 
-@class FFThumbnailRequest, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaState : FFMedia
 {
-    long long _audioChannelCount;
+    unsigned int _audioChannelCount;
     double _audioSampleRate;
     BOOL _hasAudio;
     BOOL _hasVideo;
@@ -21,12 +21,10 @@ __attribute__((visibility("hidden")))
     NSString *_descriptionText;
     BOOL _isGood;
     unsigned long long _lastMarkerNumber;
-    FFThumbnailRequest *_okIconImageRequest;
 }
 
 + (id)copyClassDescription;
-- (void)setOkIconImageRequest:(id)arg1;
-- (id)okIconImageRequest;
+- (id)metadataNameForAudioChannel:(unsigned long long)arg1 withSourceKey:(id)arg2;
 - (void)setLastMarkerNumber:(unsigned long long)arg1;
 - (unsigned long long)lastMarkerNumber;
 - (void)setIsGood:(BOOL)arg1;
@@ -43,10 +41,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasVideo;
 - (void)setHasAudio:(BOOL)arg1;
 - (BOOL)hasAudio;
+- (unsigned long long)audioSourceCount;
 - (void)setAudioSampleRate:(double)arg1;
 - (double)audioSampleRate;
-- (void)setAudioChannelCount:(long long)arg1;
-- (long long)audioChannelCount;
+- (void)setAudioChannelCount:(unsigned int)arg1;
+- (unsigned int)audioChannelCount;
 - (id)audioSourcePropertiesMap;
 - (id)media;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -19,7 +19,7 @@
 - (void)startCameraY:(double)arg1;
 - (double)startCameraX;
 - (void)startCameraX:(double)arg1;
-- (basic_string_1cdf7af0)toolUndoString;
+- (basic_string_a1f69cfb)toolUndoString;
 - (void)performReset:(id)arg1;
 - (void)reset:(id)arg1;
 - (void)stopUndo:(id)arg1;
@@ -30,7 +30,6 @@
 - (BOOL)handlesMousingInOnScreenControls;
 - (float)getRefreshInterval;
 - (id)getDefaultCursor;
-- (id)getBundle;
 - (struct PCUUID)getClassID;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 

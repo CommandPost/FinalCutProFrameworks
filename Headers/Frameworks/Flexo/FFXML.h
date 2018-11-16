@@ -10,11 +10,28 @@
 {
 }
 
++ (BOOL)compareClip:(id)arg1 against:(id)arg2 includeResources:(BOOL)arg3 asMedia:(BOOL)arg4;
++ (BOOL)compareClip:(id)arg1 against:(id)arg2;
 + (BOOL)supportsObjectForExport:(id)arg1;
-+ (id)import:(id)arg1 library:(id)arg2 taskDelegate:(id)arg3 warnings:(id *)arg4 error:(id *)arg5;
++ (BOOL)validateXMLDocument:(id)arg1 options:(id)arg2 version:(unsigned long long *)arg3 contentType:(int *)arg4 error:(id *)arg5;
++ (BOOL)isImportingXML;
++ (id)importFromXMLDoc:(id)arg1 options:(id)arg2 taskDelegate:(id)arg3 warnings:(id *)arg4 error:(id *)arg5;
++ (id)exportLibraryAsData:(id)arg1 usingVersion:(id)arg2 withMetadataViewSet:(id)arg3 replace:(BOOL)arg4 taskDelegate:(id)arg5 error:(id *)arg6;
++ (id)exportLibraryAsString:(id)arg1 usingVersion:(id)arg2 withMetadataViewSet:(id)arg3 replace:(BOOL)arg4 taskDelegate:(id)arg5 error:(id *)arg6;
++ (BOOL)exportLibrary:(id)arg1 usingVersion:(id)arg2 withMetadataViewSet:(id)arg3 toURL:(id)arg4 replace:(BOOL)arg5 taskDelegate:(id)arg6 error:(id *)arg7;
++ (id)exportEventsAsData:(id)arg1 usingVersion:(id)arg2 withMetadataViewSet:(id)arg3 replace:(BOOL)arg4 taskDelegate:(id)arg5 error:(id *)arg6;
++ (id)exportEventsAsString:(id)arg1 usingVersion:(id)arg2 withMetadataViewSet:(id)arg3 replace:(BOOL)arg4 taskDelegate:(id)arg5 error:(id *)arg6;
 + (BOOL)exportEvents:(id)arg1 usingVersion:(id)arg2 withMetadataViewSet:(id)arg3 toURL:(id)arg4 replace:(BOOL)arg5 taskDelegate:(id)arg6 error:(id *)arg7;
++ (id)exportEventClipsAsData:(id)arg1 usingVersion:(id)arg2 withMetadataViewSet:(id)arg3 replace:(BOOL)arg4 taskDelegate:(id)arg5 error:(id *)arg6;
++ (id)exportEventClipsAsString:(id)arg1 usingVersion:(id)arg2 withMetadataViewSet:(id)arg3 replace:(BOOL)arg4 taskDelegate:(id)arg5 error:(id *)arg6;
 + (BOOL)exportEventClips:(id)arg1 usingVersion:(id)arg2 withMetadataViewSet:(id)arg3 toURL:(id)arg4 replace:(BOOL)arg5 taskDelegate:(id)arg6 error:(id *)arg7;
++ (id)newXMLDocumentForLibrary:(id)arg1 withOptions:(id)arg2 taskDelegate:(id)arg3 error:(id *)arg4;
++ (id)newXMLDocumentForEvents:(id)arg1 withOptions:(id)arg2 taskDelegate:(id)arg3 error:(id *)arg4;
++ (id)newXMLDocumentForEventClips:(id)arg1 withOptions:(id)arg2 taskDelegate:(id)arg3 error:(id *)arg4;
++ (id)newExporterWithOptions:(id)arg1 taskDelegate:(id)arg2;
++ (id)newExporterWithVersion:(id)arg1 metadataViewSet:(id)arg2 url:(id)arg3 string:(id *)arg4 data:(id *)arg5 taskDelegate:(id)arg6 options:(id)arg7;
 + (id)newExporterWithVersion:(id)arg1 metadataViewSet:(id)arg2 url:(id)arg3 taskDelegate:(id)arg4;
++ (id)newExporterForCompare;
 
 @end
 

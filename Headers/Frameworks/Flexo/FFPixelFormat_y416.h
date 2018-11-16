@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (int)pixelBlockWidth;
 - (int)bitsPerBlock;
 - (int)bitsPerComponent;
+- (id)substituteOutputFormat;
 - (id)description;
 - (id)name;
 

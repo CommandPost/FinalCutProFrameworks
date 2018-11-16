@@ -8,9 +8,9 @@
 
 @interface TXGlyphMotionPathOnScreenControl : POOnScreenControl
 {
-    struct vector<TXGlyphAnimationPathOnScreenControl *, std::allocator<TXGlyphAnimationPathOnScreenControl *>> *_paths;
-    struct vector<TXGlyphAnimationPathOnScreenControl *, std::allocator<TXGlyphAnimationPathOnScreenControl *>> *_selectedPaths;
-    struct vector<TXGlyphAnimationPathOnScreenControl *, std::allocator<TXGlyphAnimationPathOnScreenControl *>> *_currentSelectedPaths;
+    struct vector<TXGlyphAnimationPathOnScreenControl *, std::__1::allocator<TXGlyphAnimationPathOnScreenControl *>> *_paths;
+    struct vector<TXGlyphAnimationPathOnScreenControl *, std::__1::allocator<TXGlyphAnimationPathOnScreenControl *>> *_selectedPaths;
+    struct vector<TXGlyphAnimationPathOnScreenControl *, std::__1::allocator<TXGlyphAnimationPathOnScreenControl *>> *_currentSelectedPaths;
     _Bool _startDrag;
     _Bool _selecting;
     struct TXDiscontinuousSelection _glyphSelection;
@@ -20,7 +20,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (struct OZChannelPosition3D *)getOffsetChannel:(struct TXTextStyle *)arg1;
+- (struct OZChannelPosition3D *)getOffsetChannel:(const shared_ptr_e0e110e1 *)arg1;
 - (id)menuForEvent:(id)arg1;
 - (void)getTransformMatrix:(PCMatrix44Tmpl_93ed1289 *)arg1 state:(struct OZRenderState)arg2;
 - (void)getInvTransformMatrix:(PCMatrix44Tmpl_93ed1289 *)arg1 forTextObject:(struct TXTextObject *)arg2 andState:(struct OZRenderState)arg3;

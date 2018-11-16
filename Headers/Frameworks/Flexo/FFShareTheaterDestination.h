@@ -11,8 +11,9 @@
 }
 
 + (id)defaultName;
+- (id)smallImage;
 - (id)iconTitle;
-- (long long)iconIndex;
+- (id)pressedImage;
 - (id)image;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;

@@ -26,6 +26,7 @@
 + (id)newProviderWithAssetFileID:(id)arg1 utiType:(id)arg2;
 + (id)newProviderWithAssetFileID:(id)arg1;
 + (id)getUTTypeForURL:(id)arg1;
++ (id)_getUTTypeForURL:(id)arg1;
 + (id)extensionForURL:(id)arg1;
 + (id)extensions;
 + (id)utis;
@@ -39,6 +40,7 @@
 + (void)_registerProvidersInBundle:(id)arg1 atPath:(id)arg2;
 + (void)initialize;
 + (long long)providerCount;
+- (id)newFirstVideoSource;
 - (id)firstVideoSource;
 - (BOOL)syncFromDocument;
 - (BOOL)saveToDocument;
@@ -64,6 +66,7 @@
 - (void)_removeSourceForKey:(id)arg1;
 - (void)_setSource:(id)arg1 forKey:(id)arg2;
 - (void)_setupSources;
+- (id)eventDocumentIDAndPath;
 - (id)assetFileID;
 - (id)suiteID;
 - (id)uttype;

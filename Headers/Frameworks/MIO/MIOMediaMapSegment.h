@@ -17,7 +17,6 @@
 + (id)segmentWithStartTime:(CDStruct_1b6d18a9)arg1 endTime:(CDStruct_1b6d18a9)arg2;
 @property CDStruct_1b6d18a9 endTime; // @synthesize endTime=_endTime;
 @property CDStruct_1b6d18a9 startTime; // @synthesize startTime=_startTime;
-- (id).cxx_construct;
 - (BOOL)containsTime:(CDStruct_1b6d18a9)arg1;
 - (void)expandByMergingWithSegment:(id)arg1;
 - (BOOL)isContinuousUnionWithSegment:(id)arg1;

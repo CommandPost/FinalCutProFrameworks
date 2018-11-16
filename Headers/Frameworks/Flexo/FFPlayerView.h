@@ -61,6 +61,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasMarkedText;
 - (void)unmarkText;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
+- (void)nudgeLeftMany:(id)arg1;
+- (void)nudgeRightMany:(id)arg1;
+- (void)nudgeUpMany:(id)arg1;
+- (void)nudgeDownMany:(id)arg1;
 - (void)nudgeLeft:(id)arg1;
 - (void)nudgeRight:(id)arg1;
 - (void)nudgeUp:(id)arg1;

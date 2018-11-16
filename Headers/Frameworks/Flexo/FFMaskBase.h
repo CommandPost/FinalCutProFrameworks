@@ -20,7 +20,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
+- (int)overrideWorkingSpace:(int)arg1;
+- (id)processingFormat:(int)arg1;
 - (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3;
+- (void)OSCWasResigned:(id)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (BOOL)selected;
 - (void)setSelected:(BOOL)arg1 channel:(id)arg2 effect:(id)arg3;
@@ -41,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) FFEffect *parentEffect;
 - (void)setDisplayName:(id)arg1;
 - (id)displayName;
+- (id)keyframeableChannels;
 - (CDStruct_bdcb2b0d)md5;
 - (id)channelFolder;
 - (void)encodeWithCoder:(id)arg1;
@@ -52,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)addXMLAttributes:(id)arg1 toElement:(id)arg2 version:(unsigned int)arg3;
 - (void)populateAttributes:(id)arg1 fromElement:(id)arg2;
 - (void)populateContent:(id)arg1 fromElement:(id)arg2 toEffect:(id)arg3 toObject:(id)arg4;
-- (struct HGNode *)newNodeAtTime:(CDStruct_1b6d18a9)arg1 pixelTransform:(id)arg2 pixelSpaceBounds:(struct CGRect)arg3;
+- (struct HGNode *)newNodeAtTime:(CDStruct_1b6d18a9)arg1 pixelTransform:(id)arg2 pixelSpaceBounds:(struct CGRect)arg3 workingSpace:(int)arg4;
 - (struct HGNode *)newNodeWithInputNode:(struct HGNode *)arg1 preMaskNode:(struct HGNode *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (struct HGNode *)newNodeAtTime:(CDStruct_1b6d18a9)arg1 pixelTransform:(id)arg2;
 - (BOOL)needsPreMaskInput;

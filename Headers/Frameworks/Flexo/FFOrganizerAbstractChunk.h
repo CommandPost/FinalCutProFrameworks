@@ -39,7 +39,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL showLabel; // @synthesize showLabel=_showLabel;
 @property(readonly, nonatomic) int clipLabelSize; // @synthesize clipLabelSize=_clipLabelSize;
 @property(readonly, nonatomic) FigTimeRangeAndObject *rangeOfMedia; // @synthesize rangeOfMedia=_rangeOfMedia;
-@property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
 - (id)cachedChunkObjectForTimeRange:(CDStruct_e83c9415)arg1 andObject:(id)arg2;
 - (struct CGRect)editFrame;
 - (id)editLayer;
@@ -83,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (id)bezelLayer;
 @property(readonly, nonatomic) NSString *displayName;
 @property(readonly, nonatomic) FFFilmstrip *filmstrip;
+@property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 - (id)initWithRangeOfMedia:(id)arg1 chunkFrame:(struct CGRect)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 numberOfThumbs:(double)arg5 showLabel:(BOOL)arg6 clipLabelSize:(int)arg7 maxThumbWidth:(double)arg8 contentsScale:(double)arg9 squareThumbs:(BOOL)arg10;
 - (void)dealloc;
 

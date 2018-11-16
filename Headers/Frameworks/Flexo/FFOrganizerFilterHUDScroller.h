@@ -11,7 +11,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)setThemeVariant:(long long)arg1;
-
 @end
 

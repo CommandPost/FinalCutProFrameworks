@@ -6,21 +6,48 @@
 
 #import "NSViewController.h"
 
-@class NSMatrix, NSPopUpButton;
+#import "NSOpenSavePanelDelegate.h"
 
-@interface FFXMLExportDialogController : NSViewController
+@class FFXMLExportOptions, NSButton, NSImageView, NSMatrix, NSPopUpButton, NSString, NSTextField, NSView;
+
+@interface FFXMLExportDialogController : NSViewController <NSOpenSavePanelDelegate>
 {
-    id mSourceProjectLine;
-    id mSourceProjectIconView;
+    NSTextField *mSourceProjectLine;
+    NSImageView *mSourceProjectIconView;
     NSPopUpButton *mExportViewPoup;
     NSMatrix *mXMLVersionRadioButtons;
+    BOOL mUseAlternateOptionsView;
+    NSView *mAlternateOptionsView;
+    NSPopUpButton *mAlternateMetadataViewPoup;
+    NSMatrix *mAlternateXMLVersionRadioButtons;
+    NSMatrix *mClipOrganizationRadioButtons;
+    NSButton *mUseAssetClipCheckBox;
+    NSButton *mExcludeModDateCheckBox;
+    FFXMLExportOptions *mOptions;
 }
 
+- (void)dealloc;
+- (BOOL)panel:(id)arg1 validateURL:(id)arg2 error:(id *)arg3;
+- (void)enableOptions:(BOOL)arg1;
+- (void)optionChanged:(id)arg1;
+@property(copy, nonatomic) FFXMLExportOptions *exportOptions;
+- (void)enableExcludeModDateOption:(BOOL)arg1;
+@property(nonatomic) BOOL excludeModDateOption;
+- (void)enableUseAssetClipOption:(BOOL)arg1;
+@property(nonatomic) BOOL useAssetClipOption;
+- (void)enableClipOrganizationOption:(BOOL)arg1;
+@property(nonatomic) unsigned long long clipOrganizationOption;
 - (void)setMetadataViewSet:(id)arg1;
 - (id)metadataViewSet;
 - (void)setXMLVersion:(id)arg1;
 - (id)XMLVersion;
 - (id)initWithDisplayName:(id)arg1 displayIcon:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

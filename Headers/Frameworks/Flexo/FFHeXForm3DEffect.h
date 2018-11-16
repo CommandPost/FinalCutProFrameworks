@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     CHChannelRotation3D *_chRotation;
     CHChannelScale3D *_chScale;
     CHChannelPosition3D *_chAnchor;
-    struct list<FFMotionPathCurveNode *, std::allocator<FFMotionPathCurveNode *>> *_curveNodeList;
+    struct list<FFMotionPathCurveNode *, std::__1::allocator<FFMotionPathCurveNode *>> *_curveNodeList;
     int _cachedMatrixState;
     double _cachedMatrix[16];
 }

@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     CDStruct_69458254 _action_opt;
 }
 
-- (id).cxx_construct;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
 - (struct CGRect)_boundsAppliedByContentsScale;

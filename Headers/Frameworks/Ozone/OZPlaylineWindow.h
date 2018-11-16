@@ -4,9 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "LKWindow.h"
+#import "NSWindow.h"
 
-@interface OZPlaylineWindow : LKWindow
+@interface OZPlaylineWindow : NSWindow
 {
 }
 

@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
 - (void)_channelsChanged;
 - (struct NSObject *)skimmableObject;
 - (id)backingAnchoredObject;
+- (void)setRole:(id)arg1;
+- (id)role;
 - (void)setPlayEnable:(int)arg1;
 - (int)playEnable;
 - (void)setSourceName:(id)arg1;

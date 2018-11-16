@@ -6,11 +6,10 @@
 
 #import "LKTileView.h"
 
-@class NSImage, NSProThemeFacet;
+@class NSImage;
 
 @interface PETaskGroupTileView : LKTileView
 {
-    NSProThemeFacet *_dividerFacet;
     NSImage *_dividerImage;
 }
 
@@ -18,7 +17,6 @@
 - (void)drawDividerForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
 - (void)drawBackgroundForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
 @property(readonly, nonatomic) NSImage *dividerImage; // @synthesize dividerImage=_dividerImage;
-@property(readonly, nonatomic) NSProThemeFacet *dividerFacet; // @synthesize dividerFacet=_dividerFacet;
 - (void)dealloc;
 
 @end

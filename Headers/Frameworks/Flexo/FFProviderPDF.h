@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
 - (id)nativeVideoProps;
 - (void)_setupSources;
 - (unsigned long long)pageCount;
+- (void)_unlockPDFDoc;
+- (void)_lockPDFDoc;
 - (id)pdfDocument;
 - (void)dealloc;
 - (id)initWithAssetFileID:(id)arg1;

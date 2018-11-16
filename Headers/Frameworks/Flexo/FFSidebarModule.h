@@ -9,13 +9,17 @@
 #import "FFOutlineViewDataSource.h"
 #import "FFOutlineViewDelegate.h"
 
-@class FFOrganizerMasterItemNode, FFOutlineView, NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSObject<FFOrganizerItem><FFOrganizerMasterItem>, NSString;
+@class FFOrganizerMasterItemNode, FFOutlineView, LKTableView, NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSObject<FFOrganizerItem><FFOrganizerMasterItem>, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFSidebarModule : LKViewModule <FFOutlineViewDataSource, FFOutlineViewDelegate>
 {
     FFOrganizerMasterItemNode *_rootNode;
+    NSArray *_tableViewData;
     FFOutlineView *_outlineView;
+    LKTableView *_tableView;
+    BOOL _tableViewCanSelectRow;
+    long long _disableTableViewRowSelectionNotifications;
     NSMutableArray *_selection;
     NSArray *_visibleNodes;
     LKViewModule *_itemsModule;
@@ -29,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMapTable *indexPathsByIdentifier; // @synthesize indexPathsByIdentifier=_indexPathsByIdentifier;
 @property(retain, nonatomic) NSIndexPath *editingIndexPath; // @synthesize editingIndexPath=_editingIndexPath;
 @property(retain, nonatomic) FFOrganizerMasterItemNode *rootNode; // @synthesize rootNode=_rootNode;
+@property(readonly, nonatomic) LKTableView *tableView; // @synthesize tableView=_tableView;
 @property(readonly, nonatomic) FFOutlineView *outlineView; // @synthesize outlineView=_outlineView;
 - (void)deselectAll:(id)arg1;
 - (void)paste:(id)arg1;
@@ -65,6 +70,16 @@ __attribute__((visibility("hidden")))
 - (BOOL)outlineView:(id)arg1 isRowInitiallyExpandedAtIndexPath:(id)arg2;
 - (BOOL)outlineView:(id)arg1 isRowExpandableAtIndexPath:(id)arg2;
 - (long long)outlineView:(id)arg1 numberOfRowsAtIndexPath:(id)arg2;
+- (BOOL)tableView:(id)arg1 isGroupRow:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldSelectRow:(long long)arg2;
+- (void)tableViewSelectionDidChange:(id)arg1;
+- (void)setCollectionTitle:(id)arg1;
+- (BOOL)selectionShouldChangeInTableView:(id)arg1;
+- (void)enableTableViewRowChangedNotifications;
+- (void)disableTableViewRowChangedNotifications;
+- (id)tableView:(id)arg1 viewForTableColumn:(id)arg2 row:(long long)arg3;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
+- (long long)numberOfRowsInTableView:(id)arg1;
 - (struct NSObject *)modelObjectAtIndexPath:(id)arg1;
 - (id)nodesAtIndexPaths:(id)arg1;
 - (id)nodeAtIndexPath:(id)arg1;

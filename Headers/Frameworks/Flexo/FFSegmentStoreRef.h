@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-@class FFRenderProps, NSArray;
+@class FFOnDiskRenderInfo, NSArray;
 
 @interface FFSegmentStoreRef : NSObject
 {
     NSArray *_paths;
-    FFRenderProps *_renderProps;
+    FFOnDiskRenderInfo *_renderInfo;
 }
 
 - (unsigned long long)hash;
@@ -22,15 +22,14 @@
 - (void)hintDoneEnqueuingWritesForMD5:(CDStruct_bdcb2b0d)arg1;
 - (BOOL)writeBuffer:(id)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 sampleNumber:(long long)arg3 cost:(double)arg4 mustWrite:(BOOL)arg5 error:(id *)arg6;
 - (BOOL)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 segmentMD5:(CDStruct_bdcb2b0d)arg4 sampleNumber:(long long)arg5 cost:(double)arg6 mustWrite:(BOOL)arg7 error:(id *)arg8;
-- (id)newBufferAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 error:(id *)arg3;
-- (id)newImageAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 decodeQuality:(int)arg3 error:(id *)arg4;
-- (id)newCachedBufferTokenForTime:(CDStruct_1b6d18a9)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 sampleNumber:(long long)arg3 error:(id *)arg4;
-- (id)newCachedFrameTokenForTime:(CDStruct_1b6d18a9)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 sampleNumber:(long long)arg3 decodeQuality:(int)arg4 error:(id *)arg5;
+- (id)newBufferAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 priority:(int)arg3 error:(id *)arg4;
+- (id)newImageAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 decodeQuality:(int)arg3 priority:(int)arg4 error:(id *)arg5;
+- (id)newCachedBufferTokenForTime:(CDStruct_1b6d18a9)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 sampleNumber:(long long)arg3 priority:(int)arg4 error:(id *)arg5;
+- (id)newCachedFrameTokenForTime:(CDStruct_1b6d18a9)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 sampleNumber:(long long)arg3 decodeQuality:(int)arg4 priority:(int)arg5 error:(id *)arg6;
 - (BOOL)frameExistsAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2;
-- (BOOL)segmentStoreExistsWithSegmentMD5:(CDStruct_bdcb2b0d)arg1;
 - (id)description;
 - (void)dealloc;
-- (id)initWithPaths:(id)arg1 renderProps:(id)arg2;
+- (id)initWithPaths:(id)arg1 onDiskProps:(id)arg2;
 
 @end
 

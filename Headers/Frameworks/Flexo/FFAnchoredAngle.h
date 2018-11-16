@@ -8,7 +8,7 @@
 
 #import "FFAudioComponentsLayoutMapDelegate.h"
 
-@class FFAudioAngleComponentsLayoutMap, FFEffectStack, FFObjectDict, NSMutableSet, NSSet, NSString;
+@class FFAudioAngleComponentsLayoutMap, FFEffectStack, FFObjectDict, NSSet, NSString;
 
 @interface FFAnchoredAngle : FFAnchoredMediaRef <FFAudioComponentsLayoutMapDelegate>
 {
@@ -17,7 +17,6 @@
     FFEffectStack *_audioEffects;
     FFEffectStack *_videoEffects;
     FFObjectDict *_videoEffectsDict;
-    NSMutableSet *_cachedRoles;
     FFAudioAngleComponentsLayoutMap *_audioComponentsLayoutMap;
 }
 
@@ -29,62 +28,57 @@
 @property(retain, nonatomic) NSString *videoAngle; // @synthesize videoAngle=_videoAngle;
 @property(retain, nonatomic) NSSet *audioAngles; // @synthesize audioAngles=_audioAngles;
 @property(retain, nonatomic) FFObjectDict *videoEffectsDict; // @synthesize videoEffectsDict=_videoEffectsDict;
+@property(readonly, retain, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
 - (id)createUsedRangesMediaIdentifier;
 - (void)updateHasObjectReferenceEffects;
-- (void)_didUpdateLocalAudioComponents;
-- (void)_willUpdateLocalAudioComponents;
 - (id)angleObjectForAngleID:(id)arg1;
-- (id)referenceAudioComponentsLayoutMap;
-- (id)anchoredObjectsForAudioComponentsLayoutKey:(id)arg1;
 - (id)activeAudioComponentsLayoutKeys;
-- (id)audioComponentsLayoutMap;
-- (void)demandAudioComponentSources:(int)arg1;
-@property(readonly, nonatomic) FFAudioAngleComponentsLayoutMap *persistentAudioComponentsLayoutMap;
-- (id)supportedLogProcessingModes;
-- (BOOL)supportsLogProcessing;
+- (void)setAudioComponentsLayoutMap:(id)arg1;
+- (BOOL)canSetAudioComponentsLayoutMap;
+- (id)_mediaRefAudioComponentsLayoutMap;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
 - (BOOL)supportsRoles;
-- (void)resetRoles;
-- (void)addRole:(id)arg1;
+- (void)informEndRoleChanges:(id)arg1;
 - (id)rolesWithPlayEnable:(int)arg1;
-- (void)_clearCachedRoles;
 - (id)mdTargetForKey:(id)arg1;
 - (id)onScreenControls;
 - (id)audioAngleName;
 - (id)videoAngleName;
 - (id)videoAngleObject;
 - (int)displayedMultiAngleOffset;
+- (void)addObjectVideoEffectsToArrayWithOptions:(unsigned int)arg1 array:(id)arg2;
 - (void)_fileURLs:(id)arg1 repChoice:(int)arg2 includeAnchored:(BOOL)arg3 activeOnly:(BOOL)arg4;
 - (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)_assetRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)_assets:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3;
+- (void)setOverrideAV:(int)arg1;
 - (CDStruct_e83c9415)angleThroughEditMaxClippedRangeInContainerSpace:(BOOL)arg1 checkPlayEnables:(BOOL)arg2 checkRoles:(BOOL)arg3;
 - (int)multiAngleDetail;
 - (void)_isThrougheditOnLeft:(BOOL)arg1 angleMatchVideo:(char *)arg2 angleMatchAudio:(char *)arg3 throughEditVideo:(char *)arg4 throughEditAudio:(char *)arg5 sameMultiangle:(char *)arg6;
+- (void)_enumerateDescendentAnchoredObjectsWithOptions:(unsigned int)arg1 includeAnchored:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 descend:(char *)arg4 stop:(char *)arg5;
 - (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
 - (void)_collectDescendentCompositedObject:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 intoArray:(id)arg3 useAudioRange:(BOOL)arg4 container:(id)arg5;
 - (id)inspectableChannelsForIdentifier:(id)arg1;
 - (id)videoInfoInspectorText;
 - (id)audioInfoInspectorText;
 - (int)anchoredObjectUIType;
-- (id)newProvider;
-- (id)newProviderWithEffectCount:(long long)arg1;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
-- (id)newProviderWithEffectCount:(long long)arg1 audioAngles:(id)arg2 videoAngle:(id)arg3 toLane:(long long)arg4 showOnlyObjects:(id)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8;
+- (id)_newProviderWithOptions:(id)arg1;
+- (id)_newProviderWithOptions:(id)arg1 audioAngles:(id)arg2 videoAngle:(id)arg3;
 - (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (id)newReferencedSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (id)multiAngleObject;
 - (void)_mediaChanged:(id)arg1;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (BOOL)isAngle;
-- (long long)nativeAudioChannelCount:(int)arg1;
-@property(readonly, retain, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
+- (id)localAudioEffects;
 @property(readonly, retain, nonatomic) FFEffectStack *videoEffects; // @synthesize videoEffects=_videoEffects;
+- (void)setAudioAnglesFromLayoutMapChange:(id)arg1;
+- (void)setAudioAngles:(id)arg1 updateAudioComponentsLayoutMap:(BOOL)arg2;
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (id)availableMultiAngleIDs;
 - (id)availableMultiAngleObjects;
+- (BOOL)isProject;
 - (BOOL)isMultiAngle;
 - (id)referencedSequence;
 - (id)clipRef;

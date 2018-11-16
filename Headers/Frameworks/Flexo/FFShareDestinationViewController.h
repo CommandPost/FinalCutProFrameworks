@@ -7,28 +7,25 @@
 #import "NSViewController.h"
 
 #import "NSTableViewDataSource.h"
-#import "NSTableViewDelegate.h"
 
-@class FFShareRolloverTableView, NSArray, NSProTextField, NSString;
+@class FFShareRolloverTableView, LKTextField, NSArray, NSString;
 
-@interface FFShareDestinationViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
+@interface FFShareDestinationViewController : NSViewController <NSTableViewDataSource>
 {
     FFShareRolloverTableView *_destinationsView;
-    NSProTextField *_shareTitle;
+    LKTextField *_shareTitle;
     NSArray *_destinations;
     id <FFSharePopoverDelegate> _sharePopoverDelegate;
 }
 
 @property id <FFSharePopoverDelegate> sharePopoverDelegate; // @synthesize sharePopoverDelegate=_sharePopoverDelegate;
 @property(retain) NSArray *destinations; // @synthesize destinations=_destinations;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 row:(long long)arg4;
 - (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
 - (long long)numberOfRowsInTableView:(id)arg1;
 - (void)share:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)close:(id)arg1;
 - (void)dealloc;
-- (void)awakeFromNib;
 - (struct CGRect)fullViewSize;
 - (id)initWithSharePopoverDelegate:(id)arg1;
 

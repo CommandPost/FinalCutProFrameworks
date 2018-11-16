@@ -4,58 +4,80 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <TLKit/ERLRelationalObject.h>
 
 #import "NSCopying.h"
 
-@class NSArray, NSString, TLKContainerInfo, TLKItemLaneInfo;
+@class ERLCalculatedAttribute, NSArray, NSMutableArray, NSString, TLKAnchorLayer, TLKContainerInfo, TLKItemComponentFragment, TLKItemComponentInfo, TLKItemComponentWebbingLayer;
 
-@interface TLKItemLayoutInfo : NSObject <NSCopying>
+@interface TLKItemLayoutInfo : ERLRelationalObject <NSCopying>
 {
-    TLKContainerInfo *_containerInfo;
-    id _representedObject;
-    NSArray *_itemComponentRecords;
-    int _itemType;
-    int _itemVisibility;
+    NSMutableArray *_itemComponentRecords;
     struct {
-        unsigned int isAboveSpine:1;
-        unsigned int isAnchoredItem:1;
         unsigned int isContainerItem:1;
         unsigned int isDraggedItem:1;
         unsigned int markLayersForRemoval:1;
         unsigned int nestingLevel:2;
-        unsigned int RESERVED:24;
+        unsigned int RESERVED:27;
     } _layoutFlags;
-    TLKItemLaneInfo *_itemLaneInfo;
+    TLKItemComponentInfo *_primaryItemComponent;
+    NSArray *_secondaryItemComponentRecords;
+    BOOL _anchorFollowsItemLayer;
+    int _containmentTypeMask;
+    int _itemType;
+    int _itemVisibility;
+    id _representedObject;
+    TLKItemLayoutInfo *_anchoredToItem;
+    double _anchorLocation;
+    TLKAnchorLayer *_anchorLayer;
+    TLKItemComponentWebbingLayer *_componentWebbingLayer;
+    TLKContainerInfo *_enclosingContainerInfo;
+    ERLCalculatedAttribute *_anchorLocationAttribute;
+    CDStruct_1b6d18a9 _relativeAnchorTime;
 }
 
-@property(nonatomic) TLKItemLaneInfo *itemLaneInfo; // @synthesize itemLaneInfo=_itemLaneInfo;
-@property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
++ (id)keyPathsForValuesAffectingSecondaryItemComponentRecords;
++ (id)keyPathsForValuesAffectingPrimaryItemComponentRecord;
+@property(nonatomic) ERLCalculatedAttribute *anchorLocationAttribute; // @synthesize anchorLocationAttribute=_anchorLocationAttribute;
+@property(retain, nonatomic) TLKContainerInfo *enclosingContainerInfo; // @synthesize enclosingContainerInfo=_enclosingContainerInfo;
+@property(retain, nonatomic) TLKItemComponentWebbingLayer *componentWebbingLayer; // @synthesize componentWebbingLayer=_componentWebbingLayer;
+@property(retain, nonatomic) TLKAnchorLayer *anchorLayer; // @synthesize anchorLayer=_anchorLayer;
+@property(nonatomic) BOOL anchorFollowsItemLayer; // @synthesize anchorFollowsItemLayer=_anchorFollowsItemLayer;
+@property(nonatomic) double anchorLocation; // @synthesize anchorLocation=_anchorLocation;
+@property(nonatomic) CDStruct_1b6d18a9 relativeAnchorTime; // @synthesize relativeAnchorTime=_relativeAnchorTime;
+@property(retain, nonatomic) TLKItemLayoutInfo *anchoredToItem; // @synthesize anchoredToItem=_anchoredToItem;
+@property(nonatomic) int itemVisibility; // @synthesize itemVisibility=_itemVisibility;
 @property(nonatomic) int itemType; // @synthesize itemType=_itemType;
+@property(readonly, nonatomic) int containmentTypeMask; // @synthesize containmentTypeMask=_containmentTypeMask;
+@property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
+- (void)willRemoveObjectsFromItemComponentRecords:(id)arg1;
+- (void)willInsertObjectsInItemComponentRecords:(id)arg1;
+@property(readonly, nonatomic) TLKItemComponentFragment *anchorToItemComponentFragment;
+@property(readonly, nonatomic) TLKItemComponentFragment *anchorFromItemComponentFragment;
+@property(readonly, nonatomic) BOOL isAnchoredItem;
 - (id)allLayers;
 - (id)itemLayers;
 - (struct _TLKRange)locationRange;
+@property(readonly, nonatomic) struct _TLKRange timeRangeInSeconds;
+@property(readonly, nonatomic) TLKContainerInfo *containerInfo;
 - (id)itemComponentFragmentsGroupedByLayoutContext;
+- (void)unionItemComponentFragmentsForLayoutContext:(id)arg1 itemRange:(struct _TLKRange *)arg2;
 - (id)itemComponentFragmentsForLayoutContext:(id)arg1;
 - (id)itemComponentFragments;
 - (void)enumerateItemComponentFragmentsWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateItemComponentInfoRecordsWithBlock:(CDUnknownBlockType)arg1;
-- (id)secondaryItemComponents;
-- (id)secondaryItemComponentRecords;
-- (id)primaryItemComponent;
+@property(copy, nonatomic) NSArray *secondaryItemComponentRecords;
+@property(readonly, nonatomic) unsigned long long countOfSecondaryItemComponentRecords;
 - (id)primaryItemComponentRecord;
-- (id)itemComponents;
-@property(nonatomic) int itemVisibility;
 @property(nonatomic) BOOL isDraggedItem;
+@property(readonly, nonatomic) id container;
 @property(nonatomic) BOOL isContainerItem;
-@property(nonatomic) BOOL isAnchoredItem;
 @property(nonatomic) BOOL isAboveSpine;
 @property(readonly, nonatomic) NSString *itemTypeName;
 @property(copy, nonatomic) NSArray *itemComponentRecords;
-@property(nonatomic) TLKContainerInfo *containerInfo;
-@property(readonly, nonatomic) id container;
 @property(nonatomic) BOOL markLayersForRemoval;
 @property unsigned long long nestingLevel;
+- (void)_updateContainmentMask;
 - (id)_subtreeDescription;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;

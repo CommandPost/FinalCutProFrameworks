@@ -6,18 +6,27 @@
 
 #import "NSObject.h"
 
-@class NSObject<FxPlugPrincipalDelegate>;
+#import "PROAPIObject.h"
 
-@interface FxPrincipalAPIHandler : NSObject
+@class NSObject<FxPlugPrincipalDelegate>, NSString;
+
+@interface FxPrincipalAPIHandler : NSObject <PROAPIObject>
 {
     NSObject<FxPlugPrincipalDelegate> *_delegate;
 }
 
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 - (id)servicePrincipal;
 - (id)delegate;
 - (void)setDelegate:(id)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

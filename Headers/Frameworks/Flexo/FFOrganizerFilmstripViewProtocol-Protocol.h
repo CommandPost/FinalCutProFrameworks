@@ -18,8 +18,8 @@
 - (double)audioHeight;
 - (void)synchronousReloadData;
 - (void)setNeedsData:(BOOL)arg1;
-- (void)removeObserversAndNotifications:(NSObject *)arg1;
-- (void)attachObserversAndNotifications:(NSObject *)arg1;
+- (BOOL)removeObserversAndNotifications:(NSObject *)arg1;
+- (BOOL)attachObserversAndNotifications:(NSObject *)arg1;
 - (id)valueForKey:(NSString *)arg1;
 - (void)didRemoveKeywordsWithRanges:(NSArray *)arg1 onSequence:(FFAnchoredSequence *)arg2 animationRange:(CDStruct_e83c9415)arg3;
 - (void)willRemoveKeywordsWithRanges:(NSArray *)arg1 onSequence:(FFAnchoredSequence *)arg2 animationRange:(CDStruct_e83c9415)arg3;

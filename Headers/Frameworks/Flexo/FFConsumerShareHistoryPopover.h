@@ -6,22 +6,28 @@
 
 #import "NSObject.h"
 
-@class FFConsumerShareHistoryViewController, LKPopOverWindow, NSArray;
+#import "NSPopoverDelegate.h"
+
+@class FFConsumerShareHistoryViewController, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFConsumerShareHistoryPopover : NSObject
+@interface FFConsumerShareHistoryPopover : NSObject <NSPopoverDelegate>
 {
     NSArray *_sharedItems;
     FFConsumerShareHistoryViewController *_historyViewController;
-    LKPopOverWindow *_sharePopoverWindow;
 }
 
 + (id)sharedHistoryPopover;
 @property(retain, nonatomic) NSArray *sharedItems; // @synthesize sharedItems=_sharedItems;
-- (id)shareHistoryPopoverWindowForSequence:(id)arg1 withTragetRect:(struct CGRect)arg2 inParentWindow:(id)arg3 displayRect:(struct CGRect)arg4 animationStyle:(int)arg5;
-- (void)sharePopoverDidResignKey:(id)arg1;
+- (id)shareHistoryPopoverForSequence:(id)arg1;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

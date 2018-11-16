@@ -18,10 +18,6 @@ __attribute__((visibility("hidden")))
     NSSet *audioIndices;
 }
 
-+ (id)emptyAngleFacet;
-+ (id)videoAngleFacet;
-+ (id)audioAngleFacet;
-+ (id)avAngleFacet;
 @property(retain, nonatomic) NSSet *audioIndices; // @synthesize audioIndices;
 @property(nonatomic) long long videoIndex; // @synthesize videoIndex;
 @property(nonatomic) long long angleCount; // @synthesize angleCount;

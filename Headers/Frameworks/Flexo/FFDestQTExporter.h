@@ -6,12 +6,12 @@
 
 #import <Flexo/FFDestRenderer.h>
 
-@class FFQTMovieWriter, NSArray, NSError, NSMutableArray, NSString;
+@class FFMovieWriter, NSArray, NSError, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFDestQTExporter : FFDestRenderer
 {
-    FFQTMovieWriter *_movieWriter;
+    FFMovieWriter *_movieWriter;
     BOOL _didCreateTracks;
     struct OpaqueCMMemoryPool *_memoryPoolRef;
     struct OpaqueVTCompressionSession *_compressionSession;
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     BOOL _ignoreAlphaChannel;
     BOOL _requestStraightAlpha;
     CDStruct_1b6d18a9 _firstFrameTimeOffset;
+    int _framesQueuedToEncoderButNotYetReturned;
     BOOL _trialRunPass;
     BOOL _smartMPEG2Export;
     int _bitRate;
@@ -47,7 +48,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL requestStraightAlpha; // @synthesize requestStraightAlpha=_requestStraightAlpha;
 @property(nonatomic) BOOL ignoreAlphaChannel; // @synthesize ignoreAlphaChannel=_ignoreAlphaChannel;
 @property(nonatomic) BOOL downscaleToQuarterRes; // @synthesize downscaleToQuarterRes=_downscaleToQuarterRes;
-- (_Bool)usesOSThrottlingForAllDiskIO;
+- (int)destRecommendedFFSVPriority;
 - (void)pushFrame:(id)arg1;
 - (BOOL)_isProRes4444AlphaModeCompatible:(struct opaqueCMSampleBuffer *)arg1;
 - (int)_encodeFrame:(id)arg1 withPassThroughBuffer:(struct opaqueCMSampleBuffer *)arg2;
@@ -55,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_setPixelBufferAttachments:(struct __CVBuffer *)arg1;
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
 - (void)stop;
+- (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
 - (id)supportedPixelFormats;
 - (void)dealloc;
 - (void)setTrialRunPass:(BOOL)arg1;

@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)newFrameData:(const struct _CleanSegmentStoreFrameInfo *)arg1 sampleObj:(id)arg2;
 - (struct _CleanSegmentStoreFrameInfo)lookupOffsetInfoFor:(long long)arg1;
 - (void)ensureFlushedToDisk;
-- (void)_flushFramesNeedingWrite;
 - (int)fileDescriptor;
 - (id)initWithPath:(id)arg1 count:(unsigned long long)arg2 startFrame:(long long)arg3 createIfMissing:(BOOL)arg4;
 

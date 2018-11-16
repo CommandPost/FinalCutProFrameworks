@@ -6,11 +6,13 @@
 
 #import "NSObject.h"
 
-#import "FxLayerInfoAPI.h"
 #import "FxTemporalImageAPI.h"
 #import "FxTemporalImageAPI_v2.h"
+#import "PROAPIObject.h"
 
-@interface OZFxPlugTemporalImageHandler : NSObject <FxTemporalImageAPI, FxTemporalImageAPI_v2, FxLayerInfoAPI>
+@class NSString;
+
+@interface OZFxPlugTemporalImageHandler : NSObject <PROAPIObject, FxTemporalImageAPI, FxTemporalImageAPI_v2>
 {
     struct OZImageNode *_imageNode;
     struct GLRenderer *_renderer;
@@ -20,13 +22,13 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 - (void)setIsRendering:(BOOL)arg1;
 - (BOOL)isRendering;
 - (struct OZFxPlugRenderContextManager *)contextManager;
 - (struct OZRenderState)getTempContextRenderState;
 - (int)getFootageFieldOrder:(struct OZRenderParams *)arg1;
 - (void)clearImageList;
-- (BOOL)getLayerGlobalOffsetX:(double *)arg1 OffsetY:(double *)arg2 atTime:(double)arg3;
 - (BOOL)getHeliumImage:(id *)arg1 source:(BOOL)arg2 withInfo:(CDStruct_6b9ed609)arg3 atTime:(CDUnion_2516e51e)arg4;
 - (BOOL)getSourceTexture:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atFxTime:(CDUnion_2516e51e)arg3;
 - (BOOL)getSourceTexture:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atTime:(double)arg3;
@@ -46,6 +48,12 @@
 - (void)setLithiumInput:(PCPtr_04d56345)arg1 withAgent:(struct LiAgent *)arg2 withRenderParams:(struct OZRenderParams *)arg3;
 - (void)setImageNode:(struct OZImageNode *)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

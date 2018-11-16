@@ -4,13 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKThemeBackedLayer.h>
+#import <TLKit/TLKImageLayer.h>
 
 #import "TLKPartInfo.h"
 
-@class NSString;
+@class NSString, TLKTimelineView;
 
-@interface TLKButtonLayer : TLKThemeBackedLayer <TLKPartInfo>
+@interface TLKButtonLayer : TLKImageLayer <TLKPartInfo>
 {
     CDUnknownBlockType _pressedHandler;
     long long _tag;
@@ -47,6 +47,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property __weak TLKTimelineView *delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

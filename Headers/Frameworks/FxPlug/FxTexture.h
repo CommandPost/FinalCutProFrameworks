@@ -16,7 +16,6 @@
 - (BOOL)_verifyImage;
 - (void)draw;
 - (void)getTextureCoords:(double *)arg1 right:(double *)arg2 bottom:(double *)arg3 top:(double *)arg4;
-- (void)setTextureCoords:(double)arg1 right:(double)arg2 bottom:(double)arg3 top:(double)arg4;
 - (void)setAsActiveTexture;
 - (void)disable;
 - (void)enable;
@@ -32,9 +31,6 @@
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithInfo:(CDStruct_4a07eeda)arg1 textureId:(unsigned int)arg2 andTarget:(unsigned int)arg3;
-- (id)initWithInfo:(CDStruct_4a07eeda)arg1 textureId:(unsigned int)arg2;
-- (id)initWithInfo:(CDStruct_4a07eeda)arg1 andData:(void *)arg2;
-- (id)initWithInfo:(CDStruct_4a07eeda)arg1;
 - (id)init;
 
 @end

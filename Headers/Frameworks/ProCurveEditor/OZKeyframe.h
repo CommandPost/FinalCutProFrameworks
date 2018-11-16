@@ -18,7 +18,6 @@
     double _outTanV;
 }
 
-- (id).cxx_construct;
 - (double)outTanV;
 - (void)setOutTanV:(double)arg1;
 - (CDStruct_1b6d18a9)outTanU;

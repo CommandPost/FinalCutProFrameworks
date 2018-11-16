@@ -6,7 +6,7 @@
 
 #import <Flexo/FFInspectorModule.h>
 
-@class FFInspectorModuleOZViewCtlrDelegate, LKButton, NSImageView, NSMapTable, NSProThemeImageView, NSSet, NSString, NSTextField, NSView, OZViewCtlrRoot;
+@class FFInspectorModuleOZViewCtlrDelegate, NSBox, NSMapTable, NSSet, NSString, NSView, OZViewCtlrRoot;
 
 @interface FFInspectorModuleChannels : FFInspectorModule
 {
@@ -14,13 +14,7 @@
     FFInspectorModuleOZViewCtlrDelegate *_ozViewCtlrDelegate;
     NSString *_channelIdentifier;
     NSView *_accessoryView;
-    NSProThemeImageView *_headerView;
-    NSImageView *_itemIcon;
-    NSTextField *_inspectorTitle;
-    NSTextField *_durationField;
-    NSView *_channelView;
-    NSView *_footerView;
-    LKButton *_effectsPresetButton;
+    NSBox *_channelView;
     NSMapTable *_channelToItemMap;
     NSSet *_currentItemsSet;
     BOOL _needToRebuildInspector;
@@ -28,18 +22,23 @@
     BOOL _currentItemsReadLockHeld;
     BOOL _observingUserDefaults;
     long long _suspendEffectsChangedObserving;
+    NSView *_customContainerView;
+    NSSet *_observedItems;
 }
 
++ (id)selectedAnchoredObjectsUsingController:(id)arg1;
+@property(retain, nonatomic) NSView *customContainerView; // @synthesize customContainerView=_customContainerView;
 - (BOOL)_timeInRangeOfCurrentItems:(CDStruct_1b6d18a9)arg1 container:(id)arg2;
 - (id)selectedItemForChannel:(id)arg1;
 - (id)_selectedItemForChannel:(id)arg1;
 - (void)_setupChannelInspector;
 - (Class)_inspectorDelegateClass;
 - (void)_rebuildInspectorWithChannelFolders:(id)arg1 currentItems:(id)arg2 buildContext:(id)arg3 shouldReadLock:(BOOL)arg4;
-- (BOOL)_allItemsHaveChannelID:(unsigned int)arg1;
 - (void)_removeObservingForCurrentItems;
 - (void)_addObservingForCurrentItems;
-- (void)_updateLabel:(BOOL)arg1;
+- (BOOL)shouldEncloseInScrollView;
+- (BOOL)shouldInspectChannelID:(unsigned int)arg1;
+- (BOOL)canInspectTabIdentifier:(id)arg1 forItem:(id)arg2;
 - (void)toggleColorCorrectionOff:(id)arg1;
 - (void)delete:(id)arg1;
 - (void)shiftDelete:(id)arg1;
@@ -53,35 +52,39 @@
 - (BOOL)shouldDragChannel:(id)arg1;
 - (BOOL)_isVideoChannel:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_updateChannelFooterForCurrentItems;
+- (void)notifyUpdateChannelFooterForCurrentItems;
+- (void)_rebuildChannelInspector;
+- (void)notifyRebuildChannelInspector;
 - (void)timeRateChangedForContext:(id)arg1;
-- (void)_effectSelectionStateChangedFromOSC:(id)arg1;
-- (void)_effectEnabledStateChanged:(id)arg1;
-- (void)_effectSelectionStateChanged:(id)arg1;
-- (void)_rangeInvalidation:(id)arg1;
+- (void)notifyUpdateChannels;
+- (void)notifyRangeInvalidation:(id)arg1;
 - (void)_mediaInvalidated:(id)arg1;
 - (void)_updateMedia;
 - (void)_updateChannels;
 - (void)resumeEffectsChangedObserving;
 - (void)suspendEffectsChangedObserving;
-- (void)_filtersChanged:(id)arg1;
+- (void)notifyFiltersChanged:(id)arg1;
 - (void)_filtersChangedAllmostFinal;
 - (void)_filtersChangedFinal;
 - (void)_handledDeferredAction:(SEL)arg1;
 - (void)_scheduleDeferredAction:(SEL)arg1;
-- (void)updateChannelHeaderForItems:(id)arg1 updateIcon:(BOOL)arg2;
+- (void)removeObservingForItems:(id)arg1;
+- (void)addObservingForItems:(id)arg1;
+- (void)updateChannelFooterForItems:(id)arg1;
 - (void)setCurrentTime:(CDStruct_1b6d18a9)arg1 forChannel:(id)arg2;
 - (CDStruct_1b6d18a9)griddedTimeForChannel:(id)arg1;
 - (CDStruct_1b6d18a9)currentTimeForChannel:(id)arg1;
 - (void)setContext:(id)arg1;
 - (void)setCurrentItems:(id)arg1;
 - (unsigned long long)labelAlignment;
-- (id)moduleFooterAccessoryView;
 - (id)moduleAccessoryView;
 - (void)moduleDidUnhide;
 - (void)viewDidLoad;
 - (id)lastKeyView;
 - (id)firstKeyView;
 - (void)dealloc;
+- (id)init;
 
 @end
 

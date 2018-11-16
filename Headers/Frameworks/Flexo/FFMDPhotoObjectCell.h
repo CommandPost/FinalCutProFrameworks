@@ -6,7 +6,7 @@
 
 #import <Flexo/FFImageBrowserCell.h>
 
-@class CALayer, CATextLayer, FFResponderLayerPushButton, FFThemeFacetLayer, LKPopOverWindow, LKTextField, TLKAbstractItemSelectionLayer, TLKSimpleItemSelectionLayer;
+@class CALayer, CATextLayer, FFImageLayer, FFResponderLayerPushButton, LKTextField, NSPopover, TLKAbstractItemSelectionLayer, TLKSimpleItemSelectionLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFMDPhotoObjectCell : FFImageBrowserCell
@@ -16,13 +16,13 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _skimmerHighlightDuration;
     CALayer *_movieInfoLayer;
     CATextLayer *_movieDurationLayer;
-    FFThemeFacetLayer *_movieGlyphLayer;
+    FFImageLayer *_movieGlyphLayer;
     BOOL _isMovie;
     CDStruct_e83c9415 _selectedRange;
     CDStruct_e83c9415 _preDragSelectedRange;
     int _currentDragOperationType;
     LKTextField *_playheadInfoTextField;
-    LKPopOverWindow *_playheadInfoWindow;
+    NSPopover *_playheadInfoPopover;
     FFResponderLayerPushButton *_editButtonLayer;
     struct FFProcrastinatedDispatch_t _editButtonDispatchContext;
     BOOL _observingEditTool;
@@ -30,18 +30,20 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) CDStruct_1b6d18a9 skimmerHighlightDuration; // @synthesize skimmerHighlightDuration=_skimmerHighlightDuration;
 @property(retain, nonatomic) LKTextField *playheadInfoTextField; // @synthesize playheadInfoTextField=_playheadInfoTextField;
-@property(retain, nonatomic) LKPopOverWindow *playheadInfoWindow; // @synthesize playheadInfoWindow=_playheadInfoWindow;
+@property(retain, nonatomic) NSPopover *playheadInfoPopover; // @synthesize playheadInfoPopover=_playheadInfoPopover;
 @property(nonatomic) CDStruct_e83c9415 preDragSelectedRange; // @synthesize preDragSelectedRange=_preDragSelectedRange;
 @property(nonatomic) int currentDragOperationType; // @synthesize currentDragOperationType=_currentDragOperationType;
 @property(nonatomic) CDStruct_e83c9415 selectedRange; // @synthesize selectedRange=_selectedRange;
 @property(nonatomic) BOOL isMovie; // @synthesize isMovie=_isMovie;
+- (id)_photoObjectView;
+- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
 - (id)accessibilityActionNames;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)_imageUIElement;
 - (id)accessibilityAttributeNames;
 - (id)skimmingModule:(id)arg1 videoThumbnailLayerForSkimmingLayer:(id)arg2;
 - (void)stopSkimming;
-- (BOOL)startSkimming;
+- (BOOL)startSkimming:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)activeToolDidChange:(id)arg1;
 - (void)_addEditButtonToLayoutAtPosition:(struct CGPoint)arg1;
@@ -51,6 +53,10 @@ __attribute__((visibility("hidden")))
 - (void)_handleEditButtonClicked:(id)arg1;
 - (BOOL)isShowingEditButton;
 - (BOOL)playheadButtonsAllowed;
+- (void)clearSelectionEndTime;
+- (void)clearSelectionStartTime;
+- (void)setSelectionEndTime:(CDStruct_1b6d18a9)arg1 clearExistingSelection:(BOOL)arg2;
+- (void)setSelectionStartTime:(CDStruct_1b6d18a9)arg1 clearExistingSelection:(BOOL)arg2;
 - (id)_movieDurationLayer;
 - (id)_movieGlyphLayer;
 - (id)_movieInfoLayer;

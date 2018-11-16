@@ -4,23 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKAnchorLayer.h>
+#import <TLKit/TLKAnchorPartLayer.h>
 
-@class TLKAnchorHeadLayer, TLKAnchorTailLayer;
-
-@interface TLKAnchorBodyLayer : TLKAnchorLayer
+@interface TLKAnchorBodyLayer : TLKAnchorPartLayer
 {
-    TLKAnchorHeadLayer *_headLayer;
-    TLKAnchorTailLayer *_tailLayer;
 }
 
-- (id)anchorTailLayer;
-- (void)setAnchorTailLayer:(id)arg1;
-- (id)anchorHeadLayer;
-- (void)setAnchorHeadLayer:(id)arg1;
-- (void)setAnchorDirection:(int)arg1;
-- (void)removeAttachedAnchors;
-- (void)invalidate;
 - (id)init;
 
 @end

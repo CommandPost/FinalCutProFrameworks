@@ -4,11 +4,38 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProColorSliderCell.h"
+#import <LunaKit/LKSliderCell.h>
 
-@interface LKColorSliderCell : NSProColorSliderCell
+@class NSAnimation, NSGradient;
+
+@interface LKColorSliderCell : LKSliderCell
 {
+    NSGradient *_gradient;
+    NSAnimation *_fadeAnimation;
+    struct {
+        unsigned int showFullGradient:1;
+        unsigned int reserved:31;
+    } _pcscFlags;
 }
+
+- (void)animationDidEnd:(id)arg1;
+- (void)animation:(id)arg1 didReachProgressMark:(float)arg2;
+- (void)_startAnimation;
+- (void)setShowsFullGradient:(BOOL)arg1;
+- (BOOL)showsFullGradient;
+- (void)setGradient:(id)arg1;
+- (id)gradient;
+- (void)setEndColor:(id)arg1;
+- (id)endColor;
+- (void)setStartColor:(id)arg1;
+- (id)startColor;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)finalize;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copy;
+- (id)init;
 
 @end
 

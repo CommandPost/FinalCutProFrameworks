@@ -34,6 +34,7 @@
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (BOOL)textView:(id)arg1 doCommandBySelector:(SEL)arg2;
 - (int)textOperation;
+- (void)changeToFCPNewLook;
 - (void)stopResizeTextView:(struct CGPoint)arg1;
 - (void)resizeTextView:(struct CGPoint)arg1;
 - (void)startResizeTextView:(struct CGPoint)arg1;

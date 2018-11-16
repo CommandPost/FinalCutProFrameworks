@@ -63,7 +63,7 @@
 - (void)drawRotationAtPos:(PCVector2_79efa81a)arg1 withMat:(PCMatrix44Tmpl_e98c85ee)arg2;
 - (void)drawPivotHandleConnectorAtPos:(PCVector2_79efa81a)arg1;
 - (void)draw;
-- (void)drawRoundnessHandleWithMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 Points:(PCVector2_79efa81a *)arg2 Edges:(PCVector2_79efa81a *)arg3 RenderMode:(int)arg4 TexOffset:(const PCVector2_79efa81a *)arg5 Visibility:(const vector_69938c0b *)arg6;
+- (void)drawRoundnessHandleWithMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 Points:(PCVector2_79efa81a *)arg2 Edges:(PCVector2_79efa81a *)arg3 RenderMode:(int)arg4 TexOffset:(const PCVector2_79efa81a *)arg5 Visibility:(const vector_a7cf9eda *)arg6;
 - (struct CGRect)activeHandleRect;
 - (BOOL)shouldSnapRotation:(double)arg1 withNewAngle:(double *)arg2;
 - (BOOL)isDependentOnBounds;

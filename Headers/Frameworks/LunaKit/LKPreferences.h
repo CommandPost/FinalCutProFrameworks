@@ -4,20 +4,71 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProPreferences.h"
+#import "NSObject.h"
 
-@interface LKPreferences : NSProPreferences
+#import "NSToolbarDelegate.h"
+#import "NSWindowDelegate.h"
+
+@class LKPanel, NSBox, NSMutableArray, NSMutableDictionary, NSString;
+
+@interface LKPreferences : NSObject <NSWindowDelegate, NSToolbarDelegate>
 {
+    LKPanel *_preferencesPanel;
+    NSBox *_preferenceBox;
+    NSMutableArray *_preferenceTitles;
+    NSMutableArray *_preferenceModules;
+    NSMutableDictionary *_masterPreferenceViews;
+    NSMutableDictionary *_currentSessionPreferenceViews;
+    NSBox *_originalContentView;
+    BOOL _isModal;
+    double _constrainedWidth;
+    id _currentModule;
     BOOL _isOpen;
+    void *_proReserved1;
+    void *_proReserved2;
+    void *_proReserved3;
 }
 
 + (Class)defaultPreferencesClass;
++ (void)setDefaultPreferencesClass:(Class)arg1;
++ (id)sharedPreferences;
+@property(retain) LKPanel *_preferencesPanel; // @synthesize _preferencesPanel;
+@property(retain) NSBox *_preferenceBox; // @synthesize _preferenceBox;
+- (void)didBecomeActive;
+- (void)willResignActive;
 - (BOOL)preferencesOpen;
+- (id)toolbarSelectableItemIdentifiers:(id)arg1;
+- (id)toolbarAllowedItemIdentifiers:(id)arg1;
+- (id)toolbarDefaultItemIdentifiers:(id)arg1;
+- (id)toolbar:(id)arg1 itemForItemIdentifier:(id)arg2 willBeInsertedIntoToolbar:(BOOL)arg3;
+- (void)toolbarItemClicked:(id)arg1;
+- (id)_itemIdentifierForModule:(id)arg1;
+- (BOOL)usesButtons;
+- (struct CGSize)windowWillResize:(id)arg1 toSize:(struct CGSize)arg2;
+- (void)windowDidResize:(id)arg1;
 - (BOOL)windowShouldClose:(id)arg1;
+- (id)windowTitle;
+- (void)_selectModuleOwner:(id)arg1;
+- (void)apply:(id)arg1;
 - (void)cancel:(id)arg1;
+- (void)ok:(id)arg1;
+- (long long)showModalPreferencesPanel;
+- (long long)showModalPreferencesPanelForOwner:(id)arg1;
 - (void)showPreferencesPanelForOwner:(id)arg1;
+- (void)showPreferencesPanel;
+- (struct CGSize)preferencesContentSize;
+- (void)_setupUI;
+- (void)_setupToolbar;
 - (void)addPreferenceNamed:(id)arg1 owner:(id)arg2;
+- (void)dealloc;
+- (id)init;
 - (Class)_proToolbarClass;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

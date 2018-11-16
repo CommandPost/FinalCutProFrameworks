@@ -4,19 +4,26 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProPreferencesModule.h"
+#import "LKPreferencesModule.h"
 
-@class LKPopUpButton;
+@class LKPopUpButton, LKSegmentedScrubber;
 
-@interface PEAppEditingPreferencesModule : NSProPreferencesModule
+@interface PEAppEditingPreferencesModule : LKPreferencesModule
 {
     LKPopUpButton *pixelsOrPercentagePopup;
+    LKSegmentedScrubber *transitionsDurationScrubber;
+    LKSegmentedScrubber *stillImagesDurationScrubber;
+    LKSegmentedScrubber *defaultAudioFadeDurationScrubber;
 }
 
+- (void)dealloc;
 - (void)pixelsOrPercentage:(id)arg1;
 - (id)titleForIdentifier:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)awakeFromNib;
 - (void)moduleWasInstalled;
 - (BOOL)isResizable;
+- (id)imageForPreferenceNamed:(id)arg1;
 
 @end
 

@@ -11,6 +11,7 @@
 }
 
 - (void)setMeterValue:(double)arg1;
+- (id)initWithText:(BOOL)arg1;
 
 @end
 

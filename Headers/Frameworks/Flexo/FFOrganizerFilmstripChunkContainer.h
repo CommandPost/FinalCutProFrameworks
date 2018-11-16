@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_observedObjects;
     NSMutableSet *_usedMediaSnapTimes;
     BOOL _isUsedRangeInvalidationObserving;
+    BOOL _observingLibraryRoleChanges;
     id _delegate;
 }
 
@@ -70,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)chunkShouldHaveHFRBadge:(id)arg1;
 - (BOOL)chunkShouldHaveClipBadge:(id)arg1;
 - (BOOL)chunkShouldHavePSDBadge:(id)arg1;
+- (BOOL)chunkShouldHaveSynchedClipBadge:(id)arg1;
 - (BOOL)chunkShouldHaveMultiBadge:(id)arg1;
 - (BOOL)chunkShouldHaveComposedBadge:(id)arg1;
 - (BOOL)chunkShouldHaveVariantBadge:(id)arg1;
@@ -79,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithRangeOfMedia:(id)arg1;
 - (void)rangeInvalidated:(id)arg1;
+- (void)_rolesInLibraryHaveChanged:(id)arg1;
 
 @end
 

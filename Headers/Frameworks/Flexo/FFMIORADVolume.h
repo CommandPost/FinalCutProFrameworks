@@ -6,12 +6,13 @@
 
 #import <Flexo/FFOrganizerItem.h>
 
+#import "FFBackgroundTaskTarget.h"
 #import "FFOrganizerItemDraggingSource.h"
 #import "FFOrganizerMasterItem.h"
 
-@class FFCameraArchiveMetadata, FFMIOAFCDevice, MIORADVolume, NSArray, NSDate, NSImage, NSMutableArray, NSMutableSet, NSOperationQueue, NSString, NSURL;
+@class FFCameraArchiveMetadata, FFMIOAFCDevice, MIORADVolume, NSArray, NSDate, NSImage, NSMutableArray, NSMutableOrderedSet, NSMutableSet, NSString, NSURL;
 
-@interface FFMIORADVolume : FFOrganizerItem <FFOrganizerMasterItem, FFOrganizerItemDraggingSource>
+@interface FFMIORADVolume : FFOrganizerItem <FFOrganizerMasterItem, FFOrganizerItemDraggingSource, FFBackgroundTaskTarget>
 {
     MIORADVolume *_volume;
     FFMIOAFCDevice *_afcDevice;
@@ -19,7 +20,6 @@
     FFCameraArchiveMetadata *_archiveMetadata;
     FFCameraArchiveMetadata *_archiveMetadata2;
     NSURL *_url;
-    NSOperationQueue *_operationQueue;
     BOOL _loadClipsSynchronously;
     NSMutableArray *_items;
     NSMutableArray *_subSegmentsIngesting;
@@ -42,7 +42,7 @@
     long long _totalBytesProcessed;
     unsigned long long _unclaimedClipsCount;
     BOOL _loadingUnclaimedURLs;
-    NSMutableSet *_hybridSet;
+    NSMutableOrderedSet *_hybridSet;
     BOOL _archivingAsHybrid;
     float _ingestPercentDone;
     float _archivePercentDone;
@@ -58,7 +58,7 @@
 @property float archivePercentDone; // @synthesize archivePercentDone=_archivePercentDone;
 @property float ingestPercentDone; // @synthesize ingestPercentDone=_ingestPercentDone;
 @property(getter=isArchivingAsHybrid) BOOL archivingAsHybrid; // @synthesize archivingAsHybrid=_archivingAsHybrid;
-@property(readonly) NSMutableSet *hybridSet; // @synthesize hybridSet=_hybridSet;
+@property(readonly) NSMutableOrderedSet *hybridSet; // @synthesize hybridSet=_hybridSet;
 @property BOOL loadingUnclaimedURLs; // @synthesize loadingUnclaimedURLs=_loadingUnclaimedURLs;
 @property BOOL unmounted; // @synthesize unmounted=_unmounted;
 @property BOOL useTempClips; // @synthesize useTempClips=_useTempClips;
@@ -68,11 +68,14 @@
 @property(retain) NSMutableArray *subSegmentsIngesting; // @synthesize subSegmentsIngesting=_subSegmentsIngesting;
 @property float percentDone; // @synthesize percentDone=_percentDone;
 @property(nonatomic) BOOL loadClipsSynchronously; // @synthesize loadClipsSynchronously=_loadClipsSynchronously;
-@property(retain) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property(copy, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(copy, nonatomic) NSString *archivePath; // @synthesize archivePath=_archivePath;
 @property(retain, nonatomic) FFMIOAFCDevice *afcDevice; // @synthesize afcDevice=_afcDevice;
 @property(retain, nonatomic) MIORADVolume *volume; // @synthesize volume=_volume;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
+- (void)targetLibraryChanged:(id)arg1;
+- (void)importMarkersUpdated:(id)arg1;
 - (void)setClipLoadingSuspended:(BOOL)arg1;
 - (BOOL)conformsToProtocol:(id)arg1;
 - (id)pasteboardPropertyListForType:(id)arg1;
@@ -104,21 +107,27 @@
 - (void)subSegmentDone:(id)arg1;
 - (void)updateArchiveProgressMainThread:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)itemsUpdatedWithDelay:(id)arg1 onTask:(id)arg2;
 - (void)itemsUpdated;
 - (void)allowAfcClipLoading;
+- (void)allowAfcClipLoadingWithDelay:(id)arg1 onTask:(id)arg2;
 - (void)replaceClipsAtIndexes:(id)arg1;
+- (void)replaceClipsAtIndexes:(id)arg1 onTask:(id)arg2;
 - (void)removeClipsAtIndexes:(id)arg1;
+- (void)removeClipsAtIndexes:(id)arg1 onTask:(id)arg2;
 - (void)invalidateRADAssetOnClip:(id)arg1;
 - (void)insertClipsAtIndexes:(id)arg1;
+- (void)insertClipsAtIndexes:(id)arg1 onTask:(id)arg2;
 - (void)finishedLoadingUnclaimedURLs;
 - (void)addClipsFromUnclaimedURLs;
+- (void)addClipsFromUnclaimedURLs:(id)arg1 onTask:(id)arg2;
 - (void)addUnclaimedClipMainThread:(id)arg1;
 - (void)addHybridClips:(id)arg1;
-- (void)addClips:(id)arg1;
 - (void)addHybridClipMainThread:(id)arg1;
+- (void)addClips:(id)arg1;
+- (void)addClips:(id)arg1 onTask:(id)arg2;
 - (void)addClipMainThread:(id)arg1;
 - (void)checkPercentDone;
-- (id)ffClipWithMIORADClip:(id)arg1;
 - (void)invalidateUnclaimedURLs:(id)arg1;
 - (void)volumeWillUnmount:(id)arg1;
 - (void)radVolumeWillUnmount:(id)arg1;
@@ -136,6 +145,9 @@
 - (void)mergeHybridVolume:(id)arg1;
 - (void)updateHybridVolumeWithVolume:(id)arg1;
 - (void)addHybridClipsFromHybridVolume:(id)arg1;
+- (void)addHybridClipsFromHybridVolume:(id)arg1 onTask:(id)arg2;
+- (void)canceledTask:(id)arg1;
+- (void)addBackgroundTaskWithSelector:(SEL)arg1 object:(id)arg2 displayName:(id)arg3;
 - (void)dealloc;
 - (id)initWithVolume:(id)arg1 loadClipsSynchronously:(BOOL)arg2;
 

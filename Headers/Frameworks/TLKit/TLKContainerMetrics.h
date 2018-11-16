@@ -15,41 +15,33 @@
     double _baseSplitItemHeight;
     double _itemHeaderHeight;
     double _itemHeaderOnlyHeight;
+    double _minimizedItemHeight;
     double _audioWaveFormProportion;
-    double _heightAdjustment;
-    double _splitItemOffsetSpacing;
-    double _anchorMultiplier;
     struct CGSize _itemSpacing;
     struct {
         unsigned int calculatesDynamicItemHeights:1;
-        unsigned int calculatesDynamicSplitOffsets:1;
         unsigned int showClipTitlesOnly:1;
-        unsigned int RESERVED:29;
+        unsigned int RESERVED:30;
     } _tlkContainerMetricsFlags;
     double _topPadding;
     double _bottomPadding;
 }
 
-@property(nonatomic) double anchorMultiplier; // @synthesize anchorMultiplier=_anchorMultiplier;
-@property(nonatomic) double splitItemOffsetSpacing; // @synthesize splitItemOffsetSpacing=_splitItemOffsetSpacing;
 @property(nonatomic) struct CGSize itemSpacing; // @synthesize itemSpacing=_itemSpacing;
 @property(nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
 @property(nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
-@property(nonatomic) double heightAdjustment; // @synthesize heightAdjustment=_heightAdjustment;
 @property(nonatomic) double audioWaveFormProportion; // @synthesize audioWaveFormProportion=_audioWaveFormProportion;
+@property(nonatomic) double minimizedItemHeight; // @synthesize minimizedItemHeight=_minimizedItemHeight;
 @property(nonatomic) double itemHeaderOnlyHeight; // @synthesize itemHeaderOnlyHeight=_itemHeaderOnlyHeight;
 @property(nonatomic) double itemHeaderHeight; // @synthesize itemHeaderHeight=_itemHeaderHeight;
 @property(nonatomic) double baseSplitItemHeight; // @synthesize baseSplitItemHeight=_baseSplitItemHeight;
 @property(nonatomic) double baseAnchoredItemHeight; // @synthesize baseAnchoredItemHeight=_baseAnchoredItemHeight;
 @property(nonatomic) double baseSpineItemHeight; // @synthesize baseSpineItemHeight=_baseSpineItemHeight;
-- (double)audioComponentItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
-- (double)splitItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
-- (double)anchoredItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
+@property(nonatomic) double itemHeight;
 @property(readonly, nonatomic) double audioWaveFormHeight;
 @property(readonly, nonatomic) double spineItemHeight;
-@property(nonatomic) BOOL calculatesDynamicSplitOffsets;
-@property(nonatomic) BOOL calculatesDynamicItemHeights;
 @property(nonatomic) BOOL showClipTitlesOnly;
+- (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

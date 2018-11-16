@@ -8,7 +8,7 @@
 
 #import "FFSkimmingModuleDelegate.h"
 
-@class FFAnchoredCollection, FFAnchoredObject, FFAnchoredSequence, FFEffect, FFEffectLibraryItemView, FFSkimmingModule, NSEvent, NSMutableArray, NSMutableDictionary, NSString;
+@class FFAnchoredCollection, FFAnchoredObject, FFAnchoredSequence, FFEffect, FFEffectLibraryItemView, FFEffectStack, FFMediaEventDocument, FFSkimmingModule, NSEvent, NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectLibraryCollectionView : NSView <FFSkimmingModuleDelegate>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     FFEffectLibraryItemView *_selectedView;
     id _skimmingDelegate;
     NSString *_effectViewToolTip;
+    struct CGSize _layoutContentSize;
     NSMutableArray *_effectViewList;
     NSMutableArray *_subviewsToBe;
     FFSkimmingModule *_effectPreviewModule;
@@ -26,6 +27,8 @@ __attribute__((visibility("hidden")))
     struct NSObject *_effectPreviewSkimmable;
     FFEffectLibraryItemView *_effectPreviewView;
     FFEffect *_effectPreviewEffect;
+    FFEffectStack *_effectPreviewEffectStack;
+    FFMediaEventDocument *_effectPreviewDocument;
     NSMutableDictionary *_skimmableCache;
     BOOL _isDragging;
     FFEffectLibraryItemView *_hitView;
@@ -78,8 +81,6 @@ __attribute__((visibility("hidden")))
 - (void)_cancelBackgroundLoadForPreview;
 - (struct NSObject *)_skimmableForEffectItem:(id)arg1;
 - (id)_viewerSkimmingDelegate;
-- (void)_firstResponderChanged:(id)arg1;
-- (void)_makeFirstResponder;
 - (void)doubleClickWithEffectID:(id)arg1;
 - (void)writeSelectionToPasteboard:(id)arg1;
 - (BOOL)acceptsFirstResponder;
@@ -93,10 +94,14 @@ __attribute__((visibility("hidden")))
 - (void)_makeTopOfListIfEffectIDFound:(id)arg1 isAudioAndVideo:(BOOL)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)reloadData;
+- (struct CGSize)intrinsicContentSize;
+- (void)_viewsContentSizeDidChange:(struct CGSize)arg1;
 - (void)layoutSubviews:(BOOL)arg1;
 - (long long)numberOfColumns;
 - (long long)numberOfRows;
 - (void)getNumberOfRows:(long long *)arg1 columns:(long long *)arg2;
+- (void)moduleLayoutDidChange:(id)arg1;
+- (void)windowDidResignKey:(id)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (void)_cleanupEffectPreview;

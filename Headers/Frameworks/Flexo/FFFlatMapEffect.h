@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) MapLocation *cachedStartLocation; // @synthesize cachedStartLocation=m_cachedStartLocation;
 @property(nonatomic) float cachedImageScale; // @synthesize cachedImageScale=m_cachedImageScale;
 @property(retain, nonatomic) CIImage *cachedImage; // @synthesize cachedImage=m_cachedImage;
-- (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1 use4K:(BOOL)arg2;
 - (void)ensureCachedImageForStartLocation:(id)arg1 endLocation:(id)arg2 projectSize:(struct CGSize)arg3;
 - (id)imageToAnimateFromMapImage:(id)arg1 projectSize:(struct CGSize)arg2 startLocation:(id)arg3 endLocation:(id)arg4 getGeographicBounds:(struct CGRect *)arg5 scale:(float *)arg6;
 - (float)distanceInDegreesFromStart:(id)arg1 toEnd:(id)arg2;

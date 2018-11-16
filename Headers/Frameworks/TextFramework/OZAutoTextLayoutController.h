@@ -33,7 +33,7 @@
     unsigned int _numTabs;
 }
 
-- (struct TXTextStyle *)getCurrentStyle;
+- (shared_ptr_e0e110e1)getCurrentStyle;
 - (void)showHidePathChannels:(int)arg1;
 - (void)notify:(unsigned int)arg1;
 - (void)enableDisableLayoutUI:(int)arg1;

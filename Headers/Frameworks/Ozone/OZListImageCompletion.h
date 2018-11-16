@@ -12,14 +12,14 @@
 {
     NSObject<OZListController> *_listController;
     unsigned int _renderNodeID;
-    shared_ptr_92745eb9 _image;
+    shared_ptr_8628efdd _image;
     CDStruct_1b6d18a9 _time;
     double _pixelAspectRatio;
 }
 
 @property double pixelAspectRatio; // @synthesize pixelAspectRatio=_pixelAspectRatio;
 @property CDStruct_1b6d18a9 time; // @synthesize time=_time;
-@property(nonatomic, getter=imageRef, setter=setImageRef:) shared_ptr_92745eb9 image; // @synthesize image=_image;
+@property(nonatomic, getter=imageRef, setter=setImageRef:) shared_ptr_8628efdd image; // @synthesize image=_image;
 @property unsigned int renderNodeID; // @synthesize renderNodeID=_renderNodeID;
 @property(retain) NSObject<OZListController> *listController; // @synthesize listController=_listController;
 - (id).cxx_construct;

@@ -15,7 +15,7 @@
 
 - (BOOL)anyChannelSelected:(struct OZChannelFolder *)arg1;
 - (void)paste;
-- (void)copy;
+- (void)copyAction;
 - (void)cut;
 - (void)deleteThis;
 - (id)makeLabelTextWithFrame:(struct CGRect)arg1 context:(id)arg2;

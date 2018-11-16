@@ -13,6 +13,7 @@
 
 @property(nonatomic) BOOL isAutokeyTintEnabled; // @synthesize isAutokeyTintEnabled=_isAutokeyTintEnabled;
 - (id)textColor;
+- (void)resetDefaultAppearance;
 
 @end
 

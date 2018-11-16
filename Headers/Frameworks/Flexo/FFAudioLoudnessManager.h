@@ -8,7 +8,7 @@
 
 #import "FFLoudnessAnalyzerDelegate.h"
 
-@class FFAnchoredSequence, NSMapTable, NSMutableArray;
+@class FFAnchoredSequence, NSMapTable, NSMutableArray, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioLoudnessManager : NSObject <FFLoudnessAnalyzerDelegate>
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     struct FFLocklessQueue<NSSet *> m_updateObjectsQueue;
     NSMutableArray *m_loudnessAnalyzerTasks;
     struct Synchronizable m_loudnessAnalyzerTasksLock;
+    NSObject<OS_dispatch_queue> *m_duckingDispatchQueue;
 }
 
 + (BOOL)supportsAudioDucking:(id)arg1;
@@ -35,13 +36,13 @@ __attribute__((visibility("hidden")))
 - (void)_updateAudioLoudnessDataOnMainThread:(id)arg1;
 - (void)_updateLoudnessValuesForObject:(id)arg1;
 - (void)_writeAudioDuckingChannelDataOnMainThread:(id)arg1;
-- (void)_updateDuckingChannelMD5InfoMap:(map_920bb60f *)arg1 withSlaveGroups:(id)arg2 clipInfoMap:(const map_226dfcf4 *)arg3 masterClipsMap:(id)arg4;
-- (void)_updateClipInfoMap:(map_226dfcf4 *)arg1 withObjects:(id)arg2;
+- (void)_updateDuckingChannelMD5InfoMap:(map_5694882a *)arg1 withSlaveGroups:(id)arg2 clipInfoMap:(const map_3a3149f0 *)arg3 masterClipsMap:(id)arg4;
+- (void)_updateClipInfoMap:(map_3a3149f0 *)arg1 withObjects:(id)arg2;
 - (void)performAutomaticDuckingUpdate;
 - (id)_newSlaveGroupUsingObject:(id)arg1;
-- (void)_buildMasterRangeDataList:(vector_c9fb3138 *)arg1 forDuckingRootItem:(id)arg2 clipInfoMap:(const map_226dfcf4 *)arg3 masterClipsMap:(id)arg4;
+- (void)_buildMasterRangeDataList:(vector_ef66a8b7 *)arg1 forDuckingRootItem:(id)arg2 clipInfoMap:(const map_3a3149f0 *)arg3 masterClipsMap:(id)arg4;
 - (void)_queueAudioDuckingUpdateForObjects:(id)arg1;
-- (void)_updateAudioDuckingChannel:(struct FFAudioDuckingChannelData *)arg1 forSlaveGroup:(id)arg2 masterRangeDataList:(const vector_c9fb3138 *)arg3 clipInfoMap:(const map_226dfcf4 *)arg4;
+- (void)_updateAudioDuckingChannel:(struct FFAudioDuckingChannelData *)arg1 forSlaveGroup:(id)arg2 masterRangeDataList:(const vector_ef66a8b7 *)arg3 clipInfoMap:(const map_3a3149f0 *)arg4;
 - (void)notifyDuckingMasterClipLevelChanged:(id)arg1 toLevel:(float)arg2;
 - (void)_updateObjectsForAutomaticDucking:(id)arg1;
 - (void)_rebuildAndRecalculateDuckingMasterClips;

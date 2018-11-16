@@ -11,6 +11,8 @@
 }
 
 + (id)copyClassDescription;
+- (unsigned long long)audioSourceCount;
+- (BOOL)canRebuildAudioProperties;
 - (BOOL)isUpgradeProxyAsset;
 - (id)initWithAttributes:(id)arg1 mediaIdentifier:(id)arg2 displayName:(id)arg3 manageFileType:(int)arg4 project:(id)arg5;
 - (BOOL)mediaAvailable;

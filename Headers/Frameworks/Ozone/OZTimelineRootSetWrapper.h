@@ -8,12 +8,12 @@
 
 @interface OZTimelineRootSetWrapper : NSObject
 {
-    set_6f566e68 *_rootSet;
+    set_001ccea2 *_rootSet;
 }
 
-- (set_6f566e68 *)getRootSet;
+- (set_001ccea2 *)getRootSet;
 - (void)dealloc;
-- (id)initWithRootSet:(set_6f566e68 *)arg1;
+- (id)initWithRootSet:(set_001ccea2 *)arg1;
 
 @end
 

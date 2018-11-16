@@ -13,10 +13,11 @@ __attribute__((visibility("hidden")))
 {
     LKButton *_closeButton;
     LKTextField *_descriptionField;
+    double _buttonFrameOffset;
 }
 
+@property(nonatomic) double buttonFrameOffset; // @synthesize buttonFrameOffset=_buttonFrameOffset;
 - (void)mouseDown:(id)arg1;
-- (void)drawRect:(struct CGRect)arg1;
 - (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
 - (void)sizeToFit;
 - (struct CGSize)_textSize;

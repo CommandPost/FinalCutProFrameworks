@@ -8,7 +8,7 @@
 
 #import "FFModelLocking.h"
 
-@class FFAnchoredObject<FFSegmentedSourceProtocol>, FFAnchoredSequence, NSSet, NSString;
+@class FFAnchoredObject<FFSegmentedSourceProtocol>, FFAnchoredSequence, NSDictionary, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAnchoredObjectSegmentedProvider : FFProvider <FFModelLocking>
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     FFAnchoredSequence *_retainedSequence;
     NSSet *_showOnlyObjects;
     NSSet *_roles;
+    NSDictionary *_audioComponentsPlaybackInfo;
 }
 
 + (id)extensions;
@@ -45,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)videoAngle;
 - (long long)effectCount;
 - (id)object;
-- (id)initWithAnchoredObject:(id)arg1 effectCount:(long long)arg2 audioAngles:(id)arg3 videoAngle:(id)arg4 toLane:(long long)arg5 showOnlyObjects:(id)arg6 roles:(id)arg7 angleOffset:(long long)arg8 angleCount:(long long)arg9;
+- (id)initWithAnchoredObject:(id)arg1 effectCount:(long long)arg2 audioAngles:(id)arg3 videoAngle:(id)arg4 toLane:(long long)arg5 showOnlyObjects:(id)arg6 roles:(id)arg7 angleOffset:(long long)arg8 angleCount:(long long)arg9 audioComponentsPlaybackInfo:(id)arg10;
 
 @end
 

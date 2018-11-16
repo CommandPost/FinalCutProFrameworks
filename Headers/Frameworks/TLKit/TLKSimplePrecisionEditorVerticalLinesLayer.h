@@ -6,19 +6,25 @@
 
 #import <TLKit/TLKAbstractPrecisionEditorVerticalLinesLayer.h>
 
-@class CALayer;
+@class CALayer, NSDictionary;
 
 @interface TLKSimplePrecisionEditorVerticalLinesLayer : TLKAbstractPrecisionEditorVerticalLinesLayer
 {
     CALayer *_topLayer;
+    NSDictionary *_topMappingTable;
     CALayer *_bottomLayer;
+    NSDictionary *_bottomMappingTable;
+    int _layerState;
 }
 
-- (void)setSidesToShow:(int)arg1;
-- (void)setEdgeType:(int)arg1;
-- (void)setDelegate:(id)arg1;
+- (int)layerState;
+- (void)setLayerState:(int)arg1;
 - (id)hitTest:(struct CGPoint)arg1;
-- (void)_updateConstraints;
+- (void)setDelegate:(id)arg1;
+- (void)layoutSublayers;
+- (struct CGRect)filmstripRectForItem:(int)arg1;
+- (struct CGRect)rectForLayerMatchingName:(id)arg1 inItem:(int)arg2;
+- (void)dealloc;
 - (id)init;
 
 @end

@@ -4,23 +4,117 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFEventsSuperModule.h>
+#import "LKViewModule.h"
 
+#import "FFMediaDetailContainerModuleDelegate.h"
+#import "FFOrganizerDelegatePassthrough.h"
+#import "FFOrganizerFilmstripModuleDelegate.h"
+#import "FFOrganizerFilterHUDDelegate.h"
 #import "NSMenuDelegate.h"
+#import "NSSplitViewDelegate.h"
+#import "NSTouchBarProvider.h"
+#import "NSWindowDelegate.h"
 
-@class FFMediaSidebarModule, FFOrganizerFilmstripModule, NSString, OKPaneCapItemButton;
+@class FFEventLibraryContentContainer, FFEventLibraryContentFooterView, FFEventLibraryContentHeaderView, FFEventLibraryModuleHeaderContainerView, FFEventLibraryModuleSplitView, FFEventsDetailModule, FFItemsContainerView, FFMediaDetailContainerModule, FFMediaEventProject, FFMediaSidebarDFRController, FFMediaSidebarModule, FFOrganizerFilmstripModule, FFOrganizerFilterHUD, FFOrganizerMediaDetailSearchHeader, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKTextField, LKWindow, LKWindowModule, NSArray, NSBox, NSLayoutConstraint, NSMenuItem, NSObject<FFOrganizerFilterHUDDelegate>, NSString, NSTouchBar, NSView;
 
-@interface FFEventLibraryModule : FFEventsSuperModule <NSMenuDelegate>
+@interface FFEventLibraryModule : LKViewModule <NSSplitViewDelegate, FFOrganizerDelegatePassthrough, FFOrganizerFilterHUDDelegate, FFMediaDetailContainerModuleDelegate, FFOrganizerFilmstripModuleDelegate, NSWindowDelegate, NSMenuDelegate, NSTouchBarProvider>
 {
-    OKPaneCapItemButton *_listViewPaneCapItem;
+    BOOL _restorePlayheadInfo;
+    int _channelChangeCount;
+    FFMediaSidebarModule *_librarySidebarModule;
+    FFMediaSidebarModule *_mediaSidebarModule;
+    FFMediaSidebarModule *_contentSidebarModule;
+    FFMediaSidebarModule *_activeSidebarModule;
+    FFMediaDetailContainerModule *_mediaDetailContainerModule;
+    FFOrganizerFilterHUD *_filterHUD;
+    LKWindow *_filterHUDPopoverWindow;
+    LKWindowModule *_filterWindowModule;
+    NSObject<FFOrganizerFilterHUDDelegate> *_sidebarHUDOwner;
+    NSView *_sidebarModuleViewContainer;
+    NSView *_contentModuleViewContainer;
+    FFItemsContainerView *_itemsModuleViewContainer;
+    FFEventLibraryContentContainer *_contentContainerView;
+    FFEventLibraryModuleSplitView *_splitView;
+    NSView *_sidebarControlButtonView;
+    NSView *_taskProgressContainerView;
+    LKProgressIndicator *_taskProgressIndicator;
+    FFOrganizerMediaDetailSearchHeader *_searchHeaderViewController;
+    LKMenu *_filterPulldownMenu;
+    LKMenu *_gearMenu;
+    NSMenuItem *_groupBySubmenu;
+    NSMenuItem *_arrangeBySubmenu;
+    LKButton *_importImovieLibrary;
+    LKButton *_importImovieLibraryBigButton;
+    LKButton *_firstLaunchFileImport;
+    LKButton *_firstLaunchFileImportBigButton;
+    LKButton *_firstLaunchCameraImport;
+    LKButton *_firstLaunchCameraImportBigButton;
+    NSBox *_dividerLine;
+    LKButton *_emptyFileImport;
+    LKButton *_emptyFileImportBigButton;
+    LKTextField *_emptyFileImportLabel;
+    LKButton *_emptyCameraImport;
+    LKButton *_emptyCameraImportBigButton;
+    FFMediaSidebarDFRController *_dfrController;
+    BOOL _librarySidebarActive;
+    BOOL _mediaSidebarActive;
+    BOOL _contentSidebarActive;
+    FFMediaSidebarModule *_dragSourceSidebarModule;
+    FFMediaEventProject *_currentMediaEventProject;
+    unsigned long long _filterHUDDelegateType;
+    LKButton *_librarySidebarButton;
+    LKButton *_mediaSidebarButton;
+    LKButton *_contentSidebarButton;
+    FFEventLibraryModuleHeaderContainerView *_moduleHeaderContainerView;
+    FFEventLibraryContentHeaderView *_headerContainerView;
+    FFEventLibraryContentFooterView *_footerContainerView;
+    NSLayoutConstraint *_headerHeightConstraint;
+    NSLayoutConstraint *_footerHeightConstraint;
+    NSLayoutConstraint *_sidebarMinWidthConstraint;
+    double _lastVisibleSidebarWidth;
+    NSLayoutConstraint *_sidebarMaxWidthConstraint;
 }
 
-@property(retain) OKPaneCapItemButton *listViewPaneCapItem; // @synthesize listViewPaneCapItem=_listViewPaneCapItem;
-- (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
-- (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
-- (double)splitView:(id)arg1 constrainSplitPosition:(double)arg2 ofSubviewAt:(long long)arg3;
-- (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
-- (id)defaultEventForNewProject;
++ (id)defaultModuleNibName;
+@property(retain, nonatomic) NSLayoutConstraint *sidebarMaxWidthConstraint; // @synthesize sidebarMaxWidthConstraint=_sidebarMaxWidthConstraint;
+@property(nonatomic) double lastVisibleSidebarWidth; // @synthesize lastVisibleSidebarWidth=_lastVisibleSidebarWidth;
+@property(retain, nonatomic) NSLayoutConstraint *sidebarMinWidthConstraint; // @synthesize sidebarMinWidthConstraint=_sidebarMinWidthConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *footerHeightConstraint; // @synthesize footerHeightConstraint=_footerHeightConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *headerHeightConstraint; // @synthesize headerHeightConstraint=_headerHeightConstraint;
+@property(retain, nonatomic) FFEventLibraryContentFooterView *footerContainerView; // @synthesize footerContainerView=_footerContainerView;
+@property(retain, nonatomic) FFItemsContainerView *itemsModuleViewContainer; // @synthesize itemsModuleViewContainer=_itemsModuleViewContainer;
+@property(retain, nonatomic) FFEventLibraryContentHeaderView *headerContainerView; // @synthesize headerContainerView=_headerContainerView;
+@property(retain, nonatomic) FFEventLibraryModuleHeaderContainerView *moduleHeaderContainerView; // @synthesize moduleHeaderContainerView=_moduleHeaderContainerView;
+@property(retain, nonatomic) LKButton *contentSidebarButton; // @synthesize contentSidebarButton=_contentSidebarButton;
+@property(retain, nonatomic) LKButton *mediaSidebarButton; // @synthesize mediaSidebarButton=_mediaSidebarButton;
+@property(retain, nonatomic) LKButton *librarySidebarButton; // @synthesize librarySidebarButton=_librarySidebarButton;
+@property(nonatomic, getter=isContentSidebarActive) BOOL contentSidebarActive; // @synthesize contentSidebarActive=_contentSidebarActive;
+@property(nonatomic, getter=isMediaSidebarActive) BOOL mediaSidebarActive; // @synthesize mediaSidebarActive=_mediaSidebarActive;
+@property(nonatomic, getter=isLibrarySidebarActive) BOOL librarySidebarActive; // @synthesize librarySidebarActive=_librarySidebarActive;
+@property(nonatomic) unsigned long long filterHUDDelegateType; // @synthesize filterHUDDelegateType=_filterHUDDelegateType;
+@property(readonly, nonatomic) FFMediaEventProject *currentMediaEventProject; // @synthesize currentMediaEventProject=_currentMediaEventProject;
+@property(retain, nonatomic) FFMediaSidebarModule *dragSourceSidebarModule; // @synthesize dragSourceSidebarModule=_dragSourceSidebarModule;
+@property(readonly, nonatomic) FFMediaSidebarModule *activeSidebarModule; // @synthesize activeSidebarModule=_activeSidebarModule;
+@property(retain, nonatomic) FFMediaSidebarModule *contentSidebarModule; // @synthesize contentSidebarModule=_contentSidebarModule;
+@property(retain, nonatomic) FFMediaSidebarModule *mediaSidebarModule; // @synthesize mediaSidebarModule=_mediaSidebarModule;
+@property(retain, nonatomic) FFMediaSidebarModule *librarySidebarModule; // @synthesize librarySidebarModule=_librarySidebarModule;
+@property(readonly, nonatomic) LKMenu *filterPulldownMenu; // @synthesize filterPulldownMenu=_filterPulldownMenu;
+@property(readonly, nonatomic) NSView *sidebarModuleViewContainer; // @synthesize sidebarModuleViewContainer=_sidebarModuleViewContainer;
+@property(readonly, nonatomic) FFMediaDetailContainerModule *mediaDetailContainerModule; // @synthesize mediaDetailContainerModule=_mediaDetailContainerModule;
+- (void)revealMediaRanges:(id)arg1;
+- (void)searchHeaderViewHUDButtonAction:(id)arg1;
+- (void)setFooterView:(id)arg1;
+- (void)dismissSearchHeaderAndOptionallyClearFilters:(BOOL)arg1;
+- (void)showSearchHeader:(id)arg1;
+- (void)finishedLoadingChanged;
+- (BOOL)_shouldDisplayImportControlsInOrganizer;
+- (id)_firstSelectedSidebarItem;
+- (unsigned long long)_organizerItemCount;
+- (id)currentNoItemsString;
+- (void)setNoItemsInfoTextVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (id)organizerDelegate;
+- (id)markerEditorDelegate;
+- (id)skimmingDelegate;
 - (id)player;
 - (id)context;
 - (BOOL)revealObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2 atPlayhead:(CDStruct_1b6d18a9)arg3;
@@ -28,10 +122,118 @@
 - (void)showImportPanelWithKeywords:(id)arg1 forEvent:(id)arg2;
 - (void)ensureSidebarVisible;
 - (void)newEventUsingDefaultLibrary:(id)arg1;
+- (id)newMediaDetailContainerModule;
 - (id)newItemsModule;
+- (id)newContentSidebarModule;
 - (id)newMediaSidebarModule;
-@property(readonly, nonatomic) FFMediaSidebarModule *eventListModule;
+- (id)newLibrarySidebarModule;
 @property(readonly, nonatomic) FFOrganizerFilmstripModule *filmstripModule;
+@property(readonly, nonatomic) FFEventsDetailModule *itemsModule;
+- (void)syncToNewSidebarState:(BOOL)arg1;
+- (double)_sidebarMaxWidth;
+- (double)_sidebarWidth;
+- (double)_sidebarMinWidth;
+- (void)didUninstallMediaDetailContainerModule;
+- (void)willUninstallMediaDetailContainerModule;
+- (void)didInstallMediaDetailContainerModule;
+- (void)willInstallMediaDetailContainerModule;
+- (id)contentsViewForItemsModule:(id)arg1;
+- (id)selectionOrProject;
+- (id)targetSelectionForModule:(id)arg1;
+- (id)targetSelection;
+- (id)targetObjectForItem:(id)arg1 inModule:(id)arg2;
+- (id)targetObjectForItem:(id)arg1;
+- (void)channelChangeEnd:(id)arg1;
+- (void)channelChangeBegin:(id)arg1;
+- (BOOL)shouldHandleChannelChange:(id)arg1;
+- (BOOL)uiActionEndForProject:(id)arg1 mediaRanges:(id)arg2 playingRange:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4 actionType:(long long)arg5 save:(BOOL)arg6 error:(id *)arg7;
+- (void)uiActionBeginForProject:(id)arg1 mediaRanges:(id)arg2 playingRange:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4 actionType:(long long)arg5;
+@property(nonatomic, getter=isSidebarHidden) BOOL sidebarHidden;
+- (void)_syncSidebarButtonsToVisibleState;
+- (void)sidebarModule:(id)arg1 didSelectNodes:(id)arg2;
+- (BOOL)_sidebarSelectionIsLibraryFolder;
+- (id)_singleSidebarSelectedObject;
+- (id)eventSidebarModule;
+- (id)module:(id)arg1 fieldEditorForView:(id)arg2 cell:(id)arg3;
+- (id)libraryForCurrentProject;
+- (id)mainRolesForCurrentProject;
+- (id)keywordsForCurrentProject;
+- (id)smartCollectionButtonTitle;
+- (id)hudTitle;
+- (void)filterHUDDidUpdate:(id)arg1;
+- (id)filtersDictionaryOwner;
+- (id)_submoduleWithTag:(long long)arg1;
+- (void)moveToRangeOfMedia:(id)arg1 andTime:(CDStruct_1b6d18a9)arg2;
+- (BOOL)browserModuleRespondsToFavoriteActions;
+- (struct CGRect)screenRectForMarkerLayer:(id)arg1;
+- (struct CGRect)playheadFrame;
+- (struct CGRect)selectedRangeFrame;
+- (void)favoriteFilterMenu:(id)arg1;
+- (id)selectedRangesOfMediaForTimelineEditing;
+- (id)selectedRangesOfMedia;
+- (id)selectedItems;
+- (void)openFilterHUDForSidebarItem:(id)arg1 atLocation:(struct CGRect)arg2;
+- (void)filterHUDAction:(id)arg1;
+- (void)_openFilterHUDWithFrame:(struct CGRect)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)clearFilterToStartingPoint;
+- (void)setTextFilter:(id)arg1;
+- (void)newProject:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (id)localModuleActions;
+- (void)hideHUD;
+- (void)_updateHeaderUI;
+- (id)_textFilterString;
+- (void)searchAction:(id)arg1;
+- (void)showImportPanel:(id)arg1;
+- (void)toggleSidebarHidden:(id)arg1;
+- (void)_updateModuleHeaderContainerViewWithActiveModuleAccessoryView;
+- (void)restoreSearchFieldTextForModule:(id)arg1;
+- (void)saveSearchFieldTextForModule:(id)arg1;
+- (void)showHeaderSearchUIUsingDelegate:(id)arg1;
+- (void)setSelectedItems:(id)arg1 owner:(id)arg2;
+- (void)newModuleDidBecomeActive:(id)arg1;
+- (BOOL)module:(id)arg1 validate:(char *)arg2 userInterfaceItem:(id)arg3;
+- (id)submoduleLayoutArray;
+- (id)targetModules;
+- (id)firstKeyView;
+- (void)displayPostAutoLayout;
+- (void)postLayout:(id)arg1;
+- (void)preLayout:(id)arg1;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
+- (id)contentLayoutDictionary;
+- (void)loadSideBar;
+- (void)viewDidLoad;
+- (void)setMediaDetailContainerModule:(id)arg1;
+- (void)didSwitchViewMode;
+- (struct CGSize)viewMaxSize;
+- (struct CGSize)viewMinSize;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)notificationHandler:(id)arg1;
+@property(readonly) NSArray *sidebarSelectedItems;
+@property(readonly) NSTouchBar *touchBar;
+- (void)dealloc;
+- (id)init;
+- (void)_installSidebarModuleView:(id)arg1;
+- (void)returnToDragSourceSidebar;
+- (void)showLibrarySidebarForDragFromSidebar:(id)arg1;
+- (void)contentSidebarButtonAction:(id)arg1;
+- (void)mediaSidebarButtonAction:(id)arg1;
+- (void)librarySidebarButtonAction:(id)arg1;
+- (void)showContentSidebarAction:(id)arg1;
+- (void)showMediaSidebarAction:(id)arg1;
+- (void)showLibrarySidebarAction:(id)arg1;
+- (void)_showContentSidebar;
+- (void)_showMediaSidebar;
+- (void)_showLibrarySidebar;
+- (void)_didUpdateSourceList;
+- (void)_willUpdateSourceList;
+- (BOOL)shouldUseFacetForModuleHeaderViewHeight;
+- (BOOL)wantsFooterBar;
+- (BOOL)wantsHeaderBar;
+@property(readonly) NSView *moduleFooterAccessoryView;
+@property(readonly) NSView *moduleHeaderAccessoryView;
+@property(readonly, nonatomic) LKSplitView *splitView;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,7 +10,7 @@
 - (BOOL)proUI;
 - (BOOL)isMotion;
 - (id)createScaleOSCWithHostDelegate:(NSObject<POHostDelegate> *)arg1 andViewDelegate:(NSObject<POViewDelegate> *)arg2 andObjectDelegate:(NSObject<POObjectDelegate> *)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_ada7b58d *)arg2;
+- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_e1ec2d4c *)arg2;
 - (void)deregisterOSC:(POOnScreenControl *)arg1 withID:(const struct PCUUID *)arg2;
 - (void)registerOSC:(POOnScreenControl *)arg1 withID:(const struct PCUUID *)arg2;
 - (BOOL)showToolTips;
@@ -45,6 +45,8 @@
 - (void)notifyChangeDelta;
 - (void)postNotification:(unsigned int)arg1 updateToolOnSelectionChanged:(BOOL)arg2;
 - (void)postNotification:(unsigned int)arg1;
+- (float)blendingGamma;
+- (struct CGColorSpace *)workingColorSpace;
 - (BOOL)applyFlatten;
 - (BOOL)has3DObjects;
 - (double)scenePixelAspectRatio;

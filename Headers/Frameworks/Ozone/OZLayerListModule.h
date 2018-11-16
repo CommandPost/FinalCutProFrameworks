@@ -11,7 +11,7 @@
 #import "OZListController.h"
 #import "OZOutlineVarRowHeightDelegate.h"
 
-@class LKSearchField, LKSegmentedControl, LKSlider, NSMenuItem, NSProThemeImageView, NSString, NSTableColumn, NSView, OZLayerListOutlineView;
+@class LKSearchField, LKSegmentedControl, LKSlider, NSImageView, NSMenuItem, NSString, NSTableColumn, NSView, OZLayerListOutlineView;
 
 @interface OZLayerListModule : OZProViewModule <OZListController, NSOutlineViewDataSource, NSOutlineViewDelegate, OZOutlineVarRowHeightDelegate>
 {
@@ -20,11 +20,10 @@
     NSTableColumn *_previewColumn;
     NSTableColumn *_opacityColumn;
     NSTableColumn *_blendColumn;
-    LKSegmentedControl *_plusMinusSegmentedControl;
     LKSearchField *_searchField;
     LKSlider *_zoomSlider;
-    NSProThemeImageView *_smallZoomImage;
-    NSProThemeImageView *_largeZoomImage;
+    NSImageView *_smallZoomImage;
+    NSImageView *_largeZoomImage;
     id _zoomMinButton;
     id _zoomMaxButton;
     NSMenuItem *_keyEquivalentMenuItem;
@@ -32,10 +31,10 @@
     LKSegmentedControl *_filterSegmentedControl;
     LKSegmentedControl *_contentsControl;
     struct OZProjectPanelState *_layersState;
-    struct map<unsigned int, OZLayerNodeWrapper *, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, OZLayerNodeWrapper *>>> *_wrapperMap;
-    struct map<unsigned int, OZLayerNodeWrapper *, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, OZLayerNodeWrapper *>>> *_temporaryWrapperMap;
-    struct set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>> *_selectionClientIDs;
-    struct set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>> *_selectionPatronIDs;
+    struct map<unsigned int, OZLayerNodeWrapper *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, OZLayerNodeWrapper *>>> *_wrapperMap;
+    struct map<unsigned int, OZLayerNodeWrapper *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, OZLayerNodeWrapper *>>> *_temporaryWrapperMap;
+    struct set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>> *_selectionClientIDs;
+    struct set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>> *_selectionPatronIDs;
     double _zoomFactor;
     BOOL _listenToNotification;
     BOOL _disablePreviewRendering;

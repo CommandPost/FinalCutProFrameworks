@@ -15,6 +15,7 @@
 - (void)setIntValuesForStrings:(id)arg1;
 - (id)intValuesForStrings;
 - (BOOL)stringValuesRemapped;
+- (void)setStringsFromChannel:(id)arg1;
 - (void)setStrings:(id)arg1;
 - (void)setStringsWithArray:(id)arg1;
 - (id)strings;

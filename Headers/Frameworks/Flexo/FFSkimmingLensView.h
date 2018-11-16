@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void)rightMouseDown:(id)arg1;
 - (void)scrollWheel:(id)arg1;
 - (void)mouseDown:(id)arg1;
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
 - (void)viewWillMoveToWindow:(id)arg1;
 - (void)viewDidMoveToSuperview;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -6,24 +6,18 @@
 
 #import "CATiledLayer.h"
 
-@class CALayer;
+@class CALayer, FFRoleColorScheme;
 
 __attribute__((visibility("hidden")))
 @interface FFCurveEditorBackgroundLayer : CATiledLayer
 {
-    int _type;
     int _state;
-    CALayer *_videoEffectNormal;
-    CALayer *_videoEffectSelected;
-    CALayer *_audioEffectNormal;
-    CALayer *_audioEffectSelected;
-    CALayer *_effectDisabled;
-    CALayer *_effectDisabledSelected;
+    FFRoleColorScheme *_colorScheme;
+    CALayer *_backgroundLayer;
 }
 
 - (void)layoutSublayers;
-- (void)setBackgroundState:(int)arg1;
-- (void)setBackgroundType:(int)arg1;
+- (void)setBackgroundState:(int)arg1 withColorScheme:(id)arg2;
 - (void)dealloc;
 
 @end

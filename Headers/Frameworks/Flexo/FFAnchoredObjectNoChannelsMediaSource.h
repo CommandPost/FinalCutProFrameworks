@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)copySourceDescription;
+- (void)setRole:(id)arg1;
 - (void)setChannels:(id)arg1;
 - (id)sourceType;
 - (id)initWithAnchoredObject:(id)arg1;

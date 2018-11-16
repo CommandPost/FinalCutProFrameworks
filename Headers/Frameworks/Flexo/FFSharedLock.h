@@ -8,7 +8,7 @@
 
 #import "FFModelLocking.h"
 
-@class NSCondition;
+@class NSCondition, NSMutableArray, NSObject<OS_dispatch_queue>;
 
 @interface FFSharedLock : NSObject <FFModelLocking>
 {
@@ -20,10 +20,20 @@
     int _readLockCount;
     int _readLockCountInsideWrite;
     int _writeLockCount;
+    _Bool _deferredWritePending;
+    NSMutableArray *_deferredWantToWriteBlocks;
+    NSObject<OS_dispatch_queue> *_deferredWriteQueue;
+    void *_deferredWriteOverrides;
+    int _disableDeferredWritePrioritization;
 }
 
 + (id)globalLock;
 + (void)initialize;
+- (void)_deferredWriteHandler;
+- (void)queueDeferredWriteLockBlockOnMainThread:(CDUnknownBlockType)arg1;
+- (void)endDisableDeferredWritePrioritization;
+- (void)beginDisableDeferredWritePrioritization;
+- (id)_evenIfDeferredWritePending:(_Bool)arg1;
 - (BOOL)hasReadLockScope;
 - (BOOL)writerIsWaiting;
 - (BOOL)_hasWriteLock;
@@ -33,6 +43,9 @@
 - (void)_readLockEvenIfWriteRequestPending;
 - (void)_readLock;
 - (void)_readLock:(BOOL)arg1;
+- (void)_updateDeferredWriteOverrides;
+- (unsigned long long)collectThreadsBlockingRead:(struct FFThread **)arg1 maxCount:(unsigned long long)arg2;
+- (unsigned long long)collectThreadsBlockingWrite:(struct FFThread **)arg1 maxCount:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)init;
 

@@ -6,11 +6,10 @@
 
 #import "NSWindowController.h"
 
-@class LKPopUpButton, LKTextField, NSView, OZRigAspectRatioListCtlr;
+@class LKPopUpButton, LKTextField, OZRigAspectRatioListCtlr;
 
 @interface OZRigNewAspectRatioWindowCtlr : NSWindowController
 {
-    NSView *_pCustomDARGroup;
     LKTextField *_pDisplayAspectRatioTF;
     LKPopUpButton *_pPixelAspectPopUp;
     LKTextField *_pPixelAspectTF;
@@ -24,7 +23,6 @@
 }
 
 + (void)runModalForWidget:(struct OZRigWidget *)arg1 listCtlr:(id)arg2 time:(const CDStruct_1b6d18a9 *)arg3;
-- (id).cxx_construct;
 - (void)updateCustomDisplayAspect;
 - (void)cancel:(id)arg1;
 - (void)done:(id)arg1;

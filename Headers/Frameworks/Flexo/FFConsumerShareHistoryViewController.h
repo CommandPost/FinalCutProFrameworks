@@ -10,13 +10,13 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class NSArray, NSProScrollView, NSProTableView, NSString, NSView;
+@class LKScrollView, LKTableView, NSArray, NSString, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFConsumerShareHistoryViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate>
 {
-    NSProScrollView *_shareHistoryScrollView;
-    NSProTableView *_shareHistoryView;
+    LKScrollView *_shareHistoryScrollView;
+    LKTableView *_shareHistoryView;
     NSView *_headerView;
     NSView *_itemView;
     NSArray *_sharedItems;

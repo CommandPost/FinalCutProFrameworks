@@ -4,12 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "LKColorWell.h"
+#import "NSColorWell.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFFontSettingsColorWell : LKColorWell
+@interface FFFontSettingsColorWell : NSColorWell
 {
     NSString *_name;
     BOOL _ignoreSetColor;

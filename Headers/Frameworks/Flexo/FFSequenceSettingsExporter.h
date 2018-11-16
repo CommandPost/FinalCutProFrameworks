@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFMedia, FFRenderFormat, FFRenderer, NSArray, NSDictionary, NSError, NSObject<OS_dispatch_semaphore>, NSOperationQueue, NSString;
+@class FFMedia, FFRenderFormat, FFRenderer, NSArray, NSDictionary, NSError, NSNumber, NSObject<OS_dispatch_semaphore>, NSOperationQueue, NSString;
 
 @interface FFSequenceSettingsExporter : NSObject
 {
@@ -26,7 +26,7 @@
     BOOL _operationFinished;
     NSError *_error;
     NSDictionary *_customData;
-    NSArray *_trackRoles;
+    NSArray *_tracks;
     BOOL _usePlayRange;
     int _startVideoFrame;
     int _endVideoFrame;
@@ -34,21 +34,25 @@
     BOOL _shouldConductUI;
     BOOL _includeChapters;
     NSDictionary *_metadata;
+    NSNumber *_cKExportOption;
+    NSString *_ckColorSpaceSetting;
 }
 
 + (id)exporterForMedia:(id)arg1 toFile:(id)arg2 withFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5;
 + (id)exporterForSequence:(id)arg1 toFile:(id)arg2 flags:(unsigned int)arg3 application:(id)arg4;
 @property(readonly) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property(retain) NSArray *tracks; // @synthesize tracks=_tracks;
+@property(retain) NSString *CKColorSpaceSetting; // @synthesize CKColorSpaceSetting=_ckColorSpaceSetting;
+@property(retain) NSNumber *cKExportOption; // @synthesize cKExportOption=_cKExportOption;
 @property(retain) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(readonly) NSError *error; // @synthesize error=_error;
 @property BOOL includeChapters; // @synthesize includeChapters=_includeChapters;
 @property BOOL shouldConductUI; // @synthesize shouldConductUI=_shouldConductUI;
 @property(readonly) NSString *toFile; // @synthesize toFile=_toFile;
 @property(readonly) FFMedia *media; // @synthesize media=_media;
-@property(retain) NSArray *trackRoles; // @synthesize trackRoles=_trackRoles;
 @property(retain) NSDictionary *customData; // @synthesize customData=_customData;
 - (void)_runExport;
-- (void)_performAudioFileExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 fileNames:(id)arg4 fileFormat:(id)arg5;
+- (void)_performAudioFileExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 fileNames:(id)arg4 fileFormat:(int)arg5;
 - (void)_performAudioOnlyMovieExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 movieWriter:(id)arg4;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)cancelWithError:(int)arg1 description:(id)arg2;

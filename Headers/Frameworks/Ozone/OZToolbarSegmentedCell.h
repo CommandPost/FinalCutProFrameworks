@@ -10,9 +10,7 @@
 {
 }
 
-- (id)_indicatorFacet;
-- (id)_baseFacet;
-- (id)_separatorFacet;
+- (double)widthForSegment:(long long)arg1;
 
 @end
 

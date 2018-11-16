@@ -15,6 +15,11 @@
     long long _lane;
     long long _lanePriority;
     NSMutableArray *_intersectedItems;
+    struct {
+        unsigned int isAudioSummary:1;
+        unsigned int isAudioComponent:1;
+        unsigned int canFillGaps:1;
+    } _flags;
     CDStruct_1b6d18a9 _start;
     CDStruct_1b6d18a9 _end;
     double _startSec;
@@ -30,9 +35,11 @@
 @property CDStruct_1b6d18a9 end; // @synthesize end=_end;
 @property CDStruct_1b6d18a9 start; // @synthesize start=_start;
 @property id <FFVerticalOrdering> item; // @synthesize item=_item;
+@property BOOL canFillGaps;
 - (id)description;
 - (id)shortDescription:(BOOL)arg1;
 - (id)initWithItem:(id)arg1;
+- (id)initWithRange:(CDStruct_e83c9415)arg1 lane:(long long)arg2 item:(id)arg3;
 - (void)dealloc;
 - (id)init;
 @property(readonly) NSMutableArray *intersectedItems;

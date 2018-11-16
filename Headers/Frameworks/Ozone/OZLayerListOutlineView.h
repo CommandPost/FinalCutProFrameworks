@@ -19,7 +19,6 @@
     BOOL _isInMouseDown;
 }
 
-- (struct CGRect)shadowRect;
 - (void)selectRowIndexes:(id)arg1 byExtendingSelection:(BOOL)arg2;
 - (void)mouseDown:(id)arg1;
 - (id)menuForEvent:(id)arg1;
@@ -42,11 +41,8 @@
 - (void)setObjectBlendMenu:(id)arg1;
 - (void)setObjectMenu:(id)arg1;
 - (void)editColumn:(long long)arg1 row:(long long)arg2 withEvent:(id)arg3 select:(BOOL)arg4;
-- (void)highlightSelectionInClipRect:(struct CGRect)arg1;
 - (void)drawRow:(long long)arg1 clipRect:(struct CGRect)arg2;
 - (id)getRowColor:(int)arg1;
-- (id)groupHeaderBackgroundFacet:(BOOL)arg1;
-- (BOOL)shouldUseSecondaryHighlightColor;
 - (void)keyUp:(id)arg1;
 - (void)keyDown:(id)arg1;
 - (void)performSelector:(SEL)arg1 withObject:(id)arg2 afterDelay:(double)arg3;

@@ -10,21 +10,22 @@
 
 @interface TLKLayoutMetrics : NSObject <NSCopying>
 {
-    double _itemLaneSpacing;
-    double _itemLanePadding;
-    double _lineSpacing;
+    BOOL _slopesCavityWalls;
     double _topLinePadding;
     double _bottomLinePadding;
-    int _clipDisplayMode;
+    double _lineSpacing;
+    double _verticalCompressionFactor;
+    CDStruct_1b6d18a9 _minLaneCavityDuration;
 }
 
-@property(nonatomic) int clipDisplayMode; // @synthesize clipDisplayMode=_clipDisplayMode;
++ (id)zeroSpacingMetrics;
+@property(nonatomic) double verticalCompressionFactor; // @synthesize verticalCompressionFactor=_verticalCompressionFactor;
+@property(nonatomic) BOOL slopesCavityWalls; // @synthesize slopesCavityWalls=_slopesCavityWalls;
+@property(nonatomic) CDStruct_1b6d18a9 minLaneCavityDuration; // @synthesize minLaneCavityDuration=_minLaneCavityDuration;
 @property(nonatomic) double lineSpacing; // @synthesize lineSpacing=_lineSpacing;
 @property(nonatomic) double bottomLinePadding; // @synthesize bottomLinePadding=_bottomLinePadding;
 @property(nonatomic) double topLinePadding; // @synthesize topLinePadding=_topLinePadding;
-@property(nonatomic) double itemLaneSpacing; // @synthesize itemLaneSpacing=_itemLaneSpacing;
-@property(nonatomic) double itemLanePadding; // @synthesize itemLanePadding=_itemLanePadding;
-- (id)description;
+- (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

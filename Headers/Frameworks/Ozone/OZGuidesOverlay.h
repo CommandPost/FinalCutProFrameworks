@@ -6,12 +6,12 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class NSProCursor;
+@class LKCursor;
 
 @interface OZGuidesOverlay : OZOverlay
 {
-    NSProCursor *_horizontalCursor;
-    NSProCursor *_verticalCursor;
+    LKCursor *_horizontalCursor;
+    LKCursor *_verticalCursor;
     float _movingMouseStart;
     float _movingLocationStart;
     float _movingLocation;
@@ -20,7 +20,7 @@
     BOOL _moving;
 }
 
-- (set_b780a99c *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
+- (set_f8d10c04 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 - (id)getCursorWithEvent:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;

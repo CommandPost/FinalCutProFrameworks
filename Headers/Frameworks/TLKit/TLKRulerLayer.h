@@ -4,23 +4,24 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKThemeBackedLayer.h>
+#import "CALayer.h"
 
 #import "TLKPartInfo.h"
 
 @class NSString;
 
-@interface TLKRulerLayer : TLKThemeBackedLayer <TLKPartInfo>
+@interface TLKRulerLayer : CALayer <TLKPartInfo>
 {
     int _editingMode;
 }
 
+@property(nonatomic) int editingMode; // @synthesize editingMode=_editingMode;
+- (long long)themeState;
+- (void)setThemeState:(long long)arg1;
 - (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)actionForKey:(id)arg1;
-@property int editingMode;
 - (id)init;
-- (void)_updateThemeFacet;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

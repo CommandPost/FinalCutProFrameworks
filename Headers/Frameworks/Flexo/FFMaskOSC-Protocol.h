@@ -11,6 +11,7 @@
 @protocol FFMaskOSC <NSObject>
 
 @optional
++ (BOOL)isSamplingOSC;
 @property(nonatomic, getter=isActive) BOOL active;
 @property(copy, nonatomic) NSString *name;
 @property(readonly, nonatomic) FFMaskBase *mask;

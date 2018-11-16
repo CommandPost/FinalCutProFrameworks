@@ -21,7 +21,6 @@
     unsigned int _curveId;
 }
 
-- (id).cxx_construct;
 - (long long)compareKeypointDescending:(id)arg1;
 - (long long)compareKeypointAscending:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

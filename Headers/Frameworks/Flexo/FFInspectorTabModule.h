@@ -6,16 +6,19 @@
 
 #import <Flexo/FFInspectorModule.h>
 
-#import "FFInspectorModuleDelegate.h"
-
-@class NSTabView, NSView;
+@class LKButton, NSTabView, NSTextField, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorTabModule : FFInspectorModule <FFInspectorModuleDelegate>
+@interface FFInspectorTabModule : FFInspectorModule
 {
     NSTabView *_tabView;
     NSView *_accessoryView;
-    NSView *_tabSelectionButtonGroup;
+    LKButton *_imageButtonOne;
+    LKButton *_imageButtonTwo;
+    LKButton *_imageButtonThree;
+    LKButton *_imageButtonFour;
+    NSTextField *_inspectorTitle;
+    NSTextField *_durationField;
     NSView *_accessoryFooterView;
     BOOL _needToRebuildInspector;
     BOOL _rebuildingInspector;
@@ -31,12 +34,15 @@ __attribute__((visibility("hidden")))
 - (void)_rebuildIfTabsChanged;
 - (void)_setupFooter;
 - (void)_selectInspectorTab:(unsigned long long)arg1;
+- (id)imageForInspectorTab:(id)arg1;
 - (void)_setupTabSelector;
 - (id)newTabSelectorButtonWithTitle:(id)arg1 tag:(long long)arg2;
+- (void)_updateNameAndTimecode:(id)arg1;
+- (void)_nameAndTimecodeNeedUpdate;
 - (void)_finishSetCurrentItems;
-- (BOOL)_identifiersAndClassesForItems:(id)arg1 _outIds:(id *)arg2 _outClasses:(id *)arg3;
-- (id)_tabIdentifiersForItems:(id)arg1;
-- (id)_inspectorClassesForItems:(id)arg1;
+- (BOOL)_identifiersAndClassesForItems:(id)arg1 outTabIdentifiers:(id *)arg2 outClassesMap:(id *)arg3;
+- (id)_classNamesForItem:(id)arg1 andInspectorTabIdentifier:(id)arg2 outTabSplitIdentifiers:(id *)arg3;
+- (id)_inspectorClassesForItem:(id)arg1 andTabIdentifiers:(id)arg2;
 - (void)activeToolChanged:(id)arg1;
 - (void)toggleModuleVisibility:(id)arg1;
 - (BOOL)isSubmoduleVisible:(id)arg1;
@@ -48,11 +54,13 @@ __attribute__((visibility("hidden")))
 - (id)visibleSubmodules;
 - (void)setInspectorModule:(id)arg1;
 - (void)setCurrentModule:(id)arg1;
+- (void)selectInfoTab;
 - (void)selectTab:(id)arg1;
 - (void)selectPreviousTabViewItemAction:(id)arg1;
 - (void)selectNextTabViewItemAction:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)localModuleActions;
+- (void)_rangeInvalidation:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (unsigned long long)labelAlignment;
 - (id)moduleFooterAccessoryView;
@@ -69,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (id)lastKeyView;
 - (id)firstKeyView;
 - (void)viewDidLoad;
+- (void)dealloc;
 
 @end
 

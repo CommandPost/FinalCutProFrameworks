@@ -12,7 +12,7 @@
 #import "NSOutlineViewDataSource.h"
 #import "NSSplitViewDelegate.h"
 
-@class FFOrganizerFilmListClusterCell, FFOrganizerFilmListOutlineView, FigTimeRangeAndObject, LKMenu, LKSplitView, LKTableColumn, NSArray, NSDictionary, NSMenuItem, NSString, NSTreeNode;
+@class FFOrganizerFilmListOutlineView, FigTimeRangeAndObject, LKMenu, LKSplitView, LKTableColumn, NSArray, NSDictionary, NSMenuItem, NSString, NSTreeNode;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmListViewController : FFOrganizerFilmstripViewController <FFOrganizerFilmstripViewDelegate, FFOrganizerFilmListOutlineViewDelegate, NSOutlineViewDataSource, NSSplitViewDelegate, FFRolesMenuDelegate>
@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
     id <FFOrganizerFilmstripViewDelegate> _filmstripViewDelegate;
     NSTreeNode *_filmOutlineRootNode;
     long long _currentClusterMode;
-    FFOrganizerFilmListClusterCell *_clusterCell;
     BOOL _ignoreOultineViewSelectionDidChange;
     FigTimeRangeAndObject *_deferredFilmstripArbitrarySelection;
     NSArray *_filmstripFilteredRanges;
@@ -45,10 +44,12 @@ __attribute__((visibility("hidden")))
     LKMenu *_projectContextualMenu;
     NSMenuItem *_openProjectMenuItem;
     NSMenuItem *_consumerOpenProjectMenuItem;
+    LKTableColumn *_colorProfileTableColumn;
     LKTableColumn *_sizeTableColumn;
     struct FFProcrastinatedDispatch_t _procrastinatedReloadData;
     NSArray *_cachedFlattenedNodes;
     NSDictionary *_cachedFlattenedNodesIdsForUnknown;
+    NSArray *_monospacedFontColumnIdentifiers;
 }
 
 @property(retain, nonatomic) LKMenu *markersContextualMenu; // @synthesize markersContextualMenu=_markersContextualMenu;
@@ -62,7 +63,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFOrganizerFilmListOutlineView *outlineView; // @synthesize outlineView=_outlineView;
 @property(retain, nonatomic) NSArray *previousFilmstripFilteredRanges; // @synthesize previousFilmstripFilteredRanges=_previousFilmstripFilteredRanges;
 @property(retain, nonatomic) FigTimeRangeAndObject *deferredFilmstripArbitrarySelection; // @synthesize deferredFilmstripArbitrarySelection=_deferredFilmstripArbitrarySelection;
-@property(retain, nonatomic) FFOrganizerFilmListClusterCell *clusterCell; // @synthesize clusterCell=_clusterCell;
 @property(retain, nonatomic) NSTreeNode *filmOutlineRootNode; // @synthesize filmOutlineRootNode=_filmOutlineRootNode;
 @property(nonatomic) id <FFOrganizerFilmstripViewDelegate> filmstripViewDelegate; // @synthesize filmstripViewDelegate=_filmstripViewDelegate;
 @property(nonatomic) BOOL listViewWasFocusedLast; // @synthesize listViewWasFocusedLast=_listViewWasFocusedLast;
@@ -71,6 +71,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL syncingFilmstripWithList; // @synthesize syncingFilmstripWithList=_syncingFilmstripWithList;
 @property(nonatomic) BOOL syncingListWithFilmstrip; // @synthesize syncingListWithFilmstrip=_syncingListWithFilmstrip;
 @property(nonatomic) BOOL needsData; // @synthesize needsData=_needsData;
+- (id)_enabledControlTextColor;
+- (id)_disabledControlTextColor;
 - (BOOL)outlineView:(id)arg1 acceptDrop:(id)arg2 item:(id)arg3 childIndex:(long long)arg4;
 - (unsigned long long)outlineView:(id)arg1 validateDrop:(id)arg2 proposedItem:(id)arg3 proposedChildIndex:(long long)arg4;
 - (BOOL)shouldAlwaysPlacePlayhead;
@@ -81,9 +83,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)wantsPlayheadActions;
 - (BOOL)wantsRanges;
 - (BOOL)wantsSkimmerInfo;
-- (void)shouldEditRolesForRolesMenuController:(id)arg1;
-- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 toAnchoredObjects:(id)arg3;
-- (id)anchoredObjectsForRolesMenuController:(id)arg1;
+- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 forContext:(id)arg3;
+- (id)contextForRolesMenuController:(id)arg1;
 - (void)showKeywordEditor;
 - (BOOL)actionMoveMarker:(id)arg1 toRange:(id)arg2 error:(id *)arg3;
 - (BOOL)markerEditorIsShown;
@@ -96,14 +97,20 @@ __attribute__((visibility("hidden")))
 - (void)removeAllSelectionMarkersFromClips:(id)arg1;
 - (void)removeSelectionMarkers:(id)arg1 onlyRemoveOverlap:(BOOL)arg2 addSelectionMarkers:(id)arg3 extendingSelection:(BOOL)arg4;
 - (void)modifySelectionMarkersFromClip:(id)arg1 removeRange:(CDStruct_e83c9415)arg2 onlyRemoveOverlap:(BOOL)arg3 rangeToAdd:(CDStruct_e83c9415)arg4 newSelection:(id)arg5 extending:(BOOL)arg6;
-- (id)editorModule;
 - (void)stopUsingMedia:(id)arg1;
+- (id)editorModule;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
+- (void)makeSequenceActive:(id)arg1;
 - (BOOL)canBeginSkimming;
+- (id)markerEditorDelegate;
+- (id)skimmingDelegate;
+- (void)moveToPreviusClip;
+- (void)moveToNextClip;
 - (id)activeSelection;
 - (void)setActiveSelection:(id)arg1;
+- (void)activeSelectionDidChangeScrollToSelection:(BOOL)arg1;
 - (void)activeSelectionDidChange;
-- (void)_activeSelectionChangedTo:(id)arg1;
+- (void)_activeSelectionChangedTo:(id)arg1 scrollToSelection:(BOOL)arg2;
 - (void)selectionDidChangeToTime:(CDStruct_e83c9415)arg1 inObject:(id)arg2;
 - (void)selectionDidChangeToObject:(id)arg1;
 - (void)selectedRangesOfMediaDidChange;
@@ -113,7 +120,6 @@ __attribute__((visibility("hidden")))
 - (id)contextualMenuForSelection:(id)arg1;
 - (id)itemsClusteredByMetadataValue:(id)arg1;
 - (BOOL)isClustering;
-- (void)makeSequenceActive:(id)arg1;
 - (void)openItemFromRangeObject:(id)arg1;
 - (void)organizerFilmstripViewDidReloadData:(id)arg1;
 - (unsigned long long)filmstripView:(id)arg1 writeRangesOfMedia:(id)arg2 toPasteboard:(id)arg3;
@@ -123,10 +129,9 @@ __attribute__((visibility("hidden")))
 - (void)_deferredSyncSelectionToAddedKeyword:(id)arg1;
 - (void)didRemoveKeywordsWithRanges:(id)arg1 onSequence:(id)arg2 animationRange:(CDStruct_e83c9415)arg3;
 - (void)didAddKeywordsNamed:(id)arg1 removeKeywordsNamed:(id)arg2 onSequence:(id)arg3 forRange:(CDStruct_e83c9415)arg4;
-- (void)_projectChanged:(id)arg1;
 - (id)valueForKey:(id)arg1;
-- (void)removeObserversAndNotifications:(id)arg1;
-- (void)attachObserversAndNotifications:(id)arg1;
+- (BOOL)removeObserversAndNotifications:(id)arg1;
+- (BOOL)attachObserversAndNotifications:(id)arg1;
 - (void)setClipLabelSize:(int)arg1;
 - (void)moveToRangeOfMedia:(id)arg1 andTime:(CDStruct_1b6d18a9)arg2;
 - (void)moveToNextClipExtendingSelection:(BOOL)arg1;
@@ -218,29 +223,44 @@ __attribute__((visibility("hidden")))
 - (void)selectNodes:(id)arg1 extendSelection:(BOOL)arg2;
 - (id)selectedNodes;
 - (id)_cachedFlattenedNodesIdsForUnknownArray;
-- (id)_cachedFlattenNodesInTreeWitoutStartAndRecursive;
-- (void)_invalidateCachedFlattedNodes;
+- (id)_cachedFlattenedNodesInTreeWitoutStartAndRecursive;
+- (void)_invalidateCachedFlattenedNodes;
 - (id)flattenNodesInTreeIdsForUnknown:(id)arg1;
 - (id)flattenNodesInTree:(id)arg1 includeStartingNode:(BOOL)arg2 recursively:(BOOL)arg3;
 - (void)outlineViewItemDidCollapse:(id)arg1;
 - (void)outlineViewItemDidExpand:(id)arg1;
 - (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
+- (void)outlineViewColumnDidMove:(id)arg1;
 - (void)outlineView:(id)arg1 sortDescriptorsDidChange:(id)arg2;
 - (id)_sortDescriptors;
 - (void)_recursiveSortContentsOfClusters:(id)arg1 withSortDescriptors:(id)arg2;
+- (id)fontForColumnIdentifier:(id)arg1;
+- (SEL)_selectorForColumnIdentifier:(id)arg1;
+- (void)setCameraName:(id)arg1;
+- (void)setShot:(id)arg1;
+- (void)setScene:(id)arg1;
+- (void)setReel:(id)arg1;
+- (void)setNotes:(id)arg1;
+- (void)setCameraAngle:(id)arg1;
+- (void)setClipDurationTimeCode:(id)arg1;
+- (void)setClipEndTimeCode:(id)arg1;
+- (void)setClipStartTimeCode:(id)arg1;
+- (void)setDisplayName:(id)arg1;
+- (id)_nodeForSender:(id)arg1;
 - (void)outlineView:(id)arg1 setObjectValue:(id)arg2 forTableColumn:(id)arg3 byItem:(id)arg4;
 - (id)outlineView:(id)arg1 objectValueForTableColumn:(id)arg2 byItem:(id)arg3;
 - (long long)outlineView:(id)arg1 numberOfChildrenOfItem:(id)arg2;
 - (BOOL)outlineView:(id)arg1 isItemExpandable:(id)arg2;
 - (id)outlineView:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;
-- (void)adjustRolesCell:(id)arg1 forDataNode:(id)arg2;
+- (void)adjustRolesCell:(id)arg1 forDataNode:(id)arg2 isVideoNotAudio:(BOOL)arg3;
 - (void)ultratoggleForRow:(long long)arg1;
 - (void)outlineViewSelectionDidChange:(id)arg1;
 - (id)outlineView:(id)arg1 selectionIndexesForProposedSelection:(id)arg2;
-- (BOOL)outlineView:(id)arg1 shouldEditTableColumn:(id)arg2 item:(id)arg3;
+- (BOOL)shouldEditTableColumn:(id)arg1 item:(id)arg2;
 - (BOOL)outlineView:(id)arg1 shouldReorderColumn:(long long)arg2 toColumn:(long long)arg3;
-- (void)outlineView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 item:(id)arg4;
-- (id)outlineView:(id)arg1 dataCellForTableColumn:(id)arg2 item:(id)arg3;
+- (double)outlineView:(id)arg1 sizeToFitWidthOfColumn:(long long)arg2;
+- (id)outlineView:(id)arg1 menuForColumn:(id)arg2 item:(id)arg3;
+- (id)outlineView:(id)arg1 viewForTableColumn:(id)arg2 item:(id)arg3;
 - (double)outlineView:(id)arg1 heightOfRowByItem:(id)arg2;
 - (BOOL)isDefaultColumn:(id)arg1;
 - (void)sizeColumnToFitData:(id)arg1;
@@ -287,7 +307,10 @@ __attribute__((visibility("hidden")))
 - (void)_rootNode:(id)arg1 hasProjectCluster:(id *)arg2 AndClipsCluster:(id *)arg3;
 - (id)lastKeyView;
 - (id)firstKeyView;
+- (void)viewDidLoad;
+- (void)removeUnsupportedColumns;
 - (void)loadView;
+- (void)_rolesInLibraryChanged:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

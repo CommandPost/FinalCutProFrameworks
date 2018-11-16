@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (Class)DSClassDescriptionClass;
 @property(retain, nonatomic) DSObject *value; // @synthesize value=_value;
 @property(readonly, nonatomic) NSString *key; // @synthesize key=_key;
+- (id)FFObjectDictKey;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -12,15 +12,17 @@
 #import "FxKeyframeAPI.h"
 #import "FxKeyframeAPI_v2.h"
 #import "FxWindowAPI.h"
+#import "PROAPIObject.h"
 
-@class NSObject<FxPlugAPIDelegate>;
+@class NSObject<FxPlugAPIDelegate>, NSString;
 
-@interface FxPlugAPIHandler : NSObject <FxKeyframeAPI, FxKeyframeAPI_v2, FxDynamicParameterAPI, FxDynamicParameterAPI_v2, FxWindowAPI, FxHostResourcesAPI>
+@interface FxPlugAPIHandler : NSObject <FxKeyframeAPI, FxKeyframeAPI_v2, FxDynamicParameterAPI, FxDynamicParameterAPI_v2, FxWindowAPI, FxHostResourcesAPI, PROAPIObject>
 {
     NSObject<FxPlugAPIDelegate> *_delegate;
 }
 
 @property(nonatomic) NSObject<FxPlugAPIDelegate> *delegate; // @synthesize delegate=_delegate;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (void)setKeyframeInfo:(struct FxKeyframeInfo)arg1 toChannel:(struct OZChannel *)arg2 atTime:(CDStruct_198678f7)arg3;
 - (void)keyframeInfo:(struct FxKeyframeInfo *)arg1 fromChannel:(struct OZChannel *)arg2 atTime:(CDStruct_198678f7)arg3;
@@ -70,6 +72,12 @@
 - (void)freeMemory:(void *)arg1 error:(id *)arg2;
 - (void *)allocateMemory:(unsigned long long)arg1 clear:(BOOL)arg2 clearWith:(unsigned char)arg3 error:(id *)arg4;
 - (id)errorWithString:(id)arg1 andCode:(long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

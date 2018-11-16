@@ -22,6 +22,7 @@
 + (id)formatsForRender;
 + (id)allFormats;
 + (void)releaseSharedInstance;
+- (id)renderPropsForVideoProps:(id)arg1 mismatchColorSpacePolicy:(int)arg2;
 - (id)renderPropsForVideoProps:(id)arg1;
 - (id)description;
 - (BOOL)renderFromOriginalMedia;

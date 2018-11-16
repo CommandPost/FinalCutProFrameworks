@@ -33,7 +33,7 @@
 - (struct OZChanRotoshapeRefWithPicker *)getGeometryChan;
 - (struct OZChannelPosition *)getEndPointChan;
 - (struct OZChannelPosition *)getStartPointChan;
-- (int)getShapeSamplesX:(vector_3396ec90 *)arg1 Y:(vector_3396ec90 *)arg2 Z:(vector_3396ec90 *)arg3 T:(vector_3396ec90 *)arg4;
+- (int)getShapeSamplesX:(vector_8f06c10f *)arg1 Y:(vector_8f06c10f *)arg2 Z:(vector_8f06c10f *)arg3 T:(vector_8f06c10f *)arg4;
 - (void)applyObjectTransform:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
 - (CDStruct_198678f7)getTimeOffset;
 - (struct OZChannelPosition3D *)getPosition;
@@ -42,10 +42,10 @@
 - (struct OZSceneNode *)getSceneNode;
 - (void)getWorldToLocal:(PCMatrix44Tmpl_93ed1289 *)arg1 atTime:(const CDStruct_198678f7 *)arg2;
 - (void)getLocalToWorld:(PCMatrix44Tmpl_93ed1289 *)arg1 atTime:(const CDStruct_198678f7 *)arg2;
+- (BOOL)pointsAreInLocalSpace;
 - (BOOL)selectAll:(id)arg1;
 - (void)addVertexAtTime:(CDStruct_198678f7)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 handleX:(void **)arg5 handleY:(void **)arg6 handleZ:(void **)arg7;
-- (void)moveSelected:(list_5245b10b *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
-- (BOOL)offsetSelected:(list_5245b10b *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
+- (void)moveSelected:(list_54fac194 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
 - (void)notify:(unsigned int)arg1;
 - (void)drawVertices:(const PCMatrix44Tmpl_93ed1289 *)arg1 mode:(unsigned int)arg2;
 - (void)drawPath;

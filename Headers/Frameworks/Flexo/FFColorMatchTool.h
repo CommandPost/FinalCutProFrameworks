@@ -20,10 +20,16 @@
 
 + (id)cursorForOrganizer;
 + (id)cursor;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
++ (BOOL)terminatesModalModeAsCompletion;
++ (BOOL)globalTransactionResignsTool;
 + (id)TLKEventHandlerID;
 @property(nonatomic) FFSwitch *effectSwitch; // @synthesize effectSwitch=_effectSwitch;
 @property(nonatomic) LKButton *acceptButton; // @synthesize acceptButton=_acceptButton;
@@ -37,6 +43,7 @@
 - (void)awakeFromNib;
 - (id)adjustmentsToolbarView;
 - (void)dealloc;
+- (void)resignActiveTool;
 - (void)becomeActiveTool;
 - (void)didRemoveAsHandlerForTimeline:(id)arg1;
 - (void)willSetAsHandlerForTimeline:(id)arg1;

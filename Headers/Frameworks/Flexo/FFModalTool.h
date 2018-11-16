@@ -20,12 +20,15 @@
 + (id)TLKEventHandlerID;
 @property(nonatomic) id <FFModalToolDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)handleFilteredEvent:(id)arg1;
+- (void)selectedItemsChanged:(id)arg1;
 - (BOOL)allowInspectorToTrackSelection;
 - (void)resignActiveTool;
 - (void)becomeActiveTool;
+- (BOOL)isModalTool;
 - (void)stopObservingUndoRedoChangeNotifications;
 - (void)startObservingUndoRedoChangeNotifications;
 - (void)handleUndoHandlerNotification:(id)arg1;
+- (void)terminateModalMode;
 - (void)dealloc;
 - (void)didRemoveAsHandlerForTimeline:(id)arg1;
 - (void)willSetAsHandlerForTimeline:(id)arg1;

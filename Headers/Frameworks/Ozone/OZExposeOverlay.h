@@ -10,8 +10,7 @@
 
 @interface OZExposeOverlay : OZOverlay
 {
-    struct vector<OZExposeObject *, std::allocator<OZExposeObject *>> *_exposeObjects;
-    struct PCConditionVariable *_cond;
+    struct vector<OZExposeObject *, std::__1::allocator<OZExposeObject *>> *_exposeObjects;
     struct PCMutex *_mutex;
     NSTimer *_timer;
     int _numDone;

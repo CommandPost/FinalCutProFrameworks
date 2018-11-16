@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)makeTouchBar;
+- (id)touchBar;
 - (void)changeColor:(id)arg1;
 - (BOOL)readSelectionFromPasteboard:(id)arg1 type:(id)arg2;
 - (void)drawInsertionPointInRect:(struct CGRect)arg1 color:(id)arg2 turnedOn:(BOOL)arg3;

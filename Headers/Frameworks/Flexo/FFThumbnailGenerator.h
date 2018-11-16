@@ -13,21 +13,18 @@
 @interface FFThumbnailGenerator : NSObject <FFBackgroundTaskTarget>
 {
     NSMapTable *_activeRequestsMap;
-    BOOL _appShuttingDown;
+    BOOL _shuttingDown;
 }
 
 + (void)addVideoThumbnailToEventForRequest:(id)arg1;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
-- (id)librariesInUse;
-- (id)assetsInUse;
-- (void)stop;
-- (void)resume;
+- (void)canceledTask:(id)arg1;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)generateThumbnailsForClips:(id)arg1;
-- (void)_notifyShutdown:(id)arg1;
+- (void)_notifyWillShutdown:(id)arg1;
 - (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
-- (void)_waitForBGTaskToFinish;
-- (void)_cancelBGTask;
 - (void)_startBackgroundTaskForClips:(id)arg1;
 - (void)dealloc;
 - (oneway void)release;

@@ -14,7 +14,7 @@
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)draw;
-- (void)getAllCameraNodes:(vector_5a1dfb64 *)arg1 forScene:(struct OZScene *)arg2;
+- (void)getAllCameraNodes:(vector_00de78c2 *)arg1 forScene:(struct OZScene *)arg2;
 - (void)dealloc;
 - (BOOL)is3DOSC;
 - (int)getDrawingOrder;

@@ -13,9 +13,9 @@
     TXGlyphToolHUDController *_txcontroller;
 }
 
-- (struct OZChannelRotation3D *)getRotationChannel:(struct TXTextStyle *)arg1;
-- (struct OZChannelScale *)getScaleChannel:(struct TXTextStyle *)arg1;
-- (struct OZChannelPosition3D *)getOffsetChannel:(struct TXTextStyle *)arg1;
+- (struct OZChannelRotation3D *)getRotationChannel:(const shared_ptr_e0e110e1 *)arg1;
+- (struct OZChannelScale *)getScaleChannel:(const shared_ptr_e0e110e1 *)arg1;
+- (struct OZChannelPosition3D *)getOffsetChannel:(const shared_ptr_e0e110e1 *)arg1;
 - (unsigned int)getGlyphSelectionSize;
 - (id)controller;
 - (void)setController:(id)arg1;

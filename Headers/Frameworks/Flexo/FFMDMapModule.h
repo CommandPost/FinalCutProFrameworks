@@ -4,17 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFMDModule.h>
+#import <Flexo/FFMDToggleSidebarModule.h>
 
-@class FFAlwaysHitButton, FFAnchoredSequence, FFEffectLibraryCollectionView, LKImageView, NSDictionary, NSScrollView;
+@class FFAnchoredSequence, FFEffectLibraryCollectionView, LKImageView, NSDictionary, NSScrollView;
 
-@interface FFMDMapModule : FFMDModule
+@interface FFMDMapModule : FFMDToggleSidebarModule
 {
     NSScrollView *_scrollView;
     FFEffectLibraryCollectionView *_effectCollectionView;
     LKImageView *_headerIcon;
-    FFAlwaysHitButton *_toggleSidebarButton;
-    FFAlwaysHitButton *_dividerLine;
     FFAnchoredSequence *_currentSequence;
     NSDictionary *_sortOrder;
 }

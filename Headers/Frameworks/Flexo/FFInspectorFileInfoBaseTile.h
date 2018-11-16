@@ -4,28 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFInspectorShareAutoresizingTile.h>
-
-#import "FFInspectorFileInfoTileProtocol.h"
-
-@class NSString;
+#import <Flexo/FFInspectorBaseController.h>
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorFileInfoBaseTile : FFInspectorShareAutoresizingTile <FFInspectorFileInfoTileProtocol>
+@interface FFInspectorFileInfoBaseTile : FFInspectorBaseController
 {
 }
 
 + (id)sequenceForItems:(id)arg1 owner:(id)arg2;
 + (void)itemSettings:(char *)arg1 isCompoundClip:(char *)arg2 isReferenceClip:(char *)arg3 isMultiAngleClip:(char *)arg4 isFreezeFrameClip:(char *)arg5 forItems:(id)arg6;
-- (void)updateWithRefs:(id)arg1 items:(id)arg2 forOwner:(id)arg3;
-- (int)_calculateOfflineClipsCountIn:(id)arg1;
-- (id)_mediaFor:(id)arg1 withRefs:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (unsigned long long)calculateOfflineClipsCountForMediaReferences:(id)arg1;
+- (id)mediaForItems:(id)arg1 references:(id)arg2;
 
 @end
 

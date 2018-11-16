@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LKTextField *titleEditingTextField; // @synthesize titleEditingTextField=_titleEditingTextField;
 @property(nonatomic) BOOL reloadDataWhenContentChanges; // @synthesize reloadDataWhenContentChanges=_reloadDataWhenContentChanges;
 @property(nonatomic) id <FFMDLibraryDelegate> libraryDelegate; // @synthesize libraryDelegate=_libraryDelegate;
+- (void)accessibilitySetValue:(id)arg1 forAttribute:(id)arg2;
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;

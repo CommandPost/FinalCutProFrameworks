@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class CKSetting, CKSource, LKTextField, NSString, NSTimer, NSView;
+@class CKSetting, CKSource, LKTextField, NSString, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFConsumerShareInfoController : NSObject
@@ -20,13 +20,13 @@ __attribute__((visibility("hidden")))
     LKTextField *_outputFileSizeTextField;
     NSView *_compatibilityImageView;
     BOOL _observing;
-    NSTimer *_outputFileSizeAnimationTimer;
 }
 
-+ (id)propertiesDependentOnStompSettingProperties;
 + (id)keyPathsForValuesAffectingOutputFileSizeToolTip;
 + (id)keyPathsForValuesAffectingOutputFileSize;
++ (id)keyPathsForValuesAffectingCompatibility;
 + (id)keyPathsForValuesAffectingClipDuration;
++ (id)propertiesDependentOnStompSettingProperties;
 @property(nonatomic, getter=isObserving) BOOL observing; // @synthesize observing=_observing;
 @property(nonatomic) NSView *compatibilityImageView; // @synthesize compatibilityImageView=_compatibilityImageView;
 @property(nonatomic) LKTextField *outputFileSizeTextField; // @synthesize outputFileSizeTextField=_outputFileSizeTextField;
@@ -37,9 +37,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKSetting *setting; // @synthesize setting=_setting;
 @property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
 - (void)animateOutputFileSizeWithTimer:(id)arg1;
-- (id)contentsAnimationWithLayer:(id)arg1 infoBarIcon:(long long)arg2;
+- (id)contentsAnimationWithLayer:(id)arg1 infoBarImageName:(id)arg2;
 - (id)contentsAnimation;
-- (id)infoBarIcon:(long long)arg1 state:(long long)arg2;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)stopObservingStompSettings:(id)arg1;
 - (void)startObservingStompSettings:(id)arg1;
@@ -47,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)centerVisibleInfo:(struct CGRect)arg1;
 @property(readonly, nonatomic) NSString *outputFileSizeToolTip;
 @property(readonly, nonatomic) NSString *outputFileSize;
+- (id)compatibility;
 @property(readonly, nonatomic) NSString *clipDuration;
 - (void)dealloc;
 - (void)awakeFromNib;

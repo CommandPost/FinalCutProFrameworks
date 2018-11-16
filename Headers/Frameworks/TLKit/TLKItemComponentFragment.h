@@ -4,40 +4,55 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <TLKit/ERLRelationalObject.h>
 
 #import "NSCopying.h"
 #import "TLKAccessibilityProtocol.h"
 
 @class TLKAccessoryHostLayer, TLKItemComponentInfo, TLKItemLaneFragment, TLKLayoutContext, TLKTimelineLayer;
 
-@interface TLKItemComponentFragment : NSObject <TLKAccessibilityProtocol, NSCopying>
+@interface TLKItemComponentFragment : ERLRelationalObject <TLKAccessibilityProtocol, NSCopying>
 {
     TLKItemComponentInfo *_itemComponentInfo;
     TLKLayoutContext *_layoutContext;
     TLKItemLaneFragment *_itemLaneFragment;
     TLKTimelineLayer *_layer;
-    struct CGRect _frame;
     TLKAccessoryHostLayer *_accessoryLayer;
+    struct CGRect _frame;
+    struct CGRect _layoutFrame;
     BOOL _purgeable;
+    struct _TLKRange _timeRangeInSeconds;
+    struct _TLKRange _locationRange;
+    BOOL _frameNeedsUpdate;
+    BOOL _locationRangeNeedsUpdate;
+    TLKItemComponentInfo *_deletedFromItemComponentInfo;
+    struct CGRect _legacyFrame;
 }
 
 + (void)setTimelineView:(id)arg1;
 @property(nonatomic, getter=isPurgeable) BOOL purgeable; // @synthesize purgeable=_purgeable;
+@property(nonatomic) struct CGRect legacyFrame; // @synthesize legacyFrame=_legacyFrame;
+@property(nonatomic) BOOL locationRangeNeedsUpdate; // @synthesize locationRangeNeedsUpdate=_locationRangeNeedsUpdate;
+@property(nonatomic) struct CGRect layoutFrame; // @synthesize layoutFrame=_layoutFrame;
 @property(retain, nonatomic) TLKAccessoryHostLayer *accessoryLayer; // @synthesize accessoryLayer=_accessoryLayer;
-@property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
+@property(nonatomic) BOOL frameNeedsUpdate; // @synthesize frameNeedsUpdate=_frameNeedsUpdate;
+@property(readonly, nonatomic) TLKItemComponentInfo *deletedFromItemComponentInfo; // @synthesize deletedFromItemComponentInfo=_deletedFromItemComponentInfo;
+- (id)debugDescription;
 - (id)description;
 - (BOOL)isTrailingEdgeFragment;
 - (BOOL)isLeadingEdgeFragment;
 @property(readonly, nonatomic) struct CGRect boundingBox;
 - (struct CGRect)lowerAccessoryFrame;
 - (struct CGRect)upperAccessoryFrame;
-- (struct _TLKRange)locationRange;
 @property(retain, nonatomic) TLKTimelineLayer *layer;
 @property(nonatomic) TLKItemLaneFragment *itemLaneFragment;
 @property(nonatomic) TLKLayoutContext *layoutContext;
 @property(nonatomic) TLKItemComponentInfo *itemComponentInfo;
+@property(nonatomic) struct _TLKRange locationRange;
+@property(readonly, nonatomic) struct _TLKRange timeRangeInSeconds;
 @property(readonly, nonatomic) struct CGRect layerFrame;
+@property(nonatomic) struct CGRect frame;
+- (void)_positionLayoutContextWithFrameIfNeeded:(struct CGRect)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;

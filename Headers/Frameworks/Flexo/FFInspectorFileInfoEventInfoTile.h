@@ -6,36 +6,31 @@
 
 #import <Flexo/FFInspectorFileInfoBaseTile.h>
 
-@class FFProject, LKTextField, NSProThemeImageView, NSString;
+#import "FFInspectorFileInfoReferencesTile.h"
+
+@class FFProject, LKImageView, LKTextField, NSString, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorFileInfoEventInfoTile : FFInspectorFileInfoBaseTile
+@interface FFInspectorFileInfoEventInfoTile : FFInspectorFileInfoBaseTile <FFInspectorFileInfoReferencesTile>
 {
-    BOOL _showsClips;
-    BOOL _isMissing;
-    int _missingType;
-    int _numMissing;
-    FFProject *_event;
+    FFProject *_project;
     NSString *_report;
-    LKTextField *_eventName;
-    LKTextField *_itemsInUse;
-    LKTextField *_missingItems;
-    NSProThemeImageView *_icon;
+    NSView *_rowView;
+    LKImageView *_imageView;
+    LKTextField *_nameField;
 }
 
-@property NSProThemeImageView *icon; // @synthesize icon=_icon;
-@property LKTextField *missingItems; // @synthesize missingItems=_missingItems;
-@property LKTextField *itemsInUse; // @synthesize itemsInUse=_itemsInUse;
-@property LKTextField *eventName; // @synthesize eventName=_eventName;
-@property(retain) NSString *report; // @synthesize report=_report;
-@property(retain) FFProject *event; // @synthesize event=_event;
-- (void)setIconFacetForRefs:(id)arg1;
-- (void)updateWithRefs:(id)arg1 items:(id)arg2 forOwner:(id)arg3;
-- (void)showMissingInfo;
-- (void)setClipType:(int)arg1 number:(int)arg2 report:(id)arg3;
-- (void)setShowsClips:(BOOL)arg1;
+@property(retain, nonatomic) NSString *report; // @synthesize report=_report;
+@property(retain, nonatomic) FFProject *project; // @synthesize project=_project;
+- (id)view;
+- (void)updateWithItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
 - (void)dealloc;
-- (void)awakeFromNib;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

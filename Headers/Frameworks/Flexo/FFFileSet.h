@@ -6,23 +6,41 @@
 
 #import "NSObject.h"
 
-@class NSMutableArray;
+@class NSMutableArray, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
 @interface FFFileSet : NSObject
 {
     NSMutableArray *_bookmarks;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
+    struct __FSEventStream *_eventStreamRef;
+    unsigned long long _fileLimit;
 }
 
-+ (id)resolveBookmark:(id)arg1 isStale:(char *)arg2 error:(id *)arg3;
++ (BOOL)_resolveBookmark:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
++ (id)resolveBookmarkData:(id)arg1 isStale:(char *)arg2 allowMounting:(BOOL)arg3 error:(id *)arg4;
 + (id)bookmarkDataForURL:(id)arg1 error:(id *)arg2;
-- (id)lastURLs:(unsigned long long)arg1 excludeTrashItems:(BOOL)arg2;
-- (id)lastURLs:(unsigned long long)arg1 excludeTrashItems:(BOOL)arg2 requireDocType:(BOOL)arg3;
++ (id)bookmarkResourceKeys;
+@property unsigned long long fileLimit; // @synthesize fileLimit=_fileLimit;
+- (id)lastURLs:(unsigned long long)arg1 options:(unsigned long long)arg2;
+- (id)recentFiles:(unsigned long long)arg1 options:(unsigned long long)arg2;
+- (void)discardInvalidBookmark:(id)arg1;
+- (void)_refreshBookmarkCache;
+- (void)receivedMountNotification:(id)arg1;
+- (void)_receivedFSEventChange:(id)arg1;
+- (void)_closeFSEventStream;
+- (BOOL)_setupFSEventStream;
+- (void)_reloadFSEventStream;
+- (void)_pruneDuplicates;
+- (void)resolveBookmarks:(id)arg1 force:(BOOL)arg2;
+- (void)removeAllBookmarks;
+- (void)startWatchingForFileChanges;
 - (id)addBookmark:(id)arg1 makeRecent:(BOOL)arg2 wasAdded:(char *)arg3 error:(id *)arg4;
-- (void)removeBookmarkAtIndex:(long long)arg1;
 - (long long)findBookmark:(id)arg1;
 - (unsigned long long)count;
 - (id)plist;
+- (id)debugDescription;
+- (void)close;
 - (void)dealloc;
 - (id)initWithPList:(id)arg1;
 

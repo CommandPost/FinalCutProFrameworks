@@ -6,12 +6,30 @@
 
 #import <Flexo/FFInspectorModuleChannels.h>
 
+@class LKButton, NSSet, NSView;
+
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleAudioChannels : FFInspectorModuleChannels
 {
+    NSView *_footerView;
+    LKButton *_effectsPresetButton;
+    NSSet *_observedEffectStacks;
 }
 
-- (void)updateChannelHeaderForItems:(id)arg1 updateIcon:(BOOL)arg2;
+- (void)_effectEnabledStateChanged:(id)arg1;
+- (void)_audioComponentsChanged:(id)arg1;
+- (void)_rolesChanged:(id)arg1;
+- (void)_rangeInvalidation:(id)arg1;
+- (void)_effectsChanged:(id)arg1;
+- (void)removeObservingForItems:(id)arg1;
+- (void)addObservingForItems:(id)arg1;
+- (void)updateChannelFooterForItems:(id)arg1;
+- (BOOL)shouldInspectChannelID:(unsigned int)arg1;
+- (BOOL)canInspectTabIdentifier:(id)arg1 forItem:(id)arg2;
+- (void)viewDidLoad;
+- (id)moduleFooterAccessoryView;
+- (Class)_inspectorDelegateClass;
+- (void)dealloc;
 
 @end
 

@@ -12,6 +12,9 @@
 - (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
 
 @optional
+- (BOOL)filmstripLayerShouldUseMinimumNonLinearSpacerWorkaroundForFilmstripLayer:(FFFilmstripLayer *)arg1;
+- (int)thumbnailAudioOptionsForFilmstripLayer:(FFFilmstripLayer *)arg1;
+- (BOOL)filmstripLayerShouldHighlight:(FFFilmstripLayer *)arg1;
 - (BOOL)filmstripLayer:(FFFilmstripLayer *)arg1 shouldStretchCellsInRange:(CDStruct_e83c9415)arg2;
 - (BOOL)filmstripLayer:(FFFilmstripLayer *)arg1 shouldUpdateCell:(FFFilmstripCell *)arg2;
 - (BOOL)useImageCache;

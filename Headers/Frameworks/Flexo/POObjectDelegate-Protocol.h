@@ -7,6 +7,8 @@
 @class NSEvent, NSMenu, NSString;
 
 @protocol POObjectDelegate
+- (void)releaseWriteLock;
+- (void)acquireWriteLock;
 - (void)menuAddTrack:(id)arg1 withActivePart:(struct OZChannelBase *)arg2;
 - (NSMenu *)menuForEvent:(NSEvent *)arg1 withActivePart:(int)arg2 andNumPositions:(int)arg3 andTarget:(id)arg4;
 - (void)destroyContextSentry:(void *)arg1;
@@ -14,7 +16,7 @@
 - (struct OZChannelFolder *)generatorRoot;
 - (BOOL)absolutePoints;
 - (BOOL)shouldFlip;
-- (void)findCustomGradientChannels:(struct vector<OZChannelRef *, std::allocator<OZChannelRef *>> *)arg1;
+- (void)findCustomGradientChannels:(struct vector<OZChannelRef *, std::__1::allocator<OZChannelRef *>> *)arg1;
 - (BOOL)hasCustomGradientChannels;
 - (BOOL)shouldDrawGradientOSC;
 - (void)didSelectContextMenuItem;
@@ -34,8 +36,8 @@
 - (BOOL)showRotationOSC;
 - (void)drawGeometry:(_Bool)arg1;
 - (void)drawElementOutline:(const PCMatrix44Tmpl_93ed1289 *)arg1 red:(double)arg2 green:(double)arg3 blue:(double)arg4;
-- (void)clipOutline:(const PCVector2_5d498db0 *)arg1 numPoints:(int)arg2 edges:(PCVector2_5d498db0 *)arg3 returnVisible:(vector_69938c0b *)arg4;
-- (void)clipPoints:(const vector_8d17e539 *)arg1 returnVisible:(vector_69938c0b *)arg2;
+- (void)clipOutline:(const PCVector2_5d498db0 *)arg1 numPoints:(int)arg2 edges:(PCVector2_5d498db0 *)arg3 returnVisible:(vector_a7cf9eda *)arg4;
+- (void)clipPoints:(const vector_ced1dec3 *)arg1 returnVisible:(vector_a7cf9eda *)arg2;
 - (void)calculateSnapBounds:(double *)arg1 y1:(double *)arg2 x2:(double *)arg3 y2:(double *)arg4;
 - (void)convertPixelValuesToXYZSamplesPercentageXYZSamplesIfRequired:(int)arg1 samplesX:(double *)arg2 samplesY:(double *)arg3 samplesZ:(double *)arg4;
 - (void)convertXYZSamplesPercentageToPixelValuesXYZSamplesIfRequired:(int)arg1 samplesX:(double *)arg2 samplesY:(double *)arg3 samplesZ:(double *)arg4;
@@ -45,10 +47,10 @@
 - (PCRect_3a266109)getInputBounds;
 - (PCRect_3a266109)getSceneBounds;
 - (PCRect_3a266109)getOriginalBounds;
-- (void)getCorners:(vector_9ae9b2a4 *)arg1 withFourCorner:(BOOL)arg2;
+- (void)getCorners:(vector_d8ace1c2 *)arg1 withFourCorner:(BOOL)arg2;
 - (PCRect_3a266109)getBounds;
 - (PCRay3_021fa152)computeRay:(const PCVector3_515d8d1c *)arg1 withFlattening:(BOOL)arg2;
-- (BOOL)projectPoints:(vector_8d17e539 *)arg1 toSpaceOf:(int)arg2;
+- (BOOL)projectPoints:(vector_ced1dec3 *)arg1 toSpaceOf:(int)arg2;
 - (BOOL)projectPoint:(PCVector3_515d8d1c *)arg1 toSpaceOf:(int)arg2;
 - (BOOL)projectPointToObjectX:(double *)arg1 y:(double *)arg2 z:(double *)arg3 transform:(PCMatrix44Tmpl_93ed1289 *)arg4;
 - (BOOL)projectPointToObjectX:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
@@ -77,6 +79,7 @@
 - (void)getLocalToWorld:(PCMatrix44Tmpl_93ed1289 *)arg1;
 - (double)getPixelAspectRatio;
 - (CDStruct_1b6d18a9)getTimeOffset;
+- (BOOL)shouldDrawAnimationPath;
 - (BOOL)shouldDrawMotionPath;
 - (BOOL)isPathParametric;
 - (BOOL)updateMotionPath:(const PCVector3_515d8d1c *)arg1 newRot:(const PCVector3_515d8d1c *)arg2 newScale:(const PCVector3_515d8d1c *)arg3 newPivot:(const PCVector3_515d8d1c *)arg4;

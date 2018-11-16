@@ -36,8 +36,8 @@
 - (BOOL)confirmIsPaused:(id)arg1;
 - (void)resumedTask:(id)arg1;
 - (void)pausedTask:(id)arg1;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)downloadProgress:(id)arg1 onTask:(id)arg2;
 - (void)showCameraFileDownloadErrorAlertMain:(id)arg1;
 - (void)showCameraFileDownloadErrorAlert:(id)arg1;

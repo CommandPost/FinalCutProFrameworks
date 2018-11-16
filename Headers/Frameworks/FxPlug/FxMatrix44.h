@@ -11,6 +11,7 @@
     double _mat[4][4];
 }
 
+- (void)transpose;
 - (id)description;
 - (struct FxPoint3D)transform3DPoint:(struct FxPoint3D)arg1;
 - (struct CGPoint)transform2DPoint:(struct CGPoint)arg1;
@@ -20,6 +21,7 @@
 - (void)setMatrix:(double [4][4])arg1;
 - (void)setToIdentity;
 - (id)initWithFxMatrix:(id)arg1;
+- (id)initWithColorMatrix44Data:(double [4][4])arg1;
 - (id)initWithMatrix44Data:(double [4][4])arg1;
 - (id)init;
 

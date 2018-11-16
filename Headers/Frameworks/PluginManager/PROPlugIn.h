@@ -11,9 +11,13 @@
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (void)setBlockedLookupKey:(id)arg1 pluginName:(id)arg2 version:(id)arg3;
+- (void)setIsBlocked:(BOOL)arg1;
 - (BOOL)isEqualToPlugIn:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (id)apiUsedByPlugInForProtocol:(id)arg1;
+- (id)blockedLookupKey;
+- (BOOL)isBlocked;
 - (id)pluginKitPlug;
 - (id)implementedProtocols;
 - (id)icon;

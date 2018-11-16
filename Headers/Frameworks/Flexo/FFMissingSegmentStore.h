@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_paths;
 }
 
-- (id).cxx_construct;
 - (BOOL)removePaths:(id)arg1;
 - (void)addPaths:(id)arg1;
 - (BOOL)pathsInclude:(id)arg1;

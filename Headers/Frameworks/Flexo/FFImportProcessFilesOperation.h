@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_selectedNodes;
     NSMutableDictionary *_separates;
-    id _dialogController;
     BOOL _isKeywording;
     BOOL _isKeywordingTags;
 }

@@ -8,7 +8,7 @@
 
 #import "NSTextInput.h"
 
-@class NSMenu, NSMutableArray, NSProCursor, NSTrackingArea, OZViewerSnaps, POOnScreenControl;
+@class LKCursor, NSMenu, NSMutableArray, NSTrackingArea, OZViewerSnaps, POOnScreenControl;
 
 @interface OZGLViewerOSC : OZGLViewerBase <NSTextInput>
 {
@@ -17,7 +17,7 @@
     POOnScreenControl *_pHitControl;
     int _hitActivePart;
     OZViewerSnaps *_pSnaps;
-    NSProCursor *_pOSCCursor;
+    LKCursor *_pOSCCursor;
     BOOL _isMouseDown;
     BOOL _isRightMouseDown;
     BOOL _handlingControlLeftMouseAsRightMouse;
@@ -70,7 +70,6 @@
 - (id)createDropZonesOverlay:(struct PCUUID)arg1;
 - (id)getDropZonesOverlay;
 - (_Bool)areDropZonesEnabled;
-- (void)enableExpose3D;
 - (void)disableExpose;
 - (void)enableExposeForDrop:(void *)arg1 dropInfo:(struct OZDropTargetInfo *)arg2;
 - (void)enableExposeObjects;
@@ -113,7 +112,7 @@
 - (void)setOverlayOption:(int)arg1 to:(BOOL)arg2;
 - (void)setOSCState:(int)arg1;
 - (int)getOSCState;
-- (void)commonOnScreenControls:(list_b8d8639a *)arg1;
+- (void)commonOnScreenControls:(list_eba5de08 *)arg1;
 - (void)incProxyRend;
 - (void)passMouseDownAndObjectToToolWithEvent:(id)arg1;
 - (BOOL)acceptPassiveOSCEvent:(id)arg1;
@@ -177,6 +176,7 @@
 - (BOOL)updateSelectionInOSC:(id)arg1 withRect:(PCRect_b601f9f3 *)arg2;
 - (void)clearSelectionInOSC;
 - (void)initSelectionInOSC:(id)arg1;
+- (void)mouseIsDownInEditTool:(BOOL)arg1;
 - (BOOL)customKeyEquivalent:(id)arg1;
 - (void)flagsChanged:(id)arg1;
 - (void)keyUp:(id)arg1;

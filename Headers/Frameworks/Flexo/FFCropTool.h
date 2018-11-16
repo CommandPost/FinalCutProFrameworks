@@ -10,10 +10,13 @@
 {
 }
 
-+ (id)toolbarFacet;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
+- (BOOL)shouldMakeIntrinsicsForEffectStack;
 - (BOOL)isCropTool;
+- (BOOL)allowsEffectOSCsIfPrimaryObject;
 - (BOOL)allowsEffectOSCs;
 - (BOOL)handlesSelection;
 

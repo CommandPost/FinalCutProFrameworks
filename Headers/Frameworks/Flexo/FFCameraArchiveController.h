@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
     NSString *_lastStorageLocationDiskUUID;
 }
 
-+ (BOOL)isNetworkVolume:(id)arg1;
 + (id)pluginUUIDForRADVolume:(id)arg1;
 + (BOOL)isValidCameraArchive:(id)arg1;
 + (void)releaseSharedInstance;

@@ -13,10 +13,13 @@ __attribute__((visibility("hidden")))
 {
     OZLabelText *_labelText;
     CHChannelBase *_observedChannel;
+    float _paramWidth;
 }
 
 - (void)autoBalanceChanged:(id)arg1;
 - (id)stringForLabel;
+- (float)suggestedMaxParamWidth;
+- (float)suggestedMinParamWidth;
 - (void)update;
 - (void)didBuildUI;
 - (void)dealloc;

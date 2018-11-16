@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKButton, LKSplashView, NSButton, NSString, NSTextField, NSView, NSWindow;
+@class LKButton, LKSplashView, NSArray, NSButton, NSString, NSTextField, NSView, NSWindow;
 
 @interface LKAboutPanel : NSObject <NSWindowDelegate>
 {
@@ -24,6 +24,7 @@
     NSTextField *_consumerCopyrightText;
     LKButton *_consumerAcknowledgementsButton;
     LKButton *_consumerLicenseButton;
+    NSArray *_topLevelObjects;
     BOOL _trial;
     BOOL _consumer;
     BOOL _hideAppNameInCopyright;

@@ -6,13 +6,16 @@
 
 #import <Ozone/OZProViewModule.h>
 
-@class LKPopUpButton, LKZoomScroller, OZCurveEditorModule, OZMiniFooterView, OZMoCurveEditorAudioDelegate, OZMoCurveEditorView, OZSplitView, OZTimelineModule;
+@class LKButton, LKPopUpButton, LKSlider, LKZoomScroller, NSView, OZCurveEditorModule, OZMoCurveEditorAudioDelegate, OZMoCurveEditorView, OZSplitView, OZTimelineModule;
 
 @interface OZTimingControlModule : OZProViewModule
 {
     LKZoomScroller *_horizontalZoomScroller;
     OZSplitView *_verticalSplit;
-    OZMiniFooterView *_leftView;
+    NSView *_leftView;
+    LKSlider *_zoomSlider;
+    LKButton *_zoomOutButton;
+    LKButton *_zoomInButton;
     LKPopUpButton *_layerListSizePopUp;
     OZCurveEditorModule *_curveEditorModule;
     OZTimelineModule *_timelineModule;
@@ -25,6 +28,7 @@
 @property(nonatomic) OZTimelineModule *timelineModule; // @synthesize timelineModule=_timelineModule;
 @property(nonatomic) OZCurveEditorModule *curveEditorModule; // @synthesize curveEditorModule=_curveEditorModule;
 @property(nonatomic) BOOL externalModuleIsSettingDividerPosition; // @synthesize externalModuleIsSettingDividerPosition=_externalModuleIsSettingDividerPosition;
+@property(readonly) LKSlider *zoomSlider; // @synthesize zoomSlider=_zoomSlider;
 @property(readonly) LKZoomScroller *horizontalZoomScroller; // @synthesize horizontalZoomScroller=_horizontalZoomScroller;
 - (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
@@ -35,6 +39,8 @@
 - (void)setDividerPosition:(double)arg1;
 - (double)dividerPosition;
 - (double)dividerThickness;
+- (void)zoomTimelineOut:(id)arg1;
+- (void)zoomTimelineIn:(id)arg1;
 - (void)snapshotChannels:(id)arg1;
 - (void)menuSetTrackID:(id)arg1;
 - (void)setShowAudio:(id)arg1;
@@ -48,14 +54,12 @@
 - (void)notify:(unsigned int)arg1;
 - (void)refreshClearListButton;
 - (void)refreshFitButton;
+- (void)viewDidLoad;
 - (BOOL)isViewOrderedBelow;
 - (BOOL)isBackgroundGrabbable;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
-- (void)update;
-- (void)awakeFromNib;
 - (void)curveEditorDidSetDelegate;
-- (void)_setupButtonGlyphs;
 - (BOOL)wantsHeaderBar;
 - (void)dealloc;
 - (id)init;

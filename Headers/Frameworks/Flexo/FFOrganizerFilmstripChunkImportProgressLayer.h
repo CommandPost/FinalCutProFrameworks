@@ -6,16 +6,17 @@
 
 #import "CALayer.h"
 
-@class CATextLayer, FFBackgroundTask, FFMIORADAsset, FFThemeFacetLayer, FigTimeRangeAndObject, NSDate, NSSet, NSString;
+@class CATextLayer, FFBackgroundTask, FFImageLayer, FFMIORADAsset, FigTimeRangeAndObject, NSDate, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripChunkImportProgressLayer : CALayer
 {
     int _leftEdgeType;
     int _rightEdgeType;
-    FFThemeFacetLayer *_progressIndicatorLayer;
-    FFThemeFacetLayer *_cameraIconLayer;
-    FFThemeFacetLayer *_spannedClipLayer;
+    FFImageLayer *_progressIndicatorLayer;
+    FFImageLayer *_progressIndicatorCELayer;
+    CALayer *_cameraIconLayer;
+    FFImageLayer *_spannedClipLayer;
     CATextLayer *_clipDurationTextLayer;
     CATextLayer *_clipDurationOutlineTextLayer;
     BOOL _isImporting;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)tooltipRects;
 - (void)updateCameraIconLayer;
 - (void)updateProgressIndicatorLayer;
+- (long long)themeDimension1ForProgress;
 - (void)setIsImporting:(BOOL)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)prepareWithRangeOfMedia:(id)arg1;

@@ -22,8 +22,6 @@
 + (void)volumeDidMount:(id)arg1;
 + (void)importWindowWillStartClosing:(id)arg1;
 + (void)windowWillClose:(id)arg1;
-+ (void)willBecomeActive;
-+ (void)willResignActive;
 + (id)activeImportModule;
 + (BOOL)isImportingTape;
 + (void)shutdownTasks;
@@ -33,8 +31,8 @@
 + (void)closeImportWindow;
 + (void)openImportWindowWithKeywords:(id)arg1 forEvent:(id)arg2;
 - (void)setNumericEntryShowsSubframes:(BOOL)arg1;
-- (void)setNumericEntryDirection:(long long)arg1;
-- (void)setNumericEntryType:(unsigned long long)arg1;
+- (void)setNumericEntryDirection:(int)arg1;
+- (void)setNumericEntryType:(int)arg1;
 - (void)setNumericEntryValue:(id)arg1;
 - (void)numericEntryDidEnd;
 - (void)numericEntryWillBegin;

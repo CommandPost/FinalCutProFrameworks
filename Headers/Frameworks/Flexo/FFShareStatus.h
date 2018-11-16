@@ -30,7 +30,6 @@
 - (id)dateForShareKind:(id)arg1 atIndex:(unsigned long long)arg2;
 - (unsigned long long)publishCountForShareKind:(id)arg1;
 - (id)shareKindArray:(id)arg1;
-- (void)removeItemForKind:(id)arg1 withURLString:(id)arg2 forWindow:(id)arg3;
 - (void)tellAFriend:(id)arg1 withContent:(id)arg2;
 - (id)sortItemsArray:(id)arg1;
 - (id)sortShareArray:(id)arg1 withID:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import "LKDocument.h"
 
-@class FFCatalog, FFCatalogStore, FFModelObject, NSObject<OS_dispatch_semaphore>, NSString;
+@class FFCatalog, FFCatalogStore, FFModelObject, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFCatalogDocument : LKDocument
@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     FFCatalog *_catalog;
     FFCatalogStore *_catalogStore;
     NSString *_catalogID;
-    NSObject<OS_dispatch_semaphore> *_backupOK;
     double _beginBackupTimestamp;
 }
 
@@ -30,11 +29,10 @@ __attribute__((visibility("hidden")))
 + (id)documentForRootObject:(id)arg1;
 + (id)copyCatalogAndObjectID:(id)arg1;
 - (void)cancelBackup:(id)arg1;
-- (BOOL)isBackupInProgress;
-- (void)waitForBackup;
 - (void)scheduleBackup;
-- (BOOL)writeBackup:(id *)arg1;
+- (void)writePeriodicBackup;
 - (BOOL)backupNeeded;
+- (BOOL)saveChanges:(id *)arg1;
 - (BOOL)writeSafelyToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)writeToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 originalContentsURL:(id)arg4 error:(id *)arg5;
 - (BOOL)writeToURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
@@ -70,8 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)setAutoCommitEnabled:(BOOL)arg1;
 - (BOOL)autoCommitEnabled;
 - (BOOL)setCatalog:(id)arg1 store:(id)arg2 error:(id *)arg3;
-- (void)catalogUnlock;
-- (void)catalogLock;
+- (void)performWithCatalogLock:(CDUnknownBlockType)arg1;
 - (id)store;
 - (id)catalog;
 - (id)uniqueIdentifier;
@@ -81,7 +78,6 @@ __attribute__((visibility("hidden")))
 - (id)undoHandler;
 - (void)setFileURL:(id)arg1;
 - (void)presentedItemDidMoveToURL:(id)arg1;
-- (BOOL)moveStore:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (BOOL)copyStore:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (void)close;
 - (void)dealloc;
@@ -89,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCatalog:(id)arg1 store:(id)arg2 ofType:(id)arg3 error:(id *)arg4;
 - (id)initWithContentsOfURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
 - (id)newDocumentCatalog:(id *)arg1;
+- (id)objectFromID:(id)arg1 error:(id *)arg2;
 - (id)objectFromID:(id)arg1;
 - (id)fetchObjectsWithIDs:(id)arg1 error:(id *)arg2;
 - (void)forceSaveOfCatalog;

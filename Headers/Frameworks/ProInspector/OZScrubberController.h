@@ -14,8 +14,8 @@
     BOOL _isIntegerController;
     BOOL _isOffsetting;
     BOOL _is2DController;
-    struct list<double, std::allocator<double>> *_pMouseDownValues;
-    struct list<PCVector2<double>, std::allocator<PCVector2<double>>> *_pMouseDownValues2D;
+    struct list<double, std::__1::allocator<double>> *_pMouseDownValues;
+    struct list<PCVector2<double>, std::__1::allocator<PCVector2<double>>> *_pMouseDownValues2D;
     int _decimalDigits;
     Class _formatterClass;
     double _ratio;

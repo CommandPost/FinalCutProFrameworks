@@ -6,28 +6,22 @@
 
 #import <Flexo/FFLogProcessingInfo.h>
 
-@class NSData;
-
 @interface FFARRILogC3DLUTProcessingInfo : FFLogProcessingInfo
 {
-    unsigned int _numMeshPoints;
-    unsigned int _entryScalingFactor;
-    NSData *_lutArray;
-    unsigned long long _rowBytes;
-    unsigned long long _planeBytes;
-    CDStruct_bdcb2b0d _lutMD5;
-    float _normalizationGain;
-    float _normalizationOffset;
+    struct ARRILogC3DLUT *_standardLUT;
+    CDStruct_bdcb2b0d _standardLUT_MD5;
+    struct ARRILogC3DLUT *_masterLUT;
+    CDStruct_bdcb2b0d _masterLUT_MD5;
     float _cdlSaturation;
     float _cdlSlope[3];
     float _cdlOffset[3];
     float _cdlPower[3];
 }
 
-- (id).cxx_construct;
-- (void)setColorConformPresetAndParameters:(struct HGColorConform *)arg1;
+- (void)setColorConformPresetAndParameters:(struct HGColorConform *)arg1 toConvertToColorSpace:(int)arg2;
+- (int)targetColorSpaceFor:(int)arg1;
 - (void)dealloc;
-- (id)initWith3DLUT:(id)arg1 andCDL:(id)arg2;
+- (id)initWithStandard3DLUT:(id)arg1 master3DLUT:(id)arg2 andCDL:(id)arg3;
 
 @end
 

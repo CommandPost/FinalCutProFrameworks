@@ -15,27 +15,49 @@ __attribute__((visibility("hidden")))
     PMRStopwatch *_stopwatch;
     BOOL _isConsumerTimeline;
     id <TLKTimelineViewDataSource> _dataSource;
+    int _outstandingOperations;
     BOOL _writePerformanceOutputToSyslog;
+    BOOL _operationComplete;
+    BOOL _audioOperationComplete;
+    BOOL _videoOperationComplete;
+    unsigned long long _iterations;
+    PMRStopwatch *_audioThumbnailRequestTimer;
+    PMRStopwatch *_videoThumbnailRequestTimer;
 }
 
+@property(retain) PMRStopwatch *videoThumbnailRequestTimer; // @synthesize videoThumbnailRequestTimer=_videoThumbnailRequestTimer;
+@property(retain) PMRStopwatch *audioThumbnailRequestTimer; // @synthesize audioThumbnailRequestTimer=_audioThumbnailRequestTimer;
+@property BOOL videoOperationComplete; // @synthesize videoOperationComplete=_videoOperationComplete;
+@property BOOL audioOperationComplete; // @synthesize audioOperationComplete=_audioOperationComplete;
+@property BOOL operationComplete; // @synthesize operationComplete=_operationComplete;
 @property BOOL writePerformanceOutputToSyslog; // @synthesize writePerformanceOutputToSyslog=_writePerformanceOutputToSyslog;
-@property(retain, nonatomic) id <TLKTimelineViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void)benchmarkTrimClipEdge:(id)arg1;
-- (void)benchmarkDragClip:(id)arg1;
-- (void)benchmarkShakeWithCoreAnimation:(id)arg1;
-- (void)benchmarkScroll:(id)arg1;
-- (void)benchmarkScrollWithCoreAnimation:(id)arg1;
-- (void)benchmarkZoomWithCoreAnimation:(id)arg1;
-- (void)benchmarkZoom:(id)arg1;
-- (void)benchmarkZoomToFit:(id)arg1;
+@property(nonatomic) unsigned long long iterations; // @synthesize iterations=_iterations;
+- (void)installThumbnailRequestManagerListeners;
+- (void)checkOperationComplete;
+- (void)notifyOperationComplete;
+- (void)notifyOperationStart;
+- (void)logTimerDataWithFormat:(id)arg1 key:(id)arg2 comment:(id)arg3;
 - (void)_scrollToMiddle;
 - (void)_scrollToBeginning;
 - (void)_zoomMaxOut;
 - (void)_zoomMaxIn;
-- (void)configurePerformanceMenu:(id)arg1;
+- (void)benchmarkAudioClippedRange:(id)arg1;
+- (void)benchmarkReloadData:(id)arg1;
+- (void)benchmarkSelectDeselectFirstSpineItem:(id)arg1;
+- (void)benchmarkShakeWithCoreAnimation:(id)arg1;
+- (void)benchmarkScrollWithThumbnailRequests:(id)arg1;
+- (void)benchmarkScrollWithCoreAnimation:(id)arg1;
+- (void)benchmarkScroll:(id)arg1;
+- (void)benchmarkZoomWithThumbnailRequests:(id)arg1;
+- (void)benchmarkZoomToFitWithCoreAnimation:(id)arg1;
+- (void)benchmarkZoomWithCoreAnimation:(id)arg1;
+- (void)benchmarkZoomToFit:(id)arg1;
+- (void)benchmarkTrim:(id)arg1;
+- (void)benchmarkDrag:(id)arg1;
+- (void)configurePerformanceMenu;
 @property(readonly, nonatomic) NSString *performanceOutputLocation;
 - (void)dealloc;
-- (id)initWithTimelineView:(id)arg1;
+- (id)initWithTimelineView:(id)arg1 dataSource:(id)arg2;
 
 @end
 

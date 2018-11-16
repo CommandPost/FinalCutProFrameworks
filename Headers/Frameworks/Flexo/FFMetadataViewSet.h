@@ -25,9 +25,11 @@
 + (id)viewSetNames;
 + (id)viewSets;
 + (void)setViewSets:(id)arg1;
++ (id)viewSetForAllMetadataKeys;
 + (id)defaultViewSets;
 + (id)generalMetadataKeys;
 + (id)externalViewSets;
++ (id)localizedViewSetFromDict:(id)arg1;
 + (id)viewSetFromDict:(id)arg1;
 + (void)releaseSharedInstance;
 + (BOOL)classIsAbstract;

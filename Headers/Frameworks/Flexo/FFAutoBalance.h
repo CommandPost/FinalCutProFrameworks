@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)colorBalanceDataResultsAreValid:(id)arg1 forRange:(CDStruct_e83c9415)arg2 frameDuration:(CDStruct_1b6d18a9)arg3;
 + (id)copyColorBalanceDataResultWithFilePath:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSDictionary *colorAnalysis; // @synthesize colorAnalysis=_colorAnalysis;
-- (id).cxx_construct;
 - (BOOL)doesSupportDataFilesWithMediaEventProject:(id)arg1 subPath:(id *)arg2 type:(id *)arg3;
 - (BOOL)reuseDataForAnalyzing;
 - (void)finishAnalyzing;

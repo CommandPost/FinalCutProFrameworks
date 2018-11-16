@@ -6,7 +6,7 @@
 
 #import "FFModelLocking.h"
 
-@class FFMetadataDefinition, NSObject<FFMetadataProtocol>, NSString;
+@class FFMetadataDefinition, NSDictionary, NSObject<FFMetadataProtocol>, NSString;
 
 @protocol FFMetadataProtocol <FFModelLocking>
 - (NSObject<FFMetadataProtocol> *)mdTargetForKey:(NSString *)arg1;
@@ -16,6 +16,9 @@
 - (void)mdSetValue:(id)arg1 forKey:(NSString *)arg2;
 
 @optional
+- (BOOL)mdHasSubsetValuesOf:(NSObject<FFMetadataProtocol> *)arg1;
+- (void)mdSetCollection:(NSDictionary *)arg1;
+- (NSDictionary *)mdCollection;
 - (BOOL)validateMetadataItem:(FFMetadataDefinition *)arg1;
 @end
 

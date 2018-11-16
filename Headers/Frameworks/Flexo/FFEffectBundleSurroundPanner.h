@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL m_isObserving;
 }
 
++ (id)initialEffectBundlePartsForEffectID:(id)arg1;
 + (void)unrigChannel:(id)arg1 inPanner:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 + (id)copyClassDescription;
 + (id)descriptionForPreset:(id)arg1;
@@ -28,16 +29,17 @@ __attribute__((visibility("hidden")))
 + (id)pannerEffectBundleParts;
 - (int)bundleEncodingOptions;
 - (void)createActivePartEffectChannelsInFolder:(id)arg1;
-- (id)initialEffectBundleParts;
 - (void)partChanged;
 - (id)copyBundlePartAtIndex:(int)arg1;
 - (id)bundlePartAtIndex:(int)arg1;
 - (id)presetNames;
+- (BOOL)effectImpactsAudioChannelValence;
 - (void)effectStackAnchoredObjectDidChange;
-- (void)effectWasRemovedFromStack;
+- (void)effectWillBeRemovedFromStack;
 - (void)effectWasAddedToStack:(int)arg1;
 - (void)_removeAnchoredObjectObserving;
 - (void)_addAnchoredObjectObserving;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_updateDefaultPanMode;
 - (BOOL)_isInDefaultPanMode;
 - (BOOL)isStereoMode;

@@ -9,13 +9,14 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class CKAction, CKSetting, NSImage, NSString;
+@class CKAction, CKSetting, NSError, NSImage, NSString;
 
 @interface FFShareDestination : NSObject <NSCoding, NSCopying>
 {
     NSString *_type;
     NSString *_name;
     NSString *_originalSettingsName;
+    NSString *_savedRenderFormatName;
     NSImage *_image;
     NSImage *_customImage;
     CKSetting *_setting;
@@ -24,12 +25,12 @@
     BOOL _includesChapterMarkers;
     struct CGSize _videoResolution;
     NSString *_uuid;
+    NSError *_destinationError;
 }
 
 + (id)setting;
 + (id)defaultName;
 + (id)requiredMetatdataKeys;
-+ (id)logoForDestinationType:(id)arg1;
 + (id)allDestinations;
 + (void)setDefaultUserDestination:(id)arg1;
 + (id)defaultUserDestination;
@@ -44,15 +45,17 @@
 + (void)restoreStandardDestinations;
 + (id)standardDestinations:(id *)arg1;
 + (id)keyPathsForValuesAffectingAction;
++ (id)keyPathsForValuesAffectingDisplayName;
+@property(copy, nonatomic) NSString *savedRenderFormatName; // @synthesize savedRenderFormatName=_savedRenderFormatName;
+@property(retain) NSError *destinationError; // @synthesize destinationError=_destinationError;
 @property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(nonatomic) struct CGSize videoResolution; // @synthesize videoResolution=_videoResolution;
-@property(copy, nonatomic) NSString *originalSettingsName; // @synthesize originalSettingsName=_originalSettingsName;
+@property(copy) NSString *originalSettingsName; // @synthesize originalSettingsName=_originalSettingsName;
 @property BOOL includesChapterMarkers; // @synthesize includesChapterMarkers=_includesChapterMarkers;
 @property BOOL storePassword; // @synthesize storePassword=_storePassword;
 @property BOOL userHasChangedTheName; // @synthesize userHasChangedTheName=_userHasChangedTheName;
 @property(retain, nonatomic) CKSetting *setting; // @synthesize setting=_setting;
 @property(retain) NSImage *customImage; // @synthesize customImage=_customImage;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
 - (id)childrenDestinations;
 - (unsigned long long)destinationsCount;
@@ -66,17 +69,13 @@
 - (id)targetFileNameSuffix;
 - (BOOL)requiresSettingActionOutputURL;
 - (BOOL)requiresTargetDestinationURL;
-- (id)attributedName;
 - (BOOL)isDefaultUserDestination;
-- (id)iconFacet;
 - (id)iconTitle;
-- (id)logo;
-- (id)lightImage;
-- (id)smallImage;
-- (id)largeImage;
-@property(readonly, retain) NSImage *image; // @synthesize image=_image;
-- (id)imageForBackground:(unsigned long long)arg1 withIndex:(long long)arg2;
-- (long long)iconIndex;
+@property(readonly, retain) NSImage *lightImage;
+@property(readonly, retain) NSImage *smallImage;
+@property(readonly, retain) NSImage *largeImage;
+@property(readonly, retain) NSImage *pressedImage;
+@property(readonly, retain) NSImage *image;
 @property(retain) CKAction *action;
 - (BOOL)requiresAudio;
 - (BOOL)requiresVideo;
@@ -90,6 +89,10 @@
 - (id)destinationWithOriginalSettings;
 @property(readonly, nonatomic) NSString *taskIdentifier;
 @property(readonly) BOOL forCurrentFrameOnly;
+@property(readonly) BOOL isEditable;
+@property(readonly, nonatomic) NSString *displayName;
+@property(copy, nonatomic) NSString *name;
+- (BOOL)validateName:(id *)arg1 error:(id *)arg2;
 
 @end
 

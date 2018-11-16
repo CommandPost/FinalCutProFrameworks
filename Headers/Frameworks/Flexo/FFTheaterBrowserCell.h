@@ -6,7 +6,7 @@
 
 #import <Flexo/FFImageBrowserCell.h>
 
-@class CALayer, FFResponderLayerCheckbox, FFResponderLayerPushButton, FFTheaterDateFormatter, FFTheaterProgressLayer, FFThemeFacetLayer, NSError, NSMutableArray, NSString;
+@class CALayer, FFImageLayer, FFResponderLayerCheckbox, FFResponderLayerPushButton, FFTheaterDateFormatter, FFTheaterProgressLayer, NSError, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFTheaterBrowserCell : FFImageBrowserCell
@@ -17,16 +17,14 @@ __attribute__((visibility("hidden")))
     BOOL _isEditingTheaterTitle;
     FFTheaterDateFormatter *_dateFormatter;
     BOOL _displayedErrorPreventsPlayback;
-    FFThemeFacetLayer *_strokeLayer;
     FFResponderLayerPushButton *_localOnlyBadgeIconLayer;
     FFResponderLayerPushButton *_errorBadgeIconLayer;
     FFResponderLayerPushButton *_ineligibleBadgeIconLayer;
-    FFThemeFacetLayer *_badgeBackgroundLayer;
     CALayer *_badgeLayer;
     FFResponderLayerCheckbox *_menuButtonLayer;
     FFTheaterProgressLayer *_progressLayer;
     CALayer *_disabledOverlayLayer;
-    FFThemeFacetLayer *_selectionRingLayer;
+    FFImageLayer *_selectionRingLayer;
     FFResponderLayerPushButton *_playButtonLayer;
     BOOL _mouseIsOverCell;
     BOOL _isUploadingAfterInitialTranscode;
@@ -85,11 +83,9 @@ __attribute__((visibility("hidden")))
 - (id)_progressLayer;
 - (id)_menuButtonLayer;
 - (id)_badgeLayer;
-- (id)_badgeBackgroundLayer;
 - (id)_ineligibleBadgeIconLayer;
 - (id)_errorBadgeIconLayer;
 - (id)_localOnlyBadgeIconLayer;
-- (id)_strokeLayer;
 - (void)dealloc;
 - (id)init;
 

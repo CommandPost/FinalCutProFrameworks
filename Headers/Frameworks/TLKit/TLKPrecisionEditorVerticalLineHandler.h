@@ -10,6 +10,8 @@
 {
 }
 
+- (BOOL)stopTracking:(id)arg1;
+- (BOOL)startTracking:(id)arg1;
 - (BOOL)shouldPerformRoll:(id)arg1;
 - (BOOL)shouldPerformRipple:(id)arg1;
 - (id)clickedItem:(id)arg1;

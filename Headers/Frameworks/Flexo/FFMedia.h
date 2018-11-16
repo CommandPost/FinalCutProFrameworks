@@ -19,11 +19,13 @@
 {
 }
 
-+ (id)newAudioSourcePropertiesMapForProvider:(id)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)copyClassDescription;
-- (void)setOkIconImageRequest:(id)arg1;
-- (id)okIconImageRequest;
++ (BOOL)canRebuildAudioPropertiesForMedia:(id)arg1;
++ (id)newAudioSourcePropertiesMapForProvider:(id)arg1;
++ (void)sortSequences:(id)arg1 usingOptions:(unsigned long long)arg2;
++ (void)sortMedia:(id)arg1 usingOptions:(unsigned long long)arg2;
+- (id)metadataNameForAudioChannel:(unsigned long long)arg1 withSourceKey:(id)arg2;
 - (void)setLastMarkerNumber:(unsigned long long)arg1;
 - (unsigned long long)lastMarkerNumber;
 - (void)setIsGood:(BOOL)arg1;
@@ -40,12 +42,13 @@
 - (BOOL)hasVideo;
 - (void)setHasAudio:(BOOL)arg1;
 - (BOOL)hasAudio;
+- (unsigned long long)audioSourceCount;
 - (id)audioSourcePropertiesMap;
 - (CDStruct_1b6d18a9)audioSampleDuration;
 - (void)setAudioSampleRate:(double)arg1;
 - (double)audioSampleRate;
-- (void)setAudioChannelCount:(long long)arg1;
-- (long long)audioChannelCount;
+- (void)setAudioChannelCount:(unsigned int)arg1;
+- (unsigned int)audioChannelCount;
 - (void)setDisplayName:(id)arg1;
 - (id)displayName;
 - (id)media;
@@ -65,6 +68,8 @@
 - (BOOL)timeOnSampleBoundary:(CDStruct_1b6d18a9)arg1 temporalResolutionMode:(int)arg2;
 - (CDStruct_1b6d18a9)sampleDurationForTemporalResolutionMode:(int)arg1;
 - (int)_resolveTemporalResolution:(int)arg1;
+- (id)skimmableRolesWithPlayEnable:(int)arg1;
+- (id)skimmableAudioLevelEffects;
 - (void)addThumbMD5Info:(id)arg1 imageQuality:(int)arg2;
 - (id)thumbMD5InfoForTime:(CDStruct_1b6d18a9)arg1 imageQuality:(int)arg2;
 - (CDStruct_1b6d18a9)containerToLocalTime:(CDStruct_1b6d18a9)arg1 container:(id)arg2;
@@ -90,12 +95,14 @@
 - (id)rootChannel;
 - (id)mdValueForKey:(id)arg1;
 - (id)fileURLs:(int)arg1;
+- (id)clipRefsIncludingAnchored:(BOOL)arg1 activeOnly:(BOOL)arg2 insideClipRefs:(BOOL)arg3 acrossEvents:(BOOL)arg4;
 - (id)mediaRefs;
 - (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)addClipRefsToSet:(id)arg1;
 - (id)clipRefs;
 - (void)addAssetRefsToSet:(id)arg1;
 - (id)assetRefs;
+- (id)assetsIncludingAnchored:(BOOL)arg1 activeOnly:(BOOL)arg2;
 - (void)addAssetsToSet:(id)arg1;
 - (id)assets;
 - (id)modelLockingObject;
@@ -111,6 +118,7 @@
 - (BOOL)isStill;
 - (BOOL)mediaAvailable;
 - (void)invalidateStreamRange:(CDStruct_e83c9415)arg1;
+- (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 withRangeKey:(id)arg2;
 - (void)invalidateSampleRange:(CDStruct_e83c9415)arg1;
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1;
 - (void)rangeInvalidated:(id)arg1;
@@ -129,9 +137,8 @@
 - (unsigned int)timecodeCounterValue;
 - (struct opaqueCMFormatDescription *)createTimecodeFormatDescription;
 - (id)videoProps;
-- (id)newProviderWithEffectCount:(long long)arg1;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
+- (id)skimmableDefaultProviderOptions;
+- (id)newSkimmableProviderWithOptions:(id)arg1;
 - (id)newProvider;
 
 @end

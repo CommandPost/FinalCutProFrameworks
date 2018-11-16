@@ -6,23 +6,18 @@
 
 #import "OZChanFolderController.h"
 
-@class LKButton, LKPopOverWindow, LKPopUpButton, LKSegmentedControl, NSView, PIAnimController;
+@class LKButton, LKPopUpButton, LKSegmentedControl, NSView, PIAnimController;
 
 __attribute__((visibility("hidden")))
 @interface FFMaskBaseChannelController : OZChanFolderController
 {
     LKButton *_maskOptionsControl;
     PIAnimController *_animController;
-    LKPopOverWindow *_optionsPopover;
     NSView *_optionsPopoverView;
     LKSegmentedControl *_blendModeControl;
     LKPopUpButton *_blendModePopUp;
 }
 
-- (void)mouseExitedRow:(id)arg1;
-- (void)mouseEnteredRow:(id)arg1;
-- (void)popoverDidResignKey:(id)arg1;
-- (void)popOverWindowDidCancel:(id)arg1;
 - (void)showMaskOptions:(id)arg1;
 - (void)closeMaskOptions;
 - (void)changeMaskBlendMode:(id)arg1;

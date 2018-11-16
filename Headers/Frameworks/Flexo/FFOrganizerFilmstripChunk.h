@@ -26,10 +26,12 @@ __attribute__((visibility("hidden")))
     CALayer *_stackBadgeLayer;
     CALayer *_compoundClipBadgeLayer;
     CALayer *_multiCamClipBadgeLayer;
+    CALayer *_synchedClipBadgeLayer;
     CALayer *_psdClipBadgeLayer;
     CALayer *_clipBadgeLayer;
     CALayer *_hfrClipBadgeLayer;
     CALayer *_durationLayer;
+    CALayer *_shadowLayer;
     CATextLayer *_durationTextLayer;
     NSMutableDictionary *_markerRangeToLayerMap;
     NSMutableArray *_rangeLayers;
@@ -48,6 +50,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldShowStackBadges;
     BOOL _shouldShowComposedBadge;
     BOOL _shouldShowMultiCamBadge;
+    BOOL _shouldShowSynchedClipBadge;
     BOOL _shouldShowPSDBadge;
     BOOL _shouldShowHFRBadge;
     BOOL _shouldShowDuration;
@@ -56,9 +59,11 @@ __attribute__((visibility("hidden")))
     BOOL _showInactive;
     BOOL _dragingSelectionHighlight;
     BOOL _ghosted;
+    double _cornerRadius;
     BOOL _shouldShowClipBadge;
 }
 
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) CDStruct_1b6d18a9 timePerThumb; // @synthesize timePerThumb=_timePerThumb;
 @property(nonatomic) CDStruct_e83c9415 filmstripRange; // @synthesize filmstripRange=_filmstripRange;
 @property(nonatomic) CDStruct_e83c9415 chunkRange; // @synthesize chunkRange=_chunkRange;
@@ -68,6 +73,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL shouldShowHFRBadge; // @synthesize shouldShowHFRBadge=_shouldShowHFRBadge;
 @property(nonatomic) BOOL shouldShowClipBadge; // @synthesize shouldShowClipBadge=_shouldShowClipBadge;
 @property(nonatomic) BOOL shouldShowPSDBadge; // @synthesize shouldShowPSDBadge=_shouldShowPSDBadge;
+@property(nonatomic) BOOL shouldShowSynchedClipBadge; // @synthesize shouldShowSynchedClipBadge=_shouldShowSynchedClipBadge;
 @property(nonatomic) BOOL shouldShowMultiCamBadge; // @synthesize shouldShowMultiCamBadge=_shouldShowMultiCamBadge;
 @property(nonatomic) BOOL shouldShowComposedBadge; // @synthesize shouldShowComposedBadge=_shouldShowComposedBadge;
 @property(nonatomic) BOOL shouldShowStackBadges; // @synthesize shouldShowStackBadges=_shouldShowStackBadges;
@@ -136,7 +142,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)dealloc;
 - (BOOL)isEquivalentToChunk:(id)arg1;
-- (id)initWithRangeOfMedia:(id)arg1 chunkRange:(CDStruct_e83c9415)arg2 filmstripRange:(CDStruct_e83c9415)arg3 chunkFrame:(struct CGRect)arg4 thumbHeight:(double)arg5 audioHeight:(double)arg6 numberOfThumbs:(double)arg7 showLabel:(BOOL)arg8 clipLabelSize:(int)arg9 maxThumbWidth:(double)arg10 timePerThumb:(CDStruct_1b6d18a9)arg11 contentsScale:(double)arg12 squareThumbs:(BOOL)arg13;
+- (id)initWithRangeOfMedia:(id)arg1 chunkRange:(CDStruct_e83c9415)arg2 filmstripRange:(CDStruct_e83c9415)arg3 chunkFrame:(struct CGRect)arg4 thumbHeight:(double)arg5 audioHeight:(double)arg6 numberOfThumbs:(double)arg7 showLabel:(BOOL)arg8 clipLabelSize:(int)arg9 maxThumbWidth:(double)arg10 timePerThumb:(CDStruct_1b6d18a9)arg11 contentsScale:(double)arg12 squareThumbs:(BOOL)arg13 singleFilmstripMode:(BOOL)arg14;
 
 @end
 

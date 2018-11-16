@@ -20,14 +20,14 @@
     NSString *_learnMoreURL;
 }
 
-+ (void)alertWithFeatureName:(id)arg1 description:(id)arg2 learnMore:(id)arg3 featureIconElement:(long long)arg4 iconPart:(long long)arg5;
++ (void)alertWithFeatureName:(id)arg1 description:(id)arg2 learnMore:(id)arg3 featureIconName:(id)arg4;
 - (BOOL)windowShouldClose:(id)arg1;
 - (void)close:(id)arg1;
 - (void)ignoreAction:(id)arg1;
 - (void)learnMoreAction:(id)arg1;
 - (void)continueAction:(id)arg1;
-- (void)setupWithFeatureName:(id)arg1 description:(id)arg2 learnMore:(id)arg3 featureIconElement:(long long)arg4 iconPart:(long long)arg5;
-- (id)initAndDisplayWithFeatureName:(id)arg1 description:(id)arg2 learnMore:(id)arg3 featureIconElement:(long long)arg4 iconPart:(long long)arg5;
+- (void)setupWithFeatureName:(id)arg1 description:(id)arg2 learnMore:(id)arg3 featureIconName:(id)arg4;
+- (id)initAndDisplayWithFeatureName:(id)arg1 description:(id)arg2 learnMore:(id)arg3 featureIconName:(id)arg4;
 - (void)delayedRelease;
 
 @end

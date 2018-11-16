@@ -14,13 +14,13 @@
 {
 }
 
+@property(readonly, copy) NSString *description;
 - (id)contextMenu;
 - (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

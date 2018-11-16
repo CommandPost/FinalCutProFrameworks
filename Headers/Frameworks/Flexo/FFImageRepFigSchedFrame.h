@@ -20,22 +20,25 @@ __attribute__((visibility("hidden")))
     FFImage *_fillerImage;
     BOOL _disable422Filtering;
     FFLogProcessingInfo *_logProcessingInfo;
+    int _logProcessingTargetColorSpace;
 }
 
-- (id).cxx_construct;
 - (int)errorCode;
 - (void)getSampleBuffer:(struct opaqueCMSampleBuffer **)arg1 alphaKnownToBeFullyOpaque:(char *)arg2;
-- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
-- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
+- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
+- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
 - (id)_fillerFrame;
+- (int)logProcessingTargetColorSpace;
 - (id)logProcessingInfo;
 - (unsigned long long)approximateMemoryUsage;
 - (struct CGColorSpace *)colorSpace;
+- (struct CGColorSpace *)_internalColorSpace:(_Bool)arg1;
 - (id)nativePixelFormat;
 - (_Bool)alphaWantsClamping;
 - (_Bool)alphaWantsInversion;
 - (int)nativeAlphaType;
 - (id)pixelTransform;
+- (id)_internalPixelTransform:(_Bool)arg1;
 - (struct CGRect)pixelSpaceBounds;
 - (void)_ensureImageCharacteristics;
 - (void)_ensureFinalImage;
@@ -43,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)type;
 - (id)description;
 - (void)dealloc;
-- (id)initWithPixelTransform:(id)arg1 stream:(id)arg2 scheduleRecord:(id)arg3 lineSel:(int)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6 disable422Filtering:(BOOL)arg7 logProcessingInfo:(id)arg8;
+- (id)initWithPixelTransform:(id)arg1 stream:(id)arg2 scheduleRecord:(id)arg3 lineSel:(int)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6 disable422Filtering:(BOOL)arg7 logProcessingInfo:(id)arg8 logProcessingTargetColorSpace:(int)arg9;
 
 @end
 

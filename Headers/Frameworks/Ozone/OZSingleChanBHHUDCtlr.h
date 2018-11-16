@@ -10,8 +10,8 @@
 {
 }
 
-- (void)buildUIWithObjectList:(list_4c5ca08a *)arg1 viewController:(id)arg2 context:(id)arg3;
-- (id)initWithObjectList:(list_e68da02e *)arg1;
+- (void)buildUIWithObjectList:(list_281b6609 *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (id)initWithObjectList:(list_2b134d54 *)arg1;
 
 @end
 

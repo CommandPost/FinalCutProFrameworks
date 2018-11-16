@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) double kelvin; // @synthesize kelvin=_kelvin;
 @property(readonly) int gammaCurve; // @synthesize gammaCurve=_gammaCurve;
 @property(readonly) int colorSpace; // @synthesize colorSpace=_colorSpace;
-- (id).cxx_construct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (CDStruct_bdcb2b0d)md5;

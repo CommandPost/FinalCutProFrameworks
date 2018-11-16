@@ -8,7 +8,7 @@
 
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 
-@class FFBackgroundTask, FFFlowMediaRep, FFPixelBuffer, FFPixelFormat, FFRenderProps, FFSegmentStoreRef, FFStreamVideo, NSArray, NSError, NSMutableArray, NSObject<OS_dispatch_queue>, PCMatrix44Double;
+@class FFBackgroundTask, FFFlowMediaRep, FFImageAbsoluteOutputFormat, FFOnDiskRenderInfo, FFPixelBuffer, FFPixelFormat, FFSegmentStoreRef, FFStreamVideo, NSArray, NSError, NSMutableArray, NSObject<OS_dispatch_queue>, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface InfoForTracker : NSObject <FFStorageLocationOutOfDiskSpaceProtocol>
@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     int _finishedFrames;
     int _mediaEndSampleNumber;
     FFPixelBuffer *_pixelBuffer1;
-    struct CGColorSpace *_colorSpace;
     PCMatrix44Double *_pixelTransform;
     long long _mode;
     CDStruct_bdcb2b0d _md5HQ;
@@ -29,15 +28,19 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _outputFrameDuration;
     CDStruct_bdcb2b0d _md5;
     FFSegmentStoreRef *_segmentStoreRef;
-    FFRenderProps *_renderProps;
+    FFOnDiskRenderInfo *_renderInfo;
     FFPixelFormat *_nativeFramePF;
+    FFImageAbsoluteOutputFormat *_formatToHandToAnalyzer;
+    int _workingSpace;
     NSObject<OS_dispatch_queue> *_lockForScheduled;
     NSMutableArray *_scheduled;
     unsigned int _hasDeferredRehint;
     NSError *_cancellationError;
 }
 
-@property(readonly, retain) FFRenderProps *renderProps; // @synthesize renderProps=_renderProps;
+@property(readonly) int workingSpace; // @synthesize workingSpace=_workingSpace;
+@property(readonly, retain) FFImageAbsoluteOutputFormat *formatToHandToAnalyzer; // @synthesize formatToHandToAnalyzer=_formatToHandToAnalyzer;
+@property(readonly, retain) FFOnDiskRenderInfo *renderInfo; // @synthesize renderInfo=_renderInfo;
 @property(retain) FFPixelFormat *nativeFramePF; // @synthesize nativeFramePF=_nativeFramePF;
 @property(retain) PCMatrix44Double *pixelTransform; // @synthesize pixelTransform=_pixelTransform;
 @property(retain) FFPixelBuffer *pixelBuffer1; // @synthesize pixelBuffer1=_pixelBuffer1;
@@ -45,7 +48,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain) FFStreamVideo *stream; // @synthesize stream=_stream;
 @property(readonly) FFBackgroundTask *runningTask; // @synthesize runningTask=_runningTask;
 @property(readonly) FFFlowMediaRep *mediaRep; // @synthesize mediaRep=_mediaRep;
-- (id).cxx_construct;
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (void)cancelTaskWithDescription:(id)arg1 reason:(id)arg2 recoveryReason:(id)arg3 alertPanel:(BOOL)arg4;
 - (void)cancelTaskWithError:(id)arg1 alertPanel:(BOOL)arg2;
@@ -55,8 +57,6 @@ __attribute__((visibility("hidden")))
 - (void)unschedule:(CDStruct_1b6d18a9)arg1;
 - (void)hintScheduledFrames;
 - (void)schedule:(const CDStruct_1b6d18a9 *)arg1 count:(unsigned long long)arg2;
-- (void)setColorSpace:(struct CGColorSpace *)arg1;
-- (struct CGColorSpace *)colorSpace;
 - (id)segmentStoreRef;
 - (CDStruct_bdcb2b0d)md5;
 - (CDStruct_1b6d18a9)outputFrameDuration;
@@ -66,7 +66,7 @@ __attribute__((visibility("hidden")))
 - (float)fractionComplete;
 - (void)incrementFinishedFrames:(int)arg1;
 - (void)dealloc;
-- (id)initWithMedia:(id)arg1 task:(id)arg2 stream:(id)arg3 framesToProcessCount:(int)arg4 mediaEndSampleNumber:(int)arg5 mode:(long long)arg6 frameTimes:(id)arg7 outputStartTime:(CDStruct_1b6d18a9)arg8 outputFrameDuration:(CDStruct_1b6d18a9)arg9 md5:(CDStruct_bdcb2b0d)arg10 segmentStoreRef:(id)arg11 renderProps:(id)arg12;
+- (id)initWithMedia:(id)arg1 task:(id)arg2 stream:(id)arg3 framesToProcessCount:(int)arg4 mediaEndSampleNumber:(int)arg5 mode:(long long)arg6 frameTimes:(id)arg7 outputStartTime:(CDStruct_1b6d18a9)arg8 outputFrameDuration:(CDStruct_1b6d18a9)arg9 md5:(CDStruct_bdcb2b0d)arg10 segmentStoreRef:(id)arg11 renderInfo:(id)arg12;
 
 @end
 

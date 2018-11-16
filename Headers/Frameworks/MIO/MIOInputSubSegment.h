@@ -87,7 +87,6 @@
 @property CDStruct_1b6d18a9 outTime; // @synthesize outTime=_outTime;
 @property CDStruct_1b6d18a9 inTime; // @synthesize inTime=_inTime;
 @property CDStruct_1b6d18a9 mediaStartTime; // @synthesize mediaStartTime=_mediaStartTime;
-- (id).cxx_construct;
 - (void)clearRetryCount;
 - (long long)retryCount;
 - (void)incrementRetryCount;

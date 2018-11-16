@@ -4,15 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProTableHeaderCell.h"
+#import "NSTableHeaderCell.h"
 
-@interface LKTableHeaderCell : NSProTableHeaderCell
+@interface LKTableHeaderCell : NSTableHeaderCell
 {
 }
-
-- (id)_sortIndicatorFacet;
-- (id)_secondaryListHeaderFacet;
-- (id)_primaryListHeaderFacet;
 
 @end
 

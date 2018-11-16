@@ -9,19 +9,19 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKButton, LKCornerView, LKPaneCapSegmentedControl, LKPanel, LKScrubber, LKSegmentedControl, LKSlider, LKTextField, LKZoomScroller, NSArray, NSMutableArray, NSProHorizontalZoomSlider, NSString, OZCurveEditorChannelList, OZCurveEditorListController, OZCurveSet, OZCurveSetAll, OZCurveSetAnimated, OZCurveSetCurrent, OZCurveSetManagerList, OZCurveSetOpacity, OZCurveSetPivot, OZCurveSetPosition, OZCurveSetRetiming, OZCurveSetRotation, OZCurveSetScale, OZCurveSetShear;
+@class LKButton, LKCornerView, LKPanel, LKPopUpButton, LKScrubber, LKSegmentedControl, LKSlider, LKTextField, LKZoomScroller, NSArray, NSMutableArray, NSString, OZCurveEditorChannelList, OZCurveEditorListController, OZCurveSet, OZCurveSetAll, OZCurveSetAnimated, OZCurveSetCurrent, OZCurveSetManagerList, OZCurveSetOpacity, OZCurveSetPivot, OZCurveSetPosition, OZCurveSetRetiming, OZCurveSetRotation, OZCurveSetScale, OZCurveSetShear;
 
 @interface OZCurveEditorCtrl : OZCurveEditorCtrlBase <NSTableViewDelegate, NSWindowDelegate>
 {
     LKZoomScroller *_verticalScroller;
     LKZoomScroller *_horizontalZoomScroller;
-    NSProHorizontalZoomSlider *_horizontalZoomSlider;
     LKCornerView *_bottomRight;
-    LKPaneCapSegmentedControl *_autozoom;
-    LKPaneCapSegmentedControl *_curveControls;
+    LKSegmentedControl *_autozoom;
+    LKSegmentedControl *_curveControls;
+    LKPopUpButton *_waveformListButton;
     float _oldKnobProportion;
     float _oldKnobValue;
-    LKPaneCapSegmentedControl *_curveSetsPopUp;
+    LKPopUpButton *_curveSetsPopUp;
     LKPanel *_curveSetManagerPanel;
     OZCurveSetManagerList *_curveSetManagerList;
     LKButton *_curveSetManagerApply;
@@ -35,7 +35,8 @@
     OZCurveEditorChannelList *_channels;
     OZCurveEditorListController *_channelsList;
     LKPanel *_generatePanel;
-    LKSlider *_numberOfCycles;
+    LKSlider *_numberOfCyclesSlider;
+    LKScrubber *_numberOfCycles;
     unsigned int _extrapolationType;
     struct OZChannel *_currChan;
     struct OZChannel *_initialCurve;
@@ -44,7 +45,7 @@
     LKScrubber *_smoothness;
     LKSlider *_toleranceSlider;
     LKSlider *_smoothnessSlider;
-    LKPaneCapSegmentedControl *_tools;
+    LKSegmentedControl *_tools;
     NSMutableArray *_curveSets;
     OZCurveSetAnimated *_curveSetAnimated;
     OZCurveSetAll *_curveSetAll;
@@ -63,7 +64,7 @@
 }
 
 @property(readonly, nonatomic) OZCurveEditorListController *channelsList; // @synthesize channelsList=_channelsList;
-@property(nonatomic) LKPaneCapSegmentedControl *curveSetsPopUp; // @synthesize curveSetsPopUp=_curveSetsPopUp;
+@property(nonatomic) LKPopUpButton *curveSetsPopUp; // @synthesize curveSetsPopUp=_curveSetsPopUp;
 - (CDStruct_1b6d18a9)getTimeOffsetForChannel:(struct OZChannelBase *)arg1;
 - (void)showRetiming:(id)arg1;
 - (void)showPivot:(id)arg1;
@@ -120,6 +121,8 @@
 - (void)updateIfModifiedByBehaviors;
 - (void)displayRangeModified:(CDStruct_e83c9415)arg1;
 - (void)notify:(unsigned int)arg1;
+- (void)setNumberOfCylesWithScrubber:(id)arg1;
+- (void)setNumberOfCylesWithSlider:(id)arg1;
 - (void)generateCancel:(id)arg1;
 - (void)generateOk:(id)arg1;
 - (void)_updateSimplifyResult;

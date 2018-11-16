@@ -18,7 +18,7 @@
 - (double)alphaCurveValueAtTime:(CDStruct_198678f7)arg1;
 - (void)getColorAtTime:(CDStruct_198678f7)arg1 curveRed:(double *)arg2 curveGreen:(double *)arg3 curveBlue:(double *)arg4 curveAlpha:(double *)arg5;
 - (double)alphaValueAtTime:(CDStruct_198678f7)arg1;
-- (void)getColorAtTime:(CDStruct_198678f7)arg1 red:(double *)arg2 green:(double *)arg3 blue:(double *)arg4 alpha:(double *)arg5;
+- (void)getColorAtTime:(CDStruct_198678f7)arg1 red:(double *)arg2 green:(double *)arg3 blue:(double *)arg4 alpha:(double *)arg5 inColorSpace:(struct CGColorSpace *)arg6;
 - (void)setDefaultCurveRed:(double)arg1 curveGreen:(double)arg2 curveBlue:(double)arg3 curveAlpha:(double)arg4;
 - (struct OZChannelColor *)ozChannel;
 

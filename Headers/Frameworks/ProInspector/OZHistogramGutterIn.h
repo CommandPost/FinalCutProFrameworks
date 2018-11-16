@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
 @class NSFont, NSMutableParagraphStyle, OZViewController;
 
-@interface OZHistogramGutterIn : NSProView
+@interface OZHistogramGutterIn : NSView
 {
     struct OZChannelLevels *_pChannelLevels;
     struct CGPoint _startingLocation;
@@ -25,7 +25,6 @@
     NSMutableParagraphStyle *_labelJustification;
 }
 
-- (id).cxx_construct;
 - (void)flagsChanged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;

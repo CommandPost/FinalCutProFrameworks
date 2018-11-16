@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)eject;
 @property(readonly, nonatomic) BOOL canEject;
 @property(readonly, nonatomic) NSString *devicePath;
+- (void)targetLibraryChanged:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)removeCameraFiles:(id)arg1;
 - (void)insertCameraFiles:(id)arg1 atIndexes:(id)arg2;

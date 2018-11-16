@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 
 + (Class)streamClass;
 + (id)type;
-- (id).cxx_construct;
 - (double)sampleRate;
 - (unsigned int)numberOfChannels;
 - (CDStruct_e83c9415)timeRange;

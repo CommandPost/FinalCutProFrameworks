@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     LKTextField *_textField;
 }
 
-- (id)tileTypeFacet;
+- (id)tileGlyphString;
 - (void)formatInfoPopupUpdated:(id)arg1;
 - (void)_showControlsForFormatInfo;
 - (void)controlTextDidChange:(id)arg1;

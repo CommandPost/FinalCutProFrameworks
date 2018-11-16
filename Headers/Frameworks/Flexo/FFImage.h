@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-@class FFImageRep, NSMutableDictionary, NSObject<OS_dispatch_semaphore>, NSString;
+@class FFImageRep, NSMutableDictionary, NSString;
 
 @interface FFImage : NSObject
 {
     FFImageRep *_representation;
-    NSObject<OS_dispatch_semaphore> *_semaphore;
+    struct FFSynchronizable *_lockForSB_etc;
     struct opaqueCMSampleBuffer *_sampleBuffer;
     id <SampleBufferProvider> _sampleBufferProvider;
     NSString *_eventDocumentIDAndPath;
@@ -22,9 +22,19 @@
 
 + (id)newFrameAtLocation:(int)arg1 withField1:(id)arg2 field2:(id)arg3 fieldDominance:(int)arg4 framePixelTransform:(id)arg5;
 + (_Bool)isYdownPixelTransform:(id)arg1;
-+ (void)addRotationHGNode:(id *)arg1 rotation:(int)arg2 flipY:(BOOL)arg3;
++ (void)allowExtractMultipleHGNodesForUseInSameGraphOnly:(CDUnknownBlockType)arg1;
++ (struct HGNode *)newCopyAlphaNodeWithImageSource:(struct HGNode *)arg1 alphaSource:(struct HGNode *)arg2;
++ (struct HGNode *)newStripingNodeFromNode:(struct HGNode *)arg1 nodeSpace:(struct CGColorSpace *)arg2 spacing:(int)arg3 width:(int)arg4 phase:(int)arg5 zebraScale:(float)arg6 oobLuma:(_Bool)arg7 luma90:(_Bool)arg8 oobColor:(_Bool)arg9 drawMode:(float)arg10;
++ (void)addRotationToImageMatrix:(id *)arg1 rotation:(int)arg2 flipY:(BOOL)arg3;
 + (id)newSolidColorHeliumImageWithRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4 colorSpace:(struct CGColorSpace *)arg5 dod:(struct CGRect)arg6 pixelTransform:(id)arg7;
 + (void)releaseHGNode:(struct HGNode *)arg1;
++ (id)newPrimaryBlocksTestImage:(struct CGRect)arg1 pf:(id)arg2 cs:(struct CGColorSpace *)arg3;
++ (id)newImageFromTestColor_u64:(unsigned long long)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4;
++ (id)new2vuyImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6;
++ (id)new420ImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6;
++ (id)newImageFromTestColor:(unsigned int)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4;
++ (id)newImageFromTestColor:(unsigned int)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 markAsStraight:(_Bool)arg5;
++ (id)newImageFromTestColor:(unsigned int)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 markAsStraight:(_Bool)arg5 markAsNeedingClamp:(_Bool)arg6;
 - (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 toPixelTransform:(id)arg2;
 - (unsigned long long)approximateMemoryUsage;
 - (BOOL)dumpImage;
@@ -32,22 +42,22 @@
 - (id)objectForKey:(id)arg1;
 - (void)addEntriesFromDictionary:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
-- (id)newFlattenedFFImageWithFormat:(id)arg1 location:(int)arg2 flattenOptions:(CDStruct_c1a9016d *)arg3 roi:(struct CGRect)arg4 colorSpace:(struct CGColorSpace *)arg5 pixelTransform:(id)arg6 field:(unsigned int)arg7;
-- (id)newFlattenedFFImageWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 field:(unsigned int)arg6;
-- (id)newFFImageWithBackground:(struct CGRect)arg1 bgColor:(id)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
-- (id)newFFImageWithPixelTransform:(id)arg1;
-- (id)newFFImageWithPixelFormat:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
+- (id)newFlattenedFFImageWithFormat:(id)arg1 location:(int)arg2 flattenOptions:(CDStruct_302d8f15 *)arg3;
+- (id)newFlattenedFFImageWithFormat:(id)arg1 location:(int)arg2 flattenOptions:(CDStruct_302d8f15 *)arg3 roi:(struct CGRect)arg4 pixelTransform:(id)arg5 workingSpace:(int)arg6;
+- (id)newFFImageWithBackground:(struct CGRect)arg1 bgColor:(id)arg2 format:(id)arg3;
+- (id)newFFImageWithPixelTransform:(id)arg1 workingSpace:(int)arg2;
+- (id)newFFImageWithFormat:(id)arg1 pixelTransform:(id)arg2 workingSpace:(int)arg3;
 - (id)_mutableCopyDict;
-- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
-- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 flattenOptions:(CDStruct_c1a9016d *)arg6;
-- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4;
-- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 flattenOptions:(CDStruct_c1a9016d *)arg5;
+- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 workingSpace:(int)arg5;
+- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
+- (id)newSimpleTextureBufferInFormat:(id)arg1 location:(int)arg2;
+- (id)newSimplePixelBufferInFormat:(id)arg1;
+- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 workingSpace:(int)arg4;
+- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 flattenOptions:(const CDStruct_302d8f15 *)arg4 workingSpace:(int)arg5;
 - (id)createTransformedImage:(id)arg1;
 - (id)createScaledImageByX:(double)arg1 Y:(double)arg2;
-- (void)setColorSpace:(struct CGColorSpace *)arg1;
 - (struct CGColorSpace *)colorSpace;
 - (struct CGRect)squarePixelRect;
-- (void)setPixelTransform:(id)arg1;
 - (id)pixelTransform;
 - (id)nativePixelFormat;
 - (unsigned int)field;
@@ -63,14 +73,28 @@
 - (id)mutableCopy;
 - (void)dealloc;
 - (id)initWithRepresentation:(id)arg1;
-- (struct HGNode *)newHGNodeWithBackground:(struct CGRect)arg1 bgColor:(id)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
-- (struct HGNode *)newHGNodeWithPreTransformAndCropWithPixelFormat:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 filterQuality:(int)arg4 preTransform:(id)arg5 cropRect:(struct CGRect)arg6;
-- (struct HGNode *)newHGNodeWithPixelFormat:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 filterQuality:(int)arg4 filterToField:(BOOL)arg5;
-- (struct HGNode *)newHGNodeWithPixelFormat:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
+- (struct HGNode *)newRangeCheckNodeForMode:(unsigned int)arg1 withFilterQuality:(int)arg2 workingSpace:(int)arg3 epsilonValues:(struct FFRangeCheckEpsilonValues *)arg4;
+- (id)newTextureWrappedImage;
+- (id)newCroppedImage:(struct CGRect)arg1;
+- (struct HGNode *)newHGNodeWithBackground:(struct CGRect)arg1 bgColor:(id)arg2 compositingFormat:(id)arg3;
+- (struct HGNode *)newHGNodeWithPreTransformAndCropInFormat:(id)arg1 pixelTransform:(id)arg2 filterQuality:(int)arg3 preTransform:(id)arg4 cropRect:(struct CGRect)arg5 workingSpace:(int)arg6;
+- (struct HGNode *)newLazyHGNodeWithPT:(id)arg1 workingSpace:(int)arg2 filterQuality:(int)arg3 filterToField:(BOOL)arg4 retPF:(id *)arg5 retCS:(struct CGColorSpace **)arg6;
+- (struct HGNode *)newUnmodifiedHGNodeRetPF:(id *)arg1 retCS:(struct CGColorSpace **)arg2;
+- (struct HGNode *)newUnscaledHGNodeInFormat:(id)arg1;
+- (struct HGNode *)newLazyHGNodeWithPT:(id)arg1 workingSpace:(int)arg2 retPF:(id *)arg3 retCS:(struct CGColorSpace **)arg4;
+- (struct HGNode *)newHGNodeInFormat:(id)arg1 withPT:(id)arg2 workingSpace:(int)arg3;
+- (struct HGNode *)newHGNodeInFormat:(id)arg1 withPT:(id)arg2 workingSpace:(int)arg3 filterQuality:(int)arg4 filterToField:(BOOL)arg5;
+- (id)initWithHGNode:(struct HGNode *)arg1 formatDesc:(id)arg2 pixelTransform:(id)arg3 pixelSpaceBounds:(struct CGRect)arg4 field:(unsigned int)arg5;
 - (id)initWithHGNode:(struct HGNode *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 pixelSpaceBounds:(struct CGRect)arg4 field:(unsigned int)arg5 pixelFormat:(id)arg6;
 - (struct CGImage *)newCGImageRef;
 - (id)initWithCGImageRef:(struct CGImage *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 overrideAlphaInfo:(int)arg4;
 - (id)initWithCGImageRef:(struct CGImage *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
+- (void)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4;
+- (void)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
+- (void)newFFImageWithBackground:(struct CGRect)arg1 bgColor:(id)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
+- (void)newFlattenedFFImageWithFormat:(id)arg1 location:(int)arg2 flattenOptions:(CDStruct_302d8f15 *)arg3 roi:(struct CGRect)arg4 colorSpace:(struct CGColorSpace *)arg5 pixelTransform:(id)arg6 field:(unsigned int)arg7;
+- (void)newFlattenedFFImageWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 field:(unsigned int)arg6;
+- (void)newFFImageWithPixelFormat:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
 - (id)initFlattenNodeWithImage:(id)arg1 flattenMode:(int)arg2;
 - (id)initFlattenNodeWithImage:(id)arg1 force8Bit:(_Bool)arg2;
 - (id)initWithFFPixelBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4;
@@ -80,9 +104,7 @@
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5 disable422Filtering:(BOOL)arg6;
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5;
 - (id)initWithFFTextureBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
-- (id)initCacheNodeWithImage:(id)arg1 locationHint:(int)arg2 cacheMode:(unsigned int)arg3 md5:(CDStruct_bdcb2b0d)arg4 offset:(long long)arg5;
-- (id)initCacheNodeWithImage:(id)arg1 locationHint:(int)arg2 cacheMode:(unsigned int)arg3 md5:(CDStruct_bdcb2b0d)arg4 offset:(long long)arg5 cachePF:(id)arg6 cacheCS:(struct CGColorSpace *)arg7;
-- (id)initTextureCacherWithImage:(id)arg1 locationHint:(int)arg2 md5:(CDStruct_bdcb2b0d)arg3 offset:(long long)arg4 forIntegratedGraphics:(BOOL)arg5;
+- (id)initCacheNodeWithImage:(id)arg1 locationHint:(int)arg2 cacheMode:(unsigned int)arg3 md5:(CDStruct_bdcb2b0d)arg4 offset:(long long)arg5 cacheFmt:(id)arg6;
 - (id)initWithDeinterlaceImage:(CDUnknownBlockType)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 pixelSpaceBounds:(struct CGRect)arg4 field:(unsigned int)arg5 pixelFormat:(id)arg6;
 
 @end

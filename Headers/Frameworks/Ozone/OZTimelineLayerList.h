@@ -14,7 +14,6 @@
 }
 
 @property(nonatomic) BOOL drawEntireFrame; // @synthesize drawEntireFrame=_drawEntireFrame;
-- (struct CGRect)shadowRect;
 - (void)scrollWheel:(id)arg1;
 - (id)getRowColor:(int)arg1;
 - (void)draggingExited:(id)arg1;

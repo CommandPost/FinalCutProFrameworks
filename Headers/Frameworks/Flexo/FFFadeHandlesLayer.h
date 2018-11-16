@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class CALayer, CHChannel, NSMutableArray, NSString, TLKThemeBackedLayer, TLKTimelineView;
+@class CALayer, CHChannel, FFAnchoredObject, FFFadeHandlesLayerUpdater, FFRoleColorImageTinter, FFRoleColorScheme, NSDictionary, NSMutableArray, NSSet, NSString, TLKImageLayer, TLKTimelineView;
 
 __attribute__((visibility("hidden")))
 @interface FFFadeHandlesLayer : FFResponderLayer <NSMenuDelegate>
@@ -16,25 +16,45 @@ __attribute__((visibility("hidden")))
     id <FFFadeHandlesDataSource> _dataSource;
     TLKTimelineView *_timelineView;
     id _representedObject;
-    BOOL _audioOnly;
+    BOOL _isAudio;
+    BOOL _isAudioOnly;
     NSMutableArray *_handleLayers;
     CALayer *_curvesLayer;
     NSMutableArray *_curveLayers;
+    FFFadeHandlesLayerUpdater *_layerUpdater;
+    FFAnchoredObject *_observedAudioComponentSourceRootObject;
+    BOOL _showingAlignedFadeHandles;
+    BOOL _showAlignedFadeHandle;
+    int _showAlignedWhichFade;
+    NSSet *_componentSourcesFadeAligned;
+    NSDictionary *_handleImages;
+    FFRoleColorScheme *_roleColorScheme;
+    FFRoleColorImageTinter *_tinter;
     CHChannel *_channel;
-    TLKThemeBackedLayer *_draggedHandleLayer;
-    TLKThemeBackedLayer *_rolloverHandleLayer;
+    TLKImageLayer *_draggedHandleLayer;
+    TLKImageLayer *_rolloverHandleLayer;
 }
 
-@property(nonatomic) TLKThemeBackedLayer *rolloverHandleLayer; // @synthesize rolloverHandleLayer=_rolloverHandleLayer;
-@property(nonatomic) TLKThemeBackedLayer *draggedHandleLayer; // @synthesize draggedHandleLayer=_draggedHandleLayer;
+@property(retain, nonatomic) FFFadeHandlesLayerUpdater *layerUpdater; // @synthesize layerUpdater=_layerUpdater;
+@property(nonatomic) NSSet *componentSourcesFadeAligned; // @synthesize componentSourcesFadeAligned=_componentSourcesFadeAligned;
+@property(nonatomic) TLKImageLayer *rolloverHandleLayer; // @synthesize rolloverHandleLayer=_rolloverHandleLayer;
+@property(nonatomic) TLKImageLayer *draggedHandleLayer; // @synthesize draggedHandleLayer=_draggedHandleLayer;
 @property(retain, nonatomic) NSMutableArray *curveLayers; // @synthesize curveLayers=_curveLayers;
 @property(retain, nonatomic) CALayer *curvesLayer; // @synthesize curvesLayer=_curvesLayer;
 @property(retain, nonatomic) NSMutableArray *handleLayers; // @synthesize handleLayers=_handleLayers;
-@property(nonatomic, getter=isAudioOnly) BOOL audioOnly; // @synthesize audioOnly=_audioOnly;
+@property(nonatomic) BOOL isAudio; // @synthesize isAudio=_isAudio;
 @property(nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 @property(retain, nonatomic) CHChannel *channel; // @synthesize channel=_channel;
 @property(nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 @property(nonatomic) id <FFFadeHandlesDataSource> dataSource; // @synthesize dataSource=_dataSource;
+- (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
+- (BOOL)_adjustShowHandle:(BOOL)arg1 forLayer:(id)arg2;
+- (void)_hideAlignedFadeHandles;
+- (void)_showAlignedFadeHandlesUsingEvent:(id)arg1;
+- (void)_removeAlignedFadesObserving;
+- (void)_addAlignedFadesObserving;
+- (void)_clearRolloverHandleLayer;
+- (void)_showHideAlignedFadeHandle:(id)arg1;
 - (CDStruct_1b6d18a9)_timeFromLocation:(double)arg1;
 - (double)_locationForTime:(CDStruct_1b6d18a9)arg1;
 - (void)_showTimecodeDisplayForHandleAtIndex:(unsigned long long)arg1;
@@ -43,7 +63,9 @@ __attribute__((visibility("hidden")))
 - (id)_fadeCurveContextMenuForHandleAtIndex:(unsigned long long)arg1;
 - (void)_drawFadeWithBounds:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 curvature:(unsigned int)arg3 enabled:(BOOL)arg4 forFadeIn:(BOOL)arg5;
 - (void)_channelChanged:(id)arg1;
+- (id)_newHandleImagesDict;
 - (void)setCurveType:(id)arg1;
+- (id)roleColorScheme;
 - (id)initWithDataSource:(id)arg1;
 - (BOOL)shouldAutoscroll:(id)arg1;
 - (id)cursorAtPoint:(struct CGPoint)arg1 event:(id)arg2;
@@ -54,12 +76,15 @@ __attribute__((visibility("hidden")))
 - (void)mouseExited:(id)arg1;
 - (void)mouseMoved:(id)arg1;
 - (BOOL)mouseEntered:(id)arg1;
+- (void)flagsChanged:(id)arg1;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)contextMenuForPart:(id)arg1;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)layoutSublayers;
+- (void)colorSchemeHasChanged;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (BOOL)hideFadeHandlesAndCurveLayers;
 - (void)dealloc;
 
 // Remaining properties

@@ -17,14 +17,14 @@ __attribute__((visibility("hidden")))
     BOOL _needToDeleteDestination;
 }
 
-+ (BOOL)writeSafelyToURL:(id)arg1 allowOverwrite:(BOOL)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
++ (BOOL)writeSafelyToURL:(id)arg1 allowOverwrite:(BOOL)arg2 createTempFile:(BOOL)arg3 error:(id *)arg4 block:(CDUnknownBlockType)arg5;
 + (BOOL)atomicallyCreateFileAtURL:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSURL *temporaryURL; // @synthesize temporaryURL=_tmpFileURL;
 @property(readonly, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destFileURL;
 - (void)dealloc;
 - (void)cleanupTempFiles;
 - (BOOL)commit:(BOOL)arg1 error:(id *)arg2;
-- (id)initTo:(id)arg1 override:(BOOL)arg2 error:(id *)arg3;
+- (id)initTo:(id)arg1 overwrite:(BOOL)arg2 create:(BOOL)arg3 error:(id *)arg4;
 
 @end
 

@@ -11,20 +11,23 @@
 #import "FFOrganizerFilmstripClusteringDelegate.h"
 #import "FFOrganizerFilmstripViewDelegate.h"
 #import "FFOrganizerImportDropController.h"
+#import "FFOrganizerMediaDetailHeaderProtocol.h"
+#import "FFOrganizerMediaDetailSearchHeaderDelegate.h"
 #import "FFRolesMenuDelegate.h"
 #import "FFSharableContent.h"
+#import "NSPopoverDelegate.h"
+#import "NSTouchBarProvider.h"
 #import "NSWindowDelegate.h"
 
-@class FFAnalyzeMediaWindowController, FFKeywordEditor, FFModifyContentCreationDateWindowController, FFNumericEntry, FFOrganizerFilmListViewController, FFOrganizerFilmstripViewController, FFOrganizerImportDropResponderLayerHostView, FFOrganizerZoomBezelSegmentedControl, FFResponderLayerHostView, FFResponderLayerPushButton, FFRolesMenuController, FFShareHelper, FFTranscodeMediaWindowController, LKMenu, LKPopOverWindow, LKPopUpButton, LKSlider, LKTextField, NSArray, NSDictionary, NSMenuItem, NSMutableArray, NSMutableDictionary, NSProButton, NSProThemeImageView, NSProView, NSString, OKPaneCapItemButton, OKPaneCapItemSlider, OKPaneCapItemView;
+@class CATextLayer, FFAnalyzeMediaWindowController, FFKeywordEditor, FFModifyContentCreationDateWindowController, FFNumericEntry, FFOrganizerDFRController, FFOrganizerFilmListViewController, FFOrganizerFilmstripViewController, FFOrganizerImportDropResponderLayerHostView, FFOrganizerMediaDetailHeader, FFOrganizerZoomBezelSegmentedControl, FFResponderLayerHostView, FFResponderLayerPushButton, FFRolesMenuController, FFShareHelper, FFTranscodeMediaWindowController, LKButton, LKMenu, LKPopUpButton, LKSlider, LKTextField, NSArray, NSBox, NSDictionary, NSImageView, NSMenuItem, NSMutableArray, NSMutableDictionary, NSPopover, NSString, NSTouchBar, NSView, OKPaneCapItemButton, OKPaneCapItemSlider, OKPaneCapItemView;
 
-@interface FFOrganizerFilmstripModule : FFEventsDetailModule <FFOrganizerFilmstripViewDelegate, FFSharableContent, FFOrganizerFilmstripClusteringDelegate, FFNumericEntrySource, FFRolesMenuDelegate, NSWindowDelegate, FFEditActionSourceProtocol, FFOrganizerImportDropController>
+@interface FFOrganizerFilmstripModule : FFEventsDetailModule <FFOrganizerFilmstripViewDelegate, FFSharableContent, FFOrganizerFilmstripClusteringDelegate, FFNumericEntrySource, FFRolesMenuDelegate, NSWindowDelegate, FFEditActionSourceProtocol, FFOrganizerImportDropController, FFOrganizerMediaDetailHeaderProtocol, NSPopoverDelegate, FFOrganizerMediaDetailSearchHeaderDelegate, NSTouchBarProvider>
 {
-    NSProView *_frameDurationContainer;
     LKSlider *_frameDurationSlider;
     LKSlider *_itemSizeSlider;
     LKTextField *_frameDurationTextField;
-    NSProView *_clusteringAccessoryView;
-    LKPopUpButton *_clusteringMetadataPopUp;
+    LKPopUpButton *_clusterTypePopUp;
+    LKPopUpButton *_arrangeByPopUp;
     LKMenu *_proBackgroundContextualMenu;
     LKMenu *_consumerBackgroundContextualMenu;
     LKMenu *_clipContextualMenu;
@@ -38,31 +41,31 @@
     NSMenuItem *_openProjectMenuItem;
     NSMenuItem *_duplicateProjectMenuItem;
     LKTextField *_itemsCountTextField;
-    NSProView *_zoomBezelPopOverView;
-    NSProView *_zoomBezelView;
-    NSProButton *_toggleAudioWaveformsCheckbox;
+    NSView *_footerView;
+    NSBox *_footerLine;
+    NSView *_zoomBezelPopOverView;
+    LKButton *_toggleAudioWaveformsCheckbox;
     FFOrganizerZoomBezelSegmentedControl *_zoomBezel;
-    LKPopOverWindow *_clipAttributesPopOverWindow;
-    NSProView *_clipActionOptionsView;
-    NSProButton *_favoriteButton;
-    NSProButton *_unfavoriteButton;
-    NSProButton *_rejectButton;
-    NSProButton *_editButton;
-    NSProThemeImageView *_smallZoomImage;
-    NSProThemeImageView *_largeZoomImage;
+    NSPopover *_clipAttributesPopOver;
+    LKButton *_favoriteButton;
+    LKButton *_unfavoriteButton;
+    LKButton *_rejectButton;
+    LKButton *_editButton;
+    NSImageView *_smallZoomImage;
+    NSImageView *_largeZoomImage;
+    NSImageView *_clipDurationImage;
     FFOrganizerImportDropResponderLayerHostView *_emptyPaneView;
-    NSProView *_emptySearchResultsView;
+    NSView *_emptySearchResultsView;
     FFResponderLayerPushButton *_emptyPaneButton;
+    FFResponderLayerPushButton *_newMovieButton;
+    FFResponderLayerPushButton *_newTrailerButton;
     BOOL _clusterDirection;
     BOOL _arrangeDirection;
-    BOOL _allProjectsArrangeDirection;
     BOOL _playProject;
     long long _clusterType;
     int _clusterMode;
     long long _arrangeType;
-    long long _allProjectsArrangeType;
-    BOOL _isAllProjectsMode;
-    NSString *_allProjectDefaultSelectionMediaIdentifier;
+    FFOrganizerMediaDetailHeader *_mediaDetailHeader;
     int _curDisplayViewType;
     OKPaneCapItemButton *_buttonFavorite;
     OKPaneCapItemButton *_buttonUnfavorite;
@@ -97,24 +100,27 @@
     NSMutableDictionary *_outlineViewClusterDisclosureStates;
     BOOL _shareDisclosureStates;
     BOOL _shouldSetViewTypeWithDelegate;
+    FFOrganizerDFRController *_dfrController;
     struct FFProcrastinatedDispatch_t _procrastinatedUpdateItemsString;
+    CATextLayer *_movieButtonLabel;
+    CATextLayer *_trailerButtonLabel;
+    CATextLayer *_importButtonLabel;
+    CATextLayer *_emptyProjectModeInstructions;
 }
 
-+ (id)viewTypeMenuGlyph;
 + (id)viewTypeMenuLabel;
 + (id)keyPathsForValuesAffectingSelectedItems;
-@property(readonly) BOOL isAllProjectsMode; // @synthesize isAllProjectsMode=_isAllProjectsMode;
-@property(nonatomic) NSProView *emptySearchResultsView; // @synthesize emptySearchResultsView=_emptySearchResultsView;
+@property(nonatomic) CATextLayer *emptyProjectModeInstructions; // @synthesize emptyProjectModeInstructions=_emptyProjectModeInstructions;
+@property(nonatomic) CATextLayer *importButtonLabel; // @synthesize importButtonLabel=_importButtonLabel;
+@property(nonatomic) CATextLayer *trailerButtonLabel; // @synthesize trailerButtonLabel=_trailerButtonLabel;
+@property(nonatomic) CATextLayer *movieButtonLabel; // @synthesize movieButtonLabel=_movieButtonLabel;
+@property(nonatomic) NSView *emptySearchResultsView; // @synthesize emptySearchResultsView=_emptySearchResultsView;
 @property(nonatomic) FFResponderLayerHostView *emptyPaneView; // @synthesize emptyPaneView=_emptyPaneView;
 @property(retain) FFOrganizerFilmListViewController *filmlistViewController; // @synthesize filmlistViewController=_filmlistViewController;
 @property(retain) FFOrganizerFilmstripViewController *filmstripViewController; // @synthesize filmstripViewController=_filmstripViewController;
 @property FFOrganizerFilmstripViewController *currentFilmViewController; // @synthesize currentFilmViewController=_currentFilmViewController;
 @property int curDisplayViewType; // @synthesize curDisplayViewType=_curDisplayViewType;
-@property long long allProjectsArrangeType; // @synthesize allProjectsArrangeType=_allProjectsArrangeType;
-@property long long arrangeType; // @synthesize arrangeType=_arrangeType;
 @property int clusterMode; // @synthesize clusterMode=_clusterMode;
-@property long long clusterType; // @synthesize clusterType=_clusterType;
-@property BOOL allProjectsArrangeDirection; // @synthesize allProjectsArrangeDirection=_allProjectsArrangeDirection;
 @property BOOL arrangeDirection; // @synthesize arrangeDirection=_arrangeDirection;
 @property BOOL clusterDirection; // @synthesize clusterDirection=_clusterDirection;
 - (void)exportXML:(id)arg1;
@@ -189,7 +195,7 @@
 - (id)currentKeywords;
 - (void)_addKeywordsFromGroup:(unsigned int)arg1;
 - (void)showKeywordEditor;
-- (void)_toggleKeywordEditor;
+- (void)_toggleKeywordEditor:(id)arg1;
 - (void)_hideKeywordEditor;
 - (void)_updateKeywordEditorForKeywordChange;
 - (void)_orderFrontKeywordEditor;
@@ -200,10 +206,7 @@
 - (id)_currentKeywordingMediaRanges;
 - (id)_sortedKeywordNamesForMediaRanges:(id)arg1;
 - (BOOL)actionMoveMarker:(id)arg1 toRange:(id)arg2 error:(id *)arg3;
-- (BOOL)markerEditorIsShown;
-- (void)hideMarkerEditor;
-- (void)showMarkerEditorForMarkerLayer:(id)arg1 object:(id)arg2;
-- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
+- (id)markerEditorDelegate;
 - (void)_revealAndSelectMediaRange:(id)arg1;
 - (void)_revealAndSelectMediaRanges:(id)arg1;
 - (void)_selectMediaRange:(id)arg1;
@@ -230,6 +233,7 @@
 - (void)copyItemsToLibrary:(id)arg1;
 - (void)copyToLibrary:(id)arg1;
 - (void)_mmToLibrary:(id)arg1 isCopy:(BOOL)arg2;
+- (void)moveItems:(id)arg1 toLibraryOrURL:(id)arg2 isCopy:(BOOL)arg3;
 - (void)mergeClips:(id)arg1;
 - (void)allowTimelineEditing:(id)arg1;
 - (BOOL)allowTimelineEditingState;
@@ -244,6 +248,8 @@
 - (BOOL)canRelinkFiles;
 - (void)copyQueueCanceled:(id)arg1;
 - (void)ingestManagerStoppedIngest:(id)arg1;
+- (void)removeImportCanceledObservers;
+- (void)addImportCanceledObservers;
 - (void)moveToTrash:(id)arg1;
 - (BOOL)canMoveToTrash;
 - (BOOL)_deleteClips:(id)arg1 warnUser:(BOOL)arg2 error:(id *)arg3;
@@ -271,6 +277,7 @@
 - (long long)_findMostCommonDisplayDropFrame:(id)arg1 forVideoProps:(id)arg2;
 - (BOOL)_mixedTCTracksClockTimeInSelection:(id)arg1;
 - (CDStruct_1b6d18a9)_findSmallestStartingTime:(id)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 dropFrame:(long long)arg3;
+- (id)createNewProject;
 - (void)newProject:(id)arg1;
 - (void)createCompoundClip:(id)arg1;
 - (void)createMultiAngleClip:(id)arg1;
@@ -331,6 +338,7 @@
 - (void)numericEntryDidEndWithType:(int)arg1 timecode:(id)arg2 direction:(int)arg3;
 - (BOOL)canToggleDeltaAndAbsolute:(int)arg1;
 - (BOOL)doesNumericEntryOfType:(int)arg1 endOnKeyDownEvent:(id)arg2;
+- (id)skimmerTimecode;
 - (id)runtimeTimecode;
 - (id)timecodeFormatter;
 - (id)numericEntry;
@@ -411,26 +419,36 @@
 - (void)favoriteFilterMenu:(id)arg1;
 - (void)setFavoriteFilter:(int)arg1;
 - (void)setFiltersDictionary:(id)arg1;
+- (id)headerView;
+- (id)moduleHeaderAccessoryView;
+- (void)updateHeaderUI;
 - (long long)favFilterType;
 - (id)filterPulldownMenu;
 - (void)refreshFilterMenu;
 - (void)_setFavoriteFilter:(int)arg1;
+- (BOOL)useFilterPulldownMenu;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)openClickedOnProject:(id)arg1;
 - (id)selectedRangesForCopyOrMove;
 - (void)setShowListMode:(id)arg1;
 - (void)setShowFilmstripMode:(id)arg1;
+- (void)toggleEventsAsFilmstripAndListMode:(id)arg1;
 - (void)paste:(id)arg1;
 - (void)toggleShowDateRangesInEventList:(id)arg1;
 - (void)showUsedMediaRanges:(id)arg1;
 - (void)showMarkedRanges:(id)arg1;
 - (void)showSkimmerInfo:(id)arg1;
+- (void)pasteTimecode:(id)arg1;
+- (void)copyTimecode:(id)arg1;
+- (void)copyPlayheadTimecode:(id)arg1;
+- (void)copyTimecodeStringAtTimecode:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
 - (void)snapshotClip:(id)arg1;
 - (void)importClipsWithKeywords:(id)arg1 toEvent:(id)arg2;
 - (void)delayedPostImportDidBeginNotification;
 - (BOOL)performImportDropOperation:(id)arg1;
+- (void)organizerAddEffectID:(id)arg1;
 - (unsigned long long)shouldAcceptImportDrop:(id)arg1;
 - (unsigned long long)_dragOperationForEvent:(id)arg1 andInfo:(id)arg2;
 - (BOOL)wantsImportDragAndDrop;
@@ -460,12 +478,10 @@
 - (void)bladeAll:(id)arg1;
 - (void)modifySolo:(id)arg1;
 - (void)solo:(id)arg1;
-- (void)toggleAudioComponents:(id)arg1;
-- (void)splitEdit:(id)arg1;
 - (void)detachAudio:(id)arg1;
 - (void)enableOrDisableEdit:(id)arg1;
 - (void)addTransition:(id)arg1;
-- (void)flashAndHoldLastFrame:(id)arg1;
+- (void)flashAndFreezeLastFrame:(id)arg1;
 - (void)fadeToDream:(id)arg1;
 - (void)fadeToSepia:(id)arg1;
 - (void)fadeToBlackAndWhite:(id)arg1;
@@ -506,7 +522,6 @@
 - (id)_extractReferenceClipsForProjects:(id)arg1;
 - (void)_updateUnfilteredRanges;
 - (id)newSidebarRanges;
-- (void)_selectMostRecentlySelectedProjectInAllProjects;
 - (id)_filteredMediaRanges:(id)arg1 usingFolder:(id)arg2;
 - (id)_filteredMediaRanges:(id)arg1 forFiltersDictionary:(id)arg2;
 - (void)addMediaRangesForClipSetToArray:(id)arg1 toArray:(id)arg2;
@@ -523,6 +538,7 @@
 - (void)_saveProjectRelatedSelectionStates;
 - (void)_restoreProjectRelatedPersistentStates;
 - (void)_saveProjectRelatedPersistentStates;
+- (BOOL)_notifyIfActiveSelectionIsMarkerType:(id)arg1;
 - (BOOL)selectedItemsIncludeStill;
 @property(retain) NSArray *activeSelection; // @synthesize activeSelection=_activeSelection;
 - (id)selectedClips;
@@ -535,7 +551,6 @@
 - (BOOL)wantsPlayheadActions;
 - (BOOL)wantsRanges;
 - (BOOL)wantsSkimmerInfo;
-- (id)clipActionOptionsView;
 - (BOOL)canEditDisplayName;
 - (void)playingRangeOfMediaDidChange;
 - (void)playingRangeOfMediaWillChange;
@@ -544,6 +559,7 @@
 - (void)selectionDidChangeToTime:(CDStruct_e83c9415)arg1 inObject:(id)arg2;
 - (void)selectionDidChangeToObject:(id)arg1;
 - (void)selectedRangesOfMediaDidChange;
+- (id)filtersDictionary;
 - (id)unfilteredRanges;
 - (id)filteredRanges;
 - (void)_updateFilteredRanges;
@@ -553,19 +569,9 @@
 - (unsigned long long)filmstripView:(id)arg1 writeRangesOfMedia:(id)arg2 toPasteboard:(id)arg3;
 - (id)module;
 - (BOOL)canBeginPlaying;
-- (BOOL)canSkimWithAudio;
-- (BOOL)canBeginSkimming;
-- (void)makeSequenceActive:(id)arg1;
 - (id)defaultEditDurationString;
-- (id)editorModule;
-- (void)stopUsingMedia:(id)arg1;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 loadingBlock:(CDUnknownBlockType)arg4 unloadingBlock:(CDUnknownBlockType)arg5;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
+- (id)skimmingDelegate;
 - (id)context;
-- (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
-- (void)stopSkimmingForOwner:(id)arg1;
-- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
 - (void)_removeClusterItemsFromSelection:(id)arg1;
 - (void)setAllClusterDisclosedStates:(BOOL)arg1;
 - (void)_setShouldSetViewTypeWithDelegate:(BOOL)arg1;
@@ -587,23 +593,38 @@
 - (BOOL)_isContentItemAtIndex:(long long)arg1 ofTypeClass:(Class)arg2;
 - (id)_itemsArrangeByMetadata:(id)arg1;
 - (void)reclusterContents:(BOOL)arg1;
-- (void)setAllProjectsArrangeByMetadataKey:(id)arg1;
 - (void)setArrangeByMetadataKey:(id)arg1;
 - (id)_arrangeByMetadataKey;
 - (id)_clusteringMetadataKey;
 - (void)sortBy:(id)arg1;
 - (void)arrangebySortOrderAction:(id)arg1;
+- (void)_setArrangeByDirection:(long long)arg1;
 - (void)clusteringSortOrderAction:(id)arg1;
-- (void)arrangingingPopUpAction:(id)arg1;
+- (void)_setClusterDirection:(long long)arg1;
+- (void)arrangingPopupAction:(id)arg1;
 - (void)clusteringPopUpAction:(id)arg1;
 - (BOOL)isClustering;
-- (void)bezelHUDDidResignKey:(id)arg1;
 - (void)reenableZoomBezel;
-- (void)popOverWindowDidCancel:(id)arg1;
+- (void)popoverDidClose:(id)arg1;
 - (void)popUpClipAttributes:(id)arg1;
-- (void)shouldEditRolesForRolesMenuController:(id)arg1;
-- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 toAnchoredObjects:(id)arg3;
-- (id)anchoredObjectsForRolesMenuController:(id)arg1;
+- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 forContext:(id)arg3;
+- (id)contextForRolesMenuController:(id)arg1;
+- (void)gearMenuItemSelected:(id)arg1;
+- (id)menuForGearMenu;
+- (void)modeToggleButtonAction:(id)arg1;
+- (BOOL)shouldShowModeToggleButton;
+- (id)searchFiltersDictionary;
+- (void)searchButtonToggled:(BOOL)arg1;
+- (void)_showSearchHeader;
+- (BOOL)shouldShowSearchButton;
+- (long long)modeToggleState;
+- (void)filterMenuItemSelected:(id)arg1;
+- (id)menuForFilterMenuPopUp;
+- (void)searchHeaderWasDismissed;
+- (void)searchHeaderSearchFieldAction:(id)arg1;
+- (id)searchFieldToolTip;
+- (BOOL)shouldFocusSearchFieldWhenInstalled;
+- (BOOL)shouldShowHUDButton;
 - (id)contextualMenuForSelection:(id)arg1;
 - (id)lastKeyView;
 - (id)firstKeyView;
@@ -615,15 +636,19 @@
 - (void)setContents:(id)arg1;
 - (void)_restoreFiltersForEvent;
 - (void)_storeFiltersForEvent;
+- (id)_libraryForContent;
 - (id)_projectForContents;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
+- (void)installItemsCountPaneCapItem;
 - (void)initializeEmptyEventSearchResultsViews;
 - (BOOL)wantsImportMediaButton;
 - (void)initializeEmptySearchResultsView;
 - (void)initializeEmptyPaneView;
+- (void)initializeEmptyPaneViewProjectsTab:(id)arg1;
+- (void)initializeEmptyPaneViewMediaTab:(id)arg1;
 - (void)layoutSublayersOfLayer:(id)arg1;
 - (void)showImportPanel:(id)arg1;
 - (void)toggleAudioWaveforms:(id)arg1;
@@ -649,14 +674,20 @@
 - (BOOL)selectionCanTranscode;
 - (BOOL)_isReadOnly;
 - (BOOL)containedInImportModule;
+- (void)moduleDidUnhide;
+- (void)moduleDidHide;
 - (void)moduleDidBecomeVisible:(id)arg1;
 - (id)eventSidebarModule;
 - (id)sidebarModule;
 - (void)setDelegate:(id)arg1;
 - (id)identifier;
+@property(readonly) NSTouchBar *touchBar;
+- (void)_rolesInLibraryChanged:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)_deferUsedMediaRangeInvals:(id)arg1;
+@property long long arrangeType; // @synthesize arrangeType=_arrangeType;
+@property long long clusterType; // @synthesize clusterType=_clusterType;
 @property BOOL skimming;
 
 // Remaining properties

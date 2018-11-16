@@ -8,6 +8,8 @@
 
 #import "FFSearchableText.h"
 
+@class NSString;
+
 @interface OZTXInterface : NSObject <FFSearchableText>
 {
     struct TXTextInput *_text;
@@ -16,12 +18,12 @@
 + (id)wrapperWithText:(struct TXTextInput *)arg1;
 @property(nonatomic) struct TXTextInput *text; // @synthesize text=_text;
 - (void)closeUndoGroup;
-- (void)openUndoGroup:(vector_8a98cfff *)arg1;
-- (void)addTXTextInputObjects:(vector_8a98cfff *)arg1 fromResults:(vector_d1504541 *)arg2;
+- (void)openUndoGroup:(vector_9e9b204a *)arg1;
+- (void)addTXTextInputObjects:(vector_9e9b204a *)arg1 fromResults:(vector_1392cc16 *)arg2;
 - (BOOL)hasAtLeastOneInstanceOf:(const struct PCString *)arg1 withFlags:(unsigned int)arg2;
 - (void)insertText:(const struct PCString *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2 at:(unsigned int)arg3 ID:(unsigned int)arg4;
 - (void)deleteTextAtTime:(const CDStruct_1b6d18a9 *)arg1 at:(unsigned int)arg2 length:(unsigned int)arg3 ID:(unsigned int)arg4;
-- (vector_d1504541)getTextIDs;
+- (vector_1392cc16)getTextIDs;
 - (unsigned int)getParentID;
 - (unsigned int)getResultID;
 - (unsigned int)getID;
@@ -30,7 +32,7 @@
 - (void)resetSelection:(BOOL)arg1;
 - (void)setSelectionRangeForResult:(struct FFTextSearchResult)arg1;
 - (void)resetSelectionRangeForResult:(struct FFTextSearchResult)arg1;
-- (void)getSearchResults:(vector_d1504541 *)arg1 forString:(const struct PCString *)arg2 withFlags:(unsigned int)arg3;
+- (void)getSearchResults:(vector_1392cc16 *)arg1 forString:(const struct PCString *)arg2 withFlags:(unsigned int)arg3;
 - (CDStruct_1b6d18a9)getTimeOffset:(id)arg1;
 - (CDStruct_1b6d18a9)getTimeOffsetForResult:(id)arg1;
 - (CDStruct_1b6d18a9)getTimeForID:(unsigned int)arg1;
@@ -39,6 +41,12 @@
 - (unsigned int)getRightSelectionOffset;
 - (unsigned int)getLeftSelectionOffset;
 - (unsigned int)getCursorPosition;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,12 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "TLKThemeBackedLayer.h"
+#import "CALayer.h"
 
-@class CALayer, CATextLayer, FFOrganizerClusteringCollection, FFResponderLayerDisclosureButton;
+@class CATextLayer, FFOrganizerClusteringCollection, FFResponderLayerDisclosureButton;
 
 __attribute__((visibility("hidden")))
-@interface FFOrganizerFilmstripClusterHeaderLayer : TLKThemeBackedLayer
+@interface FFOrganizerFilmstripClusterHeaderLayer : CALayer
 {
     BOOL _disclosed;
     FFOrganizerClusteringCollection *_clusteringCollection;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (long long)_countFigTimeRangAndObjectsInCollection:(id)arg1;
 - (void)_setupLayersForFCP;
 - (struct CGRect)disclosureFrame;
-- (id)initWithClusteringCollection:(id)arg1 inRect:(struct CGRect)arg2 isDisclosed:(BOOL)arg3 facet:(id)arg4;
+- (id)initWithClusteringCollection:(id)arg1 inRect:(struct CGRect)arg2 isDisclosed:(BOOL)arg3;
 - (void)_toggleDisclosed;
 
 @end

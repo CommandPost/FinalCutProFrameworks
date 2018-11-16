@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 + (void)registerEffects;
 + (BOOL)isPassThruEffectWhenColorMasking;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7 graphBuildInfo:(id)arg8;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
 - (id)simplifiesToPassThruAtTime:(CDStruct_1b6d18a9)arg1 forInputSource:(id)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
-- (HGRef_0de1db7e)makeMaskNodeAtTime:(CDStruct_1b6d18a9)arg1 withInputImage:(id)arg2;
+- (HGRef_0de1db7e)makeMaskNodeAtTime:(CDStruct_1b6d18a9)arg1 withInputImage:(id)arg2 workingSpace:(int)arg3;
+- (id)keyerPremulInputFormat:(int)arg1;
+- (id)keyerStraightInputFormat:(int)arg1;
 - (struct HGNode *)newBlendNodeForMask:(id)arg1;
 - (id)newEffectNodeWithInput:(id)arg1 forKey:(id)arg2 withOffset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4;
 - (id)_newSourceForMaskInput:(id)arg1 offset:(CDStruct_1b6d18a9)arg2 identifier:(id)arg3 videoProps:(id)arg4;
@@ -34,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (void)effectWasAddedToStack:(int)arg1;
 - (BOOL)supportsReentrancy;
 - (id)keyframeableChannels;
+- (CDStruct_bdcb2b0d)getContextBasedMD5Adjustment:(id)arg1;
+- (BOOL)_atLeastOneMaskEnabled;
 - (CDStruct_bdcb2b0d)md5;
 - (BOOL)isLoadingInBackground;
 - (BOOL)soloEffectMatte;
@@ -48,8 +52,8 @@ __attribute__((visibility("hidden")))
 - (void)insertObject:(id)arg1 inMasksAtIndex:(unsigned long long)arg2;
 - (void)_insertObject:(id)arg1 inMasksAtIndex:(unsigned long long)arg2 notify:(BOOL)arg3;
 @property(readonly, nonatomic) NSArray *masks;
-@property(nonatomic) BOOL showMatte; // @dynamic showMatte;
-@property(nonatomic) BOOL invertMasks; // @dynamic invertMasks;
+@property BOOL showMatte; // @dynamic showMatte;
+@property BOOL invertMasks; // @dynamic invertMasks;
 @property(readonly, nonatomic) NSArray *outerEffects;
 @property(readonly, nonatomic) NSArray *innerEffects;
 - (id)masksFolder;

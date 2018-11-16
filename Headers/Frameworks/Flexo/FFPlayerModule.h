@@ -6,11 +6,12 @@
 
 #import "LKViewModule.h"
 
+#import "NSTouchBarProvider.h"
 #import "NSWindowDelegate.h"
 
-@class FFContext, FFPlayer, FFProvider, FFSourceAudio, FFSourceVideo, LKModuleLayout, NSDictionary, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>, NSString, NSView;
+@class FFContext, FFPlayer, FFPlayerModuleDFRController, FFProvider, FFSourceAudio, FFSourceVideo, LKModuleLayout, NSDictionary, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>, NSString, NSTouchBar, NSView;
 
-@interface FFPlayerModule : LKViewModule <NSWindowDelegate>
+@interface FFPlayerModule : LKViewModule <NSWindowDelegate, NSTouchBarProvider>
 {
     NSView *_submodulesView;
     struct NSObject *_skimmable;
@@ -40,6 +41,8 @@
     BOOL _isInFullScreen;
     id _savedFirstResponder;
     BOOL _autoHideCursorInFullScreen;
+    BOOL _editorQualities;
+    FFPlayerModuleDFRController *_dfrController;
     BOOL _loadEventProjects;
     BOOL _displaysProjectInfoOSC;
 }
@@ -49,13 +52,16 @@
 + (id)defaultSublayoutName;
 @property(nonatomic) BOOL displaysProjectInfoOSC; // @synthesize displaysProjectInfoOSC=_displaysProjectInfoOSC;
 @property(nonatomic) BOOL loadEventProjects; // @synthesize loadEventProjects=_loadEventProjects;
+@property(getter=hasEditorQualities) BOOL editorQualities; // @synthesize editorQualities=_editorQualities;
 @property(nonatomic) BOOL autoHideCursorInFullScreen; // @synthesize autoHideCursorInFullScreen=_autoHideCursorInFullScreen;
 @property(nonatomic) float reportedZoomFactor; // @synthesize reportedZoomFactor=_reportedZoomFactor;
 @property(nonatomic) int playerRole; // @synthesize playerRole=_playerRole;
 @property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
 @property(nonatomic) FFProvider *provider; // @synthesize provider=_provider;
 @property(readonly, nonatomic) long long effectCount; // @synthesize effectCount=_effectCount;
-@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable; // @synthesize skimmable=_skimmable;
+@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
+- (void)pasteTimecode:(id)arg1;
+- (void)copyTimecode:(id)arg1;
 - (id)orderedZoomLevels;
 - (void)_fadeDisplayFromBlackWithDuration:(double)arg1 token:(unsigned int)arg2;
 - (unsigned int)_fadeDisplayToBlackWithDuration:(double)arg1;
@@ -156,7 +162,8 @@
 - (void)setShowBothFields:(BOOL)arg1;
 - (BOOL)showBothFields;
 @property(nonatomic) BOOL displayBroadcastSafeZones;
-@property(nonatomic) BOOL highlightsExcessLuma;
+- (id)getRangeCheckColorSpaceLabel;
+@property(nonatomic) unsigned int rangeCheckMode;
 - (void)setColorChannelDisplayMode:(long long)arg1;
 - (long long)colorChannelDisplayMode;
 @property(nonatomic) struct CGPoint origin;
@@ -201,6 +208,7 @@
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (id)layer;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
+@property(readonly) NSTouchBar *touchBar;
 - (void)dealloc;
 - (id)initWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (id)initWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 sublayoutName:(id)arg4;

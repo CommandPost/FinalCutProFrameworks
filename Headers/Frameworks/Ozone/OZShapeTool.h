@@ -25,7 +25,6 @@
     struct CGPoint _bottomRight;
 }
 
-- (id).cxx_construct;
 - (BOOL)showEditToolOnCompletion;
 - (BOOL)oscFlagsChanged:(id)arg1;
 - (BOOL)keyDownOSC:(id)arg1;

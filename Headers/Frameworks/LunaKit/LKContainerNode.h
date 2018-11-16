@@ -49,7 +49,12 @@
 @property(readonly) NSMutableArray *subnodes; // @synthesize subnodes=_subnodes;
 @property LKContainerNode *parentNode; // @synthesize parentNode=_parentNode;
 - (void)filterNodes;
+- (BOOL)useWindowForFocusIndicator;
+- (BOOL)wantsFocusIndicator;
 - (BOOL)wantsTimelineStylePaneCap;
+- (BOOL)wantsTransparentBackground;
+- (BOOL)wantsAlternateBackgroundColorForFooterBar;
+- (BOOL)wantsAlternateBackgroundColorForHeaderBar;
 - (BOOL)wantsFooterBar;
 - (BOOL)wantsHeaderBar;
 - (BOOL)isViewOrderedBelow;

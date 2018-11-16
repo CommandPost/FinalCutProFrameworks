@@ -36,10 +36,10 @@
     } _mFlags;
     LKModuleLayout *_subLayout;
     id _autounbinder;
-    NSArray *_coachTipSpecifiers;
     BOOL loadNibFailed;
 }
 
++ (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)sharedInstanceIdentifier;
 + (id)sharedInstance;
 + (id)moduleWithIdentifier:(id)arg1;
@@ -70,10 +70,14 @@
 - (BOOL)isVisible;
 - (id)makeSubmoduleVisible:(id)arg1;
 - (id)makeVisible;
+- (void)module:(id)arg1 didUnhideSubmodule:(id)arg2;
+- (void)module:(id)arg1 didHideSubmodule:(id)arg2;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;
 - (void)recursiveModuleDidUnhide;
+- (void)innerRecursiveModuleDidUnhide;
 - (void)recursiveModuleDidHide;
+- (void)innerRecursiveModuleDidHide;
 - (BOOL)isHidden;
 - (BOOL)isSubmoduleHidden:(id)arg1;
 - (BOOL)unhideSubmodule:(id)arg1;
@@ -92,6 +96,7 @@
 - (void)unhide:(id)arg1;
 - (void)show:(id)arg1;
 - (id)layoutDictionary;
+- (void)displayPostAutoLayout;
 - (void)postLayout:(id)arg1;
 - (id)createSubmoduleFromDictionary:(id)arg1;
 - (void)configureSubmodules:(id)arg1;
@@ -112,6 +117,8 @@
 - (id)contentLayoutDictionary;
 - (void)takeGeometryLayoutFromDictionary:(id)arg1;
 - (id)geometryLayoutDictionary;
+- (double)moduleFooterViewHeight;
+- (double)moduleHeaderViewHeight;
 - (BOOL)saveViewFrameInGeometryDictionary;
 - (BOOL)moduleEnforcesViewMinSize;
 - (void)submodule:(id)arg1 didChangeMaxSize:(struct CGSize)arg2;
@@ -125,9 +132,7 @@
 - (BOOL)validateToolbarButton:(id)arg1;
 - (BOOL)validateLocalUserInterfaceItem:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
-- (id)fetchModuleForAction:(SEL)arg1;
 - (id)moduleForAction:(SEL)arg1;
-- (id)sharedModuleLoadQueue;
 - (id)allModuleActions;
 - (id)targetModuleActions;
 - (id)localModuleActions;
@@ -179,6 +184,7 @@
 - (long long)tag;
 - (id)lastKeyView;
 - (id)firstKeyView;
+- (BOOL)_ignoreBorderPadding;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)_moduleViewWillBeRemoved:(id)arg1;
 - (void)viewWillBeRemoved;
@@ -189,7 +195,6 @@
 - (void)viewDidLoad;
 - (void)_doPendingLayout;
 - (void)_viewDidLoad;
-- (void)_configureCoachTips;
 - (void)awakeFromNib;
 - (BOOL)loadView;
 - (void)viewWillLoad;

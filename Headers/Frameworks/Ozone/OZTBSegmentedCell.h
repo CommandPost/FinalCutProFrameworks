@@ -10,7 +10,7 @@
 {
 }
 
-- (void)_fillSegmentBackgroundWithFacet:(id)arg1 inFrame:(struct CGRect)arg2 userInfo:(id)arg3;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 
 @end
 

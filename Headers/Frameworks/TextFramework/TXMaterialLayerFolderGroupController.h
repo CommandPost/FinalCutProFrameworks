@@ -8,7 +8,7 @@
 
 @interface TXMaterialLayerFolderGroupController : OZFolderGroupController
 {
-    struct vector<unsigned int, std::allocator<unsigned int>> _missingCtrlChanIDs;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _missingCtrlChanIDs;
 }
 
 - (id).cxx_construct;
@@ -22,8 +22,9 @@
 - (id)materialAssignmentController;
 - (id)materialController;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)doDrag:(list_e802f8b8 *)arg1 viewList:(id)arg2;
+- (void)doDrag:(list_e5c8e430 *)arg1 viewList:(id)arg2;
 - (void)select:(BOOL)arg1;
+- (void)select:(BOOL)arg1 excludeChannel:(struct OZChannelBase *)arg2;
 - (void)addAssociatedChannelsToEnclosedGroup:(id)arg1;
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3 recursive:(BOOL)arg4;
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 inEnclosedGroup:(id)arg2 isAdd:(BOOL)arg3 force:(BOOL)arg4 recursive:(BOOL)arg5;

@@ -6,18 +6,22 @@
 
 #import "CALayer.h"
 
-@class TLKItemLaneFragment, TLKMainSpineDropZoneLayer, TLKThemeBackedLayer, TLKTimelineView;
+@class TLKImageLayer, TLKItemLaneFragment, TLKMainSpineDropZoneLayer, TLKTimelineView;
 
 @interface TLKItemLaneFragmentLayer : CALayer
 {
     struct CGRect _fadeAreaRect;
     TLKMainSpineDropZoneLayer *_dropZoneLayer;
-    TLKThemeBackedLayer *_dropZoneImageLayer;
+    TLKImageLayer *_dropZoneImageLayer;
     CALayer *_dividerLineLayer;
     TLKItemLaneFragment *_itemLaneFragment;
 }
 
 @property(nonatomic) TLKItemLaneFragment *itemLaneFragment; // @synthesize itemLaneFragment=_itemLaneFragment;
+- (void)updateVisibleLayers;
+- (void)timelineView:(id)arg1 didChangeVisibleRect:(struct CGRect)arg2;
+- (void)didChangeVisibleBounds:(struct CGRect)arg1;
+- (id)hitTest:(struct CGPoint)arg1;
 - (void)layoutSublayers;
 - (void)_updateEmptyFill;
 - (void)setRasterizationScale:(double)arg1;

@@ -12,9 +12,8 @@
     BOOL _useTungstenMatrix;
 }
 
-- (void)setColorConformPresetAndParameters:(struct HGColorConform *)arg1;
-- (id)init;
-- (id)initWithExposureIndex:(unsigned int)arg1 isoSensitivity:(unsigned int)arg2;
+- (void)setColorConformPresetAndParameters:(struct HGColorConform *)arg1 toConvertToColorSpace:(int)arg2;
+- (int)targetColorSpaceFor:(int)arg1;
 - (id)initWithExposureIndex:(unsigned int)arg1 isoSensitivity:(unsigned int)arg2 whiteBalance:(unsigned int)arg3;
 
 @end

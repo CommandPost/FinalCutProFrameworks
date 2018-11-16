@@ -23,6 +23,11 @@ __attribute__((visibility("hidden")))
 - (void)showWaveform:(id)arg1;
 - (void)showVectorscope:(id)arg1;
 - (void)showHistogram:(id)arg1;
+- (void)changeColorSpaceRec2020:(id)arg1;
+- (void)changeColorSpaceRec709:(id)arg1;
+- (void)changeColorSpaceRec601:(id)arg1;
+- (void)changeColorSpaceDefault:(id)arg1;
+- (void)_setOverrideColorSpace:(long long)arg1;
 - (void)changeUnitsMillivolts:(id)arg1;
 - (void)changeUnitsIRE:(id)arg1;
 - (void)_setCompositeVideoUnits:(long long)arg1;

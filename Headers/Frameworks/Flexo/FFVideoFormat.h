@@ -16,9 +16,15 @@
     NSString *_displayFormatName;
     NSString *_displaySize;
     NSString *_displayRate;
+    NSString *_displayColorSpace;
     _Bool _isInstalledFormat;
 }
 
++ (id)displayColorSpacesForCustomWidth:(int)arg1 andHeight:(int)arg2 allowWideGamut:(BOOL)arg3;
++ (id)displayColorSpacesForStandardGamutVideoFormat:(id)arg1 allowWideGamut:(BOOL)arg2;
++ (BOOL)isWideGamutColorSpaceDisplayName:(id)arg1;
++ (struct CGColorSpace *)colorSpaceForDisplayName:(id)arg1;
++ (id)displayNameForColorSpace:(struct CGColorSpace *)arg1;
 + (struct CGSize)convertToAppPreviewSupportedSize:(struct CGSize)arg1;
 + (struct CGSize)_closestAppPreviewSupportedSize:(struct CGSize)arg1 portraitMode:(BOOL)arg2;
 + (id)displayRatesForFormat:(id)arg1 andSize:(id)arg2 andFrameDuration:(CDStruct_1b6d18a9)arg3;
@@ -26,6 +32,7 @@
 + (id)displaySizesForFormat:(id)arg1 andRate:(id)arg2;
 + (id)displayFormatsForFrameDuration:(CDStruct_1b6d18a9)arg1;
 + (id)displayFormatsForRate:(id)arg1;
++ (id)formatForDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 displayColorSpace:(id)arg4;
 + (id)formatForDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3;
 + (id)displayRatesForFormat:(id)arg1 andSize:(id)arg2;
 + (id)displaySizesForFormat:(id)arg1;
@@ -36,7 +43,6 @@
 + (id)_displayProgressiveRateForSampleDuration:(CDStruct_1b6d18a9)arg1;
 + (id)displayProgressiveRatesInOrder;
 + (id)displayFormatsInOrder;
-+ (void)addFormat:(id)arg1 withName:(id)arg2;
 + (id)formats;
 + (id)formatForName:(id)arg1;
 + (id)formatsDict;
@@ -45,17 +51,18 @@
 + (void)releaseSharedInstance;
 @property(nonatomic) _Bool isInstalledFormat; // @synthesize isInstalledFormat=_isInstalledFormat;
 - (id)newPList;
-- (id)matchingPropsWithFieldOrder:(int)arg1;
+- (BOOL)isReallyGoodGuessOf:(id)arg1;
 - (id)exactMatchVideoFormat;
 - (int)fieldDominance;
 - (CDStruct_1b6d18a9)frameDuration;
 - (CDStruct_1b6d18a9)sampleDuration;
 - (id)description;
+- (id)displayColorSpace;
 - (id)displayRate;
 - (id)displaySize;
 - (id)displayFormat;
 - (id)displayName;
-- (void)setName:(id)arg1;
+- (BOOL)isWideGamut;
 @property(readonly, nonatomic) NSString *name;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;

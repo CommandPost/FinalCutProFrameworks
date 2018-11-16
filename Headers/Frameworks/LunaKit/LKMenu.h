@@ -4,11 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProMenu.h"
+#import "NSMenu.h"
 
-@interface LKMenu : NSProMenu
+@interface LKMenu : NSMenu
 {
+    BOOL _isHUD;
 }
+
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithTitle:(id)arg1;
+- (void)installProMenuImpl;
 
 @end
 

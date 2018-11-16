@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class DSBridge, FFSharedLock, FFUndoHandler;
+@class DSBridge, FFSharedLock, FFUndoHandler, NSObject<OS_dispatch_semaphore>;
 
 @interface FFCatalog : NSObject
 {
@@ -14,32 +14,35 @@
     FFUndoHandler *_undoHandler;
     DSBridge *_bridge;
     int _asyncSaves;
-    int _actionLevel;
+    NSObject<OS_dispatch_semaphore> *_backupOK;
 }
 
++ (BOOL)transactionEnd:(int)arg1 error:(id *)arg2;
++ (void)transactionBegin:(id)arg1;
++ (void)transactionEndUndoRedo;
++ (void)transactionBeginUndoRedo;
 + (int)versionOldest;
 + (int)versionCurrent;
 + (id)storeForObject:(struct DSObject *)arg1;
 + (id)catalogForObject:(struct DSObject *)arg1;
-+ (id)newCatalogWithURL:(id)arg1 error:(id *)arg2;
++ (id)newCatalogWithURL:(id)arg1 undoHandler:(id)arg2 error:(id *)arg3;
+- (BOOL)isBackupInProgress;
+- (void)waitForBackup;
+- (void)relinquishBackupLock;
+- (void)acquireBackupLock;
 - (void)DSBridgeDidRollback:(id)arg1;
 - (void)DSBridgeWillRollback:(id)arg1;
-- (void)DSBridgeDidSave:(id)arg1 error:(id)arg2;
-- (void)DSBridgeWillSave:(id)arg1;
-- (BOOL)transactionEnd:(int)arg1 error:(id *)arg2;
-- (void)transactionBegin;
-- (void)transactionEndUndoRedo;
-- (void)transactionBeginUndoRedo;
 - (id)undoHandler;
 - (BOOL)bringUpToDate:(id *)arg1;
 - (BOOL)sync:(id *)arg1;
 - (BOOL)saveCatalog:(id *)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (BOOL)prepareSave:(id *)arg1 withProgress:(CDUnknownBlockType)arg2;
+- (long long)numberOfSaveChanges;
 - (BOOL)validateStores:(id *)arg1;
-- (id)outputQueue;
 - (BOOL)savePending;
 - (BOOL)hasChanges;
 - (BOOL)hasLock;
-- (id)objectFromID:(id)arg1 store:(id)arg2;
+- (id)objectFromID:(id)arg1 store:(id)arg2 error:(id *)arg3;
 - (void)assignObject:(struct DSObject *)arg1 toStore:(id)arg2;
 - (id)fetchObjectsWithIDs:(id)arg1 stores:(id)arg2 error:(id *)arg3;
 - (id)makePersistentID:(struct DSObject *)arg1;
@@ -47,14 +50,17 @@
 - (BOOL)removeStore:(id)arg1 error:(id *)arg2;
 - (id)addStore:(id)arg1 validate:(BOOL)arg2 error:(id *)arg3;
 - (id)addStore:(id)arg1 error:(id *)arg2;
+- (id)modifiedStores;
 - (id)storeForURL:(id)arg1;
 - (id)stores;
 - (void)DSBridge:(id)arg1 changed:(id)arg2;
 - (id)DSBridge;
-- (void)unlock;
-- (void)lock;
+- (void)performMoveBlock:(CDUnknownBlockType)arg1;
+- (void)performSaveBlock:(CDUnknownBlockType)arg1;
+- (void)performBlock:(CDUnknownBlockType)arg1;
+- (void)performBlockAndWait:(CDUnknownBlockType)arg1;
 - (id)sharedLock;
-- (id)initWithURL:(id)arg1 error:(id *)arg2;
+- (id)initWithURL:(id)arg1 undoHandler:(id)arg2 error:(id *)arg3;
 - (id)makeBridgeAndStoreWithURL:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (oneway void)release;

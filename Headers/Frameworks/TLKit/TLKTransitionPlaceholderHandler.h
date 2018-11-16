@@ -11,11 +11,14 @@
 @interface TLKTransitionPlaceholderHandler : TLKTimelineHandler
 {
     TLKTransitionPlaceholderLayer *_rolledOverLayer;
+    BOOL _enableRolloverState;
 }
 
+@property(nonatomic) BOOL enableRolloverState; // @synthesize enableRolloverState=_enableRolloverState;
 - (void)exitRollover:(id)arg1;
 - (BOOL)enterRollover:(id)arg1;
 - (BOOL)stopTracking:(id)arg1;
+- (id)initWithView:(id)arg1;
 
 @end
 

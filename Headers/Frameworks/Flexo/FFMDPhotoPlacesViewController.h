@@ -38,8 +38,8 @@ __attribute__((visibility("hidden")))
 - (void)_showContentsOfAnnotation:(id)arg1;
 - (void)_clusterAnnotations;
 - (id)_annotationInGrid:(CDStruct_02837cd9)arg1 usingAnnotations:(id)arg2;
-- (CDStruct_c3b9c2ee)_coordinateForGroup:(id)arg1 getWeight:(double *)arg2 getBounds:(CDStruct_02837cd9 *)arg3;
-- (CDStruct_c3b9c2ee)_coordinateForAnnotations:(id)arg1;
+- (struct CLLocationCoordinate2D)_coordinateForGroup:(id)arg1 getWeight:(double *)arg2 getBounds:(CDStruct_02837cd9 *)arg3;
+- (struct CLLocationCoordinate2D)_coordinateForAnnotations:(id)arg1;
 - (void)mapView:(id)arg1 didAddAnnotationViews:(id)arg2;
 - (void)mapView:(id)arg1 didDeselectAnnotationView:(id)arg2;
 - (void)mapView:(id)arg1 didSelectAnnotationView:(id)arg2;

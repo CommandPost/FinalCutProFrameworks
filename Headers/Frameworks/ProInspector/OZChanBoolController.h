@@ -15,6 +15,8 @@
     PIParameterPulldown *_pParamPulldown;
 }
 
+- (float)suggestedMaxParamWidth;
+- (float)suggestedMinParamWidth;
 - (void)setChannelValue:(id)arg1;
 - (BOOL)hasControls;
 - (void)disable;

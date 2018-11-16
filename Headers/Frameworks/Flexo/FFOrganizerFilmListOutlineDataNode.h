@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)formattedMetaDataValueFromObject:(id)arg1 forKey:(id)arg2;
 - (void)setMetaDataValue:(id)arg1 onObject:(id)arg2 forKey:(id)arg3;
 - (id)metaDataValueFromObject:(id)arg1 forKey:(id)arg2;
+- (id)colorProfile;
 - (id)audioConfiguration;
 - (id)sizeNum;
 - (id)size;
@@ -69,10 +70,8 @@ __attribute__((visibility("hidden")))
 - (void)setCameraName:(id)arg1;
 - (id)cameraName;
 - (BOOL)canEditCameraName;
-- (void)setRolesSet:(id)arg1;
-- (id)rolesSet;
-- (void)setRoles:(id)arg1;
-- (id)roles;
+- (id)audioRoles;
+- (id)videoRoles;
 - (BOOL)canEditRoles;
 - (void)setShot:(id)arg1;
 - (id)shot;
@@ -119,14 +118,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)isProjectNode;
 - (BOOL)isClipNode;
 - (BOOL)isClusterNode;
+- (BOOL)isSyncronized;
 - (BOOL)isClipOffline;
-- (void)generateNodeDataHelper;
-- (void)generateNodeDataHelperMainThread:(id)arg1;
 - (id)treeNode;
 - (void)postListOutlineRowDataChangedNotification;
 - (void)rangeInvalidated:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)removeMetadataGeneratorObserver;
 - (void)removeObservers;
 - (void)addObservers;
 - (id)description;

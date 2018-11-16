@@ -4,10 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSString;
+@class FFEffectStack, FFRole, NSString;
 
 @protocol FFMutableAudioObjectComponentsLayoutItemProtocol
-- (void)setRole:(NSString *)arg1;
+- (void)setScopeStart:(CDStruct_1b6d18a9)arg1 andEnd:(CDStruct_1b6d18a9)arg2;
+- (void)setEffectStack:(FFEffectStack *)arg1;
+- (void)setRole:(FFRole *)arg1;
+- (void)setMuted:(BOOL)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setItemName:(NSString *)arg1;
 @end

@@ -33,7 +33,7 @@
 - (id)initialValue;
 - (void)setInitialValue:(id)arg1;
 - (BOOL)textDidChange;
-- (void)editInRect:(struct CGRect)arg1 ofView:(id)arg2 event:(id)arg3;
+- (void)editInRect:(struct CGRect)arg1 ofView:(id)arg2 event:(id)arg3 defaultString:(id)arg4;
 - (struct CGRect)textFrame;
 - (void)_boundsChanged:(id)arg1;
 - (void)textDidEndEditing:(id)arg1;
@@ -41,8 +41,8 @@
 - (void)_textFrameDidChange:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (struct CGRect)_clipFrameWithFrame:(struct CGRect)arg1;
-- (void)_edit:(id)arg1 inRect:(struct CGRect)arg2 ofViewEditor:(id)arg3 contextView:(id)arg4;
-- (void)_editOneLine:(id)arg1;
+- (void)_edit:(id)arg1 inRect:(struct CGRect)arg2 ofViewEditor:(id)arg3 contextView:(id)arg4 defaultString:(id)arg5;
+- (void)_editOneLine:(id)arg1 defaultString:(id)arg2;
 - (BOOL)textView:(id)arg1 doCommandBySelector:(SEL)arg2;
 - (struct CGRect)_alignedRectWithSize:(struct CGSize)arg1;
 - (void)setMaximumSize:(struct CGSize)arg1;

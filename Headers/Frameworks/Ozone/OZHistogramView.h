@@ -4,13 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
 #import "OZRenderClient.h"
 
 @class NSBitmapImageRep, NSImage;
 
-@interface OZHistogramView : NSProView <OZRenderClient>
+@interface OZHistogramView : NSView <OZRenderClient>
 {
     NSImage *_pHistogramImage;
     NSBitmapImageRep *_pHistogramRep;
@@ -21,7 +21,7 @@
 }
 
 - (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
-- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_3bf61ddf *)arg2;
 - (void)renderCancel:(id)arg1;
 - (void)renderCompletion:(id)arg1;
 - (struct OZChannelHistogram *)histogramChannel;

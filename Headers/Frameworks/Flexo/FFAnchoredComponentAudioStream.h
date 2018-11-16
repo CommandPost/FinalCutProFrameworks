@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
     double _sampleRate;
     struct FFAudioEffectsBuss *_effectsBuss;
+    struct FFAudioEffectsBussAnchoredObjectDelegate *_effectsBussDelegate;
     struct FFAudioNode *_sequenceTimeNode;
 }
 

@@ -12,9 +12,8 @@
 }
 
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
-- (void)mouseDown:(id)arg1;
-- (void)addMeterSublayers;
 - (void)awakeFromNib;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

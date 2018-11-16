@@ -4,14 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKThemeBackedLayer.h>
+#import <TLKit/TLKProKitInterimLayer.h>
 
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class CAShapeLayer, NSString, TLKMarkerPosterPinLayer, TLKTimelineLayer;
+@class CAShapeLayer, NSString, TLKMarkerPosterPinLayer, TLKTimelineLayer, TLKTimelineView;
 
-@interface TLKMarkerLayer : TLKThemeBackedLayer <TLKPartInfo, TLKAccessibilityProtocol>
+@interface TLKMarkerLayer : TLKProKitInterimLayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
     id <TLKTimelineMarkerItem> _representedObject;
     int _markerType;
@@ -61,6 +61,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property __weak TLKTimelineView *delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

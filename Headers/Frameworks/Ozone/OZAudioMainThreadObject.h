@@ -20,7 +20,6 @@
     CDStruct_1b6d18a9 _outPoint;
 }
 
-- (id).cxx_construct;
 - (void)stopTimer;
 - (void)startTimer;
 - (void)timerCallback:(id)arg1;

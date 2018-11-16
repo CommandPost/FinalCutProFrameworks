@@ -6,15 +6,17 @@
 
 #import <Flexo/FFMDMusicModule.h>
 
-@class FFAlwaysHitButton;
+@class LKProgressIndicator, NSImageView, NSTextField;
 
 @interface FFMDITunesModule : FFMDMusicModule
 {
     BOOL _emptyPaneViewInitialized;
-    FFAlwaysHitButton *_toggleSidebarButton;
-    FFAlwaysHitButton *_dividerLine;
+    NSImageView *_emptyPaneImageView;
+    NSTextField *_emptyPaneTextLabel;
+    LKProgressIndicator *_progressIndicator;
 }
 
+- (id)mediaBrowserIdentifier;
 - (BOOL)supportsMovie;
 - (BOOL)supportsAudio;
 - (id)mediaPlugInLoadCompletionNotificationName;

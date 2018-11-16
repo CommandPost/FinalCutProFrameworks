@@ -23,6 +23,7 @@
 + (id)objectFromUniqueIdentifier:(id)arg1;
 + (id)copyClassDescription;
 + (id)keyPathsForValuesAffectingItemDisplayName;
+- (id)inspectorDisplayName;
 - (id)inspectorClassName;
 - (void)setUserDefaultFigTime:(CDStruct_1b6d18a9)arg1 forKey:(id)arg2;
 - (CDStruct_1b6d18a9)userDefaultFigTimeForKey:(id)arg1;

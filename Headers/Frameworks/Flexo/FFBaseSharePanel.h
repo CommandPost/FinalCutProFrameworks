@@ -82,7 +82,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CALayer *topLayer; // @synthesize topLayer=_topLayer;
 @property(nonatomic) NSView *previewView; // @synthesize previewView=_previewView;
 @property(retain, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
-@property(retain, nonatomic) NSArray *batches; // @synthesize batches=_batches;
 @property(retain, nonatomic) NSArray *destinationControllers; // @synthesize destinationControllers=_destinationControllers;
 @property(retain, nonatomic) FFShareDestination *originalDestination; // @synthesize originalDestination=_originalDestination;
 @property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
@@ -137,6 +136,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL hasMultipleDestinations;
 @property(copy, nonatomic) NSDictionary *metadata;
 @property(readonly, nonatomic) NSArray *targets;
+@property(readonly, nonatomic) NSArray *batches;
 @property(readonly, retain, nonatomic) NSArray *destinations;
 - (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 delegate:(id)arg3 didRecoverSelector:(SEL)arg4 contextInfo:(void *)arg5;
 - (BOOL)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;

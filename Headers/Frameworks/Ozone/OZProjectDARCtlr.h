@@ -16,7 +16,7 @@
     struct OZProjectNode *_pProjectNode;
 }
 
-- (BOOL)buildUIWithSceneNodes:(list_d81b4758 *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_63a35edb *)arg1 context:(id)arg2;
 
 @end
 

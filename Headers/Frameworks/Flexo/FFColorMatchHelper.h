@@ -7,43 +7,31 @@
 #import "NSObject.h"
 
 #import "FFMatchToolDelegate.h"
-#import "FFRollbackRecordProtocol.h"
 
-@class FFHistoAnalysis, FFMatchReference, FFRollbackRecord, NSArray, NSMutableArray, NSString;
+@class FFHistoAnalysis, FFMatchReference, FFRollbackRecord_v2, NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFColorMatchHelper : NSObject <FFMatchToolDelegate, FFRollbackRecordProtocol>
+@interface FFColorMatchHelper : NSObject <FFMatchToolDelegate>
 {
-    NSArray *_selectedItems;
-    FFRollbackRecord *_records;
-    FFMatchReference *_referenceObj;
     FFHistoAnalysis *_histoRef;
+    NSArray *_selectedItems;
+    FFRollbackRecord_v2 *_rollbackRecord;
+    FFMatchReference *_referenceObj;
     NSMutableArray *_visibleSelectedItems;
     CDStruct_1b6d18a9 _contextTime;
     NSArray *_activeEffects;
     Class _modalToolClass;
-    unsigned long long _indexToInsertEffect;
 }
 
 + (BOOL)isObjectCompliant:(id)arg1;
-+ (id)newPixelBufferFromAnchoredObject:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 withEffectCount:(long long)arg3;
-+ (struct CGColorSpace *)processingColorSpace;
-- (id).cxx_construct;
++ (BOOL)colorMatchHueAdjustmentWithHistoAnalysis:(id)arg1 colorMatchInfo:(id)arg2 adjustment:(vector_37556099 *)arg3 colorMatchResult:(struct FFRefColorMatchInfo *)arg4 error:(id *)arg5;
 - (void)channelParameterChanged:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)accessoryTitle;
 - (id)footerText;
-- (unsigned long long)indexToInsertEffect:(id)arg1;
-- (id)actionStringForSaveChanges;
-- (id)extendedDataToRecordForAnchoredObject:(id)arg1;
-- (void)setExtendedData:(id)arg1 toRecordForAnchoredObject:(id)arg2;
-- (id)effectContainerToRecordForAnchoredObject:(id)arg1;
-- (id)channelFolderToRecordForAnchoredObject:(id)arg1;
-- (id)effectToRecordForAnchoredObject:(id)arg1;
-- (id)effectStackToRecordForAnchoredObject:(id)arg1;
 - (id)copyCompliantObjectsFromSelection:(id)arg1;
 - (BOOL)applyMatchToOnAnchoredObject:(id)arg1;
-- (vector_f452ca5f)_colorMatchHueAdjustmentWithRef:(id)arg1 forDest:(id)arg2;
+- (vector_37556099)_colorMatchHueAdjustmentWithRef:(id)arg1 forDest:(id)arg2 refInfoColorMatchStruct:(struct FFRefColorMatchInfo *)arg3;
 - (CDStruct_1b6d18a9)contextTime;
 - (void)setSelectedItems:(id)arg1 withContextTime:(CDStruct_1b6d18a9)arg2;
 - (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
@@ -51,12 +39,12 @@ __attribute__((visibility("hidden")))
 - (void)matchToolWasAssigned:(id)arg1;
 - (void)completeOnSelectionOnMatchTool:(id)arg1;
 - (void)cancelOnSelectionOnMatchTool:(id)arg1;
-- (void)toggleActiveEffectsEnabledState;
 - (void)setActiveEffects:(id)arg1;
 - (void)_resyncToolControls;
 - (id)histoRef;
 - (void)dealloc;
 - (id)init;
+- (void)toggleActiveEffectsEnabledState;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

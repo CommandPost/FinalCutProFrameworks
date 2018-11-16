@@ -27,6 +27,7 @@
 @property(readonly) NSView *titleOverlayView; // @synthesize titleOverlayView=_titleOverlayView;
 @property(readonly) FFTitleDocumentView *documentView; // @synthesize documentView=_documentView;
 @property(readonly) FFEffect<FFTitleDelegate> *title; // @synthesize title=_title;
+- (void)mouseDown:(id)arg1;
 - (void)enableOverlayWindowForNoRangeOverlap;
 - (void)removeOverlayWindowForNoRangeOverlap;
 - (void)syncTextFieldPositionWithBarPosition:(struct CGRect)arg1;
@@ -39,17 +40,20 @@
 - (BOOL)isSelectionBased;
 - (BOOL)isActiveOSC;
 - (void)configureTextField:(id)arg1;
+- (id)adjustAttributtedString:(id)arg1 withKerning:(id)arg2;
 - (id)shrinkToFit:(id)arg1 inRect:(struct CGRect)arg2 originalFontSize:(double)arg3;
 - (id)shrinkToFit:(id)arg1 inTextField:(unsigned long long)arg2;
 - (BOOL)titleIsAppPreviewContent;
 - (BOOL)titleWrapLines;
 - (BOOL)titleShrinkToFit;
 - (BOOL)titlePrefersShrinkToFit;
+- (BOOL)titleIsTrailerCredit;
 - (void)applyTextFieldsToTitle;
 - (void)initTitleOverlay;
 - (id)textFieldAtIndex:(unsigned long long)arg1;
 - (unsigned long long)_textFieldCount;
 - (struct CGRect)_configureTextFieldBounds:(id)arg1;
+- (BOOL)titleNeedsUpdateWhileEditing;
 - (void)setAttributedString:(id)arg1 forTextField:(unsigned long long)arg2;
 - (id)attributedStringForTextField:(unsigned long long)arg1;
 - (unsigned long long)selectedTextFieldIndexAndRange:(struct _NSRange *)arg1;
@@ -57,6 +61,7 @@
 - (void)updateSizeForTextField:(unsigned long long)arg1;
 - (void)updateToInitialBoundingBoxForTextField:(unsigned long long)arg1;
 - (void)updateViewNotification:(id)arg1;
+- (void)refreshSpecialTitleField:(id)arg1;
 - (void)controlTextDidChange:(id)arg1;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;
 - (id)windowWillReturnFieldEditor:(id)arg1 toObject:(id)arg2;

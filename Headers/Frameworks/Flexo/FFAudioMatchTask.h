@@ -8,31 +8,42 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFAnchoredObject, FFAudioMatchRequest, FFBackgroundTask, NSDictionary;
+@class FFAnchoredObject, FFAudioMatchRequest, FFAudioUnitAnalyzingEffect, NSDictionary, NSMutableArray, NSMutableSet;
 
 @interface FFAudioMatchTask : NSObject <FFBackgroundTaskTarget>
 {
-    FFAnchoredObject *_objectToModify;
-    FFAudioMatchRequest *_pendingRequest;
-    FFBackgroundTask *_backgroundTask;
-    NSDictionary *_effectState;
-    id _delegate;
+    FFAnchoredObject *_object;
+    NSMutableArray *_pendingRequests;
+    NSMutableSet *_cancelledRequests;
+    FFAudioMatchRequest *_currentRequest;
+    FFAudioMatchRequest *_currentObjectToMatchRequest;
+    BOOL _taskRunning;
+    BOOL _taskCancelled;
+    CDUnknownBlockType _completionBlock;
+    NSDictionary *_matchEffectStateForObject;
+    FFAudioUnitAnalyzingEffect *_analyzedMatchEffect;
 }
 
-@property(retain) id delegate; // @synthesize delegate=_delegate;
-@property(retain) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
-@property(retain) FFAudioMatchRequest *pendingRequest; // @synthesize pendingRequest=_pendingRequest;
-@property(retain) FFAnchoredObject *objectToModify; // @synthesize objectToModify=_objectToModify;
-- (id)librariesInUse;
-- (id)assetsInUse;
-- (void)kickoffBackgroundTask;
-- (void)addRequest:(id)arg1;
+@property(readonly, nonatomic) FFAnchoredObject *object; // @synthesize object=_object;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
+- (void)canceledTask:(id)arg1;
+- (id)_taskObjects;
+- (void)_backgroundTaskCompleted;
+- (void)_dispatchBackgroundTask;
+- (BOOL)_isCurrentRequestCancelled;
+- (BOOL)_isRequestCancelled:(id)arg1;
+- (id)popRequest;
+- (void)_addRequest:(id)arg1;
+- (void)_performCompletionBlock;
+- (void)setCompletionBlock:(CDUnknownBlockType)arg1;
+- (BOOL)isMatchingForEffectStack:(id)arg1;
+- (void)setObjectToMatch:(id)arg1;
 - (void)_matchRunLoop:(id)arg1 onTask:(id)arg2;
-- (void)_completeMatchAnalysisOnMainThread:(id)arg1;
 - (void)match:(id)arg1 forPass:(int)arg2 onTask:(id)arg3;
 - (void)_setMatchParameterOnChannelFolder:(id)arg1 templateLearn:(BOOL)arg2 materialLearn:(BOOL)arg3 materialMatch:(BOOL)arg4;
 - (void)dealloc;
-- (id)initWithObjectToModify:(id)arg1 withFirstRequest:(id)arg2;
+- (id)initWithObject:(id)arg1;
 
 @end
 

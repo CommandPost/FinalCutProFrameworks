@@ -26,8 +26,12 @@ __attribute__((visibility("hidden")))
 - (id)defaultFilename;
 - (id)windowSourceIcon;
 - (id)windowSourceName;
+- (id)libraryForExport;
 - (id)librariesForExport;
+- (id)exportXMLDataForLibrary:(id)arg1 replace:(BOOL)arg2 usingVersion:(id)arg3 withMetadataViewSet:(id)arg4 taskDelegate:(id)arg5 error:(id *)arg6;
+- (id)exportXMLStringForLibrary:(id)arg1 replace:(BOOL)arg2 usingVersion:(id)arg3 withMetadataViewSet:(id)arg4 taskDelegate:(id)arg5 error:(id *)arg6;
 - (BOOL)exportXMLForLibrary:(id)arg1 toURL:(id)arg2 replace:(BOOL)arg3 usingVersion:(id)arg4 withMetadataViewSet:(id)arg5 taskDelegate:(id)arg6 error:(id *)arg7;
+- (id)newXMLDocumentForLibrary:(id)arg1 withOptions:(id)arg2 taskDelegate:(id)arg3 error:(id *)arg4;
 - (void)dealloc;
 - (id)initWithEventClips:(id)arg1;
 

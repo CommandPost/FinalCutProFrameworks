@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 + (void)registerEffects;
 @property _Bool overlayAlpha; // @synthesize overlayAlpha=_overlayAlpha;
-- (id).cxx_construct;
 - (void)didInsertChannel:(id)arg1 intoFolder:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)updateCacheInfo;
 - (unsigned long long)_preferredChannelFolderIndexForChannelID:(unsigned int)arg1 inFolder:(id)arg2;
@@ -73,8 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
 - (_Bool)setNuvoKeyer:(HGRef_0de1db7e *)arg1 initialNode:(HGRef_0de1db7e *)arg2 mBW:(struct Mat4f *)arg3 atTime:(CDStruct_1b6d18a9)arg4 shapeMaskBefore:(_Bool)arg5;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withChannelFolderID:(unsigned int)arg3;
-- (id)processingPixelFormat;
-- (struct CGColorSpace *)processingColorSpace;
+- (id)processingFormat:(int)arg1;
 - (struct HGNode *)newNodeForContext:(id)arg1;
 - (BOOL)effectIntroducesAlpha;
 - (BOOL)writeDefaultChannels;

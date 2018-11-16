@@ -8,41 +8,11 @@
 
 @interface FFConsumerBalanceColorEffect : FFBalanceColorBaseEffect
 {
-    int _balanceOptions;
-    double _skinColorRed;
-    double _skinColorGreen;
-    double _skinColorBlue;
-    double _whiteBalanceColorRed;
-    double _whiteBalanceColorGreen;
-    double _whiteBalanceColorBlue;
-    double _blackLevelPentaslider;
-    double _whiteLevelPentaslider;
-    double _brightnessPentaslider;
-    double _contrastPentaslider;
 }
 
 + (id)copyClassDescription;
 + (void)registerEffects;
-@property double contrastPentaslider; // @synthesize contrastPentaslider=_contrastPentaslider;
-@property double brightnessPentaslider; // @synthesize brightnessPentaslider=_brightnessPentaslider;
-@property double whiteLevelPentaslider; // @synthesize whiteLevelPentaslider=_whiteLevelPentaslider;
-@property double blackLevelPentaslider; // @synthesize blackLevelPentaslider=_blackLevelPentaslider;
-@property double whiteBalanceColorBlue; // @synthesize whiteBalanceColorBlue=_whiteBalanceColorBlue;
-@property double whiteBalanceColorGreen; // @synthesize whiteBalanceColorGreen=_whiteBalanceColorGreen;
-@property double whiteBalanceColorRed; // @synthesize whiteBalanceColorRed=_whiteBalanceColorRed;
-@property double skinColorBlue; // @synthesize skinColorBlue=_skinColorBlue;
-@property double skinColorGreen; // @synthesize skinColorGreen=_skinColorGreen;
-@property double skinColorRed; // @synthesize skinColorRed=_skinColorRed;
-@property int balanceOptions; // @synthesize balanceOptions=_balanceOptions;
-- (void)balanceWithHistoAnalysis:(struct OMHistoAnalysis *)arg1 faceInfo:(id)arg2 isEncompassingTransaction:(BOOL)arg3;
 - (void)createChannelsInFolder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)_postInit:(id)arg1;
-- (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
-- (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
-- (id)propertiesToRecord;
-- (void)setWithRecordedProperties:(id)arg1;
-- (void)balanceWithHistoAnalysis:(struct OMHistoAnalysis *)arg1 faceInfo:(id)arg2 isEncompassingTransaction:(BOOL)arg3 balanceOptions:(int)arg4 red:(double)arg5 green:(double)arg6 blue:(double)arg7;
 
 @end
 

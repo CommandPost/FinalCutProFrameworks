@@ -15,7 +15,7 @@
     NSMutableArray *_roots;
     id <OZCurveEditorAppDelegate> _pAppDelegate;
     BOOL _relative;
-    vector_6694fb0a *_ids;
+    vector_cdb86442 *_ids;
     unsigned int _curveSetId;
     BOOL _ignoreHiddenChannels;
 }
@@ -63,8 +63,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isRelative;
 - (void)setRelative:(BOOL)arg1;
-- (vector_6694fb0a *)references;
-- (void)setReferences:(vector_6694fb0a *)arg1;
+- (vector_cdb86442 *)references;
+- (void)setReferences:(vector_cdb86442 *)arg1;
 - (BOOL)hasReferences;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 appDelegate:(id)arg2;

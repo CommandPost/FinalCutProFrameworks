@@ -28,6 +28,10 @@ __attribute__((visibility("hidden")))
 - (id)effectStackToRecordForAnchoredObject:(id)arg1;
 - (void)colorSelectionOSC:(id)arg1 willModifyAdjustmentsForToolClass:(Class)arg2;
 - (void)didInsertIntrinsicEffect:(id)arg1 toEffectStack:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)modifyAdjustmentsWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 bufferData:(char *)arg4 bufferWidth:(double)arg5 bufferHeight:(double)arg6 bytesPerRow:(unsigned int)arg7;
+@property(readonly, getter=wantsSaturatedResult) BOOL wantsSaturatedResult;
+- (id)effect;
+- (long long)effectCountForReference;
 - (void)selectedItemsVideoEffectStackChanged;
 - (CDUnknownBlockType)objectPerformBlock;
 - (id)effectForObject:(id)arg1;
@@ -35,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)toggleActiveEffectsEnabledState;
 - (void)setActiveEffects:(id)arg1;
 - (void)_resyncToolControls;
-- (void)selectedItemsChanged:(id)arg1;
+- (void)modalTool:(id)arg1 selectedItemsChanged:(id)arg2;
 - (void)dealloc;
 
 // Remaining properties

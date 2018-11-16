@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)mouseEntered:(id)arg1;
 - (BOOL)resignFirstResponder;
 - (BOOL)becomeFirstResponder;
-- (long long)themeVariant;
 - (void)dealloc;
 - (void)_init;
 - (id)initWithCoder:(id)arg1;

@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)runBackgroundPurgeUnused:(id)arg1 onTask:(id)arg2;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)dealloc;
 - (id)initWithEventRecord:(id)arg1;
 

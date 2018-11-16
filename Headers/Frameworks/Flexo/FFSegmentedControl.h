@@ -9,9 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface FFSegmentedControl : LKSegmentedControl
 {
+    BOOL _mixed;
 }
 
 + (void)initialize;
+@property(nonatomic, getter=isMixed) BOOL mixed; // @synthesize mixed=_mixed;
 - (long long)stateForSegment:(long long)arg1;
 - (void)setState:(long long)arg1 forSegment:(long long)arg2;
 

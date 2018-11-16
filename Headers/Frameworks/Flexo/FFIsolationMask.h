@@ -6,45 +6,52 @@
 
 #import <Flexo/FFMaskBase.h>
 
-@class CHChannelDouble, CHChannelPosition;
-
 __attribute__((visibility("hidden")))
 @interface FFIsolationMask : FFMaskBase
 {
     BOOL _overlayAlpha;
-    BOOL _isSoloing;
+    BOOL _soloing;
+    int _analysisWorkingSpace;
 }
 
-@property(nonatomic) BOOL isSoloing; // @synthesize isSoloing=_isSoloing;
-@property(nonatomic) BOOL overlayAlpha; // @synthesize overlayAlpha=_overlayAlpha;
++ (id)copyClassDescription;
+@property(getter=isSoloing) BOOL soloing; // @synthesize soloing=_soloing;
+@property BOOL overlayAlpha; // @synthesize overlayAlpha=_overlayAlpha;
+- (CDStruct_bdcb2b0d)md5;
+- (int)overrideWorkingSpace:(int)arg1;
+- (id)processingFormat:(int)arg1;
 - (struct HGNode *)newNodeWithInputNode:(struct HGNode *)arg1 preMaskNode:(struct HGNode *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (BOOL)needsPreMaskInput;
 - (BOOL)isNoOp;
+- (void)OSCWasResigned:(id)arg1;
 - (id)onscreenControlsForEffectStack:(id)arg1;
 - (id)parameterControllerClassName;
 - (_Bool)setNuvoKeyer:(HGRef_0de1db7e *)arg1 initialNode:(HGRef_0de1db7e *)arg2 mBW:(struct Mat4f *)arg3 atTime:(CDStruct_1b6d18a9)arg4 shapeMaskBefore:(_Bool)arg5;
-- (id)getColorIsolationAverageColor:(CDStruct_1b6d18a9)arg1;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel23;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel22;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel21;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel20;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel13;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel12;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel11;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel10;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel03;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel02;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel01;
-@property(readonly, nonatomic) CHChannelDouble *matrixChannel00;
-@property(readonly, nonatomic) CHChannelDouble *softnessChannel;
-@property(readonly, nonatomic) CHChannelDouble *radiusChannel;
-@property(readonly, nonatomic) CHChannelPosition *positionChannel;
+- (id)colorIsolationAverageColor:(CDStruct_1b6d18a9)arg1;
+- (id)keyframeableChannels;
+- (id)matrixChannel23;
+- (id)matrixChannel22;
+- (id)matrixChannel21;
+- (id)matrixChannel20;
+- (id)matrixChannel13;
+- (id)matrixChannel12;
+- (id)matrixChannel11;
+- (id)matrixChannel10;
+- (id)matrixChannel03;
+- (id)matrixChannel02;
+- (id)matrixChannel01;
+- (id)matrixChannel00;
+- (id)softnessChannel;
+- (id)radiusChannel;
+- (id)positionChannel;
 - (BOOL)updateChannelsWithFolder:(id)arg1;
 - (BOOL)sharingSource;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithParentEffect:(id)arg1;
 - (void)setupSoftnessController;
+- (void)encodeWithCoder:(id)arg1;
+@property int analysisWorkingSpace; // @dynamic analysisWorkingSpace;
+- (id)initWithCoder:(id)arg1;
 - (void)addXMLNode:(id)arg1 toElement:(id)arg2 version:(unsigned int)arg3;
 - (void)populateAttributes:(id)arg1 fromElement:(id)arg2;
 - (void)populateContent:(id)arg1 fromElement:(id)arg2 toEffect:(id)arg3 toObject:(id)arg4;

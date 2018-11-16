@@ -6,9 +6,10 @@
 
 #import "FFModelLocking.h"
 
-@class FFAnchoredSequence, FFUndoHandler;
+@class FFAnchoredSequence, FFProject, FFUndoHandler;
 
 @protocol FFDataModelProtocol <FFModelLocking>
+- (FFProject *)project;
 - (FFUndoHandler *)undoHandler;
 
 @optional

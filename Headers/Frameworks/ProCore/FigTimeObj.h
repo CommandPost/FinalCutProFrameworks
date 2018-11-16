@@ -16,7 +16,6 @@
 
 + (BOOL)classIsAbstract;
 + (id)timeWithTime:(CDStruct_1b6d18a9)arg1;
-- (id).cxx_construct;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (long long)compareWithTime:(id)arg1;

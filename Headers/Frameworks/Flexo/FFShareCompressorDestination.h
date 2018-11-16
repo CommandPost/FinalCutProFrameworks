@@ -13,7 +13,7 @@
 + (id)defaultName;
 - (BOOL)requiresTargetDestinationURL;
 - (id)iconTitle;
-- (long long)iconIndex;
+- (id)smallImage;
 - (id)largeImage;
 - (id)image;
 - (void)dealloc;

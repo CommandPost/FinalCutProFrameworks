@@ -35,7 +35,7 @@
     struct CGPoint _normal;
     NSTimer *_keySnapTimer;
     struct OZRotoshapeOSCState _state;
-    struct vector<PSHVertexData, std::allocator<PSHVertexData>> _vertices;
+    struct vector<PSHVertexData, std::__1::allocator<PSHVertexData>> _vertices;
 }
 
 - (id).cxx_construct;
@@ -106,14 +106,14 @@
 - (void)buildCurveMenu;
 - (void)buildPointMenu;
 - (void)clearSelectionInAllOSC;
-- (list_d3676a1d *)getSelection;
-- (list_d3676a1d *)getPreviousSelection;
-- (list_d3676a1d *)getCurrentSelection;
+- (list_bf350f3c *)getSelection;
+- (list_bf350f3c *)getPreviousSelection;
+- (list_bf350f3c *)getCurrentSelection;
 - (BOOL)didHitOtherShapeVertex;
 - (BOOL)activeOnFullCanvas:(id)arg1;
 - (BOOL)processOSCSpecificHits:(unsigned int *)arg1 selection:(struct OZShapeOnScreenSelection *)arg2;
 - (BOOL)hitAnotherShape:(id)arg1;
-- (vector_0bcc5064)getSelectedOSC;
+- (vector_94ae6c65)getSelectedOSC;
 - (id)getCursorWithEvent:(id)arg1 addCursor:(BOOL)arg2;
 - (id)getCursorWithEvent:(id)arg1;
 - (void)setupAssets;

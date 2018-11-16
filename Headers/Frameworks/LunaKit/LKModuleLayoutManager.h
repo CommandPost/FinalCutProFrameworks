@@ -9,13 +9,14 @@
 #import "NSCoding.h"
 #import "NSMenuDelegate.h"
 
-@class LKCreateLayoutDialog, LKManageLayoutDialog, NSMenu, NSMutableArray, NSMutableSet, NSString;
+@class LKCreateLayoutDialog, NSMenu, NSMutableArray, NSMutableSet, NSString;
 
 @interface LKModuleLayoutManager : NSObject <NSCoding, NSMenuDelegate>
 {
+    NSString *_layoutRootFolderName;
+    NSString *_customLayoutExtension;
     NSMenu *_layoutMenu;
     id _delegate;
-    LKManageLayoutDialog *_manageDialog;
     LKCreateLayoutDialog *_createDialog;
     NSMutableArray *_viewModules;
     NSMutableArray *_windowControllers;
@@ -30,12 +31,14 @@
         unsigned int needsSaveDefaultLayout:1;
         unsigned int _suspendSaveDefaultLayout:1;
         unsigned int readingLayout:1;
-        unsigned int RESERVED:12;
+        unsigned int alreadySavingDefaultLayout:1;
+        unsigned int RESERVED:11;
     } _flags;
     NSString *_currentLayoutName;
 }
 
 + (Class)_newMenuItemClass;
++ (BOOL)_isTesting;
 + (void)substituteClassName:(id)arg1 withClassName:(id)arg2;
 + (id)classNameForArchivedClassName:(id)arg1;
 + (id)_nameSubstituteNameMap;
@@ -43,12 +46,14 @@
 + (Class)newTabModuleClass;
 + (Class)newWindowModuleClass;
 + (Class)newLayoutClass;
-+ (Class)manageDialogClass;
 + (Class)createDialogClass;
-+ (id)sharedInstance;
 + (BOOL)_sharedInstanceExists;
++ (id)sharedInstance;
 + (void)initialize;
+@property(retain, nonatomic) NSString *customLayoutExtension; // @synthesize customLayoutExtension=_customLayoutExtension;
+@property(retain, nonatomic) NSString *layoutRootFolderName; // @synthesize layoutRootFolderName=_layoutRootFolderName;
 - (id)tabModule:(id)arg1 contextMenuForSubmodule:(id)arg2;
+- (id)mainWindowModuleClassName;
 - (BOOL)isCompatibleAppLayoutVersion:(unsigned long long)arg1;
 - (unsigned long long)compatibleAppLayoutVersion;
 - (BOOL)isReadingLayout;
@@ -73,10 +78,10 @@
 - (id)layoutArray;
 - (void)_willFinishChangingModuleLayout;
 - (void)applyModuleLayout:(id)arg1;
-- (void)resizeWindowsToScreen:(id)arg1 forLayout:(id)arg2;
+- (void)zoomWindowsForModules:(id)arg1;
 - (void)discardChanges;
 - (void)saveLayout:(id)arg1;
-- (void)_saveLayoutToModified;
+- (void)saveCurrentLayoutWithName:(id)arg1;
 - (void)saveChangedLayouts;
 - (void)_unsheduleRemovalOfLayoutFileWithName:(id)arg1;
 - (void)_scheduleRemovalOfLayoutFileWithName:(id)arg1;
@@ -106,10 +111,12 @@
 - (id)moduleWithIdentifier:(id)arg1;
 - (id)moduleLayoutWithName:(id)arg1 inCategory:(int)arg2;
 - (id)moduleLayoutWithName:(id)arg1;
+- (id)currentModuleLayout;
 - (BOOL)hasFactoryLayoutsOfType:(int)arg1;
 - (id)_factoryLayoutsForScreenSize:(struct CGSize)arg1 withType:(int)arg2;
 - (void)_loadLayoutsFromDisk;
 - (void)_loadLayouts;
+- (void)reloadLayouts;
 - (id)sortedModuleLayoutsForCategory:(int)arg1;
 - (id)moduleLayoutsForCategory:(int)arg1;
 - (id)moduleLayouts;
@@ -117,9 +124,11 @@
 - (BOOL)canApplyLayout:(id)arg1;
 - (void)applyLayout:(id)arg1;
 - (void)resetCurrentLayout:(id)arg1;
-- (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)saveCurrentLayout:(id)arg1;
 - (void)manageLayouts:(id)arg1;
+- (void)setCurrentLayoutName:(id)arg1;
+- (id)currentLayoutName;
+- (BOOL)validateUserLayoutName:(id)arg1;
 - (id)pathForLayout:(id)arg1;
 - (id)uniqueLayoutName:(id)arg1;
 - (id)nameForCategory:(int)arg1;
@@ -127,10 +136,10 @@
 - (id)categoryNames;
 - (id)searchPaths;
 - (id)defaultLayoutPath;
-- (id)userModifiedLayoutsDirectory;
 - (id)userLayoutsDirectory;
 - (id)sharedLayoutsDirectory;
 - (id)factoryLayoutsDirectory;
+- (id)layoutPathFromFolder:(id)arg1 withName:(id)arg2 andExtension:(id)arg3;
 @property(nonatomic) BOOL suspendSaveDefaultLayout;
 - (void)setNeedsSaveDefaultLayout:(BOOL)arg1;
 - (BOOL)needsSaveDefaultLayout;
@@ -145,6 +154,15 @@
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 - (id)_commonInit;
+- (id)cancelButtonLabel;
+- (id)replaceButtonLabel;
+- (id)replaceDescription:(id)arg1;
+- (id)replaceTitle;
+- (id)cannotSaveDescription:(id)arg1;
+- (id)cannotSaveTitle;
+- (id)saveDescription;
+- (id)saveTitle;
+- (id)defaultName;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

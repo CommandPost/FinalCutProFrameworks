@@ -12,18 +12,21 @@ __attribute__((visibility("hidden")))
 @interface FFRetimingAudioEffect : FFRetimingEffect
 {
     CHChannelBool *_chPreservePitch;
-    vector_adc85b2d *_segmentList;
+    shared_ptr_bed418af _segmentList;
     CHChannelDouble *_chRetimingRate;
-    double m_sampleRate;
-    double m_minPlayRate;
-    double m_maxPlayRate;
-    double m_maxRetimingRate;
+    double _sampleRate;
+    double _minPlayRate;
+    double _maxPlayRate;
+    double _maxRetimingRate;
+    struct FFLock *_lock;
 }
 
 + (void)registerEffects;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)deriveEvalCurve:(BOOL)arg1;
 - (double)maxRetimingRate;
-- (vector_adc85b2d *)retimingSegmentList;
+- (id)retimingSegmentListObject;
 - (id)retimingRateChannel;
 - (void)updateAudioRetimingPlayRateRange:(double)arg1 maxPlayRate:(double)arg2 sampleRate:(double)arg3;
 - (void)_invalidateRetimingChannels;

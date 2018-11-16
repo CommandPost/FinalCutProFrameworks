@@ -6,11 +6,19 @@
 
 #import <Flexo/FFMediaSidebarSectionNode.h>
 
+@class FFMediaSidebarNode;
+
 __attribute__((visibility("hidden")))
 @interface FFMediaSidebarLibrarySectionNode : FFMediaSidebarSectionNode
 {
+    long long _nodeSet;
+    unsigned long long _libraryIndexOffset;
+    FFMediaSidebarNode *_titlesNode;
+    FFMediaSidebarNode *_generatorsNode;
 }
 
++ (void)initialize;
+- (void)_handleEffectRegistryChanged:(id)arg1;
 - (void)_handleOriginalProxyChangeNotification:(id)arg1;
 - (void)_handleActionPerformed:(id)arg1;
 - (void)_handleDocumentRemoved:(id)arg1;
@@ -18,10 +26,17 @@ __attribute__((visibility("hidden")))
 - (void)_handleDocumentAdded:(id)arg1;
 - (void)stopObservingChildNodes;
 - (void)startObservingChildNodes;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)updateChildNodes;
+- (id)_categoryArrayForEffectType:(id)arg1;
+- (void)_installProContentNodes;
+- (void)_installProMediaNodes;
+- (void)_installProLibraryNodes;
+- (void)_installPhotoLibraryNodes;
 - (void)_updateProChildNodes;
 - (void)_updateConsumerChildNodes;
 - (void)_updateLibraryDocumentNodes;
+- (void)_insertMediaNodeInOrder:(id)arg1 andReload:(BOOL)arg2;
 - (id)_copyAllLibrariesOrderedByOpening;
 - (void)_removeLibraryDocument:(id)arg1;
 - (id)_addLibraryDocument:(id)arg1;
@@ -29,6 +44,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_libraryDocumentStartIndex;
 - (BOOL)allowsContextMenu;
 - (id)title;
+- (void)dealloc;
+- (id)initWithNodeSet:(long long)arg1;
 
 @end
 

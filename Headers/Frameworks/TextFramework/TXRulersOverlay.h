@@ -6,14 +6,14 @@
 
 #import <TextFramework/TXParagraphOverlay.h>
 
-@class NSMutableDictionary, NSProCursor, NSTimer;
+@class LKCursor, NSMutableDictionary, NSTimer;
 
 @interface TXRulersOverlay : TXParagraphOverlay
 {
-    NSProCursor *_rulerCursor;
-    NSProCursor *_tabCursor;
-    NSProCursor *_smokeCursor;
-    struct vector<TXTabStop *, std::allocator<TXTabStop *>> _tabStops;
+    LKCursor *_rulerCursor;
+    LKCursor *_tabCursor;
+    LKCursor *_smokeCursor;
+    struct vector<TXTabStop *, std::__1::allocator<TXTabStop *>> _tabStops;
     double _selectedTabStop;
     PCVector2_79efa81a _movedTabStopPosition;
     double _startX;
@@ -33,7 +33,7 @@
     PCVector2_79efa81a rulerCorners[4];
     PCVector2_79efa81a pbcorners[4];
     NSMutableDictionary *_textAttribs;
-    struct vector<PGDrawableTexture *, std::allocator<PGDrawableTexture *>> _numberTextures;
+    struct vector<PGDrawableTexture *, std::__1::allocator<PGDrawableTexture *>> _numberTextures;
     double scaleFactor;
     float _lastBackingScale;
 }

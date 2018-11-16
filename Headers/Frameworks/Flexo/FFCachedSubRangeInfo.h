@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly) FFSubRangeMD5Info *info; // @synthesize info=_info;
-- (id).cxx_construct;
 - (_Bool)usableForTime:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 compareFlags:(unsigned int)arg4;
 - (void)dealloc;
 - (id)initWithInfo:(id)arg1 forSampleDuration:(CDStruct_1b6d18a9)arg2 context:(id)arg3;

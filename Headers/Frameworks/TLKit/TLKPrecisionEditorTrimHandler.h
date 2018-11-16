@@ -16,6 +16,8 @@
 - (void)selectItem:(id)arg1;
 - (id)partToDrag:(id)arg1;
 - (id)clickedItem:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
+- (BOOL)startTracking:(id)arg1;
 
 @end
 

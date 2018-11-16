@@ -19,21 +19,20 @@ __attribute__((visibility("hidden")))
     unsigned int _hasBeenWrittenTo;
 }
 
-- (id).cxx_construct;
 - (id)description;
 - (BOOL)writeTransferredData:(id)arg1 token2:(id)arg2 fieldOrder:(int)arg3 sampleNum:(long long)arg4 error:(id *)arg5;
 - (BOOL)writeBuffer:(id)arg1 sampleNumber:(long long)arg2 mustWrite:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 sampleNumber:(long long)arg4 cost:(double)arg5 mustWrite:(BOOL)arg6 error:(id *)arg7;
-- (id)newBufferAtOffset:(long long)arg1 error:(id *)arg2;
-- (id)newImageAtOffset:(long long)arg1 decodeQuality:(int)arg2 error:(id *)arg3;
+- (id)newBufferAtOffset:(long long)arg1 priority:(int)arg2 error:(id *)arg3;
+- (id)newImageAtOffset:(long long)arg1 decodeQuality:(int)arg2 priority:(int)arg3 error:(id *)arg4;
 - (_Bool)wantsHinting;
 - (BOOL)ageOutCompressor:(BOOL)arg1;
 - (void)updateSegmentInfo;
 - (id)storedFrameIndexes;
-- (id)newCachedBufferTokenAtOffset:(long long)arg1 error:(id *)arg2;
-- (id)newCachedFrameTokenAtOffset:(long long)arg1 decodeQuality:(int)arg2 error:(id *)arg3;
-- (id)newCachedFrameTokenAtOffset:(long long)arg1 doAsync:(BOOL)arg2 decodeQuality:(int)arg3 error:(id *)arg4;
-- (id)_newCachedReadTokenForExistingSampleOffset:(long long)arg1 decodeQuality:(int)arg2;
+- (id)newCachedBufferTokenAtOffset:(long long)arg1 priority:(int)arg2 error:(id *)arg3;
+- (id)newCachedFrameTokenAtOffset:(long long)arg1 decodeQuality:(int)arg2 priority:(int)arg3 error:(id *)arg4;
+- (id)newCachedFrameTokenAtOffset:(long long)arg1 doAsync:(BOOL)arg2 decodeQuality:(int)arg3 priority:(int)arg4 error:(id *)arg5;
+- (id)_newCachedReadTokenForExistingSampleOffset:(long long)arg1 decodeQuality:(int)arg2 priority:(int)arg3;
 - (void)finishedReadObj:(id)arg1;
 - (BOOL)_quickApproximateFrameExistsAtOffset:(long long)arg1;
 - (BOOL)frameExistsAtOffset:(long long)arg1;

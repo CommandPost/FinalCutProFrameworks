@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 + (CDStruct_e83c9415)rangeAroundTime:(CDStruct_1b6d18a9)arg1 headDuration:(CDStruct_1b6d18a9)arg2 tailDuration:(CDStruct_1b6d18a9)arg3 boundingRange:(CDStruct_e83c9415)arg4;
 + (id)figTimeRangeAndObjectArrayToMapTable:(id)arg1;
 + (id)mapTableKeyForFigTimeRangeAndObject:(id)arg1;
++ (id)containingRangeForRangeAndObject:(id)arg1 fromRanges:(id)arg2;
 + (id)collapseOrganizerItems:(id)arg1;
 + (id)subtractFigTimeRange:(CDStruct_e83c9415)arg1 fromFigTimeRangeAndObject:(id)arg2;
 + (id)removeRange:(id)arg1 fromArray:(id)arg2 onlyRemoveOverlap:(BOOL)arg3;

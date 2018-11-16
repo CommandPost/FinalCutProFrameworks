@@ -6,11 +6,10 @@
 
 #import <Flexo/FFEffect.h>
 
-@class FFAnchoredObject, FFSharedAudioUnit, NSDictionary;
+@class FFAnchoredObject, FFSharedAudioUnit, NSDictionary, NSMutableSet;
 
 @interface FFAudioUnitEffect : FFEffect
 {
-    FFSharedAudioUnit *_cachedUnit;
     BOOL _isSyncingChannelsToParameters;
     NSDictionary *_effectState;
     NSDictionary *_preset;
@@ -21,17 +20,22 @@
     _Bool _initOnceSetStackHasBeenCalled;
     BOOL _savingCurrentEffectState;
     NSDictionary *_parameterInfoMap;
+    unsigned int _numPlaybackUnits;
+    FFSharedAudioUnit *_masterUnit;
+    NSMutableSet *_slaveUnits;
     FFAnchoredObject *_observedObject;
+    unsigned int _numObservedObjectChannels;
 }
 
-+ (void)clearAllCachedUnits;
++ (void)clearAllPlaybackUnits;
++ (id)currentPresetForAudioUnit:(struct ComponentInstanceRecord *)arg1;
 + (BOOL)isPreset:(id)arg1 equalToPreset:(id)arg2;
 + (void)initialize;
 + (id)copyClassDescription;
 + (id)_edelEffectBundle;
 + (id)audioUnitManufacturers;
 + (void)runDeferredRegistration;
-+ (void)_warnValidationFailed:(unsigned long long)arg1 failedNames:(id)arg2;
++ (void)_warnValidationFailedwithFailedNamesAndIDs:(id)arg1;
 + (void)registerSharedAudioUnits;
 + (void)registerSurroundPanner;
 + (BOOL)scannerClientLoadBundle:(id)arg1 atPath:(id)arg2;
@@ -42,24 +46,35 @@
 + (id)effectTypeForComponentType:(unsigned int)arg1;
 + (id)displayStringForEffectType:(id)arg1;
 + (id)registeredEffectIDsSupportingChannelsInput:(unsigned long long)arg1 output:(unsigned long long)arg2;
++ (unsigned long long)numEffectsForNonNativeSupportForEffectWithID:(id)arg1 numInputChannels:(unsigned long long)arg2 numOutputChannels:(unsigned long long)arg3;
 + (unsigned long long)numEffectChannelsForNonNativeSupportForEffectWithID:(id)arg1 numRequestedInputChannels:(unsigned long long)arg2 numRequestedOutputChannels:(unsigned long long)arg3;
 + (BOOL)effectWithID:(id)arg1 supportsChannelsInput:(unsigned long long)arg2 output:(unsigned long long)arg3;
 + (BOOL)effectWithID:(id)arg1 supportsChannelsInput:(unsigned long long)arg2 output:(unsigned long long)arg3 nativeSupportOnly:(BOOL)arg4;
 + (id)effectIdentifierForComponentDescription:(const struct AudioComponentDescription *)arg1;
 + (id)effectIdentifierForType:(unsigned int)arg1 subType:(unsigned int)arg2 manufacturer:(unsigned int)arg3;
 + (id)effectIdentifierWithTypeString:(id)arg1 subType:(id)arg2 manufacturer:(id)arg3;
-+ (struct OpaqueAudioComponent *)componentForEffectIdentifier:(id)arg1;
 + (id)loggingStringForEffectID:(id)arg1;
 + (id)loggingStringForEffectID:(id)arg1 includeName:(BOOL)arg2;
++ (BOOL)componentExistsForEffectIdentifier:(id)arg1;
++ (struct OpaqueAudioComponent *)componentForEffectIdentifier:(id)arg1;
 + (BOOL)componentDescription:(struct AudioComponentDescription *)arg1 forEffectIdentifier:(id)arg2;
 + (BOOL)update_disableAudioUnitEffectClumpFolderResetForEffectStack:(id)arg1;
 + (BOOL)update_useRelativeAudioPresetPathForEffectStack:(id)arg1;
 + (void)_refreshEffectStackOnMainThread:(id)arg1;
++ (id)rootFolderForFilePresetType:(int)arg1 effect:(id)arg2;
++ (void)postPresetChangedNotificationForEffect:(id)arg1;
++ (void)selectFactoryPreset:(id)arg1 forEffects:(id)arg2;
++ (void)selectUserPreset:(id)arg1 forSelectedEffects:(id)arg2;
++ (void)revealPresetsForEffect:(id)arg1;
++ (void)savePresetForEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
++ (void)resetEffectsToDefaultPreset:(id)arg1;
++ (void)populateMenu:(id)arg1 withSelectedEffects:(id)arg2;
 + (unsigned int)unmapParameterID:(unsigned int)arg1;
 + (unsigned int)mapParameterID:(unsigned int)arg1;
 @property(nonatomic) BOOL presetDirty; // @synthesize presetDirty=_presetDirty;
 @property(readonly) unsigned int numChannels; // @synthesize numChannels=_numChannels;
 @property(readonly) double sampleRate; // @synthesize sampleRate=_sampleRate;
+- (id)fileURL;
 - (id)exportAsXMLElementWithDeprecatedEffectData:(id)arg1;
 - (id)exportAsXMLElement;
 - (id)exportAsXMLElementWithExcludedChannels:(id)arg1;
@@ -69,16 +84,24 @@
 - (id)keyframeableChannels;
 - (id)keyframeableChannelsFrom:(id)arg1;
 - (id)primaryAnimationChannel;
-- (id)cachedAudioUnit;
+- (id)newAuxiliaryUnit;
+- (void)releaseSharedUnit:(id)arg1 forClient:(void *)arg2;
+- (id)requestSlaveUnitForClient:(void *)arg1 forPlayback:(BOOL)arg2 numChannels:(unsigned int)arg3 sampleRate:(double)arg4;
+- (id)requestSlaveUnitForClient:(void *)arg1 forPlayback:(BOOL)arg2;
+- (id)requestMasterUnitForClient:(void *)arg1 forPlayback:(BOOL)arg2;
+- (id)masterUnitNoDemand;
+- (id)masterUnit;
+- (id)_masterUnit:(BOOL)arg1;
 - (void)effectStackAnchoredObjectDidChange;
-- (void)effectWasRemovedFromStack;
+- (void)effectWillBeRemovedFromStack;
 - (void)effectWasAddedToStack:(int)arg1;
 - (void)setEffectStack:(id)arg1;
 - (void)_removeAnchoredObjectObserving;
 - (void)_addAnchoredObjectObserving;
 - (void)_updateObjectAudioProperties;
-- (void)clearCachedUnit;
-- (void)_clearCachedUnitDuringDealloc:(BOOL)arg1;
+- (void)resetPlaybackUnits;
+- (unsigned int)_defaultNumEffectChannels;
+- (void)loadEffectStateIntoAudioUnit:(struct ComponentInstanceRecord *)arg1;
 - (int)saveCurrentEffectState;
 - (id)effectState;
 - (void)setEffectStateWithNoUpdate:(id)arg1;
@@ -110,11 +133,12 @@
 - (id)createClumpFolderWithClumpID:(unsigned int)arg1 inFolder:(id)arg2 forAudioUnit:(struct ComponentInstanceRecord *)arg3;
 - (id)newChannelForParamInfo:(const struct FFAudioUnitParameterInfo *)arg1 usingAudioUnit:(struct ComponentInstanceRecord *)arg2;
 - (void)_updateParameterInfoMap:(id)arg1;
+- (BOOL)hasPresets;
 - (BOOL)setXMLPresetPath:(id)arg1 forPresetType:(int)arg2;
-- (int)setFilePresetPath:(id)arg1 forFilePresetType:(int)arg2;
+- (int)setFilePresetPath:(id)arg1 forFilePresetType:(int)arg2 withFullPath:(id)arg3;
 - (int)setFactoryPreset:(int)arg1;
 - (void *)_newAuPresetFromPst:(id)arg1;
-- (int)savePresetNamed:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (int)savePresetNamed:(id)arg1 withPath:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (id)getFilePresets;
 - (id)fullPathForPresetPath:(id)arg1 forFilePresetType:(int)arg2;
 - (id)presetsForFilePresetType:(int)arg1;

@@ -8,12 +8,12 @@
 
 #import "NSTextDelegate.h"
 
-@class LKButton, LKComboBox, LKPopUpButton, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSBox, NSProView, NSString, NSTextView, OZColorWell;
+@class LKButton, LKComboBox, LKPopUpButton, LKSegmentedScrubber, LKSlider, LKTextField, LKTextView, NSArray, NSBox, NSString, NSView, OZColorWell;
 
 @interface OZProjectPropertiesCtlr : OZAutoPropertiesTabController <NSTextDelegate>
 {
     struct OZScene *_pScene;
-    NSProView *_pGeneralView;
+    NSView *_pGeneralView;
     LKSegmentedScrubber *_pWidthScrubber;
     LKSegmentedScrubber *_pHeightScrubber;
     LKPopUpButton *_pPixelARPopUp;
@@ -28,26 +28,33 @@
     LKTextField *_pOverrideFCDurCheckLabel;
     LKTextField *_pStartTimeTF;
     LKSegmentedScrubber *_pStartTimeScrubber;
+    LKTextField *_pGamutLabel;
+    LKPopUpButton *_pGamutPopUp;
     OZColorWell *_pBackgroundColorWell;
     LKPopUpButton *_pRenderBackgroundPopUp;
     LKTextField *_pRenderBackgroundDescTF;
     LKButton *_pIsDesignedFor4kCheck;
     LKTextField *_pIsDesignedFor4kCheckLabel;
+    LKButton *_pOverrideFCPColorSpaceCheck;
+    LKTextField *_pOverrideFCPColorSpaceLabel;
     LKPopUpButton *_pSelectPresetPopUp;
     LKPopUpButton *_pSelectThemePopUp;
-    NSProView *_pMotionBlurView;
+    NSView *_pMotionBlurView;
     LKSlider *_pMotionBlurSamplesSlider;
     LKSegmentedScrubber *_pMotionBlurSamplesScrubber;
     LKSlider *_pMotionBlurDurationSlider;
     LKSegmentedScrubber *_pMotionBlurDurationScrubber;
-    NSProView *_pReflectionView;
+    NSView *_pReflectionView;
     LKSlider *_pReflectionRecursionLimitSlider;
     LKSegmentedScrubber *_pReflectionRecursionLimitScrubber;
-    NSProView *_pDescriptionView;
-    NSTextView *_pProjectDescTF;
+    NSView *_pSharperScalingView;
+    LKPopUpButton *_pSharperScalingPopUp;
+    NSView *_pDescriptionView;
+    LKTextView *_pProjectDescTF;
     NSBox *_container;
     NSArray *_frameRates;
     _Bool _isSelectingPreset;
+    long long _lastSelectedGamut;
 }
 
 - (void)abortAndWait:(BOOL)arg1;
@@ -58,10 +65,16 @@
 - (void)setReflectionRecursionLimit:(id)arg1;
 - (void)setMotionBlurDuration:(id)arg1;
 - (void)setMotionBlurSamples:(id)arg1;
+- (void)setSharpScaling:(id)arg1;
 - (void)endSliderAction:(id)arg1;
 - (void)startSliderAction:(id)arg1;
+- (void)setShouldOverrideFCPColorSpace:(id)arg1;
 - (void)setIsDesignedFor4k:(id)arg1;
 - (void)setBackgroundRenderingMode:(id)arg1;
+- (void)setWorkingGamut:(id)arg1;
+- (BOOL)colorIsGrayscale:(const struct PCColor *)arg1;
+- (void)finishSetWorkingGamut:(int)arg1;
+- (void)showGamutChangeAlert:(id)arg1 workingGamut:(int)arg2;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setStartTime:(id)arg1;
 - (void)setShouldOverrideFCDuration:(id)arg1;
@@ -79,7 +92,9 @@
 - (void)makeScrubberRevealed:(id)arg1;
 - (id)addFauxBrickForView:(id)arg1 label:(id)arg2 context:(id)arg3;
 - (void)buildPropertiesUI:(id)arg1;
-- (BOOL)buildUIWithSceneNodes:(list_d81b4758 *)arg1 context:(id)arg2;
+- (void)changeGeneralViewHeight:(double)arg1;
+- (void)awakeFromNib;
+- (BOOL)buildUIWithSceneNodes:(list_63a35edb *)arg1 context:(id)arg2;
 - (void)dealloc;
 
 // Remaining properties

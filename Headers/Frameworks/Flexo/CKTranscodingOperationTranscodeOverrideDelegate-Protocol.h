@@ -12,5 +12,8 @@
 - (void)cancelTranscode;
 - (NSError *)transcodeSource:(CKSource *)arg1 withSetting:(CKSetting *)arg2 toFile:(NSURL *)arg3;
 - (BOOL)canTranscodeSource:(CKSource *)arg1 withSetting:(CKSetting *)arg2;
+
+@optional
+- (double)taskWeightForTranscodeSource:(CKSource *)arg1 withSetting:(CKSetting *)arg2;
 @end
 

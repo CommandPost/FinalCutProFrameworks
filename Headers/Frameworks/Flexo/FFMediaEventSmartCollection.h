@@ -6,15 +6,16 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
+#import "FFMediaEventFolderForMergeObject.h"
 #import "FFMediaEventFolderObject.h"
+#import "FFMergeObjectProtocol.h"
 #import "FFOrganizerFilterHUDDelegate.h"
 #import "FFOrganizerItemDraggingSource.h"
 #import "FFOrganizerMasterItem.h"
 
 @class FFMediaEventFolder, NSArray, NSDictionary, NSImage, NSString;
 
-__attribute__((visibility("hidden")))
-@interface FFMediaEventSmartCollection : FFBaseDSObject <FFOrganizerMasterItem, FFOrganizerItemDraggingSource, FFMediaEventFolderObject, FFOrganizerFilterHUDDelegate>
+@interface FFMediaEventSmartCollection : FFBaseDSObject <FFOrganizerMasterItem, FFOrganizerItemDraggingSource, FFMergeObjectProtocol, FFMediaEventFolderForMergeObject, FFMediaEventFolderObject, FFOrganizerFilterHUDDelegate>
 {
     NSString *_name;
     NSDictionary *_filtersDictionary;
@@ -29,12 +30,20 @@ __attribute__((visibility("hidden")))
 + (id)newProjectsSmartCollection;
 + (id)copyClassDescription;
 + (id)keyPathsForValuesAffectingItemDisplayName;
++ (BOOL)compareFilter:(id)arg1 to:(id)arg2;
+- (void)update_rolesPerLibrary;
+- (id)library;
+- (void)reassignRoles:(id)arg1 renameExistingRoles:(id)arg2 changeColorOfExistingRoles:(id)arg3 removeRolesWithUIDs:(id)arg4;
 - (void)update_fixAnalysisKeywords;
 - (id)duplicate;
 @property(retain, nonatomic) NSDictionary *filtersDictionary;
-- (id)roleSetsForCurrentProject;
+- (id)libraryForCurrentProject;
+- (id)mainRolesForCurrentProject;
 - (id)keywordsForCurrentProject;
+- (id)smartCollectionButtonTitle;
+- (id)hudTitle;
 - (void)filterHUDDidUpdate:(id)arg1;
+- (id)filtersDictionaryOwner;
 - (void)removeFromParentFolder;
 - (BOOL)isNameEqualToString:(id)arg1;
 - (id)project;
@@ -58,6 +67,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL itemDisplayNameEditable;
 - (void)setItemDisplayName:(id)arg1;
 @property(readonly, nonatomic) NSString *itemDisplayName;
+@property NSString *collectionName;
+@property BOOL matchAny;
+@property NSArray *filters;
+- (id)copyForMerge:(id)arg1;
+- (BOOL)merge:(id)arg1 withDelegate:(id)arg2;
+- (BOOL)merge:(id)arg1;
+- (BOOL)isEqualToSmartCollection:(id)arg1;
 - (BOOL)actionRename:(id)arg1 error:(id *)arg2;
 - (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
 - (void)actionBegin:(id)arg1;

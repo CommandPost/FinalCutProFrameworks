@@ -14,6 +14,8 @@
     struct CGRect _bounds;
 }
 
+- (id)pointsOnEdge:(unsigned int)arg1;
+- (void)insetRectEdge:(unsigned int)arg1 byAmount:(double)arg2;
 - (void)unionRect:(struct CGRect)arg1;
 - (unsigned long long)splitAtLocation:(double)arg1;
 - (struct CGRect)appendRect:(struct CGRect)arg1 toEdge:(unsigned int)arg2;
@@ -34,6 +36,7 @@
 - (struct CGRect)_calculatedBoundsInRange:(struct _NSRange)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)initWithCapacity:(unsigned long long)arg1;
 - (id)init;
 
 @end

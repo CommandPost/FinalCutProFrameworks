@@ -6,17 +6,13 @@
 
 #import "LKPopUpButton.h"
 
-@class NSFormatter;
-
 __attribute__((visibility("hidden")))
 @interface FFRolesPopUpButton : LKPopUpButton
 {
     id _titleObjectValue;
-    NSFormatter *_titleFormatter;
 }
 
 + (void)initialize;
-@property(retain, nonatomic) NSFormatter *titleFormatter; // @synthesize titleFormatter=_titleFormatter;
 @property(retain, nonatomic) id titleObjectValue; // @synthesize titleObjectValue=_titleObjectValue;
 - (void)dealloc;
 

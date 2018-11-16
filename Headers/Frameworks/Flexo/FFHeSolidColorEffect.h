@@ -22,7 +22,8 @@ __attribute__((visibility("hidden")))
 - (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
 - (id)inputKeys;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7 graphBuildInfo:(id)arg8;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
+- (id)processingFormat:(int)arg1;
 - (struct HGNode *)newNodeForPixelSpaceBounds:(struct CGRect)arg1;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)dealloc;

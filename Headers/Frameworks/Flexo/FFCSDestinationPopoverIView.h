@@ -4,14 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
-@class FFShareDestination, NSProThemeFacet, NSString;
+@class FFShareDestination, NSImage, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFCSDestinationPopoverIView : NSProView
+@interface FFCSDestinationPopoverIView : NSView
 {
-    NSProThemeFacet *_facet;
+    NSImage *_iconImageNormal;
+    NSImage *_iconImagePressed;
     NSString *_title;
     FFShareDestination *_destination;
     id <FFConsumerSharePopoverDelegate> _delegate;
@@ -34,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)mouseDown:(id)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 destination:(id)arg2;

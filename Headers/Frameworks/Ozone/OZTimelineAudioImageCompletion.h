@@ -24,7 +24,6 @@
 @property unsigned int channels; // @synthesize channels=_channels;
 @property unsigned int audioTrackID; // @synthesize audioTrackID=_audioTrackID;
 @property(retain) OZTimelineViewMulti *timelineView; // @synthesize timelineView=_timelineView;
-- (id).cxx_construct;
 - (void)dealloc;
 - (id)init;
 

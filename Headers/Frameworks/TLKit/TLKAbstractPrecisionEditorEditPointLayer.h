@@ -4,14 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKThemeBackedLayer.h>
+#import "CALayer.h"
 
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
 @class NSString;
 
-@interface TLKAbstractPrecisionEditorEditPointLayer : TLKThemeBackedLayer <TLKPartInfo, TLKAccessibilityProtocol>
+@interface TLKAbstractPrecisionEditorEditPointLayer : CALayer <TLKAccessibilityProtocol, TLKPartInfo>
 {
     id <TLKTimelineItem> _itemStartingAtPoint;
     id container;
@@ -19,8 +19,6 @@
     id _container;
 }
 
-+ (id)transitionThemeFacet;
-+ (id)editPointThemeFacet;
 + (Class)editPointLayerClass;
 + (void)setEditPointLayerClass:(Class)arg1;
 @property(nonatomic) id container; // @synthesize container=_container;
@@ -44,10 +42,10 @@
 - (id)timelineView;
 - (void)moveToEditPoint;
 @property(nonatomic) BOOL isTransition;
-- (struct CGSize)preferredFrameSize;
 - (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)init;
+- (id)nameForRootLayerMicaArchive;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

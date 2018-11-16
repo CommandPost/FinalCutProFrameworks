@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     NSString *_deviceUID;
     FFFullScreenGLView *_dcdView;
     BOOL _disableOnRelease;
+    BOOL _drawFloat16;
+    struct CGColorSpace *_outputColorSpace;
 }
 
 @property BOOL disableOnRelease; // @synthesize disableOnRelease=_disableOnRelease;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)wantsDithering:(id)arg1;
 - (id)supportedPixelFormats;
 - (struct CGColorSpace *)colorSpace;
+- (void)windowPropertiesChanged:(id)arg1;
 - (void)updateOutputDevice:(id)arg1;
 - (BOOL)hasConnection;
 - (void)disableVideoOutOnRelease;
@@ -36,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)releaseView;
 - (void)dealloc;
 - (id)initWithDeviceUID:(id)arg1;
+- (void)_setOutputColorSpaceForDisplayColorSpace:(struct CGColorSpace *)arg1;
 
 @end
 

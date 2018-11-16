@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (id)copyAndPopKeysNeedingUpdate;
 - (_Bool)recordOffsetNeedingUpdate:(unsigned long long)arg1 forKey:(id)arg2;
-- (void)flushAll;
+- (_Bool)flushAll:(BOOL)arg1;
 - (void)invalKey:(id)arg1;
 - (_Bool)setIndexSet:(id)arg1 forKey:(id)arg2;
 - (BOOL)hasIndex:(long long)arg1 forKey:(id)arg2 retNeedsCheck:(_Bool *)arg3;

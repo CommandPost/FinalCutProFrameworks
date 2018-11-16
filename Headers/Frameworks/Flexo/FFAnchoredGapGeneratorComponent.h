@@ -14,10 +14,9 @@
 + (id)copyClassDescription;
 - (id)onScreenControls;
 - (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
 - (id)inspectorTabIdentifiers;
-- (id)inspectorTabClassNames;
 - (BOOL)supportsRoles;
+- (BOOL)supportsAudio;
 - (BOOL)hasAudio;
 - (BOOL)hasVideo;
 - (int)anchoredObjectUIType;

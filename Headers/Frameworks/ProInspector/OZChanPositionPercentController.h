@@ -20,7 +20,8 @@
     BOOL _runningInFlexo;
 }
 
-- (void)setupLabelTF:(id)arg1;
+- (float)suggestedMaxParamWidth;
+- (float)suggestedMinParamWidth;
 - (void)imageWidth:(float *)arg1 andHeight:(float *)arg2 forTime:(const CDStruct_1b6d18a9 *)arg3;
 - (void)setChannelValue:(id)arg1;
 - (void)endSegmentedScrubberAction:(id)arg1;

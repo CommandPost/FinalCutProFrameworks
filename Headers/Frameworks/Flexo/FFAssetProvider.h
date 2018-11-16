@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)sourceKeyForObject:(id)arg1;
 - (id)newSourceForKey:(id)arg1;
 - (void)_setupSources;
+- (void)_ensureInputProvider;
 - (void)dealloc;
 - (id)object;
 - (id)initWithMedia:(id)arg1 quality:(int)arg2;

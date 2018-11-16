@@ -13,8 +13,9 @@
 + (id)setting;
 + (id)defaultName;
 - (id)iconTitle;
-- (long long)iconIndex;
+- (id)smallImage;
 - (id)largeImage;
+- (id)pressedImage;
 - (id)image;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;

@@ -6,15 +6,16 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
+#import "FFMediaEventFolderForMergeObject.h"
 #import "FFMediaEventFolderObject.h"
 #import "FFOrganizerItemDraggingSource.h"
 #import "FFOrganizerMasterItem.h"
 #import "FFOrganizerMasterItemDropTarget.h"
+#import "FFXMLTranslationTarget.h"
 
-@class NSArray, NSImage, NSMutableArray, NSString;
+@class FFLibrary, FFMediaEventProject, NSArray, NSImage, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
-@interface FFMediaEventFolder : FFBaseDSObject <FFOrganizerMasterItem, FFOrganizerItemDraggingSource, FFOrganizerMasterItemDropTarget, FFMediaEventFolderObject>
+@interface FFMediaEventFolder : FFBaseDSObject <FFXMLTranslationTarget, FFMediaEventFolderForMergeObject, FFOrganizerMasterItem, FFOrganizerItemDraggingSource, FFOrganizerMasterItemDropTarget, FFMediaEventFolderObject>
 {
     NSString *_name;
     NSMutableArray *_children;
@@ -25,11 +26,17 @@ __attribute__((visibility("hidden")))
 + (id)objectsSortedByName:(id)arg1;
 + (id)newLibraryFolderWithDefaultSmartCollections:(BOOL)arg1;
 + (id)copyClassDescription;
++ (id)mergeDescription;
++ (id)collectionNameForDisplayName:(id)arg1 withClass:(Class)arg2;
++ (Class)collectionNameClass:(id)arg1;
++ (id)collectionNameDisplayName:(id)arg1;
 + (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2 event:(id)arg3;
 + (id)readableTypesForPasteboard:(id)arg1;
 + (id)keyPathsForValuesAffectingMasterSubitems;
 + (id)keyPathsForValuesAffectingItems;
 + (id)keyPathsForValuesAffectingItemDisplayName;
+- (BOOL)update_smartCollectionsRolesPerLibrary;
+- (void)reassignRoles:(id)arg1 renameExistingRoles:(id)arg2 changeColorOfExistingRoles:(id)arg3 removeRolesWithUIDs:(id)arg4;
 - (BOOL)mergeChild:(id)arg1;
 - (id)addUntitledFolder;
 - (id)addUntitledSmartCollection;
@@ -45,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)insertObject:(id)arg1 inChildrenAtIndex:(unsigned long long)arg2;
 - (id)objectInChildrenAtIndex:(unsigned long long)arg1;
 - (unsigned long long)countOfChildren;
+- (void)setChildren:(id)arg1;
 @property(readonly, nonatomic) NSArray *children;
 - (void)removeFromParentFolder;
 - (BOOL)isNameEqualToString:(id)arg1;
@@ -61,6 +69,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithName:(id)arg1;
 - (id)init;
 - (BOOL)isLibraryFolder;
+@property(readonly, nonatomic) FFMediaEventFolder *folder;
+@property(readonly, nonatomic) FFMediaEventProject *event;
+@property NSString *collectionName;
+- (id)copyForMerge:(id)arg1;
 - (BOOL)actionDropObjects:(id)arg1 atIndex:(unsigned long long)arg2 forceCopy:(BOOL)arg3 error:(id *)arg4;
 - (id)_droppingActionNameForObjects:(id)arg1;
 - (BOOL)_copyObject:(id)arg1 toIndex:(unsigned long long)arg2 inProject:(id)arg3;
@@ -95,6 +107,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 @property(readonly, nonatomic) double itemRowHeight;
+@property(readonly, nonatomic) FFLibrary *library;
 @property(readonly) Class superclass;
 
 @end

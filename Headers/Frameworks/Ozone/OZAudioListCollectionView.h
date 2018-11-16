@@ -20,7 +20,6 @@
 - (void)keyUp:(id)arg1;
 - (void)keyDown:(id)arg1;
 - (id)menuForEvent:(id)arg1;
-- (id)newItemForRepresentedObject:(id)arg1;
 
 @end
 

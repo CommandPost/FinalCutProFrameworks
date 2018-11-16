@@ -20,8 +20,6 @@
     long long _bytesRequired;
 }
 
-+ (void)archiveMutableImportedRanges:(id)arg1;
-+ (id)unarchiveMutableImportedRanges;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
 @property long long bytesRequired; // @synthesize bytesRequired=_bytesRequired;
@@ -32,7 +30,7 @@
 @property(retain) NSDictionary *postponedFileImportInfo; // @synthesize postponedFileImportInfo=_postponedFileImportInfo;
 - (void)copyQueueCanceled:(id)arg1;
 - (void)copyQueueCompleted:(id)arg1;
-- (void)clearSourceURL:(id)arg1 inImportedRanges:(id)arg2;
+- (void)clearSourceURL:(id)arg1 forTargetFileID:(id)arg2;
 - (void)cancelValidation;
 - (void)processFiles:(id)arg1;
 - (void)processPostponedImport:(BOOL)arg1;

@@ -6,11 +6,12 @@
 
 #import <Ozone/OZTimingMarkersBase.h>
 
+#import "NSPopoverDelegate.h"
 #import "OZTimingView.h"
 
-@class LKPopOverWindow, NSTrackingArea, OZTimingCoordinator;
+@class NSPopover, NSString, NSTrackingArea, OZTimingCoordinator;
 
-@interface OZTimingMarkers : OZTimingMarkersBase <OZTimingView>
+@interface OZTimingMarkers : OZTimingMarkersBase <OZTimingView, NSPopoverDelegate>
 {
     OZTimingCoordinator *_timingCoordinator;
     unsigned int _frameChangedDelta;
@@ -18,7 +19,7 @@
     struct CGPoint _startingLocation;
     int _moving;
     NSTrackingArea *_trackingArea;
-    LKPopOverWindow *_markerInfoPopover;
+    NSPopover *_markerInfoPopover;
     const struct OZTimeMarker *_hoveredMarker;
     BOOL _dragCursorsOn;
     BOOL _drawBackgroundFromSuperclass;
@@ -28,7 +29,6 @@
 
 @property(nonatomic) BOOL drawMarkers; // @synthesize drawMarkers=_drawMarkers;
 @property(nonatomic) BOOL drawBackgroundFromSuperclass; // @synthesize drawBackgroundFromSuperclass=_drawBackgroundFromSuperclass;
-- (id).cxx_construct;
 - (unsigned int)getFrameChangedDone;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
 - (CDStruct_1b6d18a9)getCurrentTime;
@@ -53,9 +53,10 @@
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
+- (void)popoverDidClose:(id)arg1;
 - (void)mouseMoved:(id)arg1;
-- (void)_dismissMarkerTitlePopover:(id)arg1;
-- (id)_markerTitlePopoverWindow:(const struct OZTimeMarker *)arg1;
+- (void)_dismissMarkerTitlePopover:(id)arg1 now:(BOOL)arg2;
+- (id)_markerTitlePopover:(const struct OZTimeMarker *)arg1;
 - (id)_textImageForMarker:(const struct OZTimeMarker *)arg1;
 - (void)mouseEntered:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
@@ -63,6 +64,12 @@
 - (void)setFrameChangedDelta:(unsigned int)arg1 done:(unsigned int)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

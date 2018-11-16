@@ -4,13 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProPreferencesModule.h"
+#import "LKPreferencesModule.h"
 
 #import "NSOpenSavePanelDelegate.h"
 
 @class LKPopUpButton, NSString;
 
-@interface PEAppGeneralPreferencesModule : NSProPreferencesModule <NSOpenSavePanelDelegate>
+@interface PEAppGeneralPreferencesModule : LKPreferencesModule <NSOpenSavePanelDelegate>
 {
     LKPopUpButton *_formatPopUpButton;
 }
@@ -18,6 +18,7 @@
 + (id)openOrSaveAllowedFileTypes;
 + (id)newTimeFormatter;
 @property(nonatomic) LKPopUpButton *formatPopUpButton; // @synthesize formatPopUpButton=_formatPopUpButton;
+- (void)resetAUCache:(id)arg1;
 - (void)resetDialogWarnings:(id)arg1;
 - (void)changeTimeFormat:(id)arg1;
 - (void)moduleWasInstalled;
@@ -26,6 +27,7 @@
 - (void)awakeFromNib;
 - (id)titleForIdentifier:(id)arg1;
 - (BOOL)isResizable;
+- (id)imageForPreferenceNamed:(id)arg1;
 - (void)dealloc;
 
 // Remaining properties

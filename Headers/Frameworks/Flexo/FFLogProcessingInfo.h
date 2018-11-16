@@ -12,12 +12,14 @@
     CDStruct_bdcb2b0d _parametersMD5;
 }
 
++ (void)lazyInitForMode:(int)arg1;
 + (struct __CFString *)CVImageBufferKey;
 @property(readonly, nonatomic) CDStruct_bdcb2b0d parametersMD5; // @synthesize parametersMD5=_parametersMD5;
 @property(readonly, nonatomic) int processingMode; // @synthesize processingMode=_processingMode;
-- (id).cxx_construct;
 - (BOOL)isEquivalentTo:(id)arg1;
-- (void)setColorConformPresetAndParameters:(struct HGColorConform *)arg1;
+- (void)setColorConformPresetAndParameters:(struct HGColorConform *)arg1 toConvertToColorSpace:(int)arg2;
+- (BOOL)canConvertToColorSpace:(int)arg1;
+- (int)targetColorSpaceFor:(int)arg1;
 - (void)dealloc;
 - (id)init;
 

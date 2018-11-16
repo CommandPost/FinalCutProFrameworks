@@ -10,7 +10,6 @@
 {
 }
 
-- (id)proTextAttributes;
 - (id)setUpFieldEditorAttributes:(id)arg1;
 - (struct CGSize)cellSize;
 - (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;

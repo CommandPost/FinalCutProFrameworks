@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void)startObservingNotification:(id)arg1 object:(id)arg2;
 - (void)notification:(id)arg1;
+- (id)effect;
 - (void)dealloc;
 - (id)initWithEffect:(id)arg1 selector:(SEL)arg2;
 

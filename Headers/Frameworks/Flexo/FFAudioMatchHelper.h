@@ -8,21 +8,15 @@
 
 #import "FFMatchToolDelegate.h"
 
-@class FFBackgroundTask, FFEnhanceAudioManager, NSArray, NSMutableArray, NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioMatchHelper : NSObject <FFMatchToolDelegate>
 {
-    NSMutableArray *_matchTasks;
-    NSMutableArray *_matchManagers;
-    FFBackgroundTask *_backgroundTaskForMatch;
-    FFEnhanceAudioManager *_analysisManager;
-    BOOL _matchCompleted;
-    NSArray *_selectedItems;
+    NSArray *_matchTasks;
 }
 
-@property BOOL matchCompleted; // @synthesize matchCompleted=_matchCompleted;
-@property(retain) FFEnhanceAudioManager *analysisManager; // @synthesize analysisManager=_analysisManager;
+- (id)copyCompliantObjectsFromSelection:(id)arg1;
 - (void)setSelectedItems:(id)arg1 withContextTime:(CDStruct_1b6d18a9)arg2;
 - (id)accessoryTitle;
 - (id)footerText;
@@ -30,11 +24,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
 - (void)matchToolWasResigned:(id)arg1;
 - (void)matchToolWasAssigned:(id)arg1;
-- (id)copyCompliantObjectsFromSelection:(id)arg1;
 - (void)completeOnSelectionOnMatchTool:(id)arg1;
 - (void)cancelOnSelectionOnMatchTool:(id)arg1;
 - (void)dealloc;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

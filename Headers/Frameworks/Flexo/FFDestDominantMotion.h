@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     struct HGGLTexture *_textureBuffer0;
     struct HGGLTexture *_textureBuffer1;
     FFDominantMotionMediaRep *_mediaRep;
-    int _analysisResultCode;
     BOOL _forceInertiaCam;
     BOOL _useInertiaCamOpenCL;
     struct _CGLContextObject *_CGLContext;
@@ -37,7 +36,6 @@ __attribute__((visibility("hidden")))
     void *_FFDestDominantMotionPrivate;
 }
 
-- (id).cxx_construct;
 - (BOOL)isProgressive;
 - (id)setIncomingFrame:(id)arg1;
 - (id)newDominantMotionMediaRep;
@@ -53,6 +51,8 @@ __attribute__((visibility("hidden")))
 - (void)finishAnalyzing;
 - (void)startAnalyzing;
 - (int)analyzePlayerFrame:(id)arg1;
+- (BOOL)wantsDithering:(id)arg1;
+- (int)requestedBackground;
 - (id)supportedPixelFormats;
 - (struct CGColorSpace *)colorSpace;
 - (int)imageLocation;

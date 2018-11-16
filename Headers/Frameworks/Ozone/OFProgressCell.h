@@ -6,7 +6,7 @@
 
 #import "NSCell.h"
 
-@class NSImage, NSProRenditionKey, OFProgressEntry, OZOpticalFlowProgressController;
+@class NSImage, OFProgressEntry, OZOpticalFlowProgressController;
 
 @interface OFProgressCell : NSCell
 {
@@ -14,19 +14,18 @@
     OFProgressEntry *_data;
     NSImage *_alertImage;
     NSImage *_dragHandleImage;
-    NSProRenditionKey *_pauseRenditionKey;
-    NSProRenditionKey *_resumeRenditionKey;
+    NSImage *_pauseImage[2];
+    NSImage *_resumeImage[2];
     struct CGRect _pauseResumeFrame;
-    NSProRenditionKey *_cancelRenditionKey;
+    NSImage *_cancelImage[2];
     struct CGRect _cancelFrame;
-    NSProRenditionKey *_trackedRenditionKey;
     struct CGRect _trackedFrame;
     OFProgressEntry *_trackedData;
-    NSProRenditionKey *_trackedKeyAdjustment;
+    unsigned int _imageState;
+    unsigned int _trackedImage;
 }
 
 + (BOOL)prefersTrackingUntilMouseUp;
-- (id).cxx_construct;
 - (void)abortTracking;
 - (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
 - (BOOL)continueTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3;

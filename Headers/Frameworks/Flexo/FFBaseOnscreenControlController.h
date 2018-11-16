@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     } _state;
 }
 
-- (id).cxx_construct;
 - (void)selectedItemEffectsChanged:(id)arg1;
 - (BOOL)_hasOtherCorrectionsSelected;
 - (BOOL)_hasOtherCorrectionsSelectedWithShapes:(id *)arg1;

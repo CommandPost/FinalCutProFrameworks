@@ -8,15 +8,13 @@
 
 #import "NSCopying.h"
 
-@class NSArray, NSMutableArray, NSMutableSet, TLKLayoutSegmentTable;
+@class NSArray, NSMutableArray, NSMutableSet, NSSet, TLKLayoutSegmentTable;
 
 @interface TLKLayoutSegment : NSObject <NSCopying>
 {
     TLKLayoutSegmentTable *_layoutSegmentTable;
-    NSMutableArray *_anchoredItems;
-    NSMutableSet *_anchoredItemsSet;
-    NSMutableArray *_spineItems;
-    NSMutableSet *_spineItemsSet;
+    NSMutableSet *_anchoredItems;
+    NSMutableSet *_spineItems;
     CDStruct_e83c9415 _timeRange;
     NSMutableArray *_lineBreakTimes;
     struct {
@@ -27,12 +25,12 @@
 }
 
 + (CDUnknownBlockType)layoutSegmentComparator;
+@property(copy, nonatomic) NSSet *spineItems; // @synthesize spineItems=_spineItems;
+@property(copy, nonatomic) NSSet *anchoredItems; // @synthesize anchoredItems=_anchoredItems;
 @property(copy, nonatomic) NSArray *lineBreakTimes; // @synthesize lineBreakTimes=_lineBreakTimes;
 @property(nonatomic) TLKLayoutSegmentTable *layoutSegmentTable; // @synthesize layoutSegmentTable=_layoutSegmentTable;
-@property(copy, nonatomic) NSArray *spineItems; // @synthesize spineItems=_spineItems;
-@property(copy, nonatomic) NSArray *anchoredItems; // @synthesize anchoredItems=_anchoredItems;
 - (id)description;
-- (id)allItems;
+- (void)enumerateAllItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (long long)compareByTimeRangeEnd:(id)arg1;
 - (long long)compareByTimeRangeStart:(id)arg1;
 - (void)addLineBreakTime:(CDStruct_1b6d18a9)arg1;

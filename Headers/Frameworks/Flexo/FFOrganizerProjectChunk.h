@@ -6,39 +6,49 @@
 
 #import <Flexo/FFOrganizerAbstractChunk.h>
 
-@class CALayer, FFOrganizerFilmstripProjectLabelLayer, FFSequenceInfo, NSString;
+@class CALayer, FFOrganizerFilmstripProjectLabelLayer, FFProjectMediaManagementPopover, FFResponderLayerCheckbox, FFSequenceInfo, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerProjectChunk : FFOrganizerAbstractChunk
 {
     CALayer *_clapperNormalLayer;
     CALayer *_clapperSelectedLayer;
-    CALayer *_selectionLayer;
-    CALayer *_selectionUnfocusedLayer;
+    CALayer *_proSelectionLayer;
+    CALayer *_proSelectionUnfocusedLayer;
     CALayer *_thumbnailLayer;
     BOOL _selected;
+    BOOL _mouseInChunk;
     BOOL _temporarilySelected;
     BOOL _focused;
     BOOL _projectOpen;
     double _contentsScale;
     FFOrganizerFilmstripProjectLabelLayer *_projectTitleLayer;
-    FFOrganizerFilmstripProjectLabelLayer *_projectDurationLabelLayer;
-    FFOrganizerFilmstripProjectLabelLayer *_projectLastModifiedLabelLayer;
+    FFOrganizerFilmstripProjectLabelLayer *_proProjectDurationLabelLayer;
+    FFOrganizerFilmstripProjectLabelLayer *_proProjectLastModifiedLabelLayer;
+    FFResponderLayerCheckbox *_projectMediaManagementButtonLayer;
     CALayer *_adornmentLayer;
     NSString *_thumbnailMD5;
+    NSMutableSet *_rolloverVisibleLayers;
+    FFProjectMediaManagementPopover *_mediaManagementPopover;
 }
 
+@property(retain, nonatomic) FFProjectMediaManagementPopover *mediaManagementPopover; // @synthesize mediaManagementPopover=_mediaManagementPopover;
 @property(retain, nonatomic) NSString *thumbnailMD5; // @synthesize thumbnailMD5=_thumbnailMD5;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)_updateRolloverVisibleLayers;
 - (struct CGRect)editFrame;
 - (id)editLayer;
 - (CDStruct_e83c9415)timeRange;
 - (void)_projectChanged:(id)arg1;
 - (void)_addProjectTitleSublayer:(id)arg1;
+- (struct CGSize)_projectTitleSize;
 - (void)_addAdornmentSublayer;
 - (void)updateProjectThumbnailLayer;
 - (void)showProjectChunkSelected:(BOOL)arg1;
 - (void)showProjectChunkOpen:(BOOL)arg1;
 - (void)_updateProjectClapperLayers;
+- (int)_thumbnailQuality;
 - (void)showHandlesForSelection:(id)arg1;
 - (BOOL)hasFilmstripAtPoint:(struct CGPoint)arg1 inSpaceOfLayer:(id)arg2;
 - (id)selectionContainsPoint:(struct CGPoint)arg1 isActive:(char *)arg2;
@@ -58,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)releaseLayer;
 - (BOOL)hasLayer;
 - (id)layer;
+- (BOOL)_projectLoaded;
 @property(readonly) FFSequenceInfo *sequenceInfo;
 - (id)filmstrip;
 - (id)displayName;

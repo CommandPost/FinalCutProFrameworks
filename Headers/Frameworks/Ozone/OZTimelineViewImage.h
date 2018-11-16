@@ -12,13 +12,13 @@
 
 @interface OZTimelineViewImage : OZTimelineViewMulti <OZRenderClient>
 {
-    struct map<OZTimelineImageTag, OZTimelineImage, std::less<OZTimelineImageTag>, std::allocator<std::pair<const OZTimelineImageTag, OZTimelineImage>>> *_pImages;
-    struct set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>> *_pProcessing;
+    struct map<OZTimelineImageTag, OZTimelineImage, std::__1::less<OZTimelineImageTag>, std::__1::allocator<std::__1::pair<const OZTimelineImageTag, OZTimelineImage>>> *_pImages;
+    struct set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>> *_pProcessing;
     NSTimer *_pSweepTimer;
 }
 
 - (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
-- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_3bf61ddf *)arg2;
 - (void)stopTimers;
 - (void)imageReady:(id)arg1;
 - (void)sweepImages:(id)arg1;

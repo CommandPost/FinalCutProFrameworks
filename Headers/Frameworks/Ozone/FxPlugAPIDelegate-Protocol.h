@@ -8,6 +8,9 @@
 
 @protocol FxPlugAPIDelegate
 - (NSString *)displayName;
+- (void)postChannelChange:(struct OZChannelBase *)arg1 flagsOnly:(BOOL)arg2;
+- (void)preChannelChange:(struct OZChannelBase *)arg1 flagsOnly:(BOOL)arg2;
+- (void)abortAndWait;
 - (void)endOperationWithChannel:(struct OZChannelBase *)arg1;
 - (void)beginOperationWithChannel:(struct OZChannelBase *)arg1;
 - (BOOL)usesRationalTime;

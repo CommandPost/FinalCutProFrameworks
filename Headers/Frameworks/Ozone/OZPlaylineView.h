@@ -19,12 +19,14 @@
     struct CGRect _outLineRect;
 }
 
-- (id).cxx_construct;
 - (struct CGRect)controlBounds;
+- (struct CGRect)playHeadRect;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
 - (CDStruct_1b6d18a9)getCurrentTime;
 - (const struct PCTimeRange *)getActiveRange;
 - (const struct PCTimeRange *)getDisplayRange;
+- (double)getPixelsPerSecond;
+- (CDStruct_1b6d18a9)getSecondsPerPixel;
 - (void)_setViewPositionAndSize;
 - (void)renewGState;
 - (void)timeDisplayRangeModified;
@@ -32,22 +34,17 @@
 - (void)setTimingCoordinator:(id)arg1;
 - (void)notify:(unsigned int)arg1;
 - (struct CGRect)_playLineRect;
-- (struct CGRect)_outLineRect;
-- (struct CGRect)_inLineRect;
 - (void)drawRect:(struct CGRect)arg1;
 - (struct CGRect)playLineRect;
-- (void)drawInOutLines:(struct CGRect)arg1;
-- (void)drawPlayRangeHandles;
 - (struct PCTimeRange)getPlayRange;
-- (id)outPointFacet:(BOOL)arg1;
-- (id)inPointFacet:(BOOL)arg1;
+- (id)outPointImage;
+- (id)inPointImage;
 - (void)drawPlayhead:(struct CGRect)arg1;
-- (id)playheadFacet:(BOOL)arg1;
+- (id)playheadImage;
 - (BOOL)isOpaque;
 - (void)timelineViewDidResize:(id)arg1;
 - (void)timelineViewDidResize;
 - (void)dealloc;
-- (id)autorelease;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

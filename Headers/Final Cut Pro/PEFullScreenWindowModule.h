@@ -12,8 +12,10 @@
     BOOL _fullscreen;
     struct CGRect _nonFullscreenFrame;
     struct CGRect _actualFullscreenFrame;
+    BOOL _handlingWindowDidMove;
 }
 
++ (unsigned long long)windowStyleMask;
 + (unsigned long long)nextAvailableScreenIndexExcludingIndexes:(id)arg1;
 + (unsigned long long)nextAvailableScreenIndexExcluding:(unsigned long long)arg1;
 + (Class)windowClass;

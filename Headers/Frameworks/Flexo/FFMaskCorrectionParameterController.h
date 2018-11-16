@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldEnableShowColorBoard;
 - (BOOL)isBasemem;
 - (id)effect;
-- (id)facetForShowColorBoardButton;
 - (void)addShape:(id)arg1;
 - (void)enableKeyer:(id)arg1;
 - (void)showColorBoard:(id)arg1;

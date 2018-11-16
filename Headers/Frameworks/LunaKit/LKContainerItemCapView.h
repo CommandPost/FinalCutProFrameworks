@@ -13,8 +13,13 @@
     NSString *_itemTitle;
     unsigned long long _itemAlignment;
     unsigned int _emphasized:1;
+    BOOL _useFacetForBackgroung;
+    BOOL _isFooter;
 }
 
+@property(nonatomic) BOOL isFooter; // @synthesize isFooter=_isFooter;
+@property(nonatomic) BOOL useFacetForBackgroung; // @synthesize useFacetForBackgroung=_useFacetForBackgroung;
+- (id)_baseFacet;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 - (id)accessibilityAttributeNames;

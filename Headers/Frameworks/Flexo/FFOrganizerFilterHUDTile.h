@@ -6,28 +6,27 @@
 
 #import "LKTile.h"
 
-@class FFOrganizerFilterHUDTileModule, LKButton, NSView;
+@class FFOrganizerFilterHUDTileModule, LKButton, LKImageView, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilterHUDTile : LKTile
 {
     LKButton *_enabledCheckBox;
     LKButton *_removeTileButton;
-    LKButton *_tileTypeGlyph;
+    LKImageView *_tileTypeGlyph;
     NSView *_customView;
     FFOrganizerFilterHUDTileModule *_subModule;
     id <FFOrganizerFilterHUDTileDelegate> _delegate;
 }
 
-@property(retain, nonatomic) id <FFOrganizerFilterHUDTileDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) id <FFOrganizerFilterHUDTileDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)subModule;
 - (void)setCustomViewFromNib:(id)arg1 filterDict:(id)arg2;
+- (id)library;
 - (void)tileModuleUpdated:(id)arg1;
 - (id)filterDict;
 - (id)metadataKey;
-- (void)requestRolesUpdate;
-- (void)requestKeywordUpdate;
-- (void)setRoleSets:(id)arg1 selectedRoles:(id)arg2;
+- (void)updateWithSelectedRoleUIDs:(id)arg1;
 - (void)setKeywords:(id)arg1 selectedKeywords:(id)arg2;
 - (BOOL)active;
 - (void)setActive:(BOOL)arg1;

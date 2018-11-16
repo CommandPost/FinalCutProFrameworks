@@ -25,6 +25,7 @@
     FFTransportLongPressButton *_fastForwardNextButton;
     FFTransportScubberSlider *_scrubber;
     LKButton *_favoriteButton;
+    LKButton *_rejectButton;
     LKButton *_voiceoverButton;
     LKTextField *_timeRemainingLabel;
     LKTextField *_timeElapsedLabel;
@@ -65,6 +66,7 @@
 @property(nonatomic) double preScrubbingRate; // @synthesize preScrubbingRate=_preScrubbingRate;
 @property(nonatomic) BOOL isScrubbing; // @synthesize isScrubbing=_isScrubbing;
 @property LKButton *voiceoverButton; // @synthesize voiceoverButton=_voiceoverButton;
+@property LKButton *rejectButton; // @synthesize rejectButton=_rejectButton;
 @property LKButton *favoriteButton; // @synthesize favoriteButton=_favoriteButton;
 @property FFTransportScubberSlider *scrubber; // @synthesize scrubber=_scrubber;
 @property LKButton *nextButton; // @synthesize nextButton=_nextButton;
@@ -80,6 +82,7 @@
 @property(nonatomic) id <FFTransportDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)resetRate:(id)arg1;
 - (void)toggleFullScreen:(id)arg1;
+- (void)doReject:(id)arg1;
 - (void)doFavorite:(id)arg1;
 - (void)toggleVoiceover:(id)arg1;
 - (void)playSelected:(id)arg1;
@@ -87,6 +90,8 @@
 - (void)playPrevious:(id)arg1;
 - (void)seek:(id)arg1;
 - (void)rewind:(id)arg1;
+- (void)rewindToRate:(id)arg1;
+- (void)fastForwardToRate:(id)arg1;
 - (void)fastForward:(id)arg1;
 - (void)playPause:(id)arg1;
 - (void)_autohide:(id)arg1;
@@ -100,7 +105,6 @@
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 - (void)_updateVoiceoverButton;
-- (void)_updateFavoriteButton;
 - (void)_updateToggleFullscreenButton;
 - (void)_updatePlaySelectedButton;
 - (void)_updatePreviousAndNextButtons;

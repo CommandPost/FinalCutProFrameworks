@@ -48,12 +48,14 @@ struct GraphStats;
 
 struct HGBitmap;
 
+struct HGBlendingInfo;
+
 struct HGBuffer;
 
 struct HGBufferDumper {
-    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field1;
-    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field2;
-    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field3;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
     int _field4;
     int _field5;
     _Bool _field6;
@@ -73,14 +75,18 @@ struct HGCacheEntry;
 struct HGDotTree {
     struct __sFILE *_field1;
     _Bool _field2;
-    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field3;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
 };
 
 struct HGExecutionData;
 
+struct HGExecutionUnit;
+
 struct HGLUTCacheManager;
 
 struct HGLimits;
+
+struct HGLimitsCache;
 
 struct HGNode {
     CDUnknownFunctionPointerType *_field1;
@@ -99,7 +105,7 @@ struct HGNode {
     _Bool _field14;
     _Bool _field15;
     _Bool _field16;
-    struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field17;
+    struct set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *>> _field17;
     int _field18;
     struct HGNode *_field19;
     struct HGRect _field20;
@@ -118,6 +124,9 @@ struct HGNode {
     struct HGNodeChain *_field33;
     struct HGShaderEntry *_field34;
     int _field35;
+    struct HGBlendingInfo *_field36;
+    float _field37;
+    float _field38[4];
 };
 
 struct HGNodeChain;
@@ -147,8 +156,8 @@ struct HGRenderer {
     struct HGNode *_field3;
     struct HGBuffer *_field4;
     struct HGRendererTextureUnit _field5[8];
-    struct vector<DepthBufferManager *, std::allocator<DepthBufferManager *>> _field6;
-    struct vector<HGExecutionUnit *, std::allocator<HGExecutionUnit *>> _field7;
+    struct vector<DepthBufferManager *, std::__1::allocator<DepthBufferManager *>> _field6;
+    struct vector<HGExecutionUnit *, std::__1::allocator<HGExecutionUnit *>> _field7;
     struct HGExecutionData *_field8;
     struct HGSyncData *_field9;
     struct _opaque_pthread_rwlock_t {
@@ -188,22 +197,24 @@ struct HGRenderer {
     int _field41;
     int _field42;
     int _field43;
-    struct HGCache _field44;
-    _Bool _field45;
+    int _field44;
+    struct HGCache _field45;
     _Bool _field46;
     _Bool _field47;
-    unsigned int _field48;
-    struct HGLimits *_field49;
-    int _field50;
-    struct HGDotTree _field51;
-    struct HGBufferDumper _field52;
-    unsigned int _field53;
-    int _field54;
-    unsigned long long _field55;
+    _Bool _field48;
+    unsigned int _field49;
+    struct HGLimits *_field50[2];
+    int _field51;
+    struct HGDotTree _field52;
+    struct HGBufferDumper _field53;
+    unsigned int _field54;
+    int _field55;
     unsigned long long _field56;
-    int _field57;
-    struct HGRenderQueue *_field58;
-    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field59;
+    unsigned long long _field57;
+    int _field58;
+    struct HGLimitsCache *_field59;
+    struct HGRenderQueue *_field60;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field61;
 };
 
 struct HGRendererTextureUnit {
@@ -269,7 +280,7 @@ struct OZChannelFolder {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
 };
@@ -331,34 +342,7 @@ struct POMultiResTexture;
 
 struct RendererStats;
 
-struct _Alloc_hider {
-    char *_field1;
-};
-
 struct _CGLContextObject;
-
-struct _Rb_tree<HGNodeInput *, HGNodeInput *, std::_Identity<HGNodeInput *>, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> {
-    struct _Rb_tree_impl<std::less<HGNodeInput *>, false> _field1;
-};
-
-struct _Rb_tree_impl<std::less<HGNodeInput *>, false> {
-    struct less<HGNodeInput *> _field1;
-    struct _Rb_tree_node_base _field2;
-    unsigned long long _field3;
-};
-
-struct _Rb_tree_node_base {
-    int _field1;
-    struct _Rb_tree_node_base *_field2;
-    struct _Rb_tree_node_base *_field3;
-    struct _Rb_tree_node_base *_field4;
-};
-
-struct _Vector_impl {
-    struct DepthBufferManager **_field1;
-    struct DepthBufferManager **_field2;
-    struct DepthBufferManager **_field3;
-};
 
 struct __CFString;
 
@@ -367,25 +351,61 @@ struct _opaque_pthread_mutex_t {
     char _field2[56];
 };
 
-struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
-    struct _Alloc_hider _field1;
+struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    unsigned long long _field1;
+                    unsigned long long _field2;
+                    char *_field3;
+                } _field1;
+                struct __short {
+                    union {
+                        unsigned char _field1;
+                        char _field2;
+                    } _field1;
+                    char _field2[23];
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
 };
 
-struct less<HGNodeInput *>;
-
-struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> {
-    struct _Rb_tree<HGNodeInput *, HGNodeInput *, std::_Identity<HGNodeInput *>, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field1;
+struct set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *>> {
+    struct __tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *>> {
+        struct __tree_node<HGNodeInput *, void *> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
+                struct __tree_node_base<void *> *_field1;
+            } _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::less<HGNodeInput *>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
 };
 
-struct vector<DepthBufferManager *, std::allocator<DepthBufferManager *>> {
-    struct _Vector_impl _field1;
+struct vector<DepthBufferManager *, std::__1::allocator<DepthBufferManager *>> {
+    struct DepthBufferManager **_field1;
+    struct DepthBufferManager **_field2;
+    struct __compressed_pair<DepthBufferManager **, std::__1::allocator<DepthBufferManager *>> {
+        struct DepthBufferManager **_field1;
+    } _field3;
 };
 
-struct vector<HGExecutionUnit *, std::allocator<HGExecutionUnit *>> {
-    struct _Vector_impl _field1;
+struct vector<HGExecutionUnit *, std::__1::allocator<HGExecutionUnit *>> {
+    struct HGExecutionUnit **_field1;
+    struct HGExecutionUnit **_field2;
+    struct __compressed_pair<HGExecutionUnit **, std::__1::allocator<HGExecutionUnit *>> {
+        struct HGExecutionUnit **_field1;
+    } _field3;
 };
 
-struct vector<OZChannelBase *, std::allocator<OZChannelBase *>>;
+struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>>;
 
 #pragma mark Typedef'd Structures
 

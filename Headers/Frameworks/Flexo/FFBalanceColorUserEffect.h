@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 + (id)effectID;
 + (void)registerEffects;
-- (void)effectWasAddedToStack:(int)arg1;
 - (BOOL)isBalanceColorUserEffect;
 - (void)createChannelsInFolder:(id)arg1;
 

@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)languageCodeForString:(id)arg1;
++ (id)localizedFontName:(id)arg1 forLanguage:(id)arg2;
 + (id)localizedFontName:(id)arg1;
 
 @end

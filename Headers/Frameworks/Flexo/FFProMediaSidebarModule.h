@@ -20,7 +20,7 @@
 @property(retain, nonatomic) FFModifyContentCreationDateWindowController *creationDateWindowController; // @synthesize creationDateWindowController=_creationDateWindowController;
 @property(retain, nonatomic) FFAnalyzeMediaWindowController *analyzeController; // @synthesize analyzeController=_analyzeController;
 @property(retain, nonatomic) FFTranscodeMediaWindowController *transcodeController; // @synthesize transcodeController=_transcodeController;
-- (void)importFinalCutXML;
+- (void)importFinalCutXML:(id)arg1;
 - (void)restoreLibrary:(id)arg1;
 - (void)backupLibrary:(id)arg1;
 - (void)modifyContentCreationDate:(id)arg1;
@@ -38,6 +38,8 @@
 - (void)newKeyword:(id)arg1;
 - (void)newEvent:(id)arg1;
 - (id)localModuleActions;
+- (void)refreshSelection;
+- (id)newSidebarController;
 - (void)sidebarDidRepopulate;
 - (void)sidebarDidDepopulate;
 - (void)viewDidLoad;

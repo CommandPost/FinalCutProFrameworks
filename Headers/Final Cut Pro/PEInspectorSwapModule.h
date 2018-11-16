@@ -8,10 +8,15 @@
 
 @interface PEInspectorSwapModule : LKSwapModule
 {
+    struct CGSize _viewMinSize;
+    struct CGSize _viewMaxSize;
 }
 
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
+@property(nonatomic) struct CGSize viewMaxSize; // @synthesize viewMaxSize=_viewMaxSize;
+@property(nonatomic) struct CGSize viewMinSize; // @synthesize viewMinSize=_viewMinSize;
+- (void)_swapToModule:(id)arg1 animate:(BOOL)arg2;
+- (BOOL)wantsFocusIndicator;
+- (id)init;
 
 @end
 

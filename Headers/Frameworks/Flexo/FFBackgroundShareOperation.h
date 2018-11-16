@@ -28,8 +28,9 @@
     id <FFBackgroundShareOperationDelegate> _delegate;
 }
 
-+ (id)keyPathsForValuesAffectingBackgroundTask;
 + (id)shareOperationWithBatch:(id)arg1 andSnapshot:(id)arg2;
++ (BOOL)isSynchronousSource:(id)arg1 videoCodecType:(id)arg2;
++ (id)keyPathsForValuesAffectingBackgroundTask;
 + (id)shareOperationWithBatch:(id)arg1;
 @property BOOL useTranscodeStatusForDisplayName; // @synthesize useTranscodeStatusForDisplayName=_useTranscodeStatusForDisplayName;
 @property BOOL addToShareHistory; // @synthesize addToShareHistory=_addToShareHistory;
@@ -42,16 +43,20 @@
 @property(retain) FFSharingSnapshot *snapshot; // @synthesize snapshot=_sequenceSnapshot;
 @property(retain) CKTranscodingOperation *ckOperation; // @synthesize ckOperation=_transcodingOperation;
 @property(retain) FFBackgroundTask *bgTask; // @synthesize bgTask=_bgTask;
+- (BOOL)isSynchronousSource:(id)arg1 videoCodecType:(id)arg2;
+- (id)_runExporters:(id)arg1;
 - (id)transcodeSource:(id)arg1 withSetting:(id)arg2 toFile:(id)arg3;
 - (id)message;
 - (id)transcodeStateWithPercentDone:(double *)arg1;
+- (double)taskWeightForTranscodeSource:(id)arg1 withSetting:(id)arg2;
 - (void)cancelTranscode;
 - (BOOL)canTranscodeSource:(id)arg1 withSetting:(id)arg2;
 - (void)operationDidFinish:(id)arg1;
 - (void)operation:(id)arg1 didFailWithError:(id)arg2;
 - (void)operationStatusChanged:(id)arg1;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
+- (void)queueBackgroundTaskWithDependency:(id)arg1;
 - (void)queueBackgroundTask;
 - (void)canceledTask:(id)arg1;
 - (void)performShareOperation:(id)arg1 task:(id)arg2;

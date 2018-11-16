@@ -9,7 +9,7 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class MIOInputSubSegment, MIORADClip, NSDictionary, NSString;
+@class MIOInputSubSegment, MIORADClip, MIORADVolume, NSDictionary, NSNumber, NSString;
 
 @interface FFMIORADAsset : FFAsset <NSCoding, NSCopying>
 {
@@ -23,10 +23,14 @@
     BOOL _isTempAsset;
     MIOInputSubSegment *_subSegment;
     CDStruct_1b6d18a9 _originalMediaStart;
+    MIORADVolume *_radVolume;
+    NSNumber *_assetImportPercentageDone;
 }
 
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property(retain) NSNumber *assetImportPercentageDone; // @synthesize assetImportPercentageDone=_assetImportPercentageDone;
+@property(nonatomic) MIORADVolume *radVolume; // @synthesize radVolume=_radVolume;
 @property(nonatomic) CDStruct_1b6d18a9 originalMediaStart; // @synthesize originalMediaStart=_originalMediaStart;
 @property(retain, nonatomic) MIOInputSubSegment *subSegment; // @synthesize subSegment=_subSegment;
 @property(nonatomic) CDStruct_1b6d18a9 durationForOfflineProvider; // @synthesize durationForOfflineProvider=_durationForOfflineProvider;
@@ -42,12 +46,13 @@
 - (BOOL)mediaAvailable;
 - (id)fileURLs:(int)arg1;
 @property(readonly) NSDictionary *customMetadata;
-- (void)invalidateAssetForNotification:(id)arg1 withClip:(id)arg2;
+- (void)invalidateAssetForNotification:(id)arg1;
 - (void)setInOutPair:(struct PC_CMTimePair)arg1;
 - (id)contentType;
 - (void)ingestFinishedWithURL:(id)arg1 event:(id)arg2 isIngestingToExternal:(BOOL)arg3;
 - (BOOL)isMounted;
 - (id)newProvider;
+- (void)updateRADOverridesWithProvider:(id)arg1;
 - (void)updateRADClip;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

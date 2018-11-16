@@ -14,6 +14,8 @@
 }
 
 @property(readonly, nonatomic) FFPlayerItemModule *contentModule; // @synthesize contentModule=_contentModule;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)wantsFirstResponder;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
 - (void)applyLayoutDictionary:(id)arg1;
 - (id)init;

@@ -17,6 +17,7 @@
 - (void)_enterPrecisionEditorWithLeftItem:(id)arg1 rightItem:(id)arg2;
 - (void)_enterPrecisionEditorWithRightItem:(id)arg1;
 - (void)_enterPrecisionEditorWithLeftItem:(id)arg1;
+- (void)_changeEditPointToLeftItem:(id)arg1 orRightItem:(id)arg2;
 - (void)_deselectEdges;
 - (void)commit:(id)arg1;
 - (void)moveToLastEdit;

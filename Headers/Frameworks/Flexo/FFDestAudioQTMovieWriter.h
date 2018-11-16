@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     FFQTMovieWriter *_movieWriter;
 }
 
-- (id).cxx_construct;
 - (void)pushBufferHook:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)initWithSourceFormat:(struct AudioStreamBasicDescription)arg1 destFormat:(struct AudioStreamBasicDescription)arg2 movieWriter:(id)arg3;

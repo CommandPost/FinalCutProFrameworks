@@ -35,19 +35,17 @@ __attribute__((visibility("hidden")))
     BOOL _visible;
     int _actionMode;
     BOOL _mouseAction;
-    vector_391ea44b *_samples;
-    vector_391ea44b *_samplesCurrent;
+    vector_ff5abfb7 *_samples;
+    vector_ff5abfb7 *_samplesCurrent;
     CDStruct_1b6d18a9 _samplesFigTime;
     struct Mat4f *_mBwOriginalMatrix;
 }
 
-+ (struct CGColorSpace *)processingColorSpace;
 @property(nonatomic) BOOL visible; // @synthesize visible=_visible;
 @property(nonatomic) BOOL active; // @synthesize active=_active;
-- (id).cxx_construct;
 - (id)getCursor;
 - (void)setMatrix;
-- (struct Vec3f)addSamples:(vector_391ea44b *)arg1;
+- (struct Vec3f)addSamples:(vector_ff5abfb7 *)arg1;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
 - (void)readBuffer;
 - (void)mouseUp:(id)arg1;

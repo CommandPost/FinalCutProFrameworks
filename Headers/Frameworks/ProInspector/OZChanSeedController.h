@@ -14,6 +14,7 @@
     LKTextField *_pTF;
 }
 
+- (float)suggestedMinParamWidth;
 - (void)generateSeed:(id)arg1;
 - (void)setChannelValue:(id)arg1;
 - (void)disable;

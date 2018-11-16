@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)removeTracking;
 - (void)addTracking;
 - (void)keyDown:(id)arg1;
+- (void)drawRow:(long long)arg1 clipRect:(struct CGRect)arg2;
 - (void)highlightSelectionInClipRect:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;

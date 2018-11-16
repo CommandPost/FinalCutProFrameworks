@@ -6,22 +6,29 @@
 
 #import <Flexo/FFInspectorFileInfoBaseTile.h>
 
-@class LKButton, NSArray;
+#import "FFInspectorFileInfoReferencesTile.h"
+
+@class LKButton, NSArray, NSString, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorFileInfoREDTile : FFInspectorFileInfoBaseTile
+@interface FFInspectorFileInfoREDTile : FFInspectorFileInfoBaseTile <FFInspectorFileInfoReferencesTile>
 {
-    LKButton *_modifyButton;
-    NSArray *_itemsOrNil;
+    NSArray *_items;
     id _selectionOwner;
+    NSView *_rowView;
+    LKButton *_modifyButton;
 }
 
-@property(retain) id selectionOwner; // @synthesize selectionOwner=_selectionOwner;
-@property(retain) NSArray *itemsOrNil; // @synthesize itemsOrNil=_itemsOrNil;
-@property LKButton *modifyButton; // @synthesize modifyButton=_modifyButton;
-- (void)updateWithRefs:(id)arg1 items:(id)arg2 forOwner:(id)arg3;
-- (void)dealloc;
+- (id)view;
 - (void)modifyRedRawSettingsButtonPressed:(id)arg1;
+- (void)updateWithItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
+- (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

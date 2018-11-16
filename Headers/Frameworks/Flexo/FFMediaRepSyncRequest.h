@@ -6,11 +6,13 @@
 
 #import "NSOperation.h"
 
-@class FFDirectory, NSArray, NSDictionary, NSError, NSMapTable, NSURL;
+@class FFDirectory, FFMediaEventProject, NSArray, NSDictionary, NSError, NSMapTable, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaRepSyncRequest : NSOperation
 {
+    FFMediaEventProject *_mediaEvent;
+    CDStruct_b1640004 _mediaSelector;
     NSMapTable *_mediaReps;
     FFDirectory *_mediaDir;
     NSURL *_dirURL;
@@ -21,8 +23,9 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)hasChanges;
 - (void)main;
+- (id)_newTableOfMediaRepsByFilename;
 - (id)_syncMediaRepsByFileName:(id)arg1 URLs:(id)arg2 error:(id *)arg3;
-- (id)_readMediaURLs:(id)arg1 error:(id *)arg2;
+- (id)_mediaURLsToScan:(id)arg1 error:(id *)arg2;
 - (id)keysInserted;
 - (id)keysMissing;
 - (id)keysModified;
@@ -33,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)setError:(id)arg1 force:(BOOL)arg2;
 - (id)error;
 - (void)dealloc;
-- (id)initWithMediaReps:(id)arg1 directoryURL:(id)arg2;
+- (id)initWithMediaEvent:(id)arg1 mediaSelector:(const CDStruct_b1640004 *)arg2;
 
 @end
 

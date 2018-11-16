@@ -21,7 +21,6 @@
 }
 
 @property(nonatomic) OZImagePreview *imagePreviewView; // @synthesize imagePreviewView=_pImagePreview;
-- (id).cxx_construct;
 - (void)playCB:(id)arg1;
 - (void)renderComplete:(id)arg1;
 - (struct OZRenderNode *)getRenderNode;

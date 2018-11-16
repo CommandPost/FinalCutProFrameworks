@@ -14,7 +14,7 @@
 - (unsigned int)startTimecode;
 - (unsigned int)firstFrameNumber;
 - (BOOL)shouldDisplayTimeAsFrames;
-- (CDStruct_5c5366e1)displayRange;
+- (CDStruct_e83c9415)displayRange;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
 - (CDStruct_1b6d18a9)currentTime;
 - (CDStruct_1b6d18a9)secondsPerTextStep;
@@ -24,7 +24,7 @@
 - (BOOL)isObjectSelected:(struct OZChannelObjectRootBase *)arg1;
 - (BOOL)objectsSelectedInScene;
 - (struct OZCurveSetListSerializer *)getCurveSetListSerializer;
-- (vector_0b8cba28)selectedObjectsRootChannels;
+- (vector_187e9f86)selectedObjectsRootChannels;
 - (struct OZChannelObjectRootBase *)selectedObjectRoot;
 - (struct OZChannelObjectRootBase *)sceneChannelRoot;
 - (BOOL)isPlaying;
@@ -39,7 +39,7 @@
 - (void)startCaptureModifiedChannels:(NSString *)arg1;
 - (BOOL)wasChannelModified:(struct OZChannelBase *)arg1;
 - (void)resetModifiedChannels;
-- (vector_6694fb0a)modifiedChannels;
+- (vector_cdb86442)modifiedChannels;
 - (void)postNotification:(unsigned int)arg1;
 @end
 

@@ -18,7 +18,6 @@
 
 @property(nonatomic) unsigned int facetAssignment; // @synthesize facetAssignment=_facetAssignment;
 @property(nonatomic) TXMaterialAssignmentController *materialAssignmentController; // @synthesize materialAssignmentController=_materialAssignmentController;
-- (void)drawRect:(struct CGRect)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 - (void)setStringValue:(id)arg1;

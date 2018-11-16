@@ -17,12 +17,10 @@ __attribute__((visibility("hidden")))
     BOOL _showsClipLabels;
     BOOL _updatingSplitViewPosition;
     struct FFProcrastinatedDispatch_t _importProcrastinatedUpdateItemsString;
-    struct FFProcrastinatedDispatch_t _importProcrastinatedReloadData;
     NSArray *_redURLs;
     FFOrganizerFilmstripView *_retainedRemovedFilmStripView;
 }
 
-- (void)filmstripView:(id)arg1 didCreatePlayheadInfoPopover:(id)arg2;
 - (BOOL)shouldDisableRangeSelectionForObject:(id)arg1;
 - (id)fileSystemRootNode;
 - (BOOL)splitView:(id)arg1 shouldHideDividerAtIndex:(long long)arg2;
@@ -38,24 +36,21 @@ __attribute__((visibility("hidden")))
 - (void)outlineView:(id)arg1 draggingDidBegin:(id)arg2;
 - (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
 - (id)outlineView:(id)arg1 objectValueForTableColumn:(id)arg2 byItem:(id)arg3;
-- (BOOL)outlineView:(id)arg1 shouldEditTableColumn:(id)arg2 item:(id)arg3;
+- (BOOL)shouldEditTableColumn:(id)arg1 item:(id)arg2;
 - (void)outlineViewItemDidCollapse:(id)arg1;
 - (void)outlineViewItemDidExpand:(id)arg1;
 - (void)outlineView:(id)arg1 sortDescriptorsDidChange:(id)arg2;
 - (id)outlineView:(id)arg1 selectionIndexesForProposedSelection:(id)arg2;
 - (BOOL)shouldSelectItem:(id)arg1;
-- (void)outlineView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 item:(id)arg4;
+- (id)outlineView:(id)arg1 viewForTableColumn:(id)arg2 item:(id)arg3;
 - (BOOL)isSecondaryREDURL:(id)arg1;
-- (id)outlineView:(id)arg1 dataCellForTableColumn:(id)arg2 item:(id)arg3;
 - (void)outlineDoubleClicked:(id)arg1;
 - (void)outlineClicked:(id)arg1;
-- (void)removeObserversAndNotifications:(id)arg1;
-- (void)attachObserversAndNotifications:(id)arg1;
+- (BOOL)removeObserversAndNotifications:(id)arg1;
+- (BOOL)attachObserversAndNotifications:(id)arg1;
 - (void)treeNodeChildNodesDidChange:(id)arg1;
 - (void)takeContentLayoutDictionary:(id)arg1;
 - (void)playPause;
-- (void)synchronousReloadData;
-- (void)setNeedsData:(BOOL)arg1;
 - (void)setDeferRangeInvalidations:(BOOL)arg1;
 - (void)activeSelectionDidChange;
 - (BOOL)showsClipLabels;
@@ -72,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (id)folderContextualMenu;
 - (id)fileContextualMenu;
 - (BOOL)isDefaultColumn:(id)arg1;
+- (void)setNeedsData:(BOOL)arg1;
 - (void)reloadItemAndChildren:(id)arg1;
 - (void)_contentDidChange;
 - (void)_restoreExpandedNodes;
@@ -79,6 +75,8 @@ __attribute__((visibility("hidden")))
 - (void)notificationHandler:(id)arg1;
 - (id)expandedNodes;
 - (id)scanChildrenForExpandedItems:(id)arg1;
+- (void)removeUnsupportedColumnsForImportWindow;
+- (void)removeUnsupportedColumns;
 - (void)loadView;
 - (void)dealloc;
 

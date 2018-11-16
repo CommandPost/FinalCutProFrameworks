@@ -8,20 +8,23 @@
 
 #import "FFPlayerModuleDelegate.h"
 
-@class FFPlayerModule, LKSegmentedControl, NSProView;
+@class FFPlayerModule, LKButton, NSView;
 
 @interface PEImportPlayerContainerModule : LKViewModule <FFPlayerModuleDelegate>
 {
     FFPlayerModule *_playerModule;
-    NSProView *_footerView;
-    NSProView *_transportControlsFooterView;
-    LKSegmentedControl *_previousNextEditControl;
+    NSView *_footerView;
+    NSView *_transportControlsFooterView;
+    LKButton *_playPauseButton;
+    LKButton *_previousEditButton;
+    LKButton *_nextEditButton;
 }
 
 @property(retain) FFPlayerModule *playerModule; // @synthesize playerModule=_playerModule;
 - (void)updateTransportControlsOSC;
 - (struct CGRect)shadowRect;
 - (void)previousNextEdit:(id)arg1;
+- (void)playPause:(id)arg1;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)playerViewFrameDidChange:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

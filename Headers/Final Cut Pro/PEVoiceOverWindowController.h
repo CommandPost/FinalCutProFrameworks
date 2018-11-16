@@ -6,14 +6,15 @@
 
 #import "NSWindowController.h"
 
+#import "FFRolesMenuDelegate.h"
 #import "FFVoiceOverDelegate.h"
 #import "FFVoiceOverMeterObserver.h"
 #import "NSMenuDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFAnchoredCollection, FFAnchoredTimelineModule, FFMediaEventProject, FFVoiceOverController, LKBox, LKButton, LKPopUpButton, LKSlider, LKTextField, NSArray, NSMatrix, NSMenu, NSNumber, NSResponder, NSString, NSView, PERecorderMeterView, PEVoiceOverButton, PEVoiceOverSlider;
+@class FFAnchoredCollection, FFAnchoredTimelineModule, FFMediaEventProject, FFRolesMenuController, FFRolesPopUpButton, FFVoiceOverController, LKButton, LKDivider, LKEmptyDFRController, LKPopUpButton, LKSlider, LKTextField, NSArray, NSMenu, NSNumber, NSResponder, NSString, NSView, PERecorderMeterView, PEVoiceOverButton, PEVoiceOverGainTextField, PEVoiceOverSlider;
 
-@interface PEVoiceOverWindowController : NSWindowController <FFVoiceOverMeterObserver, FFVoiceOverDelegate, NSWindowDelegate, NSMenuDelegate>
+@interface PEVoiceOverWindowController : NSWindowController <FFRolesMenuDelegate, FFVoiceOverMeterObserver, FFVoiceOverDelegate, NSWindowDelegate, NSMenuDelegate>
 {
     FFVoiceOverController *_voiceOverController;
     FFAnchoredCollection *_timelineRootItem;
@@ -28,18 +29,23 @@
     LKPopUpButton *_inputDevicesPopUp;
     LKPopUpButton *_outputDevicesPopUp;
     LKPopUpButton *_eventsPopUp;
+    FFRolesPopUpButton *_rolesPopUp;
     LKSlider *_inputGain;
     PEVoiceOverSlider *_outputGain;
     LKTextField *_customNameTextField;
-    LKTextField *_inputGainText;
-    LKTextField *_outputGainText;
-    LKBox *_seperator;
+    LKDivider *_seperator;
+    PEVoiceOverGainTextField *_inputGainText;
+    PEVoiceOverGainTextField *_outputGainText;
     LKTextField *_outputText;
-    NSMatrix *_monitorRadio;
+    LKButton *_monitorRadioOff;
+    LKButton *_monitorRadioOn;
     NSMenu *_eventMenu;
     NSMenu *_outputMenu;
     NSMenu *_inputMenu;
+    NSMenu *_roleMenu;
     NSResponder *_savedResponder;
+    LKEmptyDFRController *_dfrController;
+    FFRolesMenuController *_rolesMenuController;
     BOOL _observingPlayPause;
     BOOL _observingContext;
     BOOL _observingTimelineRootItem;
@@ -128,6 +134,9 @@
 - (void)_updateOutputDevicesMenu;
 - (void)_setupInputDevicesPopUp;
 - (void)_updateInputDevicesMenu;
+- (void)_setupRolesPopUp;
+- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 forContext:(id)arg3;
+- (id)contextForRolesMenuController:(id)arg1;
 - (void)_updateDeviceMenu:(BOOL)arg1;
 - (id)_stringFromChannelMap:(id)arg1 input:(BOOL)arg2;
 - (void)_setupMeter;
@@ -144,9 +153,10 @@
 - (void)_setupVoiceOver;
 - (void)_setVoiceOverContext:(id)arg1;
 - (void)windowDidMove:(id)arg1;
-- (void)_saveWindowFrame;
+- (void)_saveWindowOrigin;
 - (void)windowWillClose:(id)arg1;
 - (void)showWindow:(id)arg1;
+- (id)touchBar;
 - (id)init;
 - (void)enableMultitake:(id)arg1;
 

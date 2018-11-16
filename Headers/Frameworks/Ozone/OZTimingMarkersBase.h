@@ -4,23 +4,27 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "LKPaneCapView.h"
+#import "NSView.h"
 
-@class NSMenu, NSMutableDictionary, NSProCursor;
+@class LKCursor, NSImage, NSMenu, NSMutableDictionary;
 
-@interface OZTimingMarkersBase : LKPaneCapView
+@interface OZTimingMarkersBase : NSView
 {
     NSMenu *_markerGutterMenu;
     NSMenu *_markerObjectMenu;
     struct OZTimeMarker *_markerDragging;
     struct PCTimeRange *_markerStartingRange;
-    NSProCursor *_markerBeginningCursor;
-    NSProCursor *_markerEndCursor;
+    LKCursor *_markerBeginningCursor;
+    LKCursor *_markerEndCursor;
     NSMutableDictionary *_markerTextAttributes;
     BOOL _markerDisplayNames;
     double _lastPixelsPerSecond;
-    vector_7856d79e *_snaps;
+    vector_f7e3fd5f *_snaps;
     BOOL _snapping;
+    NSImage *_imageTimelineMarkerBuildIn;
+    NSImage *_imageTimelineMarkerBuildOut;
+    NSImage *_imageTimelineMarkerLoop;
+    NSImage *_imageTimelineMarkers[9][5];
 }
 
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
@@ -34,11 +38,12 @@
 - (double)getPixelsPerSecond;
 - (CDStruct_1b6d18a9)getSecondsPerPixel;
 - (const struct PCTimeRange *)getDisplayRange;
+- (struct CGPoint)backingAlignedPoint:(struct CGPoint)arg1;
 - (void)timeDisplayRangeModified;
 - (void)markerMenuNextPrevious:(id)arg1 markers:(const struct OZTimeMarkerSet *)arg2 offset:(CDStruct_1b6d18a9)arg3;
 - (void)markerMenuAddInfoDelete:(id)arg1 root:(struct OZChannelObjectRoot *)arg2 range:(const struct PCTimeRange *)arg3 offset:(CDStruct_1b6d18a9)arg4 startingLocation:(struct CGPoint)arg5;
 - (id)menuForEvent:(id)arg1 markers:(const struct OZTimeMarkerSet *)arg2 offset:(CDStruct_1b6d18a9)arg3 startingLocation:(struct CGPoint)arg4 boundsRect:(struct CGRect)arg5 gutterMenu:(BOOL)arg6;
-- (reverse_iterator_31011cc8)findMarker:(const struct OZTimeMarkerSet *)arg1 offset:(CDStruct_1b6d18a9)arg2 startingLocation:(struct CGPoint)arg3;
+- (reverse_iterator_f99d9852)findMarker:(const struct OZTimeMarkerSet *)arg1 offset:(CDStruct_1b6d18a9)arg2 startingLocation:(struct CGPoint)arg3;
 - (void)resetMarkerCursorRects:(const struct OZTimeMarkerSet *)arg1 offset:(CDStruct_1b6d18a9)arg2 boundsRect:(struct CGRect)arg3;
 - (void)updateMarkerToolTips:(const struct OZTimeMarkerSet *)arg1 offset:(CDStruct_1b6d18a9)arg2 boundsRect:(struct CGRect)arg3;
 - (CDStruct_1b6d18a9)findEmptySpot:(const struct OZTimeMarkerSet *)arg1 start:(CDStruct_1b6d18a9)arg2 delta:(CDStruct_1b6d18a9)arg3;
@@ -54,6 +59,7 @@
 - (id)getDragImage:(CDStruct_1b6d18a9)arg1;
 - (void)drawMarkers:(const struct OZTimeMarkerSet *)arg1 offset:(CDStruct_1b6d18a9)arg2 boundsRect:(struct CGRect)arg3 boundsRange:(const struct PCTimeRange *)arg4;
 - (void)dealloc;
+- (void)loadAssetImages;
 - (struct OZDocument *)currentOZDocument;
 - (id)initWithFrame:(struct CGRect)arg1;
 

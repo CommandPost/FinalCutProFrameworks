@@ -16,8 +16,9 @@
 - (BOOL)requiresLogin;
 - (id)iconTitle;
 - (id)lightImage;
-- (long long)iconIndex;
+- (id)smallImage;
 - (id)largeImage;
+- (id)pressedImage;
 - (id)image;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

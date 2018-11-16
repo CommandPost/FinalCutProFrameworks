@@ -17,6 +17,7 @@
     BOOL _isDestAttached;
 }
 
+- (void)sequenceFormatChanged:(id)arg1;
 - (void)updatePlayerAndDest:(id)arg1;
 - (id)viewProperties;
 - (void)setViewProperties:(id)arg1;
@@ -40,6 +41,7 @@
 - (void)setLayoutMode:(long long)arg1;
 - (void)setSelectedScope:(id)arg1;
 - (id)destVideo;
+- (void)_updateDestVideoScopesColorSpace:(struct NSObject *)arg1;
 @property(getter=isMonochrome) BOOL monochrome; // @dynamic monochrome;
 @property float traceBrightness; // @dynamic traceBrightness;
 @property BOOL showBothFields; // @dynamic showBothFields;

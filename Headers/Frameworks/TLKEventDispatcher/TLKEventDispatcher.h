@@ -6,12 +6,10 @@
 
 #import "NSResponder.h"
 
-@class NSArray, NSDictionary, NSEvent, NSMutableArray, NSMutableDictionary, NSTrackingArea, NSView<TLKEventDispatcherView>, TLKEventContext, TLKEventHandler, TLKPartArray, TLKToolTipManager;
+@class NSArray, NSCursor, NSDictionary, NSEvent, NSMutableArray, NSMutableDictionary, NSMutableString, NSTrackingArea, NSView<TLKEventDispatcherView>, TLKEventContext, TLKEventHandler, TLKPartArray, TLKToolTipManager;
 
 @interface TLKEventDispatcher : NSResponder
 {
-    NSMutableDictionary *_handlerMap;
-    NSDictionary *_eventDescriptionMap;
     NSDictionary *_originalEventDescriptions;
     Class _eventContextClass;
     NSMutableArray *_handlerStack;
@@ -26,7 +24,6 @@
     id _delegate;
     TLKToolTipManager *_toolTipManager;
     NSEvent *_initialEvent;
-    NSEvent *_previousEvent;
     NSEvent *_currentEvent;
     struct CGPoint _initialPoint;
     struct CGPoint _previousPoint;
@@ -55,15 +52,37 @@
     } _edFlags;
     BOOL _eventDispatchEnabled;
     BOOL _draggingEnteredCanceled;
+    NSCursor *_currentCursor;
+    BOOL _throttledEventMode;
+    int _thermalPressureLevel;
+    int _throttlePressureLevel;
+    int _thermalPressureToken;
+    NSMutableDictionary *_handlerMap;
+    NSDictionary *_eventDescriptionMap;
+    NSMutableString *_workaroundEvents;
+    unsigned long long _throttledMaxEventsPerSecond;
+    NSEvent *_previousEvent;
+    unsigned long long _countOfTrackingIterations;
+    NSEvent *_queuedPreviousEvent;
 }
 
+@property(retain) NSEvent *queuedPreviousEvent; // @synthesize queuedPreviousEvent=_queuedPreviousEvent;
+@property int thermalPressureToken; // @synthesize thermalPressureToken=_thermalPressureToken;
+@property(nonatomic) unsigned long long countOfTrackingIterations; // @synthesize countOfTrackingIterations=_countOfTrackingIterations;
+@property(nonatomic) struct CGPoint initialPoint; // @synthesize initialPoint=_initialPoint;
+@property(retain) NSEvent *previousEvent; // @synthesize previousEvent=_previousEvent;
+@property unsigned long long throttledMaxEventsPerSecond; // @synthesize throttledMaxEventsPerSecond=_throttledMaxEventsPerSecond;
+@property int throttlePressureLevel; // @synthesize throttlePressureLevel=_throttlePressureLevel;
+@property int thermalPressureLevel; // @synthesize thermalPressureLevel=_thermalPressureLevel;
+@property BOOL throttledEventMode; // @synthesize throttledEventMode=_throttledEventMode;
+@property(retain, nonatomic) NSMutableString *workaroundEvents; // @synthesize workaroundEvents=_workaroundEvents;
 @property(nonatomic) BOOL eventDispatchEnabled; // @synthesize eventDispatchEnabled=_eventDispatchEnabled;
+@property(retain, nonatomic) NSDictionary *eventDescriptionMap; // @synthesize eventDescriptionMap=_eventDescriptionMap;
+@property(retain, nonatomic) NSMutableDictionary *handlerMap; // @synthesize handlerMap=_handlerMap;
 - (id)initialPartArray;
 - (id)currentPartArray;
 - (struct CGPoint)currentPoint;
 - (struct CGPoint)previousPoint;
-- (struct CGPoint)initialPoint;
-- (id)previousEvent;
 - (id)initialEvent;
 - (id)currentEvent;
 - (void)setCurrentEvent:(id)arg1;
@@ -98,11 +117,12 @@
 - (void)_evaluateRolloversWithEventContext:(id)arg1;
 - (BOOL)_evaluateEventDescription:(id)arg1 withEventContext:(id)arg2;
 - (BOOL)_performExitPredicateForEventContext:(id)arg1;
+- (BOOL)_reallyDispatchEvent:(id)arg1;
+- (BOOL)_delayedReallyDispatchEvent;
 - (BOOL)dispatchEvent:(id)arg1;
 - (void)_updateRolloverWithEvent:(id)arg1;
 - (void)_updateRollover:(id)arg1;
-- (BOOL)isTracking;
-- (void)_setIsTracking:(BOOL)arg1;
+@property(nonatomic) BOOL isTracking;
 - (id)nextEventForWindow:(id)arg1;
 - (BOOL)_startTrackingLoop;
 - (void)viewFrameDidChange:(id)arg1;
@@ -170,6 +190,7 @@
 - (id)_cacheEventDescriptionPredicates:(id)arg1;
 - (id)_dictionaryByCachingPredicates:(id)arg1;
 - (void)writeEventDescriptionsToDictionary:(id)arg1;
+- (void)resetEventDescriptions;
 - (void)readEventDescriptionsFromDictionary:(id)arg1;
 - (id)_potentialHandlerForEvent:(id)arg1 eventContext:(id *)arg2;
 - (id)potentialHandler;
@@ -196,6 +217,8 @@
 - (void)removeEventHandlerWithIdentifier:(id)arg1;
 - (void)addTrackingHandlerWithIdentifier:(id)arg1 predicate:(id)arg2 options:(unsigned long long)arg3;
 @property(nonatomic) BOOL noEventMode;
+- (void)_stopThermalPressureLevelListener;
+- (void)_startThermalPressureLevelListener;
 - (void)resetState;
 - (id)description;
 - (void)dealloc;

@@ -6,11 +6,12 @@
 
 #import "LKViewModule.h"
 
-#import "FFEventsLibraryDelegate.h"
+#import "FFOrganizerDelegate.h"
+#import "FFOrganizerSkimmingDelegate.h"
 
 @class FFEventLibraryModule, NSString;
 
-@interface PEOrganizerBaseContainerModule : LKViewModule <FFEventsLibraryDelegate>
+@interface PEOrganizerBaseContainerModule : LKViewModule <FFOrganizerDelegate, FFOrganizerSkimmingDelegate>
 {
 }
 
@@ -20,12 +21,12 @@
 - (id)submoduleLayoutArray;
 - (void)viewDidLoad;
 - (BOOL)loadView;
+- (BOOL)wantsFocusIndicator;
+- (BOOL)shouldUseFacetForModuleHeaderViewHeight;
 - (BOOL)wantsFooterBar;
 - (BOOL)wantsHeaderBar;
 - (id)moduleFooterAccessoryView;
 - (id)moduleHeaderAccessoryView;
-- (void)didFinishRelinkingForOrganizerModule:(id)arg1;
-- (void)willBeginRelinkingForOrganizerModule:(id)arg1;
 - (void)stopUsingMedia:(id)arg1;
 - (void)openSettingsWithModule:(id)arg1;
 - (void)organizerModule:(id)arg1 didSelectItems:(id)arg2;
@@ -41,10 +42,12 @@
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 loadingBlock:(CDUnknownBlockType)arg4 unloadingBlock:(CDUnknownBlockType)arg5;
 - (id)editorModule;
+- (id)organizerSelection;
 - (id)timelineSelection;
 - (id)selectionOwner;
-- (void)displayURL:(id)arg1;
-- (BOOL)canDisplayURL:(id)arg1;
+- (id)organizerDelegate;
+- (id)markerEditorDelegate;
+- (id)skimmingDelegate;
 @property(readonly) Class organizerModuleClass;
 @property(readonly) FFEventLibraryModule *organizerModule;
 

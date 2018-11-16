@@ -6,15 +6,21 @@
 
 #import "NSWindowController.h"
 
-@class FFEffectPickerView;
+@class FFAnchoredCollection, FFEffectPickerView, LKTextField;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectPickerWindowController : NSWindowController
 {
     BOOL _isVideo;
     FFEffectPickerView *_effectPickerView;
+    FFAnchoredCollection *_projectFilterCollection;
+    BOOL _projectFilterMode;
+    LKTextField *_projectFilterTextField;
 }
 
+@property(nonatomic) LKTextField *projectFilterTextField; // @synthesize projectFilterTextField=_projectFilterTextField;
+@property(nonatomic) BOOL projectFilterMode; // @synthesize projectFilterMode=_projectFilterMode;
+@property(retain, nonatomic) FFAnchoredCollection *projectFilterCollection; // @synthesize projectFilterCollection=_projectFilterCollection;
 - (void)selectedItemsChanged:(id)arg1;
 - (void)cancel:(id)arg1;
 - (void)windowDidLoad;

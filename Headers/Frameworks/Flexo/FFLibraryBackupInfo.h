@@ -6,25 +6,32 @@
 
 #import "NSObject.h"
 
-@class NSData, NSDate, NSString, NSURL;
+@class NSData, NSDate, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFLibraryBackupInfo : NSObject
 {
     NSData *_originalBookmark;
+    int _backupStatus;
+    NSDictionary *_versionInfo;
     NSURL *_backupURL;
     NSDate *_backupDate;
     NSURL *_originalURL;
-    NSString *_originalFileName;
 }
 
 + (BOOL)removeInfo:(id)arg1 error:(id *)arg2;
 + (BOOL)writeInfo:(id)arg1 to:(id)arg2 error:(id *)arg3;
 + (id)readInfosInFolder:(id)arg1;
-@property(readonly, nonatomic) NSString *originalFileName; // @synthesize originalFileName=_originalFileName;
+@property(readonly, nonatomic) int backupStatus; // @synthesize backupStatus=_backupStatus;
 @property(readonly, nonatomic) NSURL *originalURL; // @synthesize originalURL=_originalURL;
 @property(readonly, nonatomic) NSDate *backupDate; // @synthesize backupDate=_backupDate;
 @property(readonly, nonatomic) NSURL *backupURL; // @synthesize backupURL=_backupURL;
+- (int)validateBackup:(id *)arg1;
+- (id)validateVersionInfo:(id *)arg1;
+- (long long)readCatalogVersion:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) long long catalogVersion;
+@property(readonly, nonatomic) NSString *appVersionString;
+@property(readonly, nonatomic) NSString *originalFileName;
 - (id)resolveOriginal:(id *)arg1;
 - (void)dealloc;
 - (id)initWithContentsOfURL:(id)arg1 error:(id *)arg2;

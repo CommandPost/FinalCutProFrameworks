@@ -6,18 +6,22 @@
 
 #import <Flexo/FFAdjustmentTool.h>
 
+#import "NSUserInterfaceValidations.h"
+
 @class FFSegmentedControl, LKButton, LKMenu, LKPopUpButton, LKTextField, NSMutableArray, NSView;
 
-@interface FFRetimeSettingsTool : FFAdjustmentTool
+@interface FFRetimeSettingsTool : FFAdjustmentTool <NSUserInterfaceValidations>
 {
     NSView *_adjustmentToolbarView;
     LKPopUpButton *_retimeState;
     NSView *_retimeSlowView;
     NSView *_retimeFastView;
     NSView *_retimeCustomView;
+    NSView *_retimeFreezeFrameView;
     FFSegmentedControl *_slowPresets;
     FFSegmentedControl *_fastPresets;
     LKTextField *_customSpeed;
+    LKTextField *_freezeFrameDuration;
     LKButton *_smooth;
     LKButton *_reverse;
     LKButton *_preservePitch;
@@ -28,25 +32,33 @@
 + (int)retimeStateForObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2;
 + (int)retimeStateForObject:(id)arg1;
 + (id)toolTip;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)toolTipDescriptionDisabled;
 + (id)displayName;
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;
 + (id)groups;
+- (void)setFreezeFrameDuration:(id)arg1;
 - (void)setCustomSpeed:(id)arg1;
 - (void)setFastSpeed:(id)arg1;
 - (void)setSlowSpeed:(id)arg1;
+- (id)_objectToRetimeWithRange:(CDStruct_e83c9415 *)arg1;
 - (void)setAutomaticSpeed;
 - (void)setSpeedForRangeAndObjects:(id)arg1 rateArray:(id)arg2;
 - (void)togglePreservePitch:(id)arg1;
 - (void)toggleReverseSpeed:(id)arg1;
 - (void)toggleSmoothInterpolation:(id)arg1;
+- (void)retimeHold:(id)arg1;
 - (void)changeRetimeState:(id)arg1;
 - (void)setRetimeState:(int)arg1;
 - (void)setSpeed:(double)arg1;
 - (void)setSpeedForRangeAndObjects:(id)arg1 rate:(double)arg2;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)adjustmentsToolbarView;
 - (void)setAdjustmentStateFromDictionary:(id)arg1;
 - (double)_rateForFastSegment:(int)arg1;
@@ -56,6 +68,9 @@
 - (id)_titleForRetimeState:(int)arg1;
 - (BOOL)retimeForwardStateForObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2;
 - (double)retimeRateForObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2;
+- (CDStruct_1b6d18a9)freezeDurationForObject:(id)arg1 aroundComponentTime:(CDStruct_1b6d18a9)arg2;
+- (BOOL)_playheadIsHold;
+- (BOOL)_selectionIsHold;
 - (id)_selectedSmoothInerpolationStates;
 - (BOOL)_supportsSmoothInterpolation;
 - (id)_selectedPreservePitchStates;

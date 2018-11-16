@@ -14,12 +14,10 @@
 @interface TLKAbstractRangeSelectionLayer : TLKAccessibilityLayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
     int _draggingHandle;
-    double _hitRegionHeight;
 }
 
 + (Class)rangeSelectionLayerClass;
 + (void)setRangeSelectionLayerClass:(Class)arg1;
-@property double hitRegionHeight; // @synthesize hitRegionHeight=_hitRegionHeight;
 - (void)syntheticUIElement:(id)arg1 setValue:(id)arg2 forAttribute:(id)arg3;
 - (BOOL)syntheticUIElement:(id)arg1 isAttributeSettable:(id)arg2;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;

@@ -13,12 +13,12 @@
 - (int)currentTextSelectionLength;
 - (BOOL)canSearchInSequence;
 - (void)replaceString:(NSString *)arg1 withString:(NSString *)arg2 withFlags:(unsigned int)arg3 goToNext:(BOOL)arg4 replaceAll:(BOOL)arg5;
-- (vector_d1504541)results;
+- (vector_1392cc16)results;
 - (void)didSelectNewObject;
 - (void)setActive:(BOOL)arg1;
 - (BOOL)active;
 - (void)goToPreviousResult;
 - (void)goToNextResult;
-- (vector_d1504541)getSearchResults:(NSString *)arg1 withFlags:(unsigned int)arg2 searchForward:(BOOL)arg3 setSelection:(BOOL)arg4;
+- (vector_1392cc16)getSearchResults:(NSString *)arg1 withFlags:(unsigned int)arg2 searchForward:(BOOL)arg3 setSelection:(BOOL)arg4;
 @end
 

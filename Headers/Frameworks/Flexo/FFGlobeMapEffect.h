@@ -12,16 +12,19 @@ __attribute__((visibility("hidden")))
 @interface FFGlobeMapEffect : FFMapEffect
 {
     NSImage *_mapImage;
+    NSImage *_mapImage4K;
     NSImage *_backgroundImage;
 }
 
-- (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1;
++ (id)newMapImageForMapType:(int)arg1 use4K:(BOOL)arg2;
++ (id)newImageByScalingImage:(id)arg1 toWidth:(unsigned long long)arg2;
+- (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1 use4K:(BOOL)arg2;
 - (void)createChannelsInFolder:(id)arg1;
 - (id)compositionName;
 - (id)atmosphereColor;
 - (id)backgroundImage;
+- (id)mapImage4K;
 - (id)mapImage;
-- (id)newImageByScalingImage:(id)arg1 toWidth:(unsigned long long)arg2;
 - (void)dealloc;
 
 @end

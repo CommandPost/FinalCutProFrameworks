@@ -7,6 +7,7 @@
 @class FFOrganizerClusteringCollection;
 
 @protocol FFOrganizerFilmstripClusteringDelegate
+@property long long clusterType;
 - (void)setAllClusterDisclosedStates:(BOOL)arg1;
 - (void)setDisclosedState:(BOOL)arg1 forCluster:(FFOrganizerClusteringCollection *)arg2;
 - (BOOL)disclosedStateForCluster:(FFOrganizerClusteringCollection *)arg1;

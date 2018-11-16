@@ -6,153 +6,20 @@
 
 #import "LKViewModule.h"
 
-@class CALayer, CAShapeLayer, FFContext, LKBackgroundImageView, LKButton, LKMenu, LKSegmentedControl, LKTextField, NSImageView, NSProThemeImageView, NSProView, NSView, PELCDPlayheadDurationButton, PELCDProgressIndicator, PEToolbarMetersButton;
+#import "NSWindowDelegate.h"
 
-@interface PEToolbarModule : LKViewModule
+@class NSString, NSView;
+
+@interface PEToolbarModule : LKViewModule <NSWindowDelegate>
 {
-    LKBackgroundImageView *_backgroundImageView;
-    LKSegmentedControl *_toolPalette;
-    LKSegmentedControl *_importPalette;
-    LKSegmentedControl *_altModulesPalette;
-    LKSegmentedControl *_rangeSelectionPalette;
-    LKSegmentedControl *_keywordsButton;
-    LKSegmentedControl *_editStylesPalette;
-    LKSegmentedControl *_mediaBrowserPalette;
-    LKSegmentedControl *_fixItPalette;
-    LKTextField *_backgroundPercentage;
-    LKTextField *_percentageString;
-    LKTextField *_playheadString;
-    LKSegmentedControl *_effectsPickerButton;
-    LKSegmentedControl *_toggleAudioScrubbingButton;
-    LKSegmentedControl *_voiceOverPalette;
-    LKSegmentedControl *_colorControlsPalette;
-    LKSegmentedControl *_retimeControlsPalette;
-    LKSegmentedControl *_inspectorButton;
-    LKSegmentedControl *_scopesButton;
-    LKSegmentedControl *_shareButton;
-    NSProThemeImageView *_lcdImage;
-    NSProThemeImageView *_lcdGlossImage;
-    NSView *_lcdBackgroundView;
-    PELCDPlayheadDurationButton *_lcdButton;
-    NSImageView *_progressFinished;
-    NSImageView *_progressEmpty;
-    NSImageView *_progressFilling;
-    PELCDProgressIndicator *_progressSpinner;
-    NSImageView *_playheadScrubberLabel;
-    NSProView *_audioMeters;
-    PEToolbarMetersButton *_audioMetersButton;
-    LKButton *_backgroundTasksButton;
-    LKButton *_numericEntryTypeButton;
-    NSImageView *_numericEntryDirection;
-    LKMenu *_retimeMenu;
-    LKMenu *_avEditOptionsMenu;
-    LKMenu *_enhancementMenu;
-    LKMenu *_destinationsMenu;
-    FFContext *_context;
-    CDStruct_1b6d18a9 _frameDuration;
-    BOOL _rendered;
-    CDStruct_1b6d18a9 _timecodeFrameDuration;
-    long long _timecodeDisplayDropFrame;
-    unsigned long long _audioSampleRate;
-    BOOL _timelineSelectionAvailable;
-    BOOL _organizerSelectionAvailable;
-    BOOL _progressIndeterminate;
-    BOOL _progressIsFilling;
-    CALayer *_progressLayer;
-    CAShapeLayer *_progressMaskLayer;
-    double _currentProgress;
-    long long _lastProgressValueDrawn;
-    int _numericDirection;
-    int _numericEntryType;
-    BOOL _numericEntryInProgress;
-    int _avEditMode;
-    struct NSObject *_skimmable;
-    struct FFProcrastinatedDispatch_t _procrastinatedContext;
+    NSView *_testView;
 }
 
-+ (id)tools;
-@property(readonly, nonatomic) LKSegmentedControl *importPalette; // @synthesize importPalette=_importPalette;
-@property(retain, nonatomic) FFContext *context; // @synthesize context=_context;
-- (void)toggleAudioCleanup:(id)arg1;
-- (void)shouldOpenAudioEnhance:(id)arg1;
-- (void)shouldOpenColorBoard:(id)arg1;
-- (void)playerScopesVisibilityChanged:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)updatePlayheadLabel;
-- (void)timeRateChangedForContext:(id)arg1;
-- (void)updateImportButtonState:(id)arg1;
-- (void)updateSelectionState;
-- (void)updateShareState;
-- (BOOL)_editStylesPaletteCanEnableSegment:(long long)arg1;
-- (void)setNumericEntryShowsSubframes:(BOOL)arg1;
-- (void)setNumericEntryDirection:(int)arg1;
-- (void)updateNumericEntryDirection;
-- (void)setNumericEntryType:(int)arg1;
-- (void)updateNumericEntryType;
-- (void)setNumericEntryValue:(id)arg1;
-- (void)numericEntryDidEnd;
-- (void)delayDisableNumericEntry;
-- (BOOL)numericEntryOngoing;
-- (void)numericEntryWillBegin;
-- (void)updateTimecodeValuesFromAnchoredObject:(id)arg1;
-- (void)updateTimecodeValuesFromSkimmable:(struct NSObject *)arg1;
-- (void)updateViewPlayheadTimeFromContext;
-- (void)updateTimeToViewedClipsContext;
-- (void)updateToTimelineContext;
-- (void)updateViewPlayheadTime:(CDStruct_1b6d18a9)arg1;
-- (void)updatePlayheadTime:(id)arg1;
-- (void)setBackgroundProgress:(long long)arg1 evenIfValueUnchanged:(BOOL)arg2;
-- (void)updateProgressFillMaskToValue:(long long)arg1;
-- (void)setMediaBrowserButtonState:(BOOL)arg1;
-- (void)setMediaBrowserType:(int)arg1;
-- (void)hideMediaBrowser:(id)arg1;
-- (void)revealMediaBrowserModeFromMenuTag:(id)arg1;
-- (void)revealMediaBrowserModeFromTag:(id)arg1;
-- (void)audioMetersControlClick:(id)arg1;
-- (void)toggleEnhanceAudio:(id)arg1;
-- (void)toggleColorBoard:(id)arg1;
 - (void)toggleScopes:(id)arg1;
-- (void)toggleNumericEntryType:(id)arg1;
-- (void)toggleBackgroundTasks:(id)arg1;
-- (void)toggleAudioMeters:(id)arg1;
-- (void)editStyles:(id)arg1;
 - (void)sendFullScreen:(id)arg1;
-- (void)toggleInspectorModule:(id)arg1;
-- (void)updateInspectorButtonState;
-- (void)toggleEffectsPicker:(id)arg1;
-- (void)voiceOverModuleShowing:(BOOL)arg1;
-- (void)toggleVoiceOverModule:(id)arg1;
-- (void)toggleAudioScrubbing:(id)arg1;
-- (void)setKeywordEditorVisible:(BOOL)arg1;
-- (void)toggleKeywordEditor:(id)arg1;
-- (void)toggleRangeSelectionTool:(id)arg1;
-- (void)avEditModeVideo:(id)arg1;
-- (void)avEditModeAudio:(id)arg1;
-- (void)avEditModeBoth:(id)arg1;
-- (void)toggleAltModule:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)activeToolChanged:(id)arg1;
-- (void)selectToolZoom:(id)arg1;
-- (void)selectToolHand:(id)arg1;
-- (void)selectToolTrim:(id)arg1;
-- (void)selectToolPlacement:(id)arg1;
-- (void)selectToolRangeSelection:(id)arg1;
-- (void)selectToolBlade:(id)arg1;
-- (void)selectToolArrowOrRangeSelection:(id)arg1;
-- (void)selectTool:(id)arg1;
-- (void)_setupToolPalette;
-- (SEL)realActionForToolClass:(Class)arg1;
-- (id)toolTip:(id)arg1 withKeyEquivalent:(id)arg2;
-- (void)displayAreaGainedFocus:(id)arg1;
-- (void)appWillTerminate:(id)arg1;
-- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)moduleDidUnhide;
-- (void)moduleDidHide;
 - (BOOL)isBackgroundGrabbable;
 - (id)submoduleLayoutArray;
-- (void)viewWillBeRemoved;
-- (void)viewWasInstalled;
 - (void)viewDidLoad;
 - (BOOL)acceptsFirstResponder;
 - (BOOL)wantsFirstResponder;
@@ -160,8 +27,12 @@
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
 - (BOOL)wantsHeaderBar;
-- (void)awakeFromNib;
-- (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

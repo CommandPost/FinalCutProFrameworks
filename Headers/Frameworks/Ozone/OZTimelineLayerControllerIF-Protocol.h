@@ -9,7 +9,7 @@
 @protocol OZTimelineLayerControllerIF <NSObject>
 - (BOOL)isSnappedAtTime:(CDStruct_1b6d18a9 *)arg1;
 - (void)setSnapped:(BOOL)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)findSnaps:(vector_7856d79e *)arg1 forceAllVisible:(BOOL)arg2;
+- (void)findSnaps:(vector_f7e3fd5f *)arg1 forceAllVisible:(BOOL)arg2;
 - (void)clearGlobalTimeRangeSelection;
 - (void)setTimeRangeSelection:(const struct PCTimeRange *)arg1;
 - (const struct PCTimeRange *)getTimeRangeSelection;

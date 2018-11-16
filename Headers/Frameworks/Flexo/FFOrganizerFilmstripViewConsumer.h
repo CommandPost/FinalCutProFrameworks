@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _playheadInfoShouldShowState;
     BOOL _showDuration;
     BOOL _showClipActions;
+    BOOL _allowRangeSelection;
     FFResponderLayerPushButton *_editButtonLayer;
     struct FFProcrastinatedDispatch_t _editButtonDispatchContext;
 }
@@ -50,12 +51,16 @@ __attribute__((visibility("hidden")))
 - (void)_doneDragging:(int)arg1;
 - (void)_beginRangeDragSelectionForChunk:(id)arg1 event:(id)arg2;
 - (void)unhandledMouseDown:(id)arg1;
+- (BOOL)resignFirstResponder;
+- (void)keyUp:(id)arg1;
+- (void)keyDown:(id)arg1;
 - (BOOL)_handleMouseUpForActiveToolForChunk:(id)arg1 event:(id)arg2 useCurrentSelection:(BOOL)arg3;
 - (void)activeToolDidChange:(id)arg1;
 - (void)_handleMarkerMouseUpAtLocation:(struct CGPoint)arg1 inChunk:(id)arg2;
 - (void)markerClickAndHold:(id)arg1;
 - (void)cancelMarkerDragForMarker:(id)arg1;
 - (BOOL)handleClickedOnAnchoredMarkerRangeForRange:(id)arg1 andRangeOfMedia:(id)arg2 forEvent:(id)arg3;
+- (void)timeRateChangedForContext:(id)arg1;
 - (int)dragHighlightForCurrentState;
 - (int)_activeToolSkimmerPosition;
 - (void)_movePersistentPlayheadToRangeOfMedia:(id)arg1 andTime:(CDStruct_1b6d18a9)arg2;
@@ -76,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)_setSelectionAroundPlayhead;
 - (BOOL)_marqueeSelectionAllowedWithActiveTool;
 - (void)_clearSelection;
+- (void)viewDidMoveToWindow;
 - (void)dealloc;
 - (void)awakeFromNib;
 

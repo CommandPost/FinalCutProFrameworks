@@ -18,11 +18,13 @@ __attribute__((visibility("hidden")))
     BOOL m_creditsNeedUpdating;
     BOOL m_disableStartAnimations;
     BOOL m_disableEndAnimations;
+    BOOL m_shouldRasterize;
     BOOL m_editMode;
     double m_editFieldHeight;
     BOOL m_haveFlattenedStartEndAnimations;
 }
 
++ (unsigned long long)alignmentFromString:(id)arg1;
 + (id)copyClassDescription;
 + (Class)animatorClass;
 @property(nonatomic) BOOL disableEndAnimations; // @synthesize disableEndAnimations=m_disableEndAnimations;
@@ -57,8 +59,12 @@ __attribute__((visibility("hidden")))
 - (void)setTextString:(id)arg1 forField:(unsigned long long)arg2;
 - (void)setText:(id)arg1 forField:(unsigned long long)arg2;
 - (id)textForField:(unsigned long long)arg1;
+- (id)stringForField:(unsigned long long)arg1;
 - (unsigned long long)textFieldCount;
+- (id)adjustAttributedString:(id)arg1 withInfo:(id)arg2;
+- (void)adjustImportedTextForField:(unsigned long long)arg1;
 - (BOOL)isMultiline;
+- (BOOL)wantsXMLStyledText;
 - (BOOL)allowsFontEditing;
 - (id)attributesForTextGroup:(id)arg1 withScale:(double)arg2;
 - (id)inputKeys;
@@ -75,6 +81,8 @@ __attribute__((visibility("hidden")))
 - (void)channelParameterChanged:(id)arg1;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)configureLayersAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)setRasterizingForOutRect:(struct CGRect)arg1;
+- (void)disableTextRasterizationInTitleAnimator:(id)arg1;
 - (void)configureAfterMicaLoad;
 - (id)animaticLayer;
 - (id)videoLayer;
@@ -82,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)init;
 @property(readonly, nonatomic) MicaTitleAnimator *titleAnimator;
 
 @end

@@ -6,16 +6,19 @@
 
 #import "LKViewModule.h"
 
-@class OZProTabPaneCapSegmentedControl;
+@class OZInspectorSegmentedControl;
 
 @interface OZProTabWrapperModule : LKViewModule
 {
-    OZProTabPaneCapSegmentedControl *_tabSegmentControl;
+    OZInspectorSegmentedControl *_tabSegmentControl;
+    BOOL _hideMultipleTabs;
 }
 
-- (void)showHideTabbedModuleAtIndex:(long long)arg1 withAnimation:(long long)arg2;
-- (void)togglePaneWithAnimation:(long long)arg1;
-- (BOOL)isModuleShown:(id)arg1;
+@property(nonatomic) BOOL hideMultipleTabs; // @synthesize hideMultipleTabs=_hideMultipleTabs;
+- (void)toggleTabbedModuleAtIndex:(long long)arg1;
+- (void)showTabbedModuleAtIndex:(long long)arg1;
+- (void)togglePane;
+- (BOOL)isSubmoduleVisibleAtIndex:(long long)arg1;
 - (void)tabSelectionAction:(id)arg1;
 - (id)moduleHeaderAccessoryView;
 - (void)oz_refreshTabStatus;

@@ -14,7 +14,6 @@
 - (void)willStartClosing;
 - (BOOL)isImportWindow;
 - (id)sourceButton;
-- (void)center;
 
 @end
 

@@ -8,6 +8,7 @@
 
 @class CHChannelFolder, FFAnchoredObject, FFEffect, FFEffectStack, NSData;
 
+__attribute__((visibility("hidden")))
 @interface _AnchoredObjectRecord : NSObject
 {
     FFAnchoredObject *_anchoredObject;

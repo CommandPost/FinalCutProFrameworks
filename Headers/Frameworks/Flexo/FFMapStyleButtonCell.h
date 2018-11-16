@@ -6,15 +6,15 @@
 
 #import "LKButtonCell.h"
 
-@class NSProThemeFacet;
+@class NSImage;
 
 __attribute__((visibility("hidden")))
 @interface FFMapStyleButtonCell : LKButtonCell
 {
-    NSProThemeFacet *_mapImageFacet;
+    NSImage *_mapFacetImage;
 }
 
-@property(retain) NSProThemeFacet *mapImageFacet; // @synthesize mapImageFacet=_mapImageFacet;
+@property(retain) NSImage *mapFacetImage; // @synthesize mapFacetImage=_mapFacetImage;
 - (struct CGRect)drawTitle:(id)arg1 withFrame:(struct CGRect)arg2 inView:(id)arg3;
 - (void)drawImage:(id)arg1 withFrame:(struct CGRect)arg2 inView:(id)arg3;
 - (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;

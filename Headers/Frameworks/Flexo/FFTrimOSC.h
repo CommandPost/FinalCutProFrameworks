@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)setTrimL:(double)arg1 andR:(double)arg2 andB:(double)arg3 andT:(double)arg4 forceAddKeyframe:(BOOL)arg5;
 - (BOOL)hitTest:(struct CGPoint)arg1;
 - (BOOL)isCropOSC;
-- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_ada7b58d *)arg2;
+- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_e1ec2d4c *)arg2;
 - (void)ensureIntrinsic;
 - (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
 - (void)checkChannelParameterChanged:(id)arg1;

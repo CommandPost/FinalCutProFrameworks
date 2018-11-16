@@ -19,18 +19,18 @@
     struct timeval _lastFadeOutTime;
     int _suppressCount;
     struct OZDocument *_pDocument;
-    list_bbacc03b *_pObjectIDs;
+    list_45f779fc *_pObjectIDs;
     struct OZToolOptionsHUDComponent *_pCurrOptionsHUDComponent;
     BOOL _isMouseDown;
 }
 
++ (id)userDefaultsIsVisibleKeyPath;
 + (double)bottomMargin;
 + (double)topMargin;
 + (double)horizontalMargin;
 + (void)initialize;
 + (id)instance;
 @property(nonatomic) BOOL isMouseDown; // @synthesize isMouseDown=_isMouseDown;
-- (id).cxx_construct;
 - (id)currentController;
 - (BOOL)windowShouldClose:(id)arg1;
 - (void)notify:(unsigned int)arg1;

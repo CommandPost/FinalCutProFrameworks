@@ -14,7 +14,7 @@
     int _thumbnailSize;
 }
 
-- (id)proTextAttributes;
+- (BOOL)_shouldDrawHighlightRect;
 - (BOOL)_allowsContextMenus;
 - (BOOL)acceptsFirstResponder;
 - (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;

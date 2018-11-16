@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface FFMDPhotoGroupViewController : FFMDPhotoAbstractViewController <FFMDLibraryDelegate, NSMatrixDelegate>
 {
+    int _libraryType;
     FFMDPhotoGroupView *_groupBrowser;
     NSArrayController *_arrayController;
     NSMutableDictionary *_selectedGroupsKeyedByIdentifier;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)resetQuery;
 - (void)reloadData;
 - (void)awakeFromNib;
+@property int libraryType; // @synthesize libraryType=_libraryType;
 - (void)dealloc;
 - (id)init;
 

@@ -15,6 +15,7 @@
     BOOL _ignorePixelAspectRatio;
 }
 
+- (float)getBlendingGamma;
 - (void)fxTime:(CDUnion_2516e51e *)arg1 fromFrame:(double)arg2 forPlugIn:(id)arg3;
 - (double)frameFromFxTime:(CDUnion_2516e51e)arg1 forPlugIn:(id)arg2;
 - (double)frameRate;

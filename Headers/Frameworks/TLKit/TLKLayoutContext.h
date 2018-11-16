@@ -4,26 +4,45 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <TLKit/ERLRelationalObject.h>
 
-@class NSMutableSet, NSSet, TLKContainerInfo, TLKContainerLayer, TLKLineFragment;
+@class NSMutableSet, NSSet, TLKContainerInfo, TLKLayoutDatabase, TLKLineFragment, TLKTimelineLayer;
 
-@interface TLKLayoutContext : NSObject
+@interface TLKLayoutContext : ERLRelationalObject
 {
-    TLKContainerInfo *_containerInfo;
-    TLKLineFragment *_lineFragment;
-    struct CGRect _bounds;
     NSMutableSet *_sublayoutContexts;
     NSMutableSet *_itemComponentFragments;
     NSMutableSet *_itemLaneFragments;
-    TLKContainerLayer *_layer;
+    struct _TLKRange _locationRange;
+    struct CGRect _bounds;
+    struct CGRect _spineFrame;
+    BOOL _boundsNeedsUpdate;
+    BOOL _spineFrameNeedsUpdate;
+    BOOL _locationRangeNeedsUpdate;
+    TLKLineFragment *_lineFragment;
+    TLKContainerInfo *_containerInfo;
     TLKLayoutContext *_enclosingLayoutContext;
+    TLKTimelineLayer *_layer;
+    TLKLayoutDatabase *_layoutDatabase;
     struct CGPoint _position;
+    struct _TLKRange _timeRangeInSeconds;
+    struct CGRect _legacyBounds;
 }
 
-@property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
++ (id)identifierWithContainer:(id)arg1 inLineFragment:(id)arg2;
+@property(nonatomic) struct CGRect legacyBounds; // @synthesize legacyBounds=_legacyBounds;
+@property(nonatomic) TLKLayoutDatabase *layoutDatabase; // @synthesize layoutDatabase=_layoutDatabase;
+@property(nonatomic) BOOL locationRangeNeedsUpdate; // @synthesize locationRangeNeedsUpdate=_locationRangeNeedsUpdate;
+@property(nonatomic) struct _TLKRange timeRangeInSeconds; // @synthesize timeRangeInSeconds=_timeRangeInSeconds;
+@property(nonatomic) BOOL spineFrameNeedsUpdate; // @synthesize spineFrameNeedsUpdate=_spineFrameNeedsUpdate;
+@property(nonatomic) BOOL boundsNeedsUpdate; // @synthesize boundsNeedsUpdate=_boundsNeedsUpdate;
 @property(nonatomic) struct CGPoint position; // @synthesize position=_position;
+@property(retain, nonatomic) TLKTimelineLayer *layer; // @synthesize layer=_layer;
 @property(nonatomic) TLKLayoutContext *enclosingLayoutContext; // @synthesize enclosingLayoutContext=_enclosingLayoutContext;
+@property(nonatomic) TLKContainerInfo *containerInfo; // @synthesize containerInfo=_containerInfo;
+@property(nonatomic) TLKLineFragment *lineFragment; // @synthesize lineFragment=_lineFragment;
+@property(readonly, nonatomic) id lineFragmentAndContainerID;
+- (long long)layoutRegionAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toLayoutContext:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromLayoutContext:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toLayoutContext:(id)arg2;
@@ -43,12 +62,18 @@
 - (void)removeItemComponentFragmentsObject:(id)arg1;
 - (void)addItemComponentFragmentsObject:(id)arg1;
 @property(copy, nonatomic) NSSet *itemComponentFragments;
-@property(nonatomic) TLKLineFragment *lineFragment;
-@property(nonatomic) TLKContainerInfo *containerInfo;
+@property(readonly, nonatomic) TLKLayoutContext *trackLayoutContext;
 - (id)container;
-- (struct _TLKRange)locationRange;
+- (struct CGRect)_emptySpineFrameForItemHeight:(double)arg1;
+- (struct CGRect)_expandSpineFrameForPrecisionEditorIfNeeded:(struct CGRect)arg1;
+- (struct CGRect)_calculatedSpineFrame;
+@property(nonatomic) struct CGRect spineFrame;
+- (struct CGRect)_calculatedBounds;
+- (void)sizeLaneBoundsToFitIfNeeded;
+@property(nonatomic) struct CGRect bounds;
+@property(nonatomic) struct _TLKRange locationRange;
+- (struct _TLKRange)locationRangeForSeconds:(double)arg1;
 - (BOOL)isEmpty;
-@property(retain, nonatomic) TLKContainerLayer *layer;
 - (id)debugDescription;
 - (id)description;
 - (void)dealloc;

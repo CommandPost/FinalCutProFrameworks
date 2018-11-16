@@ -6,7 +6,7 @@
 
 #import <Flexo/FFOrganizerFilterHUDTileModule.h>
 
-@class LKButtonCell, LKPopUpButton, NSMutableDictionary, NSMutableSet, NSProMatrix, NSSet;
+@class LKButtonCell, LKPopUpButton, NSMatrix, NSMutableDictionary, NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilterHUDKeywordsTileModule : FFOrganizerFilterHUDTileModule
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_keywordCheckBoxDictionary;
     LKPopUpButton *_comparisonPopup;
     LKPopUpButton *_selectionPopup;
-    NSProMatrix *_keywordMatrix;
+    NSMatrix *_keywordMatrix;
     LKButtonCell *_checkBoxCell;
 }
 
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)deselectAllKeywords:(id)arg1;
 - (void)selectAllKeywords:(id)arg1;
 - (void)_setAllToState:(unsigned long long)arg1;
-- (id)tileTypeFacet;
+- (id)tileGlyphString;
 - (void)setKeywords:(id)arg1 selectedKeywords:(id)arg2;
 - (id)filterDict;
 - (void)setFilterDict:(id)arg1;

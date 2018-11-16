@@ -10,7 +10,7 @@
 {
 }
 
-- (void)setColorConformPresetAndParameters:(struct HGColorConform *)arg1;
+- (void)setColorConformPresetAndParameters:(struct HGColorConform *)arg1 toConvertToColorSpace:(int)arg2;
 - (id)init;
 
 @end

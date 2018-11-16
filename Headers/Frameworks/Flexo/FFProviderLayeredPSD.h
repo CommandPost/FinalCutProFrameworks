@@ -6,16 +6,16 @@
 
 #import <Flexo/FFProvider.h>
 
-@class FFVideoProps, NSRecursiveLock, ProPSDImageRef;
+@class FFVideoProps, LKPSDImageRef, NSRecursiveLock;
 
 __attribute__((visibility("hidden")))
 @interface FFProviderLayeredPSD : FFProvider
 {
-    ProPSDImageRef *_imageRef;
+    LKPSDImageRef *_imageRef;
     FFVideoProps *_nativeVideoProps;
     NSRecursiveLock *_lock;
     struct CGColorSpace *_colorSpace;
-    struct _PSDImageInfo _imageInfo;
+    struct _LKPSDImageInfo _imageInfo;
     unsigned int _layerCount;
     int _layerCounter;
     CDStruct_bdcb2b0d _md5;
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 + (id)extensions;
 + (id)utis;
 @property(readonly) unsigned int layerCount; // @synthesize layerCount=_layerCount;
-- (id).cxx_construct;
 - (CDStruct_bdcb2b0d)_md5WithContext:(id)arg1;
 - (id)nativeVideoProps;
 - (CDStruct_1b6d18a9)duration;

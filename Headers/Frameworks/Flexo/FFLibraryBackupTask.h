@@ -14,36 +14,46 @@
 
 @interface FFLibraryBackupTask : NSObject <NSOpenSavePanelDelegate, NSFileManagerDelegate, FFBackgroundTaskTarget>
 {
-    FFLibraryDocument *_document;
-    NSError *_error;
     NSDateFormatter *_formatter;
     BOOL _isSameVolume;
     BOOL _canOverwrite;
     unsigned long long _progressCounter;
-    NSObject<OS_dispatch_semaphore> *_backupStarted;
     float _progress;
+    BOOL _shouldValidate;
     int _operation;
+    NSError *_error;
+    FFLibraryDocument *_document;
     NSDictionary *_backupFileModificationDateMap;
     NSURL *_backupURL;
     FFBackgroundTask *_backgroundTask;
+    NSObject<OS_dispatch_semaphore> *_backupStarted;
 }
 
++ (void)makeProjectBackup:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 + (id)readBackup:(id)arg1 error:(id *)arg2;
++ (id)restoreTemporary:(id)arg1 url:(id)arg2 error:(id *)arg3;
 + (id)restoreBackup:(id)arg1 error:(id *)arg2;
 + (id)restoreDocument:(id)arg1 error:(id *)arg2;
-+ (id)_createBackupTaskForDocument:(id)arg1 destination:(id)arg2 operationType:(int)arg3;
++ (id)_createBackupTaskForDocument:(id)arg1 destination:(id)arg2 operationType:(int)arg3 validate:(BOOL)arg4 error:(id *)arg5;
 + (id)archiveDocument:(id)arg1 destination:(id)arg2 error:(id *)arg3;
-+ (id)backupDocument:(id)arg1;
++ (id)backupDocument:(id)arg1 destination:(id)arg2 validate:(BOOL)arg3 createCheckpoint:(BOOL)arg4 error:(id *)arg5;
 + (BOOL)verifyLibraryMatchUsingOldMethod:(id)arg1 libraryDocument:(id)arg2;
 + (id)savedBackupNameUsingOldMethod:(id)arg1;
 + (id)readMetadataForDocument:(id)arg1 error:(id *)arg2;
++ (BOOL)visitBackupFiles:(id *)arg1 inDirectory:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
++ (BOOL)_shouldBackupDirectory:(id)arg1;
++ (BOOL)_shouldBackupFile:(id)arg1;
++ (id)catalogStoreExtensions;
++ (BOOL)isCatalogStoreURL:(id)arg1;
++ (long long)isDirectoryURL:(id)arg1 error:(id *)arg2;
 + (void)_restoreCompleted:(id)arg1;
 + (id)standardBackupLocation;
 + (id)defaultBackupLocation;
 + (void)addDocumentBeingRestored:(id)arg1;
 + (void)removeDocumentBeingRestored:(id)arg1;
-+ (BOOL)shouldAllowBackup:(id)arg1;
++ (BOOL)allowBackupForLibrary:(id)arg1;
 + (id)documentsBeingRestored;
+@property(nonatomic) BOOL shouldValidate; // @synthesize shouldValidate=_shouldValidate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_semaphore> *backupStarted; // @synthesize backupStarted=_backupStarted;
 @property(retain, nonatomic) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
 @property(retain, nonatomic) NSURL *backupURL; // @synthesize backupURL=_backupURL;
@@ -51,27 +61,28 @@
 @property(readonly, nonatomic) FFLibraryDocument *document; // @synthesize document=_document;
 @property(readonly, nonatomic) int operation; // @synthesize operation=_operation;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
-@property(readonly) float progress; // @synthesize progress=_progress;
 - (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
 - (id)chooseOther:(id *)arg1;
 - (id)chooseBackup:(id *)arg1;
 - (BOOL)isFinished;
 - (BOOL)waitUntilFinished:(id *)arg1;
 - (void)canceledTask:(id)arg1;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)cancelBackup:(id)arg1;
 - (void)_runBackup;
 - (void)_runBackgroundBackupTask:(id)arg1 onTask:(id)arg2;
 - (id)restore:(id)arg1 to:(id)arg2 error:(id *)arg3;
-- (id)indexOfBackups;
+- (id)indexOfBackupsForOperation:(int)arg1;
 - (void)backupsPurge:(id)arg1 relativeTo:(id)arg2;
-- (id)backupsFolderCreate:(BOOL)arg1 error:(id *)arg2;
+- (id)documentBackupsFolderForCheckpoint:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)fileManager:(id)arg1 shouldCopyItemAtURL:(id)arg2 toURL:(id)arg3;
+@property(readonly) float progress;
+- (void)setProgress:(float)arg1;
 - (id)_src:(id)arg1 target:(id)arg2 error:(id *)arg3;
 - (BOOL)_compareMapRecords:(id)arg1:(id)arg2;
-- (id)_buildMap:(id)arg1;
-- (id)_createMapRecordFor:(id)arg1;
+- (id)_buildMap:(id)arg1 error:(id *)arg2;
+- (id)_createMapRecordFor:(id)arg1 error:(id *)arg2;
 - (BOOL)_finishRestore:(id)arg1 error:(id *)arg2;
 - (BOOL)_finishArchive:(id)arg1 to:(id)arg2 error:(id *)arg3;
 - (BOOL)_finishBackup:(id)arg1 to:(id)arg2 error:(id *)arg3;
@@ -79,8 +90,7 @@
 - (id)_getOriginalDocURLForSourceDoc:(id)arg1 error:(id *)arg2;
 - (BOOL)_saveRestoreTask:(id)arg1 error:(id *)arg2;
 - (id)_finalURLForURL:(id)arg1;
-- (BOOL)_shouldBackupDirectoryNamed:(id)arg1;
-- (BOOL)_isStoreURL:(id)arg1;
+- (void)readLockModelAndCatalog:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithDocument:(id)arg1 operation:(int)arg2;
 

@@ -4,20 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
-@class NSProThemeFacet;
+@class NSImage;
 
-@interface FFNavHeaderView : NSProView
+@interface FFNavHeaderView : NSView
 {
-    BOOL _drawsBlackLine;
-    NSProThemeFacet *_navBarFacet;
+    BOOL _inFilmstripView;
+    NSImage *_navBarImage;
 }
 
-@property(retain) NSProThemeFacet *navBarFacet; // @synthesize navBarFacet=_navBarFacet;
+@property(retain) NSImage *navBarImage; // @synthesize navBarImage=_navBarImage;
+@property BOOL inFilmstripView; // @synthesize inFilmstripView=_inFilmstripView;
 - (BOOL)isOpaque;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)setDrawsBlackLine:(BOOL)arg1;
 - (void)dealloc;
 
 @end

@@ -6,23 +6,18 @@
 
 #import "NSObject.h"
 
-@class FFPixelFormat, PCMatrix44Double;
+@class PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFCachedCodecOutputInfo : NSObject
 {
     PCMatrix44Double *_pt[3];
-    struct CGRect _psb[3];
     struct CGColorSpace *_cs;
-    FFPixelFormat *_pf;
     int _quality;
 }
 
-- (id).cxx_construct;
-- (int)setPixelFormat:(id)arg1 andColorSpace:(struct CGColorSpace *)arg2;
-- (int)setPixelTransform:(id)arg1 andPSB:(struct CGRect)arg2 forLineSel:(int)arg3;
-- (void)getRectForLineSel:(int)arg1 retRect:(struct CGRect *)arg2;
-- (id)pixelFormat;
+- (int)setColorSpace:(struct CGColorSpace *)arg1;
+- (int)setPixelTransform:(id)arg1 forLineSel:(int)arg2;
 - (struct CGColorSpace *)colorSpace;
 - (id)ptForLineSel:(int)arg1;
 - (void)dealloc;

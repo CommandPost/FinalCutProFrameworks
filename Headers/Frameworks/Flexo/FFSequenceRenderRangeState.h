@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 
 @property BOOL segmentDropped; // @synthesize segmentDropped=_segmentDropped;
 @property(readonly) int state; // @synthesize state=_state;
-- (id).cxx_construct;
 - (id)renderDescription;
 - (CDStruct_e83c9415)renderTimeRange;
 - (int)renderState;

@@ -77,6 +77,7 @@
 - (id)titleIDForScriptItem:(id)arg1;
 - (id)anchoredAudioClipForSpineItem:(id)arg1;
 - (id)anchoredTitleForSpineItem:(id)arg1;
+- (id)freezeFrameItemForTimelineItem:(id)arg1;
 - (id)spineItemForTimelineItem:(id)arg1;
 - (CDStruct_e83c9415)timeRangeForTitleCard;
 - (CDStruct_e83c9415)timeRangeForTimelineItem:(id)arg1;

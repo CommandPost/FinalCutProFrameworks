@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface FFAnchoredObjectSegmentedVideoSource : FFSourceVideo
 {
-    struct list<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem *, std::allocator<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem *>> _segmentSourceCache;
-    struct list<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem *, std::allocator<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem *>> _segmentMD5InfoCache;
-    struct vector<FFAnchoredObjectSegmentedVideoStream *, std::allocator<FFAnchoredObjectSegmentedVideoStream *>> _openStreams;
+    struct list<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem *, std::__1::allocator<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem *>> _segmentSourceCache;
+    struct list<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem *, std::__1::allocator<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem *>> _segmentMD5InfoCache;
+    struct vector<FFAnchoredObjectSegmentedVideoStream *, std::__1::allocator<FFAnchoredObjectSegmentedVideoStream *>> _openStreams;
     long long _effectCount;
     NSString *_videoAngle;
     long long _toLane;
@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithProvider:(id)arg1 effectCount:(long long)arg2 videoAngle:(id)arg3 toLane:(long long)arg4 showOnlyObjects:(id)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8;
 - (void)rangeInvalidated:(id)arg1;
 - (void)updateMagicFrame;
-- (double)preferredScaleFactorForQuality:(int)arg1;
 - (id)renderFormat:(id)arg1;
 - (id)nativeVideoProps;
 - (id)_videoProps;

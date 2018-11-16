@@ -17,18 +17,18 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_effects;
     NSArray *_effectBundleSnapshots;
+    NSSet *_unriggedChannelIndexPaths;
+    int _missingElements;
     NSArray *_effectsDefaultData;
     NSString *_name;
     NSString *_description;
     double _defaultValue;
-    NSSet *_unriggedChannelIndexPaths;
     NSSet *_modifiedEffectsIndexList;
     CHChannelDouble *_channel;
     NSMutableSet *_bundleSnapshotsObservingModifiedValuesUpdateList;
     NSMutableSet *_bundleSnapshotsObservingSnapshotValuesUpdateList;
     NSArray *_cachedSnapshotChannels;
     int _effectBundleEncodingOptions;
-    int _missingElements;
 }
 
 + (id)copyClassDescription;

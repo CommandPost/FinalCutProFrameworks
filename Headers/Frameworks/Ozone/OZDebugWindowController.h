@@ -8,14 +8,14 @@
 
 #import "NSTabViewDelegate.h"
 
-@class LKButton, LKPopUpButton, LKSegmentedCell, LKSlider, LKTabView, LKTableView, LKTextField, NSArray, NSString, NSTextView, NSTimer, NSView;
+@class LKButton, LKPopUpButton, LKSegmentedCell, LKSlider, LKTabView, LKTableView, LKTextField, LKTextView, NSArray, NSString, NSTimer, NSView;
 
 @interface OZDebugWindowController : NSWindowController <NSTabViewDelegate>
 {
     struct OZProfiler *_profiler;
     LKTabView *_tabView;
     LKTableView *_tableView;
-    NSTextView *_textView;
+    LKTextView *_textView;
     LKButton *_masterEnableButton;
     LKButton *_enableLoggingButton;
     NSArray *_tableColumns;

@@ -13,8 +13,12 @@
     id _module;
 }
 
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)cursor;
 + (id)toolTip;
 + (long long)sortOrderForGroup:(id)arg1;
@@ -24,10 +28,14 @@
 + (BOOL)isToolForTLKEventHandler:(id)arg1;
 + (id)TLKEventHandlerID;
 @property(retain) id module; // @synthesize module=_module;
+- (id)firstMotionEffectOnItem:(id)arg1;
 - (BOOL)isToolClassOrSubToolClassOf:(Class)arg1;
 - (unsigned int)adjustmentState;
 - (void)setAdjustmentState:(unsigned int)arg1;
 - (void)ensureSourceCropisValidForSimmableAndTool:(struct NSObject *)arg1;
+- (BOOL)isMatchTool;
+- (BOOL)isModalTool;
+- (BOOL)shouldMakeIntrinsicsForEffectStack;
 - (BOOL)isSourceCropTool;
 - (BOOL)isCropTool;
 - (id)adjustmentsToolbarView;
@@ -35,6 +43,7 @@
 - (id)playerAccessoryView;
 - (id)playerFooterView;
 - (id)onScreenControlsForTool;
+- (BOOL)allowsEffectOSCsIfPrimaryObject;
 - (BOOL)allowsEffectOSCs;
 - (BOOL)allowInspectorToTrackSelection;
 - (void)selectedItemsChanged:(id)arg1;

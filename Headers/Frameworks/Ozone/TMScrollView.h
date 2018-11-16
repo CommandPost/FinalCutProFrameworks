@@ -12,7 +12,6 @@
 
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)menuForEvent:(id)arg1;
-- (void)drawRect:(struct CGRect)arg1;
 - (long long)draggingDestinationFeedbackStyle;
 - (BOOL)performDragOperation:(id)arg1;
 - (unsigned long long)draggingEntered:(id)arg1;

@@ -6,10 +6,12 @@
 
 #import "NSWindowController.h"
 
-@class NSArray, NSBrowser;
+#import "NSBrowserDelegate.h"
+
+@class NSArray, NSBrowser, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFFileImportRejectedDialogController : NSWindowController
+@interface FFFileImportRejectedDialogController : NSWindowController <NSBrowserDelegate>
 {
     NSBrowser *_browser;
     NSArray *_listSource;
@@ -25,6 +27,12 @@ __attribute__((visibility("hidden")))
 - (void)cancel:(id)arg1;
 - (void)dealloc;
 - (id)initWithListSource:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

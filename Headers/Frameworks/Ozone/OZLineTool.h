@@ -12,7 +12,6 @@
     struct CGPoint _end;
 }
 
-- (id).cxx_construct;
 - (BOOL)oscFlagsChanged:(id)arg1;
 - (BOOL)keyDownOSC:(id)arg1;
 - (void)mouseDragged:(id)arg1;

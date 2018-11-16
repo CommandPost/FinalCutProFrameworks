@@ -8,7 +8,7 @@
 
 @interface PAEQuadOSC : PAEOSC
 {
-    long long _currentState;
+    unsigned int _currentState;
     PCVector2_79efa81a _constrainStart;
     unsigned long long _constrainDir;
 }

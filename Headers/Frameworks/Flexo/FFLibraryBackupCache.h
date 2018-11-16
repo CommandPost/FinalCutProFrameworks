@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     FFLibrary *_library;
 }
 
-+ (id)cacheForDocument:(id)arg1 create:(BOOL)arg2;
++ (id)cacheForDocument:(id)arg1 key:(int)arg2;
 @property(retain) FFLibrary *library; // @synthesize library=_library;
 @property(retain) NSMutableArray *indexOfBackups; // @synthesize indexOfBackups=_indexOfBackups;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

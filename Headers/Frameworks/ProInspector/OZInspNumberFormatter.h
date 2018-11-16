@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProScrubbableNumberFormatter.h"
+#import "LKScrubbableNumberFormatter.h"
 
 @class NSString;
 
-@interface OZInspNumberFormatter : NSProScrubbableNumberFormatter
+@interface OZInspNumberFormatter : LKScrubbableNumberFormatter
 {
     NSString *_pNormalFormatStr;
     NSString *_pOffsetFormatStr;

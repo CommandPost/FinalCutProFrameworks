@@ -10,7 +10,7 @@
 
 @interface OZCopyFootage : NSObject
 {
-    struct vector<OZSceneNode *, std::allocator<OZSceneNode *>> *_pFootage;
+    struct vector<OZSceneNode *, std::__1::allocator<OZSceneNode *>> *_pFootage;
     NSString *_pDestinationRoot;
     BOOL _copyCanceled;
     NSString *_pProgressActionString;
@@ -25,8 +25,8 @@
 }
 
 + (id)sharedInstance;
-- (void)copyFootage:(CDStruct_79f65067 *)arg1;
-- (void)threadedCopyFootage;
+- (void)copyFootage:(CDStruct_2b00b5b2 *)arg1;
+- (void)threadedCopyFootage:(id)arg1;
 - (void)cancelCopy:(id)arg1;
 - (void)updateCopyProgressDisplay:(id)arg1;
 - (void)dealloc;

@@ -6,7 +6,7 @@
 
 #import <Flexo/FFAnchoredObject.h>
 
-@class FFMedia, NSSet;
+@class FFAudioComponentsLayoutMap, FFMedia, FFRoleCache, NSSet;
 
 @interface FFAnchoredMediaRef : FFAnchoredObject
 {
@@ -16,29 +16,32 @@
     BOOL _hasVideo;
     BOOL _invalNeedsRange;
     int _overrideAV;
+    FFRoleCache *_roleCache;
+    FFAudioComponentsLayoutMap *_inLibraryReferenceLayoutMapCache;
+    BOOL _audioComponentsLayoutMapNeedsLoadSync;
 }
 
 + (id)copyClassDescription;
 @property(nonatomic) int overrideAV; // @synthesize overrideAV=_overrideAV;
 @property(retain, nonatomic) FFMedia *media; // @synthesize media=_media;
+- (void)clearRolesCacheIfSet;
 - (void)logContent;
 - (id)_describeAdditionalObjectsWithIndent:(long long)arg1 recurse:(BOOL)arg2;
 - (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
 - (id)inspectorTabIdentifiers;
-- (id)inspectorTabClassNames;
 - (id)inspectorClassName;
+- (id)referenceAudioComponentsLayoutMap;
+- (id)anchoredObjectsForAudioComponentsLayoutKey:(id)arg1;
+- (id)audioComponentsLayoutMap;
+- (void)_ensureMediaRefAudioComponentsLayoutMapLoadSynced:(id)arg1;
+- (id)_mediaRefAudioComponentsLayoutMap;
 - (BOOL)contributesToCompoundClip;
 - (CDStruct_1b6d18a9)localToRateConformedTime:(CDStruct_1b6d18a9)arg1 withTargetSampleDuration:(CDStruct_1b6d18a9)arg2;
-- (CDStruct_e83c9415)untimedClippedRange;
-- (CDStruct_e83c9415)untimeRange:(CDStruct_e83c9415)arg1;
-- (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)canBeRetimed;
 - (CDStruct_e83c9415)unclippedRange;
 - (CDStruct_e83c9415)untimedUnclippedRange;
 - (CDStruct_e83c9415)mediaRange;
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
-- (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (void)_refInvalidationChange:(id)arg1;
 - (void)_rangeInvalidated:(id)arg1;
 - (void)_stopObservingMedia;
@@ -46,10 +49,8 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
 - (void)addAssetsToSet:(id)arg1;
-- (double)referencedPrimaryAudioSampleRate;
 - (double)nativeAudioSampleRate;
-- (long long)referencedPrimaryAudioChannelCount;
-- (long long)nativeAudioChannelCount:(int)arg1;
+- (unsigned int)nativeAudioChannelCount:(int)arg1;
 - (id)videoProps;
 - (long long)timecodeDisplayDropFrame;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
@@ -58,8 +59,8 @@
 - (BOOL)isProject;
 - (BOOL)isMultiAngle;
 - (BOOL)isMediaRef;
-- (id)secondaryEffectStack;
-- (id)primaryEffectStack;
+- (int)playEnable;
+- (BOOL)supportsAudio;
 - (BOOL)hasAudio;
 - (BOOL)hasVideo;
 - (void)setDisplayName:(id)arg1;
@@ -70,8 +71,12 @@
 - (id)firstVideoAnchoredComponent;
 - (id)targetLibraryItem;
 - (id)referencedPrimary;
+- (void)clearInLibraryReferenceLayoutMapCacheIfNotRequired;
+- (void)informContainedItemsAddedRemovedOrPlayEnableChanged:(unsigned int)arg1;
+- (void)informParentContainedItemsChanged:(unsigned int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)awakeAfterUsingCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithDisplayName:(id)arg1 clipRef:(id)arg2;

@@ -6,14 +6,14 @@
 
 #import "NSView.h"
 
-@class NSProThemeFacet;
+@class NSImage;
 
 @interface PEImportFooterView : NSView
 {
-    NSProThemeFacet *_footerFacet;
+    NSImage *_footerImage;
 }
 
-@property(retain) NSProThemeFacet *footerFacet; // @synthesize footerFacet=_footerFacet;
+@property(retain) NSImage *footerImage; // @synthesize footerImage=_footerImage;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)dealloc;
 

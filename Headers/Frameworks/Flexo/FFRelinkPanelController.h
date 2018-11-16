@@ -11,7 +11,7 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFLibrary, FFRelinkOpenAccessoryViewController, LKBox, LKButton, LKScrollView, LKTableView, LKTextField, NSArray, NSCondition, NSMatrix, NSMutableArray, NSProThemeImageView, NSString, NSTextView, NSURL, NSView;
+@class FFLibrary, FFRelinkOpenAccessoryViewController, LKBox, LKButton, LKScrollView, LKTableView, LKTextField, NSArray, NSCondition, NSImageView, NSMatrix, NSMutableArray, NSString, NSTextView, NSURL, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFRelinkPanelController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSOpenSavePanelDelegate>
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
     int _currentProgress;
     int _maxProgress;
     BOOL _abort;
-    NSProThemeImageView *_relinkBadge;
+    NSImageView *_relinkBadge;
     LKTextField *_titleTextField;
     NSTextView *_introTextView;
     NSMatrix *_scopeMatrix;
@@ -81,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)locateFile:(id)arg1;
 - (void)changeScope:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)windowDidBecomeKey:(id)arg1;
 - (void)windowDidResize:(id)arg1;
 - (void)windowDidMove:(id)arg1;
 - (void)windowWillClose:(id)arg1;
@@ -103,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (id)_selectedUnmatchedAssetRefs;
 - (void)_updateMatchedString;
 - (void)_updateSelectedPath;
+- (void)_hackUpdateTextColorFor:(id)arg1;
 - (id)_selectedPath;
 - (void)_updateUnmatchedAssetRefs;
 - (id)_selectedURL;

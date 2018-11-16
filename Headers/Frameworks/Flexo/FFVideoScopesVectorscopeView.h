@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     void *_FFVideoScopesVectorscopeViewPrivate;
 }
 
-- (id).cxx_construct;
 - (id)_initVideoScopesVectorscopeView;
 - (struct FFVideoScopesVectorscopeViewPrivate *)_Private;
 - (id)accessibilityAttributeValue:(id)arg1;

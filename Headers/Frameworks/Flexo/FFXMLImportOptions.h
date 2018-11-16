@@ -4,30 +4,64 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <Flexo/FFXMLTranslationOptions.h>
 
-#import "NSCopying.h"
+@class FFLibrary, FFMediaEventProject, FFModelObject<FFXMLTranslationTarget>, NSNumber, NSRunningApplication, NSString, NSURL;
 
-@class NSNumber, NSURL;
-
-__attribute__((visibility("hidden")))
-@interface FFXMLImportOptions : NSObject <NSCopying>
+@interface FFXMLImportOptions : FFXMLTranslationOptions
 {
-    NSNumber *_manageFileType;
+    NSNumber *_manageFileTypeObj;
     NSURL *_assetImportURL;
     NSURL *_libraryURL;
+    FFLibrary *_library;
+    BOOL _newLibrary;
+    NSNumber *_extendedColorObj;
+    NSString *_eventName;
+    FFMediaEventProject *_event;
     BOOL _suppressWarnings;
+    NSNumber *_incrementalImportObj;
+    NSNumber *_conflictResolutionTypeObj;
+    NSNumber *_metadataRemovalTypeObj;
+    NSRunningApplication *_origin;
+    NSURL *_documentURL;
+    FFModelObject<FFXMLTranslationTarget> *_target;
 }
 
-@property(readonly, nonatomic) BOOL suppressWarnings; // @synthesize suppressWarnings=_suppressWarnings;
-@property(readonly, nonatomic) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
-@property(readonly, nonatomic) NSNumber *manageFileType; // @synthesize manageFileType=_manageFileType;
-- (void)adjustForiMovieUpgrade;
-@property(readonly, nonatomic) NSURL *assetImportURL; // @synthesize assetImportURL=_assetImportURL;
-- (void)adjustForInvalidAssetImportURL;
-- (void)adjustWithXMLElement:(id)arg1;
++ (id)propertyKeys;
+@property(retain, nonatomic) NSNumber *metadataRemovalTypeObj; // @synthesize metadataRemovalTypeObj=_metadataRemovalTypeObj;
+@property(retain, nonatomic) NSNumber *conflictResolutionTypeObj; // @synthesize conflictResolutionTypeObj=_conflictResolutionTypeObj;
+@property(retain, nonatomic) NSNumber *incrementalImportObj; // @synthesize incrementalImportObj=_incrementalImportObj;
+@property(retain, nonatomic) NSURL *documentURL; // @synthesize documentURL=_documentURL;
+@property(retain, nonatomic) NSRunningApplication *origin; // @synthesize origin=_origin;
+@property(nonatomic) BOOL suppressWarnings; // @synthesize suppressWarnings=_suppressWarnings;
+@property(retain, nonatomic) FFModelObject<FFXMLTranslationTarget> *target; // @synthesize target=_target;
+@property(retain, nonatomic) NSNumber *extendedColorObj; // @synthesize extendedColorObj=_extendedColorObj;
+@property(nonatomic) BOOL newLibrary; // @synthesize newLibrary=_newLibrary;
+@property(retain, nonatomic) NSNumber *manageFileTypeObj; // @synthesize manageFileTypeObj=_manageFileTypeObj;
+- (void)writeAsUserDefaults;
+- (id)initWithUserDefaults;
+@property(retain, nonatomic) NSURL *assetImportURL; // @synthesize assetImportURL=_assetImportURL;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)clearMetadataRemovalType;
+@property(readonly, nonatomic) BOOL hasMetadataRemovalType;
+@property(nonatomic) int metadataRemovalType;
+- (void)clearConflictResolutionType;
+@property(readonly, nonatomic) BOOL hasConflictResolutionType;
+@property(nonatomic) int conflictResolutionType;
+- (void)clearIncrementalImport;
+@property(readonly, nonatomic) BOOL hasIncrementalImport;
+@property(nonatomic) BOOL incrementalImport;
+@property(retain, nonatomic) FFMediaEventProject *event;
+@property(retain, nonatomic) NSString *eventName;
+- (void)clearExtendedColor;
+@property(readonly, nonatomic) BOOL hasExtendedColor;
+@property(nonatomic) BOOL extendedColor;
+@property(retain, nonatomic) FFLibrary *library;
+@property(retain, nonatomic) NSURL *libraryURL;
+- (void)clearManageFileType;
+@property(readonly, nonatomic) BOOL hasManageFileType;
+@property(nonatomic) int manageFileType;
 
 @end
 

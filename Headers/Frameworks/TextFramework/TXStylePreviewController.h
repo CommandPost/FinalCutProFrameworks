@@ -14,7 +14,7 @@
 @interface TXStylePreviewController : OZViewController <OZRenderClient, MEBackgroundLoadPreviewClient>
 {
     TXLibraryPresetsButton *_pPresets;
-    struct TXTextStyle *_style;
+    shared_ptr_e0e110e1 _style;
     struct PCHash128 _hash;
     struct PCRecursiveMutex _renderLock;
     unsigned long long _renderJobID;
@@ -31,7 +31,7 @@
 - (void)notifyMotionInspectorToRebuild;
 - (void)loadPasteboard:(id)arg1 intoSceneNode:(struct OZSceneNode *)arg2;
 - (void)resetChannel:(id)arg1;
-- (void)_resetStyle:(struct TXTextStyle *)arg1;
+- (void)_resetStyle:(const shared_ptr_e0e110e1 *)arg1;
 - (void)disable;
 - (void)enable;
 - (void)saveAll;
@@ -41,9 +41,9 @@
 - (void)update;
 - (void)setImage:(id)arg1 width:(unsigned int)arg2 height:(unsigned int)arg3;
 - (void)renderNodeCancelled:(const CDStruct_198678f7 *)arg1 userData:(void *)arg2;
-- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_3bf61ddf *)arg2;
 - (void)_finishedWithDocumentInRenderJob:(id)arg1;
-- (struct TXTextLayout *)makeStylePreviewText:(struct TXTextStyle *)arg1 string:(id)arg2 dependentObjects:(list_d81b4758 *)arg3;
+- (struct TXTextLayout *)makeStylePreviewText:(shared_ptr_e0e110e1 *)arg1 string:(id)arg2 dependentObjects:(list_63a35edb *)arg3;
 - (void)queueRenderJob:(struct OZRenderNode *)arg1 scene:(struct OZScene *)arg2;
 - (void)getRenderRequestRenderParams:(struct OZRenderParams *)arg1 atTime:(CDStruct_198678f7)arg2;
 - (void)renderPreviewImage;

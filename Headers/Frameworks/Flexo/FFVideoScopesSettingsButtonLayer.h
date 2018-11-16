@@ -6,12 +6,12 @@
 
 #import <Flexo/FFResponderLayerPopupButton.h>
 
-@class FFThemeFacetLayer;
+@class FFImageLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFVideoScopesSettingsButtonLayer : FFResponderLayerPopupButton
 {
-    FFThemeFacetLayer *_glyphLayer;
+    FFImageLayer *_glyphLayer;
     struct CGSize _topRightMargin;
     struct CGSize _bottomLeftMargin;
 }
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 + (id)videoScopesSettingsButtonLayer;
 @property struct CGSize bottomLeftMargin; // @synthesize bottomLeftMargin=_bottomLeftMargin;
 @property struct CGSize topRightMargin; // @synthesize topRightMargin=_topRightMargin;
-- (id).cxx_construct;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)configureEmphasized;

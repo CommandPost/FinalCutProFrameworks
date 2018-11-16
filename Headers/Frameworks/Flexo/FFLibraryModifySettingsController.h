@@ -16,9 +16,11 @@
     NSWindow *_parentWindow;
     NSImageView *_applicationIconImage;
     NSPopUpButton *_libraryMediaLocationPopup;
+    NSPopUpButton *_libraryTemplatesLocationPopup;
     NSPopUpButton *_libraryCacheLocationPopup;
     NSPopUpButton *_libraryBackupLocationPopup;
     LKImageView *_libraryMediaLocationWarningView;
+    LKImageView *_libraryTemplatesLocationWarningView;
     LKImageView *_libraryCacheLocationWarningView;
     LKImageView *_libraryBackupLocationWarningView;
     NSButton *_libraryOKButton;
@@ -56,6 +58,7 @@
 - (void)chooseLocation:(id)arg1;
 - (void)doCloseLibrary:(id)arg1;
 - (void)doCheckLocations:(id)arg1;
+- (void)chooseTemplateLocation:(id)arg1;
 - (void)doDismissLibraryModifySettings:(id)arg1;
 - (void)_updateLocationMenus;
 - (BOOL)_allOriginalPathsExist;
@@ -66,6 +69,7 @@
 - (id)_nameForExternalMediaLocation:(id)arg1 useContainer:(BOOL)arg2;
 - (BOOL)_urlPathContainsBackupPackage:(id)arg1;
 - (BOOL)_commitLibrarySettings;
+- (void)_updateTemplatesMenu;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)initWithLibrary:(id)arg1 parentWindow:(id)arg2 errorDescription:(id)arg3 canCloseLibrary:(BOOL)arg4 necessarySpaceAvailable:(unsigned long long)arg5;

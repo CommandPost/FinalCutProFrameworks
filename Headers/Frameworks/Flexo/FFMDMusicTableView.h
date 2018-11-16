@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)setRolledOverRow:(long long)arg1;
 - (void)clearRolledOverRow;
 - (void)highlightSelectionInClipRect:(struct CGRect)arg1;
-- (id)_selectionGradient;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

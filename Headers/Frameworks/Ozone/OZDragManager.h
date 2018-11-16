@@ -27,9 +27,10 @@
     _Bool _undoSet;
     _Bool _pastingOnlyAudioTracks;
     _Bool _pastingOnlyLightsOrCameras;
-    vector_77d837c3 *_convertedClips;
+    vector_a9c0768e *_convertedClips;
 }
 
++ (void)copyObjectsReferencedBy:(unsigned int)arg1 inScene:(struct OZScene *)arg2 toPasteList:(struct OZPasteList *)arg3 copiedIDs:(vector_a9c0768e *)arg4;
 + (id)dragManager;
 - (BOOL)validatePaste:(struct OZDropTargetInfo *)arg1 fromPBoard:(id)arg2;
 - (void)paste:(struct OZDropTargetInfo *)arg1 fromPBoard:(id)arg2;
@@ -39,6 +40,7 @@
 - (void)addDropMenuItem:(id)arg1 subText:(id)arg2 icon:(id)arg3 indentLevel:(int)arg4 selector:(SEL)arg5 target:(id)arg6;
 - (void)clearDropMenu;
 - (BOOL)performDelete:(void *)arg1 dropInfo:(struct OZDropTargetInfo *)arg2;
+- (BOOL)performDrop:(struct OZPasteList *)arg1 dropInfo:(struct OZDropTargetInfo *)arg2 undoDescription:(struct PCString *)arg3 pasteOnlyDependents:(BOOL)arg4 idReMap:(map_c341eac7 *)arg5 addedObjects:(vector_6d1252f3 *)arg6 dropCompletionBlock:(CDUnknownBlockType)arg7;
 - (BOOL)performDrop:(void *)arg1 dropInfo:(struct OZDropTargetInfo *)arg2;
 - (void)performReplace:(struct OZFootage *)arg1 dropInfo:(struct OZDropTargetInfo *)arg2;
 - (struct OZSceneNode *)performSplit:(struct OZFootage *)arg1 footageExtent:(struct PCTimeRange)arg2 withOffset:(const CDStruct_1b6d18a9 *)arg3 andDuration:(const CDStruct_1b6d18a9 *)arg4 target:(struct OZSceneNode *)arg5 document:(struct OZDocument *)arg6;
@@ -62,7 +64,7 @@
 - (void)_copyShape;
 - (unsigned long long)validateDrop:(void *)arg1 dropInfo:(struct OZDropTargetInfo *)arg2;
 - (BOOL)checkForCamerasAndLights:(struct OZPasteList *)arg1 numCameras:(int *)arg2 numLights:(int *)arg3;
-- (void)computeOffsets:(map_b455ab53 *)arg1 from:(struct OZPasteList *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3 center:(PCVector3_457fd1f0 *)arg4;
+- (void)computeOffsets:(map_2e9a15fc *)arg1 from:(struct OZPasteList *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3 center:(PCVector3_457fd1f0 *)arg4;
 - (void)waitForConversionToComplete:(void *)arg1 createClips:(BOOL)arg2;
 - (void)convertPasteboard:(void *)arg1 createClips:(BOOL)arg2;
 - (void)doConvertPasteboard:(void *)arg1 createClips:(BOOL)arg2;

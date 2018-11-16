@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     struct _CGLContextObject *m_renderContext;
     CARenderer *m_renderer;
     BOOL m_needLayerSync;
+    struct CGRect m_previousRenderRect;
 }
 
 + (void)registerEffects;
@@ -24,12 +25,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSRecursiveLock *animatorLock; // @synthesize animatorLock=m_animatorLock;
 @property(readonly, nonatomic) MicaAnimator *animator; // @synthesize animator=m_animator;
 @property(nonatomic) BOOL needLayerSync; // @synthesize needLayerSync=m_needLayerSync;
-- (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5;
+- (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6;
 - (CDStruct_1b6d18a9)suggestedDuration;
 - (id)inputKeys;
-- (struct CGColorSpace *)processingColorSpace;
+- (id)processingFormat:(int)arg1;
 - (BOOL)effectDurationImpactsMD5;
 - (BOOL)effectVariesOverTime;
+- (void)setRasterizingForOutRect:(struct CGRect)arg1;
 - (void)configureLayersAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)channelParameterChanged:(id)arg1;
 - (void)getPercentDone:(double *)arg1 timeSeconds:(double *)arg2 durationSeconds:(double *)arg3 fromFigTime:(CDStruct_1b6d18a9)arg4;
@@ -39,9 +41,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CALayer *videoLayer;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7 graphBuildInfo:(id)arg8;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
 - (void)renderIntoContext:(struct _CGLContextObject *)arg1 roi:(struct CGRect)arg2 outputSize:(struct CGSize)arg3 numInputTextures:(int)arg4 inputTextures:(unsigned int *)arg5 timeSeconds:(double)arg6 durationSeconds:(double)arg7 percentDone:(double)arg8 isTransition:(BOOL)arg9 location:(int)arg10 pixelTransform:(id)arg11;
 - (struct __IOSurface *)newIOSurfaceFromTexture:(unsigned int)arg1 location:(int)arg2 forLayer:(id)arg3;
+- (void)syncOutRect:(struct CGRect)arg1;
 - (void)syncLayers;
 
 @end

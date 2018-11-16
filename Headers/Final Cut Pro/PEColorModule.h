@@ -6,51 +6,50 @@
 
 #import "LKViewModule.h"
 
-@class NSProView;
+@class NSArray, NSMutableArray, NSView;
 
 @interface PEColorModule : LKViewModule
 {
-    BOOL _observersInstalled;
-    NSProView *_headerView;
-    NSProView *_footerView;
+    NSView *_headerView;
+    NSView *_footerView;
+    BOOL _observingSelection;
+    NSArray *_currentSelectedItems;
+    NSMutableArray *_currentColorItems;
+    NSMutableArray *_observedActiveVariantItems;
+    BOOL _cachedHasSetupItems;
 }
 
 + (id)defaultModuleNibName;
-@property(retain) NSProView *footerView; // @synthesize footerView=_footerView;
-@property(retain) NSProView *headerView; // @synthesize headerView=_headerView;
-@property BOOL observersInstalled; // @synthesize observersInstalled=_observersInstalled;
+@property(readonly, nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
+@property(readonly, nonatomic) NSView *headerView; // @synthesize headerView=_headerView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)removeObservers;
-- (void)addObservers;
-- (void)updateToCurrentSelection;
-- (void)installSubmoduleFooterView:(id)arg1;
+- (void)hideModule:(id)arg1;
+- (void)viewDidLoad;
+- (void)moduleDidUnhide;
+- (void)_resyncWithSelectionManager;
+- (void)_setCurrentSelectedItems:(id)arg1;
+- (void)moduleDidHide;
+- (void)_setupCurrentColorItems;
+- (id)_context;
 - (id)moduleFooterAccessoryView;
 - (BOOL)wantsFooterBar;
-- (void)installSubmoduleHeaderView:(id)arg1;
 - (id)moduleHeaderAccessoryView;
 - (BOOL)wantsHeaderBar;
 - (id)lastKeyView;
 - (id)firstKeyView;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
-- (void)installSubmoduleContentView:(id)arg1;
-- (BOOL)hasSubmoduleWithClass:(Class)arg1;
-- (id)submodule;
-- (Class)currentColorContentModuleClass;
-- (id)currentColorContentModule;
 - (id)submoduleLayoutArray;
 - (id)targetModules;
+- (id)_currentContentModule;
 - (unsigned long long)revealAnimationStyle;
-- (void)hideModule:(id)arg1;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)viewWillBeRemoved;
-- (void)viewWasInstalled;
-- (void)viewDidLoad;
-- (id)context;
 - (id)identifier;
 - (void)dealloc;
-- (id)initWithModuleNibName:(id)arg1;
-- (id)init;
+- (void)_endObservingActiveVariants;
+- (void)_beginObservingActiveVariants;
+- (void)_endObservingSelection;
+- (void)_beginObservingSelection;
 
 @end
 

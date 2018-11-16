@@ -7,14 +7,16 @@
 @class FFBackgroundTask, NSSet;
 
 @protocol FFBackgroundTaskTarget
-- (NSSet *)librariesInUse;
-- (NSSet *)assetsInUse;
+- (NSSet *)librariesInUse:(FFBackgroundTask *)arg1;
+- (NSSet *)assetsInUse:(FFBackgroundTask *)arg1;
 
 @optional
+- (void)completedTask:(FFBackgroundTask *)arg1;
+- (void)startedTask:(FFBackgroundTask *)arg1;
 - (void)canceledTask:(FFBackgroundTask *)arg1;
 - (BOOL)confirmIsPaused:(FFBackgroundTask *)arg1;
 - (void)resumedTask:(FFBackgroundTask *)arg1;
 - (void)pausedTask:(FFBackgroundTask *)arg1;
-- (NSSet *)assetsChanging;
+- (NSSet *)assetsChanging:(FFBackgroundTask *)arg1;
 @end
 

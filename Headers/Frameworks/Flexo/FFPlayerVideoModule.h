@@ -10,12 +10,12 @@
 #import "FFSelectionHandler.h"
 #import "NSAnimationDelegate.h"
 
-@class FFDestVideo<FFDestVideoDeviceManaging>, FFDestVideoGL, FFOSC, FFPlayerView, FFSnapGrid, FFThemeFacet, FFTimecodeFormatter, LKButton, NSArray, NSDictionary, NSLock, NSMenu, NSMutableArray, NSProThemeImageView, NSRecursiveLock, NSString, NSView, NSViewAnimation, PCMatrix44Double;
+@class FFDestVideo<FFDestVideoDeviceManaging>, FFDestVideoGL, FFHeaderBackgroundView, FFOSC, FFOpenGLNSImage, FFPlayerView, FFSnapGrid, FFTimecodeFormatter, LKButton, NSArray, NSDictionary, NSLock, NSMenu, NSMutableArray, NSRecursiveLock, NSString, NSView, NSViewAnimation, PCMatrix44Double, _FFPlayerModuleLineView;
 
 @interface FFPlayerVideoModule : FFPlayerItemModule <FFSelectionHandler, FFFieldDisplaySetting, NSAnimationDelegate>
 {
     FFPlayerView *_playerView;
-    NSProThemeImageView *_multiangleHeaderView;
+    FFHeaderBackgroundView *_multiangleHeaderView;
     NSView *_multiangleFooterView;
     FFDestVideoGL *_destVideoGL;
     FFDestVideo<FFDestVideoDeviceManaging> *_destVideoCMIO;
@@ -29,11 +29,11 @@
     struct CGPoint _origin;
     long long _colorChannelDisplayMode;
     BOOL _displayBroadcastSafeZones;
-    unsigned int _displayExcessGamutChannels;
+    unsigned int _rangeCheckMode;
     BOOL _showBothFields;
     BOOL _multipleSelection;
-    BOOL _settingActiveOSC;
-    NSRecursiveLock *_oscsLock;
+    BOOL _inSetSkimmable;
+    struct FFSynchronizable _oscsLock;
     NSMutableArray *_oscs;
     FFOSC *_activeOSC;
     BOOL _selectionBasedOSCsDisabled;
@@ -75,7 +75,9 @@
     FFTimecodeFormatter *_timecodeFormatter;
     unsigned long long _suspendEffectsChangedNotification;
     BOOL _suppressToolManagerSelectionChanges;
-    FFThemeFacet *_audioIcon;
+    FFOpenGLNSImage *_audioIcon;
+    _FFPlayerModuleLineView *_focusUnderBar;
+    NSArray *_focusUnderBarConstraints;
 }
 
 @property BOOL suppressToolManagerSelectionChanges; // @synthesize suppressToolManagerSelectionChanges=_suppressToolManagerSelectionChanges;
@@ -258,11 +260,13 @@
 - (void)didEnterFullScreenMode;
 @property(nonatomic) BOOL displayBroadcastSafeZones;
 @property(nonatomic) BOOL showBothFields;
-@property(nonatomic) BOOL highlightsExcessLuma;
+- (id)getRangeCheckColorSpaceLabel;
+@property(nonatomic) unsigned int rangeCheckMode;
 @property(nonatomic) long long colorChannelDisplayMode;
 @property(nonatomic) struct CGPoint origin;
 - (void)setNextZoomFactor:(BOOL)arg1;
 @property(nonatomic) float zoomFactor;
+- (BOOL)forceShowAt100Percent;
 @property(nonatomic) struct CGRect sequenceBounds;
 - (void)updateLabel;
 - (double)backingScaleFactor;
@@ -270,6 +274,7 @@
 - (id)layer;
 - (id)destVideo;
 - (void)_playerViewBoundsChanged:(struct CGRect)arg1;
+- (BOOL)isSkimmingLens;
 - (id)playerView;
 - (void)playerViewDidMoveToWindow:(id)arg1;
 - (void)playerView:(id)arg1 willMoveToWindow:(id)arg2;

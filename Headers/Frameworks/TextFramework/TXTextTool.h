@@ -39,7 +39,6 @@
 }
 
 @property float alpha; // @synthesize alpha=_alpha;
-- (id).cxx_construct;
 - (id)view;
 - (void)setView:(id)arg1;
 - (void)decrementKerning:(id)arg1;
@@ -126,6 +125,8 @@
 - (BOOL)selectNone:(id)arg1;
 - (BOOL)selectAll:(id)arg1;
 - (BOOL)paste:(id)arg1;
+- (BOOL)pasteDependentObjects:(struct OZPasteList *)arg1 intoText:(struct TXTextInput *)arg2;
+- (BOOL)pasteTXPasteEntry:(struct OZPasteList *)arg1 intoText:(struct TXTextInput *)arg2;
 - (BOOL)pasteAsPlainText:(id)arg1;
 - (BOOL)copy:(id)arg1;
 - (BOOL)cut:(id)arg1;

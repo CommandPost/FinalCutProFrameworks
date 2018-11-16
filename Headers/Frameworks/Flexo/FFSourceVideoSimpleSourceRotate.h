@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FFSourceVideoSimpleSourceRotate : FFSourceVideo
 {
     FFVideoProps *_nativeVideoProps;
+    struct FFSynchronizable *_nativeVideoPropsLock;
 }
 
 + (Class)streamClass;

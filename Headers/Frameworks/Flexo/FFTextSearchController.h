@@ -29,12 +29,12 @@
     NSMenuItem *_thisTextObjectMenuItem;
     NSMenuItem *_projectTextObjectsMenuItem;
     NSMenuItem *_sequenceTextObjectsMenuItem;
-    vector_2735d0ca _results;
+    vector_473d7ffb _results;
 }
 
 + (id)getInstance;
 + (id)getInstanceWithDelegate:(id)arg1;
-@property(readonly, nonatomic) vector_2735d0ca results; // @synthesize results=_results;
+@property(readonly, nonatomic) vector_473d7ffb results; // @synthesize results=_results;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)updateUI:(int)arg1;

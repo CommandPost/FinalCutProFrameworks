@@ -6,9 +6,10 @@
 
 #import "NSObject.h"
 
-@class LKWindowModule, OZCanvasModule, OZCurveEditorModule, OZFileBrowserModule, OZFootageListModule, OZFooterModule, OZInspectorModule, OZLayerAudioContainerModule, OZLayerListModule, OZLibraryInspectorContainerModule, OZLibraryModule, OZMainContainerModule, OZMainTimingModule, OZTimelineCurveEditorModule, OZTimelineModule, OZTimingControlModule, OZToolbarModule;
+@class LKWindowModule, OZCanvasModule, OZCurveEditorModule, OZFileBrowserModule, OZFootageListModule, OZInspectorModule, OZLayerAudioContainerModule, OZLayerListModule, OZLibraryInspectorContainerModule, OZLibraryModule, OZMainContainerModule, OZMainTimingModule, OZTimelineCurveEditorModule, OZTimelineModule, OZTimingControlModule, OZToolbarModule;
 
 @protocol OZModuleAccessor <NSObject>
+- (OZToolbarModule *)secondaryToolbarModule;
 - (OZToolbarModule *)mainToolbarModule;
 - (OZTimingControlModule *)mainTimingControlModule;
 - (OZTimelineModule *)mainTimelineModule;
@@ -16,8 +17,6 @@
 - (OZLibraryModule *)mainLibraryModule;
 - (OZLayerListModule *)mainLayerListModule;
 - (OZInspectorModule *)mainInspectorModule;
-- (OZFooterModule *)secondaryFooterModule;
-- (OZFooterModule *)mainFooterModule;
 - (OZFootageListModule *)mainFootageListModule;
 - (OZFileBrowserModule *)mainFileBrowserModule;
 - (OZCurveEditorModule *)mainCurveEditorModule;

@@ -12,7 +12,8 @@
 }
 
 + (id)cursor;
-+ (id)toolbarFacet;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 @property BOOL isSelectingText; // @synthesize isSelectingText=_isSelectingText;
@@ -22,7 +23,6 @@
 - (BOOL)editsItem:(id)arg1 target:(id)arg2 event:(id)arg3;
 - (BOOL)handlesItem:(id)arg1 target:(id)arg2 event:(id)arg3;
 - (BOOL)itemHasText:(id)arg1;
-- (BOOL)_itemHasText:(id)arg1 setEffect:(id *)arg2;
 - (BOOL)handlesSelection;
 - (void)resignActiveTool;
 - (id)init;

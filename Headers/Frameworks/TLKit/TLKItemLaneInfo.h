@@ -4,31 +4,77 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <TLKit/ERLRelationalObject.h>
 
-@class NSMutableSet, NSSet, TLKContainerInfo;
+#import "TLKLayoutConstraining.h"
 
-@interface TLKItemLaneInfo : NSObject
+@class NSArray, NSColor, NSMutableArray, NSMutableSet, NSSet, NSString, TLKBoxMetrics, TLKContainerInfo, TLKItemLaneFragment;
+
+@interface TLKItemLaneInfo : ERLRelationalObject <TLKLayoutConstraining>
 {
-    NSMutableSet *_itemInfoRecords;
+    NSMutableSet *_itemComponentInfoRecords;
+    NSMutableArray *_childLaneInfoRecords;
     NSMutableSet *_itemLaneFragments;
-    TLKContainerInfo *_containerInfo;
+    NSMutableSet *_layoutConstraints;
+    NSMutableSet *_layoutConstraintObservers;
+    struct {
+        unsigned int isExpanded:1;
+        unsigned int isBackgroundMusicLane:1;
+        unsigned int RESERVED:30;
+    } _laneFlags;
     id _representedObject;
+    TLKContainerInfo *_enclosingContainerInfo;
+    NSString *_name;
+    NSColor *_backgroundColor;
+    TLKBoxMetrics *_boxMetrics;
     long long _laneIndex;
+    TLKItemLaneInfo *_parentLaneInfo;
 }
 
+@property(copy, nonatomic) NSArray *childLaneInfoRecords; // @synthesize childLaneInfoRecords=_childLaneInfoRecords;
+@property(retain, nonatomic) TLKItemLaneInfo *parentLaneInfo; // @synthesize parentLaneInfo=_parentLaneInfo;
 @property(nonatomic) long long laneIndex; // @synthesize laneIndex=_laneIndex;
-@property(nonatomic) TLKContainerInfo *containerInfo; // @synthesize containerInfo=_containerInfo;
+@property(retain, nonatomic) TLKBoxMetrics *boxMetrics; // @synthesize boxMetrics=_boxMetrics;
+@property(copy, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(nonatomic) TLKContainerInfo *enclosingContainerInfo; // @synthesize enclosingContainerInfo=_enclosingContainerInfo;
 @property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
+- (struct CGRect)layoutFrameForLayoutContext:(id)arg1;
+@property(readonly, nonatomic) NSSet *itemComponentLayoutConstraintObservers;
+- (void)removeObserver:(id)arg1 forLayoutConstraint:(id)arg2;
+- (void)addObserver:(id)arg1 forLayoutConstraint:(id)arg2;
+@property(copy, nonatomic) NSSet *layoutConstraintObservers;
+- (void)removeLayoutConstraints:(id)arg1;
+- (void)removeLayoutConstraint:(id)arg1;
+- (void)addLayoutConstraints:(id)arg1;
+- (void)addLayoutConstraint:(id)arg1;
+@property(copy, nonatomic) NSSet *layoutConstraints;
+- (long long)compareByDistanceToSpine:(id)arg1;
+- (long long)compareByLaneIndex:(id)arg1;
+- (void)removeChildLaneInfoRecordsObject:(id)arg1;
+- (void)addChildLaneInfoRecordsObject:(id)arg1;
+@property(readonly, nonatomic) TLKItemLaneFragment *nonWrappingLaneFragment;
+- (id)itemLaneFragmentForLayoutContext:(id)arg1;
 - (void)removeItemLaneFragmentsObject:(id)arg1;
 - (void)addItemLaneFragmentsObject:(id)arg1;
 @property(copy, nonatomic) NSSet *itemLaneFragments;
-- (void)removeItemInfoRecordsObject:(id)arg1;
-- (void)addItemInfoRecordsObject:(id)arg1;
-@property(copy, nonatomic) NSSet *itemInfoRecords;
-- (id)description;
+- (void)removeItemComponentInfoRecordsObject:(id)arg1;
+- (void)addItemComponentInfoRecordsObject:(id)arg1;
+@property(copy, nonatomic) NSSet *itemComponentInfoRecords;
+@property(nonatomic) BOOL isBackgroundMusicLane;
+@property(nonatomic, getter=isExpanded) BOOL expanded;
+@property(readonly, nonatomic) struct CGColor *backgroundColorRef;
+@property(readonly, nonatomic) long long layoutRegion;
+@property(readonly, nonatomic) BOOL isAbovePrimaryLane;
+@property(readonly, nonatomic) BOOL isPrimaryLane;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithRepresentedObject:(id)arg1;
+
+// Remaining properties
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

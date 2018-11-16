@@ -6,26 +6,19 @@
 
 #import "NSObject.h"
 
-@class FFInspectorExpandedTileView, FFInspectorFileInfoTile, FFInspectorFileInfoTileView, NSProView;
+@class FFInspectorFileInfoTile, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorFileInfoClipController : NSObject
 {
-    FFInspectorExpandedTileView *_tilesParent;
-    FFInspectorFileInfoTile *_outerTileView;
-    FFInspectorFileInfoTileView *_fileInfoTileView;
-    NSProView *_emptyTileView;
-    id <FFInspectorContainerViewProtocol> _containerView;
+    NSView *_fileInfoContainerView;
+    FFInspectorFileInfoTile *_infoTile;
 }
 
-@property(retain) id <FFInspectorContainerViewProtocol> containerView; // @synthesize containerView=_containerView;
-@property NSProView *emptyTileView; // @synthesize emptyTileView=_emptyTileView;
-@property FFInspectorFileInfoTileView *fileInfoTileView; // @synthesize fileInfoTileView=_fileInfoTileView;
-- (void)updateWithRefs:(id)arg1 items:(id)arg2 forOwner:(id)arg3 fromModule:(id)arg4;
+- (void)updateWithItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
+- (void)_addTilesForItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
+@property NSView *fileInfoContainerView; // @dynamic fileInfoContainerView;
 - (void)dealloc;
-- (void)addNewTileForItems:(id)arg1 refs:(id)arg2 forOwner:(id)arg3 fromModule:(id)arg4;
-- (void)_resizeViewForItems:(id)arg1;
-- (int)_numMissingEffectsForItem:(id)arg1 andRefs:(id)arg2;
 
 @end
 

@@ -8,6 +8,8 @@
 
 @interface NSAttributedString (KyotoAdditions)
 - (id)fixSpaceAndNewlineCharacters;
+- (id)fixBackSpaceCharacters;
+- (id)removeOriginalFontAttribute;
 - (id)substrings;
 - (id)attributedSubstrings;
 @end

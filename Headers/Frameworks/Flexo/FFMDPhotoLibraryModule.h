@@ -4,17 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFMDModule.h>
+#import <Flexo/FFMDToggleSidebarModule.h>
 
 #import "FFMDPhotoViewControllerDataSource.h"
 #import "FFMDPhotoViewControllerDelegate.h"
+#import "FFOrganizerMediaDetailSearchHeaderDelegate.h"
+#import "NSTouchBarProvider.h"
 
-@class FFAlwaysHitButton, FFMDPhotoAbstractViewController, FFMDPhotoGroupViewController, FFMDPhotoLibraryQuery, FFMDPhotoObjectViewController, FFMDPhotoPlacesViewController, LKButton, LKImageView, LKPopUpButton, LKProgressIndicator, NSMutableDictionary, NSString, NSView;
+@class FFConsumerOrganizerDFRController, FFMDPhotoAbstractViewController, FFMDPhotoGroupViewController, FFMDPhotoLibraryQuery, FFMDPhotoObjectViewController, FFMDPhotoPlacesViewController, FFMDProPhotoGroupViewController, LKButton, LKImageView, LKPopUpButton, LKProgressIndicator, NSMenuItem, NSMutableDictionary, NSString, NSTouchBar, NSView;
 
-@interface FFMDPhotoLibraryModule : FFMDModule <FFMDPhotoViewControllerDataSource, FFMDPhotoViewControllerDelegate>
+@interface FFMDPhotoLibraryModule : FFMDToggleSidebarModule <NSTouchBarProvider, FFOrganizerMediaDetailSearchHeaderDelegate, FFMDPhotoViewControllerDataSource, FFMDPhotoViewControllerDelegate>
 {
-    FFAlwaysHitButton *_toggleSidebarButton;
-    FFAlwaysHitButton *_dividerLine;
+    FFMDProPhotoGroupViewController *_proGroupViewController;
     FFMDPhotoGroupViewController *_groupViewController;
     FFMDPhotoPlacesViewController *_placesViewController;
     FFMDPhotoObjectViewController *_objectViewController;
@@ -27,13 +28,17 @@
     LKImageView *_allButtonSeparator;
     LKPopUpButton *_typeFilterPopUp;
     LKProgressIndicator *_loadingProgressIndicator;
+    LKButton *_searchButton;
     double _rightDraggableExclusionMargin;
     double _leftDraggableExclusionMargin;
     int _libraryType;
     int _groupType;
     FFMDPhotoLibraryQuery *_dataQuery;
+    FFConsumerOrganizerDFRController *_consumerDfrController;
     NSMutableDictionary *_viewStateKeyedByLibraryAndGroupType;
     NSMutableDictionary *_savedModuleState;
+    NSMenuItem *_currentSelectedItem;
+    LKButton *_backButton;
 }
 
 + (BOOL)automaticallyNotifiesObserversOfDataQuery;
@@ -42,7 +47,12 @@
 + (int)_defaultDisplayedGroupTypeForLibrary:(int)arg1;
 + (int)libraryTypeFromModuleKey:(id)arg1;
 + (id)libraryTypeToModuleKey:(int)arg1;
++ (id)defaultModuleNibName;
+@property LKButton *backButton; // @synthesize backButton=_backButton;
+@property LKButton *searchButton; // @synthesize searchButton=_searchButton;
 @property(retain, nonatomic) FFMDPhotoLibraryQuery *dataQuery; // @synthesize dataQuery=_dataQuery;
+@property(readonly, nonatomic) FFConsumerOrganizerDFRController *consumerDfrController; // @synthesize consumerDfrController=_consumerDfrController;
+@property(retain, nonatomic) NSMenuItem *currentSelectedItem; // @synthesize currentSelectedItem=_currentSelectedItem;
 @property(retain, nonatomic) NSMutableDictionary *savedModuleState; // @synthesize savedModuleState=_savedModuleState;
 @property(retain, nonatomic) NSMutableDictionary *viewStateKeyedByLibraryAndGroupType; // @synthesize viewStateKeyedByLibraryAndGroupType=_viewStateKeyedByLibraryAndGroupType;
 @property(nonatomic) int groupType; // @synthesize groupType=_groupType;
@@ -59,6 +69,10 @@
 @property(retain, nonatomic) FFMDPhotoObjectViewController *objectViewController; // @synthesize objectViewController=_objectViewController;
 @property(retain, nonatomic) FFMDPhotoPlacesViewController *placesViewController; // @synthesize placesViewController=_placesViewController;
 @property(retain, nonatomic) FFMDPhotoGroupViewController *groupViewController; // @synthesize groupViewController=_groupViewController;
+@property(retain, nonatomic) FFMDProPhotoGroupViewController *proGroupViewController; // @synthesize proGroupViewController=_proGroupViewController;
+- (id)mediaBrowserIdentifier;
+- (id)_playerModule;
+@property(readonly) NSTouchBar *touchBar;
 - (double)leftDraggableExclusionMargin;
 - (double)rightDraggableExclusionMargin;
 - (void)_updateDisplay;
@@ -80,6 +94,12 @@
 - (struct CGPoint)startPointConvertedToView;
 - (id)dragImage;
 - (BOOL)editActionAllowed;
+- (void)searchHeaderWasDismissed;
+- (void)searchHeaderSearchFieldAction:(id)arg1;
+- (id)searchFieldToolTip;
+- (BOOL)shouldFocusSearchFieldWhenInstalled;
+- (BOOL)shouldShowHUDButton;
+- (void)searchButtonAction:(id)arg1;
 - (BOOL)writeDataForEditAction:(id)arg1 toPasteboardWithName:(id)arg2;
 - (id)dataForEditAction:(id)arg1;
 - (BOOL)canSourceDataForEditAction:(id)arg1;
@@ -87,6 +107,12 @@
 - (void)filterByType:(id)arg1;
 - (void)search:(id)arg1;
 - (void)chooseGroupTypes:(id)arg1;
+- (void)selectClip:(id)arg1;
+- (void)clearSelection:(id)arg1;
+- (void)clearSelectionEnd:(id)arg1;
+- (void)clearSelectionStart:(id)arg1;
+- (void)setSelectionEnd:(id)arg1;
+- (void)setSelectionStart:(id)arg1;
 - (void)deselectAll:(id)arg1;
 - (void)selectAll:(id)arg1;
 - (void)loop:(id)arg1;
@@ -106,6 +132,7 @@
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)_restoreModuleStateForActiveLibrary;
 - (void)_saveModuleStateForActiveLibrary;
+- (BOOL)_canPopViewState;
 - (void)_popViewState;
 - (void)_pushViewState;
 - (void)_restoreViewState;
@@ -115,6 +142,7 @@
 - (id)_savedViewStateKey;
 - (void)writeModulePrefsToDict:(id)arg1;
 - (void)readModulePrefsFromDict:(id)arg1;
+- (void)viewWasInstalled;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)init;

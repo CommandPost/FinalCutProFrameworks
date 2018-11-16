@@ -6,15 +6,15 @@
 
 #import "NSView.h"
 
-@class LKButton, LKTextField, NSString;
+@class LKButton, LKTextField, NSImage, NSString;
 
 @interface TLKEditorCloseView : NSView
 {
     LKButton *_closeButton;
     LKTextField *_descriptionField;
+    NSImage *_backgroundImage;
 }
 
-- (void)mouseDown:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
 - (void)sizeToFit;
@@ -22,6 +22,7 @@
 @property SEL action;
 @property id target;
 @property NSString *title;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

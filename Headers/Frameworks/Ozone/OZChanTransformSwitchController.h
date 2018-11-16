@@ -16,7 +16,6 @@
 - (void)setChannelValue:(id)arg1;
 - (void)update;
 - (BOOL)isEnabled;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
 
 @end

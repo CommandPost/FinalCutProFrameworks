@@ -15,7 +15,7 @@
 - (void)delayedRelease;
 - (void)delayedReleaseCB:(id)arg1;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (BOOL)buildUIWithSceneNodes:(list_d81b4758 *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_63a35edb *)arg1 context:(id)arg2;
 
 @end
 

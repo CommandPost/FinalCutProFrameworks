@@ -21,6 +21,7 @@
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)animationDidStart:(id)arg1;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (BOOL)_ignoreBorderPadding;
 - (BOOL)wantsHeaderBar;
 - (struct CGSize)viewMinSize;
 - (void)moduleViewWillBeRemoved:(id)arg1;

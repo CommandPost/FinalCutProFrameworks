@@ -4,18 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
 #import "HistogramReferrer.h"
 #import "OZHistogramManager.h"
 
 @class NSPopUpButton, NSString, OZHistogramGradientView, OZHistogramGutterIn, OZHistogramGutterOut, OZHistogramView;
 
-@interface OZHistogramEditor : NSProView <OZHistogramManager, HistogramReferrer>
+@interface OZHistogramEditor : NSView <OZHistogramManager, HistogramReferrer>
 {
     struct OZChannelHistogram *_histogramChannel;
     NSPopUpButton *_popUp;
-    NSProView *_masterView;
+    NSView *_masterView;
     OZHistogramView *_histogramView;
     OZHistogramGradientView *_gradientView;
     OZHistogramGutterIn *_gutterIn;

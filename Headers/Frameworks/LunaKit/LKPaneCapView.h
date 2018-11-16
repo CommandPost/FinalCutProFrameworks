@@ -4,15 +4,22 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProPaneCapView.h"
+#import "NSView.h"
 
-@interface LKPaneCapView : NSProPaneCapView
+#import "LKPaneCapProtocol.h"
+
+@interface LKPaneCapView : NSView <LKPaneCapProtocol>
 {
+    unsigned long long _controlSize;
+    int _paneCapStyle;
+    int _paneCapTint;
+    BOOL _isTimelineStyle;
 }
 
-- (BOOL)acceptsFirstResponder;
-- (id)_baseFacet;
-- (BOOL)allowsState;
+@property BOOL isTimelineStyle; // @synthesize isTimelineStyle=_isTimelineStyle;
+@property int paneCapStyle; // @synthesize paneCapStyle=_paneCapStyle;
+@property int paneCapTint; // @synthesize paneCapTint=_paneCapTint;
+@property unsigned long long controlSize; // @synthesize controlSize=_controlSize;
 
 @end
 

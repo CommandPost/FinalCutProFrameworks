@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)partContainsPoint:(struct CGPoint)arg1;
 - (id)accessibilityParentForResponderLayer:(id)arg1;
 - (void)setSkimmingPlayheadHidden:(BOOL)arg1;
+- (void)hostLayerChanged;
 - (void)responderLayer:(id)arg1 needsHeightChanged:(double)arg2;
 @property id focusOwner;
 - (id)hostView;

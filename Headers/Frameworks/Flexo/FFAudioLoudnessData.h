@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 
 + (CDStruct_bdcb2b0d)loudnessAudioMD5ForObject:(id)arg1 andClippedRange:(CDStruct_e83c9415)arg2;
 @property(readonly, nonatomic) CDStruct_bdcb2b0d audioMD5; // @synthesize audioMD5=m_audioMD5;
-- (id).cxx_construct;
 - (void)_calculateCachedValues;
 - (float)programLoudnessWithLevelChannel:(id)arg1;
 - (float)loudnessValueAtTime:(CDStruct_1b6d18a9)arg1 withLevelChannel:(id)arg2;

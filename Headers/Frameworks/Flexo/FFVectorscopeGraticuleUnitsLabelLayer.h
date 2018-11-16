@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 
 @property int YCbCrColorSpace; // @synthesize YCbCrColorSpace=_YCbCrColorSpace;
 @property long long unitsType; // @synthesize unitsType=_unitsType;
-- (id).cxx_construct;
 - (id)actionForKey:(id)arg1;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)setupDefaultProperties;

@@ -21,8 +21,8 @@
 + (void)sortModelObjects:(id)arg1 stringSelector:(SEL)arg2 ascending:(BOOL)arg3;
 + (id)childNodesForRepresentedObjects:(id)arg1 reusingNodes:(id)arg2 nodeWithObjectBlock:(CDUnknownBlockType)arg3;
 + (id)pasteboardType;
-@property(nonatomic, getter=isObservingChildNodes) BOOL observingChildNodes; // @synthesize observingChildNodes=_observingChildNodes;
 @property(nonatomic) FFMediaSidebarNode *parentNode; // @synthesize parentNode=_parentNode;
+@property(nonatomic, getter=isObservingChildNodes) BOOL observingChildNodes; // @synthesize observingChildNodes=_observingChildNodes;
 @property(readonly, retain, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 - (id)debugDescription;
 - (id)_descriptionWithDescendantsAtIndentLevel:(unsigned int)arg1;

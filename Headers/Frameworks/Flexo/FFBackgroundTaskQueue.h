@@ -13,6 +13,7 @@
     id _delegate;
     NSCountedSet *_notedTasks;
     int _loCount;
+    unsigned long long _entryNumber;
     NSMutableSet *_pausedForLO;
     NSOperation *_blockerOperation;
     NSOperationQueue *_generalQueue;
@@ -32,6 +33,10 @@
     NSMutableArray *_mainThreadCoalesceWork;
 }
 
++ (void)removeThumbnailRequestsForAssets:(id)arg1;
++ (void)removeThumbnailRequestsForLibraryIdentifier:(id)arg1;
++ (void)resumeThumbnailRequests;
++ (void)pauseThumbnailRequests;
 + (BOOL)canStartActionAffectingAsset:(id)arg1 forUseDictionary:(id)arg2 error:(id *)arg3;
 + (id)alertForBlockingBackgroundTaskNamed:(id)arg1;
 + (id)errorForBlockingTaskNamed:(id)arg1;
@@ -42,6 +47,10 @@
 @property BOOL tasksPending; // @synthesize tasksPending=_tasksPending;
 @property double aggregateProgress; // @synthesize aggregateProgress=_aggregateProgress;
 @property id delegate; // @synthesize delegate=_delegate;
+- (BOOL)cancelAllTasksUsingAssets:(id)arg1 forUse:(int)arg2 forUndoableBlock:(CDUnknownBlockType)arg3;
+- (void)_handleCancelAllTasksForUndoableBlock_UndoRedoOperationAfter:(id)arg1;
+- (void)_handleCancelAllTasksForUndoableBlock_UndoRedoOperationBefore:(id)arg1;
+- (id)cancelAndWaitForTasks:(id)arg1 timeout:(id)arg2;
 - (void)cancelTasks:(id)arg1 timeout:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)waitUntilAllOperationsAreFinishedBeforeDate:(id)arg1;
 - (void)waitUntilAllOperationsAreFinished;
@@ -52,8 +61,9 @@
 - (id)operations;
 - (id)_copyOperationsInternal;
 - (void)setRunGroupMaxSimultaneousOperations:(unsigned long long)arg1 forRunGroup:(id)arg2;
-- (id)resumeAllTasks;
-- (id)pauseAllTasks;
+- (void)resumeTasks:(id)arg1;
+- (void)pauseTasks:(id)arg1;
+- (unsigned long long)getLowOverheadEntryNumberAndCurrentState:(_Bool *)arg1;
 - (void)runLowOverHeadForTime:(double)arg1;
 - (void)_forceExitLOMode;
 - (void)_forceExpireTimedLOMode;
@@ -70,8 +80,8 @@
 - (void)queueBlockToMainThread:(CDUnknownBlockType)arg1;
 - (void)_handleBlocksOnMainThread;
 - (void)_updateAggregateProgress:(id)arg1;
-- (void)_decrementNotableTaskCount:(id)arg1;
-- (void)_incrementNotableTaskCount:(id)arg1;
+- (void)_decrementVisibleTaskCount:(id)arg1;
+- (void)_incrementVisibleTaskCount:(id)arg1;
 - (void)_updateTasksPending;
 - (void)removeNote:(id)arg1;
 - (void)addNote:(id)arg1;
@@ -79,10 +89,14 @@
 - (BOOL)waitForTasksInRunGroup:(id)arg1 beforeDate:(id)arg2;
 - (id)backgroundAssetsForUse:(int)arg1;
 - (BOOL)canStartActionAffectingAssets:(id)arg1 forUse:(int)arg2;
-- (id)tasksUsingAssets:(id)arg1 forUse:(int)arg2;
-- (id)_taskNamesUsingAssets:(id)arg1 forUse:(int)arg2;
+- (id)tasksUsingAssets:(id)arg1 forUse:(int)arg2 notableTasksOnly:(BOOL)arg3;
+- (id)allTasksUsingAssets:(id)arg1 forUse:(int)arg2;
+- (id)notableTasksUsingAssets:(id)arg1 forUse:(int)arg2;
+- (id)_notableTaskNamesUsingAssets:(id)arg1 forUse:(int)arg2;
+- (BOOL)visibleTasksPending;
 - (BOOL)notableTasksPending;
 - (id)_notableTasks;
+- (id)_allTasks;
 @property(readonly) BOOL inLowOverheadMode;
 - (void)appWillTerminate:(id)arg1;
 - (void)finalizeShutdown;

@@ -34,8 +34,8 @@ __attribute__((visibility("hidden")))
 @property _Bool programmaticallyCancelled; // @synthesize programmaticallyCancelled=_programmaticallyCancelled;
 @property(readonly) FFRenderStateTracker *tracker; // @synthesize tracker=_tracker;
 @property(retain) FFBGRenderAutoStartInfo *autoStartInfo; // @synthesize autoStartInfo=_autoStartInfo;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_newRenderFilesAvailableByMD5TransferToMainThread:(id)arg1;
 - (void)_newRenderFilesAvailableTransferToMainThread:(id)arg1;

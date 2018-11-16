@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FFPlayerDropTracker : NSObject
 {
     NSObject<OS_dispatch_queue> *_historyLock;
-    struct list<CMTime, std::allocator<CMTime>> _dropHistory;
+    struct list<CMTime, std::__1::allocator<CMTime>> _dropHistory;
     struct OpaqueCMTimebase *_timebase;
     int _warningLimit;
     NSObject<OS_dispatch_queue> *_callbackQueue;

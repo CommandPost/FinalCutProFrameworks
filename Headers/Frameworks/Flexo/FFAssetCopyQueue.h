@@ -11,7 +11,6 @@
 
 @class FFAssetCopyRequest, FFBackgroundTaskWithPauseCondition, FFStorageLocation, NSMutableArray, NSMutableSet, NSRecursiveLock, NSString;
 
-__attribute__((visibility("hidden")))
 @interface FFAssetCopyQueue : NSObject <FFStorageLocationOutOfDiskSpaceProtocol, FFBackgroundTaskTarget>
 {
     NSRecursiveLock *_lock;
@@ -46,10 +45,10 @@ __attribute__((visibility("hidden")))
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (void)_runBackgroundTask:(id)arg1 onTask:(id)arg2;
 - (void)_statusCallback:(id)arg1 stage:(unsigned int)arg2 osstatus:(int)arg3;
-- (id)librariesInUse;
+- (id)librariesInUse:(id)arg1;
 - (BOOL)usesLibrary:(id)arg1;
-- (id)assetsChanging;
-- (id)assetsInUse;
+- (id)assetsChanging:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)canceledTask:(id)arg1;
 - (void)resumedTask:(id)arg1;
 - (BOOL)confirmIsPaused:(id)arg1;

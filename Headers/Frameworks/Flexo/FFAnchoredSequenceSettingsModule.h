@@ -8,7 +8,7 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class FFLibrary, FFProject, NSBox, NSButton, NSInvocation, NSMatrix, NSPopUpButton, NSString, NSTextField, NSView;
+@class FFLibrary, FFProject, NSButton, NSInvocation, NSPopUpButton, NSString, NSTextField, NSView;
 
 @interface FFAnchoredSequenceSettingsModule : FFSettingsModule <NSTextFieldDelegate>
 {
@@ -23,6 +23,7 @@
     NSTextField *videoWidthField;
     NSTextField *videoHeightField;
     NSPopUpButton *videoRateMenu;
+    NSPopUpButton *colorSpaceMenu;
     NSPopUpButton *renderFormatMenu;
     NSPopUpButton *sampleRateMenu;
     NSPopUpButton *channelCountMenu;
@@ -33,9 +34,7 @@
     NSTextField *multiAngleArrangeByText;
     NSTextField *multiAngleOrderByText;
     NSButton *multiAngleFineSyncByAudio;
-    NSBox *multiAngleBox;
-    NSMatrix *videoModeMatrix;
-    NSMatrix *audioModeMatrix;
+    NSButton *multiAngleDisableAudioComponentsOnAVClips;
     NSButton *timecodeDisplayDropFrame;
     NSTextField *startingTimecode;
     NSView *locationGroup;
@@ -44,16 +43,13 @@
     NSView *multiAngleAudioSyncSettingsGroup;
     NSView *multiAngleSettingsGroup;
     NSView *timecodeSettingsGroup;
-    NSView *videoSettingsGroup;
-    NSView *audioSettingsGroup;
-    NSView *videoSettingsCustomControls;
-    NSView *audioSettingsCustomControls;
-    NSView *multiAngleSettingsCustomControls;
+    NSView *customVideoAudioSettingsGroup;
+    NSView *automaticSettingsGroup;
+    NSTextField *automaticVideoLabelField;
+    NSTextField *automaticAudioLabelField;
+    NSTextField *setBasedOnPropertiesField;
     NSTextField *commonVideoPropField;
     NSTextField *defaultAudioPropField;
-    unsigned long long _videoSetPropertyMethod;
-    BOOL _changeSettingsBecauseFirstClipNotRecognized;
-    BOOL _forceToCustomizeVideoProperty;
     BOOL _mixedTCTracksClockTime;
     BOOL _automaticBasedOnMostCommon;
     BOOL _createAutomatically;
@@ -67,35 +63,32 @@
     FFLibrary *_defaultSelectedLibrary;
 }
 
-+ (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 videoSetPropertyManually:(BOOL)arg9 audioSetPropertyManually:(BOOL)arg10 videoSetPropertyManuallyForCompoundClip:(BOOL)arg11 audioSetPropertyManuallyForCompoundClip:(BOOL)arg12 videoSetPropertyManuallyForSynchronizedClip:(BOOL)arg13 audioSetPropertyManuallyForSynchronizedClip:(BOOL)arg14 videoSetPropertyManuallyForMultiCam:(BOOL)arg15 audioSetPropertyManuallyForMultiCam:(BOOL)arg16 createAutomatically:(BOOL)arg17 createCompoundClipAutomatically:(BOOL)arg18 createSynchronizedClipAutomatically:(BOOL)arg19 syncClipSyncBy:(int)arg20 syncClipFineSyncByAudio:(BOOL)arg21 createMultiCamAutomatically:(BOOL)arg22 multiAngleSyncBy:(int)arg23 multiAngleArrangeBy:(int)arg24 multiAngleOrderBy:(int)arg25 multiAngleFineSyncByAudio:(BOOL)arg26;
++ (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 createAutomatically:(BOOL)arg9 createCompoundClipAutomatically:(BOOL)arg10 createSynchronizedClipAutomatically:(BOOL)arg11 syncClipSyncBy:(int)arg12 syncClipFineSyncByAudio:(BOOL)arg13 syncClipDisableAudioComponentsOnAVClips:(BOOL)arg14 createMultiCamAutomatically:(BOOL)arg15 multiAngleSyncBy:(int)arg16 multiAngleArrangeBy:(int)arg17 multiAngleOrderBy:(int)arg18 multiAngleFineSyncByAudio:(BOOL)arg19;
 @property(retain, nonatomic) FFLibrary *defaultSelectedLibrary; // @synthesize defaultSelectedLibrary=_defaultSelectedLibrary;
 @property(nonatomic) BOOL canShowCustomSettings; // @synthesize canShowCustomSettings=_canShowCustomSettings;
 - (BOOL)validate:(id *)arg1;
 - (void)closingWithCode:(int)arg1;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;
-@property(nonatomic) long long audioChannelCount;
+@property(nonatomic) unsigned int audioChannelCount;
 - (BOOL)automaticAudioChannelCount;
 @property(nonatomic) long long audioSampleRate;
 - (BOOL)automaticAudioSampleRate;
 @property(nonatomic) NSString *renderFormat;
 - (void)changeStartingTimecode:(id)arg1;
 - (void)changeTimecodeDisplay:(id)arg1;
+- (void)changeColorSpace:(id)arg1;
 - (void)changeVideoSize:(id)arg1;
 - (void)changeVideoFormat:(id)arg1;
 - (void)changeVideoRate:(id)arg1;
 - (void)changeSyncByForMultiAngle:(id)arg1;
-- (void)setAudioModeMatrixHidden:(BOOL)arg1;
-- (void)setAudioManualSettingsHidden:(BOOL)arg1;
-- (void)setVideoModeMatrixHidden:(BOOL)arg1;
-- (void)setVideoManualSettingsHidden:(BOOL)arg1;
 - (void)setMultiAngleSettingsForSynchronizeClips;
 - (void)setMultiAngleSettingsHidden:(BOOL)arg1;
 - (void)setMultiAngleAudioSyncSettingsHidden:(BOOL)arg1;
+- (void)setMultiAngleDisableAudioComponentsOnAVClipsHidden:(BOOL)arg1;
+- (void)setTimecodeSettingsHidden:(BOOL)arg1;
 - (void)setMediaEventSettingsHidden:(BOOL)arg1;
 - (void)setLocationSettingsHidden:(BOOL)arg1;
-- (void)setCustomSettingsHidden:(BOOL)arg1;
-- (void)setAudioSettingsMode:(id)arg1;
-- (void)changeSetPropertyMethod:(id)arg1;
+- (void)setCustomSettingsHidden:(BOOL)arg1 automaticSettingsHidden:(BOOL)arg2 timecodeHidden:(BOOL)arg3;
 - (BOOL)alsoCreateNewProject;
 - (void)changeAlsoCreateNewProject:(id)arg1;
 - (id)nameValue;
@@ -109,6 +102,7 @@
 - (BOOL)createAutomatically;
 - (void)toggleCreationSettings;
 - (void)_validateEventNameForLibrary:(id)arg1;
+- (void)_buildColorSpaceMenuBasedOnFormatAndSize:(id)arg1;
 - (void)_buildRateMenuBasedOnCurrentRateAndFormatAndSize;
 - (void)_buildSizeMenuBasedOnCurrentRateAndFormat;
 - (void)_buildFormatMenuBasedOnCurrentRate;
@@ -124,7 +118,6 @@
 - (void)setMixedTCTracksClockTime:(BOOL)arg1;
 - (void)setUserModifySettings:(BOOL)arg1;
 - (void)setAutomaticBasedOnMostCommon:(BOOL)arg1;
-- (void)setForceToCustomizeVideoProperty:(BOOL)arg1;
 - (void)setCompletionCallback:(id)arg1;
 - (BOOL)showCustomSettingsButton;
 - (BOOL)createProjectOrEvent;

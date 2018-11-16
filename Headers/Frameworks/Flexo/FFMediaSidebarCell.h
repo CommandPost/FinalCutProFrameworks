@@ -12,15 +12,18 @@ __attribute__((visibility("hidden")))
 @interface FFMediaSidebarCell : LKTextFieldCell
 {
     FFMediaSidebarNode *_node;
+    int _lastEditableState;
 }
 
 @property(retain, nonatomic) FFMediaSidebarNode *node; // @synthesize node=_node;
+- (void)showDefinitionForAttributedString:(id)arg1 range:(struct _NSRange)arg2 options:(id)arg3 baselineOriginProvider:(CDUnknownBlockType)arg4;
 - (void)_drawRolloverAdornment:(struct CGRect)arg1 inView:(id)arg2;
 - (void)_drawAdornment:(struct CGRect)arg1 inView:(id)arg2;
 - (void)_drawAdornmentImage:(id)arg1 inFrame:(struct CGRect)arg2 inView:(id)arg3;
 - (void)_drawRolloverIcon:(struct CGRect)arg1 inView:(id)arg2;
 - (void)_drawIcon:(struct CGRect)arg1 inView:(id)arg2;
 - (void)_drawIconImage:(id)arg1 inFrame:(struct CGRect)arg2 inView:(id)arg3;
+- (struct CGRect)drawingRectForBounds:(struct CGRect)arg1;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
 - (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;

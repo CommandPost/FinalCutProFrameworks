@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 + (id)utis;
 @property _Bool canFitAsTexture; // @synthesize canFitAsTexture=_canFitAsTexture;
 - (id)renderFilesPaths;
-- (id)renderFormat;
 - (_Bool)shouldUseTextureCacher:(int)arg1 size:(struct CGRect)arg2 shouldLog:(_Bool *)arg3 retUseIGMode:(char *)arg4;
 - (id)MD5Seed;
 - (void)setMD5Seed:(id)arg1;
@@ -77,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)returnImageSourceToCache:(struct CGImageSource *)arg1;
 - (void)emptyCachedImageSource;
 - (struct CGImageSource *)copyCachedOrCreatedImageSourceRefForURL:(id)arg1 reason:(const char *)arg2;
+- (void)renderFormat;
 
 @end
 

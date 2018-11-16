@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFDataListPlayheadView *playheadView; // @synthesize playheadView=_playheadView;
 @property(nonatomic) int playheadPosition; // @synthesize playheadPosition=_playheadPosition;
 @property(nonatomic) long long playheadRow; // @synthesize playheadRow=_playheadRow;
+- (void)addSubview:(id)arg1;
+- (void)addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (void)setPlayheadRow:(long long)arg1 andPosition:(int)arg2 animate:(BOOL)arg3;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

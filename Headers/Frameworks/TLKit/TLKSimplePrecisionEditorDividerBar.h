@@ -10,13 +10,11 @@
 {
 }
 
-+ (double)dividerBarHeight;
 + (double)heightOfBar;
-+ (id)backgroundThemeFacet;
-- (double)offsetOfLastItem;
-- (double)offsetItem:(id)arg1 previousItem:(id)arg2;
+- (double)editPointOffset;
+- (double)editPointOffsetBeforeItem:(id)arg1;
 - (id)init;
-- (struct CGSize)preferredFrameSize;
+- (id)nameForRootLayerMicaArchive;
 
 @end
 

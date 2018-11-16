@@ -39,7 +39,7 @@
 - (void)removeListeners;
 - (void)_asyncRemakerFinishedWithSuccess:(BOOL)arg1 importRequest:(id)arg2;
 - (void)remakerFinishedWithSuccess:(BOOL)arg1 importRequest:(id)arg2;
-- (void)updateProgressForCurrentImportRequest:(id)arg1;
+- (void)updateProgressForCurrentImportRequest:(float)arg1;
 - (void)cancelCurrentImportRequest;
 - (void)removeImportRequest:(id)arg1;
 - (void)startNewImport;
@@ -47,7 +47,6 @@
 - (void)resume;
 - (void)pause;
 - (void)cancelImportRequests:(id)arg1;
-- (void)cancelImportsFromByteStream:(struct OpaqueCMByteStream *)arg1;
 - (void)cancelImportsFromVolume:(id)arg1;
 - (void)cancelAllImportRequests;
 - (void)requestImportAssets:(id)arg1 clipIDs:(id)arg2 importRanges:(id)arg3 fileNames:(id)arg4 toDirectoryPath:(id)arg5 tempFileExtension:(id)arg6 cameraName:(id)arg7 clipUserData:(id)arg8 userData:(id)arg9;

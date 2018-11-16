@@ -38,8 +38,10 @@
 - (void)volumeDidUnmount:(id)arg1;
 - (void)volumeWillUnmount:(id)arg1;
 - (void)volumeDidMount:(id)arg1;
-- (void)afcDevicesChanged:(id)arg1;
-- (void)afcDeviceMountingFailed:(id)arg1;
+- (void)iOSDeviceDidUnmount:(id)arg1;
+- (void)iOSDeviceDidMount:(id)arg1;
+- (void)_broadcastToPluginsWithName:(id)arg1 path:(id)arg2;
+- (void)iOSDeviceMountingFailed:(id)arg1;
 - (unsigned int)volumeCount;
 - (unsigned int)volumeIndex:(id)arg1;
 - (id)volumeAtIndex:(unsigned int)arg1;
@@ -48,6 +50,7 @@
 - (id)volumes;
 - (void)removeListOfRADVolumes;
 - (BOOL)removeVolume:(id)arg1;
+- (void)mountiOSDevicesSynchronously;
 - (void)scanForiOSDevices;
 - (void)removeClipFromFlatClipsArray:(id)arg1;
 - (void)postVolumeFailedToMount:(id)arg1;

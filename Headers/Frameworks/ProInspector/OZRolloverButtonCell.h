@@ -17,7 +17,6 @@
 - (void)setShowsRollover:(BOOL)arg1;
 - (void)viewDidMoveToWindow;
 - (void)viewWillMoveToWindow:(id)arg1;
-- (id)initWithImageSource:(id)arg1;
 - (id)initTextCell:(id)arg1;
 - (id)initImageCell:(id)arg1;
 - (id)init;

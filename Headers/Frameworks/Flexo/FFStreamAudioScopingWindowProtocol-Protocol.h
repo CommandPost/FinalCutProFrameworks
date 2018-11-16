@@ -4,9 +4,10 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFPrerollSync;
+@class FFAudioDynamicScopingWindowList, FFPrerollSync;
 
 @protocol FFStreamAudioScopingWindowProtocol
+- (void)findAssociatedMixBussScopingWindows:(FFAudioDynamicScopingWindowList *)arg1;
 - (CDStruct_e83c9415)calculateScopingWindowTimeRange:(CDStruct_e83c9415)arg1 prerollRange:(CDStruct_e83c9415)arg2;
 - (void)advanceScopingWindow:(CDStruct_1b6d18a9)arg1 sync:(FFPrerollSync *)arg2;
 @end

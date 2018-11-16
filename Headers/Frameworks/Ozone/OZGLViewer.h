@@ -11,13 +11,13 @@
 #import "POHostDelegate.h"
 #import "POViewDelegate.h"
 
-@class NSFont, NSTimer;
+@class NSDate, NSFont, NSTimer;
 
 @interface OZGLViewer : OZGLViewerOSC <POHostDelegate, POViewDelegate, OZRenderClient, OZHGUserJobClient>
 {
     struct OZRenderManager *_pRenderManager;
     struct OZDisplayCallback *_displayCallback;
-    shared_ptr_92745eb9 *_pRender;
+    shared_ptr_8628efdd *_pRender;
     PCRect_07ce470f _roi;
     struct PCTimer _roiChangedTimer;
     PCRect_b601f9f3 _renderGate;
@@ -26,16 +26,14 @@
     PCMatrix44Tmpl_e98c85ee _renderPixelTransform;
     BOOL _openGLInitialized;
     BOOL _VSyncOn;
-    struct PCMutex _instructionMutex;
-    struct OZRenderInstruction *_pRenderInstruction;
-    struct queue<std::tr1::shared_ptr<OZRenderResult>, std::deque<std::tr1::shared_ptr<OZRenderResult>, std::allocator<std::tr1::shared_ptr<OZRenderResult>>>> _displayQueue;
+    struct queue<std::__1::shared_ptr<OZRenderResult>, std::__1::deque<std::__1::shared_ptr<OZRenderResult>, std::__1::allocator<std::__1::shared_ptr<OZRenderResult>>>> _displayQueue;
     struct PCMutex _displayQueueLock;
     NSTimer *_pDisplayTimer;
     struct PCTimer *_pViewerTimer;
     struct PCAtomicValue *_pNeedsRender;
     struct PCAtomicValue *_pRenderReady;
     struct OZRenderState _renderState;
-    shared_ptr_f006f9e7 *_pRenderTex;
+    shared_ptr_a4c878e3 *_pRenderTex;
     BOOL _ignoreNextDisplay;
     struct PCAtomicValue *_pPlayMode;
     struct PCAtomicValue *_pIsPlaying;
@@ -49,7 +47,7 @@
     BOOL _voPostDisplay;
     BOOL _useMainRenderForVideoOut;
     BOOL _renderFullViewWasOn;
-    struct queue<OZRenderResult *, std::deque<OZRenderResult *, std::allocator<OZRenderResult *>>> *_pVODisplayQueue;
+    struct queue<OZRenderResult *, std::__1::deque<OZRenderResult *, std::__1::allocator<OZRenderResult *>>> *_pVODisplayQueue;
     struct PCMutex *_pVODisplayQueueLock;
     struct OZAudioMixer *_pAudioMixer;
     unsigned int _audioLoopCount;
@@ -64,15 +62,13 @@
     int _backgroundHeight;
     int _lastRenderWidth;
     int _lastRenderHeight;
-    float _monitorGamma;
     double _rate;
     BOOL _didPreroll;
     BOOL _isScheduling;
     struct FFPMRSimpleTimer *_pmrTimer;
     struct OZProxyScrub _proxyScrub;
     int _proxyRendCount;
-    struct OZViewPainter *_painter;
-    _Bool _painterUsesHelium;
+    struct OZHeliumViewPainter *_painter;
     float _backingScale;
     struct shared_ptr<OZTimeStrategy> _timeStrategy;
     struct shared_ptr<OZPlaybackClock> _playbackClock;
@@ -83,6 +79,7 @@
     _Bool _stopLooping;
     double _renderRateFPS;
     struct shared_ptr<OZPlaybackScheduler> _playbackScheduler;
+    NSDate *_lastInfoBarUpdate;
 }
 
 + (PCPtr_41ab8147)getCamera:(int)arg1 forScene:(struct OZScene *)arg2 atTime:(const CDStruct_1b6d18a9 *)arg3 forViewState:(struct OZViewerState *)arg4;
@@ -120,7 +117,7 @@
 - (BOOL)proUI;
 - (BOOL)isMotion;
 - (id)createScaleOSCWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_ada7b58d *)arg2;
+- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_e1ec2d4c *)arg2;
 - (void)deregisterOSC:(id)arg1 withID:(const struct PCUUID *)arg2;
 - (void)registerOSC:(id)arg1 withID:(const struct PCUUID *)arg2;
 - (void)drawElementOutline:(struct OZElement *)arg1 state:(const struct OZRenderState *)arg2 viewTransformation:(const PCMatrix44Tmpl_e98c85ee *)arg3 color:(id)arg4;
@@ -158,6 +155,8 @@
 - (double)getSceneHeight;
 - (double)getSceneWidth;
 - (const struct OZRenderState *)renderState;
+- (float)blendingGamma;
+- (struct CGColorSpace *)workingColorSpace;
 - (BOOL)applyFlatten;
 - (BOOL)has3DObjects;
 - (struct OZScene *)getScene;
@@ -179,13 +178,13 @@
 - (void)updateDisplayAtCurrentFrame;
 - (void)toggleVideoOutput;
 - (BOOL)isVideoOutputEnabled;
-- (shared_ptr_f006f9e7)getRenderTexture;
+- (shared_ptr_a4c878e3)getRenderTexture;
 - (void)createDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseMoved:(id)arg1;
-- (id)createRenderedImage;
+- (shared_ptr_1a5c5a10)createRenderedImage;
 - (struct OZSceneNode *)getIsolatedIncludeAnimating;
 - (struct OZSceneNode *)getIsolatedNode;
 - (BOOL)validateMenuItem:(id)arg1;
@@ -215,7 +214,7 @@
 - (void)setUpPlayback;
 - (void)clearDisplayQueue;
 - (void)addVideoOutputRender:(struct OZRenderResult *)arg1;
-- (void)addRender:(shared_ptr_7e020609)arg1;
+- (void)addRender:(shared_ptr_3bf61ddf)arg1;
 - (_Bool)needsRender;
 - (void)ignoreNextDisplay;
 - (void)performSelectForEvent:(id)arg1 osc:(id)arg2;
@@ -247,7 +246,7 @@
 - (void)thinKeyframes;
 - (void)doPause;
 - (void)resumePlaybackAfterAbort;
-- (void)pausePlaybackAfterAbort;
+- (void)pausePlaybackDuringAbort;
 - (void)stopPlayback;
 - (void)startPlayback:(const CDStruct_1b6d18a9 *)arg1;
 - (void)doPlayFromTime:(const CDStruct_1b6d18a9 *)arg1;
@@ -265,12 +264,11 @@
 - (void)stopDisplayTimer;
 - (void)startDisplayTimer;
 - (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
-- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_3bf61ddf *)arg2;
 - (void)getRenderRequestRenderParams:(struct OZRenderParams *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)getRenderParams:(struct OZRenderParams *)arg1 forTexture:(BOOL)arg2 atTime:(CDStruct_1b6d18a9)arg3 forceFullView:(BOOL)arg4 mayReduceSpatialQuality:(BOOL)arg5 renderProjectResolution:(BOOL)arg6;
 - (void)getRenderParams:(struct OZRenderParams *)arg1 forTexture:(BOOL)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)postRenderInstructionForVideoOutput;
-- (void)clearRenderInstruction;
 - (void)postRenderInstructionForViewer;
 - (void)postRenderInstruction;
 - (void)postEvalInstruction;
@@ -286,9 +284,6 @@
 - (_Bool)proxyScrub;
 - (void)markNeedingDisplay;
 - (PCRect_07ce470f)anticipateROI:(const PCRect_07ce470f *)arg1 forTransform:(const PCMatrix44Tmpl_e98c85ee *)arg2;
-- (float)getMonitorGamma;
-- (void)updateMonitorGamma;
-- (void)applicationActivated:(id)arg1;
 - (void)windowDidResize:(id)arg1;
 - (BOOL)displayQueueEmpty;
 - (void)adjustProjectView:(_Bool)arg1;

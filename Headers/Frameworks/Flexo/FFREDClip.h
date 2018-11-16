@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _timecodeFrameDuration;
     CDStruct_1b6d18a9 _startTimeCode;
     unsigned long long _startTimeCodeInFrames;
-    struct vector<unsigned int, std::allocator<unsigned int>> _fileCumulativeVideoFrameCounts;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _fileCumulativeVideoFrameCounts;
     unsigned int _maxVideoFrameSize;
     int _revision;
     id <REDImageProcessing> _settings;

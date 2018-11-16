@@ -6,13 +6,14 @@
 
 #import <Flexo/FFSourceVideo.h>
 
-@class FFVideoProps, NSString, ProPSDLayerRef;
+@class FFVideoProps, LKPSDLayerRef, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFSourceVideoLayeredPSD : FFSourceVideo
 {
+    struct FFSynchronizable *_videoPropsLock;
     FFVideoProps *_videoProps;
-    ProPSDLayerRef *_layerRef;
+    LKPSDLayerRef *_layerRef;
     NSString *_displayName;
     CDStruct_bdcb2b0d _md5;
     int _layerNumber;
@@ -25,8 +26,7 @@ __attribute__((visibility("hidden")))
 @property BOOL isCompositeSource; // @synthesize isCompositeSource=_isCompositeSource;
 @property BOOL disabled; // @synthesize disabled=_disabled;
 @property int layerNumber; // @synthesize layerNumber=_layerNumber;
-@property(retain) ProPSDLayerRef *layerRef; // @synthesize layerRef=_layerRef;
-- (id).cxx_construct;
+@property(retain) LKPSDLayerRef *layerRef; // @synthesize layerRef=_layerRef;
 - (int)blendMode;
 - (id)displayName;
 - (double)opacity;

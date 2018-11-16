@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic, getter=isActive) BOOL active; // @synthesize active=_shapeActive;
 @property(nonatomic) struct CGPoint mouseDownOffset; // @synthesize mouseDownOffset=_mouseDownOffset;
-- (id).cxx_construct;
 - (id)cropMatrix;
 - (id)getCursor;
 - (void)endUndoTransaction;

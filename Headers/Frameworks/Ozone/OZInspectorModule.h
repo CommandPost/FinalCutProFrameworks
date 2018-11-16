@@ -9,28 +9,29 @@
 #import "NSTabViewDelegate.h"
 #import "OZHGUserJobClient.h"
 
-@class NSBox, NSProThemeImageView, NSProView, NSString, OZInspectorPreviewModule, OZProTabPaneCapSegmentedControl, OZViewControllerGroup;
+@class NSBox, NSImageView, NSString, NSView, OZBorderedView, OZInspectorPreviewModule, OZInspectorSegmentedControl, OZViewControllerGroup;
 
 @interface OZInspectorModule : OZProViewModule <NSTabViewDelegate, OZHGUserJobClient>
 {
-    OZProTabPaneCapSegmentedControl *_pTabSegmentedControl;
-    NSProView *_pDummyView;
+    OZInspectorSegmentedControl *_pTabSegmentedControl;
+    OZBorderedView *_pBorderedView;
+    NSView *_pDummyView;
     NSBox *_pBackgroundView;
     long long _currTabIndex;
     long long _lastRequestedTabIndex;
     long long _sceneNodeTabIndex;
-    NSProThemeImageView *_pPreview;
+    NSImageView *_pPreview;
     OZViewControllerGroup *_pPropertiesControllers;
     OZViewControllerGroup *_pBehaviorsControllers;
     OZViewControllerGroup *_pEffectsControllers;
     OZViewControllerGroup *_pObjectControllers;
     NSBox *_pPreviewBox;
     OZInspectorPreviewModule *_pPreviewController;
-    list_bbacc03b *_pLockedNodeIDs;
+    list_45f779fc *_pLockedNodeIDs;
     unsigned int _lastSeenNextUniqueID;
-    list_bbacc03b *_pObjectIDs;
-    list_4c5ca08a *_pObjects;
-    struct map<unsigned int, unsigned int, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned int>>> *_pObjectIDToMagic;
+    list_45f779fc *_pObjectIDs;
+    list_281b6609 *_pObjects;
+    map_c341eac7 *_pObjectIDToMagic;
     BOOL _isEvalulationComplete;
     unsigned int _missedNotifications;
     unsigned int _instructionID;
@@ -63,7 +64,7 @@
 - (void)switchToTabWithSelectedObjects;
 - (void)suppressOnceShowSelectedObjects;
 - (void)showSelectedObjects;
-- (void)getSceneNodeList:(list_d81b4758 *)arg1;
+- (void)getSceneNodeList:(list_63a35edb *)arg1;
 - (id)lockedTitle;
 - (void)validateLockedInspector;
 - (void)unlockInspector;
@@ -76,6 +77,8 @@
 - (void)showChannel:(struct OZChannelBase *)arg1;
 - (void)showEffect:(struct OZEffect *)arg1;
 - (void)showBehavior:(struct OZBehavior *)arg1;
+- (void)showLibrary;
+- (void)showInspector;
 - (void)showSceneNode:(struct OZSceneNode *)arg1;
 - (void)showObject:(struct OZObjectManipulator *)arg1;
 - (id)currentTabController;

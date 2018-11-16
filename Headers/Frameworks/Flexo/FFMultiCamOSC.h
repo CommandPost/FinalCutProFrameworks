@@ -6,15 +6,18 @@
 
 #import <Flexo/FFOSC.h>
 
-@class FFThemeFacet, NSCursor, NSDictionary, NSMutableDictionary, NSString;
+@class FFOpenGLNSImage, NSCursor, NSDictionary, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMultiCamOSC : FFOSC
 {
-    FFThemeFacet *_angleEmpty;
-    FFThemeFacet *_angleBezel;
-    FFThemeFacet *_angleBezelSelection;
-    FFThemeFacet *_angleAudioIcon;
+    FFOpenGLNSImage *_angleEmpty;
+    FFOpenGLNSImage *_angleBezel;
+    FFOpenGLNSImage *_angleBezelRollover;
+    FFOpenGLNSImage *_angleBezelSelectionAudioVideo;
+    FFOpenGLNSImage *_angleBezelSelectionAudio;
+    FFOpenGLNSImage *_angleBezelSelectionVideo;
+    FFOpenGLNSImage *_angleAudioIcon;
     struct CGSize _angleAudioIconSize;
     NSDictionary *_timecodeTextAttributes;
     NSDictionary *_angleClipTextAttributes;
@@ -25,7 +28,6 @@ __attribute__((visibility("hidden")))
     int _LRUCount;
 }
 
-- (id).cxx_construct;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
 - (id)accessibilityAttributeValue:(id)arg1;

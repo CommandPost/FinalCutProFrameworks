@@ -10,6 +10,7 @@
 {
 }
 
+- (void)applyModuleLayout:(id)arg1;
 - (BOOL)validMotionLayout:(id)arg1;
 - (BOOL)canApplyLayout:(id)arg1;
 - (id)layoutArray;

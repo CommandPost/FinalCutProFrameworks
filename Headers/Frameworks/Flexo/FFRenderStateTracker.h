@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface FFRenderStateTracker : NSObject <FFBackgroundTaskTarget>
 {
     FFSVContext *_scrubContext;
+    int _scrubContextQuality;
     FFSourceVideo *_source;
     FFProvider *_provider;
     NSMutableArray *_knownRanges;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSLock *_rbLock;
     _Bool _stateFullyKnownAtLockTime;
     NSThread *_rbLockHolder;
+    CDStruct_e83c9415 _rawPrimaryInterestTimeRange;
     CDStruct_e83c9415 _primaryInterestTimeRange;
     NSLock *_bgTaskIVarLock;
     FFBackgroundTask *_backgroundCalculationTask;
@@ -31,7 +33,7 @@ __attribute__((visibility("hidden")))
     FFPMRLogFunnel *_pmrFunnel;
     long long _UIPlayersPlayering;
     int _deferredRenderStateNotify;
-    struct set<FFMD5, std::less<FFMD5>, std::allocator<FFMD5>> *_segmentsWithDrops;
+    struct set<FFMD5, std::__1::less<FFMD5>, std::__1::allocator<FFMD5>> *_segmentsWithDrops;
     _Bool _temporaryHold;
 }
 
@@ -39,9 +41,8 @@ __attribute__((visibility("hidden")))
 + (id)anchoredObjectInUseForSource:(id)arg1;
 @property _Bool temporaryHold; // @synthesize temporaryHold=_temporaryHold;
 @property(readonly, retain) FFSourceVideo *source; // @synthesize source=_source;
-- (id).cxx_construct;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (id)description;
 - (void)runBackgroundCalculationTask:(id)arg1 onTask:(id)arg2;
 - (void)setPrimaryInterestTimeRange:(CDStruct_e83c9415)arg1;
@@ -72,7 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)rangeInvalidated:(id)arg1;
 - (void)setState:(int)arg1 forRange:(CDStruct_e83c9415)arg2 withSegmentMD5s:(CDStruct_bdcb2b0d *)arg3 diskMD5s:(CDStruct_bdcb2b0d *)arg4 hasData:(char *)arg5 nativeSampleDur:(CDStruct_1b6d18a9)arg6;
 - (CDStruct_e83c9415)_findNextDirtyInRange:(CDStruct_e83c9415)arg1;
-- (void)_insertIntoKnownRange:(id)arg1;
+- (_Bool)_insertIntoKnownRange:(id)arg1;
 - (void)_removeFromDirtyRanges:(CDStruct_e83c9415)arg1;
 - (_Bool)_addToDirtyRanges:(CDStruct_e83c9415)arg1;
 - (_Bool)_removeRangeFromKnownRanges:(CDStruct_e83c9415)arg1;

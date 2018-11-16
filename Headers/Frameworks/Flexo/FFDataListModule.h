@@ -6,12 +6,14 @@
 
 #import "LKViewModule.h"
 
-@class FFAnchoredCollection, FFContext, FFDataListHeaderView, FFDataListModeViewController, LKButton, LKSearchField, LKTextField, NSArray, NSMutableDictionary, NSSet, NSView;
+@class FFAnchoredCollection, FFContext, FFDataListHeaderView, FFDataListModeViewController, LKSearchField, LKSegmentedControl, LKTextField, NSArray, NSMutableDictionary, NSSet, NSView;
 
 @interface FFDataListModule : LKViewModule
 {
     BOOL _showsContainedItems;
     BOOL _searchesEffects;
+    BOOL _searchesCustomMetadata;
+    BOOL _customMetadataIncludesNames;
     BOOL _timelineDragging;
     BOOL _showsTotalDuration;
     BOOL _showsDisplayedItemTypesBar;
@@ -27,13 +29,11 @@
     id <FFDataListDelegate> _dataListDelegate;
     FFDataListHeaderView *_headerView;
     LKSearchField *_filterField;
-    LKButton *_clipsBtn;
-    LKButton *_tagsBtn;
-    LKButton *_rolesBtn;
+    LKSegmentedControl *_tabSwitcher;
     LKTextField *_infoLabel;
     NSView *_contentContainerView;
-    FFDataListModeViewController *_curModeViewController;
     BOOL _debugDisplayPlayheadOnItem;
+    FFDataListModeViewController *_curModeViewController;
     long long clipFilterTyle;
     long long tagFilterType;
 }
@@ -44,9 +44,6 @@
 @property(retain, nonatomic) FFDataListModeViewController *curModeViewController; // @synthesize curModeViewController=_curModeViewController;
 @property(retain, nonatomic) NSView *contentContainerView; // @synthesize contentContainerView=_contentContainerView;
 @property(retain, nonatomic) LKTextField *infoLabel; // @synthesize infoLabel=_infoLabel;
-@property(retain, nonatomic) LKButton *rolesBtn; // @synthesize rolesBtn=_rolesBtn;
-@property(retain, nonatomic) LKButton *tagsBtn; // @synthesize tagsBtn=_tagsBtn;
-@property(retain, nonatomic) LKButton *clipsBtn; // @synthesize clipsBtn=_clipsBtn;
 @property(retain, nonatomic) LKSearchField *filterField; // @synthesize filterField=_filterField;
 @property(retain, nonatomic) FFDataListHeaderView *headerView; // @synthesize headerView=_headerView;
 @property(nonatomic) int curMode; // @synthesize curMode=_curMode;
@@ -69,9 +66,6 @@
 - (void)_refilterItems;
 - (void)_rearrangeItems;
 - (void)_reloadData;
-- (id)imageWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 dimension2:(long long)arg4 fromTheme:(unsigned long long)arg5 state:(long long)arg6 value:(long long)arg7 variant:(long long)arg8;
-- (id)imageWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
-- (id)sharedImageWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
 - (BOOL)isTimeLineInMultiAngleEditMode;
 - (BOOL)isItem:(id)arg1 containedInItem:(id)arg2;
 - (id)imageForItem:(id)arg1;
@@ -83,8 +77,6 @@
 - (void)syncToTimelineSelection:(id)arg1;
 - (void)timelineDidStopDragging:(id)arg1;
 - (void)timelineWillStartDragging:(id)arg1;
-- (void)dataListShouldDeleteItemsAtIndexPaths:(id)arg1;
-- (void)dataListShouldSearch;
 - (void)timeRateChangedForContext:(id)arg1;
 - (id)firstKeyView;
 - (id)targetModules;
@@ -97,14 +89,15 @@
 - (void)filter:(id)arg1;
 - (void)selectPreviousTabViewItemAction:(id)arg1;
 - (void)selectNextTabViewItemAction:(id)arg1;
-- (void)showRolesMode:(id)arg1;
-- (void)showTagsMode:(id)arg1;
-- (void)showClipsMode:(id)arg1;
+- (void)incrementTabViewItemByAmount:(long long)arg1;
+- (void)switchTabs:(id)arg1;
 - (void)switchModes:(int)arg1;
+- (int)currentMode;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)rangeInvalidated:(id)arg1;
 - (id)contentLayoutDictionary;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
+- (void)awakeFromNib;
 - (void)dealloc;
 - (id)init;
 

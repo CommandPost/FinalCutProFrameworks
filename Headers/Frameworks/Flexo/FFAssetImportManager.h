@@ -10,19 +10,17 @@
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 #import "MIOAssetImportQueueDelegate.h"
 
-@class FFBackgroundTask, MIOAssetImportQueue, NSCondition, NSMutableArray, NSMutableDictionary, NSString;
+@class FFBackgroundTask, MIOAssetImportQueue, NSCondition, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface FFAssetImportManager : NSObject <MIOAssetImportQueueDelegate, FFStorageLocationOutOfDiskSpaceProtocol, FFBackgroundTaskTarget>
 {
     MIOAssetImportQueue *_importQueue;
-    NSMutableDictionary *_importRequestsDictionary;
-    NSMutableDictionary *_importPercentageDoneDictionary;
     FFBackgroundTask *_backgroundTask;
     NSCondition *_backgroundTaskCondition;
     unsigned long long _completedImportRequestsCount;
     unsigned long long _totalImportRequestsCount;
     NSMutableArray *_canceledImportRequests;
+    struct FFPMRSimpleTimer _currentIngestTimer;
 }
 
 + (void)releaseSharedInstance;
@@ -36,8 +34,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)confirmIsPaused:(id)arg1;
 - (void)resumedTask:(id)arg1;
 - (void)pausedTask:(id)arg1;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)importProgress:(id)arg1 onTask:(id)arg2;
 - (void)showCameraFileImportErrorAlert:(id)arg1;
 - (void)assetImportError:(id)arg1 error:(id)arg2;
@@ -50,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)volumeDidUnmount:(id)arg1;
 - (void)importRequestsRemovedFromQueue:(id)arg1;
 - (void)importRequestsAddedToQueue:(id)arg1;
-- (void)updateImportPercentageForClipID:(id)arg1;
+- (void)updateImportPercentageForImportRequest:(id)arg1;
 - (unsigned long long)removeCanceledImportRequestsForVolume:(id)arg1;
 - (void)cancelAll;
 - (void)resetImportedRangeMarkerForImportRequest:(id)arg1;

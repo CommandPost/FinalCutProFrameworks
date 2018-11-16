@@ -13,10 +13,16 @@
 }
 
 + (id)clipWithDataSource:(id)arg1 volume:(id)arg2;
+- (struct opaqueCMSampleBuffer *)copyVideoSampleBufferForWriterInput:(struct opaqueCMSampleBuffer *)arg1;
+- (BOOL)isValidSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (void)assetImportDidEnd;
+- (void)assetImportWillStart;
 - (BOOL)hasTimecode;
 - (BOOL)useAssetImportPath;
 - (BOOL)isiOSClip;
 - (id)uti;
+- (id)avAsset;
+- (id)URL;
 - (id)clipURLs;
 - (BOOL)enableScrubber;
 - (BOOL)limitedPlayback;
@@ -50,6 +56,8 @@
 - (id)avchdMetadataDictionaryForFigFormatReader;
 - (struct opaqueCMFormatDescription *)audioFormatDescription;
 - (struct opaqueCMFormatDescription *)videoFormatDescription;
+- (id)resourceLoaderQueue;
+- (id)resourceLoaderDelegate;
 - (void *)byteStream;
 - (BOOL)useBuiltInFormatReader;
 - (id)formatReader;

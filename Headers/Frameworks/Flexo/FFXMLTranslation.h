@@ -14,6 +14,8 @@
 + (void)alertUserToXMLImportWarnings:(id)arg1 url:(id)arg2;
 + (void)alertUserToXMLImportWarnings:(id)arg1;
 + (id)libraryEventsForProjects:(id)arg1;
++ (BOOL)pasteboardContainsXML:(id)arg1;
++ (id)xmlPasteboardTypes;
 + (BOOL)exportLibraryToFinalCutPro:(id)arg1 error:(id *)arg2;
 + (BOOL)exportLibraryToXML:(id)arg1 error:(id *)arg2;
 + (BOOL)exportEventsToFinalCutPro:(id)arg1 error:(id *)arg2;
@@ -23,8 +25,9 @@
 + (BOOL)exportToFinalCutPro:(id)arg1 error:(id *)arg2;
 + (BOOL)exportEventsToFinalCutBundleSupported;
 + (BOOL)exportToFinalCutBundleSupported;
++ (id)exportToXMLData:(id)arg1 usingVersion:(id)arg2 error:(id *)arg3;
++ (id)exportToXMLString:(id)arg1 usingVersion:(id)arg2 error:(id *)arg3;
 + (BOOL)exportToXML:(id)arg1 usingVersion:(id)arg2 error:(id *)arg3;
-+ (id)importXMLFile:(id)arg1 library:(id)arg2 warnings:(id *)arg3 error:(id *)arg4;
 
 @end
 

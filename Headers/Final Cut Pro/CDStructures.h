@@ -56,6 +56,13 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+} CDStruct_818bb265;
+
+typedef struct {
     long long value;
     int timescale;
     unsigned int flags;

@@ -4,21 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFMDModule.h>
+#import <Flexo/FFMDToggleSidebarModule.h>
 
 #import "FFMDLibraryDelegate.h"
 #import "NSMatrixDelegate.h"
 
-@class FFAlwaysHitButton, FFMDEventLibraryView, LKImageView, LKMenu, NSArray, NSArrayController, NSScrollView, NSString;
+@class FFEventMediaSidebarController, FFMDEventLibraryView, LKImageView, LKMenu, NSArray, NSArrayController, NSScrollView, NSString;
 
-@interface FFMDEventLibraryModule : FFMDModule <FFMDLibraryDelegate, NSMatrixDelegate>
+@interface FFMDEventLibraryModule : FFMDToggleSidebarModule <FFMDLibraryDelegate, NSMatrixDelegate>
 {
     FFMDEventLibraryView *_eventsBrowser;
+    FFEventMediaSidebarController *_sidebarControllerToObserve;
     NSArray *_selectedIDs;
     NSArrayController *_eventsController;
     NSArray *_eventLibraries;
-    FFAlwaysHitButton *_toggleSidebarButton;
-    FFAlwaysHitButton *_dividerLine;
     NSScrollView *_scrollView;
     LKImageView *_eventIcon;
     LKMenu *_cellContextMenu;
@@ -36,6 +35,8 @@
 @property(nonatomic) NSScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) NSArray *selectedIDs; // @synthesize selectedIDs=_selectedIDs;
 @property(retain, nonatomic) FFMDEventLibraryView *eventsBrowser; // @synthesize eventsBrowser=_eventsBrowser;
+- (void)_stopObservingSidebarController;
+- (void)_startObservingSidebarController;
 - (BOOL)writeDataForEditAction:(id)arg1 toPasteboardWithName:(id)arg2;
 - (id)dataForEditAction:(id)arg1;
 - (BOOL)canSourceDataForEditAction:(id)arg1;

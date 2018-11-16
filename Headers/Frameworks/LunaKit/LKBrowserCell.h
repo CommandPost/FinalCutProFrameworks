@@ -4,13 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProBrowserCell.h"
+#import "NSBrowserCell.h"
 
-@interface LKBrowserCell : NSProBrowserCell
+@interface LKBrowserCell : NSBrowserCell
 {
 }
-
-+ (id)_branchImageFacet;
 
 @end
 

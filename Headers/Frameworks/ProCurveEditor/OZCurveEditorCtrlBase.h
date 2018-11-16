@@ -42,8 +42,6 @@
 - (void)willModify:(id)arg1;
 - (void)magnifyGestureWithEvent:(id)arg1 andFactor:(double)arg2;
 - (void)rotateWithEvent:(id)arg1;
-- (void)endGestureWithEvent:(id)arg1;
-- (void)beginGestureWithEvent:(id)arg1;
 - (void)showValueAtPoint:(struct CGPoint)arg1 inWindow:(id)arg2 withRect:(struct CGRect)arg3;
 - (BOOL)shouldConstrainToFrames;
 - (CDStruct_1b6d18a9)convertToCurveEditorAxis:(CDStruct_1b6d18a9)arg1;
@@ -52,7 +50,7 @@
 - (void)setCurrentTool:(unsigned int)arg1;
 - (unsigned int)getCurrentTool;
 - (void)setCurveInterpolation:(id)arg1 interpolation:(unsigned int)arg2;
-- (vector_dd51e4ce)getKeypoints:(unsigned int)arg1;
+- (vector_875fa760)getKeypoints:(unsigned int)arg1;
 - (void)getSamples:(id)arg1 flag:(BOOL)arg2 minU:(CDStruct_1b6d18a9)arg3 resolution:(CDStruct_1b6d18a9)arg4 samplesU:(struct **)arg5 samplesV:(double **)arg6 number:(unsigned int *)arg7;
 - (void)setBezierPoint:(id)arg1;
 - (void)weightTangents:(id)arg1 flag:(BOOL)arg2;

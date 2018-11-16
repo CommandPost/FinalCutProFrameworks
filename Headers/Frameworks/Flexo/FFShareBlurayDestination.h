@@ -10,14 +10,16 @@
 {
 }
 
++ (id)keyPathsForValuesAffectingDisplayName;
 + (id)setting;
 + (id)defaultName;
 + (id)keyPathsForValuesAffectingRequiresSettingActionOutputURL;
 - (BOOL)requiresSettingActionOutputURL;
 - (id)iconTitle;
-- (long long)iconIndex;
+- (id)smallImage;
 - (id)largeImage;
 - (id)image;
+- (id)displayName;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;

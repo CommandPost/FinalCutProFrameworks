@@ -18,7 +18,6 @@
     BOOL _isObserver;
 }
 
-- (id).cxx_construct;
 - (BOOL)isCached:(CDStruct_1b6d18a9)arg1;
 - (void)notify:(unsigned int)arg1;
 - (void)timerAction:(id)arg1;

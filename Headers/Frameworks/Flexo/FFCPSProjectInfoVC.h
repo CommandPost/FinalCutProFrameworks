@@ -6,12 +6,13 @@
 
 #import <Flexo/FFCPSViewController.h>
 
+#import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFCPSClapperboardView, FFCPSShadowView, FFSequenceRecord, LKButton, LKPopOverWindow, LKTextField, NSButton, NSImageView, NSProThemeImageView, NSString;
+@class FFAnchoredSequence, FFCPSClapperboardView, FFCPSShadowView, FFSequenceRecord, LKButton, LKTextField, NSButton, NSImageView, NSPopover, NSString, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFCPSProjectInfoVC : FFCPSViewController <NSWindowDelegate>
+@interface FFCPSProjectInfoVC : FFCPSViewController <NSWindowDelegate, NSPopoverDelegate>
 {
     LKTextField *_projectTitleLabel;
     LKTextField *_projectFrameInfoLabel;
@@ -25,15 +26,16 @@ __attribute__((visibility("hidden")))
     NSImageView *_projectClockIcon;
     NSButton *_projectShareIcon;
     LKButton *_projectEditButton;
-    LKPopOverWindow *_sharePopoverWindow;
-    NSProThemeImageView *_fileInfoFormatLeftBadge;
-    NSProThemeImageView *_fileInfoFormatRightBadge;
+    NSPopover *_sharePopover;
+    NSView *_fileInfoFormatLeftBadge;
+    NSView *_fileInfoFormatRightBadge;
     LKTextField *_fileInfoTextFormat1;
     LKTextField *_fileInfoTextFormat2;
     FFCPSClapperboardView *_projectPosterView;
     FFCPSShadowView *_shadowView;
     FFSequenceRecord *_currentSequenceRecord;
     LKTextField *_projectDebugLabel;
+    FFAnchoredSequence *_observedSequence;
 }
 
 @property(retain, nonatomic) LKTextField *projectDebugLabel; // @synthesize projectDebugLabel=_projectDebugLabel;
@@ -42,8 +44,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFCPSClapperboardView *projectPosterView; // @synthesize projectPosterView=_projectPosterView;
 @property(retain, nonatomic) LKTextField *fileInfoTextFormat2; // @synthesize fileInfoTextFormat2=_fileInfoTextFormat2;
 @property(retain, nonatomic) LKTextField *fileInfoTextFormat1; // @synthesize fileInfoTextFormat1=_fileInfoTextFormat1;
-@property(retain, nonatomic) NSProThemeImageView *fileInfoFormatRightBadge; // @synthesize fileInfoFormatRightBadge=_fileInfoFormatRightBadge;
-@property(retain, nonatomic) NSProThemeImageView *fileInfoFormatLeftBadge; // @synthesize fileInfoFormatLeftBadge=_fileInfoFormatLeftBadge;
+@property(retain, nonatomic) NSView *fileInfoFormatRightBadge; // @synthesize fileInfoFormatRightBadge=_fileInfoFormatRightBadge;
+@property(retain, nonatomic) NSView *fileInfoFormatLeftBadge; // @synthesize fileInfoFormatLeftBadge=_fileInfoFormatLeftBadge;
 @property(retain, nonatomic) LKButton *projectEditButton; // @synthesize projectEditButton=_projectEditButton;
 @property(retain, nonatomic) NSButton *projectShareIcon; // @synthesize projectShareIcon=_projectShareIcon;
 @property(retain, nonatomic) NSImageView *projectClockIcon; // @synthesize projectClockIcon=_projectClockIcon;
@@ -64,14 +66,13 @@ __attribute__((visibility("hidden")))
 - (void)clearDisplay;
 - (void)syncToDataItemList;
 - (void)propertyChanged:(id)arg1;
-- (void)sharePopoverWindowDidResignKey:(id)arg1;
 - (void)shareNotification:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)removeNotifications;
 - (void)installNotifications;
 - (void)viewControllerDidUnhide;
 - (void)viewControllerWillHide;
-- (void)popOverWindowDidCancel:(id)arg1;
+- (void)popoverDidClose:(id)arg1;
 - (void)showShareHistoryPopover:(id)arg1;
 - (void)projectEditAction:(id)arg1;
 - (id)eventRecord;

@@ -6,133 +6,125 @@
 
 #import <Flexo/FFInspectorModule.h>
 
+#import "FFInspectorContainerDraggingDelegate.h"
+#import "FFInspectorLabelParameterAccessibilityDelegate.h"
+#import "FFInspectorLabelParameterContainerDataSource.h"
+#import "FFInspectorLabelParameterToolTipDelegate.h"
 #import "FFRolesMenuDelegate.h"
 #import "NSMenuDelegate.h"
 #import "NSTokenFieldDelegate.h"
 
-@class FFAnchoredObject, FFInspectorFileInfoClipController, FFInspectorMetadataContentRow, FFInspectorMetadataContentView, FFMedia, FFRolesMenuController, LKSegmentedControl, NSArray, NSArrayController, NSMenu, NSMutableDictionary, NSPopUpButton, NSProImageView, NSProThemeImageView, NSScrollView, NSSet, NSString, NSTextField, NSView, NSWindow;
+@class FFInspectorFileInfoClipController, FFInspectorLabelParameterContainerController, FFInspectorMediaHeaderController, LKScrollView, LKSegmentedControl, NSArray, NSArrayController, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTextField, NSView, NSWindow;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorModuleMetadata : FFInspectorModule <NSMenuDelegate, FFRolesMenuDelegate, NSTokenFieldDelegate>
+@interface FFInspectorModuleMetadata : FFInspectorModule <NSMenuDelegate, FFRolesMenuDelegate, NSTokenFieldDelegate, FFInspectorLabelParameterContainerDataSource, FFInspectorLabelParameterAccessibilityDelegate, FFInspectorContainerDraggingDelegate, FFInspectorLabelParameterToolTipDelegate>
 {
-    BOOL _currentItemsContainBinObject;
-    BOOL _isShowingEventRefs;
-    NSView *_currentReferencedEventsView;
-    NSMutableDictionary *_metadataViewState;
-    NSArrayController *_contentArrayController;
-    FFRolesMenuController *_rolesMenuController;
-    NSPopUpButton *_activeVideoAnglePopup;
-    NSPopUpButton *_activeAudioAnglePopup;
-    FFMedia *_media;
-    NSScrollView *_scrollView;
-    NSView *_settingsView;
-    NSProThemeImageView *_metadataLCDHeader;
-    NSProImageView *_metadataLCDIcon;
-    NSTextField *_metadataLCDClipName;
-    NSTextField *_metadataLCDDuration;
-    NSTextField *_metadataLCDTextDate;
-    NSTextField *_metadataLCDTextFormat1;
-    NSTextField *_metadataLCDTextFormat2;
-    NSTextField *_metadataLCDTextFrame;
-    NSTextField *_metadataLCDTextAudioChannels;
-    NSProThemeImageView *_metadataLCDFormatLeftBadge;
-    NSProThemeImageView *_metadataLCDFormatRightBadge;
-    FFInspectorMetadataContentView *_metadataView;
-    NSPopUpButton *_metadataViewSetPopUpButton;
+    NSView *_footerView;
     LKSegmentedControl *_metadataViewSetControl;
-    FFInspectorMetadataContentRow *_metadataBooleanControlGroup;
-    FFInspectorMetadataContentRow *_metadataStringControlGroup;
-    FFInspectorMetadataContentRow *_metadataTimeControlGroup;
-    FFInspectorMetadataContentRow *_metadataEnumControlGroup;
-    FFInspectorMetadataContentRow *_metadataRatingControlGroup;
-    FFInspectorMetadataContentRow *_metadataTintColorControlGroup;
-    FFInspectorMetadataContentRow *_metadataRolesControlGroup;
-    FFInspectorMetadataContentRow *_metadataMultiCamAngleControlGroup;
-    FFInspectorMetadataContentRow *_metadataTokenFieldControlGroup;
     LKSegmentedControl *_metadataActionControl;
     NSWindow *_addCustomMetadataWindow;
     NSTextField *_customMetadataNameTextField;
     NSTextField *_customMetadataDescriptionTextField;
     NSWindow *_saveMetadataViewWindow;
-    NSMenu *_removeCustomMetadataMenu;
-    NSView *_footerView;
-    NSView *_redRawMultipleView;
-    NSArray *_currentItemsProxies;
-    NSSet *_currentItemsSequences;
-    NSSet *_previousRefs;
-    BOOL _itemsChangedThroughRangeInvalidation;
-    FFAnchoredObject *_inspectedItem;
+    FFInspectorMediaHeaderController *_headerController;
+    FFInspectorLabelParameterContainerController *_metadataController;
     FFInspectorFileInfoClipController *_fileInfoClipController;
+    LKScrollView *_scrollView;
+    NSMutableDictionary *_metadataViewState;
+    NSMutableArray *_currentItemsProxies;
+    NSMutableSet *_currentItemsSequences;
+    NSArrayController *_contentArrayController;
+    NSMutableArray *_items;
+    NSMutableArray *_visibleItems;
+    NSMutableSet *_multicamItems;
+    NSArray *_observedItems;
+    NSArray *_observedSequences;
+    BOOL _cachedHasBinObjects;
+    BOOL _cachedHasSetupItems;
+    struct FFProcrastinatedDispatch_t _procrastinatedReload;
+    NSMutableDictionary *_info;
+    NSArray *_backgroundObservedObjects;
+    int _backgroundObservingPendingUpdate;
 }
 
-@property FFInspectorFileInfoClipController *fileInfoClipController; // @synthesize fileInfoClipController=_fileInfoClipController;
-@property(retain, nonatomic) FFAnchoredObject *inspectedItem; // @synthesize inspectedItem=_inspectedItem;
-@property(retain, nonatomic) NSSet *currentItemsSequences; // @synthesize currentItemsSequences=_currentItemsSequences;
-@property(retain, nonatomic) NSArray *currentItemsProxies; // @synthesize currentItemsProxies=_currentItemsProxies;
-@property(retain, nonatomic) NSPopUpButton *activeAudioAnglePopup; // @synthesize activeAudioAnglePopup=_activeAudioAnglePopup;
-@property(retain, nonatomic) NSPopUpButton *activeVideoAnglePopup; // @synthesize activeVideoAnglePopup=_activeVideoAnglePopup;
-@property(retain, nonatomic) LKSegmentedControl *metadataActionControl; // @synthesize metadataActionControl=_metadataActionControl;
-@property(retain, nonatomic) LKSegmentedControl *metadataViewSetControl; // @synthesize metadataViewSetControl=_metadataViewSetControl;
-- (unsigned long long)tokenField:(id)arg1 styleForRepresentedObject:(id)arg2;
-- (id)tokenField:(id)arg1 representedObjectForEditingString:(id)arg2;
-- (id)tokenField:(id)arg1 editingStringForRepresentedObject:(id)arg2;
-- (id)tokenField:(id)arg1 displayStringForRepresentedObject:(id)arg2;
-- (id)tokenField:(id)arg1 completionsForSubstring:(id)arg2 indexOfToken:(long long)arg3 indexOfSelectedItem:(long long *)arg4;
-- (void)shouldEditRolesForRolesMenuController:(id)arg1;
-- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 toAnchoredObjects:(id)arg3;
-- (id)anchoredObjectsForRolesMenuController:(id)arg1;
-- (void)updateNamePresetMenuItems;
+@property(nonatomic) NSWindow *saveMetadataViewWindow; // @synthesize saveMetadataViewWindow=_saveMetadataViewWindow;
+@property(nonatomic) NSTextField *customMetadataDescriptionTextField; // @synthesize customMetadataDescriptionTextField=_customMetadataDescriptionTextField;
+@property(nonatomic) NSTextField *customMetadataNameTextField; // @synthesize customMetadataNameTextField=_customMetadataNameTextField;
+@property(nonatomic) NSWindow *addCustomMetadataWindow; // @synthesize addCustomMetadataWindow=_addCustomMetadataWindow;
+@property(nonatomic) LKSegmentedControl *metadataActionControl; // @synthesize metadataActionControl=_metadataActionControl;
+@property(nonatomic) LKSegmentedControl *metadataViewSetControl; // @synthesize metadataViewSetControl=_metadataViewSetControl;
+@property(nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
+- (BOOL)container:(id)arg1 reorderItemAtRow:(unsigned long long)arg2 withRow:(unsigned long long)arg3;
+- (long long)_indexOfMetadataDefinitionInViewSet:(id)arg1 fromVisibleItemAtRow:(unsigned long long)arg2;
+- (BOOL)container:(id)arg1 shouldBeginDraggingSessionAtRow:(unsigned long long)arg2;
+- (id)controllerToolTip:(id)arg1;
+- (id)controller:(id)arg1 accessibilityValueForAttribute:(id)arg2;
+- (id)accessibilityAttributeNamesForController:(id)arg1;
+- (BOOL)container:(id)arg1 bindAtRow:(unsigned long long)arg2 toParameterViewController:(id)arg3 context:(id)arg4;
+- (id)container:(id)arg1 parameterObjectValueAtRow:(unsigned long long)arg2 context:(id)arg3;
+- (id)container:(id)arg1 labelObjectValueAtRow:(unsigned long long)arg2 context:(id)arg3;
+- (id)container:(id)arg1 parameterViewControllerAtRow:(unsigned long long)arg2 context:(id)arg3;
+- (id)container:(id)arg1 labelViewControllerAtRow:(unsigned long long)arg2 context:(id)arg3;
+- (unsigned long long)countOfRowsInContainer:(id)arg1;
+- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 forContext:(id)arg3;
+- (id)contextForRolesMenuController:(id)arg1;
+- (id)contentLayoutDictionary;
+- (void)editSettingsButtonPressed:(id)arg1;
+- (void)multiCamAngleSelected:(id)arg1;
 - (void)applyNamePreset:(id)arg1;
 - (void)showEditPresetsWindow:(id)arg1;
 - (void)showNewPresetsWindow:(id)arg1;
+- (void)_updateNamePresetMenuItems;
 - (void)editMetadataView:(id)arg1;
 - (void)saveMetadataViewAs:(id)arg1;
-- (void)saveMetadataViewAction:(id)arg1;
+- (void)saveMetadataViewSelect:(id)arg1;
 - (void)saveMetadataViewSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)saveMetadataViewAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)saveMetadataView:(id)arg1;
-- (void)removeProperty:(id)arg1;
 - (void)addCustomMetadata:(id)arg1;
-- (void)addCustomMetadataAction:(id)arg1;
+- (void)addCustomMetadataSelect:(id)arg1;
 - (void)addCustomMetadataSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)_resyncViewSetAfterModifications;
 - (void)addCustomMetadataAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)changeMetadataViewSet:(id)arg1;
+- (Class)_itemClassForMetadataDefinition:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)notifyMetaDataChange:(id)arg1;
-- (void)_removeObservingForCurrentItems;
-- (void)_addObservingForCurrentItems;
-- (void)_rangeInvalidatedForMetadata:(id)arg1;
-- (void)updateForChangedItems;
-- (void)rowDidMove:(id)arg1;
-- (void)_setMetadataViewSetFrom:(id)arg1;
-- (void)_setMetadataViewControls;
-- (id)firstKeyView;
-- (id)_controlGroupFromMetadataDefinition:(id)arg1;
-- (void)_setupMetadata;
-- (id)metadataViewState;
-- (void)audioAnglePopupAction:(id)arg1;
-- (void)videoAnglePopupAction:(id)arg1;
-- (void)_setAngleID:(id)arg1 onMultiCamItems:(id)arg2 popupButton:(id)arg3 useAudio:(BOOL)arg4;
-- (BOOL)_hasSameMultiCamItems:(id)arg1;
-- (void)_setAnglePopupButton:(id)arg1 forMultiCamItems:(id)arg2 useAudioAngle:(BOOL)arg3;
-- (void)_populateAnglePopupButton:(id)arg1 withMultiCamItems:(id)arg2;
-- (void)_clearAnglePopupButton:(id)arg1;
-- (void)_setUpAnglePopupUpButton:(id)arg1 withItems:(id)arg2 useAudio:(BOOL)arg3;
-- (void)_updateReferencedEventsForItems:(id)arg1;
-- (id)refsForItems:(id)arg1 owner:(id)arg2;
-- (void)_updateLCD:(BOOL)arg1;
-- (void)showEditCompoundClipSettings:(id)arg1;
-- (void)_sequenceSettingsChanged:(int)arg1 inspectedItem:(id)arg2;
-- (void)currentItemSettings:(char *)arg1 isCompundClip:(char *)arg2 isReferenceClip:(char *)arg3 isMultiAngleClip:(char *)arg4 isFreezeFrameClip:(char *)arg5;
+- (void)_notifyMetaDataChange:(id)arg1;
 - (void)setCurrentItems:(id)arg1;
-- (id)selectionOwner;
+- (void)_reloadData;
+- (void)_setupMetadataWithItems:(id)arg1;
+- (void)_resyncMetadataViewSetControlWithItems:(id)arg1;
+- (void)_setMetadataViewSet:(id)arg1 items:(id)arg2;
 - (id)moduleFooterAccessoryView;
-- (void)viewDidLoad;
+- (void)moduleDidUnhide;
+- (void)moduleDidHide;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
-- (void)_rangeInvalidated:(id)arg1;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)viewDidLoad;
+- (void)awakeFromNib;
+- (void)_setupCurrentItems;
+- (void)_updateHeaderForItems:(id)arg1;
+- (id)_menuForMetadataActionControl;
+- (id)_menuForMetadataViewSetControlWithItems:(id)arg1;
+- (void)rangeInvalidated:(id)arg1;
+- (void)_updateReferencedEventsForItems:(id)arg1;
+- (id)_referencesForItems:(id)arg1 owner:(id)arg2;
+- (id)_selectionOwner;
+- (void)showEditCompoundClipSettings;
+- (void)_openSettingsWithItem:(id)arg1 sequenceType:(int)arg2;
+- (void)_sequenceSettingsChanged:(int)arg1 item:(id)arg2;
+- (void)_currentItemSettings:(char *)arg1 isCompundClip:(char *)arg2 isReferenceClip:(char *)arg3 isMultiAngleClip:(char *)arg4 isFreezeFrameClip:(char *)arg5;
+- (id)_currentViewSet;
+- (void)_notifyReloadDataForBackgroundObserving;
+- (void)_audioComponentsChanged:(id)arg1;
+- (void)_rolesInLibraryChanged:(id)arg1;
+- (void)_endBackgroundObserving;
+- (void)_beginBackgroundObserving;
 - (void)dealloc;
 - (id)init;
+- (void)_endObservingCurrentItems;
+- (void)_beginObservingCurrentItems;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

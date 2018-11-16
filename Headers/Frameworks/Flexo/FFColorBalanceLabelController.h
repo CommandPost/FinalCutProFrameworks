@@ -15,12 +15,14 @@ __attribute__((visibility("hidden")))
     OZLabelText *_labelText;
     OZViewCtlrRoot *_observedControllerRoot;
     BOOL _allMediaIsAvailable;
+    float _labelWidth;
 }
 
 - (BOOL)isUserBalanceEffectEnabled;
 - (id)checkMediaAvailability;
 - (void)assetInvalidated:(id)arg1;
 - (void)performBalanceOrToggle:(id)arg1;
+- (float)suggestedMaxLabelWidth;
 - (void)update;
 - (void)didBuildUI;
 - (void)dealloc;

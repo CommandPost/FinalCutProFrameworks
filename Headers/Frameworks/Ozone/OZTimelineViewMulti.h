@@ -34,7 +34,7 @@
 - (BOOL)isSnappedAtTime:(CDStruct_1b6d18a9 *)arg1;
 - (void)setSnapped:(BOOL)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)markerFindSnaps;
-- (void)findCommonSnaps:(vector_7856d79e *)arg1;
+- (void)findCommonSnaps:(vector_f7e3fd5f *)arg1;
 - (double)currentVerticalScroll;
 - (double)verticalLineScroll;
 - (void)verticalScrollBy:(double)arg1;

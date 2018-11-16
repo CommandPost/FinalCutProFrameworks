@@ -9,72 +9,74 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFObjectDict, NSDictionary, NSObject<FFAudioComponentsLayoutMapDelegate>;
+@class FFObjectDict, NSMapTable, NSMutableArray, NSObject<FFAudioComponentsLayoutMapDelegate>;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioComponentsLayoutMap : FFBaseDSObject <NSCoding, NSCopying>
 {
     NSObject<FFAudioComponentsLayoutMapDelegate> *m_delegate;
     FFObjectDict *m_layoutMap;
-    NSDictionary *m_useReferenceLayoutMap;
-    long long m_changeCount;
+    NSMutableArray *m_changeInfoStack;
+    NSMapTable *m_layoutItemCache;
 }
 
 + (Class)layoutClass;
 + (id)copyClassDescription;
 @property(nonatomic) NSObject<FFAudioComponentsLayoutMapDelegate> *delegate; // @synthesize delegate=m_delegate;
-@property(retain, nonatomic) NSDictionary *useReferenceLayoutMap; // @synthesize useReferenceLayoutMap=m_useReferenceLayoutMap;
 @property(retain, nonatomic) FFObjectDict *layoutMap; // @synthesize layoutMap=m_layoutMap;
-- (BOOL)isIntrinsicLayoutForKey:(id)arg1;
-- (BOOL)isIntrinsicLayoutMap;
-- (void)didChangeAudioComponentsLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2 changeInfo:(id)arg3;
-- (void)willChangeAudioComponentsLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2 changeInfo:(id)arg3;
-- (void)didChangeAudioComponentsLayoutForKey:(id)arg1 changeInfo:(id)arg2;
-- (void)willChangeAudioComponentsLayoutForKey:(id)arg1 changeInfo:(id)arg2;
-- (BOOL)_popChangeKey:(id)arg1 andLayoutItemKey:(id)arg2;
-- (BOOL)_pushChangeKey:(id)arg1 andLayoutItemKey:(id)arg2;
+- (void)didChangeAudioComponentsLayout:(void *)arg1;
+- (void *)_willChangeAudioComponentsLayoutMapForKeys:(id)arg1 changeInfo:(id)arg2;
+- (void *)willChangeAudioComponentsLayoutForKey:(id)arg1 changeInfo:(id)arg2;
+- (void *)willChangeAudioComponentsLayoutForKeys:(id)arg1 changeInfo:(id)arg2;
+- (void *)willChangeAudioComponentsLayout:(id)arg1;
 - (void)_didChangeAudioComponentsLayoutMap:(id)arg1;
 - (void)_willChangeAudioComponentsLayoutMap:(id)arg1;
-- (void)_validateChangeInfo:(id)arg1;
-- (void)_notifyDidChangeLayoutMap:(id)arg1;
-- (void)_notifyWillChangeLayoutMap:(id)arg1;
-- (void)notifyDelegateRolesChanged;
-- (void)notifyDelegateContainedItemsChanged;
-- (void)notifyReferenceLayoutMapChanged:(id)arg1;
+- (void)notifyDidChangeLayoutMap:(id)arg1;
+- (void)notifyWillChangeLayoutMap:(id)arg1;
+- (void)referenceLayoutMapChanged:(id)arg1;
 - (void)setLocalLayout:(id)arg1 forKey:(id)arg2;
+- (void)storeLocalLayout:(id)arg1 forKey:(id)arg2;
 - (void)removeLocalLayoutForKey:(id)arg1;
 - (id)localLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (id)localLayoutForKey:(id)arg1;
+- (id)allActiveLocalKeys;
 - (id)allLocalKeys;
-- (void)syncWithReferenceLayoutMap;
+- (void)clearLayoutItemCache;
+- (void)resetLayouts;
 - (void)resetLayoutMap;
 - (BOOL)canResetLayoutMap;
-- (void)setUseReferenceLayout:(BOOL)arg1 forKey:(id)arg2;
-- (BOOL)useReferenceLayoutForKey:(id)arg1;
+- (BOOL)isIntrinsicLayoutMap;
+- (BOOL)isIntrinsicLayoutForKey:(id)arg1;
 - (id)demandMutableLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (id)layoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (id)layoutItemForKey:(id)arg1 layoutItemKey:(id)arg2 localOnly:(BOOL)arg3;
 - (void)removeAudioComponentsLayoutForKey:(id)arg1;
 - (void)setAudioComponentsLayout:(id)arg1 forKey:(id)arg2;
 - (BOOL)isReferenceLayoutMap;
+- (BOOL)hasReferenceLayoutMap;
 - (id)referenceLayoutMap;
 - (id)audioComponentsLayoutForKey:(id)arg1;
 - (id)_audioComponentsLayoutForKeyNoCopy:(id)arg1;
 - (id)referenceAudioComponentsLayoutForKey:(id)arg1;
 - (unsigned int)numOutputChannelsForKeys:(id)arg1 withFlags:(unsigned int)arg2;
 - (unsigned int)numOutputChannelsForKeys:(id)arg1;
-- (unsigned int)numChannelsForKeys:(id)arg1;
+- (unsigned int)numChannelsForKey:(id)arg1;
 - (BOOL)isEqualToLayoutMap:(id)arg1;
+- (id)sortLayoutItems:(id)arg1 forLayoutKey:(id)arg2;
 - (id)sortKeys:(id)arg1;
 - (id)allKeys;
 - (id)allReferenceKeys;
 - (BOOL)hasLocalLayouts;
+- (void)_setupAudioComponentsLayoutMap;
 - (id)copyWithDelegate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
+- (BOOL)isValidLayoutItem:(id)arg1;
+- (BOOL)isValidLayout:(id)arg1;
+- (void)validateLayoutMap;
 
 @end
 

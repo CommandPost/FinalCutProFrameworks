@@ -6,25 +6,27 @@
 
 #import "NSWindowController.h"
 
-@class FFAudioUnitEffect, NSButton, NSTextField;
+#import "NSOpenSavePanelDelegate.h"
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFSaveEffectPresetSheetController : NSWindowController
+@interface FFSaveEffectPresetSheetController : NSWindowController <NSOpenSavePanelDelegate>
 {
-    NSTextField *_name;
-    NSButton *_ok;
-    FFAudioUnitEffect *_effect;
-    CDStruct_1b6d18a9 _contextTime;
+    NSString *_presetPath;
 }
 
 + (BOOL)runSheetForItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 parentWindow:(id)arg3;
-- (void)controlTextDidChange:(id)arg1;
-- (void)cancel:(id)arg1;
-- (void)OK:(id)arg1;
-- (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)windowDidLoad;
-- (void)dealloc;
+@property(retain, nonatomic) NSString *presetPath; // @synthesize presetPath=_presetPath;
+- (void)panel:(id)arg1 didChangeToDirectoryURL:(id)arg2;
+- (id)presetPathForEffect:(id)arg1;
 - (id)initWithEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

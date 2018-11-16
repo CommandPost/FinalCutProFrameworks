@@ -6,7 +6,7 @@
 
 #import "LKViewModule.h"
 
-@class FFEventRecord, FFImportTapeModule, FFLibrary, LKButton, LKPopUpButton, LKTextField, NSArray, NSMatrix, PEImportOptionsBox, PEImportOptionsScrollingView;
+@class FFEventRecord, FFImportTapeModule, FFLibrary, FFRoleGroupOverridePopupController, LKButton, LKPopUpButton, LKTextField, NSArray, NSMatrix, PEImportOptionsBox, PEImportOptionsScrollingView;
 
 @interface PEImportOptionsModule : LKViewModule
 {
@@ -17,19 +17,21 @@
     LKTextField *_newEventNameTextField;
     PEImportOptionsBox *_filesBox;
     NSMatrix *_importLocationRadioButtonMatrix;
-    PEImportOptionsBox *_transcodingBox;
-    LKButton *_optimizeMediaTranscodingCheckBox;
-    LKButton *_proxyMediaTranscodingCheckBox;
     PEImportOptionsBox *_keywordsBox;
     LKButton *_finderTagKeywordsCheckBox;
     LKButton *_folderKeywordsCheckBox;
+    PEImportOptionsBox *_rolesBox;
+    LKButton *_useTrackNamesFromMetadataCheckBox;
+    LKPopUpButton *_roleGroupOverridePopUpMenu;
+    PEImportOptionsBox *_transcodingBox;
+    LKButton *_optimizeMediaTranscodingCheckBox;
+    LKButton *_proxyMediaTranscodingCheckBox;
+    PEImportOptionsBox *_analyzeAndFixBox;
+    LKButton *_removePulldownVideoCheckBox;
+    LKButton *_balanceColorVideoCheckBox;
     LKButton *_findPeopleKeywordsCheckBox;
     LKButton *_findPeopleConsolidateKeywordsCheckBox;
     LKButton *_smartCollectionKeywordsCheckBox;
-    PEImportOptionsBox *_videoBox;
-    LKButton *_removePulldownVideoCheckBox;
-    LKButton *_balanceColorVideoCheckBox;
-    PEImportOptionsBox *_audioBox;
     LKButton *_fixAudioCheckBox;
     LKButton *_groupAudioCheckBox;
     LKButton *_removeSilentChannelsAudioCheckBox;
@@ -40,12 +42,17 @@
     BOOL _hasFileSystemItems;
     BOOL _hasREDClips;
     BOOL _observingTranscodingCheckBoxes;
+    BOOL _observingAudioRoleGroupOverride;
+    FFLibrary *_targetImportLibrary;
     FFEventRecord *_selectedEventRecord;
     FFLibrary *_selectedLibraryForNewEvent;
     FFImportTapeModule *_tapeModule;
     NSArray *_allOptionsBoxes;
+    FFRoleGroupOverridePopupController *_roleGroupOverridePopupController;
 }
 
+@property(retain, nonatomic) FFRoleGroupOverridePopupController *roleGroupOverridePopupController; // @synthesize roleGroupOverridePopupController=_roleGroupOverridePopupController;
+@property(nonatomic) BOOL observingAudioRoleGroupOverride; // @synthesize observingAudioRoleGroupOverride=_observingAudioRoleGroupOverride;
 @property(nonatomic) BOOL observingTranscodingCheckBoxes; // @synthesize observingTranscodingCheckBoxes=_observingTranscodingCheckBoxes;
 @property(retain, nonatomic) NSArray *allOptionsBoxes; // @synthesize allOptionsBoxes=_allOptionsBoxes;
 @property(nonatomic) BOOL hasREDClips; // @synthesize hasREDClips=_hasREDClips;
@@ -57,6 +64,7 @@
 @property(nonatomic) BOOL shouldCreateNewEvent; // @synthesize shouldCreateNewEvent=_shouldCreateNewEvent;
 @property(retain, nonatomic) FFLibrary *selectedLibraryForNewEvent; // @synthesize selectedLibraryForNewEvent=_selectedLibraryForNewEvent;
 @property(retain, nonatomic) FFEventRecord *selectedEventRecord; // @synthesize selectedEventRecord=_selectedEventRecord;
+@property(retain, nonatomic) FFLibrary *targetImportLibrary; // @synthesize targetImportLibrary=_targetImportLibrary;
 - (void)showREDTranscodeCheckBoxSheet:(BOOL)arg1;
 - (void)stopObservingTranscodingCheckBoxes;
 - (void)startObservingTranscodingCheckBoxes;
@@ -68,8 +76,10 @@
 - (BOOL)validateOptions:(BOOL)arg1;
 - (void)eventRadioButtonClicked:(id)arg1;
 - (void)updateCopyToLibraryRadioButton;
+- (void)roleGroupSelected:(id)arg1;
 - (void)eventSelected:(id)arg1;
 - (void)librarySelected:(id)arg1;
+- (void)_updateRoleGroupOverridePopup;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)rebuildEventMenus;
 - (void)moduleViewWillBeRemoved:(id)arg1;

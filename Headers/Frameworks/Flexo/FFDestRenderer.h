@@ -8,7 +8,7 @@
 
 #import "FFDestRenderProtocol.h"
 
-@class FFNRTFigClock, FFRenderProps, FFRenderer, NSArray, NSLock;
+@class FFNRTFigClock, FFOnDiskRenderInfo, FFRenderer, NSArray, NSLock;
 
 @interface FFDestRenderer : FFDestVideo <FFDestRenderProtocol>
 {
@@ -18,13 +18,13 @@
     long long _lastUsedSegmentOffset;
     BOOL _isRunning;
     BOOL _needsUpdate;
-    FFRenderProps *_renderProps;
+    FFOnDiskRenderInfo *_renderInfo;
     NSArray *_renderFilesPaths;
     FFRenderer *_renderer;
     BOOL _isLastRenderDest;
 }
 
-- (_Bool)usesOSThrottlingForAllDiskIO;
+- (int)destRecommendedFFSVPriority;
 - (BOOL)wantsDithering:(id)arg1;
 - (int)requestedBackground;
 - (id)supportedPixelFormats;
@@ -43,6 +43,7 @@
 - (void)endRender;
 - (void)beginRenderWithRenderer:(id)arg1 forLastDest:(BOOL)arg2;
 - (void)finishedProcessing:(CDStruct_1b6d18a9)arg1;
+- (_Bool)isPauseRequested;
 - (void)haveRenderCheckForPause;
 - (void)startingToProcess:(CDStruct_1b6d18a9)arg1;
 - (void)flush:(BOOL)arg1;
@@ -50,7 +51,7 @@
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
 - (void *)figClock;
 - (void)dealloc;
-- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderProps:(id)arg2 renderFilesPaths:(id)arg3;
+- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderInfo:(id)arg2 renderFilesPaths:(id)arg3;
 
 @end
 

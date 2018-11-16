@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)_newFieldPairMD5InfoWithBaseInfo:(id)arg1 firstFieldInfo:(id)arg2 secondFieldInfo:(id)arg3 frameRange:(CDStruct_e83c9415)arg4 sd:(CDStruct_1b6d18a9)arg5;
 - (id)newContextForAnglesSource:(id)arg1;
-- (id)angles;
+- (id)copyAngles;
 - (long long)anglesOffset;
 - (long long)anglesCount;
 - (void)setAnglesCount:(long long)arg1 andOffset:(long long)arg2;

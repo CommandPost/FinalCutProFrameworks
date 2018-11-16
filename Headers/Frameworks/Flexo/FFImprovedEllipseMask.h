@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)xmlUpdaterConvertToLegacyShapeMask;
 - (BOOL)xmlUpdaterConvertFromLegacyShapeMask:(CDUnknownBlockType)arg1 effectStack:(id)arg2 error:(id *)arg3;
 - (BOOL)_updaterConvertFromLegacyShapeMask:(id)arg1 effectStack:(id)arg2 error:(id *)arg3;
-- (struct HGNode *)newNodeAtTime:(CDStruct_1b6d18a9)arg1 pixelTransform:(id)arg2 pixelSpaceBounds:(struct CGRect)arg3;
+- (struct HGNode *)newNodeAtTime:(CDStruct_1b6d18a9)arg1 pixelTransform:(id)arg2 pixelSpaceBounds:(struct CGRect)arg3 workingSpace:(int)arg4;
 - (void)_getTransform:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 shape:(struct FFShape *)arg3;
 - (void)parentEffectWasAddedToEffectStack:(id)arg1;
 - (id)onscreenControlsForEffectStack:(id)arg1;

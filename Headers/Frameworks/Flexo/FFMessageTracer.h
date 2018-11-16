@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSDate;
+@class NSDate, NSString;
 
 @interface FFMessageTracer : NSObject
 {
@@ -14,10 +14,16 @@
     NSDate *m_savedActiveDurationStartDate;
     NSDate *m_lastActiveDate;
     double m_activeDuration;
+    NSString *storedProjectMediaID;
 }
 
++ (BOOL)creativeAnalysisEnabled;
 - (void)logMessageTracer_ActiveUser:(long long)arg1;
 - (void)recordMessageTracer_CatalogSaved;
+- (void)updateTimelineProjectEditingTime:(double)arg1;
+- (void)addDurationToTimelineProject:(double)arg1 toAnchoredObject:(id)arg2;
+- (void)resetTimelineProjectEditingTime;
+- (id)activeProjectTimelineAnchoredObject;
 - (void)logMessageTracer_AudioUnit;
 - (void)logMessageTracer_Stats;
 - (void)logMessageTracer_AppStats;

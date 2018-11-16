@@ -11,7 +11,6 @@
     struct CGPoint _mouseOrigin;
 }
 
-- (id).cxx_construct;
 - (BOOL)shouldDrawStrokeWidthOSC;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;

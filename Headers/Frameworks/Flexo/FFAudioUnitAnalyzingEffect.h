@@ -25,7 +25,6 @@
 @property(retain, nonatomic) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
 @property(retain, nonatomic) NSURL *renderfileURL; // @synthesize renderfileURL=_renderfileURL;
 @property(retain, nonatomic) NSString *processingState; // @synthesize processingState=_processingState;
-- (id).cxx_construct;
 - (void)setEnabled:(BOOL)arg1;
 - (void)channelParameterChanged:(id)arg1;
 - (id)_savedEffect;

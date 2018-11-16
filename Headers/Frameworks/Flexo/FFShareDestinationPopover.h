@@ -7,15 +7,16 @@
 #import "NSObject.h"
 
 #import "FFSharePopoverDelegate.h"
+#import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFShareDestinationViewController, LKPopOverWindow, NSString;
+@class FFShareDestinationViewController, NSPopover, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFShareDestinationPopover : NSObject <FFSharePopoverDelegate, NSWindowDelegate>
+@interface FFShareDestinationPopover : NSObject <FFSharePopoverDelegate, NSWindowDelegate, NSPopoverDelegate>
 {
     FFShareDestinationViewController *_sharePopoverViewController;
-    LKPopOverWindow *_sharePopoverWindow;
+    NSPopover *_sharePopover;
     id _currentEditorModule;
     id _sender;
     SEL _senderAction;
@@ -23,16 +24,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
+- (void)dealloc;
 - (void)shareDestination:(id)arg1;
 - (void)sharePopoverShouldClose:(id)arg1;
 - (BOOL)sharePopoverIsShown;
-- (void)popOverWindowDidCancel:(id)arg1;
 - (void)hideSharePopover;
-- (void)hideSharePopoverWithoutCleanup;
+- (void)popoverDidClose:(id)arg1;
 - (void)showPopover:(id)arg1 withTitle:(id)arg2 withSender:(id)arg3;
 - (void)sharePopOverDidResignKey:(id)arg1;
 - (void)_restoreSenderAction:(id)arg1;
-- (void)cleanup;
 - (struct CGSize)viewMinSize;
 - (id)init;
 

@@ -24,5 +24,12 @@
 - (NSString *)formatName;
 - (NSString *)name;
 - (NSString *)uuid;
+
+@optional
+- (void)mountiOSDevicesSynchronously;
+- (void)useAVFoundation;
+- (NSArray *)extendedMetadataDefinitions;
+- (BOOL)doesPath:(NSString *)arg1 containSomeOfClipsWithUIDs:(NSArray *)arg2;
+- (NSArray *)targetFormats;
 @end
 

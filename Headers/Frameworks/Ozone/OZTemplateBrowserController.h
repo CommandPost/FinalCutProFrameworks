@@ -7,11 +7,12 @@
 #import "NSWindowController.h"
 
 #import "NSSplitViewDelegate.h"
+#import "NSTouchBarDelegate.h"
 #import "OZCurrentVirtualScreenDelegate.h"
 
-@class LKBox, LKButton, LKPopUpButton, LKScrollView, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSArray, NSBox, NSImageView, NSString, NSView, OZPaneCapFooterView, OZSplitView, OZTBSearchFieldDelegate, OZTBTextFieldDelegate, OZTimecodeFormatter, QTMovieView, TBOutlineView, TMMatrix, TMScrollView, TMTemplate;
+@class LKBox, LKButton, LKPopUpButton, LKScrollView, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSArray, NSBox, NSButton, NSImageView, NSString, NSView, OZBorderedView, OZSplitView, OZTBSearchFieldDelegate, OZTBTextFieldDelegate, OZTimecodeFormatter, QTMovieView, TBOutlineView, TMMatrix, TMScrollView, TMTemplate;
 
-@interface OZTemplateBrowserController : NSWindowController <NSSplitViewDelegate, OZCurrentVirtualScreenDelegate>
+@interface OZTemplateBrowserController : NSWindowController <NSTouchBarDelegate, NSSplitViewDelegate, OZCurrentVirtualScreenDelegate>
 {
     TBOutlineView *collectionTableView;
     LKPopUpButton *formatPopUp;
@@ -24,9 +25,6 @@
     LKBox *splitViewRightBox;
     NSView *templateBrowserContentView;
     OZSplitView *splitView;
-    NSImageView *_dividerAffordanceView;
-    NSImageView *_categoryFooterView;
-    NSImageView *_thumbnailFooterView;
     QTMovieView *movieView;
     LKTextField *templateTitleTextField;
     LKTextField *templateProjectTypeTextField;
@@ -50,8 +48,7 @@
     LKTextField *templateProjectTypeStaticTextField;
     LKTextField *templateThemeLabel;
     LKSearchField *searchField;
-    LKButton *addCollectionButton;
-    LKButton *removeCollectionButton;
+    LKSegmentedControl *collectionSegmentedControl;
     LKButton *closeButton;
     LKButton *openTemplateButton;
     LKButton *createFromFileButton;
@@ -62,10 +59,10 @@
     LKPopUpButton *_aspectRatioPopUp;
     LKPopUpButton *_fieldOrderPopUp;
     LKPopUpButton *_durationTypePopUp;
-    LKSegmentedControl *_themeSegmentedControl;
+    LKPopUpButton *_themePopUpButton;
     NSImageView *_smallIcon;
     NSImageView *_bigIcon;
-    OZPaneCapFooterView *_footer;
+    OZBorderedView *_footer;
     NSBox *_buttonSeparator1;
     NSBox *_buttonSeparator2;
     TMMatrix *templateMatrix;
@@ -86,6 +83,10 @@
     OZTBSearchFieldDelegate *_sfDelegate;
     BOOL _observersRegistered;
     NSString *_selectedTheme;
+    NSButton *_dfrProjectBrowserButtonOpen;
+    NSButton *_dfrProjectBrowserButtonCancel;
+    NSButton *_dfrProjectBrowserButtonOpenOther;
+    NSButton *_dfrProjectBrowserButtonCreateProjectFromFile;
     int currentVirtualScreen;
 }
 
@@ -93,6 +94,15 @@
 + (BOOL)isInitialized;
 + (void)closeBrowserIfOpen;
 @property int currentVirtualScreen; // @synthesize currentVirtualScreen;
+- (id)touchBar:(id)arg1 makeItemForIdentifier:(id)arg2;
+- (void)_callSelectorWithShortIdentifier:(id)arg1;
+- (void)_onDFRCreateProjectFromFile:(id)arg1;
+- (void)_onDFROpenOther:(id)arg1;
+- (void)_onDFRCancel:(id)arg1;
+- (void)_onDFROpen:(id)arg1;
+- (void)_createDFRProjectBrowserButtons;
+- (void)_updateDFRProjectBrowserButtons;
+- (id)makeTouchBar;
 - (void)willEndSheet;
 - (void)willStartSheet;
 - (struct CGRect)splitView:(id)arg1 additionalEffectiveRectOfDividerAtIndex:(long long)arg2;
@@ -189,6 +199,7 @@
 - (void)enableDisableTemplateButton;
 - (BOOL)_areDurationAndResolutionValid;
 - (BOOL)_isCustomPresetSelected;
+- (void)collectionSegmentedControlAction:(id)arg1;
 - (void)selectBlankCollection;
 
 // Remaining properties

@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     CDStruct_3de7261d _state;
 }
 
-- (id).cxx_construct;
 - (void)drawGridInContext:(struct CGContext *)arg1 dirtyRect:(struct CGRect)arg2 contentsScale:(double)arg3;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)actionForKey:(id)arg1;

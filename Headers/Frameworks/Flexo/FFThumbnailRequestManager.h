@@ -8,13 +8,14 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFStreamVideoCache, NSConditionLock, NSCountedSet;
+@class FFStreamVideoCache, NSConditionLock, NSMutableArray, NSMutableSet;
 
 @interface FFThumbnailRequestManager : NSObject <FFBackgroundTaskTarget>
 {
-    struct FFLocklessQueue<FFThumbnailRequest *> *_requests;
-    struct FFLocklessQueue<FFThumbnailRequest *> *_highPriorityRequests;
-    NSCountedSet *_skimmablesForRequests;
+    struct FFLocklessQueue<FFThumbnailRequest *> *_incomingRequests;
+    struct FFLocklessQueue<FFThumbnailRequest *> *_incomingHighPriorityRequests;
+    NSMutableArray *_requests;
+    NSMutableArray *_highPriorityRequests;
     FFStreamVideoCache *_streamVideoCache;
     NSConditionLock *_isPlayingLock;
     BOOL _isPlaybackActive;
@@ -22,41 +23,54 @@
     struct CGImage *_offlineImage;
     struct CGImage *_emptyClipImage;
     int _numQueuedRequests;
-    int _numOutstandingDispatches;
     long long _numTotalTaskRequests;
-    long long _numProcessedTaskRequests;
+    long long _numCompletedTaskRequests;
     long long _numCurrentTaskBaseline;
     struct FFSemaphore *_taskSemaphore;
-    BOOL _disallowNewThumbnailRequests;
+    struct FFConditionLock *_pauseCountLock;
+    struct FFConditionLock *_pausedStateLock;
+    struct FFConditionLock *_inFlightRequestsCountLock;
+    NSMutableSet *_inFlightRequests;
+    BOOL _shuttingDown;
+    struct FFPMRAutoTimer *PMR_currentTaskTimer;
+    NSMutableSet *PMR_clipsProcessed;
+    CDUnknownBlockType _pmrRequestBeginCallback;
+    CDUnknownBlockType _pmrRequestCompletionCallback;
 }
 
 + (void)initialize;
 + (void)FFRangeInvalidationNotification:(id)arg1;
++ (void)addImageToSegmentStore:(struct CGImage *)arg1 forRequest:(id)arg2;
 + (struct CGImage *)copyOldCachedImageForRequest:(id)arg1;
-+ (CDStruct_bdcb2b0d)cachedMD5ForRequest:(id)arg1;
 + (void)releaseSharedInstanceVideo;
 + (id)sharedInstanceVideo;
 + (void)releaseSharedInstanceAudio;
 + (id)sharedInstanceAudio;
-+ (struct CGImage *)_copyThemeCGImage:(long long)arg1;
-@property BOOL disallowNewThumbnailRequests; // @synthesize disallowNewThumbnailRequests=_disallowNewThumbnailRequests;
-- (id)librariesInUse;
-- (id)assetsInUse;
-- (id)_copySkimmableItems;
++ (struct CGImage *)_copyImageIDCGImage:(id)arg1;
+@property(copy) CDUnknownBlockType pmrRequestCompletionCallback; // @synthesize pmrRequestCompletionCallback=_pmrRequestCompletionCallback;
+@property(copy) CDUnknownBlockType pmrRequestBeginCallback; // @synthesize pmrRequestBeginCallback=_pmrRequestBeginCallback;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
+- (void)canceledTask:(id)arg1;
 - (void)_teardown;
-- (void)_notifyShutdown:(id)arg1;
-- (void)disallowAndCancelAllAsyncImageRequests;
-- (BOOL)newImage:(struct CGImage **)arg1 forRequest:(id)arg2;
-- (void)addAsyncImageRequest:(id)arg1;
-- (void)_unregisterImageRequest:(id)arg1;
-- (void)_registerImageRequest:(id)arg1;
-- (void)_waitForBGTaskToFinish;
-- (void)_cancelBGTask;
+- (void)_notifyDidShutdown:(id)arg1;
+- (void)_notifyWillShutdown:(id)arg1;
+- (void)_handleTaskLoopPause:(BOOL)arg1;
+- (void)removeRequestsForAssets:(id)arg1;
+- (void)removeRequestsForLibraryIdentifier:(id)arg1;
+- (void)_removeRequestsForIdentifier:(id)arg1 identifierType:(int)arg2;
+- (id)_removeRequestsForIdentifiers:(id)arg1 identifierType:(int)arg2 inRequestsQueue:(id)arg3;
+- (void)resume;
+- (void)pause;
+- (BOOL)newImage:(struct CGImage **)arg1 forRequest:(id)arg2 cacheOnly:(BOOL)arg3;
+- (void)queueImageRequest:(id)arg1;
 - (void)_resumeBackgroundTask;
 - (void)_backgroundTaskCompleted;
 - (void)_dispatchBackgroundTask;
 - (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
-- (void)canceledTask:(id)arg1;
+- (void)_notifyRequestCompleted:(id)arg1 withImage:(struct CGImage *)arg2;
+- (void)_processCanceledRequestsInQueue;
+- (void)_migrateIncomingRequests;
 - (void)uiPlaybackStateChange:(id)arg1;
 - (id)streamVideoCache;
 - (void)dealloc;

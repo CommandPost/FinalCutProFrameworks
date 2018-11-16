@@ -6,14 +6,13 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class NSBitmapImageRep, NSLayoutManager, NSMutableDictionary, NSProCursor, NSTextContainer, NSTextStorage, PGDrawableTexture;
+@class LKCursor, NSLayoutManager, NSMutableDictionary, NSTextContainer, NSTextStorage, PGDrawableTexture;
 
 @interface OZRulersOverlay : OZOverlay
 {
-    NSBitmapImageRep *_guideMarkers[4];
-    NSProCursor *_horizontalCursor;
-    NSProCursor *_verticalCursor;
-    NSProCursor *_bothCursor;
+    LKCursor *_horizontalCursor;
+    LKCursor *_verticalCursor;
+    LKCursor *_bothCursor;
     double _movingLocation[2];
     double _movingMouseStart[2];
     double _movingLocationStart[2];

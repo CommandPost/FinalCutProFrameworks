@@ -22,8 +22,6 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)_segmentUIElementForSegment:(long long)arg1;
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
-- (id)_baseFacet;
 - (void)setSegmentCount:(long long)arg1;
 - (long long)stateForSegment:(long long)arg1;
 - (void)setState:(long long)arg1 forSegment:(long long)arg2;

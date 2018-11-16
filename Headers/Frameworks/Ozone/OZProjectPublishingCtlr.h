@@ -17,8 +17,11 @@
     struct OZProjectNode *_pProjectNode;
     NSMutableArray *_pSelfReassociatingControllers;
     NSMutableArray *_pMaterialControllers;
+    struct vector<std::__1::shared_ptr<OZStyle>, std::__1::allocator<std::__1::shared_ptr<OZStyle>>> _styles;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)setPublishedNamesInCtlr:(id)arg1 settings:(struct OZPublishSettings *)arg2;
 - (void)textSelectionChanged:(id)arg1;
 - (void)materialsChanged:(id)arg1;
@@ -27,13 +30,14 @@
 - (id)delegate;
 - (void)reassociateMaterialChannels;
 - (void)reassociateChannels;
+- (void)retainStylesUsedByAssociatedChans:(const vector_b71873ec *)arg1;
 - (void)didBuildUI;
 - (void)buildUI:(id)arg1 forFolder:(struct OZChannelFolder *)arg2 context:(id)arg3;
 - (void)buildUI:(id)arg1 forChannelBase:(struct OZChannelBase *)arg2 context:(id)arg3;
 - (void)buildUI:(id)arg1 forChannel:(struct OZChannel *)arg2 context:(id)arg3;
-- (BOOL)buildUIWithSceneNodes:(list_d81b4758 *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_63a35edb *)arg1 context:(id)arg2;
 - (void)dealloc;
-- (id)initWithSceneNodes:(list_d81b4758 *)arg1 viewCtlrDelegate:(id)arg2 includeHeader:(BOOL)arg3 context:(id)arg4;
+- (id)initWithSceneNodes:(list_63a35edb *)arg1 viewCtlrDelegate:(id)arg2 includeHeader:(BOOL)arg3 context:(id)arg4;
 
 @end
 

@@ -6,24 +6,26 @@
 
 #import <Ozone/OZProViewModule.h>
 
-@class NSMenuItem, OZMoCurveEditorCtrl, OZTimingVerticalSplitView;
+@class NSBox, NSMenuItem, OZMoCurveEditorCtrl, OZTimelineModule, OZTimingVerticalSplitView;
 
 @interface OZCurveEditorModule : OZProViewModule
 {
     OZMoCurveEditorCtrl *_pCurveEditor;
     OZTimingVerticalSplitView *_pSplitView;
+    NSBox *_pLeftHeaderView;
+    NSBox *_pRightHeaderView;
     NSMenuItem *_keyEquivalentMenuItem;
+    OZTimelineModule *_pTimelineModule;
     BOOL _togglingCurveEditor;
 }
 
 @property(readonly) OZTimingVerticalSplitView *pSplitView; // @synthesize pSplitView=_pSplitView;
 @property(readonly) BOOL togglingCurveEditor; // @synthesize togglingCurveEditor=_togglingCurveEditor;
+@property(nonatomic) OZTimelineModule *timelineModule; // @synthesize timelineModule=_pTimelineModule;
 @property(readonly) OZMoCurveEditorCtrl *curveEditor; // @synthesize curveEditor=_pCurveEditor;
 - (void)setDividerPosition:(double)arg1;
-- (void)endGestureWithEvent:(id)arg1;
 - (void)magnifyWithEvent:(id)arg1;
 - (void)rotateWithEvent:(id)arg1;
-- (void)beginGestureWithEvent:(id)arg1;
 - (id)timeAxis;
 - (void)didToggleTimeline:(BOOL)arg1;
 - (void)didToggleCurveEditor;

@@ -6,27 +6,50 @@
 
 #import "NSObject.h"
 
-@class NSURL;
+@class NSDictionary, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFFileLock : NSObject
 {
     NSURL *_url;
     int _fd;
-    BOOL _keepLockFile;
+    unsigned long long _options;
+    NSURL *_recoveryLockURL;
+    id <NSCopying><NSCoding><NSObject> _fileID;
+    NSDictionary *_lockinfo;
 }
 
++ (id)generateLockInfoDictionary;
++ (id)computeLockIdentifier;
++ (id)hostname;
++ (BOOL)_unlock:(int)arg1 removeURL:(id)arg2 error:(id *)arg3;
++ (int)_blockUntilLocked:(BOOL)arg1 url:(id)arg2 error:(int *)arg3;
++ (id)_isLockAt:(id)arg1 alreadyOpen:(char *)arg2;
 + (BOOL)unlockDirectory:(id)arg1 error:(id *)arg2;
 + (BOOL)lockDirectory:(id)arg1 error:(id *)arg2;
 + (id)lockForDirectory:(id)arg1 withCreate:(id *)arg2;
 + (void)initialize;
-@property(nonatomic) BOOL keepLockFile; // @synthesize keepLockFile=_keepLockFile;
+@property(retain, nonatomic) NSDictionary *lockinfo; // @synthesize lockinfo=_lockinfo;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
+- (int)attemptLockRecovery:(int *)arg1;
+- (BOOL)lockInfoIdentifierMatches;
+- (void)cleanupRecoveryLocks;
+- (BOOL)removeRecoveryLock:(int)arg1 error:(id *)arg2;
+- (id)recoveryFileLockURL:(BOOL)arg1 error:(id *)arg2;
+- (id)locksDirectoryURL;
+- (BOOL)lockFileExists;
+- (id)readLockInfo:(id *)arg1;
+- (BOOL)writeLockInfo:(id)arg1 error:(id *)arg2;
+- (id)fileLockInfoURL;
+- (BOOL)isInRecovery;
+- (BOOL)allowLockRecovery;
 - (BOOL)isUnsupported;
 - (BOOL)isLocked;
+- (int)fileDescriptor;
 - (BOOL)unlock:(id *)arg1;
 - (BOOL)lock:(id *)arg1;
 - (void)dealloc;
+- (id)initWithURL:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithURL:(id)arg1;
 
 @end

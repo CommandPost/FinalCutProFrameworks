@@ -15,7 +15,7 @@
 }
 
 - (void)notify:(unsigned int)arg1;
-- (void)buildUIWithObjectList:(list_4c5ca08a *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)buildUIWithObjectList:(list_281b6609 *)arg1 viewController:(id)arg2 context:(id)arg3;
 - (void)dealloc;
 
 @end

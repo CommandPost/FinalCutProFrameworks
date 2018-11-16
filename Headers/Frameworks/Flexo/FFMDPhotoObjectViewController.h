@@ -8,28 +8,32 @@
 
 #import "FFImageBrowserDataSource.h"
 #import "FFImageBrowserDelegate.h"
+#import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFMDPhotoLibraryObjectQuery, FFMDPhotoObjectView, LKPopOverWindow, LKTextField, NSArray, NSCache, NSPredicate, NSProView, NSSet, NSString;
+@class FFImageBrowserCell, FFMDPhotoLibraryObjectQuery, FFMDPhotoObjectView, LKTextField, NSArray, NSCache, NSEvent, NSPopover, NSPredicate, NSSet, NSString, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFMDPhotoObjectViewController : FFMDPhotoAbstractViewController <FFImageBrowserDelegate, FFImageBrowserDataSource, NSWindowDelegate>
+@interface FFMDPhotoObjectViewController : FFMDPhotoAbstractViewController <FFImageBrowserDelegate, FFImageBrowserDataSource, NSWindowDelegate, NSPopoverDelegate>
 {
     NSArray *_arrangedObjects;
     FFMDPhotoObjectView *_browserView;
-    LKPopOverWindow *_playheadInfoWindow;
-    NSProView *_playheadInfoView;
+    NSPopover *_playheadInfoPopover;
+    NSView *_playheadInfoView;
     LKTextField *_playheadInfoTextField;
     NSCache *_sequenceCache;
     NSPredicate *_searchFilterPredicate;
     NSPredicate *_typeFilterPredicate;
+    FFImageBrowserCell *_skimmingDelayPrevCell;
+    BOOL _skimmingDelayActive;
+    NSEvent *_delayedEvent;
     FFMDPhotoLibraryObjectQuery *_dataQuery;
     NSSet *disabledFilterTypes;
 }
 
-@property(retain, nonatomic) LKPopOverWindow *playheadInfoWindow; // @synthesize playheadInfoWindow=_playheadInfoWindow;
+@property(retain, nonatomic) NSPopover *playheadInfoPopover; // @synthesize playheadInfoPopover=_playheadInfoPopover;
 @property(nonatomic) LKTextField *playheadInfoTextField; // @synthesize playheadInfoTextField=_playheadInfoTextField;
-@property(nonatomic) NSProView *playheadInfoView; // @synthesize playheadInfoView=_playheadInfoView;
+@property(nonatomic) NSView *playheadInfoView; // @synthesize playheadInfoView=_playheadInfoView;
 @property(retain, nonatomic) NSPredicate *typeFilterPredicate; // @synthesize typeFilterPredicate=_typeFilterPredicate;
 @property(retain, nonatomic) NSPredicate *searchFilterPredicate; // @synthesize searchFilterPredicate=_searchFilterPredicate;
 @property(retain, nonatomic) NSCache *sequenceCache; // @synthesize sequenceCache=_sequenceCache;
@@ -41,12 +45,20 @@ __attribute__((visibility("hidden")))
 - (id)dragImage;
 - (id)headerDisplayName;
 - (id)cellForNavigationAction;
+- (id)cellForSkimmerAction;
 - (void)performEditAction;
 - (BOOL)editActionAllowed;
 - (void)showSkimmerInfo:(id)arg1;
 - (void)revealInFinder:(id)arg1;
+- (id)_mediaObjectsToReveal:(id)arg1;
 - (void)deselectAll:(id)arg1;
 - (void)selectAll:(id)arg1;
+- (void)clearSelection:(id)arg1;
+- (void)selectClip:(id)arg1;
+- (void)clearSelectionEnd:(id)arg1;
+- (void)clearSelectionStart:(id)arg1;
+- (void)setSelectionEnd:(id)arg1;
+- (void)setSelectionStart:(id)arg1;
 - (void)loop:(id)arg1;
 - (void)playFromStart:(id)arg1;
 - (void)playAroundCurrentFrame:(id)arg1;
@@ -55,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)_performPlayerCommandWithCell:(id)arg1 commandBlock:(CDUnknownBlockType)arg2;
 - (void)down:(id)arg1;
 - (void)up:(id)arg1;
-- (void)_movePlayheadFromCell:(id)arg1 toCell:(id)arg2;
+- (void)_movePlayheadFromCell:(id)arg1 toCell:(id)arg2 cellMovementType:(int)arg3;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (BOOL)writeDataForEditAction:(id)arg1 toPasteboardWithName:(id)arg2;
 - (id)cellsForEditAction;
@@ -67,17 +79,24 @@ __attribute__((visibility("hidden")))
 - (void)clearPlayer;
 - (void)imageBrowser:(id)arg1 displayMediaInViewer:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4 loadingBlock:(CDUnknownBlockType)arg5 unloadingBlock:(CDUnknownBlockType)arg6;
 - (BOOL)imageBrowser:(id)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
+- (void)resetSkimmingDelay;
+- (void)imageBrowser:(id)arg1 mouseExited:(id)arg2;
 - (void)imageBrowserStopSkimmingInViewer:(id)arg1;
 - (BOOL)imageBrowser:(id)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4;
 - (struct NSObject *)imageBrowser:(id)arg1 skimmingMediaForCell:(id)arg2;
-- (BOOL)imageBrowser:(id)arg1 canStartSkimmingCell:(id)arg2;
+- (BOOL)imageBrowser:(id)arg1 canStartSkimmingCell:(id)arg2 event:(id)arg3;
+- (void)imageBrowser:(id)arg1 intendsToStartSkimmingCell:(id)arg2 event:(id)arg3;
+- (void)imageCellWillDealloc:(id)arg1;
+- (void)delayStartSkimming:(id)arg1;
 - (BOOL)imageBrowser:(id)arg1 writeItemsAtIndexes:(id)arg2 toPasteboard:(id)arg3;
 - (BOOL)imageBrowser:(id)arg1 canDragItemsAtIndexes:(id)arg2 withEvent:(id)arg3;
 - (void)imageBrowserSelectionDidChange:(id)arg1;
 - (id)imageBrowser:(id)arg1 menuForItemAtIndex:(long long)arg2;
 - (void)imageBrowser:(id)arg1 cellWasDoubleClickedAtIndex:(long long)arg2;
+- (void)imageBrowser:(id)arg1 willAddCell:(id)arg2;
 - (id)imageBrowser:(id)arg1 representedItemAtIndex:(long long)arg2;
 - (long long)numberOfItemsInImageBrowser:(id)arg1;
+- (id)photoDelegateSkimmingDelegate;
 - (id)selectedItems;
 - (void)resetQuery;
 - (void)reloadData;
@@ -87,7 +106,6 @@ __attribute__((visibility("hidden")))
 - (id)initialFirstResponder;
 - (void)viewDidAppear;
 - (void)viewWillDisappear;
-- (void)popOverWindowDidCancel:(id)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)init;

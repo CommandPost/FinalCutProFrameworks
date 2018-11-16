@@ -32,7 +32,6 @@
 }
 
 @property(readonly, nonatomic) LKZoomScroller *horizontalZoomScroller; // @synthesize horizontalZoomScroller=_horizontalZoomScroller;
-- (id).cxx_construct;
 - (void)resetDisplayRangeToProjectDuration;
 - (void)resetDisplayRangeToPlayRange;
 - (void)resetDisplayRangeToggle;

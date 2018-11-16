@@ -27,7 +27,6 @@
 - (BOOL)hasKeypointAtTime:(CDStruct_1b6d18a9)arg1 channel:(struct OZChannelBase *)arg2 ignoreCurveType:(BOOL)arg3;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
-- (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
 - (void)setChannelToGhost:(id)arg1;
 - (void)resetChannelForCell:(id)arg1;
 - (void)previousKeyframeForCell:(id)arg1;

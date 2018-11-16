@@ -52,7 +52,7 @@
 - (void)select:(BOOL)arg1 excludeChannel:(struct OZChannelBase *)arg2;
 - (void)select:(BOOL)arg1;
 - (id)buildUIForChannel:(struct OZChannelObjectRoot *)arg1 context:(id)arg2 withSimpleRetiming:(_Bool)arg3 withFullRetiming:(_Bool)arg4 isMedia:(_Bool)arg5;
-- (id)initWithRoots:(list_23a7b31a *)arg1 context:(id)arg2 isMedia:(BOOL)arg3;
+- (id)initWithRoots:(list_fcfa3f04 *)arg1 context:(id)arg2 isMedia:(BOOL)arg3;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 isMedia:(BOOL)arg3;
 
 @end

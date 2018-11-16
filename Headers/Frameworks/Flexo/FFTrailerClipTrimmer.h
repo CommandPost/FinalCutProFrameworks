@@ -54,6 +54,8 @@
 - (void)openItemFromRangeObject:(id)arg1;
 - (void)organizerFilmstripViewDidReloadData:(id)arg1;
 - (unsigned long long)filmstripView:(id)arg1 writeRangesOfMedia:(id)arg2 toPasteboard:(id)arg3;
+- (id)markerEditorDelegate;
+- (id)skimmingDelegate;
 - (id)module;
 - (void)rangeInvalidated:(id)arg1;
 - (void)animation:(id)arg1 didReachProgressMark:(float)arg2;

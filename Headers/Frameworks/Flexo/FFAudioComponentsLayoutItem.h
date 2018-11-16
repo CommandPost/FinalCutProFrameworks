@@ -9,13 +9,14 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface FFAudioComponentsLayoutItem : FFBaseDSObject <NSCoding, NSCopying>
 {
     NSString *m_itemName;
     NSArray *m_channelMap;
     NSArray *m_audioChannelRoutingMap;
+    NSDictionary *m_cachedEquivalenceProperties;
 }
 
 + (unsigned int)numOutputChannelsForLayoutItems:(id)arg1 withFlags:(unsigned int)arg2;
@@ -25,7 +26,12 @@
 @property(readonly, nonatomic) NSArray *audioChannelRoutingMap; // @synthesize audioChannelRoutingMap=m_audioChannelRoutingMap;
 @property(readonly, nonatomic) NSArray *channelMap; // @synthesize channelMap=m_channelMap;
 @property(readonly, nonatomic) NSString *itemName; // @synthesize itemName=m_itemName;
+- (CDStruct_bdcb2b0d)equivalenceMD5;
+- (id)equivalenceProperties;
+- (void)clearCachedEquivalenceProperties;
+- (id)newEquivalenceProperties;
 - (BOOL)isEqualToLayoutItem:(id)arg1;
+- (BOOL)isEquivalentToEquivalenceProperties:(id)arg1;
 - (BOOL)isEquivalentToLayoutItem:(id)arg1;
 - (id)description;
 - (unsigned int)numOutputChannels:(unsigned int)arg1;
@@ -34,7 +40,9 @@
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)newMonoSubsetAudioComponentsLayoutItem:(int)arg1;
+- (id)copyLayoutItemUsingChannelMap:(id)arg1 audioChannelRoutingMap:(id)arg2;
+- (id)copyLayoutItemUsingChannelMap:(id)arg1;
+- (id)newMonoSubsetLayoutItem:(int)arg1;
 - (id)initWithAudioComponentsLayoutItem:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 channelMap:(id)arg2;

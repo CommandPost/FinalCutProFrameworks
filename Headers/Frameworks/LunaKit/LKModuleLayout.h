@@ -46,6 +46,7 @@
 - (void)setLayoutInset:(float)arg1;
 - (BOOL)isAutolayout;
 - (void)setAutolayout:(BOOL)arg1;
+- (BOOL)screenArrangementIsAcceptable;
 - (struct CGSize)screenSize;
 - (void)updateScreenSize;
 - (void)setScreenSize:(struct CGSize)arg1;

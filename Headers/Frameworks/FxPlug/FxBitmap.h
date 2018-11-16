@@ -22,7 +22,6 @@
 - (void)setRowBytes:(unsigned long long)arg1;
 - (void *)dataPtrForPositionX:(unsigned long long)arg1 Y:(unsigned long long)arg2;
 - (void *)dataPtr;
-- (void)setDataPtr:(void *)arg1;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCopy:(id)arg1 andInfo:(CDStruct_4a07eeda)arg2;

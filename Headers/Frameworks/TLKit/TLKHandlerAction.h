@@ -14,7 +14,9 @@
 }
 
 @property(readonly, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
+- (BOOL)stopAction:(id)arg1;
 - (BOOL)performAction:(id)arg1;
+- (BOOL)startAction:(id)arg1;
 - (void)dealloc;
 - (id)initWithTimelineView:(id)arg1;
 

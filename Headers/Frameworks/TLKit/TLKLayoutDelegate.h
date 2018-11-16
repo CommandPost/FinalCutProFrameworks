@@ -12,16 +12,13 @@
 
 @interface TLKLayoutDelegate : NSObject <TLKLayoutManagerDelegate>
 {
-    struct CGSize _defaultTileSize;
+    double _minLaneHeight;
 }
 
-@property(nonatomic) struct CGSize defaultTileSize; // @synthesize defaultTileSize=_defaultTileSize;
-- (double)layoutManager:(id)arg1 minimumHeightForLaneInfo:(id)arg2;
-- (struct CGRect)layoutManager:(id)arg1 willUseLineFragmentRect:(struct CGRect)arg2 forItems:(id)arg3 inTimeRange:(CDStruct_e83c9415)arg4;
+@property(nonatomic) double minLaneHeight; // @synthesize minLaneHeight=_minLaneHeight;
 - (struct CGRect)layoutManager:(id)arg1 willUseLayoutFrame:(struct CGRect)arg2 forItemComponentFragment:(id)arg3;
+- (struct CGRect)_applyPrecisionEditorVerticalOffsetForItemComponentFragment:(id)arg1 proposedFrame:(struct CGRect)arg2 layoutManager:(id)arg3;
 - (struct CGRect)_precisionEditorFrameForItemComponentFragment:(id)arg1 proposedFrame:(struct CGRect)arg2 layoutDatabase:(id)arg3;
-- (void)layoutManager:(id)arg1 didCompleteLayoutForTile:(id)arg2 atEnd:(BOOL)arg3;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

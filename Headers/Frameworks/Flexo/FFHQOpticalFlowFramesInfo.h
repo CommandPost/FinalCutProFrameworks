@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL forward; // @synthesize forward=_forward;
 @property(nonatomic) CDStruct_1b6d18a9 ouputFrameDuration; // @synthesize ouputFrameDuration=_outputFrameDuration;
 @property(nonatomic) CDStruct_1b6d18a9 outputStartTime; // @synthesize outputStartTime=_outputStartTime;
-- (id).cxx_construct;
 - (void)dealloc;
 - (id)initWithOutputStartTime:(CDStruct_1b6d18a9)arg1 outputFrameDuration:(CDStruct_1b6d18a9)arg2;
 

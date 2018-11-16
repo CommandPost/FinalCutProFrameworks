@@ -7,14 +7,15 @@
 #import "LKViewModule.h"
 
 #import "FFMarkerEditorDelegate.h"
+#import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFMarkerEditorViewModule, NSString, PEMarkerEditorPopOverWindow;
+@class FFMarkerEditorViewModule, NSPopover, NSString;
 
-@interface PEMarkerEditorContainerModule : LKViewModule <FFMarkerEditorDelegate, NSWindowDelegate>
+@interface PEMarkerEditorContainerModule : LKViewModule <FFMarkerEditorDelegate, NSWindowDelegate, NSPopoverDelegate>
 {
     FFMarkerEditorViewModule *_markerEditorModule;
-    PEMarkerEditorPopOverWindow *_markerEditorWindow;
+    NSPopover *_markerEditorPopover;
     id _currentEditorModule;
     BOOL _movingEditorToNewMarker;
     BOOL _closingWindow;
@@ -25,9 +26,8 @@
 - (void)_handlePlayPause:(id)arg1;
 - (BOOL)canBeginSkimming;
 - (BOOL)markerEditorIsShown;
-- (void)popOverWindowDidCancel:(id)arg1;
-- (void)markerHUDDidResignKey:(id)arg1;
 - (void)hideMarkerEditor;
+- (void)popoverWillClose:(id)arg1;
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2 forEditorModule:(id)arg3;
 - (void)showMarkerEditorForMarkerLayer:(id)arg1 object:(id)arg2 editorModule:(id)arg3;
 - (void)_showMarkerEditorForMarker:(id)arg1 targetRectInGlobalSpace:(struct CGRect)arg2 object:(id)arg3 editorModule:(id)arg4;

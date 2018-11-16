@@ -9,6 +9,8 @@
 #import "FFModelLocking.h"
 #import "NSCoding.h"
 
+@class FFModelDocument;
+
 @interface FFModelObject : DSObject <NSCoding, FFModelLocking>
 {
 }
@@ -17,6 +19,7 @@
 + (id)queryWithPredicate:(id)arg1;
 + (id)queryAllInstances;
 + (void)performWithStrictUTLockChecking:(CDUnknownBlockType)arg1;
++ (int)setEnableStrictUTLockChecksToAtLeast:(int)arg1;
 + (int)setEnableStrictUTLockChecks:(int)arg1;
 + (id)copyClassDescription;
 + (Class)DSClassDescriptionClass;
@@ -28,6 +31,7 @@
 - (void)_readUnlock;
 - (void)_readLock;
 - (id)sharedLock;
+@property(readonly, nonatomic) FFModelDocument *modelDocument;
 
 @end
 

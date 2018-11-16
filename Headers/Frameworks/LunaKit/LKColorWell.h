@@ -4,20 +4,73 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProColorWell.h"
+#import "NSColorWell.h"
 
-@interface LKColorWell : NSProColorWell
+@class LKPopUpButtonCell;
+
+@interface LKColorWell : NSColorWell
 {
+    id _capturedTarget;
+    struct __LKCWFlags {
+        unsigned int themeVariant:3;
+        unsigned int colorWellStyle:3;
+        unsigned int wasBordered:1;
+        unsigned int rightButtonPressed:1;
+        unsigned int colorPickerStyle:3;
+        unsigned int startedColorChange:1;
+        unsigned int _proReserved:20;
+    } _pcwFlags;
+    LKPopUpButtonCell *_rightPathDrawingCell;
 }
 
-- (id)_transientPickerSwatchBackgroundFacet;
-- (id)_transientPickerTextBoxFacet;
-- (id)_transientPickerImageFacet;
-- (id)_transientPickerButtonFacet;
-- (id)_transientPickerSeparatorFacet;
-- (id)_transientPickerColorWellFacet;
-- (id)_colorSwatchBezelFacet;
-- (id)_colorWellBezelFacet;
++ (void)enableStickyColorSpace;
++ (void)disableStickyColorSpace;
++ (BOOL)_drawColorInWell:(id)arg1;
++ (void)initialize;
++ (void)_drawComboWell:(id)arg1 rect:(struct CGRect)arg2;
++ (id)_metricsForColorWell:(id)arg1;
+@property(retain) id capturedTarget; // @synthesize capturedTarget=_capturedTarget;
+- (id)_transientPickerImage;
+- (void)mouseDown:(id)arg1;
+- (id)_takeColorFrom:(id)arg1 andSendAction:(BOOL)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)registerForFirstResponderChanges;
+- (id)observableWindow;
+- (void)cancelPendingMessages;
+- (void)_doEndColorChange;
+- (void)activate:(BOOL)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (BOOL)isOpaque;
+- (void)popUpTransientColorPickerWithStyle:(unsigned long long)arg1 atLocation:(struct CGPoint)arg2;
+- (void)takeColorFromTransientColorPicker:(id)arg1;
+- (unsigned long long)colorPickerStyle;
+- (void)setColorPickerStyle:(unsigned long long)arg1;
+- (unsigned long long)colorWellStyle;
+- (void)setColorWellStyle:(unsigned long long)arg1;
+- (BOOL)isBordered;
+- (void)setBordered:(BOOL)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (BOOL)drawColor;
+- (BOOL)_drawsFocusRing;
+- (BOOL)_hasKeyboardFocus;
+- (void)encodeWithCoder:(id)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)color;
+- (BOOL)usesLargeMetrics;
+- (BOOL)comboButtonContainsPoint:(struct CGPoint)arg1;
+- (struct CGRect)assetBoundsForComboRightPart;
+- (struct CGRect)assetBoundsForComboSeparator;
+- (struct CGRect)boundsForComboLeftPart;
+- (struct CGRect)assetBoundsForComboLeftPart;
+- (struct CGRect)boundsForColorSwatch;
+- (struct CGRect)adjustedAssetYPositionAndHeightForRect:(struct CGRect)arg1;
+- (void)_drawComboColorWellRight;
+- (void)_drawComboColorWellSeparator;
+- (void)_drawComboColorWellLeft;
+- (void)activateAsTransient;
+- (BOOL)_shouldOrderFront;
 
 @end
 

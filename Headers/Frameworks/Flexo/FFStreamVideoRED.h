@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     FFREDClip *_clip;
     BOOL _canUseRocket;
     BOOL _canUseGPUAcceleration;
+    unsigned long long _vramGuarantee;
     int _fileIndex;
     unsigned long long _videoOffset;
     unsigned long long _videoSize;
@@ -24,8 +25,8 @@ __attribute__((visibility("hidden")))
     int _fd;
 }
 
-- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5 graphBuildInfo:(id)arg6;
-- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
+- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5 roi:(const struct CGRect *)arg6 graphBuildInfo:(id)arg7;
+- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5;
 - (void)removeToken:(id)arg1;
 - (id)copyOrCreateScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
 - (void)readDataThenSendToDecoder:(id)arg1 sampleNumber:(int)arg2;

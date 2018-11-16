@@ -8,24 +8,28 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class NSButton, NSString, NSTextField;
+@class LKModuleLayoutManager, NSButton, NSString, NSTextField;
 
 @interface LKCreateLayoutDialog : NSWindowController <NSTextFieldDelegate>
 {
+    LKModuleLayoutManager *_layoutManager;
     NSButton *_cancelButton;
     NSButton *_saveButton;
     NSTextField *_layoutName;
-    void *_reserved4;
-    void *_reserved5;
-    void *_reserved6;
+    NSTextField *_description;
 }
 
+@property(retain, nonatomic) LKModuleLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
 - (void)controlTextDidChange:(id)arg1;
 - (void)cancel:(id)arg1;
 - (void)save:(id)arg1;
+- (void)saveLayoutWithName:(id)arg1 displayName:(id)arg2 keyEquivalent:(id)arg3;
 - (void)windowDidLoad;
 - (void)awakeFromNib;
-- (void)beginSheetForWindow:(id)arg1 modalDelegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
+- (long long)runModal;
+- (void)prepareUniqueLayoutName;
+- (void)dealloc;
+- (id)initWithWindowNibName:(id)arg1;
 - (id)init;
 
 // Remaining properties

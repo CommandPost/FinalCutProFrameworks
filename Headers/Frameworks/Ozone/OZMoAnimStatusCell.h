@@ -14,7 +14,7 @@
 - (void)revealOriginalPublishedParameter:(id)arg1;
 - (void)applyBehavior:(id)arg1;
 - (void)addGoToAndRemoveWidgetMenuItem:(id)arg1 behavior:(struct OZRigBehavior *)arg2;
-- (id)buildMenuForPresets:(const struct OZLibraryPresetsMap *)arg1;
+- (id)newMenuForPresets:(const struct OZLibraryPresetsMap *)arg1;
 - (void)addApplyBehaviorMenu:(id)arg1;
 - (void)addAddToRigMenu:(id)arg1;
 - (void)addPublishedChanMenuItems:(id)arg1;

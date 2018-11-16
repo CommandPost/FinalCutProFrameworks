@@ -20,9 +20,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) FFLibrary *library; // @synthesize library=_library;
 - (void)calcLibraryBundleSize:(CDUnknownBlockType)arg1;
 - (void)calcCacheSizesByVolume:(CDUnknownBlockType)arg1;
-- (void)calcMediaSizesByVolume:(CDUnknownBlockType)arg1;
-- (BOOL)addFileSize:(id)arg1 forKey:(id)arg2 intoMap:(id)arg3 error:(id *)arg4;
-- (void)visitFilesAtURL:(id)arg1 resolveLinks:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)calcMediaAndTemplateSizesByVolume:(CDUnknownBlockType)arg1;
 - (void)visitEvents:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithLibrary:(id)arg1;

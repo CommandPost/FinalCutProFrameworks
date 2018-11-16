@@ -8,13 +8,13 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKTextField, NSPanel, NSProView, NSString;
+@class LKTextField, NSPanel, NSString, NSView;
 
 @interface OZTimingMoveController : NSObject <NSWindowDelegate>
 {
     LKTextField *_pValueField;
     NSPanel *_pPanel;
-    NSProView *_pView;
+    NSView *_pView;
 }
 
 + (BOOL)openWithLocation:(struct CGPoint)arg1 value:(double *)arg2;

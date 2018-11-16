@@ -6,18 +6,19 @@
 
 #import "CALayer.h"
 
-@class TLKThemeBackedLayer;
+@class TLKImageLayer;
 
 @interface TLKTornEdgeLayer : CALayer
 {
-    TLKThemeBackedLayer *_leadingEdge;
-    TLKThemeBackedLayer *_trailingEdge;
+    TLKImageLayer *_leadingEdge;
+    TLKImageLayer *_trailingEdge;
     int _tornEdge;
 }
 
 + (double)tornEdgeWidth;
 - (void)setDelegate:(id)arg1;
 @property int tornEdge;
+- (void)dealloc;
 - (id)init;
 
 @end

@@ -13,7 +13,7 @@
 - (id)ff_places;
 - (id)ff_faceTiles;
 - (id)ff_faces;
-- (CDStruct_c3b9c2ee)ff_location;
+- (struct CLLocationCoordinate2D)ff_location;
 - (id)ff_fileName;
 - (id)ff_URL;
 - (id)ff_path;

@@ -15,7 +15,7 @@
 - (void)roundShape;
 - (void)createShape:(CDStruct_1b6d18a9)arg1;
 - (void)draw;
-- (void)smoothContour:(vector_3396ec90 *)arg1 y:(vector_3396ec90 *)arg2 amount:(int)arg3;
+- (void)smoothContour:(vector_8f06c10f *)arg1 y:(vector_8f06c10f *)arg2 amount:(int)arg3;
 - (struct PCUUID)getOSCClassID;
 - (struct PCUUID)getClassID;
 - (id)getTooltip;

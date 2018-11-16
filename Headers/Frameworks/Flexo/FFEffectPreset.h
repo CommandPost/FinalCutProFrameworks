@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)directoryURL;
++ (BOOL)createPresetWithName:(id)arg1 presetCategory:(id)arg2 videoEffects:(id)arg3 audioEffects:(id)arg4 selectedChannels:(id)arg5 selectedIntrinsics:(id)arg6 keyframeMode:(long long)arg7 sourceClippedRange:(CDStruct_e83c9415)arg8 sourceUnclippedStart:(CDStruct_1b6d18a9)arg9;
 + (void)scanPresets:(id)arg1;
 + (void)appDidBecomeActive:(id)arg1;
 + (void)willTerminate:(id)arg1;
@@ -25,8 +26,6 @@ __attribute__((visibility("hidden")))
 + (void)registerEffects;
 - (BOOL)applyToAnchoredObject:(id)arg1 error:(id *)arg2;
 - (id)presetURL;
-- (void)dealloc;
-- (id)initWithEffectID:(id)arg1;
 
 @end
 

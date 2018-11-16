@@ -29,7 +29,6 @@
 + (_Bool)updateProgressCheckTaskCancelled;
 + (void)setUpdateProgressGranularity:(unsigned long long)arg1;
 @property BOOL waitForPeakData; // @synthesize waitForPeakData=_waitForPeakData;
-- (id).cxx_construct;
 - (_Bool)isSpectrallySimilar:(id)arg1 andUtilB:(id)arg2 wasStereo:(BOOL)arg3 onTask:(id)arg4;
 - (_Bool)hasSilence:(id)arg1 onTask:(id)arg2;
 - (double)getRMS:(id)arg1;

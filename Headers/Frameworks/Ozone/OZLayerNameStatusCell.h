@@ -22,6 +22,7 @@
     NSView *_controlView;
     long long _trackingRow;
     long long _trackingColumn;
+    BOOL _drawDimmedIcon;
 }
 
 - (id)menuForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
@@ -40,6 +41,7 @@
 - (void)setStateValues:(unsigned int)arg1;
 - (void)setTransparentValues:(unsigned int)arg1;
 - (void)setNameValue:(id)arg1 isActive:(BOOL)arg2;
+- (void)setDrawDimmedIcon:(BOOL)arg1;
 - (void)setTextColor:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setBadge:(id)arg1;
