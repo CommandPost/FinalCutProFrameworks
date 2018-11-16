@@ -18,12 +18,12 @@ __attribute__((visibility("hidden")))
     FFResponderLayerDisclosureButton *_disclosureTriangleLayer;
 }
 
-@property(nonatomic) BOOL disclosed; // @synthesize disclosed=_disclosed;
-- (void)_toggleDisclosed;
-- (id)initWithClusteringCollection:(id)arg1 inRect:(struct CGRect)arg2 isDisclosed:(BOOL)arg3 facet:(id)arg4;
-- (void)dealloc;
-- (void)setContentsScale:(double)arg1;
 @property(readonly, nonatomic) FFOrganizerClusteringCollection *cluster; // @synthesize cluster=_clusteringCollection;
+@property(nonatomic) BOOL disclosed; // @synthesize disclosed=_disclosed;
+- (void)setContentsScale:(double)arg1;
+- (void)dealloc;
+- (id)initWithClusteringCollection:(id)arg1 inRect:(struct CGRect)arg2 isDisclosed:(BOOL)arg3 facet:(id)arg4;
+- (void)_toggleDisclosed;
 
 @end
 

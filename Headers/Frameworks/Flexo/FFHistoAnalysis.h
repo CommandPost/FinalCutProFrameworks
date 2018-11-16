@@ -16,13 +16,13 @@ __attribute__((visibility("hidden")))
     NSDictionary *_faceInfo;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)analyseWithBuffer:(id)arg1 andFaceInfo:(id)arg2;
-- (void)analyseWithBuffer:(id)arg1;
-- (struct OMHistoAnalysis *)histo;
-- (id)faceInfo;
 - (id)pixelBuffer;
+- (id)faceInfo;
+- (struct OMHistoAnalysis *)histo;
+- (void)analyseWithBuffer:(id)arg1;
+- (void)analyseWithBuffer:(id)arg1 andFaceInfo:(id)arg2;
+- (void)dealloc;
+- (id)init;
 
 @end
 

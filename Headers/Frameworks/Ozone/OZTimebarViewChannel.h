@@ -12,13 +12,13 @@
     struct PCTimeRange *_pRange;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1 channelRoot:(struct OZChannelObjectRoot *)arg2;
-- (void)dealloc;
-- (BOOL)drawPlayHead;
-- (const struct PCTimeRange *)getDisplayRange;
-- (const struct PCTimeRange *)getActiveRange;
-- (struct PCTimeRange)getPlayRange;
 - (void)setPlayRange:(const struct PCTimeRange *)arg1;
+- (struct PCTimeRange)getPlayRange;
+- (const struct PCTimeRange *)getActiveRange;
+- (const struct PCTimeRange *)getDisplayRange;
+- (BOOL)drawPlayHead;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 channelRoot:(struct OZChannelObjectRoot *)arg2;
 
 @end
 

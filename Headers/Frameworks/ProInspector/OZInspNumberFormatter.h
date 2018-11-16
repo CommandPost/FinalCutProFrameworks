@@ -17,26 +17,26 @@
     BOOL _isBackupSet;
 }
 
-+ (id)formatterWithSuffix:(id)arg1 min:(double)arg2 max:(double)arg3 decimalDigits:(unsigned int)arg4;
-+ (void)updateScrubber:(id)arg1 areAllChannelsEqual:(BOOL)arg2;
 + (void)updateTextField:(id)arg1 areAllChannelsEqual:(BOOL)arg2;
-- (id)init;
-- (id)initWithSuffix:(id)arg1;
-- (id)initWithSuffix:(id)arg1 min:(double)arg2 max:(double)arg3 decimalDigits:(unsigned int)arg4;
-- (void)dealloc;
-- (void)updateControl:(id)arg1 areAllChannelsEqual:(BOOL)arg2;
-- (void)setFormat:(id)arg1;
-- (void)setNormalFormat:(id)arg1 andOffsetFormat:(id)arg2;
-- (void)setIsOffsetting:(BOOL)arg1;
-- (BOOL)isOffsetting;
-- (void)setMinValue:(double)arg1;
-- (double)minValue;
-- (void)setMaxValue:(double)arg1;
-- (double)maxValue;
-- (void)backupMinValue;
-- (void)restoreMinValue;
-- (id)editingStringForObjectValue:(id)arg1;
++ (void)updateScrubber:(id)arg1 areAllChannelsEqual:(BOOL)arg2;
++ (id)formatterWithSuffix:(id)arg1 min:(double)arg2 max:(double)arg3 decimalDigits:(unsigned int)arg4;
 - (BOOL)isPartialStringValid:(id *)arg1 proposedSelectedRange:(struct _NSRange *)arg2 originalString:(id)arg3 originalSelectedRange:(struct _NSRange)arg4 errorDescription:(id *)arg5;
+- (id)editingStringForObjectValue:(id)arg1;
+- (void)restoreMinValue;
+- (void)backupMinValue;
+- (double)maxValue;
+- (void)setMaxValue:(double)arg1;
+- (double)minValue;
+- (void)setMinValue:(double)arg1;
+- (BOOL)isOffsetting;
+- (void)setIsOffsetting:(BOOL)arg1;
+- (void)setNormalFormat:(id)arg1 andOffsetFormat:(id)arg2;
+- (void)setFormat:(id)arg1;
+- (void)updateControl:(id)arg1 areAllChannelsEqual:(BOOL)arg2;
+- (void)dealloc;
+- (id)initWithSuffix:(id)arg1 min:(double)arg2 max:(double)arg3 decimalDigits:(unsigned int)arg4;
+- (id)initWithSuffix:(id)arg1;
+- (id)init;
 
 @end
 

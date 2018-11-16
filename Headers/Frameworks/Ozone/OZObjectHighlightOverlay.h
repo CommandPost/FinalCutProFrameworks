@@ -18,20 +18,20 @@
     vector_77d837c3 _objectsArray;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (_Bool)isEnabled;
-- (void)enable:(unsigned int)arg1;
-- (void)disable;
-- (void)highlightObjectWithID:(unsigned int)arg1 clearPrevious:(_Bool)arg2;
-- (void)draw;
-- (int)getDrawingOrder;
-- (struct OZObjectManipulator *)hitCheckNode:(id)arg1;
-- (int)hitCheck:(id)arg1;
-- (void)drawOutlineHighlight:(PCVector2_79efa81a *)arg1 c2:(PCVector2_79efa81a *)arg2 c3:(PCVector2_79efa81a *)arg3 c4:(PCVector2_79efa81a *)arg4 color:(const struct PCColor *)arg5;
-- (void)drawName:(id)arg1 atPoint:(PCVector2_79efa81a *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)drawName:(id)arg1 atPoint:(PCVector2_79efa81a *)arg2;
+- (void)drawOutlineHighlight:(PCVector2_79efa81a *)arg1 c2:(PCVector2_79efa81a *)arg2 c3:(PCVector2_79efa81a *)arg3 c4:(PCVector2_79efa81a *)arg4 color:(const struct PCColor *)arg5;
+- (int)hitCheck:(id)arg1;
+- (struct OZObjectManipulator *)hitCheckNode:(id)arg1;
+- (int)getDrawingOrder;
+- (void)draw;
+- (void)highlightObjectWithID:(unsigned int)arg1 clearPrevious:(_Bool)arg2;
+- (void)disable;
+- (void)enable:(unsigned int)arg1;
+- (_Bool)isEnabled;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

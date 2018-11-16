@@ -19,24 +19,24 @@
     OZPreviewPlayButtonView *_playButtonView;
 }
 
-- (void)_init;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)image;
-- (void)setImage:(id)arg1;
-- (void)setShouldDrawBackground:(BOOL)arg1;
-- (void)setCustomFrameElement:(long long)arg1 part:(long long)arg2;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)display:(struct OZRenderNode *)arg1;
-- (void)display:(struct OZRenderNode *)arg1 forTime:(const CDStruct_1b6d18a9 *)arg2;
-- (struct OZRenderNode *)renderNode;
-- (void)setRenderDelegate:(id)arg1;
-- (void)callRenderDelegate:(id)arg1;
-- (double)getInset;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
 @property(nonatomic) OZPreviewPlayButtonView *playButtonView; // @synthesize playButtonView=_playButtonView;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (double)getInset;
+- (void)callRenderDelegate:(id)arg1;
+- (void)setRenderDelegate:(id)arg1;
+- (struct OZRenderNode *)renderNode;
+- (void)display:(struct OZRenderNode *)arg1 forTime:(const CDStruct_1b6d18a9 *)arg2;
+- (void)display:(struct OZRenderNode *)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)setCustomFrameElement:(long long)arg1 part:(long long)arg2;
+- (void)setShouldDrawBackground:(BOOL)arg1;
+- (void)setImage:(id)arg1;
+- (id)image;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)_init;
 
 @end
 

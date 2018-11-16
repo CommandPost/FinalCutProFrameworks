@@ -18,19 +18,19 @@
     NSMutableArray *_pSelfReassociatingControllers;
 }
 
-- (id)initWithSceneNodes:(list_699e9227 *)arg1 viewCtlrDelegate:(id)arg2 includeHeader:(BOOL)arg3 context:(id)arg4;
-- (void)dealloc;
-- (BOOL)buildUIWithSceneNodes:(list_699e9227 *)arg1 context:(id)arg2;
-- (void)buildUI:(id)arg1 forChannel:(struct OZChannel *)arg2 context:(id)arg3;
-- (void)buildUI:(id)arg1 forChannelBase:(struct OZChannelBase *)arg2 context:(id)arg3;
-- (void)buildUI:(id)arg1 forFolder:(struct OZChannelFolder *)arg2 context:(id)arg3;
-- (void)didBuildUI;
-- (void)reassociateChannels;
-- (id)delegate;
-- (void)updateEnableState;
-- (void)notify:(unsigned int)arg1;
-- (void)textSelectionChanged:(id)arg1;
 - (void)setPublishedNamesInCtlr:(id)arg1 settings:(struct OZPublishSettings *)arg2;
+- (void)textSelectionChanged:(id)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)updateEnableState;
+- (id)delegate;
+- (void)reassociateChannels;
+- (void)didBuildUI;
+- (void)buildUI:(id)arg1 forFolder:(struct OZChannelFolder *)arg2 context:(id)arg3;
+- (void)buildUI:(id)arg1 forChannelBase:(struct OZChannelBase *)arg2 context:(id)arg3;
+- (void)buildUI:(id)arg1 forChannel:(struct OZChannel *)arg2 context:(id)arg3;
+- (BOOL)buildUIWithSceneNodes:(list_1192f13f *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (id)initWithSceneNodes:(list_1192f13f *)arg1 viewCtlrDelegate:(id)arg2 includeHeader:(BOOL)arg3 context:(id)arg4;
 
 @end
 

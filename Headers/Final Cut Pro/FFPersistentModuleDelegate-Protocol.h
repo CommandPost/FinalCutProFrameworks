@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+@class FFPersistentModule, NSString, NSUserDefaultsController;
+
 @protocol FFPersistentModuleDelegate <NSObject>
 
 @optional
-- (id)defaultsControllerForPersistentModule:(id)arg1;
-- (id)persistentModule:(id)arg1 convertDefaultsKeyPath:(id)arg2;
+- (NSString *)persistentModule:(FFPersistentModule *)arg1 convertDefaultsKeyPath:(NSString *)arg2;
+- (NSUserDefaultsController *)defaultsControllerForPersistentModule:(FFPersistentModule *)arg1;
 @end
 

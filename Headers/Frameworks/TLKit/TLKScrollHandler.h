@@ -11,13 +11,13 @@
     unsigned int _isPanning:1;
 }
 
-- (BOOL)shouldSkimItem:(id)arg1;
-- (BOOL)shouldAutoscroll:(id)arg1;
-- (BOOL)startTracking:(id)arg1;
-- (BOOL)continueTracking:(id)arg1;
-- (void)cancelTracking:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (BOOL)stopTracking:(id)arg1;
+- (void)cancelTracking:(id)arg1;
+- (BOOL)continueTracking:(id)arg1;
+- (BOOL)startTracking:(id)arg1;
+- (BOOL)shouldAutoscroll:(id)arg1;
+- (BOOL)shouldSkimItem:(id)arg1;
 
 @end
 

@@ -14,12 +14,12 @@
 }
 
 + (id)sharedInstance;
-- (id)init;
-- (int)numRatios;
-- (id)nameForIndex:(int)arg1;
-- (id)nameForRatio:(float)arg1;
-- (double)ratioForIndex:(int)arg1;
 - (int)indexForRatio:(double)arg1;
+- (double)ratioForIndex:(int)arg1;
+- (id)nameForRatio:(float)arg1;
+- (id)nameForIndex:(int)arg1;
+- (int)numRatios;
+- (id)init;
 
 @end
 

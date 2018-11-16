@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+@class FFNUpDisplay;
+
 @protocol FFNUpDisplayDelegate <NSObject>
 
 @optional
-- (void)nUpDisplayWillBegin:(id)arg1;
-- (void)nUpDisplayDidEnd:(id)arg1;
+- (void)nUpDisplayDidEnd:(FFNUpDisplay *)arg1;
+- (void)nUpDisplayWillBegin:(FFNUpDisplay *)arg1;
 @end
 

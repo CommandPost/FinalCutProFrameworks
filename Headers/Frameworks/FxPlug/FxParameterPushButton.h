@@ -11,8 +11,8 @@
     struct FxParameterPushButtonPriv *_pushButtonPriv;
 }
 
-- (id)init;
 - (void)dealloc;
+- (id)init;
 
 @end
 

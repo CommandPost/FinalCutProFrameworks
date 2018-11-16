@@ -6,7 +6,7 @@
 
 #import "NSViewController.h"
 
-@class NSString;
+@class NSPopUpButton, NSString;
 
 @interface FFXMLExportDialogController : NSViewController
 {
@@ -22,14 +22,16 @@
     id mFormatString;
     id mUseSeqTimeButton;
     id mRelativePathsButton;
+    NSPopUpButton *mExportViewPoup;
 }
 
-- (void)setupFormatVersions:(id)arg1;
-- (id)initWithSavePanel:(id)arg1 rootObject:(id)arg2;
-- (void)export:(id)arg1;
-- (void)setExportFormatVersion:(id)arg1;
-- (void)setUseSequneceRelativeTime:(id)arg1;
+- (id)exportViewSet;
 - (void)setUseRelativePaths:(id)arg1;
+- (void)setUseSequneceRelativeTime:(id)arg1;
+- (void)setExportFormatVersion:(id)arg1;
+- (void)export:(id)arg1;
+- (id)initWithSavePanel:(id)arg1 rootObject:(id)arg2;
+- (void)setupFormatVersions:(id)arg1;
 
 @end
 

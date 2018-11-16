@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
     BOOL _hasRedone;
 }
 
-- (id)initWithProjectData:(id)arg1;
-- (void)dealloc;
 @property(nonatomic) BOOL hasRedone; // @synthesize hasRedone=_hasRedone;
+- (void)dealloc;
+- (id)initWithProjectData:(id)arg1;
 
 @end
 

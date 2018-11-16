@@ -15,10 +15,10 @@
     NSView *_destView;
 }
 
-- (id)init;
-- (void)dealloc;
-- (id)imagePreview;
 - (void)setImagePreview:(id)arg1;
+- (id)imagePreview;
+- (void)dealloc;
+- (id)init;
 
 @end
 

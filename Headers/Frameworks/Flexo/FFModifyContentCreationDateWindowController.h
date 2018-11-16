@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     NSArray *_clips;
     FFAnchoredSequence *_clip;
     NSDate *_oldDate;
-    NSDate *_newDate;
+    NSDate *_changeToDate;
     NSWindow *_sheet;
     NSButton *_okButton;
     NSButton *_modifyFilesCheckbox;
@@ -27,17 +27,17 @@ __attribute__((visibility("hidden")))
     NSTextField *_adjustmentAmount;
 }
 
-- (struct OpaqueFigMetadataReader *)createQuickTimeMetadataReaderForFileURL:(id)arg1;
-- (BOOL)setCreationDate:(id)arg1 inMovieFile:(id)arg2;
-- (void)didEndSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)updateStatus:(id)arg1;
-- (void)showModifyContentCreationDateSheetForClips:(id)arg1 modalForWindow:(id)arg2;
-- (void)OK:(id)arg1;
-- (void)cancel:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-@property(retain) NSDate *newDate; // @synthesize newDate=_newDate;
+@property(retain) NSDate *changeToDate; // @synthesize changeToDate=_changeToDate;
 @property(retain) NSDate *oldDate; // @synthesize oldDate=_oldDate;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (void)cancel:(id)arg1;
+- (void)OK:(id)arg1;
+- (void)showModifyContentCreationDateSheetForClips:(id)arg1 modalForWindow:(id)arg2;
+- (void)updateStatus:(id)arg1;
+- (void)didEndSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (BOOL)setCreationDate:(id)arg1 inMovieFile:(id)arg2;
+- (struct OpaqueFigMetadataReader *)createQuickTimeMetadataReaderForFileURL:(id)arg1;
 
 @end
 

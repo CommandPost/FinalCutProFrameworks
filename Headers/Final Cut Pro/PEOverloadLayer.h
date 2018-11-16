@@ -16,15 +16,15 @@
     PEOverloadTextLayer *_dbValue;
 }
 
-- (id)init;
-- (id)initWithText:(BOOL)arg1;
-- (void)setDelegateIncludingSublayers:(id)arg1;
-- (void)layoutSublayers;
-- (void)setMeterValue:(double)arg1;
-- (void)setOverloaded:(BOOL)arg1;
-@property(retain, nonatomic) PEOverloadTextLayer *dbValue; // @synthesize dbValue=_dbValue;
+@property(retain) PEOverloadTextLayer *dbValue; // @synthesize dbValue=_dbValue;
 @property int peakCount; // @synthesize peakCount=_peakCount;
 @property BOOL peaked; // @synthesize peaked=_peaked;
+- (void)setOverloaded:(BOOL)arg1;
+- (void)setMeterValue:(double)arg1;
+- (void)layoutSublayers;
+- (void)setDelegateIncludingSublayers:(id)arg1;
+- (id)initWithText:(BOOL)arg1;
+- (id)init;
 
 @end
 

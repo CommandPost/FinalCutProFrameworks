@@ -30,10 +30,10 @@ __attribute__((visibility("hidden")))
     int mStorageType;
 }
 
-- (id)initWithStorage:(void *)arg1 ofType:(int)arg2;
-- (CDStruct_15084369 *)producerCallbacks;
-- (struct CMIOStreamScheduledOutputNotificationProcAndRefCon *)scheduledOutputNotificationProcAndRefcon;
 - (int)setCMIORequestRenderCallbackAndRefCon:(struct CMIORequestRenderCallbackAndRefCon *)arg1;
+- (struct CMIOStreamScheduledOutputNotificationProcAndRefCon *)scheduledOutputNotificationProcAndRefcon;
+- (CDStruct_15084369 *)producerCallbacks;
+- (id)initWithStorage:(void *)arg1 ofType:(int)arg2;
 
 @end
 

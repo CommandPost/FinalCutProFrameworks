@@ -11,19 +11,20 @@
     struct CGPoint _mouseOrigin;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (id)getName;
-- (id)getTooltip;
-- (struct PCUUID)getClassID;
-- (id)getDefaultCursor;
-- (id)getCursorWithEvent:(id)arg1;
-- (id)getOptionsView;
-- (void)addToScene:(struct OZScene *)arg1;
-- (void)draw;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
+- (id).cxx_construct;
 - (BOOL)shouldDrawStrokeWidthOSC;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)draw;
+- (void)addToScene:(struct OZScene *)arg1;
+- (id)getOptionsView;
+- (id)getCursorWithEvent:(id)arg1;
+- (id)getDefaultCursor;
+- (struct PCUUID)getClassID;
+- (id)getTooltip;
+- (id)getName;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

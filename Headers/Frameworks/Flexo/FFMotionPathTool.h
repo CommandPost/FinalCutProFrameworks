@@ -10,11 +10,11 @@
 {
 }
 
-+ (void)initialize;
-+ (id)displayName;
 + (id)toolbarFacet;
-- (BOOL)handlesSelection;
++ (id)displayName;
++ (void)initialize;
 - (void)becomeActiveTool;
+- (BOOL)handlesSelection;
 
 @end
 

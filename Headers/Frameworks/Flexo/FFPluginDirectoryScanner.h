@@ -10,11 +10,11 @@
 {
 }
 
-+ (void)_scanDirectory:(id)arg1 withExtension:(id)arg2 scanned:(id)arg3 delegate:(id)arg4 didLoadSelector:(SEL)arg5;
-+ (void)scanForPluginsInDirectory:(id)arg1 withExtension:(id)arg2 delegate:(id)arg3 didLoadSelector:(SEL)arg4;
-+ (void)scanForPluginsInProAppSupportSubDirectory:(id)arg1 withExtension:(id)arg2 delegate:(id)arg3 didLoadSelector:(SEL)arg4;
-+ (id)appLevelPlugInsPath;
 + (id)appLevelPlugInsURL;
++ (id)appLevelPlugInsPath;
++ (void)scanForPluginsInProAppSupportSubDirectory:(id)arg1 withExtension:(id)arg2 delegate:(id)arg3 didLoadSelector:(SEL)arg4;
++ (void)scanForPluginsInDirectory:(id)arg1 withExtension:(id)arg2 delegate:(id)arg3 didLoadSelector:(SEL)arg4;
++ (void)_scanDirectory:(id)arg1 withExtension:(id)arg2 scanned:(id)arg3 delegate:(id)arg4 didLoadSelector:(SEL)arg5;
 
 @end
 

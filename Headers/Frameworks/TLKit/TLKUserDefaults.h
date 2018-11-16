@@ -10,30 +10,31 @@
 {
 }
 
-+ (void)_loadUserDefaults;
-+ (void)initialize;
-+ (BOOL)allowNegativeTimeAfterTrim;
-+ (BOOL)disableClipSublayers;
-+ (BOOL)disableOptimizedDrawing;
-+ (BOOL)enableIncrementalReload;
-+ (BOOL)forceLayoutOnDrag;
-+ (BOOL)loadDebugMicaAssets;
-+ (BOOL)performanceMonitorEnabled;
-+ (BOOL)logParts;
-+ (BOOL)logReloadRequests;
-+ (BOOL)logVisibleLayerChanges;
-+ (BOOL)logVisibleRectChanges;
-+ (BOOL)logRecyclingLayerChanges;
-+ (BOOL)showContentLayers;
-+ (BOOL)showInvalidLayoutRects;
-+ (BOOL)showItemLayoutInfo;
-+ (BOOL)showContainerBounds;
-+ (BOOL)showRulerBounds;
-+ (BOOL)showRulerLabelCalls;
-+ (BOOL)showTransparentGapObject;
-+ (BOOL)showUsedRegion;
-+ (BOOL)showZeroHeightSpineItems;
 + (BOOL)showMisalignedEdges;
++ (BOOL)showZeroHeightSpineItems;
++ (BOOL)showUsedRegion;
++ (BOOL)showTransparentGapObject;
++ (BOOL)showRulerLabelCalls;
++ (BOOL)showRulerBounds;
++ (BOOL)showContainerBounds;
++ (BOOL)showItemLayoutInfo;
++ (BOOL)showInvalidLayoutRects;
++ (BOOL)showContentLayers;
++ (BOOL)logRecyclingLayerChanges;
++ (BOOL)logVisibleRectChanges;
++ (BOOL)logVisibleLayerChanges;
++ (BOOL)logReloadRequests;
++ (BOOL)logParts;
++ (BOOL)performanceMonitorEnabled;
++ (BOOL)loadDebugMicaAssets;
++ (BOOL)forceLayoutOnDrag;
++ (BOOL)showItemLaneIndex;
++ (BOOL)enableIncrementalReload;
++ (BOOL)disableOptimizedDrawing;
++ (BOOL)disableClipSublayers;
++ (BOOL)allowNegativeTimeAfterTrim;
++ (void)initialize;
++ (void)_loadUserDefaults;
 
 @end
 

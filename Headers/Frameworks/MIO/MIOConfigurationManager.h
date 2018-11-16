@@ -21,28 +21,28 @@
     long long mMaximumRecentDevicesCount;
 }
 
-+ (id)sharedConfigurationManager;
-+ (void)releaseSharedConfigurationManager;
 + (void)initialize;
-- (id)init;
-- (void)dealloc;
-@property(retain, nonatomic) NSString *configurationRootDirectory; // @synthesize configurationRootDirectory=mConfigurationRootDirectory;
-@property(retain) MIOConfiguration *currentCaptureConfiguration;
-@property(retain, nonatomic) NSMutableArray *captureConfigurations; // @synthesize captureConfigurations=mCaptureConfigurations;
-- (id)duplicateCurrentCaptureConfiguration;
-- (BOOL)deleteCaptureConfiguration:(id)arg1;
-@property(retain) MIOConfiguration *currentOutputConfiguration;
-@property(retain, nonatomic) NSMutableArray *outputConfigurations; // @synthesize outputConfigurations=mOutputConfigurations;
-- (id)duplicateCurrentOutputConfiguration;
-- (BOOL)deleteOutputConfiguration:(id)arg1;
-- (id)recentDevicesPath:(id)arg1 subPath:(id)arg2;
-@property(retain, nonatomic) NSMutableArray *recentCaptureVideoDevices; // @synthesize recentCaptureVideoDevices=mRecentCaptureVideoDevices;
-@property(retain, nonatomic) NSMutableArray *recentCaptureAudioDevices; // @synthesize recentCaptureAudioDevices=mRecentCaptureAudioDevices;
-@property(retain, nonatomic) NSMutableArray *recentOutputVideoDevices; // @synthesize recentOutputVideoDevices=mRecentOutputVideoDevices;
-- (void)saveRecentDevices;
-- (void)clearRecentDevices;
-- (id)createCaptureDevice;
++ (void)releaseSharedConfigurationManager;
++ (id)sharedConfigurationManager;
 @property long long maximumRecentDevicesCount; // @synthesize maximumRecentDevicesCount=mMaximumRecentDevicesCount;
+@property(retain, nonatomic) NSMutableArray *recentOutputVideoDevices; // @synthesize recentOutputVideoDevices=mRecentOutputVideoDevices;
+@property(retain, nonatomic) NSMutableArray *recentCaptureAudioDevices; // @synthesize recentCaptureAudioDevices=mRecentCaptureAudioDevices;
+@property(retain, nonatomic) NSMutableArray *recentCaptureVideoDevices; // @synthesize recentCaptureVideoDevices=mRecentCaptureVideoDevices;
+@property(retain, nonatomic) NSString *configurationRootDirectory; // @synthesize configurationRootDirectory=mConfigurationRootDirectory;
+@property(retain, nonatomic) NSMutableArray *outputConfigurations; // @synthesize outputConfigurations=mOutputConfigurations;
+@property(retain, nonatomic) NSMutableArray *captureConfigurations; // @synthesize captureConfigurations=mCaptureConfigurations;
+- (id)createCaptureDevice;
+- (void)clearRecentDevices;
+- (void)saveRecentDevices;
+- (id)recentDevicesPath:(id)arg1 subPath:(id)arg2;
+- (BOOL)deleteOutputConfiguration:(id)arg1;
+- (id)duplicateCurrentOutputConfiguration;
+@property(retain) MIOConfiguration *currentOutputConfiguration;
+- (BOOL)deleteCaptureConfiguration:(id)arg1;
+- (id)duplicateCurrentCaptureConfiguration;
+@property(retain) MIOConfiguration *currentCaptureConfiguration;
+- (void)dealloc;
+- (id)init;
 
 @end
 

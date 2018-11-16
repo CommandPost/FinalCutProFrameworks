@@ -22,33 +22,33 @@
     struct OZAudioMixer *_audioMixer;
 }
 
-- (id)initWithOZDocument:(struct OZDocument *)arg1 andController:(id)arg2;
-- (void)dealloc;
-- (BOOL)audioMasterHasChanged;
-- (BOOL)audioLayerHasChanged;
-- (BOOL)trackHasChanged;
-- (void)resetCurrAudioTrack:(BOOL)arg1;
-- (unsigned int)getMasterTrackID;
-- (void)setMasterTrackID:(unsigned int)arg1;
-- (struct OZAudioMasterTrack *)getMasterTrack;
-- (struct OZObjectManipulator *)getCurrAudioObjManip;
-- (struct OZSceneNode *)getCurrAudioNode;
-- (unsigned int)getCurrAudioTrackID;
-- (unsigned int)getCurrTrackID;
-- (void)setCurrTrackID:(unsigned int)arg1;
-- (struct OZAudioTrack *)getCurrTrack;
-- (struct OZAudioMasterTrack *)getCurrMaster;
-- (void)postAudioPrefetchInstruction:(CDStruct_1b6d18a9)arg1;
-- (void)scrub;
-- (void)stopScrub;
-- (struct OZAudioMixer *)audioMixer;
-- (void)setAudioMixer:(struct OZAudioMixer *)arg1;
-- (id)getAudioTrackMenu;
-- (id)buildAudioTrackMenu;
-- (void)hideAudio:(id)arg1;
-- (void)menuSetTrackID:(id)arg1;
-- (BOOL)validateMenuItem:(id)arg1;
 - (BOOL)validateAudioTrackMenuItem:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)menuSetTrackID:(id)arg1;
+- (void)hideAudio:(id)arg1;
+- (id)buildAudioTrackMenu;
+- (id)getAudioTrackMenu;
+- (void)setAudioMixer:(struct OZAudioMixer *)arg1;
+- (struct OZAudioMixer *)audioMixer;
+- (void)stopScrub;
+- (void)scrub;
+- (void)postAudioPrefetchInstruction:(CDStruct_1b6d18a9)arg1;
+- (struct OZAudioMasterTrack *)getCurrMaster;
+- (struct OZAudioTrack *)getCurrTrack;
+- (void)setCurrTrackID:(unsigned int)arg1;
+- (unsigned int)getCurrTrackID;
+- (unsigned int)getCurrAudioTrackID;
+- (struct OZSceneNode *)getCurrAudioNode;
+- (struct OZObjectManipulator *)getCurrAudioObjManip;
+- (struct OZAudioMasterTrack *)getMasterTrack;
+- (void)setMasterTrackID:(unsigned int)arg1;
+- (unsigned int)getMasterTrackID;
+- (void)resetCurrAudioTrack:(BOOL)arg1;
+- (BOOL)trackHasChanged;
+- (BOOL)audioLayerHasChanged;
+- (BOOL)audioMasterHasChanged;
+- (void)dealloc;
+- (id)initWithOZDocument:(struct OZDocument *)arg1 andController:(id)arg2;
 
 @end
 

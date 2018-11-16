@@ -7,7 +7,7 @@
 #import "LKSegmentedControl.h"
 
 @interface LKSegmentedControl (OZToolbarModuleAdditions)
-- (long long)segmentWithMenu:(id)arg1;
 - (void)deselectSelectedSegment;
+- (long long)segmentWithMenu:(id)arg1;
 @end
 

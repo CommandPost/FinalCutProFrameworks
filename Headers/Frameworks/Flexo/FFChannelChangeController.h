@@ -15,21 +15,21 @@
     unsigned long long _changeCount;
 }
 
-+ (void)_applyUndoState:(id)arg1 usingChannelKey:(id)arg2;
-+ (void)operationBegin:(id)arg1;
 + (void)operationEnd:(id)arg1;
-- (void)dealloc;
-- (void)beginChannelChanges:(id)arg1 forObject:(id)arg2;
-- (void)endChannelChanges:(id)arg1 forObject:(id)arg2;
-- (void)willSetChannels;
-- (void)willSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
-- (void)didSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
-- (void)willSetChannel:(id)arg1;
-- (void)didSetChannel:(id)arg1;
-- (void)didSetChannels;
-- (id)actionName;
-- (void)beginChannelChange:(id)arg1 actionName:(id)arg2 forItem:(id)arg3;
++ (void)operationBegin:(id)arg1;
++ (void)_applyUndoState:(id)arg1 usingChannelKey:(id)arg2;
 - (BOOL)endChannelChange:(id)arg1 error:(id *)arg2;
+- (void)beginChannelChange:(id)arg1 actionName:(id)arg2 forItem:(id)arg3;
+- (id)actionName;
+- (void)didSetChannels;
+- (void)didSetChannel:(id)arg1;
+- (void)willSetChannel:(id)arg1;
+- (void)didSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
+- (void)willSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
+- (void)willSetChannels;
+- (void)endChannelChanges:(id)arg1 forObject:(id)arg2;
+- (void)beginChannelChanges:(id)arg1 forObject:(id)arg2;
+- (void)dealloc;
 
 @end
 

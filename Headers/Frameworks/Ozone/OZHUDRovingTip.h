@@ -10,17 +10,17 @@
 {
 }
 
-+ (void)startTip:(int)arg1 who:(id)arg2;
-+ (void)startTip:(int)arg1 andDistance:(int)arg2 who:(id)arg3;
-+ (void)updateTip:(id)arg1;
-+ (void)updateTip:(id)arg1 atPoint:(struct CGPoint)arg2;
-+ (void)updateTip:(id)arg1 withFrame:(struct CGRect)arg2;
-+ (struct CGSize)tipSize:(id)arg1;
-+ (void)hideTip;
-+ (BOOL)isTipUp;
-+ (void)endTip;
-+ (void)endTip:(id)arg1;
 + (id)tip;
++ (void)endTip:(id)arg1;
++ (void)endTip;
++ (BOOL)isTipUp;
++ (void)hideTip;
++ (struct CGSize)tipSize:(id)arg1;
++ (void)updateTip:(id)arg1 withFrame:(struct CGRect)arg2;
++ (void)updateTip:(id)arg1 atPoint:(struct CGPoint)arg2;
++ (void)updateTip:(id)arg1;
++ (void)startTip:(int)arg1 andDistance:(int)arg2 who:(id)arg3;
++ (void)startTip:(int)arg1 who:(id)arg2;
 - (void)initializeContents:(struct CGRect)arg1;
 
 @end

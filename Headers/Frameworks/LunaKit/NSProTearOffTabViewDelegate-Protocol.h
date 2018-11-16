@@ -6,16 +6,18 @@
 
 #import "NSTabViewDelegate.h"
 
+@class NSProTearOffTabView, NSTabView, NSTabViewItem, NSWindow;
+
 @protocol NSProTearOffTabViewDelegate <NSTabViewDelegate>
 
 @optional
-- (BOOL)tabView:(id)arg1 canInsertTabViewItem:(id)arg2;
-- (void)tabView:(id)arg1 didInsertTabViewItem:(id)arg2;
-- (BOOL)tabView:(id)arg1 canRemoveTabViewItem:(id)arg2;
-- (void)tabView:(id)arg1 willRemoveTabViewItem:(id)arg2;
-- (void)tabView:(id)arg1 didReorderTabViewItem:(id)arg2;
-- (id)tabView:(id)arg1 startDraggingTabViewItem:(id)arg2;
-- (void)tabView:(id)arg1 stopDraggingTabViewItem:(id)arg2 withOperation:(unsigned long long)arg3;
-- (id)tabView:(id)arg1 createWindowForTabViewItem:(id)arg2;
+- (NSWindow *)tabView:(NSTabView *)arg1 createWindowForTabViewItem:(NSTabViewItem *)arg2;
+- (void)tabView:(NSTabView *)arg1 stopDraggingTabViewItem:(NSTabViewItem *)arg2 withOperation:(unsigned long long)arg3;
+- (NSProTearOffTabView *)tabView:(NSTabView *)arg1 startDraggingTabViewItem:(NSTabViewItem *)arg2;
+- (void)tabView:(NSTabView *)arg1 didReorderTabViewItem:(NSTabViewItem *)arg2;
+- (void)tabView:(NSTabView *)arg1 willRemoveTabViewItem:(NSTabViewItem *)arg2;
+- (BOOL)tabView:(NSTabView *)arg1 canRemoveTabViewItem:(NSTabViewItem *)arg2;
+- (void)tabView:(NSTabView *)arg1 didInsertTabViewItem:(NSTabViewItem *)arg2;
+- (BOOL)tabView:(NSTabView *)arg1 canInsertTabViewItem:(NSTabViewItem *)arg2;
 @end
 

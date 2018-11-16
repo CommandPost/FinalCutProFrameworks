@@ -4,17 +4,19 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSArray, NSError, NSString;
+
 @protocol FxDynamicParameterAPI
-- (unsigned int)parameterCount;
+- (NSError *)setAsDefaultsAtTime:(double)arg1;
+- (NSError *)setPopupMenuParameter:(unsigned int)arg1 entries:(NSArray *)arg2 defaultValue:(unsigned int)arg3;
+- (NSError *)setParameter:(unsigned int)arg1 intMinimum:(int)arg2 maximum:(int)arg3 sliderMinimum:(int)arg4 sliderMaximum:(int)arg5;
+- (NSError *)parameter:(unsigned int)arg1 intMinimum:(int *)arg2 maximum:(int *)arg3 sliderMinimum:(int *)arg4 sliderMaximum:(int *)arg5;
+- (NSError *)setParameter:(unsigned int)arg1 floatMinimum:(double)arg2 maximum:(double)arg3 sliderMinimum:(double)arg4 sliderMaximum:(double)arg5;
+- (NSError *)parameter:(unsigned int)arg1 floatMinimum:(double *)arg2 maximum:(double *)arg3 sliderMinimum:(double *)arg4 sliderMaximum:(double *)arg5;
+- (NSError *)setParameter:(unsigned int)arg1 name:(NSString *)arg2;
+- (NSError *)parameter:(unsigned int)arg1 name:(id *)arg2;
+- (NSError *)removeParameter:(unsigned int)arg1;
 - (unsigned int)parameterIDAtIndex:(unsigned int)arg1;
-- (id)removeParameter:(unsigned int)arg1;
-- (id)parameter:(unsigned int)arg1 name:(id *)arg2;
-- (id)setParameter:(unsigned int)arg1 name:(id)arg2;
-- (id)parameter:(unsigned int)arg1 floatMinimum:(double *)arg2 maximum:(double *)arg3 sliderMinimum:(double *)arg4 sliderMaximum:(double *)arg5;
-- (id)setParameter:(unsigned int)arg1 floatMinimum:(double)arg2 maximum:(double)arg3 sliderMinimum:(double)arg4 sliderMaximum:(double)arg5;
-- (id)parameter:(unsigned int)arg1 intMinimum:(int *)arg2 maximum:(int *)arg3 sliderMinimum:(int *)arg4 sliderMaximum:(int *)arg5;
-- (id)setParameter:(unsigned int)arg1 intMinimum:(int)arg2 maximum:(int)arg3 sliderMinimum:(int)arg4 sliderMaximum:(int)arg5;
-- (id)setPopupMenuParameter:(unsigned int)arg1 entries:(id)arg2 defaultValue:(unsigned int)arg3;
-- (id)setAsDefaultsAtTime:(double)arg1;
+- (unsigned int)parameterCount;
 @end
 

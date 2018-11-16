@@ -6,11 +6,13 @@
 
 #import "NSObject.h"
 
+@class NSArray, NSPasteboard, NSString;
+
 @protocol NSPasteboardReading <NSObject>
-+ (id)readableTypesForPasteboard:(id)arg1;
++ (NSArray *)readableTypesForPasteboard:(NSPasteboard *)arg1;
 
 @optional
-+ (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
-- (id)initWithPasteboardPropertyList:(id)arg1 ofType:(id)arg2;
++ (unsigned long long)readingOptionsForType:(NSString *)arg1 pasteboard:(NSPasteboard *)arg2;
+- (id)initWithPasteboardPropertyList:(id)arg1 ofType:(NSString *)arg2;
 @end
 

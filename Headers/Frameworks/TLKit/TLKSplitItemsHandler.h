@@ -11,13 +11,14 @@
     unsigned int _shouldBlade:1;
 }
 
-- (BOOL)respondsToSelector:(SEL)arg1;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (void)startHandling:(id)arg1;
-- (void)stopHandling:(id)arg1;
-- (BOOL)itemLevelSkimmingEnabled;
-- (void)splitAtCurrentLocation:(id)arg1;
 - (void)updateSkimming:(id)arg1;
+- (void)splitAtCurrentLocation:(id)arg1;
+- (BOOL)itemLevelSkimmingEnabled;
+- (void)stopHandling:(id)arg1;
+- (void)startHandling:(id)arg1;
+- (void)flagsChanged:(id)arg1;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (BOOL)respondsToSelector:(SEL)arg1;
 
 @end
 

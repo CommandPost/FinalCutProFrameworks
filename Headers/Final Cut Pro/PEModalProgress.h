@@ -27,25 +27,25 @@
     NSButton *_cancelButton;
 }
 
-+ (void)initialize;
-+ (id)sharedInstance;
 + (void)releaseSharedInstance;
-- (id)init;
-- (void)dealloc;
-- (void)setIsPastStartup:(BOOL)arg1;
-- (void)_clearRequestDate;
-- (id)_statusDisplay;
-- (void)_showSheet;
-- (void)_hideSheet;
-- (void)_refreshStatus;
-- (void)awakeFromNib;
-- (void)cancelAction:(id)arg1;
-- (void)beginModalProgress:(id)arg1 titleText:(id)arg2 showType:(int)arg3 targetWindow:(id)arg4;
-- (BOOL)updateModalProgress:(id)arg1 currentValue:(double)arg2 maxValue:(double)arg3 allowCancel:(BOOL)arg4;
-- (void)endModalProgress;
-- (void)showIfTime;
++ (id)sharedInstance;
++ (void)initialize;
 @property(retain, nonatomic) NSWindow *targetWindow; // @synthesize targetWindow=_targetWindow;
 @property(retain, nonatomic) NSDate *requestDate; // @synthesize requestDate=_requestDate;
+- (void)showIfTime;
+- (void)endModalProgress;
+- (BOOL)updateModalProgress:(id)arg1 currentValue:(double)arg2 maxValue:(double)arg3 allowCancel:(BOOL)arg4;
+- (void)beginModalProgress:(id)arg1 titleText:(id)arg2 showType:(int)arg3 targetWindow:(id)arg4;
+- (void)cancelAction:(id)arg1;
+- (void)awakeFromNib;
+- (void)_refreshStatus;
+- (void)_hideSheet;
+- (void)_showSheet;
+- (id)_statusDisplay;
+- (void)_clearRequestDate;
+- (void)setIsPastStartup:(BOOL)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

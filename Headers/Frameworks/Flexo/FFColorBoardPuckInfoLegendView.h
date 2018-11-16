@@ -13,21 +13,21 @@ __attribute__((visibility("hidden")))
     int _puckType;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)setBoardType:(int)arg1 andPuckType:(int)arg2;
-- (void)addNotificationObservers;
-- (void)removeNotificationObservers;
-- (void)notificationHandler:(id)arg1;
-- (void)syncToBoardAndPuckType;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)drawPlaceholderAsLegendImage:(id)arg1;
-- (void)drawColorAsLegendImageForNormalizedPt:(struct CGPoint)arg1;
-- (void)drawNegativeMarkerAtCenterPt:(struct CGPoint)arg1 forNormalizedPt:(struct CGPoint)arg2;
 @property int puckType; // @synthesize puckType=_puckType;
 @property int boardType; // @synthesize boardType=_boardType;
+- (void)drawNegativeMarkerAtCenterPt:(struct CGPoint)arg1 forNormalizedPt:(struct CGPoint)arg2;
+- (void)drawColorAsLegendImageForNormalizedPt:(struct CGPoint)arg1;
+- (void)drawPlaceholderAsLegendImage:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)syncToBoardAndPuckType;
+- (void)notificationHandler:(id)arg1;
+- (void)removeNotificationObservers;
+- (void)addNotificationObservers;
+- (void)setBoardType:(int)arg1 andPuckType:(int)arg2;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

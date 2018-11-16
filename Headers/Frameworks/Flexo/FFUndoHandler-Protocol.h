@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+@class NSString, NSUndoManager;
+
 @protocol FFUndoHandler <NSObject>
-- (id)undoManager;
-- (void)undoableBegin:(id)arg1;
-- (BOOL)undoableEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
-- (BOOL)undoableEnd:(id)arg1 option:(int)arg2 error:(id *)arg3;
+- (BOOL)undoableEnd:(NSString *)arg1 option:(int)arg2 error:(id *)arg3;
+- (BOOL)undoableEnd:(NSString *)arg1 save:(BOOL)arg2 error:(id *)arg3;
+- (void)undoableBegin:(NSString *)arg1;
+- (NSUndoManager *)undoManager;
 @end
 

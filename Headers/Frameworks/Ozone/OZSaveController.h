@@ -36,15 +36,15 @@
 }
 
 + (id)sharedInstance;
-- (id)init;
-- (void)dealloc;
-- (void)selectCollectMethod:(id)arg1;
-- (void)selectUnused:(id)arg1;
-- (void)prepForSave:(id)arg1 withPanel:(id)arg2;
-- (void)refreshPanel;
-- (SEL)getSaveSelector;
-- (void)panel:(id)arg1 didChangeToDirectoryURL:(id)arg2;
 - (void)_saveEnded:(id)arg1 didSave:(BOOL)arg2 contextInfo:(void *)arg3;
+- (void)panel:(id)arg1 didChangeToDirectoryURL:(id)arg2;
+- (SEL)getSaveSelector;
+- (void)refreshPanel;
+- (void)prepForSave:(id)arg1 withPanel:(id)arg2;
+- (void)selectUnused:(id)arg1;
+- (void)selectCollectMethod:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

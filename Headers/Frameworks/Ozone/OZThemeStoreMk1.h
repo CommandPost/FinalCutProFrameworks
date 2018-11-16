@@ -10,12 +10,12 @@
 {
 }
 
-- (id)pathForThemeAssetWithAtom:(_themeatom_union_d9d1758e)arg1;
-- (unsigned int)sliceNumberForAtom:(_themeatom_union_d9d1758e)arg1 atIndex:(unsigned int)arg2;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)encodeThemeAtom:(_themeatom_union_d9d1758e)arg1 withCoder:(id)arg2;
 - (_themeatom_union_d9d1758e)decodeThemeAtomWithCoder:(id)arg1;
+- (void)encodeThemeAtom:(_themeatom_union_d9d1758e)arg1 withCoder:(id)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (unsigned int)sliceNumberForAtom:(_themeatom_union_d9d1758e)arg1 atIndex:(unsigned int)arg2;
+- (id)pathForThemeAssetWithAtom:(_themeatom_union_d9d1758e)arg1;
 
 @end
 

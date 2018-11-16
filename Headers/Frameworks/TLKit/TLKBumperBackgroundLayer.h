@@ -11,9 +11,9 @@
     TLKThemeBackedLayer *_shadowLayer;
 }
 
-- (id)init;
-- (void)layoutSublayers;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
+- (void)layoutSublayers;
+- (id)init;
 
 @end
 

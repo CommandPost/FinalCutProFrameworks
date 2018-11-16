@@ -23,26 +23,26 @@
 }
 
 + (id)_pathForRect:(struct CGRect)arg1 radius:(float)arg2 arrowHeight:(float)arg3 arrowInset:(float)arg4 arrowPointOffset:(float)arg5 arrowWidth:(float)arg6 direction:(int)arg7;
-- (void)_setupDrawingDefinition;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)drawRect:(struct CGRect)arg1;
-- (id)_backgroundImage;
-- (struct CGRect)frameForTargetRect:(struct CGRect)arg1 arrowDirection:(int *)arg2 displayRect:(struct CGRect)arg3 arrowPointOffset:(float *)arg4;
-- (struct CGSize)_frameSizeForDocumentView:(id)arg1 arrowDirection:(int)arg2;
-- (struct CGPoint)_documentViewOrigin;
-- (void)_clearCachedBackgroundAndDisplay:(BOOL)arg1;
-- (void)updateFrame;
-- (BOOL)_foundValidWindowOrigin;
-- (void)_windowFrameAnimationDidEndForDocumentViewChange;
-- (void)_animateOutPreviousDocumentViewDidEnd;
-@property NSView *documentView; // @synthesize documentView=_documentView;
-@property int arrowDirection; // @synthesize arrowDirection=_arrowDirection;
-@property float documentPadding; // @synthesize documentPadding=_documentPadding;
-@property(retain) LKPopOverDrawingDefinition *drawingDefinition; // @synthesize drawingDefinition=_drawingDefinition;
-@property BOOL isCallout; // @synthesize isCallout=_isCallout;
+@property(nonatomic) BOOL isCallout; // @synthesize isCallout=_isCallout;
 @property BOOL animates; // @synthesize animates=_animates;
 @property float arrowPointOffset; // @synthesize arrowPointOffset=_arrowPointOffset;
+@property(nonatomic) float documentPadding; // @synthesize documentPadding=_documentPadding;
+@property(nonatomic) int arrowDirection; // @synthesize arrowDirection=_arrowDirection;
+@property(retain, nonatomic) LKPopOverDrawingDefinition *drawingDefinition;
+@property(nonatomic) NSView *documentView;
+- (void)_animateOutPreviousDocumentViewDidEnd;
+- (void)_windowFrameAnimationDidEndForDocumentViewChange;
+- (BOOL)_foundValidWindowOrigin;
+- (void)updateFrame;
+- (void)_clearCachedBackgroundAndDisplay:(BOOL)arg1;
+- (struct CGPoint)_documentViewOrigin;
+- (struct CGSize)_frameSizeForDocumentView:(id)arg1 arrowDirection:(int)arg2;
+- (struct CGRect)frameForTargetRect:(struct CGRect)arg1 arrowDirection:(int *)arg2 displayRect:(struct CGRect)arg3 arrowPointOffset:(float *)arg4;
+- (id)_backgroundImage;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)_setupDrawingDefinition;
 
 @end
 

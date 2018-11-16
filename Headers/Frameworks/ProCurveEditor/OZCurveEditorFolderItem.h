@@ -13,24 +13,24 @@
     NSMutableArray *_children;
 }
 
-- (id)initWithChannel:(struct OZChannelBase *)arg1 numberOfSamples:(double)arg2 appDelegate:(id)arg3 ignoreHiddenChannels:(BOOL)arg4;
-- (id)initWithRoot:(struct OZChannelBase *)arg1 numberOfSamples:(double)arg2 appDelegate:(id)arg3 ignoreHiddenChannels:(BOOL)arg4;
-- (void)dealloc;
-- (id)children;
-- (void)addChild:(id)arg1;
-- (id)childrenAtIndex:(unsigned int)arg1;
-- (id)flattenDescendants;
-- (int)numberOfChildren;
-- (BOOL)hasChildren;
-- (BOOL)isCollapsed;
-- (void)collapse:(BOOL)arg1;
-- (void)select:(BOOL)arg1;
-- (void)enableItem:(int)arg1;
-- (int)isEnabledItem;
-- (void)takeCurveSnapshot:(BOOL)arg1;
-- (BOOL)isAnimatedChannel;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithRoot;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)isAnimatedChannel;
+- (void)takeCurveSnapshot:(BOOL)arg1;
+- (int)isEnabledItem;
+- (void)enableItem:(int)arg1;
+- (void)select:(BOOL)arg1;
+- (void)collapse:(BOOL)arg1;
+- (BOOL)isCollapsed;
+- (BOOL)hasChildren;
+- (int)numberOfChildren;
+- (id)flattenDescendants;
+- (id)childrenAtIndex:(unsigned int)arg1;
+- (void)addChild:(id)arg1;
+- (id)children;
+- (void)dealloc;
+- (id)initWithRoot:(struct OZChannelBase *)arg1 numberOfSamples:(double)arg2 appDelegate:(id)arg3 ignoreHiddenChannels:(BOOL)arg4;
+- (id)initWithChannel:(struct OZChannelBase *)arg1 numberOfSamples:(double)arg2 appDelegate:(id)arg3 ignoreHiddenChannels:(BOOL)arg4;
 
 @end
 

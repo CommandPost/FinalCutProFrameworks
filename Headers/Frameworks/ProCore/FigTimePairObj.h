@@ -15,20 +15,21 @@
 }
 
 + (id)pairWithPair:(struct FigTimePair)arg1;
-- (id)initWithFirst:(CDStruct_1b6d18a9)arg1 Second:(CDStruct_1b6d18a9)arg2;
-- (id)initWithFigTimePair:(struct FigTimePair)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (CDStruct_1b6d18a9)first;
-- (CDStruct_1b6d18a9)second;
-- (struct FigTimePair)pair;
-- (void)setFirst:(CDStruct_1b6d18a9)arg1;
-- (void)setSecond:(CDStruct_1b6d18a9)arg1;
-- (void)setPair:(struct FigTimePair)arg1;
-- (void)getValue:(struct FigTimePair *)arg1;
-- (BOOL)isEqual:(id)arg1;
+- (id).cxx_construct;
 - (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (void)getValue:(struct FigTimePair *)arg1;
+- (void)setPair:(struct FigTimePair)arg1;
+- (void)setSecond:(CDStruct_1b6d18a9)arg1;
+- (void)setFirst:(CDStruct_1b6d18a9)arg1;
+- (struct FigTimePair)pair;
+- (CDStruct_1b6d18a9)second;
+- (CDStruct_1b6d18a9)first;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFigTimePair:(struct FigTimePair)arg1;
+- (id)initWithFirst:(CDStruct_1b6d18a9)arg1 Second:(CDStruct_1b6d18a9)arg2;
 
 @end
 

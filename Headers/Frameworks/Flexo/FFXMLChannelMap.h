@@ -17,15 +17,15 @@ __attribute__((visibility("hidden")))
     CHChannelBase *_chEnabled;
 }
 
-- (void)dealloc;
-- (id)sortedKeys;
-- (id)channel:(id)arg1 findChild:(id)arg2;
-- (id)channelForKey:(id)arg1;
-- (id)infoForChannel:(id)arg1 create:(BOOL)arg2;
-- (void)setChannel:(id)arg1 enumClass:(id)arg2;
-- (void)setChannel:(id)arg1 forKey:(id)arg2;
-- (id)enabledChannel;
 - (void)setEnabledChannel:(id)arg1;
+- (id)enabledChannel;
+- (void)setChannel:(id)arg1 forKey:(id)arg2;
+- (void)setChannel:(id)arg1 enumClass:(id)arg2;
+- (id)infoForChannel:(id)arg1 create:(BOOL)arg2;
+- (id)channelForKey:(id)arg1;
+- (id)channel:(id)arg1 findChild:(id)arg2;
+- (id)sortedKeys;
+- (void)dealloc;
 
 @end
 

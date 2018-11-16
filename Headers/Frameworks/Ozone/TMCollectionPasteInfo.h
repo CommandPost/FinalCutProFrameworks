@@ -17,13 +17,13 @@
     BOOL _isSystemCollection;
 }
 
-- (id)initWithCollection:(id)arg1;
-- (id)resolvedPath;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
 @property(nonatomic) BOOL isSystemCollection; // @synthesize isSystemCollection=_isSystemCollection;
 @property(nonatomic) int collectionType; // @synthesize collectionType=_collectionType;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)resolvedPath;
+- (id)initWithCollection:(id)arg1;
 
 @end
 

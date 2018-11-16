@@ -15,18 +15,18 @@
     struct OZDocument *_pDocument;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)notify:(unsigned int)arg1;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (void)setChannelValue:(id)arg1;
-- (void)updateLinkedObjectsArray;
-- (int)numberOfRowsInTableView:(id)arg1;
-- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
 - (struct OZDocument *)document;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
+- (int)numberOfRowsInTableView:(id)arg1;
+- (void)updateLinkedObjectsArray;
+- (void)setChannelValue:(id)arg1;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)notify:(unsigned int)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

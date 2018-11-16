@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
     LKTextField *_textField;
 }
 
-- (void)awakeFromNib;
-- (void)setFilterDict:(id)arg1;
-- (id)filterDict;
-- (void)controlTextDidChange:(id)arg1;
-- (id)tileTypeFacet;
 @property(readonly, nonatomic) LKTextField *textField; // @synthesize textField=_textField;
+- (id)tileTypeFacet;
+- (void)controlTextDidChange:(id)arg1;
+- (id)filterDict;
+- (void)setFilterDict:(id)arg1;
+- (void)awakeFromNib;
 
 @end
 

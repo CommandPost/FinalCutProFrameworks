@@ -18,28 +18,26 @@
     int _mode;
 }
 
-- (id)timelineView;
-- (struct CGRect)visibleRect;
-- (BOOL)isCallout:(int)arg1;
-- (id)_facetForType:(int)arg1;
-- (void)_updateMargins:(BOOL)arg1;
-@property int type;
-@property int mode;
-- (void)setFrameSize:(struct CGSize)arg1;
-- (void)setFrame:(struct CGRect)arg1;
-- (void)setLocation:(struct CGRect)arg1;
-- (void)setStringValue:(id)arg1;
-- (void)setAttributedStringValue:(id)arg1;
-- (void)setDuration:(id)arg1 delta:(id)arg2;
-- (id)stringValue;
-- (id)attributedStringValue;
-- (void)setTextColor:(int)arg1;
-- (void)setAlignment:(unsigned long long)arg1;
-- (void)reload;
-- (id)init;
-- (void)drawCalloutAbove;
-- (void)drawCalloutBelow;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)drawCalloutBelow;
+- (void)drawCalloutAbove;
+- (id)init;
+- (void)reload;
+- (void)setAlignment:(unsigned long long)arg1;
+- (void)setTextColor:(int)arg1;
+- (id)attributedStringValue;
+- (id)stringValue;
+- (void)setDuration:(id)arg1 delta:(id)arg2;
+- (void)setAttributedStringValue:(id)arg1;
+- (void)setStringValue:(id)arg1;
+- (void)setLocation:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
+- (void)setFrameSize:(struct CGSize)arg1;
+@property int mode;
+@property int type;
+- (void)_updateMargins:(BOOL)arg1;
+- (id)_facetForType:(int)arg1;
+- (BOOL)isCallout:(int)arg1;
 
 @end
 

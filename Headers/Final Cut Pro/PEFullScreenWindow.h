@@ -10,8 +10,8 @@
 {
 }
 
-- (BOOL)canBecomeKeyWindow;
 - (BOOL)canBecomeMainWindow;
+- (BOOL)canBecomeKeyWindow;
 
 @end
 

@@ -5,8 +5,8 @@
 //
 
 @protocol OZRenderProgressManager
-- (_Bool)closeProgressWhenDone;
-- (void)setCloseProgressWhenDone:(_Bool)arg1;
 - (void)abortRender;
+- (void)setCloseProgressWhenDone:(_Bool)arg1;
+- (_Bool)closeProgressWhenDone;
 @end
 

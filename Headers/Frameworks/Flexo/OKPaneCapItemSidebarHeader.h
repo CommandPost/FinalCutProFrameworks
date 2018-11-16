@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)init;
-@property(copy) NSString *titleString;
 - (void)setHeaderStringWidth:(double)arg1;
+@property(copy) NSString *titleString;
+- (id)init;
 
 @end
 

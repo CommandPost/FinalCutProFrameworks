@@ -28,31 +28,31 @@
 }
 
 + (void)initialize;
-- (id)_cleanedUpMidpointLocationsFromLocations:(id)arg1;
-- (void)_createOrderedStops:(id *)arg1 midpoints:(id *)arg2 fromStops:(id)arg3 midpoints:(id)arg4 edgePixel:(long long *)arg5;
-- (id)initWithColorStops:(id)arg1 colorMidpoints:(id)arg2 opacityStops:(id)arg3 opacityMidpoints:(id)arg4 smoothingCoefficient:(double)arg5 fillCoefficient:(double)arg6;
-- (id)initWithColorStops:(id)arg1 colorMidpoints:(id)arg2 opacityStops:(id)arg3 opacityMidpoints:(id)arg4 smoothingCoefficient:(double)arg5 fillColor:(struct _proPSDGradientColor)arg6 dither:(BOOL)arg7;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (double)_smoothedInterpolationOfLocation:(double)arg1 betweenLower:(double)arg2 upper:(double)arg3 scaledMidpoint:(double)arg4;
-- (struct _proPSDGradientColor)_smoothedGradientColorAtLocation:(double)arg1;
-- (id)colorStops;
-- (id)colorMidpointLocations;
-- (id)opacityStops;
-- (id)opacityMidpointLocations;
-- (double)smoothingCoefficient;
-- (BOOL)isDithered;
-- (double)fillCoefficient;
-- (struct _proPSDGradientColor)fillColor;
-- (BOOL)hasEdgePixel;
-- (id)description;
-- (void)setColorStops:(id)arg1 midpoints:(id)arg2;
-- (void)setOpacityStops:(id)arg1 midpoints:(id)arg2;
-- (void)setSmoothingCoefficient:(double)arg1;
-- (void)setFillCoefficient:(double)arg1;
 - (void)customizeForDistance:(double)arg1;
+- (void)setFillCoefficient:(double)arg1;
+- (void)setSmoothingCoefficient:(double)arg1;
+- (void)setOpacityStops:(id)arg1 midpoints:(id)arg2;
+- (void)setColorStops:(id)arg1 midpoints:(id)arg2;
+- (id)description;
+- (BOOL)hasEdgePixel;
+- (struct _proPSDGradientColor)fillColor;
+- (double)fillCoefficient;
+- (BOOL)isDithered;
+- (double)smoothingCoefficient;
+- (id)opacityMidpointLocations;
+- (id)opacityStops;
+- (id)colorMidpointLocations;
+- (id)colorStops;
+- (struct _proPSDGradientColor)_smoothedGradientColorAtLocation:(double)arg1;
+- (double)_smoothedInterpolationOfLocation:(double)arg1 betweenLower:(double)arg2 upper:(double)arg3 scaledMidpoint:(double)arg4;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithColorStops:(id)arg1 colorMidpoints:(id)arg2 opacityStops:(id)arg3 opacityMidpoints:(id)arg4 smoothingCoefficient:(double)arg5 fillColor:(struct _proPSDGradientColor)arg6 dither:(BOOL)arg7;
+- (id)initWithColorStops:(id)arg1 colorMidpoints:(id)arg2 opacityStops:(id)arg3 opacityMidpoints:(id)arg4 smoothingCoefficient:(double)arg5 fillCoefficient:(double)arg6;
+- (void)_createOrderedStops:(id *)arg1 midpoints:(id *)arg2 fromStops:(id)arg3 midpoints:(id)arg4 edgePixel:(long long *)arg5;
+- (id)_cleanedUpMidpointLocationsFromLocations:(id)arg1;
 
 @end
 

@@ -14,11 +14,11 @@
     LKTextField *_textField;
 }
 
-- (id)initWithText:(struct TXTextFromFileGenerator *)arg1;
-- (void)dealloc;
-- (void)update;
-- (struct TXTextFromFileGenerator *)text;
 - (void)openTextFile:(id)arg1;
+- (struct TXTextFromFileGenerator *)text;
+- (void)update;
+- (void)dealloc;
+- (id)initWithText:(struct TXTextFromFileGenerator *)arg1;
 
 @end
 

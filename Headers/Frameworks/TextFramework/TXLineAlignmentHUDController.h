@@ -10,8 +10,8 @@
 {
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 text:(struct TXTextLayout *)arg2 context:(id)arg3;
 - (void)setChannelValue:(id)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 text:(struct TXTextLayout *)arg2 context:(id)arg3;
 
 @end
 

@@ -10,15 +10,15 @@
 {
 }
 
-+ (void)initialize;
-+ (id)displayName;
-+ (id)toolbarFacet;
 + (id)cursor;
++ (id)toolbarFacet;
++ (id)displayName;
++ (void)initialize;
 + (id)TLKEventHandlerID;
-- (void)becomeActiveTool;
 - (void)dealloc;
-- (void)willSetAsHandlerForTimeline:(id)arg1;
+- (void)becomeActiveTool;
 - (void)didRemoveAsHandlerForTimeline:(id)arg1;
+- (void)willSetAsHandlerForTimeline:(id)arg1;
 
 @end
 

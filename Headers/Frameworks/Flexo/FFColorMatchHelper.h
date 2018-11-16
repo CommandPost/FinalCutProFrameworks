@@ -21,27 +21,28 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _playheadTime;
 }
 
-+ (struct CGColorSpace *)processingColorSpace;
-+ (id)newPixelBufferFromAnchoredObject:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 withEffectCount:(long long)arg3;
 + (BOOL)isObjectCompliant:(id)arg1;
-- (id)init;
-- (void)dealloc;
-- (id)histoRef;
-- (void)cancelOnSelectionOnMatchTool:(id)arg1;
-- (void)completeOnSelectionOnMatchTool:(id)arg1;
-- (void)matchToolWasAssigned:(id)arg1;
-- (void)matchToolWasResigned:(id)arg1;
-- (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
-- (BOOL)applyMatchToOnAnchoredObject:(id)arg1;
-- (id)copyCompliantObjectsFromSelection:(id)arg1;
-- (id)effectStackToRecordForAnchoredObject:(id)arg1;
-- (id)effectToRecordForAnchoredObject:(id)arg1;
-- (id)channelFolderToRecordForAnchoredObject:(id)arg1;
-- (id)effectContainerToRecordForAnchoredObject:(id)arg1;
-- (id)actionStringForSaveChanges;
-- (id)_newColorMatchHueAdjustmentWithRef:(id)arg1 forDest:(id)arg2;
-- (id)footerText;
++ (id)newPixelBufferFromAnchoredObject:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 withEffectCount:(long long)arg3;
++ (struct CGColorSpace *)processingColorSpace;
+- (id).cxx_construct;
 - (id)accessoryTitle;
+- (id)footerText;
+- (id)_newColorMatchHueAdjustmentWithRef:(id)arg1 forDest:(id)arg2;
+- (id)actionStringForSaveChanges;
+- (id)effectContainerToRecordForAnchoredObject:(id)arg1;
+- (id)channelFolderToRecordForAnchoredObject:(id)arg1;
+- (id)effectToRecordForAnchoredObject:(id)arg1;
+- (id)effectStackToRecordForAnchoredObject:(id)arg1;
+- (id)copyCompliantObjectsFromSelection:(id)arg1;
+- (BOOL)applyMatchToOnAnchoredObject:(id)arg1;
+- (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
+- (void)matchToolWasResigned:(id)arg1;
+- (void)matchToolWasAssigned:(id)arg1;
+- (void)completeOnSelectionOnMatchTool:(id)arg1;
+- (void)cancelOnSelectionOnMatchTool:(id)arg1;
+- (id)histoRef;
+- (void)dealloc;
+- (id)init;
 
 @end
 

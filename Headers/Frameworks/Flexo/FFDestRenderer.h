@@ -23,31 +23,32 @@
     FFDestRenderUnit *_renderUnit;
 }
 
-- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderProps:(id)arg2 renderFilesPaths:(id)arg3;
-- (void)dealloc;
-- (void *)figClock;
-- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
-- (void)setPlayer:(id)arg1;
-- (void)flush:(BOOL)arg1;
-- (void)startingToProcess:(CDStruct_1b6d18a9)arg1;
-- (void)finishedProcessing:(CDStruct_1b6d18a9)arg1;
-- (void)beginRenderWithDelegate:(id)arg1 context:(void *)arg2;
-- (void)endRender;
-- (void)start:(id)arg1;
-- (void)stop;
-- (BOOL)isRunning;
-- (void)_notifyPlayer;
-- (void)_updateSegmentStoreWhenWritesFinish;
-- (void)writeFrame:(id)arg1;
-- (void)pushFrame:(id)arg1;
-- (int)getFrameQueueStatus;
-- (void)setNeedsUpdate:(BOOL)arg1;
-- (int)drawFieldsInterlaced;
-- (int)imageLocation;
-- (struct CGColorSpace *)colorSpace;
-- (id)supportedPixelFormats;
-- (int)requestedBackground;
+- (_Bool)usesOSThrottlingForAllDiskIO;
 - (BOOL)wantsDithering:(id)arg1;
+- (int)requestedBackground;
+- (id)supportedPixelFormats;
+- (struct CGColorSpace *)colorSpace;
+- (int)imageLocation;
+- (int)drawFieldsInterlaced;
+- (void)setNeedsUpdate:(BOOL)arg1;
+- (int)getFrameQueueStatus;
+- (void)pushFrame:(id)arg1;
+- (void)writeFrame:(id)arg1;
+- (void)_updateSegmentStoreWhenWritesFinish;
+- (void)_notifyPlayer;
+- (BOOL)isRunning;
+- (void)stop;
+- (void)start:(id)arg1;
+- (void)endRender;
+- (void)beginRenderWithDelegate:(id)arg1 context:(void *)arg2;
+- (void)finishedProcessing:(CDStruct_1b6d18a9)arg1;
+- (void)startingToProcess:(CDStruct_1b6d18a9)arg1;
+- (void)flush:(BOOL)arg1;
+- (void)setPlayer:(id)arg1;
+- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
+- (void *)figClock;
+- (void)dealloc;
+- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderProps:(id)arg2 renderFilesPaths:(id)arg3;
 
 @end
 

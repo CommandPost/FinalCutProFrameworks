@@ -16,16 +16,16 @@
     NSColor *fillColor;
 }
 
-- (id)init;
-- (void)dealloc;
-@property(readonly) float borderWidth;
-@property(readonly) float arrowHeight;
-@property(readonly) float arrowWidth;
-@property(readonly) float cornerRadius;
 @property(retain) NSColor *fillColor; // @synthesize fillColor;
 @property(retain) LKPopOverThreePartFill *fillGradient; // @synthesize fillGradient;
 @property(retain) LKPopOverThreePartFill *innerStrokeGradient; // @synthesize innerStrokeGradient;
 @property(retain) LKPopOverThreePartFill *outerStrokeGradient; // @synthesize outerStrokeGradient;
+@property(readonly) float cornerRadius;
+@property(readonly) float arrowWidth;
+@property(readonly) float arrowHeight;
+@property(readonly) float borderWidth;
+- (void)dealloc;
+- (id)init;
 
 @end
 

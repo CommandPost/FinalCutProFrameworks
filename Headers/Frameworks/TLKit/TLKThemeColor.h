@@ -10,40 +10,45 @@
 {
 }
 
-+ (unsigned long long)themeIndex;
-+ (id)accessoryItemAVUnSelectedColor;
-+ (id)accessoryItemAudioUnSelectedColor;
-+ (id)accessoryItemSecondarySelectedColor;
-+ (id)accessoryItemSelectedColor;
-+ (id)audioOnlyClipBackgroundColor;
-+ (id)audioOnlyHighlightedClipBackgroundColor;
-+ (id)avClipBackgroundColor;
-+ (id)avClipHighlightedClipBackgroundColor;
-+ (id)disabledAudioBackgroundColor;
-+ (id)edgeAllowedColor;
-+ (id)edgeNotAllowedColor;
-+ (id)filmstripDividerBackgroundColor;
-+ (id)generatorClipBackgroundColor;
-+ (id)generatorHightlightedClipBackgroundColor;
-+ (id)guideLineColor;
-+ (id)itemRulerTickColor;
-+ (id)itemTextColor;
-+ (id)selectedItemTextColor;
-+ (id)selectionMarqueeColor;
-+ (id)selectionMarqueeDisabledColor;
-+ (id)slimAVClipBorderColor;
-+ (id)slimAudioClipBorderColor;
-+ (id)slimContainerClipBorderColor;
-+ (id)slimGapClipBorderColor;
-+ (id)slimGeneratorClipBorderColor;
-+ (id)slimTitleClipBorderColor;
-+ (id)slimTransitionlipBorderColor;
-+ (id)timelineBackgroundColor;
-+ (id)timelineBackgroundDisabledColor;
-+ (id)timelineGuidelineSnappingHeavyColor;
-+ (id)timelineGuidelineSnappingLightColor;
-+ (id)titleClipBackgroundColor;
 + (id)titleHightlightedClipBackgroundColor;
++ (id)titleClipBackgroundColor;
++ (id)timelineGuidelineSnappingLightColor;
++ (id)timelineGuidelineSnappingHeavyColor;
++ (id)timelineBackgroundDisabledColor;
++ (id)timelineBackgroundColor;
++ (id)slimTransitionlipBorderColor;
++ (id)slimTitleClipBorderColor;
++ (id)slimGeneratorClipBorderColor;
++ (id)slimGapClipBorderColor;
++ (id)slimContainerClipBorderColor;
++ (id)slimAudioClipBorderColor;
++ (id)slimAVClipBorderColor;
++ (id)selectionMarqueeDisabledColor;
++ (id)selectionMarqueeColor;
++ (id)selectedItemTextColor;
++ (id)multiangleEditorMonitoringAngleTextEngraveColor;
++ (id)multiangleEditorMonitoringAngleTextColor;
++ (id)itemTextColor;
++ (id)itemRulerTickColor;
++ (id)guideLineColor;
++ (id)generatorHightlightedClipBackgroundColor;
++ (id)generatorClipBackgroundColor;
++ (id)filmstripDividerBackgroundColor;
++ (id)edgeNotAllowedColor;
++ (id)edgeAllowedColor;
++ (id)disabledClipColor;
++ (id)disabledAudioBackgroundColor;
++ (id)avSplitBackgroundColor;
++ (id)avClipHighlightedClipBackgroundColor;
++ (id)avClipBackgroundColor;
++ (id)audioOnlySplitBackgroundColor;
++ (id)audioOnlyHighlightedClipBackgroundColor;
++ (id)audioOnlyClipBackgroundColor;
++ (id)accessoryItemSelectedColor;
++ (id)accessoryItemSecondarySelectedColor;
++ (id)accessoryItemAudioUnSelectedColor;
++ (id)accessoryItemAVUnSelectedColor;
++ (unsigned long long)themeIndex;
 
 @end
 

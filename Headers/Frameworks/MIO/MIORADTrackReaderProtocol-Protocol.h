@@ -6,33 +6,35 @@
 
 #import "NSObject.h"
 
+@class NSString, NSURL;
+
 @protocol MIORADTrackReaderProtocol <NSObject>
-- (BOOL)isEnabled;
-- (unsigned int)mediaType;
-- (id)url;
-- (id)cursorAtPresentationTimeStamp:(CDStruct_1b6d18a9)arg1 beforeStart:(char *)arg2 afterEnd:(char *)arg3;
-- (id)cursorNearPresentationTimeStamp:(CDStruct_1b6d18a9)arg1 afterOK:(BOOL)arg2 beforeStart:(char *)arg3 afterEnd:(char *)arg4;
-- (id)cursorAtFirstSampleInDecodeOrder;
-- (id)cursorAtLastSampleInDecodeOrder;
-- (struct opaqueCMFormatDescription *)formatDescription;
-- (long long)timescale;
-- (CDStruct_1b6d18a9)uneditedDuration;
-- (unsigned long long)trackEditCount;
-- (CDStruct_82206317)trackEditWithIndex:(unsigned long long)arg1;
-- (unsigned long long)trackEditIndexWithTrackTime:(CDStruct_1b6d18a9)arg1;
-- (long long)locationOffset;
 - (long long)locationSize;
+- (long long)locationOffset;
+- (unsigned long long)trackEditIndexWithTrackTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_82206317)trackEditWithIndex:(unsigned long long)arg1;
+- (unsigned long long)trackEditCount;
+- (CDStruct_1b6d18a9)uneditedDuration;
+- (long long)timescale;
+- (struct opaqueCMFormatDescription *)formatDescription;
+- (id <MIORADSampleCursorProtocol>)cursorAtLastSampleInDecodeOrder;
+- (id <MIORADSampleCursorProtocol>)cursorAtFirstSampleInDecodeOrder;
+- (id <MIORADSampleCursorProtocol>)cursorNearPresentationTimeStamp:(CDStruct_1b6d18a9)arg1 afterOK:(BOOL)arg2 beforeStart:(char *)arg3 afterEnd:(char *)arg4;
+- (id <MIORADSampleCursorProtocol>)cursorAtPresentationTimeStamp:(CDStruct_1b6d18a9)arg1 beforeStart:(char *)arg2 afterEnd:(char *)arg3;
+- (NSURL *)url;
+- (unsigned int)mediaType;
+- (BOOL)isEnabled;
 
 @optional
-- (id)propertyForKey:(id)arg1;
-- (long long)uneditedNumDataBytes;
-- (float)estimatedDataRate;
-- (float)nominalFrameRate;
-- (float)volume;
-- (BOOL)frameReorderingRequired;
-- (struct CGSize)dimensions;
-- (BOOL)excludeFromAutoSelection;
-- (BOOL)isSelfContained;
 - (BOOL)setUseTimingOffset:(BOOL)arg1;
+- (BOOL)isSelfContained;
+- (BOOL)excludeFromAutoSelection;
+- (struct CGSize)dimensions;
+- (BOOL)frameReorderingRequired;
+- (float)volume;
+- (float)nominalFrameRate;
+- (float)estimatedDataRate;
+- (long long)uneditedNumDataBytes;
+- (id)propertyForKey:(NSString *)arg1;
 @end
 

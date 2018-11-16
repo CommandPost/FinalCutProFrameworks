@@ -13,11 +13,12 @@ __attribute__((visibility("hidden")))
     CDStruct_69458254 _action_opt;
 }
 
-- (void)setupDefaultPropertiesWithOptions:(long long)arg1;
-- (void)setUnitPercent:(float)arg1;
-- (void)setShowGuides:(BOOL)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
+- (id).cxx_construct;
 - (id)actionForKey:(id)arg1;
+- (struct CGRect)frameForBounds:(struct CGRect)arg1;
+- (void)setShowGuides:(BOOL)arg1;
+- (void)setUnitPercent:(float)arg1;
+- (void)setupDefaultPropertiesWithOptions:(long long)arg1;
 
 @end
 

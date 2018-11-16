@@ -18,28 +18,28 @@ __attribute__((visibility("hidden")))
     NSControl *_valueControl;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-@property(nonatomic) BOOL dragging; // @synthesize dragging=_dragging;
-- (void)setEditable:(BOOL)arg1;
-- (BOOL)editable;
-- (void)setupTrackingArea;
-- (void)releaseTrackingArea;
-- (struct CGRect)trackingAreaRect;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)updateTrackingAreas;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)scrollWheel:(id)arg1;
-- (void)adjustHeightBy:(double)arg1;
-- (void)syncToData;
 @property(retain) NSControl *valueControl; // @synthesize valueControl=_valueControl;
 @property(retain) NSTrackingArea *trackingArea; // @synthesize trackingArea=_trackingArea;
 @property(retain) NSTextField *labelTextField; // @synthesize labelTextField=_labelTextField;
 @property(nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property(nonatomic) BOOL dragging; // @synthesize dragging=_dragging;
+- (void)syncToData;
+- (void)adjustHeightBy:(double)arg1;
+- (void)scrollWheel:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)updateTrackingAreas;
+- (void)drawRect:(struct CGRect)arg1;
+- (struct CGRect)trackingAreaRect;
+- (void)releaseTrackingArea;
+- (void)setupTrackingArea;
+- (BOOL)editable;
+- (void)setEditable:(BOOL)arg1;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

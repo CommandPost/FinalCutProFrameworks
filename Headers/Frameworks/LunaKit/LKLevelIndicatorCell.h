@@ -10,11 +10,11 @@
 {
 }
 
-- (id)_gradientFacetWithPart:(long long)arg1;
-- (id)_backgroundFacet;
-- (id)_normalGradientFacet;
-- (id)_warningGradientFacet;
 - (id)_criticalGradientFacet;
+- (id)_warningGradientFacet;
+- (id)_normalGradientFacet;
+- (id)_backgroundFacet;
+- (id)_gradientFacetWithPart:(long long)arg1;
 
 @end
 

@@ -13,19 +13,14 @@
     _PM__ProPSDSublayerInfo *_sublayerInfo;
 }
 
-- (id)initWithImageRef:(id)arg1 layerIndex:(unsigned int)arg2;
-- (void)dealloc;
-- (BOOL)isLayerGroup;
-@property(readonly) struct CGRect bounds; // @dynamic bounds;
-- (BOOL)isOpen;
-- (unsigned int)numberOfLayers;
-- (id)layerNames;
 - (id)layerRefAtIndex:(unsigned int)arg1;
-
-// Remaining properties
-@property(readonly) unsigned int blendMode; // @dynamic blendMode;
-@property(readonly) double opacity; // @dynamic opacity;
-@property(readonly) BOOL visibility; // @dynamic visibility;
+- (id)layerNames;
+- (unsigned int)numberOfLayers;
+- (BOOL)isOpen;
+- (struct CGRect)bounds;
+- (BOOL)isLayerGroup;
+- (void)dealloc;
+- (id)initWithImageRef:(id)arg1 layerIndex:(unsigned int)arg2;
 
 @end
 

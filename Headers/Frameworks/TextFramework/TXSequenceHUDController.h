@@ -8,16 +8,16 @@
 
 @interface TXSequenceHUDController : OZAutoHUDController
 {
-    struct vector<TXTextSequenceBehavior*, std::allocator<TXTextSequenceBehavior*>> *_sequenceBehaviors;
+    struct vector<TXTextSequenceBehavior *, std::allocator<TXTextSequenceBehavior *>> *_sequenceBehaviors;
 }
 
-- (id)initWithObjectList:(struct list<OZFactoryBase*, std::allocator<OZFactoryBase*>> *)arg1;
-- (void)dealloc;
-- (struct OZChannelFolder *)getRootChan:(struct OZObjectManipulator *)arg1;
-- (void)buildUIWithObjectList:(list_2c251165 *)arg1 viewController:(id)arg2 context:(id)arg3;
-- (void)showHideChannelsForBehavior:(struct TXTextSequenceBehavior *)arg1;
-- (void)showHideChannels;
 - (void)notify:(unsigned int)arg1;
+- (void)showHideChannels;
+- (void)showHideChannelsForBehavior:(struct TXTextSequenceBehavior *)arg1;
+- (void)buildUIWithObjectList:(list_37573188 *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (struct OZChannelFolder *)getRootChan:(struct OZObjectManipulator *)arg1;
+- (void)dealloc;
+- (id)initWithObjectList:(struct list<OZFactoryBase *, std::allocator<OZFactoryBase *>> *)arg1;
 
 @end
 

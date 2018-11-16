@@ -21,16 +21,16 @@ __attribute__((visibility("hidden")))
     FFSequenceSettingsExporter *_currentExporter;
 }
 
-- (id)initWithExporters:(id)arg1;
-- (id)initWithExporter:(id)arg1;
-- (void)dealloc;
-- (void)windowWillMiniaturize:(id)arg1;
-- (void)windowDidDeminiaturize:(id)arg1;
-- (void)_closeProgressSheet;
-- (void)cancelExport:(id)arg1;
-- (void)_startNextExporter;
-- (void)_monitorExportProgress;
 - (void)_updateProgressBar:(id)arg1;
+- (void)_monitorExportProgress;
+- (void)_startNextExporter;
+- (void)cancelExport:(id)arg1;
+- (void)_closeProgressSheet;
+- (void)windowDidDeminiaturize:(id)arg1;
+- (void)windowWillMiniaturize:(id)arg1;
+- (void)dealloc;
+- (id)initWithExporter:(id)arg1;
+- (id)initWithExporters:(id)arg1;
 
 @end
 

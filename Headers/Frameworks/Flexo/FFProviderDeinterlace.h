@@ -17,13 +17,13 @@ __attribute__((visibility("hidden")))
     unsigned long long _deinterlaceType;
 }
 
-- (id)initWithSource:(id)arg1 object:(id)arg2 identifier:(id)arg3 andType:(unsigned long long)arg4;
-- (void)dealloc;
-- (id)object;
-- (void)_setupSources;
 @property(readonly, nonatomic) unsigned long long deinterlaceType; // @synthesize deinterlaceType=_deinterlaceType;
 @property(readonly, nonatomic) NSString *inputIdentifier; // @synthesize inputIdentifier=_inputIdentifier;
 @property(readonly, nonatomic) FFSource *inputSource; // @synthesize inputSource=_inputSource;
+- (void)_setupSources;
+- (id)object;
+- (void)dealloc;
+- (id)initWithSource:(id)arg1 object:(id)arg2 identifier:(id)arg3 andType:(unsigned long long)arg4;
 
 @end
 

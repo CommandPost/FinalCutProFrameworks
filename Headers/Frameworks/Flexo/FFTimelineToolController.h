@@ -17,18 +17,17 @@ __attribute__((visibility("hidden")))
     BOOL _selectingFromTK;
 }
 
-+ (id)timelineTools;
 + (BOOL)toolIsTimelineTool:(id)arg1;
-- (id)init;
-- (void)dealloc;
++ (id)timelineTools;
 @property(retain, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
-- (void)eventDispatcher:(id)arg1 didSetCurrentHandler:(id)arg2;
-- (void)activeToolDidChange:(id)arg1;
-- (void)_activeToolDidChange;
-- (void)_activeTimelineHandlerDidChange;
-- (void)_setEventHandlerForTool:(id)arg1;
+@property(retain, nonatomic) FFTool *activeTimelineTool; // @synthesize activeTimelineTool=_activeTimelineTool;
 - (Class)_toolClassForCurrentEventHandler;
-@property(retain) FFTool *activeTimelineTool; // @synthesize activeTimelineTool=_activeTimelineTool;
+- (void)_setEventHandlerForTool:(id)arg1;
+- (void)_activeTimelineHandlerDidChange;
+- (void)_activeToolDidChange:(id)arg1;
+- (void)eventDispatcher:(id)arg1 didSetCurrentHandler:(id)arg2;
+- (void)dealloc;
+- (id)init;
 
 @end
 

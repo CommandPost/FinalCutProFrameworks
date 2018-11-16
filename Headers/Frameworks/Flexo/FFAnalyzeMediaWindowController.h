@@ -23,14 +23,14 @@ __attribute__((visibility("hidden")))
     NSButton *_okButton;
 }
 
-- (void)didEndSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)showAnalyzeSheetForClips:(id)arg1 modalForWindow:(id)arg2;
-- (void)OK:(id)arg1;
-- (void)cancel:(id)arg1;
-- (void)optionsChanged:(id)arg1;
-- (void)findPeopleAction:(id)arg1;
-- (void)dealloc;
 - (void)awakeFromNib;
+- (void)dealloc;
+- (void)findPeopleAction:(id)arg1;
+- (void)optionsChanged:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)OK:(id)arg1;
+- (void)showAnalyzeSheetForClips:(id)arg1 modalForWindow:(id)arg2;
+- (void)didEndSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 
 @end
 

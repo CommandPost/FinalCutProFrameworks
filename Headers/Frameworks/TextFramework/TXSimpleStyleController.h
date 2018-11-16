@@ -15,18 +15,18 @@
     BOOL _startColorChangeCalled;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (struct OZChannelColorNoAlpha *)colorChannel:(struct OZChannelFolder *)arg1;
-- (void)setChannelColor:(struct PCColor *)arg1;
-- (void)startColorChange:(id)arg1;
-- (void)endColorChange:(id)arg1;
-- (void)setColorValue:(id)arg1;
-- (void)updateColorWell;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)updateColorWell;
+- (void)setColorValue:(id)arg1;
+- (void)endColorChange:(id)arg1;
+- (void)startColorChange:(id)arg1;
+- (void)setChannelColor:(struct PCColor *)arg1;
+- (struct OZChannelColorNoAlpha *)colorChannel:(struct OZChannelFolder *)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

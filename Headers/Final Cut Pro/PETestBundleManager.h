@@ -14,17 +14,17 @@
     NSString *_dirPath;
 }
 
-+ (void)initialize;
 + (id)sharedInstance;
-- (id)init;
-- (void)dealloc;
-- (BOOL)loadPlugins;
-- (BOOL)pluginDirectoryExists:(id)arg1;
-- (BOOL)loadPluginsInDirectory:(id)arg1;
-- (id)plugins;
-- (id)pluginDirectoryPath;
-- (void)setPluginDirectoryPath:(id)arg1;
++ (void)initialize;
 - (unsigned long long)pluginCount;
+- (void)setPluginDirectoryPath:(id)arg1;
+- (id)pluginDirectoryPath;
+- (id)plugins;
+- (BOOL)loadPluginsInDirectory:(id)arg1;
+- (BOOL)pluginDirectoryExists:(id)arg1;
+- (BOOL)loadPlugins;
+- (void)dealloc;
+- (id)init;
 
 @end
 

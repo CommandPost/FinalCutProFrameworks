@@ -13,10 +13,10 @@
     NSString *_renameError;
 }
 
-- (void)dealloc;
-- (BOOL)fileManager:(id)arg1 shouldProceedAfterError:(id)arg2;
-- (void)setRenameError:(id)arg1;
 - (id)renameError;
+- (void)setRenameError:(id)arg1;
+- (BOOL)fileManager:(id)arg1 shouldProceedAfterError:(id)arg2;
+- (void)dealloc;
 
 @end
 

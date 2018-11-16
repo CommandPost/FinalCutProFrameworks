@@ -7,8 +7,8 @@
 #import "NSView.h"
 
 @interface NSView (LKContainerViewAdditions)
-- (BOOL)isContainerItemView;
-- (id)enclosingContainerItemView;
 - (BOOL)usesLayerBackedContainerItemView;
+- (id)enclosingContainerItemView;
+- (BOOL)isContainerItemView;
 @end
 

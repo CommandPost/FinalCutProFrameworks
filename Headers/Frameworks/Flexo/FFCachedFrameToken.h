@@ -15,10 +15,10 @@
     SEL _sel;
 }
 
-- (id)initWithSampleObj:(id)arg1 forStore:(id)arg2 selector:(SEL)arg3 requestedQuality:(int)arg4;
-- (void)dealloc;
-- (id)description;
 - (unsigned int)scheduleStatusInformation;
+- (id)description;
+- (void)dealloc;
+- (id)initWithSampleObj:(id)arg1 forStore:(id)arg2 selector:(SEL)arg3 requestedQuality:(int)arg4;
 
 @end
 

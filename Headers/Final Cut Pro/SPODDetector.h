@@ -23,19 +23,19 @@
     MachineStats *_startupStats;
 }
 
-- (void)_writeOutMachineState:(id)arg1;
-- (id)appName;
-- (void)sample:(long long)arg1 samplingIntervalinMilliseconds:(long long)arg2 fileName:(id)arg3;
-- (void)reportSPOD;
-- (void)threadProc:(id)arg1;
-- (BOOL)runningUnderDebugger;
-- (id)initWithTime:(double)arg1;
-- (void)spodTimerProc:(id)arg1;
-- (void)setExit:(BOOL)arg1;
-- (void)applicationTerminating:(id)arg1;
-- (void)dealloc;
 @property(retain, nonatomic) MachineStats *startupStats; // @synthesize startupStats=_startupStats;
 @property(copy, nonatomic) NSString *currentSPODFileName; // @synthesize currentSPODFileName=_currentSPODFileName;
+- (void)dealloc;
+- (void)applicationTerminating:(id)arg1;
+- (void)setExit:(BOOL)arg1;
+- (void)spodTimerProc:(id)arg1;
+- (id)initWithTime:(double)arg1;
+- (BOOL)runningUnderDebugger;
+- (void)threadProc:(id)arg1;
+- (void)reportSPOD;
+- (void)sample:(long long)arg1 samplingIntervalinMilliseconds:(long long)arg2 fileName:(id)arg3;
+- (id)appName;
+- (void)_writeOutMachineState:(id)arg1;
 
 @end
 

@@ -20,10 +20,11 @@ __attribute__((visibility("hidden")))
     unsigned int _additionalSVContextRenderingFlags;
 }
 
-- (id)initWithInfo:(id)arg1 forSampleDuration:(CDStruct_1b6d18a9)arg2 spatialQ:(int)arg3 temporalQ:(int)arg4 additionalSVContextgFlags:(unsigned int)arg5;
-- (void)dealloc;
-- (_Bool)usableForTime:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2 spatialQ:(int)arg3 temporalQ:(int)arg4 additionalSVContextgFlags:(unsigned int)arg5;
 @property(readonly) FFSubRangeMD5Info *info; // @synthesize info=_info;
+- (id).cxx_construct;
+- (_Bool)usableForTime:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2 spatialQ:(int)arg3 temporalQ:(int)arg4 additionalSVContextgFlags:(unsigned int)arg5;
+- (void)dealloc;
+- (id)initWithInfo:(id)arg1 forSampleDuration:(CDStruct_1b6d18a9)arg2 spatialQ:(int)arg3 temporalQ:(int)arg4 additionalSVContextgFlags:(unsigned int)arg5;
 
 @end
 

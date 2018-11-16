@@ -21,23 +21,24 @@
     OZViewerDelegate *_viewerDelegate;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (id)setSubViewLayoutForCanvas:(int)arg1 withActiveSubViewIndex:(unsigned long long)arg2 layoutIndex:(unsigned long long)arg3;
-- (unsigned long long)viewIndexFromCanvasLayout:(unsigned long long)arg1 forSubView:(id)arg2;
-- (BOOL)isOpaque;
-- (BOOL)autoresizesSubviews;
-- (id)findDivider:(struct CGRect)arg1;
-- (void)makeDividers;
-- (BOOL)mouseDown:(id)arg1;
-- (void)moveDivider:(id)arg1 delta:(float)arg2 changedViews:(id)arg3;
-- (BOOL)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (BOOL)draggingDivider;
-- (BOOL)dividerHitCheck:(struct CGPoint)arg1;
-- (void)resetCursorRects;
 @property(retain) OZViewerDelegate *viewerDelegate; // @synthesize viewerDelegate=_viewerDelegate;
 @property BOOL isRebuilding; // @synthesize isRebuilding=_isRebuilding;
+- (id).cxx_construct;
+- (void)resetCursorRects;
+- (BOOL)dividerHitCheck:(struct CGPoint)arg1;
+- (BOOL)draggingDivider;
+- (void)mouseUp:(id)arg1;
+- (BOOL)mouseDragged:(id)arg1;
+- (void)moveDivider:(id)arg1 delta:(float)arg2 changedViews:(id)arg3;
+- (BOOL)mouseDown:(id)arg1;
+- (void)makeDividers;
+- (id)findDivider:(struct CGRect)arg1;
+- (BOOL)autoresizesSubviews;
+- (BOOL)isOpaque;
+- (unsigned long long)viewIndexFromCanvasLayout:(unsigned long long)arg1 forSubView:(id)arg2;
+- (id)setSubViewLayoutForCanvas:(int)arg1 withActiveSubViewIndex:(unsigned long long)arg2 layoutIndex:(unsigned long long)arg3;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

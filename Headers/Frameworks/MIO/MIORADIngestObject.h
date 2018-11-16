@@ -35,32 +35,32 @@ __attribute__((visibility("hidden")))
     NSArray *_pathSet;
 }
 
-- (id)initWithClip:(id)arg1;
-- (id)init;
-- (void)dealloc;
-@property(readonly) BOOL hasValidTimecode;
-- (int)initialize:(void *)arg1;
-- (int)teardown:(void *)arg1;
-- (int)start:(void *)arg1;
-- (int)stop:(void *)arg1;
-- (int)cleanup:(void *)arg1;
-- (int)reset:(void *)arg1;
-- (int)setPathSet:(id)arg1 inRefCon:(void *)arg2;
-- (int)setInPoint:(CDStruct_1b6d18a9)arg1 inRefCon:(void *)arg2;
-- (int)setOutPoint:(CDStruct_1b6d18a9)arg1 inRefCon:(void *)arg2;
-- (int)setKeepMediaVideoRate:(BOOL)arg1 inRefCon:(void *)arg2;
-- (int)getNextMedia_Deprecated:(struct MIORADPlugInMediaSpecifier_Deprecated *)arg1 inRefCon:(void *)arg2;
-- (id)firstAudioReader;
-- (CDStruct_1b6d18a9)mediaTimeFromEditTime_TrackEditWithIndex:(CDStruct_1b6d18a9)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2;
-- (CDStruct_1b6d18a9)mediaTimeFromEditTime_EditCursor:(CDStruct_1b6d18a9)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2;
-- (CDStruct_1b6d18a9)mediaTimeFromEditTime:(CDStruct_1b6d18a9)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2;
-- (int)getNextMedia:(struct MIORADPlugInMediaSpecifier *)arg1 inRefCon:(void *)arg2;
 @property(retain) NSArray *pathSet; // @synthesize pathSet=_pathSet;
 @property(retain) MIORADClip *clip; // @synthesize clip=_clip;
 @property BOOL useCMTime; // @synthesize useCMTime=_useCMTime;
 @property(retain) MIORADBufferManager *bufferManager; // @synthesize bufferManager=_bufferManager;
 @property(retain) NSMutableArray *audioReaders; // @synthesize audioReaders=_audioReaders;
 @property(retain) MIORADMediaReader *videoReader; // @synthesize videoReader=_videoReader;
+- (int)getNextMedia:(struct MIORADPlugInMediaSpecifier *)arg1 inRefCon:(void *)arg2;
+- (CDStruct_1b6d18a9)mediaTimeFromEditTime:(CDStruct_1b6d18a9)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2;
+- (CDStruct_1b6d18a9)mediaTimeFromEditTime_EditCursor:(CDStruct_1b6d18a9)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2;
+- (CDStruct_1b6d18a9)mediaTimeFromEditTime_TrackEditWithIndex:(CDStruct_1b6d18a9)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2;
+- (id)firstAudioReader;
+- (int)getNextMedia_Deprecated:(struct MIORADPlugInMediaSpecifier_Deprecated *)arg1 inRefCon:(void *)arg2;
+- (int)setKeepMediaVideoRate:(BOOL)arg1 inRefCon:(void *)arg2;
+- (int)setOutPoint:(CDStruct_1b6d18a9)arg1 inRefCon:(void *)arg2;
+- (int)setInPoint:(CDStruct_1b6d18a9)arg1 inRefCon:(void *)arg2;
+- (int)setPathSet:(id)arg1 inRefCon:(void *)arg2;
+- (int)reset:(void *)arg1;
+- (int)cleanup:(void *)arg1;
+- (int)stop:(void *)arg1;
+- (int)start:(void *)arg1;
+- (int)teardown:(void *)arg1;
+- (int)initialize:(void *)arg1;
+@property(readonly) BOOL hasValidTimecode;
+- (void)dealloc;
+- (id)init;
+- (id)initWithClip:(id)arg1;
 
 @end
 

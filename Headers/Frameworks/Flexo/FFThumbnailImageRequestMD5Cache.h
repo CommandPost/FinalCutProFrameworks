@@ -9,13 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface FFThumbnailImageRequestMD5Cache : NSObject
 {
-    struct vector<unnamed::MD5CacheEntry, std::allocator<unnamed::MD5CacheEntry>> *_video;
-    struct vector<unnamed::MD5CacheEntry, std::allocator<unnamed::MD5CacheEntry>> *_audio;
+    struct vector<(null)<anonymous>::MD5CacheEntry, std::allocator<(null)<anonymous>::MD5CacheEntry>> *_video;
+    struct vector<(null)<anonymous>::MD5CacheEntry, std::allocator<(null)<anonymous>::MD5CacheEntry>> *_audio;
 }
 
-- (id)init;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

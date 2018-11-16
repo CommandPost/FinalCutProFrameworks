@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     NSTimeZone *_timeZone;
 }
 
-- (void)dealloc;
-- (id)stringForObjectValue:(id)arg1;
-- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
 @property(retain) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
+- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
+- (id)stringForObjectValue:(id)arg1;
+- (void)dealloc;
 
 @end
 

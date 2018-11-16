@@ -19,14 +19,14 @@
     CDStruct_1b6d18a9 _time;
 }
 
-- (id)initWithLayer:(id)arg1;
-- (void)dealloc;
-- (struct CGRect)frameForPart:(id)arg1;
-@property NSProColor *backgroundColor; // @dynamic backgroundColor;
-@property NSProColor *foregroundColor; // @dynamic foregroundColor;
-@property CDStruct_1b6d18a9 time; // @dynamic time;
 @property(readonly) TLKGuideLayer *layer; // @synthesize layer=_layer;
 @property id owner; // @synthesize owner=_owner;
+@property CDStruct_1b6d18a9 time; // @dynamic time;
+@property NSProColor *foregroundColor; // @dynamic foregroundColor;
+@property NSProColor *backgroundColor; // @dynamic backgroundColor;
+- (struct CGRect)frameForPart:(id)arg1;
+- (void)dealloc;
+- (id)initWithLayer:(id)arg1;
 
 @end
 

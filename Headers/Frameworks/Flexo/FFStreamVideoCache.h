@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
     NSLock *_cacheLock;
 }
 
-- (id)initWithLimit:(long long)arg1;
-- (void)dealloc;
-- (id)copyStreamIfFound:(id)arg1 flags:(long long)arg2 context:(id)arg3 options:(id)arg4;
-- (id)findStream:(id)arg1 flags:(long long)arg2 context:(id)arg3 options:(id)arg4;
 - (void)addStream:(id)arg1;
+- (id)findStream:(id)arg1 flags:(long long)arg2 context:(id)arg3 options:(id)arg4;
+- (id)copyStreamIfFound:(id)arg1 flags:(long long)arg2 context:(id)arg3 options:(id)arg4;
+- (void)dealloc;
+- (id)initWithLimit:(long long)arg1;
 
 @end
 

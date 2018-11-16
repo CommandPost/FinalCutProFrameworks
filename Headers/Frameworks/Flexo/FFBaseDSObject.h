@@ -18,30 +18,30 @@
     FFUserDefaults *_userDefaults;
 }
 
-+ (Class)DSClassDescriptionClass;
-+ (id)copyClassDescription;
-+ (id)queryAllInstances;
-+ (id)queryWithPredicate:(id)arg1;
 + (id)query:(id)arg1;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)cacheIdentifier;
-- (id)project;
-- (id)projectDocument;
-@property(readonly, nonatomic) FFUndoHandler *undoHandler;
-- (id)userDefaults;
-- (void)setUserDefaults:(id)arg1;
-- (id)loadUserDefaults:(BOOL)arg1;
-- (id)sharedLock;
-- (void)_readLock;
-- (void)_readUnlock;
-- (void)_writeLock;
-- (void)_writeUnlock;
-- (BOOL)_hasWriteLock;
-- (void)property:(id)arg1 change:(id)arg2;
++ (id)queryWithPredicate:(id)arg1;
++ (id)queryAllInstances;
++ (id)copyClassDescription;
++ (Class)DSClassDescriptionClass;
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
+- (void)property:(id)arg1 change:(id)arg2;
+- (BOOL)_hasWriteLock;
+- (void)_writeUnlock;
+- (void)_writeLock;
+- (void)_readUnlock;
+- (void)_readLock;
+- (id)sharedLock;
+- (id)loadUserDefaults:(BOOL)arg1;
+- (void)setUserDefaults:(id)arg1;
+- (id)userDefaults;
+@property(readonly, nonatomic) FFUndoHandler *undoHandler;
+- (id)projectDocument;
+- (id)project;
+- (id)cacheIdentifier;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

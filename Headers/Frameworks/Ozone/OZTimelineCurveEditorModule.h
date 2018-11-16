@@ -13,24 +13,20 @@
     LKModuleLayout *_moduleLayout;
     OZTimelineModule *_timelineModule;
     OZCurveEditorModule *_curveEditorModule;
-    BOOL _isObserving;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (struct CGSize)viewMinSize;
-- (BOOL)wantsHeaderBar;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)animationDidStart:(id)arg1;
-- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
-- (void)viewWasResized:(double)arg1;
-- (void)notify:(unsigned int)arg1;
-- (struct OZDocument *)_currentOZDocument;
-- (id)_currentDocument;
 @property(readonly) OZCurveEditorModule *curveEditorModule; // @synthesize curveEditorModule=_curveEditorModule;
 @property(readonly) OZTimelineModule *timelineModule; // @synthesize timelineModule=_timelineModule;
+- (void)viewWasResized:(double)arg1;
+- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (void)animationDidStart:(id)arg1;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (BOOL)wantsHeaderBar;
+- (struct CGSize)viewMinSize;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

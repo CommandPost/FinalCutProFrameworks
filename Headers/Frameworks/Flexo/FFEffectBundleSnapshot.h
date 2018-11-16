@@ -18,36 +18,36 @@
     int _effectBundleEncodingOptions;
 }
 
-+ (id)copyClassDescription;
-+ (id)snapshotIndexPathForChannel:(id)arg1 inEffects:(id)arg2;
 + (id)channelForSnapshotIndexPath:(id)arg1 inEffects:(id)arg2;
-- (id)initWithEffects:(id)arg1 value:(double)arg2;
-- (id)initWithValue:(double)arg1 usingIndexPaths:(id)arg2 inSnapshot:(id)arg3;
-- (void)dealloc;
-- (id)_mutableCopyDeep:(id)arg1;
-- (id)_copyDeepArrayContents:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)effectBundleSnapshotValues;
-- (void)setEffectBundleSnapshotValues:(id)arg1;
-- (void)setModifiedEffectValues:(id)arg1;
-- (id)_defaultSnapshotValueAtIndexPath:(id)arg1;
-- (id)snapshotValueAtIndexPath:(id)arg1;
-- (void)_storeModifiedValue:(double)arg1 atIndexPath:(id)arg2;
-- (void)offsetValueAtIndexPath:(id)arg1 withOffset:(double)arg2;
-- (void)resetValuesForEffectIndex:(int)arg1;
-- (BOOL)isSnapshotModified;
-- (BOOL)isSnapshotModifiedForEffectIndex:(int)arg1;
-- (id)snapshotChannelsForEffects:(id)arg1;
-- (id)indexPathsForSnapshot;
-- (BOOL)isEqualToSnapshot:(id)arg1;
-- (void)importSnapshotValuesFromSnapshot:(id)arg1;
-- (id)initWithXMLElement:(id)arg1;
-- (id)exportAsXMLElementUsingEffects:(id)arg1 isBaseSnapshot:(BOOL)arg2;
++ (id)snapshotIndexPathForChannel:(id)arg1 inEffects:(id)arg2;
++ (id)copyClassDescription;
 @property(nonatomic) int effectBundleEncodingOptions; // @synthesize effectBundleEncodingOptions=_effectBundleEncodingOptions;
 @property(readonly, nonatomic) NSDictionary *modifiedEffectValues; // @synthesize modifiedEffectValues=_modifiedEffectValues;
 @property(nonatomic) double value; // @synthesize value=_value;
+- (id)exportAsXMLElementUsingEffects:(id)arg1 isBaseSnapshot:(BOOL)arg2;
+- (id)initWithXMLElement:(id)arg1;
+- (void)importSnapshotValuesFromSnapshot:(id)arg1;
+- (BOOL)isEqualToSnapshot:(id)arg1;
+- (id)indexPathsForSnapshot;
+- (id)snapshotChannelsForEffects:(id)arg1;
+- (BOOL)isSnapshotModifiedForEffectIndex:(int)arg1;
+- (BOOL)isSnapshotModified;
+- (void)resetValuesForEffectIndex:(int)arg1;
+- (void)offsetValueAtIndexPath:(id)arg1 withOffset:(double)arg2;
+- (void)_storeModifiedValue:(double)arg1 atIndexPath:(id)arg2;
+- (id)snapshotValueAtIndexPath:(id)arg1;
+- (id)_defaultSnapshotValueAtIndexPath:(id)arg1;
+- (void)setModifiedEffectValues:(id)arg1;
+- (void)setEffectBundleSnapshotValues:(id)arg1;
+- (id)effectBundleSnapshotValues;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_copyDeepArrayContents:(id)arg1;
+- (id)_mutableCopyDeep:(id)arg1;
+- (void)dealloc;
+- (id)initWithValue:(double)arg1 usingIndexPaths:(id)arg2 inSnapshot:(id)arg3;
+- (id)initWithEffects:(id)arg1 value:(double)arg2;
 
 @end
 

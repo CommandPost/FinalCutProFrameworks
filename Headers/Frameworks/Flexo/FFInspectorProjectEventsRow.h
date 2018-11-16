@@ -18,22 +18,22 @@ __attribute__((visibility("hidden")))
     FFProjectEventPropertiesViewController *_controller;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (BOOL)isOpaque;
-@property(nonatomic) BOOL dragging; // @synthesize dragging=_dragging;
-- (void)setupTrackingArea;
-- (void)releaseTrackingArea;
-- (struct CGRect)trackingAreaRect;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)updateTrackingAreas;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)scrollWheel:(id)arg1;
 @property FFProjectEventPropertiesViewController *controller; // @synthesize controller=_controller;
 @property(retain) NSTrackingArea *trackingArea; // @synthesize trackingArea=_trackingArea;
 @property(nonatomic) struct CGRect placeholderFrame; // @synthesize placeholderFrame=_placeholderFrame;
 @property(nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property(nonatomic) BOOL dragging; // @synthesize dragging=_dragging;
+- (void)scrollWheel:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)updateTrackingAreas;
+- (void)drawRect:(struct CGRect)arg1;
+- (struct CGRect)trackingAreaRect;
+- (void)releaseTrackingArea;
+- (void)setupTrackingArea;
+- (BOOL)isOpaque;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

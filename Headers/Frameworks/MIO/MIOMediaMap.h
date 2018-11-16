@@ -15,13 +15,14 @@
     CDStruct_1b6d18a9 _endTime;
 }
 
-- (id)initWithRADClip:(id)arg1;
-- (void)dealloc;
-- (id)description;
-- (void)addSegment:(id)arg1;
-- (id)segments;
-- (int)condensedState;
+- (id).cxx_construct;
 - (id)segmentArchive;
+- (int)condensedState;
+- (id)segments;
+- (void)addSegment:(id)arg1;
+- (id)description;
+- (void)dealloc;
+- (id)initWithRADClip:(id)arg1;
 
 @end
 

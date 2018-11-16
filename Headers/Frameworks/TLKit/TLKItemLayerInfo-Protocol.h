@@ -9,6 +9,7 @@
 @protocol TLKItemLayerInfo
 @property(readonly) double trailingEdgeInset;
 @property(readonly) double leadingEdgeInset;
+@property(readonly) BOOL audioComponent;
 @property(readonly) BOOL splitEdit;
 @property(readonly) BOOL timelineZooming;
 @property(readonly) struct CGRect videoLayerFrame;

@@ -24,7 +24,8 @@
     long long _alphaMode;
     long long _fileFrameCount;
     NSMutableIndexSet *_storedFrameIndexes;
-    unsigned int _nUpdates;
+    unsigned int _nIndexSetUpdates;
+    BOOL _segmentInfoDirty;
     NSMutableArray *_pixelTransformArray;
     NSMutableArray *_openStreamFiles;
     struct opaqueCMFormatDescription *_videoFormatDescription;
@@ -33,23 +34,24 @@
     double _lastCompressionWallClockStamp;
 }
 
-- (id)initWithPath:(id)arg1 segmentStoreMD5:(CDStruct_60067b7e)arg2 renderProps:(id)arg3;
-- (void)dealloc;
-- (void)_maybeUpdateSegmentInfo;
-- (void)ageOutCompressor:(BOOL)arg1;
-- (BOOL)_quickApproximateFrameExists:(long long)arg1;
-- (BOOL)frameExists:(long long)arg1;
-- (id)newFrameData:(long long)arg1 threadInfo:(id)arg2 sampleObj:(id)arg3;
-- (id)newImageFromFrameData:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3 requestedQuality:(int)arg4;
-- (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 sampleNumber:(long long)arg4 threadInfo:(id)arg5;
-- (int)writeBuffer:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3;
-- (id)renderProps;
-- (id)storedFrameIndexes;
-- (void)updateSegmentInfo;
-- (id)copyFrameDataFileForSampleNumber:(long long)arg1 createFile:(BOOL)arg2;
-- (id)fileNameForStartFrame:(long long)arg1 fileFrameCount:(long long)arg2;
-- (unsigned long long)pixelTransformIndex:(id)arg1;
+- (id).cxx_construct;
 - (id)pixelTransformFromIndex:(unsigned long long)arg1;
+- (unsigned long long)pixelTransformIndex:(id)arg1;
+- (id)fileNameForStartFrame:(long long)arg1 fileFrameCount:(long long)arg2;
+- (id)copyFrameDataFileForSampleNumber:(long long)arg1 createFile:(BOOL)arg2;
+- (void)updateSegmentInfo;
+- (id)storedFrameIndexes;
+- (id)renderProps;
+- (int)writeBuffer:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3;
+- (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 sampleNumber:(long long)arg4 threadInfo:(id)arg5;
+- (id)newImageFromFrameData:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3 requestedQuality:(int)arg4 propagateSampleBuf:(BOOL)arg5;
+- (id)newFrameData:(long long)arg1 threadInfo:(id)arg2 sampleObj:(id)arg3;
+- (BOOL)frameExists:(long long)arg1;
+- (BOOL)_quickApproximateFrameExists:(long long)arg1;
+- (void)ageOutCompressor:(BOOL)arg1;
+- (void)_maybeUpdateStoredIndexes;
+- (void)dealloc;
+- (id)initWithPath:(id)arg1 segmentStoreMD5:(CDStruct_bdcb2b0d)arg2 renderProps:(id)arg3;
 
 @end
 

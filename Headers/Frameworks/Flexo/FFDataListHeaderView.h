@@ -14,12 +14,12 @@ __attribute__((visibility("hidden")))
     NSImage *_backgroundImage;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)drawRect:(struct CGRect)arg1;
 @property(retain, nonatomic) NSImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

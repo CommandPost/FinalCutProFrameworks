@@ -8,7 +8,7 @@
 
 #import "TLKPartInfo.h"
 
-@class CALayer, NSArray, NSString, TLKEdgeSelectionLayer, TLKItemBackgroundLayer, TLKItemContentsLayer, TLKItemSelectionLayer, TLKTextLayer;
+@class CALayer, NSArray, NSMutableArray, NSString, TLKEdgeSelectionLayer, TLKFilmstripLayer, TLKItemBackgroundLayer, TLKItemContentsLayer, TLKItemSelectionLayer, TLKRoundedSideLayer, TLKTextLayer;
 
 @interface TLKItemLayer : TLKTimelineLayer <TLKPartInfo>
 {
@@ -17,48 +17,60 @@
     TLKEdgeSelectionLayer *_edgeSelectionLayer;
     TLKTextLayer *_textLayer;
     TLKItemContentsLayer *_overlayContentsLayer;
-    TLKItemContentsLayer *_videoContentsLayer;
-    TLKItemContentsLayer *_audioContentsLayer;
+    TLKFilmstripLayer *_videoContentsLayer;
+    TLKFilmstripLayer *_audioContentsLayer;
     TLKItemSelectionLayer *_selectionLayer;
+    TLKRoundedSideLayer *_disabledLayer;
     CALayer *_unusedMediaOverlay;
     CALayer *_transitionMediaOverlay;
     NSArray *_badgeArray;
+    NSMutableArray *_rangeItemLayers;
+    struct CGRect _transitionMediaRect;
+    struct CGRect _unusedMediaRect;
+    unsigned int _hideTextBadges:1;
 }
 
 + (struct CGRect)frameForItem:(struct CGRect)arg1 withType:(int)arg2 andContainmentType:(int)arg3;
-- (id)initWithTimelineView:(id)arg1;
-- (void)dealloc;
-- (void)invalidate;
-- (id)videoContentsLayer;
-- (id)audioContentsLayer;
-- (id)overlayContentsLayer;
-- (struct CGRect)visibleBoundsOfLayer:(id)arg1 accountingForOverlap:(BOOL)arg2;
-- (struct CGRect)rectForPart:(id)arg1;
-- (void)_applyFiltersForItemType:(int)arg1 containmentMask:(int)arg2;
-- (void)layoutSublayers;
-@property(copy) NSString *displayName;
-@property BOOL splitEdit;
-@property BOOL sourceSplitEdit;
-@property(readonly) TLKEdgeSelectionLayer *edgeSelectionLayer;
-@property(readonly) TLKItemBackgroundLayer *backgroundLayer;
-- (struct CGRect)transitionMediaRect;
-@property(readonly) struct CGRect unusedMediaRect;
-@property(readonly) struct CGRect usedMediaRect;
-- (void)_updatePrecisionEditorAppearance;
-- (void)_updateSelectionAppearance;
-- (void)setDelegate:(id)arg1;
-- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
-- (void)addSublayer:(id)arg1;
-- (void)insertSublayer:(id)arg1 below:(id)arg2;
-- (void)insertSublayer:(id)arg1 above:(id)arg2;
-- (void)replaceSublayer:(id)arg1 with:(id)arg2;
-- (void)audioWaveFormProportionChanged;
-- (void)updateAppearance;
-- (id)hitTest:(struct CGPoint)arg1;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)partIdentifier;
-- (id)contextMenu;
+@property(nonatomic) struct CGRect unusedMediaRect; // @synthesize unusedMediaRect=_unusedMediaRect;
+@property(nonatomic) struct CGRect transitionMediaRect; // @synthesize transitionMediaRect=_transitionMediaRect;
+@property(readonly, nonatomic) NSArray *rangeItemLayers; // @synthesize rangeItemLayers=_rangeItemLayers;
+- (void)layoutRangeItemLayers;
 - (void)layoutTextBadges;
+- (id)contextMenu;
+- (id)partIdentifier;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)hitTest:(struct CGPoint)arg1;
+- (void)updateAppearance;
+- (void)audioWaveFormProportionChanged;
+- (void)replaceSublayer:(id)arg1 with:(id)arg2;
+- (void)insertSublayer:(id)arg1 above:(id)arg2;
+- (void)insertSublayer:(id)arg1 below:(id)arg2;
+- (void)addSublayer:(id)arg1;
+- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
+- (void)setDelegate:(id)arg1;
+- (void)_updateSelectionAppearance;
+- (void)_createEdgeSelectionIfNeeded;
+- (void)_updatePrecisionEditorAppearance;
+@property(readonly, nonatomic) struct CGRect usedMediaRect;
+@property(readonly) TLKItemBackgroundLayer *backgroundLayer;
+@property(readonly) TLKEdgeSelectionLayer *edgeSelectionLayer;
+@property BOOL roundedBottomAudioComponent;
+@property BOOL audioComponent;
+@property BOOL sourceSplitEdit;
+@property BOOL splitEdit;
+@property BOOL hideTextBadges;
+@property(readonly) TLKTextLayer *textLayer;
+@property(copy) NSString *displayName;
+- (void)layoutSublayers;
+- (void)_applyFiltersForItemType:(int)arg1 containmentMask:(int)arg2;
+- (struct CGRect)rectForPart:(id)arg1;
+- (struct CGRect)visibleBoundsOfLayer:(id)arg1 accountingForOverlap:(BOOL)arg2;
+- (id)overlayContentsLayer;
+- (id)audioContentsLayer;
+- (id)videoContentsLayer;
+- (void)invalidate;
+- (void)dealloc;
+- (id)initWithTimelineView:(id)arg1;
 
 @end
 

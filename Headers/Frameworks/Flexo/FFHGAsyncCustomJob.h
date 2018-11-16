@@ -17,12 +17,12 @@
     int _priority;
 }
 
-- (id)initWithObject:(id)arg1;
-- (void)dealloc;
-- (void)_runCallback:(struct HGRenderer *)arg1;
-- (void)_jobFinished;
-- (_Bool)enqueueToRenderLocation:(int)arg1 priority:(int)arg2;
 - (_Bool)cancel;
+- (_Bool)enqueueToRenderLocation:(int)arg1 priority:(int)arg2;
+- (void)_jobFinished;
+- (void)_runCallback:(struct HGRenderer *)arg1;
+- (void)dealloc;
+- (id)initWithObject:(id)arg1;
 
 @end
 

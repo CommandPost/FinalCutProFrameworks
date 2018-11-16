@@ -10,5 +10,8 @@
 {
 }
 
+- (id)_backgroundColorForTile:(id)arg1;
+- (id)backgroundColorForTile:(id)arg1;
+
 @end
 

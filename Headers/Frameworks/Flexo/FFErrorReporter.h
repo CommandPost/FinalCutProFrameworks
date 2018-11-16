@@ -19,13 +19,13 @@
 }
 
 + (id)sharedInstance;
-- (id)reportErrorToUser:(id)arg1;
-- (void)windowWillClose:(id)arg1;
-- (void)userQuit:(id)arg1;
-- (void)userClose:(id)arg1;
-- (void)userRadar:(id)arg1;
-- (void)userAppendBacktrace:(id)arg1;
 - (void)_updateErrorDescriptionWithCallStack:(BOOL)arg1;
+- (void)userAppendBacktrace:(id)arg1;
+- (void)userRadar:(id)arg1;
+- (void)userClose:(id)arg1;
+- (void)userQuit:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (id)reportErrorToUser:(id)arg1;
 
 @end
 

@@ -20,29 +20,31 @@ __attribute__((visibility("hidden")))
     void *_FFVideoScopesVectorscopeViewPrivate;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-@property BOOL showIandQ; // @dynamic showIandQ;
-@property BOOL showSkinToneIndicator; // @dynamic showSkinToneIndicator;
-@property long long phase; // @dynamic phase;
-@property long long barTarget; // @dynamic barTarget;
-- (void)buildLayers;
-- (void)teardownLayers;
-- (void)awakeFromNib;
-- (void)viewWillMoveToSuperview:(id)arg1;
-- (void)viewDidUnhide;
-- (void)removeFromSuperview;
-- (void)setZoomFactor:(float)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (void)scrollWheel:(id)arg1;
-- (void)drawScopeViewWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (id)menuForVideoScopeOptions;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (struct FFVideoScopesVectorscopeViewPrivate *)_Private;
+- (id).cxx_construct;
 - (id)_initVideoScopesVectorscopeView;
+- (struct FFVideoScopesVectorscopeViewPrivate *)_Private;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (id)menuForVideoScopeOptions;
+- (void)drawScopeViewWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)scrollWheel:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)setZoomFactor:(float)arg1;
+- (void)removeFromSuperview;
+- (void)setFrameSize:(struct CGSize)arg1;
+- (void)viewDidUnhide;
+- (void)viewWillMoveToSuperview:(id)arg1;
+- (void)awakeFromNib;
+- (void)teardownLayers;
+- (void)buildLayers;
+@property long long barTarget; // @dynamic barTarget;
+@property long long phase; // @dynamic phase;
+@property BOOL showSkinToneIndicator; // @dynamic showSkinToneIndicator;
+@property BOOL showIandQ; // @dynamic showIandQ;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

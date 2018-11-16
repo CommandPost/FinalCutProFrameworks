@@ -14,28 +14,28 @@ __attribute__((visibility("hidden")))
     BOOL _isDisclosed;
     BOOL _emphasized;
     struct CGRect _frame;
-    id _clusteringDelegate;
+    id <FFOrganizerFilmstripClusteringDelegate> _clusteringDelegate;
     FFOrganizerFilmstripClusterHeaderLayer *_layer;
     FFOrganizerClusteringCollection *_cluster;
     NSProThemeFacet *_emphasizedFacet;
     NSProThemeFacet *_unemphaiszedFacet;
 }
 
-- (id)initWithCluster:(id)arg1 width:(double)arg2 yCoord:(double)arg3 isDisclosed:(BOOL)arg4;
-- (void)dealloc;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)description;
-- (BOOL)hasLayer;
-- (id)layer;
-- (void)releaseLayer;
-- (void)updateDisclosureState:(BOOL)arg1;
-- (void)updateAllDisclosureStates:(BOOL)arg1;
-@property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
 @property(retain, nonatomic) FFOrganizerClusteringCollection *cluster; // @synthesize cluster=_cluster;
 @property(nonatomic) id <FFOrganizerFilmstripClusteringDelegate> clusteringDelegate; // @synthesize clusteringDelegate=_clusteringDelegate;
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
+@property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
 @property(readonly, nonatomic) BOOL isDisclosed; // @synthesize isDisclosed=_isDisclosed;
+- (void)updateAllDisclosureStates:(BOOL)arg1;
+- (void)updateDisclosureState:(BOOL)arg1;
+- (void)releaseLayer;
+- (id)layer;
+- (BOOL)hasLayer;
+- (id)description;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (void)dealloc;
+- (id)initWithCluster:(id)arg1 width:(double)arg2 yCoord:(double)arg3 isDisclosed:(BOOL)arg4;
 
 @end
 

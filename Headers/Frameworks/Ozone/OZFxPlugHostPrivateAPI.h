@@ -14,10 +14,10 @@
     struct OZFxPlugSharedBase *_plugin;
 }
 
-- (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (BOOL)navigateToTime:(double)arg1;
 - (BOOL)giveEffectUIFocus;
+- (BOOL)navigateToTime:(double)arg1;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
+- (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
 
 @end
 

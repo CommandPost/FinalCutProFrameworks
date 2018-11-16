@@ -10,8 +10,8 @@
 {
 }
 
-- (BOOL)acceptsFirstResponder;
 - (void)mouseDown:(id)arg1;
+- (BOOL)acceptsFirstResponder;
 
 @end
 

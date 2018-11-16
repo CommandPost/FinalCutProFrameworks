@@ -23,18 +23,20 @@
     } _dhFlags;
 }
 
-- (void)_setSelectedRangeStart:(double)arg1 andRangeEnd:(double)arg2;
-- (BOOL)isDraggingLeadingEdge;
-- (BOOL)startTracking:(id)arg1;
-- (BOOL)continueTracking:(id)arg1;
-- (BOOL)shouldSkimItem:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
-- (void)cancelTracking:(id)arg1;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (BOOL)enterRollover:(id)arg1;
-- (void)exitRollover:(id)arg1;
-- (void)clickedInBackground:(id)arg1;
 - (BOOL)shouldAutoscroll:(id)arg1;
+- (void)clickedInBackground:(id)arg1;
+- (void)exitRollover:(id)arg1;
+- (BOOL)enterRollover:(id)arg1;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (void)cancelTracking:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
+- (void)trackingStoppedNothingEdited:(id)arg1;
+- (id)clickedItem;
+- (BOOL)shouldSkimItem:(id)arg1;
+- (BOOL)continueTracking:(id)arg1;
+- (BOOL)startTracking:(id)arg1;
+- (BOOL)isDraggingLeadingEdge;
+- (void)_setSelectedRangeStart:(double)arg1 andRangeEnd:(double)arg2;
 
 @end
 

@@ -4,21 +4,23 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FxHost, FxParameter, NSString, NSView;
+
 @protocol FxCustomPinControl
-- (id)initWithHost:(id)arg1 andParameter:(id)arg2;
-- (id)nibName;
-- (id)view;
-- (void)willLoadNib;
-- (void)nibWasInstalled;
-- (void)nibWillBeRemoved;
-- (void)willLoadView;
-- (void)viewWasInstalled;
-- (void)viewWillBeRemoved;
-- (id)firstKeyRespondingSubView;
-- (id)lasKeyRespondingSubView;
-- (void)enable;
-- (void)disable;
-- (BOOL)wantsChangedMessages;
 - (void)parameterChanged;
+- (BOOL)wantsChangedMessages;
+- (void)disable;
+- (void)enable;
+- (NSView *)lasKeyRespondingSubView;
+- (NSView *)firstKeyRespondingSubView;
+- (void)viewWillBeRemoved;
+- (void)viewWasInstalled;
+- (void)willLoadView;
+- (void)nibWillBeRemoved;
+- (void)nibWasInstalled;
+- (void)willLoadNib;
+- (NSView *)view;
+- (NSString *)nibName;
+- (id)initWithHost:(FxHost *)arg1 andParameter:(FxParameter *)arg2;
 @end
 

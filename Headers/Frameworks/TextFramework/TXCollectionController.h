@@ -17,15 +17,15 @@
     struct OZChannelEnum *_collectionChan;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 textLayout:(struct TXTextLayout *)arg2 context:(id)arg3;
-- (void)dealloc;
-- (void)fontTypeChanged:(id)arg1;
-- (void)updateComboBox:(int)arg1;
-- (BOOL)control:(id)arg1 isValidObject:(id)arg2;
-- (void)update;
-- (void)enable;
-- (void)disable;
 - (void)setChannelValue:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (BOOL)control:(id)arg1 isValidObject:(id)arg2;
+- (void)updateComboBox:(int)arg1;
+- (void)fontTypeChanged:(id)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 textLayout:(struct TXTextLayout *)arg2 context:(id)arg3;
 
 @end
 

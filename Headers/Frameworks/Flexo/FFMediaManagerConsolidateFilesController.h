@@ -16,14 +16,14 @@
 }
 
 + (void)showMediaManagerConsolidateFilesSheet:(id)arg1 organizerModule:(id)arg2;
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)finishMMOperation;
-- (id)eventDirectoryNameForURL:(id)arg1;
-- (void)_startCopyingFilesForEvents:(id)arg1;
-- (void)_symlinkFileCopyCompleted:(id)arg1;
-- (void)OK:(id)arg1;
 - (void)showMediaManagerConsolidateFilesSheet:(id)arg1 organizerModule:(id)arg2;
+- (void)OK:(id)arg1;
+- (void)_symlinkFileCopyCompleted:(id)arg1;
+- (void)_startCopyingFilesForEvents:(id)arg1;
+- (id)eventDirectoryNameForURL:(id)arg1;
+- (void)finishMMOperation;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

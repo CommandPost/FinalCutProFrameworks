@@ -10,8 +10,8 @@
 {
 }
 
-+ (Class)_headerViewClass;
 + (Class)_cornerCellClass;
++ (Class)_headerViewClass;
 - (Class)ibDefaultTableColumnClassForInsertion;
 
 @end

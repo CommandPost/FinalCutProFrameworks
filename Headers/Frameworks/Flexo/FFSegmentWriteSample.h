@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     double _cost;
 }
 
-- (id)initWithSample:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3 segmentStore:(id)arg4 offset:(long long)arg5 cost:(double)arg6;
-- (void)dealloc;
-- (void)main;
 - (id)sample2;
+- (void)main;
+- (void)dealloc;
+- (id)initWithSample:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3 segmentStore:(id)arg4 offset:(long long)arg5 cost:(double)arg6;
 
 @end
 

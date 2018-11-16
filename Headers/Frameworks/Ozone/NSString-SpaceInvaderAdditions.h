@@ -7,8 +7,6 @@
 #import "NSString.h"
 
 @interface NSString (SpaceInvaderAdditions)
-- (id)stringByReplacingInvalidFilenameCharacters;
-- (id)posixNameByReplacingInvalidCharacters;
 - (BOOL)isValidFilename;
 @end
 

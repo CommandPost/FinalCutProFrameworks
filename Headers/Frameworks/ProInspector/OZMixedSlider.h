@@ -11,9 +11,9 @@
     BOOL _isMixed;
 }
 
-- (BOOL)isMixed;
-- (void)setIsMixed:(BOOL)arg1;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)setIsMixed:(BOOL)arg1;
+- (BOOL)isMixed;
 
 @end
 

@@ -6,40 +6,42 @@
 
 #import "NSObject.h"
 
+@class NSApplication, NSArray, NSCoder, NSData, NSDictionary, NSError, NSMenu, NSNotification, NSString;
+
 @protocol NSApplicationDelegate <NSObject>
 
 @optional
-- (unsigned long long)applicationShouldTerminate:(id)arg1;
-- (BOOL)application:(id)arg1 openFile:(id)arg2;
-- (void)application:(id)arg1 openFiles:(id)arg2;
-- (BOOL)application:(id)arg1 openTempFile:(id)arg2;
-- (BOOL)applicationShouldOpenUntitledFile:(id)arg1;
-- (BOOL)applicationOpenUntitledFile:(id)arg1;
-- (BOOL)application:(id)arg1 openFileWithoutUI:(id)arg2;
-- (BOOL)application:(id)arg1 printFile:(id)arg2;
-- (unsigned long long)application:(id)arg1 printFiles:(id)arg2 withSettings:(id)arg3 showPrintPanels:(BOOL)arg4;
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(id)arg1;
-- (BOOL)applicationShouldHandleReopen:(id)arg1 hasVisibleWindows:(BOOL)arg2;
-- (id)applicationDockMenu:(id)arg1;
-- (id)application:(id)arg1 willPresentError:(id)arg2;
-- (void)application:(id)arg1 didRegisterForRemoteNotificationsWithDeviceToken:(id)arg2;
-- (void)application:(id)arg1 didFailToRegisterForRemoteNotificationsWithError:(id)arg2;
-- (void)application:(id)arg1 didReceiveRemoteNotification:(id)arg2;
-- (void)application:(id)arg1 willEncodeRestorableState:(id)arg2;
-- (void)application:(id)arg1 didDecodeRestorableState:(id)arg2;
-- (void)applicationWillFinishLaunching:(id)arg1;
-- (void)applicationDidFinishLaunching:(id)arg1;
-- (void)applicationWillHide:(id)arg1;
-- (void)applicationDidHide:(id)arg1;
-- (void)applicationWillUnhide:(id)arg1;
-- (void)applicationDidUnhide:(id)arg1;
-- (void)applicationWillBecomeActive:(id)arg1;
-- (void)applicationDidBecomeActive:(id)arg1;
-- (void)applicationWillResignActive:(id)arg1;
-- (void)applicationDidResignActive:(id)arg1;
-- (void)applicationWillUpdate:(id)arg1;
-- (void)applicationDidUpdate:(id)arg1;
-- (void)applicationWillTerminate:(id)arg1;
-- (void)applicationDidChangeScreenParameters:(id)arg1;
+- (void)applicationDidChangeScreenParameters:(NSNotification *)arg1;
+- (void)applicationWillTerminate:(NSNotification *)arg1;
+- (void)applicationDidUpdate:(NSNotification *)arg1;
+- (void)applicationWillUpdate:(NSNotification *)arg1;
+- (void)applicationDidResignActive:(NSNotification *)arg1;
+- (void)applicationWillResignActive:(NSNotification *)arg1;
+- (void)applicationDidBecomeActive:(NSNotification *)arg1;
+- (void)applicationWillBecomeActive:(NSNotification *)arg1;
+- (void)applicationDidUnhide:(NSNotification *)arg1;
+- (void)applicationWillUnhide:(NSNotification *)arg1;
+- (void)applicationDidHide:(NSNotification *)arg1;
+- (void)applicationWillHide:(NSNotification *)arg1;
+- (void)applicationDidFinishLaunching:(NSNotification *)arg1;
+- (void)applicationWillFinishLaunching:(NSNotification *)arg1;
+- (void)application:(NSApplication *)arg1 didDecodeRestorableState:(NSCoder *)arg2;
+- (void)application:(NSApplication *)arg1 willEncodeRestorableState:(NSCoder *)arg2;
+- (void)application:(NSApplication *)arg1 didReceiveRemoteNotification:(NSDictionary *)arg2;
+- (void)application:(NSApplication *)arg1 didFailToRegisterForRemoteNotificationsWithError:(NSError *)arg2;
+- (void)application:(NSApplication *)arg1 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)arg2;
+- (NSError *)application:(NSApplication *)arg1 willPresentError:(NSError *)arg2;
+- (NSMenu *)applicationDockMenu:(NSApplication *)arg1;
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)arg1 hasVisibleWindows:(BOOL)arg2;
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)arg1;
+- (unsigned long long)application:(NSApplication *)arg1 printFiles:(NSArray *)arg2 withSettings:(NSDictionary *)arg3 showPrintPanels:(BOOL)arg4;
+- (BOOL)application:(NSApplication *)arg1 printFile:(NSString *)arg2;
+- (BOOL)application:(id)arg1 openFileWithoutUI:(NSString *)arg2;
+- (BOOL)applicationOpenUntitledFile:(NSApplication *)arg1;
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)arg1;
+- (BOOL)application:(NSApplication *)arg1 openTempFile:(NSString *)arg2;
+- (void)application:(NSApplication *)arg1 openFiles:(NSArray *)arg2;
+- (BOOL)application:(NSApplication *)arg1 openFile:(NSString *)arg2;
+- (unsigned long long)applicationShouldTerminate:(NSApplication *)arg1;
 @end
 

@@ -20,12 +20,12 @@
     NSTimer *_playTimer;
 }
 
-- (id)init;
-- (void)removeApplyButton;
-- (void)togglePlay:(id)arg1;
-- (void)apply:(id)arg1;
-- (void)setMovie:(id)arg1;
 - (void)playCheck:(id)arg1;
+- (void)setMovie:(id)arg1;
+- (void)apply:(id)arg1;
+- (void)togglePlay:(id)arg1;
+- (void)removeApplyButton;
+- (id)init;
 
 @end
 

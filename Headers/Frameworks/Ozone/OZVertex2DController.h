@@ -11,21 +11,21 @@
     unsigned int _index;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
-- (double)getX:(struct OZChannelBase *)arg1;
-- (void)set:(struct OZChannelBase *)arg1 X:(double)arg2;
-- (double)getY:(struct OZChannelBase *)arg1;
-- (void)set:(struct OZChannelBase *)arg1 Y:(double)arg2;
-- (void)get:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3;
-- (void)set:(struct OZChannelBase *)arg1 X:(double)arg2 Y:(double)arg3;
-- (void)notify:(unsigned int)arg1;
-- (unsigned int)associatedIndex;
-- (void)localToGlobal:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3;
-- (void)globalToLocal:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3;
-- (void)setObjectTranslation:(struct OZChannelBase *)arg1 x:(double)arg2 y:(double)arg3;
-- (void *)associatedHandleX;
-- (void *)associatedHandleY;
 - (struct OZDocument *)document;
+- (void *)associatedHandleY;
+- (void *)associatedHandleX;
+- (void)setObjectTranslation:(struct OZChannelBase *)arg1 x:(double)arg2 y:(double)arg3;
+- (void)globalToLocal:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3;
+- (void)localToGlobal:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3;
+- (unsigned int)associatedIndex;
+- (void)notify:(unsigned int)arg1;
+- (void)set:(struct OZChannelBase *)arg1 X:(double)arg2 Y:(double)arg3;
+- (void)get:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3;
+- (void)set:(struct OZChannelBase *)arg1 Y:(double)arg2;
+- (double)getY:(struct OZChannelBase *)arg1;
+- (void)set:(struct OZChannelBase *)arg1 X:(double)arg2;
+- (double)getX:(struct OZChannelBase *)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
 
 @end
 

@@ -14,10 +14,10 @@
     BOOL _isSplash;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)drawRect:(struct CGRect)arg1;
 @property BOOL isSplash; // @synthesize isSplash=_isSplash;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

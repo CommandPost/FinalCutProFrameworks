@@ -11,20 +11,20 @@
     struct CGImage *_ref;
 }
 
-- (id)initWithImageRef:(struct CGImage *)arg1;
-- (id)initWithCGImage:(struct CGImage *)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (void)finalize;
-- (struct CGImage *)imageRef;
-- (struct CGImage *)CGImage;
-- (BOOL)draw;
-- (BOOL)_drawFromRect:(struct CGRect)arg1 toRect:(struct CGRect)arg2 operation:(unsigned long long)arg3 alpha:(double)arg4 compositing:(BOOL)arg5 flipped:(BOOL)arg6 ignoreContext:(BOOL)arg7;
-- (BOOL)_wantsToBeCached;
-- (struct CGImage *)CGImageForProposedRect:(struct CGRect *)arg1 context:(id)arg2 hints:(id)arg3;
-- (BOOL)stretchToRect:(struct CGRect)arg1;
-- (BOOL)stretchToRect:(struct CGRect)arg1 operation:(unsigned long long)arg2 alpha:(double)arg3 flipped:(BOOL)arg4;
 - (BOOL)_isValid;
+- (BOOL)stretchToRect:(struct CGRect)arg1 operation:(unsigned long long)arg2 alpha:(double)arg3 flipped:(BOOL)arg4;
+- (BOOL)stretchToRect:(struct CGRect)arg1;
+- (struct CGImage *)CGImageForProposedRect:(struct CGRect *)arg1 context:(id)arg2 hints:(id)arg3;
+- (BOOL)_wantsToBeCached;
+- (BOOL)_drawFromRect:(struct CGRect)arg1 toRect:(struct CGRect)arg2 operation:(unsigned long long)arg3 alpha:(double)arg4 compositing:(BOOL)arg5 flipped:(BOOL)arg6 ignoreContext:(BOOL)arg7;
+- (BOOL)draw;
+- (struct CGImage *)CGImage;
+- (struct CGImage *)imageRef;
+- (void)finalize;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithCGImage:(struct CGImage *)arg1;
+- (id)initWithImageRef:(struct CGImage *)arg1;
 
 @end
 

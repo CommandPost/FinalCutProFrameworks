@@ -22,24 +22,24 @@ __attribute__((visibility("hidden")))
     long long _returnedBufferCount;
 }
 
-+ (void)initialize;
-+ (id)sharedInstance;
-+ (void)releaseSharedInstance;
-+ (void *)alloc:(unsigned long long)arg1;
-+ (void)dealloc:(void *)arg1;
 + (void)dump;
-- (id)init;
-- (void)dealloc;
-- (void)dump;
-- (void)balance;
-- (unsigned long long)maximumSize;
-- (unsigned long long)currentSize;
-- (void)setEnabled:(BOOL)arg1;
-- (CDUnknownFunctionPointerType)deallocatorCallback;
-- (BOOL)isDeallocatorCallback:(void *)arg1;
-- (id)newPageAlignedMemoryWithSize:(unsigned long long)arg1;
-- (void)add:(void *)arg1 size:(unsigned long long)arg2;
++ (void)dealloc:(void *)arg1;
++ (void *)alloc:(unsigned long long)arg1;
++ (void)releaseSharedInstance;
++ (id)sharedInstance;
++ (void)initialize;
 - (void *)get:(unsigned long long)arg1;
+- (void)add:(void *)arg1 size:(unsigned long long)arg2;
+- (id)newPageAlignedMemoryWithSize:(unsigned long long)arg1;
+- (BOOL)isDeallocatorCallback:(void *)arg1;
+- (CDUnknownFunctionPointerType)deallocatorCallback;
+- (void)setEnabled:(BOOL)arg1;
+- (unsigned long long)currentSize;
+- (unsigned long long)maximumSize;
+- (void)balance;
+- (void)dump;
+- (void)dealloc;
+- (id)init;
 
 @end
 

@@ -18,13 +18,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)runSheetForItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 parentWindow:(id)arg3;
-- (id)initWithEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)dealloc;
-- (void)windowDidLoad;
-- (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)OK:(id)arg1;
-- (void)cancel:(id)arg1;
 - (void)controlTextDidChange:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)OK:(id)arg1;
+- (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)windowDidLoad;
+- (void)dealloc;
+- (id)initWithEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 
 @end
 

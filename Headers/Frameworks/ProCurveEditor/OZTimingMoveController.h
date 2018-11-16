@@ -8,24 +8,24 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKPanel, LKTextField, NSProView;
+@class LKTextField, NSPanel, NSProView;
 
 @interface OZTimingMoveController : NSObject <NSWindowDelegate>
 {
     LKTextField *_pValueField;
-    LKPanel *_pPanel;
+    NSPanel *_pPanel;
     NSProView *_pView;
 }
 
-+ (BOOL)openWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 timeValue:(double *)arg3 timeIsDelta:(char *)arg4;
 + (BOOL)openWithLocation:(struct CGPoint)arg1 value:(double *)arg2;
-- (void)awakeFromNib;
-- (id)init;
-- (BOOL)openWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 value:(double *)arg3 isDelta:(char *)arg4;
-- (void)windowWillClose:(id)arg1;
-- (void)cancelNotify:(id)arg1;
-- (void)okNotify:(id)arg1;
++ (BOOL)openWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 timeValue:(double *)arg3 timeIsDelta:(char *)arg4;
 - (void)valueFieldChanged:(id)arg1;
+- (void)okNotify:(id)arg1;
+- (void)cancelNotify:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (BOOL)openWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 value:(double *)arg3 isDelta:(char *)arg4;
+- (id)init;
+- (void)awakeFromNib;
 
 @end
 

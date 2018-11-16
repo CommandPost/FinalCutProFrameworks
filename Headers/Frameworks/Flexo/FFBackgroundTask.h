@@ -27,34 +27,17 @@
     Stopwatch *_watch;
     Stopwatch *_cancelResponseTimer;
     float _progress;
-    NSString *_taskSerializationGroup;
+    NSString *_taskRunGroup;
+    BOOL _serializedFlag;
 }
 
++ (double)progressForPendingTasks:(id)arg1 totalTaskCount:(long long)arg2 excludeIndeterminate:(BOOL)arg3;
 + (double)progressForTasks:(id)arg1;
-+ (double)progressForPendingTasks:(id)arg1 completedTaskCount:(long long)arg2 totalTaskCount:(long long)arg3 excludeIndeterminate:(BOOL)arg4;
-- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 priority:(long long)arg4 displayName:(id)arg5 areaName:(id)arg6 lowOverheadBehavior:(int)arg7 taskSerializationGroup:(id)arg8 type:(int)arg9;
-- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 priority:(long long)arg4 displayName:(id)arg5 areaName:(id)arg6 lowOverheadBehavior:(int)arg7 type:(int)arg8;
-- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 priority:(long long)arg4 displayName:(id)arg5 areaName:(id)arg6 type:(int)arg7;
-- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 priority:(long long)arg4 displayName:(id)arg5 type:(int)arg6;
-- (void)dealloc;
-- (void)setQueuePriority:(long long)arg1;
-- (BOOL)isReady;
-- (void)main;
-- (void)cancel;
-- (BOOL)supportsPaused;
-@property(readonly, getter=isPaused) BOOL paused;
-- (void)setPaused:(BOOL)arg1;
-- (void)pause;
-- (void)resume;
-- (BOOL)hasPaused;
-- (float)progress;
-- (void)setProgress:(float)arg1;
-- (BOOL)shouldIgnoreForAggregateProgress;
-- (id)description;
 @property int actionOptions; // @synthesize actionOptions=_actionOptions;
 @property int type; // @synthesize type=_taskType;
 @property BOOL hasStarted; // @synthesize hasStarted=_hasStarted;
-@property(retain) NSString *taskSerializationGroup; // @synthesize taskSerializationGroup=_taskSerializationGroup;
+@property BOOL serializedFlag; // @synthesize serializedFlag=_serializedFlag;
+@property(retain) NSString *taskRunGroup; // @synthesize taskRunGroup=_taskRunGroup;
 @property(readonly) int lowOverheadBehavior; // @synthesize lowOverheadBehavior=_lowOverheadBehavior;
 @property(copy) NSString *areaName; // @synthesize areaName=_areaName;
 @property(retain) NSDate *addedTime; // @synthesize addedTime=_addedTime;
@@ -64,6 +47,26 @@
 @property(retain) id target; // @synthesize target=_target;
 @property(copy) NSString *displayName; // @synthesize displayName=_displayName;
 @property(retain) FFBackgroundTaskQueue *taskQueue; // @synthesize taskQueue=_taskQueue;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
+- (id)description;
+- (BOOL)shouldIgnoreForAggregateProgress;
+- (void)setProgress:(float)arg1;
+- (float)progress;
+- (BOOL)hasPaused;
+- (void)resume;
+- (void)pause;
+- (void)setPaused:(BOOL)arg1;
+@property(readonly, getter=isPaused) BOOL paused;
+- (BOOL)supportsPaused;
+- (void)cancel;
+- (void)main;
+- (BOOL)isReady;
+- (void)setQueuePriority:(long long)arg1;
+- (void)dealloc;
+- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 priority:(long long)arg4 displayName:(id)arg5 type:(int)arg6 areaName:(id)arg7 lowOverheadBehavior:(int)arg8;
+- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 priority:(long long)arg4 displayName:(id)arg5 type:(int)arg6 areaName:(id)arg7 lowOverheadBehavior:(int)arg8 taskRunGroup:(id)arg9;
+- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 priority:(long long)arg4 displayName:(id)arg5 type:(int)arg6 areaName:(id)arg7 lowOverheadBehavior:(int)arg8 taskSerializationGroup:(id)arg9;
 
 @end
 

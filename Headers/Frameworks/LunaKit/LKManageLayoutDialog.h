@@ -23,21 +23,21 @@
     void *_reserved6;
 }
 
-- (id)init;
-- (void)awakeFromNib;
-- (void)beginSheetForWindow:(id)arg1 modalDelegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
-- (id)layoutManager;
-- (void)windowDidLoad;
-- (void)windowWillClose:(id)arg1;
-- (void)ok:(id)arg1;
-- (void)cancel:(id)arg1;
-- (void)addLayout:(id)arg1;
-- (void)removeLayout:(id)arg1;
-- (void)applyLayout:(id)arg1;
-- (void)tableViewSelectionDidChange:(id)arg1;
-- (void)editLayoutNameAtRow:(long long)arg1;
-- (void)endEditing;
 - (BOOL)tableView:(id)arg1 shouldEditTableColumn:(id)arg2 row:(long long)arg3;
+- (void)endEditing;
+- (void)editLayoutNameAtRow:(long long)arg1;
+- (void)tableViewSelectionDidChange:(id)arg1;
+- (void)applyLayout:(id)arg1;
+- (void)removeLayout:(id)arg1;
+- (void)addLayout:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)ok:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)windowDidLoad;
+- (id)layoutManager;
+- (void)beginSheetForWindow:(id)arg1 modalDelegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
+- (void)awakeFromNib;
+- (id)init;
 
 @end
 

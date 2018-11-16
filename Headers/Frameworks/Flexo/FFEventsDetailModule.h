@@ -18,30 +18,30 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _UIUpdateBlock;
 }
 
-@property(retain, nonatomic) NSDictionary *filtersDictionary; // @synthesize filtersDictionary=_filtersDictionary;
-- (void)setFavoriteFilter:(int)arg1;
-- (int)favFilterType;
-- (void)collectChildrenOfItem:(struct NSObject *)arg1 intoArray:(id)arg2;
-@property(readonly, nonatomic) NSArray *unfilteredRanges;
-@property(readonly, nonatomic) NSArray *selectedItems;
-@property(retain, nonatomic) NSArray *contents;
-- (void)moveSelectionToNextItem;
-- (void)moveSelectionToPreviousItem;
-- (void)scrollSelectionIntoView;
-- (id)_itemsInContents:(id)arg1;
-- (void)startObservingContents;
-- (void)stopObservingContents;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (BOOL)contentsEqual:(id)arg1 newContents:(id)arg2;
-- (void)invalidateUnfilteredItems;
-- (void)invalidateFilteredItems;
-- (BOOL)mediaRangesVisible:(id)arg1;
-- (void)removeFilters;
-- (BOOL)finishedLoading;
-- (id)init;
-- (void)dealloc;
 @property(copy, nonatomic) CDUnknownBlockType UIUpdateBlock; // @synthesize UIUpdateBlock=_UIUpdateBlock;
+@property(retain, nonatomic) NSDictionary *filtersDictionary; // @synthesize filtersDictionary=_filtersDictionary;
 @property(nonatomic) FFSidebarModule *sidebarModule; // @synthesize sidebarModule=_sidebarModule;
+- (void)dealloc;
+- (id)init;
+- (BOOL)finishedLoading;
+- (void)removeFilters;
+- (BOOL)mediaRangesVisible:(id)arg1;
+- (void)invalidateFilteredItems;
+- (void)invalidateUnfilteredItems;
+@property(retain, nonatomic) NSArray *contents;
+- (BOOL)contentsEqual:(id)arg1 newContents:(id)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)stopObservingContents;
+- (void)startObservingContents;
+- (id)_itemsInContents:(id)arg1;
+- (void)scrollSelectionIntoView;
+- (void)moveSelectionToPreviousItem;
+- (void)moveSelectionToNextItem;
+@property(readonly, nonatomic) NSArray *selectedItems;
+@property(readonly, nonatomic) NSArray *unfilteredRanges;
+- (void)collectChildrenOfItem:(struct NSObject *)arg1 intoArray:(id)arg2;
+- (int)favFilterType;
+- (void)setFavoriteFilter:(int)arg1;
 
 @end
 

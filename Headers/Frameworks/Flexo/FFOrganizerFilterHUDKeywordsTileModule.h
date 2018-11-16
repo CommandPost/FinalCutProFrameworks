@@ -20,20 +20,20 @@ __attribute__((visibility("hidden")))
     LKButtonCell *_checkBoxCell;
 }
 
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)setFilterDict:(id)arg1;
-- (id)filterDict;
-- (void)setKeywords:(id)arg1 selectedKeywords:(id)arg2;
-- (id)tileTypeFacet;
-- (void)_setAllToState:(unsigned long long)arg1;
-- (void)selectAllKeywords:(id)arg1;
-- (void)deselectAllKeywords:(id)arg1;
-- (id)comparisonTypesAllowed;
-- (id)sortKeywords:(id)arg1;
-- (void)keywordButtonClicked:(id)arg1;
 @property(retain, nonatomic) NSSet *selectedKeywordSet; // @synthesize selectedKeywordSet=_selectedKeywordSet;
 @property(retain, nonatomic) NSSet *keywordSet; // @synthesize keywordSet=_keywordSet;
+- (void)keywordButtonClicked:(id)arg1;
+- (id)sortKeywords:(id)arg1;
+- (id)comparisonTypesAllowed;
+- (void)deselectAllKeywords:(id)arg1;
+- (void)selectAllKeywords:(id)arg1;
+- (void)_setAllToState:(unsigned long long)arg1;
+- (id)tileTypeFacet;
+- (void)setKeywords:(id)arg1 selectedKeywords:(id)arg2;
+- (id)filterDict;
+- (void)setFilterDict:(id)arg1;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
     NSTrackingArea *_mouseTrackingArea;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)updateTrackingAreas;
 @property(retain, nonatomic) NSTrackingArea *mouseTrackingArea; // @synthesize mouseTrackingArea=_mouseTrackingArea;
+- (void)updateTrackingAreas;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

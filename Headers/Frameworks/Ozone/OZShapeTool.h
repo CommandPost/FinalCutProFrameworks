@@ -20,20 +20,21 @@
     struct PCString *_pUndoString;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (id)getDefaultCursor;
-- (id)getCursorWithEvent:(id)arg1;
-- (void)endWithDocument:(struct OZDocument *)arg1;
-- (void)draw;
-- (void)createShape:(CDStruct_1b6d18a9)arg1;
-- (struct OZRotoshape *)createSceneNode;
-- (void)projectShape:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (BOOL)keyDownOSC:(id)arg1;
+- (id).cxx_construct;
 - (BOOL)flagsChanged:(id)arg1;
+- (BOOL)keyDownOSC:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)projectShape:(id)arg1;
+- (struct OZRotoshape *)createSceneNode;
+- (void)createShape:(CDStruct_1b6d18a9)arg1;
+- (void)draw;
+- (void)endWithDocument:(struct OZDocument *)arg1;
+- (id)getCursorWithEvent:(id)arg1;
+- (id)getDefaultCursor;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

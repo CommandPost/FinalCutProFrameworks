@@ -18,16 +18,16 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
-- (_Bool)infiniteSource;
-- (id)initWithProvider:(id)arg1 input:(id)arg2 range:(CDStruct_e83c9415)arg3 definedRangeToUseFromInput:(CDStruct_e83c9415)arg4 identifier:(id)arg5;
-- (void)dealloc;
-- (id)inputIdentifier;
-- (id)inputSource;
-- (CDStruct_e83c9415)timeRange;
-- (CDStruct_e83c9415)getInputRange;
-- (CDStruct_1b6d18a9)_mapRequestedTimeToInputTime:(CDStruct_1b6d18a9)arg1 caller:(id)arg2;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)nativeVideoProps;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (CDStruct_1b6d18a9)_mapRequestedTimeToInputTime:(CDStruct_1b6d18a9)arg1 caller:(id)arg2;
+- (CDStruct_e83c9415)getInputRange;
+- (CDStruct_e83c9415)timeRange;
+- (id)inputSource;
+- (id)inputIdentifier;
+- (void)dealloc;
+- (id)initWithProvider:(id)arg1 input:(id)arg2 range:(CDStruct_e83c9415)arg3 definedRangeToUseFromInput:(CDStruct_e83c9415)arg4 identifier:(id)arg5;
+- (_Bool)infiniteSource;
 
 @end
 

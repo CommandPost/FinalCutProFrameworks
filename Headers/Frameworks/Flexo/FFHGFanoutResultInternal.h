@@ -29,19 +29,6 @@ __attribute__((visibility("hidden")))
     int _bg;
 }
 
-- (id)initWithPF:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 location:(int)arg3 roi:(struct HGRect)arg4 pixelTransform:(id)arg5 field:(unsigned int)arg6 dithered:(BOOL)arg7 background:(int)arg8;
-- (void)dealloc;
-- (void)_nodeDidFinish;
-- (id)description;
-- (void)_callbackRan;
-- (void)registerForNodeCallbacks;
-- (void)setQueue:(id)arg1 job:(id)arg2;
-- (int)location;
-- (void)setLocation:(int)arg1;
-- (struct CGColorSpace *)colorSpace;
-- (void)setRenderNode:(struct HGRenderNode *)arg1;
-- (struct HGRenderNode *)renderNode;
-- (id)newImage;
 @property(readonly) int bg; // @synthesize bg=_bg;
 @property(readonly) BOOL dithered; // @synthesize dithered=_dithered;
 @property double bufferCopyTime; // @synthesize bufferCopyTime=_bufferCopyTime;
@@ -51,6 +38,20 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct HGRect roi; // @synthesize roi=_roi;
 @property(readonly) struct CGColorSpace *cs; // @synthesize cs=_cs;
 @property(readonly) FFPixelFormat *pf; // @synthesize pf=_pf;
+- (id).cxx_construct;
+- (id)newImage;
+- (struct HGRenderNode *)renderNode;
+- (void)setRenderNode:(struct HGRenderNode *)arg1;
+- (struct CGColorSpace *)colorSpace;
+- (void)setLocation:(int)arg1;
+- (int)location;
+- (void)setQueue:(id)arg1 job:(id)arg2;
+- (void)registerForNodeCallbacks;
+- (void)_callbackRan;
+- (id)description;
+- (void)_nodeDidFinish;
+- (void)dealloc;
+- (id)initWithPF:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 location:(int)arg3 roi:(struct HGRect)arg4 pixelTransform:(id)arg5 field:(unsigned int)arg6 dithered:(BOOL)arg7 background:(int)arg8;
 
 @end
 

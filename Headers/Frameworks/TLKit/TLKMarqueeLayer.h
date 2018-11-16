@@ -11,8 +11,8 @@
 }
 
 + (double)borderWidth;
-- (id)init;
 - (void)setDelegate:(id)arg1;
+- (id)init;
 
 @end
 

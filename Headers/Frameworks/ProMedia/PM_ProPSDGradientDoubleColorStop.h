@@ -13,15 +13,15 @@
     struct _proPSDGradientColor leadOutColor;
 }
 
-+ (void)initialize;
 + (id)doubleColorStopWithLocation:(double)arg1 leadInColor:(struct _proPSDGradientColor)arg2 leadOutColor:(struct _proPSDGradientColor)arg3;
-- (id)initWithLocation:(double)arg1 leadInColor:(struct _proPSDGradientColor)arg2 leadOutColor:(struct _proPSDGradientColor)arg3;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (struct _proPSDGradientColor)leadInColor;
-- (struct _proPSDGradientColor)leadOutColor;
-- (BOOL)isDoubleStop;
++ (void)initialize;
 - (id)description;
+- (BOOL)isDoubleStop;
+- (struct _proPSDGradientColor)leadOutColor;
+- (struct _proPSDGradientColor)leadInColor;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithLocation:(double)arg1 leadInColor:(struct _proPSDGradientColor)arg2 leadOutColor:(struct _proPSDGradientColor)arg3;
 
 @end
 

@@ -23,19 +23,20 @@
 }
 
 + (id)sharedInstance;
-- (id)init;
-- (void)dealloc;
-- (struct OZDocument *)document;
-@property(readonly) struct PCTimer *timer;
-@property BOOL closeProgressWhenDone;
-- (_Bool)ramCacheDone:(const CDStruct_1b6d18a9 *)arg1;
-@property(readonly) BOOL aborted;
-- (void)cleanupRender:(const CDStruct_1b6d18a9 *)arg1;
-- (void)renderFailed:(const CDStruct_1b6d18a9 *)arg1;
-- (_Bool)renderScene:(struct OZDocument *)arg1 cacheDisplayManager:(id)arg2 startTime:(const CDStruct_1b6d18a9 *)arg3 endTime:(const CDStruct_1b6d18a9 *)arg4;
-- (void)abortRender;
-- (void)updateProgressDialog:(id)arg1;
+- (id).cxx_construct;
 - (_Bool)postRenderInstruction:(const CDStruct_1b6d18a9 *)arg1;
+- (void)updateProgressDialog:(id)arg1;
+- (void)abortRender;
+- (_Bool)renderScene:(struct OZDocument *)arg1 cacheDisplayManager:(id)arg2 startTime:(const CDStruct_1b6d18a9 *)arg3 endTime:(const CDStruct_1b6d18a9 *)arg4;
+- (void)renderFailed:(const CDStruct_1b6d18a9 *)arg1;
+- (void)cleanupRender:(const CDStruct_1b6d18a9 *)arg1;
+@property(readonly) BOOL aborted;
+- (_Bool)ramCacheDone:(const CDStruct_1b6d18a9 *)arg1;
+@property BOOL closeProgressWhenDone;
+@property(readonly) struct PCTimer *timer;
+- (struct OZDocument *)document;
+- (void)dealloc;
+- (id)init;
 
 @end
 

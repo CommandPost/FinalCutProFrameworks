@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     struct HGObject *_obj;
 }
 
-- (id)initWithHGObject:(struct HGObject *)arg1;
 - (void)dealloc;
+- (id)initWithHGObject:(struct HGObject *)arg1;
 
 @end
 

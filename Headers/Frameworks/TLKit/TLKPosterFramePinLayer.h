@@ -12,7 +12,7 @@
 
 @interface TLKPosterFramePinLayer : CALayer <TLKPartInfo>
 {
-    id _representedObject;
+    id <TLKPosterFrameInfoProtocol> _representedObject;
     CALayer *_rootLayer;
     CALayer *_defaultLayer;
     CALayer *_manualLayer;
@@ -23,17 +23,18 @@
     CATextLayer *_textLayer;
 }
 
++ (struct CGSize)posterPinHeadSize;
 + (struct CGSize)posterPinSize;
-- (struct CGColor *)_defaultPinTailColor;
-- (id)init;
-- (void)setDelegate:(id)arg1;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)partIdentifier;
+- (id)hitTest:(struct CGPoint)arg1;
+- (void)layoutSublayers;
+- (void)setContentsScale:(double)arg1;
 @property id <TLKPosterFrameInfoProtocol> representedObject;
 - (void)updateAppearence;
-- (void)setContentsScale:(double)arg1;
-- (void)layoutSublayers;
-- (id)hitTest:(struct CGPoint)arg1;
-- (id)partIdentifier;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (void)setDelegate:(id)arg1;
+- (id)init;
+- (struct CGColor *)_defaultPinTailColor;
 
 @end
 

@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
-- (id)initWithProvider:(id)arg1;
-- (void)dealloc;
-- (unsigned long long)deinterlaceType;
-- (id)nativeVideoProps;
-- (CDStruct_e83c9415)timeRange;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (double)preferredScaleFactorForQuality:(int)arg1;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (CDStruct_e83c9415)timeRange;
+- (id)nativeVideoProps;
+- (unsigned long long)deinterlaceType;
+- (void)dealloc;
+- (id)initWithProvider:(id)arg1;
 
 @end
 

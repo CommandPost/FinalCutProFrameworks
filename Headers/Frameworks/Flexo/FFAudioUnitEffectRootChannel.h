@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
     FFEffectBundlePart *m_parentEffectBundlePart;
 }
 
-+ (void)addFactory;
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-- (id)initWithParent:(id)arg1 name:(id)arg2 channelID:(unsigned int)arg3 flags:(unsigned int)arg4;
-- (id)initWithParent:(id)arg1 channelID:(unsigned int)arg2 effect:(id)arg3 parentEffectBundlePart:(id)arg4;
-- (void)dealloc;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
++ (void)addFactory;
 @property(readonly, nonatomic) FFEffectBundlePart *parentEffectBundlePart; // @synthesize parentEffectBundlePart=m_parentEffectBundlePart;
+- (void)dealloc;
+- (id)initWithParent:(id)arg1 channelID:(unsigned int)arg2 effect:(id)arg3 parentEffectBundlePart:(id)arg4;
+- (id)initWithParent:(id)arg1 name:(id)arg2 channelID:(unsigned int)arg3 flags:(unsigned int)arg4;
 
 @end
 

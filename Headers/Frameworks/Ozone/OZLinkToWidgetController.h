@@ -16,12 +16,12 @@
     OZViewController *_pXController;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 controlFlags:(unsigned int)arg2 context:(id)arg3;
-- (void)dealloc;
-- (id)createYController:(id)arg1 channel:(struct OZChannelBase *)arg2 withMiniCurveEditor:(id)arg3 context:(id)arg4;
-- (id)createXController:(id)arg1 channel:(struct OZChannelBase *)arg2 withMiniCurveEditor:(id)arg3 context:(id)arg4;
-- (void)setTotalRange:(const CDStruct_1b6d18a9 *)arg1 duration:(const CDStruct_1b6d18a9 *)arg2;
 - (void)setDisplayRange:(const CDStruct_1b6d18a9 *)arg1 duration:(const CDStruct_1b6d18a9 *)arg2;
+- (void)setTotalRange:(const CDStruct_1b6d18a9 *)arg1 duration:(const CDStruct_1b6d18a9 *)arg2;
+- (id)createXController:(id)arg1 channel:(struct OZChannelBase *)arg2 withMiniCurveEditor:(id)arg3 context:(id)arg4;
+- (id)createYController:(id)arg1 channel:(struct OZChannelBase *)arg2 withMiniCurveEditor:(id)arg3 context:(id)arg4;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 controlFlags:(unsigned int)arg2 context:(id)arg3;
 
 @end
 

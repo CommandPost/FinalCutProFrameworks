@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
     NSSet *_additionalStreams;
 }
 
-- (id)initWithStream:(id)arg1 andSubToken:(id)arg2 additionalStreams:(id)arg3;
-- (id)initWithStream:(id)arg1 andSubToken:(id)arg2;
-- (void)dealloc;
-- (id)newTokenForPassThruStream:(id)arg1;
 - (id)description;
+- (id)newTokenForPassThruStream:(id)arg1;
+- (void)dealloc;
+- (id)initWithStream:(id)arg1 andSubToken:(id)arg2;
+- (id)initWithStream:(id)arg1 andSubToken:(id)arg2 additionalStreams:(id)arg3;
 
 @end
 

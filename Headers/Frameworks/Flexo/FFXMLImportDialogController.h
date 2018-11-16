@@ -17,11 +17,11 @@
     FFStorageLocation *_storageLocation;
 }
 
-- (id)storageLocation;
-- (void)updateLocationPopup;
-- (void)storageChanged:(id)arg1;
-- (id)initWithOpenPanel:(id)arg1 openProjects:(id)arg2;
 - (void)dealloc;
+- (id)initWithOpenPanel:(id)arg1 openProjects:(id)arg2;
+- (void)storageChanged:(id)arg1;
+- (void)updateLocationPopup;
+- (id)storageLocation;
 
 @end
 

@@ -4,13 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSDictionary, NSString;
+
 @protocol FxMetaPlug
-- (id)fxPlugProperties;
-- (id)displayName;
-- (id)uuid;
-- (id)version;
-- (id)versionDisplayName;
-- (id)groupDisplayName;
-- (id)groupUUID;
+- (NSString *)groupUUID;
+- (NSString *)groupDisplayName;
+- (NSString *)versionDisplayName;
+- (NSString *)version;
+- (NSString *)uuid;
+- (NSString *)displayName;
+- (NSDictionary *)fxPlugProperties;
 @end
 

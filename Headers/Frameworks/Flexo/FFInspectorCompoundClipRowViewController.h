@@ -24,16 +24,6 @@ __attribute__((visibility("hidden")))
     BOOL _isEvent;
 }
 
-- (void)dealloc;
-- (id)project;
-- (id)assetRef;
-- (void)forceClipCount;
-- (int)setProject:(id)arg1 refs:(id)arg2;
-- (int)setAssetRef:(id)arg1;
-- (int)setAssetRef:(id)arg1 missingEvent:(BOOL)arg2;
-- (int)setAssetRef:(id)arg1 missingEvent:(BOOL)arg2 inClipInspector:(BOOL)arg3;
-- (int)setType:(int)arg1 number:(int)arg2 list:(id)arg3;
-- (int)setClipType:(int)arg1 number:(int)arg2 list:(id)arg3;
 @property(nonatomic) BOOL isEvent; // @synthesize isEvent=_isEvent;
 @property(nonatomic) BOOL isForProjectInspector; // @synthesize isForProjectInspector=_isForProjectInspector;
 @property(nonatomic) BOOL hasOfflineItems; // @synthesize hasOfflineItems=_hasOfflineItems;
@@ -42,6 +32,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LKTextField *driveName; // @synthesize driveName=_driveName;
 @property(retain, nonatomic) NSProThemeImageView *eventIcon; // @synthesize eventIcon=_eventIcon;
 @property(retain, nonatomic) LKTextField *eventName; // @synthesize eventName=_eventName;
+- (int)setClipType:(int)arg1 number:(int)arg2 list:(id)arg3;
+- (int)setType:(int)arg1 number:(int)arg2 list:(id)arg3;
+- (int)setAssetRef:(id)arg1 missingEvent:(BOOL)arg2 inClipInspector:(BOOL)arg3;
+- (int)setAssetRef:(id)arg1 missingEvent:(BOOL)arg2;
+- (int)setAssetRef:(id)arg1;
+- (int)setProject:(id)arg1 refs:(id)arg2;
+- (void)forceClipCount;
+- (id)assetRef;
+- (id)project;
+- (void)dealloc;
 
 @end
 

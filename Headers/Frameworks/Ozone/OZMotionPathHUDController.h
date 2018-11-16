@@ -12,7 +12,7 @@
 
 @interface OZMotionPathHUDController : OZAutoHUDController <OZUISupervisor>
 {
-    struct list<OZMotionPathBehavior*, std::allocator<OZMotionPathBehavior*>> *_pBehaviors;
+    struct list<OZMotionPathBehavior *, std::allocator<OZMotionPathBehavior *>> *_pBehaviors;
     OZViewController *_pVelocityCtrl;
     OZViewController *_pFrequencyCtrl;
     OZViewController *_pFrequencyModeCtrl;
@@ -20,13 +20,13 @@
     struct OZMotionPathBehavior *_pBH;
 }
 
-- (id)initWithObjectList:(list_34700237 *)arg1;
-- (void)dealloc;
-- (void)channelChanged:(struct OZChannelBase *)arg1 groupController:(id)arg2 time:(CDStruct_1b6d18a9)arg3 qualifiers:(int)arg4;
-- (void)buildUIWithObjectList:(list_2c251165 *)arg1 viewController:(id)arg2 context:(id)arg3;
-- (void)notify:(unsigned int)arg1;
-- (void)hideAndShowForShape:(unsigned int)arg1;
 - (void)viewDidLoad;
+- (void)hideAndShowForShape:(unsigned int)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)buildUIWithObjectList:(list_37573188 *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)channelChanged:(struct OZChannelBase *)arg1 groupController:(id)arg2 time:(CDStruct_1b6d18a9)arg3 qualifiers:(int)arg4;
+- (void)dealloc;
+- (id)initWithObjectList:(list_0555a7a2 *)arg1;
 
 @end
 

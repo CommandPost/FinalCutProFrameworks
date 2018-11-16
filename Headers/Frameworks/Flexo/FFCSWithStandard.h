@@ -13,10 +13,10 @@ __attribute__((visibility("hidden")))
     int _standard;
 }
 
-- (id)initWithCS:(struct CGColorSpace *)arg1 standard:(int)arg2;
-- (void)dealloc;
 @property(readonly, nonatomic) int standard; // @synthesize standard=_standard;
 @property(readonly, nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_cs;
+- (void)dealloc;
+- (id)initWithCS:(struct CGColorSpace *)arg1 standard:(int)arg2;
 
 @end
 

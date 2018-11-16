@@ -22,33 +22,6 @@ __attribute__((visibility("hidden")))
     FFInspectorMetadataContentRow *_draggedRow;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)clearContentRowList;
-- (BOOL)hasValidContentRowInList;
-- (void)prepareToLoadMetaDataSet;
-- (void)completeLoadingMetaDataSet;
-- (void)addObservers;
-- (void)removeObservers;
-- (void)observerHandler:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (BOOL)isFlipped;
-- (id)rowAtPoint:(struct CGPoint)arg1;
-- (BOOL)isContentRowView:(id)arg1;
-- (void)rearrangeRows:(id)arg1;
-- (void)rearrangeRowsAtPoint:(struct CGPoint)arg1 mouseUpwardMovement:(BOOL)arg2;
-- (void)disableMovedPosting;
-- (void)enableMovedPosting;
-- (void)postRowDidMoveNotificationFromRow:(long long)arg1 toRow:(long long)arg2;
-- (void)resetKeyViewLoop;
-- (void)addRow:(id)arg1;
-- (void)syncRowsToData;
-- (void)logMetaDefinitions;
-- (id)arrayASString:(id)arg1;
-- (id)dictASString:(id)arg1;
 @property(retain) FFInspectorMetadataContentRow *draggedRow; // @synthesize draggedRow=_draggedRow;
 @property(retain) FFInspectorMetadataContentRow *bottomRow; // @synthesize bottomRow=_bottomRow;
 @property(retain) NSMutableArray *contentRowList; // @synthesize contentRowList=_contentRowList;
@@ -58,6 +31,33 @@ __attribute__((visibility("hidden")))
 @property long long draggedRowOriginalIndex; // @synthesize draggedRowOriginalIndex=_draggedRowOriginalIndex;
 @property long long movedPostingDisableCount; // @synthesize movedPostingDisableCount=_movedPostingDisableCount;
 @property BOOL isSyncingToData; // @synthesize isSyncingToData=_isSyncingToData;
+- (id)dictASString:(id)arg1;
+- (id)arrayASString:(id)arg1;
+- (void)logMetaDefinitions;
+- (void)syncRowsToData;
+- (void)addRow:(id)arg1;
+- (void)resetKeyViewLoop;
+- (void)postRowDidMoveNotificationFromRow:(long long)arg1 toRow:(long long)arg2;
+- (void)enableMovedPosting;
+- (void)disableMovedPosting;
+- (void)rearrangeRowsAtPoint:(struct CGPoint)arg1 mouseUpwardMovement:(BOOL)arg2;
+- (void)rearrangeRows:(id)arg1;
+- (BOOL)isContentRowView:(id)arg1;
+- (id)rowAtPoint:(struct CGPoint)arg1;
+- (BOOL)isFlipped;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)observerHandler:(id)arg1;
+- (void)removeObservers;
+- (void)addObservers;
+- (void)completeLoadingMetaDataSet;
+- (void)prepareToLoadMetaDataSet;
+- (BOOL)hasValidContentRowInList;
+- (void)clearContentRowList;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

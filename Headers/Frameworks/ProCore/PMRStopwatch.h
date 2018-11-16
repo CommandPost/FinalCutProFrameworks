@@ -15,16 +15,16 @@
     NSString *_domain;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)reset;
-- (void)captureSplitTimeWithKey:(id)arg1 comment:(id)arg2;
-- (id)descriptionWithFormat:(int)arg1 key:(id)arg2 comment:(id)arg3;
-- (void)logWithFormat:(int)arg1;
-- (void)writeToFile:(id)arg1 key:(id)arg2 comment:(id)arg3 fileFormat:(int)arg4;
 @property(copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property(copy, nonatomic) NSArray *splitTimes; // @synthesize splitTimes=_splitTimes;
 @property(nonatomic) unsigned long long startTime; // @synthesize startTime=_startTime;
+- (void)writeToFile:(id)arg1 key:(id)arg2 comment:(id)arg3 fileFormat:(int)arg4;
+- (void)logWithFormat:(int)arg1;
+- (id)descriptionWithFormat:(int)arg1 key:(id)arg2 comment:(id)arg3;
+- (void)captureSplitTimeWithKey:(id)arg1 comment:(id)arg2;
+- (void)reset;
+- (void)dealloc;
+- (id)init;
 
 @end
 

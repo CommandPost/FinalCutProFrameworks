@@ -14,12 +14,12 @@ __attribute__((visibility("hidden")))
     FFVideoFormat *_bestGuess;
 }
 
-- (void)dealloc;
-- (BOOL)manuallySetProperty;
-- (BOOL)isEmptyProject;
-- (void)setBestGuess:(id)arg1;
-- (BOOL)loadView;
 - (void)closingWithCode:(int)arg1;
+- (BOOL)loadView;
+- (void)setBestGuess:(id)arg1;
+- (BOOL)isEmptyProject;
+- (BOOL)manuallySetProperty;
+- (void)dealloc;
 
 @end
 

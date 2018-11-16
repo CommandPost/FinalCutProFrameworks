@@ -16,14 +16,14 @@ __attribute__((visibility("hidden")))
     struct CGSize minSize;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)drawRect:(struct CGRect)arg1;
-- (id)resizableView;
-- (void)setResizableView:(id)arg1;
-- (struct CGSize)minSize;
-- (void)setMinSize:(struct CGSize)arg1;
 - (void)viewFrameChanged:(id)arg1;
+- (void)setMinSize:(struct CGSize)arg1;
+- (struct CGSize)minSize;
+- (void)setResizableView:(id)arg1;
+- (id)resizableView;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

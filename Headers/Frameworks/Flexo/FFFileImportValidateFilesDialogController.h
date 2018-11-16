@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
     NSProgressIndicator *mValidateProgressIndicator;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)cancel:(id)arg1;
-- (void)startAnimation;
 - (void)stopAnimation;
+- (void)startAnimation;
+- (void)cancel:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

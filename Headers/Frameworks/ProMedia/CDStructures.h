@@ -34,10 +34,10 @@ struct CPSDChannelBlendingInfo;
 struct CPSDChannelLengthInfo;
 
 struct CPSDColorModeData {
-    CDUnknownFunctionPointerType *_vptr$CPSDBaseComponent;
-    struct CPSDFile *mPSDFile;
-    unsigned int mLength;
-    char *mData;
+    CDUnknownFunctionPointerType *_field1;
+    struct CPSDFile *_field2;
+    unsigned int _field3;
+    char *_field4;
 };
 
 struct CPSDFile {
@@ -63,47 +63,47 @@ struct CPSDFile {
 };
 
 struct CPSDGlobalLayerMaskInfo {
-    CDUnknownFunctionPointerType *_vptr$CPSDBaseComponent;
-    struct CPSDFile *mPSDFile;
-    unsigned int mLength;
-    unsigned short mOverlayColorSpace;
-    unsigned short mColorComponents[4];
-    unsigned short mOpacity;
-    unsigned char mKind;
-    unsigned char mFiller;
+    CDUnknownFunctionPointerType *_field1;
+    struct CPSDFile *_field2;
+    unsigned int _field3;
+    unsigned short _field4;
+    unsigned short _field5[4];
+    unsigned short _field6;
+    unsigned char _field7;
+    unsigned char _field8;
 };
 
 struct CPSDGradientFillInfo;
 
 struct CPSDHeader {
-    CDUnknownFunctionPointerType *_vptr$CPSDBaseComponent;
-    struct CPSDFile *mPSDFile;
-    char mSignature[4];
-    unsigned short mVersion;
-    unsigned char mReserved1[6];
-    unsigned short mChannels;
-    unsigned int mRows;
-    unsigned int mColumns;
-    unsigned short mDepth;
-    unsigned short mMode;
+    CDUnknownFunctionPointerType *_field1;
+    struct CPSDFile *_field2;
+    char _field3[4];
+    unsigned short _field4;
+    unsigned char _field5[6];
+    unsigned short _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned short _field9;
+    unsigned short _field10;
 };
 
 struct CPSDImageResourceBlock;
 
 struct CPSDImageResources {
-    CDUnknownFunctionPointerType *_vptr$CPSDBaseComponent;
-    struct CPSDFile *mPSDFile;
-    unsigned int mLength;
-    struct CPSDImageResourceBlock *mResBlocks;
+    CDUnknownFunctionPointerType *_field1;
+    struct CPSDFile *_field2;
+    unsigned int _field3;
+    struct CPSDImageResourceBlock *_field4;
 };
 
 struct CPSDLayerAndMaskInfo {
-    CDUnknownFunctionPointerType *_vptr$CPSDBaseComponent;
-    struct CPSDFile *mPSDFile;
-    unsigned int mLength;
-    unsigned short mLayerCount;
-    struct CPSDLayerRecord *mpLayerRecords;
-    struct CPSDLayerChannelGroup **mpLayerChannelGroups;
+    CDUnknownFunctionPointerType *_field1;
+    struct CPSDFile *_field2;
+    unsigned int _field3;
+    unsigned short _field4;
+    struct CPSDLayerRecord *_field5;
+    struct CPSDLayerChannelGroup **_field6;
 };
 
 struct CPSDLayerBlendingRanges {
@@ -166,11 +166,11 @@ struct CPSDLayerRecord {
 };
 
 struct CPSDMiscellaneousInfo {
-    CDUnknownFunctionPointerType *_vptr$CPSDBaseComponent;
-    struct CPSDFile *mPSDFile;
-    unsigned int mLength;
-    struct CPSDLayerAndMaskInfo mLayerAndMaskInfo;
-    struct CPSDGlobalLayerMaskInfo mGlobalLayerMaskInfo;
+    CDUnknownFunctionPointerType *_field1;
+    struct CPSDFile *_field2;
+    unsigned int _field3;
+    struct CPSDLayerAndMaskInfo _field4;
+    struct CPSDGlobalLayerMaskInfo _field5;
 };
 
 struct CPSDObjectEffectsLayerInfo;
@@ -190,7 +190,7 @@ struct _PSDImageInfo {
     int _field6;
 };
 
-struct _Sp_counted_base<_S_atomic>;
+struct _Sp_counted_base<2>;
 
 struct _proPSDGradientColor {
     double red;
@@ -201,8 +201,8 @@ struct _proPSDGradientColor {
 
 struct shared_ptr<PCBitmap> {
     struct PCBitmap *_field1;
-    struct __shared_count<_S_atomic> {
-        struct _Sp_counted_base<_S_atomic> *_M_pi;
+    struct __shared_count<2> {
+        struct _Sp_counted_base<2> *_field1;
     } _field2;
 };
 
@@ -217,8 +217,8 @@ typedef struct {
 // Template types
 typedef struct shared_ptr<PCBitmap> {
     struct PCBitmap *_field1;
-    struct __shared_count<_S_atomic> {
-        struct _Sp_counted_base<_S_atomic> *_M_pi;
+    struct __shared_count<2> {
+        struct _Sp_counted_base<2> *_field1;
     } _field2;
-} shared_ptr_6c3c6330;
+} shared_ptr_59c72165;
 

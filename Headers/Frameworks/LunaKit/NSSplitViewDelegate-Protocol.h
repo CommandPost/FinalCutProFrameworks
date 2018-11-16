@@ -6,20 +6,22 @@
 
 #import "NSObject.h"
 
+@class NSNotification, NSSplitView, NSView;
+
 @protocol NSSplitViewDelegate <NSObject>
 
 @optional
-- (BOOL)splitView:(id)arg1 canCollapseSubview:(id)arg2;
-- (BOOL)splitView:(id)arg1 shouldCollapseSubview:(id)arg2 forDoubleClickOnDividerAtIndex:(long long)arg3;
-- (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
-- (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
-- (double)splitView:(id)arg1 constrainSplitPosition:(double)arg2 ofSubviewAt:(long long)arg3;
-- (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
-- (BOOL)splitView:(id)arg1 shouldAdjustSizeOfSubview:(id)arg2;
-- (BOOL)splitView:(id)arg1 shouldHideDividerAtIndex:(long long)arg2;
-- (struct CGRect)splitView:(id)arg1 effectiveRect:(struct CGRect)arg2 forDrawnRect:(struct CGRect)arg3 ofDividerAtIndex:(long long)arg4;
-- (struct CGRect)splitView:(id)arg1 additionalEffectiveRectOfDividerAtIndex:(long long)arg2;
-- (void)splitViewWillResizeSubviews:(id)arg1;
-- (void)splitViewDidResizeSubviews:(id)arg1;
+- (void)splitViewDidResizeSubviews:(NSNotification *)arg1;
+- (void)splitViewWillResizeSubviews:(NSNotification *)arg1;
+- (struct CGRect)splitView:(NSSplitView *)arg1 additionalEffectiveRectOfDividerAtIndex:(long long)arg2;
+- (struct CGRect)splitView:(NSSplitView *)arg1 effectiveRect:(struct CGRect)arg2 forDrawnRect:(struct CGRect)arg3 ofDividerAtIndex:(long long)arg4;
+- (BOOL)splitView:(NSSplitView *)arg1 shouldHideDividerAtIndex:(long long)arg2;
+- (BOOL)splitView:(NSSplitView *)arg1 shouldAdjustSizeOfSubview:(NSView *)arg2;
+- (void)splitView:(NSSplitView *)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
+- (double)splitView:(NSSplitView *)arg1 constrainSplitPosition:(double)arg2 ofSubviewAt:(long long)arg3;
+- (double)splitView:(NSSplitView *)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
+- (double)splitView:(NSSplitView *)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
+- (BOOL)splitView:(NSSplitView *)arg1 shouldCollapseSubview:(NSView *)arg2 forDoubleClickOnDividerAtIndex:(long long)arg3;
+- (BOOL)splitView:(NSSplitView *)arg1 canCollapseSubview:(NSView *)arg2;
 @end
 

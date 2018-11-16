@@ -18,14 +18,14 @@
 }
 
 + (CDUnknownBlockType)itemEdgeInfoComparator;
-- (id)initWithEdgeLocation:(double)arg1 isLeading:(BOOL)arg2 isAnchored:(BOOL)arg3 representedObject:(id)arg4;
-- (void)dealloc;
-- (id)description;
-@property(readonly, nonatomic) BOOL isLeadingEdge;
-@property(readonly, nonatomic) BOOL isAnchoredItem;
-- (long long)compareItemEdgeInfo:(id)arg1;
 @property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 @property(readonly, nonatomic) double location; // @synthesize location=_location;
+- (long long)compareItemEdgeInfo:(id)arg1;
+@property(readonly, nonatomic) BOOL isAnchoredItem;
+@property(readonly, nonatomic) BOOL isLeadingEdge;
+- (id)description;
+- (void)dealloc;
+- (id)initWithEdgeLocation:(double)arg1 isLeading:(BOOL)arg2 isAnchored:(BOOL)arg3 representedObject:(id)arg4;
 
 @end
 

@@ -20,18 +20,18 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)teardownCache;
-- (id)initWithImage:(id)arg1 locationHint:(int)arg2 md5:(CDStruct_60067b7e)arg3 offset:(long long)arg4 pf:(id)arg5 cs:(struct CGColorSpace *)arg6;
-- (void)dealloc;
-- (id)nativePixelFormat;
-- (id)type;
-- (struct CGRect)pixelSpaceBounds;
-- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
-- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
-- (_Bool)canProvideNativeTextureFor:(int)arg1 withoutRenderer:(struct HGRenderer *)arg2;
-- (id)newScheduleTokenForImageRep:(id)arg1;
-- (CDStruct_60067b7e)_md5ValueForPF:(id)arg1 cs:(struct CGColorSpace *)arg2 pt:(id)arg3 loc:(int)arg4 roi:(struct CGRect)arg5;
-- (id)_newTextureFromCache:(CDStruct_60067b7e)arg1;
 - (id)description;
+- (id)_newTextureFromCache:(CDStruct_bdcb2b0d)arg1;
+- (CDStruct_bdcb2b0d)_md5ValueForPF:(id)arg1 cs:(struct CGColorSpace *)arg2 pt:(id)arg3 loc:(int)arg4 roi:(struct CGRect)arg5;
+- (id)newScheduleTokenForImageRep:(id)arg1;
+- (_Bool)canProvideNativeTextureFor:(int)arg1 withoutRenderer:(struct HGRenderer *)arg2;
+- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
+- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (struct CGRect)pixelSpaceBounds;
+- (id)type;
+- (id)nativePixelFormat;
+- (void)dealloc;
+- (id)initWithImage:(id)arg1 locationHint:(int)arg2 md5:(CDStruct_bdcb2b0d)arg3 offset:(long long)arg4 pf:(id)arg5 cs:(struct CGColorSpace *)arg6;
 
 @end
 

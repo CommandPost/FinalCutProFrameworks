@@ -18,18 +18,18 @@
     struct FFAudioSyncHelperResults _peakSyncResults;
 }
 
-- (id)initWithItem:(id)arg1 refItem:(id)arg2;
-- (void)dealloc;
-- (BOOL)isSynced;
-- (BOOL)isPeakSynced;
-- (id)shortDescription;
-- (id)description;
 @property struct FFAudioSyncHelperResults peakSyncResults; // @synthesize peakSyncResults=_peakSyncResults;
 @property struct FFAudioSyncHelperResults syncResults; // @synthesize syncResults=_syncResults;
 @property CDStruct_e83c9415 refItemRange; // @synthesize refItemRange=_refItemRange;
 @property CDStruct_e83c9415 itemRange; // @synthesize itemRange=_itemRange;
 @property(readonly) FFMultiAngleItem *refItem; // @synthesize refItem=_refItem;
 @property(readonly) FFMultiAngleItem *item; // @synthesize item=_item;
+- (id)description;
+- (id)shortDescription;
+- (BOOL)isPeakSynced;
+- (BOOL)isSynced;
+- (void)dealloc;
+- (id)initWithItem:(id)arg1 refItem:(id)arg2;
 
 @end
 

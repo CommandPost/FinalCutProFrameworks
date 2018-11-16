@@ -6,8 +6,10 @@
 
 #import "FFModelLocking.h"
 
+@class FFUndoHandler, NSString;
+
 @protocol FFDataModelProtocol <FFModelLocking>
-- (id)undoHandler;
-- (id)mediaIdentifier;
+- (NSString *)mediaIdentifier;
+- (FFUndoHandler *)undoHandler;
 @end
 

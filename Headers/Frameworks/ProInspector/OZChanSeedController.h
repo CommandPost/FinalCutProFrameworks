@@ -14,14 +14,14 @@
     LKTextField *_pTF;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)startSliderAction:(id)arg1;
-- (void)endSliderAction:(id)arg1;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)setChannelValue:(id)arg1;
 - (void)generateSeed:(id)arg1;
+- (void)setChannelValue:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)endSliderAction:(id)arg1;
+- (void)startSliderAction:(id)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

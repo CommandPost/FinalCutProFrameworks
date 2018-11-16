@@ -6,40 +6,38 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredObject, FFAudioChannelsConfigLayout, NSArray, NSSet;
+@class NSArray;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioChannelsConfigObject : NSObject
 {
-    FFAnchoredObject *m_object;
-    BOOL m_isSupported;
-    BOOL m_supportsChannelEditing;
-    NSArray *m_defaultSourceChannels;
-    NSArray *m_autoDetectedSourceChannels;
-    FFAudioChannelsConfigLayout *m_defaultLayout;
-    FFAudioChannelsConfigLayout *m_autoDetectedLayout;
-    BOOL m_useAutoDetectedLayout;
-    NSSet *m_defaultSourceChannelLabels;
+    NSArray *m_componentSources;
 }
 
-- (id)initWithAnchoredObject:(id)arg1;
-- (void)dealloc;
-- (int)numAvailableChannels;
-- (BOOL)hasAutoDetectedLayout;
-- (BOOL)supportsLayoutChannelRoutings:(id)arg1;
-- (BOOL)canReset;
-- (id)_newLayoutItemFromMediaSource:(id)arg1;
-- (id)_newCurrentLayoutFromMediaSources:(id)arg1;
-- (id)newCurrentLayoutFromClip;
-- (id)_newDefaultLayoutFromClip;
-- (id)newAudioLayoutItemForContainedItem:(id)arg1;
-- (void)updateAnchoredObjectInfo;
-- (void)setCurrentChannelLayoutAsAutoDetectedLayout;
+- (void)refreshObject;
 - (void)updateToLayout:(int)arg1 specifiedLayout:(id)arg2;
-@property(readonly, nonatomic) BOOL useAutoDetectedLayout; // @synthesize useAutoDetectedLayout=m_useAutoDetectedLayout;
-@property(readonly, nonatomic) BOOL supportsAudioChannelEditing; // @synthesize supportsAudioChannelEditing=m_supportsChannelEditing;
-@property(readonly, nonatomic) BOOL isSupported; // @synthesize isSupported=m_isSupported;
-@property(readonly, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=m_object;
+- (id)newCurrentLayoutFromObject;
+- (void)setCurrentChannelLayoutAsAutoDetectedLayout;
+- (BOOL)supportsLayoutChannelRoutings:(id)arg1;
+- (int)numAvailableChannels;
+- (BOOL)supportsReset;
+- (BOOL)supportsFilmstrips;
+- (BOOL)supportsChannelsConfig;
+- (BOOL)isEquivalentToReferenceLayout;
+- (BOOL)hasReferenceLayout;
+- (void)setUseReferenceLayout:(BOOL)arg1;
+- (BOOL)useReferenceLayout;
+- (BOOL)supportsReferenceLayout;
+- (BOOL)hasAutoDetectedLayout;
+- (BOOL)useAutoDetectedLayout;
+- (BOOL)supportsAutoDetectedLayout;
+- (id)componentSources;
+- (void)setCollapsed:(BOOL)arg1;
+- (BOOL)isCollapsed;
+- (id)backingAnchoredObject;
+- (struct NSObject *)skimmableObject;
+- (id)displayName;
+- (void)dealloc;
 
 @end
 

@@ -6,20 +6,22 @@
 
 #import "NSObject.h"
 
+@class FFMatchReference, FFMatchTool, NSArray, NSString;
+
 @protocol FFMatchToolDelegate <NSObject>
-- (void)cancelOnSelectionOnMatchTool:(id)arg1;
-- (void)completeOnSelectionOnMatchTool:(id)arg1;
-- (void)matchToolWasAssigned:(id)arg1;
-- (void)matchToolWasResigned:(id)arg1;
-- (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
+- (BOOL)referenceChanged:(FFMatchTool *)arg1 reference:(FFMatchReference *)arg2;
+- (void)matchToolWasResigned:(FFMatchTool *)arg1;
+- (void)matchToolWasAssigned:(FFMatchTool *)arg1;
+- (void)completeOnSelectionOnMatchTool:(FFMatchTool *)arg1;
+- (void)cancelOnSelectionOnMatchTool:(FFMatchTool *)arg1;
 
 @optional
-- (BOOL)matchToolShouldCancelOnUndo:(id)arg1;
+- (NSString *)okButtonTitle;
+- (NSString *)accessoryTitle;
+- (NSString *)footerText;
+- (NSString *)footerNibName;
+- (NSArray *)copyCompliantObjectsFromSelection:(NSArray *)arg1;
 - (BOOL)allowsReferenceChangeFromOrganizerListView;
-- (id)copyCompliantObjectsFromSelection:(id)arg1;
-- (id)footerNibName;
-- (id)footerText;
-- (id)accessoryTitle;
-- (id)okButtonTitle;
+- (BOOL)matchToolShouldCancelOnUndo:(FFMatchTool *)arg1;
 @end
 

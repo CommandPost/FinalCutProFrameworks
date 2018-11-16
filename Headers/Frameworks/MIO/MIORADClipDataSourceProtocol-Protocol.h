@@ -4,16 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSArray, NSNumber, NSString;
+
 @protocol MIORADClipDataSourceProtocol
-- (id)clipID;
-- (id)name;
-- (double)transportRate;
-- (BOOL)isDropFrame;
-- (id)mediaStart;
-- (id)mediaDuration;
-- (unsigned int)numberOfAudioChannels;
-- (id)ingestObject;
+- (NSArray *)ingestSourceFiles;
 - (void *)ingestObjectRefCon;
-- (id)ingestSourceFiles;
+- (id)ingestObject;
+- (unsigned int)numberOfAudioChannels;
+- (NSNumber *)mediaDuration;
+- (NSString *)mediaStart;
+- (BOOL)isDropFrame;
+- (double)transportRate;
+- (NSString *)name;
+- (NSString *)clipID;
 @end
 

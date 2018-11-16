@@ -10,28 +10,28 @@
 {
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (void)notify:(unsigned int)arg1;
-- (struct OZSceneNode *)getSceneNode;
-- (struct OZSceneNode *)getAssociatedSceneNode;
-- (struct OZObjectManipulator *)getObjectManipulator;
-- (struct OZChannelPosition3D *)getPosition;
-- (CDStruct_1b6d18a9)getTimeOffset;
-- (void)applyObjectTransform:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
-- (PCVector3_457fd1f0)calculateOwnerOffset;
-- (int)getShapeSamplesX:(vector_419cd555 *)arg1 Y:(vector_419cd555 *)arg2 Z:(vector_419cd555 *)arg3 T:(vector_419cd555 *)arg4;
-- (struct OZChannelPosition *)getEndPointChan;
-- (struct OZChanRotoshapeRefWithPicker *)getGeometryChan;
-- (struct OZChannelPercent *)getOffsetChan;
-- (struct OZChannel2D *)getRadiusChan;
-- (struct OZChannel2D *)getRectSizeChan;
-- (struct OZChannelDouble *)getWaveAmplitudeChan;
-- (struct OZChannelDouble *)getWaveFrequencyChan;
-- (struct OZChannelAngle *)getWavePhaseChan;
-- (struct OZChannelDouble *)getWaveDampingChan;
-- (unsigned int)getShape;
 - (_Bool)transformPath;
+- (unsigned int)getShape;
+- (struct OZChannelDouble *)getWaveDampingChan;
+- (struct OZChannelAngle *)getWavePhaseChan;
+- (struct OZChannelDouble *)getWaveFrequencyChan;
+- (struct OZChannelDouble *)getWaveAmplitudeChan;
+- (struct OZChannel2D *)getRectSizeChan;
+- (struct OZChannel2D *)getRadiusChan;
+- (struct OZChannelPercent *)getOffsetChan;
+- (struct OZChanRotoshapeRefWithPicker *)getGeometryChan;
+- (struct OZChannelPosition *)getEndPointChan;
+- (int)getShapeSamplesX:(vector_419cd555 *)arg1 Y:(vector_419cd555 *)arg2 Z:(vector_419cd555 *)arg3 T:(vector_419cd555 *)arg4;
+- (PCVector3_457fd1f0)calculateOwnerOffset;
+- (void)applyObjectTransform:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
+- (CDStruct_1b6d18a9)getTimeOffset;
+- (struct OZChannelPosition3D *)getPosition;
+- (struct OZObjectManipulator *)getObjectManipulator;
+- (struct OZSceneNode *)getAssociatedSceneNode;
+- (struct OZSceneNode *)getSceneNode;
+- (void)notify:(unsigned int)arg1;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     NSImage *_rolloverImage;
 }
 
-- (void)mouseEntered:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)_updateMouseTracking;
 @property(retain, nonatomic) NSImage *rolloverImage; // @synthesize rolloverImage=_rolloverImage;
 - (void)dealloc;
+- (void)_updateMouseTracking;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
 
 @end
 

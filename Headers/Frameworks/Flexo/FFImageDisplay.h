@@ -50,24 +50,25 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct FFImageDisplayContext *)sharedKVOContext;
-- (id)init;
-- (void)dealloc;
-- (void)setUpBackgroundTexture;
-- (void)setUpOverlayContext:(struct CGRect)arg1;
-- (void)attachOverlayTexture:(struct CGRect)arg1;
-- (id)overlayTextureBuffer;
-- (void)updateInternalContexts:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2;
-- (struct _CGLContextObject *)overlayContext:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2;
-- (void)drawViewBorders:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2 drawRect:(struct CGRect)arg3 isRed:(BOOL)arg4 howLate:(double)arg5 backgroundColor:(id)arg6;
-- (void)_updateDebugText:(float)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)setColorChannelDisplayMode:(long long)arg1;
-- (void)updateObservedValuesForContext:(void *)arg1;
-- (id)newHGGLTextureForImage:(id)arg1 virtualScreen:(int)arg2 context:(struct _CGLContextObject *)arg3 outputSize:(struct CGSize)arg4 colorChannelDisplayMode:(long long)arg5;
-- (unsigned int)makeNewStencilBufferForContext:(struct _CGLContextObject *)arg1 fbo:(unsigned int)arg2 drawRect:(struct CGRect)arg3 fieldOffset:(float)arg4;
-- (void)setupFBOForInterlacing:(struct _CGLContextObject *)arg1 drawRect:(struct CGRect)arg2;
-- (unsigned int)drawInterlacedFrameToContext:(struct _CGLContextObject *)arg1 textureID:(unsigned int)arg2 fieldRect:(struct CGRect)arg3 fieldType:(unsigned int)arg4 imageIsUpright:(BOOL)arg5;
+- (id).cxx_construct;
 - (BOOL)drawImageHe:(id)arg1 CGLContext:(struct _CGLContextObject *)arg2 colorSpace:(struct CGColorSpace *)arg3 viewBounds:(struct CGRect)arg4 drawRect:(struct CGRect)arg5 imageSourceRect:(struct CGRect)arg6 angleSourceRects:(struct CGRect *)arg7 angleDrawRects:(struct CGRect *)arg8 angleCount:(long long)arg9 lockedContext:(char *)arg10 drawInterlaced:(BOOL)arg11 drawFieldsAlternately:(BOOL)arg12 overlayTextureBuffer:(id)arg13 overlayEnabled:(BOOL)arg14 forThumbnail:(BOOL)arg15 fieldType:(unsigned int)arg16 howLate:(double)arg17 backgroundColor:(id)arg18;
+- (unsigned int)drawInterlacedFrameToContext:(struct _CGLContextObject *)arg1 textureID:(unsigned int)arg2 fieldRect:(struct CGRect)arg3 fieldType:(unsigned int)arg4 imageIsUpright:(BOOL)arg5;
+- (void)setupFBOForInterlacing:(struct _CGLContextObject *)arg1 drawRect:(struct CGRect)arg2;
+- (unsigned int)makeNewStencilBufferForContext:(struct _CGLContextObject *)arg1 fbo:(unsigned int)arg2 drawRect:(struct CGRect)arg3 fieldOffset:(float)arg4;
+- (id)newHGGLTextureForImage:(id)arg1 virtualScreen:(int)arg2 context:(struct _CGLContextObject *)arg3 outputSize:(struct CGSize)arg4 colorChannelDisplayMode:(long long)arg5;
+- (void)updateObservedValuesForContext:(void *)arg1;
+- (void)setColorChannelDisplayMode:(long long)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_updateDebugText:(float)arg1;
+- (void)drawViewBorders:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2 drawRect:(struct CGRect)arg3 isRed:(BOOL)arg4 howLate:(double)arg5 backgroundColor:(id)arg6;
+- (struct _CGLContextObject *)overlayContext:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2;
+- (void)updateInternalContexts:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2;
+- (id)newOverlayTextureBuffer;
+- (void)attachOverlayTexture:(struct CGRect)arg1;
+- (void)setUpOverlayContext:(struct CGRect)arg1;
+- (void)setUpBackgroundTexture;
+- (void)dealloc;
+- (id)init;
 
 @end
 

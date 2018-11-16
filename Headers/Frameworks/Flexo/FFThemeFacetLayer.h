@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithThemeFacet:(id)arg1;
-- (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 theme:(unsigned long long)arg4;
-- (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
-- (id)initWithElement:(long long)arg1 part:(long long)arg2;
 - (void)_sizeToFitThemeFacet;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 theme:(unsigned long long)arg4;
+- (id)initWithThemeFacet:(id)arg1;
 
 @end
 

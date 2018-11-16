@@ -11,8 +11,8 @@
     double _cumulativeMagnifyDelta;
 }
 
-- (void)cancel:(id)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
+- (void)cancel:(id)arg1;
 
 @end
 

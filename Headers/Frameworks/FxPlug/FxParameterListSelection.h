@@ -11,13 +11,13 @@
     struct FxParameterListSelectionPriv *_listSelectionPriv;
 }
 
-- (id)init;
-- (void)dealloc;
-- (int)preferredListVariant;
-- (void)setPreferredListVariant:(int)arg1;
-- (id)listItems;
-- (void)setListItems:(id)arg1;
 - (id)displayNameForValue:(id)arg1;
+- (void)setListItems:(id)arg1;
+- (id)listItems;
+- (void)setPreferredListVariant:(int)arg1;
+- (int)preferredListVariant;
+- (void)dealloc;
+- (id)init;
 
 @end
 

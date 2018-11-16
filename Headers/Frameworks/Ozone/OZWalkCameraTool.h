@@ -14,22 +14,22 @@
     NSTimer *_pWalkTimer;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (id)getName;
-- (id)getTooltip;
-- (basic_string_075b6133)toolUndoString;
-- (id)getDefaultCursor;
-- (struct PCUUID)getClassID;
-- (BOOL)killTimer;
-- (BOOL)startTimer:(SEL)arg1;
-- (BOOL)keyDownOSC:(id)arg1;
-- (BOOL)keyUpOSC:(id)arg1;
-- (_Bool)walkLeft:(const id)arg1;
-- (_Bool)walkRight:(const id)arg1;
-- (_Bool)walkForward:(const id)arg1;
-- (_Bool)walkBackward:(const id)arg1;
-- (_Bool)walk:(double)arg1:(double)arg2;
 - (_Bool)performMouseDragAction:(id)arg1;
+- (_Bool)walk:(double)arg1:(double)arg2;
+- (_Bool)walkBackward:(id)arg1;
+- (_Bool)walkForward:(id)arg1;
+- (_Bool)walkRight:(id)arg1;
+- (_Bool)walkLeft:(id)arg1;
+- (BOOL)keyUpOSC:(id)arg1;
+- (BOOL)keyDownOSC:(id)arg1;
+- (BOOL)startTimer:(SEL)arg1;
+- (BOOL)killTimer;
+- (struct PCUUID)getClassID;
+- (id)getDefaultCursor;
+- (basic_string_1cdf7af0)toolUndoString;
+- (id)getTooltip;
+- (id)getName;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

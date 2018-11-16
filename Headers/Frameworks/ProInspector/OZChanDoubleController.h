@@ -27,30 +27,30 @@
     Class _formatterClass;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (id)firstKeyView;
-- (id)lastKeyView;
-- (id)connectKeyViewsRec:(id)arg1;
-- (void)startSliderAction:(id)arg1;
-- (void)endSliderAction:(id)arg1;
-- (void)startSegmentedScrubberAction:(id)arg1;
-- (void)endSegmentedScrubberAction:(id)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)removeScrubber;
-- (void)setChannelValue:(id)arg1;
-- (void)useFormatForHUD:(id)arg1 withSuffix:(id)arg2;
-- (void)setSliderTickMarkCount;
-- (void)setMinValue:(double)arg1;
-- (void)setMaxValue:(double)arg1;
-- (void)setSubrangeMin:(double)arg1 max:(double)arg2;
-- (void)getUIChanMin:(double *)arg1 chanMax:(double *)arg2 forChan:(struct OZChannel *)arg3;
-- (double)sliderUserValueRange:(struct OZChannel *)arg1;
-- (double)valueBias;
-- (id)formatterClassName;
 - (id)sliderClassName;
+- (id)formatterClassName;
+- (double)valueBias;
+- (double)sliderUserValueRange:(struct OZChannel *)arg1;
+- (void)getUIChanMin:(double *)arg1 chanMax:(double *)arg2 forChan:(struct OZChannel *)arg3;
+- (void)setSubrangeMin:(double)arg1 max:(double)arg2;
+- (void)setMaxValue:(double)arg1;
+- (void)setMinValue:(double)arg1;
+- (void)setSliderTickMarkCount;
+- (void)useFormatForHUD:(id)arg1 withSuffix:(id)arg2;
+- (void)setChannelValue:(id)arg1;
+- (void)removeScrubber;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)notify:(unsigned int)arg1;
+- (void)endSegmentedScrubberAction:(id)arg1;
+- (void)startSegmentedScrubberAction:(id)arg1;
+- (void)endSliderAction:(id)arg1;
+- (void)startSliderAction:(id)arg1;
+- (id)connectKeyViewsRec:(id)arg1;
+- (id)lastKeyView;
+- (id)firstKeyView;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -24,28 +24,28 @@
     BOOL _oz_viewOrderedBelow;
 }
 
-- (id)initWithModuleNibName:(id)arg1;
-- (struct CGSize)viewMinSize;
-- (struct CGSize)viewMaxSize;
-- (BOOL)wantsHeaderBar;
-- (BOOL)wantsFooterBar;
-- (BOOL)wantsFirstResponder;
-- (BOOL)acceptsFirstResponder;
-- (BOOL)isBackgroundGrabbable;
-- (BOOL)isViewOrderedBelow;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)viewDidLoad;
-- (void)setProjectInfo;
-- (void)setTimelineControlsHidden:(BOOL)arg1;
-- (void)setProjectUIHidden:(BOOL)arg1;
-- (void)timelineContentsTargetAction:(id)arg1;
-- (void)oz_paneVisibilityChanged:(id)arg1;
-- (void)didAddRemoveTimeline;
-- (void)notify:(unsigned int)arg1;
-- (void)zoomTimelineIn:(id)arg1;
-- (void)zoomTimelineOut:(id)arg1;
 @property BOOL oz_viewOrderedBelow; // @synthesize oz_viewOrderedBelow=_oz_viewOrderedBelow;
+- (void)zoomTimelineOut:(id)arg1;
+- (void)zoomTimelineIn:(id)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)didAddRemoveTimeline;
+- (void)oz_paneVisibilityChanged:(id)arg1;
+- (void)timelineContentsTargetAction:(id)arg1;
+- (void)setProjectUIHidden:(BOOL)arg1;
+- (void)setTimelineControlsHidden:(BOOL)arg1;
+- (void)setProjectInfo;
+- (void)viewDidLoad;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (BOOL)isViewOrderedBelow;
+- (BOOL)isBackgroundGrabbable;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)wantsFirstResponder;
+- (BOOL)wantsFooterBar;
+- (BOOL)wantsHeaderBar;
+- (struct CGSize)viewMaxSize;
+- (struct CGSize)viewMinSize;
+- (id)initWithModuleNibName:(id)arg1;
 
 @end
 

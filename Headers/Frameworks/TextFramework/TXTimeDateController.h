@@ -13,12 +13,12 @@
     LKDatePicker *_datePicker;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)update;
-- (void)setTimeDateValue:(id)arg1 channel:(struct OZChannelBase *)arg2;
-- (void)setTimeDate:(id)arg1;
 - (void)setCurrentTime:(id)arg1;
+- (void)setTimeDate:(id)arg1;
+- (void)setTimeDateValue:(id)arg1 channel:(struct OZChannelBase *)arg2;
+- (void)update;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

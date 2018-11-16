@@ -15,28 +15,29 @@
     PEImportPlayerContainerModule *_importPlayerContainerModule;
 }
 
-- (id)init;
-- (void)dealloc;
-- (Class)organizerModuleClass;
-- (BOOL)wantsHeaderBar;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 unloadingBlock:(CDUnknownBlockType)arg3;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
-- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 owner:(id)arg3;
-- (struct CGSize)viewMinSize;
-- (void)stopSkimmingForOwner:(id)arg1;
-- (void)importWindowDidFinishOpening:(id)arg1;
-- (void)importWindowWillStartClosing:(id)arg1;
-- (void)revealMediaRangesInEvents:(id)arg1;
-- (void)numericEntryWillBegin;
-- (void)numericEntryDidEnd;
-- (void)setNumericEntryValue:(id)arg1;
-- (void)setNumericEntryType:(unsigned long long)arg1;
-- (void)setNumericEntryDirection:(long long)arg1;
 - (void)setNumericEntryShowsSubframes:(BOOL)arg1;
+- (void)setNumericEntryDirection:(long long)arg1;
+- (void)setNumericEntryType:(unsigned long long)arg1;
+- (void)setNumericEntryValue:(id)arg1;
+- (void)numericEntryDidEnd;
+- (void)numericEntryWillBegin;
+- (void)revealMediaRangesInEvents:(id)arg1;
+- (void)importWindowWillStartClosing:(id)arg1;
+- (void)importWindowDidFinishOpening:(id)arg1;
+- (void)importWindowDidBecomeKey:(id)arg1;
+- (void)stopSkimmingForOwner:(id)arg1;
+- (struct CGSize)viewMinSize;
+- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 owner:(id)arg3;
+- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
+- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 unloadingBlock:(CDUnknownBlockType)arg3;
+- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (BOOL)wantsHeaderBar;
+- (Class)organizerModuleClass;
+- (void)dealloc;
+- (id)init;
 
 @end
 

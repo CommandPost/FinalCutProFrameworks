@@ -11,10 +11,10 @@
     BOOL _isInSetChannelValue;
 }
 
-- (void)setChannelValue:(id)arg1;
-- (void)update;
-- (void)aboutToChangeChannel;
 - (void)enable;
+- (void)aboutToChangeChannel;
+- (void)update;
+- (void)setChannelValue:(id)arg1;
 
 @end
 

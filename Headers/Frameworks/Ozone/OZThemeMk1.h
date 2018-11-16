@@ -10,8 +10,8 @@
 {
 }
 
-+ (unsigned long long)theme;
 + (id)newBitmapFromAtom:(_themeatom_union_d9d1758e)arg1;
++ (unsigned long long)theme;
 
 @end
 

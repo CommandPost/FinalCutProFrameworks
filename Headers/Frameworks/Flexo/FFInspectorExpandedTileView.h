@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)drawBackgroundForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
-- (void)drawDividerForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
 - (BOOL)shouldResizeToFit;
+- (void)drawDividerForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
+- (void)drawBackgroundForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
 
 @end
 

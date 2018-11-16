@@ -19,27 +19,27 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)defaultFontForMenu;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (struct _CGLContextObject *)cglContext;
-- (void)setZoomFactor:(float)arg1;
-- (float)zoomFactor;
-- (void)setDrawingEnabled:(BOOL)arg1;
-- (BOOL)isDrawingEnabled;
-- (float)traceBrightness;
-- (void)setTraceBrightness:(float)arg1;
-- (BOOL)monochrome;
-- (void)setMonochrome:(BOOL)arg1;
-- (void)buildLayers;
-- (void)teardownLayers;
-- (BOOL)accessibilityIsIgnored;
-- (id)accessibilityAttributeNames;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
-- (id)_initVideoScopesViewPriv;
 @property(nonatomic) LKSlider *traceBrightnessSlider; // @synthesize traceBrightnessSlider=_traceBrightnessSlider;
 @property(nonatomic) id destVideo; // @synthesize destVideo=_destVideo;
+- (id)_initVideoScopesViewPriv;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (BOOL)accessibilityIsIgnored;
+- (void)teardownLayers;
+- (void)buildLayers;
+- (void)setMonochrome:(BOOL)arg1;
+- (BOOL)monochrome;
+- (void)setTraceBrightness:(float)arg1;
+- (float)traceBrightness;
+- (BOOL)isDrawingEnabled;
+- (void)setDrawingEnabled:(BOOL)arg1;
+- (float)zoomFactor;
+- (void)setZoomFactor:(float)arg1;
+- (struct _CGLContextObject *)cglContext;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

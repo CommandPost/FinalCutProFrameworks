@@ -12,10 +12,10 @@
 {
 }
 
-- (id)init;
-- (id)actionForKey:(id)arg1;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)partIdentifier;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)actionForKey:(id)arg1;
+- (id)init;
 
 @end
 

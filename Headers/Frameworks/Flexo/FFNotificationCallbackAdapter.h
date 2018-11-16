@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
     FFNotificationID_ *_notificationName;
 }
 
-- (void)_notifierCallback:(id)arg1;
-- (id)initObserving:(id)arg1 name:(id)arg2 callback:(CDUnknownFunctionPointerType)arg3 refCon:(void *)arg4;
 - (void)clearClient;
+- (id)initObserving:(id)arg1 name:(id)arg2 callback:(CDUnknownFunctionPointerType)arg3 refCon:(void *)arg4;
+- (void)_notifierCallback:(id)arg1;
 
 @end
 

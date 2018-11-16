@@ -11,23 +11,23 @@
     struct FxHostCapabilitiesPriv *_hostCapPriv;
 }
 
-- (id)initWithAPIManager:(id)arg1;
-- (void)dealloc;
-- (id)hostID;
-- (BOOL)hostIsMotion;
-- (BOOL)hostIsFCP;
-- (BOOL)hostIsFCE;
-- (unsigned int)hostVersionNumber;
-- (BOOL)formatsFloatRGBABitmapsAsARGB;
-- (BOOL)supportsHiddenParameters;
-- (BOOL)supportsDisabledParameters;
-- (BOOL)supportsGroupParameters;
-- (BOOL)notifiesParameterChangedForGenerators;
-- (BOOL)parameterChangedUsableForAllParameters;
-- (BOOL)upscalesFields;
-- (BOOL)supportsTemporalBitmaps;
-- (unsigned long long)timeBase;
 - (id)glContextPixelFormatAttributes;
+- (unsigned long long)timeBase;
+- (BOOL)supportsTemporalBitmaps;
+- (BOOL)upscalesFields;
+- (BOOL)parameterChangedUsableForAllParameters;
+- (BOOL)notifiesParameterChangedForGenerators;
+- (BOOL)supportsGroupParameters;
+- (BOOL)supportsDisabledParameters;
+- (BOOL)supportsHiddenParameters;
+- (BOOL)formatsFloatRGBABitmapsAsARGB;
+- (unsigned int)hostVersionNumber;
+- (BOOL)hostIsFCE;
+- (BOOL)hostIsFCP;
+- (BOOL)hostIsMotion;
+- (id)hostID;
+- (void)dealloc;
+- (id)initWithAPIManager:(id)arg1;
 
 @end
 

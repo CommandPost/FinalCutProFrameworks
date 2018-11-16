@@ -13,10 +13,10 @@
     NSMenu *_objectMenu;
 }
 
-- (void)dealloc;
-- (id)menuForEvent:(id)arg1;
-- (void)mouseDown:(id)arg1;
 - (void)keyDown:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (id)menuForEvent:(id)arg1;
+- (void)dealloc;
 
 @end
 

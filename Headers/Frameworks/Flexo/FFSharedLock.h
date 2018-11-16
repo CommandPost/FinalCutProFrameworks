@@ -22,17 +22,17 @@
     int _writeLockCount;
 }
 
-+ (void)initialize;
 + (id)globalLock;
-- (id)init;
-- (void)dealloc;
-- (void)_readLock:(BOOL)arg1;
-- (void)_readLock;
-- (void)_readLockEvenIfWriteRequestPending;
-- (void)_readUnlock;
-- (void)_writeLock;
-- (void)_writeUnlock;
++ (void)initialize;
 - (BOOL)_hasWriteLock;
+- (void)_writeUnlock;
+- (void)_writeLock;
+- (void)_readUnlock;
+- (void)_readLockEvenIfWriteRequestPending;
+- (void)_readLock;
+- (void)_readLock:(BOOL)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

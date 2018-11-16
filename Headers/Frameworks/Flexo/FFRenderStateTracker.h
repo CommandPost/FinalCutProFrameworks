@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+#import "FFBackgroundTaskTarget.h"
+
 @class FFBackgroundTask, FFPMRLogFunnel, FFProvider, FFSVContext, FFSourceVideo, NSLock, NSMutableArray, NSMutableIndexSet, NSRecursiveLock, NSThread;
 
 __attribute__((visibility("hidden")))
-@interface FFRenderStateTracker : NSObject
+@interface FFRenderStateTracker : NSObject <FFBackgroundTaskTarget>
 {
     FFSVContext *_scrubContext;
     FFSourceVideo *_source;
@@ -32,58 +34,65 @@ __attribute__((visibility("hidden")))
     int _deferredRenderStateNotify;
 }
 
-- (_Bool)_draggingHoldActive;
-- (void)_delayedRestartCalc;
-- (void)timelineWillStartDragging:(id)arg1;
-- (void)timelineDidStopDragging:(id)arg1;
-- (void)oscWillStartDragging:(id)arg1;
-- (void)oscDidStopDragging:(id)arg1;
-- (void)appWillTerminate:(id)arg1;
-- (void)uiPlaybackStateChange:(id)arg1;
-- (id)init;
-- (id)initWithSourceVideo:(id)arg1;
-- (void)dealloc;
-- (id)sequence;
-- (id)lockableModelObject;
-- (void)readLockSeq:(id)arg1;
-- (void)readUnlockSeq;
-- (void)rbLock;
-- (void)rbUnlock;
-- (BOOL)holdingRBLock;
-- (void)setBGProcessingEnabled:(_Bool)arg1;
-- (_Bool)BGProcessingEnabled;
-- (CDStruct_e83c9415)_videoTimeRange;
-- (id)_scrubContext;
-- (_Bool)diskSpaceAvailableForRendering;
-- (void)_validateKnownAndDirtyRanges:(id)arg1;
-- (_Bool)_removeRangeFromKnownRanges:(CDStruct_e83c9415)arg1;
-- (_Bool)_addToDirtyRanges:(CDStruct_e83c9415)arg1;
-- (void)_removeFromDirtyRanges:(CDStruct_e83c9415)arg1;
-- (void)_insertIntoKnownRange:(id)arg1;
-- (CDStruct_e83c9415)_findNextDirtyInRange:(CDStruct_e83c9415)arg1;
-- (void)setState:(int)arg1 forRange:(CDStruct_e83c9415)arg2 withMD5s:(CDStruct_60067b7e *)arg3 nativeSampleDur:(CDStruct_1b6d18a9)arg4;
-- (void)rangeInvalidated:(id)arg1;
-- (void)deferredRenderStateNotify:(id)arg1;
-- (void)queueDeferredRenderStateNotify:(id)arg1;
-- (void)_markRangeAsDirty:(CDStruct_e83c9415)arg1 allowDefer:(_Bool)arg2;
-- (id)copyConsolidatedRenderRangeState:(long long)arg1 endTime:(CDStruct_1b6d18a9)arg2;
-- (id)renderState;
-- (id)renderStateInRange:(CDStruct_e83c9415)arg1;
-- (_Bool)stateFullyKnown;
-- (id)statesEncountered;
-- (id)md5sInUse;
-- (_Bool)analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
-- (void)checkRangeForRecentlyCreatedRenderFiles:(id)arg1;
-- (BOOL)_analyzeSegmentStoreForInfo:(id)arg1 checkActual:(_Bool)arg2 startAt:(CDStruct_1b6d18a9)arg3 renderFilePaths:(id)arg4 exitTime:(CDStruct_1b6d18a9)arg5 retRange:(CDStruct_e83c9415 *)arg6 diskMD5:(CDStruct_60067b7e *)arg7;
-- (int)_getStateForInfo:(id)arg1 startAt:(CDStruct_1b6d18a9)arg2 exitTime:(CDStruct_1b6d18a9)arg3 retRange:(CDStruct_e83c9415 *)arg4 diskMD5s:(CDStruct_60067b7e *)arg5 context:(id)arg6;
-- (BOOL)_analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
-- (BOOL)_calculateRenderStatesOnTask:(id)arg1 timeout:(CDStruct_1b6d18a9)arg2;
-- (void)cancelBackgroundOps;
-- (void)_recalculateInBackground;
-- (void)setPrimaryInterestTimeRange:(CDStruct_e83c9415)arg1;
-- (void)runBackgroundCalculationTask:(id)arg1 onTask:(id)arg2;
++ (id)assetRefsInUseForSource:(id)arg1;
++ (id)anchoredObjectInUseForSource:(id)arg1;
+@property(readonly) FFSourceVideo *source; // @synthesize source=_source;
+- (id).cxx_construct;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
 - (id)description;
-@property(readonly, retain) FFSourceVideo *source; // @synthesize source=_source;
+- (void)runBackgroundCalculationTask:(id)arg1 onTask:(id)arg2;
+- (void)setPrimaryInterestTimeRange:(CDStruct_e83c9415)arg1;
+- (void)_recalculateInBackground;
+- (void)cancelBackgroundOps;
+- (BOOL)_calculateRenderStatesOnTask:(id)arg1 timeout:(CDStruct_1b6d18a9)arg2;
+- (BOOL)_analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
+- (int)_getStateForInfo:(id)arg1 startAt:(CDStruct_1b6d18a9)arg2 exitTime:(CDStruct_1b6d18a9)arg3 retRange:(CDStruct_e83c9415 *)arg4 diskMD5s:(CDStruct_bdcb2b0d *)arg5 hasData:(char *)arg6 context:(id)arg7;
+- (BOOL)_analyzeSegmentStoreForInfo:(id)arg1 checkActual:(_Bool)arg2 startAt:(CDStruct_1b6d18a9)arg3 renderFilePaths:(id)arg4 exitTime:(CDStruct_1b6d18a9)arg5 retRange:(CDStruct_e83c9415 *)arg6 diskMD5:(CDStruct_bdcb2b0d *)arg7;
+- (void)checkRangeAndMD5sForRecentlyCreatedRenderFiles:(CDStruct_e83c9415)arg1 md5s:(id)arg2;
+- (void)checkRangeForRecentlyCreatedRenderFiles:(id)arg1;
+- (_Bool)analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
+- (id)md5sInUseInRange:(CDStruct_e83c9415)arg1 collectRenderedSegments:(BOOL)arg2 collectNeedsRenderSegments:(BOOL)arg3;
+- (id)md5sInUse;
+- (id)statesEncountered;
+- (_Bool)stateFullyKnown;
+- (id)renderStateInRange:(CDStruct_e83c9415)arg1;
+- (id)renderState;
+- (id)copyConsolidatedRenderRangeState:(long long)arg1 endTime:(CDStruct_1b6d18a9)arg2;
+- (void)_markRangeAsDirty:(CDStruct_e83c9415)arg1 allowDefer:(_Bool)arg2;
+- (void)queueDeferredRenderStateNotify:(id)arg1;
+- (void)deferredRenderStateNotify:(id)arg1;
+- (void)rangeInvalidated:(id)arg1;
+- (void)setState:(int)arg1 forRange:(CDStruct_e83c9415)arg2 withMD5s:(CDStruct_bdcb2b0d *)arg3 hasData:(char *)arg4 nativeSampleDur:(CDStruct_1b6d18a9)arg5;
+- (CDStruct_e83c9415)_findNextDirtyInRange:(CDStruct_e83c9415)arg1;
+- (void)_insertIntoKnownRange:(id)arg1;
+- (void)_removeFromDirtyRanges:(CDStruct_e83c9415)arg1;
+- (_Bool)_addToDirtyRanges:(CDStruct_e83c9415)arg1;
+- (_Bool)_removeRangeFromKnownRanges:(CDStruct_e83c9415)arg1;
+- (void)_validateKnownAndDirtyRanges:(id)arg1;
+- (_Bool)diskSpaceAvailableForRendering;
+- (id)_scrubContext;
+- (CDStruct_e83c9415)_videoTimeRange;
+- (_Bool)BGProcessingEnabled;
+- (void)setBGProcessingEnabled:(_Bool)arg1;
+- (BOOL)holdingRBLock;
+- (void)rbUnlock;
+- (void)rbLock;
+- (void)readUnlockSeq;
+- (void)readLockSeq:(id)arg1;
+- (id)lockableModelObject;
+- (id)sequence;
+- (void)dealloc;
+- (id)initWithSourceVideo:(id)arg1;
+- (id)init;
+- (void)uiPlaybackStateChange:(id)arg1;
+- (void)appWillTerminate:(id)arg1;
+- (void)oscDidStopDragging:(id)arg1;
+- (void)oscWillStartDragging:(id)arg1;
+- (void)timelineDidStopDragging:(id)arg1;
+- (void)timelineWillStartDragging:(id)arg1;
+- (void)_delayedRestartCalc;
+- (_Bool)_draggingHoldActive;
 
 @end
 

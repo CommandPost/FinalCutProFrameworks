@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     struct HGBitmapLoader *_lutsBitmapLoaderCache;
 }
 
-- (id)init;
 - (void)dealloc;
+- (id)init;
 
 @end
 

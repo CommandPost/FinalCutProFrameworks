@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     NSView *_view;
 }
 
-- (void)setHidden:(BOOL)arg1;
-- (void)setEnabled:(BOOL)arg1;
-- (void)dealloc;
 @property(retain) NSView *view; // @synthesize view=_view;
+- (void)dealloc;
+- (void)setEnabled:(BOOL)arg1;
+- (void)setHidden:(BOOL)arg1;
 
 @end
 

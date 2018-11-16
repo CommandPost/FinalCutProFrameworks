@@ -4,7 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFStorageLocation;
+
 @protocol FFStorageLocationOutOfDiskSpaceProtocol
-- (void)stopWritingFilesToLocation:(id)arg1;
+- (void)stopWritingFilesToLocation:(FFStorageLocation *)arg1;
 @end
 

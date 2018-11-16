@@ -4,63 +4,78 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSOperationQueue.h"
+#import "NSObject.h"
 
-@class NSDate, NSMutableDictionary, NSMutableSet, NSOperation;
+@class NSDate, NSMutableDictionary, NSMutableSet, NSOperation, NSOperationQueue;
 
-@interface FFBackgroundTaskQueue : NSOperationQueue
+@interface FFBackgroundTaskQueue : NSObject
 {
     id _delegate;
     NSMutableSet *_notedTasks;
     int _loCount;
     NSMutableSet *_pausedForLO;
     NSOperation *_blockerOperation;
+    NSOperationQueue *_generalQueue;
     NSMutableDictionary *_runGroups;
+    int _cleanupCounter;
     NSDate *_loExitTime;
     NSDate *_loEntryTime;
     double _aggregateProgress;
     BOOL _tasksPending;
+    int _queuedUpdateProgressPerformSelector;
     long long _completedTaskCount;
     long long _totalTaskCount;
 }
 
-+ (id)sharedInstance;
++ (BOOL)canStartDestructiveActionAffectingAssetRefs:(id)arg1 projects:(id)arg2;
 + (void)releaseSharedInstance;
-+ (BOOL)canStartDestructiveAction;
-- (id)init;
-- (void)dealloc;
-- (id)_notableTasks;
-- (BOOL)notableTasksPending;
-- (BOOL)canStartDestructiveAction;
-- (BOOL)waitForTasksInSerializationGroup:(id)arg1 beforeDate:(id)arg2;
-- (BOOL)waitForLowOverheadAcknowledgementBeforeDate:(id)arg1;
-- (void)addNote:(id)arg1;
-- (void)removeNote:(id)arg1;
-- (void)_updateTasksPending;
-- (void)_incrementNotableTaskCount:(id)arg1;
-- (void)_decrementNotableTaskCount:(id)arg1;
-- (void)_updateAggregateProgress;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)notifyDelegateDidAddTask:(id)arg1;
-- (void)_clearFinishedRunGroupOps;
-- (void)_setupTask:(id)arg1 forGroup:(id)arg2;
-- (void)addOperation:(id)arg1;
-- (void)notifyDelegateDidStartTask:(id)arg1;
-- (void)didStartTask:(id)arg1;
-- (void)notifyDelegateCompletedTask:(id)arg1;
-- (void)completedTask:(id)arg1;
-- (void)notifyDelegateCanceledTask:(id)arg1;
-- (void)canceledTask:(id)arg1;
-- (void)incrementLowOverheadMode;
-- (void)decrementLowOverheadMode;
-- (void)_checkForLOExitTime;
-- (void)_forceExpireTimedLOMode;
-- (void)runLowOverHeadForTime:(double)arg1;
-- (id)pauseAllTasks;
-- (id)resumeAllTasks;
++ (id)sharedInstance;
 @property BOOL tasksPending; // @synthesize tasksPending=_tasksPending;
 @property double aggregateProgress; // @synthesize aggregateProgress=_aggregateProgress;
 @property id delegate; // @synthesize delegate=_delegate;
+- (BOOL)waitUntilAllOperationsAreFinishedBeforeDate:(id)arg1;
+- (void)waitUntilAllOperationsAreFinished;
+- (void)cancelAllOperations;
+- (void)cancelAllOperationsInRunGroup:(id)arg1;
+- (void)setSuspended:(BOOL)arg1;
+- (BOOL)isSuspended;
+- (id)operations;
+- (void)setRunGroupMaxSimultaneousOperations:(unsigned long long)arg1 forRunGroup:(id)arg2;
+- (id)resumeAllTasks;
+- (id)pauseAllTasks;
+- (void)runLowOverHeadForTime:(double)arg1;
+- (void)_forceExpireTimedLOMode;
+- (void)_checkForLOExitTime;
+- (void)decrementLowOverheadMode;
+- (void)incrementLowOverheadMode;
+- (void)canceledTask:(id)arg1;
+- (void)notifyDelegateCanceledTask:(id)arg1;
+- (void)completedTask:(id)arg1;
+- (void)notifyDelegateCompletedTask:(id)arg1;
+- (void)didStartTask:(id)arg1;
+- (void)notifyDelegateDidStartTask:(id)arg1;
+- (void)addOperation:(id)arg1;
+- (void)_clearFinishedRunGroupOps;
+- (void)notifyDelegateDidAddTask:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_updateAggregateProgress;
+- (void)_decrementNotableTaskCount:(id)arg1;
+- (void)_incrementNotableTaskCount:(id)arg1;
+- (void)_updateTasksPending;
+- (void)removeNote:(id)arg1;
+- (void)addNote:(id)arg1;
+- (BOOL)waitForLowOverheadAcknowledgementBeforeDate:(id)arg1;
+- (BOOL)waitForTasksInRunGroup:(id)arg1 beforeDate:(id)arg2;
+- (BOOL)canStartDestructiveActionAffectingAssetRefs:(id)arg1 projects:(id)arg2;
+- (id)tasksUsingMediaRefs:(id)arg1;
+- (id)_tasksUsingAssetRefs:(id)arg1;
+- (id)_tasksUsingProjects:(id)arg1;
+- (BOOL)notableTasksPending;
+- (id)_notableTasks;
+@property(readonly) BOOL inLowOverheadMode;
+- (void)appWillTerminate:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

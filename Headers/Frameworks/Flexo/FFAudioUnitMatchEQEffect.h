@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     FFAnchoredObject *_matchComponent;
 }
 
-- (void)setMatchEQMode:(int)arg1;
-- (void)setMatchObject:(id)arg1;
-- (id)matchObject;
-- (void)addSubEffect:(id)arg1;
 - (void)removeSubEffect:(id)arg1;
+- (void)addSubEffect:(id)arg1;
+- (id)matchObject;
+- (void)setMatchObject:(id)arg1;
+- (void)setMatchEQMode:(int)arg1;
 
 @end
 

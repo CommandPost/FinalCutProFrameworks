@@ -13,11 +13,11 @@
     LKButton *_pButton;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4 context:(id)arg5;
-- (id)initWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3 context:(id)arg4;
-- (void)dealloc;
-- (void)enable;
 - (void)disable;
+- (void)enable;
+- (void)dealloc;
+- (id)initWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3 context:(id)arg4;
+- (id)initWithChan:(struct OZChannelBase *)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4 context:(id)arg5;
 
 @end
 

@@ -14,13 +14,13 @@
     OZVerticesController *_pVerticesController;
 }
 
-- (id)initWithBehaviors:(list_06b59fe9 *)arg1;
-- (void)delayedReleaseCB:(id)arg1;
-- (void)delayedRelease;
-- (void)buildUI:(struct OZMotionPathBehavior *)arg1;
-- (void)didSetShape;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
 - (void)notify:(unsigned int)arg1;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
+- (void)didSetShape;
+- (void)buildUI:(struct OZMotionPathBehavior *)arg1;
+- (void)delayedRelease;
+- (void)delayedReleaseCB:(id)arg1;
+- (id)initWithBehaviors:(list_94e47a03 *)arg1;
 
 @end
 

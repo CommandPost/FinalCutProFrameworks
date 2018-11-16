@@ -17,13 +17,13 @@ __attribute__((visibility("hidden")))
     FFSoftnessSlider *_softness;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)validateSoftnessState:(id)arg1;
-- (void)update;
-- (void)didBuildUI;
-- (id)representedChannel;
 - (void)maskOSCActiveChannelChanged:(id)arg1 old:(id)arg2;
+- (id)representedChannel;
+- (void)didBuildUI;
+- (void)update;
+- (void)validateSoftnessState:(id)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

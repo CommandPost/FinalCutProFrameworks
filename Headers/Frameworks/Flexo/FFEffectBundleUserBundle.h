@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initialEffectBundleParts;
-- (id)presetNames;
-- (id)availableBundleParts;
 - (void)partChangedHook;
+- (id)availableBundleParts;
+- (id)presetNames;
+- (id)initialEffectBundleParts;
 
 @end
 

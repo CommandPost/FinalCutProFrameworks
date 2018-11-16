@@ -4,8 +4,10 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFDest;
+
 @protocol FFDestRenderUnitDelegate
-- (void)willRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(id)arg2 context:(void *)arg3;
-- (void)didRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(id)arg2 context:(void *)arg3;
+- (void)didRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(FFDest *)arg2 context:(void *)arg3;
+- (void)willRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(FFDest *)arg2 context:(void *)arg3;
 @end
 

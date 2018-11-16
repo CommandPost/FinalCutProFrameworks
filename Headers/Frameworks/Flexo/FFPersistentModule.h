@@ -6,30 +6,32 @@
 
 #import "LKViewModule.h"
 
+#import "FFPersistentModuleDelegate.h"
+
 @class NSDictionary, NSString, NSUserDefaultsController;
 
 __attribute__((visibility("hidden")))
-@interface FFPersistentModule : LKViewModule
+@interface FFPersistentModule : LKViewModule <FFPersistentModuleDelegate>
 {
     NSString *_autosaveName;
 }
 
-- (void)storeDefaultsNotification:(id)arg1;
-- (void)viewWasInstalled;
-- (void)viewWillBeRemoved;
-- (void)registerDefaultsIfNeeded;
-@property(copy, nonatomic) NSString *autosaveName;
-@property(readonly, nonatomic) NSUserDefaultsController *defaultsController;
-- (id)defaultsKeyPath:(id)arg1;
-- (id)defaultsControllerKeyPath:(id)arg1;
-@property(readonly, nonatomic) NSDictionary *registrationDefaults;
-- (void)setDefaultsValue:(id)arg1 forKeyPath:(id)arg2;
-- (id)defaultsValueForKeyPath:(id)arg1;
-- (void)loadDefaults;
-- (void)storeDefaults;
-- (id)defaultsControllerForPersistentModule:(id)arg1;
-- (id)persistentModule:(id)arg1 convertDefaultsKeyPath:(id)arg2;
 - (void)dealloc;
+- (id)persistentModule:(id)arg1 convertDefaultsKeyPath:(id)arg2;
+- (id)defaultsControllerForPersistentModule:(id)arg1;
+- (void)storeDefaults;
+- (void)loadDefaults;
+- (id)defaultsValueForKeyPath:(id)arg1;
+- (void)setDefaultsValue:(id)arg1 forKeyPath:(id)arg2;
+@property(readonly, nonatomic) NSDictionary *registrationDefaults;
+- (id)defaultsControllerKeyPath:(id)arg1;
+- (id)defaultsKeyPath:(id)arg1;
+@property(readonly, nonatomic) NSUserDefaultsController *defaultsController;
+@property(copy, nonatomic) NSString *autosaveName;
+- (void)registerDefaultsIfNeeded;
+- (void)viewWillBeRemoved;
+- (void)viewWasInstalled;
+- (void)storeDefaultsNotification:(id)arg1;
 
 @end
 

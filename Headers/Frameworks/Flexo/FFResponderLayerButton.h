@@ -12,19 +12,19 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _pressedHandler;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)_restoreThemeStateAfterAcutation;
-- (void)_handleButtonActuated;
-- (void)setPressedHandlerWithTarget:(id)arg1 action:(SEL)arg2;
-- (BOOL)mouseDown:(id)arg1;
-- (BOOL)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)accessibilityActionNames;
-- (void)accessibilityPerformAction:(id)arg1;
-- (BOOL)accessibilityIsIgnored;
 @property(copy, nonatomic) CDUnknownBlockType pressedHandler; // @synthesize pressedHandler=_pressedHandler;
+- (BOOL)accessibilityIsIgnored;
+- (void)accessibilityPerformAction:(id)arg1;
+- (id)accessibilityActionNames;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (BOOL)mouseDragged:(id)arg1;
+- (BOOL)mouseDown:(id)arg1;
+- (void)setPressedHandlerWithTarget:(id)arg1 action:(SEL)arg2;
+- (void)_handleButtonActuated;
+- (void)_restoreThemeStateAfterAcutation;
+- (void)dealloc;
+- (id)init;
 
 @end
 

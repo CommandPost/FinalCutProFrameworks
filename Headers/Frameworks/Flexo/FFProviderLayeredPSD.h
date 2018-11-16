@@ -6,13 +6,13 @@
 
 #import <Flexo/FFProvider.h>
 
-@class FFMutableVideoProps, NSRecursiveLock, ProPSDImageRef;
+@class FFVideoProps, NSRecursiveLock, ProPSDImageRef;
 
 __attribute__((visibility("hidden")))
 @interface FFProviderLayeredPSD : FFProvider
 {
     ProPSDImageRef *_imageRef;
-    FFMutableVideoProps *_nativeVideoProps;
+    FFVideoProps *_nativeVideoProps;
     NSRecursiveLock *_lock;
     struct CGColorSpace *_colorSpace;
     struct _PSDImageInfo _imageInfo;
@@ -21,19 +21,19 @@ __attribute__((visibility("hidden")))
     CDStruct_bdcb2b0d _md5;
 }
 
-+ (id)utis;
 + (id)extensions;
-- (id)initWithAssetFileID:(id)arg1;
-- (void)setFlat;
-- (void)dealloc;
-- (id)_newImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3 layer:(id)arg4;
-- (BOOL)_layerIsValid:(id)arg1;
-- (void)_setupLayer:(id)arg1 groupDisabled:(BOOL)arg2;
-- (void)_setupSources;
-- (CDStruct_1b6d18a9)duration;
-- (id)nativeVideoProps;
-- (CDStruct_60067b7e)_md5WithContext:(id)arg1;
++ (id)utis;
 @property(readonly) unsigned int layerCount; // @synthesize layerCount=_layerCount;
+- (CDStruct_bdcb2b0d)_md5WithContext:(id)arg1;
+- (id)nativeVideoProps;
+- (CDStruct_1b6d18a9)duration;
+- (void)_setupSources;
+- (void)_setupLayer:(id)arg1 groupDisabled:(BOOL)arg2;
+- (BOOL)_layerIsValid:(id)arg1;
+- (id)_newImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3 layer:(id)arg4;
+- (void)dealloc;
+- (void)setFlat;
+- (id)initWithAssetFileID:(id)arg1;
 
 @end
 

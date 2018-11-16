@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
     NSLock *_lock;
 }
 
-- (id)init;
-- (void)dealloc;
 - (int)applyTransition:(unsigned int)arg1 toWindow:(id)arg2 direction:(unsigned int)arg3 callbackTarget:(id)arg4 callbackSelector:(SEL)arg5 callbackParameter:(id)arg6;
+- (void)dealloc;
+- (id)init;
 
 @end
 

@@ -23,36 +23,36 @@
 }
 
 + (void)initialize;
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (void)setInterpolation:(unsigned int)arg1;
-- (unsigned int)getInterpolation;
-- (id)getName;
-- (id)getTooltip;
-- (struct PCUUID)getClassID;
-- (id)menuForEvent:(id)arg1;
-- (void)endWithDocument:(struct OZDocument *)arg1;
-- (id)getDefaultCursor;
-- (id)getCursorWithEvent:(id)arg1;
-- (void)setViewMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 state:(const struct OZRenderState *)arg2;
-- (void)draw;
-- (BOOL)selectAll:(id)arg1;
-- (BOOL)selectNone:(id)arg1;
-- (struct OZElement *)getSelectedElement:(struct OZScene *)arg1;
-- (void)addToScene:(struct OZScene *)arg1;
-- (void)didCancelDrawing;
-- (BOOL)projectPoint:(id)arg1 xpos:(double *)arg2 ypos:(double *)arg3;
-- (BOOL)testPoint:(id)arg1 xpos:(double)arg2 ypos:(double)arg3;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (BOOL)delete:(id)arg1;
-- (BOOL)keyDownOSC:(id)arg1;
-- (BOOL)keyUpOSC:(id)arg1;
-- (void)setPrimaryColor:(id)arg1;
-- (id)getPrimaryColor;
 - (void)updateOptionsView;
+- (id)getPrimaryColor;
+- (void)setPrimaryColor:(id)arg1;
+- (BOOL)keyUpOSC:(id)arg1;
+- (BOOL)keyDownOSC:(id)arg1;
+- (BOOL)delete:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (BOOL)testPoint:(id)arg1 xpos:(double)arg2 ypos:(double)arg3;
+- (BOOL)projectPoint:(id)arg1 xpos:(double *)arg2 ypos:(double *)arg3;
+- (void)didCancelDrawing;
+- (void)addToScene:(struct OZScene *)arg1;
+- (struct OZElement *)getSelectedElement:(struct OZScene *)arg1;
+- (BOOL)selectNone:(id)arg1;
+- (BOOL)selectAll:(id)arg1;
+- (void)draw;
+- (void)setViewMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 state:(const struct OZRenderState *)arg2;
+- (id)getCursorWithEvent:(id)arg1;
+- (id)getDefaultCursor;
+- (void)endWithDocument:(struct OZDocument *)arg1;
+- (id)menuForEvent:(id)arg1;
+- (struct PCUUID)getClassID;
+- (id)getTooltip;
+- (id)getName;
+- (unsigned int)getInterpolation;
+- (void)setInterpolation:(unsigned int)arg1;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

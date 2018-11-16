@@ -18,31 +18,31 @@ __attribute__((visibility("hidden")))
     NSString *_accessibilityDescription;
 }
 
-- (id)init;
-- (id)_initWithThemeFacetLayer:(id)arg1;
-- (id)initWithThemeFacet:(id)arg1;
-- (id)initWithElement:(long long)arg1 part:(long long)arg2;
-- (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
-- (void)dealloc;
-- (void)setContentsScale:(double)arg1;
-- (void)configureNormal;
-- (void)configureRollover;
-- (void)configurePressed;
-- (void)configureInactive;
-- (void)configureDisabled;
-- (void)configureEmphasized;
-- (void)_configureWithThemeState:(long long)arg1;
-@property(nonatomic) BOOL enabled;
-@property(nonatomic) BOOL emphasized;
-@property(nonatomic) BOOL inactive;
-- (BOOL)_useRolloverHighlighting;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (BOOL)mouseEntered:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (id)accessibilityAttributeNames;
-- (id)accessibilityAttributeValue:(id)arg1;
 @property(copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property(nonatomic) BOOL rolloverHighlightingDisabled; // @synthesize rolloverHighlightingDisabled=_rolloverHighlightingDisabled;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (void)mouseExited:(id)arg1;
+- (BOOL)mouseEntered:(id)arg1;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (BOOL)_useRolloverHighlighting;
+@property(nonatomic) BOOL inactive;
+@property(nonatomic) BOOL emphasized;
+@property(nonatomic) BOOL enabled;
+- (void)_configureWithThemeState:(long long)arg1;
+- (void)configureEmphasized;
+- (void)configureDisabled;
+- (void)configureInactive;
+- (void)configurePressed;
+- (void)configureRollover;
+- (void)configureNormal;
+- (void)setContentsScale:(double)arg1;
+- (void)dealloc;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2;
+- (id)initWithThemeFacet:(id)arg1;
+- (id)_initWithThemeFacetLayer:(id)arg1;
+- (id)init;
 
 @end
 

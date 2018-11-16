@@ -11,16 +11,16 @@
 
 @interface OZFxPlugProgressAPI : NSObject <FxProgressAPI, PROAPIObject>
 {
-    struct OZProcessControl *_control;
+    const struct OZProcessControl *_control;
 }
 
-+ (id)sharedProgressAPI;
 + (void)releaseSharedProgressAPI;
-- (id)init;
-- (void)_setControl:(const struct OZProcessControl *)arg1;
-- (BOOL)userHasCancelled;
-- (BOOL)updateProgress:(float)arg1;
++ (id)sharedProgressAPI;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
+- (BOOL)updateProgress:(float)arg1;
+- (BOOL)userHasCancelled;
+- (void)_setControl:(const struct OZProcessControl *)arg1;
+- (id)init;
 
 @end
 

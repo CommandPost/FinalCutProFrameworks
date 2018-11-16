@@ -10,6 +10,7 @@
 {
 }
 
++ (Class)cellClass;
 + (void)initialize;
 
 @end

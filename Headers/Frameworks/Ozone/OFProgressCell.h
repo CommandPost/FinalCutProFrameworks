@@ -24,19 +24,20 @@
 }
 
 + (BOOL)prefersTrackingUntilMouseUp;
-- (id)initOFProgressCell:(id)arg1;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)setObjectValue:(id)arg1;
-- (id)objectValue;
-- (id)getRemainingStr;
-- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)getFromCellFrame:(struct CGRect)arg1 row1Frame:(struct CGRect *)arg2 andRow2Frame:(struct CGRect *)arg3 andRow3Frame:(struct CGRect *)arg4 andProgressFrame:(struct CGRect *)arg5 andPauseResumeFrame:(struct CGRect *)arg6 andDragHandleFrame:(struct CGRect *)arg7;
-- (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
-- (BOOL)continueTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3;
-- (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
-- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
+- (id).cxx_construct;
 - (void)abortTracking;
+- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
+- (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
+- (BOOL)continueTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3;
+- (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
+- (void)getFromCellFrame:(struct CGRect)arg1 row1Frame:(struct CGRect *)arg2 andRow2Frame:(struct CGRect *)arg3 andRow3Frame:(struct CGRect *)arg4 andProgressFrame:(struct CGRect *)arg5 andPauseResumeFrame:(struct CGRect *)arg6 andDragHandleFrame:(struct CGRect *)arg7;
+- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)getRemainingStr;
+- (id)objectValue;
+- (void)setObjectValue:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)initOFProgressCell:(id)arg1;
 
 @end
 

@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     OZLabelText *_labelText;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)update;
-- (id)stringForLabel;
 - (BOOL)isBasemem;
+- (id)stringForLabel;
+- (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

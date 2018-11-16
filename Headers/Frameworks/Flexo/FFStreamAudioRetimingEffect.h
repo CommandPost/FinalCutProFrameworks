@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
     struct FFAudioRetimingUnit *m_retimingUnit;
 }
 
-- (void)dealloc;
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
 - (void)prerollEnd;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
+- (void)dealloc;
 
 @end
 

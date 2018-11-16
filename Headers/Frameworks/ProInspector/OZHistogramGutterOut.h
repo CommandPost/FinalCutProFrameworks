@@ -22,17 +22,18 @@
     NSMutableParagraphStyle *_labelJustification;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)setViewController:(id)arg1;
-- (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
-- (void)dealloc;
-- (void)update;
-- (void)drawRect:(struct CGRect)arg1;
-- (BOOL)acceptsFirstMouse:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
+- (id).cxx_construct;
 - (void)flagsChanged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (BOOL)acceptsFirstMouse:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)update;
+- (void)dealloc;
+- (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
+- (void)setViewController:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

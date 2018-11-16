@@ -7,10 +7,10 @@
 #import "NSDictionary.h"
 
 @interface NSDictionary (FlexoAdditions)
-- (BOOL)boolForKey:(id)arg1;
-- (long long)integerForKey:(id)arg1;
-- (double)doubleForKey:(id)arg1;
-- (CDStruct_1b6d18a9)figTimeForKey:(id)arg1;
 - (CDStruct_e83c9415)figTimeRangeForKey:(id)arg1;
+- (CDStruct_1b6d18a9)figTimeForKey:(id)arg1;
+- (double)doubleForKey:(id)arg1;
+- (long long)integerForKey:(id)arg1;
+- (BOOL)boolForKey:(id)arg1;
 @end
 

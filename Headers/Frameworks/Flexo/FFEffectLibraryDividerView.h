@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
     CALayer *_dividerLayer;
 }
 
-- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
-- (id)initWithName:(id)arg1 andLine:(BOOL)arg2;
 - (void)dealloc;
+- (id)initWithName:(id)arg1 andLine:(BOOL)arg2;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 
 @end
 

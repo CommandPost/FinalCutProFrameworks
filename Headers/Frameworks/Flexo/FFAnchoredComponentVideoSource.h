@@ -18,21 +18,21 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
-- (id)initWithProvider:(id)arg1 component:(id)arg2 effectCount:(long long)arg3;
-- (void)dealloc;
-- (CDStruct_e83c9415)timeRange;
-- (id)nativeVideoProps;
-- (void)_invalidateSourceCacheForRange:(CDStruct_e83c9415)arg1;
-- (id)_source;
-- (id)_component;
-- (void)_removeStreamFromOpenStreamsList:(id)arg1;
-- (void)rangeInvalidated:(id)arg1;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
-- (id)displayName;
-- (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (long long)timecodeDisplayDropFrame;
 - (double)preferredScaleFactorForQuality:(int)arg1;
+- (long long)timecodeDisplayDropFrame;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
+- (id)displayName;
+- (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (void)rangeInvalidated:(id)arg1;
+- (void)_removeStreamFromOpenStreamsList:(id)arg1;
+- (id)_component;
+- (id)_source;
+- (void)_invalidateSourceCacheForRange:(CDStruct_e83c9415)arg1;
+- (id)nativeVideoProps;
+- (CDStruct_e83c9415)timeRange;
+- (void)dealloc;
+- (id)initWithProvider:(id)arg1 component:(id)arg2 effectCount:(long long)arg3;
 
 @end
 

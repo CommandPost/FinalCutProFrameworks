@@ -15,17 +15,17 @@ __attribute__((visibility("hidden")))
     FFInspectorMetadataContentRow *_contentRow;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)commonInit;
-- (void)dealloc;
-- (void)setStringValue:(id)arg1;
-- (void)textDidChange:(id)arg1;
-- (void)setupTempTextView;
-- (double)actualTextHeight;
-- (void)updateFieldHeightForText;
 @property(retain) FFInspectorMetadataContentRow *contentRow; // @synthesize contentRow=_contentRow;
 @property(retain) NSTextView *tempTextView; // @synthesize tempTextView=_tempTextView;
+- (void)updateFieldHeightForText;
+- (double)actualTextHeight;
+- (void)setupTempTextView;
+- (void)textDidChange:(id)arg1;
+- (void)setStringValue:(id)arg1;
+- (void)dealloc;
+- (void)commonInit;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

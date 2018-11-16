@@ -15,16 +15,16 @@ __attribute__((visibility("hidden")))
     id _delegate;
 }
 
-- (id)init;
-- (void)dealloc;
-- (id)_undoHandler;
-- (void)createRecordsForItems:(id)arg1;
-- (void)setIntermediateEffect:(id)arg1 forAnchoredObject:(id)arg2;
-- (id)storeAnyStateChanges;
-- (id)_rollbackChanges;
-- (id)rollbackChanges;
-- (id)saveChanges;
 @property(nonatomic) id delegate; // @synthesize delegate=_delegate;
+- (id)saveChanges;
+- (id)rollbackChanges;
+- (id)_rollbackChanges;
+- (id)storeAnyStateChanges;
+- (void)setIntermediateEffect:(id)arg1 forAnchoredObject:(id)arg2;
+- (void)createRecordsForItems:(id)arg1;
+- (id)_undoHandler;
+- (void)dealloc;
+- (id)init;
 
 @end
 

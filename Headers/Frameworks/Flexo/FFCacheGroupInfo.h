@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
     float _maxFraction;
 }
 
-- (id)initWithMaxCount:(unsigned long long)arg1 maxFraction:(float)arg2 maxAbsolute:(unsigned long long)arg3;
-- (BOOL)aboveLimits:(unsigned long long)arg1;
-- (void)removeUsage:(unsigned long long)arg1;
-- (void)addUsage:(unsigned long long)arg1;
 - (void)reset;
+- (void)addUsage:(unsigned long long)arg1;
+- (void)removeUsage:(unsigned long long)arg1;
+- (BOOL)aboveLimits:(unsigned long long)arg1;
+- (id)initWithMaxCount:(unsigned long long)arg1 maxFraction:(float)arg2 maxAbsolute:(unsigned long long)arg3;
 
 @end
 

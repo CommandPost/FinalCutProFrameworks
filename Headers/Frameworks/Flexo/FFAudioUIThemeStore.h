@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)pathForThemeAssetWithAtom:(union _themeatom_union)arg1;
 - (unsigned int)sliceNumberForAtom:(union _themeatom_union)arg1 atIndex:(unsigned int)arg2;
+- (id)pathForThemeAssetWithAtom:(union _themeatom_union)arg1;
 
 @end
 

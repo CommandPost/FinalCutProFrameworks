@@ -18,25 +18,26 @@
     BOOL _audioImagesUpdated;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)reloadData;
-- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 doOn:(BOOL)arg3;
-- (CDStruct_1b6d18a9)audioChunkFrames;
-- (double)audioChunkPixels;
-- (void)timeDisplayRangeModificationEnd;
-- (void)timeDisplayRangeModified;
-- (void)setNeedsDisplayInRect:(struct CGRect)arg1;
-- (id)imageForAudio:(struct OZAudioTrack *)arg1 startTime:(CDStruct_1b6d18a9)arg2 endTime:(CDStruct_1b6d18a9)arg3 size:(struct CGSize)arg4;
-- (void)verticalZoomChanged;
-- (id)allocRow:(int)arg1;
-- (void)clearAudioImages;
-- (void)sweepAudioImages:(id)arg1;
-- (void)audioReady:(id)arg1;
-- (id)createEmptyBitmapWithWidth:(unsigned int)arg1 withHeight:(unsigned int)arg2;
-- (unsigned int)rasterColor;
-- (void)imagesOutOfDate;
+- (id).cxx_construct;
 - (void)stopTimers;
+- (void)imagesOutOfDate;
+- (unsigned int)rasterColor;
+- (id)createEmptyBitmapWithWidth:(unsigned int)arg1 withHeight:(unsigned int)arg2;
+- (void)audioReady:(id)arg1;
+- (void)sweepAudioImages:(id)arg1;
+- (void)clearAudioImages;
+- (id)allocRow:(int)arg1;
+- (void)verticalZoomChanged;
+- (id)imageForAudio:(struct OZAudioTrack *)arg1 startTime:(CDStruct_1b6d18a9)arg2 endTime:(CDStruct_1b6d18a9)arg3 size:(struct CGSize)arg4;
+- (void)setNeedsDisplayInRect:(struct CGRect)arg1;
+- (void)timeDisplayRangeModified;
+- (void)timeDisplayRangeModificationEnd;
+- (double)audioChunkPixels;
+- (CDStruct_1b6d18a9)audioChunkFrames;
+- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 doOn:(BOOL)arg3;
+- (void)reloadData;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

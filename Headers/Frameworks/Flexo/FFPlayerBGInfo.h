@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     int _bg;
 }
 
-- (id)initWithBG:(int)arg1;
 - (_Bool)usableForBG:(int)arg1;
+- (id)initWithBG:(int)arg1;
 
 @end
 

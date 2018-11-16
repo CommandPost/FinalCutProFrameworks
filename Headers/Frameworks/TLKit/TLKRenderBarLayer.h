@@ -15,12 +15,12 @@
     CATextLayer *_descriptionLayer;
 }
 
-- (id)init;
-@property int renderState;
-@property(copy) NSString *renderDescription;
-- (void)_updateRenderBarImageColor;
-- (void)setContentsScale:(double)arg1;
 - (void)layoutSublayers;
+- (void)setContentsScale:(double)arg1;
+- (void)_updateRenderBarImageColor;
+@property(copy) NSString *renderDescription;
+@property int renderState;
+- (id)init;
 
 @end
 

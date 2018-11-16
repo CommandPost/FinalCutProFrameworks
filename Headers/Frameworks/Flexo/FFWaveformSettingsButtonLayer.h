@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     CDStruct_554002f2 _action_opt;
 }
 
+- (id).cxx_construct;
 - (id)actionForKey:(id)arg1;
 
 @end

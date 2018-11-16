@@ -10,8 +10,8 @@
 {
 }
 
-+ (id)sharedStorageManager;
 + (void)releaseSharedStorageManager;
++ (id)sharedStorageManager;
 
 @end
 

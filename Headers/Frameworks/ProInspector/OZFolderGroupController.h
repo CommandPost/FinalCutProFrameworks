@@ -13,17 +13,17 @@
     BOOL _hasNoHeading;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 canDeferEnclosed:(BOOL)arg2 context:(id)arg3;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (id)initWithChan:(struct OZChannelBase *)arg1 andEnclosedGroup:(id)arg2 customLabel:(id)arg3 context:(id)arg4;
-- (id)initWithChan:(struct OZChannelBase *)arg1 andEnclosedGroup:(id)arg2 context:(id)arg3;
-- (id)initWithHeading:(id)arg1 andEnclosedGroup:(id)arg2 context:(id)arg3;
-- (void)didBuildUI;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (void)getTargetChannels:(set_928275cf *)arg1;
-- (void)twiddle;
-- (void)didTwiddle:(BOOL)arg1;
 - (void)setEnclosedGroup:(id)arg1 context:(id)arg2;
+- (void)didTwiddle:(BOOL)arg1;
+- (void)twiddle;
+- (void)getTargetChannels:(set_6801396c *)arg1;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)didBuildUI;
+- (id)initWithHeading:(id)arg1 andEnclosedGroup:(id)arg2 context:(id)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 andEnclosedGroup:(id)arg2 context:(id)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 andEnclosedGroup:(id)arg2 customLabel:(id)arg3 context:(id)arg4;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)initWithChan:(struct OZChannelBase *)arg1 canDeferEnclosed:(BOOL)arg2 context:(id)arg3;
 
 @end
 

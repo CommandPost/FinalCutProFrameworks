@@ -20,18 +20,18 @@ __attribute__((visibility("hidden")))
     NSDate *_date;
 }
 
-- (id)_stringForMetadataKey:(id)arg1;
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)setFilterDict:(id)arg1;
-- (id)filterDict;
-- (id)tileTypeFacet;
-- (void)updateComparisonTypePopup:(id)arg1;
-- (void)updateDurationTextField:(id)arg1;
-@property(retain, nonatomic) NSString *timeString; // @synthesize timeString=_timeString;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
-- (id)_comparisonTypesAllowed;
+@property(retain, nonatomic) NSString *timeString; // @synthesize timeString=_timeString;
 - (id)metadataKey;
+- (id)_comparisonTypesAllowed;
+- (void)updateDurationTextField:(id)arg1;
+- (void)updateComparisonTypePopup:(id)arg1;
+- (id)tileTypeFacet;
+- (id)filterDict;
+- (void)setFilterDict:(id)arg1;
+- (void)dealloc;
+- (void)awakeFromNib;
+- (id)_stringForMetadataKey:(id)arg1;
 
 @end
 

@@ -19,36 +19,36 @@ __attribute__((visibility("hidden")))
     FFCBPuckController *_puckController;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (int)boardType;
-- (void)addNotificationObservers;
-- (void)removeNotificationObservers;
-- (void)notificationHandler:(id)arg1;
-- (BOOL)acceptsFirstResponder;
-- (BOOL)becomeFirstResponder;
-- (BOOL)resignFirstResponder;
-- (id)hitTest:(struct CGPoint)arg1;
-- (void)keyDown:(id)arg1;
-- (BOOL)performKeyEquivalent:(id)arg1;
-- (BOOL)_wantsKeyDownForEvent:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (struct CGPoint)puckCenterPosition;
-- (void)setPuckCenterPosition:(struct CGPoint)arg1 withAnimation:(BOOL)arg2;
-- (void)nudgePuck:(struct CGPoint)arg1;
-- (void)removeViewFromPuckController;
-- (BOOL)hasFocus;
-- (void)setFocus:(BOOL)arg1;
 @property(retain, nonatomic) FFCBPuckController *puckController; // @synthesize puckController=_puckController;
 @property(nonatomic) struct CGPoint mouseDownOffset; // @synthesize mouseDownOffset=_mouseDownOffset;
 @property(nonatomic) struct CGPoint mouseDownPoint; // @synthesize mouseDownPoint=_mouseDownPoint;
 @property(nonatomic) BOOL allowPositionAnimation; // @synthesize allowPositionAnimation=_allowPositionAnimation;
 @property(nonatomic) BOOL inMouseEvent; // @synthesize inMouseEvent=_inMouseEvent;
 @property(nonatomic) BOOL puckEnabled; // @synthesize puckEnabled=_puckEnabled;
+- (void)setFocus:(BOOL)arg1;
+- (BOOL)hasFocus;
+- (void)removeViewFromPuckController;
+- (void)nudgePuck:(struct CGPoint)arg1;
+- (void)setPuckCenterPosition:(struct CGPoint)arg1 withAnimation:(BOOL)arg2;
+- (struct CGPoint)puckCenterPosition;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (BOOL)_wantsKeyDownForEvent:(id)arg1;
+- (BOOL)performKeyEquivalent:(id)arg1;
+- (void)keyDown:(id)arg1;
+- (id)hitTest:(struct CGPoint)arg1;
+- (BOOL)resignFirstResponder;
+- (BOOL)becomeFirstResponder;
+- (BOOL)acceptsFirstResponder;
+- (void)notificationHandler:(id)arg1;
+- (void)removeNotificationObservers;
+- (void)addNotificationObservers;
+- (int)boardType;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

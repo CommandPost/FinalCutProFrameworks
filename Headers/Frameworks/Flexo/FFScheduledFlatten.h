@@ -13,13 +13,13 @@ __attribute__((visibility("hidden")))
     _Bool _doAsyncFlatten;
 }
 
-- (id)initWithCacheKey:(CDStruct_60067b7e)arg1;
-- (void)dealloc;
-- (int)desiredThreads;
-- (BOOL)isReadyWithoutDependencies;
-- (void)main;
-- (void)cancel;
 @property(nonatomic) _Bool doAsyncFlatten; // @synthesize doAsyncFlatten=_doAsyncFlatten;
+- (void)cancel;
+- (void)main;
+- (BOOL)isReadyWithoutDependencies;
+- (int)desiredThreads;
+- (void)dealloc;
+- (id)initWithCacheKey:(CDStruct_bdcb2b0d)arg1;
 
 @end
 

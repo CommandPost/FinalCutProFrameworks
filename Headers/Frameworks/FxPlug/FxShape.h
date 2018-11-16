@@ -11,14 +11,14 @@
     struct FxShapePriv *_priv;
 }
 
-+ (id)infiniteShape;
 + (id)shapeWithRect:(struct CGRect)arg1;
-- (id)initWithRect:(struct CGRect)arg1;
-- (id)initWithInfiniteBounds;
-- (void)dealloc;
-- (struct CGRect)extent;
-- (BOOL)isInfinite;
++ (id)infiniteShape;
 - (id)intersectWithShape:(id)arg1;
+- (BOOL)isInfinite;
+- (struct CGRect)extent;
+- (void)dealloc;
+- (id)initWithInfiniteBounds;
+- (id)initWithRect:(struct CGRect)arg1;
 
 @end
 

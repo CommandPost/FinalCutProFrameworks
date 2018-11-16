@@ -13,13 +13,13 @@
     CHChannelPosition *_positionChannel;
 }
 
-- (id)initWithPositionChannel:(id)arg1 effectStack:(id)arg2;
-- (void)dealloc;
-- (struct CGPoint)_positionAtTime:(CDStruct_1b6d18a9)arg1;
-- (void)_setPosition:(struct CGPoint)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (id)propertiesKey;
-- (id)accessibilityAttributeValue:(id)arg1;
 - (id)positionChannel;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)propertiesKey;
+- (void)_setPosition:(struct CGPoint)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (struct CGPoint)_positionAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)dealloc;
+- (id)initWithPositionChannel:(id)arg1 effectStack:(id)arg2;
 
 @end
 

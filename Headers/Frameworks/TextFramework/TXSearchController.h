@@ -31,31 +31,31 @@
     BOOL _textObjectInDocument;
 }
 
-- (id)init;
-- (struct OZDocument *)getDocument;
-- (void)notify:(unsigned int)arg1;
-- (void)showWindow:(id)arg1;
-- (void)setOZDocument:(id)arg1;
-- (void)dealloc;
-- (void)windowWillLoad;
-- (void)windowDidLoad;
-- (void)windowWillClose:(id)arg1;
-- (void)textObjectSearchOptionDidChange:(id)arg1;
-- (void)caseOrWholeWordOptionDidChange:(id)arg1;
-- (void)replaceAll:(id)arg1;
-- (void)replace:(id)arg1;
-- (void)replaceAndFind:(id)arg1;
-- (void)previous:(id)arg1;
-- (void)next:(id)arg1;
-- (void)findTextFieldEntry:(id)arg1;
-- (void)replaceTextFieldEntry:(id)arg1;
-- (void)_performSearch;
-- (void)_updateEnableDisableState;
-- (void)_setSearchStrings;
-- (void)_performSearchOnText:(struct TXTextInput *)arg1;
-- (void)_performReplaceOnText:(struct TXTextInput *)arg1;
-- (struct TXTextInput *)_getCurrentTextInput;
 - (void)_updateResultField:(struct TXTextInput *)arg1 forReplace:(BOOL)arg2 acrossAllTextObjects:(BOOL)arg3;
+- (struct TXTextInput *)_getCurrentTextInput;
+- (void)_performReplaceOnText:(struct TXTextInput *)arg1;
+- (void)_performSearchOnText:(struct TXTextInput *)arg1;
+- (void)_setSearchStrings;
+- (void)_updateEnableDisableState;
+- (void)_performSearch;
+- (void)replaceTextFieldEntry:(id)arg1;
+- (void)findTextFieldEntry:(id)arg1;
+- (void)next:(id)arg1;
+- (void)previous:(id)arg1;
+- (void)replaceAndFind:(id)arg1;
+- (void)replace:(id)arg1;
+- (void)replaceAll:(id)arg1;
+- (void)caseOrWholeWordOptionDidChange:(id)arg1;
+- (void)textObjectSearchOptionDidChange:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)windowDidLoad;
+- (void)windowWillLoad;
+- (void)dealloc;
+- (void)setOZDocument:(id)arg1;
+- (void)showWindow:(id)arg1;
+- (void)notify:(unsigned int)arg1;
+- (struct OZDocument *)getDocument;
+- (id)init;
 
 @end
 

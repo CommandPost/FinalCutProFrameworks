@@ -30,23 +30,23 @@
     NSPopUpButton *_pSnappingPopUpButton;
 }
 
-- (void)initializeFromDefaults;
-- (BOOL)isResizable;
-- (void)selectTabViewItem:(id)arg1;
-- (void)setBackgroundColor:(id)arg1;
-- (void)setGridColor:(id)arg1;
-- (void)setGridSpacing:(id)arg1;
-- (void)setGuidesColor:(id)arg1;
-- (void)setSmartGuidesColor:(id)arg1;
-- (void)setRulerLocation:(id)arg1;
-- (void)setSafeZonesColor:(id)arg1;
-- (void)setSafeZonesAction:(id)arg1;
-- (void)setSafeZonesTitle:(id)arg1;
-- (void)setFilmZonesColor:(id)arg1;
-- (void)setFilmZonesAspectRatioName:(id)arg1;
-- (void)setFilmZonesAspectRatio:(id)arg1;
-- (void)setSnapping:(id)arg1;
 - (void)updateCanvas;
+- (void)setSnapping:(id)arg1;
+- (void)setFilmZonesAspectRatio:(id)arg1;
+- (void)setFilmZonesAspectRatioName:(id)arg1;
+- (void)setFilmZonesColor:(id)arg1;
+- (void)setSafeZonesTitle:(id)arg1;
+- (void)setSafeZonesAction:(id)arg1;
+- (void)setSafeZonesColor:(id)arg1;
+- (void)setRulerLocation:(id)arg1;
+- (void)setSmartGuidesColor:(id)arg1;
+- (void)setGuidesColor:(id)arg1;
+- (void)setGridSpacing:(id)arg1;
+- (void)setGridColor:(id)arg1;
+- (void)setBackgroundColor:(id)arg1;
+- (void)selectTabViewItem:(id)arg1;
+- (BOOL)isResizable;
+- (void)initializeFromDefaults;
 
 @end
 

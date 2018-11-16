@@ -10,8 +10,9 @@
 {
 }
 
-- (id)init;
 - (id)containerModule:(id)arg1 willAddViewOfSubmodule:(id)arg2 inContext:(id)arg3;
+- (void)dealloc;
+- (id)init;
 
 @end
 

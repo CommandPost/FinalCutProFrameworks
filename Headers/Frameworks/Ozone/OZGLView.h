@@ -4,9 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Ozone/OZNoLeakOpenGLView.h>
+#import "NSOpenGLView.h"
 
-@interface OZGLView : OZNoLeakOpenGLView
+@interface OZGLView : NSOpenGLView
 {
     struct shared_ptr<PGContext> *_pContext;
     float _width;
@@ -15,22 +15,22 @@
     int _currentVirtualScreen;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)reshape;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)postRedisplay;
-- (float)getWidth;
-- (float)getHeight;
-- (PCRect_07ce470f)getBounds;
-- (struct CGRect)getPixelBounds;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)initContext:(BOOL)arg1;
-- (void)update;
-- (int)currentVirtualScreen;
 - (void)setupVirtualScreen;
+- (int)currentVirtualScreen;
+- (void)update;
+- (void)initContext:(BOOL)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (struct CGRect)getPixelBounds;
+- (PCRect_07ce470f)getBounds;
+- (float)getHeight;
+- (float)getWidth;
+- (void)postRedisplay;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)reshape;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

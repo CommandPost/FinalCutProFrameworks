@@ -10,9 +10,11 @@
 {
 }
 
-- (id)_indicatorFacet;
-- (id)_baseFacet;
+- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
+- (long long)_currentThemeStateInView:(id)arg1 forSegment:(long long)arg2;
 - (id)_separatorFacet;
+- (id)_baseFacet;
+- (id)_indicatorFacet;
 
 @end
 

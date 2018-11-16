@@ -17,20 +17,20 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)keyPathsForValuesAffectingMasterSubitems;
-- (id)initWithItems:(id)arg1;
-@property(readonly, nonatomic) NSArray *items;
-- (void)addItem:(id)arg1;
-- (void)insertItem:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)removeItem:(id)arg1;
-- (void)removeAllItems;
-- (id)init;
-- (id)description;
-@property(readonly, nonatomic) BOOL hasItems;
-@property(readonly, nonatomic) NSArray *masterSubitems;
-@property(readonly, nonatomic) BOOL hasMasterSubitems;
-@property(readonly, nonatomic) NSArray *detailSubitems;
-@property(readonly, nonatomic) BOOL hasDetailSubitems;
 - (void)dealloc;
+@property(readonly, nonatomic) BOOL hasDetailSubitems;
+@property(readonly, nonatomic) NSArray *detailSubitems;
+@property(readonly, nonatomic) BOOL hasMasterSubitems;
+@property(readonly, nonatomic) NSArray *masterSubitems;
+@property(readonly, nonatomic) BOOL hasItems;
+- (id)description;
+- (id)init;
+- (void)removeAllItems;
+- (void)removeItem:(id)arg1;
+- (void)insertItem:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)addItem:(id)arg1;
+@property(readonly, nonatomic) NSArray *items;
+- (id)initWithItems:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;

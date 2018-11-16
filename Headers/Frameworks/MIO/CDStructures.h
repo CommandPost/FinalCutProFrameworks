@@ -4,14 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class MIODeviceConnection, MIOTimecode;
-
 #pragma mark Named Structures
 
 struct AudioBuffer {
-    unsigned int mNumberChannels;
-    unsigned int mDataByteSize;
-    void *mData;
+    unsigned int _field1;
+    unsigned int _field2;
+    void *_field3;
 };
 
 struct AudioBufferList {
@@ -64,8 +62,8 @@ struct BaseDevice {
     _Bool _field15;
     char _field16;
     int _field17;
-    MIODeviceConnection *_field18;
-    MIOTimecode *_field19;
+    id _field18;
+    id _field19;
 };
 
 struct CGPoint {
@@ -162,17 +160,17 @@ struct SMPTETime {
 };
 
 struct Synchronizable {
-    CDUnknownFunctionPointerType *_vptr$Synchronizable;
+    CDUnknownFunctionPointerType *_field1;
     struct _opaque_pthread_mutex_t {
-        long long __sig;
-        char __opaque[56];
-    } mMutex;
-    struct _opaque_pthread_t *mWhichThread;
-    unsigned long long mRecursiveNesting;
+        long long _field1;
+        char _field2[56];
+    } _field2;
+    struct _opaque_pthread_t *_field3;
+    unsigned long long _field4;
     struct _opaque_pthread_cond_t {
-        long long __sig;
-        char __opaque[40];
-    } mCondVar;
+        long long _field1;
+        char _field2[40];
+    } _field5;
 };
 
 struct TimecodeInfo {

@@ -4,18 +4,22 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSString;
+
 @protocol FxPlugAPIDelegate
-- (struct OZChannelFolder *)rootChannel;
-- (struct OZChannelBase *)channelWithID:(int)arg1;
-- (unsigned int)parameterCount;
-- (struct OZChannelBase *)parameterAtIndex:(unsigned int)arg1;
-- (void)removeParameter:(unsigned int)arg1;
-- (void)markForDynamicParameterUsage;
-- (void)updateInspector;
-- (double)convertFromFigTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)convertToFigTime:(double)arg1;
-- (void)beginOperationWithChannel:(struct OZChannelBase *)arg1;
+- (NSString *)displayName;
 - (void)endOperationWithChannel:(struct OZChannelBase *)arg1;
-- (id)displayName;
+- (void)beginOperationWithChannel:(struct OZChannelBase *)arg1;
+- (void)endTimingOperation:(void *)arg1;
+- (void *)beginTimingOperation:(double)arg1 forChannel:(struct OZChannelBase *)arg2;
+- (CDStruct_1b6d18a9)convertToFigTime:(double)arg1;
+- (double)convertFromFigTime:(CDStruct_1b6d18a9)arg1;
+- (void)updateInspector;
+- (void)markForDynamicParameterUsage;
+- (void)removeParameter:(unsigned int)arg1;
+- (struct OZChannelBase *)parameterAtIndex:(unsigned int)arg1;
+- (unsigned int)parameterCount;
+- (struct OZChannelBase *)channelWithID:(int)arg1;
+- (struct OZChannelFolder *)rootChannel;
 @end
 

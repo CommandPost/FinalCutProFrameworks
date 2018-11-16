@@ -15,21 +15,21 @@
     unsigned int _emphasized:1;
 }
 
-- (BOOL)shouldDelayWindowOrderingForEvent:(id)arg1;
-- (BOOL)acceptsFirstMouse:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)setItemTitle:(id)arg1;
-- (id)itemTitle;
-- (void)setItemTitleAlignment:(unsigned long long)arg1;
-- (unsigned long long)itemTitleAlignment;
-- (void)setEmphasized:(BOOL)arg1;
-- (BOOL)isEmphasized;
-- (BOOL)accessibilityIsIgnored;
-- (id)accessibilityAttributeNames;
-- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (BOOL)accessibilityIsIgnored;
+- (BOOL)isEmphasized;
+- (void)setEmphasized:(BOOL)arg1;
+- (unsigned long long)itemTitleAlignment;
+- (void)setItemTitleAlignment:(unsigned long long)arg1;
+- (id)itemTitle;
+- (void)setItemTitle:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)acceptsFirstMouse:(id)arg1;
+- (BOOL)shouldDelayWindowOrderingForEvent:(id)arg1;
 
 @end
 

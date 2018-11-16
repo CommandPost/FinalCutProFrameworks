@@ -13,13 +13,13 @@
     OZOpticalFlowProgressController *_controller;
 }
 
-- (void)setController:(id)arg1;
-- (struct CGRect)getStopRectForRow:(unsigned int)arg1;
-- (void)mouseDown:(id)arg1;
-- (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (BOOL)canDragRowsWithIndexes:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (id)dragImageForRowsWithIndexes:(id)arg1 tableColumns:(id)arg2 event:(id)arg3 offset:(struct CGPoint *)arg4;
 - (void)delete:(id)arg1;
+- (id)dragImageForRowsWithIndexes:(id)arg1 tableColumns:(id)arg2 event:(id)arg3 offset:(struct CGPoint *)arg4;
+- (BOOL)canDragRowsWithIndexes:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
+- (void)mouseDown:(id)arg1;
+- (struct CGRect)getStopRectForRow:(unsigned int)arg1;
+- (void)setController:(id)arg1;
 
 @end
 

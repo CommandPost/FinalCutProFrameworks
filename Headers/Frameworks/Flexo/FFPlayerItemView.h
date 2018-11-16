@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
     FFPlayerItemModule *_playerItemModule;
 }
 
-- (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (id)_imageElement;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)_imageElement;
+- (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
 
 @end
 

@@ -13,10 +13,10 @@
     LKContainerItemView *_itemView;
 }
 
-- (id)initWithItemView:(id)arg1;
-- (BOOL)isOpaque;
-- (id)hitTest:(struct CGPoint)arg1;
 - (void)drawRect:(struct CGRect)arg1;
+- (id)hitTest:(struct CGPoint)arg1;
+- (BOOL)isOpaque;
+- (id)initWithItemView:(id)arg1;
 
 @end
 

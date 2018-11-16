@@ -10,9 +10,9 @@
 {
 }
 
-- (id)_primaryListHeaderFacet;
-- (id)_secondaryListHeaderFacet;
 - (id)_sortIndicatorFacet;
+- (id)_secondaryListHeaderFacet;
+- (id)_primaryListHeaderFacet;
 
 @end
 

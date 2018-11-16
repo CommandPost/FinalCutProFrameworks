@@ -24,15 +24,15 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_threads;
 }
 
-- (id)initWithLocation:(int)arg1;
-- (void)dealloc;
-- (int)location;
-- (id)renderer;
-- (void)releaseRenderer:(id)arg1;
-- (int)maxTextureSizeHalfFloat;
-- (_Bool)canLoadImageAsTexture:(struct CGRect)arg1;
-- (void)releaseHGObjectsForRenderer:(id)arg1;
 - (_Bool)managesRenderer:(struct HGRenderer *)arg1;
+- (void)releaseHGObjectsForRenderer:(id)arg1;
+- (_Bool)canLoadImageAsTexture:(struct CGRect)arg1;
+- (int)maxTextureSizeHalfFloat;
+- (void)releaseRenderer:(id)arg1;
+- (id)renderer;
+- (int)location;
+- (void)dealloc;
+- (id)initWithLocation:(int)arg1;
 
 @end
 

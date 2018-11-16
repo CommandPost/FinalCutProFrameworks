@@ -18,24 +18,25 @@
     NSURL *_url;
 }
 
-- (id)initWithPath:(id)arg1 project:(id)arg2;
-- (id)initWithPath:(id)arg1 eventDocumentID:(id)arg2;
-- (void)dealloc;
-- (id)newFileIdentifierWithPath:(id)arg1;
-- (id)eventDocumentID;
-- (void)setEventDocumentID:(id)arg1;
-- (id)path;
-- (void)setPath:(id)arg1;
-- (id)URL;
-- (void)resetURL;
-- (id)projectURL;
-- (id)projectRelativePath;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)description;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)description;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (id)eventDocumentIDAndProjectRelativePath;
+- (id)projectRelativePath;
+- (id)projectURL;
+- (void)resetURL;
+- (id)URL;
+- (void)setPath:(id)arg1;
+- (id)path;
+- (void)setEventDocumentID:(id)arg1;
+- (id)eventDocumentID;
+- (id)newFileIdentifierWithPath:(id)arg1;
+- (void)dealloc;
+- (id)initWithPath:(id)arg1 eventDocumentID:(id)arg2;
+- (id)initWithPath:(id)arg1 project:(id)arg2;
 
 @end
 

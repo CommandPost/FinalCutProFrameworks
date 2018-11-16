@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
     FFCurveEditorLayer *_owner;
 }
 
-- (void)drawInContext:(struct CGContext *)arg1;
-- (id)actionForKey:(id)arg1;
 @property(nonatomic) FFCurveEditorLayer *owner; // @synthesize owner=_owner;
+- (id)actionForKey:(id)arg1;
+- (void)drawInContext:(struct CGContext *)arg1;
 
 @end
 

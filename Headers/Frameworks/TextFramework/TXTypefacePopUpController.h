@@ -13,34 +13,31 @@
 @interface TXTypefacePopUpController : OZViewController <NSMenuDelegate>
 {
     LKPopUpButton *_popUpButton;
-    struct TXTextLayout *_text;
     _Bool _isDragging;
     int _fontType;
     _Bool _areAllFontsEqual;
     _Bool _selectionDidChange;
     _Bool _aboutToChangeCalled;
-    unsigned int _textID;
-    struct OZScene *_scene;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)setAssociatedTextLayout:(struct TXTextLayout *)arg1;
-- (void)dealloc;
-- (void)familyChanged:(id)arg1;
-- (void)updatePopUpMenu:(BOOL)arg1;
-- (void)selectItemAtIndex:(int)arg1 setChannel:(_Bool)arg2;
-- (BOOL)areAllFontsEqual;
-- (void)reset;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)_saveDefaultFont:(int)arg1;
-- (void)changeChannel:(id)arg1;
-- (void)setChannelValue:(id)arg1;
-- (void)menuWillOpen:(id)arg1;
-- (void)menuDidClose:(id)arg1;
-- (void)menu:(id)arg1 willHighlightItem:(id)arg2;
 @property(retain, nonatomic) LKPopUpButton *popUpButton; // @synthesize popUpButton=_popUpButton;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (void)menu:(id)arg1 willHighlightItem:(id)arg2;
+- (void)menuDidClose:(id)arg1;
+- (void)menuWillOpen:(id)arg1;
+- (void)setChannelValue:(id)arg1;
+- (void)changeChannel:(id)arg1;
+- (void)_saveDefaultFont:(int)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)reset;
+- (BOOL)areAllFontsEqual;
+- (void)selectItemAtIndex:(int)arg1 setChannel:(_Bool)arg2;
+- (void)updatePopUpMenu:(BOOL)arg1;
+- (void)familyChanged:(id)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

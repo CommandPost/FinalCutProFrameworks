@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)init;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)init;
 
 @end
 

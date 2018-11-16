@@ -6,32 +6,29 @@
 
 #import <Flexo/FFSourceAudio.h>
 
-@class FFAnchoredComponent, FFSource, NSMutableArray;
+@class FFAnchoredComponent, FFSource;
 
 __attribute__((visibility("hidden")))
 @interface FFAnchoredComponentAudioSource : FFSourceAudio
 {
-    NSMutableArray *_openStreams;
     FFSource *_source;
     FFAnchoredComponent *_component;
 }
 
 + (Class)streamClass;
-- (id)initWithProvider:(id)arg1 component:(id)arg2 effectCount:(long long)arg3;
-- (void)dealloc;
-- (id)_source;
-- (id)newStream:(id)arg1 options:(id)arg2;
-- (void)_removeStreamFromOpenStreamsList:(id)arg1;
-- (void)_invalidateSourceCacheForRange:(CDStruct_e83c9415)arg1;
-- (void)rangeInvalidated:(id)arg1;
-- (CDStruct_e83c9415)timeRange;
-- (CDStruct_1b6d18a9)nativeSampleDuration;
-- (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (long long)timecodeDisplayDropFrame;
-- (unsigned int)numberOfChannels;
-- (double)sampleRate;
-- (id)displayName;
 - (id)component;
+- (id)displayName;
+- (double)sampleRate;
+- (unsigned int)numberOfChannels;
+- (long long)timecodeDisplayDropFrame;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
+- (CDStruct_1b6d18a9)nativeSampleDuration;
+- (CDStruct_e83c9415)timeRange;
+- (void)rangeInvalidated:(id)arg1;
+- (void)_invalidateSourceCacheForRange:(CDStruct_e83c9415)arg1;
+- (id)_source;
+- (void)dealloc;
+- (id)initWithProvider:(id)arg1 component:(id)arg2 effectCount:(long long)arg3;
 
 @end
 

@@ -15,14 +15,15 @@ __attribute__((visibility("hidden")))
     NSArray *_listSource;
 }
 
-- (id)initWithArraySource:(id)arg1;
-- (void)dealloc;
-- (void)cancel:(id)arg1;
-- (void)ok:(id)arg1;
-- (long long)browser:(id)arg1 numberOfChildrenOfItem:(id)arg2;
-- (id)browser:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;
-- (BOOL)browser:(id)arg1 isLeafItem:(id)arg2;
+- (id)browser:(id)arg1 selectionIndexesForProposedSelection:(id)arg2 inColumn:(long long)arg3;
 - (id)browser:(id)arg1 objectValueForItem:(id)arg2;
+- (BOOL)browser:(id)arg1 isLeafItem:(id)arg2;
+- (id)browser:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;
+- (long long)browser:(id)arg1 numberOfChildrenOfItem:(id)arg2;
+- (void)ok:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)dealloc;
+- (id)initWithListSource:(id)arg1;
 
 @end
 

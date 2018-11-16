@@ -11,9 +11,9 @@
     unsigned int _currentImageState;
 }
 
-- (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 @property(nonatomic) unsigned int currentImageState; // @synthesize currentImageState=_currentImageState;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
 
 @end
 

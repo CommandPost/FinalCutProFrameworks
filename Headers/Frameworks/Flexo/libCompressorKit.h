@@ -23,10 +23,12 @@
 + (Class)CKClusterBrowserClass;
 + (Class)CKCNNExportPanelClass;
 + (Class)CKCNNJobActionClass;
++ (Class)CKCreateDiscJobActionClass;
 + (Class)CKDVDExportPanelClass;
 + (Class)CKDVDJobActionClass;
 + (Class)CKeMailExportPanelClass;
 + (Class)CKeMailJobActionClass;
++ (Class)CKErrorClass;
 + (Class)CKExportControllerClass;
 + (Class)CKExportPanelClass;
 + (Class)CKFacebookExportPanelClass;
@@ -56,6 +58,7 @@
 + (Class)CKSettingGroupClass;
 + (Class)CKSettingInspectorControllerClass;
 + (Class)CKSettingManagerClass;
++ (Class)CKSettingPanelClass;
 + (Class)CKSettingsPanelClass;
 + (Class)CKShareStatusClass;
 + (Class)CKSourceClass;

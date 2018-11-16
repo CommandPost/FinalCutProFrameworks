@@ -22,8 +22,6 @@ __attribute__((visibility("hidden")))
     NSString *_persistentID;
 }
 
-- (id)initWithClipNameTimeCodeAndAV:(id)arg1 collectionTimeInLocalTime:(id)arg2 hasAudio:(BOOL)arg3 hasVideo:(BOOL)arg4 leftTouching:(BOOL)arg5 rightTouching:(BOOL)arg6 imageRect:(struct CGRect)arg7 displayRect:(struct CGRect)arg8 persistentID:(id)arg9;
-- (void)dealloc;
 @property(retain, nonatomic) NSString *persistentID; // @synthesize persistentID=_persistentID;
 @property(nonatomic) struct CGRect displayRect; // @synthesize displayRect=_displayRect;
 @property(nonatomic) struct CGRect imageRect; // @synthesize imageRect=_imageRect;
@@ -33,6 +31,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL hasAudio; // @synthesize hasAudio=_hasAudio;
 @property(retain, nonatomic) NSString *collectionTimeInLocalTime; // @synthesize collectionTimeInLocalTime=_collectionTimeInLocalTime;
 @property(retain, nonatomic) NSString *clipName; // @synthesize clipName=_clipName;
+- (id).cxx_construct;
+- (void)dealloc;
+- (id)initWithClipNameTimeCodeAndAV:(id)arg1 collectionTimeInLocalTime:(id)arg2 hasAudio:(BOOL)arg3 hasVideo:(BOOL)arg4 leftTouching:(BOOL)arg5 rightTouching:(BOOL)arg6 imageRect:(struct CGRect)arg7 displayRect:(struct CGRect)arg8 persistentID:(id)arg9;
 
 @end
 

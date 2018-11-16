@@ -10,8 +10,8 @@
 {
 }
 
-- (void)updatePopUpMenu:(BOOL)arg1;
 - (id)imageForColorIndex:(unsigned long long)arg1;
+- (void)updatePopUpMenu:(BOOL)arg1;
 
 @end
 

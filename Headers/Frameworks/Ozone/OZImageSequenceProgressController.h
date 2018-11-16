@@ -21,11 +21,11 @@
     struct _NSModalSession *_modalSession;
 }
 
-- (id)windowNibName;
-- (void)windowDidLoad;
-- (BOOL)updateProgressForCompletedFrame:(unsigned int)arg1 duration:(double)arg2;
-- (id)createReferenceMovieForURL:(struct PCURL *)arg1;
 - (void)stop:(id)arg1;
+- (id)createReferenceMovieForURL:(struct PCURL *)arg1;
+- (BOOL)updateProgressForCompletedFrame:(unsigned int)arg1 duration:(double)arg2;
+- (void)windowDidLoad;
+- (id)windowNibName;
 
 @end
 

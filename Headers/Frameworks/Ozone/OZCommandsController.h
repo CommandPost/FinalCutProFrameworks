@@ -10,8 +10,8 @@
 {
 }
 
-- (id)targetForCommand:(id)arg1;
 - (id)menuTargetForCommand:(id)arg1;
+- (id)targetForCommand:(id)arg1;
 
 @end
 

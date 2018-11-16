@@ -16,20 +16,20 @@
     BOOL _isEvalulationComplete;
 }
 
-- (id)initWithObjectList:(list_34700237 *)arg1;
-- (void)dealloc;
-- (id)createViewControllerWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (BOOL)loadView;
-- (void)updateViewFinalFrame;
-- (void)setIsEvaluationComplete:(BOOL)arg1;
-- (void)evaluateChannels:(struct OZScene *)arg1 atTime:(CDStruct_1b6d18a9)arg2 wait:(BOOL)arg3;
-- (void)notify:(unsigned int)arg1;
-- (void)buildUIWithObjectList:(list_2c251165 *)arg1 viewController:(id)arg2 context:(id)arg3;
-- (struct OZChannelFolder *)getRootChan:(struct OZObjectManipulator *)arg1;
-- (float)defaultLabelWidth;
-- (float)defaultParamWidth;
-- (void)evalCompletion;
 - (void)evalCancelation;
+- (void)evalCompletion;
+- (float)defaultParamWidth;
+- (float)defaultLabelWidth;
+- (struct OZChannelFolder *)getRootChan:(struct OZObjectManipulator *)arg1;
+- (void)buildUIWithObjectList:(list_37573188 *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)notify:(unsigned int)arg1;
+- (void)evaluateChannels:(struct OZScene *)arg1 atTime:(CDStruct_1b6d18a9)arg2 wait:(BOOL)arg3;
+- (void)setIsEvaluationComplete:(BOOL)arg1;
+- (void)updateViewFinalFrame;
+- (BOOL)loadView;
+- (id)createViewControllerWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (id)initWithObjectList:(list_0555a7a2 *)arg1;
 
 @end
 

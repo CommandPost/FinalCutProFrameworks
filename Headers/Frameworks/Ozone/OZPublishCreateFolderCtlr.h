@@ -14,9 +14,9 @@
     LKButton *_pButton;
 }
 
-- (id)initWithScene:(struct OZScene *)arg1 context:(id)arg2;
-- (struct OZChannelBase *)findOnlySelectedChannel:(struct OZChannelFolder *)arg1 multipleSelected:(char *)arg2;
 - (void)createFolder:(id)arg1;
+- (struct OZChannelBase *)findOnlySelectedChannel:(struct OZChannelFolder *)arg1 multipleSelected:(char *)arg2;
+- (id)initWithScene:(struct OZScene *)arg1 context:(id)arg2;
 
 @end
 

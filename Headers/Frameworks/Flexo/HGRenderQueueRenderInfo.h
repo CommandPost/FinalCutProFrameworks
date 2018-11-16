@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
     _Bool _usedRenderer;
 }
 
-- (id)initWithRenderer:(struct HGRenderer *)arg1;
 @property(readonly) struct HGRenderer *renderer; // @synthesize renderer=_renderer;
 @property _Bool usedRenderer; // @synthesize usedRenderer=_usedRenderer;
+- (id)initWithRenderer:(struct HGRenderer *)arg1;
 
 @end
 

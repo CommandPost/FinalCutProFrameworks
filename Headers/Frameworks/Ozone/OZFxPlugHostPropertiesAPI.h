@@ -13,10 +13,10 @@
 {
 }
 
-+ (id)sharedHostPropertiesAPI;
 + (void)releaseSharedHostPropertiesAPI;
-- (id)hostProperties;
++ (id)sharedHostPropertiesAPI;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
+- (id)hostProperties;
 
 @end
 

@@ -17,14 +17,14 @@
     int _operation;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)setScene:(struct OZScene *)arg1;
-- (int)_open;
-- (int)askForOperation:(struct OZScene *)arg1;
-- (void)unfreezeNotify:(id)arg1;
-- (void)updateNotify:(id)arg1;
 - (void)cancelNotify:(id)arg1;
+- (void)updateNotify:(id)arg1;
+- (void)unfreezeNotify:(id)arg1;
+- (int)askForOperation:(struct OZScene *)arg1;
+- (int)_open;
+- (void)setScene:(struct OZScene *)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

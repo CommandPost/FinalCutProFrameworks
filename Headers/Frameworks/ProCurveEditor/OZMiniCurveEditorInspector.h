@@ -6,33 +6,33 @@
 
 #import <ProCurveEditor/OZMiniCurveEditor.h>
 
-@class LKButton, LKScroller, LKSegmentedControl, LKZoomScroller;
+@class LKButton, LKSegmentedControl, LKZoomScroller;
 
 @interface OZMiniCurveEditorInspector : OZMiniCurveEditor
 {
     LKSegmentedControl *_modes;
     LKButton *_autoFit;
-    LKScroller *_verticalScroller;
+    LKZoomScroller *_verticalScroller;
     LKZoomScroller *_horizontalZoomScroller;
     double _oldKnobProportionY;
     float _oldKnobValueY;
     unsigned int _controlFlags;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 controlFlags:(unsigned int)arg2;
-- (void)dealloc;
-- (void)update;
-- (void)setEnabled:(BOOL)arg1;
-- (void)setMode:(id)arg1;
-- (void)autoFit:(id)arg1;
-- (void)verticalScroller:(id)arg1;
-- (void)horizontalZoomScroller:(id)arg1;
-- (void)updateVerticalZoomScroller;
-- (void)updateHorizontalZoomScroller;
-- (void)setChannel:(struct OZChannelBase *)arg1;
-- (void)windowWasPanned:(double)arg1;
 - (void)windowWasZoomed;
+- (void)windowWasPanned:(double)arg1;
+- (void)setChannel:(struct OZChannelBase *)arg1;
+- (void)updateHorizontalZoomScroller;
+- (void)updateVerticalZoomScroller;
+- (void)horizontalZoomScroller:(id)arg1;
+- (void)verticalScroller:(id)arg1;
+- (void)autoFit:(id)arg1;
+- (void)setMode:(id)arg1;
+- (void)setEnabled:(BOOL)arg1;
+- (void)update;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 controlFlags:(unsigned int)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

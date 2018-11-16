@@ -6,11 +6,13 @@
 
 #import "Fx3DAPI.h"
 
+@class NSData;
+
 @protocol Fx3DAPI_v2 <Fx3DAPI>
-- (id)worldToFilmMatrix;
-- (id)worldToObjectMatrix;
-- (id)worldToEyeMatrix;
-- (double)focalLengthAtTime:(double)arg1;
 - (BOOL)isUsingCamera;
+- (double)focalLengthAtTime:(double)arg1;
+- (NSData *)worldToEyeMatrix;
+- (NSData *)worldToObjectMatrix;
+- (NSData *)worldToFilmMatrix;
 @end
 

@@ -13,14 +13,15 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _duration;
 }
 
-+ (id)type;
 + (Class)streamClass;
-- (id)initWithProvider:(id)arg1;
-- (void)setStart:(CDStruct_1b6d18a9)arg1;
-- (void)setDuration:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_e83c9415)timeRange;
-- (unsigned int)numberOfChannels;
++ (id)type;
+- (id).cxx_construct;
 - (double)sampleRate;
+- (unsigned int)numberOfChannels;
+- (CDStruct_e83c9415)timeRange;
+- (void)setDuration:(CDStruct_1b6d18a9)arg1;
+- (void)setStart:(CDStruct_1b6d18a9)arg1;
+- (id)initWithProvider:(id)arg1;
 
 @end
 

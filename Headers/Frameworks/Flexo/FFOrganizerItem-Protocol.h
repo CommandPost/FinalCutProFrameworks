@@ -14,11 +14,11 @@
 @property(readonly, nonatomic) NSString *itemDisplayName;
 
 @optional
-- (void)setItemDisplayName:(id)arg1;
-- (id)itemPersistentIdentifierForDisplayName:(id)arg1;
 @property(readonly, nonatomic) double itemRowHeight;
 @property(readonly, nonatomic) NSString *itemPersistentIdentifier;
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
+- (NSString *)itemPersistentIdentifierForDisplayName:(NSString *)arg1;
+- (void)setItemDisplayName:(NSString *)arg1;
 @end
 

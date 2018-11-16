@@ -28,26 +28,26 @@
     struct OZExportSettings *_tmpSettings;
 }
 
-- (id)initWithObjCDocument:(id)arg1;
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)buildCameraList;
-- (void)setResolution:(id)arg1;
-- (void)setColor:(id)arg1;
-- (void)setPremultiplyAlpha:(id)arg1;
-- (void)_updateCustomQualityFromExportSettings;
-- (void)setRenderQuality:(id)arg1;
-- (void)setCustomRenderQuality:(id)arg1;
-- (void)setFields:(id)arg1;
-- (void)setMotionBlur:(id)arg1;
-- (void)setFrameBlending:(id)arg1;
-- (void)setCamera:(id)arg1;
-- (void)setLighting:(id)arg1;
-- (void)setShadows:(id)arg1;
-- (void)setReflections:(id)arg1;
-- (void)setDepthOfField:(id)arg1;
-- (id)userInfoAndDescription:(id *)arg1;
 - (void)setUserInfo:(id)arg1;
+- (id)userInfoAndDescription:(id *)arg1;
+- (void)setDepthOfField:(id)arg1;
+- (void)setReflections:(id)arg1;
+- (void)setShadows:(id)arg1;
+- (void)setLighting:(id)arg1;
+- (void)setCamera:(id)arg1;
+- (void)setFrameBlending:(id)arg1;
+- (void)setMotionBlur:(id)arg1;
+- (void)setFields:(id)arg1;
+- (void)setCustomRenderQuality:(id)arg1;
+- (void)setRenderQuality:(id)arg1;
+- (void)_updateCustomQualityFromExportSettings;
+- (void)setPremultiplyAlpha:(id)arg1;
+- (void)setColor:(id)arg1;
+- (void)setResolution:(id)arg1;
+- (void)buildCameraList;
+- (void)dealloc;
+- (void)awakeFromNib;
+- (id)initWithObjCDocument:(id)arg1;
 
 @end
 

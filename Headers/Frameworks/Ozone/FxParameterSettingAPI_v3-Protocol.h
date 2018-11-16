@@ -7,7 +7,7 @@
 #import "FxParameterSettingAPI_v2.h"
 
 @protocol FxParameterSettingAPI_v3 <FxParameterSettingAPI_v2>
-- (BOOL)setCustomParameterValue:(id)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
 - (BOOL)setPathID:(void *)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
+- (BOOL)setCustomParameterValue:(id <NSCoding>)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
 @end
 

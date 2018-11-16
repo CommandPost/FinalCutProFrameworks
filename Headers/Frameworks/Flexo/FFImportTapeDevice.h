@@ -27,28 +27,12 @@ __attribute__((visibility("hidden")))
     BOOL _isArchivable;
 }
 
-+ (id)keyPathsForValuesAffectingIsProcessing;
-+ (id)keyPathsForValuesAffectingCanProcess;
 + (id)deviceWithDeviceConnection:(id)arg1;
-- (id)initWithDeviceConnection:(id)arg1;
-- (void)dealloc;
-@property(retain, nonatomic) MIOCaptureCore *captureCore; // @synthesize captureCore=_captureCore;
-- (id)deviceSpecificKey:(id)arg1;
-- (id)displayName;
-- (void)startIngest;
-- (void)stopSeeking;
-- (void)captureNow;
-- (void)stopIngest;
-- (void)stopIngestImmediately;
-- (void)mioClipDidIngest:(id)arg1;
-- (void)mioIngestError:(id)arg1;
-- (void)setCoreDeviceConnection:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-@property(nonatomic) BOOL isProcessing; // @synthesize isProcessing=_isProcessing;
-@property(readonly, nonatomic) BOOL canProcess;
-- (BOOL)isControllable;
++ (id)keyPathsForValuesAffectingCanProcess;
++ (id)keyPathsForValuesAffectingIsProcessing;
 @property(nonatomic) BOOL ingestStopped; // @synthesize ingestStopped=_ingestStopped;
 @property(nonatomic) BOOL isArchivable; // @synthesize isArchivable=_isArchivable;
+@property(nonatomic) BOOL isProcessing; // @synthesize isProcessing=_isProcessing;
 @property BOOL isSeeking; // @synthesize isSeeking=_isSeeking;
 @property BOOL isTapeRolling; // @synthesize isTapeRolling=_isTapeRolling;
 @property BOOL isRewinding; // @synthesize isRewinding=_isRewinding;
@@ -56,6 +40,22 @@ __attribute__((visibility("hidden")))
 @property(retain) NSMutableArray *currentClipIDs; // @synthesize currentClipIDs=_currentClipIDs;
 @property(copy) NSString *currentArchivePath; // @synthesize currentArchivePath=_currentArchivePath;
 @property(retain) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
+@property(retain, nonatomic) MIOCaptureCore *captureCore; // @synthesize captureCore=_captureCore;
+- (BOOL)isControllable;
+@property(readonly, nonatomic) BOOL canProcess;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setCoreDeviceConnection:(id)arg1;
+- (void)mioIngestError:(id)arg1;
+- (void)mioClipDidIngest:(id)arg1;
+- (void)stopIngestImmediately;
+- (void)stopIngest;
+- (void)captureNow;
+- (void)stopSeeking;
+- (void)startIngest;
+- (id)displayName;
+- (id)deviceSpecificKey:(id)arg1;
+- (void)dealloc;
+- (id)initWithDeviceConnection:(id)arg1;
 
 @end
 

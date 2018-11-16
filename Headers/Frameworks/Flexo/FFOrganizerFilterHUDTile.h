@@ -19,24 +19,24 @@ __attribute__((visibility("hidden")))
     id <FFOrganizerFilterHUDTileDelegate> _delegate;
 }
 
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)enableCheckBoxAction:(id)arg1;
-- (void)removeTileButtonAction:(id)arg1;
-- (void)setCloseButtonHidden:(BOOL)arg1;
-- (BOOL)closeButtonHidden;
-- (void)setActive:(BOOL)arg1;
-- (BOOL)active;
-- (void)setKeywords:(id)arg1 selectedKeywords:(id)arg2;
-- (void)setRoleSets:(id)arg1 selectedRoles:(id)arg2;
-- (void)requestKeywordUpdate;
-- (void)requestRolesUpdate;
-- (id)metadataKey;
-- (id)filterDict;
-- (void)tileModuleUpdated:(id)arg1;
-- (void)setCustomViewFromNib:(id)arg1 filterDict:(id)arg2;
-- (id)subModule;
 @property(retain, nonatomic) id <FFOrganizerFilterHUDTileDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)subModule;
+- (void)setCustomViewFromNib:(id)arg1 filterDict:(id)arg2;
+- (void)tileModuleUpdated:(id)arg1;
+- (id)filterDict;
+- (id)metadataKey;
+- (void)requestRolesUpdate;
+- (void)requestKeywordUpdate;
+- (void)setRoleSets:(id)arg1 selectedRoles:(id)arg2;
+- (void)setKeywords:(id)arg1 selectedKeywords:(id)arg2;
+- (BOOL)active;
+- (void)setActive:(BOOL)arg1;
+- (BOOL)closeButtonHidden;
+- (void)setCloseButtonHidden:(BOOL)arg1;
+- (void)removeTileButtonAction:(id)arg1;
+- (void)enableCheckBoxAction:(id)arg1;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

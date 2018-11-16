@@ -7,7 +7,7 @@
 #import "NSView.h"
 
 @interface NSView (DeepNeedsDisplay)
-- (void)_setNeedsDisplayDeeply;
 - (void)_setNeedsDisplayDeeplyIfLayerBacked;
+- (void)_setNeedsDisplayDeeply;
 @end
 

@@ -11,8 +11,8 @@
     struct OZLibraryPresetsMap *_pPresets;
 }
 
-- (id)initWithPresets:(struct OZLibraryPresetsMap *)arg1;
 - (void)dealloc;
+- (id)initWithPresets:(struct OZLibraryPresetsMap *)arg1;
 
 @end
 

@@ -18,19 +18,19 @@
     struct vector<unsigned int, std::allocator<unsigned int>> *_pStringsTableChangeCounts;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (BOOL)hasControls;
-- (void)setChannelValue:(id)arg1;
-- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)updatePopUpMenu:(BOOL)arg1;
-- (int)valueForChannel:(struct OZChannelEnum *)arg1;
-- (void)mapValue:(int)arg1 toDisplayValue:(int)arg2;
-- (void)enableItemForValue:(unsigned int)arg1 isEnabled:(BOOL)arg2;
 - (BOOL)validateMenuItem:(id)arg1;
+- (void)enableItemForValue:(unsigned int)arg1 isEnabled:(BOOL)arg2;
+- (void)mapValue:(int)arg1 toDisplayValue:(int)arg2;
+- (int)valueForChannel:(struct OZChannelEnum *)arg1;
+- (void)updatePopUpMenu:(BOOL)arg1;
+- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)setChannelValue:(id)arg1;
+- (BOOL)hasControls;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

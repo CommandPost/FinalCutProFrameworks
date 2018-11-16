@@ -10,17 +10,17 @@
 {
 }
 
-+ (BOOL)_isInIBCocoaSimulator;
-+ (void)initialize;
-+ (void)install;
-+ (id)theme;
-+ (Class)windowTheme;
-+ (Class)cursorTheme;
-+ (long long)defaultFontAppearance;
-+ (BOOL)_applicationFontIsMedium;
-+ (BOOL)swapSystemFontRegularForMedium;
-+ (unsigned int)smoothingStyleIsUsed:(char *)arg1 forFont:(id)arg2;
 + (BOOL)useAquaSecondarySelectedControlColor;
++ (unsigned int)smoothingStyleIsUsed:(char *)arg1 forFont:(id)arg2;
++ (BOOL)swapSystemFontRegularForMedium;
++ (BOOL)_applicationFontIsMedium;
++ (long long)defaultFontAppearance;
++ (Class)cursorTheme;
++ (Class)windowTheme;
++ (id)theme;
++ (void)install;
++ (void)initialize;
++ (BOOL)_isInIBCocoaSimulator;
 
 @end
 

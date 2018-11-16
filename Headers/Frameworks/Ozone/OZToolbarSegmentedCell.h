@@ -10,9 +10,9 @@
 {
 }
 
-- (id)_separatorFacet;
-- (id)_baseFacet;
 - (id)_indicatorFacet;
+- (id)_baseFacet;
+- (id)_separatorFacet;
 
 @end
 

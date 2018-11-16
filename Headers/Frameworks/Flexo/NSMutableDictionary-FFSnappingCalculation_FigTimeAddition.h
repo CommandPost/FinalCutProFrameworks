@@ -7,7 +7,7 @@
 #import "NSMutableDictionary.h"
 
 @interface NSMutableDictionary (FFSnappingCalculation_FigTimeAddition)
-- (id)objectForTime:(CDStruct_1b6d18a9)arg1;
 - (void)setObject:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2;
+- (id)objectForTime:(CDStruct_1b6d18a9)arg1;
 @end
 

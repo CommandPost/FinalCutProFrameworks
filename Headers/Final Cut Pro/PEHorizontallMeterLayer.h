@@ -10,9 +10,9 @@
 {
 }
 
-- (id)init;
-- (void)layoutSublayers;
 - (void)maskToHeight:(double)arg1;
+- (void)layoutSublayers;
+- (id)init;
 
 @end
 

@@ -19,11 +19,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)readableTypesForPasteboard:(id)arg1;
-- (id)initWithLocation:(id)arg1;
-- (void)dealloc;
-- (void)fsEventAtPaths:(id)arg1;
-- (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
 - (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
+- (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
+- (void)fsEventAtPaths:(id)arg1;
+- (void)dealloc;
+- (id)initWithLocation:(id)arg1;
 
 @end
 

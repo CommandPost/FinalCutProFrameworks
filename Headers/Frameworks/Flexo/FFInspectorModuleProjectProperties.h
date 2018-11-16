@@ -65,21 +65,6 @@ __attribute__((visibility("hidden")))
     LKTextField *_frameRate;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)viewDidLoad;
-- (id)moduleFooterAccessoryView;
-- (void)_setCurrentProject:(id)arg1;
-- (void)_assetsChangedNotification:(id)arg1;
-- (void)setCurrentItems:(id)arg1;
-- (void)textFieldChangedSize:(id)arg1;
-- (void)notesFieldChanged:(id)arg1;
-- (void)_sequenceSettingsChanged:(int)arg1 project:(id)arg2;
-- (void)editSettingsButtonPressed:(id)arg1;
-- (void)reprioritiseButtonPressed:(id)arg1;
-- (void)_updateLoudness;
-- (void)_calculateLoudness:(id)arg1 onTask:(id)arg2;
-- (void)calculateLoudnessButtonPressed:(id)arg1;
 @property(retain, nonatomic) LKButton *referencedEventsIcon; // @synthesize referencedEventsIcon=_referencedEventsIcon;
 @property(retain, nonatomic) FFProFlippedView *viewToSize; // @synthesize viewToSize=_viewToSize;
 @property(retain, nonatomic) LKTextField *notes; // @synthesize notes=_notes;
@@ -98,6 +83,22 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LKButton *reprioritiseButton; // @synthesize reprioritiseButton=_reprioritiseButton;
 @property(retain, nonatomic) LKTextField *projectLocation; // @synthesize projectLocation=_projectLocation;
 @property(retain, nonatomic) LKTextField *projectName; // @synthesize projectName=_projectName;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
+- (void)_calculateLoudness:(id)arg1 onTask:(id)arg2;
+- (void)_updateLoudness;
+- (void)reprioritiseButtonPressed:(id)arg1;
+- (void)editSettingsButtonPressed:(id)arg1;
+- (void)_sequenceSettingsChanged:(int)arg1 project:(id)arg2;
+- (void)notesFieldChanged:(id)arg1;
+- (void)textFieldChangedSize:(id)arg1;
+- (void)setCurrentItems:(id)arg1;
+- (void)_assetsChangedNotification:(id)arg1;
+- (void)_setCurrentProject:(id)arg1;
+- (id)moduleFooterAccessoryView;
+- (void)viewDidLoad;
+- (void)dealloc;
+- (id)init;
 
 @end
 

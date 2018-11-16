@@ -13,11 +13,11 @@
     NSButton *_pToggleHUDsButton;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
-- (void)update;
-- (void)enable;
-- (void)disable;
 - (struct OZObjectManipulator *)objectManipulator;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
 
 @end
 

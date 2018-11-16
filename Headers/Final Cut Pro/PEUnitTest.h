@@ -14,11 +14,11 @@
 }
 
 + (void)runUnitTests;
-- (id)init;
-- (void)dealloc;
-- (id)getSuite;
-- (void)setSuite:(id)arg1;
 - (void)run;
+- (void)setSuite:(id)arg1;
+- (id)getSuite;
+- (void)dealloc;
+- (id)init;
 
 @end
 

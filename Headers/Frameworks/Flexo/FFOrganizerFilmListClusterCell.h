@@ -11,15 +11,15 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initTextCell:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)commonInit;
-- (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)drawBackground:(struct CGRect)arg1;
 - (void)drawCellText:(struct CGRect)arg1 inView:(id)arg2;
+- (void)drawBackground:(struct CGRect)arg1;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (void)commonInit;
+- (id)initWithCoder:(id)arg1;
+- (id)initTextCell:(id)arg1;
 
 @end
 

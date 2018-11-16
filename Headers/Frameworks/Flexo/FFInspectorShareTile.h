@@ -24,16 +24,6 @@ __attribute__((visibility("hidden")))
     NSTrackingArea *_trackingArea;
 }
 
-- (void)updateTracking:(BOOL)arg1;
-- (void)awakeFromNib;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)actionButtonClicked:(id)arg1;
-- (void)tellAFriendOfSharedItem:(id)arg1;
-- (void)removeSharedItem:(id)arg1;
-- (void)visitSharedItem:(id)arg1;
-- (void)showExpandedView:(id)arg1;
-- (void)revealInFinder:(id)arg1;
 @property(retain, nonatomic) LKButton *revealInFinderButton; // @synthesize revealInFinderButton=_revealInFinderButton;
 @property(retain, nonatomic) id shareDelegate; // @synthesize shareDelegate=_shareDelegate;
 @property(retain, nonatomic) FFInspectorSharingRolloverButton *shareExpandedButton; // @synthesize shareExpandedButton=_shareExpandedButton;
@@ -44,6 +34,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LKTextField *shareTime; // @synthesize shareTime=_shareTime;
 @property(retain, nonatomic) LKTextField *shareInfo; // @synthesize shareInfo=_shareInfo;
 @property(retain, nonatomic) LKImageView *shareTypeImageView; // @synthesize shareTypeImageView=_shareTypeImageView;
+- (void)revealInFinder:(id)arg1;
+- (void)showExpandedView:(id)arg1;
+- (void)visitSharedItem:(id)arg1;
+- (void)removeSharedItem:(id)arg1;
+- (void)tellAFriendOfSharedItem:(id)arg1;
+- (void)actionButtonClicked:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)awakeFromNib;
+- (void)updateTracking:(BOOL)arg1;
 
 @end
 

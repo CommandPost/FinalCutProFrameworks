@@ -23,13 +23,18 @@
     BOOL _avPopupAvailable;
 }
 
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)newOutputDevicesAvailable:(id)arg1;
-- (id)titleForIdentifier:(id)arg1;
-- (void)selectPlaybackMedia:(id)arg1;
-- (void)selectPlaybackQuality:(id)arg1;
+- (BOOL)moduleCanBeRemoved;
+- (BOOL)preferencesWindowShouldClose;
+- (void)willBeDisplayed;
 - (void)selectAVOutputDevice:(id)arg1;
+- (void)selectPlaybackQuality:(id)arg1;
+- (void)selectPlaybackMedia:(id)arg1;
+- (void)_warnUserAboutBackgroundShareProcessAndProxyMedia;
+- (id)titleForIdentifier:(id)arg1;
+- (void)newOutputDevicesAvailable:(id)arg1;
+- (void)dealloc;
+- (void)awakeFromNib;
+- (BOOL)isResizable;
 
 @end
 

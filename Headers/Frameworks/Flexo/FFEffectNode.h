@@ -17,23 +17,24 @@
     CDStruct_e83c9415 _cachedUnionedInputRangeInLocalCoords;
 }
 
-- (id)object;
-- (id)initWithEffect:(id)arg1;
-- (void)dealloc;
-- (id)effect;
-- (void)clearCachedUnionStuff;
-- (void)setInput:(id)arg1 forKey:(id)arg2 withOffset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4;
-- (id)inputForKey:(id)arg1;
-- (CDStruct_1b6d18a9)inputOffsetForKey:(id)arg1;
-- (id)inputForKey:(id)arg1 retOffset:(CDStruct_1b6d18a9 *)arg2;
-- (id)inputIdentifierForKey:(id)arg1;
-- (id)allInputKeys;
-- (CDStruct_1b6d18a9)channelOffset;
-- (void)setChannelOffset:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_e83c9415)unionedInputTimeRange;
-- (CDStruct_e83c9415)unionedInputTimeRangeInLocalCoords;
-- (CDStruct_1b6d18a9)earliestInputStart;
+- (id).cxx_construct;
 - (CDStruct_1b6d18a9)latestInputEnd;
+- (CDStruct_1b6d18a9)earliestInputStart;
+- (CDStruct_e83c9415)unionedInputTimeRangeInLocalCoords;
+- (CDStruct_e83c9415)unionedInputTimeRange;
+- (void)setChannelOffset:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)channelOffset;
+- (id)allInputKeys;
+- (id)inputIdentifierForKey:(id)arg1;
+- (id)inputForKey:(id)arg1 retOffset:(CDStruct_1b6d18a9 *)arg2;
+- (CDStruct_1b6d18a9)inputOffsetForKey:(id)arg1;
+- (id)inputForKey:(id)arg1;
+- (void)setInput:(id)arg1 forKey:(id)arg2 withOffset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4;
+- (void)clearCachedUnionStuff;
+- (id)effect;
+- (void)dealloc;
+- (id)initWithEffect:(id)arg1;
+- (id)object;
 
 @end
 

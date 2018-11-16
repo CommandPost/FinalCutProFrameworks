@@ -4,12 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class CHChannelFolder, FFAudioChannelsConfigViewModule, FFContext;
+
 @protocol FFAudioChannelsConfigViewModuleDelegate
-- (BOOL)audioChannelsConfigViewModuleCanStartSkimming:(id)arg1;
-- (BOOL)audioChannelsConfigViewModule:(id)arg1 startSkimmingInViewerWithSkimmable:(id)arg2 context:(id)arg3 effectCount:(long long)arg4;
-- (void)audioChannelsConfigViewModuleStopSkimmingInViewer:(id)arg1;
-- (BOOL)audioChannelsConfigViewModule:(id)arg1 isSkimmingInViewerWithSkimmable:(id)arg2;
-- (void)audioChannelsConfigViewModuleWillSetFilmstripEnable:(id)arg1;
-- (void)audioChannelsConfigViewModuleDidSetFilmstripEnable:(id)arg1;
+- (void)audioChannelsConfigViewModule:(FFAudioChannelsConfigViewModule *)arg1 showAudioChannelsConfig:(BOOL)arg2;
+- (BOOL)audioChannelsConfigViewModule:(FFAudioChannelsConfigViewModule *)arg1 isCollapsedForChannelFolder:(CHChannelFolder *)arg2;
+- (void)audioChannelsConfigViewModule:(FFAudioChannelsConfigViewModule *)arg1 setCollapsed:(BOOL)arg2 forChannelFolder:(CHChannelFolder *)arg3;
+- (BOOL)audioChannelsConfigViewModule:(FFAudioChannelsConfigViewModule *)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
+- (void)audioChannelsConfigViewModuleStopSkimmingInViewer:(FFAudioChannelsConfigViewModule *)arg1;
+- (BOOL)audioChannelsConfigViewModule:(FFAudioChannelsConfigViewModule *)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(FFContext *)arg3 effectCount:(long long)arg4;
+- (BOOL)audioChannelsConfigViewModuleCanStartSkimming:(FFAudioChannelsConfigViewModule *)arg1;
 @end
 

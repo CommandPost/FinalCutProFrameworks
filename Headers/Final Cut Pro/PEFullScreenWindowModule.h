@@ -13,21 +13,21 @@
     struct CGRect _nonFullscreenFrame;
 }
 
-+ (id)fullScreenWindowModule;
-+ (Class)windowClass;
 + (unsigned long long)nextAvailableScreenIndexExcluding:(unsigned long long)arg1;
-- (id)initWithWindowClass:(Class)arg1 windowStyleMask:(unsigned long long)arg2;
-- (void)screenParametersChanged:(id)arg1;
-- (void)_setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
-- (void)setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
-@property(nonatomic, getter=isFullscreen) BOOL fullscreen; // @synthesize fullscreen=_fullscreen;
++ (Class)windowClass;
++ (id)fullScreenWindowModule;
 @property(nonatomic) unsigned long long screenNumber; // @synthesize screenNumber=_screenNumber;
-- (void)viewDidLoad;
-- (id)contentLayoutDictionary;
-- (void)takeContentLayoutFromDictionary:(id)arg1;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
+@property(nonatomic, getter=isFullscreen) BOOL fullscreen; // @synthesize fullscreen=_fullscreen;
 - (id)customWindowsToEnterFullScreenForWindow:(id)arg1;
+- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
+- (id)contentLayoutDictionary;
+- (void)viewDidLoad;
+- (void)setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
+- (void)_setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
+- (void)screenParametersChanged:(id)arg1;
+- (id)initWithWindowClass:(Class)arg1 windowStyleMask:(unsigned long long)arg2;
 
 @end
 

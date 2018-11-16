@@ -18,19 +18,19 @@
 }
 
 + (id)audioChannelGroup;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)description;
-- (void)addChannel:(id)arg1;
-- (void)removeChannel:(id)arg1;
-- (void)setLayout:(unsigned int)arg1;
-- (unsigned int)layout;
-- (unsigned long long)count;
-- (unsigned int)channelCount;
-- (void)setUndoManager:(id)arg1;
 - (id)undoManager;
+- (void)setUndoManager:(id)arg1;
+- (unsigned int)channelCount;
+- (unsigned long long)count;
+- (unsigned int)layout;
+- (void)setLayout:(unsigned int)arg1;
+- (void)removeChannel:(id)arg1;
+- (void)addChannel:(id)arg1;
+- (id)description;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

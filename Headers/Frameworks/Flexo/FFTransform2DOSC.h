@@ -18,19 +18,19 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_channelsToCheckForkeyFrames;
 }
 
-- (id)initWithHeXFormEffect:(id)arg1 effectStack:(id)arg2;
-- (void)dealloc;
-- (BOOL)supportsTool:(Class)arg1;
-- (void)updateInfoBarObjectStatus:(id)arg1;
-- (void)removeOverlayWindowForNoRangeOverlap;
-- (void)enableOverlayWindowForNoRangeOverlap;
-- (id)channelsToCheckForKeyframes;
-- (id)keyFrameButton;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)exitTransformOSC:(id)arg1;
-- (void)keyFrameTransform:(id)arg1;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
+- (void)keyFrameTransform:(id)arg1;
+- (void)exitTransformOSC:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (id)keyFrameButton;
+- (id)channelsToCheckForKeyframes;
+- (void)enableOverlayWindowForNoRangeOverlap;
+- (void)removeOverlayWindowForNoRangeOverlap;
+- (void)updateInfoBarObjectStatus:(id)arg1;
+- (BOOL)supportsTool:(Class)arg1;
+- (void)dealloc;
+- (id)initWithHeXFormEffect:(id)arg1 effectStack:(id)arg2;
 
 @end
 

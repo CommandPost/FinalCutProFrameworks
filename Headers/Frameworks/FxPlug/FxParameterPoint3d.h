@@ -11,8 +11,8 @@
     struct FxParameterPoint3dPriv *_point3dPriv;
 }
 
-- (id)init;
 - (void)dealloc;
+- (id)init;
 
 @end
 

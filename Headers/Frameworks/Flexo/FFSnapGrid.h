@@ -20,18 +20,18 @@ __attribute__((visibility("hidden")))
     BOOL _isBuilt;
 }
 
-- (id)initWithPlayerVideoModule:(id)arg1;
-- (void)dealloc;
-- (void)setPlayerVideoModule:(id)arg1;
-- (void)build;
-- (id)horizontalSnaps;
-- (id)verticalSnaps;
-- (BOOL)isBuilt;
-- (BOOL)isEnabled;
-- (void)clearGrid;
 @property BOOL enabled; // @synthesize enabled=_enabled;
 @property int activeHorIndex; // @synthesize activeHorIndex=_activeHorIndex;
 @property int activeVerIndex; // @synthesize activeVerIndex=_activeVerIndex;
+- (void)clearGrid;
+- (BOOL)isEnabled;
+- (BOOL)isBuilt;
+- (id)verticalSnaps;
+- (id)horizontalSnaps;
+- (void)build;
+- (void)setPlayerVideoModule:(id)arg1;
+- (void)dealloc;
+- (id)initWithPlayerVideoModule:(id)arg1;
 
 @end
 

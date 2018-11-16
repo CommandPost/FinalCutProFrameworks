@@ -20,18 +20,18 @@
     int _operation;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)setScene:(struct OZScene *)arg1;
-- (int)_open;
-- (int)askForOperation:(struct OZScene *)arg1;
-- (void)reconnectNotify:(id)arg1;
-- (void)searchNotify:(id)arg1;
-- (void)cancelNotify:(id)arg1;
-- (void)update;
-- (int)numberOfRowsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
+- (int)numberOfRowsInTableView:(id)arg1;
+- (void)update;
+- (void)cancelNotify:(id)arg1;
+- (void)searchNotify:(id)arg1;
+- (void)reconnectNotify:(id)arg1;
+- (int)askForOperation:(struct OZScene *)arg1;
+- (int)_open;
+- (void)setScene:(struct OZScene *)arg1;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)init;
 
 @end
 

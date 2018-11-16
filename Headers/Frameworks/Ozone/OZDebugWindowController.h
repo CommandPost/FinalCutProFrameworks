@@ -8,7 +8,7 @@
 
 #import "NSTabViewDelegate.h"
 
-@class LKButton, LKPopUpButton, LKSegmentedCell, LKTabView, LKTableView, LKTextField, NSArray, NSTextView, NSView;
+@class LKButton, LKPopUpButton, LKSegmentedCell, LKTabView, LKTableView, LKTextField, NSArray, NSTextView, NSTimer, NSView;
 
 @interface OZDebugWindowController : NSWindowController <NSTabViewDelegate>
 {
@@ -21,42 +21,49 @@
     NSArray *_tableColumns;
     BOOL _isPanelVisible;
     BOOL _isLogging;
+    NSTimer *_threadTimer;
     LKSegmentedCell *_selectViewButtons;
     NSView *_debugOptionsView;
     NSView *_loggingView;
     NSView *_performanceView;
+    NSView *_threadView;
+    LKTableView *_threadTableView;
     LKTextField *_templatePathTF;
     LKPopUpButton *_saveOptionsPopup;
     LKButton *_skipPreviewsButton;
     LKButton *_skipSavingUIButton;
+    LKTextField *_sceneHashTF;
 }
 
 + (id)sharedController;
-- (id)init;
-- (void)dealloc;
-- (void)windowDidLoad;
-- (void)showWindow:(id)arg1;
-- (void)selectView:(id)arg1;
-- (void)reset:(id)arg1;
-- (void)toggleMasterEnable:(id)arg1;
-- (void)toggleLogging:(id)arg1;
-- (void)clearTextView:(id)arg1;
-- (void)updateStatsLoop;
-- (void)updateStats;
-- (void)appendStatString:(id)arg1;
-- (void)updateTimeStat:(struct OZProfilerTimeStat *)arg1 row:(int)arg2;
-- (int)numberOfRowsInTableView:(id)arg1;
-- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
-- (void)tableView:(id)arg1 setObjectValue:(id)arg2 forTableColumn:(id)arg3 row:(int)arg4;
-- (id)boldString:(id)arg1;
-- (void)tabView:(id)arg1 willSelectTabViewItem:(id)arg2;
-- (void)setRenderingOptions:(id)arg1;
-- (void)setLoggingOptions:(id)arg1;
-- (void)updateDebugValues;
-- (void)chooseTemplatePath:(id)arg1;
-- (void)generateTemplatePreviews:(id)arg1;
-- (void)skipTemplatePreviews:(id)arg1;
+- (void)updateSceneHash:(id)arg1;
 - (void)skipSavingUISettings:(id)arg1;
+- (void)skipTemplatePreviews:(id)arg1;
+- (void)generateTemplatePreviews:(id)arg1;
+- (void)chooseTemplatePath:(id)arg1;
+- (void)updateDebugValues;
+- (void)setLoggingOptions:(id)arg1;
+- (void)setRenderingOptions:(id)arg1;
+- (void)startUpdatingThreadTable;
+- (void)updateThreadTable;
+- (void)tabView:(id)arg1 willSelectTabViewItem:(id)arg2;
+- (id)boldString:(id)arg1;
+- (void)tableView:(id)arg1 setObjectValue:(id)arg2 forTableColumn:(id)arg3 row:(int)arg4;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
+- (int)numberOfRowsInTableView:(id)arg1;
+- (void)updateTimeStat:(struct OZProfilerTimeStat *)arg1 row:(int)arg2;
+- (void)appendStatString:(id)arg1;
+- (void)updateStats;
+- (void)updateStatsLoop;
+- (void)clearTextView:(id)arg1;
+- (void)toggleLogging:(id)arg1;
+- (void)toggleMasterEnable:(id)arg1;
+- (void)reset:(id)arg1;
+- (void)selectView:(id)arg1;
+- (void)showWindow:(id)arg1;
+- (void)windowDidLoad;
+- (void)dealloc;
+- (id)init;
 
 @end
 

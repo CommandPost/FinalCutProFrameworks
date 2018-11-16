@@ -13,13 +13,13 @@
     NSMutableDictionary *_funnels;
 }
 
-+ (id)sharedInstance;
 + (void)releaseSharedInstance;
-- (void)appWillTerminate:(id)arg1;
-- (id)init;
-- (void)dealloc;
-- (void)stopRecordingLogs;
++ (id)sharedInstance;
 - (id)copyFunnelForInstrumentName:(id)arg1;
+- (void)stopRecordingLogs;
+- (void)dealloc;
+- (id)init;
+- (void)appWillTerminate:(id)arg1;
 
 @end
 

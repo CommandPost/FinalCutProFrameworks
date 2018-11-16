@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     FFEffect *_effect;
 }
 
-- (id)initWithEffect:(id)arg1;
-- (id)videoPropsForTimeConversion;
-- (id)activeEditorModule;
 - (CDStruct_1b6d18a9)currentFigTime;
+- (id)activeEditorModule;
+- (id)videoPropsForTimeConversion;
+- (id)initWithEffect:(id)arg1;
 
 @end
 

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FFRetimingAudioEffect : FFRetimingEffect
 {
     CHChannelBool *_chPreservePitch;
-    vector_208beee3 *_segmentList;
+    vector_adc85b2d *_segmentList;
     CHChannelDouble *_chRetimingRate;
     double m_sampleRate;
     double m_minPlayRate;
@@ -21,20 +21,20 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
-- (void)_channelChanged:(id)arg1;
-- (id)initWithEffectID:(id)arg1;
-- (void)dealloc;
-- (void)createChannelsInFolder:(id)arg1;
-- (id)inputKeys;
-- (id)newEffectNode;
-- (BOOL)preservesPitch;
-- (void)setPreservesPitch:(BOOL)arg1;
-- (void)_updateAudioRetimingChannels;
-- (void)_invalidateRetimingChannels;
-- (void)updateAudioRetimingPlayRateRange:(double)arg1 maxPlayRate:(double)arg2 sampleRate:(double)arg3;
-- (id)retimingRateChannel;
-- (vector_208beee3 *)retimingSegmentList;
 - (double)maxRetimingRate;
+- (vector_adc85b2d *)retimingSegmentList;
+- (id)retimingRateChannel;
+- (void)updateAudioRetimingPlayRateRange:(double)arg1 maxPlayRate:(double)arg2 sampleRate:(double)arg3;
+- (void)_invalidateRetimingChannels;
+- (void)_updateAudioRetimingChannels;
+- (void)setPreservesPitch:(BOOL)arg1;
+- (BOOL)preservesPitch;
+- (id)newEffectNode;
+- (id)inputKeys;
+- (void)createChannelsInFolder:(id)arg1;
+- (void)dealloc;
+- (id)initWithEffectID:(id)arg1;
+- (void)_channelChanged:(id)arg1;
 
 @end
 

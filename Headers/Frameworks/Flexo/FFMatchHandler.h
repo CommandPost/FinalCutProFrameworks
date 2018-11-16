@@ -16,21 +16,21 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)toolClass;
-- (void)dealloc;
-- (void)startHandling:(id)arg1;
-- (void)stopHandling:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
-- (void)stopSkimming:(id)arg1;
-- (void)stopItemSkimming;
-- (BOOL)shouldSkimItem:(id)arg1;
-- (BOOL)shouldSkimPlayhead;
-- (void)movePlayheadToCurrentPosition:(id)arg1;
-@property(readonly, retain, nonatomic) FFMatchTool *matchTool;
-@property(readonly, retain, nonatomic) FFAnchoredTimelineModule *timelineModule;
-- (BOOL)isValidObject:(id)arg1;
-- (void)matchReference:(id)arg1;
 @property(retain) FFMedia *media; // @synthesize media=_media;
 @property(retain) FFContext *context; // @synthesize context=_context;
+- (void)matchReference:(id)arg1;
+- (BOOL)isValidObject:(id)arg1;
+@property(readonly, nonatomic) FFAnchoredTimelineModule *timelineModule;
+@property(readonly, nonatomic) FFMatchTool *matchTool;
+- (void)movePlayheadToCurrentPosition:(id)arg1;
+- (BOOL)shouldSkimPlayhead;
+- (BOOL)shouldSkimItem:(id)arg1;
+- (void)stopItemSkimming;
+- (void)stopSkimming:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
+- (void)stopHandling:(id)arg1;
+- (void)startHandling:(id)arg1;
+- (void)dealloc;
 
 @end
 

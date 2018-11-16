@@ -18,17 +18,17 @@
     TLKLayoutManager *_layoutManager;
 }
 
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_newDictionaryRepresentationForEquality:(BOOL)arg1;
-- (id)dictionaryRepresentation;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)debugDescription;
 @property(retain) id <TLKTimelineItem> targetItem; // @synthesize targetItem=_targetItem;
 @property(retain) TLKLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
 @property CDStruct_1b6d18a9 dropTime; // @synthesize dropTime=_dropTime;
 @property long long dropIndex; // @synthesize dropIndex=_dropIndex;
+- (id)debugDescription;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (id)dictionaryRepresentation;
+- (id)_newDictionaryRepresentationForEquality:(BOOL)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 
 @end
 

@@ -19,10 +19,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)layoutManager;
-- (id)init;
-- (float)positionOfSelectedFilmstripInLayer:(id)arg1;
-- (struct __CFArray *)newFilmstripIndicesOfLayer:(id)arg1 inRect:(struct CGRect)arg2;
 - (void)layoutSublayersOfLayer:(id)arg1;
+- (struct __CFArray *)newFilmstripIndicesOfLayer:(id)arg1 inRect:(struct CGRect)arg2;
+- (float)positionOfSelectedFilmstripInLayer:(id)arg1;
+- (id)init;
 
 @end
 

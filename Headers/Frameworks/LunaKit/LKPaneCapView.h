@@ -10,8 +10,9 @@
 {
 }
 
-- (id)_baseFacet;
 - (BOOL)acceptsFirstResponder;
+- (id)_baseFacet;
+- (BOOL)allowsState;
 
 @end
 

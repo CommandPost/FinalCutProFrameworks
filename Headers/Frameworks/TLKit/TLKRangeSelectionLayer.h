@@ -21,20 +21,20 @@
     unsigned int RESERVED:31;
 }
 
-- (id)init;
-- (void)dealloc;
-- (struct CGRect)_leftHandleFrame;
-- (struct CGRect)_rightHandleFrame;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)partIdentifier;
-- (id)timelineView;
-- (struct CGPath *)_newPathForRoundedRect:(struct CGRect)arg1 radius:(double)arg2 lineWidth:(double)arg3;
-- (void)layoutSublayers;
-- (id)hitTest:(struct CGPoint)arg1;
-@property int draggingHandle;
-@property BOOL containingViewFirstResponder;
-- (void)setDelegate:(id)arg1;
 @property double hitRegionHeight; // @synthesize hitRegionHeight=_hitRegionHeight;
+- (void)setDelegate:(id)arg1;
+@property BOOL containingViewFirstResponder;
+@property int draggingHandle;
+- (id)hitTest:(struct CGPoint)arg1;
+- (void)layoutSublayers;
+- (struct CGPath *)_newPathForRoundedRect:(struct CGRect)arg1 radius:(double)arg2 lineWidth:(double)arg3;
+- (id)timelineView;
+- (id)partIdentifier;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (struct CGRect)_rightHandleFrame;
+- (struct CGRect)_leftHandleFrame;
+- (void)dealloc;
+- (id)init;
 
 @end
 

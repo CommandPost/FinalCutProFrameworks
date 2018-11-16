@@ -10,25 +10,25 @@
 {
 }
 
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-- (struct OZChannelColorNoAlpha *)ozChannel;
-- (void)setDefaultCurveRed:(double)arg1 curveGreen:(double)arg2 curveBlue:(double)arg3;
-- (void)getColorAtTime:(CDStruct_1b6d18a9)arg1 red:(double *)arg2 green:(double *)arg3 blue:(double *)arg4;
-- (double)redValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (double)greenValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (double)blueValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (void)getColorAtTime:(CDStruct_1b6d18a9)arg1 curveRed:(double *)arg2 curveGreen:(double *)arg3 curveBlue:(double *)arg4;
-- (double)curveRedValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (double)curveGreenValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (double)curveBlueValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (void)setColorAtTime:(CDStruct_1b6d18a9)arg1 curveRed:(double)arg2 curveGreen:(double)arg3 curveBlue:(double)arg4 options:(unsigned int)arg5;
-- (void)setCurveRedValue:(double)arg1 atTime:(CDStruct_1b6d18a9)arg2 options:(unsigned int)arg3;
-- (void)setCurveGreenValue:(double)arg1 atTime:(CDStruct_1b6d18a9)arg2 options:(unsigned int)arg3;
-- (void)setCurveBlueValue:(double)arg1 atTime:(CDStruct_1b6d18a9)arg2 options:(unsigned int)arg3;
-- (id)redChannel;
-- (id)greenChannel;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 - (id)blueChannel;
+- (id)greenChannel;
+- (id)redChannel;
+- (void)setCurveBlueValue:(double)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
+- (void)setCurveGreenValue:(double)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
+- (void)setCurveRedValue:(double)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
+- (void)setColorAtTime:(CDStruct_198678f7)arg1 curveRed:(double)arg2 curveGreen:(double)arg3 curveBlue:(double)arg4 options:(unsigned int)arg5;
+- (double)curveBlueValueAtTime:(CDStruct_198678f7)arg1;
+- (double)curveGreenValueAtTime:(CDStruct_198678f7)arg1;
+- (double)curveRedValueAtTime:(CDStruct_198678f7)arg1;
+- (void)getColorAtTime:(CDStruct_198678f7)arg1 curveRed:(double *)arg2 curveGreen:(double *)arg3 curveBlue:(double *)arg4;
+- (double)blueValueAtTime:(CDStruct_198678f7)arg1;
+- (double)greenValueAtTime:(CDStruct_198678f7)arg1;
+- (double)redValueAtTime:(CDStruct_198678f7)arg1;
+- (void)getColorAtTime:(CDStruct_198678f7)arg1 red:(double *)arg2 green:(double *)arg3 blue:(double *)arg4;
+- (void)setDefaultCurveRed:(double)arg1 curveGreen:(double)arg2 curveBlue:(double)arg3;
+- (struct OZChannelColorNoAlpha *)ozChannel;
 
 @end
 

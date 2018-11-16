@@ -14,22 +14,22 @@ __attribute__((visibility("hidden")))
     double _b;
 }
 
-- (id)initWithValue:(double)arg1;
-- (id)initWithRed:(double)arg1 andGreen:(double)arg2 andBlue:(double)arg3;
-- (id)initWithRed:(double)arg1 andGreen:(double)arg2 andBlue:(double)arg3 andGamma:(double)arg4;
-- (id)initWithRGBColor:(id)arg1;
-- (void)setWithValue:(double)arg1;
-- (void)setWithRed:(double)arg1 andGreen:(double)arg2 andBlue:(double)arg3;
-- (void)setWithRed:(double)arg1 andGreen:(double)arg2 andBlue:(double)arg3 andGamma:(double)arg4;
-- (void)setWithRGBColor:(id)arg1;
-- (double)luma;
-- (double)saturation;
-- (void)clamp;
-- (id)newYCbCr;
-- (id)newHSL;
 @property(nonatomic) double b; // @synthesize b=_b;
 @property(nonatomic) double g; // @synthesize g=_g;
 @property(nonatomic) double r; // @synthesize r=_r;
+- (id)newHSL;
+- (id)newYCbCr;
+- (void)clamp;
+- (double)saturation;
+- (double)luma;
+- (void)setWithRGBColor:(id)arg1;
+- (void)setWithRed:(double)arg1 andGreen:(double)arg2 andBlue:(double)arg3 andGamma:(double)arg4;
+- (void)setWithRed:(double)arg1 andGreen:(double)arg2 andBlue:(double)arg3;
+- (void)setWithValue:(double)arg1;
+- (id)initWithRGBColor:(id)arg1;
+- (id)initWithRed:(double)arg1 andGreen:(double)arg2 andBlue:(double)arg3 andGamma:(double)arg4;
+- (id)initWithRed:(double)arg1 andGreen:(double)arg2 andBlue:(double)arg3;
+- (id)initWithValue:(double)arg1;
 
 @end
 

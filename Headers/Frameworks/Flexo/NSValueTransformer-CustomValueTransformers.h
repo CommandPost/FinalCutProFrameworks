@@ -7,7 +7,7 @@
 #import "NSValueTransformer.h"
 
 @interface NSValueTransformer (CustomValueTransformers)
-+ (void)_registerTransformerClass:(Class)arg1 forName:(id)arg2;
 + (void)registerCustomValueTransformers;
++ (void)_registerTransformerClass:(Class)arg1 forName:(id)arg2;
 @end
 

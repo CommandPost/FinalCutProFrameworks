@@ -4,20 +4,22 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSString;
+
 @protocol FFAudioSurroundPannerBuddy
-- (float)parameterMinValue:(unsigned long long)arg1;
-- (float)parameterMaxValue:(unsigned long long)arg1;
-- (float)parameterDefaultValue:(unsigned long long)arg1;
-- (float)updateParameter:(unsigned long long)arg1;
-- (void)pannerDidChangeSurroundPan:(struct CGPoint)arg1;
-- (void)pannerDidSetValue:(float)arg1 forSurroundParameter:(unsigned long long)arg2;
-- (void)pannerDidToggleSurroundParameter:(unsigned long long)arg1;
-- (void)pannerDidTouchSurroundParameter:(unsigned long long)arg1 touched:(BOOL)arg2;
-- (void)pannerDidTouchSurroundPanner:(BOOL)arg1;
 - (int)pannerAudioChannelCount;
+- (void)pannerDidTouchSurroundPanner:(BOOL)arg1;
+- (void)pannerDidTouchSurroundParameter:(unsigned long long)arg1 touched:(BOOL)arg2;
+- (void)pannerDidToggleSurroundParameter:(unsigned long long)arg1;
+- (void)pannerDidSetValue:(float)arg1 forSurroundParameter:(unsigned long long)arg2;
+- (void)pannerDidChangeSurroundPan:(struct CGPoint)arg1;
+- (float)updateParameter:(unsigned long long)arg1;
+- (float)parameterDefaultValue:(unsigned long long)arg1;
+- (float)parameterMaxValue:(unsigned long long)arg1;
+- (float)parameterMinValue:(unsigned long long)arg1;
 
 @optional
-- (id)pannerTitle;
 - (void)pannerWindowDidClose;
+- (NSString *)pannerTitle;
 @end
 

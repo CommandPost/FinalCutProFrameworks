@@ -20,20 +20,20 @@
     BOOL _runningInFlexo;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (id)firstKeyView;
-- (id)lastKeyView;
-- (id)connectKeyViewsRec:(id)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (BOOL)hasControls;
-- (void)startSegmentedScrubberAction:(id)arg1;
-- (void)endSegmentedScrubberAction:(id)arg1;
-- (void)setChannelValue:(id)arg1;
-- (void)imageWidth:(float *)arg1 andHeight:(float *)arg2 forTime:(const CDStruct_1b6d18a9 *)arg3;
 - (void)setupLabelTF:(id)arg1;
+- (void)imageWidth:(float *)arg1 andHeight:(float *)arg2 forTime:(const CDStruct_1b6d18a9 *)arg3;
+- (void)setChannelValue:(id)arg1;
+- (void)endSegmentedScrubberAction:(id)arg1;
+- (void)startSegmentedScrubberAction:(id)arg1;
+- (BOOL)hasControls;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)notify:(unsigned int)arg1;
+- (id)connectKeyViewsRec:(id)arg1;
+- (id)lastKeyView;
+- (id)firstKeyView;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

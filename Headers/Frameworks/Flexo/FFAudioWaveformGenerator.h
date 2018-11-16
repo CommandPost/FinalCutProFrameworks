@@ -12,15 +12,15 @@ __attribute__((visibility("hidden")))
     struct FFPeaks *_peaks;
 }
 
-+ (id)sharedInstance;
 + (void)releaseSharedInstance;
-- (id)init;
-- (void)dealloc;
-- (id)_newNewImageOfSize:(struct CGSize)arg1;
-- (id)peaksDataForRequest:(id)arg1 synchronously:(BOOL)arg2 wasFinalQuality:(char *)arg3;
-- (id)peaksDataForRequest:(id)arg1 synchronously:(BOOL)arg2 wasFinalQuality:(char *)arg3 waveformHandlePixels:(unsigned int)arg4;
-- (id)newAudioImageForRequest:(id)arg1 synchronously:(BOOL)arg2 wasFinalQuality:(char *)arg3;
++ (id)sharedInstance;
 - (id)peaksDataConvert:(id)arg1 fromSampleRate:(double)arg2 toSampleRate:(double)arg3;
+- (id)newAudioImageForRequest:(id)arg1 synchronously:(BOOL)arg2 wasFinalQuality:(char *)arg3;
+- (id)peaksDataForRequest:(id)arg1 synchronously:(BOOL)arg2 wasFinalQuality:(char *)arg3 waveformHandlePixels:(unsigned int)arg4;
+- (id)peaksDataForRequest:(id)arg1 synchronously:(BOOL)arg2 wasFinalQuality:(char *)arg3;
+- (id)_newNewImageOfSize:(struct CGSize)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

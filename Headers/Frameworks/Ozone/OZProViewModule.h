@@ -8,21 +8,22 @@
 
 #import "OZObjCObserver.h"
 
+@class OZObjCDocument;
+
 @interface OZProViewModule : LKViewModule <OZObjCObserver>
 {
-    BOOL _isObserving;
+    OZObjCDocument *_nsDocument;
     BOOL _queueNotifications;
     unsigned int _queuedNotificationFlags;
 }
 
-- (unsigned long long)revealAnimationStyle;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
+@property(nonatomic, getter=nsDocument, setter=setNSDocument:) OZObjCDocument *nsDocument; // @synthesize nsDocument=_nsDocument;
 - (void)notify:(unsigned int)arg1;
-- (BOOL)moduleShouldObserveWhenViewRemoved:(id)arg1;
-@property BOOL isObserving; // @synthesize isObserving=_isObserving;
-- (id)oz_currentDocument;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
 - (struct OZDocument *)oz_currentOZDocument;
+- (id)oz_currentDocument;
+- (unsigned long long)revealAnimationStyle;
 
 @end
 

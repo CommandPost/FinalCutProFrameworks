@@ -12,9 +12,9 @@
 {
 }
 
-- (id)init;
-- (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)partIdentifier;
+- (id)init;
 
 @end
 

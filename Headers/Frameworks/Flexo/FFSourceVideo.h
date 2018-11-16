@@ -11,22 +11,23 @@
 }
 
 + (Class)streamClass;
-- (id)type;
-- (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
-- (id)nativeVideoProps;
-- (CDStruct_1b6d18a9)magicFrameTime;
-- (CDStruct_1b6d18a9)nativeSampleDuration;
-- (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (int)rotationDegrees;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (id)newThumbnailSubRangeMD5InfoAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
-- (double)preferredScaleFactorForQuality:(int)arg1;
-- (id)description;
-- (id)deepDescription;
 - (id)codecName;
-- (BOOL)actualSegmentMD5:(CDStruct_60067b7e *)arg1 idealMD5:(CDStruct_60067b7e *)arg2 sampleOffset:(long long *)arg3 fullRange:(CDStruct_e83c9415 *)arg4 subRange:(CDStruct_e83c9415 *)arg5 sampleOffsetBaseTime:(CDStruct_1b6d18a9 *)arg6 forSampleDuration:(CDStruct_1b6d18a9)arg7 atTime:(CDStruct_1b6d18a9)arg8 context:(id)arg9;
-- (float)segmentCostAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
+- (id)deepDescription;
+- (id)description;
+- (double)preferredScaleFactorForQuality:(int)arg1;
+- (id)newThumbnailSubRangeMD5InfoAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
+- (id)copyCollectedSegmentInfoFrom:(id)arg1 frameDur:(CDStruct_1b6d18a9)arg2 startTime:(CDStruct_1b6d18a9)arg3 endTime:(CDStruct_1b6d18a9)arg4;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (int)rotationDegrees;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
+- (CDStruct_1b6d18a9)nativeSampleDuration;
+- (CDStruct_1b6d18a9)magicFrameTime;
+- (id)nativeVideoProps;
+- (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
+- (id)type;
 - (BOOL)imageIsConstantOverRange:(CDStruct_e83c9415)arg1 context:(id)arg2;
+- (float)segmentCostAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
+- (BOOL)actualSegmentMD5:(CDStruct_bdcb2b0d *)arg1 idealMD5:(CDStruct_bdcb2b0d *)arg2 sampleOffset:(long long *)arg3 fullRange:(CDStruct_e83c9415 *)arg4 subRange:(CDStruct_e83c9415 *)arg5 sampleOffsetBaseTime:(CDStruct_1b6d18a9 *)arg6 forSampleDuration:(CDStruct_1b6d18a9)arg7 atTime:(CDStruct_1b6d18a9)arg8 context:(id)arg9;
 
 @end
 

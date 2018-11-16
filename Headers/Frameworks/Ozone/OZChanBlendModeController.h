@@ -10,9 +10,9 @@
 {
 }
 
-- (void)setChannelValue:(id)arg1;
-- (int)valueForChannel:(struct OZChannelEnum *)arg1;
 - (void)update;
+- (int)valueForChannel:(struct OZChannelEnum *)arg1;
+- (void)setChannelValue:(id)arg1;
 
 @end
 

@@ -31,28 +31,6 @@
     } _angleInfoFlags;
 }
 
-- (CDStruct_1b6d18a9)angleEnd;
-- (CDStruct_1b6d18a9)synchedItemStart:(id)arg1;
-- (CDStruct_e83c9415)synchedItemRange:(id)arg1;
-- (BOOL)canOrderByTC;
-- (void)setCanOrderByTC:(BOOL)arg1;
-- (BOOL)canOrderByTOD;
-- (void)setCanOrderByTOD:(BOOL)arg1;
-- (BOOL)orderedByTC;
-- (void)setOrderedByTC:(BOOL)arg1;
-- (BOOL)orderedByTOD;
-- (void)setOrderedByTOD:(BOOL)arg1;
-@property BOOL syncedByAudio;
-- (BOOL)syncedByTC;
-- (void)setSyncedByTC:(BOOL)arg1;
-- (BOOL)syncedByTOD;
-- (void)setSyncedByTOD:(BOOL)arg1;
-- (id)init;
-- (void)dealloc;
-- (id)shortDescription;
-- (id)description;
-- (id)firstItem;
-- (id)lastItem;
 @property id <FFMultiAngleItemProtocol> angleContainer; // @synthesize angleContainer=_angleContainer;
 @property BOOL isStill; // @synthesize isStill=_isStill;
 @property(readonly) NSMutableArray *angleItems; // @synthesize angleItems=_angleItems;
@@ -61,6 +39,28 @@
 @property CDStruct_1b6d18a9 angleDuration; // @synthesize angleDuration=_angleDuration;
 @property CDStruct_1b6d18a9 angleStart; // @synthesize angleStart=_angleStart;
 @property CDStruct_1b6d18a9 itemsDuration; // @synthesize itemsDuration=_itemsDuration;
+- (id)lastItem;
+- (id)firstItem;
+- (id)description;
+- (id)shortDescription;
+- (void)dealloc;
+- (id)init;
+- (void)setSyncedByTOD:(BOOL)arg1;
+- (BOOL)syncedByTOD;
+- (void)setSyncedByTC:(BOOL)arg1;
+- (BOOL)syncedByTC;
+@property BOOL syncedByAudio;
+- (void)setOrderedByTOD:(BOOL)arg1;
+- (BOOL)orderedByTOD;
+- (void)setOrderedByTC:(BOOL)arg1;
+- (BOOL)orderedByTC;
+- (void)setCanOrderByTOD:(BOOL)arg1;
+- (BOOL)canOrderByTOD;
+- (void)setCanOrderByTC:(BOOL)arg1;
+- (BOOL)canOrderByTC;
+- (CDStruct_e83c9415)synchedItemRange:(id)arg1;
+- (CDStruct_1b6d18a9)synchedItemStart:(id)arg1;
+- (CDStruct_1b6d18a9)angleEnd;
 
 @end
 

@@ -11,8 +11,8 @@
     CALayer *_videoIconLayer;
 }
 
-- (id)init;
 - (void)layoutSublayers;
+- (id)init;
 
 @end
 

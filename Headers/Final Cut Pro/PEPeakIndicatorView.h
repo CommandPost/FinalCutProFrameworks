@@ -20,19 +20,19 @@
     NSArray *m_minusImages;
 }
 
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)setBackgroundState:(int)arg1;
-- (int)backgroundState;
-- (float)peakValue;
-- (void)setPeakValue:(float)arg1;
-- (float)minValue;
-- (void)setMinValue:(float)arg1;
-- (float)peakLightValue;
-- (void)setPeakLightValue:(float)arg1;
-- (void)resetPeakIndicator:(id)arg1;
-- (void)updateCellImage;
 - (void)updatePeakImages;
+- (void)updateCellImage;
+- (void)resetPeakIndicator:(id)arg1;
+- (void)setPeakLightValue:(float)arg1;
+- (float)peakLightValue;
+- (void)setMinValue:(float)arg1;
+- (float)minValue;
+- (void)setPeakValue:(float)arg1;
+- (float)peakValue;
+- (int)backgroundState;
+- (void)setBackgroundState:(int)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

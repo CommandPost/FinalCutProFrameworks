@@ -17,18 +17,18 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_items;
 }
 
-- (id)init;
-- (id)initWithItemDisplayName:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)description;
-- (void)dealloc;
-- (void)addItem:(id)arg1;
-- (id)items;
-- (void)removeAllObjects;
 @property(retain, nonatomic) NSDate *dateData; // @synthesize dateData=_dateData;
 @property(nonatomic) BOOL itemIsDisclosable; // @synthesize itemIsDisclosable=_itemIsDisclosable;
 @property(retain, nonatomic) NSString *itemDisplayName; // @synthesize itemDisplayName=_itemDisplayName;
+- (void)removeAllObjects;
+- (id)items;
+- (void)addItem:(id)arg1;
+- (void)dealloc;
+- (id)description;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (id)initWithItemDisplayName:(id)arg1;
+- (id)init;
 
 @end
 

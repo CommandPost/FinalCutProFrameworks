@@ -26,20 +26,20 @@ __attribute__((visibility("hidden")))
     _Bool _invertAlpha;
 }
 
-- (void)determineAttributes;
-- (id)initWithCGImageRef:(struct CGImage *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 overrideAlphaInfo:(int)arg4;
-- (id)initWithCGImageRef:(struct CGImage *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
-- (id)initWithRepresentation:(id)arg1;
-- (void)dealloc;
-- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
-- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
-- (id)nativePixelFormat;
-- (id)type;
-- (struct CGRect)pixelSpaceBounds;
-- (_Bool)nativelyPremulBlack;
-- (struct CGImage *)CGImageRef;
 @property _Bool invertAlpha; // @synthesize invertAlpha=_invertAlpha;
 @property _Bool needPremultClamp; // @synthesize needPremultClamp=_needPremultClamp;
+- (struct CGImage *)CGImageRef;
+- (_Bool)nativelyPremulBlack;
+- (struct CGRect)pixelSpaceBounds;
+- (id)type;
+- (id)nativePixelFormat;
+- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
+- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (void)dealloc;
+- (id)initWithRepresentation:(id)arg1;
+- (id)initWithCGImageRef:(struct CGImage *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
+- (id)initWithCGImageRef:(struct CGImage *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 overrideAlphaInfo:(int)arg4;
+- (void)determineAttributes;
 
 @end
 

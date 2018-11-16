@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
     NSString *_comment;
 }
 
-- (id)initWithKey:(id)arg1 comment:(id)arg2;
-- (void)dealloc;
 @property(nonatomic) unsigned long long splitTime; // @synthesize splitTime=_splitTime;
 @property(copy, nonatomic) NSString *comment; // @synthesize comment=_comment;
 @property(copy, nonatomic) NSString *key; // @synthesize key=_key;
+- (void)dealloc;
+- (id)initWithKey:(id)arg1 comment:(id)arg2;
 
 @end
 

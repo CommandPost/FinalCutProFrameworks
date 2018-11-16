@@ -18,29 +18,29 @@
 }
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
-- (id)initWithScene:(struct OZScene *)arg1 nodeID:(unsigned long long)arg2;
-- (void)dealloc;
-- (struct OZSceneNode *)node;
-- (struct OZAudioTrack *)track;
-- (struct OZAudioMasterTrack *)masterTrack;
-- (CDStruct_1b6d18a9)time;
-- (void)beginChannelChange:(struct OZChannelBase *)arg1;
-@property(retain, nonatomic) NSNumber *enabled;
-@property(retain, nonatomic) NSString *name;
-@property(retain, nonatomic) NSNumber *gain;
-@property(retain, nonatomic) NSNumber *balance;
-@property(retain, nonatomic) NSNumber *mute;
-@property(retain, nonatomic) NSNumber *solo;
-@property(retain, nonatomic) NSNumber *linked;
-@property(retain, nonatomic) NSNumber *locked;
-@property(retain, nonatomic) NSNumber *outputBus;
 @property(retain, nonatomic) NSArray *outputBuses; // @synthesize outputBuses=_outputBuses;
-- (unsigned long long)countOfOutputBuses;
-- (id)objectInOutputBusesAtIndex:(unsigned long long)arg1;
-- (id)outputBusesAtIndexes:(id)arg1;
 @property(nonatomic) unsigned long long seed; // @synthesize seed=_seed;
 @property(readonly, nonatomic) unsigned long long nodeID; // @synthesize nodeID=_nodeID;
 @property(readonly, nonatomic) unsigned long long classID; // @synthesize classID=_classID;
+- (id)outputBusesAtIndexes:(id)arg1;
+- (id)objectInOutputBusesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)countOfOutputBuses;
+@property(retain, nonatomic) NSNumber *outputBus;
+@property(retain, nonatomic) NSNumber *locked;
+@property(retain, nonatomic) NSNumber *linked;
+@property(retain, nonatomic) NSNumber *solo;
+@property(retain, nonatomic) NSNumber *mute;
+@property(retain, nonatomic) NSNumber *balance;
+@property(retain, nonatomic) NSNumber *gain;
+@property(retain, nonatomic) NSString *name;
+@property(retain, nonatomic) NSNumber *enabled;
+- (void)beginChannelChange:(struct OZChannelBase *)arg1;
+- (CDStruct_1b6d18a9)time;
+- (struct OZAudioMasterTrack *)masterTrack;
+- (struct OZAudioTrack *)track;
+- (struct OZSceneNode *)node;
+- (void)dealloc;
+- (id)initWithScene:(struct OZScene *)arg1 nodeID:(unsigned long long)arg2;
 
 @end
 

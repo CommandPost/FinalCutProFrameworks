@@ -6,13 +6,15 @@
 
 #import "NSView.h"
 
+#import "NSTextViewDelegate.h"
+
 @class NSAttributedString, NSTextView;
 
-@interface TLKStringEditorView : NSView
+@interface TLKStringEditorView : NSView <NSTextViewDelegate>
 {
     id _delegate;
-    id _editCell;
     NSView *_viewEditor;
+    id _editCell;
     NSTextView *_textEditor;
     struct CGRect _textFrame;
     struct CGSize _minSize;
@@ -28,41 +30,41 @@
     } _sevFlags;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
-- (BOOL)isFlipped;
-- (id)font;
-- (void)setFont:(id)arg1;
-- (unsigned long long)alignment;
-- (void)setAlignment:(unsigned long long)arg1;
-- (id)stringValue;
-- (void)setStringValue:(id)arg1;
-- (id)attributedStringValue;
-- (void)setAttributedStringValue:(id)arg1;
-- (id)delegate;
-- (void)setDelegate:(id)arg1;
-- (id)editor;
-- (void)mouseDown:(id)arg1;
-- (void)setEditor:(id)arg1;
-- (struct CGSize)minimumSize;
-- (void)setMinimumSize:(struct CGSize)arg1;
-- (struct CGSize)maximumSize;
-- (void)setMaximumSize:(struct CGSize)arg1;
-- (struct CGRect)_alignedRectWithSize:(struct CGSize)arg1;
-- (BOOL)textView:(id)arg1 doCommandBySelector:(SEL)arg2;
-- (void)_editOneLine:(id)arg1;
-- (void)_edit:(id)arg1 inRect:(struct CGRect)arg2 ofViewEditor:(id)arg3 contextView:(id)arg4;
-- (struct CGRect)_clipFrameWithFrame:(struct CGRect)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)_textFrameDidChange:(id)arg1;
-- (void)textDidChange:(id)arg1;
-- (void)textDidEndEditing:(id)arg1;
-- (void)_boundsChanged:(id)arg1;
-- (struct CGRect)textFrame;
-- (void)editInRect:(struct CGRect)arg1 ofView:(id)arg2 event:(id)arg3;
-- (BOOL)textDidChange;
-- (void)setInitialValue:(id)arg1;
 - (id)initialValue;
+- (void)setInitialValue:(id)arg1;
+- (BOOL)textDidChange;
+- (void)editInRect:(struct CGRect)arg1 ofView:(id)arg2 event:(id)arg3;
+- (struct CGRect)textFrame;
+- (void)_boundsChanged:(id)arg1;
+- (void)textDidEndEditing:(id)arg1;
+- (void)textDidChange:(id)arg1;
+- (void)_textFrameDidChange:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (struct CGRect)_clipFrameWithFrame:(struct CGRect)arg1;
+- (void)_edit:(id)arg1 inRect:(struct CGRect)arg2 ofViewEditor:(id)arg3 contextView:(id)arg4;
+- (void)_editOneLine:(id)arg1;
+- (BOOL)textView:(id)arg1 doCommandBySelector:(SEL)arg2;
+- (struct CGRect)_alignedRectWithSize:(struct CGSize)arg1;
+- (void)setMaximumSize:(struct CGSize)arg1;
+- (struct CGSize)maximumSize;
+- (void)setMinimumSize:(struct CGSize)arg1;
+- (struct CGSize)minimumSize;
+- (void)setEditor:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (id)editor;
+- (void)setDelegate:(id)arg1;
+- (id)delegate;
+- (void)setAttributedStringValue:(id)arg1;
+- (id)attributedStringValue;
+- (void)setStringValue:(id)arg1;
+- (id)stringValue;
+- (void)setAlignment:(unsigned long long)arg1;
+- (unsigned long long)alignment;
+- (void)setFont:(id)arg1;
+- (id)font;
+- (BOOL)isFlipped;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -12,25 +12,25 @@
 {
 }
 
-+ (id)currentPickChannel;
 + (void)setCurrentPickChannel:(id)arg1;
-- (id)init;
-- (void)dealloc;
-- (void)cancelOnSelectionOnMatchTool:(id)arg1;
-- (void)completeOnSelectionOnMatchTool:(id)arg1;
-- (void)matchToolWasAssigned:(id)arg1;
-- (void)matchToolWasResigned:(id)arg1;
-- (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
-- (void)pickAnchoredObject:(id)arg1;
-- (id)effectStackToRecordForAnchoredObject:(id)arg1;
-- (id)effectToRecordForAnchoredObject:(id)arg1;
-- (id)channelFolderToRecordForAnchoredObject:(id)arg1;
-- (id)effectContainerToRecordForAnchoredObject:(id)arg1;
-- (id)actionStringForSaveChanges;
-- (id)footerText;
-- (id)accessoryTitle;
-- (id)okButtonTitle;
++ (id)currentPickChannel;
 - (BOOL)allowsReferenceChangeFromOrganizerListView;
+- (id)okButtonTitle;
+- (id)accessoryTitle;
+- (id)footerText;
+- (id)actionStringForSaveChanges;
+- (id)effectContainerToRecordForAnchoredObject:(id)arg1;
+- (id)channelFolderToRecordForAnchoredObject:(id)arg1;
+- (id)effectToRecordForAnchoredObject:(id)arg1;
+- (id)effectStackToRecordForAnchoredObject:(id)arg1;
+- (void)pickAnchoredObject:(id)arg1;
+- (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
+- (void)matchToolWasResigned:(id)arg1;
+- (void)matchToolWasAssigned:(id)arg1;
+- (void)completeOnSelectionOnMatchTool:(id)arg1;
+- (void)cancelOnSelectionOnMatchTool:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

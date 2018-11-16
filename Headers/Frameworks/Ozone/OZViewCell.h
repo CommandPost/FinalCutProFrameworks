@@ -15,19 +15,19 @@
 }
 
 + (BOOL)needsToRemainInViewHierarchy;
-- (id)init;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (void)instantiateView;
-- (void)setObjectValue:(id)arg1;
-- (id)objectValue;
-- (void)removeViewFromSuperview;
-- (void)setView:(id)arg1;
-- (id)view;
-- (void)setViewFrame:(struct CGRect)arg1 inCellFrame:(struct CGRect)arg2 inView:(id)arg3;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
 - (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
+- (void)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)setViewFrame:(struct CGRect)arg1 inCellFrame:(struct CGRect)arg2 inView:(id)arg3;
+- (id)view;
+- (void)setView:(id)arg1;
+- (void)removeViewFromSuperview;
+- (id)objectValue;
+- (void)setObjectValue:(id)arg1;
+- (void)instantiateView;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 
 @end
 

@@ -14,15 +14,15 @@
     BOOL mSettingValue;
 }
 
-- (id)initWithCMIODALControlID:(unsigned int)arg1 classID:(unsigned int)arg2;
-- (void)dealloc;
-- (id)exposedBindings;
-- (id)name;
-@property unsigned int value;
-@property(retain) NSArray *values; // @synthesize values=mValues;
-- (void)propertyDidChange:(const struct CMIOObjectPropertyAddress *)arg1;
-- (id)properties;
+@property(retain, nonatomic) NSArray *values; // @synthesize values=mValues;
 - (void)setProperties:(id)arg1;
+- (id)properties;
+- (void)propertyDidChange:(const struct CMIOObjectPropertyAddress *)arg1;
+@property unsigned int value;
+- (id)name;
+- (id)exposedBindings;
+- (void)dealloc;
+- (id)initWithCMIODALControlID:(unsigned int)arg1 classID:(unsigned int)arg2;
 
 @end
 

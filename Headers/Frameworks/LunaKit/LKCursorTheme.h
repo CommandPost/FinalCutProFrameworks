@@ -10,31 +10,31 @@
 {
 }
 
-+ (id)arrowCursorFacet;
-+ (id)zoomCursorFacet;
-+ (id)zoomInCursorFacet;
-+ (id)zoomOutCursorFacet;
-+ (id)crosshairCursorFacet;
-+ (id)IBeamCursorFacet;
-+ (id)eyedropperCursorFacet;
-+ (id)pointerCursorFacet;
-+ (id)openHandCursorFacet;
-+ (id)closedHandCursorFacet;
-+ (id)resizeLeftCursorFacet;
-+ (id)resizeRightCursorFacet;
-+ (id)resizeLeftRightCursorFacet;
-+ (id)resizeUpDownCursorFacet;
-+ (id)resizeTopLeftCursorFacet;
-+ (id)resizeTopRightCursorFacet;
-+ (id)horizontalDividerCursorFacet;
-+ (id)verticalDividerCursorFacet;
-+ (id)rotateTopLeftCursorFacet;
-+ (id)rotateTopRightCursorFacet;
-+ (id)rotateBottomLeftCursorFacet;
-+ (id)rotateBottomRightCursorFacet;
-+ (id)scrubberCursorFacet;
-+ (id)scrubberDragCursorFacet;
 + (id)scrubberVertDragCursorFacet;
++ (id)scrubberDragCursorFacet;
++ (id)scrubberCursorFacet;
++ (id)rotateBottomRightCursorFacet;
++ (id)rotateBottomLeftCursorFacet;
++ (id)rotateTopRightCursorFacet;
++ (id)rotateTopLeftCursorFacet;
++ (id)verticalDividerCursorFacet;
++ (id)horizontalDividerCursorFacet;
++ (id)resizeTopRightCursorFacet;
++ (id)resizeTopLeftCursorFacet;
++ (id)resizeUpDownCursorFacet;
++ (id)resizeLeftRightCursorFacet;
++ (id)resizeRightCursorFacet;
++ (id)resizeLeftCursorFacet;
++ (id)closedHandCursorFacet;
++ (id)openHandCursorFacet;
++ (id)pointerCursorFacet;
++ (id)eyedropperCursorFacet;
++ (id)IBeamCursorFacet;
++ (id)crosshairCursorFacet;
++ (id)zoomOutCursorFacet;
++ (id)zoomInCursorFacet;
++ (id)zoomCursorFacet;
++ (id)arrowCursorFacet;
 
 @end
 

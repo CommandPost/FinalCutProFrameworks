@@ -15,11 +15,11 @@
     unsigned int gradientStyle;
 }
 
-- (id)initWithEvaluator:(id)arg1 drawingAngle:(double)arg2 gradientStyle:(unsigned int)arg3;
-- (void)dealloc;
 @property unsigned int gradientStyle; // @synthesize gradientStyle;
 @property double drawingAngle; // @synthesize drawingAngle;
 @property(retain) PM_ProPSDGradientEvaluator *evaluator; // @synthesize evaluator;
+- (void)dealloc;
+- (id)initWithEvaluator:(id)arg1 drawingAngle:(double)arg2 gradientStyle:(unsigned int)arg3;
 
 @end
 

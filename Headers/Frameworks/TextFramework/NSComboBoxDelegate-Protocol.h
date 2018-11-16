@@ -6,12 +6,14 @@
 
 #import "NSTextFieldDelegate.h"
 
+@class NSNotification;
+
 @protocol NSComboBoxDelegate <NSTextFieldDelegate>
 
 @optional
-- (void)comboBoxWillPopUp:(id)arg1;
-- (void)comboBoxWillDismiss:(id)arg1;
-- (void)comboBoxSelectionDidChange:(id)arg1;
-- (void)comboBoxSelectionIsChanging:(id)arg1;
+- (void)comboBoxSelectionIsChanging:(NSNotification *)arg1;
+- (void)comboBoxSelectionDidChange:(NSNotification *)arg1;
+- (void)comboBoxWillDismiss:(NSNotification *)arg1;
+- (void)comboBoxWillPopUp:(NSNotification *)arg1;
 @end
 

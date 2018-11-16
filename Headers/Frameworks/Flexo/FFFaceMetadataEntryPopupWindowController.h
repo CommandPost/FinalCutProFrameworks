@@ -18,15 +18,15 @@ __attribute__((visibility("hidden")))
     BOOL _closingWindow;
 }
 
-- (void)windowDidLoad;
-- (void)showWindow:(id)arg1;
-@property(retain, nonatomic) FFPerson *person;
-@property(retain, nonatomic) FFFaceMarkerEdit *currentlyDisplayedMarker;
-- (void)closeWithFade:(BOOL)arg1;
-- (void)close;
-- (void)_removeFromParentWindow;
-- (void)dealloc;
 @property(retain, nonatomic) FFPlayerView *playerView; // @synthesize playerView;
+- (void)dealloc;
+- (void)_removeFromParentWindow;
+- (void)close;
+- (void)closeWithFade:(BOOL)arg1;
+@property(retain, nonatomic) FFFaceMarkerEdit *currentlyDisplayedMarker;
+@property(retain, nonatomic) FFPerson *person;
+- (void)showWindow:(id)arg1;
+- (void)windowDidLoad;
 
 @end
 

@@ -8,39 +8,32 @@
 
 #import "FFContextMeterObserver.h"
 
-@class FFContext, FFMedia, PEAudioLayeredMeterView;
+@class FFContext, PEAudioLayeredMeterView;
 
 @interface PEAudioMeterController : NSObject <FFContextMeterObserver>
 {
     PEAudioLayeredMeterView *_layeredMeterView;
     FFContext *_context;
-    FFMedia *_sequence;
-    BOOL _isAudioPlaybackOn;
-    BOOL _recentTransient;
+    unsigned int _numChannels;
     BOOL _isPlaying;
     BOOL _moduleIsShowing;
+    BOOL _observingMeterUpdates;
 }
 
-- (void)awakeFromNib;
-- (id)init;
-- (void)dealloc;
-- (id)context;
-- (void)sourceChanged:(id)arg1;
-- (void)_removeContextMeteringObservers;
-- (void)_addContextMeteringObservers;
-- (void)_setContext:(id)arg1;
-- (void)_setSequence:(id)arg1;
-- (void)playerChangedForContext:(id)arg1;
-- (void)reloadFromStory:(id)arg1;
-- (void)resetOverloadIndicators;
-- (void)timeRateChangedForContext:(id)arg1;
-- (void)audioPlaybackStateChanged:(id)arg1;
-- (void)contextMeterUpdate:(const float *)arg1 channels:(unsigned long long)arg2 levels:(const float *)arg3 channels:(unsigned long long)arg4;
-- (void)moduleViewWasInstalled:(BOOL)arg1;
-- (void)moduleViewWillBeRemoved;
-- (void)moduleDidHide;
-- (void)moduleDidUnhide;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)resetOverloadIndicators;
+- (void)moduleDidHide;
+- (void)moduleViewWillBeRemoved;
+- (void)moduleDidUnhide;
+- (void)moduleViewWasInstalled:(BOOL)arg1;
+- (void)contextMeterUpdate:(const float *)arg1 channels:(unsigned long long)arg2;
+- (void)timeRateChangedForContext:(id)arg1;
+- (void)_setContext:(id)arg1;
+- (void)_addContextMeteringObservers;
+- (void)_removeContextMeteringObservers;
+- (id)context;
+- (void)dealloc;
+- (id)init;
 
 @end
 

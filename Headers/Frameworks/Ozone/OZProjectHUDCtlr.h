@@ -13,12 +13,12 @@
     OZColorWell *_pColorWell;
 }
 
-- (void)dealloc;
-- (void)buildUIWithObjectList:(list_2c251165 *)arg1 viewController:(id)arg2 context:(id)arg3;
-- (BOOL)loadView;
-- (void)notify:(unsigned int)arg1;
-- (void)setBackgroundColor:(id)arg1;
 - (void)update;
+- (void)setBackgroundColor:(id)arg1;
+- (void)notify:(unsigned int)arg1;
+- (BOOL)loadView;
+- (void)buildUIWithObjectList:(list_37573188 *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)dealloc;
 
 @end
 

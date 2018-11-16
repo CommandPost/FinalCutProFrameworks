@@ -10,15 +10,15 @@
 {
 }
 
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-- (struct OZChannelLevels *)ozChannel;
-- (id)blackChannel;
-- (id)whiteChannel;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
+- (double)gammaValueAtTime:(CDStruct_198678f7)arg1;
+- (double)whiteValueAtTime:(CDStruct_198678f7)arg1;
+- (double)blackValueAtTime:(CDStruct_198678f7)arg1;
 - (id)gammaChannel;
-- (double)blackValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (double)whiteValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (double)gammaValueAtTime:(CDStruct_1b6d18a9)arg1;
+- (id)whiteChannel;
+- (id)blackChannel;
+- (struct OZChannelLevels *)ozChannel;
 
 @end
 

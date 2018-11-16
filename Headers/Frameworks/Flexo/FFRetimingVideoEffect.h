@@ -17,27 +17,28 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
-- (void)dealloc;
-- (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
-- (BOOL)isAtDefaultSettings;
-- (long long)frameSampleMode;
-- (void)setFrameSampleMode:(long long)arg1;
-- (id)blendedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 frameDuration:(CDStruct_1b6d18a9)arg5 sampleDuration:(CDStruct_1b6d18a9)arg6 roi:(struct CGRect *)arg7;
-- (void)_performFlowAnalysis;
-- (id)flowInterpolatedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 frameDuration:(CDStruct_1b6d18a9)arg5 sampleDuration:(CDStruct_1b6d18a9)arg6 roi:(struct CGRect *)arg7;
-- (id)newImageWithFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 inputImage:(id)arg2 stream:(id)arg3;
-- (BOOL)currentSettingsRequireFlowVectors;
-- (BOOL)_checkTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3 mediaRep:(id)arg4;
-- (BOOL)hasFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(struct CGRect *)arg7;
-- (void)createSweetSpotPresetChannelsInFolder:(id)arg1;
-- (void)createPresetsChannelsInFolder:(id)arg1;
-- (void)createChannelsInFolder:(id)arg1;
-- (void)useSweetSpotPresetChannelFolder:(id)arg1;
-- (void)usePresetsChannelFolder:(id)arg1;
-- (id)inputKeys;
-- (id)newEffectNode;
 - (BOOL)waitingForAnalysis;
+- (id)newEffectNode;
+- (id)inputKeys;
+- (void)usePresetsChannelFolder:(struct CHChannelFolder *)arg1;
+- (void)useSweetSpotPresetChannelFolder:(struct CHChannelFolder *)arg1;
+- (void)createChannelsInFolder:(id)arg1;
+- (void)createPresetsChannelsInFolder:(id)arg1;
+- (void)createSweetSpotPresetChannelsInFolder:(id)arg1;
+- (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (BOOL)hasFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3;
+- (BOOL)_checkTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3 mediaRep:(id)arg4;
+- (BOOL)currentSettingsRequireFlowVectors;
+- (id)newImageWithFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 inputImage:(id)arg2 stream:(id)arg3;
+- (id)newFlowInterpolatedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 frameDuration:(CDStruct_1b6d18a9)arg5 sampleDuration:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (void)_performFlowAnalysis;
+- (id)newBlendedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 frameDuration:(CDStruct_1b6d18a9)arg5 sampleDuration:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (void)setFrameSampleMode:(long long)arg1;
+- (long long)frameSampleMode;
+- (BOOL)isAtDefaultSettings;
+- (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
+- (void)dealloc;
 
 @end
 

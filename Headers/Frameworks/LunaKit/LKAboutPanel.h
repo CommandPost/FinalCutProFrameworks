@@ -23,22 +23,22 @@
 }
 
 + (id)sharedAboutPanel;
-- (void)dealloc;
-- (id)versionString;
-- (id)buildVersionString;
-- (void)orderFrontSplash:(id)arg1;
-- (void)orderOutSplash:(id)arg1;
-- (void)orderFrontAboutPanel:(id)arg1;
-- (void)setStatusText:(id)arg1;
-- (void)orderOutAboutPanel:(id)arg1;
-- (void)showLicenseAgreement:(id)arg1;
-- (void)showAcknowledgements:(id)arg1;
-- (void)toggleAlternateVersion:(id)arg1;
-- (void)loadNib;
-- (void)updateNib;
-- (void)windowDidResignKey:(id)arg1;
-- (void)windowDidBecomeKey:(id)arg1;
 @property BOOL isSplash; // @synthesize isSplash=_isSplash;
+- (void)windowDidBecomeKey:(id)arg1;
+- (void)windowDidResignKey:(id)arg1;
+- (void)updateNib;
+- (void)loadNib;
+- (void)toggleAlternateVersion:(id)arg1;
+- (void)showAcknowledgements:(id)arg1;
+- (void)showLicenseAgreement:(id)arg1;
+- (void)orderOutAboutPanel:(id)arg1;
+- (void)setStatusText:(id)arg1;
+- (void)orderFrontAboutPanel:(id)arg1;
+- (void)orderOutSplash:(id)arg1;
+- (void)orderFrontSplash:(id)arg1;
+- (id)buildVersionString;
+- (id)versionString;
+- (void)dealloc;
 
 @end
 

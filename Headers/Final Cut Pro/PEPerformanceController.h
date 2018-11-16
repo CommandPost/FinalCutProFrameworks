@@ -24,30 +24,30 @@
     BOOL pmr_clickHorizontal;
 }
 
-+ (BOOL)performanceMonitoringEnabled;
 + (id)sharedPerformanceController;
-- (id)init;
-- (void)dealloc;
-- (void)installPerformanceMenu;
-- (void)disablePerformanceMenu;
-- (void)timeEvent:(id)arg1;
-- (void)_setCurrentEventDescription:(id)arg1;
-- (void *)PMRinstrument;
-- (void)logItemKey:(id)arg1 SInt64Value:(long long)arg2;
-- (void)logItemKey:(id)arg1 doubleValue:(double)arg2;
-- (void)logItemKey:(id)arg1 value:(id)arg2;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)performance_recordRAMUsage:(id)arg1;
-- (void)performance_recordDropFrames:(id)arg1;
-- (void)performance_timeAnActivity:(id)arg1;
-- (void)gatherRAMStatistics:(id)arg1;
-- (void)showPerformanceHUD:(id)arg1;
-- (void)launchLoggerHead:(id)arg1;
-- (void)_drawingWatcherBeginWatchingNow;
-- (void)_drawingWatcherBeginWatching;
-- (void)_drawingWatcherNoMoreDrawing:(id)arg1;
-- (void)_drawingWatcherFirstDrawing:(id)arg1;
++ (BOOL)performanceMonitoringEnabled;
 - (BOOL)dumpAllEventTimes;
+- (void)_drawingWatcherFirstDrawing:(id)arg1;
+- (void)_drawingWatcherNoMoreDrawing:(id)arg1;
+- (void)_drawingWatcherBeginWatching;
+- (void)_drawingWatcherBeginWatchingNow;
+- (void)launchLoggerHead:(id)arg1;
+- (void)showPerformanceHUD:(id)arg1;
+- (void)gatherRAMStatistics:(id)arg1;
+- (void)performance_timeAnActivity:(id)arg1;
+- (void)performance_recordDropFrames:(id)arg1;
+- (void)performance_recordRAMUsage:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)logItemKey:(id)arg1 value:(id)arg2;
+- (void)logItemKey:(id)arg1 doubleValue:(double)arg2;
+- (void)logItemKey:(id)arg1 SInt64Value:(long long)arg2;
+- (void *)PMRinstrument;
+- (void)_setCurrentEventDescription:(id)arg1;
+- (void)timeEvent:(id)arg1;
+- (void)disablePerformanceMenu;
+- (void)installPerformanceMenu;
+- (void)dealloc;
+- (id)init;
 
 @end
 

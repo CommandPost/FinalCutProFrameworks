@@ -21,33 +21,33 @@
     BOOL _altKeyDown;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (BOOL)isDependentOnBounds;
-- (BOOL)showScaleOSC;
-- (BOOL)showRotationOSC;
-- (BOOL)showTranslationOSC;
-- (void)draw;
-- (void)setOSCStateTranslate:(BOOL)arg1 rotate:(BOOL)arg2 scale:(BOOL)arg3;
-- (BOOL)toggleToolTranslate:(id)arg1;
-- (BOOL)toggleToolRotate:(id)arg1;
-- (BOOL)toggleToolScale:(id)arg1;
-- (void)updateTranslation:(const PCVector3_457fd1f0 *)arg1;
-- (void)updateRotation:(const PCQuat_8a184614 *)arg1;
-- (void)updateScale:(const PCVector3_457fd1f0 *)arg1 scaleFromCentre:(_Bool)arg2 hitPart:(int)arg3;
-- (void)updateScale:(const PCVector3_457fd1f0 *)arg1 translate:(const PCVector3_457fd1f0 *)arg2;
-- (void)snapshotState;
-- (id)getDefaultCursor;
-- (id)getCursorWithEvent:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (BOOL)flagsChanged:(id)arg1;
-- (struct CGRect)getBounds;
-- (BOOL)acceptPassiveEvent:(id)arg1;
-- (BOOL)postRedisplayOnActivePartChange;
-- (BOOL)is3DOSC;
 - (void)setActivePart:(int)arg1;
+- (BOOL)is3DOSC;
+- (BOOL)postRedisplayOnActivePartChange;
+- (BOOL)acceptPassiveEvent:(id)arg1;
+- (struct CGRect)getBounds;
+- (BOOL)flagsChanged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (id)getCursorWithEvent:(id)arg1;
+- (id)getDefaultCursor;
+- (void)snapshotState;
+- (void)updateScale:(const PCVector3_457fd1f0 *)arg1 translate:(const PCVector3_457fd1f0 *)arg2;
+- (void)updateScale:(const PCVector3_457fd1f0 *)arg1 scaleFromCentre:(_Bool)arg2 hitPart:(int)arg3;
+- (void)updateRotation:(const PCQuat_de30948b *)arg1;
+- (void)updateTranslation:(const PCVector3_457fd1f0 *)arg1;
+- (BOOL)toggleToolScale:(id)arg1;
+- (BOOL)toggleToolRotate:(id)arg1;
+- (BOOL)toggleToolTranslate:(id)arg1;
+- (void)setOSCStateTranslate:(BOOL)arg1 rotate:(BOOL)arg2 scale:(BOOL)arg3;
+- (void)draw;
+- (BOOL)showTranslationOSC;
+- (BOOL)showRotationOSC;
+- (BOOL)showScaleOSC;
+- (BOOL)isDependentOnBounds;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

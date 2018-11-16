@@ -26,11 +26,12 @@
     struct CGRect _precisionFrame;
 }
 
-- (void)_updateOnAnimateChange:(struct TXNumberGenerator *)arg1;
-- (void)_updateOnFormatChange:(struct TXNumberGenerator *)arg1;
-- (void)_updateOnRandomChange:(struct TXNumberGenerator *)arg1;
+- (id).cxx_construct;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
 - (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
+- (void)_updateOnRandomChange:(struct TXNumberGenerator *)arg1;
+- (void)_updateOnFormatChange:(struct TXNumberGenerator *)arg1;
+- (void)_updateOnAnimateChange:(struct TXNumberGenerator *)arg1;
 
 @end
 

@@ -27,12 +27,6 @@ __attribute__((visibility("hidden")))
     NSNumber *whiteBalY;
 }
 
-- (id)init;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 @property(retain, nonatomic) NSNumber *whiteBalY; // @synthesize whiteBalY;
 @property(retain, nonatomic) NSNumber *whiteBalX; // @synthesize whiteBalX;
 @property(retain, nonatomic) NSNumber *blackBalY; // @synthesize blackBalY;
@@ -44,6 +38,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSNumber *lift; // @synthesize lift;
 @property(retain, nonatomic) NSNumber *bumpSigma; // @synthesize bumpSigma;
 @property(retain, nonatomic) NSNumber *bumpHue; // @synthesize bumpHue;
+- (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

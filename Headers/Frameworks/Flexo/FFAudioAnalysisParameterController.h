@@ -8,7 +8,7 @@
 
 #import "FFEnhanceAudioDelegate.h"
 
-@class FFAnchoredObject, FFChannelChangeController, FFEnhanceAudioManager, FFInspectorModuleTextField, LKButton, NSMutableArray, NSProProgressIndicator;
+@class FFChannelChangeController, FFEnhanceAudioManager, FFInspectorModuleTextField, LKButton, NSMutableArray, NSProProgressIndicator;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioAnalysisParameterController : OZViewController <FFEnhanceAudioDelegate>
@@ -17,36 +17,33 @@ __attribute__((visibility("hidden")))
     LKButton *_showAudioEnhanceButton;
     LKButton *_warningIndicator;
     FFInspectorModuleTextField *_text;
-    FFAnchoredObject *_object;
     FFEnhanceAudioManager *_analysisManager;
     FFChannelChangeController *_channelChangeController;
     NSProProgressIndicator *_analysisSpinner;
     int _warningState;
-    NSMutableArray *m_objectList;
-    NSMutableArray *m_effectStackList;
+    NSMutableArray *_managerList;
+    NSMutableArray *_effectStackList;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 object:(id)arg3;
-- (void)dealloc;
-- (void)addAnchoredObject:(id)arg1;
-- (id)anchoredObjects;
-- (void)didBuildUI;
-- (void)update;
-- (float)suggestedMaxParamWidth;
-- (void)analysisDidComplete:(id)arg1;
-- (void)analysisDidStart:(id)arg1;
-- (void)showAudioEnhancements:(id)arg1;
-- (id)facetForShowAudioEnhanceButton;
-- (BOOL)shouldEnableShowAudioEnhancements;
-- (void)updateStatusBadge;
-- (void)updateStatusText;
-- (void)updateAudioEnhanceButton;
-- (void)determineWarningState;
-- (void)checkForAnalysis;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-@property BOOL analyzed; // @synthesize analyzed=_analyzed;
+@property(nonatomic) BOOL analyzed; // @synthesize analyzed=_analyzed;
 @property(retain, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
-@property(retain) FFAnchoredObject *object; // @synthesize object=_object;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)checkForAnalysis;
+- (void)determineWarningState;
+- (void)updateAudioEnhanceButton;
+- (void)updateStatusText;
+- (void)updateStatusBadge;
+- (BOOL)shouldEnableShowAudioEnhancements;
+- (id)facetForShowAudioEnhanceButton;
+- (void)showAudioEnhancements:(id)arg1;
+- (void)analysisDidStart:(id)arg1;
+- (void)analysisDidComplete:(id)arg1;
+- (float)suggestedMaxParamWidth;
+- (void)update;
+- (void)didBuildUI;
+- (void)addAssociatedChannel:(struct OZChannelBase *)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

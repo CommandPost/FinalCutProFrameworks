@@ -14,26 +14,34 @@
     struct OpaqueCMByteStream *_byteStream;
     struct OpaqueFigFormatReader *_formatReader;
     struct OpaqueFigScheduledIO *_schedIO;
+    struct OpaqueFigScheduledIO *_throttleIO;
+    struct OpaqueFigScheduledIO *_appThrottledIO;
     NSURL *_url;
     FFMIORADAsset *_radAsset;
-    int _trackID;
     int _status;
 }
 
-- (id)initWithRADAsset:(id)arg1;
-- (id)initWithURL:(id)arg1;
-- (void)dealloc;
-- (id)url;
-- (struct OpaqueFigByteStreamProvider *)byteStreamProvider;
-- (struct OpaqueCMByteStream *)byteStream;
-- (struct OpaqueFigFormatReader *)formatReader;
-- (struct OpaqueFigScheduledIO *)schedIO;
-- (struct OpaqueFigScheduledIO *)_schedIO;
-- (void)_openRADComponent;
-- (void)_openMovie;
-- (id)radAsset;
-@property int trackID; // @synthesize trackID=_trackID;
++ (id)copyFFMovieInstanceFigForRADAsset:(id)arg1;
++ (id)copyFFMovieInstanceFigForURL:(id)arg1;
 @property(readonly) int status; // @synthesize status=_status;
+- (id)description;
+- (struct OpaqueFigScheduledIO *)appThrottledIO;
+- (struct OpaqueFigScheduledIO *)throttleIO;
+- (id)radAsset;
+- (void)_openMovie;
+- (void)_cacheMovieBuffer:(struct OpaqueCMBlockBuffer *)arg1 forKey:(id)arg2;
+- (struct OpaqueCMBlockBuffer *)_newBufferFromLookupInQTImporterCache:(id)arg1;
+- (id)_newKeyForQTImporterCacheLookup:(id)arg1;
+- (void)_openRADComponent;
+- (struct OpaqueFigScheduledIO *)_schedIO;
+- (struct OpaqueFigScheduledIO *)schedIOForTrackID:(int)arg1;
+- (struct OpaqueFigFormatReader *)formatReader;
+- (struct OpaqueCMByteStream *)byteStreamForTrackID:(int)arg1;
+- (struct OpaqueFigByteStreamProvider *)byteStreamProvider;
+- (id)urlForTrackID:(int)arg1;
+- (void)dealloc;
+- (id)initWithURL:(id)arg1;
+- (id)initWithRADAsset:(id)arg1;
 
 @end
 

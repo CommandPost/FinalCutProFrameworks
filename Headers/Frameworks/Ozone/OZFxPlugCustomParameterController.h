@@ -14,11 +14,11 @@
     PIParameterPulldown *_pParamPulldown;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 andView:(id)arg3;
-- (void)dealloc;
-- (void)update;
-- (void)enable;
 - (void)disable;
+- (void)enable;
+- (void)update;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 andView:(id)arg3;
 
 @end
 

@@ -21,14 +21,14 @@
     OZScrubberController *_lineSpacingCtlr;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (struct OZChannelDouble *)kerningChannel;
-- (struct OZChannelPercent *)trackingChannel;
-- (struct OZChannelDouble *)lineSpacingChannel;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
-- (void)setKerningValue:(id)arg1;
 - (void)update;
+- (void)setKerningValue:(id)arg1;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (struct OZChannelDouble *)lineSpacingChannel;
+- (struct OZChannelPercent *)trackingChannel;
+- (struct OZChannelDouble *)kerningChannel;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -20,16 +20,17 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-- (id)initWithAnchoredObject:(id)arg1 andTime:(CDStruct_1b6d18a9)arg2;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) NSString *anchoredObjectPersistentID; // @synthesize anchoredObjectPersistentID=_anchoredObjectPersistentID;
 @property(readonly) NSString *projectDocumentID; // @synthesize projectDocumentID=_projectDocumentID;
 @property(readonly) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 @property(readonly, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObjectRef;
+- (id).cxx_construct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
+- (id)initWithAnchoredObject:(id)arg1 andTime:(CDStruct_1b6d18a9)arg2;
 
 @end
 

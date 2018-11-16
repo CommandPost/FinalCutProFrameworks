@@ -13,10 +13,10 @@
     FFPlayerItemModule *_contentModule;
 }
 
-- (id)init;
-- (void)applyLayoutDictionary:(id)arg1;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
 @property(readonly, nonatomic) FFPlayerItemModule *contentModule; // @synthesize contentModule=_contentModule;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)applyLayoutDictionary:(id)arg1;
+- (id)init;
 
 @end
 

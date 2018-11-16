@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
     FFChannelChangeController *m_channelChangeController;
     NSString *m_channelChangeControllerActionName;
     NSCountedSet *m_channelChangeControllerObjects;
-    NSMapTable *m_channelToObjectMap;
-    NSMutableArray *m_selectedItems;
+    NSMapTable *m_channelToEffectStackMap;
+    NSMutableArray *m_selectedEffectStacks;
     NSMutableArray *m_observedBundleParts;
     OZViewControllerGroup *m_panGroupController;
     OZLabeledParamController *m_panModeController;
@@ -28,18 +28,18 @@ __attribute__((visibility("hidden")))
     NSArray *m_advancedSettingsControllers;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
-- (id)getSubgroup;
-- (void)update;
-- (void)selectPanMode:(id)arg1;
-- (void)_releaseSurroundControllers;
-- (void)_updatePanModeMenu;
-- (void)controller:(id)arg1 willChangeChannel:(struct OZChannelBase *)arg2;
-- (void)controller:(id)arg1 didChangeChannel:(struct OZChannelBase *)arg2;
-- (void)controller:(id)arg1 willSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
 - (void)controller:(id)arg1 didSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
+- (void)controller:(id)arg1 willSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
+- (void)controller:(id)arg1 didChangeChannel:(struct OZChannelBase *)arg2;
+- (void)controller:(id)arg1 willChangeChannel:(struct OZChannelBase *)arg2;
+- (void)_updatePanModeMenu;
+- (void)_releaseSurroundControllers;
+- (void)selectPanMode:(id)arg1;
+- (void)update;
+- (id)getSubgroup;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

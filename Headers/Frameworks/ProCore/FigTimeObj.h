@@ -14,27 +14,20 @@
     CDStruct_1b6d18a9 _time;
 }
 
-+ (id)timeWithTime:(CDStruct_1b6d18a9)arg1;
 + (BOOL)classIsAbstract;
-- (id)initWithFigTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)time;
-- (void)setTime:(CDStruct_1b6d18a9)arg1;
-- (void)getValue:(CDStruct_1b6d18a9 *)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (long long)compare:(id)arg1;
-- (long long)compareWithTime:(id)arg1;
-- (unsigned long long)hash;
++ (id)timeWithTime:(CDStruct_1b6d18a9)arg1;
+- (id).cxx_construct;
 - (BOOL)isEqual:(id)arg1;
-- (long long)timevalue;
-- (void)setTimevalue:(long long)arg1;
-- (int)timescale;
-- (void)setTimescale:(int)arg1;
-- (unsigned int)flags;
-- (void)setFlags:(unsigned int)arg1;
-- (long long)epoch;
-- (void)setEpoch:(long long)arg1;
+- (unsigned long long)hash;
+- (long long)compareWithTime:(id)arg1;
+- (long long)compare:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)getValue:(CDStruct_1b6d18a9 *)arg1;
+- (void)setTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)time;
+- (id)initWithFigTime:(CDStruct_1b6d18a9)arg1;
 
 @end
 

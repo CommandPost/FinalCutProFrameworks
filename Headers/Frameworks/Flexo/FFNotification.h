@@ -10,9 +10,9 @@
 {
 }
 
-- (id)name;
-- (id)object;
 - (id)userInfo;
+- (id)object;
+- (id)name;
 
 @end
 

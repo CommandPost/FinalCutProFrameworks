@@ -18,18 +18,18 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_channelsToCheckForkeyFrames;
 }
 
-- (id)initWithDistortEffect:(id)arg1 effectStack:(id)arg2;
-- (void)dealloc;
-- (BOOL)supportsTool:(Class)arg1;
-- (void)removeOverlayWindowForNoRangeOverlap;
-- (void)enableOverlayWindowForNoRangeOverlap;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)exitOSC:(id)arg1;
-- (id)channelsToCheckForKeyframes;
-- (id)keyFrameButton;
-- (void)keyFramePreviousAddNext:(id)arg1;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
+- (void)keyFramePreviousAddNext:(id)arg1;
+- (id)keyFrameButton;
+- (id)channelsToCheckForKeyframes;
+- (void)exitOSC:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)enableOverlayWindowForNoRangeOverlap;
+- (void)removeOverlayWindowForNoRangeOverlap;
+- (BOOL)supportsTool:(Class)arg1;
+- (void)dealloc;
+- (id)initWithDistortEffect:(id)arg1 effectStack:(id)arg2;
 
 @end
 

@@ -17,16 +17,16 @@ __attribute__((visibility("hidden")))
     NSProThemeFacet *_facet;
 }
 
-+ (void)initialize;
-+ (void)_handleLookDidChange:(id)arg1;
 + (id)cachedTexturesForFacet:(id)arg1 context:(struct _CGLContextObject *)arg2;
-- (id)_initWithFacet:(id)arg1 virtualScreen:(int)arg2;
-- (id)initWithFacet:(id)arg1 context:(struct _CGLContextObject *)arg2;
-- (void)dealloc;
-- (void)invalidate;
-- (BOOL)isValidForContext:(struct _CGLContextObject *)arg1;
-- (id)textureForContext:(struct _CGLContextObject *)arg1 destView:(id)arg2 colorSync:(BOOL)arg3 state:(long long)arg4 dimension1:(long long)arg5 value:(long long)arg6 sizeInPoints:(struct CGSize)arg7 createIfNeeded:(BOOL)arg8;
++ (void)_handleLookDidChange:(id)arg1;
++ (void)initialize;
 - (id)textureForContext:(struct _CGLContextObject *)arg1 destView:(id)arg2 colorSync:(BOOL)arg3 state:(long long)arg4 sizeInPoints:(struct CGSize)arg5 createIfNeeded:(BOOL)arg6;
+- (id)textureForContext:(struct _CGLContextObject *)arg1 destView:(id)arg2 colorSync:(BOOL)arg3 state:(long long)arg4 dimension1:(long long)arg5 value:(long long)arg6 sizeInPoints:(struct CGSize)arg7 createIfNeeded:(BOOL)arg8;
+- (BOOL)isValidForContext:(struct _CGLContextObject *)arg1;
+- (void)invalidate;
+- (void)dealloc;
+- (id)initWithFacet:(id)arg1 context:(struct _CGLContextObject *)arg2;
+- (id)_initWithFacet:(id)arg1 virtualScreen:(int)arg2;
 
 @end
 

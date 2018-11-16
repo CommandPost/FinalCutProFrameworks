@@ -10,8 +10,8 @@
 {
 }
 
-- (void)drawRect:(struct CGRect)arg1;
 - (id)cornerImageWithDirection:(BOOL)arg1;
+- (void)drawRect:(struct CGRect)arg1;
 
 @end
 

@@ -6,15 +6,17 @@
 
 #import "FFSidebarModuleDelegate.h"
 
+@class FFAnchoredSequence, FFContext, FFSequenceProject;
+
 @protocol FFProjectOrganizerModuleDelegate <FFSidebarModuleDelegate>
-- (void)openSequenceInEditor:(id)arg1;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
-- (void)newProject:(id)arg1;
-- (void)sendFullScreen:(id)arg1;
-- (void)showProviderSettings:(id)arg1;
-- (BOOL)canBeginSkimming;
+- (void)setSelectedProject:(FFSequenceProject *)arg1;
 - (BOOL)canBeginPlaying;
-- (void)setSelectedProject:(id)arg1;
+- (BOOL)canBeginSkimming;
+- (void)showProviderSettings:(id)arg1;
+- (void)sendFullScreen:(id)arg1;
+- (void)newProject:(id)arg1;
+- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 unloadingBlock:(void (^)(void))arg4;
+- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3;
+- (void)openSequenceInEditor:(FFAnchoredSequence *)arg1;
 @end
 

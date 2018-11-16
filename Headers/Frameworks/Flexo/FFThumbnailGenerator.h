@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredSequence, FFBackgroundTaskWithPauseCondition, NSCondition;
+#import "FFBackgroundTaskTarget.h"
+
+@class FFAnchoredSequence, FFBackgroundTaskWithPauseCondition, NSCondition, NSLock, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface FFThumbnailGenerator : NSObject
+@interface FFThumbnailGenerator : NSObject <FFBackgroundTaskTarget>
 {
     int _outstandingThumbRequests;
     FFBackgroundTaskWithPauseCondition *_bTask;
@@ -17,24 +19,27 @@ __attribute__((visibility("hidden")))
     float _thumbCount;
     NSCondition *_lock;
     unsigned long long _stopRequestCount;
-    struct FFLocklessQueue<FFAnchoredSequence*> *_requests;
+    NSMutableArray *_requestsNew;
+    NSLock *_requestsLock;
     _Bool _appShuttingDown;
     FFAnchoredSequence *_currentClip;
 }
 
-+ (id)sharedInstance;
 + (void)releaseSharedInstance;
-- (void)thumbImageReady:(id)arg1;
-- (id)init;
-- (void)dealloc;
-- (void)_startBackgroundTask;
-- (void)_cancelBGTask;
-- (void)_waitForBGTaskToFinish;
-- (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
-- (void)appWillTerminate:(id)arg1;
-- (void)generateThumbnailsForClips:(id)arg1;
-- (void)resume;
++ (id)sharedInstance;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
 - (void)stop;
+- (void)resume;
+- (void)generateThumbnailsForClips:(id)arg1;
+- (void)appWillTerminate:(id)arg1;
+- (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
+- (void)_waitForBGTaskToFinish;
+- (void)_cancelBGTask;
+- (void)_startBackgroundTask;
+- (void)dealloc;
+- (id)init;
+- (void)thumbImageReady:(id)arg1;
 
 @end
 

@@ -16,29 +16,39 @@ __attribute__((visibility("hidden")))
     BOOL _writerSessionOpen;
     struct OpaqueFigSemaphore *_writerQueueLowSemaphore;
     int _videoTrackID;
-    float _videoTrackWidth;
+    CDStruct_79c71658 _videoTrackDimensions;
+    CDStruct_1b6d18a9 _videoFrameDuration;
     CDStruct_1b6d18a9 _videoDuration;
+    CDStruct_1b6d18a9 _audioDuration;
     int *_audioTrackIDs;
     unsigned int _audioTrackCount;
     unsigned long long *_audioSampleCounts;
+    BOOL _needTimecodeTrack;
     int _timecodeTrackID;
+    BOOL _needChapterNameTrack;
+    int _chapterNameTrackID;
 }
 
-- (id)initWithPath:(id)arg1 fileFormat:(id)arg2 error:(int *)arg3;
-- (id)initWithPath:(id)arg1 error:(int *)arg2;
-- (void)dealloc;
-- (int)addListenerForWriteFailure:(const void *)arg1 callback:(CDUnknownFunctionPointerType)arg2;
-- (int)removeListenerForWriteFailure:(const void *)arg1 callback:(CDUnknownFunctionPointerType)arg2;
-- (int)createVideoTrack:(struct opaqueCMFormatDescription *)arg1 timescale:(int)arg2;
-- (int)_throttleWriterTrackQueue;
-- (int)_beginAssetWriterSession;
-- (int)_endAssetWriterSession;
-- (int)writeVideo:(struct opaqueCMSampleBuffer *)arg1;
-- (int)createAudioTracks:(unsigned int)arg1 chunkSize:(unsigned int)arg2 withCompressionPreset:(struct __CFString *)arg3;
-- (int)writeAudio:(struct opaqueCMSampleBuffer *)arg1 audioTrackIndex:(unsigned int)arg2;
-- (int)createTimecodeTrack;
-- (int)writeTimecode:(struct opaqueCMFormatDescription *)arg1 sampleValue:(unsigned int)arg2;
 - (int)close;
+- (int)writeMetadata:(id)arg1;
+- (int)writeChapterNames:(id)arg1;
+- (void)willWriteChapterNames;
+- (int)_createChapterNameTrack;
+- (int)writeTimecode:(struct opaqueCMFormatDescription *)arg1 sampleValue:(unsigned int)arg2;
+- (void)willWriteTimecode;
+- (int)_createTimecodeTrack;
+- (int)writeAudio:(struct opaqueCMSampleBuffer *)arg1 audioTrackIndex:(unsigned int)arg2;
+- (int)createAudioTracks:(unsigned int)arg1 chunkSize:(unsigned int)arg2 withCompressionPreset:(struct __CFString *)arg3;
+- (int)writeVideo:(struct opaqueCMSampleBuffer *)arg1;
+- (int)_endAssetWriterSession;
+- (int)_beginAssetWriterSession;
+- (int)_throttleWriterTrackQueue;
+- (int)createVideoTrack:(struct opaqueCMFormatDescription *)arg1 timescale:(int)arg2;
+- (int)removeListenerForWriteFailure:(const void *)arg1 callback:(CDUnknownFunctionPointerType)arg2;
+- (int)addListenerForWriteFailure:(const void *)arg1 callback:(CDUnknownFunctionPointerType)arg2;
+- (void)dealloc;
+- (id)initWithPath:(id)arg1 error:(int *)arg2;
+- (id)initWithPath:(id)arg1 fileFormat:(id)arg2 error:(int *)arg3;
 
 @end
 

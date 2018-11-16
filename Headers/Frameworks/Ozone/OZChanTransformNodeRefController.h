@@ -10,8 +10,8 @@
 {
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
 - (BOOL)doesAllowLink:(struct OZSceneNode *)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
 
 @end
 

@@ -7,7 +7,7 @@
 #import "NSString.h"
 
 @interface NSString (makeUUID)
-+ (id)stringContainingUUID;
 + (id)stringByAppendingUUIDTo:(id)arg1;
++ (id)stringContainingUUID;
 @end
 

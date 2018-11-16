@@ -19,23 +19,23 @@ __attribute__((visibility("hidden")))
     double _totalMs;
 }
 
-+ (id)sharedInstance;
-+ (void)releaseSharedInstance;
 + (id)faceInfoDictForPixelBuffer:(id)arg1 forAnchoredObject:(id)arg2 withColorSpace:(struct CGColorSpace *)arg3 atTime:(CDStruct_1b6d18a9)arg4 verbose:(BOOL)arg5;
-- (id)init;
-- (void)dealloc;
-- (BOOL)writeDetectionAndThumbnailInfoOfFaces:(id)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
-- (struct CGImage *)getCGImageOfPhoto:(void *)arg1 userInfo:(void **)arg2 maxDimension:(double)arg3 sender:(id)arg4 context:(void *)arg5;
-- (void)releaseCGImage:(struct CGImage *)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
-- (id)getDateOriginalOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 shutterSpeedValue:(double *)arg3 apertureValue:(double *)arg4 ISOSpeedRating:(double *)arg5 sender:(id)arg6 context:(void *)arg7;
-- (struct CGAffineTransform)transformForProvidedImageSpaceToOriginalImageOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 sender:(id)arg3 context:(void *)arg4;
-- (struct CGAffineTransform)transformForOriginalImageSpaceToPovidedImageSpaceOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 sender:(id)arg3 context:(void *)arg4;
-- (BOOL)validateFace:(id)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5 debugString:(id)arg6;
-- (void)logDetectFace:(id)arg1 ofPhoto:(void *)arg2 debugString:(id)arg3 sender:(id)arg4 context:(void *)arg5;
++ (void)releaseSharedInstance;
++ (id)sharedInstance;
 @property(nonatomic) double totalMs; // @synthesize totalMs=_totalMs;
 @property(nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 @property(retain, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObj;
 @property(retain, nonatomic) FFFaceDetectionInfo *faceDetectionInfo; // @synthesize faceDetectionInfo=_faceDetectionInfo;
+- (void)logDetectFace:(id)arg1 ofPhoto:(void *)arg2 debugString:(id)arg3 sender:(id)arg4 context:(void *)arg5;
+- (BOOL)validateFace:(id)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5 debugString:(id)arg6;
+- (struct CGAffineTransform)transformForOriginalImageSpaceToPovidedImageSpaceOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 sender:(id)arg3 context:(void *)arg4;
+- (struct CGAffineTransform)transformForProvidedImageSpaceToOriginalImageOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 sender:(id)arg3 context:(void *)arg4;
+- (id)getDateOriginalOfPhoto:(void *)arg1 withUserInfo:(void *)arg2 shutterSpeedValue:(double *)arg3 apertureValue:(double *)arg4 ISOSpeedRating:(double *)arg5 sender:(id)arg6 context:(void *)arg7;
+- (void)releaseCGImage:(struct CGImage *)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
+- (struct CGImage *)getCGImageOfPhoto:(void *)arg1 userInfo:(void **)arg2 maxDimension:(double)arg3 sender:(id)arg4 context:(void *)arg5;
+- (BOOL)writeDetectionAndThumbnailInfoOfFaces:(id)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
+- (void)dealloc;
+- (id)init;
 
 @end
 

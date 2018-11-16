@@ -10,9 +10,9 @@
 {
 }
 
-+ (Class)scrollerClass;
-+ (Class)_horizontalScrollerClass;
 + (Class)_verticalScrollerClass;
++ (Class)_horizontalScrollerClass;
++ (Class)scrollerClass;
 
 @end
 

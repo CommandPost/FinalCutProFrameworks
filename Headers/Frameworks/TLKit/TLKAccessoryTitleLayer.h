@@ -14,11 +14,11 @@
     TLKButtonLayer *_closeButtonLayer;
 }
 
-- (id)init;
-- (id)timelineView;
-- (id)closeButtonLayer;
-@property(retain) NSString *title;
 - (void)layoutSublayers;
+@property(retain) NSString *title;
+- (id)closeButtonLayer;
+- (id)timelineView;
+- (id)init;
 
 @end
 

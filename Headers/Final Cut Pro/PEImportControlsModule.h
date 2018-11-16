@@ -6,30 +6,37 @@
 
 #import "LKViewModule.h"
 
-@class LKButton;
+@class LKButton, NSMutableSet;
 
 @interface PEImportControlsModule : LKViewModule
 {
+    LKButton *_closeWindowAfterImportCheckbox;
     LKButton *_createArchiveButton;
-    LKButton *_openArchiveButton;
     LKButton *_stopImportButton;
-    LKButton *_closeButton;
     LKButton *_importButton;
+    BOOL _closeWindowAfterImport;
+    BOOL _fileOrRADIsImporting;
+    NSMutableSet *_importBackgroundTasks;
 }
 
-- (id)init;
-- (void)dealloc;
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
-- (BOOL)wantsHeaderBar;
-- (void)openCameraArchive:(id)arg1;
-- (void)createCameraArchive:(id)arg1;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)importClips:(id)arg1;
-- (void)importWindowDone:(id)arg1;
-- (void)stopImport:(id)arg1;
+@property BOOL fileOrRADIsImporting; // @synthesize fileOrRADIsImporting=_fileOrRADIsImporting;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)taskQueueDidCompleteTask:(id)arg1;
+- (void)taskQueueDidCompleteTaskMainThread:(id)arg1;
+- (void)taskQueueDidStartTask:(id)arg1;
+- (void)taskQueueDidStartTaskMainThread:(id)arg1;
+- (void)stopImport:(id)arg1;
+- (void)importDidBegin:(id)arg1;
+- (void)importWindowDone:(id)arg1;
+- (void)importClips:(id)arg1;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)createCameraArchive:(id)arg1;
+- (BOOL)wantsHeaderBar;
+- (struct CGSize)viewMinSize;
+- (struct CGSize)viewMaxSize;
+- (void)dealloc;
+- (id)init;
 
 @end
 

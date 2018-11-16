@@ -10,21 +10,21 @@
 {
 }
 
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-- (struct OZChannelBool3D *)ozChannel;
-- (void)getBoolValuesAtTime:(CDStruct_1b6d18a9)arg1 x:(char *)arg2 y:(char *)arg3 z:(char *)arg4;
-- (void)getBoolValuesAtTime:(CDStruct_1b6d18a9)arg1 curveX:(char *)arg2 curveY:(char *)arg3 curveZ:(char *)arg4;
-- (void)setBoolValuesAtTime:(CDStruct_1b6d18a9)arg1 curveX:(BOOL)arg2 curveY:(BOOL)arg3 curveZ:(BOOL)arg4 options:(unsigned int)arg5;
-- (void)getDefaultCurveX:(char *)arg1 curveY:(char *)arg2 curveZ:(char *)arg3;
-- (void)setDefaultCurveX:(BOOL)arg1 curveY:(BOOL)arg2 curveZ:(char *)arg3;
-- (void)getMinCurveX:(char *)arg1 curveY:(char *)arg2 curveZ:(char *)arg3;
-- (void)setMinCurveX:(BOOL)arg1 curveY:(BOOL)arg2 curveZ:(BOOL)arg3;
-- (void)getMaxCurveX:(char *)arg1 curveY:(char *)arg2 curveZ:(char *)arg3;
-- (void)setMaxCurveX:(BOOL)arg1 curveY:(BOOL)arg2 curveZ:(BOOL)arg3;
-- (id)xChannel;
-- (id)yChannel;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 - (id)zChannel;
+- (id)yChannel;
+- (id)xChannel;
+- (void)setMaxCurveX:(BOOL)arg1 curveY:(BOOL)arg2 curveZ:(BOOL)arg3;
+- (void)getMaxCurveX:(char *)arg1 curveY:(char *)arg2 curveZ:(char *)arg3;
+- (void)setMinCurveX:(BOOL)arg1 curveY:(BOOL)arg2 curveZ:(BOOL)arg3;
+- (void)getMinCurveX:(char *)arg1 curveY:(char *)arg2 curveZ:(char *)arg3;
+- (void)setDefaultCurveX:(BOOL)arg1 curveY:(BOOL)arg2 curveZ:(char *)arg3;
+- (void)getDefaultCurveX:(char *)arg1 curveY:(char *)arg2 curveZ:(char *)arg3;
+- (void)setBoolValuesAtTime:(CDStruct_198678f7)arg1 curveX:(BOOL)arg2 curveY:(BOOL)arg3 curveZ:(BOOL)arg4 options:(unsigned int)arg5;
+- (void)getBoolValuesAtTime:(CDStruct_198678f7)arg1 curveX:(char *)arg2 curveY:(char *)arg3 curveZ:(char *)arg4;
+- (void)getBoolValuesAtTime:(CDStruct_198678f7)arg1 x:(char *)arg2 y:(char *)arg3 z:(char *)arg4;
+- (struct OZChannelBool3D *)ozChannel;
 
 @end
 

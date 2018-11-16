@@ -10,8 +10,8 @@
 {
 }
 
-- (id)optionsNibName;
 - (id)title;
+- (id)optionsNibName;
 
 @end
 

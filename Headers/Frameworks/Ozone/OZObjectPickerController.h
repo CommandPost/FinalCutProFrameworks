@@ -14,24 +14,24 @@
     unsigned int _objectFilter;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (BOOL)objectTypeIncluded:(unsigned int)arg1;
-- (void)includeObjectType:(unsigned int)arg1;
-- (void)excludeObjectType:(unsigned int)arg1;
-- (void)setAlwaysShowGroups:(BOOL)arg1;
-- (BOOL)alwaysShowGroups;
-- (void)setGroupsSelectable:(BOOL)arg1;
-- (BOOL)groupsSelectable;
-- (id)addMenuObject:(struct OZObjectManipulator *)arg1 ignoreObjID:(unsigned int)arg2 inputMenu:(id)arg3;
-- (id)addMenuObject:(struct OZObjectManipulator *)arg1 withText:(id)arg2 inputMenu:(id)arg3;
-- (id)addMenuCamera:(struct OZCamera *)arg1 withText:(id)arg2 inputMenu:(id)arg3;
-- (id)addMenuItemFromRoot:(struct OZChannelObjectRoot *)arg1 withText:(id)arg2 inputMenu:(id)arg3;
-- (id)buildObjectMenu:(id)arg1 ignoreObjID:(unsigned int)arg2;
-- (BOOL)groupContainsIncludedObjects:(struct OZGroup *)arg1;
-- (void)addGroupToMenu:(struct OZGroup *)arg1 inputMenu:(id)arg2;
-- (void)buildMenu;
-- (BOOL)linkSceneNode:(struct OZObjectManipulator *)arg1;
 - (_Bool)menuContainsExposeableObjects;
+- (BOOL)linkSceneNode:(struct OZObjectManipulator *)arg1;
+- (void)buildMenu;
+- (void)addGroupToMenu:(struct OZGroup *)arg1 inputMenu:(id)arg2;
+- (BOOL)groupContainsIncludedObjects:(struct OZGroup *)arg1;
+- (id)buildObjectMenu:(id)arg1 ignoreObjID:(unsigned int)arg2;
+- (id)addMenuItemFromRoot:(struct OZChannelObjectRoot *)arg1 withText:(id)arg2 inputMenu:(id)arg3;
+- (id)addMenuCamera:(struct OZCamera *)arg1 withText:(id)arg2 inputMenu:(id)arg3;
+- (id)addMenuObject:(struct OZObjectManipulator *)arg1 withText:(id)arg2 inputMenu:(id)arg3;
+- (id)addMenuObject:(struct OZObjectManipulator *)arg1 ignoreObjID:(unsigned int)arg2 inputMenu:(id)arg3;
+- (BOOL)groupsSelectable;
+- (void)setGroupsSelectable:(BOOL)arg1;
+- (BOOL)alwaysShowGroups;
+- (void)setAlwaysShowGroups:(BOOL)arg1;
+- (void)excludeObjectType:(unsigned int)arg1;
+- (void)includeObjectType:(unsigned int)arg1;
+- (BOOL)objectTypeIncluded:(unsigned int)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -10,9 +10,9 @@
 {
 }
 
-- (id)initWithEnvironment:(struct OZImageEnvironment *)arg1;
-- (void)dealloc;
 - (void)twiddle;
+- (void)dealloc;
+- (id)initWithEnvironment:(struct OZImageEnvironment *)arg1;
 
 @end
 

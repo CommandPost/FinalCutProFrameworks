@@ -10,8 +10,8 @@
 {
 }
 
-- (id)_baseFacet;
 - (id)_pullDownFacet;
+- (id)_baseFacet;
 
 @end
 

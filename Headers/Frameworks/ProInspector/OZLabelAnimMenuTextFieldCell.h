@@ -17,18 +17,18 @@
     OZAnimStatusCell *_pAnimStatusCell;
 }
 
-- (id)initTextCell:(id)arg1 isHUD:(BOOL)arg2 animStatusCellClass:(Class)arg3;
-- (void)dealloc;
-- (void)setViewController:(id)arg1;
-- (void)setShouldDoMenu:(BOOL)arg1;
-- (struct CGRect)adjustTextFrame:(struct CGRect)arg1;
-- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
-- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(int)arg5 length:(int)arg6;
-- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)setAnimStatusClass:(Class)arg1;
-- (void)setIsBold:(BOOL)arg1;
-- (void)rightMouseDown:(id)arg1 inView:(id)arg2;
 - (void)setFont:(id)arg1;
+- (void)rightMouseDown:(id)arg1 inView:(id)arg2;
+- (void)setIsBold:(BOOL)arg1;
+- (void)setAnimStatusClass:(Class)arg1;
+- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(int)arg5 length:(int)arg6;
+- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
+- (struct CGRect)adjustTextFrame:(struct CGRect)arg1;
+- (void)setShouldDoMenu:(BOOL)arg1;
+- (void)setViewController:(id)arg1;
+- (void)dealloc;
+- (id)initTextCell:(id)arg1 isHUD:(BOOL)arg2 animStatusCellClass:(Class)arg3;
 
 @end
 

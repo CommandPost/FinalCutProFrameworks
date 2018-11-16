@@ -18,24 +18,24 @@
     int _trigger;
 }
 
-+ (void)initialize;
-+ (id)sharedManager;
 + (void)registerDefaults;
-- (id)init;
-- (void)dealloc;
-- (void)kickStart;
-- (void)reconnoiterEvent:(id)arg1;
-- (void)enable;
-- (void)disable;
-- (BOOL)isEnabled;
-- (void)setupInk;
-- (BOOL)loadGestureNet;
-- (BOOL)installInkPointHandler;
-- (BOOL)removeInkPointHandler;
-- (BOOL)installInkGestureHandler;
-- (BOOL)removeInkGestureHandler;
-- (void)inkPreferencesChanged:(id)arg1;
++ (id)sharedManager;
++ (void)initialize;
 - (void)inkStateChanged:(id)arg1;
+- (void)inkPreferencesChanged:(id)arg1;
+- (BOOL)removeInkGestureHandler;
+- (BOOL)installInkGestureHandler;
+- (BOOL)removeInkPointHandler;
+- (BOOL)installInkPointHandler;
+- (BOOL)loadGestureNet;
+- (void)setupInk;
+- (BOOL)isEnabled;
+- (void)disable;
+- (void)enable;
+- (void)reconnoiterEvent:(id)arg1;
+- (void)kickStart;
+- (void)dealloc;
+- (id)init;
 
 @end
 

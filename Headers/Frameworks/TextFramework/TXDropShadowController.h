@@ -24,15 +24,15 @@
     OZAngleController *_angleCtlr;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (struct OZChannelPercent *)opacityChannel;
-- (struct OZChannelDouble *)distanceChannel;
-- (struct OZChannel2D *)blurChannel;
-- (struct OZChannelAngle *)angleChannel;
-- (struct OZChannelColorNoAlpha *)colorChannel:(struct OZChannelFolder *)arg1;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (void)didTwiddle:(BOOL)arg1;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (struct OZChannelColorNoAlpha *)colorChannel:(struct OZChannelFolder *)arg1;
+- (struct OZChannelAngle *)angleChannel;
+- (struct OZChannel2D *)blurChannel;
+- (struct OZChannelDouble *)distanceChannel;
+- (struct OZChannelPercent *)opacityChannel;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

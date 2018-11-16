@@ -14,9 +14,9 @@
     NSString *_message;
 }
 
-- (id)initWithTitle:(id)arg1 message:(id)arg2;
-- (void)dealloc;
 - (void)beginAlertSheet:(id)arg1;
+- (void)dealloc;
+- (id)initWithTitle:(id)arg1 message:(id)arg2;
 
 @end
 

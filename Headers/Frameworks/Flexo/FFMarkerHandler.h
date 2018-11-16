@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
     FFTimelineMarkerLayer *_rolledOverMarkerLayer;
 }
 
-- (BOOL)enterRollover:(id)arg1;
-- (void)updateRollover:(id)arg1;
-- (void)exitRollover:(id)arg1;
-- (BOOL)startTracking:(id)arg1;
-- (BOOL)continueTracking:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
 @property(retain, nonatomic) FFTimelineMarkerLayer *rolledOverMarkerLayer; // @synthesize rolledOverMarkerLayer=_rolledOverMarkerLayer;
+- (BOOL)stopTracking:(id)arg1;
+- (BOOL)continueTracking:(id)arg1;
+- (BOOL)startTracking:(id)arg1;
+- (void)exitRollover:(id)arg1;
+- (void)updateRollover:(id)arg1;
+- (BOOL)enterRollover:(id)arg1;
 
 @end
 

@@ -13,9 +13,9 @@
     NSMutableDictionary *_metadata;
 }
 
-- (id)init;
-- (void)dealloc;
 @property(copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+- (void)dealloc;
+- (id)init;
 
 @end
 

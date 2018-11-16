@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
     double _executionTime;
 }
 
-- (void)setExecutionTime:(double)arg1;
-- (double)executionTime;
 - (_Bool)cancel;
+- (double)executionTime;
+- (void)setExecutionTime:(double)arg1;
 
 @end
 

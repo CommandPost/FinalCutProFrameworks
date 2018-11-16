@@ -7,9 +7,9 @@
 #import "LKViewModule.h"
 
 @interface LKViewModule (PEViewModuleAdditions)
-+ (id)installedModuleWithIdentifier:(id)arg1;
 + (id)installedModulesOfClass:(Class)arg1;
-- (id)submoduleWithIdentifier:(id)arg1;
++ (id)installedModuleWithIdentifier:(id)arg1;
 - (id)submodulesOfClass:(Class)arg1 deep:(BOOL)arg2;
+- (id)submoduleWithIdentifier:(id)arg1;
 @end
 

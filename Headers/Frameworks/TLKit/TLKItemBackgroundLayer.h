@@ -6,20 +6,19 @@
 
 #import "CALayer.h"
 
-@class NSDictionary;
+@class NSDictionary, TLKItemShadowLayer;
 
 @interface TLKItemBackgroundLayer : CALayer
 {
     int _itemType;
     int _avContainmentType;
     double _textSize;
-    CALayer *_shadowLayer;
+    TLKItemShadowLayer *_shadowLayer;
     CALayer *_rootLayer;
     NSDictionary *_mappingTable;
     CALayer *_backgroundLayer;
     CALayer *_backgroundFillLayer;
     CALayer *_backgroundGlossLayer;
-    CALayer *_backgroundInnerGlossLayer;
     CALayer *_transitionHeaderGlyph;
     CALayer *_transitionRollTargetingLayer;
     CALayer *_transitionLeadingRollTargetingLayer;
@@ -34,47 +33,52 @@
         unsigned int sourceSplitEdit:1;
         unsigned int splitEdit:1;
         unsigned int spineItem:1;
+        unsigned int audioComponent:1;
+        unsigned int roundedBottomAudioComponent:1;
         unsigned int leadingEdgeAllowedOperation:1;
         unsigned int trailingEdgeAllowedOperation:1;
         unsigned int rollTargetingPartHidden:1;
         unsigned int leadingEdgePartHidden:1;
         unsigned int trailingEdgePartHidden:1;
         unsigned int invalidated:1;
-        unsigned int RESERVED:23;
+        unsigned int RESERVED:21;
     } _tlkItemBackgroudflags;
 }
 
-+ (void)initialize;
-+ (double)cornerRadiusForWidth:(double)arg1;
-+ (double)itemHeaderHeight;
 + (double)itemHeaderOnlyHeight;
-- (id)init;
-- (void)dealloc;
-- (id)timelineView;
-- (int)itemType;
-- (int)aVContainmentType;
-@property BOOL splitEdit;
-@property BOOL sourceSplitEdit;
-@property BOOL spineItem;
-- (void)_updateStitchingPatterns;
-- (void)_updateAppearanceType:(int)arg1 withMask:(int)arg2;
-- (void)setContentsScale:(double)arg1;
-@property double textSize;
-- (void)setDelegate:(id)arg1;
-- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
-- (void)addSublayer:(id)arg1;
-- (void)insertSublayer:(id)arg1 below:(id)arg2;
-- (void)insertSublayer:(id)arg1 above:(id)arg2;
-- (void)replaceSublayer:(id)arg1 with:(id)arg2;
-- (void)invalidate;
-- (void)setItemType:(int)arg1 andContainmentMask:(int)arg2;
-- (id)actionForKey:(id)arg1;
-- (void)_adjustTransitionHandles;
-- (void)layoutSublayers;
-- (void)setPart:(id)arg1 hidden:(BOOL)arg2;
-- (struct CGRect)rectForPart:(id)arg1;
-- (void)setAllowedOperation:(BOOL)arg1 forEdge:(id)arg2;
++ (double)itemHeaderHeight;
++ (double)cornerRadiusForWidth:(double)arg1;
++ (void)initialize;
 - (BOOL)allowedOperationForEdge:(id)arg1;
+- (void)setAllowedOperation:(BOOL)arg1 forEdge:(id)arg2;
+- (struct CGRect)rectForPart:(id)arg1;
+- (void)setPart:(id)arg1 hidden:(BOOL)arg2;
+- (void)layoutSublayers;
+- (void)_adjustTransitionHandles;
+- (id)actionForKey:(id)arg1;
+- (void)setItemType:(int)arg1 andContainmentMask:(int)arg2;
+- (void)invalidate;
+- (void)replaceSublayer:(id)arg1 with:(id)arg2;
+- (void)insertSublayer:(id)arg1 above:(id)arg2;
+- (void)insertSublayer:(id)arg1 below:(id)arg2;
+- (void)addSublayer:(id)arg1;
+- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
+- (void)setDelegate:(id)arg1;
+@property double textSize;
+- (void)setContentsScale:(double)arg1;
+- (void)_updateAppearanceType:(int)arg1 withMask:(int)arg2;
+- (struct CGColor *)_verticalSameStitchingPattern;
+- (struct CGColor *)_verticalDiffStitchingPattern;
+@property BOOL spineItem;
+@property BOOL roundedBottomAudioComponent;
+@property BOOL audioComponent;
+@property BOOL sourceSplitEdit;
+@property BOOL splitEdit;
+- (int)aVContainmentType;
+- (int)itemType;
+- (id)timelineView;
+- (void)dealloc;
+- (id)init;
 
 @end
 

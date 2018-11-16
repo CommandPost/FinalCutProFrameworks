@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     double _l;
 }
 
-- (id)newRGB;
 @property(nonatomic) double l; // @synthesize l=_l;
 @property(nonatomic) double s; // @synthesize s=_s;
 @property(nonatomic) double h; // @synthesize h=_h;
+- (id)newRGB;
 
 @end
 

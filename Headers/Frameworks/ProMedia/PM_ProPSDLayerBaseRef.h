@@ -14,19 +14,19 @@
     unsigned int _layerIndex;
 }
 
-- (struct CPSDLayerRecord *)_psdLayerRecord;
-- (id)_psdImageRef;
-- (id)name;
-- (BOOL)isLayerGroup;
-@property(readonly) struct CGRect bounds;
-@property(readonly) BOOL visibility;
-@property(readonly) double opacity;
-@property(readonly) unsigned int blendMode;
-@property(readonly) BOOL hasLayerMask;
-@property(readonly) BOOL hasVectorMask;
-- (id)layerMaskRef;
-- (id)vectorMaskRef;
 - (struct CGImage *)_createMaskFromAlphaChannel:(long long)arg1;
+- (id)vectorMaskRef;
+- (id)layerMaskRef;
+@property(readonly) BOOL hasVectorMask;
+@property(readonly) BOOL hasLayerMask;
+@property(readonly) unsigned int blendMode;
+@property(readonly) double opacity;
+@property(readonly) BOOL visibility;
+@property(readonly) struct CGRect bounds;
+- (BOOL)isLayerGroup;
+- (id)name;
+- (id)_psdImageRef;
+- (struct CPSDLayerRecord *)_psdLayerRecord;
 
 @end
 

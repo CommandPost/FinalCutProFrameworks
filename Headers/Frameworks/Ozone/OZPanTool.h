@@ -10,13 +10,13 @@
 {
 }
 
-- (id)getName;
-- (id)getTooltip;
-- (struct PCUUID)getClassID;
-- (id)getDefaultCursor;
-- (void)iconDoubleClick;
-- (BOOL)displayDefaultOnScreenControls;
 - (_Bool)performMouseDragAction:(id)arg1;
+- (BOOL)displayDefaultOnScreenControls;
+- (void)iconDoubleClick;
+- (id)getDefaultCursor;
+- (struct PCUUID)getClassID;
+- (id)getTooltip;
+- (id)getName;
 
 @end
 

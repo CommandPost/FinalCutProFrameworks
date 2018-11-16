@@ -4,10 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFOrganizerClusteringCollection;
+
 @protocol FFOrganizerFilmstripClusteringDelegate
-- (void)reclusterContents:(BOOL)arg1;
-- (BOOL)disclosedStateForCluster:(id)arg1;
-- (void)setDisclosedState:(BOOL)arg1 forCluster:(id)arg2;
 - (void)setAllClusterDisclosedStates:(BOOL)arg1;
+- (void)setDisclosedState:(BOOL)arg1 forCluster:(FFOrganizerClusteringCollection *)arg2;
+- (BOOL)disclosedStateForCluster:(FFOrganizerClusteringCollection *)arg1;
+- (void)reclusterContents:(BOOL)arg1;
 @end
 

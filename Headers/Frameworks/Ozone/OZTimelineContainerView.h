@@ -13,8 +13,8 @@
     OZTimelineModule *_timelineModule;
 }
 
-- (void)setFrame:(struct CGRect)arg1;
 @property(nonatomic) OZTimelineModule *timelineModule; // @synthesize timelineModule=_timelineModule;
+- (void)setFrame:(struct CGRect)arg1;
 
 @end
 

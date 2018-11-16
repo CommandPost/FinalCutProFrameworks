@@ -10,13 +10,13 @@
 {
 }
 
-- (id)_colorSwatchBezelFacet;
-- (id)_transientPickerColorWellFacet;
-- (id)_transientPickerSeparatorFacet;
-- (id)_transientPickerButtonFacet;
-- (id)_transientPickerImageFacet;
-- (id)_transientPickerTextBoxFacet;
 - (id)_transientPickerSwatchBackgroundFacet;
+- (id)_transientPickerTextBoxFacet;
+- (id)_transientPickerImageFacet;
+- (id)_transientPickerButtonFacet;
+- (id)_transientPickerSeparatorFacet;
+- (id)_transientPickerColorWellFacet;
+- (id)_colorSwatchBezelFacet;
 
 @end
 

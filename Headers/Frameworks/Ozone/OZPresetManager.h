@@ -17,31 +17,31 @@
     NSMutableArray *_pAllPresets;
 }
 
-- (id)initWithFolderName:(id)arg1 extension:(id)arg2;
-- (void)dealloc;
-- (void)setLocPresetPath:(id)arg1;
-- (id)presetAtIndex:(int)arg1;
-- (int)indexOfPreset:(id)arg1;
-- (unsigned int)numPresets;
-- (id)presetAtIndex:(int)arg1 includeHidden:(BOOL)arg2;
-- (unsigned int)numPresetsIncludeHidden:(BOOL)arg1;
-- (id)makeUniqueFileName:(id)arg1 folder:(id)arg2;
-- (id)makeDuplicateFileName:(id)arg1 folder:(id)arg2;
-- (BOOL)ensurePathExists:(id)arg1;
-- (id)userPresetPath;
-- (id)newPreset;
-- (BOOL)rename:(id)arg1 to:(id)arg2 errorString:(id *)arg3;
-- (id)duplicatePresetAtIndex:(int)arg1;
-- (BOOL)deletePresetAtIndex:(int)arg1;
-- (id)defaultPreset;
-- (int)indexOfDefaultPreset;
-- (void)setIndexOfDefaultPreset:(int)arg1;
-- (BOOL)alwaysUseDefaultPreset;
-- (void)setAlwaysUseDefaultPreset:(BOOL)arg1;
-- (Class)presetClass;
-- (id)alwaysUseDefaultPresetKey;
-- (id)defaultPresetKey;
 - (void)sort;
+- (id)defaultPresetKey;
+- (id)alwaysUseDefaultPresetKey;
+- (Class)presetClass;
+- (void)setAlwaysUseDefaultPreset:(BOOL)arg1;
+- (BOOL)alwaysUseDefaultPreset;
+- (void)setIndexOfDefaultPreset:(int)arg1;
+- (int)indexOfDefaultPreset;
+- (id)defaultPreset;
+- (BOOL)deletePresetAtIndex:(int)arg1;
+- (id)duplicatePresetAtIndex:(int)arg1;
+- (BOOL)rename:(id)arg1 to:(id)arg2 errorString:(id *)arg3;
+- (id)newPreset;
+- (id)userPresetPath;
+- (BOOL)ensurePathExists:(id)arg1;
+- (id)makeDuplicateFileName:(id)arg1 folder:(id)arg2;
+- (id)makeUniqueFileName:(id)arg1 folder:(id)arg2;
+- (unsigned int)numPresetsIncludeHidden:(BOOL)arg1;
+- (id)presetAtIndex:(int)arg1 includeHidden:(BOOL)arg2;
+- (unsigned int)numPresets;
+- (int)indexOfPreset:(id)arg1;
+- (id)presetAtIndex:(int)arg1;
+- (void)setLocPresetPath:(id)arg1;
+- (void)dealloc;
+- (id)initWithFolderName:(id)arg1 extension:(id)arg2;
 
 @end
 

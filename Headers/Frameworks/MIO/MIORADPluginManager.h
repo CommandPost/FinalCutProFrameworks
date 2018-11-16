@@ -16,23 +16,23 @@
     NSNotificationCenter *_pluginNotificationCenter;
 }
 
-- (id)initWithUndoManager:(id)arg1 radManager:(id)arg2 notificationCenter:(id)arg3 searchPaths:(id)arg4 andValidate:(id)arg5;
-- (void)dealloc;
-- (void)setRADManager:(id)arg1;
-- (id)enumeratePluginPaths:(id)arg1;
-- (id)getPluginBundlesFromPaths:(id)arg1;
-- (void)registerPluginBundles:(id)arg1;
-- (id)notificationCenter;
-- (BOOL)doesPath:(id)arg1 containSomeOfClipsWithUIDs:(id)arg2;
-- (id)pluginForPluginID:(id)arg1;
-- (id)pathIsValidVolume:(id)arg1;
-- (void)postPluginVolumesReady:(id)arg1;
-- (void)volumesFromPlugin:(id)arg1;
-- (id)invalidVolumesFromPlugin:(id)arg1 withErrors:(id *)arg2;
-- (void)broadcastPathToPlugins:(id)arg1;
-- (id)metadataDefinitionsFromPlugins;
-- (void)pluginVolumesFound:(id)arg1;
 @property MIORADManager *radManager; // @synthesize radManager=_radManager;
+- (void)pluginVolumesFound:(id)arg1;
+- (id)metadataDefinitionsFromPlugins;
+- (void)broadcastPathToPlugins:(id)arg1;
+- (id)invalidVolumesFromPlugin:(id)arg1 withErrors:(id *)arg2;
+- (void)volumesFromPlugin:(id)arg1;
+- (void)postPluginVolumesReady:(id)arg1;
+- (id)pathIsValidVolume:(id)arg1;
+- (id)pluginForPluginID:(id)arg1;
+- (BOOL)doesPath:(id)arg1 containSomeOfClipsWithUIDs:(id)arg2;
+- (id)notificationCenter;
+- (void)registerPluginBundles:(id)arg1;
+- (id)getPluginBundlesFromPaths:(id)arg1;
+- (id)enumeratePluginPaths:(id)arg1;
+- (void)setRADManager:(id)arg1;
+- (void)dealloc;
+- (id)initWithUndoManager:(id)arg1 radManager:(id)arg2 notificationCenter:(id)arg3 searchPaths:(id)arg4 andValidate:(id)arg5;
 
 @end
 

@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
     long long _correctionID;
 }
 
-- (id)init;
 @property(nonatomic) long long correctionID; // @synthesize correctionID=_correctionID;
 @property(nonatomic) BOOL isCorrectionInner; // @synthesize isCorrectionInner=_isCorrectionInner;
+- (id)init;
 
 @end
 

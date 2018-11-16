@@ -15,25 +15,25 @@
     BOOL _isHUD;
 }
 
-- (void)dealloc;
-- (id)getName;
-- (id)getImageName;
-- (id)getTooltip;
-- (struct PCUUID)getClassID;
-- (id)getDefaultCursor;
-- (BOOL)displayDefaultOnScreenControls;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (BOOL)isOneShotTool;
-- (void)becomeCurrentForCanvas:(id)arg1 andTarget:(id)arg2;
-- (void)sampleColor:(id)arg1;
-- (void)revertToPreviousTool;
-- (void)setTarget:(id)arg1;
-- (id)target;
-- (void)setAssociatedChannel:(struct OZChannelBase *)arg1 andIsHUD:(BOOL)arg2;
-- (struct OZChannelBase *)associatedChannel;
 - (BOOL)isHUD;
+- (struct OZChannelBase *)associatedChannel;
+- (void)setAssociatedChannel:(struct OZChannelBase *)arg1 andIsHUD:(BOOL)arg2;
+- (id)target;
+- (void)setTarget:(id)arg1;
+- (void)revertToPreviousTool;
+- (void)sampleColor:(id)arg1;
+- (void)becomeCurrentForCanvas:(id)arg1 andTarget:(id)arg2;
+- (BOOL)isOneShotTool;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (BOOL)displayDefaultOnScreenControls;
+- (id)getDefaultCursor;
+- (struct PCUUID)getClassID;
+- (id)getTooltip;
+- (id)getImageName;
+- (id)getName;
+- (void)dealloc;
 
 @end
 

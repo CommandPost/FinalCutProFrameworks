@@ -13,29 +13,29 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)changeModeParade:(id)arg1;
-- (void)changeModeOverlay:(id)arg1;
-- (void)changeModeRedChannel:(id)arg1;
-- (void)changeModeGreenChannel:(id)arg1;
-- (void)changeModeBlueChannel:(id)arg1;
-- (void)changeModeLuma:(id)arg1;
-- (void)changeModeChroma:(id)arg1;
-- (void)changeModeYCbCr:(id)arg1;
-- (void)changeUnitsIRE:(id)arg1;
-- (void)changeUnitsMillivolts:(id)arg1;
-- (void)toggleGuides:(id)arg1;
-- (void)showHistogram:(id)arg1;
-- (void)showVectorscope:(id)arg1;
-- (void)showWaveform:(id)arg1;
-- (void)changeBrightness:(id)arg1;
-- (void)toggleMonochrome:(id)arg1;
-- (void)viewWasInstalled;
-- (void)viewWillBeRemoved;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)updateLabel;
-- (void)setViewProperties:(id)arg1;
-- (id)viewProperties;
 - (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (id)viewProperties;
+- (void)setViewProperties:(id)arg1;
+- (void)updateLabel;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)viewWillBeRemoved;
+- (void)viewWasInstalled;
+- (void)toggleMonochrome:(id)arg1;
+- (void)changeBrightness:(id)arg1;
+- (void)showWaveform:(id)arg1;
+- (void)showVectorscope:(id)arg1;
+- (void)showHistogram:(id)arg1;
+- (void)toggleGuides:(id)arg1;
+- (void)changeUnitsMillivolts:(id)arg1;
+- (void)changeUnitsIRE:(id)arg1;
+- (void)changeModeYCbCr:(id)arg1;
+- (void)changeModeChroma:(id)arg1;
+- (void)changeModeLuma:(id)arg1;
+- (void)changeModeBlueChannel:(id)arg1;
+- (void)changeModeGreenChannel:(id)arg1;
+- (void)changeModeRedChannel:(id)arg1;
+- (void)changeModeOverlay:(id)arg1;
+- (void)changeModeParade:(id)arg1;
 
 @end
 

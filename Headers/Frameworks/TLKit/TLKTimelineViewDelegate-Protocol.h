@@ -6,33 +6,38 @@
 
 #import "NSObject.h"
 
+@class CALayer<TLKItemLayerInfo>, NSArray, NSException, NSMenu, NSProExtendedTimecode, TLKSelectionManager, TLKTimelineView;
+
 @protocol TLKTimelineViewDelegate <NSObject>
-- (BOOL)timelineView:(id)arg1 shouldHandleException:(id)arg2;
+- (BOOL)timelineView:(TLKTimelineView *)arg1 shouldHandleException:(NSException *)arg2;
 
 @optional
-- (void)timelineView:(id)arg1 didDoubleClickItem:(id)arg2;
-- (BOOL)timelineView:(id)arg1 shouldShowSplitForItem:(id)arg2;
-- (void)selectionManagerDidChange:(id)arg1;
-- (BOOL)selectionManagerShouldChange:(id)arg1;
-- (id)selectionManager:(id)arg1 willSelectObjects:(id)arg2 selectionMask:(unsigned long long)arg3;
-- (id)selectionManager:(id)arg1 willDeselectObjects:(id)arg2 selectionMask:(unsigned long long)arg3;
-- (CDStruct_e83c9415)selectionManager:(id)arg1 willSelectTimeRange:(CDStruct_e83c9415)arg2 withObjects:(id)arg3;
-- (void)selectionManager:(id)arg1 didSelectTimeRange:(CDStruct_e83c9415)arg2 withObjects:(id)arg3;
-- (CDStruct_1b6d18a9)timelineView:(id)arg1 willSetPlayheadTime:(CDStruct_1b6d18a9)arg2 snap:(BOOL)arg3;
-- (void)timelineView:(id)arg1 didSetPlayheadTime:(CDStruct_1b6d18a9)arg2;
-- (id)timelineView:(id)arg1 timecodeAtTime:(CDStruct_1b6d18a9)arg2;
-- (CDStruct_1b6d18a9)timelineView:(id)arg1 adjustTimePerMarker:(CDStruct_1b6d18a9)arg2;
-- (void)timelineView:(id)arg1 enablePlayheadSkimming:(BOOL)arg2;
-- (BOOL)timelineViewIsPlayheadSkimming:(id)arg1;
-- (BOOL)timelineViewShouldSkimPlayhead:(id)arg1;
-- (BOOL)timelineView:(id)arg1 shouldSkimItem:(id)arg2 atTime:(CDStruct_1b6d18a9 *)arg3 didSnap:(char *)arg4;
-- (void)timelineView:(id)arg1 layoutSublayers:(id)arg2 forItem:(id)arg3;
-- (void)timelineView:(id)arg1 layoutSublayersOfVideoLayer:(id)arg2 audioLayer:(id)arg3 forItem:(id)arg4;
-- (id)timelineView:(id)arg1 badgeLayersForItem:(id)arg2 currentBadges:(id)arg3;
-- (CDStruct_1b6d18a9)timelineViewFrameDuration:(id)arg1;
-- (CDStruct_1b6d18a9)timelineViewAudioSampleDuration:(id)arg1;
-- (void)timelineView:(id)arg1 updateItemSkimming:(id)arg2 layer:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
-- (void)timelineViewStopItemSkimming:(id)arg1;
-- (id)timelineView:(id)arg1 contextMenuForItem:(id)arg2;
+- (NSProExtendedTimecode *)timelineView:(TLKTimelineView *)arg1 timecodeAtTime:(CDStruct_1b6d18a9)arg2;
+- (NSMenu *)timelineView:(TLKTimelineView *)arg1 contextMenuForItem:(id <TLKTimelineItem>)arg2;
+- (void)timelineViewStopItemSkimming:(TLKTimelineView *)arg1;
+- (void)timelineView:(TLKTimelineView *)arg1 updateItemSkimming:(id <TLKTimelineItem>)arg2 layer:(CALayer<TLKItemLayerInfo> *)arg3 atTime:(CDStruct_1b6d18a9)arg4;
+- (CDStruct_1b6d18a9)timelineViewAudioSampleDuration:(TLKTimelineView *)arg1;
+- (CDStruct_1b6d18a9)timelineViewFrameDuration:(TLKTimelineView *)arg1;
+- (NSArray *)timelineView:(TLKTimelineView *)arg1 badgeLayersForItem:(id <TLKTimelineItem>)arg2 currentBadges:(NSArray *)arg3;
+- (void)timelineView:(TLKTimelineView *)arg1 layoutSublayersOfAudioLayer:(CALayer<TLKItemLayerInfo> *)arg2 forItem:(id <TLKTimelineItem>)arg3;
+- (void)timelineView:(TLKTimelineView *)arg1 layoutSublayersOfVideoLayer:(CALayer<TLKItemLayerInfo> *)arg2 forItem:(id <TLKTimelineItem>)arg3;
+- (void)timelineView:(TLKTimelineView *)arg1 layoutSublayers:(CALayer<TLKItemLayerInfo> *)arg2 forItem:(id <TLKTimelineItem>)arg3;
+- (BOOL)timelineView:(TLKTimelineView *)arg1 shouldSkimItem:(id <TLKTimelineItem>)arg2 atTime:(CDStruct_1b6d18a9 *)arg3 didSnap:(char *)arg4;
+- (BOOL)timelineViewShouldSkimPlayhead:(TLKTimelineView *)arg1;
+- (BOOL)timelineViewIsPlayheadSkimming:(TLKTimelineView *)arg1;
+- (void)timelineView:(TLKTimelineView *)arg1 enablePlayheadSkimming:(BOOL)arg2;
+- (void)timelineView:(TLKTimelineView *)arg1 changedPlayheadTimeWithEmptySelection:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_1b6d18a9)timelineView:(TLKTimelineView *)arg1 adjustTimePerMarker:(CDStruct_1b6d18a9)arg2;
+- (void)timelineView:(TLKTimelineView *)arg1 didSetPlayheadTime:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_1b6d18a9)timelineView:(TLKTimelineView *)arg1 willSetPlayheadTime:(CDStruct_1b6d18a9)arg2 snap:(BOOL)arg3;
+- (void)selectionManager:(TLKSelectionManager *)arg1 didSelectTimeRange:(CDStruct_e83c9415)arg2 withObjects:(NSArray *)arg3;
+- (CDStruct_e83c9415)selectionManager:(TLKSelectionManager *)arg1 willSelectTimeRange:(CDStruct_e83c9415)arg2 withObjects:(NSArray *)arg3;
+- (NSArray *)selectionManager:(TLKSelectionManager *)arg1 willDeselectObjects:(NSArray *)arg2 selectionMask:(unsigned long long)arg3;
+- (NSArray *)selectionManager:(TLKSelectionManager *)arg1 willSelectObjects:(NSArray *)arg2 selectionMask:(unsigned long long)arg3;
+- (BOOL)selectionManagerShouldChange:(TLKSelectionManager *)arg1;
+- (void)selectionManagerDidChange:(TLKSelectionManager *)arg1;
+- (int)timelineView:(TLKTimelineView *)arg1 visibilityForItem:(id <TLKTimelineItem>)arg2;
+- (void)timelineView:(TLKTimelineView *)arg1 didDoubleClickAudioWaveformOfItem:(id <TLKTimelineItem>)arg2;
+- (void)timelineView:(TLKTimelineView *)arg1 didDoubleClickItem:(id <TLKTimelineItem>)arg2;
 @end
 

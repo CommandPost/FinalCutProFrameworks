@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)resolveURI:(id)arg1 error:(id *)arg2;
 + (id)copyURIForObject:(id)arg1;
++ (id)resolveURI:(id)arg1 error:(id *)arg2;
 
 @end
 

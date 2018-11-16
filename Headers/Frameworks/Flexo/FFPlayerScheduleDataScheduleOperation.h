@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     FFPlayerScheduledData *_playerFrame;
 }
 
-- (id)initWithPF:(id)arg1;
-- (void)dealloc;
-- (void)cancel;
 - (void)main;
+- (void)cancel;
+- (void)dealloc;
+- (id)initWithPF:(id)arg1;
 
 @end
 

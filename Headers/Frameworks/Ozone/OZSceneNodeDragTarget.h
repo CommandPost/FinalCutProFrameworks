@@ -15,20 +15,21 @@
     struct OZRenderNode *_pDraggingRenderNode;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)setController:(id)arg1;
-- (id)controller;
-- (BOOL)acceptsFirstMouse:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (unsigned long long)draggingEntered:(id)arg1;
-- (void)draggingExited:(id)arg1;
-- (BOOL)prepareForDragOperation:(id)arg1;
-- (BOOL)performDragOperation:(id)arg1;
-- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)draggedImage:(id)arg1 movedTo:(struct CGPoint)arg2;
+- (id).cxx_construct;
 - (void)draggedImage:(id)arg1 endedAt:(struct CGPoint)arg2 operation:(unsigned long long)arg3;
+- (void)draggedImage:(id)arg1 movedTo:(struct CGPoint)arg2;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)arg1;
+- (BOOL)performDragOperation:(id)arg1;
+- (BOOL)prepareForDragOperation:(id)arg1;
+- (void)draggingExited:(id)arg1;
+- (unsigned long long)draggingEntered:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (BOOL)acceptsFirstMouse:(id)arg1;
+- (id)controller;
+- (void)setController:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

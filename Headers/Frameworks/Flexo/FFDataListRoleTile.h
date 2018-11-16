@@ -19,14 +19,14 @@ __attribute__((visibility("hidden")))
     BOOL _isMinimized;
 }
 
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)toggleEnabled:(id)arg1;
-- (void)toggleMinimized:(id)arg1;
-@property(retain, nonatomic) NSString *role; // @synthesize role=_role;
-@property(nonatomic) long long state; // @synthesize state=_state;
 @property(nonatomic) BOOL isMinimized; // @synthesize isMinimized=_isMinimized;
+@property(nonatomic) long long state; // @synthesize state=_state;
+@property(retain, nonatomic) NSString *role; // @synthesize role=_role;
 - (id)_enableCheckboxFacet;
+- (void)toggleMinimized:(id)arg1;
+- (void)toggleEnabled:(id)arg1;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

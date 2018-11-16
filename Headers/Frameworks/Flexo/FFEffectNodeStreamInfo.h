@@ -16,11 +16,12 @@ __attribute__((visibility("hidden")))
     NSString *_identifier;
 }
 
-- (id)initWithStream:(id)arg1 offset:(CDStruct_1b6d18a9)arg2 identifier:(id)arg3;
-- (void)dealloc;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 offset; // @synthesize offset=_offset;
 @property(readonly, nonatomic) FFStreamVideo *stream; // @synthesize stream=_stream;
+- (id).cxx_construct;
+- (void)dealloc;
+- (id)initWithStream:(id)arg1 offset:(CDStruct_1b6d18a9)arg2 identifier:(id)arg3;
 
 @end
 

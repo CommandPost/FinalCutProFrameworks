@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (BOOL)scannerShouldLoadBundle:(id)arg1 atPath:(id)arg2;
-+ (void)scannerDidLoadBundle:(id)arg1 atPath:(id)arg2;
 + (void)loadBundle;
++ (void)scannerDidLoadBundle:(id)arg1 atPath:(id)arg2;
++ (BOOL)scannerShouldLoadBundle:(id)arg1 atPath:(id)arg2;
 
 @end
 

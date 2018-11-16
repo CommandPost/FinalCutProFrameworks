@@ -13,13 +13,13 @@
     LKSegmentedScrubber *_scrubber;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)update;
-- (void)setChannelValue:(id)arg1;
-- (id)timecode;
-- (void)setTimecode:(id)arg1;
-- (void)setTimecodeFormat:(long long)arg1;
 - (void)setTimecodeMode:(int)arg1;
+- (void)setTimecodeFormat:(long long)arg1;
+- (void)setTimecode:(id)arg1;
+- (id)timecode;
+- (void)setChannelValue:(id)arg1;
+- (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -19,14 +19,14 @@ __attribute__((visibility("hidden")))
     NSProView *_contentView;
 }
 
-- (void)viewDidLoad;
-- (id)moduleAccessoryView;
-- (unsigned long long)labelAlignment;
-- (void)setCurrentItems:(id)arg1;
-- (void)_rangeInvalidated:(id)arg1;
-- (void)_addObservingForCurrentItems;
-- (void)_removeObservingForCurrentItems;
 - (void)_updateHeader;
+- (void)_removeObservingForCurrentItems;
+- (void)_addObservingForCurrentItems;
+- (void)_rangeInvalidated:(id)arg1;
+- (void)setCurrentItems:(id)arg1;
+- (unsigned long long)labelAlignment;
+- (id)moduleAccessoryView;
+- (void)viewDidLoad;
 
 @end
 

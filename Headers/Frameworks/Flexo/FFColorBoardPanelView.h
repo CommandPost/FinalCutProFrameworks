@@ -27,29 +27,6 @@ __attribute__((visibility("hidden")))
     FFColorBoardPuckInfoView *_highlightPuckInfoView;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-@property(nonatomic) int boardType; // @synthesize boardType=_boardType;
-- (void)addNotificationObservers;
-- (void)removeNotificationObservers;
-- (void)notificationHandler:(id)arg1;
-- (void)resetLayerData:(id)arg1;
-- (void)syncToBoardType;
-- (BOOL)hasPuckController:(id)arg1;
-- (void)loadBoardPuckControllers;
-- (void)removePuckControllerDelegates;
-- (id)controllerForPuckType:(int)arg1;
-- (void)attachPuckControllerOfType:(int)arg1 toPuck:(id)arg2;
-- (struct CGRect)calcPuckMovementFrame;
-- (struct CGRect)calcPuckFrame:(id)arg1;
-- (struct CGPoint)calcPuckCenterPosition:(id)arg1;
-- (struct CGPoint)convertBoardToNormalizedColorCoord:(struct CGPoint)arg1;
-- (struct CGPoint)convertNormalizedColorToBoardCoord:(struct CGPoint)arg1;
-- (BOOL)puck:(id)arg1 willMoveTo:(struct CGPoint *)arg2;
-- (struct CGPoint)puck:(id)arg1 convertNormalizedToPuckCoord:(struct CGPoint)arg2;
-- (struct CGPoint)puck:(id)arg1 convertPuckToNormalizedCoord:(struct CGPoint)arg2;
 @property(retain, nonatomic) FFColorBoardPuckInfoView *highlightPuckInfoView; // @synthesize highlightPuckInfoView=_highlightPuckInfoView;
 @property(retain, nonatomic) FFColorBoardPuckInfoView *midtonePuckInfoView; // @synthesize midtonePuckInfoView=_midtonePuckInfoView;
 @property(retain, nonatomic) FFColorBoardPuckInfoView *shadowPuckInfoView; // @synthesize shadowPuckInfoView=_shadowPuckInfoView;
@@ -61,6 +38,29 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *boardPuckControllers; // @synthesize boardPuckControllers=_boardPuckControllers;
 @property(retain, nonatomic) FFColorBoardImageView *boardImageView; // @synthesize boardImageView=_boardImageView;
 @property(retain, nonatomic) LKButton *resetButton; // @synthesize resetButton=_resetButton;
+@property(nonatomic) int boardType; // @synthesize boardType=_boardType;
+- (struct CGPoint)puck:(id)arg1 convertPuckToNormalizedCoord:(struct CGPoint)arg2;
+- (struct CGPoint)puck:(id)arg1 convertNormalizedToPuckCoord:(struct CGPoint)arg2;
+- (BOOL)puck:(id)arg1 willMoveTo:(struct CGPoint *)arg2;
+- (struct CGPoint)convertNormalizedColorToBoardCoord:(struct CGPoint)arg1;
+- (struct CGPoint)convertBoardToNormalizedColorCoord:(struct CGPoint)arg1;
+- (struct CGPoint)calcPuckCenterPosition:(id)arg1;
+- (struct CGRect)calcPuckFrame:(id)arg1;
+- (struct CGRect)calcPuckMovementFrame;
+- (void)attachPuckControllerOfType:(int)arg1 toPuck:(id)arg2;
+- (id)controllerForPuckType:(int)arg1;
+- (void)removePuckControllerDelegates;
+- (void)loadBoardPuckControllers;
+- (BOOL)hasPuckController:(id)arg1;
+- (void)syncToBoardType;
+- (void)resetLayerData:(id)arg1;
+- (void)notificationHandler:(id)arg1;
+- (void)removeNotificationObservers;
+- (void)addNotificationObservers;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

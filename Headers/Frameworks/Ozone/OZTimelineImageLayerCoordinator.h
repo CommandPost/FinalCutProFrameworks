@@ -10,8 +10,8 @@
 {
 }
 
-- (struct OZChannelObjectRoot *)rootFilter:(struct OZChannelBase *)arg1;
 - (struct OZChannelFolder *)folderFilter:(struct OZChannelBase *)arg1;
+- (struct OZChannelObjectRoot *)rootFilter:(struct OZChannelBase *)arg1;
 
 @end
 

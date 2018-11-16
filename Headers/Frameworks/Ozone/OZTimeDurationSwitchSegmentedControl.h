@@ -15,11 +15,11 @@
 }
 
 + (void)initialize;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
 @property(nonatomic) OZToolbarModule *toolbarModule; // @synthesize toolbarModule=_toolbarModule;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
 
 @end
 

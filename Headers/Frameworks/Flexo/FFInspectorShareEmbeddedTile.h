@@ -21,12 +21,6 @@ __attribute__((visibility("hidden")))
     id _shareDelegate;
 }
 
-- (void)awakeFromNib;
-- (void)actionButtonClicked:(id)arg1;
-- (void)tellAFriendOfSharedItem:(id)arg1;
-- (void)removeSharedItem:(id)arg1;
-- (void)visitSharedItem:(id)arg1;
-- (void)revealInFinder:(id)arg1;
 @property(retain, nonatomic) id shareDelegate; // @synthesize shareDelegate=_shareDelegate;
 @property(retain, nonatomic) NSString *shareVideoPath; // @synthesize shareVideoPath=_shareVideoPath;
 @property(retain, nonatomic) NSString *shareKind; // @synthesize shareKind=_shareKind;
@@ -35,6 +29,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LKButton *embeddedActionButton; // @synthesize embeddedActionButton=_embeddedActionButton;
 @property(retain, nonatomic) LKTextField *shareEmbeddedInfo; // @synthesize shareEmbeddedInfo=_shareEmbeddedInfo;
 @property(retain, nonatomic) LKImageView *shareStatusImageView; // @synthesize shareStatusImageView=_shareStatusImageView;
+- (void)revealInFinder:(id)arg1;
+- (void)visitSharedItem:(id)arg1;
+- (void)removeSharedItem:(id)arg1;
+- (void)tellAFriendOfSharedItem:(id)arg1;
+- (void)actionButtonClicked:(id)arg1;
+- (void)awakeFromNib;
 
 @end
 

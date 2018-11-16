@@ -18,17 +18,17 @@
     OZViewController *_dropShadowCtrl;
 }
 
-- (void)dealloc;
-- (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
-- (void)linkFourCornerChannels:(struct OZChannelQuad *)arg1 controller:(id)arg2 faceChan:(struct OZChannelQuad *)arg3 link:(BOOL)arg4 reset:(BOOL)arg5;
-- (void)showHideColorSourceChannels:(int)arg1 colorChan:(struct OZChannelColorNoAlpha *)arg2 gradientChan:(struct OZChannelGradient *)arg3 textureChan:(struct OZChannelImageWithOptions *)arg4 controller:(id)arg5;
-- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
-- (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
-- (void)delayedReleaseCB:(id)arg1;
-- (void)delayedRelease;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (void)notify:(unsigned int)arg1;
 - (struct TXTextStyle *)getCurrentStyle;
+- (void)notify:(unsigned int)arg1;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
+- (void)delayedRelease;
+- (void)delayedReleaseCB:(id)arg1;
+- (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
+- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
+- (void)showHideColorSourceChannels:(int)arg1 colorChan:(struct OZChannelColorNoAlpha *)arg2 gradientChan:(struct OZChannelGradient *)arg3 textureChan:(struct OZChannelImageWithOptions *)arg4 controller:(id)arg5;
+- (void)linkFourCornerChannels:(struct OZChannelQuad *)arg1 controller:(id)arg2 faceChan:(struct OZChannelQuad *)arg3 link:(BOOL)arg4 reset:(BOOL)arg5;
+- (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
+- (void)dealloc;
 
 @end
 

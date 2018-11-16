@@ -13,11 +13,11 @@
     NSPopUpButton *_pPopUp;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)update;
-- (void)enable;
-- (void)disable;
 - (void)setChannelValue:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -14,12 +14,12 @@
     struct OZDocument *_pDocument;
 }
 
-- (id)initWithOZDocument:(struct OZDocument *)arg1 useTimer:(BOOL)arg2;
-- (void)dealloc;
-- (void)createTimer;
-- (void)releaseTimer;
-- (void)processNotifications:(id)arg1;
 - (void)fire;
+- (void)processNotifications:(id)arg1;
+- (void)releaseTimer;
+- (void)createTimer;
+- (void)dealloc;
+- (id)initWithOZDocument:(struct OZDocument *)arg1 useTimer:(BOOL)arg2;
 
 @end
 

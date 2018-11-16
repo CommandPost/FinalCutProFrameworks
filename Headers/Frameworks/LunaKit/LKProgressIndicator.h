@@ -10,9 +10,9 @@
 {
 }
 
-- (id)progressBarBackgroundFacet;
-- (id)progressBarFillFacet;
 - (id)progressSpinnerFacet;
+- (id)progressBarFillFacet;
+- (id)progressBarBackgroundFacet;
 
 @end
 

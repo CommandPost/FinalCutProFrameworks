@@ -10,39 +10,41 @@
 
 @interface TLKTimelineLayer : CALayer
 {
-    id _representedObject;
+    id <TLKTimelineItem> _representedObject;
     TLKAnchorLayer *_anchorLayer;
     struct {
         unsigned int hasDragHandle:1;
         unsigned int selectionMask:8;
         unsigned int sourceSplitEdit:1;
         unsigned int splitEdit:1;
+        unsigned int audioComponent:1;
         unsigned int hideUnusedMediaOverlay:1;
-        unsigned int RESERVED:20;
+        unsigned int RESERVED:19;
     } _tlkItemFlags;
 }
 
-+ (struct CGRect)frameRectForRect:(struct CGRect)arg1;
 + (struct CGRect)frameForItem:(struct CGRect)arg1 withType:(int)arg2 andContainmentType:(int)arg3;
-- (void)setContents:(id)arg1;
-- (struct CGRect)visibleBoundsOfLayer:(id)arg1 accountingForOverlap:(BOOL)arg2;
-- (id)initWithTimelineView:(id)arg1;
-- (void)dealloc;
-@property(readonly, nonatomic) TLKTimelineView *timelineView;
-@property(nonatomic) id <TLKTimelineItem> representedObject;
-@property(retain, nonatomic) TLKAnchorLayer *anchorLayer;
-- (id)anchorLayers;
-@property(nonatomic) BOOL splitEdit;
-@property(nonatomic) BOOL sourceSplitEdit;
-@property(nonatomic) BOOL hideUnusedMediaOverlay;
-- (void)invalidate;
-@property(nonatomic) unsigned long long selectionMask;
-- (void)updateAppearance;
-- (void)audioWaveFormProportionChanged;
-- (id)_briefDescriptionForLayer:(id)arg1;
-- (id)_subtreeDescriptionForLayer:(id)arg1 withDepth:(long long)arg2 compact:(BOOL)arg3 layerCount:(unsigned long long *)arg4;
-- (id)_fullSubtreeDescription;
++ (struct CGRect)frameRectForRect:(struct CGRect)arg1;
 - (id)_subtreeDescription;
+- (id)_fullSubtreeDescription;
+- (id)_subtreeDescriptionForLayer:(id)arg1 withDepth:(long long)arg2 compact:(BOOL)arg3 layerCount:(unsigned long long *)arg4;
+- (id)_briefDescriptionForLayer:(id)arg1;
+- (void)audioWaveFormProportionChanged;
+- (void)updateAppearance;
+@property(nonatomic) unsigned long long selectionMask;
+- (void)invalidate;
+@property(nonatomic) BOOL hideUnusedMediaOverlay;
+@property(nonatomic) BOOL audioComponent;
+@property(nonatomic) BOOL sourceSplitEdit;
+@property(nonatomic) BOOL splitEdit;
+- (id)anchorLayers;
+@property(retain, nonatomic) TLKAnchorLayer *anchorLayer;
+@property(nonatomic) id <TLKTimelineItem> representedObject;
+@property(readonly, nonatomic) TLKTimelineView *timelineView;
+- (void)dealloc;
+- (id)initWithTimelineView:(id)arg1;
+- (struct CGRect)visibleBoundsOfLayer:(id)arg1 accountingForOverlap:(BOOL)arg2;
+- (void)setContents:(id)arg1;
 
 @end
 

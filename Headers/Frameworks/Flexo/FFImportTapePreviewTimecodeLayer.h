@@ -26,19 +26,19 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)layerWithFrame:(struct CGRect)arg1 superlayer:(id)arg2;
-- (void)dealloc;
-- (void)disableFrameAnimationOnLayer:(id)arg1;
-- (void)configureTextLayer:(id)arg1 inBackgroundLayer:(id)arg2;
-- (void)addSublayers;
-@property(retain, nonatomic) MIOTimecode *timecode; // @synthesize timecode=_timecode;
 @property(nonatomic) long long elapsedSeconds; // @synthesize elapsedSeconds=_elapsedSeconds;
-@property(nonatomic) long long deckStatus; // @synthesize deckStatus=_deckStatus;
 @property(nonatomic) int importProcessingType; // @synthesize importProcessingType=_importProcessingType;
 @property(nonatomic) long long iSightStatus; // @synthesize iSightStatus=_iSightStatus;
-- (void)updateTextlayer:(id)arg1 andBackgroundLayer:(id)arg2 withString:(id)arg3;
-- (void)updateStatusLayer;
-- (void)updateTimecodeLayer;
+@property(nonatomic) long long deckStatus; // @synthesize deckStatus=_deckStatus;
+@property(retain, nonatomic) MIOTimecode *timecode; // @synthesize timecode=_timecode;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
+- (void)updateTimecodeLayer;
+- (void)updateStatusLayer;
+- (void)updateTextlayer:(id)arg1 andBackgroundLayer:(id)arg2 withString:(id)arg3;
+- (void)addSublayers;
+- (void)configureTextLayer:(id)arg1 inBackgroundLayer:(id)arg2;
+- (void)disableFrameAnimationOnLayer:(id)arg1;
+- (void)dealloc;
 
 @end
 

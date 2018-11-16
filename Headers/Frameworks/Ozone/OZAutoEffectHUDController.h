@@ -10,8 +10,8 @@
 {
 }
 
-- (struct OZChannelFolder *)getRootChan:(struct OZObjectManipulator *)arg1;
 - (BOOL)loadView;
+- (struct OZChannelFolder *)getRootChan:(struct OZObjectManipulator *)arg1;
 
 @end
 

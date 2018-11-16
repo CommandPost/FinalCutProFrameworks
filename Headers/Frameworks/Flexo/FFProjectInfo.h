@@ -17,12 +17,12 @@ __attribute__((visibility("hidden")))
     NSDocument *_document;
 }
 
-- (id)initWithURL:(id)arg1 type:(id)arg2;
-- (void)dealloc;
-@property(copy, nonatomic) NSURL *URL;
-@property(readonly, nonatomic) NSString *name;
-- (id)description;
 @property(readonly, nonatomic) NSString *type; // @synthesize type=_type;
+- (id)description;
+@property(readonly, nonatomic) NSString *name;
+@property(copy, nonatomic) NSURL *URL;
+- (void)dealloc;
+- (id)initWithURL:(id)arg1 type:(id)arg2;
 
 @end
 

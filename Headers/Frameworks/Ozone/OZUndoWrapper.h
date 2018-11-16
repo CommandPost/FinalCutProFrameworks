@@ -14,12 +14,12 @@
     NSString *_description;
 }
 
-- (id)init;
-- (void)dealloc;
-- (struct OZUndoAction *)getAction;
-- (void)setUndoAction:(struct OZUndoAction *)arg1;
-- (id)getDescription;
 - (void)setDescription:(id)arg1;
+- (id)getDescription;
+- (void)setUndoAction:(struct OZUndoAction *)arg1;
+- (struct OZUndoAction *)getAction;
+- (void)dealloc;
+- (id)init;
 
 @end
 

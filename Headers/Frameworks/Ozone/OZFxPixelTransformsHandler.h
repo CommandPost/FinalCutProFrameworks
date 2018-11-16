@@ -15,16 +15,16 @@
     PCMatrix44Tmpl_e98c85ee _postTransform;
 }
 
-- (id)init;
-- (void)setAgent:(struct LiAgent *)arg1;
-- (void)setPreTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1;
-- (void)setPostTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1;
-- (PCMatrix44Tmpl_e98c85ee)pixelTransform;
-- (PCMatrix44Tmpl_e98c85ee)inversePixelTransform;
-- (PCMatrix44Tmpl_e98c85ee)destinationPixelTransform;
-- (PCMatrix44Tmpl_e98c85ee)destinationInversePixelTransform;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (PCMatrix44Tmpl_e98c85ee)destinationInversePixelTransform;
+- (PCMatrix44Tmpl_e98c85ee)destinationPixelTransform;
+- (PCMatrix44Tmpl_e98c85ee)inversePixelTransform;
+- (PCMatrix44Tmpl_e98c85ee)pixelTransform;
+- (void)setPostTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1;
+- (void)setPreTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1;
+- (void)setAgent:(struct LiAgent *)arg1;
+- (id)init;
 
 @end
 

@@ -15,26 +15,26 @@
 }
 
 + (BOOL)iconIsDefault:(id)arg1;
-- (id)initWithEffectID:(id)arg1;
-- (void)dealloc;
-- (id)itemIcon;
-- (id)defaultIcon;
-- (long long)itemFSSize;
-- (id)itemDisplayName;
-- (id)itemCategory;
-- (id)itemTheme;
-- (id)itemKind;
-- (id)effectInstance;
-- (BOOL)itemIsModifiable;
-- (BOOL)itemIsReadable;
-- (id)itemPasteboardData;
-- (id)itemPasteboardDataTypes;
-- (id)valueForUndefinedKey:(id)arg1;
-- (id)effectID;
-- (long long)effectLibraryItemCompare:(id)arg1;
-- (struct NSObject *)_newSkimmable:(id)arg1 loadInForeground:(BOOL)arg2;
-- (id)_newIconImageWithTimeOffset:(double)arg1;
 - (struct NSObject *)newSkimmableForEffectPreview;
+- (id)_newIconImageWithTimeOffset:(double)arg1;
+- (struct NSObject *)_newSkimmable:(id)arg1 loadInForeground:(BOOL)arg2;
+- (long long)effectLibraryItemCompare:(id)arg1;
+- (id)effectID;
+- (id)valueForUndefinedKey:(id)arg1;
+- (id)itemPasteboardDataTypes;
+- (id)itemPasteboardData;
+- (BOOL)itemIsReadable;
+- (BOOL)itemIsModifiable;
+- (id)effectInstance;
+- (id)itemKind;
+- (id)itemTheme;
+- (id)itemCategory;
+- (id)itemDisplayName;
+- (long long)itemFSSize;
+- (id)defaultIcon;
+- (id)itemIcon;
+- (void)dealloc;
+- (id)initWithEffectID:(id)arg1;
 
 @end
 

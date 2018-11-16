@@ -10,16 +10,16 @@
 {
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (struct OZChannelGradientFolder *)getFolder;
-- (void)getSamples:(map_aecb1e76 *)arg1;
-- (void)startColorPicker:(id)arg1;
-- (void)takeColorFromTransientColorPicker:(id)arg1;
-- (id)color;
-- (unsigned long long)draggingUpdated:(id)arg1;
-- (unsigned long long)draggingEntered:(id)arg1;
 - (BOOL)performDragOperation:(id)arg1;
+- (unsigned long long)draggingEntered:(id)arg1;
+- (unsigned long long)draggingUpdated:(id)arg1;
+- (id)color;
+- (void)takeColorFromTransientColorPicker:(id)arg1;
+- (void)startColorPicker:(id)arg1;
+- (void)getSamples:(map_d7d8ae3b *)arg1;
+- (struct OZChannelGradientFolder *)getFolder;
+- (void)drawRect:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

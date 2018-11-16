@@ -15,13 +15,13 @@
     struct TXTextLayout *_text;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 textLayout:(struct TXTextLayout *)arg2 context:(id)arg3;
-- (void)awakeFromNib;
-- (void)openFontPanel:(id)arg1;
-- (void)update;
-- (void)enable;
-- (void)disable;
 - (void)setChannelValue:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)openFontPanel:(id)arg1;
+- (void)awakeFromNib;
+- (id)initWithChan:(struct OZChannelBase *)arg1 textLayout:(struct TXTextLayout *)arg2 context:(id)arg3;
 
 @end
 

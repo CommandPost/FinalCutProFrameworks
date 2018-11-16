@@ -19,34 +19,34 @@ __attribute__((visibility("hidden")))
     NSString *_name;
 }
 
-- (id)initWithChannelFolder:(id)arg1 effectStack:(id)arg2 colorSecondaryEffect:(id)arg3;
-- (void)dealloc;
-- (BOOL)hitTest:(struct CGPoint)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
-- (void)setPlayerVideoModule:(id)arg1;
-- (void)activateKeyerOSC;
-- (void)activateShapeOSCWithChannel:(id)arg1;
-- (void)hideAndDeactivateAllOSCs;
-- (void)hideAllShapeOSCs;
-- (void)showAllShapeOSCs;
-- (void)hideKeyerOSC;
-- (void)showKeyerOSC;
-- (void)deactivateAllShapeOSCs;
-- (void)deactivateKeyerOSC;
-- (void)deactivateAllOSCs;
-- (void)updateActivatedOSCWithChannel:(id)arg1;
-- (void)updateActivatedOSC;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)getCursor;
-- (void)flagsChanged:(id)arg1;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) BOOL visible; // @synthesize visible=_visible;
+- (void)flagsChanged:(id)arg1;
+- (id)getCursor;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)updateActivatedOSC;
+- (void)updateActivatedOSCWithChannel:(id)arg1;
+- (void)deactivateAllOSCs;
+- (void)deactivateKeyerOSC;
+- (void)deactivateAllShapeOSCs;
+- (void)showKeyerOSC;
+- (void)hideKeyerOSC;
+- (void)showAllShapeOSCs;
+- (void)hideAllShapeOSCs;
+- (void)hideAndDeactivateAllOSCs;
+- (void)activateShapeOSCWithChannel:(id)arg1;
+- (void)activateKeyerOSC;
+- (void)setPlayerVideoModule:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (BOOL)hitTest:(struct CGPoint)arg1;
+- (void)dealloc;
+- (id)initWithChannelFolder:(id)arg1 effectStack:(id)arg2 colorSecondaryEffect:(id)arg3;
 
 @end
 

@@ -11,17 +11,17 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)setColorBoardIsActive:(BOOL)arg1;
-- (void)addNotificationObservers;
-- (void)removeNotificationObservers;
-- (void)notificationHandler:(id)arg1;
-- (BOOL)canBecomeKeyView;
-- (BOOL)acceptsFirstResponder;
 - (void)drawRect:(struct CGRect)arg1;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)canBecomeKeyView;
+- (void)notificationHandler:(id)arg1;
+- (void)removeNotificationObservers;
+- (void)addNotificationObservers;
+- (void)setColorBoardIsActive:(BOOL)arg1;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

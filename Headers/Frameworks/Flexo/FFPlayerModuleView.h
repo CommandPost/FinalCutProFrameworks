@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     FFPlayerModule *_playerModule;
 }
 
-- (void)keyDown:(id)arg1;
 @property(nonatomic) FFPlayerModule *playerModule; // @synthesize playerModule=_playerModule;
+- (void)keyDown:(id)arg1;
 
 @end
 

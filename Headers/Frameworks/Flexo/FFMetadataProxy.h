@@ -17,21 +17,21 @@ __attribute__((visibility("hidden")))
     BOOL _objectHasBeenInvalidated;
 }
 
-- (id)initWithObject:(id)arg1;
-- (void)dealloc;
-- (BOOL)validateValue:(id *)arg1 forKey:(id)arg2 error:(id *)arg3;
-- (void)setValue:(id)arg1 forKey:(id)arg2;
-- (id)valueForKey:(id)arg1;
-- (void)setValue:(id)arg1 forKeyPath:(id)arg2;
-- (id)valueForKeyPath:(id)arg1;
-- (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
-- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
-- (void)rangeInvalidated:(id)arg1;
-- (id)metaDataStartSequence;
-- (void)actionBeginSetMetadataValue;
-- (BOOL)actionEndSetMetadataValueWithError:(id *)arg1;
 @property(nonatomic) BOOL objectHasBeenInvalidated; // @synthesize objectHasBeenInvalidated=_objectHasBeenInvalidated;
 @property(retain, nonatomic) NSMutableArray *observedKeyPaths; // @synthesize observedKeyPaths=_observedKeyPaths;
+- (BOOL)actionEndSetMetadataValueWithError:(id *)arg1;
+- (void)actionBeginSetMetadataValue;
+- (id)metaDataStartSequence;
+- (void)rangeInvalidated:(id)arg1;
+- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
+- (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
+- (id)valueForKeyPath:(id)arg1;
+- (void)setValue:(id)arg1 forKeyPath:(id)arg2;
+- (id)valueForKey:(id)arg1;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
+- (BOOL)validateValue:(id *)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (void)dealloc;
+- (id)initWithObject:(id)arg1;
 
 @end
 

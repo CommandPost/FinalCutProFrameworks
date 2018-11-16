@@ -10,8 +10,8 @@
 {
 }
 
-- (id)init;
 - (void)setAnchorDirection:(int)arg1;
+- (id)init;
 
 @end
 

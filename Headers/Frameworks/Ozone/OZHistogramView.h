@@ -18,19 +18,19 @@
     struct GLRenderer *_renderer;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
-- (void)dealloc;
-- (BOOL)isOpaque;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)drawHistogram:(struct CGRect)arg1;
-- (void)update:(BOOL)arg1;
-- (void)updateImage:(struct CGSize)arg1;
-- (void)computeHistogramImage:(struct PCBitmap *)arg1 size:(struct CGSize)arg2;
-- (void)allocateImage:(struct CGSize)arg1;
-- (void)setHistogramOutOfDate:(BOOL)arg1;
-- (void)renderCompletion:(id)arg1;
 - (void)renderCancel:(id)arg1;
+- (void)renderCompletion:(id)arg1;
+- (void)setHistogramOutOfDate:(BOOL)arg1;
+- (void)allocateImage:(struct CGSize)arg1;
+- (void)computeHistogramImage:(struct PCBitmap *)arg1 size:(struct CGSize)arg2;
+- (void)updateImage:(struct CGSize)arg1;
+- (void)update:(BOOL)arg1;
+- (void)drawHistogram:(struct CGRect)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (BOOL)isOpaque;
+- (void)dealloc;
+- (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -18,18 +18,18 @@ __attribute__((visibility("hidden")))
     long long _lastOverRow;
 }
 
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)addTracking;
-- (void)removeTracking;
-- (void)updateTrackingAreas;
-- (BOOL)acceptsFirstMouse:(id)arg1;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)viewDidEndLiveResize;
 @property long long mouseOverColumn; // @synthesize mouseOverColumn=_mouseOverCol;
 @property long long mouseOverRow; // @synthesize mouseOverRow=_mouseOverRow;
+- (void)viewDidEndLiveResize;
+- (void)mouseExited:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (BOOL)acceptsFirstMouse:(id)arg1;
+- (void)updateTrackingAreas;
+- (void)removeTracking;
+- (void)addTracking;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

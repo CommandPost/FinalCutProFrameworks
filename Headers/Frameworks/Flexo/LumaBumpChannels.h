@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     CHChannelDouble *chWhiteBalY;
 }
 
-- (void)dealloc;
 @property(retain, nonatomic) CHChannelDouble *chWhiteBalY; // @synthesize chWhiteBalY;
 @property(retain, nonatomic) CHChannelDouble *chWhiteBalX; // @synthesize chWhiteBalX;
 @property(retain, nonatomic) CHChannelDouble *chBlackBalY; // @synthesize chBlackBalY;
@@ -36,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CHChannelDouble *chLift; // @synthesize chLift;
 @property(retain, nonatomic) CHChannelDouble *chBumpSigma; // @synthesize chBumpSigma;
 @property(retain, nonatomic) CHChannelDouble *chBumpHue; // @synthesize chBumpHue;
+- (void)dealloc;
 
 @end
 

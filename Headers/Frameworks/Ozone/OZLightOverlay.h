@@ -14,18 +14,18 @@
     _Bool _capturing;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (int)getDrawingOrder;
-- (void)dealloc;
-- (void)getAllLightNodes:(struct OZScene *)arg1:(vector_e01f805a *)arg2;
-- (void)draw;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (_Bool)getSetUndo;
-- (void)setSetUndo:(_Bool)arg1;
-- (_Bool)getCapturing;
 - (void)setCapturing:(_Bool)arg1;
+- (_Bool)getCapturing;
+- (void)setSetUndo:(_Bool)arg1;
+- (_Bool)getSetUndo;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)draw;
+- (void)getAllLightNodes:(struct OZScene *)arg1:(vector_313ad82b *)arg2;
+- (void)dealloc;
+- (int)getDrawingOrder;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

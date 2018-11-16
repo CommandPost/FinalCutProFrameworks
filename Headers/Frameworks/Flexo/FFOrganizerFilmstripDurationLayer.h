@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     NSDictionary *_durationStringAttributes;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)setDurationString:(id)arg1 withStringAttributes:(id)arg2;
-- (void)drawInContext:(struct CGContext *)arg1;
 - (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
+- (void)drawInContext:(struct CGContext *)arg1;
+- (void)setDurationString:(id)arg1 withStringAttributes:(id)arg2;
+- (void)dealloc;
+- (id)init;
 
 @end
 

@@ -15,15 +15,15 @@
 }
 
 + (void)initialize;
-- (id)initWithLocation:(double)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (double)location;
-- (void)setLocation:(double)arg1;
-- (BOOL)isDoubleStop;
-- (BOOL)isColorStop;
 - (BOOL)isOpacityStop;
+- (BOOL)isColorStop;
+- (BOOL)isDoubleStop;
+- (void)setLocation:(double)arg1;
+- (double)location;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithLocation:(double)arg1;
 
 @end
 

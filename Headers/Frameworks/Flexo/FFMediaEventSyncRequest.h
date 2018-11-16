@@ -18,14 +18,14 @@ __attribute__((visibility("hidden")))
     BOOL _executed;
 }
 
-- (id)initWithMediaReps:(id)arg1 directoryURL:(id)arg2 mediaSelector:(SEL)arg3 identifier:(id)arg4 event:(id)arg5;
-- (void)dealloc;
-- (id)description;
-- (id)identifier;
-- (id)mediaEvent;
-- (SEL)mediaSelector;
-- (BOOL)executed;
 - (BOOL)execute:(id *)arg1;
+- (BOOL)executed;
+- (SEL)mediaSelector;
+- (id)mediaEvent;
+- (id)identifier;
+- (id)description;
+- (void)dealloc;
+- (id)initWithMediaReps:(id)arg1 directoryURL:(id)arg2 mediaSelector:(SEL)arg3 identifier:(id)arg4 event:(id)arg5;
 
 @end
 

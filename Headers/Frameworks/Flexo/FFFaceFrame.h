@@ -18,18 +18,18 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)description;
 @property(retain, nonatomic) NSMutableSet *facesInFrame; // @synthesize facesInFrame;
-- (void)addFace:(id)arg1;
-- (void)addFacesInFrameObject:(id)arg1;
-- (void)removeFacesInFrameObject:(id)arg1;
-- (void)detectAndRemoveDeadFaces;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(nonatomic) struct CGImage *cgImage; // @synthesize cgImage;
 - (void)dealloc;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)detectAndRemoveDeadFaces;
+- (void)removeFacesInFrameObject:(id)arg1;
+- (void)addFacesInFrameObject:(id)arg1;
+- (void)addFace:(id)arg1;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

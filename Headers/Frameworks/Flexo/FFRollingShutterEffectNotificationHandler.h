@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     SEL _selector;
 }
 
-- (id)initWithEffect:(id)arg1 selector:(SEL)arg2;
-- (void)dealloc;
-- (void)notification:(id)arg1;
 - (void)startObservingNotification:(id)arg1 object:(id)arg2;
+- (void)notification:(id)arg1;
+- (void)dealloc;
+- (id)initWithEffect:(id)arg1 selector:(SEL)arg2;
 
 @end
 

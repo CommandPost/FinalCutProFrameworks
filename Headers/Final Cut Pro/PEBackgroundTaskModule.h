@@ -17,25 +17,25 @@
 }
 
 + (id)taskTypeToDisplayGroupMapping;
-- (id)init;
-- (void)dealloc;
-- (struct CGSize)viewMinSize;
-- (void)viewDidLoad;
-- (void)hideModule:(id)arg1;
-- (void)moduleDidHide;
-- (void)moduleDidUnhide;
-- (void)openModalProgressSheetForTask:(id)arg1;
-- (void)closeModalProgressSheet;
-- (void)_setTasks:(id)arg1;
-- (void)showShareMonitor;
-- (void)playerWillEnterFullScreen:(id)arg1;
-- (void)playerDidExitFullScreen:(id)arg1;
-- (void)didAddTask:(id)arg1;
-- (void)backgroundTaskQueue:(id)arg1 didAddTask:(id)arg2;
-- (void)backgroundTaskQueue:(id)arg1 didStartTask:(id)arg2;
-- (void)backgroundTaskQueue:(id)arg1 didCompleteTask:(id)arg2;
-- (void)backgroundTaskQueue:(id)arg1 taskWasCancelled:(id)arg2;
 - (id)groupTileForTask:(id)arg1;
+- (void)backgroundTaskQueue:(id)arg1 taskWasCancelled:(id)arg2;
+- (void)backgroundTaskQueue:(id)arg1 didCompleteTask:(id)arg2;
+- (void)backgroundTaskQueue:(id)arg1 didStartTask:(id)arg2;
+- (void)backgroundTaskQueue:(id)arg1 didAddTask:(id)arg2;
+- (void)didAddTask:(id)arg1;
+- (void)playerDidExitFullScreen:(id)arg1;
+- (void)playerWillEnterFullScreen:(id)arg1;
+- (void)showShareMonitor;
+- (void)_setTasks:(id)arg1;
+- (void)closeModalProgressSheet;
+- (void)openModalProgressSheetForTask:(id)arg1;
+- (void)moduleDidUnhide;
+- (void)moduleDidHide;
+- (void)hideModule:(id)arg1;
+- (void)viewDidLoad;
+- (struct CGSize)viewMinSize;
+- (void)dealloc;
+- (id)init;
 
 @end
 

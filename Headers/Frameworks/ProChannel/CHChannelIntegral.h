@@ -10,28 +10,28 @@
 {
 }
 
-- (int)_intValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (int)_curveIntValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (void)_getExtremaBetweenStart:(CDStruct_1b6d18a9)arg1 end:(CDStruct_1b6d18a9)arg2 minIntValue:(int *)arg3 maxIntValue:(int *)arg4;
-- (void)_setCurveIntValue:(int)arg1 atTime:(CDStruct_1b6d18a9)arg2 options:(unsigned int)arg3;
-- (int)_defaultCurveIntValue;
-- (void)_setDefaultCurveIntValue:(int)arg1;
-- (int)_minCurveIntValue;
-- (void)_setMinCurveIntValue:(int)arg1;
-- (int)_maxCurveIntValue;
-- (void)_setMaxCurveIntValue:(int)arg1;
-- (int)_minUIIntValue;
-- (void)_setMinUIIntValue:(int)arg1;
-- (int)_maxUIIntValue;
-- (void)_setMaxUIIntValue:(int)arg1;
-- (double)_coarseDeltaIntValue;
-- (void)_setCoarseDeltaIntValue:(int)arg1;
-- (double)_fineDeltaIntValue;
+- (BOOL)getKeyframeBeforeTime:(CDStruct_198678f7)arg1 time:(CDStruct_198678f7 *)arg2 curveIntValue:(int *)arg3;
+- (BOOL)getKeyframeAfterTime:(CDStruct_198678f7)arg1 time:(CDStruct_198678f7 *)arg2 curveIntValue:(int *)arg3;
+- (BOOL)getLastKeyframeTime:(CDStruct_198678f7 *)arg1 curveIntValue:(int *)arg2;
+- (BOOL)getFirstKeyframeTime:(CDStruct_198678f7 *)arg1 curveIntValue:(int *)arg2;
 - (void)_setFineDeltaIntValue:(int)arg1;
-- (BOOL)getFirstKeyframeTime:(CDStruct_1b6d18a9 *)arg1 curveIntValue:(int *)arg2;
-- (BOOL)getLastKeyframeTime:(CDStruct_1b6d18a9 *)arg1 curveIntValue:(int *)arg2;
-- (BOOL)getKeyframeAfterTime:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9 *)arg2 curveIntValue:(int *)arg3;
-- (BOOL)getKeyframeBeforeTime:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9 *)arg2 curveIntValue:(int *)arg3;
+- (double)_fineDeltaIntValue;
+- (void)_setCoarseDeltaIntValue:(int)arg1;
+- (double)_coarseDeltaIntValue;
+- (void)_setMaxUIIntValue:(int)arg1;
+- (int)_maxUIIntValue;
+- (void)_setMinUIIntValue:(int)arg1;
+- (int)_minUIIntValue;
+- (void)_setMaxCurveIntValue:(int)arg1;
+- (int)_maxCurveIntValue;
+- (void)_setMinCurveIntValue:(int)arg1;
+- (int)_minCurveIntValue;
+- (void)_setDefaultCurveIntValue:(int)arg1;
+- (int)_defaultCurveIntValue;
+- (void)_setCurveIntValue:(int)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
+- (void)_getExtremaBetweenStart:(CDStruct_198678f7)arg1 end:(CDStruct_198678f7)arg2 minIntValue:(int *)arg3 maxIntValue:(int *)arg4;
+- (int)_curveIntValueAtTime:(CDStruct_198678f7)arg1;
+- (int)_intValueAtTime:(CDStruct_198678f7)arg1;
 
 @end
 

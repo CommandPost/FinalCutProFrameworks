@@ -23,21 +23,21 @@ __attribute__((visibility("hidden")))
     NSSet *_showOnlyObjects;
 }
 
-+ (id)utis;
 + (id)extensions;
-- (id)initWithAnchoredObject:(id)arg1 effectCount:(long long)arg2 toLane:(long long)arg3 showOnlyObjects:(id)arg4 roles:(id)arg5 angleOffset:(long long)arg6 angleCount:(long long)arg7;
-- (id)object;
-- (long long)effectCount;
-- (long long)toLane;
-- (void)dealloc;
-- (void)_setupSources;
-- (id)displayName;
-- (void)_writeLock;
-- (void)_writeUnlock;
-- (void)_readLock;
-- (void)_readUnlock;
-- (id)newSettingsModule;
++ (id)utis;
 - (id)anchoredObject;
+- (id)newSettingsModule;
+- (void)_readUnlock;
+- (void)_readLock;
+- (void)_writeUnlock;
+- (void)_writeLock;
+- (id)displayName;
+- (void)_setupSources;
+- (void)dealloc;
+- (long long)toLane;
+- (long long)effectCount;
+- (id)object;
+- (id)initWithAnchoredObject:(id)arg1 effectCount:(long long)arg2 toLane:(long long)arg3 showOnlyObjects:(id)arg4 roles:(id)arg5 angleOffset:(long long)arg6 angleCount:(long long)arg7;
 
 @end
 

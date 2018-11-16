@@ -22,23 +22,23 @@
     unsigned int _hideTextBadges:1;
 }
 
-- (void)dealloc;
-- (void)invalidate;
-- (void)_updateSelectionAppearance;
-- (void)updateAppearance;
-- (id)handleLayer;
-@property BOOL hasHandleLayer;
-@property BOOL hasTitleLayer;
-@property BOOL hideTextBadges;
-@property(retain) CALayer *contentLayer;
-- (void)_layoutBadgesAndTextInVisibleBounds:(struct CGRect)arg1;
-- (void)layoutSublayers;
-- (id)hitTest:(struct CGPoint)arg1;
-- (id)partIdentifier;
-- (struct CGRect)rectForPart:(id)arg1;
-- (id)layoutRegionAtPoint:(struct CGPoint)arg1;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)textLayer;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)layoutRegionAtPoint:(struct CGPoint)arg1;
+- (struct CGRect)rectForPart:(id)arg1;
+- (id)partIdentifier;
+- (id)hitTest:(struct CGPoint)arg1;
+- (void)layoutSublayers;
+- (void)_layoutBadgesAndTextInVisibleBounds:(struct CGRect)arg1;
+@property(retain) CALayer *contentLayer;
+@property BOOL hideTextBadges;
+@property BOOL hasTitleLayer;
+@property BOOL hasHandleLayer;
+- (id)handleLayer;
+- (void)updateAppearance;
+- (void)_updateSelectionAppearance;
+- (void)invalidate;
+- (void)dealloc;
 
 @end
 

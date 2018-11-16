@@ -12,25 +12,27 @@ __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmListOutlineNameCell : LKTextFieldCell
 {
     NSImage *_cellImage;
+    BOOL _isPlaceholder;
 }
 
-- (id)initTextCell:(id)arg1;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (BOOL)onlyDrawText;
-- (double)availableIconWidth;
-- (void)calcRectsFromCellRect:(struct CGRect)arg1 imageRect:(struct CGRect *)arg2 textRect:(struct CGRect *)arg3;
-- (struct CGRect)expansionFrameWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
-- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)drawCellText:(struct CGRect)arg1 inView:(id)arg2;
-- (void)drawCellImage:(struct CGRect)arg1 inView:(id)arg2;
+@property BOOL isPlaceholder; // @synthesize isPlaceholder=_isPlaceholder;
+@property(retain, nonatomic) NSImage *cellImage; // @synthesize cellImage=_cellImage;
 - (id)flattenMultiLineString:(id)arg1;
-@property(retain) NSImage *cellImage; // @synthesize cellImage=_cellImage;
+- (void)drawCellImage:(struct CGRect)arg1 inView:(id)arg2;
+- (void)drawCellText:(struct CGRect)arg1 inView:(id)arg2;
+- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
+- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
+- (struct CGRect)expansionFrameWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)calcRectsFromCellRect:(struct CGRect)arg1 imageRect:(struct CGRect *)arg2 textRect:(struct CGRect *)arg3;
+- (double)availableIconWidth;
+- (BOOL)onlyDrawText;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)initTextCell:(id)arg1;
 
 @end
 

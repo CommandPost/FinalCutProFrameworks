@@ -17,22 +17,22 @@
     BOOL _moving;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (void)updateInfoBarWithPosition:(const PCVector3_457fd1f0 *)arg1 andChange:(const PCVector3_457fd1f0 *)arg2;
-- (void)updateInfoBarWithPosition;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (BOOL)flagsChanged:(id)arg1;
-- (void)movePivot:(const PCVector3_457fd1f0 *)arg1;
-- (void)drawOutline;
-- (BOOL)isDependentOnBounds;
-- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
-- (void)draw;
-- (BOOL)postRedisplayOnActivePartChange;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)postRedisplayOnActivePartChange;
+- (void)draw;
+- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
+- (BOOL)isDependentOnBounds;
+- (void)drawOutline;
+- (void)movePivot:(const PCVector3_457fd1f0 *)arg1;
+- (BOOL)flagsChanged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)updateInfoBarWithPosition;
+- (void)updateInfoBarWithPosition:(const PCVector3_457fd1f0 *)arg1 andChange:(const PCVector3_457fd1f0 *)arg2;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

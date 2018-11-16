@@ -10,7 +10,7 @@
 
 @interface OZCameraOptionsOverlay : OZOverlay
 {
-    PCPtr_df275998 _viewControlIcons[4][4];
+    PCPtr_df275998 _viewControlIcons[16];
     struct PCPtr<POMultiResMultiPartTexture> _cameraButtonTexture[4];
     struct PCPtr<POMultiResStringTexture> _cameraNameTexture;
     long long _viewControlToolTips[4];
@@ -24,29 +24,29 @@
     int _lastViewH;
 }
 
-+ (id)addItemToMenu:(id)arg1 withTitle:(const struct PCString *)arg2 action:(SEL)arg3 tag:(int)arg4 target:(id)arg5;
-+ (id)createCameraPickerMenuForViewer:(id)arg1;
 + (void)updateCameraMenu:(id)arg1 forScene:(struct OZScene *)arg2 target:(id)arg3;
-- (id)canvasModule;
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (int)getDrawingOrder;
-- (BOOL)is3DOSC;
-- (BOOL)postRedisplayOnActivePartChange;
-- (void)draw;
-- (void)updateTip;
-- (void)mouseDown:(id)arg1;
-- (void)displayMenu:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (void)rightMouseDragged:(id)arg1;
-- (void)rightMouseUp:(id)arg1;
-- (int)hitCheck:(id)arg1;
-- (id)getCursorWithEvent:(id)arg1;
-- (BOOL)needsRightMouseEvents;
++ (id)createCameraPickerMenuForViewer:(id)arg1;
++ (id)addItemToMenu:(id)arg1 withTitle:(const struct PCString *)arg2 action:(SEL)arg3 tag:(int)arg4 target:(id)arg5;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)needsRightMouseEvents;
+- (id)getCursorWithEvent:(id)arg1;
+- (int)hitCheck:(id)arg1;
+- (void)rightMouseUp:(id)arg1;
+- (void)rightMouseDragged:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)displayMenu:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)updateTip;
+- (void)draw;
+- (BOOL)postRedisplayOnActivePartChange;
+- (BOOL)is3DOSC;
+- (int)getDrawingOrder;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (id)canvasModule;
 
 @end
 

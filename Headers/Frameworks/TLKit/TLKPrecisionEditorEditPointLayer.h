@@ -10,16 +10,16 @@
 
 @interface TLKPrecisionEditorEditPointLayer : TLKThemeBackedLayer <TLKPartInfo>
 {
-    id _itemStartingAtPoint;
+    id <TLKTimelineItem> _itemStartingAtPoint;
     BOOL _isTransition;
 }
 
-- (id)init;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)partIdentifier;
-- (void)setThemeFacet:(id)arg1;
-@property(nonatomic) BOOL isTransition;
 @property(nonatomic) id <TLKTimelineItem> itemStartingAtPoint; // @synthesize itemStartingAtPoint=_itemStartingAtPoint;
+@property(nonatomic) BOOL isTransition;
+- (void)setThemeFacet:(id)arg1;
+- (id)partIdentifier;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)init;
 
 @end
 

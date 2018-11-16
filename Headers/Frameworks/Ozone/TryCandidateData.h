@@ -15,11 +15,11 @@
     int _result;
 }
 
-- (id)initWithFilePath:(id)arg1 footage:(struct OZFootage *)arg2;
-- (int)result;
-- (void)setResult:(int)arg1;
-- (id)filePath;
 - (struct OZFootage *)footage;
+- (id)filePath;
+- (void)setResult:(int)arg1;
+- (int)result;
+- (id)initWithFilePath:(id)arg1 footage:(struct OZFootage *)arg2;
 
 @end
 

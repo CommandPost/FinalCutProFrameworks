@@ -17,19 +17,19 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)deviceConnectionWithDeviceConnection:(id)arg1;
-- (id)initWithDeviceConnection:(id)arg1;
 @property(retain, nonatomic) MIODeviceConnection *deviceConnection; // @synthesize deviceConnection=_deviceConnection;
-@property(readonly, nonatomic) NSString *itemDisplayName;
-- (void)setItemDisplayName:(id)arg1;
-@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
-@property(readonly, nonatomic) NSImage *itemIcon;
-@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
-@property(readonly, nonatomic) NSArray *items;
-@property(readonly, nonatomic) BOOL hasItems;
-@property(readonly, nonatomic) NSArray *detailSubitems;
-@property(readonly, nonatomic) BOOL hasDetailSubitems;
-@property(readonly, nonatomic) NSArray *masterSubitems;
 @property(readonly, nonatomic) BOOL hasMasterSubitems;
+@property(readonly, nonatomic) NSArray *masterSubitems;
+@property(readonly, nonatomic) BOOL hasDetailSubitems;
+@property(readonly, nonatomic) NSArray *detailSubitems;
+@property(readonly, nonatomic) BOOL hasItems;
+@property(readonly, nonatomic) NSArray *items;
+@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
+@property(readonly, nonatomic) NSImage *itemIcon;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
+- (void)setItemDisplayName:(id)arg1;
+@property(readonly, nonatomic) NSString *itemDisplayName;
+- (id)initWithDeviceConnection:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;

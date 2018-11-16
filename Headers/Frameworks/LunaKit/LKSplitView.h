@@ -10,8 +10,8 @@
 {
 }
 
-+ (id)_grabberFacet;
 + (id)_dividerFacet;
++ (id)_grabberFacet;
 
 @end
 

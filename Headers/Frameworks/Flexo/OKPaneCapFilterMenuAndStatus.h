@@ -32,34 +32,34 @@ __attribute__((visibility("hidden")))
     SEL filtersAction;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)setMenu:(id)arg1;
-- (void)setSearchTarget:(id)arg1 action:(SEL)arg2;
-- (void)searchAction:(id)arg1;
-- (void)setSearchMenu:(id)arg1;
-- (struct CGRect)searchButtonFrame;
-- (struct CGRect)viewFrame;
-- (id)searchField;
-- (void)showSearchMenu:(id)arg1;
-- (void)setClearTarget:(id)arg1 action:(SEL)arg2;
-- (void)setShowFilterTarget:(id)arg1 action:(SEL)arg2;
-- (void)setShowFavFilter:(BOOL)arg1 filterType:(int)arg2;
-- (void)setSearchText:(id)arg1;
-- (void)setShowTextFilter:(BOOL)arg1;
-- (void)setShowMediaFilter:(BOOL)arg1;
-- (void)setShowClipFilter:(BOOL)arg1;
-- (void)setShowKeywordFilter:(BOOL)arg1;
-- (void)setShowAnalysisFilter:(BOOL)arg1;
-- (void)setShowTypeFilter:(BOOL)arg1;
-- (void)setShowIngestFilter:(BOOL)arg1;
-- (void)setShowMetadataFilter:(BOOL)arg1;
-- (void)setShowDateFilter:(BOOL)arg1;
-- (void)setShowFormatFilter:(BOOL)arg1;
-- (void)setShowRoleFilter:(BOOL)arg1;
-- (void)resetFilterButtonsTargetAndAction;
-- (void)clearWhiteSelection;
 - (void)reinstallFilterButtons;
+- (void)clearWhiteSelection;
+- (void)resetFilterButtonsTargetAndAction;
+- (void)setShowRoleFilter:(BOOL)arg1;
+- (void)setShowFormatFilter:(BOOL)arg1;
+- (void)setShowDateFilter:(BOOL)arg1;
+- (void)setShowMetadataFilter:(BOOL)arg1;
+- (void)setShowIngestFilter:(BOOL)arg1;
+- (void)setShowTypeFilter:(BOOL)arg1;
+- (void)setShowAnalysisFilter:(BOOL)arg1;
+- (void)setShowKeywordFilter:(BOOL)arg1;
+- (void)setShowClipFilter:(BOOL)arg1;
+- (void)setShowMediaFilter:(BOOL)arg1;
+- (void)setShowTextFilter:(BOOL)arg1;
+- (void)setSearchText:(id)arg1;
+- (void)setShowFavFilter:(BOOL)arg1 filterType:(int)arg2;
+- (void)setShowFilterTarget:(id)arg1 action:(SEL)arg2;
+- (void)setClearTarget:(id)arg1 action:(SEL)arg2;
+- (void)showSearchMenu:(id)arg1;
+- (id)searchField;
+- (struct CGRect)viewFrame;
+- (struct CGRect)searchButtonFrame;
+- (void)setSearchMenu:(id)arg1;
+- (void)searchAction:(id)arg1;
+- (void)setSearchTarget:(id)arg1 action:(SEL)arg2;
+- (void)setMenu:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

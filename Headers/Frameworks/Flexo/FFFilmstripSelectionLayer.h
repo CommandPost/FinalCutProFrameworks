@@ -21,8 +21,10 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _rightBoundaryTime;
     int _leftEdgeType;
     int _rightEdgeType;
+    BOOL _focused;
     BOOL _showHandles;
     BOOL _emphasized;
+    BOOL _ghosted;
     struct CGRect _leftSelectionHandleRect;
     struct CGRect _rightSelectionHandleRect;
     BOOL _forStillImage;
@@ -33,29 +35,33 @@ __attribute__((visibility("hidden")))
     BOOL _lastFacetStillImage;
 }
 
-+ (unsigned long long)_themeRef;
-+ (id)_leftFacetHandle;
 + (id)_rightFacetHandle;
-- (id)init;
-- (void)setContentsScale:(double)arg1;
-- (void)dealloc;
-- (void)layoutSublayers;
-- (void)_updateFrameProperties;
-@property(nonatomic) CDStruct_e83c9415 timeRange;
-@property(nonatomic) CDStruct_1b6d18a9 leftTime; // @synthesize leftTime=_leftTime;
-@property(nonatomic) CDStruct_1b6d18a9 rightTime; // @synthesize rightTime=_rightTime;
-@property(nonatomic) int leftEdgeType; // @synthesize leftEdgeType=_leftEdgeType;
-@property(nonatomic) int rightEdgeType; // @synthesize rightEdgeType=_rightEdgeType;
-@property(nonatomic) BOOL showHandles; // @synthesize showHandles=_showHandles;
++ (id)_leftFacetHandle;
++ (unsigned long long)_themeRef;
 @property(nonatomic) BOOL usesAutoKeywordsStyle; // @synthesize usesAutoKeywordsStyle=_usesAutoKeywordsStyle;
-@property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
-@property(readonly, nonatomic) struct CGRect leftSelectionHandleRect;
-@property(readonly, nonatomic) struct CGRect rightSelectionHandleRect;
-- (void)_updateFacetFrameForWidth:(double)arg1 forStillImage:(BOOL)arg2;
 @property(nonatomic) BOOL forStillImage; // @synthesize forStillImage=_forStillImage;
+@property(nonatomic) BOOL ghosted; // @synthesize ghosted=_ghosted;
+@property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
+@property(nonatomic) BOOL focused; // @synthesize focused=_focused;
+@property(nonatomic) BOOL showHandles; // @synthesize showHandles=_showHandles;
+@property(nonatomic) int rightEdgeType; // @synthesize rightEdgeType=_rightEdgeType;
+@property(nonatomic) int leftEdgeType; // @synthesize leftEdgeType=_leftEdgeType;
 @property(nonatomic) CDStruct_1b6d18a9 rightBoundaryTime; // @synthesize rightBoundaryTime=_rightBoundaryTime;
 @property(nonatomic) CDStruct_1b6d18a9 leftBoundaryTime; // @synthesize leftBoundaryTime=_leftBoundaryTime;
+@property(nonatomic) CDStruct_1b6d18a9 rightTime; // @synthesize rightTime=_rightTime;
+@property(nonatomic) CDStruct_1b6d18a9 leftTime; // @synthesize leftTime=_leftTime;
 @property(retain, nonatomic) FFFilmstrip *filmstrip; // @synthesize filmstrip=_filmstrip;
+- (void)_updateFacetFrameForWidth:(double)arg1 forStillImage:(BOOL)arg2;
+- (BOOL)_shouldHideHandles;
+@property(readonly, nonatomic) struct CGRect rightSelectionHandleRect;
+@property(readonly, nonatomic) struct CGRect leftSelectionHandleRect;
+@property(nonatomic) CDStruct_e83c9415 timeRange;
+- (long long)_themeState;
+- (void)_updateFrameProperties;
+- (void)layoutSublayers;
+- (void)dealloc;
+- (void)setContentsScale:(double)arg1;
+- (id)init;
 
 @end
 

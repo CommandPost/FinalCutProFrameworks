@@ -11,12 +11,13 @@
     struct OZVertex2D _vertices[4];
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (id)getName;
-- (id)getTooltip;
-- (struct PCUUID)getClassID;
-- (void)draw;
+- (id).cxx_construct;
 - (void)createShape:(CDStruct_1b6d18a9)arg1;
+- (void)draw;
+- (struct PCUUID)getClassID;
+- (id)getTooltip;
+- (id)getName;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

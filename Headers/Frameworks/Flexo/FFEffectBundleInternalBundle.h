@@ -12,27 +12,29 @@
 }
 
 + (id)copyClassDescription;
-- (void)_postInit:(id)arg1;
-- (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
-- (void)encodeWithCoder:(id)arg1;
-- (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
-- (void)setEffectBundleInternalBundleVersion:(int)arg1;
-- (int)effectBundleInternalBundleVersion;
-- (void)setActivePresetIndex:(int)arg1;
-- (int)activePresetIndex;
-- (id)channelFolder;
-- (void)partChanged;
-- (id)initialEffectBundleParts;
-- (unsigned long long)activePartIndex;
-- (id)presetNames;
-- (id)availableBundleParts;
-- (id)bundlePartAtIndex:(int)arg1;
-- (id)copyBundlePartAtIndex:(int)arg1;
-- (void)partChangedHook;
-- (int)bundleEncodingOptions;
-- (void)setEffectBundleParts:(id)arg1;
-- (void)_updateObjects:(id)arg1 fromVersion:(int)arg2;
+- (id)initWithEffectID:(id)arg1 andXMLDocument:(id)arg2;
 - (BOOL)update_migrateEffectBundleFormat;
+- (void)_updateObjects:(id)arg1 fromVersion:(int)arg2;
+- (void)_migrateChannelFolder:(id)arg1;
+- (void)setEffectBundleParts:(id)arg1;
+- (int)bundleEncodingOptions;
+- (void)partChangedHook;
+- (id)copyBundlePartAtIndex:(int)arg1;
+- (id)bundlePartAtIndex:(int)arg1;
+- (id)availableBundleParts;
+- (id)presetNames;
+- (unsigned long long)activePartIndex;
+- (id)initialEffectBundleParts;
+- (void)partChanged;
+- (id)channelFolder;
+- (int)activePresetIndex;
+- (void)setActivePresetIndex:(int)arg1;
+- (int)effectBundleInternalBundleVersion;
+- (void)setEffectBundleInternalBundleVersion:(int)arg1;
+- (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
+- (void)_postInit:(id)arg1;
 
 @end
 

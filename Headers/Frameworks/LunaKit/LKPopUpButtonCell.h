@@ -6,14 +6,25 @@
 
 #import "NSProPopUpButtonCell.h"
 
+@class NSProThemeFacet;
+
 @interface LKPopUpButtonCell : NSProPopUpButtonCell
 {
+    NSProThemeFacet *customFacet;
+    unsigned long long tintIndex;
+    unsigned int hasSetTintIndex:1;
 }
 
-- (id)_baseFacet;
-- (id)_textColor;
-- (struct CGRect)drawingRectForBounds:(struct CGRect)arg1;
+- (long long)themeStateInView:(id)arg1;
+- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
 - (struct CGRect)titleRectForBounds:(struct CGRect)arg1;
+- (struct CGRect)drawingRectForBounds:(struct CGRect)arg1;
+- (id)_textColor;
+- (id)textColor;
+- (id)_baseFacet;
+@property unsigned long long tintIndex;
+@property(retain) NSProThemeFacet *customFacet;
+- (void)dealloc;
 
 @end
 

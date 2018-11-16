@@ -35,21 +35,21 @@
     float _lastScale;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)setRulerAndMarkSizes;
-- (int)getDrawingOrder;
-- (void)dealloc;
-- (struct CGRect)getAvailableViewBounds;
-- (BOOL)imageBoxX1:(double *)arg1 y1:(double *)arg2 x2:(double *)arg3 y2:(double *)arg4;
-- (void)draw;
-- (void)addGuide:(_Bool)arg1;
-- (void)updateTip;
-- (void)mouseDown:(id)arg1;
-- (void)dragGuide:(id)arg1 vertical:(_Bool)arg2;
-- (void)mouseDragged:(id)arg1;
-- (void)finishDraggingGuide:(id)arg1 vertical:(_Bool)arg2 poof:(BOOL)arg3;
-- (void)mouseUp:(id)arg1;
 - (id)getCursorWithEvent:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)finishDraggingGuide:(id)arg1 vertical:(_Bool)arg2 poof:(BOOL)arg3;
+- (void)mouseDragged:(id)arg1;
+- (void)dragGuide:(id)arg1 vertical:(_Bool)arg2;
+- (void)mouseDown:(id)arg1;
+- (void)updateTip;
+- (void)addGuide:(_Bool)arg1;
+- (void)draw;
+- (BOOL)imageBoxX1:(double *)arg1 y1:(double *)arg2 x2:(double *)arg3 y2:(double *)arg4;
+- (struct CGRect)getAvailableViewBounds;
+- (void)dealloc;
+- (int)getDrawingOrder;
+- (void)setRulerAndMarkSizes;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

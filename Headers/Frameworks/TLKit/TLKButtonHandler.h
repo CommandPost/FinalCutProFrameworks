@@ -13,14 +13,15 @@
     TLKButtonLayer *_rolledOverButton;
 }
 
-- (void)dealloc;
-- (void)_clearOldRollover;
-- (void)_updateRollover:(id)arg1;
-- (BOOL)enterRollover:(id)arg1;
-- (void)exitRollover:(id)arg1;
-- (BOOL)startTracking:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
+- (id)stringForToolTipAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (void)cancelTracking:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
+- (BOOL)startTracking:(id)arg1;
+- (void)exitRollover:(id)arg1;
+- (BOOL)enterRollover:(id)arg1;
+- (void)_updateRollover:(id)arg1;
+- (void)_clearOldRollover;
+- (void)dealloc;
 
 @end
 

@@ -5,9 +5,9 @@
 //
 
 @protocol FxTemporalImageAPI
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
-- (BOOL)getInputTexture:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
-- (BOOL)getSourceBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
 - (BOOL)getSourceTexture:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
+- (BOOL)getSourceBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
+- (BOOL)getInputTexture:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
+- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
 @end
 

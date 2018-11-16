@@ -12,13 +12,13 @@
 }
 
 + (id)sharedInstance;
-- (id)init;
-- (void)dealloc;
-- (void *)instrument:(id)arg1;
-- (struct FFPMRInstrument *)cppInstrument:(id)arg1;
-- (id)applicationName;
-- (id)logPath;
 - (void)setParameters:(id)arg1;
+- (id)logPath;
+- (id)applicationName;
+- (struct FFPMRInstrument *)cppInstrument:(id)arg1;
+- (void *)instrument:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

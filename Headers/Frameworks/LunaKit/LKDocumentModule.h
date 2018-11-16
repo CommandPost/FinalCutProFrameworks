@@ -17,17 +17,17 @@
     void *_reserved9;
 }
 
-- (id)initWithDocument:(id)arg1;
-- (void)dealloc;
-- (id)document;
-- (void)setDocument:(id)arg1;
-- (id)nibOwner;
-- (BOOL)loadView;
-- (id)configurationDictionary;
-- (id)label;
-- (BOOL)_installed;
-- (void)_setInstalled:(BOOL)arg1;
 - (void)moduleLayoutWillChange:(id)arg1;
+- (void)_setInstalled:(BOOL)arg1;
+- (BOOL)_installed;
+- (id)label;
+- (id)configurationDictionary;
+- (BOOL)loadView;
+- (id)nibOwner;
+- (void)setDocument:(id)arg1;
+- (id)document;
+- (void)dealloc;
+- (id)initWithDocument:(id)arg1;
 
 @end
 

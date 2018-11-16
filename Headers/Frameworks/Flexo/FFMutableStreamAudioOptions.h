@@ -10,15 +10,19 @@
 {
 }
 
-- (void)setSampleRate:(double)arg1;
-- (void)setNumChannels:(unsigned int)arg1;
-- (void)setForPlayback:(BOOL)arg1;
-- (void)setStreamAudioFlags:(unsigned long long)arg1;
-- (void)addStreamAudioFlags:(unsigned long long)arg1;
-- (void)removeStreamAudioFlags:(unsigned long long)arg1;
-- (void)setPlayObjects:(id)arg1;
-- (void)setStreamAudioFlags:(unsigned long long)arg1 withMask:(unsigned long long)arg2 forPlayObject:(id)arg3;
+- (void)setComponentsPlaybackInfo:(id)arg1;
+- (void)setAudioEffects:(id)arg1;
+- (void)setScopeRange:(CDStruct_e83c9415)arg1;
+- (void)setTailTime:(unsigned int)arg1;
 - (void)clearStreamAudioFlagsForPlayObject:(id)arg1;
+- (void)setStreamAudioFlags:(unsigned long long)arg1 withMask:(unsigned long long)arg2 forPlayObject:(id)arg3;
+- (void)setPlayObjects:(id)arg1;
+- (void)removeStreamAudioFlags:(unsigned long long)arg1;
+- (void)addStreamAudioFlags:(unsigned long long)arg1;
+- (void)setStreamAudioFlags:(unsigned long long)arg1;
+- (void)setForPlayback:(BOOL)arg1;
+- (void)setNumChannels:(unsigned int)arg1;
+- (void)setSampleRate:(double)arg1;
 
 @end
 

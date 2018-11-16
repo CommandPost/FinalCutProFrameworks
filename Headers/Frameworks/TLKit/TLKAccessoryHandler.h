@@ -10,19 +10,20 @@
 {
 }
 
-- (BOOL)_isTimelineLayer:(id)arg1;
-- (void)_updateLayer:(id)arg1 withSublayers:(id)arg2;
-- (BOOL)startTracking:(id)arg1;
-- (BOOL)continueTracking:(id)arg1;
-- (void)cancelTracking:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
-- (BOOL)enterRollover:(id)arg1;
-- (void)updateRollover:(id)arg1;
-- (void)exitRollover:(id)arg1;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (void)flagsChanged:(id)arg1;
-- (BOOL)shouldAutoscroll:(id)arg1;
+- (id)stringForToolTipAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (int)autoscrollDirection;
+- (BOOL)shouldAutoscroll:(id)arg1;
+- (void)flagsChanged:(id)arg1;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (void)exitRollover:(id)arg1;
+- (void)updateRollover:(id)arg1;
+- (BOOL)enterRollover:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
+- (void)cancelTracking:(id)arg1;
+- (BOOL)continueTracking:(id)arg1;
+- (BOOL)startTracking:(id)arg1;
+- (void)_updateLayer:(id)arg1 withSublayers:(id)arg2;
+- (BOOL)_isTimelineLayer:(id)arg1;
 
 @end
 

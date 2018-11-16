@@ -15,22 +15,22 @@
     struct PCHash128 _hash;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 summary:(BOOL)arg3;
-- (id)init;
-- (void)renderPreviewImage;
-- (void)update;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (void)saveFormat;
-- (void)saveStyle;
-- (void)saveAll;
-- (void)enable;
-- (void)disable;
-- (void)_resetStyle:(struct TXTextStyle *)arg1;
-- (void)resetChannel:(id)arg1;
-- (void)loadPasteboard:(id)arg1 intoSceneNode:(struct OZSceneNode *)arg2;
-- (void)loadPreset:(struct OZPasteList *)arg1 sender:(id)arg2;
 - (id).cxx_construct;
+- (void)loadPreset:(struct OZPasteList *)arg1 sender:(id)arg2;
+- (void)loadPasteboard:(id)arg1 intoSceneNode:(struct OZSceneNode *)arg2;
+- (void)resetChannel:(id)arg1;
+- (void)_resetStyle:(struct TXTextStyle *)arg1;
+- (void)disable;
+- (void)enable;
+- (void)saveAll;
+- (void)saveStyle;
+- (void)saveFormat;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)update;
+- (void)renderPreviewImage;
+- (id)init;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 summary:(BOOL)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

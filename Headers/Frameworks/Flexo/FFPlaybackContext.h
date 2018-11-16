@@ -10,16 +10,19 @@
 {
     struct _CGLContextObject *_context;
     BOOL _hasTopLevelScoper;
+    struct FFAudioPlaybackMediator *_audioPlaybackMediator;
 }
 
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToPlaybackContext:(id)arg1;
-- (unsigned long long)hash;
-- (id)initWithCGLContextObj:(struct _CGLContextObject *)arg1;
-- (void)dealloc;
-- (struct _CGLContextObject *)CGLContextObj;
-- (BOOL)hasTopLevelScoper;
+- (struct FFAudioPlaybackMediator *)audioPlaybackMediator;
+- (void)demandAudioPlaybackMediator:(BOOL)arg1;
 - (void)setHasTopLevelScoper:(BOOL)arg1;
+- (BOOL)hasTopLevelScoper;
+- (struct _CGLContextObject *)CGLContextObj;
+- (void)dealloc;
+- (id)initWithCGLContextObj:(struct _CGLContextObject *)arg1;
+- (unsigned long long)hash;
+- (BOOL)isEqualToPlaybackContext:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -16,15 +16,15 @@
     BOOL _streamIsForUIUse;
 }
 
-- (id)initWithVideoProps:(id)arg1 streamCache:(id)arg2;
-- (void)dealloc;
-- (id)videoProps;
-- (id)streamCache;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToStreamVideoOptions:(id)arg1;
-- (unsigned long long)hash;
 @property(nonatomic) BOOL streamIsForUIUse; // @synthesize streamIsForUIUse=_streamIsForUIUse;
 @property(nonatomic) int layerIndex; // @synthesize layerIndex=_layerIndex;
+- (unsigned long long)hash;
+- (BOOL)isEqualToStreamVideoOptions:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (id)streamCache;
+- (id)videoProps;
+- (void)dealloc;
+- (id)initWithVideoProps:(id)arg1 streamCache:(id)arg2;
 
 @end
 

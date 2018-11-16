@@ -12,16 +12,16 @@
     BOOL _optKeyState;
 }
 
-- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
-- (void)resignKeyWindow;
-- (BOOL)makeFirstResponder:(id)arg1;
-- (void)selectNextKeyView:(id)arg1;
-- (void)selectPreviousKeyView:(id)arg1;
-- (BOOL)customKeyEquivalent:(id)arg1;
-- (BOOL)_showToolTip;
-- (struct CGRect)constrainFrameRect:(struct CGRect)arg1 toScreen:(id)arg2;
-- (void)displayIfNeeded;
 - (void)sendEvent:(id)arg1;
+- (void)displayIfNeeded;
+- (struct CGRect)constrainFrameRect:(struct CGRect)arg1 toScreen:(id)arg2;
+- (BOOL)_showToolTip;
+- (BOOL)customKeyEquivalent:(id)arg1;
+- (void)selectPreviousKeyView:(id)arg1;
+- (void)selectNextKeyView:(id)arg1;
+- (BOOL)makeFirstResponder:(id)arg1;
+- (void)resignKeyWindow;
+- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
 
 @end
 

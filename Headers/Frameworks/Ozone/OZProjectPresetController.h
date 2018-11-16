@@ -25,16 +25,16 @@
     NSArray *_frameRates;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)windowDidLoad;
-- (int)editPreset:(id)arg1;
-- (void)setPixelARFromPopUp:(id)arg1;
-- (void)setPixelARFromTF:(id)arg1;
-- (void)cancelEdit:(id)arg1;
-- (void)doneEdit:(id)arg1;
-- (void)windowWillClose:(id)arg1;
 - (BOOL)control:(id)arg1 isValidObject:(id)arg2;
+- (void)windowWillClose:(id)arg1;
+- (void)doneEdit:(id)arg1;
+- (void)cancelEdit:(id)arg1;
+- (void)setPixelARFromTF:(id)arg1;
+- (void)setPixelARFromPopUp:(id)arg1;
+- (int)editPreset:(id)arg1;
+- (void)windowDidLoad;
+- (void)dealloc;
+- (id)init;
 
 @end
 

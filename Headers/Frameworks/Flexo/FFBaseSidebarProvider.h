@@ -17,19 +17,19 @@ __attribute__((visibility("hidden")))
     NSArray *_sortDescriptors;
 }
 
-+ (id)keyPathsForValuesAffectingMasterSubitems;
 + (id)keyPathsForValuesAffectingItems;
-- (void)addSubprovider:(id)arg1;
-@property(readonly, nonatomic) NSArray *items;
-@property(readonly, nonatomic) NSArray *masterSubitems;
-@property(readonly, nonatomic) BOOL hasMasterSubitems;
-@property(readonly, nonatomic) BOOL hasItems;
-@property(readonly, nonatomic) NSArray *detailSubitems;
-@property(readonly, nonatomic) BOOL hasDetailSubitems;
-@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
-- (void)dealloc;
-- (id)valueForUndefinedKey:(id)arg1;
++ (id)keyPathsForValuesAffectingMasterSubitems;
 @property(copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
+- (id)valueForUndefinedKey:(id)arg1;
+- (void)dealloc;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
+@property(readonly, nonatomic) BOOL hasDetailSubitems;
+@property(readonly, nonatomic) NSArray *detailSubitems;
+@property(readonly, nonatomic) BOOL hasItems;
+@property(readonly, nonatomic) BOOL hasMasterSubitems;
+@property(readonly, nonatomic) NSArray *masterSubitems;
+@property(readonly, nonatomic) NSArray *items;
+- (void)addSubprovider:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;

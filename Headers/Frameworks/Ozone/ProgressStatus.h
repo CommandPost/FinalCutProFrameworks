@@ -14,10 +14,10 @@
     unsigned int _remaining;
 }
 
-- (id)initWithDirectoryName:(id)arg1 remaining:(unsigned int)arg2;
-- (void)dealloc;
-- (id)directoryName;
 - (unsigned int)remaining;
+- (id)directoryName;
+- (void)dealloc;
+- (id)initWithDirectoryName:(id)arg1 remaining:(unsigned int)arg2;
 
 @end
 

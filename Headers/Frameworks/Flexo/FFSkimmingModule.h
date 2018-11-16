@@ -29,21 +29,21 @@ __attribute__((visibility("hidden")))
     NSProThemeFacet *m_skimmingCursorFacet;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)_cleanupSkimming;
-- (void)_cleanupSkimmingLayer;
-- (void)setDelegate:(id)arg1;
-- (id)delegate;
-- (void)_setSkimmable:(struct NSObject *)arg1 withPoint:(struct CGPoint)arg2 orWithTime:(CDStruct_1b6d18a9)arg3;
-- (void)updateSkimmingWithSkimmable:(struct NSObject *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)updateSkimming:(struct CGPoint)arg1;
-- (id)playerModule;
-- (struct NSObject *)skimmable;
-- (struct CGRect)_rectForTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)_timeForPoint:(struct CGPoint)arg1;
-- (void)_setPlayheadTime:(CDStruct_1b6d18a9)arg1;
 - (void)timeRateChangedForContext:(id)arg1;
+- (void)_setPlayheadTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)_timeForPoint:(struct CGPoint)arg1;
+- (struct CGRect)_rectForTime:(CDStruct_1b6d18a9)arg1;
+- (struct NSObject *)skimmable;
+- (id)playerModule;
+- (void)updateSkimming:(struct CGPoint)arg1;
+- (void)updateSkimmingWithSkimmable:(struct NSObject *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)_setSkimmable:(struct NSObject *)arg1 withPoint:(struct CGPoint)arg2 orWithTime:(CDStruct_1b6d18a9)arg3;
+- (id)delegate;
+- (void)setDelegate:(id)arg1;
+- (void)_cleanupSkimmingLayer;
+- (void)_cleanupSkimming;
+- (void)dealloc;
+- (id)init;
 
 @end
 

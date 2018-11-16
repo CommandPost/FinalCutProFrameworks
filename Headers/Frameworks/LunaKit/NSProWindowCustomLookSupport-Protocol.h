@@ -4,14 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSFont, NSProThemeFacet;
+
 @protocol NSProWindowCustomLookSupport
-+ (id)_windowBorderFacetForStyleMask:(unsigned long long)arg1;
-+ (id)_titlebarFacetForStyleMask:(unsigned long long)arg1;
-+ (id)_controlFacetForButton:(int)arg1 styleMask:(unsigned long long)arg2;
-+ (id)_resizeCornerFacetForStyleMask:(unsigned long long)arg1;
-+ (id)_metricsFacetForStyleMask:(unsigned long long)arg1;
-+ (double)_windowBorderThicknessForStyleMask:(unsigned long long)arg1;
++ (NSFont *)_titleFontForStyleMask:(unsigned long long)arg1 isKey:(BOOL)arg2 isMain:(BOOL)arg3;
 + (double)_roundedCornerRadiusForStyleMask:(unsigned long long)arg1;
-+ (id)_titleFontForStyleMask:(unsigned long long)arg1 isKey:(BOOL)arg2 isMain:(BOOL)arg3;
++ (double)_windowBorderThicknessForStyleMask:(unsigned long long)arg1;
++ (NSProThemeFacet *)_metricsFacetForStyleMask:(unsigned long long)arg1;
++ (NSProThemeFacet *)_resizeCornerFacetForStyleMask:(unsigned long long)arg1;
++ (NSProThemeFacet *)_controlFacetForButton:(int)arg1 styleMask:(unsigned long long)arg2;
++ (NSProThemeFacet *)_titlebarFacetForStyleMask:(unsigned long long)arg1;
++ (NSProThemeFacet *)_windowBorderFacetForStyleMask:(unsigned long long)arg1;
 @end
 

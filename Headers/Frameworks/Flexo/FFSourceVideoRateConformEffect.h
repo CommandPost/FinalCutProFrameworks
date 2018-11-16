@@ -12,12 +12,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
-- (CDStruct_1b6d18a9)srcStart;
-- (CDStruct_1b6d18a9)srcEnd;
-- (CDStruct_e83c9415)timeRange;
-- (CDStruct_1b6d18a9)mapTime:(CDStruct_1b6d18a9)arg1;
-- (struct CGRect)_calcOpaqueBoundsForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)_newUncachedSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (struct CGRect)_calcOpaqueBoundsForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (CDStruct_1b6d18a9)mapTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_e83c9415)timeRange;
+- (CDStruct_1b6d18a9)srcEnd;
+- (CDStruct_1b6d18a9)srcStart;
 
 @end
 

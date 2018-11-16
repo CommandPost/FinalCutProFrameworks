@@ -6,31 +6,38 @@
 
 #import "NSObject.h"
 
-@class NSMutableArray;
+@class NSArray;
 
 @interface FFAudioChannelsConfigManager : NSObject
 {
-    NSMutableArray *m_objectList;
+    NSArray *m_objectList;
 }
 
-+ (BOOL)supportsObject:(id)arg1;
-+ (id)XMLDocumentFromLayoutOptions:(id)arg1;
-+ (id)layoutOptionsFromXMLDocument:(id)arg1;
 + (id)defaultLayoutOptions;
-- (id)initWithAnchoredObject:(id)arg1;
-- (void)dealloc;
-- (void)addAnchoredObject:(id)arg1;
-- (id)anchoredObjects;
-- (void)updateAnchoredObjects;
-- (void)populateLayoutMenu:(id)arg1;
-- (BOOL)updateToSelectedLayout:(id)arg1 error:(id *)arg2;
-- (void)setCurrentChannelLayoutAsAutoDetectedLayout;
-- (void)resetToDefaultLayout;
-- (BOOL)supportsAudioChannelsConfigFilmstrips;
-- (id)associatedObjectsForAnchoredObject:(id)arg1;
-- (id)_getLayoutOptionsForNumAudioChannels:(int)arg1;
-- (id)_customLabelFromLayout:(id)arg1;
++ (id)layoutOptionsFromXMLDocument:(id)arg1;
++ (id)XMLDocumentFromLayoutOptions:(id)arg1;
++ (BOOL)isReferenceClip:(id)arg1;
++ (id)audioChannelsConfigObjectsForObject:(id)arg1;
++ (BOOL)supportsComponentsLayouts:(id)arg1;
++ (BOOL)isSupportedPrimordialClip:(id)arg1;
 - (id)_layoutOptions;
+- (id)_customLabelFromLayout:(id)arg1;
+- (id)_getLayoutOptionsForNumAudioChannels:(int)arg1;
+- (id)associatedObjectsMapForObject:(id)arg1;
+- (BOOL)containsChannelsConfigSupportedObjects;
+- (void)setCurrentChannelLayoutAsAutoDetectedLayout;
+- (BOOL)updateToSelectedLayout:(id)arg1 error:(id *)arg2;
+- (BOOL)displayUseReferenceClipLayoutAlertDialog:(char *)arg1;
+- (BOOL)displayReferenceClipLayoutChangeAlertDialog:(char *)arg1;
+- (void)populateLayoutMenu:(id)arg1;
+- (id)backingAnchoredObjects;
+- (id)audioChannelsConfigObjects;
+- (void)_addAudioChannelsConfigObject:(id)arg1;
+- (void)dealloc;
+- (id)initWithSpineAnchorID:(id)arg1 forAnchoredSpineClips:(id)arg2;
+- (id)initWithAngleID:(id)arg1 forAnchoredAngles:(id)arg2;
+- (id)initWithAnchoredObject:(id)arg1;
+- (id)initWithAnchoredObjects:(id)arg1;
 
 @end
 

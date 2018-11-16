@@ -4,15 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFContext;
+
 @protocol FFAuditionerSkimDelegate
-- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
-- (void)stopSkimmingForOwner:(id)arg1;
-- (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
-- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 owner:(id)arg4;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
-- (BOOL)canBeginSkimming;
-- (BOOL)canSkimWithAudio;
 - (BOOL)canBeginPlaying;
+- (BOOL)canSkimWithAudio;
+- (BOOL)canBeginSkimming;
+- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 unloadingBlock:(void (^)(void))arg4;
+- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3;
+- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 owner:(id)arg4;
+- (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
+- (void)stopSkimmingForOwner:(id)arg1;
+- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
 @end
 

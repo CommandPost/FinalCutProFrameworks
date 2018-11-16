@@ -12,15 +12,15 @@ __attribute__((visibility("hidden")))
     BOOL _isGroupHeader;
 }
 
-- (id)initTextCell:(id)arg1;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (struct CGRect)calcTextFromCellRect:(struct CGRect)arg1;
-- (struct CGRect)expansionFrameWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
-- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 @property(nonatomic) BOOL isGroupHeader; // @synthesize isGroupHeader=_isGroupHeader;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
+- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
+- (struct CGRect)expansionFrameWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (struct CGRect)calcTextFromCellRect:(struct CGRect)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)initTextCell:(id)arg1;
 
 @end
 

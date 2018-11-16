@@ -5,7 +5,7 @@
 //
 
 @protocol FxHostPrivateAPI
-- (BOOL)navigateToTime:(double)arg1;
 - (BOOL)giveEffectUIFocus;
+- (BOOL)navigateToTime:(double)arg1;
 @end
 

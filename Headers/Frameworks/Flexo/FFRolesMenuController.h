@@ -18,20 +18,20 @@
     id <FFRolesMenuDelegate> _delegate;
 }
 
-- (id)initWithRolesMenuDelegate:(id)arg1;
-- (id)initWithRolesMenuDelegate:(id)arg1 menu:(id)arg2;
-- (void)dealloc;
-- (void)_setupMenu;
-- (void)menuNeedsUpdate:(id)arg1;
-- (int)_tagForRoleDefinition:(id)arg1;
-- (void)_populateMenu;
-- (void)_updateRolesState;
-- (void)changeRole:(id)arg1;
-- (void)editRoles:(id)arg1;
 @property(retain, nonatomic) NSArray *roleMenuItems; // @synthesize roleMenuItems=_roleMenuItems;
 @property(nonatomic) id <FFRolesMenuDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSMenu *menu; // @synthesize menu=_menu;
 @property(retain, nonatomic) NSSet *anchoredObjects; // @synthesize anchoredObjects=_anchoredObjects;
+- (void)editRoles:(id)arg1;
+- (void)changeRole:(id)arg1;
+- (void)_updateRolesState;
+- (void)_populateMenu;
+- (int)_tagForRoleDefinition:(id)arg1;
+- (void)menuNeedsUpdate:(id)arg1;
+- (void)_setupMenu;
+- (void)dealloc;
+- (id)initWithRolesMenuDelegate:(id)arg1 menu:(id)arg2;
+- (id)initWithRolesMenuDelegate:(id)arg1;
 
 @end
 

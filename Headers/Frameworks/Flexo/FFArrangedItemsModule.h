@@ -18,33 +18,33 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) NSDictionary *filtersDictionary; // @synthesize filtersDictionary=_filtersDictionary;
-- (void)setFavoriteFilter:(int)arg1;
-- (int)favFilterType;
-- (void)collectChildrenOfItem:(struct NSObject *)arg1 intoArray:(id)arg2;
-- (id)_items;
-- (void)setArrangedItems:(id)arg1;
-@property(readonly, nonatomic) NSArray *arrangedItems;
-@property(readonly, nonatomic) NSArray *selectedItems;
-- (unsigned long long)countOfArrangedItems;
-- (unsigned long long)countOfFilteredArrangedItems;
-- (id)objectInArrangedItemsAtIndex:(unsigned long long)arg1;
-- (void)invalidateArrangedItems;
-@property(retain, nonatomic) NSArray *contents;
-- (void)moveSelectionToNextItem;
-- (void)moveSelectionToPreviousItem;
-- (void)startObservingNodeMasterItemDetailSubitems:(id)arg1;
-- (void)startObservingContents;
-- (void)stopObservingNodeMasterItemDetailSubitems:(id)arg1;
-- (void)stopObservingContents;
-- (void)updateNoItemsInfo;
-- (BOOL)mediaRangesVisible:(id)arg1;
-- (void)removeFilters;
-- (id)init;
-- (void)willChangeArrangedItems:(id)arg1;
-- (void)didChangeArrangedItems:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)dealloc;
 @property(nonatomic) FFSidebarModule *sidebarModule; // @synthesize sidebarModule=_sidebarModule;
+- (void)dealloc;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)didChangeArrangedItems:(id)arg1;
+- (void)willChangeArrangedItems:(id)arg1;
+- (id)init;
+- (void)removeFilters;
+- (BOOL)mediaRangesVisible:(id)arg1;
+- (void)updateNoItemsInfo;
+@property(retain, nonatomic) NSArray *contents;
+- (void)stopObservingContents;
+- (void)stopObservingNodeMasterItemDetailSubitems:(id)arg1;
+- (void)startObservingContents;
+- (void)startObservingNodeMasterItemDetailSubitems:(id)arg1;
+- (void)moveSelectionToPreviousItem;
+- (void)moveSelectionToNextItem;
+- (void)invalidateArrangedItems;
+- (id)objectInArrangedItemsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)countOfFilteredArrangedItems;
+- (unsigned long long)countOfArrangedItems;
+@property(readonly, nonatomic) NSArray *selectedItems;
+@property(readonly, nonatomic) NSArray *arrangedItems;
+- (void)setArrangedItems:(id)arg1;
+- (id)_items;
+- (void)collectChildrenOfItem:(struct NSObject *)arg1 intoArray:(id)arg2;
+- (int)favFilterType;
+- (void)setFavoriteFilter:(int)arg1;
 
 @end
 

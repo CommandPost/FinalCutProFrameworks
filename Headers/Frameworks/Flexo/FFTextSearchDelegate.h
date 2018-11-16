@@ -8,49 +8,44 @@
 
 #import "FFTextSearchAppDelegate.h"
 
-@class FFAnchoredSequence, FFContext, FFPlayerVideoModule;
+@class FFPlayerVideoModule;
 
 @interface FFTextSearchDelegate : FFTextSearchDelegateBase <FFTextSearchAppDelegate>
 {
-    FFAnchoredSequence *_sequence;
-    FFContext *_context;
     FFPlayerVideoModule *_playerVideoModule;
 }
 
 + (id)getInstance;
-- (void)findReplaceTFDidChange:(id)arg1;
-- (void)goToNextResult;
-- (void)goToPreviousResult;
-- (BOOL)active;
-- (void)setActive:(BOOL)arg1;
-- (void)didSelectNewObject;
-- (vector_2735d0ca)results;
-- (BOOL)canSearchInSequence;
-- (id)_getTextEffectFromAnchoredObject:(id)arg1;
-- (void)rLock;
-- (void)rUnlock;
-- (void)wLock;
-- (void)wUnlock;
-- (id)getCurrentTextObject;
-- (CDStruct_1b6d18a9)getCurrentTime;
-- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
-- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1 forAnchoredObject:(id)arg2;
-- (void)setCurrentObject:(id *)arg1;
-- (id)getPrevTextObjectFromTime:(const CDStruct_1b6d18a9 *)arg1 andBeforeTextObject:(id *)arg2 wrapAround:(BOOL)arg3;
-- (id)getNextTextObjectFromTime:(const CDStruct_1b6d18a9 *)arg1 andAfterTextObject:(id *)arg2 wrapAround:(BOOL)arg3;
-- (void)getNextTextObject:(id *)arg1 after:(id *)arg2 flags:(unsigned int)arg3 searchForward:(BOOL)arg4;
-- (BOOL)getSearchResults:(vector_2735d0ca *)arg1 forString:(const id)arg2 fromTextObject:(id)arg3 withFlags:(unsigned int)arg4 searchForward:(BOOL)arg5 jumpTo:(struct FFTextSearchResult *)arg6;
-- (void)didFindResult:(id)arg1 setSelectionForResult:(struct FFTextSearchResult)arg2;
-- (void)willReplace:(id)arg1;
-- (void)didReplace:(id)arg1 didSetNewSelection:(BOOL)arg2;
-- (int)currentTextSelectionLength;
-- (BOOL)textToolIsActive;
-- (void)updateStrings:(id)arg1;
-- (void)willReplaceAll:(vector_cb3c6831 *)arg1 textObjects:(vector_1e3759f0 *)arg2;
-- (void)didReplaceAll:(vector_cb3c6831 *)arg1 textObjects:(vector_1e3759f0 *)arg2;
-@property(nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
-@property(nonatomic) FFContext *context; // @synthesize context=_context;
 @property(nonatomic) FFPlayerVideoModule *playerVideoModule; // @synthesize playerVideoModule=_playerVideoModule;
+- (void)didReplaceAll:(vector_cb3c6831 *)arg1 textObjects:(vector_8a98cfff *)arg2;
+- (void)willReplaceAll:(vector_cb3c6831 *)arg1 textObjects:(vector_8a98cfff *)arg2;
+- (void)updateStrings:(id)arg1;
+- (BOOL)textToolIsActive;
+- (int)currentTextSelectionLength;
+- (void)didReplace:(id)arg1 didSetNewSelection:(BOOL)arg2;
+- (void)willReplace:(id)arg1;
+- (void)didFindResult:(id)arg1 setSelectionForResult:(struct FFTextSearchResult)arg2;
+- (BOOL)getSearchResults:(vector_2735d0ca *)arg1 forString:(id)arg2 fromTextObject:(id)arg3 withFlags:(unsigned int)arg4 searchForward:(BOOL)arg5 jumpTo:(struct FFTextSearchResult *)arg6;
+- (void)getNextTextObject:(id *)arg1 after:(id *)arg2 flags:(unsigned int)arg3 searchForward:(BOOL)arg4;
+- (id)getNextTextObjectFromTime:(const CDStruct_1b6d18a9 *)arg1 andAfterTextObject:(id *)arg2 wrapAround:(BOOL)arg3;
+- (id)getPrevTextObjectFromTime:(const CDStruct_1b6d18a9 *)arg1 andBeforeTextObject:(id *)arg2 wrapAround:(BOOL)arg3;
+- (void)setCurrentObject:(id *)arg1;
+- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1 forAnchoredObject:(id)arg2;
+- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
+- (CDStruct_1b6d18a9)getCurrentTime;
+- (id)getCurrentTextObject;
+- (void)wLock:(BOOL)arg1;
+- (void)rLock:(BOOL)arg1;
+- (id)_getTextEffectFromAnchoredObject:(id)arg1;
+- (BOOL)canSearchInSequence;
+- (vector_2735d0ca)results;
+- (void)didSelectNewObject;
+- (void)setActive:(BOOL)arg1;
+- (BOOL)active;
+- (void)goToPreviousResult;
+- (void)goToNextResult;
+- (void)findReplaceTFDidChange:(id)arg1;
+- (id)sequence;
 
 @end
 

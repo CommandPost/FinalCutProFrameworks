@@ -7,28 +7,30 @@
 #import "NSCopying.h"
 #import "NSObject.h"
 
+@class NSDictionary, NSString;
+
 @protocol MIORADSampleCursorProtocol <NSObject, NSCopying>
-- (int)stepInDecodeOrder:(long long)arg1;
-- (int)stepInPresentationOrder:(long long)arg1;
-- (int)stepByDecodeTime:(CDStruct_1b6d18a9)arg1;
-- (int)stepByPresentationTime:(CDStruct_1b6d18a9)arg1;
-- (long long)compareInDecodeOrder:(id)arg1;
-- (CDStruct_1b6d18a9)presentationTimeStamp;
-- (struct opaqueCMFormatDescription *)formatDescription;
-- (CDStruct_1b6d18a9)playableHorizon;
 - (CDStruct_1b6d18a9)duration;
+- (CDStruct_1b6d18a9)playableHorizon;
+- (struct opaqueCMFormatDescription *)formatDescription;
+- (CDStruct_1b6d18a9)presentationTimeStamp;
+- (long long)compareInDecodeOrder:(id <MIORADSampleCursorProtocol>)arg1;
+- (int)stepByPresentationTime:(CDStruct_1b6d18a9)arg1;
+- (int)stepByDecodeTime:(CDStruct_1b6d18a9)arg1;
+- (int)stepInPresentationOrder:(long long)arg1;
+- (int)stepInDecodeOrder:(long long)arg1;
 
 @optional
-- (id)sampleDependencyAttributes;
-- (id)propertyForKey:(id)arg1;
-- (long long)timecodeCounter;
-- (CDStruct_1b6d18a9)decodeTimeStamp;
-- (void)dependencyInfoWithFullSync:(char *)arg1 partialSync:(char *)arg2 partialSyncThreshold:(int *)arg3 droppable:(char *)arg4;
-- (BOOL)mpeg2FrameType:(char *)arg1 brokenLink:(char *)arg2;
-- (BOOL)testReorderingBoundaryWithCursor:(id)arg1 boundaryType:(int)arg2;
-- (void)chunkDetails:(id *)arg1 chunkOffset:(long long *)arg2 chunkSize:(unsigned long long *)arg3 sampleCount:(long long *)arg4 sampleIndex:(long long *)arg5 allSameSize:(char *)arg6 allSameDuration:(char *)arg7 allSameFormatDescription:(char *)arg8;
-- (void)sampleLocationWithArraySizes:(long long)arg1 sectionCountOut:(long long *)arg2 sectionOffsetArrayInOut:(long long *)arg3 sectionLengthArrayInOut:(unsigned long long *)arg4 dataSourceOut:(id *)arg5;
-- (struct opaqueCMSampleBuffer *)createSampleBuffer:(id)arg1;
 - (BOOL)playableThroughEndOfTrack;
+- (struct opaqueCMSampleBuffer *)createSampleBuffer:(id <MIORADSampleCursorProtocol>)arg1;
+- (void)sampleLocationWithArraySizes:(long long)arg1 sectionCountOut:(long long *)arg2 sectionOffsetArrayInOut:(long long *)arg3 sectionLengthArrayInOut:(unsigned long long *)arg4 dataSourceOut:(id *)arg5;
+- (void)chunkDetails:(id *)arg1 chunkOffset:(long long *)arg2 chunkSize:(unsigned long long *)arg3 sampleCount:(long long *)arg4 sampleIndex:(long long *)arg5 allSameSize:(char *)arg6 allSameDuration:(char *)arg7 allSameFormatDescription:(char *)arg8;
+- (BOOL)testReorderingBoundaryWithCursor:(id <MIORADSampleCursorProtocol>)arg1 boundaryType:(int)arg2;
+- (BOOL)mpeg2FrameType:(char *)arg1 brokenLink:(char *)arg2;
+- (void)dependencyInfoWithFullSync:(char *)arg1 partialSync:(char *)arg2 partialSyncThreshold:(int *)arg3 droppable:(char *)arg4;
+- (CDStruct_1b6d18a9)decodeTimeStamp;
+- (long long)timecodeCounter;
+- (id)propertyForKey:(NSString *)arg1;
+- (NSDictionary *)sampleDependencyAttributes;
 @end
 

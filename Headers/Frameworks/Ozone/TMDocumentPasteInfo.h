@@ -18,14 +18,14 @@
     BOOL _livesInThemeFolder;
 }
 
-- (id)initWithTMDocument:(id)arg1;
-- (id)resolvedPath;
-- (int)type;
-- (BOOL)isSystemDoc;
-- (BOOL)livesInThemeFolder;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (BOOL)livesInThemeFolder;
+- (BOOL)isSystemDoc;
+- (int)type;
+- (id)resolvedPath;
+- (id)initWithTMDocument:(id)arg1;
 
 @end
 

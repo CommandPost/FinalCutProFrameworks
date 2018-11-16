@@ -18,15 +18,15 @@
     BOOL _isInMarker;
 }
 
-- (void)_updateMarker;
-- (id)init;
-- (struct CGRect)markerFrame;
-- (void)layoutSublayers;
-- (id)partIdentifier;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)hitTest:(struct CGPoint)arg1;
-@property BOOL isInMarker;
 @property long long markerState;
+@property BOOL isInMarker;
+- (id)hitTest:(struct CGPoint)arg1;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)partIdentifier;
+- (void)layoutSublayers;
+- (struct CGRect)markerFrame;
+- (id)init;
+- (void)_updateMarker;
 
 @end
 

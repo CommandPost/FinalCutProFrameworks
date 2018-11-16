@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
     CHChannelBase *_observedChannel;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)didBuildUI;
-- (BOOL)_hasAnyShapesSelected:(id *)arg1;
-- (BOOL)_hasOtherCorrectionsSelectedWithShapes:(id)arg1;
 - (void)selectedItemEffectsChanged:(id)arg1;
+- (BOOL)_hasOtherCorrectionsSelectedWithShapes:(id)arg1;
+- (BOOL)_hasAnyShapesSelected:(id *)arg1;
+- (void)didBuildUI;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

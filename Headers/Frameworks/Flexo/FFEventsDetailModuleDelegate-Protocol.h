@@ -7,7 +7,7 @@
 #import "FFPersistentModuleDelegate.h"
 
 @protocol FFEventsDetailModuleDelegate <FFPersistentModuleDelegate>
-- (void)setNoItemsInfoTextVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)finishedLoadingChanged;
+- (void)setNoItemsInfoTextVisible:(BOOL)arg1 animated:(BOOL)arg2;
 @end
 

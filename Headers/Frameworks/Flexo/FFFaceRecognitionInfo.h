@@ -18,16 +18,16 @@ __attribute__((visibility("hidden")))
     FFFace *face;
 }
 
-+ (id)faceInfoWithFaceInfo:(id)arg1;
 + (id)faceInfoWithDictionary:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithFaceInfo:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
-- (id)dictionaryRepresentation;
-- (id)copyWithZone:(struct _NSZone *)arg1;
++ (id)faceInfoWithFaceInfo:(id)arg1;
 @property FFFace *face; // @synthesize face;
 @property struct CGRect faceRectInFilmSpace; // @synthesize faceRectInFilmSpace;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dictionaryRepresentation;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFaceInfo:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

@@ -10,10 +10,10 @@
 {
 }
 
-- (id)_baseFacet;
-- (id)editingBezelFacet;
-- (id)_arrowsFacetForButtonCell:(id)arg1;
 - (void)_configureStepperCell:(id)arg1;
+- (id)_arrowsFacetForButtonCell:(id)arg1;
+- (id)editingBezelFacet;
+- (id)_baseFacet;
 
 @end
 

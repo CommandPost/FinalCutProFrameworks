@@ -20,10 +20,10 @@
     BOOL _savedImageIsValid;
 }
 
-- (id)initWithView:(id)arg1;
-- (void)dealloc;
-- (BOOL)cacheRect:(struct CGRect)arg1;
 - (BOOL)restore;
+- (BOOL)cacheRect:(struct CGRect)arg1;
+- (void)dealloc;
+- (id)initWithView:(id)arg1;
 
 @end
 

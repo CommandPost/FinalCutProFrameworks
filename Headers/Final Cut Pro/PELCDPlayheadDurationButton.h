@@ -11,8 +11,8 @@
     struct FFProcrastinatedDispatch_t _procrastinatedClickContext;
 }
 
-- (void)delayPlayhead:(id)arg1;
 - (void)mouseDown:(id)arg1;
+- (void)delayPlayhead:(id)arg1;
 
 @end
 

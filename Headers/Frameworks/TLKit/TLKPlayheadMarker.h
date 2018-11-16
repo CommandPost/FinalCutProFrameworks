@@ -24,19 +24,19 @@
     } _pmFlags;
 }
 
-- (id)timelineView;
-- (void)updatePlayhead;
-- (id)init;
-- (struct CGRect)playheadFrame;
-- (void)layoutSublayers;
-- (id)partIdentifier;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)hitTest:(struct CGPoint)arg1;
-@property BOOL playing;
-@property long long playheadState;
-@property BOOL skimmingPlayhead;
-@property BOOL skimming;
 @property BOOL snapped;
+@property BOOL skimming;
+@property BOOL skimmingPlayhead;
+@property long long playheadState;
+@property BOOL playing;
+- (id)hitTest:(struct CGPoint)arg1;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)partIdentifier;
+- (void)layoutSublayers;
+- (struct CGRect)playheadFrame;
+- (id)init;
+- (void)updatePlayhead;
+- (id)timelineView;
 
 @end
 

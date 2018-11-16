@@ -8,7 +8,7 @@
 
 #import "FFSkimmingModuleDelegate.h"
 
-@class FFAnchoredCollection, FFAnchoredSequence, FFEffect, FFEffectLibraryItemView, FFSkimmingModule, NSEvent, NSMutableArray, NSMutableDictionary;
+@class FFAnchoredCollection, FFAnchoredObject, FFAnchoredSequence, FFEffect, FFEffectLibraryItemView, FFSkimmingModule, NSEvent, NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectLibraryCollectionView : NSView <FFSkimmingModuleDelegate>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_effectViewList;
     FFSkimmingModule *_effectPreviewModule;
     FFAnchoredCollection *_effectPreviewSelectedClip;
+    FFAnchoredObject *_effectPreviewObject;
     FFAnchoredSequence *_effectPreviewSequence;
     struct NSObject *_effectPreviewSkimmable;
     FFEffectLibraryItemView *_effectPreviewView;
@@ -29,51 +30,52 @@ __attribute__((visibility("hidden")))
     NSEvent *_selectedViewMouseDownEvent;
 }
 
-- (void)_cleanupEffectPreview;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)layoutSubviews;
-- (void)reloadData:(id)arg1;
-- (BOOL)isFlipped;
-- (void)setSelectedView:(id)arg1;
-- (void)resizeWithOldSuperviewSize:(struct CGSize)arg1;
-- (void)copy:(id)arg1;
-- (BOOL)acceptsFirstResponder;
-- (void)writeSelectionToPasteboard:(id)arg1;
-- (void)_makeFirstResponder;
-- (void)_firstResponderChanged:(id)arg1;
-- (id)_viewerSkimmingDelegate;
-- (struct NSObject *)_skimmableForEffectItem:(id)arg1;
-- (void)_cancelBackgroundLoadForPreview;
-- (void)_setEffectPreviewView:(id)arg1;
-- (id)skimmingModule:(id)arg1 skimmingLayerForSkimmable:(struct NSObject *)arg2;
-- (struct NSObject *)skimmingModule:(id)arg1 skimmableObjectAtPoint:(struct CGPoint)arg2;
-- (CDStruct_1b6d18a9)skimmingModule:(id)arg1 startTimeForSkimmingLayer:(id)arg2;
-- (double)skimmingModule:(id)arg1 timePerHorizontalPixelForSkimmingLayer:(id)arg2;
-- (BOOL)skimmingModuleCanStartSkimming:(id)arg1;
-- (BOOL)skimmingModule:(id)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4;
-- (void)skimmingModuleStopSkimmingInViewer:(id)arg1;
-- (BOOL)skimmingModule:(id)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
-- (BOOL)skimmingModuleShowVideoThumbnail:(id)arg1;
-- (struct CGRect)skimmingModule:(id)arg1 videoThumbnailFrameForLayer:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setupEffectPreviewSelectedClip;
-- (id)_effectItemViewForPoint:(struct CGPoint)arg1;
-- (struct CGPoint)_convertCollectionViewPointToSkimmingLayerPoint:(struct CGPoint)arg1 forEffectItemView:(id)arg2;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)_updatePlayerSettingsForPlayback;
-- (id)targetModules;
-- (void)playPause:(id)arg1;
-- (void)_moveSkimmingToEffectAtIndex:(int)arg1;
-- (void)up:(id)arg1;
-- (void)down:(id)arg1;
-- (void)previousEdit:(id)arg1;
-- (void)nextEdit:(id)arg1;
-- (void)playSelected:(id)arg1;
 @property(readonly) FFEffectLibraryItemView *selectedView; // @synthesize selectedView=_selectedView;
+- (void)playSelected:(id)arg1;
+- (void)nextEdit:(id)arg1;
+- (void)previousEdit:(id)arg1;
+- (void)down:(id)arg1;
+- (void)up:(id)arg1;
+- (void)_moveSkimmingToEffectAtIndex:(int)arg1;
+- (void)playPause:(id)arg1;
+- (id)targetModules;
+- (void)_updatePlayerSettingsForPlayback;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (struct CGPoint)_convertCollectionViewPointToSkimmingLayerPoint:(struct CGPoint)arg1 forEffectItemView:(id)arg2;
+- (id)_effectItemViewForPoint:(struct CGPoint)arg1;
+- (void)setupEffectPreviewSelectedClip;
+- (struct CGRect)skimmingModule:(id)arg1 videoThumbnailFrameForLayer:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (BOOL)skimmingModuleShowVideoThumbnail:(id)arg1;
+- (BOOL)skimmingModule:(id)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
+- (void)skimmingModuleStopSkimmingInViewer:(id)arg1;
+- (BOOL)skimmingModule:(id)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4;
+- (BOOL)skimmingModuleCanStartSkimming:(id)arg1;
+- (double)skimmingModule:(id)arg1 timePerHorizontalPixelForSkimmingLayer:(id)arg2;
+- (CDStruct_1b6d18a9)skimmingModule:(id)arg1 startTimeForSkimmingLayer:(id)arg2;
+- (struct NSObject *)skimmingModule:(id)arg1 skimmableObjectAtPoint:(struct CGPoint)arg2;
+- (id)skimmingModule:(id)arg1 skimmingLayerForSkimmable:(struct NSObject *)arg2;
+- (void)_setEffectPreviewView:(id)arg1;
+- (void)_cancelBackgroundLoadForPreview;
+- (struct NSObject *)_skimmableForEffectItem:(id)arg1;
+- (id)_viewerSkimmingDelegate;
+- (void)_firstResponderChanged:(id)arg1;
+- (void)_makeFirstResponder;
+- (void)writeSelectionToPasteboard:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (void)copy:(id)arg1;
+- (void)resizeWithOldSuperviewSize:(struct CGSize)arg1;
+- (void)setSelectedView:(id)arg1;
+- (BOOL)isFlipped;
+- (void)reloadData:(id)arg1;
+- (void)reloadData;
+- (void)layoutSubviews;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (void)_cleanupEffectPreview;
 
 @end
 

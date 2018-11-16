@@ -11,9 +11,9 @@
     CALayer *_rootLayer;
 }
 
-- (id)init;
-- (void)setDelegate:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1;
+- (void)setDelegate:(id)arg1;
+- (id)init;
 
 @end
 

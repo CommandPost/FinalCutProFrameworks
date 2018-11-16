@@ -15,14 +15,14 @@
     BOOL _isValidArchive;
 }
 
-- (id)initWithPath:(id)arg1 doLoadProperties:(BOOL)arg2;
-- (void)dealloc;
-- (BOOL)loadProperties;
-- (id)loadColorLooks;
-- (id)description;
 @property(readonly) BOOL isValidArchive; // @synthesize isValidArchive=_isValidArchive;
 @property(copy, nonatomic) NSString *path; // @synthesize path=_path;
 @property(readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+- (id)description;
+- (id)loadColorLooks;
+- (BOOL)loadProperties;
+- (void)dealloc;
+- (id)initWithPath:(id)arg1 doLoadProperties:(BOOL)arg2;
 
 @end
 

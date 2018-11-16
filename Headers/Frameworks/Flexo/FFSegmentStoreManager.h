@@ -6,9 +6,11 @@
 
 #import "NSObject.h"
 
-@class FFSegmentStoreOperationQueue, NSConditionLock, NSMutableArray, NSString;
+#import "FFBackgroundTaskTarget.h"
 
-@interface FFSegmentStoreManager : NSObject
+@class FFBackgroundTask, FFSegmentStoreOperationQueue, NSConditionLock, NSMutableArray, NSString;
+
+@interface FFSegmentStoreManager : NSObject <FFBackgroundTaskTarget>
 {
     NSMutableArray *_segmentStores;
     NSMutableArray *_recentMisses;
@@ -21,37 +23,45 @@
     int _segmentStoreIdleCompressors;
     double _lastCheckedForAgedCompressors;
     NSMutableArray *_decompressionSessionCache;
+    NSMutableArray *_pendingStillJobs;
+    FFBackgroundTask *_pendingStillTask;
 }
 
-+ (void)initialize;
-+ (id)sharedInstance;
 + (void)teardown;
-- (void)cancelPendingOperations;
-- (void)shutdown;
-- (id)init;
-- (void)dealloc;
-- (void)stop;
-- (void)start;
-- (CDStruct_60067b7e)md5ForSegmentStore:(CDStruct_60067b7e)arg1 renderProps:(id)arg2;
-- (void)checkForAgingCompressors;
-- (void)checkForAgingDecompressors;
-- (id)copySegmentStoreForMD5:(CDStruct_60067b7e)arg1 createIfNeeded:(BOOL)arg2 paths:(id)arg3 renderProps:(id)arg4;
-- (id)findSegmentStore:(CDStruct_60067b7e)arg1 paths:(id)arg2;
-- (void)addPath:(id)arg1;
-- (id)readOperationQueue;
-- (id)writeOperationQueue;
-- (void)incrementIdleCompressors;
-- (void)decrementIdleCompressors;
-- (void)adjustIdleCompressors:(int)arg1;
-- (id)acquireDecompressionSession:(struct opaqueCMFormatDescription *)arg1 pixelFormat:(unsigned int)arg2 quality:(int)arg3;
-- (void)releaseDecompressionSession:(id)arg1;
-- (id)copyPaths;
-- (id)copyCurrentPath;
-- (void)addPaths:(id)arg1;
-- (BOOL)deleteSegment:(CDStruct_60067b7e)arg1 path:(id)arg2 renderProps:(id)arg3 error:(id *)arg4;
-- (BOOL)deleteSegmentsAtPath:(id)arg1 error:(id *)arg2;
-- (void)performInvocationWhenPendingWritesFinish:(id)arg1;
++ (id)sharedInstance;
++ (void)initialize;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
+- (_Bool)waitUntilPendingStillsBelow:(unsigned long long)arg1 beforeDate:(id)arg2;
+- (unsigned long long)numPendingStills;
+- (void)queueNonReadyStillToSegmentStore:(id)arg1 token:(id)arg2 requestedPT:(id)arg3 md5Info:(id)arg4 videoProps:(id)arg5 renderFilePaths:(id)arg6 renderProps:(id)arg7 assetRef:(id)arg8;
+- (void)_saveStillsInBackground:(id)arg1 onTask:(id)arg2;
 - (id)stoppedLock;
+- (void)performInvocationWhenPendingWritesFinish:(id)arg1;
+- (BOOL)deleteSegmentsAtPath:(id)arg1 error:(id *)arg2;
+- (BOOL)deleteSegment:(CDStruct_bdcb2b0d)arg1 path:(id)arg2 renderProps:(id)arg3 error:(id *)arg4;
+- (void)addPaths:(id)arg1;
+- (id)copyCurrentPath;
+- (id)copyPaths;
+- (void)returnDecompressionSessionToPool:(id)arg1;
+- (id)newAcquireDecompressionSession:(struct opaqueCMFormatDescription *)arg1 pixelFormat:(unsigned int)arg2 quality:(int)arg3;
+- (void)adjustIdleCompressors:(int)arg1;
+- (void)decrementIdleCompressors;
+- (void)incrementIdleCompressors;
+- (id)writeOperationQueue;
+- (id)readOperationQueue;
+- (void)addPath:(id)arg1;
+- (id)findSegmentStore:(CDStruct_bdcb2b0d)arg1 paths:(id)arg2;
+- (id)copySegmentStoreForMD5:(CDStruct_bdcb2b0d)arg1 createIfNeeded:(BOOL)arg2 paths:(id)arg3 renderProps:(id)arg4;
+- (void)checkForAgingDecompressors;
+- (void)checkForAgingCompressors;
+- (CDStruct_bdcb2b0d)md5ForSegmentStore:(CDStruct_bdcb2b0d)arg1 renderProps:(id)arg2;
+- (void)start;
+- (void)stop;
+- (void)dealloc;
+- (id)init;
+- (void)shutdown;
+- (void)cancelPendingOperations;
 
 @end
 

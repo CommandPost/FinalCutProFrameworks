@@ -23,8 +23,11 @@ __attribute__((visibility("hidden")))
     struct CGRect _expandedWindowRect;
     struct CGRect _collapsedWindowRect;
     long long _lastRemovePulldownState;
+    NSButton *_copyFilesToEventsCheckBox;
+    NSButton *_importFoldersAsKeywordsCheckBox;
     NSButton *_optimizeMediaCheckBox;
     NSButton *_createProxyMediaCheckBox;
+    NSButton *_createStillCacheCheckBox;
     NSButton *_removePulldownCheckBox;
     NSButton *_colorAutoCorrectCheckBox;
     NSButton *_faceDetectionCheckBox;
@@ -35,22 +38,25 @@ __attribute__((visibility("hidden")))
     NSButton *_removeSilentChannelsBox;
 }
 
-- (void)dealloc;
-- (void)selectTargetEvent:(id)arg1;
-- (void)selectTargetLocation:(id)arg1;
-- (void)setDefaultNewEventString;
-- (void)setRemovePulldownCheckBoxEnabled:(BOOL)arg1;
-- (void)setNeedsOptimizing:(BOOL)arg1;
-- (void)smartCollectionAction:(id)arg1;
-- (void)findPeopleAction:(id)arg1;
-- (void)awakeFromNib;
-- (void)cleanup;
-- (void)eventRadioButtonMatrixAction:(id)arg1;
-- (void)import:(id)arg1;
-- (void)cancel:(id)arg1;
 @property BOOL shouldCreateNewEvent; // @synthesize shouldCreateNewEvent=_shouldCreateNewEvent;
 @property id selectedLocation; // @synthesize selectedLocation=_selectedLocation;
 @property id selectedEvent; // @synthesize selectedEvent=_selectedEvent;
+- (void)cancel:(id)arg1;
+- (void)import:(id)arg1;
+- (void)eventRadioButtonMatrixAction:(id)arg1;
+- (void)cleanup;
+- (void)awakeFromNib;
+- (void)findPeopleAction:(id)arg1;
+- (void)smartCollectionAction:(id)arg1;
+- (void)setNeedsOptimizing:(BOOL)arg1;
+- (void)setRemovePulldownCheckBoxEnabled:(BOOL)arg1;
+- (void)setCopyFilesToEventsCheckBoxState:(long long)arg1;
+- (void)setCopyFilesToEventsCheckBoxEnabled:(BOOL)arg1;
+- (void)setImportFoldersAsKeywordsCheckBoxEnabled:(BOOL)arg1;
+- (void)setDefaultNewEventString;
+- (void)selectTargetLocation:(id)arg1;
+- (void)selectTargetEvent:(id)arg1;
+- (void)dealloc;
 
 @end
 

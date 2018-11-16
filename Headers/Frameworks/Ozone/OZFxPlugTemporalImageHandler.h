@@ -14,34 +14,32 @@
     struct OZImageNode *_imageNode;
     struct GLRenderer *_renderer;
     struct vector<std::tr1::shared_ptr<PCImage>, std::allocator<std::tr1::shared_ptr<PCImage>>> *_imageList;
-    struct map<_opaque_pthread_t*, TemporalAPIContext, std::less<_opaque_pthread_t*>, std::allocator<std::pair<_opaque_pthread_t* const, TemporalAPIContext>>> _contexts;
+    BOOL _appTerminating;
+    struct OZFxPlugThreadContextManager _threadContextManager;
 }
 
-- (id)init;
-- (void)setImageNode:(struct OZImageNode *)arg1;
-- (void)setLithiumInput:(PCPtr_2c56e3c4)arg1 withAgent:(struct LiAgent *)arg2 withRenderParams:(struct OZRenderParams *)arg3 withDOD:(PCRect_07ce470f)arg4;
-- (void)destroyTemporalContextForCurrentThread;
-- (void)_createTemporalContext:(struct TemporalAPIContext *)arg1 withRenderParams:(struct LiRenderParameters *)arg2;
-- (void)_teardownLithiumInputAndAgentWithRenderParams:(struct LiRenderParameters *)arg1;
-- (void)dealloc;
-- (BOOL)_setupRenderer;
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 appendHGGraph:(HGRef_265f9e4c)arg4;
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 withROI:(struct HGRect *)arg4;
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 withROI:(struct HGRect *)arg4 appendHGGraph:(HGRef_265f9e4c)arg5;
-- (void)retrieveRenderer:(struct HGRenderer **)arg1 rendererInfo:(id *)arg2 withTempContext:(struct TemporalAPIContext *)arg3 andImageType:(id)arg4;
-- (id)textureAndBitmapRetriever:(id)arg1;
-- (BOOL)retrieveInput:(id *)arg1 requestInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 retriever:(SEL)arg4 imageType:(id)arg5 useSource:(BOOL)arg6;
-- (BOOL)getInputTexture:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
-- (BOOL)getSourceBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
-- (BOOL)getSourceTexture:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
-- (BOOL)getHeliumImage:(id *)arg1 source:(BOOL)arg2 withInfo:(CDStruct_8b442eb9)arg3 atTime:(double)arg4;
-- (BOOL)getLayerGlobalOffsetX:(double *)arg1 OffsetY:(double *)arg2 atTime:(double)arg3;
-- (void)clearImageList;
-- (int)getFootageFieldOrder:(struct OZRenderParams *)arg1;
-- (struct TemporalAPIContext)getCurrentTemporalContext;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (struct OZRenderState)getTempContextRenderState;
+- (int)getFootageFieldOrder:(struct OZRenderParams *)arg1;
+- (void)clearImageList;
+- (BOOL)getLayerGlobalOffsetX:(double *)arg1 OffsetY:(double *)arg2 atTime:(double)arg3;
+- (BOOL)getHeliumImage:(id *)arg1 source:(BOOL)arg2 withInfo:(CDStruct_8b442eb9)arg3 atTime:(double)arg4;
+- (BOOL)getSourceTexture:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
+- (BOOL)getSourceBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
+- (BOOL)getInputTexture:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
+- (BOOL)retrieveInput:(id *)arg1 requestInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 imageType:(unsigned long long)arg4 useSource:(BOOL)arg5;
+- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 withROI:(struct HGRect *)arg4 appendHGGraph:(HGRef_0de1db7e)arg5;
+- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 withROI:(struct HGRect *)arg4;
+- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 appendHGGraph:(HGRef_0de1db7e)arg4;
+- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
+- (BOOL)_setupRenderer;
+- (void)appWillTerminate:(id)arg1;
+- (void)dealloc;
+- (void)destroyTemporalContextForCurrentThread;
+- (void)setLithiumInput:(PCPtr_04d56345)arg1 withAgent:(struct LiAgent *)arg2 withRenderParams:(struct OZRenderParams *)arg3;
+- (void)setImageNode:(struct OZImageNode *)arg1;
+- (id)init;
 
 @end
 

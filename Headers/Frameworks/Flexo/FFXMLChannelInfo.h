@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     FFXMLEnumClass *_enumClass;
 }
 
-- (id)initWithChannel:(id)arg1;
-- (void)dealloc;
 @property(retain, nonatomic) FFXMLEnumClass *enumClass; // @synthesize enumClass=_enumClass;
 @property(readonly, nonatomic) CHChannelBase *channel; // @synthesize channel=_channel;
+- (void)dealloc;
+- (id)initWithChannel:(id)arg1;
 
 @end
 

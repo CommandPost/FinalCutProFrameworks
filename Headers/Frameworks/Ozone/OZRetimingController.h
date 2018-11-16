@@ -33,25 +33,27 @@
     OZViewController *_pRetimeFrameGroup;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 isMedia:(BOOL)arg3;
-- (void)select:(BOOL)arg1;
-- (void)select:(BOOL)arg1 excludeChannel:(struct OZChannelBase *)arg2;
-- (BOOL)isSelected;
-- (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)updateTimeExtentChannels;
-- (void)createTimingGroupWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)addTimingGroup;
-- (void)addScaleWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)addRetimeFrameWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)addReverseWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)addStartEndDurationWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 isMedia:(BOOL)arg3;
-- (void)addTimeRemapWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)addEndConditionWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)addLoopDurationWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)updateWidgetStates;
-- (void)update;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
+- (void)update;
+- (void)updateWidgetStates;
+- (void)addLoopDurationWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)addEndConditionWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)addTimeRemapWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)addStartEndDurationWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 isMedia:(BOOL)arg3;
+- (void)addReverseWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)addRetimeFrameWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)addScaleWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)addTimingGroup;
+- (void)createTimingGroupWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)updateTimeExtentChannels;
+- (void)notify:(unsigned int)arg1;
+- (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
+- (BOOL)isSelected;
+- (void)select:(BOOL)arg1 excludeChannel:(struct OZChannelBase *)arg2;
+- (void)select:(BOOL)arg1;
+- (id)buildUIForChannel:(struct OZChannelObjectRoot *)arg1 context:(id)arg2 withSimpleRetiming:(_Bool)arg3 withFullRetiming:(_Bool)arg4 isMedia:(_Bool)arg5;
+- (id)initWithRoots:(list_288eb408 *)arg1 context:(id)arg2 isMedia:(BOOL)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 isMedia:(BOOL)arg3;
 
 @end
 

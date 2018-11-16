@@ -22,7 +22,7 @@ struct CGSize {
 };
 
 struct FxHeliumImagePriv {
-    HGRef_265f9e4c _field1;
+    HGRef_0de1db7e _field1;
 };
 
 struct FxKeyframeInfo {
@@ -59,7 +59,7 @@ struct HGNode {
     int _field12;
     struct HGBitmap *_field13;
     _Bool _field14;
-    struct set<HGNodeInput*, std::less<HGNodeInput*>, std::allocator<HGNodeInput*>> _field15;
+    struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field15;
     int _field16;
     struct HGNode *_field17;
     struct HGRect _field18;
@@ -87,7 +87,7 @@ struct HGRect {
 };
 
 struct HGRef<HGNode> {
-    struct HGNode *m_Obj;
+    struct HGNode *_field1;
 };
 
 struct HGRenderer;
@@ -112,7 +112,7 @@ struct OZChannel {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString _field6;
+    struct PCString *_field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -123,12 +123,11 @@ struct OZChannel {
     struct OZChannelTimeConverter *_field14;
     struct OZCurve *_field15;
     struct OZChannelInfo *_field16;
-    CDStruct_198678f7 _field17;
-    CDStruct_198678f7 _field18;
-    unsigned int _field19;
-    unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
+    struct OZChannelFade *_field17;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
 };
+
+struct OZChannelFade;
 
 struct OZChannelFolder {
     CDUnknownFunctionPointerType *_field1;
@@ -136,7 +135,7 @@ struct OZChannelFolder {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString _field6;
+    struct PCString *_field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -145,7 +144,7 @@ struct OZChannelFolder {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
+    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
 };
@@ -162,12 +161,12 @@ struct PCString {
     struct __CFString *_field1;
 };
 
-struct _Rb_tree<HGNodeInput*, HGNodeInput*, std::_Identity<HGNodeInput*>, std::less<HGNodeInput*>, std::allocator<HGNodeInput*>> {
-    struct _Rb_tree_impl<std::less<HGNodeInput*>, false> _field1;
+struct _Rb_tree<HGNodeInput *, HGNodeInput *, std::_Identity<HGNodeInput *>, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> {
+    struct _Rb_tree_impl<std::less<HGNodeInput *>, false> _field1;
 };
 
-struct _Rb_tree_impl<std::less<HGNodeInput*>, false> {
-    struct less<HGNodeInput*> _field1;
+struct _Rb_tree_impl<std::less<HGNodeInput *>, false> {
+    struct less<HGNodeInput *> _field1;
     struct _Rb_tree_node_base _field2;
     unsigned long long _field3;
 };
@@ -181,15 +180,15 @@ struct _Rb_tree_node_base {
 
 struct __CFString;
 
-struct less<HGNodeInput*>;
+struct less<HGNodeInput *>;
 
-struct set<HGNodeInput*, std::less<HGNodeInput*>, std::allocator<HGNodeInput*>> {
-    struct _Rb_tree<HGNodeInput*, HGNodeInput*, std::_Identity<HGNodeInput*>, std::less<HGNodeInput*>, std::allocator<HGNodeInput*>> _field1;
+struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> {
+    struct _Rb_tree<HGNodeInput *, HGNodeInput *, std::_Identity<HGNodeInput *>, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field1;
 };
 
 struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>>;
 
-struct vector<OZChannelBase*, std::allocator<OZChannelBase*>>;
+struct vector<OZChannelBase *, std::allocator<OZChannelBase *>>;
 
 #pragma mark Typedef'd Structures
 
@@ -214,6 +213,6 @@ typedef struct {
 
 // Template types
 typedef struct HGRef<HGNode> {
-    struct HGNode *m_Obj;
-} HGRef_265f9e4c;
+    struct HGNode *_field1;
+} HGRef_0de1db7e;
 

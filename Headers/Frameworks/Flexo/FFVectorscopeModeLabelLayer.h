@@ -14,10 +14,11 @@ __attribute__((visibility("hidden")))
     CDStruct_554002f2 _action_opt;
 }
 
-- (void)setPhase:(long long)arg1;
-- (void)setBarTarget:(long long)arg1;
-- (id)actionForKey:(id)arg1;
+- (id).cxx_construct;
 - (id)accessibilityAttributeValue:(id)arg1;
+- (id)actionForKey:(id)arg1;
+- (void)setBarTarget:(long long)arg1;
+- (void)setPhase:(long long)arg1;
 
 @end
 

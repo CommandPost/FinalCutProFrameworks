@@ -6,12 +6,14 @@
 
 #import "NSObject.h"
 
+@class CHChannelBase, NSNumber;
+
 @protocol FFChannelChangeControllerDivorcedDelegate <NSObject>
 
 @optional
-- (void)sender:(id)arg1 beginChannelChange:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)sender:(id)arg1 endChannelChange:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)sender:(id)arg1 willSetChannel:(id)arg2 toValue:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
-- (void)sender:(id)arg1 didSetChannel:(id)arg2 toValue:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
+- (void)sender:(id)arg1 didSetChannel:(CHChannelBase *)arg2 toValue:(NSNumber *)arg3 atTime:(CDStruct_1b6d18a9)arg4;
+- (void)sender:(id)arg1 willSetChannel:(CHChannelBase *)arg2 toValue:(NSNumber *)arg3 atTime:(CDStruct_1b6d18a9)arg4;
+- (void)sender:(id)arg1 endChannelChange:(CHChannelBase *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)sender:(id)arg1 beginChannelChange:(CHChannelBase *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 @end
 

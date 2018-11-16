@@ -10,8 +10,8 @@
 {
 }
 
-- (BOOL)isValidControlSize:(unsigned long long)arg1;
 - (void)drawRect:(struct CGRect)arg1;
+- (BOOL)isValidControlSize:(unsigned long long)arg1;
 
 @end
 

@@ -16,12 +16,13 @@ __attribute__((visibility("hidden")))
     CDStruct_cb905f8c _base_state;
 }
 
-- (void)dealloc;
-- (id)colorEffect;
-- (id)colorEffects;
-- (BOOL)isAppointedFromSequenceProject;
-- (BOOL)isAppointedFromOrganizer;
+- (id).cxx_construct;
 - (BOOL)isAllMediaOnline;
+- (BOOL)isAppointedFromOrganizer;
+- (BOOL)isAppointedFromSequenceProject;
+- (id)colorEffects;
+- (id)colorEffect;
+- (void)dealloc;
 
 @end
 

@@ -10,8 +10,8 @@
 {
 }
 
-+ (void)initialize;
 + (Class)_proDialCellClass;
++ (void)initialize;
 
 @end
 

@@ -12,10 +12,10 @@
     BOOL _hasSetDefaultValue;
 }
 
-- (void)setDefaultValue:(double)arg1;
-- (double)defaultValue;
-- (void)_dialTouched:(BOOL)arg1;
 - (void)mouseDown:(id)arg1;
+- (void)_dialTouched:(BOOL)arg1;
+- (double)defaultValue;
+- (void)setDefaultValue:(double)arg1;
 
 @end
 

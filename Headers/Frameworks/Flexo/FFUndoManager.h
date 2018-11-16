@@ -16,13 +16,13 @@ __attribute__((visibility("hidden")))
     BOOL _removeAllActionsRequested;
 }
 
-- (void)undo;
-- (void)redo;
-- (void)removeAllActions;
-- (void)updateTargetModDate:(id)arg1;
-- (void)registerUndoWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
-- (id)prepareWithInvocationTarget:(id)arg1;
 @property(nonatomic) FFUndoHandler *undoHandler; // @synthesize undoHandler=_undoHandler;
+- (id)prepareWithInvocationTarget:(id)arg1;
+- (void)registerUndoWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
+- (void)updateTargetModDate:(id)arg1;
+- (void)removeAllActions;
+- (void)redo;
+- (void)undo;
 
 @end
 

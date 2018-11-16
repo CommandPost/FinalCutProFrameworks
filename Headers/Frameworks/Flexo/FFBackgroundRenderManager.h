@@ -8,7 +8,6 @@
 
 @class NSDate, NSMutableArray, NSOperationQueue, NSTimer;
 
-__attribute__((visibility("hidden")))
 @interface FFBackgroundRenderManager : NSObject
 {
     NSMutableArray *_activeRenders;
@@ -22,36 +21,39 @@ __attribute__((visibility("hidden")))
     NSOperationQueue *_houseKeepingOpQueue;
 }
 
-+ (id)sharedInstance;
-+ (void)releaseSharedInstance;
-+ (id)getStatesAtOrAbove:(int)arg1;
-+ (id)defaultManualRenderStates;
-+ (id)highValueAutoRenderStates;
 + (id)lowValueAutoRenderStates;
-- (void)appWillTerminate:(id)arg1;
-- (id)init;
-- (void)dealloc;
-- (id)_newBGRenderTask:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 autoStartInfo:(id)arg4;
-- (void)_updateTimer;
-- (void)performRender:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3;
-- (void)performRender:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 shouldCancelOtherJobs:(BOOL)arg4;
-- (void)registerForAutoRender:(id)arg1 statesToAutoRender:(id)arg2 range:(CDStruct_e83c9415)arg3 withPriority:(int)arg4;
-- (void)unregisterForAutoRender:(id)arg1;
-- (void)holdOffBGRenderStart:(id)arg1;
-- (void)holdOffBGRenderFor:(double)arg1;
-- (void)holdOffBGRenderForAutoStartDelay;
-- (void)_releaseFinishedJobs;
-- (_Bool)_cancelInternal:(id)arg1 onlyAutos:(_Bool)arg2 userInitiated:(_Bool)arg3 beforeDate:(id)arg4;
-- (_Bool)cancelAutoStartedBGRendersWithWaitUntilConfirmed:(_Bool)arg1;
-- (_Bool)cancelAllBGRendersWithWaitUntilConfirmed:(_Bool)arg1;
-- (_Bool)cancelAutoStartedBGRendersFor:(id)arg1 waitUntilConfirmed:(_Bool)arg2;
-- (_Bool)cancelAllBGRendersFor:(id)arg1 waitUntilConfirmed:(_Bool)arg2;
-- (void)setSuspended:(_Bool)arg1;
-- (_Bool)suspended;
-- (_Bool)_renderInProgress;
-- (void)_maybeStartBGJob;
-- (void)sourceRangeInvalidated:(id)arg1;
++ (id)highValueAutoRenderStates;
++ (id)defaultManualRenderStates;
++ (id)getStatesAtOrAbove:(int)arg1;
++ (void)releaseSharedInstance;
++ (id)sharedInstance;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)unregisterMultiple:(id)arg1;
+- (id)copyRegisteredTrackers;
+- (void)sourceRangeInvalidated:(id)arg1;
+- (id)copyTrackerForSource:(id)arg1;
+- (void)_maybeStartBGJob;
+- (_Bool)_renderInProgress;
+- (_Bool)suspended;
+- (void)setSuspended:(_Bool)arg1;
+- (_Bool)cancelAllBGRendersFor:(id)arg1 waitUntilConfirmed:(_Bool)arg2 allowRestart:(_Bool)arg3;
+- (_Bool)cancelAutoStartedBGRendersFor:(id)arg1 waitUntilConfirmed:(_Bool)arg2 allowRestart:(_Bool)arg3;
+- (_Bool)cancelAllBGRendersWithWaitUntilConfirmed:(_Bool)arg1;
+- (_Bool)cancelAutoStartedBGRendersWithWaitUntilConfirmed:(_Bool)arg1 allowRestart:(_Bool)arg2;
+- (_Bool)_cancelInternal:(id)arg1 onlyAutos:(_Bool)arg2 userInitiated:(_Bool)arg3 beforeDate:(id)arg4;
+- (void)_releaseFinishedJobs;
+- (void)holdOffBGRenderForAutoStartDelay;
+- (void)holdOffBGRenderFor:(double)arg1;
+- (void)holdOffBGRenderStart:(id)arg1;
+- (void)unregisterForAutoRender:(id)arg1;
+- (void)registerForAutoRender:(id)arg1 statesToAutoRender:(id)arg2 range:(CDStruct_e83c9415)arg3 withPriority:(int)arg4;
+- (void)performRender:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 shouldCancelOtherJobs:(BOOL)arg4;
+- (void)performRender:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3;
+- (void)_updateTimer;
+- (id)_newBGRenderTask:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 autoStartInfo:(id)arg4;
+- (void)dealloc;
+- (id)init;
+- (void)appWillTerminate:(id)arg1;
 
 @end
 

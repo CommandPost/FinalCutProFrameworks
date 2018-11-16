@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
     long long _contextualMenuColumnIndex;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)menuForEvent:(id)arg1;
 @property long long contextualMenuColumnIndex; // @synthesize contextualMenuColumnIndex=_contextualMenuColumnIndex;
+- (id)menuForEvent:(id)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

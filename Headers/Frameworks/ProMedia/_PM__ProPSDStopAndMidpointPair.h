@@ -12,11 +12,11 @@
     double midpoint;
 }
 
-- (id)initWithStop:(id)arg1 midpoint:(id)arg2;
-- (void)dealloc;
-- (long long)compare:(id)arg1;
-- (id)stop;
 - (double)midpoint;
+- (id)stop;
+- (long long)compare:(id)arg1;
+- (void)dealloc;
+- (id)initWithStop:(id)arg1 midpoint:(id)arg2;
 
 @end
 

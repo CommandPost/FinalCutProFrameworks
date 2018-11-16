@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)outlineView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)outlineView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
+- (id)outlineView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 
 @end
 

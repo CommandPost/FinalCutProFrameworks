@@ -16,12 +16,12 @@
     OZToolbarModule *_toolbarModule;
 }
 
-- (void)initializeStateImages;
-- (void)dealloc;
-- (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 @property(nonatomic) unsigned int currentImageState; // @synthesize currentImageState=_currentImageState;
 @property(nonatomic) OZToolbarModule *toolbarModule; // @synthesize toolbarModule=_toolbarModule;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)initializeStateImages;
 
 @end
 

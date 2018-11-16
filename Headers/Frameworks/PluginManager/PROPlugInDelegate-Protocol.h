@@ -6,11 +6,13 @@
 
 #import "PROAPIAccessing.h"
 
+@class NSError, PROPlugIn, PROPlugInGroup;
+
 @protocol PROPlugInDelegate <PROAPIAccessing>
-- (void)plugInCouldNotInitialize:(id)arg1;
-- (void)plugIn:(id)arg1 didError:(id)arg2;
-- (id)plugInGroupWithUUID:(struct __CFUUID *)arg1;
-- (BOOL)plugInShouldLoadPlugInInstanceForTheFirstTime:(id)arg1;
-- (id)apiManagerForPlugInInstances;
+- (id <PROAPIAccessing>)apiManagerForPlugInInstances;
+- (BOOL)plugInShouldLoadPlugInInstanceForTheFirstTime:(PROPlugIn *)arg1;
+- (PROPlugInGroup *)plugInGroupWithUUID:(struct __CFUUID *)arg1;
+- (void)plugIn:(PROPlugIn *)arg1 didError:(NSError *)arg2;
+- (void)plugInCouldNotInitialize:(NSError *)arg1;
 @end
 

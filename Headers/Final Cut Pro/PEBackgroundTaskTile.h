@@ -25,23 +25,23 @@
     BOOL _ready;
 }
 
-- (id)initWithSingleTask:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (id)tasks;
-- (BOOL)isIdle;
-- (BOOL)_canPauseTask:(id)arg1;
-- (BOOL)_canCancelTask:(id)arg1;
-- (void)updateActionView;
-- (void)updateUI;
-- (BOOL)shouldHandleMouseDown:(id)arg1;
-- (void)pauseResumeTasks:(id)arg1;
-- (void)cancelShowTasks:(id)arg1;
-- (void)willRemoveFromTileView;
 @property(getter=isReady) BOOL ready; // @synthesize ready=_ready;
 @property(getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
 @property(retain) NSString *title; // @synthesize title=_title;
+- (void)willRemoveFromTileView;
+- (void)cancelShowTasks:(id)arg1;
+- (void)pauseResumeTasks:(id)arg1;
+- (BOOL)shouldHandleMouseDown:(id)arg1;
+- (void)updateUI;
+- (void)updateActionView;
+- (BOOL)_canCancelTask:(id)arg1;
+- (BOOL)_canPauseTask:(id)arg1;
+- (BOOL)isIdle;
+- (id)tasks;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithSingleTask:(id)arg1;
 
 @end
 

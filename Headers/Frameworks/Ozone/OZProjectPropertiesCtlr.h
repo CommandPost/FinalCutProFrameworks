@@ -48,36 +48,36 @@
     _Bool _isSelectingPreset;
 }
 
-- (void)dealloc;
-- (BOOL)buildUIWithSceneNodes:(list_699e9227 *)arg1 context:(id)arg2;
-- (void)buildPropertiesUI:(id)arg1;
-- (id)addFauxBrickForView:(id)arg1 label:(id)arg2 context:(id)arg3;
-- (void)makeScrubberRevealed:(id)arg1;
-- (void)update;
-- (void)startSegmentedScrubberAction:(id)arg1;
-- (void)selectPreset:(id)arg1;
-- (void)selectTheme:(id)arg1;
-- (void)setProjectWidth:(id)arg1;
-- (void)setProjectHeight:(id)arg1;
-- (void)setPixelARFromPopUp:(id)arg1;
-- (void)setPixelARFromTF:(id)arg1;
-- (void)setFieldDominance:(id)arg1;
-- (void)setProjectDuration:(id)arg1;
-- (void)setDurationFormat:(id)arg1;
-- (void)setShouldOverrideFCDuration:(id)arg1;
-- (void)setStartTime:(id)arg1;
-- (void)setBackgroundColor:(id)arg1;
-- (void)setBackgroundRenderingMode:(id)arg1;
-- (void)startSliderAction:(id)arg1;
-- (void)endSliderAction:(id)arg1;
-- (void)setMotionBlurSamples:(id)arg1;
-- (void)setMotionBlurDuration:(id)arg1;
-- (void)setReflectionRecursionLimit:(id)arg1;
-- (void)textDidChange:(id)arg1;
-- (void)updatePresetPopUp;
-- (void)updateRenderBackgroundControls:(unsigned int)arg1;
-- (void)setUIPixelAspectRatio:(double)arg1;
 - (void)abortAndWait:(BOOL)arg1;
+- (void)setUIPixelAspectRatio:(double)arg1;
+- (void)updateRenderBackgroundControls:(unsigned int)arg1;
+- (void)updatePresetPopUp;
+- (void)textDidChange:(id)arg1;
+- (void)setReflectionRecursionLimit:(id)arg1;
+- (void)setMotionBlurDuration:(id)arg1;
+- (void)setMotionBlurSamples:(id)arg1;
+- (void)endSliderAction:(id)arg1;
+- (void)startSliderAction:(id)arg1;
+- (void)setBackgroundRenderingMode:(id)arg1;
+- (void)setBackgroundColor:(id)arg1;
+- (void)setStartTime:(id)arg1;
+- (void)setShouldOverrideFCDuration:(id)arg1;
+- (void)setDurationFormat:(id)arg1;
+- (void)setProjectDuration:(id)arg1;
+- (void)setFieldDominance:(id)arg1;
+- (void)setPixelARFromTF:(id)arg1;
+- (void)setPixelARFromPopUp:(id)arg1;
+- (void)setProjectHeight:(id)arg1;
+- (void)setProjectWidth:(id)arg1;
+- (void)selectTheme:(id)arg1;
+- (void)selectPreset:(id)arg1;
+- (void)startSegmentedScrubberAction:(id)arg1;
+- (void)update;
+- (void)makeScrubberRevealed:(id)arg1;
+- (id)addFauxBrickForView:(id)arg1 label:(id)arg2 context:(id)arg3;
+- (void)buildPropertiesUI:(id)arg1;
+- (BOOL)buildUIWithSceneNodes:(list_1192f13f *)arg1 context:(id)arg2;
+- (void)dealloc;
 
 @end
 

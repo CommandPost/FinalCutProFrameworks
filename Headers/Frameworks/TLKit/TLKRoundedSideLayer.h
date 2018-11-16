@@ -10,12 +10,15 @@
 {
     int _roundedDirection;
     double _radius;
+    unsigned int _ignoresHitTesting:1;
 }
 
-- (id)init;
-- (void)setCornerRadius:(double)arg1;
-- (void)setDelegate:(id)arg1;
+@property BOOL ignoresHitTesting;
 @property int roundedDirection;
+- (void)setDelegate:(id)arg1;
+- (void)setCornerRadius:(double)arg1;
+- (id)hitTest:(struct CGPoint)arg1;
+- (id)init;
 
 @end
 

@@ -25,36 +25,36 @@
     NSDictionary *mPreviewPresentationDimensions;
 }
 
-- (void)initInstanceVariablesLocal;
-- (id)initWithDeviceConnection:(id)arg1;
-- (id)init;
-- (void)dealloc;
-- (int)format;
-- (id)deviceConnection;
-- (struct OpaqueCMIOGraph *)graph;
-- (BOOL)initializeAndStartGraph;
-- (BOOL)stopAndUninitializeGraph;
-- (BOOL)graphIsRunning;
-- (BOOL)setPreviewView:(id)arg1;
-- (BOOL)startPreviewing;
-- (void)stopPreviewing;
-- (BOOL)isPreviewing;
-- (void)clearPreviewView;
-- (id)previewView;
-- (BOOL)prepareDeviceForClip:(int)arg1;
-- (void)relinquishDevice;
-- (BOOL)isPreparedForClip:(int)arg1;
-- (int)clipType;
-- (void)pauseProcessing;
-- (void)resumeProcessing;
-- (void)setDelegate:(id)arg1;
-- (id)delegate;
-- (void)videoPreviewFormatChanged;
 @property(retain) NSDictionary *previewPresentationDimensions; // @synthesize previewPresentationDimensions=mPreviewPresentationDimensions;
-- (BOOL)startProcessing;
-- (void)stopProcessing;
-- (BOOL)isProcessing;
+- (void)videoPreviewFormatChanged;
+- (id)delegate;
+- (void)setDelegate:(id)arg1;
+- (void)resumeProcessing;
+- (void)pauseProcessing;
+- (int)clipType;
+- (BOOL)isPreparedForClip:(int)arg1;
+- (void)relinquishDevice;
+- (BOOL)prepareDeviceForClip:(int)arg1;
+- (id)previewView;
+- (void)clearPreviewView;
+- (BOOL)isPreviewing;
+- (void)stopPreviewing;
+- (BOOL)startPreviewing;
+- (BOOL)setPreviewView:(id)arg1;
+- (BOOL)graphIsRunning;
+- (BOOL)stopAndUninitializeGraph;
+- (BOOL)initializeAndStartGraph;
+- (struct OpaqueCMIOGraph *)graph;
+- (id)deviceConnection;
+- (int)format;
+- (void)dealloc;
+- (id)init;
+- (id)initWithDeviceConnection:(id)arg1;
+- (void)initInstanceVariablesLocal;
 - (void)setIsPreviewing:(BOOL)arg1;
+- (BOOL)isProcessing;
+- (void)stopProcessing;
+- (BOOL)startProcessing;
 
 @end
 

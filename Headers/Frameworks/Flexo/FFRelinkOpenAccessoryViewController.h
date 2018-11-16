@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
     BOOL _showingProgress;
 }
 
-- (id)init;
-- (void)setStatusText:(id)arg1 showProgress:(BOOL)arg2;
 - (void)setReferenceFilePath:(id)arg1;
+- (void)setStatusText:(id)arg1 showProgress:(BOOL)arg2;
+- (id)init;
 
 @end
 

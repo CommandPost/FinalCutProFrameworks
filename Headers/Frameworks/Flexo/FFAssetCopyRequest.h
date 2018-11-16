@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFAssetFileIdentifier;
+@class FFAssetFileIdentifier, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface FFAssetCopyRequest : NSObject
@@ -21,15 +21,24 @@ __attribute__((visibility("hidden")))
     BOOL _isDone;
     BOOL _abortedByPause;
     id _customObject;
+    id _customObject2;
+    NSSet *_sourceAssetRefs;
+    FFAssetCopyRequest *_duplicateRequest;
 }
 
-- (id)initWithSourceFileID:(id)arg1 targetFileID:(id)arg2 completionTarget:(id)arg3 completionSelector:(SEL)arg4;
-- (void)dealloc;
-- (void)setTargetFileID:(id)arg1;
-- (id)targetFileID;
-- (id)description;
-- (void)queueRequest;
+@property(retain) id customObject2; // @synthesize customObject2=_customObject2;
 @property(retain) id customObject; // @synthesize customObject=_customObject;
+- (void)addDuplicateRequest:(id)arg1;
+- (void)asyncCopyCompleted;
+- (void)synchronousCopyCompleted;
+- (id)sourceAssetRefs;
+- (void)queueRequest;
+- (id)description;
+- (id)sourceFileID;
+- (id)targetFileID;
+- (void)setTargetFileID:(id)arg1;
+- (void)dealloc;
+- (id)initWithSourceFileID:(id)arg1 targetFileID:(id)arg2 completionTarget:(id)arg3 completionSelector:(SEL)arg4 sourceAssetRefs:(id)arg5;
 
 @end
 

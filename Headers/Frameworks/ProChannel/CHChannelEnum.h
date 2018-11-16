@@ -10,26 +10,27 @@
 {
 }
 
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-- (struct OZChannelEnum *)ozChannel;
-- (int)intValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (int)intValue;
-- (id)stringValueAtTime:(CDStruct_1b6d18a9)arg1;
-- (id)stringValue;
-- (void)setCurveIntValue:(int)arg1 atTime:(CDStruct_1b6d18a9)arg2 options:(unsigned int)arg3;
-- (void)setIntValue:(int)arg1;
-- (void)setCurveStringValue:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 options:(unsigned int)arg3;
-- (void)setStringValue:(id)arg1;
-- (int)defaultIntValue;
-- (void)setDefaultIntValue:(int)arg1;
-- (unsigned long long)stringCount;
-- (id)stringAtIndex:(unsigned long long)arg1;
-- (id)strings;
-- (void)setStrings:(id)arg1;
-- (BOOL)stringValuesRemapped;
-- (id)intValuesForStrings;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 - (void)setIntValuesForStrings:(id)arg1;
+- (id)intValuesForStrings;
+- (BOOL)stringValuesRemapped;
+- (void)setStrings:(id)arg1;
+- (void)setStringsWithArray:(id)arg1;
+- (id)strings;
+- (id)stringAtIndex:(unsigned long long)arg1;
+- (unsigned long long)stringCount;
+- (void)setDefaultIntValue:(int)arg1;
+- (int)defaultIntValue;
+- (void)setStringValue:(id)arg1;
+- (void)setCurveStringValue:(id)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
+- (void)setIntValue:(int)arg1;
+- (void)setCurveIntValue:(int)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
+- (id)stringValue;
+- (id)stringValueAtTime:(CDStruct_198678f7)arg1;
+- (int)intValue;
+- (int)intValueAtTime:(CDStruct_198678f7)arg1;
+- (struct OZChannelEnum *)ozChannel;
 
 @end
 

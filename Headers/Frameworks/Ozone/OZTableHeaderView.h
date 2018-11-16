@@ -10,13 +10,13 @@
 {
 }
 
-- (id)init;
-- (void)_drawRect:(struct CGRect)arg1 liveResizeCacheCoveredArea:(struct CGRect)arg2;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)resetCursorRects;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
 - (BOOL)isOpaque;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)resetCursorRects;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)_drawRect:(struct CGRect)arg1 liveResizeCacheCoveredArea:(struct CGRect)arg2;
+- (id)init;
 
 @end
 

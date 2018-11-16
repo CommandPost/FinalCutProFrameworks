@@ -22,18 +22,18 @@
     NSPopUpButton *_pDisplayColorAsPopUp;
 }
 
-- (void)initializeFromDefaults;
-- (BOOL)isResizable;
-- (void)setPreviewBackgroundMode:(id)arg1;
-- (void)setPreviewBackgroundColor:(id)arg1;
-- (void)setTimelineThumbnailMode:(id)arg1;
-- (void)setFullViewOpacity:(id)arg1;
-- (void)setShowToolInfoFlag:(id)arg1;
-- (void)setShowColorFlag:(id)arg1;
-- (void)setShowCoordinatesFlag:(id)arg1;
-- (void)setShowFrameRateButton:(id)arg1;
-- (void)setDisplayColorMode:(id)arg1;
 - (void)updateCanvas;
+- (void)setDisplayColorMode:(id)arg1;
+- (void)setShowFrameRateButton:(id)arg1;
+- (void)setShowCoordinatesFlag:(id)arg1;
+- (void)setShowColorFlag:(id)arg1;
+- (void)setShowToolInfoFlag:(id)arg1;
+- (void)setFullViewOpacity:(id)arg1;
+- (void)setTimelineThumbnailMode:(id)arg1;
+- (void)setPreviewBackgroundColor:(id)arg1;
+- (void)setPreviewBackgroundMode:(id)arg1;
+- (BOOL)isResizable;
+- (void)initializeFromDefaults;
 
 @end
 

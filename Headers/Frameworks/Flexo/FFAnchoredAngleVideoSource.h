@@ -22,24 +22,24 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
-- (id)initWithProvider:(id)arg1 effectCount:(long long)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
-- (void)dealloc;
-- (id)anchoredObject;
-- (long long)effectCount;
-- (CDStruct_e83c9415)timeRange;
-- (id)nativeVideoProps;
-- (void)_invalidateSourceCacheForRange:(CDStruct_e83c9415)arg1;
-- (id)_source;
-- (void)_removeStreamFromOpenStreamsList:(id)arg1;
-- (void)rangeInvalidated:(id)arg1;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
-- (id)displayName;
-- (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (long long)timecodeDisplayDropFrame;
-- (double)preferredScaleFactorForQuality:(int)arg1;
-- (void)setAnglesCount:(long long)arg1 andOffset:(long long)arg2;
 - (void)_multiAngleOffsetOrCountHasChangedSelectorOnMainThread:(id)arg1;
+- (void)setAnglesCount:(long long)arg1 andOffset:(long long)arg2;
+- (double)preferredScaleFactorForQuality:(int)arg1;
+- (long long)timecodeDisplayDropFrame;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
+- (id)displayName;
+- (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (void)rangeInvalidated:(id)arg1;
+- (void)_removeStreamFromOpenStreamsList:(id)arg1;
+- (id)_source;
+- (void)_invalidateSourceCacheForRange:(CDStruct_e83c9415)arg1;
+- (id)nativeVideoProps;
+- (CDStruct_e83c9415)timeRange;
+- (long long)effectCount;
+- (id)anchoredObject;
+- (void)dealloc;
+- (id)initWithProvider:(id)arg1 effectCount:(long long)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
 
 @end
 

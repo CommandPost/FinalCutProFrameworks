@@ -8,8 +8,8 @@
 {
 }
 
-- (void)getEdgeMode:(unsigned int *)arg1 withInfo:(CDStruct_8b442eb9)arg2;
 - (void)filteredEdges:(char *)arg1 withInfo:(CDStruct_8b442eb9)arg2;
+- (void)getEdgeMode:(unsigned int *)arg1 withInfo:(CDStruct_8b442eb9)arg2;
 
 @end
 

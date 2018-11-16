@@ -17,29 +17,32 @@
     NSEvent *_event;
     NSDictionary *_eventDescription;
     struct CGPoint _currentPoint;
-    void *_reserved3;
+    unsigned int _isPressAndHoldEvent:1;
 }
 
-- (id)initWithDispatcher:(id)arg1 handler:(id)arg2 event:(id)arg3 partArray:(id)arg4;
-- (void)dealloc;
-- (void)_updateCurrentPoint;
-- (id)dispatcher;
-- (id)partArray;
-- (id)handler;
-- (id)event;
-- (void)setEventDescription:(id)arg1;
-- (id)eventDescription;
-- (id)nameFromEventSubtype:(short)arg1;
-- (id)eventName;
-- (id)modifierKeyNames;
-- (unsigned short)firstCharacter;
-- (id)characters;
-- (BOOL)isStartTrackingEvent;
-- (BOOL)isCanceled;
-- (struct CGPoint)currentPoint;
-- (id)hitSubpartName;
-- (id)topPartPath;
+- (id)valueForUndefinedKey:(id)arg1;
 - (id)description;
+- (id)topPartPath;
+- (id)hitSubpartName;
+- (struct CGPoint)currentPoint;
+- (BOOL)isCanceled;
+- (BOOL)isStartTrackingEvent;
+- (BOOL)isPressAndHoldEvent;
+- (BOOL)_isAMouseDownEvent;
+- (id)characters;
+- (unsigned short)firstCharacter;
+- (id)modifierKeyNames;
+- (id)eventName;
+- (id)nameFromEventSubtype:(short)arg1;
+- (id)eventDescription;
+- (void)setEventDescription:(id)arg1;
+- (id)event;
+- (id)handler;
+- (id)partArray;
+- (id)dispatcher;
+- (void)_updateCurrentPoint;
+- (void)dealloc;
+- (id)initWithDispatcher:(id)arg1 handler:(id)arg2 event:(id)arg3 partArray:(id)arg4 pressAndHold:(BOOL)arg5;
 
 @end
 

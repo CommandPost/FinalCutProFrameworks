@@ -11,10 +11,10 @@
     BOOL _emphasized;
 }
 
-- (BOOL)isOpaque;
-- (id)makeBackingLayer;
-- (void)_updateBackgroundColorForLayer:(id)arg1;
 @property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
+- (void)_updateBackgroundColorForLayer:(id)arg1;
+- (id)makeBackingLayer;
+- (BOOL)isOpaque;
 
 @end
 

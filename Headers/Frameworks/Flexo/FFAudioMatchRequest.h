@@ -14,10 +14,10 @@
     int _pass;
 }
 
-- (id)initWithRequestObject:(id)arg1 andPass:(int)arg2;
-- (void)dealloc;
 @property int pass; // @synthesize pass=_pass;
 @property(retain) FFAnchoredObject *object; // @synthesize object=_object;
+- (void)dealloc;
+- (id)initWithRequestObject:(id)arg1 andPass:(int)arg2;
 
 @end
 

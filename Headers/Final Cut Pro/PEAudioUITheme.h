@@ -10,9 +10,9 @@
 {
 }
 
-+ (unsigned long long)theme;
-+ (id)imageSourceForTheme:(int)arg1 atIndex:(unsigned int)arg2;
 + (id)imageSourceForTheme:(int)arg1 atIndex:(unsigned int)arg2 hasValues:(BOOL)arg3;
++ (id)imageSourceForTheme:(int)arg1 atIndex:(unsigned int)arg2;
++ (unsigned long long)theme;
 
 @end
 

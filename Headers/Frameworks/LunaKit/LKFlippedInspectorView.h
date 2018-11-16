@@ -10,13 +10,13 @@
 {
 }
 
-- (void)dealloc;
-- (BOOL)isFlipped;
-- (BOOL)autoresizesSubviews;
-- (void)setFrameSize:(struct CGSize)arg1;
-- (void)frameChanged:(id)arg1;
-- (void)willRemoveSubview:(id)arg1;
 - (void)didAddSubview:(id)arg1;
+- (void)willRemoveSubview:(id)arg1;
+- (void)frameChanged:(id)arg1;
+- (void)setFrameSize:(struct CGSize)arg1;
+- (BOOL)autoresizesSubviews;
+- (BOOL)isFlipped;
+- (void)dealloc;
 
 @end
 

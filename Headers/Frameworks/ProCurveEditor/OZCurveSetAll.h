@@ -10,9 +10,9 @@
 {
 }
 
-- (id)initWithName:(id)arg1 appDelegate:(id)arg2;
-- (void)filterList;
 - (void)refresh:(unsigned int)arg1 snapshot:(BOOL)arg2;
+- (void)filterList;
+- (id)initWithName:(id)arg1 appDelegate:(id)arg2;
 
 @end
 

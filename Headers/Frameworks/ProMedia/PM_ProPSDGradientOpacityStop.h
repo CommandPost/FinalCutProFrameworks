@@ -13,15 +13,15 @@
     double opacity;
 }
 
-+ (void)initialize;
 + (id)opacityStopWithLocation:(double)arg1 opacity:(double)arg2;
-- (id)initWithLocation:(double)arg1 opacity:(double)arg2;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (double)opacity;
-- (double)opacityLocation;
-- (BOOL)isOpacityStop;
++ (void)initialize;
 - (id)description;
+- (BOOL)isOpacityStop;
+- (double)opacityLocation;
+- (double)opacity;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithLocation:(double)arg1 opacity:(double)arg2;
 
 @end
 

@@ -15,16 +15,16 @@ __attribute__((visibility("hidden")))
     FFDataListTableView *_tableView;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (void)movePlayheadToRow:(long long)arg1 position:(int)arg2 animate:(BOOL)arg3;
-- (struct CGRect)playheadFrameForRow:(long long)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)drawPlayheadInFrame:(struct CGRect)arg1;
 @property(retain, nonatomic) FFDataListTableView *tableView; // @synthesize tableView=_tableView;
 @property(nonatomic) long long playheadRow; // @synthesize playheadRow=_playheadRow;
+- (void)drawPlayheadInFrame:(struct CGRect)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (struct CGRect)playheadFrameForRow:(long long)arg1;
+- (void)movePlayheadToRow:(long long)arg1 position:(int)arg2 animate:(BOOL)arg3;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

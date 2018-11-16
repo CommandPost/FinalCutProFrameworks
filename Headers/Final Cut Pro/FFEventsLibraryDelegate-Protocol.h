@@ -6,35 +6,37 @@
 
 #import "FFPersistentModuleDelegate.h"
 
+@class FFAnchoredObject, FFAnchoredStack, FFContext, FFEditorModule, FFEventsSuperModule, FFMarkerLayer, FFSettingsModule, NSArray, NSSet, NSURL;
+
 @protocol FFEventsLibraryDelegate <FFPersistentModuleDelegate>
-- (BOOL)canDisplayURL:(id)arg1;
-- (void)displayURL:(id)arg1;
-- (BOOL)canBeginSkimming;
-- (BOOL)canSkimWithAudio;
-- (BOOL)canBeginPlaying;
-- (void)makeSequenceActive:(id)arg1;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
-- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 loadingBlock:(CDUnknownBlockType)arg4 unloadingBlock:(CDUnknownBlockType)arg5;
-- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
-- (void)stopSkimmingForOwner:(id)arg1;
-- (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
-- (void)organizerModule:(id)arg1 didSelectItems:(id)arg2;
-- (id)editorModule;
-- (void)stopUsingMedia:(id)arg1;
-- (id)selectionOwner;
-- (id)timelineSelection;
-- (void)willBeginRelinkingForOrganizerModule:(id)arg1;
 - (void)didFinishRelinkingForOrganizerModule:(id)arg1;
+- (void)willBeginRelinkingForOrganizerModule:(id)arg1;
+- (NSArray *)timelineSelection;
+- (id)selectionOwner;
+- (void)stopUsingMedia:(NSSet *)arg1;
+- (FFEditorModule *)editorModule;
+- (void)organizerModule:(FFEventsSuperModule *)arg1 didSelectItems:(NSArray *)arg2;
+- (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
+- (void)stopSkimmingForOwner:(id)arg1;
+- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
+- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 loadingBlock:(void (^)(FFPlayerModule *))arg4 unloadingBlock:(void (^)(void))arg5;
+- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 unloadingBlock:(void (^)(void))arg4;
+- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3;
+- (void)makeSequenceActive:(id)arg1;
+- (BOOL)canBeginPlaying;
+- (BOOL)canSkimWithAudio;
+- (BOOL)canBeginSkimming;
+- (void)displayURL:(NSURL *)arg1;
+- (BOOL)canDisplayURL:(NSURL *)arg1;
 
 @optional
-- (void)openStack:(id)arg1;
-- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
-- (void)showMarkerEditorForMarkerLayer:(id)arg1 object:(id)arg2;
-- (void)hideMarkerEditor;
-- (BOOL)markerEditorIsShown;
-- (void)setKeywordEditorVisible:(BOOL)arg1;
-- (void)openSettingsWithModule:(id)arg1;
 - (void)showProjectLibrary;
+- (void)openSettingsWithModule:(FFSettingsModule *)arg1;
+- (void)setKeywordEditorVisible:(BOOL)arg1;
+- (BOOL)markerEditorIsShown;
+- (void)hideMarkerEditor;
+- (void)showMarkerEditorForMarkerLayer:(FFMarkerLayer *)arg1 object:(FFAnchoredObject *)arg2;
+- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(FFAnchoredObject *)arg2;
+- (void)openStack:(FFAnchoredStack *)arg1;
 @end
 

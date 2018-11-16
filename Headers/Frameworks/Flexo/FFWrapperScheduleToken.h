@@ -13,14 +13,14 @@ __attribute__((visibility("hidden")))
     unsigned int _knownClearFlags;
 }
 
-- (id)initWithStream:(id)arg1 andSubToken:(id)arg2;
-- (void)dealloc;
-- (unsigned int)scheduleStatusInformation;
-- (_Bool)areStatusFlagsClear:(unsigned int)arg1;
-- (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
-- (_Bool)hintWillImageSoon;
-- (void)hintCacheData:(unsigned int)arg1;
 - (id)description;
+- (void)hintCacheData:(unsigned int)arg1;
+- (_Bool)hintWillImageSoon;
+- (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
+- (_Bool)areStatusFlagsClear:(unsigned int)arg1;
+- (unsigned int)scheduleStatusInformation;
+- (void)dealloc;
+- (id)initWithStream:(id)arg1 andSubToken:(id)arg2;
 
 @end
 

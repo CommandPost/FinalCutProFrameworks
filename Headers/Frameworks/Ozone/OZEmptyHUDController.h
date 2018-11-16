@@ -10,9 +10,9 @@
 {
 }
 
-- (BOOL)loadView;
-- (BOOL)isEmpty;
 - (id)title;
+- (BOOL)isEmpty;
+- (BOOL)loadView;
 
 @end
 

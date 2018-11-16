@@ -10,19 +10,19 @@
 {
 }
 
-- (id)init;
-- (void)awakeFromNib;
-- (BOOL)wantsFirstResponder;
-- (BOOL)acceptsFirstResponder;
-- (BOOL)wantsHeaderBar;
-- (unsigned long long)revealAnimationStyle;
-- (struct CGSize)viewMinSize;
-- (struct CGSize)viewMaxSize;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)moduleDidHide;
-- (void)moduleDidUnhide;
 - (void)resetOverloadIndicators;
+- (void)moduleDidUnhide;
+- (void)moduleDidHide;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (struct CGSize)viewMaxSize;
+- (struct CGSize)viewMinSize;
+- (unsigned long long)revealAnimationStyle;
+- (BOOL)wantsHeaderBar;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)wantsFirstResponder;
+- (void)awakeFromNib;
+- (id)init;
 
 @end
 

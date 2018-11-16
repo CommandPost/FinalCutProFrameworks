@@ -16,17 +16,17 @@
     OZMiniCurveEditor *_pMiniCurveEditor;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
-- (void)dealloc;
-- (void)setMiniCurveEditor:(id)arg1;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
-- (void)didTwiddle:(BOOL)arg1;
-- (void)update;
-- (void)initResetButton;
-- (void)enable;
-- (void)disable;
-- (void)resetChannel:(id)arg1;
 - (id)getMiniCurveEditor;
+- (void)resetChannel:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)initResetButton;
+- (void)update;
+- (void)didTwiddle:(BOOL)arg1;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (void)setMiniCurveEditor:(id)arg1;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
 
 @end
 

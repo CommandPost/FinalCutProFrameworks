@@ -10,9 +10,9 @@
 {
 }
 
-+ (void)initialize;
-+ (id)displayName;
 + (id)toolbarFacet;
++ (id)displayName;
++ (void)initialize;
 - (BOOL)handlesSelection;
 
 @end

@@ -17,12 +17,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _maskIndex;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)didBuildUI;
-- (void)update;
-- (void)toggleDisclosure:(id)arg1;
 - (void)toggleMask:(id)arg1;
+- (void)toggleDisclosure:(id)arg1;
+- (void)update;
+- (void)didBuildUI;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

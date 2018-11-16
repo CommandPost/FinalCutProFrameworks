@@ -4,7 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSView;
+
 @protocol FxCustomParameterViewHost
-- (id)createViewForParm:(unsigned int)arg1;
+- (NSView *)createViewForParm:(unsigned int)arg1;
 @end
 

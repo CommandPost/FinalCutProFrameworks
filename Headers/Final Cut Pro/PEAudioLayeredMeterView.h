@@ -17,16 +17,16 @@
     BOOL _miniMode;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)addMeterSublayers;
-@property(nonatomic) int numberOfChannels; // @synthesize numberOfChannels=_numberOfChannels;
-- (void)setMeterValue:(double)arg1 forChannel:(double)arg2;
-@property(nonatomic) BOOL playing; // @synthesize playing=_playing;
-- (void)resetOverloadIndicator;
-- (void)mouseDown:(id)arg1;
-- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
-- (void)awakeFromNib;
 @property(nonatomic) BOOL miniMode; // @synthesize miniMode=_miniMode;
+@property(nonatomic) BOOL playing; // @synthesize playing=_playing;
+@property(nonatomic) int numberOfChannels; // @synthesize numberOfChannels=_numberOfChannels;
+- (void)awakeFromNib;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
+- (void)mouseDown:(id)arg1;
+- (void)resetOverloadIndicator;
+- (void)setMeterValue:(double)arg1 forChannel:(double)arg2;
+- (void)addMeterSublayers;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

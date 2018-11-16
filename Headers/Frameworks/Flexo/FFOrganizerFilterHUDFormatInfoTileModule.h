@@ -16,14 +16,14 @@ __attribute__((visibility("hidden")))
     LKTextField *_textField;
 }
 
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)setFilterDict:(id)arg1;
-- (id)filterDict;
-- (void)controlTextDidChange:(id)arg1;
-- (void)_showControlsForFormatInfo;
-- (void)formatInfoPopupUpdated:(id)arg1;
 - (id)tileTypeFacet;
+- (void)formatInfoPopupUpdated:(id)arg1;
+- (void)_showControlsForFormatInfo;
+- (void)controlTextDidChange:(id)arg1;
+- (id)filterDict;
+- (void)setFilterDict:(id)arg1;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

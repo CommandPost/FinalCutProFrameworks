@@ -6,73 +6,84 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredObject;
+#import "FFBackgroundTaskTarget.h"
 
-@interface FFEnhanceAudioManager : NSObject
+@class FFEffectStack;
+
+@interface FFEnhanceAudioManager : NSObject <FFBackgroundTaskTarget>
 {
-    FFAnchoredObject *_object;
+    FFEffectStack *_effectStack;
     id _delegate;
 }
 
-+ (id)effectIdentifierForAnalysisOperation:(int)arg1;
 + (void)setupEqualizationMenu:(id)arg1;
-+ (void)setPresetIDOnMainThread:(id)arg1;
-+ (void)updateExistingEffectFromSavedEffect:(id)arg1;
++ (void)autoEnhanceAudioOnEffectStack:(id)arg1 aggressively:(BOOL)arg2;
++ (void)_cleanupSlightly:(id)arg1 onTask:(id)arg2;
++ (void)_cleanupAggressively:(id)arg1 onTask:(id)arg2;
++ (void)_autoEnhanceAudioOnEffectStack:(id)arg1 aggressively:(BOOL)arg2 bgTask:(id)arg3;
++ (void)_setEnabled:(BOOL)arg1 forAnalyzingEffect:(id)arg2;
++ (void)_fireRangeInvalidationNotificationOnMainThread:(id)arg1;
++ (BOOL)_hasAutoEnhanceEffectsForEffectStack:(id)arg1;
 + (void)analyzeForCleanup:(id)arg1 onTask:(id)arg2;
-+ (id)getAnchoredObjectFromObject:(id)arg1;
-+ (BOOL)objectValidForAnalysis:(id)arg1;
-+ (id)getAudioAnchoredObjectsFromObjects:(id)arg1;
-+ (BOOL)fixAudioProblems:(id)arg1 error:(id *)arg2;
-+ (void)enhanceAudio:(id)arg1 aggressively:(BOOL)arg2;
-+ (void)cleanupAggressively:(id)arg1 onTask:(id)arg2;
-+ (void)cleanupSlightly:(id)arg1 onTask:(id)arg2;
-+ (void)_addEffectForEnableOnObject:(id)arg1 forAnalysisOperation:(int)arg2;
-+ (void)_addEffectOnMainThread:(id)arg1;
-+ (void)enableCleanupEffects:(id)arg1 aggressively:(BOOL)arg2;
-- (id)initWithAnchoredObject:(id)arg1 andDelegate:(id)arg2;
-- (void)startAnalysis;
-- (BOOL)hasAnalysis;
-- (int)warningState;
-- (int)warningStateForAnalysisOperation:(int)arg1;
-- (id)facetForWarningState:(int)arg1;
-- (void)pausedTask:(id)arg1;
-- (BOOL)fixAudioProblemsWithError:(id *)arg1;
-- (BOOL)setEqualizationPresetChannelValue:(int)arg1 addIfNeeded:(BOOL)arg2 error:(id *)arg3;
-- (int)equalizationPresetChannelValue;
-- (BOOL)equalizationEnabled;
++ (int)renderAudioToFilePath:(id)arg1 atStartTime:(CDStruct_1b6d18a9)arg2 withDuration:(CDStruct_1b6d18a9)arg3 usingStream:(id)arg4 onTask:(id)arg5 withTaskScale:(float)arg6;
++ (void)_postAnalysisSyncUpOnEffectStack:(id)arg1;
++ (void)_updateExistingEffect:(id)arg1 FromAnalysisEffect:(id)arg2;
++ (void)_setEffectStateFromDictionary:(id)arg1;
++ (void)_setPresetWithIDFromDictionary:(id)arg1;
++ (void)_addEffectFromDictionary:(id)arg1;
++ (id)getAudioEffectsFromObjects:(id)arg1;
++ (id)getAudioEffectsFromObject:(id)arg1;
++ (BOOL)_effectStackValidForAnalysis:(id)arg1;
++ (id)effectIDForAnalysisOperation:(int)arg1;
+@property(readonly, nonatomic) id <FFEnhanceAudioDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) FFEffectStack *effectStack; // @synthesize effectStack=_effectStack;
+- (void)completedMatchOnSelection:(id)arg1;
+- (BOOL)matchAnalyzing;
+- (BOOL)matchEdited;
+- (id)matchEffectState:(BOOL)arg1;
+- (BOOL)hasMatchData;
+- (BOOL)matching;
+- (void)enterMatchMode:(id)arg1;
 - (void)openEqualizationCustomUI:(id)arg1;
-- (BOOL)enableLoudness:(long long)arg1 error:(id *)arg2;
-- (BOOL)setLoudnessAmount:(double)arg1 error:(id *)arg2;
-- (double)loudnessAmount;
-- (BOOL)setLoudnessUniformity:(double)arg1 error:(id *)arg2;
-- (double)loudnessUniformity;
-- (BOOL)loudnessEnabled;
-- (BOOL)enableNoiseReduction:(long long)arg1 error:(id *)arg2;
-- (BOOL)setNoiseReductionAmount:(double)arg1 error:(id *)arg2;
-- (double)noiseReductionAmount;
-- (BOOL)noiseReductionEnabled;
+- (BOOL)eqEdited;
+- (id)equalizationPresetStringValue;
+- (int)equalizationPresetChannelValue;
+- (BOOL)setEqualizationPresetChannelValue:(int)arg1 error:(id *)arg2;
+- (BOOL)humEnabled;
+- (int)humFrequency;
 - (BOOL)setHumFrequency:(int)arg1 error:(id *)arg2;
 - (BOOL)enableHumReduction:(long long)arg1 error:(id *)arg2;
-- (int)humFrequency;
-- (BOOL)humEnabled;
-- (void)enterMatchMode:(id)arg1;
-- (BOOL)matching;
-- (BOOL)matchAnalyzing;
-- (void)completedMatchOnSelection:(id)arg1;
-- (void)completedEqualization;
-- (void)loadPresetForAnalysisOperation:(int)arg1;
-- (void)savePresetForAnalysisOperation:(int)arg1;
+- (BOOL)noiseReductionEnabled;
+- (double)noiseReductionAmount;
+- (BOOL)setNoiseReductionAmount:(double)arg1 error:(id *)arg2;
+- (BOOL)enableNoiseReduction:(long long)arg1 error:(id *)arg2;
+- (BOOL)loudnessEnabled;
+- (double)loudnessUniformity;
+- (BOOL)setLoudnessUniformity:(double)arg1 error:(id *)arg2;
+- (double)loudnessAmount;
+- (BOOL)setLoudnessAmount:(double)arg1 error:(id *)arg2;
+- (BOOL)enableLoudness:(long long)arg1 error:(id *)arg2;
+- (int)_getParameterEnumValueFromEffect:(id)arg1 atIndex:(unsigned long long)arg2;
+- (BOOL)_setParameterEnumValue:(int)arg1 forEffect:(id)arg2 atIndex:(unsigned long long)arg3;
+- (BOOL)_setParameterBoolValue:(_Bool)arg1 forEffect:(id)arg2 atIndex:(unsigned long long)arg3;
+- (double)_getParameterDoubleValueFromEffect:(id)arg1 atIndex:(unsigned long long)arg2;
+- (BOOL)_setParameterDoubleValue:(double)arg1 forEffect:(id)arg2 atIndex:(unsigned long long)arg3;
+- (BOOL)_setEnabled:(BOOL)arg1 forEffectID:(id)arg2 onEffectStack:(id)arg3;
+- (void)pausedTask:(id)arg1;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
+- (id)facetForWarningState:(int)arg1;
+- (int)warningStateForAnalysisOperation:(int)arg1;
+- (int)warningState;
 - (BOOL)_problemsCorrected;
-- (void)_kickoffAnalysis;
-- (id)_effectForAnalysisOperation:(int)arg1 addIfNeeded:(BOOL)arg2;
-- (id)_savedEffectForAnalysisOperation:(int)arg1;
-- (int)_savedEqualizationPresetChannel;
-- (void)_setSavedEqualizationPresetChannel:(int)arg1;
-- (void)_analyzeForCleanup:(id)arg1 onTask:(id)arg2;
-- (void)_fireRangeInvalidationNotificationOnMainThread:(id)arg1;
 - (BOOL)_hasOnlyMatchEQData;
-@property(readonly, nonatomic) id <FFEnhanceAudioDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain) FFAnchoredObject *object; // @synthesize object=_object;
+- (BOOL)_hasAnalysis;
+- (void)startAnalysis;
+- (void)dealloc;
+- (id)initWithEffectStack:(id)arg1 andDelegate:(id)arg2;
+- (void)_kickoffAnalysis;
+- (void)_analyzeForCleanup:(id)arg1 onTask:(id)arg2;
+- (id)_effectForAnalysisOperation:(int)arg1 addIfNeeded:(BOOL)arg2;
 
 @end
 

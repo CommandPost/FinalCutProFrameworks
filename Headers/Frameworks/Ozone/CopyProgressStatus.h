@@ -15,11 +15,11 @@
     double _percentComplete;
 }
 
-- (id)initWithTotalCompleted:(id)arg1 of:(id)arg2 percent:(double)arg3;
-- (void)dealloc;
-- (id)totalCopied;
-- (id)totalSize;
 - (double)percentComplete;
+- (id)totalSize;
+- (id)totalCopied;
+- (void)dealloc;
+- (id)initWithTotalCompleted:(id)arg1 of:(id)arg2 percent:(double)arg3;
 
 @end
 

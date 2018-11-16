@@ -17,12 +17,12 @@ __attribute__((visibility("hidden")))
     } lock;
 }
 
-- (id)init;
-- (void)dealloc;
-- (void)lock;
-- (void)lockForWriting;
-- (void)lockForReading;
 - (void)unlock;
+- (void)lockForReading;
+- (void)lockForWriting;
+- (void)lock;
+- (void)dealloc;
+- (id)init;
 
 @end
 

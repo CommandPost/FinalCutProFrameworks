@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     LKPopUpButton *_clipTypePopUpButton;
 }
 
-- (void)awakeFromNib;
-- (void)clipTypeFilterMenu:(id)arg1;
-- (void)setFilterDict:(id)arg1;
-- (id)filterDict;
 - (id)tileTypeFacet;
+- (id)filterDict;
+- (void)setFilterDict:(id)arg1;
+- (void)clipTypeFilterMenu:(id)arg1;
+- (void)awakeFromNib;
 
 @end
 

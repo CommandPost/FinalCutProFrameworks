@@ -17,22 +17,22 @@
     struct vector<double, std::allocator<double>> *_pMouseDownValues;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (id)firstKeyView;
-- (id)lastKeyView;
-- (id)connectKeyViewsRec:(id)arg1;
-- (void)startDialAction:(id)arg1;
-- (void)endDialAction:(id)arg1;
-- (void)startSegmentedScrubberAction:(id)arg1;
-- (void)endSegmentedScrubberAction:(id)arg1;
-- (double)renormalize:(double)arg1;
-- (BOOL)areAllChannelsEqual;
-- (struct OZChannelAngle *)angleChannelFromChannel:(struct OZChannelBase *)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)update;
-- (void)enable;
-- (void)disable;
 - (void)setChannelValue:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)notify:(unsigned int)arg1;
+- (struct OZChannelAngle *)angleChannelFromChannel:(struct OZChannelBase *)arg1;
+- (BOOL)areAllChannelsEqual;
+- (double)renormalize:(double)arg1;
+- (void)endSegmentedScrubberAction:(id)arg1;
+- (void)startSegmentedScrubberAction:(id)arg1;
+- (void)endDialAction:(id)arg1;
+- (void)startDialAction:(id)arg1;
+- (id)connectKeyViewsRec:(id)arg1;
+- (id)lastKeyView;
+- (id)firstKeyView;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

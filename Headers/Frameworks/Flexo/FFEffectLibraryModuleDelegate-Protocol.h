@@ -6,15 +6,17 @@
 
 #import "FFArrangedItemsModuleDelegate.h"
 
+@class FFEffect, NSArray, NSPasteboard, NSString;
+
 @protocol FFEffectLibraryModuleDelegate <FFArrangedItemsModuleDelegate>
 
 @optional
-- (BOOL)module:(id)arg1 addItems:(id)arg2 toPasteboard:(id)arg3;
-- (void)module:(id)arg1 didDoubleClickWithEffectID:(id)arg2;
-- (void)module:(id)arg1 didDoubleClickWithEffect:(id)arg2;
-- (void)module:(id)arg1 setCategoryTextField:(id)arg2;
-- (void)module:(id)arg1 setItemCountTextField:(id)arg2;
-- (void)toggleSidebar:(id)arg1;
 - (BOOL)isSidebarHidden;
+- (void)toggleSidebar:(id)arg1;
+- (void)module:(id)arg1 setItemCountTextField:(NSString *)arg2;
+- (void)module:(id)arg1 setCategoryTextField:(NSString *)arg2;
+- (void)module:(id)arg1 didDoubleClickWithEffect:(FFEffect *)arg2;
+- (void)module:(id)arg1 didDoubleClickWithEffectID:(id)arg2;
+- (BOOL)module:(id)arg1 addItems:(NSArray *)arg2 toPasteboard:(NSPasteboard *)arg3;
 @end
 

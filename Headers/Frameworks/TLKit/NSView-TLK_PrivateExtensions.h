@@ -7,7 +7,7 @@
 #import "NSView.h"
 
 @interface NSView (TLK_PrivateExtensions)
-- (struct CGPoint)_timelineView_autoscrollAmountForWindowPoint:(struct CGPoint)arg1;
 - (struct CGPoint)_tlkit_autoscrollAmountForEvent:(id)arg1;
+- (struct CGPoint)_timelineView_autoscrollAmountForWindowPoint:(struct CGPoint)arg1;
 @end
 

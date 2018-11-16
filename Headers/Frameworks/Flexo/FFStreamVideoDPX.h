@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
     FFMutableVideoProps *_videoProps;
 }
 
-- (void)dealloc;
-- (id)videoProps;
-- (id)pixelTransformToField1ForQuality:(int)arg1;
+- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
 - (id)pixelTransformToField2ForQuality:(int)arg1;
-- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(struct CGRect *)arg5;
+- (id)pixelTransformToField1ForQuality:(int)arg1;
+- (id)videoProps;
+- (void)dealloc;
 
 @end
 

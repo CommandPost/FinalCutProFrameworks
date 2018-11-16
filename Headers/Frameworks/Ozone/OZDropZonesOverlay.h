@@ -6,7 +6,7 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class NSMutableArray, NSMutableDictionary, PGDrawableTexture;
+@class NSMutableArray, NSMutableDictionary;
 
 @interface OZDropZonesOverlay : OZOverlay
 {
@@ -15,25 +15,26 @@
     unsigned int _hitNodeID;
     _Bool _isDragging;
     NSMutableDictionary *_textAttribs;
-    PGDrawableTexture *_textTexture;
+    struct PCPtr<POMultiResStringTexture> _stringTexture;
     NSMutableArray *_objectsArray;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (_Bool)isEnabled;
-- (_Bool)isDragging;
-- (void)setIsDragging:(_Bool)arg1;
-- (void)enable:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
-- (void)disable;
-- (void)draw;
-- (int)getDrawingOrder;
-- (struct OZObjectManipulator *)hitCheckNode:(const PCVector2_7e488b7d *)arg1;
-- (int)hitCheck:(id)arg1;
-- (int)hitCheckPoint:(const PCVector2_7e488b7d *)arg1;
-- (void)updateDropZonesArray:(const struct OZRenderState *)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)drawOutlineHighlight:(PCVector2_79efa81a *)arg1 c2:(PCVector2_79efa81a *)arg2 c3:(PCVector2_79efa81a *)arg3 c4:(PCVector2_79efa81a *)arg4 color:(const struct PCColor *)arg5;
-- (void)drawName:(id)arg1 atPoint:(PCVector2_79efa81a *)arg2;
+- (void)updateDropZonesArray:(const struct OZRenderState *)arg1;
+- (int)hitCheckPoint:(const PCVector2_7e488b7d *)arg1;
+- (int)hitCheck:(id)arg1;
+- (struct OZObjectManipulator *)hitCheckNode:(const PCVector2_7e488b7d *)arg1;
+- (int)getDrawingOrder;
+- (void)draw;
+- (void)disable;
+- (void)enable:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
+- (void)setIsDragging:(_Bool)arg1;
+- (_Bool)isDragging;
+- (_Bool)isEnabled;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

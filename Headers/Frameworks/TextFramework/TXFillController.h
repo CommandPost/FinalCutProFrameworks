@@ -25,32 +25,32 @@
     unsigned int _colorChannelID;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 fillChannelID:(unsigned int)arg3 colorChannelID:(unsigned int)arg4;
-- (void)dealloc;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (BOOL)hasControls;
-- (void)setChannelValue:(id)arg1;
-- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)updatePopUpMenu:(BOOL)arg1;
-- (int)valueForChannel:(struct OZChannelEnum *)arg1;
-- (void)mapValue:(int)arg1 toDisplayValue:(int)arg2;
-- (void)enableItemForValue:(unsigned int)arg1 isEnabled:(BOOL)arg2;
-- (BOOL)validateMenuItem:(id)arg1;
-- (struct OZChannelEnum *)fillChannel:(struct OZChannelFolder *)arg1;
-- (struct OZChannelColorNoAlpha *)colorChannel:(struct OZChannelFolder *)arg1;
-- (void)aboutToChangeColorChannel;
-- (void)didChangeColorChannel;
-- (void)willSetColorChannelValue;
-- (void)didSetColorChannelValue;
-- (void)setChannelColor:(struct PCColor *)arg1;
-- (void)setInhibitChannelChange;
-- (void)startColorChange:(id)arg1;
-- (void)endColorChange:(id)arg1;
-- (void)setColorValue:(id)arg1;
-- (void)updateColorWell;
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
+- (void)updateColorWell;
+- (void)setColorValue:(id)arg1;
+- (void)endColorChange:(id)arg1;
+- (void)startColorChange:(id)arg1;
+- (void)setInhibitChannelChange;
+- (void)setChannelColor:(struct PCColor *)arg1;
+- (void)didSetColorChannelValue;
+- (void)willSetColorChannelValue;
+- (void)didChangeColorChannel;
+- (void)aboutToChangeColorChannel;
+- (struct OZChannelColorNoAlpha *)colorChannel:(struct OZChannelFolder *)arg1;
+- (struct OZChannelEnum *)fillChannel:(struct OZChannelFolder *)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)enableItemForValue:(unsigned int)arg1 isEnabled:(BOOL)arg2;
+- (void)mapValue:(int)arg1 toDisplayValue:(int)arg2;
+- (int)valueForChannel:(struct OZChannelEnum *)arg1;
+- (void)updatePopUpMenu:(BOOL)arg1;
+- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_198678f7)arg3;
+- (void)setChannelValue:(id)arg1;
+- (BOOL)hasControls;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 fillChannelID:(unsigned int)arg3 colorChannelID:(unsigned int)arg4;
 
 @end
 

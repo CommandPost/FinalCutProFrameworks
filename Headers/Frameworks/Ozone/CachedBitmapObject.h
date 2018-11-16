@@ -8,12 +8,12 @@
 
 @interface CachedBitmapObject : NSObject
 {
-    shared_ptr_0fec1de5 *_bitmap;
+    shared_ptr_0279a08d *_bitmap;
 }
 
-- (id)initWithBitmap:(const shared_ptr_0fec1de5 *)arg1;
+- (shared_ptr_0279a08d)bitmap;
 - (void)dealloc;
-- (shared_ptr_0fec1de5)bitmap;
+- (id)initWithBitmap:(const shared_ptr_0279a08d *)arg1;
 
 @end
 

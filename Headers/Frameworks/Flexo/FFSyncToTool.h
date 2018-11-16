@@ -12,12 +12,12 @@
 
 + (void)initialize;
 + (id)TLKEventHandlerID;
-- (void)becomeActiveTool;
-- (void)resignActiveTool;
-- (void)_syncTo_didUndo:(id)arg1;
 - (void)_syncTo_didRedo:(id)arg1;
-- (void)willSetAsHandlerForTimeline:(id)arg1;
+- (void)_syncTo_didUndo:(id)arg1;
+- (void)resignActiveTool;
+- (void)becomeActiveTool;
 - (void)didRemoveAsHandlerForTimeline:(id)arg1;
+- (void)willSetAsHandlerForTimeline:(id)arg1;
 
 @end
 

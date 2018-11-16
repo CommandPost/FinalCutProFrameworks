@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
     BOOL _selected;
 }
 
-- (void)setOwner:(id)arg1;
-- (void)setSegmentedControl:(id)arg1 segmentIndex:(unsigned long long)arg2;
-@property BOOL selected;
 @property SEL action; // @synthesize action=_action;
 @property id target; // @synthesize target=_target;
+@property BOOL selected;
+- (void)setSegmentedControl:(id)arg1 segmentIndex:(unsigned long long)arg2;
+- (void)setOwner:(id)arg1;
 
 @end
 

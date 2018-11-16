@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
     BOOL _useColons;
 }
 
-- (id)init;
-- (id)stringForObjectValue:(id)arg1;
-- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
-- (void)setUseColons:(BOOL)arg1;
 - (BOOL)useColons;
+- (void)setUseColons:(BOOL)arg1;
+- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
+- (id)stringForObjectValue:(id)arg1;
+- (id)init;
 
 @end
 

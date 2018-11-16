@@ -5,6 +5,6 @@
 //
 
 @protocol FFMD5Protocol
-- (CDStruct_60067b7e)audioMD5:(int)arg1;
+- (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 @end
 

@@ -20,24 +20,24 @@ __attribute__((visibility("hidden")))
     FFEffectStack *_effectStack;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)updatePlaceholderThumbnail;
-- (void)activeToolChanged:(id)arg1;
-- (void)update;
-- (void)enable;
-- (void)disable;
-- (void)setHasFocusUI:(id)arg1;
-- (BOOL)requiresAudio;
-- (BOOL)requiresVideo;
-- (void)setChannelAnchoredObject:(id)arg1;
-- (void)setFromPasteboard:(id)arg1;
-- (void)paste:(id)arg1;
-- (void)clearSelection:(id)arg1;
-- (void)pick:(id)arg1;
-- (void)mouseEnteredRow:(id)arg1;
-- (void)mouseExitedRow:(id)arg1;
 - (void)_effectsChanged:(id)arg1;
+- (void)mouseExitedRow:(id)arg1;
+- (void)mouseEnteredRow:(id)arg1;
+- (void)pick:(id)arg1;
+- (void)clearSelection:(id)arg1;
+- (void)paste:(id)arg1;
+- (void)setFromPasteboard:(id)arg1;
+- (void)setChannelAnchoredObject:(id)arg1;
+- (BOOL)requiresVideo;
+- (BOOL)requiresAudio;
+- (void)setHasFocusUI:(id)arg1;
+- (void)disable;
+- (void)enable;
+- (void)update;
+- (void)activeToolChanged:(id)arg1;
+- (void)updatePlaceholderThumbnail;
+- (void)dealloc;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

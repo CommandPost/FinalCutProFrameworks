@@ -16,23 +16,23 @@
     BOOL _requestPending;
 }
 
-+ (void)displayImmediately:(BOOL)arg1;
-+ (void)delayedSharedInstanceRelease;
 + (void)closeIfLoaded;
-- (id)windowNibName;
-- (void)showBlankPage;
-- (BOOL)isClosing;
-- (void)close:(id)arg1;
-- (void)webView:(id)arg1 decidePolicyForNewWindowAction:(id)arg2 request:(id)arg3 newFrameName:(id)arg4 decisionListener:(id)arg5;
-- (void)windowWillClose:(id)arg1;
-- (void)a_moreDetails:(id)arg1;
-- (void)showOfflinePage;
-- (void)webView:(id)arg1 didReceiveTitle:(id)arg2 forFrame:(id)arg3;
-- (void)webView:(id)arg1 didFailProvisionalLoadWithError:(id)arg2 forFrame:(id)arg3;
-- (void)webView:(id)arg1 didFailLoadWithError:(id)arg2 forFrame:(id)arg3;
-- (void)webView:(id)arg1 didFinishLoadForFrame:(id)arg2;
-- (id)initAndDisplayImmediately:(BOOL)arg1;
++ (void)delayedSharedInstanceRelease;
++ (void)displayImmediately:(BOOL)arg1;
 - (void)dealloc;
+- (id)initAndDisplayImmediately:(BOOL)arg1;
+- (void)webView:(id)arg1 didFinishLoadForFrame:(id)arg2;
+- (void)webView:(id)arg1 didFailLoadWithError:(id)arg2 forFrame:(id)arg3;
+- (void)webView:(id)arg1 didFailProvisionalLoadWithError:(id)arg2 forFrame:(id)arg3;
+- (void)webView:(id)arg1 didReceiveTitle:(id)arg2 forFrame:(id)arg3;
+- (void)showOfflinePage;
+- (void)a_moreDetails:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)webView:(id)arg1 decidePolicyForNewWindowAction:(id)arg2 request:(id)arg3 newFrameName:(id)arg4 decisionListener:(id)arg5;
+- (void)close:(id)arg1;
+- (BOOL)isClosing;
+- (void)showBlankPage;
+- (id)windowNibName;
 
 @end
 

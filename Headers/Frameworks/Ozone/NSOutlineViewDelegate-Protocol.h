@@ -6,44 +6,46 @@
 
 #import "NSControlTextEditingDelegate.h"
 
+@class NSCell, NSEvent, NSIndexSet, NSNotification, NSOutlineView, NSString, NSTableColumn, NSTableRowView, NSView;
+
 @protocol NSOutlineViewDelegate <NSControlTextEditingDelegate>
 
 @optional
-- (id)outlineView:(id)arg1 viewForTableColumn:(id)arg2 item:(id)arg3;
-- (id)outlineView:(id)arg1 rowViewForItem:(id)arg2;
-- (void)outlineView:(id)arg1 didAddRowView:(id)arg2 forRow:(long long)arg3;
-- (void)outlineView:(id)arg1 didRemoveRowView:(id)arg2 forRow:(long long)arg3;
-- (void)outlineView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 item:(id)arg4;
-- (BOOL)outlineView:(id)arg1 shouldEditTableColumn:(id)arg2 item:(id)arg3;
-- (BOOL)selectionShouldChangeInOutlineView:(id)arg1;
-- (BOOL)outlineView:(id)arg1 shouldSelectItem:(id)arg2;
-- (id)outlineView:(id)arg1 selectionIndexesForProposedSelection:(id)arg2;
-- (BOOL)outlineView:(id)arg1 shouldSelectTableColumn:(id)arg2;
-- (void)outlineView:(id)arg1 mouseDownInHeaderOfTableColumn:(id)arg2;
-- (void)outlineView:(id)arg1 didClickTableColumn:(id)arg2;
-- (void)outlineView:(id)arg1 didDragTableColumn:(id)arg2;
-- (id)outlineView:(id)arg1 toolTipForCell:(id)arg2 rect:(struct CGRect *)arg3 tableColumn:(id)arg4 item:(id)arg5 mouseLocation:(struct CGPoint)arg6;
-- (double)outlineView:(id)arg1 heightOfRowByItem:(id)arg2;
-- (id)outlineView:(id)arg1 typeSelectStringForTableColumn:(id)arg2 item:(id)arg3;
-- (id)outlineView:(id)arg1 nextTypeSelectMatchFromItem:(id)arg2 toItem:(id)arg3 forString:(id)arg4;
-- (BOOL)outlineView:(id)arg1 shouldTypeSelectForEvent:(id)arg2 withCurrentSearchString:(id)arg3;
-- (BOOL)outlineView:(id)arg1 shouldShowCellExpansionForTableColumn:(id)arg2 item:(id)arg3;
-- (BOOL)outlineView:(id)arg1 shouldTrackCell:(id)arg2 forTableColumn:(id)arg3 item:(id)arg4;
-- (id)outlineView:(id)arg1 dataCellForTableColumn:(id)arg2 item:(id)arg3;
-- (BOOL)outlineView:(id)arg1 isGroupItem:(id)arg2;
-- (BOOL)outlineView:(id)arg1 shouldExpandItem:(id)arg2;
-- (BOOL)outlineView:(id)arg1 shouldCollapseItem:(id)arg2;
-- (void)outlineView:(id)arg1 willDisplayOutlineCell:(id)arg2 forTableColumn:(id)arg3 item:(id)arg4;
-- (double)outlineView:(id)arg1 sizeToFitWidthOfColumn:(long long)arg2;
-- (BOOL)outlineView:(id)arg1 shouldReorderColumn:(long long)arg2 toColumn:(long long)arg3;
-- (BOOL)outlineView:(id)arg1 shouldShowOutlineCellForItem:(id)arg2;
-- (void)outlineViewSelectionDidChange:(id)arg1;
-- (void)outlineViewColumnDidMove:(id)arg1;
-- (void)outlineViewColumnDidResize:(id)arg1;
-- (void)outlineViewSelectionIsChanging:(id)arg1;
-- (void)outlineViewItemWillExpand:(id)arg1;
-- (void)outlineViewItemDidExpand:(id)arg1;
-- (void)outlineViewItemWillCollapse:(id)arg1;
-- (void)outlineViewItemDidCollapse:(id)arg1;
+- (void)outlineViewItemDidCollapse:(NSNotification *)arg1;
+- (void)outlineViewItemWillCollapse:(NSNotification *)arg1;
+- (void)outlineViewItemDidExpand:(NSNotification *)arg1;
+- (void)outlineViewItemWillExpand:(NSNotification *)arg1;
+- (void)outlineViewSelectionIsChanging:(NSNotification *)arg1;
+- (void)outlineViewColumnDidResize:(NSNotification *)arg1;
+- (void)outlineViewColumnDidMove:(NSNotification *)arg1;
+- (void)outlineViewSelectionDidChange:(NSNotification *)arg1;
+- (BOOL)outlineView:(NSOutlineView *)arg1 shouldShowOutlineCellForItem:(id)arg2;
+- (BOOL)outlineView:(NSOutlineView *)arg1 shouldReorderColumn:(long long)arg2 toColumn:(long long)arg3;
+- (double)outlineView:(NSOutlineView *)arg1 sizeToFitWidthOfColumn:(long long)arg2;
+- (void)outlineView:(NSOutlineView *)arg1 willDisplayOutlineCell:(id)arg2 forTableColumn:(NSTableColumn *)arg3 item:(id)arg4;
+- (BOOL)outlineView:(NSOutlineView *)arg1 shouldCollapseItem:(id)arg2;
+- (BOOL)outlineView:(NSOutlineView *)arg1 shouldExpandItem:(id)arg2;
+- (BOOL)outlineView:(NSOutlineView *)arg1 isGroupItem:(id)arg2;
+- (NSCell *)outlineView:(NSOutlineView *)arg1 dataCellForTableColumn:(NSTableColumn *)arg2 item:(id)arg3;
+- (BOOL)outlineView:(NSOutlineView *)arg1 shouldTrackCell:(NSCell *)arg2 forTableColumn:(NSTableColumn *)arg3 item:(id)arg4;
+- (BOOL)outlineView:(NSOutlineView *)arg1 shouldShowCellExpansionForTableColumn:(NSTableColumn *)arg2 item:(id)arg3;
+- (BOOL)outlineView:(NSOutlineView *)arg1 shouldTypeSelectForEvent:(NSEvent *)arg2 withCurrentSearchString:(NSString *)arg3;
+- (id)outlineView:(NSOutlineView *)arg1 nextTypeSelectMatchFromItem:(id)arg2 toItem:(id)arg3 forString:(NSString *)arg4;
+- (NSString *)outlineView:(NSOutlineView *)arg1 typeSelectStringForTableColumn:(NSTableColumn *)arg2 item:(id)arg3;
+- (double)outlineView:(NSOutlineView *)arg1 heightOfRowByItem:(id)arg2;
+- (NSString *)outlineView:(NSOutlineView *)arg1 toolTipForCell:(NSCell *)arg2 rect:(struct CGRect *)arg3 tableColumn:(NSTableColumn *)arg4 item:(id)arg5 mouseLocation:(struct CGPoint)arg6;
+- (void)outlineView:(NSOutlineView *)arg1 didDragTableColumn:(NSTableColumn *)arg2;
+- (void)outlineView:(NSOutlineView *)arg1 didClickTableColumn:(NSTableColumn *)arg2;
+- (void)outlineView:(NSOutlineView *)arg1 mouseDownInHeaderOfTableColumn:(NSTableColumn *)arg2;
+- (BOOL)outlineView:(NSOutlineView *)arg1 shouldSelectTableColumn:(NSTableColumn *)arg2;
+- (NSIndexSet *)outlineView:(NSOutlineView *)arg1 selectionIndexesForProposedSelection:(NSIndexSet *)arg2;
+- (BOOL)outlineView:(NSOutlineView *)arg1 shouldSelectItem:(id)arg2;
+- (BOOL)selectionShouldChangeInOutlineView:(NSOutlineView *)arg1;
+- (BOOL)outlineView:(NSOutlineView *)arg1 shouldEditTableColumn:(NSTableColumn *)arg2 item:(id)arg3;
+- (void)outlineView:(NSOutlineView *)arg1 willDisplayCell:(id)arg2 forTableColumn:(NSTableColumn *)arg3 item:(id)arg4;
+- (void)outlineView:(NSOutlineView *)arg1 didRemoveRowView:(NSTableRowView *)arg2 forRow:(long long)arg3;
+- (void)outlineView:(NSOutlineView *)arg1 didAddRowView:(NSTableRowView *)arg2 forRow:(long long)arg3;
+- (NSTableRowView *)outlineView:(NSOutlineView *)arg1 rowViewForItem:(id)arg2;
+- (NSView *)outlineView:(NSOutlineView *)arg1 viewForTableColumn:(NSTableColumn *)arg2 item:(id)arg3;
 @end
 

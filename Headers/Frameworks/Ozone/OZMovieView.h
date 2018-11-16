@@ -14,18 +14,18 @@
 }
 
 + (id)defaultMenu;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (struct CGRect)movieBounds;
-- (BOOL)correctForPixelAspect;
-- (void)setCorrectForPixelAspect:(BOOL)arg1;
-- (double)getPixelAspectRatio;
-- (BOOL)isOpaque;
-- (BOOL)isPlaceholderMovie;
-- (void)setIsPlaceholderMovie:(BOOL)arg1;
-- (void)setPlaceholderDelegate:(id)arg1;
-- (id)placeholderDelegate;
-- (void)play:(id)arg1;
 - (void)setMovie:(id)arg1;
+- (void)play:(id)arg1;
+- (id)placeholderDelegate;
+- (void)setPlaceholderDelegate:(id)arg1;
+- (void)setIsPlaceholderMovie:(BOOL)arg1;
+- (BOOL)isPlaceholderMovie;
+- (BOOL)isOpaque;
+- (double)getPixelAspectRatio;
+- (void)setCorrectForPixelAspect:(BOOL)arg1;
+- (BOOL)correctForPixelAspect;
+- (struct CGRect)movieBounds;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -22,17 +22,17 @@ __attribute__((visibility("hidden")))
     NSString *_MD5Seed;
 }
 
-+ (id)utis;
 + (id)extensions;
-- (id)initWithAssetFileID:(id)arg1;
-- (void)dealloc;
-- (id)pdfDocument;
-- (unsigned long long)pageCount;
-- (void)_setupSources;
-- (id)nativeVideoProps;
-- (CDStruct_60067b7e)_md5;
-- (void)setMD5Seed:(id)arg1;
++ (id)utis;
 - (id)MD5Seed;
+- (void)setMD5Seed:(id)arg1;
+- (CDStruct_bdcb2b0d)_md5;
+- (id)nativeVideoProps;
+- (void)_setupSources;
+- (unsigned long long)pageCount;
+- (id)pdfDocument;
+- (void)dealloc;
+- (id)initWithAssetFileID:(id)arg1;
 
 @end
 

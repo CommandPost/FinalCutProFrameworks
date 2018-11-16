@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     NSString *_value;
 }
 
-- (void)dealloc;
-- (id)initWithTime:(CDStruct_1b6d18a9)arg1 stringValue:(id)arg2;
-- (long long)compareTime:(id)arg1;
 @property(retain, nonatomic) NSString *stringValue; // @synthesize stringValue=_value;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
+- (long long)compareTime:(id)arg1;
+- (id)initWithTime:(CDStruct_1b6d18a9)arg1 stringValue:(id)arg2;
+- (void)dealloc;
 
 @end
 

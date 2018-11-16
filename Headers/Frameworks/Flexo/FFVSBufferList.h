@@ -21,19 +21,19 @@ __attribute__((visibility("hidden")))
     NSLock *_bufferListLock;
 }
 
-- (id)initWithMaximumBuffers:(long long)arg1 maximumSize:(unsigned long long)arg2;
-- (void)dealloc;
-- (unsigned long long)currentSize;
-- (long long)currentBuffers;
-- (void)setCurrentBuffers:(long long)arg1;
-- (unsigned long long)maximumBuffers;
-- (void)setMaximumBuffers:(long long)arg1;
-- (unsigned long long)maximumSize;
-- (void)setMaximumSize:(long long)arg1;
-- (void)setListEnabled:(BOOL)arg1;
-- (void)add:(void *)arg1 size:(unsigned long long)arg2;
-- (void *)get:(unsigned long long)arg1 allocated:(char *)arg2 bufferSize:(unsigned long long *)arg3;
 - (void)reportStatistics;
+- (void *)get:(unsigned long long)arg1 allocated:(char *)arg2 bufferSize:(unsigned long long *)arg3;
+- (void)add:(void *)arg1 size:(unsigned long long)arg2;
+- (void)setListEnabled:(BOOL)arg1;
+- (void)setMaximumSize:(long long)arg1;
+- (unsigned long long)maximumSize;
+- (void)setMaximumBuffers:(long long)arg1;
+- (unsigned long long)maximumBuffers;
+- (void)setCurrentBuffers:(long long)arg1;
+- (long long)currentBuffers;
+- (unsigned long long)currentSize;
+- (void)dealloc;
+- (id)initWithMaximumBuffers:(long long)arg1 maximumSize:(unsigned long long)arg2;
 
 @end
 

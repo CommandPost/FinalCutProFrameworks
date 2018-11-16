@@ -33,37 +33,38 @@
     BOOL _ackedPause;
 }
 
-- (id)initWithProvider:(id)arg1 destVideos:(id)arg2 destAudios:(id)arg3;
-- (void)dealloc;
-- (id)getObjectToLock;
-- (float)progress;
-- (void)setProgress:(float)arg1;
-- (void)setProgressCallback:(CDUnknownFunctionPointerType)arg1;
-- (void)renderAll;
-- (void)renderAllAndCancelAtRangeEnd:(BOOL)arg1;
-- (void)setLatestFrameTimeRendered:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)latestFrameTimeRendered;
-- (void)_blockRenderIfPaused;
-- (void)willRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(id)arg2 context:(void *)arg3;
-- (void)didRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(id)arg2 context:(void *)arg3;
-- (void)stopWritingFilesToLocation:(id)arg1;
-- (void)renderFrame:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
-- (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2;
-- (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2 storageLocationsToWatch:(id)arg3;
-- (id)player;
-- (void)_teardownPlayer;
-- (void)_rebuildPlayer;
-- (void)_conformStartAndDuration;
-- (void)rangeInvalidated:(id)arg1;
-- (void)cancelRender;
-- (void)pauseRender;
-- (void)resumeRender;
-- (BOOL)isPaused;
-- (BOOL)hasPaused;
-- (_Bool)waitForThreadToAck;
-- (void)setWaitForThreadToAck:(_Bool)arg1;
-- (id)description;
 - (_Bool)stoppedDueToStorageLocFull;
+- (id)description;
+- (void)setWaitForThreadToAck:(_Bool)arg1;
+- (_Bool)waitForThreadToAck;
+- (BOOL)hasPaused;
+- (BOOL)isPaused;
+- (void)resumeRender;
+- (void)pauseRender;
+- (void)cancelRender;
+- (void)rangeInvalidated:(id)arg1;
+- (void)_conformStartAndDuration;
+- (void)_rebuildPlayer;
+- (void)_teardownPlayer;
+- (id)player;
+- (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2 storageLocationsToWatch:(id)arg3;
+- (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2;
+- (void)renderFrame:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
+- (void)stopWritingFilesToLocation:(id)arg1;
+- (void)didRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(id)arg2 context:(void *)arg3;
+- (void)willRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(id)arg2 context:(void *)arg3;
+- (void)_blockRenderIfPaused;
+- (CDStruct_1b6d18a9)latestFrameTimeRendered;
+- (void)setLatestFrameTimeRendered:(CDStruct_1b6d18a9)arg1;
+- (void)renderAllAndCancelAtRangeEnd:(BOOL)arg1;
+- (void)renderAll;
+- (void)setProgressCallback:(CDUnknownFunctionPointerType)arg1;
+- (void)setProgress:(float)arg1;
+- (float)progress;
+- (id)getObjectToLock;
+- (void)dealloc;
+- (id)initWithProvider:(id)arg1 destVideos:(id)arg2 destAudios:(id)arg3 renderQuality:(int)arg4;
+- (id)initWithProvider:(id)arg1 destVideos:(id)arg2 destAudios:(id)arg3;
 
 @end
 

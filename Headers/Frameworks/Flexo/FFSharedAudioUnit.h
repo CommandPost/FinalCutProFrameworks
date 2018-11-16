@@ -13,14 +13,14 @@ __attribute__((visibility("hidden")))
     void *_playbackOwner;
 }
 
-- (id)initWithEffectID:(id)arg1 sampleRate:(double)arg2 channels:(unsigned int)arg3;
-- (id)initWithAudioUnit:(struct ComponentInstanceRecord *)arg1;
-- (void)dealloc;
-- (struct ComponentInstanceRecord *)audioUnit;
-- (BOOL)grabForPlayback:(void *)arg1;
-- (void)doneWithPlayback:(void *)arg1;
-- (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)doneWithPlayback:(void *)arg1;
+- (BOOL)grabForPlayback:(void *)arg1;
+- (struct ComponentInstanceRecord *)audioUnit;
+- (void)dealloc;
+- (id)initWithAudioUnit:(struct ComponentInstanceRecord *)arg1;
+- (id)initWithEffectID:(id)arg1 sampleRate:(double)arg2 channels:(unsigned int)arg3;
 
 @end
 

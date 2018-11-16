@@ -13,14 +13,14 @@
     BOOL _drawEntireFrame;
 }
 
-- (id)init;
-- (void)setExternalDropItem:(id)arg1 row:(int)arg2;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)draggingExited:(id)arg1;
-- (id)getRowColor:(int)arg1;
-- (void)scrollWheel:(id)arg1;
-- (struct CGRect)shadowRect;
 @property(nonatomic) BOOL drawEntireFrame; // @synthesize drawEntireFrame=_drawEntireFrame;
+- (struct CGRect)shadowRect;
+- (void)scrollWheel:(id)arg1;
+- (id)getRowColor:(int)arg1;
+- (void)draggingExited:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)setExternalDropItem:(id)arg1 row:(int)arg2;
+- (id)init;
 
 @end
 

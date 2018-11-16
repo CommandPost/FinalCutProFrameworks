@@ -11,21 +11,21 @@
     struct POMove3DImpl *_pImpl;
 }
 
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)dealloc;
-- (void)updateInfoBarWithPosition:(const PCVector3_457fd1f0 *)arg1 andChange:(const PCVector3_457fd1f0 *)arg2;
-- (void)updateInfoBarWithPosition;
-- (void)updateInfoBarWith2DPosition;
-- (BOOL)translating;
-- (void)enableAxes:(unsigned int)arg1;
-- (unsigned int)freeMoveHandle;
-- (PCVector3_457fd1f0)getDraggingAxis;
-- (void)draw;
-- (void)updateTranslation:(const PCVector3_457fd1f0 *)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
 - (BOOL)postRedisplayOnActivePartChange;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)updateTranslation:(const PCVector3_457fd1f0 *)arg1;
+- (void)draw;
+- (PCVector3_457fd1f0)getDraggingAxis;
+- (unsigned int)freeMoveHandle;
+- (void)enableAxes:(unsigned int)arg1;
+- (BOOL)translating;
+- (void)updateInfoBarWith2DPosition;
+- (void)updateInfoBarWithPosition;
+- (void)updateInfoBarWithPosition:(const PCVector3_457fd1f0 *)arg1 andChange:(const PCVector3_457fd1f0 *)arg2;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

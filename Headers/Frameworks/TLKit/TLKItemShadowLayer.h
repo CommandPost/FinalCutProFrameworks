@@ -9,11 +9,15 @@
 @interface TLKItemShadowLayer : CALayer
 {
     CALayer *_backgroundLayer;
+    unsigned int _audioComponent:1;
+    unsigned int _roundedBottomAudioComponent:1;
 }
 
-- (id)init;
-- (void)updateAppearanceType:(int)arg1 withMask:(int)arg2 split:(BOOL)arg3 sourceSplit:(BOOL)arg4;
+@property BOOL audioComponent;
+@property BOOL roundedBottomAudioComponent;
 - (void)setCornerRadius:(double)arg1;
+- (void)updateAppearanceType:(int)arg1 withMask:(int)arg2 split:(BOOL)arg3 sourceSplit:(BOOL)arg4;
+- (id)init;
 
 @end
 

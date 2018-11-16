@@ -10,14 +10,14 @@
 {
 }
 
-+ (void)initialize;
-+ (id)displayName;
-+ (id)toolTip;
 + (id)toolbarFacet;
++ (id)toolTip;
++ (id)displayName;
++ (void)initialize;
 + (id)TLKEventHandlerID;
 - (BOOL)handlesSelection;
-- (void)willSetAsHandlerForTimeline:(id)arg1;
 - (void)willRemoveAsHandlerForTimeline:(id)arg1;
+- (void)willSetAsHandlerForTimeline:(id)arg1;
 
 @end
 

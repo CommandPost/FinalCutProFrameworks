@@ -17,19 +17,20 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)videoScopesSettingsButtonLayer;
-- (void)setContentsScale:(double)arg1;
-- (id)buildSublayers;
-- (void)setMenu:(id)arg1;
-- (void)configureNormal;
-- (void)configureRollover;
-- (void)configurePressed;
-- (void)configureInactive;
-- (void)configureDisabled;
-- (void)configureEmphasized;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
-- (id)accessibilityAttributeValue:(id)arg1;
 @property struct CGSize bottomLeftMargin; // @synthesize bottomLeftMargin=_bottomLeftMargin;
 @property struct CGSize topRightMargin; // @synthesize topRightMargin=_topRightMargin;
+- (id).cxx_construct;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (struct CGRect)frameForBounds:(struct CGRect)arg1;
+- (void)configureEmphasized;
+- (void)configureDisabled;
+- (void)configureInactive;
+- (void)configurePressed;
+- (void)configureRollover;
+- (void)configureNormal;
+- (void)setMenu:(id)arg1;
+- (id)buildSublayers;
+- (void)setContentsScale:(double)arg1;
 
 @end
 

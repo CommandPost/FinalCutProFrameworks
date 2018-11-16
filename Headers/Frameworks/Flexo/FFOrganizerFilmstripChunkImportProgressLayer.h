@@ -6,7 +6,7 @@
 
 #import "CALayer.h"
 
-@class CATextLayer, FFBackgroundTask, FFMIORADAsset, FFThemeFacetLayer;
+@class CATextLayer, FFBackgroundTask, FFMIORADAsset, FFThemeFacetLayer, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripChunkImportProgressLayer : CALayer
@@ -25,26 +25,29 @@ __attribute__((visibility("hidden")))
     BOOL _hasImportObserver;
     BOOL _inImportWindow;
     unsigned long long _spannedClipGlyphID;
+    NSString *_ptpPercentageDonePath;
 }
 
 + (id)layerAsSubLayerOf:(id)arg1 filmstripCell:(id)arg2 rangeOfMedia:(id)arg3;
-- (id)init;
-- (void)dealloc;
-@property int rightEdgeType;
-@property int leftEdgeType;
-- (void)addObservers;
-- (void)removeObservers;
-- (id)stringFromDuration:(double)arg1;
-- (void)prepareWithRangeOfMedia:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)setIsImporting:(BOOL)arg1;
-- (void)updateProgressIndicatorLayer;
-- (void)updateCameraIconLayer;
-- (id)tooltipRects;
-- (id)tooltipStringAtPoint:(struct CGPoint)arg1;
-- (void)setContentsScale:(double)arg1;
++ (BOOL)shouldDrawStillAsMovie:(id)arg1;
 @property unsigned long long progress; // @synthesize progress=_progress;
 @property(retain) FFMIORADAsset *radAsset; // @synthesize radAsset=_radAsset;
+- (void)setContentsScale:(double)arg1;
+- (id)tooltipStringAtPoint:(struct CGPoint)arg1;
+- (id)tooltipRects;
+- (void)updateCameraIconLayer;
+- (void)updateProgressIndicatorLayer;
+- (void)setIsImporting:(BOOL)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)prepareWithRangeOfMedia:(id)arg1;
+- (id)stringFromDuration:(double)arg1;
+- (void)removeObservers;
+- (void)addObservers;
+- (void)appWillTerminate:(id)arg1;
+@property int leftEdgeType;
+@property int rightEdgeType;
+- (void)dealloc;
+- (id)init;
 
 @end
 

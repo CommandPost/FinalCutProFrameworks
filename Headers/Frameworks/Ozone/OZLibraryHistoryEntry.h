@@ -23,14 +23,14 @@
     BOOL _col1AllItemSelected;
 }
 
-- (id)initWithController:(id)arg1;
-- (void)dealloc;
-- (void)setColumn0Selection:(id)arg1;
-- (void)setAllItemSelected:(BOOL)arg1;
-- (void)setIncludeType1:(const struct PCUUID *)arg1;
-- (void)setIncludeType2:(const struct PCUUID *)arg1;
-- (void)setExcludeType:(const struct PCUUID *)arg1;
 - (void)setDisplayState:(id)arg1;
+- (void)setExcludeType:(const struct PCUUID *)arg1;
+- (void)setIncludeType2:(const struct PCUUID *)arg1;
+- (void)setIncludeType1:(const struct PCUUID *)arg1;
+- (void)setAllItemSelected:(BOOL)arg1;
+- (void)setColumn0Selection:(id)arg1;
+- (void)dealloc;
+- (id)initWithController:(id)arg1;
 
 @end
 

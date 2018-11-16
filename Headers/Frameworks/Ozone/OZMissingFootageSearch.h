@@ -10,7 +10,7 @@
 
 @interface OZMissingFootageSearch : NSObject
 {
-    vector_58ebe158 *_pMissingFootage;
+    vector_25e13bfd *_pMissingFootage;
     NSArray *_pSearchDirectories;
     unsigned int _searchDepth;
     BOOL _showUI;
@@ -25,21 +25,21 @@
     NSOpenPanel *_pOpenPanel;
 }
 
++ (void)askForAllMissingFootage:(vector_25e13bfd *)arg1;
++ (void)findAllMissingFootage:(vector_25e13bfd *)arg1 searchDirectories:(id)arg2;
 + (void)findAllMissingItems:(struct OZScene *)arg1 URL:(const struct PCURL *)arg2 showUI:(BOOL)arg3;
-+ (void)findAllMissingFootage:(vector_58ebe158 *)arg1 searchDirectories:(id)arg2;
-+ (void)askForAllMissingFootage:(vector_58ebe158 *)arg1;
-- (int)tryCandidate:(id)arg1 onFootage:(struct OZFootage *)arg2;
-- (void)tryFileCandidate:(id)arg1;
-- (void)scanForMissingFootage:(vector_58ebe158 *)arg1 isSequence:(vector_69938c0b *)arg2 missingFileName:(id)arg3 directory:(id)arg4 searchDepth:(unsigned int)arg5 showUI:(BOOL)arg6;
-- (void)scanForMissingFootage:(vector_58ebe158 *)arg1 searchDirectories:(id)arg2 searchDepth:(unsigned int)arg3 showUI:(BOOL)arg4;
-- (int)askForMissingFootage:(struct OZFootage *)arg1 hasMultipleFiles:(BOOL)arg2;
-- (void)updateProgressDisplay:(id)arg1;
-- (void)cancelSearch:(id)arg1;
-- (void)threadedFindMissingFootage;
-- (void)askForAllMissingFootage:(vector_58ebe158 *)arg1;
-- (BOOL)findMissingFootage:(vector_58ebe158 *)arg1 searchDirectories:(id)arg2 searchDepth:(unsigned int)arg3 showUI:(BOOL)arg4;
-- (void)findAllMissingItems:(struct OZScene *)arg1 missingFootage:(vector_58ebe158 *)arg2 searchDirectories:(id)arg3 showUI:(BOOL)arg4;
 - (void)findAllMissingItems:(struct OZScene *)arg1 URL:(const struct PCURL *)arg2 showUI:(BOOL)arg3;
+- (void)findAllMissingItems:(struct OZScene *)arg1 missingFootage:(vector_25e13bfd *)arg2 searchDirectories:(id)arg3 showUI:(BOOL)arg4;
+- (BOOL)findMissingFootage:(vector_25e13bfd *)arg1 searchDirectories:(id)arg2 searchDepth:(unsigned int)arg3 scene:(struct OZScene *)arg4 showUI:(BOOL)arg5;
+- (void)askForAllMissingFootage:(vector_25e13bfd *)arg1;
+- (void)threadedFindMissingFootage;
+- (void)cancelSearch:(id)arg1;
+- (void)updateProgressDisplay:(id)arg1;
+- (int)askForMissingFootage:(struct OZFootage *)arg1 hasMultipleFiles:(BOOL)arg2;
+- (void)scanForMissingFootage:(vector_25e13bfd *)arg1 searchDirectories:(id)arg2 searchDepth:(unsigned int)arg3 showUI:(BOOL)arg4;
+- (void)scanForMissingFootage:(vector_25e13bfd *)arg1 isSequence:(vector_69938c0b *)arg2 missingFileName:(id)arg3 directory:(id)arg4 searchDepth:(unsigned int)arg5 showUI:(BOOL)arg6;
+- (void)tryFileCandidate:(id)arg1;
+- (int)tryCandidate:(id)arg1 onFootage:(struct OZFootage *)arg2;
 
 @end
 

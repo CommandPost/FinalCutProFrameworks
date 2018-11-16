@@ -17,18 +17,19 @@ __attribute__((visibility("hidden")))
     FFVideoProps *_videoProps;
 }
 
-+ (id)type;
 + (Class)streamClass;
-- (id)initWithProvider:(id)arg1;
-- (void)dealloc;
-- (void)setStart:(CDStruct_1b6d18a9)arg1;
-- (void)setDuration:(CDStruct_1b6d18a9)arg1;
-- (void)setVideoProps:(id)arg1;
-- (CDStruct_e83c9415)timeRange;
-- (id)nativeVideoProps;
-- (CDStruct_1b6d18a9)timecodeOffset;
-- (CDStruct_1b6d18a9)fileTrackDuration;
++ (id)type;
+- (id).cxx_construct;
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (CDStruct_1b6d18a9)fileTrackDuration;
+- (CDStruct_1b6d18a9)timecodeOffset;
+- (id)nativeVideoProps;
+- (CDStruct_e83c9415)timeRange;
+- (void)setVideoProps:(id)arg1;
+- (void)setDuration:(CDStruct_1b6d18a9)arg1;
+- (void)setStart:(CDStruct_1b6d18a9)arg1;
+- (void)dealloc;
+- (id)initWithProvider:(id)arg1;
 
 @end
 

@@ -6,12 +6,13 @@
 
 #import "NSObject.h"
 
+#import "FFBackgroundTaskTarget.h"
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 
 @class FFAssetCopyRequest, FFBackgroundTaskWithPauseCondition, FFStorageLocation, NSMutableArray, NSRecursiveLock, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFAssetCopyQueue : NSObject <FFStorageLocationOutOfDiskSpaceProtocol>
+@interface FFAssetCopyQueue : NSObject <FFStorageLocationOutOfDiskSpaceProtocol, FFBackgroundTaskTarget>
 {
     NSRecursiveLock *_lock;
     FFBackgroundTaskWithPauseCondition *_backgroundTask;
@@ -27,32 +28,34 @@ __attribute__((visibility("hidden")))
     FFStorageLocation *_currentStorageLocation;
 }
 
-+ (id)sharedInstance;
 + (void)releaseSharedInstance;
-- (void)_lock;
-- (void)_unlock;
-- (void)_cancelBGTask;
-- (void)_waitForBGTaskToFinish;
-- (void)_updateProgress;
-- (void)_ensureBackgroundTask;
-- (void)_registerAsDiskSpaceObserverForURL:(id)arg1;
-- (void)_unregisterAsDiskSpaceObserver;
-- (void)_queueRequests:(id)arg1;
-- (void)pausedTask:(id)arg1;
-- (void)resumedTask:(id)arg1;
-- (void)canceledTask:(id)arg1;
-- (void)_statusCallback:(id)arg1 stage:(unsigned int)arg2 osstatus:(int)arg3;
-- (void)_runBackgroundTask:(id)arg1 onTask:(id)arg2;
-- (void)stopWritingFilesToLocation:(id)arg1;
-- (id)init;
-- (id)initWithTaskName:(id)arg1 taskType:(int)arg2;
-- (void)dealloc;
-- (void)queueRequest:(id)arg1;
-- (unsigned int)inFlightTransactionCount;
-- (unsigned int)pendingTransactionCount;
-- (void)resumeTransactions;
++ (id)sharedInstance;
 @property id <FFAssetCopyQueueDelegateProtocol> delegate; // @synthesize delegate=_delegate;
 @property(retain) FFBackgroundTaskWithPauseCondition *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
+- (void)resumeTransactions;
+- (unsigned int)pendingTransactionCount;
+- (unsigned int)inFlightTransactionCount;
+- (void)queueRequest:(id)arg1;
+- (void)dealloc;
+- (id)initWithTaskName:(id)arg1 taskType:(int)arg2;
+- (id)init;
+- (void)stopWritingFilesToLocation:(id)arg1;
+- (void)_runBackgroundTask:(id)arg1 onTask:(id)arg2;
+- (void)_statusCallback:(id)arg1 stage:(unsigned int)arg2 osstatus:(int)arg3;
+- (id)projectsInUse;
+- (id)assetRefsInUse;
+- (void)canceledTask:(id)arg1;
+- (void)resumedTask:(id)arg1;
+- (void)pausedTask:(id)arg1;
+- (void)_queueRequests:(id)arg1;
+- (void)_unregisterAsDiskSpaceObserver;
+- (void)_registerAsDiskSpaceObserverForURL:(id)arg1;
+- (void)_ensureBackgroundTask;
+- (void)_updateProgress;
+- (void)_waitForBGTaskToFinish;
+- (void)_cancelBGTask;
+- (void)_unlock;
+- (void)_lock;
 
 @end
 

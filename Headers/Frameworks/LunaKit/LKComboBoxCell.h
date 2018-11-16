@@ -10,11 +10,11 @@
 {
 }
 
-- (Class)scrollViewClass;
-- (long long)_basicButtonThemeElement;
-- (id)_baseFacet;
-- (int)_buttonThemeElementDependingOnControlView;
 - (id)_proThemeFacetForButtonCell;
+- (int)_buttonThemeElementDependingOnControlView;
+- (id)_baseFacet;
+- (long long)_basicButtonThemeElement;
+- (Class)scrollViewClass;
 
 @end
 

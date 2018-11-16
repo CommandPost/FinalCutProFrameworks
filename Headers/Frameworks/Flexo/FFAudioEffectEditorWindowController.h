@@ -6,7 +6,7 @@
 
 #import "NSWindowController.h"
 
-@class CHChannelEnum, CHChannelFolder, FFAudioEffectWindowParameterTracker, FFAudioUnitEffect, FFChannelChangeController, FFContext, FFEffectStack, FFSharedAudioUnit, LKBox, NSMutableArray, NSMutableSet, NSString;
+@class CHChannelEnum, CHChannelFolder, FFAudioEffectWindowParameterTracker, FFAudioUnitEffect, FFChannelChangeController, FFContext, FFEffectStack, FFSharedAudioUnit, LKBox, NSMapTable, NSMutableArray, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioEffectEditorWindowController : NSWindowController
@@ -21,8 +21,9 @@ __attribute__((visibility("hidden")))
     id _selectionHandler;
     BOOL _isPlaying;
     CHChannelEnum *_presetChannel;
-    NSMutableArray *_parameterTrackers;
+    NSMapTable *_parameterTrackers;
     CHChannelFolder *_parametersFolder;
+    CHChannelFolder *_effectChannelFolder;
     FFChannelChangeController *_channelChangeController;
     NSString *_channelChangeControllerActionName;
     id <FFChannelChangeControllerDivorcedDelegate> _delegate;
@@ -33,51 +34,52 @@ __attribute__((visibility("hidden")))
     FFAudioEffectWindowParameterTracker *_masterGesturedTracker;
 }
 
-+ (void)_cacheAddWindowController:(id)arg1;
-+ (void)_cacheRemoveWindowController:(id)arg1;
-+ (id)showWindowController:(BOOL)arg1 forEffect:(id)arg2 context:(id)arg3 preferGeneric:(BOOL)arg4;
++ (id)effectsForWindowControllers;
 + (id)windowControllersForEffect:(id)arg1;
-- (void)_updateFromParamChannels;
-- (void)_deferredUpdate;
-- (void)_syncTrackersToParametersFolder;
-- (void)_parameterFolderChangeNotification:(id)arg1;
-- (void)_setParamChannels:(id)arg1;
-- (void)_registerPropertyChangeListener:(BOOL)arg1;
-- (void)_closeWindow:(id)arg1;
-- (void)closeWindow;
-- (id)initWithEffect:(id)arg1 context:(id)arg2 preferGeneric:(BOOL)arg3;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (struct ComponentInstanceRecord *)audioUnit;
-- (id)name;
-- (id)effectID;
-- (id)effect;
-- (BOOL)isGeneric;
-- (CDStruct_1b6d18a9)_contextTime;
-- (BOOL)_allowChannelChangeUpdates;
-- (id)windowWillReturnUndoManager:(id)arg1;
-- (void)_channelChangeWillSetValue:(id)arg1 toValue:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)_channelChangeDidSetValue:(id)arg1 toValue:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)_channelChangeBegin:(id)arg1 actionName:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)_channelChangeEnd:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)_storeEffectState;
-- (void)_handleParameterEvent:(id)arg1 event:(const struct AudioUnitEvent *)arg2 newValue:(float)arg3;
-- (void)timeRateChangedForContext:(id)arg1;
-- (void)synchronizeWindowTitleWithDisplayName:(id)arg1;
-- (id)cocoaViewForAudioUnit:(struct ComponentInstanceRecord *)arg1;
-- (void)loadViewForAudioUnit:(struct ComponentInstanceRecord *)arg1;
-- (void)loadAudioUnit;
-- (void)unloadAudioUnit;
-- (void)windowDidLoad;
-- (void)windowWillClose:(id)arg1;
-- (void)adjustWindowSizeToFitView:(id)arg1;
-- (void)startListeningToCocoaView:(id)arg1;
-- (void)stopListeningToCocoaView:(id)arg1;
-- (void)handleViewFrameDidChangeNotification:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
++ (id)showWindowController:(BOOL)arg1 forEffect:(id)arg2 context:(id)arg3 preferGeneric:(BOOL)arg4;
++ (void)_cacheRemoveWindowController:(id)arg1;
++ (void)_cacheAddWindowController:(id)arg1;
 @property(readonly, nonatomic) BOOL preferGeneric; // @synthesize preferGeneric=_preferGeneric;
 @property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) id <FFChannelChangeControllerDivorcedDelegate> controllerDelegate; // @synthesize controllerDelegate=_delegate;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)handleViewFrameDidChangeNotification:(id)arg1;
+- (void)stopListeningToCocoaView:(id)arg1;
+- (void)startListeningToCocoaView:(id)arg1;
+- (void)adjustWindowSizeToFitView:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)windowDidLoad;
+- (void)unloadAudioUnit;
+- (void)loadAudioUnit;
+- (void)loadViewForAudioUnit:(struct ComponentInstanceRecord *)arg1;
+- (id)cocoaViewForAudioUnit:(struct ComponentInstanceRecord *)arg1;
+- (void)synchronizeWindowTitleWithDisplayName:(id)arg1;
+- (void)timeRateChangedForContext:(id)arg1;
+- (void)_handleParameterEvent:(id)arg1 event:(const struct AudioUnitEvent *)arg2 newValue:(float)arg3;
+- (void)_storeEffectState;
+- (void)_channelChangeEnd:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)_channelChangeBegin:(id)arg1 actionName:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)_channelChangeDidSetValue:(id)arg1 toValue:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)_channelChangeWillSetValue:(id)arg1 toValue:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (id)windowWillReturnUndoManager:(id)arg1;
+- (BOOL)_allowChannelChangeUpdates;
+- (CDStruct_1b6d18a9)_contextTime;
+- (BOOL)isGeneric;
+- (id)effect;
+- (id)effectID;
+- (id)name;
+- (struct ComponentInstanceRecord *)audioUnit;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithEffect:(id)arg1 context:(id)arg2 preferGeneric:(BOOL)arg3;
+- (void)closeWindow;
+- (void)_closeWindow:(id)arg1;
+- (void)_registerPropertyChangeListener:(BOOL)arg1;
+- (void)_setEffectChannelFolder:(id)arg1;
+- (void)_channelChangedNotification:(id)arg1;
+- (void)_syncTrackersToParametersFolder;
+- (void)_deferredUpdate;
+- (void)_updateFromParamChannels;
 
 @end
 

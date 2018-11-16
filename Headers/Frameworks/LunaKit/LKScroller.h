@@ -10,10 +10,10 @@
 {
 }
 
-- (id)_slotFacet;
-- (id)_arrowFacetForArrowPosition:(unsigned long long)arg1 configuration:(int)arg2;
-- (id)_cornerFacet;
 - (id)_thumbFacet;
+- (id)_cornerFacet;
+- (id)_arrowFacetForArrowPosition:(unsigned long long)arg1 configuration:(int)arg2;
+- (id)_slotFacet;
 
 @end
 

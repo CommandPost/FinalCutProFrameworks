@@ -19,19 +19,19 @@ __attribute__((visibility("hidden")))
     NSError *_error;
 }
 
-- (id)initWithMediaReps:(id)arg1 directoryURL:(id)arg2;
-- (void)dealloc;
-- (void)setError:(id)arg1 force:(BOOL)arg2;
-- (id)mediaDirectory;
-- (id)mediaRepForKey:(id)arg1;
-- (id)errorsByKey;
-- (id)errorForKey:(id)arg1;
-- (id)keysModified;
-- (id)keysMissing;
-- (id)keysInserted;
-- (id)_readMediaURLs:(id)arg1 error:(id *)arg2;
-- (id)_syncMediaRepsByFileName:(id)arg1 URLs:(id)arg2 error:(id *)arg3;
 - (BOOL)execute:(id *)arg1;
+- (id)_syncMediaRepsByFileName:(id)arg1 URLs:(id)arg2 error:(id *)arg3;
+- (id)_readMediaURLs:(id)arg1 error:(id *)arg2;
+- (id)keysInserted;
+- (id)keysMissing;
+- (id)keysModified;
+- (id)errorForKey:(id)arg1;
+- (id)errorsByKey;
+- (id)mediaRepForKey:(id)arg1;
+- (id)mediaDirectory;
+- (void)setError:(id)arg1 force:(BOOL)arg2;
+- (void)dealloc;
+- (id)initWithMediaReps:(id)arg1 directoryURL:(id)arg2;
 
 @end
 

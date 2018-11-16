@@ -11,16 +11,16 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)mdTargetForKey:(id)arg1;
-- (BOOL)validateMetadataSelectionStart:(id *)arg1 error:(id *)arg2;
-- (void)setMetadataSelectionStart:(id)arg1;
-- (id)metadataSelectionStart;
-- (BOOL)validateMetadataSelectionEnd:(id *)arg1 error:(id *)arg2;
-- (void)setMetadataSelectionEnd:(id)arg1;
-- (id)metadataSelectionEnd;
-- (BOOL)validateMetadataSelectionDuration:(id *)arg1 error:(id *)arg2;
-- (void)setMetadataSelectionDuration:(id)arg1;
 - (id)metadataSelectionDuration;
+- (void)setMetadataSelectionDuration:(id)arg1;
+- (BOOL)validateMetadataSelectionDuration:(id *)arg1 error:(id *)arg2;
+- (id)metadataSelectionEnd;
+- (void)setMetadataSelectionEnd:(id)arg1;
+- (BOOL)validateMetadataSelectionEnd:(id *)arg1 error:(id *)arg2;
+- (id)metadataSelectionStart;
+- (void)setMetadataSelectionStart:(id)arg1;
+- (BOOL)validateMetadataSelectionStart:(id *)arg1 error:(id *)arg2;
+- (id)mdTargetForKey:(id)arg1;
 
 @end
 

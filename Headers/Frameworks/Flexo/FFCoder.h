@@ -11,13 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)decode:(id)arg1 error:(id *)arg2;
-+ (id)decode:(id)arg1 event:(id)arg2 error:(id *)arg3;
-+ (id)newDecodedObject:(id)arg1 targetSequence:(id)arg2 event:(id)arg3 options:(id)arg4 error:(id *)arg5;
-+ (BOOL)encode:(id)arg1 url:(id)arg2 error:(id *)arg3;
-+ (id)encodeData:(id)arg1 options:(id)arg2 error:(id *)arg3;
-+ (id)archiver:(id)arg1 willEncodeObject:(id)arg2;
 + (void)archiver:(id)arg1 didEncodeObject:(id)arg2;
++ (id)archiver:(id)arg1 willEncodeObject:(id)arg2;
++ (id)encodeData:(id)arg1 options:(id)arg2 error:(id *)arg3;
++ (BOOL)encode:(id)arg1 url:(id)arg2 error:(id *)arg3;
++ (id)newDecodedObject:(id)arg1 targetSequence:(id)arg2 event:(id)arg3 options:(id)arg4 error:(id *)arg5;
++ (id)decode:(id)arg1 event:(id)arg2 error:(id *)arg3;
++ (id)decode:(id)arg1 error:(id *)arg2;
 
 @end
 

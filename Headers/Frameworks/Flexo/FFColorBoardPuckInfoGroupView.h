@@ -18,23 +18,23 @@ __attribute__((visibility("hidden")))
     FFColorBoardPuckInfoView *_highlightsInfoView;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
-@property(nonatomic) BOOL usingMinimalLayout; // @synthesize usingMinimalLayout=_usingMinimalLayout;
-- (void)addNotificationObservers;
-- (void)removeNotificationObservers;
-- (void)notificationHandler:(id)arg1;
-- (void)syncToMinimalLayout;
-- (void)movePuckInfoView:(id)arg1 toY:(double)arg2;
-- (void)adjustLayout;
-- (void)setToMinimalLayout;
-- (void)setToNormalLayout;
 @property(retain, nonatomic) FFColorBoardPuckInfoView *highlightsInfoView; // @synthesize highlightsInfoView=_highlightsInfoView;
 @property(retain, nonatomic) FFColorBoardPuckInfoView *midtonesInfoView; // @synthesize midtonesInfoView=_midtonesInfoView;
 @property(retain, nonatomic) FFColorBoardPuckInfoView *shadowsInfoView; // @synthesize shadowsInfoView=_shadowsInfoView;
 @property(retain, nonatomic) FFColorBoardPuckInfoView *globalInfoView; // @synthesize globalInfoView=_globalInfoView;
+@property(nonatomic) BOOL usingMinimalLayout; // @synthesize usingMinimalLayout=_usingMinimalLayout;
+- (void)setToNormalLayout;
+- (void)setToMinimalLayout;
+- (void)adjustLayout;
+- (void)movePuckInfoView:(id)arg1 toY:(double)arg2;
+- (void)syncToMinimalLayout;
+- (void)notificationHandler:(id)arg1;
+- (void)removeNotificationObservers;
+- (void)addNotificationObservers;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

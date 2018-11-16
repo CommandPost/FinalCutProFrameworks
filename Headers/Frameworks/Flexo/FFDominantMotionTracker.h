@@ -29,23 +29,24 @@ __attribute__((visibility("hidden")))
     void *_FFDominantMotionTrackerPrivate;
 }
 
-- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 clip:(id)arg2 asset:(id)arg3 createSmartCollectionFolders:(BOOL)arg4;
-- (void)dealloc;
-- (int)analyzePlayerFrame:(id)arg1;
-- (void)startAnalyzing;
-- (void)finishAnalyzing;
-- (void)cancelAnalyzing;
-- (BOOL)reuseDataForAnalyzing;
-- (void)startEstimatedMotionOnFrame:(id)arg1;
-- (void)endEstimation;
-- (void)joinTrackerThread;
-- (void)storeResultsInAsset;
-- (void)terminate;
-- (int)pushFrameFromDest:(void **)arg1;
-- (int)pushFrameFromDest:(void **)arg1 buffer2:(void **)arg2;
-- (id)newDominantMotionMediaRep;
-- (id)setIncomingFrame:(id)arg1;
+- (id).cxx_construct;
 - (BOOL)isProgressive;
+- (id)setIncomingFrame:(id)arg1;
+- (id)newDominantMotionMediaRep;
+- (int)pushFrameFromDest:(void **)arg1 buffer2:(void **)arg2;
+- (int)pushFrameFromDest:(void **)arg1;
+- (void)terminate;
+- (void)storeResultsInAsset;
+- (void)joinTrackerThread;
+- (void)endEstimation;
+- (void)startEstimatedMotionOnFrame:(id)arg1;
+- (BOOL)reuseDataForAnalyzing;
+- (void)cancelAnalyzing;
+- (void)finishAnalyzing;
+- (void)startAnalyzing;
+- (int)analyzePlayerFrame:(id)arg1;
+- (void)dealloc;
+- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 clip:(id)arg2 asset:(id)arg3 createSmartCollectionFolders:(BOOL)arg4;
 
 @end
 

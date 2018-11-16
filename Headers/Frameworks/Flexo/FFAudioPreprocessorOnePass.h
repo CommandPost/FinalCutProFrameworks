@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)process:(id)arg1 onTask:(id)arg2;
 - (void)configureEffects:(id)arg1;
+- (void)process:(id)arg1 onTask:(id)arg2;
 
 @end
 

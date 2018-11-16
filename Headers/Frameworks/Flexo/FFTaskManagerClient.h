@@ -11,12 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)work;
-- (void)pause;
-- (void)resume;
-- (float)priority;
-- (int)cpuUsage;
 - (int)gpuUsage;
+- (int)cpuUsage;
+- (float)priority;
+- (void)resume;
+- (void)pause;
+- (void)work;
 
 @end
 

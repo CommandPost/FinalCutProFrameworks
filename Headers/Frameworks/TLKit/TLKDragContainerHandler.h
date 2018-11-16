@@ -17,25 +17,25 @@
     unsigned int _rangeSelectionVisible:1;
 }
 
-- (void)dealloc;
-- (int)autoscrollDirection;
-- (void)_willStartDraggingItems:(id)arg1;
-- (void)_didStopDraggingItems:(id)arg1;
-- (void)_setDraggedItems:(id)arg1;
-- (void)_constrainCurrentPoint:(struct CGPoint *)arg1 previousPoint:(struct CGPoint *)arg2 inLayer:(id)arg3 withInitialPoint:(struct CGPoint)arg4 modifierFlags:(unsigned long long)arg5;
-- (unsigned long long)_dropIndexAtPoint:(struct CGPoint)arg1 inLayer:(id)arg2;
-- (void)_requestDataSourceToMoveTracks:(id)arg1 toIndex:(unsigned long long)arg2;
-- (void)_moveLayersForTracks:(id)arg1 byOffset:(struct CGPoint)arg2;
-- (void)dragSelectionFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 withInitialPoint:(struct CGPoint)arg3 modifierFlags:(unsigned long long)arg4;
-- (void)_updateClickedPositionWithPoint:(struct CGPoint)arg1;
-- (void)updateSelectionWithClickedPoint:(struct CGPoint)arg1 modifierFlags:(unsigned long long)arg2;
-- (BOOL)startTracking:(id)arg1;
-- (BOOL)continueTracking:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 @property(nonatomic) struct CGPoint clickedPosition; // @synthesize clickedPosition=_clickedPosition;
 @property(retain, nonatomic) id <TLKTimelineItem> clickedItem; // @synthesize clickedItem=_clickedItem;
 @property(copy, nonatomic) NSArray *selectedTracks; // @synthesize selectedTracks=_selectedTracks;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (BOOL)stopTracking:(id)arg1;
+- (BOOL)continueTracking:(id)arg1;
+- (BOOL)startTracking:(id)arg1;
+- (void)updateSelectionWithClickedPoint:(struct CGPoint)arg1 modifierFlags:(unsigned long long)arg2;
+- (void)_updateClickedPositionWithPoint:(struct CGPoint)arg1;
+- (void)dragSelectionFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 withInitialPoint:(struct CGPoint)arg3 modifierFlags:(unsigned long long)arg4;
+- (void)_moveLayersForTracks:(id)arg1 byOffset:(struct CGPoint)arg2;
+- (void)_requestDataSourceToMoveTracks:(id)arg1 toIndex:(unsigned long long)arg2;
+- (unsigned long long)_dropIndexAtPoint:(struct CGPoint)arg1 inLayer:(id)arg2;
+- (void)_constrainCurrentPoint:(struct CGPoint *)arg1 previousPoint:(struct CGPoint *)arg2 inLayer:(id)arg3 withInitialPoint:(struct CGPoint)arg4 modifierFlags:(unsigned long long)arg5;
+- (void)_setDraggedItems:(id)arg1;
+- (void)_didStopDraggingItems:(id)arg1;
+- (void)_willStartDraggingItems:(id)arg1;
+- (int)autoscrollDirection;
+- (void)dealloc;
 
 @end
 

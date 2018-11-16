@@ -19,15 +19,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)bufferManager;
-- (id)init;
-- (void)dealloc;
-- (void)addVideoBuffer:(id)arg1;
-- (void)addAudioBuffer:(id)arg1;
-- (void)reset;
-- (void)disposeVideoMedia:(char *)arg1 size:(unsigned long long)arg2 videoMediaDisposeRefCon2:(void *)arg3;
-- (void)disposeAudioMedia:(char *)arg1 size:(unsigned long long)arg2 audioMediaDisposeRefCon2:(void *)arg3;
 @property(retain) NSMutableArray *videoBuffers; // @synthesize videoBuffers=_videoBuffers;
 @property(retain) NSMutableArray *audioBuffers; // @synthesize audioBuffers=_audioBuffers;
+- (void)disposeAudioMedia:(char *)arg1 size:(unsigned long long)arg2 audioMediaDisposeRefCon2:(void *)arg3;
+- (void)disposeVideoMedia:(char *)arg1 size:(unsigned long long)arg2 videoMediaDisposeRefCon2:(void *)arg3;
+- (void)reset;
+- (void)addAudioBuffer:(id)arg1;
+- (void)addVideoBuffer:(id)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

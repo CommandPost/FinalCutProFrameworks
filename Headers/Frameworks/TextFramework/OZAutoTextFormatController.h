@@ -46,21 +46,21 @@
     OZViewControllerGroup *_rotateCtrlGrp;
 }
 
-- (id)initWithNode:(struct OZSceneNode *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
-- (void)dealloc;
-- (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
-- (void)buildTextView:(id)arg1;
-- (void)enableDisableLayoutUI:(int)arg1;
-- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
-- (void)appendCustomTextUI:(struct TXTextLayout *)arg1 context:(id)arg2;
-- (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
-- (void)update;
-- (void)_saveDefaultFont:(int)arg1;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (struct TXTextStyle *)getCurrentStyle;
-- (void)notify:(unsigned int)arg1;
+- (void)updateLayoutControllers:(list_1192f13f *)arg1;
 - (void)enableDisableUI:(unsigned int)arg1;
-- (void)updateLayoutControllers:(list_699e9227 *)arg1;
+- (void)notify:(unsigned int)arg1;
+- (struct TXTextStyle *)getCurrentStyle;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
+- (void)_saveDefaultFont:(int)arg1;
+- (void)update;
+- (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
+- (void)appendCustomTextUI:(struct TXTextLayout *)arg1 context:(id)arg2;
+- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
+- (void)enableDisableLayoutUI:(int)arg1;
+- (void)buildTextView:(id)arg1;
+- (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
+- (void)dealloc;
+- (id)initWithNode:(struct OZSceneNode *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
 
 @end
 

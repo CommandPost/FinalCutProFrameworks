@@ -14,24 +14,24 @@
     NSString *_identifier;
 }
 
-+ (long long)sourceCount;
 + (Class)streamClass;
-- (id)initWithProvider:(id)arg1;
-- (id)initWithNoProvider;
-- (void)dealloc;
-- (id)retain;
-- (void)release;
-- (id)provider;
-- (int)providerRetainCount;
-- (id)type;
-- (CDStruct_e83c9415)timeRange;
-- (id)description;
-- (id)identifier;
-- (void)setIdentifier:(id)arg1;
-- (CDStruct_1b6d18a9)nativeSampleDuration;
-- (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (long long)timecodeDisplayDropFrame;
++ (long long)sourceCount;
 - (id)displayName;
+- (long long)timecodeDisplayDropFrame;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
+- (CDStruct_1b6d18a9)nativeSampleDuration;
+- (void)setIdentifier:(id)arg1;
+- (id)identifier;
+- (id)description;
+- (CDStruct_e83c9415)timeRange;
+- (id)type;
+- (int)providerRetainCount;
+- (id)provider;
+- (oneway void)release;
+- (id)retain;
+- (void)dealloc;
+- (id)initWithNoProvider;
+- (id)initWithProvider:(id)arg1;
 
 @end
 

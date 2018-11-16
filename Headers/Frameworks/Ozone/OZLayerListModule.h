@@ -6,14 +6,14 @@
 
 #import <Ozone/OZProViewModule.h>
 
+#import "NSOutlineViewDataSource.h"
 #import "NSOutlineViewDelegate.h"
-#import "NSTableViewDataSource.h"
 #import "OZListController.h"
 #import "OZOutlineVarRowHeightDelegate.h"
 
 @class LKSearchField, LKSegmentedControl, LKSlider, NSMenuItem, NSProThemeImageView, NSTableColumn, NSView, OZLayerListOutlineView;
 
-@interface OZLayerListModule : OZProViewModule <OZListController, NSTableViewDataSource, NSOutlineViewDelegate, OZOutlineVarRowHeightDelegate>
+@interface OZLayerListModule : OZProViewModule <OZListController, NSOutlineViewDataSource, NSOutlineViewDelegate, OZOutlineVarRowHeightDelegate>
 {
     OZLayerListOutlineView *_outlineView;
     NSTableColumn *_showColumn;
@@ -32,8 +32,8 @@
     LKSegmentedControl *_filterSegmentedControl;
     LKSegmentedControl *_contentsControl;
     struct OZProjectPanelState *_layersState;
-    struct map<unsigned int, OZLayerNodeWrapper*, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, OZLayerNodeWrapper*>>> *_wrapperMap;
-    struct map<unsigned int, OZLayerNodeWrapper*, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, OZLayerNodeWrapper*>>> *_temporaryWrapperMap;
+    struct map<unsigned int, OZLayerNodeWrapper *, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, OZLayerNodeWrapper *>>> *_wrapperMap;
+    struct map<unsigned int, OZLayerNodeWrapper *, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, OZLayerNodeWrapper *>>> *_temporaryWrapperMap;
     struct set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>> *_selectionClientIDs;
     struct set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>> *_selectionPatronIDs;
     double _zoomFactor;
@@ -50,83 +50,83 @@
     BOOL _dropReplace;
 }
 
-- (struct OZDocument *)currentOZDocument;
-- (id)init;
-- (void)dealloc;
-- (void)initOutlineView;
-- (void)viewDidLoad;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)update;
-- (id)label;
-- (id)keyEquivalent;
-- (unsigned long long)keyEquivalentModifierMask;
-- (id)searchString;
-@property BOOL showMasks; // @synthesize showMasks=_showMasks;
-@property BOOL showBehaviors; // @synthesize showBehaviors=_showBehaviors;
-@property BOOL showEffects; // @synthesize showEffects=_showEffects;
-- (void)updateLayerList;
-- (void)updateExpandedRows;
-- (long long)rowToSelectForNodeWrapper:(id)arg1 parents:(id)arg2;
-- (void)updateSelectionClientsAndPatrons;
-- (void)updateSelectionInNodeWrapper:(id)arg1 parents:(id)arg2;
-- (void)updateSelection;
-- (id)outlineView:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;
-- (BOOL)outlineView:(id)arg1 isItemExpandable:(id)arg2;
-- (long long)outlineView:(id)arg1 numberOfChildrenOfItem:(id)arg2;
-- (id)outlineView:(id)arg1 objectValueForTableColumn:(id)arg2 byItem:(id)arg3;
-- (void)enableAction:(id)arg1;
-- (void)outlineView:(id)arg1 setObjectValue:(id)arg2 forTableColumn:(id)arg3 byItem:(id)arg4;
-- (BOOL)buildBlendmodeMenu:(id)arg1 forItem:(id)arg2;
-- (void)outlineView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 item:(id)arg4;
-- (long long)outlineView:(id)arg1 backgroundColorForRow:(long long)arg2;
-- (id)outlineView:(id)arg1 getNameValueForTableColumn:(id)arg2 byItem:(id)arg3;
-- (void)outlineView:(id)arg1 setNameValue:(id)arg2 forTableColumn:(id)arg3 byItem:(id)arg4;
-- (double)outlineView:(id)arg1 heightForItem:(id)arg2;
-- (BOOL)outlineView:(id)arg1 canChangeHeightOfItem:(id)arg2;
-- (double)outlineView:(id)arg1 checkChangeToHeightOfItem:(id)arg2 to:(double)arg3;
-- (void)outlineView:(id)arg1 changingHeightOfItem:(id)arg2 to:(double)arg3;
-- (void)outlineView:(id)arg1 changedHeightOfItem:(id)arg2 to:(double)arg3;
-- (BOOL)outlineView:(id)arg1 shouldIgnoreSelectionButKeepTrackingInColumn:(id)arg2;
-- (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
-- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 targetNode:(struct OZObjectManipulator *)arg3 afterNode:(struct OZObjectManipulator *)arg4 dragLoc:(unsigned int)arg5 col:(id)arg6;
-- (unsigned long long)outlineView:(id)arg1 validateDrop:(id)arg2 proposedItem:(id)arg3 proposedChildIndex:(long long)arg4;
-- (BOOL)outlineView:(id)arg1 acceptDrop:(id)arg2 item:(id)arg3 childIndex:(long long)arg4;
-- (void)updatePreviews;
-- (void)updatePreviewBackground;
-- (double)imageSize;
-- (struct CGRect)imageRect;
-- (void)imageReady:(unsigned int)arg1;
-- (void)moduleDidHide;
-- (void)moduleDidUnhide;
-- (void)notify:(unsigned int)arg1;
-- (void)outlineViewSelectionDidChange:(id)arg1;
-- (void)outlineViewItemDidExpand:(id)arg1;
-- (void)outlineViewItemDidCollapse:(id)arg1;
-- (void)search:(id)arg1;
-- (void)openColumnMenu:(id)arg1;
-- (void)setPreviewVisibility:(BOOL)arg1;
-- (void)setOpacityVisibility:(BOOL)arg1;
-- (void)setBlendVisibility:(BOOL)arg1;
-- (void)toggleLayerPreviewVisibility:(id)arg1;
-- (void)toggleOpacityVisibility:(id)arg1;
-- (void)toggleBlendVisibility:(id)arg1;
-- (void)setZoomMin:(id)arg1;
-- (void)setZoomMax:(id)arg1;
-- (void)setZoom:(id)arg1;
-- (void)toggleFilters:(id)arg1;
-- (void)contentsControlAction:(id)arg1;
-- (void)inspectMask:(id)arg1;
-- (void)inspectBehavior:(id)arg1;
-- (void)inspectEffect:(id)arg1;
-- (id)outlineView:(id)arg1 contextMenuForItem:(id)arg2 andButton:(long long)arg3;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (id)wrapObject:(struct OZObjectManipulator *)arg1;
-- (id)nodeWrapper:(struct OZChannelObjectRoot *)arg1;
-- (void)setContextMenu:(id)arg1 objectMenu:(id)arg2 objectBlendMenu:(id)arg3;
-- (void)showItemInViewer:(id)arg1;
-- (void)magnifyWithEvent:(id)arg1;
+@property(nonatomic) BOOL showEffects; // @synthesize showEffects=_showEffects;
+@property(nonatomic) BOOL showBehaviors; // @synthesize showBehaviors=_showBehaviors;
+@property(nonatomic) BOOL showMasks; // @synthesize showMasks=_showMasks;
 @property(readonly) OZLayerListOutlineView *outlineView; // @synthesize outlineView=_outlineView;
+- (void)magnifyWithEvent:(id)arg1;
+- (void)showItemInViewer:(id)arg1;
+- (void)setContextMenu:(id)arg1 objectMenu:(id)arg2 objectBlendMenu:(id)arg3;
+- (id)newNodeWrapper:(struct OZChannelObjectRoot *)arg1;
+- (id)wrapObject:(struct OZObjectManipulator *)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (id)outlineView:(id)arg1 contextMenuForItem:(id)arg2 andButton:(long long)arg3;
+- (void)inspectEffect:(id)arg1;
+- (void)inspectBehavior:(id)arg1;
+- (void)inspectMask:(id)arg1;
+- (void)contentsControlAction:(id)arg1;
+- (void)toggleFilters:(id)arg1;
+- (void)setZoom:(id)arg1;
+- (void)setZoomMax:(id)arg1;
+- (void)setZoomMin:(id)arg1;
+- (void)toggleBlendVisibility:(id)arg1;
+- (void)toggleOpacityVisibility:(id)arg1;
+- (void)toggleLayerPreviewVisibility:(id)arg1;
+- (void)setBlendVisibility:(BOOL)arg1;
+- (void)setOpacityVisibility:(BOOL)arg1;
+- (void)setPreviewVisibility:(BOOL)arg1;
+- (void)openColumnMenu:(id)arg1;
+- (void)search:(id)arg1;
+- (void)outlineViewItemDidCollapse:(id)arg1;
+- (void)outlineViewItemDidExpand:(id)arg1;
+- (void)outlineViewSelectionDidChange:(id)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)moduleDidUnhide;
+- (void)moduleDidHide;
+- (void)imageReady:(unsigned int)arg1;
+- (struct CGRect)imageRect;
+- (double)imageSize;
+- (void)updatePreviewBackground;
+- (void)updatePreviews;
+- (BOOL)outlineView:(id)arg1 acceptDrop:(id)arg2 item:(id)arg3 childIndex:(long long)arg4;
+- (unsigned long long)outlineView:(id)arg1 validateDrop:(id)arg2 proposedItem:(id)arg3 proposedChildIndex:(long long)arg4;
+- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 targetNode:(struct OZObjectManipulator *)arg3 afterNode:(struct OZObjectManipulator *)arg4 dragLoc:(unsigned int)arg5 col:(id)arg6;
+- (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
+- (BOOL)outlineView:(id)arg1 shouldIgnoreSelectionButKeepTrackingInColumn:(id)arg2;
+- (void)outlineView:(id)arg1 changedHeightOfItem:(id)arg2 to:(double)arg3;
+- (void)outlineView:(id)arg1 changingHeightOfItem:(id)arg2 to:(double)arg3;
+- (double)outlineView:(id)arg1 checkChangeToHeightOfItem:(id)arg2 to:(double)arg3;
+- (BOOL)outlineView:(id)arg1 canChangeHeightOfItem:(id)arg2;
+- (double)outlineView:(id)arg1 heightForItem:(id)arg2;
+- (void)outlineView:(id)arg1 setNameValue:(id)arg2 forTableColumn:(id)arg3 byItem:(id)arg4;
+- (id)outlineView:(id)arg1 getNameValueForTableColumn:(id)arg2 byItem:(id)arg3;
+- (long long)outlineView:(id)arg1 backgroundColorForRow:(long long)arg2;
+- (void)outlineView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 item:(id)arg4;
+- (BOOL)buildBlendmodeMenu:(id)arg1 forItem:(id)arg2;
+- (void)outlineView:(id)arg1 setObjectValue:(id)arg2 forTableColumn:(id)arg3 byItem:(id)arg4;
+- (void)enableAction:(id)arg1;
+- (id)outlineView:(id)arg1 objectValueForTableColumn:(id)arg2 byItem:(id)arg3;
+- (long long)outlineView:(id)arg1 numberOfChildrenOfItem:(id)arg2;
+- (BOOL)outlineView:(id)arg1 isItemExpandable:(id)arg2;
+- (id)outlineView:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;
+- (void)updateSelection;
+- (void)updateSelectionInNodeWrapper:(id)arg1 parents:(id)arg2;
+- (void)updateSelectionClientsAndPatrons;
+- (long long)rowToSelectForNodeWrapper:(id)arg1 parents:(id)arg2;
+- (void)updateExpandedRows;
+- (void)updateLayerList;
+- (id)searchString;
+- (unsigned long long)keyEquivalentModifierMask;
+- (id)keyEquivalent;
+- (id)label;
+- (void)update;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)viewDidLoad;
+- (void)initOutlineView;
+- (void)dealloc;
+- (id)init;
+- (struct OZDocument *)currentOZDocument;
 
 @end
 

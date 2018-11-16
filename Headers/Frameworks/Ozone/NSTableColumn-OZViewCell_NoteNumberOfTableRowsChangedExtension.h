@@ -7,7 +7,7 @@
 #import "NSTableColumn.h"
 
 @interface NSTableColumn (OZViewCell_NoteNumberOfTableRowsChangedExtension)
-- (void)noteNumberOfTableRowsChanged:(id)arg1;
 - (void)willRemoveFromTableView:(id)arg1;
+- (void)noteNumberOfTableRowsChanged:(id)arg1;
 @end
 

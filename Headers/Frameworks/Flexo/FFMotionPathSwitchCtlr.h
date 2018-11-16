@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
     NSProSegmentedControl *_pSegmentedControl;
 }
 
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)update;
 - (void)toggleValue:(id)arg1;
+- (void)update;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

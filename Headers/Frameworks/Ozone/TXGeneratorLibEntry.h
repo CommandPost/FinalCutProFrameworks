@@ -11,20 +11,20 @@
 }
 
 + (void)buildTreeWithRoot:(id)arg1;
-- (id)_getDisplayName:(struct PCUUID)arg1;
-- (id)initWithParent:(id)arg1 name:(id)arg2 factory:(struct OZFactory *)arg3;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)shouldBeArchived;
-- (BOOL)getPasteEntries:(struct OZPasteList *)arg1;
-- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
-- (id)getSmallPreviewIconForEntry:(BOOL)arg1;
-- (id)getDescriptionLine:(unsigned int)arg1;
-- (id)getDescriptionLine1;
-- (id)getDescriptionLine2;
-- (id)getDescriptionLine3;
-- (id)getDescriptionLine4;
-- (id)getDescriptionLine5;
 - (int)getPreviewType;
+- (id)getDescriptionLine5;
+- (id)getDescriptionLine4;
+- (id)getDescriptionLine3;
+- (id)getDescriptionLine2;
+- (id)getDescriptionLine1;
+- (id)getDescriptionLine:(unsigned int)arg1;
+- (id)getSmallPreviewIconForEntry:(BOOL)arg1;
+- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
+- (BOOL)getPasteEntries:(struct OZPasteList *)arg1;
+- (BOOL)shouldBeArchived;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithParent:(id)arg1 name:(id)arg2 factory:(struct OZFactory *)arg3;
+- (id)_getDisplayName:(struct PCUUID)arg1;
 
 @end
 

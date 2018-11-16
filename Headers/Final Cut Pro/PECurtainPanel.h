@@ -16,15 +16,15 @@
     BOOL _shouldAnimate;
 }
 
-- (void)stopTimer;
-- (void)timer;
-- (void)setupAnimation:(BOOL)arg1;
-- (void)orderFront:(id)arg1;
-- (void)teardown;
-- (void)orderOut:(id)arg1;
-- (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
 @property BOOL shouldAnimate; // @synthesize shouldAnimate=_shouldAnimate;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)orderOut:(id)arg1;
+- (void)teardown;
+- (void)orderFront:(id)arg1;
+- (void)setupAnimation:(BOOL)arg1;
+- (void)timer;
+- (void)stopTimer;
 
 @end
 

@@ -4,9 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSError, PROBundleHandler, PROPlugIn;
+
 @protocol PROBundleHandlerDelegate
-- (BOOL)bundleHandler:(id)arg1 shouldAddPlugIn:(id)arg2;
-- (void)bundleHandler:(id)arg1 didAddPlugIn:(id)arg2;
-- (void)bundleHandler:(id)arg1 didError:(id)arg2;
+- (void)bundleHandler:(PROBundleHandler *)arg1 didError:(NSError *)arg2;
+- (void)bundleHandler:(PROBundleHandler *)arg1 didAddPlugIn:(PROPlugIn *)arg2;
+- (BOOL)bundleHandler:(PROBundleHandler *)arg1 shouldAddPlugIn:(PROPlugIn *)arg2;
 @end
 

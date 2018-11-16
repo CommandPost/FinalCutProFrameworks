@@ -6,8 +6,10 @@
 
 #import "NSObject.h"
 
+@class FFChannelChangeController, FFEnhanceAudioManager;
+
 @protocol PEAudioCleanupSliderDelegate <NSObject>
-- (id)channelChangeController;
-- (id)manager;
+- (FFEnhanceAudioManager *)manager;
+- (FFChannelChangeController *)channelChangeController;
 @end
 
