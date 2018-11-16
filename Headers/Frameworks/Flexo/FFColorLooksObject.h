@@ -9,6 +9,8 @@
 #import "FFColorLooksListItemProperties.h"
 #import "NSCoding.h"
 
+@class NSString;
+
 @interface FFColorLooksObject : FFBaseDSObject <NSCoding, FFColorLooksListItemProperties>
 {
 }
@@ -19,6 +21,12 @@
 - (BOOL)writeToFileUsingPath:(id)arg1 error:(id *)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

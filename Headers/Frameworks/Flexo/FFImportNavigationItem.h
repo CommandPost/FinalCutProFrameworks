@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 
 + (id)itemWithMasterItem:(id)arg1;
 @property(readonly) int itemType; // @synthesize itemType=_itemType;
-@property(readonly) NSURL *treeNodeURL; // @synthesize treeNodeURL=_treeNodeURL;
-@property(readonly) NSString *itemPersistentIdentifier; // @synthesize itemPersistentIdentifier=_itemPersistentIdentifier;
+@property(readonly, retain) NSURL *treeNodeURL; // @synthesize treeNodeURL=_treeNodeURL;
+@property(readonly, copy) NSString *itemPersistentIdentifier; // @synthesize itemPersistentIdentifier=_itemPersistentIdentifier;
 - (id)description;
 - (BOOL)isEqual:(id)arg1;
 - (void)dealloc;

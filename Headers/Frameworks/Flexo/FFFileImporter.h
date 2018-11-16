@@ -23,6 +23,10 @@
     NSThread *_validationThread;
 }
 
++ (id)importFileURLs:(id)arg1 fileURLsInfo:(id)arg2 toEvent:(id)arg3 manageFileType:(int)arg4 processNow:(BOOL)arg5 warnClipsAlreadyExist:(BOOL)arg6 keywordSets:(id)arg7 metadataArray:(id)arg8 completionBlock:(CDUnknownBlockType)arg9;
++ (void)_startBackgroundTask:(id)arg1;
++ (void)_importBackgroundTask:(id)arg1;
++ (id)urlsToSkip:(id)arg1;
 + (BOOL)suppressWarnings;
 + (void)setSuppressWarnings:(BOOL)arg1;
 @property(retain) FFFileImportRejectedDialogController *rejectedDialogController; // @synthesize rejectedDialogController=_rejectedDialogController;

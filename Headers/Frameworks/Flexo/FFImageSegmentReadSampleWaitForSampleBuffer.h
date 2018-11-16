@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (id)mutableCopy;
 - (BOOL)sampleBufferAlphaKnownToBeFullyOpaque;
 - (struct opaqueCMSampleBuffer *)sampleBuffer;
+- (void)_waitForSampleBuffer;
 
 @end
 

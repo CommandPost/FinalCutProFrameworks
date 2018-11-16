@@ -29,7 +29,9 @@
 - (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
 - (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
+- (id)splitView;
 - (void)splitViewDidResizeSubviews:(id)arg1;
+- (void)splitViewWillResizeSubviews:(id)arg1;
 - (void)setDividerPosition:(double)arg1;
 - (double)dividerPosition;
 - (double)dividerThickness;

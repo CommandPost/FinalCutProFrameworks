@@ -8,6 +8,8 @@
 
 #import "FFInspectorFileInfoTileProtocol.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface FFInspectorFileInfoBaseTile : FFInspectorShareAutoresizingTile <FFInspectorFileInfoTileProtocol>
 {
@@ -18,6 +20,12 @@ __attribute__((visibility("hidden")))
 - (void)updateWithRefs:(id)arg1 items:(id)arg2 forOwner:(id)arg3;
 - (int)_calculateOfflineClipsCountIn:(id)arg1;
 - (id)_mediaFor:(id)arg1 withRefs:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

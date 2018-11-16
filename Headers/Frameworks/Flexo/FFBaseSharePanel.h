@@ -115,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (void)cancel:(id)arg1;
 - (void)showSavePanelForDestinationsAtIndexes:(id)arg1;
 - (void)progressCanceled:(id)arg1;
+- (void)configureExtraSettings:(char *)arg1 count:(unsigned long long)arg2 destinationURL:(id)arg3 libraryURL:(id)arg4;
 - (void)getHelperApplicationOutputLocation:(id)arg1 withHelperApp:(id)arg2;
 - (void)userAgreementPanelDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)showUserAgreementPanelForDestination:(id)arg1 contextInfo:(id)arg2;
@@ -136,7 +137,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL hasMultipleDestinations;
 @property(copy, nonatomic) NSDictionary *metadata;
 @property(readonly, nonatomic) NSArray *targets;
-@property(readonly, nonatomic) NSArray *destinations;
+@property(readonly, retain, nonatomic) NSArray *destinations;
 - (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 delegate:(id)arg3 didRecoverSelector:(SEL)arg4 contextInfo:(void *)arg5;
 - (BOOL)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
 - (id)panel:(id)arg1 userEnteredFilename:(id)arg2 confirmed:(BOOL)arg3;
@@ -149,6 +150,12 @@ __attribute__((visibility("hidden")))
 - (void)mouseEntered:(id)arg1;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 destination:(id)arg2 nibName:(id)arg3 error:(id *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

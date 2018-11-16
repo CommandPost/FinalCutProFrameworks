@@ -53,7 +53,6 @@ __attribute__((visibility("hidden")))
 - (double)frameHeight;
 - (void)setFrameDuration:(double)arg1;
 - (double)frameDuration;
-- (void)changeClipLabelSize:(int)arg1;
 - (void)setClipLabelSize:(int)arg1;
 - (int)clipLabelSize;
 - (void)setShowsClipLabels:(BOOL)arg1;

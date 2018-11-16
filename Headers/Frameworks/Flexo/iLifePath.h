@@ -11,16 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface iLifePath : NSObject
 {
-    NSMutableArray *m_elements;
+    NSMutableArray *_elements;
 }
 
 + (id)pathWithCGPath:(struct CGPath *)arg1;
-@property(retain, nonatomic) NSMutableArray *elements; // @synthesize elements=m_elements;
+@property(retain, nonatomic) NSMutableArray *elements; // @synthesize elements=_elements;
+- (void).cxx_destruct;
 - (struct CGAffineTransform)getTransformForStretchingPathFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
 - (id)elementsWithPoints;
 - (struct CGPoint)endPoint;
 - (struct CGPoint)startPoint;
-- (void)dealloc;
 
 @end
 

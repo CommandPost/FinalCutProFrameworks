@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)node;
-@property(readonly, nonatomic) MIODeviceManager *deviceManager; // @synthesize deviceManager=_deviceManager;
-@property(readonly, nonatomic) MIOPTPDeviceManager *ptpDeviceManager; // @synthesize ptpDeviceManager=_ptpDeviceManager;
-@property(readonly, nonatomic) MIORADManager *radManager; // @synthesize radManager=_radManager;
+@property(readonly, retain, nonatomic) MIODeviceManager *deviceManager; // @synthesize deviceManager=_deviceManager;
+@property(readonly, retain, nonatomic) MIOPTPDeviceManager *ptpDeviceManager; // @synthesize ptpDeviceManager=_ptpDeviceManager;
+@property(readonly, retain, nonatomic) MIORADManager *radManager; // @synthesize radManager=_radManager;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)stopObservingChildNodes;
 - (void)startObservingChildNodes;

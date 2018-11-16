@@ -32,7 +32,7 @@
 @property(nonatomic) LKPopUpButton *compressionPopup; // @synthesize compressionPopup=_compressionPopup;
 @property(nonatomic) LKButton *signInBtn; // @synthesize signInBtn=_signInBtn;
 @property(copy, nonatomic) NSDictionary *category;
-@property(readonly, nonatomic) NSArray *categories;
+@property(readonly, copy, nonatomic) NSArray *categories;
 - (void)signInModalForWindow:(id)arg1;
 - (void)signIn:(id)arg1;
 - (void)signInSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;

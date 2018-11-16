@@ -21,29 +21,29 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (id)description;
-- (int)writeTransferredData:(id)arg1 token2:(id)arg2 fieldOrder:(int)arg3 sampleNum:(long long)arg4;
-- (int)writeBuffer:(id)arg1 sampleNumber:(long long)arg2 mustWrite:(BOOL)arg3;
-- (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 sampleNumber:(long long)arg4 cost:(double)arg5 mustWrite:(BOOL)arg6;
-- (id)newBufferAtOffset:(long long)arg1;
-- (id)newImageAtOffset:(long long)arg1;
-- (id)newImageAtOffset:(long long)arg1 decodeQuality:(int)arg2;
+- (BOOL)writeTransferredData:(id)arg1 token2:(id)arg2 fieldOrder:(int)arg3 sampleNum:(long long)arg4 error:(id *)arg5;
+- (BOOL)writeBuffer:(id)arg1 sampleNumber:(long long)arg2 mustWrite:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 sampleNumber:(long long)arg4 cost:(double)arg5 mustWrite:(BOOL)arg6 error:(id *)arg7;
+- (id)newBufferAtOffset:(long long)arg1 error:(id *)arg2;
+- (id)newImageAtOffset:(long long)arg1 decodeQuality:(int)arg2 error:(id *)arg3;
 - (_Bool)wantsHinting;
 - (BOOL)ageOutCompressor:(BOOL)arg1;
 - (void)updateSegmentInfo;
 - (id)storedFrameIndexes;
-- (id)newCachedBufferTokenAtOffset:(long long)arg1;
-- (id)newCachedFrameTokenAtOffset:(long long)arg1 decodeQuality:(int)arg2;
-- (id)newCachedFrameTokenAtOffset:(long long)arg1 doAsync:(BOOL)arg2 decodeQuality:(int)arg3;
+- (id)newCachedBufferTokenAtOffset:(long long)arg1 error:(id *)arg2;
+- (id)newCachedFrameTokenAtOffset:(long long)arg1 decodeQuality:(int)arg2 error:(id *)arg3;
+- (id)newCachedFrameTokenAtOffset:(long long)arg1 doAsync:(BOOL)arg2 decodeQuality:(int)arg3 error:(id *)arg4;
 - (id)_newCachedReadTokenForExistingSampleOffset:(long long)arg1 decodeQuality:(int)arg2;
 - (void)finishedReadObj:(id)arg1;
 - (BOOL)_quickApproximateFrameExistsAtOffset:(long long)arg1;
 - (BOOL)frameExistsAtOffset:(long long)arg1;
 - (id)segmentInfo;
 - (id)renderProps;
+- (id)url;
 - (id)path;
 - (CDStruct_bdcb2b0d)md5;
 - (void)dealloc;
-- (id)initWithSegmentMD5:(CDStruct_bdcb2b0d)arg1 path:(id)arg2 renderPropsForCreation:(id)arg3;
+- (id)initWithSegmentMD5:(CDStruct_bdcb2b0d)arg1 path:(id)arg2 renderPropsForCreation:(id)arg3 error:(id *)arg4;
 
 @end
 

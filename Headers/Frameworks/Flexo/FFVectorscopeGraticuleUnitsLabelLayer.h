@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
     long long _unitsType;
     long long _phase;
     long long _barTarget;
-    int _YCbCrSpace;
+    int _YCbCrColorSpace;
     CDStruct_69458254 _action_opt;
 }
 
-@property int YCbCrSpace; // @synthesize YCbCrSpace=_YCbCrSpace;
+@property int YCbCrColorSpace; // @synthesize YCbCrColorSpace=_YCbCrColorSpace;
 @property long long unitsType; // @synthesize unitsType=_unitsType;
 - (id).cxx_construct;
 - (id)actionForKey:(id)arg1;

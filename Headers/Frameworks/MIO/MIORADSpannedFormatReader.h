@@ -8,7 +8,7 @@
 
 #import "MIORADFormatReaderProtocol.h"
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MIORADSpannedFormatReader : MIOObject <MIORADFormatReaderProtocol>
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)formatReaderWithClip:(id)arg1;
 @property(retain) NSMutableArray *trackReaders; // @synthesize trackReaders=_trackReaders;
 @property(retain) NSMutableArray *formatReaders; // @synthesize formatReaders=_formatReaders;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (long long)locationSize;
 - (BOOL)implementsLocationSize;
 - (long long)locationOffset;
@@ -32,6 +32,11 @@ __attribute__((visibility("hidden")))
 - (id)tracks;
 - (void)dealloc;
 - (id)initWithClip:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

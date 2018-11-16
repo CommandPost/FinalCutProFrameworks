@@ -10,14 +10,16 @@
 #import "FFDataModelProtocol.h"
 #import "FFMD5Protocol.h"
 #import "FFMediaDisplayProtocol.h"
+#import "FFMetadataProtocol.h"
 #import "FFSkimmableProtocol.h"
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@interface FFMedia : FFBinObject <NSCoding, NSCopying, FFMediaDisplayProtocol, FFDataModelProtocol, FFSkimmableProtocol, FFAssetContainerProtocol, FFMD5Protocol>
+@interface FFMedia : FFBinObject <NSCoding, NSCopying, FFMediaDisplayProtocol, FFDataModelProtocol, FFSkimmableProtocol, FFAssetContainerProtocol, FFMD5Protocol, FFMetadataProtocol>
 {
 }
 
++ (id)newAudioSourcePropertiesMapForProvider:(id)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)copyClassDescription;
 - (void)setOkIconImageRequest:(id)arg1;
@@ -38,7 +40,8 @@
 - (BOOL)hasVideo;
 - (void)setHasAudio:(BOOL)arg1;
 - (BOOL)hasAudio;
-- (id)audioSourceChannelCountMap;
+- (id)audioSourcePropertiesMap;
+- (CDStruct_1b6d18a9)audioSampleDuration;
 - (void)setAudioSampleRate:(double)arg1;
 - (double)audioSampleRate;
 - (void)setAudioChannelCount:(long long)arg1;
@@ -85,6 +88,7 @@
 - (CDStruct_1b6d18a9)timeFromTimecode:(id)arg1 offset:(BOOL)arg2;
 - (BOOL)validateMetadataItem:(id)arg1;
 - (id)rootChannel;
+- (id)mdValueForKey:(id)arg1;
 - (id)fileURLs:(int)arg1;
 - (id)mediaRefs;
 - (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
@@ -102,6 +106,7 @@
 - (id)description;
 - (BOOL)isUpgradeProxyAsset;
 - (BOOL)isProject;
+- (BOOL)isPSDLayer;
 - (BOOL)isPSD;
 - (BOOL)isStill;
 - (BOOL)mediaAvailable;
@@ -128,30 +133,6 @@
 - (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
 - (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
 - (id)newProvider;
-- (BOOL)actionHideRange:(CDStruct_e83c9415)arg1 hidden:(BOOL)arg2 error:(id *)arg3;
-- (BOOL)actionRemoveKeywordsWithNames:(id)arg1 error:(id *)arg2;
-- (BOOL)actionRenameKeywordWithName:(id)arg1 to:(id)arg2 error:(id *)arg3;
-- (BOOL)actionRemoveKeywordsWithNames:(id)arg1 forRange:(CDStruct_e83c9415)arg2 animationHint:(id)arg3 error:(id *)arg4;
-- (BOOL)actionAddAnalysisKeywords:(id)arg1 forRange:(CDStruct_e83c9415)arg2 animationHint:(id)arg3 error:(id *)arg4;
-- (BOOL)actionAddKeywordsWithNames:(id)arg1 forRange:(CDStruct_e83c9415)arg2 animationHint:(id)arg3 error:(id *)arg4;
-- (BOOL)operationRemoveAndAddSelectionWithRange:(CDStruct_e83c9415)arg1 animationHint:(id)arg2 error:(id *)arg3;
-- (BOOL)operationRemoveSelectionWithRange:(CDStruct_e83c9415)arg1 animationHint:(id)arg2 error:(id *)arg3;
-- (BOOL)operationAddSelectionWithRange:(CDStruct_e83c9415)arg1 animationHint:(id)arg2 error:(id *)arg3;
-- (BOOL)actionAddFavoriteWithRange:(CDStruct_e83c9415)arg1 markerCategory:(id)arg2 animationHint:(id)arg3 error:(id *)arg4;
-- (BOOL)constrainAddMarkerWithRange:(CDStruct_e83c9415 *)arg1 temporalResolutionMode:(int)arg2 error:(id *)arg3;
-- (BOOL)actionMoveMarker:(id)arg1 toRange:(CDStruct_e83c9415)arg2 error:(id *)arg3;
-- (BOOL)actionChangeMarkerDisplayName:(id)arg1 marker:(id)arg2 error:(id *)arg3;
-- (BOOL)actionMarkMarkerAsCompleted:(BOOL)arg1 marker:(id)arg2 error:(id *)arg3;
-- (BOOL)actionChangeMarkerChapter:(id)arg1 offset:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
-- (BOOL)actionChangeMarkerTypeToChapter:(id)arg1 error:(id *)arg2;
-- (BOOL)actionChangeMarkerTypeToNote:(id)arg1 error:(id *)arg2;
-- (BOOL)actionChangeMarkerTypeToTodo:(id)arg1 error:(id *)arg2;
-- (void)_clearMarkerDisplayNameIfNeeded:(id)arg1;
-- (BOOL)actionRemoveMarker:(id)arg1 error:(id *)arg2;
-- (BOOL)actionPasteMarker:(id)arg1 toAnchoredObject:(id)arg2 withRange:(CDStruct_e83c9415)arg3 error:(id *)arg4;
-- (BOOL)actionAddMarkerToAnchoredObject:(id)arg1 isToDo:(BOOL)arg2 isChapter:(BOOL)arg3 withRange:(CDStruct_e83c9415)arg4 error:(id *)arg5;
-- (BOOL)actionAddMarkerToAnchoredObject:(id)arg1 withRange:(CDStruct_e83c9415)arg2 error:(id *)arg3;
-- (BOOL)actionAddMarkerWithRange:(CDStruct_e83c9415)arg1 error:(id *)arg2;
 
 @end
 

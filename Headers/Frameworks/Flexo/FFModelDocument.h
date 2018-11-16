@@ -6,14 +6,17 @@
 
 #import <Flexo/FFCatalogDocument.h>
 
+#import "DSStoreDelegateProtocol.h"
+
 @class FFFileLock, FFLibraryItem, NSString, NSURL;
 
-@interface FFModelDocument : FFCatalogDocument
+@interface FFModelDocument : FFCatalogDocument <DSStoreDelegateProtocol>
 {
     FFLibraryItem *_libraryItem;
     FFFileLock *_fileLock;
     NSURL *_documentDirectory;
     NSString *_statusString;
+    int _catalogVersion;
 }
 
 + (void)performWithoutUndo:(CDUnknownBlockType)arg1;
@@ -23,9 +26,7 @@
 + (BOOL)performAction:(id)arg1 withObjects:(id)arg2 error:(id *)arg3 operationBefore:(CDUnknownBlockType)arg4 operationAfter:(CDUnknownBlockType)arg5 operation:(CDUnknownBlockType)arg6;
 + (BOOL)performAction:(id)arg1 withObjects:(id)arg2 objectDocumentBlock:(CDUnknownBlockType)arg3 error:(id *)arg4 operationBefore:(CDUnknownBlockType)arg5 operationAfter:(CDUnknownBlockType)arg6 operation:(CDUnknownBlockType)arg7;
 + (BOOL)_performAction:(id)arg1 withObjects:(id)arg2 objectDocumentBlock:(CDUnknownBlockType)arg3 error:(id *)arg4 operationBefore:(CDUnknownBlockType)arg5 operationAfter:(CDUnknownBlockType)arg6 multipleObjectsOperation:(CDUnknownBlockType)arg7 singleObjectOperation:(CDUnknownBlockType)arg8;
-+ (void)_updateDocs:(id)arg1 fromURLs:(id)arg2 oldFolderURL:(id)arg3 newFolderURL:(id)arg4;
-+ (id)_verifyContainedDocuments:(id)arg1 forURL:(id)arg2;
-+ (id)_docURLsFromDocArray:(id)arg1;
++ (BOOL)URL:(id)arg1 containsURL:(id)arg2;
 + (id)sharedUndoManager;
 + (id)sharedUndoHandler;
 + (id)sharedCatalog;
@@ -57,6 +58,9 @@
 - (id)_makeAsyncCopyingFoldersForURLs:(id)arg1;
 - (id)_recycleURLs:(id)arg1 containedDocuments:(id)arg2 error:(id *)arg3;
 - (void)_undoRecycleURLs:(id)arg1 containedDocuments:(id)arg2;
+- (void)_updateDocFileURLs:(id)arg1;
+- (id)_mapDocumentURLs:(id)arg1 forURL:(id)arg2;
+- (id)makeRelativeURL:(id)arg1;
 - (BOOL)isInTrash;
 - (BOOL)operationCreateHardlink:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
 - (BOOL)operationCreateSymlink:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
@@ -98,14 +102,20 @@
 - (BOOL)documentDirectoryIsEmpty;
 - (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
 - (BOOL)_bringUpToDate:(id *)arg1;
+- (BOOL)_shouldUpdateNow;
+- (void)didBringUpToDate;
 - (void)willBringUpToDate;
+- (void)setCatalogVersionBase:(int)arg1;
+- (int)catalogVersionBase;
+- (void)setCatalogVersion:(int)arg1;
+- (int)catalogVersion;
 - (id)statusString;
 - (void)progressBlock:(CDUnknownBlockType)arg1;
+- (void)store:(id)arg1 processing:(unsigned long long)arg2 of:(unsigned long long)arg3;
 - (void)setProgress:(id)arg1 current:(unsigned long long)arg2 max:(unsigned long long)arg3;
 - (void)setProgress:(id)arg1;
 - (void)showProgress:(id)arg1 whileExecutingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)warnForUpdate;
-- (BOOL)backupForUpdate:(int)arg1 error:(id *)arg2;
 - (BOOL)allowsDeferredSync;
 - (BOOL)isTemporary;
 - (id)initWithCatalog:(id)arg1 store:(id)arg2 ofType:(id)arg3 error:(id *)arg4;

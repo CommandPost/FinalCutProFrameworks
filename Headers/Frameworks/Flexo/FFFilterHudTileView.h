@@ -4,15 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "LKTileView.h"
+#import "NSProView.h"
 
 __attribute__((visibility("hidden")))
-@interface FFFilterHudTileView : LKTileView
+@interface FFFilterHudTileView : NSProView
 {
 }
 
-- (void)drawDividerForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
-- (void)drawBackgroundForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
+- (void)drawRect:(struct CGRect)arg1;
 
 @end
 

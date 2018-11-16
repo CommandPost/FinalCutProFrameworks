@@ -18,9 +18,9 @@
 + (id)newClipLayoutItemForMediaSource:(id)arg1 andMediaSourceChannels:(id)arg2;
 + (id)inferAudioSourceDictForAssetID:(id)arg1 withMediaComponents:(id)arg2;
 + (id)mediaForMediaSourceObject:(id)arg1;
-+ (id)defaultMediaSourceDescriptionsForAudioSourceChannelCountMap:(id)arg1 usingMedia:(id)arg2;
-+ (id)mediaSourceChannelsForAudioSourceChannelCountMap:(id)arg1 usingMedia:(id)arg2;
-+ (int)numMediaSourceChannelsForAudioSourceChannelCountMap:(id)arg1;
++ (id)defaultMediaSourceDescriptionsForAudioSourcePropertiesMap:(id)arg1 usingMedia:(id)arg2;
++ (id)mediaSourceChannelsForAudioSourcePropertiesMap:(id)arg1 usingMedia:(id)arg2;
++ (int)numMediaSourceChannelsForAudioSourcePropertiesMap:(id)arg1;
 + (id)sortMediaSourceChannels:(id)arg1;
 + (id)audioMediaSourcesForObject:(id)arg1;
 + (id)mediaSourcesForObject:(id)arg1;
@@ -33,6 +33,7 @@
 + (id)newSourceForSourceDescription:(id)arg1;
 + (id)newSourceForMedia:(id)arg1 sourceKey:(id)arg2 channelMap:(id)arg3;
 @property(retain, nonatomic) NSArray *audioChannelRoutingMap; // @synthesize audioChannelRoutingMap=m_audioChannelRoutingMap;
+- (BOOL)defaultSourceEnable;
 - (void)_channelsChanged;
 - (id)backingAnchoredObject;
 - (id)copySourceDescription;

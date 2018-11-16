@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFMedia, FFRenderFormat, FFRenderer, NSArray, NSDictionary, NSError, NSOperationQueue, NSString;
+@class FFMedia, FFRenderFormat, FFRenderer, NSArray, NSDictionary, NSError, NSObject<OS_dispatch_semaphore>, NSOperationQueue, NSString;
 
 @interface FFSequenceSettingsExporter : NSObject
 {
@@ -14,6 +14,7 @@
     NSString *_toFile;
     FFRenderFormat *_format;
     unsigned int _flags;
+    NSObject<OS_dispatch_semaphore> *_rendererSemaphore;
     FFRenderer *_renderer;
     BOOL _trialRunPass;
     float _endOfTrialRunPassProgress;
@@ -61,6 +62,7 @@
 - (void)dealloc;
 - (id)initWithMedia:(id)arg1 toFile:(id)arg2 withFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5;
 - (id)initWithSequence:(id)arg1 toFile:(id)arg2 flags:(unsigned int)arg3 application:(id)arg4;
+@property(readonly) unsigned int flags;
 
 @end
 

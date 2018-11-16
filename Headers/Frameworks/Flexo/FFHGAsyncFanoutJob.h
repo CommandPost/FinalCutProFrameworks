@@ -17,14 +17,15 @@
     NSMutableArray *_outputs;
     NSMutableArray *_bypassOutputs;
     NSObject<OS_dispatch_group> *_bypassJobsGroup;
+    NSConditionLock *_bypassJobsCond;
     struct HGRenderer *_specificRenderer;
     NSObject<HGRQJobProtocol> *_cbObj;
     _Bool _dumpGraph;
     _Bool _dumpDotFile;
-    CDStruct_4cc81c56 _blockedInfo;
+    CDStruct_0ea56580 _blockedInfo;
     struct _opaque_pthread_t *_threadThatInstalledBlockedInfo;
     long long _bypassCostUSec;
-    CDStruct_4cc81c56 _bypassBlockedInfo;
+    CDStruct_0ea56580 _bypassBlockedInfo;
     int _amortizationCount;
     _Bool _dumpRenderStats;
 }
@@ -37,9 +38,9 @@
 - (int)amortizationCount;
 - (void)incrementAmortizationCount;
 - (int)virtualScreen;
-- (CDStruct_4cc81c56 *)graphExecBlockedInfo;
+- (CDStruct_0ea56580 *)graphExecBlockedInfo;
 - (double)totalBufferCopyTime;
-- (_Bool)cancel;
+- (_Bool)dequeueJobIfNotStarted;
 - (_Bool)enqueueToRenderLocation:(int)arg1 priority:(int)arg2;
 - (void)_jobFinished;
 - (void)_nodeDidFinish:(id)arg1;

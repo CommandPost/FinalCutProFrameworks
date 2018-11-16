@@ -6,33 +6,41 @@
 
 #import <Flexo/FFResponderLayerHostView.h>
 
-@class FFDestVideoScopesGL, LKSlider;
+@class FFDestVideoScopesGL, LKMenu;
 
-__attribute__((visibility("hidden")))
 @interface FFVideoScopesView : FFResponderLayerHostView
 {
+    LKMenu *_contextualMenu;
     float _zoomFactor;
     BOOL _drawingEnabled;
     FFDestVideoScopesGL *_destVideo;
-    LKSlider *_traceBrightnessSlider;
     void *_FFVideoScopesViewPrivate;
 }
 
 + (id)defaultFontForMenu;
-@property(nonatomic) LKSlider *traceBrightnessSlider; // @synthesize traceBrightnessSlider=_traceBrightnessSlider;
++ (BOOL)isMonochrome;
++ (void)setMonochrome:(BOOL)arg1;
++ (BOOL)showGuides;
++ (void)setShowGuides:(BOOL)arg1;
++ (float)traceBrightness;
++ (void)setTraceBrightness:(float)arg1;
++ (void)_postPropertiesChangeNotification;
+@property(nonatomic) LKMenu *contextualMenu; // @synthesize contextualMenu=_contextualMenu;
 @property(nonatomic) id destVideo; // @synthesize destVideo=_destVideo;
 - (id)_initVideoScopesViewPriv;
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
 - (BOOL)accessibilityIsIgnored;
+- (void)viewDidUnhide;
+- (void)removeFromSuperview;
+- (void)viewWillMoveToSuperview:(id)arg1;
+- (void)propsChanged:(id)arg1;
+- (void)updateToolTips;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)teardownLayers;
 - (void)buildLayers;
-- (void)setMonochrome:(BOOL)arg1;
-- (BOOL)monochrome;
-- (void)setTraceBrightness:(float)arg1;
-- (float)traceBrightness;
+- (void)_updateLayersToTraceBrightness:(float)arg1 showGuides:(BOOL)arg2 monochrome:(BOOL)arg3;
 - (BOOL)isDrawingEnabled;
 - (void)setDrawingEnabled:(BOOL)arg1;
 - (float)zoomFactor;

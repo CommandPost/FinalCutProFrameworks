@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (int)clipTypeFilterTypeForString:(id)arg1;
 + (id)analysisKeywords;
 + (unsigned long long)indexForFormatInfoMetadataKey:(id)arg1;
 + (id)formatInfoMetadataKeyForIndex:(unsigned long long)arg1;
@@ -37,6 +38,9 @@ __attribute__((visibility("hidden")))
 + (id)filterRange:(id)arg1 withFilterDict:(id)arg2;
 + (BOOL)shouldProcessFilter:(id)arg1;
 + (id)filterRangeOfMediaFromMediaRange:(id)arg1 withFilterDict:(id)arg2 addRangeWhenNoFilters:(BOOL)arg3;
++ (id)_FigTimeRangesANDMask_AllowsEmpty:(id)arg1 mask:(id)arg2;
++ (id)_FigTimeRangesObjANDMask_AllowsEmpty:(id)arg1 mask:(id)arg2;
++ (CDStruct_e83c9415)_FigTimeRangesIntersectOrAreEmpty:(CDStruct_e83c9415)arg1 range2:(CDStruct_e83c9415)arg2;
 + (id)generateUsedDictActive:(BOOL)arg1 showUsed:(BOOL)arg2;
 + (id)generateRoleDictActive:(BOOL)arg1 comparisonType:(int)arg2 roleSets:(id)arg3 selectedRoles:(id)arg4;
 + (id)generateTimeDictActive:(BOOL)arg1 dateMetadataKey:(id)arg2 comparisonType:(int)arg3 timeString:(id)arg4 date:(id)arg5 timeUnits:(int)arg6 shouldRoundDate:(BOOL)arg7;

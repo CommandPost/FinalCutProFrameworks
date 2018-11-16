@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)drawGridInContext:(struct CGContext *)arg1 dirtyRect:(struct CGRect)arg2 contentsScale:(double)arg3;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)actionForKey:(id)arg1;
-- (void)setViewMode:(long long)arg1;
+- (void)setDisplayMode:(long long)arg1;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)setShowGuides:(BOOL)arg1;
 - (void)setZoomFactor:(float)arg1;

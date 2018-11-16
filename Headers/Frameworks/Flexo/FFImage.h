@@ -71,6 +71,7 @@
 - (struct CGImage *)newCGImageRef;
 - (id)initWithCGImageRef:(struct CGImage *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 overrideAlphaInfo:(int)arg4;
 - (id)initWithCGImageRef:(struct CGImage *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
+- (id)initFlattenNodeWithImage:(id)arg1 flattenMode:(int)arg2;
 - (id)initFlattenNodeWithImage:(id)arg1 force8Bit:(_Bool)arg2;
 - (id)initWithFFPixelBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4;
 - (id)initWithFFPixelBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 disable422Filtering:(BOOL)arg5;
@@ -79,7 +80,9 @@
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5 disable422Filtering:(BOOL)arg6;
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5;
 - (id)initWithFFTextureBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
-- (id)initTextureCacherWithImage:(id)arg1 locationHint:(int)arg2 md5:(CDStruct_bdcb2b0d)arg3 offset:(long long)arg4;
+- (id)initCacheNodeWithImage:(id)arg1 locationHint:(int)arg2 cacheMode:(unsigned int)arg3 md5:(CDStruct_bdcb2b0d)arg4 offset:(long long)arg5;
+- (id)initCacheNodeWithImage:(id)arg1 locationHint:(int)arg2 cacheMode:(unsigned int)arg3 md5:(CDStruct_bdcb2b0d)arg4 offset:(long long)arg5 cachePF:(id)arg6 cacheCS:(struct CGColorSpace *)arg7;
+- (id)initTextureCacherWithImage:(id)arg1 locationHint:(int)arg2 md5:(CDStruct_bdcb2b0d)arg3 offset:(long long)arg4 forIntegratedGraphics:(BOOL)arg5;
 - (id)initWithDeinterlaceImage:(CDUnknownBlockType)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 pixelSpaceBounds:(struct CGRect)arg4 field:(unsigned int)arg5 pixelFormat:(id)arg6;
 
 @end

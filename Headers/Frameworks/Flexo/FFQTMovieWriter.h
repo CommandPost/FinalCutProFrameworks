@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FFQTMovieWriter : NSObject
 {
     NSString *_fileFormat;
+    CDStruct_1b6d18a9 _movieFragmentInterval;
     struct OpaqueFigAssetWriter *_writer;
     BOOL _writerSessionOpen;
     struct OpaqueFigSemaphore *_writerQueueLowSemaphore;
@@ -25,17 +26,21 @@ __attribute__((visibility("hidden")))
     unsigned long long *_audioSampleCounts;
     BOOL _needTimecodeTrack;
     int _timecodeTrackID;
+    struct opaqueCMFormatDescription *_timecodeDesc;
+    unsigned int _timecodeCounterValue;
+    CDStruct_1b6d18a9 _timecodeDurationWritten;
     BOOL _needChapterNameTrack;
     int _chapterNameTrackID;
 }
 
+@property(nonatomic) CDStruct_1b6d18a9 movieFragmentInterval; // @synthesize movieFragmentInterval=_movieFragmentInterval;
 - (int)close;
 - (int)writeMetadata:(id)arg1;
 - (int)writeChapterNames:(id)arg1;
 - (void)willWriteChapterNames;
 - (int)_createChapterNameTrack;
-- (int)writeTimecode:(struct opaqueCMFormatDescription *)arg1 sampleValue:(unsigned int)arg2;
-- (void)willWriteTimecode;
+- (int)_writeTimecode;
+- (void)setStartTimecode:(struct opaqueCMFormatDescription *)arg1 value:(unsigned int)arg2;
 - (int)_createTimecodeTrack;
 - (int)writeAudio:(struct opaqueCMSampleBuffer *)arg1 audioTrackIndex:(unsigned int)arg2;
 - (int)createAudioTracks:(unsigned int)arg1 chunkSize:(unsigned int)arg2 withCompressionPreset:(struct __CFString *)arg3;
@@ -43,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (int)_beginAssetWriterSession;
 - (int)_throttleWriterTrackQueue;
 - (int)createVideoTrack:(struct opaqueCMFormatDescription *)arg1 timescale:(int)arg2;
+- (BOOL)_movieFragmentsAreSupported:(struct opaqueCMFormatDescription *)arg1;
 - (int)removeListenerForWriteFailure:(const void *)arg1 callback:(CDUnknownFunctionPointerType)arg2;
 - (int)addListenerForWriteFailure:(const void *)arg1 callback:(CDUnknownFunctionPointerType)arg2;
 - (void)dealloc;

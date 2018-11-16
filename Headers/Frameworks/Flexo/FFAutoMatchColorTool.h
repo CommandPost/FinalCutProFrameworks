@@ -6,14 +6,13 @@
 
 #import <Flexo/FFAdjustmentTool.h>
 
-@class FFSegmentedControl, LKButton, NSView;
+@class FFSegmentedControl, NSView;
 
 @interface FFAutoMatchColorTool : FFAdjustmentTool
 {
     NSView *_adjustmentToolbarView;
     FFSegmentedControl *_autoControl;
     BOOL _allMediaIsAvailable;
-    LKButton *_OkButton;
 }
 
 + (id)keyPathsForValuesAffectingAdjustmentsInfoName;
@@ -24,7 +23,6 @@
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;
 + (id)groups;
-@property(nonatomic) LKButton *OkButton; // @synthesize OkButton=_OkButton;
 @property(nonatomic) FFSegmentedControl *autoControl; // @synthesize autoControl=_autoControl;
 @property(nonatomic) NSView *adjustmentToolbarView; // @synthesize adjustmentToolbarView=_adjustmentToolbarView;
 - (void)disableBalanceWhiteBalance;
@@ -52,9 +50,6 @@
 - (void)toggleAutoCorrection;
 - (void)dealloc;
 - (id)init;
-
-// Remaining properties
-@property(nonatomic) LKButton *resetButton;
 
 @end
 

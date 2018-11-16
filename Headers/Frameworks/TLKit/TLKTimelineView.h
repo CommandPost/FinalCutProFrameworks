@@ -8,7 +8,7 @@
 
 #import "TLKEventDispatcherView.h"
 
-@class CALayer, NSArray, NSMapTable, NSMutableSet, NSProTimecodeFormatter, NSSet, PMRStopwatch, TLKAbstractRangeSelectionLayer, TLKBumperBackgroundLayer, TLKBumperForegroundLayer, TLKClipTrimmerLane, TLKDataSourceProxy, TLKEventDispatcher, TLKGuideLayer, TLKInOutRangeMarker, TLKLayerManager, TLKLayoutDatabase, TLKLayoutDelegate, TLKLayoutManager, TLKPlayheadMarker, TLKPosterItemLane, TLKPrecisionEditorDividerBar, TLKPrecisionEditorTrimBar, TLKRulerLane, TLKSelectionManager, TLKThemeBackedLayer, TLKTimecodeDisplayView;
+@class CALayer, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSProTimecodeFormatter, NSSet, PMRStopwatch, TLKAbstractRangeSelectionLayer, TLKBumperBackgroundLayer, TLKBumperForegroundLayer, TLKClipTrimmerLane, TLKDataSourceProxy, TLKEventDispatcher, TLKGuideLayer, TLKInOutRangeMarker, TLKLayerManager, TLKLayoutDatabase, TLKLayoutDelegate, TLKLayoutManager, TLKPlayheadMarker, TLKPosterItemLane, TLKPrecisionEditorDividerBar, TLKPrecisionEditorTrimBar, TLKRulerLane, TLKSelectionManager, TLKThemeBackedLayer, TLKTimecodeDisplayView;
 
 @interface TLKTimelineView : NSView <TLKEventDispatcherView>
 {
@@ -95,9 +95,12 @@
         unsigned int dragDropComponentSkimming:1;
         unsigned int wrappingLayoutPreservesMargins:1;
         unsigned int skipNextMouseTrackingEvent:1;
-        unsigned int dragSelectsRange:1;
         unsigned int reloadKeepsContentVisible:1;
-        unsigned int RESERVED:29;
+        unsigned int allowMultipleTimeRangeSelections:1;
+        unsigned int indicatesLockedSkimPlayhead:1;
+        unsigned int rangeSelectionPopup:1;
+        unsigned int legacyScrollers:1;
+        unsigned int RESERVED:26;
     } _tlkViewFlags;
     struct {
         unsigned int respondsToVisibilityForItem:1;
@@ -137,15 +140,25 @@
         CDUnknownBlockType block;
         CDUnknownBlockType enumeratingBlock;
     } _tlkTrackingItems;
+    NSMutableArray *_accessibilityChildrenCache;
+    NSMutableArray *_accessibilityVisibleChildrenCache;
+    BOOL _filmstripUpdatesEnabled;
+    BOOL _stretchFilmstrips;
     BOOL _ignoresSizeToFitOnResizeWithOldSuperviewSize;
+    BOOL _duringDraggingEnded;
     double _topMargin;
     double _bottomMargin;
     id _trimmedItem;
     CDStruct_1b6d18a9 _previousLogicalTime;
+    struct CGRect _previousVisibleRect;
 }
 
+@property BOOL duringDraggingEnded; // @synthesize duringDraggingEnded=_duringDraggingEnded;
+@property(nonatomic) struct CGRect previousVisibleRect; // @synthesize previousVisibleRect=_previousVisibleRect;
 @property(nonatomic) BOOL ignoresSizeToFitOnResizeWithOldSuperviewSize; // @synthesize ignoresSizeToFitOnResizeWithOldSuperviewSize=_ignoresSizeToFitOnResizeWithOldSuperviewSize;
 @property(retain, nonatomic) id trimmedItem; // @synthesize trimmedItem=_trimmedItem;
+@property(nonatomic) BOOL stretchFilmstrips; // @synthesize stretchFilmstrips=_stretchFilmstrips;
+@property(nonatomic) BOOL filmstripUpdatesEnabled; // @synthesize filmstripUpdatesEnabled=_filmstripUpdatesEnabled;
 @property CDStruct_1b6d18a9 previousLogicalTime; // @synthesize previousLogicalTime=_previousLogicalTime;
 @property(nonatomic) double bottomMargin; // @synthesize bottomMargin=_bottomMargin;
 @property(nonatomic) double topMargin; // @synthesize topMargin=_topMargin;
@@ -245,6 +258,9 @@
 - (void)_setPlayheadTime:(CDStruct_1b6d18a9)arg1 animate:(BOOL)arg2;
 - (void)_setPlayheadTime:(CDStruct_1b6d18a9)arg1;
 - (void)skimmingStateChanged;
+- (void)updatePlayheadPosition;
+- (void)_adjustPlayheadRulerFrameIndicatorWithFrame:(struct CGRect)arg1;
+- (struct CGRect)_calculateNewPlayheadRulerFrameFromFrame:(struct CGRect)arg1;
 @property CDStruct_1b6d18a9 logicalStartTime;
 @property CDStruct_e83c9415 inOutTimeRange;
 - (void)_updateInOutMarkerPositions;
@@ -257,6 +273,12 @@
 - (void)_updateRangeSelectionsWrapping;
 - (void)_extendRangeSelectionLayerForTornEdges:(id)arg1;
 - (id)_rangeSelectionLayer;
+- (id)selectedTimelineItems;
+@property(readonly) NSArray *selectedRangeItems;
+@property(readonly) NSArray *selectedTrailingEdgeItems;
+@property(readonly) NSArray *selectedLeadingEdgeItems;
+@property(readonly) NSArray *selectedItems;
+@property(retain) id <TLKTimelineItem> topLevelSelectedItem;
 - (void)showTimecodeDisplay:(BOOL)arg1;
 - (void)showTimecodeDisplayAtRect:(struct CGRect)arg1 displayTime:(CDStruct_1b6d18a9)arg2 deltaTime:(CDStruct_1b6d18a9)arg3 type:(unsigned long long)arg4 mode:(unsigned long long)arg5 displaySubframes:(BOOL)arg6;
 - (id)stringFromTime:(CDStruct_1b6d18a9)arg1 displaySubframes:(BOOL)arg2 displaySign:(BOOL)arg3;
@@ -272,7 +294,6 @@
 - (id)selectionManager:(id)arg1 willSelectObjects:(id)arg2 byExtendingSelection:(BOOL)arg3 selectionMask:(unsigned long long)arg4;
 - (id)selectionManager:(id)arg1 willDeselectObjects:(id)arg2 selectionMask:(unsigned long long)arg3;
 - (BOOL)selectionManagerShouldChange:(id)arg1;
-@property BOOL dragSelectsRange;
 - (id)partIdentifier;
 - (id)partArrayAtPoint:(struct CGPoint)arg1;
 - (BOOL)audioComponent;
@@ -280,7 +301,6 @@
 - (void)_hackWrappingPartArrayAtPoint:(struct CGPoint)arg1 forRangeSelectionLayer:(id)arg2 partArray:(id)arg3;
 - (void)_logPartArray:(id)arg1 atPoint:(struct CGPoint)arg2;
 @property(nonatomic) BOOL skipNextMouseTrackingEvent;
-@property(retain) id <TLKTimelineItem> topLevelSelectedItem;
 @property id focusOwner;
 - (void)_closeAllAccessoryHostLayers;
 - (void)setUpperAccessoryLayer:(id)arg1 lowerAccessoryLayer:(id)arg2 forItem:(id)arg3 withTitle:(id)arg4;
@@ -316,7 +336,11 @@
 - (BOOL)resignFirstResponder;
 - (BOOL)becomeFirstResponder;
 - (BOOL)acceptsFirstResponder;
+- (void)_setLegacyScrollers;
 - (CDStruct_1b6d18a9)staticTimeWhenTrimmingEdge:(id)arg1 trimType:(int)arg2 ofItem:(id)arg3;
+- (BOOL)_isUsingTrimHandlerWithDispatcher:(id)arg1;
+- (void)_optimisedUpdateLayerFramesFromRect:(struct CGRect)arg1 toRect:(struct CGRect)arg2;
+- (void)_optionallyUpdateLayerFrames;
 - (void)clipViewBoundsChanged:(id)arg1;
 - (void)_trimExcessPaddingOnScroll;
 - (void)_delayEnableAnimationsAfterScrolling;
@@ -369,6 +393,7 @@
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContainer:(id)arg2;
 - (struct CGRect)convertRectToContentSpace:(struct CGRect)arg1;
 - (struct CGRect)convertRectFromContentSpace:(struct CGRect)arg1;
+- (struct CGRect)convertRectFromContentSpace_Cobb:(struct CGRect)arg1;
 - (struct CGPoint)convertPointToContentSpace:(struct CGPoint)arg1;
 - (struct CGPoint)convertPointFromContentSpace:(struct CGPoint)arg1;
 - (struct _TLKRange)convertLocationRange:(struct _TLKRange)arg1 fromItem:(id)arg2;
@@ -433,6 +458,10 @@
 - (void)setMinThumbnailCount:(double)arg1;
 - (double)minThumbnailCount;
 @property struct CGSize itemSpacing;
+@property(nonatomic) BOOL legacyScrollers;
+@property(nonatomic) BOOL rangeSelectionPopup;
+@property(nonatomic) BOOL indicatesLockedSkimPlayhead;
+@property(nonatomic) BOOL allowMultipleTimeRangeSelections;
 @property(nonatomic) BOOL reloadKeepsContentVisible;
 @property BOOL useEntireTargetForDropZone;
 @property(nonatomic) BOOL allowsMultipleTracks;
@@ -445,6 +474,7 @@
 - (BOOL)isFlipped;
 - (BOOL)isOpaque;
 - (void)setOpaque:(BOOL)arg1;
+- (void)_scrollerStyleDidChange:(id)arg1;
 - (void)_clipViewBoundsDidChange:(id)arg1;
 - (void)_clipViewFrameDidChange:(id)arg1;
 - (void)viewDidMoveToWindow;
@@ -460,6 +490,11 @@
 - (id)debugDescription;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)updateAccessibilityCache;
+- (void)layoutDatabaseDidChange:(id)arg1;
+- (id)accessibilityVisibleChildrenCache;
+- (id)accessibilityChildrenCache;
+- (void)accessibilityAddOberver;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (CDStruct_1b6d18a9)accessibilityTimePerPointAtLocation:(double)arg1;
 - (id)accessibilityLocalizedString:(id)arg1;
@@ -472,7 +507,7 @@
 - (id)accessibilityHorizontalUnitDescription;
 - (id)accessibilitySelectedChildren;
 - (id)accessibilityChildren:(BOOL)arg1;
-- (id)accessibilityChildrenForItem:(id)arg1 visibleOnly:(BOOL)arg2;
+- (id)accessibilityChildrenForItem:(id)arg1 visibleOnly:(BOOL)arg2 accessibilityChildren:(id)arg3;
 - (void)accessibilityAddLayer:(id)arg1 toArray:(id)arg2 visibleOnly:(BOOL)arg3;
 - (struct CGRect)_accessibilityRectForItemFrame:(struct CGRect)arg1;
 - (struct CGRect)_playheadRect;
@@ -496,6 +531,7 @@
 - (void)layoutSublayersOfAudioLayer:(id)arg1 forItem:(id)arg2;
 - (void)layoutSublayersOfVideoLayer:(id)arg1 forItem:(id)arg2;
 - (void)layoutSublayers:(id)arg1 forItem:(id)arg2;
+- (void)_autoscrollNonWrappedTimelineForFrame:(struct CGRect)arg1 scroll:(BOOL)arg2;
 - (void)_updatePlayheadPositionAnimate:(BOOL)arg1 scroll:(BOOL)arg2;
 - (void)_updateXPositionOfPlayhead;
 - (BOOL)_isSkimming;

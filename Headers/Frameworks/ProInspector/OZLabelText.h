@@ -42,6 +42,7 @@
 - (void)setStringValue:(id)arg1 andAlignment:(unsigned long long)arg2;
 - (void)setStringValue:(id)arg1;
 - (void)dealloc;
+- (void)setHidden:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 context:(id)arg2;
 
 @end

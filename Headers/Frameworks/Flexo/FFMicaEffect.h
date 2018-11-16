@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CALayer *videoLayer;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7 graphBuildInfo:(id)arg8;
 - (void)renderIntoContext:(struct _CGLContextObject *)arg1 roi:(struct CGRect)arg2 outputSize:(struct CGSize)arg3 numInputTextures:(int)arg4 inputTextures:(unsigned int *)arg5 timeSeconds:(double)arg6 durationSeconds:(double)arg7 percentDone:(double)arg8 isTransition:(BOOL)arg9 location:(int)arg10 pixelTransform:(id)arg11;
 - (struct __IOSurface *)newIOSurfaceFromTexture:(unsigned int)arg1 location:(int)arg2 forLayer:(id)arg3;
 - (void)syncLayers;

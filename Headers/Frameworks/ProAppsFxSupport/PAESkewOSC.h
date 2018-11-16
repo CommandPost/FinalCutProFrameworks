@@ -12,12 +12,12 @@
     unsigned int _offsetParameter;
 }
 
-- (void)mouseUp:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(double)arg5;
-- (void)mouseDragged:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(double)arg5;
-- (void)mouseDown:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 didHandle:(char *)arg5 time:(double)arg6;
-- (void)drawForSelectionWithWidth:(int)arg1 height:(int)arg2 activePart:(int)arg3 paramAPI:(id)arg4 oscAPI:(id)arg5 atTime:(double)arg6;
-- (void)drawForDisplayWithWidth:(int)arg1 height:(int)arg2 activePart:(int)arg3 paramAPI:(id)arg4 oscAPI:(id)arg5 atTime:(double)arg6;
-- (void)calculateTop:(PCVector2_79efa81a *)arg1 withParamAPI:(id)arg2 andOSCAPI:(id)arg3 atTime:(double)arg4;
+- (void)mouseUp:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(CDUnion_2516e51e)arg5;
+- (void)mouseDragged:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(CDUnion_2516e51e)arg5;
+- (void)mouseDown:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 didHandle:(char *)arg5 time:(CDUnion_2516e51e)arg6;
+- (void)drawForSelectionWithWidth:(int)arg1 height:(int)arg2 activePart:(int)arg3 paramAPI:(id)arg4 oscAPI:(id)arg5 atTime:(CDUnion_2516e51e)arg6;
+- (void)drawForDisplayWithWidth:(int)arg1 height:(int)arg2 activePart:(int)arg3 paramAPI:(id)arg4 oscAPI:(id)arg5 atTime:(CDUnion_2516e51e)arg6;
+- (void)calculateTop:(PCVector2_79efa81a *)arg1 withParamAPI:(id)arg2 andOSCAPI:(id)arg3 atTime:(CDUnion_2516e51e)arg4;
 - (void)addOffsetParameter:(unsigned int)arg1;
 - (id)initWithAPIManager:(id)arg1;
 

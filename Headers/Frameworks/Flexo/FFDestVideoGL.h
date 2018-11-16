@@ -97,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)_pmrLogQueueDepth:(_Bool)arg1 count:(unsigned int)arg2;
 - (id)newOnScreenControlsTextureForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
 - (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_1b6d18a9)frameDurationForMaximumOutputRate;
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
 - (void)_notifyVisibleChanged;
 - (BOOL)_updateVisible;

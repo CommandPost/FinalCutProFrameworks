@@ -11,8 +11,11 @@
 - (void)setRate:(double)arg1;
 
 @optional
+- (void)doFavorite;
 - (void)exitFullScreen;
 - (void)enterFullScreen;
+- (BOOL)isVoiceOverActive;
+- (void)toggleVoiceOver;
 - (void)playSelected;
 - (void)playNext;
 - (void)playPrevious;

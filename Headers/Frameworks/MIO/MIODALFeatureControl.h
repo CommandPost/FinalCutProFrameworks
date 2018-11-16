@@ -26,7 +26,7 @@
 - (void)propertyDidChange:(const struct CMIOObjectPropertyAddress *)arg1;
 @property(readonly) BOOL hasTuning;
 @property BOOL tuning;
-@property(readonly) NSString *unitName;
+@property(readonly, retain) NSString *unitName;
 @property(readonly) BOOL automaticSettable;
 @property(readonly) BOOL hasAutomatic;
 @property BOOL automatic;

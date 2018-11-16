@@ -41,6 +41,7 @@
 - (id)imageForAnimState:(int)arg1 withIsMouseOver:(BOOL)arg2;
 - (void)updateTrackingAreasForView:(id)arg1;
 - (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
+- (list_eea5731a *)getChannelList;
 - (BOOL)allowsShowInCurveEditor;
 - (void)addCustomMenuItems:(id)arg1;
 - (void)postNotification:(unsigned int)arg1;
@@ -63,8 +64,9 @@
 - (void)willChangeChannelsWithDesc:(const char *)arg1;
 - (id)behaviorMenuImage;
 - (id)enableAnimMenuImage;
-- (id)buildMenu;
-- (id)buildMenuUseImages:(BOOL)arg1;
+- (id)newMenu;
+- (id)newMenuUseImages:(BOOL)arg1;
+- (id)customKeyframeTitle;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)doNothing:(id)arg1;
 - (void)showInCurveEditor:(id)arg1;

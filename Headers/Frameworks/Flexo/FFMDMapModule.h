@@ -6,16 +6,20 @@
 
 #import <Flexo/FFMDModule.h>
 
-@class FFEffectLibraryCollectionView, LKImageView, NSDictionary, NSScrollView;
+@class FFAlwaysHitButton, FFAnchoredSequence, FFEffectLibraryCollectionView, LKImageView, NSDictionary, NSScrollView;
 
 @interface FFMDMapModule : FFMDModule
 {
     NSScrollView *_scrollView;
     FFEffectLibraryCollectionView *_effectCollectionView;
     LKImageView *_headerIcon;
+    FFAlwaysHitButton *_toggleSidebarButton;
+    FFAlwaysHitButton *_dividerLine;
+    FFAnchoredSequence *_currentSequence;
     NSDictionary *_sortOrder;
 }
 
+@property(retain, nonatomic) FFAnchoredSequence *currentSequence; // @synthesize currentSequence=_currentSequence;
 - (double)rightDraggableExclusionMargin;
 - (void)firstResponderChanged:(id)arg1;
 - (void)updateFilter:(id)arg1;
@@ -25,6 +29,7 @@
 - (id)dataForEditAction:(id)arg1;
 - (BOOL)canSourceDataForEditAction:(id)arg1;
 - (void)viewWasInstalled;
+- (id)appPreviewSafeGeneratorsOnly;
 - (id)mapsArray;
 - (void)dealloc;
 - (id)init;

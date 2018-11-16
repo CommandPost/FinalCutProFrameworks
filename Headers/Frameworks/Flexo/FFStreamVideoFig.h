@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 
 @property(readonly) BOOL workaround15320638; // @synthesize workaround15320638=_workaround15320638;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_cachedURL;
+- (id).cxx_construct;
 - (int)_playbackDirection;
 - (BOOL)waitForCachedImageCharacteristics:(int)arg1 forSpatialQuality:(int)arg2 beforeDate:(id)arg3;
 - (void)storeCachedImageInfos:(id *)arg1 forQuality:(int)arg2 count:(int)arg3;
@@ -52,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)lookupCachedPixelSpaceBoundsForQuality:(int)arg1 lineSel:(int)arg2 retPixelSpaceBounds:(struct CGRect *)arg3;
 - (id)lookupCachedPixelFormatForQuality:(int)arg1;
 - (id)lookupCachedPTForQuality:(int)arg1 lineSel:(int)arg2;
-- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
+- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5 graphBuildInfo:(id)arg6;
 - (void)setRate:(double)arg1;
 - (id)eventDocumentIDAndPath;
 - (void)removeToken:(id)arg1;
@@ -61,7 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)_copyOrCreateScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 tQualOut:(int *)arg4 mediaTimeOut:(CDStruct_1b6d18a9 *)arg5 isGapOut:(char *)arg6;
 - (CDStruct_1b6d18a9)calculateMediaTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 tQual:(int)arg3;
 - (int)_getLineSelForTime:(CDStruct_1b6d18a9)arg1 presentationRange:(CDStruct_e83c9415)arg2 tQual:(int)arg3 sQual:(int)arg4 retIsTemporallySecond:(_Bool *)arg5;
-- (_Bool)_isValidRequest:(CDStruct_1b6d18a9)arg1;
+- (_Bool)_isValidRequest:(CDStruct_1b6d18a9)arg1 retDetails:(id *)arg2;
 - (void)fixOddballColorSpace:(struct __CVBuffer *)arg1;
 - (id)_newTokenWithSampleCursor:(id)arg1 actualQuality:(int)arg2 priority:(int)arg3;
 - (void)prerollEnd;

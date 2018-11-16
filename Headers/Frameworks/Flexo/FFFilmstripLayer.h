@@ -8,25 +8,20 @@
 
 #import "FFFilmstripCellDelegate.h"
 
-@class CAReplicatorLayer, CAShapeLayer, FFAnchoredObject, NSArray, NSMutableArray, TLKThemeBackedLayer;
+@class CAReplicatorLayer, CAShapeLayer, FFAnchoredObject, NSArray, NSMutableArray, NSString, TLKThemeBackedLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFFilmstripLayer : CALayer <FFFilmstripCellDelegate>
 {
-    FFAnchoredObject *_skimmableObject;
-    CDStruct_e83c9415 _clippedRange;
     double _timePerHorizontalPixel;
     NSArray *_segments;
     NSArray *_times;
     NSArray *_timePerPoints;
     int _filmstripMode;
-    NSMutableArray *_cellArray;
     CAReplicatorLayer *_creaseLayer;
-    struct CGRect _visibleBounds;
     TLKThemeBackedLayer *_videoLayerInnerShadow;
     CALayer *_videoLayerOverlay;
     CAShapeLayer *_audioDuckingOverlay;
-    unsigned int _forceNoUpdate:1;
     unsigned int _showInnerShadow:1;
     unsigned int _filmstripOverlay:1;
     unsigned int _firstVideoFrameFull:1;
@@ -37,14 +32,39 @@ __attribute__((visibility("hidden")))
     double _offset;
     double _savedOffset;
     id <FFFilmstripLayerDelegate> _priorityDelegate;
+    BOOL _forceNoUpdate;
+    BOOL _cellsDirty;
+    BOOL _forceReloadCells;
+    FFAnchoredObject *_skimmableObject;
+    long long _index;
+    NSMutableArray *_cellArray;
+    long long _currentCell;
+    struct CGRect _visibleBounds;
+    CDStruct_e83c9415 _clippedRange;
+    CDStruct_e83c9415 _visibleTimeRange;
 }
 
+@property BOOL forceReloadCells; // @synthesize forceReloadCells=_forceReloadCells;
+@property BOOL cellsDirty; // @synthesize cellsDirty=_cellsDirty;
+@property(nonatomic) long long currentCell; // @synthesize currentCell=_currentCell;
+@property(retain) NSMutableArray *cellArray; // @synthesize cellArray=_cellArray;
+@property CDStruct_e83c9415 visibleTimeRange; // @synthesize visibleTimeRange=_visibleTimeRange;
+@property(nonatomic) long long index; // @synthesize index=_index;
+@property(nonatomic) BOOL forceNoUpdate; // @synthesize forceNoUpdate=_forceNoUpdate;
+@property(nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
+@property(nonatomic) int filmstripMode; // @synthesize filmstripMode=_filmstripMode;
+@property(nonatomic) double timePerHorizontalPixel; // @synthesize timePerHorizontalPixel=_timePerHorizontalPixel;
+@property(nonatomic) CDStruct_e83c9415 clippedRange; // @synthesize clippedRange=_clippedRange;
+@property(retain, nonatomic) FFAnchoredObject *skimmableObject; // @synthesize skimmableObject=_skimmableObject;
 @property(retain, nonatomic) id <FFFilmstripLayerDelegate> priorityDelegate; // @synthesize priorityDelegate=_priorityDelegate;
 - (id).cxx_construct;
-- (void)setContentsScale:(double)arg1;
+- (BOOL)filmstripCell:(id)arg1 shouldUpdateThumbnailWithSkimmable:(struct NSObject *)arg2;
 - (BOOL)useImageCache;
 - (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
+@property(readonly) BOOL shouldStretchCells;
+- (void)setContentsScale:(double)arg1;
 - (void)updateIfNeeded;
+@property(readonly, nonatomic) BOOL updatesEnabled;
 - (void)_updateDuckingShape;
 - (double)xLocationForTime:(CDStruct_1b6d18a9)arg1;
 - (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
@@ -53,6 +73,9 @@ __attribute__((visibility("hidden")))
 - (double)_cellWidth;
 - (double)_frameAspectRatio;
 - (void)layoutSublayers;
+- (BOOL)updateRequired;
+- (void)_updateCellHeight;
+- (void)stretchCells;
 @property(nonatomic) BOOL showDuckingChannel;
 - (void)clearStoredOffset;
 @property(nonatomic) BOOL storeOffset;
@@ -60,26 +83,40 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL firstVideoFrameFull;
 @property(nonatomic) BOOL showFilmstripOverlay;
 @property(nonatomic) BOOL showInnerShadow;
+- (void)computeNonLinearSpacerAudioWithSegment:(long long)arg1 segmentFrame:(struct CGRect)arg2 andTimeRange:(struct _TLKRange)arg3 endTime:(CDStruct_1b6d18a9)arg4 unclippedRange:(CDStruct_e83c9415)arg5;
+- (void)_removeCells:(id)arg1;
+- (void)_removeRemainingUnusedCells;
+- (void)_removeUnusedCells;
+- (void)_removeUnusedCells_PointsCalculation;
+- (void)_recomputeCells_PointsCalculation;
 - (void)_recomputeCells;
 - (void)_recomputeCellsRanges;
-- (void)_recomputeCellsTPP;
-- (id)_createFilmstripCellWithframe:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3 startIndex:(unsigned long long *)arg4;
-- (id)_reuseCellWithframe:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3;
-- (id)prepareCellForReuse:(id)arg1 withframe:(struct CGRect)arg2 andTimeRange:(CDStruct_e83c9415)arg3 originalUnClippedRange:(CDStruct_e83c9415)arg4;
-- (BOOL)_filmstripCell:(id)arg1 isRoughlyFramed:(struct CGRect)arg2 andTimed:(CDStruct_e83c9415)arg3;
+- (void)_recomputeCellsTPP_PointsCalculation;
+- (void)_recomputeCellsTimePerPixel;
+- (struct CGRect)_boundsForRange:(CDStruct_e83c9415)arg1;
+- (struct CGRect)_alignRect:(struct CGRect)arg1;
+- (double)locationForTime:(CDStruct_1b6d18a9)arg1;
+- (void)_insertCell:(id)arg1;
+- (id)_filmstripCellWithFrame:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3;
+- (id)_reuseCellWithFrame:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3;
+- (id)_pointsCalculationReuseCellWithFrame:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3;
+- (id)_prepareCellForReuse:(id)arg1 withframe:(struct CGRect)arg2 andTimeRange:(CDStruct_e83c9415)arg3 originalUnClippedRange:(CDStruct_e83c9415)arg4;
 - (void)_performIfVideoOnly:(CDUnknownBlockType)arg1;
 - (void)_performIfAudioOnly:(CDUnknownBlockType)arg1;
-@property(nonatomic) BOOL forceNoUpdate;
-@property(nonatomic) struct CGRect visibleBounds;
-@property(nonatomic) int filmstripMode;
+- (void)_updateVisibleTimeRange;
+- (void)_setVisibleBounds_PointsCalculation;
 - (void)setSegmentRanges:(id)arg1 timePerPoints:(id)arg2 andTimes:(id)arg3;
-@property(nonatomic) double timePerHorizontalPixel;
-@property(nonatomic) CDStruct_e83c9415 clippedRange;
-@property(retain, nonatomic) FFAnchoredObject *skimmableObject;
+- (void)rangeInvalidated:(id)arg1;
+- (void)addDebugInfo;
 - (id)_fullDescription;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

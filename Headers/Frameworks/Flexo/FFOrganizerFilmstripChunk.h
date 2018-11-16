@@ -6,7 +6,7 @@
 
 #import <Flexo/FFOrganizerAbstractChunk.h>
 
-@class CALayer, CATextLayer, FFFilmstrip, FFFilmstripBezelLayer, FFFilmstripSelectionLayer, FFOrganizerFilmstripChunkImportProgressLayer, FFOrganizerFilmstripChunkMaskingLayer, FFOrganizerFilmstripClipLabelLayer, FigTimeRangeAndObject, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class CALayer, CATextLayer, FFFilmstrip, FFFilmstripBezelLayer, FFFilmstripSelectionLayer, FFOrganizerFilmstripChunkImportProgressLayer, FFOrganizerFilmstripChunkMaskingLayer, FFOrganizerFilmstripClipLabelLayer, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripChunk : FFOrganizerAbstractChunk
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     FFOrganizerFilmstripChunkMaskingLayer *_filmstripMaskLayer;
     NSMutableArray *_selectionLayers;
     FFFilmstripSelectionLayer *_draggingSelectionLayer;
+    CDStruct_e83c9415 _draggingSelectionRange;
     BOOL _DraggingSelectionLayerShowHandles;
     CALayer *_selectionContainerLayer;
     FFFilmstripSelectionLayer *_skimmingHilightLayer;
@@ -54,6 +55,7 @@ __attribute__((visibility("hidden")))
     BOOL _focused;
     BOOL _showInactive;
     BOOL _dragingSelectionHighlight;
+    BOOL _ghosted;
     BOOL _shouldShowClipBadge;
 }
 
@@ -76,7 +78,6 @@ __attribute__((visibility("hidden")))
 - (id)editLayer;
 - (struct CGRect)visibleFilmstripFrameInSpaceOfLayer:(id)arg1;
 - (CDStruct_e83c9415)timeRange;
-- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (BOOL)isStill;
 - (void)setContentsScale:(double)arg1;
 - (double)contentsScale;
@@ -136,9 +137,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)isEquivalentToChunk:(id)arg1;
 - (id)initWithRangeOfMedia:(id)arg1 chunkRange:(CDStruct_e83c9415)arg2 filmstripRange:(CDStruct_e83c9415)arg3 chunkFrame:(struct CGRect)arg4 thumbHeight:(double)arg5 audioHeight:(double)arg6 numberOfThumbs:(double)arg7 showLabel:(BOOL)arg8 clipLabelSize:(int)arg9 maxThumbWidth:(double)arg10 timePerThumb:(CDStruct_1b6d18a9)arg11 contentsScale:(double)arg12 squareThumbs:(BOOL)arg13;
-
-// Remaining properties
-@property(readonly, nonatomic) FigTimeRangeAndObject *rangeOfMedia;
 
 @end
 

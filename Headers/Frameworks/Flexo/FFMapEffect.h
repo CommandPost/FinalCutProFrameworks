@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     int _mapType;
 }
 
++ (id)prefixForMapType:(int)arg1;
 + (void)registerEffects;
 @property(readonly, nonatomic) int mapType; // @synthesize mapType=_mapType;
 - (Class)defaultAdjustmentToolForEffect;
@@ -27,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAtDefaultSettings;
 - (id)displayNameForMapType:(int)arg1;
 - (id)effectIDForMapType:(int)arg1;
-- (id)prefixForMapType:(int)arg1;
 - (CDStruct_1b6d18a9)suggestedDuration;
 - (void)setLocationChannelValue:(id)arg1;
 - (id)locationChannelValue;

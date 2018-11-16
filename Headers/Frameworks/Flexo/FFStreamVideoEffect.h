@@ -14,13 +14,14 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_inputInfos;
 }
 
-- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
+- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5 graphBuildInfo:(id)arg6;
 - (id)_newGeneratorThumbnailForEffect:(id)arg1 context:(id)arg2;
 - (id)_newOfflineImageForEffect:(id)arg1 context:(id)arg2;
-- (id)_newLoadingImageForEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 duration:(CDStruct_1b6d18a9)arg3 context:(id)arg4 downstreamPT:(id)arg5;
+- (id)_newLoadingImageForEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 duration:(CDStruct_1b6d18a9)arg3 context:(id)arg4 downstreamPT:(id)arg5 graphBuildInfo:(id)arg6;
 - (id)_newImageFromNSImage:(id)arg1 context:(id)arg2;
 - (id)videoProps;
 - (struct CGRect)bounds;
+- (_Bool)shouldCheckCacheForTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 props:(id)arg3;
 - (void)setRate:(double)arg1;
 - (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
 - (id)getPassThruAtTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;

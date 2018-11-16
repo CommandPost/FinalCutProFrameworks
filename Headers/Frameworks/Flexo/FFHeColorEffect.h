@@ -7,10 +7,11 @@
 #import <Flexo/FFHeliumEffect.h>
 
 #import "FFEffectSelectionContainment.h"
+#import "FFEffectSubEffectContainment.h"
 
-@class FFEffect, NSArray, NSData, NSMutableArray;
+@class FFEffect, NSArray, NSData, NSMutableArray, NSString;
 
-@interface FFHeColorEffect : FFHeliumEffect <FFEffectSelectionContainment>
+@interface FFHeColorEffect : FFHeliumEffect <FFEffectSubEffectContainment, FFEffectSelectionContainment>
 {
     NSMutableArray *_effects;
     FFEffect *_soleOpEffect;
@@ -29,8 +30,6 @@
 - (void)removeDuplicateChannels:(id)arg1 inFolder:(id)arg2;
 - (id)_maskChannelNameForFolder:(id)arg1;
 - (unsigned int)nextAvailableMaskChannelIDForFolder:(id)arg1;
-- (void)removeMaskEffectFolderInFolder:(id)arg1 isEncompassingTransaction:(BOOL)arg2 maskEffect:(id)arg3;
-- (void)createMaskEffectFolderInFolder:(id)arg1 isEncompassingTransaction:(BOOL)arg2 maskEffect:(id)arg3;
 - (void)createIMovieEffectFolderInFolder:(id)arg1 isEncompassingTransaction:(BOOL)arg2;
 - (unsigned long long)lastOccuranceIndexForEffectID:(id)arg1;
 - (unsigned long long)numberOfInstancesForEffectID:(id)arg1;
@@ -78,7 +77,7 @@
 - (BOOL)hasAdjustments;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (void)setEffectStack:(id)arg1;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7 graphBuildInfo:(id)arg8;
 - (id)newEffectNodeWithInput:(id)arg1 forKey:(id)arg2 withOffset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4;
 - (struct HGNode *)newNodeForContext:(id)arg1;
 - (id)inputKeys;
@@ -104,6 +103,7 @@
 - (unsigned int)cachedMaskChannelIDOfIndex:(unsigned long long)arg1;
 - (void)packCacheDatumForMaskChannel:(id)arg1 withBytes:(char *)arg2 offset:(unsigned long long *)arg3;
 - (void)updateCacheMaskChannels;
+- (void)straightRemoveEffect:(id)arg1;
 - (void)removeObjectFromEffectsAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inEffectsAtIndex:(unsigned long long)arg2;
 - (id)effectsForEffectCount:(long long)arg1;
@@ -157,6 +157,12 @@
 - (unsigned long long)shapeIndexForOZChannel:(struct OZChannelBase *)arg1;
 - (unsigned long long)maskEffectIndexForChannel:(id)arg1;
 - (unsigned long long)maskEffectIndexForOZChannel:(struct OZChannelBase *)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

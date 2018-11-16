@@ -9,7 +9,7 @@
 #import "FFSharePopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFShareDestinationViewController, LKPopOverWindow;
+@class FFShareDestinationViewController, LKPopOverWindow, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFShareDestinationPopover : NSObject <FFSharePopoverDelegate, NSWindowDelegate>
@@ -35,6 +35,12 @@ __attribute__((visibility("hidden")))
 - (void)cleanup;
 - (struct CGSize)viewMinSize;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

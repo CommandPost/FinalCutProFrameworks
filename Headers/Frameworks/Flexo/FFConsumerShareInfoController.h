@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class CKSetting, CKSource, LKTextField, NSString, NSView;
+@class CKSetting, CKSource, LKTextField, NSString, NSTimer, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFConsumerShareInfoController : NSObject
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     LKTextField *_outputFileSizeTextField;
     NSView *_compatibilityImageView;
     BOOL _observing;
+    NSTimer *_outputFileSizeAnimationTimer;
 }
 
 + (id)propertiesDependentOnStompSettingProperties;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) NSView *clipDurationImageView; // @synthesize clipDurationImageView=_clipDurationImageView;
 @property(retain, nonatomic) CKSetting *setting; // @synthesize setting=_setting;
 @property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
+- (void)animateOutputFileSizeWithTimer:(id)arg1;
 - (id)contentsAnimationWithLayer:(id)arg1 infoBarIcon:(long long)arg2;
 - (id)contentsAnimation;
 - (id)infoBarIcon:(long long)arg1 state:(long long)arg2;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)stopObservingStompSettings:(id)arg1;
 - (void)startObservingStompSettings:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)centerVisibleInfo:(struct CGRect)arg1;
 @property(readonly, nonatomic) NSString *outputFileSizeToolTip;
 @property(readonly, nonatomic) NSString *outputFileSize;
 @property(readonly, nonatomic) NSString *clipDuration;

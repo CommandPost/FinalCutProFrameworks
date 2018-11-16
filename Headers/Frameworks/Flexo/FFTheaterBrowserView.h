@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class FFResponderLayerPushButton, FFTheaterBrowserCell, FFTheaterMenuPopover, LKTextField, NSArray;
+@class FFResponderLayerPushButton, FFTheaterBrowserCell, FFTheaterMenuPopover, LKTextField, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFTheaterBrowserView : FFImageBrowserView <NSWindowDelegate>
@@ -47,6 +47,12 @@ __attribute__((visibility("hidden")))
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -16,8 +16,10 @@
     CAKeyframeAnimation *_boundsAnimation;
     CABasicAnimation *_fadeInAnimation;
     CALayer *_imageLayer;
+    CDUnknownBlockType _readyToEditHandler;
 }
 
+@property(copy) CDUnknownBlockType readyToEditHandler; // @synthesize readyToEditHandler=_readyToEditHandler;
 - (void)abortAnimation;
 - (void)finished;
 - (void)animationCompleted;

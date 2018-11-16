@@ -23,6 +23,7 @@
     OZViewControllerGroup *_pEditorGroup;
     struct OZChannelRef *_selectedSampleRef;
     BOOL _middleSelected;
+    int _numSkipChannels;
 }
 
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;

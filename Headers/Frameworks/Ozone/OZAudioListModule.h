@@ -8,7 +8,7 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class LKButton, LKDial, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSArrayController, NSCollectionViewItem, NSMutableArray, NSPredicate, NSProThemeImageView, NSScrollView, NSTimer, NSView, OZAudioListCollectionView, OZAudioListPrototypeView, OZAudioPeakMeter;
+@class LKButton, LKDial, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSArrayController, NSCollectionViewItem, NSMutableArray, NSPredicate, NSProThemeImageView, NSScrollView, NSString, NSTimer, NSView, OZAudioListCollectionView, OZAudioListPrototypeView, OZAudioPeakMeter;
 
 @interface OZAudioListModule : OZProViewModule <NSTextFieldDelegate>
 {
@@ -109,6 +109,12 @@
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

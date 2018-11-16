@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSArray *m_audioChannelRoutingMap;
     NSString *m_sourceType;
     NSNumber *m_numSourceChannels;
+    NSString *m_defaultMediaSourceName;
 }
 
 + (BOOL)description:(id)arg1 withNumSourceChannels:(unsigned int)arg2 matchesSourceKey:(id)arg3 andChannelMap:(id)arg4;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *channelMap; // @synthesize channelMap=m_channelMap;
 @property(retain, nonatomic) NSString *sourceKey; // @synthesize sourceKey=m_sourceKey;
 @property(retain, nonatomic) FFMedia *media; // @synthesize media=m_media;
+- (void)setDefaultMediaSourceName:(id)arg1;
 - (id)defaultMediaSourceName;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)hash;

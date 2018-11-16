@@ -78,6 +78,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint _mouseDownEventPoint;
     CDStruct_1b6d18a9 _lastSuccessfullDeltaTime;
     double _lastSuccessfullMediaTime;
+    unsigned int _editCount;
 }
 
 - (BOOL)accessibilityIsIgnored;
@@ -93,8 +94,6 @@ __attribute__((visibility("hidden")))
 - (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
 - (id)cursorAtPoint:(struct CGPoint)arg1 event:(id)arg2;
 - (BOOL)shouldAutoscroll:(id)arg1;
-- (void)resignFocusOwner;
-- (void)becomeFocusOwner;
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (void)mouseExited:(id)arg1;
@@ -131,7 +130,9 @@ __attribute__((visibility("hidden")))
 - (id)mtKeyHandleLayers;
 - (id)speedLayer;
 - (void)layoutSublayers;
-- (void)_retrieveTimelineItemLayer;
+- (void)_endEditing;
+- (void)_beginEditingWithMouseLocation:(struct CGPoint)arg1;
+- (id)_timelineItemLayer;
 - (void)dealloc;
 - (id)initWithItem:(id)arg1 module:(id)arg2;
 

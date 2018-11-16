@@ -10,7 +10,6 @@
 {
     int _hitRow;
     int _hitColumn;
-    BOOL _selectionChanged;
     BOOL _didDrag;
 }
 

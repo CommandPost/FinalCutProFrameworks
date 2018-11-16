@@ -16,15 +16,15 @@
 }
 
 - (void)associateCenterPoint:(id)arg1;
-- (void)mouseUp:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(double)arg5;
-- (void)mouseDragged:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(double)arg5;
-- (void)mouseDown:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 didHandle:(char *)arg5 time:(double)arg6;
-- (void)drawFor:(int)arg1 withWidth:(int)arg2 height:(int)arg3 activePart:(int)arg4 paramAPI:(id)arg5 oscAPI:(id)arg6 atTime:(double)arg7;
+- (void)mouseUp:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(CDUnion_2516e51e)arg5;
+- (void)mouseDragged:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(CDUnion_2516e51e)arg5;
+- (void)mouseDown:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 didHandle:(char *)arg5 time:(CDUnion_2516e51e)arg6;
+- (void)drawFor:(int)arg1 withWidth:(int)arg2 height:(int)arg3 activePart:(int)arg4 paramAPI:(id)arg5 oscAPI:(id)arg6 atTime:(CDUnion_2516e51e)arg7;
 - (long long)currentState;
 - (double)centerRadiusBrush;
 - (id)initWithAPIManager:(id)arg1;
-- (BOOL)setSegmentAngle:(double)arg1 atTime:(double)arg2;
-- (double)segmentAngleAtTime:(double)arg1;
+- (BOOL)setSegmentAngle:(double)arg1 atTime:(CDUnion_2516e51e)arg2;
+- (double)segmentAngleAtTime:(CDUnion_2516e51e)arg1;
 
 @end
 

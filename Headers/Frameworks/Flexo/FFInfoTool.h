@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKPopOverWindow, LKTextField, NSArray, NSButton, NSDateFormatter, NSImageView, NSView;
+@class LKPopOverWindow, LKTextField, NSArray, NSButton, NSDateFormatter, NSImageView, NSString, NSView;
 
 @interface FFInfoTool : FFAdjustmentTool <NSWindowDelegate>
 {
@@ -48,6 +48,7 @@
 @property(retain, nonatomic) NSButton *eventClipInfoShareIcon; // @synthesize eventClipInfoShareIcon=_eventClipInfoShareIcon;
 @property(retain, nonatomic) NSImageView *eventClipInfoDurationIcon; // @synthesize eventClipInfoDurationIcon=_eventClipInfoDurationIcon;
 @property(retain, nonatomic) NSImageView *eventClipInfoClipIcon; // @synthesize eventClipInfoClipIcon=_eventClipInfoClipIcon;
+- (void)_firstResponderChanged:(id)arg1;
 - (void)updateInfoDuration:(id)arg1;
 - (void)popOverWindowDidCancel:(id)arg1;
 - (void)shareHistory:(id)arg1;
@@ -66,8 +67,15 @@
 - (BOOL)allowsEffectOSCs;
 - (BOOL)handlesSelection;
 - (void)resignActiveTool;
+- (void)becomeActiveTool;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

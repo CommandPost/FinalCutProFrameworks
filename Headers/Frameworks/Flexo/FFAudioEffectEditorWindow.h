@@ -16,6 +16,10 @@ __attribute__((visibility("hidden")))
 - (void)undo:(id)arg1;
 - (id)undoHandler;
 - (BOOL)canBecomeMainWindow;
+- (void)_forceTitleBarUpdate;
+- (void)_appBecameActive:(id)arg1;
+- (void)_windowBecameKey:(id)arg1;
+- (void)dealloc;
 - (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
 
 @end

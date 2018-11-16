@@ -16,6 +16,8 @@
 + (id)query:(id)arg1;
 + (id)queryWithPredicate:(id)arg1;
 + (id)queryAllInstances;
++ (void)performWithStrictUTLockChecking:(CDUnknownBlockType)arg1;
++ (int)setEnableStrictUTLockChecks:(int)arg1;
 + (id)copyClassDescription;
 + (Class)DSClassDescriptionClass;
 + (void)initialize;

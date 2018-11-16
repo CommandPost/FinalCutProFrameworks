@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)revealButtonPressed:(id)arg1;
 - (void)updateWithRefs:(id)arg1 items:(id)arg2 forOwner:(id)arg3;
 - (void)awakeFromNib;
+- (void)dealloc;
 
 @end
 

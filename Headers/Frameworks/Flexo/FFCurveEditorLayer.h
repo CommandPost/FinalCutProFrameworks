@@ -75,7 +75,7 @@ __attribute__((visibility("hidden")))
     BOOL _soloAnimation;
     BOOL _fineAdjustment;
     BOOL _keepSelection;
-    int _direction;
+    unsigned long long _direction;
     FFCurveEditorSelection *_rolloverSelection;
     CDStruct_1b6d18a9 _draggedTimeResidual;
     BOOL _isOverlay;
@@ -89,6 +89,7 @@ __attribute__((visibility("hidden")))
     FFChannelChangeController *_changeController;
     id <FFChannelChangeControllerDivorcedDelegate> _channelChangeDelegate;
     BOOL _isModelLayer;
+    BOOL _instantiatingIntrinsic;
 }
 
 - (id).cxx_construct;
@@ -131,6 +132,8 @@ __attribute__((visibility("hidden")))
 - (void)handleDeleteAllKeyframes:(id)arg1;
 - (void)handleDelete:(id)arg1;
 - (void)nudgeUpDown:(double)arg1;
+- (void)menuSetSmooth:(id)arg1;
+- (void)menuSetLinear:(id)arg1;
 - (void)menuDeleteKeyframes:(id)arg1;
 - (void)menuSetFadeOutCurve:(id)arg1;
 - (void)menuSetFadeInCurve:(id)arg1;
@@ -140,6 +143,9 @@ __attribute__((visibility("hidden")))
 - (void)menuSetEffect:(id)arg1;
 - (id)contextMenuForPart:(id)arg1;
 - (void)displayChannelMenu;
+- (unsigned long long)_curveEditDirectionForDragDirection:(unsigned long long)arg1;
+- (BOOL)wantsToHandlePredominantDrag;
+- (unsigned long long)_predominantDragDirection;
 - (BOOL)hasKeyframes;
 - (BOOL)shouldHandleAddKeyframe;
 - (BOOL)shouldHandlePreviousKeyframe;
@@ -149,6 +155,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldHandleNudge;
 - (BOOL)shouldHandleDeleteAllKeyframes;
 - (BOOL)shouldHandleDelete:(BOOL)arg1;
+- (unsigned int)numberOfKeyframes;
+- (unsigned int)numberOfSelectedKeyframes;
 - (BOOL)hasSelectedKeyframes;
 - (void)collapseEffect;
 - (void)enableEffect:(id)arg1;
@@ -172,7 +180,8 @@ __attribute__((visibility("hidden")))
 - (void)_setFadeCurve:(unsigned int)arg1 forFadeIn:(BOOL)arg2;
 - (struct CGPoint)offsetSelection:(id)arg1 withDelta:(struct CGPoint)arg2 modifiers:(unsigned int)arg3;
 - (double)offsetKeyframesInValue:(id)arg1 delta:(double)arg2;
-- (void)offsetKeyframesInTime:(id)arg1 delta:(double)arg2;
+- (double)offsetKeyframesInTime:(id)arg1 deltaTime:(CDStruct_1b6d18a9)arg2;
+- (void)offsetKeyframesInPixels:(id)arg1 delta:(double)arg2;
 - (void)offsetKeyframesInValueInDb:(const CDStruct_1b6d18a9 *)arg1 maxTime:(const CDStruct_1b6d18a9 *)arg2 time:(const CDStruct_1b6d18a9 *)arg3 valueInDb:(double)arg4;
 - (void)currentChannelsDeleteKeypointAt:(CDStruct_1b6d18a9)arg1;
 - (void)currentChannelsAddKeypointAt:(CDStruct_1b6d18a9)arg1;
@@ -195,6 +204,7 @@ __attribute__((visibility("hidden")))
 - (void)beginAreaSelection:(struct CGPoint)arg1;
 - (void)selectRangeKeys:(id)arg1;
 - (void)setSelectedKeyframes:(id)arg1;
+- (void)setMenuSelection:(id)arg1;
 - (void)setSelection:(id)arg1;
 - (void)updateSelectionLocation:(struct CGPoint)arg1;
 - (void)selectKeyframesFromTime:(CDStruct_1b6d18a9)arg1 toTime:(CDStruct_1b6d18a9)arg2;
@@ -202,6 +212,7 @@ __attribute__((visibility("hidden")))
 - (void)clearSelectedKeyframes;
 - (void)clearSelection;
 - (id)selectionAtPoint:(struct CGPoint)arg1;
+- (id)fadeSelectionAtPoint:(struct CGPoint)arg1;
 - (id)curveSegmentAtTimeCoordinate:(double)arg1;
 - (BOOL)hasKeyframeSelection;
 - (void)updateSelection;
@@ -209,10 +220,10 @@ __attribute__((visibility("hidden")))
 - (void)selectedTimeRangeWithMinTime:(CDStruct_1b6d18a9 *)arg1 maxTime:(CDStruct_1b6d18a9 *)arg2;
 - (BOOL)isValueDisplayHidden;
 - (void)updateValueDisplay;
-- (void)updateValueDisplayForDirection:(int)arg1;
+- (void)updateValueDisplayForDirection:(unsigned long long)arg1;
 - (id)valueTipStringForTime:(CDStruct_1b6d18a9)arg1 value:(double *)arg2;
 - (void)showValueDisplayAtPoint:(struct CGPoint)arg1 string:(id)arg2;
-- (struct CGPoint)adjustValueDisplayLocationForDirection:(int)arg1 point:(struct CGPoint)arg2;
+- (struct CGPoint)adjustValueDisplayLocationForDirection:(unsigned long long)arg1 point:(struct CGPoint)arg2;
 - (CDStruct_1b6d18a9)adjustTimeToFrameBoundary:(CDStruct_1b6d18a9)arg1 floorValue:(BOOL)arg2;
 - (void)removeMaskLayer;
 - (void)setMaskLayer:(struct CGRect)arg1;
@@ -223,7 +234,7 @@ __attribute__((visibility("hidden")))
 - (void)updateFadeColors;
 - (void)setKeyframeAsset:(id)arg1;
 - (id)channel;
-- (void)setChannel:(id)arg1;
+- (void)setChannel:(id)arg1 keepSelection:(BOOL)arg2;
 - (void)setEffect:(id)arg1 andChannel:(id)arg2 changeSelection:(BOOL)arg3;
 - (void)setEffect:(id)arg1 andChannel:(id)arg2;
 - (id)effect;
@@ -237,6 +248,7 @@ __attribute__((visibility("hidden")))
 - (void)updateCurveLayers;
 - (unsigned long long)findAssociatedKeyframeLayer:(CDStruct_1b6d18a9)arg1;
 - (unsigned long long)findAssociatedCurveLayer:(CDStruct_1b6d18a9)arg1;
+- (void)instantiateIntrinsicEffectIfNeeded;
 - (struct CGPoint)fadeOutPosition;
 - (struct CGPoint)fadeInPosition;
 - (double)fadeWidth:(BOOL)arg1;
@@ -273,6 +285,12 @@ __attribute__((visibility("hidden")))
 - (void)removeObservers:(id)arg1;
 - (void)addObservers:(id)arg1;
 - (id)initWithChannel:(id)arg1 rootChannel:(id)arg2 effect:(id)arg3 actionName:(id)arg4 forItem:(id)arg5 isAudio:(BOOL)arg6 isOverlay:(BOOL)arg7 timeline:(id)arg8;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

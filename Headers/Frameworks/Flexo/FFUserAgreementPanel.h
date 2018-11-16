@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSImage *_icon;
     NSString *_title;
     NSAttributedString *_userAgreement;
+    NSString *_privacyDescription;
     BOOL _private;
     id _modalDelegate;
     SEL _modalDidEndSelector;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 + (id)userAgreementPanel;
 @property(nonatomic, getter=isPrivate) BOOL private; // @synthesize private=_private;
+@property(copy, nonatomic) NSString *privacyDescription; // @synthesize privacyDescription=_privacyDescription;
 @property(copy, nonatomic) NSAttributedString *userAgreement; // @synthesize userAgreement=_userAgreement;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSImage *icon; // @synthesize icon=_icon;
@@ -31,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)cancel:(id)arg1;
 - (void)ok:(id)arg1;
 @property(readonly, nonatomic) NSImage *privacyIcon;
-@property(readonly, nonatomic) NSString *privacy;
 - (void)beginSheetModalForWindow:(id)arg1 modalDelegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
 - (void)beginSheetModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)runModal;

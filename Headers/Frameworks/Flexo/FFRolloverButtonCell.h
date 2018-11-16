@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) NSImage *rolloverImage; // @synthesize rolloverImage=_rolloverImage;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)_updateMouseTracking;
 - (void)mouseExited:(id)arg1;

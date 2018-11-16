@@ -15,8 +15,6 @@
     double _snapStartX;
     double _snapStartY;
     double _draggingRotZ;
-    double _startRoundness;
-    double _startDragRoundness;
     float _pivotRadius;
     PCVector2_7e488b7d _pivotRadiusBorder;
     struct CGSize _pivotHalf;
@@ -36,6 +34,7 @@
     BOOL _mouseDown;
     BOOL _elementBeingDragged;
     BOOL _rotationSnapped;
+    BOOL _minimalDraw;
 }
 
 + (PCPtr_df275998)getRotationTexture:(int)arg1;
@@ -52,7 +51,6 @@
 - (void)drawRotationAtPos:(PCVector2_79efa81a)arg1 withMat:(PCMatrix44Tmpl_e98c85ee)arg2;
 - (void)drawPivotHandleConnectorAtPos:(PCVector2_79efa81a)arg1;
 - (void)draw;
-- (void)drawRoundnessHandleWithMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 Points:(PCVector2_79efa81a *)arg2 Edges:(PCVector2_79efa81a *)arg3 RenderMode:(int)arg4 TexOffset:(const PCVector2_79efa81a *)arg5 Visibility:(const vector_69938c0b *)arg6;
 - (struct CGRect)activeHandleRect;
 - (BOOL)shouldSnapRotation:(double)arg1 withNewAngle:(double *)arg2;
 - (BOOL)toolHandlesTranslation;
@@ -77,10 +75,6 @@
 - (PCPtr_df275998)getCurrentPivotTexture;
 - (PCPtr_df275998)getCurrentHandlesTexture:(int)arg1;
 - (BOOL)isActiveHandle:(int)arg1;
-- (double)getRoundness;
-- (void)setRoundness:(double)arg1;
-- (double)getRoundnessRadius;
-- (BOOL)canUseRoundness;
 - (void)move:(const PCVector3_457fd1f0 *)arg1;
 - (void)rotate:(id)arg1 angle:(double)arg2;
 - (void)updateScale:(const PCVector3_457fd1f0 *)arg1 scaleFromCentre:(_Bool)arg2 hitPart:(int)arg3;
@@ -88,7 +82,7 @@
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
-- (void)updateInfoBarWithScale:(const PCVector3_457fd1f0 *)arg1 andRotation:(double)arg2 andRotationDelta:(double)arg3 andRoundness:(double)arg4;
+- (void)updateInfoBarWithScale:(const PCVector3_457fd1f0 *)arg1 andRotation:(double)arg2 andRotationDelta:(double)arg3;
 - (void)updateInfoBarWithPosition;
 - (BOOL)bgIsBeingTranslated;
 - (id)accessibilityHandleName;
@@ -97,6 +91,7 @@
 - (id)getCursorWithEvent:(id)arg1;
 - (id)getDefaultCursor;
 - (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4 minimalDraw:(BOOL)arg5;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4 scaleOnly:(BOOL)arg5;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (void)_init;

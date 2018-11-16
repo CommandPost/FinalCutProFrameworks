@@ -18,10 +18,14 @@ __attribute__((visibility("hidden")))
     NSArray *_children;
     NSString *_nodeType;
     BOOL _leafNode;
+    BOOL _isExtraKey;
 }
 
++ (id)extraKeysSupportedBy:(id)arg1 excludingKeys:(id)arg2;
++ (id)extraKeys;
 + (id)nodeWithParent:(id)arg1 nodeKey:(id)arg2 nodeIndex:(long long)arg3 type:(id)arg4;
 + (id)nodeWithRootObject:(id)arg1;
+@property BOOL isExtraKey; // @synthesize isExtraKey=_isExtraKey;
 @property(retain, nonatomic) NSString *nodeType; // @synthesize nodeType=_nodeType;
 @property(retain, nonatomic) NSArray *children; // @synthesize children=_children;
 @property(nonatomic) FFDataViewerNode *parent; // @synthesize parent=_parent;
@@ -29,12 +33,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
 @property(nonatomic) long long index; // @synthesize index=_index;
 @property(nonatomic) BOOL leafNode; // @synthesize leafNode=_leafNode;
+- (id)retrieveObjectFromCatalog;
+- (BOOL)isMediaIdentifier;
+- (BOOL)isIdentifier;
 - (id)description;
 - (id)valueDescription;
 - (id)typeDescription;
 - (id)keyDescription;
 - (id)childAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfChildren;
+- (id)_getXMLKeyFrom:(id)arg1;
 - (void)dealloc;
 - (id)initWithParent:(id)arg1 nodeKey:(id)arg2 nodeIndex:(long long)arg3 type:(id)arg4;
 - (id)initWithRootObject:(id)arg1;

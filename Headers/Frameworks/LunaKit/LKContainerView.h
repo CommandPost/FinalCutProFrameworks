@@ -128,7 +128,6 @@
 - (BOOL)acceptsFirstMouse:(id)arg1;
 - (BOOL)acceptsFirstResponder;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)_proAutomateLiveSeamDragging;
 - (void)_updateNode1Size:(struct CGSize)arg1 node2Size:(struct CGSize)arg2;
 - (void)updateItemViewFrames;
 - (id)representedModule;

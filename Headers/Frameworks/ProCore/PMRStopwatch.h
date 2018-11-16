@@ -15,10 +15,14 @@
     NSString *_domain;
     NSMutableArray *_splitTimeStack;
     unsigned long long _maxSplitTimes;
+    unsigned long long _coreAnimationTotalTime;
 }
 
++ (void)benchmarkBlockWithTitle:(id)arg1 outputTo:(id)arg2 iterations:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
++ (void)benchmarkWithIterations:(unsigned long long)arg1 outputTo:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 + (void)setSharedStopwatch:(id)arg1;
 + (id)sharedStopwatch;
+@property unsigned long long coreAnimationTotalTime; // @synthesize coreAnimationTotalTime=_coreAnimationTotalTime;
 @property(nonatomic) unsigned long long maxSplitTimes; // @synthesize maxSplitTimes=_maxSplitTimes;
 @property(copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property(readonly, nonatomic) NSArray *splitTimes; // @synthesize splitTimes=_splitTimes;
@@ -27,6 +31,10 @@
 - (void)logWithFormat:(int)arg1;
 - (id)descriptionWithFormat:(int)arg1 key:(id)arg2 comment:(id)arg3;
 - (void)logEvent:(id)arg1 comment:(id)arg2;
+- (void)addSplit:(id)arg1;
+- (void)logToLocation:(id)arg1 key:(id)arg2;
+- (void)benchmarkBlockWithTitle:(id)arg1 outputTo:(id)arg2 iterations:(unsigned long long)arg3 currentIteration:(unsigned long long)arg4 usingBlock:(CDUnknownBlockType)arg5;
+- (void)benchmarkWithIterations:(unsigned long long)arg1 outputTo:(id)arg2 currentIteration:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)endTimingGroup;
 - (void)beginTimingGroupForMethod:(SEL)arg1 inClass:(Class)arg2 comment:(id)arg3;
 - (void)_purgeOldestSplitTimeIfNeeded;

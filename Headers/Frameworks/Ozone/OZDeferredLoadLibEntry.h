@@ -6,15 +6,33 @@
 
 #import <Ozone/OZLibraryEntry.h>
 
+@class MLMediaGroup, MLMediaLibrary, MLMediaSource;
+
 @interface OZDeferredLoadLibEntry : OZLibraryEntry
 {
     Class _entryClass;
     BOOL _isLoaded;
+    MLMediaLibrary *_mediaLibrary;
+    MLMediaSource *_mediaSource;
+    MLMediaGroup *_mediaGroup;
+    unsigned long long _ordinalGroup;
 }
 
+@property unsigned long long ordinalGroup; // @synthesize ordinalGroup=_ordinalGroup;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)loadIconImage;
+- (void)loadMediaObjects;
+- (void)loadRootMediaGroup;
+- (void)loadMediaSources;
+- (void)loadMediaGroups;
+@property(retain) MLMediaGroup *mediaGroup;
+@property(retain) MLMediaSource *mediaSource;
+@property(retain) MLMediaLibrary *mediaLibrary;
+- (BOOL)needsSyntheticAllItemsLibraryEntry;
 - (BOOL)isLoaded;
 - (BOOL)doDeferredLoad;
 - (void)encodeWithCoder:(id)arg1;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithParent:(id)arg1 name:(id)arg2 entryClass:(Class)arg3;
 

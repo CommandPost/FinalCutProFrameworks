@@ -9,6 +9,8 @@
 #import "FFJSONCoding.h"
 #import "NSCopying.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface FFTheaterQuality : NSObject <FFJSONCoding, NSCopying>
 {
@@ -19,14 +21,18 @@ __attribute__((visibility("hidden")))
 + (id)qualityWithRating:(int)arg1 fileSize:(long long)arg2;
 @property(readonly) long long fileSize; // @synthesize fileSize=_fileSize;
 @property(readonly) int rating; // @synthesize rating=_rating;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithJSONCoder:(id)arg1;
 - (id)initWithJSONCoder:(id)arg1;
 - (id)initWithRating:(int)arg1 fileSize:(long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

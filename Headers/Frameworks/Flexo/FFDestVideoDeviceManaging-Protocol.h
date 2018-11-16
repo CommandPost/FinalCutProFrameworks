@@ -9,6 +9,7 @@
 @protocol FFDestVideoDeviceManaging
 - (void)updateOutputDevice:(MIODeviceConnection *)arg1;
 - (void)disableVideoOutOnRelease;
+- (BOOL)hasConnection;
 - (NSString *)deviceUID;
 - (id)initWithDeviceUID:(NSString *)arg1;
 @end

@@ -8,7 +8,7 @@
 
 #import "FFEnhanceAudioDelegate.h"
 
-@class FFChannelChangeController, FFInspectorModuleTextField, LKButton, NSMutableSet, NSProProgressIndicator;
+@class FFChannelChangeController, FFInspectorModuleTextField, LKButton, NSMutableSet, NSProProgressIndicator, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioAnalysisParameterController : OZViewController <FFEnhanceAudioDelegate>
@@ -40,6 +40,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

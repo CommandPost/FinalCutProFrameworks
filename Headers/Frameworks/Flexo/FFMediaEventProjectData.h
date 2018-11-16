@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSSet *ownedMedia; // @synthesize ownedMedia=_ownedMedia;
 @property(readonly, nonatomic) NSSet *ownedClips; // @synthesize ownedClips=_ownedClips;
 - (id)addClipFromPasteboardCreatingReference:(id)arg1 displayName:(id)arg2 manageFileType:(int)arg3 processNow:(BOOL)arg4 validateFiles:(BOOL)arg5;
+- (id)addClipsWithRangesFromAssetRefs:(id)arg1 foundExistingFiles:(id)arg2 withURLsInfo:(id)arg3 manageFileType:(int)arg4 processNow:(BOOL)arg5 warnClipsAlreadyExist:(BOOL)arg6 isUserInitiatedImport:(BOOL)arg7 isImportingFromImovie:(BOOL)arg8 keywordSets:(id)arg9 metadata:(id)arg10 validateFiles:(BOOL)arg11;
 - (id)addClipsWithRangesFromURLs:(id)arg1 withURLsInfo:(id)arg2 manageFileType:(int)arg3 processNow:(BOOL)arg4 warnClipsAlreadyExist:(BOOL)arg5 isUserInitiatedImport:(BOOL)arg6 isImportingFromImovie:(BOOL)arg7 keywordSets:(id)arg8 metadata:(id)arg9 validateFiles:(BOOL)arg10;
 - (id)addClipsFromURLs:(id)arg1 withURLsInfo:(id)arg2 manageFileType:(int)arg3 processNow:(BOOL)arg4 warnClipsAlreadyExist:(BOOL)arg5 isUserInitiatedImport:(BOOL)arg6 isImportingFromImovie:(BOOL)arg7 keywordSets:(id)arg8 metadata:(id)arg9 validateFiles:(BOOL)arg10;
 - (void)cleanupInProject:(id)arg1;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)fileNameToAssetMap;
 - (id)mediaIdentifierToAssetMap;
 - (id)newAnchoredSequenceFromPasteboard:(id)arg1 displayName:(id)arg2 mediaByReferenceOnly:(BOOL)arg3 manageFileType:(int)arg4 validateFiles:(BOOL)arg5;
+- (id)newAnchoredSequenceFromAssetRef:(id)arg1 withURLInfo:(id)arg2 manageFileType:(int)arg3 keywords:(id)arg4 validateFiles:(BOOL)arg5;
 - (id)newAnchoredSequenceFromURL:(id)arg1 withURLInfo:(id)arg2 manageFileType:(int)arg3 keywords:(id)arg4 validateFiles:(BOOL)arg5 foundExistingFile:(char *)arg6;
 - (id)resolveMediaIdentifier:(id)arg1;
 - (id)displayOwnedClips;

@@ -7,6 +7,8 @@
 @class NSString;
 
 @protocol REDPlugin
++ (Class)gpuImageProcessingClass;
++ (Class)asyncDecodingClass;
 + (Class)rocketDecodingClass;
 + (Class)imageProcessingClass;
 + (Class)clipReadingClass;

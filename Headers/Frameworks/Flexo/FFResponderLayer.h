@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityAttributeNames;
 - (id)_accessibilityParent;
 - (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
+- (BOOL)wantsToHandlePredominantDrag;
 - (void)setSkimmingPlayheadHidden:(BOOL)arg1;
 - (BOOL)popUpMenu:(id)arg1 positioningItem:(id)arg2 atPoint:(struct CGPoint)arg3;
 - (struct CGPoint)eventLocationInLayer:(id)arg1;

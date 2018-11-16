@@ -10,6 +10,7 @@
 {
 }
 
++ (id)newVideoPropsWithPaspH:(int)arg1 paspV:(int)arg2 basedOnVideoProps:(id)arg3;
 + (id)newVideoPropsAfterTrim:(double)arg1 right:(double)arg2 top:(double)arg3 bottom:(double)arg4 videoProps:(id)arg5 bounds:(struct CGRect)arg6;
 + (id)newVideoPropsAfterRotation:(long long)arg1 videoProps:(id)arg2;
 - (BOOL)canCacheMD5;

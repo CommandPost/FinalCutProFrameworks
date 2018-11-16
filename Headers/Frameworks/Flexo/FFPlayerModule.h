@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class FFContext, FFPlayer, FFProvider, FFSourceAudio, FFSourceVideo, LKModuleLayout, NSDictionary, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>, NSView;
+@class FFContext, FFPlayer, FFProvider, FFSourceAudio, FFSourceVideo, LKModuleLayout, NSDictionary, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>, NSString, NSView;
 
 @interface FFPlayerModule : LKViewModule <NSWindowDelegate>
 {
@@ -37,6 +37,7 @@
     FFSourceAudio *_observingAudioSource;
     FFSourceVideo *_observingVideoSource;
     NSDictionary *_fullScreenOptions;
+    BOOL _isInFullScreen;
     id _savedFirstResponder;
     BOOL _autoHideCursorInFullScreen;
     BOOL _loadEventProjects;
@@ -62,6 +63,10 @@
 - (BOOL)isInFullScreenMode;
 - (void)exitFullScreenModeWithOptions:(id)arg1;
 - (BOOL)enterFullScreenMode:(id)arg1 withOptions:(id)arg2;
+- (void)didExitFullscreen;
+- (void)willExitFullscreen;
+- (void)willEnterFullscreen;
+- (void)didEnterFullscreen;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)undoManager;
 - (void)_endStepPlayback;
@@ -202,6 +207,12 @@
 - (id)initWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 sublayout:(id)arg4;
 - (BOOL)loadView;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

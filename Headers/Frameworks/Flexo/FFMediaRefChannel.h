@@ -9,7 +9,7 @@
 #import "CHChannelHasCachedDataToPurgeProtocol.h"
 #import "TLKPosterFrameInfoProtocol.h"
 
-@class FFStreamVideo;
+@class FFStreamVideo, NSString;
 
 @interface FFMediaRefChannel : CHChannel <TLKPosterFrameInfoProtocol, CHChannelHasCachedDataToPurgeProtocol>
 {
@@ -19,9 +19,12 @@
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (void)addFactory;
+- (void)setRate:(double)arg1;
+- (void)prerollEnd;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
 - (id)newNSThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 contentsScale:(double)arg3;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 priority:(int)arg3 spatialQuality:(int)arg4 temporalQuality:(int)arg5;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 priority:(int)arg5 spatialQuality:(int)arg6 temporalQuality:(int)arg7;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 priority:(int)arg3 spatialQuality:(int)arg4 temporalQuality:(int)arg5 graphBuildInfo:(id)arg6;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 priority:(int)arg5 spatialQuality:(int)arg6 temporalQuality:(int)arg7 graphBuildInfo:(id)arg8;
 - (id)newScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 priority:(int)arg5 spatialQuality:(int)arg6 temporalQuality:(int)arg7;
 - (void)purgeChannelCachedData:(id)arg1;
 - (id)copyStreamForSourceObject:(id)arg1;
@@ -53,6 +56,12 @@
 - (BOOL)defaultPosition;
 - (id)label;
 - (CDStruct_1b6d18a9)posterTime;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

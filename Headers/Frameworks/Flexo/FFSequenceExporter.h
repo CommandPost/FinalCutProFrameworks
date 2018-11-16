@@ -41,7 +41,7 @@
 - (void)submitBatch:(id)arg1 toCluster:(id)arg2 forWindow:(id)arg3 performInForeground:(BOOL)arg4;
 - (void)openInCompressor;
 - (void)showSharePanelWithSource:(id)arg1 destination:(id)arg2 destinationURL:(id)arg3 parentWindow:(id)arg4;
-- (void)queueShareOperationsForBatches:(id)arg1;
+- (void)queueShareOperationsForBatches:(id)arg1 addToTheater:(BOOL)arg2;
 - (void)missingMediaAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)shareToDestination:(id)arg1 parentWindow:(id)arg2;
 - (void)stopPlayback;
@@ -52,6 +52,12 @@
 - (void)dealloc;
 - (id)initWithSelection:(id)arg1 currentSequenceTime:(CDStruct_1b6d18a9)arg2;
 - (id)initWithSelection:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

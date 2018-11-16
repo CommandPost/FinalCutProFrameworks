@@ -59,7 +59,7 @@
 @property(nonatomic) BOOL allowsMultipleSelection; // @synthesize allowsMultipleSelection=_allowsMultipleSelection;
 @property(retain, nonatomic) NSArray *cachedSortedIndexPaths; // @synthesize cachedSortedIndexPaths=_cachedSortedIndexPaths;
 @property(retain, nonatomic) NSDictionary *cachedVisibleCellsByIndexPath; // @synthesize cachedVisibleCellsByIndexPath=_cachedVisibleCellsByIndexPath;
-@property(readonly, nonatomic) NSArray *selectedIndexPaths; // @synthesize selectedIndexPaths=_selectedIndexPaths;
+@property(readonly, copy, nonatomic) NSArray *selectedIndexPaths; // @synthesize selectedIndexPaths=_selectedIndexPaths;
 @property(nonatomic) id <FFOutlineViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) id <FFOutlineViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (void)dealloc;

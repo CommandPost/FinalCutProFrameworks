@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)hideFloatingDurationString:(id)arg1;
 - (void)durationPopOverDidResignKey:(id)arg1;
 - (void)displaySelectionDurationAtPoint:(struct CGPoint)arg1 forRangeObject:(id)arg2;
+- (BOOL)durationPopoverShouldShowAndOverrideSkimmerInfoSetting;
 - (void)_setPlayheadInfoFromChunk:(id)arg1 keywords:(id)arg2 analysisKeywords:(id)arg3 markers:(id)arg4 playheadTime:(CDStruct_1b6d18a9)arg5;
 - (void)playheadInfoShouldShow:(BOOL)arg1;
 - (void)displayClipActionsPopoverAtPoint:(struct CGPoint)arg1 forRangeObject:(id)arg2;
@@ -62,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)setSkimming:(BOOL)arg1;
 - (void)playPause;
 - (void)_addEditButtonToLayoutAtPosition:(struct CGPoint)arg1;
-- (struct CGPoint)calculateEditButtonPositionForChunk:(id)arg1;
+- (struct CGPoint)calculateEditButtonPositionForChunk:(id)arg1 andOptionalEvent:(id)arg2;
 - (void)_createEditButton;
 - (id)currentEditButtonToolTipString;
 - (void)_handleEditButtonClicked:(id)arg1;

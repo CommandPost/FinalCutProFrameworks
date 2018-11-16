@@ -21,6 +21,7 @@
 - (struct OZChannelEnum *)fontFamilyChannelForChannel:(struct OZChannelBase *)arg1;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 indent:(BOOL)arg3;
+- (void)inspectorWillDealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end

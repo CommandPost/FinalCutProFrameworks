@@ -6,11 +6,12 @@
 
 #import "NSProView.h"
 
-@class OZViewController;
+@class NSTrackingArea, OZViewController;
 
 @interface OZFlippedView : NSProView
 {
     BOOL _isBrick;
+    BOOL _isBrickWithinBrick;
     BOOL _isCollapsed;
     BOOL _isOuterGroup;
     BOOL _isInnerGroup;
@@ -24,11 +25,14 @@
     BOOL _isIgnoringMouseEvents;
     BOOL _isPrimarySeparatorEnabled;
     BOOL _isSecondarySeparatorEnabled;
+    BOOL _forceDrawSelectionHighlight;
     struct CGPoint _downLocation;
     SEL _doubleClickAction;
     id _pTarget;
     id _pResizeDelegate;
     OZViewController *_pController;
+    NSTrackingArea *_trackingArea;
+    OZViewController *_trackingAreaOwner;
 }
 
 + (double)BrickVerticalGap;
@@ -40,17 +44,24 @@
 @property(nonatomic) SEL doubleClickAction; // @synthesize doubleClickAction=_doubleClickAction;
 @property(nonatomic) BOOL isSelectable; // @synthesize isSelectable=_isSelectable;
 @property(nonatomic) BOOL isSelected; // @synthesize isSelected=_isSelected;
+@property(nonatomic) BOOL forceDrawSelectionHighlight; // @synthesize forceDrawSelectionHighlight=_forceDrawSelectionHighlight;
 @property(nonatomic) BOOL isBrickHeading; // @synthesize isBrickHeading=_isBrickHeading;
 @property(nonatomic) BOOL isRow; // @synthesize isRow=_isRow;
 @property(nonatomic) BOOL isInnerGroup; // @synthesize isInnerGroup=_isInnerGroup;
 @property(nonatomic) BOOL isOuterGroup; // @synthesize isOuterGroup=_isOuterGroup;
 @property(nonatomic) BOOL isCollapsed; // @synthesize isCollapsed=_isCollapsed;
+@property(nonatomic) BOOL isBrickWithinBrick; // @synthesize isBrickWithinBrick=_isBrickWithinBrick;
 @property(nonatomic) BOOL isBrick; // @synthesize isBrick=_isBrick;
 - (id).cxx_construct;
 - (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
 - (void)setIsSecondarySeparatorEnabled:(_Bool)arg1;
 - (void)setIsPrimarySeparatorEnabled:(_Bool)arg1;
 - (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
+- (void)updateTrackingAreas;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)_installTrackingArea:(id)arg1;
+- (void)enableViewTrackingArea:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;

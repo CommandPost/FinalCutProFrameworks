@@ -50,6 +50,7 @@
     int _cachedMultiangleDetail;
     int _cachedNumPostAudioEffectsChannels;
     NSDictionary *_audioProperties;
+    int _combinedEffectCount;
     int _pendingAudioComponentsLayoutMapChange;
 }
 
@@ -60,6 +61,7 @@
 + (void)initialize;
 + (id)copyClassDescription;
 + (id)roleForXMLValue:(id)arg1 element:(id)arg2 error:(id *)arg3;
+@property(nonatomic) int combinedEffectCount; // @synthesize combinedEffectCount=_combinedEffectCount;
 @property(retain, nonatomic) NSArray *cachedSortedLocalizedRoles; // @synthesize cachedSortedLocalizedRoles=_cachedSortedLocalizedRoles;
 @property(nonatomic) int cachedAVContainmentType; // @synthesize cachedAVContainmentType=_cachedAVContainmentType;
 @property(nonatomic) int cachedMultiangleDetail; // @synthesize cachedMultiangleDetail=_cachedMultiangleDetail;
@@ -69,6 +71,7 @@
 @property(retain, nonatomic) NSSet *anchoredItems; // @synthesize anchoredItems=_anchoredItems;
 @property(nonatomic) struct PC_CMTimePair anchorPair; // @synthesize anchorPair=_anchorPair;
 @property(nonatomic) id parentItem; // @synthesize parentItem=_parentItem;
+- (BOOL)update_convertHEColorEffectToMaskedEffects;
 - (BOOL)update_conformLumaBumpsFromChannelsToData;
 - (BOOL)update_isTitle;
 - (BOOL)update_hasObjectNonDefaultEffectStack;
@@ -91,6 +94,7 @@
 - (id)thumbMD5InfoForTime:(CDStruct_1b6d18a9)arg1 imageQuality:(int)arg2;
 - (void)revealInFinder:(id)arg1;
 - (BOOL)canRevealInFinder;
+- (BOOL)canBeEnhanced;
 - (id)sequenceInflateIfNecessary:(BOOL)arg1;
 - (void)_checkObjectAndDecendentsForAlignmentToSequence:(id)arg1;
 - (BOOL)_conformsToSequenceAudioOrVideoRateSettings:(CDStruct_e83c9415)arg1 sequence:(id)arg2;
@@ -120,6 +124,7 @@
 - (BOOL)hasArtisticRetime;
 - (BOOL)isRetimed;
 - (BOOL)canBeRetimed;
+- (id)effect;
 - (void)setIsTitle:(BOOL)arg1;
 - (BOOL)isTitle;
 - (void)setHasNonDefaultAudioEffectStack:(BOOL)arg1;
@@ -200,6 +205,7 @@
 - (CDStruct_1b6d18a9)sampleDurationForTemporalResolutionMode:(int)arg1;
 - (int)_resolveTemporalResolution:(int)arg1;
 - (CDStruct_1b6d18a9)sampleDuration;
+- (void)updateEffectiveDurationForMD5;
 - (void)setStartingTimecode:(CDStruct_1b6d18a9)arg1;
 @property(retain, nonatomic) FFVideoProps *videoProps;
 - (void)setTimecodeDisplayDropFrame:(long long)arg1;
@@ -237,9 +243,12 @@
 - (int)cachedNumPostAudioEffectsChannels;
 - (void)setAudioChannelRoutingMap:(id)arg1;
 - (id)audioChannelRoutingMap;
+- (CDStruct_1b6d18a9)audioSampleDuration;
 - (double)audioSampleRate;
+- (double)nativeAudioSampleRate;
 - (long long)audioChannelCount;
 - (long long)audioChannelCount:(int)arg1;
+- (long long)nativeAudioChannelCount:(int)arg1;
 - (double)videoAspectRatio;
 - (id)mediaVideoProps;
 - (id)sequence;
@@ -273,7 +282,9 @@
 - (BOOL)isAudioComponentSource;
 - (BOOL)isAnimaticGenerator;
 - (BOOL)isBackgroundGenerator;
+- (BOOL)isMapStill;
 - (BOOL)isMapGenerator;
+- (BOOL)isPSDLayer;
 - (BOOL)isPSD;
 - (BOOL)isMediaComponent;
 - (BOOL)isComponent;
@@ -309,6 +320,7 @@
 - (BOOL)isInCropOrKenBurnsCropMode;
 - (BOOL)addSpatialEffectsIfNecessaryWithContainer:(id)arg1;
 - (BOOL)addTemporalEffectsIfNecessaryWithContainer:(id)arg1 autoRetimed:(char *)arg2;
+- (double)autoSlowRateInContainer:(id)arg1;
 - (BOOL)anchoredComponentContainsValidTrim;
 - (void)conformToVideoProps:(id)arg1 forceNoRateConformScale:(BOOL)arg2 forceSourceSampleDuration:(CDStruct_1b6d18a9)arg3;
 - (void)conformToVideoProps:(id)arg1 forceNoRateConformScale:(BOOL)arg2;
@@ -572,7 +584,7 @@
 - (id)displayName;
 - (id)_subtreeDescription;
 - (id)desc;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)descriptionWithIndent:(long long)arg1 recurse:(BOOL)arg2;
 - (id)compactDebugDescription;
 - (id)_describeAdditionalObjectsWithIndent:(long long)arg1 recurse:(BOOL)arg2;
@@ -647,7 +659,7 @@
 - (id)anchoredTimelineItems;
 @property(readonly) id <TLKTimelineItem> anchoredToTimelineItem;
 @property(readonly) long long timelineVerticalIndex;
-@property(readonly) NSString *timelineDisplayName;
+@property(readonly, copy) NSString *timelineDisplayName;
 - (id)markerRanges;
 - (id)copyXMLValueForRole:(id)arg1;
 - (id)creationDate;
@@ -660,6 +672,11 @@
 - (CDStruct_e83c9415)timeRange;
 - (long long)verticalIndex;
 - (void)setVerticalIndex:(long long)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

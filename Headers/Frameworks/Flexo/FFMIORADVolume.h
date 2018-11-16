@@ -42,6 +42,8 @@
     long long _totalBytesProcessed;
     unsigned long long _unclaimedClipsCount;
     BOOL _loadingUnclaimedURLs;
+    NSMutableSet *_hybridSet;
+    BOOL _archivingAsHybrid;
     float _ingestPercentDone;
     float _archivePercentDone;
 }
@@ -55,6 +57,8 @@
 + (void *)KVOContext;
 @property float archivePercentDone; // @synthesize archivePercentDone=_archivePercentDone;
 @property float ingestPercentDone; // @synthesize ingestPercentDone=_ingestPercentDone;
+@property(getter=isArchivingAsHybrid) BOOL archivingAsHybrid; // @synthesize archivingAsHybrid=_archivingAsHybrid;
+@property(readonly) NSMutableSet *hybridSet; // @synthesize hybridSet=_hybridSet;
 @property BOOL loadingUnclaimedURLs; // @synthesize loadingUnclaimedURLs=_loadingUnclaimedURLs;
 @property BOOL unmounted; // @synthesize unmounted=_unmounted;
 @property BOOL useTempClips; // @synthesize useTempClips=_useTempClips;
@@ -86,10 +90,13 @@
 @property(readonly, nonatomic) NSImage *itemIcon;
 - (void)setItemDisplayName:(id)arg1;
 @property(readonly, nonatomic) NSString *itemDisplayName;
+- (void)cameraArchiveDidEnd:(id)arg1;
+- (void)cameraArchiveDidStart:(id)arg1;
 @property(readonly) FFCameraArchiveMetadata *archiveMetadata2;
 @property(readonly) FFCameraArchiveMetadata *archiveMetadata;
 @property(readonly) BOOL canArchive;
 - (void)updatePercentageDone;
+- (void)volumeAddedToHybridSet:(id)arg1;
 - (void)importRequestsRemovedFromQueue:(id)arg1;
 - (void)importRequestsAddedToQueue:(id)arg1;
 - (void)clipRemovedFromQueue:(id)arg1;
@@ -106,7 +113,9 @@
 - (void)finishedLoadingUnclaimedURLs;
 - (void)addClipsFromUnclaimedURLs;
 - (void)addUnclaimedClipMainThread:(id)arg1;
+- (void)addHybridClips:(id)arg1;
 - (void)addClips:(id)arg1;
+- (void)addHybridClipMainThread:(id)arg1;
 - (void)addClipMainThread:(id)arg1;
 - (void)checkPercentDone;
 - (id)ffClipWithMIORADClip:(id)arg1;
@@ -124,14 +133,21 @@
 - (void)locateAFCDevice;
 - (void)ptpDeviceDidMount:(id)arg1;
 - (BOOL)setupAFCDevice:(id)arg1;
+- (void)mergeHybridVolume:(id)arg1;
+- (void)updateHybridVolumeWithVolume:(id)arg1;
+- (void)addHybridClipsFromHybridVolume:(id)arg1;
 - (void)dealloc;
 - (id)initWithVolume:(id)arg1 loadClipsSynchronously:(BOOL)arg2;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
 @property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
 @property(readonly, nonatomic) double itemRowHeight;
+@property(readonly) Class superclass;
 
 @end
 

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
+- (struct opaqueCMFormatDescription *)copyFormatDescription;
 - (id)eventDocumentIDAndPath;
 - (struct OpaqueFigSampleCursor *)copyFigSampleCursor;
 - (CDStruct_1b6d18a9)pts;
@@ -35,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)saveCurrentLocation;
 - (int)stepInPresentationOrder:(int)arg1;
 - (int)stepInDecodeOrder:(int)arg1;
-- (struct opaqueCMSampleBuffer *)createSampleBuffer:(int)arg1;
+- (struct opaqueCMSampleBuffer *)createSampleBuffer:(CDStruct_1b6d18a9)arg1 waitTimeInSeconds:(int)arg2;
 - (void)prefetch:(id)arg1;
 - (BOOL)supportLongGOP;
 - (CDStruct_e83c9415)getPresentationRange;

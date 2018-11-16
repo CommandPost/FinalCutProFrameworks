@@ -33,6 +33,7 @@
 - (void)analyzeAndFix:(id)arg1;
 - (void)transcodeMedia:(id)arg1;
 - (void)newSmartCollection:(id)arg1;
+- (void)newFolderForLibrary:(id)arg1 initialSmartCollection:(id)arg2;
 - (void)newFolder:(id)arg1;
 - (void)newKeyword:(id)arg1;
 - (void)newEvent:(id)arg1;

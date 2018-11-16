@@ -34,6 +34,7 @@
 - (BOOL)bringUpToDate:(id *)arg1;
 - (BOOL)sync:(id *)arg1;
 - (BOOL)saveCatalog:(id *)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (BOOL)validateStores:(id *)arg1;
 - (id)outputQueue;
 - (BOOL)savePending;
 - (BOOL)hasChanges;

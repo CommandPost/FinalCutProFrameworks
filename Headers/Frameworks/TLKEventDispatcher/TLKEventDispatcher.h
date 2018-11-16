@@ -17,7 +17,8 @@
     NSMutableArray *_handlerStack;
     NSMutableDictionary *_exitPredicateMap;
     TLKEventHandler *_potentialHandler;
-    TLKEventHandler *_currentPressHoldHandler;
+    TLKEventHandler *_pressAndHoldHandler;
+    TLKEventHandler *_dragFallbackHandler;
     TLKEventContext *_potentialHandlerContext;
     NSArray *_rolloverDescriptions;
     NSView<TLKEventDispatcherView> *_view;
@@ -46,10 +47,11 @@
         unsigned int settingCurrentHandler:1;
         unsigned int didHandleDraggingEnded:1;
         unsigned int shouldHandleDraggingUpdated:1;
-        unsigned int clickAndHoldPerformed:1;
-        unsigned int clickAndHoldPerformedCalled:1;
-        unsigned int pressAndHoldSupported:1;
-        unsigned int RESERVED:20;
+        unsigned int performingPressAndHold:1;
+        unsigned int waitingForPressAndHoldMouseDown:1;
+        unsigned int performingDragFallback:1;
+        unsigned int noEventMode:1;
+        unsigned int RESERVED:18;
     } _edFlags;
     BOOL _eventDispatchEnabled;
     BOOL _draggingEnteredCanceled;
@@ -68,6 +70,7 @@
 - (struct CGPoint)_locationOfEvent:(id)arg1;
 - (struct CGPoint)_constrainedLocationOfEvent:(id)arg1;
 - (void)_updateCurrentPoint;
+- (void)updateCurrentPoint:(struct CGPoint)arg1;
 - (unsigned long long)eventMask;
 - (void)updateEventMask;
 - (void)setEventMask:(unsigned long long)arg1;
@@ -147,12 +150,14 @@
 - (void)otherMouseDown:(id)arg1;
 - (void)rightMouseDown:(id)arg1;
 - (void)mouseDown:(id)arg1;
+- (void)_endDragFallback;
+- (void)_handleDragFallback:(id)arg1;
+- (void)handleDragFallback;
 - (void)_delayMouseDown;
 - (void)_handleDelay:(id)arg1;
 - (void)_startWaitingForMouseDown;
-- (void)_cancelClickAndHold;
+- (void)_cancelPressAndHold;
 - (void)_clearWaitingForMouseDown;
-- (void)setPressAndHoldSupported:(BOOL)arg1;
 - (id)eventDescriptionForIdentifier:(id)arg1;
 - (id)_handlerForEventDescription:(id)arg1;
 - (id)_findEventDescription:(id)arg1 withAction:(SEL)arg2;
@@ -190,6 +195,7 @@
 - (void)addHandler:(id)arg1;
 - (void)removeEventHandlerWithIdentifier:(id)arg1;
 - (void)addTrackingHandlerWithIdentifier:(id)arg1 predicate:(id)arg2 options:(unsigned long long)arg3;
+@property(nonatomic) BOOL noEventMode;
 - (void)resetState;
 - (id)description;
 - (void)dealloc;

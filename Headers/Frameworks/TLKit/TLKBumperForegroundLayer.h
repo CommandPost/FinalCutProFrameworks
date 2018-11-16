@@ -8,6 +8,8 @@
 
 #import "TLKPartInfo.h"
 
+@class NSString;
+
 @interface TLKBumperForegroundLayer : TLKThemeBackedLayer <TLKPartInfo>
 {
     unsigned int _drawsBackground:1;
@@ -18,6 +20,12 @@
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)partIdentifier;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -18,6 +18,6 @@
 @property(readonly) long long timelineVerticalIndex;
 @property(readonly) CDStruct_1b6d18a9 timelineParentAnchorOffset;
 @property(readonly) CDStruct_1b6d18a9 timelineAnchorOffset;
-@property(readonly) NSString *timelineDisplayName;
+@property(readonly, copy) NSString *timelineDisplayName;
 @end
 

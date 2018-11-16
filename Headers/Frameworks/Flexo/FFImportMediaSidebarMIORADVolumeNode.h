@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface FFImportMediaSidebarMIORADVolumeNode : FFMediaSidebarNode <FFImportMediaSidebarCellAdornmentProtocol>
 {
     BOOL _settitngTitle;
+    BOOL _ejecting;
     unsigned long long _state;
     NSProgressIndicator *_indeterminateProgressIndicator;
     NSProgressIndicator *_determinateProgressIndicator;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)nodeWithVolume:(id)arg1;
+@property BOOL ejecting; // @synthesize ejecting=_ejecting;
 @property BOOL settitngTitle; // @synthesize settitngTitle=_settitngTitle;
 @property(retain) NSButton *ejectButton; // @synthesize ejectButton=_ejectButton;
 @property(retain) NSButton *cancelButton; // @synthesize cancelButton=_cancelButton;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)updateAdornmentViews;
 - (id)descriptionForState:(unsigned long long)arg1;
 - (void)updateState;
+- (void)volumeWillEject:(id)arg1;
 - (void)eject:(id)arg1;
 - (id)volume;
 - (id)iconImage:(BOOL)arg1;

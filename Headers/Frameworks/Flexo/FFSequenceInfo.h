@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     BOOL _hasAudio;
     BOOL _hasVideo;
     BOOL _isTrailer;
+    BOOL _isAppPreview;
     BOOL _requiresLegacyUpgrade;
     long long _editCount;
     long long _effectCount;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property long long effectCount; // @synthesize effectCount=_effectCount;
 @property long long editCount; // @synthesize editCount=_editCount;
 @property(nonatomic) BOOL requiresLegacyUpgrade; // @synthesize requiresLegacyUpgrade=_requiresLegacyUpgrade;
+@property(nonatomic) BOOL isAppPreview; // @synthesize isAppPreview=_isAppPreview;
 @property(nonatomic) BOOL isTrailer; // @synthesize isTrailer=_isTrailer;
 @property(retain, nonatomic) NSMutableDictionary *thumbnailMD5sKeyedByQuality; // @synthesize thumbnailMD5sKeyedByQuality=_thumbnailMD5sKeyedByQuality;
 @property(nonatomic) struct CGSize frameSize; // @synthesize frameSize=_frameSize;
@@ -73,7 +75,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FFVideoFormat *videoFormat;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 sampleDuration;
 @property(nonatomic) struct CGSize pixelFrameSize; // @synthesize pixelFrameSize=_pixelFrameSize;
-- (id)sequence;
+- (id)loadSequence:(id *)arg1;
 - (BOOL)isSequenceLoaded;
 - (BOOL)autoEdit;
 - (void)setThumbnailMD5:(id)arg1 forQuality:(int)arg2;

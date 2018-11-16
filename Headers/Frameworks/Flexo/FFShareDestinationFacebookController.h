@@ -19,6 +19,7 @@
     NSButton *_storeInKeychain;
     NSTextField *_messageStr;
     NSString *_nameWithUserInfo;
+    unsigned long long _authenticationPhase;
 }
 
 @property(retain, nonatomic) NSString *nameWithUserInfo; // @synthesize nameWithUserInfo=_nameWithUserInfo;

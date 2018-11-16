@@ -11,16 +11,18 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)placeholderThumbnail;
++ (id)placeholderThumbnailWithSize:(struct CGSize)arg1;
 - (struct CGPath *)_newPathForRoundedRect:(struct CGRect)arg1 radius:(double)arg2 lineWidth:(double)arg3;
 - (void)drawOutlinedSelectionRingWithRect:(struct CGRect)arg1;
 - (long long)numberOfThumbnails;
 - (long long)numberOfChildren;
 - (id)latestDate;
 - (id)earliestDate;
+- (id)dateRange;
 - (id)displayName;
 - (id)thumbnailAtIndex:(long long)arg1;
 - (id)displayedPhotoObjectAtIndex:(long long)arg1;
+- (id)persistentID;
 
 @end
 

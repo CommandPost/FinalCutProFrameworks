@@ -43,17 +43,17 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)signInModalForWindow:(id)arg1;
 - (void)signIn:(id)arg1;
-- (void)signInSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)okcancelClicked:(id)arg1;
 - (void)updateUserNamePassword;
 @property(copy, nonatomic) NSDictionary *category;
-@property(readonly, nonatomic) NSArray *categories;
+@property(readonly, copy, nonatomic) NSArray *categories;
 @property(copy, nonatomic) NSDictionary *privacy;
 - (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)validateUsernamePassword:(id *)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;
 - (id)initWithDestination:(id)arg1 withSource:(id)arg2;
+- (void)updateSignedInUserTitle;
 - (void)updateTitle;
 
 @end

@@ -9,7 +9,7 @@
 #import "FFMatchToolDelegate.h"
 #import "FFRollbackRecordProtocol.h"
 
-@class FFHistoAnalysis, FFMatchReference, FFRollbackRecord, NSArray, NSMutableArray;
+@class FFHistoAnalysis, FFMatchReference, FFRollbackRecord, NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFColorMatchHelper : NSObject <FFMatchToolDelegate, FFRollbackRecordProtocol>
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _contextTime;
     NSArray *_activeEffects;
     Class _modalToolClass;
+    unsigned long long _indexToInsertEffect;
 }
 
 + (BOOL)isObjectCompliant:(id)arg1;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)accessoryTitle;
 - (id)footerText;
+- (unsigned long long)indexToInsertEffect:(id)arg1;
 - (id)actionStringForSaveChanges;
 - (id)extendedDataToRecordForAnchoredObject:(id)arg1;
 - (void)setExtendedData:(id)arg1 toRecordForAnchoredObject:(id)arg2;
@@ -55,6 +57,12 @@ __attribute__((visibility("hidden")))
 - (id)histoRef;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

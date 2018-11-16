@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFAssetFileIdentifier, FFVideoProps, NSMutableArray, NSObject<OS_dispatch_semaphore>, NSURL;
+@class FFAssetFileIdentifier, NSMutableArray, NSObject<OS_dispatch_semaphore>, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFREDClip : NSObject
@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     NSURL *_urlOfReader;
     NSMutableArray *_fileURLs;
     unsigned char _r3dUUID[16];
-    FFVideoProps *_videoProps;
     CDStruct_1b6d18a9 _timecodeFrameDuration;
     CDStruct_1b6d18a9 _startTimeCode;
     unsigned long long _startTimeCodeInFrames;
@@ -62,7 +61,6 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)startTimeCode;
 - (unsigned long long)startTimeCodeInFrames;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (id)videoProps;
 - (id)copyReader;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

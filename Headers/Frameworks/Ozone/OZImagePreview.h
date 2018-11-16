@@ -32,6 +32,7 @@
 - (struct OZRenderNode *)renderNode;
 - (void)display:(struct OZRenderNode *)arg1 forTime:(const CDStruct_1b6d18a9 *)arg2;
 - (void)display:(struct OZRenderNode *)arg1;
+- (struct OZRenderManager *)renderManagerForNode:(struct OZRenderNode *)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setCustomFrameElement:(long long)arg1 part:(long long)arg2;
 - (void)setShouldDrawBackground:(BOOL)arg1;

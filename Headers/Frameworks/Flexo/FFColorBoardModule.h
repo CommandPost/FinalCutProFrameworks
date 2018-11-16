@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)switchToExposureTab:(id)arg1;
 - (void)switchToSaturationTab:(id)arg1;
 - (void)switchToColorTab:(id)arg1;
+- (void)addCorrection:(id)arg1;
 - (void)switchColorCorrectionMask:(id)arg1;
 - (void)switchColorCorrectionAction:(id)arg1;
 - (void)selectNextColorCorrection:(id)arg1;

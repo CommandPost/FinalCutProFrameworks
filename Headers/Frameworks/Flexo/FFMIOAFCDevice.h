@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (id)imagePathOnDiskForCameraFile:(id)arg1;
 - (id)clipWithImagePath:(id)arg1 cameraFile:(id)arg2;
 - (id)thumbnailCachePathForCameraFile:(id)arg1;
+- (void)appWillTerminate:(id)arg1;
 - (void)dealloc;
 - (id)initWithICCameraDevice:(id)arg1;
 

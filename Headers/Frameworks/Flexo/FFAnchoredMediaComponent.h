@@ -8,7 +8,7 @@
 
 #import "FFMediaSourceProtocol.h"
 
-@class FFMD5AndOffset, FFMedia, FFRenderStateTracker, NSArray, NSString;
+@class FFMD5AndOffset, FFMedia, FFRenderStateTracker, NSArray, NSNumber, NSString;
 
 @interface FFAnchoredMediaComponent : FFAnchoredComponent <FFMediaSourceProtocol>
 {
@@ -19,6 +19,7 @@
     FFMD5AndOffset *_cachedAudioMD5;
     FFMD5AndOffset *_cachedAudioMD5_NoIntrinsics;
     long long _cachedDefaultAudioChannelCount;
+    NSNumber *_cachedAudioSampleRate;
     long long _deinterlaceType;
     long long _rotationAngle;
     FFRenderStateTracker *_renderStateTracker;
@@ -40,7 +41,7 @@
 - (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
 - (id)newProviderWithEffectCount:(long long)arg1;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
-- (void)_clearCachedAudioMD5;
+- (void)_clearCachedAudioProperties;
 - (CDStruct_1b6d18a9)localToRateConformedTime:(CDStruct_1b6d18a9)arg1 withTargetSampleDuration:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_e83c9415)untimedUnclippedRange;
 - (CDStruct_e83c9415)untimedClippedRange;
@@ -57,8 +58,9 @@
 - (void)invalidateStreamRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
-- (double)audioSampleRate;
-- (long long)audioChannelCount:(int)arg1;
+- (void)_clearCachedAudioSampleRate;
+- (double)nativeAudioSampleRate;
+- (long long)nativeAudioChannelCount:(int)arg1;
 - (id)mediaVideoProps;
 - (id)videoProps;
 - (void)localPercentageToPixelValuesLRTB:(double *)arg1 right:(double *)arg2 top:(double *)arg3 bottom:(double *)arg4;

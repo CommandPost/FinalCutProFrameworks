@@ -66,7 +66,7 @@
 - (id)stringWithBinObject_FFNamingTokenOriginalName:(id)arg1;
 - (id)nameWithBinObject:(id)arg1;
 - (void)applyPresetToBinObject:(id)arg1;
-@property(readonly) NSString *sampleName;
+@property(readonly, retain) NSString *sampleName;
 - (BOOL)hasCounterToken;
 - (BOOL)hasCustomToken;
 - (id)copyWithZone:(struct _NSZone *)arg1;

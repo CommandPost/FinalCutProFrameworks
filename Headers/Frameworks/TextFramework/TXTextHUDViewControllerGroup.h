@@ -14,12 +14,14 @@
     OZViewController *_fontCtrl;
     OZViewController *_sizeCtrl;
     OZViewController *_trackingCtrl;
+    OZViewController *_extrusionDepthCtrl;
     OZViewController *_lineSpacingCtrl;
     TXAlignmentColorController *_alignmentCtrl;
     BOOL _capturingChannels;
-    list_ff0a6df5 *_styles;
+    list_4c133ab0 *_styles;
 }
 
+@property(retain, nonatomic) OZViewController *extrusionDepthCtrl; // @synthesize extrusionDepthCtrl=_extrusionDepthCtrl;
 @property(retain, nonatomic) OZViewController *lineSpacingCtrl; // @synthesize lineSpacingCtrl=_lineSpacingCtrl;
 @property(retain, nonatomic) OZViewController *trackingCtrl; // @synthesize trackingCtrl=_trackingCtrl;
 @property(retain, nonatomic) OZViewController *sizeCtrl; // @synthesize sizeCtrl=_sizeCtrl;
@@ -29,9 +31,10 @@
 - (_Bool)useGlyphTool;
 - (void)textSelectionChanged:(id)arg1;
 - (void)notify:(unsigned int)arg1;
+- (void)updateFor3D:(BOOL)arg1;
 - (void)setAssociatedLineSpacingChannels:(vector_cd78f990 *)arg1;
-- (void)updateLineSpacingController:(list_37573188 *)arg1;
-- (void)setAssociatedStyles:(list_ff0a6df5 *)arg1;
+- (void)updateLineSpacingController:(list_4c5ca08a *)arg1;
+- (void)setAssociatedStyles:(list_4c133ab0 *)arg1;
 - (void)addOrResetAssociatedStyle:(struct TXTextStyle *)arg1 isAdd:(BOOL)arg2;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;

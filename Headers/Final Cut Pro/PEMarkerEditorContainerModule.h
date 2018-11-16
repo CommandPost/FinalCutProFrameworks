@@ -9,7 +9,7 @@
 #import "FFMarkerEditorDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFMarkerEditorViewModule, PEMarkerEditorPopOverWindow;
+@class FFMarkerEditorViewModule, NSString, PEMarkerEditorPopOverWindow;
 
 @interface PEMarkerEditorContainerModule : LKViewModule <FFMarkerEditorDelegate, NSWindowDelegate>
 {
@@ -39,6 +39,12 @@
 - (void)moduleViewWasInstalled:(id)arg1;
 - (struct CGSize)viewMinSize;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

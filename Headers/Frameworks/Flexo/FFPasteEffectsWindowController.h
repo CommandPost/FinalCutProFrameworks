@@ -6,7 +6,7 @@
 
 #import "NSWindowController.h"
 
-@class CALayer, FFAnchoredObject, FFThumbnailRequest, LKButton, LKImageView, LKPopUpButton, LKScrollView, LKTextField, NSArray, NSBox, NSMutableArray, NSMutableDictionary, NSView;
+@class CALayer, FFAnchoredObject, FFThumbnailRequest, LKButton, LKImageView, LKPopUpButton, LKScrollView, LKTextField, LKWindow, NSArray, NSBox, NSImageView, NSMatrix, NSMutableArray, NSMutableDictionary, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFPasteEffectsWindowController : NSWindowController
@@ -27,6 +27,18 @@ __attribute__((visibility("hidden")))
     NSBox *_audioBox;
     NSBox *_videoScrollViewBox;
     NSBox *_audioScrollViewBox;
+    LKTextField *_presetName;
+    LKPopUpButton *_presetCategory;
+    LKWindow *_newCategorySheet;
+    LKTextField *_newCategoryName;
+    NSMatrix *_keyframeRadioButtons;
+    LKTextField *_subtitleText;
+    LKTextField *_keyframeTimingText;
+    LKTextField *_attributesText;
+    LKTextField *_keyframesText;
+    LKTextField *_categoryText;
+    LKTextField *_nameText;
+    NSImageView *_effectIcon;
     BOOL _hasAudio;
     NSArray *_effectStacks;
     NSArray *_targets;
@@ -42,6 +54,8 @@ __attribute__((visibility("hidden")))
     CALayer *_destThumbLayer;
     struct CGImage *_sourceThumbCGImage;
     struct CGImage *_destThumbCGImage;
+    int _variant;
+    NSMutableDictionary *_presetNames;
 }
 
 + (id)intrinsicEffectIDs:(BOOL)arg1;
@@ -52,6 +66,9 @@ __attribute__((visibility("hidden")))
 - (void)drawDest:(id)arg1;
 - (void)sourceThumbImageReady:(id)arg1;
 - (void)drawSource:(id)arg1;
+- (void)selectPresetEffects;
+- (BOOL)effectHasKeyframes:(id)arg1;
+- (BOOL)channelFolderHasKeyframes:(id)arg1;
 - (void)setupCheckboxArrays;
 - (void)reorderAudioCheckboxes;
 - (id)newCheckboxWithFrame:(struct CGRect)arg1 andName:(id)arg2 video:(BOOL)arg3 enabled:(BOOL)arg4;
@@ -61,10 +78,18 @@ __attribute__((visibility("hidden")))
 - (void)updateSpecialVideoCheckboxes;
 - (void)videoRetimeCheckboxSetState:(long long)arg1;
 - (void)audioRetimeCheckboxSetState:(long long)arg1;
+- (void)categoryPopupSelected:(id)arg1;
+- (void)didEndSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)newCategorySheetCancel:(id)arg1;
+- (void)newCategorySheetCreate:(id)arg1;
+- (void)duplicatePresetNameAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)nothingSelectedAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)presetSave:(id)arg1;
+- (BOOL)isAnythingSelected;
 - (void)cancel:(id)arg1;
 - (void)ok:(id)arg1;
 - (void)dealloc;
-- (id)initWithEffectStacks:(id)arg1 andAnchoredObject:(id)arg2 channelDict:(id)arg3 intrinsicsToPaste:(id)arg4 keyframeMode:(long long *)arg5 targets:(id)arg6;
+- (id)initWithEffectStacks:(id)arg1 andAnchoredObject:(id)arg2 channelDict:(id)arg3 intrinsicsToPaste:(id)arg4 keyframeMode:(long long *)arg5 targets:(id)arg6 presetNames:(id)arg7 variant:(int)arg8;
 
 @end
 

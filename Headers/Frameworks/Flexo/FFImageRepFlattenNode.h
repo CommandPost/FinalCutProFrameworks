@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isFlattened;
 - (void)_establishPFCS:(_Bool)arg1;
 - (void)dealloc;
-- (id)initWithRepresentation:(id)arg1 force8Bit:(_Bool)arg2 initialFlags:(unsigned int)arg3 automaticFlags:(_Bool)arg4;
+- (id)initWithRepresentation:(id)arg1 flattenMode:(int)arg2 initialFlags:(unsigned int)arg3 automaticFlags:(_Bool)arg4;
 
 @end
 

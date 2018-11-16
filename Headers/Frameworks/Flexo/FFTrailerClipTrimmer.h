@@ -9,7 +9,7 @@
 #import "FFOrganizerFilmstripViewDelegate.h"
 #import "NSAnimationDelegate.h"
 
-@class FFAnchoredSequence, FFOrganizerFilmstripView, NSImageView;
+@class FFAnchoredSequence, FFOrganizerFilmstripView, NSImageView, NSString;
 
 @interface FFTrailerClipTrimmer : NSViewController <FFOrganizerFilmstripViewDelegate, NSAnimationDelegate>
 {
@@ -64,6 +64,12 @@
 - (BOOL)isTrimmerFilmstrip:(id)arg1;
 - (void)dealloc;
 - (id)initWithModule:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

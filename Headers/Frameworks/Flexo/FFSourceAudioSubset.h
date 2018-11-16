@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
+- (BOOL)sourceEnabled;
 - (id)channelMap;
 - (id)parentSource;
 - (struct AudioStreamBasicDescription)formatInfo;

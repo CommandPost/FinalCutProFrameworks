@@ -8,7 +8,7 @@
 
 #import "TLKPartInfo.h"
 
-@class CATextLayer;
+@class CATextLayer, NSString;
 
 @interface TLKPosterFramePinLayer : CALayer <TLKPartInfo>
 {
@@ -35,6 +35,12 @@
 - (void)setDelegate:(id)arg1;
 - (id)init;
 - (struct CGColor *)_defaultPinTailColor;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

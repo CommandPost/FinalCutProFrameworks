@@ -12,7 +12,7 @@
 #import "NSOutlineViewDataSource.h"
 #import "NSSplitViewDelegate.h"
 
-@class FFOrganizerFilmListClusterCell, FFOrganizerFilmListOutlineView, FigTimeRangeAndObject, LKMenu, LKSplitView, LKTableColumn, NSArray, NSDictionary, NSMenuItem, NSTreeNode;
+@class FFOrganizerFilmListClusterCell, FFOrganizerFilmListOutlineView, FigTimeRangeAndObject, LKMenu, LKSplitView, LKTableColumn, NSArray, NSDictionary, NSMenuItem, NSString, NSTreeNode;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmListViewController : FFOrganizerFilmstripViewController <FFOrganizerFilmstripViewDelegate, FFOrganizerFilmListOutlineViewDelegate, NSOutlineViewDataSource, NSSplitViewDelegate, FFRolesMenuDelegate>
@@ -219,8 +219,11 @@ __attribute__((visibility("hidden")))
 - (id)selectedNodes;
 - (id)_cachedFlattenedNodesIdsForUnknownArray;
 - (id)_cachedFlattenNodesInTreeWitoutStartAndRecursive;
+- (void)_invalidateCachedFlattedNodes;
 - (id)flattenNodesInTreeIdsForUnknown:(id)arg1;
 - (id)flattenNodesInTree:(id)arg1 includeStartingNode:(BOOL)arg2 recursively:(BOOL)arg3;
+- (void)outlineViewItemDidCollapse:(id)arg1;
+- (void)outlineViewItemDidExpand:(id)arg1;
 - (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
 - (void)outlineView:(id)arg1 sortDescriptorsDidChange:(id)arg2;
 - (id)_sortDescriptors;
@@ -264,8 +267,6 @@ __attribute__((visibility("hidden")))
 - (void)addAnchoredItemsInClipItem:(id)arg1 toTreeNode:(id)arg2;
 - (void)addClipItemsinList:(id)arg1 toTreeNode:(id)arg2;
 - (void)updateDataForFilmOutlineView;
-- (void)openClickedOnProject:(id)arg1;
-- (void)playPause:(id)arg1;
 - (void)reloadItemAndChildren:(id)arg1;
 - (void)reloadData;
 - (void)toggleColumnHeader:(id)arg1;
@@ -293,6 +294,12 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)_recursivelyTellDataNodesToPostListOutlineRowDataChangedNotification:(id)arg1;
 - (void)_recursivelyTellDataNodesToRemoveObservers:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

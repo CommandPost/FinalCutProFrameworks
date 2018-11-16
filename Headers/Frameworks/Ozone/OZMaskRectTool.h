@@ -10,11 +10,11 @@
 {
 }
 
+- (double)getDefaultRoundness;
 - (void)roundShape;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
-- (void)draw;
 - (id)getCursorWithEvent:(id)arg1;
 - (void)addToScene:(struct OZScene *)arg1;
 - (struct PCUUID)getClassID;

@@ -16,6 +16,7 @@
     NSEvent *_event;
     NSDictionary *_eventDescription;
     struct CGPoint _currentPoint;
+    unsigned int _isDragFallbackEvent:1;
     unsigned int _isPressAndHoldEvent:1;
 }
 
@@ -26,6 +27,7 @@
 - (struct CGPoint)currentPoint;
 - (BOOL)isCanceled;
 - (BOOL)isStartTrackingEvent;
+- (BOOL)isDragFallbackEvent;
 - (BOOL)isPressAndHoldEvent;
 - (BOOL)_isAMouseDownEvent;
 - (id)characters;
@@ -41,7 +43,7 @@
 - (id)dispatcher;
 - (void)_updateCurrentPoint;
 - (void)dealloc;
-- (id)initWithDispatcher:(id)arg1 handler:(id)arg2 event:(id)arg3 partArray:(id)arg4 pressAndHold:(BOOL)arg5;
+- (id)initWithDispatcher:(id)arg1 handler:(id)arg2 event:(id)arg3 partArray:(id)arg4 dragFallback:(BOOL)arg5 pressAndHold:(BOOL)arg6;
 
 @end
 

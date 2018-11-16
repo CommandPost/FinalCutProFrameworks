@@ -8,7 +8,7 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class FFImportOrganizerModule, NSButton, NSOperationQueue, NSProgressIndicator, NSTextField;
+@class FFImportOrganizerModule, NSButton, NSOperationQueue, NSProgressIndicator, NSString, NSTextField;
 
 __attribute__((visibility("hidden")))
 @interface FFImportGoToFolderSheetController : NSWindowController <NSTextFieldDelegate>
@@ -35,6 +35,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithOrganizer:(id)arg1;
 - (void)awakeFromNib;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

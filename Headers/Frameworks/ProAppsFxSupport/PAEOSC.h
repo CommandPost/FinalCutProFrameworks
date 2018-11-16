@@ -15,6 +15,7 @@
     unsigned long long _drawingSpace;
     BOOL _drawHandlesInScreenSpace;
     BOOL _useInputCoords;
+    BOOL _hidden;
     PAEOSCManager *_manager;
 }
 
@@ -23,21 +24,22 @@
 - (double)backingScaleFactor;
 - (void)didUnfocus:(id)arg1;
 - (void)didFocus:(id)arg1;
-- (void)keyUp:(const PCVector2_79efa81a *)arg1 keyPressed:(unsigned short)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 didHandle:(char *)arg5 time:(double)arg6;
-- (void)keyDown:(const PCVector2_79efa81a *)arg1 keyPressed:(unsigned short)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 didHandle:(char *)arg5 time:(double)arg6;
-- (void)mouseDragged:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(double)arg5;
-- (void)mouseExited:(const PCVector2_79efa81a *)arg1 modifiers:(unsigned long long)arg2 forceUpdate:(char *)arg3 time:(double)arg4;
-- (void)mouseMoved:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(double)arg5;
-- (void)mouseEntered:(const PCVector2_79efa81a *)arg1 modifiers:(unsigned long long)arg2 forceUpdate:(char *)arg3 time:(double)arg4;
-- (void)mouseUp:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(double)arg5;
-- (void)mouseDown:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 didHandle:(char *)arg5 time:(double)arg6;
+- (void)keyUp:(const PCVector2_79efa81a *)arg1 keyPressed:(unsigned short)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 didHandle:(char *)arg5 time:(CDUnion_2516e51e)arg6;
+- (void)keyDown:(const PCVector2_79efa81a *)arg1 keyPressed:(unsigned short)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 didHandle:(char *)arg5 time:(CDUnion_2516e51e)arg6;
+- (void)mouseDragged:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(CDUnion_2516e51e)arg5;
+- (void)mouseExited:(const PCVector2_79efa81a *)arg1 modifiers:(unsigned long long)arg2 forceUpdate:(char *)arg3 time:(CDUnion_2516e51e)arg4;
+- (void)mouseMoved:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(CDUnion_2516e51e)arg5;
+- (void)mouseEntered:(const PCVector2_79efa81a *)arg1 modifiers:(unsigned long long)arg2 forceUpdate:(char *)arg3 time:(CDUnion_2516e51e)arg4;
+- (void)mouseUp:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(CDUnion_2516e51e)arg5;
+- (void)mouseDown:(const PCVector2_79efa81a *)arg1 activePart:(int)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 didHandle:(char *)arg5 time:(CDUnion_2516e51e)arg6;
 - (BOOL)handlesPart:(int)arg1;
 - (PCVector2_79efa81a)mouseDownPosition;
 - (PCVector2_79efa81a)mousePosition;
 - (BOOL)runningInMotionEffect;
-- (void)drawForSelectionWithWidth:(int)arg1 height:(int)arg2 activePart:(int)arg3 paramAPI:(id)arg4 oscAPI:(id)arg5 atTime:(double)arg6;
-- (void)drawForDisplayWithWidth:(int)arg1 height:(int)arg2 activePart:(int)arg3 paramAPI:(id)arg4 oscAPI:(id)arg5 atTime:(double)arg6;
-- (void)drawFor:(int)arg1 withWidth:(int)arg2 height:(int)arg3 activePart:(int)arg4 paramAPI:(id)arg5 oscAPI:(id)arg6 atTime:(double)arg7;
+- (void)drawForSelectionWithWidth:(int)arg1 height:(int)arg2 activePart:(int)arg3 paramAPI:(id)arg4 oscAPI:(id)arg5 atTime:(CDUnion_2516e51e)arg6;
+- (void)drawForDisplayWithWidth:(int)arg1 height:(int)arg2 activePart:(int)arg3 paramAPI:(id)arg4 oscAPI:(id)arg5 atTime:(CDUnion_2516e51e)arg6;
+- (void)drawFor:(int)arg1 withWidth:(int)arg2 height:(int)arg3 activePart:(int)arg4 paramAPI:(id)arg5 oscAPI:(id)arg6 atTime:(CDUnion_2516e51e)arg7;
+- (void)setHidden:(BOOL)arg1;
 - (void)convertPointFromObjectAbsoluteToDrawingSpace:(PCVector2_79efa81a *)arg1 withOSCAPI:(id)arg2;
 - (void)convertPointFromObjectAbsoluteToObjectNormalized:(PCVector2_79efa81a *)arg1 withOSCAPI:(id)arg2;
 - (void)convertPointFromDrawingSpaceToObjectAbsolute:(PCVector2_79efa81a *)arg1 withOSCAPI:(id)arg2;
@@ -56,7 +58,7 @@
 - (void)setDrawingSpace:(unsigned long long)arg1;
 - (BOOL)drawHandlesInScreenSpace;
 - (void)setDrawHandlesInScreenSpace:(BOOL)arg1;
-- (PCVector2_79efa81a)point:(int)arg1 atTime:(double)arg2;
+- (PCVector2_79efa81a)point:(int)arg1 atTime:(CDUnion_2516e51e)arg2;
 - (unsigned int)paramIDForKey:(int)arg1;
 - (void)addParameter:(unsigned int)arg1 forKey:(int)arg2;
 - (void)dealloc;

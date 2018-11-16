@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)copyClassDescription;
 @property(readonly, nonatomic) FFAudioComponentsLayoutItem *layoutItemKey; // @synthesize layoutItemKey=m_layoutItemKey;
-- (id)roles;
+- (id)rolesWithPlayEnable:(int)arg1;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (struct NSObject *)skimmableObject;
 - (void)releaseEffectStackFromPersisting;

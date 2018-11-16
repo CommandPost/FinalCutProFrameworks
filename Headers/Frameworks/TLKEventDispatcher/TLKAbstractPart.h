@@ -17,16 +17,20 @@
 }
 
 + (id)abstractPartWithIdentifier:(id)arg1 representedObject:(id)arg2;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)representedObject;
 - (id)contextMenu;
 - (id)partIdentifier;
 - (id)partWithIdentifier:(id)arg1;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)dealloc;
 - (id)initWithIdentifier:(id)arg1 representedObject:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

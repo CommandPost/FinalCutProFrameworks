@@ -6,21 +6,26 @@
 
 #import "NSObject.h"
 
-@class NSDate, NSMutableArray, NSOperationQueue, NSTimer;
+@class NSDate, NSMutableArray, NSObject<OS_dispatch_queue>, NSOperationQueue, NSTimer;
 
 @interface FFBackgroundRenderManager : NSObject
 {
     NSMutableArray *_activeRenders;
     NSMutableArray *_autoRenderCandidates;
     _Bool _suspended;
+    BOOL _loOverhead;
     _Bool _autoStart;
     double _autoStartDelay;
+    NSObject<OS_dispatch_queue> *_lock;
     NSDate *_earliestRunTime;
     NSTimer *_timer;
+    unsigned int _queuedUpdateTimerCall;
     double _confirmationDelay;
     NSOperationQueue *_houseKeepingOpQueue;
 }
 
++ (id)onlyIfDroppedAutoRenderStates;
++ (id)triggerStates;
 + (id)lowValueAutoRenderStates;
 + (id)highValueAutoRenderStates;
 + (id)defaultManualRenderStates;
@@ -56,6 +61,7 @@
 - (void)performRender:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 shouldCancelOtherJobs:(BOOL)arg4;
 - (void)performRender:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3;
 - (void)_updateTimer;
+- (BOOL)mouseIsDown;
 - (id)_newBGRenderTask:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 autoStartInfo:(id)arg4;
 - (void)dealloc;
 - (oneway void)release;

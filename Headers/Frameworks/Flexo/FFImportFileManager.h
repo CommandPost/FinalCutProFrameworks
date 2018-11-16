@@ -6,24 +6,39 @@
 
 #import "NSObject.h"
 
-@class FFFileImporter, FFMediaEventProject, NSDictionary;
+@class FFFileImporter, FFMediaEventProject, NSDictionary, NSMutableDictionary;
 
 @interface FFImportFileManager : NSObject
 {
     FFMediaEventProject *_currentEvent;
     FFFileImporter *_fileImporter;
     NSDictionary *_postponedFileImportInfo;
+    NSMutableDictionary *_importQueue;
+    BOOL _rejectedSheetShown;
+    CDUnknownBlockType _sizeValidationBlock;
+    CDUnknownBlockType _importDidBeginBlock;
+    long long _bytesRequired;
 }
 
++ (void)archiveMutableImportedRanges:(id)arg1;
++ (id)unarchiveMutableImportedRanges;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
+@property long long bytesRequired; // @synthesize bytesRequired=_bytesRequired;
+@property(copy) CDUnknownBlockType importDidBeginBlock; // @synthesize importDidBeginBlock=_importDidBeginBlock;
+@property(copy) CDUnknownBlockType sizeValidationBlock; // @synthesize sizeValidationBlock=_sizeValidationBlock;
+@property BOOL rejectedSheetShown; // @synthesize rejectedSheetShown=_rejectedSheetShown;
 @property(retain) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
 @property(retain) NSDictionary *postponedFileImportInfo; // @synthesize postponedFileImportInfo=_postponedFileImportInfo;
+- (void)copyQueueCanceled:(id)arg1;
+- (void)copyQueueCompleted:(id)arg1;
+- (void)clearSourceURL:(id)arg1 inImportedRanges:(id)arg2;
 - (void)cancelValidation;
-- (void)_selectInitiallyCreatedProject:(id)arg1;
 - (void)processFiles:(id)arg1;
+- (void)processPostponedImport:(BOOL)arg1;
 - (void)rejectedSheetDidEnd:(id)arg1;
-- (id)importFiles:(id)arg1 keywords:(id)arg2 window:(id)arg3 isValid:(char *)arg4;
+- (void)rejectedSheetWillBegin:(id)arg1;
+- (id)importFiles:(id)arg1 keywords:(id)arg2 window:(id)arg3 isValid:(char *)arg4 sizeValidation:(CDUnknownBlockType)arg5 importDidBegin:(CDUnknownBlockType)arg6;
 - (void)dealloc;
 - (oneway void)release;
 - (id)init;

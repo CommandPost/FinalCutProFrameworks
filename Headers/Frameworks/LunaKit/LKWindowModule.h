@@ -84,5 +84,11 @@
 - (id)initWithWindowClass:(Class)arg1 windowStyleMask:(unsigned long long)arg2;
 - (id)initWithModuleNibName:(id)arg1;
 
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
 @end
 

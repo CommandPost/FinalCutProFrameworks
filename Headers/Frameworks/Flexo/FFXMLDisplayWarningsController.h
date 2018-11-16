@@ -9,7 +9,7 @@
 #import "NSOutlineViewDataSource.h"
 #import "NSOutlineViewDelegate.h"
 
-@class NSDictionary, NSOutlineView, NSScrollView;
+@class NSDictionary, NSOutlineView, NSScrollView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFXMLDisplayWarningsController : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate>
@@ -29,6 +29,12 @@ __attribute__((visibility("hidden")))
 - (id)view;
 - (void)dealloc;
 - (id)initWithErrors:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

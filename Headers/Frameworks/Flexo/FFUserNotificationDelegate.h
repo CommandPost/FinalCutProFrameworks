@@ -8,6 +8,8 @@
 
 #import "NSUserNotificationCenterDelegate.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface FFUserNotificationDelegate : NSObject <NSUserNotificationCenterDelegate>
 {
@@ -16,6 +18,12 @@ __attribute__((visibility("hidden")))
 + (id)defaultUserNotificationDelegate;
 - (void)userNotificationCenter:(id)arg1 didActivateNotification:(id)arg2;
 - (BOOL)userNotificationCenter:(id)arg1 shouldPresentNotification:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

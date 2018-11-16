@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)allLocalKeys;
 - (void)syncWithReferenceLayoutMap;
 - (void)resetLayoutMap;
+- (BOOL)canResetLayoutMap;
 - (void)setUseReferenceLayout:(BOOL)arg1 forKey:(id)arg2;
 - (BOOL)useReferenceLayoutForKey:(id)arg1;
 - (id)demandMutableLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;

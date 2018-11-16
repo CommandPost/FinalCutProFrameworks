@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class LKPopUpButton;
+@class LKPopUpButton, NSString;
 
 @interface TXTypefacePopUpController : OZViewController <NSMenuDelegate>
 {
@@ -18,9 +18,11 @@
     _Bool _areAllFontsEqual;
     _Bool _selectionDidChange;
     _Bool _aboutToChangeCalled;
+    BOOL _isMenuOpen;
 }
 
 @property(retain, nonatomic) LKPopUpButton *popUpButton; // @synthesize popUpButton=_popUpButton;
+- (void)setChannel:(struct OZChannel *)arg1 value:(int)arg2 time:(CDStruct_198678f7)arg3;
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (void)menu:(id)arg1 willHighlightItem:(id)arg2;
 - (void)menuDidClose:(id)arg1;
@@ -34,10 +36,18 @@
 - (void)reset;
 - (BOOL)areAllFontsEqual;
 - (void)selectItemAtIndex:(int)arg1 setChannel:(_Bool)arg2;
+- (void)inspectorWillDealloc;
+- (BOOL)isMenuOpen;
 - (void)updatePopUpMenu:(BOOL)arg1;
 - (void)familyChanged:(id)arg1;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

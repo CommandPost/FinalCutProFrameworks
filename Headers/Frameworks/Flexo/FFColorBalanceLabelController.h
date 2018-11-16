@@ -4,12 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFColorBaseViewController.h>
+#import <Flexo/FFColorBaseLabelController.h>
 
 @class LKButton, OZLabelText, OZViewCtlrRoot;
 
 __attribute__((visibility("hidden")))
-@interface FFColorBalanceLabelController : FFColorBaseViewController
+@interface FFColorBalanceLabelController : FFColorBaseLabelController
 {
     LKButton *_toggleButton;
     OZLabelText *_labelText;
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL _allMediaIsAvailable;
 }
 
+- (BOOL)isUserBalanceEffectEnabled;
 - (id)checkMediaAvailability;
 - (void)assetInvalidated:(id)arg1;
 - (void)performBalanceOrToggle:(id)arg1;

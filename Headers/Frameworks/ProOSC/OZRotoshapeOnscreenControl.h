@@ -96,8 +96,6 @@
 - (void)menuBreakTangent:(id)arg1;
 - (void)menuAdd:(id)arg1;
 - (void)menuDelete:(id)arg1;
-- (void)menuSetBezier:(id)arg1;
-- (void)menuSetLinear:(id)arg1;
 - (void)menuSetInterpolation:(id)arg1;
 - (void)menuDisable:(id)arg1;
 - (void)menuLock:(id)arg1;

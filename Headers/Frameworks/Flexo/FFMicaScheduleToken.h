@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_semaphore> *m_frameCompleteSemaphore;
 }
 
+- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (_Bool)hintWillImageSoon;
 - (unsigned int)scheduleStatusInformation;

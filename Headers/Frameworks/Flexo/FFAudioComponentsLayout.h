@@ -24,7 +24,8 @@
 + (Class)mutableLayoutItemClass;
 + (Class)layoutItemClass;
 + (id)copyClassDescription;
-+ (BOOL)supportsObject:(id)arg1;
++ (BOOL)displayUseReferenceClipLayoutAlertDialog:(char *)arg1;
++ (BOOL)displayReferenceClipLayoutChangeAlertDialog:(char *)arg1;
 + (id)referenceRolesForObject:(id)arg1 key:(id)arg2 layoutItemKey:(id)arg3;
 + (id)sortedSpineAnchorIDsForClip:(id)arg1;
 + (id)spineAnchorObjectForID:(id)arg1 inClip:(id)arg2;
@@ -32,6 +33,8 @@
 + (id)newClipLayoutForPrimordialClip:(id)arg1;
 + (id)availableMediaSourceChannelsForPrimordialClip:(id)arg1;
 + (id)availableMediaSourcesForPrimordialClip:(id)arg1;
++ (BOOL)supportsReferenceLayout:(id)arg1;
++ (BOOL)isReferenceEventClip:(id)arg1;
 @property(retain, nonatomic) NSArray *layoutItems; // @synthesize layoutItems=m_layoutItems;
 @property(readonly, nonatomic) unsigned int numChannels; // @synthesize numChannels=m_numChannels;
 - (void)removeObjectFromLayoutItemsAtIndex:(unsigned long long)arg1;

@@ -26,6 +26,7 @@
 - (struct OZDocument *)document;
 - (void)disable;
 - (void)enable;
+- (void)updateMenuNames:(id)arg1;
 - (void)update;
 - (id)initWithAddRemoveIF:(struct OZAddRemoveChanIF *)arg1 isHUD:(BOOL)arg2;
 

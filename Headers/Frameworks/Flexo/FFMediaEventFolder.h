@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 + (int)matchingTypeIterationOption;
 + (id)objectsSortedByName:(id)arg1;
++ (id)newLibraryFolderWithDefaultSmartCollections:(BOOL)arg1;
 + (id)copyClassDescription;
 + (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2 event:(id)arg3;
 + (id)readableTypesForPasteboard:(id)arg1;
@@ -53,12 +54,13 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugDescription;
+@property(readonly, copy) NSString *debugDescription;
 - (id)debugDescrptionWithIndentLevel:(unsigned int)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
 - (id)init;
+- (BOOL)isLibraryFolder;
 - (BOOL)actionDropObjects:(id)arg1 atIndex:(unsigned long long)arg2 forceCopy:(BOOL)arg3 error:(id *)arg4;
 - (id)_droppingActionNameForObjects:(id)arg1;
 - (BOOL)_copyObject:(id)arg1 toIndex:(unsigned long long)arg2 inProject:(id)arg3;
@@ -70,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)_actionBeginEditing;
 - (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
 - (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
+- (BOOL)_isThisFolderAnAncestor:(id)arg1;
 - (id)pasteboardPropertyListForType:(id)arg1;
 - (id)writableTypesForPasteboard:(id)arg1;
 @property(readonly, nonatomic) NSArray *detailSubitems;
@@ -88,9 +91,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL hasDetailSubitems;
 @property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
 @property(readonly, nonatomic) BOOL hasItems;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 @property(readonly, nonatomic) double itemRowHeight;
+@property(readonly) Class superclass;
 
 @end
 

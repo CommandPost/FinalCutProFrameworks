@@ -6,19 +6,16 @@
 
 #import <Flexo/FFEffect.h>
 
-@class CHChannelBool, FFSourceVideo, FFStreamVideo, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFRateConformEffect : FFEffect
 {
-    CHChannelBool *_chRateConformScaleEnable;
     CDStruct_1b6d18a9 _targetSampleDuration;
     CDStruct_1b6d18a9 _intermediateSampleDuration;
     NSString *_scaleLabel;
     CDStruct_1b6d18a9 _mediaStartTime;
     CDStruct_1b6d18a9 _mediaEndTime;
-    FFStreamVideo *_mediaStream;
-    FFSourceVideo *_mediaSource;
 }
 
 + (CDStruct_1b6d18a9)intermediateSampleDuration:(CDStruct_1b6d18a9)arg1 targetSampleDuration:(CDStruct_1b6d18a9)arg2;
@@ -31,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (void)setPersistentData:(id)arg1;
 - (id)persistentData;
 - (void)createChannelsInFolder:(id)arg1;
-- (void)setIntermediateSampleDuration:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)intermediateSampleDuration;
 - (BOOL)shouldTimeScale;
 - (BOOL)scaleEnabled;
@@ -44,18 +40,16 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)mapMediaTimeToSequenceTimeWithTargetSampleDuration:(CDStruct_1b6d18a9)arg1 mediaTime:(CDStruct_1b6d18a9)arg2;
 - (id)labelFromIntermediatSampleDuration:(CDStruct_1b6d18a9)arg1 sourceSampleDuration:(CDStruct_1b6d18a9)arg2;
 - (BOOL)integerFrameRate:(CDStruct_1b6d18a9)arg1;
-- (void)setFrameSampleMode:(long long)arg1;
-- (long long)frameSampleMode;
 - (void)setMediaEndTime:(CDStruct_1b6d18a9)arg1;
 - (void)setMediaStartTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)mediaEndTime;
 - (CDStruct_1b6d18a9)mediaStartTime;
-- (id)mediaStream;
 - (void)setScaleLabel:(id)arg1;
-- (void)setTargetSampleDuration:(CDStruct_1b6d18a9)arg1;
+- (void)setTargetSampleDuration:(CDStruct_1b6d18a9)arg1 intermediateSampleDuration:(CDStruct_1b6d18a9)arg2 lableFromSourceSampleDuration:(CDStruct_1b6d18a9)arg3;
 - (CDStruct_1b6d18a9)targetSampleDuration;
 - (BOOL)effectIntroducesAlpha;
 - (BOOL)isNoOp;
+- (CDStruct_1b6d18a9)getTimeForInputTime:(CDStruct_1b6d18a9)arg1 streamOffset:(CDStruct_1b6d18a9)arg2;
 - (BOOL)isRateConformEffect;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;

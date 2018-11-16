@@ -70,5 +70,11 @@
 - (void)dealloc;
 - (id)initWithLibrary:(id)arg1 parentWindow:(id)arg2 errorDescription:(id)arg3 canCloseLibrary:(BOOL)arg4 necessarySpaceAvailable:(unsigned long long)arg5;
 
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
 @end
 

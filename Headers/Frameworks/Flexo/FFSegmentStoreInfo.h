@@ -47,7 +47,7 @@
 - (int)writeTransferredImageData:(id)arg1 secondFieldData:(id)arg2 from:(id)arg3 sampleNumber:(long long)arg4;
 - (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 sampleNumber:(long long)arg4 threadInfo:(id)arg5;
 - (BOOL)validateDimensions:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3;
-- (id)newImageFromFrameData:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3 requestedQuality:(int)arg4 propagateSampleBuf:(BOOL)arg5;
+- (id)newImageFromFrameData:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3 requestedQuality:(int)arg4 propagateSampleBuf:(BOOL)arg5 error:(id *)arg6;
 - (struct CGRect)getExpectedEncodedPixelBounds:(int)arg1;
 - (id)getPixelFormatForQuality:(int)arg1;
 - (int)getFieldOrderForSampleNum:(long long)arg1 requestedQuality:(int)arg2 retFieldMode:(const struct __CFString **)arg3;

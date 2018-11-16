@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FFWaveformChannelLayer : FFVideoScopesChannelLayerGL <FFWaveformContextLayer>
 {
     struct FFVideoScopesWaveformViewPrivate *_waveformContext;
-    long long _viewMode;
+    long long _displayMode;
     unsigned long long _option;
     float _traceBrightness;
     _Bool _monochrome;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)actionForKey:(id)arg1;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;
-- (void)setViewMode:(long long)arg1;
+- (void)setDisplayMode:(long long)arg1;
 - (void)setWaveformContext:(struct FFVideoScopesWaveformViewPrivate *)arg1;
 - (void)setMonochrome:(BOOL)arg1;
 - (void)setTraceBrightness:(float)arg1;

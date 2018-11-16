@@ -20,6 +20,7 @@
 + (id)libraryNodeForTargetInfo:(const CDStruct_4cb9d06e *)arg1;
 + (id)projectForTargetInfo:(const CDStruct_4cb9d06e *)arg1;
 + (id)creationNodeForTargetInfo:(const CDStruct_4cb9d06e *)arg1 folder:(id *)arg2;
++ (BOOL)areNodesAllFolderObjects:(id)arg1;
 + (id)eventMediaSidebarController;
 @property(nonatomic) int sortDirection; // @synthesize sortDirection=_sortDirection;
 @property(nonatomic) int sortType; // @synthesize sortType=_sortType;
@@ -27,9 +28,8 @@
 @property(nonatomic) BOOL appLaunchCompleted; // @synthesize appLaunchCompleted=_appLaunchCompleted;
 @property(nonatomic) BOOL silenceSelectionChange; // @synthesize silenceSelectionChange=_silenceSelectionChange;
 - (id)nodeToSelectAfterDeletionForTargetInfo:(const CDStruct_4cb9d06e *)arg1;
-- (BOOL)deleteEventSubNodes:(id)arg1 nodeToSelect:(id)arg2 error:(id *)arg3;
-- (BOOL)nodesOnlyContainEventSubItemTypes:(id)arg1;
-- (BOOL)nodesOnlyContainEventRelatedItemTypes:(id)arg1;
+- (BOOL)deleteLibraryFolderNode:(id)arg1 nodeToSelect:(id)arg2 error:(id *)arg3;
+- (BOOL)deleteFolderObjectNodes:(id)arg1 nodeToSelect:(id)arg2 error:(id *)arg3;
 - (void)addANode:(id)arg1 toMediaDetailSet:(id)arg2 ignoreIfNode:(id)arg3;
 - (id)newMediaRootNode;
 - (id)cellForNode:(id)arg1 atTableColumn:(id)arg2;

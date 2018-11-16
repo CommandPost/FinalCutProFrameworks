@@ -22,6 +22,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (int)matchingTypeIterationOption;
++ (id)newFavoritesSmartCollection;
++ (id)newStillsSmartCollection;
++ (id)newAudioOnlySmartCollection;
++ (id)newVideoSmartCollection;
++ (id)newProjectsSmartCollection;
 + (id)copyClassDescription;
 + (id)keyPathsForValuesAffectingItemDisplayName;
 - (void)update_fixAnalysisKeywords;
@@ -38,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 filtersDictionary:(id)arg2;
 - (id)pasteboardPropertyListForType:(id)arg1;
@@ -60,13 +65,16 @@ __attribute__((visibility("hidden")))
 - (void)_actionBeginEditing;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
 @property(readonly, nonatomic) BOOL hasDetailSubitems;
 @property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
 @property(readonly, nonatomic) BOOL hasItems;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 @property(readonly, nonatomic) double itemRowHeight;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "NSKeyedUnarchiverDelegate.h"
 
-@class FFAnchoredSequence, FFMediaEventProject, NSBundle, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet;
+@class FFAnchoredSequence, FFMediaEventProject, NSBundle, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 
 @interface FFIMovieImporter : NSObject <NSKeyedUnarchiverDelegate>
 {
@@ -59,13 +59,10 @@
 - (id)initWithURL:(id)arg1 sequence:(id)arg2 event:(id)arg3;
 - (id)initWithURL:(id)arg1 targetEvent:(id)arg2;
 - (void)commonInit;
-- (id)importMobileProjectAtURL:(id)arg1;
 - (BOOL)updateVersion:(id)arg1;
 - (void)setDefaults:(id)arg1;
 - (void)makeObjectsInObject:(id)arg1 performSelector:(SEL)arg2 withObject:(id)arg3 withObject:(id)arg4;
 - (void)array:(id)arg1 changeKeys:(id)arg2 toKeys:(id)arg3;
-- (void)updateMobileProject:(id)arg1;
-- (BOOL)checkMobileVersion:(id)arg1;
 - (BOOL)importToEventWithDisplayName:(id)arg1 error:(id *)arg2;
 - (id)newMediaForEvent:(id)arg1 atURL:(id)arg2 error:(id *)arg3;
 - (id)importToSeq:(id)arg1 displayName:(id)arg2 error:(id *)arg3;
@@ -126,7 +123,7 @@
 - (CDStruct_1b6d18a9)secondsToFigTimeForSequenceVideo:(float)arg1 sequence:(id)arg2;
 - (void)retimeClip:(id)arg1 toRate:(double)arg2;
 - (void)processVideoColor:(id)arg1 forClip:(id)arg2;
-- (void)applyCreationDate:(id)arg1 toClip:(id)arg2;
+- (void)applyCreationDate:(id)arg1 toMediaItem:(id)arg2 inEvent:(id)arg3;
 - (void)processAudioProperties:(id)arg1 forClip:(id)arg2 frameDuration:(CDStruct_1b6d18a9)arg3;
 - (void)applyNoiseReductionFrom:(id)arg1 toClip:(id)arg2;
 - (void)applyEQFrom:(id)arg1 toClip:(id)arg2;
@@ -137,8 +134,8 @@
 - (void)applyEffectsFromEdit:(id)arg1 toClip:(id)arg2;
 - (void)applyParametersToAudioEffect:(id)arg1 forEffectName:(id)arg2;
 - (void)importAlliMovieData;
-- (void)addiMovieDataAtPath:(id)arg1 toMediaItem:(id)arg2;
-- (void)addDateProperties:(id)arg1 toMediaObject:(id)arg2 forMediaName:(id)arg3;
+- (void)addiMovieDataAtPath:(id)arg1 toMediaItem:(id)arg2 inEvent:(id)arg3;
+- (void)addDateProperties:(id)arg1 toMediaItem:(id)arg2 forMediaName:(id)arg3 inEvent:(id)arg4;
 - (void)addColorProperties:(id)arg1 toMediaObject:(id)arg2 forMediaName:(id)arg3;
 - (void)addAudioStyleProperties:(id)arg1 toMediaObject:(id)arg2 forMediaName:(id)arg3;
 - (void)addAudioProperties:(id)arg1 toMediaObject:(id)arg2 forMediaName:(id)arg3;
@@ -164,6 +161,12 @@
 - (id)eventProjectForPath:(id)arg1 defaultProjectName:(id)arg2;
 - (id)unarchiver:(id)arg1 didDecodeObject:(id)arg2;
 - (Class)unarchiver:(id)arg1 cannotDecodeObjectOfClassName:(id)arg2 originalClasses:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

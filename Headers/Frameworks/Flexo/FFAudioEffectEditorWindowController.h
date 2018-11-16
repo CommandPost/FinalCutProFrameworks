@@ -78,7 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)_disableUndoWarning;
 - (id)initWithEffect:(id)arg1 context:(id)arg2 preferGeneric:(BOOL)arg3;
 - (void)closeWindow;
-- (void)_closeWindow:(id)arg1;
+- (void)_effectsChanged:(id)arg1;
 - (void)_registerPropertyChangeListener:(BOOL)arg1;
 - (void)_setEffectChannelFolder:(id)arg1;
 - (void)_channelChangedNotification:(id)arg1;

@@ -11,6 +11,8 @@
 @protocol ICCameraDeviceDelegate <ICDeviceDelegate>
 
 @optional
+- (BOOL)cameraDevice:(ICCameraDevice *)arg1 shouldGetMetadataOfItem:(ICCameraItem *)arg2;
+- (BOOL)cameraDevice:(ICCameraDevice *)arg1 shouldGetThumbnailOfItem:(ICCameraItem *)arg2;
 - (void)deviceDidBecomeReadyWithCompleteContentCatalog:(ICDevice *)arg1;
 - (void)cameraDevice:(ICCameraDevice *)arg1 didReceivePTPEvent:(NSData *)arg2;
 - (void)cameraDevice:(ICCameraDevice *)arg1 didReceiveMetadataForItem:(ICCameraItem *)arg2;

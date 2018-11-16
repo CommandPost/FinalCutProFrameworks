@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSPanel, NSProgressIndicator, NSString, NSTextField;
+@class NSPanel, NSProgressIndicator, NSString, NSTextField;
 
 @interface OZCopyFootage : NSObject
 {
     struct vector<OZSceneNode *, std::allocator<OZSceneNode *>> *_pFootage;
-    NSArray *_pNewPaths;
+    NSString *_pDestinationRoot;
     BOOL _copyCanceled;
     NSString *_pProgressActionString;
     NSString *_pProgressRemainingString;
@@ -25,7 +25,7 @@
 }
 
 + (id)sharedInstance;
-- (void)copyFootage:(CDStruct_4c453ce1 *)arg1;
+- (void)copyFootage:(CDStruct_79f65067 *)arg1;
 - (void)threadedCopyFootage;
 - (void)cancelCopy:(id)arg1;
 - (void)updateCopyProgressDisplay:(id)arg1;

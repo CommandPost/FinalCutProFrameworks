@@ -8,31 +8,38 @@
 
 #import "FFXMLTaskDelegate.h"
 
-@class FFProgressSheetController, FFXMLTranslationCancelTarget;
+@class FFProgressSheetController, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFXMLTranslationTaskDelegate : NSObject <FFXMLTaskDelegate>
 {
     int _taskType;
-    FFXMLTranslationCancelTarget *_cancelTarget;
     FFProgressSheetController *_progressController;
     float _progressTaskScopeStart;
     float _progressTaskScopeEnd;
     BOOL _foriMovie;
+    BOOL _canceled;
 }
 
 - (void)setForiMovie;
-- (id)runLibraryChooser:(id)arg1 importFileURL:(id)arg2 error:(id *)arg3;
+- (id)runLibraryChooser:(id)arg1 importFileURL:(id)arg2 libraryIsNew:(char *)arg3 error:(id *)arg4;
 - (void)hideProgressWindow;
 - (void)showProgressWindow;
 - (void)setProgressMessage:(int)arg1 messageInfo:(id)arg2;
 - (void)setProgressMessage:(id)arg1;
 - (void)setProgressValue:(double)arg1;
 - (BOOL)userCancelled;
+- (void)performCancel;
 - (void)resetProgressValueScope;
 - (void)setProgressValueScopeWithStart:(float)arg1 andEnd:(float)arg2;
 - (void)dealloc;
 - (id)initWithTask:(int)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

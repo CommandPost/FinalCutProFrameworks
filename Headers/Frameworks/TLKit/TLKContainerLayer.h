@@ -9,7 +9,7 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class NSArray, TLKContainerHandleLayer, TLKLayoutContext, TLKTextLayer, TLKThemeBackedLayer, TLKTiledContainerBackgroundLayer;
+@class NSArray, NSString, TLKContainerHandleLayer, TLKLayoutContext, TLKTextLayer, TLKThemeBackedLayer, TLKTiledContainerBackgroundLayer;
 
 @interface TLKContainerLayer : TLKTimelineLayer <TLKAccessibilityProtocol, TLKPartInfo>
 {
@@ -64,6 +64,12 @@
 - (struct CGRect)accessibilityRectForPart:(id)arg1;
 - (id)accessibilityAttributeNames;
 - (id)partAtPoint:(struct CGPoint)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

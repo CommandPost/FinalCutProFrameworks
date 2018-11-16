@@ -10,7 +10,7 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class NSArray, NSProScrollView, NSProTableView, NSView;
+@class NSArray, NSProScrollView, NSProTableView, NSString, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFConsumerShareHistoryViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate>
@@ -34,6 +34,12 @@ __attribute__((visibility("hidden")))
 - (void)awakeFromNib;
 - (struct CGRect)fullViewSize;
 - (id)initWithShareHistory:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

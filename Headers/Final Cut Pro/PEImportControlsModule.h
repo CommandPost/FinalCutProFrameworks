@@ -18,9 +18,12 @@
     BOOL _fileOrRADIsImporting;
     NSMutableSet *_importBackgroundTasks;
     BOOL _hasSidebarSelection;
+    BOOL _closingImportWindow;
     double _stopImportButtonOffset;
 }
 
++ (id)defaultModuleNibName;
+@property BOOL closingImportWindow; // @synthesize closingImportWindow=_closingImportWindow;
 @property double stopImportButtonOffset; // @synthesize stopImportButtonOffset=_stopImportButtonOffset;
 @property BOOL hasSidebarSelection; // @synthesize hasSidebarSelection=_hasSidebarSelection;
 @property BOOL fileOrRADIsImporting; // @synthesize fileOrRADIsImporting=_fileOrRADIsImporting;

@@ -8,7 +8,7 @@
 
 #import "FFColorSubEffect.h"
 
-@class FFHeColorEffect;
+@class FFHeColorEffect, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFBalanceColorEffect : FFBalanceColorBaseEffect <FFColorSubEffect>
@@ -24,6 +24,12 @@ __attribute__((visibility("hidden")))
 - (id)colorEffect;
 - (void)setColorEffect:(id)arg1;
 - (BOOL)isNoOp;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

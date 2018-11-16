@@ -52,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAssetRef;
 - (BOOL)isClipRef;
 - (BOOL)isProject;
-- (BOOL)performBlockWithMediaWhenReady:(CDUnknownBlockType)arg1;
+- (void)performBlockWithMediaWhenReady:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 @property(readonly, nonatomic) int proxyOfflineReason;
 @property(readonly, nonatomic) int highQualityOfflineReason;

@@ -22,6 +22,8 @@
     NSImage *_icon;
     BOOL _isUnmounting;
     BOOL _useUnclaimedURLs;
+    BOOL _isHybridVolume;
+    BOOL _isHybridMaster;
     NSMutableArray *_unclaimedURLs;
     NSMutableArray *_pathPackClaimedURLs;
 }
@@ -31,6 +33,9 @@
 + (id)volumeWithPath:(id)arg1 undoManager:(id)arg2;
 - (id).cxx_construct;
 - (id)metadata;
+- (void)becomeHybridVolumeAsMaster:(BOOL)arg1;
+- (BOOL)isHybridMaster;
+- (BOOL)isHybridVolume;
 - (BOOL)isiOSDevice;
 - (BOOL)isFolder;
 - (BOOL)isArchive;

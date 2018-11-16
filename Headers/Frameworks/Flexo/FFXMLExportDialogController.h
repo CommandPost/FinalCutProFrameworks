@@ -6,17 +6,20 @@
 
 #import "NSViewController.h"
 
-@class NSPopUpButton;
+@class NSMatrix, NSPopUpButton;
 
 @interface FFXMLExportDialogController : NSViewController
 {
     id mSourceProjectLine;
     id mSourceProjectIconView;
     NSPopUpButton *mExportViewPoup;
+    NSMatrix *mXMLVersionRadioButtons;
 }
 
-- (void)setExportViewSet:(id)arg1;
-- (id)exportViewSet;
+- (void)setMetadataViewSet:(id)arg1;
+- (id)metadataViewSet;
+- (void)setXMLVersion:(id)arg1;
+- (id)XMLVersion;
 - (id)initWithDisplayName:(id)arg1 displayIcon:(id)arg2;
 
 @end

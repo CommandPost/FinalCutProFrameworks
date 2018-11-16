@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface iLifeBezierSolver : NSObject
 {
-    double m_ax;
-    double m_bx;
-    double m_cx;
-    double m_ay;
-    double m_by;
-    double m_cy;
+    double _ax;
+    double _bx;
+    double _cx;
+    double _ay;
+    double _by;
+    double _cy;
 }
 
 + (id)iLifeBezierSolverWithPoint1:(struct CGPoint)arg1 point2:(struct CGPoint)arg2;

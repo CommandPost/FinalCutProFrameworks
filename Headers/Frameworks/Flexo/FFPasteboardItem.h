@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *documentID; // @synthesize documentID=_documentID;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 - (id)initWithPasteboardPropertyList:(id)arg1 ofType:(id)arg2;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)pasteboardPropertyListForType:(id)arg1;
 - (id)writableTypesForPasteboard:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -46,6 +46,11 @@ __attribute__((visibility("hidden")))
 - (void)_initHelperWithObject:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

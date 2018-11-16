@@ -13,7 +13,7 @@
 
 @interface iMovieTextLayer : CALayer <iMovieMicaPlugin, iMovieMicaTimeStretching>
 {
-    double m_actualShrinkToFitFontSize;
+    double _actualShrinkToFitFontSize;
 }
 
 + (struct CGColor *)defaultForegroundColor;
@@ -23,6 +23,7 @@
 + (id)defaultValueForKey:(id)arg1;
 - (double)computeHorizontalFlushFactor;
 - (unsigned char)computeHorizontalAlignment;
+@property(readonly) NSString *currentHorizontalAlignmentMode;
 - (unsigned char)computeLineBreakMode;
 - (void)computeAscent:(double *)arg1 descent:(double *)arg2 leading:(double *)arg3 leftMargin:(double *)arg4 height:(double *)arg5 frame:(struct __CTFrame *)arg6 context:(struct CGContext *)arg7 lineBounds:(id)arg8 respectCustomLeading:(BOOL)arg9;
 - (double)computeFontScaleToFitSingleLineTextInFrame:(struct __CTFrame *)arg1 context:(struct CGContext *)arg2;
@@ -35,6 +36,7 @@
 - (void)getOptimalAscent:(double *)arg1 width:(double *)arg2 height:(double *)arg3;
 - (id)lineBoundsForFrame:(struct __CTFrame *)arg1 context:(struct CGContext *)arg2;
 - (id)attributedStringWithString:(id)arg1 fontSize:(double)arg2 fontScale:(double)arg3;
+- (id)rangesThatShouldNotBeKernedInString:(id)arg1;
 - (struct __CTFrame *)newFrameForString:(id)arg1 fontSize:(double)arg2 fontScale:(double)arg3 actualSize:(double *)arg4;
 - (void)prepareShadowInContext:(struct CGContext *)arg1;
 - (void)drawFrame:(struct __CTFrame *)arg1 context:(struct CGContext *)arg2;
@@ -45,7 +47,7 @@
 - (void)customizeAttributedString:(id)arg1 fontScale:(double)arg2;
 - (id)stringToDisplay;
 @property(readonly) double actualShrinkToFitFontScale;
-@property(readonly) double actualShrinkToFitFontSize; // @synthesize actualShrinkToFitFontSize=m_actualShrinkToFitFontSize;
+@property(readonly) double actualShrinkToFitFontSize;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)actionForKey:(id)arg1;
 
@@ -58,6 +60,7 @@
 @property double fontSize; // @dynamic fontSize;
 @property struct CGColor *foregroundColor; // @dynamic foregroundColor;
 @property(copy) NSString *horizontalAlignmentMode; // @dynamic horizontalAlignmentMode;
+@property(copy) NSString *horizontalAlignmentModeRTL; // @dynamic horizontalAlignmentModeRTL;
 @property double kerningAdjustment; // @dynamic kerningAdjustment;
 @property BOOL shrinkToFit; // @dynamic shrinkToFit;
 @property(copy) NSString *string; // @dynamic string;

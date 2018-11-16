@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setRepresentedObject:(id)arg1;
 - (id)persistentID;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 
 @end

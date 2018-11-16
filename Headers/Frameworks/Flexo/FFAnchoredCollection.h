@@ -64,7 +64,7 @@
 @property(nonatomic) BOOL isPSD; // @synthesize isPSD=_isPSD;
 @property(nonatomic) BOOL isCompoundClip; // @synthesize isCompoundClip=_isCompoundClip;
 @property(readonly, nonatomic) FFVideoSegmenter *videoSegmenter; // @synthesize videoSegmenter=_videoSegmenter;
-@property(readonly, nonatomic) NSArray *containedItems; // @synthesize containedItems=_containedItems;
+@property(readonly, retain, nonatomic) NSArray *containedItems; // @synthesize containedItems=_containedItems;
 @property(retain, nonatomic) NSString *angleID; // @synthesize angleID=_angleID;
 - (id)createUsedRangesMediaIdentifier;
 - (void)_angleCountOrBankChanged;
@@ -96,6 +96,7 @@
 - (void)_resetAudioComponentsLayoutMap;
 - (id)anchoredObjectsForAudioComponentsLayoutKey:(id)arg1;
 - (id)activeAudioComponentsLayoutKeys;
+- (BOOL)_shouldPlayAudioComponents;
 - (id)audioComponentsLayoutMap;
 - (void)demandAudioComponentSources:(int)arg1;
 @property(readonly, nonatomic) FFAudioClipComponentsLayoutMap *persistentAudioComponentsLayoutMap;
@@ -112,16 +113,14 @@
 - (CDStruct_bdcb2b0d)_audioMD5:(int)arg1;
 - (void)_clearCachedAudioMD5;
 - (void)setStartingTimecode:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)sampleDuration;
 - (BOOL)supportsRoles;
 - (void)resetRoles;
 - (void)addRole:(id)arg1;
-- (id)roles;
 - (id)rolesWithPlayEnable:(int)arg1;
 - (void)clearRolesCacheIfSet;
-- (double)audioSampleRate;
+- (double)nativeAudioSampleRate;
 - (double)maxDescendantAudioSampleRate;
-- (long long)audioChannelCount:(int)arg1;
+- (long long)nativeAudioChannelCount:(int)arg1;
 @property(retain, nonatomic) FFVideoProps *videoProps; // @synthesize videoProps=_videoProps;
 - (id)_copyCalculatedVideoProps_Internal;
 - (id)_rawVideoProps;

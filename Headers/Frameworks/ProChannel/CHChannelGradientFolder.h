@@ -12,7 +12,15 @@
 
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
+- (void)sortAndRename;
+- (void)flopAtTime:(CDStruct_198678f7)arg1;
+- (void)spreadAtTime:(CDStruct_198678f7)arg1;
+- (void)deleteSample:(unsigned int)arg1;
+- (id)cloneSample:(unsigned int)arg1;
+- (id)insertSampleAtTime:(CDStruct_198678f7)arg1 offset:(double)arg2;
+- (id)sampleBaseName;
 - (struct OZChannelGradientFolder *)ozChannel;
+- (id)addNewChannelWithXMLTypeInfo:(id)arg1;
 
 @end
 

@@ -11,11 +11,10 @@
 #import "NSOpenSavePanelDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFImportGoToFolderSheetController, FFImportNavigationController, FFImportOrganizerFilmstripModule, FFImportOrganizerOptionsSheetConnector, FFImportOrganizerSplitView, FFImportSeparator, FFImportTapeModule, FFLibrary, FFMediaEventProject, FFNavHeaderView, LKBox, LKButton, LKImageView, LKPaneCapView, LKPopOverWindow, LKPopUpButton, LKProgressIndicator, LKSegmentedControl, LKSlider, LKTextField, LKViewModule, NSProButton, NSProTextField, NSProThemeImageView, NSProView, NSSet, NSString, NSTextField, NSView, NSWindow, OKPaneCapItemView;
+@class FFImportGoToFolderSheetController, FFImportNavigationController, FFImportOrganizerFilmstripModule, FFImportOrganizerSplitView, FFImportSeparator, FFImportTapeModule, FFLibrary, FFMediaEventProject, FFNavHeaderView, LKBox, LKButton, LKImageView, LKPaneCapView, LKPopOverWindow, LKPopUpButton, LKProgressIndicator, LKSegmentedControl, LKSlider, LKTextField, LKViewModule, NSProButton, NSProTextField, NSProThemeImageView, NSProView, NSSet, NSString, NSTextField, NSView, NSWindow, OKPaneCapItemView;
 
 @interface FFImportOrganizerModule : FFEventsSuperModule <NSWindowDelegate, FFImportTapeModuleDelegate, NSOpenSavePanelDelegate, NSMenuDelegate>
 {
-    FFImportOrganizerOptionsSheetConnector *_importOrganizerOptionsSheetConnector;
     FFImportGoToFolderSheetController *_goToFolderSheetController;
     BOOL _sidebarConfigured;
     BOOL _continueImportingSelected;
@@ -40,9 +39,6 @@
     BOOL _canCreateQTCameraArchive;
     BOOL _updatingSplitViewPosition;
     BOOL _treeNodeIsProcessing;
-    BOOL _observingTranscodingCheckBoxes;
-    BOOL _revertCopyToMediaFolderPreference;
-    BOOL _previousCopyToMediaFolderPreference;
     LKPopOverWindow *_navClipAttributesPopOverWindow;
     FFMediaEventProject *_initialEvent;
     NSSet *_initialKeywords;
@@ -83,7 +79,7 @@
     NSString *_noFilteredItemsStatusString;
 }
 
-+ (void)targetInfoForItems:(id)arg1 targetInfo:(CDStruct_7da301ea *)arg2;
++ (void)targetInfoForItems:(id)arg1 targetInfo:(CDStruct_7da301ea *)arg2 needsREDInfo:(BOOL)arg3;
 + (void)initialize;
 + (id)keyPathsForValuesAffectingCanArchive;
 @property(retain) NSString *noFilteredItemsStatusString; // @synthesize noFilteredItemsStatusString=_noFilteredItemsStatusString;
@@ -169,8 +165,8 @@
 - (id)volumeToArchiveAtCurrentNode;
 - (void)finishedLoadingChanged;
 - (BOOL)finishedLoading;
+- (void)scanTargetInfo:(CDStruct_7da301ea *)arg1 forSelectedItems:(id)arg2 needsREDInfo:(BOOL)arg3;
 - (void)importClips:(id)arg1;
-- (void)importOptionsSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)setShowListMode:(id)arg1;
 - (void)setShowFilmstripMode:(id)arg1;
 - (void)removeFavorite:(id)arg1;
@@ -179,7 +175,6 @@
 - (void)revealVolumeInFinder:(id)arg1;
 - (void)stopUsingMedia:(id)arg1;
 - (void)unmountVolume:(id)arg1;
-- (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)showImportPanel:(id)arg1;
@@ -205,8 +200,6 @@
 - (void)popUpClipAttributes:(id)arg1;
 - (id)customClipAttributesPopOverView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_stopObservingTranscodingCheckBoxes;
-- (void)_startObservingTranscodingCheckBoxes;
 - (void)removePaneCapItem:(id)arg1;
 - (void)addPaneCapItem:(id)arg1;
 - (void)unloadClipAppearanceNib;
@@ -222,7 +215,11 @@
 - (id)init;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 @property(retain, nonatomic) NSView *itemsModuleBottomAccessoryView; // @dynamic itemsModuleBottomAccessoryView;
+@property(readonly) Class superclass;
 
 @end
 

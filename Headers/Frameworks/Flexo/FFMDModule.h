@@ -18,6 +18,7 @@
 
 @property(retain, nonatomic) LKSearchField *searchField; // @synthesize searchField=_searchField;
 @property(retain, nonatomic) NSView *headerView; // @synthesize headerView=_headerView;
+- (void)toggleSidebar:(id)arg1;
 - (struct CGRect)animationStartRectForEditAction:(id)arg1;
 - (id)animationViewForEditAction:(id)arg1;
 - (struct CGImage *)newAnimationImageForEditAction:(id)arg1;

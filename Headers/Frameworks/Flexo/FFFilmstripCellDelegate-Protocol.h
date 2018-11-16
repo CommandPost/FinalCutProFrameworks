@@ -6,8 +6,13 @@
 
 #import "NSObject.h"
 
+@class FFFilmstripCell;
+
 @protocol FFFilmstripCellDelegate <NSObject>
 - (BOOL)useImageCache;
 - (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
+
+@optional
+- (BOOL)filmstripCell:(FFFilmstripCell *)arg1 shouldUpdateThumbnailWithSkimmable:(struct NSObject *)arg2;
 @end
 

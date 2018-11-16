@@ -8,7 +8,7 @@
 
 #import "MIORADSampleCursorProtocol.h"
 
-@class MIORADSpannedTrackReader;
+@class MIORADSpannedTrackReader, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MIORADSpannedSampleCursor : MIOObject <MIORADSampleCursorProtocol>
@@ -49,13 +49,20 @@ __attribute__((visibility("hidden")))
 - (long long)compareInDecodeOrder:(id)arg1;
 - (int)stepByPresentationTime:(CDStruct_1b6d18a9)arg1;
 - (int)stepByPresentationTime:(CDStruct_1b6d18a9)arg1 pts:(CDStruct_1b6d18a9)arg2;
-- (int)stepByDecodeTime:(CDStruct_1b6d18a9)arg1;
 - (int)stepByDecodeTime:(CDStruct_1b6d18a9)arg1 dts:(CDStruct_1b6d18a9)arg2;
+- (int)stepByDecodeTime:(CDStruct_1b6d18a9)arg1;
+- (int)stepByTime:(CDStruct_1b6d18a9)arg1 currentTime:(CDStruct_1b6d18a9)arg2 isPresentationTime:(BOOL)arg3;
 - (int)stepInPresentationOrder:(long long)arg1;
 - (int)stepInDecodeOrder:(long long)arg1;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSampleCursor:(id)arg1 trackReader:(id)arg2 trackIdx:(unsigned long long)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

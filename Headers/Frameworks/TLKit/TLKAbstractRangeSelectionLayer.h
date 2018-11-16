@@ -9,6 +9,8 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
+@class NSString;
+
 @interface TLKAbstractRangeSelectionLayer : TLKAccessibilityLayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
     int _draggingHandle;
@@ -33,7 +35,6 @@
 - (id)accessibilityRole;
 - (CDStruct_e83c9415)_selectedRange;
 - (id)_timelineView;
-- (id)hitTest:(struct CGPoint)arg1;
 - (void)setDelegate:(id)arg1;
 @property BOOL containingViewFirstResponder;
 @property int draggingHandle;
@@ -43,6 +44,12 @@
 - (struct CGRect)_leftHandleFrame;
 - (id)rightHandle;
 - (id)leftHandle;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,10 +8,18 @@
 
 #import "FFImageBrowserRepresentedItem.h"
 
+@class NSString;
+
 @interface ILMediaObject (FFImageBrowserAdditions) <FFImageBrowserRepresentedItem>
 - (id)ffImageBrowserSubtitle;
 - (id)ffImageBrowserTitle;
 - (struct CGImage *)ffImageBrowserRepresentation;
 - (id)ffImageBrowserUID;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

@@ -7,6 +7,7 @@
 #import "CALayer.h"
 
 @interface CALayer (TLKAdditions)
+- (id)debugQuickLookObject;
 - (BOOL)tlkParentLayerHidden;
 - (void)tlkRecursivelyPerformSelector:(SEL)arg1;
 - (void)tlkRemoveFrameAnimationsRecursively:(BOOL)arg1;

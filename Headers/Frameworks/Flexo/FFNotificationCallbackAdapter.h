@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)clearClient;
+- (void)dealloc;
 - (id)initObserving:(id)arg1 name:(id)arg2 callback:(CDUnknownFunctionPointerType)arg3 refCon:(void *)arg4;
 - (void)_notifierCallback:(id)arg1;
 

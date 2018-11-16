@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
     struct CGRect _psb[3];
     struct CGColorSpace *_cs;
     FFPixelFormat *_pf;
+    int _quality;
 }
 
+- (id).cxx_construct;
 - (int)setPixelFormat:(id)arg1 andColorSpace:(struct CGColorSpace *)arg2;
 - (int)setPixelTransform:(id)arg1 andPSB:(struct CGRect)arg2 forLineSel:(int)arg3;
 - (void)getRectForLineSel:(int)arg1 retRect:(struct CGRect *)arg2;
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (struct CGColorSpace *)colorSpace;
 - (id)ptForLineSel:(int)arg1;
 - (void)dealloc;
+- (id)initForQuality:(int)arg1;
 
 @end
 

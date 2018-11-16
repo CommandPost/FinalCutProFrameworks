@@ -30,10 +30,12 @@
     float _progress;
     NSString *_taskRunGroup;
     BOOL _serializedFlag;
+    NSString *_displayHeaderName;
 }
 
 + (double)progressForPendingTasks:(id)arg1 totalTaskCount:(long long)arg2 excludeIndeterminate:(BOOL)arg3;
 + (double)progressForTasks:(id)arg1;
+@property(copy) NSString *displayHeaderName; // @synthesize displayHeaderName=_displayHeaderName;
 @property(retain) NSArray *pendingJobNames; // @synthesize pendingJobNames=_pendingJobNames;
 @property int actionOptions; // @synthesize actionOptions=_actionOptions;
 @property int type; // @synthesize type=_taskType;

@@ -17,6 +17,9 @@ __attribute__((visibility("hidden")))
     struct CGPoint _mouseDownPoint;
     struct CGPoint _mouseDownOffset;
     FFCBPuckController *_puckController;
+    struct {
+        unsigned int selected:1;
+    } _cbpb_flags;
 }
 
 @property(retain, nonatomic) FFCBPuckController *puckController; // @synthesize puckController=_puckController;
@@ -28,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)setFocus:(BOOL)arg1;
 - (BOOL)hasFocus;
 - (void)removeViewFromPuckController;
+@property(getter=isSelected) BOOL selected; // @dynamic selected;
 - (void)nudgePuck:(struct CGPoint)arg1;
 - (void)setPuckCenterPosition:(struct CGPoint)arg1 withAnimation:(BOOL)arg2;
 - (struct CGPoint)puckCenterPosition;

@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 + (void)releaseSharedInstance;
 + (void)initialize;
 @property(readonly, nonatomic) NSDictionary *growthInfo; // @synthesize growthInfo=_growthInfo;
+- (id).cxx_construct;
 - (void)replaceCodecNames:(id)arg1;
 - (void)sniffSpotlightMetadataFig:(id)arg1;
 - (id)copyTimecodeBasedReelName;

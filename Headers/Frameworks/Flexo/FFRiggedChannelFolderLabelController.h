@@ -6,13 +6,29 @@
 
 #import "OZFolderLabelController.h"
 
+@class LKButton, _AddMaskButton;
+
 __attribute__((visibility("hidden")))
 @interface FFRiggedChannelFolderLabelController : OZFolderLabelController
 {
+    LKButton *_viewMatteButton;
+    _AddMaskButton *_addMaskButton;
 }
 
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)showMatte:(id)arg1;
+- (void)invertMasks:(id)arg1;
+- (void)addIsolationMask:(id)arg1;
+- (void)addImprovedEllipseMask:(id)arg1;
+- (void)addEllipseMask:(id)arg1;
+- (void)addMaskOfClass:(Class)arg1 actionName:(id)arg2;
+- (void)mouseExitedRow:(id)arg1;
+- (void)mouseEnteredRow:(id)arg1;
 - (void)setParentController:(id)arg1;
 - (void)syncToDisclosureLevel:(BOOL)arg1;
+- (BOOL)disclosureButtonShouldHide;
+- (void)setEnable:(id)arg1;
+- (void)update;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

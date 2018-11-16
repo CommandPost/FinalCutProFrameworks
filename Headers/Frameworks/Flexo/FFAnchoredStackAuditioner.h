@@ -8,7 +8,7 @@
 
 #import "FFSkimmingModuleDelegate.h"
 
-@class CALayer, CAScrollLayer, FFAnchoredObject, FFAnchoredStack, FFAuditionerCoverFlowView, FFContext, FFSkimmingModule, LKButton, LKImageView, LKTextField, NSMatrix, NSMenu, NSMutableArray;
+@class CALayer, CAScrollLayer, FFAnchoredObject, FFAnchoredStack, FFAuditionerCoverFlowView, FFContext, FFSkimmingModule, LKButton, LKImageView, LKTextField, NSMatrix, NSMenu, NSMutableArray, NSString;
 
 @interface FFAnchoredStackAuditioner : LKViewModule <FFSkimmingModuleDelegate>
 {
@@ -144,6 +144,12 @@
 - (void)_startListeningToVariant:(id)arg1;
 - (void)rangeInvalidated:(id)arg1;
 - (void)_updateFilmstripForPick:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

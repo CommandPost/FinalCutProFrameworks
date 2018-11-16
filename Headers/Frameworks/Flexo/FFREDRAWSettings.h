@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class FFPlayer, LKButton, LKPanel, LKPopUpButton, LKSlider, LKTextField, NSImageView, NSView, PISegmentedScrubber;
+@class FFPlayer, LKButton, LKPanel, LKPopUpButton, LKSlider, LKTextField, NSImageView, NSString, NSView, PISegmentedScrubber;
 
 __attribute__((visibility("hidden")))
 @interface FFREDRAWSettings : NSObject <NSWindowDelegate>
@@ -96,6 +96,12 @@ __attribute__((visibility("hidden")))
 - (void)openHUD;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

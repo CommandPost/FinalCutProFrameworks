@@ -50,6 +50,7 @@
 - (id)newPlayerModuleWithContext:(id)arg1 effectCount:(long long)arg2;
 - (id)newInspectorModule;
 - (id)newEditorModule;
+- (BOOL)hasAudio;
 - (id)displayName;
 - (id)description;
 - (id)newFirstSource;

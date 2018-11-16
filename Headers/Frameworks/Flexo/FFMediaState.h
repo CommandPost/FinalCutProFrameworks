@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (double)audioSampleRate;
 - (void)setAudioChannelCount:(long long)arg1;
 - (long long)audioChannelCount;
-- (id)audioSourceChannelCountMap;
+- (id)audioSourcePropertiesMap;
 - (id)media;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

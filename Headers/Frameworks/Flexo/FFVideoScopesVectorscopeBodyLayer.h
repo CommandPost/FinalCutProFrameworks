@@ -11,10 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)waveformBody;
++ (id)vectorscopeBodyLayer;
 - (id)actionForKey:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)hideGraticuleLabels:(BOOL)arg1;
+- (void)setMonochrome:(BOOL)arg1;
+- (void)setTraceBrightness:(float)arg1;
 
 @end
 

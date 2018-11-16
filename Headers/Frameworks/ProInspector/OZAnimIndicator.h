@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)animIndicatorWithFrame:(struct CGRect)arg1 channel:(struct OZChannelBase *)arg2 context:(id)arg3;
++ (id)newAnimIndicatorWithFrame:(struct CGRect)arg1 channel:(struct OZChannelBase *)arg2 context:(id)arg3;
 - (id)newCellWithChannel:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)mouseExitedRow:(id)arg1;
 - (void)mouseEnteredRow:(id)arg1;

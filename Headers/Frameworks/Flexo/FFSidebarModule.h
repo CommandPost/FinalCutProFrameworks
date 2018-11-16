@@ -9,7 +9,7 @@
 #import "FFOutlineViewDataSource.h"
 #import "FFOutlineViewDelegate.h"
 
-@class FFOrganizerMasterItemNode, FFOutlineView, NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSObject<FFOrganizerItem><FFOrganizerMasterItem>;
+@class FFOrganizerMasterItemNode, FFOutlineView, NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSObject<FFOrganizerItem><FFOrganizerMasterItem>, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFSidebarModule : LKViewModule <FFOutlineViewDataSource, FFOutlineViewDelegate>
@@ -121,6 +121,12 @@ __attribute__((visibility("hidden")))
 - (void)stopObservingVisibleNodes:(id)arg1;
 - (void)startObservingVisibleNodes:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

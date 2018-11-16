@@ -40,6 +40,7 @@
 - (void)reloadSidebar;
 - (id)contentLayoutDictionary;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
+- (void)restoreModuleContent:(id)arg1;
 - (id)targetModules;
 - (void)viewDidLoad;
 - (struct CGSize)viewMaxSize;

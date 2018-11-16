@@ -10,7 +10,6 @@
 
 @class HUDPopup, NSTextField, NSView, SportsCalloutView;
 
-__attribute__((visibility("hidden")))
 @interface FFSportTitleOSC : FFTitleOSC <TeamPopupTarget>
 {
     NSView *_sportOverlayView;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (BOOL)validateMenuItem:(id)arg1;
+- (void)resignActiveOSC;
 - (void)becomeActiveOSC;
 - (void)editTeams:(id)arg1;
 - (void)changePlayer:(id)arg1;

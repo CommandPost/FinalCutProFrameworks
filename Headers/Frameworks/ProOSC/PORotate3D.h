@@ -18,6 +18,7 @@
 - (void)updateRotation:(const PCQuat_de30948b *)arg1;
 - (void)draw;
 - (void)setShowAllRings:(BOOL)arg1;
+- (_Bool)isRotateHandleActive:(int)arg1;
 - (void)enableAxes:(unsigned int)arg1;
 - (BOOL)rotating;
 - (void)updateInfoBarWithRotation;

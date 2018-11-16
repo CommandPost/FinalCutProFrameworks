@@ -19,6 +19,8 @@
     _Bool _isInstalledFormat;
 }
 
++ (struct CGSize)convertToAppPreviewSupportedSize:(struct CGSize)arg1;
++ (struct CGSize)_closestAppPreviewSupportedSize:(struct CGSize)arg1 portraitMode:(BOOL)arg2;
 + (id)displayRatesForFormat:(id)arg1 andSize:(id)arg2 andFrameDuration:(CDStruct_1b6d18a9)arg3;
 + (id)displaySizesForFormat:(id)arg1 andFrameDuration:(CDStruct_1b6d18a9)arg2;
 + (id)displaySizesForFormat:(id)arg1 andRate:(id)arg2;

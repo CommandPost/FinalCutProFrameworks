@@ -8,7 +8,7 @@
 
 #import "NSAnimationDelegate.h"
 
-@class NSView;
+@class NSString, NSView;
 
 @interface LKSwapModule : LKViewModule <NSAnimationDelegate>
 {
@@ -50,6 +50,12 @@
 - (struct CGSize)viewMinSize;
 - (BOOL)loadView;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

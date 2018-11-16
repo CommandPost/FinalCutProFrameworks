@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)assetsInUse;
 - (void)canceledTask:(id)arg1;
 - (void)resumedTask:(id)arg1;
+- (BOOL)confirmIsPaused:(id)arg1;
 - (void)pausedTask:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(retain) FFBackgroundTaskWithPauseCondition *backgroundTask;

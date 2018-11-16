@@ -29,11 +29,11 @@
 @property(nonatomic) BOOL preferAudio; // @synthesize preferAudio=_preferAudio;
 @property(nonatomic) BOOL takeFocusOnLoad; // @synthesize takeFocusOnLoad=_takeFocusOnLoad;
 @property(nonatomic) BOOL transient; // @synthesize transient=_transient;
-@property(readonly, nonatomic) id owner; // @synthesize owner=_owner;
+@property(readonly, retain, nonatomic) id owner; // @synthesize owner=_owner;
 @property(readonly, nonatomic) int layoutStyle; // @synthesize layoutStyle=_layoutStyle;
-@property(readonly, nonatomic) NSArray *effectCounts; // @synthesize effectCounts=_effectCounts;
-@property(readonly, nonatomic) NSArray *contexts; // @synthesize contexts=_contexts;
-@property(readonly, nonatomic) NSArray *clips; // @synthesize clips=_clips;
+@property(readonly, copy, nonatomic) NSArray *effectCounts; // @synthesize effectCounts=_effectCounts;
+@property(readonly, copy, nonatomic) NSArray *contexts; // @synthesize contexts=_contexts;
+@property(readonly, copy, nonatomic) NSArray *clips; // @synthesize clips=_clips;
 - (id)description;
 - (CDUnknownBlockType)unloadingBlock;
 - (CDUnknownBlockType)loadingBlock;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) double segCost; // @synthesize segCost=_segCost;
 @property(readonly) unsigned long long andingFlags; // @synthesize andingFlags=_andingFlags;
 @property(readonly) unsigned long long oringFlags; // @synthesize oringFlags=_oringFlags;
+- (id)description;
 - (BOOL)isEqual:(id)arg1;
 - (id)initWithMD5:(CDStruct_bdcb2b0d)arg1 andOffset:(long long)arg2 oringFlags:(unsigned long long)arg3 andingFlags:(unsigned long long)arg4 segCost:(double)arg5;
 

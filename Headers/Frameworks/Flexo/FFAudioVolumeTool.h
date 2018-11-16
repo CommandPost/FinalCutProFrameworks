@@ -8,19 +8,18 @@
 
 #import "FFEnhanceAudioDelegate.h"
 
-@class FFAdjustmentToolSlider, FFChannelChangeController, FFContext, LKButton, LKTextField, NSArray, NSNumber, NSView;
+@class FFAdjustmentToolSlider, FFChannelChangeController, FFContext, FFSegmentedControl, LKButton, LKTextField, NSArray, NSMapTable, NSNumber, NSString, NSView;
 
 @interface FFAudioVolumeTool : FFAdjustmentTool <FFEnhanceAudioDelegate>
 {
     NSView *_adjustmentToolbarView;
-    NSArray *_managers;
     FFChannelChangeController *_channelChangeController;
     FFContext *_context;
     NSArray *_channels;
     BOOL _sliderTouched;
     BOOL _observing;
     LKButton *_speakerIcon;
-    LKButton *_autoEnhanceButton;
+    FFSegmentedControl *_autoEnhanceButton;
     FFAdjustmentToolSlider *_volumeSlider;
     LKButton *_normalizeButton;
     LKTextField *_gainPercentText;
@@ -33,9 +32,10 @@
     BOOL _isActiveTool;
     NSNumber *_lastDuckingThreshold;
     BOOL _suspendUpdates;
+    NSMapTable *_objectInfoMap;
 }
 
-+ (void)enableAutoEnhance:(BOOL)arg1 manager:(id)arg2;
++ (BOOL)enableAutoEnhance:(BOOL)arg1 manager:(id)arg2 error:(id *)arg3;
 + (BOOL)autoEnhanced:(id)arg1;
 + (id)validEffectStacksForMuteFromSelection:(id)arg1;
 + (BOOL)effectStackIsMuted:(id)arg1;
@@ -50,9 +50,8 @@
 + (long long)sortOrderForGroup:(id)arg1;
 + (id)groups;
 @property(nonatomic) BOOL isActiveTool; // @synthesize isActiveTool=_isActiveTool;
-@property(readonly, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
+@property(readonly, retain, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
 @property(retain, nonatomic) NSArray *channels; // @synthesize channels=_channels;
-@property(retain, nonatomic) NSArray *managers; // @synthesize managers=_managers;
 - (void)analysisDidComplete:(id)arg1;
 - (void)_updateLoudness:(id)arg1;
 - (void)setAdjustmentStateFromDictionary:(id)arg1;
@@ -82,30 +81,21 @@
 - (void)_updateDuckingUI;
 - (void)_updateDuckingSlider;
 - (void)_updateDuckingButton;
-- (id)_duckingAmounts;
-- (id)_duckingStates;
 - (id)_duckingActionString;
 - (void)_clearDuckingDefaultThreshold;
 - (double)_duckingDefaultThreshold;
 - (void)_enableLoudness:(BOOL)arg1;
-- (id)_loudnessStates;
-- (BOOL)_hasKeyframes;
 - (void)volumeSliderChanged:(id)arg1;
 - (id)_volumeActionString;
 - (BOOL)toggleMute:(BOOL)arg1;
 - (void)muteButtonToggle:(id)arg1;
-- (id)_muteStates;
 - (void)_updateGainPercent;
-- (double)_convertSliderValue:(double)arg1;
 - (void)_updateMuteButton;
 - (void)_updateVolumeSlider;
-- (BOOL)_volumeStatesAreChanged:(id)arg1;
-- (id)_volumeStates:(double *)arg1;
+- (id)_selectedItems;
 - (void)_updateAudioAdjustState;
 - (void)_refreshAdjustmentDictionary;
-- (id)_effectStackToManagerMap;
-- (id)_objectToManagerMap;
-- (id)_effectStacksFromManagerList;
+- (id)_newAdjustmentDictionaryFromSelection:(id)arg1;
 - (void)resignActiveTool;
 - (void)becomeActiveTool;
 - (id)onScreenControlsForTool;
@@ -116,6 +106,12 @@
 - (void)_removeObservers;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

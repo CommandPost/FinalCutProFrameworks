@@ -8,7 +8,7 @@
 
 #import "NSTextDelegate.h"
 
-@class LKButton, LKComboBox, LKPopUpButton, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSBox, NSProView, NSTextView, OZColorWell;
+@class LKButton, LKComboBox, LKPopUpButton, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSBox, NSProView, NSString, NSTextView, OZColorWell;
 
 @interface OZProjectPropertiesCtlr : OZAutoPropertiesTabController <NSTextDelegate>
 {
@@ -81,6 +81,12 @@
 - (void)buildPropertiesUI:(id)arg1;
 - (BOOL)buildUIWithSceneNodes:(list_d81b4758 *)arg1 context:(id)arg2;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

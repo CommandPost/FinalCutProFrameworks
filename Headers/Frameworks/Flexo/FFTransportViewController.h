@@ -8,7 +8,6 @@
 
 @class FFTransportLongPressButton, FFTransportScubberSlider, FFTransportTimecodeFormatter, LKButton, LKTextField, NSTimer, NSTrackingArea;
 
-__attribute__((visibility("hidden")))
 @interface FFTransportViewController : NSViewController
 {
     id <FFTransportDelegate> _delegate;
@@ -25,8 +24,12 @@ __attribute__((visibility("hidden")))
     FFTransportLongPressButton *_rewindPreviousButton;
     FFTransportLongPressButton *_fastForwardNextButton;
     FFTransportScubberSlider *_scrubber;
+    LKButton *_favoriteButton;
+    LKButton *_voiceoverButton;
     LKTextField *_timeRemainingLabel;
     LKTextField *_timeElapsedLabel;
+    LKTextField *_rewindVelocityLabel;
+    LKTextField *_fastForwardVelocityLabel;
     double _preScrubbingRate;
     BOOL _isScrubbing;
     NSTimer *_autoHideTimer;
@@ -38,10 +41,12 @@ __attribute__((visibility("hidden")))
     long long _currentRewindRateIndex;
     LKButton *_playSelectedButton;
     LKButton *_toggleFullScreenButton;
+    LKButton *_voiceoverDoneButton;
 }
 
 + (id)_rewindRates;
 + (id)_fastForwardRates;
+@property LKButton *voiceoverDoneButton; // @synthesize voiceoverDoneButton=_voiceoverDoneButton;
 @property LKButton *toggleFullScreenButton; // @synthesize toggleFullScreenButton=_toggleFullScreenButton;
 @property LKButton *playSelectedButton; // @synthesize playSelectedButton=_playSelectedButton;
 @property FFTransportLongPressButton *fastForwardNextButton; // @synthesize fastForwardNextButton=_fastForwardNextButton;
@@ -49,6 +54,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long currentRewindRateIndex; // @synthesize currentRewindRateIndex=_currentRewindRateIndex;
 @property(nonatomic) long long currentFastForwardRateIndex; // @synthesize currentFastForwardRateIndex=_currentFastForwardRateIndex;
 @property(retain, nonatomic) FFTransportTimecodeFormatter *timecodeFormatter; // @synthesize timecodeFormatter=_timecodeFormatter;
+@property LKTextField *fastForwardVelocityLabel; // @synthesize fastForwardVelocityLabel=_fastForwardVelocityLabel;
+@property LKTextField *rewindVelocityLabel; // @synthesize rewindVelocityLabel=_rewindVelocityLabel;
 @property LKTextField *timeRemainingLabel; // @synthesize timeRemainingLabel=_timeRemainingLabel;
 @property LKTextField *timeElapsedLabel; // @synthesize timeElapsedLabel=_timeElapsedLabel;
 @property(nonatomic) BOOL didDeferAutohide; // @synthesize didDeferAutohide=_didDeferAutohide;
@@ -57,6 +64,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSTimer *autoHideTimer; // @synthesize autoHideTimer=_autoHideTimer;
 @property(nonatomic) double preScrubbingRate; // @synthesize preScrubbingRate=_preScrubbingRate;
 @property(nonatomic) BOOL isScrubbing; // @synthesize isScrubbing=_isScrubbing;
+@property LKButton *voiceoverButton; // @synthesize voiceoverButton=_voiceoverButton;
+@property LKButton *favoriteButton; // @synthesize favoriteButton=_favoriteButton;
 @property FFTransportScubberSlider *scrubber; // @synthesize scrubber=_scrubber;
 @property LKButton *nextButton; // @synthesize nextButton=_nextButton;
 @property LKButton *previousButton; // @synthesize previousButton=_previousButton;
@@ -71,6 +80,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) id <FFTransportDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)resetRate:(id)arg1;
 - (void)toggleFullScreen:(id)arg1;
+- (void)doFavorite:(id)arg1;
+- (void)toggleVoiceover:(id)arg1;
 - (void)playSelected:(id)arg1;
 - (void)playNext:(id)arg1;
 - (void)playPrevious:(id)arg1;
@@ -88,6 +99,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL isShown;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
+- (void)_updateVoiceoverButton;
+- (void)_updateFavoriteButton;
 - (void)_updateToggleFullscreenButton;
 - (void)_updatePlaySelectedButton;
 - (void)_updatePreviousAndNextButtons;
@@ -96,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateScrubber;
 - (void)_updateAllControls;
 - (CDStruct_1b6d18a9)_defaultPreviousActionTimeThreshold;
+- (void)updateVoiceOverButtonState;
 - (void)resetPreviousActionTimeThreshold;
 - (void)awakeFromNib;
 - (id)toolTip:(id)arg1 forProCommand:(id)arg2;

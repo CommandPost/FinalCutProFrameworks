@@ -8,6 +8,8 @@
 
 #import "TLKPartInfo.h"
 
+@class NSString;
+
 @interface TLKPrecisionEditorAudioSplitLayer : CALayer <TLKPartInfo>
 {
     int _edgeType;
@@ -21,6 +23,12 @@
 - (void)_updateLayers;
 - (void)setDelegate:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

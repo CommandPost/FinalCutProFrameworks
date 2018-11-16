@@ -10,7 +10,7 @@
 #import "FFSelectionHandler.h"
 #import "NSAnimationDelegate.h"
 
-@class FFDestVideo<FFDestVideoDeviceManaging>, FFDestVideoGL, FFOSC, FFPlayerView, FFSnapGrid, FFThemeFacet, FFTimecodeFormatter, LKButton, NSArray, NSDictionary, NSLock, NSMenu, NSMutableArray, NSProThemeImageView, NSRecursiveLock, NSView, NSViewAnimation, PCMatrix44Double;
+@class FFDestVideo<FFDestVideoDeviceManaging>, FFDestVideoGL, FFOSC, FFPlayerView, FFSnapGrid, FFThemeFacet, FFTimecodeFormatter, LKButton, NSArray, NSDictionary, NSLock, NSMenu, NSMutableArray, NSProThemeImageView, NSRecursiveLock, NSString, NSView, NSViewAnimation, PCMatrix44Double;
 
 @interface FFPlayerVideoModule : FFPlayerItemModule <FFSelectionHandler, FFFieldDisplaySetting, NSAnimationDelegate>
 {
@@ -32,6 +32,7 @@
     unsigned int _displayExcessGamutChannels;
     BOOL _showBothFields;
     BOOL _multipleSelection;
+    BOOL _settingActiveOSC;
     NSRecursiveLock *_oscsLock;
     NSMutableArray *_oscs;
     FFOSC *_activeOSC;
@@ -88,6 +89,7 @@
 - (void)toggleGridSnapping:(id)arg1;
 - (id)snapGrid;
 - (void)snapshotPlayer:(id)arg1;
+- (void)convertToControlPoints:(id)arg1;
 - (void)setToolNone:(id)arg1;
 - (void)setToolDistort:(id)arg1;
 - (void)setToolCrop:(id)arg1;
@@ -101,6 +103,7 @@
 - (id)itemAtPoint:(struct CGPoint)arg1 keepSelectionIfMultipleTextObjects:(BOOL)arg2;
 - (void)setSelectedItems:(id)arg1;
 - (id)contextRootObject;
+- (void)setDisableSkimming:(BOOL)arg1;
 - (void)cancelDropZoneTool:(id)arg1;
 - (void)cancelTextTool:(id)arg1;
 - (void)activeToolChanged:(id)arg1;
@@ -223,6 +226,7 @@
 - (void)firstResponderChanged:(id)arg1;
 - (unsigned int)displayForPlayerView;
 - (void)updatePlayerAndDest:(id)arg1;
+- (void)tearDownPlayerDest;
 - (void)userDefaultsChanged:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)selectedItemsForContext:(id)arg1;
@@ -237,6 +241,7 @@
 - (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)addCommonDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3;
 - (id)showOnlyObjectForContext:(id)arg1;
+- (BOOL)destVideoCMIOHasActiveConnection;
 - (id)destVideoCMIOUID;
 - (void)setLastTimeCallback:(id)arg1 callbackSel:(SEL)arg2;
 - (void)notifyLastTimeDisplayed:(id)arg1;
@@ -292,6 +297,12 @@
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (id)init;
 - (id)tabLabel;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

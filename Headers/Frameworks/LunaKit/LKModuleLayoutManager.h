@@ -90,6 +90,7 @@
 - (void)saveDefaultLayoutAndSuspend;
 - (BOOL)isDefaultLayout:(id)arg1;
 - (id)newDefaultModuleLayout;
+- (id)defaultModuleLayoutCreateIfNeeded:(BOOL)arg1 originalLayout:(id *)arg2;
 - (id)defaultModuleLayoutCreateIfNeeded:(BOOL)arg1;
 - (id)defaultModuleLayout;
 - (void)removeWindowController:(id)arg1;
@@ -144,6 +145,12 @@
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 - (id)_commonInit;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

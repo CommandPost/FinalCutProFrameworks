@@ -15,7 +15,7 @@
 #import "FFTheaterTranscodeDelegate.h"
 #import "NSDraggingDestination.h"
 
-@class FFImageBrowserSectionLayer, FFShareHelper, FFTheaterBackgroundLayer, FFTheaterBrowserView, FFTheaterDatabase, FFTheaterNetworkReachabilityManager, NSArray, NSDictionary, NSMutableArray, NSMutableSet, NSUndoManager;
+@class FFImageBrowserSectionLayer, FFShareHelper, FFTheaterBackgroundLayer, FFTheaterBrowserView, FFTheaterDatabase, FFTheaterNetworkReachabilityManager, NSArray, NSDictionary, NSMutableArray, NSMutableSet, NSString, NSUndoManager;
 
 @interface FFTheaterModule : LKViewModule <FFTheaterTranscodeDelegate, FFTheaterMenuDelegate, FFTheaterNetworkReachabilityDelegate, FFSharableContent, FFImageBrowserDataSource, FFImageBrowserDelegate, NSDraggingDestination, FFTheaterDatabaseDelegate>
 {
@@ -61,6 +61,8 @@
 @property(retain, nonatomic) FFTheaterDatabase *localDatabase; // @synthesize localDatabase=_localDatabase;
 @property(retain, nonatomic) FFTheaterBrowserView *browser; // @synthesize browser=_browser;
 - (void)_updateICloudLoginStateForButton;
+- (void)delegateDidExitFullScreen:(id)arg1;
+- (void)delegateDidEnterFullScreen:(id)arg1;
 - (void)enablePosterAnimations;
 - (void)disablePosterAnimations;
 - (id)unseenItems;
@@ -81,10 +83,12 @@
 - (void)shareDestinationPicker:(id)arg1;
 - (id)shareSelection:(id)arg1;
 - (void)theaterDatabase:(id)arg1 generateThumbnailForItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)_openSystemPreferencesICloudLoginPane;
 - (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 delegate:(id)arg3 didRecoverSelector:(SEL)arg4 contextInfo:(void *)arg5;
 - (BOOL)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
 - (void)didPresentErrorWithRecovery:(BOOL)arg1 contextInfo:(void *)arg2;
 - (void)_presentError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_presentWarning:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)theaterMenu:(id)arg1 presentError:(id)arg2 forItem:(id)arg3;
 - (void)theaterDatabase:(id)arg1 presentError:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_actionMoveItem:(id)arg1 toDatabase:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -97,10 +101,12 @@
 - (BOOL)_hasInProgressTranscodeForItem:(id)arg1 forDisplayingProgress:(BOOL)arg2;
 - (BOOL)_hasInProgressTranscodeForItem:(id)arg1 forQualityRating:(int)arg2;
 - (void)_startTranscodingItemsIfNeeded:(id)arg1;
+- (void)theaterMenu:(id)arg1 presentUbiquityUnavailableWarningForItem:(id)arg2;
 - (void)theaterMenu:(id)arg1 cancelOperation:(id)arg2 forItem:(id)arg3;
 - (BOOL)theaterMenu:(id)arg1 canCancelOperation:(id)arg2 forItem:(id)arg3;
 - (void)theaterMenu:(id)arg1 setUbiquitous:(BOOL)arg2 forItem:(id)arg3;
 - (BOOL)theaterMenu:(id)arg1 canSetUbiquitous:(BOOL)arg2 forItem:(id)arg3 error:(id *)arg4;
+- (BOOL)theaterMenu:(id)arg1 itemIsEligibleForUbiquity:(id)arg2 error:(id *)arg3;
 - (void)theaterMenu:(id)arg1 goToProjectForItem:(id)arg2;
 - (BOOL)theaterMenu:(id)arg1 canGoToProjectForItem:(id)arg2;
 - (void)theaterMenu:(id)arg1 renameItem:(id)arg2;
@@ -134,8 +140,6 @@
 - (long long)_numberOfPopularMoviesThatFit;
 - (void)rearrangeItems;
 - (id)_arrangeItems:(id)arg1;
-- (void)_zinRefreshErrorsAndProgressForCells:(id)arg1;
-- (void)_cabRefreshErrorsAndProgressForCells:(id)arg1;
 - (void)_refreshErrorsAndProgressForCells:(id)arg1;
 - (void)_reloadDataImmediately;
 - (void)reloadData;
@@ -193,6 +197,7 @@
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)items;
 - (void)_startUploadingLocalOnlyItemsIfNeeded:(id)arg1;
+- (void)theaterDatabaseDidUpdate:(id)arg1;
 - (void)_databaseDidFinishInitialLoad:(id)arg1;
 - (void)_setupDatabase:(id)arg1 replacingDatabase:(id)arg2;
 - (CDStruct_83cd8af5)borderMetrics;
@@ -211,6 +216,12 @@
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

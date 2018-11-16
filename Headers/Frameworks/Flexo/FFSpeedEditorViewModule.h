@@ -8,7 +8,7 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class LKButton, LKTextField, NSArray, NSMatrix, NSMutableArray, NSView;
+@class LKButton, LKTextField, NSArray, NSMatrix, NSMutableArray, NSString, NSView;
 
 @interface FFSpeedEditorViewModule : LKViewModule <NSTextFieldDelegate>
 {
@@ -66,6 +66,12 @@
 - (void)_fillRateField;
 - (void)_fillDurationField;
 - (id)initWithObjects:(id)arg1 orObjectsAndRanges:(id)arg2 segmentIndex:(int)arg3 delegate:(id)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

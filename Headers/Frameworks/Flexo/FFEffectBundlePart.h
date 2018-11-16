@@ -40,8 +40,10 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)sender:(id)arg1 willSetChannel:(id)arg2 toValue:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
 - (void)sender:(id)arg1 endChannelChange:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (id)augmentChannelChangeDescriptionForNotification:(id)arg1;
 - (BOOL)shouldSelectChannel:(id)arg1 selectedState:(BOOL)arg2 effect:(id)arg3;
 - (id)subEffectForChannel:(id)arg1;
+- (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3 forChannel:(id)arg4;
 - (id)observedObjectForChannel:(id)arg1;
 - (id)_findEffectForChannel:(id)arg1;
 - (void)updateEffectsEncodingOptions:(BOOL)arg1;
@@ -64,7 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)deleteEffectChannelsInFolder:(id)arg1;
 - (void)createEffectChannelsInFolder:(id)arg1;
 - (void)setDescription:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)setName:(id)arg1;
 - (id)name;
 - (void)removeObjectFromEffectBundleSnapshotsAtIndex:(unsigned long long)arg1;
@@ -105,6 +107,11 @@ __attribute__((visibility("hidden")))
 - (void)_iterateOverEffectRootChannelsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_processChannel:(struct OZChannelBase *)arg1 indexPath:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_setupValueMap:(struct ValueMap *)arg1 forIndexPath:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

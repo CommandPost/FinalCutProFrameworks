@@ -6,8 +6,12 @@
 
 #import <Flexo/FFMDMusicModule.h>
 
+@class FFAlwaysHitButton;
+
 @interface FFMDEffectsModule : FFMDMusicModule
 {
+    FFAlwaysHitButton *_toggleSidebarButton;
+    FFAlwaysHitButton *_dividerLine;
 }
 
 - (BOOL)groupSupported:(id)arg1;
@@ -17,6 +21,7 @@
 - (id)localizedNameForGroup:(id)arg1;
 - (id)mediaPlugInLoadCompletionNotificationName;
 - (id)mediaPlugInIdentifier;
+- (void)viewWasInstalled;
 - (void)dealloc;
 - (id)init;
 - (id)customGenreForGroupID:(id)arg1;

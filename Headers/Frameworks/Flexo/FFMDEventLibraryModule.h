@@ -9,7 +9,7 @@
 #import "FFMDLibraryDelegate.h"
 #import "NSMatrixDelegate.h"
 
-@class FFMDEventLibraryView, LKImageView, LKMenu, NSArray, NSArrayController, NSScrollView;
+@class FFAlwaysHitButton, FFMDEventLibraryView, LKImageView, LKMenu, NSArray, NSArrayController, NSScrollView, NSString;
 
 @interface FFMDEventLibraryModule : FFMDModule <FFMDLibraryDelegate, NSMatrixDelegate>
 {
@@ -17,6 +17,8 @@
     NSArray *_selectedIDs;
     NSArrayController *_eventsController;
     NSArray *_eventLibraries;
+    FFAlwaysHitButton *_toggleSidebarButton;
+    FFAlwaysHitButton *_dividerLine;
     NSScrollView *_scrollView;
     LKImageView *_eventIcon;
     LKMenu *_cellContextMenu;
@@ -38,9 +40,6 @@
 - (id)dataForEditAction:(id)arg1;
 - (BOOL)canSourceDataForEditAction:(id)arg1;
 - (void)matrixSelectionDidChange:(id)arg1;
-- (void)sortBy:(id)arg1;
-- (void)arrangebySortOrderAction:(id)arg1;
-- (void)arrangingingPopUpAction:(id)arg1;
 - (void)makeKeyThumbnail:(id)arg1;
 - (void)cancelOperation:(id)arg1;
 - (void)moveToTrash:(id)arg1;
@@ -68,6 +67,12 @@
 - (void)viewWasInstalled;
 - (void)viewDidLoad;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -7,6 +7,8 @@
 @class NSArray, NSAttributedString, NSEvent, NSProCursor, NSView, OZTool, POOnScreenControl;
 
 @protocol POViewDelegate
+- (void)performSelectForEvent:(NSEvent *)arg1 osc:(POOnScreenControl *)arg2;
+- (int)performHitCheckForEvent:(NSEvent *)arg1 osc:(POOnScreenControl *)arg2;
 - (void)locateViewTimeAtSampleBoundary;
 - (void)hideInfoBarObjectStatus;
 - (void)updateInfoBarObjectStatus:(NSAttributedString *)arg1;

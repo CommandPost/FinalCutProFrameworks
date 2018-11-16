@@ -20,6 +20,9 @@
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 + (int)getPrimaryGPUImageLocation;
 + (id)sharedManager;
+- (unsigned long long)getMaximumVRAMOfAttachedGPUs;
+- (const char *)getVendorNameOfGPU:(unsigned int)arg1;
+- (_Bool)hasOnlyIntegratedGPUs;
 - (_Bool)hasGPUPreventingMotionCompensatedDeinterlacing;
 - (_Bool)hasGPUPreventingMGPU;
 - (_Bool)hasBuiltInGPU;

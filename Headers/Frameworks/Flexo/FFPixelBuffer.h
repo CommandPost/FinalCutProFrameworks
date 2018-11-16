@@ -42,6 +42,8 @@
 - (void)dealloc;
 - (_Bool)isPremultipliedBlack;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithDuplicateOfPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 alphaType:(int)arg5;
+- (id)initWithDuplicateOfPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 alphaType:(int)arg5 allocator:(struct __CFAllocator *)arg6;
 - (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2 clearBuffer:(BOOL)arg3 allocator:(struct __CFAllocator *)arg4;
 - (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2 alphaType:(int)arg3 clearBuffer:(BOOL)arg4 allocator:(struct __CFAllocator *)arg5;
 - (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2;

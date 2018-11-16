@@ -8,7 +8,7 @@
 
 #import "NSAnimationDelegate.h"
 
-@class FFLibrary, NSOpenPanel, NSPopUpButton;
+@class FFLibrary, NSOpenPanel, NSPopUpButton, NSString;
 
 @interface FFXMLImportDialogController : NSViewController <NSAnimationDelegate>
 {
@@ -22,6 +22,12 @@
 - (void)storageChanged:(id)arg1;
 - (void)updateLocationPopup;
 - (id)library;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

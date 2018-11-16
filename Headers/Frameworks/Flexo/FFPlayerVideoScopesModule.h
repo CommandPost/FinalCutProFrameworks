@@ -14,6 +14,7 @@
 {
     FFDestVideoScopesGL *_destVideo;
     BOOL _showBothFields;
+    BOOL _isDestAttached;
 }
 
 - (void)updatePlayerAndDest:(id)arg1;
@@ -24,7 +25,6 @@
 - (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)setDrawingEnabled:(BOOL)arg1;
 - (BOOL)shouldDrawVideoDest:(id)arg1;
-@property(nonatomic) BOOL showBothFields;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;
 - (void)moduleViewWillBeRemoved:(id)arg1;
@@ -37,7 +37,12 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
+- (void)setLayoutMode:(long long)arg1;
+- (void)setSelectedScope:(id)arg1;
 - (id)destVideo;
+@property(getter=isMonochrome) BOOL monochrome; // @dynamic monochrome;
+@property float traceBrightness; // @dynamic traceBrightness;
+@property BOOL showBothFields; // @dynamic showBothFields;
 - (void)dealloc;
 - (id)init;
 

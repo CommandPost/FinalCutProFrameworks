@@ -9,7 +9,7 @@
 #import "FFArrangedItemsModuleDelegate.h"
 #import "FFEffectLibraryModuleDelegate.h"
 
-@class FFBKEffectLibraryProvider, FFEffectLibraryModule, NSString;
+@class FFBKEffectLibraryProvider, FFEffectLibraryModule, FFSidebarModule, NSString;
 
 @interface FFContentBrowserModule : FFOrganizerModule <FFEffectLibraryModuleDelegate, FFArrangedItemsModuleDelegate>
 {
@@ -18,6 +18,7 @@
     double _savedSplitViewWidth;
     BOOL _saveSidebarChanges;
     NSString *_currentEffectType;
+    FFSidebarModule *_sidebar;
 }
 
 - (void)writeSelectionToPasteboard:(id)arg1;
@@ -41,7 +42,14 @@
 - (void)configureSidebar:(id)arg1;
 - (id)newSidebarModule;
 - (id)newItemsModule;
+- (void)effectRegistryChanged:(id)arg1;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -12,6 +12,7 @@
     BOOL _acceptEvents;
 }
 
+- (void)viewDidUnhide;
 - (void)mouseDown:(id)arg1;
 - (void)_takeColorFromTransientColorPicker:(id)arg1;
 - (void)awakeFromNib;

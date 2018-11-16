@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class FFCPSClapperboardView, FFCPSShadowView, FFSequenceRecord, LKButton, LKPopOverWindow, LKTextField, NSButton, NSImageView, NSProThemeImageView;
+@class FFCPSClapperboardView, FFCPSShadowView, FFSequenceRecord, LKButton, LKPopOverWindow, LKTextField, NSButton, NSImageView, NSProThemeImageView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFCPSProjectInfoVC : FFCPSViewController <NSWindowDelegate>
@@ -80,6 +80,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithNib;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

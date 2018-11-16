@@ -8,7 +8,7 @@
 
 #import "NSComboBoxDelegate.h"
 
-@class NSComboBox;
+@class NSComboBox, NSString;
 
 @interface TXTypefaceController : OZViewController <NSComboBoxDelegate>
 {
@@ -42,6 +42,12 @@
 - (void)dealloc;
 - (void)setAssociatedTextLayout:(struct TXTextLayout *)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 textLayout:(struct TXTextLayout *)arg2 context:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

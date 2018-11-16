@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _time;
     NSString *_value;
     NSNumber *_interpolation;
+    BOOL _smooth;
 }
 
+@property BOOL smooth; // @synthesize smooth=_smooth;
 @property(retain, nonatomic) NSNumber *interpolation; // @synthesize interpolation=_interpolation;
 @property(retain, nonatomic) NSString *stringValue; // @synthesize stringValue=_value;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;

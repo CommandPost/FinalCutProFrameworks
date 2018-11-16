@@ -25,11 +25,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)writerIsWaiting;
 - (void)_readUnlock;
 - (void)_readLock;
+- (id)modelObject;
 - (id)sequenceInflateIfNecessary:(BOOL)arg1;
 - (CDStruct_1b6d18a9)sampleDurationForTemporalResolutionMode:(int)arg1;
 @property(readonly, nonatomic) NSString *persistentID;
 @property(readonly, nonatomic) CDStruct_e83c9415 clippedRange;
 @property(readonly, nonatomic) CDStruct_e83c9415 mediaRange;
+@property(readonly, nonatomic) BOOL isAppPreview;
 @property(readonly, nonatomic) BOOL isTrailer;
 @property(readonly, nonatomic) BOOL isProject;
 @property(readonly, nonatomic) BOOL isPSD;
@@ -37,8 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL hasVideo;
 @property(readonly, nonatomic) BOOL hasAudio;
 @property(readonly, nonatomic) NSString *displayName;
-@property(readonly, nonatomic) BOOL isSequenceRecord;
-@property(readonly, nonatomic) BOOL isAnchoredSequence;
+@property(readonly, nonatomic) BOOL hasAnchoredSequence;
 @property(readonly, nonatomic) FFSequenceRecord *sequenceRecord; // @synthesize sequenceRecord=_sequenceRecord;
 @property(readonly, nonatomic) FFSequenceInfo *sequenceInfo;
 @property(readonly, nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;

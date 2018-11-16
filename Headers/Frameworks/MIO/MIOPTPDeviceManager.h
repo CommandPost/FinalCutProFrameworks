@@ -9,7 +9,7 @@
 #import "ICCameraDeviceDelegate.h"
 #import "ICDeviceBrowserDelegate.h"
 
-@class ICDeviceBrowser, MIOPTPDownloadQueue, NSArray, NSMutableArray;
+@class ICDeviceBrowser, MIOPTPDownloadQueue, NSArray, NSMutableArray, NSString;
 
 @interface MIOPTPDeviceManager : NSObject <ICDeviceBrowserDelegate, ICCameraDeviceDelegate>
 {
@@ -31,6 +31,12 @@
 - (void)shutdown;
 - (void)dealloc;
 - (id)initWithMassStorageDeviceSupport:(BOOL)arg1 iOSDeviceSupport:(BOOL)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

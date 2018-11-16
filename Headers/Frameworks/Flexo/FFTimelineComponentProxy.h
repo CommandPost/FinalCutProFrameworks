@@ -30,8 +30,8 @@
 @property(retain, nonatomic) CHChannelDouble *channel; // @synthesize channel=_channel;
 @property(retain, nonatomic) CHChannelFolder *intrinsicChannels; // @synthesize intrinsicChannels=_intrinsicChannels;
 @property(retain, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
-@property(readonly, nonatomic) FFAnchoredObject *clip; // @synthesize clip=_clip;
-@property(readonly, nonatomic) FFAudioComponentSource *componentSource; // @synthesize componentSource=_componentSource;
+@property(readonly, retain, nonatomic) FFAnchoredObject *clip; // @synthesize clip=_clip;
+@property(readonly, retain, nonatomic) FFAudioComponentSource *componentSource; // @synthesize componentSource=_componentSource;
 - (void)_keyframeWasDeleted:(id)arg1;
 - (void)_intrinsicAudioChannelsWereInvalidated:(id)arg1;
 - (void)_channelWasInvalidated:(id)arg1;
@@ -42,12 +42,12 @@
 - (void)_fixOuterKeyframes;
 - (void)_deleteRangeItem:(id)arg1;
 - (void)_deleteKeyframe:(void *)arg1;
-@property(readonly, nonatomic) NSArray *visibleRangeItems;
+@property(readonly, copy, nonatomic) NSArray *visibleRangeItems;
 @property(readonly, nonatomic) id channelObject;
-@property(readonly, nonatomic) NSArray *rangeItems;
-@property(readonly, nonatomic) id <FFModelLocking> lockingObject;
-@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable;
-@property(readonly, nonatomic) FFProject *project;
+@property(readonly, copy, nonatomic) NSArray *rangeItems;
+@property(readonly, retain, nonatomic) id <FFModelLocking> lockingObject;
+@property(readonly, retain, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable;
+@property(readonly, retain, nonatomic) FFProject *project;
 - (CDStruct_1b6d18a9)minFadeLength;
 - (CDStruct_1b6d18a9)unclippedStartTime;
 - (CDStruct_e83c9415)unclippedRange;

@@ -16,6 +16,7 @@
 }
 
 + (float)indentAmount;
+@property(readonly) OZLabelText *pLabelText; // @synthesize pLabelText=_pLabelText;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
 - (void)doDrag:(list_eea5731a *)arg1 viewList:(id)arg2;
 - (void)highlightChannel:(struct OZChannelBase *)arg1;

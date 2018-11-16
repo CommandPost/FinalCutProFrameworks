@@ -9,7 +9,7 @@
 #import "NSTabViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKButton, LKPopUpButton, LKTextField, NSMenuItem, OZObjCDocument;
+@class LKButton, LKPopUpButton, LKTextField, NSMenuItem, NSString, OZObjCDocument;
 
 @interface TXSearchController : NSWindowController <NSTabViewDelegate, NSWindowDelegate>
 {
@@ -56,6 +56,12 @@
 - (void)notify:(unsigned int)arg1;
 - (struct OZDocument *)getDocument;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

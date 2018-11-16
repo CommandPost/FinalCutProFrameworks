@@ -8,7 +8,7 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBGRenderAutoStartInfo, FFBackgroundTask, FFRenderStateTracker, FFRenderer, FFSourceVideo, NSIndexSet;
+@class FFBGRenderAutoStartInfo, FFBackgroundTask, FFRenderStateTracker, FFRenderer, FFSourceVideo, NSIndexSet, NSMutableArray, NSMutableSet, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
 @interface FFBackgroundRenderJob : NSObject <FFBackgroundTaskTarget>
@@ -25,6 +25,9 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _rangeInProgress;
     FFBackgroundTask *_activeTask;
     CDStruct_1b6d18a9 _amtJobHasAlreadyRendered;
+    NSObject<OS_dispatch_queue> *_lockForDeferredChecks;
+    NSMutableArray *_deferredRanges;
+    NSMutableSet *_deferredMD5s;
 }
 
 + (void)initialize;
@@ -36,13 +39,15 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_newRenderFilesAvailableByMD5TransferToMainThread:(id)arg1;
 - (void)_newRenderFilesAvailableTransferToMainThread:(id)arg1;
+- (void)_queueMainThreadCheckOfRanges:(CDStruct_e83c9415)arg1 md5s:(id)arg2;
+- (void)_mainThreadProcessDeferredRangesAndMD5s;
 - (void)renderToSegmentStore:(id)arg1 onTask:(id)arg2;
 - (void)canceledTask:(id)arg1;
 - (BOOL)confirmIsPaused:(id)arg1;
 - (void)resumedTask:(id)arg1;
 - (void)pausedTask:(id)arg1;
 - (BOOL)_renderOnTask:(id)arg1;
-- (CDStruct_e83c9415)getFirstKnownRangeInState:(id)arg1 searchRange:(CDStruct_e83c9415)arg2 onTask:(id)arg3;
+- (CDStruct_e83c9415)getFirstKnownRangeInState:(id)arg1 searchRange:(CDStruct_e83c9415)arg2 onTask:(id)arg3 doDetailedSegmentation:(_Bool)arg4;
 - (void)_updateProgress:(float)arg1 task:(id)arg2;
 - (CDStruct_e83c9415)rangeInProgress;
 - (_Bool)autoStarted;

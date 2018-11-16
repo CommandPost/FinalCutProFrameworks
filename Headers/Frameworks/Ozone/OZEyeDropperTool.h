@@ -23,6 +23,7 @@
 - (void)revertToPreviousTool;
 - (void)sampleColor:(id)arg1;
 - (void)becomeCurrentForCanvas:(id)arg1 andTarget:(id)arg2;
+- (void)endWithDocument:(struct OZDocument *)arg1;
 - (BOOL)isOneShotTool;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;

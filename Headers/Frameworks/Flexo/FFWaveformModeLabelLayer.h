@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface FFWaveformModeLabelLayer : FFVideoScopesLabelLayer
 {
-    long long _viewMode;
+    long long _displayMode;
     CDStruct_554002f2 _action_opt;
 }
 
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityAttributeValue:(id)arg1;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (id)actionForKey:(id)arg1;
-- (void)setViewMode:(long long)arg1;
+- (void)setDisplayMode:(long long)arg1;
 
 @end
 

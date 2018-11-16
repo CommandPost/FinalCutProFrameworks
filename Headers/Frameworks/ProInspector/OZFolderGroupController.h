@@ -16,9 +16,13 @@
     PIBuildContext *_pContext;
 }
 
+- (void)didCreateEnclosedGroupFromSubChannels;
 - (void)setEnclosedGroup:(id)arg1 context:(id)arg2;
+- (id)augmentEnclosedGroup:(id)arg1 withFolder:(struct OZChannelFolder *)arg2 context:(id)arg3;
 - (void)didTwiddle:(BOOL)arg1;
 - (void)twiddle;
+- (void)createEnclosedGroupFromSubChannels;
+- (void)addAssociatedChannelsToEnclosedGroup:(id)arg1;
 - (void)getTargetChannels:(set_6801396c *)arg1;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (void)didBuildUI;
@@ -28,6 +32,8 @@
 - (id)initWithChan:(struct OZChannelBase *)arg1 andEnclosedGroup:(id)arg2 customLabel:(id)arg3 context:(id)arg4;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (id)initWithChan:(struct OZChannelBase *)arg1 canDeferEnclosed:(BOOL)arg2 context:(id)arg3;
+- (id)newEnclosedGroup:(struct OZChannelFolder *)arg1 context:(id)arg2;
+- (id)newLabeledParamController:(struct OZChannelFolder *)arg1 context:(id)arg2;
 
 @end
 

@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) CDStruct_1b6d18a9 timelineParentAnchorOffset;
 @property(readonly) CDStruct_1b6d18a9 timelineAnchorOffset;
 - (struct CGSize)aspectRatio;
-@property(readonly) NSString *timelineDisplayName;
+@property(readonly, copy) NSString *timelineDisplayName;
 - (BOOL)defaultPosition;
 - (id)label;
 - (CDStruct_1b6d18a9)posterTime;
@@ -65,6 +65,12 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

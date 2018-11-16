@@ -60,6 +60,7 @@
     MIOTimecode *_unadulteredInTC;
     MIOTimecode *_unadulteredOutTC;
     BOOL _didSetUpAudio;
+    MIOTimecode *_timecodeStart;
 }
 
 + (id)clipWithName:(id)arg1 volume:(id)arg2;
@@ -73,6 +74,8 @@
 @property(retain) NSMutableArray *metadataArray; // @synthesize metadataArray=_metadataArray;
 @property(retain) NSMutableDictionary *customMetadata; // @synthesize customMetadata=_customMetadata;
 - (id).cxx_construct;
+- (BOOL)hasTimecode;
+- (BOOL)useAssetImportPath;
 - (BOOL)isiOSClip;
 - (id)__pluginUUID;
 - (id)uti;
@@ -134,6 +137,7 @@
 - (id)outTimeDict;
 - (id)inTimeDict;
 - (id)mediaEnd;
+- (id)timecodeStart;
 - (id)mediaStart;
 - (id)mediaDuration;
 - (BOOL)isMediaDurationAccurate;

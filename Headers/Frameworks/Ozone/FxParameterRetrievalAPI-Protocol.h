@@ -7,8 +7,8 @@
 @protocol FxParameterRetrievalAPI
 - (BOOL)getParameterFlags:(unsigned int *)arg1 fromParm:(unsigned int)arg2;
 - (BOOL)getCustomParameterValue:(id *)arg1 fromParm:(unsigned int)arg2;
-- (BOOL)getTexture:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_8b442eb9)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
-- (BOOL)getBitmap:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_8b442eb9)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
+- (BOOL)getTexture:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_6b9ed609)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
+- (BOOL)getBitmap:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_6b9ed609)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
 - (BOOL)getXValue:(double *)arg1 YValue:(double *)arg2 fromParm:(unsigned int)arg3 atTime:(double)arg4;
 - (BOOL)getRedValue:(double *)arg1 greenValue:(double *)arg2 blueValue:(double *)arg3 alphaValue:(double *)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
 - (BOOL)getRedValue:(double *)arg1 greenValue:(double *)arg2 blueValue:(double *)arg3 fromParm:(unsigned int)arg4 atTime:(double)arg5;

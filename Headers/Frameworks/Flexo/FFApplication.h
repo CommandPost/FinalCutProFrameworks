@@ -30,6 +30,7 @@
 - (void)removeEventFilter:(id)arg1;
 - (void)addEventFilter:(id)arg1;
 - (void)finishLaunching;
+- (id)willPresentError:(id)arg1;
 - (void)dealloc;
 
 @end

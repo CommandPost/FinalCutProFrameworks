@@ -10,12 +10,11 @@
 #import "FFImageBrowserDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFMDPhotoObjectView, LKPopOverWindow, LKTextField, NSArray, NSCache, NSPredicate, NSProView, NSString;
+@class FFMDPhotoLibraryObjectQuery, FFMDPhotoObjectView, LKPopOverWindow, LKTextField, NSArray, NSCache, NSPredicate, NSProView, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMDPhotoObjectViewController : FFMDPhotoAbstractViewController <FFImageBrowserDelegate, FFImageBrowserDataSource, NSWindowDelegate>
 {
-    NSArray *_displayedGroups;
     NSArray *_arrangedObjects;
     FFMDPhotoObjectView *_browserView;
     LKPopOverWindow *_playheadInfoWindow;
@@ -24,21 +23,48 @@ __attribute__((visibility("hidden")))
     NSCache *_sequenceCache;
     NSPredicate *_searchFilterPredicate;
     NSPredicate *_typeFilterPredicate;
-    NSString *_groupType;
+    FFMDPhotoLibraryObjectQuery *_dataQuery;
+    NSSet *disabledFilterTypes;
 }
 
-@property(readonly, nonatomic) NSString *groupType; // @synthesize groupType=_groupType;
 @property(retain, nonatomic) LKPopOverWindow *playheadInfoWindow; // @synthesize playheadInfoWindow=_playheadInfoWindow;
 @property(nonatomic) LKTextField *playheadInfoTextField; // @synthesize playheadInfoTextField=_playheadInfoTextField;
 @property(nonatomic) NSProView *playheadInfoView; // @synthesize playheadInfoView=_playheadInfoView;
 @property(retain, nonatomic) NSPredicate *typeFilterPredicate; // @synthesize typeFilterPredicate=_typeFilterPredicate;
 @property(retain, nonatomic) NSPredicate *searchFilterPredicate; // @synthesize searchFilterPredicate=_searchFilterPredicate;
 @property(retain, nonatomic) NSCache *sequenceCache; // @synthesize sequenceCache=_sequenceCache;
+@property(retain, nonatomic) NSSet *disabledFilterTypes; // @synthesize disabledFilterTypes;
 @property(nonatomic) FFMDPhotoObjectView *browserView; // @synthesize browserView=_browserView;
 @property(retain, nonatomic) NSArray *arrangedObjects; // @synthesize arrangedObjects=_arrangedObjects;
-@property(retain, nonatomic) NSArray *displayedGroups; // @synthesize displayedGroups=_displayedGroups;
+@property(retain, nonatomic) FFMDPhotoLibraryObjectQuery *dataQuery; // @synthesize dataQuery=_dataQuery;
+- (struct CGPoint)startPointConvertedToView;
+- (id)dragImage;
+- (id)headerDisplayName;
+- (id)cellForNavigationAction;
 - (void)performEditAction;
 - (BOOL)editActionAllowed;
+- (void)showSkimmerInfo:(id)arg1;
+- (void)revealInFinder:(id)arg1;
+- (void)deselectAll:(id)arg1;
+- (void)selectAll:(id)arg1;
+- (void)loop:(id)arg1;
+- (void)playFromStart:(id)arg1;
+- (void)playAroundCurrentFrame:(id)arg1;
+- (void)playSelected:(id)arg1;
+- (void)playPause:(id)arg1;
+- (void)_performPlayerCommandWithCell:(id)arg1 commandBlock:(CDUnknownBlockType)arg2;
+- (void)down:(id)arg1;
+- (void)up:(id)arg1;
+- (void)_movePlayheadFromCell:(id)arg1 toCell:(id)arg2;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (BOOL)writeDataForEditAction:(id)arg1 toPasteboardWithName:(id)arg2;
+- (id)cellsForEditAction;
+- (id)dataForEditAction:(id)arg1;
+- (BOOL)canSourceDataForEditAction:(id)arg1;
+- (void)resetViewState;
+- (void)writeViewPrefsToDict:(id)arg1;
+- (void)readViewPrefsFromDict:(id)arg1;
+- (void)clearPlayer;
 - (void)imageBrowser:(id)arg1 displayMediaInViewer:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4 loadingBlock:(CDUnknownBlockType)arg5 unloadingBlock:(CDUnknownBlockType)arg6;
 - (BOOL)imageBrowser:(id)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
 - (void)imageBrowserStopSkimmingInViewer:(id)arg1;
@@ -52,17 +78,25 @@ __attribute__((visibility("hidden")))
 - (void)imageBrowser:(id)arg1 cellWasDoubleClickedAtIndex:(long long)arg2;
 - (id)imageBrowser:(id)arg1 representedItemAtIndex:(long long)arg2;
 - (long long)numberOfItemsInImageBrowser:(id)arg1;
+- (id)selectedItems;
+- (void)resetQuery;
 - (void)reloadData;
 - (id)_combinedFilterPredicate;
-- (void)filterByType:(int)arg1;
-- (void)filterByString:(id)arg1;
+- (void)filterTypeChanged;
+- (void)filterStringChanged;
 - (id)initialFirstResponder;
-- (void)viewControllerDidUnhide;
-- (void)viewControllerDidHide;
+- (void)viewDidAppear;
+- (void)viewWillDisappear;
 - (void)popOverWindowDidCancel:(id)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,21 +6,30 @@
 
 #import "CAReplicatorLayer.h"
 
-@class CALayer;
+@class CALayer, NSView;
 
 @interface TLKMainSpineDropZoneLayer : CAReplicatorLayer
 {
     CALayer *_videoIconLayer;
     CAReplicatorLayer *_topLineLayer;
     CAReplicatorLayer *_bottomLineLayer;
-    int _editingMode;
     unsigned int _setInstanceCount;
+    int _editingMode;
+    unsigned long long _mode;
+    CALayer *_dropZoneVideoLayer;
 }
 
+@property CALayer *dropZoneVideoLayer; // @synthesize dropZoneVideoLayer=_dropZoneVideoLayer;
+@property unsigned long long mode; // @synthesize mode=_mode;
+@property(nonatomic) int editingMode; // @synthesize editingMode=_editingMode;
 - (void)layoutSublayers;
+- (void)layoutReplicatorLayers;
+@property(readonly) double segmentWidth;
+- (void)positionDropZoneVideoLayerCoveringVisibleRect;
 - (void)setDelegate:(id)arg1;
 - (void)setInstanceCount:(long long)arg1;
-@property int editingMode;
+@property(readonly) NSView *parentView;
+- (void)dealloc;
 - (id)init;
 
 @end

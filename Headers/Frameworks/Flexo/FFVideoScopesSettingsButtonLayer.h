@@ -6,12 +6,12 @@
 
 #import <Flexo/FFResponderLayerPopupButton.h>
 
-@class FFResponderLayerStaticText;
+@class FFThemeFacetLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFVideoScopesSettingsButtonLayer : FFResponderLayerPopupButton
 {
-    FFResponderLayerStaticText *_labelLayer;
+    FFThemeFacetLayer *_glyphLayer;
     struct CGSize _topRightMargin;
     struct CGSize _bottomLeftMargin;
 }

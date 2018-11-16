@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)items;
 - (id)itemCategoryName;
 - (BOOL)itemIsPlaceholder;
+- (double)rowHeight;
 - (BOOL)drawAsTopLevel;
 - (id)itemDisplayName;
 - (void)effectIDWasRegistered:(id)arg1;

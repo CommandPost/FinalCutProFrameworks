@@ -8,7 +8,7 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class LKTextField;
+@class LKTextField, NSString;
 
 @interface OZChanTextController : OZViewController <NSTextFieldDelegate>
 {
@@ -23,6 +23,12 @@
 - (void)textDone:(id)arg1;
 - (void)update;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

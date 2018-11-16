@@ -8,7 +8,7 @@
 
 #import "FFEnhanceAudioDelegate.h"
 
-@class FFAdjustmentToolSlider, FFChannelChangeController, LKButton, LKMenu, LKPopUpButton, LKTextField, NSArray, NSNumber, NSView;
+@class FFAdjustmentToolSlider, FFChannelChangeController, LKButton, LKMenu, LKPopUpButton, LKTextField, NSArray, NSNumber, NSString, NSView;
 
 @interface FFAudioEnhancementTool : FFAdjustmentTool <FFEnhanceAudioDelegate>
 {
@@ -83,6 +83,12 @@
 - (void)_removeObservers;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

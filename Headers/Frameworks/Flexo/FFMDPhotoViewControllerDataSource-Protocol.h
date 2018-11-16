@@ -6,11 +6,11 @@
 
 #import "NSObject.h"
 
-@class FFMDPhotoAbstractViewController, ILMediaManager, NSArray;
+@class FFMDPhotoLibraryQuery;
 
 @protocol FFMDPhotoViewControllerDataSource <NSObject>
-- (NSArray *)displayedGroupTypesForPhotoViewController:(FFMDPhotoAbstractViewController *)arg1;
-- (int)libraryTypeForPhotoViewController:(FFMDPhotoAbstractViewController *)arg1;
-- (ILMediaManager *)photoPluginForPhotoViewController:(FFMDPhotoAbstractViewController *)arg1;
+- (int)groupType;
+- (int)libraryType;
+- (FFMDPhotoLibraryQuery *)dataQuery;
 @end
 

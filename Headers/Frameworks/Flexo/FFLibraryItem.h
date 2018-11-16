@@ -82,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (id)libraryCatalog;
 @property(readonly, nonatomic) FFLibrary *library;
 - (void)setPrimaryObject:(id)arg1;
-- (id)primaryObject;
+- (id)loadPrimaryObject;
 - (BOOL)isPrimaryObjectLoaded;
 - (id)documentIdentifier;
 @property(retain, nonatomic) FFModelDocument *document;

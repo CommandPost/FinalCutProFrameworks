@@ -97,6 +97,7 @@
 - (id).cxx_construct;
 - (void)panWithPage:(double)arg1 y:(double)arg2;
 - (void)pan:(double)arg1 y:(double)arg2;
+- (void)setVerticalZoom:(double)arg1 offsetPercentage:(double)arg2;
 - (void)zoomWithFactor:(double)arg1 y:(double)arg2;
 - (void)zoom:(double)arg1 y:(double)arg2;
 - (void)drawCurveUnits;
@@ -131,6 +132,7 @@
 - (id)getSelection;
 - (void)setController:(id)arg1;
 - (struct CGRect)getCurrentViewport;
+- (struct CGRect)getOriginalViewVolume;
 - (struct CGRect)getCurrentViewVolume;
 - (void)setProcessedCurveDirty:(id)arg1 enable:(BOOL)arg2;
 - (void)setAllOriginalCurveScaleDirty:(BOOL)arg1;

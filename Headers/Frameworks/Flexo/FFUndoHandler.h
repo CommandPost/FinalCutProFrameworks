@@ -26,6 +26,7 @@
 
 + (void)performDeferredBlocks;
 + (void)performBlockOutsideUndoScope:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;
++ (void)performBlockOutsideUndoScope:(CDUnknownBlockType)arg1;
 + (void)registerGuardForLibraryItems:(id)arg1;
 + (id)fromCurrentTransaction;
 @property(retain, nonatomic) FFUndoGuard *guard; // @synthesize guard=_guard;

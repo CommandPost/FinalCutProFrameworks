@@ -10,7 +10,7 @@
 #import "FxOnScreenControlAPI_v3.h"
 #import "PROAPIObject.h"
 
-@class NSProCursor;
+@class NSProCursor, NSString;
 
 @interface OZFxPlugOnscreenControl : POOnScreenControl <PROAPIObject, FxOnScreenControlAPI_v2, FxOnScreenControlAPI_v3>
 {
@@ -27,6 +27,7 @@
 + (BOOL)validate:(struct OZChannelBase *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (struct OZFxPlugSharedBase *)_sharedBase;
 - (void)menuAddTrack:(id)arg1;
 - (id)menuForEvent:(id)arg1;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
@@ -53,7 +54,7 @@
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
-- (double)_getFxPlugTime;
+- (void)_getFxPlugTime:(CDUnion_2516e51e *)arg1;
 - (void)unlockCustomParameters;
 - (void)lockCustomParameters;
 - (void)finishEvent:(id)arg1 update:(BOOL)arg2;
@@ -61,6 +62,12 @@
 - (void)draw;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

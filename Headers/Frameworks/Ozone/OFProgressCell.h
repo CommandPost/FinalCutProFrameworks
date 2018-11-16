@@ -6,33 +6,39 @@
 
 #import "NSCell.h"
 
-@class NSImage, OFProgressEntry, OZOpticalFlowProgressController;
+@class NSImage, NSProRenditionKey, OFProgressEntry, OZOpticalFlowProgressController;
 
 @interface OFProgressCell : NSCell
 {
     OZOpticalFlowProgressController *_controller;
     OFProgressEntry *_data;
-    NSImage *_pauseImage;
-    NSImage *_pausePressedImage;
-    NSImage *_resumeImage;
-    NSImage *_resumePressedImage;
     NSImage *_alertImage;
     NSImage *_dragHandleImage;
-    OFProgressEntry *_clickedEntry;
+    NSProRenditionKey *_pauseRenditionKey;
+    NSProRenditionKey *_resumeRenditionKey;
     struct CGRect _pauseResumeFrame;
-    BOOL _isInside;
+    NSProRenditionKey *_cancelRenditionKey;
+    struct CGRect _cancelFrame;
+    NSProRenditionKey *_trackedRenditionKey;
+    struct CGRect _trackedFrame;
+    OFProgressEntry *_trackedData;
+    NSProRenditionKey *_trackedKeyAdjustment;
 }
 
 + (BOOL)prefersTrackingUntilMouseUp;
 - (id).cxx_construct;
 - (void)abortTracking;
-- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
 - (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
 - (BOOL)continueTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3;
 - (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
-- (void)getFromCellFrame:(struct CGRect)arg1 row1Frame:(struct CGRect *)arg2 andRow2Frame:(struct CGRect *)arg3 andRow3Frame:(struct CGRect *)arg4 andProgressFrame:(struct CGRect *)arg5 andPauseResumeFrame:(struct CGRect *)arg6 andDragHandleFrame:(struct CGRect *)arg7;
+- (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
+- (void)cancelAction:(id)arg1;
+- (void)pauseResumeAction:(id)arg1;
+- (void)getFromCellFrame:(struct CGRect)arg1 row1Frame:(struct CGRect *)arg2 andRow2Frame:(struct CGRect *)arg3 andRow3Frame:(struct CGRect *)arg4 andProgressFrame:(struct CGRect *)arg5 andPauseResumeFrame:(struct CGRect *)arg6 andCancelFrame:(struct CGRect *)arg7 andDragHandleFrame:(struct CGRect *)arg8;
 - (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (id)getRemainingStr;
+- (void)setTrackedData:(id)arg1;
+- (id)trackedData;
 - (id)objectValue;
 - (void)setObjectValue:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

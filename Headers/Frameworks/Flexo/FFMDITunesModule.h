@@ -6,9 +6,13 @@
 
 #import <Flexo/FFMDMusicModule.h>
 
+@class FFAlwaysHitButton;
+
 @interface FFMDITunesModule : FFMDMusicModule
 {
     BOOL _emptyPaneViewInitialized;
+    FFAlwaysHitButton *_toggleSidebarButton;
+    FFAlwaysHitButton *_dividerLine;
 }
 
 - (BOOL)supportsMovie;
@@ -19,6 +23,7 @@
 - (void)syncToMediaManager:(id)arg1;
 - (void)_initializeEmptyPaneView;
 - (void)dealloc;
+- (void)viewWasInstalled;
 - (id)init;
 
 @end

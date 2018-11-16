@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasData;
 @property(readonly, nonatomic) BOOL isVideo; // @dynamic isVideo;
 - (void)setConstantTimeStart:(CDStruct_1b6d18a9)arg1;
-- (void)setStartTime:(CDStruct_1b6d18a9)arg1;
+- (int)setStartTime:(CDStruct_1b6d18a9)arg1;
 - (long long)timescale;
 - (int)getNextMedia:(void *)arg1;
 - (void)stop;

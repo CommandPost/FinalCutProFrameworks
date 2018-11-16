@@ -58,13 +58,14 @@
         unsigned int terminalTransition:1;
         unsigned int needsToRestoreMinimumItemComponentFragmentWidth:1;
         unsigned int halfThumbnailDragStartMode:1;
-        unsigned int RESERVED:12;
+        unsigned int reloadTimelineDuringDrag:1;
+        unsigned int RESERVED:11;
     } _dhFlags;
 }
 
-+ (CDStruct_1b6d18a9)staticTimeWhenTrimmingEdge:(id)arg1 trimType:(int)arg2 ofItem:(id)arg3 inTimelineView:(id)arg4;
 @property(retain) id <TLKTimelineItem> container; // @synthesize container=_container;
 @property(retain, nonatomic) id <TLKTimelineItem> adjacentItem; // @synthesize adjacentItem=_adjacentItem;
+@property(readonly) CDStruct_1b6d18a9 deltaTime; // @synthesize deltaTime=_deltaTime;
 @property NSString *draggedPart; // @synthesize draggedPart=_draggedPart;
 @property(retain) TLKItemLayer *clickedLayer; // @synthesize clickedLayer=_clickedLayer;
 @property(retain) id <TLKTimelineItem> draggedItem; // @synthesize draggedItem=_draggedItem;
@@ -79,19 +80,19 @@
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (id)cursorNameAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (CDStruct_1b6d18a9)_visibleEndTimeOfItem:(id)arg1;
-- (CDStruct_1b6d18a9)_endTimeOfItem:(id)arg1;
+- (CDStruct_1b6d18a9)endTimeOfItem:(id)arg1;
 - (CDStruct_1b6d18a9)_endTimeOfItemInContainerSpace:(id)arg1;
 - (CDStruct_1b6d18a9)_visibleStartTimeOfItem:(id)arg1;
-- (CDStruct_1b6d18a9)_startTimeOfItem:(id)arg1;
+- (CDStruct_1b6d18a9)startTimeOfItem:(id)arg1;
 - (CDStruct_1b6d18a9)_startTimeOfItemInContainerSpace:(id)arg1;
 - (BOOL)_itemHasValidLayoutInfo:(id)arg1;
 - (BOOL)isSplitEdit;
+@property(nonatomic) BOOL reloadTimelineDuringDrag;
 - (BOOL)rollOver;
 - (CDStruct_1b6d18a9)_visibleDurationOfItem:(id)arg1;
 - (BOOL)_itemIsGap:(id)arg1;
 - (BOOL)_itemIsLastSpineItem:(id)arg1;
 - (BOOL)_itemIsFirstSpineItem:(id)arg1;
-- (BOOL)_itemIsSpineItem:(id)arg1;
 - (BOOL)_itemIsAudioComponent:(id)arg1;
 - (id)_itemAfterItem:(id)arg1;
 - (id)_itemBeforeItem:(id)arg1;
@@ -119,12 +120,12 @@
 - (BOOL)stopTrackingWithCommit:(BOOL)arg1;
 - (BOOL)continueTracking:(id)arg1;
 - (CDStruct_1b6d18a9)moveEdgeToPoint:(struct CGPoint)arg1;
+- (id)_validItemForTimeCodeDisplay;
 - (CDStruct_1b6d18a9)_timeOffsetForMovingEdgeToPoint:(struct CGPoint)arg1;
 - (double)_draggingClipWidthFromTimeOffset:(CDStruct_1b6d18a9)arg1 timePerPoint:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_1b6d18a9)_dragCalculationTimePerPoint;
-- (CDStruct_1b6d18a9)_nonLinearTimePerPoint;
 - (CDStruct_1b6d18a9)_timeOffsetForDraggingTransitionFromLocation:(double)arg1 toLocation:(double)arg2;
-- (void)updateTimecodeDisplayWithOffset:(CDStruct_1b6d18a9)arg1;
+- (void)updateTimecodeDisplayWithOffset:(CDStruct_1b6d18a9)arg1 displayTime:(CDStruct_1b6d18a9)arg2;
 - (void)_resolveOverlappingRectangleConflicts;
 - (void)adjustFramesOfItems:(id)arg1;
 - (CDStruct_1b6d18a9)_moveEdgeByTimeOffset:(CDStruct_1b6d18a9)arg1;
@@ -144,6 +145,7 @@
 - (void)deselectItem:(id)arg1;
 - (CDStruct_1b6d18a9)_convertTimeToTimelineView:(CDStruct_1b6d18a9)arg1;
 - (double)_convertLocationFromTimelineView:(double)arg1;
+- (CDStruct_1b6d18a9)_timeModulo:(CDStruct_1b6d18a9)arg1 divisor:(CDStruct_1b6d18a9)arg2;
 - (void)applyConfiguration:(id)arg1;
 - (void)dealloc;
 

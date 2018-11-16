@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
     BOOL _inImportWindow;
     unsigned long long _spannedClipGlyphID;
     NSString *_ptpPercentageDonePath;
-    NSString *_iOSPercentageDonePath;
+    NSString *_assetImportPercentageDonePath;
     FigTimeRangeAndObject *_rangeOfMedia;
     NSDate *_creationDate;
 }

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_projectRefMap;
     NSMapTable *_importedKeywordsMap;
     NSDictionary *_customMetadataRepresentationDict;
+    BOOL _libraryIsNew;
 }
 
 - (void)dealloc;
@@ -49,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)createEventProject:(id)arg1 forXMLUID:(id)arg2 error:(id *)arg3;
 - (void)_closeAndDeleteDocumentFiles:(id)arg1;
 - (id)smartCollectionFilter:(id)arg1;
-- (id)newMediaEventSmartCollection:(id)arg1;
+- (id)newMediaEventSmartCollection:(id)arg1 withName:(id)arg2;
 - (void)addMediaEventObject:(id)arg1 toFolder:(id)arg2;
 - (BOOL)isSupportedMediaEventObject:(id)arg1;
 - (id)newEventStillClipOwnedClipsItem:(id)arg1;
@@ -82,6 +83,10 @@ __attribute__((visibility("hidden")))
 - (void)_addKeywords:(id)arg1 withRange:(CDStruct_e83c9415)arg2 note:(id)arg3 eventProject:(id)arg4 toObject:(id)arg5;
 - (void)addNoteNode:(id)arg1 toObject:(id)arg2;
 - (void)addMuteNode:(id)arg1 toObject:(id)arg2;
+- (void)addMaskedFilterNode:(id)arg1 toObject:(id)arg2;
+- (void)addMaskedFilterNode:(id)arg1 video:(id)arg2 audio:(id)arg3 toObject:(id)arg4;
+- (void)addEffectParameters:(id)arg1 forEffect:(id)arg2 toObject:(id)arg3;
+- (void)addEffectMask:(id)arg1 forEffect:(id)arg2 toObject:(id)arg3;
 - (void)addFilterNode:(id)arg1 toObject:(id)arg2;
 - (void)addFilterNode:(id)arg1 video:(id)arg2 audio:(id)arg3 toObject:(id)arg4;
 - (void)addTitleNode:(id)arg1 toObject:(id)arg2;
@@ -134,7 +139,9 @@ __attribute__((visibility("hidden")))
 - (void)addAttributes:(id)arg1 map:(id)arg2 toObject:(id)arg3;
 - (void)finishedLoadingParametersForEffect:(id)arg1;
 - (void)prepareEffectForParamElements:(id)arg1 effect:(id)arg2;
+- (void)addParamElementsFor:(id)arg1 toChannelFolder:(id)arg2 toObject:(id)arg3;
 - (void)addParamElements:(id)arg1 toChannelFolder:(id)arg2 toObject:(id)arg3;
+- (void)addParamElementsFor:(id)arg1 toChannelFolder:(id)arg2 toObject:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)addParamElements:(id)arg1 toChannelFolder:(id)arg2 toObject:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)addParam:(id)arg1 channel:(id)arg2 toObject:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)addParam:(id)arg1 channel:(id)arg2 toObject:(id)arg3;
@@ -142,17 +149,21 @@ __attribute__((visibility("hidden")))
 - (void)addFadeOut:(id)arg1 channel:(id)arg2 toObject:(id)arg3;
 - (void)addFadeIn:(id)arg1 channel:(id)arg2 toObject:(id)arg3;
 - (void)addColorInfo:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)setASCCDLInfo:(id)arg1 toEffect:(id)arg2;
 - (void)addRoles:(id)arg1 toObject:(id)arg2;
 - (void)addAttributes:(id)arg1 toObject:(id)arg2;
 - (void)addAudioRouting:(id)arg1 toObject:(id)arg2;
 - (void)addFormat:(id)arg1 toObject:(id)arg2;
 - (id)copyVideoProps:(id)arg1;
+- (CDStruct_1b6d18a9)attributeAsDuration:(id)arg1 name:(id)arg2 defaultValue:(CDStruct_1b6d18a9)arg3;
 - (id)audioFilterElementName;
 - (id)videoFilterElementName;
 - (BOOL)allowAdjustmentsForObject:(id)arg1;
+- (id)newEffectWithResourceID:(id)arg1;
+- (id)effectIDForResourceID:(id)arg1;
 - (id)newParameterNode:(id)arg1;
 - (void)setChannel:(id)arg1 stringValue:(id)arg2;
-- (void)setChannel:(id)arg1 stringValue:(id)arg2 interpolation:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4 isRadians:(BOOL)arg5;
+- (void)setChannel:(id)arg1 stringValue:(id)arg2 interpolation:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4 isRadians:(BOOL)arg5 smooth:(BOOL)arg6;
 - (BOOL)importPostProcess:(id *)arg1;
 - (BOOL)processImportedKeywordsMap:(id *)arg1;
 - (BOOL)processNewMediaEventMap:(id *)arg1;
@@ -176,7 +187,7 @@ __attribute__((visibility("hidden")))
 - (void)pushImportOptions:(id)arg1;
 - (void)initImportOptions;
 - (void)warnUnsupportedParamKeyframeInterpolation:(id)arg1;
-- (BOOL)cancelImport;
+- (BOOL)importCancelled;
 @property(readonly, nonatomic) BOOL suppressWarnings;
 - (id)warnings;
 - (void)log:(id)arg1 warningOnly:(BOOL)arg2;

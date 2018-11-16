@@ -15,8 +15,9 @@ __attribute__((visibility("hidden")))
     FFInspectorMetadataContentRow *_contentRow;
 }
 
-@property(retain) FFInspectorMetadataContentRow *contentRow; // @synthesize contentRow=_contentRow;
+@property FFInspectorMetadataContentRow *contentRow; // @synthesize contentRow=_contentRow;
 @property(retain) NSTextView *tempTextView; // @synthesize tempTextView=_tempTextView;
+- (void)drawRect:(struct CGRect)arg1;
 - (void)updateFieldHeightForText;
 - (double)actualTextHeight;
 - (void)setupTempTextView;

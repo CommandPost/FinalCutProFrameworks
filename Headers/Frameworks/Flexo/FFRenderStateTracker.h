@@ -8,7 +8,7 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBackgroundTask, FFPMRLogFunnel, FFProvider, FFSVContext, FFSourceVideo, NSLock, NSMutableArray, NSMutableIndexSet, NSMutableSet, NSRecursiveLock, NSThread;
+@class FFBackgroundTask, FFPMRLogFunnel, FFProvider, FFSVContext, FFSourceVideo, NSLock, NSMutableArray, NSMutableIndexSet, NSThread;
 
 __attribute__((visibility("hidden")))
 @interface FFRenderStateTracker : NSObject <FFBackgroundTaskTarget>
@@ -19,8 +19,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_knownRanges;
     NSMutableArray *_dirtyRanges;
     NSMutableIndexSet *_statesEncountered;
-    NSRecursiveLock *_rbLock;
-    int _rbLockCount;
+    NSLock *_rbLock;
     _Bool _stateFullyKnownAtLockTime;
     NSThread *_rbLockHolder;
     CDStruct_e83c9415 _primaryInterestTimeRange;
@@ -32,14 +31,14 @@ __attribute__((visibility("hidden")))
     FFPMRLogFunnel *_pmrFunnel;
     long long _UIPlayersPlayering;
     int _deferredRenderStateNotify;
-    NSMutableSet *_segmentsWithDrops;
+    struct set<FFMD5, std::less<FFMD5>, std::allocator<FFMD5>> *_segmentsWithDrops;
     _Bool _temporaryHold;
 }
 
 + (id)assetsInUseForSource:(id)arg1;
 + (id)anchoredObjectInUseForSource:(id)arg1;
 @property _Bool temporaryHold; // @synthesize temporaryHold=_temporaryHold;
-@property(readonly) FFSourceVideo *source; // @synthesize source=_source;
+@property(readonly, retain) FFSourceVideo *source; // @synthesize source=_source;
 - (id).cxx_construct;
 - (id)librariesInUse;
 - (id)assetsInUse;
@@ -52,18 +51,22 @@ __attribute__((visibility("hidden")))
 - (BOOL)_analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
 - (int)_getStateForInfo:(id)arg1 startAt:(CDStruct_1b6d18a9)arg2 exitTime:(CDStruct_1b6d18a9)arg3 retRange:(CDStruct_e83c9415 *)arg4 segmentMD5s:(CDStruct_bdcb2b0d *)arg5 diskMD5s:(CDStruct_bdcb2b0d *)arg6 hasData:(char *)arg7 context:(id)arg8;
 - (BOOL)_analyzeSegmentStoreForInfo:(id)arg1 checkActual:(_Bool)arg2 startAt:(CDStruct_1b6d18a9)arg3 renderFilePaths:(id)arg4 exitTime:(CDStruct_1b6d18a9)arg5 retRange:(CDStruct_e83c9415 *)arg6 segmentMD5:(CDStruct_bdcb2b0d *)arg7 diskMD5:(CDStruct_bdcb2b0d *)arg8 context:(id)arg9;
+- (void)checkRangesAndMD5sForRecentlyCreatedRenderFiles:(id)arg1 md5s:(id)arg2;
 - (void)checkRangeAndMD5sForRecentlyCreatedRenderFiles:(CDStruct_e83c9415)arg1 md5s:(id)arg2;
-- (void)checkRangeForRecentlyCreatedRenderFiles:(id)arg1;
 - (_Bool)analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
 - (id)md5sInUseInRange:(CDStruct_e83c9415)arg1 collectRenderedSegments:(BOOL)arg2 collectNeedsRenderSegments:(BOOL)arg3;
+- (id)_internalmd5sInUseInRange:(CDStruct_e83c9415)arg1 collectRenderedSegments:(BOOL)arg2 collectNeedsRenderSegments:(BOOL)arg3;
 - (id)md5sInUse;
 - (id)statesEncountered;
 - (_Bool)stateFullyKnown;
+- (_Bool)_stateFullyKnown;
 - (id)renderStateInRange:(CDStruct_e83c9415)arg1 wantDetailedSegmentation:(_Bool)arg2;
-- (id)renderStateInRange:(CDStruct_e83c9415)arg1;
 - (id)renderState;
 - (id)copyConsolidatedRenderRangeState:(long long)arg1 endTime:(CDStruct_1b6d18a9)arg2 ignoreMD5:(_Bool)arg3;
+- (void)iterateOverRenderRanges:(CDStruct_e83c9415)arg1 inStates:(id)arg2 includingUnknown:(BOOL)arg3 iterator:(CDUnknownBlockType)arg4;
 - (void)_markRangeAsDirty:(CDStruct_e83c9415)arg1 allowDefer:(_Bool)arg2;
+- (void)_internalPostMarkRangeAsDirtyWithAllowDefer:(_Bool)arg1 removedKnown:(_Bool)arg2 addedDirty:(_Bool)arg3 infoCB:(CDUnknownBlockType)arg4;
+- (void)_internalMarkRangeAsDirty:(CDStruct_e83c9415)arg1 nativeSampleDur:(CDStruct_1b6d18a9)arg2 removedKnown:(_Bool *)arg3 addedDirty:(_Bool *)arg4;
 - (void)queueDeferredRenderStateNotify:(id)arg1;
 - (void)deferredRenderStateNotify:(id)arg1;
 - (void)rangeInvalidated:(id)arg1;

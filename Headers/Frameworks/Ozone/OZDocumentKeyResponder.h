@@ -19,11 +19,11 @@
 
 + (void)addTarget:(id)arg1;
 @property(nonatomic) NSWindowController *windowController; // @synthesize windowController=_pWindowController;
+- (void)previewSceneAsCAAR:(id)arg1;
+- (void)exportSceneAsCAAR:(id)arg1;
 - (void)removeFromYouTube:(id)arg1;
 - (void)removeFromVimeo:(id)arg1;
 - (void)removeFromFacebook:(id)arg1;
-- (void)removeFromCNNiReport:(id)arg1;
-- (void)showShareMonitor:(id)arg1;
 - (void)exportCurrentFrame:(id)arg1;
 - (void)exportUsingCompressorSettings:(id)arg1;
 - (void)openInCompressor:(id)arg1;
@@ -31,7 +31,6 @@
 - (void)exportSelectionMovie:(id)arg1;
 - (void)exportImageSequence:(id)arg1;
 - (void)exportMovie:(id)arg1;
-- (void)publishCNNiReport:(id)arg1;
 - (void)sendEmail:(id)arg1;
 - (void)publishVimeo:(id)arg1;
 - (void)publishFacebook:(id)arg1;
@@ -101,6 +100,7 @@
 - (void)activateEditTool:(id)arg1;
 - (void)activatePanTool:(id)arg1;
 - (void)activateZoomTool:(id)arg1;
+- (void)convertToBezier:(id)arg1;
 - (void)convertToMask:(id)arg1;
 - (void)bakeObject:(id)arg1;
 - (BOOL)canBake;
@@ -108,6 +108,8 @@
 - (void)addTitleDropZones:(id)arg1;
 - (void)addEffectDropZones:(id)arg1;
 - (void)addTransitionDropZones:(id)arg1;
+- (void)addLightSetup:(unsigned int)arg1;
+- (void)addLightSetupMenuAction:(id)arg1;
 - (void)addLight:(id)arg1;
 - (void)addCamera:(id)arg1;
 - (unsigned int)checkFor3DSceneWithType:(unsigned int)arg1;

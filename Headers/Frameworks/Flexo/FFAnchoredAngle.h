@@ -79,9 +79,9 @@
 - (void)_mediaChanged:(id)arg1;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (BOOL)isAngle;
-- (long long)audioChannelCount:(int)arg1;
-@property(readonly, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
-@property(readonly, nonatomic) FFEffectStack *videoEffects; // @synthesize videoEffects=_videoEffects;
+- (long long)nativeAudioChannelCount:(int)arg1;
+@property(readonly, retain, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
+@property(readonly, retain, nonatomic) FFEffectStack *videoEffects; // @synthesize videoEffects=_videoEffects;
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (id)availableMultiAngleIDs;
 - (id)availableMultiAngleObjects;

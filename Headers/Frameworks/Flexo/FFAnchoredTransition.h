@@ -71,7 +71,7 @@
 - (id)videoProps;
 - (int)playEnable;
 - (BOOL)hasVideo;
-- (long long)audioChannelCount:(int)arg1;
+- (long long)nativeAudioChannelCount:(int)arg1;
 - (BOOL)hasAudio;
 - (BOOL)contributesToCompoundClip;
 - (BOOL)isThemedTransition;

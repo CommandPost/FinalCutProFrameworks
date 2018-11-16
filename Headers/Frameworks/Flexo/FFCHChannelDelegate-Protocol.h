@@ -4,9 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class CHChannelBase, FFBaseDSObject;
+@class CHChannelBase, FFBaseDSObject, FFNotificationID_, NSDictionary, NSMutableDictionary;
 
 @protocol FFCHChannelDelegate
+- (void)passEffectNotificationUpChain:(FFNotificationID_ *)arg1 userInfo:(NSDictionary *)arg2 informParents:(BOOL)arg3 forChannel:(CHChannelBase *)arg4;
+- (NSMutableDictionary *)augmentChannelChangeDescriptionForNotification:(NSMutableDictionary *)arg1;
 - (FFBaseDSObject *)observedObjectForChannel:(CHChannelBase *)arg1;
 @end
 

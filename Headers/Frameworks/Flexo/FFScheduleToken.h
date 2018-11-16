@@ -15,6 +15,8 @@
     NSMutableDictionary *_dictm;
 }
 
+- (_Bool)hasErrorInfo;
+- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (id)newTokenForPassThruStream:(id)arg1 retainOnlyObject:(id)arg2;
 - (id)objectForKey:(id)arg1;
 - (void)addEntriesFromDictionary:(id)arg1;

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 @property long long paradeLayoutAlignment; // @synthesize paradeLayoutAlignment=_paradeLayoutAlignment;
 - (void)drawGridInContext:(struct CGContext *)arg1 dirtyRect:(struct CGRect)arg2 contentsScale:(double)arg3;
-- (void)setViewMode:(long long)arg1;
+- (void)setDisplayMode:(long long)arg1;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)buildSublayers;
 - (void)setDelegate:(id)arg1;

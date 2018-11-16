@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class FFChannelChangeController, LKPopOverWindow, NSButton, NSMatrix, NSView;
+@class FFChannelChangeController, LKPopOverWindow, NSButton, NSMatrix, NSString, NSView;
 
 @interface FFMapSettingsTool : FFAdjustmentTool <NSWindowDelegate>
 {
@@ -60,6 +60,12 @@
 - (BOOL)handlesSelection;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

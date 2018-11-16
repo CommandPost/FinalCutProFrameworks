@@ -8,10 +8,6 @@
 
 @interface OZLineTool : OZSplineTool
 {
-    struct CGPoint _startPos;
-    struct CGPoint _originalMousePos;
-    struct CGPoint _currentMousePos;
-    _Bool _moving;
     struct CGPoint _begin;
     struct CGPoint _end;
 }

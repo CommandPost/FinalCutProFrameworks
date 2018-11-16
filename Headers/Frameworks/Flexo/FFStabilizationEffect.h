@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)loadPersistentData:(id)arg1;
 - (id)persistentData;
 - (void)createChannelsInFolder:(id)arg1;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7 graphBuildInfo:(id)arg8;
 - (void)_maybeRequestSmoothTransform:(id)arg1;
 - (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5;
 - (void)_requestSmoothTransform;
@@ -81,9 +81,11 @@ __attribute__((visibility("hidden")))
 - (struct HGNode *)newNodeForContext:(id)arg1;
 - (BOOL)analysisAvailable;
 - (BOOL)needsAnalysis;
+- (CDStruct_1b6d18a9)absoluteStartToUseForMD5Calcs;
 - (CDStruct_1b6d18a9)durationToUseForMD5Calcs;
 - (BOOL)effectStartAndDurationImpactMD5;
 - (BOOL)writeDefaultChannels;
+- (BOOL)effectIntroducesAlpha;
 - (BOOL)isNoOp;
 - (unsigned int)attributeCopyingFlags;
 - (void)encodeWithCoder:(id)arg1;

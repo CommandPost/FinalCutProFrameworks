@@ -28,7 +28,14 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityAttributeNames;
 - (BOOL)accessibilityIsIgnored;
 - (void)makeDefaultVideoTransition:(id)arg1;
+- (void)removeFavoriteAudioEffect:(id)arg1;
+- (void)addFavoriteAudioEffect:(id)arg1;
+- (void)removeFavoriteVideoEffect:(id)arg1;
+- (void)addFavoriteVideoEffect:(id)arg1;
+- (void)addDefaultAudioEffectSet:(id)arg1;
+- (void)addDefaultVideoEffectSet:(id)arg1;
 - (void)openEffectInEditor:(id)arg1;
+- (void)revealInFinder:(id)arg1;
 - (id)menu;
 - (void)beginDraggingEffectIcon:(id)arg1;
 - (id)dragImage;
@@ -41,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)loadIcon;
 - (void)viewWillDraw;
 - (void)dealloc;
+- (void)updateStringIfNeeded;
 - (id)initWithEffect:(id)arg1;
 - (void)viewDidChangeBackingProperties;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;

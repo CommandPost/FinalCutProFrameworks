@@ -51,6 +51,7 @@
 - (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 controlCanvas:(BOOL)arg5 showAngles:(BOOL)arg6 owner:(id)arg7;
 
 @optional
+- (void)hideSportsTeamOSC;
 - (void)performAction:(NSString *)arg1 withProject:(FFAnchoredSequence *)arg2 andSelection:(NSArray *)arg3;
 @end
 

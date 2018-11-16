@@ -17,6 +17,7 @@
     NSString *_name;
     NSString *_originalSettingsName;
     NSImage *_image;
+    NSImage *_customImage;
     CKSetting *_setting;
     BOOL _userHasChangedTheName;
     BOOL _storePassword;
@@ -35,7 +36,9 @@
 + (void)replaceUserDestination:(id)arg1 withDestination:(id)arg2;
 + (void)setUserDestinations:(id)arg1;
 + (id)userDestinationsWithDefault:(id)arg1;
++ (id)userDestinationsShowAppPreview:(BOOL)arg1;
 + (id)userDestinations;
++ (void)filterDestinations;
 + (id)newDestinationWithType:(id)arg1;
 + (id)addUserDestinationFromURL:(id)arg1;
 + (void)restoreStandardDestinations;
@@ -48,6 +51,7 @@
 @property BOOL storePassword; // @synthesize storePassword=_storePassword;
 @property BOOL userHasChangedTheName; // @synthesize userHasChangedTheName=_userHasChangedTheName;
 @property(retain, nonatomic) CKSetting *setting; // @synthesize setting=_setting;
+@property(retain) NSImage *customImage; // @synthesize customImage=_customImage;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
 - (id)childrenDestinations;
@@ -70,7 +74,7 @@
 - (id)lightImage;
 - (id)smallImage;
 - (id)largeImage;
-@property(readonly) NSImage *image; // @synthesize image=_image;
+@property(readonly, retain) NSImage *image; // @synthesize image=_image;
 - (id)imageForBackground:(unsigned long long)arg1 withIndex:(long long)arg2;
 - (long long)iconIndex;
 @property(retain) CKAction *action;
@@ -84,6 +88,7 @@
 - (id)initWithName:(id)arg1;
 - (id)init;
 - (id)destinationWithOriginalSettings;
+@property(readonly, nonatomic) NSString *taskIdentifier;
 @property(readonly) BOOL forCurrentFrameOnly;
 
 @end

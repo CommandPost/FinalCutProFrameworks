@@ -11,7 +11,7 @@
 #import "POHostDelegate.h"
 #import "POViewDelegate.h"
 
-@class NSFont, NSImage, NSTimer;
+@class NSFont, NSTimer;
 
 @interface OZGLViewer : OZGLViewerOSC <POHostDelegate, POViewDelegate, OZRenderClient, OZHGUserJobClient>
 {
@@ -36,8 +36,6 @@
     struct PCAtomicValue *_pRenderReady;
     struct OZRenderState _renderState;
     shared_ptr_f006f9e7 *_pRenderTex;
-    struct shared_ptr<PGContext> *_pCurrentColorContext;
-    struct shared_ptr<PGSurface> *_pCurrentColorSurface;
     BOOL _ignoreNextDisplay;
     struct PCAtomicValue *_pPlayMode;
     struct PCAtomicValue *_pIsPlaying;
@@ -47,7 +45,6 @@
     double _animEndZoom;
     PCVector2_79efa81a _animStartPan;
     PCVector2_79efa81a _animEndPan;
-    struct OZVideoOutput *_pVideoOutput;
     BOOL _channelDoneChanging;
     BOOL _voPostDisplay;
     BOOL _useMainRenderForVideoOut;
@@ -60,7 +57,6 @@
     double _updateTimes[60];
     BOOL _useSceneTimeRangeEnd;
     struct PCSemaphore *_pRenderImageSignal;
-    NSImage *_pRenderImageResult;
     struct PCMutex *_pRenderSignal;
     int _nonTimerUpdateDisplayCount;
     NSFont *_tmpFont;
@@ -149,6 +145,7 @@
 - (BOOL)timeRangeChanged:(unsigned int)arg1;
 - (BOOL)channelChanged:(unsigned int)arg1;
 - (void)postNotification:(unsigned int)arg1;
+- (void)notifyShapeChanged;
 - (void)notifyPathChanged;
 - (void)notifyInspectorContentsChanged;
 - (void)notifySceneChange;
@@ -211,7 +208,6 @@
 - (id)getCameraName;
 - (void)selectCamera:(int)arg1 animate:(BOOL)arg2;
 - (void)getImageSample:(struct PCColor *)arg1 atFilm:(const PCVector2_79efa81a *)arg2 includeBGColor:(BOOL)arg3;
-- (void)createCurrentColorContext;
 - (void)notify:(unsigned int)arg1;
 - (void)updateAudioPlayback;
 - (void)scrubAudio:(BOOL)arg1;
@@ -222,6 +218,8 @@
 - (void)addRender:(shared_ptr_7e020609)arg1;
 - (_Bool)needsRender;
 - (void)ignoreNextDisplay;
+- (void)performSelectForEvent:(id)arg1 osc:(id)arg2;
+- (int)performHitCheckForEvent:(id)arg1 osc:(id)arg2;
 - (void)invalidatePendingRenders;
 - (void)abortRenders;
 - (void)lockFrameRate:(id)arg1;

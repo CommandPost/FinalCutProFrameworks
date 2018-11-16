@@ -8,7 +8,7 @@
 
 #import "NSControlTextEditingDelegate.h"
 
-@class FFAnchoredTimeMarker, LKButton, LKSegmentedCell, LKSegmentedControl, LKTextField;
+@class FFAnchoredTimeMarker, LKButton, LKSegmentedCell, LKSegmentedControl, LKTextField, NSString;
 
 @interface FFMarkerEditorViewModule : LKViewModule <NSControlTextEditingDelegate>
 {
@@ -45,6 +45,12 @@
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)_updateTypeCellSegmentsWithActive:(unsigned long long)arg1;
 - (id)initWithMarker:(id)arg1 delegate:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -12,10 +12,12 @@
 {
     NSString *_title;
     NSString *_message;
+    NSString *_okButton;
 }
 
 - (void)beginAlertSheet:(id)arg1;
 - (void)dealloc;
+- (id)initWithTitle:(id)arg1 message:(id)arg2 okButtonText:(id)arg3;
 - (id)initWithTitle:(id)arg1 message:(id)arg2;
 
 @end

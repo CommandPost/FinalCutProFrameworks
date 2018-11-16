@@ -11,18 +11,19 @@
 __attribute__((visibility("hidden")))
 @interface MicaPosterAnimator : MicaAnimator
 {
-    MicaTextGroup *m_textGroup1;
-    MicaTextGroup *m_textGroup2;
-    iMovieCreditsLayer *m_creditsLayer;
-    CALayer *m_videoLayer1;
-    CALayer *m_projectThumbnailBoundsLayer;
+    CALayer *_projectThumbnailBoundsLayer;
+    MicaTextGroup *_textGroup1;
+    MicaTextGroup *_textGroup2;
+    iMovieCreditsLayer *_creditsLayer;
+    CALayer *_videoLayer1;
 }
 
-@property(retain, nonatomic) CALayer *projectThumbnailBoundsLayer; // @synthesize projectThumbnailBoundsLayer=m_projectThumbnailBoundsLayer;
-@property(retain, nonatomic) CALayer *videoLayer1; // @synthesize videoLayer1=m_videoLayer1;
-@property(retain, nonatomic) iMovieCreditsLayer *creditsLayer; // @synthesize creditsLayer=m_creditsLayer;
-@property(retain, nonatomic) MicaTextGroup *textGroup2; // @synthesize textGroup2=m_textGroup2;
-@property(retain, nonatomic) MicaTextGroup *textGroup1; // @synthesize textGroup1=m_textGroup1;
+@property(retain, nonatomic) CALayer *videoLayer1; // @synthesize videoLayer1=_videoLayer1;
+@property(retain, nonatomic) iMovieCreditsLayer *creditsLayer; // @synthesize creditsLayer=_creditsLayer;
+@property(retain, nonatomic) MicaTextGroup *textGroup2; // @synthesize textGroup2=_textGroup2;
+@property(retain, nonatomic) MicaTextGroup *textGroup1; // @synthesize textGroup1=_textGroup1;
+@property(retain, nonatomic) CALayer *projectThumbnailBoundsLayer; // @synthesize projectThumbnailBoundsLayer=_projectThumbnailBoundsLayer;
+- (void).cxx_destruct;
 - (void)configureForDisplayAsProjectThumbnailWithDisplayName:(id)arg1;
 - (void)setVideoImage:(id)arg1;
 - (void)setCreditsColor:(struct CGColor *)arg1;

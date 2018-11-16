@@ -10,10 +10,13 @@
 - (NSString *)displayName;
 - (void)endOperationWithChannel:(struct OZChannelBase *)arg1;
 - (void)beginOperationWithChannel:(struct OZChannelBase *)arg1;
+- (BOOL)usesRationalTime;
 - (void)endTimingOperation:(void *)arg1;
-- (void *)beginTimingOperation:(double)arg1 forChannel:(struct OZChannelBase *)arg2;
+- (void *)beginTimingOperation:(CDStruct_1b6d18a9)arg1 forChannel:(struct OZChannelBase *)arg2;
+- (CDUnion_2516e51e)figTimeToFxTime:(const CDStruct_1b6d18a9 *)arg1 withConversionData:(void *)arg2;
+- (CDStruct_1b6d18a9)fxTimeToFigTime:(CDUnion_2516e51e)arg1 withConversionData:(void *)arg2;
 - (CDStruct_1b6d18a9)convertToFigTime:(double)arg1;
-- (double)convertFromFigTime:(CDStruct_1b6d18a9)arg1;
+- (double)convertFromFigTime:(const CDStruct_1b6d18a9 *)arg1;
 - (void)updateInspector;
 - (void)markForDynamicParameterUsage;
 - (void)removeParameter:(unsigned int)arg1;

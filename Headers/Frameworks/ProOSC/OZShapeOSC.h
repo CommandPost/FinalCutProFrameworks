@@ -37,9 +37,6 @@
     PCPtr_df275998 _tangentAsset;
     PCVector2_79efa81a *_tangentSize;
     _Bool _assetSetup;
-    long long _assetCategory;
-    long long _assetType;
-    long long _assetTangentType;
     double _rotoshapeVertexColor[4];
     double _rotoshapeOSCColor[4];
     double _rotoshapeLockedColor[4];
@@ -51,6 +48,7 @@
     double _startBoundsY1;
     double _startBoundsX2;
     double _startBoundsY2;
+    BOOL _shouldDrawVertices;
 }
 
 - (id).cxx_construct;
@@ -69,6 +67,7 @@
 - (void)drawWithDrawProperties:(id)arg1;
 - (void)draw;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
+- (void)setShouldDrawVertices:(BOOL)arg1;
 - (void)clearGLNamesForObjects;
 - (void *)objectForGLName:(unsigned int)arg1;
 - (unsigned int)createGLNameForObject:(void *)arg1;
@@ -88,9 +87,6 @@
 - (BOOL)selectNone:(id)arg1;
 - (BOOL)selectAll:(id)arg1;
 - (BOOL)isSelected:(struct OZVertex2D)arg1;
-- (PCPtr_df275998)getTangentImage;
-- (PCPtr_df275998)getKeypointImage:(unsigned int)arg1 state:(unsigned int)arg2;
-- (void)setupAssets;
 - (id)getDefaultCursor;
 - (struct OZShape *)getRotoshape;
 - (void)setRotoshape:(struct OZShape *)arg1;

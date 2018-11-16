@@ -70,8 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateRetimingFlags;
 - (unsigned int)aoFlagsMask;
 - (id)newProvider;
-- (long long)audioChannelCount;
-- (long long)audioChannelCount:(int)arg1;
+- (long long)nativeAudioChannelCount:(int)arg1;
 - (id)audioEffects;
 - (id)videoEffects;
 - (BOOL)isMultiAngleGap;
@@ -79,7 +78,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isComponent;
 - (BOOL)hasAudio;
 - (BOOL)supportsRoles;
-- (id)roles;
 - (void)setDisplayName:(id)arg1;
 - (id)displayName;
 - (void)releaseEffectStackFromPersisting;

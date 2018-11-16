@@ -8,11 +8,10 @@
 
 #import "NSTableViewDataSource.h"
 #import "NSTokenFieldDelegate.h"
-#import "NSWindowDelegate.h"
 
-@class FFNamingPresetManager, LKPopUpButton, LKSegmentedControl, LKTableView, LKTextField, LKTokenField, NSArray, NSArrayController;
+@class FFNamingPresetManager, LKPopUpButton, LKSegmentedControl, LKTableView, LKTextField, LKTokenField, NSArray, NSArrayController, NSString;
 
-@interface FFNamingPresetWindowController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTokenFieldDelegate>
+@interface FFNamingPresetWindowController : NSWindowController <NSTableViewDataSource, NSTokenFieldDelegate>
 {
     NSArrayController *_presetsArrayController;
     LKSegmentedControl *_viewsetsSegmentControl;
@@ -39,7 +38,6 @@
 - (BOOL)tableView:(id)arg1 acceptDrop:(id)arg2 row:(long long)arg3 dropOperation:(unsigned long long)arg4;
 - (unsigned long long)tableView:(id)arg1 validateDrop:(id)arg2 proposedRow:(long long)arg3 proposedDropOperation:(unsigned long long)arg4;
 - (BOOL)tableView:(id)arg1 writeRowsWithIndexes:(id)arg2 toPasteboard:(id)arg3;
-- (void)windowWillClose:(id)arg1;
 - (long long)runModalWithNewPreset:(BOOL)arg1;
 - (void)unbind;
 - (void)bind;
@@ -50,6 +48,12 @@
 - (void)windowDidLoad;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

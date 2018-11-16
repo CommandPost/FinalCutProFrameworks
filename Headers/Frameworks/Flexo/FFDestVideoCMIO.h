@@ -84,6 +84,8 @@ __attribute__((visibility("hidden")))
 - (void)_logPMRCopyTime:(double)arg1;
 - (void)_resetPMRTracking;
 - (void)notifyDeviceAvailableWithConnection:(id)arg1;
+- (BOOL)hasConnection;
+- (void)disableVideoOutOnReleaseDirect;
 - (void)disableVideoOutOnRelease;
 - (unsigned long long)videoOutScreenIndex;
 - (BOOL)hasOutputDevice;

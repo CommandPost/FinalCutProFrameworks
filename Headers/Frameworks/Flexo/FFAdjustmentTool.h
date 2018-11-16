@@ -27,6 +27,7 @@
 - (void)onOK:(id)arg1;
 - (void)resetTool:(id)arg1;
 - (id)resetName;
+- (BOOL)ensureDiscreteClipSelection:(id)arg1;
 - (void)ensureIntrinsic:(id)arg1;
 - (id)intrinsicEffectRequiredIDs;
 - (void)resetToolUsingDictionary:(id)arg1;
@@ -34,6 +35,7 @@
 - (void)resetChannelsForObject:(id)arg1;
 - (id)sequencesForActiveEffects;
 - (void)setPlayheadTime:(CDStruct_1b6d18a9)arg1;
+- (void)becomeActiveTool;
 - (void)updateAdjustmentTool;
 - (void)setAdjustmentState:(unsigned int)arg1;
 - (void)setAdjustmentDictionary:(id)arg1;

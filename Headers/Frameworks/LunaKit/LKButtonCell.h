@@ -14,10 +14,13 @@
     long long partID;
     NSProThemeFacet *customFacet;
     NSMutableDictionary *_cachedFacets;
+    BOOL _ignoresBorderChangeOnDragEnter;
 }
 
+@property BOOL ignoresBorderChangeOnDragEnter; // @synthesize ignoresBorderChangeOnDragEnter=_ignoresBorderChangeOnDragEnter;
 @property long long partID; // @synthesize partID;
 @property long long elementID; // @synthesize elementID;
+- (void)mouseEntered:(id)arg1;
 - (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)autosizeControlHeight;
 - (float)_heightNeeded;

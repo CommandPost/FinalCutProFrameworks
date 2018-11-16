@@ -8,7 +8,7 @@
 
 #import "FFColorLooksListDataSource.h"
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFColorLooksListDataSourceController : NSObject <FFColorLooksListDataSource>
@@ -33,6 +33,12 @@ __attribute__((visibility("hidden")))
 - (void)validateAndCacheOurRepository;
 - (void)_validateAndCacheOurRepositoryWithContents:(id)arg1;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

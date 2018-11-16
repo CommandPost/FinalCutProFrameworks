@@ -32,14 +32,18 @@ __attribute__((visibility("hidden")))
 - (void)addSubprovider:(id)arg1;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
 @property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSString *itemDisplayName; // @dynamic itemDisplayName;
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
 @property(readonly, nonatomic) NSImage *itemIcon; // @dynamic itemIcon;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 @property(readonly, nonatomic) NSString *itemPersistentIdentifier;
 @property(readonly, nonatomic) double itemRowHeight;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "FFModalToolDelegate.h"
 
-@class FFRollbackRecord, NSArray;
+@class FFRollbackRecord, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFModalToolDelegate : NSObject <FFModalToolDelegate>
@@ -36,6 +36,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)_unregisterEffectStackObservers;
 - (void)_registerVideoEffectStackObserversAndIntermediateEffects;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

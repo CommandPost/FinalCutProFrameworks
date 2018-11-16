@@ -6,7 +6,7 @@
 
 #import <Flexo/FFSourceVideo.h>
 
-@class FFVideoProps, NSLock, NSMutableArray, NSObject;
+@class FFVideoProps, NSLock, NSMutableArray, NSObject, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
 @interface FFSourceVideoEffect : FFSourceVideo
@@ -17,17 +17,18 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_cachedSubrangeInfos;
     NSMutableArray *_failedSubRangeInfos;
     NSMutableArray *_cachedSimplifiesInfo;
-    CDStruct_bdcb2b0d _cacheChannelMD5;
+    NSObject<OS_dispatch_queue> *_qualityScaleLock;
+    struct map<FFSVQualityEnum, double, std::less<FFSVQualityEnum>, std::allocator<std::pair<const FFSVQualityEnum, double>>> *_cachedQualityToScale;
 }
 
 + (Class)streamClass;
 + (void)initialize;
-- (id).cxx_construct;
 - (void)inputChangedNotification:(id)arg1;
 - (void)channelChangedNotification:(id)arg1;
 - (void)setNativeVideoProps:(id)arg1;
 - (id)nativeVideoProps;
 - (double)preferredScaleFactorForQuality:(int)arg1;
+- (double)_internalPreferredScaleFactorForQuality:(int)arg1;
 - (id)getPassThruAtTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
 - (id)getPassThruStringAtTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
 - (struct CGRect)_calcOpaqueBoundsForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
@@ -46,12 +47,13 @@ __attribute__((visibility("hidden")))
 - (id)_newSubRangeForTooDeepEffect:(long long)arg1;
 - (long long)_updateEffectDepth:(long long)arg1 withMutableData:(id)arg2;
 - (id)_getEffectDepthPtr;
-- (void)_addInfoToCache:(id)arg1 forSD:(const CDStruct_1b6d18a9 *)arg2 atTime:(const CDStruct_1b6d18a9 *)arg3 context:(id)arg4 successArray:(id)arg5 failureArray:(id)arg6;
-- (id)_copySubRangeCachedInfoForSD:(const CDStruct_1b6d18a9 *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2 context:(id)arg3 retFailedRequest:(_Bool *)arg4 retCacheArray:(id *)arg5 retFailedRequestArray:(id *)arg6;
+- (void)_addInfoToCache:(id)arg1 forSD:(const CDStruct_1b6d18a9 *)arg2 atTime:(const CDStruct_1b6d18a9 *)arg3 context:(id)arg4 contextCompareFlags:(unsigned int)arg5 successArray:(id)arg6 failureArray:(id)arg7;
+- (id)_copySubRangeCachedInfoForSD:(const CDStruct_1b6d18a9 *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2 context:(id)arg3 contextCompareFlags:(unsigned int)arg4 retFailedRequest:(_Bool *)arg5 retCacheArray:(id *)arg6 retFailedRequestArray:(id *)arg7;
 - (_Bool)_validSubRangeTimeRequest:(CDStruct_1b6d18a9)arg1;
 - (unsigned int)nodeBasicMD5OringFlags;
 - (CDStruct_e83c9415)timeRange;
 - (struct CGRect)nativeBounds;
+- (id)renderFormat:(id)arg1;
 - (void)dealloc;
 - (id)initWithProvider:(id)arg1;
 - (void)_invalidateCachedMD5:(BOOL)arg1;

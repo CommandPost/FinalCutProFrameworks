@@ -8,7 +8,7 @@
 
 #import "FFColorSubEffect.h"
 
-@class FFHeColorEffect;
+@class FFHeColorEffect, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFIMovieColorEffect : FFHeliumEffect <FFColorSubEffect>
@@ -22,8 +22,6 @@ __attribute__((visibility("hidden")))
 + (void)registerEffects;
 - (id)colorEffect;
 - (void)setColorEffect:(id)arg1;
-- (void)setDoubleValue:(double)arg1 forChannelID:(unsigned int)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (double)doubleValueForChannelID:(unsigned int)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
 - (struct HGNode *)newNodeForContext:(id)arg1;
 - (void)channelParameterChanged:(id)arg1;
@@ -33,6 +31,12 @@ __attribute__((visibility("hidden")))
 - (id)inputKeys;
 - (void)createChannelsInFolder:(id)arg1;
 - (id)initWithEffectID:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

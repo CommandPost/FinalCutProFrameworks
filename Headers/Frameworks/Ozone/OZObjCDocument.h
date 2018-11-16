@@ -6,7 +6,7 @@
 
 #import "NSDocument.h"
 
-@class NSCalendarDate, NSMutableArray, NSString, NSTimer, OZDocumentKeyResponder, OZTemporaryUndoHandler;
+@class NSCalendarDate, NSMutableArray, NSString, NSTimer, OZDocumentKeyResponder, OZSaveAsTemplateController, OZTemporaryUndoHandler;
 
 @interface OZObjCDocument : NSDocument
 {
@@ -30,8 +30,7 @@
     OZDocumentKeyResponder *_documentKeyResponder;
     struct FFPMRSimpleTimer _pmrTimer;
     unsigned long long _numFramesToExport;
-    CDUnknownBlockType _exportCompletionHandler;
-    long long _saveResult;
+    OZSaveAsTemplateController *_saveAsTemplateController;
 }
 
 + (void)checkAutosaveVaultMax;
@@ -43,7 +42,6 @@
 + (id)getDateOrderedContentsOf:(id)arg1 directoriesOnly:(BOOL)arg2;
 + (id)createUniqueUntitledName:(id)arg1;
 + (id)autosaveVaultPath;
-@property(nonatomic) long long saveResult; // @synthesize saveResult=_saveResult;
 @property(readonly, nonatomic) OZDocumentKeyResponder *documentKeyResponder; // @synthesize documentKeyResponder=_documentKeyResponder;
 - (id).cxx_construct;
 - (void)exportWillStart:(unsigned long long)arg1;
@@ -73,8 +71,6 @@
 - (void)printShowingPrintPanel:(BOOL)arg1;
 - (void)setTemplateTheme:(id)arg1;
 - (void)setTemplateFormat:(unsigned int)arg1;
-- (void)runExportCompletionHandler;
-- (void)releaseExportCompletionHandler;
 - (void)saveTemplateWithDelegate:(id)arg1 didSaveSelector:(SEL)arg2 contextInfo:(void *)arg3;
 - (void)saveAsTemplate:(id)arg1;
 - (void)findAndReplacePrevious:(id)arg1;

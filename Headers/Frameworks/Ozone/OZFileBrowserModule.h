@@ -10,7 +10,7 @@
 #import "NSOutlineViewDelegate.h"
 #import "OZOutlineVarRowHeightDelegate.h"
 
-@class LKPanel, LKSegmentedControl, LKTextField, NSMenuItem, NSScrollView, NSTimer, OZFileBrowserTopPaneController, VHOutlineView;
+@class LKPanel, LKSegmentedControl, LKTextField, NSMenuItem, NSScrollView, NSString, NSTimer, OZFileBrowserTopPaneController, VHOutlineView;
 
 @interface OZFileBrowserModule : OZLibraryModuleBase <NSOutlineViewDelegate, NSOutlineViewDataSource, OZOutlineVarRowHeightDelegate>
 {
@@ -58,6 +58,12 @@
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

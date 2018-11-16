@@ -8,7 +8,7 @@
 
 #import "FFEventsLibraryDelegate.h"
 
-@class FFEventLibraryModule;
+@class FFEventLibraryModule, NSString;
 
 @interface PEOrganizerBaseContainerModule : LKViewModule <FFEventsLibraryDelegate>
 {
@@ -47,6 +47,12 @@
 - (BOOL)canDisplayURL:(id)arg1;
 @property(readonly) Class organizerModuleClass;
 @property(readonly) FFEventLibraryModule *organizerModule;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

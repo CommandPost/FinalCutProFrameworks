@@ -20,6 +20,7 @@
 - (void)mouseEnteredRow:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)setAnimStatusClass:(Class)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 viewController:(id)arg2 context:(id)arg3;
 

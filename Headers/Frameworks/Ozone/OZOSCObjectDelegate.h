@@ -35,6 +35,8 @@
 - (struct OZChannelFolder *)generatorRoot;
 - (BOOL)absolutePoints;
 - (BOOL)shouldFlip;
+- (void)findCustomGradientChannels:(struct vector<OZChannelRef *, std::allocator<OZChannelRef *>> *)arg1;
+- (BOOL)hasCustomGradientChannels;
 - (BOOL)shouldDrawGradientOSC;
 - (BOOL)switchViewToSelectedCamera;
 - (BOOL)objectContainsCamera;

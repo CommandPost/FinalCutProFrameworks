@@ -17,6 +17,7 @@
     NSWindow *_overlayWindow;
     NSWindow *_observingPlayerWindow;
     NSView *_observingPlayerView;
+    BOOL _orderOut;
 }
 
 - (BOOL)isCropOSC;
@@ -44,6 +45,11 @@
 - (void)removeObserversForPlayer;
 - (void)addObserversForPlayer;
 - (void)_setupOverlayWindow;
+- (void)orderOutWindow:(id)arg1;
+- (void)nudgeLeft:(id)arg1;
+- (void)nudgeRight:(id)arg1;
+- (void)nudgeDown:(id)arg1;
+- (void)nudgeUp:(id)arg1;
 - (void)selectNone:(id)arg1;
 - (void)selectAll:(id)arg1;
 - (void)pasteAsPlainText:(id)arg1;
@@ -82,6 +88,7 @@
 - (void)setPlayerVideoModule:(id)arg1;
 - (id)playerVideoModule;
 - (void)dealloc;
+- (void)removeOverlayWindowForDealloc;
 - (id)overlayWindowCreateIfNeeded:(BOOL)arg1;
 - (id)overlayWindow;
 

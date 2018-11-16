@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     LKImageView *_libraryIcon;
     LKTextField *_libraryNameText;
     LKTextField *_libraryLocationText;
+    LKTextField *_librarySizeText;
     LKImageView *_libraryMediaLocationIcon;
     LKTextField *_libraryMediaLocationText;
     LKImageView *_libraryCacheLocationIcon;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_volumeInformationViews;
     NSDictionary *_volumeNameTextAttributes;
     NSDictionary *_volumeUsagePrefixTextAttributes;
+    NSDictionary *_librarySizePrefixTextAttributes;
     NSDictionary *_volumeUsageTextAttributes;
     NSDictionary *_volumeUsageSuffixTextAttributes;
     FFLibrary *library;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFLibrary *library; // @synthesize library;
 @property(readonly, nonatomic) NSDictionary *volumeUsageSuffixTextAttributes; // @synthesize volumeUsageSuffixTextAttributes=_volumeUsageSuffixTextAttributes;
 @property(readonly, nonatomic) NSDictionary *volumeUsageTextAttributes; // @synthesize volumeUsageTextAttributes=_volumeUsageTextAttributes;
+@property(readonly, nonatomic) NSDictionary *librarySizePrefixTextAttributes; // @synthesize librarySizePrefixTextAttributes=_librarySizePrefixTextAttributes;
 @property(readonly, nonatomic) NSDictionary *volumeUsagePrefixTextAttributes; // @synthesize volumeUsagePrefixTextAttributes=_volumeUsagePrefixTextAttributes;
 @property(readonly, nonatomic) NSDictionary *volumeNameTextAttributes; // @synthesize volumeNameTextAttributes=_volumeNameTextAttributes;
 - (void)consolidateLibraryMedia:(id)arg1;

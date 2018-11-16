@@ -11,10 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface MicaThumbnailAnimator : MicaAnimator
 {
-    MicaTextGroup *m_textGroup;
+    MicaTextGroup *_textGroup;
 }
 
-@property(retain, nonatomic) MicaTextGroup *textGroup; // @synthesize textGroup=m_textGroup;
+@property(retain, nonatomic) MicaTextGroup *textGroup; // @synthesize textGroup=_textGroup;
+- (void).cxx_destruct;
 - (void)setText:(id)arg1;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1 rootLayer:(id)arg2 publishedObjects:(id)arg3;

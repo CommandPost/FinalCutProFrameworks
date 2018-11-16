@@ -20,7 +20,8 @@
         unsigned int draggingSelection:1;
         unsigned int rollover:1;
         unsigned int beginSelectionHistoryGrouping:1;
-        unsigned int RESERVED:26;
+        unsigned int singleClickSelectsClip:1;
+        unsigned int RESERVED:25;
     } _dhFlags;
 }
 

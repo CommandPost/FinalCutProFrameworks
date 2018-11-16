@@ -21,7 +21,6 @@
 @property(retain) FFPlayerModule *playerModule; // @synthesize playerModule=_playerModule;
 - (void)updateTransportControlsOSC;
 - (struct CGRect)shadowRect;
-@property(nonatomic) BOOL layoutScopesVertically;
 - (void)previousNextEdit:(id)arg1;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)playerViewFrameDidChange:(id)arg1;

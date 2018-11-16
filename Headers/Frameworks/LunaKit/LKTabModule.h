@@ -8,7 +8,7 @@
 
 #import "NSTabViewDelegate.h"
 
-@class LKTabView;
+@class LKTabView, NSString;
 
 @interface LKTabModule : LKViewModule <NSTabViewDelegate>
 {
@@ -63,6 +63,12 @@
 - (void)_removeTabViewForModule:(id)arg1;
 - (void)_installTabViewForModule:(id)arg1;
 - (BOOL)_loadLazy;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

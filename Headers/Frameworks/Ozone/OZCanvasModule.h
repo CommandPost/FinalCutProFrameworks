@@ -129,6 +129,8 @@
 - (void)toggleVideoOutput;
 - (BOOL)isVideoOutputEnabled;
 - (void)updateRenderManager;
+- (void)performSelectForEvent:(id)arg1 osc:(id)arg2;
+- (int)performHitCheckForEvent:(id)arg1 osc:(id)arg2;
 - (void)invalidatePendingRenders;
 - (void)postRenderInstruction;
 - (struct OZSceneNode *)getIsolatedIncludeAnimating;

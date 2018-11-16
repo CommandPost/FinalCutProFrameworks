@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (id)_backgroundImageWithRect:(struct CGRect)arg1 getImageRect:(struct CGRect *)arg2;
 - (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 
 @end

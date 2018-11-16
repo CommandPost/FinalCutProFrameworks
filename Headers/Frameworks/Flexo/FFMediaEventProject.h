@@ -6,16 +6,15 @@
 
 #import <Flexo/FFProject.h>
 
-#import "DSStoreDelegateProtocol.h"
 #import "FFOrganizerItem.h"
 #import "FFOrganizerItemDraggingSource.h"
 #import "FFOrganizerMasterItem.h"
 #import "FFOrganizerMasterItemDropTarget.h"
 #import "NSCoding.h"
 
-@class FFEventInfo, FFMediaEventFolder, FFMediaEventProjectData, FFMediaEventThumbnail, FFSequenceInfo, NSArray, NSDate, NSImage, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSURL;
+@class FFEventInfo, FFMediaEventFolder, FFMediaEventProjectData, FFMediaEventThumbnail, FFSequenceInfo, NSArray, NSDate, NSImage, NSMutableSet, NSSet, NSString, NSURL;
 
-@interface FFMediaEventProject : FFProject <FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, DSStoreDelegateProtocol, NSCoding>
+@interface FFMediaEventProject : FFProject <FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, NSCoding>
 {
     NSString *_projectDataID;
     NSDate *_eventEarliestDate;
@@ -34,19 +33,16 @@
     NSString *_legacyEventPath;
     FFMediaEventProjectData *_projectData;
     BOOL _mediaIsSyncing;
-    BOOL _loadedDependentProjects;
     BOOL _isLoadingProjectData;
     BOOL _isVideoEvent;
     NSMutableSet *_undoOwnedAssetIdentifiers;
     NSMutableSet *_ownedMediaIdentifiers;
-    NSMutableDictionary *_blocksToPerformWhenProjectDataReady;
 }
 
 + (id)newCopyOfMediaRanges:(id)arg1;
 + (id)keyPathsForValuesAffectingProjectSet;
 + (id)keyPathsForValuesAffectingOwnedClips;
 + (id)setFromBinObjectsArray:(id)arg1;
-+ (void)prefetchObjectsForStore:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 + (id)readableTypesForPasteboard:(id)arg1;
@@ -107,6 +103,7 @@
 - (BOOL)referencesExistForMediaIdentifier:(id)arg1 excludingTheseClips:(id)arg2 projectsInExcludeSet:(id)arg3 targetSeqRecsInExcludeSet:(id)arg4;
 - (BOOL)referencesExistForMediaIdentifiers:(id)arg1 excludingTheseClips:(id)arg2;
 - (void)thumbnailMediaSet:(id)arg1;
+- (id)resolveMediaIdentifier:(id)arg1 includeTrash:(BOOL)arg2;
 - (id)resolveMediaIdentifier:(id)arg1;
 - (id)defaultMediaEvent;
 - (id)displayOwnedClips;
@@ -115,18 +112,18 @@
 - (id)newClipFromAssetRef:(id)arg1;
 - (id)newClipFromURL:(id)arg1 manageFileType:(int)arg2;
 - (id)newClipFromURL:(id)arg1 manageFileType:(int)arg2 foundExistingFile:(char *)arg3;
-- (BOOL)performBlockWithMediaWhenReady:(CDUnknownBlockType)arg1 forIdentifier:(id)arg2;
 - (void)loadProjectDataKeepTempFiles;
+- (id)loadProjectData;
 @property(readonly, nonatomic) FFMediaEventProjectData *projectData;
 - (id)_projectData:(BOOL)arg1;
-- (void)store:(id)arg1 processing:(unsigned long long)arg2 of:(unsigned long long)arg3;
-- (BOOL)isProjectDataLoadedIncludingOtherProjects;
 - (BOOL)isProjectDataLoaded;
+- (BOOL)_prefetchProjectData:(id *)arg1;
+- (BOOL)prefetchProjectData:(id *)arg1;
 - (BOOL)isDetailedProjectDataLoaded;
 - (id)objectFromID:(id)arg1;
 @property(readonly, nonatomic) NSURL *eventURL;
 - (id)contentType;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)setRootFolder:(id)arg1;
@@ -194,6 +191,7 @@
 - (void)setEventLatestDate:(id)arg1;
 - (void)setEventEarliestDate:(id)arg1;
 - (id)newAssetRefFromURL:(id)arg1 manageFileType:(int)arg2 foundExistingFile:(char *)arg3;
+- (id)newAssetRefFromAsset:(id)arg1 manageFileType:(int)arg2 prefersExistingRep:(BOOL)arg3 externalFolderURL:(id)arg4 foundExistingFile:(char *)arg5;
 - (id)newAssetRefFromURL:(id)arg1 manageFileType:(int)arg2 prefersExistingRep:(BOOL)arg3 externalFolderURL:(id)arg4 foundExistingFile:(char *)arg5;
 - (void)registerGrowingAsset:(id)arg1 forEvent:(id)arg2;
 - (BOOL)ownedMediaObjectIsInTrashOrDifferentEventUndo:(id)arg1;
@@ -230,11 +228,14 @@
 - (BOOL)actionAddOwnedMediaObjects:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
 @property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 @property(readonly, nonatomic) NSString *itemPersistentIdentifier;
 @property(readonly, nonatomic) double itemRowHeight;
+@property(readonly) Class superclass;
 
 @end
 

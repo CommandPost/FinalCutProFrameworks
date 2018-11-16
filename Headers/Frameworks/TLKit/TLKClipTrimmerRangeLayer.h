@@ -8,6 +8,8 @@
 
 #import "TLKPartInfo.h"
 
+@class NSString;
+
 @interface TLKClipTrimmerRangeLayer : CALayer <TLKPartInfo>
 {
     CALayer *_rootLayer;
@@ -21,6 +23,12 @@
 - (id)hitTest:(struct CGPoint)arg1;
 - (void)setDelegate:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

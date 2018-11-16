@@ -6,7 +6,7 @@
 
 #import <Flexo/FFModelDocument.h>
 
-@class FFLibraryBackupTask, NSError, NSURL;
+@class FFLibraryBackupTask, NSError, NSMutableDictionary, NSURL;
 
 @interface FFLibraryDocument : FFModelDocument
 {
@@ -14,12 +14,24 @@
     double _nextBackupTime;
     BOOL _checkedDatabases;
     BOOL _isTempLibrary;
+    NSMutableDictionary *_settings;
+    NSMutableDictionary *_locations;
+    NSURL *_cacheFolder;
+    NSURL *_cacheFolderLink;
+    id _cacheFolderID;
+    BOOL _updateInProgress;
     BOOL _reopening;
+    int _updateStatus;
     NSError *_lastBackupError;
     long long _lastBackupErrorCount;
     FFLibraryBackupTask *_backupTask;
 }
 
++ (id)savedNameSettingsKeyForExternalFolder:(long long)arg1;
++ (BOOL)canMoveExternalFolder:(id)arg1 toURL:(id)arg2;
++ (id)externalFolderInfoFilenameForType:(long long)arg1;
++ (id)defaultURLForLocation:(int)arg1;
++ (BOOL)makeLocation:(id)arg1 error:(id *)arg2;
 + (BOOL)writeCorruptURL:(id)arg1 status:(id)arg2 error:(id *)arg3;
 + (id)readCorruptURLStatus:(id)arg1 error:(id *)arg2;
 + (void)alert:(id)arg1 runModalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -48,10 +60,52 @@
 + (void)initialize;
 + (void)patch_16119228;
 + (const char *)_databaseOpenURLStringForURL:(id)arg1;
+@property(nonatomic) int updateStatus; // @synthesize updateStatus=_updateStatus;
 @property(retain, nonatomic) FFLibraryBackupTask *backupTask; // @synthesize backupTask=_backupTask;
 @property(nonatomic, getter=isReopening) BOOL reopening; // @synthesize reopening=_reopening;
 @property(nonatomic) long long lastBackupErrorCount; // @synthesize lastBackupErrorCount=_lastBackupErrorCount;
 @property(retain, nonatomic) NSError *lastBackupError; // @synthesize lastBackupError=_lastBackupError;
+- (id)librarySettingsID;
+- (id)persistentFileID;
+- (id)bindToExternalFolderOfType:(long long)arg1 inLocation:(id)arg2;
+- (id)savedNameForExternalFolder:(long long)arg1;
+- (void)writeSavedName:(id)arg1 forExternalFolder:(long long)arg2;
+- (id)syncExternalFolderInLocation:(id)arg1 folderType:(long long)arg2 create:(BOOL)arg3 error:(id *)arg4;
+- (id)syncBackupFolderInLocation:(id)arg1 create:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)stealCacheFolder:(id)arg1 error:(id *)arg2;
+- (id)searchForExternalFolderOfType:(long long)arg1 inLocation:(id)arg2 preferredName:(id)arg3 info:(id *)arg4 error:(id *)arg5;
+- (id)readExternalFolderInfo:(id)arg1 folderType:(long long)arg2 error:(id *)arg3;
+- (BOOL)writeExternalFolderInfo:(id)arg1 folderType:(long long)arg2 overwrite:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)writeExternalFolderInfo:(id)arg1 folderType:(long long)arg2 error:(id *)arg3;
+- (BOOL)syncExternalCacheFolder:(id *)arg1;
+- (BOOL)updateCacheFolderLink:(id)arg1 error:(id *)arg2;
+- (id)externalCacheFolder;
+- (id)cacheFolderLink;
+- (id)externalCacheLocation;
+- (BOOL)setExternalCacheLocation:(id)arg1 error:(id *)arg2;
+- (id)externalMediaLocation;
+- (BOOL)setExternalMediaLocation:(id)arg1 error:(id *)arg2;
+- (id)externalBackupLocation;
+- (BOOL)setExternalBackupLocation:(id)arg1 error:(id *)arg2;
+- (void)setBackupsEnabled:(BOOL)arg1;
+- (BOOL)backupsEnabled;
+- (void)setExternalLocations:(id)arg1;
+- (id)copyExternalLocations;
+- (id)copyCurrentLocations;
+- (id)settingsKeyForLocation:(int)arg1;
+- (id)externalURLForLocation:(int)arg1;
+- (BOOL)syncLocation:(int)arg1 error:(id *)arg2;
+- (BOOL)findURL:(id *)arg1 forLocation:(int)arg2 error:(id *)arg3;
+- (BOOL)setURL:(id)arg1 forLocation:(int)arg2 error:(id *)arg3;
+- (BOOL)writeSettingsForBackupLibrary:(id)arg1 error:(id *)arg2;
+- (id)settingsURL;
+- (BOOL)settingsAreDirty;
+- (void)settingsAreDirty:(BOOL)arg1;
+- (BOOL)saveSettings:(id *)arg1;
+- (id)mutableSettings;
+- (id)readSettingsValueForKey:(id)arg1;
+- (BOOL)writeSettingsValue:(id)arg1 forKey:(id)arg2;
+- (BOOL)syncSettings:(id *)arg1;
 - (void)shutDownDueToCorruptDatabase:(id)arg1 exception:(id)arg2;
 - (BOOL)_checkForCorruptDatabase:(id *)arg1;
 - (BOOL)_checkForDamagedLibrary:(id *)arg1;
@@ -59,6 +113,7 @@
 - (BOOL)_readLibrarySyncState;
 - (BOOL)_validateStore:(id)arg1 location:(id)arg2 error:(id *)arg3;
 - (void)alertMissingMedia;
+- (BOOL)backupTask:(id)arg1 finishBackup:(id)arg2 error:(id *)arg3;
 - (BOOL)writeBackup:(id *)arg1;
 - (void)cancelBackup:(id)arg1;
 - (BOOL)backupNeeded;
@@ -66,11 +121,18 @@
 - (void)resetBackupTimer:(double)arg1;
 - (BOOL)warnForUpdate;
 - (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
+- (BOOL)update_syncAkiraAndTrunkFromVersion:(int)arg1;
+- (void)update_addDefaultLibrarySmartCollection;
 - (void)update_usePreviousCustomLibraryBackupLocation;
+- (void)didBringUpToDate;
 - (void)willBringUpToDate;
+- (BOOL)updateInProgress;
+- (BOOL)_shouldUpdateNow;
 - (void)update_changeExternalCacheFoldersToEventNames;
+- (BOOL)writeSafelyToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 error:(id *)arg4;
 - (id)newDocumentCatalog:(id *)arg1;
 - (id)makeDefaultEvent:(id *)arg1;
+- (id)sharedLock;
 - (void)setRootObject:(id)arg1;
 - (id)library;
 - (id)newRootObject:(id)arg1 type:(id)arg2;

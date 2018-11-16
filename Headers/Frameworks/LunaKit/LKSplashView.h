@@ -10,7 +10,8 @@
 
 @interface LKSplashView : NSView
 {
-    NSImage *_image;
+    NSImage *_aboutImage;
+    NSImage *_splashImage;
     BOOL _isSplash;
 }
 

@@ -63,9 +63,11 @@
 - (id)controllerForLocation:(struct CGPoint)arg1 useFinalFrame:(BOOL)arg2;
 - (id)getControllerForChan:(struct OZChannelBase *)arg1;
 - (id)augmentUIWithFolder:(struct OZChannelFolder *)arg1 context:(id)arg2;
+- (id)augmentUIWithChan:(struct OZChannelBase *)arg1 insertAtIndex:(unsigned long long)arg2 context:(id)arg3;
 - (id)augmentUIWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (id)augmentUIWithFolder:(struct OZChannelFolder *)arg1;
 - (id)augmentUIWithChan:(struct OZChannelBase *)arg1;
+- (void)appendSubview:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)appendSubview:(id)arg1;
 - (double)yOffsetOfNextAppend;
 - (void)clear;
@@ -95,6 +97,7 @@
 - (void)setIsEnclosedGroup:(BOOL)arg1;
 - (BOOL)isBrick;
 - (void)setIsBrick:(BOOL)arg1;
+- (double)brickVerticalGap;
 - (void)highlightChannel:(struct OZChannelBase *)arg1;
 - (void)updateBackgroundColor;
 - (void)select:(BOOL)arg1 excludeChannel:(struct OZChannelBase *)arg2;

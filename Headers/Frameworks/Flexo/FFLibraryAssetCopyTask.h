@@ -8,14 +8,13 @@
 
 #import "FFAssetCopyQueueDelegateProtocol.h"
 
-@class FFAssetCopyQueue, FFLibraryDocument, NSArray, NSError, NSFileManager, NSMutableArray, NSMutableSet, NSURL;
+@class FFAssetCopyQueue, FFLibraryDocument, NSError, NSFileManager, NSMutableArray, NSMutableSet, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFLibraryAssetCopyTask : NSObject <FFAssetCopyQueueDelegateProtocol>
 {
     FFLibraryDocument *_srcDoc;
-    NSURL *_dstURL;
-    NSArray *_assetIDs;
+    FFLibraryDocument *_dstDoc;
     NSMutableSet *_errorIDs;
     NSURL *_taskURL;
     CDUnknownBlockType _completionBlock;
@@ -24,10 +23,10 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_copyRequests;
     NSError *_error;
     int _status;
-    BOOL _srcOpened;
     NSURL *_srcURL;
 }
 
+@property(retain, nonatomic) FFLibraryDocument *dstDoc; // @synthesize dstDoc=_dstDoc;
 @property(retain, nonatomic) NSURL *srcURL; // @synthesize srcURL=_srcURL;
 @property(retain) NSError *error; // @synthesize error=_error;
 - (BOOL)saveTask:(id *)arg1;
@@ -43,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)finishedAllMedia;
 - (void)dealloc;
 - (id)initTask:(id)arg1 url:(id)arg2 source:(id)arg3 target:(id)arg4 options:(id)arg5;
-- (id)initTask:(id)arg1 url:(id)arg2 target:(id)arg3 error:(id *)arg4;
+- (id)initTaskWithSource:(id)arg1 srcURL:(id)arg2 target:(id)arg3 error:(id *)arg4;
 
 @end
 

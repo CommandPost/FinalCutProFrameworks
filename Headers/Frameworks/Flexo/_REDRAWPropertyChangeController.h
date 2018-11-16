@@ -8,6 +8,8 @@
 
 #import "FFREDRAWPropertyChangeController.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface _REDRAWPropertyChangeController : NSObject <FFREDRAWPropertyChangeController>
 {
@@ -23,6 +25,12 @@ __attribute__((visibility("hidden")))
 - (void)beginPropertyChanges;
 - (void)dealloc;
 - (id)initWithModelLockingObject:(id)arg1 setterBlock:(CDUnknownBlockType)arg2 invalidateBlock:(CDUnknownBlockType)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

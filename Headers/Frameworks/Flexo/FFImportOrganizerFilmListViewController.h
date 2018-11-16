@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)fileContextualMenu;
 - (BOOL)isDefaultColumn:(id)arg1;
 - (void)reloadItemAndChildren:(id)arg1;
+- (void)_contentDidChange;
 - (void)_restoreExpandedNodes;
 - (void)reloadData;
 - (void)notificationHandler:(id)arg1;

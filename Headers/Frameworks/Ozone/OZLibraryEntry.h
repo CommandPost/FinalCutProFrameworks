@@ -40,6 +40,7 @@
 + (id)getGenericXMLIcon;
 + (id)getDefaultFolderSmallIcon;
 + (id)getDefaultFolderIcon;
++ (void)maybeInitThumbnailCache;
 + (void)loadIcons;
 - (BOOL)checkForModifiedFolders;
 - (void)reReadSubDirectoryContents;

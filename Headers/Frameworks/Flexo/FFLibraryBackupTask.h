@@ -10,7 +10,7 @@
 #import "NSFileManagerDelegate.h"
 #import "NSOpenSavePanelDelegate.h"
 
-@class FFBackgroundTask, FFLibraryDocument, NSDateFormatter, NSDictionary, NSError, NSURL;
+@class FFBackgroundTask, FFLibraryDocument, NSDateFormatter, NSDictionary, NSError, NSObject<OS_dispatch_semaphore>, NSString, NSURL;
 
 @interface FFLibraryBackupTask : NSObject <NSOpenSavePanelDelegate, NSFileManagerDelegate, FFBackgroundTaskTarget>
 {
@@ -20,6 +20,8 @@
     BOOL _isSameVolume;
     BOOL _canOverwrite;
     unsigned long long _progressCounter;
+    NSObject<OS_dispatch_semaphore> *_backupStarted;
+    float _progress;
     int _operation;
     NSDictionary *_backupFileModificationDateMap;
     NSURL *_backupURL;
@@ -29,7 +31,12 @@
 + (id)readBackup:(id)arg1 error:(id *)arg2;
 + (id)restoreBackup:(id)arg1 error:(id *)arg2;
 + (id)restoreDocument:(id)arg1 error:(id *)arg2;
++ (id)_createBackupTaskForDocument:(id)arg1 destination:(id)arg2 operationType:(int)arg3;
++ (id)archiveDocument:(id)arg1 destination:(id)arg2 error:(id *)arg3;
 + (id)backupDocument:(id)arg1;
++ (BOOL)verifyLibraryMatchUsingOldMethod:(id)arg1 libraryDocument:(id)arg2;
++ (id)savedBackupNameUsingOldMethod:(id)arg1;
++ (id)readMetadataForDocument:(id)arg1 error:(id *)arg2;
 + (void)_restoreCompleted:(id)arg1;
 + (id)standardBackupLocation;
 + (id)defaultBackupLocation;
@@ -37,43 +44,51 @@
 + (void)removeDocumentBeingRestored:(id)arg1;
 + (BOOL)shouldAllowBackup:(id)arg1;
 + (id)documentsBeingRestored;
+@property(readonly, nonatomic) NSObject<OS_dispatch_semaphore> *backupStarted; // @synthesize backupStarted=_backupStarted;
 @property(retain, nonatomic) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
 @property(retain, nonatomic) NSURL *backupURL; // @synthesize backupURL=_backupURL;
 @property(retain, nonatomic) NSDictionary *backupFileModificationDateMap; // @synthesize backupFileModificationDateMap=_backupFileModificationDateMap;
 @property(readonly, nonatomic) FFLibraryDocument *document; // @synthesize document=_document;
 @property(readonly, nonatomic) int operation; // @synthesize operation=_operation;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
+@property(readonly) float progress; // @synthesize progress=_progress;
 - (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
 - (id)chooseOther:(id *)arg1;
 - (id)chooseBackup:(id *)arg1;
-- (void)taskQueueDidCompleteTask:(id)arg1;
+- (BOOL)isFinished;
 - (BOOL)waitUntilFinished:(id *)arg1;
 - (void)canceledTask:(id)arg1;
 - (id)librariesInUse;
 - (id)assetsInUse;
 - (void)cancelBackup:(id)arg1;
+- (void)_runBackup;
 - (void)_runBackgroundBackupTask:(id)arg1 onTask:(id)arg2;
 - (id)restore:(id)arg1 to:(id)arg2 error:(id *)arg3;
 - (id)indexOfBackups;
 - (void)backupsPurge:(id)arg1 relativeTo:(id)arg2;
 - (id)backupsFolderCreate:(BOOL)arg1 error:(id *)arg2;
-- (id)backupsFolderSyncLocation:(id)arg1 error:(id *)arg2;
-- (BOOL)writeMetadata:(id)arg1 forDocument:(id)arg2 error:(id *)arg3;
-- (id)readMetadataForDocument:(id)arg1 error:(id *)arg2;
 - (BOOL)fileManager:(id)arg1 shouldCopyItemAtURL:(id)arg2 toURL:(id)arg3;
 - (id)_src:(id)arg1 target:(id)arg2 error:(id *)arg3;
 - (BOOL)_compareMapRecords:(id)arg1:(id)arg2;
 - (id)_buildMap:(id)arg1;
 - (id)_createMapRecordFor:(id)arg1;
 - (BOOL)_finishRestore:(id)arg1 error:(id *)arg2;
+- (BOOL)_finishArchive:(id)arg1 to:(id)arg2 error:(id *)arg3;
 - (BOOL)_finishBackup:(id)arg1 to:(id)arg2 error:(id *)arg3;
-- (void)_startRestoreTask:(id)arg1 target:(id)arg2;
+- (id)_performRestore:(id)arg1 targetURL:(id)arg2 restoreMedia:(BOOL)arg3 error:(id *)arg4;
+- (id)_getOriginalDocURLForSourceDoc:(id)arg1 error:(id *)arg2;
 - (BOOL)_saveRestoreTask:(id)arg1 error:(id *)arg2;
 - (id)_finalURLForURL:(id)arg1;
 - (BOOL)_shouldBackupDirectoryNamed:(id)arg1;
 - (BOOL)_isStoreURL:(id)arg1;
 - (void)dealloc;
 - (id)initWithDocument:(id)arg1 operation:(int)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

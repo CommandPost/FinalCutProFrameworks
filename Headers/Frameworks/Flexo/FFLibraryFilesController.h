@@ -17,11 +17,12 @@ __attribute__((visibility("hidden")))
 
 + (id)filesControllerForLibrary:(id)arg1;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
-@property(retain, nonatomic) FFLibrary *library; // @synthesize library=_library;
+@property(nonatomic) FFLibrary *library; // @synthesize library=_library;
+- (void)calcLibraryBundleSize:(CDUnknownBlockType)arg1;
 - (void)calcCacheSizesByVolume:(CDUnknownBlockType)arg1;
 - (void)calcMediaSizesByVolume:(CDUnknownBlockType)arg1;
 - (BOOL)addFileSize:(id)arg1 forKey:(id)arg2 intoMap:(id)arg3 error:(id *)arg4;
-- (void)visitFilesAtURL:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)visitFilesAtURL:(id)arg1 resolveLinks:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)visitEvents:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithLibrary:(id)arg1;

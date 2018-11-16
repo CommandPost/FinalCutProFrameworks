@@ -125,7 +125,9 @@
 - (BOOL)validateToolbarButton:(id)arg1;
 - (BOOL)validateLocalUserInterfaceItem:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (id)fetchModuleForAction:(SEL)arg1;
 - (id)moduleForAction:(SEL)arg1;
+- (id)sharedModuleLoadQueue;
 - (id)allModuleActions;
 - (id)targetModuleActions;
 - (id)localModuleActions;

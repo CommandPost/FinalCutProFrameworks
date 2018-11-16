@@ -6,12 +6,12 @@
 
 #import "CALayer.h"
 
-@class FFFilmstrip, TLKAbstractItemSelectionLayer;
+@class FFFilmstrip;
 
 __attribute__((visibility("hidden")))
 @interface FFFilmstripSelectionLayer : CALayer
 {
-    TLKAbstractItemSelectionLayer *_rangeSelectionLayer;
+    CALayer *_rangeSelectionLayer;
     CALayer *_maskLayer;
     CALayer *_leftHandleLayer;
     CALayer *_rightHandleLayer;
@@ -52,7 +52,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_1b6d18a9 rightTime; // @synthesize rightTime=_rightTime;
 @property(nonatomic) CDStruct_1b6d18a9 leftTime; // @synthesize leftTime=_leftTime;
 @property(retain, nonatomic) FFFilmstrip *filmstrip; // @synthesize filmstrip=_filmstrip;
-- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (BOOL)_shouldHideHandles;
 @property(readonly, nonatomic) struct CGRect rightSelectionHandleRect;
 @property(readonly, nonatomic) struct CGRect leftSelectionHandleRect;

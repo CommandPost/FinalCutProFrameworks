@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)addInvocationWhenPendingSamplesFinish:(id)arg1;
 - (void)cancelPendingOperations;
 - (void)enqueue:(id)arg1 mustQueue:(BOOL)arg2;
-- (_Bool)_spaceAvailable;
+- (_Bool)_spaceAvailable:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithThreadCount:(long long)arg1 queueLength:(unsigned int)arg2;
 

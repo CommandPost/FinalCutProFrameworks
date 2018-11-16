@@ -9,7 +9,7 @@
 #import "FFMDLibraryDelegate.h"
 #import "NSMatrixDelegate.h"
 
-@class FFMDPhotoGroupView, NSArrayController, NSMutableDictionary, NSScrollView, NSString;
+@class FFMDPhotoGroupView, FFMDPhotoLibraryGroupTypeQuery, NSArrayController, NSMutableDictionary, NSScrollView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMDPhotoGroupViewController : FFMDPhotoAbstractViewController <FFMDLibraryDelegate, NSMatrixDelegate>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSArrayController *_arrayController;
     NSMutableDictionary *_selectedGroupsKeyedByIdentifier;
     NSString *_previousSelectedGroupsIdentifier;
+    FFMDPhotoLibraryGroupTypeQuery *_dataQuery;
     NSScrollView *_scrollView;
 }
 
@@ -26,21 +27,35 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *selectedGroupsKeyedByIdentifier; // @synthesize selectedGroupsKeyedByIdentifier=_selectedGroupsKeyedByIdentifier;
 @property(retain, nonatomic) NSArrayController *arrayController; // @synthesize arrayController=_arrayController;
 @property NSScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property(retain, nonatomic) FFMDPhotoLibraryGroupTypeQuery *dataQuery; // @synthesize dataQuery=_dataQuery;
+- (void)deselectAll:(id)arg1;
+- (void)selectAll:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)writeViewPrefsToDict:(id)arg1;
+- (void)readViewPrefsFromDict:(id)arg1;
 - (void)matrixSelectionDidChange:(id)arg1;
 - (void)cellDoubleClicked:(id)arg1;
 - (BOOL)libraryView:(id)arg1 shouldDisplayItem:(id)arg2;
-- (void)filterByString:(id)arg1;
-- (void)_syncToSelection;
+- (void)filterStringChanged;
+- (id)selectedItems;
+- (void)restoreSelectionFromGroupIDs:(id)arg1;
 - (void)_restoreSelection;
 - (void)_saveSelection;
 - (id)_selectedGroupsIdentifier;
 - (id)initialFirstResponder;
-- (void)viewControllerDidHide;
-- (void)viewControllerDidUnhide;
+- (void)viewDidDisappear;
+- (void)viewDidAppear;
+- (void)resetQuery;
 - (void)reloadData;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

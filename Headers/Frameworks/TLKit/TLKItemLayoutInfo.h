@@ -8,7 +8,7 @@
 
 #import "NSCopying.h"
 
-@class NSArray, TLKContainerInfo, TLKItemLaneInfo;
+@class NSArray, NSString, TLKContainerInfo, TLKItemLaneInfo;
 
 @interface TLKItemLayoutInfo : NSObject <NSCopying>
 {
@@ -50,6 +50,7 @@
 @property(nonatomic) BOOL isContainerItem;
 @property(nonatomic) BOOL isAnchoredItem;
 @property(nonatomic) BOOL isAboveSpine;
+@property(readonly, nonatomic) NSString *itemTypeName;
 @property(copy, nonatomic) NSArray *itemComponentRecords;
 @property(nonatomic) TLKContainerInfo *containerInfo;
 @property(readonly, nonatomic) id container;

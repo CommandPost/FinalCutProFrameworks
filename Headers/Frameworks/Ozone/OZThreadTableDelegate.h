@@ -9,6 +9,8 @@
 #import "NSTableViewDataSource.h"
 #import "NSTableViewDelegate.h"
 
+@class NSString;
+
 @interface OZThreadTableDelegate : NSObject <NSTableViewDelegate, NSTableViewDataSource>
 {
 }
@@ -16,6 +18,12 @@
 - (void)tableView:(id)arg1 setObjectValue:(id)arg2 forTableColumn:(id)arg3 row:(long long)arg4;
 - (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
 - (long long)numberOfRowsInTableView:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

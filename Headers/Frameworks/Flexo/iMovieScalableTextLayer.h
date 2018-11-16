@@ -13,7 +13,7 @@
 
 @interface iMovieScalableTextLayer : iMovieTextLayer <iMovieMicaPlugin, iMovieLayoutAnchor>
 {
-    int m_numberOfGeometryFlipsLastTime;
+    int _numberOfGeometryFlipsLastTime;
 }
 
 + (struct CGColor *)defaultStrokeColor;
@@ -21,13 +21,16 @@
 + (id)defaultValueForKey:(id)arg1;
 + (id)micaPluginProperties;
 + (id)scalableTextLayerFromCATextLayer:(id)arg1;
+@property(nonatomic) int numberOfGeometryFlipsLastTime; // @synthesize numberOfGeometryFlipsLastTime=_numberOfGeometryFlipsLastTime;
 - (void)addAnimations;
 - (void)customizeSublayers;
 - (void)removeGeneratedLayers;
+- (id)wordsSortedInDisplayOrder;
 - (BOOL)doesGlyphBeginWord:(unsigned long long)arg1;
 - (id)glyphBackgroundLayers;
 - (id)glyphLayers;
 - (void)shrinkToFitContainerLayer:(id)arg1;
+- (void)mergeJoinedGlyphs;
 - (void)organizeSublayersIntoWords;
 - (void)addGlyph:(unsigned short)arg1 font:(struct __CTFont *)arg2 isEmojiFont:(BOOL)arg3 color:(struct CGColor *)arg4 linePosition:(struct CGPoint)arg5 glyphMatrix:(struct CGAffineTransform)arg6 flipped:(BOOL)arg7 containerLayer:(id)arg8;
 - (void)addRun:(struct __CTRun *)arg1 linePosition:(struct CGPoint *)arg2 containerLayer:(id)arg3;

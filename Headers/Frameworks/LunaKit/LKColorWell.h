@@ -17,6 +17,7 @@
 - (id)_transientPickerSeparatorFacet;
 - (id)_transientPickerColorWellFacet;
 - (id)_colorSwatchBezelFacet;
+- (id)_colorWellBezelFacet;
 
 @end
 

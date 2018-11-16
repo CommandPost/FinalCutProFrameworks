@@ -6,7 +6,7 @@
 
 #import <Flexo/FFSegmentSample.h>
 
-@class NSDictionary;
+@class NSDictionary, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFSegmentReadSample : FFSegmentSample
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _needsDecompression;
     int _quality;
     BOOL _propagateSampleBuf;
+    PCMatrix44Double *_pixelTransform;
 }
 
 @property(readonly) BOOL propagateSampleBuf; // @synthesize propagateSampleBuf=_propagateSampleBuf;
@@ -24,11 +25,15 @@ __attribute__((visibility("hidden")))
 - (id)newPendingImageForSampleNumber:(long long)arg1 requestedQuality:(int)arg2 colorSpace:(struct CGColorSpace *)arg3;
 - (id)description;
 - (void)cancel;
+- (id)pixelTransform;
+- (void)setPixelTransform:(id)arg1;
 - (struct CGRect)encodedBounds;
 - (id)decodePixelFormat;
 - (int)getFieldOrder;
 - (void)main;
 - (id)copyReadResults:(_Bool)arg1;
+- (_Bool)hasErrorInfo;
+- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (_Bool)waitForScheduleStatusFlags:(unsigned int)arg1 beforeDate:(id)arg2;
 - (unsigned int)scheduleStatusInformation;
 - (id)sampleData;

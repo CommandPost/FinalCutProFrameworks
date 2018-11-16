@@ -34,12 +34,19 @@
 - (id)mediaEventProject;
 - (id)rootObject;
 - (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
+- (BOOL)update_anamorphicOverrideForREDAssets;
+- (BOOL)update_syncAkiraAndTrunkFromVersion:(int)arg1;
+- (BOOL)update_fixAudioLevelChannelIgnoreFadesFlag;
+- (BOOL)update_rebuildAssetAudioProperties;
+- (BOOL)update_removeBadMP3TranscodedFiles;
 - (BOOL)update_projectNotesLocation;
 - (void)update_repairEffectStackAnchoredObjectReferences;
+- (BOOL)update_HeColorEffectToMaskedEffect;
 - (BOOL)update_dvClipCreationDates;
 - (BOOL)update_SequenceAudioChannelCountSampleRate;
 - (BOOL)update_dateRanges;
 - (BOOL)update_simpleMotionTitles;
+- (BOOL)update_panasonicAVCCAM_Thumbnails;
 - (BOOL)update_redTintThumbnails;
 - (BOOL)update_fixAnalysisKeywords;
 - (BOOL)update_canonTC;
@@ -63,6 +70,7 @@
 - (BOOL)update_fixLoudnessAnalysisEffect;
 - (BOOL)update_migrateEffectBundleFormat;
 - (BOOL)update_addAudioSourceDicts;
+- (id)getOwnedClipsAndMedia;
 - (id)getOwnedClipsAndNonProjectOwnedMedia;
 - (id)newRootObject:(id)arg1 type:(id)arg2;
 - (id)initWithURL:(id)arg1 catalog:(id)arg2 type:(id)arg3 create:(int)arg4 libraryItem:(id)arg5 error:(id *)arg6;

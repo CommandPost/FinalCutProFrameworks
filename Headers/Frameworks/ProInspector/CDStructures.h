@@ -23,6 +23,11 @@ struct CGSize {
     double height;
 };
 
+struct ColorComponents {
+    int _field1;
+    double _field2[5];
+};
+
 struct OZChannel {
     CDUnknownFunctionPointerType *_field1;
     struct OZFactory *_field2;
@@ -150,9 +155,11 @@ struct OZChannelEnum {
     struct OZChannelInfo *_field18;
     struct OZCurve *_field19;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
-    struct vector<int, std::allocator<int>> _field21;
-    struct PCString _field22;
+    struct PCString _field21;
+    struct vector<int, std::allocator<int>> _field22;
     unsigned int _field23;
+    struct PCString _field24;
+    struct vector<PCString, std::allocator<PCString>> _field25;
 };
 
 struct OZChannelFolder {
@@ -309,6 +316,7 @@ struct OZChannelHistogram {
     struct OZChannelHistogramSample _field22;
     struct OZChannelHistogramSample _field23;
     struct OZChannelHistogramSample _field24;
+    struct OZHistogramDelegate *_field25;
 };
 
 struct OZChannelHistogramSample {
@@ -397,8 +405,10 @@ struct OZCurve;
 
 struct OZFactory;
 
+struct OZHistogramDelegate;
+
 struct PCColor {
-    struct vector<double, std::allocator<double>> _field1;
+    struct ColorComponents _field1;
     struct PCColorSpaceHandle _field2;
 };
 
@@ -523,6 +533,14 @@ struct set<int, std::less<int>, std::allocator<int>> {
 
 struct vector<OZChannelBase *, std::allocator<OZChannelBase *>>;
 
+struct vector<PCString, std::allocator<PCString>> {
+    struct _Vector_impl {
+        struct PCString *_field1;
+        struct PCString *_field2;
+        struct PCString *_field3;
+    } _field1;
+};
+
 struct vector<double, std::allocator<double>> {
     struct _Vector_impl {
         double *_field1;
@@ -572,4 +590,12 @@ typedef struct map<double, OZGutterSample, std::less<double>, std::allocator<std
 typedef struct set<OZChannelBase *, std::less<OZChannelBase *>, std::allocator<OZChannelBase *>> {
     struct _Rb_tree<OZChannelBase *, OZChannelBase *, std::_Identity<OZChannelBase *>, std::less<OZChannelBase *>, std::allocator<OZChannelBase *>> _field1;
 } set_6801396c;
+
+typedef struct vector<unsigned int, std::allocator<unsigned int>> {
+    struct _Vector_impl {
+        unsigned int *_field1;
+        unsigned int *_field2;
+        unsigned int *_field3;
+    } _field1;
+} vector_632d33ce;
 

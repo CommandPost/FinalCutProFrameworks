@@ -55,6 +55,7 @@
 - (id)resumeAllTasks;
 - (id)pauseAllTasks;
 - (void)runLowOverHeadForTime:(double)arg1;
+- (void)_forceExitLOMode;
 - (void)_forceExpireTimedLOMode;
 - (void)_checkForLOExitTime;
 - (void)decrementLowOverheadMode;
@@ -62,7 +63,7 @@
 - (void)canceledTask:(id)arg1;
 - (void)completedTask:(id)arg1;
 - (void)didStartTask:(id)arg1;
-- (void)addOperation:(id)arg1;
+- (BOOL)addOperation:(id)arg1;
 - (void)_clearFinishedRunGroupOps;
 - (void)didAddTask:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

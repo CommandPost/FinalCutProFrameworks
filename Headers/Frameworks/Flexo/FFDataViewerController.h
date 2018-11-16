@@ -6,23 +6,40 @@
 
 #import "NSWindowController.h"
 
-@class FFDataViewerNode, LKOutlineView;
+#import "NSOutlineViewDataSource.h"
+#import "NSOutlineViewDelegate.h"
 
-@interface FFDataViewerController : NSWindowController
+@class FFDataViewerNode, FFDataViewerSelectorTextField, LKOutlineView, NSString;
+
+@interface FFDataViewerController : NSWindowController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 {
     FFDataViewerNode *_rootNode;
     LKOutlineView *_outlineView;
+    FFDataViewerSelectorTextField *_selectorTextField;
 }
 
+@property(retain, nonatomic) FFDataViewerSelectorTextField *selectorTextField; // @synthesize selectorTextField=_selectorTextField;
 @property(retain, nonatomic) FFDataViewerNode *rootNode; // @synthesize rootNode=_rootNode;
+- (void)dumpToFile;
+- (void)doubleClick:(id)arg1;
+- (void)copy:(id)arg1;
+- (void)outlineView:(id)arg1 draggingSession:(id)arg2 willBeginAtPoint:(struct CGPoint)arg3 forItems:(id)arg4;
+- (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
+- (void)outlineView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 item:(id)arg4;
 - (id)outlineView:(id)arg1 objectValueForTableColumn:(id)arg2 byItem:(id)arg3;
 - (long long)outlineView:(id)arg1 numberOfChildrenOfItem:(id)arg2;
 - (BOOL)outlineView:(id)arg1 isItemExpandable:(id)arg2;
-- (id)outlineView:(id)arg1 child:(int)arg2 ofItem:(id)arg3;
+- (id)outlineView:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;
 - (void)windowWillClose:(id)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)initWithObject:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

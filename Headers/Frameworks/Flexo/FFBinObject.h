@@ -48,7 +48,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
 - (void)dealloc;
 - (id)initWithDisplayName:(id)arg1;
@@ -71,9 +71,12 @@
 - (void)_actionBeginEditing;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 @property(readonly, nonatomic) double itemRowHeight;
+@property(readonly) Class superclass;
 
 @end
 

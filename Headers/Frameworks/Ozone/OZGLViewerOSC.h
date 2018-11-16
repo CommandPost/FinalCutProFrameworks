@@ -19,6 +19,7 @@
     OZViewerSnaps *_pSnaps;
     NSProCursor *_pOSCCursor;
     BOOL _isMouseDown;
+    BOOL _isRightMouseDown;
     BOOL _handlingControlLeftMouseAsRightMouse;
     BOOL _isRotoOSCActive;
     BOOL _isCameraToolsHit;
@@ -43,6 +44,7 @@
 
 @property(retain, nonatomic) NSMenu *objectContextMenu; // @synthesize objectContextMenu=_objectContextMenu;
 @property(retain, nonatomic) NSMenu *nonObjectContextMenu; // @synthesize nonObjectContextMenu=_nonObjectContextMenu;
+@property(nonatomic) BOOL isRightMouseDown; // @synthesize isRightMouseDown=_isRightMouseDown;
 @property(nonatomic) BOOL isMouseDown; // @synthesize isMouseDown=_isMouseDown;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
@@ -204,6 +206,7 @@
 - (_Bool)isCameraMoving;
 - (struct CGSize)minSize;
 - (id)hitControl;
+- (void)clearIsRightMouseDown;
 - (void)clearIsMouseDown;
 - (id)overlays;
 - (id)onScreenControls;

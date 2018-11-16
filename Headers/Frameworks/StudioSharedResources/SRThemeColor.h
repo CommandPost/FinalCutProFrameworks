@@ -297,6 +297,7 @@
 + (id)organizerKitSidebarInsetActiveBackgroundColor;
 + (id)organizerKitOfflineTextColor;
 + (id)organizerKitItemsCountFontColor;
++ (id)organizerDuratioLayerBackgroundColor;
 + (id)organizerAudioClipWaveformColor;
 + (id)organizerAudioClipBaselineColor;
 + (id)organizerAudioClipBackgroundColor;
@@ -463,6 +464,7 @@
 + (id)controlKeyerChromaGraphSoftnessOverlay;
 + (id)controlKeyerChromaGraphDialShadowPressed;
 + (id)containerPlayerSeam;
++ (id)consumerLibraryCategorySeparator;
 + (id)conAudioWaveformVideoWarningMin;
 + (id)conAudioWaveformVideoWarningMax;
 + (id)conAudioWaveformVideoPeaking;

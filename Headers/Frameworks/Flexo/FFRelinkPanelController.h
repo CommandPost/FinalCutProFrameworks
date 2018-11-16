@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
     LKTableView *_matchedTableView;
     LKButton *_copyFilesCheckBox;
     LKButton *_connectMatchedButton;
+    struct FFProcrastinatedDispatch_t pdContext;
 }
 
 + (void)showRelinkFilesPanel:(id)arg1;
@@ -86,14 +87,16 @@ __attribute__((visibility("hidden")))
 - (void)_adjustLayout:(id)arg1;
 - (void)_matchSelectedTo:(id)arg1 selectedRowAssetRefs:(id)arg2;
 - (id)_findMatchesInFolder:(id)arg1 incompatibleFileCount:(int *)arg2 error:(id *)arg3;
-- (id)_findMatchesInFolderDeep:(id)arg1 incompatibleFileCount:(int *)arg2 error:(id *)arg3;
-- (id)_cullDuplicateMatches:(id)arg1;
+- (id)_gatherFilesInFolderDeep:(id)arg1 incompatibleFileCount:(int *)arg2 isCaseSensitive:(BOOL)arg3 error:(id *)arg4;
+- (void)_appendFile:(id)arg1 toDict:(id)arg2 withKey:(id)arg3;
 - (BOOL)_shouldTraverseFolder:(id)arg1;
+- (id)_directoryEnumerationPropertyKeys;
 - (void)_rootsForURL1:(id)arg1 URL2:(id)arg2 root1:(id *)arg3 root2:(id *)arg4 compareOptions:(unsigned long long)arg5;
 - (id)_findTreeMatchesForAssetRefs:(id)arg1 oldRootPath:(id)arg2 newRootPath:(id)arg3 compareOptions:(unsigned long long)arg4 incompatibleFileCount:(int *)arg5 error:(id *)arg6;
 - (id)_findMatchForAssetRef:(id)arg1 filesDict:(id)arg2 baseNameDict:(id)arg3 rootNameDict:(id)arg4 isCaseSensitive:(BOOL)arg5 incompatibleFileCount:(int *)arg6 error:(id *)arg7;
 - (void)_examineURL:(id)arg1 getDifferentBaseName:(id *)arg2 getDifferentRootName:(id *)arg3;
 - (BOOL)_verifyCompatibleMatch:(id)arg1 error:(id *)arg2;
+- (void)_updateProgress:(id)arg1;
 - (BOOL)_urlIsFolder:(id)arg1;
 - (id)_chosenUnmatchedAssetRefs;
 - (void)_setUnmatchedSelectionForAssetRefs:(id)arg1;
@@ -112,6 +115,12 @@ __attribute__((visibility("hidden")))
 - (void)windowDidLoad;
 - (void)dealloc;
 - (id)initWithSelection:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

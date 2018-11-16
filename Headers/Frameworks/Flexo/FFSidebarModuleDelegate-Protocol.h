@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-@class FFOrganizerMasterItemNode, FFSidebarModule, NSArray, NSEvent, NSMenu, NSObject<FFOrganizerMasterItem>;
+@class FFSidebarModule, NSArray, NSEvent, NSMenu, NSObject<FFOrganizerFilterHUDDelegate>, NSObject<FFOrganizerMasterItem>;
 
 @protocol FFSidebarModuleDelegate <NSObject>
 
 @optional
-- (void)openFilterHUDForSidebarItem:(FFOrganizerMasterItemNode *)arg1 atLocation:(struct CGRect)arg2;
+- (void)openFilterHUDForSidebarItem:(NSObject<FFOrganizerFilterHUDDelegate> *)arg1 atLocation:(struct CGRect)arg2;
 - (void)sidebarModuleSelectionDidChange:(FFSidebarModule *)arg1;
 - (void)sidebarModule:(FFSidebarModule *)arg1 willSelectItems:(NSArray *)arg2;
 - (BOOL)sidebarModule:(FFSidebarModule *)arg1 shouldSelectItem:(NSObject<FFOrganizerMasterItem> *)arg2;

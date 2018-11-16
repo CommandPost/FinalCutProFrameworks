@@ -20,6 +20,8 @@
     BOOL _isAnyInspectorRebuilding;
 }
 
+- (void)toggleSelectedVideoEffects;
+- (BOOL)canToggleSelectedVideoEffects;
 - (CDStruct_1b6d18a9)griddedTimeForChannel:(struct OZChannelBase *)arg1;
 - (struct OZChannelObjectRootBase *)channelObjectRootForID:(unsigned int)arg1;
 - (void)processPINotifications;

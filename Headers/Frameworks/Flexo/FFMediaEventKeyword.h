@@ -37,7 +37,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
 - (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
@@ -58,17 +58,21 @@
 @property(readonly, nonatomic) NSString *itemDisplayName;
 - (id)_keywordNames;
 - (BOOL)actionRename:(id)arg1 error:(id *)arg2;
+- (BOOL)_renameKeywordNamed:(id)arg1 toName:(id)arg2;
 - (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
 - (void)actionBegin:(id)arg1;
 - (BOOL)_actionEndEditing:(BOOL)arg1 error:(id *)arg2;
 - (void)_actionBeginEditing;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) BOOL hasDetailSubitems;
 @property(readonly, nonatomic) BOOL hasItems;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 @property(readonly, nonatomic) double itemRowHeight;
+@property(readonly) Class superclass;
 
 @end
 

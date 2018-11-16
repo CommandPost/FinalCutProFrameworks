@@ -10,14 +10,13 @@
 #import "FFPlayerModuleDelegate.h"
 #import "PEPlayerContainerViewDelegate.h"
 
-@class LKPaneCapSegmentedControl, LKSegmentedControl, LKWindow, NSArray, NSImageView, NSMenu, NSMutableArray, NSMutableDictionary, NSProView, NSTextField, NSView, PEViewedClipSet;
+@class LKContainerItemView, LKPaneCapSegmentedControl, LKSegmentedControl, LKWindow, NSArray, NSDictionary, NSImageView, NSMenu, NSMutableArray, NSMutableDictionary, NSProView, NSSplitView, NSTextField, NSView, PEViewedClipSet;
 
 @interface PEPlayerContainerModule : LKViewModule <PEPlayerContainerViewDelegate, FFErrorReportingProtocol, FFPlayerModuleDelegate>
 {
     int _mode;
     int _defaultMode;
     int _previousMode;
-    int _previousScopesMode;
     NSMutableArray *_playerModules;
     PEViewedClipSet *_viewedClips;
     PEViewedClipSet *_viewedClipsOutstandingRequest;
@@ -72,6 +71,7 @@
     BOOL _layoutScopesVertically;
     BOOL _layoutAngleViewerVertically;
     NSMutableDictionary *_splitterPositions;
+    NSSplitView *_verticalNUpView;
     unsigned int _playerUsesLayers:1;
     unsigned int _unusedBits:31;
     NSMutableDictionary *_playersInfo;
@@ -79,13 +79,16 @@
     NSMutableArray *_cachedPlayers;
     long long _multiAngleEditStyle;
     struct FFProcrastinatedDispatch_t _procrastinatedSetNeedsDisplayContext;
+    BOOL _isInFullscreenMode;
+    id _savedFirstResponder;
+    NSDictionary *_fullScreenOptions;
+    LKContainerItemView *_savedContainerItemView;
+    int _savedDisplayAreaMode;
 }
 
 + (id)tools;
 + (id)makeDisplayArea;
 @property(nonatomic) BOOL layoutAngleViewerVertically; // @synthesize layoutAngleViewerVertically=_layoutAngleViewerVertically;
-@property(nonatomic) BOOL layoutScopesVertically; // @synthesize layoutScopesVertically=_layoutScopesVertically;
-@property(readonly) int previousScopesMode; // @synthesize previousScopesMode=_previousScopesMode;
 @property(nonatomic) BOOL showMatchControls; // @synthesize showMatchControls=_showMatchControls;
 @property(nonatomic) BOOL showColorControls; // @synthesize showColorControls=_showColorControls;
 @property(readonly) NSArray *playerModules; // @synthesize playerModules=_playerModules;
@@ -106,34 +109,37 @@
 - (void)_updateLabel;
 - (void)_updateZoomLabel;
 - (void)_updateZoomMenus;
-- (id)_createPlayerModuleForMode:(int)arg1 context:(id)arg2 layoutStyle:(int)arg3 sublayoutName:(id)arg4;
+- (id)_newPlayerModuleForMode:(int)arg1 context:(id)arg2 layoutStyle:(int)arg3 sublayoutName:(id)arg4;
 - (void)_assignMediaToPlayers;
 - (void)goToInspectorViewer:(id)arg1;
 - (void)importClips:(id)arg1;
+- (void)_clearScopesContainerModuleWithMode:(int)arg1;
+- (id)scopesContainerModule;
+- (void)updateScopesInfo;
 - (void)_updateScopesInfoToPlayers;
 - (void)_updateScopesToScopesInfo;
 - (void)_updatePlayerInfoToPlayer;
 - (void)_updatePlayersToPlayerInfo;
 - (void)_layoutPlayersForMode:(int)arg1 layoutStyle:(int)arg2;
-- (void)_layoutPlayersForNUp;
+- (void)_layoutPlayersForNUpWithMode:(int)arg1;
 - (void)_layoutPlayersForMode:(int)arg1;
 - (BOOL)_layoutPlayersVerticallyForMode:(int)arg1;
 - (void)_makePlayersForMode:(int)arg1 layoutStyle:(int)arg2;
+- (void)_makePlayersForMode:(int)arg1 layoutStyle:(int)arg2 neededPlayerCount:(unsigned long long)arg3;
 - (void)_conformPlayersToLayoutStyle:(int)arg1;
 - (void)_setupPlayerModules;
 - (void)_updateTwoUpViewerIcon;
 - (void)_updateOneUpViewerIcon;
 - (int)mediaBrowserModeIcon;
 - (void)_setViewedClips:(id)arg1 updatePlayers:(BOOL)arg2;
-- (id)optionsMenuForPlayerScopesModule:(id)arg1 ofIdentifier:(id)arg2;
+- (void)updatePlayers;
 - (void)_addPlayerTabsToModule:(id)arg1 forMenu:(id)arg2 indentLevel:(long long)arg3 target:(id)arg4;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)displayAreaScopesPropertyChanged:(id)arg1;
-- (void)displayAreaModeShouldChange:(id)arg1;
 - (void)displayAreaFrameChanged:(id)arg1;
 - (void)userDefaultsChanged:(id)arg1;
 - (void)displayAreaDidBeginPlayback:(id)arg1;
 - (void)displayAreaGainedFocus:(id)arg1;
+- (void)textOSCBecameActive:(id)arg1;
 - (void)firstResponderChanged:(id)arg1;
 - (void)activeToolChanged:(id)arg1;
 - (int)_preferredDisplayModeForToolClass:(Class)arg1;
@@ -147,7 +153,13 @@
 - (void)multiAngleEditStyleVideo:(id)arg1;
 - (void)multiAngleEditStyleAudio:(id)arg1;
 - (void)multiAngleEditStyleAudioVideo:(id)arg1;
+- (void)_fadeDisplayFromBlackWithDuration:(double)arg1 token:(unsigned int)arg2;
+- (unsigned int)_fadeDisplayToBlackWithDuration:(double)arg1;
+- (void)down:(id)arg1;
+- (void)up:(id)arg1;
 - (void)exitFullScreen:(id)arg1;
+- (BOOL)isSubmoduleHidden:(id)arg1;
+- (BOOL)isVisible;
 - (void)sendFullScreen:(id)arg1;
 - (void)previousNextEdit:(id)arg1;
 - (void)previousNextFrame:(id)arg1;
@@ -162,7 +174,6 @@
 - (void)cut:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)toggleVerticalAngleViewerLayout:(id)arg1;
-- (void)toggleVerticalScopesLayout:(id)arg1;
 - (void)setShowBothFields:(id)arg1;
 - (BOOL)showBothFields;
 - (void)setDisplayBroadcastSafeZones:(id)arg1;
@@ -185,6 +196,7 @@
 - (void)selectPlayerTab:(id)arg1;
 - (void)reportError:(id)arg1;
 - (id)playerChangedNotificationKey;
+@property(getter=isLayoutScopesVertically) BOOL layoutScopesVertically; // @dynamic layoutScopesVertically;
 - (id)context;
 - (id)selectedItems;
 - (id)displayUnitForMedia:(id)arg1;
@@ -203,11 +215,13 @@
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (BOOL)splitView:(id)arg1 canCollapseSubview:(id)arg2;
 - (BOOL)isSplitterAdjustableForMode:(int)arg1;
+- (void)hideSportsTeamOSC;
 - (id)fullscreenPlayerPresentationOptions;
 - (BOOL)isInFullScreenMode;
 - (BOOL)isLooping;
 - (BOOL)isPlaying;
 - (id)_activePlayerModule;
+- (id)viewerPlayerModuleAtIndex:(unsigned long long)arg1;
 - (id)viewerPlayerModule;
 - (id)playerModuleAtLocation:(struct CGPoint)arg1;
 - (id)canvasPlayerModule;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
+- (void)deriveEvalCurve:(BOOL)arg1;
 - (double)maxRetimingRate;
 - (vector_adc85b2d *)retimingSegmentList;
 - (id)retimingRateChannel;

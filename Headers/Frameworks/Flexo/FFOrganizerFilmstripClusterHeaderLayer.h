@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupLayersForIMovie;
 - (long long)_countFigTimeRangAndObjectsInCollection:(id)arg1;
 - (void)_setupLayersForFCP;
+- (struct CGRect)disclosureFrame;
 - (id)initWithClusteringCollection:(id)arg1 inRect:(struct CGRect)arg2 isDisclosed:(BOOL)arg3 facet:(id)arg4;
 - (void)_toggleDisclosed;
 

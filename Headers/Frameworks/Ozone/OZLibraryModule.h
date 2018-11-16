@@ -32,8 +32,10 @@
     struct PCHash128 _libraryCacheKey;
 }
 
-+ (struct OZPasteList *)getObjectForPreset:(struct OZLibraryPresetsMapDatum *)arg1;
++ (struct OZPasteList *)getObjectForPreset:(const struct OZLibraryPresetsMapDatum *)arg1;
 + (BOOL)savePreset:(const struct PCUUID *)arg1 name:(id)arg2 customIcon:(id)arg3 includeRefNodes:(BOOL)arg4 object:(struct OZFactoryBase *)arg5;
++ (id)getUserPathForPresetType:(const struct PCUUID *)arg1;
++ (id)presetPath:(const struct PCUUID *)arg1;
 + (id)canSavePreset:(const struct PCUUID *)arg1 name:(id)arg2;
 + (BOOL)createDirectoryStructureToPreset:(id)arg1;
 + (struct OZLibraryPresetsMap *)getPresets:(const struct PCUUID *)arg1 exclude:(const struct PCUUID *)arg2;
@@ -47,8 +49,6 @@
 - (void)updateTableHeaderToMatchCurrentSort:(id)arg1;
 - (void)didModifyLibraryNotification:(id)arg1;
 - (void)appDidBecomeActive:(id)arg1;
-- (void)checkITunesIPhoto:(id)arg1;
-- (void)doDeferredLoadOfEntry:(id)arg1;
 - (void)didModifyEntries;
 - (id)createHistoryEntry;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
@@ -85,6 +85,7 @@
 - (void)buildTreeForMotionEffect;
 - (void)buildTreeForMotion;
 - (void)createDefaultDirsAtPath:(id)arg1;
+- (id)addMediaLibrary:(unsigned long long)arg1;
 - (id)addRootFolder:(int)arg1;
 - (id)getAllDirectory;
 - (void)setAllDirectory:(id)arg1;
@@ -98,6 +99,7 @@
 - (void)updateThemePopupLabel;
 - (void)refreshThemePopup;
 - (id)label;
+- (void)update;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)viewDidLoad;

@@ -8,7 +8,7 @@
 
 #import "FFOrganizerMasterItemDropTarget.h"
 
-@class FFLibraryFolder, NSMapTable, NSMutableDictionary, NSMutableSet, NSURL;
+@class FFLibraryFolder, FFMediaEventFolder, NSMapTable, NSMutableSet, NSString;
 
 @interface FFLibrary : FFLibraryItem <FFOrganizerMasterItemDropTarget>
 {
@@ -16,22 +16,19 @@
     NSMapTable *_itemsByMediaIdentifier;
     NSMutableSet *_trashItems;
     FFLibraryFolder *_tempFolder;
-    NSMutableDictionary *_settings;
-    NSMutableDictionary *_locations;
-    NSURL *_cacheFolder;
-    NSURL *_cacheFolderLink;
-    id _cacheFolderID;
+    FFMediaEventFolder *_mediaEventFolder;
+    NSMapTable *_mediaBlocksByID;
+    int _loadingProjectData;
 }
 
-+ (void)setDefaultLocations:(id)arg1;
 + (id)localizedNameForLocationURL:(id)arg1;
-+ (id)defaultURLForLocation:(int)arg1;
 + (id)reserveURLFor:(id)arg1 inDestination:(id)arg2 linkType:(int)arg3 error:(id *)arg4;
 + (id)eventClipForSequence:(id)arg1;
 + (id)eventClipsForSequences:(id)arg1 returnAllFound:(BOOL)arg2;
 + (BOOL)replicateFile:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (BOOL)replicateFolder:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (id)eventForIdentifier:(id)arg1;
++ (void)performMediaReadyBlocksIfPossible;
 + (BOOL)removeProxyItemsForLibrary:(id)arg1 proxyAssets:(id)arg2 error:(id *)arg3;
 + (id)uniqueFolderURLforURL:(id)arg1;
 + (BOOL)replicateAssetForAssetRef:(id)arg1 inEvent:(id)arg2 libraryToAssetsMap:(id)arg3 newLibrary:(id)arg4 error:(id *)arg5;
@@ -49,6 +46,7 @@
 + (void)moveUpgradedLegacyEventAndProjectFoldersToTrash:(BOOL)arg1;
 + (void)cleanupCachedLegacyURLs;
 + (BOOL)isUpgrading;
++ (id)uniqueURLforURL:(id)arg1 preserveExtension:(BOOL)arg2 whitelist:(id)arg3;
 + (id)uniqueURLforURL:(id)arg1 preserveExtension:(BOOL)arg2;
 + (BOOL)isOriginalMediaRepURLOffline:(id)arg1 isSymlink:(char *)arg2;
 + (id)copyClassDescription;
@@ -61,17 +59,8 @@
 + (id)documents;
 + (id)readableTypesForPasteboard:(id)arg1;
 @property(readonly, nonatomic) FFLibraryFolder *tempFolder; // @synthesize tempFolder=_tempFolder;
-- (BOOL)backupTask:(id)arg1 finishBackup:(id)arg2 error:(id *)arg3;
-- (id)persistentFileID;
-- (id)bindToExternalCacheFolderInLocation:(id)arg1;
-- (id)syncCacheFolderInLocation:(id)arg1 error:(id *)arg2;
-- (BOOL)canMoveCacheFolder:(id)arg1 toURL:(id)arg2;
-- (BOOL)stealCacheFolder:(id)arg1 error:(id *)arg2;
-- (id)searchForCacheFolderInLocation:(id)arg1 info:(id *)arg2 error:(id *)arg3;
-- (id)readCacheFolderInfo:(id)arg1 error:(id *)arg2;
-- (BOOL)writeCacheFolderInfo:(id)arg1 error:(id *)arg2;
+- (BOOL)syncSettings:(id *)arg1;
 - (BOOL)syncExternalCacheFolder:(id *)arg1;
-- (BOOL)updateCacheFolderLink:(id)arg1 error:(id *)arg2;
 - (id)externalCacheFolder;
 - (id)cacheFolderLink;
 - (id)externalCacheLocation;
@@ -85,22 +74,8 @@
 - (void)setExternalLocations:(id)arg1;
 - (id)copyExternalLocations;
 - (id)copyCurrentLocations;
-- (id)settingsKeyForLocation:(int)arg1;
-- (id)externalURLForLocation:(int)arg1;
-- (BOOL)syncLocation:(int)arg1 error:(id *)arg2;
-- (BOOL)findURL:(id *)arg1 forLocation:(int)arg2 error:(id *)arg3;
-- (BOOL)setURL:(id)arg1 forLocation:(int)arg2 error:(id *)arg3;
-- (BOOL)makeLocation:(id)arg1 error:(id *)arg2;
+- (id)librarySettings;
 - (id)relativeURLForItem:(id)arg1;
-- (BOOL)writeSettingsForBackupLibrary:(id)arg1 error:(id *)arg2;
-- (id)settingsURL;
-- (BOOL)settingsAreDirty;
-- (void)settingsAreDirty:(BOOL)arg1;
-- (BOOL)saveSettings:(id *)arg1;
-- (id)mutableSettings;
-- (id)readSettingsValueForKey:(id)arg1;
-- (BOOL)writeSettingsValue:(id)arg1 forKey:(id)arg2;
-- (BOOL)syncSettings:(id *)arg1;
 - (BOOL)trashItemAtURL:(id)arg1 resultingItemURL:(id *)arg2 error:(id *)arg3;
 - (id)mediaRefForMediaID:(id)arg1;
 - (BOOL)referencesExistForMediaIdentifier:(id)arg1 excludingThisLibraryItem:(id)arg2;
@@ -116,9 +91,15 @@
 - (id)URL;
 - (id)directoryFromUniqueIdentifier:(id)arg1;
 - (id)eventForIdentifier:(id)arg1;
+- (id)resolveMediaIdentifier:(id)arg1 includeTrash:(BOOL)arg2;
 - (id)resolveMediaIdentifier:(id)arg1;
 - (void)removeMediaIdentifier:(id)arg1 forItem:(id)arg2;
 - (void)addMediaIdentifier:(id)arg1 forItem:(id)arg2;
+- (void)didLoadProjectData:(id)arg1;
+- (void)willLoadProjectData:(id)arg1;
+- (void)mediaIdentifier:(id)arg1 performBlockWithMediaWhenReady:(CDUnknownBlockType)arg2;
+- (BOOL)performMediaReadyBlocksIsOK;
+- (void)performMediaReadyBlocksIfPossible;
 - (BOOL)nonProxyMediaIdentifierExistsInLibrary:(id)arg1;
 - (BOOL)mediaIdentifierExistsInLibrary:(id)arg1;
 - (id)libraryItemForMediaIdentifier:(id)arg1;
@@ -156,11 +137,12 @@
 - (id)itemForIdentifier:(id)arg1;
 - (void)willChangeLibraryItem:(id)arg1 toIdentifier:(id)arg2;
 - (id)document;
-- (void)setDocument:(id)arg1;
 - (id)identifier;
 - (BOOL)isTemporary;
+@property(readonly, nonatomic) long long libraryVersion;
 - (id)libraryDocument;
 - (id)library;
+@property(retain, nonatomic) FFMediaEventFolder *mediaEventFolder;
 - (void)sync;
 - (void)willDealloc;
 - (void)dealloc;
@@ -170,6 +152,7 @@
 - (id)displayName;
 - (void)invalidateProviders;
 - (void)documentWillClose;
+- (void)setDocument:(id)arg1;
 - (void)removeSequenceBeingShared:(id)arg1;
 - (void)addSequenceBeingShared:(id)arg1;
 - (id)sequencesBeingShared;
@@ -177,6 +160,12 @@
 - (id)itemIcon;
 - (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
 - (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

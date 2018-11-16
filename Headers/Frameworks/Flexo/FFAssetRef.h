@@ -20,7 +20,8 @@ __attribute__((visibility("hidden")))
 - (void)addAssetRefsToSet:(id)arg1;
 - (id)assetRefs;
 - (id)mdTargetForKey:(id)arg1;
-- (void)setFlowVectors:(CDStruct_e83c9415)arg1;
+- (void)setFlow:(CDStruct_e83c9415)arg1 mode:(long long)arg2 info:(id)arg3;
+- (void)setFlowVectors:(CDStruct_e83c9415)arg1 mode:(long long)arg2;
 - (id)flowMediaRep;
 - (void)createFlowMediaRep;
 - (BOOL)isAssetRef;

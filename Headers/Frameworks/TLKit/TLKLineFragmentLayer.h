@@ -8,7 +8,7 @@
 
 #import "TLKPartInfo.h"
 
-@class TLKLineFragment, TLKTornEdgeLayer;
+@class NSString, TLKLineFragment, TLKTornEdgeLayer;
 
 @interface TLKLineFragmentLayer : CALayer <TLKPartInfo>
 {
@@ -31,6 +31,12 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

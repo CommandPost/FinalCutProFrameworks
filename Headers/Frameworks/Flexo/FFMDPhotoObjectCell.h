@@ -6,12 +6,12 @@
 
 #import <Flexo/FFImageBrowserCell.h>
 
-@class CALayer, CATextLayer, FFResponderLayerPushButton, FFThemeFacetLayer, LKPopOverWindow, LKTextField, TLKSimpleItemSelectionLayer;
+@class CALayer, CATextLayer, FFResponderLayerPushButton, FFThemeFacetLayer, LKPopOverWindow, LKTextField, TLKAbstractItemSelectionLayer, TLKSimpleItemSelectionLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFMDPhotoObjectCell : FFImageBrowserCell
 {
-    TLKSimpleItemSelectionLayer *_selectionRingLayer;
+    TLKAbstractItemSelectionLayer *_selectionRingLayer;
     TLKSimpleItemSelectionLayer *_skimmingHighlightLayer;
     CDStruct_1b6d18a9 _skimmerHighlightDuration;
     CALayer *_movieInfoLayer;
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_addEditButtonToLayoutAtPosition:(struct CGPoint)arg1;
 - (struct CGPoint)calculateEditButtonPositionForSelection;
 - (void)_createEditButton;
+- (id)_currentEditButtonToolTipString;
 - (void)_handleEditButtonClicked:(id)arg1;
 - (BOOL)isShowingEditButton;
 - (BOOL)playheadButtonsAllowed;

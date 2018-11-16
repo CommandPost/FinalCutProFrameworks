@@ -9,10 +9,12 @@
 #import "FFMDPhotoViewControllerDataSource.h"
 #import "FFMDPhotoViewControllerDelegate.h"
 
-@class FFMDPhotoAbstractViewController, FFMDPhotoGroupViewController, FFMDPhotoObjectViewController, FFMDPhotoPlacesViewController, FigTimeRangeAndObject, LKButton, LKImageView, LKPopUpButton, LKProgressIndicator, NSArray, NSView;
+@class FFAlwaysHitButton, FFMDPhotoAbstractViewController, FFMDPhotoGroupViewController, FFMDPhotoLibraryQuery, FFMDPhotoObjectViewController, FFMDPhotoPlacesViewController, LKButton, LKImageView, LKPopUpButton, LKProgressIndicator, NSMutableDictionary, NSString, NSView;
 
 @interface FFMDPhotoLibraryModule : FFMDModule <FFMDPhotoViewControllerDataSource, FFMDPhotoViewControllerDelegate>
 {
+    FFAlwaysHitButton *_toggleSidebarButton;
+    FFAlwaysHitButton *_dividerLine;
     FFMDPhotoGroupViewController *_groupViewController;
     FFMDPhotoPlacesViewController *_placesViewController;
     FFMDPhotoObjectViewController *_objectViewController;
@@ -25,32 +27,25 @@
     LKImageView *_allButtonSeparator;
     LKPopUpButton *_typeFilterPopUp;
     LKProgressIndicator *_loadingProgressIndicator;
-    int _libraryType;
-    NSArray *_displayedGroupTypes;
-    NSArray *_displayedGroupIDs;
-    NSArray *_lastSelectedIPhotoGroupTypes;
-    NSArray *_lastSelectedIPhotoGroupIDs;
-    NSArray *_lastSelectedIPhotoObjectROs;
-    FigTimeRangeAndObject *_lastIPhotoPlayheadRO;
-    NSArray *_lastSelectedApertureGroupTypes;
-    NSArray *_lastSelectedApertureGroupIDs;
-    NSArray *_lastSelectedApertureObjectROs;
-    FigTimeRangeAndObject *_lastAperturePlayheadRO;
     double _rightDraggableExclusionMargin;
     double _leftDraggableExclusionMargin;
+    int _libraryType;
+    int _groupType;
+    FFMDPhotoLibraryQuery *_dataQuery;
+    NSMutableDictionary *_viewStateKeyedByLibraryAndGroupType;
+    NSMutableDictionary *_savedModuleState;
 }
 
-+ (id)_displayableGroupTypesForLibraryType:(int)arg1;
-@property(retain, nonatomic) FigTimeRangeAndObject *lastAperturePlayheadRO; // @synthesize lastAperturePlayheadRO=_lastAperturePlayheadRO;
-@property(retain, nonatomic) NSArray *lastSelectedApertureObjectROs; // @synthesize lastSelectedApertureObjectROs=_lastSelectedApertureObjectROs;
-@property(retain, nonatomic) NSArray *lastSelectedApertureGroupIDs; // @synthesize lastSelectedApertureGroupIDs=_lastSelectedApertureGroupIDs;
-@property(retain, nonatomic) NSArray *lastSelectedApertureGroupTypes; // @synthesize lastSelectedApertureGroupTypes=_lastSelectedApertureGroupTypes;
-@property(retain, nonatomic) FigTimeRangeAndObject *lastIPhotoPlayheadRO; // @synthesize lastIPhotoPlayheadRO=_lastIPhotoPlayheadRO;
-@property(retain, nonatomic) NSArray *lastSelectedIPhotoObjectROs; // @synthesize lastSelectedIPhotoObjectROs=_lastSelectedIPhotoObjectROs;
-@property(retain, nonatomic) NSArray *lastSelectedIPhotoGroupIDs; // @synthesize lastSelectedIPhotoGroupIDs=_lastSelectedIPhotoGroupIDs;
-@property(retain, nonatomic) NSArray *lastSelectedIPhotoGroupTypes; // @synthesize lastSelectedIPhotoGroupTypes=_lastSelectedIPhotoGroupTypes;
-@property(retain, nonatomic) NSArray *displayedGroupIDs; // @synthesize displayedGroupIDs=_displayedGroupIDs;
-@property(retain, nonatomic) NSArray *displayedGroupTypes; // @synthesize displayedGroupTypes=_displayedGroupTypes;
++ (BOOL)automaticallyNotifiesObserversOfDataQuery;
++ (BOOL)automaticallyNotifiesObserversOfLibraryType;
++ (BOOL)automaticallyNotifiesObserversOfDisplayedViewController;
++ (int)_defaultDisplayedGroupTypeForLibrary:(int)arg1;
++ (int)libraryTypeFromModuleKey:(id)arg1;
++ (id)libraryTypeToModuleKey:(int)arg1;
+@property(retain, nonatomic) FFMDPhotoLibraryQuery *dataQuery; // @synthesize dataQuery=_dataQuery;
+@property(retain, nonatomic) NSMutableDictionary *savedModuleState; // @synthesize savedModuleState=_savedModuleState;
+@property(retain, nonatomic) NSMutableDictionary *viewStateKeyedByLibraryAndGroupType; // @synthesize viewStateKeyedByLibraryAndGroupType=_viewStateKeyedByLibraryAndGroupType;
+@property(nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property(nonatomic) int libraryType; // @synthesize libraryType=_libraryType;
 @property LKProgressIndicator *loadingProgressIndicator; // @synthesize loadingProgressIndicator=_loadingProgressIndicator;
 @property LKPopUpButton *typeFilterPopUp; // @synthesize typeFilterPopUp=_typeFilterPopUp;
@@ -66,54 +61,69 @@
 @property(retain, nonatomic) FFMDPhotoGroupViewController *groupViewController; // @synthesize groupViewController=_groupViewController;
 - (double)leftDraggableExclusionMargin;
 - (double)rightDraggableExclusionMargin;
-- (void)_updateDisplayedViewController;
+- (void)_updateDisplay;
+- (void)_setupTypeFilterPopup;
 - (void)_syncGroupChooserToSelectedGroup;
 - (void)_setupGroupChooserPopUp;
 - (void)_updateHeader;
 - (void)_headerFrameDidChange:(id)arg1;
+- (id)selectedItems;
+- (void)setSelectedItems:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)setContents:(id)arg1;
-- (void)_restorePhotoObjectSelectionAndPlayheadState;
-- (void)_savePhotoObjectSelectionAndPlayheadState;
+- (void)_updateQueryWithSelection:(id)arg1;
+- (void)_updateQueryFromSavedViewState;
+- (void)_updateViewController;
+- (id)_newQueryForLibraryType:(int)arg1 groupType:(int)arg2 selection:(id)arg3;
+- (id)_viewControllerForLibraryType:(int)arg1 groupType:(int)arg2 selection:(id)arg3;
 - (void)photoViewController:(id)arg1 displayContentsOfGroups:(id)arg2;
-- (id)displayedGroupTypesForPhotoViewController:(id)arg1;
-- (int)libraryTypeForPhotoViewController:(id)arg1;
-- (id)photoPluginForPhotoViewController:(id)arg1;
-- (void)reloadData;
-- (void)deselectAll:(id)arg1;
-- (void)selectAll:(id)arg1;
-- (void)goBack:(id)arg1;
-- (void)filterByType:(id)arg1;
-- (void)search:(id)arg1;
-- (void)chooseGroupTypes:(id)arg1;
-- (void)loop:(id)arg1;
-- (void)playFromStart:(id)arg1;
-- (void)playAroundCurrentFrame:(id)arg1;
-- (void)playSelected:(id)arg1;
-- (void)playPause:(id)arg1;
-- (void)_performPlayerCommandWithCell:(id)arg1 commandBlock:(CDUnknownBlockType)arg2;
-- (void)_movePlayheadFromCell:(id)arg1 toCell:(id)arg2;
-- (void)down:(id)arg1;
-- (void)up:(id)arg1;
+- (void)setContents:(id)arg1;
 - (struct CGPoint)startPointConvertedToView;
 - (id)dragImage;
 - (BOOL)editActionAllowed;
 - (BOOL)writeDataForEditAction:(id)arg1 toPasteboardWithName:(id)arg2;
 - (id)dataForEditAction:(id)arg1;
 - (BOOL)canSourceDataForEditAction:(id)arg1;
+- (void)goBack:(id)arg1;
+- (void)filterByType:(id)arg1;
+- (void)search:(id)arg1;
+- (void)chooseGroupTypes:(id)arg1;
+- (void)deselectAll:(id)arg1;
+- (void)selectAll:(id)arg1;
+- (void)loop:(id)arg1;
+- (void)playFromStart:(id)arg1;
+- (void)playAroundCurrentFrame:(id)arg1;
+- (void)playSelected:(id)arg1;
+- (void)playPause:(id)arg1;
+- (void)down:(id)arg1;
+- (void)up:(id)arg1;
 - (void)showSkimmerInfo:(id)arg1;
 - (void)revealInFinder:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
-- (id)_cellForNavigationAction;
 - (id)localModuleActions;
 - (void)syncToModuleFocus;
 - (void)setDisplayedViewController:(id)arg1 animate:(BOOL)arg2;
 - (void)_setupViewController:(id)arg1;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)_restoreModuleStateForActiveLibrary;
+- (void)_saveModuleStateForActiveLibrary;
+- (void)_popViewState;
+- (void)_pushViewState;
+- (void)_restoreViewState;
+- (id)_currentSavedViewState;
+- (void)_saveViewState;
+- (id)_copyCapturedViewState;
+- (id)_savedViewStateKey;
 - (void)writeModulePrefsToDict:(id)arg1;
 - (void)readModulePrefsFromDict:(id)arg1;
-- (void)dealloc;
 - (void)viewDidLoad;
+- (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

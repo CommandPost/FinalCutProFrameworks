@@ -8,7 +8,7 @@
 
 #import "TLKPartInfo.h"
 
-@class FFAnchoredTimeMarker;
+@class FFAnchoredTimeMarker, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFTimelineMarkerLayer : FFMarkerLayer <TLKPartInfo>
@@ -42,6 +42,12 @@ __attribute__((visibility("hidden")))
 - (CDUnknownBlockType)openHandler;
 - (void)setOpenHandler:(CDUnknownBlockType)arg1;
 - (id)initWithMarker:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

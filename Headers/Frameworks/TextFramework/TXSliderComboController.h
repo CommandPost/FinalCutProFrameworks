@@ -8,7 +8,7 @@
 
 #import "NSComboBoxDelegate.h"
 
-@class NSComboBox, NSSlider, NSStepper, OZMoAnimIndicator;
+@class NSComboBox, NSSlider, NSStepper, NSString, OZMoAnimIndicator;
 
 @interface TXSliderComboController : OZViewController <NSComboBoxDelegate>
 {
@@ -31,6 +31,12 @@
 - (void)endSliderAction:(id)arg1;
 - (void)startSliderAction:(id)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 suffix:(const char *)arg2 context:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

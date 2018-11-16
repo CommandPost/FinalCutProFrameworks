@@ -12,14 +12,17 @@
 {
 }
 
+- (HGRef_0de1db7e)makePrescaledBlurNode:(HGRef_0de1db7e)arg1 radius:(float)arg2 withScale:(PCVector2_79a470e1)arg3 minInputScale:(float)arg4 maxInputScale:(float)arg5;
+- (HGRef_0de1db7e)preScaleUp:(float)arg1 withInput:(HGRef_0de1db7e)arg2;
+- (HGRef_0de1db7e)preScaleDown:(float)arg1 withOutputRadius:(float *)arg2 withOutputScaleFactor:(float *)arg3 withInput:(HGRef_0de1db7e)arg4 minInputScale:(float)arg5 maxInputScale:(float)arg6;
 - (id)getParamErrorFor:(id)arg1;
 - (id)getParamAPIWithError:(id *)arg1;
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 appendHGGraph:(HGRef_0de1db7e)arg4;
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 withROI:(struct HGRect *)arg4;
-- (BOOL)frameSetup:(CDStruct_8b442eb9)arg1 inputInfo:(CDStruct_4a07eeda)arg2 hardware:(char *)arg3 software:(char *)arg4;
-- (BOOL)canThrowRenderOutput:(id)arg1 withInput:(id)arg2 withInfo:(CDStruct_8b442eb9)arg3;
-- (BOOL)renderOutput:(id)arg1 withInput:(id)arg2 withInfo:(CDStruct_8b442eb9)arg3;
-- (BOOL)getOutputWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 withInput:(CDStruct_4a07eeda)arg3 withInfo:(CDStruct_8b442eb9)arg4;
+- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atTime:(CDUnion_2516e51e)arg3 appendHGGraph:(HGRef_0de1db7e)arg4;
+- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atTime:(CDUnion_2516e51e)arg3 withROI:(struct HGRect *)arg4;
+- (BOOL)frameSetup:(CDStruct_6b9ed609)arg1 inputInfo:(CDStruct_4a07eeda)arg2 hardware:(char *)arg3 software:(char *)arg4;
+- (BOOL)canThrowRenderOutput:(id)arg1 withInput:(id)arg2 withInfo:(CDStruct_6b9ed609)arg3;
+- (BOOL)renderOutput:(id)arg1 withInput:(id)arg2 withInfo:(CDStruct_6b9ed609)arg3;
+- (BOOL)getOutputWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 withInput:(CDStruct_4a07eeda)arg3 withInfo:(CDStruct_6b9ed609)arg4;
 
 @end
 

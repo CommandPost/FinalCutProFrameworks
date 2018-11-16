@@ -23,7 +23,7 @@
 + (id)pasteboardType;
 @property(nonatomic, getter=isObservingChildNodes) BOOL observingChildNodes; // @synthesize observingChildNodes=_observingChildNodes;
 @property(nonatomic) FFMediaSidebarNode *parentNode; // @synthesize parentNode=_parentNode;
-@property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
+@property(readonly, retain, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 - (id)debugDescription;
 - (id)_descriptionWithDescendantsAtIndentLevel:(unsigned int)arg1;
 - (id)description;

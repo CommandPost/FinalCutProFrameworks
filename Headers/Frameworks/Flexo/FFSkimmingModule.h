@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     NSProThemeFacet *m_skimmingCursorFacet;
 }
 
++ (id)newDefaultContextForSkimmable:(struct NSObject *)arg1;
 - (void)timeRateChangedForContext:(id)arg1;
 - (void)_setPlayheadTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)_timeForPoint:(struct CGPoint)arg1;

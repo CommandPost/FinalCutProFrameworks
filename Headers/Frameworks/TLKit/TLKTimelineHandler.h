@@ -21,14 +21,14 @@
         unsigned int gearDownActive:1;
         unsigned int firstResponderTimerStarted:1;
         unsigned int itemSkimmingStopped:1;
-        unsigned int RESERVED:28;
+        unsigned int allowPressAndHold:1;
+        unsigned int RESERVED:27;
     } _tlkTimelineHandlerFlags;
 }
 
 @property CDStruct_1b6d18a9 skimmedTime; // @synthesize skimmedTime=_skimmedTime;
 - (id)stringForToolTipAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (id)_lookupToolTipForHandler:(id)arg1 itemType:(int)arg2 topPart:(id)arg3 edgePart:(id)arg4;
-- (id)_nameForItemType:(int *)arg1;
+- (id)_lookupToolTipForHandler:(id)arg1 itemTypeName:(id)arg2 topPart:(id)arg3 edgePart:(id)arg4;
 - (id)_nameForEditingMode:(int)arg1;
 - (void)smartMagnifyWithEvent:(id)arg1;
 - (void)magnifyWithEvent:(id)arg1;
@@ -45,7 +45,9 @@
 - (id)_selectableItemsFromArray:(id)arg1;
 - (BOOL)_canSelectItem:(id)arg1 byExtendingSelection:(BOOL)arg2;
 - (id)selectedItemsIncludingEntireRangesWithClickedItem:(id)arg1;
+- (BOOL)isInBottomOfClip:(id)arg1;
 - (BOOL)audioOnlyClip:(id)arg1;
+- (id)_topPartItemInfo:(id)arg1;
 - (BOOL)insideRangeSelection:(id)arg1;
 - (void)doubleClickedItemBackground:(id)arg1;
 - (void)doubleClickedPlaceHolder:(id)arg1;
@@ -96,6 +98,7 @@
 - (BOOL)isViewFirstResponder;
 - (BOOL)trimModeOn;
 - (BOOL)timePreservingModeOn;
+@property BOOL allowPressAndHold;
 @property id <TLKTimelineItem> curveEditorDraggedItem;
 - (id)draggedItem;
 - (BOOL)isDraggingLeadingEdge;

@@ -10,7 +10,7 @@
 #import "FFDoubleClickableSliderProtocol.h"
 #import "NSWindowDelegate.h"
 
-@class FFAudioSurroundPannerView, FFDoubleClickableSlider, LKSegmentedScrubber, NSButton, NSImageView, NSObject<FFAudioSurroundPannerBuddy>, NSView;
+@class FFAudioSurroundPannerView, FFDoubleClickableSlider, LKSegmentedScrubber, NSButton, NSImageView, NSObject<FFAudioSurroundPannerBuddy>, NSString, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioSurroundPannerController : NSWindowController <FFDoubleClickableSliderProtocol, FFAudioSurroundPannerViewProtocol, NSWindowDelegate>
@@ -75,6 +75,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithBuddy:(id)arg1 windowNibName:(id)arg2;
 - (id)initWithBuddy:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

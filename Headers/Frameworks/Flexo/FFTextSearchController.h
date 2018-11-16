@@ -10,7 +10,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKButton, LKPopUpButton, LKTextField, NSMenuItem;
+@class LKButton, LKPopUpButton, LKTextField, NSMenuItem, NSString;
 
 @interface FFTextSearchController : NSWindowController <NSTabViewDelegate, NSWindowDelegate, NSTextFieldDelegate>
 {
@@ -57,6 +57,12 @@
 - (void)showWindow:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (void)setDelegate:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

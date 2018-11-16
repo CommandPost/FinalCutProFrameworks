@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 - (void *)get:(unsigned long long)arg1;
 - (void)add:(void *)arg1 size:(unsigned long long)arg2;
+- (id)newPageAlignedMemoryWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (id)newPageAlignedMemoryWithSize:(unsigned long long)arg1;
 - (BOOL)isDeallocatorCallback:(void *)arg1;
 - (CDUnknownFunctionPointerType)deallocatorCallback;

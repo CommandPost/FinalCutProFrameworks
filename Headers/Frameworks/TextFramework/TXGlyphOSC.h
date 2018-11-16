@@ -8,6 +8,8 @@
 
 #import "OZObjCObserver.h"
 
+@class TXGlyphScale3D;
+
 @interface TXGlyphOSC : POOnScreenControl <OZObjCObserver>
 {
     double _startX;
@@ -30,6 +32,7 @@
     struct map<TXTextObject *, PCVector3<double>, std::less<TXTextObject *>, std::allocator<std::pair<TXTextObject *const, PCVector3<double>>>> *_startAnchor;
     struct map<TXTextObject *, PCVector3<double>, std::less<TXTextObject *>, std::allocator<std::pair<TXTextObject *const, PCVector3<double>>>> *_startPivotAnchor;
     struct map<TXTextObject *, PCRect<double>, std::less<TXTextObject *>, std::allocator<std::pair<TXTextObject *const, PCRect<double>>>> *_textObjectStartBounds;
+    struct map<TXTextObject *, PCBox<double>, std::less<TXTextObject *>, std::allocator<std::pair<TXTextObject *const, PCBox<double>>>> *_textObjectStartBox;
     struct map<TXTextObject *, PCVector3<double>, std::less<TXTextObject *>, std::allocator<std::pair<TXTextObject *const, PCVector3<double>>>> *_startScale;
     struct map<TXTextObject *, PCVector3<double>, std::less<TXTextObject *>, std::allocator<std::pair<TXTextObject *const, PCVector3<double>>>> *_startRotation;
     struct map<TXTextObject *, PCVector3<double>, std::less<TXTextObject *>, std::allocator<std::pair<TXTextObject *const, PCVector3<double>>>> *_startOffset;
@@ -55,6 +58,7 @@
     double _startShearX;
     double _startShearY;
     PCRect_b601f9f3 *_startBounds;
+    PCBox_dd92ab54 *_startBox;
     PCMatrix44Tmpl_93ed1289 *_thisTextObjectStartTransformMatrix;
     double _draggingScaleX;
     double _draggingScaleY;
@@ -87,6 +91,7 @@
     _Bool _capturingModifiedChannels;
     struct POMove3DOSC *_pos3Dtool;
     struct PORotate3DOSC *_rot3Dtool;
+    TXGlyphScale3D *_scale3D;
     PCVector3_457fd1f0 _pAxis;
     PCVector3_457fd1f0 _OSCStartRot;
     PCVector3_457fd1f0 _OSCStartTrans;
@@ -97,6 +102,8 @@
 + (BOOL)validate:(struct OZChannelBase *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)isMoving;
+- (void)setIsMoving:(BOOL)arg1;
 - (BOOL)scalePositionByFontSize;
 - (struct PCUUID)getClassID;
 - (void)clipPoints:(struct TXTextObject *)arg1 camera:(const struct LiCamera *)arg2 state:(const struct OZRenderState *)arg3 points:(const vector_8d17e539 *)arg4 visible:(vector_69938c0b *)arg5;
@@ -135,13 +142,17 @@
 - (void)snapshotState:(id)arg1;
 - (void)rotate:(id)arg1 angle:(double)arg2;
 - (void)translate:(id)arg1 hitPart:(int)arg2 translateX:(double)arg3 translateY:(double)arg4 translateZ:(double)arg5 state:(struct OZRenderState)arg6;
-- (void)scale:(id)arg1 hitPart:(int)arg2 scaleX:(double)arg3 scaleY:(double)arg4;
+- (void)scale:(id)arg1 hitPart:(int)arg2 scaleX:(double)arg3 scaleY:(double)arg4 scaleZ:(double)arg5;
 - (void)warp:(id)arg1 hitPart:(int)arg2 deltaX:(double)arg3 deltaY:(double)arg4;
 - (void)getTransformMatrix:(PCMatrix44Tmpl_93ed1289 *)arg1 textObject:(struct TXTextObject *)arg2 renderParams:(struct OZRenderParams *)arg3 withCharScale:(_Bool)arg4;
-- (void)getAnchorX:(double *)arg1 andAnchorY:(double *)arg2 forTextObject:(struct TXTextObject *)arg3 andEvent:(id)arg4 forFixedAnchor:(BOOL)arg5;
+- (PCBox_dd92ab54 *)startBox:(struct TXTextObject *)arg1;
+- (PCVector3_457fd1f0 *)startAnchor:(struct TXTextObject *)arg1;
+- (PCVector3_457fd1f0 *)startPivot:(struct TXTextObject *)arg1;
+- (PCMatrix44Tmpl_93ed1289 *)startTransformMatrix:(struct TXTextObject *)arg1;
+- (void)getAnchorX:(double *)arg1 andAnchorY:(double *)arg2 andAnchorZ:(double *)arg3 forTextObject:(struct TXTextObject *)arg4 forFixedAnchor:(BOOL)arg5;
 - (struct OZChannelQuad *)getFourCornerChannel:(struct TXTextStyle *)arg1 forAttribute:(int)arg2;
 - (struct OZChannelRotation3D *)getRotationChannel:(struct TXTextStyle *)arg1;
-- (struct OZChannelScale *)getScaleChannel:(struct TXTextStyle *)arg1;
+- (struct OZChannelScale3D *)getScaleChannel:(struct TXTextStyle *)arg1;
 - (struct OZChannelScale *)getDropShadowScaleChannel:(struct TXTextStyle *)arg1;
 - (struct OZChannelAngle *)getDropShadowAngleChannel:(struct TXTextStyle *)arg1;
 - (struct OZChannelDouble *)getDropShadowDistanceChannel:(struct TXTextStyle *)arg1;

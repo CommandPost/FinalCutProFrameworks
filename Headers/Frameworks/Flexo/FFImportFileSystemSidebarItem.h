@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL hasMasterSubitems;
 @property(readonly, nonatomic) NSArray *masterSubitems;
 @property(readonly, nonatomic) BOOL hasItems;
-- (id)description;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSString *itemPersistentIdentifier;
 @property(readonly, nonatomic) NSImage *itemIcon;
 - (void)setItemDisplayName:(id)arg1;
@@ -48,17 +48,20 @@ __attribute__((visibility("hidden")))
 - (id)volumeURL;
 - (id)currentURL;
 - (id)rootURL;
-@property(readonly, nonatomic) FFImportFileSystemTreeNode *currentNode;
+@property(readonly, retain, nonatomic) FFImportFileSystemTreeNode *currentNode;
 - (void)dealloc;
 - (id)initWithTreeNode:(id)arg1 isFavorite:(BOOL)arg2;
 - (id)initWithURL:(id)arg1 isFavorite:(BOOL)arg2;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
 @property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 @property(readonly, nonatomic) double itemRowHeight;
+@property(readonly) Class superclass;
 
 @end
 

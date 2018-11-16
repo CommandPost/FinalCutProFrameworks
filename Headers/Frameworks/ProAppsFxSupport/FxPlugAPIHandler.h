@@ -7,13 +7,15 @@
 #import "NSObject.h"
 
 #import "FxDynamicParameterAPI.h"
+#import "FxDynamicParameterAPI_v2.h"
 #import "FxHostResourcesAPI.h"
 #import "FxKeyframeAPI.h"
+#import "FxKeyframeAPI_v2.h"
 #import "FxWindowAPI.h"
 
 @class NSObject<FxPlugAPIDelegate>;
 
-@interface FxPlugAPIHandler : NSObject <FxKeyframeAPI, FxDynamicParameterAPI, FxWindowAPI, FxHostResourcesAPI>
+@interface FxPlugAPIHandler : NSObject <FxKeyframeAPI, FxKeyframeAPI_v2, FxDynamicParameterAPI, FxDynamicParameterAPI_v2, FxWindowAPI, FxHostResourcesAPI>
 {
     NSObject<FxPlugAPIDelegate> *_delegate;
 }
@@ -31,15 +33,20 @@
 - (id)channel:(struct OZChannel **)arg1 atIndex:(unsigned long long)arg2 fromFolder:(struct OZChannelFolder *)arg3;
 - (id)removeAllKeyframesForParam:(unsigned long long)arg1 andChannel:(unsigned long long)arg2;
 - (id)keyframeInfo:(struct FxKeyframeInfo *)arg1 atOrAfter:(double)arg2 fromParam:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
+- (id)keyframeInfo:(struct FxKeyframeInfo *)arg1 atOrAfterFxTime:(CDUnion_2516e51e)arg2 fromParam:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
 - (id)keyframeInfo:(struct FxKeyframeInfo *)arg1 atOrBefore:(double)arg2 fromParam:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
+- (id)keyframeInfo:(struct FxKeyframeInfo *)arg1 atOrBeforeFxTime:(CDUnion_2516e51e)arg2 fromParam:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
 - (id)param:(unsigned long long)arg1 channel:(unsigned long long)arg2 hasKeyframe:(char *)arg3 atTime:(double)arg4;
+- (id)param:(unsigned long long)arg1 channel:(unsigned long long)arg2 hasKeyframe:(char *)arg3 atFxTime:(CDUnion_2516e51e)arg4;
 - (id)removeKeyframeAtIndex:(unsigned long long)arg1 fromParam:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
 - (id)addKeyframe:(struct FxKeyframeInfo)arg1 toParam:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
 - (id)setKeyframe:(unsigned long long)arg1 withInfo:(struct FxKeyframeInfo)arg2 forParam:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
 - (id)keyframeInfo:(struct FxKeyframeInfo *)arg1 forParam:(unsigned long long)arg2 channel:(unsigned long long)arg3 andIndex:(unsigned long long)arg4;
 - (id)keyframeCount:(unsigned long long *)arg1 forParam:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
 - (id)channelCount:(unsigned long long *)arg1 forParam:(unsigned long long)arg2;
+- (BOOL)setAsDefaultsAtFxTime:(CDUnion_2516e51e)arg1 withError:(id *)arg2;
 - (id)setAsDefaultsAtTime:(double)arg1;
+- (id)_setAsDefaultsAtTime:(CDUnion_2516e51e)arg1;
 - (id)setPopupMenuParameter:(unsigned int)arg1 entries:(id)arg2 defaultValue:(unsigned int)arg3;
 - (id)setParameter:(unsigned int)arg1 intMinimum:(int)arg2 maximum:(int)arg3 sliderMinimum:(int)arg4 sliderMaximum:(int)arg5;
 - (id)parameter:(unsigned int)arg1 intMinimum:(int *)arg2 maximum:(int *)arg3 sliderMinimum:(int *)arg4 sliderMaximum:(int *)arg5;

@@ -8,14 +8,19 @@
 
 #import "NSComboBoxDelegate.h"
 
-@class FFChannelChangeController, FFFontSettingsSegmentedControl, FFTitleOSC, LKButton, LKColorWell, LKComboBox, LKMenu, LKPopUpButton, LKTextField, NSView;
+@class FFChannelChangeController, FFFontSettingsColorWell, FFFontSettingsSegmentedControl, FFTitleOSC, LKButton, LKColorWell, LKComboBox, LKMenu, LKPopUpButton, LKTextField, NSProView, NSString, NSView;
 
 @interface FFFontSettingsTool : FFAdjustmentTool <NSComboBoxDelegate>
 {
     NSView *_adjustmentToolbarView;
     FFFontSettingsSegmentedControl *_formatButton;
     FFFontSettingsSegmentedControl *_hAlignmentButton;
+    NSProView *_tailView;
     LKColorWell *_colorPickerButton;
+    NSProView *_appPreviewTailView;
+    FFFontSettingsColorWell *_textColorPickerButton;
+    FFFontSettingsColorWell *_bckgColorPickerButton;
+    LKTextField *_bckgColorLabel;
     LKPopUpButton *_fontMenu;
     LKMenu *_fontSelectionMenu;
     LKButton *_colorDisabled;
@@ -37,8 +42,17 @@
 + (id)displayName;
 + (void)initialize;
 + (id)groups;
+- (void)deactivateBackgroundColorWell;
+- (id)activeColorWell;
+- (void)makeTextFieldFirstResponder;
+- (BOOL)isCurrentTitleAppPreviewContent;
+- (BOOL)isAppPreviewContent:(id)arg1;
+- (id)labelForCustomColor:(id)arg1;
+- (BOOL)allowsBackgroundColorChange:(id)arg1;
+- (BOOL)allowsPositionChange:(id)arg1;
 - (void)comboBoxSelectionIsChanging:(id)arg1;
 - (void)comboBoxSelectionDidChange:(id)arg1;
+- (void)controlTextDidEndEditing:(id)arg1;
 - (void)controlTextDidChange:(id)arg1;
 - (void)controlTextDidBeginEditing:(id)arg1;
 - (BOOL)skims;
@@ -64,12 +78,11 @@
 - (void)changeFormatForField:(unsigned long long)arg1 inRange:(struct _NSRange)arg2;
 - (void)fontNameChanged:(id)arg1;
 - (void)changeFontNameForField:(unsigned long long)arg1 inRange:(struct _NSRange)arg2;
-- (void)fontSizeSliderChanged:(id)arg1;
-- (void)setFontSize:(id)arg1;
 - (void)fontSizeSliderChangedSize:(double)arg1;
 - (void)changeFontSizeForField:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 size:(double)arg3;
-- (void)colorChanged:(id)arg1;
 - (void)changeColorForField:(unsigned long long)arg1 inRange:(struct _NSRange)arg2;
+- (void)backgroundColorChanged:(id)arg1;
+- (void)textColorChanged:(id)arg1;
 - (void)disableEditingModeAndSaveTitle:(id)arg1;
 - (BOOL)isEditingText;
 - (void)setEditingMode:(id)arg1;
@@ -79,10 +92,17 @@
 - (void)resetChannelsForObject:(id)arg1;
 - (id)newAdjustmentDictionaryForSelection:(id)arg1;
 - (id)_newOSCWithTitle:(id)arg1;
+- (void)appWillTerminate:(id)arg1;
 - (void)_handlePlayPause:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)awakeFromNib;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

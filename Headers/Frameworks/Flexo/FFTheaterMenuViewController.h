@@ -9,7 +9,7 @@
 #import "NSTableViewDataSource.h"
 #import "NSTableViewDelegate.h"
 
-@class FFTheaterItem, FFTheaterMenuRolloverTableView;
+@class FFTheaterItem, FFTheaterMenuRolloverTableView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFTheaterMenuViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
@@ -35,6 +35,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithDelegate:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

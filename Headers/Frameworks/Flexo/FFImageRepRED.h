@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     FFScheduleTokenRED *_schedToken;
 }
 
+- (BOOL)canCreateTextureBuffer;
 - (struct CGColorSpace *)colorSpace;
 - (id)pixelTransform;
 - (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;

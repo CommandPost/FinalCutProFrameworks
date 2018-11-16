@@ -8,7 +8,7 @@
 
 #import "MKMapViewDelegate.h"
 
-@class MKMapView, NSMutableArray, NSMutableDictionary, NSPredicate;
+@class FFMDPhotoLibraryPlacesGroupQuery, MKMapView, NSMutableArray, NSMutableDictionary, NSPredicate, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMDPhotoPlacesViewController : FFMDPhotoAbstractViewController <MKMapViewDelegate>
@@ -17,34 +17,52 @@ __attribute__((visibility("hidden")))
     MKMapView *_offscreenAllAnnotationsMapView;
     NSMutableDictionary *_memoizedGroupCoordinatesKeyedByID;
     NSMutableDictionary *_memoizedGroupWeightsKeyedByID;
+    NSMutableDictionary *_memoizedGroupBoundsKeyedByID;
     struct FFProcrastinatedDispatch_t _procrastinatedCluster;
     NSPredicate *_searchFilterPredicate;
     NSMutableArray *_unclusteredAnnotations;
+    FFMDPhotoLibraryPlacesGroupQuery *_dataQuery;
+    CDStruct_02837cd9 annotationMapBounds;
 }
 
+@property(nonatomic) CDStruct_02837cd9 annotationMapBounds; // @synthesize annotationMapBounds;
 @property(retain, nonatomic) NSPredicate *searchFilterPredicate; // @synthesize searchFilterPredicate=_searchFilterPredicate;
+@property(retain, nonatomic) NSMutableDictionary *memoizedGroupBoundsKeyedByID; // @synthesize memoizedGroupBoundsKeyedByID=_memoizedGroupBoundsKeyedByID;
 @property(retain, nonatomic) NSMutableDictionary *memoizedGroupWeightsKeyedByID; // @synthesize memoizedGroupWeightsKeyedByID=_memoizedGroupWeightsKeyedByID;
 @property(retain, nonatomic) NSMutableDictionary *memoizedGroupCoordinatesKeyedByID; // @synthesize memoizedGroupCoordinatesKeyedByID=_memoizedGroupCoordinatesKeyedByID;
 @property(retain, nonatomic) MKMapView *offscreenAllAnnotationsMapView; // @synthesize offscreenAllAnnotationsMapView=_offscreenAllAnnotationsMapView;
 @property(nonatomic) MKMapView *mapView; // @synthesize mapView=_mapView;
+@property(retain, nonatomic) FFMDPhotoLibraryPlacesGroupQuery *dataQuery; // @synthesize dataQuery=_dataQuery;
+- (void)writeViewPrefsToDict:(id)arg1;
+- (void)readViewPrefsFromDict:(id)arg1;
 - (void)_showContentsOfAnnotation:(id)arg1;
 - (void)_clusterAnnotations;
-- (id)_annotationInGrid:(CDStruct_2f492f29)arg1 usingAnnotations:(id)arg2;
-- (CDStruct_2c43369c)_coordinateForGroup:(id)arg1 getWeight:(double *)arg2;
-- (CDStruct_2c43369c)_coordinateForAnnotations:(id)arg1;
+- (id)_annotationInGrid:(CDStruct_02837cd9)arg1 usingAnnotations:(id)arg2;
+- (CDStruct_c3b9c2ee)_coordinateForGroup:(id)arg1 getWeight:(double *)arg2 getBounds:(CDStruct_02837cd9 *)arg3;
+- (CDStruct_c3b9c2ee)_coordinateForAnnotations:(id)arg1;
 - (void)mapView:(id)arg1 didAddAnnotationViews:(id)arg2;
 - (void)mapView:(id)arg1 didDeselectAnnotationView:(id)arg2;
 - (void)mapView:(id)arg1 didSelectAnnotationView:(id)arg2;
 - (void)mapView:(id)arg1 regionDidChangeAnimated:(BOOL)arg2;
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;
-- (void)filterByString:(id)arg1;
+- (void)filterStringChanged;
+- (void)resetQuery;
 - (void)reloadData;
+- (void)_reloadDataWithZoom:(BOOL)arg1;
+- (void)_zoomToAnnotations:(id)arg1 animated:(BOOL)arg2;
+- (CDStruct_02837cd9)_boundsForMediaObject:(id)arg1 inGroup:(id)arg2;
 - (id)_supportedPlacesGroupTypeIdentifiers;
-- (void)_syncToSelection;
-- (void)viewControllerDidUnhide;
+- (id)selectedItems;
+- (void)viewDidAppear;
 - (void)dealloc;
 - (void)loadView;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 
