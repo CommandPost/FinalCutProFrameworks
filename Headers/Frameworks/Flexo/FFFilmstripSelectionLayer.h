@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldHideHandles;
 @property(readonly, nonatomic) struct CGRect rightSelectionHandleRect;
 @property(readonly, nonatomic) struct CGRect leftSelectionHandleRect;
+- (void)setTimeRange:(CDStruct_e83c9415)arg1 focused:(BOOL)arg2 emphasized:(BOOL)arg3;
 @property(nonatomic) CDStruct_e83c9415 timeRange;
 - (long long)_themeState;
 - (void)_updateFrameProperties;

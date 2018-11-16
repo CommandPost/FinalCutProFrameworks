@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     FFSegmentStore *_store;
     id _sample;
     int _svPriority;
+    _Bool _errorFrame;
 }
 
 + (void)initialize;

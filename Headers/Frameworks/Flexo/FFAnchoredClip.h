@@ -28,6 +28,7 @@
 @property(readonly, nonatomic) FFAudioClipComponentsLayoutMap *persistentAudioComponentsLayoutMap;
 - (int)multiAngleDetail;
 - (void)_isThrougheditOnLeft:(BOOL)arg1 throughEditVideo:(char *)arg2 throughEditAudio:(char *)arg3 sameMultiangle:(char *)arg4;
+- (BOOL)supportsLogProcessing;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
 - (BOOL)supportsRoles;

@@ -142,6 +142,7 @@
 - (BOOL)objectInContainedItems:(id)arg1;
 - (id)anchoredItems;
 - (BOOL)hasContainedItems;
+- (BOOL)supportsLogProcessing;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
 - (BOOL)isComponent;

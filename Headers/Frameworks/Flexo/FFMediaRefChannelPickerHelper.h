@@ -23,7 +23,7 @@
 - (id)channelFolderToRecordForAnchoredObject:(id)arg1;
 - (id)effectToRecordForAnchoredObject:(id)arg1;
 - (id)effectStackToRecordForAnchoredObject:(id)arg1;
-- (void)pickAnchoredObject:(id)arg1;
+- (void)pickAnchoredObject:(id)arg1 atOffset:(CDStruct_1b6d18a9)arg2;
 - (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
 - (void)matchToolWasResigned:(id)arg1;
 - (void)matchToolWasAssigned:(id)arg1;

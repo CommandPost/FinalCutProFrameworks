@@ -32,6 +32,9 @@
     long long _colorSpaceOverride;
     NSIndexSet *_supportedColorSpaceOverrides;
     long long _anamorphicType;
+    int _logEncodingType;
+    long long _logProcessingMode;
+    NSIndexSet *_supportedLogProcessingModes;
     long long _audioSourceCount;
     NSDictionary *_audioSourceDict;
     NSDictionary *_videoSourceDict;
@@ -110,6 +113,8 @@
 - (BOOL)isPSD;
 - (void)setMediaIdentifierForOfflineAsset:(id)arg1;
 - (id)assetFilename;
+- (BOOL)supportsLogProcessing;
+@property(nonatomic) long long logProcessingMode;
 - (BOOL)supportsColorSpaceOverride;
 @property(nonatomic) long long colorSpaceOverride; // @synthesize colorSpaceOverride=_colorSpaceOverride;
 - (BOOL)supportsAnamorphicType;
