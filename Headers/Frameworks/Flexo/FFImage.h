@@ -6,12 +6,15 @@
 
 #import "NSObject.h"
 
-@class FFImageRep, NSMutableDictionary;
+@class FFImageRep, NSMutableDictionary, NSObject<OS_dispatch_semaphore>, NSString;
 
 @interface FFImage : NSObject
 {
     FFImageRep *_representation;
+    NSObject<OS_dispatch_semaphore> *_semaphore;
     struct opaqueCMSampleBuffer *_sampleBuffer;
+    id <SampleBufferProvider> _sampleBufferProvider;
+    NSString *_eventDocumentIDAndPath;
     BOOL _sampleBufferAlphaKnownToBeFullyOpaque;
     int _errorCode;
     NSMutableDictionary *_dict;
@@ -53,12 +56,12 @@
 - (void)setErrorCode:(int)arg1;
 - (int)errorCode;
 - (BOOL)sampleBufferAlphaKnownToBeFullyOpaque;
+- (id)eventDocumentIDAndPath;
 - (struct opaqueCMSampleBuffer *)sampleBuffer;
-- (void)setSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 knownToBeFullyOpaque:(BOOL)arg2;
+- (void)setSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 sampleBufferProvider:(id)arg2 eventDocumentIDAndPath:(id)arg3 knownToBeFullyOpaque:(BOOL)arg4;
 - (id)representation;
 - (id)mutableCopy;
 - (void)dealloc;
-- (id)initWithImage:(id)arg1;
 - (id)initWithRepresentation:(id)arg1;
 - (struct HGNode *)newHGNodeWithBackground:(struct CGRect)arg1 bgColor:(id)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
 - (struct HGNode *)newHGNodeWithPreTransformAndCropWithPixelFormat:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 filterQuality:(int)arg4 preTransform:(id)arg5 cropRect:(struct CGRect)arg6;

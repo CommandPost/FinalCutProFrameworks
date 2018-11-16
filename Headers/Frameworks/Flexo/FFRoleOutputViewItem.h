@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSPopUpButton *_rolesPopUpButton;
     NSPopUpButton *_audioChannelLayoutPopUpButton;
     NSButton *_removeButton;
+    BOOL _observing;
 }
 
 + (id)keyPathsForValuesAffectingIsAudioOutput;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) NSPopUpButton *rolesPopUpButton; // @synthesize rolesPopUpButton=_rolesPopUpButton;
 @property(nonatomic) NSArrayController *roleOutputsController; // @synthesize roleOutputsController=_roleOutputsController;
 @property(nonatomic) FFShareDestinationExportMediaController *exportMediaController; // @synthesize exportMediaController=_exportMediaController;
+- (void)viewFrameDidChange:(id)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 - (void)updateAudioChannelLayoutMenu;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)remove:(id)arg1;
 - (void)add:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (void)awakeFromNib;
 
 @end

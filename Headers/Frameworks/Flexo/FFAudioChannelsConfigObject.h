@@ -32,8 +32,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)useAutoDetectedLayout;
 - (BOOL)supportsAutoDetectedLayout;
 - (id)componentSources;
-- (void)setCollapsed:(BOOL)arg1;
-- (BOOL)isCollapsed;
 - (id)backingAnchoredObject;
 - (struct NSObject *)skimmableObject;
 - (id)displayName;

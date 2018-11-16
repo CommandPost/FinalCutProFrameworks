@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     LKPopUpButton *_comparisonPopup;
     LKTextField *_textField;
+    struct FFProcrastinatedDispatch_t _textEntryProcrstinatedDispatch;
 }
 
 @property(readonly, nonatomic) LKTextField *textField; // @synthesize textField=_textField;
@@ -20,6 +21,8 @@ __attribute__((visibility("hidden")))
 - (void)controlTextDidChange:(id)arg1;
 - (id)filterDict;
 - (void)setFilterDict:(id)arg1;
+- (void)dealloc;
+- (void)viewWillBeRemoved;
 - (void)awakeFromNib;
 
 @end

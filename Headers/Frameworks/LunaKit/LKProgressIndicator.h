@@ -6,13 +6,17 @@
 
 #import "NSProProgressIndicator.h"
 
+@class NSProThemeFacet;
+
 @interface LKProgressIndicator : NSProProgressIndicator
 {
+    NSProThemeFacet *_progressSpinnerFacet;
 }
 
 - (id)progressSpinnerFacet;
 - (id)progressBarFillFacet;
 - (id)progressBarBackgroundFacet;
+- (void)dealloc;
 
 @end
 

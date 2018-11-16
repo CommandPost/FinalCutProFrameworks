@@ -72,6 +72,7 @@
     BOOL mUseCMTime;
 }
 
+@property(retain) NSTimer *forceStopFileWritingTimer; // @synthesize forceStopFileWritingTimer=mForceStopFileWritingTimer;
 @property BOOL useCMTime; // @synthesize useCMTime=mUseCMTime;
 @property CDStruct_1b6d18a9 currentOutTime; // @synthesize currentOutTime=mCurrentOutTime;
 @property CDStruct_1b6d18a9 currentInTime; // @synthesize currentInTime=mCurrentInTime;

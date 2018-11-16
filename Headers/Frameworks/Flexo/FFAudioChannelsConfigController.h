@@ -20,9 +20,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
-- (BOOL)audioChannelsConfigViewModule:(id)arg1 isCollapsedForChannelFolder:(id)arg2;
-- (void)audioChannelsConfigViewModule:(id)arg1 setCollapsed:(BOOL)arg2 forChannelFolder:(id)arg3;
-- (void)audioChannelsConfigViewModule:(id)arg1 showAudioChannelsConfig:(BOOL)arg2;
 - (BOOL)audioChannelsConfigViewModule:(id)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
 - (void)audioChannelsConfigViewModuleStopSkimmingInViewer:(id)arg1;
 - (BOOL)audioChannelsConfigViewModule:(id)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4;

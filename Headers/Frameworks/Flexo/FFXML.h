@@ -10,13 +10,11 @@
 {
 }
 
-+ (void)alertUserToXMLImportWarnings:(id)arg1 url:(id)arg2;
-+ (void)alertUserToXMLImportWarnings:(id)arg1;
-+ (id)libraryEventsForProjects:(id)arg1;
-+ (id)import:(id)arg1 library:(id)arg2 warnings:(id *)arg3 error:(id *)arg4;
-+ (BOOL)exportClip:(id)arg1 stream:(id)arg2 error:(id *)arg3;
-+ (BOOL)exportProject:(id)arg1 toURL:(id)arg2 stream:(id)arg3 taskDelegate:(id)arg4 error:(id *)arg5;
-+ (BOOL)exportProject:(id)arg1 toURL:(id)arg2 taskDelegate:(id)arg3 error:(id *)arg4;
++ (BOOL)supportsObjectForExport:(id)arg1;
++ (id)import:(id)arg1 library:(id)arg2 taskDelegate:(id)arg3 warnings:(id *)arg4 error:(id *)arg5;
++ (BOOL)exportEvents:(id)arg1 usingVersion:(id)arg2 toURL:(id)arg3 taskDelegate:(id)arg4 error:(id *)arg5;
++ (BOOL)exportEventClips:(id)arg1 usingVersion:(id)arg2 toURL:(id)arg3 taskDelegate:(id)arg4 error:(id *)arg5;
++ (id)newExporterWithVersion:(id)arg1 url:(id)arg2 taskDelegate:(id)arg3;
 
 @end
 

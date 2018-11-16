@@ -19,6 +19,7 @@
 + (id)toolTip;
 + (long long)sortOrderForGroup:(id)arg1;
 + (id)groups;
++ (id)toolTipDescriptionDisabled;
 + (id)displayName;
 + (BOOL)isToolForTLKEventHandler:(id)arg1;
 + (id)TLKEventHandlerID;
@@ -26,6 +27,8 @@
 - (BOOL)isToolClassOrSubToolClassOf:(Class)arg1;
 - (unsigned int)adjustmentState;
 - (void)setAdjustmentState:(unsigned int)arg1;
+- (void)ensureSourceCropisValidForSimmableAndTool:(struct NSObject *)arg1;
+- (BOOL)isSourceCropTool;
 - (BOOL)isCropTool;
 - (id)adjustmentsToolbarView;
 - (id)matchWindow;

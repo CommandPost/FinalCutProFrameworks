@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSArray *_effectBundleSnapshots;
     NSArray *_effectsDefaultData;
     NSString *_name;
+    NSString *_description;
     double _defaultValue;
     NSSet *_unriggedChannelIndexPaths;
     NSSet *_modifiedEffectsIndexList;
@@ -62,6 +63,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasEffectChannelsInFolder:(id)arg1;
 - (void)deleteEffectChannelsInFolder:(id)arg1;
 - (void)createEffectChannelsInFolder:(id)arg1;
+- (void)setDescription:(id)arg1;
+- (id)description;
 - (void)setName:(id)arg1;
 - (id)name;
 - (void)removeObjectFromEffectBundleSnapshotsAtIndex:(unsigned long long)arg1;

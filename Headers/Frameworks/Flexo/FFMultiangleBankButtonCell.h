@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long colCount; // @synthesize colCount;
 @property(nonatomic) long long rowCount; // @synthesize rowCount;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
 

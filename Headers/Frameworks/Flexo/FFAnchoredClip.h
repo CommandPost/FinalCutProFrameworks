@@ -18,6 +18,7 @@
 }
 
 + (id)copyClassDescription;
+- (id)createUsedRangesMediaIdentifier;
 - (id)referenceAudioComponentsLayoutMap;
 - (id)anchoredObjectsForAudioComponentsLayoutKey:(id)arg1;
 - (id)activeAudioComponentsLayoutKeys;
@@ -26,6 +27,7 @@
 @property(readonly, nonatomic) FFAudioClipComponentsLayoutMap *persistentAudioComponentsLayoutMap;
 - (int)multiAngleDetail;
 - (void)_isThrougheditOnLeft:(BOOL)arg1 throughEditVideo:(char *)arg2 throughEditAudio:(char *)arg3 sameMultiangle:(char *)arg4;
+- (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
@@ -52,10 +54,14 @@
 - (void)_mediaChanged:(id)arg1;
 - (double)referencedPrimaryAudioSampleRate;
 - (long long)referencedPrimaryAudioChannelCount;
+- (id)referencedSequence;
+- (id)clipRef;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 @property(readonly, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
 @property(readonly, nonatomic) FFEffectStack *videoEffects; // @synthesize videoEffects=_videoEffects;
+- (BOOL)hasDefinedVideoRate;
 - (BOOL)isReferenceClip;
+- (BOOL)isMultiAngle;
 - (BOOL)objectInContainedItems:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

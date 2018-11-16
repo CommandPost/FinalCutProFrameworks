@@ -40,7 +40,9 @@ __attribute__((visibility("hidden")))
 - (void)setSkimmingPlayheadHidden:(BOOL)arg1;
 - (BOOL)popUpMenu:(id)arg1 positioningItem:(id)arg2 atPoint:(struct CGPoint)arg3;
 - (struct CGPoint)eventLocationInLayer:(id)arg1;
+- (struct CGPoint)eventLocation:(id)arg1;
 - (struct CGPoint)mouseLocationInLayer;
+- (struct CGPoint)convertPointToLayer:(struct CGPoint)arg1;
 - (id)contextMenuForPart:(id)arg1;
 - (BOOL)shouldAutoscroll:(id)arg1;
 - (void)flagsChanged:(id)arg1;
@@ -60,7 +62,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)ownsFocus;
 - (struct CGPoint)_convertPointToScreen:(struct CGPoint)arg1;
 - (struct CGPoint)_convertPointToView:(struct CGPoint)arg1;
-- (struct CGPoint)_convertPointToLayer:(struct CGPoint)arg1;
 - (id)hostView;
 - (id)_hostView;
 - (id)_findHost;

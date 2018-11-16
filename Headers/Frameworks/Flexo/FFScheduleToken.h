@@ -21,6 +21,8 @@
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (id)description;
 - (void)hintCacheData:(unsigned int)arg1;
+- (_Bool)prepareDecodedImageWithTimeout:(id)arg1;
+- (_Bool)prepareForImagingWithTimeout:(id)arg1;
 - (_Bool)hintWillImageSoon;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (_Bool)areStatusFlagsClear:(unsigned int)arg1;

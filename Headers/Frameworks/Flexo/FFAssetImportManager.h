@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)importRangesOfMedia:(id)arg1 toEvent:(id)arg2 keywords:(id)arg3 importStartDate:(id)arg4;
 - (void)appWillTerminate:(id)arg1;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

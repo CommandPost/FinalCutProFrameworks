@@ -8,14 +8,13 @@
 
 #import "NSOpenSavePanelDelegate.h"
 
-@class FFImportLocationPopUpController, LKButton, LKPopUpButton, NSMatrix;
+@class LKButton, NSMatrix;
 
 @interface PEAppImportPreferencesModule : NSProPreferencesModule <NSOpenSavePanelDelegate>
 {
-    FFImportLocationPopUpController *_importLocationPopUpController;
-    LKPopUpButton *_importLocationPopUpButton;
     NSMatrix *_importLocationRadioButtonMatrix;
     LKButton *_addFolderKeywordsCheckBox;
+    LKButton *_addTagKeywordsCheckBox;
     LKButton *_optimizeMediaCheckBox;
     LKButton *_createProxyMediaCheckBox;
     LKButton *_createStillCacheCheckBox;
@@ -30,7 +29,6 @@
 }
 
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)willBeDisplayed;
 - (BOOL)findPeopleEnabled;
 - (id)titleForIdentifier:(id)arg1;
 - (void)dealloc;

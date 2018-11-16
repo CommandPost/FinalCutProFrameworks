@@ -11,7 +11,6 @@
 }
 
 - (long long)_dimension1;
-- (id)toolTip;
 - (int)displayType;
 - (id)moduleKey;
 - (id)iconImage:(BOOL)arg1;

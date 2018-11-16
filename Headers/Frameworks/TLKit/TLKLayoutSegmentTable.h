@@ -24,6 +24,9 @@
 - (id)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 spineItems:(id)arg4 timeRangeBlock:(CDUnknownBlockType)arg5;
 - (id)calculateLayoutSegments;
 - (id)_updateItemTimeRangesWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateLayoutSegmentsInTimeRange:(CDStruct_e83c9415)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (struct _NSRange)rangeOfLayoutSegmentsInTimeRange:(CDStruct_e83c9415)arg1;
+- (id)layoutSegmentAtTime:(CDStruct_1b6d18a9)arg1;
 - (id)layoutSegmentForItem:(id)arg1;
 - (void)removeObject:(id)arg1;
 - (void)_addSpineObject:(id)arg1 withTimeRange:(CDStruct_e83c9415)arg2;

@@ -29,6 +29,9 @@
     NSPopUpButton *multiAngleSyncByMenu;
     NSPopUpButton *multiAngleArrangeByMenu;
     NSPopUpButton *multiAngleOrderByMenu;
+    NSTextField *multiAngleSyncByText;
+    NSTextField *multiAngleArrangeByText;
+    NSTextField *multiAngleOrderByText;
     NSButton *multiAngleFineSyncByAudio;
     NSBox *multiAngleBox;
     NSMatrix *videoModeMatrix;
@@ -55,14 +58,18 @@
     BOOL _automaticBasedOnMostCommon;
     BOOL _createAutomatically;
     BOOL _userModifySettings;
+    BOOL _canShowCustomSettings;
+    int _sequenceType;
+    BOOL _createNotModify;
     FFProject *_project;
     NSInvocation *_completionCallback;
     NSString *_startTimeString;
     FFLibrary *_defaultSelectedLibrary;
 }
 
-+ (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 videoSetPropertyManually:(BOOL)arg9 audioSetPropertyManually:(BOOL)arg10 videoSetPropertyManuallyForCompoundClip:(BOOL)arg11 audioSetPropertyManuallyForCompoundClip:(BOOL)arg12 videoSetPropertyManuallyForMultiCam:(BOOL)arg13 audioSetPropertyManuallyForMultiCam:(BOOL)arg14 createAutomatically:(BOOL)arg15 createCompoundClipAutomatically:(BOOL)arg16 createMultiCamAutomatically:(BOOL)arg17 multiAngleSyncBy:(int)arg18 multiAngleArrangeBy:(int)arg19 multiAngleOrderBy:(int)arg20 multiAngleFineSyncByAudio:(BOOL)arg21;
++ (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 videoSetPropertyManually:(BOOL)arg9 audioSetPropertyManually:(BOOL)arg10 videoSetPropertyManuallyForCompoundClip:(BOOL)arg11 audioSetPropertyManuallyForCompoundClip:(BOOL)arg12 videoSetPropertyManuallyForSynchronizedClip:(BOOL)arg13 audioSetPropertyManuallyForSynchronizedClip:(BOOL)arg14 videoSetPropertyManuallyForMultiCam:(BOOL)arg15 audioSetPropertyManuallyForMultiCam:(BOOL)arg16 createAutomatically:(BOOL)arg17 createCompoundClipAutomatically:(BOOL)arg18 createSynchronizedClipAutomatically:(BOOL)arg19 syncClipSyncBy:(int)arg20 syncClipFineSyncByAudio:(BOOL)arg21 createMultiCamAutomatically:(BOOL)arg22 multiAngleSyncBy:(int)arg23 multiAngleArrangeBy:(int)arg24 multiAngleOrderBy:(int)arg25 multiAngleFineSyncByAudio:(BOOL)arg26;
 @property(retain, nonatomic) FFLibrary *defaultSelectedLibrary; // @synthesize defaultSelectedLibrary=_defaultSelectedLibrary;
+@property(nonatomic) BOOL canShowCustomSettings; // @synthesize canShowCustomSettings=_canShowCustomSettings;
 - (BOOL)validate:(id *)arg1;
 - (void)closingWithCode:(int)arg1;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;
@@ -81,6 +88,7 @@
 - (void)setAudioManualSettingsHidden:(BOOL)arg1;
 - (void)setVideoModeMatrixHidden:(BOOL)arg1;
 - (void)setVideoManualSettingsHidden:(BOOL)arg1;
+- (void)setMultiAngleSettingsForSynchronizeClips;
 - (void)setMultiAngleSettingsHidden:(BOOL)arg1;
 - (void)setMultiAngleAudioSyncSettingsHidden:(BOOL)arg1;
 - (void)setMediaEventSettingsHidden:(BOOL)arg1;
@@ -118,15 +126,17 @@
 - (void)setAutomaticBasedOnMostCommon:(BOOL)arg1;
 - (void)setForceToCustomizeVideoProperty:(BOOL)arg1;
 - (void)setCompletionCallback:(id)arg1;
-- (BOOL)inCreationMode;
-- (BOOL)isNewProject;
-- (BOOL)isNewEvent;
+- (BOOL)showCustomSettingsButton;
+- (BOOL)createProjectOrEvent;
+- (BOOL)createProject;
+- (BOOL)createEvent;
 - (BOOL)isEmptyProject;
-- (BOOL)editOldCompoundClipOrSynchronizedClip;
+- (BOOL)editSynchronizedClip;
 - (BOOL)editCompoundClip;
-- (BOOL)editProjectSetting;
+- (BOOL)editProject;
 - (BOOL)editMultiAngleClip;
 - (BOOL)createMultiAngleClip;
+- (BOOL)createSynchronizedClip;
 - (BOOL)createCompoundClip;
 - (void)setProject:(id)arg1;
 - (id)project;
@@ -135,7 +145,7 @@
 - (BOOL)modifySequenceSettings;
 - (void)dealloc;
 - (void)awakeFromNib;
-- (id)initWithProvider:(id)arg1;
+- (id)initWithProvider:(id)arg1 sequenceType:(int)arg2 createNotModify:(BOOL)arg3;
 
 @end
 

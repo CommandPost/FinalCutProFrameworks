@@ -18,7 +18,6 @@
     struct CGColorSpace *_601_EBU_ColorSpace;
     struct CGColorSpace *_canonDSLR_116_NCLC_Space;
     struct CGColorSpace *_sanyo_611_NCLC_Space;
-    struct CGColorSpace *_ARRI_LogC_ColorSpace;
     struct CGColorSpace *_CGColorSpaceGenericGray;
     struct CGColorSpace *_CGColorSpaceGenericRGB;
     struct CGColorSpace *_CGColorSpaceGenericRGBLinear;
@@ -34,7 +33,6 @@
 @property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericRGBLinear; // @synthesize CGColorSpaceGenericRGBLinear=_CGColorSpaceGenericRGBLinear;
 @property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericRGB; // @synthesize CGColorSpaceGenericRGB=_CGColorSpaceGenericRGB;
 @property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericGray; // @synthesize CGColorSpaceGenericGray=_CGColorSpaceGenericGray;
-@property(readonly, nonatomic) struct CGColorSpace *ARRI_LogC_ColorSpace; // @synthesize ARRI_LogC_ColorSpace=_ARRI_LogC_ColorSpace;
 @property(readonly, nonatomic) struct CGColorSpace *sanyo_611_NCLC_ColorSpace; // @synthesize sanyo_611_NCLC_ColorSpace=_sanyo_611_NCLC_Space;
 @property(readonly, nonatomic) struct CGColorSpace *canonDSLR_116_NCLC_ColorSpace; // @synthesize canonDSLR_116_NCLC_ColorSpace=_canonDSLR_116_NCLC_Space;
 @property(readonly, nonatomic) struct CGColorSpace *standard601_EBU_ColorSpace; // @synthesize standard601_EBU_ColorSpace=_601_EBU_ColorSpace;

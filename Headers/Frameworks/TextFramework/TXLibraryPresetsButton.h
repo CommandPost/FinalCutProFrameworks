@@ -8,10 +8,14 @@
 
 @interface TXLibraryPresetsButton : OZLibraryPresetsButton
 {
+    struct PCMutex _imageLock;
 }
 
 + (void)initialize;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)setCellImage:(id)arg1;
 - (void)viewDidMoveToWindow;
 - (void)_commonInit;
 - (void)addItemWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3;

@@ -6,23 +6,27 @@
 
 #import "NSObject.h"
 
-@class NSConditionLock, NSOperationQueue;
+@class NSCondition, NSOperationQueue;
 
 __attribute__((visibility("hidden")))
 @interface FFSegmentStoreOperationQueue : NSObject
 {
     NSOperationQueue *_primaryQueue;
     NSOperationQueue *_housekeepingQueue;
-    NSConditionLock *_fullCondition;
+    NSCondition *_guard;
+    _Bool _mainThreadWaiting;
+    int _waitersWithReadLock;
     unsigned int _queueLength;
     unsigned int _unfinishedOps;
 }
 
 - (void)waitForAllOperationsToFinish;
+- (void)enqueueHousekeepingOp:(id)arg1;
+- (void)performBlockWhenPendingSamplesFinish:(CDUnknownBlockType)arg1;
 - (void)addInvocationWhenPendingSamplesFinish:(id)arg1;
 - (void)cancelPendingOperations;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)enqueue:(id)arg1 mustQueue:(BOOL)arg2;
+- (_Bool)_spaceAvailable;
 - (void)dealloc;
 - (id)initWithThreadCount:(long long)arg1 queueLength:(unsigned int)arg2;
 

@@ -48,7 +48,8 @@
 - (void)_finishPrecisionEditorLayoutWithFinalState:(int)arg1 savedVisibleRectState:(id)arg2;
 - (id)layoutContextForContainer:(id)arg1 atLocation:(double)arg2;
 - (CDStruct_1b6d18a9)timeForPoint:(struct CGPoint)arg1;
-- (struct CGPoint)wrappedPointForPoint:(struct CGPoint)arg1;
+- (struct CGPoint)wrappedPointForPoint:(struct CGPoint)arg1 timeMovement:(int)arg2;
+- (int)timeMovementFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
 - (struct _TLKRange)locationRangeForPoint:(struct CGPoint)arg1;
 - (struct CGPoint)pointForLocation:(double)arg1;
 - (id)lineFragmentForPoint:(struct CGPoint)arg1;
@@ -56,10 +57,14 @@
 - (id)lineFragmentContainingLocation:(double)arg1;
 - (struct _TLKRange)locationRangeForRect:(struct CGRect)arg1;
 - (struct CGPoint)constrainPointToNonWrappingRegion:(struct CGPoint)arg1;
+- (struct CGRect)convertRect:(struct CGRect)arg1 fromLayoutContext:(id)arg2;
+- (struct CGRect)convertRect:(struct CGRect)arg1 toLayoutContext:(id)arg2;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromLayoutContext:(id)arg2;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 toLayoutContext:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toLineFragment:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromLineFragment:(id)arg2;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromLineFragment:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toLineFragment:(id)arg2;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromLineFragment:(id)arg2;
 - (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 fromContainer:(id)arg2;
 - (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 toContainer:(id)arg2;
 - (struct _TLKRange)convertLocationRange:(struct _TLKRange)arg1 fromContainer:(id)arg2;
@@ -92,7 +97,7 @@
 - (id)_findSpineItemsInLocationRange:(struct _TLKRange)arg1 fromSegments:(id)arg2;
 - (id)_findLayoutSegmentsEndingBeforeLineBreak:(CDStruct_1b6d18a9)arg1 inSegments:(id)arg2;
 - (id)_findLayoutSegmentsStartingBeforeLineBreak:(CDStruct_1b6d18a9)arg1 inSegments:(id)arg2;
-- (void)_purgeDeletedItemComponentFragmentsInSegments:(id)arg1;
+- (void)_purgeItemComponentFragmentsInSegments:(id)arg1;
 - (void)_resetLayoutInfoForSegments:(id)arg1 startingAfterTime:(CDStruct_1b6d18a9)arg2;
 - (BOOL)_prepareLineFragmentForLayout:(id)arg1 afterLineFragment:(id)arg2 withStartTime:(CDStruct_1b6d18a9)arg3;
 - (struct _TLKRange)_hyphenatedLocationRange:(struct _TLKRange)arg1 forSpineItem:(id)arg2;
@@ -116,6 +121,7 @@
 - (id)_itemsNeedingRippleAdjustmentForItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (struct _TLKRange)_locationRangeForItemTimeRange:(CDStruct_e83c9415)arg1 inContainer:(id)arg2;
 - (struct _TLKRange)_roundedLocationRange:(struct _TLKRange)arg1;
+- (id)containerMetricsForContainerInfo:(id)arg1;
 - (id)containerMetricsForContainer:(id)arg1;
 - (id)layoutMetrics;
 @property(nonatomic) BOOL wraps;

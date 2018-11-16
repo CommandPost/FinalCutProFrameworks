@@ -10,9 +10,13 @@
 
 @interface PEMediaEventOrganizerContainerModule : PEOrganizerBaseContainerModule
 {
-    BOOL _isActive;
+    BOOL _isOrganizerActive;
+    BOOL _isSidebarActive;
 }
 
+- (void)showInspectorForSidebarModule:(id)arg1;
+- (void)_showInspectorForSidebarModule:(id)arg1;
+- (void)sidebarModuleDidChangeSelection:(id)arg1;
 - (id)getActiveMediaBrowser;
 - (void)setNumericEntryShowsSubframes:(BOOL)arg1;
 - (void)setNumericEntryDirection:(long long)arg1;

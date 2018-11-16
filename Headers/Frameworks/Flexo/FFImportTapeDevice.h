@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     BOOL _canProcess;
     BOOL _isTapeRolling;
     BOOL _ingestStopped;
+    int _tapeInLowOverheadCount;
     BOOL _addArchiteToFavorites;
     BOOL _isArchivable;
     NSDate *_captureStartDate;

@@ -35,6 +35,7 @@
 - (id)_inspectorIdentifierForItems:(id)arg1;
 - (id)_inspectorClassForItems:(id)arg1;
 - (void)_setupAccessoryViewForCurrentInspector;
+- (void)playerWillEnterFullScreen:(id)arg1;
 - (void)activeToolChanged:(id)arg1;
 - (void)_firstResponderChanged:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

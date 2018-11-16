@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (struct OZObjectManipulator *)getObjectManipulator;
 - (_Bool)getSamples:(const PCMatrix44Tmpl_93ed1289 *)arg1;
 - (id)motionPathOSCColor;
+- (BOOL)shouldShowSpeed;
 - (struct OZSceneNode *)getAssociatedSceneNode;
 - (struct OZSceneNode *)getSceneNode;
 - (void)dealloc;

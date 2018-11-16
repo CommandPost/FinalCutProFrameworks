@@ -23,7 +23,9 @@
     BOOL _stopPlayingIsDown;
     BOOL _fastForwardIsDown;
     BOOL _rewindIsDown;
-    float _lastJKLRate;
+    double _stopPlayingUpLastTimestamp;
+    double _rewindUpLastTimestamp;
+    double _fastForwardUpLastTimestamp;
     int _playerRole;
     LKModuleLayout *_pendingSublayout;
     BOOL _hasVideo;
@@ -41,6 +43,7 @@
     BOOL _displaysProjectInfoOSC;
 }
 
++ (void)notifyAppWillTerminate;
 + (Class)videoModuleClass;
 + (id)defaultSublayoutName;
 @property(nonatomic) BOOL displaysProjectInfoOSC; // @synthesize displaysProjectInfoOSC=_displaysProjectInfoOSC;
@@ -74,6 +77,7 @@
 - (void)providerRangeInvalidation:(id)arg1;
 - (void)sequenceFormatChanged:(id)arg1;
 - (void)_conformStartAndDuration;
+- (void)_conformStartAndDurationWithIgnoreOldLoopRange:(BOOL)arg1;
 - (void)playCompletedWithDropsForContext:(id)arg1 info:(id)arg2;
 - (void)_maybeReportAtPlaybackCompleted:(id)arg1;
 - (void)stoppedDueToDroppedFrameForContext:(id)arg1 dropInfo:(id)arg2;
@@ -86,7 +90,7 @@
 - (BOOL)_shouldLoadProviderForSkimmable:(struct NSObject *)arg1;
 - (BOOL)_isEventProject:(struct NSObject *)arg1;
 - (void)_teardownPlayer;
-- (void)appWillTerminate:(id)arg1;
+- (void)_notifyAppWillTerminate;
 - (id)selectedItems;
 - (id)inspectorClassName;
 - (void)loadEventProject:(id)arg1;

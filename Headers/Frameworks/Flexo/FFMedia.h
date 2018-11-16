@@ -77,6 +77,7 @@
 - (id)metadataVideoSampleRate;
 - (id)metadataVideoFieldDominance;
 - (id)metadataVideoFrameSize;
+- (struct CGSize)pixelFrameSize;
 - (id)metadataMediaDuration;
 - (id)metadataMediaEnd;
 - (id)metadataMediaStart;
@@ -86,6 +87,7 @@
 - (id)rootChannel;
 - (id)fileURLs:(int)arg1;
 - (id)mediaRefs;
+- (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)addClipRefsToSet:(id)arg1;
 - (id)clipRefs;
 - (void)addAssetRefsToSet:(id)arg1;
@@ -119,7 +121,6 @@
 - (CDStruct_e83c9415)combinedAudioVideoClippedRange;
 - (CDStruct_e83c9415)audioClippedRange;
 - (CDStruct_e83c9415)clippedRange;
-- (double)rawMediaAudioSampleRate;
 - (unsigned int)timecodeCounterValue;
 - (struct opaqueCMFormatDescription *)createTimecodeFormatDescription;
 - (id)videoProps;
@@ -148,6 +149,7 @@
 - (void)_clearMarkerDisplayNameIfNeeded:(id)arg1;
 - (BOOL)actionRemoveMarker:(id)arg1 error:(id *)arg2;
 - (BOOL)actionPasteMarker:(id)arg1 toAnchoredObject:(id)arg2 withRange:(CDStruct_e83c9415)arg3 error:(id *)arg4;
+- (BOOL)actionAddMarkerToAnchoredObject:(id)arg1 isToDo:(BOOL)arg2 isChapter:(BOOL)arg3 withRange:(CDStruct_e83c9415)arg4 error:(id *)arg5;
 - (BOOL)actionAddMarkerToAnchoredObject:(id)arg1 withRange:(CDStruct_e83c9415)arg2 error:(id *)arg3;
 - (BOOL)actionAddMarkerWithRange:(CDStruct_e83c9415)arg1 error:(id *)arg2;
 

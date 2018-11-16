@@ -36,6 +36,7 @@
 @property(copy, nonatomic) OZObjCDocument *document; // @synthesize document=_objCDoc;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)logShareDestination:(Class)arg1;
 - (void)setPreviewTime:(double)arg1;
 - (id)previewLayer;
 - (void)showShareMonitor;

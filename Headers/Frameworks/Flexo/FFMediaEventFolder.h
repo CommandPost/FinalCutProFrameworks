@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)indexOfChildWithName:(id)arg1 folderObjectClass:(Class)arg2;
 - (unsigned long long)indexOfChild:(id)arg1;
 - (void)removeObjectFromChildrenAtIndex:(unsigned long long)arg1;
+- (void)addObjectToChildren:(id)arg1;
 - (void)insertObject:(id)arg1 inChildrenAtIndex:(unsigned long long)arg2;
 - (id)objectInChildrenAtIndex:(unsigned long long)arg1;
 - (unsigned long long)countOfChildren;

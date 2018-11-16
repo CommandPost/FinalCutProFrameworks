@@ -45,6 +45,7 @@
 - (void)setSelectionHistoryLevels:(unsigned long long)arg1;
 - (void)redoSelection:(id)arg1;
 - (void)undoSelection:(id)arg1;
+- (void)_undoOpenGroupsIfNeeded;
 - (void)undoNestedSelectionHistoryGroup;
 - (void)endSelectionHistoryGrouping;
 - (void)beginSelectionHistoryGrouping;
@@ -62,6 +63,7 @@
 - (id)selectedObjectsForTimeRange:(CDStruct_e83c9415)arg1;
 - (BOOL)selectTimeRange:(CDStruct_e83c9415 *)arg1 withObjects:(id)arg2 byExtendingSelection:(BOOL)arg3;
 - (id)selectedTimeRangesAndObjects;
+- (void)enumerateSelectedItemsWithSelectionMask:(unsigned long long)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (id)selectedObjectsForSelectionMask:(unsigned long long)arg1;
 - (void)setSelectedTimeRange:(CDStruct_e83c9415)arg1 withObjects:(id)arg2;
 - (void)extendSelection:(id)arg1 selectionMask:(unsigned long long)arg2;

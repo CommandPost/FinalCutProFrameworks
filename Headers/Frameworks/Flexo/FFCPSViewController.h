@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL notificationsInstalled; // @synthesize notificationsInstalled=_notificationsInstalled;
 - (id)scaleImageProportionally:(id)arg1 toSize:(struct CGSize)arg2;
 - (id)sequenceTrailerOrThemeName:(id)arg1;
+- (BOOL)sequenceWasTrailer:(id)arg1;
 - (BOOL)sequenceIsTrailer:(id)arg1;
 - (void)syncToDataItemList;
 - (void)notificationHandler:(id)arg1;

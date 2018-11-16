@@ -72,6 +72,7 @@
 - (void)_updateItemViews;
 - (void)_cleanUpNodes;
 - (void)_removeUnNeededNodes:(id)arg1;
+- (void)_recomputeResizingZones;
 - (void)_resetSeamDraggingAreas;
 - (void)_removeSeamDraggingAreas;
 - (void)_computeSeamDraggingAreas;

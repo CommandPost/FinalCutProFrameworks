@@ -12,6 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)redo:(id)arg1;
+- (void)undo:(id)arg1;
+- (id)undoHandler;
 - (BOOL)canBecomeMainWindow;
 - (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
 

@@ -4,12 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class CHChannelFolder, FFAudioChannelsConfigViewModule, FFContext;
+@class FFAudioChannelsConfigViewModule, FFContext;
 
 @protocol FFAudioChannelsConfigViewModuleDelegate
-- (void)audioChannelsConfigViewModule:(FFAudioChannelsConfigViewModule *)arg1 showAudioChannelsConfig:(BOOL)arg2;
-- (BOOL)audioChannelsConfigViewModule:(FFAudioChannelsConfigViewModule *)arg1 isCollapsedForChannelFolder:(CHChannelFolder *)arg2;
-- (void)audioChannelsConfigViewModule:(FFAudioChannelsConfigViewModule *)arg1 setCollapsed:(BOOL)arg2 forChannelFolder:(CHChannelFolder *)arg3;
 - (BOOL)audioChannelsConfigViewModule:(FFAudioChannelsConfigViewModule *)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
 - (void)audioChannelsConfigViewModuleStopSkimmingInViewer:(FFAudioChannelsConfigViewModule *)arg1;
 - (BOOL)audioChannelsConfigViewModule:(FFAudioChannelsConfigViewModule *)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(FFContext *)arg3 effectCount:(long long)arg4;

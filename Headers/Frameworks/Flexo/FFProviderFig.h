@@ -9,7 +9,7 @@
 #import "FFMovieInstanceFigBasedProvider.h"
 #import "FFSeedProviderMD5Protocol.h"
 
-@class FFMIORADAsset, NSObject<OS_dispatch_queue>, NSString, NSURL;
+@class FFMIORADAsset, NSDictionary, NSObject<OS_dispatch_queue>, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFProviderFig : FFProvider <FFSeedProviderMD5Protocol, FFMovieInstanceFigBasedProvider>
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSURL *_lastKnownURLStandardized;
     NSString *_lastKnownURLPath;
     unsigned long long _estimatedBandwidth;
+    NSDictionary *_growthInfo;
 }
 
 + (unsigned int)videoCodecForURL:(id)arg1;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)utis;
 + (void)releaseSharedInstance;
 + (void)initialize;
+@property(readonly, nonatomic) NSDictionary *growthInfo; // @synthesize growthInfo=_growthInfo;
 - (void)replaceCodecNames:(id)arg1;
 - (void)sniffSpotlightMetadataFig:(id)arg1;
 - (id)copyTimecodeBasedReelName;

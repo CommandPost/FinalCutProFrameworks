@@ -6,56 +6,38 @@
 
 #import <Flexo/FFOSC.h>
 
-@class FFLRUImageCacheObject, NSDictionary, NSMutableArray, NSString;
+@class FFLRUImageCacheObject, NSDictionary, NSLock, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface FFVoiceOverOSC : FFOSC
 {
+    NSLock *_activeLock;
     NSDictionary *_textAttributes;
-    FFLRUImageCacheObject *_lastTextImageObject;
     FFLRUImageCacheObject *_lastCountdownCircleImageObject;
-    NSString *_lastTextKey;
     NSString *_lastCircleKey;
-    CDStruct_1b6d18a9 _preroll;
-    CDStruct_1b6d18a9 _prerollTimeCounter;
-    CDStruct_1b6d18a9 _lastRecordTime;
-    CDStruct_1b6d18a9 _recordingDotTimer;
-    double _lastCountdownTime;
-    double _manualCountdown;
-    BOOL _pingPlayed;
-    BOOL _showOSC;
-    BOOL _recordingActive;
+    CDStruct_1b6d18a9 _endTime;
     BOOL _prerollComplete;
-    BOOL _manualCountdownUpdate;
-    BOOL _manualRecordingUpdate;
-    BOOL _mute;
-    int _overlayMode;
+    BOOL _showOSC;
     unsigned int _prerollTime;
-    NSDictionary *_countDownTextProperties;
     NSMutableArray *_consumerCircles;
+    CDStruct_1b6d18a9 _startTime;
 }
 
 @property(retain, nonatomic) NSMutableArray *consumerCircles; // @synthesize consumerCircles=_consumerCircles;
-@property(retain, nonatomic) NSDictionary *countDownTextProperties; // @synthesize countDownTextProperties=_countDownTextProperties;
 @property(nonatomic) unsigned int prerollTime; // @synthesize prerollTime=_prerollTime;
-@property(nonatomic) int overlayMode; // @synthesize overlayMode=_overlayMode;
-@property(nonatomic) BOOL mute; // @synthesize mute=_mute;
-@property(nonatomic) BOOL manualRecordingUpdate; // @synthesize manualRecordingUpdate=_manualRecordingUpdate;
-@property(nonatomic) BOOL manualCountdownUpdate; // @synthesize manualCountdownUpdate=_manualCountdownUpdate;
 @property(nonatomic) BOOL showOSC; // @synthesize showOSC=_showOSC;
+@property(nonatomic) CDStruct_1b6d18a9 startTime; // @synthesize startTime=_startTime;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
+- (void)reset;
+- (void)startAnimation;
 - (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
 - (BOOL)isAvailableDuringPlayback;
-- (void)_playPing;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
-- (void)simpleTextRectangle:(id)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(id)arg4 attributes:(id)arg5 attributeCode:(int)arg6 paddingX:(double)arg7 paddingY:(double)arg8;
 - (void)consumerVoiceOverCircleWithColors:(id)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3;
 - (void)_resetConsumerCircles:(BOOL)arg1;
-- (void)dealloc;
 - (void)_setCountdownTextAttributes;
-- (void)_setRecordingTextAttributes;
-- (void)_setDefaultTextAttributes;
 - (void)_setupTextures:(struct _CGLContextObject *)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

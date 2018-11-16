@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
 {
     NSString *_deviceUID;
     FFFullScreenGLView *_dcdView;
+    BOOL _disableOnRelease;
 }
 
+@property BOOL disableOnRelease; // @synthesize disableOnRelease=_disableOnRelease;
 - (void)_drawImages:(id)arg1 forRate:(double)arg2 clockTime:(CDStruct_1b6d18a9)arg3 isStaleFrame:(BOOL)arg4 qSize:(float)arg5;
 - (int)_displayTimerCallback:(const CDStruct_e50ab651 *)arg1 outTime:(const CDStruct_e50ab651 *)arg2;
 - (id)newOnScreenControlsTextureForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;

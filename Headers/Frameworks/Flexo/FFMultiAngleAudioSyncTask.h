@@ -20,6 +20,8 @@
     BOOL _syncAngles;
     BOOL _syncItems;
     BOOL _useFullMediaRange;
+    BOOL _refAnglesPreSorted;
+    BOOL _forSyncNotMulticamClip;
     NSMutableArray *_anglesToSync;
     NSMutableArray *_refAngles;
     NSMutableArray *_allAngles;
@@ -43,6 +45,7 @@
 - (BOOL)_fineSyncItemsInAngles:(BOOL)arg1;
 - (void)_resetFineSyncInfo;
 - (struct FFAudioSyncHelperResults)_synchronizeItem:(id)arg1 itemSyncTime:(CDStruct_1b6d18a9)arg2 refItem:(id)arg3 refItemSyncTime:(CDStruct_1b6d18a9)arg4 syncDuration:(CDStruct_1b6d18a9)arg5 useFullRange:(BOOL)arg6;
+- (struct FFAudioSyncHelperResults)_gateConfidenceValueInResults:(struct FFAudioSyncHelperResults)arg1 whenBelowThreshold:(float)arg2;
 - (BOOL)_setupIntersectItems;
 - (void)_prepareIntersectItems;
 - (BOOL)_anyItemsSyncedByAudio:(id)arg1;
@@ -55,7 +58,7 @@
 - (void)_updateProgress:(id)arg1;
 - (void)dealloc;
 - (id)initWithItems:(id)arg1 refAngles:(id)arg2 multiAngleManager:(id)arg3;
-- (id)initWithAngles:(id)arg1 refAngles:(id)arg2 multiAngleManager:(id)arg3;
+- (id)initWithAngles:(id)arg1 refAngles:(id)arg2 refAnglesPreSorted:(BOOL)arg3 multiAngleManager:(id)arg4;
 
 @end
 

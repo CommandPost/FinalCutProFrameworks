@@ -23,10 +23,8 @@
 + (Class)CKStillFrameExportPanelClass;
 + (Class)CKSourceClass;
 + (Class)CKShareStatusClass;
-+ (Class)CKSettingsPanelClass;
 + (Class)CKSettingPanelClass;
 + (Class)CKSettingManagerClass;
-+ (Class)CKSettingInspectorControllerClass;
 + (Class)CKSettingGroupClass;
 + (Class)CKSettingClass;
 + (Class)CKRoleSetClass;
@@ -51,8 +49,6 @@
 + (Class)CKHTTPLiveStreamingExportPanelClass;
 + (Class)CKFacebookJobActionClass;
 + (Class)CKFacebookExportPanelClass;
-+ (Class)CKExportPanelClass;
-+ (Class)CKExportControllerClass;
 + (Class)CKErrorClass;
 + (Class)CKeMailJobActionClass;
 + (Class)CKeMailExportPanelClass;
@@ -71,7 +67,8 @@
 + (Class)CKAppleDevicesExportPanelClass;
 + (id)shortVersionString;
 + (id)versionString;
-+ (void)setCompressorKitSearchPath:(id)arg1;
++ (void)setCompressorApplicationPath:(id)arg1;
++ (void)setCompressorKitBundlePath:(id)arg1;
 
 @end
 

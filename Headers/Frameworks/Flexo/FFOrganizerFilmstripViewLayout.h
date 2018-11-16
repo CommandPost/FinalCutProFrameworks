@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class CALayer, FigTimeRangeAndObject, NSArray, NSMutableArray, NSProThemeFacet;
+@class CALayer, FigTimeRangeAndObject, NSArray, NSMapTable, NSMutableArray, NSProThemeFacet;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripViewLayout : NSObject
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     CALayer *_emptyMediaLayer;
     CDUnknownBlockType _buttonHandler;
     NSMutableArray *_visibleRanges;
+    NSMapTable *_visibleRangesMapTable;
     struct CGRect _frame;
     CDStruct_1b6d18a9 _timePerThumb;
     double _thumbHeight;
@@ -89,8 +90,8 @@ __attribute__((visibility("hidden")))
 - (void)addChunksToLayer:(id)arg1 forVisibleRect:(struct CGRect)arg2;
 - (id)_dividerLineLayer;
 - (id)_informativeTextLayer:(id)arg1;
-- (id)_makeEmptySearchResultLayer;
-- (id)_makeImportMediaButton;
+- (id)_newEmptySearchResultLayer;
+- (id)_newImportMediaButton;
 - (void)setEmptyMediaLayerDisplay:(long long)arg1 buttonHandler:(CDUnknownBlockType)arg2;
 - (void)scavengeLayersFromLayout:(id)arg1 forVisibleRect:(struct CGRect)arg2;
 - (void)addGroupSeparatorToLayout:(id)arg1;
@@ -111,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (double)horizontalItemGap;
 - (void)beginLayout:(BOOL)arg1;
 - (void)reloadData;
+- (id)visibleRangesMapTable;
 - (BOOL)isEquivalentToLayout:(id)arg1;
 - (id)description;
 - (void)dealloc;

@@ -16,6 +16,7 @@
     NSDictionary *_sortOrder;
 }
 
+- (double)rightDraggableExclusionMargin;
 - (void)firstResponderChanged:(id)arg1;
 - (void)updateFilter:(id)arg1;
 - (struct CGPoint)startPointConvertedToView;

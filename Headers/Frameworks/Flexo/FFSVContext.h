@@ -35,11 +35,11 @@
 - (BOOL)disable422Filtering;
 - (BOOL)drawAllAngles;
 - (BOOL)draftTextMode;
-- (void)setLocationHint:(int)arg1;
 - (int)locationHint;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithLiveEditFlag:(BOOL)arg1;
 - (id)copyWithPairFields:(BOOL)arg1;
+- (id)copyWithAdjustedPriority:(int)arg1 andLocationHint:(int)arg2;
 - (id)copyWithAdjustedPriority:(int)arg1;
 - (id)copyWithFxBestQuality:(BOOL)arg1;
 - (id)copyWithDraftTextMode:(BOOL)arg1;
@@ -47,11 +47,7 @@
 - (id)copyForTopLevelMultiAngleGrid;
 - (id)copyWithUpdatedLocationHint:(int)arg1;
 - (id)copyWithSpatialQuality:(int)arg1 temporalQuality:(int)arg2;
-- (void)setEffectsBestQuality:(BOOL)arg1;
-- (void)setForLiveEditFlag:(BOOL)arg1;
-- (void)setDraftTextMode:(BOOL)arg1;
-- (void)setDisable422Filtering:(BOOL)arg1;
-- (void)setDrawAllAngles:(BOOL)arg1;
+- (id)copyWithUpdatedFlags:(unsigned int)arg1;
 - (id)options;
 - (int)priority;
 - (int)spatialQuality;
@@ -62,6 +58,8 @@
 - (id)pixelFormat;
 - (struct CGColorSpace *)colorSpace;
 - (void)dealloc;
+- (id)initWithColorSpaceRef:(struct CGColorSpace *)arg1 pixelFormat:(id)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 spatialQuality:(int)arg5 temporalQuality:(int)arg6 priority:(int)arg7 options:(id)arg8 locationHint:(int)arg9;
+- (id)initWithColorSpaceRef:(struct CGColorSpace *)arg1 pixelFormat:(id)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 spatialQuality:(int)arg5 temporalQuality:(int)arg6 priority:(int)arg7 options:(id)arg8 locationHint:(int)arg9 flags:(unsigned int)arg10;
 - (id)initWithColorSpaceRef:(struct CGColorSpace *)arg1 pixelFormat:(id)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 spatialQuality:(int)arg5 temporalQuality:(int)arg6 priority:(int)arg7 options:(id)arg8;
 
 @end

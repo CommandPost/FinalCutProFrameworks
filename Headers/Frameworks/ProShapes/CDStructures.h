@@ -50,20 +50,21 @@ struct OZChannelShape {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
-    struct OZChannelVertexFolder _field19;
-    struct OZDynamicCurve _field20;
+    struct OZCurve *_field19;
+    struct OZChannelVertexFolder _field20;
     struct OZDynamicCurve _field21;
-    double _field22;
+    struct OZDynamicCurve _field22;
     double _field23;
     double _field24;
     double _field25;
     double _field26;
-    _Bool _field27;
+    double _field27;
     _Bool _field28;
-    void *_field29;
-    struct vector<double, std::allocator<double>> _field30;
+    _Bool _field29;
+    void *_field30;
     struct vector<double, std::allocator<double>> _field31;
-    struct OZShape *_field32;
+    struct vector<double, std::allocator<double>> _field32;
+    struct OZShape *_field33;
 };
 
 struct OZChannelTimeConverter;
@@ -88,6 +89,8 @@ struct OZChannelVertexFolder {
     unsigned int _field17;
     struct OZChannel *_field18;
 };
+
+struct OZCurve;
 
 struct OZDynamicCurve {
     CDUnknownFunctionPointerType *_field1;

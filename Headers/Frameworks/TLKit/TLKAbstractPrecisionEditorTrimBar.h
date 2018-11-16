@@ -21,6 +21,7 @@
     TLKThemeBackedLayer *_bowTieLayer;
     id <TLKTimelineItem> _leftItem;
     id <TLKTimelineItem> _rightItem;
+    double _layerWidth;
     struct {
         unsigned int split:1;
         unsigned int RESERVED:31;

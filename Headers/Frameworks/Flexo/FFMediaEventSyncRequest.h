@@ -15,10 +15,9 @@ __attribute__((visibility("hidden")))
     SEL _mediaSelector;
     NSString *_identifier;
     NSString *_description;
-    BOOL _executed;
 }
 
-- (BOOL)execute:(id *)arg1;
+- (void)main;
 - (BOOL)executed;
 - (SEL)mediaSelector;
 - (id)mediaEvent;

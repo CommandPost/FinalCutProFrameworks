@@ -30,8 +30,10 @@
 - (void)ensureIntrinsic:(id)arg1;
 - (id)intrinsicEffectRequiredIDs;
 - (void)resetToolUsingDictionary:(id)arg1;
+- (id)_newObjectsFromSelectedItems:(id)arg1;
 - (void)resetChannelsForObject:(id)arg1;
 - (id)sequencesForActiveEffects;
+- (void)setPlayheadTime:(CDStruct_1b6d18a9)arg1;
 - (void)updateAdjustmentTool;
 - (void)setAdjustmentState:(unsigned int)arg1;
 - (void)setAdjustmentDictionary:(id)arg1;

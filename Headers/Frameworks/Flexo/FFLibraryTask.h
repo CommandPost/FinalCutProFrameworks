@@ -39,9 +39,11 @@
 + (id)prepareMove:(id)arg1 to:(id)arg2 options:(id)arg3 copy:(BOOL)arg4 isSnapshot:(BOOL)arg5 error:(id *)arg6;
 + (id)sourceDocumentForObject:(id)arg1;
 + (id)mediaToMigrateForEventsMoving:(id)arg1;
-+ (id)targetLibraryItemForItemOrURL:(id)arg1 error:(id *)arg2;
++ (id)targetLibraryItemForItemOrURL:(id)arg1 srcLibrary:(id)arg2 error:(id *)arg3;
++ (void)syncDocuments;
 + (BOOL)resolveClipAndAssetReferencesFromOtherLibrariesForSequence:(id)arg1 clipRefsAndEditsNotInLibrary:(id)arg2 assetRefsAndEditsNotInLibrary:(id)arg3 clipRefsInDestLibrary:(id)arg4 proxiesToRemove:(id)arg5 resolution:(int)arg6 crossLibraryEditAsFileRef:(BOOL)arg7 error:(id *)arg8;
 + (BOOL)timeRangeAndObjectOrAnchoredObjectsContainsClipRefsOrMediaRefsNotInDestSequenceLibrary:(id)arg1 timeRangeAndObjectOrAnchoredObjects:(id)arg2;
++ (id)readLink:(id)arg1 error:(id *)arg2;
 + (id)copyObject:(id)arg1 forLibraryItem:(id)arg2 error:(id *)arg3;
 + (long long)calcFileSize:(id)arg1 error:(id *)arg2;
 + (void)calcFileSize:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
@@ -70,16 +72,22 @@
 - (BOOL)preflightCopy:(id *)arg1;
 - (id)errorCopyingToURL:(id)arg1 bytesNeeded:(long long)arg2 bytesAvailable:(long long)arg3;
 - (void)_copyCompleted:(id)arg1;
-- (void)taskWasCancelled:(id)arg1;
+- (void)request:(id)arg1 deleteSourceAfterCopy:(int)arg2;
+- (void)taskWasCancelled:(id)arg1 queuedRequests:(id)arg2;
 - (BOOL)updateIdentifiersAndMakeClips:(id *)arg1;
 - (BOOL)copyAdditionalReferencedMedia:(id *)arg1;
 - (BOOL)_findAdditionalReferencedMediaForSequence:(id)arg1 targetLibraryItem:(id)arg2 mediaToLibraryItemMap:(id)arg3 error:(id *)arg4;
 - (BOOL)move:(BOOL)arg1 clips:(id)arg2 event:(id)arg3 error:(id *)arg4;
 - (BOOL)moveOwnedMedia:(id)arg1 copy:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)_askAboutOverwritingOwnedMedia:(id)arg1 error:(id *)arg2;
+- (id)prepareCopyRequest:(id)arg1 to:(id)arg2 targetAsset:(id)arg3 error:(id *)arg4;
+- (id)prepareAsyncMediaURLForImport:(id)arg1 to:(id)arg2;
+- (id)calcExternalMediaFileName:(id)arg1;
+- (BOOL)isMediaFileType:(id)arg1;
 - (BOOL)moveAssetFilesFromAsset:(id)arg1 toAsset:(id)arg2 toLibraryItem:(id)arg3 copy:(BOOL)arg4 overwrite:(BOOL)arg5 error:(id *)arg6;
-- (BOOL)moveAssetFileIDs:(id)arg1 targetAssetFileIDs:(id)arg2 sourceLibraryItem:(id)arg3 targetLibraryItem:(id)arg4 targetAsset:(id)arg5 copy:(BOOL)arg6 error:(id *)arg7;
-- (BOOL)moveAssetFileID:(id)arg1 targetAssetFileID:(id)arg2 targetAsset:(id)arg3 isSameVolume:(BOOL)arg4 copy:(BOOL)arg5 error:(id *)arg6;
+- (BOOL)moveAssetFiles:(id)arg1 targetFiles:(id)arg2 sourceLibraryItem:(id)arg3 targetLibraryItem:(id)arg4 targetAsset:(id)arg5 copy:(BOOL)arg6 error:(id *)arg7;
+- (BOOL)moveAssetFile_legacy:(id)arg1 targetAssetFile:(id)arg2 targetAsset:(id)arg3 copy:(BOOL)arg4 error:(id *)arg5;
+- (BOOL)moveAssetFile:(id)arg1 targetAssetFile:(id)arg2 targetAsset:(id)arg3 copy:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)moveLibraryItem:(id)arg1 targetLibraryItem:(id)arg2 copy:(BOOL)arg3 error:(id *)arg4;
 - (id)newURLForRoot:(id)arg1 scheme:(id)arg2;
 

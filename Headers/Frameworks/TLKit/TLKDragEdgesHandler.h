@@ -30,9 +30,13 @@
     double _draggingLocationToKeepStatic;
     double _geardownCursorOffset;
     double _originDeltaAfterAutoscroll;
+    double _savedMinimumItemComponentFragmentWidth;
     double _thumbnailAdjustment;
     struct CGRect _timecodeDisplayRect;
     TLKSimpleTrimEdgeBox *_trimEdgeBoxLayer;
+    double _clipWidth;
+    CDStruct_1b6d18a9 _originalTPP;
+    CDStruct_1b6d18a9 _draggingTPP;
     struct {
         unsigned int simpleCursors:1;
         unsigned int useTrimmingEdge:1;
@@ -49,9 +53,12 @@
         unsigned int isRollTrim:1;
         unsigned int isRippleTrim:1;
         unsigned int atMediaLimits:1;
+        unsigned int atMediaLimitsGotSmaller:1;
         unsigned int selectedAudioComponentEdges:1;
         unsigned int terminalTransition:1;
-        unsigned int RESERVED:15;
+        unsigned int needsToRestoreMinimumItemComponentFragmentWidth:1;
+        unsigned int halfThumbnailDragStartMode:1;
+        unsigned int RESERVED:12;
     } _dhFlags;
 }
 
@@ -113,6 +120,9 @@
 - (BOOL)continueTracking:(id)arg1;
 - (CDStruct_1b6d18a9)moveEdgeToPoint:(struct CGPoint)arg1;
 - (CDStruct_1b6d18a9)_timeOffsetForMovingEdgeToPoint:(struct CGPoint)arg1;
+- (double)_draggingClipWidthFromTimeOffset:(CDStruct_1b6d18a9)arg1 timePerPoint:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_1b6d18a9)_dragCalculationTimePerPoint;
+- (CDStruct_1b6d18a9)_nonLinearTimePerPoint;
 - (CDStruct_1b6d18a9)_timeOffsetForDraggingTransitionFromLocation:(double)arg1 toLocation:(double)arg2;
 - (void)updateTimecodeDisplayWithOffset:(CDStruct_1b6d18a9)arg1;
 - (void)_resolveOverlappingRectangleConflicts;
@@ -128,6 +138,8 @@
 - (id)_clickedLayerForItem:(id)arg1;
 - (BOOL)shouldAutoscroll:(id)arg1;
 - (BOOL)startTracking:(id)arg1;
+- (void)_setDragStateModes;
+- (void)_calculateOriginalTPP;
 - (void)selectItem:(id)arg1;
 - (void)deselectItem:(id)arg1;
 - (CDStruct_1b6d18a9)_convertTimeToTimelineView:(CDStruct_1b6d18a9)arg1;

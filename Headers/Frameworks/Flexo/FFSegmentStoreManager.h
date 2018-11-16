@@ -8,7 +8,7 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBackgroundTask, FFSegmentStoreOperationQueue, NSCondition, NSConditionLock, NSMutableArray, NSString;
+@class FFBackgroundTask, FFSegmentStoreManagerRunLock, FFSegmentStoreOperationQueue, NSCondition, NSMutableArray, NSObject<OS_dispatch_source>, NSString;
 
 @interface FFSegmentStoreManager : NSObject <FFBackgroundTaskTarget>
 {
@@ -18,9 +18,10 @@
     NSMutableArray *_paths;
     FFSegmentStoreOperationQueue *_readOperationQueue;
     FFSegmentStoreOperationQueue *_writeOperationQueue;
-    BOOL _segmentStoreStopped;
-    NSConditionLock *_segmentStoreStoppedLock;
+    FFSegmentStoreManagerRunLock *_runLock;
     int _segmentStoreIdleCompressors;
+    NSObject<OS_dispatch_source> *_idleCompressorTimer;
+    unsigned int _idlerFlags;
     double _lastCheckedForAgedCompressors;
     NSMutableArray *_decompressionSessionCache;
     NSCondition *_pendingStillsCondition;
@@ -31,6 +32,11 @@
 
 + (void)teardown;
 + (id)sharedInstance;
+- (BOOL)migrateRenderFiles:(id)arg1 flags:(unsigned int)arg2 renderPropsFilter:(id)arg3 progressBlock:(CDUnknownBlockType)arg4 error:(id *)arg5;
+- (BOOL)migrateRenderFilesFrom:(id)arg1 to:(id)arg2 flags:(unsigned int)arg3 filter:(CDUnknownBlockType)arg4 progressBlock:(CDUnknownBlockType)arg5 error:(id *)arg6;
+- (BOOL)migrateSegmentStore:(id)arg1 toLocation:(id)arg2 flags:(unsigned int)arg3 filter:(CDUnknownBlockType)arg4 progressBlock:(CDUnknownBlockType)arg5 error:(id *)arg6;
+- (BOOL)waitForStopOrCancel:(_Bool *)arg1 progressBlock:(CDUnknownBlockType)arg2;
+- (BOOL)mergeSegmentStoreDataFrom:(id)arg1 to:(id)arg2 flags:(unsigned int)arg3 progressBlock:(CDUnknownBlockType)arg4 error:(id *)arg5;
 - (BOOL)shuttingDown;
 - (id)librariesInUse;
 - (id)assetsInUse;
@@ -38,7 +44,7 @@
 - (unsigned long long)numPendingStills;
 - (void)queueNonReadyStillToSegmentStore:(id)arg1 token:(id)arg2 requestedPT:(id)arg3 md5Info:(id)arg4 videoProps:(id)arg5 renderFilePaths:(id)arg6 renderProps:(id)arg7 asset:(id)arg8;
 - (void)_saveStillsInBackground:(id)arg1 onTask:(id)arg2;
-- (id)stoppedLock;
+- (void)performBlockWhenPendingWritesFinish:(CDUnknownBlockType)arg1;
 - (void)performInvocationWhenPendingWritesFinish:(id)arg1;
 - (BOOL)flushSegmentsWithPathRoots:(id)arg1;
 - (BOOL)flushSegmentsAtPath:(id)arg1;
@@ -57,14 +63,19 @@
 - (id)readOperationQueue;
 - (void)addPath:(id)arg1;
 - (id)findSegmentStore:(CDStruct_bdcb2b0d)arg1 paths:(id)arg2;
+- (id)copySegmentStoreForMD5:(CDStruct_bdcb2b0d)arg1 openFlags:(unsigned int)arg2 paths:(id)arg3 renderProps:(id)arg4;
+- (id)copySegmentStoreForDiskMD5:(CDStruct_bdcb2b0d)arg1 openFlags:(unsigned int)arg2 paths:(id)arg3 renderPropsForCreation:(id)arg4;
 - (id)copySegmentStoreForMD5:(CDStruct_bdcb2b0d)arg1 createIfNeeded:(BOOL)arg2 paths:(id)arg3 renderProps:(id)arg4;
 - (void)checkForAgingDecompressors;
 - (void)checkForAgingCompressors;
 - (CDStruct_bdcb2b0d)md5ForSegmentStore:(CDStruct_bdcb2b0d)arg1 renderProps:(id)arg2;
+- (id)runLock;
 - (void)start;
 - (void)stop;
+- (BOOL)stopBeforeDate:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)_queueAsyncCompressorIdler;
 - (void)shutdown;
 - (void)cancelPendingOperations;
 

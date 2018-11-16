@@ -6,20 +6,30 @@
 
 #import <Flexo/FFLibraryItem.h>
 
-@class FFEventInfo, FFMediaEventProject, NSSet;
+@class FFEventInfo, FFMediaEventProject, NSSet, NSURL;
 
 @interface FFEventRecord : FFLibraryItem
 {
+    NSURL *_cacheFolder;
 }
 
+@property(retain) NSURL *cacheFolder; // @synthesize cacheFolder=_cacheFolder;
 - (BOOL)getKeyThumbnailMD5:(id *)arg1 offset:(long long *)arg2;
 - (id)displayOwnedClips;
+- (id)findCacheFolder:(id)arg1;
+- (id)syncCacheFolder;
+- (void)sync;
+- (void)willSetDocumentURL:(id)arg1;
+- (id)defaultLibraryItem;
 @property(readonly, nonatomic) unsigned long long countOfSequenceRecords;
 @property(readonly, nonatomic) NSSet *sequenceRecords;
 @property(readonly, nonatomic) BOOL hasSequenceRecords;
 @property(readonly, nonatomic) FFEventInfo *eventInfo;
+- (void)documentWillClose;
+- (BOOL)removeFiles:(id *)arg1;
 @property(readonly, nonatomic) FFMediaEventProject *project;
 - (id)documentType;
+- (void)dealloc;
 
 @end
 

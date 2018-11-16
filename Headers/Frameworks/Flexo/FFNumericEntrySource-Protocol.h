@@ -4,10 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFTimecodeFormatter, NSProExtendedTimecode;
+@class FFTimecodeFormatter, NSEvent, NSProExtendedTimecode;
 
 @protocol FFNumericEntrySource
 - (void)numericEntryDidEndWithType:(int)arg1 timecode:(NSProExtendedTimecode *)arg2 direction:(int)arg3;
+- (BOOL)doesNumericEntryOfType:(int)arg1 endOnKeyDownEvent:(NSEvent *)arg2;
 - (BOOL)canToggleDeltaAndAbsolute:(int)arg1;
 - (NSProExtendedTimecode *)runtimeTimecode;
 - (FFTimecodeFormatter *)timecodeFormatter;

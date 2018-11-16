@@ -15,7 +15,6 @@
     DSBridge *_bridge;
     int _asyncSaves;
     int _actionLevel;
-    BOOL _appIsShuttingDown;
 }
 
 + (int)versionOldest;
@@ -35,7 +34,6 @@
 - (BOOL)bringUpToDate:(id *)arg1;
 - (BOOL)sync:(id *)arg1;
 - (BOOL)saveCatalog:(id *)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (void)applicationWillTerminate:(id)arg1;
 - (id)outputQueue;
 - (BOOL)savePending;
 - (BOOL)hasChanges;
@@ -56,7 +54,7 @@
 - (void)lock;
 - (id)sharedLock;
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
-- (id)initBridgeAndStoreWithURL:(id)arg1 error:(id *)arg2;
+- (id)makeBridgeAndStoreWithURL:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (oneway void)release;
 - (void)dealloc;

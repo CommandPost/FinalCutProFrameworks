@@ -10,8 +10,10 @@
 - (BOOL)pasteWithSelection:(NSArray *)arg1 atTime:(CDStruct_1b6d18a9 *)arg2 error:(id *)arg3;
 - (BOOL)cutWithSelection:(NSArray *)arg1 error:(id *)arg2;
 - (BOOL)copyWithSelection:(NSArray *)arg1;
+- (BOOL)copyWithSelection:(NSArray *)arg1 selectedRange:(CDStruct_e83c9415)arg2;
 - (BOOL)canPasteAnchored;
 - (BOOL)canPasteInsert;
+- (BOOL)canPasteWithSelection:(NSArray *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (BOOL)canPasteWithSelection:(NSArray *)arg1;
 - (BOOL)canCutWithSelection:(NSArray *)arg1;
 - (BOOL)canCopyWithSelection:(NSArray *)arg1;

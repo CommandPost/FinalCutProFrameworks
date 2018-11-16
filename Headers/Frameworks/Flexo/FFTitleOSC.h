@@ -35,6 +35,9 @@
 - (void)configureTextField:(id)arg1;
 - (id)shrinkToFit:(id)arg1 inRect:(struct CGRect)arg2 originalFontSize:(double)arg3;
 - (id)shrinkToFit:(id)arg1 inTextField:(unsigned long long)arg2;
+- (BOOL)titleWrapLines;
+- (BOOL)titleShrinkToFit;
+- (BOOL)titlePrefersShrinkToFit;
 - (void)applyTextFieldsToTitle;
 - (void)initTitleOverlay;
 - (unsigned long long)_textFieldCount;
@@ -44,6 +47,7 @@
 - (unsigned long long)selectedTextFieldIndexAndRange:(struct _NSRange *)arg1;
 - (unsigned long long)activeTextField;
 - (void)updateSizeForTextField:(unsigned long long)arg1;
+- (void)updateToInitialBoundingBoxForTextField:(unsigned long long)arg1;
 - (void)updateViewNotification:(id)arg1;
 - (void)controlTextDidChange:(id)arg1;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;

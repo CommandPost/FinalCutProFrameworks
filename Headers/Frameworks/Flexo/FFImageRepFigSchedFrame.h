@@ -6,19 +6,20 @@
 
 #import <Flexo/FFImageRep.h>
 
-@class FFImage, FFStreamFigRequestedDecode, FFStreamVideoFig;
+@class FFImage, FFLogProcessingInfo, FFScheduleTokenVTDecode, FFStreamVideoFig;
 
 __attribute__((visibility("hidden")))
 @interface FFImageRepFigSchedFrame : FFImageRep
 {
     FFStreamVideoFig *_stream;
-    FFStreamFigRequestedDecode *_schedRec;
+    FFScheduleTokenVTDecode *_schedRec;
     FFImage *_finalImage;
     int _lineSel;
     struct CGRect _origBounds;
     struct CGRect _afterDecodeBounds;
     FFImage *_fillerImage;
     BOOL _disable422Filtering;
+    FFLogProcessingInfo *_logProcessingInfo;
 }
 
 - (id).cxx_construct;
@@ -27,6 +28,8 @@ __attribute__((visibility("hidden")))
 - (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
 - (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
 - (id)_fillerFrame;
+- (id)logProcessingInfo;
+- (unsigned long long)approximateMemoryUsage;
 - (struct CGColorSpace *)colorSpace;
 - (id)nativePixelFormat;
 - (_Bool)alphaWantsClamping;
@@ -40,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)type;
 - (id)description;
 - (void)dealloc;
-- (id)initWithPixelTransform:(id)arg1 stream:(id)arg2 scheduleRecord:(id)arg3 lineSel:(int)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6 disable422Filtering:(BOOL)arg7;
+- (id)initWithPixelTransform:(id)arg1 stream:(id)arg2 scheduleRecord:(id)arg3 lineSel:(int)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6 disable422Filtering:(BOOL)arg7 logProcessingInfo:(id)arg8;
 
 @end
 

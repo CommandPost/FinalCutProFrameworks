@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
     _Bool _inRenderMode;
     _Bool _waitForLoadingFX;
     _Bool _forPreroll;
-    _Bool _atEndOfLoopRange;
+    long long _distanceFromLoopPoint;
     float _skipLevelWhenCreated;
     _Bool _sentPMRLogs;
     FFHGAsyncCustomJob *_generateImageJob;
@@ -58,8 +58,9 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _diskIOCompletionTime;
     double _scheduleTokenTime;
     double _generateGraphTime;
-    CDStruct_18280053 _graphBuildBlockedInfo;
-    CDStruct_18280053 _graphExecBlockedInfo;
+    CDStruct_4cc81c56 _scheduleTokenBlockedInfo;
+    CDStruct_4cc81c56 _graphBuildBlockedInfo;
+    CDStruct_4cc81c56 _graphExecBlockedInfo;
     long long _readLockWait;
     _Bool _boundToRenderer;
     _Bool _notScheduledWhenChosen;
@@ -97,6 +98,7 @@ __attribute__((visibility("hidden")))
     _Bool _canceledByLiveEdit;
     int _liveEditSpecialHandling;
     _Bool _wasUrgentlyScheduled;
+    long long distanceFromLoopPoint;
 }
 
 @property _Bool bwIsUncertain; // @synthesize bwIsUncertain=_bwIsUncertain;
@@ -125,7 +127,7 @@ __attribute__((visibility("hidden")))
 @property double scheduleTokenTime; // @synthesize scheduleTokenTime=_scheduleTokenTime;
 @property(readonly) int executionLocation; // @synthesize executionLocation=_executionLocation;
 @property float skipLevelWhenCreated; // @synthesize skipLevelWhenCreated=_skipLevelWhenCreated;
-@property _Bool atEndOfLoopRange; // @synthesize atEndOfLoopRange=_atEndOfLoopRange;
+@property long long distanceFromLoopPoint; // @synthesize distanceFromLoopPoint;
 @property _Bool forPreroll; // @synthesize forPreroll=_forPreroll;
 @property(readonly) int fieldCount; // @synthesize fieldCount=_fieldCount;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 timeRepresented; // @synthesize timeRepresented=_timeRepresented;
@@ -139,6 +141,7 @@ __attribute__((visibility("hidden")))
 - (int)liveEditSpecialHandling;
 - (_Bool)canceledByLiveEdit;
 - (void)markAsCancelledByLiveEdit;
+- (_Bool)cancelIfInvalAndReturnIsCanceled:(int *)arg1;
 - (_Bool)inval;
 - (void)setInval:(_Bool)arg1;
 - (id)statusInfo;
@@ -161,7 +164,7 @@ __attribute__((visibility("hidden")))
 - (id)_newPlayerFrameForDestNum:(int)arg1 forRate:(double)arg2 forTimecodeType:(unsigned int)arg3;
 - (id)copyPushableImageForDest:(unsigned int)arg1 contextNum:(unsigned int)arg2;
 - (_Bool)_flattenedImagesCompatibleWithOwnDests:(_Bool)arg1;
-- (void)generateImageRepsAndQueueFlattenToExecuteOn:(int)arg1 enablePreferredLoc:(_Bool)arg2;
+- (void)generateImageRepsAndQueueFlattenToExecuteOn:(int)arg1 withLocationPreference:(int)arg2;
 - (void)jobFinished;
 - (void)jobStarted;
 - (void)customHGRenderQueueJobCallback:(struct HGRenderer *)arg1;

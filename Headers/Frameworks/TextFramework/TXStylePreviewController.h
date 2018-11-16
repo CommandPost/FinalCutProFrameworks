@@ -6,16 +6,21 @@
 
 #import "OZViewController.h"
 
+#import "OZRenderClient.h"
+
 @class TXLibraryPresetsButton;
 
-@interface TXStylePreviewController : OZViewController
+@interface TXStylePreviewController : OZViewController <OZRenderClient>
 {
     TXLibraryPresetsButton *_pPresets;
     struct TXTextStyle *_style;
     struct PCHash128 _hash;
+    struct PCRecursiveMutex _renderLock;
+    unsigned long long _renderJobID;
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)loadPreset:(struct OZPasteList *)arg1 sender:(id)arg2;
 - (void)loadPasteboard:(id)arg1 intoSceneNode:(struct OZSceneNode *)arg2;
 - (void)resetChannel:(id)arg1;
@@ -27,7 +32,15 @@
 - (void)saveFormat;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (void)update;
+- (void)setImage:(id)arg1 width:(unsigned int)arg2 height:(unsigned int)arg3;
+- (void)renderNodeCancelled:(const CDStruct_198678f7 *)arg1 userData:(void *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
+- (void)_finishedWithDocumentInRenderJob:(id)arg1;
+- (struct TXTextLayout *)makeStylePreviewText:(struct TXTextStyle *)arg1 string:(id)arg2 dependentObjects:(list_1192f13f *)arg3;
+- (void)queueRenderJob:(struct OZRenderNode *)arg1 scene:(struct OZScene *)arg2;
+- (void)getRenderRequestRenderParams:(struct OZRenderParams *)arg1 atTime:(CDStruct_198678f7)arg2;
 - (void)renderPreviewImage;
+- (void)dealloc;
 - (id)init;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 summary:(BOOL)arg3;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;

@@ -15,6 +15,8 @@
     SEL _sel;
 }
 
+@property(readonly) FFSegmentStore *store; // @synthesize store=_store;
+@property(readonly) FFSegmentReadSample *sampleObj; // @synthesize sampleObj=_sampleObj;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (unsigned int)scheduleStatusInformation;
 - (id)description;

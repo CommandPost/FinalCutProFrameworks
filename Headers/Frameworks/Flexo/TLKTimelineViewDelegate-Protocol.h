@@ -9,9 +9,10 @@
 @class CALayer<TLKItemLayerInfo>, NSArray, NSException, NSMenu, NSProExtendedTimecode, TLKSelectionManager, TLKTimelineView;
 
 @protocol TLKTimelineViewDelegate <NSObject>
-- (BOOL)timelineView:(TLKTimelineView *)arg1 shouldHandleException:(NSException *)arg2;
 
 @optional
+- (BOOL)timelineView:(TLKTimelineView *)arg1 validateUserInterfaceItem:(id <NSValidatedUserInterfaceItem>)arg2;
+- (BOOL)timelineView:(TLKTimelineView *)arg1 shouldOpenClipTrimmerForItem:(id <TLKTimelineItem>)arg2;
 - (NSProExtendedTimecode *)timelineView:(TLKTimelineView *)arg1 timecodeAtTime:(CDStruct_1b6d18a9)arg2;
 - (NSMenu *)timelineView:(TLKTimelineView *)arg1 contextMenuForItem:(id <TLKTimelineItem>)arg2;
 - (void)timelineViewStopItemSkimming:(TLKTimelineView *)arg1;
@@ -40,5 +41,7 @@
 - (int)timelineView:(TLKTimelineView *)arg1 visibilityForItem:(id <TLKTimelineItem>)arg2;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 didDoubleClickAudioWaveformOfItem:(id <TLKTimelineItem>)arg2;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 didDoubleClickItem:(id <TLKTimelineItem>)arg2;
+- (BOOL)timelineView:(TLKTimelineView *)arg1 executeBlockAndHandleException:(void (^)(void))arg2;
+- (BOOL)timelineView:(TLKTimelineView *)arg1 shouldHandleException:(NSException *)arg2;
 @end
 

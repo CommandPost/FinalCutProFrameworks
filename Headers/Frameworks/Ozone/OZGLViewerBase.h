@@ -115,9 +115,6 @@
 - (void)viewWillMoveToWindow:(id)arg1;
 - (void)viewDidMoveToWindow;
 - (void)dealloc;
-- (unsigned long long)retainCount;
-- (oneway void)release;
-- (id)retain;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

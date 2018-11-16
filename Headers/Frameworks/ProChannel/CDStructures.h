@@ -38,6 +38,7 @@ struct OZChannel {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannel2D {
@@ -106,6 +107,7 @@ struct OZChannelAngle {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelAspectRatio {
@@ -127,6 +129,7 @@ struct OZChannelAspectRatio {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelAspectRatioFootage {
@@ -148,6 +151,7 @@ struct OZChannelAspectRatioFootage {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelBase {
@@ -186,16 +190,17 @@ struct OZChannelBlindData {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
-    struct vector<std::pair<CMTime, void *>, std::allocator<std::pair<CMTime, void *>>> _field19;
-    struct PCRecursiveMutex _field20;
-    CDStruct_198678f7 _field21;
-    struct PCLockSentry<PCMutex> *_field22;
-    void *_field23;
+    struct OZCurve *_field19;
+    struct vector<std::pair<CMTime, void *>, std::allocator<std::pair<CMTime, void *>>> _field20;
+    struct PCRecursiveMutex _field21;
+    CDStruct_198678f7 _field22;
+    struct PCLockSentry<PCMutex> *_field23;
     void *_field24;
-    _Bool _field25;
-    struct PCString _field26;
+    void *_field25;
+    _Bool _field26;
     struct PCString _field27;
-    struct vector<PCString, std::allocator<PCString>> _field28;
+    struct PCString _field28;
+    struct vector<PCString, std::allocator<PCString>> _field29;
 };
 
 struct OZChannelBool {
@@ -217,6 +222,7 @@ struct OZChannelBool {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelBool3D {
@@ -262,9 +268,10 @@ struct OZChannelButton {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
-    CDUnknownFunctionPointerType _field19;
-    struct PCString _field20;
-    void *_field21;
+    struct OZCurve *_field19;
+    CDUnknownFunctionPointerType _field20;
+    struct PCString _field21;
+    void *_field22;
 };
 
 struct OZChannelColor {
@@ -364,17 +371,18 @@ struct OZChannelCurve {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
-    struct OZChannelVertexFolder _field19;
-    struct OZDynamicCurve _field20;
+    struct OZCurve *_field19;
+    struct OZChannelVertexFolder _field20;
     struct OZDynamicCurve _field21;
-    double _field22;
+    struct OZDynamicCurve _field22;
     double _field23;
     double _field24;
     double _field25;
     double _field26;
-    _Bool _field27;
+    double _field27;
     _Bool _field28;
-    void *_field29;
+    _Bool _field29;
+    void *_field30;
 };
 
 struct OZChannelDecibel {
@@ -396,6 +404,7 @@ struct OZChannelDecibel {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelDiscreteColor {
@@ -417,10 +426,11 @@ struct OZChannelDiscreteColor {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
-    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
-    struct vector<int, std::allocator<int>> _field20;
-    struct PCString _field21;
-    unsigned int _field22;
+    struct OZCurve *_field19;
+    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
+    struct vector<int, std::allocator<int>> _field21;
+    struct PCString _field22;
+    unsigned int _field23;
 };
 
 struct OZChannelDouble {
@@ -442,6 +452,7 @@ struct OZChannelDouble {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelEnum {
@@ -463,10 +474,11 @@ struct OZChannelEnum {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
-    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
-    struct vector<int, std::allocator<int>> _field20;
-    struct PCString _field21;
-    unsigned int _field22;
+    struct OZCurve *_field19;
+    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
+    struct vector<int, std::allocator<int>> _field21;
+    struct PCString _field22;
+    unsigned int _field23;
 };
 
 struct OZChannelEnumInterpMode {
@@ -488,10 +500,11 @@ struct OZChannelEnumInterpMode {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
-    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
-    struct vector<int, std::allocator<int>> _field20;
-    struct PCString _field21;
-    unsigned int _field22;
+    struct OZCurve *_field19;
+    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
+    struct vector<int, std::allocator<int>> _field21;
+    struct PCString _field22;
+    unsigned int _field23;
 };
 
 struct OZChannelFolder {
@@ -533,6 +546,7 @@ struct OZChannelFrame {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelGammaFootage {
@@ -554,6 +568,7 @@ struct OZChannelGammaFootage {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelGradient {
@@ -921,6 +936,7 @@ struct OZChannelPercent {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelPosition {
@@ -1131,6 +1147,7 @@ struct OZChannelSeed {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelShear {
@@ -1175,6 +1192,7 @@ struct OZChannelShearAngle {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelText {
@@ -1196,8 +1214,9 @@ struct OZChannelText {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
-    struct PCString _field19;
-    _Bool _field20;
+    struct OZCurve *_field19;
+    struct PCString _field20;
+    _Bool _field21;
 };
 
 struct OZChannelTimeConverter;
@@ -1221,6 +1240,7 @@ struct OZChannelTimecode {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelUint16 {
@@ -1242,6 +1262,7 @@ struct OZChannelUint16 {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelUint32 {
@@ -1263,6 +1284,7 @@ struct OZChannelUint32 {
     struct OZChannelImpl *_field16;
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
 };
 
 struct OZChannelVaryingFolder {
@@ -1335,6 +1357,8 @@ struct OZCoreGlobals {
     _Bool _field5;
     CDStruct_198678f7 _field6;
 };
+
+struct OZCurve;
 
 struct OZDynamicCurve {
     CDUnknownFunctionPointerType *_field1;

@@ -9,10 +9,15 @@
 @interface PEToolbarTimecodeFormatter : NSProTimecodeFormatter
 {
     BOOL _numericEntryActive;
+    int _numericEntryType;
     BOOL _showsSubframes;
+    BOOL _numericEntryOccurred;
+    BOOL _showSubframes;
 }
 
-@property BOOL showSubframes; // @synthesize showSubframes=_showsSubframes;
+@property BOOL numericEntryOccurred; // @synthesize numericEntryOccurred=_numericEntryOccurred;
+@property BOOL showSubframes; // @synthesize showSubframes=_showSubframes;
+@property int numericEntryType; // @synthesize numericEntryType=_numericEntryType;
 @property BOOL numericEntryActive; // @synthesize numericEntryActive=_numericEntryActive;
 - (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
 - (struct _NSRange)rangeOfLeadingZeros:(id)arg1;

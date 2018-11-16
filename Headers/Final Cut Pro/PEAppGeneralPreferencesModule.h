@@ -8,26 +8,19 @@
 
 #import "NSOpenSavePanelDelegate.h"
 
-@class LKButton, LKPopUpButton;
+@class LKPopUpButton;
 
 @interface PEAppGeneralPreferencesModule : NSProPreferencesModule <NSOpenSavePanelDelegate>
 {
-    LKButton *_autoSaveLibrariesButton;
-    LKPopUpButton *_librariesLocationPopUpButton;
     LKPopUpButton *_formatPopUpButton;
 }
 
 + (id)openOrSaveAllowedFileTypes;
-+ (id)timeFormatter;
++ (id)newTimeFormatter;
 @property(nonatomic) LKPopUpButton *formatPopUpButton; // @synthesize formatPopUpButton=_formatPopUpButton;
-@property(nonatomic) LKPopUpButton *librariesLocationPopUpButton; // @synthesize librariesLocationPopUpButton=_librariesLocationPopUpButton;
-@property(nonatomic) LKButton *autoSaveLibrariesButton; // @synthesize autoSaveLibrariesButton=_autoSaveLibrariesButton;
 - (void)resetDialogWarnings:(id)arg1;
 - (void)changeTimeFormat:(id)arg1;
-- (void)chooseLibraryDocumentDefaultLocation:(id)arg1;
-- (void)toggleAutoSaveLibraries:(id)arg1;
 - (void)moduleWasInstalled;
-- (void)_rebuildLibraryDocumentMenu;
 - (void)_configureTimecodeFormatter:(id)arg1 forFormat:(long long)arg2;
 - (void)_installConfigurationViewForFormat:(long long)arg1;
 - (void)awakeFromNib;

@@ -57,12 +57,16 @@
     CDStruct_1b6d18a9 _mediaStartTime;
     CDStruct_1b6d18a9 _inTime;
     CDStruct_1b6d18a9 _outTime;
+    MIOTimecode *_unadulteredInTC;
+    MIOTimecode *_unadulteredOutTC;
     BOOL _didSetUpAudio;
 }
 
 + (id)clipWithName:(id)arg1 volume:(id)arg2;
 + (id)keyPathsForValuesAffectingTargetDataSize;
 + (id)keyPathsForValuesAffectingDurationTC;
+@property(retain) MIOTimecode *unadulteredOutTC; // @synthesize unadulteredOutTC=_unadulteredOutTC;
+@property(retain) MIOTimecode *unadulteredInTC; // @synthesize unadulteredInTC=_unadulteredInTC;
 @property(nonatomic) CDStruct_1b6d18a9 outTime; // @synthesize outTime=_outTime;
 @property(nonatomic) CDStruct_1b6d18a9 inTime; // @synthesize inTime=_inTime;
 @property(nonatomic) CDStruct_1b6d18a9 mediaStartTime; // @synthesize mediaStartTime=_mediaStartTime;

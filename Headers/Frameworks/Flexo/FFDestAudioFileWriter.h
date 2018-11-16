@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void)endRender;
 - (void)pushBufferHook:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned long long)arg3;
-- (void)beginRenderWithDelegate:(id)arg1 context:(void *)arg2;
+- (void)beginRenderWithRenderer:(id)arg1 forLastDest:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1 fileType:(unsigned int)arg2 fileFormat:(struct AudioStreamBasicDescription)arg3 clientFormat:(struct AudioStreamBasicDescription)arg4;
 

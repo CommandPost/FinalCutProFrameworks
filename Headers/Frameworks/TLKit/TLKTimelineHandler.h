@@ -15,11 +15,13 @@
     CALayer *_itemSkimmingFrameLayer;
     CDStruct_1b6d18a9 _skimmedTime;
     double _timerStarted;
+    id <TLKTimelineItem> _curveEditorDraggedItem;
     struct {
         unsigned int hideSkimmingPlayhead:1;
         unsigned int gearDownActive:1;
         unsigned int firstResponderTimerStarted:1;
-        unsigned int RESERVED:29;
+        unsigned int itemSkimmingStopped:1;
+        unsigned int RESERVED:28;
     } _tlkTimelineHandlerFlags;
 }
 
@@ -94,6 +96,7 @@
 - (BOOL)isViewFirstResponder;
 - (BOOL)trimModeOn;
 - (BOOL)timePreservingModeOn;
+@property id <TLKTimelineItem> curveEditorDraggedItem;
 - (id)draggedItem;
 - (BOOL)isDraggingLeadingEdge;
 - (int)autoscrollDirection;

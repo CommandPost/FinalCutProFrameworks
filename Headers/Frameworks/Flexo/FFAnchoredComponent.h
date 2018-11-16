@@ -64,6 +64,7 @@
 - (CDStruct_e83c9415)unclippedRange;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)shouldEncodeEffectStackWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithDisplayName:(id)arg1 andFilterType:(id)arg2;

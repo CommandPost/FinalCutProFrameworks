@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct CGSize)getMaximumDrawingSizeForLocation:(int)arg1;
++ (float)getMaxVRAM:(int)arg1;
 + (struct FFImageDisplayContext *)sharedKVOContext;
 + (BOOL)highQualityViewerScaling;
 @property BOOL detailedDebugInfo; // @synthesize detailedDebugInfo=_detailedDebugInfo;

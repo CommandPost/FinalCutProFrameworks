@@ -72,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
 - (void)setToolTip:(id)arg1;
 - (void)setPentaSliderCell:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)lookupCachedPTForQuality:(int)arg1 lineSel:(int)arg2;
 - (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
 - (void)setRate:(double)arg1;
+- (id)eventDocumentIDAndPath;
 - (void)removeToken:(id)arg1;
 - (void)_removeToken:(id)arg1 hintSearchBackwards:(_Bool)arg2;
 - (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
@@ -73,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (id)_pixelTransformToField1ForQuality:(int)arg1;
 - (id)pixelTransformToFrameForQuality:(int)arg1;
 - (id)_pixelTransformToFrameForQuality:(int)arg1;
+- (int)actualQualityFromRequestedQuality:(int)arg1;
 - (int)fieldDominance;
 - (struct CGRect)pixelSpaceFrameBounds;
 - (CDStruct_1b6d18a9)mapEditTimeIntoMediaTime:(CDStruct_1b6d18a9)arg1;

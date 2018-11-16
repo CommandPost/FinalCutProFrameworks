@@ -53,6 +53,7 @@
     unsigned long long _meterObserverCount;
     NSTimer *_meteringTimer;
     BOOL _notificationsDisabled;
+    BOOL _recording;
     long long _numDraftTextModeRequests;
     NSMutableSet *_registeredPlayerModules;
 }
@@ -60,6 +61,7 @@
 + (int)temporalQualityForFramesPerPixel:(unsigned int)arg1;
 + (void)initialize;
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+@property(nonatomic) BOOL recording; // @synthesize recording=_recording;
 @property(nonatomic) BOOL canShowTransportControls; // @synthesize canShowTransportControls=_canShowTransportControls;
 @property(nonatomic) BOOL notificationsDisabled; // @synthesize notificationsDisabled=_notificationsDisabled;
 @property(retain, nonatomic) id selectionHandler; // @synthesize selectionHandler;
@@ -88,8 +90,6 @@
 - (void)setStopOnDroppedFrame:(BOOL)arg1;
 - (void)notifyAudioPlaybackStateChanged;
 - (BOOL)isAudioPlaybackOn;
-- (void)endRecording;
-- (void)beginRecording:(CDStruct_1b6d18a9)arg1;
 - (void)endStepPlayback;
 - (void)beginStepPlayback:(CDStruct_1b6d18a9)arg1;
 - (void)_maybeStartSkimming;

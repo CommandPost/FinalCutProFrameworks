@@ -7,7 +7,7 @@
 @class CHChannelBase, FFAnchoredSequence, FFCHRootChannel, FFUndoHandler, NSArray, NSString;
 
 @protocol FFInspectorChannelDataSource
-- (BOOL)containsChannel:(CHChannelBase *)arg1;
+- (BOOL)containsChannel:(CHChannelBase *)arg1 associatedModelObject:(id)arg2;
 - (FFAnchoredSequence *)sequence;
 - (NSArray *)inspectableChannelsForIdentifier:(NSString *)arg1;
 

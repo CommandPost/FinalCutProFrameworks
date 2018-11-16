@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFContext, FFPMRLogFunnel, FFPlaybackContext, FFPlayerSchedTokenQueue, FFPlayerScheduledData, FFProvider, FFSVContext, FFSourceVideo, FFStreamVideo, FFStreamVideoCache, FFStreamVideoOptions, FFVideoProps, NSConditionLock, NSLock, NSMutableArray, NSMutableSet, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_source>, NSThread;
+@class FFContext, FFPMRLogFunnel, FFPlaybackContext, FFPlayerDropTracker, FFPlayerSchedTokenQueue, FFPlayerScheduledData, FFProvider, FFSVContext, FFSourceVideo, FFStreamVideo, FFStreamVideoCache, FFStreamVideoOptions, FFVideoProps, NSConditionLock, NSLock, NSMutableArray, NSMutableSet, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_source>, NSThread;
 
 @interface FFPlayer : NSObject
 {
@@ -79,7 +79,7 @@
     int _activeGPUs;
     struct FFAudioPlayer *_audioPlayer;
     int _renderLocation;
-    _Bool _preferLocation;
+    int _preferredLocation;
     _Bool _recalcRenderLoc;
     _Bool _oscsOutOfDate;
     _Bool _deferOSCRegeneration;
@@ -92,6 +92,7 @@
     BOOL _channelBeingModified;
     BOOL _quadHDScrubShortcutActive;
     CDStruct_1b6d18a9 _earliestSnapBackToBestTime;
+    NSObject *_lastLiveEditInvalCause;
     int _framesPushedDuringPB;
     int _framesDroppedOrSkippedDuringPB;
     int _diskRelatedDropSkips;
@@ -129,11 +130,10 @@
     int _heliumResourceChoicePolicy;
     int _heliumSpecificScreenResource;
     _Bool _waitForLoadingFX;
-    int _dropTrackerWarningLimit;
-    NSObject<OS_dispatch_queue> *_dropTrackerSerialQueue;
-    NSMutableArray *_dropTracker;
+    FFPlayerDropTracker *_dropTracker;
     struct TimeRateChangeController *_timeRateChangeController;
     BOOL _playPastLoopEnd;
+    CDStruct_1b6d18a9 _playbackPreroll;
 }
 
 + (id)_newEmptySrcForProps:(id)arg1;
@@ -143,16 +143,21 @@
 + (id)newHighQualityContextForSource:(id)arg1 field:(unsigned int)arg2;
 + (id)newContextForStream:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7;
 + (id)newContextForPT:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7;
++ (id)newContextForPT:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7 locationHint:(int)arg8;
 + (void)uiPlayStateChanged;
 + (void)initialize;
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+@property(nonatomic) CDStruct_1b6d18a9 playbackPreroll; // @synthesize playbackPreroll=_playbackPreroll;
 @property(nonatomic) BOOL playPastLoopEnd; // @synthesize playPastLoopEnd=_playPastLoopEnd;
+@property(readonly, nonatomic) FFPMRLogFunnel *jklFunnel; // @synthesize jklFunnel=_summaryPMRFunnel;
 @property(readonly, nonatomic) FFPlaybackContext *playbackContext; // @synthesize playbackContext=_context;
 @property(readonly, nonatomic) BOOL changingRate; // @synthesize changingRate=_changingRate;
 @property BOOL stopOnDroppedFrame; // @synthesize stopOnDroppedFrame=_stopOnDroppedFrame;
 @property BOOL dontRedrawOnInvals; // @synthesize dontRedrawOnInvals=_dontRedrawOnInvals;
 @property _Bool waitForThreadToAck; // @synthesize waitForThreadToAck=_waitForThreadToAck;
 - (id).cxx_construct;
+- (void)setDropTrackerWarningLimit:(int)arg1;
+- (int)dropTrackerWarningLimit;
 - (void)_idleThreadIfSatisfied:(int)arg1;
 - (void)_waitForQueueFill;
 - (void)_waitForAttention;
@@ -174,6 +179,7 @@
 - (void)unlockPlayer;
 - (void)lockPlayer;
 - (void)lockPlayer:(const char *)arg1;
+- (void)lockPlayer:(const char *)arg1 inOutWorkToDo:(id)arg2;
 - (void)readUnlockSequence;
 - (void)readLockSequence;
 - (id)_sharedLock;
@@ -243,9 +249,11 @@
 - (void)stop;
 - (int)start:(double)arg1 maxDestLatency:(unsigned int)arg2;
 - (void)_startVideo:(id)arg1;
+- (void)setAudioSkimmingEnable:(int)arg1;
+- (void)setAuxiliaryPlaybackUnit:(struct FFAudioPlaybackUnit *)arg1;
 - (void)muteAudioPlayback:(BOOL)arg1;
 - (unsigned int)numAudioOutputChannels;
-- (unsigned int)meterAudioLevels:(float *)arg1 channels:(unsigned int)arg2;
+- (void)getMeterAudioLevels:(float *)arg1 channels:(unsigned int *)arg2;
 - (BOOL)destsUpToDate;
 - (void)destAudioRenderCallback;
 - (void)videoDestCallback:(BOOL)arg1 forVideoDest:(id)arg2;
@@ -263,7 +271,7 @@
 - (_Bool)_maybeQueueFrame:(id)arg1 referenceFrames:(id)arg2 dests:(id)arg3 renderLocation:(int)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5;
 - (id)_copyDestsToSkipForTime:(CDStruct_1b6d18a9)arg1 destList:(id)arg2;
 - (void)_transferReusableFlattenedFrames:(id)arg1 dests:(id)arg2 last:(id)arg3;
-- (void)_advanceFramesWhileDestsFull:(id)arg1 destsCopy:(id)arg2;
+- (void)_advanceFramesWhileDestsFull:(id)arg1 destsCopy:(id)arg2 allowedWait:(double)arg3;
 - (int)_advanceFrames:(id)arg1 rate:(double)arg2 destsCopy:(id)arg3 renderLocation:(int)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5 testForAbort:(CDUnknownBlockType)arg6 retAnythingLeftToAdvance:(_Bool *)arg7;
 - (_Bool)_maybeQueueFrameFrom:(id)arg1 referenceFrames:(id)arg2 dests:(id)arg3 renderLocation:(int)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5 testForAbort:(CDUnknownBlockType)arg6;
 - (BOOL)_buildOneFrame:(double)arg1 isPrerolling:(_Bool)arg2 retSchedTime:(CDStruct_1b6d18a9 *)arg3 maxDestLatency:(unsigned int)arg4;

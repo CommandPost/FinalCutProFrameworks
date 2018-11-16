@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     int _dynamicItemOffset;
     int _numCurrentMediaProjects;
     FFAnchoredSequence *_inspectedProject;
+    FFAnchoredSequence *_observedSequence;
     FFColouredView *_generalSep;
     LKTextField *_generalText;
     FFColouredView *_locationSep;

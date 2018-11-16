@@ -6,12 +6,19 @@
 
 #import <Flexo/FFStreamVideo.h>
 
+@class FFSegmentStoreRef, NSObject<OS_dispatch_queue>;
+
 __attribute__((visibility("hidden")))
 @interface FFStreamVideoDeinterlace : FFStreamVideo
 {
     FFStreamVideo *_inputStream;
+    NSObject<OS_dispatch_queue> *_lastWrittenSegStoreLock;
+    FFSegmentStoreRef *_lastWrittenSegStoreRef;
+    CDStruct_bdcb2b0d _lastWrittenMD5;
 }
 
+- (id).cxx_construct;
+- (void)willWriteTo:(id)arg1 md5:(CDStruct_bdcb2b0d)arg2;
 - (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
 - (id)_newDeinterlaceTokenInternal:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 isScheduling:(BOOL)arg5 roiHint:(const struct CGRect *)arg6;
 - (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;

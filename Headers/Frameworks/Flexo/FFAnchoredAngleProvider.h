@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 + (id)extensions;
 + (id)utis;
 - (id)anchoredObject;
-- (id)newSettingsModule;
+- (BOOL)writerIsWaiting;
 - (void)_readUnlock;
 - (void)_readLock;
 - (void)_writeUnlock;

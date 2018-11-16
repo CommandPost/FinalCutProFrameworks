@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canRemoveChannel:(id)arg1;
 - (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
 - (BOOL)canReorderChannel:(id)arg1;
-- (BOOL)containsChannel:(id)arg1;
+- (BOOL)containsChannel:(id)arg1 associatedModelObject:(id)arg2;
 - (id)inspectableChannelsForIdentifier:(id)arg1;
 - (id)labelForInspectorTabIdentifier:(id)arg1;
 - (id)inspectorTabIdentifiers;
@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (id)mdTargetForKey:(id)arg1;
 - (id)transitionObjectRight;
 - (id)transitionObjectLeft;
+- (void)_updateTrimFlag;
 - (void)_updateRetimingFlags;
 - (unsigned int)aoFlagsMask;
 - (id)newProvider;
@@ -81,8 +82,6 @@ __attribute__((visibility("hidden")))
 - (id)roles;
 - (void)setDisplayName:(id)arg1;
 - (id)displayName;
-- (void)didChangeComponentSource:(id)arg1;
-- (void)willChangeComponentSource:(id)arg1;
 - (void)releaseEffectStackFromPersisting;
 - (void)setEffectStackAsPersisting;
 - (void)addRole:(id)arg1;

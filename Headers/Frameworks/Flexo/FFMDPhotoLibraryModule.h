@@ -36,6 +36,8 @@
     NSArray *_lastSelectedApertureGroupIDs;
     NSArray *_lastSelectedApertureObjectROs;
     FigTimeRangeAndObject *_lastAperturePlayheadRO;
+    double _rightDraggableExclusionMargin;
+    double _leftDraggableExclusionMargin;
 }
 
 + (id)_displayableGroupTypesForLibraryType:(int)arg1;
@@ -62,6 +64,8 @@
 @property(retain, nonatomic) FFMDPhotoObjectViewController *objectViewController; // @synthesize objectViewController=_objectViewController;
 @property(retain, nonatomic) FFMDPhotoPlacesViewController *placesViewController; // @synthesize placesViewController=_placesViewController;
 @property(retain, nonatomic) FFMDPhotoGroupViewController *groupViewController; // @synthesize groupViewController=_groupViewController;
+- (double)leftDraggableExclusionMargin;
+- (double)rightDraggableExclusionMargin;
 - (void)_updateDisplayedViewController;
 - (void)_syncGroupChooserToSelectedGroup;
 - (void)_setupGroupChooserPopUp;

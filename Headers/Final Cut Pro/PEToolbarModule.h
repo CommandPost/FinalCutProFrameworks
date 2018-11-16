@@ -6,7 +6,7 @@
 
 #import "LKViewModule.h"
 
-@class CALayer, CAShapeLayer, FFContext, LKBackgroundImageView, LKMenu, LKSegmentedControl, LKTextField, NSImageView, NSProThemeImageView, NSProView, NSView, PELCDProgressIndicator;
+@class CALayer, CAShapeLayer, FFContext, LKBackgroundImageView, LKButton, LKMenu, LKSegmentedControl, LKTextField, NSImageView, NSProThemeImageView, NSProView, NSView, PELCDPlayheadDurationButton, PELCDProgressIndicator, PEToolbarMetersButton;
 
 @interface PEToolbarModule : LKViewModule
 {
@@ -33,13 +33,16 @@
     NSProThemeImageView *_lcdImage;
     NSProThemeImageView *_lcdGlossImage;
     NSView *_lcdBackgroundView;
+    PELCDPlayheadDurationButton *_lcdButton;
     NSImageView *_progressFinished;
     NSImageView *_progressEmpty;
     NSImageView *_progressFilling;
     PELCDProgressIndicator *_progressSpinner;
     NSImageView *_playheadScrubberLabel;
     NSProView *_audioMeters;
-    NSImageView *_numericEntryStatus;
+    PEToolbarMetersButton *_audioMetersButton;
+    LKButton *_backgroundTasksButton;
+    LKButton *_numericEntryTypeButton;
     NSImageView *_numericEntryDirection;
     LKMenu *_retimeMenu;
     LKMenu *_avEditOptionsMenu;
@@ -54,11 +57,12 @@
     BOOL _timelineSelectionAvailable;
     BOOL _organizerSelectionAvailable;
     BOOL _progressIndeterminate;
+    BOOL _progressIsFilling;
     CALayer *_progressLayer;
     CAShapeLayer *_progressMaskLayer;
     double _currentProgress;
     long long _lastProgressValueDrawn;
-    long long _numericDirection;
+    int _numericDirection;
     int _numericEntryType;
     BOOL _numericEntryInProgress;
     int _avEditMode;
@@ -76,12 +80,15 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)updatePlayheadLabel;
 - (void)timeRateChangedForContext:(id)arg1;
+- (void)updateImportButtonState:(id)arg1;
 - (void)updateSelectionState;
 - (void)updateShareState;
 - (BOOL)_editStylesPaletteCanEnableSegment:(long long)arg1;
 - (void)setNumericEntryShowsSubframes:(BOOL)arg1;
-- (void)setNumericEntryDirection:(long long)arg1;
-- (void)setNumericEntryType:(unsigned long long)arg1;
+- (void)setNumericEntryDirection:(int)arg1;
+- (void)updateNumericEntryDirection;
+- (void)setNumericEntryType:(int)arg1;
+- (void)updateNumericEntryType;
 - (void)setNumericEntryValue:(id)arg1;
 - (void)numericEntryDidEnd;
 - (void)delayDisableNumericEntry;
@@ -94,7 +101,7 @@
 - (void)updateToTimelineContext;
 - (void)updateViewPlayheadTime:(CDStruct_1b6d18a9)arg1;
 - (void)updatePlayheadTime:(id)arg1;
-- (void)setBackgroundProgress:(long long)arg1;
+- (void)setBackgroundProgress:(long long)arg1 evenIfValueUnchanged:(BOOL)arg2;
 - (void)updateProgressFillMaskToValue:(long long)arg1;
 - (void)setMediaBrowserButtonState:(BOOL)arg1;
 - (void)setMediaBrowserType:(int)arg1;
@@ -105,6 +112,7 @@
 - (void)toggleEnhanceAudio:(id)arg1;
 - (void)toggleColorBoard:(id)arg1;
 - (void)toggleScopes:(id)arg1;
+- (void)toggleNumericEntryType:(id)arg1;
 - (void)toggleBackgroundTasks:(id)arg1;
 - (void)toggleAudioMeters:(id)arg1;
 - (void)editStyles:(id)arg1;

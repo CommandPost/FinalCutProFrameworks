@@ -21,6 +21,7 @@
 @property BOOL peaked; // @synthesize peaked=_peaked;
 - (void)setOverloaded:(BOOL)arg1;
 - (void)setMeterValue:(double)arg1;
+- (void)setPeakLabelValue:(double)arg1;
 - (void)layoutSublayers;
 - (void)setDelegateIncludingSublayers:(id)arg1;
 - (id)initWithText:(BOOL)arg1;

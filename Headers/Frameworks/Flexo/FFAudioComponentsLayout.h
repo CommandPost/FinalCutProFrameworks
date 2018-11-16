@@ -28,7 +28,7 @@
 + (id)referenceRolesForObject:(id)arg1 key:(id)arg2 layoutItemKey:(id)arg3;
 + (id)sortedSpineAnchorIDsForClip:(id)arg1;
 + (id)spineAnchorObjectForID:(id)arg1 inClip:(id)arg2;
-+ (id)newClipLayoutForObject:(id)arg1;
++ (id)newLayoutForObject:(id)arg1;
 + (id)newClipLayoutForPrimordialClip:(id)arg1;
 + (id)availableMediaSourceChannelsForPrimordialClip:(id)arg1;
 + (id)availableMediaSourcesForPrimordialClip:(id)arg1;

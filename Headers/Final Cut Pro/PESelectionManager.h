@@ -32,10 +32,12 @@
 @property(readonly) PEViewedClipSet *persistentViewedClips;
 - (id)viewedClipsContexts;
 @property(readonly) PEViewedClipSet *viewedClips;
+- (void)setSelectedItems:(id)arg1;
 - (void)setSelectedItems:(id)arg1 owner:(id)arg2;
 - (id)selectionOwner;
 - (id)selectedItems;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

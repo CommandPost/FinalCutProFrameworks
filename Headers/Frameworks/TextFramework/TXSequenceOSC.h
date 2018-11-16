@@ -24,10 +24,10 @@
 - (BOOL)drawMultipleSelectionBoxes;
 - (int)hitCheck:(id)arg1;
 - (void)getTransformMatrix:(PCMatrix44Tmpl_93ed1289 *)arg1 textObject:(struct TXTextObject *)arg2 renderParams:(struct OZRenderParams *)arg3 withCharScale:(_Bool)arg4;
-- (void)fourCornerChanged;
-- (void)rotationChanged;
-- (void)scaleChanged;
-- (void)offsetChanged;
+- (void)fourCornerWillChange;
+- (void)rotationWillChange;
+- (void)scaleWillChange;
+- (void)offsetWillChange;
 - (void)_addParamToSequenceBH:(unsigned int)arg1;
 - (struct OZChannelQuad *)getFourCornerChannel:(struct TXTextStyle *)arg1 forAttribute:(int)arg2;
 - (struct OZChannelRotation3D *)getRotationChannel:(struct TXTextStyle *)arg1;

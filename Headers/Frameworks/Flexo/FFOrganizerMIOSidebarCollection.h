@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)ptpDevicesCountInItems;
 - (unsigned long long)radVolumesCountInItems;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

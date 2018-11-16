@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)updateCacheInfo;
 - (unsigned long long)_preferredChannelFolderIndexForChannelID:(unsigned int)arg1 inFolder:(id)arg2;
 - (unsigned int)nextAvailableShapeChannelID;
+- (BOOL)isColorSecondary;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_postInit:(id)arg1;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
@@ -48,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)setColorPucksContainer:(struct Color_Pucks_Container *)arg1 toInnerCorrection:(BOOL)arg2;
 - (struct Color_Pucks_Container *)newColorPucksContainerFromInnerCorrection:(BOOL)arg1;
 - (void)setAmericanSocietyOfCinematographersColorDecisionListContainer:(struct ASC_CDL_Container *)arg1 toInnerCorrection:(BOOL)arg2;
-- (struct ASC_CDL_Container *)newAmericanSocietyOfCinematographersColorDecisionListContainerFromInnerCorrection:(BOOL)arg1;
+- (struct ASC_CDL_Container *)newAmericanSocietyOfCinematographersColorDecisionListContainerFromInnerCorrection:(BOOL)arg1 oldFormat:(BOOL)arg2;
 - (id)getColorIsolationAverageColor:(CDStruct_1b6d18a9)arg1;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (id)shapeChannelAtIndex:(unsigned long long)arg1;

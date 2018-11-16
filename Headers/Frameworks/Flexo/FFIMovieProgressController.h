@@ -14,11 +14,13 @@
     NSTextField *_progressLabel;
     NSProgressIndicator *_progressIndicator;
     BOOL _importStarted;
+    struct _NSModalSession *_sessionID;
     int _importType;
 }
 
 @property int importType; // @synthesize importType=_importType;
 - (void)endImport;
+- (void)giveTime;
 - (void)beginImportForName:(id)arg1;
 - (void)cancelImport:(id)arg1;
 - (void)dealloc;

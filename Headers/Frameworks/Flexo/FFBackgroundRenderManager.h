@@ -31,8 +31,10 @@
 - (void)unregisterMultiple:(id)arg1;
 - (id)copyRegisteredTrackers;
 - (void)sourceRangeInvalidated:(id)arg1;
+- (id)copyTrackerForSource:(id)arg1 createIfNotFound:(BOOL)arg2;
 - (id)copyTrackerForSource:(id)arg1;
 - (void)_maybeStartBGJob;
+- (void)_internalMaybeStartBGJob;
 - (_Bool)_renderInProgress;
 - (_Bool)suspended;
 - (void)setSuspended:(_Bool)arg1;
@@ -50,11 +52,13 @@
 - (void)unregisterForAutoRender:(id)arg1;
 - (void)registerForAutoRender:(id)arg1 statesToAutoRender:(id)arg2 range:(CDStruct_e83c9415)arg3 withPriority:(int)arg4;
 - (void)registerForAutoRender:(id)arg1 statesToAutoRender:(id)arg2 range:(CDStruct_e83c9415)arg3 withPriority:(int)arg4 onlyEnableForDropSegments:(_Bool)arg5;
+- (void)performRender:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 shouldCancelOtherJobs:(BOOL)arg4 completionOrCancelBlock:(CDUnknownBlockType)arg5;
 - (void)performRender:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 shouldCancelOtherJobs:(BOOL)arg4;
 - (void)performRender:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3;
 - (void)_updateTimer;
 - (id)_newBGRenderTask:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 autoStartInfo:(id)arg4;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 - (void)appWillTerminate:(id)arg1;
 

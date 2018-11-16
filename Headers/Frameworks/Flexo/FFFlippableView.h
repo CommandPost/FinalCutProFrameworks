@@ -9,10 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface FFFlippableView : NSView
 {
-    BOOL _flipped;
+    BOOL _ffFlippedViewFlipped;
 }
 
-@property(getter=isFlipped) BOOL flipped; // @synthesize flipped=_flipped;
+- (void)setFlipped:(BOOL)arg1;
+- (BOOL)flipped;
 
 @end
 

@@ -28,6 +28,7 @@
 - (BOOL)update_migrateAudioIntrinsics;
 - (BOOL)update_isTitle;
 - (BOOL)update_hasObjectReferenceAndNonIntrinsicEffects;
+- (BOOL)update_hasObjectNonDefaultEffectStack;
 - (BOOL)update_cropAndTrimEffect;
 - (BOOL)update_fixLoudnessAnalysisEffect;
 - (BOOL)update_migrateEffectBundleFormat;

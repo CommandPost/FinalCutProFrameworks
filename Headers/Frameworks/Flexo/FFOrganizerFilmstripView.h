@@ -4,15 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFResponderLayerHostView.h>
+#import <Flexo/FFOrganizerImportDropResponderLayerHostView.h>
 
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class CALayer, FFAnchoredTimeMarker, FFContext, FFMarkerLayer, FFOrganizerAbstractChunk, FFOrganizerFilmstripChunk, FFOrganizerFilmstripDurationLayer, FFOrganizerFilmstripViewLayout, FFPlayerModule, FigTimeRangeAndObject, LKPopOverWindow, LKTextField, NSArray, NSDictionary, NSEvent, NSImageView, NSMutableDictionary, NSSet, NSTextField, NSTrackingArea, NSView;
+@class CALayer, FFAnchoredTimeMarker, FFContext, FFMarkerLayer, FFOrganizerAbstractChunk, FFOrganizerFilmstripChunk, FFOrganizerFilmstripDurationLayer, FFOrganizerFilmstripViewLayout, FFPlayerModule, FigTimeRangeAndObject, LKPopOverWindow, LKTextField, NSArray, NSDictionary, NSEvent, NSImageView, NSMapTable, NSMutableDictionary, NSSet, NSTextField, NSTrackingArea, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFOrganizerFilmstripView : FFResponderLayerHostView <NSTextFieldDelegate, NSWindowDelegate>
+@interface FFOrganizerFilmstripView : FFOrganizerImportDropResponderLayerHostView <NSTextFieldDelegate, NSWindowDelegate>
 {
     id <FFOrganizerFilmstripViewDelegate> _delegate;
     NSView *_dragCompositeView;
@@ -115,6 +115,7 @@ __attribute__((visibility("hidden")))
     FFOrganizerFilmstripChunk *_tooltipChunk;
     BOOL _hasTooltip;
     struct FFProcrastinatedDispatch_t _procrastinatedUpdateUsedMediaRanges;
+    NSMapTable *_procrastinatedUsedMediaUpdateRangeMap;
     struct FFProcrastinatedDispatch_t _procrastinatedReloadData;
     BOOL _invalidateUnfilteredItemsOnFocus;
     double _contentsScaleFactor;
@@ -245,8 +246,8 @@ __attribute__((visibility("hidden")))
 - (void)_nearestRangeOfMedia:(id *)arg1 andTime:(CDStruct_1b6d18a9 *)arg2;
 - (void)_moveToHeadOfNextClipWithRate:(id)arg1;
 - (void)_moveToTailOfPrevClipWithRate:(id)arg1;
-- (id)_nextClipToPlay;
-- (id)_previousClipToPlay;
+- (id)nextClipToPlay;
+- (id)previousClipToPlay;
 - (void)_movePlayerToRangeOfMedia:(id)arg1 andTime:(CDStruct_1b6d18a9)arg2 forSkimming:(BOOL)arg3 force:(BOOL)arg4;
 - (void)_movePlayerToRangeOfMedia:(id)arg1 andTime:(CDStruct_1b6d18a9)arg2;
 - (void)_movePlayerWithDictionary:(id)arg1;
@@ -274,19 +275,21 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)screenRectForMarkerLayer:(id)arg1;
 - (struct CGRect)playheadFrame;
 - (struct CGRect)selectedBadgeChunkRect;
-- (void)revealAndSelectRange:(id)arg1 playheadTime:(CDStruct_1b6d18a9)arg2;
+- (BOOL)revealAndSelectRange:(id)arg1 playheadTime:(CDStruct_1b6d18a9)arg2;
 - (void)activateSelectedRangesOfMedia:(id)arg1 byExtendingSelection:(BOOL)arg2;
 - (void)addSelectionRange:(id)arg1 extendingSelection:(BOOL)arg2;
 - (void)setSelectedRangesOfMedia:(id)arg1 byExtendingSelection:(BOOL)arg2;
 - (void)setSelectedRangesOfMedia:(id)arg1 byExtendingSelection:(BOOL)arg2 onlyClearAffected:(BOOL)arg3;
 - (void)activeSelectionDidChange;
 - (id)_conformArray:(id)arg1 toBaseRanges:(id)arg2;
+- (id)_conformArray:(id)arg1 toBaseRangesMapTable:(id)arg2;
 - (id)selectedRangesOfMedia;
 - (void)_updateScrollPosition;
 - (void)takeViewFocus;
 - (void)performColorMatch;
 - (void)highlightMarker:(id)arg1 inRangeOfMedia:(id)arg2 alwaysEdit:(BOOL)arg3;
 - (void)moveToRelativeEdit:(BOOL)arg1;
+- (CDStruct_1b6d18a9)_adjustEndTimeToIncludeFrameUnderPlayhead:(CDStruct_1b6d18a9)arg1;
 - (id)_selectionMarkersToSelectFromAnchorToClickedClip:(id)arg1 mediaTime:(CDStruct_1b6d18a9)arg2 createRange:(BOOL)arg3;
 - (id)_clipsToSelectFromAnchorToClickedClip:(id)arg1;
 - (id)_activeSelectionMarkersFromArray:(id)arg1;
@@ -406,6 +409,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeActionPerformedNotificationObserver;
 - (void)_addActionPerformedNotificationObserver;
 - (void)rangeInvalidated:(id)arg1 forChunkContainer:(id)arg2 originalMedia:(id)arg3;
+- (void)_reloadIfInvalWillFilterDifferently:(id)arg1;
 - (BOOL)shouldDelayInvalidateUnfilteredItemsFor:(id)arg1;
 - (void)restoreViewState;
 - (void)_restorePlayheadsAndStuff;

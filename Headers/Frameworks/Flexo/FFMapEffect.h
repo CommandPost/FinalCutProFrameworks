@@ -6,14 +6,17 @@
 
 #import <Flexo/FFQCEffect.h>
 
+#import "FFEffectAdjustmentDelegate.h"
+
 __attribute__((visibility("hidden")))
-@interface FFMapEffect : FFQCEffect
+@interface FFMapEffect : FFQCEffect <FFEffectAdjustmentDelegate>
 {
     int _mapType;
 }
 
 + (void)registerEffects;
 @property(readonly, nonatomic) int mapType; // @synthesize mapType=_mapType;
+- (Class)defaultAdjustmentToolForEffect;
 - (BOOL)shouldDrawCityTextOutline;
 - (BOOL)shouldDrawCityTextShadow;
 - (BOOL)hasBlackLineBorder;

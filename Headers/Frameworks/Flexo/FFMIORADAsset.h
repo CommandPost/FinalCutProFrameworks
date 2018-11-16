@@ -43,7 +43,7 @@
 - (id)fileURLs:(int)arg1;
 @property(readonly) NSDictionary *customMetadata;
 - (void)invalidateAssetForNotification:(id)arg1 withClip:(id)arg2;
-- (void)setInOutPair:(struct FigTimePair)arg1;
+- (void)setInOutPair:(struct PC_CMTimePair)arg1;
 - (id)contentType;
 - (void)ingestFinishedWithURL:(id)arg1 event:(id)arg2 isIngestingToExternal:(BOOL)arg3;
 - (BOOL)isMounted;

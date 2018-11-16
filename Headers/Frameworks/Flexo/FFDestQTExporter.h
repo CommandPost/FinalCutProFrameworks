@@ -6,7 +6,7 @@
 
 #import <Flexo/FFDestRenderer.h>
 
-@class FFQTMovieWriter, NSArray, NSError;
+@class FFQTMovieWriter, NSArray, NSError, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFDestQTExporter : FFDestRenderer
@@ -25,6 +25,23 @@ __attribute__((visibility("hidden")))
     BOOL _downscaleToQuarterRes;
     BOOL _ignoreAlphaChannel;
     BOOL _requestStraightAlpha;
+    CDStruct_1b6d18a9 _firstFrameTimeOffset;
+    BOOL _trialRunPass;
+    BOOL _smartMPEG2Export;
+    int _bitRate;
+    long long _vbvBufferSizeInBits;
+    int _vbvDelayWithFullBuffer;
+    int _numBytesBeforePST;
+    BOOL _c31Mode;
+    NSMutableArray *_frameInfoArray;
+    NSMutableArray *_segmentInfoArray;
+    NSString *_previousEventDocumentIDAndPath;
+    CDStruct_1b6d18a9 _previousPTS;
+    CDStruct_1b6d18a9 _sampleBufferDuration;
+    BOOL _previousSameStream;
+    int _firstSampleOfCurrentSegment;
+    int _whichSegment;
+    struct __CFArray *_reorderBuffer;
 }
 
 @property(nonatomic) BOOL requestStraightAlpha; // @synthesize requestStraightAlpha=_requestStraightAlpha;
@@ -40,13 +57,14 @@ __attribute__((visibility("hidden")))
 - (void)stop;
 - (id)supportedPixelFormats;
 - (void)dealloc;
+- (void)setTrialRunPass:(BOOL)arg1;
 - (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderProps:(id)arg2 audioRenderers:(id)arg3 movieWriter:(id)arg4;
 - (void)_closeCompressionSession;
 - (int)_openCompressionSession:(struct __CVBuffer *)arg1 pixelAspectRatio:(float)arg2;
 - (int)_setPaspClapProperties:(struct __CVBuffer *)arg1 pixelAspectRatio:(float)arg2;
 - (int)_setColrProperty:(struct __CVBuffer *)arg1;
 - (int)_setFielProperty:(struct __CVBuffer *)arg1;
-- (int)_encodedFrameOutputCallback:(struct opaqueCMSampleBuffer *)arg1 withPassThroughBuffer:(struct opaqueCMSampleBuffer *)arg2;
+- (int)_encodedFrameOutputCallback:(struct opaqueCMSampleBuffer *)arg1 withPassThroughBuffer:(struct opaqueCMSampleBuffer *)arg2 pts:(CDStruct_1b6d18a9)arg3 dts:(CDStruct_1b6d18a9)arg4;
 - (void)_setCallbackStatus:(int)arg1;
 - (void)raiseExportError:(int)arg1 description:(id)arg2;
 - (int)drawFieldsInterlaced;

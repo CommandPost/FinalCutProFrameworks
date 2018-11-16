@@ -30,8 +30,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSSet *roles; // @synthesize roles=_roles;
 @property(readonly, nonatomic) NSSet *showOnlyObjects; // @synthesize showOnlyObjects=_showOnlyObjects;
 - (id)anchoredObject;
-- (id)newConfirmSettingsModule;
-- (id)newSettingsModule;
+- (BOOL)writerIsWaiting;
 - (void)_readUnlock;
 - (void)_readLock;
 - (void)_writeUnlock;

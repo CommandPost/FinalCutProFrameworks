@@ -8,14 +8,13 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKButton, LKPopOverWindow, LKTextField, NSArray, NSButton, NSDateFormatter, NSImageView, NSView;
+@class LKPopOverWindow, LKTextField, NSArray, NSButton, NSDateFormatter, NSImageView, NSView;
 
 @interface FFInfoTool : FFAdjustmentTool <NSWindowDelegate>
 {
     NSView *_adjustmentToolbarView;
     NSView *_infoView;
     NSView *_eventClipInfoView;
-    NSView *_transitionsView;
     NSView *_simpleInfoView;
     LKTextField *_infoName;
     LKTextField *_infoDuration;
@@ -28,11 +27,9 @@
     LKTextField *_eventClipInfoName;
     LKTextField *_eventClipInfoMaxDuration;
     LKTextField *_eventClipInfoShareLabel;
-    LKButton *_transitionButton;
-    LKTextField *_transitionDuration;
     BOOL _selectionIsAllEventClips;
-    BOOL _selectionIsAllTransitions;
     BOOL _selectionIsAllStillsEtc;
+    BOOL _selectionIsInATrailer;
     NSArray *_selectedItems;
     CDStruct_1b6d18a9 _infoMaxDurationValue;
     NSDateFormatter *_dateFormatter;
@@ -55,10 +52,6 @@
 - (void)popOverWindowDidCancel:(id)arg1;
 - (void)shareHistory:(id)arg1;
 - (void)sharePopoverWindowDidResignKey:(id)arg1;
-- (void)applyToAllTransitions:(id)arg1;
-- (void)updateTransitionDuration:(id)arg1;
-- (void)setTransitionDurations:(id)arg1;
-- (CDStruct_1b6d18a9)transitionMaxDuration:(id)arg1;
 - (void)setAdjustmentStateFromDictionary:(id)arg1;
 - (id)adjustmentsToolbarView;
 - (id)newAdjustmentDictionaryForSelection:(id)arg1;
@@ -67,10 +60,7 @@
 - (void)removeRangeInvalNotifications;
 - (void)addRangeInvalNotifications;
 - (void)setCurrentInfoDurationUI;
-- (void)setCurrentTransitionDurationUI;
 - (id)shareString;
-- (id)currentTransitionEffectID;
-- (id)currentTransitionName;
 - (id)currentInfoName;
 - (BOOL)supportsMultipleSelection;
 - (BOOL)allowsEffectOSCs;

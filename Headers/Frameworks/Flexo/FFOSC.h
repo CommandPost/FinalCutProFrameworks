@@ -12,8 +12,11 @@
 {
     FFPlayerVideoModule *_playerVideoModule;
     BOOL _selectionBased;
+    BOOL _observingPlayer;
     NSView *_overlayView;
     NSWindow *_overlayWindow;
+    NSWindow *_observingPlayerWindow;
+    NSView *_observingPlayerView;
 }
 
 - (BOOL)isCropOSC;
@@ -38,6 +41,8 @@
 - (void)_playerWindowWillBeginSheet:(id)arg1;
 - (BOOL)overlayViewIsSet;
 - (void)setOverlayView:(id)arg1;
+- (void)removeObserversForPlayer;
+- (void)addObserversForPlayer;
 - (void)_setupOverlayWindow;
 - (void)selectNone:(id)arg1;
 - (void)selectAll:(id)arg1;

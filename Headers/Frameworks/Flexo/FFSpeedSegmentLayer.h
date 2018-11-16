@@ -153,6 +153,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)showSmoothEndTransitionMenu;
 - (void)setShowGrabber:(BOOL)arg1;
 - (BOOL)showGrabber;
+- (BOOL)mascotLayerHasTheme;
 - (BOOL)mascotLayerHidden;
 - (float)mascotLayerWidth;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;

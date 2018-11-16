@@ -14,6 +14,7 @@
 - (void)hideMarkerEditor;
 - (void)showMarkerEditorForMarkerLayer:(FFMarkerLayer *)arg1 object:(FFAnchoredObject *)arg2;
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(FFAnchoredObject *)arg2;
+- (void)openSpeedAdjustmentPanel;
 - (void)toggleAdjustmentsPanel;
 - (void)openAudioEnhancementsPanel;
 - (void)openEffectsPanel;

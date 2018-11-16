@@ -4,29 +4,36 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <Flexo/FFXMLBase.h>
 
-@class FFProject, NSMapTable, NSURL, NSXMLDocument;
+@class FFProject, NSDictionary, NSMapTable, NSURL, NSXMLDocument;
 
 __attribute__((visibility("hidden")))
-@interface FFXMLExporter : NSObject
+@interface FFXMLExporter : FFXMLBase
 {
     NSXMLDocument *_xmlDoc;
+    BOOL _isConsumerExport;
+    unsigned int _exportVersion;
     NSMapTable *_resByModelID;
     NSMapTable *_resByLocalID;
+    NSMapTable *_projectIDMap;
+    NSMapTable *_projectElementMap;
     FFProject *_project;
     id *_alternateRoleLabels;
     NSURL *_destURL;
-    id _taskDelegate;
     NSMapTable *_textStyleMap;
     unsigned int _textStyleCount;
+    NSDictionary *_customMetadataRepresentationDict;
 }
 
 - (void)dealloc;
-- (id)init;
-- (BOOL)writeDocument:(id)arg1 stream:(id)arg2 project:(id)arg3 error:(id *)arg4;
-- (id)newEventProjectNode:(id)arg1;
-- (id)newSequenceProjectNode:(id)arg1;
+- (id)initWithVersion:(unsigned int)arg1 destURL:(id)arg2 taskDelegate:(id)arg3;
+- (BOOL)exportEventClips:(id)arg1 error:(id *)arg2;
+- (BOOL)exportEvents:(id)arg1 selectedEventClipsMap:(id)arg2 exportEventFolder:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)writeDocument:(id)arg1 importOptionsElement:(id)arg2 error:(id *)arg3;
+- (id)newEventProjectNode:(id)arg1 selectedEventClips:(id)arg2 exportEventFolder:(BOOL)arg3;
+- (id)newSequenceProjectNodeForPreV1_4:(id)arg1;
+- (void)addSequenceProject:(id)arg1 element:(id)arg2;
 - (void)addConsumerUIAudioFeaturesAsEffects:(id)arg1 element:(id)arg2;
 - (void)addChildrenForMediaEventFolder:(id)arg1 element:(id)arg2;
 - (void)addMediaEventFolderObject:(id)arg1 element:(id)arg2;
@@ -38,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)newShotTypeElement:(id)arg1;
 - (id)newSmartCollectionKeywordsFilterElement:(id)arg1;
 - (id)newSmartCollectionStabilizationFilterElement:(id)arg1;
+- (id)newStabilizationTypeElement:(id)arg1;
 - (id)newSmartCollectionClipFilterElement:(id)arg1;
 - (id)newSmartCollectionMediaFilterElement:(id)arg1;
 - (id)newSmartCollectionRatingsFilterElement:(id)arg1;
@@ -53,6 +61,8 @@ __attribute__((visibility("hidden")))
 - (void)addMultiAngleSources:(id)arg1 element:(id)arg2;
 - (void)addMarkers:(id)arg1 element:(id)arg2;
 - (void)addIntrinsicChannels:(id)arg1 element:(id)arg2;
+- (void)addAudioIntrinsicChannels:(id)arg1 element:(id)arg2;
+- (void)addVideoIntrinsicChannels:(id)arg1 element:(id)arg2;
 - (void)addCropInfo:(id)arg1 element:(id)arg2;
 - (void)addAudioLayoutItems:(id)arg1 key:(id)arg2 element:(id)arg3;
 - (void)addAudioMute:(id)arg1 element:(id)arg2;
@@ -83,7 +93,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)addParameterNode:(id)arg1 element:(id)arg2;
 - (BOOL)addParameterNode:(id)arg1 attribute:(BOOL)arg2 addIfDefault:(BOOL)arg3 element:(id)arg4;
 - (id)newParameterNode:(id)arg1;
-- (void)addOrientationElementForMediaComponent:(id)arg1 element:(id)arg2;
+- (void)addReservedElementForMediaComponent:(id)arg1 element:(id)arg2;
 - (id)registerMediaElementForMediaComponent:(id)arg1;
 - (id)newTitleNode:(id)arg1;
 - (id)newGapNode:(id)arg1;
@@ -96,6 +106,7 @@ __attribute__((visibility("hidden")))
 - (id)newAngleNode:(id)arg1 media:(id)arg2;
 - (id)newMulticamNode:(id)arg1;
 - (id)copySortedAnglesArray:(id)arg1;
+- (id)newClipNode:(id)arg1 media:(id)arg2 src:(id)arg3 kind:(id)arg4 overrideClipItemElements:(id)arg5;
 - (id)newClipNode:(id)arg1 media:(id)arg2 src:(id)arg3 kind:(id)arg4;
 - (id)newCompositeNode:(id)arg1 isSequence:(BOOL)arg2;
 - (id)newAuditionNode:(id)arg1;
@@ -104,21 +115,20 @@ __attribute__((visibility("hidden")))
 - (id)copyChannelStringValue:(id)arg1 withKeyframe:(void *)arg2 isRadians:(BOOL)arg3 isDefault:(char *)arg4;
 - (id)registerVideoProps:(id)arg1;
 - (id)registerMediaElement:(id)arg1;
+- (id)registerProjectIDForMediaRef:(id)arg1;
 - (BOOL)addBookmarkForURL:(id)arg1 toElement:(id)arg2;
 - (void)addMetadataToElement:(id)arg1 forObject:(id)arg2;
 - (id)sanitizedMetadataType:(id)arg1;
 - (BOOL)isCensoredKey:(id)arg1;
 - (BOOL)addMetadataValue:(id)arg1 forKey:(id)arg2 fromObject:(id)arg3 withDef:(id)arg4 toElement:(id)arg5;
+- (BOOL)addCustomMetadataRepresentationForKey:(id)arg1 WithValue:(id)arg2 ToElement:(id)arg3;
+- (void)addProjectIDAttributes;
 - (void)addTextStyleDefElements;
 - (id)registerTextStyle:(id)arg1 forTitleElement:(id)arg2;
 - (id)registerEffect:(id)arg1;
 - (id)registerProjectRef:(id)arg1;
+- (id)registerSequenceProject:(id)arg1;
 - (id)registerResource:(id)arg1 name:(id)arg2 modelID:(id)arg3;
-- (void)setProgressValue:(double)arg1;
-- (void)setTaskDelegate:(id)arg1;
-- (id)taskDelegate;
-- (void)setDestURL:(id)arg1;
-- (BOOL)isEvent;
 
 @end
 

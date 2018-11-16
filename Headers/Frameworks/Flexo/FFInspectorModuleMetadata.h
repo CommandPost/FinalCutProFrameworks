@@ -97,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)addCustomMetadataSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)addCustomMetadataAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)notifyMetaDataChange:(id)arg1;
 - (void)_removeObservingForCurrentItems;
 - (void)_addObservingForCurrentItems;
 - (void)_rangeInvalidatedForMetadata:(id)arg1;

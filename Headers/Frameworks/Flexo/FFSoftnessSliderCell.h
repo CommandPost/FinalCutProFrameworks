@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
 - (BOOL)continueTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3;
 - (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
 

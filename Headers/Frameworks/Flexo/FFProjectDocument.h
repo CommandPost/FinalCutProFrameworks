@@ -23,7 +23,6 @@
 + (id)actionNewEvent:(id)arg1 name:(id)arg2 actionName:(id)arg3 extraUndoGroup:(BOOL)arg4 error:(id *)arg5;
 + (BOOL)isForceUpdatingProjects;
 + (void)forceUpdatingProjects;
-+ (BOOL)warnForCopyToLibrary;
 + (id)projectFileName;
 + (id)documentForProject:(id)arg1;
 + (id)projectsInfosForURL:(id)arg1 error:(id *)arg2;
@@ -56,6 +55,7 @@
 - (id)projectFileName;
 - (id)projectDirectory;
 - (id)projectDirectoryName;
+- (id)syncCacheFolder:(id)arg1;
 
 @end
 

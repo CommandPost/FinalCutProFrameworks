@@ -25,8 +25,9 @@
 - (BOOL)stopTracking:(id)arg1;
 - (BOOL)continueTracking:(id)arg1;
 - (BOOL)startTracking:(id)arg1;
-- (void)updateSelectionWithClickedPoint:(struct CGPoint)arg1 modifierFlags:(unsigned long long)arg2;
+- (void)startTrackingWithInitialPoint:(struct CGPoint)arg1 modifierFlags:(unsigned long long)arg2;
 - (void)_updateClickedPositionWithPoint:(struct CGPoint)arg1;
+- (void)stopTrackingWithCommit:(BOOL)arg1;
 - (void)dragSelectionFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 withInitialPoint:(struct CGPoint)arg3 modifierFlags:(unsigned long long)arg4;
 - (void)_moveLayers:(id)arg1 forTracks:(id)arg2 byOffset:(struct CGPoint)arg3;
 - (void)_requestDataSourceToMoveTracks:(id)arg1 toIndex:(unsigned long long)arg2;

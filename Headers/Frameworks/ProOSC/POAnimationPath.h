@@ -19,6 +19,7 @@
 + (void)maybeInitResources:(_Bool)arg1;
 + (int)largeAssetFlagToIndex:(_Bool)arg1;
 - (id).cxx_construct;
+- (BOOL)shouldShowSpeed;
 - (BOOL)allowsCurveOffset;
 - (CDStruct_1b6d18a9)getVertexUInfo:(CDStruct_1b6d18a9)arg1;
 - (id)controlPointInfoString;

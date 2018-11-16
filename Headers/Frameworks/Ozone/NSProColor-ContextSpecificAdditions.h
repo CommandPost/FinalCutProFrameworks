@@ -89,6 +89,7 @@
 + (id)ozAudioWaveformRangeColor;
 + (id)ozAudioWaveformDividerColor;
 + (id)ozAudioWaveformChannelColor;
++ (id)ozAudioWaveformBackgroundColor;
 + (id)ozTXSearchOverlayColor;
 + (id)ozExpose3DOverlaySelectionOutlineColor;
 + (id)ozExpose3DOverlaySelectionColor;
@@ -195,7 +196,6 @@
 + (id)ozDefaultSmartGuidesColor;
 + (id)ozDefaultGuidesColor;
 + (id)ozDefaultGridColor;
-+ (id)ozDefaultCanvasBackgroundColor;
 + (id)ozDefaultPreviewBackgroundColor;
 + (id)ozTimingMarkersColor9;
 + (id)ozTimingMarkersColor8;
@@ -311,6 +311,7 @@
 + (id)ozLayerListDefaultBackgroundColor;
 + (id)ozFootageListDefaultBackgroundColor;
 + (id)ozModuleTabBackgroundColor;
++ (id)ozCanvasBackgroundColor;
 + (id)sRGBColorWithWhite:(double)arg1 alpha:(double)arg2;
 + (id)ozInvalidColor;
 @end

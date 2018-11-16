@@ -15,13 +15,14 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_separates;
     id _dialogController;
     BOOL _isKeywording;
+    BOOL _isKeywordingTags;
 }
 
 @property(retain) NSMutableDictionary *separates; // @synthesize separates=_separates;
 - (void)main;
 - (void)separatesForTreeNode:(id)arg1 separatesArray:(id)arg2 processedNodes:(id)arg3 shouldKeyword:(BOOL)arg4 keywords:(id)arg5;
 - (void)dealloc;
-- (id)initWithSelectedNodes:(id)arg1 isKeywording:(BOOL)arg2;
+- (id)initWithSelectedNodes:(id)arg1 isKeywording:(BOOL)arg2 isKeywordingTags:(BOOL)arg3;
 
 @end
 

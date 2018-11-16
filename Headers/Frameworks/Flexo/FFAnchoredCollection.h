@@ -18,8 +18,6 @@
     FFVideoSegmenter *_videoSegmenter;
     CDStruct_e83c9415 _cachedUntimedUnclippedRange;
     CDStruct_e83c9415 _cachedUnclippedRange;
-    FFMD5AndOffset *_cachedAudioMD5;
-    FFMD5AndOffset *_cachedAudioMD5_NoIntrinsics;
     BOOL _lanesSorted;
     NSMutableDictionary *_sortedLanes;
     NSMutableArray *_cachedMultiAngleObjects;
@@ -48,6 +46,8 @@
     NSDate *_contentCreated;
     FFAudioClipComponentsLayoutMap *_audioComponentsLayoutMap;
     NSMutableSet *_rolesCacheForkFPlayAll;
+    FFMD5AndOffset *_cachedAudioMD5;
+    FFMD5AndOffset *_cachedAudioMD5_NoIntrinsics;
 }
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
@@ -66,6 +66,7 @@
 @property(readonly, nonatomic) FFVideoSegmenter *videoSegmenter; // @synthesize videoSegmenter=_videoSegmenter;
 @property(readonly, nonatomic) NSArray *containedItems; // @synthesize containedItems=_containedItems;
 @property(retain, nonatomic) NSString *angleID; // @synthesize angleID=_angleID;
+- (id)createUsedRangesMediaIdentifier;
 - (void)_angleCountOrBankChanged;
 - (void)setAudioAngles:(id)arg1;
 - (id)audioAngles;
@@ -89,6 +90,7 @@
 - (id)metadataVideoFrameSize;
 - (id)kMDItemKind;
 - (id)mdTargetForKey:(id)arg1;
+- (id)componentForTrim;
 - (id)_metadataMediaComponent;
 - (id)_metadataAsset;
 - (void)_resetAudioComponentsLayoutMap;
@@ -232,6 +234,7 @@
 - (void)informParentContainedItemsChanged:(BOOL)arg1;
 - (void)clearCalculatedVideoProps;
 - (void)clearCachedValues;
+- (void)clearAudioValues;
 - (void)_setIgnoreClearForContained:(BOOL)arg1;
 - (void)setParentItem:(id)arg1;
 - (id)newCompositedSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 clippedByContainer:(BOOL)arg6 container:(id)arg7 bgSource:(id)arg8 bgOffset:(CDStruct_1b6d18a9)arg9 bgIdentifier:(id)arg10 bgRange:(CDStruct_e83c9415)arg11 numberOfRows:(long long)arg12 numberOfCols:(long long)arg13 angle:(long long)arg14 roles:(id)arg15 angleOffset:(long long)arg16 angleCount:(long long)arg17;
@@ -242,7 +245,9 @@
 - (BOOL)isAudioOnlyClipOrCollection;
 - (BOOL)_isAudioOnlyCollection:(BOOL)arg1;
 - (int)anchoredObjectUIType;
+- (BOOL)isTrimmed;
 - (BOOL)isCollection;
+- (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
@@ -257,6 +262,8 @@
 - (id)_describeAdditionalObjectsWithIndent:(long long)arg1 recurse:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)shouldEncodeAudioEffectsWithCoder:(id)arg1;
+- (BOOL)shouldEncodeVideoEffectsWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (oneway void)release;

@@ -64,6 +64,11 @@ __attribute__((visibility("hidden")))
 - (void)_recomputeCellsRanges;
 - (void)_recomputeCellsTPP;
 - (id)_createFilmstripCellWithframe:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3 startIndex:(unsigned long long *)arg4;
+- (id)_reuseCellWithframe:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3;
+- (id)prepareCellForReuse:(id)arg1 withframe:(struct CGRect)arg2 andTimeRange:(CDStruct_e83c9415)arg3 originalUnClippedRange:(CDStruct_e83c9415)arg4;
+- (BOOL)_filmstripCell:(id)arg1 isRoughlyFramed:(struct CGRect)arg2 andTimed:(CDStruct_e83c9415)arg3;
+- (void)_performIfVideoOnly:(CDUnknownBlockType)arg1;
+- (void)_performIfAudioOnly:(CDUnknownBlockType)arg1;
 @property(nonatomic) BOOL forceNoUpdate;
 @property(nonatomic) struct CGRect visibleBounds;
 @property(nonatomic) int filmstripMode;

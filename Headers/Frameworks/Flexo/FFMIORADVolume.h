@@ -40,6 +40,10 @@
     BOOL _observingPTPDevices;
     NSMutableSet *_importRequestsInQueue;
     long long _totalBytesProcessed;
+    unsigned long long _unclaimedClipsCount;
+    BOOL _loadingUnclaimedURLs;
+    float _ingestPercentDone;
+    float _archivePercentDone;
 }
 
 + (id)volumeWithURL:(id)arg1;
@@ -49,6 +53,9 @@
 + (id)keyPathsForValuesAffectingDisplayOwnedClips;
 + (id)keyPathsForValuesAffectingItems;
 + (void *)KVOContext;
+@property float archivePercentDone; // @synthesize archivePercentDone=_archivePercentDone;
+@property float ingestPercentDone; // @synthesize ingestPercentDone=_ingestPercentDone;
+@property BOOL loadingUnclaimedURLs; // @synthesize loadingUnclaimedURLs=_loadingUnclaimedURLs;
 @property BOOL unmounted; // @synthesize unmounted=_unmounted;
 @property BOOL useTempClips; // @synthesize useTempClips=_useTempClips;
 @property unsigned long long loadedClipsCount; // @synthesize loadedClipsCount=_loadedClipsCount;
@@ -96,7 +103,8 @@
 - (void)removeClipsAtIndexes:(id)arg1;
 - (void)invalidateRADAssetOnClip:(id)arg1;
 - (void)insertClipsAtIndexes:(id)arg1;
-- (void)addClipsFromUnclaimedURLs:(id)arg1;
+- (void)finishedLoadingUnclaimedURLs;
+- (void)addClipsFromUnclaimedURLs;
 - (void)addUnclaimedClipMainThread:(id)arg1;
 - (void)addClips:(id)arg1;
 - (void)addClipMainThread:(id)arg1;

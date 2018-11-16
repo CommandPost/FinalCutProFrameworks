@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     _Bool _invertAlpha;
 }
 
++ (struct CGColorSpace *)copyColorSpaceForNativeCS:(struct CGColorSpace *)arg1 retFlags:(unsigned int *)arg2;
 - (_Bool)alphaWantsInversion;
 - (void)setAlphaWantsInversion:(_Bool)arg1;
 - (_Bool)alphaWantsClamping;

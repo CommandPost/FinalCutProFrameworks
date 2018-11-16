@@ -6,12 +6,11 @@
 
 #import "NSObject.h"
 
-#import "FFDestRenderUnitDelegate.h"
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 
-@class FFContext, FFProvider, NSArray, NSConditionLock;
+@class FFContext, FFProvider, NSArray, NSConditionLock, NSObject<OS_dispatch_semaphore>;
 
-@interface FFRenderer : NSObject <FFStorageLocationOutOfDiskSpaceProtocol, FFDestRenderUnitDelegate>
+@interface FFRenderer : NSObject <FFStorageLocationOutOfDiskSpaceProtocol>
 {
     FFProvider *_provider;
     NSArray *_dests;
@@ -25,7 +24,11 @@
     CDUnknownFunctionPointerType _progressCallback;
     CDStruct_1b6d18a9 _firstTimeToRender;
     CDStruct_1b6d18a9 _lastTimeToRender;
-    CDStruct_1b6d18a9 _latestFrameTimeRendered;
+    double _renderDuration_seconds;
+    NSObject<OS_dispatch_semaphore> *_lastRenderedRangeLock;
+    CDStruct_e83c9415 _lastRenderedRange;
+    NSObject<OS_dispatch_semaphore> *_stateUpdateLock;
+    BOOL _shouldUpdateState;
     BOOL _autoCancelWhenEndTimeReached;
     _Bool _stoppedDueToStorageLocFull;
     NSConditionLock *_renderComplete;
@@ -51,11 +54,13 @@
 - (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2;
 - (void)renderFrame:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
 - (void)stopWritingFilesToLocation:(id)arg1;
-- (void)didRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(id)arg2 context:(void *)arg3;
-- (void)willRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(id)arg2 context:(void *)arg3;
-- (void)_blockRenderIfPaused;
-- (CDStruct_1b6d18a9)latestFrameTimeRendered;
-- (void)setLatestFrameTimeRendered:(CDStruct_1b6d18a9)arg1;
+- (void)didRenderFrames:(CDStruct_e83c9415)arg1 forLastDest:(BOOL)arg2;
+- (void)checkForPauseWhileRenderingFrames;
+- (void)willRenderFrames;
+- (void)_blockRenderIfPausedAndCheckForFullStorageLocation;
+- (CDStruct_e83c9415)lastRenderedRange;
+- (void)resetLastRenderedRange;
+- (void)setLastRenderedRange:(CDStruct_e83c9415)arg1;
 - (void)renderAllAndCancelAtRangeEnd:(BOOL)arg1;
 - (void)renderAll;
 - (void)setProgressCallback:(CDUnknownFunctionPointerType)arg1;

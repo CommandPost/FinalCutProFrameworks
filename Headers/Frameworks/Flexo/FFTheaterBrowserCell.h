@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     FFThemeFacetLayer *_strokeLayer;
     FFResponderLayerPushButton *_localOnlyBadgeIconLayer;
     FFResponderLayerPushButton *_errorBadgeIconLayer;
+    FFResponderLayerPushButton *_ineligibleBadgeIconLayer;
     FFThemeFacetLayer *_badgeBackgroundLayer;
     CALayer *_badgeLayer;
     FFResponderLayerCheckbox *_menuButtonLayer;
@@ -53,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_menuPopoverDidHide:(id)arg1;
 - (void)showMenuPopover;
 - (void)_updateBadge;
+- (void)updateIneligibleTooltip:(BOOL)arg1;
 - (void)updateLocalOnlyTooltip:(BOOL)arg1;
 - (void)_updateSubtitle;
 - (id)_subtitleForOperation:(id)arg1;
@@ -84,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (id)_menuButtonLayer;
 - (id)_badgeLayer;
 - (id)_badgeBackgroundLayer;
+- (id)_ineligibleBadgeIconLayer;
 - (id)_errorBadgeIconLayer;
 - (id)_localOnlyBadgeIconLayer;
 - (id)_strokeLayer;

@@ -38,8 +38,8 @@
 - (void)controller:(id)arg1 willDeleteChannel:(struct OZChannelBase *)arg2;
 - (void)endCaptureModifiedChannels;
 - (void)startCaptureModifiedChannels:(const struct PCString *)arg1;
-- (void)controller:(id)arg1 didResetChannelFolder:(struct OZChannelFolder *)arg2;
-- (void)controller:(id)arg1 willResetChannelFolder:(struct OZChannelFolder *)arg2;
+- (void)controller:(id)arg1 didResetChannelFolder:(struct OZChannelFolder *)arg2 backupDescendants:(BOOL)arg3;
+- (void)controller:(id)arg1 willResetChannelFolder:(struct OZChannelFolder *)arg2 backupDescendants:(BOOL)arg3;
 - (void)controller:(id)arg1 didSetChannelFlags:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 willSetChannelFlags:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 didSetChannelValue:(struct OZChannelBase *)arg2;

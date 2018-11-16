@@ -30,13 +30,13 @@ __attribute__((visibility("hidden")))
     BOOL _showSecondary;
     BOOL _showAudioInSecondary;
     int _requestTimeType;
-    CDStruct_e83c9415 _filmStripTimeRange;
     FFThumbnailRequest *_ir1;
     FFThumbnailRequest *_ir2;
     CDStruct_bdcb2b0d _ir1MD5;
     CDStruct_bdcb2b0d _ir2MD5;
     long long _effectCount;
     id <FFFilmstripCellDelegate> _priorityDelegate;
+    CDStruct_e83c9415 _filmStripTimeRange;
 }
 
 + (struct CGColor *)filmstripClipBaseAudioEmpty;
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 + (struct CGColor *)blueBackground;
 + (struct CGColor *)greenBackground;
 + (struct CGColor *)_placeholderAudioColorForScale:(double)arg1;
+@property(nonatomic) CDStruct_e83c9415 filmStripTimeRange; // @synthesize filmStripTimeRange=_filmStripTimeRange;
 @property(nonatomic) id <FFFilmstripCellDelegate> priorityDelegate; // @synthesize priorityDelegate=_priorityDelegate;
 @property(nonatomic) BOOL forceVideoColor; // @synthesize forceVideoColor=_forceVideoColor;
 @property(nonatomic) BOOL transparentBackground; // @synthesize transparentBackground=_transparentBackground;
@@ -59,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable; // @synthesize skimmable=_skimmable;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
+- (BOOL)isRoughlyEquavilentToFilmstripCell:(id)arg1;
 - (BOOL)isEquavilentToFilmstripCell:(id)arg1;
 - (void)cancelRequest;
 - (void)updateIfNeeded;
@@ -70,9 +72,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldShowSecondary;
 - (void)releaseLayer;
 - (BOOL)hasLayer;
+- (void)addDebugInfoToLayer:(id)arg1;
 - (id)layer;
+- (void)setSublayerIfExists:(id)arg1 toWidth:(double)arg2;
 - (struct CGImage *)newRepresentativeThumb;
 @property(readonly, nonatomic) struct CGRect thumbFrame;
+- (id)debugDescription;
 - (id)description;
 - (void)dealloc;
 - (id)initWithSkimmable:(struct NSObject *)arg1 Frame:(struct CGRect)arg2 andTimeRange:(CDStruct_e83c9415)arg3 audioHeight:(double)arg4 requestTimeType:(int)arg5 filmStripTimeRange:(CDStruct_e83c9415)arg6 effectCount:(long long)arg7;

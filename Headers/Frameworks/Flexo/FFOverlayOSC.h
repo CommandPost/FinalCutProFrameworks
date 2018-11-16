@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)_setupTextures:(struct _CGLContextObject *)arg1;
 - (void)simpleTextRectangle:(float)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(id)arg4 attributes:(id)arg5 glowAttributes:(id)arg6 paddingX:(double)arg7 paddingY:(double)arg8 roundRectBackground:(BOOL)arg9;
+- (id)init;
 
 @end
 

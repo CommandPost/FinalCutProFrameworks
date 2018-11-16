@@ -26,11 +26,12 @@
     BOOL _hasCancelled;
     double _maxValue;
     NSButton *_cancelButton;
+    double _lastUpdate;
 }
 
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
-+ (void)initialize;
+@property(nonatomic) double lastUpdate; // @synthesize lastUpdate=_lastUpdate;
 @property(retain, nonatomic) NSWindow *targetWindow; // @synthesize targetWindow=_targetWindow;
 @property(retain, nonatomic) NSDate *requestDate; // @synthesize requestDate=_requestDate;
 - (void)showIfTime;
@@ -49,6 +50,7 @@
 - (void)unlock;
 - (void)lock;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     FFCatalogStore *_catalogStore;
     NSString *_catalogID;
     NSObject<OS_dispatch_semaphore> *_backupOK;
+    double _beginBackupTimestamp;
 }
 
 + (void)setGlobalDeferSyncCatalogIfNecessary:(BOOL)arg1;
@@ -28,9 +29,11 @@ __attribute__((visibility("hidden")))
 + (id)documentFromUniqueIdentifier:(id)arg1;
 + (id)documentForRootObject:(id)arg1;
 + (id)copyCatalogAndObjectID:(id)arg1;
+- (void)cancelBackup:(id)arg1;
+- (BOOL)isBackupInProgress;
 - (void)waitForBackup;
 - (void)scheduleBackup;
-- (id)writeBackup:(id *)arg1;
+- (BOOL)writeBackup:(id *)arg1;
 - (BOOL)backupNeeded;
 - (BOOL)writeSafelyToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)writeToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 originalContentsURL:(id)arg4 error:(id *)arg5;

@@ -16,16 +16,19 @@ __attribute__((visibility("hidden")))
     FFSegmentStoreInfo *_segmentInfo;
     NSLock *_pendingReadsLock;
     NSMutableArray *_pendingReads;
+    unsigned int _hasBeenWrittenTo;
 }
 
 - (id).cxx_construct;
 - (id)description;
-- (int)writeBuffer:(id)arg1 sampleNumber:(long long)arg2 cost:(double)arg3 mustWrite:(BOOL)arg4;
+- (int)writeTransferredData:(id)arg1 token2:(id)arg2 fieldOrder:(int)arg3 sampleNum:(long long)arg4;
+- (int)writeBuffer:(id)arg1 sampleNumber:(long long)arg2 mustWrite:(BOOL)arg3;
 - (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 sampleNumber:(long long)arg4 cost:(double)arg5 mustWrite:(BOOL)arg6;
 - (id)newBufferAtOffset:(long long)arg1;
 - (id)newImageAtOffset:(long long)arg1;
 - (id)newImageAtOffset:(long long)arg1 decodeQuality:(int)arg2;
-- (void)ageOutCompressor:(BOOL)arg1;
+- (_Bool)wantsHinting;
+- (BOOL)ageOutCompressor:(BOOL)arg1;
 - (void)updateSegmentInfo;
 - (id)storedFrameIndexes;
 - (id)newCachedBufferTokenAtOffset:(long long)arg1;
@@ -40,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)path;
 - (CDStruct_bdcb2b0d)md5;
 - (void)dealloc;
-- (id)initWithSegmentMD5:(CDStruct_bdcb2b0d)arg1 path:(id)arg2 renderProps:(id)arg3;
+- (id)initWithSegmentMD5:(CDStruct_bdcb2b0d)arg1 path:(id)arg2 renderPropsForCreation:(id)arg3;
 
 @end
 

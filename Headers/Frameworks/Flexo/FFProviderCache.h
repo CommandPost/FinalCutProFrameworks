@@ -25,6 +25,7 @@
 - (void)pruneIgnoring:(id)arg1;
 - (void)prune;
 - (void)purgeKeysUsingBlock:(CDUnknownBlockType)arg1;
+- (void)purgeProviderForSuppliedKey:(id)arg1;
 - (void)invalidateProvider:(id)arg1;
 - (void)sourceInvalidated:(id)arg1;
 - (id)newProviderForKey:(id)arg1;

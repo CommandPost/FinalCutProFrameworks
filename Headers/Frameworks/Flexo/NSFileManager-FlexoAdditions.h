@@ -7,6 +7,8 @@
 #import "NSFileManager.h"
 
 @interface NSFileManager (FlexoAdditions)
+- (BOOL)replaceItemAtURL:(id)arg1 withLinkToDestinationURL:(id)arg2 resultingItemURL:(id *)arg3;
+- (BOOL)replaceItemAtURL:(id)arg1 withSymbolicLinkToDestinationURL:(id)arg2 resultingItemURL:(id *)arg3;
 - (id)attributesOfItemAtPath:(id)arg1 traverseLink:(BOOL)arg2 error:(id *)arg3;
 @end
 

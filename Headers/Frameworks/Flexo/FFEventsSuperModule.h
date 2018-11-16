@@ -91,6 +91,8 @@
 - (BOOL)splitView:(id)arg1 shouldAdjustSizeOfSubview:(id)arg2;
 @property(nonatomic, getter=isSidebarHidden) BOOL sidebarHidden;
 - (void)sidebarModule:(id)arg1 didSelectNodes:(id)arg2;
+- (id)eventSidebarModule;
+- (id)sidebarModule;
 - (id)project;
 - (void)removePaneCapItem:(id)arg1;
 - (void)addPaneCapItem:(id)arg1;

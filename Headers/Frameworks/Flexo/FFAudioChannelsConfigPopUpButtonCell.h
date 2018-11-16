@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     NSColor *m_textColor;
 }
 
-- (id)textColor;
-- (void)setTextColor:(id)arg1;
+@property(retain, nonatomic) NSColor *textColor; // @synthesize textColor=m_textColor;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 
 @end

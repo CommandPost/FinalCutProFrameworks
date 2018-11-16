@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredObject, FFAnchoredStack, FFContext, FFEditorModule, FFEventsSuperModule, FFMarkerLayer, FFSettingsModule, NSArray, NSSet, NSURL;
+@class FFAnchoredObject, FFAnchoredStack, FFContext, FFEditorModule, FFEventMediaSidebarModule, FFEventsSuperModule, FFMarkerLayer, FFSettingsModule, NSArray, NSSet, NSURL;
 
 @protocol FFEventsLibraryDelegate <NSObject>
 - (void)didFinishRelinkingForOrganizerModule:(id)arg1;
@@ -30,6 +30,8 @@
 - (BOOL)canDisplayURL:(NSURL *)arg1;
 
 @optional
+- (void)showInspectorForSidebarModule:(FFEventMediaSidebarModule *)arg1;
+- (void)sidebarModuleDidChangeSelection:(FFEventMediaSidebarModule *)arg1;
 - (void)ensureSidebarVisible;
 - (void)openSettingsWithModule:(FFSettingsModule *)arg1;
 - (void)setKeywordEditorVisible:(BOOL)arg1;

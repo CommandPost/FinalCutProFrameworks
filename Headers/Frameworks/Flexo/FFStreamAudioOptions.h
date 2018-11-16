@@ -6,7 +6,7 @@
 
 #import <Flexo/FFStreamOptions.h>
 
-@class FFEffectStack, NSDictionary, NSMapTable, NSSet;
+@class FFEffectStack, NSArray, NSDictionary, NSMapTable, NSSet;
 
 @interface FFStreamAudioOptions : FFStreamOptions
 {
@@ -20,6 +20,7 @@
     CDStruct_e83c9415 _prerollScopeRange;
     CDStruct_e83c9415 _effectPrerollScopeRange;
     FFEffectStack *_audioEffects;
+    NSArray *_sourceChannelMap;
     NSDictionary *_componentsPlaybackInfo;
     NSMapTable *_componentsPlaybackInfoForPlayObjects;
 }
@@ -31,6 +32,7 @@
 - (id).cxx_construct;
 - (id)componentsPlaybackInfoForPlayObject:(id)arg1;
 - (id)componentsPlaybackInfo;
+- (id)sourceChannelMap;
 - (id)audioEffects;
 - (BOOL)streamAudioFlagsForPlayObject:(id)arg1 streamFlags:(unsigned long long *)arg2 streamFlagsMask:(unsigned long long *)arg3;
 - (id)playObjects;

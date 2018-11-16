@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (CDUnknownBlockType)itemComparator;
 + (BOOL)shouldSortItems;
 - (BOOL)accessibilityIsIgnored;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
+- (id)sortArray:(id)arg1;
 - (void)reloadData;
 
 @end

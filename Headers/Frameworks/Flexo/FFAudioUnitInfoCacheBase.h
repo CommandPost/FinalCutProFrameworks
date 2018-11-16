@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
 + (void)forEachSupportedType:(CDUnknownBlockType)arg1;
+- (oneway void)release;
 - (id)init;
 
 @end

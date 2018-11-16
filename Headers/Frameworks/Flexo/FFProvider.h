@@ -45,8 +45,6 @@
 - (BOOL)hasUnsavedChanges;
 - (id)rootChannel;
 - (id)inspectorClassName;
-- (id)newConfirmSettingsModule;
-- (id)newSettingsModule;
 - (id)newPlayerModuleWithContext:(id)arg1 effectCount:(long long)arg2 sublayoutName:(id)arg3;
 - (id)newPlayerModuleWithContext:(id)arg1 effectCount:(long long)arg2 sublayout:(id)arg3;
 - (id)newPlayerModuleWithContext:(id)arg1 effectCount:(long long)arg2;

@@ -35,15 +35,18 @@
     double _lastCompressionWallClockStamp;
 }
 
+@property(readonly) int firstSample; // @synthesize firstSample=_firstSample;
 - (id).cxx_construct;
 - (id)pixelTransformFromIndex:(unsigned long long)arg1;
-- (unsigned long long)pixelTransformIndex:(id)arg1;
+- (unsigned long long)pixelTransformIndexFromMatrix:(id)arg1 retAddedPT:(char *)arg2;
 - (id)copyFrameDataFileForSampleNumber:(int)arg1 createFile:(BOOL)arg2;
 - (void)updateSegmentInfo;
 - (id)storedFrameIndexes;
 - (id)renderProps;
 - (int)writeBuffer:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3;
+- (int)writeTransferredImageData:(id)arg1 secondFieldData:(id)arg2 from:(id)arg3 sampleNumber:(long long)arg4;
 - (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 sampleNumber:(long long)arg4 threadInfo:(id)arg5;
+- (BOOL)validateDimensions:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3;
 - (id)newImageFromFrameData:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3 requestedQuality:(int)arg4 propagateSampleBuf:(BOOL)arg5;
 - (struct CGRect)getExpectedEncodedPixelBounds:(int)arg1;
 - (id)getPixelFormatForQuality:(int)arg1;
@@ -51,10 +54,12 @@
 - (id)newFrameData:(long long)arg1 threadInfo:(id)arg2 sampleObj:(id)arg3;
 - (BOOL)frameExists:(int)arg1;
 - (BOOL)quickApproximateFrameExists:(int)arg1;
-- (void)ageOutCompressor:(BOOL)arg1;
+- (BOOL)ageOutCompressor:(BOOL)arg1;
 - (void)_maybeUpdateStoredIndexes;
 - (void)dealloc;
-- (id)initWithPath:(id)arg1 segmentStoreMD5:(CDStruct_bdcb2b0d)arg2 renderProps:(id)arg3;
+- (id)initWithPath:(id)arg1 segmentStoreMD5:(CDStruct_bdcb2b0d)arg2 renderPropsForCreation:(id)arg3;
+- (id)_newDictFromPath:(id)arg1 retError:(char *)arg2;
+- (BOOL)_writeDict:(id)arg1 toPath:(id)arg2;
 
 @end
 

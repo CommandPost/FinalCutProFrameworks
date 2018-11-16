@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSDate, NSMutableDictionary, NSMutableSet, NSOperation, NSOperationQueue;
+@class NSArray, NSCountedSet, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSOperation, NSOperationQueue, NSRecursiveLock;
 
 @interface FFBackgroundTaskQueue : NSObject
 {
     id _delegate;
-    NSMutableSet *_notedTasks;
+    NSCountedSet *_notedTasks;
     int _loCount;
     NSMutableSet *_pausedForLO;
     NSOperation *_blockerOperation;
@@ -28,6 +28,8 @@
     NSArray *_performSelectorModes;
     unsigned int _assertionID;
     BOOL _hasPowerAssertion;
+    NSRecursiveLock *_mainThreadCoalesceLock;
+    NSMutableArray *_mainThreadCoalesceWork;
 }
 
 + (BOOL)canStartActionAffectingAsset:(id)arg1 forUseDictionary:(id)arg2 error:(id *)arg3;
@@ -58,16 +60,15 @@
 - (void)decrementLowOverheadMode;
 - (void)incrementLowOverheadMode;
 - (void)canceledTask:(id)arg1;
-- (void)notifyDelegateCanceledTask:(id)arg1;
 - (void)completedTask:(id)arg1;
-- (void)notifyDelegateCompletedTask:(id)arg1;
 - (void)didStartTask:(id)arg1;
-- (void)notifyDelegateDidStartTask:(id)arg1;
 - (void)addOperation:(id)arg1;
 - (void)_clearFinishedRunGroupOps;
-- (void)notifyDelegateDidAddTask:(id)arg1;
+- (void)didAddTask:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_updateAggregateProgress;
+- (void)queueBlockToMainThread:(CDUnknownBlockType)arg1;
+- (void)_handleBlocksOnMainThread;
+- (void)_updateAggregateProgress:(id)arg1;
 - (void)_decrementNotableTaskCount:(id)arg1;
 - (void)_incrementNotableTaskCount:(id)arg1;
 - (void)_updateTasksPending;
@@ -86,6 +87,7 @@
 - (void)finalizeShutdown;
 - (void)beginShutdown;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 
 @end

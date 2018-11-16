@@ -14,7 +14,10 @@
 - (void)layoutSublayers;
 - (void)layoutDBlines;
 - (void)layoutDB;
+- (void)layoutIndicators;
 - (void)layoutMeters;
+- (double)widthOfEachMeter;
+- (double)widthOfMeterArea;
 
 @end
 

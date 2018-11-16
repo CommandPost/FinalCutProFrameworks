@@ -6,15 +6,17 @@
 
 #import "NSObject.h"
 
-@class NSString;
+@class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFXMLKeyFrame : NSObject
+@interface FFXMLKeyframe : NSObject
 {
     CDStruct_1b6d18a9 _time;
     NSString *_value;
+    NSNumber *_interpolation;
 }
 
+@property(retain, nonatomic) NSNumber *interpolation; // @synthesize interpolation=_interpolation;
 @property(retain, nonatomic) NSString *stringValue; // @synthesize stringValue=_value;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 - (long long)compareTime:(id)arg1;

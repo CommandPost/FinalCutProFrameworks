@@ -6,6 +6,7 @@
 
 #import <Flexo/FFProject.h>
 
+#import "DSStoreDelegateProtocol.h"
 #import "FFOrganizerItem.h"
 #import "FFOrganizerItemDraggingSource.h"
 #import "FFOrganizerMasterItem.h"
@@ -14,7 +15,7 @@
 
 @class FFEventInfo, FFMediaEventFolder, FFMediaEventProjectData, FFMediaEventThumbnail, FFSequenceInfo, NSArray, NSDate, NSImage, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSURL;
 
-@interface FFMediaEventProject : FFProject <FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, NSCoding>
+@interface FFMediaEventProject : FFProject <FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, DSStoreDelegateProtocol, NSCoding>
 {
     NSString *_projectDataID;
     NSDate *_eventEarliestDate;
@@ -82,7 +83,7 @@
 - (int)mediaStatus;
 - (void)setAutoEdit:(BOOL)arg1;
 - (BOOL)autoEdit;
-@property(nonatomic) BOOL mediaIsSyncing;
+@property BOOL mediaIsSyncing;
 @property(nonatomic) int defaultCropType;
 @property(nonatomic) CDStruct_1b6d18a9 defaultEditDuration;
 - (CDStruct_1b6d18a9)constrainDefaultEditDuration:(CDStruct_1b6d18a9)arg1;
@@ -92,8 +93,8 @@
 - (void)removeThumbnailsForMedia:(id)arg1;
 - (void)addThumbnail:(id)arg1;
 - (void)updateMedianDate;
-- (void)updateDateRangeWithMedia:(id)arg1 ignoreExistingDates:(BOOL)arg2;
-- (id)recommendedAssetOriginalURLForURL:(id)arg1 hasCameraTag:(BOOL)arg2 fileIsAlreadyAtURL:(BOOL)arg3 assetID:(id)arg4 returnRecommendedRelativePath:(id *)arg5;
+- (void)updateDateRangeWithClips:(id)arg1;
+- (id)recommendedAssetOriginalURLForURL:(id)arg1 fileIsAlreadyAtURL:(BOOL)arg2 assetID:(id)arg3 returnRecommendedRelativePath:(id *)arg4;
 - (id)eventClipsForMediaIdentifiers:(id)arg1;
 - (id)eventClipsForReferencedMediaIdentifiers:(id)arg1;
 - (id)eventClipForReferencedClipMediaIdentifier:(id)arg1;
@@ -102,6 +103,8 @@
 - (BOOL)referencesExistInsideEventForMediaIdentifier:(id)arg1 excludingTheseClips:(id)arg2;
 - (BOOL)referencesExistForMediaIdentifier:(id)arg1;
 - (BOOL)referencesExistForMediaIdentifier:(id)arg1 excludingTheseClips:(id)arg2;
+- (void)addMediaIdentifiesFromProjectToSet:(id)arg1 clipsToExcludeSet:(id)arg2;
+- (BOOL)referencesExistForMediaIdentifier:(id)arg1 excludingTheseClips:(id)arg2 projectsInExcludeSet:(id)arg3 targetSeqRecsInExcludeSet:(id)arg4;
 - (BOOL)referencesExistForMediaIdentifiers:(id)arg1 excludingTheseClips:(id)arg2;
 - (void)thumbnailMediaSet:(id)arg1;
 - (id)resolveMediaIdentifier:(id)arg1;
@@ -116,6 +119,7 @@
 - (void)loadProjectDataKeepTempFiles;
 @property(readonly, nonatomic) FFMediaEventProjectData *projectData;
 - (id)_projectData:(BOOL)arg1;
+- (void)store:(id)arg1 processing:(unsigned long long)arg2 of:(unsigned long long)arg3;
 - (BOOL)isProjectDataLoadedIncludingOtherProjects;
 - (BOOL)isProjectDataLoaded;
 - (BOOL)isDetailedProjectDataLoaded;
@@ -184,7 +188,7 @@
 @property(readonly, nonatomic) FFEventInfo *eventInfo;
 - (id)eventRecord;
 - (id)sequenceInflateIfNecessary:(BOOL)arg1;
-- (void)resetMediaReferences;
+- (void)mediaReferencesChangedForSequence:(id)arg1;
 - (void)setEventMedianDate:(id)arg1;
 @property(readonly, nonatomic) NSDate *eventMedianDate; // @synthesize eventMedianDate=_eventMedianDate;
 - (void)setEventLatestDate:(id)arg1;
@@ -203,6 +207,7 @@
 - (void)mediaManagerDone:(id)arg1;
 - (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
 - (BOOL)_performDropOnRootFolder:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
+- (BOOL)performDropOnProject:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 keywordNames:(id)arg4 newBinObjectsOut:(id *)arg5;
 - (BOOL)performDropOnProject:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 keywordNames:(id)arg4 organizerModule:(id)arg5;
 - (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
 - (unsigned long long)validateDropOnProject:(id)arg1 newSubitemInsertionIndex:(long long)arg2;

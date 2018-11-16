@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)_handleOriginalProxyChangeNotification:(id)arg1;
 - (void)_handleActionPerformed:(id)arg1;
 - (void)_handleDocumentRemoved:(id)arg1;
 - (void)_handleLibrariesUpgraded:(id)arg1;
@@ -21,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateProChildNodes;
 - (void)_updateConsumerChildNodes;
 - (void)_updateLibraryDocumentNodes;
-- (id)_copyAllLibraries;
+- (id)_copyAllLibrariesOrderedByOpening;
 - (void)_removeLibraryDocument:(id)arg1;
 - (id)_addLibraryDocument:(id)arg1;
 - (struct _NSRange)_libraryDocumentRange;

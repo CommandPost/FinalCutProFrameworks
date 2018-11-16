@@ -14,6 +14,7 @@
 }
 
 - (struct FFAudioPlaybackMediator *)audioPlaybackMediator;
+- (void)deleteAudioPlaybackMediator;
 - (void)demandAudioPlaybackMediator:(BOOL)arg1;
 - (void)setHasTopLevelScoper:(BOOL)arg1;
 - (BOOL)hasTopLevelScoper;

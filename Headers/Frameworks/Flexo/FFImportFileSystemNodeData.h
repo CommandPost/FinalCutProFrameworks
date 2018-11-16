@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSColor, NSDate, NSImage, NSMutableDictionary, NSNumber, NSString, NSURL;
+@class FFAnchoredSequence, NSColor, NSDate, NSImage, NSMutableDictionary, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFImportFileSystemNodeData : NSObject
@@ -32,8 +32,10 @@ __attribute__((visibility("hidden")))
     NSString *_label;
     NSMutableDictionary *_metadata;
     struct __MDItem *_mdItem;
+    FFAnchoredSequence *_sequence;
 }
 
+@property(retain, nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
 - (void)_readUnlock:(const char *)arg1;
 - (void)_readLock:(const char *)arg1 file:(const char *)arg2 line:(unsigned int)arg3;
 - (void)_readUnlock;

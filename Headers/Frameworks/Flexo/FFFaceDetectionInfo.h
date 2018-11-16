@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (int)findFaceWithMostOverlap:(id)arg1;
 - (double)_overlapWithFace:(id)arg1;
 - (int)uniqueID;
-- (id)initWithFaceInfo:(id)arg1 srcImageWidth:(int)arg2 srcImageHeight:(int)arg3;
+- (id)initWithFaceInfo2:(id)arg1 srcImageWidth:(int)arg2 srcImageHeight:(int)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

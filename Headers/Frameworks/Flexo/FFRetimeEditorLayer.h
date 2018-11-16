@@ -75,6 +75,7 @@ __attribute__((visibility("hidden")))
     double _mouseDownKeyPos;
     float _dragOffset;
     struct CGPoint _mouseDownLocation;
+    struct CGPoint _mouseDownEventPoint;
     CDStruct_1b6d18a9 _lastSuccessfullDeltaTime;
     double _lastSuccessfullMediaTime;
 }
@@ -86,8 +87,8 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityAttributeNames;
 - (void)updateLayout:(id)arg1;
 - (BOOL)setTransitionFallOffsAtKey:(unsigned int)arg1 leftFallOff:(double)arg2 rightFallOff:(double)arg3;
-- (BOOL)moveComponentTimeKey:(unsigned int)arg1 deltaTime:(CDStruct_1b6d18a9)arg2 event:(id)arg3;
-- (BOOL)moveMediaTimeKey:(unsigned int)arg1 toTime:(double)arg2 event:(id)arg3;
+- (BOOL)moveComponentTimeKey:(unsigned int)arg1 deltaTime:(CDStruct_1b6d18a9)arg2 minDeltaToPrevSegment:(double)arg3 event:(id)arg4;
+- (BOOL)moveMediaTimeKey:(unsigned int)arg1 toTime:(double)arg2 minDeltaToPrevSegment:(double)arg3 minDeltaToNextSegment:(double)arg4 event:(id)arg5;
 - (void)_adjustAfterRetime;
 - (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
 - (id)cursorAtPoint:(struct CGPoint)arg1 event:(id)arg2;
@@ -107,6 +108,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateChangeSourceFrameLayersForFilmStripLayer:(id)arg1 forVideo:(BOOL)arg2 mouseLocation:(struct CGPoint)arg3;
 - (void)_updateSquishyLayersForFilmStripLayer:(id)arg1 forVideo:(BOOL)arg2 mouseLocation:(struct CGPoint)arg3;
 - (BOOL)mouseDown:(id)arg1;
+- (void)updateTimelineLocationAndSelectionForIndex:(int)arg1;
 - (CDStruct_1b6d18a9)_componentTimeFromTimelineMouseLocation:(struct CGPoint)arg1 dragOffset:(float)arg2;
 - (void)_createChangeSourceFrameLayersForFilmStripLayer:(id)arg1 forVideo:(BOOL)arg2 mouseLocation:(struct CGPoint)arg3;
 - (void)_createSquishyLayersForFilmStripLayer:(id)arg1 forVideo:(BOOL)arg2 mouseLocation:(struct CGPoint)arg3;
@@ -116,6 +118,8 @@ __attribute__((visibility("hidden")))
 - (void)updateSpeedTransitionLayers;
 - (void *)_keyframeAtIndex:(int)arg1;
 - (void)updateKeyHandles;
+- (float)_widthToHideSpeedGrabber;
+- (float)_widthToHideSourceFramePickerForSegment:(int)arg1;
 - (void)updateSpeedLayer;
 - (void)updateTimeRange;
 - (BOOL)includeTransition;

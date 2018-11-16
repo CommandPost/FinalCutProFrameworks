@@ -19,17 +19,17 @@
     TLKTimelineLayer *_layer;
     struct CGRect _frame;
     TLKAccessoryHostLayer *_accessoryLayer;
-    BOOL _deleted;
+    BOOL _purgeable;
 }
 
 + (void)setTimelineView:(id)arg1;
-@property(nonatomic) BOOL deleted; // @synthesize deleted=_deleted;
+@property(nonatomic, getter=isPurgeable) BOOL purgeable; // @synthesize purgeable=_purgeable;
 @property(retain, nonatomic) TLKAccessoryHostLayer *accessoryLayer; // @synthesize accessoryLayer=_accessoryLayer;
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 - (id)description;
 - (BOOL)isTrailingEdgeFragment;
 - (BOOL)isLeadingEdgeFragment;
-- (id)frameComponents;
+@property(readonly, nonatomic) struct CGRect boundingBox;
 - (struct CGRect)lowerAccessoryFrame;
 - (struct CGRect)upperAccessoryFrame;
 - (struct _TLKRange)locationRange;

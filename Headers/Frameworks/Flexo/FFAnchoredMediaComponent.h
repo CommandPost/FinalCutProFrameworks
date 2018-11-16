@@ -22,6 +22,7 @@
     long long _deinterlaceType;
     long long _rotationAngle;
     FFRenderStateTracker *_renderStateTracker;
+    NSString *_deInterlaceProviderKey;
 }
 
 + (void)updateAudioMediaComponents:(id)arg1 fromAudioSourceDict:(id)arg2 toAudioSourceDict:(id)arg3;
@@ -30,6 +31,7 @@
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5_NoIntrinsics; // @synthesize cachedAudioMD5_NoIntrinsics=_cachedAudioMD5_NoIntrinsics;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 @property(readonly, nonatomic) FFMedia *media; // @synthesize media=_media;
+- (id)createUsedRangesMediaIdentifier;
 - (BOOL)update_cleanupAudioRoutingMap;
 - (void)deinterlace;
 - (void)setMedia:(id)arg1 providerSourceKey:(id)arg2 sourceChannelMap:(id)arg3 audioChannelRoutingMap:(id)arg4 updateFlags:(int)arg5;
@@ -48,6 +50,7 @@
 - (void)setMedia:(id)arg1;
 - (void)_stopObservingMedia;
 - (void)_startObservingMedia;
+- (void)_refInvalidationChange:(id)arg1;
 - (void)_assetChange:(id)arg1;
 - (void)_rangeInvalidated:(id)arg1;
 - (void)_updateToAudioSourceDict:(id)arg1 oldAudioSourceDict:(id)arg2;
@@ -58,6 +61,8 @@
 - (long long)audioChannelCount:(int)arg1;
 - (id)mediaVideoProps;
 - (id)videoProps;
+- (void)localPercentageToPixelValuesLRTB:(double *)arg1 right:(double *)arg2 top:(double *)arg3 bottom:(double *)arg4;
+- (id)unTrimmedVideoProps;
 - (long long)timecodeDisplayDropFrame;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (CDStruct_1b6d18a9)timeOffset;
@@ -76,7 +81,9 @@
 - (id)sourceChannelMap;
 - (void)setProviderSourceKey:(id)arg1;
 - (id)providerSourceKey;
+- (id)componentForTrim;
 - (BOOL)contributesToCompoundClip;
+- (BOOL)isTrimmed;
 - (BOOL)isGenerator;
 - (BOOL)isPSD;
 - (BOOL)isStill;

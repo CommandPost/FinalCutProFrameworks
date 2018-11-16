@@ -18,10 +18,12 @@
     NSLock *_highPriorityRequestsLock;
     FFStreamVideoCache *_streamVideoCache;
     FFBackgroundTask *_bTask;
-    BOOL _disallowNewThumbnailRequests;
     NSConditionLock *_pause;
     long long _playersPlayering;
     BOOL _isAudio;
+    struct CGImage *_offlineImage;
+    struct CGImage *_emptyClipImage;
+    BOOL _disallowNewThumbnailRequests;
 }
 
 + (void)initialize;
@@ -37,7 +39,8 @@
 - (id)librariesInUse;
 - (id)assetsInUse;
 - (id)_copySkimmableItems;
-- (void)appWillTerminate:(id)arg1;
+- (void)_teardown;
+- (void)disallowAndCancelAllAsyncImageRequests;
 - (BOOL)newImage:(struct CGImage **)arg1 forRequest:(id)arg2;
 - (void)addAsyncImageRequest:(id)arg1;
 - (void)_waitForBGTaskToFinish;
@@ -48,6 +51,7 @@
 - (void)uiPlaybackStateChange:(id)arg1;
 - (id)streamVideoCache;
 - (void)dealloc;
+- (oneway void)release;
 - (id)initForAudio:(BOOL)arg1;
 
 @end

@@ -12,8 +12,6 @@
 
 + (void)performAudioProcessingForMedia:(id)arg1 options:(id)arg2 forAssetImport:(BOOL)arg3;
 + (BOOL)hasRunningBackgroundTasks:(id)arg1 withBeep:(BOOL)arg2;
-+ (void)synchronizeItems:(id)arg1;
-+ (BOOL)canSynchronizeItems:(id)arg1;
 + (void)_addObject:(id)arg1 toSequence:(id)arg2;
 + (BOOL)_objectIsMergedClip:(id)arg1;
 + (void)autoDetectRelatedAudioComponents:(id)arg1 onTask:(id)arg2;
@@ -23,9 +21,6 @@
 + (_Bool)_hasSilence:(id)arg1 onTask:(id)arg2;
 + (_Bool)_mediaSourceSupported:(id)arg1;
 + (void)postNotificationToRefresh:(id)arg1;
-+ (id)_setUnwrappingSequencesFromFigTimeRangeAndObjects:(id)arg1;
-+ (id)_arrayUnwrappingSequencesFromFigTimeRangeAndObjects:(id)arg1;
-+ (id)_unwrap:(id)arg1 into:(id)arg2;
 
 @end
 

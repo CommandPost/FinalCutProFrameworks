@@ -6,18 +6,17 @@
 
 #import <Flexo/FFEventMediaSidebarModule.h>
 
-@class FFAnalyzeMediaWindowController, FFModifyContentCreationDateWindowController, FFTranscodeMediaWindowController;
+@class FFAnalyzeMediaWindowController, FFModifyContentCreationDateWindowController, FFTranscodeMediaWindowController, LKButton;
 
 @interface FFProMediaSidebarModule : FFEventMediaSidebarModule
 {
-    BOOL _arrangeEventsByMostRecent;
+    LKButton *_openLibraryButton;
     FFTranscodeMediaWindowController *_transcodeController;
     FFAnalyzeMediaWindowController *_analyzeController;
     FFModifyContentCreationDateWindowController *_creationDateWindowController;
 }
 
 + (id)defaultModuleNibName;
-@property(nonatomic) BOOL arrangeEventsByMostRecent; // @synthesize arrangeEventsByMostRecent=_arrangeEventsByMostRecent;
 @property(retain, nonatomic) FFModifyContentCreationDateWindowController *creationDateWindowController; // @synthesize creationDateWindowController=_creationDateWindowController;
 @property(retain, nonatomic) FFAnalyzeMediaWindowController *analyzeController; // @synthesize analyzeController=_analyzeController;
 @property(retain, nonatomic) FFTranscodeMediaWindowController *transcodeController; // @synthesize transcodeController=_transcodeController;
@@ -36,12 +35,12 @@
 - (void)newSmartCollection:(id)arg1;
 - (void)newFolder:(id)arg1;
 - (void)newKeyword:(id)arg1;
-- (void)toggleArrangeEventsByMostRecent:(id)arg1;
 - (void)newEvent:(id)arg1;
 - (id)localModuleActions;
+- (void)sidebarDidRepopulate;
+- (void)sidebarDidDepopulate;
+- (void)viewDidLoad;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
-- (id)contentLayoutDictionary;
-- (void)takeContentLayoutFromDictionary:(id)arg1;
 - (void)dealloc;
 
 @end

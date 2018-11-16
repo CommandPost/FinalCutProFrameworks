@@ -10,10 +10,10 @@
 {
 }
 
-- (id)toolTip;
 - (int)displayType;
 - (id)moduleKey;
 - (long long)_dimension1;
+- (id)toolTip;
 - (id)title;
 
 @end

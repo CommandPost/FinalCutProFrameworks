@@ -46,6 +46,7 @@
     NSProThemeImageView *_smallHeightImage;
     NSProThemeImageView *_largeHeightImage;
     LKButton *_newProjectButton;
+    LKTextField *_newProjectLabel;
     NSString *_lastOpenSequenceID;
     LKPopOverWindow *_clipAttributesPopOverWindow;
     LKSegmentedControl *_auditionPalette;
@@ -116,6 +117,7 @@
 - (void)openStabilizationPanel;
 - (void)openCropPanel;
 - (void)openEffectsPanel;
+- (void)openSpeedAdjustmentPanel;
 - (void)openInspectorToSubmodule:(id)arg1;
 - (void)toggleAdjustmentsPanel;
 - (void)openAdjustmentsPanel;
@@ -148,6 +150,7 @@
 - (void)_updateSoloState:(id)arg1;
 - (void)windowWillClose:(id)arg1;
 - (void)windowDidBecomeKey:(id)arg1;
+- (void)documentWasAdded:(id)arg1;
 - (void)documentWasRemoved:(id)arg1;
 - (void)windowDidResignKey:(id)arg1;
 - (void)layoutDidChange:(id)arg1;

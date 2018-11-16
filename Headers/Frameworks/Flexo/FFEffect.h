@@ -35,6 +35,7 @@
     FFEffectController *_effectController;
 }
 
++ (id)messageTracerEffectCountData;
 + (id)standardVideoGeneratorWithBackgroundKeysArray;
 + (id)standardVideoCompositorInputKeysArray;
 + (id)standardVideoTransitionInputKeysArray;
@@ -44,6 +45,8 @@
 + (id)newEffectWithXMLElement:(id)arg1;
 + (void)registerEffects;
 + (id)copyClassDescription;
++ (id)obsoleteEffectIDForEffectID:(id)arg1;
++ (id)adjustEffectIDForObsoleteEffects:(id)arg1;
 + (id)defaultVideoTransitionEffectID;
 + (BOOL)isVideoForEffectID:(id)arg1;
 + (id)descriptionForEffectID:(id)arg1;
@@ -78,6 +81,7 @@
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 - (void)finishedSettingEffectParameters;
 - (id)designatedChannelsForXMLExport;
+- (BOOL)isColorSecondary;
 - (BOOL)hasDesignatedChannelsForXMLExport;
 - (id)exportAsXMLElementWithDeprecatedEffectData:(id)arg1;
 - (id)exportAsXMLElementWithExcludedChannels:(id)arg1;
@@ -88,6 +92,7 @@
 - (CDStruct_1b6d18a9)sampleDurationOfContainer;
 - (id)fileURLs:(int)arg1;
 - (id)mediaRefs;
+- (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)addClipRefsToSet:(id)arg1 insideClipRefs:(BOOL)arg2;
 - (void)addClipRefsToSet:(id)arg1;
 - (id)clipRefs;
@@ -126,10 +131,13 @@
 - (BOOL)shouldChannelBeAdjustedByRetime:(id)arg1;
 - (BOOL)isRateConformEffect;
 - (BOOL)isRetimeEffect;
+- (BOOL)isTrimEffect;
+- (BOOL)inhibitAutoRenderDueToSettings;
 - (void)setSelected:(BOOL)arg1;
 - (BOOL)selected;
 - (void)setEnabled:(BOOL)arg1;
 - (BOOL)enabled;
+- (id)project;
 - (id)enabledChannel;
 - (CDStruct_1b6d18a9)suggestedDuration;
 - (unsigned int)attributeCopyingFlags;
@@ -165,6 +173,7 @@
 - (void)effectWasAddedToStack;
 - (id)inputKeys;
 - (void)markForDynamicParameterUsage;
+- (id)onScreenControlsForToolForEffect;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (id)publishedChannels;
 - (BOOL)hasPublishedChannels;
@@ -189,7 +198,8 @@
 - (void)setReferencedObject:(id)arg1 forChannel:(id)arg2;
 - (id)referencedObjectForChannel:(id)arg1;
 - (id)observedObjectForChannel:(id)arg1;
-- (BOOL)containsObjectRefereces;
+- (id)objectReferences;
+- (BOOL)containsObjectReferences;
 - (void)removeObjectFromChannelObjectReferencesAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inChannelObjectReferencesAtIndex:(unsigned long long)arg2;
 - (id)channelObjectReferences;

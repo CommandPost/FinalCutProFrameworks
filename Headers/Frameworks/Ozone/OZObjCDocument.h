@@ -69,6 +69,7 @@
 - (void)autosaveUpdate;
 - (void)processInkGestureEvent:(struct _gestureEventContiner *)arg1;
 - (id)renderedImage:(double *)arg1;
+- (void)document:(id)arg1 didRunPrintOperation:(BOOL)arg2 contextInfo:(void *)arg3;
 - (void)printShowingPrintPanel:(BOOL)arg1;
 - (void)setTemplateTheme:(id)arg1;
 - (void)setTemplateFormat:(unsigned int)arg1;

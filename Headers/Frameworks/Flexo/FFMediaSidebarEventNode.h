@@ -10,11 +10,12 @@
 {
 }
 
++ (id)pasteboardType;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)stopObservingChildNodes;
 - (void)startObservingChildNodes;
 - (void)updateChildNodes;
-- (id)documentActiveProject;
+- (id)_documentActiveProject;
 - (id)adornmentImage:(BOOL)arg1;
 - (id)iconImage:(BOOL)arg1;
 - (BOOL)_containsProject:(id)arg1;
@@ -23,6 +24,7 @@
 - (BOOL)isExpandable;
 - (id)organizerItem;
 - (id)persistentID;
+- (id)toolTip;
 - (void)setTitle:(id)arg1;
 - (id)title;
 - (id)representedObject;

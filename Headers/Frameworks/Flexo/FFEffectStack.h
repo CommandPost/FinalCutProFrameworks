@@ -35,6 +35,8 @@
     unsigned int _noOpIntrinsicFlags;
     unsigned int _insertingDefaultIntrinsics:1;
     unsigned int _defaultIntrinsics:1;
+    BOOL _hasVideo;
+    BOOL _hasAudio;
     BOOL _isOpaque;
     BOOL _suspendEffectChangedNotifications;
     BOOL _pendingEffectChangeNotification;
@@ -85,8 +87,10 @@
 - (void)computeConformScaleX:(double *)arg1 scaleY:(double *)arg2 frameBounds:(struct CGRect *)arg3 squareInputBounds:(struct CGRect *)arg4;
 - (BOOL)isInCropOrKenBurnsCropMode;
 - (id)effectPickerEffect:(BOOL)arg1;
+- (BOOL)hasTrimEffect;
 - (id)xform3DEffect;
 - (id)conformEffect;
+- (id)trimEffect;
 - (id)cropEffect;
 - (id)consumerColorEffect;
 - (id)consumerMatchHueEffect;
@@ -124,7 +128,7 @@
 - (BOOL)canRemoveChannel:(id)arg1;
 - (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
 - (BOOL)canReorderChannel:(id)arg1;
-- (BOOL)containsChannel:(id)arg1;
+- (BOOL)containsChannel:(id)arg1 associatedModelObject:(id)arg2;
 - (id)_effectForChannel:(id)arg1;
 - (id)objectChannels;
 - (id)effectChannels;

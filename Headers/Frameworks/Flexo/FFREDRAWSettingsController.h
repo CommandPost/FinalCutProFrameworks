@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)verifyNoRunningBackgroundTasksForAnchoredObjects:(id)arg1;
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)sharedController;
 - (id).cxx_construct;
 - (void)warnUserAboutPotentialLossOfChangesWithUncommitedClipSet:(id)arg1;
@@ -103,16 +102,11 @@ __attribute__((visibility("hidden")))
 - (void)sender:(id)arg1 action:(SEL)arg2 didSetPropertiesUsingDataSource:(id)arg3;
 - (void)sender:(id)arg1 action:(SEL)arg2 willSetPropertiesUsingDataSource:(id)arg3;
 - (void)window:(id)arg1 willCloseWithSettings:(id)arg2;
-- (unsigned long long)retainCount;
-- (id)autorelease;
-- (oneway void)release;
-- (id)retain;
 - (void)didChangeSelection;
 - (void)willChangeSelection:(id)arg1;
 @property(copy, nonatomic) NSArray *anchoredObjects; // @dynamic anchoredObjects;
 - (void)dealloc;
 - (id)init;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

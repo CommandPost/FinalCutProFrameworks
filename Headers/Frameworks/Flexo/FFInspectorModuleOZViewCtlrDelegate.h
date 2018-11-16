@@ -42,8 +42,8 @@
 - (void)controller:(id)arg1 willDeleteChannel:(struct OZChannelBase *)arg2;
 - (void)endCaptureModifiedChannels;
 - (void)startCaptureModifiedChannels:(const struct PCString *)arg1;
-- (void)controller:(id)arg1 didResetChannelFolder:(struct OZChannelFolder *)arg2;
-- (void)controller:(id)arg1 willResetChannelFolder:(struct OZChannelFolder *)arg2;
+- (void)controller:(id)arg1 didResetChannelFolder:(struct OZChannelFolder *)arg2 backupDescendants:(BOOL)arg3;
+- (void)controller:(id)arg1 willResetChannelFolder:(struct OZChannelFolder *)arg2 backupDescendants:(BOOL)arg3;
 - (void)controller:(id)arg1 didSetChannelValue:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 willSetChannelValue:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 didSetChannelFlags:(struct OZChannelBase *)arg2;
@@ -67,7 +67,9 @@
 - (void)abortAndWait;
 - (void)abort;
 - (struct __CFString *)bundleID;
+- (void)resetChannelsInspectorModule;
 - (id)channelsInspectorModule;
+- (BOOL)isRecordingChannelChange;
 - (BOOL)isDragging;
 - (void)dealloc;
 - (id)initWithInspectorModule:(id)arg1;

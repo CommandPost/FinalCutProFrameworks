@@ -6,7 +6,7 @@
 
 #import "NSWindowController.h"
 
-@class NSArray, NSMatrix, NSProThemeImageView, NSTextField;
+@class NSArray, NSButton, NSMatrix, NSProThemeImageView, NSTextField;
 
 __attribute__((visibility("hidden")))
 @interface FFPurgeRenderFilesWindowController : NSWindowController
@@ -19,21 +19,30 @@ __attribute__((visibility("hidden")))
     NSTextField *_projectText;
     id _radioGroupOptions;
     id _sheet;
+    NSButton *_deleteRenderFiles;
+    NSButton *_deleteOptimizedMedia;
+    NSButton *_deleteProxyMedia;
     NSArray *_events;
     NSArray *_projects;
 }
 
 + (BOOL)runSheetForProjects:(id)arg1 parentWindow:(id)arg2;
 + (BOOL)runSheetForEvents:(id)arg1 parentWindow:(id)arg2;
++ (BOOL)runSheetForLibrary:(id)arg1 parentWindow:(id)arg2;
+- (void)deleteOptimizedOrProxyMediaFilesCheckbox:(id)arg1;
+- (void)deleteRenderFilesCheckbox:(id)arg1;
+- (void)updateOKButton;
 - (void)cancel:(id)arg1;
 - (void)OK:(id)arg1;
 - (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)_purgeRenderFiles:(BOOL)arg1;
 - (void)setupProjectViewOptions;
+- (void)setupLibraryViewOptions;
 - (void)windowDidLoad;
 - (void)dealloc;
 - (id)initWithProjects:(id)arg1;
 - (id)initWithEvents:(id)arg1;
+- (id)initWithLibrary:(id)arg1;
 
 @end
 

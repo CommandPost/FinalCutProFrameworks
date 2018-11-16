@@ -6,7 +6,7 @@
 
 #import <Flexo/FFShareDestinationWebController.h>
 
-@class LKButton, LKPopUpButton, NSArray, NSArrayController, NSButton, NSDictionary, NSSecureTextField, NSString, NSTextField, NSWindow;
+@class GoogleAuthTokenManager, LKButton, LKPopUpButton, NSArray, NSArrayController, NSButton, NSDictionary, NSSecureTextField, NSString, NSTextField, NSWindow;
 
 @interface FFShareDestinationYouTubeController : FFShareDestinationWebController
 {
@@ -21,6 +21,7 @@
     NSSecureTextField *_password;
     NSButton *_storeInKeychain;
     NSTextField *_messageStr;
+    GoogleAuthTokenManager *_googleAuthTokenManager;
     NSString *_nameWithUserInfo;
     BOOL _observing;
 }
@@ -29,6 +30,7 @@
 + (id)keyPathsForValuesAffectingCategory;
 + (id)keyPathsForValuesAffectingCategories;
 @property(retain, nonatomic) NSString *nameWithUserInfo; // @synthesize nameWithUserInfo=_nameWithUserInfo;
+@property(nonatomic) GoogleAuthTokenManager *googleAuthTokenManager; // @synthesize googleAuthTokenManager=_googleAuthTokenManager;
 @property(nonatomic) NSTextField *messageStr; // @synthesize messageStr=_messageStr;
 @property(nonatomic) NSSecureTextField *password; // @synthesize password=_password;
 @property(nonatomic) NSTextField *username; // @synthesize username=_username;
@@ -43,6 +45,7 @@
 - (void)signIn:(id)arg1;
 - (void)signInSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)okcancelClicked:(id)arg1;
+- (void)updateUserNamePassword;
 @property(copy, nonatomic) NSDictionary *category;
 @property(readonly, nonatomic) NSArray *categories;
 @property(copy, nonatomic) NSDictionary *privacy;

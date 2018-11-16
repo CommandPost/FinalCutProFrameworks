@@ -28,8 +28,9 @@
     struct {
         unsigned int autosizesLayouts:1;
         unsigned int needsSaveDefaultLayout:1;
+        unsigned int _suspendSaveDefaultLayout:1;
         unsigned int readingLayout:1;
-        unsigned int RESERVED:13;
+        unsigned int RESERVED:12;
     } _flags;
     NSString *_currentLayoutName;
 }
@@ -85,7 +86,8 @@
 - (void)_addModuleLayout:(id)arg1;
 - (BOOL)addModuleLayout:(id)arg1;
 - (void)_saveLayoutInDefaultLayout;
-- (void)_saveDefaultLayoutIfNeeded;
+- (void)saveDefaultLayoutIfNeeded;
+- (void)saveDefaultLayoutAndSuspend;
 - (BOOL)isDefaultLayout:(id)arg1;
 - (id)newDefaultModuleLayout;
 - (id)defaultModuleLayoutCreateIfNeeded:(BOOL)arg1;
@@ -128,6 +130,7 @@
 - (id)userLayoutsDirectory;
 - (id)sharedLayoutsDirectory;
 - (id)factoryLayoutsDirectory;
+@property(nonatomic) BOOL suspendSaveDefaultLayout;
 - (void)setNeedsSaveDefaultLayout:(BOOL)arg1;
 - (BOOL)needsSaveDefaultLayout;
 - (void)documentWasAdded:(id)arg1;

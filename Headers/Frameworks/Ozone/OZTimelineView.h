@@ -249,7 +249,6 @@
 - (void)drawBackground:(struct CGRect)arg1;
 - (void)drawPlayRange:(struct CGRect)arg1;
 - (id)linenShadowFacet;
-- (id)linenFacet;
 - (id)inactiveRangeFacet;
 - (void)drawRect:(struct CGRect)arg1;
 - (BOOL)isOpaque;

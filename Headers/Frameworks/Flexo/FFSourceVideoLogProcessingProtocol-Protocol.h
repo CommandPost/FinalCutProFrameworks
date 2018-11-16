@@ -4,7 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFLogProcessingInfo;
+
 @protocol FFSourceVideoLogProcessingProtocol
-- (void)setLogProcessingMode:(int)arg1 forLogEncodingType:(int)arg2;
+- (void)setLogProcessingInfo:(FFLogProcessingInfo *)arg1;
 @end
 

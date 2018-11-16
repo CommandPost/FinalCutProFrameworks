@@ -6,15 +6,17 @@
 
 #import <Flexo/FFCatalogDocument.h>
 
-@class FFFileLock, FFLibraryItem, NSURL;
+@class FFFileLock, FFLibraryItem, NSString, NSURL;
 
 @interface FFModelDocument : FFCatalogDocument
 {
     FFLibraryItem *_libraryItem;
     FFFileLock *_fileLock;
     NSURL *_documentDirectory;
+    NSString *_statusString;
 }
 
++ (void)performWithoutUndo:(CDUnknownBlockType)arg1;
 + (BOOL)performAction:(id)arg1 withObject:(id)arg2 error:(id *)arg3 operationBefore:(CDUnknownBlockType)arg4 operationAfter:(CDUnknownBlockType)arg5 operation:(CDUnknownBlockType)arg6;
 + (BOOL)performAction:(id)arg1 withObject:(id)arg2 objectDocumentBlock:(CDUnknownBlockType)arg3 error:(id *)arg4 operationBefore:(CDUnknownBlockType)arg5 operationAfter:(CDUnknownBlockType)arg6 operation:(CDUnknownBlockType)arg7;
 + (BOOL)performAction:(id)arg1 withObjects:(id)arg2 error:(id *)arg3 operation:(CDUnknownBlockType)arg4;
@@ -36,11 +38,11 @@
 + (id)localizedErrorDict:(id)arg1 param:(id)arg2 resolution:(id)arg3;
 + (BOOL)showProgress;
 + (void)setShowProgress:(BOOL)arg1;
-+ (void)acceptVersionUpdates;
 + (id)documentFileName;
 + (id)makeUniqueDirectory:(id)arg1 error:(id *)arg2;
 + (int)versionOldest;
 + (int)versionCurrent;
++ (id)defaultDocumentNameExtension;
 + (id)defaultDocumentName;
 + (id)defaultLocation;
 + (id)resetUniqueIdentifier:(id)arg1 error:(id *)arg2;
@@ -52,6 +54,7 @@
 - (void)_handleUndoRedoOperationBefore:(CDUnknownBlockType)arg1 operationAfter:(CDUnknownBlockType)arg2;
 - (void)_handleUndoRedoOperationAfter:(CDUnknownBlockType)arg1 operationBefore:(CDUnknownBlockType)arg2;
 - (id)_prepareURLsForAsyncCopying:(id)arg1 error:(id *)arg2;
+- (id)_makeAsyncCopyingFoldersForURLs:(id)arg1;
 - (id)_recycleURLs:(id)arg1 containedDocuments:(id)arg2 error:(id *)arg3;
 - (void)_undoRecycleURLs:(id)arg1 containedDocuments:(id)arg2;
 - (BOOL)isInTrash;
@@ -95,6 +98,12 @@
 - (BOOL)documentDirectoryIsEmpty;
 - (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
 - (BOOL)_bringUpToDate:(id *)arg1;
+- (void)willBringUpToDate;
+- (id)statusString;
+- (void)progressBlock:(CDUnknownBlockType)arg1;
+- (void)setProgress:(id)arg1 current:(unsigned long long)arg2 max:(unsigned long long)arg3;
+- (void)setProgress:(id)arg1;
+- (void)showProgress:(id)arg1 whileExecutingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)warnForUpdate;
 - (BOOL)backupForUpdate:(int)arg1 error:(id *)arg2;
 - (BOOL)allowsDeferredSync;

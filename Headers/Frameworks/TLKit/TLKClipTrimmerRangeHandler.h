@@ -10,7 +10,6 @@
 {
 }
 
-- (double)draggingClipWidth;
 - (BOOL)stopTrackingWithCommit:(BOOL)arg1;
 - (BOOL)startTracking:(id)arg1;
 - (void)selectItem:(id)arg1;

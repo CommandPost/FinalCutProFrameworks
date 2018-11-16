@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)removeInfo:(id)arg1 error:(id *)arg2;
 + (BOOL)writeInfo:(id)arg1 to:(id)arg2 error:(id *)arg3;
++ (id)readInfosInFolder:(id)arg1;
 @property(readonly, nonatomic) NSString *originalFileName; // @synthesize originalFileName=_originalFileName;
 @property(readonly, nonatomic) NSURL *originalURL; // @synthesize originalURL=_originalURL;
 @property(readonly, nonatomic) NSDate *backupDate; // @synthesize backupDate=_backupDate;

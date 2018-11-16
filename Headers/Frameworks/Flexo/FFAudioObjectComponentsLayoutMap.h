@@ -6,15 +6,16 @@
 
 #import <Flexo/FFAudioComponentsLayoutMap.h>
 
-@class NSSet;
+@class NSMapTable;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioObjectComponentsLayoutMap : FFAudioComponentsLayoutMap
 {
-    NSSet *_cachedRoles;
+    NSMapTable *_cachedReferenceRoles;
 }
 
 - (id)referenceRolesForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (id)_referenceRolesForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (id)rolesForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (id)localRoleToPreserveForKey:(id)arg1;
 - (void)setRole:(id)arg1 forKey:(id)arg2;
@@ -29,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)newAudioComponentSourceForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (BOOL)hasEnabledLayoutItems;
 - (BOOL)isIntrinsicLayoutForKey:(id)arg1;
-- (BOOL)isIntrinsicObjectLayout:(id)arg1;
+- (BOOL)_isIntrinsicObjectLayout:(id)arg1;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (CDStruct_bdcb2b0d)_audioMD5:(int)arg1 forLayout:(id)arg2;
 - (id)demandMutableObjectLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;

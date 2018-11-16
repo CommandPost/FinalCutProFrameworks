@@ -16,6 +16,8 @@
 }
 
 + (BOOL)warnIfNecessary:(struct CGSize)arg1 inWindow:(id)arg2;
++ (void)setWarningPostponed:(BOOL)arg1;
++ (BOOL)warningPostponed;
 + (void)setWarningEnabled:(BOOL)arg1;
 + (BOOL)warningEnabled;
 - (void)OK:(id)arg1;

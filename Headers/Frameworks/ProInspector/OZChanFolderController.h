@@ -21,6 +21,7 @@
 - (id)blueBoldStringForString:(id)arg1;
 - (void)resetOneChannel:(struct OZChannelBase *)arg1;
 - (void)resetChannel:(id)arg1;
+- (BOOL)shouldBackUpEntireFolderOnReset;
 - (void)didTwiddle:(BOOL)arg1;
 - (void)hideSubcontrollerWhenCollapsed:(id)arg1;
 - (void)removeController:(id)arg1;

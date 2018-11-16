@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFProvider *provider; // @synthesize provider=_provider;
 - (BOOL)createAutomatically;
 - (void)toggleCreationSettings;
-- (BOOL)inCreationMode;
+- (BOOL)showCustomSettingsButton;
 - (BOOL)validate:(id *)arg1;
 - (void)closingWithCode:(int)arg1;
 - (void)dealloc;

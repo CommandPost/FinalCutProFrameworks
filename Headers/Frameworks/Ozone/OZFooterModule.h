@@ -6,12 +6,10 @@
 
 #import <Ozone/OZProViewModule.h>
 
-@class LKButton, LKSegmentedControl, LKSlider, LKTextField, OZCurveEditorModule, OZFooterSliderBezel, OZTimelineModule;
+@class LKButton, LKSegmentedControl, LKSlider, LKTextField, OZFooterSliderBezel;
 
 @interface OZFooterModule : OZProViewModule
 {
-    OZTimelineModule *_timelineModule;
-    OZCurveEditorModule *_curveEditorModule;
     LKTextField *_projectInfo;
     LKSegmentedControl *_utilityPaneControl;
     LKSegmentedControl *_toggleTimelineContentControl;

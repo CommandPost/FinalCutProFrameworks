@@ -6,23 +6,21 @@
 
 #import "NSView.h"
 
-@class FFImportLocationPopUpController, NSPopUpButton;
+@class NSButton;
 
 __attribute__((visibility("hidden")))
 @interface FFConsolidateOptionsView : NSView
 {
-    NSPopUpButton *_consolidatePopUp;
-    FFImportLocationPopUpController *_importer;
+    NSButton *_optimizedMediaCheckbox;
+    NSButton *_proxyMediaCheckbox;
 }
 
-+ (BOOL)runConsolidateDialogWithTitle:(id)arg1 description:(id)arg2 library:(id)arg3;
-@property(retain, nonatomic) NSPopUpButton *consolidatePopUp; // @synthesize consolidatePopUp=_consolidatePopUp;
-@property(retain) FFImportLocationPopUpController *importer; // @synthesize importer=_importer;
-- (void)viewDidMoveToWindow;
-- (void)awakeFromNib;
++ (BOOL)runConsolidateDialogWithTitle:(id)arg1 description:(id)arg2 library:(id)arg3 options:(int *)arg4;
+- (int)consolidateOptions;
 - (id)options;
 - (void)setOptions:(id)arg1;
 - (void)dealloc;
+- (void)awakeFromNib;
 - (void)runConsolidateDialogWithTitle:(id)arg1 description:(id)arg2 library:(id)arg3;
 
 @end

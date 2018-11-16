@@ -54,8 +54,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)performOpticalFlowAnalysis;
 - (BOOL)opticalFlowAnalysisInBackground;
 - (void)_runBackgroundFlowAnalysisTask:(id)arg1 onTask:(id)arg2;
-- (void)_sendFlowVectorsInvalForTransferToMainThread:(id)arg1;
-- (void)_sendFlowVectorsInvalFor:(id)arg1;
+- (void)_queueInvalForRange:(CDStruct_e83c9415)arg1;
+- (void)_processQueuedInvals;
+- (void)_postInvalForRange:(id)arg1;
 - (void)_updateCachedFlowVectors:(long long)arg1 checkDisk:(BOOL)arg2 isInitializing:(BOOL)arg3;
 - (void)setCachedFlowVectors:(id)arg1;
 - (void)anaylyzeRange:(id)arg1 startTime:(CDStruct_1b6d18a9)arg2 endTime:(CDStruct_1b6d18a9)arg3 totalFrames:(int)arg4 finishedFrames:(int)arg5 step:(int)arg6 task:(id)arg7 allFrames:(int)arg8 field:(int)arg9;

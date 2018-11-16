@@ -10,12 +10,22 @@
 {
 }
 
-- (void)stopObservingChildNodes;
-- (void)startObservingChildNodes;
+- (BOOL)acceptDrop:(id)arg1 childIndex:(long long)arg2;
+- (void)_sortEventRecords:(id)arg1;
+- (id)_eventRecordsForYear:(long long)arg1;
+- (id)projectsForYear:(long long)arg1;
+- (id)childNodesForYear:(long long)arg1 reusingNodes:(id)arg2;
+- (id)_childNodesForEventRecords:(id)arg1 reusingNodes:(id)arg2;
+- (void)_updateChildEventNodes;
+- (id)_updateChildYearNodes;
+- (long long)_addEventNode:(id)arg1 toEventNodesByYear:(id)arg2;
+- (id)_updateChildNodesExpandingNodes;
 - (void)updateChildNodes;
 - (BOOL)isExpandable;
+- (id)toolTip;
 - (void)setTitle:(id)arg1;
 - (id)title;
+- (id)libraryDocument;
 - (id)persistentID;
 - (id)initWithLibrary:(id)arg1;
 - (id)initWithRepresentedObject:(id)arg1;

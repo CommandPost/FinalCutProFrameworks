@@ -34,9 +34,11 @@
 - (void)_restoreProjectRelatedPersistentStates;
 - (void)_restoreProjectRelatedSelectionStates;
 - (void)_saveProjectRelatedSelectionStates;
+- (long long)_bytesUsedByNode:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)loop:(id)arg1;
 - (void)importClipsWithKeywords:(id)arg1 toEvent:(id)arg2;
+- (void)postImportDidBeginNotification;
 - (void)_startProcessFilesOperation:(id)arg1;
 - (id)viewSwitcherSegementedControl;
 - (BOOL)finishedLoading;

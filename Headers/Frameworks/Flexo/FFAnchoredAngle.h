@@ -29,6 +29,7 @@
 @property(retain, nonatomic) NSString *videoAngle; // @synthesize videoAngle=_videoAngle;
 @property(retain, nonatomic) NSSet *audioAngles; // @synthesize audioAngles=_audioAngles;
 @property(retain, nonatomic) FFObjectDict *videoEffectsDict; // @synthesize videoEffectsDict=_videoEffectsDict;
+- (id)createUsedRangesMediaIdentifier;
 - (void)updateHasObjectReferenceEffects;
 - (void)_didUpdateLocalAudioComponents;
 - (void)_willUpdateLocalAudioComponents;
@@ -39,6 +40,7 @@
 - (id)audioComponentsLayoutMap;
 - (void)demandAudioComponentSources:(int)arg1;
 @property(readonly, nonatomic) FFAudioAngleComponentsLayoutMap *persistentAudioComponentsLayoutMap;
+- (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
@@ -83,6 +85,8 @@
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (id)availableMultiAngleIDs;
 - (id)availableMultiAngleObjects;
+- (BOOL)isMultiAngle;
+- (id)referencedSequence;
 - (id)clipRef;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

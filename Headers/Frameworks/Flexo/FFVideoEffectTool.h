@@ -6,7 +6,7 @@
 
 #import <Flexo/FFAdjustmentTool.h>
 
-@class LKButton, NSArray, NSView;
+@class FFContext, LKButton, NSArray, NSView;
 
 @interface FFVideoEffectTool : FFAdjustmentTool
 {
@@ -17,6 +17,7 @@
     BOOL _selectionHasVideo;
     BOOL _selectionHasAudio;
     BOOL _playing;
+    FFContext *_observedContext;
 }
 
 + (id)displayNameForCell:(int)arg1;
@@ -35,8 +36,11 @@
 + (id)groups;
 - (void)runModalAudioEffectPicker:(id)arg1;
 - (int)_audioCellForEffect:(id)arg1;
-- (void)_handlePlayPause:(id)arg1;
-- (id)_modulePlayer;
+- (void)timeRateChangedForContext:(id)arg1;
+- (void)_setObservedContext:(id)arg1;
+- (void)_updateObservedContext;
+- (void)_updatePlayingState;
+- (void)_updateEffectPickerButtons;
 - (BOOL)skims;
 - (id)adjustmentsToolbarView;
 - (void)resetChannelsForObject:(id)arg1;
@@ -46,8 +50,8 @@
 - (id)newAdjustmentDictionaryForSelection:(id)arg1;
 - (id)_effectPickerEffectID:(id)arg1;
 - (BOOL)_validVideoEffectToolEffectID:(id)arg1;
-- (void)resignActiveTool;
 - (void)runModalVideoEffectPicker:(id)arg1;
+- (void)resignActiveTool;
 - (void)becomeActiveTool;
 - (void)dealloc;
 - (id)init;

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)setSegmentCount:(long long)arg1;
 - (long long)stateForSegment:(long long)arg1;
 - (void)setState:(long long)arg1 forSegment:(long long)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 
 @end

@@ -21,6 +21,8 @@
 
 + (id)renderPropsForName:(id)arg1;
 @property(readonly, nonatomic) int colorSpaceEnum; // @synthesize colorSpaceEnum=_colorSpaceEnum;
+- (id)newImageConvertedToRenderPropsFormat:(id)arg1 enforceCS:(BOOL)arg2 doFlatten:(BOOL)arg3;
+- (void)getPrefFormatForImage:(id)arg1 enforceCS:(BOOL)arg2 retPF:(id *)arg3 retCS:(struct CGColorSpace **)arg4;
 - (id)description;
 - (id)requiredVideoFormats;
 - (CDStruct_bdcb2b0d)md5ForProps;

@@ -20,6 +20,7 @@
     struct OZChannelBase *_channel;
 }
 
+- (void)willBeRemoved;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
 - (struct CGRect)activeHandleRect;

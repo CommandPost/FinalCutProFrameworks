@@ -24,6 +24,7 @@
     NSFormatter *_formatter;
     NSValueTransformer *_valueTransformer;
     NSArray *_enumConstants;
+    NSArray *_aliasedEnumConstants;
     BOOL _dontImportFromFile;
     NSString *_predicate;
     int _whiteList;
@@ -78,6 +79,8 @@
 - (id)sanitizedKey;
 - (BOOL)canDisplayInViewset;
 - (void)addTag:(id)arg1;
+- (void)_updateAliasedEnumConstants;
+- (id)aliasedEnumConstants;
 - (id)enumConstantsAtIndexes:(id)arg1;
 - (id)objectInEnumConstantsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)countOfEnumConstants;

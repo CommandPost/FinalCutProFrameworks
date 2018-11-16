@@ -17,6 +17,7 @@
 + (id)copyClassDescription;
 @property(retain, nonatomic) FFAnchoredObject *activeVariant; // @synthesize activeVariant=_activeVariant;
 @property(retain, nonatomic) NSArray *stackItems; // @synthesize stackItems=_stackItems;
+- (id)createUsedRangesMediaIdentifier;
 - (BOOL)validateValue:(id *)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
 - (id)valueForKeyPath:(id)arg1;
@@ -57,6 +58,7 @@
 - (id)newProvider;
 - (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (CDStruct_1b6d18a9)localToRateConformedTime:(CDStruct_1b6d18a9)arg1 withTargetSampleDuration:(CDStruct_1b6d18a9)arg2;
+- (BOOL)hasTrimEffect;
 - (BOOL)hasRateConformScale;
 - (BOOL)hasRateConform;
 - (BOOL)hasArtisticRetime;
@@ -102,11 +104,13 @@
 - (void)_processDeferredUpdates;
 - (BOOL)_deferUpdates;
 - (void)_setDeferUpdates:(BOOL)arg1;
+- (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
 - (int)multiAngleDetail;
 - (BOOL)isComponent;
+- (BOOL)isTrimmed;
 - (BOOL)isCollection;
 - (BOOL)isAudioOnlyCollection;
 - (BOOL)isAudioOnlyClipOrCollection;
@@ -155,10 +159,10 @@
 - (BOOL)removeAudioOrVideo:(BOOL)arg1 includingAnchoredItems:(BOOL)arg2;
 - (id)onScreenControls;
 - (BOOL)removeAnchoredObject:(id)arg1;
-- (struct FigTimePair)anchorPair;
-- (void)setAnchorPair:(struct FigTimePair)arg1 alignedToParentForRetiming:(id)arg2;
-- (void)setAnchorPair:(struct FigTimePair)arg1 alignedToParent:(id)arg2;
-- (void)setAnchorPair:(struct FigTimePair)arg1;
+- (struct PC_CMTimePair)anchorPair;
+- (void)setAnchorPair:(struct PC_CMTimePair)arg1 alignedToParentForRetiming:(id)arg2;
+- (void)setAnchorPair:(struct PC_CMTimePair)arg1 alignedToParent:(id)arg2;
+- (void)setAnchorPair:(struct PC_CMTimePair)arg1;
 - (void)removeAllAnchoredItemsObjects;
 - (void)revealInFinder:(id)arg1;
 - (BOOL)canRevealInFinder;
@@ -168,6 +172,7 @@
 - (id)markerAnchoredItems;
 - (id)nonMarkerAnchoredItems;
 - (id)anchoredItems;
+- (void)clearparentOffsets;
 - (void)clearCachedValues;
 - (CDStruct_e83c9415)containerEffectiveRangeForChild:(id)arg1 container:(id)arg2;
 - (void)informAudioComponentsLayoutChanged:(id)arg1;

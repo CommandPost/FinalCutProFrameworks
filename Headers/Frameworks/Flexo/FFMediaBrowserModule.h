@@ -25,8 +25,8 @@
 - (void)playerModuleDidPlayPause:(id)arg1;
 - (void)stopPreview:(id)arg1;
 - (void)iLMBAllocAndConfigure;
-- (void)moduleDidUnhide;
 - (void)updateBrowserViewMode:(long long)arg1;
+- (void)viewWasInstalled;
 - (void)dealloc;
 - (id)init;
 

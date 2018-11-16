@@ -6,13 +6,14 @@
 
 #import "NSProButtonCell.h"
 
-@class NSProThemeFacet;
+@class NSMutableDictionary, NSProThemeFacet;
 
 @interface LKButtonCell : NSProButtonCell
 {
     long long elementID;
     long long partID;
     NSProThemeFacet *customFacet;
+    NSMutableDictionary *_cachedFacets;
 }
 
 @property long long partID; // @synthesize partID;
@@ -26,6 +27,7 @@
 - (id)_gradientFacet;
 - (void)_setupForProButtonType:(int)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_baseFacet;
 @property(retain) NSProThemeFacet *customFacet;
 - (void)dealloc;

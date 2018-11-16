@@ -48,6 +48,7 @@
 - (BOOL)isAnimated:(struct OZChannelBase *)arg1;
 - (void)updateState:(id)arg1;
 - (void)updateChannel:(struct OZChannelBase *)arg1 time:(const CDStruct_1b6d18a9 *)arg2;
+- (void)updateChannelList;
 - (void)updateState;
 - (BOOL)hasAnyNextKeyframes;
 - (BOOL)hasAnyPreviousKeyframes;

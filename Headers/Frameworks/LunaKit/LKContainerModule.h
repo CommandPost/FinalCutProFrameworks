@@ -18,6 +18,8 @@
 + (void)setDraggedModule:(id)arg1;
 + (id)draggedModule;
 + (double)animationDuration;
+- (void)_recomputeResizingZones;
+- (void)updateResizingZones:(id)arg1;
 @property BOOL moduleIsTornOut;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
 - (id)contentLayoutDictionary;

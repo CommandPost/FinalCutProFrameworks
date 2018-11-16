@@ -10,7 +10,7 @@
 #import "POObjectDelegate.h"
 #import "POViewDelegate.h"
 
-@class FFCHRootChannel, FFChannelChangeController, FFEffect, FFHeCropEffect, FFHeDistortEffect, FFHeliumXFormEffect, NSCursor, NSString, POOnScreenControl;
+@class FFCHRootChannel, FFChannelChangeController, FFEffect, FFHeCropEffect, FFHeDistortEffect, FFHeTrimEffect, FFHeliumXFormEffect, NSCursor, NSString, POOnScreenControl;
 
 @interface FFProOSC : FFComponentOSC <POHostDelegate, POViewDelegate, POObjectDelegate>
 {
@@ -23,6 +23,7 @@
     NSCursor *_cursor;
     FFHeliumXFormEffect *_transform;
     FFHeCropEffect *_crop;
+    FFHeTrimEffect *_trim;
     FFHeDistortEffect *_distort;
     unsigned long long _nodeIndex;
     FFEffect *_oscEffect;
@@ -106,6 +107,7 @@
 - (PCRect_3a266109)getBounds;
 - (PCRay3_021fa152)computeRay:(const PCVector3_515d8d1c *)arg1 withFlattening:(BOOL)arg2;
 - (BOOL)projectPoints:(vector_8d17e539 *)arg1 toSpaceOf:(int)arg2;
+- (PCMatrix44Tmpl_93ed1289)transformWithoutDistortAtTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)projectPoint:(PCVector3_515d8d1c *)arg1 toSpaceOf:(int)arg2;
 - (BOOL)projectPointToObjectX:(double *)arg1 y:(double *)arg2 z:(double *)arg3 transform:(PCMatrix44Tmpl_93ed1289 *)arg4;
 - (BOOL)projectPointToObjectX:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
@@ -131,7 +133,6 @@
 - (void)getPostTransform:(int)arg1 matrix:(PCMatrix44Tmpl_93ed1289 *)arg2;
 - (void)getPreTransform:(int)arg1 matrix:(PCMatrix44Tmpl_93ed1289 *)arg2;
 - (void)getLocalToWorld:(PCMatrix44Tmpl_93ed1289 *)arg1;
-- (long long)getDistortIndex;
 - (unsigned int)translationChannelsVisible;
 - (unsigned int)rotationChannelsVisible;
 - (unsigned int)scaleChannelsVisible;
@@ -161,6 +162,9 @@
 - (BOOL)setPositionKeypoint:(struct OZChannelPosition3D *)arg1 time:(const CDStruct_1b6d18a9 *)arg2 delta:(const PCVector3_515d8d1c *)arg3;
 - (BOOL)_pathPointWasSetToLinear:(struct OZChannelPosition3D *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
 - (void)findSpeedKeypoint:(int)arg1 channel:(struct OZChannelPercent *)arg2;
+- (void)findScaleKeypointAtTime:(CDStruct_1b6d18a9 *)arg1 channel:(struct OZChannelScale3D *)arg2;
+- (void)findPivotKeypointAtTime:(CDStruct_1b6d18a9 *)arg1 channel:(struct OZChannelPosition3D *)arg2;
+- (void)findRotationKeypointAtTime:(CDStruct_1b6d18a9 *)arg1 channel:(struct OZChannelRotation3D *)arg2;
 - (void)findScaleKeypoint:(int)arg1 channel:(struct OZChannelScale3D *)arg2;
 - (void)findPivotKeypoint:(int)arg1 channel:(struct OZChannelPosition3D *)arg2;
 - (void)findRotationKeypoint:(int)arg1 channel:(struct OZChannelRotation3D *)arg2;
@@ -186,6 +190,7 @@
 - (void)setCropCropL:(double)arg1 andR:(double)arg2 andB:(double)arg3 andT:(double)arg4 forceAddKeyframe:(BOOL)arg5;
 - (void)getCropL:(double *)arg1 andR:(double *)arg2 andB:(double *)arg3 andT:(double *)arg4;
 - (void)getCropCropL:(double *)arg1 andR:(double *)arg2 andB:(double *)arg3 andT:(double *)arg4;
+- (void)getTrimL:(double *)arg1 andR:(double *)arg2 andB:(double *)arg3 andT:(double *)arg4;
 - (void)setPivot:(const PCVector3_515d8d1c *)arg1;
 - (void)setScale:(const PCVector3_515d8d1c *)arg1;
 - (void)setRotationZ:(double)arg1;
@@ -342,6 +347,7 @@
 - (BOOL)mouseCreatesUndo;
 - (void)mouseExited:(id)arg1;
 - (void)mouseDragged:(id)arg1;
+- (BOOL)settingChannelsFromOSC;
 - (void)ensureIntrinsic;
 - (void)_startProOSCBegin:(id)arg1 actionName:(id)arg2;
 - (void)multipleWillDidSetChannels:(list_ada7b58d)arg1 willSet:(BOOL)arg2;
@@ -354,6 +360,7 @@
 - (void)mouseDown:(id)arg1;
 - (void)proOSCMouseDownInitialize:(id)arg1;
 - (id)selectedItemForOSC;
+- (id)intrinsicTrim;
 - (id)intrinsicCrop;
 - (id)intrinsicTransform;
 - (id)undoChannels;

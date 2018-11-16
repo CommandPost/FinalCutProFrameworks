@@ -12,6 +12,14 @@
 }
 
 @property(retain, nonatomic) LKViewModule *submodule; // @synthesize submodule;
+- (double)bottomDraggableExclusionMargin;
+- (double)topDraggableExclusionMargin;
+- (double)rightDraggableExclusionMargin;
+- (double)leftDraggableExclusionMargin;
+- (double)rightDraggableMargin;
+- (double)leftDraggableMargin;
+- (double)bottomDraggableMargin;
+- (double)topDraggableMargin;
 - (id)localModuleActions;
 - (id)targetModules;
 - (unsigned long long)labelAlignment;

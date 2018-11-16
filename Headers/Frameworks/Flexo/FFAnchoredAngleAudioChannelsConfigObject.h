@@ -30,8 +30,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)useReferenceLayout;
 - (BOOL)supportsReferenceLayout;
 - (id)allocComponentSources;
-- (void)setCollapsed:(BOOL)arg1;
-- (BOOL)isCollapsed;
 - (id)backingAnchoredObject;
 - (struct NSObject *)skimmableObject;
 - (id)displayName;

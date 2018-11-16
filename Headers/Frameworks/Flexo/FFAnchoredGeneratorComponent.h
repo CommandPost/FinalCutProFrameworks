@@ -29,6 +29,7 @@
 - (BOOL)contributesToCompoundClip;
 - (BOOL)isAnimaticGenerator;
 - (BOOL)isBackgroundGenerator;
+- (BOOL)hasDefaultEditingAdjustment;
 - (BOOL)isMapGenerator;
 - (BOOL)isGenerator;
 - (id)videoProps;

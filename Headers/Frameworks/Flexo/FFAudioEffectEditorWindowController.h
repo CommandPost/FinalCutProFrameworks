@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     FFUndoHandler *_disabledUndoWarning;
 }
 
++ (void)prepareForShutdown;
 + (id)effectsForWindowControllers;
 + (id)windowControllersForEffect:(id)arg1;
 + (id)showWindowController:(BOOL)arg1 forEffect:(id)arg2 context:(id)arg3 preferGeneric:(BOOL)arg4;
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (struct ComponentInstanceRecord *)audioUnit;
 - (void)awakeFromNib;
 - (void)dealloc;
+- (id)undoHandler;
 - (void)_enableUndoWarning;
 - (void)_disableUndoWarning;
 - (id)initWithEffect:(id)arg1 context:(id)arg2 preferGeneric:(BOOL)arg3;

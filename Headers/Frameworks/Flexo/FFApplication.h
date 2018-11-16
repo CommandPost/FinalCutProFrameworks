@@ -17,7 +17,6 @@
     NSException *_exception;
 }
 
-+ (void)initialize;
 + (BOOL)isTerminating;
 - (id)exceptionOnTerminate;
 - (void)setExceptionOnTerminate:(id)arg1;

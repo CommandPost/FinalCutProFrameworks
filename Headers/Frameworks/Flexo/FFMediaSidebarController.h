@@ -94,11 +94,11 @@ __attribute__((visibility("hidden")))
 - (void)handleIconClickinRow:(long long)arg1;
 - (int)_subPartOfClickedRow:(long long)arg1;
 - (id)clickedNode;
-- (void)selectAndEditChildNodeWithRepresentedObject:(id)arg1 parentNode:(id)arg2;
+- (void)editChildNodeWithRepresentedObject:(id)arg1 parentNode:(id)arg2;
 - (void)selectChildNodeWithRepresentedObject:(id)arg1 parentNode:(id)arg2;
-- (id)_revealChildNodeWithRepresentedObject:(id)arg1 parentNode:(id)arg2;
+- (id)revealChildNodeWithRepresentedObject:(id)arg1 parentNode:(id)arg2;
 - (void)revealNode:(id)arg1;
-- (void)selectAndEditNode:(id)arg1;
+- (void)_editNode:(id)arg1;
 - (void)selectNodesWithRepresentedObjects:(id)arg1;
 - (void)selectNodeWithRepresentedObject:(id)arg1;
 - (CDStruct_4cb9d06e)targetInfo;

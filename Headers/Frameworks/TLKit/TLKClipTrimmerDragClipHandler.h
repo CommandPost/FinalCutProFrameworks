@@ -8,6 +8,7 @@
 
 @interface TLKClipTrimmerDragClipHandler : TLKDragEdgesHandler
 {
+    double _slipDraggingClipWidth;
 }
 
 - (double)draggingClipWidth;
@@ -15,6 +16,7 @@
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (id)cursorNameAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (BOOL)stopTrackingWithCommit:(BOOL)arg1;
+- (BOOL)startTracking:(id)arg1;
 - (void)selectItem:(id)arg1;
 - (id)clickedItem:(id)arg1;
 - (id)partToDrag:(id)arg1;

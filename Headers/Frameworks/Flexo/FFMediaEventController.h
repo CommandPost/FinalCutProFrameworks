@@ -6,12 +6,13 @@
 
 #import "NSObject.h"
 
-@class NSMapTable;
+@class NSMapTable, NSOperationQueue;
 
 @interface FFMediaEventController : NSObject
 {
     NSMapTable *_syncRequests;
     BOOL _hasDoneInitialSyncMedia;
+    NSOperationQueue *_operationQueue;
 }
 
 + (void)releaseSharedInstance;
@@ -19,11 +20,13 @@
 + (id)mediaComponentReferencesToMediaID:(id)arg1 inLibrary:(id)arg2;
 + (id)mediaComponentReferencesToMediaID:(id)arg1 inSelection:(id)arg2;
 + (id)_mediaComponentReferencesInObject:(id)arg1 mediaID:(id)arg2 includeAnchored:(BOOL)arg3;
++ (void)_addObject:(id)arg1 toArray:(id)arg2 ifMediaComponentFor:(id)arg3;
 @property(readonly, nonatomic) BOOL hasDoneInitialSyncMedia; // @synthesize hasDoneInitialSyncMedia=_hasDoneInitialSyncMedia;
 - (BOOL)deleteEvents:(id)arg1 error:(id *)arg2;
 - (void)setDefaultMediaEvent:(id)arg1;
 - (id)defaultMediaEvent;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 - (void)appWillBecomeActive:(id)arg1;
 - (void)mediaQualityChanged:(id)arg1;
@@ -31,8 +34,8 @@
 - (BOOL)syncMediaForEvent:(id)arg1 asynchronously:(BOOL)arg2 error:(id *)arg3;
 - (void)syncMedia;
 - (BOOL)_syncMedia:(id *)arg1;
-- (BOOL)_syncMediaEvent:(id)arg1 selector:(const CDStruct_335aa10f *)arg2 inBackground:(BOOL)arg3 error:(id *)arg4;
-- (void)_syncsyncCameraClipsForEvent:(id)arg1;
+- (BOOL)_syncMediaForEvent:(id)arg1 selector:(const CDStruct_335aa10f *)arg2 asynchronously:(BOOL)arg3 error:(id *)arg4;
+- (void)_syncCameraClipsForEvent:(id)arg1;
 - (void)_invalidateAssets:(id)arg1;
 - (void)_syncMediaCompleted:(id)arg1;
 - (void)_unregisterSyncRequest:(id)arg1;

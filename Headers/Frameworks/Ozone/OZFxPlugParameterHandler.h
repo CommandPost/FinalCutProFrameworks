@@ -36,6 +36,7 @@
     struct GLRenderer *_renderer;
     BOOL _filmSpace;
     BOOL _startActionCalled;
+    BOOL _showedParameterSettingWarning;
     int _numWriteActions;
     vector_20d56dda _customParameterList;
     unsigned int _flipCheckboxID;
@@ -101,6 +102,7 @@
 - (BOOL)setBoolValue:(BOOL)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
 - (BOOL)setIntValue:(int)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
 - (BOOL)setFloatValue:(double)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
+- (BOOL)safeToSetParameters;
 - (void)postChannelChange:(struct OZChannelBase *)arg1 flagsOnly:(BOOL)arg2;
 - (void)preChannelChange:(struct OZChannelBase *)arg1 flagsOnly:(BOOL)arg2;
 - (id)findMotionEffect;

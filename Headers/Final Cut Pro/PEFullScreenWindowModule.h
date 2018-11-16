@@ -19,6 +19,7 @@
 + (id)fullScreenWindowModule;
 @property(nonatomic) unsigned long long screenNumber; // @synthesize screenNumber=_screenNumber;
 @property(nonatomic, getter=isFullscreen) BOOL fullscreen; // @synthesize fullscreen=_fullscreen;
+- (void)dealloc;
 - (id)customWindowsToEnterFullScreenForWindow:(id)arg1;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
@@ -27,6 +28,9 @@
 - (void)viewDidLoad;
 - (void)setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
 - (void)_setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
+- (void)_unregisterForFullScreenNotifications;
+- (void)_mainWindowDidEnterFullScreen:(id)arg1;
+- (void)_registerForFullScreenNotifications;
 - (void)screenParametersChanged:(id)arg1;
 - (id)initWithWindowClass:(Class)arg1 windowStyleMask:(unsigned long long)arg2;
 

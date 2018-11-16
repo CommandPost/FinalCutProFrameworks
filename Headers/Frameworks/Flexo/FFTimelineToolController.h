@@ -23,7 +23,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFTool *activeTimelineTool; // @synthesize activeTimelineTool=_activeTimelineTool;
 - (Class)_toolClassForCurrentEventHandler;
 - (void)_setEventHandlerForTool:(id)arg1;
+- (void)_activeTimelineHandlerDidChange;
 - (void)_activeToolDidChange:(id)arg1;
+- (void)eventDispatcher:(id)arg1 didSetCurrentHandler:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)initWithTimelineView:(id)arg1;

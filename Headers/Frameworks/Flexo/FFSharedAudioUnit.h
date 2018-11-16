@@ -6,21 +6,21 @@
 
 #import "NSObject.h"
 
-__attribute__((visibility("hidden")))
 @interface FFSharedAudioUnit : NSObject
 {
     struct ComponentInstanceRecord *_unit;
     void *_playbackOwner;
 }
 
++ (int)audioUnitCount;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)doneWithPlayback:(void *)arg1;
 - (BOOL)grabForPlayback:(void *)arg1;
 - (struct ComponentInstanceRecord *)audioUnit;
 - (void)dealloc;
-- (id)initWithAudioUnit:(struct ComponentInstanceRecord *)arg1;
 - (id)initWithEffectID:(id)arg1 sampleRate:(double)arg2 channels:(unsigned int)arg3;
+- (void)_disposeAudioUnit;
 
 @end
 

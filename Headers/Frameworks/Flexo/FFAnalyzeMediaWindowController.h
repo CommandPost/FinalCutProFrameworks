@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     NSWindow *_sheet;
     NSButton *_colorAutoCorrectCheckBox;
-    NSButton *_imageStabilizationCheckBox;
     NSButton *_faceDetectionCheckBox;
     NSButton *_findPeopleConsolidateResultsCheckBox;
     NSButton *_createSmartCollectionsCheckBox;

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _sourceStart;
     unsigned long long _sourceDurationInFrames;
     struct AudioStreamBasicDescription _outputFormat;
-    struct opaqueCMFormatDescription *_figFormatDesc;
+    struct opaqueCMFormatDescription *_cmFormatDesc;
 }
 
 - (struct opaqueCMSampleBuffer *)createSampleBufferAtFrame:(unsigned long long)arg1 count:(unsigned int)arg2;

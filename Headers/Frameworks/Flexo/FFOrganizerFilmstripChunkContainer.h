@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_chunkArray;
     FigTimeRangeAndObject *_ro;
     CDStruct_e83c9415 _cachedMediaRange;
+    struct CGRect _cachedMediaSize;
     BOOL _hasVideo;
     BOOL _hasAudio;
     NSArray *_selection;
@@ -45,9 +46,9 @@ __attribute__((visibility("hidden")))
 - (id)cellAtTime:(CDStruct_1b6d18a9)arg1;
 - (id)chunkAtPoint:(struct CGPoint)arg1;
 - (struct CGPoint)closestPointInChunkContainerGivenPoint:(struct CGPoint)arg1;
-- (id)chunkFigTimeRangeAndObject;
 - (void)updateSelectionMarkers;
 - (void)_updateSelectionMarkerCache;
+- (void)procrastinatedUpdateVideoRangeInfo:(id)arg1;
 - (void)updateVideoRangeInfo:(id)arg1;
 - (void)updateKeywordsInRange:(CDStruct_e83c9415)arg1;
 - (void)updateMarkersInRange:(CDStruct_e83c9415)arg1;

@@ -8,13 +8,13 @@
 
 #import "NSComboBoxDelegate.h"
 
-@class FFChannelChangeController, FFTitleOSC, LKButton, LKColorWell, LKComboBox, LKMenu, LKPopUpButton, LKSegmentedControl, LKTextField, NSView;
+@class FFChannelChangeController, FFFontSettingsSegmentedControl, FFTitleOSC, LKButton, LKColorWell, LKComboBox, LKMenu, LKPopUpButton, LKTextField, NSView;
 
 @interface FFFontSettingsTool : FFAdjustmentTool <NSComboBoxDelegate>
 {
     NSView *_adjustmentToolbarView;
-    LKSegmentedControl *_formatButton;
-    LKSegmentedControl *_hAlignmentButton;
+    FFFontSettingsSegmentedControl *_formatButton;
+    FFFontSettingsSegmentedControl *_hAlignmentButton;
     LKColorWell *_colorPickerButton;
     LKPopUpButton *_fontMenu;
     LKMenu *_fontSelectionMenu;
@@ -24,6 +24,7 @@
     LKComboBox *_sizeInput;
     int _beginEditingSizeInput;
     LKButton *_locationButton;
+    LKTextField *_noAdjustmentLabel;
     FFChannelChangeController *_changeController;
     BOOL _colorWellSliderMode;
     BOOL _colorWellColorChanged;
@@ -46,15 +47,19 @@
 - (id)onScreenControlsForTool;
 - (void)resignActiveTool;
 - (void)becomeActiveTool;
-- (void)setPlayheadTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)editsItem:(id)arg1 target:(id)arg2 event:(id)arg3;
-- (void)buildFontList;
+- (BOOL)fontMenuContainsSeparator;
+- (void)_buildFontList;
+- (id)_menuForFonts:(id)arg1 sorted:(BOOL)arg2;
+- (id)_menuItemWithAttributedTitle:(id)arg1;
+- (id)_attributedTitleForFontName:(id)arg1;
 - (void)showFontPanel:(id)arg1;
 - (void)changeFont:(id)arg1;
 - (void)changeFontForField:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 font:(id)arg3;
 - (void)changeAttributes:(id)arg1;
 - (void)locationButton:(id)arg1;
 - (void)alignmentButtonChanged:(id)arg1;
+- (void)changeAlignmentForField:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 alignment:(unsigned long long)arg3;
 - (void)formatButtonChanged:(id)arg1;
 - (void)changeFormatForField:(unsigned long long)arg1 inRange:(struct _NSRange)arg2;
 - (void)fontNameChanged:(id)arg1;
@@ -73,6 +78,7 @@
 - (void)setAdjustmentStateFromDictionary:(id)arg1;
 - (void)resetChannelsForObject:(id)arg1;
 - (id)newAdjustmentDictionaryForSelection:(id)arg1;
+- (id)_newOSCWithTitle:(id)arg1;
 - (void)_handlePlayPause:(id)arg1;
 - (void)dealloc;
 - (id)init;

@@ -10,7 +10,15 @@
 {
 }
 
++ (void)shutdown;
++ (void)applicationWillTerminate:(id)arg1;
 + (BOOL)isUnitTesting;
++ (void)setMessageTracerEnabled:(BOOL)arg1;
++ (BOOL)messageTracerEnabled;
++ (void)setLegacyExceptionReporting:(BOOL)arg1;
++ (BOOL)legacyExceptionReporting;
++ (void)setCanCloseAllLibraries:(BOOL)arg1;
++ (BOOL)canCloseAllLibraries;
 + (void)setTimelineTitleDropZonesEnabled:(BOOL)arg1;
 + (BOOL)timelineTitleDropZonesEnabled;
 + (void)setCrossLibraryEditAsFileRef:(BOOL)arg1;

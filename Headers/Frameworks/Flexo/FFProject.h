@@ -16,6 +16,7 @@
     NSSet *_clipReferences;
     NSSet *_effectReferences;
     NSSet *_previousAssetReferences;
+    NSSet *_previousClipReferences;
     NSDate *_modDate;
     NSSet *_mediaRefsOfflineHighQuality;
     NSSet *_mediaRefsOfflineProxyQuality;
@@ -31,6 +32,8 @@
     NSString *_pathForLastCachedDirectory;
 }
 
++ (id)externalMediaFolderNames;
++ (id)externalFolderPathForProjectFolderPath:(id)arg1;
 + (id)builtinColorPresetsPaths;
 + (id)colorPresetsPaths;
 + (id)colorFilePathForObject:(id)arg1;
@@ -41,6 +44,7 @@
 + (id)renderFilesPeaksPathsForObject:(id)arg1;
 + (id)renderFilesThumbnailPathsForObject:(id)arg1;
 + (id)renderFilesPathsForObject:(id)arg1 quality:(int)arg2;
++ (id)renderFilesMediaFolderNameForQuality:(int)arg1;
 + (id)noProjectRenderFilesPaths;
 + (id)effectThumbnailPaths;
 + (id)globalRenderCache;
@@ -60,6 +64,7 @@
 - (id)mediaRefsOffline:(int)arg1;
 - (void)resetMediaAvailable:(id)arg1;
 - (void)_deferredAssetChangedNotification:(id)arg1;
+- (void)bulkAssetChangeEnd:(id)arg1;
 - (void)_assetsChangedNotification:(id)arg1;
 - (BOOL)lastKnownMediaAvailable;
 - (BOOL)mediaAvailable;
@@ -75,12 +80,14 @@
 - (BOOL)_isMediaAvailable:(SEL)arg1;
 - (BOOL)mediaIsSyncing;
 - (id)findOrRegisterCommonMediaRef:(id)arg1;
+- (id)mediaReferencesDict;
 @property(readonly, nonatomic) NSSet *referencedClipLibraryItemIDs;
 @property(readonly, nonatomic) NSSet *referencedLibraryItemIDs;
 - (void)resetMediaReferences;
 - (void)resetMediaReferencesForRefSubstitution;
+- (void)mediaReferencesChangedForSequence:(id)arg1;
+- (void)_changedMediaReferencesInSourceMedia:(id)arg1;
 - (void)_resetMediaReferences:(BOOL)arg1 checkedProjects:(id)arg2;
-- (void)_deferredOwnedMediaClipChangedNotification:(id)arg1;
 - (void)_ownedMediaClipsChangedNotification:(id)arg1;
 @property(readonly, nonatomic) NSSet *clipReferences;
 - (void)removeClipReferencesObject:(id)arg1;
@@ -94,6 +101,7 @@
 - (void)resetEffectReferences;
 @property(readonly, nonatomic) NSSet *effectReferences;
 - (id)document;
+- (BOOL)isEvent;
 - (BOOL)isProject;
 - (BOOL)isIPhotoProject;
 - (BOOL)isDetailedProjectDataLoaded;
@@ -106,18 +114,23 @@
 - (id)containerURL;
 - (id)renderFilesPeaksPaths;
 - (id)renderFilesThumbnailPaths;
-- (id)renderFilesPaths:(int)arg1;
-- (id)renderFilesPaths;
 - (id)renderFilesURL;
-- (id)backupsFolderPath;
+- (id)findCacheFolder:(id)arg1;
 - (id)sharedItemsFolderPath;
+- (id)stabilizationFolderPath;
+- (id)opticalFlowFolderPath;
 - (id)colorFolderPath;
 - (id)findPeopleFolderPath;
 - (id)analysisFolderPath;
+- (id)proxyMediaURL;
 - (id)proxyMediaPath;
+- (id)proxyMediaURLForImport;
 - (id)optimizedMediaPath;
+- (id)optimizedMediaURL;
+- (id)optimizedMediaURLForImport;
 - (id)originalMediaPath;
 - (id)originalMediaURL;
+- (id)originalMediaURLForImport;
 - (id)projectPath;
 - (id)location;
 - (id)url;

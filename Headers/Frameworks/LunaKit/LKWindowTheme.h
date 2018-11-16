@@ -21,6 +21,7 @@
 + (id)_controlFacetForButton:(int)arg1 styleMask:(unsigned long long)arg2;
 + (id)_titlebarFacetForStyleMask:(unsigned long long)arg1;
 + (id)_windowBorderFacetForStyleMask:(unsigned long long)arg1;
++ (id)cachedFacetWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 dimension2:(long long)arg4;
 
 @end
 

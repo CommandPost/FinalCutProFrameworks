@@ -107,10 +107,10 @@
 - (int)getTransformScope;
 - (struct OZRenderState)getRenderState:(const struct OZRenderState *)arg1 textObject:(PCPtr_3bd68a10)arg2 remapTime:(BOOL)arg3;
 - (BOOL)drawMultipleSelectionBoxes;
-- (void)fourCornerChanged;
-- (void)rotationChanged;
-- (void)scaleChanged;
-- (void)offsetChanged;
+- (void)fourCornerWillChange;
+- (void)rotationWillChange;
+- (void)scaleWillChange;
+- (void)offsetWillChange;
 - (unsigned int)getGlyphSelectionSize;
 - (_Bool)scaleAffectsOffset;
 - (_Bool)scaleAffectsLayout;

@@ -60,7 +60,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)addOutOfDiskSpaceObserver:(id)arg1;
 - (void)_checkAvailableDiskSpace;
 - (void)_dealWithOutOfDiskSpace;
-- (BOOL)_isOutOfDiskSpace;
+- (void)_stopWritingFiles;
+- (BOOL)_isOutOfDiskSpace:(id *)arg1;
+- (long long)availableSpaceInBytes:(id *)arg1;
 - (long long)availableSpaceInBytes;
 - (BOOL)isCaseSensitive;
 - (BOOL)isTimeMachineVolume;

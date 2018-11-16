@@ -21,7 +21,10 @@ __attribute__((visibility("hidden")))
 
 + (void)unrigChannel:(id)arg1 inPanner:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 + (id)copyClassDescription;
-+ (id)surroundPannerPresetNames;
++ (id)descriptionForPreset:(id)arg1;
++ (id)nonSurroundPresetNames;
++ (id)surroundPresetNames;
++ (id)_bundlePresetNames;
 + (id)pannerEffectBundleParts;
 - (int)bundleEncodingOptions;
 - (void)createActivePartEffectChannelsInFolder:(id)arg1;

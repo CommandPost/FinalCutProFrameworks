@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void)_doneDragging:(int)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)unhandledMouseDown:(id)arg1;
-- (CDStruct_1b6d18a9)_adjustEndTimeToIncludeFrameUnderPlayhead:(CDStruct_1b6d18a9)arg1;
 - (void)_activeSelectionBeforeTime:(id *)arg1 selectionAtTime:(id *)arg2 selectionAfterTime:(id *)arg3 forTime:(CDStruct_1b6d18a9)arg4 andClip:(id)arg5 abortIfSelectionAtTimeFound:(BOOL)arg6;
 - (id)_activeSelectionRangesForClip:(id)arg1;
 
