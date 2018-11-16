@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     NSImageView *m_centerBiasSliderRightLabelImage;
     NSButton *m_meterDisclosureButton;
     NSView *m_meterView;
+    BOOL m_viewIsTracking;
 }
 
 - (id)initWithBuddy:(id)arg1;
@@ -65,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)_calculateAdjacentSpeakersForAngle:(float)arg1 cwSpeaker:(int *)arg2 ccwSpeaker:(int *)arg3;
 - (float)_rotateFromAngle:(float)arg1 withRotation:(float)arg2;
 - (void)_placeSourceWithGain:(float *)arg1 sourceAngle:(float)arg2 sourceGain:(float)arg3;
+- (void)updateSurroundPannerVisualData;
 - (void)_updateSurroundPannerVisualData;
 - (void)_updateUIToMatchEnvelopes;
 - (float)_currentEnvelopeValueForSurroundParameter:(unsigned long long)arg1;

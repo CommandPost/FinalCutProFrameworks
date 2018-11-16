@@ -4,17 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import <TLKit/TLKThemeBackedLayer.h>
 
 @class NSMutableArray, TLKTimelineView;
 
-@interface TLKPrecisionEditorDividerBar : CALayer
+@interface TLKPrecisionEditorDividerBar : TLKThemeBackedLayer
 {
     TLKTimelineView *_timelineView;
     NSMutableArray *_editPointLayers;
 }
 
-+ (struct CGImage *)backgroundImage;
++ (void)initialize;
 + (double)heightOfBar;
 - (id)init;
 - (void)dealloc;

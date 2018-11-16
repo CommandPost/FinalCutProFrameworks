@@ -6,11 +6,12 @@
 
 #import "NSObject.h"
 
-@class NSView;
+@class NSView, PMRStopwatch;
 
 @interface TLKEventHandler : NSObject
 {
     NSView *_view;
+    PMRStopwatch *_stopwatch;
     struct {
         unsigned int enabled:1;
         unsigned int isTracking:1;
@@ -22,6 +23,8 @@
 
 - (id)init;
 - (id)initWithView:(id)arg1;
+- (void)dealloc;
+- (id)stopwatch;
 - (void)applyConfiguration:(id)arg1;
 - (void)_startHandling:(id)arg1;
 - (void)startHandling:(id)arg1;

@@ -12,6 +12,7 @@
 {
     FFPixelBuffer *_buffer;
     BOOL _disable422Filtering;
+    BOOL _backedByCV;
 }
 
 - (id)initWithFFPixelBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 disable422Filtering:(BOOL)arg5;
@@ -19,6 +20,8 @@
 - (void)dealloc;
 - (id)flipAboutYTransform:(double)arg1;
 - (BOOL)disable422InputFiltering;
+- (BOOL)backedByCV;
+- (void)setBackedByCV:(BOOL)arg1;
 - (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
 - (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
 - (id)nativePixelFormat;

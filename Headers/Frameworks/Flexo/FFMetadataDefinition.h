@@ -15,7 +15,6 @@
     id _minValue;
     id _maxValue;
     NSString *_key;
-    NSString *_keyPath;
     NSString *_initialValueKeyPath;
     NSString *_displayName;
     NSString *_displayDescription;
@@ -72,7 +71,6 @@
 @property(readonly, nonatomic) NSSet *tags; // @synthesize tags=_tags;
 @property(retain, nonatomic) NSString *source; // @synthesize source=_source;
 @property(retain, nonatomic) NSString *initialValueKeyPath; // @synthesize initialValueKeyPath=_initialValueKeyPath;
-@property(readonly, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property(readonly, nonatomic) NSString *key; // @synthesize key=_key;
 @property(retain, nonatomic) id maxValue; // @synthesize maxValue=_maxValue;
 @property(retain, nonatomic) id minValue; // @synthesize minValue=_minValue;

@@ -19,7 +19,7 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFMetadataProxy, FFVideoProps, NSArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class FFVideoProps, NSArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 @interface FFAnchoredObject : FFBaseDSObject <NSCoding, NSCopying, FFDataModelProtocol, FFSkimmableProtocol, FFAnchoredParentProtocol, FFMetadataProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorChannelDataSource, FFMD5Protocol, FFAssetContainerProtocol, FFEffectContainerProtocol>
 {
@@ -29,10 +29,10 @@
     CDStruct_e83c9415 _clippedRange;
     CDStruct_e83c9415 _audioClippedRange;
     NSMutableSet *_anchoredItems;
-    FFMetadataProxy *_md;
     NSMutableDictionary *_metadata;
     int _playEnable;
     CDStruct_1b6d18a9 _localToParentOffset;
+    CDStruct_e83c9415 _clippedRangeInParentSpace;
     FFAnchoredObject *_transitionObjectLeft;
     FFAnchoredObject *_transitionObjectRight;
     int _anchoredLane;
@@ -41,6 +41,7 @@
     int _cachedAVContainmentType;
     int _cacheAVSplitOpen;
     NSArray *_cachedSortedLocalizedRoles;
+    NSSet *_cachedAssets;
 }
 
 + (id)copyClassDescription;
@@ -102,8 +103,8 @@
 - (void)informParentContainedItemsChanged:(BOOL)arg1;
 - (void)informParentIsCompoundClipChanged;
 - (void)informParentEffectsChanged;
-- (void)informParentMDWillChange;
-- (void)informParentMDDidChange;
+- (void)informParentRolesWillChange;
+- (void)informParentRolesDidChange;
 - (void)_setLocalToParentOffset:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)localToParentOffset;
 - (CDStruct_1b6d18a9)parentToLocalOffset;
@@ -189,15 +190,11 @@
 - (void)notifyAnchoredObjectRemovedFromSequence:(id)arg1;
 - (void)setMetadata:(id)arg1;
 - (id)metadata;
-- (id)md;
-- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)mdTargetForKey:(id)arg1;
 - (void)mdSetValue:(id)arg1 forKey:(id)arg2;
 - (id)mdValueForKey:(id)arg1;
 - (id)activeVariant;
 - (void)setActiveVariant:(id)arg1;
-- (id)valueForUndefinedKey:(id)arg1;
-- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
-- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
 - (id)metadataRoles;
 - (id)metadataRoleSets;
 - (id)timecodeWithTime:(CDStruct_1b6d18a9)arg1;
@@ -218,7 +215,10 @@
 - (id)metadataAudioChannelConfig;
 - (id)availableMultiAngleObjects;
 - (id)availableMultiAngleIDs;
+- (id)multiAngleObjectForAngleID:(id)arg1;
 - (id)metadataEffectNames;
+- (id)metadataNotes;
+- (id)metadataKeywords;
 - (id)facesRect;
 - (struct CGRect)facesRectAsNSRect;
 - (id)validateFacesRect:(id)arg1;
@@ -261,6 +261,7 @@
 - (BOOL)_calcHasRateConform;
 - (BOOL)_calcHasRateConformScale;
 - (void)_updateRetimingFlags;
+- (void)_ensureUntimedUnclippedRangeIsValid;
 - (void)_updateRetimingFlagsForModifiedEffect:(id)arg1;
 - (void)_effectWasAdded:(id)arg1;
 - (void)_effectWasModified:(id)arg1;
@@ -361,14 +362,17 @@
 - (id)mediaRefs;
 - (id)mediaRefsIncludingAnchored:(BOOL)arg1;
 - (id)mediaRefsIncludingAnchored:(BOOL)arg1 activeOnly:(BOOL)arg2;
+- (void)addAssetsToSet:(id)arg1;
 - (id)assets;
 - (id)assetsIncludingAnchored:(BOOL)arg1;
 - (id)assetsIncludingAnchored:(BOOL)arg1 activeOnly:(BOOL)arg2;
 - (void)_assets:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3;
+- (void)addAssetRefsToSet:(id)arg1;
 - (id)assetRefs;
 - (id)assetRefsIncludingAnchored:(BOOL)arg1;
 - (id)assetRefsIncludingAnchored:(BOOL)arg1 activeOnly:(BOOL)arg2;
 - (void)_assetRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3;
+- (void)addClipRefsToSet:(id)arg1;
 - (id)clipRefs;
 - (id)clipRefsIncludingAnchored:(BOOL)arg1;
 - (id)clipRefsIncludingAnchored:(BOOL)arg1 activeOnly:(BOOL)arg2;

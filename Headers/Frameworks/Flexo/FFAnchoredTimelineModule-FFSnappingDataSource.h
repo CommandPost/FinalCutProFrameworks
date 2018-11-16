@@ -35,6 +35,7 @@
 - (id)snappingCalc:(id)arg1 trailingEdgeTransitionForClip:(id)arg2;
 - (id)snappingCalc:(id)arg1 clipsAnchoredToClip:(id)arg2;
 - (id)snappingCalc:(id)arg1 clipsInStoryline:(id)arg2;
+- (id)snappingCalc:(id)arg1 parentOfClip:(id)arg2;
 - (CDStruct_e83c9415)snappingCalc:(id)arg1 timeRangeOfClip:(id)arg2;
 - (CDStruct_e83c9415)snappingCalc:(id)arg1 timeRangeLimitsOfClip:(id)arg2;
 - (CDStruct_e83c9415)snappingCalc:(id)arg1 audioTimeRangeOfClip:(id)arg2;
@@ -44,6 +45,7 @@
 - (BOOL)snappingCalc:(id)arg1 clipIsMarker:(id)arg2;
 - (BOOL)snappingCalc:(id)arg1 clipIsStoryline:(id)arg2;
 - (BOOL)snappingCalc:(id)arg1 clipIsTransition:(id)arg2;
+- (BOOL)snappingCalc:(id)arg1 clipIsValid:(id)arg2;
 - (void)snappingCalc:(id)arg1 didSnapClips:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)_removeSnappingGuides;
 - (void)_stopSnapping;

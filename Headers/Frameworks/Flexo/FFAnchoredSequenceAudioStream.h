@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)sequenceAudioChannelCount:(id)arg1 didChange:(id)arg2;
+- (void)_updateSoloedScopes:(id)arg1;
 - (void)sequenceSoloedClips:(id)arg1 didChange:(id)arg2;
 - (void)_updateEditedSequenceForPlayback;
 - (void)sequenceEditing:(id)arg1 didChange:(id)arg2;

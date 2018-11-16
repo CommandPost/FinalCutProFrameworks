@@ -6,6 +6,8 @@
 
 #import "NSObject.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface FFObjectCacheEntry : NSObject
 {
@@ -17,9 +19,10 @@ __attribute__((visibility("hidden")))
     float _freq;
     float _value;
     double _cost;
+    NSString *_cacheGroup;
 }
 
-- (id)initWithKey:(CDStruct_60067b7e)arg1 cacheItem:(id)arg2 size:(unsigned long long)arg3 cost:(double)arg4 forCache:(id)arg5;
+- (id)initWithKey:(CDStruct_60067b7e)arg1 cacheItem:(id)arg2 size:(unsigned long long)arg3 cost:(double)arg4 forCache:(id)arg5 group:(id)arg6;
 - (void)dealloc;
 - (CDStruct_60067b7e)cacheKey;
 - (void)setCacheKey:(CDStruct_60067b7e)arg1;
@@ -33,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)setValue:(unsigned long long)arg1 cost:(double)arg2 maxCacheSize:(unsigned long long)arg3;
 - (void)resetValue:(unsigned long long)arg1 responseRate:(float)arg2 penalty:(float)arg3;
 - (BOOL)canBePurgedFromCache;
+- (id)cacheGroup;
 
 @end
 

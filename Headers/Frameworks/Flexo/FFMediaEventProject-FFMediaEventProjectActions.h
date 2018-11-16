@@ -14,8 +14,6 @@
 + (BOOL)actionDeleteItemsInArray:(id)arg1 error:(id *)arg2;
 - (BOOL)actionAddAssetObjects:(id)arg1 error:(id *)arg2;
 - (BOOL)actionAddMediaObjects:(id)arg1 error:(id *)arg2;
-- (BOOL)actionImportFinalCutXMLSubelements:(id)arg1 translator:(id)arg2 error:(id *)arg3;
-- (BOOL)actionImportFinalCutXML:(id)arg1 translator:(id)arg2 error:(id *)arg3;
 - (BOOL)actionAddVariants:(id)arg1 error:(id *)arg2;
 - (BOOL)actionRemoveVariants:(id)arg1 error:(id *)arg2;
 @end

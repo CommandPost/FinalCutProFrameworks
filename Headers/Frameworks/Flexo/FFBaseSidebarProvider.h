@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL hasDetailSubitems;
 @property(readonly, nonatomic) BOOL itemDisplayNameEditable;
 - (void)dealloc;
-- (id)md;
 - (id)valueForUndefinedKey:(id)arg1;
 @property(copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 

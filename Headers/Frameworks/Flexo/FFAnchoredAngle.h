@@ -6,7 +6,7 @@
 
 #import <Flexo/FFAnchoredClipRef.h>
 
-@class FFEffectStack, FFObjectDict, NSString;
+@class FFEffectStack, FFObjectDict, NSMutableSet, NSString;
 
 @interface FFAnchoredAngle : FFAnchoredClipRef
 {
@@ -17,6 +17,7 @@
     FFObjectDict *_audioEffectsDict;
     FFObjectDict *_videoEffectsDict;
     CDStruct_e83c9415 _cachedUnclippedRange;
+    NSMutableSet *_cachedRoles;
 }
 
 + (id)copyClassDescription;
@@ -81,13 +82,13 @@
 - (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3;
 - (void)_fileURLs:(id)arg1 repChoice:(int)arg2 includeAnchored:(BOOL)arg3 activeOnly:(BOOL)arg4;
 - (int)displayedMultiAngleOffset;
-- (id)_angleObject:(BOOL)arg1;
 - (id)videoAngleObject;
 - (id)audioAngleObject;
 - (id)videoAngleName;
 - (id)audioAngleName;
 - (id)onScreenControls;
-- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)mdTargetForKey:(id)arg1;
+- (void)_clearCachedRoles;
 - (id)roles;
 - (void)addRole:(id)arg1;
 - (void)resetRoles;

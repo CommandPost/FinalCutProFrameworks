@@ -18,6 +18,5 @@
 - (void)addVideoGenerator:(id)arg1;
 - (void)addVideoTransition:(id)arg1;
 - (void)addAudioTransition:(id)arg1;
-- (void)exportAXEL:(id)arg1;
 @end
 

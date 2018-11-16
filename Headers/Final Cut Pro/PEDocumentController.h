@@ -24,6 +24,7 @@
 - (void)newDocument:(id)arg1;
 - (void)addDocument:(id)arg1;
 - (void)removeDocument:(id)arg1;
+- (id)makeDocumentForURL:(id)arg1 withContentsOfURL:(id)arg2 ofType:(id)arg3 error:(id *)arg4;
 - (void)closeProject:(id)arg1 shouldClose:(BOOL)arg2 contextInfo:(void *)arg3;
 - (void)closeProject:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;

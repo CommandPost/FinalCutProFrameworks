@@ -241,7 +241,6 @@
 - (void)nudgeDownBig:(id)arg1;
 - (void)nudgeLeftBig:(id)arg1;
 - (void)nudgeRightBig:(id)arg1;
-- (void)toggleProfilerPanel:(id)arg1;
 - (void)enableExposeAllLayers:(id)arg1;
 - (void)enableExposeLayers:(id)arg1;
 - (void)enableExposeAllObjects:(id)arg1;
@@ -249,7 +248,6 @@
 - (void)enableExpose3D:(id)arg1;
 - (void)exportMediaBrowser:(id)arg1;
 - (void)exportiTunes:(id)arg1;
-- (void)exportPodCastProducer:(id)arg1;
 - (void)exportAudio:(id)arg1;
 - (void)burnDVD:(id)arg1;
 - (void)burnBluray:(id)arg1;
@@ -270,7 +268,6 @@
 - (void)removeFromCNNiReport:(id)arg1;
 - (void)removeFromFacebook:(id)arg1;
 - (void)removeFromMobileMe:(id)arg1;
-- (void)removeFromPodcast:(id)arg1;
 - (void)removeFromVimeo:(id)arg1;
 - (void)removeFromYouTube:(id)arg1;
 

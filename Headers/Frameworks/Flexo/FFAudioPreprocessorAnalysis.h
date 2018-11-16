@@ -18,11 +18,13 @@
     float _crossCorrelationMAD;
     BOOL _downsampling;
     unsigned int _downsamplerate;
+    unsigned int _sampleRate;
     unsigned int _referenceSampleRate;
     struct AudioStreamBasicDescription _lowerSRformat;
     unsigned int _adjustedsize;
     double _longestDuration;
     BOOL _useNewStatistics;
+    BOOL _waitForPeakData;
 }
 
 + (void)setUpdateProgressGranularity:(unsigned long long)arg1;
@@ -31,6 +33,7 @@
 - (struct AudioStreamBasicDescription)formatInfo:(id)arg1;
 - (id)initWithObject:(id)arg1 andUtil:(id *)arg2;
 - (id)initWithObject:(id)arg1 andObjectB:(id)arg2 andUtilA:(id *)arg3 andUtilB:(id *)arg4;
+- (id)initWithObjectA:(id)arg1 rangeA:(CDStruct_e83c9415)arg2 objectB:(id)arg3 rangeB:(CDStruct_e83c9415)arg4 utilA:(id *)arg5 utilB:(id *)arg6;
 - (id)initWithFigTimeRangeAndObject:(id)arg1 andFigTimeRangeAndObjectB:(id)arg2 andUtilA:(id *)arg3 andUtilB:(id *)arg4;
 - (void)dealloc;
 - (struct AudioStreamBasicDescription)monofyASBD:(struct AudioStreamBasicDescription)arg1;
@@ -43,9 +46,11 @@
 - (void)calculateCrossCorrelationFunction:(id)arg1 andUtilB:(id)arg2 withPhaseCorr:(_Bool)arg3;
 - (id)getPeaksData:(id)arg1 andObject:(id)arg2 andSamplesPerPeak:(float)arg3 synchronously:(_Bool)arg4;
 - (void)adjustRangesForSecondPass:(int)arg1 utilA:(id)arg2 utilB:(id)arg3;
-- (void)adjustAndCenterRangesForSecondPass:(int)arg1 utilA:(id)arg2 utilB:(id)arg3;
+- (void)adjustAndCenterRangesForSecondPassWithOffset:(CDStruct_1b6d18a9)arg1 utilA:(id)arg2 utilB:(id)arg3 secondPassDuration:(CDStruct_1b6d18a9)arg4;
+- (void)adjustAndCenterRangesForSecondPass:(int)arg1 utilA:(id)arg2 utilB:(id)arg3 secondPassDuration:(CDStruct_1b6d18a9)arg4;
+- (void)adjustAndCenterRangesForOffset:(CDStruct_1b6d18a9)arg1 utilA:(id)arg2 utilB:(id)arg3 secondPassDuration:(CDStruct_1b6d18a9)arg4;
 - (id)eventClip:(id)arg1;
-- (void)calculateCrossCorrelationFunctionUsingPeaks:(id)arg1 andUtilB:(id)arg2 withPhaseCorr:(_Bool)arg3;
+- (void)calculateCrossCorrelationFunctionUsingPeaks:(id)arg1 andUtilB:(id)arg2 withPhaseCorr:(_Bool)arg3 secondPassDuration:(CDStruct_1b6d18a9)arg4;
 - (float)getCrossCorrelationFunctionPeakValue;
 - (CDStruct_1b6d18a9)getCrossCorrelationFunctionPeakIndex;
 - (float)getCrossCorrelationFunctionConfidence;
@@ -59,6 +64,7 @@
 - (double)getRMS:(id)arg1;
 - (_Bool)hasSilence:(id)arg1 onTask:(id)arg2;
 - (_Bool)isSpectrallySimilar:(id)arg1 andUtilB:(id)arg2 wasStereo:(BOOL)arg3 onTask:(id)arg4;
+@property BOOL waitForPeakData; // @synthesize waitForPeakData=_waitForPeakData;
 @property BOOL useNewStatistics; // @synthesize useNewStatistics=_useNewStatistics;
 
 @end

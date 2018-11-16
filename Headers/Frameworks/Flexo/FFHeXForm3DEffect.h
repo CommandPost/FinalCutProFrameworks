@@ -6,7 +6,7 @@
 
 #import <Flexo/FFHeliumXFormEffect.h>
 
-@class CHChannelBool, CHChannelEnum, CHChannelPercent, CHChannelPosition3D, CHChannelRotation3D, CHChannelScale3D;
+@class CHChannelPosition3D, CHChannelRotation3D, CHChannelScale3D;
 
 __attribute__((visibility("hidden")))
 @interface FFHeXForm3DEffect : FFHeliumXFormEffect
@@ -15,13 +15,7 @@ __attribute__((visibility("hidden")))
     CHChannelRotation3D *_chRotation;
     CHChannelScale3D *_chScale;
     CHChannelPosition3D *_chAnchor;
-    CHChannelBool *_chMoPathEnable;
-    CHChannelEnum *_chMoPathSpeed;
-    CHChannelPosition3D *_chMotionPath;
-    CHChannelPercent *_chMoPathCustomSpeed;
     struct list<FFMotionPathCurveNode*, std::allocator<FFMotionPathCurveNode*>> *_curveNodeList;
-    BOOL _animated;
-    unsigned int _speed;
 }
 
 + (void)registerEffects;
@@ -52,20 +46,17 @@ __attribute__((visibility("hidden")))
 - (void)setScaleAtTime:(CDStruct_1b6d18a9)arg1 curveX:(double)arg2 curveY:(double)arg3 curveZ:(double)arg4 options:(unsigned int)arg5;
 - (void)setPixelPivotAtTime:(CDStruct_1b6d18a9)arg1 curveX:(double)arg2 curveY:(double)arg3 curveZ:(double)arg4 options:(unsigned int)arg5;
 - (void)setPivotAtTime:(CDStruct_1b6d18a9)arg1 curveX:(double)arg2 curveY:(double)arg3 curveZ:(double)arg4 options:(unsigned int)arg5;
-- (void)setCustomSpeedAtTime:(CDStruct_1b6d18a9)arg1 value:(double)arg2 options:(unsigned int)arg3;
 - (unsigned int)speed;
 - (BOOL)shouldDrawMotionPath;
 - (BOOL)isAnimated;
 - (BOOL)isMotionPathParametric;
 - (id)motionPathChannel;
-- (id)customSpeedChannel;
 - (struct HGNode *)newNodeForContext:(id)arg1;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
 - (void)calcTransform:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)modifyImageTransform:(id)arg1 andImageSpaceBounds:(struct CGRect *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (id)newUpdatedDownstreamPT:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)addMotionPath;
-- (BOOL)resetMotionPath;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)channelParameterChanged:(id)arg1;
 - (void)_postInit:(id)arg1;

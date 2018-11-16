@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 - (id)initWithPuckValue:(id)arg1 puckType:(int)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithLegacyColorBoardPresetData:(id)arg1;
 - (void)dealloc;
 @property int puckType; // @dynamic puckType;
 - (void)encodeWithCoder:(id)arg1;

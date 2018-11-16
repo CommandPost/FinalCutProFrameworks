@@ -88,13 +88,14 @@
 - (id)description;
 - (CDStruct_1b6d18a9)videoSampleDuration;
 - (CDStruct_1b6d18a9)videoFrameDuration;
-- (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
-- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (id)mediaIdentifier;
 - (id)originalMediaURL;
 - (id)assets;
+- (void)addAssetsToSet:(id)arg1;
 - (id)assetRefs;
+- (void)addAssetRefsToSet:(id)arg1;
 - (id)clipRefs;
+- (void)addClipRefsToSet:(id)arg1;
 - (id)mediaRefs;
 - (id)fileURLs:(int)arg1;
 - (id)rootChannel;

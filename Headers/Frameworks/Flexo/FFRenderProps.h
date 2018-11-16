@@ -15,6 +15,7 @@
     unsigned int _codecType;
     NSArray *_pixelFormats;
     struct CGColorSpace *_colorSpace;
+    int _colorSpaceEnum;
     NSArray *_requiredVideoFormats;
 }
 
@@ -29,6 +30,7 @@
 - (CDStruct_60067b7e)md5ForProps;
 - (id)requiredVideoFormats;
 - (id)description;
+@property(readonly, nonatomic) int colorSpaceEnum; // @synthesize colorSpaceEnum=_colorSpaceEnum;
 
 @end
 

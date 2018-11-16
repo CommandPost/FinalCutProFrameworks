@@ -22,7 +22,6 @@
     LKTextField *_videoFormatField;
     PENavSegmentedControl *_timelineNavigationControl;
     LKPaneCapSegmentedControl *_timelineOptions;
-    LKSegmentedControl *_timelineTypeOptions;
     LKPopUpButton *_storySegmentNavigator;
     LKSegmentedControl *_cellDurationControl;
     NSProView *_cellDurationContainer;
@@ -191,6 +190,7 @@
 - (void)setShowAnchors:(BOOL)arg1;
 - (void)_stopObservingEditorModule;
 - (void)_makeEditorActive:(id)arg1;
+- (void)_timelineViewSuperViewBoundsChanged:(id)arg1;
 - (id)_editorModuleWithSequence:(id)arg1;
 - (id)_timelineView;
 - (void)_updateWindowControllerDocument;

@@ -9,8 +9,6 @@
 @interface PEApplication (Scripting)
 - (id)objectSpecifierForChild:(id)arg1;
 - (id)newScriptingObjectOfClass:(Class)arg1 forValueForKey:(id)arg2 withContentsValue:(id)arg3 properties:(id)arg4;
-- (void)scriptingExportListAsXML:(id)arg1;
-- (void)importAXELViaAppleScript:(id)arg1;
 - (void)importToEventViaAppleScript:(id)arg1;
 - (id)scriptingEvents;
 @end

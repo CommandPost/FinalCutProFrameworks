@@ -16,8 +16,6 @@ __attribute__((visibility("hidden")))
 - (id)periodsvStringFromArray:(id)arg1;
 - (id)dictionaryWithPrefixType:(id)arg1 forDictionary:(id)arg2;
 - (id)metadata;
-- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
-- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
 
 @end
 

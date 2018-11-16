@@ -17,6 +17,7 @@
     NSMenu *helpMenu;
     NSMenu *blendMenu;
     NSMenu *fileMenu;
+    NSMenuItem *debugMenu;
     NSMenuItem *publishMenuItem;
     id _greentreeObject;
     NSAlert *_coRunningAlert;
@@ -37,6 +38,7 @@
 - (void)documentControllerHandlingOpenFiles:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(CDStruct_a70f6672 *)arg3;
 - (void)applicationWillTerminate:(id)arg1;
 - (void)showPreferences:(id)arg1;
+- (void)showDebug:(id)arg1;
 - (void)documentWillOpen:(id)arg1;
 - (void)toggleMainTimingModuleWhenTogglingModule:(id)arg1;
 - (void)toggleVideoTimeline:(id)arg1;

@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)mdTargetForKey:(id)arg1;
 - (BOOL)validateMetadataSelectionStart:(id *)arg1 error:(id *)arg2;
 - (void)setMetadataSelectionStart:(id)arg1;
 - (id)metadataSelectionStart;

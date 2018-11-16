@@ -8,12 +8,13 @@
 
 #import "TLKPartInfo.h"
 
-@class CALayer, NSArray, TLKContainerHandleLayer, TLKTextLayer, TLKThemeBackedLayer;
+@class CALayer, NSArray, TLKContainerHandleLayer, TLKTextLayer, TLKThemeBackedLayer, TLKTiledContainerBackgroundLayer;
 
 @interface TLKContainerLayer : TLKTimelineLayer <TLKPartInfo>
 {
     CALayer *_contentLayer;
     TLKContainerHandleLayer *_handleLayer;
+    TLKTiledContainerBackgroundLayer *_backgroundLayer;
     TLKTextLayer *_textLayer;
     TLKThemeBackedLayer *_dragHandlelayer;
     NSArray *_badgeArray;

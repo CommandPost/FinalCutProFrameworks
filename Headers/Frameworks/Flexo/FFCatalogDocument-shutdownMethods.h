@@ -4,8 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@protocol FFCoderVersioning
-- (int)fileVersion:(int *)arg1;
-- (void)reportVersioningError:(id)arg1 forKey:(id)arg2;
+#import <Flexo/FFCatalogDocument.h>
+
+@interface FFCatalogDocument (shutdownMethods)
+- (void)forceSaveOfCatalog;
 @end
 

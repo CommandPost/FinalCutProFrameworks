@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _sourceDurationInFrames;
     struct AudioStreamBasicDescription _outputFormat;
     struct opaqueCMFormatDescription *_figFormatDesc;
+    BOOL _convert_LRCLFELsRs_to_CLRLsRsLFE;
 }
 
 - (id)initWithSource:(id)arg1 outputFormat:(const struct AudioStreamBasicDescription *)arg2 channelLayout:(struct AudioChannelLayout *)arg3 layoutSize:(unsigned long long)arg4 startOffset:(CDStruct_1b6d18a9)arg5;
+- (id)initWithSource:(id)arg1 outputFormat:(const struct AudioStreamBasicDescription *)arg2 channelLayout:(struct AudioChannelLayout *)arg3 layoutSize:(unsigned long long)arg4 startOffset:(CDStruct_1b6d18a9)arg5 need9601054Workaround:(BOOL)arg6;
 - (void)dealloc;
 - (float)sampleRate;
 - (unsigned int)bytesPerFrame;

@@ -62,6 +62,7 @@
 - (id)deviceModelName;
 - (id)scene;
 - (id)shot;
+- (id)locationISO6709;
 - (id)extendedProperties;
 - (id)metadata;
 - (void)setChannelMap:(id)arg1;

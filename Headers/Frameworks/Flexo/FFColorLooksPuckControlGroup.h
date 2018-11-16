@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
+- (id)initWithLegacyColorBoardPresetData:(id)arg1;
 - (id)initWithColorLooksPuckControlValues:(id)arg1 boardType:(int)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;

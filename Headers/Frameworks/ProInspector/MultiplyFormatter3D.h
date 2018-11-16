@@ -11,6 +11,7 @@
 }
 
 - (id)stringForObjectValue:(id)arg1;
+- (long long)segmentCountInObjectValue:(id)arg1;
 
 @end
 

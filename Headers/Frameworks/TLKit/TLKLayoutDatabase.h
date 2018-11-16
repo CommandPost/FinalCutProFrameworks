@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSMapTable, TLKLayoutMetrics;
+@class NSArray, NSMapTable, NSSet, TLKDataSourceProxy, TLKLayoutMetrics;
 
 @interface TLKLayoutDatabase : NSObject
 {
@@ -15,9 +15,13 @@
     unsigned long long _layoutTrackingLevel;
     NSArray *_tracks;
     TLKLayoutMetrics *_sharedLayoutMetrics;
+    TLKDataSourceProxy *_dataSourceProxy;
+    NSSet *_draggedItems;
     BOOL _showClipTitlesOnly;
     double _heightAdjustment;
     int _clipDisplayMode;
+    CDStruct_1b6d18a9 _timePerPixel;
+    CDStruct_1b6d18a9 _logicalStartTime;
 }
 
 - (id)init;
@@ -25,6 +29,7 @@
 - (id)layoutManagers;
 - (id)timelineItems;
 - (id)managedItems;
+@property(copy, nonatomic) NSSet *draggedItems;
 - (id)layoutInfoEntries;
 - (id)itemsGroupedByLayoutManager:(id)arg1;
 - (id)containerForItem:(id)arg1;
@@ -50,9 +55,22 @@
 - (id)itemsNeedingLayoutByLayoutManager;
 - (void)_updateManagedItems:(id)arg1;
 - (void)updateLayoutInfoForItems:(id)arg1 timelineView:(id)arg2;
-- (void)invalidateLayoutInfoForItems:(id)arg1;
+- (void)invalidateLayoutInfoForRemovedItems:(id)arg1;
 - (void)removeLayoutInfoForItems:(id)arg1;
+- (id)_invalidLayoutManagersForItems:(id)arg1 withNesting:(BOOL)arg2;
+- (id)_layoutManagersForContainers:(id)arg1;
+- (void)_expandInvalidItemsWithDependentItems:(id)arg1 recursively:(BOOL)arg2;
+- (id)_itemsInvalidatedByRemovingItems:(id)arg1;
+- (id)_invalidItemsForModifiedContainers:(id)arg1;
+- (void)_reloadLayoutManagers:(id)arg1 withItems:(id)arg2;
+- (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
+- (id)updatedItems;
+- (id)deletedItems;
+- (void)removeDeletedItems;
+@property(nonatomic) CDStruct_1b6d18a9 timePerPixel; // @synthesize timePerPixel=_timePerPixel;
+@property(nonatomic) CDStruct_1b6d18a9 logicalStartTime; // @synthesize logicalStartTime=_logicalStartTime;
 @property(retain, nonatomic) TLKLayoutMetrics *sharedLayoutMetrics; // @synthesize sharedLayoutMetrics=_sharedLayoutMetrics;
+@property(retain, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
 
 @end
 

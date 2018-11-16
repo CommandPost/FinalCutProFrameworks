@@ -42,9 +42,6 @@
 - (BOOL)_hasWriteLock;
 - (void)property:(id)arg1 change:(id)arg2;
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
-- (BOOL)compareAttributeForSelector:(SEL)arg1 againstSameInObj:(id)arg2 description:(id *)arg3;
-- (BOOL)isEqual:(id)arg1 withPath:(id)arg2 log:(BOOL)arg3 alreadyProcessed:(id)arg4;
-- (BOOL)isEqualToFFBaseDSObject:(id)arg1;
 
 @end
 

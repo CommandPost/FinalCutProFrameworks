@@ -11,15 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface FFStreamVideoEffect : FFStreamVideo
 {
-    NSMutableDictionary *_inputStreams;
-    NSMutableDictionary *_inputOffsets;
-    NSMutableDictionary *_inputIdentifiers;
+    NSMutableDictionary *_inputInfos;
 }
 
 - (id)initWithSource:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
 - (void)dealloc;
 - (id)allInputStreamKeys;
 - (id)inputStreamForKey:(id)arg1;
+- (id)inputStreamForKey:(id)arg1 retOffset:(CDStruct_1b6d18a9 *)arg2;
 - (CDStruct_1b6d18a9)inputOffsetForKey:(id)arg1;
 - (id)inputIdentifierForKey:(id)arg1;
 - (id)openInputStreamForKey:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
@@ -27,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
 - (void)prerollEnd;
 - (id)getPassThruAtTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
-- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
 - (void)setRate:(double)arg1;
 - (struct CGRect)bounds;
 - (id)videoProps;

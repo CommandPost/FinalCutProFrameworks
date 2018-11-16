@@ -15,7 +15,6 @@
 }
 
 + (id)copyClassDescription;
-+ (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 - (id)type;
 - (id)initWithDisplayName:(id)arg1 andFilterType:(id)arg2;
 - (void)dealloc;
@@ -53,9 +52,7 @@
 - (BOOL)canRemoveChannel:(id)arg1;
 - (void)removeChannel:(id)arg1;
 - (id)onScreenControls;
-- (id)mdMappedKeyPathForKey:(id)arg1;
-- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
-- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
+- (id)mdTargetForKey:(id)arg1;
 - (void)actionBegin:(id)arg1 animationHint:(id)arg2 deferUpdates:(BOOL)arg3;
 - (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)isEditing;

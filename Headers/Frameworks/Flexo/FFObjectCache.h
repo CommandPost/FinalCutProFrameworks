@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSHashTable, NSLock, NSOperationQueue;
+@class FFObjectCacheEntry, NSHashTable, NSLock, NSMutableDictionary, NSOperationQueue;
 
 @interface FFObjectCache : NSObject
 {
@@ -29,8 +29,10 @@
         CDUnknownFunctionPointerType release;
         CDUnknownFunctionPointerType describe;
     } _hashTableCallbacks;
+    FFObjectCacheEntry *_localEntryForLookups;
     NSOperationQueue *_maintenanceOpQueue;
     int _unstartedAsyncOp;
+    NSMutableDictionary *_groupInfos;
 }
 
 + (id)sharedInstance;

@@ -37,10 +37,9 @@
 - (void)invalidate;
 @property(nonatomic) unsigned long long selectionMask;
 - (void)updateAppearance;
-- (id)hitTest:(struct CGPoint)arg1;
 - (void)audioWaveFormProportionChanged;
 - (id)_briefDescriptionForLayer:(id)arg1;
-- (id)_subtreeDescriptionForLayer:(id)arg1 withDepth:(long long)arg2 compact:(BOOL)arg3;
+- (id)_subtreeDescriptionForLayer:(id)arg1 withDepth:(long long)arg2 compact:(BOOL)arg3 layerCount:(unsigned long long *)arg4;
 - (id)_fullSubtreeDescription;
 - (id)_subtreeDescription;
 

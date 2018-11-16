@@ -22,6 +22,7 @@
 + (BOOL)isNetworkURL:(id)arg1;
 + (BOOL)isWritable:(id)arg1;
 + (BOOL)isReadOnly:(id)arg1;
++ (BOOL)isQuarantined:(id)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 - (id)init;
 - (void)dealloc;
@@ -54,6 +55,7 @@
 - (void)warnAboutUnableToAccessSavedNetworkLocationPaths;
 - (void)warnAboutNotWritableLocation:(id)arg1 isAction:(BOOL)arg2;
 - (void)warnAboutInUseLocation:(id)arg1 isAction:(BOOL)arg2;
+- (void)warnAboutQuarantinedLocation:(id)arg1 isAction:(BOOL)arg2;
 - (id)locationFromVolumePath:(id)arg1 volumeRefNum:(short)arg2 diskUUID:(id)arg3 networkPath:(id)arg4 alwaysWarnPath:(id)arg5;
 - (void)refreshAvailableVolumesAlwaysWarnForPath:(id)arg1;
 - (void)setUse:(BOOL)arg1 forLocation:(id)arg2;

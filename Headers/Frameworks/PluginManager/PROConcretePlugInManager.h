@@ -51,7 +51,9 @@ __attribute__((visibility("hidden")))
 - (void)removeAllPlugIns;
 - (void)addPlugIn:(id)arg1;
 - (void)mergeGroupsDictionaryWith:(id)arg1;
+- (void)scanForPlugInsInBundleHelper:(id)arg1 zone:(struct _NSZone *)arg2;
 - (void)scanForPlugInsInDirectory:(id)arg1;
+- (void)scanForPlugInsInBundle:(id)arg1;
 - (BOOL)bundleHandler:(id)arg1 shouldAddPlugIn:(id)arg2;
 - (void)bundleHandler:(id)arg1 didAddPlugIn:(id)arg2;
 - (void)bundleHandler:(id)arg1 didError:(id)arg2;

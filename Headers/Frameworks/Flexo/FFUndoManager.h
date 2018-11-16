@@ -19,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void)undo;
 - (void)redo;
 - (void)removeAllActions;
+- (void)updateTargetModDate:(id)arg1;
+- (void)registerUndoWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
+- (id)prepareWithInvocationTarget:(id)arg1;
 @property(nonatomic) FFUndoHandler *undoHandler; // @synthesize undoHandler=_undoHandler;
 
 @end

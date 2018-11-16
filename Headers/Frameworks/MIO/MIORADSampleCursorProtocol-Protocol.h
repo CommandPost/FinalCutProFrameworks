@@ -16,16 +16,16 @@
 - (CDStruct_1b6d18a9)presentationTimeStamp;
 - (struct opaqueCMFormatDescription *)formatDescription;
 - (CDStruct_1b6d18a9)playableHorizon;
-- (id)sampleDependencyAttributes;
 - (CDStruct_1b6d18a9)duration;
 
 @optional
+- (id)sampleDependencyAttributes;
 - (id)propertyForKey:(id)arg1;
 - (long long)timecodeCounter;
 - (CDStruct_1b6d18a9)decodeTimeStamp;
 - (void)dependencyInfoWithFullSync:(char *)arg1 partialSync:(char *)arg2 partialSyncThreshold:(int *)arg3 droppable:(char *)arg4;
 - (BOOL)mpeg2FrameType:(char *)arg1 brokenLink:(char *)arg2;
-- (BOOL)testReorderingBoundaryWithCursor:(id)arg1 boundaryType:(long long)arg2;
+- (BOOL)testReorderingBoundaryWithCursor:(id)arg1 boundaryType:(int)arg2;
 - (void)chunkDetails:(id *)arg1 chunkOffset:(long long *)arg2 chunkSize:(unsigned long long *)arg3 sampleCount:(long long *)arg4 sampleIndex:(long long *)arg5 allSameSize:(char *)arg6 allSameDuration:(char *)arg7 allSameFormatDescription:(char *)arg8;
 - (void)sampleLocationWithArraySizes:(long long)arg1 sectionCountOut:(long long *)arg2 sectionOffsetArrayInOut:(long long *)arg3 sectionLengthArrayInOut:(unsigned long long *)arg4 dataSourceOut:(id *)arg5;
 - (struct opaqueCMSampleBuffer *)createSampleBuffer:(id)arg1;

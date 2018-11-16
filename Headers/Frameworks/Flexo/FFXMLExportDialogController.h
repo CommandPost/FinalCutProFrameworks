@@ -25,13 +25,11 @@
 }
 
 - (void)setupFormatVersions:(id)arg1;
-- (void)resetDefaults:(BOOL)arg1;
-- (id)initWithSavePanel:(id)arg1 rootObject:(id)arg2 curXMLVers:(id)arg3;
+- (id)initWithSavePanel:(id)arg1 rootObject:(id)arg2;
 - (void)export:(id)arg1;
 - (void)setExportFormatVersion:(id)arg1;
 - (void)setUseSequneceRelativeTime:(id)arg1;
 - (void)setUseRelativePaths:(id)arg1;
-- (id)optionsDict;
 
 @end
 

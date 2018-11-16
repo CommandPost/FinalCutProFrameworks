@@ -23,8 +23,9 @@ __attribute__((visibility("hidden")))
 - (id)videoProps;
 - (id)pixelTransformToField1ForQuality:(int)arg1;
 - (id)pixelTransformToField2ForQuality:(int)arg1;
-- (id)_newScheduledImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
-- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (void)_installScheduleOpIfNeeded:(CDStruct_60067b7e)arg1 qualityIndex:(int)arg2 priority:(int)arg3 forScheduling:(BOOL)arg4;
+- (id)_newScheduledImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 forScheduling:(BOOL)arg3;
+- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
 - (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
 - (id)description;
 

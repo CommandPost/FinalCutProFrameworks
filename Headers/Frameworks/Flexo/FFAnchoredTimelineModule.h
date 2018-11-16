@@ -60,6 +60,7 @@
     id _gearMenuObject;
     id _multiAngleMenuObject;
     FFNumericEntry *_numericEntry;
+    CDStruct_1b6d18a9 _originalTrimPlayheadTime;
     CDStruct_1b6d18a9 _cumulativeTrimOffset;
     CDStruct_1b6d18a9 _componentSkimmingPlayheadTime;
     BOOL _sendReloadOntimeRateChangedForContext;
@@ -70,6 +71,7 @@
         unsigned int isAcceptingDrop:1;
         unsigned int isTransactionOpen:1;
         unsigned int isTracking:1;
+        unsigned int isTrimming:1;
         unsigned int timelineSelectionMovesPlayhead:1;
         unsigned int showLoopRegion:1;
         unsigned int observingProvider:1;
@@ -84,7 +86,7 @@
         unsigned int placementTrimHasGap:1;
         unsigned int initialDropCreatedGap:1;
         unsigned int wasSkimmingComponent:1;
-        unsigned int reserved:12;
+        unsigned int reserved:11;
     } _editorFlags;
     FFRenderStateTracker *_renderStateTracker;
     NSPasteboard *_deferredDropDraggingPasteboard;
@@ -112,7 +114,6 @@
 - (CDStruct_1b6d18a9)_conformTimescale:(CDStruct_1b6d18a9)arg1 oldTime:(CDStruct_1b6d18a9)arg2;
 @property(retain, nonatomic) FFAnchoredTimeMarker *activeMarker; // @synthesize activeMarker=_activeMarker;
 - (CDStruct_1b6d18a9)skimmingTime;
-- (CDStruct_1b6d18a9)_conformedPlayheadTime;
 - (CDStruct_1b6d18a9)_startTimeOfSelectedObjects;
 - (CDStruct_e83c9415)_anchoredObjectRangeInTimelineSpace:(id)arg1;
 - (long long)_anchoredLaneForMarker:(id)arg1;
@@ -142,7 +143,9 @@
 - (void)_deferredSetDisableSkimming:(id)arg1;
 - (void)_deferredSetShowAnchors:(id)arg1;
 - (void)_forceTimelineUpdateOutsideOfActionScope;
+- (void)reloadTimelineViewWithChangeInfo:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)pushRootItem:(id)arg1;
 - (void)activeRootItemWillChange;
 - (void)activeRootItemDidChange;
 @property(readonly, nonatomic) FFAnchoredSequence *sequence;
@@ -276,6 +279,7 @@
 - (void)selectToolZoom:(id)arg1;
 - (id)timelineView;
 - (id)selectedItems;
+- (id)selectedRangesOrItems;
 @property(readonly, retain) FFContext *selectionContext; // @synthesize selectionContext=_selectionContext;
 - (id)contextRootObject;
 - (BOOL)showRetimeEditorForSelected;
@@ -324,6 +328,7 @@
 - (void)setActiveVideoAngle:(id)arg1;
 - (void)setActiveAudioAngle:(id)arg1;
 - (void)audioFineSyncMultiAngleAngle:(id)arg1;
+- (void)audioSyncMultiAngleItems:(id)arg1;
 - (CDStruct_1b6d18a9)firstTimeOfObjects:(id)arg1;
 - (CDStruct_1b6d18a9)firstTimeOfRangesOfMedia:(id)arg1;
 - (void)_deleteCore:(id)arg1 replaceWithGap:(BOOL)arg2 removeOperation:(int)arg3;
@@ -386,11 +391,12 @@
 - (void)setMonitoringAngleWithSkimmedObject:(id)arg1;
 - (void)setEnableAudioMonitorigingWithSkimmedObject:(id)arg1;
 - (void)setVideoMonitoringAngle:(id)arg1;
-- (void)_updateSolo;
 - (void)monitorAngleAudio:(id)arg1;
 - (void)syncToMonitoringAngle:(id)arg1;
 - (void)toggleColorCorrectionOff:(id)arg1;
 - (void)toggleBalanceColor:(id)arg1;
+- (void)toggleMatchColor:(id)arg1;
+- (void)toggleMatchAudio:(id)arg1;
 - (BOOL)retimeEditorAlreadyOpenForItem:(id)arg1;
 - (void)openRetimeEditorForItem:(id)arg1 toggle:(BOOL)arg2;
 - (void)selectNextEditMode:(id)arg1;
@@ -444,7 +450,7 @@
 - (id)_allMarkersInTimelineRange:(CDStruct_e83c9415)arg1;
 - (id)_allMarkersInTimeline;
 - (id)_chosenAnchoredObjectForMarkerOperationsInRange:(CDStruct_e83c9415)arg1;
-- (CDStruct_1b6d18a9)_timeForAddMarker;
+- (CDStruct_1b6d18a9)_timeForAddMarkerWithTemporalResolution:(int)arg1;
 - (id)_chosenAnchoredObjectForMarkerOperationsAtPlayhead;
 - (id)_chosenMarkerAtPlayhead;
 - (id)_preferredMarkerForPlayhead;
@@ -463,6 +469,7 @@
 - (void)showSplitsForEdited:(id)arg1;
 - (BOOL)_canJoinMultiAngleThroughEdit;
 - (BOOL)_multiAngleClipContainsRetimedClip;
+- (BOOL)canAudioSyncMultiAngleSelectedItems;
 - (BOOL)_canAudioFineSyncMultiAngleAngle;
 - (void)joinMultiAngleThroughEdit:(id)arg1;
 - (void)togglePrecisionEditor:(id)arg1;

@@ -69,6 +69,7 @@
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBackgroundRenderingMode:(id)arg1;
 - (void)startSliderAction:(id)arg1;
+- (void)endSliderAction:(id)arg1;
 - (void)setMotionBlurSamples:(id)arg1;
 - (void)setMotionBlurDuration:(id)arg1;
 - (void)setReflectionRecursionLimit:(id)arg1;

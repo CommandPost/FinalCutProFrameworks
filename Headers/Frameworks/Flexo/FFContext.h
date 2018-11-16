@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFDestAudio, FFDestVideoCMIO, FFPlayer, NSCountedSet, NSHashTable, NSSet, NSTimer;
+@class FFDestAudio, FFPlayer, NSCountedSet, NSHashTable, NSMapTable, NSSet, NSTimer;
 
 @interface FFContext : NSObject
 {
@@ -26,11 +26,13 @@
     int _rangeChanged;
     FFPlayer *_player;
     FFDestAudio *_audioDest;
-    FFDestVideoCMIO *_cmioDest;
     unsigned long long _streamAudioFlags;
     NSSet *_showObjects;
+    NSMapTable *_showObjectsOptions;
+    BOOL _showObjectTime;
     NSSet *_roles;
     int _showObjectsChanged;
+    int _showObjectsOptionsChanged;
     int _rolesChanged;
     id selectionHandler;
     BOOL _isScrubbing;
@@ -69,6 +71,7 @@
 - (void)_qualityChanged;
 - (void)_temporalQualityChanged;
 - (void)_showObjectsChanged;
+- (void)_showObjectsOptionsChanged;
 - (void)_rolesChanged;
 - (void)_streamAudioFlagsChanged;
 - (void)setTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
@@ -85,6 +88,10 @@
 - (int)temporalQuality;
 - (void)setShowObjects:(id)arg1;
 - (id)showObjects;
+- (void)setShowObjectTime:(BOOL)arg1;
+- (BOOL)showObjectTime;
+- (void)setOptions:(id)arg1 forKey:(id)arg2 forShowObject:(id)arg3;
+- (id)optionsForKey:(id)arg1 forShowObject:(id)arg2;
 - (void)setRoles:(id)arg1;
 - (id)roles;
 - (void)setStreamAudioFlags:(unsigned long long)arg1;
@@ -94,9 +101,8 @@
 - (void)setPlayer:(id)arg1;
 - (id)player;
 - (void)objectRequestsDraftTextMode:(BOOL)arg1;
-- (void)makePlayerForProvider:(id)arg1 playAudio:(BOOL)arg2 hasHardwareOut:(BOOL)arg3;
-- (void)makePlayerForProvider:(id)arg1 playAudio:(BOOL)arg2 hasHardwareOut:(BOOL)arg3 forRender:(BOOL)arg4;
-- (BOOL)videoOutActive;
+- (void)makePlayerForProvider:(id)arg1 playAudio:(BOOL)arg2;
+- (void)makePlayerForProvider:(id)arg1 playAudio:(BOOL)arg2 forRender:(BOOL)arg3;
 - (void)doneUsingPlayer:(id)arg1;
 - (void)_teardownPlayer;
 - (void)beginScrubbing:(CDStruct_1b6d18a9)arg1;

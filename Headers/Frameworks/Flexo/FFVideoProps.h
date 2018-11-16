@@ -54,6 +54,7 @@
 + (id)pixelTransformTo1440x1080iLower;
 + (id)pixelTransformTo1440x1080iUpper;
 + (BOOL)classIsAbstract;
++ (Class)classForKeyedUnarchiver;
 + (void)releaseSharedInstance;
 + (id)newPropsFromVideoFormat:(id)arg1;
 + (id)newPropsFromVideoFormatDescription:(struct opaqueCMFormatDescription *)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 anamorphicHint:(BOOL)arg3 isRotated:(BOOL)arg4 ambiguous:(char *)arg5;

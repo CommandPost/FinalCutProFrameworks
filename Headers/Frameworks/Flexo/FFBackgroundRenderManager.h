@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)_newBGRenderTask:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 autoStartInfo:(id)arg4;
 - (void)_updateTimer;
 - (void)performRender:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3;
+- (void)performRender:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 shouldCancelOtherJobs:(BOOL)arg4;
 - (void)registerForAutoRender:(id)arg1 statesToAutoRender:(id)arg2 range:(CDStruct_e83c9415)arg3 withPriority:(int)arg4;
 - (void)unregisterForAutoRender:(id)arg1;
 - (void)holdOffBGRenderStart:(id)arg1;

@@ -22,6 +22,7 @@
     BOOL _lanesSorted;
     NSMutableDictionary *_sortedLanes;
     NSMutableArray *_cachedMultiAngleObjects;
+    NSMutableDictionary *_cachedMultiAngleIDToObjectLookups;
     FFVideoProps *_videoProps;
     FFVideoProps *_calculatedVideoProps;
     int _cachedHasVideo;
@@ -92,7 +93,9 @@
 - (CDStruct_1b6d18a9)_childOffsetForObject:(id)arg1;
 - (CDStruct_1b6d18a9)childToParentOffsetForChild:(id)arg1;
 - (CDStruct_e83c9415)_calculatedTimeRangeOfSpine:(BOOL)arg1 anchors:(BOOL)arg2;
+- (void)_computeUntimedUnclippedRange;
 - (CDStruct_e83c9415)untimedUnclippedRange;
+- (void)_ensureUntimedUnclippedRangeIsValid;
 - (CDStruct_e83c9415)unclippedRange;
 - (CDStruct_e83c9415)_newEffectiveRangeOfObject:(id)arg1 clippedByTransitions:(BOOL)arg2 useAudioRanges:(BOOL)arg3;
 - (CDStruct_e83c9415)_oldEffectiveRangeOfObject:(id)arg1 clippedByTransitions:(BOOL)arg2 useAudioRanges:(BOOL)arg3;
@@ -161,6 +164,7 @@
 - (void)_updateCachedMultiAngles;
 - (id)availableMultiAngleObjects;
 - (id)availableMultiAngleIDs;
+- (id)multiAngleObjectForAngleID:(id)arg1;
 - (id)videoAngleObject;
 - (id)referenceAngleForContainer;
 @property(retain, nonatomic) NSDate *contentCreated; // @synthesize contentCreated=_contentCreated;
@@ -213,7 +217,8 @@
 - (BOOL)containsChannel:(id)arg1;
 - (id)onScreenControls;
 - (id)_metadataAsset;
-- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)_metadataMediaComponent;
+- (id)mdTargetForKey:(id)arg1;
 - (id)kMDItemKind;
 - (id)metadataVideoFrameSize;
 - (id)metadataContentCreated;
@@ -221,6 +226,8 @@
 - (id)metadataVideoFieldDominance;
 - (long long)metadataFieldDominanceOverride;
 - (void)setMetadataFieldDominanceOverride:(long long)arg1;
+- (long long)metadataDeinterlaceType;
+- (void)setMetadataDeinterlaceType:(long long)arg1;
 - (id)metadataVideoFrameRate;
 - (CDStruct_1b6d18a9)endTimeOfLastContainedItem:(BOOL)arg1;
 - (CDStruct_1b6d18a9)endTimeOfLastContainedItem;

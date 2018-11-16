@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _isAudio;
     struct CGSize _imageSize;
     FFMD5AndOffset *_imageMD5;
+    CDStruct_bdcb2b0d _cachedMD5;
     BOOL _isAVClip;
     struct CGImage *_image;
     BOOL _canceled;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_60067b7e)imageMD5Cached;
 - (CDStruct_60067b7e)imageMD5;
 - (CDStruct_60067b7e)audioMD5;
+- (CDStruct_60067b7e)cachedMD5;
 - (void)setVideoImageMD5:(id)arg1;
 - (void)recalculateImageMD5:(id)arg1;
 - (id)segmentStoreMD5;

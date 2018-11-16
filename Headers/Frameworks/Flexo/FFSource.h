@@ -22,6 +22,7 @@
 - (id)retain;
 - (void)release;
 - (id)provider;
+- (int)providerRetainCount;
 - (id)type;
 - (CDStruct_e83c9415)timeRange;
 - (id)description;

@@ -11,6 +11,8 @@
 - (void)_setupTopLevelHandlers;
 - (void)_addTopLevelHandlerIdentifier:(id)arg1;
 - (void)_removeTopLevelHandlerIdentifier:(id)arg1;
+- (BOOL)_isSkimming;
+- (void)_updateXPositionOfPlayhead;
 - (void)_updatePlayheadPositionAnimate:(BOOL)arg1;
 @end
 

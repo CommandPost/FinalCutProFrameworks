@@ -6,49 +6,60 @@
 
 #import <Flexo/FFDestVideo.h>
 
-@class FFPrerollSync, MIODeviceManager, MIOOutputCore, NSLock, NSMutableArray;
+@class FFPixelBuffer, FFPrerollSync, MIODeviceConnection, MIOOutputCore, NSLock, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFDestVideoCMIO : FFDestVideo
 {
-    struct OpaqueFigClock *_clock;
     NSLock *_queueLock;
     NSMutableArray *_renderedFrames;
+    FFPixelBuffer *_cachedFrameBuffer;
+    NSString *_deviceUID;
+    MIODeviceConnection *_deviceConnection;
     MIOOutputCore *_outputCore;
-    MIODeviceManager *_deviceManager;
-    BOOL _isRunning;
+    int _destRunningState;
     BOOL _needsUpdate;
     struct OpaqueFigTimebase *_playerTimebase;
     FFPrerollSync *_startSync;
     BOOL _destStartedForPlayback;
     CDStruct_1b6d18a9 _durationPulled;
     CDStruct_1b6d18a9 _playerFrameDuration;
-    BOOL _destLatchHostTimeValid;
-    unsigned long long _destLatchHostTime;
-    unsigned long long _destLatchSequenceNumber;
-    BOOL _destFirstSequenceNumberValid;
-    unsigned long long _destFirstSequenceNumber;
-    NSLock *_destStartTimebaseTimeLock;
-    CDStruct_1b6d18a9 _destStartTimebaseTime;
-    struct FFDestVideoTundraStartTimebaseTimeQueue *_startTimebaseTimeQueue;
-    struct FFDestVideoTundraPlaybackTimingInfoQueue *_timingInfoQueue;
-    struct FFDestVideoTundraPlaybackErrorQueue *_errorQueue;
+    int _minInFlightFramesForThrottling;
+    CDStruct_1b6d18a9 _playbackAnchorTime;
+    CDStruct_1b6d18a9 _playbackLastHostTimestamp;
+    unsigned long long _playbackLastSequenceNumber;
+    unsigned long long _playbackFirstSequenceNumberPulled;
+    struct FFCMIOPlaybackTimebaseStartedSignalQueue *_timebaseStartedSignalQueue;
+    struct FFCMIOPlaybackTimingInfoQueue *_timingInfoQueue;
+    struct FFCMIOPlaybackTimestampQueue *_timestampQueue;
+    struct FFCMIOPlaybackErrorQueue *_errorQueue;
+    CDStruct_1b6d18a9 _currentErrorTime;
     CDStruct_1b6d18a9 _errorAdjustedTime;
     CDStruct_1b6d18a9 _errorLastTimingInfoPTS;
-    CDStruct_1b6d18a9 _errorLastPulledFramePTS;
-    CDStruct_1b6d18a9 _errorPendingSkippedFramesCompensation;
+    unsigned long long _errorLastTimingInfoSequenceNumber;
+    struct CGColorSpace *_deviceColorSpace;
 }
 
-- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1;
-- (void)releaseOutputDevice;
+- (id)initWithDeviceUID:(id)arg1;
 - (void)dealloc;
-- (CDStruct_1b6d18a9)sampleDuration;
-- (id)connectionUID;
+- (id)deviceUID;
+- (void)setPlayer:(id)arg1;
+- (void)registerForOutputDevice;
+- (void)unregisterFromOutputDevice;
+- (void)setupOutputDevice:(id)arg1;
+- (void)_releaseOutputDeviceInternal;
+- (void)releaseOutputDevice;
+- (BOOL)hasOutputDevice;
+- (void)notifyDeviceAvailableWithConnection:(id)arg1;
 - (void)flush:(BOOL)arg1;
 - (void)pushFrame:(id)arg1;
-- (unsigned char)hasData;
-- (unsigned char)getFrame:(char *)arg1 forSequenceNumber:(unsigned long long)arg2 playState:(char *)arg3;
+- (BOOL)hasData;
+- (void)_processTimestampQueue;
+- (BOOL)hasNextFrame;
+- (BOOL)getFrame:(char *)arg1 andDiscontinuityFlag:(char *)arg2 forSequenceNumber:(unsigned long long)arg3;
+- (void)_startInternal:(BOOL)arg1;
 - (void)start:(id)arg1;
+- (void)_stopInternal;
 - (void)stop;
 - (int)_getFrameQueueStatusInternal;
 - (int)getFrameQueueStatus;
@@ -63,7 +74,8 @@ __attribute__((visibility("hidden")))
 - (void)scheduledOutputNotification:(unsigned long long)arg1 outputHosttime:(unsigned long long)arg2;
 - (void)_timebaseStarted;
 - (void *)figClock;
-- (unsigned int)outputLatencyInFrames;
+- (unsigned int)outputMaxLatencyInFrames;
+- (_Bool)inefficientFrameDurationWarning:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_1b6d18a9)getPlayerFrameduration;
 - (id)description;
 

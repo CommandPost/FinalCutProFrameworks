@@ -23,7 +23,7 @@
 - (id)pixelTransformToFrameForQuality:(int)arg1;
 - (id)pixelTransformToField1ForQuality:(int)arg1;
 - (id)pixelTransformToField2ForQuality:(int)arg1;
-- (id)copySegmentStoreImageAtTime:(CDStruct_1b6d18a9)arg1 lookupContext:(id)arg2 lookupInfo:(id)arg3 tagInfo:(id)arg4 decodeQuality:(int)arg5 costAtTime:(double)arg6 useIdeal:(_Bool)arg7 justSchedule:(_Bool)arg8;
+- (id)copySegmentStoreImageAtTime:(CDStruct_1b6d18a9)arg1 lookupContext:(id)arg2 lookupInfo:(id)arg3 tagInfo:(id)arg4 decodeQuality:(int)arg5 videoProps:(id)arg6 costAtTime:(double)arg7 useIdeal:(_Bool)arg8 justSchedule:(_Bool)arg9;
 - (id)newTokOrImageFromCache:(CDStruct_1b6d18a9)arg1 context:(id)arg2 scheduleOnly:(_Bool)arg3 videoProps:(id)arg4;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3 roi:(const struct CGRect *)arg4;
@@ -31,10 +31,10 @@
 - (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3 roi:(const struct CGRect *)arg4;
 - (long long)flags;
 - (void)setFlags:(long long)arg1;
-- (id)newScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (id)newScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
-- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
+- (id)newScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
+- (id)newScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3;
+- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
+- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3;
 - (id)description;
 - (id)newNSThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2;
 - (struct CGImage *)newCGThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 returnImageMD5:(id *)arg3;

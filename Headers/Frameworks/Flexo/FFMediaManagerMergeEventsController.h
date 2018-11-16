@@ -19,7 +19,6 @@
 - (void)dealloc;
 - (void)finishMMOperation;
 - (id)renderFileURLsForClip:(id)arg1;
-- (id)allFileURLsInFolder:(id)arg1;
 - (id)filesToTransferInEvents:(id)arg1 isMergeOnSameDrive:(BOOL)arg2 options:(id)arg3;
 - (void)updateAssetRefsInAllProjectsForMergedEvents:(id)arg1;
 - (BOOL)isMergeOnSameDrive:(id)arg1;

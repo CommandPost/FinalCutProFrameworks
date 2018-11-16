@@ -20,7 +20,7 @@
     struct CGColorSpace *_sanyo_611_NCLC_Space;
     NSArray *_standardEnumeratedSpaces;
     NSMutableDictionary *_oddballCachedColorSpaces;
-    NSMutableArray *_recentUnknownColorSpaces;
+    NSMutableArray *_recentColorSpacesWithEnums;
 }
 
 + (id)sharedInstance;
@@ -44,7 +44,9 @@
 - (struct CGColorSpace *)canonDSLR_116_NCLC_Space;
 - (struct CGColorSpace *)sanyo_611_NCLC_Space;
 - (BOOL)isProductionLevelNCLC:(struct CGColorSpace *)arg1;
+- (id)_lookupInRecentsWhileHoldingSynchronizedSelf:(struct CGColorSpace *)arg1;
 - (int)getMatchingStandardColorSpace:(struct CGColorSpace *)arg1;
+- (_Bool)doesColorspace:(struct CGColorSpace *)arg1 matchStandard:(int)arg2;
 - (struct CGColorSpace *)colorSpaceForPrimaries:(id)arg1 transferFunc:(id)arg2 matrix:(id)arg3 gammaNumber:(id)arg4 retIsNonStandard:(int *)arg5;
 
 @end

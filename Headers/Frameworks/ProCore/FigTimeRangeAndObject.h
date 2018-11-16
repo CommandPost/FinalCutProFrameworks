@@ -13,6 +13,8 @@
 
 + (id)rangeAndObjectWithRange:(CDStruct_e83c9415)arg1 andObject:(id)arg2;
 - (id)initWithFigTimeRange:(CDStruct_e83c9415)arg1 andObject:(id)arg2;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)object;

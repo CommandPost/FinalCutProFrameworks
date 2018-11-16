@@ -10,7 +10,7 @@
 #import "FFSelectionHandler.h"
 #import "NSAnimationDelegate.h"
 
-@class FFDestVideoGL, FFOSC, FFPlayerView, FFSnapGrid, FFTimecodeFormatter, LKButton, NSDictionary, NSLock, NSMenu, NSMutableArray, NSProThemeImageView, NSRecursiveLock, NSView, NSViewAnimation, PCMatrix44Double;
+@class FFDestVideoCMIO, FFDestVideoGL, FFOSC, FFPlayerView, FFSnapGrid, FFTimecodeFormatter, LKButton, NSDictionary, NSLock, NSMenu, NSMutableArray, NSProThemeImageView, NSRecursiveLock, NSView, NSViewAnimation, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFPlayerVideoModule : FFPlayerItemModule <FFSelectionHandler, FFFieldDisplaySetting, NSAnimationDelegate>
@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     NSProThemeImageView *_multiangleHeaderView;
     NSView *_multiangleFooterView;
     FFDestVideoGL *_destVideoGL;
+    FFDestVideoCMIO *_destVideoCMIO;
+    BOOL _useDestVideoCMIO;
     unsigned int _viewDisplay;
     struct CGColorSpace *_viewColorSpace;
     struct CGRect _savedViewBounds;
@@ -80,6 +82,8 @@ __attribute__((visibility("hidden")))
 - (id)lastKeyView;
 - (void)_setProviderCallback;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
+- (void)_addDestsToPlayer:(id)arg1;
+- (void)_removeDestsFromPlayer:(id)arg1;
 - (void)willStopPlayingWithPlayer:(id)arg1;
 - (void)didStartPlayingWithPlayer:(id)arg1;
 - (void)moduleDidHide;
@@ -106,6 +110,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL displayBroadcastSafeZones;
 - (void)didEnterFullScreenMode;
 - (void)didExitFullScreenMode;
+@property(nonatomic) BOOL useDestVideoCMIO; // @synthesize useDestVideoCMIO=_useDestVideoCMIO;
+- (void)_setupDestVideoCMIO;
+- (void)_teardownDestVideoCMIO;
+- (void)_updateDestVideoCMIO;
 - (BOOL)shouldDrawVideoDest:(id)arg1;
 - (struct CGRect)bounds;
 - (void)setDrawingEnabled:(BOOL)arg1;
@@ -196,6 +204,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)multiangleDisplayRectAtRow:(long long)arg1 column:(long long)arg2;
 - (void)_updateMulticamEditModeButtons;
 - (id)_makeAngleBankSelectorButton;
+- (BOOL)isAngleEnabledForDisplayRectAtIndex:(unsigned long long)arg1;
 - (void)_updateAngleBankSelector;
 - (void)_updateNextPrevAngleBankButtons;
 - (void)_updateAngleModeSwitchButtons;

@@ -379,11 +379,11 @@ struct FFAudioPlayer {
     FFStreamAudio *_field3;
     FFDestAudioOutputUnit *_field4;
     struct CAStreamBasicDescription _field5;
-    unsigned long long _field6;
-    struct auto_ptr<FFAudioPlayerMeteringHook> _field7;
-    struct auto_ptr<FFAudioPlaybackUnit> _field8;
-    int _field9;
-    CDStruct_1b6d18a9 _field10;
+    struct auto_ptr<FFAudioPlayerMeteringHook> _field6;
+    struct auto_ptr<FFAudioPlaybackUnit> _field7;
+    int _field8;
+    CDStruct_1b6d18a9 _field9;
+    double _field10;
     double _field11;
     _Bool _field12;
     _Bool _field13;
@@ -394,6 +394,11 @@ struct FFAudioPlayer {
     struct auto_ptr<FFAudioBufferList> _field18;
     struct CAStreamBasicDescription _field19;
     int _field20;
+    NSMutableArray *_field21;
+    CDStruct_1b6d18a9 _field22;
+    CDStruct_1b6d18a9 _field23;
+    struct auto_ptr<FFAudioBufferList> _field24;
+    struct Synchronizable _field25;
 };
 
 struct FFAudioPlayerMeteringHook;
@@ -419,6 +424,14 @@ struct FFAudioSignalClamper {
     CDUnknownFunctionPointerType *_field1;
 };
 
+struct FFAudioSyncHelperResults {
+    char isValid;
+    float confidence;
+    CDStruct_1b6d18a9 offsetToRefItem;
+    float RMS;
+    float refRMS;
+};
+
 struct FFAudioUnitParameterInfo {
     unsigned int _field1;
     struct __CFString *_field2;
@@ -436,6 +449,36 @@ struct FFAudioUnitParameterList {
         struct FFAudioUnitParameterInfo *_M_finish;
         struct FFAudioUnitParameterInfo *_M_end_of_storage;
     } _field1;
+};
+
+struct FFCMIOPlaybackErrorQueue {
+    CDUnknownFunctionPointerType *_field1;
+    struct _List_impl _field2;
+};
+
+struct FFCMIOPlaybackTimebaseStartedSignalQueue {
+    CDUnknownFunctionPointerType *_field1;
+    int _field2;
+    struct ElementBase *_field3;
+    struct ElementBase *_field4;
+    struct ElementBase *_field5;
+    CDUnknownFunctionPointerType _field6;
+    void *_field7;
+};
+
+struct FFCMIOPlaybackTimestampQueue {
+    CDUnknownFunctionPointerType *_field1;
+    int _field2;
+    struct ElementBase *_field3;
+    struct ElementBase *_field4;
+    struct ElementBase *_field5;
+    CDUnknownFunctionPointerType _field6;
+    void *_field7;
+};
+
+struct FFCMIOPlaybackTimingInfoQueue {
+    CDUnknownFunctionPointerType *_field1;
+    struct _List_impl _field2;
 };
 
 struct FFCircularBuffer<long long unsigned int> {
@@ -474,31 +517,6 @@ struct FFDestAudioStartTimebaseRenderHook {
     struct OpaqueFigClock *_field3;
     struct WorkerThread _field4;
     struct auto_ptr<FFDestAudioStartTimebaseRenderHook::StartTimebaseTask> _field5;
-};
-
-struct FFDestVideoTundraPlaybackErrorQueue {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    struct ElementBase *_field3;
-    struct ElementBase *_field4;
-    struct ElementBase *_field5;
-    CDUnknownFunctionPointerType _field6;
-    void *_field7;
-};
-
-struct FFDestVideoTundraPlaybackTimingInfoQueue {
-    CDUnknownFunctionPointerType *_field1;
-    struct _List_impl _field2;
-};
-
-struct FFDestVideoTundraStartTimebaseTimeQueue {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    struct ElementBase *_field3;
-    struct ElementBase *_field4;
-    struct ElementBase *_field5;
-    CDUnknownFunctionPointerType _field6;
-    void *_field7;
 };
 
 struct FFEdgeInsets {
@@ -614,24 +632,28 @@ struct FFPlayerHealthMeter {
     _Bool _field4[60];
     _Bool _field5[60];
     _Bool _field6[60];
-    float _field7[60];
-    float _field8[60];
+    _Bool _field7[60];
+    _Bool _field8[60];
     float _field9[60];
-    CDStruct_1b6d18a9 _field10[60];
-    int _field11[60];
-    int _field12[60];
-    int _field13;
-    int _field14;
-    int _field15;
-    float _field16;
-    float _field17;
-    float _field18;
-    float _field19;
-    int _field20;
-    int _field21;
+    float _field10[60];
+    float _field11[60];
+    float _field12[60];
+    CDStruct_1b6d18a9 _field13[60];
+    int _field14[60];
+    int _field15[60];
+    int _field16[60];
+    int _field17;
+    int _field18;
+    int _field19;
+    float _field20;
+    float _field21;
     float _field22;
     float _field23;
-    float _field24;
+    int _field24;
+    int _field25;
+    float _field26;
+    float _field27;
+    float _field28;
 };
 
 struct FFProcrastinatedDispatch_t {
@@ -722,20 +744,6 @@ struct FFVideoScopesWaveformViewPrivate {
         float *_vertexOutput;
         float *_colorOutput;
         struct _opaque_pthread_mutex_t _mutex;
-    } _field1;
-};
-
-struct FFXMLArchiverItem {
-    id _field1;
-    id _field2;
-    id _field3;
-};
-
-struct FFXMLArchiverStack {
-    struct _Vector_impl {
-        struct FFXMLArchiverItem *_M_start;
-        struct FFXMLArchiverItem *_M_finish;
-        struct FFXMLArchiverItem *_M_end_of_storage;
     } _field1;
 };
 
@@ -835,9 +843,9 @@ struct HGGLTexture {
     struct HGRect _field4;
     struct HGRect _field5;
     int _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    unsigned int _field9;
+    unsigned long long _field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
     void *_field10;
     void *_field11;
     struct HGEdgePolicy _field12;
@@ -940,8 +948,9 @@ struct HGRenderJob {
     unsigned long long _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct HGSynchronizable *_field21;
-    struct vector<HGRenderNode*, std::allocator<HGRenderNode*>> _field22;
+    unsigned int _field21;
+    struct HGSynchronizable *_field22;
+    struct vector<HGRenderNode*, std::allocator<HGRenderNode*>> _field23;
 };
 
 struct HGRenderNode {
@@ -1126,6 +1135,8 @@ struct LoudnessAnalysisResults {
     float _field9;
 };
 
+struct MD5CacheEntry;
+
 struct Mat4f {
     struct Vec4f _field1[4];
 };
@@ -1221,7 +1232,7 @@ struct OZChannelAngle {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
 };
 
 struct OZChannelBase {
@@ -1262,7 +1273,7 @@ struct OZChannelDouble {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
 };
 
 struct OZChannelEnum {
@@ -1286,7 +1297,7 @@ struct OZChannelEnum {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
     struct vector<PCString, std::allocator<PCString>> _field22;
     struct vector<int, std::allocator<int>> _field23;
     unsigned int _field24;
@@ -1313,7 +1324,7 @@ struct OZChannelEnumInterpMode {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
     struct vector<PCString, std::allocator<PCString>> _field22;
     struct vector<int, std::allocator<int>> _field23;
     unsigned int _field24;
@@ -1455,7 +1466,7 @@ struct OZChannelPercent {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
 };
 
 struct OZChannelPosition {
@@ -1686,8 +1697,6 @@ struct POVertexAsset;
 struct PeaksKeyEqual;
 
 struct PeaksKeyHash;
-
-struct RecordingCallbackData;
 
 struct RendererStats;
 
@@ -3055,13 +3064,7 @@ struct vector<OMRgbChar, std::allocator<OMRgbChar>> {
     } _M_impl;
 };
 
-struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> {
-    struct _Vector_impl {
-        struct RecordingCallbackData *_field1;
-        struct RecordingCallbackData *_field2;
-        struct RecordingCallbackData *_field3;
-    } _field1;
-};
+struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>>;
 
 struct vector<OZChannelBase*, std::allocator<OZChannelBase*>>;
 
@@ -3141,6 +3144,14 @@ struct vector<std::vector<FFTextSearchResult, std::allocator<FFTextSearchResult>
     } _field1;
 };
 
+struct vector<unnamed::MD5CacheEntry, std::allocator<unnamed::MD5CacheEntry>> {
+    struct _Vector_impl {
+        struct MD5CacheEntry *_M_start;
+        struct MD5CacheEntry *_M_finish;
+        struct MD5CacheEntry *_M_end_of_storage;
+    } _field1;
+};
+
 struct vector<unsigned int, std::allocator<unsigned int>> {
     struct _Vector_impl {
         unsigned int *_field1;
@@ -3196,11 +3207,6 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
-
-typedef struct {
-    CDUnknownFunctionPointerType encode_copy;
-    CDUnknownFunctionPointerType decode_copy;
-} CDStruct_7039a9c6;
 
 typedef struct {
     unsigned int allow_contents:1;

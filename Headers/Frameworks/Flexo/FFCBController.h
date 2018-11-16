@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)switchToAnchoredObject:(id)arg1;
 - (id)currentAnchoredObject;
 - (void)switchToDataForCorrection:(long long)arg1 withInnerMask:(BOOL)arg2;
-- (void)switchToDataForCorrection:(long long)arg1 withInnerMask:(BOOL)arg2 force:(BOOL)arg3;
 - (void)switchToPreviousEnabledCorrection;
 - (void)switchToNextEnabledCorrection;
 - (id)arrayOfCorrectionIDs;

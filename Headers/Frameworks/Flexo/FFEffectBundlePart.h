@@ -66,7 +66,7 @@ __attribute__((visibility("hidden")))
 - (id)name;
 - (void)setName:(id)arg1;
 - (void)createEffectChannelsInFolder:(id)arg1 atIndex:(int)arg2;
-- (void)deleteEffectChannels;
+- (void)deleteEffectChannelsInFolder:(id)arg1;
 - (void)_resetEffect:(id)arg1 modifiedEffectsIndexList:(id)arg2 reloadEffect:(BOOL)arg3;
 - (void)resetEffect:(id)arg1;
 - (void)resetBundlePart:(BOOL)arg1 reloadEffect:(BOOL)arg2;
@@ -79,6 +79,8 @@ __attribute__((visibility("hidden")))
 - (void)loadEffects;
 - (void)unloadEffects;
 - (BOOL)effectsLoaded;
+- (void)clearCachedSnapshotChannels;
+- (void)updateEffectsEncodingOptions:(BOOL)arg1;
 - (id)_findEffectForChannel:(id)arg1;
 - (id)observedObjectForChannel:(id)arg1;
 - (id)subEffectForChannel:(id)arg1;

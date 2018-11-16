@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)wrapperViewForPopUpButton:(id)arg1;
 - (id)initWithBuildContext:(id)arg1;
 
 @end

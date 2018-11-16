@@ -12,6 +12,7 @@
 {
     id <FFMultiAngleItemProtocol> _item;
     NSMutableArray *_intersectedItems;
+    NSMutableArray *_audioSyncInfos;
     FFMultiAngleInfo *_angle;
     CDStruct_1b6d18a9 _start;
     CDStruct_1b6d18a9 _end;
@@ -26,14 +27,17 @@
     struct {
         unsigned int isStill:1;
         unsigned int canSyncByAudio:1;
+        unsigned int canPeakSyncByAudio:1;
         unsigned int canFineSyncByAudio:1;
         unsigned int syncedByAudio:1;
+        unsigned int peakSyncedByAudio:1;
         unsigned int isDropRate:1;
         unsigned int isDropTC:1;
-        unsigned int reserved:27;
+        unsigned int reserved:24;
     } _flags;
     double _itemStartTimeInSeconds;
     double _itemEndTimeInSeconds;
+    float _audioRMS;
 }
 
 - (CDStruct_1b6d18a9)tcWallClockStart;
@@ -49,11 +53,15 @@
 @property BOOL isStill;
 @property BOOL isDropTC;
 @property BOOL isDropRate;
+- (BOOL)hasSilence;
 - (BOOL)canSyncByAudio;
 - (void)setCanSyncByAudio:(BOOL)arg1;
+- (BOOL)canPeakSyncByAudio;
+- (void)setCanPeakSyncByAudio:(BOOL)arg1;
 - (BOOL)canFineSyncByAudio;
 - (void)setCanFineSyncByAudio:(BOOL)arg1;
 @property BOOL syncedByAudio;
+@property BOOL peakSyncedByAudio;
 - (id)init;
 - (void)dealloc;
 @property NSDate *creationDate;
@@ -64,9 +72,14 @@
 - (BOOL)hasIntersectedItems;
 @property(readonly) NSMutableArray *intersectedItems;
 - (void)clearIntersectedItems;
+- (BOOL)hasAudioSyncInfos;
+- (id)audioSyncInfos;
+- (id)audioSyncInfoForRefItem:(id)arg1;
+- (void)clearaudioSyncInfos;
 - (int)dropFramesInTime:(CDStruct_1b6d18a9)arg1 ofNominalRate:(int)arg2;
 - (CDStruct_1b6d18a9)wallClockTimeToClipTime:(CDStruct_1b6d18a9)arg1 managerDropTC:(BOOL)arg2;
 - (CDStruct_1b6d18a9)clipTimeToWallClockTime:(CDStruct_1b6d18a9)arg1 managerDropTC:(BOOL)arg2;
+@property float audioRMS; // @synthesize audioRMS=_audioRMS;
 @property(copy) NSString *deviceUID; // @synthesize deviceUID=_deviceUID;
 @property(copy) NSString *angleId; // @synthesize angleId=_angleId;
 @property(copy) NSString *name; // @synthesize name=_name;

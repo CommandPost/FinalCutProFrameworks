@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_e83c9415)effectSubSegmentForTime:(CDStruct_1b6d18a9)arg1 channelOffset:(CDStruct_1b6d18a9)arg2 sampleDur:(CDStruct_1b6d18a9)arg3;
 - (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
 - (BOOL)useSourcePixelSpace;
+- (id)blendModeChannel;
 
 @end
 

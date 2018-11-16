@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)updateChannelHeaderForItems:(id)arg1;
+- (void)updateChannelHeaderForItems:(id)arg1 updateIcon:(BOOL)arg2;
 
 @end
 

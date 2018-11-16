@@ -18,7 +18,9 @@
 + (id)newMediaSourceForObject:(id)arg1;
 + (id)sortMediaSourceChannels:(id)arg1;
 + (int)numMediaSourceChannelsForAssetAudioSourceDict:(id)arg1;
-+ (id)mediaSourceChannelsForAudioSourcesDict:(id)arg1 usingMedia:(id)arg2;
++ (id)mediaSourceChannelsForAssetAudioSourcesDict:(id)arg1 usingMedia:(id)arg2;
++ (id)defaultMediaSourceConfigsForAssetAudioSourceDict:(id)arg1;
++ (BOOL)sourceKey:(id)arg1 andChannelMap:(id)arg2 containedInMediaSourceConfig:(id)arg3 forAssetAudioSourceDict:(id)arg4;
 + (id)mediaForMediaSourceObject:(id)arg1;
 + (id)inferAudioSourceDictForAssetID:(id)arg1 withMediaComponents:(id)arg2;
 @end

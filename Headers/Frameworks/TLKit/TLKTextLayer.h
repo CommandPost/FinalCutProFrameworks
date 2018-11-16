@@ -21,7 +21,6 @@
 
 - (id)init;
 - (void)dealloc;
-- (id)hitTest:(struct CGPoint)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)_updateString:(id)arg1;
 @property(copy) NSString *string;

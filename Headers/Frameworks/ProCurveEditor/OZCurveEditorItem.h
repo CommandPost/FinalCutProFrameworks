@@ -27,7 +27,6 @@
 - (void)refreshNames;
 - (BOOL)isValid;
 - (unsigned int)channelId;
-- (id)name;
 - (id)simpleName;
 - (id)rootName;
 - (BOOL)isSelected;

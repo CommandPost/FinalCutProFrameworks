@@ -33,6 +33,7 @@
 - (void)viewWasInstalled;
 - (void)viewWillBeRemoved;
 - (void)moduleDidUnhide;
+- (void)moduleDidHide;
 - (id)firstKeyView;
 - (id)lastKeyView;
 - (id)layoutForTornOffWindow:(id)arg1;

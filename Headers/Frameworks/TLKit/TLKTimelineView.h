@@ -8,16 +8,16 @@
 
 #import "TLKEventDispatcherView.h"
 
-@class CALayer, NSMapTable, NSProTimecodeFormatter, NSSet, TLKEventDispatcher, TLKGuideLayer, TLKInOutRangeMarker, TLKLayerManager, TLKLayoutDatabase, TLKPlayheadMarker, TLKPosterItemLane, TLKPrecisionEditorDividerBar, TLKPrecisionEditorTrimBar, TLKRangeSelectionLayer, TLKRulerLane, TLKSelectionManager, TLKThemeBackedLayer, TLKTimecodeDisplayView, TLKTimelineBlurAnimation;
+@class CALayer, NSMapTable, NSProTimecodeFormatter, PMRStopwatch, TLKDataSourceProxy, TLKEventDispatcher, TLKGuideLayer, TLKInOutRangeMarker, TLKLayerManager, TLKLayoutDatabase, TLKPlayheadMarker, TLKPosterItemLane, TLKPrecisionEditorDividerBar, TLKPrecisionEditorTrimBar, TLKRangeSelectionLayer, TLKRulerLane, TLKSelectionManager, TLKThemeBackedLayer, TLKTimecodeDisplayView, TLKTimelineBlurAnimation;
 
 @interface TLKTimelineView : NSView <TLKEventDispatcherView>
 {
     id dataSource;
     id delegate;
-    CDStruct_1b6d18a9 _timePerPixel;
     double _audioWaveFormProportion;
     TLKEventDispatcher *_eventDispatcher;
     TLKSelectionManager *_selectionManager;
+    TLKDataSourceProxy *_dataSourceProxy;
     double _xPositionOfPlayheadWindowCoordinates;
     CDStruct_1b6d18a9 _playheadTime;
     TLKPlayheadMarker *_playheadMarker;
@@ -34,8 +34,6 @@
     TLKPrecisionEditorTrimBar *_precisionEditorTrimBar;
     TLKRulerLane *_rulerLane;
     TLKPosterItemLane *_posterLane;
-    NSSet *_draggedItems;
-    CDStruct_1b6d18a9 _logicalStartTime;
     double _trackPaddingTop;
     double _trackPaddingBottom;
     TLKLayoutDatabase *_layoutDatabase;
@@ -50,9 +48,9 @@
     unsigned long long _bumperPadding;
     id _focusOwner;
     id <TLKTimelineItem> _rolloverItem;
-    long long _transactionLevel;
     long long _disabledLayerUpdatesLevel;
     CDStruct_e83c9415 _trimmingTimeRift;
+    PMRStopwatch *_stopwatch;
     struct {
         unsigned int allowsHorizontalConnections:1;
         unsigned int allowsMultipleTracks:1;
@@ -108,51 +106,18 @@
         unsigned int respondsToShouldSkimItem:1;
         unsigned int respondsToWillSetCurrentHandler:1;
         unsigned int respondsToDidSetCurrentHandler:1;
-        unsigned int respondsToItemSizeForItem:1;
-        unsigned int RESERVED:5;
+        unsigned int RESERVED:6;
     } _tlkDelegateFlags;
-    struct {
-        unsigned int respondsToBeginDataAccess:1;
-        unsigned int respondsToEndDataAccess:1;
-        unsigned int respondsToBeginTransaction:1;
-        unsigned int respondsToEndTransaction:1;
-        unsigned int respondsToRolesForItem:1;
-        unsigned int respondsToAngleTitleForItem:1;
-        unsigned int respondsToShouldSetAnchorTime:1;
-        unsigned int respondsToShouldAnchorItem:1;
-        unsigned int respondsToShouldRollEdge:1;
-        unsigned int respondsToShouldRippleEdge:1;
-        unsigned int respondsToShouldTrimGap:1;
-        unsigned int respondsToShouldTrimEdge:1;
-        unsigned int respondsToShouldRollEdgeByTimeOffset:1;
-        unsigned int respondsToShouldMoveItems:1;
-        unsigned int respondsToPrepareItemAsContainer:1;
-        unsigned int respondsToShouldOrderItem:1;
-        unsigned int respondsToShouldSplitItem:1;
-        unsigned int respondsToMoveTracks:1;
-        unsigned int respondsToValidateDrop:1;
-        unsigned int respondsToAcceptDrop:1;
-        unsigned int respondsToDraggingSessionEnded:1;
-        unsigned int respondsToTimeRangeLimits:1;
-        unsigned int respondsToClippedAudioTimeRange:1;
-        unsigned int respondsToRenderInfoForTimeRange:1;
-        unsigned int respondsToTransitionPosterFramesForItem:1;
-        unsigned int respondsToAdjustTimeOfPosterItem:1;
-        unsigned int responseToWillTrimEdge:1;
-        unsigned int responseToWillRollEdge:1;
-        unsigned int RESERVED:4;
-    } _tlkDataSourceFlags;
     TLKTimelineBlurAnimation *_blurAnimation;
 }
 
+- (void)_drawRectAsLayerTree:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)dealloc;
-- (id)draggedItems;
-- (void)setDraggedItems:(id)arg1;
-- (void)removeDraggedItemsObjectsFromArray:(id)arg1;
 @property id <TLKTimelineViewDelegate> delegate;
 - (id)layerManager;
 - (id)layoutDatabase;
+- (id)stopwatch;
 - (void)viewWillMoveToSuperview:(id)arg1;
 - (void)viewDidMoveToSuperview;
 - (void)viewWillMoveToWindow:(id)arg1;
@@ -173,65 +138,22 @@
 @property BOOL disableAnimations;
 - (void)_delayEnableAnimations;
 @property id <TLKTimelineViewDataSource> dataSource;
-- (id)_invalidLayoutManagersForItems:(id)arg1 withNesting:(BOOL)arg2;
-- (id)_layoutManagersForContainers:(id)arg1;
-- (void)_pruneUnusedLayoutManagers;
-- (void)_expandInvalidItemsWithDependentItems:(id)arg1 recursively:(BOOL)arg2;
-- (id)_itemsInvalidatedByRemovingItems:(id)arg1;
-- (id)_invalidItemsForModifiedContainers:(id)arg1;
-- (void)_reloadLayoutManagers:(id)arg1 withItems:(id)arg2;
 - (void)_closeAccessoryLayersWithAddedItems:(id)arg1;
 - (BOOL)_shouldClosePrecisionEditorWithItemsAdded:(id)arg1 removed:(id)arg2;
+- (void)_reloadGapItemLayersIfNeeded:(id)arg1;
 - (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)reloadWithTracksAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)_updateFilmstripItems:(id)arg1;
 - (void)_resetTrackBounds;
 - (void)reloadData;
 - (void)setNeedsDisplayForItems:(id)arg1;
-- (id)fetchItemsForContainer:(id)arg1;
-- (id)fetchAnchoredItemsForItem:(id)arg1;
-- (CDStruct_e83c9415)fetchTimeRangeForItem:(id)arg1;
-- (CDStruct_e83c9415)fetchTimeRangeLimitsForItem:(id)arg1;
-- (CDStruct_e83c9415)fetchClippedAudioTimeRangeForItem:(id)arg1;
-- (id)fetchRolesForItem:(id)arg1;
-- (id)fetchAngleTitleForItem:(id)arg1;
-- (int)fetchItemSizeForItem:(id)arg1;
-- (void)beginDataAccess:(BOOL)arg1;
-- (void)endDataAccess:(BOOL)arg1;
-- (void)beginTransaction;
-- (void)endTransaction;
-- (void)moveTracks:(id)arg1 toIndex:(unsigned long long)arg2;
-- (BOOL)shouldMoveItems:(id)arg1 byPlacingItem:(id)arg2 inContainer:(id)arg3 atIndex:(unsigned long long)arg4 atTime:(CDStruct_1b6d18a9)arg5;
-- (void)moveItems:(id)arg1 byPlacingItem:(id)arg2 inContainer:(id)arg3 atIndex:(unsigned long long)arg4 atTime:(CDStruct_1b6d18a9)arg5;
-- (id)prepareItemAsContainer:(id)arg1 forMovingItems:(id)arg2 toIndex:(unsigned long long)arg3 atTime:(CDStruct_1b6d18a9)arg4;
-- (BOOL)shouldAnchorItems:(id)arg1 inContainer:(id)arg2 byAnchoringItem:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
-- (id)anchorItems:(id)arg1 inContainer:(id)arg2 byAnchoringItem:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
-- (BOOL)shouldSetAnchorTime:(CDStruct_1b6d18a9 *)arg1 inItem:(id)arg2;
-- (void)setAnchorTime:(CDStruct_1b6d18a9)arg1 inItem:(id)arg2;
-- (BOOL)orderItem:(id)arg1 aboveItems:(id)arg2 belowItems:(id)arg3 besideItems:(id)arg4;
-- (unsigned long long)validateDrop:(id)arg1 onItem:(id)arg2 atIndex:(long long)arg3 dropTime:(CDStruct_1b6d18a9 *)arg4;
-- (id)acceptDrop:(id)arg1 onItem:(id)arg2 atIndex:(long long)arg3 dropTime:(CDStruct_1b6d18a9)arg4;
-- (void)draggingSessionEnded:(BOOL)arg1;
-- (BOOL)shouldRollEdge:(id)arg1 ofItem:(id)arg2;
-- (BOOL)shouldRippleEdge:(id)arg1 ofItem:(id)arg2;
-- (BOOL)shouldTrimGap:(id)arg1;
-- (BOOL)shouldTrimEdge:(id)arg1 trimType:(int)arg2 edgeType:(int)arg3 ofItems:(id)arg4 byTimeOffset:(CDStruct_1b6d18a9 *)arg5 movementType:(int)arg6;
-- (void)trimEdge:(id)arg1 trimType:(int)arg2 edgeType:(int)arg3 ofItems:(id)arg4 byTimeOffset:(CDStruct_1b6d18a9 *)arg5 movementType:(int)arg6;
-- (BOOL)shouldRollEdge:(id)arg1 edgeType:(int)arg2 ofSpineItem:(id)arg3 byTimeOffset:(CDStruct_1b6d18a9 *)arg4;
-- (void)rollEdge:(id)arg1 edgeType:(int)arg2 ofSpineItem:(id)arg3 byTimeOffset:(CDStruct_1b6d18a9 *)arg4;
-- (BOOL)shouldSplitItem:(id)arg1 atTime:(CDStruct_1b6d18a9 *)arg2;
-- (void)splitItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (id)copyItems:(id)arg1 clickedItem:(id *)arg2;
 - (BOOL)shouldShowSplitForItem:(id)arg1;
 - (void)notifyDoubleClickedItem:(id)arg1;
-- (void)notifyWillTrimEdge:(id)arg1 trimType:(int)arg2 edgeType:(int)arg3 ofItems:(id)arg4 movementType:(int)arg5;
-- (void)notifyWillRollEdge:(id)arg1 edgeType:(int)arg2 ofSpineItem:(id)arg3;
 - (BOOL)_timePreservingMode;
 - (struct CGSize)_constrainedFrameSize:(struct CGSize)arg1;
 - (void)setFrameSize:(struct CGSize)arg1;
 - (struct CGRect)_minContentBoundsForContainer:(id)arg1;
-@property CDStruct_1b6d18a9 figTimePerPixel;
-@property double timePerPixel;
+@property CDStruct_1b6d18a9 timePerPixel;
 - (void)_updateActiveZoomingFlag;
 - (BOOL)_activeZooming;
 @property(copy) NSProTimecodeFormatter *timecodeFormatter;
@@ -240,7 +162,6 @@
 - (CDStruct_e83c9415)timeRangeOfRect:(struct CGRect)arg1;
 - (CDStruct_e83c9415)visibleTimeRange;
 - (CDStruct_e83c9415)visibleTimeRangeForItem:(id)arg1;
-- (CDStruct_e83c9415)_visibleTimeRangeForItem:(id)arg1;
 @property BOOL showClipTitlesOnly;
 @property int displayMode;
 - (void)_delayLayoutUpdate;
@@ -323,7 +244,8 @@
 - (id)valueDisplay;
 - (void)showValueDisplay:(BOOL)arg1;
 - (id)timecodeDisplay;
-- (void)showTimecodeDisplayAtRect:(struct CGRect)arg1 displayTime:(CDStruct_1b6d18a9)arg2 type:(unsigned long long)arg3 mode:(unsigned long long)arg4 displaySubframes:(BOOL)arg5;
+- (id)stringFromTime:(CDStruct_1b6d18a9)arg1 displaySubframes:(BOOL)arg2 displaySign:(BOOL)arg3;
+- (void)showTimecodeDisplayAtRect:(struct CGRect)arg1 displayTime:(CDStruct_1b6d18a9)arg2 deltaTime:(CDStruct_1b6d18a9)arg3 type:(unsigned long long)arg4 mode:(unsigned long long)arg5 displaySubframes:(BOOL)arg6;
 - (void)showTimecodeDisplay:(BOOL)arg1;
 - (id)_rangeSelectionLayer;
 - (void)_updateRangeSelections;
@@ -350,6 +272,7 @@
 - (BOOL)_playheadSkimming;
 - (void)_setSkimmingPlayheadTime:(CDStruct_1b6d18a9)arg1 animate:(BOOL)arg2;
 @property(readonly) CDStruct_1b6d18a9 skimmingPlayheadTime;
+- (void)setSkimmingPlayheadTime:(CDStruct_1b6d18a9)arg1;
 @property BOOL showsPlayhead;
 @property BOOL skimmingPlayheadIsSnapped;
 @property BOOL playheadIsSnapped;
@@ -361,6 +284,7 @@
 @property(readonly) BOOL isPrecisionEditorOpen;
 @property(readonly) id <TLKTimelineItem> precisionEditLeft;
 @property(readonly) id <TLKTimelineItem> precisionEditRight;
+@property(readonly) id <TLKTimelineItem> precisionEditTransition;
 - (void)_openPrecisionEditorWithLeftItem:(id)arg1 rightItem:(id)arg2 transition:(id)arg3;
 - (void)_closePrecisionEditorImmediately:(BOOL)arg1;
 - (void)openNextPrecisionEdit;
@@ -400,13 +324,13 @@
 - (id)_timecodeAtTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)_adjustTimePerMarker:(CDStruct_1b6d18a9)arg1;
 - (void)setRenderInfoNeedsDisplay;
-- (id)renderInfoForTimeRange:(CDStruct_e83c9415)arg1;
 - (struct CGRect)adjustedHitTargetForRect:(struct CGRect)arg1;
 @property CDStruct_e83c9415 trimmingTimeRift; // @synthesize trimmingTimeRift=_trimmingTimeRift;
 @property(nonatomic) double trackPaddingBottom; // @synthesize trackPaddingBottom=_trackPaddingBottom;
 @property(nonatomic) double trackPaddingTop; // @synthesize trackPaddingTop=_trackPaddingTop;
 @property(retain) id <TLKTimelineItem> rolloverItem; // @synthesize rolloverItem=_rolloverItem;
 @property(retain) TLKSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
+@property(retain, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
 
 @end
 

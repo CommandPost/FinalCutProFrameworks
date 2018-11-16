@@ -12,8 +12,8 @@
 {
     id <TLKTimelineItem> _clickedItem;
     id <TLKTimelineItem> _draggedItem;
+    id <TLKTimelineItem> _adjacentItem;
     TLKItemLayer *_clickedLayer;
-    TLKItemLayer *_previousLayer;
     CALayer *_draggingLayer;
     int _trimType;
     int _edgeType;
@@ -83,6 +83,7 @@
 - (BOOL)_itemIsGap:(id)arg1;
 - (CDStruct_1b6d18a9)_visibleDurationOfItem:(id)arg1;
 - (BOOL)rollOver;
+- (BOOL)_itemHasValidLayoutInfo:(id)arg1;
 - (CDStruct_1b6d18a9)_startTimeOfItem:(id)arg1;
 - (CDStruct_1b6d18a9)_visibleStartTimeOfItem:(id)arg1;
 - (CDStruct_1b6d18a9)_endTimeOfItem:(id)arg1;

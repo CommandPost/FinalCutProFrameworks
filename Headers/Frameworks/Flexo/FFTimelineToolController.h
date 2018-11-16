@@ -12,21 +12,23 @@ __attribute__((visibility("hidden")))
 @interface FFTimelineToolController : NSObject
 {
     TLKTimelineView *_timelineView;
+    FFTool *_activeTimelineTool;
     BOOL _selectingFromModel;
     BOOL _selectingFromTK;
-    FFTool *_previousTool;
 }
 
 + (id)timelineTools;
++ (BOOL)toolIsTimelineTool:(id)arg1;
 - (id)init;
 - (void)dealloc;
+@property(retain, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 - (void)eventDispatcher:(id)arg1 didSetCurrentHandler:(id)arg2;
 - (void)activeToolDidChange:(id)arg1;
+- (void)_activeToolDidChange;
+- (void)_activeTimelineHandlerDidChange;
 - (void)_setEventHandlerForTool:(id)arg1;
 - (Class)_toolClassForCurrentEventHandler;
-- (void)_updateTimelineEventHandler;
-@property(retain) TLKTimelineView *timelineView;
-@property(retain) FFTool *previousTool; // @synthesize previousTool=_previousTool;
+@property(retain) FFTool *activeTimelineTool; // @synthesize activeTimelineTool=_activeTimelineTool;
 
 @end
 

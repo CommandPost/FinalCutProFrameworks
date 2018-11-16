@@ -114,7 +114,6 @@
 - (int)proxyOfflineReason;
 - (int)highQualityOfflineReason;
 - (id)initWithCoder:(id)arg1;
-- (id)awakeAfterUsingCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)canIngest;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -134,11 +133,14 @@
 - (id)newProvider;
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
 - (id)assets;
+- (void)addAssetsToSet:(id)arg1;
 - (id)assetRefs;
+- (void)addAssetRefsToSet:(id)arg1;
 - (id)clipRefs;
+- (void)addClipRefsToSet:(id)arg1;
 - (id)fileURLs:(int)arg1;
 - (id)analysisFileURLs;
-- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)mdTargetForKey:(id)arg1;
 - (long long)metadataAlphaHandling;
 - (void)setMetadataAlphaHandling:(long long)arg1;
 - (long long)metadataFieldDominanceOverride;

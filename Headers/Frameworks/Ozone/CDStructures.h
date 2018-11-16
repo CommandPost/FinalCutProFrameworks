@@ -199,19 +199,19 @@ struct LiAgent {
     struct LiAgent *_field1;
     struct LiImageSource *_field2;
     struct LiImageSource *_field3;
-    int _field4;
+    struct LiImageSource *_field4;
     int _field5;
     int _field6;
-    _Bool _field7;
-    struct LiRenderParameters *_field8;
-    _Bool _field9;
-    PCRect_07ce470f _field10;
-    _Bool _field11;
-    PCRect_07ce470f _field12;
-    struct LiClipSet _field13;
-    struct LiClipSet *_field14;
+    int _field7;
+    _Bool _field8;
+    struct LiRenderParameters *_field9;
+    _Bool _field10;
+    PCRect_07ce470f _field11;
+    _Bool _field12;
+    PCRect_07ce470f _field13;
+    struct LiClipSet _field14;
     struct LiClipSet *_field15;
-    PCMatrix44Tmpl_e98c85ee *_field16;
+    struct LiClipSet *_field16;
     PCMatrix44Tmpl_e98c85ee *_field17;
     PCMatrix44Tmpl_e98c85ee *_field18;
     PCMatrix44Tmpl_e98c85ee *_field19;
@@ -222,11 +222,12 @@ struct LiAgent {
     PCMatrix44Tmpl_e98c85ee *_field24;
     PCMatrix44Tmpl_e98c85ee *_field25;
     PCMatrix44Tmpl_e98c85ee *_field26;
-    HGRef_265f9e4c _field27;
-    struct LiImagePolygon _field28;
-    _Bool _field29;
-    PCVector2_7e488b7d _field30;
-    struct LiAgentData *_field31;
+    PCMatrix44Tmpl_e98c85ee *_field27;
+    HGRef_265f9e4c _field28;
+    struct LiImagePolygon _field29;
+    _Bool _field30;
+    PCVector2_7e488b7d _field31;
+    struct LiAgentData *_field32;
 };
 
 struct LiAgentData;
@@ -750,7 +751,7 @@ struct OZChanAudioTrackRefWithPicker {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     _Bool _allowsDelete;
     _Bool _alwaysUpdateDefaultValue;
     _Bool _allowsCyclicDependencies;
@@ -789,7 +790,7 @@ struct OZChanFootageRef {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     _Bool _allowsDelete;
     _Bool _alwaysUpdateDefaultValue;
     _Bool _allowsCyclicDependencies;
@@ -819,7 +820,7 @@ struct OZChanFootageRefWithPicker {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     _Bool _allowsDelete;
     _Bool _alwaysUpdateDefaultValue;
     _Bool _allowsCyclicDependencies;
@@ -858,7 +859,7 @@ struct OZChanObjectManipRef {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     _Bool _allowsDelete;
     _Bool _alwaysUpdateDefaultValue;
 };
@@ -884,7 +885,7 @@ struct OZChanObjectRefWithPicker {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
     _Bool _field22;
     _Bool _field23;
     _Bool _field24;
@@ -923,7 +924,7 @@ struct OZChanRotoshapeRefWithPicker {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     _Bool _allowsDelete;
     _Bool _alwaysUpdateDefaultValue;
     _Bool _allowsCyclicDependencies;
@@ -962,7 +963,7 @@ struct OZChannel {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
 };
 
 struct OZChannel2D {
@@ -1057,7 +1058,7 @@ struct OZChannelAffectedNodes {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
 };
 
 struct OZChannelAngle {
@@ -1081,7 +1082,7 @@ struct OZChannelAngle {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
 };
 
 struct OZChannelAspectRatio {
@@ -1105,7 +1106,7 @@ struct OZChannelAspectRatio {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
 };
 
 struct OZChannelAspectRatioFootage {
@@ -1129,7 +1130,7 @@ struct OZChannelAspectRatioFootage {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
 };
 
 struct OZChannelBase {
@@ -1218,7 +1219,7 @@ struct OZChannelBlendMode {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     struct vector<PCString, std::allocator<PCString>> _stringTable;
     struct vector<int, std::allocator<int>> _tags;
     unsigned int _stringsTableChangeCount;
@@ -1247,7 +1248,7 @@ struct OZChannelBool {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
 };
 
 struct OZChannelButton {
@@ -1271,7 +1272,7 @@ struct OZChannelButton {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     CDUnknownFunctionPointerType _callbackFunc;
     void *_privateData;
 };
@@ -1375,7 +1376,7 @@ struct OZChannelDecibel {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
 };
 
 struct OZChannelDiscreteColor {
@@ -1399,7 +1400,7 @@ struct OZChannelDiscreteColor {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     struct vector<PCString, std::allocator<PCString>> _stringTable;
     struct vector<int, std::allocator<int>> _tags;
     unsigned int _stringsTableChangeCount;
@@ -1426,7 +1427,7 @@ struct OZChannelDouble {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
 };
 
 struct OZChannelDoubleOverRange {
@@ -1450,7 +1451,7 @@ struct OZChannelDoubleOverRange {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
     struct PCString _field22;
 };
 
@@ -1475,7 +1476,7 @@ struct OZChannelEnum {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     struct vector<PCString, std::allocator<PCString>> _stringTable;
     struct vector<int, std::allocator<int>> _tags;
     unsigned int _stringsTableChangeCount;
@@ -1502,7 +1503,7 @@ struct OZChannelEnumDimension {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     struct vector<PCString, std::allocator<PCString>> _stringTable;
     struct vector<int, std::allocator<int>> _tags;
     unsigned int _stringsTableChangeCount;
@@ -1529,7 +1530,7 @@ struct OZChannelEnumInterpMode {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     struct vector<PCString, std::allocator<PCString>> _stringTable;
     struct vector<int, std::allocator<int>> _tags;
     unsigned int _stringsTableChangeCount;
@@ -1556,7 +1557,7 @@ struct OZChannelEnumLayer {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     struct vector<PCString, std::allocator<PCString>> _stringTable;
     struct vector<int, std::allocator<int>> _tags;
     unsigned int _stringsTableChangeCount;
@@ -1583,7 +1584,7 @@ struct OZChannelEnumRetime {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     struct vector<PCString, std::allocator<PCString>> _stringTable;
     struct vector<int, std::allocator<int>> _tags;
     unsigned int _stringsTableChangeCount;
@@ -1610,7 +1611,7 @@ struct OZChannelEnumWithList {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
     struct vector<PCString, std::allocator<PCString>> _field22;
     struct vector<int, std::allocator<int>> _field23;
     unsigned int _field24;
@@ -1657,7 +1658,7 @@ struct OZChannelGammaFootage {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
 };
 
 struct OZChannelGradientAlphaFolder {
@@ -1816,7 +1817,7 @@ struct OZChannelMoveableImage {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
     _Bool _field22;
     _Bool _field23;
     _Bool _field24;
@@ -1896,7 +1897,7 @@ struct OZChannelPercent {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
 };
 
 struct OZChannelPercentOverRange {
@@ -1920,7 +1921,7 @@ struct OZChannelPercentOverRange {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     struct PCString _rangeName;
 };
 
@@ -2019,7 +2020,6 @@ struct OZChannelQuad {
 
 struct OZChannelRef {
     basic_string_075b6133 _field1;
-    struct PCString _field2;
 };
 
 struct OZChannelRetimeFrame {
@@ -2043,7 +2043,7 @@ struct OZChannelRetimeFrame {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
 };
 
 struct OZChannelRotation3D {
@@ -2168,7 +2168,7 @@ struct OZChannelShape {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     struct OZChannelVertexFolder _vertices;
     struct OZDynamicCurve _x;
     struct OZDynamicCurve _y;
@@ -2229,7 +2229,7 @@ struct OZChannelShearAngle {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
 };
 
 struct OZChannelTimeConverter;
@@ -2255,7 +2255,7 @@ struct OZChannelUint32 {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
 };
 
 struct OZChannelVaryingFolder {
@@ -3947,15 +3947,14 @@ struct OZRotoshape {
     struct OZChanFootageRef _field78;
     struct PCHash128 _field79;
     struct OZMoShape _field80;
-    struct OZRenderParams *_field81;
+    _Bool _field81;
     _Bool _field82;
     _Bool _field83;
-    _Bool _field84;
-    double _field85;
+    double _field84;
+    _Bool _field85;
     _Bool _field86;
     _Bool _field87;
-    _Bool _field88;
-    void *_field89;
+    void *_field88;
 };
 
 struct OZScene {
@@ -4823,8 +4822,6 @@ struct POTexture;
 
 struct PSHVertexData;
 
-struct RecordingCallbackData;
-
 struct STMixer;
 
 struct STModule;
@@ -4888,7 +4885,7 @@ struct TXChannelString {
     CDStruct_1b6d18a9 _fadeOutOffset;
     unsigned int _fadeInCurve;
     unsigned int _fadeOutCurve;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_recordingCallbacks;
     struct PCString _string;
     _Bool _singleLineMode;
 };
@@ -6822,13 +6819,7 @@ struct vector<OZCamera*, std::allocator<OZCamera*>> {
     } _field1;
 };
 
-struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> {
-    struct _Vector_impl {
-        struct RecordingCallbackData *_M_start;
-        struct RecordingCallbackData *_M_finish;
-        struct RecordingCallbackData *_M_end_of_storage;
-    } _M_impl;
-};
+struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>>;
 
 struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> {
     struct _Vector_impl {

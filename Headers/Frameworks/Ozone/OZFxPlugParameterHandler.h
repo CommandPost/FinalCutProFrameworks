@@ -6,6 +6,7 @@
 
 #import "NSObject.h"
 
+#import "FxMixingAPI.h"
 #import "FxOptionalParameterCreationAPI.h"
 #import "FxOptionalParameterRetrievalAPI.h"
 #import "FxOptionalParameterSettingAPI.h"
@@ -26,7 +27,7 @@
 #import "FxUndoAPI.h"
 #import "PROAPIObject.h"
 
-@interface OZFxPlugParameterHandler : NSObject <FxParameterCreationAPI, FxParameterCreationAPI_v2, FxParameterCreationAPI_v3, FxParameterRetrievalAPI, FxParameterRetrievalAPI_v2, FxParameterRetrievalAPI_v3, FxParameterSettingAPI, FxParameterSettingAPI_v2, FxParameterSettingAPI_v3, FxOptionalParameterCreationAPI, FxOptionalParameterRetrievalAPI, FxOptionalParameterSettingAPI, PROAPIObject, FxPlugAPIDelegate, FxRenderNotificationAPI, FxUndoAPI, FxParameterRetrievalAPIPrivate, FxParameterSettingAPIPrivate, FxParameterAPIPrivate>
+@interface OZFxPlugParameterHandler : NSObject <FxParameterCreationAPI, FxParameterCreationAPI_v2, FxParameterCreationAPI_v3, FxParameterRetrievalAPI, FxParameterRetrievalAPI_v2, FxParameterRetrievalAPI_v3, FxParameterSettingAPI, FxParameterSettingAPI_v2, FxParameterSettingAPI_v3, FxOptionalParameterCreationAPI, FxOptionalParameterRetrievalAPI, FxOptionalParameterSettingAPI, PROAPIObject, FxPlugAPIDelegate, FxRenderNotificationAPI, FxUndoAPI, FxParameterRetrievalAPIPrivate, FxParameterSettingAPIPrivate, FxParameterAPIPrivate, FxMixingAPI>
 {
     struct stack<OZChannelFolder*, std::deque<OZChannelFolder*, std::allocator<OZChannelFolder*>>> *_folderStack;
     map_a9bf50f6 *_channelMap;
@@ -83,6 +84,9 @@
 - (void)updateInspector;
 - (double)convertFromFigTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)convertToFigTime:(double)arg1;
+- (CDStruct_1b6d18a9)convertToFigTime:(double)arg1 forAnchoredObject:(id)arg2;
+- (CDStruct_1b6d18a9)figTimeInTimeScaleOf:(id)arg1 fromFrames:(double)arg2 inTimeScaleOf:(id)arg3;
+- (CDStruct_1b6d18a9)convertToFigTimeWithoutRemapping:(double)arg1 forAnchoredObject:(id)arg2;
 - (void)beginOperationWithChannel:(struct OZChannelBase *)arg1;
 - (void)endOperationWithChannel:(struct OZChannelBase *)arg1;
 - (void)markForDynamicParameterUsage;
@@ -91,6 +95,7 @@
 - (id)displayName;
 - (void)addMixSlider:(unsigned int)arg1;
 - (struct OZChannelPercent *)mixChannel;
+- (double)mixAmountAtTime:(double)arg1;
 - (void)setFlipCheckbox:(unsigned int)arg1;
 - (unsigned int)flipCheckbox;
 - (void)addFlipCheckbox:(unsigned int)arg1;
@@ -207,6 +212,8 @@
 - (BOOL)_setupRenderer;
 - (void)_setupRenderParams:(struct OZRenderParams *)arg1 requestInfo:(CDStruct_8b442eb9)arg2 sceneNode:(struct OZSceneNode *)arg3 atTime:(CDStruct_1b6d18a9)arg4;
 - (void)_cleanupRenderParams:(struct OZRenderParams *)arg1;
+- (BOOL)isImageWellMediaFlexoMediaForSceneNode:(struct OZSceneNode *)arg1;
+- (id)flexoObjectForSceneNode:(struct OZSceneNode *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 

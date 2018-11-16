@@ -123,8 +123,6 @@
 - (void)toggleAudioMeters:(id)arg1;
 - (void)toggleBackgroundTasks:(id)arg1;
 - (void)toggleScopes:(id)arg1;
-- (void)toggleMatchColor:(id)arg1;
-- (void)toggleMatchAudio:(id)arg1;
 - (void)toggleColorBoard:(id)arg1;
 - (void)toggleEnhanceAudio:(id)arg1;
 - (void)audioMetersControlClick:(id)arg1;
@@ -184,6 +182,7 @@
 - (void)setNumericEntryType:(unsigned long long)arg1;
 - (void)setNumericEntryDirection:(long long)arg1;
 - (void)setNumericEntryShowsSubframes:(BOOL)arg1;
+- (BOOL)_editStylesPaletteCanEnableSegment:(long long)arg1;
 - (void)updateSelectionState;
 - (void)timeRateChangedForContext:(id)arg1;
 - (void)updatePlayheadLabel;

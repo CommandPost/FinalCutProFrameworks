@@ -118,6 +118,7 @@
 - (id)getScale:(id)arg1 value:(double)arg2;
 - (void)drawAsset:(unsigned int)arg1 atPos:(struct CGPoint)arg2 withSize:(struct CGPoint)arg3 texSize:(struct CGPoint)arg4;
 - (void)drawFourCornerBox:(unsigned int)arg1;
+- (void)drawBackground;
 - (void)drawCurveEditor:(struct CGRect)arg1;
 - (void)drawOriginalCurve:(id)arg1 mode:(unsigned int)arg2;
 - (void)drawProcessedCurve:(id)arg1;

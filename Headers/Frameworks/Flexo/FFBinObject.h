@@ -11,12 +11,11 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFMetadataProxy, NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSString;
 
 @interface FFBinObject : FFBaseDSObject <NSCoding, NSCopying, FFMetadataProtocol, FFInspectableObject>
 {
     NSString *_displayName;
-    FFMetadataProxy *_md;
     NSMutableDictionary *_metadata;
 }
 
@@ -34,15 +33,14 @@
 @property(copy, nonatomic) NSString *displayName;
 - (void)clearComponentAncestors;
 @property(readonly, nonatomic) NSString *contentType;
+- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1;
+- (void)invalidateSampleRange:(CDStruct_e83c9415)arg1;
+- (void)invalidateStreamRange:(CDStruct_e83c9415)arg1;
 - (void)setMetadata:(id)arg1;
 - (id)metadata;
-- (id)md;
-- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)mdTargetForKey:(id)arg1;
 - (void)mdSetValue:(id)arg1 forKey:(id)arg2;
 - (id)mdValueForKey:(id)arg1;
-- (id)valueForUndefinedKey:(id)arg1;
-- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
-- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
 - (id)inspectorClassName;
 
 @end

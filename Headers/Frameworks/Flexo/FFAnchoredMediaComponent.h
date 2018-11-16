@@ -8,7 +8,7 @@
 
 #import "FFMediaSourceProtocol.h"
 
-@class FFMD5AndOffset, FFMedia, NSArray, NSString;
+@class FFMD5AndOffset, FFMedia, FFRenderStateTracker, NSArray, NSString;
 
 @interface FFAnchoredMediaComponent : FFAnchoredComponent <FFMediaSourceProtocol>
 {
@@ -19,9 +19,12 @@
     FFMD5AndOffset *_cachedAudioMD5;
     FFMD5AndOffset *_cachedAudioMD5_NoIntrinsics;
     long long _cachedDefaultAudioChannelCount;
+    long long _deinterlaceType;
+    FFRenderStateTracker *_renderStateTracker;
 }
 
 + (id)copyClassDescription;
++ (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (void)updateAudioMediaComponents:(id)arg1 fromAudioSourceDict:(id)arg2 toAudioSourceDict:(id)arg3;
 - (CDStruct_e83c9415)unclippedRange;
 - (void)_initIntrinsicMediaComponentEffects;
@@ -39,6 +42,8 @@
 - (id)inspectorTabIdentifiers;
 - (id)labelForInspectorTabIdentifier:(id)arg1;
 - (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)_deinterlaceCacheIdentifier;
+- (id)_newDeinterlaceProviderWithInput:(id)arg1;
 - (id)_newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (id)_guessAudioRole;
 - (void)_guessAndSetAudioRole;
@@ -61,10 +66,11 @@
 - (void)setSourceChannelMap:(id)arg1;
 - (id)audioChannelRoutingMap;
 - (void)setAudioChannelRoutingMap:(id)arg1;
-- (int)_numberOfAudioChannels;
+@property(nonatomic) long long deinterlaceType; // @synthesize deinterlaceType=_deinterlaceType;
+- (long long)metadataDeinterlaceType;
+- (void)setMetadataDeinterlaceType:(long long)arg1;
 - (id)_describeAdditionalObjectsWithIndent:(long long)arg1 recurse:(BOOL)arg2;
-- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
-- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
+- (id)mdTargetForKey:(id)arg1;
 - (CDStruct_1b6d18a9)timeOffset;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (long long)timecodeDisplayDropFrame;
@@ -81,7 +87,7 @@
 - (void)_rangeInvalidated:(id)arg1;
 - (void)_startObservingMedia;
 - (void)_stopObservingMedia;
-@property(retain) FFMedia *media; // @synthesize media=_media;
+- (void)setMedia:(id)arg1;
 - (BOOL)canBeRetimed;
 - (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_e83c9415)untimeRange:(CDStruct_e83c9415)arg1;
@@ -90,9 +96,14 @@
 - (void)_clearCachedAudioMD5;
 - (CDStruct_60067b7e)audioMD5:(int)arg1;
 - (id)newProviderWithEffectCount:(long long)arg1;
+- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
+- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
+- (id)newDeinterlaceProviderWithEffectCount:(long long)arg1;
 - (void)setMedia:(id)arg1 providerSourceKey:(id)arg2 sourceChannelMap:(id)arg3 audioChannelRoutingMap:(id)arg4 updateFlags:(int)arg5;
+- (void)deinterlace;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5_NoIntrinsics; // @synthesize cachedAudioMD5_NoIntrinsics=_cachedAudioMD5_NoIntrinsics;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
+@property(readonly, nonatomic) FFMedia *media; // @synthesize media=_media;
 
 @end
 

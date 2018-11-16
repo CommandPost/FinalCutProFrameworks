@@ -27,6 +27,7 @@
 + (void)cleanupAggressively:(id)arg1 onTask:(id)arg2;
 + (void)cleanupSlightly:(id)arg1 onTask:(id)arg2;
 + (void)_addEffectForEnableOnObject:(id)arg1 forAnalysisOperation:(int)arg2;
++ (void)_addEffectOnMainThread:(id)arg1;
 + (void)enableCleanupEffects:(id)arg1 aggressively:(BOOL)arg2;
 - (id)initWithAnchoredObject:(id)arg1 andDelegate:(id)arg2;
 - (void)startAnalysis;

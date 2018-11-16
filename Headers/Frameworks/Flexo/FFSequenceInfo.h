@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize frameSize;
 @property(copy, nonatomic) NSString *displayName;
 @property(nonatomic) BOOL needToClearSequenceThumbnailMD5Cache; // @synthesize needToClearSequenceThumbnailMD5Cache=_needToClearSequenceThumbnailMD5Cache;
+- (void)releaseSequence;
 @property(readonly, nonatomic) BOOL isSequenceLoaded;
 - (id)sequenceShareFingerPrint;
 - (id)sequence;

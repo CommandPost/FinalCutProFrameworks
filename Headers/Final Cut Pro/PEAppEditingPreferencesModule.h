@@ -16,6 +16,7 @@
     LKButton *HMSF24HourRolloverCheckbox;
     NSProView *secondsConfigurationView;
     NSProSegmentedScrubber *secondsDecimalPlacesField;
+    LKPopUpButton *pixelsOrPercentagePopup;
 }
 
 + (id)newFormatter;
@@ -25,6 +26,7 @@
 - (id)titleForIdentifier:(id)arg1;
 - (void)changeTimeFormatParameter:(id)arg1;
 - (void)resetDialogWarnings:(id)arg1;
+- (void)pixelsOrPercentage:(id)arg1;
 - (void)_installConfigurationViewForFormat:(long long)arg1;
 - (void)_configureTimecodeFormatter:(id)arg1 forFormat:(long long)arg2;
 

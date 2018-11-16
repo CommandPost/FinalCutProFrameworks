@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 - (id)initWithPuckControlGroups:(id)arg1 name:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithLegacyColorBoardPresetData:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)displayName;

@@ -14,6 +14,7 @@
 - (BOOL)variableRetimeChannel:(id)arg1 rateScale:(double)arg2 aroundTime:(CDStruct_1b6d18a9)arg3 segmentIndex:(int)arg4 timescale:(int)arg5 retimeEffect:(id)arg6 newStartTime:(CDStruct_1b6d18a9 *)arg7 newEndTime:(CDStruct_1b6d18a9 *)arg8 newInTime:(CDStruct_1b6d18a9 *)arg9 newOutTime:(CDStruct_1b6d18a9 *)arg10;
 - (BOOL)setVariableRetiming:(double)arg1 aroundTime:(CDStruct_1b6d18a9)arg2 segmentIndex:(int)arg3 timescale:(int)arg4 newStartTime:(CDStruct_1b6d18a9 *)arg5 newEndTime:(CDStruct_1b6d18a9 *)arg6 newInTime:(CDStruct_1b6d18a9 *)arg7 newOutTime:(CDStruct_1b6d18a9 *)arg8 error:(id *)arg9;
 - (BOOL)removeRetimingKeysWithinTimeRange:(CDStruct_e83c9415)arg1 error:(id *)arg2;
+- (int)keyIndexWithinFrameDurationAtTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)hasKeyWithinFrameDurationAtTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)addRetimingSegmentAtTime:(CDStruct_1b6d18a9)arg1 error:(id *)arg2;
 - (BOOL)effectApplySweetSpotPreset:(id *)arg1 newDuration:(CDStruct_1b6d18a9 *)arg2;

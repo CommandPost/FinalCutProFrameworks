@@ -12,7 +12,8 @@
 - (BOOL)displayTransitionAvailableMediaAlertDialog:(char *)arg1;
 - (BOOL)displayReplaceItemAlertDialog:(char *)arg1;
 - (BOOL)displayCreateContainerWithAudioAlertDialog:(char *)arg1 isStoryline:(BOOL)arg2;
-- (BOOL)displayAddToAudioOnlyContainerAlertDialog:(char *)arg1 isStoryline:(BOOL)arg2;
+- (BOOL)displayAddToAudioOnlyContainerAlertDialog:(char *)arg1 isStoryline:(BOOL)arg2 isMultiAngle:(BOOL)arg3;
+- (BOOL)_isTimelineContainerClip:(id)arg1;
 - (void)setCopyDragMode:(BOOL)arg1;
 - (CDStruct_1b6d18a9)sampleDurationForTemporalResolutionMode:(int)arg1;
 - (id)operationSortSpineItemsIntoContiguousBlocks:(id)arg1;
@@ -23,7 +24,7 @@
 - (BOOL)containsOnlyTransitions:(id)arg1;
 - (id)_copyAnchoredObjectWithVideoPropsIfNeeded:(id)arg1;
 - (int)_insertIndexForAnchoredArray:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 insertBefore:(BOOL)arg3;
-- (id)_itemsForContainer:(id)arg1 inRange:(CDStruct_e83c9415)arg2 ignoreContainedItems:(BOOL)arg3 sort:(BOOL)arg4;
+- (id)_itemsForContainer:(id)arg1 inRange:(CDStruct_e83c9415)arg2 ignoreContainedItems:(BOOL)arg3 ignoreGaps:(BOOL)arg4 sort:(BOOL)arg5;
 - (BOOL)operationResolveLaneConflictsInContainer:(id)arg1 excludedItems:(id)arg2 error:(id *)arg3;
 - (long long)_findEmptyLaneInAnchoredArray:(id)arg1 atTimeRange:(CDStruct_e83c9415)arg2 belowSpine:(BOOL)arg3 excludedItems:(id)arg4;
 - (BOOL)_changeSequenceSettingIfNeeded:(id)arg1 displayDropFrame:(long long)arg2;
@@ -47,7 +48,7 @@
 - (CDStruct_e83c9415)_conformAnchoredObjectTimeAlignment:(id)arg1 range:(CDStruct_e83c9415)arg2 fromEdits:(id)arg3 toContainer:(id)arg4 forEditMode:(int)arg5;
 - (CDStruct_e83c9415)conformAnchoredObjectTimeAlignment:(id)arg1 range:(CDStruct_e83c9415)arg2 fromEdits:(id)arg3 toContainer:(id)arg4 forEditMode:(int)arg5;
 - (CDStruct_1b6d18a9)_editsDurationForAnchorsIn:(id)arg1;
-- (BOOL)_addAnchoredEditsInsert:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 editMode:(int)arg3 backtimed:(BOOL)arg4 rangeOfMedia:(CDStruct_e83c9415 *)arg5 rootItem:(id)arg6 error:(id *)arg7;
+- (BOOL)_addAnchoredEditsInsert:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 atIndex:(long long)arg3 editMode:(int)arg4 backtimed:(BOOL)arg5 rangeOfMedia:(CDStruct_e83c9415 *)arg6 rootItem:(id)arg7 error:(id *)arg8;
 - (id)_getDestItemRangesToOverwrite:(id)arg1 rangeStart:(CDStruct_1b6d18a9)arg2 rangeEnd:(CDStruct_1b6d18a9)arg3;
 - (id)_getAnchoredObjectsAtDestItemRanges:(id)arg1 destRanges:(id)arg2 rootItem:(id)arg3 rangeStart:(CDStruct_1b6d18a9)arg4 preservePartialAudio:(BOOL)arg5;
 - (void)_prependGapIfNeeded:(CDStruct_1b6d18a9)arg1 rootItem:(id)arg2;
@@ -57,7 +58,7 @@
 - (BOOL)_conformMultiAngle:(id)arg1 atTime:(CDStruct_1b6d18a9 *)arg2;
 - (BOOL)_conformCSLAndMultiAngleAnchoring:(id)arg1 preservedRootAnchorPair:(struct FigTimePair)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (BOOL)_isAudioOnlyCollectionForRootItem:(id)arg1 editsToAdd:(id)arg2;
-- (BOOL)operationAddAnchoredEdits:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 editMode:(int)arg3 backtimed:(BOOL)arg4 rangeOfMedia:(CDStruct_e83c9415 *)arg5 rootItem:(id)arg6 videoProps:(id)arg7 displayDropFrame:(long long)arg8 error:(id *)arg9;
+- (BOOL)operationAddAnchoredEdits:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 atIndex:(long long)arg3 editMode:(int)arg4 backtimed:(BOOL)arg5 rangeOfMedia:(CDStruct_e83c9415 *)arg6 rootItem:(id)arg7 videoProps:(id)arg8 displayDropFrame:(long long)arg9 error:(id *)arg10;
 - (int)_pasteboardActionWithPasteboard:(id)arg1 editMode:(int)arg2;
 - (BOOL)_canAddItemsOnPasteboard:(id)arg1 pasteMode:(int)arg2;
 - (BOOL)canAddItemsOnPasteboard:(id)arg1 pasteMode:(int)arg2;
@@ -113,7 +114,9 @@
 - (BOOL)actionRenameAngle:(id)arg1 newName:(id)arg2 error:(id *)arg3;
 - (id)makeVersionsFromObjects:(id)arg1 resetEffects:(BOOL)arg2 rootItem:(id)arg3 withError:(id *)arg4;
 - (BOOL)prepareEditsForCopy:(id *)arg1 container:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (BOOL)copyEdits:(id)arg1 toPasteboard:(id)arg2;
 - (id)containersForEdits:(id)arg1 editsStartTime:(CDStruct_1b6d18a9 *)arg2 excludeStorylines:(BOOL)arg3;
+- (BOOL)canAddEdits:(id)arg1 toContainer:(id)arg2 editMode:(int)arg3;
 - (BOOL)canCreateMultiAngleClip:(id)arg1 spine:(BOOL)arg2;
 - (BOOL)canCreateCompoundClip:(id)arg1 spine:(BOOL)arg2;
 - (BOOL)operationCreateMultiAngleClip:(id *)arg1 container:(id)arg2 prepareForCopy:(BOOL)arg3 error:(id *)arg4;
@@ -136,6 +139,7 @@
 - (BOOL)_ungroupAnchoredGroup:(id *)arg1 container:(id)arg2 error:(id *)arg3;
 - (BOOL)_removeTransitionInContainedGroupIfNeeded:(id *)arg1 container:(id)arg2 error:(id *)arg3;
 - (BOOL)_ungroupContainedGroup:(id *)arg1 container:(id)arg2 error:(id *)arg3;
+- (BOOL)_ungroupGroup:(id *)arg1 atTime:(CDStruct_1b6d18a9)arg2 intoSpineContainer:(id)arg3 error:(id *)arg4;
 - (BOOL)_clipItemCore:(id)arg1 toRange:(CDStruct_e83c9415)arg2 editsToDelete:(id)arg3 container:(id)arg4 error:(id *)arg5;
 - (BOOL)_clipItem:(id)arg1 toRange:(CDStruct_e83c9415)arg2 editsToDelete:(id)arg3 container:(id)arg4 error:(id *)arg5;
 - (void)_removeItem:(id)arg1;
@@ -146,6 +150,7 @@
 - (BOOL)operationPasteAllAttributes:(id)arg1 effectStacks:(id)arg2 error:(id *)arg3;
 - (BOOL)operationPasteAllAttributes:(id)arg1 intrinsicEffects:(id)arg2 error:(id *)arg3;
 - (BOOL)_anchorAndUngroupContainer:(id *)arg1 didAnchor:(char *)arg2 error:(id *)arg3;
+- (BOOL)operationUngroupEdits:(id *)arg1 atTime:(CDStruct_1b6d18a9)arg2 intoContainer:(id)arg3 error:(id *)arg4;
 - (BOOL)operationBreakApartClipItems:(id *)arg1 anchorIfAudioOnly:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)operationBreakApartClipItems:(id *)arg1 error:(id *)arg2;
 - (BOOL)actionBreakApartClipItems:(id *)arg1 error:(id *)arg2;
@@ -165,7 +170,13 @@
 - (BOOL)actionValidateAndRepair:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)actionAddRole:(id)arg1 toItems:(id)arg2 error:(id *)arg3;
 - (BOOL)operationAddRole:(id)arg1 toItems:(id)arg2 error:(id *)arg3;
+- (BOOL)actionAudioSyncMultiAngleItems:(id)arg1 rootItem:(id)arg2 error:(id *)arg3;
+- (BOOL)operationAudioSyncMultiAngleItems:(id)arg1 rootItem:(id)arg2 error:(id *)arg3;
 - (BOOL)actionAudioFineSyncMultiAngleAngle:(id)arg1 error:(id *)arg2;
 - (BOOL)operationAudioFineSyncMultiAngleAngle:(id)arg1 toMonitorAngleOnly:(BOOL)arg2 error:(id *)arg3;
+- (id)itemsToFilteredItemsSortedIntoContiguousBlocks:(id)arg1;
+- (id)liftGapAnchoredItemsFromGap:(id)arg1;
+- (void)reanchorGapAnchoredItems:(id)arg1 inContainer:(id)arg2;
+- (id)filterOutLeadingTrailingTransitions:(id)arg1;
 @end
 

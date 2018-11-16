@@ -25,8 +25,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)classIsAbstract;
 + (id)copyClassDescription;
 + (id)mediaRefComparisonSetFromMediaRefSet:(id)arg1;
-+ (id)mediaRefComparisonSetFromMediaRefArray:(id)arg1;
-+ (BOOL)mediaRefArrayContents:(id)arg1 matchArray:(id)arg2;
++ (BOOL)mediaRefSetContents:(id)arg1 matchSet:(id)arg2;
 @property(retain, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
 - (id)eventDocumentID;
 - (void)setEventDocumentID:(id)arg1;
@@ -62,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
 - (id)description;
 - (id)assets;
+- (void)addAssetsToSet:(id)arg1;
 - (id)fileURLs:(int)arg1;
 - (void)_updateRefState;
 - (id)_offlineCacheIdentifier;
@@ -70,7 +70,7 @@ __attribute__((visibility("hidden")))
 - (id)newProvider;
 - (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
 - (id)newProviderWithEffectCount:(long long)arg1;
-- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)mdTargetForKey:(id)arg1;
 @property(readonly, nonatomic) int offlineReason; // @synthesize offlineReason=_offlineReason;
 
 @end

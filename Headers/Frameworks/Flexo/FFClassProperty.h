@@ -11,45 +11,19 @@
 @interface FFClassProperty : NSObject
 {
     SEL _selector;
-    SEL _xmlOverrideSettor;
-    SEL _XMLExportOverride;
     int _propertyType;
     NSString *_xmlkey;
-    int _returnType;
     BOOL _isDeprecated;
     BOOL _required;
     BOOL _public;
-    CDStruct_7039a9c6 _xmlTransformer;
-    Class _targetClass;
+    NSString *_typeName;
 }
 
-+ (id)customObjectPairings;
-+ (id)customObjectPairingsReversed;
-+ (id)keyTypesDict;
-+ (void)makeKeyTypesDict;
-+ (int)findTypeForKey:(id)arg1 subelements:(id *)arg2 error:(id *)arg3;
-+ (int)findTypeForKey:(id)arg1 error:(id *)arg2;
-+ (id)allKeys;
 - (SEL)selector;
-- (void)setSelector:(SEL)arg1;
 - (int)propertyType;
-- (Class)targetClass;
-- (BOOL)isToMany;
-- (int)keyType;
-- (void)setPropertyType:(int)arg1;
+- (id)typeName;
 - (id)xmlKey;
 - (BOOL)isDeprecated;
-- (void)setXMLKey:(id)arg1;
-- (SEL)xmlSetterOverride;
-- (void)setXMLSetterOverride:(SEL)arg1;
-- (SEL)xmlExportOverride;
-- (void)setXMLExportOverride:(SEL)arg1;
-- (BOOL)isRequired;
-- (BOOL)isPublic;
-- (void)setXMLRequired:(BOOL)arg1;
-- (void)setXMLPublic:(BOOL)arg1;
-- (CDStruct_7039a9c6)xmlTransformer;
-- (void)setXMLTransformer:(CDStruct_7039a9c6)arg1;
 - (id)initWithSelector:(SEL)arg1 type:(int)arg2 xmlKey:(id)arg3 entity:(const char *)arg4 deprecated:(BOOL)arg5;
 - (void)dealloc;
 - (id)description;

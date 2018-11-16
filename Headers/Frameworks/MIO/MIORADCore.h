@@ -63,7 +63,7 @@
 @property BOOL isPaused; // @synthesize isPaused=mIsPaused;
 @property BOOL isIngesting; // @synthesize isIngesting=mIsIngesting;
 @property(retain) MIOInputSubSegment *currentIngestSubSegment; // @synthesize currentIngestSubSegment=mCurrentIngestSubSegment;
-@property(retain) MIORADManager *radManager; // @synthesize radManager=mRADManager;
+@property MIORADManager *radManager; // @synthesize radManager=mRADManager;
 @property(retain) MIOInputQueue *queue; // @synthesize queue=mQueue;
 
 @end

@@ -11,6 +11,8 @@
 @interface FFAnchoredClipRef : FFAnchoredObject
 {
     FFClipRef *_clipRef;
+    long long _hasAudio;
+    long long _hasVideo;
 }
 
 + (id)copyClassDescription;

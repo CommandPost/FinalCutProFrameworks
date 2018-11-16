@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (int)stepInDecodeOrder:(long long)arg1;
 - (int)stepInPresentationOrder:(long long)arg1;
+- (int)stepByDecodeTime:(CDStruct_1b6d18a9)arg1 dts:(CDStruct_1b6d18a9)arg2;
 - (int)stepByDecodeTime:(CDStruct_1b6d18a9)arg1;
 - (int)stepByPresentationTime:(CDStruct_1b6d18a9)arg1 pts:(CDStruct_1b6d18a9)arg2;
 - (int)stepByPresentationTime:(CDStruct_1b6d18a9)arg1;
@@ -43,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)implementsMpeg2FrameType;
 - (BOOL)mpeg2FrameType:(char *)arg1 brokenLink:(char *)arg2;
 - (BOOL)implementsTestReorderingBoundaryWithCursor;
-- (BOOL)testReorderingBoundaryWithCursor:(id)arg1 boundaryType:(long long)arg2;
+- (BOOL)testReorderingBoundaryWithCursor:(id)arg1 boundaryType:(int)arg2;
 - (BOOL)implementsChunkDetails;
 - (void)chunkDetails:(id *)arg1 chunkOffset:(long long *)arg2 chunkSize:(unsigned long long *)arg3 sampleCount:(long long *)arg4 sampleIndex:(long long *)arg5 allSameSize:(char *)arg6 allSameDuration:(char *)arg7 allSameFormatDescription:(char *)arg8;
 - (BOOL)implementsSampleLocationWithArraySizes;

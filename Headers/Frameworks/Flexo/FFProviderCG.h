@@ -65,6 +65,8 @@ __attribute__((visibility("hidden")))
 - (void)setMD5Seed:(id)arg1;
 - (id)MD5Seed;
 - (_Bool)shouldUseTextureCacher:(int)arg1 size:(struct CGRect)arg2 shouldLog:(_Bool *)arg3;
+- (id)renderFormat;
+- (id)renderFilesPaths;
 @property _Bool canFitAsTexture; // @synthesize canFitAsTexture=_canFitAsTexture;
 
 @end

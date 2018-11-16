@@ -13,12 +13,11 @@
     BOOL _initing;
     NSArray *_effectBundleParts;
     CHChannelEnum *_presetChannel;
+    NSArray *_activeEffects;
 }
 
 + (id)_userBundlesDirectory;
 + (id)copyClassDescription;
-+ (void)registerBundleAtPath:(id)arg1;
-+ (void)registerEffects;
 + (BOOL)saveEffects:(id)arg1 asBundleWithName:(id)arg2 partName:(id)arg3 effectType:(id)arg4 defaultValue:(double)arg5 error:(id *)arg6;
 + (BOOL)addEffects:(id)arg1 toBundle:(id)arg2 asPartWithName:(id)arg3 defaultValue:(double)arg4 error:(id *)arg5;
 + (BOOL)addEffects:(id)arg1 asSnapshotToPart:(unsigned long long)arg2 ofBundle:(id)arg3 atValue:(double)arg4 error:(id *)arg5;
@@ -39,6 +38,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)insertObject:(id)arg1 inEffectBundlePartsAtIndex:(unsigned long long)arg2;
 - (void)removeObjectFromEffectBundlePartsAtIndex:(unsigned long long)arg1;
+- (id)initialEffectBundleParts;
 - (unsigned long long)activePartIndex;
 - (id)activePart;
 - (id)effectBundleParts;
@@ -50,23 +50,24 @@
 - (id)inputKeys;
 - (void)setEffectStack:(id)arg1;
 - (id)presetNames;
+- (id)availableBundleParts;
 - (void)updatePresetsInEnumChannel:(id)arg1 withPresetNames:(id)arg2;
 - (id)newAmountChannelForEffectBundlePart:(id)arg1 inFolder:(id)arg2 withChannelID:(int)arg3;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)_showEffectWindow:(id)arg1;
+- (void)partChangedHook;
 - (void)partChanged;
 - (void)presetChanged:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)channelParameterChanged:(id)arg1;
 - (id)primaryAnimationChannel;
 - (id)presetChannel;
-- (void)createActivePartEffectChannels;
+- (void)createActivePartEffectChannelsInFolder:(id)arg1;
 - (void)addPresetChannelObserving;
 - (void)removePresetChannelObserving;
 - (void)effectWasRemovedFromStack;
-- (CDStruct_60067b7e)audioMD5:(int)arg1;
+- (id)newAudioMD5AndOffset:(int)arg1;
 - (id)exportAsXMLDocument;
-- (id)readEffectBundlePartsFromFile;
 - (id)initWithEffectID:(id)arg1 andXMLDocument:(id)arg2;
 
 @end

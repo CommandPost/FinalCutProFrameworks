@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
     FFThumbnailRequest *_ir2;
     CDStruct_bdcb2b0d _ir1MD5;
     CDStruct_bdcb2b0d _ir2MD5;
-    struct FFProcrastinatedDispatch_t _procrastinatedContext;
     long long _effectCount;
     id <FFFilmstripCellDelegate> _priorityDelegate;
 }

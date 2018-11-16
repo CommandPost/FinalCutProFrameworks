@@ -10,13 +10,12 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFAssetFileIdentifier, FFMedia, FFMetadataProxy, NSMutableDictionary, NSString, NSURL;
+@class FFAssetFileIdentifier, FFMedia, NSMutableDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaRep : FFBaseDSObject <NSCoding, NSCopying, FFMetadataProtocol>
 {
     FFMedia *_media;
-    FFMetadataProxy *_md;
     NSMutableDictionary *_metadata;
     NSString *_repType;
     NSString *_projectRelativePath;
@@ -32,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 + (id)_repTypeToFolderString:(id)arg1;
 + (id)organizeStateStringFor:(int)arg1;
++ (id)_adjustedAssetPath:(id)arg1 originalURL:(id)arg2;
 + (id)extensionFromURL:(id)arg1;
 + (id)filenameFromURL:(id)arg1;
 + (id)baseFilenameFromURL:(id)arg1;
@@ -63,7 +63,6 @@ __attribute__((visibility("hidden")))
 - (id)persistentFileURL;
 - (void)setPersistentFileURL:(id)arg1;
 - (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2;
-- (id)_adjustedAssetPath:(id)arg1 originalURL:(id)arg2;
 - (void)_checkCreationDate:(id)arg1;
 - (id)initWithFileURL:(id)arg1 media:(id)arg2 repType:(id)arg3 manageFileType:(int)arg4 project:(id)arg5;
 - (void)dealloc;
@@ -96,15 +95,11 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)setMetadata:(id)arg1;
 - (id)metadata;
-- (id)md;
-- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)mdTargetForKey:(id)arg1;
 - (void)mdSetValue:(id)arg1 forKey:(id)arg2;
 - (id)mdValueForKey:(id)arg1;
 - (id)metadataContentCreated;
 - (void)setMetadataContentCreated:(id)arg1;
-- (id)valueForUndefinedKey:(id)arg1;
-- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
-- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
 
 @end
 

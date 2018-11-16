@@ -29,7 +29,10 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setLocation:(struct CGRect)arg1;
 - (void)setStringValue:(id)arg1;
+- (void)setAttributedStringValue:(id)arg1;
+- (void)setDuration:(id)arg1 delta:(id)arg2;
 - (id)stringValue;
+- (id)attributedStringValue;
 - (void)setTextColor:(int)arg1;
 - (void)setAlignment:(unsigned long long)arg1;
 - (void)reload;

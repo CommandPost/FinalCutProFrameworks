@@ -139,9 +139,6 @@
 - (void)alertUserToXMLImportWarnings:(id)arg1 url:(id)arg2;
 - (void)activateFirstSequenceProject:(id)arg1;
 - (void)importFinalCutXML;
-- (BOOL)importAXELFile:(id)arg1 withImporter:(id *)arg2 options:(id)arg3 error:(id *)arg4;
-- (void)importFinalCutAXEL;
-- (void)projectTranslator:(id)arg1 didOutputFilesToDirectory:(id)arg2;
 - (void)swapEventsAndTimeline:(id)arg1;
 - (void)resetWindowLayout:(id)arg1;
 - (void)showKeyboardShortcuts:(id)arg1;
@@ -164,7 +161,6 @@
 - (void)importIMovieProject:(id)arg1;
 - (void)importIMovieEvent:(id)arg1;
 - (void)importXML:(id)arg1;
-- (void)importAXEL:(id)arg1;
 - (void)openImportWindow;
 - (void)closeImportWindow;
 - (void)importWindowWillStartClosing:(id)arg1;
@@ -191,8 +187,6 @@
 - (void)showHelp:(id)arg1;
 - (void)findAndReplace:(id)arg1;
 - (void)toggleInspector:(id)arg1;
-- (void)toggleMatchAudio:(id)arg1;
-- (void)toggleMatchColor:(id)arg1;
 - (void)retimeSlowHalf:(id)arg1;
 - (void)retimeSlowQuarter:(id)arg1;
 - (void)retimeSlowTenPercent:(id)arg1;
@@ -276,6 +270,7 @@
 - (id)_rangesOfMedia;
 - (id)_rangesOfMediaForTimelineEditing;
 - (void)replaceWithSelectedMedia:(id)arg1 replaceActionType:(int)arg2;
+- (BOOL)canEditWithSelectedMedia:(id)arg1 editAction:(int)arg2 backtimed:(BOOL)arg3 trackType:(id)arg4;
 - (void)editWithSelectedMedia:(id)arg1 editAction:(int)arg2 backtimed:(BOOL)arg3 trackType:(id)arg4;
 - (void)insertWithSelectedMedia:(id)arg1;
 - (void)insertWithSelectedMediaAudio:(id)arg1;
@@ -305,11 +300,7 @@
 - (void)editRoles:(id)arg1;
 - (id)anchoredObjectsForRolesMenuController:(id)arg1;
 - (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 toAnchoredObjects:(id)arg3;
-- (void)compareObj1:(id)arg1 andObj2:(id)arg2;
-- (void)diffTwoProjects:(id)arg1;
-- (void)diffTwoSelectedProjectItems:(id)arg1;
 - (void)showFFDataViewer:(id)arg1;
-- (void)generateAxelDTD:(id)arg1;
 - (void)summarizeObjectCacheToConsole:(id)arg1;
 - (void)exportEffectBrowserThumbnails:(id)arg1;
 - (void)exportShareArchive:(id)arg1;
@@ -317,7 +308,6 @@
 - (void)removeFromCNNiReport:(id)arg1;
 - (void)removeFromFacebook:(id)arg1;
 - (void)removeFromMobileMe:(id)arg1;
-- (void)removeFromPodcast:(id)arg1;
 - (void)removeFromVimeo:(id)arg1;
 - (void)removeFromYouTube:(id)arg1;
 - (id)moduleForAction:(SEL)arg1;
@@ -335,7 +325,7 @@
 - (void)mainWindowChangedScreens:(id)arg1;
 - (void)_updateLastOpenedProjectPref;
 - (id)_gatherMediaForInsertion;
-- (id)_mediaForEditingOperation:(BOOL)arg1;
+- (id)mediaForEditingOperation:(BOOL)arg1;
 - (CDStruct_1b6d18a9)_playheadForMediaSelection;
 - (void)_moveWorkspaceModuleToFullscreen:(id)arg1 withLabel:(id)arg2 animate:(BOOL)arg3;
 - (unsigned int)_organizerSelectedBrowser;

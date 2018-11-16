@@ -15,8 +15,6 @@
 
 - (id)init;
 - (void)dealloc;
-- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
-- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
 @property(copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 
 @end

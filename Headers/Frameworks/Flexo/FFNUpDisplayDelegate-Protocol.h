@@ -6,7 +6,10 @@
 
 #import "NSObject.h"
 
-@interface NSObject (FFBaseDSObjectAttributeExtensions)
-- (BOOL)isEqualToDSAttributeValue:(id)arg1;
+@protocol FFNUpDisplayDelegate <NSObject>
+
+@optional
+- (void)nUpDisplayWillBegin:(id)arg1;
+- (void)nUpDisplayDidEnd:(id)arg1;
 @end
 

@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateProvider:(id)arg1;
 - (void)prune;
 - (void)pruneIgnoring:(id)arg1;
+- (void)purgeCacheOfSequence:(id)arg1;
 
 @end
 

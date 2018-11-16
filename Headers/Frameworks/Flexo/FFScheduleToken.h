@@ -6,12 +6,13 @@
 
 #import "NSObject.h"
 
-@class FFStreamVideo, NSMutableDictionary;
+@class FFStreamVideo, NSDictionary, NSMutableDictionary;
 
 @interface FFScheduleToken : NSObject
 {
     FFStreamVideo *_stream;
-    NSMutableDictionary *_dict;
+    NSDictionary *_dict;
+    NSMutableDictionary *_dictm;
 }
 
 - (id)initWithStream:(id)arg1;
@@ -22,6 +23,7 @@
 - (_Bool)hintWillImageSoon;
 - (void)hintCacheData:(unsigned int)arg1;
 - (id)description;
+- (void)_ensureDictM;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)addEntriesFromDictionary:(id)arg1;
 - (id)objectForKey:(id)arg1;

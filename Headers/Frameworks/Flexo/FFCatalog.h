@@ -30,6 +30,8 @@
 - (id)initBridgeAndStoreWithURL:(id)arg1 error:(id *)arg2;
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
 - (id)sharedLock;
+- (void)lock;
+- (void)unlock;
 - (id)DSBridge;
 - (void)DSBridge:(id)arg1 changed:(id)arg2;
 - (void)commitWhenPossible;
@@ -48,7 +50,7 @@
 - (BOOL)wantsCommit;
 - (void)save:(id)arg1;
 - (void)applicationWillTerminate:(id)arg1;
-- (BOOL)saveCatalog:(id *)arg1;
+- (BOOL)saveCatalog:(id *)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (BOOL)sync:(id *)arg1;
 - (BOOL)bringUpToDate:(id *)arg1;
 - (id)undoHandler;

@@ -16,15 +16,15 @@ __attribute__((visibility("hidden")))
     NSString *_key;
     long long _index;
     NSArray *_children;
+    NSString *_nodeType;
     BOOL _leafNode;
-    Class _nodeClass;
 }
 
 + (id)nodeWithRootObject:(id)arg1;
-+ (id)nodeWithParent:(id)arg1 nodeKey:(id)arg2 nodeIndex:(long long)arg3 class:(Class)arg4;
++ (id)nodeWithParent:(id)arg1 nodeKey:(id)arg2 nodeIndex:(long long)arg3 type:(id)arg4;
 - (BOOL)_testIfLeafNode;
 - (id)initWithRootObject:(id)arg1;
-- (id)initWithParent:(id)arg1 nodeKey:(id)arg2 nodeIndex:(long long)arg3 class:(Class)arg4;
+- (id)initWithParent:(id)arg1 nodeKey:(id)arg2 nodeIndex:(long long)arg3 type:(id)arg4;
 - (void)dealloc;
 @property(retain, nonatomic) NSObject *nodeObject; // @synthesize nodeObject=_nodeObject;
 @property(retain, nonatomic) NSArray *children; // @synthesize children=_children;
@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)typeDescription;
 - (id)valueDescription;
 - (id)description;
-@property(nonatomic) Class nodeClass; // @synthesize nodeClass=_nodeClass;
+@property(retain, nonatomic) NSString *nodeType; // @synthesize nodeType=_nodeType;
 @property(nonatomic) FFDataViewerNode *parent; // @synthesize parent=_parent;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
 @property(nonatomic) long long index; // @synthesize index=_index;

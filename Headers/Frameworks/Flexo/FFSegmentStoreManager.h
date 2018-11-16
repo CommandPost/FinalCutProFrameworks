@@ -11,6 +11,7 @@
 @interface FFSegmentStoreManager : NSObject
 {
     NSMutableArray *_segmentStores;
+    NSMutableArray *_recentMisses;
     NSString *_currentPath;
     NSMutableArray *_paths;
     FFSegmentStoreOperationQueue *_readOperationQueue;

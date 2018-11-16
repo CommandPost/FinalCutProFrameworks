@@ -30,12 +30,16 @@ __attribute__((visibility("hidden")))
 + (void)releaseSharedInstanceAudio;
 + (id)sharedInstanceVideo;
 + (void)releaseSharedInstanceVideo;
++ (CDStruct_60067b7e)cachedMD5ForRequest:(id)arg1;
++ (struct CGImage *)copyOldCachedImageForRequest:(id)arg1;
++ (void)FFRangeInvalidationNotification:(id)arg1;
++ (void)initialize;
 - (void)_waveformPreferenceChanged:(id)arg1;
 - (id)initForAudio:(BOOL)arg1;
 - (void)dealloc;
 - (id)streamVideoCache;
 - (struct CGImage *)_copyCachedCGImageForKey:(CDStruct_60067b7e)arg1;
-- (void)_cacheImage:(struct CGImage *)arg1 withKey:(CDStruct_60067b7e)arg2 cost:(double)arg3;
+- (void)_cacheImage:(struct CGImage *)arg1 request:(id)arg2 cost:(double)arg3;
 - (struct CGImage *)_copySegmentStoreCGImageForMD5:(id)arg1 offset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4;
 - (struct CGImage *)_actuallyCreateAudioWaveformImageFromImageRequest:(id)arg1 andPeaks:(id)arg2;
 - (BOOL)_newAudioImage:(struct CGImage **)arg1 request:(id)arg2 synchronously:(BOOL)arg3;
@@ -46,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_startBackgroundTask;
 - (void)_cancelBGTask;
 - (void)_waitForBGTaskToFinish;
+- (void)addAsyncImageRequest:(id)arg1;
 - (BOOL)newImage:(struct CGImage **)arg1 forRequest:(id)arg2;
 - (void)appWillTerminate:(id)arg1;
 

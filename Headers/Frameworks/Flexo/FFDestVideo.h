@@ -52,7 +52,8 @@ __attribute__((visibility("hidden")))
 - (void)skippedFrame:(CDStruct_1b6d18a9)arg1 outOfSequence:(BOOL)arg2;
 - (void)setLastHealthMetric:(float)arg1 diskHealth:(float)arg2;
 - (id)description;
-- (unsigned int)outputLatencyInFrames;
+- (unsigned int)outputMaxLatencyInFrames;
+- (_Bool)inefficientFrameDurationWarning:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2;
 @property(retain) FFReducedRateTracker *reducedRateTracker; // @synthesize reducedRateTracker=_rrt;
 @property(readonly) CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
 @property(readonly) CDStruct_1b6d18a9 sampleDuration; // @synthesize sampleDuration=_sampleDuration;

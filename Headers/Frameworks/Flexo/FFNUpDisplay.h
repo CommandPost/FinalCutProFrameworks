@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FFNUpDisplay : NSObject
 {
     FFAnchoredTimelineModule *_editorModule;
+    id _delegate;
     NSString *_identifier;
     BOOL _inProgress;
     BOOL _showAlternate;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) FFAnchoredObject *alternateClip; // @synthesize alternateClip=_alternateClip;
 @property(readonly) FFAnchoredObject *primaryClip; // @synthesize primaryClip=_primaryClip;
 @property(copy) NSString *identifier; // @synthesize identifier=_identifier;
+@property id <FFNUpDisplayDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) FFAnchoredTimelineModule *editorModule; // @synthesize editorModule=_editorModule;
 
 @end

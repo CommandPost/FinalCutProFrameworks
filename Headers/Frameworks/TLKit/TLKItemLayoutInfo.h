@@ -22,19 +22,19 @@
         unsigned int isAnchoredItem:1;
         unsigned int isContainerItem:1;
         unsigned int isDraggedItem:1;
+        unsigned int isDeleted:1;
         unsigned int isSplitItemVisible:1;
         unsigned int itemLayerFrameNeedsUpdate:1;
         unsigned int needsLayout:1;
         unsigned int nestingLevel:2;
         unsigned int splitItemLayerFrameNeedsUpdate:1;
         unsigned int markLayersForRemoval:1;
-        unsigned int RESERVED:21;
+        unsigned int RESERVED:20;
     } _layoutFlags;
 }
 
 - (id)init;
 - (void)dealloc;
-- (void)invalidateLayers;
 @property unsigned long long nestingLevel;
 @property(nonatomic) BOOL markLayersForRemoval;
 @property(nonatomic) struct CGRect itemLayerFrame;
@@ -52,6 +52,7 @@
 @property(nonatomic) BOOL isAnchoredItem;
 @property(nonatomic) BOOL isContainerItem;
 @property(nonatomic) BOOL isDraggedItem;
+@property(nonatomic) BOOL isDeleted;
 @property(nonatomic) BOOL isSplitItemVisible;
 @property(retain, nonatomic) TLKContainerSegment *containerSegment; // @synthesize containerSegment=_containerSegment;
 @property(retain, nonatomic) TLKLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;

@@ -21,6 +21,7 @@
 - (id)rateConformEffect;
 - (BOOL)retimed;
 - (BOOL)hasRateConformScale;
+- (BOOL)needToExtendRetimeCurveWithMediaStart:(CDStruct_1b6d18a9)arg1 mediaEnd:(CDStruct_1b6d18a9)arg2;
 - (void)setRetimeCurveNewMediaStart:(CDStruct_1b6d18a9)arg1 newMediaEnd:(CDStruct_1b6d18a9)arg2;
 - (void)copyRetimeCurveToAudio;
 - (CDStruct_1b6d18a9)mediaTimeFromComponentTime:(CDStruct_1b6d18a9)arg1;

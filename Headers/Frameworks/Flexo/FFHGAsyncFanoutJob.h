@@ -19,6 +19,7 @@
     NSObject<HGRQJobProtocol> *_cbObj;
     _Bool _dumpGraph;
     _Bool _dumpDotFile;
+    _Bool _dumpRenderStats;
 }
 
 - (id)initWithSourceImage:(id)arg1 object:(id)arg2;
@@ -35,6 +36,7 @@
 - (_Bool)enqueueToRenderLocation:(int)arg1 priority:(int)arg2;
 - (_Bool)cancel;
 - (double)totalBufferCopyTime;
+@property _Bool dumpRenderStats; // @synthesize dumpRenderStats=_dumpRenderStats;
 @property _Bool dumpDotFile; // @synthesize dumpDotFile=_dumpDotFile;
 @property _Bool dumpGraph; // @synthesize dumpGraph=_dumpGraph;
 @property struct HGRenderer *specificRenderer; // @synthesize specificRenderer=_specificRenderer;
