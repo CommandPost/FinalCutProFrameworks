@@ -35,8 +35,10 @@
     int _textureSize;
     int _xOffset;
     int _yOffset;
+    float _lastBackingScale;
 }
 
+- (void)setupDrawingBuffer;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (int)getDrawingOrder;
 - (BOOL)is3DOSC;

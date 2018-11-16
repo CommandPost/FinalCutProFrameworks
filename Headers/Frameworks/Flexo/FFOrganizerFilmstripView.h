@@ -92,6 +92,7 @@ __attribute__((visibility("hidden")))
     BOOL _hasTooltip;
     struct FFProcrastinatedDispatch_t _procrastinatedReloadData;
     BOOL _invalidateUnfilteredItemsOnFocus;
+    double _contentsScaleFactor;
 }
 
 + (BOOL)figTimeRangeObject:(id)arg1 intersectsWithOrIsEmptyLike:(id)arg2;
@@ -133,6 +134,9 @@ __attribute__((visibility("hidden")))
 - (void)_setAutoScrolling:(BOOL)arg1;
 - (void)notificationHandler:(id)arg1;
 - (void)sequenceFormatChanged:(id)arg1;
+- (void)windowBackingScaleFactorChanged:(id)arg1;
+- (void)viewDidChangeBackingProperties;
+- (void)setContentsScale:(double)arg1;
 - (void)boundsDidChangeNotification:(id)arg1;
 - (void)firstResponderChanged:(id)arg1;
 - (void)viewDidUnhide;

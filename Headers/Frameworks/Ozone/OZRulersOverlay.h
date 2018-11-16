@@ -27,9 +27,16 @@
     NSTextStorage *_textStorage;
     NSLayoutManager *_layoutManager;
     NSTextContainer *_textContainer;
+    double _smallTickHeight;
+    double _largeTickHeight;
+    double _minimumTickDistance;
+    double _largeTickSkip;
+    double _fontHeight;
+    float _lastScale;
 }
 
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)setRulerAndMarkSizes;
 - (int)getDrawingOrder;
 - (void)dealloc;
 - (struct CGRect)getAvailableViewBounds;
@@ -40,7 +47,6 @@
 - (void)mouseDown:(id)arg1;
 - (void)dragGuide:(id)arg1 vertical:(_Bool)arg2;
 - (void)mouseDragged:(id)arg1;
-- (void)poofAtViewLocation:(const PCVector2_7e488b7d *)arg1;
 - (void)finishDraggingGuide:(id)arg1 vertical:(_Bool)arg2 poof:(BOOL)arg3;
 - (void)mouseUp:(id)arg1;
 - (id)getCursorWithEvent:(id)arg1;

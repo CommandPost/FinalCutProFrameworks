@@ -16,6 +16,7 @@
 + (id)toolTip;
 + (id)toolbarFacet;
 + (id)cursor;
++ (id)TLKEventHandlerID;
 - (void)mouseDown:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;

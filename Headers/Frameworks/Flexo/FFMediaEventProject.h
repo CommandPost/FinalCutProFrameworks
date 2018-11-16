@@ -6,11 +6,15 @@
 
 #import <Flexo/FFProject.h>
 
+#import "FFOrganizerItem.h"
+#import "FFOrganizerItemDraggingSource.h"
+#import "FFOrganizerMasterItem.h"
+#import "FFOrganizerMasterItemDropTarget.h"
 #import "NSCoding.h"
 
-@class FFMediaEventProjectData, NSDate, NSSet, NSString, NSURL;
+@class FFMediaEventProjectData, NSArray, NSDate, NSImage, NSSet, NSString, NSURL;
 
-@interface FFMediaEventProject : FFProject <NSCoding>
+@interface FFMediaEventProject : FFProject <FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, NSCoding>
 {
     NSString *_projectDataID;
     NSDate *_eventEarliestDate;
@@ -25,6 +29,19 @@
 + (id)copyClassDescription;
 + (id)setFromBinObjectsArray:(id)arg1;
 + (id)keyPathsForValuesAffectingMediaSet;
++ (void)setDisplayDatesNewestFirst:(BOOL)arg1;
++ (id)keyPathsForValuesAffectingDetailSubitems;
++ (id)keyPathsForValuesAffectingMasterSubitems;
++ (id)keyPathsForValuesAffectingItems;
++ (id)keyPathsForValuesAffectingHasMasterSubitems;
++ (id)keyPathsForValuesAffectingItemDisplayNameExtraText;
++ (id)readableTypesForPasteboard:(id)arg1;
++ (id)_mediaEventFromUniqueIdentifier:(id)arg1;
++ (id)flattenMediaArray:(id)arg1;
++ (id)_deletingActionNameForItems:(id)arg1;
++ (BOOL)_actionDeleteItems:(id)arg1 inProject:(id)arg2 error:(id *)arg3;
++ (BOOL)actionDeleteItemsInSet:(id)arg1 error:(id *)arg2;
++ (BOOL)actionDeleteItemsInArray:(id)arg1 error:(id *)arg2;
 - (void)_initialProjectData:(id)arg1 projectDataID:(id)arg2;
 - (id)_assetsNotInClips;
 - (id)_folderFilesNotInAssets:(id)arg1 folderURL:(id)arg2 removeTempFiles:(BOOL)arg3 repSelector:(SEL)arg4;
@@ -108,6 +125,36 @@
 @property(readonly, nonatomic) NSDate *eventEarliestDate; // @synthesize eventEarliestDate=_eventEarliestDate;
 @property(readonly, nonatomic) NSDate *eventLatestDate; // @synthesize eventLatestDate=_eventLatestDate;
 @property(readonly, nonatomic) NSString *projectDataID; // @synthesize projectDataID=_projectDataID;
+@property(readonly, nonatomic) NSImage *itemIcon;
+@property(readonly, nonatomic) NSString *itemDisplayName;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
+- (void)setItemDisplayName:(id)arg1;
+@property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
+@property(readonly, nonatomic) NSArray *detailSubitems;
+@property(readonly, nonatomic) BOOL hasMasterSubitems;
+@property(readonly, nonatomic) NSArray *masterSubitems;
+@property(readonly, nonatomic) BOOL hasItems;
+@property(readonly, nonatomic) NSArray *items;
+@property(readonly, nonatomic) BOOL hasDetailSubitems;
+- (unsigned long long)validateDropOnProject:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
+- (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
+- (BOOL)performDropOnProject:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 keywordNames:(id)arg4 organizerModule:(id)arg5;
+- (BOOL)_performDropOnRootFolder:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
+- (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
+- (void)mediaManagerDone:(id)arg1;
+- (id)writableTypesForPasteboard:(id)arg1;
+- (id)pasteboardPropertyListForType:(id)arg1;
+- (BOOL)actionAddAssetObjects:(id)arg1 error:(id *)arg2;
+- (BOOL)actionAddMediaObjects:(id)arg1 error:(id *)arg2;
+- (BOOL)actionAddVariants:(id)arg1 error:(id *)arg2;
+- (BOOL)actionRemoveVariants:(id)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
+@property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
+@property(readonly, nonatomic) BOOL itemIsPlaceholder;
+@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
+@property(readonly, nonatomic) double itemRowHeight;
 
 @end
 

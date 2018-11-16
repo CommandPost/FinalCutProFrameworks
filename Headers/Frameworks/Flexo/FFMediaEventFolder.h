@@ -7,11 +7,14 @@
 #import <Flexo/FFBaseDSObject.h>
 
 #import "FFMediaEventFolderObject.h"
+#import "FFOrganizerItemDraggingSource.h"
+#import "FFOrganizerMasterItem.h"
+#import "FFOrganizerMasterItemDropTarget.h"
 
-@class NSArray, NSMutableArray, NSString;
+@class NSArray, NSImage, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFMediaEventFolder : FFBaseDSObject <FFMediaEventFolderObject>
+@interface FFMediaEventFolder : FFBaseDSObject <FFOrganizerMasterItem, FFOrganizerItemDraggingSource, FFOrganizerMasterItemDropTarget, FFMediaEventFolderObject>
 {
     NSString *_name;
     NSMutableArray *_children;
@@ -21,6 +24,11 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 + (id)objectsSortedByName:(id)arg1;
 + (int)matchingTypeIterationOption;
++ (id)keyPathsForValuesAffectingItemDisplayName;
++ (id)keyPathsForValuesAffectingItems;
++ (id)keyPathsForValuesAffectingMasterSubitems;
++ (id)readableTypesForPasteboard:(id)arg1;
++ (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2 event:(id)arg3;
 - (id)init;
 - (id)initWithName:(id)arg1;
 - (void)dealloc;
@@ -49,6 +57,37 @@ __attribute__((visibility("hidden")))
 - (id)addUntitledKeyword;
 - (id)addUntitledSmartCollection;
 - (id)addUntitledFolder;
+- (void)_actionBeginEditing;
+- (BOOL)_actionEndEditing:(BOOL)arg1 error:(id *)arg2;
+- (void)actionBegin:(id)arg1;
+- (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)actionRename:(id)arg1 error:(id *)arg2;
+- (BOOL)_moveObject:(id)arg1 toIndex:(unsigned long long)arg2;
+- (BOOL)_copyObject:(id)arg1 toIndex:(unsigned long long)arg2 inProject:(id)arg3;
+- (id)_droppingActionNameForObjects:(id)arg1;
+- (BOOL)actionDropObjects:(id)arg1 atIndex:(unsigned long long)arg2 forceCopy:(BOOL)arg3 error:(id *)arg4;
+@property(readonly, nonatomic) NSString *itemDisplayName;
+- (void)setItemDisplayName:(id)arg1;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
+@property(readonly, nonatomic) NSImage *itemIcon;
+@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
+@property(readonly, nonatomic) NSArray *items;
+@property(readonly, nonatomic) BOOL hasMasterSubitems;
+@property(readonly, nonatomic) NSArray *masterSubitems;
+@property(readonly, nonatomic) NSArray *detailSubitems;
+- (id)writableTypesForPasteboard:(id)arg1;
+- (id)pasteboardPropertyListForType:(id)arg1;
+- (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
+- (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
+
+// Remaining properties
+@property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
+@property(readonly, nonatomic) BOOL hasDetailSubitems;
+@property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
+@property(readonly, nonatomic) BOOL hasItems;
+@property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
+@property(readonly, nonatomic) BOOL itemIsPlaceholder;
+@property(readonly, nonatomic) double itemRowHeight;
 
 @end
 

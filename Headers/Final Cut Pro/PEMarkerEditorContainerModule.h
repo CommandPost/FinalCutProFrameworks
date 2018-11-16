@@ -33,7 +33,6 @@
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2 forEditorModule:(id)arg3;
 - (void)hideMarkerEditor;
 - (void)markerHUDDidResignKey:(id)arg1;
-- (void)popOverWindow:(id)arg1 didEndAnimation:(id)arg2;
 - (void)cancel;
 - (BOOL)markerEditorIsShown;
 - (BOOL)canBeginSkimming;

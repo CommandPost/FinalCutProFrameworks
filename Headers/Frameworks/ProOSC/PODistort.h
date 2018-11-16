@@ -16,7 +16,7 @@
     double _startX;
     double _startY;
     struct POLayeredAsset _handleOutline[2];
-    PCPtr_ca909b16 _handleFill[2];
+    PCPtr_df275998 _handleFill[2];
     NSColor *_playerStatusText;
     NSColor *_playerStatusTextUnit;
     PCVector2_79efa81a _handles[8];

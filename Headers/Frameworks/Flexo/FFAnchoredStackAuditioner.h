@@ -110,6 +110,7 @@
 - (void)stackItemsChanged;
 - (float)positionOfSelectedInBodyLayer;
 - (void)createLayersForCoverFlow;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (void)moveSelectionToIndex:(unsigned long long)arg1;
 - (void)moveSelection:(int)arg1;
 - (void)fixUpOpacityForNewSelection;
@@ -134,6 +135,15 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(retain, nonatomic) FFAnchoredObject *originalPick; // @synthesize originalPick=_originalPick;
 @property(retain, nonatomic) id <FFAuditionerSkimDelegate> skimDelegate; // @synthesize skimDelegate=_skimDelegate;
+- (void)_updateFilmstripForPick:(id)arg1;
+- (void)rangeInvalidated:(id)arg1;
+- (void)_startListeningToVariant:(id)arg1;
+- (void)_stopListeningToVariant:(id)arg1;
+- (void)_startListeningToAuditionEdit:(id)arg1;
+- (void)_stopListeningToAuditionEdit:(id)arg1;
+- (id)runtimeTimecode;
+- (id)runtimeString;
+- (void)updateSelectedClipDurationField;
 
 @end
 

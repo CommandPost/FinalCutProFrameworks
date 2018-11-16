@@ -7,10 +7,13 @@
 #import <Flexo/FFBaseDSObject.h>
 
 #import "FFMediaEventFolderObject.h"
+#import "FFOrganizerItemDraggingSource.h"
+#import "FFOrganizerMasterItem.h"
+#import "FFOrganizerMasterItemDropTarget.h"
 
-@class FFMediaEventFolder, NSDictionary, NSString;
+@class FFMediaEventFolder, NSArray, NSDictionary, NSImage, NSString;
 
-@interface FFMediaEventKeyword : FFBaseDSObject <FFMediaEventFolderObject>
+@interface FFMediaEventKeyword : FFBaseDSObject <FFOrganizerMasterItem, FFOrganizerItemDraggingSource, FFOrganizerMasterItemDropTarget, FFMediaEventFolderObject>
 {
     NSString *_name;
     FFMediaEventFolder *_parentFolder;
@@ -22,6 +25,8 @@
 + (id)keywordForName:(id)arg1;
 + (int)matchingTypeIterationOption;
 + (id)keyPathsForValuesAffectingKeyword;
++ (id)keyPathsForValuesAffectingItemDisplayName;
++ (id)readableTypesForPasteboard:(id)arg1;
 - (id)initWithName:(id)arg1;
 - (void)dealloc;
 - (id)description;
@@ -35,6 +40,34 @@
 - (void)removeFromParentFolder;
 @property(readonly, nonatomic) NSDictionary *filtersDictionary;
 @property(readonly, nonatomic) NSString *keyword;
+- (id)_keywordNames;
+@property(readonly, nonatomic) NSString *itemDisplayName;
+- (void)setItemDisplayName:(id)arg1;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
+@property(readonly, nonatomic) NSImage *itemIcon;
+@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
+@property(readonly, nonatomic) NSArray *items;
+@property(readonly, nonatomic) BOOL hasMasterSubitems;
+@property(readonly, nonatomic) NSArray *masterSubitems;
+@property(readonly, nonatomic) NSArray *detailSubitems;
+@property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
+@property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
+- (id)writableTypesForPasteboard:(id)arg1;
+- (id)pasteboardPropertyListForType:(id)arg1;
+- (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
+- (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
+- (void)_actionBeginEditing;
+- (BOOL)_actionEndEditing:(BOOL)arg1 error:(id *)arg2;
+- (void)actionBegin:(id)arg1;
+- (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)actionRename:(id)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, nonatomic) BOOL hasDetailSubitems;
+@property(readonly, nonatomic) BOOL hasItems;
+@property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
+@property(readonly, nonatomic) BOOL itemIsPlaceholder;
+@property(readonly, nonatomic) double itemRowHeight;
 
 @end
 

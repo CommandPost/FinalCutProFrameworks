@@ -15,6 +15,9 @@
     unsigned int _reserved:29;
 }
 
++ (double)animationDuration;
++ (id)draggedModule;
++ (void)setDraggedModule:(id)arg1;
 - (id)init;
 - (void)dealloc;
 - (BOOL)moduleEnforcesViewMinSize;
@@ -52,6 +55,15 @@
 - (id)contentLayoutDictionary;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
 @property BOOL moduleIsTornOut;
+- (id)cleanedDictionaryFrom:(id)arg1;
+- (id)containerViewForWinModule:(id)arg1 usingLayout:(id)arg2 contentSize:(struct CGSize)arg3;
+- (BOOL)isApplyingLayout;
+- (void)setIsApplyingLayout:(BOOL)arg1;
+- (void)_setIsLayerBackedContainer:(BOOL)arg1;
+- (id)cleanedDictionaryFrom:(id)arg1;
+- (id)_ancestorContainerModule;
+- (void)_updateCurrentSublayoutWithTree:(id)arg1;
+- (id)_containerNodeFromSubmodule:(id)arg1;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class CALayer, FigTimeRangeAndObject, NSArray, NSMutableArray;
+@class CALayer, FigTimeRangeAndObject, NSArray, NSMutableArray, NSProThemeFacet;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripViewLayout : NSObject
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     double _thumbHeight;
     double _audioHeight;
     int _clipLabelSize;
+    double _contentsScale;
     struct CGPoint _insertionPoint;
     double _heightOfTallestItemOnLine;
     double _totalHeight;
@@ -30,7 +31,8 @@ __attribute__((visibility("hidden")))
     CALayer *_playheadLayer;
     CALayer *_lastPlayheadChunkLayer;
     CALayer *_persistentPlayheadLayer;
-    double _persistentPlayheadWidth;
+    NSProThemeFacet *_persistentPlayheadFacet;
+    struct CGRect _persistentPlayheadRect;
     id _delegate;
     BOOL _emphasized;
     BOOL _showRanges;
@@ -38,7 +40,7 @@ __attribute__((visibility("hidden")))
     id <FFOrganizerFilmstripClusteringDelegate> _clusteringDelegate;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1 timePerThumb:(CDStruct_1b6d18a9)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 clipLabelSize:(int)arg5 showRanges:(BOOL)arg6;
+- (id)initWithFrame:(struct CGRect)arg1 timePerThumb:(CDStruct_1b6d18a9)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 clipLabelSize:(int)arg5 contentsScale:(double)arg6 showRanges:(BOOL)arg7;
 - (void)dealloc;
 - (id)description;
 - (BOOL)isEquivalentToLayout:(id)arg1;
@@ -72,6 +74,8 @@ __attribute__((visibility("hidden")))
 - (void)setPlayheadTime:(CDStruct_1b6d18a9)arg1 inRangeOfMedia:(id)arg2 updatePlayerLayer:(BOOL)arg3;
 - (void)setPlayheadHidden:(BOOL)arg1;
 @property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
+- (double)contentsScale;
+- (void)setContentsScale:(double)arg1;
 @property(retain, nonatomic) NSArray *selectedRangesOfMedia; // @synthesize selectedRangesOfMedia=_selectedRangesOfMedia;
 @property(nonatomic) id <FFOrganizerFilmstripClusteringDelegate> clusteringDelegate; // @synthesize clusteringDelegate=_clusteringDelegate;
 @property(nonatomic) BOOL showRanges; // @synthesize showRanges=_showRanges;

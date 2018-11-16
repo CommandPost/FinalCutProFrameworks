@@ -52,6 +52,12 @@
 - (void)tabView:(id)arg1 didSelectTabViewItem:(id)arg2;
 - (id)tabView:(id)arg1 contextMenuForTabViewItem:(id)arg2;
 - (void)tabView:(id)arg1 didInsertTabViewItem:(id)arg2;
+- (BOOL)_loadLazy;
+- (void)_installTabViewForModule:(id)arg1;
+- (void)_removeTabViewForModule:(id)arg1;
+- (void)_postDidActivateNotification:(id)arg1;
+- (void)_postWillDeactivateNotification:(id)arg1;
+- (void)_removeFromSupermoduleIfNeeded;
 
 @end
 

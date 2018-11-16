@@ -8,10 +8,12 @@
 
 #import "TLKPartInfo.h"
 
+@class TLKThemeBackedLayer;
+
 @interface TLKInOutRangeMarker : CALayer <TLKPartInfo>
 {
-    CALayer *_head;
-    CALayer *_body;
+    TLKThemeBackedLayer *_head;
+    TLKThemeBackedLayer *_body;
     long long _markerState;
     BOOL _isInMarker;
 }

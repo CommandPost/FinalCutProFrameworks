@@ -8,13 +8,11 @@
 
 @interface LKWindow : NSProWindow
 {
-    unsigned int _blurFilterID;
 }
 
-- (void)_setupBlurFilter;
-- (void)_removeBlurFilter;
-- (void)_reallyDoOrderWindow:(long long)arg1 relativeTo:(long long)arg2 findKey:(BOOL)arg3 forCounter:(BOOL)arg4 force:(BOOL)arg5 isModal:(BOOL)arg6;
 - (BOOL)canBecomeKeyWindow;
+- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

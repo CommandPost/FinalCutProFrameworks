@@ -92,6 +92,16 @@ __attribute__((visibility("hidden")))
 - (id)exportAsXMLElement;
 @property(retain, nonatomic) NSArray *effectChannels; // @synthesize effectChannels=_effectChannels;
 @property(nonatomic) double defaultValue; // @synthesize defaultValue=_defaultValue;
+- (void)_setupValueMap:(struct ValueMap *)arg1 forIndexPath:(id)arg2;
+- (void)_processChannel:(struct OZChannelBase *)arg1 indexPath:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)_iterateOverEffectRootChannelsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)hookUpCurveInterfaces;
+- (void)detachCurveInterfaces;
+- (void)updateCurveInterfaces;
+- (void)willSetEffects;
+- (void)didSetEffects;
+- (void)effectSnapshotsChanged;
+- (void)didSetUnriggedChannelIndexPaths:(id)arg1 removedIndexPaths:(id)arg2;
 
 @end
 

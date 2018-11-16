@@ -41,7 +41,6 @@
 + (Class)CKMediaBrowserJobActionClass;
 + (Class)CKMediaServerClass;
 + (Class)CKMediaServerClientClass;
-+ (Class)CKMobileMeExportPanelClass;
 + (Class)CKMobileMeJobActionClass;
 + (Class)CKMovieExportPanelClass;
 + (Class)CKMovieRolesExportPanelClass;

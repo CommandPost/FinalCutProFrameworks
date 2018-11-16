@@ -24,7 +24,7 @@
 - (id)init;
 - (void)_setupSourcesForVideo:(CDStruct_e83c9415)arg1 andAudio:(BOOL)arg2;
 - (void)_setupSourcesForAudio:(CDStruct_e83c9415)arg1;
-- (id)_imageNameForOfflineReason:(int)arg1;
+- (id)_newImageForOfflineReason:(int)arg1;
 - (id)_descriptionForOfflineReason:(int)arg1;
 - (id)_imageForOfflineReason:(int)arg1 wants4x3:(BOOL)arg2;
 - (id)initWithMedia:(id)arg1 offlineReason:(int)arg2;

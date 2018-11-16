@@ -51,7 +51,6 @@ __attribute__((visibility("hidden")))
     NSProThemeFacet *_reversePatternFacet;
     NSProThemeFacet *_menuIndicatorFacet;
     NSProThemeFacet *_menuIndicatorActiveFacet;
-    struct CGColor *_patternColor;
     struct CGSize _themeFacetImageSize;
     struct CGSize _themeFacetBottomLeft;
     struct CGSize _themeFacetTopRight;
@@ -60,8 +59,9 @@ __attribute__((visibility("hidden")))
     float _menuIndicatorWidth;
 }
 
-- (id)initWithItem:(id)arg1 rect:(struct CGRect)arg2 globalIndex:(int)arg3 visibleIndex:(int)arg4 lastSegment:(BOOL)arg5;
+- (id)initWithItem:(id)arg1 rect:(struct CGRect)arg2 module:(id)arg3 globalIndex:(int)arg4 visibleIndex:(int)arg5 lastSegment:(BOOL)arg6;
 - (void)dealloc;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (BOOL)showGrabber;
 - (void)setShowGrabber:(BOOL)arg1;
 - (BOOL)pointInSpeedLabelRect:(struct CGPoint)arg1;

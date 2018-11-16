@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)init;
+- (void)setContentsScale:(double)arg1;
 @property(retain, nonatomic) CATextLayer *textLayer; // @synthesize textLayer=_textLayer;
 - (id)_nsString;
 - (id)_nsFont;

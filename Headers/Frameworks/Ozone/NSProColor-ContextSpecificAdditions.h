@@ -218,7 +218,7 @@
 + (id)ozDropZoneOverlayTextColor;
 + (id)ozDropZoneOverlayTextShadowColor;
 + (id)ozDropZoneOverlayHighlightColor;
-+ (id)ozCameraOptionsOverlayTitleColor;
++ (id)ozCameraOptionsOverlayTextShadowColor;
 + (id)ozCameraOptionsOverlayTextColor;
 + (id)ozExposeOverlayOutlineColor;
 + (id)ozExposeOverlaySelectionColor;

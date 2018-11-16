@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)createEjectButton;
 - (void)performLayoutSublayers;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setContentsScale:(double)arg1;
 @property(nonatomic) FFImportSidebarModule *sidebarModule; // @synthesize sidebarModule=_sidebarModule;
 @property(retain, nonatomic) FFMIORADVolume *volume; // @synthesize volume=_volume;
 @property(retain, nonatomic) NSTimer *volumeLoadingTimer; // @synthesize volumeLoadingTimer=_volumeLoadingTimer;

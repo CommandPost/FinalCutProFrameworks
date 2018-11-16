@@ -1344,12 +1344,6 @@ struct OZNodeMap {
 
 struct OZNotificationManager;
 
-struct OZOSCTexture {
-    unsigned int _field1;
-    int _field2;
-    int _field3;
-};
-
 struct OZObjectManipulator {
     CDUnknownFunctionPointerType *_field1;
     struct PCSafeHandle *_field2;
@@ -1705,8 +1699,8 @@ struct PCPtr<LiCamera> {
     struct PCSharedCount _field2;
 };
 
-struct PCPtr<POTexture> {
-    struct POTexture *_ptr;
+struct PCPtr<POMultiResTexture> {
+    struct POMultiResTexture *_ptr;
     struct PCSharedCount _refcount;
 };
 
@@ -1796,7 +1790,7 @@ struct PCVector3<double> {
 struct PCVector3<int>;
 
 struct PCWeakCount {
-    struct PC_Sp_counted_base *_pi;
+    struct PC_Sp_counted_base *_field1;
 };
 
 struct PC_Sp_counted_base;
@@ -1836,6 +1830,8 @@ struct POMove3DOSC {
     _Bool _field5;
 };
 
+struct POMultiResTexture;
+
 struct PORotate3DOSC {
     int _field1;
     _Bool _field2;
@@ -1851,23 +1847,7 @@ struct PORotate3DOSC {
     PCQuat_8a184614 _field12;
     double _field13;
     double _field14;
-    struct PCPtr<POTexture> _field15;
-};
-
-struct POTexture {
-    CDUnknownFunctionPointerType *_field1;
-    CDUnknownFunctionPointerType *_field2;
-    struct PCWeakCount _field3;
-    _Bool _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    float _field7;
-    PCVector2_79efa81a _field8;
-    struct PCRect<int> _field9;
-    PCRect_b601f9f3 _field10;
-    CDUnknownFunctionPointerType *_field11;
-    struct PCWeakCount _field12;
-    _Bool _field13;
+    struct PCPtr<POMultiResTexture> _field15;
 };
 
 struct POVertexAsset;
@@ -4743,11 +4723,6 @@ typedef struct PCVector2<double> {
     double _x;
     double _y;
 } PCVector2_79efa81a;
-
-typedef struct PCVector2<float> {
-    float _field1;
-    float _field2;
-} PCVector2_79a470e1;
 
 typedef struct PCVector3<double> {
     double _x;

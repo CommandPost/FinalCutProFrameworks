@@ -29,6 +29,13 @@ __attribute__((visibility("hidden")))
 - (id)description;
 @property double maxWidth; // @synthesize maxWidth=_maxWidth;
 @property double minWidth; // @synthesize minWidth=_minWidth;
+- (void)disconnectFromView;
+@property id <OKPaneCapItemOwner> owner;
+@property(readonly) BOOL isResizable;
+@property(readonly) BOOL isLeft;
+@property(readonly) BOOL isCenter;
+@property(readonly) BOOL isRight;
+@property(readonly) unsigned long long horizontalSortOrder;
 
 @end
 

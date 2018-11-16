@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_e83c9415)filmstripClippedRange;
 - (struct CGRect)clippedRangeAreaFrame;
 - (id)anchoredObject;
+- (void)setContentsScale:(double)arg1;
 - (void)layoutSublayers;
 - (BOOL)mouseEntered:(id)arg1;
 - (void)mouseMoved:(id)arg1;

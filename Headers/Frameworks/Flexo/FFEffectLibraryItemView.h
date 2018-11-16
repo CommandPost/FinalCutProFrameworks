@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     BOOL _requestedIcon;
 }
 
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (id)initWithEffect:(id)arg1;
 - (void)dealloc;
 - (void)viewWillDraw;

@@ -10,7 +10,7 @@
 {
 }
 
-- (id)_baseFacet;
+- (void)_fillSegmentBackgroundWithFacet:(id)arg1 inFrame:(struct CGRect)arg2 userInfo:(id)arg3;
 
 @end
 

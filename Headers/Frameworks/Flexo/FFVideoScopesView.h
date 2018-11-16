@@ -6,7 +6,7 @@
 
 #import <Flexo/FFResponderLayerHostView.h>
 
-@class FFDestVideoScopesGL, NSProSlider;
+@class FFDestVideoScopesGL, LKSlider;
 
 __attribute__((visibility("hidden")))
 @interface FFVideoScopesView : FFResponderLayerHostView
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     float _zoomFactor;
     BOOL _drawingEnabled;
     FFDestVideoScopesGL *_destVideo;
-    NSProSlider *_traceBrightnessSlider;
+    LKSlider *_traceBrightnessSlider;
     void *_FFVideoScopesViewPrivate;
 }
 
@@ -31,11 +31,14 @@ __attribute__((visibility("hidden")))
 - (void)setTraceBrightness:(float)arg1;
 - (BOOL)monochrome;
 - (void)setMonochrome:(BOOL)arg1;
+- (void)buildLayers;
+- (void)teardownLayers;
 - (BOOL)accessibilityIsIgnored;
 - (id)accessibilityAttributeNames;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 - (id)_initVideoScopesViewPriv;
+@property(nonatomic) LKSlider *traceBrightnessSlider; // @synthesize traceBrightnessSlider=_traceBrightnessSlider;
 @property(nonatomic) id destVideo; // @synthesize destVideo=_destVideo;
 
 @end

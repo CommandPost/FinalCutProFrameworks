@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)chunkAfterChunk:(id)arg1;
 - (struct CGRect)frame;
 - (void)setEmphasized:(BOOL)arg1;
+- (void)setContentsScale:(double)arg1;
 - (id)accessibilityAttributeNames;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;

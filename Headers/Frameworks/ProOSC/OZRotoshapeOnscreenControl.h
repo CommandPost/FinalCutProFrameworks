@@ -27,9 +27,9 @@
     _Bool _isDraggingEdge;
     unsigned int _mouseActivePart;
     _Bool _useBoxTransform;
-    PCPtr_ca909b16 _handlesTexture[2];
-    PCPtr_ca909b16 _rotationTexture[2];
-    PCPtr_ca909b16 _pivotTexture;
+    PCPtr_df275998 _handlesTexture[2];
+    PCPtr_df275998 _rotationTexture[2];
+    PCPtr_df275998 _pivotTexture;
     NSColor *_playerStatusText;
     NSColor *_playerStatusTextUnit;
     _Bool _translate;

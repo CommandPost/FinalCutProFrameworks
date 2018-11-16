@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     struct NSObject *_skimmable;
     struct CGRect _frame;
+    double _contentsScale;
     CDStruct_e83c9415 _timeRange;
     BOOL wantsDebug;
     BOOL _audioHasVideo;
@@ -47,10 +48,11 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 @property(readonly, nonatomic) struct CGRect thumbFrame;
-@property(retain, nonatomic) CALayer *layer; // @synthesize layer=_layer;
+- (id)layer;
 - (BOOL)hasLayer;
 - (void)releaseLayer;
 - (BOOL)shouldShowSecondary;
+@property(nonatomic) double contentsScale; // @synthesize contentsScale=_contentsScale;
 - (void)_setContents:(id)arg1 forLayer:(id)arg2;
 - (void)primaryThumbImageReadyOnMainThread:(id)arg1;
 - (void)secondaryThumbImageReadyOnMainThread:(id)arg1;

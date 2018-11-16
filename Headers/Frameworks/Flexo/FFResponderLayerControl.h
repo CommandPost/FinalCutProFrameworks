@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithElement:(long long)arg1 part:(long long)arg2;
 - (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
 - (void)dealloc;
+- (void)setContentsScale:(double)arg1;
 - (void)configureNormal;
 - (void)configureRollover;
 - (void)configurePressed;

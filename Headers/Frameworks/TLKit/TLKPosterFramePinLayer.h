@@ -24,10 +24,12 @@
 }
 
 + (struct CGSize)posterPinSize;
+- (struct CGColor *)_defaultPinTailColor;
 - (id)init;
 - (void)setDelegate:(id)arg1;
 @property id <TLKPosterFrameInfoProtocol> representedObject;
 - (void)updateAppearence;
+- (void)setContentsScale:(double)arg1;
 - (void)layoutSublayers;
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)partIdentifier;

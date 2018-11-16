@@ -16,6 +16,7 @@
 + (id)toolTip;
 + (id)toolbarFacet;
 + (id)cursor;
++ (id)TLKEventHandlerID;
 - (void)_updateCursorWithEvent:(id)arg1;
 - (void)cursorUpdate:(id)arg1;
 - (void)flagsChanged:(id)arg1;

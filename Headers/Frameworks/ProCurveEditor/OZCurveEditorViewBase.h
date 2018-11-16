@@ -98,6 +98,7 @@
 - (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)reshape;
+- (BOOL)wantsBestResolutionOpenGLSurface;
 - (id)playheadColor;
 - (id)gridColor;
 - (id)textColor;
@@ -108,7 +109,7 @@
 - (unsigned int)keyframeAsset:(unsigned int)arg1 state:(unsigned int)arg2 index:(unsigned int)arg3 assetSize:(struct CGPoint *)arg4;
 - (unsigned int)tangentAsset:(struct CGPoint *)arg1;
 - (unsigned int)linenAsset:(struct CGPoint *)arg1;
-- (unsigned int)linenShadowAssetAtSize:(struct CGPoint)arg1;
+- (unsigned int)linenShadowAssetAtSize:(struct CGSize)arg1;
 - (unsigned int)numberOfTickMarks;
 - (void)computeVerticalTickMarks;
 - (void)initGL:(struct CGRect)arg1;

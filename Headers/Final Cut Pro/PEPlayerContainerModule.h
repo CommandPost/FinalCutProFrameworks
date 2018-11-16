@@ -40,7 +40,11 @@
     NSImageView *_twoUpViewerIcon;
     NSImageView *_twoUpCanvasIcon;
     NSMenu *_videoScaleMenu;
+    NSMenu *_videoScaleMenuHiDPI;
     NSMenu *_twoUpScaleMenu;
+    NSMenu *_twoUpScaleMenuHiDPI;
+    NSMenu *_twoUpCanvasScaleMenu;
+    NSMenu *_twoUpCanvasScaleMenuHiDPI;
     NSMenu *_onScreenControlsMenu;
     NSMenu *_colorDisplayMenu;
     NSMenu *_selectedModeMenu;
@@ -51,7 +55,6 @@
     LKSegmentedControl *_fullScreenButton;
     LKSegmentedControl *_loopControl;
     LKSegmentedControl *_showAdvancedButton;
-    LKSegmentedControl *_autoCorrectButton;
     LKSegmentedControl *_toolPalette;
     LKWindow *_matchWindow;
     NSProView *_matchControlsFooterView;
@@ -137,6 +140,7 @@
 - (unsigned long long)_activePlayerModuleIndex;
 - (id)_canvasPlayerModule;
 - (BOOL)_activePlayerModuleIsCanvas;
+- (id)playerModuleOrderedZoomLevels:(id)arg1;
 - (void)zoomToFit:(id)arg1;
 - (void)zoomIn:(id)arg1;
 - (void)zoomOut:(id)arg1;
@@ -190,6 +194,7 @@
 - (void)goToInspectorViewer:(id)arg1;
 - (void)_assignMediaToPlayers;
 - (id)_createPlayerModuleForMode:(int)arg1 context:(id)arg2 layoutStyle:(int)arg3 sublayoutName:(id)arg4;
+- (void)_updateZoomMenus;
 - (void)_updateZoomLabel;
 - (void)_updateLabel;
 - (void)_statusInfoChanged:(id)arg1;

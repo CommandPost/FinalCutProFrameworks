@@ -6,11 +6,13 @@
 
 #import "NSObject.h"
 
-@interface PIThemeInfo : NSObject
+@interface LKHiDPILayerDelegate : NSObject
 {
 }
 
-+ (unsigned long long)themeIndex;
++ (void)initialize;
++ (id)sharedInstance;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 
 @end
 

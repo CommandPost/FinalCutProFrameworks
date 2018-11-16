@@ -28,7 +28,6 @@
 - (void)updateTip;
 - (void)mouseDown:(id)arg1;
 - (void)mouseDragged:(id)arg1;
-- (void)poofAtViewLocation:(const PCVector2_7e488b7d *)arg1;
 - (void)mouseUp:(id)arg1;
 - (id)getCursorWithEvent:(id)arg1;
 - (set_50872599 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;

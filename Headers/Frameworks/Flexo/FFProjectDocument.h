@@ -68,6 +68,20 @@
 + (id)documentPathForFolderURL:(id)arg1;
 + (BOOL)checkDocumentIsValidAtFolderURL:(id)arg1;
 + (BOOL)ensureDocumentIsValidAtFolderURL:(id)arg1;
++ (void)_actionWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
++ (void)_actionBegin:(id)arg1;
++ (BOOL)_actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
++ (BOOL)actionMoveFoldersToTrash:(id)arg1 containedDocuments:(id)arg2 actionName:(id)arg3 error:(id *)arg4;
++ (id)actionNewFolder:(id)arg1 error:(id *)arg2;
++ (BOOL)actionMoveFolder:(id)arg1 targetURL:(id)arg2 containedDocuments:(id)arg3 actionName:(id)arg4 error:(id *)arg5;
++ (void)registerUndoWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
++ (void)_handleUndoRedoOperationAfter:(CDUnknownBlockType)arg1 operationBefore:(CDUnknownBlockType)arg2;
++ (void)_handleUndoRedoOperationBefore:(CDUnknownBlockType)arg1 operationAfter:(CDUnknownBlockType)arg2;
++ (BOOL)performAction:(id)arg1 withObjects:(id)arg2 objectDocumentBlock:(CDUnknownBlockType)arg3 error:(id *)arg4 operationBefore:(CDUnknownBlockType)arg5 operationAfter:(CDUnknownBlockType)arg6 operation:(CDUnknownBlockType)arg7;
++ (BOOL)performAction:(id)arg1 withObjects:(id)arg2 error:(id *)arg3 operationBefore:(CDUnknownBlockType)arg4 operationAfter:(CDUnknownBlockType)arg5 operation:(CDUnknownBlockType)arg6;
++ (BOOL)performAction:(id)arg1 withObjects:(id)arg2 error:(id *)arg3 operation:(CDUnknownBlockType)arg4;
++ (BOOL)performAction:(id)arg1 withObject:(id)arg2 objectDocumentBlock:(CDUnknownBlockType)arg3 error:(id *)arg4 operationBefore:(CDUnknownBlockType)arg5 operationAfter:(CDUnknownBlockType)arg6 operation:(CDUnknownBlockType)arg7;
++ (BOOL)performAction:(id)arg1 withObject:(id)arg2 error:(id *)arg3 operationBefore:(CDUnknownBlockType)arg4 operationAfter:(CDUnknownBlockType)arg5 operation:(CDUnknownBlockType)arg6;
 - (id)newDefaultProject:(id)arg1 type:(id)arg2;
 - (id)newDocumentCatalog:(id *)arg1;
 - (BOOL)undoManagerIsShared;
@@ -106,6 +120,28 @@
 - (BOOL)isInTrash;
 - (void)_addToTrashList;
 - (void)_removeFromTrashList;
+- (void)updateChangeCount:(unsigned long long)arg1;
+- (id)_UIState;
+- (void)_undoRedoUIState:(id)arg1;
+- (void)_undoRedoAction:(struct NSObject *)arg1;
+- (void)_registerUndoAction:(struct NSObject *)arg1;
+- (void)_actionBegin:(id)arg1 object:(id)arg2;
+- (BOOL)_actionEnd:(id)arg1 object:(id)arg2 save:(BOOL)arg3 error:(id *)arg4;
+- (void)_actionWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
+- (void)_actionWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 object:(id)arg4;
+- (void)_registerUndoWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
+- (void)_performUndoRedoBlock:(CDUnknownBlockType)arg1;
+- (void)_registerUndoBlock:(CDUnknownBlockType)arg1;
+- (void)operationApplyState:(id)arg1 toChannel:(id)arg2;
+- (void)operationInsertChannel:(id)arg1 toParentFolder:(id)arg2 inEffect:(id)arg3 atIndex:(unsigned long long)arg4 delegate:(id)arg5;
+- (void)operationRemoveChannel:(id)arg1 fromParentFolder:(id)arg2 inEffect:(id)arg3 atIndex:(unsigned long long)arg4 delegate:(id)arg5;
+- (void)operationMoveChannel:(id)arg1 inParentFolder:(id)arg2 inEffect:(id)arg3 toIndex:(unsigned long long)arg4 delegate:(id)arg5;
+- (void)operationSetFlag:(unsigned long long)arg1 onChannel:(id)arg2 delegate:(id)arg3;
+- (void)operationResetFlag:(unsigned long long)arg1 onChannel:(id)arg2 delegate:(id)arg3;
+- (void)_actionBegin:(id)arg1;
+- (BOOL)_actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)actionRename:(id)arg1 actionName:(id)arg2 error:(id *)arg3;
+- (void)registerUndoWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
 
 @end
 

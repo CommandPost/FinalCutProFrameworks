@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (struct _CGLContextObject *)copyCGLContextForPixelFormat:(struct _CGLPixelFormatObject *)arg1;
 - (void)releaseCGLContext:(struct _CGLContextObject *)arg1;
 - (BOOL)canDrawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
+- (struct CGRect)_boundsAppliedByContentsScale;
 - (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
 - (id)accessibilityAttributeValue:(id)arg1;
 

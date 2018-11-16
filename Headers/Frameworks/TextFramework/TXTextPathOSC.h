@@ -10,7 +10,7 @@
 
 @interface TXTextPathOSC : POCustomMotionPath <OZObjCObserver>
 {
-    struct POTexture *_textPathHandlesTexture;
+    struct PCPtr<POMultiResTexture> _textPathHandlesTexture;
     struct OZChannelRef *_pChannelRef;
 }
 
@@ -26,6 +26,7 @@
 - (id)motionPathOSCColor;
 - (id)motionPathLockedColor;
 - (void)drawCurve:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2 keyPoints:(BOOL)arg3;
+- (void)drawPath;
 - (void)drawVertices:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
 - (void)notify:(unsigned int)arg1;
 - (BOOL)offsetSelected:(list_5245b10b *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
@@ -60,6 +61,8 @@
 - (id)returnPointMenu:(id)arg1;
 - (id)returnCurveMenu:(id)arg1;
 - (struct TXTextLayout *)getTextLayout;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 
 @end
 

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     FFAnchoredTimeMarker *_representedObject;
 }
 
+- (id)initWithMarker:(id)arg1;
 - (void)setOpenHandler:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)openHandler;
 - (void)setCutHandler:(CDUnknownBlockType)arg1;

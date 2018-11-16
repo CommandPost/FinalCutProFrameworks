@@ -4,16 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSView.h"
+#import "LKScrollView.h"
 
 __attribute__((visibility("hidden")))
-@interface FFSkimmerPlayhead : NSView
+@interface FFMediaBrowserScrollViewNoBevel : LKScrollView
 {
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (BOOL)isOpaque;
-- (void)drawRect:(struct CGRect)arg1;
+- (void)setBorderType:(unsigned long long)arg1;
 
 @end
 

@@ -4,25 +4,24 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "PEMeterLayerBase.h"
+#import "CAGradientLayer.h"
 
-@class NSProThemeFacet, PEOverloadTextLayer;
+@class PEOverloadTextLayer;
 
-@interface PEOverloadLayer : PEMeterLayerBase
+@interface PEOverloadLayer : CAGradientLayer
 {
     BOOL _peaked;
     int _peakCount;
     double _peakValue;
-    NSProThemeFacet *_normalFacet;
-    NSProThemeFacet *_peakedFacet;
     PEOverloadTextLayer *_dbValue;
 }
 
 - (id)init;
+- (id)initWithText:(BOOL)arg1;
+- (void)setDelegateIncludingSublayers:(id)arg1;
 - (void)layoutSublayers;
 - (void)setMeterValue:(double)arg1;
 - (void)setOverloaded:(BOOL)arg1;
-- (void)dealloc;
 @property(retain, nonatomic) PEOverloadTextLayer *dbValue; // @synthesize dbValue=_dbValue;
 @property int peakCount; // @synthesize peakCount=_peakCount;
 @property BOOL peaked; // @synthesize peaked=_peaked;

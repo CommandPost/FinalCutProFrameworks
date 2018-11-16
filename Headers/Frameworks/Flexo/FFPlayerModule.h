@@ -47,6 +47,7 @@
 - (void)dealloc;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (id)layer;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 @property(nonatomic) int playerRole; // @synthesize playerRole=_playerRole;
 - (void)_updateHasVideoAndAudio;
 - (void)_setProvider:(id)arg1;
@@ -175,6 +176,7 @@
 - (void)exitFullScreenModeWithOptions:(id)arg1;
 - (BOOL)isInFullScreenMode;
 - (void)_exitFullScreenForEvent:(id)arg1;
+- (id)orderedZoomLevels;
 @property(nonatomic) float reportedZoomFactor; // @synthesize reportedZoomFactor=_reportedZoomFactor;
 @property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
 @property(nonatomic) FFProvider *provider; // @synthesize provider=_provider;

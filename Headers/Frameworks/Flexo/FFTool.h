@@ -16,6 +16,8 @@
 + (id)toolTip;
 + (id)cursor;
 + (id)toolbarFacet;
++ (id)TLKEventHandlerID;
++ (BOOL)isToolForTLKEventHandler:(id)arg1;
 - (void)cursorUpdate:(id)arg1;
 - (id)currentTarget;
 - (void)setCurrentTarget:(id)arg1;
@@ -34,6 +36,10 @@
 - (id)playerFooterView;
 - (id)playerAccessoryView;
 - (id)matchWindow;
+- (id)TLKEventHandlerForTimeline:(id)arg1;
+- (void)willSetAsHandlerForTimeline:(id)arg1;
+- (void)willRemoveAsHandlerForTimeline:(id)arg1;
+- (void)didRemoveAsHandlerForTimeline:(id)arg1;
 
 @end
 

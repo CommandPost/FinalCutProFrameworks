@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface FFSkimmingLensView : FFPlayerItemView
 {
     FFFrameSpread *framespread;
-    unsigned long long localThemeRef;
     struct CGPoint offsetMousePosition;
     FFPlayerView *_playerView;
     struct CGSize _playerViewSize;

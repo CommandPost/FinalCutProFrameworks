@@ -6,11 +6,12 @@
 
 #import "NSView.h"
 
+#import "NSProSyntheticUIElementSupport.h"
 #import "TLKEventDispatcherView.h"
 
 @class CALayer, NSMapTable, NSProTimecodeFormatter, PMRStopwatch, TLKDataSourceProxy, TLKEventDispatcher, TLKGuideLayer, TLKInOutRangeMarker, TLKLayerManager, TLKLayoutDatabase, TLKPlayheadMarker, TLKPosterItemLane, TLKPrecisionEditorDividerBar, TLKPrecisionEditorTrimBar, TLKRangeSelectionLayer, TLKRulerLane, TLKSelectionManager, TLKThemeBackedLayer, TLKTimecodeDisplayView, TLKTimelineBlurAnimation;
 
-@interface TLKTimelineView : NSView <TLKEventDispatcherView>
+@interface TLKTimelineView : NSView <NSProSyntheticUIElementSupport, TLKEventDispatcherView>
 {
     id dataSource;
     id delegate;
@@ -121,6 +122,7 @@
 - (void)viewWillMoveToSuperview:(id)arg1;
 - (void)viewDidMoveToSuperview;
 - (void)viewWillMoveToWindow:(id)arg1;
+- (void)viewDidMoveToWindow;
 - (BOOL)isOpaque;
 - (BOOL)isFlipped;
 - (id)menuForEvent:(id)arg1;
@@ -331,6 +333,72 @@
 @property(retain) id <TLKTimelineItem> rolloverItem; // @synthesize rolloverItem=_rolloverItem;
 @property(retain) TLKSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 @property(retain, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
+- (id)layoutManagerForContainer:(id)arg1;
+- (id)layoutManagerForItem:(id)arg1;
+- (id)layoutManager;
+- (id)layoutInfoForItem:(id)arg1;
+- (struct CGRect)contentFrameForItem:(id)arg1;
+- (BOOL)accessibilityIsIgnored;
+- (struct CGRect)_playheadRect;
+- (struct CGRect)_rectForTimelineItem:(id)arg1;
+- (id)accessibilityUIElementForItem:(id)arg1 inHostLayer:(id)arg2;
+- (id)_timelineChildForItem:(id)arg1;
+- (id)_timelineItemElements;
+- (id)_playheadElement;
+- (id)accessibilityAttributeNames;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)figTimeToTimecodeString:(CDStruct_1b6d18a9)arg1;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)_hostLayerAtPoint:(struct CGPoint)arg1;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
+- (void)eventDispatcher:(id)arg1 willSetCurrentHandler:(id)arg2;
+- (void)eventDispatcher:(id)arg1 didSetCurrentHandler:(id)arg2;
+- (void)handlerWillStartTracking:(id)arg1;
+- (void)handlerWillContinueTracking:(id)arg1;
+- (void)handlerWillCancelTracking:(id)arg1;
+- (void)handlerWillStopTracking:(id)arg1;
+- (void)handlerDidStartTracking:(id)arg1;
+- (void)handlerDidContinueTracking:(id)arg1;
+- (void)handlerDidCancelTracking:(id)arg1;
+- (void)handlerDidStopTracking:(id)arg1;
+- (void)timelineHandler:(id)arg1 willPerformDraggingEntered:(id)arg2;
+- (void)timelineHandler:(id)arg1 willPerformDraggingEnded:(id)arg2;
+- (void)timelineHandler:(id)arg1 willPerformDraggingExited:(id)arg2;
+- (void)timelineHandler:(id)arg1 willPerformDraggingUpdated:(id)arg2;
+- (void)handlerDidUpdateSkimming:(id)arg1;
+- (CDStruct_e83c9415)_subframeRoundedRangeForTime:(CDStruct_1b6d18a9)arg1;
+- (void)layoutSublayers:(id)arg1 forItem:(id)arg2;
+- (void)layoutSublayersOfVideoLayer:(id)arg1 audioLayer:(id)arg2 forItem:(id)arg3;
+- (id)badgeLayersForItem:(id)arg1 currentBadges:(id)arg2;
+- (void)_tilePlayhead;
+- (void)_setupTopLevelHandlers;
+- (void)_addTopLevelHandlerIdentifier:(id)arg1;
+- (void)_removeTopLevelHandlerIdentifier:(id)arg1;
+- (BOOL)_isSkimming;
+- (void)_updateXPositionOfPlayhead;
+- (void)_updatePlayheadPositionAnimate:(BOOL)arg1;
+- (id)backgroundLayers;
+- (id)_contentLayerWithName:(id)arg1;
+- (id)_addContentLayerWithName:(id)arg1 toLayer:(id)arg2 layerClass:(Class)arg3;
+- (void)_reloadVisibleLayers;
+- (void)_synchronizeLayerSelectionMasks;
+- (void)synchronizeLayerAppearanceForItems:(id)arg1;
+- (void)_updateLayoutManagersInVisibleRect:(struct CGRect)arg1;
+- (void)_updateItemLayersInVisibleRect:(struct CGRect)arg1;
+- (BOOL)shouldUpdateLayers;
+- (void)enableLayerUpdates;
+- (void)disableLayerUpdates;
+- (BOOL)_allowImplicitAnimations;
+- (BOOL)_shouldSuppressFlickerForLayer:(id)arg1 actionKey:(id)arg2;
+- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
+- (void)_layoutSpineBackground;
+- (void)_layoutTrackBackgrounds;
+- (void)_removeUnnededContainerBackgroundsForTracks:(id)arg1;
+- (void)layoutSublayersOfLayer:(id)arg1;
+- (BOOL)disableFilmstripLayerUpdates;
+- (void)setDisableFilmstripLayerUpdates:(BOOL)arg1;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 
 @end
 

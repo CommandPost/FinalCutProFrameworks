@@ -6,7 +6,7 @@
 
 #import "PEMeterLayerBase.h"
 
-@class CALayer, TLKThemeBackedLayer;
+@class CAGradientLayer, CALayer;
 
 @interface PEMeterLayer : PEMeterLayerBase
 {
@@ -19,17 +19,18 @@
     double _peak;
     int _peakCounter;
     CALayer *_maskingLayer;
-    TLKThemeBackedLayer *_greenLayer;
-    TLKThemeBackedLayer *_redLayer;
+    CAGradientLayer *_greenLayer;
+    CAGradientLayer *_redLayer;
     CALayer *_backLayer;
-    TLKThemeBackedLayer *_peakLayer;
+    CALayer *_peakLayer;
 }
 
 - (id)init;
+- (void)setupMeterLayers;
 - (void)layoutSublayers;
+- (void)_calculateMaskRatio:(double)arg1;
 - (void)maskToHeight:(double)arg1;
 - (void)setPlaying:(BOOL)arg1;
-- (void)resizeLayer:(id)arg1 to:(struct CGSize)arg2;
 @property BOOL stopAnimations; // @synthesize stopAnimations=_stopAnimations;
 
 @end

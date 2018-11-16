@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 
 + (unsigned long long)numberOfThumbsThatWillFitInWidth:(double)arg1 forMedia:(id)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 maxThumbWidth:(double)arg5;
 - (id)initWithFilmstrip:(id)arg1;
-- (id)initWithRangeOfMedia:(id)arg1 chunkRange:(CDStruct_e83c9415)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 numberOfThumbs:(unsigned long long)arg5 clipLabelSize:(int)arg6 maxThumbWidth:(double)arg7;
+- (id)initWithRangeOfMedia:(id)arg1 chunkRange:(CDStruct_e83c9415)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 numberOfThumbs:(unsigned long long)arg5 clipLabelSize:(int)arg6 maxThumbWidth:(double)arg7 contentsScale:(double)arg8;
 - (BOOL)isEquavlientToFilmstripChunk:(id)arg1;
 - (void)dealloc;
 - (id)description;
@@ -73,6 +73,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)markerAreaContainsPoint:(struct CGPoint)arg1;
 - (struct CGPoint)constrainPointToFilmstrip:(struct CGPoint)arg1;
 - (void)setEmphasized:(BOOL)arg1;
+- (double)contentsScale;
+- (void)setContentsScale:(double)arg1;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (id)tooltipRects;
 - (id)tooltipStringAtPoint:(struct CGPoint)arg1;

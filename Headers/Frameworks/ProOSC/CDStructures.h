@@ -21,13 +21,9 @@ struct CGSize {
     double height;
 };
 
-struct ColorRun;
-
-struct ContextHandle;
+struct FunctionParams;
 
 struct HGRenderer;
-
-struct NamedColorRun;
 
 struct OZChannel;
 
@@ -763,8 +759,13 @@ struct PCMutex {
     struct _opaque_pthread_mutex_t _Mutex;
 };
 
-struct PCPtr<POTexture> {
-    struct POTexture *_ptr;
+struct PCPtr<POMultiResStringTexture> {
+    struct POMultiResStringTexture *_ptr;
+    struct PCSharedCount _refcount;
+};
+
+struct PCPtr<POMultiResTexture> {
+    struct POMultiResTexture *_ptr;
     struct PCSharedCount _refcount;
 };
 
@@ -845,25 +846,7 @@ struct POAwesomeType {
     double _field9;
 };
 
-struct POBrush1D {
-    CDUnknownFunctionPointerType *_field1;
-    struct vector<POBrush1D::ColorRun, std::allocator<POBrush1D::ColorRun>> _field2;
-    struct vector<POBrush1D::ColorRun, std::allocator<POBrush1D::ColorRun>> _field3;
-    struct vector<POBrush1D::NamedColorRun, std::allocator<POBrush1D::NamedColorRun>> _field4;
-    struct vector<POBrush1D::NamedColorRun, std::allocator<POBrush1D::NamedColorRun>> _field5;
-    float _field6;
-    int _field7;
-    float _field8;
-    float _field9;
-    float _field10;
-    unsigned int _field11;
-    float _field12;
-    unsigned int _field13;
-    float _field14;
-    float _field15;
-    _Bool _field16;
-    struct ContextHandle *_field17;
-};
+struct POBrush1D;
 
 struct POColor {
     float _x;
@@ -891,8 +874,8 @@ struct POKeypoint {
 };
 
 struct POLayeredAsset {
-    PCPtr_ca909b16 _outline;
-    PCPtr_ca909b16 _mask;
+    PCPtr_df275998 _outline;
+    PCPtr_df275998 _mask;
 };
 
 struct POMove3DImpl {
@@ -912,6 +895,23 @@ struct POMove3DOSC {
     _Bool _axisEnabled[3];
     _Bool _dragAlongArrow;
 };
+
+struct POMultiResBrush1D {
+    CDUnknownFunctionPointerType *_field1;
+    struct POBrush1D *_field2;
+    struct POBrush1D *_field3;
+    _Bool _field4;
+    _Bool _field5;
+    _Bool _field6;
+    struct vector<FunctionParams, std::allocator<FunctionParams>> _field7;
+    struct vector<FunctionParams, std::allocator<FunctionParams>> _field8;
+    struct vector<FunctionParams, std::allocator<FunctionParams>> _field9;
+    struct vector<FunctionParams, std::allocator<FunctionParams>> _field10;
+};
+
+struct POMultiResStringTexture;
+
+struct POMultiResTexture;
 
 struct POPath {
     struct vector<PCVector2<double>, std::allocator<PCVector2<double>>> _path;
@@ -956,7 +956,7 @@ struct PORotate3DOSC {
     PCQuat_8a184614 _extraRotation;
     double _rotateStartAngle;
     double _rotateDelta;
-    PCPtr_ca909b16 _rotHandTex;
+    PCPtr_df275998 _rotHandTex;
 };
 
 struct POScale3DImpl {
@@ -965,14 +965,12 @@ struct POScale3DImpl {
 };
 
 struct POScale3DOSC {
-    PCPtr_ca909b16 _handle;
-    PCPtr_ca909b16 _handleSel;
-    PCPtr_ca909b16 _handleDis;
+    PCPtr_df275998 _handle;
+    PCPtr_df275998 _handleSel;
+    PCPtr_df275998 _handleDis;
     int _baseName;
     int _activeFace;
 };
-
-struct POTexture;
 
 struct POVertexAsset;
 
@@ -1062,6 +1060,14 @@ struct map<double, OZChannelGradientFolder::Sample, std::less<double>, std::allo
 
 struct pair<OZChannelRef*, bool>;
 
+struct vector<FunctionParams, std::allocator<FunctionParams>> {
+    struct _Vector_impl {
+        struct FunctionParams *_M_start;
+        struct FunctionParams *_M_finish;
+        struct FunctionParams *_M_end_of_storage;
+    } _M_impl;
+};
+
 struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>>;
 
 struct vector<OZChannelBase*, std::allocator<OZChannelBase*>>;
@@ -1119,22 +1125,6 @@ struct vector<POAwesomeType::Vertex, std::allocator<POAwesomeType::Vertex>> {
         struct Vertex *_M_start;
         struct Vertex *_M_finish;
         struct Vertex *_M_end_of_storage;
-    } _M_impl;
-};
-
-struct vector<POBrush1D::ColorRun, std::allocator<POBrush1D::ColorRun>> {
-    struct _Vector_impl {
-        struct ColorRun *_M_start;
-        struct ColorRun *_M_finish;
-        struct ColorRun *_M_end_of_storage;
-    } _M_impl;
-};
-
-struct vector<POBrush1D::NamedColorRun, std::allocator<POBrush1D::NamedColorRun>> {
-    struct _Vector_impl {
-        struct NamedColorRun *_M_start;
-        struct NamedColorRun *_M_finish;
-        struct NamedColorRun *_M_end_of_storage;
     } _M_impl;
 };
 
@@ -1196,10 +1186,10 @@ typedef struct PCMatrix44Tmpl<double> {
     double _mat[4][4];
 } PCMatrix44Tmpl_e98c85ee;
 
-typedef struct PCPtr<POTexture> {
-    struct POTexture *_ptr;
+typedef struct PCPtr<POMultiResTexture> {
+    struct POMultiResTexture *_ptr;
     struct PCSharedCount _refcount;
-} PCPtr_ca909b16;
+} PCPtr_df275998;
 
 typedef struct PCPtr<POVertexAsset> {
     struct POVertexAsset *_field1;

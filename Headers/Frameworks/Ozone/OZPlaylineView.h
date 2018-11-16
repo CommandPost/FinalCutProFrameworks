@@ -25,7 +25,6 @@
 - (void)timelineViewDidResize;
 - (void)timelineViewDidResize:(id)arg1;
 - (BOOL)isOpaque;
-- (struct CGRect)playHeadRect;
 - (id)playheadFacet:(BOOL)arg1;
 - (void)drawPlayhead:(struct CGRect)arg1;
 - (id)inPointFacet:(BOOL)arg1;
@@ -33,6 +32,7 @@
 - (struct PCTimeRange)getPlayRange;
 - (void)drawPlayRangeHandles;
 - (void)drawInOutLines:(struct CGRect)arg1;
+- (struct CGRect)playLineRect;
 - (void)drawRect:(struct CGRect)arg1;
 - (struct CGRect)_inLineRect;
 - (struct CGRect)_outLineRect;

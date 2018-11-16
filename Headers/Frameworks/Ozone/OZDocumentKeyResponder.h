@@ -251,7 +251,6 @@
 - (void)exportAudio:(id)arg1;
 - (void)burnDVD:(id)arg1;
 - (void)burnBluray:(id)arg1;
-- (void)publishMobileMe:(id)arg1;
 - (void)publishYouTube:(id)arg1;
 - (void)publishFacebook:(id)arg1;
 - (void)publishVimeo:(id)arg1;

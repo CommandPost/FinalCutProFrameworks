@@ -14,6 +14,7 @@
 + (id)displayName;
 + (id)toolTip;
 + (id)toolbarFacet;
++ (id)TLKEventHandlerID;
 - (BOOL)skims;
 
 @end

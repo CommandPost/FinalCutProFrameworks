@@ -10,6 +10,28 @@
 {
 }
 
++ (void)registerPixelFormats;
++ (id)pixelFormatWithFourCC:(unsigned int)arg1;
++ (id)pixelFormatWithName:(id)arg1;
++ (id)straightAlphaPixelFormatFor:(id)arg1;
++ (id)pixelFormat_y416StraightAlpha;
++ (id)pixelFormatRGBAfStraightAlpha;
++ (id)pixelFormatARGB8StraightAlpha;
++ (id)pixelFormatRGBAf;
++ (id)pixelFormatRGBAh;
++ (id)pixelFormatRGBA16;
++ (id)pixelFormatRGBA8;
++ (id)pixelFormatBGRA8;
++ (id)pixelFormatARGB8;
++ (id)pixelFormatRGBX8;
++ (id)pixelFormat_R10k;
++ (id)pixelFormat_r4fl;
++ (id)pixelFormat_r408;
++ (id)pixelFormat_y416;
++ (id)pixelFormat_y408;
++ (id)pixelFormat_v216;
++ (id)pixelFormat_v210;
++ (id)pixelFormat_2vuy;
 - (id)name;
 - (int)bitsPerComponent;
 - (int)bitsPerBlock;

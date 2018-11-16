@@ -21,6 +21,8 @@
 - (void)notify:(unsigned int)arg1;
 - (BOOL)moduleShouldObserveWhenViewRemoved:(id)arg1;
 @property BOOL isObserving; // @synthesize isObserving=_isObserving;
+- (id)oz_currentDocument;
+- (struct OZDocument *)oz_currentOZDocument;
 
 @end
 

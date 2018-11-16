@@ -35,6 +35,8 @@
 - (void)organizerModule:(id)arg1 didSelectItems:(id)arg2;
 - (void)openSettingsWithModule:(id)arg1;
 - (void)stopUsingMedia:(id)arg1;
+- (void)willBeginRelinkingForOrganizerModule:(id)arg1;
+- (void)didFinishRelinkingForOrganizerModule:(id)arg1;
 - (id)moduleHeaderAccessoryView;
 - (id)moduleFooterAccessoryView;
 - (BOOL)wantsHeaderBar;

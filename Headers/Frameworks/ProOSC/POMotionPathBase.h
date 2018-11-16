@@ -80,7 +80,7 @@
     struct POColor _playerOSCMotionPathSelectionGrid;
     struct POColor _playerOSCMotionPathStroke;
     struct POColor _playerOSCKeyframePathShadow;
-    struct POBrush1D *_brush;
+    struct POMultiResBrush1D *_brush;
     struct CGPoint _direction;
     struct CGPoint _origin;
     struct CGPoint _normal;
@@ -88,7 +88,7 @@
 }
 
 + (void)maybeInitResources;
-+ (PCPtr_ca909b16)getTangentImage;
++ (PCPtr_df275998)getTangentImage;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (void)dealloc;
 - (struct OZChannelPosition3D *)getPosition;
@@ -165,7 +165,7 @@
 - (BOOL)sameKeyPoint:(struct POPathSelection *)arg1 keyPoint:(const struct POKeypoint *)arg2;
 - (PCVector2_79efa81a)directionAtStartOrEndOfPath:(_Bool)arg1;
 - (void)drawVertices:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
-- (void)setPathBrush:(const struct POBrush1D *)arg1;
+- (void)setPathBrush:(const struct POMultiResBrush1D *)arg1;
 - (void)drawControlPolygon:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
 - (void)setSamplingResolution:(unsigned int)arg1;
 - (void)update;
@@ -222,6 +222,7 @@
 - (BOOL)canAddVertex;
 - (void)updateSpeedCurve;
 - (BOOL)allowsCurveOffset;
+- (void)setPlayerOSCMotionPathStroke:(struct POColor *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 

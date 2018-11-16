@@ -8,5 +8,6 @@
 
 @optional
 - (void)playerModule:(id)arg1 didExitFullScreenForEvent:(id)arg2;
+- (id)playerModuleOrderedZoomLevels:(id)arg1;
 @end
 

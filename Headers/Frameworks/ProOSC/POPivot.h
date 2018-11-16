@@ -13,7 +13,7 @@
     PCVector3_457fd1f0 _delta;
     PCVector3_457fd1f0 _pivot;
     struct POMove3DOSC *_pos3Dtool;
-    PCPtr_ca909b16 _centerTexture;
+    PCPtr_df275998 _centerTexture;
     BOOL _moving;
 }
 

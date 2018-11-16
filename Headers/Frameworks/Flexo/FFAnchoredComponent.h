@@ -15,6 +15,7 @@
 }
 
 + (id)copyClassDescription;
++ (id)roleForXMLValue:(id)arg1 element:(id)arg2 error:(id *)arg3;
 - (id)type;
 - (id)initWithDisplayName:(id)arg1 andFilterType:(id)arg2;
 - (void)dealloc;
@@ -67,6 +68,7 @@
 - (struct CGRect)imageSpaceBoundsAtTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)sourceSampleDuration;
 - (void)returnContainedComponentsIn:(id)arg1;
+- (id)copyXMLValueForRole:(id)arg1;
 
 @end
 

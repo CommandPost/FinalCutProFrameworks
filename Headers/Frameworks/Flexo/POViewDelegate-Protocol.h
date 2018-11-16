@@ -6,6 +6,7 @@
 
 @protocol POViewDelegate
 - (id)getView;
+- (double)backingScaleFactor;
 - (void)panToCenter;
 - (double)getPanX;
 - (double)getPanY;

@@ -99,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (id)destVideo;
 - (id)layer;
 - (id)backgroundColor;
+- (double)backingScaleFactor;
 - (void)updateLabel;
 @property(nonatomic) struct CGRect sequenceBounds;
 @property(nonatomic) float zoomFactor;
@@ -115,7 +116,7 @@ __attribute__((visibility("hidden")))
 - (void)_teardownDestVideoCMIO;
 - (void)_updateDestVideoCMIO;
 - (BOOL)shouldDrawVideoDest:(id)arg1;
-- (struct CGRect)bounds;
+- (struct CGRect)viewBoundsInPixels;
 - (void)setDrawingEnabled:(BOOL)arg1;
 - (BOOL)isDrawingEnabled;
 - (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;

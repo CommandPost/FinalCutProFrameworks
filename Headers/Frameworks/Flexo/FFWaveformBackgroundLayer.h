@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)setViewMode:(long long)arg1;
 - (id)actionForKey:(id)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;
-- (void)drawGridInContext:(struct CGContext *)arg1 dirtyRect:(struct CGRect)arg2;
+- (void)drawGridInContext:(struct CGContext *)arg1 dirtyRect:(struct CGRect)arg2 contentsScale:(double)arg3;
 
 @end
 

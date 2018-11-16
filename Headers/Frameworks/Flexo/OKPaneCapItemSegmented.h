@@ -6,7 +6,7 @@
 
 #import <Flexo/OKPaneCapItem.h>
 
-@class NSProSegmentedControl, NSProThemeFacet, NSString;
+@class NSProFont, NSProSegmentedControl, NSProThemeFacet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface OKPaneCapItemSegmented : OKPaneCapItem
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSString *_tooltip;
     NSProSegmentedControl *_segmentedControl;
     unsigned long long _segmentIndex;
+    NSProFont *_preferredFont;
     unsigned long long _trackingMode;
 }
 
@@ -29,7 +30,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)disconnectFromView;
 - (id)description;
+@property(retain, nonatomic) NSProFont *preferredFont; // @synthesize preferredFont=_preferredFont;
 @property(copy, nonatomic) NSString *tooltip; // @synthesize tooltip=_tooltip;
+@property(readonly) NSProSegmentedControl *segmentedControl;
+- (void)setSegmentedControl:(id)arg1 segmentIndex:(unsigned long long)arg2;
+@property(readonly) unsigned long long segmentIndex;
+- (void)refreshSegmentedControl;
 
 @end
 

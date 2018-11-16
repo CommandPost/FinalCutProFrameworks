@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_facetCrease;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (id)initWithFilmstripInfo:(id)arg1;
 - (void)dealloc;
 @property(retain, nonatomic) FFSequenceInfo *filmstripInfo;

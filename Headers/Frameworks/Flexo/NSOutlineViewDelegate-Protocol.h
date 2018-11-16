@@ -9,6 +9,10 @@
 @protocol NSOutlineViewDelegate <NSControlTextEditingDelegate>
 
 @optional
+- (id)outlineView:(id)arg1 viewForTableColumn:(id)arg2 item:(id)arg3;
+- (id)outlineView:(id)arg1 rowViewForItem:(id)arg2;
+- (void)outlineView:(id)arg1 didAddRowView:(id)arg2 forRow:(long long)arg3;
+- (void)outlineView:(id)arg1 didRemoveRowView:(id)arg2 forRow:(long long)arg3;
 - (void)outlineView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 item:(id)arg4;
 - (BOOL)outlineView:(id)arg1 shouldEditTableColumn:(id)arg2 item:(id)arg3;
 - (BOOL)selectionShouldChangeInOutlineView:(id)arg1;
@@ -33,5 +37,13 @@
 - (double)outlineView:(id)arg1 sizeToFitWidthOfColumn:(long long)arg2;
 - (BOOL)outlineView:(id)arg1 shouldReorderColumn:(long long)arg2 toColumn:(long long)arg3;
 - (BOOL)outlineView:(id)arg1 shouldShowOutlineCellForItem:(id)arg2;
+- (void)outlineViewSelectionDidChange:(id)arg1;
+- (void)outlineViewColumnDidMove:(id)arg1;
+- (void)outlineViewColumnDidResize:(id)arg1;
+- (void)outlineViewSelectionIsChanging:(id)arg1;
+- (void)outlineViewItemWillExpand:(id)arg1;
+- (void)outlineViewItemDidExpand:(id)arg1;
+- (void)outlineViewItemWillCollapse:(id)arg1;
+- (void)outlineViewItemDidCollapse:(id)arg1;
 @end
 

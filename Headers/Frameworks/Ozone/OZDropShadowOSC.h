@@ -15,7 +15,7 @@
     double _startDistance;
     double _startAngle;
     double _startBlur;
-    struct OZOSCTexture *_handlesTexture[2];
+    PCPtr_df275998 _handlesTexture[2];
     BOOL _moving;
     BOOL _capturing;
 }

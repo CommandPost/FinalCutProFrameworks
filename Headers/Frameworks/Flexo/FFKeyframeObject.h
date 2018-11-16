@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     BOOL _rootKey;
 }
 
-- (id)initWithLocation:(struct CGPoint)arg1 time:(CDStruct_1b6d18a9)arg2 asset:(id)arg3 parentLayer:(id)arg4 belowLayer:(id)arg5;
+- (id)initWithLocation:(struct CGPoint)arg1 time:(CDStruct_1b6d18a9)arg2 asset:(id)arg3 parentLayer:(id)arg4 belowLayer:(id)arg5 timeline:(id)arg6;
 - (void)setIsRootKey:(BOOL)arg1;
 - (BOOL)isRootKey;
 

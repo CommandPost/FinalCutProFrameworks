@@ -82,6 +82,8 @@
 - (void)overwriteWithSelectedMediaBacktimed:(id)arg1;
 - (void)anchorWithSelectedMediaBacktimed:(id)arg1;
 - (void)insertKeyDown:(id)arg1;
+- (void)willBeginRelinkingForOrganizerModule:(id)arg1;
+- (void)didFinishRelinkingForOrganizerModule:(id)arg1;
 
 @end
 

@@ -360,6 +360,7 @@
 - (void)checkChannelParameterChanged:(id)arg1;
 - (void)locateViewTimeAtSampleBoundary;
 - (void)toggleKeyframeForCheckedChannels;
+- (double)backingScaleFactor;
 - (id).cxx_construct;
 
 @end

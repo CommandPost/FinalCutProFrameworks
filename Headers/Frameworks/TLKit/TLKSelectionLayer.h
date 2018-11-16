@@ -6,28 +6,33 @@
 
 #import "CALayer.h"
 
-@class CAGradientLayer;
+@class NSArray;
 
 @interface TLKSelectionLayer : CALayer
 {
-    CAGradientLayer *_outerGradientLayer;
-    CAGradientLayer *_innerGradientLayer;
-    CALayer *_outerLayerMask;
-    CALayer *_innerLayerMask;
-    unsigned int _ignoresHitTesting:1;
+    CALayer *_rootLayer;
+    CALayer *_emphasizedLayer;
+    CALayer *_normalLayer;
+    CALayer *_normalRingLayer;
+    CALayer *_normalInnerShadowLayer;
+    NSArray *_roundingLayers;
     unsigned int _containingViewFirstResponder:1;
-    unsigned int RESERVED:30;
+    unsigned int _ignoresHitTesting:1;
+    unsigned int reserved:30;
 }
 
 - (id)init;
-- (void)setDelegate:(id)arg1;
+- (void)dealloc;
+@property BOOL containingViewFirstResponder;
+- (void)_updateLayers:(id)arg1;
 - (void)invalidate;
+- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
+- (void)setDelegate:(id)arg1;
 - (void)layoutSublayers;
 - (void)setCornerRadius:(double)arg1;
-- (double)cornerRadius;
 @property BOOL ignoresHitTesting;
 - (id)hitTest:(struct CGPoint)arg1;
-@property BOOL containingViewFirstResponder;
+- (id)shadowedLayer;
 
 @end
 

@@ -6,11 +6,12 @@
 
 #import "NSObject.h"
 
-@interface PCEThemeInfo : NSObject
+__attribute__((visibility("hidden")))
+@interface FFOpenGLLayerDelegate : NSObject
 {
 }
 
-+ (unsigned long long)themeIndex;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 
 @end
 

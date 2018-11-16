@@ -89,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)writeSafelyToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 error:(id *)arg4;
 - (void)saveDocumentWithDelegate:(id)arg1 didSaveSelector:(SEL)arg2 contextInfo:(void *)arg3;
 - (BOOL)keepBackupFile;
+- (void)forceSaveOfCatalog;
 
 @end
 

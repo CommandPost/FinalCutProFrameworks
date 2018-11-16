@@ -6,15 +6,15 @@
 
 #import "CALayer.h"
 
-@class FFFilmstrip, TLKThemeBackedLayer;
+@class FFFilmstrip, NSProThemeFacet;
 
 __attribute__((visibility("hidden")))
 @interface FFFilmstripSelectionLayer : CALayer
 {
     CALayer *_maskLayer;
-    TLKThemeBackedLayer *_outlineLayer;
-    TLKThemeBackedLayer *_leftHandleLayer;
-    TLKThemeBackedLayer *_rightHandleLayer;
+    CALayer *_outlineLayer;
+    CALayer *_leftHandleLayer;
+    CALayer *_rightHandleLayer;
     CDStruct_1b6d18a9 _leftTime;
     CDStruct_1b6d18a9 _rightTime;
     CDStruct_1b6d18a9 _leftBoundaryTime;
@@ -28,16 +28,20 @@ __attribute__((visibility("hidden")))
     BOOL _forStillImage;
     BOOL _usesAutoKeywordsStyle;
     FFFilmstrip *_filmstrip;
+    NSProThemeFacet *_outlineLayerFacet;
+    double _lastFacetWidth;
+    BOOL _lastFacetStillImage;
 }
 
 + (unsigned long long)_themeRef;
 + (id)_leftFacetHandle;
 + (id)_rightFacetHandle;
-+ (id)_facetFrameForWidth:(double)arg1 forStillImage:(BOOL)arg2;
 - (id)init;
+- (void)setContentsScale:(double)arg1;
 - (void)dealloc;
 - (void)layoutSublayers;
 - (void)_updateFrameProperties;
+@property(nonatomic) CDStruct_e83c9415 timeRange;
 @property(nonatomic) CDStruct_1b6d18a9 leftTime; // @synthesize leftTime=_leftTime;
 @property(nonatomic) CDStruct_1b6d18a9 rightTime; // @synthesize rightTime=_rightTime;
 @property(nonatomic) int leftEdgeType; // @synthesize leftEdgeType=_leftEdgeType;
@@ -45,8 +49,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL showHandles; // @synthesize showHandles=_showHandles;
 @property(nonatomic) BOOL usesAutoKeywordsStyle; // @synthesize usesAutoKeywordsStyle=_usesAutoKeywordsStyle;
 @property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
-@property(readonly, nonatomic) struct CGRect leftSelectionHandleRect; // @synthesize leftSelectionHandleRect=_leftSelectionHandleRect;
-@property(readonly, nonatomic) struct CGRect rightSelectionHandleRect; // @synthesize rightSelectionHandleRect=_rightSelectionHandleRect;
+@property(readonly, nonatomic) struct CGRect leftSelectionHandleRect;
+@property(readonly, nonatomic) struct CGRect rightSelectionHandleRect;
+- (void)_updateFacetFrameForWidth:(double)arg1 forStillImage:(BOOL)arg2;
 @property(nonatomic) BOOL forStillImage; // @synthesize forStillImage=_forStillImage;
 @property(nonatomic) CDStruct_1b6d18a9 rightBoundaryTime; // @synthesize rightBoundaryTime=_rightBoundaryTime;
 @property(nonatomic) CDStruct_1b6d18a9 leftBoundaryTime; // @synthesize leftBoundaryTime=_leftBoundaryTime;

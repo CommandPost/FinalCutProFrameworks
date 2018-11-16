@@ -41,6 +41,12 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)dealloc;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_rebuildItems;
+- (id)_getAllVolumes;
+- (id)_sortedEvents:(id)arg1;
+- (id)_eventDateKey;
+- (void)_addEventObservers;
+- (void)_removeEventObservers;
 
 // Remaining properties
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;

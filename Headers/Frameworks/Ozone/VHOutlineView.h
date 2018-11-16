@@ -56,6 +56,7 @@
 - (BOOL)acceptsFirstMouse:(id)arg1;
 - (BOOL)needsPanelToBecomeKey;
 - (id)menuForEvent:(id)arg1;
+- (struct CGRect)_rectOfRowAssumingRowExists:(long long)arg1;
 
 @end
 

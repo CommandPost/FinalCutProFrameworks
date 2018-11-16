@@ -14,6 +14,8 @@
     struct PCMutex *_lock;
     id _renderDelegate;
     BOOL _shouldDrawBackground;
+    long long _customElementID;
+    long long _customPartID;
     OZPreviewPlayButtonView *_playButtonView;
 }
 
@@ -24,6 +26,7 @@
 - (id)image;
 - (void)setImage:(id)arg1;
 - (void)setShouldDrawBackground:(BOOL)arg1;
+- (void)setCustomFrameElement:(long long)arg1 part:(long long)arg2;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)display:(struct OZRenderNode *)arg1;
 - (void)display:(struct OZRenderNode *)arg1 forTime:(const CDStruct_1b6d18a9 *)arg2;

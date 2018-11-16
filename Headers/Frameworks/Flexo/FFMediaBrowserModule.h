@@ -23,6 +23,7 @@
 - (void)stopPreview:(id)arg1;
 - (void)writeSelectionToPasteboard:(id)arg1;
 - (BOOL)mediaBrowserView:(id)arg1 shouldDisplayMediaObject:(id)arg2;
+- (id)mediaBrowserView:(id)arg1 displayNameForMediaGroup:(id)arg2;
 - (void)setInitialSplitPositionForBrowserType:(long long)arg1;
 
 @end

@@ -29,7 +29,7 @@
     double _peakExpirationTime;
 }
 
-- (id)_localImageNamed:(id)arg1 extension:(id)arg2;
+- (id)_localImageNamed:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)setMeterImage:(id)arg1 active:(BOOL)arg2;

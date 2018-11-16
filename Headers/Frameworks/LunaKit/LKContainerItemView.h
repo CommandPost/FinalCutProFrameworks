@@ -39,6 +39,27 @@
 - (struct CGRect)draggingAreaFrame;
 - (void)updateLabel;
 - (void)setFrameSize:(struct CGSize)arg1;
+- (id)capView;
+- (id)footerView;
+- (void)_installDebugView;
+- (void)_installBorderView;
+- (void)updateBorder;
+- (void)_updateHeaderAccessoryView;
+- (id)_footerAccessoryView;
+- (void)_updateFooterAccessoryView;
+- (void)_refreshPaneCaps;
+- (void)_recomputeFrames;
+- (void)_setDragState;
+- (void)_setNormalState;
+- (BOOL)accessibilityIsIgnored;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)description;
+@property struct CGRect futureFooterFrame;
+@property struct CGRect futureFrame;
+- (void)updateFrame;
+- (void)updateFrameAnimate:(BOOL)arg1;
 
 @end
 

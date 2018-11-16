@@ -189,6 +189,9 @@
 - (void)setSelectedItems:(id)arg1;
 - (id)selectedItems;
 - (BOOL)canBeInspected;
+- (id)splitterHandle;
+- (id)tabLabel;
+- (BOOL)wantsFirstResponder;
 
 @end
 

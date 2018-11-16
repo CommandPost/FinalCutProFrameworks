@@ -32,10 +32,10 @@
     PCVector3_457fd1f0 _startOffset;
     PCVector2_79efa81a _startShear;
     PCVector2_79efa81a _priorRotHandlePos;
-    PCPtr_ca909b16 _handlesTexture[3];
-    PCPtr_ca909b16 _rotationTexture[3];
-    PCPtr_ca909b16 _pivotTexture[3];
-    PCPtr_ca909b16 _roundnessTexture;
+    PCPtr_df275998 _handlesTexture[3];
+    PCPtr_df275998 _rotationTexture[3];
+    PCPtr_df275998 _pivotTexture[3];
+    PCPtr_df275998 _roundnessTexture;
     PCVector2_79efa81a _corners[8];
     PCVector2_79efa81a _handle[2];
     BOOL _moving;
@@ -88,9 +88,9 @@
 - (void)setRoundness:(double)arg1;
 - (double)getRoundness;
 - (BOOL)isActiveHandle:(int)arg1;
-- (PCPtr_ca909b16)getCurrentHandlesTexture:(int)arg1;
-- (PCPtr_ca909b16)getCurrentPivotTexture;
-- (PCPtr_ca909b16)getCurrentRotationTexture;
+- (PCPtr_df275998)getCurrentHandlesTexture:(int)arg1;
+- (PCPtr_df275998)getCurrentPivotTexture;
+- (PCPtr_df275998)getCurrentRotationTexture;
 - (PCVector2_7e488b7d)getPivotSize;
 - (PCVector3_457fd1f0)calcDragFrom:(const PCVector3_457fd1f0 *)arg1 to:(const PCVector3_457fd1f0 *)arg2;
 - (BOOL)projectPoint:(PCVector3_457fd1f0 *)arg1 toSpaceOf:(int)arg2;

@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)skimmingModule:(id)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
 - (BOOL)skimmingModuleShowVideoThumbnail:(id)arg1;
 - (struct CGRect)skimmingModule:(id)arg1 videoThumbnailFrameForLayer:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)setupEffectPreviewSelectedClip;
 - (id)_effectItemViewForPoint:(struct CGPoint)arg1;
 - (struct CGPoint)_convertCollectionViewPointToSkimmingLayerPoint:(struct CGPoint)arg1 forEffectItemView:(id)arg2;
 - (void)mouseEntered:(id)arg1;

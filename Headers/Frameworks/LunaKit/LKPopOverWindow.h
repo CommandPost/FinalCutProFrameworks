@@ -12,7 +12,6 @@
 {
     struct CGRect _targetRect;
     struct CGRect _displayRect;
-    unsigned int _blurFilterID;
     BOOL _shouldAutoreleaseOnClose;
     BOOL _isAnimating;
     double _animationDuration;
@@ -22,6 +21,7 @@
 + (id)popOverWindowWithDocumentView:(id)arg1 arrowDirection:(int)arg2;
 + (id)callOutPopOverWindowWithDocumentView:(id)arg1 arrowDirection:(int)arg2;
 + (double)animationDuration;
+- (BOOL)canBecomeKeyWindow;
 - (void)_popOverCommonSetup;
 - (Class)popUpViewClass;
 - (void)_setupAnimations;
@@ -31,16 +31,12 @@
 - (BOOL)presentWithTargetRect:(struct CGRect)arg1 inParentWindow:(id)arg2 displayRect:(struct CGRect)arg3 makeKey:(BOOL)arg4 animationStyle:(int)arg5 arrowDirection:(int)arg6;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)orderOutWithAnimationStyle:(int)arg1 autorelease:(BOOL)arg2;
-- (void)_reallyDoOrderWindow:(long long)arg1 relativeTo:(long long)arg2 findKey:(BOOL)arg3 forCounter:(BOOL)arg4 force:(BOOL)arg5 isModal:(BOOL)arg6;
-- (BOOL)canBecomeKeyWindow;
-- (void)_setupBlurFilter;
-- (void)_removeBlurFilter;
 - (void)_updateWindowPosition;
 - (void)updateWindowFrame;
 - (void)_setFrameCommon:(struct CGRect)arg1 display:(BOOL)arg2 stashSize:(BOOL)arg3;
-@property double animationDuration; // @synthesize animationDuration=_animationDuration;
-@property struct CGRect targetRect; // @synthesize targetRect=_targetRect;
-@property struct CGRect displayRect; // @synthesize displayRect=_displayRect;
+@property double animationDuration;
+@property struct CGRect targetRect;
+@property struct CGRect displayRect;
 @property int arrowDirection;
 @property NSView *documentView;
 @property(readonly) LKPopOverView *popOverView;

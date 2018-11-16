@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (id)initWithLRUAndImage:(int)arg1 image:(id)arg2 cgl_ctx:(struct _CGLContextObject *)arg3;
 - (void)dealloc;
+- (void)drawTexture:(struct _CGLContextObject *)arg1 inRect:(struct CGRect)arg2;
 - (void)drawTexture:(struct _CGLContextObject *)arg1 atPoint:(struct CGPoint)arg2;
 @property(nonatomic) int LRUCount; // @synthesize LRUCount=_LRUCount;
 

@@ -9,7 +9,7 @@
 @interface POChannelPositionOSC : POChannel
 {
     struct vector<std::pair<OZChannelRef*, bool>, std::allocator<std::pair<OZChannelRef*, bool>>> *_positions;
-    PCPtr_ca909b16 _pointTexture[2];
+    PCPtr_df275998 _pointTexture[2];
     BOOL _moving;
 }
 

@@ -10,12 +10,12 @@
 
 @interface TXParagraphOSC : POOnScreenControl
 {
-    PCVector2_79a470e1 *_start;
+    struct PCVector2<float> *_start;
     double _anchorX;
     double _anchorY;
     _Bool _stretchX;
     _Bool _stretchY;
-    struct OZOSCTexture *_handlesTexture[2];
+    struct PCPtr<POMultiResTexture> _handlesTexture[2];
     NSProCursor *_cursor;
     double _startObjX;
     double _startObjY;

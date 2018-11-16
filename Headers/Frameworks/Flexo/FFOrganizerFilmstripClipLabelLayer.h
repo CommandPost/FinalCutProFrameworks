@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CATextLayer *nameLayer;
 @property(readonly, nonatomic) CATextLayer *typeLayer;
 @property(readonly, nonatomic) struct CGRect maxFrame;
+- (void)setContentsScale:(double)arg1;
 - (void)applyTextToLayers;
 @property(copy, nonatomic) NSString *nameText;
 @property(copy, nonatomic) NSString *typeText;

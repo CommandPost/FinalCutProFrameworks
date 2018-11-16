@@ -11,7 +11,8 @@
 }
 
 + (id)make8BitRGBAFromNSImage:(id)arg1 doFlip:(BOOL)arg2;
-+ (id)make8BitRGBAFromNSImage:(id)arg1 doFlip:(BOOL)arg2 usingColorSpace:(id)arg3;
++ (id)make8BitRGBAFromNSImage:(id)arg1 doFlip:(BOOL)arg2 scale:(double)arg3;
++ (id)make8BitRGBAFromNSImage:(id)arg1 doFlip:(BOOL)arg2 usingColorSpace:(id)arg3 scale:(double)arg4;
 
 @end
 

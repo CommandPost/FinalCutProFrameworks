@@ -28,15 +28,9 @@
 + (id)guideLineColor;
 + (id)itemRulerTickColor;
 + (id)itemTextColor;
-+ (id)leftEdgeBumperOverlayColor;
 + (id)selectedItemTextColor;
-+ (id)selectionMarqueeGradientBottomColor;
-+ (id)selectionMarqueeGradientDisabledBottomColor;
-+ (id)selectionMarqueeGradientDisabledTopColor;
-+ (id)selectionMarqueeGradientTopColor;
-+ (id)selectionMarqueeInnerGlowGradientBottomColor;
-+ (id)selectionMarqueeInnerGlowGradientDisabledTopColor;
-+ (id)selectionMarqueeInnerGlowGradientTopColor;
++ (id)selectionMarqueeColor;
++ (id)selectionMarqueeDisabledColor;
 + (id)slimAVClipBorderColor;
 + (id)slimAudioClipBorderColor;
 + (id)slimContainerClipBorderColor;
