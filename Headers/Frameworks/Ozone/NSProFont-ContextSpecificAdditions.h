@@ -14,6 +14,7 @@
 + (id)popUpLabelTextAttributesUsingForegroundColor;
 + (id)inactiveLabelTextAttributesUsingForegroundColor;
 + (id)windowFooterLabelTextAttributes;
++ (id)toolbarMenuRegularLabelTextAttributes;
 + (id)canvasHeaderRegularLabelTextAttributes;
 + (id)canvasHeaderInactiveMiniLabelTextAttributes;
 + (id)canvasHeaderInactiveRegularLabelTextAttributes;
@@ -31,5 +32,6 @@
 + (id)windowFooterTextFont;
 + (id)timebarFont;
 + (id)dropMenuMainTextFont;
++ (id)oz_MediumUIFont;
 @end
 

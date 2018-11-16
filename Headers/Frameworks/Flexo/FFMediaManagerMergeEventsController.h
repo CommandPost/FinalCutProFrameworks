@@ -6,12 +6,13 @@
 
 #import <Flexo/FFMediaManagerController.h>
 
-@class FFProjectOrganizerModule, NSArray;
+@class FFProjectOrganizerModule, NSArray, NSImageView;
 
 @interface FFMediaManagerMergeEventsController : FFMediaManagerController
 {
     NSArray *_eventsToMerge;
     FFProjectOrganizerModule *_projectOrganizerModule;
+    NSImageView *_icon;
 }
 
 + (void)showMediaManagerMergeEventsSheetForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 projectOrganizerModule:(id)arg4 eventsToMerge:(id)arg5 destinationLocation:(id)arg6 newEventName:(id)arg7;

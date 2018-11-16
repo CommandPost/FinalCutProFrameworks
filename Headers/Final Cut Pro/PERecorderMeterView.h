@@ -17,6 +17,7 @@
 - (void)addMeterSublayers;
 - (void)mouseDown:(id)arg1;
 - (void)voiceoverRecorder:(id)arg1 updateMeters:(const float *)arg2 channelCount:(unsigned long long)arg3;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 
 @end
 

@@ -24,6 +24,8 @@
 - (void)stopUsingMedia:(id)arg1;
 - (id)selectionOwner;
 - (id)timelineSelection;
+- (void)willBeginRelinkingForOrganizerModule:(id)arg1;
+- (void)didFinishRelinkingForOrganizerModule:(id)arg1;
 
 @optional
 - (void)openStack:(id)arg1;

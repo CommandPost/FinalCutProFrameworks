@@ -34,6 +34,13 @@
 - (id)init;
 - (void)dealloc;
 - (void)awakeFromNib;
+- (void)allocWindow;
+- (void)showSplashScreen;
+- (void)showAboutBox;
+- (void)updateAboutBoxText:(id)arg1;
+- (void)scrollText:(id)arg1;
+- (void)endModalSession;
+- (void)hideSplashScreen:(id)arg1;
 
 @end
 

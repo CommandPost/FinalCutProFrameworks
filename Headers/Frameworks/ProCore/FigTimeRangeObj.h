@@ -6,10 +6,11 @@
 
 #import "NSObject.h"
 
+#import "FigTimeRangeOperationCopying.h"
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@interface FigTimeRangeObj : NSObject <NSCopying, NSCoding>
+@interface FigTimeRangeObj : NSObject <FigTimeRangeOperationCopying, NSCopying, NSCoding>
 {
     CDStruct_e83c9415 _range;
 }
@@ -32,6 +33,7 @@
 - (long long)sortByStartTimeDescending:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)copyWithRange:(CDStruct_e83c9415)arg1;
 
 @end
 

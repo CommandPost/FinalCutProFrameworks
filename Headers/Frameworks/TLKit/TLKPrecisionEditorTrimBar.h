@@ -17,9 +17,9 @@
     CALayer *_rightBar;
     TLKEdgeSelectionLayer *_outgoingSelectionLayer;
     TLKEdgeSelectionLayer *_incomingSelectionLayer;
-    CALayer *_editHandleLayer;
+    TLKThemeBackedLayer *_editHandleLayer;
     TLKThemeBackedLayer *_transitionHandleLayer;
-    CALayer *_bowTieLayer;
+    TLKThemeBackedLayer *_bowTieLayer;
     id _leftItem;
     id _rightItem;
     struct {

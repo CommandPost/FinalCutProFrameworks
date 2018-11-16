@@ -6,47 +6,32 @@
 
 #import <Flexo/FFOSC.h>
 
-@class FFFacetTextures, FFOpenGLInfoGrid, FFTextureBuffer, NSProThemeFacet;
+@class FFOpenGLInfoGrid, FFTextureBuffer, FFThemeFacet, NSDictionary, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FFOverlayOSC : FFOSC
 {
-    NSProThemeFacet *_magicFrameFacet;
-    FFFacetTextures *_magicFrameTextures;
-    FFTextureBuffer *_magicFrameImage;
-    struct CGSize _magicFrameSize;
-    NSProThemeFacet *_startOfMediaFacet;
-    FFFacetTextures *_startOfMediaTextures;
-    FFTextureBuffer *_startOfMediaImage;
-    struct CGSize _startOfMediaFrameSize;
-    NSProThemeFacet *_endOfMediaFacet;
-    FFFacetTextures *_endOfMediaTextures;
-    FFTextureBuffer *_endOfMediaImage;
-    struct CGSize _endOfMediaFrameSize;
-    NSProThemeFacet *_clipFacet;
-    FFFacetTextures *_clipTextures;
-    FFTextureBuffer *_clipInImage;
-    FFTextureBuffer *_clipOutImage;
-    struct CGSize _clipInOutSize;
-    NSProThemeFacet *_sequenceFacet;
-    FFFacetTextures *_sequenceTextures;
-    FFTextureBuffer *_sequenceInImage;
-    FFTextureBuffer *_sequenceOutImage;
+    FFThemeFacet *_magicFrameFacet;
+    FFThemeFacet *_startOfMediaFacet;
+    FFThemeFacet *_endOfMediaFacet;
+    FFThemeFacet *_clipInOutFacet;
+    FFThemeFacet *_sequenceInOutFacet;
     FFTextureBuffer *_dominantMotionMessage;
     FFTextureBuffer *_opticalFlowMessage;
     struct CGSize _dominantTextSize;
     struct CGSize _opticalFlowTextSize;
-    struct CGSize _sequenceInOutSize;
     double _magicRed;
     double _magicGreen;
     double _magicBlue;
     double _magicAlpha;
+    NSMutableDictionary *_textImageCache;
+    int _LRUCount;
     FFOpenGLInfoGrid *_objectDetailsGrid;
+    NSDictionary *_dominantMotionOpticalFlowTextAttribute;
+    NSDictionary *_dominantMotionOpticalFlowTextAttributeGlow;
 }
 
-- (id)init;
-- (id)newMake8BitRGBAFromNSString:(id)arg1 fontName:(id)arg2 fontSize:(int)arg3 red:(float)arg4 green:(float)arg5 blue:(float)arg6 alpha:(float)arg7 glowAmount:(float)arg8 glowRed:(float)arg9 glowGreen:(float)arg10 glowBlue:(float)arg11 glowAlpha:(float)arg12 doFlip:(BOOL)arg13 imageSize:(struct CGSize *)arg14;
-- (id)newTextTextureBuffer:(id)arg1 imageSize:(struct CGSize *)arg2 cgl_ctx:(struct _CGLContextObject *)arg3;
+- (void)simpleTextRectangle:(float)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(const id)arg4 attributes:(id)arg5 glowAttributes:(id)arg6 paddingX:(double)arg7 paddingY:(double)arg8 roundRectBackground:(BOOL)arg9;
 - (void)_setupTextures:(struct _CGLContextObject *)arg1;
 - (void)dealloc;
 - (CDStruct_1b6d18a9)channelTimeForTime:(CDStruct_1b6d18a9)arg1;

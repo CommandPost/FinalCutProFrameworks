@@ -13,8 +13,11 @@
 + (void)initialize;
 + (id)displayName;
 + (id)cursor;
++ (id)TLKEventHandlerID;
 - (void)becomeActiveTool;
 - (void)dealloc;
+- (void)willSetAsHandlerForTimeline:(id)arg1;
+- (void)didRemoveAsHandlerForTimeline:(id)arg1;
 
 @end
 

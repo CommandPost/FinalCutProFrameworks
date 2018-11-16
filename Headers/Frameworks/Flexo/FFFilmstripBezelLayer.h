@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSArray *_frameSpreadItems;
     BOOL _audioOnly;
     BOOL _isStill;
+    double _contentsScale;
 }
 
 + (unsigned long long)_themeRef;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFilmStrip:(id)arg1 frame:(struct CGRect)arg2 leftEdgeType:(int)arg3 rightEdgeType:(int)arg4 audioOnly:(BOOL)arg5;
 - (id)initWithFilmStrip:(id)arg1 frame:(struct CGRect)arg2 leftEdgeType:(int)arg3 rightEdgeType:(int)arg4 audioOnly:(BOOL)arg5 squaredCorners:(BOOL)arg6;
 - (void)dealloc;
+- (void)setContentsScale:(double)arg1;
 - (void)_updateWithProperties;
 @property(getter=isAudioOnly) BOOL audioOnly; // @synthesize audioOnly=_audioOnly;
 @property(retain) NSArray *frameSpreadItems; // @synthesize frameSpreadItems=_frameSpreadItems;

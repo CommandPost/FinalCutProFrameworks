@@ -7,10 +7,11 @@
 #import "CHChannel.h"
 
 #import "CHChannelHasCachedDataToPurgeProtocol.h"
+#import "TLKPosterFrameInfoProtocol.h"
 
 @class FFStreamVideo;
 
-@interface FFMediaRefChannel : CHChannel <CHChannelHasCachedDataToPurgeProtocol>
+@interface FFMediaRefChannel : CHChannel <TLKPosterFrameInfoProtocol, CHChannelHasCachedDataToPurgeProtocol>
 {
     FFStreamVideo *_cachedStream;
 }
@@ -45,7 +46,11 @@
 - (void)purgeChannelCachedData:(id)arg1;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 priority:(int)arg5 spatialQuality:(int)arg6 temporalQuality:(int)arg7;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 priority:(int)arg3 spatialQuality:(int)arg4 temporalQuality:(int)arg5;
-- (id)newNSThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2;
+- (id)newNSThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 contentsScale:(double)arg3;
+- (CDStruct_1b6d18a9)posterTime;
+- (id)label;
+- (BOOL)defaultPosition;
+- (void)adjustMediaOffsetByUIOffset:(CDStruct_1b6d18a9)arg1;
 
 @end
 

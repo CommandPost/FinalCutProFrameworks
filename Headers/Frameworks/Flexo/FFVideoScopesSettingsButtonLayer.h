@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)videoScopesSettingsButtonLayer;
-- (id)initWithThemeFacet:(id)arg1;
+- (void)setContentsScale:(double)arg1;
 - (id)buildSublayers;
 - (void)setMenu:(id)arg1;
 - (void)configureNormal;

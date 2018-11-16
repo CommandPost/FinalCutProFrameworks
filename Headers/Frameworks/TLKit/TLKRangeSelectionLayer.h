@@ -27,6 +27,8 @@
 - (struct CGRect)_rightHandleFrame;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)partIdentifier;
+- (id)timelineView;
+- (struct CGPath *)_newPathForRoundedRect:(struct CGRect)arg1 radius:(double)arg2 lineWidth:(double)arg3;
 - (void)layoutSublayers;
 - (id)hitTest:(struct CGPoint)arg1;
 @property int draggingHandle;

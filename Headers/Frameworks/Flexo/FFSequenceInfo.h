@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL isSequenceLoaded;
 - (id)sequenceShareFingerPrint;
 - (id)sequence;
-- (struct CGImage *)thumbnailForRange:(CDStruct_e83c9415)arg1 target:(id)arg2;
+- (struct CGImage *)thumbnailForRange:(CDStruct_e83c9415)arg1 contentsScale:(double)arg2 target:(id)arg3;
 - (CDStruct_e83c9415)thumbnailRangeForRequestRange:(CDStruct_e83c9415)arg1;
 - (void)cancelRequestsFrom:(id)arg1;
 - (double)aspectRatio;
@@ -73,10 +73,10 @@ __attribute__((visibility("hidden")))
 - (void)setHasVideo:(BOOL)arg1;
 - (BOOL)_hasThumbnailMD5s;
 - (void)_checkSetup;
-- (void)_updateThumbnails;
+- (void)_updateThumbnails:(double)arg1;
 - (void)thumbImageReadyOnMainThread:(id)arg1;
 - (void)thumbImageReady:(id)arg1;
-- (void)_updateThumbnailsOnMainThread;
+- (void)_updateThumbnailsOnMainThread:(id)arg1;
 - (int)_thumbnailCellForRange:(CDStruct_e83c9415)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

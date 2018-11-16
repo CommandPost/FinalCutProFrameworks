@@ -6,7 +6,9 @@
 
 #import <ProCore/FigTimeRangeObj.h>
 
-@interface FigTimeRangeAndObject : FigTimeRangeObj
+#import "FigTimeRangeOperationCopying.h"
+
+@interface FigTimeRangeAndObject : FigTimeRangeObj <FigTimeRangeOperationCopying>
 {
     id _object;
 }
@@ -22,6 +24,7 @@
 - (id)durationObject;
 - (BOOL)isEqual:(id)arg1;
 - (id)description;
+- (id)copyWithRange:(CDStruct_e83c9415)arg1;
 
 @end
 

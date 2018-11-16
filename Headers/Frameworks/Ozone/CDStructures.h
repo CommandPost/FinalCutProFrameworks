@@ -4570,8 +4570,18 @@ struct PCPtr<PCBlendOptions> {
     struct PCSharedCount _field2;
 };
 
-struct PCPtr<POTexture> {
-    struct POTexture *_ptr;
+struct PCPtr<POMultiResMultiPartTexture> {
+    struct POMultiResMultiPartTexture *_ptr;
+    struct PCSharedCount _refcount;
+};
+
+struct PCPtr<POMultiResStringTexture> {
+    struct POMultiResStringTexture *_ptr;
+    struct PCSharedCount _refcount;
+};
+
+struct PCPtr<POMultiResTexture> {
+    struct POMultiResTexture *_ptr;
     struct PCSharedCount _refcount;
 };
 
@@ -4818,7 +4828,11 @@ struct POMove3DOSC {
     _Bool _field5;
 };
 
-struct POTexture;
+struct POMultiResMultiPartTexture;
+
+struct POMultiResStringTexture;
+
+struct POMultiResTexture;
 
 struct PSHVertexData;
 
@@ -6015,6 +6029,56 @@ struct _CGLContextObject {
         CDUnknownFunctionPointerType _field762;
         CDUnknownFunctionPointerType _field763;
         CDUnknownFunctionPointerType _field764;
+        CDUnknownFunctionPointerType _field765;
+        CDUnknownFunctionPointerType _field766;
+        CDUnknownFunctionPointerType _field767;
+        CDUnknownFunctionPointerType _field768;
+        CDUnknownFunctionPointerType _field769;
+        CDUnknownFunctionPointerType _field770;
+        CDUnknownFunctionPointerType _field771;
+        CDUnknownFunctionPointerType _field772;
+        CDUnknownFunctionPointerType _field773;
+        CDUnknownFunctionPointerType _field774;
+        CDUnknownFunctionPointerType _field775;
+        CDUnknownFunctionPointerType _field776;
+        CDUnknownFunctionPointerType _field777;
+        CDUnknownFunctionPointerType _field778;
+        CDUnknownFunctionPointerType _field779;
+        CDUnknownFunctionPointerType _field780;
+        CDUnknownFunctionPointerType _field781;
+        CDUnknownFunctionPointerType _field782;
+        CDUnknownFunctionPointerType _field783;
+        CDUnknownFunctionPointerType _field784;
+        CDUnknownFunctionPointerType _field785;
+        CDUnknownFunctionPointerType _field786;
+        CDUnknownFunctionPointerType _field787;
+        CDUnknownFunctionPointerType _field788;
+        CDUnknownFunctionPointerType _field789;
+        CDUnknownFunctionPointerType _field790;
+        CDUnknownFunctionPointerType _field791;
+        CDUnknownFunctionPointerType _field792;
+        CDUnknownFunctionPointerType _field793;
+        CDUnknownFunctionPointerType _field794;
+        CDUnknownFunctionPointerType _field795;
+        CDUnknownFunctionPointerType _field796;
+        CDUnknownFunctionPointerType _field797;
+        CDUnknownFunctionPointerType _field798;
+        CDUnknownFunctionPointerType _field799;
+        CDUnknownFunctionPointerType _field800;
+        CDUnknownFunctionPointerType _field801;
+        CDUnknownFunctionPointerType _field802;
+        CDUnknownFunctionPointerType _field803;
+        CDUnknownFunctionPointerType _field804;
+        CDUnknownFunctionPointerType _field805;
+        CDUnknownFunctionPointerType _field806;
+        CDUnknownFunctionPointerType _field807;
+        CDUnknownFunctionPointerType _field808;
+        CDUnknownFunctionPointerType _field809;
+        CDUnknownFunctionPointerType _field810;
+        CDUnknownFunctionPointerType _field811;
+        CDUnknownFunctionPointerType _field812;
+        CDUnknownFunctionPointerType _field813;
+        CDUnknownFunctionPointerType _field814;
     } _field2;
     struct _CGLPrivateObject *_field3;
     void *_field4;
@@ -7271,10 +7335,10 @@ typedef struct PCPtr<LiImageSource> {
     struct PCSharedCount _refcount;
 } PCPtr_2c56e3c4;
 
-typedef struct PCPtr<POTexture> {
-    struct POTexture *_ptr;
+typedef struct PCPtr<POMultiResTexture> {
+    struct POMultiResTexture *_ptr;
     struct PCSharedCount _refcount;
-} PCPtr_ca909b16;
+} PCPtr_df275998;
 
 typedef struct PCQuat<double> {
     double _field1;

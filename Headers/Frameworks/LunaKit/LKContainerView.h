@@ -50,6 +50,7 @@
 + (id)_proContainerViewInView:(id)arg1;
 + (id)_firstKeyContainerView;
 + (void)initialize;
++ (void)_setThemeVariant:(long long)arg1 recursivelyForView:(id)arg2;
 - (void)_updateNode1Size:(struct CGSize)arg1 node2Size:(struct CGSize)arg2;
 - (void)_proAutomateLiveSeamDragging;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -128,6 +129,27 @@
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
 - (id)syntheticUIElementAttributeNames:(id)arg1;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (void)setFocusOnItem:(id)arg1;
+- (id)focusedOnItem;
+- (void)setSeamDraggingInfos:(id)arg1;
+- (void)createItemsForNode:(id)arg1;
+- (void)addContainerItemView:(id)arg1;
+- (void)removeContainerItemView:(id)arg1;
+- (void)swapContainerItemWithIdentifier:(id)arg1 withContainerItemWithIdentifier:(id)arg2;
+- (void)setLayoutNode:(id)arg1;
+- (void)updatePropotionsForSubnodesOfNode:(id)arg1;
+- (BOOL)isAnimating;
+- (void)setIsAnimating:(BOOL)arg1;
+- (void)_layoutWithParameters:(CDStruct_6cce754d *)arg1 count:(unsigned long long)arg2 newSize:(double)arg3;
+- (BOOL)_nodeHasFirstViewOrderedBelow:(id)arg1;
+- (BOOL)_nodeHasBottomViewOrderedBelow:(id)arg1;
+- (void)_layoutSubnodesOf:(id)arg1 inRect:(struct CGRect)arg2;
+- (struct CGSize)_layoutNode:(id)arg1 inRect:(struct CGRect)arg2;
+- (void)syncSublayoutWithDict:(id)arg1;
+- (id)_rootNode;
+- (void)setRepresentedModule:(id)arg1;
+- (id)representedModule;
+- (void)updateItemViewFrames;
 
 @end
 

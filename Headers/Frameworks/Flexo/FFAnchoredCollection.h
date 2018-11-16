@@ -138,6 +138,7 @@
 - (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
 - (id)descendentAnchoredComponents:(BOOL)arg1 containerTimeRange:(CDStruct_e83c9415)arg2 useAudioRange:(BOOL)arg3 container:(id)arg4;
 - (void)_descendentAnchoredObject:(id)arg1 includingSelf:(BOOL)arg2;
+- (void)_enumerateDescendantAnchoredObjects:(BOOL)arg1 includeSelf:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 stop:(char *)arg4;
 - (void)_sendDeferredUpdate:(id)arg1 sendDuration:(BOOL)arg2 doesntChangeGrid:(BOOL)arg3;
 - (void)_processDeferredUpdates;
 - (void)_clearDeferredUpdates;
@@ -244,6 +245,16 @@
 @property(readonly, retain, nonatomic) FFVideoSegmenter *videoSegmenter; // @synthesize videoSegmenter=_videoSegmenter;
 @property(readonly, retain, nonatomic) NSArray *containedItems; // @synthesize containedItems=_containedItems;
 @property(retain, nonatomic) NSString *angleID; // @synthesize angleID=_angleID;
+- (void)copyMediaSource:(id)arg1 toIndex:(unsigned long long)arg2;
+- (void)moveMediaSource:(id)arg1 toIndex:(unsigned long long)arg2;
+- (void)removeMediaSource:(id)arg1;
+- (void)addMediaSources:(id)arg1;
+- (void)removeMediaSources:(id)arg1;
+- (void)resetToDefaultMediaSources;
+- (void)copyMediaSourceChannel:(id)arg1 toSource:(id)arg2 atIndex:(int)arg3;
+- (void)moveMediaSourceChannel:(id)arg1 fromSource:(id)arg2 toSource:(id)arg3 atIndex:(int)arg4;
+- (void)deleteMediaSourceChannel:(id)arg1 fromSource:(id)arg2;
+- (id)copyXMLValueForRole:(id)arg1;
 
 @end
 

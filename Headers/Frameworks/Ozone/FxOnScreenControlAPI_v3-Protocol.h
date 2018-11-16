@@ -4,9 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFTrimTool.h>
+#import "FxOnScreenControlAPI_v2.h"
 
-@interface FFTrimTool (TLKEventHandlerMapping)
-+ (id)TLKEventHandlerID;
+@protocol FxOnScreenControlAPI_v3 <FxOnScreenControlAPI_v2>
+- (double)backingScaleFactor;
 @end
 

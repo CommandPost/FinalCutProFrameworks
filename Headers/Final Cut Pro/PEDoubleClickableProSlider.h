@@ -21,6 +21,11 @@
 - (void)mouseDown:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)dealloc;
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityAttributeNames;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (void)accessibilitySetValue:(id)arg1 forAttribute:(id)arg2;
 
 @end
 

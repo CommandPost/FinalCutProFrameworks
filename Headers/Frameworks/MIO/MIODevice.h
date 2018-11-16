@@ -51,6 +51,10 @@
 - (id)delegate;
 - (void)videoPreviewFormatChanged;
 @property(retain) NSDictionary *previewPresentationDimensions; // @synthesize previewPresentationDimensions=mPreviewPresentationDimensions;
+- (BOOL)startProcessing;
+- (void)stopProcessing;
+- (BOOL)isProcessing;
+- (void)setIsPreviewing:(BOOL)arg1;
 
 @end
 

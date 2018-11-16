@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)setPhase:(long long)arg1;
 - (void)setMonochrome:(BOOL)arg1;
 - (void)setTraceBrightness:(float)arg1;
+- (struct CGRect)_boundsAppliedByContentsScale;
 - (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
 
 @end

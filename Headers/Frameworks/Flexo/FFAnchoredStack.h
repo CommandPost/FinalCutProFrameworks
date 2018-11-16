@@ -52,6 +52,7 @@
 - (void)_descendentAnchoredObject:(id)arg1 includingSelf:(BOOL)arg2;
 - (void)_collectDescendentCompositedObject:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 intoArray:(id)arg3 useAudioRange:(BOOL)arg4 container:(id)arg5;
 - (id)descendentCompositedObjects:(BOOL)arg1 containerTimeRange:(CDStruct_e83c9415)arg2 useAudioRange:(BOOL)arg3 container:(id)arg4;
+- (void)_enumerateDescendantAnchoredObjects:(BOOL)arg1 includeSelf:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 stop:(char *)arg4;
 - (id)firstVideoAnchoredComponent;
 - (id)firstAudioAnchoredComponent;
 - (id)containedItems;
@@ -162,6 +163,14 @@
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
 - (BOOL)validateValue:(id *)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 @property(retain, nonatomic) NSArray *stackItems; // @synthesize stackItems=_stackItems;
+- (BOOL)actionSelectPreviousVariantWithError:(id *)arg1 loopAround:(BOOL)arg2;
+- (BOOL)actionSelectNextVariantWithError:(id *)arg1 loopAround:(BOOL)arg2;
+- (BOOL)actionDeleteActiveVariantMakeNextActive:(id *)arg1;
+- (BOOL)makeVariantActive:(id)arg1 withError:(id *)arg2;
+- (id)previousActiveVariant;
+- (id)nextActiveVariantAllowNil;
+- (id)nextActiveVariant;
+- (id)copyXMLValueForRole:(id)arg1;
 
 @end
 

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _clippedRange;
     double _clippedWidth;
     unsigned long long _thumbCount;
+    double _contentsScale;
     BOOL _forceRegenerateLastCell;
     unsigned int _audioHasVideo:1;
     unsigned int _forEditing:1;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)replaceCell:(id)arg1 withCell:(id)arg2;
 @property(readonly, nonatomic) unsigned long long thumbCount;
 - (void)setThumbCount:(unsigned long long)arg1;
+@property(nonatomic) double contentsScale;
 @property(readonly, nonatomic) struct CGSize overallSize;
 - (void)populateThumbnails;
 - (void)_addThumbnailLayers;

@@ -35,6 +35,7 @@
     NSMutableDictionary *_textAttribs;
     struct vector<PGDrawableTexture*, std::allocator<PGDrawableTexture*>> _numberTextures;
     double scaleFactor;
+    float _lastBackingScale;
 }
 
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
@@ -44,7 +45,6 @@
 - (void)mouseDown:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;
-- (void)poofAtViewLocation:(const PCVector2_79a470e1 *)arg1;
 - (void)startDragTimer;
 - (void)stopDragTimer;
 - (_Bool)getOverlayIsOn;

@@ -18,6 +18,17 @@
 - (struct CGRect)window:(id)arg1 willPositionSheet:(id)arg2 usingRect:(struct CGRect)arg3;
 - (BOOL)window:(id)arg1 shouldPopUpDocumentPathMenu:(id)arg2;
 - (BOOL)window:(id)arg1 shouldDragDocumentWithEvent:(id)arg2 from:(struct CGPoint)arg3 withPasteboard:(id)arg4;
+- (struct CGSize)window:(id)arg1 willUseFullScreenContentSize:(struct CGSize)arg2;
+- (unsigned long long)window:(id)arg1 willUseFullScreenPresentationOptions:(unsigned long long)arg2;
+- (id)customWindowsToEnterFullScreenForWindow:(id)arg1;
+- (void)window:(id)arg1 startCustomAnimationToEnterFullScreenWithDuration:(double)arg2;
+- (void)windowDidFailToEnterFullScreen:(id)arg1;
+- (id)customWindowsToExitFullScreenForWindow:(id)arg1;
+- (void)window:(id)arg1 startCustomAnimationToExitFullScreenWithDuration:(double)arg2;
+- (void)windowDidFailToExitFullScreen:(id)arg1;
+- (struct CGSize)window:(id)arg1 willResizeForVersionBrowserWithMaxPreferredSize:(struct CGSize)arg2 maxAllowedSize:(struct CGSize)arg3;
+- (void)window:(id)arg1 willEncodeRestorableState:(id)arg2;
+- (void)window:(id)arg1 didDecodeRestorableState:(id)arg2;
 - (void)windowDidResize:(id)arg1;
 - (void)windowDidExpose:(id)arg1;
 - (void)windowWillMove:(id)arg1;
@@ -33,9 +44,18 @@
 - (void)windowDidUpdate:(id)arg1;
 - (void)windowDidChangeScreen:(id)arg1;
 - (void)windowDidChangeScreenProfile:(id)arg1;
+- (void)windowDidChangeBackingProperties:(id)arg1;
 - (void)windowWillBeginSheet:(id)arg1;
 - (void)windowDidEndSheet:(id)arg1;
 - (void)windowWillStartLiveResize:(id)arg1;
 - (void)windowDidEndLiveResize:(id)arg1;
+- (void)windowWillEnterFullScreen:(id)arg1;
+- (void)windowDidEnterFullScreen:(id)arg1;
+- (void)windowWillExitFullScreen:(id)arg1;
+- (void)windowDidExitFullScreen:(id)arg1;
+- (void)windowWillEnterVersionBrowser:(id)arg1;
+- (void)windowDidEnterVersionBrowser:(id)arg1;
+- (void)windowWillExitVersionBrowser:(id)arg1;
+- (void)windowDidExitVersionBrowser:(id)arg1;
 @end
 

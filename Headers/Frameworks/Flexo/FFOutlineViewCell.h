@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class CALayer, CATextLayer, FFOutlineView, FFOutlineViewCellContentLayer, FFOutlineViewRow, NSButton, NSColor, NSDictionary, NSString, NSTextField, NSTimer;
+@class CALayer, CATextLayer, FFOutlineView, FFOutlineViewCellContentLayer, FFOutlineViewRow, LKSyntheticUIElement, NSButton, NSColor, NSDictionary, NSString, NSTextField, NSTimer;
 
 @interface FFOutlineViewCell : NSView
 {
@@ -40,6 +40,7 @@
 
 - (id)initWithReuseIdentifier:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (void)prepareForReuse;
 - (void)willGoToReuseQueue;
 @property(nonatomic) double indentationWidth; // @synthesize indentationWidth=_indentationWidth;
@@ -118,6 +119,17 @@
 - (void)dealloc;
 @property(copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property(readonly, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
+@property(readonly, nonatomic) LKSyntheticUIElement *staticTextElement;
+@property(readonly, nonatomic) id disclosureButtonElement;
+- (id)filteredChildrenElements:(id)arg1;
+- (id)ownAttributeNames;
+- (id)accessibilityAttributeNames;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (BOOL)accessibilityIsIgnored;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (id)syntheticUIElementAttributeNames:(id)arg1;
+- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
 
 @end
 

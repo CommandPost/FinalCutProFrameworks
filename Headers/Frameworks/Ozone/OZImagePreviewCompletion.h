@@ -6,12 +6,13 @@
 
 #import "NSObject.h"
 
-@class OZImagePreview;
+@class NSView, OZImagePreview;
 
 @interface OZImagePreviewCompletion : NSObject
 {
     OZImagePreview *_imagePreview;
     double _pixelAspect;
+    NSView *_destView;
 }
 
 - (id)init;

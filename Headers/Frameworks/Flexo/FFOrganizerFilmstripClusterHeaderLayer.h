@@ -6,13 +6,15 @@
 
 #import "TLKThemeBackedLayer.h"
 
-@class FFOrganizerClusteringCollection, FFResponderLayerDisclosureButton;
+@class CATextLayer, FFOrganizerClusteringCollection, FFResponderLayerDisclosureButton;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripClusterHeaderLayer : TLKThemeBackedLayer
 {
     BOOL _disclosed;
     FFOrganizerClusteringCollection *_clusteringCollection;
+    CATextLayer *_clusterLabelLayer;
+    CATextLayer *_itemCountLayer;
     FFResponderLayerDisclosureButton *_disclosureTriangleLayer;
 }
 
@@ -20,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_toggleDisclosed;
 - (id)initWithClusteringCollection:(id)arg1 inRect:(struct CGRect)arg2 isDisclosed:(BOOL)arg3 facet:(id)arg4;
 - (void)dealloc;
+- (void)setContentsScale:(double)arg1;
 @property(readonly, nonatomic) FFOrganizerClusteringCollection *cluster; // @synthesize cluster=_clusteringCollection;
 
 @end

@@ -32,7 +32,6 @@
 - (void)exportiTunesModalForWindow:(id)arg1;
 - (void)burnDVDModalForWindow:(id)arg1;
 - (void)burnBlurayModalForWindow:(id)arg1;
-- (void)publishMobileMeModalForWindow:(id)arg1;
 - (void)sendEmailModalForWindow:(id)arg1;
 - (void)publishYouTubeModalForWindow:(id)arg1;
 - (void)publishFacebookModalForWindow:(id)arg1;

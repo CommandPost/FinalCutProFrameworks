@@ -6,11 +6,11 @@
 
 #import "NSView.h"
 
-@class ProPSDImageRef;
+@class NSImage;
 
 @interface LKSplashView : NSView
 {
-    ProPSDImageRef *_psd;
+    NSImage *_image;
     BOOL _isSplash;
 }
 

@@ -6,14 +6,14 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class NSImage, NSString, OZTool, PGDrawableTexture;
+@class NSString, OZTool;
 
 @interface OZCameraOptionsOverlay : OZOverlay
 {
-    PGDrawableTexture *_viewControlIcons[4][4];
-    NSImage *_cameraNameButton[4][3];
+    PCPtr_df275998 _viewControlIcons[4][4];
+    struct PCPtr<POMultiResMultiPartTexture> _cameraButtonTexture[4];
+    struct PCPtr<POMultiResStringTexture> _cameraNameTexture;
     long long _viewControlToolTips[4];
-    PGDrawableTexture *_cameraNameTexture;
     OZTool *_activeTool;
     int _hitPart;
     NSString *_titleText;
@@ -45,6 +45,8 @@
 - (int)hitCheck:(id)arg1;
 - (id)getCursorWithEvent:(id)arg1;
 - (BOOL)needsRightMouseEvents;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 
 @end
 

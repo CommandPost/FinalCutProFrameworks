@@ -10,7 +10,7 @@
 
 @interface PEToolbarModule : LKViewModule
 {
-    NSProThemeImageView *_backgroundImageView;
+    NSImageView *_backgroundImageView;
     LKSegmentedControl *_toolPalette;
     LKSegmentedControl *_importPalette;
     LKSegmentedControl *_altModulesPalette;
@@ -29,6 +29,8 @@
     LKSegmentedControl *_retimeControlsPalette;
     LKSegmentedControl *_inspectorButton;
     LKSegmentedControl *_scopesButton;
+    NSProThemeImageView *_lcdImage;
+    NSProThemeImageView *_lcdGlossImage;
     NSImageView *_progressFinished;
     NSImageView *_progressEmpty;
     NSImageView *_progressFilling;
@@ -39,6 +41,7 @@
     NSImageView *_numericEntryDirection;
     LKMenu *_retimeMenu;
     LKMenu *_avEditOptionsMenu;
+    LKMenu *_enhancementMenu;
     FFContext *_context;
     CDStruct_1b6d18a9 _frameDuration;
     BOOL _rendered;
@@ -171,7 +174,6 @@
 - (void)updateViewPlayheadTime:(CDStruct_1b6d18a9)arg1;
 - (void)updateToTimelineContext;
 - (void)updateViewPlayheadTimeFromContext;
-- (void)rebuildColorControlsMenu;
 - (void)updateTimecodeValuesFromSkimmable:(struct NSObject *)arg1;
 - (void)updateTimecodeValuesFromAnchoredObject:(id)arg1;
 - (void)numericEntryWillBegin;

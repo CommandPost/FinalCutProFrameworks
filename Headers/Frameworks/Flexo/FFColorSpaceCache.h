@@ -6,13 +6,12 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSData, NSLock, NSMutableArray, NSMutableDictionary;
+@class NSArray, NSLock, NSMutableArray, NSMutableDictionary;
 
 @interface FFColorSpaceCache : NSObject
 {
     NSMutableArray *_knownColorSpaces;
     NSLock *_cachedColorLock;
-    NSData *_linear709Data;
     struct CGColorSpace *_linear709ColorSpace;
     struct CGColorSpace *_709ColorSpace;
     struct CGColorSpace *_gamma20_709ColorSpace;

@@ -22,6 +22,11 @@
 - (BOOL)applicationShouldHandleReopen:(id)arg1 hasVisibleWindows:(BOOL)arg2;
 - (id)applicationDockMenu:(id)arg1;
 - (id)application:(id)arg1 willPresentError:(id)arg2;
+- (void)application:(id)arg1 didRegisterForRemoteNotificationsWithDeviceToken:(id)arg2;
+- (void)application:(id)arg1 didFailToRegisterForRemoteNotificationsWithError:(id)arg2;
+- (void)application:(id)arg1 didReceiveRemoteNotification:(id)arg2;
+- (void)application:(id)arg1 willEncodeRestorableState:(id)arg2;
+- (void)application:(id)arg1 didDecodeRestorableState:(id)arg2;
 - (void)applicationWillFinishLaunching:(id)arg1;
 - (void)applicationDidFinishLaunching:(id)arg1;
 - (void)applicationWillHide:(id)arg1;

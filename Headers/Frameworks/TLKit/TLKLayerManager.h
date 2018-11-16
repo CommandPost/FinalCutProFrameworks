@@ -66,6 +66,7 @@
 - (void)tile;
 - (id)closestTrackLayerAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)centerScanRect:(struct CGRect)arg1 forLayer:(id)arg2;
+- (void)updateContentsScaleForLayer:(id)arg1;
 - (id)savedFrameStateForItems:(id)arg1;
 - (id)savedFrameStateForTracks:(id)arg1;
 - (void)restoreSavedFrameState:(id)arg1;

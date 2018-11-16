@@ -39,8 +39,10 @@ __attribute__((visibility("hidden")))
 - (void)unhandledCursorUpdateAtPoint:(struct CGPoint)arg1 event:(id)arg2;
 - (id)menuForEvent:(id)arg1;
 - (void)setLayer:(id)arg1;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
-- (void)_configureCADelegatesOfLayer:(id)arg1 isResponderLayerDescendant:(BOOL)arg2;
+- (void)_configureCADelegatesOfLayer:(id)arg1 isResponderLayerDescendant:(BOOL)arg2 outLayers:(id)arg3;
+- (void)_resetCADelegatesOfLayers:(id)arg1;
 - (id)hostView;
 - (id)focusOwner;
 - (void)setFocusOwner:(id)arg1;

@@ -23,6 +23,7 @@
 - (id)initWithType:(id)arg1 project:(id)arg2 sequence:(id)arg3 error:(id *)arg4;
 - (id)initWithCatalog:(id)arg1 store:(id)arg2 ofType:(id)arg3 validate:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)applyUpdate:(SEL)arg1;
+- (BOOL)update_migrateEffectBundleFormat;
 - (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
 
 @end

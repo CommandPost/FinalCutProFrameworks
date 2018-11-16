@@ -10,5 +10,8 @@
 {
 }
 
+- (id)_baseFacet;
+- (id)_pullDownFacet;
+
 @end
 

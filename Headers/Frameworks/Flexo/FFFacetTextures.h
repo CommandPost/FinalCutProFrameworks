@@ -20,14 +20,13 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 + (void)_handleLookDidChange:(id)arg1;
 + (id)cachedTexturesForFacet:(id)arg1 context:(struct _CGLContextObject *)arg2;
-+ (id)uncachedTexturesForFacet:(id)arg1 context:(struct _CGLContextObject *)arg2;
 - (id)_initWithFacet:(id)arg1 virtualScreen:(int)arg2;
 - (id)initWithFacet:(id)arg1 context:(struct _CGLContextObject *)arg2;
 - (void)dealloc;
 - (void)invalidate;
 - (BOOL)isValidForContext:(struct _CGLContextObject *)arg1;
-- (id)textureForContext:(struct _CGLContextObject *)arg1 state:(long long)arg2 dimension1:(long long)arg3 value:(long long)arg4 size:(struct CGSize)arg5 createIfNeeded:(BOOL)arg6 colorSync:(BOOL)arg7;
-- (id)textureForContext:(struct _CGLContextObject *)arg1 state:(long long)arg2 size:(struct CGSize)arg3 createIfNeeded:(BOOL)arg4 colorSync:(BOOL)arg5;
+- (id)textureForContext:(struct _CGLContextObject *)arg1 destView:(id)arg2 colorSync:(BOOL)arg3 state:(long long)arg4 dimension1:(long long)arg5 value:(long long)arg6 sizeInPoints:(struct CGSize)arg7 createIfNeeded:(BOOL)arg8;
+- (id)textureForContext:(struct _CGLContextObject *)arg1 destView:(id)arg2 colorSync:(BOOL)arg3 state:(long long)arg4 sizeInPoints:(struct CGSize)arg5 createIfNeeded:(BOOL)arg6;
 
 @end
 

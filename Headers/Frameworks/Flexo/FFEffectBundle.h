@@ -27,6 +27,8 @@
 + (id)effectBundlePartsFromXMLDocument:(id)arg1;
 + (id)_documentForArchiveURL:(id)arg1;
 + (id)readEffectBundlePartsForEffectBundle:(id)arg1;
++ (void)registerBundleAtPath:(id)arg1 isUserBundle:(BOOL)arg2;
++ (void)registerEffects;
 - (id)initWithEffectID:(id)arg1;
 - (void)dealloc;
 - (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
@@ -69,6 +71,7 @@
 - (id)newAudioMD5AndOffset:(int)arg1;
 - (id)exportAsXMLDocument;
 - (id)initWithEffectID:(id)arg1 andXMLDocument:(id)arg2;
+- (BOOL)update_migrateEffectBundleFormat;
 
 @end
 

@@ -15,6 +15,8 @@
     PGDrawableTexture *_cameraNameTexture;
     struct PCString _cameraName;
     BOOL _isSceneCamera;
+    float _lastBackingScale;
+    struct PCPtr<POMultiResMultiPartTexture> _border;
 }
 
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;

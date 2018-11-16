@@ -19,7 +19,7 @@
     unsigned int _mouseDownOffset;
     TXTextResponder *_responder;
     NSResponder *_prevResponder;
-    PCVector2_79a470e1 *_start;
+    struct PCVector2<float> *_start;
     CDStruct_1b6d18a9 *_startTime;
     double _yOffset;
     TXParagraphOSC *_paragraphOSC;

@@ -8,12 +8,13 @@
 
 #import "FFInspectableObject.h"
 #import "FFMetadataProtocol.h"
+#import "FFOrganizerItem.h"
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class NSMutableDictionary, NSString;
+@class NSImage, NSMutableDictionary, NSString;
 
-@interface FFBinObject : FFBaseDSObject <NSCoding, NSCopying, FFMetadataProtocol, FFInspectableObject>
+@interface FFBinObject : FFBaseDSObject <FFOrganizerItem, NSCoding, NSCopying, FFMetadataProtocol, FFInspectableObject>
 {
     NSString *_displayName;
     NSMutableDictionary *_metadata;
@@ -21,6 +22,7 @@
 
 + (id)copyClassDescription;
 + (id)objectFromUniqueIdentifier:(id)arg1;
++ (id)keyPathsForValuesAffectingItemDisplayName;
 - (id)initWithDisplayName:(id)arg1;
 - (void)dealloc;
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
@@ -42,6 +44,27 @@
 - (void)mdSetValue:(id)arg1 forKey:(id)arg2;
 - (id)mdValueForKey:(id)arg1;
 - (id)inspectorClassName;
+- (id)itemParent;
+@property(readonly, nonatomic) NSImage *itemIcon;
+@property(readonly, nonatomic) NSString *itemDisplayName;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
+- (void)setItemDisplayName:(id)arg1;
+- (BOOL)hasMasterSubitems;
+@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
+- (void)_actionBeginEditing;
+- (BOOL)_actionEndEditing:(BOOL)arg1 error:(id *)arg2;
+- (void)actionBegin:(id)arg1;
+- (void)actionBegin:(id)arg1 animationHint:(id)arg2;
+- (void)actionBegin:(id)arg1 animationHint:(id)arg2 deferUpdates:(BOOL)arg3;
+- (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)actionRenameBinObject:(id)arg1 error:(id *)arg2;
+- (void)actionBeginSetMetadataValue;
+- (BOOL)actionEndSetMetadataValueWithError:(id *)arg1;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
+@property(readonly, nonatomic) BOOL itemIsPlaceholder;
+@property(readonly, nonatomic) double itemRowHeight;
 
 @end
 

@@ -28,10 +28,10 @@ __attribute__((visibility("hidden")))
     BOOL _shapeActive;
     BOOL _shapeVisible;
     NSString *_name;
-    struct PCPtr<POTexture> _handlesTexture[3];
-    struct PCPtr<POTexture> _pivotHandleTexture[3];
-    struct PCPtr<POTexture> _rotationHandleTexture[3];
-    struct PCPtr<POTexture> _curvatureHandleTexture[3];
+    struct PCPtr<POMultiResTexture> _handlesTexture[3];
+    struct PCPtr<POMultiResTexture> _pivotHandleTexture[3];
+    struct PCPtr<POMultiResTexture> _rotationHandleTexture[3];
+    struct PCPtr<POMultiResTexture> _curvatureHandleTexture[3];
 }
 
 - (id)initWithChannelFolder:(id)arg1 effectStack:(id)arg2 colorSecondaryEffect:(id)arg3;

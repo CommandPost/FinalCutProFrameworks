@@ -11,7 +11,7 @@
 #import "NSSplitViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFArrangedItemsModule, FFCapsController, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFOrganizerFilterHUD, FFOrganizerLinenBackground, FFOrganizerSplitView, FFOrganizerTextFieldView, FFSearchController, FFSidebarModule, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKWindow, LKWindowModule, NSArray, NSBox, NSMenuItem, NSProView, NSView, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
+@class FFArrangedItemsModule, FFCapsController, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFOrganizerFilterHUD, FFOrganizerLinenBackground, FFOrganizerSplitView, FFOrganizerTextFieldView, FFSidebarModule, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKWindow, LKWindowModule, NSArray, NSBox, NSMenuItem, NSProView, NSView, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
 
 @interface FFOrganizerModule : FFPersistentModule <NSSplitViewDelegate, FFArrangedItemsModuleDelegate, FFOrganizerFilterHUDDelegate, NSWindowDelegate>
 {
@@ -20,7 +20,6 @@
     NSView *_sidebarModuleViewContainer;
     FFItemsContainerView *_itemsModuleViewContainer;
     FFCapsController *_capsController;
-    FFSearchController *_searchController;
     FFOrganizerFilterHUD *_filterHUD;
     LKWindow *_filterHUDPopoverWindow;
     LKWindowModule *_filterWindowModule;
@@ -89,11 +88,7 @@
 - (BOOL)module:(id)arg1 validate:(char *)arg2 userInterfaceItem:(id)arg3;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)module:(id)arg1 fieldEditorForView:(id)arg2 cell:(id)arg3;
-- (void)searchControllerDidChangeString:(id)arg1;
 - (void)toggleSidebarHidden:(id)arg1;
-@property(readonly, nonatomic) FFSearchController *searchController;
-- (id)filteringSidebarItemNames;
-- (void)updateSearchInfoString;
 - (void)sidebarModuleSelectionDidChange:(id)arg1;
 - (void)searchAction:(id)arg1;
 - (void)showSkimmerInfo:(id)arg1;
@@ -175,6 +170,16 @@
 @property(readonly, nonatomic) LKMenu *filterPulldownMenu; // @synthesize filterPulldownMenu=_filterPulldownMenu;
 @property(readonly, nonatomic) NSView *sidebarModuleViewContainer; // @synthesize sidebarModuleViewContainer=_sidebarModuleViewContainer;
 @property(readonly, nonatomic) FFSidebarModule *sidebarModule; // @synthesize sidebarModule=_sidebarModule;
+- (id)targetObjectForItem:(id)arg1;
+- (id)targetObjectForItem:(id)arg1 inModule:(id)arg2;
+- (id)targetSelection;
+- (id)targetSelectionForModule:(id)arg1;
+- (id)selectionOrProject;
+- (id)contentsViewForItemsModule:(id)arg1;
+- (void)willInstallItemsModule;
+- (void)didInstallItemsModule;
+- (void)willUninstallItemsModule;
+- (void)didUninstallItemsModule;
 
 @end
 

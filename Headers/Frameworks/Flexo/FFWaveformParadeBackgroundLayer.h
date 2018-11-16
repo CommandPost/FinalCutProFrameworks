@@ -15,10 +15,11 @@ __attribute__((visibility("hidden")))
     FFWaveformRasterLabelLayer *_rasterLabelLayer;
 }
 
+- (void)setDelegate:(id)arg1;
 - (void)buildSublayers;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)setViewMode:(long long)arg1;
-- (void)drawGridInContext:(struct CGContext *)arg1 dirtyRect:(struct CGRect)arg2;
+- (void)drawGridInContext:(struct CGContext *)arg1 dirtyRect:(struct CGRect)arg2 contentsScale:(double)arg3;
 @property long long paradeLayoutAlignment; // @synthesize paradeLayoutAlignment=_paradeLayoutAlignment;
 
 @end

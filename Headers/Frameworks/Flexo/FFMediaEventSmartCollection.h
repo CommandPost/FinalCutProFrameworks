@@ -8,11 +8,13 @@
 
 #import "FFMediaEventFolderObject.h"
 #import "FFOrganizerFilterHUDDelegate.h"
+#import "FFOrganizerItemDraggingSource.h"
+#import "FFOrganizerMasterItem.h"
 
-@class FFMediaEventFolder, NSDictionary, NSString;
+@class FFMediaEventFolder, NSArray, NSDictionary, NSImage, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFMediaEventSmartCollection : FFBaseDSObject <FFMediaEventFolderObject, FFOrganizerFilterHUDDelegate>
+@interface FFMediaEventSmartCollection : FFBaseDSObject <FFOrganizerMasterItem, FFOrganizerItemDraggingSource, FFMediaEventFolderObject, FFOrganizerFilterHUDDelegate>
 {
     NSString *_name;
     NSDictionary *_filtersDictionary;
@@ -21,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 + (id)copyClassDescription;
 + (int)matchingTypeIterationOption;
++ (id)keyPathsForValuesAffectingItemDisplayName;
 - (id)initWithName:(id)arg1 filtersDictionary:(id)arg2;
 - (void)dealloc;
 - (id)description;
@@ -37,6 +40,31 @@ __attribute__((visibility("hidden")))
 - (id)roleSetsForCurrentProject;
 @property(retain, nonatomic) NSDictionary *filtersDictionary;
 - (id)duplicate;
+@property(readonly, nonatomic) NSString *itemDisplayName;
+- (void)setItemDisplayName:(id)arg1;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
+@property(readonly, nonatomic) NSImage *itemIcon;
+@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
+@property(readonly, nonatomic) NSArray *items;
+@property(readonly, nonatomic) BOOL hasMasterSubitems;
+@property(readonly, nonatomic) NSArray *masterSubitems;
+@property(readonly, nonatomic) NSArray *detailSubitems;
+- (id)writableTypesForPasteboard:(id)arg1;
+- (id)pasteboardPropertyListForType:(id)arg1;
+- (void)_actionBeginEditing;
+- (BOOL)_actionEndEditing:(BOOL)arg1 error:(id *)arg2;
+- (void)actionBegin:(id)arg1;
+- (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)actionRename:(id)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
+@property(readonly, nonatomic) BOOL hasDetailSubitems;
+@property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
+@property(readonly, nonatomic) BOOL hasItems;
+@property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
+@property(readonly, nonatomic) BOOL itemIsPlaceholder;
+@property(readonly, nonatomic) double itemRowHeight;
 
 @end
 

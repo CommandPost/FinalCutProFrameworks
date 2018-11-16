@@ -8,7 +8,7 @@
 
 @interface POCustomMotionPath : POParametricMotionPath
 {
-    PCPtr_ca909b16 _handlesTexture;
+    PCPtr_df275998 _handlesTexture;
     PCVector3_457fd1f0 _invOffset;
     struct PCMutex _samplesLock;
 }
@@ -21,7 +21,7 @@
 - (id)menuForEvent:(id)arg1;
 - (BOOL)canAddVertex;
 - (void)processHits;
-- (void)drawVertexHandleInViewCoords:(const PCMatrix44Tmpl_e98c85ee *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 texture:(const PCPtr_ca909b16 *)arg5;
+- (void)drawVertexHandleInViewCoords:(const PCMatrix44Tmpl_e98c85ee *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 texture:(const PCPtr_df275998 *)arg5;
 - (void)drawVertices:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
 - (int)getShapeSamplesX:(vector_419cd555 *)arg1 Y:(vector_419cd555 *)arg2 Z:(vector_419cd555 *)arg3 T:(vector_419cd555 *)arg4;
 - (void)drawPath;

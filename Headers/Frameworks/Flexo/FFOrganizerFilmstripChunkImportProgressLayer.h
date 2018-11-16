@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)updateCameraIconLayer;
 - (id)tooltipRects;
 - (id)tooltipStringAtPoint:(struct CGPoint)arg1;
+- (void)setContentsScale:(double)arg1;
 @property unsigned long long progress; // @synthesize progress=_progress;
 @property(retain) FFMIORADAsset *radAsset; // @synthesize radAsset=_radAsset;
 

@@ -21,6 +21,8 @@
 
 - (id)init;
 - (id)initWithNSImage:(id)arg1;
+- (id)initWithNSImage:(id)arg1 size:(struct CGSize)arg2;
+- (id)initWithFacet:(id)arg1 scale:(double)arg2 state:(long long)arg3;
 - (void)dealloc;
 - (void)setWidth:(int)arg1 andHeight:(int)arg2;
 - (void)beginDrawingInto;

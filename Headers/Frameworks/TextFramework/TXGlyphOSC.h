@@ -68,11 +68,11 @@
     double _draggingPivotX;
     double _draggingPivotY;
     double _draggingPivotZ;
-    struct OZOSCTexture *_handlesTexture[2];
-    struct OZOSCTexture *_warpHandlesTexture[2];
-    struct OZOSCTexture *_shearHandlesTexture[2];
-    struct OZOSCTexture *_rotationTexture[2];
-    struct OZOSCTexture *_pivotTexture;
+    struct PCPtr<POMultiResTexture> _handlesTexture[2];
+    struct PCPtr<POMultiResTexture> _warpHandlesTexture[2];
+    struct PCPtr<POMultiResTexture> _shearHandlesTexture[2];
+    struct PCPtr<POMultiResTexture> _rotationTexture[2];
+    struct PCPtr<POMultiResTexture> _pivotTexture;
     BOOL _moving;
     BOOL _rotating;
     BOOL _3dtranslating;

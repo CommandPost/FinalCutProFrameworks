@@ -26,7 +26,6 @@
 - (id)contentLayoutDictionary;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
 - (void)keyDown:(id)arg1;
-- (void)_setImageForToolbarItem:(id)arg1 withInfo:(id)arg2;
 - (BOOL)window:(id)arg1 shouldPopUpDocumentPathMenu:(id)arg2;
 @property(getter=isReleasedWhenClosed) BOOL releasedWhenClosed; // @synthesize releasedWhenClosed=_releasedWhenClosed;
 

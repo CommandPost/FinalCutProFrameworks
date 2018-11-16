@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface FFPlayerView : NSOpenGLView <NSTextInput>
 {
     FFPlayerVideoModule *_playerVideoModule;
+    id _layerDelegate;
     BOOL _mouseEntered;
     struct _CGLContextObject *_viewContext;
     BOOL _hasLayer;
@@ -21,12 +22,15 @@ __attribute__((visibility("hidden")))
     BOOL _playerVideoModuleActive;
     NSLock *_playerVideoModuleActiveLock;
     struct __CFRunLoopObserver *_draggingIdleObserver;
+    float _windowBackingScaleFactor;
 }
 
 + (id)defaultPixelFormat;
+- (float)windowBackingScaleFactor;
 - (BOOL)isOpaque;
 - (BOOL)isTextOSCActive;
 - (void)_setPlayerVideoModule:(id)arg1;
+- (id)_playerVideoModule;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (BOOL)acceptsFirstResponder;
@@ -45,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (struct _CGLContextObject *)viewContext;
 - (BOOL)checkDisplayCallback:(CDStruct_1b6d18a9)arg1;
 - (BOOL)callDisplayCallback:(CDStruct_1b6d18a9)arg1 lastTimeDisplayed:(id)arg2 initialDraw:(BOOL)arg3;
-- (void)setFrameSize:(struct CGSize)arg1;
 - (void)clearViewToBackgroundColor;
 - (void)notifyLastTimeDisplayed:(id)arg1;
 - (void)reshape;
@@ -102,6 +105,8 @@ __attribute__((visibility("hidden")))
 - (id)menuForEvent:(id)arg1;
 - (void)updateVirtualScreenForDisplayID:(unsigned int)arg1 force:(BOOL)arg2;
 - (void)updateCAView;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
 
 @end
 

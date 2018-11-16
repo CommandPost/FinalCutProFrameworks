@@ -54,6 +54,7 @@
 + (void)_finishDestructivePart;
 + (id)uniqueURLFromURL:(id)arg1;
 + (id)allFileURLsInFolder:(id)arg1;
++ (void)setImageView:(id)arg1 toIconWithPart:(long long)arg2;
 - (id)initWithWindowNibName:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;

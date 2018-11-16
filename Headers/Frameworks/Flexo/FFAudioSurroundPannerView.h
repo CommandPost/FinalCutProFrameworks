@@ -75,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)setShowHUDOnDoubleClick:(BOOL)arg1;
 - (void)setVisualDatasource:(id)arg1;
 - (void)setBias:(int)arg1 forSpeaker:(int)arg2;
+- (id)_imageForSpeaker:(int)arg1 forBias:(int)arg2 disabled:(BOOL)arg3;
 - (void)_calculateDishSize;
 - (void)snapPointToSpeaker:(struct CGPoint *)arg1;
 - (BOOL)acceptsFirstMouse:(id)arg1;

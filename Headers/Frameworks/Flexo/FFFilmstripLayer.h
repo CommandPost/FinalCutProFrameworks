@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateCells;
 - (void)updateIfNeeded;
 - (BOOL)highPriorityThumbnailGeneration;
+- (void)setContentsScale:(double)arg1;
 @property(nonatomic) id <FFFilmstripLayerDelegate> priorityDelegate; // @synthesize priorityDelegate=_priorityDelegate;
 
 @end

@@ -6,11 +6,13 @@
 
 #import "LKTextFieldCell.h"
 
-@class LKImageCell;
+@class LKImageCell, NSObject;
 
 @interface TMCell : LKTextFieldCell
 {
     LKImageCell *_imageCell;
+    NSObject *_object;
+    int _gradientHeight;
 }
 
 - (id)init;
@@ -18,6 +20,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)cellImage;
 - (id)font;
+- (void)setImageAndText:(id)arg1;
 - (void)setObjectValue:(id)arg1;
 - (BOOL)_allowsContextMenus;
 - (BOOL)pointInImage:(struct CGRect)arg1 inView:(id)arg2 event:(id)arg3;

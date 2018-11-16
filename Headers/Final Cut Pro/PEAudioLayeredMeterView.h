@@ -24,6 +24,7 @@
 @property(nonatomic) BOOL playing; // @synthesize playing=_playing;
 - (void)resetOverloadIndicator;
 - (void)mouseDown:(id)arg1;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (void)awakeFromNib;
 @property(nonatomic) BOOL miniMode; // @synthesize miniMode=_miniMode;
 

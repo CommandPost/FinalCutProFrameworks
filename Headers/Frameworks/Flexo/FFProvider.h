@@ -86,6 +86,7 @@
 - (BOOL)saveToDocument;
 - (BOOL)syncFromDocument;
 - (id)firstVideoSource;
+- (id)firstAudioSource;
 
 @end
 

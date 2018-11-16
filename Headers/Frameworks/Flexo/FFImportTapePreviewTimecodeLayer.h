@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)updateTextlayer:(id)arg1 andBackgroundLayer:(id)arg2 withString:(id)arg3;
 - (void)updateStatusLayer;
 - (void)updateTimecodeLayer;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 
 @end
 

@@ -20,6 +20,7 @@
 - (id)init;
 @property(readonly, nonatomic) FFOutlineView *outlineView;
 @property(readonly, nonatomic) FFOutlineViewCell *outlineViewCell;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 @property(readonly, nonatomic) CALayer *imageLayer;
 - (BOOL)isAnimationDisabledForCurrentEvent;
 - (id)animationEnabledTextLayers;

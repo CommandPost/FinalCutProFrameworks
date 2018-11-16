@@ -11,7 +11,7 @@
 #import "NSSplitViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFCapsController, FFEventLibrarySplitView, FFEventsDetailModule, FFEventsLibraryLinenBackground, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFOrganizerFilterHUD, FFOrganizerTextFieldView, FFSearchController, FFSidebarModule, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKWindow, LKWindowModule, NSArray, NSBox, NSMenuItem, NSProView, NSView, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
+@class FFCapsController, FFEventLibrarySplitView, FFEventsDetailModule, FFEventsLibraryLinenBackground, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFOrganizerFilterHUD, FFOrganizerTextFieldView, FFSidebarModule, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKWindow, LKWindowModule, NSArray, NSBox, NSMenuItem, NSProView, NSView, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
 
 @interface FFEventsSuperModule : FFPersistentModule <NSSplitViewDelegate, FFEventsDetailModuleDelegate, FFOrganizerFilterHUDDelegate, NSWindowDelegate>
 {
@@ -20,7 +20,6 @@
     NSView *_sidebarModuleViewContainer;
     FFItemsContainerView *_itemsModuleViewContainer;
     FFCapsController *_capsController;
-    FFSearchController *_searchController;
     FFOrganizerFilterHUD *_filterHUD;
     LKWindow *_filterHUDPopoverWindow;
     LKWindowModule *_filterWindowModule;
@@ -89,11 +88,7 @@
 - (BOOL)module:(id)arg1 validate:(char *)arg2 userInterfaceItem:(id)arg3;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)module:(id)arg1 fieldEditorForView:(id)arg2 cell:(id)arg3;
-- (void)searchControllerDidChangeString:(id)arg1;
 - (void)toggleSidebarHidden:(id)arg1;
-@property(readonly, nonatomic) FFSearchController *searchController;
-- (id)filteringSidebarItemNames;
-- (void)updateSearchInfoString;
 - (void)sidebarModuleSelectionDidChange:(id)arg1;
 - (void)searchAction:(id)arg1;
 - (void)showSkimmerInfo:(id)arg1;

@@ -24,6 +24,7 @@
 
 + (struct CGRect)frameRectForRect:(struct CGRect)arg1;
 + (struct CGRect)frameForItem:(struct CGRect)arg1 withType:(int)arg2 andContainmentType:(int)arg3;
+- (void)setContents:(id)arg1;
 - (struct CGRect)visibleBoundsOfLayer:(id)arg1 accountingForOverlap:(BOOL)arg2;
 - (id)initWithTimelineView:(id)arg1;
 - (void)dealloc;

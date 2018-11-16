@@ -22,6 +22,7 @@
 - (id)newDefaultProject:(id)arg1 type:(id)arg2;
 - (id)initWithEventURL:(id)arg1 catalog:(id)arg2 create:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)update_addAudioSourceDicts;
+- (BOOL)update_migrateEffectBundleFormat;
 - (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
 - (id)rootObject;
 - (id)mediaEventProject;

@@ -40,9 +40,9 @@
 
 + (void)maybeInitResources;
 + (id)allocInfoBarTextWithPosition:(const PCVector2_79efa81a *)arg1;
-+ (PCPtr_ca909b16)getHandlesTexture:(int)arg1;
-+ (PCPtr_ca909b16)getPivotTexture:(int)arg1;
-+ (PCPtr_ca909b16)getRotationTexture:(int)arg1;
++ (PCPtr_df275998)getHandlesTexture:(int)arg1;
++ (PCPtr_df275998)getPivotTexture:(int)arg1;
++ (PCPtr_df275998)getRotationTexture:(int)arg1;
 - (void)_init;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4 scaleOnly:(BOOL)arg5;
@@ -66,9 +66,9 @@
 - (void)setRoundness:(double)arg1;
 - (double)getRoundness;
 - (BOOL)isActiveHandle:(int)arg1;
-- (PCPtr_ca909b16)getCurrentHandlesTexture:(int)arg1;
-- (PCPtr_ca909b16)getCurrentPivotTexture;
-- (PCPtr_ca909b16)getCurrentRotationTexture;
+- (PCPtr_df275998)getCurrentHandlesTexture:(int)arg1;
+- (PCPtr_df275998)getCurrentPivotTexture;
+- (PCPtr_df275998)getCurrentRotationTexture;
 - (PCVector2_7e488b7d)getPivotSize;
 - (PCVector2_7e488b7d)getHandleDirection;
 - (float)getRotHandleDistance;

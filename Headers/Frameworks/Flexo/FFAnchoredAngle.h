@@ -74,6 +74,7 @@
 - (id)inspectableChannelsForIdentifier:(id)arg1;
 - (void)_collectDescendentCompositedObject:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 intoArray:(id)arg3 useAudioRange:(BOOL)arg4 container:(id)arg5;
 - (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
+- (void)_enumerateDescendantAnchoredObjects:(BOOL)arg1 includeSelf:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 stop:(char *)arg4;
 - (void)_isThrougheditOnLeft:(BOOL)arg1 angleMatchVideo:(char *)arg2 angleMatchAudio:(char *)arg3 throughEditVideo:(char *)arg4 throughEditAudio:(char *)arg5 sameMultiangle:(char *)arg6;
 - (int)multiAngleDetail;
 - (CDStruct_e83c9415)angleThroughEditMaxClippedRangeInContainerSpace:(BOOL)arg1 checkPlayEnables:(BOOL)arg2 checkRoles:(BOOL)arg3;

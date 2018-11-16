@@ -18,10 +18,12 @@
     BOOL _isMenuOpen;
 }
 
++ (void)rebuildImageCache:(double)arg1;
 + (void)initialize;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)dealloc;
 - (void)collectionChanged:(id)arg1;
+- (void)windowDidChangeBackingProperties:(id)arg1;
 - (BOOL)areAllChannelsEqual;
 - (struct TXFontCollection *)getCurrentCollection;
 - (void)updatePopUpMenu:(BOOL)arg1;

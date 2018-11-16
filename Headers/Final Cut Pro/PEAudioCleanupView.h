@@ -79,6 +79,7 @@
 - (void)_setupNothingToEnhanceText;
 - (void)_layoutHeaderAndFooter;
 - (void)_layoutBoxElements;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 @property PEAudioCleanupContainerModule *controller; // @synthesize controller=_controller;
 @property BOOL panelEnabled; // @synthesize panelEnabled=_panelEnabled;
 

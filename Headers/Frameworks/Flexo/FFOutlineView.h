@@ -6,7 +6,7 @@
 
 #import <Flexo/FFResponderLayerHostView.h>
 
-@class CALayer, FFOutlineBackgroundView, FFOutlineViewLayout, FFOutlineViewReuseManager, NSArray, NSClipView, NSColor, NSDictionary, NSIndexPath;
+@class CALayer, FFOutlineBackgroundView, FFOutlineViewLayout, FFOutlineViewReuseManager, LKSyntheticUIElement, NSArray, NSClipView, NSColor, NSDictionary, NSIndexPath;
 
 @interface FFOutlineView : FFResponderLayerHostView
 {
@@ -200,6 +200,39 @@
 @property(retain, nonatomic) NSArray *cachedSortedIndexPaths; // @synthesize cachedSortedIndexPaths=_cachedSortedIndexPaths;
 @property(retain, nonatomic) NSDictionary *cachedVisibleCellsByIndexPath; // @synthesize cachedVisibleCellsByIndexPath=_cachedVisibleCellsByIndexPath;
 @property(readonly, copy, nonatomic) NSArray *selectedIndexPaths; // @synthesize selectedIndexPaths=_selectedIndexPaths;
+- (id)elementsForRowPaths:(id)arg1;
+@property(readonly, nonatomic) NSArray *elementsForRows;
+@property(readonly, nonatomic) NSArray *elementsForVisibleRows;
+@property(readonly, nonatomic) NSArray *elementsForSelectedRows;
+@property(readonly, nonatomic) NSArray *columnElements;
+@property(readonly, nonatomic) LKSyntheticUIElement *headerElement;
+- (id)ownAttributeNames;
+- (id)accessibilityAttributeNames;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (BOOL)accessibilityIsIgnored;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)syntheticUIElementAttributeNames:(id)arg1;
+- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
+- (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
+- (id)namesOfPromisedFilesDroppedAtDestination:(id)arg1;
+- (void)draggedImage:(id)arg1 beganAt:(struct CGPoint)arg2;
+- (void)draggedImage:(id)arg1 endedAt:(struct CGPoint)arg2 operation:(unsigned long long)arg3;
+- (void)draggedImage:(id)arg1 movedTo:(struct CGPoint)arg2;
+- (BOOL)ignoreModifierKeysWhileDragging;
+- (void)setCellAtIndexPath:(id)arg1 highlightedForDrop:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)setDropIndexPath:(id)arg1 animated:(BOOL)arg2;
+- (void)setDraggingRow:(id)arg1 childInsertionIndex:(long long)arg2;
+- (unsigned long long)updateForDraggingInfo:(id)arg1;
+- (void)highlightForDragging;
+- (void)unhighlightForDragging;
+- (unsigned long long)draggingEntered:(id)arg1;
+- (unsigned long long)draggingUpdated:(id)arg1;
+- (void)draggingExited:(id)arg1;
+- (BOOL)prepareForDragOperation:(id)arg1;
+- (BOOL)performDragOperation:(id)arg1;
+- (void)concludeDragOperation:(id)arg1;
+- (void)draggingEnded:(id)arg1;
+- (BOOL)wantsPeriodicDraggingUpdates;
 
 @end
 

@@ -16,6 +16,8 @@
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
+- (void)setEffectBundleInternalBundleVersion:(int)arg1;
+- (int)effectBundleInternalBundleVersion;
 - (void)setActivePresetIndex:(int)arg1;
 - (int)activePresetIndex;
 - (id)channelFolder;
@@ -29,6 +31,8 @@
 - (void)partChangedHook;
 - (int)bundleEncodingOptions;
 - (void)setEffectBundleParts:(id)arg1;
+- (void)_updateObjects:(id)arg1 fromVersion:(int)arg2;
+- (BOOL)update_migrateEffectBundleFormat;
 
 @end
 

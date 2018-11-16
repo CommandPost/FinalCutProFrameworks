@@ -11,44 +11,6 @@
 }
 
 + (unsigned long long)themeIndex;
-+ (id)canvasRulerDropShadow;
-+ (id)canvasRulerGradientEnd;
-+ (id)canvasRulerGradientStart;
-+ (id)canvasRulerInnerShadow;
-+ (id)canvasRulerTickMark;
-+ (id)dropMenuMainText;
-+ (id)dropMenuMainTextHighlight;
-+ (id)dropMenuSubText;
-+ (id)dropMenuSubTextHighlight;
-+ (id)inspectorPreviewBackground;
-+ (id)markerLineBlue;
-+ (id)markerLineGreen;
-+ (id)markerLineGrey;
-+ (id)markerLineOrange;
-+ (id)markerLinePink;
-+ (id)markerLinePurple;
-+ (id)markerLineRed;
-+ (id)markerLineTeal;
-+ (id)markerLineYellow;
-+ (id)projectBrowserThumbnailViewBGColor;
-+ (id)timebarAudioWaveform;
-+ (id)timebarAudioWaveformDisabled;
-+ (id)timebarAudioWaveformNormal;
-+ (id)timebarAudioWaveformSelected;
-+ (id)timelineAudioWaveformChannel;
-+ (id)timelineClipTextBlue;
-+ (id)timelineClipTextGreen;
-+ (id)timelineClipTextGrey;
-+ (id)timelineClipTextPurple;
-+ (id)timelineClipTextSelected;
-+ (id)timelineClipTextSelectedEngrave;
-+ (id)timelineClipTextTeal;
-+ (id)timelineClipTextYellow;
-+ (id)timelineGroupText;
-+ (id)timelineOverlapFill;
-+ (id)timelineOverlapOutline;
-+ (id)timelineOverlapText;
-+ (id)timelineOverlapTextEngrave;
 
 @end
 

@@ -104,6 +104,7 @@
     double _lastFPSUpdateTime;
     double _lastFrameTextUpdateTime;
     OZClickableProgressIndicator *_progressIndicator;
+    struct vector<int, std::allocator<int>> _zoomMenuTags;
 }
 
 - (struct OZDocument *)currentOZDocument;
@@ -137,6 +138,7 @@
 - (void)updateInfoBarObjectStatus:(id)arg1;
 - (void)hideInfoBarObjectStatus;
 - (void)updateInfoBarWithEvent:(id)arg1 forView:(id)arg2;
+- (void)updateZoomPopupTags:(float)arg1;
 - (void)updateZoomPopup;
 - (void)updateViewOptions;
 - (void)progressClicked:(id)arg1;
@@ -301,6 +303,8 @@
 - (void)postNotification:(unsigned int)arg1 updateToolOnSelectionChanged:(BOOL)arg2;
 - (void)showAlert:(id)arg1;
 - (BOOL)isOSCActive:(struct PCUUID)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) BOOL inhibitOSCUpdate; // @synthesize inhibitOSCUpdate=_inhibitOSCUpdate;
 @property(readonly, nonatomic) OZCanvasView *canvasView; // @synthesize canvasView=_canvasView;
 @property(nonatomic) int OSCState; // @synthesize OSCState=_OSCState;

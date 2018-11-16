@@ -4,14 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFThemeFacetLayer.h>
+#import "LKSplitView.h"
 
 __attribute__((visibility("hidden")))
-@interface _ThemeFacetLayer : FFThemeFacetLayer
+@interface FFMediaBrowserSplitViewPaneSplitter : LKSplitView
 {
 }
 
-- (struct CGImage *)_imageForFacet:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)setDividerStyle:(long long)arg1;
 
 @end
 

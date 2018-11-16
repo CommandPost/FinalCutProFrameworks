@@ -36,8 +36,6 @@
     BOOL _debugDisplayPlayheadOnItem;
 }
 
-+ (unsigned long long)_themeRef;
-+ (id)_playheadFacet;
 - (id)init;
 - (void)dealloc;
 @property(retain, nonatomic) FFAnchoredCollection *rootItem; // @synthesize rootItem=_rootItem;

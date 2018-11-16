@@ -90,6 +90,9 @@
 @property int orientation; // @synthesize orientation=_orientation;
 @property(readonly) NSMutableArray *subnodes; // @synthesize subnodes=_subnodes;
 @property LKContainerNode *parentNode; // @synthesize parentNode=_parentNode;
+- (void)_filterNodes;
+- (void)_printWithOffset:(int)arg1;
+- (id)description;
 
 @end
 

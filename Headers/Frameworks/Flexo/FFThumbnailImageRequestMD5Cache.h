@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 - (id)init;
 - (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

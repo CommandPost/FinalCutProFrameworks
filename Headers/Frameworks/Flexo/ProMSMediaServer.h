@@ -61,6 +61,11 @@
 - (id)fillAudioBuffer:(unsigned long long)arg1 count:(int)arg2;
 - (id)makeNSErrorFromOSStatus:(int)arg1 andComment:(id)arg2;
 - (BOOL)adjustRenderingForThrottle;
+- (BOOL)computeCropForSession:(id)arg1 bounds:(struct CGRect *)arg2;
+- (int)copyPlayerFrame:(id)arg1;
+- (id)newRenderedSourceImage:(id)arg1 hasFields:(BOOL)arg2;
+- (int)copyPixelBufferData:(id)arg1 toField:(unsigned int)arg2;
+- (void)logBoundsForFrame:(id)arg1 imageSelector:(SEL)arg2;
 
 @end
 

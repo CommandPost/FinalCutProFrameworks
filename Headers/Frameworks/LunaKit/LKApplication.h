@@ -12,6 +12,8 @@
 
 - (void)installModuleLayoutMenuItems;
 - (void)finishLaunching;
+- (void)orderFrontStandardAboutPanel:(id)arg1;
+- (id)copyrightYearString;
 
 @end
 

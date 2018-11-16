@@ -6,15 +6,12 @@
 
 #import "PEMeterLayer.h"
 
-@class CAGradientLayer;
-
 @interface PEMiniMeterLayer : PEMeterLayer
 {
-    CAGradientLayer *_greenGradientLayer;
-    CAGradientLayer *_redGradientLayer;
 }
 
 - (id)init;
+- (void)maskToHeight:(double)arg1;
 - (void)layoutSublayers;
 
 @end

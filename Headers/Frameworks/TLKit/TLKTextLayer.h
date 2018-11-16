@@ -29,6 +29,7 @@
 @property BOOL selected;
 @property double fontSize;
 @property BOOL shadow;
+- (void)setContentsScale:(double)arg1;
 
 @end
 

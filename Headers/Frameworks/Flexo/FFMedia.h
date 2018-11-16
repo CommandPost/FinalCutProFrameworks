@@ -32,6 +32,7 @@
     NSMutableArray *_thumbMD5Infos;
     NSRecursiveLock *_thumbMD5Lock;
     BOOL _isThumbMD5InfoProxy;
+    double _thumbMD5InfoContentScale;
 }
 
 + (id)copyClassDescription;
@@ -131,15 +132,33 @@
 - (CDStruct_60067b7e)audioMD5:(int)arg1;
 - (CDStruct_e83c9415)untimedClippedRange;
 - (CDStruct_e83c9415)untimedAudioClippedRange;
-- (void)_validateThumbMD5InfoProxyState;
-- (id)thumbMD5InfoForTime:(CDStruct_1b6d18a9)arg1;
-- (void)addThumbMD5Info:(id)arg1;
-- (BOOL)_invalidateThumbMD5Range:(CDStruct_e83c9415)arg1;
+- (BOOL)_validateThumbMD5InfoProxyAndScaleState:(double)arg1;
+- (id)thumbMD5InfoForTime:(CDStruct_1b6d18a9)arg1 contentsScale:(double)arg2;
+- (void)addThumbMD5Info:(id)arg1 contentsScale:(double)arg2;
+- (BOOL)_invalidateThumbMD5Range:(CDStruct_e83c9415)arg1 contentsScale:(double)arg2;
 - (void)invalidateThumbMD5Range:(CDStruct_e83c9415)arg1;
 - (id)thumbMD5Infos;
 - (void)setThumbMD5Infos:(id)arg1;
+@property(nonatomic) double thumbMD5InfoContentScale; // @synthesize thumbMD5InfoContentScale=_thumbMD5InfoContentScale;
 @property(nonatomic) BOOL isThumbMD5InfoProxy; // @synthesize isThumbMD5InfoProxy=_isThumbMD5InfoProxy;
 @property(retain, nonatomic) FFThumbnailRequest *okIconImageRequest; // @synthesize okIconImageRequest=_okIconImageRequest;
+- (BOOL)actionAddMarkerWithRange:(CDStruct_e83c9415)arg1 error:(id *)arg2;
+- (BOOL)actionAddMarkerToAnchoredObject:(id)arg1 withRange:(CDStruct_e83c9415)arg2 error:(id *)arg3;
+- (BOOL)actionPasteMarker:(id)arg1 toAnchoredObject:(id)arg2 withRange:(CDStruct_e83c9415)arg3 error:(id *)arg4;
+- (BOOL)actionRemoveMarker:(id)arg1 error:(id *)arg2;
+- (BOOL)actionChangeMarkerTypeToTodo:(id)arg1 error:(id *)arg2;
+- (BOOL)actionChangeMarkerTypeToNote:(id)arg1 error:(id *)arg2;
+- (BOOL)actionMarkMarkerAsCompleted:(BOOL)arg1 marker:(id)arg2 error:(id *)arg3;
+- (BOOL)actionChangeMarkerDisplayName:(id)arg1 marker:(id)arg2 error:(id *)arg3;
+- (BOOL)actionMoveMarker:(id)arg1 toRange:(CDStruct_e83c9415)arg2 error:(id *)arg3;
+- (BOOL)constrainAddMarkerWithRange:(CDStruct_e83c9415 *)arg1 temporalResolutionMode:(int)arg2 error:(id *)arg3;
+- (BOOL)actionAddFavoriteWithRange:(CDStruct_e83c9415)arg1 markerCategory:(id)arg2 animationHint:(id)arg3 error:(id *)arg4;
+- (BOOL)actionAddKeywordsWithNames:(id)arg1 forRange:(CDStruct_e83c9415)arg2 animationHint:(id)arg3 error:(id *)arg4;
+- (BOOL)actionAddAnalysisKeywords:(id)arg1 forRange:(CDStruct_e83c9415)arg2 animationHint:(id)arg3 error:(id *)arg4;
+- (BOOL)actionRemoveKeywordsWithNames:(id)arg1 forRange:(CDStruct_e83c9415)arg2 animationHint:(id)arg3 error:(id *)arg4;
+- (BOOL)actionRenameKeywordWithName:(id)arg1 to:(id)arg2 error:(id *)arg3;
+- (BOOL)actionRemoveKeywordsWithNames:(id)arg1 error:(id *)arg2;
+- (BOOL)actionHideRange:(CDStruct_e83c9415)arg1 hidden:(BOOL)arg2 error:(id *)arg3;
 
 @end
 

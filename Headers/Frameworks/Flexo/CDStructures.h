@@ -1147,18 +1147,21 @@ struct NSObject {
 
 struct NSXMLElement {
     Class _field1;
-    unsigned long long _field2;
+    id _field2;
     id _field3;
-    unsigned long long _field4;
+    unsigned int :4;
+    unsigned int :28;
+    int _field4;
     id _field5;
     id _field6;
     id _field7;
     id _field8;
-    id _field9;
+    char _field9;
     char _field10;
-    unsigned char _field11[3];
-    id _field12;
-    long long _field13;
+    char _field11;
+    unsigned char _field12;
+    id _field13;
+    long long _field14;
 };
 
 struct OMHistoAnalysis {
@@ -1621,8 +1624,8 @@ struct PCPlane<double> {
     PCVector3_515d8d1c _field2;
 };
 
-struct PCPtr<POTexture> {
-    struct POTexture *_ptr;
+struct PCPtr<POMultiResTexture> {
+    struct POMultiResTexture *_ptr;
     struct PCSharedCount _refcount;
 };
 
@@ -1690,7 +1693,7 @@ struct PCVector3<double> {
 
 struct PC_Sp_counted_base;
 
-struct POTexture;
+struct POMultiResTexture;
 
 struct POVertexAsset;
 
@@ -2572,6 +2575,56 @@ struct _CGLContextObject {
         CDUnknownFunctionPointerType vertex_attrib_divisor;
         CDUnknownFunctionPointerType draw_arrays_instanced;
         CDUnknownFunctionPointerType draw_elements_instanced;
+        CDUnknownFunctionPointerType draw_elements_base_vertex;
+        CDUnknownFunctionPointerType draw_range_elements_base_vertex;
+        CDUnknownFunctionPointerType draw_elements_instanced_base_vertex;
+        CDUnknownFunctionPointerType multi_draw_elements_base_vertex;
+        CDUnknownFunctionPointerType bind_vertex_array_ARB;
+        CDUnknownFunctionPointerType delete_vertex_arrays_ARB;
+        CDUnknownFunctionPointerType gen_vertex_arrays_ARB;
+        CDUnknownFunctionPointerType is_vertex_array_ARB;
+        CDUnknownFunctionPointerType point_size_pointer;
+        CDUnknownFunctionPointerType vertex_point_sizef_APPLE;
+        CDUnknownFunctionPointerType clear_bufferiv;
+        CDUnknownFunctionPointerType clear_bufferuiv;
+        CDUnknownFunctionPointerType clear_bufferfv;
+        CDUnknownFunctionPointerType clear_bufferfi;
+        CDUnknownFunctionPointerType get_stringi;
+        CDUnknownFunctionPointerType fence_sync;
+        CDUnknownFunctionPointerType is_sync;
+        CDUnknownFunctionPointerType delete_sync;
+        CDUnknownFunctionPointerType client_wait_sync;
+        CDUnknownFunctionPointerType wait_sync;
+        CDUnknownFunctionPointerType get_integer64v_sync;
+        CDUnknownFunctionPointerType get_synciv;
+        CDUnknownFunctionPointerType tex_image2D_multisample;
+        CDUnknownFunctionPointerType tex_image3D_multisample;
+        CDUnknownFunctionPointerType get_multisamplefv;
+        CDUnknownFunctionPointerType sample_maski;
+        CDUnknownFunctionPointerType tex_buffer;
+        CDUnknownFunctionPointerType copy_buffer_sub_data;
+        CDUnknownFunctionPointerType primitive_restart_index;
+        CDUnknownFunctionPointerType get_query_objecti64v;
+        CDUnknownFunctionPointerType get_query_objectui64v;
+        CDUnknownFunctionPointerType map_buffer_range;
+        CDUnknownFunctionPointerType flush_mapped_buffer_range;
+        CDUnknownFunctionPointerType query_counter;
+        CDUnknownFunctionPointerType get_integer64i_v;
+        CDUnknownFunctionPointerType get_buffer_parameteri64v;
+        CDUnknownFunctionPointerType gen_samplers;
+        CDUnknownFunctionPointerType delete_samplers;
+        CDUnknownFunctionPointerType is_sampler;
+        CDUnknownFunctionPointerType bind_sampler;
+        CDUnknownFunctionPointerType sampler_parameteri;
+        CDUnknownFunctionPointerType sampler_parameteriv;
+        CDUnknownFunctionPointerType sampler_parameterf;
+        CDUnknownFunctionPointerType sampler_parameterfv;
+        CDUnknownFunctionPointerType sampler_parameterIiv;
+        CDUnknownFunctionPointerType sampler_parameterIuiv;
+        CDUnknownFunctionPointerType get_sampler_parameteriv;
+        CDUnknownFunctionPointerType get_sampler_parameterfv;
+        CDUnknownFunctionPointerType get_sampler_parameterIiv;
+        CDUnknownFunctionPointerType get_sampler_parameterIuiv;
     } _field2;
     struct _CGLPrivateObject *_field3;
     void *_field4;

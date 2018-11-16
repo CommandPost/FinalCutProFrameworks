@@ -6,7 +6,7 @@
 
 #import "NSResponder.h"
 
-@class NSArray, NSDictionary, NSEvent, NSMutableArray, NSMutableDictionary, NSTrackingArea, NSView<TLKEventDispatcherView>, TLKEventContext, TLKEventHandler, TLKPartArray;
+@class NSArray, NSDictionary, NSEvent, NSMutableArray, NSMutableDictionary, NSTrackingArea, NSView, TLKEventContext, TLKEventHandler, TLKPartArray;
 
 @interface TLKEventDispatcher : NSResponder
 {
@@ -20,7 +20,7 @@
     TLKEventHandler *_potentialHandler;
     TLKEventContext *_potentialHandlerContext;
     NSArray *_rolloverDescriptions;
-    NSView<TLKEventDispatcherView> *_view;
+    NSView *_view;
     NSTrackingArea *_cursorTrackingArea;
     id _delegate;
     id _userData;

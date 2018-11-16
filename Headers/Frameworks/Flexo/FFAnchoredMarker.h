@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)setMetadata:(id)arg1;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (long long)timecodeDisplayDropFrame;
+- (CDStruct_e83c9415)visibleClippedRangeInParentSpace;
 
 @end
 

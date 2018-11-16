@@ -4,26 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import <TLKit/TLKSelectionLayer.h>
 
-@interface TLKItemSelectionLayer : CALayer
+@interface TLKItemSelectionLayer : TLKSelectionLayer
 {
-    CALayer *_rootLayer;
-    CALayer *_outerGlowLayer;
-    unsigned int _containingViewFirstResponder:1;
-    unsigned int reserved:31;
 }
 
-+ (struct CGColor *)enabledColor;
-+ (struct CGColor *)disabledColor;
 - (id)init;
-- (id)hitTest:(struct CGPoint)arg1;
-@property BOOL containingViewFirstResponder;
-- (void)_updateLayers:(id)arg1;
-- (void)invalidate;
-- (void)setDelegate:(id)arg1;
-- (void)layoutSublayers;
-- (void)setCornerRadius:(double)arg1;
 
 @end
 

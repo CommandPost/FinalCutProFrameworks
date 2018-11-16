@@ -77,10 +77,12 @@
     int _proxyRendCount;
     struct OZViewPainter *_painter;
     _Bool _painterUsesHelium;
+    float _backingScale;
 }
 
 + (PCPtr_4c450fa5)getCamera:(int)arg1 forScene:(struct OZScene *)arg2 atTime:(const CDStruct_1b6d18a9 *)arg3 forViewState:(struct OZViewerState *)arg4;
 - (void)initOpenGL;
+- (BOOL)wantsBestResolutionOpenGLSurface;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;
@@ -306,6 +308,7 @@
 - (void)pruneAllTokens:(const char *)arg1;
 - (void)willSetChannel:(struct OZChannelBase *)arg1;
 - (void)didSetChannel:(struct OZChannelBase *)arg1;
+- (double)backingScaleFactor;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) NSFont *tmpFont; // @synthesize tmpFont=_tmpFont;

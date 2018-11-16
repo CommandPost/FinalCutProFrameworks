@@ -15,6 +15,7 @@
 + (id)displayName;
 + (id)toolTip;
 + (id)toolbarFacet;
++ (id)TLKEventHandlerID;
 - (id)cursor;
 - (BOOL)handlesSelection;
 - (void)mouseDown:(id)arg1;

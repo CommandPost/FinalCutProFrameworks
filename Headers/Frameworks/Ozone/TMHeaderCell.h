@@ -17,6 +17,7 @@
 - (id)init;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)font;
 - (void)setObjectValue:(id)arg1;
 - (BOOL)_allowsContextMenus;
 - (BOOL)pointInText:(struct CGRect)arg1 inView:(id)arg2 event:(id)arg3;

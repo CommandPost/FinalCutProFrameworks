@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _sampleTimeRange;
     BOOL _isAudio;
     struct CGSize _imageSize;
+    double _contentsScale;
     FFMD5AndOffset *_imageMD5;
     CDStruct_bdcb2b0d _cachedMD5;
     BOOL _isAVClip;
@@ -36,7 +37,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (struct CGImage *)dummyImage;
-- (id)initWithSkimmable:(struct NSObject *)arg1 imageTimeRange:(CDStruct_e83c9415)arg2 imageSize:(struct CGSize)arg3 requestAudio:(BOOL)arg4 target:(id)arg5 imageReadySelector:(SEL)arg6 requestTimeType:(int)arg7 constrainedTimeRange:(CDStruct_e83c9415)arg8 highPriority:(BOOL)arg9 useAudioPeaksAvailable:(BOOL)arg10 effectCount:(long long)arg11;
+- (id)initWithSkimmable:(struct NSObject *)arg1 imageTimeRange:(CDStruct_e83c9415)arg2 imageSize:(struct CGSize)arg3 contentsScale:(double)arg4 requestAudio:(BOOL)arg5 target:(id)arg6 imageReadySelector:(SEL)arg7 requestTimeType:(int)arg8 constrainedTimeRange:(CDStruct_e83c9415)arg9 highPriority:(BOOL)arg10 useAudioPeaksAvailable:(BOOL)arg11 effectCount:(long long)arg12;
 - (id)initWithSegmentStoreMD5:(id)arg1 segmentStoreOffset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4;
 - (void)dealloc;
 - (oneway void)release;

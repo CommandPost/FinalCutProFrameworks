@@ -18,10 +18,11 @@
 #import "FFSkimmableProtocol.h"
 #import "NSCoding.h"
 #import "NSCopying.h"
+#import "TLKTimelineItem.h"
 
 @class FFVideoProps, NSArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
-@interface FFAnchoredObject : FFBaseDSObject <NSCoding, NSCopying, FFDataModelProtocol, FFSkimmableProtocol, FFAnchoredParentProtocol, FFMetadataProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorChannelDataSource, FFMD5Protocol, FFAssetContainerProtocol, FFEffectContainerProtocol>
+@interface FFAnchoredObject : FFBaseDSObject <TLKTimelineItem, NSCoding, NSCopying, FFDataModelProtocol, FFSkimmableProtocol, FFAnchoredParentProtocol, FFMetadataProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorChannelDataSource, FFMD5Protocol, FFAssetContainerProtocol, FFEffectContainerProtocol>
 {
     NSString *_displayName;
     id _parentItem;
@@ -46,6 +47,7 @@
 
 + (id)copyClassDescription;
 + (id)newExtendedSourceWithSource:(id)arg1 unclippedRangeRequired:(CDStruct_e83c9415)arg2 identifier:(id *)arg3;
++ (id)roleForXMLValue:(id)arg1 element:(id)arg2 error:(id *)arg3;
 - (id)type;
 - (id)init;
 - (id)initWithDisplayName:(const id)arg1;
@@ -174,6 +176,7 @@
 - (BOOL)audioPlayEnable;
 - (BOOL)objectInContainedItems:(id)arg1;
 - (id)containedItems;
+- (BOOL)hasContainedItems;
 - (id)topLevelContainedItems;
 - (id)topLevelAllContainedItems;
 - (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3;
@@ -333,6 +336,8 @@
 - (void)_descendentAnchoredObject:(id)arg1 includingSelf:(BOOL)arg2;
 - (id)descendentAnchoredObjectsIncludingSelf:(BOOL)arg1;
 - (id)descendentAnchoredObjects;
+- (void)_enumerateDescendantAnchoredObjects:(BOOL)arg1 includeSelf:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 stop:(char *)arg4;
+- (void)enumerateDescendantAnchoredObjects:(BOOL)arg1 includeSelf:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (long long)compareAnchoredObjectForStartTime:(id)arg1;
 - (long long)compareAnchoredObjectForLane:(id)arg1;
 - (id)newProvider;
@@ -419,8 +424,8 @@
 - (void)_checkObjectAndDecendentsForAlignmentToSequence:(id)arg1;
 - (BOOL)canRevealInFinder;
 - (void)revealInFinder:(id)arg1;
-- (id)thumbMD5InfoForTime:(CDStruct_1b6d18a9)arg1;
-- (void)addThumbMD5Info:(id)arg1;
+- (id)thumbMD5InfoForTime:(CDStruct_1b6d18a9)arg1 contentsScale:(double)arg2;
+- (void)addThumbMD5Info:(id)arg1 contentsScale:(double)arg2;
 - (CDStruct_1b6d18a9)_clearRoundingTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_e83c9415)_clearRoundingRange:(CDStruct_e83c9415)arg1;
 - (struct FigTimePair)_clearRoundingPair:(struct FigTimePair)arg1;
@@ -428,11 +433,64 @@
 - (unsigned long long)_basicTimingValidateAndRepair:(BOOL)arg1 report:(int)arg2 error:(id *)arg3;
 - (unsigned long long)validateAndRepair:(BOOL)arg1 report:(int)arg2 error:(id *)arg3;
 - (id)fullPath;
+- (BOOL)update_migrateEffectBundleFormat;
 @property(retain, nonatomic) NSArray *cachedSortedLocalizedRoles; // @synthesize cachedSortedLocalizedRoles=_cachedSortedLocalizedRoles;
 @property(nonatomic) int cachedAVContainmentType; // @synthesize cachedAVContainmentType=_cachedAVContainmentType;
 @property(readonly, nonatomic) unsigned int aoFlagsMask; // @synthesize aoFlagsMask=_aoFlagsMask;
 @property(readonly, nonatomic) unsigned int aoFlags; // @synthesize aoFlags=_aoFlags;
 @property(retain, nonatomic) NSSet *anchoredItems; // @synthesize anchoredItems=_anchoredItems;
+- (BOOL)addMarkerWithRange:(CDStruct_e83c9415)arg1 displayName:(id)arg2 displayNameIsDefault:(BOOL)arg3 changeDict:(id)arg4 error:(id *)arg5;
+- (BOOL)addMarker:(id)arg1 withRange:(CDStruct_e83c9415)arg2 changeDict:(id)arg3 error:(id *)arg4;
+- (BOOL)moveMarker:(id)arg1 toRange:(CDStruct_e83c9415)arg2 changeDict:(id)arg3 error:(id *)arg4;
+- (BOOL)addKeywordsWithNames:(id)arg1 forProject:(id)arg2 withRange:(CDStruct_e83c9415)arg3 changeDict:(id)arg4 error:(id *)arg5;
+- (BOOL)removeAllRangesForAnalysisKeyword:(id)arg1 error:(id *)arg2;
+- (BOOL)addAnalysisKeywords:(id)arg1 withRange:(CDStruct_e83c9415)arg2 changeDict:(id)arg3 error:(id *)arg4;
+- (BOOL)addAnalysisAllFacesBoundingBox:(id)arg1 withRange:(CDStruct_e83c9415)arg2 error:(id *)arg3;
+- (BOOL)removeKeywordsWithNames:(id)arg1 withRange:(CDStruct_e83c9415)arg2 changeDict:(id)arg3 error:(id *)arg4;
+- (BOOL)renameKeywordWithName:(id)arg1 to:(id)arg2 changeDict:(id)arg3 error:(id *)arg4;
+- (BOOL)removeKeywordsWithNames:(id)arg1 changeDict:(id)arg2 error:(id *)arg3;
+- (BOOL)addFavoriteWithRange:(CDStruct_e83c9415)arg1 markerCategory:(id)arg2 changeDict:(id *)arg3 error:(id *)arg4;
+- (BOOL)hideRange:(CDStruct_e83c9415)arg1 hidden:(BOOL)arg2 changeDict:(id)arg3 error:(id *)arg4;
+- (BOOL)editSetConstantRetiming:(double)arg1 currentRate:(double)arg2 scaleToRight:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)editResetRetiming;
+- (BOOL)editEffectStack:(id)arg1 setVariableRetiming:(double)arg2 aroundTime:(CDStruct_1b6d18a9)arg3 segmentIndex:(int)arg4 scaleToRight:(BOOL)arg5 error:(id *)arg6;
+- (BOOL)retimeAndTrimToRate:(double)arg1 error:(id *)arg2;
+- (BOOL)applyConstantRetiming:(double)arg1 error:(id *)arg2;
+- (BOOL)applyVariableSpeedRetiming:(CDStruct_e83c9415)arg1 rate:(double)arg2 newRange:(CDStruct_e83c9415 *)arg3 error:(id *)arg4;
+- (BOOL)applySpeedRampPresetStartAt:(CDStruct_1b6d18a9)arg1 endAt:(CDStruct_1b6d18a9)arg2 toZero:(BOOL)arg3 fromZero:(BOOL)arg4 error:(id *)arg5;
+- (BOOL)applyInstantReplayPresetStartAt:(CDStruct_1b6d18a9)arg1 endAt:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
+- (BOOL)applyRewindPresetStartAt:(CDStruct_1b6d18a9)arg1 endAt:(CDStruct_1b6d18a9)arg2 rewindSpeed:(double)arg3 error:(id *)arg4;
+- (BOOL)applyHoldPresetAtComponentTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 newHoldComponentTime:(CDStruct_1b6d18a9 *)arg3 error:(id *)arg4;
+- (BOOL)applySweetSpotPreset:(id *)arg1 startMediaTime:(CDStruct_1b6d18a9)arg2 endMediaTime:(CDStruct_1b6d18a9)arg3 sweetFrameMediaTime:(CDStruct_1b6d18a9)arg4 startComponentTime:(CDStruct_1b6d18a9)arg5 endComponentTime:(CDStruct_1b6d18a9)arg6 beforeSpeed:(double)arg7 afterSpeed:(double)arg8 sweetFrameDuration:(double)arg9;
+- (BOOL)moveMediaKey:(unsigned int)arg1 toMediaTime:(double)arg2 error:(id *)arg3;
+- (BOOL)moveComponentKey:(unsigned int)arg1 deltaTime:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
+- (void)resetConstantRetimingRateFromFreeze;
+- (void)addArtisticRetime;
+- (id)newScriptingObjectOfClass:(Class)arg1 forValueForKey:(id)arg2 withContentsValue:(id)arg3 properties:(id)arg4;
+- (id)objectSpecifierForChild:(id)arg1;
+@property(readonly, copy) NSString *timelineDisplayName;
+@property(readonly) long long timelineVerticalIndex;
+@property(readonly) id <TLKTimelineItem> anchoredToTimelineItem;
+- (id)anchoredTimelineItems;
+@property(readonly) id <TLKTimelineItem> transitionTimelineItemPrevious;
+@property(readonly) id <TLKTimelineItem> transitionTimelineItemNext;
+@property(readonly) CDStruct_1b6d18a9 timelineAnchorOffset;
+@property(readonly) CDStruct_1b6d18a9 timelineParentAnchorOffset;
+@property(readonly) struct CGSize aspectRatio;
+- (BOOL)_isPlaceholder:(id)arg1;
+- (int)oldTimelineItemType;
+@property(readonly) int timelineItemType;
+@property(readonly) int timelineAVContainmentType;
+@property(readonly) id <TLKTimelineItem> timelineContainer;
+- (id)markerRanges;
+- (id)copyXMLValueForRole:(id)arg1;
+- (CDStruct_e83c9415)muTimeRange;
+- (CDStruct_1b6d18a9)markerTime;
+- (BOOL)canUseAudio;
+- (id)deviceName;
+- (id)deviceUID;
+- (id)angleId;
+- (id)creationDate;
 
 @end
 

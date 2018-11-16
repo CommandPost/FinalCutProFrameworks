@@ -27,7 +27,7 @@
 - (CDStruct_e83c9415)combinedAudioVideoClippedRange;
 - (CDStruct_e83c9415)untimedClippedRange;
 - (CDStruct_e83c9415)untimedAudioClippedRange;
-- (id)thumbMD5InfoForTime:(CDStruct_1b6d18a9)arg1;
-- (void)addThumbMD5Info:(id)arg1;
+- (id)thumbMD5InfoForTime:(CDStruct_1b6d18a9)arg1 contentsScale:(double)arg2;
+- (void)addThumbMD5Info:(id)arg1 contentsScale:(double)arg2;
 @end
 

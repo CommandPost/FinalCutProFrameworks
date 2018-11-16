@@ -6,7 +6,7 @@
 
 #import <Flexo/FFMediaManagerController.h>
 
-@class NSButton, NSMatrix, NSMutableArray, NSString, NSTextField, NSURL;
+@class NSButton, NSImageView, NSMatrix, NSMutableArray, NSString, NSTextField, NSURL;
 
 @interface FFMediaManagerConsolidateProjectController : FFMediaManagerController
 {
@@ -14,6 +14,12 @@
     NSTextField *_referencedEventsTextField;
     NSMatrix *_consolidateTypeMatrix;
     NSButton *_includeRenderFilesCheckBox;
+    NSImageView *_imageView1;
+    NSImageView *_imageView2;
+    NSImageView *_imageView3;
+    NSImageView *_imageView4;
+    NSImageView *_imageView5;
+    NSImageView *_imageView6;
     NSMutableArray *_referencedEvents;
     NSMutableArray *_referencedAssets;
     NSURL *_hideFileURL;

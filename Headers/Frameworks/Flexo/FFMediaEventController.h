@@ -71,6 +71,8 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)description;
 @property(readonly, nonatomic) BOOL hasDoneInitialSyncMedia; // @synthesize hasDoneInitialSyncMedia=_hasDoneInitialSyncMedia;
+- (BOOL)actionMoveClipsToTrash:(id)arg1 assetRefsToTrash:(id)arg2 error:(id *)arg3;
+- (BOOL)actionAddSnapShotOfSkimmableItemToEventController:(CDStruct_1b6d18a9)arg1 skimmable:(struct NSObject *)arg2 error:(id *)arg3;
 
 @end
 

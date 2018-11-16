@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
     BOOL _currentlySkimming;
     struct CGRect _skimmerCursorRect;
     int _dragSelectionWhereIsMouse;
-    unsigned long long _localThemeRef;
     NSProTimecodeFormatter *_tcFormatter;
     BOOL _showMetadata;
     BOOL _cursorIsHidden;

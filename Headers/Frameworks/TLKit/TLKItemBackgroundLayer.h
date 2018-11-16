@@ -56,7 +56,9 @@
 @property BOOL splitEdit;
 @property BOOL sourceSplitEdit;
 @property BOOL spineItem;
+- (void)_updateStitchingPatterns;
 - (void)_updateAppearanceType:(int)arg1 withMask:(int)arg2;
+- (void)setContentsScale:(double)arg1;
 @property double textSize;
 - (void)setDelegate:(id)arg1;
 - (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;

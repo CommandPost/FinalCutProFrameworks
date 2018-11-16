@@ -31,6 +31,8 @@
 - (id)presetNameFormatter;
 - (BOOL)saveColorLooksFromAnchoredObject:(id)arg1 name:(id)arg2 error:(id *)arg3;
 - (BOOL)loadColorLooksAtIndex:(unsigned long long)arg1 anchoredObject:(id)arg2 error:(id *)arg3;
+- (BOOL)saveColorLooksPuckControlObject:(id)arg1 name:(id)arg2 error:(id *)arg3;
+- (BOOL)loadColorLooksAtIndex:(unsigned long long)arg1 colorLooksPuckControlObject:(id *)arg2 error:(id *)arg3;
 
 @end
 

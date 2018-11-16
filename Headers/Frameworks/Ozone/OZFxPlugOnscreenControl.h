@@ -7,11 +7,12 @@
 #import "POOnScreenControl.h"
 
 #import "FxOnScreenControlAPI_v2.h"
+#import "FxOnScreenControlAPI_v3.h"
 #import "PROAPIObject.h"
 
 @class NSProCursor;
 
-@interface OZFxPlugOnscreenControl : POOnScreenControl <PROAPIObject, FxOnScreenControlAPI_v2>
+@interface OZFxPlugOnscreenControl : POOnScreenControl <PROAPIObject, FxOnScreenControlAPI_v2, FxOnScreenControlAPI_v3>
 {
     PCMatrix44Tmpl_e98c85ee _viewTransformation;
     struct OZRenderState *_state;
@@ -54,6 +55,7 @@
 - (id)objectToScreenTransform;
 - (id)getDefaultCursor;
 - (void)setCursor:(id)arg1;
+- (double)backingScaleFactor;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 - (id)menuForEvent:(id)arg1;
 - (void)menuAddTrack:(id)arg1;

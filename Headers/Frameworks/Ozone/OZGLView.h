@@ -23,6 +23,7 @@
 - (float)getWidth;
 - (float)getHeight;
 - (PCRect_07ce470f)getBounds;
+- (struct CGRect)getPixelBounds;
 - (void)mouseDown:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;
