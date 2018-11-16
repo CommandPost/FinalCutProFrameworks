@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingDestination;
 + (id)keyPathsForValuesAffectingHasMultipleDestinations;
 + (void)initialize;
+@property(nonatomic) double previewTime; // @synthesize previewTime=_previewTime;
 @property(retain, nonatomic) NSArray *errors; // @synthesize errors=_errors;
 @property(retain, nonatomic) NSMutableSet *validFileNames; // @synthesize validFileNames=_validFileNames;
 @property(retain, nonatomic) NSDictionary *metadataFields; // @synthesize metadataFields=_metadataFields;
@@ -88,6 +89,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFShareDestination *originalDestination; // @synthesize originalDestination=_originalDestination;
 @property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
 - (void)updateUI;
+- (void)postProcessErrors:(id)arg1;
 - (void)updateErrors;
 - (id)requiredMetadataKeys;
 - (double)autoexpandingControl:(id)arg1 adjustHeight:(double)arg2 toFitSize:(struct CGSize)arg3;
@@ -105,6 +107,7 @@ __attribute__((visibility("hidden")))
 - (void)doSubmitAnimation:(id)arg1 toDestination:(struct CGRect)arg2;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (id)newPreviewImageRep;
+- (void)postProcessSource:(id)arg1 withDestinationController:(id)arg2;
 - (void)closeWithCode:(long long)arg1;
 - (BOOL)isSheet;
 - (void)beginSheetModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -130,7 +133,8 @@ __attribute__((visibility("hidden")))
 - (id)userVisibleErrors;
 @property(readonly, nonatomic) BOOL canSelectPrevious;
 @property(readonly, nonatomic) BOOL canSelectNext;
-@property(nonatomic) double previewTime;
+- (void)refreshPreviewVideo;
+- (void)setPreviewTime:(double)arg1 rebuildContext:(BOOL)arg2;
 @property(readonly, nonatomic) NSString *okButtonTitle;
 @property(readonly, nonatomic) FFShareDestinationController *selectedDestinationController;
 @property(readonly, nonatomic) CKBatch *batch;

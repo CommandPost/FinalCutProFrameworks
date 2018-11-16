@@ -25,8 +25,10 @@
     NSButton *clipNamesCheckBox;
     NSButton *rolesCheckBox;
     PEEditorContainerModule *_editorContainerModule;
+    NSButton *_laneHeadersButton;
 }
 
+@property(nonatomic) NSButton *laneHeadersButton; // @synthesize laneHeadersButton=_laneHeadersButton;
 @property(retain) PEEditorContainerModule *editorContainerModule; // @synthesize editorContainerModule=_editorContainerModule;
 @property(nonatomic) NSButton *rolesCheckBox; // @synthesize rolesCheckBox;
 @property(nonatomic) NSButton *clipNamesCheckBox; // @synthesize clipNamesCheckBox;
@@ -38,13 +40,18 @@
 - (void)selectAudioPercentage:(id)arg1;
 - (void)_timelineViewSuperViewBoundsChanged:(id)arg1;
 - (BOOL)showAnchors;
+- (void)_saveShowLaneHeadersOutletStateToUserDefaults;
+- (void)showLaneHeaders:(id)arg1;
 - (void)showClipChanged:(id)arg1;
 - (void)updateShowClipCheckbox:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_stopObservingEditorModule;
+- (long long)_laneHeadersAlwaysShown;
+- (void)_reloadShowLaneHeadersOutlet;
+- (void)_reloadItemHeightSlider;
+- (void)_reloadOutlets;
 - (void)_startObservingEditorModule;
 @property(readonly) FFEditorModule *editorModule;
-- (void)_updateItemHeightSlider;
 - (id)toolTip:(id)arg1 forProCommand:(id)arg2;
 - (void)viewDidDisappear;
 - (void)viewWillAppear;

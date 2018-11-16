@@ -10,16 +10,19 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFRoleColorScheme, NSArray, NSIndexPath, NSMutableArray, NSMutableSet, NSSet, NSString;
+@class FFRoleColorScheme, NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 @interface FFOrganizedLane : NSObject <NSCopying, NSCoding, FFStorylineLane>
 {
     NSMutableSet *_items;
     NSMutableArray *_childLanes;
+    NSMutableDictionary *_userDefaults;
+    BOOL _hidden;
     BOOL _arranged;
     BOOL _enabled;
     BOOL _showsComponents;
     BOOL _highlighted;
+    BOOL _pinned;
     int _laneType;
     int _focusMode;
     NSString *_uid;
@@ -34,6 +37,7 @@
 @property(copy, nonatomic) NSArray *childLanes; // @synthesize childLanes=_childLanes;
 @property(retain, nonatomic) FFRoleColorScheme *colorScheme; // @synthesize colorScheme=_colorScheme;
 @property(retain, nonatomic) NSIndexPath *cachedIndex; // @synthesize cachedIndex=_cachedIndex;
+@property(nonatomic) BOOL pinned; // @synthesize pinned=_pinned;
 @property(nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property(nonatomic) int focusMode; // @synthesize focusMode=_focusMode;
 @property(nonatomic) BOOL showsComponents; // @synthesize showsComponents=_showsComponents;
@@ -67,10 +71,11 @@
 - (BOOL)insertChildLane:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)appendChildLane:(id)arg1;
 @property(readonly, nonatomic) BOOL empty;
+- (void)setUserDefaultsValue:(id)arg1 forKey:(id)arg2;
+- (id)userDefaultsValueForKey:(id)arg1;
 @property(readonly, nonatomic) BOOL allowsShowsComponents;
 @property(readonly, nonatomic) BOOL hidable;
-- (void)setHidden:(BOOL)arg1;
-@property(readonly, nonatomic, getter=isHidden) BOOL hidden;
+@property(nonatomic, getter=isHidden) BOOL hidden;
 @property(nonatomic) BOOL isPrimaryLane;
 @property(readonly, nonatomic) NSIndexPath *indexPath;
 @property(readonly, nonatomic) unsigned long long nestingLevel;

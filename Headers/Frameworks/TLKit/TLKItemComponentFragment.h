@@ -49,10 +49,11 @@
 @property(retain, nonatomic) TLKTimelineLayer *layer;
 @property(nonatomic) TLKItemLaneFragment *itemLaneFragment;
 @property(nonatomic) TLKLayoutContext *layoutContext;
+- (void)clearItemComponentInfo;
 @property(nonatomic) TLKItemComponentInfo *itemComponentInfo;
 @property(nonatomic) struct _TLKRange locationRange;
 @property(readonly, nonatomic) struct _TLKRange timeRangeInSeconds;
-@property(readonly, nonatomic) struct CGRect wrappingFrame_DEPRECATED;
+@property(readonly, nonatomic) struct CGRect calculatedLayerFrame;
 @property(nonatomic) struct CGRect frame;
 - (void)_positionLayoutContextWithFrameIfNeeded:(struct CGRect)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

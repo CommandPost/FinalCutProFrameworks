@@ -26,8 +26,7 @@
 @property(readonly, nonatomic) FFStoryTimelinePresentation *storyPresentation; // @synthesize storyPresentation=_storyPresentation;
 - (void)postSequenceChanged:(id)arg1;
 - (void)notifyLaneChanges:(id)arg1 itemChanges:(id)arg2;
-- (void)_logNotification:(id)arg1 forItems:(id)arg2;
-- (void)_logNotification:(id)arg1 forLanes:(id)arg2;
+- (void)audioVideoRoleEnablesHaveChanged:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)stopListeningToSequence;
 - (void)startListeningToSequence;

@@ -139,8 +139,7 @@
 - (int)playEnable;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (void)clearCachedDisplayName;
-- (void)setDisplayName:(id)arg1;
-- (id)displayName;
+@property(copy, nonatomic) NSString *displayName;
 - (void)setParentItem:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -201,6 +200,7 @@
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) BOOL isAnchored;
 @property(readonly, nonatomic) BOOL isAudioOnly;
+@property(readonly, nonatomic) BOOL isCaption;
 @property(readonly, nonatomic) BOOL isStorylineClip;
 @property(readonly, nonatomic) BOOL isVideoOnly;
 @property(readonly, nonatomic) id <FFStorylineItem> nextStoryItem;

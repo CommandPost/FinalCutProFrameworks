@@ -10,7 +10,7 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFLibrary, NSArray, NSMutableArray, NSString;
+@class FFLibrary, NSArray, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface FFRole : NSObject <NSCopying, NSCoding, FFModelLocking>
 {
@@ -25,13 +25,21 @@
     NSMutableArray *_subRoles;
     FFRole *_parentRole;
     FFLibrary *_library;
+    NSString *_languageIdentifier;
+    NSMutableDictionary *_attributesByName;
 }
 
++ (id)shortNameForCaptionFormat:(id)arg1;
++ (id)longNameForCaptionFormat:(id)arg1;
++ (BOOL)canCreateCaptionRoleFormat:(id)arg1;
++ (id)makeValidCaptionRoleFormat:(id)arg1;
++ (BOOL)isValidCaptionRoleFormat:(id)arg1;
 + (long long)nextAvailableCustomRoleColorIndexForMainRoles:(id)arg1;
 + (long long)roleColorIndexForPresentationIndex:(long long)arg1;
 + (long long)presentationIndexForRoleColorIndex:(long long)arg1;
 + (long long)makeValidCustomColorIndex:(long long)arg1;
 + (long long)makeValidUserAssignableColorIndex:(long long)arg1;
++ (long long)_makeValidColorIndex:(long long)arg1 roleKind:(int)arg2 roleType:(int)arg3;
 + (id)makeValidRoleName:(id)arg1;
 + (BOOL)isValidRoleName:(id)arg1;
 + (id)mixdownRoleGroupForRoles:(id)arg1 inLibrary:(id)arg2;
@@ -49,9 +57,10 @@
 + (int)roleTypeFromUID:(id)arg1;
 + (id)defaultRoleColor;
 + (void)initialize;
+@property(retain, nonatomic) NSMutableDictionary *attributesByName; // @synthesize attributesByName=_attributesByName;
 @property(nonatomic) FFLibrary *library; // @synthesize library=_library;
 @property(nonatomic) FFRole *parentRole; // @synthesize parentRole=_parentRole;
-@property(nonatomic) long long colorIndex; // @synthesize colorIndex=_colorIndex;
+@property(readonly, retain, nonatomic) NSString *languageIdentifier; // @synthesize languageIdentifier=_languageIdentifier;
 @property(readonly, retain, nonatomic) NSArray *subRoles; // @synthesize subRoles=_subRoles;
 @property(readonly, nonatomic) int roleKind; // @synthesize roleKind=_roleKind;
 @property(readonly, nonatomic) int roleType; // @synthesize roleType=_roleType;
@@ -74,6 +83,7 @@
 - (id)findNonSystemGeneratedSubRoleWithName:(id)arg1 useInternalNotDisplayName:(BOOL)arg2;
 - (BOOL)hasNameMatching:(id)arg1 useInternalNotDisplayName:(BOOL)arg2;
 - (id)description;
+- (id)findSubRoleWithLanguageIdentifier:(id)arg1;
 - (id)findSubRoleWithUID:(id)arg1;
 - (id)subRoleUIDs;
 - (id)relatedRoleUIDs;
@@ -92,9 +102,14 @@
 - (BOOL)addSubRole:(id)arg1;
 - (BOOL)isOrphan;
 - (BOOL)hasFixedRoleUID;
+- (BOOL)canChangeColor;
 - (BOOL)canDelete;
 - (BOOL)canRename;
 - (BOOL)canAddSubRole;
+- (BOOL)hasWrittenNotSpokenLanguageIdentifiers;
+- (BOOL)hasLanguageIdentifierSubRoles;
+- (id)captionFormat;
+- (BOOL)isCaption;
 - (BOOL)isDefaultSystemGeneratedSubRole;
 - (BOOL)isBuiltInMainRole;
 - (BOOL)isBuiltIn;
@@ -102,10 +117,16 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)assignSpecificRoleUID:(id)arg1;
 - (void)assignNewUID;
+- (id)_roleTypeCharacter;
+@property(nonatomic) long long colorIndex;
+- (void)setAttribute:(id)arg1 forName:(id)arg2;
+- (void)removeAttributeWithName:(id)arg1;
+- (id)allAttributesByName;
+- (id)attributeWithName:(id)arg1;
 - (void)dealloc;
-- (id)initWithName:(id)arg1 type:(int)arg2 kind:(int)arg3 uuid:(id)arg4 colorIndex:(long long)arg5 isSubRole:(BOOL)arg6 isSystemGeneratedSubRole:(BOOL)arg7 systemGeneratedSubRoleIndex:(unsigned long long)arg8;
+- (id)initWithName:(id)arg1 type:(int)arg2 kind:(int)arg3 uuid:(id)arg4 colorIndex:(long long)arg5 isSubRole:(BOOL)arg6 isSystemGeneratedSubRole:(BOOL)arg7 systemGeneratedSubRoleIndex:(unsigned long long)arg8 languageIdentifier:(id)arg9 attributesByName:(id)arg10;
 - (id)initSystemGeneratedSubRoleWithType:(int)arg1 kind:(int)arg2 systemGeneratedSubRoleIndex:(unsigned long long)arg3;
-- (id)initWithName:(id)arg1 type:(int)arg2 kind:(int)arg3 uuid:(id)arg4 colorIndex:(long long)arg5 isSubRole:(BOOL)arg6;
+- (id)initWithName:(id)arg1 type:(int)arg2 kind:(int)arg3 uuid:(id)arg4 colorIndex:(long long)arg5 isSubRole:(BOOL)arg6 languageIdentifier:(id)arg7 attributesByName:(id)arg8;
 
 @end
 

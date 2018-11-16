@@ -69,10 +69,12 @@
     ERLRelationalTable *_layoutContextsTable;
     TLKLayoutGraph *_layoutGraph;
     NSSet *_selectedItemComponents;
+    TLKItemLaneInfo *_spineLaneInfo;
 }
 
 @property(copy, nonatomic) NSSet *managedItemComponents; // @synthesize managedItemComponents=_managedItemComponents;
 @property(copy, nonatomic) NSSet *managedItems; // @synthesize managedItems=_managedItems;
+@property(retain, nonatomic) TLKItemLaneInfo *spineLaneInfo; // @synthesize spineLaneInfo=_spineLaneInfo;
 @property(copy, nonatomic) NSSet *selectedItemComponents; // @synthesize selectedItemComponents=_selectedItemComponents;
 @property(retain, nonatomic) TLKLayoutGraph *layoutGraph; // @synthesize layoutGraph=_layoutGraph;
 @property(readonly, nonatomic) ERLRelationalTable *layoutContextsTable; // @synthesize layoutContextsTable=_layoutContextsTable;
@@ -99,6 +101,7 @@
 - (id)debugDumpRepresentedObjects;
 - (id)_dumpItemComponentFragmentsTable;
 - (id)_lineFragmentDebugDescription:(id)arg1 forItemComponents:(id)arg2 padding:(id)arg3;
+- (id)_debugDescriptionForItemComponentsInUnassignedLane:(id)arg1 inLayoutContext:(id)arg2 padding:(id)arg3;
 - (id)_layoutContextDebugDescription:(id)arg1 selectedItemComponents:(id)arg2 padding:(id)arg3;
 - (id)_laneFragmentDebugDescription:(id)arg1 selectedItemComponents:(id)arg2 padding:(id)arg3;
 - (id)_debugDescriptionForItemComponentFragments:(id)arg1 selectedItemComponents:(id)arg2 padding:(id)arg3;
@@ -116,6 +119,7 @@
 - (void)setLayoutContext:(id)arg1 forContainer:(id)arg2 inLineFragment:(id)arg3;
 - (id)layoutContextForContainer:(id)arg1 inLineFragment:(id)arg2;
 - (void)enumerateLayoutContextsWithBlock:(CDUnknownBlockType)arg1;
+- (id)trackLayoutContexts;
 - (id)layoutContexts;
 - (void)resetCachedLayoutContexts;
 - (void)removeLineFragment:(id)arg1;
@@ -135,6 +139,9 @@
 - (void)reloadWithTracksAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)reloadWithTracksAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 timelineView:(id)arg4;
 - (void)reloadWithLanesAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
+- (id)_findAnchoredItemInfoRecordsForItems:(id)arg1;
+- (void)_cacheAnchoredItemsForItem:(id)arg1;
+- (void)_cacheAnchoredItemsForItems:(id)arg1;
 - (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 needingLayout:(id)arg4;
 - (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)_deleteReferencesToRemovedItems:(id)arg1;
@@ -164,12 +171,13 @@
 - (id)updatedItems;
 - (void)setInsertedItems:(id)arg1;
 - (id)insertedItems;
+- (void)removeItemComponentInfoRecordsObject:(id)arg1;
+- (void)addItemComponentInfoRecordsObject:(id)arg1;
 - (id)itemComponentInfoRecords;
 @property(nonatomic) BOOL showsTransitionPlaceholders;
 - (void)enumerateTracksWithBlock:(CDUnknownBlockType)arg1;
 - (void)setTracks:(id)arg1 timelineView:(id)arg2;
-- (void)setTracks:(id)arg1;
-@property(readonly, nonatomic) NSArray *tracks;
+@property(copy, nonatomic) NSArray *tracks;
 - (id)objectAtIndexInTracks:(unsigned long long)arg1;
 - (unsigned long long)indexOfObjectInTracks:(id)arg1;
 - (unsigned long long)numberOfTracks;
@@ -178,7 +186,6 @@
 - (id)timingTrack;
 - (id)backgroundMusicLaneInfo;
 - (void)resetBackgroundMusicLane;
-- (id)spineLaneInfo;
 - (id)itemLanesForTrack:(id)arg1;
 - (void)setItemLaneInfo:(id)arg1 forItemLane:(id)arg2 inTrack:(id)arg3;
 - (id)itemLaneInfoForItemLane:(id)arg1 inTrack:(id)arg2;
@@ -187,6 +194,8 @@
 - (id)itemLaneInfoRecords;
 - (void)setContainerInfo:(id)arg1 forContainer:(id)arg2;
 - (id)containerInfoForContainer:(id)arg1;
+- (void)removeContainerInfoRecordsObject:(id)arg1;
+- (void)addContainerInfoRecordsObject:(id)arg1;
 @property(readonly, nonatomic) NSSet *containerInfoRecords;
 - (void)setLayoutInfo:(id)arg1 forItemComponent:(id)arg2;
 - (id)layoutInfoForItemComponent:(id)arg1;
@@ -195,6 +204,8 @@
 - (id)containersForItem:(id)arg1;
 - (id)itemsGroupedByContainer:(id)arg1;
 - (id)itemComponentFragments;
+- (void)removeItemInfoRecordsObject:(id)arg1;
+- (void)addItemInfoRecordsObject:(id)arg1;
 - (id)itemInfoRecords;
 - (unsigned long long)countOfItemInfoRecords;
 @property(copy, nonatomic) NSSet *draggedObjects;
@@ -204,6 +215,7 @@
 - (id)timelineItems;
 - (id)containers;
 @property(readonly, nonatomic) TLKLayoutManager *layoutManager;
+@property(nonatomic) double defaultItemHeight;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;

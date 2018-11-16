@@ -78,7 +78,7 @@
 @property(readonly, nonatomic) NSDate *eventLatestDate; // @synthesize eventLatestDate=_eventLatestDate;
 @property(readonly, nonatomic) NSString *projectDataID; // @synthesize projectDataID=_projectDataID;
 - (BOOL)verifyRoleSetMatchesLibraryRoleSet:(id)arg1 exactly:(BOOL)arg2;
-- (void)syncToRolesFromLibraryPreservingContents:(BOOL)arg1;
+- (void)syncToRolesFromLibrary;
 - (void)dumpRoleSet;
 - (void)reassignRoles:(id)arg1 renameExistingRoles:(id)arg2 changeColorOfExistingRoles:(id)arg3 removeRolesWithUIDs:(id)arg4;
 @property(readonly, retain, nonatomic) FFRoleSet *cachedRoleSet;

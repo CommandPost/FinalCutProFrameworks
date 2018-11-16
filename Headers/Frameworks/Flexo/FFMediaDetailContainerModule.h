@@ -8,7 +8,7 @@
 
 #import "FFOrganizerDelegatePassthrough.h"
 
-@class FFMDEffectsModule, FFMDEmptyModule, FFMDGarageBandModule, FFMDGeneratorsModule, FFMDITunesModule, FFMDLogicProModule, FFMDPhotoLibraryModule, FFMDTitleModule, FFMDTransitionModule, FFOrganizerFilmstripModule, NSString, NSView;
+@class FFMDEffectsModule, FFMDEmptyModule, FFMDExternalServiceModule, FFMDGarageBandModule, FFMDGeneratorsModule, FFMDITunesModule, FFMDLogicProModule, FFMDPhotoLibraryModule, FFMDTitleModule, FFMDTransitionModule, FFOrganizerFilmstripModule, NSString, NSView;
 
 @interface FFMediaDetailContainerModule : LKTabModule <FFOrganizerDelegatePassthrough>
 {
@@ -26,10 +26,12 @@
     FFMDGarageBandModule *_garageBandModule;
     FFMDPhotoLibraryModule *_photoLibraryModule;
     FFMDEmptyModule *_emptyModule;
+    FFMDExternalServiceModule *_externalServiceModule;
 }
 
 + (Class)tabViewClass;
 @property(nonatomic) int detailMode; // @synthesize detailMode=_detailMode;
+@property(retain, nonatomic) FFMDExternalServiceModule *externalServiceModule; // @synthesize externalServiceModule=_externalServiceModule;
 @property(retain, nonatomic) FFMDEmptyModule *emptyModule; // @synthesize emptyModule=_emptyModule;
 @property(retain, nonatomic) FFMDPhotoLibraryModule *photoLibraryModule; // @synthesize photoLibraryModule=_photoLibraryModule;
 @property(retain, nonatomic) FFMDGarageBandModule *garageBandModule; // @synthesize garageBandModule=_garageBandModule;
@@ -56,6 +58,7 @@
 - (void)sidebarModule:(id)arg1 didSelectNodes:(id)arg2;
 - (Class)activeNodeClass;
 - (void)selectNodeOfClass:(Class)arg1;
+- (void)activateExternalService;
 - (void)activateTransitions;
 - (void)activateBackgrounds;
 - (void)activateGenerators;

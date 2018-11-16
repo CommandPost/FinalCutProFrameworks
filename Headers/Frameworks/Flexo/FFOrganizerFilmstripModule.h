@@ -531,6 +531,7 @@
 - (id)mediaRangesForClipSet:(id)arg1;
 - (void)addMediaRangesForClipArrayToArray:(id)arg1 toArray:(id)arg2;
 - (id)mediaRangesForClipArray:(id)arg1;
+- (BOOL)supportsExcludingDisabledRolesInShareOfSequence:(id)arg1;
 - (void)shareDestinationPicker:(id)arg1;
 - (id)shareSelection:(id)arg1;
 - (double)maxItemSize;
@@ -662,7 +663,6 @@
 - (struct CGSize)viewMinSize;
 - (void)firstResponderChanged:(id)arg1;
 - (void)keywordEditorChangedKey:(id)arg1;
-- (void)appWillTerminate:(id)arg1;
 - (void)viewFrameChanged:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)localModuleActions;

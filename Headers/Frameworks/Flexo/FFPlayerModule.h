@@ -10,7 +10,7 @@
 #import "NSTouchBarProvider.h"
 #import "NSWindowDelegate.h"
 
-@class FFContext, FFPlayer, FFPlayerModuleDFRController, FFProvider, FFSourceAudio, FFSourceVideo, LKModuleLayout, NSDictionary, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>, NSString, NSTouchBar, NSView;
+@class CALayer, FFContext, FFPlayer, FFPlayerModuleDFRController, FFProvider, FFSourceAudio, FFSourceVideo, LKModuleLayout, NSDictionary, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>, NSString, NSTouchBar, NSView;
 
 @interface FFPlayerModule : LKViewModule <NSWindowDelegate, CALayerDelegate, NSTouchBarProvider>
 {
@@ -44,6 +44,7 @@
     BOOL _autoHideCursorInFullScreen;
     BOOL _editorQualities;
     FFPlayerModuleDFRController *_dfrController;
+    CALayer *_layerForPreview;
     BOOL _loadEventProjects;
     BOOL _displaysProjectInfoOSC;
 }
@@ -96,7 +97,7 @@
 - (void)_maybeReportAtPlaybackCompleted:(id)arg1;
 - (void)stoppedDueToDroppedFrameForContext:(id)arg1 dropInfo:(id)arg2;
 - (void)_reportDrop:(id)arg1;
-- (void)videoRolesChangedForContext:(id)arg1;
+- (void)avRolesChangedForContext:(id)arg1;
 - (void)rangeChangedForContext:(id)arg1;
 - (void)timeRateChangedForContext:(id)arg1;
 - (void)_rebuildPlayerWithDrawingSuspension;
@@ -209,6 +210,7 @@
 - (void)_setProvider:(id)arg1;
 - (void)_updateHasVideoAndAudio;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
+- (id)layerForPreview;
 - (id)layer;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 @property(readonly) NSTouchBar *touchBar;

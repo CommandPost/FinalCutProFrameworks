@@ -271,6 +271,14 @@ struct DSObject {
 
 struct DepthBufferManager;
 
+struct DragParams {
+    id _field1;
+    id _field2;
+    long long _field3;
+    struct FFDataListLanesDropRetargetingInfo *_field4;
+    char _field5;
+};
+
 struct EffectStackChain;
 
 struct EffectStackGraphData;
@@ -702,6 +710,13 @@ struct FFEdgeInsets {
     double minY;
     double maxX;
     double maxY;
+};
+
+struct FFFDenoiseInputTokenInfo {
+    _Bool _field1;
+    _Bool _field2;
+    _Bool _field3;
+    _Bool _field4;
 };
 
 struct FFHMDHealthMeter {
@@ -1300,7 +1315,8 @@ struct HGDotGraph {
     struct map<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge, std::__1::less<std::__1::tuple<unsigned long, unsigned long>>, std::__1::allocator<std::__1::pair<const std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>>> _field2;
     struct __sFILE *_field3;
     _Bool _field4;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field5;
+    _Bool _field5;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field6;
 };
 
 struct HGEdgePolicy {
@@ -1424,7 +1440,11 @@ struct HGRef<HGGLContext> {
 };
 
 struct HGRef<HGNode> {
-    struct HGNode *_field1;
+    struct HGNode *m_Obj;
+};
+
+struct HGRef<HGRenderer> {
+    struct HGRenderer *m_Obj;
 };
 
 struct HGRenderContext;
@@ -1817,6 +1837,13 @@ struct Mat4f {
 
 struct Matrix {
     double _field1[16];
+};
+
+struct NSEdgeInsets {
+    double top;
+    double left;
+    double bottom;
+    double right;
 };
 
 struct NSMapTable {
@@ -4079,6 +4106,11 @@ struct __list_node_base<VideoFrameDatas, void *> {
     struct __list_node_base<VideoFrameDatas, void *> *__next_;
 };
 
+struct __list_node_base<std::__1::pair<FFMD5, void *>, void *> {
+    struct __list_node_base<std::__1::pair<FFMD5, void *>, void *> *__prev_;
+    struct __list_node_base<std::__1::pair<FFMD5, void *>, void *> *__next_;
+};
+
 struct __list_node_base<unsigned char **, void *> {
     struct __list_node_base<unsigned char **, void *> *__prev_;
     struct __list_node_base<unsigned char **, void *> *__next_;
@@ -4528,6 +4560,13 @@ struct list<VideoFrameDatas, std::__1::allocator<VideoFrameDatas>> {
     } __size_alloc_;
 };
 
+struct list<std::__1::pair<FFMD5, void *>, std::__1::allocator<std::__1::pair<FFMD5, void *>>> {
+    struct __list_node_base<std::__1::pair<FFMD5, void *>, void *> __end_;
+    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<std::__1::pair<FFMD5, void *>, void *>>> {
+        unsigned long long __first_;
+    } __size_alloc_;
+};
+
 struct list<unsigned char **, std::__1::allocator<unsigned char **>> {
     struct __list_node_base<unsigned char **, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<unsigned char **, void *>>> {
@@ -4616,7 +4655,7 @@ struct map<HGPixelBufferObj *, unsigned long long, std::__1::less<HGPixelBufferO
 
 struct map<HPMPictureMetadataKey, const void *, std::__1::less<HPMPictureMetadataKey>, std::__1::allocator<std::__1::pair<const HPMPictureMetadataKey, const void *>>> {
     struct __tree<std::__1::__value_type<HPMPictureMetadataKey, const void *>, std::__1::__map_value_compare<HPMPictureMetadataKey, std::__1::__value_type<HPMPictureMetadataKey, const void *>, std::__1::less<HPMPictureMetadataKey>, true>, std::__1::allocator<std::__1::__value_type<HPMPictureMetadataKey, const void *>>> {
-        struct __tree_node<std::__1::__value_type<HPMPictureMetadataKey, const void *>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<HPMPictureMetadataKey, const void *>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -4664,7 +4703,7 @@ struct map<_opaque_pthread_t *, FFStreamSharedHGNodeInfo *, std::__1::less<_opaq
 
 struct map<const MXF::MXKey16, unsigned long, std::__1::less<const MXF::MXKey16>, std::__1::allocator<std::__1::pair<const MXF::MXKey16, unsigned long>>> {
     struct __tree<std::__1::__value_type<const MXF::MXKey16, unsigned long>, std::__1::__map_value_compare<const MXF::MXKey16, std::__1::__value_type<const MXF::MXKey16, unsigned long>, std::__1::less<const MXF::MXKey16>, true>, std::__1::allocator<std::__1::__value_type<const MXF::MXKey16, unsigned long>>> {
-        struct __tree_node<std::__1::__value_type<const MXF::MXKey16, unsigned long>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<const MXF::MXKey16, unsigned long>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -4688,7 +4727,7 @@ struct map<int, HGSynchronizable *, std::__1::less<int>, std::__1::allocator<std
 
 struct map<int, MXF::MXKLV *, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, MXF::MXKLV *>>> {
     struct __tree<std::__1::__value_type<int, MXF::MXKLV *>, std::__1::__map_value_compare<int, std::__1::__value_type<int, MXF::MXKLV *>, std::__1::less<int>, true>, std::__1::allocator<std::__1::__value_type<int, MXF::MXKLV *>>> {
-        struct __tree_node<std::__1::__value_type<int, MXF::MXKLV *>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<int, MXF::MXKLV *>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5413,8 +5452,8 @@ typedef struct {
 typedef struct {
     int _nestDepth;
     long long _startTimes[16];
-    long long _blockedTimes[22];
-} CDStruct_0ea56580;
+    long long _blockedTimes[24];
+} CDStruct_c0b5f609;
 
 typedef struct {
     int width;
@@ -5445,6 +5484,12 @@ typedef struct {
     unsigned int flags;
     long long epoch;
 } CDStruct_1b6d18a9;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+    long long _field3;
+} CDStruct_2ec95fd7;
 
 typedef struct CDStruct_183601bc;
 
@@ -5555,8 +5600,8 @@ typedef struct {
 } CDStruct_3de7261d;
 
 typedef struct HGRef<HGNode> {
-    struct HGNode *_field1;
-} HGRef_0de1db7e;
+    struct HGNode *m_Obj;
+} HGRef_265f9e4c;
 
 typedef struct PCBox<double> {
     double _field1;

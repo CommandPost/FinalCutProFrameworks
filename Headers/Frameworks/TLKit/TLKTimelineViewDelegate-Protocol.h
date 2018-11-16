@@ -6,13 +6,13 @@
 
 #import "NSObject.h"
 
-@class CALayer<TLKItemLayerInfo>, LKExtendedTimecode, NSArray, NSException, NSMenu, NSString, TLKContainerLayer, TLKItemLaneFragmentLayer, TLKSelectionManager, TLKTimelineLayer, TLKTimelineView;
+@class CALayer<TLKItemLayerInfo>, LKExtendedTimecode, NSArray, NSException, NSMenu, NSString, TLKContainerLayer, TLKItemLaneFragmentLayer, TLKReloadOperation, TLKSelectionManager, TLKTimelineLayer, TLKTimelineView;
 
 @protocol TLKTimelineViewDelegate <NSObject>
 
 @optional
 - (TLKItemLaneFragmentLayer *)timelineView:(TLKTimelineView *)arg1 layerForLane:(id)arg2;
-- (TLKTimelineLayer *)timelineView:(TLKTimelineView *)arg1 layerForItemComponent:(id)arg2;
+- (Class)timelineView:(TLKTimelineView *)arg1 layerClassForItemComponent:(id)arg2;
 - (double)timelineView:(TLKTimelineView *)arg1 heightForItemComponent:(id)arg2 proposedHeight:(double)arg3;
 - (TLKContainerLayer *)timelineView:(TLKTimelineView *)arg1 layerForContainer:(id)arg2;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 validateUserInterfaceItem:(id <NSValidatedUserInterfaceItem>)arg2;
@@ -44,6 +44,7 @@
 - (BOOL)selectionManagerShouldChange:(TLKSelectionManager *)arg1;
 - (void)selectionManagerDidChange:(TLKSelectionManager *)arg1;
 - (NSArray *)timelineView:(TLKTimelineView *)arg1 draggableItemsForProposedSelection:(NSArray *)arg2;
+- (void)timelineView:(TLKTimelineView *)arg1 willBeginReloadOperation:(TLKReloadOperation *)arg2;
 - (int)timelineView:(TLKTimelineView *)arg1 visibilityForItem:(id <TLKTimelineItem>)arg2;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 didDoubleClickItem:(id <TLKTimelineItem>)arg2 part:(NSString *)arg3;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 executeBlockAndHandleException:(void (^)(void))arg2;

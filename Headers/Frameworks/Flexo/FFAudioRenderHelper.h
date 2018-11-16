@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)numOutputChannels;
 - (unsigned int)bytesPerFrame;
 - (float)sampleRate;
+- (id)roles;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 outputFormat:(const struct AudioStreamBasicDescription *)arg2 channelLayout:(struct AudioChannelLayout *)arg3 layoutSize:(unsigned long long)arg4 startOffset:(CDStruct_1b6d18a9)arg5 roles:(id)arg6;
 

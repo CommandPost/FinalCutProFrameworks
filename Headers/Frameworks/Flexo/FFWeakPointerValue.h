@@ -15,6 +15,10 @@
     BOOL _hasZeroingWeakReference;
 }
 
++ (id)setFromWeakPointerValueSet:(id)arg1;
++ (id)weakPointerValueSetFromSet:(id)arg1;
++ (id)arrayFromWeakPointerValueArray:(id)arg1;
++ (id)weakPointerValueArrayFromArray:(id)arg1;
 + (id)valueWithPointer:(void *)arg1;
 + (id)valueWithNonretainedObject:(id)arg1;
 @property(readonly, nonatomic) void *pointerValue; // @synthesize pointerValue=_pointerValue;

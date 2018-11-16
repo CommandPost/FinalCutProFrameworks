@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)selectedIndexes;
 - (void)syncToDisplayedItemsType:(long long)arg1;
 - (void)syncToSelectedIndexes:(id)arg1;
+- (id)searchTooltip;
 - (id)dataListInfoStringForProposedString:(id)arg1;
 - (id)dataListImageForItem:(id)arg1;
 - (id)dataListRootItem;

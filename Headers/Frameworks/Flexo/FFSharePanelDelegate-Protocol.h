@@ -11,7 +11,7 @@
 @protocol FFSharePanelDelegate <NSObject>
 
 @optional
-- (void)setPreviewTime:(double)arg1;
+- (void)setPreviewTime:(double)arg1 supportsAudio:(BOOL)arg2 rebuildContext:(BOOL)arg3;
 - (CALayer *)previewLayer;
 @end
 

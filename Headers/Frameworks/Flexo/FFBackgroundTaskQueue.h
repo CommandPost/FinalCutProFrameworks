@@ -34,8 +34,7 @@
 }
 
 + (void)removeThumbnailRequestsForAssets:(id)arg1;
-+ (void)removeThumbnailRequestsForLibrary:(id)arg1;
-+ (BOOL)containsThumbnailRequestsForLibrary:(id)arg1;
++ (void)enableThumbnailRequests:(BOOL)arg1 forLibrary:(id)arg2;
 + (void)resumeThumbnailRequests;
 + (void)pauseThumbnailRequests;
 + (BOOL)canStartActionAffectingAsset:(id)arg1 forUseDictionary:(id)arg2 error:(id *)arg3;
@@ -93,6 +92,7 @@
 - (id)tasksUsingAssets:(id)arg1 forUse:(int)arg2 notableTasksOnly:(BOOL)arg3;
 - (id)allTasksUsingAssets:(id)arg1 forUse:(int)arg2;
 - (id)notableTasksUsingAssets:(id)arg1 forUse:(int)arg2;
+- (id)allNotableTasks;
 - (id)_notableTaskNamesUsingAssets:(id)arg1 forUse:(int)arg2;
 - (BOOL)visibleTasksPending;
 - (BOOL)notableTasksPending;

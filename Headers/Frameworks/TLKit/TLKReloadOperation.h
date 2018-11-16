@@ -6,18 +6,21 @@
 
 #import "NSOperation.h"
 
-@class NSArray, NSBlockOperation, NSDate, NSDateFormatter, NSMutableArray, TLKDataSourceProxy, TLKDataSyncOperation, TLKDrawSelectionOperation, TLKItemLayerContentsOperation, TLKLayoutDatabase, TLKLayoutOperation, TLKReloadLayersOperation, TLKTimelineView;
+@class NSArray, NSBlockOperation, NSDate, NSDateFormatter, NSMutableArray, PCChangeLog, TLKDataSourceProxy, TLKDataSyncOperation, TLKDelegateProxy, TLKDrawSelectionOperation, TLKItemLayerContentsOperation, TLKLayoutDatabase, TLKLayoutOperation, TLKReloadLayersOperation, TLKTimelineView;
 
 @interface TLKReloadOperation : NSOperation
 {
     NSMutableArray *_operations;
+    BOOL _dataSyncWasGivenSomethingToDo;
     BOOL _debugLogging;
     TLKLayoutDatabase *_database;
     TLKDataSourceProxy *_dataSourceProxy;
     TLKTimelineView *_timelineView;
+    PCChangeLog *_changeLog;
     TLKDataSyncOperation *_dataSyncOperation;
+    TLKReloadLayersOperation *_reloadLayersOperation;
+    TLKDelegateProxy *_delegateProxy;
     TLKLayoutOperation *_layoutOperation;
-    TLKReloadLayersOperation *_layersOperation;
     TLKItemLayerContentsOperation *_itemLayerContentsOperation;
     TLKDrawSelectionOperation *_drawSelectionOperation;
     NSBlockOperation *_timingModelOperation;
@@ -37,16 +40,19 @@
 @property(retain, nonatomic) NSDate *reloadLogStartTime; // @synthesize reloadLogStartTime=_reloadLogStartTime;
 @property(retain, nonatomic) NSMutableArray *reloadLogEntries; // @synthesize reloadLogEntries=_reloadLogEntries;
 @property(nonatomic) BOOL debugLogging; // @synthesize debugLogging=_debugLogging;
+@property(nonatomic) BOOL dataSyncWasGivenSomethingToDo; // @synthesize dataSyncWasGivenSomethingToDo=_dataSyncWasGivenSomethingToDo;
 @property(retain, nonatomic) NSBlockOperation *timingModelOperation; // @synthesize timingModelOperation=_timingModelOperation;
 @property(retain, nonatomic) TLKDrawSelectionOperation *drawSelectionOperation; // @synthesize drawSelectionOperation=_drawSelectionOperation;
 @property(retain, nonatomic) TLKItemLayerContentsOperation *itemLayerContentsOperation; // @synthesize itemLayerContentsOperation=_itemLayerContentsOperation;
-@property(retain, nonatomic) TLKReloadLayersOperation *layersOperation; // @synthesize layersOperation=_layersOperation;
 @property(retain, nonatomic) TLKLayoutOperation *layoutOperation; // @synthesize layoutOperation=_layoutOperation;
-@property(retain, nonatomic) TLKDataSyncOperation *dataSyncOperation; // @synthesize dataSyncOperation=_dataSyncOperation;
 @property(retain, nonatomic) NSArray *operations; // @synthesize operations=_operations;
+@property(retain, nonatomic) TLKDelegateProxy *delegateProxy; // @synthesize delegateProxy=_delegateProxy;
+@property(readonly, nonatomic) TLKReloadLayersOperation *reloadLayersOperation; // @synthesize reloadLayersOperation=_reloadLayersOperation;
+@property(retain, nonatomic) TLKDataSyncOperation *dataSyncOperation; // @synthesize dataSyncOperation=_dataSyncOperation;
+@property(copy, nonatomic) PCChangeLog *changeLog; // @synthesize changeLog=_changeLog;
 @property(nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
-@property(readonly, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
-@property(readonly, nonatomic) TLKLayoutDatabase *database; // @synthesize database=_database;
+@property(retain, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
+@property(retain, nonatomic) TLKLayoutDatabase *database; // @synthesize database=_database;
 - (void)_queueEndDebugLoggingOperationIfNeeded;
 - (void)_queueBeginDebugLoggingOperationIfNeeded;
 - (void)endReloadLogging;
@@ -61,13 +67,16 @@
 - (id)layoutChangeLog;
 - (void)_queueDataSyncOperationWithChangeLog:(id)arg1;
 - (id)dataSyncChangeLog;
-- (void)_queueTimingModelReloadForDatabase:(id)arg1;
-- (id)initForZoomingWithTimelineView:(id)arg1;
+- (void)pipeOutputFromOperation:(id)arg1 toOperation:(id)arg2;
+- (void)pipeDataSyncOutputToOperation:(id)arg1;
+- (void)addOperation:(id)arg1 afterOperation:(id)arg2;
+- (void)addOperation:(id)arg1;
 - (void)main;
+@property(nonatomic) id <TLKTimelineViewDelegate> delegate;
 - (void)dealloc;
-- (id)initWithTimelineView:(id)arg1 database:(id)arg2 dataSourceProxy:(id)arg3 changeLog:(id)arg4 operationsMask:(unsigned long long)arg5;
-- (id)initWithTimelineView:(id)arg1 changeLog:(id)arg2 operationsMask:(unsigned long long)arg3;
-- (id)initWithTimelineView:(id)arg1 database:(id)arg2 dataSourceProxy:(id)arg3;
+- (id)init;
+- (void)_buildOperationsWithMask:(unsigned long long)arg1;
+- (void)_queueTimingModelReloadForDatabase:(id)arg1;
 
 @end
 

@@ -108,6 +108,7 @@
 - (id)_rotateCacheIdentifierWithSource:(id)arg1;
 - (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
+- (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;
 - (void)setParentItem:(id)arg1;
@@ -125,6 +126,8 @@
 - (void)effectStackDidLoad:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)_describeAdditionalObjects;
+- (void)_teardownRenderStateTracker;
+- (void)_libraryClosed:(id)arg1;
 - (void)notifyAnchoredObjectRemovedFromSequence:(id)arg1;
 - (void)dealloc;
 - (id)initWithMedia:(id)arg1 sourceKey:(id)arg2;

@@ -6,13 +6,14 @@
 
 #import <Flexo/FFHGAsyncJob.h>
 
-@class FFHGAsyncQueue, FFImage, NSConditionLock, NSMutableArray, NSObject<HGRQJobProtocol>, NSObject<OS_dispatch_group>;
+@class FFHGAsyncQueue, FFImage, FFImageRepBindingInfo, NSConditionLock, NSMutableArray, NSObject<HGRQJobProtocol>, NSObject<OS_dispatch_group>;
 
 @interface FFHGAsyncFanoutJob : FFHGAsyncJob
 {
     NSConditionLock *_state;
     FFHGAsyncQueue *_assignedQueue;
     FFImage *_image;
+    FFImageRepBindingInfo *_bindingInfo;
     struct HGRenderJob *_renderJob;
     NSMutableArray *_outputs;
     NSMutableArray *_bypassOutputs;
@@ -23,10 +24,10 @@
     _Bool _dumpGraph;
     _Bool _dumpDotFile;
     double _vScreenIdleTimeBeforeJob;
-    CDStruct_0ea56580 _blockedInfo;
+    CDStruct_c0b5f609 _blockedInfo;
     struct _opaque_pthread_t *_threadThatInstalledBlockedInfo;
     long long _bypassCostUSec;
-    CDStruct_0ea56580 _bypassBlockedInfo;
+    CDStruct_c0b5f609 _bypassBlockedInfo;
     int _amortizationCount;
     _Bool _dumpRenderStats;
 }
@@ -38,7 +39,7 @@
 - (int)amortizationCount;
 - (void)incrementAmortizationCount;
 - (int)virtualScreen;
-- (CDStruct_0ea56580 *)graphExecBlockedInfo;
+- (CDStruct_c0b5f609 *)graphExecBlockedInfo;
 - (double)totalBufferCopyTime;
 - (_Bool)dequeueJobIfNotStarted;
 - (_Bool)enqueueToRenderLocation:(int)arg1 priority:(int)arg2;
@@ -54,7 +55,7 @@
 - (id)_findExistingOutput:(id)arg1 location:(int)arg2 roi:(struct HGRect)arg3 pixelTransform:(id)arg4 dithered:(BOOL)arg5 background:(int)arg6 zebraMode:(unsigned int)arg7;
 - (id)description;
 - (void)dealloc;
-- (id)initWithSourceImage:(id)arg1 object:(id)arg2;
+- (id)initWithSourceImage:(id)arg1 bindingInfo:(id)arg2 object:(id)arg3;
 
 @end
 

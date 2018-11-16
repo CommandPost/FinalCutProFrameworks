@@ -7,7 +7,7 @@
 #import "NSUserDefaults.h"
 
 @interface NSUserDefaults (OZAdditions)
-- (id)OZ_NSColorForKey:(id)arg1 defaultValue:(id)arg2 error:(id *)arg3;
+- (id)OZ_NSColorForKey:(id)arg1 defaultColor:(id)arg2 error:(id *)arg3;
 - (void)OZ_setNSColor:(id)arg1 forKey:(id)arg2;
 @end
 

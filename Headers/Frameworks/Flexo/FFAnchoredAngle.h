@@ -70,6 +70,7 @@
 - (id)multiAngleObject;
 - (void)_mediaChanged:(id)arg1;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
+- (BOOL)hasExtractableCaptions;
 - (BOOL)isAngle;
 - (id)localAudioEffects;
 @property(readonly, retain, nonatomic) FFEffectStack *videoEffects; // @synthesize videoEffects=_videoEffects;

@@ -8,7 +8,7 @@
 
 #import "NSFilePresenter.h"
 
-@class NSFileCoordinator, NSMutableArray, NSOperationQueue, NSRecursiveLock, NSString, NSURL, PAEMD5Value;
+@class NSFileCoordinator, NSMutableArray, NSOperationQueue, NSRecursiveLock, NSSet, NSString, NSURL, PAEMD5Value;
 
 @interface PAERepository : NSObject <NSFilePresenter>
 {
@@ -67,6 +67,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly) NSSet *observedPresentedItemUbiquityAttributes;
 @property(readonly, copy) NSURL *primaryPresentedItemURL;
 @property(readonly) Class superclass;
 

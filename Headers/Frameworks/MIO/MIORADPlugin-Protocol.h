@@ -26,6 +26,7 @@
 - (NSString *)uuid;
 
 @optional
+- (void)flushCacheFile;
 - (void)mountiOSDevicesSynchronously;
 - (void)useAVFoundation;
 - (NSArray *)extendedMetadataDefinitions;

@@ -22,7 +22,7 @@
 #import "NSCopying.h"
 #import "TLKTimelineItem.h"
 
-@class FFRole, FFVideoProps, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class FFRole, FFSplitAudioTimelineComponent, FFVideoProps, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 @interface FFAnchoredObject : FFBaseDSObject <TLKTimelineItem, FFStorylineItem, NSCoding, NSCopying, FFDataModelProtocol, FFSkimmableProtocol, FFAnchoredParentProtocol, FFMetadataProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, FFMD5Protocol, FFAssetContainerProtocol, FFEffectContainerProtocol>
 {
@@ -59,6 +59,7 @@
     int _cachedNumPostAudioEffectsChannels;
     NSMutableArray *_roleChangeContextStack;
     NSSet *_roleChangePriorRoles;
+    FFSplitAudioTimelineComponent *_audioSummaryObject;
 }
 
 + (id)newCoalescedTimeRangesAndObjectsFromArray:(id)arg1;
@@ -72,8 +73,17 @@
 + (id)srcRoleSetForObject:(id)arg1 withDecoder:(id)arg2;
 + (id)timeMarkersForItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 + (id)timeMarkersForItem:(id)arg1 inTimeRange:(CDStruct_e83c9415)arg2;
-+ (id)rolesForPlaybackOfRootItem:(id)arg1;
-+ (id)rolesForExportOfObject:(id)arg1;
++ (void)_extractCaptionsFromMediaComponent:(id)arg1 extractedCaptions:(id)arg2;
++ (void)_extractCaptionsFromPrimitiveClip:(id)arg1 extractedCaptions:(id)arg2;
++ (void)_extractCaptionsFromSyncClip:(id)arg1 extractedCaptions:(id)arg2;
++ (void)_convertDurationsToContainerTimeOfCaptionRangeAndObjects:(id)arg1 fromObject:(id)arg2;
++ (void)_extractCaptionsFromAngleClip:(id)arg1 extractedCaptions:(id)arg2;
++ (void)_extractCaptionsFromAnchoredClip:(id)arg1 extractedCaptions:(id)arg2;
++ (void)_dumpNonActiveCaptions:(id)arg1 currentActiveCaptions:(id)arg2 captionsToAdd:(id)arg3;
++ (id)newArrayOfCaptionsInFigTimeAndRangeObjectForObject:(id)arg1;
++ (id)_findOrCreateCaptionMainRoleOfFormat:(id)arg1 inLibrary:(id)arg2;
++ (id)activeRolesForObject:(id)arg1 excludeDisabledRoles:(BOOL)arg2;
++ (id)topLevelRolesForObject:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)removeMarker:(id)arg1 error:(id *)arg2;
 + (BOOL)moveMarker:(id)arg1 toRange:(CDStruct_e83c9415)arg2 changeDict:(id)arg3 error:(id *)arg4;
@@ -133,6 +143,9 @@
 - (id)mixdownRoleGroupUID;
 - (void)_setMixdownRoleGroupInternal:(id)arg1;
 - (BOOL)supportsMixdownToRoleGroup;
+- (id)audioSummaryObjectAsAnchoredObject;
+- (id)audioSummaryObject;
+- (void)setAudioSummaryObject:(id)arg1;
 - (long long)anchoredLaneForAudioComponentSource:(id)arg1;
 - (void)setAnchoredLane:(long long)arg1 forAudioComponentSource:(id)arg2;
 - (long long)_defaultAnchoredLaneForAudioComponentSource:(id)arg1;
@@ -337,6 +350,7 @@
 - (BOOL)isPullingSourceFromBelowForLeft;
 - (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
+- (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;
 - (BOOL)supportsAnamorphicFormat;
@@ -376,6 +390,7 @@
 - (BOOL)isFreezeFrame;
 - (BOOL)isGap;
 - (BOOL)isPlaceholder;
+@property(readonly, nonatomic) BOOL isCaption;
 - (BOOL)isGenerator;
 - (BOOL)isTimeMarker;
 - (BOOL)isMarker;
@@ -657,6 +672,10 @@
 - (id)trackType;
 - (BOOL)removeAnchoredMarker:(id)arg1;
 - (void)addAnchoredMarker:(id)arg1;
+- (void)addCaptions:(id)arg1 toSet:(id)arg2 roleUUID:(id)arg3;
+- (id)extractCaptions;
+- (BOOL)hasExtractableCaptions;
+- (id)captionAnchoredItems;
 - (id)musicMarkerAnchoredItems;
 - (id)markerAnchoredItems;
 - (id)nonMarkerAnchoredItems;
@@ -679,14 +698,13 @@
 - (id)roles;
 - (id)rolesWithPlayEnable:(int)arg1;
 - (id)displayFormat;
-- (void)setDisplayName:(id)arg1;
+@property(copy, nonatomic) NSString *displayName;
 - (void)justSetTheDisplayName:(id)arg1;
 - (id)angleID;
 - (void)ensureUniqueDisplayNames:(id)arg1;
 - (id)variantDisplayNames;
 - (void)setAuditionName:(id)arg1;
 - (id)auditionName;
-- (id)displayName;
 - (id)_subtreeDescription;
 - (id)desc;
 @property(readonly, copy) NSString *debugDescription;
@@ -784,7 +802,10 @@
 - (id)audioComponent;
 - (id)videoComponent;
 - (unsigned long long)storylineClipType;
+- (long long)compareByStartTime:(id)arg1;
+- (void)trimTrailingEdgeByOffset:(CDStruct_1b6d18a9)arg1;
 - (void)resolveCollisions;
+- (void)disconnect;
 - (void)connectStorylineItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)connectStoryline:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 @property(copy, nonatomic) id audioRoleIdentifier;

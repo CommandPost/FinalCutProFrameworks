@@ -177,7 +177,8 @@
 - (id)copyPropsWithAdjustedPixelSpaceBounds:(struct CGRect)arg1;
 - (id)copyPropsWithAdjustedColorSpace:(struct CGColorSpace *)arg1 preferFormat:(BOOL)arg2;
 - (id)copyProgressivePropsWithFrameDur:(CDStruct_1b6d18a9)arg1;
-- (id)copyProgressiveProps;
+- (id)copyProgressivePropsWithSampleDuration;
+- (id)copyProgressivePropsWithFrameDuration;
 - (id)copyPropsWithAdjustedSampleDur:(CDStruct_1b6d18a9)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -7,7 +7,7 @@
 #import "NSColor.h"
 
 @interface NSColor (OZArchiving)
-+ (id)OZ_colorWithArchiveData:(id)arg1 error:(id *)arg2;
++ (id)OZ_colorWithArchiveData:(id)arg1 defaultColor:(id)arg2 error:(id *)arg3;
 - (id)OZ_archiveData;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <Flexo/FFScheduleToken.h>
 
-@class FFGraphBuildInformation, FFImage, FFSVContext, FFSchedInfo, FFSegmentStoreRef, FFStreamVideo, FFStreamVideoDeinterlace, NSCondition, NSError, PCMatrix44Double;
+@class FFGraphBuildInformation, FFImage, FFImageAbsoluteOutputFormat, FFLibraryDocument, FFSVContext, FFSchedInfo, FFSegmentStoreRef, FFStreamVideo, FFStreamVideoDeinterlace, NSCondition, NSError, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFScheduleTokenDeinterlace : FFScheduleToken
@@ -37,16 +37,23 @@ __attribute__((visibility("hidden")))
     int _state;
     NSError *_deinterlaceError;
     FFGraphBuildInformation *_buildInfo;
+    int _heliumFormat;
+    int _heliumycbcrFormat;
+    int _ws;
+    FFImageAbsoluteOutputFormat *_fmt;
     FFImage *_img1;
     FFImage *_img2;
     FFImage *_img3;
     FFImage *_img4;
     FFImage *_flattenResult;
+    FFLibraryDocument *_observedLibraryDocument;
 }
 
 + (id)sharedCache;
 + (id)newDeinterlaceTokenBySchedulingOrCacheLookup:(id)arg1 inStream:(id)arg2 key:(CDStruct_bdcb2b0d)arg3 time:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 context:(id)arg6 schedInfo:(id)arg7 downstreamPT:(id)arg8 isScheduling:(BOOL)arg9 enableNoMotionCompensation:(_Bool)arg10;
 + (void)initialize;
+- (void)_libraryClosed:(id)arg1;
+- (void)_removeLibraryClosedObserving;
 - (_Bool)hiPriority;
 - (void)performWaitForMode:(int)arg1;
 - (_Bool)needsWaitForMode:(int)arg1;
@@ -58,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)_newRepresentationalImage;
 - (void)_ensureUnderlyingImages:(id)arg1;
 - (void)_scheduleInputSources;
+- (void)_setupInputPixelFormatInfo;
 - (id)_copyInputPixelFormatInfoRetHeliumFormat:(int *)arg1 retycbcrFormat:(int *)arg2 retWorkingSpace:(int *)arg3;
 - (void)updatePrioritySeen:(int)arg1;
 - (_Bool)hintWillImageSoon;

@@ -6,13 +6,12 @@
 
 #import <Flexo/FFHeliumEffect.h>
 
-@class CHChannelDouble, CHChannelEnum, FFSegmentStoreRef, FFSource, NSObject<OS_dispatch_queue>, NSString;
+@class CHChannelDouble, CHChannelEnum;
 
 __attribute__((visibility("hidden")))
 @interface FFNoiseReduction : FFHeliumEffect
 {
-    long long _imgWidth;
-    long long _imgHeight;
+    _Bool _denoise360Media;
     CHChannelDouble *_temporalLuma;
     CHChannelDouble *_temporalChroma;
     CHChannelDouble *_spatialLuma;
@@ -21,19 +20,11 @@ __attribute__((visibility("hidden")))
     CHChannelEnum *_customSetting;
     CHChannelEnum *_qualityModeSetting;
     CHChannelEnum *_denoiseAmount;
-    FFSource *_inputSource;
-    NSString *_inputIdentifier;
-    unsigned long long _deinterlaceType;
-    NSObject<OS_dispatch_queue> *_lastWrittenSegStoreLock;
-    FFSegmentStoreRef *_lastWrittenSegStoreRef;
-    CDStruct_bdcb2b0d _lastWrittenMD5;
 }
 
 + (void)registerEffects;
 + (id)copyClassDescription;
-@property(readonly, nonatomic) unsigned long long deinterlaceType; // @synthesize deinterlaceType=_deinterlaceType;
-@property(readonly, nonatomic) NSString *inputIdentifier; // @synthesize inputIdentifier=_inputIdentifier;
-@property(readonly, nonatomic) FFSource *inputSource; // @synthesize inputSource=_inputSource;
+@property(readonly, nonatomic) _Bool denoise360Media; // @synthesize denoise360Media=_denoise360Media;
 - (id)primaryAnimationChannel;
 - (id)qualityModeSetting;
 - (id)customSetting;
@@ -51,18 +42,27 @@ __attribute__((visibility("hidden")))
 - (id)keyframeableChannels;
 - (id)inputKeys;
 - (void)createChannelsInFolder:(id)arg1;
-- (void)setupNoiseReduceChannel:(id *)arg1 folder:(id)arg2 name:(id)arg3 channelID:(unsigned int)arg4 defaultCurve:(double)arg5 minCurve:(double)arg6 minUI:(double)arg7 maxUI:(double)arg8 hidden:(BOOL)arg9;
+- (id)newNoiseReduceChannelInFolder:(id)arg1 name:(id)arg2 channelID:(unsigned int)arg3 defaultCurve:(double)arg4 minCurve:(double)arg5 minUI:(double)arg6 maxUI:(double)arg7 hidden:(BOOL)arg8 transformerName:(id)arg9;
 - (void)channelParameterChanged:(id)arg1;
 - (void)setDenoiseCustomSettingEnable:(BOOL)arg1 operationBeginEnd:(BOOL)arg2;
 - (void)_showHideChannelWithOperation:(id)arg1 show:(BOOL)arg2 operationBeginEnd:(BOOL)arg3;
+- (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6;
+- (int)getEffectSchedulingFlags;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
-- (id)_newNoiseReductionTokenInternal:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5 isScheduling:(BOOL)arg6 withInputStream:(id)arg7 withKey:(CDStruct_bdcb2b0d)arg8 withOffset:(CDStruct_1b6d18a9)arg9 withSliderSettings:(id)arg10 isStill:(BOOL)arg11 isInterlaced:(BOOL)arg12 isTopFieldFirst:(BOOL)arg13;
+- (CDStruct_bdcb2b0d)getContextBasedMD5Adjustment:(id)arg1;
+- (id)_newNRTokInternalAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 forScheduling:(BOOL)arg7 graphBuildInfo:(id)arg8;
+- (CDStruct_bdcb2b0d)_calcFinalActualMD5:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withSourceStream:(id)arg3 context:(id)arg4 sliderSettingsArray:(id)arg5;
+- (id)_newContextForCacheLookup:(id)arg1;
+- (unsigned long long)denoiseOrPassThru:(id)arg1 bounds:(struct CGRect)arg2 shouldEverProcess:(char *)arg3;
+- (id)newSliderSettingsArrayForTime:(CDStruct_1b6d18a9)arg1;
+- (id)_newNoiseReductionTokenInternal:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5 isScheduling:(BOOL)arg6 withInputStream:(id)arg7 withOffset:(CDStruct_1b6d18a9)arg8 withSliderSettings:(id)arg9 isStill:(BOOL)arg10 fieldOrder:(int)arg11 frameDuration:(CDStruct_1b6d18a9)arg12 sampleDuration:(CDStruct_1b6d18a9)arg13 abortIfOutputCacheMiss:(BOOL)arg14 effectStreamVideoProps:(id)arg15;
 - (void)firstVideoStreamOpenedOnEffect;
 - (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2 pixelTransform:(id)arg3;
 - (BOOL)shouldChannelBeAdjustedByRetime:(id)arg1;
 - (BOOL)isAnimated;
 - (struct HGNode *)newNodeForContext:(id)arg1;
 - (BOOL)writeDefaultChannels;
+- (void)lastVideoStreamClosedOnEffect;
 - (BOOL)isNoOp;
 - (BOOL)channelsNoOp;
 - (id)curveDisplayName;

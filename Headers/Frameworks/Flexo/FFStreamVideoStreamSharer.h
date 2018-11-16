@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface FFStreamVideoStreamSharer : FFStreamDelegatingVideo <FFStreamSharerHGNodeSharing>
 {
-    NSObject<OS_dispatch_queue> *_cachingLock;
+    struct FFSynchronizable *_cachingLock;
     struct list<FFStreamSharerLiveTokenInfo *, std::__1::allocator<FFStreamSharerLiveTokenInfo *>> _liveTokens;
     NSObject<OS_dispatch_queue> *_nodeSharingLock;
     struct map<_opaque_pthread_t *, FFStreamSharedHGNodeInfo *, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, FFStreamSharedHGNodeInfo *>>> _sharedHGNodeInfos;

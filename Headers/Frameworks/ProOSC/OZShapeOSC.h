@@ -30,9 +30,9 @@
     NSMapTable *_GLNames;
     unsigned int _nextGLName;
     struct CGRect _selectionViewVolume;
-    PCPtr_df275998 _normalVertexAssets[5];
+    PCPtr_df275998 _normalVertexAssets[6];
     PCVector2_79efa81a *_normalVertexSize;
-    PCPtr_df275998 _selectedVertexAssets[5];
+    PCPtr_df275998 _selectedVertexAssets[6];
     PCVector2_79efa81a *_selectedVertexSize;
     PCPtr_df275998 _tangentAsset;
     PCVector2_79efa81a *_tangentSize;

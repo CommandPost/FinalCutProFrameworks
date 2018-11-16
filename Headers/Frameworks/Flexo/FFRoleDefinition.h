@@ -10,6 +10,9 @@
 {
 }
 
++ (CDUnknownBlockType)ckRoleComparator;
++ (id)stringByAppendingParams:(id)arg1 toString:(id)arg2;
++ (id)paramsFromString:(id)arg1;
 + (BOOL)isRoleSet:(id)arg1;
 + (BOOL)isGenericRole:(id)arg1;
 + (id)fcpDefinedRoleSets;

@@ -19,6 +19,8 @@
     BOOL _showsDisplayedItemTypesBar;
     BOOL _syncingToTimelineSelection;
     BOOL _timelineSelectionChangingViaTimelineIndex;
+    BOOL _layoutWantedCaptionsMode;
+    BOOL _haveNotReceivedRootItemYetAfterReceivingLayout;
     int _curMode;
     struct PCProcrastinatedDispatch_t _procrastinatedReload;
     NSSet *_items;
@@ -33,20 +35,24 @@
     LKTextField *_infoLabel;
     NSView *_contentContainerView;
     BOOL _debugDisplayPlayheadOnItem;
+    long long _clipFilterType;
+    long long _tagFilterType;
+    long long _captionFilterType;
     FFDataListModeViewController *_curModeViewController;
-    long long clipFilterTyle;
-    long long tagFilterType;
 }
 
 @property(nonatomic) BOOL debugDisplayPlayheadOnItem; // @synthesize debugDisplayPlayheadOnItem=_debugDisplayPlayheadOnItem;
-@property(nonatomic) long long tagFilterType; // @synthesize tagFilterType;
-@property(nonatomic) long long clipFilterTyle; // @synthesize clipFilterTyle;
+@property(nonatomic) long long captionFilterType; // @synthesize captionFilterType=_captionFilterType;
+@property(nonatomic) long long tagFilterType; // @synthesize tagFilterType=_tagFilterType;
+@property(nonatomic) long long clipFilterType; // @synthesize clipFilterType=_clipFilterType;
 @property(retain, nonatomic) FFDataListModeViewController *curModeViewController; // @synthesize curModeViewController=_curModeViewController;
 @property(retain, nonatomic) NSView *contentContainerView; // @synthesize contentContainerView=_contentContainerView;
 @property(retain, nonatomic) LKTextField *infoLabel; // @synthesize infoLabel=_infoLabel;
 @property(retain, nonatomic) LKSearchField *filterField; // @synthesize filterField=_filterField;
 @property(retain, nonatomic) FFDataListHeaderView *headerView; // @synthesize headerView=_headerView;
 @property(nonatomic) int curMode; // @synthesize curMode=_curMode;
+@property(nonatomic) BOOL haveNotReceivedRootItemYetAfterReceivingLayout; // @synthesize haveNotReceivedRootItemYetAfterReceivingLayout=_haveNotReceivedRootItemYetAfterReceivingLayout;
+@property(nonatomic) BOOL layoutWantedCaptionsMode; // @synthesize layoutWantedCaptionsMode=_layoutWantedCaptionsMode;
 @property(nonatomic) id <FFDataListDelegate> dataListDelegate; // @synthesize dataListDelegate=_dataListDelegate;
 @property(retain, nonatomic) NSArray *arrangedItems; // @synthesize arrangedItems=_arrangedItems;
 @property(retain, nonatomic) NSSet *items; // @synthesize items=_items;
@@ -60,6 +66,7 @@
 - (void)_changeContextTimeToMatchTableSelection:(id)arg1;
 - (void)_updateTagModePlayhead;
 - (void)_updateClipModePlayhead;
+- (void)_updateCaptionsModePlayhead;
 - (void)_updatePlayhead;
 - (CDStruct_1b6d18a9)_timelinePlayheadTime;
 - (void)updateInfoLabel;
@@ -69,6 +76,7 @@
 - (BOOL)isTimeLineInMultiAngleEditMode;
 - (BOOL)isItem:(id)arg1 containedInItem:(id)arg2;
 - (id)imageForItem:(id)arg1;
+- (id)endTimecodeForItem:(id)arg1;
 - (id)startTimecodeForItem:(id)arg1;
 - (void)removeFilterConditionForIdentifier:(id)arg1;
 - (void)setFilterCondition:(id)arg1 forIdentifier:(id)arg2;
@@ -97,7 +105,10 @@
 - (void)rangeInvalidated:(id)arg1;
 - (id)contentLayoutDictionary;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
-- (void)awakeFromNib;
+- (void)showOrHideCaptionsTab;
+- (void)showOrHideCaptionsTabWithCurrentMode:(int)arg1;
+- (BOOL)shouldShowCaptionsTab;
+- (long long)integerFromDict:(id)arg1 withKey:(id)arg2 orDefaultValue:(long long)arg3;
 - (void)dealloc;
 - (id)init;
 

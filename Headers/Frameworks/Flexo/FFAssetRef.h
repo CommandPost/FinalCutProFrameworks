@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
 
 + (id)keyPathsForValuesAffectingAsset;
 + (id)copyClassDescription;
+- (id)subtitlesInRange:(CDStruct_e83c9415)arg1;
+- (id)closedCaptionsInRange:(CDStruct_e83c9415)arg1;
+- (BOOL)hasSubtitles;
+- (BOOL)hasClosedCaptions;
 - (void)addClipRefsToSet:(id)arg1;
 - (id)clipRefs;
 - (id)eventName;

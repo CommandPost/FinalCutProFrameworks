@@ -29,6 +29,7 @@
     NSButton *_cancelButton;
     struct _NSModalSession *_modalSession;
     unsigned long long _modalSessionEnabled;
+    BOOL _windowShowing;
     double _lastUpdate;
 }
 
@@ -47,6 +48,7 @@
 - (void)_refreshStatus;
 - (void)_hideSheet;
 - (void)_showSheet;
+@property(nonatomic) BOOL windowShowing; // @synthesize windowShowing=_windowShowing;
 - (id)_statusDisplay;
 - (void)_clearRequestDate;
 - (void)setIsPastStartup:(BOOL)arg1;

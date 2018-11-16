@@ -22,6 +22,8 @@
 - (void)setExceptionOnTerminate:(id)arg1;
 - (void)reportExceptionOnTerminate;
 - (void)terminate:(id)arg1;
+- (BOOL)_handleKeyEquivalent:(id)arg1;
+- (BOOL)_shouldSuppressEventInHandleKeyEquivalent:(id)arg1;
 - (void)sendEvent:(id)arg1;
 - (BOOL)sendAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;
 - (id)targetForAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;

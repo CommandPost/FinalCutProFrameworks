@@ -11,6 +11,7 @@
     unsigned int hasSetTintIndex:1;
 }
 
++ (double)_customArrowSpacingForControlSize:(unsigned long long)arg1;
 - (struct CGRect)titleRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)drawingRectForBounds:(struct CGRect)arg1;
 - (void)dealloc;

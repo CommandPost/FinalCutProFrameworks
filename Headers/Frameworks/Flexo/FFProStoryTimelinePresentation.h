@@ -16,6 +16,7 @@
     NSArray *_oldAudioLanes;
 }
 
+- (BOOL)timelineIndexSimpleClipMode;
 - (id)timelineItemAppearanceTable;
 - (id)layerForLane:(id)arg1;
 - (void)storyPresentationDidChange:(id)arg1;
@@ -59,6 +60,10 @@
 - (void)setShowsComponentsState:(BOOL)arg1 forLanes:(id)arg2 wasArranged:(BOOL)arg3;
 - (void)setExpandedState:(BOOL)arg1 forLanes:(id)arg2;
 - (void)_setExpandedState:(BOOL)arg1 forLanes:(id)arg2;
+- (id)captionLanesForCaptionRole:(id)arg1;
+- (BOOL)hasVisibleCaptionLanes;
+- (id)visibleCaptionLanes;
+- (id)allCaptionLanes;
 - (void)_populateAppearanceRulesPrecisionEditor;
 - (void)_populateAppearanceRulesTitleOnly;
 - (void)_populateAppearanceRulesStandard;

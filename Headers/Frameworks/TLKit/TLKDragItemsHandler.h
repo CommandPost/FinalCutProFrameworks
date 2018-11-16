@@ -61,10 +61,12 @@
     TLKItemComponentInfo *_savedClickedItemComponent;
     long long _layoutRegionOverride;
     NSSet *_itemComponentsWithVerticalLayoutConstraints;
+    NSArray *_previousSelectedObjects;
     double _originalClickedComponentOffset;
 }
 
 @property(nonatomic) double originalClickedComponentOffset; // @synthesize originalClickedComponentOffset=_originalClickedComponentOffset;
+@property(retain, nonatomic) NSArray *previousSelectedObjects; // @synthesize previousSelectedObjects=_previousSelectedObjects;
 @property(copy, nonatomic) NSSet *itemComponentsWithVerticalLayoutConstraints; // @synthesize itemComponentsWithVerticalLayoutConstraints=_itemComponentsWithVerticalLayoutConstraints;
 @property(retain, nonatomic) NSResponder *savedFirstResponder; // @synthesize savedFirstResponder=_savedFirstResponder;
 @property BOOL originalTimelineViewFilmstripUpdatesEnabled; // @synthesize originalTimelineViewFilmstripUpdatesEnabled=_originalTimelineViewFilmstripUpdatesEnabled;
@@ -120,6 +122,7 @@
 - (BOOL)_shouldRescheduleDeferredLayoutWithCurrentPoint:(struct CGPoint)arg1 previousPoint:(struct CGPoint)arg2;
 - (void)_stopTrackingTimers;
 - (void)_startTrackingTimers;
+- (void)_updateLanePinningOutsideOfReload;
 - (void)dragItems:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3 initialPoint:(struct CGPoint)arg4 modifierFlags:(unsigned long long)arg5;
 - (id)_replaceSecondaryItemComponentsWithPrimaryItemComponents:(id)arg1;
 - (BOOL)_needsForcedLayoutForItems:(id)arg1 numberOfItemsFromSpine:(unsigned long long)arg2;
@@ -131,6 +134,7 @@
 - (void)_reloadTimePreservingSpineState:(id)arg1 forContainer:(id)arg2;
 - (id)_savedSpineStateForContainer:(id)arg1;
 - (BOOL)_anchorDraggedItems:(id)arg1 inLayoutContext:(id)arg2 itemLaneFragment:(id)arg3 fromPoint:(struct CGPoint)arg4 toPoint:(struct CGPoint)arg5 atTime:(CDStruct_1b6d18a9)arg6 orthogonally:(BOOL)arg7;
+- (struct CGPoint)viewPointInSpineFromCurrentPoint:(struct CGPoint)arg1 inLayer:(id)arg2;
 - (BOOL)_anchorDraggedItemsVertically:(id)arg1 inLayoutContext:(id)arg2 itemLaneFragment:(id)arg3 fromPoint:(struct CGPoint)arg4 toPoint:(struct CGPoint)arg5 atTime:(CDStruct_1b6d18a9)arg6 orthogonally:(BOOL)arg7;
 - (CDStruct_1b6d18a9)_timeOffsetForAnchoringItem:(id)arg1 inContainer:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)_prepareToAddTimeOffset:(CDStruct_1b6d18a9)arg1 toAnchoredItems:(id)arg2 anchorTimes:(CDStruct_1b6d18a9 *)arg3;
@@ -174,6 +178,9 @@
 - (id)placeholderLayerForItemComponentFragment:(id)arg1;
 - (void)tearDownPlaceholderLayersMap;
 - (void)setupPlaceholderLayersMap;
+- (BOOL)isItemEligibleForReanchoringSource:(id)arg1;
+- (id)firstEligibleReanchoringSourceItemInPreviousSelection;
+- (BOOL)isPotentiallyReanchoring;
 - (void)_updateCurrentAnchorOffsetInContainer:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)_dropInfoAtPoint:(struct CGPoint)arg1 allowingDropOn:(BOOL)arg2;
 - (long long)_insertionIndexInLayoutContext:(id)arg1 atLocation:(double)arg2;
@@ -201,6 +208,8 @@
 - (id)_generateShadowAnimation;
 - (id)_itemComponentFragmentsForItems:(id)arg1;
 - (id)_relatedItemsForItems:(id)arg1;
+- (void)setReloadLayersOnDurationChange:(BOOL)arg1;
+- (BOOL)reloadLayersOnDurationChange;
 - (void)applyConfiguration:(id)arg1;
 - (void)dealloc;
 

@@ -93,10 +93,11 @@
 - (void)appendUpdateHistory:(id)arg1 forGroup:(id)arg2;
 - (void)dumpProjectClipStats;
 - (id)orderedSubRoleUIDsForMainRoleUID:(id)arg1;
-- (id)orderedMainRoleUIDsForAudioNotVideo:(BOOL)arg1;
+- (id)orderedMainRoleUIDsWithRoleType:(int)arg1;
+- (id)orderedMainRolesWithRoleType:(int)arg1;
 - (id)_vendedRoleForRoleUID:(id)arg1;
 - (id)findRoleWithDefinition:(id)arg1 usingOptions:(unsigned int)arg2;
-- (void)syncRoleSetMirrorsToLibraryPreservingContents;
+- (void)syncRoleSetMirrorsToLibrary;
 - (void)_notifyDidChangeRolesInLibrary:(id)arg1;
 - (void)_notifyWillChangeRolesInLibrary:(id)arg1;
 - (id)_deepLoadedSequences;
@@ -105,6 +106,7 @@
 - (void)actionAddNewMainRoles:(id)arg1 addNewSubRoles:(id)arg2 reassignRoles:(id)arg3 renameExistingRoles:(id)arg4 changeColorOfExistingRoles:(id)arg5 removeExistingRoles:(id)arg6;
 - (void)_clearVendedRoles;
 @property(retain, nonatomic) NSString *voiceOverRoleUID;
+- (void)_addMissingDefaultCaptionRoles;
 - (void)_addMissingDefaultSubrolesForBuiltInMainRoles;
 - (void)_undoRedoVendedRolesChange:(id)arg1;
 - (void)_roleSetDataHasChangedAddDefaultSubRoles:(BOOL)arg1;
@@ -112,6 +114,7 @@
 - (id)findRoleWithUID:(id)arg1 orImportFromRoleSet:(id)arg2 mustMatchUID:(BOOL)arg3;
 - (id)findRoleWithUID:(id)arg1;
 - (id)findRolesWithUIDs:(id)arg1;
+- (id)findMainRolePassingTest:(CDUnknownBlockType)arg1;
 - (id)mainRoles;
 - (void)dumpAndVerifyRoleSet;
 - (BOOL)syncSettings:(id *)arg1;

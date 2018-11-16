@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (float)parameterMaxValue:(unsigned long long)arg1;
 - (float)parameterMinValue:(unsigned long long)arg1;
 - (id)_channelForParameter:(unsigned long long)arg1;
+- (void)teardown;
 - (void)update;
 - (void)channelParameterChanged:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;

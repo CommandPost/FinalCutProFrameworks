@@ -11,7 +11,7 @@
 #import "OZListController.h"
 #import "OZOutlineVarRowHeightDelegate.h"
 
-@class LKSearchField, LKSegmentedControl, LKSlider, NSImageView, NSMenuItem, NSString, NSTableColumn, NSView, OZLayerListOutlineView;
+@class LKSearchField, LKSegmentedControl, LKSlider, NSImageView, NSLayoutConstraint, NSMenuItem, NSString, NSTableColumn, NSView, OZLayerListOutlineView;
 
 @interface OZLayerListModule : OZProViewModule <OZListController, NSOutlineViewDataSource, NSOutlineViewDelegate, OZOutlineVarRowHeightDelegate>
 {
@@ -47,8 +47,10 @@
     BOOL _blendOn;
     BOOL _dropClone;
     BOOL _dropReplace;
+    NSLayoutConstraint *_scrollViewBottomToBorderedViewTopConstraint;
 }
 
+@property(retain, nonatomic) NSLayoutConstraint *scrollViewBottomToBorderedViewTopConstraint; // @synthesize scrollViewBottomToBorderedViewTopConstraint=_scrollViewBottomToBorderedViewTopConstraint;
 @property(nonatomic) BOOL showEffects; // @synthesize showEffects=_showEffects;
 @property(nonatomic) BOOL showBehaviors; // @synthesize showBehaviors=_showBehaviors;
 @property(nonatomic) BOOL showMasks; // @synthesize showMasks=_showMasks;

@@ -6,9 +6,11 @@
 
 #import "NSOperation.h"
 
+#import "TLKOperationPipingSource.h"
+
 @class PCChangeLog, TLKDataSourceProxy, TLKLayoutDatabase;
 
-@interface TLKDataSyncOperation : NSOperation
+@interface TLKDataSyncOperation : NSOperation <TLKOperationPipingSource>
 {
     BOOL _syncHeightOnly;
     PCChangeLog *_inputChangeLog;
@@ -18,16 +20,17 @@
 }
 
 @property(nonatomic) BOOL syncHeightOnly; // @synthesize syncHeightOnly=_syncHeightOnly;
-@property(readonly, nonatomic) TLKLayoutDatabase *database; // @synthesize database=_database;
-@property(readonly, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
+@property(retain, nonatomic) TLKLayoutDatabase *database; // @synthesize database=_database;
+@property(retain, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
 @property(copy, nonatomic) PCChangeLog *outputChangeLog; // @synthesize outputChangeLog=_outputChangeLog;
-@property(readonly, nonatomic) PCChangeLog *inputChangeLog; // @synthesize inputChangeLog=_inputChangeLog;
+@property(copy, nonatomic) PCChangeLog *inputChangeLog; // @synthesize inputChangeLog=_inputChangeLog;
 - (void)_resetBackgroundMusicLane;
+- (void)_reloadSpineLane;
 - (void)_resetLaneIndexes;
 - (void)_deleteRecordsForLanes:(id)arg1;
 - (void)_updateRecordsForLanes:(id)arg1;
 - (void)_createRecordsForInsertedLanes:(id)arg1;
-- (void)_createRecordsForChildrenOfLaneIfNeeded:(id)arg1 inTrack:(id)arg2;
+- (void)_syncChildLanesOfLane:(id)arg1 inTrack:(id)arg2;
 - (void)_createRecordsForInsertedLanes:(id)arg1 inTrack:(id)arg2;
 - (void)_cachePropertiesForLane:(id)arg1;
 - (void)_syncLanes;
@@ -39,6 +42,7 @@
 - (void)main;
 - (void)dealloc;
 - (id)initWithDatabase:(id)arg1 dataSourceProxy:(id)arg2 changeLog:(id)arg3;
+- (id)init;
 
 @end
 

@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidMoveToWindow;
 - (BOOL)becomeFirstResponder;
 - (void)reloadData;
-- (void)mouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
 - (void)collapseItem:(id)arg1 collapseChildren:(BOOL)arg2;
 - (void)expandItem:(id)arg1 expandChildren:(BOOL)arg2;
 - (void)keyDown:(id)arg1;

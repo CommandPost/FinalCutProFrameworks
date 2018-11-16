@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (BOOL)selectionCanMoveHorizontallyFromItem:(id)arg1 toItem:(id)arg2;
+- (void)_pinCaptionLanesToVisibleRect;
+- (void)viewDidChangeVisibleRect:(struct CGRect)arg1;
+- (void)viewDidReload;
 - (struct CGColor *)relatedItemSelectionColorRef;
 - (struct CGColor *)dependantItemSelectionColorRef;
 - (struct CGColor *)itemSelectionColorRef;

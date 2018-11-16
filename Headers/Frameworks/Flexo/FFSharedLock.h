@@ -35,6 +35,7 @@
 - (void)beginDisableDeferredWritePrioritization;
 - (id)_evenIfDeferredWritePending:(_Bool)arg1;
 - (BOOL)hasReadLockScope;
+- (BOOL)hasWriteLockScope;
 - (BOOL)writerIsWaiting;
 - (BOOL)_hasWriteLock;
 - (void)_writeUnlock;

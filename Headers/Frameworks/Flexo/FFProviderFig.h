@@ -30,6 +30,10 @@ __attribute__((visibility("hidden")))
 + (id)utis;
 + (void)releaseSharedInstance;
 + (void)initialize;
+- (id)subtitlesInRange:(CDStruct_e83c9415)arg1;
+- (id)closedCaptionsInRange:(CDStruct_e83c9415)arg1;
+- (BOOL)hasSubtitles;
+- (BOOL)hasClosedCaptions;
 - (void)fixSpotlightMetadata:(id)arg1;
 - (void)sniffSpotlightMetadataFig:(id)arg1;
 - (id)copyTimecodeBasedReelName;

@@ -87,7 +87,8 @@ struct HGDotGraph {
     struct map<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge, std::__1::less<std::__1::tuple<unsigned long, unsigned long>>, std::__1::allocator<std::__1::pair<const std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>>> _field2;
     struct __sFILE *_field3;
     _Bool _field4;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field5;
+    _Bool _field5;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field6;
 };
 
 struct HGExecutionData;

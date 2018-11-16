@@ -8,7 +8,7 @@
 
 #import "CAAnimationDelegate.h"
 
-@class CKSetting, CKSource, FFShareInfoView, NSImageView, NSString, NSTextField, NSView;
+@class CKSetting, CKSource, FFShareInfoView, NSImageView, NSSet, NSString, NSTextField, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFShareInfoController : NSObject <CAAnimationDelegate>
@@ -31,10 +31,13 @@ __attribute__((visibility("hidden")))
     NSImageView *_mainSeparatorImageView;
     NSView *_outputFileFormatImageView;
     NSTextField *_outputFileFormatTextField;
+    NSView *_disabledRolesImageView;
     NSView *_compatibilityImageView;
     NSView *_outputFileSizeImageView;
     NSTextField *_outputFileSizeTextField;
     BOOL _observing;
+    NSSet *_disabledRoles;
+    unsigned long long _numberOfCaptionSidecarFiles;
 }
 
 + (id)keyPathsForValuesAffectingOutputFileSizeToolTip;
@@ -48,10 +51,13 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingVideoFrameRate;
 + (id)keyPathsForValuesAffectingVideoDimensions;
 + (id)propertiesDependentOnStompSettingProperties;
+@property(nonatomic) unsigned long long numberOfCaptionSidecarFiles; // @synthesize numberOfCaptionSidecarFiles=_numberOfCaptionSidecarFiles;
+@property(retain, nonatomic) NSSet *disabledRoles; // @synthesize disabledRoles=_disabledRoles;
 @property(nonatomic, getter=isObserving) BOOL observing; // @synthesize observing=_observing;
 @property(nonatomic) NSTextField *outputFileSizeTextField; // @synthesize outputFileSizeTextField=_outputFileSizeTextField;
 @property(retain, nonatomic) NSView *outputFileSizeImageView; // @synthesize outputFileSizeImageView=_outputFileSizeImageView;
 @property(nonatomic) NSView *compatibilityImageView; // @synthesize compatibilityImageView=_compatibilityImageView;
+@property(nonatomic) NSView *disabledRolesImageView; // @synthesize disabledRolesImageView=_disabledRolesImageView;
 @property(nonatomic) NSTextField *outputFileFormatTextField; // @synthesize outputFileFormatTextField=_outputFileFormatTextField;
 @property(nonatomic) NSView *outputFileFormatImageView; // @synthesize outputFileFormatImageView=_outputFileFormatImageView;
 @property(nonatomic) NSImageView *mainSeparatorImageView; // @synthesize mainSeparatorImageView=_mainSeparatorImageView;

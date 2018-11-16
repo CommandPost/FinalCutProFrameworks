@@ -8,10 +8,11 @@
 
 #import "NSPasteboardReading.h"
 #import "NSPasteboardWriting.h"
+#import "NSSecureCoding.h"
 
 @class NSDate, NSDictionary, NSImage, NSString, TMCollection;
 
-@interface TMDocument : NSObject <NSPasteboardWriting, NSPasteboardReading>
+@interface TMDocument : NSObject <NSSecureCoding, NSPasteboardWriting, NSPasteboardReading>
 {
     NSString *_path;
     NSString *_resolvedPath;
@@ -25,12 +26,16 @@
     BOOL _livesInThemeFolder;
     BOOL _suppressNotifications;
     BOOL _deleteable;
+    BOOL _isSystemDoc;
     int _type;
 }
 
 + (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
 + (id)readableTypesForPasteboard:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)documentWithPath:(id)arg1 resolvedPath:(id)arg2 collection:(id)arg3;
++ (int)templateTypeFromDocumentType:(int)arg1;
++ (int)documentTypeFromTemplateType:(int)arg1;
 @property(nonatomic) BOOL livesInThemeFolder; // @synthesize livesInThemeFolder=_livesInThemeFolder;
 @property(nonatomic) BOOL deleteable; // @synthesize deleteable=_deleteable;
 @property(nonatomic) int type; // @synthesize type=_type;
@@ -52,12 +57,15 @@
 - (id)title;
 - (id)attributes;
 - (id)collection;
+- (BOOL)isSystemDoc;
 - (BOOL)isDocumentOnDisk;
 - (void)setResolvedPath:(id)arg1;
 - (id)resolvedPath;
 - (void)setPath:(id)arg1;
 - (id)path;
 - (BOOL)belongsToTheme:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1 resolvedPath:(id)arg2 collection:(id)arg3;
 

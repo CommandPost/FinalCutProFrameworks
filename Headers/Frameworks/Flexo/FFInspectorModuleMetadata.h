@@ -15,7 +15,7 @@
 #import "NSMenuDelegate.h"
 #import "NSTokenFieldDelegate.h"
 
-@class FFInspectorFileInfoClipController, FFInspectorLabelParameterContainerController, FFInspectorMediaHeaderController, LKScrollView, LKSegmentedControl, NSArray, NSArrayController, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTextField, NSView, NSWindow;
+@class FFInspectorFileInfoClipController, FFInspectorLabelParameterContainerController, FFInspectorMediaHeaderController, LKScrollView, LKSegmentedControl, NSArray, NSArrayController, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTextField, NSView, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleMetadata : FFInspectorModule <NSMenuDelegate, FFRolesMenuDelegate, NSTokenFieldDelegate, FFInspectorLabelParameterContainerDataSource, FFInspectorLabelParameterAccessibilityDelegate, FFInspectorContainerDraggingDelegate, FFInspectorLabelParameterToolTipDelegate, FFCameraLUTControllerDelegate>
@@ -39,11 +39,12 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_visibleItems;
     NSMutableSet *_multicamItems;
     NSArray *_observedItems;
-    NSArray *_observedSequences;
+    NSSet *_observedSequences;
     BOOL _cachedHasBinObjects;
     BOOL _cachedHasSetupItems;
     struct PCProcrastinatedDispatch_t _procrastinatedReload;
     struct PCProcrastinatedDispatch_t _procrastinatedMediaChanged;
+    struct PCProcrastinatedDispatch_t _procrastinatedNotifyMetaDataChanged;
     NSMutableDictionary *_info;
     NSArray *_backgroundObservedObjects;
     int _backgroundObservingPendingUpdate;
@@ -59,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LKSegmentedControl *metadataViewSetControl; // @synthesize metadataViewSetControl=_metadataViewSetControl;
 @property(retain, nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
 - (id).cxx_construct;
+- (void)textFieldBecameFirstResponder:(id)arg1;
 - (BOOL)container:(id)arg1 reorderItemAtRow:(unsigned long long)arg2 withRow:(unsigned long long)arg3;
 - (long long)_indexOfMetadataDefinitionInViewSet:(id)arg1 fromVisibleItemAtRow:(unsigned long long)arg2;
 - (BOOL)container:(id)arg1 shouldBeginDraggingSessionAtRow:(unsigned long long)arg2;
@@ -124,6 +126,7 @@ __attribute__((visibility("hidden")))
 - (void)_sequenceSettingsChanged:(int)arg1 item:(id)arg2;
 - (void)_currentItemSettings:(char *)arg1 isCompundClip:(char *)arg2 isReferenceClip:(char *)arg3 isMultiAngleClip:(char *)arg4 isFreezeFrameClip:(char *)arg5;
 - (id)_currentViewSet;
+- (void)_libraryClosed:(id)arg1;
 - (void)_notifyReloadDataForBackgroundObserving;
 - (void)_audioPanChanged:(id)arg1;
 - (void)_audioComponentsChanged:(id)arg1;

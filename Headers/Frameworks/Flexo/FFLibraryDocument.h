@@ -174,6 +174,8 @@
 - (void)updateFinished:(id)arg1;
 - (void)saveUpdatedItemsCheckpoint;
 - (void)updateWithHandler:(id)arg1;
+- (void)update_addMissingDefaultCaptionRoles;
+- (void)update_libraryCaptionTextBlockStorage;
 - (void)update_libraryColorProcessingFromWideGamutToWideGamutHDR;
 - (void)update_addAnyMissingDefaultSubrolesForBuiltInRoles;
 - (void)update_fixUpdateHistoryForJumper:(int)arg1;
@@ -220,6 +222,7 @@
 - (void)stopObservingAppBecameActive;
 - (void)startObservingAppBecameActive;
 - (void)close;
+- (void)closeWhenPossible;
 - (BOOL)flushStorage:(id *)arg1;
 - (void)dealloc;
 - (id)initForURL:(id)arg1 withContentsOfURL:(id)arg2 ofType:(id)arg3 error:(id *)arg4;

@@ -135,7 +135,10 @@ __attribute__((visibility("hidden")))
 - (void)addReservedElementForMediaComponent:(id)arg1 element:(id)arg2;
 - (id)encodeCustomLogProcessingMode:(long long)arg1 LUTProps:(id)arg2;
 - (id)registerMediaElementForMediaComponent:(id)arg1;
+- (id)newCaptionNode:(id)arg1;
+- (void)addCaptionAttributes:(id)arg1 toElement:(id)arg2;
 - (id)newTitleNode:(id)arg1;
+- (void)addAttributedString:(id)arg1 toElement:(id)arg2 registerStyleTo:(id)arg3 forEffect:(id)arg4 atField:(unsigned long long)arg5;
 - (id)newGapNode:(id)arg1;
 - (id)newGeneratorNode:(id)arg1;
 - (id)newTranslatedCompositeNode:(id)arg1;
@@ -169,7 +172,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)addCustomMetadataRepresentationForKey:(id)arg1 WithValue:(id)arg2 ToElement:(id)arg3;
 - (void)addProjectIDAttributes;
 - (void)addTextStyleDefElements;
-- (id)registerTextStyle:(id)arg1 forTitleElement:(id)arg2;
+- (id)registerTextStyle:(id)arg1 forContainerElement:(id)arg2;
 - (id)registerEffect:(id)arg1;
 - (id)registerProjectRef:(id)arg1;
 - (id)registerSequenceProject:(id)arg1;

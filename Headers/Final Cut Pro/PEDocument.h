@@ -57,7 +57,6 @@
 - (void)setLastBackupError:(id)arg1;
 - (id)makeDefaultEvent:(id *)arg1;
 - (void)makeSequenceActive:(id)arg1;
-- (void)close;
 - (void)canCloseDocumentWithDelegate:(id)arg1 shouldCloseSelector:(SEL)arg2 contextInfo:(void *)arg3;
 - (void)updateFinished:(id)arg1;
 - (id)saveChangesString;

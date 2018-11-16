@@ -8,46 +8,64 @@
 
 #import "FFDataListLanesDataSource.h"
 
-@class FFAnchoredTimelineModule, FFDataListLaneNode, FFDataListLaneNodeCache, FFProStoryTimelinePresentation, NSString;
+@class FFAnchoredTimelineModule, FFDataListLaneNode, FFDataListLanesBuilder, FFProStoryTimelinePresentation, NSArray, NSString;
 
 @interface FFDataListLanesDataSource : NSObject <FFDataListLanesDataSource>
 {
     struct PCProcrastinatedDispatch_t _infoStringContext;
     BOOL _pause;
+    BOOL _observingActiveCaptionRoleChanges;
     FFProStoryTimelinePresentation *_storyPresentation;
     FFAnchoredTimelineModule *_timelineModule;
     FFDataListLaneNode *_timelineIndexRootLane;
-    FFDataListLaneNodeCache *_laneNodeCache;
-    FFDataListLaneNodeCache *_proxyLaneNodeCache;
+    FFDataListLanesBuilder *_nodeTreeBuilder;
+    NSArray *_savedExpandedCaptions;
+    NSArray *_savedVisibleCaptions;
 }
 
-@property(retain, nonatomic) FFDataListLaneNodeCache *proxyLaneNodeCache; // @synthesize proxyLaneNodeCache=_proxyLaneNodeCache;
-@property(retain, nonatomic) FFDataListLaneNodeCache *laneNodeCache; // @synthesize laneNodeCache=_laneNodeCache;
+@property(copy, nonatomic) NSArray *savedVisibleCaptions; // @synthesize savedVisibleCaptions=_savedVisibleCaptions;
+@property(copy, nonatomic) NSArray *savedExpandedCaptions; // @synthesize savedExpandedCaptions=_savedExpandedCaptions;
+@property(readonly, nonatomic) FFDataListLanesBuilder *nodeTreeBuilder; // @synthesize nodeTreeBuilder=_nodeTreeBuilder;
+@property(nonatomic) BOOL observingActiveCaptionRoleChanges; // @synthesize observingActiveCaptionRoleChanges=_observingActiveCaptionRoleChanges;
 @property(retain, nonatomic) FFDataListLaneNode *timelineIndexRootLane; // @synthesize timelineIndexRootLane=_timelineIndexRootLane;
 @property(retain, nonatomic) FFAnchoredTimelineModule *timelineModule; // @synthesize timelineModule=_timelineModule;
 @property(retain, nonatomic) FFProStoryTimelinePresentation *storyPresentation; // @synthesize storyPresentation=_storyPresentation;
 @property(nonatomic) BOOL pause; // @synthesize pause=_pause;
+- (void)_persistStateToSequence;
+- (void)timelineIndex:(id)arg1 performMasterCaptionToggleVisibleOffWithLane:(id)arg2;
+- (void)timelineIndex:(id)arg1 performMasterCaptionToggleVisibleOnWithLane:(id)arg2;
 - (void)_invalidateInfoString;
 - (BOOL)_roles:(id)arg1 match:(id)arg2;
 - (id)_newRoleUIDsOfHighlighted;
-- (id)_allAudioLanes;
-- (id)_recursivelyBuildNodesForLanes:(id)arg1 withParentNode:(id)arg2 depth:(unsigned long long)arg3;
-- (id)_rebuildRootLaneNode;
-- (void)_reloadData;
 - (id)_rootAncestorsForTargetLane:(id)arg1;
 - (BOOL)_determineIfReloadIsNecessaryWithChangeLog:(id)arg1;
-- (id)timelineIndexVideoLanes:(id)arg1;
-- (void)timelineIndex:(id)arg1 retrieveToggleLanes:(id *)arg2 forTargetLane:(id)arg3 includeChildLanes:(BOOL)arg4;
-- (void)timelineIndex:(id)arg1 retrieveSoloLanes:(id *)arg2 otherLanes:(id *)arg3 forTargetLane:(id)arg4 includeChildLanes:(BOOL)arg5;
+- (void)timelineIndex:(id)arg1 retrieveToggleLanes:(id *)arg2 forTargetLane:(id)arg3;
+- (void)timelineIndex:(id)arg1 retrieveSoloLanes:(id *)arg2 otherLanes:(id *)arg3 forTargetLane:(id)arg4;
+- (void)reloadData;
 - (BOOL)inSimpleClipModeForTimelineIndex:(id)arg1;
 - (id)durationOfHighlightedForTimelineIndex:(id)arg1;
 - (unsigned long long)numberOfRoleGroupsForTimelineIndex:(id)arg1;
-- (void)timelineIndex:(id)arg1 focusChangedToLane:(id)arg2;
-- (void)timelineIndex:(id)arg1 setValue:(BOOL)arg2 ofState:(int)arg3 forLanes:(id)arg4 extendFocus:(BOOL)arg5;
-- (id)timelineIndex:(id)arg1 fetchState:(int)arg2 forLanes:(id)arg3;
+- (void)timelineIndex:(id)arg1 performAction:(int)arg2 forState:(int)arg3 withLane:(id)arg4;
+- (id)timelineIndex:(id)arg1 fetchValuesForState:(int)arg2 forLanes:(id)arg3;
+- (BOOL)timelineIndex:(id)arg1 fetchValueForState:(int)arg2 forLane:(id)arg3;
+- (void)timelineIndex:(id)arg1 setValue:(BOOL)arg2 forState:(int)arg3 forLanes:(id)arg4 extendFocus:(BOOL)arg5;
+- (void)timelineIndex:(id)arg1 toggleState:(int)arg2 withLane:(id)arg3 extendFocus:(BOOL)arg4;
+- (void)timelineIndex:(id)arg1 solidToggleState:(int)arg2 withLane:(id)arg3 extendFocus:(BOOL)arg4;
+- (void)timelineIndex:(id)arg1 soloState:(int)arg2 withLane:(id)arg3 extendFocus:(BOOL)arg4;
+- (void)timelineIndex:(id)arg1 clearState:(int)arg2 withLane:(id)arg3;
+- (void)timelineIndex:(id)arg1 setVisibleState:(BOOL)arg2 forLanes:(id)arg3;
+- (void)timelineIndex:(id)arg1 setExpandedState:(BOOL)arg2 forLanes:(id)arg3;
+- (void)timelineIndex:(id)arg1 setHighlightedState:(BOOL)arg2 forLanes:(id)arg3;
+- (void)timelineIndex:(id)arg1 setFocusState:(BOOL)arg2 forLanes:(id)arg3 extendFocus:(BOOL)arg4;
+- (void)timelineIndex:(id)arg1 setArrangedState:(BOOL)arg2 forLanes:(id)arg3;
+- (void)_setAudioVideoEnabledState:(BOOL)arg1 forLanes:(id)arg2;
+- (void)timelineIndex:(id)arg1 setEnabledState:(BOOL)arg2 forLanes:(id)arg3;
+- (void)forceTimelineDataSyncWithChangeLog:(id)arg1;
+- (void)resolveLaneConflicts;
 - (BOOL)timelineIndex:(id)arg1 dragLane:(id)arg2 proposedLane:(id)arg3 proposedIndex:(long long)arg4 retargetInfo:(struct FFDataListLanesDropRetargetingInfo *)arg5 validateOnly:(BOOL)arg6;
 - (id)lanesForStoryLane:(id)arg1;
 - (id)firstLaneForStoryLane:(id)arg1;
+- (void)_activeCaptionRoleChangedForSequence:(id)arg1;
 - (void)_storyPresentationChanged:(id)arg1;
 - (void)_stopObservingStoryPresentation;
 - (void)_startObservingStoryPresentation;

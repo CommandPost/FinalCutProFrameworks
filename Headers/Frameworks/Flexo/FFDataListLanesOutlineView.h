@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)mouseDown:(id)arg1;
 - (struct CGRect)frameOfCellAtColumn:(long long)arg1 row:(long long)arg2;
 - (struct CGRect)frameOfOutlineCellAtRow:(long long)arg1;
 - (void)reloadData;

@@ -8,7 +8,7 @@
 
 #import "TLKVisibleRectObserving.h"
 
-@class CALayer, NSMapTable, NSMutableArray, PCChangeLog, TLKEditorCloseView, TLKLayoutDatabase, TLKTimelineView;
+@class CALayer, NSMapTable, NSMutableArray, PCChangeLog, TLKEditorCloseView, TLKLayerRecyclePool, TLKLayoutDatabase, TLKTimelineView;
 
 @interface TLKLayerManager : NSObject <TLKVisibleRectObserving>
 {
@@ -22,13 +22,14 @@
     TLKTimelineView *_timelineView;
     TLKLayoutDatabase *_layoutDatabase;
     struct {
-        unsigned int recyclesLayers:1;
         unsigned int suspendLayerUpdatesForAnchoredClips:1;
-        unsigned int RESERVED:30;
+        unsigned int RESERVED:31;
     } _lmFlags;
     PCChangeLog *_updatesQueue;
+    TLKLayerRecyclePool *_layerRecyclePool;
 }
 
+@property(retain, nonatomic) TLKLayerRecyclePool *layerRecyclePool; // @synthesize layerRecyclePool=_layerRecyclePool;
 @property(retain) TLKLayoutDatabase *layoutDatabase; // @synthesize layoutDatabase=_layoutDatabase;
 @property(readonly, nonatomic) PCChangeLog *updatesQueue; // @synthesize updatesQueue=_updatesQueue;
 - (void)restoreSavedFrameState:(id)arg1;
@@ -117,8 +118,8 @@
 - (id)containerLayerForContainer:(id)arg1;
 @property(readonly, nonatomic) CALayer *dragLayer;
 @property(readonly, nonatomic) CALayer *rootLayer;
+- (void)discardRecycledLayers;
 - (void)recycleLayersForItemComponentFragment:(id)arg1;
-- (id)_newRecycledLayerFromArray:(id)arg1;
 @property(nonatomic) BOOL recyclesLayers;
 - (void)reset;
 - (BOOL)shouldUpdateLayerFrames;

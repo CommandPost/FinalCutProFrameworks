@@ -18,14 +18,15 @@
 - (FFRoleColorScheme *)colorSchemeForOrganizedLane:(id)arg1;
 - (NSSet *)itemsForOrganizedLane:(id)arg1;
 - (NSString *)uidForOrganizedLane:(id)arg1;
-- (NSString *)nameForOrganizedLane:(id)arg1;
+- (BOOL)pinnedStateForOrganizedLane:(id)arg1;
+- (void)setHidden:(BOOL)arg1 forOrganizedLane:(id)arg2;
+- (BOOL)hiddenForOrganizedLane:(id)arg1;
 - (void)setShowsComponents:(BOOL)arg1 forOrganizedLane:(id)arg2;
 - (BOOL)showsComponentsForOrganizedLane:(id)arg1;
 - (BOOL)canShowComponentsForOrganizedLane:(id)arg1;
 - (void)setArrangedState:(BOOL)arg1 forOrganizedLane:(id)arg2;
 - (BOOL)arrangedStateForOrganizedLane:(id)arg1;
 - (BOOL)canArrangeOrganizedLane:(id)arg1;
-- (void)setEnabledState:(BOOL)arg1 forOrganizedLane:(id)arg2;
 - (BOOL)enabledStateForOrganizedLane:(id)arg1;
 - (BOOL)canEnableOrganizedLane:(id)arg1;
 - (void)setHighlightedState:(BOOL)arg1 forOrganizedLane:(id)arg2;

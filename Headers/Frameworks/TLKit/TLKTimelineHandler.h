@@ -102,6 +102,8 @@
 - (BOOL)isViewFirstResponder;
 - (BOOL)trimModeOn;
 - (BOOL)timePreservingModeOn;
+- (void)setReloadLayersOnDurationChange:(BOOL)arg1;
+- (BOOL)reloadLayersOnDurationChange;
 @property BOOL allowPressAndHold;
 @property id <TLKTimelineItem> curveEditorDraggedItem;
 - (id)draggedItem;

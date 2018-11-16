@@ -10,12 +10,14 @@
 #import "NSOutlineViewDataSource.h"
 #import "NSOutlineViewDelegate.h"
 
-@class FFDataListLanesDataSource, FFTimelineVisibleRectStateSaverRestorer, LKScrollView, NSOutlineView, NSString, NSTreeController, NSTreeNode;
+@class FFDataListLanesDataSource, LKScrollView, NSOutlineView, NSString, NSTreeController, NSTreeNode;
 
 __attribute__((visibility("hidden")))
 @interface FFDataListLanesOutlineViewController : NSViewController <FFDataListLanesOutlineViewDelegate, NSOutlineViewDelegate, NSOutlineViewDataSource>
 {
     BOOL _dragInProgress;
+    BOOL _processingExpandCollapse;
+    BOOL _updateModelFromSelection;
     BOOL _inSimpleClipMode;
     BOOL _disableExpandCollapseOnReload;
     _Bool _shouldRespondToSelectionChange;
@@ -24,34 +26,34 @@ __attribute__((visibility("hidden")))
     NSOutlineView *_outlineView;
     NSTreeController *_treeController;
     LKScrollView *_scrollView;
-    FFTimelineVisibleRectStateSaverRestorer *_visibleRectStateSaverRestorer;
 }
 
 @property(nonatomic) _Bool shouldRespondToSelectionChange; // @synthesize shouldRespondToSelectionChange=_shouldRespondToSelectionChange;
 @property(nonatomic) BOOL disableExpandCollapseOnReload; // @synthesize disableExpandCollapseOnReload=_disableExpandCollapseOnReload;
-@property(retain, nonatomic) FFTimelineVisibleRectStateSaverRestorer *visibleRectStateSaverRestorer; // @synthesize visibleRectStateSaverRestorer=_visibleRectStateSaverRestorer;
 @property(nonatomic) LKScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(nonatomic) NSTreeController *treeController; // @synthesize treeController=_treeController;
 @property(nonatomic) NSOutlineView *outlineView; // @synthesize outlineView=_outlineView;
 @property(retain, nonatomic) NSTreeNode *draggedItem; // @synthesize draggedItem=_draggedItem;
 @property(nonatomic) BOOL inSimpleClipMode; // @synthesize inSimpleClipMode=_inSimpleClipMode;
 @property(retain, nonatomic) FFDataListLanesDataSource *timelineIndexDataSource; // @synthesize timelineIndexDataSource=_timelineIndexDataSource;
+- (void)selectionNeedingModelUpdateDidChange:(id)arg1;
+- (void)selectionNeedingModelUpdateWillChange:(id)arg1;
+- (int)_determineHideActionWithModifierFlags:(unsigned long long)arg1;
+- (int)_determineExpandActionWithModifierFlags:(unsigned long long)arg1;
+- (int)_determineEnableActionWithModifierFlags:(unsigned long long)arg1 newValue:(BOOL)arg2 lane:(id)arg3;
+- (int)_determineArrangeActionWithModifierFlags:(unsigned long long)arg1;
+- (int)_determineFocusActionWithModifierFlags:(unsigned long long)arg1 newValue:(BOOL)arg2;
 - (void)_expandItemsForSimpleClipMode;
-- (void)_clearState:(int)arg1 forLaneAndSiblings:(id)arg2;
-- (void)_toggleState:(int)arg1 forLaneAndSiblings:(id)arg2 includeChildLanes:(BOOL)arg3;
-- (void)_soloState:(int)arg1 forLaneAndSiblings:(id)arg2 includeChildLanes:(BOOL)arg3;
-- (void)_toggleState:(int)arg1 forSingleLane:(id)arg2 includeChildLanes:(BOOL)arg3 extendFocus:(BOOL)arg4;
-- (int)_determineActionWithLaneState:(int)arg1;
-- (int)_determineFocusStateActionForLane:(id)arg1;
-- (int)_determineActionForLane:(id)arg1 withState:(int)arg2;
-- (void)_buttonClickedForItem:(id)arg1 withState:(int)arg2;
+- (void)_restoreTimelineVisibleRectState:(id)arg1;
+- (id)_savedTimelineVisibleRectState;
+- (id)_timelineModule;
 - (void)timelineIndexOutlineViewDidReloadData:(id)arg1;
 - (void)outlineViewSelectionDidChange:(id)arg1;
 - (void)restoreSelection;
 - (double)outlineView:(id)arg1 heightOfRowByItem:(id)arg2;
 - (id)outlineView:(id)arg1 viewForTableColumn:(id)arg2 item:(id)arg3;
-- (void)showsComponentsButtonClicked:(id)arg1;
-- (id)_expandableTreeNodesForClickedNode:(id)arg1 modifierFlags:(unsigned long long)arg2;
+- (void)hideButtonClicked:(id)arg1;
+- (void)expandCollapseButtonClicked:(id)arg1;
 - (void)enableButtonClicked:(id)arg1;
 - (void)arrangeButtonClicked:(id)arg1;
 - (void)focusButtonClicked:(id)arg1;
@@ -64,8 +66,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_dragItem:(id)arg1 proposedItem:(id)arg2 proposedIndex:(long long)arg3 outlineView:(id)arg4 validateOnly:(BOOL)arg5;
 - (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
 - (id)_treeNodeCorrespondingToLane:(id)arg1;
-- (id)currentTimelineView;
-- (id)storyTimelinePresentation;
 - (void)viewDidDisappear;
 - (void)viewWillAppear;
 - (void)viewDidLoad;

@@ -100,10 +100,7 @@ struct SMPTETime {
 
 struct Synchronizable {
     CDUnknownFunctionPointerType *_field1;
-    struct _opaque_pthread_mutex_t {
-        long long _field1;
-        char _field2[56];
-    } _field2;
+    struct _opaque_pthread_mutex_t _field2;
     struct _opaque_pthread_t *_field3;
     unsigned long long _field4;
     struct _opaque_pthread_cond_t {
@@ -122,6 +119,11 @@ struct __list_node_base<MIOOP1aReaderTrackOutput *, void *> {
 struct __list_node_base<opaqueCMSampleBuffer *, void *> {
     struct __list_node_base<opaqueCMSampleBuffer *, void *> *_field1;
     struct __list_node_base<opaqueCMSampleBuffer *, void *> *_field2;
+};
+
+struct _opaque_pthread_mutex_t {
+    long long __sig;
+    char __opaque[56];
 };
 
 struct list<MIOOP1aReaderTrackOutput *, std::__1::allocator<MIOOP1aReaderTrackOutput *>> {

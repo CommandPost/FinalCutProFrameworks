@@ -19,15 +19,22 @@
     unsigned short _maxPixelVal_img2[4];
     int _totalDiffCount;
     int _pixelCount;
+    int _channelIsZero_img1[4];
+    int _channelIsZero_img2[4];
+    int _alphaChannelIndex;
     NSString *_label;
     NSString *_firstDiff;
     NSString *_maxDiffInfo[4];
     NSString *_minDiffInfo[4];
 }
 
+@property(readonly) int alphaChannelIndex; // @synthesize alphaChannelIndex=_alphaChannelIndex;
 @property(retain) NSString *label; // @synthesize label=_label;
+- (int)alphaIsZeroCountImg2;
+- (int)alphaIsZeroCountImg1;
 - (int)minAlphaValImg2;
 - (int)minAlphaValImg1;
+- (int)totalPixelCount;
 - (int)totalDiffCount;
 - (id)channelDesc:(int)arg1;
 - (id)description;

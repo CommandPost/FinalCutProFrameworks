@@ -12,6 +12,7 @@
 {
     BOOL _showsItemHeadersOnly;
     BOOL _showsWaveformsForPrecisionEditor;
+    BOOL _showsAudioLaneHeaders;
     FFStoryTimelinePresentation *_storyTimelinePresentation;
     double _itemHeight;
     double _itemHeaderHeight;
@@ -27,6 +28,7 @@
 @property(nonatomic) double itemHeaderOnlyHeight; // @synthesize itemHeaderOnlyHeight=_itemHeaderOnlyHeight;
 @property(nonatomic) double itemHeaderHeight; // @synthesize itemHeaderHeight=_itemHeaderHeight;
 @property(nonatomic) double itemHeight; // @synthesize itemHeight=_itemHeight;
+@property(nonatomic) BOOL showsAudioLaneHeaders; // @synthesize showsAudioLaneHeaders=_showsAudioLaneHeaders;
 @property(nonatomic) BOOL showsWaveformsForPrecisionEditor; // @synthesize showsWaveformsForPrecisionEditor=_showsWaveformsForPrecisionEditor;
 @property(nonatomic) BOOL showsItemHeadersOnly; // @synthesize showsItemHeadersOnly=_showsItemHeadersOnly;
 @property(nonatomic) FFStoryTimelinePresentation *storyTimelinePresentation; // @synthesize storyTimelinePresentation=_storyTimelinePresentation;

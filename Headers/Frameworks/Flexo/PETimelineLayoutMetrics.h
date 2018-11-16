@@ -10,6 +10,9 @@
 {
 }
 
+- (id)_captionLaneBoxMetrics;
+- (id)_audioLaneBoxMetrics;
+- (id)boxMetricsForLane:(id)arg1;
 - (double)heightForItemComponent:(id)arg1 proposedHeight:(double)arg2;
 - (double)_heightForDynamicItem:(id)arg1 proposedHeight:(double)arg2;
 - (id)_findNextStorylineItem:(id)arg1;

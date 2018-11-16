@@ -13,6 +13,7 @@
 - (NSIndexSet *)selectedIndexes;
 - (void)syncToDisplayedItemsType:(long long)arg1;
 - (void)syncToSelectedIndexes:(NSIndexSet *)arg1;
+- (NSString *)searchTooltip;
 - (NSString *)dataListInfoStringForProposedString:(NSString *)arg1;
 - (void)reloadData;
 @end

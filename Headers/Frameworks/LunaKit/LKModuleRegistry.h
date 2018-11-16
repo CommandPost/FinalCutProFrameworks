@@ -21,6 +21,7 @@
 - (void)unregisterModule:(id)arg1 inContext:(id)arg2;
 - (void)registerModule:(id)arg1 inContext:(id)arg2;
 - (id)moduleWithIdentifier:(id)arg1 inContext:(id)arg2;
+- (id)moduleInAnyContextWithIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

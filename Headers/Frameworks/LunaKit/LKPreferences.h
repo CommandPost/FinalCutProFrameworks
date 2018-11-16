@@ -48,6 +48,10 @@
 - (void)windowDidResize:(id)arg1;
 - (BOOL)windowShouldClose:(id)arg1;
 - (id)windowTitle;
+- (void)updatePanelFrameWithOwner:(id)arg1 isChangingPanes:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)updatePanelFrameAnimated:(BOOL)arg1;
+- (id)_viewForOwner:(id)arg1;
+- (id)_titleForOwner:(id)arg1;
 - (void)_selectModuleOwner:(id)arg1;
 - (void)apply:(id)arg1;
 - (void)cancel:(id)arg1;

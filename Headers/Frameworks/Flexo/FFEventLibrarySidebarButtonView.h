@@ -11,5 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)draggingExited:(id)arg1;
+- (unsigned long long)draggingEntered:(id)arg1;
+
 @end
 

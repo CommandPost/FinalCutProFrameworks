@@ -41,6 +41,9 @@ __attribute__((visibility("hidden")))
 - (id)displayNameForIdentifier:(id)arg1;
 - (id)targetForIdentifier:(id)arg1;
 - (SEL)selectorForIdentifier:(id)arg1;
+- (void)_libraryClosed:(id)arg1;
+- (void)_removeLibraryCloseObserving;
+- (void)_addLibraryCloseObserving;
 - (void)setupForSelection:(id)arg1;
 - (id)touchBar:(id)arg1 makeItemForIdentifier:(id)arg2;
 - (id)makeTouchBar;

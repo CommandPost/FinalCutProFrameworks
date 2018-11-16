@@ -15,8 +15,7 @@
 
 - (id)uidsOfLanesPassingTest:(CDUnknownBlockType)arg1;
 - (void)_addUIDOfLane:(id)arg1 toResultsSet:(id)arg2 ifPassingTest:(CDUnknownBlockType)arg3;
-- (void)restoreFromLaneManagerPersistence:(id)arg1 disabledLaneUIDs:(id)arg2;
-- (void)_restoreEnabledLaneState:(id)arg1 disabledLaneUIDs:(id)arg2;
+- (void)restoreFromLaneManagerPersistence:(id)arg1;
 - (void)_restoreLaneOrder:(id)arg1;
 - (void)_restoreLaneState:(id)arg1 state:(id)arg2;
 - (id)save;

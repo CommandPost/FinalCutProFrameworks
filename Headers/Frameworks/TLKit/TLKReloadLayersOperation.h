@@ -15,12 +15,13 @@
     struct CGRect _clipRect;
 }
 
+@property(retain, nonatomic) TLKLayerManager *layerManager; // @synthesize layerManager=_layerManager;
 @property(nonatomic) struct CGRect clipRect; // @synthesize clipRect=_clipRect;
-@property(readonly, nonatomic) TLKLayerManager *layerManager; // @synthesize layerManager=_layerManager;
-@property(readonly, nonatomic) PCChangeLog *inputChangeLog; // @synthesize inputChangeLog=_inputChangeLog;
+@property(copy, nonatomic) PCChangeLog *inputChangeLog; // @synthesize inputChangeLog=_inputChangeLog;
+- (void)_addInputChangeLogRecordsToLayerManagerQueue;
 - (void)main;
 - (void)dealloc;
-- (id)initWithLayerManager:(id)arg1 changeLog:(id)arg2 clipRect:(struct CGRect)arg3;
+- (id)init;
 
 @end
 

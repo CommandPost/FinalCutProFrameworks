@@ -13,8 +13,6 @@
 
 + (void)initialize;
 @property(nonatomic, getter=isBordered) BOOL bordered; // @synthesize bordered=_bordered;
-- (BOOL)showsMenuIndicatorForSegment:(long long)arg1;
-- (void)setShowsMenuIndicator:(BOOL)arg1 forSegment:(long long)arg2;
 - (long long)indexOfSelectedMenuItemInMenuForSegmentAtIndex:(long long)arg1;
 - (id)selectedMenuItemInMenuForSegmentAtIndex:(long long)arg1;
 - (void)selectMenuItemAtIndex:(long long)arg1 inMenuForSegmentAtIndex:(long long)arg2;

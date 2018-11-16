@@ -118,6 +118,7 @@
 - (void)autoscrollWithChange:(struct CGRect)arg1 andAfter:(struct CGRect)arg2;
 - (BOOL)isDraggingLeadingEdge;
 - (int)trimType;
+- (void)resetState;
 - (void)resumeHandling:(id)arg1;
 - (void)pauseHandling:(id)arg1;
 - (void)stopHandling:(id)arg1;
@@ -127,6 +128,7 @@
 - (BOOL)stopTrackingWithCommit:(BOOL)arg1;
 - (void)_updateItemsLayers:(id)arg1;
 - (BOOL)continueTracking:(id)arg1;
+- (void)_updateLanePinningOutsideOfReload;
 - (CDStruct_1b6d18a9)moveEdgeToPoint:(struct CGPoint)arg1;
 - (id)_validItemForTimeCodeDisplay;
 - (CDStruct_1b6d18a9)_timeOffsetForMovingEdgeToPoint:(struct CGPoint)arg1;

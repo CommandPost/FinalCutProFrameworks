@@ -82,6 +82,8 @@
 @property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 - (void)didInsertObjectsInItemComponentFragments:(id)arg1;
 - (void)_resortInsertedItemComponentFragments:(id)arg1;
+- (id)layoutConstraintsNotMatchingIdentifiers:(id)arg1;
+- (id)layoutConstraintsMatchingIdentifiers:(id)arg1;
 @property(readonly, nonatomic) NSSet *itemComponentLayoutConstraintObservers;
 @property(readonly, nonatomic) NSSet *itemComponentLayoutConstraints;
 - (struct CGRect)layoutFrameForLayoutContext:(id)arg1;
@@ -95,6 +97,7 @@
 @property(copy, nonatomic) NSSet *layoutConstraints;
 @property(readonly, nonatomic) TLKContainerInfo *trackContainerInfo;
 - (void)didSetDeletedFromContainerInfo:(id)arg1;
+- (void)breakRetainCyclesForDealloc;
 @property(nonatomic) TLKContainerInfo *enclosingContainerInfo;
 @property(readonly, nonatomic) id container;
 - (id)nonWrappingItemComponentFragment;
@@ -114,13 +117,14 @@
 - (long long)compareByTimeRange:(id)arg1;
 @property(nonatomic) struct _TLKRange locationRange;
 - (struct _TLKRange)locationRangeForSeconds:(double)arg1;
-@property(retain, nonatomic) TLKItemLayoutInfo *itemInfo;
+- (void)clearLaneInfo;
+@property(nonatomic) TLKItemLayoutInfo *itemInfo;
 @property(nonatomic) BOOL isAccessoryLayerVisible;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithItemComponent:(id)arg1;
+- (id)initWithRepresentedObject:(id)arg1;
 - (id)init;
 @property(readonly) BOOL audioOnly;
 @property(readonly) BOOL disabled;

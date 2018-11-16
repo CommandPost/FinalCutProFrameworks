@@ -6,6 +6,8 @@
 
 #import "NSObject.h"
 
+@class NSMutableArray;
+
 @interface FFGraphBuildInformation : NSObject
 {
     BOOL _retimeApproximateDueToMissingFlowVectors;
@@ -13,9 +15,11 @@
     BOOL _flowTransitionNeedsAnalysis;
     BOOL _oneOrMoreCacheHits;
     unsigned int _cacheHitReasons;
+    NSMutableArray *_effectsInTemporaryRenderState;
 }
 
 + (id)graphBuildInformation;
+- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)unionBuildInfo:(id)arg1;
 - (unsigned int)getCacheHitReasons;
@@ -26,6 +30,8 @@
 - (void)setFlowTransitionNeedsAnalysis:(BOOL)arg1;
 - (BOOL)approximateDueToMissingDominantMotion;
 - (void)setApproximateDueToMissingDominantMotion:(BOOL)arg1;
+- (void)setEffectsInTemporaryRenderState:(id)arg1;
+- (id)effectsInTemporaryRenderState;
 - (BOOL)retimeApproximateDueToMissingFlowVectors;
 - (void)setRetimeApproximateDueToMissingFlowVectors:(BOOL)arg1;
 

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)storesCollapsedStateForChannel:(struct OZChannelBase *)arg1;
 - (void)controller:(id)arg1 willChangeChannel:(struct OZChannelBase *)arg2;
 
 @end

@@ -34,6 +34,7 @@
 - (id)mediaEventProject;
 - (id)rootObject;
 - (void)updateWithHandler:(id)arg1;
+- (void)update_projectNotesLocation2;
 - (void)update_colorProfileMetadata;
 - (void)update_PreEdelXAudioEffectKeyframes;
 - (void)update_fixHEACCAnchoredMediaComponentSampleRate;

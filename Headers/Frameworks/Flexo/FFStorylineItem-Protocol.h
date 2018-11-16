@@ -4,12 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "FFModelLocking.h"
 #import "NSObject.h"
 
-@class NSSet;
+@class NSSet, NSString;
 
-@protocol FFStorylineItem <NSObject, FFModelLocking>
+@protocol FFStorylineItem <NSObject>
 @property(readonly, nonatomic) id <FFStorylineItem> nextStoryItem;
 @property(readonly, nonatomic) id <FFStorylineItem> previousStoryItem;
 @property(readonly, nonatomic) id <FFStorylineItem> anchoredToStoryItem;
@@ -27,6 +26,7 @@
 @property(readonly, nonatomic) BOOL isAudioOnly;
 @property(readonly, nonatomic) BOOL isVideoOnly;
 @property(readonly, nonatomic) BOOL hasAudio;
+@property(readonly, nonatomic) BOOL isCaption;
 @property(readonly, nonatomic) BOOL hasVideo;
 @property(readonly, nonatomic) unsigned long long storylineRegion;
 @property(readonly, nonatomic) BOOL isStorylineClip;
@@ -38,7 +38,11 @@
 @property(readonly, nonatomic) NSSet *videoRoleIdentifiers;
 @property(nonatomic) long long verticalIndex;
 @property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
+@property(copy, nonatomic) NSString *displayName;
+- (long long)compareByStartTime:(id <FFStorylineItem>)arg1;
+- (void)trimTrailingEdgeByOffset:(CDStruct_1b6d18a9)arg1;
 - (void)resolveCollisions;
+- (void)disconnect;
 - (void)connectStorylineItem:(id <FFStorylineItem>)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)connectStoryline:(id <FFStoryline>)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (unsigned long long)storyItemTransitionSubType:(BOOL)arg1;

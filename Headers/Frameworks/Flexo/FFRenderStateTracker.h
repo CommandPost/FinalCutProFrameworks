@@ -10,7 +10,6 @@
 
 @class FFBackgroundTask, FFPMRLogFunnel, FFProvider, FFSVContext, FFSourceVideo, NSLock, NSMutableArray, NSMutableIndexSet, NSThread;
 
-__attribute__((visibility("hidden")))
 @interface FFRenderStateTracker : NSObject <FFBackgroundTaskTarget>
 {
     FFSVContext *_scrubContext;
@@ -35,6 +34,7 @@ __attribute__((visibility("hidden")))
     int _deferredRenderStateNotify;
     struct set<FFMD5, std::__1::less<FFMD5>, std::__1::allocator<FFMD5>> *_segmentsWithDrops;
     _Bool _temporaryHold;
+    BOOL _isShutdown;
 }
 
 + (id)assetsInUseForSource:(id)arg1;
@@ -96,7 +96,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSourceVideo:(id)arg1;
 - (id)init;
 - (void)uiPlaybackStateChange:(id)arg1;
-- (void)appWillTerminate:(id)arg1;
+- (void)libraryClosed:(id)arg1;
 - (void)oscDidStopDragging:(id)arg1;
 - (void)oscWillStartDragging:(id)arg1;
 - (void)timelineDidStopDragging:(id)arg1;

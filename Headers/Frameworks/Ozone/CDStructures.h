@@ -4756,35 +4756,7 @@ struct OZToolOptionsHUDComponent {
     struct PCString _field4;
 };
 
-struct OZTransform3DToolState {
-    float _field1[4];
-    float _field2[4];
-    float _field3[4];
-    float _field4[4];
-    float _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-    float _field9;
-    float _field10;
-    float _field11;
-    int _field12;
-    int _field13;
-    _Bool _field14;
-    _Bool _field15;
-    _Bool _field16;
-    _Bool _field17;
-    float _field18;
-    float _field19;
-    float _field20;
-    float _field21;
-    float _field22;
-    float _field23;
-    float _field24;
-    _Bool _field25;
-    _Bool _field26;
-    float _field27;
-};
+struct OZTransform3DToolState;
 
 struct OZTransformNode {
     CDUnknownFunctionPointerType *_field1;
@@ -5027,10 +4999,6 @@ struct PCHMDStats {
 
 struct PCHash128 {
     unsigned int _state[4];
-};
-
-struct PCHash128State {
-    unsigned int _field1[4];
 };
 
 struct PCHashWriteStream {

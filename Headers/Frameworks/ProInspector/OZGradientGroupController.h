@@ -28,6 +28,7 @@
 
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (void)update;
+- (void)willResetChannels;
 - (void)notify:(unsigned int)arg1;
 - (BOOL)getMiddleSelected;
 - (void)updateSelectedSampleAlphaFrom:(id)arg1;

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSIndexSet *_supportedAlphaHandlingModes;
     NSIndexSet *_supportedDominanceOverrides;
     NSIndexSet *_supportedColorSpaceOverrides;
+    NSIndexSet *_supportedRAWToLogConversions;
     NSIndexSet *_supportedLogProcessingModes;
     NSIndexSet *_supportedCameraProjectionModes;
     NSDictionary *_logProcessingInfoDictionary;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDictionary *customCameraLUTProcessingInfoDictionary; // @synthesize customCameraLUTProcessingInfoDictionary=_customCameraLUTProcessingInfoDictionary;
 @property(readonly, nonatomic) NSDictionary *logProcessingInfoDictionary; // @synthesize logProcessingInfoDictionary=_logProcessingInfoDictionary;
 @property(readonly, nonatomic) NSIndexSet *supportedLogProcessingModes; // @synthesize supportedLogProcessingModes=_supportedLogProcessingModes;
+@property(readonly, nonatomic) NSIndexSet *supportedRAWToLogConversions; // @synthesize supportedRAWToLogConversions=_supportedRAWToLogConversions;
 @property(readonly, nonatomic) NSIndexSet *supportedColorSpaceOverrides; // @synthesize supportedColorSpaceOverrides=_supportedColorSpaceOverrides;
 @property(readonly, nonatomic) NSIndexSet *supportedDominanceOverrides; // @synthesize supportedDominanceOverrides=_supportedDominanceOverrides;
 @property(readonly, nonatomic) NSIndexSet *supportedAlphaHandlingModes; // @synthesize supportedAlphaHandlingModes=_supportedAlphaHandlingModes;

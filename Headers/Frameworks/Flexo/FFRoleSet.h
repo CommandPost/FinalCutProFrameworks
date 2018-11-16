@@ -29,7 +29,7 @@
 - (BOOL)_removeRoleWithUID:(id)arg1;
 - (id)_findSystemGeneratedSubRoleWithIndex:(unsigned long long)arg1 parentRole:(id)arg2;
 - (id)_findNonSystemGeneratedSubRoleWithName:(id)arg1 parentRole:(id)arg2 useInternalNotDisplayName:(BOOL)arg3;
-- (id)_findMainRoleWithName:(id)arg1 type:(int)arg2 useInternalNotDisplayName:(BOOL)arg3;
+- (id)_findMainRoleWithName:(id)arg1 type:(int)arg2 attributesToMatch:(id)arg3 useInternalNotDisplayName:(BOOL)arg4;
 - (id)findOrAddSystemGeneratedSubRoleWithIndex:(unsigned long long)arg1 forRoleWithUID:(id)arg2 didAdd:(char *)arg3;
 - (id)findOrAddRole:(id)arg1 mustMatchUID:(BOOL)arg2 didAdd:(char *)arg3;
 - (id)_findOrAddDefaultSubRoleToMainRole:(id)arg1 mustMatchUID:(BOOL)arg2 originalMainRole:(id)arg3 didAdd:(char *)arg4;
@@ -39,7 +39,8 @@
 - (BOOL)_removeMainRole:(id)arg1;
 - (BOOL)_addSubRole:(id)arg1 toMainRole:(id)arg2;
 - (BOOL)_addMainRole:(id)arg1;
-- (void)findOrAddDefaultSubRoles:(char *)arg1;
+- (BOOL)findOrAddDefaultCaptionRoles;
+- (BOOL)findOrAddDefaultSubRoles;
 - (void)_findOrAddBuiltInMainRoles;
 - (id)roleSetData;
 - (void)_rebuildUIDToRoleCache;

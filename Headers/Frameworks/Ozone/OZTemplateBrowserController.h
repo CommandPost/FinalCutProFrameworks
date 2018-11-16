@@ -10,7 +10,7 @@
 #import "NSTouchBarDelegate.h"
 #import "OZCurrentVirtualScreenDelegate.h"
 
-@class LKBox, LKButton, LKPopUpButton, LKScrollView, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSArray, NSBox, NSButton, NSImageView, NSString, NSView, OZBorderedView, OZSplitView, OZTBSearchFieldDelegate, OZTBTextFieldDelegate, OZTimecodeFormatter, QTMovieView, TBOutlineView, TMMatrix, TMScrollView, TMTemplate;
+@class LKBox, LKButton, LKPopUpButton, LKScrollView, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSArray, NSButton, NSImageView, NSStackView, NSString, OZSplitView, OZTBSearchFieldDelegate, OZTBTextFieldDelegate, OZTimecodeFormatter, QTMovieView, TBOutlineView, TMMatrix, TMScrollView, TMTemplate;
 
 @interface OZTemplateBrowserController : NSWindowController <NSTouchBarDelegate, NSSplitViewDelegate, OZCurrentVirtualScreenDelegate>
 {
@@ -18,36 +18,17 @@
     LKPopUpButton *formatPopUp;
     TMScrollView *templateScrollView;
     LKScrollView *categoryScrollView;
-    LKScrollView *documentCustomOptionsView;
     LKBox *templateDescriptionTextView;
-    LKBox *templateOptionsBox;
-    LKBox *documentAttributesView;
-    LKBox *splitViewRightBox;
-    NSView *templateBrowserContentView;
     OZSplitView *splitView;
     QTMovieView *movieView;
-    LKTextField *templateTitleTextField;
     LKTextField *templateProjectTypeTextField;
     LKTextField *templateWidthTextField;
     LKTextField *templateHeightTextField;
     LKTextField *templateDurationTextField;
-    LKTextField *templateDurationLabel;
     LKTextField *templateDescriptionTextField;
     LKTextField *templateResolutionTextField;
     LKTextField *templateFieldOrderTextField;
     LKTextField *templatePARTextField;
-    LKTextField *templateResolutionXLabel;
-    LKTextField *templatePresetLabel;
-    LKTextField *templateResolutionLabel;
-    LKTextField *templateFieldOrderLabel;
-    LKTextField *templatePARLabel;
-    LKTextField *templateFrameRateLabel;
-    LKTextField *templateResolutionStaticTextField;
-    LKTextField *templateFieldOrderStaticTextField;
-    LKTextField *templatePARStaticTextField;
-    LKTextField *templateProjectTypeStaticTextField;
-    LKTextField *templateThemeLabel;
-    LKTextField *template360ProjectModeStaticTextField;
     LKTextField *template360ProjectModeTextField;
     LKSearchField *searchField;
     LKSegmentedControl *collectionSegmentedControl;
@@ -56,6 +37,8 @@
     LKButton *createFromFileButton;
     LKButton *chooseOtherTemplateButton;
     LKSlider *templateIconSlider;
+    NSStackView *documentCustomOptionsStackView;
+    NSStackView *documentAttributesStackView;
     LKPopUpButton *_presetPopUp;
     LKPopUpButton *_frameRatePopUp;
     LKPopUpButton *_aspectRatioPopUp;
@@ -65,9 +48,6 @@
     LKPopUpButton *_360ProjectModePopUpButton;
     NSImageView *_smallIcon;
     NSImageView *_bigIcon;
-    OZBorderedView *_footer;
-    NSBox *_buttonSeparator1;
-    NSBox *_buttonSeparator2;
     TMMatrix *templateMatrix;
     NSArray *_collections;
     NSArray *_templates;
@@ -109,8 +89,6 @@
 - (void)willEndSheet;
 - (void)willStartSheet;
 - (struct CGRect)splitView:(id)arg1 additionalEffectiveRectOfDividerAtIndex:(long long)arg2;
-- (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
-- (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (void)splitViewDidResizeSubviews:(id)arg1;
 - (void)close:(id)arg1;
 - (void)outlineViewSelectionDidChange:(id)arg1;
@@ -200,7 +178,6 @@
 - (void)updateThemeLabel;
 - (void)dealloc;
 - (id)init;
-- (void)_saveDefaultUIPositions;
 - (void)updateSearchResults;
 - (void)enableDisableTemplateButton;
 - (BOOL)_areDurationAndResolutionValid;

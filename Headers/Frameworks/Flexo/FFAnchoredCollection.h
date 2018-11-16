@@ -72,6 +72,7 @@
 @property(readonly, nonatomic) FFVideoSegmenter *videoSegmenter; // @synthesize videoSegmenter=_videoSegmenter;
 @property(readonly, retain, nonatomic) NSArray *containedItems; // @synthesize containedItems=_containedItems;
 @property(retain, nonatomic) NSString *angleID; // @synthesize angleID=_angleID;
+- (id)newTopLevelObjectsAtTimeSortedByLaneIndex:(CDStruct_1b6d18a9)arg1 includeAnchorsOnAnchors:(BOOL)arg2;
 - (id)newTopLevelObjectsAtTimeSortedByLaneIndex:(CDStruct_1b6d18a9)arg1;
 - (id)createUsedRangesMediaIdentifier;
 - (void)_angleCountOrBankChanged;
@@ -161,7 +162,11 @@
 - (BOOL)hasFadeObject:(int)arg1;
 - (CDStruct_e83c9415)projectFadeTimeRange:(int)arg1;
 - (id)anchorableTimeRangesForTimePreservingMode;
-- (id)anchorableTimeRangesByIgnoringItems:(id)arg1;
+- (id)anchorableTimeRangesExtendedWithParentsOfItemsBeingAnchored:(id)arg1;
+- (void)_extendTimeRangeObj:(id)arg1 withParentRangesOfItems:(id)arg2;
+- (id)anchorableTimeRangesWithItemsBeingAnchored:(id)arg1;
+- (CDStruct_e83c9415)extendRange:(CDStruct_e83c9415)arg1 withRangeOfParentOfItem:(id)arg2 ifParentIsNotInItems:(id)arg3;
+- (CDStruct_e83c9415)_extendRange:(CDStruct_e83c9415)arg1 withRangeOfItem:(id)arg2;
 - (id)_indexesOfUnanchorableSegmentsInSegments:(id)arg1;
 - (void)_extractTimeRangesForSpineSegments:(id)arg1 intoArray:(id)arg2;
 - (id)_firstContainedItemIgnoringTransitions;
@@ -210,6 +215,7 @@
 - (BOOL)hasAudioIncludingVariants;
 - (BOOL)hasVideoIncludingVariants;
 - (BOOL)_hasVideoIncludingVariants;
+- (BOOL)hasExtractableCaptions;
 @property(readonly, nonatomic) BOOL hasVideo;
 - (BOOL)_hasVideo;
 - (BOOL)supportsAudio;
@@ -259,6 +265,7 @@
 - (BOOL)isCollection;
 - (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
+- (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;
 - (id)firstAssetIfOnlyOneVideo;
@@ -304,9 +311,11 @@
 @property(readonly, nonatomic) unsigned long long contentsMask;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(copy, nonatomic) NSString *displayName;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) BOOL isAnchored;
 @property(readonly, nonatomic) BOOL isAudioOnly;
+@property(readonly, nonatomic) BOOL isCaption;
 @property(readonly, nonatomic) BOOL isPrimaryComponent;
 @property(readonly, nonatomic) BOOL isSecondaryComponent;
 @property(readonly, nonatomic) BOOL isSpineItem;

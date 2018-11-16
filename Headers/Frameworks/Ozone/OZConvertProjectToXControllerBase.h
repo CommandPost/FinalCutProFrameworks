@@ -6,19 +6,24 @@
 
 #import "NSWindowController.h"
 
-@class NSButton, NSTextField, NSView, OZObjCDocument;
+#import "NSTouchBarDelegate.h"
 
-@interface OZConvertProjectToXControllerBase : NSWindowController
+@class NSButton, NSString, NSTextField, NSView, OZObjCDocument;
+
+@interface OZConvertProjectToXControllerBase : NSWindowController <NSTouchBarDelegate>
 {
     NSView *_view;
     NSTextField *_summaryTextField;
     NSButton *_convertButton;
     NSButton *_cancelButton;
+    int _toDocumentType;
     OZObjCDocument *_doc;
     NSButton *_touchBarConvertButton;
     NSButton *_touchBarCancelButton;
 }
 
+- (id)touchBar:(id)arg1 makeItemForIdentifier:(id)arg2;
+- (void)_createDFRButtons;
 - (void)_updateDFRButtons;
 - (id)makeTouchBar;
 - (void)convert:(id)arg1;
@@ -26,9 +31,14 @@
 - (void)populateWindowUI;
 - (void)windowDidLoad;
 - (id)initWithDocument:(id)arg1;
-- (id)localizedSummaryFormatString;
 - (id)defaultNibName;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

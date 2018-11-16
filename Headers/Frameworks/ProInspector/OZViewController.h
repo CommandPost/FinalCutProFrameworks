@@ -77,6 +77,7 @@
 - (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
 - (BOOL)resetAssociatedChannel:(struct OZChannelBase *)arg1;
 - (void)setAssociatedChannel:(struct OZChannelBase *)arg1;
+- (void)willResetChannels;
 - (id)topSelectableController;
 - (id)topChannelController;
 - (void)doDrag:(list_9af5505e *)arg1 viewList:(id)arg2;

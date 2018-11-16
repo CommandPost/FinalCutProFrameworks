@@ -8,7 +8,7 @@
 
 #import "NSTextInput.h"
 
-@class FFPlayerVideoModule, NSLock;
+@class FFOpenGLLayer, FFPlayerVideoModule, NSLock;
 
 __attribute__((visibility("hidden")))
 @interface FFPlayerView : NSOpenGLView <NSTextInput>
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSLock *_playerVideoModuleActiveLock;
     struct __CFRunLoopObserver *_draggingIdleObserver;
     float _windowBackingScaleFactor;
+    FFOpenGLLayer *_customBackingLayer;
 }
 
 + (id)defaultPixelFormat;
@@ -110,7 +111,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)acceptsFirstResponder;
 - (void)dealloc;
 - (void)awakeFromNib;
-- (id)makeBackingLayer;
+- (id)_customBackingLayer;
 - (id)_playerVideoModule;
 - (void)_setPlayerVideoModule:(id)arg1;
 - (BOOL)isSuperEllipseOSCActive;

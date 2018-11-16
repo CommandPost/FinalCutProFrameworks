@@ -6,7 +6,7 @@
 
 #import <Flexo/FFMovieWriter.h>
 
-@class AVAssetWriter, AVAssetWriterInput, NSArray, NSMutableArray, NSObject<OS_dispatch_queue>;
+@class AVAssetWriter, AVAssetWriterInput, AVAssetWriterInputCaptionAdaptor, NSArray, NSMutableArray, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
 @interface FFQTMovieWriter : FFMovieWriter
@@ -39,10 +39,17 @@ __attribute__((visibility("hidden")))
     BOOL _chapterNameInputMarkedAsFinished;
     NSArray *_chapterMarkers;
     int _status;
+    NSArray *_captionSets;
+    NSArray *_captionArray;
+    unsigned long long _currentCaptionIndex;
+    AVAssetWriterInput *_captionInput;
+    AVAssetWriterInputCaptionAdaptor *_captionInputAdapter;
+    BOOL _captionInputMarkedAsFinished;
     CDStruct_1b6d18a9 _movieFragmentInterval;
 }
 
 @property(nonatomic) CDStruct_1b6d18a9 movieFragmentInterval; // @synthesize movieFragmentInterval=_movieFragmentInterval;
+@property(retain) NSArray *captionSets; // @synthesize captionSets=_captionSets;
 - (int)close;
 - (BOOL)_allInputsHaveBeenMarkedAsFinished;
 - (int)writeVideo:(struct opaqueCMSampleBuffer *)arg1;
@@ -56,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (int)writeChapterNames:(id)arg1 videoFrameDuration:(CDStruct_1b6d18a9)arg2;
 - (void)setExpectedVideoDuration:(CDStruct_1b6d18a9)arg1;
 - (int)createVideoTrack:(struct opaqueCMFormatDescription *)arg1 timescale:(int)arg2;
-- (int)createAudioTracks:(unsigned int)arg1 chunkSize:(unsigned int)arg2 withCompressionPreset:(int)arg3 numberOfChannels:(const int *)arg4 sampleRate:(int)arg5 formatDescription:(struct opaqueCMFormatDescription *)arg6;
+- (int)createAudioTracks:(unsigned int)arg1 trackMetadata:(id)arg2 chunkSize:(unsigned int)arg3 withCompressionPreset:(int)arg4 numberOfChannels:(const int *)arg5 sampleRate:(int)arg6 formatDescription:(struct opaqueCMFormatDescription *)arg7;
 - (int)removeListenerForWriteFailure:(const void *)arg1 callback:(CDUnknownFunctionPointerType)arg2;
 - (int)addListenerForWriteFailure:(const void *)arg1 callback:(CDUnknownFunctionPointerType)arg2;
 - (void)dealloc;

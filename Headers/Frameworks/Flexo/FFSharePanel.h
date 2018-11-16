@@ -8,31 +8,41 @@
 
 #import "NSPopoverDelegate.h"
 
-@class FFShareInfoController, LKEmptyDFRController, LKImageView, LKSegmentedControl, NSString, NSTabView, NSTrackingArea;
+@class FFShareInfoController, FFSharePanelCaptionsExporter, FFSharePanelRolesViewController, LKEmptyDFRController, LKImageView, LKSegmentedControl, NSString, NSTabView, NSTrackingArea, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFSharePanel : FFBaseSharePanel <NSPopoverDelegate>
 {
     FFShareInfoController *_shareInfoController;
     LKSegmentedControl *_previousNextControl;
-    LKSegmentedControl *_infoSettingsControl;
     NSTabView *_infoSettingsTabView;
+    NSView *_settingsView;
+    NSView *_infoPreviewContainerView;
+    NSView *_settingsPreviewContainerView;
     long long _selectedTabIndex;
     double _initialTabViewHeight;
     double _initialWindowHeight;
     double _infoWindowHeight;
     double _settingsWindowHeight;
+    double _rolesWindowHeight;
     LKImageView *_errorView;
     NSTrackingArea *_errorViewTrackingArea;
     LKEmptyDFRController *_dfrController;
+    FFSharePanelRolesViewController *_observedRolesViewController;
+    FFSharePanelCaptionsExporter *_captionsExporter;
 }
 
 + (id)sharePanelWithSource:(id)arg1 destination:(id)arg2 error:(id *)arg3;
 @property(retain, nonatomic) NSTrackingArea *errorViewTrackingArea; // @synthesize errorViewTrackingArea=_errorViewTrackingArea;
+@property(retain, nonatomic) FFSharePanelCaptionsExporter *captionsExporter; // @synthesize captionsExporter=_captionsExporter;
+@property(retain, nonatomic) FFSharePanelRolesViewController *observedRolesViewController; // @synthesize observedRolesViewController=_observedRolesViewController;
 @property(nonatomic) LKImageView *errorView; // @synthesize errorView=_errorView;
+@property(nonatomic) NSView *settingsPreviewContainerView; // @synthesize settingsPreviewContainerView=_settingsPreviewContainerView;
+@property(nonatomic) NSView *infoPreviewContainerView; // @synthesize infoPreviewContainerView=_infoPreviewContainerView;
+@property(nonatomic) NSView *settingsView; // @synthesize settingsView=_settingsView;
 @property(nonatomic) NSTabView *infoSettingsTabView; // @synthesize infoSettingsTabView=_infoSettingsTabView;
-@property(nonatomic) LKSegmentedControl *infoSettingsControl; // @synthesize infoSettingsControl=_infoSettingsControl;
 @property(nonatomic) long long selectedTabIndex; // @synthesize selectedTabIndex=_selectedTabIndex;
+@property(nonatomic) double rolesWindowHeight; // @synthesize rolesWindowHeight=_rolesWindowHeight;
 @property(nonatomic) double settingsWindowHeight; // @synthesize settingsWindowHeight=_settingsWindowHeight;
 @property(nonatomic) double infoWindowHeight; // @synthesize infoWindowHeight=_infoWindowHeight;
 @property(nonatomic) double initialWindowHeight; // @synthesize initialWindowHeight=_initialWindowHeight;
@@ -41,11 +51,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) LKSegmentedControl *previousNextControl; // @synthesize previousNextControl=_previousNextControl;
 - (void)destinationViewFrameDidChange:(id)arg1;
 - (void)resizeWindowToFitSelectedTabIndex:(long long)arg1 animate:(BOOL)arg2;
+- (void)_updateDisabledRoles;
 - (double)calcMaxSettingsViewHeight;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)mouseEntered:(id)arg1;
 - (id)touchBar;
 - (void)dealloc;
+- (void)postProcessErrors:(id)arg1;
+- (id)captionMainRolesWithValidationErrors;
+- (void)postProcessSource:(id)arg1 withDestinationController:(id)arg2;
 - (void)windowDidLoad;
 - (void)layoutMetadataFields;
 - (id)newTokenFieldWithFrame:(struct CGRect)arg1 value:(id)arg2;

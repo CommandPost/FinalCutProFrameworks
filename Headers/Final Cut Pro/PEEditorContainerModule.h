@@ -132,6 +132,9 @@
 - (void)hideMarkerEditor;
 - (void)showMarkerEditorForMarkerLayer:(id)arg1 object:(id)arg2;
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
+- (BOOL)captionEditorIsShown;
+- (void)showCaptionEditorForRect:(struct CGRect)arg1 object:(id)arg2 mainRoleUID:(id)arg3 localeIdentifier:(id)arg4 sequence:(id)arg5;
+- (void)showCaptionEditorAtTime:(CDStruct_1b6d18a9)arg1 mainRoleUID:(id)arg2 languageIdentifier:(id)arg3 sequence:(id)arg4 createNewCaption:(BOOL)arg5;
 - (void)openSpeedAdjustmentPanel;
 - (void)openInspectorToSubmodule:(id)arg1;
 - (void)toggleAdjustmentsPanel;

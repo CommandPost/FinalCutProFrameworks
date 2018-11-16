@@ -9,6 +9,8 @@
 @class NSOutlineView;
 
 @protocol FFDataListLanesOutlineViewDelegate <NSOutlineViewDelegate>
+- (void)selectionNeedingModelUpdateDidChange:(id)arg1;
+- (void)selectionNeedingModelUpdateWillChange:(id)arg1;
 - (void)timelineIndexOutlineViewDidReloadData:(NSOutlineView *)arg1;
 @end
 

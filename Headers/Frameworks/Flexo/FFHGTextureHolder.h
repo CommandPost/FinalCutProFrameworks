@@ -6,18 +6,16 @@
 
 #import "NSObject.h"
 
-@class FFHGAsyncQueue;
-
 __attribute__((visibility("hidden")))
 @interface FFHGTextureHolder : NSObject
 {
     struct HGGLTexture *_text;
-    FFHGAsyncQueue *_queue;
+    struct HGRenderQueue *_queue;
 }
 
-- (struct HGGLTexture *)getHGGLTexture;
 - (void)dealloc;
 - (id)initWithHGGLTexture:(struct HGGLTexture *)arg1 queue:(id)arg2;
+- (id)initWithHGGLTexture:(struct HGGLTexture *)arg1 HGQueue:(struct HGRenderQueue *)arg2;
 
 @end
 

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     CALayer *_360ClipBadgeLayer;
     CALayer *_clipBadgeLayer;
     CALayer *_hfrClipBadgeLayer;
+    CALayer *_ccClipBadgeLayer;
     CALayer *_durationLayer;
     CALayer *_shadowLayer;
     CATextLayer *_durationTextLayer;
@@ -49,12 +50,13 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_usedMediaRanges;
     NSMutableArray *_markerRanges;
     BOOL _shouldShowStackBadges;
-    BOOL _shouldShowComposedBadge;
+    BOOL _shouldShowCompoundBadge;
     BOOL _shouldShowMultiCamBadge;
     BOOL _shouldShowSynchedClipBadge;
     BOOL _shouldShowPSDBadge;
     BOOL _shouldShow360Badge;
     BOOL _shouldShowHFRBadge;
+    BOOL _shouldShowCCBadge;
     BOOL _shouldShowDuration;
     BOOL _inImportWindow;
     BOOL _focused;
@@ -72,13 +74,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FFOrganizerFilmstripClipLabelLayer *titleLayer; // @synthesize titleLayer=_titleLayer;
 @property(readonly, nonatomic) NSArray *selectionLayers; // @synthesize selectionLayers=_selectionLayers;
 @property(nonatomic) BOOL shouldShowDuration; // @synthesize shouldShowDuration=_shouldShowDuration;
+@property(nonatomic) BOOL shouldShowCCBadge; // @synthesize shouldShowCCBadge=_shouldShowCCBadge;
 @property(nonatomic) BOOL shouldShowHFRBadge; // @synthesize shouldShowHFRBadge=_shouldShowHFRBadge;
 @property(nonatomic) BOOL shouldShowClipBadge; // @synthesize shouldShowClipBadge=_shouldShowClipBadge;
 @property(nonatomic) BOOL shouldShow360Badge; // @synthesize shouldShow360Badge=_shouldShow360Badge;
 @property(nonatomic) BOOL shouldShowPSDBadge; // @synthesize shouldShowPSDBadge=_shouldShowPSDBadge;
 @property(nonatomic) BOOL shouldShowSynchedClipBadge; // @synthesize shouldShowSynchedClipBadge=_shouldShowSynchedClipBadge;
 @property(nonatomic) BOOL shouldShowMultiCamBadge; // @synthesize shouldShowMultiCamBadge=_shouldShowMultiCamBadge;
-@property(nonatomic) BOOL shouldShowComposedBadge; // @synthesize shouldShowComposedBadge=_shouldShowComposedBadge;
+@property(nonatomic) BOOL shouldShowCompoundBadge; // @synthesize shouldShowCompoundBadge=_shouldShowCompoundBadge;
 @property(nonatomic) BOOL shouldShowStackBadges; // @synthesize shouldShowStackBadges=_shouldShowStackBadges;
 @property(retain, nonatomic) FFFilmstrip *filmstrip; // @synthesize filmstrip=_filmstrip;
 - (id)tooltipStringAtPoint:(struct CGPoint)arg1;

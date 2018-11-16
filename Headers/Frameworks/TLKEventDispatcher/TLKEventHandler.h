@@ -24,6 +24,7 @@
 }
 
 @property BOOL disableReload; // @synthesize disableReload=_disableReload;
+- (void)resetState;
 - (id)view;
 - (id)identifier;
 - (id)eventDescriptions;

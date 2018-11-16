@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 mTimeRange;
     BOOL mVideoNeedsSampleGenerator;
     MIOOP1aReaderTrackOutput *mMasterVideoOutput;
-    NSObject<OS_dispatch_queue> *mLockQueue;
+    struct _opaque_pthread_mutex_t mPropertyLock;
     NSObject<OS_dispatch_queue> *mRequestQueue;
     NSObject<OS_dispatch_queue> *mReadQueue;
     NSMutableArray *mOutputArray;
@@ -28,12 +28,16 @@ __attribute__((visibility("hidden")))
     long long mChunkReadsComplete;
 }
 
+@property long long chunkReadsComplete; // @synthesize chunkReadsComplete=mChunkReadsComplete;
+@property long long chunkReadRequests; // @synthesize chunkReadRequests=mChunkReadRequests;
 @property(readonly) long long chunkCount; // @synthesize chunkCount=mChunkCount;
 @property(retain) AVSampleBufferGenerator *sampleGenerator; // @synthesize sampleGenerator=mSampleGenerator;
+@property int fileDes; // @synthesize fileDes=mFileDes;
 @property(readonly) list_931eae18 *outputUNIXReadList; // @synthesize outputUNIXReadList=mOutputUNIXReadList;
 @property(retain) MIOOP1aReaderTrackOutput *masterVideoOutput; // @synthesize masterVideoOutput=mMasterVideoOutput;
+@property(readonly) BOOL videoNeedsSampleGenerator; // @synthesize videoNeedsSampleGenerator=mVideoNeedsSampleGenerator;
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=mTimeRange;
-@property(readonly) long long status; // @synthesize status=mStatus;
+@property long long status; // @synthesize status=mStatus;
 @property(readonly) NSError *error; // @synthesize error=mError;
 - (void)readNextChunk;
 - (void)requestChunkWithIndex:(long long)arg1;
@@ -41,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)startReading;
 - (BOOL)canAddOutput:(id)arg1;
 - (void)addOutput:(id)arg1;
+@property(readonly) struct _opaque_pthread_mutex_t *propertyLock;
 - (void)dealloc;
 - (id)initWithAsset:(id)arg1 URL:(id)arg2 error:(id *)arg3;
 

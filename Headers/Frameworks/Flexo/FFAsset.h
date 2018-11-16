@@ -25,6 +25,7 @@
     long long _fieldDominanceOverride;
     long long _colorSpaceOverride;
     long long _anamorphicType;
+    long long _rawToLogConversion;
     long long _logProcessingMode;
     FFCustomCameraLUTProps *_customCameraLUTProps;
     BOOL _isUnmounting;
@@ -53,6 +54,8 @@
     BOOL _needsAudioPropertiesUpdate;
     BOOL _needsVideoPropertiesUpdate;
     BOOL _mediaOnlineSinceLastNotification;
+    int _hasClosedCaptionTrack;
+    int _hasSubtitleTrack;
 }
 
 + (void)invalidateMultipleAssets:(id)arg1;
@@ -64,6 +67,8 @@
 + (void)playerQualityChanged;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property(nonatomic) int hasSubtitleTrack; // @synthesize hasSubtitleTrack=_hasSubtitleTrack;
+@property(nonatomic) int hasClosedCaptionTrack; // @synthesize hasClosedCaptionTrack=_hasClosedCaptionTrack;
 @property(nonatomic) BOOL mediaOnlineSinceLastNotification; // @synthesize mediaOnlineSinceLastNotification=_mediaOnlineSinceLastNotification;
 @property(nonatomic) unsigned long long audioSourceCount; // @synthesize audioSourceCount=_audioSourceCount;
 @property(nonatomic) BOOL needsVideoPropertiesUpdate; // @synthesize needsVideoPropertiesUpdate=_needsVideoPropertiesUpdate;
@@ -114,7 +119,9 @@
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
 - (id)newProvider;
 - (int)quality;
+- (id)newFrameExtractionProviderForQuality:(int)arg1 disableFilePropertyOverrides:(BOOL)arg2 forProxyAndOptimizedGeneration:(BOOL)arg3;
 - (id)newFrameExtractionProviderForQuality:(int)arg1 disableFilePropertyOverrides:(BOOL)arg2;
+- (id)_newMediaRepProviderForQuality:(int)arg1 fallBackToAnyQuality:(BOOL)arg2 disableFilePropertyOverrides:(BOOL)arg3 forProxyAndOptimizedGeneration:(BOOL)arg4;
 - (id)_newMediaRepProviderForQuality:(int)arg1 fallBackToAnyQuality:(BOOL)arg2 disableFilePropertyOverrides:(BOOL)arg3;
 - (id)_offlineCacheIdentifier:(int)arg1;
 - (id)_frameExtractionCacheIdentifier;
@@ -160,6 +167,10 @@
 - (void)purgeProxyMedia;
 - (void)purgeOptimizedMedia;
 - (void)purgeGeneratedMedia;
+- (id)subtitlesInRange:(CDStruct_e83c9415)arg1;
+- (id)closedCaptionsInRange:(CDStruct_e83c9415)arg1;
+- (BOOL)hasSubtitles;
+- (BOOL)hasClosedCaptions;
 - (BOOL)isPSD;
 - (id)mediaIndexingKey;
 - (BOOL)isMediaIdentifierExternal;
@@ -181,6 +192,9 @@
 - (long long)customCameraLUTIdentifier;
 - (id)customCameraLUTProps;
 - (long long)logProcessingMode;
+- (BOOL)supportsRAWToLogConversion;
+- (void)_setRAWToLogConversion:(long long)arg1;
+@property(nonatomic) long long rawToLogConversion;
 - (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;
 - (void)_setColorSpaceOverride:(long long)arg1;
@@ -245,6 +259,7 @@
 - (void)_showLogTypeInColorProfileMetadata:(long long)arg1;
 - (int)_logProcessingModeFromCustomColorMetadataValue:(id)arg1;
 - (void)_setLogProcessingModeFromCustomcolorMetadataValue:(id)arg1;
+- (int)_defaultRAWToLogConversionModeFromMetadata;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 mediaIdentifier:(id)arg2 manageFileType:(int)arg3 project:(id)arg4;
 - (id)initWithURL:(id)arg1 manageFileType:(int)arg2 project:(id)arg3;

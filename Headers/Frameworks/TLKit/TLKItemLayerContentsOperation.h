@@ -19,6 +19,8 @@
 @property(readonly, nonatomic) PCChangeLog *outputChangeLog; // @synthesize outputChangeLog=_outputChangeLog;
 @property(readonly, nonatomic) PCChangeLog *inputChangeLog; // @synthesize inputChangeLog=_inputChangeLog;
 - (void)main;
+- (id)_expandItemsToItemFragments:(id)arg1;
+- (id)_allItemFragmentsWithUpdatedItems:(id)arg1;
 - (id)modifiedItemFragments;
 - (void)_findThroughEditDependenciesForItems:(id)arg1 intoSet:(id)arg2;
 - (void)dealloc;

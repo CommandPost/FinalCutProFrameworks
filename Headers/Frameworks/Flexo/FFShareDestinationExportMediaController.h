@@ -8,7 +8,7 @@
 
 #import "NSSaveRolePresetAsPanelDelegate.h"
 
-@class LKTextField, NSArrayController, NSPopUpButton, NSString, NSURL, NSView;
+@class LKTextField, NSPopUpButton, NSString, NSURL;
 
 @interface FFShareDestinationExportMediaController : FFShareDestinationController <NSSaveRolePresetAsPanelDelegate>
 {
@@ -22,14 +22,10 @@
     NSPopUpButton *_colorSpacePopUpButton;
     NSPopUpButton *_audioPresetPopUpButton;
     NSPopUpButton *_openWithPopUpButton;
-    NSPopUpButton *_rolePresetPopUpButton;
-    NSArrayController *_roleOutputsController;
     LKTextField *_videoPresetTextField;
     LKTextField *_videoResolutionTextField;
     LKTextField *_colorSpaceTextField;
     LKTextField *_audioPresetTextField;
-    NSView *_rolesView;
-    NSView *_roleOutputsView;
     LKTextField *_projectionTypeTextField;
     LKTextField *_projectionTypeLabelTextField;
 }
@@ -37,21 +33,13 @@
 + (id)keyPathsForValuesAffectingMultipassIndex;
 + (id)keyPathsForValuesAffectingActionMenuLabelName;
 + (id)keyPathsForValuesAffectingCanIncludeChapter;
-+ (id)keyPathsForValuesAffectingCanAddAudioRoleOutput;
-+ (id)keyPathsForValuesAffectingCanAddVideoRoleOutput;
-+ (id)keyPathsForValuesAffectingAddAudioRoleOutputLabel;
-+ (id)keyPathsForValuesAffectingAddVideoRoleOutputLabel;
 @property(nonatomic) BOOL replaceExistingRolePreset; // @synthesize replaceExistingRolePreset=_replaceExistingRolePreset;
 @property LKTextField *projectionTypeLabelTextField; // @synthesize projectionTypeLabelTextField=_projectionTypeLabelTextField;
 @property LKTextField *projectionTypeTextField; // @synthesize projectionTypeTextField=_projectionTypeTextField;
-@property(nonatomic) NSView *roleOutputsView; // @synthesize roleOutputsView=_roleOutputsView;
-@property(nonatomic) NSView *rolesView; // @synthesize rolesView=_rolesView;
 @property(nonatomic) LKTextField *audioPresetTextField; // @synthesize audioPresetTextField=_audioPresetTextField;
 @property(nonatomic) LKTextField *colorSpaceTextField; // @synthesize colorSpaceTextField=_colorSpaceTextField;
 @property(nonatomic) LKTextField *videoResolutionTextField; // @synthesize videoResolutionTextField=_videoResolutionTextField;
 @property(nonatomic) LKTextField *videoPresetTextField; // @synthesize videoPresetTextField=_videoPresetTextField;
-@property(nonatomic) NSArrayController *roleOutputsController; // @synthesize roleOutputsController=_roleOutputsController;
-@property(nonatomic) NSPopUpButton *rolePresetPopUpButton; // @synthesize rolePresetPopUpButton=_rolePresetPopUpButton;
 @property(nonatomic) NSPopUpButton *openWithPopUpButton; // @synthesize openWithPopUpButton=_openWithPopUpButton;
 @property(nonatomic) NSPopUpButton *audioPresetPopUpButton; // @synthesize audioPresetPopUpButton=_audioPresetPopUpButton;
 @property(nonatomic) NSPopUpButton *colorSpacePopUpButton; // @synthesize colorSpacePopUpButton=_colorSpacePopUpButton;
@@ -69,10 +57,6 @@
 - (BOOL)validateMenuItem:(id)arg1;
 - (struct CGSize)optimalVideoResolution;
 - (BOOL)canIncludeChapter;
-- (BOOL)canAddAudioRoleOutput;
-- (BOOL)canAddVideoRoleOutput;
-- (id)addAudioRoleOutputLabel;
-- (id)addVideoRoleOutputLabel;
 - (void)saveUserRolePresets;
 - (void)loadUserRolePresets;
 - (id)readUserRolePresetsFromDirectoryURL:(id)arg1;
@@ -83,7 +67,6 @@
 - (id)recentApplications;
 - (void)updateVideoStompSetting:(id)arg1;
 - (void)updateRolesOutputView;
-- (void)updateRolePresetsMenu;
 - (void)updateApplicationMenu;
 - (void)updateIncludeChapter;
 - (void)updateAudioPresetsMenu;
@@ -94,14 +77,6 @@
 - (void)updateVideoResolutionMenu;
 - (void)updateVideoPresetsMenu;
 - (void)updateExportMenu;
-- (void)showUserRolePresetsInFinder:(id)arg1;
-- (void)deleteRolePreset:(id)arg1;
-- (void)renameRolePreset:(id)arg1;
-- (void)saveRolePresetAs:(id)arg1;
-- (void)saveRolePreset:(id)arg1;
-- (void)addAudioRoleOutput:(id)arg1;
-- (void)addVideoRoleOutput:(id)arg1;
-- (void)selectRolePreset:(id)arg1;
 - (void)chooseApplication:(id)arg1;
 - (void)selectAction:(id)arg1;
 - (void)selectAudioPreset:(id)arg1;

@@ -35,16 +35,14 @@
 - (void)_performLegacyLayout;
 - (void)_trackLayoutPerformedForItemComponents:(id)arg1;
 - (void)_makeLaneFragmentsIfNeededForLayoutContext:(id)arg1;
-- (id)_keepSecondaryComponentsWithPrimaryForItemComponentFragments:(id)arg1;
 - (id)_makeFragmentForItemComponent:(id)arg1 inLayoutContext:(id)arg2 changeLog:(id)arg3;
-- (struct CGRect)_applyPrimaryComponentConstraintForItemComponentFragment:(id)arg1 proposedFrame:(struct CGRect)arg2;
 - (struct CGRect)_applyConstraintsForItemComponentFragment:(id)arg1 proposedFrame:(struct CGRect)arg2;
-- (id)_layoutConstraintsForItemComponent:(id)arg1 matchingIdentifiers:(id)arg2 invertSearch:(BOOL)arg3;
-- (struct CGRect)_calculatedFrameForLaneFragment:(id)arg1;
 - (struct CGRect)_calculatedFrameForItemComponentFragment:(id)arg1;
-- (void)_layoutAnchoredItemComponents:(id)arg1 inLayoutRegion:(long long)arg2 ofLayoutContext:(id)arg3 changeLog:(id)arg4;
+- (void)_layoutAnchoredItemComponentsBelowSpine:(id)arg1 inLayoutContext:(id)arg2;
+- (void)_layoutAnchoredItemComponentsAboveSpine:(id)arg1 inLayoutContext:(id)arg2;
 - (void)_layoutSpineItemComponents:(id)arg1 inLayoutContext:(id)arg2 changeLog:(id)arg3;
 - (void)_reloadLayoutConstraintsForItemComponents:(id)arg1;
+- (double)_innerPaddingOffsetForLane:(id)arg1;
 - (BOOL)_reloadLayoutConstraintsForItemComponent:(id)arg1;
 - (void)_clearLayoutConstraintsForItemComponents:(id)arg1;
 - (BOOL)_shouldAddSpineFrameDependencyForItemComponent:(id)arg1 withDependencies:(id)arg2;
@@ -58,6 +56,8 @@
 - (void)_tileTracksInLineFragment:(id)arg1;
 - (double)_timelineStartTimeInSeconds;
 - (void)_reloadLayoutGraphForContainer:(id)arg1 withInsertedItemComponents:(id)arg2 deletedItemComponents:(id)arg3 updatedItemComponents:(id)arg4;
+- (void)_createFirstLineFragment;
+- (void)_createFirstLineFragmentIfNeeded;
 - (void)_performLayoutForItemComponents:(id)arg1;
 - (void)_reloadIndexTablesForContainer:(id)arg1 withInsertedNodes:(id)arg2 deletedNodes:(id)arg3 updatedNodes:(id)arg4;
 - (void)main;

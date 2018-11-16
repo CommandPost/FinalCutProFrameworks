@@ -6,26 +6,32 @@
 
 #import "NSTableCellView.h"
 
-@class FFRoleColorEnableButton, LKButton, NSButton, NSColor, NSImage, NSString, NSTextField, NSTrackingArea, NSView;
+@class FFDataListLanesParentRoleLabel, FFRoleColorEnableButton, LKButton, NSButton, NSColor, NSImage, NSLayoutConstraint, NSString, NSTextField, NSTrackingArea, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFDataListLanesOutlineCellView : NSTableCellView
 {
     int _cellType;
     BOOL _dragCountForDrawing;
+    BOOL _draggable;
     BOOL _markAsExpandingOrCollapsing;
     BOOL _rollover;
+    id _targetToNotifyWhenClicked;
     NSView *_containerView;
     FFRoleColorEnableButton *_enableButton;
     NSTextField *_roleNameLabel;
-    LKButton *_glyphShowHideButton;
-    LKButton *_textShowHideButton;
+    FFDataListLanesParentRoleLabel *_parentNameLabel;
+    LKButton *_glyphExpandCollapseButton;
+    LKButton *_textExpandCollapseButton;
+    NSLayoutConstraint *_textExpandCollapseButtonConstraint;
     NSButton *_focusButton;
     NSButton *_arrangeButton;
+    NSButton *_hideButton;
     NSString *_originalContainerViewToolTip;
-    NSImage *_originalShowHideButtonAltImage;
     NSImage *_originalFocusButtonAltImage;
     NSImage *_originalArrangeButtonAltImage;
+    NSImage *_originalHideButtonAltImage;
+    NSImage *_originalExpandCollapseButtonAltImage;
     NSTrackingArea *_mouseTrackingArea;
     NSColor *_roleGroupSelectedColor;
     NSColor *_subRoleSelectedColor;
@@ -38,31 +44,52 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSColor *roleGroupSelectedColor; // @synthesize roleGroupSelectedColor=_roleGroupSelectedColor;
 @property(nonatomic) BOOL rollover; // @synthesize rollover=_rollover;
 @property(retain, nonatomic) NSTrackingArea *mouseTrackingArea; // @synthesize mouseTrackingArea=_mouseTrackingArea;
+@property(retain, nonatomic) NSImage *originalExpandCollapseButtonAltImage; // @synthesize originalExpandCollapseButtonAltImage=_originalExpandCollapseButtonAltImage;
+@property(retain, nonatomic) NSImage *originalHideButtonAltImage; // @synthesize originalHideButtonAltImage=_originalHideButtonAltImage;
 @property(retain, nonatomic) NSImage *originalArrangeButtonAltImage; // @synthesize originalArrangeButtonAltImage=_originalArrangeButtonAltImage;
 @property(retain, nonatomic) NSImage *originalFocusButtonAltImage; // @synthesize originalFocusButtonAltImage=_originalFocusButtonAltImage;
-@property(retain, nonatomic) NSImage *originalShowHideButtonAltImage; // @synthesize originalShowHideButtonAltImage=_originalShowHideButtonAltImage;
 @property(retain, nonatomic) NSString *originalContainerViewToolTip; // @synthesize originalContainerViewToolTip=_originalContainerViewToolTip;
+@property(nonatomic) NSButton *hideButton; // @synthesize hideButton=_hideButton;
 @property(nonatomic) NSButton *arrangeButton; // @synthesize arrangeButton=_arrangeButton;
 @property(nonatomic) NSButton *focusButton; // @synthesize focusButton=_focusButton;
-@property(nonatomic) LKButton *textShowHideButton; // @synthesize textShowHideButton=_textShowHideButton;
-@property(nonatomic) LKButton *glyphShowHideButton; // @synthesize glyphShowHideButton=_glyphShowHideButton;
+@property(nonatomic) NSLayoutConstraint *textExpandCollapseButtonConstraint; // @synthesize textExpandCollapseButtonConstraint=_textExpandCollapseButtonConstraint;
+@property(nonatomic) LKButton *textExpandCollapseButton; // @synthesize textExpandCollapseButton=_textExpandCollapseButton;
+@property(nonatomic) LKButton *glyphExpandCollapseButton; // @synthesize glyphExpandCollapseButton=_glyphExpandCollapseButton;
+@property(nonatomic) FFDataListLanesParentRoleLabel *parentNameLabel; // @synthesize parentNameLabel=_parentNameLabel;
 @property(nonatomic) NSTextField *roleNameLabel; // @synthesize roleNameLabel=_roleNameLabel;
 @property(nonatomic) FFRoleColorEnableButton *enableButton; // @synthesize enableButton=_enableButton;
 @property(nonatomic) NSView *containerView; // @synthesize containerView=_containerView;
+@property(nonatomic) id targetToNotifyWhenClicked; // @synthesize targetToNotifyWhenClicked=_targetToNotifyWhenClicked;
 @property(nonatomic) BOOL markAsExpandingOrCollapsing; // @synthesize markAsExpandingOrCollapsing=_markAsExpandingOrCollapsing;
 - (void)mouseDown:(id)arg1;
 - (void)pollForMouseRollover;
 - (void)updateTrackingAreas;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
-- (void)updateShowHideButtonWithRollover:(BOOL)arg1;
+- (void)setEnableButtonStyle:(int)arg1;
+- (void)updateExpandCollapseButtonWithRollover:(BOOL)arg1;
 - (void)_updateCellClassification;
 - (void)_updateLaneColor;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setObjectValue:(id)arg1;
 - (id)draggingImageWithCount:(long long)arg1;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)_drawAccordingToClassificationWithDraggingStatus:(long long)arg1;
+- (void)_drawCellWithClassification:(int)arg1 draggingStatus:(long long)arg2 innerColor:(id)arg3 outerColor:(id)arg4 innerRect:(struct CGRect)arg5 outerRect:(struct CGRect)arg6;
+- (void)_drawSubRoleWithDraggingStatus:(long long)arg1 innerColor:(id)arg2 outerColor:(id)arg3 innerRect:(struct CGRect)arg4 outerRect:(struct CGRect)arg5;
+- (void)_drawLastSubRoleWithDraggingStatus:(long long)arg1 innerColor:(id)arg2 outerColor:(id)arg3 innerRect:(struct CGRect)arg4 outerRect:(struct CGRect)arg5;
+- (void)_drawExpandedRoleGroupWithDraggingStatus:(long long)arg1 innerColor:(id)arg2 outerColor:(id)arg3 innerRect:(struct CGRect)arg4 outerRect:(struct CGRect)arg5;
+- (void)_drawCollapsedRoleGroupWithDraggingStatus:(long long)arg1 innerColor:(id)arg2 outerColor:(id)arg3 innerRect:(struct CGRect)arg4 outerRect:(struct CGRect)arg5;
+- (void)_drawDividerWithDraggingStatus:(long long)arg1 innerColor:(id)arg2 outerColor:(id)arg3 innerRect:(struct CGRect)arg4 outerRect:(struct CGRect)arg5;
+- (void)_adjustTextExpandCollapseButtonWithClassification:(int)arg1;
+- (void)_applyContainerViewOffsetWithClassification:(int)arg1;
+- (double)_containerViewOffsetWithClassification:(int)arg1;
+- (struct CGRect)_outerRectWithClassification:(int)arg1;
+- (struct CGRect)_innerRectWithClassification:(int)arg1;
+- (id)_outerColorWithClassification:(int)arg1 highlighted:(BOOL)arg2 parentHighlighted:(BOOL)arg3;
+- (id)_innerColorWithClassification:(int)arg1 highlighted:(BOOL)arg2 parentHighlighted:(BOOL)arg3;
+- (BOOL)_isParentHighlighted;
+- (BOOL)_isHighlighted;
+- (int)_effectiveCellClassification;
 - (void)awakeFromNib;
 - (void)dealloc;
 

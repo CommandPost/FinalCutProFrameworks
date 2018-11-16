@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface MIOOP1aReaderTrackOutput : AVAssetReaderOutput
 {
+    BOOL mIsEssenceTrack;
     CDStruct_1b6d18a9 mDecodeStart;
     CDStruct_1b6d18a9 mDecodeEnd;
     int mStatus;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) int status; // @synthesize status=mStatus;
 @property(nonatomic) CDStruct_1b6d18a9 decodeEnd; // @synthesize decodeEnd=mDecodeEnd;
 @property(nonatomic) CDStruct_1b6d18a9 decodeStart; // @synthesize decodeStart=mDecodeStart;
+@property(readonly) BOOL isEssenceTrack; // @synthesize isEssenceTrack=mIsEssenceTrack;
 - (struct opaqueCMSampleBuffer *)copyNextSampleBuffer;
 - (BOOL)stepCoursorByTime:(CDStruct_1b6d18a9)arg1;
 - (void)addSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 lastSampleBuffer:(BOOL)arg2;

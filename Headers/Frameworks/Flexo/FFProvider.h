@@ -20,6 +20,8 @@
     long long _providerClusterRefcount;
     int _sourcesState;
     NSDictionary *_videoPropsOverrides;
+    BOOL _isGoingAway;
+    NSString *_libraryIdentifier;
 }
 
 + (id)newProviderWithMedia:(id)arg1;
@@ -43,6 +45,7 @@
 + (BOOL)isStill;
 + (BOOL)canHaveAudio;
 + (BOOL)canHaveVideo;
+@property(readonly, nonatomic) NSString *libraryIdentifier; // @synthesize libraryIdentifier=_libraryIdentifier;
 - (id)newFirstVideoSource;
 - (id)firstVideoSource;
 - (BOOL)syncFromDocument;
@@ -55,6 +58,10 @@
 - (id)newPlayerModuleWithContext:(id)arg1 effectCount:(long long)arg2;
 - (id)newInspectorModule;
 - (id)newEditorModule;
+- (id)subtitlesInRange:(CDStruct_e83c9415)arg1;
+- (id)closedCaptionsInRange:(CDStruct_e83c9415)arg1;
+- (BOOL)hasSubtitles;
+- (BOOL)hasClosedCaptions;
 - (BOOL)hasAudio;
 - (id)displayName;
 - (id)description;
@@ -82,8 +89,10 @@
 - (oneway void)release;
 - (void)_decrementClusterRefcount;
 - (void)_incrementClusterRefcount;
+- (long long)_baseProviderClusterRefCount;
 - (void)dealloc;
 - (id)object;
+- (id)initWithLibraryIdentifier:(id)arg1;
 - (id)initWithMedia:(id)arg1;
 - (id)initWithSuiteIdentifier:(id)arg1;
 - (id)initWithAssetFileID:(id)arg1;

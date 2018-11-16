@@ -14,13 +14,14 @@
 @property(copy, nonatomic) NSArray *childStoryLanes;
 @property(readonly, nonatomic) NSIndexPath *indexPath;
 @property(readonly, nonatomic) unsigned long long nestingLevel;
-@property(readonly, nonatomic, getter=isHidden) BOOL hidden;
+@property(nonatomic, getter=isHidden) BOOL hidden;
 @property(retain, nonatomic) FFRoleColorScheme *colorScheme;
 @property(readonly, nonatomic) BOOL allowsShowsComponents;
 @property(readonly, nonatomic) BOOL hidable;
 @property(readonly, nonatomic) BOOL empty;
 @property(readonly, nonatomic) NSString *identifier;
 @property(nonatomic) BOOL isPrimaryLane;
+@property(nonatomic) BOOL pinned;
 @property(nonatomic) BOOL showsComponents;
 @property(nonatomic) BOOL highlighted;
 @property(nonatomic) int focusMode;
@@ -36,5 +37,7 @@
 - (void)addChildStoryLanesObject:(id <FFStorylineLane>)arg1;
 - (void)removeChildStoryLanesObject:(id <FFStorylineLane>)arg1;
 - (void)insertObject:(id <FFStorylineLane>)arg1 inChildStoryLanesAtIndex:(unsigned long long)arg2;
+- (void)setUserDefaultsValue:(id)arg1 forKey:(NSString *)arg2;
+- (id)userDefaultsValueForKey:(NSString *)arg1;
 @end
 

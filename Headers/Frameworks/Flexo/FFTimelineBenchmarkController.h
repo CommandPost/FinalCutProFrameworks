@@ -33,6 +33,10 @@ __attribute__((visibility("hidden")))
 @property BOOL writePerformanceOutputToSyslog; // @synthesize writePerformanceOutputToSyslog=_writePerformanceOutputToSyslog;
 @property(nonatomic) unsigned long long iterations; // @synthesize iterations=_iterations;
 - (void)logTimerDataWithFormat:(id)arg1 key:(id)arg2 comment:(id)arg3;
+- (void)_displayAlertForPopulateTimelineMissingClip;
+- (void)_queueOnePopulateOperationWithClip:(id)arg1;
+- (void)_queuePopulateTimelineOperationsWithClip:(id)arg1 iterations:(unsigned long long)arg2;
+- (void)populateAndDeleteTimeline:(id)arg1;
 - (void)benchmarkReloadData:(id)arg1;
 - (void)benchmarkSelectFirstSpineItem:(id)arg1;
 - (void)benchmarkShakeTimelineView:(id)arg1;
@@ -40,8 +44,12 @@ __attribute__((visibility("hidden")))
 - (void)benchmarkZoomTimeline:(id)arg1;
 - (void)benchmarkTrim:(id)arg1;
 - (void)benchmarkDrag:(id)arg1;
+- (void)_indentMenuItems:(id)arg1;
+- (void)_assignMenuItems:(id)arg1 toTarget:(id)arg2;
 - (void)configurePerformanceMenu;
 @property(readonly, nonatomic) NSString *performanceOutputLocation;
+- (id)primaryStoryline;
+- (id)sequence;
 - (void)dealloc;
 - (id)initWithTimelineView:(id)arg1 dataSource:(id)arg2;
 

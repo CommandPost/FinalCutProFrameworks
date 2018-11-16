@@ -8,7 +8,7 @@
 
 #import "FFEnhanceAudioDelegate.h"
 
-@class FFAudioAnalysisConfigWarningStateController, FFChannelChangeController, NSArray, NSButton, NSMapTable, NSSlider, NSString, PISegmentedScrubber;
+@class FFAudioAnalysisConfigWarningStateController, FFChannelChangeController, FFLibraryDocument, NSArray, NSButton, NSMapTable, NSSlider, NSString, PISegmentedScrubber;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioAnalysisConfigManager : NSObject <FFEnhanceAudioDelegate>
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSArray *_selectedObjects;
     NSMapTable *_managerMap;
     NSArray *_observedEffectStacks;
+    FFLibraryDocument *_observedLibraryDocument;
     FFChannelChangeController *_channelChangeController;
     BOOL _pendingUpdateUI;
     NSString *_currentActionScope;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)setEnable:(id)arg1;
 - (void)_notifyUpdateUI;
 - (void)updateUI;
+- (void)_libraryClosed:(id)arg1;
 - (void)_removeObserving;
 - (void)_addObserving;
 - (id)autoEnhanceButton;

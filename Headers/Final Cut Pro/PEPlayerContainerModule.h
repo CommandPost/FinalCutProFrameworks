@@ -8,12 +8,13 @@
 
 #import "FFErrorReportingProtocol.h"
 #import "FFPlayerModuleDelegate.h"
+#import "NSMenuDelegate.h"
 #import "NSTouchBarProvider.h"
 #import "PEPlayerContainerViewDelegate.h"
 
 @class FFPlayerModule, LKButton, LKContainerItemView, LKMenu, LKPopUpButton, LKSegmentedControl, LKTextField, LKWindow, NSArray, NSDictionary, NSImageView, NSLayoutConstraint, NSMenu, NSMutableArray, NSMutableDictionary, NSResponder, NSStackView, NSString, NSTextField, NSTouchBar, NSView, PEAudioMeterModule, PEPlayerDFRController, PETimecodeDisplayViewController, PEToolbarMetersButton, PEViewedClipSet, PEViewerDFRController;
 
-@interface PEPlayerContainerModule : LKViewModule <PEPlayerContainerViewDelegate, FFErrorReportingProtocol, FFPlayerModuleDelegate, NSTouchBarProvider>
+@interface PEPlayerContainerModule : LKViewModule <PEPlayerContainerViewDelegate, FFErrorReportingProtocol, FFPlayerModuleDelegate, NSMenuDelegate, NSTouchBarProvider>
 {
     PEPlayerDFRController *_dfrController;
     PEViewerDFRController *_viewerDfrController;
@@ -184,6 +185,8 @@
 - (void)textOSCBecameActive:(id)arg1;
 - (void)firstResponderChanged:(id)arg1;
 - (void)updateSelectionState;
+- (void)toggleCaptionPlayback:(id)arg1;
+- (void)_setCaptionPlaybackRole:(id)arg1;
 - (void)setRangeCheckDrawMode:(id)arg1;
 - (void)setRangeCheckSpace:(id)arg1;
 - (id)_copyPlayerModulesForRangeCheck;
@@ -202,6 +205,7 @@
 - (BOOL)_shouldShowFancyControlsForCanvas;
 - (void)_updateTools:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)captionPlaybackSelectorMenuItem:(id)arg1;
 - (void)rangeCheckLabelMenuItem:(id)arg1;
 - (void)noopMenuItem:(id)arg1;
 - (void)multiAngleEditStyleVideo:(id)arg1;
@@ -272,6 +276,7 @@
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (BOOL)splitView:(id)arg1 canCollapseSubview:(id)arg2;
 - (BOOL)isSplitterAdjustableForMode:(int)arg1;
+- (void)menuNeedsUpdate:(id)arg1;
 - (void)hideSportsTeamOSC;
 - (id)fullscreenPlayerPresentationOptions;
 - (BOOL)isInFullScreenMode;

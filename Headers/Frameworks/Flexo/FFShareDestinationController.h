@@ -6,7 +6,7 @@
 
 #import "NSViewController.h"
 
-@class CKSource, FFShareDestination, LKImageView, LKPopUpButton, LKTextField, NSString, NSView;
+@class CKSource, FFShareDestination, FFSharePanelRolesViewController, LKImageView, LKPopUpButton, LKTextField, NSSet, NSString, NSTextField, NSView;
 
 @interface FFShareDestinationController : NSViewController
 {
@@ -20,13 +20,22 @@
     CKSource *_source;
     BOOL _hasConsumerView;
     CDUnknownBlockType _completionHandler;
+    LKPopUpButton *_captionsPopup;
+    NSTextField *_captionsLabel;
+    NSSet *_applicableCaptionRoles;
     NSString *_colorSpaceDisplayName;
     NSString *_projectionTypeDisplayName;
+    FFSharePanelRolesViewController *_rolesViewController;
 }
 
++ (id)keyPathsForValuesAffectingDisplaysDisabledRolesInfo;
 + (id)inactiveHighlightGradient;
 + (id)activeHighlightGradient;
 + (id)shareDestinationControllerForDestination:(id)arg1;
+@property(copy, nonatomic) NSSet *applicableCaptionRoles; // @synthesize applicableCaptionRoles=_applicableCaptionRoles;
+@property(retain, nonatomic) FFSharePanelRolesViewController *rolesViewController; // @synthesize rolesViewController=_rolesViewController;
+@property(nonatomic) NSTextField *captionsLabel; // @synthesize captionsLabel=_captionsLabel;
+@property(nonatomic) LKPopUpButton *captionsPopup; // @synthesize captionsPopup=_captionsPopup;
 @property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
 @property(retain, nonatomic) FFShareDestination *destination; // @synthesize destination=_destination;
 @property(nonatomic) BOOL hasConsumerView; // @synthesize hasConsumerView=_hasConsumerView;
@@ -40,12 +49,18 @@
 - (id)destinationNameByAppendingUserNameFrom:(id)arg1;
 - (id)destinationNameByRemovingUserNameFrom:(id)arg1;
 - (id)extractUsernameFrom:(id)arg1;
+- (void)embedCaption:(id)arg1;
+- (void)hideCaptionsControls;
+- (void)setupCaptionsControlsWithFormats:(id)arg1;
+- (void)setupCaptionsControlsWithFormat:(id)arg1;
+- (id)viewForRolesTab;
 - (long long)optimalStompSettingIndex;
 - (struct CGSize)actualVideoResolutionFromPotentialVideoResolution:(struct CGSize)arg1;
 - (long long)buildSettingsMenu:(id)arg1 withSize:(BOOL)arg2 withOne:(BOOL)arg3;
 - (void)selectSetting:(id)arg1;
 - (BOOL)isAppStorePreview;
 - (BOOL)displaysDeviceCompatibilityInfo;
+- (BOOL)displaysDisabledRolesInfo;
 - (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)colorSpaceDisplayName:(char *)arg1;
 @property(readonly, copy, nonatomic) NSString *projectionTypeDisplayName; // @synthesize projectionTypeDisplayName=_projectionTypeDisplayName;

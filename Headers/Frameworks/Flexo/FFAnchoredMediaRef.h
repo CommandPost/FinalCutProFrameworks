@@ -61,6 +61,7 @@
 - (BOOL)isMediaRef;
 - (int)playEnable;
 - (BOOL)supportsAudio;
+- (BOOL)hasExtractableCaptions;
 - (BOOL)hasAudio;
 - (BOOL)hasVideo;
 - (void)setDisplayName:(id)arg1;

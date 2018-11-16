@@ -97,6 +97,7 @@
 - (void)selectAll;
 - (void)selectChildren;
 - (id)findFirstSelectedController;
+- (void)willResetChannels;
 - (void)paste;
 - (void)copyAction;
 - (void)cut;

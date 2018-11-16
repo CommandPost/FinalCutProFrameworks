@@ -48,6 +48,8 @@
 + (id)getDateOrderedContentsOf:(id)arg1 directoriesOnly:(BOOL)arg2;
 + (id)createUniqueUntitledName:(id)arg1;
 + (id)autosaveVaultPath;
++ (id)localizedSummaryForConversionFromDocumentType:(int)arg1 toDocumentType:(int)arg2;
++ (id)localizedNameForDocumentType:(int)arg1;
 @property(readonly, nonatomic) OZDocumentKeyResponder *documentKeyResponder; // @synthesize documentKeyResponder=_documentKeyResponder;
 - (void)exportWillStart:(unsigned long long)arg1;
 - (void)watchProgressFFQTMovieExporter;
@@ -106,7 +108,6 @@
 - (void)updateChangeCount:(unsigned long long)arg1;
 - (BOOL)hasMediaFolder;
 - (BOOL)isUntouched;
-- (id)localizedDocumentTypeName;
 - (struct OZDocument *)getDocument;
 - (void)restoreDocumentFromAutosave:(id)arg1;
 - (BOOL)revertToContentsOfURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;

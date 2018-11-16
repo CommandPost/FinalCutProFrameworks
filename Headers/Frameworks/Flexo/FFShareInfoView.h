@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class CKSetting, NSImageView, NSTextField, NSTrackingArea;
+@class CKSetting, NSImageView, NSSet, NSTextField, NSTrackingArea;
 
 __attribute__((visibility("hidden")))
 @interface FFShareInfoView : NSView
@@ -28,12 +28,17 @@ __attribute__((visibility("hidden")))
     NSImageView *_mainSeparatorImageView;
     NSView *_outputFileFormatImageView;
     NSTextField *_outputFileFormatTextField;
+    NSView *_disabledRolesImageView;
     NSView *_compatibilityImageView;
     NSView *_outputFileSizeImageView;
     NSTextField *_outputFileSizeTextField;
+    NSTrackingArea *_disabledRolesTrackingArea;
     NSTrackingArea *_compatibilityTrackingArea;
+    NSSet *_disabledRoles;
 }
 
+@property(nonatomic) NSView *disabledRolesImageView; // @synthesize disabledRolesImageView=_disabledRolesImageView;
+@property(retain, nonatomic) NSSet *disabledRoles; // @synthesize disabledRoles=_disabledRoles;
 @property(nonatomic) NSTextField *outputFileSizeTextField; // @synthesize outputFileSizeTextField=_outputFileSizeTextField;
 @property(nonatomic) NSView *outputFileSizeImageView; // @synthesize outputFileSizeImageView=_outputFileSizeImageView;
 @property(nonatomic) NSView *compatibilityImageView; // @synthesize compatibilityImageView=_compatibilityImageView;

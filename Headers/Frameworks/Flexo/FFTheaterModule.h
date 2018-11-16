@@ -80,6 +80,7 @@
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (id)_shareHelper;
+- (BOOL)supportsExcludingDisabledRolesInShareOfSequence:(id)arg1;
 - (void)shareDestinationPicker:(id)arg1;
 - (id)shareSelection:(id)arg1;
 - (void)theaterDatabase:(id)arg1 generateThumbnailForItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

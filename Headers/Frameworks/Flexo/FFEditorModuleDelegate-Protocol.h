@@ -14,6 +14,9 @@
 - (void)hideMarkerEditor;
 - (void)showMarkerEditorForMarkerLayer:(FFMarkerLayer *)arg1 object:(FFAnchoredObject *)arg2;
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(FFAnchoredObject *)arg2;
+- (BOOL)captionEditorIsShown;
+- (void)showCaptionEditorForRect:(struct CGRect)arg1 object:(FFAnchoredObject *)arg2 mainRoleUID:(NSString *)arg3 localeIdentifier:(NSString *)arg4 sequence:(FFAnchoredSequence *)arg5;
+- (void)showCaptionEditorAtTime:(CDStruct_1b6d18a9)arg1 mainRoleUID:(NSString *)arg2 languageIdentifier:(NSString *)arg3 sequence:(FFAnchoredSequence *)arg4 createNewCaption:(BOOL)arg5;
 - (void)openSpeedAdjustmentPanel;
 - (void)toggleAdjustmentsPanel;
 - (void)openAdjustmentsPanel;

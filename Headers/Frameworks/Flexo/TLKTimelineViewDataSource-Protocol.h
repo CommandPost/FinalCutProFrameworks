@@ -41,7 +41,7 @@
 - (void)timelineViewDidBeginTransaction:(TLKTimelineView *)arg1;
 - (void)timelineViewDidEndDataAccess:(TLKTimelineView *)arg1 readOnly:(BOOL)arg2;
 - (void)timelineViewWillBeginDataAccess:(TLKTimelineView *)arg1 readOnly:(BOOL)arg2;
-- (void)timelineView:(TLKTimelineView *)arg1 setDisplayName:(NSString *)arg2 forItem:(id <TLKTimelineItem>)arg3;
+- (void)timelineView:(TLKTimelineView *)arg1 setDisplayName:(NSString *)arg2 forItems:(NSArray *)arg3;
 - (void)timelineView:(TLKTimelineView *)arg1 draggingSessionEnded:(BOOL)arg2;
 - (id <TLKTimelineItem>)timelineView:(TLKTimelineView *)arg1 copyOfItem:(id <TLKTimelineItem>)arg2 withTimeRange:(CDStruct_e83c9415)arg3;
 - (NSArray *)timelineView:(TLKTimelineView *)arg1 acceptDrop:(id <NSDraggingInfo>)arg2 onItem:(id <TLKTimelineItem>)arg3 atIndex:(long long)arg4 inLane:(id)arg5 dropTime:(CDStruct_1b6d18a9)arg6 dropHighlight:(CDStruct_e83c9415 *)arg7;
@@ -98,6 +98,7 @@
 - (id)timelineView:(TLKTimelineView *)arg1 boxMetricsForLane:(id)arg2;
 - (NSColor *)timelineView:(TLKTimelineView *)arg1 backgroundColorForItemLane:(id)arg2;
 - (NSString *)timelineView:(TLKTimelineView *)arg1 nameForItemLane:(id)arg2;
+- (long long)timelineView:(TLKTimelineView *)arg1 layoutRegionForItemLane:(id)arg2;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 isItemLaneExpanded:(id)arg2;
 - (id)timelineView:(TLKTimelineView *)arg1 laneForItemComponent:(id)arg2;
 - (id)timelineView:(TLKTimelineView *)arg1 backgroundMusicLaneForContainer:(id)arg2;

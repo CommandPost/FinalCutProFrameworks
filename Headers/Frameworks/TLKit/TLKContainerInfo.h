@@ -17,16 +17,17 @@
     NSMutableSet *_subcontainerInfoRecords;
     NSMutableSet *_layoutContexts;
     NSArray *_spineItems;
+    NSMutableArray *_spineItemInfoRecords;
     TLKContainerMetrics *_containerMetrics;
     TLKLayoutSegmentTable *_segmentTableAboveSpine;
     TLKLayoutSegmentTable *_segmentTableBelowSpine;
+    NSString *_accessibilityDisplayName;
     BOOL _isTrack;
     BOOL _precisionEditorIsChangingEditPoint;
     int _precisionEditorState;
     id _representedObject;
     TLKContainerInfo *_enclosingContainerInfo;
     unsigned long long _trackIndex;
-    NSString *_accessibilityDisplayName;
     TLKVerticalIndexTable *_verticalIndexTableOnSpine;
     TLKVerticalIndexTable *_verticalIndexTableAboveSpine;
     TLKVerticalIndexTable *_verticalIndexTableBelowSpine;
@@ -34,13 +35,11 @@
     id _rightPrecisionEditorItem;
     id _precisionEditorTransitionItem;
     id _savedWrappingState;
-    NSSet *_items;
     CDStruct_e83c9415 _timeRange;
 }
 
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 @property(copy, nonatomic) NSSet *itemComponentInfoRecords; // @synthesize itemComponentInfoRecords=_itemComponentInfoRecords;
-@property(copy, nonatomic) NSSet *items; // @synthesize items=_items;
 @property(retain, nonatomic) id savedWrappingState; // @synthesize savedWrappingState=_savedWrappingState;
 @property(nonatomic) BOOL precisionEditorIsChangingEditPoint; // @synthesize precisionEditorIsChangingEditPoint=_precisionEditorIsChangingEditPoint;
 @property(nonatomic) int precisionEditorState; // @synthesize precisionEditorState=_precisionEditorState;
@@ -75,9 +74,16 @@
 @property(copy, nonatomic) NSSet *layoutContexts;
 - (void)removeItemComponentInfoRecordsObject:(id)arg1;
 - (void)addItemComponentInfoRecordsObject:(id)arg1;
+- (void)removeSpineItemInfoRecordsObject:(id)arg1;
+- (void)addSpineItemInfoRecordsObject:(id)arg1;
+@property(nonatomic) NSArray *spineItemInfoRecords; // @synthesize spineItemInfoRecords=_spineItemInfoRecords;
+- (void)_rebuildSpineItemInfoRecords;
+- (void)_noteSpineItemInfoRecordsNeedRebuilding;
+- (id)database;
 @property(readonly, nonatomic) unsigned long long nestingLevel;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)_breakItemComponentRetainCycles;
 - (void)dealloc;
 - (id)initWithRepresentedObject:(id)arg1;
 

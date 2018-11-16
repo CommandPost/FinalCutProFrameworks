@@ -23,6 +23,7 @@
 + (id)sharedWaveformBoxMetrics;
 + (id)sharedFilmstripBoxMetrics;
 + (id)sharedTitleBoxMetrics;
++ (id)anchoredCaptionClipAppearance;
 + (id)titleOnlyDefaultMinimizedAppearance;
 + (id)titleOnlyDefaultAppearance;
 + (id)transitionInAudioOnlyStorylineMinimizedAppearance;

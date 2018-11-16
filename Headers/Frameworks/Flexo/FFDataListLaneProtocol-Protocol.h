@@ -6,20 +6,25 @@
 
 #import "NSObject.h"
 
-@class FFRoleColorScheme, NSArray;
+@class FFRoleColorScheme, NSArray, NSString;
 
 @protocol FFDataListLaneProtocol <NSObject>
 @property(nonatomic) BOOL roleGroupHidesSingleRole;
+@property(copy, nonatomic) NSString *nodeParentNameString;
+@property(nonatomic) BOOL nodeUsesParentNameString;
 @property(nonatomic) int nodeClassification;
 @property(retain, nonatomic) FFRoleColorScheme *nodeColorScheme;
-@property(nonatomic) BOOL nodeWasArrangedBeforeShowingComponents;
-@property(nonatomic) BOOL nodeShowsComponents;
+@property(nonatomic) BOOL nodeWasArrangedBeforeExpanding;
+@property(nonatomic) BOOL nodeIsVisibleInTimeline;
+@property(nonatomic) BOOL nodeIsExpanded;
 @property(nonatomic) long long nodeIsEnabled;
 @property(nonatomic) BOOL nodeIsHighlighted;
 @property(nonatomic) BOOL nodeIsFocused;
 @property(nonatomic) long long nodeIsArranged;
-@property(nonatomic) BOOL nodeAllowsShowsComponents;
+@property(nonatomic) BOOL nodeAllowsHiddenInTimeline;
+@property(nonatomic) BOOL nodeAllowsExpanded;
 @property(nonatomic) BOOL nodeAllowsEnabled;
+@property(nonatomic) BOOL nodeAllowsHighlighted;
 @property(nonatomic) BOOL nodeAllowsFocused;
 @property(nonatomic) BOOL nodeAllowsArranged;
 @property(readonly, nonatomic) unsigned long long nestingLevel;
@@ -27,6 +32,7 @@
 @property(readonly, retain, nonatomic) id representedObject;
 @property(readonly, nonatomic) NSArray *childLanes;
 @property(readonly, nonatomic) id <FFDataListLaneProtocol> parentLane;
+- (int)laneType;
 - (double)cellHeight;
 @end
 

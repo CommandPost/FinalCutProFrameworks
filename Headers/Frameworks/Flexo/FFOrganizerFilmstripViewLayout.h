@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)setPlayheadTime:(CDStruct_1b6d18a9)arg1 inRangeOfMedia:(id)arg2 updatePlayerLayer:(BOOL)arg3;
 - (void)setPersistentPlayheadTime:(CDStruct_1b6d18a9)arg1 inRangeOfMedia:(id)arg2;
 - (void)setPlayerLayer:(id)arg1;
+- (id)playerLayer;
 - (struct CGRect)persistentPlayheadRectInSpaceOfLayer:(id)arg1;
 - (struct CGRect)playheadRectInSpaceOfLayer:(id)arg1;
 - (struct CGRect)playerRect;

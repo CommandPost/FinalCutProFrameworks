@@ -6,7 +6,6 @@
 
 #import "FigTimeRangeObj.h"
 
-__attribute__((visibility("hidden")))
 @interface FFSequenceRenderRangeState : FigTimeRangeObj
 {
     int _state;

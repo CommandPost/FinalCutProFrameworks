@@ -6,18 +6,21 @@
 
 #import <Flexo/FFImageRep.h>
 
-@class FFHGRendererManager, FFPixelFormat, NSObject;
+@class FFHGRendererManager, FFImageRepBindingInfo, FFPixelFormat, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFImageRepHGNode : FFImageRep
 {
     struct HGNode *_hgNode;
     FFHGRendererManager *_rendererMgr;
-    NSObject *_hgNodeReleaser;
+    NSMutableArray *_hgNodeReleasers;
     struct CGRect _pixelSpaceBounds;
     FFPixelFormat *_pixelFormat;
+    FFImageRepBindingInfo *_bindingInfo;
 }
 
+- (void)setImageRepBindingInfo:(id)arg1;
+- (id)imageRepBindingInfo;
 - (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
 - (struct HGNode *)_hgNode;
 - (struct CGRect)pixelSpaceBounds;
@@ -25,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)nativePixelFormat;
 - (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
 - (void)_checkImageFlattenOptions:(const CDStruct_302d8f15 *)arg1;
-- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
+- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
 - (void)dealloc;
 - (id)initWithRepresentation:(id)arg1;
 - (id)initWithHGNode:(struct HGNode *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 pixelSpaceBounds:(struct CGRect)arg4 field:(unsigned int)arg5 pixelFormat:(id)arg6;

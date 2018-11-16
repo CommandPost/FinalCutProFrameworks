@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (int)analyzePlayerFrame:(id)arg1;
 - (BOOL)wantsDithering:(id)arg1;
 - (int)requestedBackground;
+- (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
 - (id)supportedPixelFormats;
 - (struct CGColorSpace *)colorSpace;
 - (int)imageLocation;

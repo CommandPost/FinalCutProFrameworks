@@ -20,7 +20,7 @@
 @property(nonatomic) TLKItemLaneFragment *itemLaneFragment; // @synthesize itemLaneFragment=_itemLaneFragment;
 - (void)updateVisibleLayers;
 - (void)timelineView:(id)arg1 didChangeVisibleRect:(struct CGRect)arg2;
-- (void)didChangeVisibleBounds:(struct CGRect)arg1;
+- (void)reflectChangeInVisibleBounds:(struct CGRect)arg1;
 - (id)hitTest:(struct CGPoint)arg1;
 - (void)layoutSublayers;
 - (void)_updateEmptyFill;

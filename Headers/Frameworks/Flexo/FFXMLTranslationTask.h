@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFLibrary, NSArray, NSError, NSObject<FFXMLTranslationExportProtocol>, NSPasteboard, NSRunningApplication, NSURL, NSXMLDocument;
+@class FFLibrary, NSArray, NSError, NSMapTable, NSObject<FFXMLTranslationExportProtocol>, NSPasteboard, NSRunningApplication, NSSet, NSURL, NSXMLDocument;
 
 @interface FFXMLTranslationTask : NSObject
 {
@@ -19,7 +19,9 @@
     int _contentType;
     NSArray *_warnings;
     NSError *_error;
+    NSMapTable *_importResults;
     unsigned long long _contentVersion;
+    NSSet *_allImportedClips;
 }
 
 + (id)translationTaskForFile:(id)arg1 origin:(id)arg2;
@@ -27,6 +29,7 @@
 + (id)translationTaskForClips:(id)arg1;
 + (id)translationTaskForEvents:(id)arg1;
 + (id)translationTaskForLibrary:(id)arg1;
+@property(readonly) NSSet *allImportedClips; // @synthesize allImportedClips=_allImportedClips;
 @property unsigned long long contentVersion; // @synthesize contentVersion=_contentVersion;
 @property int contentType; // @synthesize contentType=_contentType;
 @property(readonly, retain, nonatomic) NSError *error; // @synthesize error=_error;
@@ -37,6 +40,11 @@
 - (BOOL)exportToUserSelectedFile;
 - (id)configuredSavePanel;
 - (id)newPasteboardItem;
+- (id)allImportedClip;
+- (id)clipsImportedInEvent:(id)arg1;
+@property(readonly) NSArray *importedEvents;
+- (BOOL)importClipsWithOptions:(id)arg1 taskDelegate:(id)arg2;
+- (BOOL)importClipsWithOptions:(id)arg1;
 - (id)importWithOptions:(id)arg1;
 - (void)setWarnings:(id)arg1;
 - (void)setError:(id)arg1;

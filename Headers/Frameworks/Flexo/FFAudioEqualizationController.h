@@ -8,7 +8,7 @@
 
 #import "FFEnhanceAudioDelegate.h"
 
-@class FFChannelChangeController, NSArray, NSButton, NSLayoutConstraint, NSMapTable, NSProgressIndicator, NSString;
+@class FFChannelChangeController, FFLibraryDocument, NSArray, NSButton, NSLayoutConstraint, NSMapTable, NSProgressIndicator, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioEqualizationController : OZChanEnumController <FFEnhanceAudioDelegate>
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_managerMap;
     NSArray *_observedObjects;
     NSArray *_observedEffectStacks;
+    FFLibraryDocument *_observedLibraryDocument;
     FFChannelChangeController *_channelChangeController;
     BOOL _matchToolIsActive;
     BOOL _pendingUpdateUI;
@@ -48,8 +49,10 @@ __attribute__((visibility("hidden")))
 - (void)_updateEnableButton;
 - (void)_notifyUpdateUI;
 - (void)_updateUI;
+- (void)_libraryClosed:(id)arg1;
 - (void)_removeObserving;
 - (void)_addObserving;
+- (void)_teardownController;
 - (void)_setupController;
 - (void)setEnableButton:(id)arg1;
 - (void)resetEQEffect;

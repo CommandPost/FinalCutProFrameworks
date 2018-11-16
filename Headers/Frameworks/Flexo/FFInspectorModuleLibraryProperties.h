@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _cachedHasSetupItems;
     struct PCProcrastinatedDispatch_t _procrastinatedReload;
     NSMutableDictionary *_info;
+    BOOL _isObserving;
 }
 
 - (void)consolidateLibraryTemplates:(id)arg1;
