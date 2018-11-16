@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property PENeueTimelineItemLayer *nueTimelineItemLayer; // @synthesize nueTimelineItemLayer=_nueTimelineItemLayer;
 @property(nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 - (void)updateVisibleRectLayer;
+- (void)dealloc;
 - (id)init;
 
 @end

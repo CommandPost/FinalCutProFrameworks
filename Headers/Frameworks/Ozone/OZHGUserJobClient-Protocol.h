@@ -5,7 +5,7 @@
 //
 
 @protocol OZHGUserJobClient
-- (void)userJobCanceled:(struct OZHGUserJob *)arg1;
-- (void)userJobFinished:(struct OZHGUserJob *)arg1;
+-     // Error parsing type: v24@0:8^{OZHGUserJob=^^?IiiIdQ^v*^{HGRenderQueue}^?{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}@^v}16, name: userJobCanceled:
+-     // Error parsing type: v24@0:8^{OZHGUserJob=^^?IiiIdQ^v*^{HGRenderQueue}^?{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}@^v}16, name: userJobFinished:
 @end
 

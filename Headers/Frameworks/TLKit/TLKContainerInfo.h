@@ -61,6 +61,7 @@
 @property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 @property(readonly, nonatomic) NSSet *timelineItems;
 - (id)newUnifiedVisuallyOrderedVerticalIndexTable;
+- (id)newVerticalIndexTableForLayoutRegions:(id)arg1 withNodesPassingTest:(CDUnknownBlockType)arg2;
 - (id)verticalIndexTableForLayoutRegion:(long long)arg1;
 - (id)itemLaneInfoRecordsForLayoutRegion:(long long)arg1;
 - (void)removeItemLaneInfoRecordsObject:(id)arg1;

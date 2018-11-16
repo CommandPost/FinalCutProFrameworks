@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (float)suggestedMinParamWidth;
-- (BOOL)shouldAddDisclosureButton;
+- (int)shouldAddDisclosureButton;
 - (void)toggleOSC:(id)arg1;
 - (void)_syncActiveOSCState;
 - (void)update;

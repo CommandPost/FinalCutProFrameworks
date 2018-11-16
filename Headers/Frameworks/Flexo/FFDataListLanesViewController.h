@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) LKSegmentedControl *organizedModeControl; // @synthesize organizedModeControl=_organizedModeControl;
 @property(nonatomic) LKSegmentedControl *editRolesSegmentedControl; // @synthesize editRolesSegmentedControl=_editRolesSegmentedControl;
 @property(retain, nonatomic) FFDataListLanesOutlineViewController *timelineIndexLanesViewController; // @synthesize timelineIndexLanesViewController=_timelineIndexLanesViewController;
+- (void)_adjustTrayButtonWidths;
 - (void)_reloadStoryOutlets;
 - (void)_storyPresentationChanged:(id)arg1;
 - (void)_timelineModuleWillBeRemoved:(id)arg1;

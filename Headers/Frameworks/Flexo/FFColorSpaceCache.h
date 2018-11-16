@@ -23,11 +23,12 @@
     struct CGColorSpace *_DCI_P3_ColorSpace;
     struct CGColorSpace *_P3_D65_ColorSpace;
     struct CGColorSpace *_NCLC_12_1_6_ColorSpace;
+    struct CGColorSpace *_2020_PQ_ColorSpace;
+    struct CGColorSpace *_2020_HLG_ColorSpace;
     struct CGColorSpace *_CGColorSpaceGenericGray;
     struct CGColorSpace *_CGColorSpaceGenericRGB;
     struct CGColorSpace *_CGColorSpaceGenericRGBLinear;
     NSArray *_standardEnumeratedSpaces;
-    NSMutableArray *_oddballCachedColorSpaces;
     NSMutableArray *_recentColorSpacesWithEnums;
 }
 
@@ -39,6 +40,8 @@
 @property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericRGBLinear; // @synthesize CGColorSpaceGenericRGBLinear=_CGColorSpaceGenericRGBLinear;
 @property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericRGB; // @synthesize CGColorSpaceGenericRGB=_CGColorSpaceGenericRGB;
 @property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericGray; // @synthesize CGColorSpaceGenericGray=_CGColorSpaceGenericGray;
+@property(readonly, nonatomic) struct CGColorSpace *hdr2020_HLG_ColorSpace; // @synthesize hdr2020_HLG_ColorSpace=_2020_HLG_ColorSpace;
+@property(readonly, nonatomic) struct CGColorSpace *hdr2020_PQ_ColorSpace; // @synthesize hdr2020_PQ_ColorSpace=_2020_PQ_ColorSpace;
 @property(readonly, nonatomic) struct CGColorSpace *NCLC_12_1_6_ColorSpace; // @synthesize NCLC_12_1_6_ColorSpace=_NCLC_12_1_6_ColorSpace;
 @property(readonly, nonatomic) struct CGColorSpace *P3_D65_ColorSpace; // @synthesize P3_D65_ColorSpace=_P3_D65_ColorSpace;
 @property(readonly, nonatomic) struct CGColorSpace *DCI_P3_ColorSpace; // @synthesize DCI_P3_ColorSpace=_DCI_P3_ColorSpace;
@@ -56,10 +59,10 @@
 - (int)getMatchingStandardColorSpace:(struct CGColorSpace *)arg1;
 - (id)_lookupInRecentsWhileHoldingThemSynchronized:(struct CGColorSpace *)arg1;
 - (struct CGColorSpace *)colorSpaceForICCProfileData:(id)arg1;
-- (id)iccProfileDataForColorSpace:(struct CGColorSpace *)arg1;
+- (id)copyICCProfileDataForColorSpace:(struct CGColorSpace *)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)_addCacheRecordForNovelColorSpace:(struct CGColorSpace *)arg1 withEnum:(int)arg2;
+- (BOOL)_addCacheRecordForNovelColorSpace:(struct CGColorSpace *)arg1 withEnum:(int)arg2;
 
 @end
 

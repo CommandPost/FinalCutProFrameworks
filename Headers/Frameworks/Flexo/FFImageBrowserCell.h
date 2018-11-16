@@ -6,13 +6,14 @@
 
 #import <Flexo/FFResponderLayer.h>
 
+#import "CALayerDelegate.h"
 #import "FFSkimmingModuleDelegate.h"
 #import "NSDraggingSource.h"
 
 @class CALayer, CATextLayer, FFContext, FFImageBrowserView, FFImageLayer, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFImageBrowserCell : FFResponderLayer <NSDraggingSource, FFSkimmingModuleDelegate>
+@interface FFImageBrowserCell : FFResponderLayer <CALayerDelegate, NSDraggingSource, FFSkimmingModuleDelegate>
 {
     id <FFImageBrowserRepresentedItem> _representedItem;
     FFImageBrowserView *_imageBrowser;

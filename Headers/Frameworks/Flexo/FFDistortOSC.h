@@ -6,16 +6,18 @@
 
 #import <Flexo/FFProOSC.h>
 
-@class FFCHObservableFolder, LKSegmentedControl, NSMutableArray, NSView;
+@class FFCHObservableFolder, FFOSCWindowView, LKSegmentedControl, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFDistortOSC : FFProOSC
 {
     LKSegmentedControl *_keyframeButton;
     LKSegmentedControl *_exitButton;
-    NSView *_distortOverlayView;
+    LKSegmentedControl *_resetButton;
+    FFOSCWindowView *_distortOverlayView;
     FFCHObservableFolder *_channelFolder;
     NSMutableArray *_channelsToCheckForkeyFrames;
+    BOOL _resetButtonHidden;
 }
 
 - (void)ensureIntrinsic;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)keyFramePreviousAddNext:(id)arg1;
 - (id)keyFrameButton;
 - (id)channelsToCheckForKeyframes;
+- (void)resetDistort:(id)arg1;
 - (void)exitOSC:(id)arg1;
 - (void)keyDown:(id)arg1;
 - (void)mouseUp:(id)arg1;
@@ -30,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (void)enableOverlayWindowForNoRangeOverlap;
 - (void)removeOverlayWindowForNoRangeOverlap;
 - (BOOL)supportsTool:(Class)arg1;
+- (void)resizedOSCView;
+- (struct CGSize)minSize;
 - (void)dealloc;
 - (id)initWithDistortEffect:(id)arg1 effectStack:(id)arg2;
 

@@ -9,10 +9,11 @@
 #import "FFSourceVideoInvertAlphaProtocol.h"
 #import "FFSourceVideoOptional.h"
 #import "FFSourceVideoOverrideAlphaProtocol.h"
+#import "FFSourceVideoOverrideCameraProjectionMode.h"
 #import "FFSourceVideoOverrideColorspace.h"
 
 __attribute__((visibility("hidden")))
-@interface FFSourceVideoCG : FFSourceVideo <FFSourceVideoOverrideAlphaProtocol, FFSourceVideoInvertAlphaProtocol, FFSourceVideoOverrideColorspace, FFSourceVideoOptional>
+@interface FFSourceVideoCG : FFSourceVideo <FFSourceVideoOverrideAlphaProtocol, FFSourceVideoInvertAlphaProtocol, FFSourceVideoOverrideColorspace, FFSourceVideoOverrideCameraProjectionMode, FFSourceVideoOptional>
 {
 }
 
@@ -21,6 +22,8 @@ __attribute__((visibility("hidden")))
 - (id)colorModel;
 - (BOOL)hasAlpha;
 - (int)depth;
+- (void)getTaggedProjection:(int *)arg1 stereo:(int *)arg2 recognizedProjection:(_Bool *)arg3 recognizedStereo:(_Bool *)arg4;
+- (int)getNativeCameraMode;
 - (BOOL)isOverrideColorSpaceSupported:(struct CGColorSpace *)arg1;
 - (struct CGColorSpace *)getNativeColorSpace;
 - (void)setInvertAlpha:(_Bool)arg1;

@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)resetForObject:(id)arg1;
 - (id)primaryAnimationChannel;
 - (void)channelsWereReset;
-- (void)notifyEffectWasAddedToStack:(int)arg1;
+- (void)effectActivated:(int)arg1;
 - (void)trimValues:(double *)arg1 andR:(double *)arg2 andB:(double *)arg3 andT:(double *)arg4;
 - (void)setTrimValues:(double)arg1 andR:(double)arg2 andB:(double)arg3 andT:(double)arg4;
 @property(retain, nonatomic) NSString *lrtbAsString; // @synthesize lrtbAsString=_lrtbAsString;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)modifyImageTransform:(id)arg1 andImageSpaceBounds:(struct CGRect *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2 pixelTransform:(id)arg3;
 - (id)newUpdatedDownstreamPT:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
 - (BOOL)trimAvailable;
 - (void)resetAvailable;
 - (void)setTrimLRTB:(double)arg1 right:(double)arg2 top:(double)arg3 bottom:(double)arg4;

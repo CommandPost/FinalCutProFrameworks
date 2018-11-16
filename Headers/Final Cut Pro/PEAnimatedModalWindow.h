@@ -21,10 +21,12 @@
     BOOL _isAnimating;
     BOOL _performDelayedWindowClosing;
     struct CGRect _animationSourceRect;
+    unsigned long long _savedMainWindowCollectionBehavior;
 }
 
 @property struct CGRect animationSourceRect; // @synthesize animationSourceRect=_animationSourceRect;
 @property BOOL shouldAnimate; // @synthesize shouldAnimate=_shouldAnimate;
+- (void)setLevel:(long long)arg1;
 - (void)close;
 - (void)orderFront:(id)arg1;
 - (void)setupAnimation:(BOOL)arg1;

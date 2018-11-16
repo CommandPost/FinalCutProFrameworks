@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasAlpha;
 - (BOOL)isSubsampled;
 - (BOOL)isYCbCr;
+- (BOOL)isRAW;
 - (int)pixelBlockWidth;
 - (int)bitsPerBlock;
 - (int)bitsPerComponent;

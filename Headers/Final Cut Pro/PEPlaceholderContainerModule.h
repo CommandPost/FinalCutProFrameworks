@@ -8,10 +8,10 @@
 
 @interface PEPlaceholderContainerModule : LKViewModule
 {
-    LKViewModule *submodule;
+    LKViewModule *_submodule;
 }
 
-@property(retain, nonatomic) LKViewModule *submodule; // @synthesize submodule;
+@property(retain, nonatomic) LKViewModule *submodule; // @synthesize submodule=_submodule;
 - (double)bottomDraggableExclusionMargin;
 - (double)topDraggableExclusionMargin;
 - (double)rightDraggableExclusionMargin;
@@ -40,6 +40,7 @@
 - (unsigned long long)revealAnimationStyle;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)dealloc;
 - (BOOL)loadView;
 
 @end

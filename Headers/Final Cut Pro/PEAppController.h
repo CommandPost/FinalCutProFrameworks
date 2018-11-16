@@ -45,6 +45,7 @@
     NSMenuItem *_applyCustomNameMenuItem;
     NSMenuItem *_debugMenu;
     NSMenuItem *_avOutMenu;
+    NSMenuItem *_outputToVRHeadsetMenu;
     NSMenu *_videoFiltersMenu;
     NSMenu *_audioEffectsMenu;
     NSMenu *_videoTransitionsMenu;
@@ -103,6 +104,9 @@
 @property(nonatomic) BOOL disablingOrganizerIsAllowed; // @synthesize disablingOrganizerIsAllowed=_disablingOrganizerIsAllowed;
 @property(nonatomic) BOOL fullscreenViewerIsDisallowed; // @synthesize fullscreenViewerIsDisallowed=_fullscreenViewerIsDisallowed;
 @property(nonatomic) BOOL userIsScrollingThroughFonts; // @synthesize userIsScrollingThroughFonts=_userIsScrollingThroughFonts;
+- (id)whatsNewStringsPrefix;
+- (id)licenseLinkString;
+- (Class)mainWindowClass;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
 - (void)module:(id)arg1 didUnhideSubmodule:(id)arg2;
@@ -128,6 +132,8 @@
 - (BOOL)shareSelectionSupportsAppPreview;
 - (void)_setupShareMenu;
 - (void)_moveWorkspaceModulesToFullscreen:(id)arg1 withLabel:(id)arg2 animate:(BOOL)arg3;
+- (id)iMovieIOSXMLImport:(id)arg1;
+- (void)_processAndOpenImportedIosProjectsInFCP:(id)arg1;
 - (void)_updateProjectTabOrOpenImportedIosProjects:(id)arg1;
 - (void)_importAndOpenIosImovieProjectAtUrls:(id)arg1;
 - (void)_triggerIosImovieProjectImport;
@@ -168,6 +174,9 @@
 - (void)editDestinations:(id)arg1;
 - (void)newDestination:(id)arg1;
 - (void)setShowFullscreenNavigationValue:(id)arg1;
+- (void)setSplitVideoInspector:(id)arg1;
+- (void)setEnableNewTouchBars:(id)arg1;
+- (void)setOSC360DisplayValue:(id)arg1;
 - (void)setOSCTimelineDisplayValue:(id)arg1;
 - (void)setOSCTimecodeDisplayValue:(id)arg1;
 - (void)summarizeObjectCacheToConsole:(id)arg1;
@@ -189,6 +198,7 @@
 - (void)favoriteToolAvailable:(BOOL)arg1;
 - (void)editToolAvailable:(BOOL)arg1;
 - (void)setShowBothFields:(id)arg1;
+- (void)show360:(id)arg1;
 - (void)showMultiangle:(id)arg1;
 - (void)toggleVideoScopes:(id)arg1;
 - (void)toggleHiddenEvents:(id)arg1;
@@ -227,6 +237,7 @@
 - (void)toggleVoiceoverRecording:(id)arg1;
 - (void)toggleVoiceoverRecordView:(id)arg1;
 - (void)toggleConsumerVoiceOver:(id)arg1;
+- (void)toggleHMD:(id)arg1;
 - (void)toggleBackgroundTasksList:(id)arg1;
 - (void)goToBackgroundTaskList:(id)arg1;
 - (void)goToTimeline:(id)arg1;
@@ -267,6 +278,12 @@
 - (void)toggleMediaTransitionsBrowserModeFromMenuTag:(id)arg1;
 - (void)toggleMediaBrowserFromKeyCommandTag:(id)arg1;
 - (void)switchToInspector:(id)arg1;
+- (void)nextColorEffect:(id)arg1;
+- (void)previousColorEffect:(id)arg1;
+- (void)setCorrectionFromEditBackThree:(id)arg1;
+- (void)setCorrectionFromEditBackTwo:(id)arg1;
+- (void)setCorrectionFromEditBackOne:(id)arg1;
+- (void)resetPucksOnCurrentBoard:(id)arg1;
 - (void)goToColorBoard:(id)arg1;
 - (BOOL)eventViewerScopesVisible;
 - (BOOL)scopesVisible;
@@ -350,7 +367,6 @@
 @property(readonly) FFAnchoredSequence *currentSequence;
 - (id)editorContainerWithID:(id)arg1 createIfNeeded:(BOOL)arg2 withFrame:(struct CGRect)arg3;
 - (id)dataListModule;
-- (id)colorModule;
 - (id)audioMeterModule;
 - (id)backgroundTaskListModule;
 - (id)variantsPicker;
@@ -394,6 +410,7 @@
 - (BOOL)disableGradationChanges;
 - (void)applicationWillBecomeActive:(id)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
+- (void)applicationWillResignActive:(id)arg1;
 - (void)openXMLDocumentWithURL:(id)arg1 display:(BOOL)arg2 sender:(id)arg3;
 - (BOOL)application:(id)arg1 openFile:(id)arg2;
 - (void)applicationDidMiniaturizeAll:(id)arg1;
@@ -402,6 +419,7 @@
 - (unsigned long long)applicationShouldTerminate:(id)arg1;
 - (void)appHasStartedProcessingBlock:(CDUnknownBlockType)arg1;
 - (void)applicationDidFinishLaunching:(id)arg1;
+- (void)_convertColorPresetsToEffectPresets;
 - (BOOL)_migratePreGodzillaColorPresets;
 - (void)restoreOpenDocuments;
 - (void)applicationWillFinishLaunching:(id)arg1;

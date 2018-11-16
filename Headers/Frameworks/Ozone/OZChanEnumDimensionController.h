@@ -10,6 +10,9 @@
 {
 }
 
+- (BOOL)isGroup2DAndAtTopLevel:(struct OZChannelBase *)arg1;
+- (BOOL)isAnyAssociatedGroup2DAndAtTopLevel;
+- (void)updatePopUpMenu:(BOOL)arg1 force:(BOOL)arg2;
 - (void)notify:(unsigned int)arg1;
 
 @end

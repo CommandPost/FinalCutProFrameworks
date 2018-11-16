@@ -6,11 +6,12 @@
 
 #import "NSView.h"
 
+#import "CALayerDelegate.h"
 #import "TLKEventDispatcherView.h"
 
-@class CALayer, LKTimecodeFormatter, NSArray, NSColor, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSTimer, PCChangeLog, PMRStopwatch, TLKAbstractRangeSelectionLayer, TLKClipTrimmerLane, TLKDataSourceProxy, TLKDelegateProxy, TLKEventDispatcher, TLKGuideLayer, TLKInOutRangeMarker, TLKLayerManager, TLKLayoutDatabase, TLKLayoutManager, TLKLayoutMetrics, TLKPlayheadMarker, TLKPosterItemLane, TLKPrecisionEditor, TLKRulerLane, TLKSelectionManager, TLKTimecodeDisplayView;
+@class CALayer, LKTimecodeFormatter, NSArray, NSColor, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, NSTimer, PCChangeLog, PMRStopwatch, TLKAbstractRangeSelectionLayer, TLKClipTrimmerLane, TLKDataSourceProxy, TLKDelegateProxy, TLKEventDispatcher, TLKGuideLayer, TLKInOutRangeMarker, TLKItemComponentInfo, TLKLayerManager, TLKLayoutDatabase, TLKLayoutManager, TLKLayoutMetrics, TLKPlayheadMarker, TLKPosterItemLane, TLKPrecisionEditor, TLKRulerLane, TLKSelectionManager, TLKTimecodeDisplayView;
 
-@interface TLKTimelineView : NSView <TLKEventDispatcherView>
+@interface TLKTimelineView : NSView <TLKEventDispatcherView, CALayerDelegate>
 {
     id <TLKTimelineViewDataSource> dataSource;
     id <TLKTimelineViewDelegate> delegate;
@@ -153,14 +154,16 @@
     double _topMargin;
     double _bottomMargin;
     Class _drawSelectionOperationClass;
+    TLKItemComponentInfo *_mainSelectedItemForNavigation;
     TLKPrecisionEditor *_precisionEditor;
     id _trimmedItem;
     NSMutableArray *_manualOperationsQueue;
     NSTimer *_deferredReloadTimer;
     NSMutableArray *_clientHitTestParts;
+    struct NSMapTable *_selectNextCache;
+    struct NSMapTable *_selectPreviousCache;
     TLKDelegateProxy *_delegateProxy;
     PCChangeLog *_pendingChangesForReload;
-    CDStruct_1b6d18a9 _previousLogicalTime;
     struct CGRect _previousVisibleRect;
 }
 
@@ -170,6 +173,8 @@
 @property(readonly, nonatomic) PCChangeLog *pendingChangesForReload; // @synthesize pendingChangesForReload=_pendingChangesForReload;
 @property(retain, nonatomic) TLKDelegateProxy *delegateProxy; // @synthesize delegateProxy=_delegateProxy;
 @property(retain, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
+@property(readonly) NSMapTable *selectPreviousCache; // @synthesize selectPreviousCache=_selectPreviousCache;
+@property(readonly) NSMapTable *selectNextCache; // @synthesize selectNextCache=_selectNextCache;
 @property(retain) NSMutableArray *clientHitTestParts; // @synthesize clientHitTestParts=_clientHitTestParts;
 @property BOOL duringDraggingEnded; // @synthesize duringDraggingEnded=_duringDraggingEnded;
 @property(retain) NSTimer *deferredReloadTimer; // @synthesize deferredReloadTimer=_deferredReloadTimer;
@@ -179,8 +184,8 @@
 @property(retain, nonatomic) TLKPrecisionEditor *precisionEditor; // @synthesize precisionEditor=_precisionEditor;
 @property(nonatomic) BOOL stretchFilmstrips; // @synthesize stretchFilmstrips=_stretchFilmstrips;
 @property(nonatomic) BOOL filmstripUpdatesEnabled; // @synthesize filmstripUpdatesEnabled=_filmstripUpdatesEnabled;
+@property(nonatomic) TLKItemComponentInfo *mainSelectedItemForNavigation; // @synthesize mainSelectedItemForNavigation=_mainSelectedItemForNavigation;
 @property(retain) TLKSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
-@property CDStruct_1b6d18a9 previousLogicalTime; // @synthesize previousLogicalTime=_previousLogicalTime;
 @property(nonatomic) Class drawSelectionOperationClass; // @synthesize drawSelectionOperationClass=_drawSelectionOperationClass;
 @property(readonly, nonatomic) BOOL showsSecondaryComponentConnectorOnSelectionOnly; // @synthesize showsSecondaryComponentConnectorOnSelectionOnly=_showsSecondaryComponentConnectorOnSelectionOnly;
 @property(nonatomic) double bottomMargin; // @synthesize bottomMargin=_bottomMargin;
@@ -197,7 +202,6 @@
 @property(nonatomic) long long playheadFocus; // @synthesize playheadFocus=_playheadFocus;
 @property(retain, nonatomic) CALayer *bumperBackgroundLayer; // @synthesize bumperBackgroundLayer=_bumperBackgroundLayer;
 @property(nonatomic) int editingMode; // @synthesize editingMode=_editingMode;
-- (void)openTimelineInMica;
 - (struct CGColor *)relatedItemSelectionColorRef;
 - (struct CGColor *)dependantItemSelectionColorRef;
 - (struct CGColor *)itemSelectionColorRef;
@@ -228,13 +232,27 @@
 - (id)_userDefaultKeysForIdentifier:(id)arg1;
 - (void)gotoEnd:(id)arg1;
 - (void)gotoStart:(id)arg1;
-- (void)moveSelectionDown:(id)arg1 willSelect:(CDUnknownBlockType)arg2;
-- (void)moveSelectionUp:(id)arg1 willSelect:(CDUnknownBlockType)arg2;
-- (void)_selectAdjacentItem:(long long)arg1 forItems:(id)arg2 willSelect:(CDUnknownBlockType)arg3;
+- (BOOL)selectionCanMoveHorizontallyFromItem:(id)arg1 toItem:(id)arg2;
+- (BOOL)canMoveSelectionPrevious:(id)arg1;
+- (BOOL)canMoveSelectionNext:(id)arg1;
+- (void)moveSelectionPrevious:(id)arg1 byExtendingSelection:(BOOL)arg2;
+- (void)moveSelectionNext:(id)arg1 byExtendingSelection:(BOOL)arg2;
+- (void)moveSelectionDown:(id)arg1;
+- (void)moveSelectionUp:(id)arg1;
+- (void)_selectAdjacentItemHorizontally:(long long)arg1 forItems:(id)arg2 byExtendingSelection:(BOOL)arg3;
+- (id)_nextHorizontalItemInDirection:(long long)arg1 forItems:(id)arg2 unoccludedTime:(double *)arg3;
+- (void)_cacheItemComponentForSelectNextForItem:(id)arg1 searchTime:(double)arg2 selectionDirection:(long long)arg3 unoccludedTime:(double)arg4 nextComponent:(id)arg5;
+- (id)_retrieveItemComponentFromSelectNextCacheForItem:(id)arg1 searchTime:(double)arg2 selectionDirection:(long long)arg3 unoccludedTime:(double *)arg4 existsInCache:(char *)arg5;
+- (void)_invalidateSelectNextCaches;
+- (void)_selectAdjacentItem:(long long)arg1 forItems:(id)arg2;
+- (id)_nextVerticalItemInDirection:(long long)arg1 forItems:(id)arg2;
+- (id)_nextVerticalItemInMultiTrackInDirection:(long long)arg1 forItems:(id)arg2;
+- (id)_itemsInContainer:(id)arg1 intersectingLocation:(double)arg2;
 - (void)deselectAll:(id)arg1;
 - (void)selectAll:(id)arg1;
 - (void)_selectAllInMultipleTracksMode;
 - (void)selectClipAtPlayhead:(id)arg1;
+- (id)_itemAtTime:(CDStruct_1b6d18a9)arg1 inTrack:(id)arg2;
 - (void)selectClip:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (BOOL)shouldSkimItem:(id)arg1 atTime:(CDStruct_1b6d18a9 *)arg2 didSnap:(char *)arg3;
@@ -272,6 +290,7 @@
 - (id)_posterItemLane;
 - (id)_rulerLane;
 - (id)_playheadMarker;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 endTime;
 @property BOOL playingClip;
 @property BOOL playing;
 @property BOOL playheadIsSnapped;
@@ -319,6 +338,7 @@
 - (void)_updateRangeSelectionsWrapping;
 - (void)_extendRangeSelectionLayerForTornEdges:(id)arg1;
 - (id)_rangeSelectionLayer;
+- (void)selectItemsInRect:(struct CGRect)arg1 extendsSelection:(BOOL)arg2;
 - (id)selectedTimelineItems;
 @property(readonly) NSArray *selectedRangeItems;
 @property(readonly) NSArray *selectedTrailingEdgeItems;
@@ -394,12 +414,14 @@
 - (void)_delayEnableAnimationsAfterScrolling;
 - (void)_scrollToDefaultPosition;
 - (void)scrollTimelineLanesToVisible:(id)arg1;
-- (void)scrollComponentsToVisible:(id)arg1;
+- (void)_scrollComponentsVerticallyToVisible:(id)arg1;
 - (void)scrollItemsToVisible:(id)arg1;
 - (void)_scrollToVisibleRegion:(struct CGRect)arg1 horizontalScrolling:(BOOL)arg2 verticalScrolling:(BOOL)arg3;
 - (void)scrollRectToVisible:(struct CGRect)arg1 forContainer:(id)arg2;
 - (void)scrollBy:(double)arg1;
 - (void)scrollTime:(CDStruct_1b6d18a9)arg1 toLocation:(double)arg2;
+- (void)scrollToEndOfDocument:(id)arg1;
+- (void)scrollToBeginningOfDocument:(id)arg1;
 - (BOOL)isAutoscrolling;
 - (void)setDisableAutoZooming:(BOOL)arg1;
 - (void)_delayHeightUpdate;
@@ -478,8 +500,6 @@
 - (void)willUpdateLayersWithClipRect:(struct CGRect)arg1;
 - (void)setNeedsDisplayForItems:(id)arg1;
 - (void)reloadData;
-- (void)_reloadData_Highlander;
-- (void)_reloadData_Experimental;
 - (void)_updateFilmstripItems:(id)arg1;
 - (void)reloadPendingChangesWithAnimation:(BOOL)arg1 afterDelay:(double)arg2;
 - (void)_handleDeferredReloadTimer;
@@ -494,8 +514,6 @@
 - (void)reloadWithTracksAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)_reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 viewState:(id)arg4;
-- (void)_experimental_reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 viewState:(id)arg4;
-- (void)_highlander_reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 viewState:(id)arg4;
 - (void)_updateTrackingItems;
 - (BOOL)_shouldClosePrecisionEditorWithItemsAdded:(id)arg1 removed:(id)arg2;
 - (void)_closeAccessoryLayersWithAddedItems:(id)arg1;
@@ -510,7 +528,6 @@
 - (id)precisionEditorTrimBar;
 - (id)precisionEditorDividerBar;
 @property(readonly) TLKGuideLayer *guideLayer;
-- (struct CGRect)centeredRectForFutureSpineItem:(id)arg1;
 - (id)framesForItemComponent:(id)arg1;
 - (id)framesForItem:(id)arg1;
 - (id)framesForComponentInfo:(id)arg1;
@@ -529,7 +546,7 @@
 @property int timeUnits;
 - (void)setMinThumbnailCount:(double)arg1;
 - (double)minThumbnailCount;
-@property struct CGSize itemSpacing;
+@property double defaultVerticalSpacing;
 @property(nonatomic) BOOL legacyScrollers;
 @property(nonatomic) BOOL rangeSelectionPopup;
 @property(nonatomic) BOOL indicatesLockedSkimPlayhead;
@@ -565,7 +582,7 @@
 @property(readonly, nonatomic) TLKLayoutDatabase *layoutDatabase;
 - (id)layerManager;
 @property id <TLKTimelineViewDelegate> delegate;
-- (id)debugDescription;
+@property(readonly, copy) NSString *debugDescription;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)updateAccessibilityCache;
@@ -632,6 +649,7 @@
 - (CDStruct_1b6d18a9)_calculateMaxThumbnailDuration;
 - (CDStruct_1b6d18a9)_calculateMinThumbnailDuration;
 - (void)_getMaxTPP:(CDStruct_1b6d18a9 *)arg1 minTPP:(CDStruct_1b6d18a9 *)arg2;
+- (CDStruct_1b6d18a9)_clampTimescale:(CDStruct_1b6d18a9)arg1;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (void)setDisableFilmstripLayerUpdates:(BOOL)arg1;
 - (BOOL)disableFilmstripLayerUpdates;
@@ -651,6 +669,11 @@
 - (void)_reloadVisibleLayers;
 - (id)_addContentLayerWithName:(id)arg1 toLayer:(id)arg2 layerClass:(Class)arg3;
 - (id)_contentLayerWithName:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

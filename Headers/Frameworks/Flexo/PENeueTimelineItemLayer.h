@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) FFAnchoredCollection *anchoredCollection;
 - (void)setRepresentedObject:(id)arg1;
 - (void)setSelectionMask:(unsigned long long)arg1;
+- (void)dealloc;
 - (id)initWithTimelineView:(id)arg1;
 
 // Remaining properties

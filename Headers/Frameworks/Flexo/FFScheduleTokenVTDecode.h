@@ -8,7 +8,7 @@
 
 #import "SampleBufferProvider.h"
 
-@class FFImage, NSObject<OS_dispatch_semaphore>, NSString, PCMatrix44Double;
+@class FFImage, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_semaphore>, NSString, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFScheduleTokenVTDecode : FFScheduleToken <SampleBufferProvider>
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
     int _whichDRJP;
     BOOL _prefetchHasBeenCalled;
     BOOL _prefetchHasBegun;
-    long long _cduPredicate;
+    NSObject<OS_dispatch_queue> *_cduQueue;
     BOOL _inCentralDecodingUnit;
     BOOL _decompressionInProgress;
     BOOL _hasCachedImageCharacteristics;
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
     FFImage *_image[6];
     int _frameDecodeError;
     BOOL _imageHasBeenSet;
-    CDUnknownFunctionPointerType _decompressionOutputCallback;
+    CDUnknownFunctionPointerType _decodeCallback;
     void *_videoDecoder;
     BOOL _needsReset;
     BOOL _fileIsGrowing;
@@ -57,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsReset:(BOOL)arg1;
 - (void *)videoDecoder;
 - (void)setVideoDecoder:(void *)arg1;
-- (CDUnknownFunctionPointerType)decompressionOutputCallback;
+- (CDUnknownFunctionPointerType)decodeCallback;
 - (int)diskWaitTimeInSeconds;
 - (CDStruct_1b6d18a9)outputPTS;
 - (_Bool)invertAlpha;

@@ -6,7 +6,7 @@
 
 #import "LKDFRController.h"
 
-@class FFNavViewController, FFVolumeViewController, NSArray, NSButton, NSCustomTouchBarItem, NSPopoverTouchBarItem, NSSegmentedControl, NSTouchBarItem;
+@class FFNavViewController, FFVolumeDFRController, NSArray, NSButton, NSCustomTouchBarItem, NSPopoverTouchBarItem, NSSegmentedControl, NSTouchBarItem;
 
 __attribute__((visibility("hidden")))
 @interface FFTimelineDFRController : LKDFRController
@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     FFNavViewController *_defenderViewController;
     NSPopoverTouchBarItem *_toolsPopoverItem;
     NSSegmentedControl *_toolControl;
-    FFVolumeViewController *_volumeController;
+    FFVolumeDFRController *_volumeController;
     NSPopoverTouchBarItem *_volumePopoverItem;
     NSArray *_selectedItems;
     NSButton *_toFromBlackButton;
@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)createDefenderView;
 - (void)updateDefenderView;
 - (id)imageForIdentifier:(id)arg1;
-- (id)accessibilityForIdentifier:(id)arg1;
+- (id)accessibilityTitleForIdentifier:(id)arg1;
 - (id)displayNameForIdentifier:(id)arg1;
 - (id)targetForIdentifier:(id)arg1;
 - (SEL)selectorForIdentifier:(id)arg1;

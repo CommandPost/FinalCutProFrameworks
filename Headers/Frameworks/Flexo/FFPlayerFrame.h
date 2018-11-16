@@ -29,6 +29,7 @@
     FFSubRangeMD5Info *_image2_MD5;
     FFGraphBuildInformation *_gBuildInfo1;
     FFGraphBuildInformation *_gBuildInfo2;
+    int _cameraMode;
     FFTextureBuffer *_overlayTexture;
     NSMapTable *_drawProperties;
     NSError *_errorInfo;
@@ -51,6 +52,7 @@
 - (void)updateHealthLevels:(CDStruct_b80813c2 *)arg1;
 - (void)dealloc;
 - (id)description;
+@property(readonly) int cameraMode; // @synthesize cameraMode=_cameraMode;
 - (id)graphBuildInfo2;
 - (id)graphBuildInfo1;
 - (id)image2_MD5;
@@ -66,7 +68,7 @@
 - (id)drawProperties;
 - (void)setDrawProperties:(id)arg1;
 - (BOOL)hasSecondField;
-- (id)initWithTime:(CDStruct_1b6d18a9)arg1 timeRepresented:(CDStruct_1b6d18a9)arg2 alwaysFwdTime:(CDStruct_1b6d18a9)arg3 nativeFrameDur:(CDStruct_1b6d18a9)arg4 bounds:(struct CGRect)arg5 forRate:(double)arg6 forTimecodeType:(unsigned int)arg7;
+- (id)initWithTime:(CDStruct_1b6d18a9)arg1 timeRepresented:(CDStruct_1b6d18a9)arg2 alwaysFwdTime:(CDStruct_1b6d18a9)arg3 nativeFrameDur:(CDStruct_1b6d18a9)arg4 bounds:(struct CGRect)arg5 forRate:(double)arg6 forTimecodeType:(unsigned int)arg7 cameraMode:(int)arg8;
 
 @end
 

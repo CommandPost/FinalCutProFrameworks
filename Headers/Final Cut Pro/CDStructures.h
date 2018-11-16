@@ -27,19 +27,19 @@ struct CGSize {
     double height;
 };
 
-struct FFProcrastinatedDispatch_t {
-    int lock;
+struct NSObject {
+    Class _field1;
+};
+
+struct PCProcrastinatedDispatch_t {
+    struct os_unfair_lock_s lock;
     double executionTime;
     double executionTimeLimit;
     NSObject<OS_dispatch_queue> *queue;
     CDUnknownBlockType block;
     CDUnknownFunctionPointerType work;
     void *workContext;
-    struct FFProcrastinatedDispatch_t **executionContext;
-};
-
-struct NSObject {
-    Class _field1;
+    struct PCProcrastinatedDispatch_t **executionContext;
 };
 
 struct PEValidNumberDescription {
@@ -51,6 +51,10 @@ struct PEValidNumberDescription {
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures

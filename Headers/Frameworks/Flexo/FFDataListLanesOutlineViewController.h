@@ -10,7 +10,7 @@
 #import "NSOutlineViewDataSource.h"
 #import "NSOutlineViewDelegate.h"
 
-@class FFTimelineVisibleRectStateSaverRestorer, LKScrollView, NSOutlineView, NSString, NSTreeController, NSTreeNode;
+@class FFDataListLanesDataSource, FFTimelineVisibleRectStateSaverRestorer, LKScrollView, NSOutlineView, NSString, NSTreeController, NSTreeNode;
 
 __attribute__((visibility("hidden")))
 @interface FFDataListLanesOutlineViewController : NSViewController <FFDataListLanesOutlineViewDelegate, NSOutlineViewDelegate, NSOutlineViewDataSource>
@@ -18,7 +18,8 @@ __attribute__((visibility("hidden")))
     BOOL _dragInProgress;
     BOOL _inSimpleClipMode;
     BOOL _disableExpandCollapseOnReload;
-    id <FFDataListLanesDataSource> _timelineIndexDataSource;
+    _Bool _shouldRespondToSelectionChange;
+    FFDataListLanesDataSource *_timelineIndexDataSource;
     NSTreeNode *_draggedItem;
     NSOutlineView *_outlineView;
     NSTreeController *_treeController;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
     FFTimelineVisibleRectStateSaverRestorer *_visibleRectStateSaverRestorer;
 }
 
+@property(nonatomic) _Bool shouldRespondToSelectionChange; // @synthesize shouldRespondToSelectionChange=_shouldRespondToSelectionChange;
 @property(nonatomic) BOOL disableExpandCollapseOnReload; // @synthesize disableExpandCollapseOnReload=_disableExpandCollapseOnReload;
 @property(retain, nonatomic) FFTimelineVisibleRectStateSaverRestorer *visibleRectStateSaverRestorer; // @synthesize visibleRectStateSaverRestorer=_visibleRectStateSaverRestorer;
 @property(nonatomic) LKScrollView *scrollView; // @synthesize scrollView=_scrollView;
@@ -33,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) NSOutlineView *outlineView; // @synthesize outlineView=_outlineView;
 @property(retain, nonatomic) NSTreeNode *draggedItem; // @synthesize draggedItem=_draggedItem;
 @property(nonatomic) BOOL inSimpleClipMode; // @synthesize inSimpleClipMode=_inSimpleClipMode;
-@property(retain, nonatomic) id <FFDataListLanesDataSource> timelineIndexDataSource; // @synthesize timelineIndexDataSource=_timelineIndexDataSource;
+@property(retain, nonatomic) FFDataListLanesDataSource *timelineIndexDataSource; // @synthesize timelineIndexDataSource=_timelineIndexDataSource;
 - (void)_expandItemsForSimpleClipMode;
 - (void)_clearState:(int)arg1 forLaneAndSiblings:(id)arg2;
 - (void)_toggleState:(int)arg1 forLaneAndSiblings:(id)arg2 includeChildLanes:(BOOL)arg3;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (double)outlineView:(id)arg1 heightOfRowByItem:(id)arg2;
 - (id)outlineView:(id)arg1 viewForTableColumn:(id)arg2 item:(id)arg3;
 - (void)showsComponentsButtonClicked:(id)arg1;
+- (id)_expandableTreeNodesForClickedNode:(id)arg1 modifierFlags:(unsigned long long)arg2;
 - (void)enableButtonClicked:(id)arg1;
 - (void)arrangeButtonClicked:(id)arg1;
 - (void)focusButtonClicked:(id)arg1;
@@ -61,6 +64,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)_dragItem:(id)arg1 proposedItem:(id)arg2 proposedIndex:(long long)arg3 outlineView:(id)arg4 validateOnly:(BOOL)arg5;
 - (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
 - (id)_treeNodeCorrespondingToLane:(id)arg1;
+- (id)currentTimelineView;
+- (id)storyTimelinePresentation;
 - (void)viewDidDisappear;
 - (void)viewWillAppear;
 - (void)viewDidLoad;

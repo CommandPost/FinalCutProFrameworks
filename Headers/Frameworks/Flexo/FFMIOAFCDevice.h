@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class ICCameraDevice, NSArray, NSMutableArray, NSMutableSet, NSOperationQueue, NSString;
+@class ICCameraDevice, NSArray, NSMutableArray, NSMutableSet, NSOperationQueue, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMIOAFCDevice : NSObject
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _previousItemsCount;
     unsigned long long _previousCameraFilesCount;
     BOOL _finishedLoading;
+    NSSet *_radClipNames;
 }
 
 + (id)keyPathsForValuesAffectingPercentDone;
@@ -66,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (id)thumbnailCachePathForCameraFile:(id)arg1;
 - (void)appWillTerminate:(id)arg1;
 - (void)dealloc;
-- (id)initWithICCameraDevice:(id)arg1;
+- (id)initWithICCameraDevice:(id)arg1 radClipNames:(id)arg2;
 
 @end
 

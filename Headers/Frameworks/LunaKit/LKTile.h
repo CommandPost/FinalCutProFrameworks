@@ -78,8 +78,6 @@
 - (id)tileView;
 - (void)_validateViewIsInViewHeirarchy:(id *)arg1;
 - (void)awakeFromNib;
-- (oneway void)release;
-- (id)_autounbinder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

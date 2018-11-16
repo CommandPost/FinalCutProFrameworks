@@ -19,6 +19,7 @@
     NSButton *_dfrGetStartedButton;
     NSButton *_dfrContinueAndCloseButton;
     LKHyperlinkLabel *_legalLabel;
+    LKHyperlinkLabel *_featureListLabel;
     NSBox *_contentContainerView;
     NSView *_welcomeView;
     NSView *_whatsNewView;
@@ -36,21 +37,36 @@
     NSView *_theaterContainer;
     NSImageView *_appIconView;
     NSTextView *_whatsNewText;
+    NSStackView *_featureStackView;
     BOOL _isWelcome;
 }
 
++ (id)whatsNewFullURL;
++ (id)whatsNewStringsPrefix;
 + (id)licenseFormatString;
 + (id)licenseLinkString;
 + (id)licenseURL;
++ (id)whatsNewEntries;
++ (BOOL)_collectEntryForSubKey:(id)arg1 withPrefix:(id)arg2 fromTables:(id)arg3 ofBundle:(id)arg4 intoArray:(id)arg5;
++ (id)whatsNewFormatStrings:(id)arg1;
 + (id)whatsNewDetails;
-+ (long long)currentWhatsNewVersion;
-+ (long long)currentWelcomeVersion;
++ (id)_whatsNewOrderedTablesFromBundle:(id *)arg1 withKeyPrefix:(id *)arg2;
++ (BOOL)_collectStringForKey:(id)arg1 fromTables:(id)arg2 ofBundle:(id)arg3 intoArray:(id)arg4;
++ (id)_lookupStringForKey:(id)arg1 fromTables:(id)arg2 ofBundle:(id)arg3;
++ (id)whatsNewOrderedTablesFromBundle:(id *)arg1 withKeyPrefix:(id *)arg2;
 + (Class)mainWindowClass;
 + (void)displayWhatsNew;
 + (BOOL)displayWhatsNewOnce;
 + (BOOL)displayWelcomeOnce;
++ (BOOL)_testAndSetAppVersionDisplayedForKey:(id)arg1;
 + (id)whatsNewDetailsWithBulletedStrings:(id)arg1;
++ (double)whatsNewCustomParagraphSpacing;
++ (double)whatsNewCustomIndent;
++ (double)whatsNewCustomBulletBaseline;
++ (double)whatsNewCustomBulletFontSize;
++ (double)whatsNewCustomTextFontSize;
 + (id)attributedStringWithItems:(id)arg1 textFontSize:(double)arg2 bulletFontSize:(double)arg3 bulletBaseline:(double)arg4 indent:(double)arg5 paragraphSpacing:(double)arg6;
+@property NSStackView *featureStackView; // @synthesize featureStackView=_featureStackView;
 @property NSTextView *whatsNewText; // @synthesize whatsNewText=_whatsNewText;
 @property NSImageView *appIconView; // @synthesize appIconView=_appIconView;
 @property NSView *theaterContainer; // @synthesize theaterContainer=_theaterContainer;
@@ -68,6 +84,7 @@
 @property NSView *whatsNewView; // @synthesize whatsNewView=_whatsNewView;
 @property NSView *welcomeView; // @synthesize welcomeView=_welcomeView;
 @property NSBox *contentContainerView; // @synthesize contentContainerView=_contentContainerView;
+@property LKHyperlinkLabel *featureListLabel; // @synthesize featureListLabel=_featureListLabel;
 @property LKHyperlinkLabel *legalLabel; // @synthesize legalLabel=_legalLabel;
 @property LKButton *continueAndCloseButton; // @synthesize continueAndCloseButton=_continueAndCloseButton;
 @property LKButton *getStartedButton; // @synthesize getStartedButton=_getStartedButton;
@@ -94,6 +111,7 @@
 - (id)initWithWindow:(id)arg1;
 - (id)initWithIsWelcomeScreen:(BOOL)arg1;
 - (void)whatsNewViewSetup;
+- (void)setupFeaturesView;
 - (void)welcomeScreenViewSetup;
 
 @end

@@ -9,14 +9,14 @@
 @interface OZTimelineViewForViewer : OZTimelineView
 {
     struct PCTimeRange *_singleRange;
-    set_001ccea2 *_singleSelected;
+    set_ed6fc29a *_singleSelected;
 }
 
 - (BOOL)isSnappedAtTime:(CDStruct_1b6d18a9 *)arg1;
 - (void)setSnapped:(BOOL)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)findCommonSnaps:(vector_f7e3fd5f *)arg1;
 - (void)notifyOthersOfSelectionChange;
-- (void)getSelectedRoots:(struct OZChannelFolder *)arg1 rootList:(set_001ccea2 *)arg2;
+- (void)getSelectedRoots:(struct OZChannelFolder *)arg1 rootList:(set_ed6fc29a *)arg2;
 - (BOOL)isRootSelected:(struct OZChannelObjectRoot *)arg1;
 - (void)selectRoot:(struct OZChannelObjectRoot *)arg1 addToCurrent:(BOOL)arg2;
 - (void)clearSelection;

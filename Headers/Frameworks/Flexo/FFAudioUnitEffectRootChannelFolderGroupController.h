@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     FFInspectorAudioEffectsControllerManager *_effectsManager;
 }
 
+- (void)willTeardownUI;
 - (void)didBuildUI;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;

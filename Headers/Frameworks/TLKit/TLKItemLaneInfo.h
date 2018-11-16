@@ -32,7 +32,7 @@
 }
 
 @property(copy, nonatomic) NSArray *childLaneInfoRecords; // @synthesize childLaneInfoRecords=_childLaneInfoRecords;
-@property(retain, nonatomic) TLKItemLaneInfo *parentLaneInfo; // @synthesize parentLaneInfo=_parentLaneInfo;
+@property(nonatomic) TLKItemLaneInfo *parentLaneInfo; // @synthesize parentLaneInfo=_parentLaneInfo;
 @property(nonatomic) long long laneIndex; // @synthesize laneIndex=_laneIndex;
 @property(retain, nonatomic) TLKBoxMetrics *boxMetrics; // @synthesize boxMetrics=_boxMetrics;
 @property(copy, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;

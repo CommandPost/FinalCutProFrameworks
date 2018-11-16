@@ -12,7 +12,7 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_semaphore> *_semaphore;
-    struct FFProcrastinatedDispatch_t _dispatch;
+    struct PCProcrastinatedDispatch_t _dispatch;
     BOOL _validatePending;
 }
 

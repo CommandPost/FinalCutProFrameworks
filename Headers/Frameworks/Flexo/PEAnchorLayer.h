@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property(retain) FFRoleColorScheme *colorScheme; // @synthesize colorScheme=_colorScheme;
 - (void)updateAppearance;
+- (void)dealloc;
 
 @end
 

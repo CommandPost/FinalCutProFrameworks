@@ -30,6 +30,8 @@
     LKTextField *_audioPresetTextField;
     NSView *_rolesView;
     NSView *_roleOutputsView;
+    LKTextField *_projectionTypeTextField;
+    LKTextField *_projectionTypeLabelTextField;
 }
 
 + (id)keyPathsForValuesAffectingMultipassIndex;
@@ -40,6 +42,8 @@
 + (id)keyPathsForValuesAffectingAddAudioRoleOutputLabel;
 + (id)keyPathsForValuesAffectingAddVideoRoleOutputLabel;
 @property(nonatomic) BOOL replaceExistingRolePreset; // @synthesize replaceExistingRolePreset=_replaceExistingRolePreset;
+@property LKTextField *projectionTypeLabelTextField; // @synthesize projectionTypeLabelTextField=_projectionTypeLabelTextField;
+@property LKTextField *projectionTypeTextField; // @synthesize projectionTypeTextField=_projectionTypeTextField;
 @property(nonatomic) NSView *roleOutputsView; // @synthesize roleOutputsView=_roleOutputsView;
 @property(nonatomic) NSView *rolesView; // @synthesize rolesView=_rolesView;
 @property(nonatomic) LKTextField *audioPresetTextField; // @synthesize audioPresetTextField=_audioPresetTextField;
@@ -84,6 +88,7 @@
 - (void)updateIncludeChapter;
 - (void)updateAudioPresetsMenu;
 - (void)updateColorSpaceMenu;
+- (void)updateProjectionTypeFields;
 - (void)setDoesntFitWarning;
 - (id)_renderFormatForStompSetting:(id)arg1;
 - (void)updateVideoResolutionMenu;

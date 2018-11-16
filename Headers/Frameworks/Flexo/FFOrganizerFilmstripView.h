@@ -69,7 +69,7 @@ __attribute__((visibility("hidden")))
     NSView *_playheadInfoView;
     LKTextField *_playheadInfoTextField;
     NSView *_clipActionsPlaceholder;
-    struct FFProcrastinatedDispatch_t _playheadInfoDispatchContext;
+    struct PCProcrastinatedDispatch_t _playheadInfoDispatchContext;
     struct CGRect _actionWindowSize;
     BOOL _skimmingDelayActive;
     FFOrganizerFilmstripChunk *_skimmingDelayPrevChunk;
@@ -96,7 +96,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _keyDownHighlightStartTime;
     CDUnknownBlockType _keyDownHighlightCallbackBlock;
     CDStruct_1b6d18a9 _oppositeSelectionTime;
-    FigTimeRangeAndObject *_selectionRangeBeingExtended;
+    CDStruct_e83c9415 _selectionRangeBeingExtended;
     FigTimeRangeAndObject *_selectionAnchorPoint;
     FFAnchoredTimeMarker *_highlightedMarker;
     BOOL _restoredPersistentState;
@@ -115,9 +115,9 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_anchoredItemSnapTimes;
     FFOrganizerFilmstripChunk *_tooltipChunk;
     BOOL _hasTooltip;
-    struct FFProcrastinatedDispatch_t _procrastinatedUpdateUsedMediaRanges;
+    struct PCProcrastinatedDispatch_t _procrastinatedUpdateUsedMediaRanges;
     NSMapTable *_procrastinatedUsedMediaUpdateRangeMap;
-    struct FFProcrastinatedDispatch_t _procrastinatedReloadData;
+    struct PCProcrastinatedDispatch_t _procrastinatedReloadData;
     BOOL _invalidateUnfilteredItemsOnFocus;
     double _contentsScaleFactor;
     BOOL _keywordEditorIsKey;
@@ -138,7 +138,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FigTimeRangeAndObject *activePaintToolRO; // @synthesize activePaintToolRO=_activePaintToolRO;
 @property NSView *actionOptionsView; // @synthesize actionOptionsView=_actionOptionsView;
 @property(nonatomic) BOOL activeWhenModuleIsActive; // @synthesize activeWhenModuleIsActive=_activeWhenModuleIsActive;
-@property(nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
+@property(readonly, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 @property(nonatomic) BOOL currentlyMakingSelection; // @synthesize currentlyMakingSelection=_currentlyMakingSelection;
 @property(retain, nonatomic) FFOrganizerAbstractChunk *mouseOverChunk; // @synthesize mouseOverChunk=_mouseOverChunk;
 @property(retain, nonatomic) FFOrganizerFilmstripChunk *skimmingDelayPrevChunk; // @synthesize skimmingDelayPrevChunk=_skimmingDelayPrevChunk;
@@ -152,7 +152,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double frameDuration; // @synthesize frameDuration=_frameDuration;
 @property(nonatomic) double frameHeight; // @synthesize frameHeight=_frameHeight;
 @property(readonly, retain, nonatomic) FFOrganizerFilmstripViewLayout *filmstripViewLayout; // @synthesize filmstripViewLayout=_layout;
-@property(nonatomic) FFPlayerModule *playerModule; // @synthesize playerModule=_playerModule;
 @property(nonatomic) BOOL removingFromModule; // @synthesize removingFromModule=_removingFromModule;
 @property(nonatomic) BOOL skimming; // @synthesize skimming=_skimming;
 @property(nonatomic) BOOL analysis; // @synthesize analysis=_analysis;
@@ -243,6 +242,7 @@ __attribute__((visibility("hidden")))
 - (void)syncFilmstripBackground:(BOOL)arg1;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 @property(readonly, nonatomic) FFContext *context;
+@property(readonly, nonatomic) FFPlayerModule *playerModule; // @synthesize playerModule=_playerModule;
 - (void)displayPlayer;
 - (BOOL)_canDisplayPlayer;
 - (void)timeRateChangedForContext:(id)arg1;
@@ -357,7 +357,7 @@ __attribute__((visibility("hidden")))
 - (id)dragImageOfSize:(struct CGSize)arg1;
 - (void)_dragClipsOutOfOrganizer:(struct CGPoint)arg1 event:(id)arg2;
 - (void)_doneDragging:(int)arg1;
-- (struct CGPoint)_pointOfSelectionHandleClosestToPoint:(struct CGPoint)arg1 getOpositeSelectionTime:(CDStruct_1b6d18a9 *)arg2 rangeBeingExtended:(id *)arg3;
+- (struct CGPoint)_pointOfSelectionHandleClosestToPoint:(struct CGPoint)arg1 getOpositeSelectionTime:(CDStruct_1b6d18a9 *)arg2 rangeBeingExtended:(CDStruct_e83c9415 *)arg3;
 - (void)_moveClosestRangeSelectionHandleToPoint:(struct CGPoint)arg1;
 - (void)_updateDragSelectionBetweenPoint:(struct CGPoint)arg1 andPoint:(struct CGPoint)arg2 modifyExisting:(BOOL)arg3;
 - (void)_warpMouseToPoint:(struct CGPoint)arg1;
@@ -404,6 +404,7 @@ __attribute__((visibility("hidden")))
 - (void)notificationHandler:(id)arg1;
 - (void)_setAutoScrolling:(BOOL)arg1;
 - (void)activeToolDidChange:(id)arg1;
+- (void)_documentWasRemoved:(id)arg1;
 - (void)_moduleLayoutDidChange:(id)arg1;
 - (void)_playerDidExitFullScreen:(id)arg1;
 - (void)_playerWillEnterFullScreen:(id)arg1;
@@ -424,7 +425,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeActionPerformedNotificationObserver;
 - (void)_addActionPerformedNotificationObserver;
 - (void)rangeInvalidated:(id)arg1 forChunkContainer:(id)arg2 originalMedia:(id)arg3;
-- (void)_reloadIfInvalWillFilterDifferently:(id)arg1;
+- (BOOL)_reloadIfInvalWillFilterDifferently:(id)arg1;
 - (void)updateClipThumbnails;
 - (void)updateThumbnails;
 - (void)_eventProjectDataDidLoad:(id)arg1;
@@ -464,6 +465,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isImportFilmstripViewMode;
 - (BOOL)_isOrganizerFilmListViewMode;
 - (BOOL)_isOrganizerFilmstripViewMode;
+- (void)_unregisterObservers;
+- (void)_registerObservers;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

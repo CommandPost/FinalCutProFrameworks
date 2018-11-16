@@ -6,18 +6,20 @@
 
 #import <Flexo/FFOrganizerItem.h>
 
+#import "FFBackgroundTaskTarget.h"
 #import "FFOrganizerMasterItem.h"
 
 @class ICCameraDevice, NSArray, NSImage, NSMutableArray, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFMIOPTPDevice : FFOrganizerItem <FFOrganizerMasterItem>
+@interface FFMIOPTPDevice : FFOrganizerItem <FFOrganizerMasterItem, FFBackgroundTaskTarget>
 {
     ICCameraDevice *_cameraDevice;
     NSImage *_cameraDeviceIcon;
     NSMutableArray *_cameraFiles;
     NSMutableArray *_items;
     NSMutableArray *_displayedCameraFiles;
+    NSMutableArray *_scheduledCameraFiles;
     NSMutableArray *_cameraFilesToLoad;
     NSMutableSet *_downloadRequestsInQueue;
     long long _totalBytesProcessed;
@@ -29,6 +31,8 @@ __attribute__((visibility("hidden")))
 @property float percentDone; // @synthesize percentDone=_percentDone;
 @property(readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property(readonly) ICCameraDevice *cameraDevice; // @synthesize cameraDevice=_cameraDevice;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)updatePercentageDone;
 - (void)downloadRequestsRemovedFromQueue:(id)arg1;
 - (void)downloadRequestsAddedToQueue:(id)arg1;
@@ -54,6 +58,9 @@ __attribute__((visibility("hidden")))
 - (void)removeCameraFiles:(id)arg1;
 - (void)insertCameraFiles:(id)arg1 atIndexes:(id)arg2;
 - (void)itemsUpdated;
+- (BOOL)isThumbnailAvailableOnCameraFile:(id)arg1 save:(BOOL)arg2;
+- (void)finalizeAddClips:(id)arg1;
+- (void)loadCameraFiles:(id)arg1 onTask:(id)arg2;
 - (void)loadCameraFiles;
 - (id)thumbnailCachePathForCameraFile:(id)arg1;
 - (void)dealloc;

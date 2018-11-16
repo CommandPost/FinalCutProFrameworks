@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)draggingUpdated:(id)arg1;
 - (unsigned long long)draggingEntered:(id)arg1;
 - (void)_registerForDraggedTypes;
+- (void)dealloc;
 
 @end
 

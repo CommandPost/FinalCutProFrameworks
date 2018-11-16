@@ -32,8 +32,6 @@ struct ColorComponents {
     double _field2[5];
 };
 
-struct Entry;
-
 struct FFPMRSimpleTimer {
     unsigned long long _field1;
     unsigned char _field2;
@@ -50,30 +48,17 @@ struct GL {
 
 struct GLRenderer;
 
-struct HGBitmap;
+struct HGCVBitmap;
 
-struct HGGLContext;
+struct HGMetalTexture;
 
-struct HGNode;
-
-struct HGPixelBufferObj;
-
-struct HGRect {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
+struct HGRef<HGCVBitmap> {
+    struct HGCVBitmap *_field1;
 };
 
-struct HGRef<HGGLContext> {
-    struct HGGLContext *_field1;
+struct HGRef<HGMetalTexture> {
+    struct HGMetalTexture *_field1;
 };
-
-struct HGRenderJob;
-
-struct HGRenderQueue;
-
-struct HGRenderer;
 
 struct InfluenceCache;
 
@@ -210,6 +195,7 @@ struct OZChanFootageRef {
     _Bool _field23;
     _Bool _field24;
     _Bool _field25;
+    _Bool _field26;
 };
 
 struct OZChanRotoshapeRefWithPicker {
@@ -235,9 +221,9 @@ struct OZChanRotoshapeRefWithPicker {
     _Bool _field20;
     _Bool _field21;
     _Bool _field22;
-    struct list<PCUUID, std::__1::allocator<PCUUID>> *_field23;
-    struct list<PCUUID, std::__1::allocator<PCUUID>> _field24;
-    _Bool _field25;
+    _Bool _field23;
+    struct list<PCUUID, std::__1::allocator<PCUUID>> *_field24;
+    struct list<PCUUID, std::__1::allocator<PCUUID>> _field25;
     _Bool _field26;
     _Bool _field27;
     _Bool _field28;
@@ -247,6 +233,7 @@ struct OZChanRotoshapeRefWithPicker {
     _Bool _field32;
     _Bool _field33;
     _Bool _field34;
+    _Bool _field35;
 };
 
 struct OZChannel {
@@ -751,9 +738,10 @@ struct OZChannelImageForImageWithOptions {
     _Bool _field21;
     _Bool _field22;
     _Bool _field23;
-    struct OZChannel2D *_field24;
-    _Bool _field25;
-    struct OZChannelImageWithOptions *_field26;
+    _Bool _field24;
+    struct OZChannel2D *_field25;
+    _Bool _field26;
+    struct OZChannelImageWithOptions *_field27;
 };
 
 struct OZChannelImageWithOptions {
@@ -1307,37 +1295,9 @@ struct OZChannelUint32 {
     struct OZCurve *_field19;
 };
 
-struct OZChannelVaryingFolder {
-    CDUnknownFunctionPointerType *_field1;
-    struct OZFactory *_field2;
-    CDUnknownFunctionPointerType *_field3;
-    unsigned int _field4;
-    struct PCString _field5;
-    struct PCString *_field6;
-    struct OZChannelFolder *_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    void *_field10;
-    struct __CFString *_field11;
-    struct __CFString *_field12;
-    struct __CFString *_field13;
-    struct OZChannelTimeConverter *_field14;
-    vector_b71873ec *_field15;
-    unsigned int _field16;
-    unsigned int _field17;
-};
-
 struct OZCurve;
 
 struct OZCurveEditorState;
-
-struct OZCurveSetListSerializer {
-    CDUnknownFunctionPointerType *_field1;
-    struct vector<OZCurveSetSerializer *, std::__1::allocator<OZCurveSetSerializer *>> _field2;
-    unsigned int _field3;
-};
-
-struct OZCurveSetSerializer;
 
 struct OZDocument {
     CDUnknownFunctionPointerType *_field1;
@@ -1394,7 +1354,7 @@ struct OZElement {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::__1::allocator<OZEffect *>> _field15;
-    list_de2015bc _field16;
+    list_64b41211 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -1448,36 +1408,15 @@ struct OZElement {
     unsigned int _field67;
     unsigned int _field68;
     unsigned int _field69;
-    list_63a35edb _field70;
+    list_752fd9b9 _field70;
     struct OZChannelFolder _field71;
     struct OZChanFootageRef _field72;
     struct PCHash128 _field73;
     unsigned int _field74;
     unsigned int _field75;
-};
-
-struct OZExportSettings {
-    CDUnknownFunctionPointerType *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-    _Bool _field8;
-    int _field9;
-    int _field10;
-    _Bool _field11;
-    _Bool _field12;
-    _Bool _field13;
-    unsigned int _field14;
-    unsigned int _field15;
-    unsigned int _field16;
-    unsigned int _field17;
-    unsigned int _field18;
-    unsigned int _field19;
-    unsigned int _field20;
-    unsigned int _field21;
+    _Bool _field76;
+    struct shared_ptr<PGTexture> _field77;
+    struct HGRef<HGMetalTexture> _field78;
 };
 
 struct OZFactory;
@@ -1537,60 +1476,20 @@ struct OZFontCollection {
     struct map<PCString, OZFontFamily *, std::__1::less<PCString>, std::__1::allocator<std::__1::pair<const PCString, OZFontFamily *>>> _field3;
 };
 
-struct OZFontFace;
+struct OZFontFace {
+    CDUnknownFunctionPointerType *_field1;
+    struct PCString _field2;
+    int _field3;
+    struct OZFontFamily *_field4;
+};
+
+struct OZFontFamily {
+    struct PCString _field1;
+    struct PCString _field2;
+    struct vector<OZFontFace *, std::__1::allocator<OZFontFace *>> _field3;
+};
 
 struct OZGradientGroupShader;
-
-struct OZGroup;
-
-struct OZGuideSet {
-    CDUnknownFunctionPointerType *_field1;
-    struct __tree<OZGuide, std::__1::less<OZGuide>, std::__1::allocator<OZGuide>> {
-        struct __tree_node<OZGuide, void *> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<OZGuide, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::less<OZGuide>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field2;
-};
-
-struct OZHGRenderNode {
-    CDUnknownFunctionPointerType *_field1;
-    unsigned int _field2;
-    int _field3;
-    struct HGNode *_field4;
-    struct HGBitmap *_field5;
-    struct HGRect _field6;
-    int _field7;
-    _Bool _field8;
-    int _field9;
-    int _field10;
-    int _field11;
-    struct HGRef<HGGLContext> _field12;
-    _Bool _field13;
-    double _field14;
-    double _field15;
-    struct HGPixelBufferObj *_field16;
-    unsigned long long _field17;
-    void *_field18;
-    char *_field19;
-    CDUnknownFunctionPointerType _field20;
-    double _field21;
-    struct HGRenderer *_field22;
-    struct HGRenderJob *_field23;
-    struct HGRenderQueue *_field24;
-    struct OZRenderParams _field25;
-    CDStruct_198678f7 _field26;
-    struct PCHash128 _field27;
-    id _field28;
-    struct OZProcessControl _field29;
-    void *_field30;
-    _Bool _field31;
-    _Bool _field32;
-    unsigned long long _field33;
-};
 
 struct OZInspectorState;
 
@@ -1630,7 +1529,7 @@ struct OZLayeredMaterial {
 struct OZLibraryPresetsMap {
     CDUnknownFunctionPointerType *_field1;
     struct __tree<std::__1::__value_type<PCString, OZLibraryPresetsMapDatum>, std::__1::__map_value_compare<PCString, std::__1::__value_type<PCString, OZLibraryPresetsMapDatum>, std::__1::less<PCString>, true>, std::__1::allocator<std::__1::__value_type<PCString, OZLibraryPresetsMapDatum>>> {
-        struct __tree_node<std::__1::__value_type<PCString, OZLibraryPresetsMapDatum>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<PCString, OZLibraryPresetsMapDatum>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -1750,16 +1649,6 @@ struct OZMaterialLayersFolder {
     unsigned int _field17;
 };
 
-struct OZNodeMap {
-    unsigned int *_field1;
-    struct OZObjectManipulator **_field2;
-    int _field3;
-    int _field4;
-    unsigned int _field5;
-    struct OZObjectManipulator *_field6;
-    struct PCMutex _field7;
-};
-
 struct OZNotificationManager;
 
 struct OZObjectManipulator {
@@ -1775,34 +1664,14 @@ struct OZPasteList {
     _Bool _field4;
 };
 
-struct OZProcessControl {
-    CDUnknownFunctionPointerType *_field1;
-    struct PCAtomicValue _field2;
-    struct PCSemaphore *_field3;
-    struct PCMutex *_field4;
-    long long _field5;
-    CDUnknownFunctionPointerType _field6;
-    struct HGRenderer *_field7;
+struct OZPlaybackEngine {
+    int _field1;
+    int _field2;
 };
+
+struct OZProcessControl;
 
 struct OZProjectPanelState;
-
-struct OZPublishSettings {
-    CDUnknownFunctionPointerType *_field1;
-    struct vector<OZPublishSettings::Entry *, std::__1::allocator<OZPublishSettings::Entry *>> _field2;
-    struct OZChannelVaryingFolder _field3;
-    struct OZScene *_field4;
-    _Bool _field5;
-    _Bool _field6;
-    struct map<unsigned int, double, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, double>>> _field7;
-};
-
-struct OZRenderManager {
-    struct PCAtomicValue _field1;
-    struct GLRenderer *_field2;
-    id _field3;
-    unsigned int _field4;
-};
 
 struct OZRenderNode {
     CDUnknownFunctionPointerType *_field1;
@@ -1843,44 +1712,54 @@ struct OZRenderParams {
     struct PCRect<int> _field31;
     PCRect_b601f9f3 _field32;
     _Bool _field33;
-    struct CGColorSpace *_field34;
-    float _field35;
-    struct PCColorSpaceHandle _field36;
-    int _field37;
-    struct PCColorSpaceHandle _field38;
-    PCMatrix44Tmpl_93ed1289 _field39;
-    _Bool _field40;
-    id _field41;
-    id _field42;
-    CDStruct_198678f7 _field43;
-    struct map<unsigned int, HGRef<HGNode>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, HGRef<HGNode>>>> *_field44;
-    struct map<unsigned int, FFStreamVideo *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, FFStreamVideo *>>> *_field45;
-    struct map<unsigned int, CMTime, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, CMTime>>> _field46;
-    struct map<unsigned int, CMTime, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, CMTime>>> _field47;
-    double _field48;
-    id _field49;
-    CDStruct_198678f7 _field50;
-    CDStruct_198678f7 _field51;
-    CDStruct_198678f7 _field52;
-    CDStruct_198678f7 _field53;
-    CDStruct_198678f7 _field54;
-    _Bool _field55;
-    _Bool _field56;
-    _Bool _field57;
-    _Bool _field58;
-    struct shared_ptr<PCImage> _field59;
+    int _field34;
+    struct CGColorSpace *_field35;
+    float _field36;
+    struct PCColorSpaceHandle _field37;
+    int _field38;
+    struct PCColorSpaceHandle _field39;
+    PCMatrix44Tmpl_93ed1289 _field40;
+    _Bool _field41;
+    struct OZPlaybackEngine _field42;
+    id _field43;
+    id _field44;
+    CDStruct_198678f7 _field45;
+    struct map<unsigned int, HGRef<HGNode>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, HGRef<HGNode>>>> *_field46;
+    struct map<unsigned int, FFStreamVideo *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, FFStreamVideo *>>> *_field47;
+    struct map<unsigned int, CMTime, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, CMTime>>> _field48;
+    struct map<unsigned int, CMTime, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, CMTime>>> _field49;
+    struct map<unsigned int, PCRect<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCRect<double>>>> _field50;
+    struct map<unsigned int, unsigned int, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, unsigned int>>> _field51;
+    struct map<unsigned int, unsigned int, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, unsigned int>>> _field52;
+    double _field53;
+    id _field54;
+    CDStruct_198678f7 _field55;
+    CDStruct_198678f7 _field56;
+    CDStruct_198678f7 _field57;
+    CDStruct_198678f7 _field58;
+    CDStruct_198678f7 _field59;
     _Bool _field60;
     _Bool _field61;
-    struct PCPtr<OZRenderParams::SharedInfo> _field62;
-    double _field63;
-    double _field64;
+    _Bool _field62;
+    _Bool _field63;
+    struct shared_ptr<PCImage> _field64;
     _Bool _field65;
-    struct PCPtr<LiCamera> _field66;
-    _Bool _field67;
-    _Bool _field68;
-    struct LiRenderingTechnology _field69;
-    struct LiLightSet _field70;
-    _Bool _field71;
+    _Bool _field66;
+    struct PCPtr<OZRenderParams::SharedInfo> _field67;
+    double _field68;
+    double _field69;
+    _Bool _field70;
+    struct PCPtr<LiCamera> _field71;
+    struct PCPtr<LiCamera> _field72;
+    _Bool _field73;
+    _Bool _field74;
+    struct LiRenderingTechnology _field75;
+    struct LiLightSet _field76;
+    _Bool _field77;
+    struct HGRef<HGCVBitmap> _field78;
+    _Bool _field79;
+    _Bool _field80;
+    _Bool _field81;
 };
 
 struct OZRenderResult;
@@ -1911,59 +1790,15 @@ struct OZRenderState {
     _Bool _field23;
     _Bool _field24;
     _Bool _field25;
-    int _field26;
-    struct TransformSet _field27;
-    struct set<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *>> *_field28;
+    _Bool _field26;
+    int _field27;
+    struct TransformSet _field28;
+    struct set<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *>> *_field29;
 };
 
 struct OZRigWidget;
 
-struct OZScene {
-    CDUnknownFunctionPointerType *_field1;
-    CDUnknownFunctionPointerType *_field2;
-    struct PCHash128 _field3;
-    int _field4;
-    struct OZSceneSettings _field5;
-    struct OZExportSettings _field6;
-    struct OZPublishSettings _field7;
-    struct OZChannelObjectRoot _field8;
-    CDStruct_198678f7 _field9;
-    list_63a35edb _field10;
-    struct OZSceneNode *_field11;
-    struct OZGroup *_field12;
-    struct set<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *>> _field13;
-    struct map<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>>*, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>>*>>> _field14;
-    struct OZNodeMap _field15;
-    struct PCTimeRange _field16;
-    struct PCTimeRange _field17;
-    struct PCTimeRange _field18;
-    struct OZCurveSetListSerializer _field19;
-    struct OZRenderManager *_field20;
-    struct OZGuideSet _field21;
-    unsigned int _field22;
-    unsigned int _field23;
-    struct vector<OZObjectManipulator *, std::__1::allocator<OZObjectManipulator *>> _field24;
-    _Bool _field25;
-    _Bool _field26;
-    _Bool _field27;
-    _Bool _field28;
-    struct OZDocument *_field29;
-    unsigned int _field30;
-    struct PCHash128 _field31;
-    struct PCMutex _field32;
-    struct map<PCHash128, PCMutexRef, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCMutexRef>>> _field33;
-    struct PCSpinLock _field34;
-    struct list<OZCPPObserver *, std::__1::allocator<OZCPPObserver *>> _field35;
-    struct set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>> _field36;
-    _Bool _field37;
-    int _field38;
-    _Bool _field39;
-    unsigned int _field40;
-    int _field41;
-    struct vector<OZLockingGroup *, std::__1::allocator<OZLockingGroup *>> _field42;
-    struct PCRenderModel _field43;
-    struct PCMutex _field44;
-};
+struct OZScene;
 
 struct OZSceneNode {
     CDUnknownFunctionPointerType *_field1;
@@ -1981,54 +1816,13 @@ struct OZSceneNode {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::__1::allocator<OZEffect *>> _field15;
-    list_de2015bc _field16;
+    list_64b41211 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
     struct vector<unsigned int, std::__1::allocator<unsigned int>> _field20;
     struct __list_iterator<OZSceneNode *, void *> _field21;
     unsigned int _field22;
-};
-
-struct OZSceneSettings {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    int _field3;
-    unsigned int _field4;
-    _Bool _field5;
-    unsigned int _field6;
-    double _field7;
-    _Bool _field8;
-    unsigned int _field9;
-    double _field10;
-    int _field11;
-    int _field12;
-    struct PCColor _field13;
-    int _field14;
-    _Bool _field15;
-    unsigned int _field16;
-    unsigned int _field17;
-    double _field18;
-    _Bool _field19;
-    _Bool _field20;
-    double _field21;
-    int _field22;
-    struct PCString _field23;
-    unsigned int _field24;
-    unsigned int _field25;
-    double _field26;
-    unsigned int _field27;
-    unsigned int _field28;
-    unsigned int _field29;
-    _Bool _field30;
-    float _field31;
-    int _field32;
-    _Bool _field33;
-    int _field34;
-    _Bool _field35;
-    int _field36;
-    int _field37;
-    _Bool _field38;
 };
 
 struct OZSequenceSelection;
@@ -2083,10 +1877,6 @@ struct PCArray<unsigned long, PCArray_Traits<unsigned long>> {
     int _field2;
     int _field3;
     unsigned long long *_field4;
-};
-
-struct PCAtomicValue {
-    int _field1;
 };
 
 struct PCBitmap;
@@ -2221,23 +2011,14 @@ struct PCRecursiveMutex {
     struct _opaque_pthread_mutex_t _Mutex;
 };
 
-struct PCRenderModel {
-    int _field1;
-    struct PCColorSpaceHandle _field2;
-    float _field3;
-    struct PCColorSpaceHandle _field4;
-};
-
 struct PCSafeHandle;
-
-struct PCSemaphore;
 
 struct PCSharedCount {
     struct PC_Sp_counted_base *_pi;
 };
 
 struct PCSpinLock {
-    int _field1;
+    struct os_unfair_lock_s _field1;
 };
 
 struct PCString {
@@ -2291,6 +2072,8 @@ struct PCWeakCount {
 };
 
 struct PC_Sp_counted_base;
+
+struct PGTexture;
 
 struct POColor {
     float _x;
@@ -2443,28 +2226,7 @@ struct TXDiscontinuousSelection {
     struct vector<unsigned int, std::__1::allocator<unsigned int>> _charOffsets;
 };
 
-struct TXGlyphGroup;
-
-struct TXGlyphTransformInfo {
-    CDUnknownFunctionPointerType *_field1;
-    struct TXTextObject *_field2;
-    id _field3;
-    struct OZRenderState _field4;
-    id _field5;
-    _Bool _field6;
-};
-
-struct TXLayoutCallbackParams {
-    struct TXTextLayout *_field1;
-    unsigned int _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    PCRect_b601f9f3 _field5;
-    CDStruct_198678f7 _field6;
-    _Bool _field7;
-};
-
-struct TXNumberGenerator {
+struct TXFileLoadingGenerator {
     CDUnknownFunctionPointerType *_field1;
     struct PCRecursiveMutex _field2;
     struct OZLockingGroupMutex _field3;
@@ -2483,7 +2245,7 @@ struct TXNumberGenerator {
     struct OZSceneNode *_field16;
     struct OZScene *_field17;
     struct list<OZEffect *, std::__1::allocator<OZEffect *>> _field18;
-    list_de2015bc _field19;
+    list_64b41211 _field19;
     unsigned int _field20;
     double _field21;
     struct PCHash128 _field22;
@@ -2537,79 +2299,79 @@ struct TXNumberGenerator {
     unsigned int _field70;
     unsigned int _field71;
     unsigned int _field72;
-    list_63a35edb _field73;
+    list_752fd9b9 _field73;
     struct OZChannelFolder _field74;
     struct OZChanFootageRef _field75;
     struct PCHash128 _field76;
     unsigned int _field77;
     unsigned int _field78;
-    CDUnknownFunctionPointerType *_field79;
-    CDUnknownFunctionPointerType *_field80;
-    struct TXScrollToCharInfo _field81;
-    _Bool _field82;
-    _Bool _field83;
-    _Bool _field84;
-    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field85;
-    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field86;
-    struct TXChannelString _field87;
-    struct PCDynamicArray<unsigned short> _field88;
-    struct PCDynamicArray<double> _field89;
-    struct TXSelectionRange _field90;
-    unsigned long long _field91;
-    struct TXDiscontinuousSelection _field92;
-    _Bool _field93;
-    _Bool _field94;
-    _Bool _field95;
+    _Bool _field79;
+    struct shared_ptr<PGTexture> _field80;
+    struct HGRef<HGMetalTexture> _field81;
+    CDUnknownFunctionPointerType *_field82;
+    CDUnknownFunctionPointerType *_field83;
+    struct TXScrollToCharInfo _field84;
+    _Bool _field85;
+    _Bool _field86;
+    _Bool _field87;
+    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field88;
+    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field89;
+    struct TXChannelString _field90;
+    struct PCDynamicArray<unsigned short> _field91;
+    struct PCDynamicArray<double> _field92;
+    struct TXSelectionRange _field93;
+    unsigned long long _field94;
+    struct TXDiscontinuousSelection _field95;
     _Bool _field96;
     _Bool _field97;
-    unsigned long long _field98;
-    unsigned long long _field99;
+    _Bool _field98;
+    _Bool _field99;
     _Bool _field100;
-    _Bool _field101;
-    unsigned int _field102;
-    unsigned int _field103;
-    unsigned int _field104;
+    unsigned long long _field101;
+    unsigned long long _field102;
+    _Bool _field103;
+    _Bool _field104;
     unsigned int _field105;
-    list_2d8084dd _field106;
-    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field107;
-    _Bool _field108;
-    struct PCHash128 _field109;
-    struct PCHash128 _field110;
-    double _field111;
-    _Bool _field112;
-    struct OZChannelPercent _field113;
-    struct OZChannelDouble _field114;
-    struct OZChannelPercent _field115;
-    struct OZChannelBool _field116;
-    struct OZChannelEnum _field117;
-    struct OZChannelBool _field118;
-    struct OZChannelEnum _field119;
+    unsigned int _field106;
+    unsigned int _field107;
+    unsigned int _field108;
+    list_af8e95fb _field109;
+    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field110;
+    _Bool _field111;
+    struct PCHash128 _field112;
+    struct PCHash128 _field113;
+    double _field114;
+    _Bool _field115;
+    struct OZChannelPercent _field116;
+    struct OZChannelDouble _field117;
+    struct OZChannelPercent _field118;
+    struct OZChannelBool _field119;
     struct OZChannelEnum _field120;
-    struct TXChannelAlignment _field121;
+    struct OZChannelBool _field121;
     struct OZChannelEnum _field122;
     struct OZChannelEnum _field123;
-    struct OZChannelDouble _field124;
+    struct TXChannelAlignment _field124;
     struct OZChannelEnum _field125;
     struct OZChannelEnum _field126;
-    struct OZChannelPosition3D _field127;
-    struct OZChannelFolder _field128;
-    struct OZChannelPercent _field129;
-    struct OZChannelPercent _field130;
-    struct OZChannelBool _field131;
-    struct OZChannelDouble _field132;
-    struct OZChannelDouble _field133;
-    struct OZChannelDouble _field134;
+    struct OZChannelDouble _field127;
+    struct OZChannelEnum _field128;
+    struct OZChannelEnum _field129;
+    struct OZChannelPosition3D _field130;
+    struct OZChannelFolder _field131;
+    struct OZChannelPercent _field132;
+    struct OZChannelPercent _field133;
+    struct OZChannelBool _field134;
     struct OZChannelDouble _field135;
     struct OZChannelDouble _field136;
-    struct TXSequenceChannels _field137;
-    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field138;
-    PCRect_b601f9f3 _field139;
-    _Bool _field140;
-    _Bool _field141;
-    _Bool _field142;
-    double _field143;
-    double _field144;
-    double _field145;
+    struct OZChannelDouble _field137;
+    struct OZChannelDouble _field138;
+    struct OZChannelDouble _field139;
+    struct TXSequenceChannels _field140;
+    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field141;
+    PCRect_b601f9f3 _field142;
+    _Bool _field143;
+    _Bool _field144;
+    _Bool _field145;
     double _field146;
     double _field147;
     double _field148;
@@ -2619,124 +2381,424 @@ struct TXNumberGenerator {
     double _field152;
     double _field153;
     double _field154;
-    struct TXLayoutCallbackParams _field155;
-    struct OZSystemSimulator _field156;
-    _Bool _field157;
-    _Bool _field158;
-    _Bool _field159;
+    double _field155;
+    double _field156;
+    double _field157;
+    struct TXLayoutCallbackParams _field158;
+    struct OZSystemSimulator _field159;
     _Bool _field160;
     _Bool _field161;
-    unsigned int _field162;
-    struct OZChannelFolder _field163;
-    struct OZChannelPosition3D _field164;
-    struct OZChannelPosition3D _field165;
-    struct OZChannelEnum _field166;
-    struct OZChannelEnum _field167;
-    struct OZChannel2D _field168;
-    struct OZChannel2D _field169;
-    struct OZChannelPosition _field170;
-    struct OZChannelPosition _field171;
-    struct OZChannelDouble _field172;
-    struct OZChannelDouble _field173;
-    struct OZChannelAngle _field174;
+    _Bool _field162;
+    _Bool _field163;
+    _Bool _field164;
+    unsigned int _field165;
+    struct OZChannelFolder _field166;
+    struct OZChannelPosition3D _field167;
+    struct OZChannelPosition3D _field168;
+    struct OZChannelEnum _field169;
+    struct OZChannelEnum _field170;
+    struct OZChannel2D _field171;
+    struct OZChannel2D _field172;
+    struct OZChannelPosition _field173;
+    struct OZChannelPosition _field174;
     struct OZChannelDouble _field175;
-    struct OZChanRotoshapeRefWithPicker _field176;
-    struct OZChannelBool _field177;
-    struct OZChannelPercent _field178;
-    struct OZChannelBool _field179;
+    struct OZChannelDouble _field176;
+    struct OZChannelAngle _field177;
+    struct OZChannelDouble _field178;
+    struct OZChanRotoshapeRefWithPicker _field179;
     struct OZChannelBool _field180;
-    struct OZChannelBool _field181;
+    struct OZChannelPercent _field181;
     struct OZChannelBool _field182;
-    struct PCEvaluator _field183;
-    struct OZChannelFolder _field184;
-    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field185;
-    struct PCString _field186;
-    struct PCString _field187;
-    int _field188;
-    struct OZChannelFolder _field189;
-    PCRect_b601f9f3 _field190;
-    struct PCHash128 _field191;
-    PCBox_dd92ab54 _field192;
-    struct PCHash128 _field193;
-    int _field194;
-    int _field195;
-    struct OZChannelBool _field196;
-    struct OZChannelFolder _field197;
-    struct OZChannelBool _field198;
-    struct OZChannelDouble _field199;
-    unsigned int _field200;
-    double _field201;
-    struct PCRect<int> _field202;
-    struct PCHash128 _field203;
-    struct OZChannelFolder _field204;
-    struct OZChannelDouble _field205;
-    double _field206;
-    double _field207;
-    struct OZChannelBool _field208;
-    struct OZChannelBool _field209;
-    struct OZChannelDouble _field210;
-    unsigned int _field211;
-    struct OZChannelDouble _field212;
-    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field213;
-    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field214;
-    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field215;
-    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field216;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field217;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field218;
-    unsigned int _field219;
-    unsigned int _field220;
-    _Bool _field221;
-    _Bool _field222;
-    _Bool _field223;
+    struct OZChannelBool _field183;
+    struct OZChannelBool _field184;
+    struct OZChannelBool _field185;
+    struct PCEvaluator _field186;
+    struct OZChannelFolder _field187;
+    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field188;
+    struct PCString _field189;
+    struct PCString _field190;
+    int _field191;
+    struct OZChannelFolder _field192;
+    PCRect_b601f9f3 _field193;
+    struct PCHash128 _field194;
+    PCBox_dd92ab54 _field195;
+    struct PCHash128 _field196;
+    int _field197;
+    int _field198;
+    struct OZChannelBool _field199;
+    struct OZChannelFolder _field200;
+    struct OZChannelBool _field201;
+    struct OZChannelDouble _field202;
+    unsigned int _field203;
+    double _field204;
+    struct PCRect<int> _field205;
+    struct PCHash128 _field206;
+    struct OZChannelFolder _field207;
+    struct OZChannelDouble _field208;
+    double _field209;
+    double _field210;
+    struct OZChannelBool _field211;
+    struct OZChannelBool _field212;
+    struct OZChannelDouble _field213;
+    unsigned int _field214;
+    struct OZChannelDouble _field215;
+    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field216;
+    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field217;
+    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field218;
+    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field219;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field220;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field221;
+    unsigned int _field222;
+    unsigned int _field223;
     _Bool _field224;
-    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field225;
-    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field226;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field227;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field228;
-    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field229;
-    struct TXTimeGlyphPropertiesMap *_field230;
-    _Bool _field231;
-    struct OZChannelEnum _field232;
-    struct OZChannelDouble _field233;
-    double _field234;
-    double _field235;
-    struct PCHash128 _field236;
-    struct OZChannelBool _field237;
-    struct OZChannelColor _field238;
-    _Bool _field239;
-    int _field240;
-    _Bool _field241;
-    int _field242;
-    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field243;
+    _Bool _field225;
+    _Bool _field226;
+    _Bool _field227;
+    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field228;
+    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field229;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field230;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field231;
+    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field232;
+    struct TXTimeGlyphPropertiesMap *_field233;
+    _Bool _field234;
+    struct OZChannelEnum _field235;
+    struct OZChannelDouble _field236;
+    double _field237;
+    double _field238;
+    struct PCHash128 _field239;
+    struct OZChannelBool _field240;
+    struct OZChannelColor _field241;
+    _Bool _field242;
+    int _field243;
     _Bool _field244;
-    _Bool _field245;
-    _Bool _field246;
+    int _field245;
+    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field246;
     _Bool _field247;
-    struct FFPMRSimpleTimer _field248;
+    _Bool _field248;
     _Bool _field249;
     _Bool _field250;
-    vector_ced1dec3 _field251;
-    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field252;
-    double _field253;
-    int _field254;
-    struct OZValueCache<OZBoundsCacheItem> _field255;
-    _Bool _field256;
-    struct OZChannelFolder _field257;
-    struct OZChannelBool _field258;
-    struct OZChannelDouble _field259;
-    struct OZChannelDouble _field260;
-    struct OZChannelDouble _field261;
-    struct OZChannelEnum _field262;
-    struct OZChannelUint32 _field263;
-    struct OZChannelUint32 _field264;
-    struct OZChannelBool _field265;
+    struct FFPMRSimpleTimer _field251;
+    _Bool _field252;
+    _Bool _field253;
+    vector_ced1dec3 _field254;
+    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field255;
+    double _field256;
+    int _field257;
+    struct OZValueCache<OZBoundsCacheItem> _field258;
+    _Bool _field259;
+    double _field260;
+    double _field261;
+    struct vector<int, std::__1::allocator<int>> _field262;
+    _Bool _field263;
+    double _field264;
+    struct PCURL _field265;
+    struct PCURL _field266;
+    void *_field267;
+    _Bool _field268;
+};
+
+struct TXGlyphGroup;
+
+struct TXGlyphTransformInfo {
+    CDUnknownFunctionPointerType *_field1;
+    struct TXTextObject *_field2;
+    id _field3;
+    struct OZRenderState _field4;
+    id _field5;
+    _Bool _field6;
+};
+
+struct TXLayoutCallbackParams {
+    struct TXTextLayout *_field1;
+    unsigned int _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    PCRect_b601f9f3 _field5;
+    CDStruct_198678f7 _field6;
+    _Bool _field7;
+};
+
+struct TXNumberGenerator {
+    CDUnknownFunctionPointerType *_field1;
+    struct PCRecursiveMutex _field2;
+    struct OZLockingGroupMutex _field3;
+    CDUnknownFunctionPointerType *_field4;
+    struct OZFactory *_field5;
+    CDUnknownFunctionPointerType *_field6;
+    struct PCSafeHandle *_field7;
+    struct PCHash128 _field8;
+    CDUnknownFunctionPointerType *_field9;
+    struct OZChannelSceneNode _field10;
+    struct OZChannelFolder _field11;
+    struct OZChannelFolder _field12;
+    struct OZChannelFolder _field13;
+    struct OZChannelFolder _field14;
+    struct OZChannelFolder _field15;
+    struct OZSceneNode *_field16;
+    struct OZScene *_field17;
+    struct list<OZEffect *, std::__1::allocator<OZEffect *>> _field18;
+    list_64b41211 _field19;
+    unsigned int _field20;
+    double _field21;
+    struct PCHash128 _field22;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field23;
+    struct __list_iterator<OZSceneNode *, void *> _field24;
+    unsigned int _field25;
+    struct OZChannelFolder _field26;
+    struct OZChannelPosition3D _field27;
+    struct OZChannelRotation3D _field28;
+    struct OZChannelPosition3D _field29;
+    struct OZChannel3D _field30;
+    struct OZChannelScale3D _field31;
+    struct OZChannelShear _field32;
+    struct OZChannelPosition3D _field33;
+    double _field34;
+    unsigned int _field35;
+    struct OZChannelAngle _field36;
+    CDUnknownFunctionPointerType *_field37;
+    struct PCHash128 _field38;
+    struct OZChannelFolder _field39;
+    struct OZChannelPercent _field40;
+    struct OZChannelBlendMode _field41;
+    struct OZChannelFolder _field42;
+    struct OZChannelDouble _field43;
+    struct OZChannelPercent _field44;
+    struct OZChannelPercent _field45;
+    struct OZChannelEnum _field46;
+    struct OZChannelPercent _field47;
+    struct OZChannelBool _field48;
+    struct OZLightingFolder _field49;
+    struct OZFolderElementShadows _field50;
+    struct OZChannelFolder _field51;
+    struct OZChannelPercent _field52;
+    struct OZChannelDouble _field53;
+    struct OZChannelFolder _field54;
+    struct OZChannelDouble _field55;
+    struct OZChannelDouble _field56;
+    struct OZChannelDouble _field57;
+    struct OZChannelEnum _field58;
+    struct OZChannelEnum _field59;
+    struct OZChannelFolder _field60;
+    struct OZChannelColorNoAlpha _field61;
+    struct OZChannelPercent _field62;
+    struct OZChannelDouble _field63;
+    struct OZChannelDouble _field64;
+    struct OZChannelAngle _field65;
+    struct OZChannelBool _field66;
+    struct OZChannelQuad _field67;
+    struct OZChannelCrop _field68;
+    struct OZChannelFolder _field69;
+    unsigned int _field70;
+    unsigned int _field71;
+    unsigned int _field72;
+    list_752fd9b9 _field73;
+    struct OZChannelFolder _field74;
+    struct OZChanFootageRef _field75;
+    struct PCHash128 _field76;
+    unsigned int _field77;
+    unsigned int _field78;
+    _Bool _field79;
+    struct shared_ptr<PGTexture> _field80;
+    struct HGRef<HGMetalTexture> _field81;
+    CDUnknownFunctionPointerType *_field82;
+    CDUnknownFunctionPointerType *_field83;
+    struct TXScrollToCharInfo _field84;
+    _Bool _field85;
+    _Bool _field86;
+    _Bool _field87;
+    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field88;
+    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field89;
+    struct TXChannelString _field90;
+    struct PCDynamicArray<unsigned short> _field91;
+    struct PCDynamicArray<double> _field92;
+    struct TXSelectionRange _field93;
+    unsigned long long _field94;
+    struct TXDiscontinuousSelection _field95;
+    _Bool _field96;
+    _Bool _field97;
+    _Bool _field98;
+    _Bool _field99;
+    _Bool _field100;
+    unsigned long long _field101;
+    unsigned long long _field102;
+    _Bool _field103;
+    _Bool _field104;
+    unsigned int _field105;
+    unsigned int _field106;
+    unsigned int _field107;
+    unsigned int _field108;
+    list_af8e95fb _field109;
+    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field110;
+    _Bool _field111;
+    struct PCHash128 _field112;
+    struct PCHash128 _field113;
+    double _field114;
+    _Bool _field115;
+    struct OZChannelPercent _field116;
+    struct OZChannelDouble _field117;
+    struct OZChannelPercent _field118;
+    struct OZChannelBool _field119;
+    struct OZChannelEnum _field120;
+    struct OZChannelBool _field121;
+    struct OZChannelEnum _field122;
+    struct OZChannelEnum _field123;
+    struct TXChannelAlignment _field124;
+    struct OZChannelEnum _field125;
+    struct OZChannelEnum _field126;
+    struct OZChannelDouble _field127;
+    struct OZChannelEnum _field128;
+    struct OZChannelEnum _field129;
+    struct OZChannelPosition3D _field130;
+    struct OZChannelFolder _field131;
+    struct OZChannelPercent _field132;
+    struct OZChannelPercent _field133;
+    struct OZChannelBool _field134;
+    struct OZChannelDouble _field135;
+    struct OZChannelDouble _field136;
+    struct OZChannelDouble _field137;
+    struct OZChannelDouble _field138;
+    struct OZChannelDouble _field139;
+    struct TXSequenceChannels _field140;
+    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field141;
+    PCRect_b601f9f3 _field142;
+    _Bool _field143;
+    _Bool _field144;
+    _Bool _field145;
+    double _field146;
+    double _field147;
+    double _field148;
+    double _field149;
+    double _field150;
+    double _field151;
+    double _field152;
+    double _field153;
+    double _field154;
+    double _field155;
+    double _field156;
+    double _field157;
+    struct TXLayoutCallbackParams _field158;
+    struct OZSystemSimulator _field159;
+    _Bool _field160;
+    _Bool _field161;
+    _Bool _field162;
+    _Bool _field163;
+    _Bool _field164;
+    unsigned int _field165;
+    struct OZChannelFolder _field166;
+    struct OZChannelPosition3D _field167;
+    struct OZChannelPosition3D _field168;
+    struct OZChannelEnum _field169;
+    struct OZChannelEnum _field170;
+    struct OZChannel2D _field171;
+    struct OZChannel2D _field172;
+    struct OZChannelPosition _field173;
+    struct OZChannelPosition _field174;
+    struct OZChannelDouble _field175;
+    struct OZChannelDouble _field176;
+    struct OZChannelAngle _field177;
+    struct OZChannelDouble _field178;
+    struct OZChanRotoshapeRefWithPicker _field179;
+    struct OZChannelBool _field180;
+    struct OZChannelPercent _field181;
+    struct OZChannelBool _field182;
+    struct OZChannelBool _field183;
+    struct OZChannelBool _field184;
+    struct OZChannelBool _field185;
+    struct PCEvaluator _field186;
+    struct OZChannelFolder _field187;
+    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field188;
+    struct PCString _field189;
+    struct PCString _field190;
+    int _field191;
+    struct OZChannelFolder _field192;
+    PCRect_b601f9f3 _field193;
+    struct PCHash128 _field194;
+    PCBox_dd92ab54 _field195;
+    struct PCHash128 _field196;
+    int _field197;
+    int _field198;
+    struct OZChannelBool _field199;
+    struct OZChannelFolder _field200;
+    struct OZChannelBool _field201;
+    struct OZChannelDouble _field202;
+    unsigned int _field203;
+    double _field204;
+    struct PCRect<int> _field205;
+    struct PCHash128 _field206;
+    struct OZChannelFolder _field207;
+    struct OZChannelDouble _field208;
+    double _field209;
+    double _field210;
+    struct OZChannelBool _field211;
+    struct OZChannelBool _field212;
+    struct OZChannelDouble _field213;
+    unsigned int _field214;
+    struct OZChannelDouble _field215;
+    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field216;
+    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field217;
+    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field218;
+    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field219;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field220;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field221;
+    unsigned int _field222;
+    unsigned int _field223;
+    _Bool _field224;
+    _Bool _field225;
+    _Bool _field226;
+    _Bool _field227;
+    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field228;
+    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field229;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field230;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field231;
+    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field232;
+    struct TXTimeGlyphPropertiesMap *_field233;
+    _Bool _field234;
+    struct OZChannelEnum _field235;
+    struct OZChannelDouble _field236;
+    double _field237;
+    double _field238;
+    struct PCHash128 _field239;
+    struct OZChannelBool _field240;
+    struct OZChannelColor _field241;
+    _Bool _field242;
+    int _field243;
+    _Bool _field244;
+    int _field245;
+    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field246;
+    _Bool _field247;
+    _Bool _field248;
+    _Bool _field249;
+    _Bool _field250;
+    struct FFPMRSimpleTimer _field251;
+    _Bool _field252;
+    _Bool _field253;
+    vector_ced1dec3 _field254;
+    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field255;
+    double _field256;
+    int _field257;
+    struct OZValueCache<OZBoundsCacheItem> _field258;
+    _Bool _field259;
+    double _field260;
+    double _field261;
+    struct vector<int, std::__1::allocator<int>> _field262;
+    _Bool _field263;
+    double _field264;
+    struct OZChannelFolder _field265;
     struct OZChannelBool _field266;
-    struct OZChannelBool _field267;
-    struct OZChannelSeed _field268;
-    struct OZChannelUint32 _field269;
-    id _field270;
-    id _field271;
-    _Bool _field272;
+    struct OZChannelDouble _field267;
+    struct OZChannelDouble _field268;
+    struct OZChannelDouble _field269;
+    struct OZChannelEnum _field270;
+    struct OZChannelUint32 _field271;
+    struct OZChannelUint32 _field272;
+    struct OZChannelBool _field273;
+    struct OZChannelBool _field274;
+    struct OZChannelBool _field275;
+    struct OZChannelSeed _field276;
+    struct OZChannelUint32 _field277;
+    id _field278;
+    id _field279;
+    _Bool _field280;
 };
 
 struct TXParagraphStyle {
@@ -2833,57 +2895,59 @@ struct TXSequenceBehavior {
     _Bool _field17;
     struct list<OZChanObjectManipRef *, std::__1::allocator<OZChanObjectManipRef *>> _field18;
     CDUnknownFunctionPointerType *_field19;
-    struct vector<TXSequenceBehavior::InfluenceCache *, std::__1::allocator<TXSequenceBehavior::InfluenceCache *>> _field20;
-    _Bool _field21;
-    CDStruct_198678f7 _field22;
-    _Bool _field23;
+    CDUnknownFunctionPointerType *_field20;
+    struct PCRecursiveMutex _field21;
+    struct OZLockingGroupMutex _field22;
+    struct vector<TXSequenceBehavior::InfluenceCache *, std::__1::allocator<TXSequenceBehavior::InfluenceCache *>> _field23;
     _Bool _field24;
-    struct vector<OZSequenceSelection, std::__1::allocator<OZSequenceSelection>> _field25;
+    CDStruct_198678f7 _field25;
     _Bool _field26;
-    unsigned int _field27;
-    struct TXTextLayout *_field28;
-    struct TXSequenceChannels _field29;
-    struct OZChannelFolder _field30;
-    struct OZChannelEnum _field31;
-    struct OZChannelEnum _field32;
-    struct OZChannelPercent _field33;
-    struct OZChannelPercent _field34;
-    struct OZChannelFolder _field35;
-    struct OZChannelEnum _field36;
-    struct OZChannelUint32 _field37;
-    struct OZChannelUint32 _field38;
-    struct OZChannelBool _field39;
-    struct OZChannelBool _field40;
-    struct OZChannelDouble _field41;
-    struct OZChannelEnum _field42;
-    struct OZChannelSeed _field43;
-    struct OZChannelEnum _field44;
-    struct OZChannelPercent _field45;
-    struct OZChannelDouble _field46;
+    _Bool _field27;
+    struct vector<OZSequenceSelection, std::__1::allocator<OZSequenceSelection>> _field28;
+    _Bool _field29;
+    unsigned int _field30;
+    struct TXTextLayout *_field31;
+    struct TXSequenceChannels _field32;
+    struct OZChannelFolder _field33;
+    struct OZChannelEnum _field34;
+    struct OZChannelEnum _field35;
+    struct OZChannelPercent _field36;
+    struct OZChannelPercent _field37;
+    struct OZChannelFolder _field38;
+    struct OZChannelEnum _field39;
+    struct OZChannelUint32 _field40;
+    struct OZChannelUint32 _field41;
+    struct OZChannelBool _field42;
+    struct OZChannelBool _field43;
+    struct OZChannelDouble _field44;
+    struct OZChannelEnum _field45;
+    struct OZChannelSeed _field46;
     struct OZChannelEnum _field47;
-    struct OZChannelUint32 _field48;
-    struct OZChannelEnum _field49;
-    struct OZChannelUint32 _field50;
-    struct OZChannelFolder _field51;
-    struct OZChannelPercent _field52;
-    struct OZChannelPercent _field53;
-    struct OZChannelPercent _field54;
-    struct OZChannelDouble _field55;
-    struct OZChannelDouble _field56;
-    struct OZChannelEnum _field57;
-    struct OZChannelSeed _field58;
-    struct OZChannelBool _field59;
-    struct OZChannelPercent _field60;
-    struct OZChannelEnum _field61;
-    struct OZChannelEnum _field62;
-    struct OZChannelBool _field63;
-    struct OZChannelBool _field64;
-    unsigned int *_field65;
-    unsigned int _field66;
-    unsigned int _field67;
-    struct PCMutex _field68;
-    _Bool _field69;
-    _Bool _field70;
+    struct OZChannelPercent _field48;
+    struct OZChannelDouble _field49;
+    struct OZChannelEnum _field50;
+    struct OZChannelUint32 _field51;
+    struct OZChannelEnum _field52;
+    struct OZChannelUint32 _field53;
+    struct OZChannelFolder _field54;
+    struct OZChannelPercent _field55;
+    struct OZChannelPercent _field56;
+    struct OZChannelPercent _field57;
+    struct OZChannelDouble _field58;
+    struct OZChannelDouble _field59;
+    struct OZChannelEnum _field60;
+    struct OZChannelSeed _field61;
+    struct OZChannelBool _field62;
+    struct OZChannelPercent _field63;
+    struct OZChannelEnum _field64;
+    struct OZChannelEnum _field65;
+    struct OZChannelBool _field66;
+    struct OZChannelBool _field67;
+    unsigned int *_field68;
+    unsigned int _field69;
+    unsigned int _field70;
+    _Bool _field71;
+    _Bool _field72;
 };
 
 struct TXSequenceChannels {
@@ -2989,7 +3053,7 @@ struct TXTextFromFileGenerator {
     struct OZSceneNode *_field16;
     struct OZScene *_field17;
     struct list<OZEffect *, std::__1::allocator<OZEffect *>> _field18;
-    list_de2015bc _field19;
+    list_64b41211 _field19;
     unsigned int _field20;
     double _field21;
     struct PCHash128 _field22;
@@ -3043,79 +3107,79 @@ struct TXTextFromFileGenerator {
     unsigned int _field70;
     unsigned int _field71;
     unsigned int _field72;
-    list_63a35edb _field73;
+    list_752fd9b9 _field73;
     struct OZChannelFolder _field74;
     struct OZChanFootageRef _field75;
     struct PCHash128 _field76;
     unsigned int _field77;
     unsigned int _field78;
-    CDUnknownFunctionPointerType *_field79;
-    CDUnknownFunctionPointerType *_field80;
-    struct TXScrollToCharInfo _field81;
-    _Bool _field82;
-    _Bool _field83;
-    _Bool _field84;
-    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field85;
-    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field86;
-    struct TXChannelString _field87;
-    struct PCDynamicArray<unsigned short> _field88;
-    struct PCDynamicArray<double> _field89;
-    struct TXSelectionRange _field90;
-    unsigned long long _field91;
-    struct TXDiscontinuousSelection _field92;
-    _Bool _field93;
-    _Bool _field94;
-    _Bool _field95;
+    _Bool _field79;
+    struct shared_ptr<PGTexture> _field80;
+    struct HGRef<HGMetalTexture> _field81;
+    CDUnknownFunctionPointerType *_field82;
+    CDUnknownFunctionPointerType *_field83;
+    struct TXScrollToCharInfo _field84;
+    _Bool _field85;
+    _Bool _field86;
+    _Bool _field87;
+    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field88;
+    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field89;
+    struct TXChannelString _field90;
+    struct PCDynamicArray<unsigned short> _field91;
+    struct PCDynamicArray<double> _field92;
+    struct TXSelectionRange _field93;
+    unsigned long long _field94;
+    struct TXDiscontinuousSelection _field95;
     _Bool _field96;
     _Bool _field97;
-    unsigned long long _field98;
-    unsigned long long _field99;
+    _Bool _field98;
+    _Bool _field99;
     _Bool _field100;
-    _Bool _field101;
-    unsigned int _field102;
-    unsigned int _field103;
-    unsigned int _field104;
+    unsigned long long _field101;
+    unsigned long long _field102;
+    _Bool _field103;
+    _Bool _field104;
     unsigned int _field105;
-    list_2d8084dd _field106;
-    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field107;
-    _Bool _field108;
-    struct PCHash128 _field109;
-    struct PCHash128 _field110;
-    double _field111;
-    _Bool _field112;
-    struct OZChannelPercent _field113;
-    struct OZChannelDouble _field114;
-    struct OZChannelPercent _field115;
-    struct OZChannelBool _field116;
-    struct OZChannelEnum _field117;
-    struct OZChannelBool _field118;
-    struct OZChannelEnum _field119;
+    unsigned int _field106;
+    unsigned int _field107;
+    unsigned int _field108;
+    list_af8e95fb _field109;
+    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field110;
+    _Bool _field111;
+    struct PCHash128 _field112;
+    struct PCHash128 _field113;
+    double _field114;
+    _Bool _field115;
+    struct OZChannelPercent _field116;
+    struct OZChannelDouble _field117;
+    struct OZChannelPercent _field118;
+    struct OZChannelBool _field119;
     struct OZChannelEnum _field120;
-    struct TXChannelAlignment _field121;
+    struct OZChannelBool _field121;
     struct OZChannelEnum _field122;
     struct OZChannelEnum _field123;
-    struct OZChannelDouble _field124;
+    struct TXChannelAlignment _field124;
     struct OZChannelEnum _field125;
     struct OZChannelEnum _field126;
-    struct OZChannelPosition3D _field127;
-    struct OZChannelFolder _field128;
-    struct OZChannelPercent _field129;
-    struct OZChannelPercent _field130;
-    struct OZChannelBool _field131;
-    struct OZChannelDouble _field132;
-    struct OZChannelDouble _field133;
-    struct OZChannelDouble _field134;
+    struct OZChannelDouble _field127;
+    struct OZChannelEnum _field128;
+    struct OZChannelEnum _field129;
+    struct OZChannelPosition3D _field130;
+    struct OZChannelFolder _field131;
+    struct OZChannelPercent _field132;
+    struct OZChannelPercent _field133;
+    struct OZChannelBool _field134;
     struct OZChannelDouble _field135;
     struct OZChannelDouble _field136;
-    struct TXSequenceChannels _field137;
-    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field138;
-    PCRect_b601f9f3 _field139;
-    _Bool _field140;
-    _Bool _field141;
-    _Bool _field142;
-    double _field143;
-    double _field144;
-    double _field145;
+    struct OZChannelDouble _field137;
+    struct OZChannelDouble _field138;
+    struct OZChannelDouble _field139;
+    struct TXSequenceChannels _field140;
+    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field141;
+    PCRect_b601f9f3 _field142;
+    _Bool _field143;
+    _Bool _field144;
+    _Bool _field145;
     double _field146;
     double _field147;
     double _field148;
@@ -3125,120 +3189,128 @@ struct TXTextFromFileGenerator {
     double _field152;
     double _field153;
     double _field154;
-    struct TXLayoutCallbackParams _field155;
-    struct OZSystemSimulator _field156;
-    _Bool _field157;
-    _Bool _field158;
-    _Bool _field159;
+    double _field155;
+    double _field156;
+    double _field157;
+    struct TXLayoutCallbackParams _field158;
+    struct OZSystemSimulator _field159;
     _Bool _field160;
     _Bool _field161;
-    unsigned int _field162;
-    struct OZChannelFolder _field163;
-    struct OZChannelPosition3D _field164;
-    struct OZChannelPosition3D _field165;
-    struct OZChannelEnum _field166;
-    struct OZChannelEnum _field167;
-    struct OZChannel2D _field168;
-    struct OZChannel2D _field169;
-    struct OZChannelPosition _field170;
-    struct OZChannelPosition _field171;
-    struct OZChannelDouble _field172;
-    struct OZChannelDouble _field173;
-    struct OZChannelAngle _field174;
+    _Bool _field162;
+    _Bool _field163;
+    _Bool _field164;
+    unsigned int _field165;
+    struct OZChannelFolder _field166;
+    struct OZChannelPosition3D _field167;
+    struct OZChannelPosition3D _field168;
+    struct OZChannelEnum _field169;
+    struct OZChannelEnum _field170;
+    struct OZChannel2D _field171;
+    struct OZChannel2D _field172;
+    struct OZChannelPosition _field173;
+    struct OZChannelPosition _field174;
     struct OZChannelDouble _field175;
-    struct OZChanRotoshapeRefWithPicker _field176;
-    struct OZChannelBool _field177;
-    struct OZChannelPercent _field178;
-    struct OZChannelBool _field179;
+    struct OZChannelDouble _field176;
+    struct OZChannelAngle _field177;
+    struct OZChannelDouble _field178;
+    struct OZChanRotoshapeRefWithPicker _field179;
     struct OZChannelBool _field180;
-    struct OZChannelBool _field181;
+    struct OZChannelPercent _field181;
     struct OZChannelBool _field182;
-    struct PCEvaluator _field183;
-    struct OZChannelFolder _field184;
-    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field185;
-    struct PCString _field186;
-    struct PCString _field187;
-    int _field188;
-    struct OZChannelFolder _field189;
-    PCRect_b601f9f3 _field190;
-    struct PCHash128 _field191;
-    PCBox_dd92ab54 _field192;
-    struct PCHash128 _field193;
-    int _field194;
-    int _field195;
-    struct OZChannelBool _field196;
-    struct OZChannelFolder _field197;
-    struct OZChannelBool _field198;
-    struct OZChannelDouble _field199;
-    unsigned int _field200;
-    double _field201;
-    struct PCRect<int> _field202;
-    struct PCHash128 _field203;
-    struct OZChannelFolder _field204;
-    struct OZChannelDouble _field205;
-    double _field206;
-    double _field207;
-    struct OZChannelBool _field208;
-    struct OZChannelBool _field209;
-    struct OZChannelDouble _field210;
-    unsigned int _field211;
-    struct OZChannelDouble _field212;
-    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field213;
-    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field214;
-    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field215;
-    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field216;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field217;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field218;
-    unsigned int _field219;
-    unsigned int _field220;
-    _Bool _field221;
-    _Bool _field222;
-    _Bool _field223;
+    struct OZChannelBool _field183;
+    struct OZChannelBool _field184;
+    struct OZChannelBool _field185;
+    struct PCEvaluator _field186;
+    struct OZChannelFolder _field187;
+    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field188;
+    struct PCString _field189;
+    struct PCString _field190;
+    int _field191;
+    struct OZChannelFolder _field192;
+    PCRect_b601f9f3 _field193;
+    struct PCHash128 _field194;
+    PCBox_dd92ab54 _field195;
+    struct PCHash128 _field196;
+    int _field197;
+    int _field198;
+    struct OZChannelBool _field199;
+    struct OZChannelFolder _field200;
+    struct OZChannelBool _field201;
+    struct OZChannelDouble _field202;
+    unsigned int _field203;
+    double _field204;
+    struct PCRect<int> _field205;
+    struct PCHash128 _field206;
+    struct OZChannelFolder _field207;
+    struct OZChannelDouble _field208;
+    double _field209;
+    double _field210;
+    struct OZChannelBool _field211;
+    struct OZChannelBool _field212;
+    struct OZChannelDouble _field213;
+    unsigned int _field214;
+    struct OZChannelDouble _field215;
+    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field216;
+    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field217;
+    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field218;
+    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field219;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field220;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field221;
+    unsigned int _field222;
+    unsigned int _field223;
     _Bool _field224;
-    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field225;
-    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field226;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field227;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field228;
-    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field229;
-    struct TXTimeGlyphPropertiesMap *_field230;
-    _Bool _field231;
-    struct OZChannelEnum _field232;
-    struct OZChannelDouble _field233;
-    double _field234;
-    double _field235;
-    struct PCHash128 _field236;
-    struct OZChannelBool _field237;
-    struct OZChannelColor _field238;
-    _Bool _field239;
-    int _field240;
-    _Bool _field241;
-    int _field242;
-    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field243;
+    _Bool _field225;
+    _Bool _field226;
+    _Bool _field227;
+    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field228;
+    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field229;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field230;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field231;
+    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field232;
+    struct TXTimeGlyphPropertiesMap *_field233;
+    _Bool _field234;
+    struct OZChannelEnum _field235;
+    struct OZChannelDouble _field236;
+    double _field237;
+    double _field238;
+    struct PCHash128 _field239;
+    struct OZChannelBool _field240;
+    struct OZChannelColor _field241;
+    _Bool _field242;
+    int _field243;
     _Bool _field244;
-    _Bool _field245;
-    _Bool _field246;
+    int _field245;
+    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field246;
     _Bool _field247;
-    struct FFPMRSimpleTimer _field248;
+    _Bool _field248;
     _Bool _field249;
     _Bool _field250;
-    vector_ced1dec3 _field251;
-    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field252;
-    double _field253;
-    int _field254;
-    struct OZValueCache<OZBoundsCacheItem> _field255;
-    _Bool _field256;
-    struct vector<PCString *, std::__1::allocator<PCString *>> _field257;
-    struct PCURL _field258;
-    struct PCURL _field259;
-    void *_field260;
-    _Bool _field261;
-    _Bool _field262;
-    struct OZChannelFolder _field263;
-    struct OZChannelEnum _field264;
-    struct OZChannelPercent _field265;
-    struct OZChannelBool _field266;
-    struct OZChannelSeed _field267;
-    struct OZChannelBool _field268;
+    struct FFPMRSimpleTimer _field251;
+    _Bool _field252;
+    _Bool _field253;
+    vector_ced1dec3 _field254;
+    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field255;
+    double _field256;
+    int _field257;
+    struct OZValueCache<OZBoundsCacheItem> _field258;
+    _Bool _field259;
+    double _field260;
+    double _field261;
+    struct vector<int, std::__1::allocator<int>> _field262;
+    _Bool _field263;
+    double _field264;
+    struct PCURL _field265;
+    struct PCURL _field266;
+    void *_field267;
+    _Bool _field268;
+    struct vector<PCString *, std::__1::allocator<PCString *>> _field269;
+    _Bool _field270;
+    struct OZChannelFolder _field271;
+    struct OZChannelEnum _field272;
+    struct OZChannelPercent _field273;
+    struct OZChannelBool _field274;
+    struct OZChannelSeed _field275;
+    struct OZChannelBool _field276;
 };
 
 struct TXTextGenerator {
@@ -3260,7 +3332,7 @@ struct TXTextGenerator {
     struct OZSceneNode *_field16;
     struct OZScene *_field17;
     struct list<OZEffect *, std::__1::allocator<OZEffect *>> _field18;
-    list_de2015bc _field19;
+    list_64b41211 _field19;
     unsigned int _field20;
     double _field21;
     struct PCHash128 _field22;
@@ -3314,79 +3386,79 @@ struct TXTextGenerator {
     unsigned int _field70;
     unsigned int _field71;
     unsigned int _field72;
-    list_63a35edb _field73;
+    list_752fd9b9 _field73;
     struct OZChannelFolder _field74;
     struct OZChanFootageRef _field75;
     struct PCHash128 _field76;
     unsigned int _field77;
     unsigned int _field78;
-    CDUnknownFunctionPointerType *_field79;
-    CDUnknownFunctionPointerType *_field80;
-    struct TXScrollToCharInfo _field81;
-    _Bool _field82;
-    _Bool _field83;
-    _Bool _field84;
-    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field85;
-    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field86;
-    struct TXChannelString _field87;
-    struct PCDynamicArray<unsigned short> _field88;
-    struct PCDynamicArray<double> _field89;
-    struct TXSelectionRange _field90;
-    unsigned long long _field91;
-    struct TXDiscontinuousSelection _field92;
-    _Bool _field93;
-    _Bool _field94;
-    _Bool _field95;
+    _Bool _field79;
+    struct shared_ptr<PGTexture> _field80;
+    struct HGRef<HGMetalTexture> _field81;
+    CDUnknownFunctionPointerType *_field82;
+    CDUnknownFunctionPointerType *_field83;
+    struct TXScrollToCharInfo _field84;
+    _Bool _field85;
+    _Bool _field86;
+    _Bool _field87;
+    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field88;
+    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field89;
+    struct TXChannelString _field90;
+    struct PCDynamicArray<unsigned short> _field91;
+    struct PCDynamicArray<double> _field92;
+    struct TXSelectionRange _field93;
+    unsigned long long _field94;
+    struct TXDiscontinuousSelection _field95;
     _Bool _field96;
     _Bool _field97;
-    unsigned long long _field98;
-    unsigned long long _field99;
+    _Bool _field98;
+    _Bool _field99;
     _Bool _field100;
-    _Bool _field101;
-    unsigned int _field102;
-    unsigned int _field103;
-    unsigned int _field104;
+    unsigned long long _field101;
+    unsigned long long _field102;
+    _Bool _field103;
+    _Bool _field104;
     unsigned int _field105;
-    list_2d8084dd _field106;
-    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field107;
-    _Bool _field108;
-    struct PCHash128 _field109;
-    struct PCHash128 _field110;
-    double _field111;
-    _Bool _field112;
-    struct OZChannelPercent _field113;
-    struct OZChannelDouble _field114;
-    struct OZChannelPercent _field115;
-    struct OZChannelBool _field116;
-    struct OZChannelEnum _field117;
-    struct OZChannelBool _field118;
-    struct OZChannelEnum _field119;
+    unsigned int _field106;
+    unsigned int _field107;
+    unsigned int _field108;
+    list_af8e95fb _field109;
+    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field110;
+    _Bool _field111;
+    struct PCHash128 _field112;
+    struct PCHash128 _field113;
+    double _field114;
+    _Bool _field115;
+    struct OZChannelPercent _field116;
+    struct OZChannelDouble _field117;
+    struct OZChannelPercent _field118;
+    struct OZChannelBool _field119;
     struct OZChannelEnum _field120;
-    struct TXChannelAlignment _field121;
+    struct OZChannelBool _field121;
     struct OZChannelEnum _field122;
     struct OZChannelEnum _field123;
-    struct OZChannelDouble _field124;
+    struct TXChannelAlignment _field124;
     struct OZChannelEnum _field125;
     struct OZChannelEnum _field126;
-    struct OZChannelPosition3D _field127;
-    struct OZChannelFolder _field128;
-    struct OZChannelPercent _field129;
-    struct OZChannelPercent _field130;
-    struct OZChannelBool _field131;
-    struct OZChannelDouble _field132;
-    struct OZChannelDouble _field133;
-    struct OZChannelDouble _field134;
+    struct OZChannelDouble _field127;
+    struct OZChannelEnum _field128;
+    struct OZChannelEnum _field129;
+    struct OZChannelPosition3D _field130;
+    struct OZChannelFolder _field131;
+    struct OZChannelPercent _field132;
+    struct OZChannelPercent _field133;
+    struct OZChannelBool _field134;
     struct OZChannelDouble _field135;
     struct OZChannelDouble _field136;
-    struct TXSequenceChannels _field137;
-    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field138;
-    PCRect_b601f9f3 _field139;
-    _Bool _field140;
-    _Bool _field141;
-    _Bool _field142;
-    double _field143;
-    double _field144;
-    double _field145;
+    struct OZChannelDouble _field137;
+    struct OZChannelDouble _field138;
+    struct OZChannelDouble _field139;
+    struct TXSequenceChannels _field140;
+    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field141;
+    PCRect_b601f9f3 _field142;
+    _Bool _field143;
+    _Bool _field144;
+    _Bool _field145;
     double _field146;
     double _field147;
     double _field148;
@@ -3396,108 +3468,116 @@ struct TXTextGenerator {
     double _field152;
     double _field153;
     double _field154;
-    struct TXLayoutCallbackParams _field155;
-    struct OZSystemSimulator _field156;
-    _Bool _field157;
-    _Bool _field158;
-    _Bool _field159;
+    double _field155;
+    double _field156;
+    double _field157;
+    struct TXLayoutCallbackParams _field158;
+    struct OZSystemSimulator _field159;
     _Bool _field160;
     _Bool _field161;
-    unsigned int _field162;
-    struct OZChannelFolder _field163;
-    struct OZChannelPosition3D _field164;
-    struct OZChannelPosition3D _field165;
-    struct OZChannelEnum _field166;
-    struct OZChannelEnum _field167;
-    struct OZChannel2D _field168;
-    struct OZChannel2D _field169;
-    struct OZChannelPosition _field170;
-    struct OZChannelPosition _field171;
-    struct OZChannelDouble _field172;
-    struct OZChannelDouble _field173;
-    struct OZChannelAngle _field174;
+    _Bool _field162;
+    _Bool _field163;
+    _Bool _field164;
+    unsigned int _field165;
+    struct OZChannelFolder _field166;
+    struct OZChannelPosition3D _field167;
+    struct OZChannelPosition3D _field168;
+    struct OZChannelEnum _field169;
+    struct OZChannelEnum _field170;
+    struct OZChannel2D _field171;
+    struct OZChannel2D _field172;
+    struct OZChannelPosition _field173;
+    struct OZChannelPosition _field174;
     struct OZChannelDouble _field175;
-    struct OZChanRotoshapeRefWithPicker _field176;
-    struct OZChannelBool _field177;
-    struct OZChannelPercent _field178;
-    struct OZChannelBool _field179;
+    struct OZChannelDouble _field176;
+    struct OZChannelAngle _field177;
+    struct OZChannelDouble _field178;
+    struct OZChanRotoshapeRefWithPicker _field179;
     struct OZChannelBool _field180;
-    struct OZChannelBool _field181;
+    struct OZChannelPercent _field181;
     struct OZChannelBool _field182;
-    struct PCEvaluator _field183;
-    struct OZChannelFolder _field184;
-    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field185;
-    struct PCString _field186;
-    struct PCString _field187;
-    int _field188;
-    struct OZChannelFolder _field189;
-    PCRect_b601f9f3 _field190;
-    struct PCHash128 _field191;
-    PCBox_dd92ab54 _field192;
-    struct PCHash128 _field193;
-    int _field194;
-    int _field195;
-    struct OZChannelBool _field196;
-    struct OZChannelFolder _field197;
-    struct OZChannelBool _field198;
-    struct OZChannelDouble _field199;
-    unsigned int _field200;
-    double _field201;
-    struct PCRect<int> _field202;
-    struct PCHash128 _field203;
-    struct OZChannelFolder _field204;
-    struct OZChannelDouble _field205;
-    double _field206;
-    double _field207;
-    struct OZChannelBool _field208;
-    struct OZChannelBool _field209;
-    struct OZChannelDouble _field210;
-    unsigned int _field211;
-    struct OZChannelDouble _field212;
-    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field213;
-    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field214;
-    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field215;
-    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field216;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field217;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field218;
-    unsigned int _field219;
-    unsigned int _field220;
-    _Bool _field221;
-    _Bool _field222;
-    _Bool _field223;
+    struct OZChannelBool _field183;
+    struct OZChannelBool _field184;
+    struct OZChannelBool _field185;
+    struct PCEvaluator _field186;
+    struct OZChannelFolder _field187;
+    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field188;
+    struct PCString _field189;
+    struct PCString _field190;
+    int _field191;
+    struct OZChannelFolder _field192;
+    PCRect_b601f9f3 _field193;
+    struct PCHash128 _field194;
+    PCBox_dd92ab54 _field195;
+    struct PCHash128 _field196;
+    int _field197;
+    int _field198;
+    struct OZChannelBool _field199;
+    struct OZChannelFolder _field200;
+    struct OZChannelBool _field201;
+    struct OZChannelDouble _field202;
+    unsigned int _field203;
+    double _field204;
+    struct PCRect<int> _field205;
+    struct PCHash128 _field206;
+    struct OZChannelFolder _field207;
+    struct OZChannelDouble _field208;
+    double _field209;
+    double _field210;
+    struct OZChannelBool _field211;
+    struct OZChannelBool _field212;
+    struct OZChannelDouble _field213;
+    unsigned int _field214;
+    struct OZChannelDouble _field215;
+    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field216;
+    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field217;
+    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field218;
+    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field219;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field220;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field221;
+    unsigned int _field222;
+    unsigned int _field223;
     _Bool _field224;
-    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field225;
-    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field226;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field227;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field228;
-    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field229;
-    struct TXTimeGlyphPropertiesMap *_field230;
-    _Bool _field231;
-    struct OZChannelEnum _field232;
-    struct OZChannelDouble _field233;
-    double _field234;
-    double _field235;
-    struct PCHash128 _field236;
-    struct OZChannelBool _field237;
-    struct OZChannelColor _field238;
-    _Bool _field239;
-    int _field240;
-    _Bool _field241;
-    int _field242;
-    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field243;
+    _Bool _field225;
+    _Bool _field226;
+    _Bool _field227;
+    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field228;
+    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field229;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field230;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field231;
+    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field232;
+    struct TXTimeGlyphPropertiesMap *_field233;
+    _Bool _field234;
+    struct OZChannelEnum _field235;
+    struct OZChannelDouble _field236;
+    double _field237;
+    double _field238;
+    struct PCHash128 _field239;
+    struct OZChannelBool _field240;
+    struct OZChannelColor _field241;
+    _Bool _field242;
+    int _field243;
     _Bool _field244;
-    _Bool _field245;
-    _Bool _field246;
+    int _field245;
+    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field246;
     _Bool _field247;
-    struct FFPMRSimpleTimer _field248;
+    _Bool _field248;
     _Bool _field249;
     _Bool _field250;
-    vector_ced1dec3 _field251;
-    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field252;
-    double _field253;
-    int _field254;
-    struct OZValueCache<OZBoundsCacheItem> _field255;
-    _Bool _field256;
+    struct FFPMRSimpleTimer _field251;
+    _Bool _field252;
+    _Bool _field253;
+    vector_ced1dec3 _field254;
+    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field255;
+    double _field256;
+    int _field257;
+    struct OZValueCache<OZBoundsCacheItem> _field258;
+    _Bool _field259;
+    double _field260;
+    double _field261;
+    struct vector<int, std::__1::allocator<int>> _field262;
+    _Bool _field263;
+    double _field264;
 };
 
 struct TXTextInfoDelegate;
@@ -3521,7 +3601,7 @@ struct TXTextInput {
     struct OZSceneNode *_field16;
     struct OZScene *_field17;
     struct list<OZEffect *, std::__1::allocator<OZEffect *>> _field18;
-    list_de2015bc _field19;
+    list_64b41211 _field19;
     unsigned int _field20;
     double _field21;
     struct PCHash128 _field22;
@@ -3575,79 +3655,79 @@ struct TXTextInput {
     unsigned int _field70;
     unsigned int _field71;
     unsigned int _field72;
-    list_63a35edb _field73;
+    list_752fd9b9 _field73;
     struct OZChannelFolder _field74;
     struct OZChanFootageRef _field75;
     struct PCHash128 _field76;
     unsigned int _field77;
     unsigned int _field78;
-    CDUnknownFunctionPointerType *_field79;
-    CDUnknownFunctionPointerType *_field80;
-    struct TXScrollToCharInfo _field81;
-    _Bool _field82;
-    _Bool _field83;
-    _Bool _field84;
-    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field85;
-    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field86;
-    struct TXChannelString _field87;
-    struct PCDynamicArray<unsigned short> _field88;
-    struct PCDynamicArray<double> _field89;
-    struct TXSelectionRange _field90;
-    unsigned long long _field91;
-    struct TXDiscontinuousSelection _field92;
-    _Bool _field93;
-    _Bool _field94;
-    _Bool _field95;
+    _Bool _field79;
+    struct shared_ptr<PGTexture> _field80;
+    struct HGRef<HGMetalTexture> _field81;
+    CDUnknownFunctionPointerType *_field82;
+    CDUnknownFunctionPointerType *_field83;
+    struct TXScrollToCharInfo _field84;
+    _Bool _field85;
+    _Bool _field86;
+    _Bool _field87;
+    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field88;
+    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field89;
+    struct TXChannelString _field90;
+    struct PCDynamicArray<unsigned short> _field91;
+    struct PCDynamicArray<double> _field92;
+    struct TXSelectionRange _field93;
+    unsigned long long _field94;
+    struct TXDiscontinuousSelection _field95;
     _Bool _field96;
     _Bool _field97;
-    unsigned long long _field98;
-    unsigned long long _field99;
+    _Bool _field98;
+    _Bool _field99;
     _Bool _field100;
-    _Bool _field101;
-    unsigned int _field102;
-    unsigned int _field103;
-    unsigned int _field104;
+    unsigned long long _field101;
+    unsigned long long _field102;
+    _Bool _field103;
+    _Bool _field104;
     unsigned int _field105;
-    list_2d8084dd _field106;
-    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field107;
-    _Bool _field108;
-    struct PCHash128 _field109;
-    struct PCHash128 _field110;
-    double _field111;
-    _Bool _field112;
-    struct OZChannelPercent _field113;
-    struct OZChannelDouble _field114;
-    struct OZChannelPercent _field115;
-    struct OZChannelBool _field116;
-    struct OZChannelEnum _field117;
-    struct OZChannelBool _field118;
-    struct OZChannelEnum _field119;
+    unsigned int _field106;
+    unsigned int _field107;
+    unsigned int _field108;
+    list_af8e95fb _field109;
+    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field110;
+    _Bool _field111;
+    struct PCHash128 _field112;
+    struct PCHash128 _field113;
+    double _field114;
+    _Bool _field115;
+    struct OZChannelPercent _field116;
+    struct OZChannelDouble _field117;
+    struct OZChannelPercent _field118;
+    struct OZChannelBool _field119;
     struct OZChannelEnum _field120;
-    struct TXChannelAlignment _field121;
+    struct OZChannelBool _field121;
     struct OZChannelEnum _field122;
     struct OZChannelEnum _field123;
-    struct OZChannelDouble _field124;
+    struct TXChannelAlignment _field124;
     struct OZChannelEnum _field125;
     struct OZChannelEnum _field126;
-    struct OZChannelPosition3D _field127;
-    struct OZChannelFolder _field128;
-    struct OZChannelPercent _field129;
-    struct OZChannelPercent _field130;
-    struct OZChannelBool _field131;
-    struct OZChannelDouble _field132;
-    struct OZChannelDouble _field133;
-    struct OZChannelDouble _field134;
+    struct OZChannelDouble _field127;
+    struct OZChannelEnum _field128;
+    struct OZChannelEnum _field129;
+    struct OZChannelPosition3D _field130;
+    struct OZChannelFolder _field131;
+    struct OZChannelPercent _field132;
+    struct OZChannelPercent _field133;
+    struct OZChannelBool _field134;
     struct OZChannelDouble _field135;
     struct OZChannelDouble _field136;
-    struct TXSequenceChannels _field137;
-    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field138;
-    PCRect_b601f9f3 _field139;
-    _Bool _field140;
-    _Bool _field141;
-    _Bool _field142;
-    double _field143;
-    double _field144;
-    double _field145;
+    struct OZChannelDouble _field137;
+    struct OZChannelDouble _field138;
+    struct OZChannelDouble _field139;
+    struct TXSequenceChannels _field140;
+    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field141;
+    PCRect_b601f9f3 _field142;
+    _Bool _field143;
+    _Bool _field144;
+    _Bool _field145;
     double _field146;
     double _field147;
     double _field148;
@@ -3657,109 +3737,117 @@ struct TXTextInput {
     double _field152;
     double _field153;
     double _field154;
-    struct TXLayoutCallbackParams _field155;
-    struct OZSystemSimulator _field156;
-    _Bool _field157;
-    _Bool _field158;
-    _Bool _field159;
+    double _field155;
+    double _field156;
+    double _field157;
+    struct TXLayoutCallbackParams _field158;
+    struct OZSystemSimulator _field159;
     _Bool _field160;
     _Bool _field161;
-    unsigned int _field162;
-    struct OZChannelFolder _field163;
-    struct OZChannelPosition3D _field164;
-    struct OZChannelPosition3D _field165;
-    struct OZChannelEnum _field166;
-    struct OZChannelEnum _field167;
-    struct OZChannel2D _field168;
-    struct OZChannel2D _field169;
-    struct OZChannelPosition _field170;
-    struct OZChannelPosition _field171;
-    struct OZChannelDouble _field172;
-    struct OZChannelDouble _field173;
-    struct OZChannelAngle _field174;
+    _Bool _field162;
+    _Bool _field163;
+    _Bool _field164;
+    unsigned int _field165;
+    struct OZChannelFolder _field166;
+    struct OZChannelPosition3D _field167;
+    struct OZChannelPosition3D _field168;
+    struct OZChannelEnum _field169;
+    struct OZChannelEnum _field170;
+    struct OZChannel2D _field171;
+    struct OZChannel2D _field172;
+    struct OZChannelPosition _field173;
+    struct OZChannelPosition _field174;
     struct OZChannelDouble _field175;
-    struct OZChanRotoshapeRefWithPicker _field176;
-    struct OZChannelBool _field177;
-    struct OZChannelPercent _field178;
-    struct OZChannelBool _field179;
+    struct OZChannelDouble _field176;
+    struct OZChannelAngle _field177;
+    struct OZChannelDouble _field178;
+    struct OZChanRotoshapeRefWithPicker _field179;
     struct OZChannelBool _field180;
-    struct OZChannelBool _field181;
+    struct OZChannelPercent _field181;
     struct OZChannelBool _field182;
-    struct PCEvaluator _field183;
-    struct OZChannelFolder _field184;
-    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field185;
-    struct PCString _field186;
-    struct PCString _field187;
-    int _field188;
-    struct OZChannelFolder _field189;
-    PCRect_b601f9f3 _field190;
-    struct PCHash128 _field191;
-    PCBox_dd92ab54 _field192;
-    struct PCHash128 _field193;
-    int _field194;
-    int _field195;
-    struct OZChannelBool _field196;
-    struct OZChannelFolder _field197;
-    struct OZChannelBool _field198;
-    struct OZChannelDouble _field199;
-    unsigned int _field200;
-    double _field201;
-    struct PCRect<int> _field202;
-    struct PCHash128 _field203;
-    struct OZChannelFolder _field204;
-    struct OZChannelDouble _field205;
-    double _field206;
-    double _field207;
-    struct OZChannelBool _field208;
-    struct OZChannelBool _field209;
-    struct OZChannelDouble _field210;
-    unsigned int _field211;
-    struct OZChannelDouble _field212;
-    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field213;
-    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field214;
-    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field215;
-    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field216;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field217;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field218;
-    unsigned int _field219;
-    unsigned int _field220;
-    _Bool _field221;
-    _Bool _field222;
-    _Bool _field223;
+    struct OZChannelBool _field183;
+    struct OZChannelBool _field184;
+    struct OZChannelBool _field185;
+    struct PCEvaluator _field186;
+    struct OZChannelFolder _field187;
+    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field188;
+    struct PCString _field189;
+    struct PCString _field190;
+    int _field191;
+    struct OZChannelFolder _field192;
+    PCRect_b601f9f3 _field193;
+    struct PCHash128 _field194;
+    PCBox_dd92ab54 _field195;
+    struct PCHash128 _field196;
+    int _field197;
+    int _field198;
+    struct OZChannelBool _field199;
+    struct OZChannelFolder _field200;
+    struct OZChannelBool _field201;
+    struct OZChannelDouble _field202;
+    unsigned int _field203;
+    double _field204;
+    struct PCRect<int> _field205;
+    struct PCHash128 _field206;
+    struct OZChannelFolder _field207;
+    struct OZChannelDouble _field208;
+    double _field209;
+    double _field210;
+    struct OZChannelBool _field211;
+    struct OZChannelBool _field212;
+    struct OZChannelDouble _field213;
+    unsigned int _field214;
+    struct OZChannelDouble _field215;
+    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field216;
+    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field217;
+    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field218;
+    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field219;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field220;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field221;
+    unsigned int _field222;
+    unsigned int _field223;
     _Bool _field224;
-    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field225;
-    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field226;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field227;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field228;
-    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field229;
-    struct TXTimeGlyphPropertiesMap *_field230;
-    _Bool _field231;
-    struct OZChannelEnum _field232;
-    struct OZChannelDouble _field233;
-    double _field234;
-    double _field235;
-    struct PCHash128 _field236;
-    struct OZChannelBool _field237;
-    struct OZChannelColor _field238;
-    _Bool _field239;
-    int _field240;
-    _Bool _field241;
-    int _field242;
-    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field243;
+    _Bool _field225;
+    _Bool _field226;
+    _Bool _field227;
+    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field228;
+    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field229;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field230;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field231;
+    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field232;
+    struct TXTimeGlyphPropertiesMap *_field233;
+    _Bool _field234;
+    struct OZChannelEnum _field235;
+    struct OZChannelDouble _field236;
+    double _field237;
+    double _field238;
+    struct PCHash128 _field239;
+    struct OZChannelBool _field240;
+    struct OZChannelColor _field241;
+    _Bool _field242;
+    int _field243;
     _Bool _field244;
-    _Bool _field245;
-    _Bool _field246;
+    int _field245;
+    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field246;
     _Bool _field247;
-    struct FFPMRSimpleTimer _field248;
+    _Bool _field248;
     _Bool _field249;
     _Bool _field250;
-    vector_ced1dec3 _field251;
-    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field252;
-    double _field253;
-    int _field254;
-    struct OZValueCache<OZBoundsCacheItem> _field255;
-    _Bool _field256;
-    struct TXTextInfoDelegate *_field257;
+    struct FFPMRSimpleTimer _field251;
+    _Bool _field252;
+    _Bool _field253;
+    vector_ced1dec3 _field254;
+    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field255;
+    double _field256;
+    int _field257;
+    struct OZValueCache<OZBoundsCacheItem> _field258;
+    _Bool _field259;
+    double _field260;
+    double _field261;
+    struct vector<int, std::__1::allocator<int>> _field262;
+    _Bool _field263;
+    double _field264;
+    struct TXTextInfoDelegate *_field265;
 };
 
 struct TXTextLayout {
@@ -3781,7 +3869,7 @@ struct TXTextLayout {
     struct OZSceneNode *_field16;
     struct OZScene *_field17;
     struct list<OZEffect *, std::__1::allocator<OZEffect *>> _field18;
-    list_de2015bc _field19;
+    list_64b41211 _field19;
     unsigned int _field20;
     double _field21;
     struct PCHash128 _field22;
@@ -3835,79 +3923,79 @@ struct TXTextLayout {
     unsigned int _field70;
     unsigned int _field71;
     unsigned int _field72;
-    list_63a35edb _field73;
+    list_752fd9b9 _field73;
     struct OZChannelFolder _field74;
     struct OZChanFootageRef _field75;
     struct PCHash128 _field76;
     unsigned int _field77;
     unsigned int _field78;
-    CDUnknownFunctionPointerType *_field79;
-    CDUnknownFunctionPointerType *_field80;
-    struct TXScrollToCharInfo _field81;
-    _Bool _field82;
-    _Bool _field83;
-    _Bool _field84;
-    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field85;
-    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field86;
-    struct TXChannelString _field87;
-    struct PCDynamicArray<unsigned short> _field88;
-    struct PCDynamicArray<double> _field89;
-    struct TXSelectionRange _field90;
-    unsigned long long _field91;
-    struct TXDiscontinuousSelection _field92;
-    _Bool _field93;
-    _Bool _field94;
-    _Bool _field95;
+    _Bool _field79;
+    struct shared_ptr<PGTexture> _field80;
+    struct HGRef<HGMetalTexture> _field81;
+    CDUnknownFunctionPointerType *_field82;
+    CDUnknownFunctionPointerType *_field83;
+    struct TXScrollToCharInfo _field84;
+    _Bool _field85;
+    _Bool _field86;
+    _Bool _field87;
+    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field88;
+    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field89;
+    struct TXChannelString _field90;
+    struct PCDynamicArray<unsigned short> _field91;
+    struct PCDynamicArray<double> _field92;
+    struct TXSelectionRange _field93;
+    unsigned long long _field94;
+    struct TXDiscontinuousSelection _field95;
     _Bool _field96;
     _Bool _field97;
-    unsigned long long _field98;
-    unsigned long long _field99;
+    _Bool _field98;
+    _Bool _field99;
     _Bool _field100;
-    _Bool _field101;
-    unsigned int _field102;
-    unsigned int _field103;
-    unsigned int _field104;
+    unsigned long long _field101;
+    unsigned long long _field102;
+    _Bool _field103;
+    _Bool _field104;
     unsigned int _field105;
-    list_2d8084dd _field106;
-    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field107;
-    _Bool _field108;
-    struct PCHash128 _field109;
-    struct PCHash128 _field110;
-    double _field111;
-    _Bool _field112;
-    struct OZChannelPercent _field113;
-    struct OZChannelDouble _field114;
-    struct OZChannelPercent _field115;
-    struct OZChannelBool _field116;
-    struct OZChannelEnum _field117;
-    struct OZChannelBool _field118;
-    struct OZChannelEnum _field119;
+    unsigned int _field106;
+    unsigned int _field107;
+    unsigned int _field108;
+    list_af8e95fb _field109;
+    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field110;
+    _Bool _field111;
+    struct PCHash128 _field112;
+    struct PCHash128 _field113;
+    double _field114;
+    _Bool _field115;
+    struct OZChannelPercent _field116;
+    struct OZChannelDouble _field117;
+    struct OZChannelPercent _field118;
+    struct OZChannelBool _field119;
     struct OZChannelEnum _field120;
-    struct TXChannelAlignment _field121;
+    struct OZChannelBool _field121;
     struct OZChannelEnum _field122;
     struct OZChannelEnum _field123;
-    struct OZChannelDouble _field124;
+    struct TXChannelAlignment _field124;
     struct OZChannelEnum _field125;
     struct OZChannelEnum _field126;
-    struct OZChannelPosition3D _field127;
-    struct OZChannelFolder _field128;
-    struct OZChannelPercent _field129;
-    struct OZChannelPercent _field130;
-    struct OZChannelBool _field131;
-    struct OZChannelDouble _field132;
-    struct OZChannelDouble _field133;
-    struct OZChannelDouble _field134;
+    struct OZChannelDouble _field127;
+    struct OZChannelEnum _field128;
+    struct OZChannelEnum _field129;
+    struct OZChannelPosition3D _field130;
+    struct OZChannelFolder _field131;
+    struct OZChannelPercent _field132;
+    struct OZChannelPercent _field133;
+    struct OZChannelBool _field134;
     struct OZChannelDouble _field135;
     struct OZChannelDouble _field136;
-    struct TXSequenceChannels _field137;
-    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field138;
-    PCRect_b601f9f3 _field139;
-    _Bool _field140;
-    _Bool _field141;
-    _Bool _field142;
-    double _field143;
-    double _field144;
-    double _field145;
+    struct OZChannelDouble _field137;
+    struct OZChannelDouble _field138;
+    struct OZChannelDouble _field139;
+    struct TXSequenceChannels _field140;
+    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field141;
+    PCRect_b601f9f3 _field142;
+    _Bool _field143;
+    _Bool _field144;
+    _Bool _field145;
     double _field146;
     double _field147;
     double _field148;
@@ -3917,108 +4005,116 @@ struct TXTextLayout {
     double _field152;
     double _field153;
     double _field154;
-    struct TXLayoutCallbackParams _field155;
-    struct OZSystemSimulator _field156;
-    _Bool _field157;
-    _Bool _field158;
-    _Bool _field159;
+    double _field155;
+    double _field156;
+    double _field157;
+    struct TXLayoutCallbackParams _field158;
+    struct OZSystemSimulator _field159;
     _Bool _field160;
     _Bool _field161;
-    unsigned int _field162;
-    struct OZChannelFolder _field163;
-    struct OZChannelPosition3D _field164;
-    struct OZChannelPosition3D _field165;
-    struct OZChannelEnum _field166;
-    struct OZChannelEnum _field167;
-    struct OZChannel2D _field168;
-    struct OZChannel2D _field169;
-    struct OZChannelPosition _field170;
-    struct OZChannelPosition _field171;
-    struct OZChannelDouble _field172;
-    struct OZChannelDouble _field173;
-    struct OZChannelAngle _field174;
+    _Bool _field162;
+    _Bool _field163;
+    _Bool _field164;
+    unsigned int _field165;
+    struct OZChannelFolder _field166;
+    struct OZChannelPosition3D _field167;
+    struct OZChannelPosition3D _field168;
+    struct OZChannelEnum _field169;
+    struct OZChannelEnum _field170;
+    struct OZChannel2D _field171;
+    struct OZChannel2D _field172;
+    struct OZChannelPosition _field173;
+    struct OZChannelPosition _field174;
     struct OZChannelDouble _field175;
-    struct OZChanRotoshapeRefWithPicker _field176;
-    struct OZChannelBool _field177;
-    struct OZChannelPercent _field178;
-    struct OZChannelBool _field179;
+    struct OZChannelDouble _field176;
+    struct OZChannelAngle _field177;
+    struct OZChannelDouble _field178;
+    struct OZChanRotoshapeRefWithPicker _field179;
     struct OZChannelBool _field180;
-    struct OZChannelBool _field181;
+    struct OZChannelPercent _field181;
     struct OZChannelBool _field182;
-    struct PCEvaluator _field183;
-    struct OZChannelFolder _field184;
-    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field185;
-    struct PCString _field186;
-    struct PCString _field187;
-    int _field188;
-    struct OZChannelFolder _field189;
-    PCRect_b601f9f3 _field190;
-    struct PCHash128 _field191;
-    PCBox_dd92ab54 _field192;
-    struct PCHash128 _field193;
-    int _field194;
-    int _field195;
-    struct OZChannelBool _field196;
-    struct OZChannelFolder _field197;
-    struct OZChannelBool _field198;
-    struct OZChannelDouble _field199;
-    unsigned int _field200;
-    double _field201;
-    struct PCRect<int> _field202;
-    struct PCHash128 _field203;
-    struct OZChannelFolder _field204;
-    struct OZChannelDouble _field205;
-    double _field206;
-    double _field207;
-    struct OZChannelBool _field208;
-    struct OZChannelBool _field209;
-    struct OZChannelDouble _field210;
-    unsigned int _field211;
-    struct OZChannelDouble _field212;
-    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field213;
-    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field214;
-    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field215;
-    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field216;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field217;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field218;
-    unsigned int _field219;
-    unsigned int _field220;
-    _Bool _field221;
-    _Bool _field222;
-    _Bool _field223;
+    struct OZChannelBool _field183;
+    struct OZChannelBool _field184;
+    struct OZChannelBool _field185;
+    struct PCEvaluator _field186;
+    struct OZChannelFolder _field187;
+    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field188;
+    struct PCString _field189;
+    struct PCString _field190;
+    int _field191;
+    struct OZChannelFolder _field192;
+    PCRect_b601f9f3 _field193;
+    struct PCHash128 _field194;
+    PCBox_dd92ab54 _field195;
+    struct PCHash128 _field196;
+    int _field197;
+    int _field198;
+    struct OZChannelBool _field199;
+    struct OZChannelFolder _field200;
+    struct OZChannelBool _field201;
+    struct OZChannelDouble _field202;
+    unsigned int _field203;
+    double _field204;
+    struct PCRect<int> _field205;
+    struct PCHash128 _field206;
+    struct OZChannelFolder _field207;
+    struct OZChannelDouble _field208;
+    double _field209;
+    double _field210;
+    struct OZChannelBool _field211;
+    struct OZChannelBool _field212;
+    struct OZChannelDouble _field213;
+    unsigned int _field214;
+    struct OZChannelDouble _field215;
+    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field216;
+    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field217;
+    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field218;
+    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field219;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field220;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field221;
+    unsigned int _field222;
+    unsigned int _field223;
     _Bool _field224;
-    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field225;
-    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field226;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field227;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field228;
-    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field229;
-    struct TXTimeGlyphPropertiesMap *_field230;
-    _Bool _field231;
-    struct OZChannelEnum _field232;
-    struct OZChannelDouble _field233;
-    double _field234;
-    double _field235;
-    struct PCHash128 _field236;
-    struct OZChannelBool _field237;
-    struct OZChannelColor _field238;
-    _Bool _field239;
-    int _field240;
-    _Bool _field241;
-    int _field242;
-    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field243;
+    _Bool _field225;
+    _Bool _field226;
+    _Bool _field227;
+    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field228;
+    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field229;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field230;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field231;
+    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field232;
+    struct TXTimeGlyphPropertiesMap *_field233;
+    _Bool _field234;
+    struct OZChannelEnum _field235;
+    struct OZChannelDouble _field236;
+    double _field237;
+    double _field238;
+    struct PCHash128 _field239;
+    struct OZChannelBool _field240;
+    struct OZChannelColor _field241;
+    _Bool _field242;
+    int _field243;
     _Bool _field244;
-    _Bool _field245;
-    _Bool _field246;
+    int _field245;
+    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field246;
     _Bool _field247;
-    struct FFPMRSimpleTimer _field248;
+    _Bool _field248;
     _Bool _field249;
     _Bool _field250;
-    vector_ced1dec3 _field251;
-    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field252;
-    double _field253;
-    int _field254;
-    struct OZValueCache<OZBoundsCacheItem> _field255;
-    _Bool _field256;
+    struct FFPMRSimpleTimer _field251;
+    _Bool _field252;
+    _Bool _field253;
+    vector_ced1dec3 _field254;
+    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field255;
+    double _field256;
+    int _field257;
+    struct OZValueCache<OZBoundsCacheItem> _field258;
+    _Bool _field259;
+    double _field260;
+    double _field261;
+    struct vector<int, std::__1::allocator<int>> _field262;
+    _Bool _field263;
+    double _field264;
 };
 
 struct TXTextObject {
@@ -4273,7 +4369,7 @@ struct TXTimeDateGenerator {
     struct OZSceneNode *_field16;
     struct OZScene *_field17;
     struct list<OZEffect *, std::__1::allocator<OZEffect *>> _field18;
-    list_de2015bc _field19;
+    list_64b41211 _field19;
     unsigned int _field20;
     double _field21;
     struct PCHash128 _field22;
@@ -4327,79 +4423,79 @@ struct TXTimeDateGenerator {
     unsigned int _field70;
     unsigned int _field71;
     unsigned int _field72;
-    list_63a35edb _field73;
+    list_752fd9b9 _field73;
     struct OZChannelFolder _field74;
     struct OZChanFootageRef _field75;
     struct PCHash128 _field76;
     unsigned int _field77;
     unsigned int _field78;
-    CDUnknownFunctionPointerType *_field79;
-    CDUnknownFunctionPointerType *_field80;
-    struct TXScrollToCharInfo _field81;
-    _Bool _field82;
-    _Bool _field83;
-    _Bool _field84;
-    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field85;
-    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field86;
-    struct TXChannelString _field87;
-    struct PCDynamicArray<unsigned short> _field88;
-    struct PCDynamicArray<double> _field89;
-    struct TXSelectionRange _field90;
-    unsigned long long _field91;
-    struct TXDiscontinuousSelection _field92;
-    _Bool _field93;
-    _Bool _field94;
-    _Bool _field95;
+    _Bool _field79;
+    struct shared_ptr<PGTexture> _field80;
+    struct HGRef<HGMetalTexture> _field81;
+    CDUnknownFunctionPointerType *_field82;
+    CDUnknownFunctionPointerType *_field83;
+    struct TXScrollToCharInfo _field84;
+    _Bool _field85;
+    _Bool _field86;
+    _Bool _field87;
+    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field88;
+    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field89;
+    struct TXChannelString _field90;
+    struct PCDynamicArray<unsigned short> _field91;
+    struct PCDynamicArray<double> _field92;
+    struct TXSelectionRange _field93;
+    unsigned long long _field94;
+    struct TXDiscontinuousSelection _field95;
     _Bool _field96;
     _Bool _field97;
-    unsigned long long _field98;
-    unsigned long long _field99;
+    _Bool _field98;
+    _Bool _field99;
     _Bool _field100;
-    _Bool _field101;
-    unsigned int _field102;
-    unsigned int _field103;
-    unsigned int _field104;
+    unsigned long long _field101;
+    unsigned long long _field102;
+    _Bool _field103;
+    _Bool _field104;
     unsigned int _field105;
-    list_2d8084dd _field106;
-    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field107;
-    _Bool _field108;
-    struct PCHash128 _field109;
-    struct PCHash128 _field110;
-    double _field111;
-    _Bool _field112;
-    struct OZChannelPercent _field113;
-    struct OZChannelDouble _field114;
-    struct OZChannelPercent _field115;
-    struct OZChannelBool _field116;
-    struct OZChannelEnum _field117;
-    struct OZChannelBool _field118;
-    struct OZChannelEnum _field119;
+    unsigned int _field106;
+    unsigned int _field107;
+    unsigned int _field108;
+    list_af8e95fb _field109;
+    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field110;
+    _Bool _field111;
+    struct PCHash128 _field112;
+    struct PCHash128 _field113;
+    double _field114;
+    _Bool _field115;
+    struct OZChannelPercent _field116;
+    struct OZChannelDouble _field117;
+    struct OZChannelPercent _field118;
+    struct OZChannelBool _field119;
     struct OZChannelEnum _field120;
-    struct TXChannelAlignment _field121;
+    struct OZChannelBool _field121;
     struct OZChannelEnum _field122;
     struct OZChannelEnum _field123;
-    struct OZChannelDouble _field124;
+    struct TXChannelAlignment _field124;
     struct OZChannelEnum _field125;
     struct OZChannelEnum _field126;
-    struct OZChannelPosition3D _field127;
-    struct OZChannelFolder _field128;
-    struct OZChannelPercent _field129;
-    struct OZChannelPercent _field130;
-    struct OZChannelBool _field131;
-    struct OZChannelDouble _field132;
-    struct OZChannelDouble _field133;
-    struct OZChannelDouble _field134;
+    struct OZChannelDouble _field127;
+    struct OZChannelEnum _field128;
+    struct OZChannelEnum _field129;
+    struct OZChannelPosition3D _field130;
+    struct OZChannelFolder _field131;
+    struct OZChannelPercent _field132;
+    struct OZChannelPercent _field133;
+    struct OZChannelBool _field134;
     struct OZChannelDouble _field135;
     struct OZChannelDouble _field136;
-    struct TXSequenceChannels _field137;
-    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field138;
-    PCRect_b601f9f3 _field139;
-    _Bool _field140;
-    _Bool _field141;
-    _Bool _field142;
-    double _field143;
-    double _field144;
-    double _field145;
+    struct OZChannelDouble _field137;
+    struct OZChannelDouble _field138;
+    struct OZChannelDouble _field139;
+    struct TXSequenceChannels _field140;
+    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field141;
+    PCRect_b601f9f3 _field142;
+    _Bool _field143;
+    _Bool _field144;
+    _Bool _field145;
     double _field146;
     double _field147;
     double _field148;
@@ -4409,121 +4505,129 @@ struct TXTimeDateGenerator {
     double _field152;
     double _field153;
     double _field154;
-    struct TXLayoutCallbackParams _field155;
-    struct OZSystemSimulator _field156;
-    _Bool _field157;
-    _Bool _field158;
-    _Bool _field159;
+    double _field155;
+    double _field156;
+    double _field157;
+    struct TXLayoutCallbackParams _field158;
+    struct OZSystemSimulator _field159;
     _Bool _field160;
     _Bool _field161;
-    unsigned int _field162;
-    struct OZChannelFolder _field163;
-    struct OZChannelPosition3D _field164;
-    struct OZChannelPosition3D _field165;
-    struct OZChannelEnum _field166;
-    struct OZChannelEnum _field167;
-    struct OZChannel2D _field168;
-    struct OZChannel2D _field169;
-    struct OZChannelPosition _field170;
-    struct OZChannelPosition _field171;
-    struct OZChannelDouble _field172;
-    struct OZChannelDouble _field173;
-    struct OZChannelAngle _field174;
+    _Bool _field162;
+    _Bool _field163;
+    _Bool _field164;
+    unsigned int _field165;
+    struct OZChannelFolder _field166;
+    struct OZChannelPosition3D _field167;
+    struct OZChannelPosition3D _field168;
+    struct OZChannelEnum _field169;
+    struct OZChannelEnum _field170;
+    struct OZChannel2D _field171;
+    struct OZChannel2D _field172;
+    struct OZChannelPosition _field173;
+    struct OZChannelPosition _field174;
     struct OZChannelDouble _field175;
-    struct OZChanRotoshapeRefWithPicker _field176;
-    struct OZChannelBool _field177;
-    struct OZChannelPercent _field178;
-    struct OZChannelBool _field179;
+    struct OZChannelDouble _field176;
+    struct OZChannelAngle _field177;
+    struct OZChannelDouble _field178;
+    struct OZChanRotoshapeRefWithPicker _field179;
     struct OZChannelBool _field180;
-    struct OZChannelBool _field181;
+    struct OZChannelPercent _field181;
     struct OZChannelBool _field182;
-    struct PCEvaluator _field183;
-    struct OZChannelFolder _field184;
-    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field185;
-    struct PCString _field186;
-    struct PCString _field187;
-    int _field188;
-    struct OZChannelFolder _field189;
-    PCRect_b601f9f3 _field190;
-    struct PCHash128 _field191;
-    PCBox_dd92ab54 _field192;
-    struct PCHash128 _field193;
-    int _field194;
-    int _field195;
-    struct OZChannelBool _field196;
-    struct OZChannelFolder _field197;
-    struct OZChannelBool _field198;
-    struct OZChannelDouble _field199;
-    unsigned int _field200;
-    double _field201;
-    struct PCRect<int> _field202;
-    struct PCHash128 _field203;
-    struct OZChannelFolder _field204;
-    struct OZChannelDouble _field205;
-    double _field206;
-    double _field207;
-    struct OZChannelBool _field208;
-    struct OZChannelBool _field209;
-    struct OZChannelDouble _field210;
-    unsigned int _field211;
-    struct OZChannelDouble _field212;
-    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field213;
-    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field214;
-    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field215;
-    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field216;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field217;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field218;
-    unsigned int _field219;
-    unsigned int _field220;
-    _Bool _field221;
-    _Bool _field222;
-    _Bool _field223;
+    struct OZChannelBool _field183;
+    struct OZChannelBool _field184;
+    struct OZChannelBool _field185;
+    struct PCEvaluator _field186;
+    struct OZChannelFolder _field187;
+    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field188;
+    struct PCString _field189;
+    struct PCString _field190;
+    int _field191;
+    struct OZChannelFolder _field192;
+    PCRect_b601f9f3 _field193;
+    struct PCHash128 _field194;
+    PCBox_dd92ab54 _field195;
+    struct PCHash128 _field196;
+    int _field197;
+    int _field198;
+    struct OZChannelBool _field199;
+    struct OZChannelFolder _field200;
+    struct OZChannelBool _field201;
+    struct OZChannelDouble _field202;
+    unsigned int _field203;
+    double _field204;
+    struct PCRect<int> _field205;
+    struct PCHash128 _field206;
+    struct OZChannelFolder _field207;
+    struct OZChannelDouble _field208;
+    double _field209;
+    double _field210;
+    struct OZChannelBool _field211;
+    struct OZChannelBool _field212;
+    struct OZChannelDouble _field213;
+    unsigned int _field214;
+    struct OZChannelDouble _field215;
+    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field216;
+    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field217;
+    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field218;
+    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field219;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field220;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field221;
+    unsigned int _field222;
+    unsigned int _field223;
     _Bool _field224;
-    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field225;
-    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field226;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field227;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field228;
-    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field229;
-    struct TXTimeGlyphPropertiesMap *_field230;
-    _Bool _field231;
-    struct OZChannelEnum _field232;
-    struct OZChannelDouble _field233;
-    double _field234;
-    double _field235;
-    struct PCHash128 _field236;
-    struct OZChannelBool _field237;
-    struct OZChannelColor _field238;
-    _Bool _field239;
-    int _field240;
-    _Bool _field241;
-    int _field242;
-    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field243;
+    _Bool _field225;
+    _Bool _field226;
+    _Bool _field227;
+    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field228;
+    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field229;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field230;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field231;
+    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field232;
+    struct TXTimeGlyphPropertiesMap *_field233;
+    _Bool _field234;
+    struct OZChannelEnum _field235;
+    struct OZChannelDouble _field236;
+    double _field237;
+    double _field238;
+    struct PCHash128 _field239;
+    struct OZChannelBool _field240;
+    struct OZChannelColor _field241;
+    _Bool _field242;
+    int _field243;
     _Bool _field244;
-    _Bool _field245;
-    _Bool _field246;
+    int _field245;
+    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field246;
     _Bool _field247;
-    struct FFPMRSimpleTimer _field248;
+    _Bool _field248;
     _Bool _field249;
     _Bool _field250;
-    vector_ced1dec3 _field251;
-    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field252;
-    double _field253;
-    int _field254;
-    struct OZValueCache<OZBoundsCacheItem> _field255;
-    _Bool _field256;
-    struct OZChannelFolder _field257;
-    struct OZChannelBool _field258;
-    struct OZChannelDouble _field259;
-    struct OZChannelDouble _field260;
-    struct OZChannelDouble _field261;
-    struct OZChannelBool _field262;
-    struct OZChannelEnum _field263;
-    struct OZChannelEnum _field264;
-    struct OZChannelEnum _field265;
-    struct OZChannelEnum _field266;
-    id _field267;
-    id _field268;
-    _Bool _field269;
+    struct FFPMRSimpleTimer _field251;
+    _Bool _field252;
+    _Bool _field253;
+    vector_ced1dec3 _field254;
+    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field255;
+    double _field256;
+    int _field257;
+    struct OZValueCache<OZBoundsCacheItem> _field258;
+    _Bool _field259;
+    double _field260;
+    double _field261;
+    struct vector<int, std::__1::allocator<int>> _field262;
+    _Bool _field263;
+    double _field264;
+    struct OZChannelFolder _field265;
+    struct OZChannelBool _field266;
+    struct OZChannelDouble _field267;
+    struct OZChannelDouble _field268;
+    struct OZChannelDouble _field269;
+    struct OZChannelBool _field270;
+    struct OZChannelEnum _field271;
+    struct OZChannelEnum _field272;
+    struct OZChannelEnum _field273;
+    struct OZChannelEnum _field274;
+    id _field275;
+    id _field276;
+    _Bool _field277;
 };
 
 struct TXTimeGlyphPropertiesMap;
@@ -4547,7 +4651,7 @@ struct TXTimecodeGenerator {
     struct OZSceneNode *_field16;
     struct OZScene *_field17;
     struct list<OZEffect *, std::__1::allocator<OZEffect *>> _field18;
-    list_de2015bc _field19;
+    list_64b41211 _field19;
     unsigned int _field20;
     double _field21;
     struct PCHash128 _field22;
@@ -4601,79 +4705,79 @@ struct TXTimecodeGenerator {
     unsigned int _field70;
     unsigned int _field71;
     unsigned int _field72;
-    list_63a35edb _field73;
+    list_752fd9b9 _field73;
     struct OZChannelFolder _field74;
     struct OZChanFootageRef _field75;
     struct PCHash128 _field76;
     unsigned int _field77;
     unsigned int _field78;
-    CDUnknownFunctionPointerType *_field79;
-    CDUnknownFunctionPointerType *_field80;
-    struct TXScrollToCharInfo _field81;
-    _Bool _field82;
-    _Bool _field83;
-    _Bool _field84;
-    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field85;
-    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field86;
-    struct TXChannelString _field87;
-    struct PCDynamicArray<unsigned short> _field88;
-    struct PCDynamicArray<double> _field89;
-    struct TXSelectionRange _field90;
-    unsigned long long _field91;
-    struct TXDiscontinuousSelection _field92;
-    _Bool _field93;
-    _Bool _field94;
-    _Bool _field95;
+    _Bool _field79;
+    struct shared_ptr<PGTexture> _field80;
+    struct HGRef<HGMetalTexture> _field81;
+    CDUnknownFunctionPointerType *_field82;
+    CDUnknownFunctionPointerType *_field83;
+    struct TXScrollToCharInfo _field84;
+    _Bool _field85;
+    _Bool _field86;
+    _Bool _field87;
+    struct vector<TXTabStop, std::__1::allocator<TXTabStop>> _field88;
+    struct vector<TXParagraphStyle *, std::__1::allocator<TXParagraphStyle *>> _field89;
+    struct TXChannelString _field90;
+    struct PCDynamicArray<unsigned short> _field91;
+    struct PCDynamicArray<double> _field92;
+    struct TXSelectionRange _field93;
+    unsigned long long _field94;
+    struct TXDiscontinuousSelection _field95;
     _Bool _field96;
     _Bool _field97;
-    unsigned long long _field98;
-    unsigned long long _field99;
+    _Bool _field98;
+    _Bool _field99;
     _Bool _field100;
-    _Bool _field101;
-    unsigned int _field102;
-    unsigned int _field103;
-    unsigned int _field104;
+    unsigned long long _field101;
+    unsigned long long _field102;
+    _Bool _field103;
+    _Bool _field104;
     unsigned int _field105;
-    list_2d8084dd _field106;
-    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field107;
-    _Bool _field108;
-    struct PCHash128 _field109;
-    struct PCHash128 _field110;
-    double _field111;
-    _Bool _field112;
-    struct OZChannelPercent _field113;
-    struct OZChannelDouble _field114;
-    struct OZChannelPercent _field115;
-    struct OZChannelBool _field116;
-    struct OZChannelEnum _field117;
-    struct OZChannelBool _field118;
-    struct OZChannelEnum _field119;
+    unsigned int _field106;
+    unsigned int _field107;
+    unsigned int _field108;
+    list_af8e95fb _field109;
+    struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> _field110;
+    _Bool _field111;
+    struct PCHash128 _field112;
+    struct PCHash128 _field113;
+    double _field114;
+    _Bool _field115;
+    struct OZChannelPercent _field116;
+    struct OZChannelDouble _field117;
+    struct OZChannelPercent _field118;
+    struct OZChannelBool _field119;
     struct OZChannelEnum _field120;
-    struct TXChannelAlignment _field121;
+    struct OZChannelBool _field121;
     struct OZChannelEnum _field122;
     struct OZChannelEnum _field123;
-    struct OZChannelDouble _field124;
+    struct TXChannelAlignment _field124;
     struct OZChannelEnum _field125;
     struct OZChannelEnum _field126;
-    struct OZChannelPosition3D _field127;
-    struct OZChannelFolder _field128;
-    struct OZChannelPercent _field129;
-    struct OZChannelPercent _field130;
-    struct OZChannelBool _field131;
-    struct OZChannelDouble _field132;
-    struct OZChannelDouble _field133;
-    struct OZChannelDouble _field134;
+    struct OZChannelDouble _field127;
+    struct OZChannelEnum _field128;
+    struct OZChannelEnum _field129;
+    struct OZChannelPosition3D _field130;
+    struct OZChannelFolder _field131;
+    struct OZChannelPercent _field132;
+    struct OZChannelPercent _field133;
+    struct OZChannelBool _field134;
     struct OZChannelDouble _field135;
     struct OZChannelDouble _field136;
-    struct TXSequenceChannels _field137;
-    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field138;
-    PCRect_b601f9f3 _field139;
-    _Bool _field140;
-    _Bool _field141;
-    _Bool _field142;
-    double _field143;
-    double _field144;
-    double _field145;
+    struct OZChannelDouble _field137;
+    struct OZChannelDouble _field138;
+    struct OZChannelDouble _field139;
+    struct TXSequenceChannels _field140;
+    struct PCArray<unsigned long, PCArray_Traits<unsigned long>> _field141;
+    PCRect_b601f9f3 _field142;
+    _Bool _field143;
+    _Bool _field144;
+    _Bool _field145;
     double _field146;
     double _field147;
     double _field148;
@@ -4683,118 +4787,126 @@ struct TXTimecodeGenerator {
     double _field152;
     double _field153;
     double _field154;
-    struct TXLayoutCallbackParams _field155;
-    struct OZSystemSimulator _field156;
-    _Bool _field157;
-    _Bool _field158;
-    _Bool _field159;
+    double _field155;
+    double _field156;
+    double _field157;
+    struct TXLayoutCallbackParams _field158;
+    struct OZSystemSimulator _field159;
     _Bool _field160;
     _Bool _field161;
-    unsigned int _field162;
-    struct OZChannelFolder _field163;
-    struct OZChannelPosition3D _field164;
-    struct OZChannelPosition3D _field165;
-    struct OZChannelEnum _field166;
-    struct OZChannelEnum _field167;
-    struct OZChannel2D _field168;
-    struct OZChannel2D _field169;
-    struct OZChannelPosition _field170;
-    struct OZChannelPosition _field171;
-    struct OZChannelDouble _field172;
-    struct OZChannelDouble _field173;
-    struct OZChannelAngle _field174;
+    _Bool _field162;
+    _Bool _field163;
+    _Bool _field164;
+    unsigned int _field165;
+    struct OZChannelFolder _field166;
+    struct OZChannelPosition3D _field167;
+    struct OZChannelPosition3D _field168;
+    struct OZChannelEnum _field169;
+    struct OZChannelEnum _field170;
+    struct OZChannel2D _field171;
+    struct OZChannel2D _field172;
+    struct OZChannelPosition _field173;
+    struct OZChannelPosition _field174;
     struct OZChannelDouble _field175;
-    struct OZChanRotoshapeRefWithPicker _field176;
-    struct OZChannelBool _field177;
-    struct OZChannelPercent _field178;
-    struct OZChannelBool _field179;
+    struct OZChannelDouble _field176;
+    struct OZChannelAngle _field177;
+    struct OZChannelDouble _field178;
+    struct OZChanRotoshapeRefWithPicker _field179;
     struct OZChannelBool _field180;
-    struct OZChannelBool _field181;
+    struct OZChannelPercent _field181;
     struct OZChannelBool _field182;
-    struct PCEvaluator _field183;
-    struct OZChannelFolder _field184;
-    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field185;
-    struct PCString _field186;
-    struct PCString _field187;
-    int _field188;
-    struct OZChannelFolder _field189;
-    PCRect_b601f9f3 _field190;
-    struct PCHash128 _field191;
-    PCBox_dd92ab54 _field192;
-    struct PCHash128 _field193;
-    int _field194;
-    int _field195;
-    struct OZChannelBool _field196;
-    struct OZChannelFolder _field197;
-    struct OZChannelBool _field198;
-    struct OZChannelDouble _field199;
-    unsigned int _field200;
-    double _field201;
-    struct PCRect<int> _field202;
-    struct PCHash128 _field203;
-    struct OZChannelFolder _field204;
-    struct OZChannelDouble _field205;
-    double _field206;
-    double _field207;
-    struct OZChannelBool _field208;
-    struct OZChannelBool _field209;
-    struct OZChannelDouble _field210;
-    unsigned int _field211;
-    struct OZChannelDouble _field212;
-    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field213;
-    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field214;
-    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field215;
-    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field216;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field217;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field218;
-    unsigned int _field219;
-    unsigned int _field220;
-    _Bool _field221;
-    _Bool _field222;
-    _Bool _field223;
+    struct OZChannelBool _field183;
+    struct OZChannelBool _field184;
+    struct OZChannelBool _field185;
+    struct PCEvaluator _field186;
+    struct OZChannelFolder _field187;
+    struct vector<PCPtr<TXTextObject>, std::__1::allocator<PCPtr<TXTextObject>>> _field188;
+    struct PCString _field189;
+    struct PCString _field190;
+    int _field191;
+    struct OZChannelFolder _field192;
+    PCRect_b601f9f3 _field193;
+    struct PCHash128 _field194;
+    PCBox_dd92ab54 _field195;
+    struct PCHash128 _field196;
+    int _field197;
+    int _field198;
+    struct OZChannelBool _field199;
+    struct OZChannelFolder _field200;
+    struct OZChannelBool _field201;
+    struct OZChannelDouble _field202;
+    unsigned int _field203;
+    double _field204;
+    struct PCRect<int> _field205;
+    struct PCHash128 _field206;
+    struct OZChannelFolder _field207;
+    struct OZChannelDouble _field208;
+    double _field209;
+    double _field210;
+    struct OZChannelBool _field211;
+    struct OZChannelBool _field212;
+    struct OZChannelDouble _field213;
+    unsigned int _field214;
+    struct OZChannelDouble _field215;
+    struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> _field216;
+    struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> _field217;
+    struct deque<PCHash128, std::__1::allocator<PCHash128>> _field218;
+    struct PCCache<ColorConversionKey, std::__1::shared_ptr<PCWorkingColor>, PCNoLock> *_field219;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field220;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _field221;
+    unsigned int _field222;
+    unsigned int _field223;
     _Bool _field224;
-    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field225;
-    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field226;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field227;
-    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field228;
-    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field229;
-    struct TXTimeGlyphPropertiesMap *_field230;
-    _Bool _field231;
-    struct OZChannelEnum _field232;
-    struct OZChannelDouble _field233;
-    double _field234;
-    double _field235;
-    struct PCHash128 _field236;
-    struct OZChannelBool _field237;
-    struct OZChannelColor _field238;
-    _Bool _field239;
-    int _field240;
-    _Bool _field241;
-    int _field242;
-    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field243;
+    _Bool _field225;
+    _Bool _field226;
+    _Bool _field227;
+    struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>> *_field228;
+    struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1::shared_ptr<TXTextStyle>>, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<TXTextStyle>, TXFont *>>> *_field229;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field230;
+    struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCBox<double>>>> *_field231;
+    struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>> *_field232;
+    struct TXTimeGlyphPropertiesMap *_field233;
+    _Bool _field234;
+    struct OZChannelEnum _field235;
+    struct OZChannelDouble _field236;
+    double _field237;
+    double _field238;
+    struct PCHash128 _field239;
+    struct OZChannelBool _field240;
+    struct OZChannelColor _field241;
+    _Bool _field242;
+    int _field243;
     _Bool _field244;
-    _Bool _field245;
-    _Bool _field246;
+    int _field245;
+    struct vector<TXGlyphGroup *, std::__1::allocator<TXGlyphGroup *>> _field246;
     _Bool _field247;
-    struct FFPMRSimpleTimer _field248;
+    _Bool _field248;
     _Bool _field249;
     _Bool _field250;
-    vector_ced1dec3 _field251;
-    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field252;
-    double _field253;
-    int _field254;
-    struct OZValueCache<OZBoundsCacheItem> _field255;
-    _Bool _field256;
-    struct OZChannelFolder _field257;
-    struct OZChannelBool _field258;
-    struct OZChannelTimecode _field259;
-    struct OZChannelTimecode _field260;
-    struct OZChannelEnum _field261;
-    struct OZChannelEnum _field262;
-    struct PCTimecodeMode _field263;
-    struct OZChannelText _field264;
-    struct OZChannelBool _field265;
-    id _field266;
+    struct FFPMRSimpleTimer _field251;
+    _Bool _field252;
+    _Bool _field253;
+    vector_ced1dec3 _field254;
+    struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> _field255;
+    double _field256;
+    int _field257;
+    struct OZValueCache<OZBoundsCacheItem> _field258;
+    _Bool _field259;
+    double _field260;
+    double _field261;
+    struct vector<int, std::__1::allocator<int>> _field262;
+    _Bool _field263;
+    double _field264;
+    struct OZChannelFolder _field265;
+    struct OZChannelBool _field266;
+    struct OZChannelTimecode _field267;
+    struct OZChannelTimecode _field268;
+    struct OZChannelEnum _field269;
+    struct OZChannelEnum _field270;
+    struct PCTimecodeMode _field271;
+    struct OZChannelText _field272;
+    struct OZChannelBool _field273;
+    id _field274;
 };
 
 struct TransformSet {
@@ -4815,55 +4927,102 @@ struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_nod
 };
 
 struct __list_iterator<OZSceneNode *, void *> {
-    struct __list_node<OZSceneNode *, void *> *_field1;
+    struct __list_node_base<OZSceneNode *, void *> *_field1;
 };
 
-struct __list_node<OZBehavior *, void *>;
+struct __list_node_base<OZBehavior *, void *> {
+    struct __list_node_base<OZBehavior *, void *> *_field1;
+    struct __list_node_base<OZBehavior *, void *> *_field2;
+};
 
-struct __list_node<OZBehaviorCurveNode *, void *>;
+struct __list_node_base<OZBehaviorCurveNode *, void *> {
+    struct __list_node_base<OZBehaviorCurveNode *, void *> *_field1;
+    struct __list_node_base<OZBehaviorCurveNode *, void *> *_field2;
+};
 
-struct __list_node<OZBoundsCacheItem, void *>;
+struct __list_node_base<OZBoundsCacheItem, void *> {
+    struct __list_node_base<OZBoundsCacheItem, void *> *_field1;
+    struct __list_node_base<OZBoundsCacheItem, void *> *_field2;
+};
 
-struct __list_node<OZCPPObserver *, void *>;
+struct __list_node_base<OZChanObjectManipRef *, void *> {
+    struct __list_node_base<OZChanObjectManipRef *, void *> *_field1;
+    struct __list_node_base<OZChanObjectManipRef *, void *> *_field2;
+};
 
-struct __list_node<OZChanObjectManipRef *, void *>;
+struct __list_node_base<OZChannelBase *, void *> {
+    struct __list_node_base<OZChannelBase *, void *> *_field1;
+    struct __list_node_base<OZChannelBase *, void *> *_field2;
+};
 
-struct __list_node<OZChannelBase *, void *>;
+struct __list_node_base<OZEffect *, void *> {
+    struct __list_node_base<OZEffect *, void *> *_field1;
+    struct __list_node_base<OZEffect *, void *> *_field2;
+};
 
-struct __list_node<OZEffect *, void *>;
+struct __list_node_base<OZObjectManipulator *, void *> {
+    struct __list_node_base<OZObjectManipulator *, void *> *_field1;
+    struct __list_node_base<OZObjectManipulator *, void *> *_field2;
+};
 
-struct __list_node<OZObjectManipulator *, void *>;
-
-struct __list_node<OZObjectSelections *, void *>;
-
-struct __list_node<OZPasteEntry *, void *>;
-
-struct __list_node<OZSceneNode *, void *>;
-
-struct __list_node<OZSimStateArray *, void *>;
-
-struct __list_node<OZSimulationBehavior *, void *>;
-
-struct __list_node<OZTransformNode *, void *>;
-
-struct __list_node<PCUUID, void *>;
-
-struct __list_node<POPathSelection, void *>;
-
-struct __list_node<TXTextLayout::HGNodeCacheEntry, void *>;
-
-struct __list_node<TXTextStyleRun *, void *>;
-
-struct __list_node<std::__1::shared_ptr<TXTextStyle>, void *>;
+struct __list_node_base<OZObjectSelections *, void *> {
+    struct __list_node_base<OZObjectSelections *, void *> *_field1;
+    struct __list_node_base<OZObjectSelections *, void *> *_field2;
+};
 
 struct __list_node_base<OZPasteEntry *, void *> {
-    struct __list_node<OZPasteEntry *, void *> *_field1;
-    struct __list_node<OZPasteEntry *, void *> *_field2;
+    struct __list_node_base<OZPasteEntry *, void *> *_field1;
+    struct __list_node_base<OZPasteEntry *, void *> *_field2;
+};
+
+struct __list_node_base<OZSceneNode *, void *> {
+    struct __list_node_base<OZSceneNode *, void *> *__prev_;
+    struct __list_node_base<OZSceneNode *, void *> *__next_;
+};
+
+struct __list_node_base<OZSimStateArray *, void *> {
+    struct __list_node_base<OZSimStateArray *, void *> *_field1;
+    struct __list_node_base<OZSimStateArray *, void *> *_field2;
+};
+
+struct __list_node_base<OZSimulationBehavior *, void *> {
+    struct __list_node_base<OZSimulationBehavior *, void *> *_field1;
+    struct __list_node_base<OZSimulationBehavior *, void *> *_field2;
+};
+
+struct __list_node_base<OZTransformNode *, void *> {
+    struct __list_node_base<OZTransformNode *, void *> *_field1;
+    struct __list_node_base<OZTransformNode *, void *> *_field2;
+};
+
+struct __list_node_base<PCUUID, void *> {
+    struct __list_node_base<PCUUID, void *> *_field1;
+    struct __list_node_base<PCUUID, void *> *_field2;
+};
+
+struct __list_node_base<POPathSelection, void *> {
+    struct __list_node_base<POPathSelection, void *> *_field1;
+    struct __list_node_base<POPathSelection, void *> *_field2;
+};
+
+struct __list_node_base<TXTextLayout::HGNodeCacheEntry, void *> {
+    struct __list_node_base<TXTextLayout::HGNodeCacheEntry, void *> *_field1;
+    struct __list_node_base<TXTextLayout::HGNodeCacheEntry, void *> *_field2;
+};
+
+struct __list_node_base<TXTextStyleRun *, void *> {
+    struct __list_node_base<TXTextStyleRun *, void *> *_field1;
+    struct __list_node_base<TXTextStyleRun *, void *> *_field2;
+};
+
+struct __list_node_base<std::__1::shared_ptr<TXTextStyle>, void *> {
+    struct __list_node_base<std::__1::shared_ptr<TXTextStyle>, void *> *__prev_;
+    struct __list_node_base<std::__1::shared_ptr<TXTextStyle>, void *> *__next_;
 };
 
 struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long>> {
     struct __tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long> {
-        struct __tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
     } _field1;
 };
 
@@ -4918,90 +5077,56 @@ struct deque<PCHash128, std::__1::allocator<PCHash128>> {
 };
 
 struct list<OZBehavior *, std::__1::allocator<OZBehavior *>> {
-    struct __list_node_base<OZBehavior *, void *> {
-        struct __list_node<OZBehavior *, void *> *_field1;
-        struct __list_node<OZBehavior *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZBehavior *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZBehavior *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<OZBehaviorCurveNode *, std::__1::allocator<OZBehaviorCurveNode *>> {
-    struct __list_node_base<OZBehaviorCurveNode *, void *> {
-        struct __list_node<OZBehaviorCurveNode *, void *> *_field1;
-        struct __list_node<OZBehaviorCurveNode *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZBehaviorCurveNode *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZBehaviorCurveNode *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<OZBoundsCacheItem, std::__1::allocator<OZBoundsCacheItem>> {
-    struct __list_node_base<OZBoundsCacheItem, void *> {
-        struct __list_node<OZBoundsCacheItem, void *> *_field1;
-        struct __list_node<OZBoundsCacheItem, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZBoundsCacheItem, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZBoundsCacheItem, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
-struct list<OZCPPObserver *, std::__1::allocator<OZCPPObserver *>> {
-    struct __list_node_base<OZCPPObserver *, void *> {
-        struct __list_node<OZCPPObserver *, void *> *_field1;
-        struct __list_node<OZCPPObserver *, void *> *_field2;
-    } _field1;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZCPPObserver *, void *>>> {
-        unsigned long long _field1;
-    } _field2;
-};
-
 struct list<OZChanObjectManipRef *, std::__1::allocator<OZChanObjectManipRef *>> {
-    struct __list_node_base<OZChanObjectManipRef *, void *> {
-        struct __list_node<OZChanObjectManipRef *, void *> *_field1;
-        struct __list_node<OZChanObjectManipRef *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZChanObjectManipRef *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZChanObjectManipRef *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<OZChannelBase *, std::__1::allocator<OZChannelBase *>> {
-    struct __list_node_base<OZChannelBase *, void *> {
-        struct __list_node<OZChannelBase *, void *> *_field1;
-        struct __list_node<OZChannelBase *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZChannelBase *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZChannelBase *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<OZEffect *, std::__1::allocator<OZEffect *>> {
-    struct __list_node_base<OZEffect *, void *> {
-        struct __list_node<OZEffect *, void *> *_field1;
-        struct __list_node<OZEffect *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZEffect *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZEffect *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<OZObjectManipulator *, std::__1::allocator<OZObjectManipulator *>> {
-    struct __list_node_base<OZObjectManipulator *, void *> {
-        struct __list_node<OZObjectManipulator *, void *> *_field1;
-        struct __list_node<OZObjectManipulator *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZObjectManipulator *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZObjectManipulator *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<OZObjectSelections *, std::__1::allocator<OZObjectSelections *>> {
-    struct __list_node_base<OZObjectSelections *, void *> {
-        struct __list_node<OZObjectSelections *, void *> *_field1;
-        struct __list_node<OZObjectSelections *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZObjectSelections *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZObjectSelections *, void *>>> {
         unsigned long long _field1;
     } _field2;
@@ -5013,90 +5138,63 @@ struct list<OZPasteEntry *, std::__1::allocator<OZPasteEntry *>> {
 };
 
 struct list<OZSceneNode *, std::__1::allocator<OZSceneNode *>> {
-    struct __list_node_base<OZSceneNode *, void *> {
-        struct __list_node<OZSceneNode *, void *> *__prev_;
-        struct __list_node<OZSceneNode *, void *> *__next_;
-    } __end_;
+    struct __list_node_base<OZSceneNode *, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZSceneNode *, void *>>> {
         unsigned long long __first_;
     } __size_alloc_;
 };
 
 struct list<OZSimStateArray *, std::__1::allocator<OZSimStateArray *>> {
-    struct __list_node_base<OZSimStateArray *, void *> {
-        struct __list_node<OZSimStateArray *, void *> *_field1;
-        struct __list_node<OZSimStateArray *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZSimStateArray *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZSimStateArray *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<OZSimulationBehavior *, std::__1::allocator<OZSimulationBehavior *>> {
-    struct __list_node_base<OZSimulationBehavior *, void *> {
-        struct __list_node<OZSimulationBehavior *, void *> *_field1;
-        struct __list_node<OZSimulationBehavior *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZSimulationBehavior *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZSimulationBehavior *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<OZTransformNode *, std::__1::allocator<OZTransformNode *>> {
-    struct __list_node_base<OZTransformNode *, void *> {
-        struct __list_node<OZTransformNode *, void *> *_field1;
-        struct __list_node<OZTransformNode *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZTransformNode *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZTransformNode *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<PCUUID, std::__1::allocator<PCUUID>> {
-    struct __list_node_base<PCUUID, void *> {
-        struct __list_node<PCUUID, void *> *_field1;
-        struct __list_node<PCUUID, void *> *_field2;
-    } _field1;
+    struct __list_node_base<PCUUID, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<PCUUID, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<POPathSelection, std::__1::allocator<POPathSelection>> {
-    struct __list_node_base<POPathSelection, void *> {
-        struct __list_node<POPathSelection, void *> *_field1;
-        struct __list_node<POPathSelection, void *> *_field2;
-    } _field1;
+    struct __list_node_base<POPathSelection, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<POPathSelection, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<TXTextLayout::HGNodeCacheEntry, std::__1::allocator<TXTextLayout::HGNodeCacheEntry>> {
-    struct __list_node_base<TXTextLayout::HGNodeCacheEntry, void *> {
-        struct __list_node<TXTextLayout::HGNodeCacheEntry, void *> *_field1;
-        struct __list_node<TXTextLayout::HGNodeCacheEntry, void *> *_field2;
-    } _field1;
+    struct __list_node_base<TXTextLayout::HGNodeCacheEntry, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<TXTextLayout::HGNodeCacheEntry, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<TXTextStyleRun *, std::__1::allocator<TXTextStyleRun *>> {
-    struct __list_node_base<TXTextStyleRun *, void *> {
-        struct __list_node<TXTextStyleRun *, void *> *_field1;
-        struct __list_node<TXTextStyleRun *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<TXTextStyleRun *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<TXTextStyleRun *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<std::__1::shared_ptr<TXTextStyle>, std::__1::allocator<std::__1::shared_ptr<TXTextStyle>>> {
-    struct __list_node_base<std::__1::shared_ptr<TXTextStyle>, void *> {
-        struct __list_node<std::__1::shared_ptr<TXTextStyle>, void *> *__prev_;
-        struct __list_node<std::__1::shared_ptr<TXTextStyle>, void *> *__next_;
-    } __end_;
+    struct __list_node_base<std::__1::shared_ptr<TXTextStyle>, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<std::__1::shared_ptr<TXTextStyle>, void *>>> {
         unsigned long long __first_;
     } __size_alloc_;
@@ -5104,7 +5202,7 @@ struct list<std::__1::shared_ptr<TXTextStyle>, std::__1::allocator<std::__1::sha
 
 struct map<CMTime, OZSimStateArray *, std::__1::less<CMTime>, std::__1::allocator<std::__1::pair<const CMTime, OZSimStateArray *>>> {
     struct __tree<std::__1::__value_type<CMTime, OZSimStateArray *>, std::__1::__map_value_compare<CMTime, std::__1::__value_type<CMTime, OZSimStateArray *>, std::__1::less<CMTime>, true>, std::__1::allocator<std::__1::__value_type<CMTime, OZSimStateArray *>>> {
-        struct __tree_node<std::__1::__value_type<CMTime, OZSimStateArray *>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<CMTime, OZSimStateArray *>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5116,7 +5214,7 @@ struct map<CMTime, OZSimStateArray *, std::__1::less<CMTime>, std::__1::allocato
 
 struct map<PCHash128, LiTextureStoreToken, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, LiTextureStoreToken>>> {
     struct __tree<std::__1::__value_type<PCHash128, LiTextureStoreToken>, std::__1::__map_value_compare<PCHash128, std::__1::__value_type<PCHash128, LiTextureStoreToken>, std::__1::less<PCHash128>, true>, std::__1::allocator<std::__1::__value_type<PCHash128, LiTextureStoreToken>>> {
-        struct __tree_node<std::__1::__value_type<PCHash128, LiTextureStoreToken>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<PCHash128, LiTextureStoreToken>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5126,21 +5224,9 @@ struct map<PCHash128, LiTextureStoreToken, std::__1::less<PCHash128>, std::__1::
     } _field1;
 };
 
-struct map<PCHash128, PCMutexRef, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCMutexRef>>> {
-    struct __tree<std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::__map_value_compare<PCHash128, std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::less<PCHash128>, true>, std::__1::allocator<std::__1::__value_type<PCHash128, PCMutexRef>>> {
-        struct __tree_node<std::__1::__value_type<PCHash128, PCMutexRef>, void *> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<PCHash128, PCMutexRef>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<PCHash128, std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::less<PCHash128>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
 struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCRect<double>>>> {
     struct __tree<std::__1::__value_type<PCHash128, PCRect<double>>, std::__1::__map_value_compare<PCHash128, std::__1::__value_type<PCHash128, PCRect<double>>, std::__1::less<PCHash128>, true>, std::__1::allocator<std::__1::__value_type<PCHash128, PCRect<double>>>> {
-        struct __tree_node<std::__1::__value_type<PCHash128, PCRect<double>>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<PCHash128, PCRect<double>>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5152,7 +5238,7 @@ struct map<PCHash128, PCRect<double>, std::__1::less<PCHash128>, std::__1::alloc
 
 struct map<PCString, OZFontFamily *, std::__1::less<PCString>, std::__1::allocator<std::__1::pair<const PCString, OZFontFamily *>>> {
     struct __tree<std::__1::__value_type<PCString, OZFontFamily *>, std::__1::__map_value_compare<PCString, std::__1::__value_type<PCString, OZFontFamily *>, std::__1::less<PCString>, true>, std::__1::allocator<std::__1::__value_type<PCString, OZFontFamily *>>> {
-        struct __tree_node<std::__1::__value_type<PCString, OZFontFamily *>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<PCString, OZFontFamily *>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5164,7 +5250,7 @@ struct map<PCString, OZFontFamily *, std::__1::less<PCString>, std::__1::allocat
 
 struct map<TXTextObject *, PCBox<double>, std::__1::less<TXTextObject *>, std::__1::allocator<std::__1::pair<TXTextObject *const, PCBox<double>>>> {
     struct __tree<std::__1::__value_type<TXTextObject *, PCBox<double>>, std::__1::__map_value_compare<TXTextObject *, std::__1::__value_type<TXTextObject *, PCBox<double>>, std::__1::less<TXTextObject *>, true>, std::__1::allocator<std::__1::__value_type<TXTextObject *, PCBox<double>>>> {
-        struct __tree_node<std::__1::__value_type<TXTextObject *, PCBox<double>>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<TXTextObject *, PCBox<double>>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5176,7 +5262,7 @@ struct map<TXTextObject *, PCBox<double>, std::__1::less<TXTextObject *>, std::_
 
 struct map<TXTextObject *, PCMatrix44Tmpl<double>, std::__1::less<TXTextObject *>, std::__1::allocator<std::__1::pair<TXTextObject *const, PCMatrix44Tmpl<double>>>> {
     struct __tree<std::__1::__value_type<TXTextObject *, PCMatrix44Tmpl<double>>, std::__1::__map_value_compare<TXTextObject *, std::__1::__value_type<TXTextObject *, PCMatrix44Tmpl<double>>, std::__1::less<TXTextObject *>, true>, std::__1::allocator<std::__1::__value_type<TXTextObject *, PCMatrix44Tmpl<double>>>> {
-        struct __tree_node<std::__1::__value_type<TXTextObject *, PCMatrix44Tmpl<double>>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<TXTextObject *, PCMatrix44Tmpl<double>>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5188,7 +5274,7 @@ struct map<TXTextObject *, PCMatrix44Tmpl<double>, std::__1::less<TXTextObject *
 
 struct map<TXTextObject *, PCRect<double>, std::__1::less<TXTextObject *>, std::__1::allocator<std::__1::pair<TXTextObject *const, PCRect<double>>>> {
     struct __tree<std::__1::__value_type<TXTextObject *, PCRect<double>>, std::__1::__map_value_compare<TXTextObject *, std::__1::__value_type<TXTextObject *, PCRect<double>>, std::__1::less<TXTextObject *>, true>, std::__1::allocator<std::__1::__value_type<TXTextObject *, PCRect<double>>>> {
-        struct __tree_node<std::__1::__value_type<TXTextObject *, PCRect<double>>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<TXTextObject *, PCRect<double>>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5200,7 +5286,7 @@ struct map<TXTextObject *, PCRect<double>, std::__1::less<TXTextObject *>, std::
 
 struct map<TXTextObject *, PCVector3<double>, std::__1::less<TXTextObject *>, std::__1::allocator<std::__1::pair<TXTextObject *const, PCVector3<double>>>> {
     struct __tree<std::__1::__value_type<TXTextObject *, PCVector3<double>>, std::__1::__map_value_compare<TXTextObject *, std::__1::__value_type<TXTextObject *, PCVector3<double>>, std::__1::less<TXTextObject *>, true>, std::__1::allocator<std::__1::__value_type<TXTextObject *, PCVector3<double>>>> {
-        struct __tree_node<std::__1::__value_type<TXTextObject *, PCVector3<double>>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<TXTextObject *, PCVector3<double>>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5212,7 +5298,7 @@ struct map<TXTextObject *, PCVector3<double>, std::__1::less<TXTextObject *>, st
 
 struct map<int, int, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, int>>> {
     struct __tree<std::__1::__value_type<int, int>, std::__1::__map_value_compare<int, std::__1::__value_type<int, int>, std::__1::less<int>, true>, std::__1::allocator<std::__1::__value_type<int, int>>> {
-        struct __tree_node<std::__1::__value_type<int, int>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<int, int>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5226,7 +5312,7 @@ struct map<std::__1::shared_ptr<TXTextStyle>, TXFont *, std::__1::less<std::__1:
 
 struct map<unsigned int, CMTime, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, CMTime>>> {
     struct __tree<std::__1::__value_type<unsigned int, CMTime>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, CMTime>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, CMTime>>> {
-        struct __tree_node<std::__1::__value_type<unsigned int, CMTime>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, CMTime>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5244,35 +5330,39 @@ struct map<unsigned int, PCBox<double>, std::__1::less<unsigned int>, std::__1::
 
 struct map<unsigned int, PCMatrix44Tmpl<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCMatrix44Tmpl<double>>>>;
 
-struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>>;
-
-struct map<unsigned int, double, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, double>>> {
-    struct __tree<std::__1::__value_type<unsigned int, double>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, double>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, double>>> {
-        struct __tree_node<std::__1::__value_type<unsigned int, double>, void *> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, double>, void *>>> {
+struct map<unsigned int, PCRect<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCRect<double>>>> {
+    struct __tree<std::__1::__value_type<unsigned int, PCRect<double>>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, PCRect<double>>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, PCRect<double>>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, PCRect<double>>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, double>, std::__1::less<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, PCRect<double>>, std::__1::less<unsigned int>, true>> {
             unsigned long long _field1;
         } _field3;
     } _field1;
 };
 
-struct map<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>>*, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>>*>>> {
-    struct __tree<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>>*>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>>*>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>>*>>> {
-        struct __tree_node<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>>*>, void *> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>>*>, void *>>> {
+struct map<unsigned int, PCVector3<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCVector3<double>>>>;
+
+struct map<unsigned int, unsigned int, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, unsigned int>>> {
+    struct __tree<std::__1::__value_type<unsigned int, unsigned int>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, unsigned int>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, unsigned int>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, unsigned int>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>>*>, std::__1::less<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, unsigned int>, std::__1::less<unsigned int>, true>> {
             unsigned long long _field1;
         } _field3;
     } _field1;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _field1;
 };
 
 struct set<OZChannelBase *, std::__1::less<OZChannelBase *>, std::__1::allocator<OZChannelBase *>> {
     struct __tree<OZChannelBase *, std::__1::less<OZChannelBase *>, std::__1::allocator<OZChannelBase *>> {
-        struct __tree_node<OZChannelBase *, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<OZChannelBase *, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5282,21 +5372,11 @@ struct set<OZChannelBase *, std::__1::less<OZChannelBase *>, std::__1::allocator
     } _field1;
 };
 
-struct set<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *>> {
-    struct __tree<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *>> {
-        struct __tree_node<OZElement *, void *> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<OZElement *, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::less<OZElement *>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
+struct set<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *>>;
 
 struct set<int, std::__1::less<int>, std::__1::allocator<int>> {
     struct __tree<int, std::__1::less<int>, std::__1::allocator<int>> {
-        struct __tree_node<int, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<int, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5308,7 +5388,7 @@ struct set<int, std::__1::less<int>, std::__1::allocator<int>> {
 
 struct set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>> {
     struct __tree<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>> {
-        struct __tree_node<unsigned int, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<unsigned int, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -5335,6 +5415,11 @@ struct shared_ptr<PCBitmap> {
 
 struct shared_ptr<PCImage> {
     struct PCImage *_field1;
+    struct __shared_weak_count *_field2;
+};
+
+struct shared_ptr<PGTexture> {
+    struct PGTexture *_field1;
     struct __shared_weak_count *_field2;
 };
 
@@ -5380,19 +5465,11 @@ struct vector<OZChannelRef, std::__1::allocator<OZChannelRef>> {
     } _field3;
 };
 
-struct vector<OZCurveSetSerializer *, std::__1::allocator<OZCurveSetSerializer *>> {
-    struct OZCurveSetSerializer **_field1;
-    struct OZCurveSetSerializer **_field2;
-    struct __compressed_pair<OZCurveSetSerializer **, std::__1::allocator<OZCurveSetSerializer *>> {
-        struct OZCurveSetSerializer **_field1;
-    } _field3;
-};
-
-struct vector<OZLockingGroup *, std::__1::allocator<OZLockingGroup *>> {
-    struct OZLockingGroup **_field1;
-    struct OZLockingGroup **_field2;
-    struct __compressed_pair<OZLockingGroup **, std::__1::allocator<OZLockingGroup *>> {
-        struct OZLockingGroup **_field1;
+struct vector<OZFontFace *, std::__1::allocator<OZFontFace *>> {
+    struct OZFontFace **_field1;
+    struct OZFontFace **_field2;
+    struct __compressed_pair<OZFontFace **, std::__1::allocator<OZFontFace *>> {
+        struct OZFontFace **_field1;
     } _field3;
 };
 
@@ -5401,22 +5478,6 @@ struct vector<OZMaterialBase *, std::__1::allocator<OZMaterialBase *>> {
     struct OZMaterialBase **_field2;
     struct __compressed_pair<OZMaterialBase **, std::__1::allocator<OZMaterialBase *>> {
         struct OZMaterialBase **_field1;
-    } _field3;
-};
-
-struct vector<OZObjectManipulator *, std::__1::allocator<OZObjectManipulator *>> {
-    struct OZObjectManipulator **_field1;
-    struct OZObjectManipulator **_field2;
-    struct __compressed_pair<OZObjectManipulator **, std::__1::allocator<OZObjectManipulator *>> {
-        struct OZObjectManipulator **_field1;
-    } _field3;
-};
-
-struct vector<OZPublishSettings::Entry *, std::__1::allocator<OZPublishSettings::Entry *>> {
-    struct Entry **_field1;
-    struct Entry **_field2;
-    struct __compressed_pair<OZPublishSettings::Entry **, std::__1::allocator<OZPublishSettings::Entry *>> {
-        struct Entry **_field1;
     } _field3;
 };
 
@@ -5663,74 +5724,53 @@ typedef struct PCVector3<double> {
 } PCVector3_457fd1f0;
 
 typedef struct list<OZBehavior *, std::__1::allocator<OZBehavior *>> {
-    struct __list_node_base<OZBehavior *, void *> {
-        struct __list_node<OZBehavior *, void *> *_field1;
-        struct __list_node<OZBehavior *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZBehavior *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZBehavior *, void *>>> {
         unsigned long long _field1;
     } _field2;
-} list_de2015bc;
+} list_64b41211;
 
 typedef struct list<OZChannelBase *, std::__1::allocator<OZChannelBase *>> {
-    struct __list_node_base<OZChannelBase *, void *> {
-        struct __list_node<OZChannelBase *, void *> *_field1;
-        struct __list_node<OZChannelBase *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZChannelBase *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZChannelBase *, void *>>> {
         unsigned long long _field1;
     } _field2;
-} list_e5c8e430;
+} list_9af5505e;
 
 typedef struct list<OZObjectManipulator *, std::__1::allocator<OZObjectManipulator *>> {
-    struct __list_node_base<OZObjectManipulator *, void *> {
-        struct __list_node<OZObjectManipulator *, void *> *_field1;
-        struct __list_node<OZObjectManipulator *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZObjectManipulator *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZObjectManipulator *, void *>>> {
         unsigned long long _field1;
     } _field2;
-} list_281b6609;
+} list_5b338eba;
 
 typedef struct list<OZSceneNode *, std::__1::allocator<OZSceneNode *>> {
-    struct __list_node_base<OZSceneNode *, void *> {
-        struct __list_node<OZSceneNode *, void *> *__prev_;
-        struct __list_node<OZSceneNode *, void *> *__next_;
-    } __end_;
+    struct __list_node_base<OZSceneNode *, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZSceneNode *, void *>>> {
         unsigned long long __first_;
     } __size_alloc_;
-} list_63a35edb;
+} list_752fd9b9;
 
 typedef struct list<OZTransformNode *, std::__1::allocator<OZTransformNode *>> {
-    struct __list_node_base<OZTransformNode *, void *> {
-        struct __list_node<OZTransformNode *, void *> *_field1;
-        struct __list_node<OZTransformNode *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZTransformNode *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZTransformNode *, void *>>> {
         unsigned long long _field1;
     } _field2;
-} list_3c5d753a;
+} list_87f2377f;
 
 typedef struct list<POPathSelection, std::__1::allocator<POPathSelection>> {
-    struct __list_node_base<POPathSelection, void *> {
-        struct __list_node<POPathSelection, void *> *_field1;
-        struct __list_node<POPathSelection, void *> *_field2;
-    } _field1;
+    struct __list_node_base<POPathSelection, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<POPathSelection, void *>>> {
         unsigned long long _field1;
     } _field2;
-} list_54fac194;
+} list_9b90a499;
 
 typedef struct list<std::__1::shared_ptr<TXTextStyle>, std::__1::allocator<std::__1::shared_ptr<TXTextStyle>>> {
-    struct __list_node_base<std::__1::shared_ptr<TXTextStyle>, void *> {
-        struct __list_node<std::__1::shared_ptr<TXTextStyle>, void *> *__prev_;
-        struct __list_node<std::__1::shared_ptr<TXTextStyle>, void *> *__next_;
-    } __end_;
+    struct __list_node_base<std::__1::shared_ptr<TXTextStyle>, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<std::__1::shared_ptr<TXTextStyle>, void *>>> {
         unsigned long long __first_;
     } __size_alloc_;
-} list_2d8084dd;
+} list_af8e95fb;
 
 typedef struct shared_ptr<OZRenderResult> {
     struct OZRenderResult *_field1;

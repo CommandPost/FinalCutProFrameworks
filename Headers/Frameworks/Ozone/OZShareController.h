@@ -49,6 +49,7 @@
 - (void)setColorSpace:(id)arg1;
 - (void)setColor:(id)arg1;
 - (void)setResolution:(id)arg1;
+- (void)setUpDepthOfField;
 - (void)buildCameraList;
 - (void)setBaseExportPanel:(id)arg1;
 - (void)dealloc;
@@ -56,9 +57,9 @@
 - (id)initWithObjCDocument:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setUpColorSpacePopup;
-- (set_4d1dfb51)getSelectedColorSpecs;
+- (set_364a5baf)getSelectedColorSpecs;
 - (id)getCKSetting;
-- (void)setUpOneColorSpacePopupItem:(long long)arg1 withColorSpecs:(const set_4d1dfb51 *)arg2;
+- (void)setUpOneColorSpacePopupItem:(long long)arg1 withColorSpecs:(const set_364a5baf *)arg2;
 - (void)removeObservers;
 - (void)observeSettings;
 

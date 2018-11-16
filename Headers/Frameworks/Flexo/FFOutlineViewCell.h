@@ -6,12 +6,13 @@
 
 #import "NSView.h"
 
+#import "CALayerDelegate.h"
 #import "FFOutlineViewCellContentLayerDelegate.h"
 #import "NSTextFieldDelegate.h"
 
 @class CALayer, CATextLayer, FFOutlineView, FFOutlineViewCellContentLayer, FFOutlineViewRow, LKSyntheticUIElement, NSButton, NSColor, NSDictionary, NSString, NSTextField, NSTimer;
 
-@interface FFOutlineViewCell : NSView <FFOutlineViewCellContentLayerDelegate, NSTextFieldDelegate>
+@interface FFOutlineViewCell : NSView <FFOutlineViewCellContentLayerDelegate, NSTextFieldDelegate, CALayerDelegate>
 {
     NSString *_reuseIdentifier;
     NSView *_selectedBackgroundView;

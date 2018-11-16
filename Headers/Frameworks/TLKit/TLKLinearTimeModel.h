@@ -11,7 +11,7 @@
 }
 
 - (void)reloadWithContainer:(id)arg1 inLayoutDatabase:(id)arg2;
-- (void)_calculateLocationRanges:(struct _TLKRange *)arg1 forTimeRanges:(CDStruct_e83c9415 *)arg2 count:(unsigned long long)arg3 spacing:(double)arg4;
+- (void)_calculateLocationRanges:(struct _TLKRange *)arg1 forTimeRanges:(CDStruct_e83c9415 *)arg2 count:(unsigned long long)arg3;
 - (void)_calculateTimeRanges:(CDStruct_e83c9415 *)arg1 forItems:(id)arg2 inLayoutDatabase:(id)arg3;
 - (int)timeUnits;
 

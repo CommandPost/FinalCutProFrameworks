@@ -59,6 +59,7 @@
 - (void)becomeActiveTool;
 - (void)setCurrentTarget:(id)arg1;
 - (id)currentTarget;
+- (void)dealloc;
 - (void)cursorUpdate:(id)arg1;
 - (void)didRemoveAsHandlerForTimeline:(id)arg1;
 - (void)willRemoveAsHandlerForTimeline:(id)arg1;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     struct __CFArray *_waitingThreads;
     int _maxTextureSizeHalfFloat;
     unsigned long long _maxTextureSizeInBytes;
+    id <MTLDevice> _mtlDevice;
     FFHGRendererManager *_manager;
 }
 
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (struct HGRenderer *)renderer;
 - (id)description;
 - (id)gpuName;
+- (id)getMTLDeviceForRenderer;
 - (id)_gpuNameInternal;
 - (int)location;
 - (void)_heliumDebugSettingsChanged:(id)arg1;

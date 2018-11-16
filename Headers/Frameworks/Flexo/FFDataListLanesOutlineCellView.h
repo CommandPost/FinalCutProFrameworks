@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) FFRoleColorEnableButton *enableButton; // @synthesize enableButton=_enableButton;
 @property(nonatomic) NSView *containerView; // @synthesize containerView=_containerView;
 @property(nonatomic) BOOL markAsExpandingOrCollapsing; // @synthesize markAsExpandingOrCollapsing=_markAsExpandingOrCollapsing;
+- (void)mouseDown:(id)arg1;
 - (void)pollForMouseRollover;
 - (void)updateTrackingAreas;
 - (void)mouseExited:(id)arg1;

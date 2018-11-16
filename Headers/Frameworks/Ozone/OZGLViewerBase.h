@@ -14,14 +14,12 @@
     struct OZViewerState *_pViewerState;
     double _border;
     vector_cdb86442 *_pChannelChanged;
-    struct PCAtomicValue *_pAreChannelsEvaluated;
     CDStruct_1b6d18a9 _startRecordTime;
     CDStruct_1b6d18a9 _endRecordTime;
     BOOL _recordPastBegin;
     BOOL _recordPastEnd;
     BOOL _oldRecordMode;
     BOOL _isRecording;
-    struct PCAtomicValue *_pRetainCount;
     double _originalPanX;
     double _originalPanY;
     double _originalZoom;

@@ -6,18 +6,27 @@
 
 #import "CALayer.h"
 
+#import "FFVideoScopesWaveformYScaling.h"
 #import "FFVideoScopesZoomFactor.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface FFWaveformBackgroundLayer : CALayer <FFVideoScopesZoomFactor>
+@interface FFWaveformBackgroundLayer : CALayer <FFVideoScopesZoomFactor, FFVideoScopesWaveformYScaling>
 {
     float _zoomFactor;
+    long long _yScale;
+    double _markerYPos;
+    BOOL _markerStrongStyle;
     CDStruct_3de7261d _state;
 }
 
 - (void)drawGridInContext:(struct CGContext *)arg1 dirtyRect:(struct CGRect)arg2 contentsScale:(double)arg3;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)actionForKey:(id)arg1;
+- (void)setMarkerYPos:(double)arg1 strongStyle:(BOOL)arg2;
+- (long long)videoScopesWaveformYScale;
+- (void)setVideoScopesWaveformYScale:(long long)arg1;
 - (void)setDisplayMode:(long long)arg1;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)setShowGuides:(BOOL)arg1;
@@ -26,6 +35,13 @@ __attribute__((visibility("hidden")))
 - (void)buildSublayers;
 - (void)removeFromSuperlayer;
 - (void)dealloc;
+- (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

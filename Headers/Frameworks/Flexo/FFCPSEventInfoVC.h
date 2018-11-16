@@ -27,20 +27,20 @@ __attribute__((visibility("hidden")))
     NSImageView *_eventProjectIcon;
 }
 
-@property(retain, nonatomic) NSImageView *eventProjectIcon; // @synthesize eventProjectIcon=_eventProjectIcon;
-@property(retain, nonatomic) LKTextField *eventNumProjectsLabel; // @synthesize eventNumProjectsLabel=_eventNumProjectsLabel;
-@property(retain, nonatomic) LKTextField *eventDebugLabel; // @synthesize eventDebugLabel=_eventDebugLabel;
+@property(readonly, nonatomic) NSImageView *eventProjectIcon; // @synthesize eventProjectIcon=_eventProjectIcon;
+@property(readonly, nonatomic) LKTextField *eventNumProjectsLabel; // @synthesize eventNumProjectsLabel=_eventNumProjectsLabel;
+@property(readonly, nonatomic) LKTextField *eventDebugLabel; // @synthesize eventDebugLabel=_eventDebugLabel;
 @property(retain, nonatomic) FFEventRecord *currentEventRecord; // @synthesize currentEventRecord=_currentEventRecord;
-@property(retain, nonatomic) FFCPSClapperboardView *eventPosterView; // @synthesize eventPosterView=_eventPosterView;
-@property(retain, nonatomic) NSImageView *eventInfoIcon; // @synthesize eventInfoIcon=_eventInfoIcon;
-@property(retain, nonatomic) LKTextField *eventLastModifiedLabel; // @synthesize eventLastModifiedLabel=_eventLastModifiedLabel;
-@property(retain, nonatomic) LKTextField *eventEventSizeLabel; // @synthesize eventEventSizeLabel=_eventEventSizeLabel;
-@property(retain, nonatomic) LKTextField *eventNumAudioFilesLabel; // @synthesize eventNumAudioFilesLabel=_eventNumAudioFilesLabel;
-@property(retain, nonatomic) LKTextField *eventNumStillsLabel; // @synthesize eventNumStillsLabel=_eventNumStillsLabel;
-@property(retain, nonatomic) LKTextField *eventClipTotalDurationLabel; // @synthesize eventClipTotalDurationLabel=_eventClipTotalDurationLabel;
-@property(retain, nonatomic) LKTextField *eventNumClipsLabel; // @synthesize eventNumClipsLabel=_eventNumClipsLabel;
-@property(retain, nonatomic) LKTextField *eventDateRangesLabel; // @synthesize eventDateRangesLabel=_eventDateRangesLabel;
-@property(retain, nonatomic) LKTextField *eventTitleLabel; // @synthesize eventTitleLabel=_eventTitleLabel;
+@property(readonly, nonatomic) FFCPSClapperboardView *eventPosterView; // @synthesize eventPosterView=_eventPosterView;
+@property(readonly, nonatomic) NSImageView *eventInfoIcon; // @synthesize eventInfoIcon=_eventInfoIcon;
+@property(readonly, nonatomic) LKTextField *eventLastModifiedLabel; // @synthesize eventLastModifiedLabel=_eventLastModifiedLabel;
+@property(readonly, nonatomic) LKTextField *eventEventSizeLabel; // @synthesize eventEventSizeLabel=_eventEventSizeLabel;
+@property(readonly, nonatomic) LKTextField *eventNumAudioFilesLabel; // @synthesize eventNumAudioFilesLabel=_eventNumAudioFilesLabel;
+@property(readonly, nonatomic) LKTextField *eventNumStillsLabel; // @synthesize eventNumStillsLabel=_eventNumStillsLabel;
+@property(readonly, nonatomic) LKTextField *eventClipTotalDurationLabel; // @synthesize eventClipTotalDurationLabel=_eventClipTotalDurationLabel;
+@property(readonly, nonatomic) LKTextField *eventNumClipsLabel; // @synthesize eventNumClipsLabel=_eventNumClipsLabel;
+@property(readonly, nonatomic) LKTextField *eventDateRangesLabel; // @synthesize eventDateRangesLabel=_eventDateRangesLabel;
+@property(readonly, nonatomic) LKTextField *eventTitleLabel; // @synthesize eventTitleLabel=_eventTitleLabel;
 - (void)setPosterViewForEvent:(id)arg1;
 - (void)setDisplayToEvent:(id)arg1;
 - (void)clearDisplay;

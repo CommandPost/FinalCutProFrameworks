@@ -6,13 +6,14 @@
 
 #import <Flexo/FFMDToggleSidebarModule.h>
 
-@class FFAnchoredSequence, FFEffectLibraryCollectionView, LKImageView, NSDictionary, NSScrollView;
+@class FFAnchoredSequence, FFEffectLibraryCollectionView, LKImageView, LKTextField, NSDictionary, NSScrollView;
 
 @interface FFMDMapModule : FFMDToggleSidebarModule
 {
     NSScrollView *_scrollView;
     FFEffectLibraryCollectionView *_effectCollectionView;
     LKImageView *_headerIcon;
+    LKTextField *_headerTitle;
     FFAnchoredSequence *_currentSequence;
     NSDictionary *_sortOrder;
 }

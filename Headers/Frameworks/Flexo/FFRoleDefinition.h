@@ -15,7 +15,6 @@
 + (id)fcpDefinedRoleSets;
 + (id)fcpDefinedRoles;
 + (id)genericRoleDefinitionWithRoleSet:(id)arg1;
-+ (id)roleDefinitionWithRoleSet:(id)arg1 roleName:(id)arg2;
 + (id)roleSetWithType:(int)arg1 roleSetName:(id)arg2;
 + (id)genericRoleDefinitionWithType:(int)arg1 roleSetName:(id)arg2;
 + (id)roleDefinitionWithType:(int)arg1 roleSetName:(id)arg2 roleName:(id)arg3;

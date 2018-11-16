@@ -15,8 +15,10 @@
 }
 
 + (void)update_convertMergedClipMediaComponentsForObject:(id)arg1;
-+ (id)newClipLayoutForMediaSources:(id)arg1 andMediaSourceChannels:(id)arg2;
-+ (id)newClipLayoutItemForMediaSource:(id)arg1 andMediaSourceChannels:(id)arg2 useDefaultSourceEnable:(BOOL)arg3;
++ (id)newDefaultClipLayoutItemsForMediaSources:(id)arg1 mediaSourceChannels:(id)arg2 useDefaultSourceEnable:(BOOL)arg3 catalogVersion:(int)arg4;
++ (id)newDefaultClipLayoutItemsForMediaSources:(id)arg1 mediaSourceChannels:(id)arg2 useDefaultSourceEnable:(BOOL)arg3;
++ (id)_newClipLayoutItemForMediaSource:(id)arg1 mediaSourceChannels:(id)arg2 useDefaultSourceEnable:(BOOL)arg3;
++ (id)newClipLayoutItemForMediaSource:(id)arg1 mediaSourceChannels:(id)arg2;
 + (id)inferAudioSourceDictForAssetID:(id)arg1 withMediaComponents:(id)arg2;
 + (id)mediaForMediaSourceObject:(id)arg1;
 + (id)defaultMediaSourceDescriptionsForAudioSourcePropertiesMap:(id)arg1 usingMedia:(id)arg2;

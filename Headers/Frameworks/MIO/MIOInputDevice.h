@@ -6,7 +6,7 @@
 
 #import <MIO/MIODevice.h>
 
-@class MIODeck, MIOHALDevice, MIOInputFrameProcessor, MIOInputSegment, MIOTimecode, NSConditionLock, NSMutableArray, NSMutableDictionary, NSString, NSTimer;
+@class MIOAVFInputFrameProcessor, MIODeck, MIOHALDevice, MIOInputSegment, MIOTimecode, NSConditionLock, NSMutableArray, NSMutableDictionary, NSString, NSTimer;
 
 @interface MIOInputDevice : MIODevice
 {
@@ -37,7 +37,7 @@
     int mNoDataDetectionMode;
     BOOL mDeviceInCameraMode;
     NSString *mDestinationFilePath;
-    MIOInputFrameProcessor *mFrameProcessor;
+    MIOAVFInputFrameProcessor *mFrameProcessor;
     int mInputStyle;
     struct OpaqueCMIOGraph *mRADGraph;
     NSTimer *mNoDataDetectionTimerRAD;
@@ -106,11 +106,6 @@
 - (id)currentSegment;
 - (void)setCurrentSegment:(id)arg1;
 - (BOOL)startProcessing;
-- (void)setChunkSize;
-- (BOOL)setupPulldownRemovalForSubSegment:(id)arg1 isTape:(BOOL)arg2;
-- (BOOL)setIngestObject:(id)arg1 andRefCon:(void *)arg2;
-- (BOOL)setRADFilePaths:(id)arg1;
-- (BOOL)setReadBufferSize:(unsigned int)arg1;
 - (void)relinquishDevice;
 - (BOOL)prepareDeviceForClip:(int)arg1;
 - (id)destinationFilePath;
@@ -118,13 +113,9 @@
 - (id)destinationFolderPath;
 - (void)setDestinationFolderPath:(id)arg1;
 - (void)getVideoRate:(int *)arg1 audioRate:(int *)arg2 audioChannels:(int *)arg3;
-- (void)setupMetadataFileWriterOptions:(id)arg1;
 - (id)cmioMetadaDictionaryWithObject:(id)arg1 forKey:(id)arg2 inLocale:(id)arg3;
-- (BOOL)setVideoOn:(BOOL)arg1 audioOn:(BOOL)arg2 channelMap:(id)arg3 targetAudioFormat:(id)arg4 matrixStereo:(BOOL)arg5 bitsPerSample:(unsigned int)arg6;
 - (BOOL)setupTapeVideoAndAudio;
 - (BOOL)nodeIsConnected:(int)arg1 toNode:(int)arg2;
-- (BOOL)setStartTimecode:(id)arg1;
-- (BOOL)setCMIOInAndOutForSubSegment:(id)arg1;
 - (long long)time64SpecificationDenominator:(double)arg1;
 - (long long)time64SpecificationNumerator:(double)arg1 framecount:(long long)arg2;
 - (void)setInputStyle:(int)arg1;

@@ -6,7 +6,7 @@
 
 #import <Flexo/FFInspectorModule.h>
 
-@class FFInspectorModuleOZViewCtlrDelegate, NSBox, NSMapTable, NSSet, NSString, NSView, OZViewCtlrRoot;
+@class FFEffect, FFInspectorModuleOZViewCtlrDelegate, NSBox, NSMapTable, NSSet, NSString, NSView, OZViewCtlrRoot;
 
 @interface FFInspectorModuleChannels : FFInspectorModule
 {
@@ -22,24 +22,31 @@
     BOOL _currentItemsReadLockHeld;
     BOOL _observingUserDefaults;
     long long _suspendEffectsChangedObserving;
+    unsigned int _buildContextVisibilityFlags;
+    BOOL _hideKeyframeBlocks;
     NSView *_customContainerView;
+    FFEffect *_needsToReleaseThisDummyEffect;
     NSSet *_observedItems;
 }
 
 + (id)selectedAnchoredObjectsUsingController:(id)arg1;
++ (void)setIsCollapsed:(BOOL)arg1 forRootFolder:(id)arg2;
+@property(nonatomic) BOOL hideKeyframeBlocks; // @synthesize hideKeyframeBlocks=_hideKeyframeBlocks;
+@property(nonatomic) unsigned int buildContextVisibilityFlags; // @synthesize buildContextVisibilityFlags=_buildContextVisibilityFlags;
 @property(retain, nonatomic) NSView *customContainerView; // @synthesize customContainerView=_customContainerView;
 - (BOOL)_timeInRangeOfCurrentItems:(CDStruct_1b6d18a9)arg1 container:(id)arg2;
 - (id)selectedItemForChannel:(id)arg1;
 - (id)_selectedItemForChannel:(id)arg1;
-- (void)_setupChannelInspector;
+- (void)_setupChannelInspector:(BOOL)arg1;
+- (id)translateInspectedItemToPrimaryIfSequence:(id)arg1;
 - (Class)_inspectorDelegateClass;
 - (void)_rebuildInspectorWithChannelFolders:(id)arg1 currentItems:(id)arg2 buildContext:(id)arg3 shouldReadLock:(BOOL)arg4;
 - (void)_removeObservingForCurrentItems;
 - (void)_addObservingForCurrentItems;
+- (BOOL)makeViewResizeHeight;
 - (BOOL)shouldEncloseInScrollView;
 - (BOOL)shouldInspectChannelID:(unsigned int)arg1;
 - (BOOL)canInspectTabIdentifier:(id)arg1 forItem:(id)arg2;
-- (void)toggleColorCorrectionOff:(id)arg1;
 - (void)delete:(id)arg1;
 - (void)shiftDelete:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
@@ -54,6 +61,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_updateChannelFooterForCurrentItems;
 - (void)notifyUpdateChannelFooterForCurrentItems;
+- (void)forceInspectorRebuild;
 - (void)_rebuildChannelInspector;
 - (void)notifyRebuildChannelInspector;
 - (void)timeRateChangedForContext:(id)arg1;
@@ -72,6 +80,7 @@
 - (void)removeObservingForItems:(id)arg1;
 - (void)addObservingForItems:(id)arg1;
 - (void)updateChannelFooterForItems:(id)arg1;
+- (void)stopPlaybackForChannel:(id)arg1;
 - (void)setCurrentTime:(CDStruct_1b6d18a9)arg1 forChannel:(id)arg2;
 - (CDStruct_1b6d18a9)griddedTimeForChannel:(id)arg1;
 - (CDStruct_1b6d18a9)currentTimeForChannel:(id)arg1;

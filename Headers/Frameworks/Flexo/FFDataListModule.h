@@ -20,7 +20,7 @@
     BOOL _syncingToTimelineSelection;
     BOOL _timelineSelectionChangingViaTimelineIndex;
     int _curMode;
-    struct FFProcrastinatedDispatch_t _procrastinatedReload;
+    struct PCProcrastinatedDispatch_t _procrastinatedReload;
     NSSet *_items;
     NSArray *_arrangedItems;
     NSMutableDictionary *_subpredicateToIdentifierMap;

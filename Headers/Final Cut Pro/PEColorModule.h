@@ -6,17 +6,12 @@
 
 #import "LKViewModule.h"
 
-@class NSArray, NSMutableArray, NSView;
+@class NSView;
 
 @interface PEColorModule : LKViewModule
 {
     NSView *_headerView;
     NSView *_footerView;
-    BOOL _observingSelection;
-    NSArray *_currentSelectedItems;
-    NSMutableArray *_currentColorItems;
-    NSMutableArray *_observedActiveVariantItems;
-    BOOL _cachedHasSetupItems;
 }
 
 + (id)defaultModuleNibName;

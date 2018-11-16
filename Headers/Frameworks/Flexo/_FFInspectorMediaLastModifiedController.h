@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)editButtonIsHidden;
 - (void)hideEditButton;
 - (void)showEditButton;
+- (void)setColorAnd360Info:(id)arg1;
 - (void)setLastModifiedDate:(id)arg1;
 - (void)_updateLastModifiedTextFieldWithState:(int)arg1;
 - (void)dealloc;

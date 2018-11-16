@@ -24,7 +24,11 @@
 @property(readonly, nonatomic) NSMapTable *objectsTable; // @synthesize objectsTable=_objectsTable;
 @property(nonatomic) unsigned long long sortOrder; // @synthesize sortOrder=_sortOrder;
 @property(nonatomic) BOOL allowsDuplicateObjects; // @synthesize allowsDuplicateObjects=_allowsDuplicateObjects;
+- (BOOL)isNodeOccluded:(id)arg1;
+- (BOOL)isRangeOccluded:(struct _TLKRange)arg1 inOcclusionRanges:(id)arg2;
+- (id)occlusionRangesForNode:(id)arg1 withNodeProcessingBlock:(CDUnknownBlockType)arg2;
 - (id)findNextLayoutGraphNode:(id)arg1 delta:(long long)arg2 inRange:(struct _TLKRange)arg3;
+- (id)findNodesOnNextRow:(id)arg1 delta:(long long)arg2 inRange:(struct _TLKRange)arg3;
 - (id)nextVerticalIndexTableKey:(long long)arg1 fromVerticalIndexTableKey:(id)arg2;
 - (void)sortRowsByTimeRange;
 - (void)sortRowsUsingComparator:(CDUnknownBlockType)arg1;

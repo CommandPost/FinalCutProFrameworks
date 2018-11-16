@@ -6,7 +6,7 @@
 
 #import <Flexo/FFInspectorModule.h>
 
-@class LKButton, NSTabView, NSTextField, NSView;
+@class FFInspectorTabDFRController, LKButton, NSStackView, NSTabView, NSTextField, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorTabModule : FFInspectorModule
@@ -17,12 +17,15 @@ __attribute__((visibility("hidden")))
     LKButton *_imageButtonTwo;
     LKButton *_imageButtonThree;
     LKButton *_imageButtonFour;
+    LKButton *_imageButtonFive;
+    NSStackView *_buttonsSackView;
     NSTextField *_inspectorTitle;
     NSTextField *_durationField;
     NSView *_accessoryFooterView;
     BOOL _needToRebuildInspector;
     BOOL _rebuildingInspector;
-    struct FFProcrastinatedDispatch_t _procrastinatedContext;
+    FFInspectorTabDFRController *_dfrController;
+    struct PCProcrastinatedDispatch_t _procrastinatedContext;
 }
 
 - (void)openSettingsWithModule:(id)arg1;
@@ -34,6 +37,8 @@ __attribute__((visibility("hidden")))
 - (void)_rebuildIfTabsChanged;
 - (void)_setupFooter;
 - (void)_selectInspectorTab:(unsigned long long)arg1;
+- (id)touchBarImageForIdentifier:(id)arg1;
+- (id)altImageForInspectorTab:(id)arg1;
 - (id)imageForInspectorTab:(id)arg1;
 - (void)_setupTabSelector;
 - (id)newTabSelectorButtonWithTitle:(id)arg1 tag:(long long)arg2;
@@ -54,12 +59,37 @@ __attribute__((visibility("hidden")))
 - (id)visibleSubmodules;
 - (void)setInspectorModule:(id)arg1;
 - (void)setCurrentModule:(id)arg1;
+- (void)selectVideoTabIfColorTabSelected;
+- (void)selectColorTab;
 - (void)selectInfoTab;
 - (void)selectTab:(id)arg1;
 - (void)selectPreviousTabViewItemAction:(id)arg1;
 - (void)selectNextTabViewItemAction:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)selectNextVariantInSelection:(id)arg1;
+- (void)selectPreviousVariantInSelection:(id)arg1;
+- (void)toggleInsideColorMask:(id)arg1;
+- (id)supplementalTargetForAction:(SEL)arg1 sender:(id)arg2;
+- (void)nextColorEffect:(id)arg1;
+- (void)previousColorEffect:(id)arg1;
+- (BOOL)goToPreviousNextColorEffect:(BOOL)arg1;
+- (BOOL)canGoToPreviousNextColorEffect:(BOOL)arg1;
+- (void)toggleAllColorCorrectionOff:(id)arg1;
+- (void)addHueSaturationEffect:(id)arg1;
+- (void)addColorCurvesEffect:(id)arg1;
+- (void)addColorWheelsEffect:(id)arg1;
+- (void)addColorBoardEffect:(id)arg1;
+- (void)addColorEffect:(id)arg1 effectID:(id)arg2 actionName:(id)arg3;
+- (void)toggleAllColorCorrectionOff;
+- (BOOL)canToggleAllColorEffects;
+- (void)toggleSelectedEffectsOff:(id)arg1;
+- (void)toggleEffectOnOff;
+- (BOOL)canToggleSelectedVideoEffects;
 - (id)localModuleActions;
+- (unsigned long long)tabViewSelectedItemIndex;
+- (id)tabViewItems;
+- (void)selectInspectorTab:(unsigned long long)arg1;
+- (id)touchBar;
 - (void)_rangeInvalidation:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (unsigned long long)labelAlignment;

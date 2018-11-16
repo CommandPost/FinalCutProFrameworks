@@ -9,7 +9,7 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class MIOInputSubSegment, MIORADClip, MIORADVolume, NSDictionary, NSNumber, NSString;
+@class MIOInputSubSegment, MIORADClip, NSDictionary, NSHashTable, NSNumber, NSString;
 
 @interface FFMIORADAsset : FFAsset <NSCoding, NSCopying>
 {
@@ -23,14 +23,14 @@
     BOOL _isTempAsset;
     MIOInputSubSegment *_subSegment;
     CDStruct_1b6d18a9 _originalMediaStart;
-    MIORADVolume *_radVolume;
+    NSHashTable *_radVolumes;
     NSNumber *_assetImportPercentageDone;
 }
 
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 @property(retain) NSNumber *assetImportPercentageDone; // @synthesize assetImportPercentageDone=_assetImportPercentageDone;
-@property(nonatomic) MIORADVolume *radVolume; // @synthesize radVolume=_radVolume;
+@property(readonly, retain, nonatomic) NSHashTable *radVolumes; // @synthesize radVolumes=_radVolumes;
 @property(nonatomic) CDStruct_1b6d18a9 originalMediaStart; // @synthesize originalMediaStart=_originalMediaStart;
 @property(retain, nonatomic) MIOInputSubSegment *subSegment; // @synthesize subSegment=_subSegment;
 @property(nonatomic) CDStruct_1b6d18a9 durationForOfflineProvider; // @synthesize durationForOfflineProvider=_durationForOfflineProvider;
@@ -40,6 +40,7 @@
 @property BOOL ingested; // @synthesize ingested=_ingested;
 @property(retain, nonatomic) NSString *clipID; // @synthesize clipID=_clipID;
 @property(retain, nonatomic) MIORADClip *clip; // @synthesize clip=_clip;
+- (BOOL)canRebuildAudioProperties;
 - (void)updateGPSMetadata;
 - (long long)timecodeDisplayDropFrame;
 - (int)highQualityOfflineReason;

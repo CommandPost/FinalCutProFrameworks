@@ -11,6 +11,8 @@
 }
 
 - (void)applyToDocument:(struct OZDocument *)arg1;
+- (void)set360ProjectMode:(int)arg1;
+- (int)get360ProjectMode;
 - (void)setFrameRate:(double)arg1;
 - (double)frameRate;
 - (void)setFieldRenderingMode:(int)arg1;
@@ -26,7 +28,7 @@
 - (BOOL)isEqualToPreset:(id)arg1;
 - (void)dealloc;
 - (id)initWithContentsOfFile:(id)arg1;
-- (id)initWithPath:(id)arg1 name:(id)arg2;
+- (id)initWithPath:(id)arg1 name:(id)arg2 tag:(id)arg3;
 
 @end
 

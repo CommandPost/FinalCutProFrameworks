@@ -11,11 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface FFInspectorTabSplitViewModule : FFInspectorModule
 {
-    FFInspectorTabSplitView *_splitView;
     BOOL _needsSetup;
+    FFInspectorTabSplitView *_splitView;
     NSMapTable *_translatesAutoresizingMaskIntoConstraintsMap;
 }
 
+- (void)forceInspectorRebuild;
 - (id)moduleFooterAccessoryView;
 - (id)moduleAccessoryView;
 - (void)setInspectorModule:(id)arg1;
@@ -25,9 +26,10 @@ __attribute__((visibility("hidden")))
 - (void)module:(id)arg1 didReorderSubmodule:(id)arg2;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)_setupCurrentItems;
+- (void)setupTabCurrentItems;
 - (void)setCurrentItems:(id)arg1;
 - (void)setupAutosaveName;
+- (double)forcedHeightForLastSplit;
 - (void)teardownAutosaveName;
 - (BOOL)loadView;
 - (void)dealloc;

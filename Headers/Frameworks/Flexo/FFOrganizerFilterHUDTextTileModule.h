@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     LKPopUpButton *_comparisonPopup;
     LKTextField *_textField;
-    struct FFProcrastinatedDispatch_t _textEntryProcrstinatedDispatch;
+    struct PCProcrastinatedDispatch_t _textEntryProcrstinatedDispatch;
 }
 
 @property(readonly, nonatomic) LKTextField *textField; // @synthesize textField=_textField;

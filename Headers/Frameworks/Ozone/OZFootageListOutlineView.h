@@ -16,6 +16,7 @@
 - (void)keyDown:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (id)menuForEvent:(id)arg1;
+- (void)awakeFromNib;
 - (void)dealloc;
 
 @end

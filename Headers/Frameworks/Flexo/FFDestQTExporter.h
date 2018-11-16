@@ -6,7 +6,7 @@
 
 #import <Flexo/FFDestRenderer.h>
 
-@class FFMovieWriter, NSArray, NSError, NSMutableArray, NSString;
+@class FFMovieWriter, NSArray, NSDictionary, NSError, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFDestQTExporter : FFDestRenderer
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     BOOL _requestStraightAlpha;
     CDStruct_1b6d18a9 _firstFrameTimeOffset;
     int _framesQueuedToEncoderButNotYetReturned;
+    NSDictionary *_hdrMetadata;
     BOOL _trialRunPass;
     BOOL _smartMPEG2Export;
     int _bitRate;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
     struct __CFArray *_reorderBuffer;
 }
 
+@property(retain) NSDictionary *hdrMetadata; // @synthesize hdrMetadata=_hdrMetadata;
 @property(nonatomic) BOOL requestStraightAlpha; // @synthesize requestStraightAlpha=_requestStraightAlpha;
 @property(nonatomic) BOOL ignoreAlphaChannel; // @synthesize ignoreAlphaChannel=_ignoreAlphaChannel;
 @property(nonatomic) BOOL downscaleToQuarterRes; // @synthesize downscaleToQuarterRes=_downscaleToQuarterRes;
@@ -54,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (int)_encodeFrame:(id)arg1 withPassThroughBuffer:(struct opaqueCMSampleBuffer *)arg2;
 - (void)_conformPixelBufferForDVEncoding:(struct __CVBuffer **)arg1;
 - (void)_setPixelBufferAttachments:(struct __CVBuffer *)arg1;
-- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
+- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
 - (void)stop;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
 - (id)supportedPixelFormats;

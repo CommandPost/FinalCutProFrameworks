@@ -4,6 +4,8 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSObject<OS_dispatch_queue>;
+
 #pragma mark Function Pointers and Blocks
 
 typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
@@ -27,8 +29,110 @@ struct CGSize {
     double _field2;
 };
 
+struct HMD {
+    struct IVRSystem *_field1;
+    struct IVRCompositor *_field2;
+    struct TrackedDevicePose_t _field3[16];
+    struct Texture_t _field4[2];
+    PCMatrix44Tmpl_93ed1289 _field5[2];
+    float _field6[2];
+    float _field7[2];
+    float _field8[2];
+    float _field9[2];
+    PCMatrix44Tmpl_93ed1289 _field10[2];
+    unsigned int _field11;
+    unsigned int _field12;
+};
+
+struct HMDMatrices {
+    struct PCVector3<double> _field1;
+    struct PCQuat<double> _field2;
+    PCMatrix44Tmpl_93ed1289 _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+    float _field7;
+};
+
+struct HmdMatrix34_t {
+    float _field1[3][4];
+};
+
+struct HmdVector3_t {
+    float _field1[3];
+};
+
+struct IVRCompositor;
+
+struct IVRSystem;
+
+struct PCHMDStats {
+    _Bool statsValid;
+    CDStruct_1b6d18a9 statsTaken;
+    unsigned int dropsSinceLastReport;
+    unsigned int reprojectionsSinceLastReport;
+    unsigned int totalDrops;
+    unsigned int totalReprojections;
+};
+
+struct PCMatrix44Parameters<double> {
+    struct PCVector3<double> _field1;
+    struct PCVector3<double> _field2;
+    int _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+};
+
 struct PCMatrix44Tmpl<double> {
     double _field1[4][4];
+};
+
+struct PCMutex {
+    CDUnknownFunctionPointerType *_vptr$PCMutex;
+    struct _opaque_pthread_mutex_t _Mutex;
+};
+
+struct PCProcrastinatedDispatch_t {
+    struct os_unfair_lock_s lock;
+    double executionTime;
+    double executionTimeLimit;
+    NSObject<OS_dispatch_queue> *queue;
+    CDUnknownBlockType block;
+    CDUnknownFunctionPointerType work;
+    void *workContext;
+    struct PCProcrastinatedDispatch_t **executionContext;
+};
+
+struct PCQuat<double> {
+    double _scalar;
+    struct PCVector3<double> _vector;
+};
+
+struct PCSemaphore {
+    long long _field1;
+    struct _opaque_pthread_cond_t {
+        long long _field1;
+        char _field2[40];
+    } _field2;
+    struct _opaque_pthread_mutex_t _field3;
+};
+
+struct PCTimer {
+    struct time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1, 1000000000>>> _startTime;
+    struct duration<long long, std::__1::ratio<1, 1000000000>> _accumTime;
+    _Bool _started;
+    _Bool _paused;
+    int _numTimings;
+    double _accumSeconds;
+};
+
+struct PCVector3<double> {
+    double _x;
+    double _y;
+    double _z;
 };
 
 struct PC_CMTimePair {
@@ -36,11 +140,39 @@ struct PC_CMTimePair {
     CDStruct_1b6d18a9 second;
 };
 
-#pragma mark Typedef'd Structures
+struct Texture_t {
+    void *_field1;
+    int _field2;
+    int _field3;
+};
 
-typedef struct {
-    unsigned char _field1[16];
-} CDStruct_60067b7e;
+struct TrackedDevicePose_t {
+    struct HmdMatrix34_t _field1;
+    struct HmdVector3_t _field2;
+    struct HmdVector3_t _field3;
+    int _field4;
+    _Bool _field5;
+    _Bool _field6;
+};
+
+struct _opaque_pthread_mutex_t {
+    long long __sig;
+    char __opaque[56];
+};
+
+struct duration<long long, std::__1::ratio<1, 1000000000>> {
+    long long __rep_;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
+struct time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1, 1000000000>>> {
+    struct duration<long long, std::__1::ratio<1, 1000000000>> __d_;
+};
+
+#pragma mark Typedef'd Structures
 
 typedef struct {
     double _field1;
@@ -69,6 +201,17 @@ typedef struct {
 } CDStruct_e83c9415;
 
 // Template types
+typedef struct PCMatrix44Parameters<double> {
+    struct PCVector3<double> _field1;
+    struct PCVector3<double> _field2;
+    int _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+} PCMatrix44Parameters_e1f7bfe2;
+
 typedef struct PCMatrix44Tmpl<double> {
     double _field1[4][4];
 } PCMatrix44Tmpl_93ed1289;

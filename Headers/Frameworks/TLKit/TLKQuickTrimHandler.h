@@ -58,6 +58,7 @@
 - (BOOL)stopTracking:(id)arg1;
 - (BOOL)continueTracking:(id)arg1;
 - (BOOL)startTracking:(id)arg1;
+- (void)dealloc;
 
 @end
 

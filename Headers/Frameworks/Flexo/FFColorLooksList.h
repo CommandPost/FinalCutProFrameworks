@@ -14,11 +14,11 @@
     NSMutableArray *_looks;
 }
 
++ (void)convertToEffectPresets:(BOOL)arg1;
++ (int)channelIDFromPuckType:(int)arg1 boardType:(int)arg2;
 + (BOOL)migrateColorPresets:(id *)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)sharedColorLooksList;
-- (BOOL)loadColorLooksAtIndex:(unsigned long long)arg1 anchoredObject:(id)arg2 error:(id *)arg3;
-- (BOOL)saveColorLooksFromAnchoredObject:(id)arg1 name:(id)arg2 error:(id *)arg3;
 - (id)presetNameFormatter;
 - (id)colorLooksDisplayNameAtIndex:(unsigned long long)arg1;
 - (id)colorLooksObjectAtIndex:(unsigned long long)arg1;

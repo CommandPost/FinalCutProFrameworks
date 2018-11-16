@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     FFInspectorAudioEffectsControllerManager *_effectsManager;
 }
 
-- (BOOL)shouldAddDisclosureButton;
+- (int)shouldAddDisclosureButton;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

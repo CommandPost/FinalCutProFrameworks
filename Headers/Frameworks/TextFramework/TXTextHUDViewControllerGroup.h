@@ -18,7 +18,7 @@
     OZViewController *_lineSpacingCtrl;
     TXAlignmentColorController *_alignmentCtrl;
     BOOL _capturingChannels;
-    list_2d8084dd _styles;
+    list_af8e95fb _styles;
 }
 
 @property(retain, nonatomic) OZViewController *extrusionDepthCtrl; // @synthesize extrusionDepthCtrl=_extrusionDepthCtrl;
@@ -35,8 +35,8 @@
 - (void)notify:(unsigned int)arg1;
 - (void)updateFor3D:(BOOL)arg1;
 - (void)setAssociatedLineSpacingChannels:(vector_358c9849 *)arg1;
-- (void)updateLineSpacingController:(list_281b6609 *)arg1;
-- (void)setAssociatedStyles:(list_2d8084dd *)arg1;
+- (void)updateLineSpacingController:(list_5b338eba *)arg1;
+- (void)setAssociatedStyles:(list_af8e95fb *)arg1;
 - (void)addOrResetAssociatedStyle:(const shared_ptr_e0e110e1 *)arg1 isAdd:(BOOL)arg2;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;

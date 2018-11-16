@@ -46,8 +46,6 @@
 + (id)effectMapURLForPath:(id)arg1 library:(id)arg2 location:(int)arg3;
 + (id)effectMapURLForPath:(id)arg1 libraryOrNil:(id)arg2;
 + (double)backupInterval;
-+ (void)alert:(id)arg1 runModalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (void)alertFinished:(id)arg1 returnCode:(long long)arg2 context:(void *)arg3;
 + (id)oldDefaultBackupLocation;
 + (int)isAnyLibraryUpdating;
 + (void)updateLegacyBackupLocation;
@@ -176,6 +174,7 @@
 - (void)updateFinished:(id)arg1;
 - (void)saveUpdatedItemsCheckpoint;
 - (void)updateWithHandler:(id)arg1;
+- (void)update_libraryColorProcessingFromWideGamutToWideGamutHDR;
 - (void)update_addAnyMissingDefaultSubrolesForBuiltInRoles;
 - (void)update_fixUpdateHistoryForJumper:(int)arg1;
 - (void)update_organizedTimeline;
@@ -231,6 +230,7 @@
 - (id)initWithType:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (void)setExcludeFromTimeMachineBackup:(BOOL)arg1;
+- (BOOL)shouldExcludeFromTimeMachineBackup;
 - (void)makeWindowControllers;
 - (id)windowNibName;
 - (BOOL)usesFileLock;

@@ -33,7 +33,9 @@ __attribute__((visibility("hidden")))
 - (id)_newSourceForMaskInput:(id)arg1 offset:(CDStruct_1b6d18a9)arg2 identifier:(id)arg3 videoProps:(id)arg4;
 - (id)_newSourceForSubeffectArray:(id)arg1 input:(id)arg2 offset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4 videoProps:(id)arg5;
 - (int)getEffectSchedulingFlags;
-- (void)effectWasAddedToStack:(int)arg1;
+- (void)setEffectStack:(id)arg1;
+- (void)effectDeactivated;
+- (void)effectActivated:(int)arg1;
 - (BOOL)supportsReentrancy;
 - (id)keyframeableChannels;
 - (CDStruct_bdcb2b0d)getContextBasedMD5Adjustment:(id)arg1;
@@ -48,12 +50,16 @@ __attribute__((visibility("hidden")))
 - (void)createChannelsInFolder:(id)arg1;
 - (id)inputKeys;
 - (id)curveDisplayName;
+- (BOOL)isMaskedEffect;
+- (void)maskWasRemoved;
+- (void)maskWasAdded;
 - (void)removeObjectFromMasksAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inMasksAtIndex:(unsigned long long)arg2;
 - (void)_insertObject:(id)arg1 inMasksAtIndex:(unsigned long long)arg2 notify:(BOOL)arg3;
 @property(readonly, nonatomic) NSArray *masks;
 @property BOOL showMatte; // @dynamic showMatte;
 @property BOOL invertMasks; // @dynamic invertMasks;
+- (void)channelParameterChanged:(id)arg1;
 @property(readonly, nonatomic) NSArray *outerEffects;
 @property(readonly, nonatomic) NSArray *innerEffects;
 - (id)masksFolder;
@@ -65,7 +71,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1;
 @property(nonatomic) BOOL soloActiveMask;
+- (BOOL)selectedOrMaskSelected;
 - (void)selectActiveMask:(id)arg1;
+- (void)deselectAllMasksAndSelf;
 - (void)deselectAllMasks;
 @property(nonatomic) FFMaskBase *activeMask;
 - (BOOL)operationRemoveMaskAtIndex:(unsigned long long)arg1 error:(id *)arg2;

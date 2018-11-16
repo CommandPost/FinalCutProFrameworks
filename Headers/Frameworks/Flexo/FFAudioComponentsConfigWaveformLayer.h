@@ -8,7 +8,7 @@
 
 #import "FFFilmstripLayerDelegate.h"
 
-@class FFFilmstripLayer, NSString;
+@class FFFilmstripLayer, FFWeakPointerValue, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioComponentsConfigWaveformLayer : CALayer <FFFilmstripLayerDelegate>
@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
     struct NSObject *m_skimmable;
     CDStruct_e83c9415 m_filmstripClippedRange;
     int m_thumbnailAudioOptions;
+    FFWeakPointerValue *m_delegate;
 }
 
 @property(readonly, nonatomic) FFFilmstripLayer *filmstripLayer; // @synthesize filmstripLayer=m_filmstripLayer;
+- (BOOL)filmstripLayer:(id)arg1 isThumbnailGenerationPausedForRequest:(id)arg2;
 - (int)thumbnailAudioOptionsForFilmstripLayer:(id)arg1;
 - (BOOL)useImageCache;
 - (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
@@ -29,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)disableFilmstripLayer;
 - (void)updateUIWithRoleColorScheme:(id)arg1 enable:(BOOL)arg2;
 - (void)dealloc;
-- (id)initWithSkimmable:(struct NSObject *)arg1 waveformTimeRange:(CDStruct_e83c9415)arg2 thumbnailAudioOptions:(int)arg3;
+- (id)initWithSkimmable:(struct NSObject *)arg1 waveformTimeRange:(CDStruct_e83c9415)arg2 thumbnailAudioOptions:(int)arg3 delegate:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

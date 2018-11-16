@@ -30,6 +30,7 @@
     NSArray *_savedAnalyzingAudioEffects;
     NSArray *_legacyPreservedOrderIntrinsicEffectIDs;
     FFCHObservableFolder *_audioPropertyChannels;
+    FFEffect *_selectedColorEffect;
     FFAnchoredObject *_anchoredObject;
     NSString *_filterType;
     unsigned int _noOpIntrinsicFlags;
@@ -88,11 +89,13 @@
 + (id)loudnessAnalyzerEffectID;
 + (id)loudnessEffectID;
 + (id)surroundPannerEffectID;
++ (void)update_PreEdelXAudioEffectKeyframesInEffectStack:(id)arg1;
 @property(retain, nonatomic) NSArray *legacyPreservedOrderIntrinsicEffectIDs; // @synthesize legacyPreservedOrderIntrinsicEffectIDs=_legacyPreservedOrderIntrinsicEffectIDs;
 @property(readonly, retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 @property(retain, nonatomic) NSString *filterType; // @synthesize filterType=_filterType;
 - (id)pasteboardPropertyListForType:(id)arg1;
 - (id)writableTypesForPasteboard:(id)arg1;
+- (void)colorPropertyChannelChanged:(id)arg1;
 - (void)audioPropertyChannelChanged:(id)arg1;
 - (void)setAudioDuckingChannelData:(id)arg1;
 - (id)audioDuckingChannelData;
@@ -100,7 +103,9 @@
 - (void)insertAudioPropertyChannel:(id)arg1;
 - (unsigned long long)_audioPropertiesInsertIndexForID:(unsigned int)arg1;
 - (void)_releaseAudioPropertyChannels;
+- (id)demandColorPropertyChannels;
 - (id)_demandAudioPropertyChannels;
+- (id)stackPropertyChannels;
 - (id)audioPropertyChannels;
 - (void)setAudioChannelsData:(id)arg1;
 - (id)audioChannelsData;
@@ -175,9 +180,12 @@
 - (id)videoProps;
 - (id)onScreenControls;
 - (void)notifyEffectsStackAnchoredObjectRemovedFromSequence:(id)arg1 sequence:(id)arg2;
+- (void)_undoableNotifyEffectsStackAnchoredObjectRemovedFromSequence:(id)arg1 sequence:(id)arg2;
+- (void)_undoableNotifyEffectsStackAnchoredObjectAdded:(id)arg1 sequence:(id)arg2;
 - (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
 - (void)actionBegin:(id)arg1 animationHint:(id)arg2 deferUpdates:(BOOL)arg3;
 - (void)removeChannel:(id)arg1;
+- (void)fixColorSelectionIfEffectRemoval:(id)arg1;
 - (BOOL)canRemoveChannel:(id)arg1;
 - (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
 - (BOOL)canReorderChannel:(id)arg1;
@@ -198,6 +206,7 @@
 - (void)setCustomEffect:(id)arg1;
 - (void)_setCustomEffect:(id)arg1 sendWasAdded:(BOOL)arg2 reason:(int)arg3;
 - (id)customEffect;
+@property(retain, nonatomic) FFEffect *selectedColorEffect; // @synthesize selectedColorEffect=_selectedColorEffect;
 - (struct CGRect)boundsUpToEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 transformed:(BOOL)arg3;
 - (struct CGRect)boundsUpToEffectIndex:(unsigned long long)arg1 atTime:(CDStruct_1b6d18a9)arg2 transformed:(BOOL)arg3;
 - (unsigned long long)evaluationIndexForEffect:(id)arg1;
@@ -237,6 +246,7 @@
 - (id)anchoredObjectForChannelAssociateModelObject:(id)arg1;
 - (id)intrinsicChannels;
 - (unsigned long long)_indexOfFirstIntrinsicEffectAppliedAfterUserEffects;
+- (id)setToCheckForIntrinsics;
 - (id)_newSourceByAppendingComponentEffectsToSource:(id)arg1 effectCount:(long long)arg2 offset:(CDStruct_1b6d18a9)arg3;
 - (unsigned long long)_insertionPointForDropShadowInArray:(id)arg1;
 - (void)endDefaultIntrinsics:(void *)arg1;
@@ -326,6 +336,7 @@
 - (BOOL)constantRetimeChannel:(id)arg1 rate:(double)arg2 currentRate:(double)arg3 timescale:(int)arg4 retimeEffect:(id)arg5 newStartTime:(CDStruct_1b6d18a9 *)arg6 newEndTime:(CDStruct_1b6d18a9 *)arg7 newInTime:(CDStruct_1b6d18a9 *)arg8 newOutTime:(CDStruct_1b6d18a9 *)arg9;
 - (id)_setupBeforeChangeChannel;
 - (void)checkChannelKeys:(id)arg1 msg:(id)arg2;
+- (BOOL)projectUpdaterConvertToNewColorTabEffectsWithError:(id *)arg1;
 - (BOOL)projectUpdaterConvertHeColorEffectToMaskedEffectWithError:(id *)arg1;
 - (void)removeShapeAndMaskSelectFromStack;
 - (BOOL)operationAddIsolationMaskToEffect:(id)arg1 error:(id *)arg2;
@@ -418,6 +429,13 @@
 - (id)stabilizationEffect;
 - (void)addRollingShutterEffect;
 - (void)addStabilizationEffect;
+- (void)setFirstColorEffectInStackIfExists;
+- (id)colorBrickChannel;
+- (void)updateColorIntrinsicChannels:(id)arg1 selectedEffect:(id)arg2;
+- (void)goToPreviousNextColorEffect:(BOOL)arg1;
+- (BOOL)hasColorTabEffect;
+- (BOOL)canGoToPreviousNextColorEffect:(BOOL)arg1;
+- (id)newColorEffectsInStack:(id *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface FFAudioAngleComponentsLayoutMap : FFAudioObjectComponentsLayoutMap
 {
-    NSMapTable *m_cachedReferenceLayouts;
+    NSMapTable *_cachedReferenceLayouts;
 }
 
 + (Class)layoutClass;

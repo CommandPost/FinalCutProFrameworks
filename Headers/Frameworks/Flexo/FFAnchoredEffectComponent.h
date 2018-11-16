@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (id)inspectorIdentifier;
 - (id)inspectorClassName;
 - (BOOL)hasVideo;
-- (id)onScreenControls;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)effectStackDidLoad:(id)arg1;
 - (id)replaceWithEffectID:(id)arg1;

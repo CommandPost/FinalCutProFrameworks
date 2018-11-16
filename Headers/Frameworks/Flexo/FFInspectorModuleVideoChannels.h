@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)moduleFooterAccessoryView;
 - (Class)_inspectorDelegateClass;
 - (void)dealloc;
+- (id)init;
 
 @end
 

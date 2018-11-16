@@ -6,10 +6,12 @@
 
 #import <Flexo/FFResponderLayer.h>
 
+#import "CALayerDelegate.h"
+
 @class CALayer, CATextLayer, FFImageLayer, LKTextField, NSImage, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFSpeedSegmentLayer : FFResponderLayer
+@interface FFSpeedSegmentLayer : FFResponderLayer <CALayerDelegate>
 {
     id _item;
     id _module;
@@ -161,6 +163,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (void)dealloc;
 - (id)initWithItem:(id)arg1 rect:(struct CGRect)arg2 itemRect:(struct CGRect)arg3 module:(id)arg4 globalIndex:(int)arg5 visibleIndex:(int)arg6 lastSegment:(BOOL)arg7;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -20,7 +20,7 @@
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 - (BOOL)updateProgress:(float)arg1;
 - (BOOL)userHasCancelled;
-- (void)_setControl:(const struct OZProcessControl *)arg1;
+-     // Error parsing type: v24@0:8r^{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}16, name: _setControl:
 - (id)init;
 
 // Remaining properties

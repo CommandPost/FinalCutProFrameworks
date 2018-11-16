@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     int _insertCounter;
 }
 
+- (void)waitForShutdownAck;
 - (void)shutdown;
 - (void)unscheduleAll;
 - (void)addToken:(id)arg1;

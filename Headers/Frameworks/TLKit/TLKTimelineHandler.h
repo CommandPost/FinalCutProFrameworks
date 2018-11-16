@@ -6,9 +6,11 @@
 
 #import "TLKEventHandler.h"
 
-@class CALayer, TLKItemSkimmingLayer, TLKTimelineView;
+#import "CALayerDelegate.h"
 
-@interface TLKTimelineHandler : TLKEventHandler
+@class CALayer, NSString, TLKItemSkimmingLayer, TLKTimelineView;
+
+@interface TLKTimelineHandler : TLKEventHandler <CALayerDelegate>
 {
     double _cumulativeMagnifyDelta;
     TLKItemSkimmingLayer *_itemSkimmingLayer;
@@ -108,6 +110,12 @@
 - (int)autoscrollDirection;
 @property(readonly) TLKTimelineView *timelineView;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

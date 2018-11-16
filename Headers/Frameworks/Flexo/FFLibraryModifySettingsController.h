@@ -8,11 +8,11 @@
 
 #import "NSOpenSavePanelDelegate.h"
 
-@class FFLibrary, FFLibraryCacheMigrater, LKImageView, NSButton, NSDictionary, NSImageView, NSPopUpButton, NSString, NSTextField, NSURL, NSWindow;
+@class FFLibraryCacheMigrater, FFLibraryDocument, LKImageView, NSButton, NSDictionary, NSImageView, NSPopUpButton, NSString, NSTextField, NSURL, NSWindow;
 
 @interface FFLibraryModifySettingsController : NSWindowController <NSOpenSavePanelDelegate>
 {
-    FFLibrary *_library;
+    FFLibraryDocument *_libraryDocument;
     NSWindow *_parentWindow;
     NSImageView *_applicationIconImage;
     NSPopUpButton *_libraryMediaLocationPopup;
@@ -64,8 +64,8 @@
 - (BOOL)_allOriginalPathsExist;
 - (id)_toolTipForError:(id)arg1 location:(int)arg2;
 - (id)_errorForLocation:(int)arg1 original:(BOOL)arg2;
-- (id)_menuItemForLocation:(int)arg1 original:(BOOL)arg2;
-- (id)_nameForLocationID:(int)arg1 original:(BOOL)arg2 tag:(int *)arg3 url:(id *)arg4;
+- (id)_menuItemForLocation:(int)arg1 wantsOriginal:(BOOL)arg2;
+- (id)_nameForLocationID:(int)arg1 wantsOriginal:(BOOL)arg2 tag:(int *)arg3 url:(id *)arg4;
 - (id)_nameForExternalMediaLocation:(id)arg1 useContainer:(BOOL)arg2;
 - (BOOL)_urlPathContainsBackupPackage:(id)arg1;
 - (BOOL)_commitLibrarySettings;

@@ -16,8 +16,6 @@
     FFTimelineItemAppearanceTable *_timelineItemAppearanceTable;
     id _primaryStoryLane;
     NSSet *_highlightedLanes;
-    id <FFStorylineLane> _storylineLaneFolderAboveSpine;
-    id <FFStorylineLane> _storylineLaneFolderBelowSpine;
     FFOrganizedLaneManager *_laneManager;
     id <FFStoryTimelineActiveItemsDelegate_HACK> _timelineModuleDelegate_HACK;
     long long _overrideResolveConflicts;
@@ -36,8 +34,6 @@
 @property(nonatomic) long long overrideResolveConflicts; // @synthesize overrideResolveConflicts=_overrideResolveConflicts;
 @property id <FFStoryTimelineActiveItemsDelegate_HACK> timelineModuleDelegate_HACK; // @synthesize timelineModuleDelegate_HACK=_timelineModuleDelegate_HACK;
 @property(retain, nonatomic) FFOrganizedLaneManager *laneManager; // @synthesize laneManager=_laneManager;
-@property(retain, nonatomic) id <FFStorylineLane> storylineLaneFolderBelowSpine; // @synthesize storylineLaneFolderBelowSpine=_storylineLaneFolderBelowSpine;
-@property(retain, nonatomic) id <FFStorylineLane> storylineLaneFolderAboveSpine; // @synthesize storylineLaneFolderAboveSpine=_storylineLaneFolderAboveSpine;
 @property(readonly) NSSet *highlightedLanes; // @synthesize highlightedLanes=_highlightedLanes;
 @property(retain, nonatomic) id primaryStoryLane; // @synthesize primaryStoryLane=_primaryStoryLane;
 @property(readonly, nonatomic) FFTimelineItemAppearanceTable *timelineItemAppearanceTable; // @synthesize timelineItemAppearanceTable=_timelineItemAppearanceTable;
@@ -70,6 +66,7 @@
 - (void)setHighlightedState:(BOOL)arg1 forLanes:(id)arg2;
 - (BOOL)isItemLaneFocused:(id)arg1;
 - (void)setExpandedState:(BOOL)arg1 forLanes:(id)arg2;
+- (BOOL)itemLaneAllowsReorder:(id)arg1;
 - (BOOL)itemLaneAllowsFocused:(id)arg1;
 - (BOOL)itemLaneAllowsExpanded:(id)arg1;
 - (void)persistLaneStatesToSequence;
@@ -79,6 +76,8 @@
 - (BOOL)isItemLaneEnabled:(id)arg1;
 - (BOOL)itemLaneAllowsEnabled:(id)arg1;
 - (id)storyLanesForStorylineItem:(id)arg1;
+@property(readonly, nonatomic) id <FFStorylineLane> storylineLaneFolderBelowSpine;
+@property(readonly, nonatomic) id <FFStorylineLane> storylineLaneFolderAboveSpine;
 - (long long)layoutRegionForItemComponent:(id)arg1;
 - (id)audioComponentsForItem:(id)arg1;
 - (unsigned long long)nestingLevelForItemComponent:(id)arg1;

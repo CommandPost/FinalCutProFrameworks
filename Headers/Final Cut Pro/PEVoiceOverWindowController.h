@@ -158,6 +158,7 @@
 - (void)showWindow:(id)arg1;
 - (id)touchBar;
 - (id)init;
+- (void)dealloc;
 - (void)enableMultitake:(id)arg1;
 
 // Remaining properties

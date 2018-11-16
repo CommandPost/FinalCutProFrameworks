@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 + (void)download:(id)arg1 withWait:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (id)download:(id)arg1 error:(id *)arg2;
 + (id)performDownloadUsingBackgroundQueue:(id)arg1 destinationURL:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
-+ (BOOL)isWebURL:(id)arg1;
 + (id)inputBox:(id)arg1 informativeTextWithFormat:(id)arg2;
 @property(retain, nonatomic) NSMutableArray *payload; // @synthesize payload=_payload;
 @property(nonatomic) int state; // @synthesize state=_state;

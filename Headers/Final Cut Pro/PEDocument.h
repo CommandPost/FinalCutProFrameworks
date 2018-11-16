@@ -27,7 +27,6 @@
 + (void)cancelTasks:(id)arg1 forReason:(int)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (id)cancelableTasksForDocument:(id)arg1 error:(id *)arg2;
 + (void)alert:(id)arg1 runModalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (void)alertFinished:(id)arg1 returnCode:(long long)arg2 context:(void *)arg3;
 + (id)makeSequenceActive:(id)arg1;
 + (id)documentForSequence:(id)arg1 createIfNeeded:(BOOL)arg2;
 + (id)documentForProject:(id)arg1;
@@ -58,6 +57,7 @@
 - (void)setLastBackupError:(id)arg1;
 - (id)makeDefaultEvent:(id *)arg1;
 - (void)makeSequenceActive:(id)arg1;
+- (void)close;
 - (void)canCloseDocumentWithDelegate:(id)arg1 shouldCloseSelector:(SEL)arg2 contextInfo:(void *)arg3;
 - (void)updateFinished:(id)arg1;
 - (id)saveChangesString;

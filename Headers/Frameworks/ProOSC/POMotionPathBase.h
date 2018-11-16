@@ -6,13 +6,13 @@
 
 #import <ProOSC/POOnScreenControl.h>
 
-@class NSColor, NSMapTable, NSMenu, NSTimer;
+@class NSColor, NSMapTable, NSTimer;
 
 @interface POMotionPathBase : POOnScreenControl
 {
-    list_54fac194 *_previousSelection;
-    list_54fac194 *_currentSelection;
-    list_54fac194 *_selection;
+    list_9b90a499 *_previousSelection;
+    list_9b90a499 *_currentSelection;
+    list_9b90a499 *_selection;
     int _numHits;
     unsigned int _buffer[512];
     NSMapTable *_GLNames;
@@ -65,9 +65,6 @@
     BOOL _dirty;
     _Bool _visible;
     _Bool _largeAssets;
-    NSMenu *_pOnCurveMenu;
-    NSMenu *_pOnPointMenu;
-    NSMenu *_pOnTangentMenu;
     PCVector2_7e488b7d _menuFilmCoords;
     NSColor *_playerStatusText;
     NSColor *_playerStatusTextUnit;
@@ -117,33 +114,33 @@
 - (_Bool)useControlPolygon;
 - (BOOL)handleRecordWhilePlayback;
 - (_Bool)useTangents;
-- (void)offsetBiasSelected:(list_54fac194 *)arg1 bias:(double)arg2;
-- (void)biasSelected:(list_54fac194 *)arg1 bias:(double)arg2 updateFromLast:(_Bool)arg3;
+- (void)offsetBiasSelected:(list_9b90a499 *)arg1 bias:(double)arg2;
+- (void)biasSelected:(list_9b90a499 *)arg1 bias:(double)arg2 updateFromLast:(_Bool)arg3;
 - (void)setInterpolation:(unsigned int)arg1;
 - (void)setTangentFlag:(struct POPathSelection *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
-- (void)offsetTangents45Selected:(list_54fac194 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 useInitialAngle:(_Bool)arg5;
-- (void)setTangents45Selected:(list_54fac194 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 useInitialAngle:(_Bool)arg5;
-- (void)offsetTangentsSelected:(list_54fac194 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
+- (void)offsetTangents45Selected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 useInitialAngle:(_Bool)arg5;
+- (void)setTangents45Selected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 useInitialAngle:(_Bool)arg5;
+- (void)offsetTangentsSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
 - (void)setTangents:(struct POPathSelection *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
 - (void)setTangents45:(struct POPathSelection *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 useInitialAngle:(_Bool)arg5;
 - (void)saveTangents:(struct POPathSelection *)arg1;
-- (void)weightTangentsSelected:(list_54fac194 *)arg1 enable:(_Bool)arg2;
+- (void)weightTangentsSelected:(list_9b90a499 *)arg1 enable:(_Bool)arg2;
 - (void)weightTangents:(struct POPathSelection *)arg1 enable:(_Bool)arg2;
 - (void)alignTangents:(struct POPathSelection *)arg1;
 - (void)breakTangents:(struct POPathSelection *)arg1;
-- (void)setInterpolationSelected:(list_54fac194 *)arg1 mode:(unsigned int)arg2;
-- (void)flattenSelected:(list_54fac194 *)arg1 valueOnly:(BOOL)arg2;
-- (void)disableSelected:(list_54fac194 *)arg1;
-- (void)lockSelected:(list_54fac194 *)arg1;
+- (void)setInterpolationSelected:(list_9b90a499 *)arg1 mode:(unsigned int)arg2;
+- (void)flattenSelected:(list_9b90a499 *)arg1 valueOnly:(BOOL)arg2;
+- (void)disableSelected:(list_9b90a499 *)arg1;
+- (void)lockSelected:(list_9b90a499 *)arg1;
 - (void)deleteAll;
-- (void)deleteSelected:(list_54fac194 *)arg1;
+- (void)deleteSelected:(list_9b90a499 *)arg1;
 - (void)getNextKeypoint:(CDStruct_1b6d18a9)arg1 nextPoint:(struct POPathSelection *)arg2;
 - (void)getPreviousKeypoint:(CDStruct_1b6d18a9)arg1 prevPoint:(struct POPathSelection *)arg2;
 - (void)getKeypoint:(CDStruct_1b6d18a9)arg1 prevPoint:(struct POPathSelection *)arg2;
 - (void)makeXYZKeypoints:(struct POPathSelection *)arg1 pU:(CDStruct_1b6d18a9 *)arg2 pVX:(double *)arg3 pVY:(double *)arg4 pVZ:(double *)arg5;
-- (BOOL)offsetCurve:(list_54fac194 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
-- (BOOL)offsetSelected:(list_54fac194 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
-- (void)moveSelected:(list_54fac194 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
+- (BOOL)offsetCurve:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
+- (BOOL)offsetSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
+- (void)moveSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
 - (void)drawSelectionRect;
 - (void)getWorldToLocal:(PCMatrix44Tmpl_e98c85ee *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
 - (void)getLocalToWorld:(PCMatrix44Tmpl_e98c85ee *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
@@ -206,19 +203,19 @@
 - (id)returnTangentMenu:(id)arg1;
 - (id)returnCurveMenu:(id)arg1;
 - (id)returnPointMenu:(id)arg1;
-- (void)buildTangentMenu;
-- (void)buildCurveMenu;
-- (void)buildPointMenu;
+- (id)buildTangentMenu;
+- (id)buildCurveMenu;
+- (id)buildPointMenu;
 - (id)menuForEvent:(id)arg1;
 - (void)setUsesDynamicGuides:(_Bool)arg1;
 - (void)setUsesHUDRovingTip:(_Bool)arg1;
 - (void)setAllowsSweepSelection:(_Bool)arg1;
 - (_Bool)allowsSweepSelection;
 - (unsigned int)getPathActivePart;
-- (void)validateSelection:(list_54fac194 *)arg1;
-- (void)cleanSelection:(list_54fac194 *)arg1;
-- (list_54fac194 *)getSelection;
-- (list_54fac194 *)getCurrentSelection;
+- (void)validateSelection:(list_9b90a499 *)arg1;
+- (void)cleanSelection:(list_9b90a499 *)arg1;
+- (list_9b90a499 *)getSelection;
+- (list_9b90a499 *)getCurrentSelection;
 - (void)clearGLNamesForObjects;
 - (void *)objectForGLName:(unsigned int)arg1;
 - (unsigned int)createGLNameForObject:(void *)arg1;

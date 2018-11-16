@@ -21,8 +21,8 @@
 + (id)changeLogWithDeletedObjects:(id)arg1 inTable:(id)arg2;
 + (id)changeLogWithInsertedObjects:(id)arg1 inTable:(id)arg2;
 + (id)changeLogWithInsertedObjects:(id)arg1 deletedObjects:(id)arg2 updatedObjects:(id)arg3 inTable:(id)arg4;
-@property(nonatomic) NSMutableDictionary *changesByTable; // @synthesize changesByTable=_changesByTable;
-@property(nonatomic) NSMutableArray *changeLogRecords; // @synthesize changeLogRecords=_changeLogRecords;
+@property(retain, nonatomic) NSMutableDictionary *changesByTable; // @synthesize changesByTable=_changesByTable;
+@property(retain, nonatomic) NSMutableArray *changeLogRecords; // @synthesize changeLogRecords=_changeLogRecords;
 @property(nonatomic) BOOL locked; // @synthesize locked=_locked;
 - (id)deletedObjectsForTable:(id)arg1;
 - (id)updatedObjectsForTable:(id)arg1 changeType:(id)arg2;

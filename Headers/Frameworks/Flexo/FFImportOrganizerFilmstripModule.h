@@ -29,6 +29,7 @@
 - (BOOL)wantsRanges;
 - (BOOL)wantsSkimmerInfo;
 - (id)selectedSidebarItem;
+- (BOOL)isPersistentPlayheadAllowedOnSequence:(id)arg1;
 - (BOOL)shouldDisableRangeSelectionForObject:(id)arg1;
 - (void)_updateChangedChildNode:(id)arg1;
 - (id)changedChildNode;
@@ -59,6 +60,7 @@
 - (void)_updateFilteredRanges;
 - (void)invalidateFileSystemRootNode;
 - (void)_updateFileSystemRootNode;
+- (void)setClusterType:(long long)arg1;
 - (void)sidebarRADVolumeDidEject:(id)arg1;
 - (void)sidebarRADVolumeWillEject:(id)arg1;
 - (BOOL)wantsImportMediaButton;

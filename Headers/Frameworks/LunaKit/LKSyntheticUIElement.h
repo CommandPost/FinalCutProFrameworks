@@ -23,6 +23,8 @@
 + (id)elementWithRole:(id)arg1 parent:(id)arg2 contextObject:(id)arg3;
 + (id)elementWithRole:(id)arg1 parent:(id)arg2 contextInfo:(void *)arg3;
 + (id)handleAttributeNames;
++ (id)listAttributeNames;
++ (id)colorWellAttributeNames;
 + (id)staticTextAttributeNames;
 + (id)groupAttributeNames;
 + (id)valueIndicatorAttributeNames;

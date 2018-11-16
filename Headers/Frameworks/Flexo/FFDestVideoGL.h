@@ -53,7 +53,9 @@ __attribute__((visibility("hidden")))
     NSLock *_lock;
     BOOL _drawingSuspended;
     int _requestedBackground;
-    BOOL _observingPlayerBackground;
+    BOOL _showHDRAsRawValues;
+    BOOL _observingUserDefaults;
+    BOOL _drawFloat;
     int _lateCountDrawing;
     int _displayAttempts;
     FFImage *_blueFrame;
@@ -100,10 +102,11 @@ __attribute__((visibility("hidden")))
 - (id)newOnScreenControlsTextureForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
 - (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_1b6d18a9)frameDurationForMaximumOutputRate;
-- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
+- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
 - (void)_notifyVisibleChanged;
 - (BOOL)_updateVisible;
 - (void)setPlayer:(id)arg1;
+- (BOOL)showHDRAsRawValues;
 - (void)setRangeCheckZebraMode:(unsigned int)arg1;
 - (unsigned int)rangeCheckZebraMode;
 - (int)requestedBackground;

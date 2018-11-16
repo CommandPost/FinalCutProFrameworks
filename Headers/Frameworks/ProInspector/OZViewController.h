@@ -13,7 +13,7 @@
     OZViewControllerGroup *_pParentController;
     NSView *_pView;
     struct OZChannelBase *_pChan;
-    list_e5c8e430 *_pChanList;
+    list_9af5505e *_pChanList;
     BOOL _isHUD;
     BOOL _isEnabled;
     BOOL _ignoreChanEnableState;
@@ -71,7 +71,7 @@
 - (void)aboutToChangeController;
 - (BOOL)ignoreDifferingRootIDs;
 - (BOOL)areMultipleAssociatedChannels;
-- (list_e5c8e430 *)associatedChannelList;
+- (list_9af5505e *)associatedChannelList;
 - (struct OZChannelBase *)associatedChannel;
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
@@ -79,10 +79,10 @@
 - (void)setAssociatedChannel:(struct OZChannelBase *)arg1;
 - (id)topSelectableController;
 - (id)topChannelController;
-- (void)doDrag:(list_e5c8e430 *)arg1 viewList:(id)arg2;
+- (void)doDrag:(list_9af5505e *)arg1 viewList:(id)arg2;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
 - (void)getSelectedControllers:(id)arg1 doShallowSearch:(BOOL)arg2;
-- (void)getTargetChannels:(set_759369c4 *)arg1;
+- (void)getTargetChannels:(set_8ca329ee *)arg1;
 - (void)reset;
 - (void)selectAll;
 - (void)paste;

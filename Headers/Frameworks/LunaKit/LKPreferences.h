@@ -62,7 +62,6 @@
 - (void)addPreferenceNamed:(id)arg1 owner:(id)arg2;
 - (void)dealloc;
 - (id)init;
-- (Class)_proToolbarClass;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -25,8 +25,8 @@
 - (_Bool)alphaWantsInversion;
 - (int)nativeAlphaType;
 - (void)setColorSpace:(struct CGColorSpace *)arg1;
-- (int)logProcessingTargetColorSpace;
-- (id)logProcessingInfo;
+- (int)sourceCCTargetColorSpace;
+- (struct FFSourceColorConformBaseClass *)sourceColorConformer;
 - (struct CGColorSpace *)colorSpace;
 - (void)setPixelTransform:(id)arg1;
 - (id)pixelTransform;

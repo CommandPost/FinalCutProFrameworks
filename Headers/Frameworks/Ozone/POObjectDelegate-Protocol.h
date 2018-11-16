@@ -7,6 +7,8 @@
 @class NSEvent, NSMenu, NSString;
 
 @protocol POObjectDelegate
+- (void)unlock;
+- (void)lock;
 - (void)releaseWriteLock;
 - (void)acquireWriteLock;
 - (void)menuAddTrack:(id)arg1 withActivePart:(struct OZChannelBase *)arg2;
@@ -56,7 +58,7 @@
 - (BOOL)projectPointToObjectX:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
 - (BOOL)applyingFilterInScreenSpace;
 - (void)getLocalToOsc:(PCMatrix44Tmpl_e98c85ee *)arg1 withFlattening:(BOOL)arg2;
-- (void)getOscToWorld:(PCMatrix44Tmpl_e98c85ee *)arg1 extraRotation:(const PCQuat_de30948b *)arg2;
+- (void)getOscToWorld:(PCMatrix44Tmpl_e98c85ee *)arg1 extraRotation:(const PCQuat_8a184614 *)arg2;
 - (int)workingSpace;
 - (void)getInvTransformMatrix:(PCMatrix44Tmpl_e98c85ee *)arg1 transX:(double)arg2 transY:(double)arg3 transZ:(double)arg4 rotX:(double)arg5 rotY:(double)arg6 rotZ:(double)arg7 scaleX:(double)arg8 scaleY:(double)arg9 scaleZ:(double)arg10 shearX:(double)arg11 shearY:(double)arg12 pivotX:(double)arg13 pivotY:(double)arg14 pivotZ:(double)arg15 onlyObj:(BOOL)arg16;
 - (void)getTransformMatrix:(PCMatrix44Tmpl_e98c85ee *)arg1 transX:(double)arg2 transY:(double)arg3 transZ:(double)arg4 rotX:(double)arg5 rotY:(double)arg6 rotZ:(double)arg7 scaleX:(double)arg8 scaleY:(double)arg9 scaleZ:(double)arg10 shearX:(double)arg11 shearY:(double)arg12 pivotX:(double)arg13 pivotY:(double)arg14 pivotZ:(double)arg15 onlyObj:(BOOL)arg16;

@@ -16,7 +16,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFLibrary, FFRole, FFRoleEditorOutlineView, NSButton, NSMutableArray, NSMutableAttributedString, NSPopover, NSScrollView, NSString, NSTableView, NSView;
+@class FFLibrary, FFRole, FFRoleEditorDFRController, FFRoleEditorOutlineView, NSButton, NSMutableArray, NSMutableAttributedString, NSPopover, NSScrollView, NSString, NSTableView, NSView;
 
 @interface FFRoleEditorController : NSWindowController <FFRoleEditorOutlineViewProtocol, FFRoleColorPickerTableViewProtocol, NSOutlineViewDataSource, NSOutlineViewDelegate, NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSTextFieldDelegate, NSPopoverDelegate>
 {
@@ -28,6 +28,8 @@
     FFRole *_rootAudioHeaderRole;
     NSMutableArray *_actions;
     BOOL _observingFirstResponder;
+    FFRoleEditorDFRController *_dfrController;
+    long long _insideControlTextDidEndEditing;
     BOOL _runningModal;
     BOOL _saveBeforeClosing;
     FFRoleEditorOutlineView *_outlineView;
@@ -173,10 +175,16 @@
 - (void)_restoreExpandedMainRoleStates;
 - (long long)runModal;
 - (void)windowDidLoad;
+- (void)_reloadOutlineView:(id)arg1;
 - (void)_rebuildRootMainRoles;
 - (void)windowDidEndLiveResize:(id)arg1;
 - (void)windowDidMove:(id)arg1;
 - (void)_saveWindowFrame;
+- (BOOL)hasExpandedItem;
+- (void)showHideAllSubRoles;
+- (void)addMainAudioRole;
+- (void)addMainVideoRole;
+- (id)touchBar;
 - (void)dealloc;
 - (void)_setupAttributedStrings;
 - (id)initWithLibrary:(id)arg1;

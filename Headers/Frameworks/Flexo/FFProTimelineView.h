@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     struct CGColor *_relatedIndicatorColorRef;
 }
 
+- (BOOL)selectionCanMoveHorizontallyFromItem:(id)arg1 toItem:(id)arg2;
 - (struct CGColor *)relatedItemSelectionColorRef;
 - (struct CGColor *)dependantItemSelectionColorRef;
 - (struct CGColor *)itemSelectionColorRef;

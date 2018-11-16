@@ -16,7 +16,7 @@
 - (unsigned long long)controller:(OZViewController *)arg1 validateDrop:(id <NSDraggingInfo>)arg2 proposedDropLocation:(unsigned int)arg3;
 - (NSArray *)controller:(OZViewController *)arg1 droppedTypes:(NSView *)arg2;
 - (unsigned long long)controller:(OZViewController *)arg1 draggingSourceOperationMaskForChannel:(struct OZChannelBase *)arg2 forLocal:(BOOL)arg3;
-- (void)controller:(OZViewController *)arg1 writeChannels:(list_e5c8e430 *)arg2 toPasteboard:(NSPasteboard *)arg3;
+- (void)controller:(OZViewController *)arg1 writeChannels:(list_9af5505e *)arg2 toPasteboard:(NSPasteboard *)arg3;
 - (BOOL)controller:(OZViewController *)arg1 shouldDragChannel:(struct OZChannelBase *)arg2;
 - (unsigned int)controller:(OZViewController *)arg1 checkboxTypeForChannel:(struct OZChannelBase *)arg2;
 - (void)controller:(OZViewController *)arg1 setName:(NSString *)arg2;
@@ -40,6 +40,7 @@
 - (BOOL)storesCollapsedStateForChannel:(struct OZChannelBase *)arg1;
 - (BOOL)willChangingValueKeyframe:(OZViewController *)arg1;
 - (void)select:(BOOL)arg1 forChan:(struct OZChannelBase *)arg2;
+- (void)stopPlaybackForChannel:(struct OZChannelBase *)arg1;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1 forChannel:(struct OZChannelBase *)arg2;
 - (CDStruct_1b6d18a9)currentTimeForChannel:(struct OZChannelBase *)arg1;
 - (void)processPINotifications;
@@ -49,6 +50,7 @@
 - (struct __CFString *)bundleID;
 
 @optional
+- (BOOL)processAllNilAreaAsLabel;
 - (CDStruct_1b6d18a9)griddedTimeForChannel:(struct OZChannelBase *)arg1;
 - (void)controllerFinishedDrag:(OZViewController *)arg1;
 @end

@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
     NSArray *_tilePulldownTitleArray;
     NSDictionary *_initialFiltersDictionary;
     LKEmptyDFRController *_dfrController;
-    struct FFProcrastinatedDispatch_t _procrastinatedUpdate;
+    struct PCProcrastinatedDispatch_t _procrastinatedUpdate;
     BOOL _observingNotifications;
     FFEventLibraryModule *_organizerDelegate;
 }

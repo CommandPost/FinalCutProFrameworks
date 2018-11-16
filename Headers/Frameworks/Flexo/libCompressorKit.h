@@ -10,6 +10,7 @@
 {
 }
 
++ (Class)CKShareInfoModalClass;
 + (Class)CKYouTubeJobActionClass;
 + (Class)CKYouTubeExportPanelClass;
 + (Class)CKYoukuJobActionClass;

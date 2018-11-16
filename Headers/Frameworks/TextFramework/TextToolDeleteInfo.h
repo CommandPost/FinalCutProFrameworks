@@ -10,7 +10,7 @@
 
 @interface TextToolDeleteInfo : NSObject
 {
-    struct OZRenderManager *_renderManager;
+    // Error parsing type: ^{OZRenderManager={atomic<bool>=AB}^{GLRenderer}@I}, name: _renderManager
     OZGLViewer *_viewer;
     unsigned int _textID;
 }

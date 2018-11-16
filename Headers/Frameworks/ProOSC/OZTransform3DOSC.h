@@ -21,6 +21,7 @@
     BOOL _altKeyDown;
 }
 
++ (BOOL)validate:(id)arg1;
 - (_Bool)isTranslateHandleActive:(int)arg1;
 - (_Bool)isRotateHandleActive:(int)arg1;
 - (_Bool)isFreeMoveHandleActive:(int)arg1;

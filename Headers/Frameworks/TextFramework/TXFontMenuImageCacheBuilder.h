@@ -4,26 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import "OZFontMenuImageCacheBuilder.h"
 
-@class NSMutableDictionary;
-
-@interface TXFontMenuImageCacheBuilder : NSObject
+@interface TXFontMenuImageCacheBuilder : OZFontMenuImageCacheBuilder
 {
-    BOOL _imageCacheIsBuilding;
-    BOOL _imageCacheBuildFinished;
-    BOOL _imageCacheReady;
-    NSMutableDictionary *_cache;
 }
 
 + (id)instance;
-@property(readonly) NSMutableDictionary *cache; // @synthesize cache=_cache;
-@property(readonly) BOOL imageCacheReady; // @synthesize imageCacheReady=_imageCacheReady;
-@property(readonly) BOOL imageCacheBuildFinished; // @synthesize imageCacheBuildFinished=_imageCacheBuildFinished;
-@property(readonly) BOOL imageCacheIsBuilding; // @synthesize imageCacheIsBuilding=_imageCacheIsBuilding;
-- (void)rebuildImageCache:(double)arg1;
-- (id)newImageForFontMenuItem:(id)arg1 size:(struct CGSize)arg2 backingScaleFactor:(double)arg3;
-- (id)init;
+- (struct OZFontCollection *)getSystemFonts;
 
 @end
 

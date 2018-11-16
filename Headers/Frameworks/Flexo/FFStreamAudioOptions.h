@@ -19,7 +19,6 @@
     NSSet *_playObjects;
     NSSet *_indirectPlayObjects;
     NSMapTable *_streamAudioFlagsForPlayObjects;
-    CDStruct_1b6d18a9 _primeDuration;
     CDStruct_e83c9415 _prerollScopeRange;
     FFEffectStack *_audioEffects;
     NSArray *_audioChannelMap;
@@ -28,7 +27,6 @@
 }
 
 @property(readonly, nonatomic) CDStruct_e83c9415 prerollScopeRange; // @synthesize prerollScopeRange=_prerollScopeRange;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 primeDuration; // @synthesize primeDuration=_primeDuration;
 @property(readonly, nonatomic) unsigned int streamAudioFlags; // @synthesize streamAudioFlags=_streamAudioFlags;
 - (unsigned long long)streamAudioPrivateFlags;
 - (id)componentsPlaybackInfo;

@@ -22,6 +22,8 @@
 + (BOOL)exportEventsToXML:(id)arg1 error:(id *)arg2;
 + (BOOL)exportEventClipsToFinalCutPro:(id)arg1 error:(id *)arg2;
 + (BOOL)exportEventClipsToXML:(id)arg1 error:(id *)arg2;
++ (BOOL)localExportEventClipsToFinalCutPro:(id)arg1 error:(id *)arg2;
++ (BOOL)localExportToFinalCutPro:(id)arg1 error:(id *)arg2 clips:(id)arg3;
 + (BOOL)exportToFinalCutPro:(id)arg1 error:(id *)arg2;
 + (BOOL)exportEventsToFinalCutBundleSupported;
 + (BOOL)exportToFinalCutBundleSupported;

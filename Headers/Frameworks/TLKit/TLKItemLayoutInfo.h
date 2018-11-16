@@ -38,7 +38,7 @@
 
 + (id)keyPathsForValuesAffectingSecondaryItemComponentRecords;
 + (id)keyPathsForValuesAffectingPrimaryItemComponentRecord;
-@property(nonatomic) ERLCalculatedAttribute *anchorLocationAttribute; // @synthesize anchorLocationAttribute=_anchorLocationAttribute;
+@property(readonly, nonatomic) ERLCalculatedAttribute *anchorLocationAttribute; // @synthesize anchorLocationAttribute=_anchorLocationAttribute;
 @property(retain, nonatomic) TLKContainerInfo *enclosingContainerInfo; // @synthesize enclosingContainerInfo=_enclosingContainerInfo;
 @property(retain, nonatomic) TLKItemComponentWebbingLayer *componentWebbingLayer; // @synthesize componentWebbingLayer=_componentWebbingLayer;
 @property(retain, nonatomic) TLKAnchorLayer *anchorLayer; // @synthesize anchorLayer=_anchorLayer;

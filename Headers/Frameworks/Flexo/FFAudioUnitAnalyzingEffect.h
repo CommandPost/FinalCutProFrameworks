@@ -27,7 +27,6 @@
 @property(retain, nonatomic) NSString *processingState; // @synthesize processingState=_processingState;
 - (void)setEnabled:(BOOL)arg1;
 - (void)channelParameterChanged:(id)arg1;
-- (id)_savedEffect;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

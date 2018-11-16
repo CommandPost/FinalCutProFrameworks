@@ -31,6 +31,7 @@
 - (BOOL)hasAudio;
 - (CDStruct_e83c9415)mediaRange;
 - (id <FFModelLocking>)modelLockingObject;
+- (NSString *)mediaIndexingKey;
 - (NSString *)mediaIdentifier;
 - (NSString *)displayName;
 - (FFAnchoredProviderOptions *)skimmableDefaultProviderOptions;

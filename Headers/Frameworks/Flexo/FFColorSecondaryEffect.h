@@ -69,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)calcTransform:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 forShapeFolder:(id)arg3;
 - (void)channelParameterChanged:(id)arg1;
 - (void)drawShape:(id)arg1 inGLNode:(struct HGNode *)arg2 atTime:(CDStruct_1b6d18a9)arg3 pixelTransform:(id)arg4;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
 - (_Bool)setNuvoKeyer:(HGRef_0de1db7e *)arg1 initialNode:(HGRef_0de1db7e *)arg2 mBW:(struct Mat4f *)arg3 atTime:(CDStruct_1b6d18a9)arg4 shapeMaskBefore:(_Bool)arg5;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withChannelFolderID:(unsigned int)arg3;
 - (id)processingFormat:(int)arg1;

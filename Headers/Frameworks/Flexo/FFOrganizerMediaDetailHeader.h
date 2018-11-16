@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)searchButtonAction:(id)arg1;
 - (void)filterPopupAction:(id)arg1;
 - (void)viewDidLoad;
+- (id)_toolTip:(id)arg1 forProCommand:(id)arg2;
 - (id)nibBundle;
 - (id)nibName;
 

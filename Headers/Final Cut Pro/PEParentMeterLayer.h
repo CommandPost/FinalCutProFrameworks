@@ -6,9 +6,11 @@
 
 #import "CALayer.h"
 
-@class PEMeterBackgroundLayer;
+#import "CALayerDelegate.h"
 
-@interface PEParentMeterLayer : CALayer
+@class NSString, PEAudioLayeredMeterView, PEMeterBackgroundLayer;
+
+@interface PEParentMeterLayer : CALayer <CALayerDelegate>
 {
     PEMeterBackgroundLayer *_background;
     BOOL _channelHidden;
@@ -42,6 +44,13 @@
 - (void)layoutSublayers;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property __weak PEAudioLayeredMeterView *delegate; // @dynamic delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

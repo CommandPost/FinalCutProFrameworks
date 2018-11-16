@@ -60,6 +60,7 @@
 - (void)waitUntilDone;
 - (BOOL)done;
 - (double)progress;
+- (BOOL)canceled;
 - (void)cancel;
 - (void)start;
 - (void)setExportRangeWithStartFrame:(unsigned long long)arg1 endFrame:(unsigned long long)arg2;

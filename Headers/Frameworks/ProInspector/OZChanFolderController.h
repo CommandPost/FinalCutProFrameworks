@@ -20,10 +20,10 @@
     NSAttributedString *_pShowAttrStr;
     NSAttributedString *_pHideAttrStrInvisible;
     NSAttributedString *_pShowAttrStrInvisible;
-    BOOL _shouldAddDisclosureButton;
+    int _shouldAddDisclosureButton;
 }
 
-@property(nonatomic) BOOL shouldAddDisclosureButton; // @synthesize shouldAddDisclosureButton=_shouldAddDisclosureButton;
+@property(nonatomic) int shouldAddDisclosureButton; // @synthesize shouldAddDisclosureButton=_shouldAddDisclosureButton;
 - (void)hideDisclosureButton;
 - (BOOL)hasCustomButton;
 - (void)toggleDisclosure:(id)arg1;

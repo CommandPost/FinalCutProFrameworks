@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSString *_actionName;
     NSMapTable *_undoStateByChannel;
     NSMapTable *_oldState;
+    BOOL _mediaRefChannelChanged;
 }
 
 - (id)target;

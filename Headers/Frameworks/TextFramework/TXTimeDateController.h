@@ -13,6 +13,7 @@
     LKDatePicker *_datePicker;
 }
 
+- (void)setLocale:(id)arg1;
 - (void)setCurrentTime:(id)arg1;
 - (void)setTimeDate:(id)arg1;
 - (void)setTimeDateValue:(id)arg1 channel:(struct OZChannelBase *)arg2;

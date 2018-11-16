@@ -11,7 +11,6 @@
 
 @class FFAudioComponentsLayoutItem, FFEffectStack, FFWeakPointerValue, NSArray, NSRecursiveLock, NSSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface FFAudioComponentSource : FFAnchoredObject <FFStorylineItem, FFRoleChangeProtocol>
 {
     FFAnchoredObject *m_rootObject;

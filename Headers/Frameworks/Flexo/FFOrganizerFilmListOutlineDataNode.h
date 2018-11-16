@@ -67,6 +67,12 @@ __attribute__((visibility("hidden")))
 - (id)mediaDuration;
 - (id)mediaEnd;
 - (id)mediaStart;
+- (void)setStereoMode:(int)arg1;
+- (int)stereoMode;
+- (BOOL)canEditStereoMode;
+- (void)setSphericalProjectionType:(int)arg1;
+- (int)sphericalProjectionType;
+- (BOOL)canEditSphericalProjectionType;
 - (void)setCameraName:(id)arg1;
 - (id)cameraName;
 - (BOOL)canEditCameraName;
@@ -110,7 +116,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)isTimeMarkerNode;
 - (BOOL)isUsedMediaRangeNode;
 - (BOOL)isMarkerNode;
+- (BOOL)isReferenceClip;
 - (BOOL)isMultiCamClip;
+- (BOOL)isRADUnclaimedClipNode;
 - (BOOL)isRADPreIngestClipNode;
 - (BOOL)isPTPMovieClipNode;
 - (BOOL)isPTPClipNode;

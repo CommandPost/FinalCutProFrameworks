@@ -6,9 +6,11 @@
 
 #import <TLKit/TLKTimelineHandler.h>
 
-@class NSArray, TLKMarqueeLayer;
+#import "CALayerDelegate.h"
 
-@interface TLKMarqueeHandler : TLKTimelineHandler
+@class NSArray, NSString, TLKMarqueeLayer;
+
+@interface TLKMarqueeHandler : TLKTimelineHandler <CALayerDelegate>
 {
     struct CGRect _marqueeRect;
     TLKMarqueeLayer *_marqueeLayer;
@@ -37,6 +39,12 @@
 - (void)setMarqueeRect:(struct CGRect)arg1;
 - (struct CGRect)marqueeRect;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

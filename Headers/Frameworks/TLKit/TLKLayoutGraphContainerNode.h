@@ -18,6 +18,7 @@
 - (void)setChildrenLayoutGraphNodes:(id)arg1;
 - (id)childrenLayoutGraphNodes;
 - (BOOL)isContainer;
+- (void)dealloc;
 
 @end
 

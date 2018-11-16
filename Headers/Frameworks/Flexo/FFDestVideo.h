@@ -6,12 +6,12 @@
 
 #import <Flexo/FFDest.h>
 
-@class FFPlayer, FFReducedRateTracker, NSMutableArray, NSObject<OS_dispatch_queue>;
+@class FFPlayer, FFReducedRateTracker, NSMutableArray, NSObject<FFDestVideoDelegate>, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
 @interface FFDestVideo : FFDest
 {
-    id _delegate;
+    NSObject<FFDestVideoDelegate> *_delegate;
     FFPlayer *_player;
     CDStruct_1b6d18a9 _sampleDuration;
     CDStruct_1b6d18a9 _frameDuration;
@@ -57,16 +57,18 @@ __attribute__((visibility("hidden")))
 - (void)liveFlushWithRunout:(unsigned int)arg1 playerTime:(CDStruct_1b6d18a9)arg2 rate:(double)arg3;
 - (void)flush:(BOOL)arg1;
 - (BOOL)wantsDithering:(id)arg1;
+- (BOOL)showHDRAsRawValues;
 - (unsigned int)rangeCheckZebraMode;
 - (int)requestedBackground;
 - (struct CGSize)maxSupportedSize;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
 - (id)supportedPixelFormats;
 - (struct CGColorSpace *)colorSpace;
+- (int)influenceOnExecLocation;
 - (int)imageLocation;
 - (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_1b6d18a9)frameDurationForMaximumOutputRate;
-- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
+- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
 - (id)player;
 - (void)setPlayer:(id)arg1;
 - (id)delegate;

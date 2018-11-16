@@ -15,7 +15,7 @@
     NSURL *_libraryURL;
     FFLibrary *_library;
     BOOL _newLibrary;
-    NSNumber *_extendedColorObj;
+    NSNumber *_colorProcessingModeObj;
     NSString *_eventName;
     FFMediaEventProject *_event;
     BOOL _suppressWarnings;
@@ -35,7 +35,7 @@
 @property(retain, nonatomic) NSRunningApplication *origin; // @synthesize origin=_origin;
 @property(nonatomic) BOOL suppressWarnings; // @synthesize suppressWarnings=_suppressWarnings;
 @property(retain, nonatomic) FFModelObject<FFXMLTranslationTarget> *target; // @synthesize target=_target;
-@property(retain, nonatomic) NSNumber *extendedColorObj; // @synthesize extendedColorObj=_extendedColorObj;
+@property(retain, nonatomic) NSNumber *colorProcessingModeObj; // @synthesize colorProcessingModeObj=_colorProcessingModeObj;
 @property(nonatomic) BOOL newLibrary; // @synthesize newLibrary=_newLibrary;
 @property(retain, nonatomic) NSNumber *manageFileTypeObj; // @synthesize manageFileTypeObj=_manageFileTypeObj;
 - (void)writeAsUserDefaults;
@@ -54,9 +54,9 @@
 @property(nonatomic) BOOL incrementalImport;
 @property(retain, nonatomic) FFMediaEventProject *event;
 @property(retain, nonatomic) NSString *eventName;
-- (void)clearExtendedColor;
-@property(readonly, nonatomic) BOOL hasExtendedColor;
-@property(nonatomic) BOOL extendedColor;
+- (void)clearColorProcessingMode;
+@property(readonly, nonatomic) BOOL hasColorProcessingMode;
+@property(nonatomic) int colorProcessingMode;
 @property(retain, nonatomic) FFLibrary *library;
 @property(retain, nonatomic) NSURL *libraryURL;
 - (void)clearManageFileType;

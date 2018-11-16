@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     FFAnchoredSequence *_sequence;
     NSMapTable *_mediaIdentifierToAssetMap;
     NSMapTable *_fileNameToAssetMap;
+    NSMapTable *_md5StringToAssetMap;
     NSMutableSet *_undoneOwnedMedia;
     NSMutableSet *_ownedClipsToProcess;
     NSMutableSet *_ownedClipsNotToDisplay;
@@ -41,11 +42,14 @@ __attribute__((visibility("hidden")))
 - (id)addClipsFromURLs:(id)arg1 withURLsInfo:(id)arg2 manageFileType:(int)arg3 processNow:(BOOL)arg4 warnClipsAlreadyExist:(BOOL)arg5 isUserInitiatedImport:(BOOL)arg6 isImportingFromImovie:(BOOL)arg7 keywordSets:(id)arg8 metadata:(id)arg9 validateFiles:(BOOL)arg10;
 - (void)cleanupInProject:(id)arg1;
 - (id)eventSimpleClipForClip:(id)arg1;
+- (id)md5StringToAssetMap;
 - (id)fileNameToAssetMap;
 - (id)mediaIdentifierToAssetMap;
 - (id)newAnchoredSequenceFromPasteboard:(id)arg1 displayName:(id)arg2 mediaByReferenceOnly:(BOOL)arg3 manageFileType:(int)arg4 validateFiles:(BOOL)arg5;
 - (id)newAnchoredSequenceFromAssetRef:(id)arg1 withURLInfo:(id)arg2 manageFileType:(int)arg3 keywords:(id)arg4 validateFiles:(BOOL)arg5;
 - (id)newAnchoredSequenceFromURL:(id)arg1 withURLInfo:(id)arg2 manageFileType:(int)arg3 keywords:(id)arg4 validateFiles:(BOOL)arg5 foundExistingFile:(char *)arg6;
+- (id)findMediaByMatchingIdentifierOrMD5String:(id)arg1;
+- (id)findAssetByMD5String:(id)arg1;
 - (id)resolveMediaIdentifier:(id)arg1;
 - (id)displayOwnedClips;
 - (void)removeOwnedMedia:(id)arg1;

@@ -20,8 +20,6 @@ __attribute__((visibility("hidden")))
     FFPlayerFrame *_incomingFrame;
     FFPixelBuffer *_pixelBufferCtx0;
     FFPixelBuffer *_pixelBufferCtx1;
-    struct HGGLTexture *_textureBuffer0;
-    struct HGGLTexture *_textureBuffer1;
     FFDominantMotionMediaRep *_mediaRep;
     BOOL _forceInertiaCam;
     BOOL _useInertiaCamOpenCL;
@@ -37,10 +35,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (BOOL)isProgressive;
-- (id)setIncomingFrame:(id)arg1;
+- (void)setIncomingFrame:(id)arg1;
 - (id)newDominantMotionMediaRep;
 - (int)pushFrameFromDest:(void **)arg1 buffer2:(void **)arg2;
 - (int)pushFrameFromDest:(void **)arg1;
+- (int)_pushFrameFromDest:(void **)arg1 buffer2:(void **)arg2 isProgressive:(BOOL)arg3;
 - (void)terminate;
 - (void)storeResultsInAsset;
 - (void)joinTrackerThread;

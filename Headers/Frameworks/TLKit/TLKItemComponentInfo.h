@@ -60,7 +60,7 @@
 @property(nonatomic) BOOL needsLayout; // @synthesize needsLayout=_needsLayout;
 @property(nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property(readonly, nonatomic) TLKItemLaneInfo *deletedFromLaneInfo; // @synthesize deletedFromLaneInfo=_deletedFromLaneInfo;
-@property(readonly, nonatomic) TLKContainerInfo *deletedFromContainerInfo; // @synthesize deletedFromContainerInfo=_deletedFromContainerInfo;
+@property(retain, nonatomic) TLKContainerInfo *deletedFromContainerInfo; // @synthesize deletedFromContainerInfo=_deletedFromContainerInfo;
 @property(nonatomic) TLKVerticalIndexTable *verticalIndexTable; // @synthesize verticalIndexTable=_verticalIndexTable;
 @property(nonatomic) BOOL isDragging; // @synthesize isDragging=_isDragging;
 @property(nonatomic) CDStruct_e83c9415 timeRangeLimits; // @synthesize timeRangeLimits=_timeRangeLimits;
@@ -94,6 +94,7 @@
 - (void)addLayoutConstraint:(id)arg1;
 @property(copy, nonatomic) NSSet *layoutConstraints;
 @property(readonly, nonatomic) TLKContainerInfo *trackContainerInfo;
+- (void)didSetDeletedFromContainerInfo:(id)arg1;
 @property(nonatomic) TLKContainerInfo *enclosingContainerInfo;
 @property(readonly, nonatomic) id container;
 - (id)nonWrappingItemComponentFragment;
@@ -121,6 +122,8 @@
 - (void)dealloc;
 - (id)initWithItemComponent:(id)arg1;
 - (id)init;
+@property(readonly) BOOL audioOnly;
+@property(readonly) BOOL disabled;
 @property(readonly) BOOL isPrimary;
 
 // Remaining properties

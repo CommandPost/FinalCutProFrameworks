@@ -21,6 +21,7 @@
     NSMapTable *_visibleItemComponentViewStates;
     struct CGPoint _distanceToVisibleRectOrigin;
     CDStruct_1b6d18a9 _referenceTime;
+    CDStruct_1b6d18a9 _savedLogicalStartTime;
 }
 
 + (long long)optionsMaskForTimeline:(id)arg1;
@@ -30,12 +31,13 @@
 + (id)visibleRectStateForTimelineView:(id)arg1;
 @property(copy, nonatomic) NSMapTable *visibleItemComponentViewStates; // @synthesize visibleItemComponentViewStates=_visibleItemComponentViewStates;
 @property(copy, nonatomic) NSMapTable *layoutContextViewStates; // @synthesize layoutContextViewStates=_layoutContextViewStates;
+@property(nonatomic) CDStruct_1b6d18a9 savedLogicalStartTime; // @synthesize savedLogicalStartTime=_savedLogicalStartTime;
 @property(nonatomic) CDStruct_1b6d18a9 referenceTime; // @synthesize referenceTime=_referenceTime;
 @property(retain, nonatomic) TLKLayoutContext *selectedLayoutContext; // @synthesize selectedLayoutContext=_selectedLayoutContext;
 @property struct CGPoint distanceToVisibleRectOrigin; // @synthesize distanceToVisibleRectOrigin=_distanceToVisibleRectOrigin;
 - (void)resetVisibleRectForTimelineView:(id)arg1;
 - (void)restoreViewStateForTimelineView:(id)arg1;
-- (void)updateReferenceTimeForPreviousLogicalStartTimeWithTimelineView:(id)arg1;
+- (void)_updateReferenceTimeIfNeededForTimelineView:(id)arg1;
 - (void)_restoreVisibleRectStateForTimelineView:(id)arg1;
 - (struct CGPoint)_distanceToVisibleRectOriginForTime:(CDStruct_1b6d18a9)arg1 inTimelineView:(id)arg2;
 - (struct CGRect)_constrainVisibleBounds:(struct CGRect)arg1 toIntrinsicBounds:(struct CGRect)arg2;

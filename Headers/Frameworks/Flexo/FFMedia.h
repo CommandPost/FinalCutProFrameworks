@@ -20,6 +20,7 @@
 }
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
++ (BOOL)isRemoteURL:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)canRebuildAudioPropertiesForMedia:(id)arg1;
 + (id)newAudioSourcePropertiesMapForProvider:(id)arg1;
@@ -107,6 +108,7 @@
 - (id)assets;
 - (id)modelLockingObject;
 - (id)originalMediaURL;
+- (id)mediaIndexingKey;
 - (id)mediaIdentifier;
 - (CDStruct_1b6d18a9)videoFrameDuration;
 - (CDStruct_1b6d18a9)videoSampleDuration;

@@ -34,6 +34,11 @@
 - (id)mediaEventProject;
 - (id)rootObject;
 - (void)updateWithHandler:(id)arg1;
+- (void)update_colorProfileMetadata;
+- (void)update_PreEdelXAudioEffectKeyframes;
+- (void)update_fixHEACCAnchoredMediaComponentSampleRate;
+- (void)update_preserveCurrentDefaultAudioComponentsLayout:(int)arg1;
+- (void)update_audioComponentLayoutItemKey;
 - (void)update_assetVideoPropsForWCG;
 - (void)update_removeAudioMergedClipMediaComponents;
 - (BOOL)update_tagAudioComponentsReferenceLayoutMapSequences;
@@ -60,6 +65,7 @@
 - (BOOL)update_removeBadTranscodedFiles;
 - (BOOL)update_projectNotesLocation;
 - (void)update_repairEffectStackAnchoredObjectReferences;
+- (BOOL)update_convertToNewColorTabEffects;
 - (BOOL)update_HeColorEffectToMaskedEffect;
 - (BOOL)update_dvClipCreationDates;
 - (void)update_SequenceAudioChannelCountSampleRate;
@@ -75,6 +81,7 @@
 - (BOOL)update_migrateAudioDisabledChannel;
 - (BOOL)update_moveVolumePanFolder;
 - (BOOL)update_projectSequenceToProjectData;
+- (BOOL)update_projectSequenceInfoFor360;
 - (BOOL)update_projectSequenceToSequenceInfo;
 - (BOOL)update_cleanupMediaComponentAudioRoutingMap;
 - (BOOL)update_conformLumaBumpsFromChannelsToData;

@@ -6,12 +6,13 @@
 
 #import <Flexo/FFResponderLayer.h>
 
+#import "CALayerDelegate.h"
 #import "NSMenuDelegate.h"
 
 @class CALayer, CHChannel, FFAnchoredObject, FFFadeHandlesLayerUpdater, FFRoleColorImageTinter, FFRoleColorScheme, NSDictionary, NSMutableArray, NSSet, NSString, TLKImageLayer, TLKTimelineView;
 
 __attribute__((visibility("hidden")))
-@interface FFFadeHandlesLayer : FFResponderLayer <NSMenuDelegate>
+@interface FFFadeHandlesLayer : FFResponderLayer <CALayerDelegate, NSMenuDelegate>
 {
     id <FFFadeHandlesDataSource> _dataSource;
     TLKTimelineView *_timelineView;

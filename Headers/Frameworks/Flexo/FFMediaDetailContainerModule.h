@@ -15,6 +15,7 @@
     BOOL _isActive;
     NSView *_headerView;
     NSView *_footerView;
+    int _detailMode;
     FFOrganizerFilmstripModule *_filmstripModule;
     FFMDTitleModule *_titleModule;
     FFMDGeneratorsModule *_generatorsModule;
@@ -28,6 +29,7 @@
 }
 
 + (Class)tabViewClass;
+@property(nonatomic) int detailMode; // @synthesize detailMode=_detailMode;
 @property(retain, nonatomic) FFMDEmptyModule *emptyModule; // @synthesize emptyModule=_emptyModule;
 @property(retain, nonatomic) FFMDPhotoLibraryModule *photoLibraryModule; // @synthesize photoLibraryModule=_photoLibraryModule;
 @property(retain, nonatomic) FFMDGarageBandModule *garageBandModule; // @synthesize garageBandModule=_garageBandModule;
@@ -71,6 +73,7 @@
 - (void)setFooterSubview:(id)arg1;
 - (void)setHeaderSubview:(id)arg1;
 - (void)moduleDidBecomeVisible:(id)arg1;
+- (void)tabView:(id)arg1 didSelectTabViewItem:(id)arg2;
 - (id)moduleFooterAccessoryView;
 - (BOOL)wantsFooterBar;
 - (id)moduleHeaderAccessoryView;

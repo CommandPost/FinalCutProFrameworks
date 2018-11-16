@@ -16,9 +16,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)stringValueForInt:(int)arg1;
-- (int)intValueForString:(id)arg1;
+- (long long)intValueForString:(id)arg1;
+- (long long)intValueForStringOrNotFound:(id)arg1;
 - (void)dealloc;
-- (id)initWithValues:(const CDStruct_c22e37be *)arg1;
+- (id)initWithValues:(const CDStruct_6db0658e *)arg1;
 
 @end
 

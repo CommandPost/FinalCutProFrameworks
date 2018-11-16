@@ -10,6 +10,7 @@
 {
 }
 
++ (void)_loadFeatureFlagsFromUserDefaults;
 + (void)shutdown;
 + (void)applicationWillTerminate:(id)arg1;
 + (BOOL)isUnitTesting;
@@ -25,6 +26,8 @@
 + (BOOL)playbackDuringEditOperations;
 + (void)setRenderSingleStreamsWithDrop:(BOOL)arg1;
 + (BOOL)renderSingleStreamsWithDrop;
++ (void)setHideConsumerMaps:(BOOL)arg1;
++ (BOOL)hideConsumerMaps;
 + (void)setConsumerPlaysFull4K:(BOOL)arg1;
 + (BOOL)consumerPlaysFull4K;
 + (void)setConsumerPlaysFullHD:(BOOL)arg1;
@@ -130,6 +133,7 @@
 + (void)setIsConsumerTimeline:(BOOL)arg1;
 + (BOOL)isConsumerTimeline;
 + (void)finishInit;
++ (void)initialize;
 
 @end
 

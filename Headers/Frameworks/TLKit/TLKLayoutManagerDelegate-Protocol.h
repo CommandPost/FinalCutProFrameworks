@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSArray, TLKItemComponentFragment, TLKItemComponentInfo, TLKLayoutManager, TLKLayoutTile;
+@class NSArray, TLKItemComponentFragment, TLKLayoutManager, TLKLayoutTile;
 
 @protocol TLKLayoutManagerDelegate <NSObject>
 
@@ -16,6 +16,5 @@
 - (struct CGRect)layoutManager:(TLKLayoutManager *)arg1 willUseLineFragmentRect:(struct CGRect)arg2 forItems:(NSArray *)arg3 inTimeRange:(CDStruct_e83c9415)arg4;
 - (struct CGRect)layoutManager:(TLKLayoutManager *)arg1 willUseLayoutFrame:(struct CGRect)arg2 forItemComponentFragment:(TLKItemComponentFragment *)arg3;
 - (void)layoutManager:(TLKLayoutManager *)arg1 didCompleteLayoutForTile:(TLKLayoutTile *)arg2 atEnd:(BOOL)arg3;
-- (double)layoutManager:(TLKLayoutManager *)arg1 heightForItemComponent:(TLKItemComponentInfo *)arg2 proposedHeight:(double)arg3;
 @end
 

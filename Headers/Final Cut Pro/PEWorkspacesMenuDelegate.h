@@ -26,6 +26,7 @@
 - (void)chooseWorkspace:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)menuNeedsUpdate:(id)arg1;
+- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

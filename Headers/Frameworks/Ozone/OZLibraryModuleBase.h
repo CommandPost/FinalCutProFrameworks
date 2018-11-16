@@ -11,7 +11,7 @@
 #import "NSOutlineViewDelegate.h"
 #import "OZPreviewModule.h"
 
-@class CALayer, LKButton, LKImageView, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSImageView, NSMatrix, NSMutableArray, NSOutlineView, NSPasteboard, NSScrollView, NSSplitView, NSString, NSTimer, NSView, OZLibraryEntry, OZLibraryEntryFilter, OZLibraryPreviewCtrl, OZPreviewBackgroundView, OZPreviewPlayButtonView, OZQTMovieLayer, OZSelectedObjectPreview;
+@class AVPlayerLayer, CALayer, LKButton, LKImageView, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSImageView, NSMatrix, NSMutableArray, NSOutlineView, NSPasteboard, NSScrollView, NSSplitView, NSString, NSTimer, NSView, OZLibraryEntry, OZLibraryEntryFilter, OZLibraryPreviewCtrl, OZPreviewBackgroundView, OZPreviewPlayButtonView, OZQTMovieLayer, OZSelectedObjectPreview;
 
 @interface OZLibraryModuleBase : OZProViewModule <NSMatrixDelegate, NSOutlineViewDataSource, NSOutlineViewDelegate, OZPreviewModule>
 {
@@ -74,6 +74,8 @@
     BOOL _listenToNotifications;
     BOOL _tnailReadQueued;
     unsigned long long _moduleUpdateContext;
+    BOOL _isObservingPlayer;
+    AVPlayerLayer *_playerLayer;
 }
 
 + (void)setIcon:(id)arg1 forFileAtPath:(id)arg2;
@@ -83,6 +85,7 @@
 + (id)createUniqueName:(id)arg1 parentEntry:(id)arg2;
 + (id)getEntryForPath:(id)arg1 fromRoot:(id)arg2 byDisplayName:(BOOL)arg3;
 + (void)initialize;
+@property(retain) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
 - (BOOL)hasSelection;
 - (BOOL)selectedObjectHasPlayablePreview;
 - (void)togglePreviewPlayback:(id)arg1;
@@ -186,6 +189,7 @@
 - (void)apply:(id)arg1;
 - (id)getSelectedEntries;
 - (void)updateApplyButtonState;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)playCheck:(id)arg1;
 - (void)togglePlay:(id)arg1;
 - (void)playAudio:(id)arg1;

@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 + (void)registerEffects;
 + (id)newInnerOuterGroupEffect;
-- (void)effectWillBeRemovedFromStack;
-- (void)effectWasAddedToStack:(int)arg1;
+- (void)effectDeactivated;
+- (void)effectActivated:(int)arg1;
 - (void)effectStackAnchoredObjectDidChange;
 - (void)setEffectStack:(id)arg1;
 - (id)primaryAnimationChannel;

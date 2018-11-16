@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     struct NSObject *m_waveformSkimmable;
     struct NSObject *m_playbackSkimmable;
     CDStruct_e83c9415 m_playbackSkimmableRange;
-    BOOL m_playbackSkimInContext;
+    int m_playbackSkimInContext;
 }
 
 @property(readonly, nonatomic) FFAudioComponentsConfigManager *configManager; // @synthesize configManager=m_configManager;

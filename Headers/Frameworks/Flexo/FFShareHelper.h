@@ -21,6 +21,8 @@
 - (void)shareToDestination:(id)arg1;
 - (void)_exportUsingSelector:(SEL)arg1 sender:(id)arg2;
 - (void)missingMediaAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)warnForMissingMedia:(id)arg1 withSender:(id)arg2 andSelector:(SEL)arg3;
+- (void)warnForProxyMedia:(BOOL)arg1 withSelection:(id)arg2 andSender:(id)arg3 andSelector:(SEL)arg4;
 - (void)exportUsingSelector:(SEL)arg1 sender:(id)arg2;
 - (void)dealloc;
 - (id)initWithOwner:(id)arg1;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)setColor:(id)arg1;
 - (void)mouseDown:(id)arg1;
+- (void)dealloc;
 
 @end
 

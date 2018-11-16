@@ -18,6 +18,7 @@
 - (void)setEnabled:(BOOL)arg1;
 - (void)drawSeparator:(struct CGRect)arg1;
 - (void)setBorderColor:(id)arg1;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 
 @end

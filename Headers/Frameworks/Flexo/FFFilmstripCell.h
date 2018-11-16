@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEquivalentToFilmstripCell:(id)arg1;
 - (void)cancelRequest;
 - (void)_setThumbImageFromOldCachedImageRequest:(id)arg1 forLayer:(int)arg2;
+- (void)_dispatchClearThumbnailImageForPendingRequest:(id)arg1 forLayer:(int)arg2 compareRefContents:(id)arg3;
 - (void)_clearThumbnailImageForLayerIdentifier:(int)arg1;
 - (void)_colorizeLayer:(id)arg1 andImageRequest:(id)arg2;
 - (void)_updateIfNeededBackground;

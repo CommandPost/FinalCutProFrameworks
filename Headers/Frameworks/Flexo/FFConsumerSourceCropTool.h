@@ -32,11 +32,11 @@
 + (id)displayName;
 + (void)initialize;
 @property(nonatomic) id <FFAdjustmentToolDelegate> toolDelegate; // @synthesize toolDelegate=_toolDelegate;
-@property(nonatomic) LKButton *cancelButton; // @synthesize cancelButton=_cancelButton;
-@property(nonatomic) LKButton *resetButton; // @synthesize resetButton=_resetButton;
+@property(retain, nonatomic) LKButton *cancelButton; // @synthesize cancelButton=_cancelButton;
+@property(retain, nonatomic) LKButton *resetButton; // @synthesize resetButton=_resetButton;
 @property(retain, nonatomic) FFAnchoredObject *sourceCropObject; // @synthesize sourceCropObject=_sourceCropObject;
-@property(nonatomic) LKButton *acceptButton; // @synthesize acceptButton=_acceptButton;
-@property(nonatomic) NSView *adjustmentToolbarView; // @synthesize adjustmentToolbarView=_adjustmentToolbarView;
+@property(retain, nonatomic) LKButton *acceptButton; // @synthesize acceptButton=_acceptButton;
+@property(retain, nonatomic) NSView *adjustmentToolbarView; // @synthesize adjustmentToolbarView=_adjustmentToolbarView;
 - (BOOL)shouldMakeIntrinsicsForEffectStack;
 - (BOOL)isSourceCropTool;
 - (void)resetTool:(id)arg1;

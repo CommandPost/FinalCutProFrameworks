@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_items;
     NSMutableArray *_visibleItems;
     BOOL _cachedHasSetupItems;
-    struct FFProcrastinatedDispatch_t _procrastinatedReload;
+    struct PCProcrastinatedDispatch_t _procrastinatedReload;
     NSMutableDictionary *_info;
 }
 

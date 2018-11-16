@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     unsigned long long *_TransferCharacteristic;
     unsigned long long *_ColorPrimaries;
     unsigned long long *_CodingEquations;
+    struct __CFDictionary *_additionalAttributesPicture;
     FFRenderFormat *_renderFormat;
     NSString *_videoFormatKey;
     long long _videoFrameCounter;
@@ -55,6 +56,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)getProResAlphaMode:(struct opaqueCMFormatDescription *)arg1;
 - (int)getProResAlphaSampleDepth:(char *)arg1 dataSize:(int)arg2;
+- (void)setMasterDisplayData:(struct opaqueCMFormatDescription *)arg1;
+- (void)setHDR10Data:(struct opaqueCMFormatDescription *)arg1;
 - (void)setAdditionalColorSpaceData:(struct opaqueCMFormatDescription *)arg1;
 - (long long)_getSoundSamplesPerFrameRoundedDown:(int)arg1;
 - (long long)_getSoundSamplesPerFrameAtPosition:(unsigned int)arg1 atFrameRate:(int)arg2;

@@ -4,13 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import <TLKit/TLKLayer.h>
 
 #import "TLKPartInfo.h"
 
-@class NSString, TLKLineFragment, TLKTornEdgeLayer;
+@class CALayer, NSString, TLKLineFragment, TLKTornEdgeLayer;
 
-@interface TLKLineFragmentLayer : CALayer <TLKPartInfo>
+@interface TLKLineFragmentLayer : TLKLayer <TLKPartInfo>
 {
     TLKLineFragment *_lineFragment;
     TLKTornEdgeLayer *_tornEdgesMask;

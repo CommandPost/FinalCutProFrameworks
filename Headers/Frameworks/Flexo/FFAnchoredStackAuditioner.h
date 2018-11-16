@@ -35,7 +35,7 @@
     FFAnchoredStack *_anchoredStack;
     FFContext *_playerContext;
     NSMutableArray *_observedVariants;
-    struct FFProcrastinatedDispatch_t _procrastinatedReload;
+    struct PCProcrastinatedDispatch_t _procrastinatedReload;
     id _skimDelegate;
     FFSkimmingModule *_skimmingModule;
     struct CGSize _filmstripSize;

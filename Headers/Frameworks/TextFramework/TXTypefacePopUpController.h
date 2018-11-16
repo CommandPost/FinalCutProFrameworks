@@ -4,46 +4,27 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "OZViewController.h"
+#import "OZTypefacePopUpController.h"
 
 #import "NSMenuDelegate.h"
 
-@class LKPopUpButton, NSString;
+@class NSString;
 
-@interface TXTypefacePopUpController : OZViewController <NSMenuDelegate>
+@interface TXTypefacePopUpController : OZTypefacePopUpController <NSMenuDelegate>
 {
-    LKPopUpButton *_popUpButton;
-    _Bool _isDragging;
-    int _fontType;
-    _Bool _areAllFontsEqual;
-    _Bool _selectionDidChange;
-    _Bool _aboutToChangeCalled;
-    BOOL _isMenuOpen;
 }
 
-@property(retain, nonatomic) LKPopUpButton *popUpButton; // @synthesize popUpButton=_popUpButton;
+- (void)removeNotifications;
+- (void)setupNotifications;
+- (id)nibName;
 - (void)setChannel:(struct OZChannel *)arg1 value:(int)arg2 time:(CDStruct_198678f7)arg3;
-- (void)menu:(id)arg1 willHighlightItem:(id)arg2;
 - (void)menuDidClose:(id)arg1;
 - (void)menuWillOpen:(id)arg1;
 - (void)setChannelValue:(id)arg1;
-- (void)changeChannel:(id)arg1;
 - (void)_saveDefaultFont:(int)arg1;
-- (void)disable;
-- (void)enable;
-- (void)update;
+- (struct OZFontFamily *)getCurrentFamily;
 - (struct OZFontCollection *)getCurrentCollection;
-- (void)reset;
-- (BOOL)areAllFontsEqual;
-- (void)setMenuTitle;
-- (void)selectItemAtIndex:(int)arg1 setChannel:(_Bool)arg2;
-- (void)inspectorWillDealloc;
-- (BOOL)isMenuOpen;
-- (void)updatePopUpMenu:(BOOL)arg1;
-- (void)familyChanged;
-- (void)familyChanged:(id)arg1;
-- (void)dealloc;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (struct OZFontFace *)getFontFaceForChannel:(struct OZChannel *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

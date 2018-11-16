@@ -75,11 +75,17 @@ __attribute__((visibility("hidden")))
 - (void)displayMenuForPart:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)contextMenuForPart:(id)arg1;
 - (BOOL)wantsToHandlePredominantDrag;
+- (id)layerForEffect:(id)arg1;
+- (id)layerForEffectID:(id)arg1;
 - (id)layerAtPoint:(struct CGPoint)arg1 ignoreLayer:(id)arg2;
 - (void)resignFocusOwner;
 - (void)becomeFocusOwner;
 - (id)selectedLayers;
 - (id)selectedLayer;
+- (void)selectLayer:(id)arg1 select:(BOOL)arg2;
+- (void)setDefaultEffect:(id)arg1 andChannel:(id)arg2;
+- (void)setDefaultEffect:(id)arg1;
+- (void)setCurrentEffect:(id)arg1 andChannel:(id)arg2;
 - (void)layoutSublayers;
 - (void)updateCurvesLayout:(id)arg1;
 - (void)layerDidBecomeVisible:(BOOL)arg1;

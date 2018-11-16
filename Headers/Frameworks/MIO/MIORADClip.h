@@ -127,7 +127,6 @@
 - (id)clipURLs;
 - (BOOL)parseEntireFile;
 - (id)tempClipDefaults;
-- (id)avchdMetadataDictionaryForFigFormatReader;
 - (struct opaqueCMFormatDescription *)audioFormatDescription;
 - (struct opaqueCMFormatDescription *)videoFormatDescription;
 - (void *)byteStream;

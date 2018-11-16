@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long countOfStills; // @synthesize countOfStills=_countOfStills;
 @property(readonly, nonatomic) unsigned long long countOfProjects; // @synthesize countOfProjects=_countOfProjects;
 @property(readonly, nonatomic) unsigned long long countOfClips; // @synthesize countOfClips=_countOfClips;
+- (id)metadataContentModDate;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

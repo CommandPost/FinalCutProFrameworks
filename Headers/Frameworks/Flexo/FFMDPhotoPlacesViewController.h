@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_memoizedGroupCoordinatesKeyedByID;
     NSMutableDictionary *_memoizedGroupWeightsKeyedByID;
     NSMutableDictionary *_memoizedGroupBoundsKeyedByID;
-    struct FFProcrastinatedDispatch_t _procrastinatedCluster;
+    struct PCProcrastinatedDispatch_t _procrastinatedCluster;
     NSPredicate *_searchFilterPredicate;
     NSMutableArray *_unclusteredAnnotations;
     FFMDPhotoLibraryPlacesGroupQuery *_dataQuery;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *memoizedGroupWeightsKeyedByID; // @synthesize memoizedGroupWeightsKeyedByID=_memoizedGroupWeightsKeyedByID;
 @property(retain, nonatomic) NSMutableDictionary *memoizedGroupCoordinatesKeyedByID; // @synthesize memoizedGroupCoordinatesKeyedByID=_memoizedGroupCoordinatesKeyedByID;
 @property(retain, nonatomic) MKMapView *offscreenAllAnnotationsMapView; // @synthesize offscreenAllAnnotationsMapView=_offscreenAllAnnotationsMapView;
-@property(nonatomic) MKMapView *mapView; // @synthesize mapView=_mapView;
+@property(retain, nonatomic) MKMapView *mapView; // @synthesize mapView=_mapView;
 @property(retain, nonatomic) FFMDPhotoLibraryPlacesGroupQuery *dataQuery; // @synthesize dataQuery=_dataQuery;
 - (void)writeViewPrefsToDict:(id)arg1;
 - (void)readViewPrefsFromDict:(id)arg1;

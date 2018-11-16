@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
     NSMenuItem *_consumerOpenProjectMenuItem;
     LKTableColumn *_colorProfileTableColumn;
     LKTableColumn *_sizeTableColumn;
-    struct FFProcrastinatedDispatch_t _procrastinatedReloadData;
+    struct PCProcrastinatedDispatch_t _procrastinatedReloadData;
     NSArray *_cachedFlattenedNodes;
     NSDictionary *_cachedFlattenedNodesIdsForUnknown;
     NSArray *_monospacedFontColumnIdentifiers;
@@ -252,6 +252,12 @@ __attribute__((visibility("hidden")))
 - (long long)outlineView:(id)arg1 numberOfChildrenOfItem:(id)arg2;
 - (BOOL)outlineView:(id)arg1 isItemExpandable:(id)arg2;
 - (id)outlineView:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;
+- (void)adjustStereoModeCell:(id)arg1 forDataNode:(id)arg2;
+- (void)doSetStereoscopicMode:(id)arg1;
+- (void)adjustSphericalModeCell:(id)arg1 forDataNode:(id)arg2;
+- (BOOL)shouldEdit360ForDataNode:(id)arg1;
+- (BOOL)shouldShow360ForDataNode:(id)arg1;
+- (void)doSetSphericalMode:(id)arg1;
 - (void)adjustRolesCell:(id)arg1 forDataNode:(id)arg2 isVideoNotAudio:(BOOL)arg3;
 - (void)ultratoggleForRow:(long long)arg1;
 - (void)outlineViewSelectionDidChange:(id)arg1;
@@ -260,6 +266,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)outlineView:(id)arg1 shouldReorderColumn:(long long)arg2 toColumn:(long long)arg3;
 - (double)outlineView:(id)arg1 sizeToFitWidthOfColumn:(long long)arg2;
 - (id)outlineView:(id)arg1 menuForColumn:(id)arg2 item:(id)arg3;
+- (id)outlineView:(id)arg1 rowViewForItem:(id)arg2;
 - (id)outlineView:(id)arg1 viewForTableColumn:(id)arg2 item:(id)arg3;
 - (double)outlineView:(id)arg1 heightOfRowByItem:(id)arg2;
 - (BOOL)isDefaultColumn:(id)arg1;
@@ -301,6 +308,7 @@ __attribute__((visibility("hidden")))
 - (id)contextualMenuColumn;
 - (id)columnIDFromOutlinePopupItemTag:(long long)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
+- (void)_documentWasRemoved:(id)arg1;
 - (BOOL)canDisplayPlayer;
 - (void)notificationHandler:(id)arg1;
 - (void)_contentDidChange;

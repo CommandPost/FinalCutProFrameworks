@@ -8,7 +8,7 @@
 
 #import "FFPhaseCounterChanged.h"
 
-@class FFContext, FFPMRLogFunnel, FFPlaybackContext, FFPlayerDropTracker, FFPlayerSchedTokenQueue, FFPlayerScheduledData, FFProvider, FFSVContext, FFSourceVideo, FFStreamVideo, FFStreamVideoCache, FFStreamVideoOptions, FFVideoProps, NSConditionLock, NSLock, NSMutableArray, NSMutableSet, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_source>, NSThread;
+@class FFContext, FFPMRLogFunnel, FFPendingHGCJSync, FFPlaybackContext, FFPlayerDropTracker, FFPlayerSchedTokenQueue, FFPlayerScheduledData, FFProvider, FFSVContext, FFSourceVideo, FFStreamVideo, FFStreamVideoCache, FFStreamVideoOptions, FFVideoProps, NSConditionLock, NSLock, NSMutableArray, NSMutableSet, NSObject<OS_dispatch_group>, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_source>, NSThread;
 
 @interface FFPlayer : NSObject <FFPhaseCounterChanged>
 {
@@ -25,6 +25,7 @@
     CDStruct_1b6d18a9 _minDestFDLimit;
     NSMutableSet *_outOfDateDests;
     FFPlayerSchedTokenQueue *_schedTokQueue;
+    NSObject<OS_dispatch_queue> *_queueUrgentScheduleQueue;
     FFPMRLogFunnel *_detailPMRFunnel;
     FFPMRLogFunnel *_summaryPMRFunnel;
     FFPMRLogFunnel *_queueDepthFunnel;
@@ -57,6 +58,7 @@
     _Bool _stopping;
     NSThread *_localThread;
     _Bool _waitForThreadToAck;
+    NSObject<OS_dispatch_group> *_shutdownGroupToLeave;
     FFStreamVideoOptions *_currentVideoOptions;
     struct __CFDictionary *_ptsForCurrentStream[2];
     FFSVContext *_scrubContexts[3];
@@ -68,6 +70,7 @@
     CDStruct_1b6d18a9 _smallestSampleDuration;
     int _fieldDominance;
     struct CGRect _sequenceBounds;
+    int _sequenceCameraMode;
     int _userVisibleQuality;
     int _temporalQual;
     BOOL _highSpeedPlayReducesTQual;
@@ -83,6 +86,7 @@
     int _activeGPUs;
     struct FFAudioPlayer *_audioPlayer;
     int _renderLocation;
+    int _hmdSharingConfig;
     int _preferredLocation;
     _Bool _recalcRenderLoc;
     _Bool _oscsOutOfDate;
@@ -136,6 +140,7 @@
     int _heliumSpecificScreenResource;
     _Bool _waitForLoadingFX;
     FFPlayerDropTracker *_dropTracker;
+    FFPendingHGCJSync *_customJobsShutdownSyncer;
     struct TimeRateChangeController *_timeRateChangeController;
     BOOL _playPastLoopEnd;
     CDStruct_1b6d18a9 _playbackPreroll;
@@ -143,6 +148,8 @@
 
 + (id)_newEmptySrcForProps:(id)arg1;
 + (void)notifyAppWillTerminate;
++ (void)waitForPendingShutdownsToComplete;
++ (void)callbackWhenPendingShutdownsComplete:(CDUnknownBlockType)arg1;
 + (void)teardown;
 + (BOOL)suspendBackgroundOperationsDuringPlayback;
 + (id)newReducedRateTrackerForMultiAngle;
@@ -239,6 +246,11 @@
 - (void)processDeferredOSCs;
 - (void)setDeferOSCGeneration:(_Bool)arg1;
 - (void)setPlayerTimeToPlayerSampleBoundary;
+- (CDStruct_1b6d18a9)playerTimeAtPlayerSampleBoundary;
+- (void)getHMDWarningIndicatorsState:(_Bool *)arg1 sticky:(_Bool *)arg2;
+- (void)updateHMDDropOrReprojCount:(unsigned long long)arg1 dropRateLastSecond:(float)arg2;
+- (void)updateHMDHealthWithEquirectProjectionCost:(CDStruct_1b6d18a9)arg1;
+- (int)requestedExecutionLocation;
 @property unsigned int timecodeType; // @synthesize timecodeType=_timecodeType;
 - (unsigned int)currentTimecodeType;
 - (double)playerRate;
@@ -297,7 +309,8 @@
 - (void)_noteDroppedFrames:(id)arg1 pmrInfo:(struct __CFString *)arg2 effectiveRate:(double)arg3 alreadyHoldingPlayerLock:(_Bool)arg4;
 - (void)_stopDueToDrop:(id)arg1;
 - (void)fillStopDueToDropDict:(CDStruct_1b6d18a9)arg1 cause:(struct __CFString *)arg2 infoDict:(id)arg3 alreadyHoldingPlayerLock:(_Bool)arg4;
-- (void)maybeReportPlaybackCompleteDropSkipWarningForTotalDropCount:(int)arg1 totalPushed:(int)arg2 diskRelated:(int)arg3 oldRate:(float)arg4 showAllAngles:(BOOL)arg5;
+- (void)maybeReportPlaybackCompleteDropSkipWarningForTotalDropCount:(int)arg1 totalPushed:(int)arg2 diskRelated:(int)arg3 oldRate:(float)arg4 showAllAngles:(BOOL)arg5 hmdActive:(BOOL)arg6 reportHMDDrops:(BOOL)arg7 viewer360Active:(BOOL)arg8;
+- (void)_playCompletedWithHMDDrops:(id)arg1;
 - (void)_playCompletedWithDrops:(id)arg1;
 - (void)_generateOverlayTextures:(id)arg1 pmrMsg:(struct __CFString *)arg2;
 - (void)_flushInternalDueToContentChange:(BOOL)arg1 contextChange:(BOOL)arg2 enableLiveEditsOptimization:(BOOL)arg3 trimmerCase:(BOOL)arg4;
@@ -320,6 +333,7 @@
 - (id)lastFramePushed;
 - (void)setLastFramePushed:(id)arg1;
 - (void)delRecentlyPushedAtIndex:(unsigned long long)arg1;
+- (void)_forgetAllFrames;
 - (void)_forgetGraphedFrames;
 - (BOOL)_needAllAngles:(id)arg1;
 - (BOOL)_needSecondField:(id)arg1;

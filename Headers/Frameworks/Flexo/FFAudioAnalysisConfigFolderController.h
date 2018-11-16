@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (float)suggestedMaxParamWidth;
-- (BOOL)shouldAddDisclosureButton;
+- (int)shouldAddDisclosureButton;
 - (void)resetAudioAnalysisEffects;
 - (void)didBuildUI;
 - (void)dealloc;

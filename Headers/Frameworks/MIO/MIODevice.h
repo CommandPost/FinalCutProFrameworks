@@ -6,7 +6,7 @@
 
 #import <MIO/MIOObject.h>
 
-@class MIODeviceConnection, MIOPreviewView, NSDictionary;
+@class AVCaptureAudioPreviewOutput, AVCaptureSession, AVCaptureVideoPreviewLayer, MIODeviceConnection, MIOPreviewView, NSArray, NSDictionary;
 
 @interface MIODevice : MIOObject
 {
@@ -23,9 +23,14 @@
     id mDelegate;
     long long mMeasuredTime;
     NSDictionary *mPreviewPresentationDimensions;
+    AVCaptureSession *mAVCaptureSession;
+    AVCaptureVideoPreviewLayer *mAVCaptureVideoPreviewLayer;
+    AVCaptureAudioPreviewOutput *mAVCaptureAudioPreviewOutput;
+    NSArray *mAVCaptureObservers;
 }
 
 @property(retain) NSDictionary *previewPresentationDimensions; // @synthesize previewPresentationDimensions=mPreviewPresentationDimensions;
+@property(readonly) AVCaptureSession *avSession; // @synthesize avSession=mAVCaptureSession;
 - (void)videoPreviewFormatChanged;
 - (id)delegate;
 - (void)setDelegate:(id)arg1;

@@ -13,6 +13,7 @@
 @interface FFSVContext : NSObject <NSCopying>
 {
     struct CGColorSpace *_effectOutputCS;
+    int _effectOutputCSEnum;
     int _workingSpace;
     PCMatrix44Double *_pt;
     unsigned int _tf;
@@ -69,6 +70,7 @@
 - (id)copyPixelTransform;
 - (id)pixelTransform;
 - (int)workingSpace;
+- (int)effectOutputColorSpaceEnum;
 - (struct CGColorSpace *)effectOutputColorspace;
 - (void)colorSpace;
 - (void)dealloc;

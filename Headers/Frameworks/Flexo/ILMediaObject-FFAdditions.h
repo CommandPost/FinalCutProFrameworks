@@ -17,6 +17,8 @@
 - (id)ff_fileName;
 - (id)ff_URL;
 - (id)ff_path;
+- (id)ff_displayNameAndTryToLocalize:(BOOL)arg1;
+- (id)ff_displayName;
 - (id)ff_name;
 - (id)ff_modificationDate;
 - (id)ff_mediaTypeTag;

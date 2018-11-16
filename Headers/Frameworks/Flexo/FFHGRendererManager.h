@@ -26,7 +26,8 @@
 - (_Bool)hasOnlyIntegratedGPUs;
 - (_Bool)hasGPUPreventingMotionCompensatedDeinterlacing;
 - (_Bool)hasGPUPreventingMGPU;
-- (_Bool)hasBuiltInGPU;
+- (_Bool)hasExternalGPU;
+- (_Bool)hasIntegratedGPU;
 - (_Bool)hasMultipleMatchedGPUs;
 - (int)getGPUCount;
 - (void)_countGPUs;

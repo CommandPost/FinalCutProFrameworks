@@ -27,7 +27,6 @@
 @property(readonly) NSView *titleOverlayView; // @synthesize titleOverlayView=_titleOverlayView;
 @property(readonly) FFTitleDocumentView *documentView; // @synthesize documentView=_documentView;
 @property(readonly) FFEffect<FFTitleDelegate> *title; // @synthesize title=_title;
-- (void)mouseDown:(id)arg1;
 - (void)enableOverlayWindowForNoRangeOverlap;
 - (void)removeOverlayWindowForNoRangeOverlap;
 - (void)syncTextFieldPositionWithBarPosition:(struct CGRect)arg1;
@@ -65,6 +64,7 @@
 - (void)controlTextDidChange:(id)arg1;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;
 - (id)windowWillReturnFieldEditor:(id)arg1 toObject:(id)arg2;
+- (void)willExport:(id)arg1;
 - (unsigned long long)validModesForFontPanel:(id)arg1;
 - (void)makeTextFieldFirstResponder;
 - (void)dealloc;

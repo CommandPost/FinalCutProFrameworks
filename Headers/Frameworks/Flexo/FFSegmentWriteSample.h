@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     id _sample;
     id _sample2;
     int _fieldOrder;
+    int _cameraMode;
     int _priority;
     NSObject<OS_dispatch_group> *_writeGroup;
     FFSegmentStoreManagerRunLock *_runLock;
@@ -32,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (int)svPriority;
 - (void)performCompressAndWrite;
 - (void)dealloc;
-- (id)initWithSample:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3 segmentStore:(id)arg4 offset:(long long)arg5 priority:(int)arg6;
+- (id)initWithSample:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3 cameraMode:(int)arg4 segmentStore:(id)arg5 offset:(long long)arg6 priority:(int)arg7;
 
 @end
 

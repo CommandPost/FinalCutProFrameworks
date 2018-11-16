@@ -26,18 +26,18 @@ __attribute__((visibility("hidden")))
     LKTextField *_eventDebugLabel;
 }
 
-@property(retain, nonatomic) LKTextField *eventDebugLabel; // @synthesize eventDebugLabel=_eventDebugLabel;
-@property(retain, nonatomic) FFCPSClapperboardView *eventPosterView; // @synthesize eventPosterView=_eventPosterView;
-@property(retain, nonatomic) NSImageView *eventInfoIcon; // @synthesize eventInfoIcon=_eventInfoIcon;
-@property(retain, nonatomic) LKTextField *eventLastModifiedLabel; // @synthesize eventLastModifiedLabel=_eventLastModifiedLabel;
-@property(retain, nonatomic) LKTextField *eventEventDescriptionLabel; // @synthesize eventEventDescriptionLabel=_eventEventDescriptionLabel;
-@property(retain, nonatomic) LKTextField *eventNumPlacesLabel; // @synthesize eventNumPlacesLabel=_eventNumPlacesLabel;
-@property(retain, nonatomic) LKTextField *eventNumFacesLabel; // @synthesize eventNumFacesLabel=_eventNumFacesLabel;
-@property(retain, nonatomic) LKTextField *eventNumStillsLabel; // @synthesize eventNumStillsLabel=_eventNumStillsLabel;
-@property(retain, nonatomic) LKTextField *eventClipTotalDurationLabel; // @synthesize eventClipTotalDurationLabel=_eventClipTotalDurationLabel;
-@property(retain, nonatomic) LKTextField *eventNumClipsLabel; // @synthesize eventNumClipsLabel=_eventNumClipsLabel;
-@property(retain, nonatomic) LKTextField *eventDateRangesLabel; // @synthesize eventDateRangesLabel=_eventDateRangesLabel;
-@property(retain, nonatomic) LKTextField *eventTitleLabel; // @synthesize eventTitleLabel=_eventTitleLabel;
+@property(readonly, nonatomic) LKTextField *eventDebugLabel; // @synthesize eventDebugLabel=_eventDebugLabel;
+@property(readonly, nonatomic) FFCPSClapperboardView *eventPosterView; // @synthesize eventPosterView=_eventPosterView;
+@property(readonly, nonatomic) NSImageView *eventInfoIcon; // @synthesize eventInfoIcon=_eventInfoIcon;
+@property(readonly, nonatomic) LKTextField *eventLastModifiedLabel; // @synthesize eventLastModifiedLabel=_eventLastModifiedLabel;
+@property(readonly, nonatomic) LKTextField *eventEventDescriptionLabel; // @synthesize eventEventDescriptionLabel=_eventEventDescriptionLabel;
+@property(readonly, nonatomic) LKTextField *eventNumPlacesLabel; // @synthesize eventNumPlacesLabel=_eventNumPlacesLabel;
+@property(readonly, nonatomic) LKTextField *eventNumFacesLabel; // @synthesize eventNumFacesLabel=_eventNumFacesLabel;
+@property(readonly, nonatomic) LKTextField *eventNumStillsLabel; // @synthesize eventNumStillsLabel=_eventNumStillsLabel;
+@property(readonly, nonatomic) LKTextField *eventClipTotalDurationLabel; // @synthesize eventClipTotalDurationLabel=_eventClipTotalDurationLabel;
+@property(readonly, nonatomic) LKTextField *eventNumClipsLabel; // @synthesize eventNumClipsLabel=_eventNumClipsLabel;
+@property(readonly, nonatomic) LKTextField *eventDateRangesLabel; // @synthesize eventDateRangesLabel=_eventDateRangesLabel;
+@property(readonly, nonatomic) LKTextField *eventTitleLabel; // @synthesize eventTitleLabel=_eventTitleLabel;
 - (void)setPosterViewForEvent:(id)arg1;
 - (void)setDisplayToILifeMediaGroups:(id)arg1;
 - (void)setInfoStringsFromMediaObject;

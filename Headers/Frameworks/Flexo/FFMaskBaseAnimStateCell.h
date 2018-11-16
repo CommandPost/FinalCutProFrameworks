@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (void)setIntersectMode:(id)arg1;
 - (void)setSubtractBlendMode:(id)arg1;
 - (void)setAddBlendMode:(id)arg1;
+- (void)deleteMask:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)addCustomMenuItems:(id)arg1;
 - (id)_mask;

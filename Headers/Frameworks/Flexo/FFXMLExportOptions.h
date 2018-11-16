@@ -20,11 +20,13 @@ __attribute__((visibility("hidden")))
     NSNumber *_excludeModDateObj;
     NSNumber *_excludeAssetFileInfoObj;
     NSNumber *_useKeywordMarkerKeywordObj;
+    NSNumber *_importConsumerProjectInFCPXObj;
     NSURL *_documentURL;
 }
 
 + (id)propertyKeys;
 @property(retain, nonatomic) NSURL *documentURL; // @synthesize documentURL=_documentURL;
+@property(retain, nonatomic) NSNumber *importConsumerProjectInFCPXObj; // @synthesize importConsumerProjectInFCPXObj=_importConsumerProjectInFCPXObj;
 @property(retain, nonatomic) NSNumber *useKeywordMarkerKeywordObj; // @synthesize useKeywordMarkerKeywordObj=_useKeywordMarkerKeywordObj;
 @property(retain, nonatomic) NSNumber *excludeAssetFileInfoObj; // @synthesize excludeAssetFileInfoObj=_excludeAssetFileInfoObj;
 @property(retain, nonatomic) NSNumber *excludeModDateObj; // @synthesize excludeModDateObj=_excludeModDateObj;
@@ -36,6 +38,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithUserDefaults;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)clearImportConsumerProjectInFCPX;
+@property(readonly, nonatomic) BOOL hasImportConsumerProjectInFCPX;
+@property(nonatomic) BOOL importConsumerProjectInFCPX;
 - (void)clearUseKeywordMarkerKeyword;
 @property(readonly, nonatomic) BOOL hasUseKeywordMarkerKeyword;
 @property(nonatomic) BOOL useKeywordMarkerKeyword;

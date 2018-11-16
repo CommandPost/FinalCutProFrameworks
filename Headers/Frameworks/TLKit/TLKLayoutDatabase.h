@@ -8,7 +8,7 @@
 
 #import "NSCopying.h"
 
-@class ERLRelationalTable, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSSet, PCChangeLog, TLKDataSourceProxy, TLKItemLaneInfo, TLKLayoutGraph, TLKLayoutManager, TLKRangeSelection, TLKTimingModel;
+@class ERLRelationalTable, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSSet, PCChangeLog, TLKDataSourceProxy, TLKDelegateProxy, TLKItemLaneInfo, TLKLayoutGraph, TLKLayoutManager, TLKRangeSelection, TLKTimingModel;
 
 @interface TLKLayoutDatabase : ERLRelationalModel <NSCopying>
 {
@@ -57,6 +57,7 @@
     BOOL _allowsMultipleTracks;
     BOOL _reloadTriggersLayout;
     double _minThumbnailCount;
+    TLKDelegateProxy *_delegateProxy;
     TLKRangeSelection *_rangeSelection;
     ERLRelationalTable *_containersTable;
     ERLRelationalTable *_itemsTable;
@@ -68,12 +69,10 @@
     ERLRelationalTable *_layoutContextsTable;
     TLKLayoutGraph *_layoutGraph;
     NSSet *_selectedItemComponents;
-    NSSet *_containerInfoRecords;
 }
 
 @property(copy, nonatomic) NSSet *managedItemComponents; // @synthesize managedItemComponents=_managedItemComponents;
 @property(copy, nonatomic) NSSet *managedItems; // @synthesize managedItems=_managedItems;
-@property(copy, nonatomic) NSSet *containerInfoRecords; // @synthesize containerInfoRecords=_containerInfoRecords;
 @property(copy, nonatomic) NSSet *selectedItemComponents; // @synthesize selectedItemComponents=_selectedItemComponents;
 @property(retain, nonatomic) TLKLayoutGraph *layoutGraph; // @synthesize layoutGraph=_layoutGraph;
 @property(readonly, nonatomic) ERLRelationalTable *layoutContextsTable; // @synthesize layoutContextsTable=_layoutContextsTable;
@@ -91,11 +90,20 @@
 @property(nonatomic) CDStruct_e83c9415 trimmingTimeRift; // @synthesize trimmingTimeRift=_trimmingTimeRift;
 @property(nonatomic) BOOL allowsMultipleTracks; // @synthesize allowsMultipleTracks=_allowsMultipleTracks;
 @property(retain, nonatomic) TLKTimingModel *timingModel; // @synthesize timingModel=_timingModel;
+@property(retain, nonatomic) TLKDelegateProxy *delegateProxy; // @synthesize delegateProxy=_delegateProxy;
 @property(retain, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
 @property(nonatomic) double minThumbnailCount; // @synthesize minThumbnailCount=_minThumbnailCount;
 @property(nonatomic) CDStruct_1b6d18a9 logicalStartTime; // @synthesize logicalStartTime=_logicalStartTime;
 @property(nonatomic) int layoutRoundingMode; // @synthesize layoutRoundingMode=_layoutRoundingMode;
 @property(nonatomic) int rulerPlacementMode; // @synthesize rulerPlacementMode=_rulerPlacementMode;
+- (id)debugDumpRepresentedObjects;
+- (id)_dumpItemComponentFragmentsTable;
+- (id)_lineFragmentDebugDescription:(id)arg1 forItemComponents:(id)arg2 padding:(id)arg3;
+- (id)_layoutContextDebugDescription:(id)arg1 selectedItemComponents:(id)arg2 padding:(id)arg3;
+- (id)_laneFragmentDebugDescription:(id)arg1 selectedItemComponents:(id)arg2 padding:(id)arg3;
+- (id)_debugDescriptionForItemComponentFragments:(id)arg1 selectedItemComponents:(id)arg2 padding:(id)arg3;
+- (id)debugDescriptionForItemComponents:(id)arg1;
+- (id)debugDescription;
 - (id)transitionPlaceholderIndexesForContainer:(id)arg1;
 - (id)itemLaneFragmentForItemLane:(id)arg1 inLayoutContext:(id)arg2;
 - (id)laneFragmentForLaneInfo:(id)arg1 inLayoutContext:(id)arg2;
@@ -179,6 +187,7 @@
 - (id)itemLaneInfoRecords;
 - (void)setContainerInfo:(id)arg1 forContainer:(id)arg2;
 - (id)containerInfoForContainer:(id)arg1;
+@property(readonly, nonatomic) NSSet *containerInfoRecords;
 - (void)setLayoutInfo:(id)arg1 forItemComponent:(id)arg2;
 - (id)layoutInfoForItemComponent:(id)arg1;
 - (void)setLayoutInfo:(id)arg1 forItem:(id)arg2;

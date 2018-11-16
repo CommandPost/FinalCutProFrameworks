@@ -4,22 +4,24 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <Flexo/FFSourceColorConformBaseClass.h>
 
-@interface FFLogProcessingInfo : NSObject
+#import "FFSourceColorConformProtocol.h"
+
+@interface FFLogProcessingInfo : FFSourceColorConformBaseClass <FFSourceColorConformProtocol>
 {
     int _processingMode;
     CDStruct_bdcb2b0d _parametersMD5;
 }
 
 + (void)lazyInitForMode:(int)arg1;
-+ (struct __CFString *)CVImageBufferKey;
-@property(readonly, nonatomic) CDStruct_bdcb2b0d parametersMD5; // @synthesize parametersMD5=_parametersMD5;
 @property(readonly, nonatomic) int processingMode; // @synthesize processingMode=_processingMode;
-- (BOOL)isEquivalentTo:(id)arg1;
-- (void)setColorConformPresetAndParameters:(struct HGColorConform *)arg1 toConvertToColorSpace:(int)arg2;
+- (BOOL)isEquivalentTo:(struct FFSourceColorConformBaseClass *)arg1 forTargetColorSpace:(int)arg2;
+- (BOOL)specifiesOrdinaryProcessing;
+-     // Error parsing type: v32@0:8^{HGColorConform=^^?Iii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f^{HGNode}^{HGNode}^{HGColorConformNodeListCacheItem}BBiiiii{HGRect=iiii}BBffiiiiiiiiiiiiIfff[4]ii^{__CFData}iffQQQBi{vector<unsigned char, std::__1::allocator<unsigned char> >=**{__compressed_pair<unsigned char *, std::__1::allocator<unsigned char> >=*}}ffffBiii[3f][3f][3f]fBIfB}16i24c28, name: setColorConformPresetAndParameters:toConvertToColorSpace:fromYCbCr:
 - (BOOL)canConvertToColorSpace:(int)arg1;
 - (int)targetColorSpaceFor:(int)arg1;
+- (CDStruct_bdcb2b0d)parametersMD5ForTargetColorSpace:(int)arg1;
 - (void)dealloc;
 - (id)init;
 

@@ -6,7 +6,7 @@
 
 #import "NSViewController.h"
 
-@class FFEditorModule, LKButton, LKSegmentedControl, LKSlider, NSImageView, NSMatrix, NSView, PEEditorContainerModule;
+@class FFEditorModule, LKButton, LKSegmentedControl, LKSlider, NSArray, NSButton, NSImageView, NSMatrix, NSView, PEEditorContainerModule;
 
 @interface PEEditorAppearancePopoverController : NSViewController
 {
@@ -19,11 +19,18 @@
     LKButton *_zoomInButton;
     LKButton *_zoomOutButton;
     LKSlider *_cellDurationSlider;
-    NSMatrix *_showGroup;
+    NSArray *_showOptionsCheckBoxes;
+    NSMatrix *_checkBoxesMatrix;
+    NSButton *anglesCheckBox;
+    NSButton *clipNamesCheckBox;
+    NSButton *rolesCheckBox;
     PEEditorContainerModule *_editorContainerModule;
 }
 
 @property(retain) PEEditorContainerModule *editorContainerModule; // @synthesize editorContainerModule=_editorContainerModule;
+@property(nonatomic) NSButton *rolesCheckBox; // @synthesize rolesCheckBox;
+@property(nonatomic) NSButton *clipNamesCheckBox; // @synthesize clipNamesCheckBox;
+@property(nonatomic) NSButton *anglesCheckBox; // @synthesize anglesCheckBox;
 - (void)zoomOut:(id)arg1;
 - (void)zoomIn:(id)arg1;
 - (void)updateClipAdjustmentValuesFromTimelineView;
@@ -44,6 +51,7 @@
 - (void)viewDidLoad;
 - (id)timelineView;
 - (id)timelineModule;
+- (void)dealloc;
 
 @end
 

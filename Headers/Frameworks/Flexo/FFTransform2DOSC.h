@@ -6,21 +6,24 @@
 
 #import <Flexo/FFProOSC.h>
 
-@class FFCHObservableFolder, LKSegmentedControl, NSMutableArray, NSView;
+@class FFCHObservableFolder, FFOSCWindowView, LKSegmentedControl, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFTransform2DOSC : FFProOSC
 {
     LKSegmentedControl *_keyframeButton;
+    LKSegmentedControl *_resetButton;
     LKSegmentedControl *_exitButton;
-    NSView *_transformOverlayView;
+    FFOSCWindowView *_transformOverlayView;
     FFCHObservableFolder *_channelFolder;
     NSMutableArray *_channelsToCheckForkeyFrames;
+    BOOL _resetButtonHidden;
 }
 
 - (void)ensureIntrinsic;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (void)keyFrameTransform:(id)arg1;
+- (void)reset2DTransform:(id)arg1;
 - (void)exitTransformOSC:(id)arg1;
 - (void)keyDown:(id)arg1;
 - (void)mouseUp:(id)arg1;
@@ -37,6 +40,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)showRotationOSC;
 - (int)oscMode;
 - (BOOL)isSelectionBased;
+- (void)resizedOSCView;
+- (struct CGSize)minSize;
 - (void)dealloc;
 - (id)initWithHeXFormEffect:(id)arg1 effectStack:(id)arg2;
 

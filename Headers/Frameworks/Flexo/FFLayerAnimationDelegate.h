@@ -6,8 +6,13 @@
 
 #import "NSObject.h"
 
+#import "CALayerDelegate.h"
+#import "CATiledLayerDelegate.h"
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface FFLayerAnimationDelegate : NSObject
+@interface FFLayerAnimationDelegate : NSObject <CATiledLayerDelegate, CALayerDelegate>
 {
 }
 
@@ -16,6 +21,12 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (oneway void)release;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

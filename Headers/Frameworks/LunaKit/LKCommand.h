@@ -31,13 +31,15 @@
     id _representedObject;
     NSArray *_groupIdentifiers;
     NSImage *_dragImage;
-    void *_proReserved2;
+    BOOL _wantAppKit_handleKeyEquivalent;
     void *_proReserved3;
     void *_proReserved4;
     NSColor *detailedDescriptionTextColor;
 }
 
 + (id)appIcons;
+- (void)setWantAppKit_handleKeyEquivalent:(BOOL)arg1;
+- (BOOL)wantAppKit_handleKeyEquivalent;
 - (id)_groupNames;
 - (id)_groups;
 - (id)keyEquivalents;
@@ -49,8 +51,8 @@
 - (BOOL)downRepeats;
 - (long long)downTag;
 - (SEL)downSelector;
-- (long long)tag;
-- (SEL)action;
+@property(readonly) long long tag;
+@property(readonly) SEL action;
 - (id)_dragImage;
 - (id)icon;
 - (id)groupIdentifiers;

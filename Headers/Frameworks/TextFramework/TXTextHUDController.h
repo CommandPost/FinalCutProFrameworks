@@ -18,7 +18,7 @@
 @property(retain, nonatomic) OZViewController *opacityCtrl; // @synthesize opacityCtrl=_opacityCtrl;
 - (_Bool)useGlyphTool;
 - (void)notify:(unsigned int)arg1;
-- (void)buildUIWithObjectList:(list_281b6609 *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)buildUIWithObjectList:(list_5b338eba *)arg1 viewController:(id)arg2 context:(id)arg3;
 - (void)dealloc;
 - (BOOL)loadView;
 - (void)_resizeRowCtrl:(id)arg1 width:(double)arg2;

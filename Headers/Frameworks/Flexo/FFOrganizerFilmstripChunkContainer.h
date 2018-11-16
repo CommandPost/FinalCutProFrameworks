@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)chunkShouldHaveDuration:(id)arg1;
 - (BOOL)chunkShouldHaveHFRBadge:(id)arg1;
 - (BOOL)chunkShouldHaveClipBadge:(id)arg1;
+- (BOOL)chunkShouldHave360Badge:(id)arg1;
 - (BOOL)chunkShouldHavePSDBadge:(id)arg1;
 - (BOOL)chunkShouldHaveSynchedClipBadge:(id)arg1;
 - (BOOL)chunkShouldHaveMultiBadge:(id)arg1;

@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)allSequenceRecords;
 - (id)_findItems:(CDUnknownBlockType)arg1;
 - (BOOL)actionMoveLibraryItemToItem:(id)arg1 actionName:(id)arg2 error:(id *)arg3;
+- (void)_rebindAssetIdentifiers:(id)arg1;
 - (void)addMediaIdentifiesFromLibraryToSet:(id)arg1 clipsToExcludeSet:(id)arg2;
 - (BOOL)referencesExistForMediaIdentifier:(id)arg1 excludingTheseClips:(id)arg2 projectsInExcludeSet:(id)arg3 targetSeqRecsInExcludeSet:(id)arg4;
 - (BOOL)referencesExistForMediaIdentifier:(id)arg1 excludingTheseClips:(id)arg2;
@@ -65,8 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)applyItemsToBlock:(CDUnknownBlockType)arg1;
 - (void)setMetaValue:(id)arg1 forKey:(id)arg2;
 - (id)metaValueForKey:(id)arg1;
-- (void)setMetadata:(id)arg1;
-- (id)metadata;
+@property(copy, nonatomic) NSDictionary *metadata;
 - (BOOL)rename:(id)arg1 error:(id *)arg2;
 - (void)_undoRename:(id)arg1;
 - (id)uniqueRelativePath:(id)arg1 withSuffix:(id)arg2;

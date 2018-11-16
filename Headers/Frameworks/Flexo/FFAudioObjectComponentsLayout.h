@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface FFAudioObjectComponentsLayout : FFAudioComponentsLayout
 {
-    NSMutableSet *m_orphanedLayoutItems;
-    NSMutableSet *m_recentOrphanedLayoutItems;
+    NSMutableSet *_orphanedLayoutItems;
+    NSMutableSet *_recentOrphanedLayoutItems;
 }
 
 + (Class)mutableLayoutItemClass;

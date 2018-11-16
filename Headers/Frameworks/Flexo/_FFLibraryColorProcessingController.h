@@ -4,25 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFInspectorBaseController.h>
-
-@class FFLibrary, LKButton, LKTextField, NSView;
+#import "NSObject.h"
 
 __attribute__((visibility("hidden")))
-@interface _FFLibraryColorProcessingController : FFInspectorBaseController
+@interface _FFLibraryColorProcessingController : NSObject
 {
-    NSView *_rowView;
-    FFLibrary *_library;
-    LKTextField *_labelField;
-    LKButton *_standardButton;
-    LKButton *_wideGamutButton;
+    int _selectedMode;
 }
 
-- (id)view;
-- (void)setLibrary:(id)arg1;
-- (void)setColorProcessingMode:(id)arg1;
-- (void)setRadioButtonStates:(int)arg1;
-- (void)dealloc;
+- (void)showSheet:(id)arg1 parentWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)newAccessoryView:(int)arg1;
+- (void)selectButton:(id)arg1;
 
 @end
 

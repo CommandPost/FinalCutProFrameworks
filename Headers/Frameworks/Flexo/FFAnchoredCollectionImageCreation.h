@@ -29,6 +29,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+- (id)newFilmImageFromCollection:(id)arg1 addLineForTime:(CDStruct_1b6d18a9)arg2 showWindow:(CDStruct_e83c9415)arg3 numberAcross:(int)arg4 numberDown:(int)arg5;
+- (id)newImageForTimeFromStream:(id)arg1 sourceTime:(CDStruct_1b6d18a9)arg2 width:(int)arg3 height:(int)arg4;
+- (id)newImageForTime:(id)arg1 sourceTime:(CDStruct_1b6d18a9)arg2 width:(int)arg3 height:(int)arg4;
+- (struct CGImage *)newResizedCGImage:(struct CGImage *)arg1 toWidth:(int)arg2 andHeight:(int)arg3;
 - (id)newImageFromCollection:(id)arg1 addLineForTime:(CDStruct_1b6d18a9)arg2 showWindow:(CDStruct_e83c9415)arg3;
 - (void)getAllStoryLanesBelowSpine:(id)arg1 lanes:(id)arg2;
 - (id)colorForTimelineObject:(id)arg1 multiangle:(BOOL)arg2;

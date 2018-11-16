@@ -38,6 +38,11 @@
 - (struct CGRect)centerScanRect:(struct CGRect)arg1 forLayer:(id)arg2;
 - (void)_logChangedLayers:(id)arg1 changeType:(id)arg2;
 - (void)_logChangedLayer:(id)arg1 changeType:(id)arg2;
+- (void)_debugShowContainerBoundsIfNeeded;
+- (id)_debugDescriptionForItemComponents:(id)arg1 inLayer:(id)arg2 currentDepth:(long long)arg3;
+- (id)_debugDescriptionForLayer:(id)arg1;
+- (id)debugDescriptionForItemComponents:(id)arg1;
+- (id)debugDescription;
 - (id)closestTrackLayerAtPoint:(struct CGPoint)arg1;
 - (void)tilePrecisionEditorDividerBar;
 - (void)tile;

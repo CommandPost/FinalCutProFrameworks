@@ -7,10 +7,11 @@
 #import <Flexo/FFEffect.h>
 
 #import "FFAudioEffectChainDelegate.h"
+#import "FFEffectPresetDirtyProtocol.h"
 
 @class CHChannelEnum, NSArray;
 
-@interface FFEffectBundle : FFEffect <FFAudioEffectChainDelegate>
+@interface FFEffectBundle : FFEffect <FFAudioEffectChainDelegate, FFEffectPresetDirtyProtocol>
 {
     NSArray *_effectBundleParts;
     CHChannelEnum *_presetChannel;
@@ -33,6 +34,7 @@
 + (void)registerEffects;
 + (void)registerBundleAtPath:(id)arg1 isUserBundle:(BOOL)arg2;
 - (BOOL)update_migrateEffectBundleFormat;
+- (BOOL)presetDirty;
 - (id)initWithEffectID:(id)arg1 andXMLDocument:(id)arg2;
 - (id)exportAsXMLDocument;
 - (id)effectChainModelObject;
@@ -52,8 +54,8 @@
 - (void)updatePresetsInEnumChannel:(id)arg1 withPresetNames:(id)arg2;
 - (id)availableBundleParts;
 - (id)presetNames;
-- (void)effectWillBeRemovedFromStack;
-- (void)effectWasAddedToStack:(int)arg1;
+- (void)effectDeactivated;
+- (void)effectActivated:(int)arg1;
 - (void)effectStackAnchoredObjectDidChange;
 - (void)setEffectStack:(id)arg1;
 - (id)inputKeys;

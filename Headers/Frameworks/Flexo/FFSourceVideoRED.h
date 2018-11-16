@@ -6,18 +6,25 @@
 
 #import <Flexo/FFSourceVideo.h>
 
+#import "FFSourceVideoCameraLUTProcessingProtocol.h"
+
 @class FFREDClip, FFVideoProps;
 
 __attribute__((visibility("hidden")))
-@interface FFSourceVideoRED : FFSourceVideo
+@interface FFSourceVideoRED : FFSourceVideo <FFSourceVideoCameraLUTProcessingProtocol>
 {
     FFREDClip *_clip;
     FFVideoProps *_videoProps;
     CDStruct_e83c9415 _timeRange;
+    struct FFSourceColorConformBaseClass *_cameraLUTProcessingInfo;
+    int _cameraLUTProcessingTargetColorSpace;
 }
 
 + (Class)streamClass;
 + (id)type;
+- (void)setCameraLUTProcessingInfo:(struct FFSourceColorConformBaseClass *)arg1 targetColorSpace:(int)arg2;
+- (int)cameraLUTProcessingTargetColorSpace;
+- (struct FFSourceColorConformBaseClass *)cameraLUTProcessingInfo;
 - (id)codecName;
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)nativeVideoProps;

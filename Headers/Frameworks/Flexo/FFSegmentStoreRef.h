@@ -21,6 +21,7 @@
 - (void)hintDoneWritingForNow:(CDStruct_bdcb2b0d)arg1;
 - (void)hintDoneEnqueuingWritesForMD5:(CDStruct_bdcb2b0d)arg1;
 - (BOOL)writeBuffer:(id)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 sampleNumber:(long long)arg3 cost:(double)arg4 mustWrite:(BOOL)arg5 error:(id *)arg6;
+- (BOOL)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 cameraMode:(int)arg4 segmentMD5:(CDStruct_bdcb2b0d)arg5 sampleNumber:(long long)arg6 cost:(double)arg7 mustWrite:(BOOL)arg8 error:(id *)arg9;
 - (BOOL)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 segmentMD5:(CDStruct_bdcb2b0d)arg4 sampleNumber:(long long)arg5 cost:(double)arg6 mustWrite:(BOOL)arg7 error:(id *)arg8;
 - (id)newBufferAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 priority:(int)arg3 error:(id *)arg4;
 - (id)newImageAtOffset:(long long)arg1 segmentMD5:(CDStruct_bdcb2b0d)arg2 decodeQuality:(int)arg3 priority:(int)arg4 error:(id *)arg5;

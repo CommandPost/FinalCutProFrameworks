@@ -18,22 +18,30 @@
 }
 
 + (void)initialize;
-+ (void)rebuildImageCache:(double)arg1;
-+ (id)newImageForFontMenuItem:(id)arg1 size:(struct CGSize)arg2 backingScaleFactor:(double)arg3;
 @property(retain, nonatomic) LKPopUpButton *popUpButton; // @synthesize popUpButton=_popUpButton;
+- (void)removeNotifications;
+- (void)setupNotifications;
+- (void)unlockText:(struct OZChannel *)arg1;
+- (void)lockText:(struct OZChannel *)arg1;
+- (void)fontFamilyControllerDidChange;
+- (id)nibName;
+- (id)getFontImageCache;
+- (struct OZFontCollection *)getCurrentCollection;
+- (void)setChannel:(struct OZChannel *)arg1 value:(int)arg2 time:(CDStruct_1b6d18a9)arg3;
 - (void)saveDefaultFont:(int)arg1;
-- (void)menu:(id)arg1 willHighlightItem:(id)arg2;
 - (void)menuDidClose:(id)arg1;
 - (void)menuWillOpen:(id)arg1;
-- (void)setChannelValue:(id)arg1;
+- (void)menu:(id)arg1 willHighlightItem:(id)arg2;
+- (void)inspectorWillDealloc;
+- (BOOL)isMenuOpen;
 - (void)changeChannel:(id)arg1;
+- (void)setChannelValue:(id)arg1;
 - (void)disable;
 - (void)enable;
 - (void)update;
 - (void)reset;
 - (void)selectItemAtIndex:(int)arg1;
 - (void)updatePopUpMenu:(BOOL)arg1;
-- (struct OZFontCollection *)getCurrentCollection;
 - (BOOL)areAllChannelsEqual;
 - (void)windowDidChangeBackingProperties:(id)arg1;
 - (void)collectionChanged:(id)arg1;

@@ -12,13 +12,18 @@ __attribute__((visibility("hidden")))
     id _cachedRepresentedObject;
 }
 
+- (void)resetOutsideCorrection:(id)arg1;
+- (void)resetInsideCorrection:(id)arg1;
 - (void)invertMasks:(id)arg1;
 - (void)addIsolationMask:(id)arg1;
 - (void)addImprovedEllipseMask:(id)arg1;
 - (void)addMaskOfClass:(Class)arg1 actionName:(id)arg2;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)addCustomMenuItems:(id)arg1;
+- (void)resetChannelForCell:(id)arg1;
+- (BOOL)shouldShowKeyframeMenu;
 - (id)customKeyframeTitle;
+- (BOOL)shouldShowAdvancedResetOptions;
 - (BOOL)shouldShowMasks;
 - (BOOL)shouldDisableKeyframeItems;
 - (void)setShouldDisableKeyframeItems:(BOOL)arg1;

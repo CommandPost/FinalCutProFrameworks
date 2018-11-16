@@ -31,7 +31,7 @@
 - (void)viewDidEndLiveResize;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)updateToolTips;
-- (void)getSamples:(map_c3cd15f6 *)arg1;
+- (void)getSamples:(map_512a1fea *)arg1;
 - (struct OZChannelGradientFolder *)getFolder;
 - (void)setEnabled:(BOOL)arg1;
 - (void)flagsChanged:(id)arg1;
@@ -42,7 +42,7 @@
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
-- (__map_iterator_2041b45d)findSampleIn:(map_c3cd15f6 *)arg1 location:(struct CGPoint)arg2 hitMiddle:(char *)arg3;
+- (__map_iterator_9f9d9545)findSampleIn:(map_512a1fea *)arg1 location:(struct CGPoint)arg2 hitMiddle:(char *)arg3;
 - (BOOL)acceptsFirstMouse:(id)arg1;
 - (id)imageForDimension1:(long long)arg1 dimension2:(long long)arg2;
 - (void)drawGutter:(struct CGRect)arg1 sampleIndex:(int)arg2 middleIndex:(int)arg3;

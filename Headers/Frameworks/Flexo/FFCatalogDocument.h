@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     FFCatalogStore *_catalogStore;
     NSString *_catalogID;
     double _beginBackupTimestamp;
+    BOOL _backupInProgress;
 }
 
 + (void)setGlobalDeferSyncCatalogIfNecessary:(BOOL)arg1;
@@ -29,7 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)documentForRootObject:(id)arg1;
 + (id)copyCatalogAndObjectID:(id)arg1;
 - (void)cancelBackup:(id)arg1;
-- (void)scheduleBackup;
+- (void)setBackupInProgress:(BOOL)arg1;
 - (void)writePeriodicBackup;
 - (BOOL)backupNeeded;
 - (BOOL)saveChanges:(id *)arg1;

@@ -156,7 +156,7 @@ struct OZChannelEnum {
     struct OZCurve *_field19;
     struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long>> {
         struct __tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long> {
-            struct __tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *> *_field1;
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         } _field1;
     } _field20;
     struct PCString _field21;
@@ -460,25 +460,35 @@ struct _NSRange {
 
 struct __CFString;
 
-struct __list_node<OZChannelBase *, void *>;
+struct __list_node_base<OZChannelBase *, void *> {
+    struct __list_node_base<OZChannelBase *, void *> *_field1;
+    struct __list_node_base<OZChannelBase *, void *> *_field2;
+};
 
-struct __list_node<PCVector2<double>, void *>;
+struct __list_node_base<PCVector2<double>, void *> {
+    struct __list_node_base<PCVector2<double>, void *> *_field1;
+    struct __list_node_base<PCVector2<double>, void *> *_field2;
+};
 
-struct __list_node<PCVector3<double>, void *>;
+struct __list_node_base<PCVector3<double>, void *> {
+    struct __list_node_base<PCVector3<double>, void *> *_field1;
+    struct __list_node_base<PCVector3<double>, void *> *_field2;
+};
 
-struct __list_node<double, void *>;
+struct __list_node_base<double, void *> {
+    struct __list_node_base<double, void *> *_field1;
+    struct __list_node_base<double, void *> *_field2;
+};
 
 struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<double, OZGutterSample>, std::__1::__tree_node<std::__1::__value_type<double, OZGutterSample>, void *>*, long>> {
     struct __tree_iterator<std::__1::__value_type<double, OZGutterSample>, std::__1::__tree_node<std::__1::__value_type<double, OZGutterSample>, void *>*, long> {
-        struct __tree_node<std::__1::__value_type<double, OZGutterSample>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
     } _field1;
 };
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *_field1;
 };
-
-struct __tree_node<std::__1::__value_type<double, OZGutterSample>, void *>;
 
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
     struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
@@ -505,40 +515,28 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
 };
 
 struct list<OZChannelBase *, std::__1::allocator<OZChannelBase *>> {
-    struct __list_node_base<OZChannelBase *, void *> {
-        struct __list_node<OZChannelBase *, void *> *_field1;
-        struct __list_node<OZChannelBase *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZChannelBase *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZChannelBase *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<PCVector2<double>, std::__1::allocator<PCVector2<double>>> {
-    struct __list_node_base<PCVector2<double>, void *> {
-        struct __list_node<PCVector2<double>, void *> *_field1;
-        struct __list_node<PCVector2<double>, void *> *_field2;
-    } _field1;
+    struct __list_node_base<PCVector2<double>, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<PCVector2<double>, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<PCVector3<double>, std::__1::allocator<PCVector3<double>>> {
-    struct __list_node_base<PCVector3<double>, void *> {
-        struct __list_node<PCVector3<double>, void *> *_field1;
-        struct __list_node<PCVector3<double>, void *> *_field2;
-    } _field1;
+    struct __list_node_base<PCVector3<double>, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<PCVector3<double>, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<double, std::__1::allocator<double>> {
-    struct __list_node_base<double, void *> {
-        struct __list_node<double, void *> *_field1;
-        struct __list_node<double, void *> *_field2;
-    } _field1;
+    struct __list_node_base<double, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<double, void *>>> {
         unsigned long long _field1;
     } _field2;
@@ -546,7 +544,7 @@ struct list<double, std::__1::allocator<double>> {
 
 struct map<double, OZGutterSample, std::__1::less<double>, std::__1::allocator<std::__1::pair<const double, OZGutterSample>>> {
     struct __tree<std::__1::__value_type<double, OZGutterSample>, std::__1::__map_value_compare<double, std::__1::__value_type<double, OZGutterSample>, std::__1::less<double>, true>, std::__1::allocator<std::__1::__value_type<double, OZGutterSample>>> {
-        struct __tree_node<std::__1::__value_type<double, OZGutterSample>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<double, OZGutterSample>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -558,7 +556,7 @@ struct map<double, OZGutterSample, std::__1::less<double>, std::__1::allocator<s
 
 struct map<int, int, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, int>>> {
     struct __tree<std::__1::__value_type<int, int>, std::__1::__map_value_compare<int, std::__1::__value_type<int, int>, std::__1::less<int>, true>, std::__1::allocator<std::__1::__value_type<int, int>>> {
-        struct __tree_node<std::__1::__value_type<int, int>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<int, int>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -570,7 +568,7 @@ struct map<int, int, std::__1::less<int>, std::__1::allocator<std::__1::pair<con
 
 struct set<OZChannelBase *, std::__1::less<OZChannelBase *>, std::__1::allocator<OZChannelBase *>> {
     struct __tree<OZChannelBase *, std::__1::less<OZChannelBase *>, std::__1::allocator<OZChannelBase *>> {
-        struct __tree_node<OZChannelBase *, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<OZChannelBase *, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -582,7 +580,7 @@ struct set<OZChannelBase *, std::__1::less<OZChannelBase *>, std::__1::allocator
 
 struct set<int, std::__1::less<int>, std::__1::allocator<int>> {
     struct __tree<int, std::__1::less<int>, std::__1::allocator<int>> {
-        struct __tree_node<int, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<int, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -644,23 +642,20 @@ typedef struct {
 // Template types
 typedef struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<double, OZGutterSample>, std::__1::__tree_node<std::__1::__value_type<double, OZGutterSample>, void *>*, long>> {
     struct __tree_iterator<std::__1::__value_type<double, OZGutterSample>, std::__1::__tree_node<std::__1::__value_type<double, OZGutterSample>, void *>*, long> {
-        struct __tree_node<std::__1::__value_type<double, OZGutterSample>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
     } _field1;
-} __map_iterator_2041b45d;
+} __map_iterator_9f9d9545;
 
 typedef struct list<OZChannelBase *, std::__1::allocator<OZChannelBase *>> {
-    struct __list_node_base<OZChannelBase *, void *> {
-        struct __list_node<OZChannelBase *, void *> *_field1;
-        struct __list_node<OZChannelBase *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZChannelBase *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZChannelBase *, void *>>> {
         unsigned long long _field1;
     } _field2;
-} list_e5c8e430;
+} list_9af5505e;
 
 typedef struct map<double, OZGutterSample, std::__1::less<double>, std::__1::allocator<std::__1::pair<const double, OZGutterSample>>> {
     struct __tree<std::__1::__value_type<double, OZGutterSample>, std::__1::__map_value_compare<double, std::__1::__value_type<double, OZGutterSample>, std::__1::less<double>, true>, std::__1::allocator<std::__1::__value_type<double, OZGutterSample>>> {
-        struct __tree_node<std::__1::__value_type<double, OZGutterSample>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<double, OZGutterSample>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -668,11 +663,11 @@ typedef struct map<double, OZGutterSample, std::__1::less<double>, std::__1::all
             unsigned long long _field1;
         } _field3;
     } _field1;
-} map_c3cd15f6;
+} map_512a1fea;
 
 typedef struct set<OZChannelBase *, std::__1::less<OZChannelBase *>, std::__1::allocator<OZChannelBase *>> {
     struct __tree<OZChannelBase *, std::__1::less<OZChannelBase *>, std::__1::allocator<OZChannelBase *>> {
-        struct __tree_node<OZChannelBase *, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<OZChannelBase *, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
@@ -680,7 +675,7 @@ typedef struct set<OZChannelBase *, std::__1::less<OZChannelBase *>, std::__1::a
             unsigned long long _field1;
         } _field3;
     } _field1;
-} set_759369c4;
+} set_8ca329ee;
 
 typedef struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> {
     struct OZChannelBase **_field1;

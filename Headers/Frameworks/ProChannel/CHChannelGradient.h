@@ -8,7 +8,6 @@
 
 @interface CHChannelGradient : CHChannelFolder
 {
-    struct OZChannelGradient *_pChannelGradient;
 }
 
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;

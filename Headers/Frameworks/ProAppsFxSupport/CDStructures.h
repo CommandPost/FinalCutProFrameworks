@@ -4,6 +4,10 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+#pragma mark Blocks
+
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+
 #pragma mark Named Structures
 
 struct CGPoint {
@@ -48,9 +52,15 @@ struct GraphStats;
 
 struct HGBitmap;
 
-struct HGBlendingInfo;
-
-struct HGBuffer;
+struct HGBlendingInfo {
+    unsigned long long _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+    int _field5;
+    int _field6;
+    int _field7;
+};
 
 struct HGBufferDumper {
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
@@ -72,10 +82,12 @@ struct HGCache {
 
 struct HGCacheEntry;
 
-struct HGDotTree {
-    struct __sFILE *_field1;
-    _Bool _field2;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
+struct HGDotGraph {
+    struct map<unsigned long, HGDotGraph::Node, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, HGDotGraph::Node>>> _field1;
+    struct map<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge, std::__1::less<std::__1::tuple<unsigned long, unsigned long>>, std::__1::allocator<std::__1::pair<const std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>>> _field2;
+    struct __sFILE *_field3;
+    _Bool _field4;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field5;
 };
 
 struct HGExecutionData;
@@ -124,9 +136,9 @@ struct HGNode {
     struct HGNodeChain *_field33;
     struct HGShaderEntry *_field34;
     int _field35;
-    struct HGBlendingInfo *_field36;
-    float _field37;
-    float _field38[4];
+    _Bool _field36;
+    struct HGBlendingInfo _field37;
+    float _field38;
 };
 
 struct HGNodeChain;
@@ -154,7 +166,7 @@ struct HGRenderer {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
     struct HGNode *_field3;
-    struct HGBuffer *_field4;
+    struct HGBitmap *_field4;
     struct HGRendererTextureUnit _field5[8];
     struct vector<DepthBufferManager *, std::__1::allocator<DepthBufferManager *>> _field6;
     struct vector<HGExecutionUnit *, std::__1::allocator<HGExecutionUnit *>> _field7;
@@ -198,27 +210,28 @@ struct HGRenderer {
     int _field42;
     int _field43;
     int _field44;
-    struct HGCache _field45;
-    _Bool _field46;
+    int _field45;
+    struct HGCache _field46;
     _Bool _field47;
     _Bool _field48;
-    unsigned int _field49;
-    struct HGLimits *_field50[2];
-    int _field51;
-    struct HGDotTree _field52;
-    struct HGBufferDumper _field53;
-    unsigned int _field54;
-    int _field55;
-    unsigned long long _field56;
+    _Bool _field49;
+    unsigned int _field50;
+    struct HGLimits *_field51[2];
+    int _field52;
+    struct HGDotGraph _field53;
+    struct HGBufferDumper _field54;
+    unsigned int _field55;
+    int _field56;
     unsigned long long _field57;
-    int _field58;
-    struct HGLimitsCache *_field59;
-    struct HGRenderQueue *_field60;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field61;
+    unsigned long long _field58;
+    int _field59;
+    struct HGLimitsCache *_field60;
+    struct HGRenderQueue *_field61;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field62;
 };
 
 struct HGRendererTextureUnit {
-    struct HGTexture *_field1;
+    struct HGBitmap *_field1;
     struct HGTransform *_field2;
     int _field3;
 };
@@ -230,16 +243,13 @@ struct HGShaderBinding {
     int _field4;
     int _field5;
     int _field6;
-    int _field7;
+    unsigned int _field7;
     unsigned int _field8;
-    unsigned int _field9;
 };
 
 struct HGShaderEntry;
 
 struct HGSyncData;
-
-struct HGTexture;
 
 struct HGTransform;
 
@@ -295,6 +305,19 @@ struct OZCurve;
 
 struct OZFactory;
 
+struct PAELUTData {
+    void **_field1;
+    struct PCHash128State _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    float _field5;
+    float _field6;
+};
+
+struct PCHash128State {
+    unsigned int state[4];
+};
+
 struct PCMatrix44Tmpl<double> {
     double _field1[4][4];
 };
@@ -346,6 +369,10 @@ struct _CGLContextObject;
 
 struct __CFString;
 
+struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
+    struct __tree_node_base<void *> *_field1;
+};
+
 struct _opaque_pthread_mutex_t {
     long long _field1;
     char _field2[56];
@@ -375,13 +402,35 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
     } _field1;
 };
 
+struct map<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge, std::__1::less<std::__1::tuple<unsigned long, unsigned long>>, std::__1::allocator<std::__1::pair<const std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>>> {
+    struct __tree<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::__map_value_compare<std::__1::tuple<unsigned long, unsigned long>, std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::less<std::__1::tuple<unsigned long, unsigned long>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::tuple<unsigned long, unsigned long>, std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::less<std::__1::tuple<unsigned long, unsigned long>>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
+struct map<unsigned long, HGDotGraph::Node, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, HGDotGraph::Node>>> {
+    struct __tree<std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, HGDotGraph::Node>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, HGDotGraph::Node>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::less<unsigned long>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
 struct set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *>> {
     struct __tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *>> {
-        struct __tree_node<HGNodeInput *, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-                struct __tree_node_base<void *> *_field1;
-            } _field1;
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::less<HGNodeInput *>> {
             unsigned long long _field1;

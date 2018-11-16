@@ -89,6 +89,8 @@
 @property(retain, nonatomic) NSSet *anchoredItems; // @synthesize anchoredItems=_anchoredItems;
 @property(nonatomic) struct PC_CMTimePair anchorPair; // @synthesize anchorPair=_anchorPair;
 @property(nonatomic) id parentItem; // @synthesize parentItem=_parentItem;
+- (void)update_audioComponentSourceAnchoredLaneKey;
+- (BOOL)update_convertToNewColorTabEffects;
 - (BOOL)update_convertHEColorEffectToMaskedEffects;
 - (BOOL)update_conformLumaBumpsFromChannelsToData;
 - (BOOL)update_isTitle;
@@ -176,7 +178,7 @@
 - (BOOL)canBeRetimed;
 - (void)setIsTitle:(BOOL)arg1;
 - (BOOL)isTitle;
-- (BOOL)checkLanesForOverlaps;
+- (BOOL)validateAmbiguousCompositingOrderWithError:(id *)arg1;
 - (void)debugAllVideoEffectsOnObject;
 - (void)addObjectVideoEffectsToArrayWithOptions:(unsigned int)arg1 array:(id)arg2;
 - (void)setHasNonDefaultAudioEffectStack:(BOOL)arg1;
@@ -346,6 +348,7 @@
 - (BOOL)isBackgroundGenerator;
 - (BOOL)isMapStill;
 - (BOOL)isMapGenerator;
+- (BOOL)is360;
 - (BOOL)isPSDLayer;
 - (BOOL)isPSD;
 - (BOOL)isMediaComponent;
@@ -384,6 +387,8 @@
 - (BOOL)wantsAutoKenBurns;
 - (BOOL)isInCropOrKenBurnsCropMode;
 - (BOOL)addSpatialEffectsIfNecessaryWithContainer:(id)arg1;
+- (void)adjust360EffectsIfNecessaryWithContainer:(id)arg1 isMetadataChange:(BOOL)arg2;
+- (void)showAndEnable360Effect:(id)arg1 show:(BOOL)arg2 enable:(BOOL)arg3;
 - (BOOL)addTemporalEffectsIfNecessaryWithContainer:(id)arg1 autoRetimed:(char *)arg2;
 - (double)autoSlowRateInContainer:(id)arg1;
 - (BOOL)anchoredComponentContainsValidTrim;
@@ -527,7 +532,7 @@
 - (void)invalidateSourceRangeAndEffectCachesForSequenceFormatChange;
 - (void)invalidateStreamRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
-- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
+- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2 withUserInfo:(id)arg3;
 - (BOOL)shouldApplyImplicitAudioTransitionToLeftEdge:(BOOL)arg1 timeRange:(CDStruct_e83c9415 *)arg2;
 - (id)onSpine;
 - (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3;
@@ -667,6 +672,7 @@
 - (id)describeSet:(id)arg1 withIndent:(long long)arg2 recurse:(BOOL)arg3;
 - (id)describeArray:(id)arg1 withIndent:(long long)arg2 recurse:(BOOL)arg3;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
+- (id)mediaIndexingKey;
 - (id)mediaIdentifier;
 - (id)identifier;
 - (BOOL)supportsRoles;
@@ -765,6 +771,8 @@
 - (CDStruct_1b6d18a9)markerTime;
 - (CDStruct_e83c9415)muTimeRange;
 - (BOOL)isAudioSummary;
+- (void)addTrailingTransition;
+- (void)addLeadingTransition;
 - (id)detachAudio;
 - (id)visibleSecondaryComponents;
 - (void)setAudioComponentsVisible:(BOOL)arg1;

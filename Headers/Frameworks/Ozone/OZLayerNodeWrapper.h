@@ -54,6 +54,8 @@
 - (BOOL)useFrozen;
 - (BOOL)isAnyAncestorFrozen;
 - (BOOL)isFrozen;
+- (BOOL)is360Group;
+- (BOOL)isRootGroupIn360Project;
 - (long long)getEnableState;
 - (void)enable:(BOOL)arg1;
 - (BOOL)isAnyAncestorDisabled;

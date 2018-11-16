@@ -64,7 +64,6 @@
 @property(copy, nonatomic) NSSet *itemComponentFragments;
 @property(readonly, nonatomic) TLKLayoutContext *trackLayoutContext;
 - (id)container;
-- (struct CGRect)_emptySpineFrameForItemHeight:(double)arg1;
 - (struct CGRect)_expandSpineFrameForPrecisionEditorIfNeeded:(struct CGRect)arg1;
 - (struct CGRect)_calculatedSpineFrame;
 @property(nonatomic) struct CGRect spineFrame;

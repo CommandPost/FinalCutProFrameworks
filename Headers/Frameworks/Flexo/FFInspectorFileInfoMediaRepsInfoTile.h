@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSArray *_currentRefs;
     NSArray *_currentItems;
     id _currentOwner;
-    struct FFProcrastinatedDispatch_t _procrastinatedReload;
+    struct PCProcrastinatedDispatch_t _procrastinatedReload;
     NSView *_rowView;
     LKImageView *_originalImage;
     LKTextField *_originalField;

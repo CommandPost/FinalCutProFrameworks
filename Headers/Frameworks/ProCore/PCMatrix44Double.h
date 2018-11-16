@@ -38,7 +38,6 @@
 - (void)leftTranslateX:(double)arg1 translateY:(double)arg2 translateZ:(double)arg3;
 - (void)makeIdentity;
 - (BOOL)isIdentity;
-- (CDStruct_60067b7e)md5;
 - (id)array;
 - (void)setDoubles:(double [16])arg1;
 - (void)getDoubles:(double [16])arg1;

@@ -51,7 +51,7 @@
 - (void)duplicateProjectSequenceRecords:(id)arg1;
 - (void)renameProject:(id)arg1;
 - (void)_goToTimelineAndPlay;
-- (void)_internalDeleteSequenceRecord:(id)arg1;
+- (BOOL)_internalDeleteSequenceRecord:(id)arg1 error:(id *)arg2;
 - (void)_convertSequenceRecordTrailerToMovie:(id)arg1;
 - (void)_reopenSequence:(id)arg1;
 - (id)_extractClipRefsForSequenceRecord:(id)arg1;

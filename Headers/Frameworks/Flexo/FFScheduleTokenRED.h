@@ -6,7 +6,7 @@
 
 #import <Flexo/FFScheduleToken.h>
 
-@class FFImageRepFFPixelBuffer, FFPixelBuffer, NSData, NSObject<OS_dispatch_semaphore>, PCMatrix44Double;
+@class FFImageRepFFPixelBuffer, FFPixelBuffer, NSData, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_semaphore>, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFScheduleTokenRED : FFScheduleToken
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
     _Bool _canceled;
     struct FFVideoDecoderRED *_videoDecoderRED;
     double _startTime;
-    long long _predicateDebayerAndReadBack;
+    NSObject<OS_dispatch_queue> *_debayerAndReadBackQueue;
 }
 
 - (id).cxx_construct;

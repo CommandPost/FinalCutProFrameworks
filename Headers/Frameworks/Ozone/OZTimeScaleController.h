@@ -12,7 +12,7 @@
 {
     LKSegmentedScrubber *_pScale;
     BOOL _relativeValues;
-    map_d8745af3 *_pRoots;
+    map_3710aa94 *_pRoots;
 }
 
 - (struct OZDocument *)document;

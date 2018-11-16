@@ -11,24 +11,26 @@
 @interface TLKDelegateProxy : NSObject
 {
     struct {
+        unsigned int heightForItemComponent:1;
         unsigned int layerForContainer:1;
         unsigned int layerForItemComponent:1;
         unsigned int layerForLane:1;
         unsigned int didUpdateItemLayer:1;
         unsigned int timecodeAtTime:1;
-        unsigned int RESERVED:27;
+        unsigned int RESERVED:26;
     } _respondsToSelector;
     TLKTimelineView *_timelineView;
     id <TLKTimelineViewDelegate> _delegate;
 }
 
-@property(retain, nonatomic) id <TLKTimelineViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) id <TLKTimelineViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 - (id)timecodeAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)didUpdateItemLayer:(id)arg1;
 - (id)layerForLaneFragment:(id)arg1;
 - (id)layerForItemComponentFragment:(id)arg1;
 - (id)layerForLayoutContext:(id)arg1;
+- (double)heightForItemComponent:(id)arg1 proposedHeight:(double)arg2;
 - (id)initWithTimelineView:(id)arg1;
 
 @end

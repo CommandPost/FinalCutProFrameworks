@@ -89,6 +89,7 @@
 - (int)getPreviewType;
 - (id)getPreviewPath;
 - (id)getPreviewName;
+- (id)previewAVPlayer;
 - (id)fullPreviewMovie;
 - (id)getPreviewMovie;
 - (id)getPreviewImage;

@@ -18,6 +18,7 @@
     unsigned int _encodedWidth;
     unsigned int _encodedHeight;
     int _fieldOrder;
+    int _cameraMode;
     int _firstSample;
     int _alphaMode;
     int _bitDepth;
@@ -35,6 +36,7 @@
     double _lastCompressionWallClockStamp;
 }
 
+@property(readonly) int cameraMode; // @synthesize cameraMode=_cameraMode;
 @property(readonly) int firstSample; // @synthesize firstSample=_firstSample;
 - (id)pixelTransformFromIndex:(unsigned long long)arg1;
 - (unsigned long long)pixelTransformIndexFromMatrix:(id)arg1 retAddedPT:(char *)arg2;
@@ -44,7 +46,7 @@
 - (id)renderProps;
 - (int)writeBuffer:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3;
 - (int)writeTransferredImageData:(id)arg1 secondFieldData:(id)arg2 from:(id)arg3 sampleNumber:(long long)arg4;
-- (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 sampleNumber:(long long)arg4 threadInfo:(id)arg5;
+- (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 cameraMode:(int)arg4 sampleNumber:(long long)arg5 threadInfo:(id)arg6;
 - (BOOL)validateDimensions:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3;
 - (id)newImageFromFrameData:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3 requestedQuality:(int)arg4 propagateSampleBuf:(BOOL)arg5 error:(id *)arg6;
 - (struct CGRect)getExpectedEncodedPixelBounds:(int)arg1;

@@ -14,16 +14,16 @@
 __attribute__((visibility("hidden")))
 @interface FFAudioComponentsLayoutMap : FFBaseDSObject <NSCoding, NSCopying>
 {
-    NSObject<FFAudioComponentsLayoutMapDelegate> *m_delegate;
-    FFObjectDict *m_layoutMap;
-    NSMutableArray *m_changeInfoStack;
-    NSMapTable *m_layoutItemCache;
+    NSObject<FFAudioComponentsLayoutMapDelegate> *_delegate;
+    FFObjectDict *_layoutMap;
+    NSMutableArray *_changeInfoStack;
+    NSMapTable *_layoutItemCache;
 }
 
 + (Class)layoutClass;
 + (id)copyClassDescription;
-@property(nonatomic) NSObject<FFAudioComponentsLayoutMapDelegate> *delegate; // @synthesize delegate=m_delegate;
-@property(retain, nonatomic) FFObjectDict *layoutMap; // @synthesize layoutMap=m_layoutMap;
+@property(retain, nonatomic) FFObjectDict *layoutMap; // @synthesize layoutMap=_layoutMap;
+@property(nonatomic) NSObject<FFAudioComponentsLayoutMapDelegate> *delegate; // @synthesize delegate=_delegate;
 - (void)didChangeAudioComponentsLayout:(void *)arg1;
 - (void *)_willChangeAudioComponentsLayoutMapForKeys:(id)arg1 changeInfo:(id)arg2;
 - (void *)willChangeAudioComponentsLayoutForKey:(id)arg1 changeInfo:(id)arg2;

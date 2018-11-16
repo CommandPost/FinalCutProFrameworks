@@ -18,7 +18,6 @@
     NSMutableArray *_visibleSubnodes;
     LKContainerItemView *_containerItem;
     struct CGSize _currentSize;
-    struct CGSize _preferedSize;
     struct CGSize _aspectRatio;
     struct CGSize _originalSize;
     struct CGSize _newSize;
@@ -41,7 +40,6 @@
 @property struct CGSize newSize; // @synthesize newSize=_newSize;
 @property struct CGSize aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 @property struct CGSize originalSize; // @synthesize originalSize=_originalSize;
-@property struct CGSize preferedSize; // @synthesize preferedSize=_preferedSize;
 @property struct CGSize currentSize; // @synthesize currentSize=_currentSize;
 @property(readonly) NSMutableArray *visibleSubnodes; // @synthesize visibleSubnodes=_visibleSubnodes;
 @property(nonatomic) BOOL isVisible; // @synthesize isVisible=_isVisible;
@@ -62,9 +60,9 @@
 - (id)label;
 @property BOOL allowSeamDragging;
 @property BOOL isPlaceHolder;
+@property BOOL userResizableOnly;
 @property BOOL isShowing;
 @property BOOL isHiding;
-@property BOOL userResizableOnly;
 - (void)syncWithDict:(id)arg1;
 @property(readonly) double seamDraggingThickness;
 @property(readonly) double dividerThickness;
@@ -85,7 +83,6 @@
 @property(readonly) BOOL isBottomNode;
 @property(readonly) BOOL hasNewSize;
 @property(readonly) BOOL hasCurrentSize;
-@property(readonly) BOOL hasPreferedSize;
 @property(readonly) BOOL hasMaxSize;
 @property(readonly) BOOL hasMinSize;
 @property(readonly) struct CGSize maxSize;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)suppressDisablingWhileTracking;
 - (void)drawBarInside:(struct CGRect)arg1 flipped:(BOOL)arg2;
 - (void)drawKnob:(struct CGRect)arg1;
+- (void)dealloc;
 
 @end
 

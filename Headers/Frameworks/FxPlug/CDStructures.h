@@ -117,6 +117,7 @@ struct FxImagePriv {
     id _field11;
     struct CGColorSpace *_field12;
     unsigned long long _field13;
+    int _field14;
 };
 
 struct FxMetaPlugPriv {

@@ -75,7 +75,7 @@
 @property(readonly, retain, nonatomic) FFEffectStack *videoEffects; // @synthesize videoEffects=_videoEffects;
 - (void)setAudioAnglesFromLayoutMapChange:(id)arg1;
 - (void)setAudioAngles:(id)arg1 updateAudioComponentsLayoutMap:(BOOL)arg2;
-- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
+- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2 withUserInfo:(id)arg3;
 - (id)availableMultiAngleIDs;
 - (id)availableMultiAngleObjects;
 - (BOOL)isProject;

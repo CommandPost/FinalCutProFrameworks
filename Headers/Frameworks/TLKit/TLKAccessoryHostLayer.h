@@ -29,7 +29,7 @@
 @property(retain) CALayer *backgroundLayer; // @synthesize backgroundLayer=_backgroundLayer;
 @property(retain) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 @property BOOL isSplitComponent; // @synthesize isSplitComponent=_isSplitComponent;
-@property TLKAccessoryTitleLayer *titleLayer; // @synthesize titleLayer=_titleLayer;
+@property(readonly) TLKAccessoryTitleLayer *titleLayer; // @synthesize titleLayer=_titleLayer;
 @property TLKItemLayer *itemLayer; // @synthesize itemLayer=_itemLayer;
 @property double titleHeight; // @synthesize titleHeight=_titleHeight;
 @property double backgroundBorderWidth; // @synthesize backgroundBorderWidth=_backgroundBorderWidth;
@@ -70,6 +70,7 @@
 - (void)setNeedsLayout;
 @property(readonly) id <TLKTimelineItem> representedObject;
 - (id)hitTest:(struct CGPoint)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

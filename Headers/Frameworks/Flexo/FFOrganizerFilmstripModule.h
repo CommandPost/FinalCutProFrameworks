@@ -6,6 +6,7 @@
 
 #import <Flexo/FFEventsDetailModule.h>
 
+#import "CALayoutManager.h"
 #import "FFEditActionSourceProtocol.h"
 #import "FFNumericEntrySource.h"
 #import "FFOrganizerFilmstripClusteringDelegate.h"
@@ -21,7 +22,7 @@
 
 @class CATextLayer, FFAnalyzeMediaWindowController, FFKeywordEditor, FFModifyContentCreationDateWindowController, FFNumericEntry, FFOrganizerDFRController, FFOrganizerFilmListViewController, FFOrganizerFilmstripViewController, FFOrganizerImportDropResponderLayerHostView, FFOrganizerMediaDetailHeader, FFOrganizerZoomBezelSegmentedControl, FFResponderLayerHostView, FFResponderLayerPushButton, FFRolesMenuController, FFShareHelper, FFTranscodeMediaWindowController, LKButton, LKMenu, LKPopUpButton, LKSlider, LKTextField, NSArray, NSBox, NSDictionary, NSImageView, NSMenuItem, NSMutableArray, NSMutableDictionary, NSPopover, NSString, NSTouchBar, NSView, OKPaneCapItemButton, OKPaneCapItemSlider, OKPaneCapItemView;
 
-@interface FFOrganizerFilmstripModule : FFEventsDetailModule <FFOrganizerFilmstripViewDelegate, FFSharableContent, FFOrganizerFilmstripClusteringDelegate, FFNumericEntrySource, FFRolesMenuDelegate, NSWindowDelegate, FFEditActionSourceProtocol, FFOrganizerImportDropController, FFOrganizerMediaDetailHeaderProtocol, NSPopoverDelegate, FFOrganizerMediaDetailSearchHeaderDelegate, NSTouchBarProvider>
+@interface FFOrganizerFilmstripModule : FFEventsDetailModule <CALayoutManager, FFOrganizerFilmstripViewDelegate, FFSharableContent, FFOrganizerFilmstripClusteringDelegate, FFNumericEntrySource, FFRolesMenuDelegate, NSWindowDelegate, FFEditActionSourceProtocol, FFOrganizerImportDropController, FFOrganizerMediaDetailHeaderProtocol, NSPopoverDelegate, FFOrganizerMediaDetailSearchHeaderDelegate, NSTouchBarProvider>
 {
     LKSlider *_frameDurationSlider;
     LKSlider *_itemSizeSlider;
@@ -101,7 +102,7 @@
     BOOL _shareDisclosureStates;
     BOOL _shouldSetViewTypeWithDelegate;
     FFOrganizerDFRController *_dfrController;
-    struct FFProcrastinatedDispatch_t _procrastinatedUpdateItemsString;
+    struct PCProcrastinatedDispatch_t _procrastinatedUpdateItemsString;
     CATextLayer *_movieButtonLabel;
     CATextLayer *_trailerButtonLabel;
     CATextLayer *_importButtonLabel;
@@ -277,7 +278,9 @@
 - (long long)_findMostCommonDisplayDropFrame:(id)arg1 forVideoProps:(id)arg2;
 - (BOOL)_mixedTCTracksClockTimeInSelection:(id)arg1;
 - (CDStruct_1b6d18a9)_findSmallestStartingTime:(id)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 dropFrame:(long long)arg3;
+- (id)createNewProjectWithSelection;
 - (id)createNewProject;
+- (void)newProjectWithSelection:(id)arg1;
 - (void)newProject:(id)arg1;
 - (void)createCompoundClip:(id)arg1;
 - (void)createMultiAngleClip:(id)arg1;
@@ -684,6 +687,7 @@
 @property(readonly) NSTouchBar *touchBar;
 - (void)_rolesInLibraryChanged:(id)arg1;
 - (void)dealloc;
+- (void)awakeFromNib;
 - (id)init;
 - (void)_deferUsedMediaRangeInvals:(id)arg1;
 @property long long arrangeType; // @synthesize arrangeType=_arrangeType;

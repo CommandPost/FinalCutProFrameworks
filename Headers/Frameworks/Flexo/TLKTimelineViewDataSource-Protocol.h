@@ -44,7 +44,7 @@
 - (void)timelineView:(TLKTimelineView *)arg1 setDisplayName:(NSString *)arg2 forItem:(id <TLKTimelineItem>)arg3;
 - (void)timelineView:(TLKTimelineView *)arg1 draggingSessionEnded:(BOOL)arg2;
 - (id <TLKTimelineItem>)timelineView:(TLKTimelineView *)arg1 copyOfItem:(id <TLKTimelineItem>)arg2 withTimeRange:(CDStruct_e83c9415)arg3;
-- (NSArray *)timelineView:(TLKTimelineView *)arg1 acceptDrop:(id <NSDraggingInfo>)arg2 onItem:(id <TLKTimelineItem>)arg3 atIndex:(long long)arg4 inLane:(long long)arg5 dropTime:(CDStruct_1b6d18a9)arg6 dropHighlight:(CDStruct_e83c9415 *)arg7;
+- (NSArray *)timelineView:(TLKTimelineView *)arg1 acceptDrop:(id <NSDraggingInfo>)arg2 onItem:(id <TLKTimelineItem>)arg3 atIndex:(long long)arg4 inLane:(id)arg5 dropTime:(CDStruct_1b6d18a9)arg6 dropHighlight:(CDStruct_e83c9415 *)arg7;
 - (unsigned long long)timelineView:(TLKTimelineView *)arg1 validateDrop:(id <NSDraggingInfo>)arg2 onItem:(id <TLKTimelineItem>)arg3 atIndex:(long long)arg4 inLane:(id)arg5 dropTime:(CDStruct_1b6d18a9 *)arg6 proposedHighlightItems:(id *)arg7;
 - (unsigned long long)timelineView:(TLKTimelineView *)arg1 validateDrop:(id <NSDraggingInfo>)arg2 onItem:(id <TLKTimelineItem>)arg3 atIndex:(long long)arg4 inLane:(id)arg5 dropTime:(CDStruct_1b6d18a9 *)arg6;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 shouldSplitItem:(id <TLKTimelineItem>)arg2 atTime:(CDStruct_1b6d18a9 *)arg3;

@@ -139,7 +139,7 @@
 - (void)activeViewPerformSelector:(SEL)arg1;
 - (BOOL)customKeyEquivalent:(id)arg1;
 - (void)doResignKeyWindow;
-- (void)commonOnScreenControls:(list_eba5de08 *)arg1;
+- (void)commonOnScreenControls:(list_8ca9bef8 *)arg1;
 - (void)toggleVideoOutput;
 - (BOOL)isVideoOutputEnabled;
 - (void)updateRenderManager;
@@ -297,6 +297,7 @@
 - (void)progressClicked:(id)arg1;
 - (void)updateViewOptions;
 - (BOOL)canWalk3D;
+- (BOOL)canUseShapeTool;
 - (BOOL)canUseAdjustTool;
 - (BOOL)canUseToolWithClassID:(struct PCUUID)arg1;
 - (void)updateToolbarState;

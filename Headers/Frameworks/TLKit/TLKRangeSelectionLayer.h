@@ -19,6 +19,8 @@
 
 - (struct CGRect)_rightHandleFrame;
 - (struct CGRect)_leftHandleFrame;
+- (void)_layoutSelectionHandleSublayers;
+- (void)_layoutSelectionFrameSublayer;
 - (void)layoutSublayers;
 - (void)setContainingViewFirstResponder:(BOOL)arg1;
 - (BOOL)containingViewFirstResponder;

@@ -8,24 +8,20 @@
 
 #import "FFInspectorLabelParameterItem.h"
 
-@class NSString;
+@class FFMetadataDefinition, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _FFProjectSharingItem : NSObject <FFInspectorLabelParameterItem>
 {
-    NSString *_labelString;
-    NSString *_metadataKey;
-    id _shareTokenFieldDelegate;
+    FFMetadataDefinition *_definition;
 }
 
-+ (id)itemWithLabelString:(id)arg1;
-@property(copy, nonatomic) NSString *metadataKey; // @synthesize metadataKey=_metadataKey;
-@property(copy, nonatomic) NSString *labelString; // @synthesize labelString=_labelString;
-- (id)parameterViewController;
+@property(retain, nonatomic) FFMetadataDefinition *definition; // @synthesize definition=_definition;
 - (id)labelViewController;
 - (id)objectValueForLabel;
+- (id)metadataKey;
 - (void)dealloc;
-- (id)initWithLabelString:(id)arg1;
+- (id)initWithMetadataDefinition:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

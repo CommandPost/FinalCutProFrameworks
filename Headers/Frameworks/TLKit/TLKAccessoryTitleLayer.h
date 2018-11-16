@@ -13,18 +13,17 @@
     NSColor *_tintColor;
     TLKButtonLayer *_closeButtonLayer;
     NSDictionary *_titleLayerColorizedSublayers;
-    CDUnknownBlockType _closeButtonOnClick;
     CATextLayer *_titleLayer;
 }
 
 @property CATextLayer *titleLayer; // @synthesize titleLayer=_titleLayer;
-@property(copy) CDUnknownBlockType closeButtonOnClick; // @synthesize closeButtonOnClick=_closeButtonOnClick;
 @property(retain) NSDictionary *titleLayerColorizedSublayers; // @synthesize titleLayerColorizedSublayers=_titleLayerColorizedSublayers;
 @property(retain) TLKButtonLayer *closeButtonLayer; // @synthesize closeButtonLayer=_closeButtonLayer;
 @property(retain, nonatomic) NSColor *tintColor; // @synthesize tintColor=_tintColor;
 - (void)layoutSublayers;
 @property(retain) NSString *title;
 - (id)timelineView;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

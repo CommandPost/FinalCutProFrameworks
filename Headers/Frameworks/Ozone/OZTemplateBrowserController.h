@@ -47,6 +47,8 @@
     LKTextField *templatePARStaticTextField;
     LKTextField *templateProjectTypeStaticTextField;
     LKTextField *templateThemeLabel;
+    LKTextField *template360ProjectModeStaticTextField;
+    LKTextField *template360ProjectModeTextField;
     LKSearchField *searchField;
     LKSegmentedControl *collectionSegmentedControl;
     LKButton *closeButton;
@@ -60,6 +62,7 @@
     LKPopUpButton *_fieldOrderPopUp;
     LKPopUpButton *_durationTypePopUp;
     LKPopUpButton *_themePopUpButton;
+    LKPopUpButton *_360ProjectModePopUpButton;
     NSImageView *_smallIcon;
     NSImageView *_bigIcon;
     OZBorderedView *_footer;
@@ -157,6 +160,8 @@
 - (id)allDocumentsWithTheme:(id)arg1 scan:(BOOL)arg2;
 - (id)systemThemes;
 - (id)userThemes;
+- (void)update360ProjectModeRelatedUI;
+- (void)select360ProjectMode:(id)arg1;
 - (void)chooseOtherTemplate:(id)arg1;
 - (void)createFromFile:(id)arg1;
 - (void)removeSelectedOutlineItem:(id)arg1;
@@ -187,6 +192,7 @@
 - (void)setShowAll;
 - (BOOL)showAll;
 - (void)buildPresetsMenu;
+- (void)oztbc_addPresetToMenu:(id)arg1;
 - (void)categoryViewFrameChange:(id)arg1;
 - (void)windowDidLoad;
 - (void)showWindow:(id)arg1;

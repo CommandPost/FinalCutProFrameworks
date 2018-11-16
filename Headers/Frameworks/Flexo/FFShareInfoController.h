@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+#import "CAAnimationDelegate.h"
+
 @class CKSetting, CKSource, FFShareInfoView, NSImageView, NSString, NSTextField, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFShareInfoController : NSObject
+@interface FFShareInfoController : NSObject <CAAnimationDelegate>
 {
     CKSource *_source;
     CKSetting *_setting;
@@ -35,7 +37,6 @@ __attribute__((visibility("hidden")))
     BOOL _observing;
 }
 
-+ (id)propertiesDependentOnStompSettingProperties;
 + (id)keyPathsForValuesAffectingOutputFileSizeToolTip;
 + (id)keyPathsForValuesAffectingOutputFileSize;
 + (id)keyPathsForValuesAffectingCompatibility;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingAudioChannelLayout;
 + (id)keyPathsForValuesAffectingVideoFrameRate;
 + (id)keyPathsForValuesAffectingVideoDimensions;
++ (id)propertiesDependentOnStompSettingProperties;
 @property(nonatomic, getter=isObserving) BOOL observing; // @synthesize observing=_observing;
 @property(nonatomic) NSTextField *outputFileSizeTextField; // @synthesize outputFileSizeTextField=_outputFileSizeTextField;
 @property(retain, nonatomic) NSView *outputFileSizeImageView; // @synthesize outputFileSizeImageView=_outputFileSizeImageView;
@@ -70,6 +72,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
 - (id)contentsAnimationWithLayer:(id)arg1 infoBarImageName:(id)arg2;
 - (id)contentsAnimation;
+@property(readonly, nonatomic) NSString *videoDimensionsHighlightedIconName;
+@property(readonly, nonatomic) NSString *videoDimensionsIconName;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)stopObservingStompSettings:(id)arg1;
 - (void)startObservingStompSettings:(id)arg1;
@@ -86,6 +90,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *videoDimensions;
 - (void)dealloc;
 - (void)awakeFromNib;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

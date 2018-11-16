@@ -36,7 +36,6 @@
 + (id)sharedTrialAboutPanel;
 + (id)sharedAboutPanel;
 @property BOOL hideAppNameInCopyright; // @synthesize hideAppNameInCopyright=_hideAppNameInCopyright;
-@property(retain, nonatomic) NSTextField *_trialText; // @synthesize _trialText;
 @property(nonatomic, getter=isConsumer) BOOL consumer; // @synthesize consumer=_consumer;
 @property(nonatomic, getter=isTrial) BOOL trial; // @synthesize trial=_trial;
 @property BOOL isSplash; // @synthesize isSplash=_isSplash;

@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) FFSequenceRecord *currentSequenceRecord; // @synthesize currentSequenceRecord=_currentSequenceRecord;
-@property(retain, nonatomic) FFCPSClapperboardView *projectPosterView; // @synthesize projectPosterView=_projectPosterView;
-@property(retain, nonatomic) LKTextField *multiProjectLabel; // @synthesize multiProjectLabel=_multiProjectLabel;
+@property(readonly, nonatomic) FFCPSClapperboardView *projectPosterView; // @synthesize projectPosterView=_projectPosterView;
+@property(readonly, nonatomic) LKTextField *multiProjectLabel; // @synthesize multiProjectLabel=_multiProjectLabel;
 - (void)setPosterViewForEvent:(id)arg1;
 - (void)setDisplayToSequence:(id)arg1;
 - (void)clearDisplay;

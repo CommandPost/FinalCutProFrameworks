@@ -76,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (id)newClipOwnedClipsItem:(id)arg1;
 - (id)newAssetClipOwnedClipsItem:(id)arg1;
 - (id)newMulticamOwnedClipsItem:(id)arg1;
+- (BOOL)decodeCustomLogProcessingMode:(id)arg1 logProcessingMode:(long long *)arg2 custmLUTProps:(id *)arg3;
 - (id)copyAssetRef:(id)arg1 error:(id *)arg2;
 - (id)copyClipRef:(id)arg1 type:(id)arg2 error:(id *)arg3;
 - (id)resolveEvent:(id)arg1 create:(BOOL)arg2 error:(id *)arg3;
@@ -85,7 +86,7 @@ __attribute__((visibility("hidden")))
 - (id)metadataValueForElement:(id)arg1 andKey:(id)arg2;
 - (id)getMetadataValueWithCustomRepresentationForKey:(id)arg1 FromElement:(id)arg2;
 - (BOOL)allowEditing:(id)arg1;
-- (id)newOfflineAssetRef:(id)arg1 eventProject:(id)arg2 error:(id *)arg3;
+- (id)newOfflineAssetRefFromURL:(id)arg1 andElement:(id)arg2 eventProject:(id)arg3 error:(id *)arg4;
 - (int)importAssetManageFileTypeWithEventProject:(id)arg1 forMediaMigration:(BOOL)arg2;
 - (void)setupEffectBundle:(id)arg1 withEffectNode:(id)arg2 toObject:(id)arg3;
 - (void)setupAudioUnitEffect:(id)arg1 withEffectNode:(id)arg2 toObject:(id)arg3;
@@ -116,7 +117,6 @@ __attribute__((visibility("hidden")))
 - (void)addClipNode:(id)arg1 toObject:(id)arg2;
 - (void)_convertNonPrimordialCollectionToSynchronizedClip:(id)arg1;
 - (void)addAssetClipNode:(id)arg1 toObject:(id)arg2;
-- (void)_addAudioComponentsForOfflineClip:(id)arg1 fromAssetRef:(id)arg2;
 - (void)addSyncClipNode:(id)arg1 toObject:(id)arg2;
 - (void)addRefClipNode:(id)arg1 toObject:(id)arg2;
 - (void)addMulticamClipNode:(id)arg1 toObject:(id)arg2;
@@ -159,6 +159,7 @@ __attribute__((visibility("hidden")))
 - (void)addStabilizationAdjustment:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
 - (void)addBlendAdjustment:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
 - (void)addCropInfo:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)add360TransformAdjustment:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
 - (void)addAdjustment:(id)arg1 type:(CDUnknownFunctionPointerType)arg2 effectStack:(id)arg3 toObject:(id)arg4;
 - (void)addAttributes:(id)arg1 map:(id)arg2 toObject:(id)arg3;
 - (void)finishedLoadingParametersForEffect:(id)arg1;
@@ -174,7 +175,6 @@ __attribute__((visibility("hidden")))
 - (void)addFadeIn:(id)arg1 channel:(id)arg2 toObject:(id)arg3;
 - (void)addColorInfo:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
 - (void)setASCCDLInfo:(id)arg1 toEffect:(id)arg2;
-- (void)addRoles:(id)arg1 toObject:(id)arg2 isWrappedMediaComponent:(BOOL)arg3;
 - (void)addRoles:(id)arg1 toObject:(id)arg2;
 - (void)addRolesToMediaComponentsOfAssetClip:(id)arg1 toObject:(id)arg2;
 - (unsigned int)findOptionsForComponentRoleAssignmentImport;
@@ -184,6 +184,7 @@ __attribute__((visibility("hidden")))
 - (id)copyVideoProps:(id)arg1;
 - (struct CGColorSpace *)copyColorSpace:(id)arg1;
 - (struct CGColorSpace *)copyColorSpaceForName:(id)arg1;
+- (struct CGColorSpace *)copyColorSpaceForNCLCTriplet:(id)arg1;
 - (CDStruct_1b6d18a9)attributeAsDuration:(id)arg1 name:(id)arg2 defaultValue:(CDStruct_1b6d18a9)arg3;
 - (id)audioFilterElementName;
 - (id)videoFilterElementName;
@@ -229,6 +230,7 @@ __attribute__((visibility("hidden")))
 - (void)log:(id)arg1 warningOnly:(BOOL)arg2;
 - (void)log:(id)arg1 warningOnly:(BOOL)arg2 minVersion:(unsigned int)arg3;
 - (id)error:(id)arg1 node:(id)arg2 elementName:(id)arg3;
+- (id)error:(id)arg1 node:(id)arg2 elementName:(id)arg3 underlyingError:(id)arg4;
 - (id)error:(id)arg1 node:(id)arg2 attr:(id)arg3 underlyingError:(id)arg4;
 - (id)error:(id)arg1 node:(id)arg2 attr:(id)arg3;
 - (id)error:(id)arg1 detail:(id)arg2 underlyingError:(id)arg3;

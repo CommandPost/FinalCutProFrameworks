@@ -15,10 +15,10 @@
 }
 
 - (void)openTextFile:(id)arg1;
-- (struct TXTextFromFileGenerator *)text;
+- (struct TXFileLoadingGenerator *)text;
 - (void)update;
 - (void)dealloc;
-- (id)initWithText:(struct TXTextFromFileGenerator *)arg1;
+- (id)initWithText:(struct TXFileLoadingGenerator *)arg1;
 
 @end
 

@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (void)addTreeNodeForURL:(id)arg1 outlineViewController:(id)arg2 newChildNodesDictionary:(id)arg3 newChildNodes:(id)arg4 isHidden:(BOOL)arg5;
 - (void)unhideURL:(id)arg1;
 - (id)url;
-- (void)_setParentNodeSimple:(id)arg1;
 - (void)setRepresentedObject:(id)arg1;
 - (void)dealloc;
 - (void)fsEventsAtPaths:(id)arg1 numEvents:(unsigned long long)arg2 eventFlags:(const unsigned int *)arg3 eventIDs:(const unsigned long long *)arg4;

@@ -17,6 +17,7 @@
     BOOL _shouldDisplayParameterMenu;
     BOOL _shouldCenterSliders;
     BOOL _lightBackgroundSliders;
+    unsigned int _buildContextVisibilityFlags;
     NSValue *_topSelectableChannel;
     struct __CFString *_bundleID;
     NSMutableDictionary *_pValues;
@@ -78,6 +79,7 @@
 + (double)rowHeight;
 + (BOOL)isMotion;
 @property(retain, nonatomic) NSValue *topSelectableChannel; // @synthesize topSelectableChannel=_topSelectableChannel;
+@property(nonatomic) unsigned int buildContextVisibilityFlags; // @synthesize buildContextVisibilityFlags=_buildContextVisibilityFlags;
 @property(retain, nonatomic) NSView *customContainerView; // @synthesize customContainerView=_customContainerView;
 @property(nonatomic) BOOL lightBackgroundSliders; // @synthesize lightBackgroundSliders=_lightBackgroundSliders;
 @property(nonatomic) BOOL shouldCenterSliders; // @synthesize shouldCenterSliders=_shouldCenterSliders;

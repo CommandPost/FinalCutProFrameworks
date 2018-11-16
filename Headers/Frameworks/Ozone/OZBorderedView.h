@@ -24,6 +24,7 @@
 @property(nonatomic) BOOL topBorder; // @synthesize topBorder=_topBorder;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)borderColor;
+- (void)dealloc;
 
 @end
 

@@ -21,6 +21,7 @@
     LKTextField *_pPixelARTF;
     LKPopUpButton *_pFieldDominancePopUp;
     LKPopUpButton *_pFrameRatePopUp;
+    LKPopUpButton *_pProjectionModePopUp;
     OZProjectPreset *_pPreset;
     NSArray *_frameRates;
 }
@@ -29,6 +30,7 @@
 - (void)windowWillClose:(id)arg1;
 - (void)doneEdit:(id)arg1;
 - (void)cancelEdit:(id)arg1;
+- (void)selectProjectionModeFromPopUp:(id)arg1;
 - (void)setPixelARFromTF:(id)arg1;
 - (void)setPixelARFromPopUp:(id)arg1;
 - (int)editPreset:(id)arg1;

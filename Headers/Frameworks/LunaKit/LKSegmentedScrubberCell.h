@@ -31,7 +31,6 @@
     id _previousValue;
     NSString *_previousString;
     struct CGRect _editingCellFrame;
-    struct CGSize _previousCellSize;
     double _xScale;
     double _yScale;
     double _textWidth;
@@ -104,7 +103,6 @@
 - (struct CGRect)editBezelFrameForBounds:(struct CGRect)arg1;
 - (struct CGRect)roundBezelRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)titleRectForBounds:(struct CGRect)arg1;
-- (struct CGSize)tableStyleTextSize;
 - (void)setAlignment:(unsigned long long)arg1;
 - (void)setFont:(id)arg1;
 - (void)setStringValue:(id)arg1;

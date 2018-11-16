@@ -34,7 +34,8 @@
 }
 
 + (void)removeThumbnailRequestsForAssets:(id)arg1;
-+ (void)removeThumbnailRequestsForLibraryIdentifier:(id)arg1;
++ (void)removeThumbnailRequestsForLibrary:(id)arg1;
++ (BOOL)containsThumbnailRequestsForLibrary:(id)arg1;
 + (void)resumeThumbnailRequests;
 + (void)pauseThumbnailRequests;
 + (BOOL)canStartActionAffectingAsset:(id)arg1 forUseDictionary:(id)arg2 error:(id *)arg3;

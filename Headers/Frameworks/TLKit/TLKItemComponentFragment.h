@@ -20,6 +20,7 @@
     TLKAccessoryHostLayer *_accessoryLayer;
     struct CGRect _frame;
     struct CGRect _layoutFrame;
+    struct CGRect _layerFrame;
     BOOL _purgeable;
     struct _TLKRange _timeRangeInSeconds;
     struct _TLKRange _locationRange;
@@ -33,9 +34,10 @@
 @property(nonatomic, getter=isPurgeable) BOOL purgeable; // @synthesize purgeable=_purgeable;
 @property(nonatomic) struct CGRect legacyFrame; // @synthesize legacyFrame=_legacyFrame;
 @property(nonatomic) BOOL locationRangeNeedsUpdate; // @synthesize locationRangeNeedsUpdate=_locationRangeNeedsUpdate;
+@property(nonatomic) struct CGRect layerFrame; // @synthesize layerFrame=_layerFrame;
+@property(nonatomic) BOOL frameNeedsUpdate; // @synthesize frameNeedsUpdate=_frameNeedsUpdate;
 @property(nonatomic) struct CGRect layoutFrame; // @synthesize layoutFrame=_layoutFrame;
 @property(retain, nonatomic) TLKAccessoryHostLayer *accessoryLayer; // @synthesize accessoryLayer=_accessoryLayer;
-@property(nonatomic) BOOL frameNeedsUpdate; // @synthesize frameNeedsUpdate=_frameNeedsUpdate;
 @property(readonly, nonatomic) TLKItemComponentInfo *deletedFromItemComponentInfo; // @synthesize deletedFromItemComponentInfo=_deletedFromItemComponentInfo;
 - (id)debugDescription;
 - (id)description;
@@ -50,7 +52,7 @@
 @property(nonatomic) TLKItemComponentInfo *itemComponentInfo;
 @property(nonatomic) struct _TLKRange locationRange;
 @property(readonly, nonatomic) struct _TLKRange timeRangeInSeconds;
-@property(readonly, nonatomic) struct CGRect layerFrame;
+@property(readonly, nonatomic) struct CGRect wrappingFrame_DEPRECATED;
 @property(nonatomic) struct CGRect frame;
 - (void)_positionLayoutContextWithFrameIfNeeded:(struct CGRect)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

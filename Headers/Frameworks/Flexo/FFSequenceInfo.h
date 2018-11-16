@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
     BOOL _isTrailer;
     BOOL _isAppPreview;
     BOOL _requiresLegacyUpgrade;
+    int _sphericalProjectionType;
+    int _stereoscopicMode;
     long long _editCount;
     long long _effectCount;
     long long _transitionCount;
@@ -48,6 +50,8 @@ __attribute__((visibility("hidden")))
 @property long long transitionCount; // @synthesize transitionCount=_transitionCount;
 @property long long effectCount; // @synthesize effectCount=_effectCount;
 @property long long editCount; // @synthesize editCount=_editCount;
+@property(nonatomic) int stereoscopicMode; // @synthesize stereoscopicMode=_stereoscopicMode;
+@property(nonatomic) int sphericalProjectionType; // @synthesize sphericalProjectionType=_sphericalProjectionType;
 @property(nonatomic) BOOL requiresLegacyUpgrade; // @synthesize requiresLegacyUpgrade=_requiresLegacyUpgrade;
 @property(nonatomic) BOOL isAppPreview; // @synthesize isAppPreview=_isAppPreview;
 @property(nonatomic) BOOL isTrailer; // @synthesize isTrailer=_isTrailer;
@@ -83,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)thumbImageReadyForRequest:(id)arg1 thumbnailImage:(struct CGImage *)arg2 requestCanceled:(BOOL)arg3 addThumbnailToEvent:(BOOL)arg4;
 - (void)requestThumbnailImageForQuality:(int)arg1 addThumbnailToEvent:(BOOL)arg2 removeTitles:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)setModDate:(id)arg1;
+- (id)metadataContentModDate;
 - (id)modDate;
 - (void)setDisplayName:(id)arg1;
 - (id)displayName;

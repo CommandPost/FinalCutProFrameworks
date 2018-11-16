@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)_checkAllRoles:(BOOL)arg1;
 - (id)tileGlyphString;
 - (void)syncCheckboxStatesToSelectedRoleUIDs;
+- (BOOL)isVideoMainRoleWithSoleDefaultSystemGeneratedSubRole:(id)arg1 soleDefaultSystemGeneratedRoleUID:(id *)arg2;
 - (void)updateWithSelectedRoleUIDs:(id)arg1;
 - (void)setFilterDict:(id)arg1;
 - (id)filterDict;

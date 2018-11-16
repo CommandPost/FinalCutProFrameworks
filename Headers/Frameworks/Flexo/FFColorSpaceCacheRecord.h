@@ -17,13 +17,13 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) struct __CFData *iccColorSpaceData; // @synthesize iccColorSpaceData=_iccData;
-@property(nonatomic) int colorSpaceEnum; // @synthesize colorSpaceEnum=_colorSpaceEnum;
+@property(readonly, nonatomic) int colorSpaceEnum; // @synthesize colorSpaceEnum=_colorSpaceEnum;
 @property(readonly, nonatomic) struct __CFArray *colorProfRelevantTagSignatures; // @synthesize colorProfRelevantTagSignatures=_colorProfRelevantTagSignatures;
 @property(readonly, nonatomic) struct ColorSyncProfile *colorSyncProfile; // @synthesize colorSyncProfile=_colorSyncProfile;
 @property(readonly, nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 - (id)description;
 - (void)dealloc;
-- (id)initWithColorSpace:(struct CGColorSpace *)arg1;
+- (id)initWithColorSpace:(struct CGColorSpace *)arg1 andEnum:(int)arg2;
 
 @end
 

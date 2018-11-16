@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
 - (id)processingFormat:(int)arg1;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)_setDefaultChannelToRed:(int)arg1 green:(int)arg2 blue:(int)arg3 alpha:(double)arg4;

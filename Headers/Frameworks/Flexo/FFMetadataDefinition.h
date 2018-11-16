@@ -54,6 +54,7 @@
 + (id)metadataDefinitionsForSource:(id)arg1;
 + (id)metadataDefinitions;
 + (void)_clearMetadataDefinitionsCache;
++ (BOOL)anyMetaDataChangesShouldTriggerSourceInval:(id)arg1 newMetaData:(id)arg2;
 + (BOOL)anyMetaDataSortKeysHaveChanged:(id)arg1 newMetaData:(id)arg2;
 + (id)definitionForKey:(id)arg1;
 + (id)_definitionsDict;

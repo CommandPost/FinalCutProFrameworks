@@ -10,13 +10,5 @@
 {
 }
 
-+ (id)licenseFormatString;
-+ (id)licenseLinkString;
-+ (id)licenseURL;
-+ (id)whatsNewDetails;
-+ (long long)currentWhatsNewVersion;
-+ (long long)currentWelcomeVersion;
-+ (Class)mainWindowClass;
-
 @end
 

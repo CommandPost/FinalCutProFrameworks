@@ -23,8 +23,6 @@ __attribute__((visibility("hidden")))
 - (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5;
 - (id)_newScheduledImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 forScheduling:(BOOL)arg3;
 - (void)_installScheduleOpIfNeeded:(CDStruct_bdcb2b0d)arg1 qualityIndex:(int)arg2 priority:(int)arg3 forScheduling:(BOOL)arg4;
-- (id)pixelTransformToField2ForQuality:(int)arg1;
-- (id)pixelTransformToField1ForQuality:(int)arg1;
 - (id)videoProps;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;

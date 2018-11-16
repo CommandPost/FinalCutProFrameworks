@@ -6,9 +6,11 @@
 
 #import <TLKit/TLKImageLayer.h>
 
-@class NSImage;
+#import "CALayerDelegate.h"
 
-@interface TLKBumperBackgroundLayer : TLKImageLayer
+@class NSImage, NSString;
+
+@interface TLKBumperBackgroundLayer : TLKImageLayer <CALayerDelegate>
 {
     NSImage *_backgroundImage;
     TLKImageLayer *_shadowLayer;
@@ -21,6 +23,12 @@
 - (void)layoutSublayers;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

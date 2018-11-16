@@ -12,9 +12,7 @@
 
 @interface FFDataListLanesDataSource : NSObject <FFDataListLanesDataSource>
 {
-    struct FFProcrastinatedDispatch_t _infoStringContext;
-    struct FFProcrastinatedDispatch_t _defaultStateContext;
-    BOOL _inDefaultState;
+    struct PCProcrastinatedDispatch_t _infoStringContext;
     BOOL _pause;
     FFProStoryTimelinePresentation *_storyPresentation;
     FFAnchoredTimelineModule *_timelineModule;

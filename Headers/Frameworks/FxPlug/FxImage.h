@@ -23,6 +23,8 @@
 - (void)setPixelTransform:(id)arg1;
 - (void)setDod:(struct FxRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
+- (int)eyeType;
+- (void)setEyeType:(int)arg1;
 - (void)setFxColorPrimaries:(unsigned long long)arg1;
 - (unsigned long long)fxColorPrimaries;
 - (void)setColorSpace:(struct CGColorSpace *)arg1;

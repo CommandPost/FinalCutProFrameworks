@@ -19,12 +19,9 @@ __attribute__((visibility("hidden")))
     unsigned int _bitsPerChannel;
     unsigned int _bubbleSize;
     long long _indexSampleCount;
-    unsigned long long _channelLayoutSize;
-    struct AudioChannelLayout *_channelLayout;
+    struct vector<HPMChannelTagType, std::__1::allocator<HPMChannelTagType>> *_channelTags;
 }
 
-@property(readonly) struct AudioChannelLayout *channelLayout; // @synthesize channelLayout=_channelLayout;
-@property(readonly) unsigned long long channelLayoutSize; // @synthesize channelLayoutSize=_channelLayoutSize;
 @property long long indexSampleCount; // @synthesize indexSampleCount=_indexSampleCount;
 @property(readonly) unsigned int bubbleSize; // @synthesize bubbleSize=_bubbleSize;
 @property(readonly) unsigned int bitsPerChannel; // @synthesize bitsPerChannel=_bitsPerChannel;
@@ -35,7 +32,9 @@ __attribute__((visibility("hidden")))
 - (long long)decodePositionWithDisplayPosition:(long long)arg1 mustLoadAtMediaIndexPosition:(long long *)arg2;
 @property(readonly) long long displayPositionForLastDecodeSample;
 @property(readonly) long long displayPositionForFirstDecodeSample;
-- (void)setChannelLayout:(struct AudioChannelLayout *)arg1 size:(unsigned long long)arg2;
+- (void)addChannelTag:(int)arg1;
+- (int)channelTagForChannelIndex:(unsigned long long)arg1;
+@property(readonly) BOOL hasChannelTags;
 @property(readonly) long long indexDataSize;
 - (void)dealloc;
 - (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXKey *)arg2 bodySID:(unsigned int)arg3 descriptor:(const struct MXKLV *)arg4;

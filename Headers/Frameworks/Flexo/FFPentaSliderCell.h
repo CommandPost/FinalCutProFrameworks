@@ -57,7 +57,6 @@ __attribute__((visibility("hidden")))
 @property double contrastValue; // @dynamic contrastValue;
 @property double whiteLevelValue; // @dynamic whiteLevelValue;
 @property double blackLevelValue; // @dynamic blackLevelValue;
-- (id)toolTipForCellClass:(Class)arg1;
 - (void)setToolTip:(id)arg1 forCellClass:(Class)arg2;
 - (id)_cellForClass:(Class)arg1;
 - (void)_calcRigidBodyRectsWithFrame:(struct CGRect)arg1 isFlipped:(BOOL)arg2;

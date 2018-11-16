@@ -65,6 +65,7 @@
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 - (BOOL)accessibilityIsIgnored;
 - (void)_recomputeFrames;
+- (void)setHidden:(BOOL)arg1;
 - (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
 - (void)_refreshPaneCaps;
 - (void)_updateFooterAccessoryView;

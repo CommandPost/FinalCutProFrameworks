@@ -88,6 +88,10 @@
 - (long long)metadataRotationAngle;
 - (void)setMetadataDeinterlaceType:(long long)arg1;
 - (long long)metadataDeinterlaceType;
+- (long long)stereoscopicMode;
+- (void)setStereoscopicMode:(long long)arg1;
+- (long long)sphericalProjectionMode;
+- (void)setSphericalProjectionMode:(long long)arg1;
 - (void)setColorSpaceOverride:(long long)arg1;
 - (long long)colorSpaceOverride;
 - (void)setMetadataAnamorphicType:(long long)arg1;
@@ -118,7 +122,7 @@
 - (id)inspectorTabIdentifiers;
 - (void)addAnyTransitionRelationshipsForContainedObject:(id)arg1;
 - (BOOL)supportsSegmentation;
-- (BOOL)checkLanesForOverlaps;
+- (BOOL)validateAmbiguousCompositingOrderWithError:(id *)arg1;
 - (id)lanes;
 - (void)_updateCollectionLanes;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
@@ -172,7 +176,7 @@
 - (id)containedItemAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (void)invalidateStreamRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
-- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
+- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2 withUserInfo:(id)arg3;
 - (BOOL)_deferUpdates;
 - (void)_setDeferUpdates:(BOOL)arg1;
 - (id)_deferedUpdateRegions;

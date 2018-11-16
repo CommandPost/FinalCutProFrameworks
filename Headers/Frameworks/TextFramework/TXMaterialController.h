@@ -49,7 +49,7 @@
 - (void)getSelectedMaterialLayerChansForMaterial:(struct OZLayeredMaterial *)arg1 selectedMaterialLayerChans:(vector_b71873ec *)arg2;
 - (vector_b71873ec)getSelectedMaterialLayerChans;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)doDrag:(list_e5c8e430 *)arg1 viewList:(id)arg2;
+- (void)doDrag:(list_9af5505e *)arg1 viewList:(id)arg2;
 - (id)delegate;
 - (id)getControllerForLayerChan:(struct OZChannelBase *)arg1;
 - (void)updateGlobalPlacementVisibility;

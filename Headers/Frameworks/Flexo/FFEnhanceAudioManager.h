@@ -99,6 +99,7 @@
 - (void)pausedTask:(id)arg1;
 - (id)librariesInUse:(id)arg1;
 - (id)assetsInUse:(id)arg1;
+- (void)canceledTask:(id)arg1;
 - (int)warningStateForAnalysisOperation:(int)arg1;
 - (int)warningState;
 - (BOOL)bgTaskIsAnalyzingEffectStack:(id)arg1;

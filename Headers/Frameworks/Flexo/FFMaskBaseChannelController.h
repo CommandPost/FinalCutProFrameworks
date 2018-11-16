@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (void)setMaskBlendMode:(id)arg1;
 - (void)update;
 - (void)dealloc;
+- (void)delete:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (BOOL)_isFirstMask;
 - (id)_maskedEffect;

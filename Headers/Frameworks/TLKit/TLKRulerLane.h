@@ -6,9 +6,12 @@
 
 #import <TLKit/TLKTimelineLane.h>
 
-@class CATiledLayer, LKTimecodeFormatter, NSArray, NSMutableArray, TLKRulerLayer;
+#import "CALayerDelegate.h"
+#import "CATiledLayerDelegate.h"
 
-@interface TLKRulerLane : TLKTimelineLane
+@class CATiledLayer, LKTimecodeFormatter, NSArray, NSMutableArray, NSString, TLKRulerLayer;
+
+@interface TLKRulerLane : TLKTimelineLane <CATiledLayerDelegate, CALayerDelegate>
 {
     TLKRulerLayer *_rulerLayer;
     CATiledLayer *_rulerMarkerLayer;
@@ -47,6 +50,12 @@
 - (void)_updateTimecodeFormatter;
 - (void)setTimecodeFormatter:(id)arg1;
 - (id)timecodeFormatter;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

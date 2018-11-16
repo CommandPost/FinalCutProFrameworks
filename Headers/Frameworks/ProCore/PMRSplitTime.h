@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _duration;
 }
 
-@property(copy, nonatomic) NSArray *splitTimes; // @synthesize splitTimes=_splitTimes;
 @property(nonatomic) unsigned long long duration; // @synthesize duration=_duration;
+@property(copy, nonatomic) NSArray *splitTimes; // @synthesize splitTimes=_splitTimes;
 @property(nonatomic) unsigned long long splitTime; // @synthesize splitTime=_splitTime;
 @property(nonatomic) long long level; // @synthesize level=_level;
 @property(copy, nonatomic) NSString *comment; // @synthesize comment=_comment;

@@ -7,6 +7,7 @@
 #import "NSBezierPath.h"
 
 @interface NSBezierPath (LunaKitAdditions)
++ (id)bezierPathWithRoundedRect:(struct CGRect)arg1 xRadius:(double)arg2 yRadius:(double)arg3 roundedTopLeftCorner:(BOOL)arg4 roundedTopRightCorner:(BOOL)arg5 roundedBottomLeftCorner:(BOOL)arg6 roundedBottomRightCorner:(BOOL)arg7;
 + (id)squircleBezierPathInRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
 - (struct CGPath *)quartzPath;
 @end

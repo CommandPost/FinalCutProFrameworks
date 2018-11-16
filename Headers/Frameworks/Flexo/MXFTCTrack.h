@@ -28,9 +28,9 @@ __attribute__((visibility("hidden")))
 @property(readonly) int editRate; // @synthesize editRate;
 @property(retain) NSString *name; // @synthesize name;
 @property(readonly) int trackType; // @synthesize trackType;
-- (int)stepInPresentationOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(id)arg3;
-- (int)stepInDecodeOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(id)arg3;
-- (long long)decodePositionForDisplayPosition:(long long)arg1 cursor:(id)arg2;
+- (int)stepInPresentationOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMCursor *)arg3;
+- (int)stepInDecodeOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMCursor *)arg3;
+- (long long)decodePositionForDisplayPosition:(long long)arg1 cursor:(const struct HPMCursor *)arg2;
 @property(readonly) long long displayPositionForLastDecodeSample;
 @property(readonly) long long displayPositionForFirstDecodeSample;
 @property(readonly) long long editDuration;
