@@ -106,7 +106,6 @@
 - (struct CGSize)frameSize;
 - (double)rowHeight;
 - (BOOL)isRigDisplay;
-- (BOOL)isMotionHUD;
 - (struct __CFString *)bundleID;
 - (BOOL)isHUD;
 - (id)description;

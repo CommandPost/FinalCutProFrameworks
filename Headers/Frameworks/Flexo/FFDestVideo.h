@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)copyDropInfosByPopping;
 - (void)recordDropInfo:(id)arg1;
 - (BOOL)enableDropDetection;
+- (void)notifyDestPlayerChangedRenderLocation:(int)arg1;
 - (void)setEnableDropDetection:(BOOL)arg1;
 - (_Bool)performOverfullRecovery;
 - (_Bool)supportsOverfullRecovery;
@@ -60,12 +61,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)showHDRAsRawValues;
 - (unsigned int)rangeCheckZebraMode;
 - (int)requestedBackground;
-- (struct CGSize)maxSupportedSize;
+- (void)maxSupportedSize;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
-- (id)supportedPixelFormats;
-- (struct CGColorSpace *)colorSpace;
+- (void)supportedPixelFormats;
+- (void)colorSpace;
 - (int)influenceOnExecLocation;
-- (int)imageLocation;
+- (void)imageLocation;
+- (id)requestedImageInfo;
 - (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_1b6d18a9)frameDurationForMaximumOutputRate;
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;

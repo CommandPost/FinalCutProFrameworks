@@ -27,9 +27,7 @@
 - (int)destRecommendedFFSVPriority;
 - (BOOL)wantsDithering:(id)arg1;
 - (int)requestedBackground;
-- (id)supportedPixelFormats;
-- (struct CGColorSpace *)colorSpace;
-- (int)imageLocation;
+- (id)requestedImageInfo;
 - (int)drawFieldsInterlaced;
 - (void)setNeedsUpdate:(BOOL)arg1;
 - (int)getFrameQueueStatus;

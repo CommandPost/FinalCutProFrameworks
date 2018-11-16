@@ -58,6 +58,7 @@
 - (id)makeDefaultEvent:(id *)arg1;
 - (void)makeSequenceActive:(id)arg1;
 - (void)canCloseDocumentWithDelegate:(id)arg1 shouldCloseSelector:(SEL)arg2 contextInfo:(void *)arg3;
+- (void)closeWhenPossibleWithBlock:(CDUnknownBlockType)arg1;
 - (void)updateFinished:(id)arg1;
 - (id)saveChangesString;
 - (id)newRootObject:(id)arg1 type:(id)arg2;

@@ -31,11 +31,10 @@
 - (BOOL)_resolveGapsForLaneIndex:(long long)arg1 flags:(long long)arg2;
 - (BOOL)_resolveAudioConflictsForLaneIndex:(long long)arg1;
 - (BOOL)_resolveConflictForLaneIndex:(long long)arg1;
-- (BOOL)setup;
+- (void)setup;
 - (id)initWithItems:(id)arg1 fixedItems:(id)arg2;
 - (id)initWithItems:(id)arg1 fixedItems:(id)arg2 range:(CDStruct_e83c9415)arg3 flags:(int)arg4;
-- (id)initWithItems:(id)arg1 fixedItems:(id)arg2 range:(CDStruct_e83c9415)arg3 flags:(int)arg4 setup:(BOOL)arg5;
-- (id)initWithItemInfos:(id)arg1 flags:(int)arg2 setup:(BOOL)arg3;
+- (id)initWithItemInfos:(id)arg1 flags:(int)arg2;
 - (void)setupIntersectingItems2;
 - (void)setupIntersectingItemsWithRange:(CDStruct_e83c9415)arg1;
 - (void)setupIntersectingItems;

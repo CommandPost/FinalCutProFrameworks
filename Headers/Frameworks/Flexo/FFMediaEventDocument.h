@@ -34,6 +34,8 @@
 - (id)mediaEventProject;
 - (id)rootObject;
 - (void)updateWithHandler:(id)arg1;
+- (void)update_fixFFAnchoredAngleVideoEffectsAnchoredObject;
+- (void)update_fixMixdownRoleGroupForAnchoredMediaRefs;
 - (void)update_projectNotesLocation2;
 - (void)update_colorProfileMetadata;
 - (void)update_PreEdelXAudioEffectKeyframes;

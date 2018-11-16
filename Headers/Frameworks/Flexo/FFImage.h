@@ -29,7 +29,7 @@
 + (void)addRotationToImageMatrix:(id *)arg1 rotation:(int)arg2 flipY:(BOOL)arg3;
 + (id)newSolidColorHeliumImageWithRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4 colorSpace:(struct CGColorSpace *)arg5 dod:(struct CGRect)arg6 pixelTransform:(id)arg7;
 + (void)releaseHGNode:(struct HGNode *)arg1;
-+ (id)newPrimaryBlocksTestImage:(struct CGRect)arg1 pf:(id)arg2 cs:(struct CGColorSpace *)arg3;
++ (id)newPrimaryBlocksTestImage:(struct CGRect)arg1 colorsToTest:(int)arg2 pf:(id)arg3 cs:(struct CGColorSpace *)arg4 retColorLabels:(id *)arg5;
 + (id)newImageFromTestColor_u64:(unsigned long long)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)new2vuyImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6;
 + (id)new420ImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6 style:(id)arg7;
@@ -42,6 +42,7 @@
 - (id)newShiftedCroppedImage:(struct CGRect)arg1;
 - (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 toPixelTransform:(id)arg2;
 - (unsigned long long)approximateMemoryUsage;
+- (BOOL)dumpImageToURL:(id)arg1;
 - (BOOL)dumpImage;
 - (id)description;
 - (id)objectForKey:(id)arg1;
@@ -83,6 +84,7 @@
 - (struct HGNode *)newRangeCheckNodeForMode:(unsigned int)arg1 withFilterQuality:(int)arg2 workingSpace:(int)arg3 epsilonValues:(struct FFRangeCheckEpsilonValues *)arg4;
 - (id)newFFImageWithUpdatedPT:(id)arg1 psb:(struct CGRect)arg2 field:(unsigned int)arg3;
 - (id)newTextureWrappedImageWithMode:(int)arg1;
+- (id)newTextureWrappedImageWithMode:(int)arg1 withCropRect:(struct CGRect *)arg2;
 - (id)newTextureWrappedImage;
 - (id)newCroppedImage:(struct CGRect)arg1;
 - (struct HGNode *)newHGNodeWithBackground:(struct CGRect)arg1 bgColor:(id)arg2 compositingFormat:(id)arg3;
@@ -111,15 +113,13 @@
 - (id)initWithFFPixelBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 disable422Filtering:(BOOL)arg5;
 - (struct __CVBuffer *)newCVPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 flipped:(BOOL)arg5;
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 pixelFormat:(id)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 field:(unsigned int)arg5;
-- (id)initWithCVImageBufferEvenIfOnlyNCLCTags:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5 disable422Filtering:(BOOL)arg6;
-- (id)initWithCVImageBufferEvenIfOnlyNCLCTags:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5;
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5 disable422Filtering:(BOOL)arg6;
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5;
 - (id)initWithFFTextureBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
 - (id)initCacheNodeWithImage:(id)arg1 locationHint:(int)arg2 cacheMode:(unsigned int)arg3 md5:(CDStruct_bdcb2b0d)arg4 offset:(long long)arg5 cacheFmt:(id)arg6;
 - (id)initBiplanarWithLumaTexture:(id)arg1 chromaTexture:(id)arg2 formatDesc:(id)arg3 pixelTransform:(id)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6;
 - (id)initBiplanarWithLumaPixelBuffer:(id)arg1 chromaPixelBuffer:(id)arg2 formatDesc:(id)arg3 pixelTransform:(id)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6;
-- (id)initWithDeferredBlock:(CDUnknownBlockType)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 pixelSpaceBounds:(struct CGRect)arg4 field:(unsigned int)arg5 pixelFormat:(id)arg6;
+- (id)initWithDeferredBlock:(CDUnknownBlockType)arg1 format:(id)arg2 pixelTransform:(id)arg3 pixelSpaceBounds:(struct CGRect)arg4 field:(unsigned int)arg5;
 
 @end
 

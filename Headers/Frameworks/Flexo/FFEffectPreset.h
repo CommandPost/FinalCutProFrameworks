@@ -11,10 +11,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)newVideoEffectStackFromPresetUnarchiver:(id)arg1;
-+ (void)unarchivePresetData:(id)arg1 videoEffects:(id *)arg2 audioEffectsObjectBundle:(id *)arg3 selectedIntrinsics:(id *)arg4 selectedChannels:(id *)arg5 keyframeMode:(long long *)arg6 sourceClippedRange:(CDStruct_e83c9415 *)arg7 sourceUnclippedStart:(CDStruct_1b6d18a9 *)arg8;
++ (BOOL)effectStackIs4KReady:(id)arg1;
++ (id)loadPresetDataFromFileURL:(id)arg1;
 + (id)directoryURL;
++ (BOOL)applyPreset:(id)arg1 toAnchoredObject:(id)arg2 error:(id *)arg3;
 + (BOOL)createPresetWithName:(id)arg1 presetCategory:(id)arg2 videoEffects:(id)arg3 audioEffects:(id)arg4 selectedChannels:(id)arg5 selectedIntrinsics:(id)arg6 keyframeMode:(long long)arg7 sourceClippedRange:(CDStruct_e83c9415)arg8 sourceUnclippedStart:(CDStruct_1b6d18a9)arg9;
++ (id)videoEffectStackFromPresetData:(id)arg1;
++ (void)unarchivePresetData:(id)arg1 videoEffects:(id *)arg2 audioEffectsObjectBundle:(id *)arg3 selectedIntrinsics:(id *)arg4 selectedChannels:(id *)arg5 keyframeMode:(long long *)arg6 sourceClippedRange:(CDStruct_e83c9415 *)arg7 sourceUnclippedStart:(CDStruct_1b6d18a9 *)arg8;
++ (id)newPresetDataWithPresetCategory:(id)arg1 videoEffects:(id)arg2 audioEffects:(id)arg3 selectedChannels:(id)arg4 selectedIntrinsics:(id)arg5 keyframeMode:(long long)arg6 sourceClippedRange:(CDStruct_e83c9415)arg7 sourceUnclippedStart:(CDStruct_1b6d18a9)arg8;
 + (void)scanPresets:(id)arg1;
 + (void)appDidBecomeActive:(id)arg1;
 + (void)willTerminate:(id)arg1;
@@ -23,10 +27,8 @@ __attribute__((visibility("hidden")))
 + (void)uninstallDirectoryWatcher;
 + (void)installDirectoryWatcher;
 + (BOOL)presetExists:(id)arg1;
-+ (BOOL)effectStackIs4KReady:(id)arg1;
 + (void)registerOneEffectPreset:(id)arg1 updateSet:(BOOL)arg2 notify:(BOOL)arg3;
 + (void)registerEffects;
-- (BOOL)applyToAnchoredObject:(id)arg1 error:(id *)arg2;
 - (id)presetURL;
 
 @end

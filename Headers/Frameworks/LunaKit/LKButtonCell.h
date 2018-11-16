@@ -23,11 +23,14 @@
     int _variant;
     int _tint;
     BOOL _pulsing;
+    BOOL _isMouseInside;
 }
 
 @property BOOL ignoresBorderChangeOnDragEnter; // @synthesize ignoresBorderChangeOnDragEnter=_ignoresBorderChangeOnDragEnter;
 @property long long partID; // @synthesize partID=_partID;
 @property long long elementID; // @synthesize elementID=_elementID;
+- (BOOL)isMouseInside;
+- (void)setMouseInside:(BOOL)arg1;
 @property(nonatomic) unsigned long long tintIndex; // @synthesize tintIndex=_tintIndex;
 - (void)setChangesBorderWhenMouseInside:(BOOL)arg1;
 - (BOOL)changesBorderWhenMouseInside;
@@ -38,10 +41,6 @@
 - (id)initImageCell:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)_setProUseButtonImageSource:(long long)arg1;
-- (long long)_proUseButtonImageSource;
-- (void)_setProHasKeyEquivalentInsteadOfImage:(long long)arg1;
-- (long long)_proHasKeyEquivalentInsteadOfImage;
 - (void)autosizeControlHeight;
 
 @end

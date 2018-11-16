@@ -46,6 +46,7 @@
 - (void)notifiyHistoryChanged;
 - (void)validateHistory:(id)arg1;
 - (void)_projectChanged:(id)arg1;
+- (void)_documentRemoved:(id)arg1;
 - (BOOL)canNavigateToRootItem:(BOOL)arg1;
 - (void)pushRootItem:(id)arg1;
 - (id)rootContainerForActiveItem;

@@ -10,11 +10,18 @@
 {
 }
 
++ (id)sharePanelInfoBarPillHighlightColor;
++ (id)sharePanelInfoBarPillNormalColor;
++ (id)sharePanelRoleListLabelColor;
++ (id)sharePanelEditTrackSeparatorColor;
++ (id)sharePanelFooterSeparatorColor;
++ (id)sharePanelBrickModifyButtonColor;
 + (id)sharePanelBrickAddButtonColor;
 + (id)sharePanelBrickRemoveButtonColor;
 + (id)sharePanelBrickSelectedBackgroundColor;
 + (id)sharePanelBrickUnselectedBackgroundColor;
 + (id)sharePanelBrickListBackgroundColor;
++ (id)sharePanelSourcesListBackgroundColor;
 + (id)windowTitlebarTextInactive;
 + (id)windowTitlebarTextEngraveInactive;
 + (id)windowTitlebarTextEngraveHUDInactive;

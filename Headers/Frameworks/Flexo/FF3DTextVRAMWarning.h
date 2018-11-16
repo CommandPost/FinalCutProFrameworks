@@ -6,23 +6,25 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredSequence;
+@class NSArray;
 
 @interface FF3DTextVRAMWarning : NSObject
 {
     int _status;
-    FFAnchoredSequence *_sequence;
+    NSArray *_sequences;
 }
 
 + (void)loaded3DEffect:(id)arg1;
++ (int)statusForSequences:(id)arg1 maxTime:(id)arg2;
 + (int)statusForSequence:(id)arg1 maxTime:(id)arg2;
++ (int)warnForSequences:(id)arg1 option:(int)arg2;
 + (int)warnForSequence:(id)arg1 option:(int)arg2;
 + (int)show3DTextVRAMWarning:(id)arg1;
 + (int)show3DTextVRAMWarning;
 + (BOOL)hasSufficientVRAM;
 + (BOOL)enabled;
 + (void)initialize;
-@property(retain) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
+@property(copy) NSArray *sequences; // @synthesize sequences=_sequences;
 @property(nonatomic) int status; // @synthesize status=_status;
 - (void)dealloc;
 

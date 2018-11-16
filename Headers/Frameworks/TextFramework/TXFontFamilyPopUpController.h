@@ -18,8 +18,6 @@
 - (double)backingScaleFactor;
 - (void)removeNotifications;
 - (void)setupNotifications;
-- (void)unlockText:(struct OZChannel *)arg1;
-- (void)lockText:(struct OZChannel *)arg1;
 - (void)fontFamilyControllerDidChange;
 - (id)nibName;
 - (id)getFontImageCache;

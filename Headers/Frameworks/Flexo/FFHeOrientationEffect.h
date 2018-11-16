@@ -6,7 +6,7 @@
 
 #import <Flexo/FFHeliumEffect.h>
 
-@class CHChannelAngle, CHChannelDouble;
+@class CHChannelAngle, CHChannelDouble, CHChannelEnum;
 
 __attribute__((visibility("hidden")))
 @interface FFHeOrientationEffect : FFHeliumEffect
@@ -15,10 +15,14 @@ __attribute__((visibility("hidden")))
     CHChannelAngle *_chLongitude;
     CHChannelAngle *_chRoll;
     CHChannelDouble *_chFieldOfView;
+    CHChannelDouble *_chFieldOfViewTinyPlanet;
+    CHChannelEnum *_chMapping;
 }
 
 + (double)convertToFOVYFromFOVX:(double)arg1 width:(double)arg2 height:(double)arg3;
 + (void)registerEffects;
+@property(readonly) CHChannelEnum *mappingChannel; // @synthesize mappingChannel=_chMapping;
+@property(readonly) CHChannelDouble *fieldOfViewTinyPlanetChannel; // @synthesize fieldOfViewTinyPlanetChannel=_chFieldOfViewTinyPlanet;
 @property(readonly) CHChannelDouble *fieldOfViewChannel; // @synthesize fieldOfViewChannel=_chFieldOfView;
 @property(readonly) CHChannelAngle *rollChannel; // @synthesize rollChannel=_chRoll;
 @property(readonly) CHChannelAngle *longitudeChannel; // @synthesize longitudeChannel=_chLongitude;
@@ -33,6 +37,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)writeDefaultChannels;
 - (BOOL)isNoOp;
 - (struct HGNode *)newNodeForContext:(id)arg1;
+- (void)effectActivated:(int)arg1;
+- (void)channelParameterChanged:(id)arg1;
+- (void)showHideChannel:(id)arg1 show:(BOOL)arg2;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)reset;
 - (void)dealloc;

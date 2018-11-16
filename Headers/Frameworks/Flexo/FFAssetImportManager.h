@@ -51,10 +51,11 @@
 - (void)updateImportPercentageForImportRequest:(id)arg1;
 - (unsigned long long)removeCanceledImportRequestsForVolume:(id)arg1;
 - (void)cancelAll;
-- (void)resetImportedRangeMarkerForImportRequest:(id)arg1;
+- (void)resetImportedRangeMarkerForImportRequest:(id)arg1 importMarkerManager:(id)arg2;
 - (id)importRangesOfMedia:(id)arg1 toEvent:(id)arg2 keywords:(id)arg3 importStartDate:(id)arg4;
 - (void)appWillTerminate:(id)arg1;
 - (void)dealloc;
+- (void)releaseImportQueue;
 - (oneway void)release;
 - (id)init;
 

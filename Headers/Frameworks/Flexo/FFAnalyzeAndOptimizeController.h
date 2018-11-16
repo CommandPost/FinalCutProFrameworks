@@ -22,6 +22,9 @@
 }
 
 + (BOOL)needsOptimizationForFourCharCode:(unsigned int)arg1;
++ (BOOL)optimizationTaskQueuedForClip:(id)arg1;
++ (BOOL)proxyTaskQueuedForClip:(id)arg1;
++ (BOOL)_taskQueued:(id)arg1 forClip:(id)arg2;
 + (BOOL)clipHasProxy:(id)arg1;
 + (BOOL)_assetHasProxy:(id)arg1 status:(int)arg2;
 + (BOOL)needsOptimizationForClip:(id)arg1;

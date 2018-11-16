@@ -17,16 +17,14 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)tileDisplayName;
-- (void)viewDidLayout;
 - (void)updateViewConstraints;
-- (void)mouseExited:(id)arg1;
-- (void)mouseEntered:(id)arg1;
+- (void)mouseMoved:(id)arg1;
 - (void)updateTileBackground;
 - (id)newComponentWaveformWithWaveformManager:(id)arg1 delegate:(id)arg2;
 - (void)setComponentWaveformsContainer:(id)arg1;
 - (void)buildRootView;
 - (void)updateUI;
-- (BOOL)hasDisplayClearMixdown;
+- (BOOL)hasMixdownView;
 - (void)micaRefSelectionLayersForComponentWaveform:(id)arg1 selectionRingLayer:(id *)arg2 componentLayer:(id *)arg3;
 - (id)micaRefItemLayer:(int)arg1;
 - (id)micaRefRootLayer;

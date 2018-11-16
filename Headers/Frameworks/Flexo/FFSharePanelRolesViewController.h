@@ -7,77 +7,46 @@
 #import "NSViewController.h"
 
 #import "FFBrickTreeDataSource.h"
+#import "FFBrickTreeViewDelegate.h"
 
-@class CKSource, FFBrickTreeController, FFBrickTreeView, FFShareExportMediaDestination, FFSharePanelCaptionsExporter, FFSharePanelRolesPresetsDelegate, NSMutableDictionary, NSPopUpButton;
+@class FFBrickTreeController, FFBrickTreeView, FFSharePanelRolesDataSource, LKScrollView, LKScroller, NSPopUpButton, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFSharePanelRolesViewController : NSViewController <FFBrickTreeDataSource>
+@interface FFSharePanelRolesViewController : NSViewController <FFBrickTreeViewDelegate, FFBrickTreeDataSource>
 {
     FFBrickTreeView *_roleTreeView;
     NSPopUpButton *_rolesAsButton;
-    NSPopUpButton *_presetsButton;
-    FFSharePanelRolesPresetsDelegate *_presetsDelegate;
     FFBrickTreeController *_brickTreeController;
-    BOOL _isObservingDestination;
-    unsigned long long _workingNumberOfCaptionSidecarFiles;
-    FFShareExportMediaDestination *_destination;
-    CKSource *_source;
-    FFSharePanelCaptionsExporter *_captionsExporter;
-    unsigned long long _numberOfCaptionSidecarFiles;
-    NSMutableDictionary *_captionFormatsEnabledForExport;
+    FFSharePanelRolesDataSource *_dataSource;
+    LKScrollView *_scrollView;
+    LKScroller *_verticalScroller;
+    LKScroller *_horizontalScroller;
 }
 
-+ (id)rolesViewControllerWithSource:(id)arg1;
-@property(retain, nonatomic) NSMutableDictionary *captionFormatsEnabledForExport; // @synthesize captionFormatsEnabledForExport=_captionFormatsEnabledForExport;
-@property(nonatomic) unsigned long long numberOfCaptionSidecarFiles; // @synthesize numberOfCaptionSidecarFiles=_numberOfCaptionSidecarFiles;
-@property(retain, nonatomic) FFSharePanelCaptionsExporter *captionsExporter; // @synthesize captionsExporter=_captionsExporter;
-@property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
-@property(retain, nonatomic) FFShareExportMediaDestination *destination; // @synthesize destination=_destination;
-- (void)embedCaption:(id)arg1 forVideoBrick:(id)arg2;
-- (void)setExportEnabled:(BOOL)arg1 forCaptionsBrick:(id)arg2;
-- (void)removeRole:(id)arg1 from:(id)arg2;
-- (void)addRole:(id)arg1 toChildBrick:(id)arg2;
-- (void)addVideoRoleOutput:(id)arg1;
-- (void)addAudioRoleOutput:(id)arg1;
-- (void)removeRoleOutput:(id)arg1;
-- (void)chooseAudioChannelLayout:(id)arg1;
+@property(nonatomic) LKScroller *horizontalScroller; // @synthesize horizontalScroller=_horizontalScroller;
+@property(nonatomic) LKScroller *verticalScroller; // @synthesize verticalScroller=_verticalScroller;
+@property(nonatomic) LKScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property(readonly, nonatomic) FFSharePanelRolesDataSource *dataSource; // @synthesize dataSource=_dataSource;
 - (id)brickTreeView:(id)arg1 listViewFor:(id)arg2 at:(id)arg3;
-- (Class)brickTreeView:(id)arg1 brickViewFor:(id)arg2 at:(id)arg3;
 - (id)brickTreeView:(id)arg1 controlPanelViewFor:(id)arg2 at:(id)arg3;
 - (id)brickTreeView:(id)arg1 dividerViewFor:(id)arg2 at:(id)arg3;
+- (void)brickTreeView:(id)arg1 hasMovedBrick:(id)arg2 to:(unsigned long long)arg3;
+- (struct _NSRange)brickTreeView:(id)arg1 positionsForBrick:(id)arg2;
+- (BOOL)brickTreeView:(id)arg1 mayReorderBricksAt:(id)arg2;
+- (Class)brickTreeView:(id)arg1 viewClassFor:(id)arg2 at:(id)arg3;
 - (double)brickTreeView:(id)arg1 spacingAt:(id)arg2;
-- (id)tree;
-- (id)captionMainRolesEnabledForExport;
-- (id)captionsMainRolesUsedInSequence:(id)arg1;
-- (id)captionsSubtree;
-- (BOOL)isExportEnabledForCaptionFormat:(id)arg1;
-- (long long)captionsTypeWithFormat:(id)arg1;
-- (id)subTreeForAudioRoleOutputs;
-- (id)subTreeForVideoRoleOutputs;
-- (id)subTreeForMultitrackRolePreset;
-- (id)audioChildBrickWithRoleOutput:(id)arg1;
-- (id)videoChildBrickWithRoleOutput:(id)arg1;
-- (id)typeStringForRoleOutput:(id)arg1;
-- (id)selectedEmbeddedCaptionRoleWithRoleOutput:(id)arg1;
-- (id)menuForEmbedButtonWithTarget:(id)arg1;
-- (BOOL)embeddableCaptionsArePresent;
-- (id)roleListNodesWithRoleOutput:(id)arg1;
-- (id)menuForRoleListWithTarget:(id)arg1 withRoleOutput:(id)arg2;
-- (id)treeForRolesAsQuicktimeMovie;
-- (id)roleListNodesForQuickTimeMovieWithType:(int)arg1;
-- (double)swatchHeightForRole:(id)arg1;
-- (id)colorForCKRole:(id)arg1;
-- (id)colorForFFRole:(id)arg1;
-- (BOOL)canAddAudioRoleOutput;
-- (BOOL)canAddVideoRoleOutput;
-- (BOOL)canRemoveVideoRoleOutput;
+- (void)reloadBrickTreeFromDataSource;
 - (void)reloadData;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)viewDidLoad;
-- (void)stopObservingDestination;
-- (void)startObservingDestination;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
-- (id)initWithDestination:(id)arg1 source:(id)arg2;
+- (id)initWithDataSource:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

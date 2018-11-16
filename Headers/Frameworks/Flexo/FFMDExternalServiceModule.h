@@ -6,23 +6,19 @@
 
 #import <Flexo/FFMDModule.h>
 
-#import "ProPanelHostProtocol.h"
+@class FFProServiceBase, NSString, NSView, PlugInViewController, _FFExternalServiceHostingWindow;
 
-@class NSString, NSView, PluginViewController, _FFExternalServiceHostingWindow;
-
-@interface FFMDExternalServiceModule : FFMDModule <ProPanelHostProtocol>
+@interface FFMDExternalServiceModule : FFMDModule
 {
     NSView *_placeholderView;
     _FFExternalServiceHostingWindow *_remoteViewHostingWindow;
-    PluginViewController *_plugInHostViewController;
+    PlugInViewController *_plugInHostViewController;
     NSString *_serviceBundleIdentifier;
     NSString *_serviceClassName;
-    id <PKPlugIn> _plugIn;
+    FFProServiceBase *_plugIn;
     BOOL _plugInActive;
 }
 
-- (id)exportedInterface;
-- (id)serviceViewControllerInterface;
 - (void)hostInfo:(CDUnknownBlockType)arg1;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;

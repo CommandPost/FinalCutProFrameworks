@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _isConsumerTimeline;
     id <TLKTimelineViewDataSource> _dataSource;
     int _outstandingOperations;
-    BOOL _writePerformanceOutputToSyslog;
+    BOOL _logPerformanceResultsToFile;
     BOOL _operationComplete;
     BOOL _audioOperationComplete;
     BOOL _videoOperationComplete;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property BOOL videoOperationComplete; // @synthesize videoOperationComplete=_videoOperationComplete;
 @property BOOL audioOperationComplete; // @synthesize audioOperationComplete=_audioOperationComplete;
 @property BOOL operationComplete; // @synthesize operationComplete=_operationComplete;
-@property BOOL writePerformanceOutputToSyslog; // @synthesize writePerformanceOutputToSyslog=_writePerformanceOutputToSyslog;
+@property BOOL logPerformanceResultsToFile; // @synthesize logPerformanceResultsToFile=_logPerformanceResultsToFile;
 @property(nonatomic) unsigned long long iterations; // @synthesize iterations=_iterations;
 - (void)logTimerDataWithFormat:(id)arg1 key:(id)arg2 comment:(id)arg3;
 - (void)_displayAlertForPopulateTimelineMissingClip;
@@ -42,11 +42,9 @@ __attribute__((visibility("hidden")))
 - (void)benchmarkShakeTimelineView:(id)arg1;
 - (void)benchmarkScrollTimelineToEnd:(id)arg1;
 - (void)benchmarkZoomTimeline:(id)arg1;
+- (void)benchmarkMarqueeSelection:(id)arg1;
 - (void)benchmarkTrim:(id)arg1;
 - (void)benchmarkDrag:(id)arg1;
-- (void)_indentMenuItems:(id)arg1;
-- (void)_assignMenuItems:(id)arg1 toTarget:(id)arg2;
-- (void)configurePerformanceMenu;
 @property(readonly, nonatomic) NSString *performanceOutputLocation;
 - (id)primaryStoryline;
 - (id)sequence;

@@ -6,7 +6,6 @@
 
 #import "LKTimecodeFormatter.h"
 
-__attribute__((visibility("hidden")))
 @interface FFTimecodeFormatter : LKTimecodeFormatter
 {
 }

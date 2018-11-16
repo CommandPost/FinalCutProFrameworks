@@ -6,15 +6,13 @@
 
 #import "NSObject.h"
 
-@class NSMutableDictionary;
-
 @protocol HPMMediaProtocol <NSObject>
 @property(readonly) BOOL hasDisplayOffsets;
 @property(readonly) long long indexDataSize;
 @property long long indexSampleCount;
 @property(readonly) unsigned long long indexEntryCount;
 @property(readonly) unsigned int bytesPerSample;
-@property(retain) NSMutableDictionary *descriptiveMetadata;
+@property struct __CFDictionary *descriptiveMetadata;
 @property(readonly) BOOL isValid;
 @property(readonly) int codecType;
 @property(readonly) int essenceType;

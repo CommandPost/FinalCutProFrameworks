@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSDate, NSImage, NSMutableArray, NSString, OZLibraryModuleBase;
 
-@interface OZLibraryEntry : NSObject <NSCoding, NSCopying>
+@interface OZLibraryEntry : NSObject <NSSecureCoding, NSCopying>
 {
     OZLibraryEntry *_parent;
     NSString *_name;
@@ -35,6 +35,7 @@
     BOOL _isFullyBlocked;
 }
 
++ (BOOL)supportsSecureCoding;
 + (struct PCMutex *)getThumbnailCacheLock;
 + (id)getThumbnailInfoCache;
 + (id)getThumbnailCache;

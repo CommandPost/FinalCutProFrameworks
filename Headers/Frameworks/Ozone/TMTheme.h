@@ -19,7 +19,7 @@
 
 @property(nonatomic) BOOL isTemporaryTheme; // @synthesize isTemporaryTheme=_isTemporaryTheme;
 @property(nonatomic) BOOL isSystemTheme; // @synthesize isSystemTheme=_isSystemTheme;
-@property(nonatomic) NSString *name; // @synthesize name=_name;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (BOOL)canRemoveItem;
 - (BOOL)canAddToItem;
 - (id)title;

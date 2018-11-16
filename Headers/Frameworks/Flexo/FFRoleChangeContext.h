@@ -14,6 +14,7 @@
     NSMutableOrderedSet *_objectList;
     unsigned int _contextPhase;
     BOOL _disableUndo;
+    BOOL _linkContextToLibrary;
     unsigned int _deferRoleChangesFlags;
     NSMutableSet *_visitedObjects;
     NSMutableArray *_scopeParentage;

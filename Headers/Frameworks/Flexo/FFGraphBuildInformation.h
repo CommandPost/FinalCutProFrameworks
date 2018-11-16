@@ -13,6 +13,7 @@
     BOOL _retimeApproximateDueToMissingFlowVectors;
     BOOL _approximateDueToMissingDominantMotion;
     BOOL _flowTransitionNeedsAnalysis;
+    BOOL _transientRenderingError;
     BOOL _oneOrMoreCacheHits;
     unsigned int _cacheHitReasons;
     NSMutableArray *_effectsInTemporaryRenderState;
@@ -26,6 +27,8 @@
 - (void)updateCacheHitReasons:(unsigned int)arg1;
 - (BOOL)oneOrMoreCacheHits;
 - (void)setOneOrMoreCacheHits:(BOOL)arg1;
+- (BOOL)transientRenderingError;
+- (void)setTransientRenderingError:(BOOL)arg1;
 - (BOOL)flowTransitionNeedsAnalysis;
 - (void)setFlowTransitionNeedsAnalysis:(BOOL)arg1;
 - (BOOL)approximateDueToMissingDominantMotion;

@@ -25,8 +25,6 @@
 
 - (struct CGRect)splitView:(id)arg1 additionalEffectiveRectOfDividerAtIndex:(long long)arg2;
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
-- (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
-- (double)_resizeSplitViewsTo:(double)arg1 dimensions:(double *)arg2 minDimensions:(double *)arg3 count:(unsigned long long)arg4;
 - (void)preLayout:(id)arg1;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
 - (id)contentLayoutDictionary;

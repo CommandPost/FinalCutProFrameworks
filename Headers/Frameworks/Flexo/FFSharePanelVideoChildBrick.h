@@ -4,44 +4,42 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFSharePanelBrick.h>
+#import <Flexo/FFSharePanelChildBrick.h>
 
-@class NSButton, NSImageView, NSMenu, NSPopUpButton, NSString, NSTextField;
+#import "FFSharePanelVideoChildBrickProtocol.h"
+
+@class CKRole, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface FFSharePanelVideoChildBrick : FFSharePanelBrick
+@interface FFSharePanelVideoChildBrick : FFSharePanelChildBrick <FFSharePanelVideoChildBrickProtocol>
 {
-    NSTextField *_typeLabel;
-    NSImageView *_typeIcon;
-    NSTextField *_embedLabel;
-    NSPopUpButton *_embedPopUpButton;
-    NSButton *_removeButton;
-    NSPopUpButton *_addRoleButton;
-    id _desiredSelectedRepresentedObject;
-    BOOL _canRemove;
-    BOOL _canEmbed;
-    BOOL _useFileIcon;
-    BOOL _canAddRole;
-    NSString *_typeString;
-    NSMenu *_embedMenu;
-    NSMenu *_addRoleButtonMenu;
+    NSArray *_activeCaptionRolesSuitableForEmbed;
+    NSArray *_activeCaptionRolesSuitableForBurnIn;
 }
 
-@property(nonatomic) BOOL canAddRole; // @synthesize canAddRole=_canAddRole;
-@property(retain, nonatomic) NSMenu *addRoleButtonMenu; // @synthesize addRoleButtonMenu=_addRoleButtonMenu;
-@property(retain, nonatomic) NSMenu *embedMenu; // @synthesize embedMenu=_embedMenu;
-@property(retain, nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
-@property(nonatomic) BOOL useFileIcon; // @synthesize useFileIcon=_useFileIcon;
-@property(nonatomic) BOOL canEmbed; // @synthesize canEmbed=_canEmbed;
-@property(nonatomic) BOOL canRemove; // @synthesize canRemove=_canRemove;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)addRole:(id)arg1;
-- (void)embedCaption:(id)arg1;
-- (void)removeRoleOutput:(id)arg1;
-- (void)selectEmbedOptionFor:(id)arg1;
-- (void)viewDidLoad;
+@property(readonly, nonatomic) NSArray *activeCaptionRolesSuitableForBurnIn; // @synthesize activeCaptionRolesSuitableForBurnIn=_activeCaptionRolesSuitableForBurnIn;
+@property(readonly, nonatomic) NSArray *activeCaptionRolesSuitableForEmbed; // @synthesize activeCaptionRolesSuitableForEmbed=_activeCaptionRolesSuitableForEmbed;
+- (void)selectActiveCaptionRolesForBurnIn:(id)arg1;
+- (void)selectActiveCaptionRolesForEmbed:(id)arg1;
+- (BOOL)isVideo;
+- (BOOL)canRemove;
+- (id)burnInCaptionRoleForDestination:(id)arg1;
+@property(retain, nonatomic) CKRole *burnInCaptionRole; // @dynamic burnInCaptionRole;
+- (void)setBurnInCaptionRole:(id)arg1 forDestination:(id)arg2;
+@property(readonly, nonatomic) BOOL hasMultipleBurnInCaptionRoles; // @dynamic hasMultipleBurnInCaptionRoles;
+- (id)captionFormatsAvailableForBurnIn;
+- (id)captionFormatsAvailableForEmbed;
+@property(readonly, nonatomic) BOOL canBurnInCaptions; // @dynamic canBurnInCaptions;
+- (id)embeddedCaptionRoleForDestination:(id)arg1;
+@property(retain, nonatomic) CKRole *embeddedCaptionRole; // @dynamic embeddedCaptionRole;
+- (void)setEmbeddedCaptionRole:(id)arg1 forDestination:(id)arg2;
+@property(readonly, nonatomic) BOOL hasMultipleEmbeddedCaptionRoles; // @dynamic hasMultipleEmbeddedCaptionRoles;
+@property(readonly, nonatomic) BOOL canEmbedCaptions; // @dynamic canEmbedCaptions;
+- (id)typeStringFallbackWhenNoRolePreset;
+- (unsigned long long)roleOutputFilterType;
+- (int)roleFilterType;
 - (void)dealloc;
-- (id)init;
+- (id)initWithDataSource:(id)arg1;
 
 @end
 

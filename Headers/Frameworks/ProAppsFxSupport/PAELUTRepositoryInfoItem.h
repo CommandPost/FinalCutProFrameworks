@@ -6,15 +6,16 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface PAELUTRepositoryInfoItem : NSObject <NSCopying, NSCoding>
+@interface PAELUTRepositoryInfoItem : NSObject <NSCopying, NSSecureCoding>
 {
     int _inputConversionType;
     int _outputConversionType;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)itemWithInputConversionType:(int)arg1 outputConversionType:(int)arg2;
 @property int outputConversionType; // @synthesize outputConversionType=_outputConversionType;
 @property int inputConversionType; // @synthesize inputConversionType=_inputConversionType;

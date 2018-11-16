@@ -11,8 +11,9 @@
 #import "LKMeasuredTimecode.h"
 #import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface LKExtendedTimecode : LKTimecode <LKBasicTimecode, LKMeasuredTimecode, LKFeetFramesTimecode, NSCopying, NSCoding>
+@interface LKExtendedTimecode : LKTimecode <LKBasicTimecode, LKMeasuredTimecode, LKFeetFramesTimecode, NSCopying, NSCoding, NSSecureCoding>
 {
     double pt_tempo;
     long long pt_timeSignatureNumerator;
@@ -23,6 +24,7 @@
     void *reserved9;
 }
 
++ (BOOL)supportsSecureCoding;
 + (long long)version;
 - (void)subtractFeet:(long long)arg1 frames:(long long)arg2 quarterFrames:(long long)arg3;
 - (void)addFeet:(long long)arg1 frames:(long long)arg2 quarterFrames:(long long)arg3;

@@ -9,7 +9,7 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class CALayer, NSArray, NSString, TLKContainerHandleLayer, TLKImageLayer, TLKLayoutContext, TLKTextLayer, TLKTiledContainerBackgroundLayer;
+@class NSArray, NSString, TLKContainerHandleLayer, TLKContainerSelectionLayer, TLKImageLayer, TLKLayoutContext, TLKTextLayer, TLKTiledContainerBackgroundLayer;
 
 @interface TLKContainerLayer : TLKTimelineLayer <TLKAccessibilityProtocol, TLKPartInfo>
 {
@@ -22,13 +22,14 @@
     unsigned int _hasDragHeader:1;
     unsigned int _titlePresent:1;
     unsigned int _hideTextBadges:1;
-    CALayer *_selectionLayer;
+    TLKContainerSelectionLayer *_selectionLayer;
 }
 
-@property(retain) CALayer *selectionLayer; // @synthesize selectionLayer=_selectionLayer;
+@property(retain) TLKContainerSelectionLayer *selectionLayer; // @synthesize selectionLayer=_selectionLayer;
 - (id)textLayer;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)layoutRegionAtPoint:(struct CGPoint)arg1;
+- (struct CGRect)topShelfFrame;
 - (struct CGRect)rectForPart:(id)arg1;
 - (id)partIdentifier;
 - (id)hitTest:(struct CGPoint)arg1;
@@ -46,6 +47,7 @@
 - (id)handleLayer;
 - (void)updateAppearance:(unsigned long long)arg1;
 - (void)updateAppearance;
+- (int)selectionLayerDisplayMode;
 - (void)_updateSelectionAppearance;
 - (void)invalidate;
 @property TLKLayoutContext *layoutContext;

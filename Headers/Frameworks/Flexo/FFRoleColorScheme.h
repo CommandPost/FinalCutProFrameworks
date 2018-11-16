@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
     NSColor *_itemAnimationTitleColor;
     NSColor *_anchorBodyColor;
     NSColor *_anchorHeadColor;
+    NSColor *_itemPlayerTimecodeColor;
+    NSColor *_itemPlayerTimecodeDeselectedColor;
     NSColor *_componentWebbingBackgroundColor;
     NSColor *_retinaComponentWebbingBackgroundColor;
     NSColor *_roleOnOffCheckboxColor;
@@ -58,6 +60,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSColor *roleOnOffCheckboxColor; // @synthesize roleOnOffCheckboxColor=_roleOnOffCheckboxColor;
 @property(readonly, nonatomic) NSColor *retinaComponentWebbingBackgroundColor; // @synthesize retinaComponentWebbingBackgroundColor=_retinaComponentWebbingBackgroundColor;
 @property(readonly, nonatomic) NSColor *componentWebbingBackgroundColor; // @synthesize componentWebbingBackgroundColor=_componentWebbingBackgroundColor;
+@property(readonly, nonatomic) NSColor *itemPlayerTimecodeDeselectedColor; // @synthesize itemPlayerTimecodeDeselectedColor=_itemPlayerTimecodeDeselectedColor;
+@property(readonly, nonatomic) NSColor *itemPlayerTimecodeColor; // @synthesize itemPlayerTimecodeColor=_itemPlayerTimecodeColor;
 @property(readonly, nonatomic) NSColor *anchorHeadColor; // @synthesize anchorHeadColor=_anchorHeadColor;
 @property(readonly, nonatomic) NSColor *anchorBodyColor; // @synthesize anchorBodyColor=_anchorBodyColor;
 @property(readonly, nonatomic) NSColor *itemAnimationTitleColor; // @synthesize itemAnimationTitleColor=_itemAnimationTitleColor;
@@ -92,6 +96,8 @@ __attribute__((visibility("hidden")))
 - (id)_itemAnimationTitleColor:(id)arg1;
 - (id)_audioWaveformColorForBaseColor:(id)arg1;
 - (id)_itemUnfocusedBackgroundColorForBaseColor:(id)arg1;
+- (id)_itemPlayerTimecodeDeselectedColor:(id)arg1;
+- (id)_itemPlayerTimecodeColor:(id)arg1;
 - (id)_itemForegroundColorForBaseColor:(id)arg1;
 - (id)_itemBackgroundT139ColorForBaseColor:(id)arg1;
 - (id)_itemBackgroundLighterColorForBackgroundColor:(id)arg1;

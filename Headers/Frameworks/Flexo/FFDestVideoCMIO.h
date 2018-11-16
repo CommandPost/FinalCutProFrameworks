@@ -59,13 +59,13 @@ __attribute__((visibility("hidden")))
 - (void)scheduledOutputNotification:(unsigned long long)arg1 outputHosttime:(unsigned long long)arg2;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
 - (int)requestedBackground;
-- (id)supportedPixelFormats;
-- (struct CGColorSpace *)colorSpace;
+- (id)requestedImageInfo;
+- (id)tun_supportedPixelFormats;
+- (struct CGColorSpace *)tun_colorSpace;
 - (int)fieldDominance;
 - (int)drawFieldsInterlaced;
 - (BOOL)needsUpdate;
 - (void)setNeedsUpdate:(BOOL)arg1;
-- (int)imageLocation;
 - (int)getFrameQueueStatus;
 - (int)_getFrameQueueStatusInternal;
 - (void)stop;

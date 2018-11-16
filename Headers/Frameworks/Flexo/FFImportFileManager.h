@@ -6,11 +6,10 @@
 
 #import "NSObject.h"
 
-@class FFFileImporter, FFMediaEventProject, NSDictionary, NSMutableDictionary;
+@class FFFileImporter, NSDictionary, NSMutableDictionary;
 
 @interface FFImportFileManager : NSObject
 {
-    FFMediaEventProject *_currentEvent;
     FFFileImporter *_fileImporter;
     NSDictionary *_postponedFileImportInfo;
     NSMutableDictionary *_importQueue;
@@ -26,7 +25,6 @@
 @property(copy) CDUnknownBlockType importDidBeginBlock; // @synthesize importDidBeginBlock=_importDidBeginBlock;
 @property(copy) CDUnknownBlockType sizeValidationBlock; // @synthesize sizeValidationBlock=_sizeValidationBlock;
 @property BOOL rejectedSheetShown; // @synthesize rejectedSheetShown=_rejectedSheetShown;
-@property(retain) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
 @property(retain) NSDictionary *postponedFileImportInfo; // @synthesize postponedFileImportInfo=_postponedFileImportInfo;
 - (void)copyQueueCanceled:(id)arg1;
 - (void)copyQueueCompleted:(id)arg1;
@@ -36,7 +34,7 @@
 - (void)processPostponedImport:(BOOL)arg1;
 - (void)rejectedSheetDidEnd:(id)arg1;
 - (void)rejectedSheetWillBegin:(id)arg1;
-- (id)importFiles:(id)arg1 keywords:(id)arg2 window:(id)arg3 isValid:(char *)arg4 sizeValidation:(CDUnknownBlockType)arg5 importDidBegin:(CDUnknownBlockType)arg6;
+- (id)importFiles:(id)arg1 toEvent:(id)arg2 keywords:(id)arg3 window:(id)arg4 isValid:(char *)arg5 sizeValidation:(CDUnknownBlockType)arg6 importDidBegin:(CDUnknownBlockType)arg7;
 - (void)dealloc;
 - (oneway void)release;
 - (id)init;

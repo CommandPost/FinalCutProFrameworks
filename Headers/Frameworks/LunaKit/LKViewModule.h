@@ -35,15 +35,12 @@
         unsigned int RESERVED:24;
     } _mFlags;
     LKModuleLayout *_subLayout;
-    id _autounbinder;
     BOOL loadNibFailed;
 }
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)sharedInstanceIdentifier;
 + (id)sharedInstance;
-+ (id)moduleWithIdentifier:(id)arg1;
-+ (id)moduleWithTag:(long long)arg1;
 + (id)_mappedClassName:(id)arg1;
 + (id)defaultModuleNibName;
 @property BOOL loadNibFailed; // @synthesize loadNibFailed;

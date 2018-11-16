@@ -22,6 +22,7 @@
 - (void)openAdjustmentsPanel;
 - (void)openInspectorToSubmodule:(NSString *)arg1;
 - (void)openStack:(FFAnchoredStack *)arg1;
+- (void)timeRangeChanged;
 - (id)selectionOwner;
 - (void)durationOfRootItemChanged;
 - (BOOL)canBeginPlaying;

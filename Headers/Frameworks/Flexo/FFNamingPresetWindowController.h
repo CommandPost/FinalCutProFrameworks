@@ -26,8 +26,6 @@
     LKEmptyDFRController *_dfrController;
 }
 
-@property(retain) LKSegmentedControl *viewsetsSegmentControl; // @synthesize viewsetsSegmentControl=_viewsetsSegmentControl;
-@property(retain) NSArrayController *presetsArrayController; // @synthesize presetsArrayController=_presetsArrayController;
 - (void)controlTextDidChange:(id)arg1;
 - (unsigned long long)tokenField:(id)arg1 styleForRepresentedObject:(id)arg2;
 - (id)tokenField:(id)arg1 representedObjectForEditingString:(id)arg2;

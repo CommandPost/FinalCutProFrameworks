@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@class CKAction, CKSetting, NSError, NSImage, NSSet, NSString;
+@class CKAction, CKSetting, NSImage, NSMutableSet, NSSet, NSString;
 
-@interface FFShareDestination : NSObject <NSCoding, NSCopying>
+@interface FFShareDestination : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_type;
     NSString *_name;
@@ -25,11 +25,13 @@
     BOOL _includesChapterMarkers;
     struct CGSize _videoResolution;
     NSString *_uuid;
-    NSError *_destinationError;
+    NSMutableSet *_destinationErrors;
     BOOL _canExcludeDisabledRoles;
     NSSet *_embeddedCaptionRoles;
+    NSSet *_burnInCaptionRoles;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)setting;
 + (id)defaultName;
 + (id)requiredMetatdataKeys;
@@ -48,10 +50,11 @@
 + (id)standardDestinations:(id *)arg1;
 + (id)keyPathsForValuesAffectingAction;
 + (id)keyPathsForValuesAffectingDisplayName;
+@property(retain, nonatomic) NSSet *burnInCaptionRoles; // @synthesize burnInCaptionRoles=_burnInCaptionRoles;
 @property(retain, nonatomic) NSSet *embeddedCaptionRoles; // @synthesize embeddedCaptionRoles=_embeddedCaptionRoles;
 @property(nonatomic) BOOL canExcludeDisabledRoles; // @synthesize canExcludeDisabledRoles=_canExcludeDisabledRoles;
 @property(copy, nonatomic) NSString *savedRenderFormatName; // @synthesize savedRenderFormatName=_savedRenderFormatName;
-@property(retain) NSError *destinationError; // @synthesize destinationError=_destinationError;
+@property(retain) NSMutableSet *destinationErrors; // @synthesize destinationErrors=_destinationErrors;
 @property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(nonatomic) struct CGSize videoResolution; // @synthesize videoResolution=_videoResolution;
 @property(copy) NSString *originalSettingsName; // @synthesize originalSettingsName=_originalSettingsName;
@@ -61,6 +64,9 @@
 @property(retain, nonatomic) CKSetting *setting; // @synthesize setting=_setting;
 @property(retain) NSImage *customImage; // @synthesize customImage=_customImage;
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
+- (void)removeAllDestinationErrors;
+- (void)removeDestinationError:(id)arg1;
+- (void)addDestinationError:(id)arg1;
 - (id)childrenDestinations;
 - (unsigned long long)destinationsCount;
 - (BOOL)isDestination;
@@ -81,6 +87,8 @@
 @property(readonly, retain) NSImage *pressedImage;
 @property(readonly, retain) NSImage *image;
 @property(retain) CKAction *action;
+- (unsigned long long)ittFormatSupport;
+- (unsigned long long)srtStyleSupport;
 - (BOOL)supportsAudio;
 - (BOOL)requiresAudio;
 - (BOOL)requiresVideo;
@@ -99,6 +107,7 @@
 @property(copy, nonatomic) NSString *name;
 - (BOOL)validateName:(id *)arg1 error:(id *)arg2;
 - (BOOL)willExcludeDisabledRoles;
+@property(readonly, nonatomic) BOOL supportsBatchExport;
 
 @end
 

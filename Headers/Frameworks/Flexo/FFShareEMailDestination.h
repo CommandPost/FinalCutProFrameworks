@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)setting;
 + (id)defaultName;
 - (id)iconTitle;
@@ -17,6 +18,7 @@
 - (id)largeImage;
 - (id)pressedImage;
 - (id)image;
+- (BOOL)supportsBatchExport;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;

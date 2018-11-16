@@ -111,10 +111,10 @@ __attribute__((visibility("hidden")))
 - (unsigned int)rangeCheckZebraMode;
 - (int)requestedBackground;
 - (BOOL)wantsDithering:(id)arg1;
-- (struct CGSize)maxSupportedSize;
-- (id)supportedPixelFormats;
-- (struct CGColorSpace *)colorSpace;
-- (int)imageLocation;
+- (id)requestedImageInfo;
+- (id)internal_tempSupPFs;
+- (struct CGColorSpace *)internal_tempColorSpace;
+- (int)internal_tempImageLocation;
 - (BOOL)callDisplayCallback:(CDStruct_1b6d18a9)arg1 lastTimeDisplayed:(id)arg2 initialDraw:(BOOL)arg3;
 - (BOOL)checkDisplayCallback:(CDStruct_1b6d18a9)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

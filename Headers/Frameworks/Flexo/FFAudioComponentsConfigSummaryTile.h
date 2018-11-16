@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)updateUI;
 - (void)buildEnableButton;
 - (void)buildRootView;
-- (BOOL)hasDisplayClearMixdown;
+- (BOOL)hasMixdownView;
 - (BOOL)hasSummaryWaveform;
 - (id)micaRefItemLayer:(int)arg1;
 - (id)micaRefRootLayer;

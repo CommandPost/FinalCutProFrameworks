@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)librariesInUse:(id)arg1;
 - (id)assetsInUse:(id)arg1;
+- (id)copyJobsForLibrary:(void *)arg1;
 - (id)copyFirstIncompleteWorkForLibrary:(void *)arg1;
 - (void)addTask:(CDStruct_bdcb2b0d)arg1 forLibrary:(void *)arg2;
 - (void)tokenStateChangeAdjustAwaitingUImg:(int)arg1 awaitingFlatten:(int)arg2 awaitingVPA:(int)arg3;

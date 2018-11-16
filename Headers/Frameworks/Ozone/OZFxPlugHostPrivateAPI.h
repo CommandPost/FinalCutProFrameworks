@@ -17,6 +17,9 @@
     struct OZFxPlugSharedBase *_plugin;
 }
 
+- (id)URLForHostResource:(id)arg1 withExtension:(id)arg2 subDirectory:(id)arg3 inBundleWithURL:(id)arg4;
+- (id)URLForHostResource:(id)arg1 withExtension:(id)arg2 subDirectory:(id)arg3 inBundleWithIdentifier:(id)arg4;
+- (id)URLForHostResource:(id)arg1 withExtension:(id)arg2 subDirectory:(id)arg3 inBundle:(id)arg4;
 - (float)blendingGamma;
 - (BOOL)giveEffectUIFocus;
 - (BOOL)navigateToTime:(CDUnion_2516e51e)arg1;

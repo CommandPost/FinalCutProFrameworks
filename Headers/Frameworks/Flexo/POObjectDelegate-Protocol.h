@@ -43,7 +43,7 @@
 - (void)calculateSnapBounds:(double *)arg1 y1:(double *)arg2 x2:(double *)arg3 y2:(double *)arg4;
 - (void)convertPixelValuesToXYZSamplesPercentageXYZSamplesIfRequired:(int)arg1 samplesX:(double *)arg2 samplesY:(double *)arg3 samplesZ:(double *)arg4;
 - (void)convertXYZSamplesPercentageToPixelValuesXYZSamplesIfRequired:(int)arg1 samplesX:(double *)arg2 samplesY:(double *)arg3 samplesZ:(double *)arg4;
-- (PCRect_3a266109)getTransformedBounds;
+- (BOOL)getTransformedBounds:(PCRect_3a266109 *)arg1;
 - (void)getTransformedCorner1:(PCVector2_5d498db0 *)arg1 c2:(PCVector2_5d498db0 *)arg2 c3:(PCVector2_5d498db0 *)arg3 c4:(PCVector2_5d498db0 *)arg4;
 - (PCBox_dd92ab54)getLocalVolume;
 - (PCRect_3a266109)getInputBounds;
@@ -123,6 +123,7 @@
 - (void)setRotationZ:(double)arg1;
 - (void)setRotation:(const PCVector3_457fd1f0 *)arg1;
 - (void)offsetPosition:(const PCVector3_457fd1f0 *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
+- (void)offsetPositionFromScale:(const PCVector3_457fd1f0 *)arg1;
 - (void)offsetPosition:(const PCVector3_457fd1f0 *)arg1;
 - (void)setPosition:(const PCVector3_457fd1f0 *)arg1;
 - (PCVector3_457fd1f0)getPivot;

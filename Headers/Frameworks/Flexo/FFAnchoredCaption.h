@@ -17,6 +17,7 @@
     NSMutableArray *_captionTextBlocks;
     NSString *_cachedText;
     BOOL _hasText;
+    BOOL _hasValidationErrors;
     BOOL _shouldConformAVCaptions;
     NSMutableDictionary *_validationErrors;
 }
@@ -28,6 +29,7 @@
 + (id)sortedByCellYTextBlocks:(id)arg1;
 + (id)mainRoleForCaptionFormat:(id)arg1 inLibrary:(id)arg2;
 @property(nonatomic) BOOL shouldConformAVCaptions; // @synthesize shouldConformAVCaptions=_shouldConformAVCaptions;
+@property(nonatomic) BOOL hasValidationErrors; // @synthesize hasValidationErrors=_hasValidationErrors;
 @property(retain, nonatomic) NSMutableDictionary *validationErrors; // @synthesize validationErrors=_validationErrors;
 @property(retain, nonatomic) NSMutableArray *captionTextBlocks; // @synthesize captionTextBlocks=_captionTextBlocks;
 - (id)captionsFromTextBlocks;
@@ -62,6 +64,9 @@
 - (long long)compare:(id)arg1;
 - (BOOL)contributesToCompoundClip;
 - (int)anchoredObjectUIType;
+- (BOOL)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
+- (id)rangesOfString:(id)arg1 caseSensitive:(BOOL)arg2 wholeWords:(BOOL)arg3;
+- (id)rangeOfString:(id)arg1 caseSensitive:(BOOL)arg2 wholeWords:(BOOL)arg3;
 - (BOOL)textBlockShouldConformAVCaptionsForDisplay:(id)arg1;
 - (void)mergeTextBlocks:(BOOL)arg1;
 - (void)updateCaptionTextBlock:(id)arg1 withAttributedStrings:(id)arg2;
@@ -101,7 +106,7 @@
 - (id)allErrors;
 - (BOOL)setErrors:(id)arg1 forClass:(id)arg2;
 - (BOOL)setErrors:(id)arg1;
-- (BOOL)hasValidationErrors;
+- (void)setupHasValidationErrors;
 
 @end
 

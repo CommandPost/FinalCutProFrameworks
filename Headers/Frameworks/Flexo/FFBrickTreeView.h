@@ -6,19 +6,26 @@
 
 #import <Flexo/FFBrickListView.h>
 
-@class FFBrickTreeController, NSObject<FFBrickTreeDataSource>, NSSet;
+#import "FFBrickListViewDelegate.h"
+
+@class FFBrickTreeController, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFBrickTreeView : FFBrickListView
+@interface FFBrickTreeView : FFBrickListView <FFBrickListViewDelegate>
 {
     FFBrickTreeController *_brickTreeController;
-    NSObject<FFBrickTreeDataSource> *_dataSource;
+    id <FFBrickTreeDataSource> _dataSource;
     NSSet *_selectionIndexPaths;
 }
 
 @property(copy, nonatomic) NSSet *selectionIndexPaths; // @synthesize selectionIndexPaths=_selectionIndexPaths;
-@property(retain, nonatomic) NSObject<FFBrickTreeDataSource> *dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) id <FFBrickTreeDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) FFBrickTreeController *brickTreeController; // @synthesize brickTreeController=_brickTreeController;
+- (void)brickListView:(id)arg1 hasMovedBrick:(id)arg2 to:(unsigned long long)arg3;
+- (struct _NSRange)brickListView:(id)arg1 positionsForBrick:(id)arg2;
+- (BOOL)reorderingIsPermittedForBrickListView:(id)arg1;
+- (void)brick:(id)arg1 didMoveTo:(unsigned long long)arg2;
+- (BOOL)dragToReorderIsEnabled;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)brickAt:(id)arg1;
 - (id)pathForView:(id)arg1;
@@ -27,11 +34,18 @@ __attribute__((visibility("hidden")))
 - (void)reloadData;
 - (void)reloadBricks:(id)arg1 withNode:(id)arg2;
 - (id)childrenContainerViewWithNode:(id)arg1;
+@property __weak id <FFBrickTreeViewDelegate> delegate; // @dynamic delegate;
 - (void)removeObservers;
 - (void)addObservers;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

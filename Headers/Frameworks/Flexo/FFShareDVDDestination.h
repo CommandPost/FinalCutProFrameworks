@@ -11,9 +11,11 @@
 }
 
 + (id)keyPathsForValuesAffectingDisplayName;
++ (BOOL)supportsSecureCoding;
 + (id)setting;
 + (id)defaultName;
 + (id)keyPathsForValuesAffectingRequiresSettingActionOutputURL;
+- (BOOL)supportsBatchExport;
 - (BOOL)requiresSettingActionOutputURL;
 - (id)iconTitle;
 - (id)smallImage;

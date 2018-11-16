@@ -8,11 +8,13 @@
 
 #import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface LKOneDAudioTimecodeFormatDeputy : LKOneDFramesTimecodeFormatDeputy <NSCoding, NSCopying>
+@interface LKOneDAudioTimecodeFormatDeputy : LKOneDFramesTimecodeFormatDeputy <NSCoding, NSCopying, NSSecureCoding>
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (long long)version;
 + (id)subtractFramesInvocation;
 + (id)addFramesInvocation;

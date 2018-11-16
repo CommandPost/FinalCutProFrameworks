@@ -6,13 +6,11 @@
 
 #import <Flexo/FFEffectBundle.h>
 
-__attribute__((visibility("hidden")))
 @interface FFEffectBundleUserBundle : FFEffectBundle
 {
 }
 
 + (id)initialEffectBundlePartsForEffectID:(id)arg1;
-- (void)partChangedHook;
 - (id)availableBundleParts;
 - (id)presetNames;
 

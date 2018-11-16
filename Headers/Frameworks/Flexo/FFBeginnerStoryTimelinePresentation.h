@@ -6,7 +6,6 @@
 
 #import <Flexo/FFStoryTimelinePresentation.h>
 
-__attribute__((visibility("hidden")))
 @interface FFBeginnerStoryTimelinePresentation : FFStoryTimelinePresentation
 {
     id <FFStorylineLane> _spineLane;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)orderedChildLanesForLane:(id)arg1;
 - (id)presentedLaneForItemComponent:(id)arg1;
 - (BOOL)shouldHidePrimaryComponentForItem:(id)arg1;
+- (id)primaryStoryLane;
 - (void)dealloc;
 - (id)initWithRootItem:(id)arg1 inSequence:(id)arg2;
 

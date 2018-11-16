@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     struct opaqueCMFormatDescription *_cmFormatDesc;
 }
 
-- (struct opaqueCMSampleBuffer *)createSampleBufferAtFrame:(unsigned long long)arg1 count:(unsigned int)arg2;
+- (struct opaqueCMSampleBuffer *)newSampleBufferAtFrame:(unsigned long long)arg1 count:(unsigned int)arg2;
 - (struct opaqueCMFormatDescription *)getFormatDescription;
 - (unsigned int)numOutputChannels;
 - (unsigned int)bytesPerFrame;

@@ -8,7 +8,7 @@
 
 #import "HPMMediaProtocol.h"
 
-@class NSMutableDictionary, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface MXFMedia : NSObject <HPMMediaProtocol>
@@ -34,10 +34,10 @@ __attribute__((visibility("hidden")))
     unsigned int klvHeaderSize;
     unsigned long long klvValueSize;
     unsigned int _bytesPerSample;
-    NSMutableDictionary *descriptiveMetadata;
+    struct __CFDictionary *descriptiveMetadata;
 }
 
-@property(retain) NSMutableDictionary *descriptiveMetadata; // @synthesize descriptiveMetadata;
+@property struct __CFDictionary *descriptiveMetadata; // @synthesize descriptiveMetadata;
 @property unsigned int bytesPerSample; // @synthesize bytesPerSample=_bytesPerSample;
 @property unsigned long long klvValueSize; // @synthesize klvValueSize;
 @property unsigned int klvHeaderSize; // @synthesize klvHeaderSize;

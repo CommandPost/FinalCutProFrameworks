@@ -45,7 +45,7 @@
 - (BOOL)_setupRenderer;
 - (void)appWillTerminate:(id)arg1;
 - (void)dealloc;
-- (void)setLithiumInput:(PCPtr_04d56345)arg1 withAgent:(struct LiAgent *)arg2 withRenderParams:(struct OZRenderParams *)arg3;
+- (void)setLithiumInput:(PCPtr_04d56345)arg1 withAgent:(struct LiAgent *)arg2 withRenderParams:(const struct OZRenderParams *)arg3;
 - (void)setImageNode:(struct OZImageNode *)arg1;
 - (id)init;
 

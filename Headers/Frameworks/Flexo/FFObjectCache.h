@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFObjectCacheEntry, NSHashTable, NSMutableDictionary, NSObject<OS_dispatch_queue>, NSRecursiveLock;
+@class FFObjectCacheEntry, NSHashTable, NSMutableDictionary, NSObject<OS_dispatch_queue>, NSRecursiveLock, NSString;
 
 @interface FFObjectCache : NSObject
 {
@@ -36,6 +36,7 @@
     NSMutableDictionary *_groupInfos;
     float _syncPurgeThreshhold;
     int _ariadneID;
+    NSString *_debugLabel;
 }
 
 + (BOOL)recentlyUnderVMPressure;
@@ -56,7 +57,9 @@
 - (id)copyFFImageForSegment:(CDStruct_bdcb2b0d)arg1 sampleNumber:(long long)arg2 cost:(double *)arg3;
 - (void)removeObjectIfPurgeable:(CDStruct_bdcb2b0d)arg1;
 - (void)removeObjectForKey:(CDStruct_bdcb2b0d)arg1;
+- (id)copyObjectForKeyDontUpdateAccessTime:(CDStruct_bdcb2b0d)arg1 cost:(double *)arg2;
 - (id)copyObjectForKey:(CDStruct_bdcb2b0d)arg1 cost:(double *)arg2;
+- (id)copyObjectForKeyImpl:(CDStruct_bdcb2b0d)arg1 cost:(double *)arg2 updateLastAccess:(BOOL)arg3;
 - (id)copyObjectForSegment:(CDStruct_bdcb2b0d)arg1 sampleNumber:(long long)arg2 cost:(double *)arg3;
 - (int)replaceObjectWithKey:(CDStruct_bdcb2b0d)arg1 oldObj:(id)arg2 replacementObj:(id)arg3 size:(unsigned long long)arg4 cost:(double)arg5;
 - (int)addObject:(id)arg1 cacheKey:(CDStruct_bdcb2b0d)arg2 size:(unsigned long long)arg3 cost:(double)arg4;

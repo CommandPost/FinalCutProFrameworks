@@ -109,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (void)addRollingShutterAdjustment:(id)arg1 element:(id)arg2;
 - (void)addStabilizationAdjustment:(id)arg1 element:(id)arg2;
 - (void)addBlendAdjustment:(id)arg1 element:(id)arg2;
+- (void)addOrientationAdjustment:(id)arg1 element:(id)arg2;
 - (void)add360TransformAdjustment:(id)arg1 element:(id)arg2;
 - (void)addAdjustment:(id)arg1 name:(id)arg2 type:(CDUnknownFunctionPointerType)arg3 element:(id)arg4;
 - (void)addColorInfo:(id)arg1 element:(id)arg2;

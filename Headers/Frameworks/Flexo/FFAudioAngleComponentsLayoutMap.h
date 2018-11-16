@@ -6,34 +6,19 @@
 
 #import <Flexo/FFAudioObjectComponentsLayoutMap.h>
 
-@class NSMapTable;
-
 __attribute__((visibility("hidden")))
 @interface FFAudioAngleComponentsLayoutMap : FFAudioObjectComponentsLayoutMap
 {
-    NSMapTable *_cachedReferenceLayouts;
 }
 
 + (Class)layoutClass;
-+ (id)copyClassDescription;
-- (void)_allocateCaches;
 - (BOOL)hasEnabledLayoutItems;
-- (id)referenceRoleForKey:(id)arg1 layoutItemKey:(id)arg2;
-- (void)delegateRolesChanged:(id)arg1;
-- (void)delegateContainedItemsChanged;
-- (void)referenceLayoutMapChanged:(id)arg1;
 - (void)notifyDidChangeLayoutMap:(id)arg1;
 - (void)_updateAudioAnglesForAngleIDs:(id)arg1;
 - (void)_maybeRemoveRedundantLayoutsForAngleIDs:(id)arg1;
-- (id)referenceAudioComponentsLayoutForKey:(id)arg1;
-- (void)_clearCachedReferenceLayouts;
-- (id)_angleReferenceAudioComponentsLayoutForKey:(id)arg1;
-- (void)setPersistedLayoutMode:(int)arg1;
+- (id)uncachedReferenceAudioComponentsLayoutForKey:(id)arg1;
 - (id)sortKeys:(id)arg1;
 - (id)_anchoredAngle;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithAnchoredAngle:(id)arg1;
 
 @end

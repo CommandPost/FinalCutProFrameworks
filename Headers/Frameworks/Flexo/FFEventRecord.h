@@ -19,6 +19,7 @@
 + (id)documentType;
 + (id)copyClassDescription;
 @property(retain) NSURL *cacheFolder; // @synthesize cacheFolder=_cacheFolder;
+- (BOOL)update_resetHiddenEvents_43585635:(id *)arg1;
 - (BOOL)update_resetHiddenEvents:(id *)arg1;
 - (BOOL)getKeyThumbnailMD5:(id *)arg1 offset:(long long *)arg2;
 - (id)displayOwnedClips;
@@ -32,6 +33,7 @@
 @property(readonly, nonatomic) BOOL hasSequenceRecords;
 @property(readonly, nonatomic) FFEventInfo *eventInfo;
 @property(readonly, nonatomic) BOOL isHiddenEvent;
+- (BOOL)resetHiddenEventStatus:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)isEvent;
 - (void)documentWillClose;
 @property(readonly, nonatomic) FFMediaEventProject *project;
@@ -40,6 +42,11 @@
 - (id)initWithParent:(id)arg1 name:(id)arg2 error:(id *)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)uniqueIdentifier;
+- (id)sequences;
+- (id)projects;
+- (id)containerPropertyName;
+- (id)containerObject;
 
 @end
 

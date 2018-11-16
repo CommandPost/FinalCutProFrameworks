@@ -12,7 +12,7 @@
 #import "NSTouchBarProvider.h"
 #import "PEPlayerContainerViewDelegate.h"
 
-@class FFPlayerModule, LKButton, LKContainerItemView, LKMenu, LKPopUpButton, LKSegmentedControl, LKTextField, LKWindow, NSArray, NSDictionary, NSImageView, NSLayoutConstraint, NSMenu, NSMutableArray, NSMutableDictionary, NSResponder, NSStackView, NSString, NSTextField, NSTouchBar, NSView, PEAudioMeterModule, PEPlayerDFRController, PETimecodeDisplayViewController, PEToolbarMetersButton, PEViewedClipSet, PEViewerDFRController;
+@class FFComparePickerWindowController, FFContext, FFPlayerModule, FFTimecodeFormatter, LKButton, LKContainerItemView, LKMenu, LKPopUpButton, LKSegmentedControl, LKTextField, LKTimecode, LKWindow, NSArray, NSDateFormatter, NSDictionary, NSImageView, NSLayoutConstraint, NSMenu, NSMutableArray, NSMutableDictionary, NSResponder, NSStackView, NSString, NSTextField, NSTouchBar, NSView, PEAudioMeterModule, PEPlayerDFRController, PETimecodeDisplayViewController, PEToolbarMetersButton, PEViewedClipSet, PEViewerDFRController;
 
 @interface PEPlayerContainerModule : LKViewModule <PEPlayerContainerViewDelegate, FFErrorReportingProtocol, FFPlayerModuleDelegate, NSMenuDelegate, NSTouchBarProvider>
 {
@@ -20,7 +20,6 @@
     PEViewerDFRController *_viewerDfrController;
     int _mode;
     int _defaultMode;
-    int _previousMode;
     NSMutableArray *_playerModules;
     PEViewedClipSet *_viewedClips;
     PEViewedClipSet *_viewedClipsOutstandingRequest;
@@ -30,6 +29,17 @@
     NSView *_transportControlsFooterView;
     NSView *_timecodeDisplayContainerView;
     NSView *_colorControlsFooterView;
+    NSView *_compareAccessoryView;
+    NSTextField *_compareViewerTitle;
+    NSTextField *_compareViewerTimecode;
+    LKTextField *_compareInfoTitle;
+    NSView *_compareFooterView;
+    LKButton *_showFramesHUDButton;
+    LKButton *_addSnapshotButton;
+    LKButton *_nextEditButton;
+    LKButton *_previousEditButton;
+    FFTimecodeFormatter *_compareTimecodeFormatter;
+    LKTimecode *_lastDisplayedCompareTime;
     NSView *_oneUpAccessoryView;
     LKPopUpButton *_oneUpModeControl;
     LKPopUpButton *_oneUpViewerControls;
@@ -59,6 +69,7 @@
     NSMenu *_colorDisplayMenu;
     NSMenu *_selectedModeMenu;
     NSMenu *_combinedOptionsMenu;
+    NSMenu *_combinedCompareOptionsMenu;
     LKMenu *_enhancementMenu;
     LKMenu *_retimeMenu;
     NSLayoutConstraint *_timecodeCenteringConstraint;
@@ -112,6 +123,18 @@
     int _savedDisplayAreaMode;
     int _cameraMode;
     BOOL _isKeyPathPEViewedClipsKey;
+    struct NSObject *_compareSkimmable;
+    FFContext *_compareViewerContext;
+    long long _activeComparedObjectIndex;
+    LKPopUpButton *_compareZoomControls;
+    LKPopUpButton *_compareViewControls;
+    LKSegmentedControl *_compareModeControl;
+    int _compareMode;
+    int _comparePlayheadMode;
+    NSDateFormatter *_snapshotDateFormatter;
+    FFContext *_currentTimelineContextForCompare;
+    id _currentTimelineRootItemSequenceForCompare;
+    FFComparePickerWindowController *_comparePickerWindowController;
     BOOL _textOSCActive;
 }
 
@@ -124,6 +147,27 @@
 @property(nonatomic) BOOL viewerIsDominant; // @synthesize viewerIsDominant=_viewerIsDominant;
 @property(nonatomic) int defaultMode; // @synthesize defaultMode=_defaultMode;
 @property(nonatomic) int mode; // @synthesize mode=_mode;
+- (void)_libraryClosed:(id)arg1;
+- (void)_comparePickerWindowWillClose;
+- (void)toggleCompareSnapshotHUD:(id)arg1;
+- (id)_updateCompareSkimmableAndContext;
+- (void)_updateCompareModeForPeviousAndNextWithTime:(CDStruct_1b6d18a9)arg1 rootItem:(id)arg2;
+- (void)updateCompareTimeUsingLKExtendedTimecode:(id)arg1 skimItem:(id)arg2;
+- (void)updateCompareTime:(CDStruct_1b6d18a9)arg1 skimItem:(id)arg2;
+- (void)setCompareNextAction:(id)arg1;
+- (void)setComparePreviousAction:(id)arg1;
+- (void)setComparePlayheadMode:(unsigned long long)arg1;
+- (void)setCompareMode:(unsigned long long)arg1;
+- (void)setCompareModeAction:(id)arg1;
+- (void)closeComparePickerIfOpen;
+- (id)comparedObjects;
+- (id)_currentProject;
+- (id)currentProjectLibrary;
+- (void)addCompareSnapshot:(id)arg1;
+- (void)setComparedObjectIndex:(long long)arg1;
+- (id)newSnapshot;
+- (void)_enableCompareControls:(BOOL)arg1;
+- (id)snapshotEventProject;
 - (void)showWarningPopover:(id)arg1;
 - (void)updateToolMenuForSelectionChange:(id)arg1;
 - (void)layoutDidChange:(id)arg1;
@@ -138,6 +182,7 @@
 - (void)_setupVout;
 - (void)_ignoreObservingActivePlayer;
 - (void)_observeActivePlayer;
+- (void)_updateComparePlayheadModeControls;
 - (void)_setupPaneCapControls;
 - (void)_rebuildPaneCapMenus;
 - (void)_statusInfoChanged:(id)arg1;
@@ -175,6 +220,9 @@
 - (void)updatePlayers;
 - (void)_addPlayerTabsToModule:(id)arg1 forMenu:(id)arg2 indentLevel:(long long)arg3 target:(id)arg4;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_compareSequenceChanged;
+- (void)timeRateChangedForContext:(id)arg1;
+- (void)setTimelineContextForCompare:(id)arg1 rootItem:(id)arg2;
 - (void)numericEntryDidEndNotification:(id)arg1;
 - (void)numericEntryDidBeginNotification:(id)arg1;
 - (void)displayAreaFrameChanged:(id)arg1;
@@ -184,6 +232,8 @@
 - (void)textOSCBecameInActive:(id)arg1;
 - (void)textOSCBecameActive:(id)arg1;
 - (void)firstResponderChanged:(id)arg1;
+- (void)documentWasRemoved:(id)arg1;
+- (void)documentWasAdded:(id)arg1;
 - (void)updateSelectionState;
 - (void)toggleCaptionPlayback:(id)arg1;
 - (void)_setCaptionPlaybackRole:(id)arg1;
@@ -237,13 +287,14 @@
 - (void)setDisplay360Horizon:(id)arg1;
 - (void)setDisplayBroadcastSafeZones:(id)arg1;
 - (BOOL)displaysBroadcastSafeZones;
-- (void)setHighlightsExcessLuma:(id)arg1;
 - (void)setColorChannelDisplay:(id)arg1;
 - (void)setZoomFactor:(id)arg1;
 - (void)zoomOut:(id)arg1;
 - (void)zoomIn:(id)arg1;
 - (void)zoomToFit:(id)arg1;
 - (id)playerModuleOrderedZoomLevels:(id)arg1;
+- (void)togglePlayerCanvasTimecode:(id)arg1;
+- (void)togglePlayerTimecode:(id)arg1;
 - (void)toggleVideoScopes:(id)arg1;
 - (void)toggleScopes:(id)arg1;
 - (void)showWaveform:(id)arg1;

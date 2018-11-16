@@ -100,7 +100,7 @@
 - (void)avRolesChangedForContext:(id)arg1;
 - (void)rangeChangedForContext:(id)arg1;
 - (void)timeRateChangedForContext:(id)arg1;
-- (void)_rebuildPlayerWithDrawingSuspension;
+- (void)rebuildPlayerForContext:(id)arg1;
 - (void)_rebuildPlayerWithForceRedraw:(id)arg1;
 - (BOOL)_shouldLoadProviderForSkimmable:(struct NSObject *)arg1;
 - (BOOL)_isEventProject:(struct NSObject *)arg1;

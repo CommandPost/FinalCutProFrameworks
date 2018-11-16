@@ -8,7 +8,7 @@
 
 #import "NSSaveRolePresetAsPanelDelegate.h"
 
-@class LKTextField, NSPopUpButton, NSString, NSURL;
+@class FFShareDestinationVideoResolutionMenuDelegate, LKTextField, NSPopUpButton, NSString, NSURL;
 
 @interface FFShareDestinationExportMediaController : FFShareDestinationController <NSSaveRolePresetAsPanelDelegate>
 {
@@ -26,13 +26,25 @@
     LKTextField *_videoResolutionTextField;
     LKTextField *_colorSpaceTextField;
     LKTextField *_audioPresetTextField;
+    BOOL _sourcesOrExportOptionsHaveChangedDuringTransaction;
+    BOOL _rolePresetModifiedDuringTransaction;
+    BOOL _exportOptionsHaveChangedSinceCodecMenuWasRebuilt;
     LKTextField *_projectionTypeTextField;
     LKTextField *_projectionTypeLabelTextField;
+    FFShareDestinationVideoResolutionMenuDelegate *_videoResolutionMenuDelegate;
+    long long _transactionCount;
 }
 
 + (id)keyPathsForValuesAffectingMultipassIndex;
 + (id)keyPathsForValuesAffectingActionMenuLabelName;
 + (id)keyPathsForValuesAffectingCanIncludeChapter;
++ (id)keyPathsForValuesAffectingIsExportingAudio;
++ (id)keyPathsForValuesAffectingIncludesChapterMarkers;
+@property(nonatomic) BOOL exportOptionsHaveChangedSinceCodecMenuWasRebuilt; // @synthesize exportOptionsHaveChangedSinceCodecMenuWasRebuilt=_exportOptionsHaveChangedSinceCodecMenuWasRebuilt;
+@property(nonatomic) BOOL rolePresetModifiedDuringTransaction; // @synthesize rolePresetModifiedDuringTransaction=_rolePresetModifiedDuringTransaction;
+@property(nonatomic) BOOL sourcesOrExportOptionsHaveChangedDuringTransaction; // @synthesize sourcesOrExportOptionsHaveChangedDuringTransaction=_sourcesOrExportOptionsHaveChangedDuringTransaction;
+@property(nonatomic) long long transactionCount; // @synthesize transactionCount=_transactionCount;
+@property(retain, nonatomic) FFShareDestinationVideoResolutionMenuDelegate *videoResolutionMenuDelegate; // @synthesize videoResolutionMenuDelegate=_videoResolutionMenuDelegate;
 @property(nonatomic) BOOL replaceExistingRolePreset; // @synthesize replaceExistingRolePreset=_replaceExistingRolePreset;
 @property LKTextField *projectionTypeLabelTextField; // @synthesize projectionTypeLabelTextField=_projectionTypeLabelTextField;
 @property LKTextField *projectionTypeTextField; // @synthesize projectionTypeTextField=_projectionTypeTextField;
@@ -52,10 +64,26 @@
 - (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 delegate:(id)arg3 didRecoverSelector:(SEL)arg4 contextInfo:(void *)arg5;
 - (BOOL)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
 - (BOOL)panel:(id)arg1 validateName:(id)arg2 error:(id *)arg3;
-- (void)setConformingSettings:(id)arg1;
+- (void)setConformingSettingsForSource:(id)arg1 andDestination:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (BOOL)validateMenuItem:(id)arg1;
-- (struct CGSize)optimalVideoResolution;
+- (void)rolePresetModifiedHasChanged;
+- (BOOL)areAnyDestinationsExportingRoles;
+- (BOOL)isDestinationExportingMXF:(id)arg1;
+- (id)allRoleOutputsForMultitrackMXFRolePresetWithAudioRoleOutputPerRole:(id)arg1 combinedVideoRoleOutput:(id)arg2;
+- (id)newUnconfiguredMultitrackMXFPreset;
+- (id)multitrackMXFPresetWithAudioRoleOutputPerRole:(id)arg1 combinedVideoRoleOutput:(id)arg2;
+- (id)newFactoryRolePresetsWithAudioRoleOutputPerMainRole:(id)arg1 audioRoleOutputPerRole:(id)arg2 combinedVideoRoleOutput:(id)arg3 destination:(id)arg4 videoRoleOutputPerMainRole:(id)arg5;
+- (id)roleOutputsDictionaryWithDestination:(id)arg1;
+- (id)newFactoryRolePresetsWithDestination:(id)arg1 dictionary:(id)arg2;
+- (void)rebuildFactoryRolePresetsWithDestination:(id)arg1;
+- (void)syncSourceToRolesTabDataSource;
+- (void)rebuildFactoryRolePresetsForAllDestinations;
+- (void)setConformingSettingsForAllSourceDestinationPairs;
+- (void)updateInResponseToChangedSourcesOrExportOptions;
+- (void)sourcesOrExportOptionsHaveChanged;
+@property(readonly, nonatomic) BOOL isExportingAudio; // @dynamic isExportingAudio;
+- (void)updateIncludeChapter;
+@property(nonatomic) BOOL includesChapterMarkers; // @dynamic includesChapterMarkers;
 - (BOOL)canIncludeChapter;
 - (void)saveUserRolePresets;
 - (void)loadUserRolePresets;
@@ -63,31 +91,57 @@
 - (void)setMultipassIndex:(long long)arg1;
 - (long long)multipassIndex;
 @property(readonly) NSString *actionMenuLabelName;
+- (id)actionMenuLabelNameWithDestination:(id)arg1;
 - (void)addRecentApplication:(id)arg1;
 - (id)recentApplications;
+- (void)updateVideoStompSetting:(id)arg1 destination:(id)arg2;
+- (void)applyVideoStompSettingToAllDestinations:(id)arg1;
+- (void)applyVideoStompSettingsWithArray:(id)arg1;
 - (void)updateVideoStompSetting:(id)arg1;
-- (void)updateRolesOutputView;
 - (void)updateApplicationMenu;
-- (void)updateIncludeChapter;
 - (void)updateAudioPresetsMenu;
 - (void)updateColorSpaceMenu;
+- (id)colorSpaceAndLabelWithDestination:(id)arg1;
 - (void)updateProjectionTypeFields;
-- (void)setDoesntFitWarning;
-- (id)_renderFormatForStompSetting:(id)arg1;
+- (void)setDoesntFitWarningForDestination:(id)arg1;
 - (void)updateVideoResolutionMenu;
 - (void)updateVideoPresetsMenu;
+- (void)updateVideoPresetsMenuIfNoDestinationsAreExportingRoles;
+- (BOOL)anyDestinationIsExportingRoles;
 - (void)updateExportMenu;
+- (void)setOpenWithApplicationByName:(id)arg1 forDestination:(id)arg2;
+- (void)setOpenWithApplicationByFileName:(id)arg1;
 - (void)chooseApplication:(id)arg1;
+- (void)maybeRaiseErrorForDisabledBatchExportToThirdPartyAppWithDestination:(id)arg1;
+- (BOOL)isBatchExport;
+- (void)stripErrorForDisabledBatchExportToThirdPartyAppWithDestination:(id)arg1;
+- (id)findFirstErrorForDisabledBatchExportToThirdPartyAppWithDestination:(id)arg1;
+- (BOOL)errorIsForDisabledBatchExportToThirdPartyApp:(id)arg1;
+- (id)appNameWithPath:(id)arg1;
+- (id)errorForDisabledBatchExportToThirdPartyApp:(id)arg1;
+- (id)errorForDisabledBatchExportToThirdPartyAppWithPath:(id)arg1;
+- (id)helperAppPathWithDestination:(id)arg1;
+- (void)setAction:(long long)arg1 forDestination:(id)arg2 withActionSpecificParameter:(id)arg3;
+- (void)setAction:(long long)arg1 withActionSpecificParameter:(id)arg2;
 - (void)selectAction:(id)arg1;
+- (void)setAudioPreset:(id)arg1;
 - (void)selectAudioPreset:(id)arg1;
+- (void)setColorSpaceDisplayName:(id)arg1;
 - (void)selectColorSpace:(id)arg1;
-- (void)selectVideoResolution:(id)arg1;
+- (void)setVideoPreset:(id)arg1;
 - (void)selectVideoPreset:(id)arg1;
+- (void)setExportOption:(long long)arg1;
 - (void)selectExportOption:(id)arg1;
+- (void)onTransactionDidEnd;
+- (void)onTransactionDidBegin;
+- (void)endTransaction;
+- (void)beginTransaction;
+- (void)transactionWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)isTransactionInProgress;
 - (BOOL)displaysDeviceCompatibilityInfo;
 - (void)dealloc;
 - (void)awakeFromNib;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

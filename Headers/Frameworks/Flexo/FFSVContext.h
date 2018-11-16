@@ -34,7 +34,7 @@
 - (id)description;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)compareTo:(id)arg1 withCompareFlags:(unsigned int)arg2;
-- (struct CGRect)pixelSpaceBounds;
+- (BOOL)pixelSpaceBounds:(struct CGRect *)arg1;
 - (BOOL)drawingInsideMultiAngleGrid;
 - (BOOL)allowCustomPreviewMode;
 - (BOOL)forLiveEdit;

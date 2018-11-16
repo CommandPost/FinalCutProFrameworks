@@ -50,7 +50,9 @@
 - (void)invalidateAssetForNotification:(id)arg1;
 - (void)setInOutPair:(struct PC_CMTimePair)arg1;
 - (id)contentType;
+- (void)ingestCancelledWithURL:(id)arg1 event:(id)arg2;
 - (void)ingestFinishedWithURL:(id)arg1 event:(id)arg2 isIngestingToExternal:(BOOL)arg3;
+- (void)ingestFinishedWithURL:(id)arg1 event:(id)arg2 isIngestingToExternal:(BOOL)arg3 showRepAsMissing:(BOOL)arg4;
 - (BOOL)isMounted;
 - (id)newProvider;
 - (void)updateRADOverridesWithProvider:(id)arg1;

@@ -10,6 +10,7 @@
 {
 }
 
+- (void)cancelOperation:(id)arg1;
 - (void)didFinishOpening;
 - (void)willStartClosing;
 - (BOOL)isImportWindow;

@@ -14,6 +14,7 @@
 #import "FFInspectorChannelDataSource.h"
 #import "FFInspectorTabDataSource.h"
 #import "FFInspectorToolDataSource.h"
+#import "FFLibraryCocoaScripting.h"
 #import "FFMetadataActionProtocol.h"
 #import "FFOrganizerClassTypeProtocol.h"
 #import "FFSkimmableItemProtocol.h"
@@ -22,7 +23,7 @@
 
 @class FFAnchoredGeneratorComponent, FFAnchoredObject, FFAudioLoudnessManager, FFProject, FFRenderFormat, FFSequenceInfo, FFShareKeyConverter, FFStoryTimelinePresentation, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSSet, NSString;
 
-@interface FFAnchoredSequence : FFMediaState <NSCoding, FFDataModelProtocol, FFCopyPasteProtocol, FFSkimmableProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, FFSkimmableItemProtocol, FFAnchoredParentProtocol, FFEffectContainerProtocol, FFMetadataActionProtocol, FFOrganizerClassTypeProtocol>
+@interface FFAnchoredSequence : FFMediaState <FFLibraryCocoaScripting, NSCoding, FFDataModelProtocol, FFCopyPasteProtocol, FFSkimmableProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, FFSkimmableItemProtocol, FFAnchoredParentProtocol, FFEffectContainerProtocol, FFMetadataActionProtocol, FFOrganizerClassTypeProtocol>
 {
     FFRenderFormat *_renderFormat;
     FFAnchoredObject *_primaryObject;
@@ -79,6 +80,7 @@
     NSSet *_cacheOfAllAssetRefs;
     NSSet *_cacheOfAllClipRefs;
     BOOL _isAudioComponentsReferenceLayoutSequence;
+    BOOL _soloedClipsObservingAudioComponentsChanged;
     BOOL _captionPlaybackEnabled;
     BOOL _disableResolveConflictsOnActionEnd;
     BOOL _pendingActiveCaptionRoleChanged;
@@ -92,6 +94,8 @@
 + (BOOL)isCensoredKey:(id)arg1;
 + (void)setDefaultTransitionOverlapType:(int)arg1;
 + (int)temporalResolutionMode;
++ (BOOL)workaroundFor37792838;
++ (void)setWorkaroundFor37792838:(BOOL)arg1;
 + (BOOL)processingUpdates;
 + (void)processingUpdates:(BOOL)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
@@ -322,6 +326,7 @@
 - (BOOL)isStack;
 - (BOOL)isAudioOnlyCollection;
 - (BOOL)isSpine;
+- (BOOL)isSynchronizedAndOneVideoSource;
 - (BOOL)isSyncronized;
 - (BOOL)isMultiAngle;
 - (BOOL)isReferenceSequence;
@@ -385,6 +390,9 @@
 - (BOOL)canPasteWithSelection:(id)arg1;
 - (BOOL)canCutWithSelection:(id)arg1;
 - (BOOL)canCopyWithSelection:(id)arg1;
+- (void)_updateSoloedClipsForAudioComponentsChanged:(id)arg1;
+- (void)_removeSoloedClipsAudioComponentsChangedObserving;
+- (void)_addSoloedClipsAudioComponentsChangedObserving;
 @property(retain, nonatomic) NSSet *soloedClips;
 - (void)removeChannel:(id)arg1;
 - (BOOL)canRemoveChannel:(id)arg1;
@@ -573,8 +581,17 @@
 - (BOOL)actionAddMarkerToAnchoredObject:(id)arg1 withRange:(CDStruct_e83c9415)arg2 error:(id *)arg3;
 - (BOOL)actionAddMarkerWithRange:(CDStruct_e83c9415)arg1 error:(id *)arg2;
 - (id)ckRoleOutputsWithAudioChannelLayout:(unsigned int)arg1 excludeDisabledRoles:(BOOL)arg2;
+- (id)ckSourceWithCurrentSequenceTime:(CDStruct_1b6d18a9)arg1 andRange:(CDStruct_e83c9415 *)arg2 forSendToCompressor:(BOOL)arg3 indexForDifferentiation:(unsigned long long)arg4;
 - (id)ckSourceWithCurrentSequenceTime:(CDStruct_1b6d18a9)arg1 andRange:(CDStruct_e83c9415 *)arg2 forSendToCompressor:(BOOL)arg3;
 - (id)ckSourceWithCurrentSequenceTime:(CDStruct_1b6d18a9)arg1 forSendToCompressor:(BOOL)arg2;
+- (CDStruct_e83c9415)_mediaRangeWithLock;
+- (id)durationDict;
+- (id)startTimeDict;
+- (long long)timecodeFormat;
+- (id)frameDurationDict;
+- (id)objectSpecifier;
+- (id)containerPropertyName;
+- (id)containerObject;
 - (void)setOwnedClipName:(id)arg1;
 - (id)ownedClipName;
 - (void)_switchActiveCaptionRoleToFirstRoleInCaptions:(id)arg1;
@@ -597,7 +614,7 @@
 - (void)_posterThumbnailReadyForRequest:(id)arg1 thumbnail:(struct CGImage *)arg2;
 - (BOOL)actionAlignClipsAtMusicMarkersOnItems:(id)arg1 rootItem:(id)arg2 asSplit:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)actionInsertFadeToEffectID:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 toTime:(CDStruct_1b6d18a9)arg3 rootItem:(id)arg4 toItems:(id)arg5 error:(id *)arg6;
-- (BOOL)actionReplaceItem:(id)arg1 withItemsOnPasteboard:(id)arg2 replaceActionType:(int)arg3 editsAdded:(id *)arg4 trackType:(id)arg5 playheadTime:(CDStruct_1b6d18a9)arg6 autoCancelOnFail:(BOOL)arg7 needsMediaReferencesChecking:(BOOL)arg8 autoRetimedItems:(id *)arg9 error:(id *)arg10;
+- (BOOL)actionReplaceItems:(id)arg1 withItemsOnPasteboard:(id)arg2 replaceActionType:(int)arg3 editsAdded:(id *)arg4 trackType:(id)arg5 playheadTime:(CDStruct_1b6d18a9)arg6 autoCancelOnFail:(BOOL)arg7 needsMediaReferencesChecking:(BOOL)arg8 autoRetimedItems:(id *)arg9 error:(id *)arg10;
 - (BOOL)operationReplaceItem:(id)arg1 withItems:(id)arg2 replaceActionType:(int)arg3 editsAdded:(id *)arg4 playheadTime:(CDStruct_1b6d18a9)arg5 sourcePlayheadTime:(CDStruct_1b6d18a9)arg6 autoCancelOnFail:(BOOL)arg7;
 - (BOOL)operationReplaceItem:(id)arg1 withItemsOnPasteboard:(id)arg2 replaceActionType:(int)arg3 editsAdded:(id *)arg4 trackType:(id)arg5 playheadTime:(CDStruct_1b6d18a9)arg6 autoCancelOnFail:(BOOL)arg7 autoRetimedItems:(id *)arg8;
 - (void)_transferAnchorsFromObject:(id)arg1 toObjects:(id)arg2 anchors:(id)arg3 relativeToFromTime:(CDStruct_1b6d18a9)arg4 toObjectPlayhead:(CDStruct_1b6d18a9)arg5 transferMarkers:(BOOL)arg6;
@@ -622,7 +639,6 @@
 - (void)liftBackgroundMusicBlock:(id)arg1 liftedBackgroundMusic:(id *)arg2 offsettingForDeletedItems:(id)arg3;
 - (void)renchorLiftedAnchors:(id)arg1 fromContainers:(id)arg2;
 - (void)liftAnchorsFromTargetObjects:(id)arg1 liftedAnchors:(id *)arg2 fromContainers:(id *)arg3 skippingAnchors:(id)arg4 liftMode:(int)arg5;
-- (id)filterOutLeadingTrailingTransitions:(id)arg1;
 - (void)reanchorGapAnchoredItems:(id)arg1 inContainer:(id)arg2;
 - (id)liftGapAnchoredItemsFromGap:(id)arg1;
 - (id)itemsToFilteredItemsSortedIntoContiguousBlocks:(id)arg1;
@@ -730,7 +746,8 @@
 - (BOOL)actionRenameAngle:(id)arg1 newName:(id)arg2 error:(id *)arg3;
 - (double)dBValueOfChannel:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (BOOL)actionChangeAudioVolume:(id)arg1 byAmount:(double)arg2 overRange:(CDStruct_e83c9415)arg3 isRelative:(BOOL)arg4 error:(id *)arg5;
-- (BOOL)actionDetachAudio:(id)arg1 newDetachedEdits:(id)arg2 mapOfDetachedToOriginalEdits:(id)arg3 error:(id *)arg4;
+- (BOOL)operationDetachAudioForItems:(id)arg1 newDetachedEdits:(id)arg2 resolveConflicts:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)actionDetachAudio:(id)arg1 newDetachedEdits:(id)arg2 error:(id *)arg3;
 - (id)_reduceBlocksToThroughEdits:(id)arg1;
 - (BOOL)operationDetachAudio:(id)arg1 newEdit:(id *)arg2 error:(id *)arg3;
 - (BOOL)hasItemForDetachAudio:(id)arg1;
@@ -815,6 +832,9 @@
 - (BOOL)_validateForConformAnchoredObjectTimeAlignment:(id)arg1 range:(CDStruct_e83c9415 *)arg2 phase:(unsigned long long)arg3;
 - (CDStruct_e83c9415)_conformAnchoredObjectTimeAlignment:(id)arg1 range:(CDStruct_e83c9415)arg2 fromEdits:(id)arg3 toContainer:(id)arg4 forEditMode:(int)arg5;
 - (void)conformAnchorsForObject:(id)arg1;
+- (void)alignAnchoredPairForCaption:(id)arg1;
+- (CDStruct_e83c9415)alignTimeRange:(CDStruct_e83c9415)arg1 toSampleDuration:(CDStruct_1b6d18a9)arg2;
+- (void)conformAnchoredCaptionTimeAlignment:(id)arg1 toFrameDuration:(CDStruct_1b6d18a9)arg2;
 - (BOOL)_prepareEditsForThreePointEditing:(id)arg1 backtimed:(BOOL)arg2 rangeOfMedia:(CDStruct_e83c9415 *)arg3;
 - (BOOL)actionAnchorItem:(id)arg1 withAnchorInLocalTime:(CDStruct_1b6d18a9)arg2 atTime:(CDStruct_1b6d18a9)arg3 inContainer:(id)arg4 inContainerAnchorLane:(long long)arg5 error:(id *)arg6;
 - (BOOL)actionAnchorItem:(id)arg1 withAnchorInLocalTime:(CDStruct_1b6d18a9)arg2 toItem:(id)arg3 atItemTime:(CDStruct_1b6d18a9)arg4 inContainer:(id)arg5 inContainerAnchorLane:(long long)arg6 error:(id *)arg7;
@@ -888,7 +908,6 @@
 - (void)_setTitleParameters:(id)arg1 themeInfo:(id)arg2 titleIndex:(unsigned long long)arg3 titleType:(int)arg4;
 - (void)resetTitleAnimationParametersForObjects:(id)arg1;
 - (BOOL)_constrainTitle:(id)arg1 onObject:(id)arg2 titleIndex:(unsigned long long)arg3 titleType:(int)arg4 themeInfo:(id)arg5;
-- (BOOL)operationClearAutoEditFlags:(id)arg1;
 - (BOOL)_normalizeAnchors;
 - (BOOL)_applyThemeTransitions:(id)arg1 addedTitles:(id)arg2;
 - (BOOL)_isLastRegularObject:(id)arg1;
@@ -899,7 +918,6 @@
 - (BOOL)_shouldApplySpatialTransitionForTheme:(id)arg1 fromObject:(id)arg2 toObject:(id)arg3 transitionElapsedTime:(CDStruct_1b6d18a9 *)arg4 transitionToApply:(id *)arg5 titleToApplyID:(id *)arg6 titleToApplyIndex:(unsigned long long *)arg7;
 - (void)_resetThemeCounters;
 - (id)backgroundMusicItemContinguousBlocksForContainer:(id)arg1 excludedItems:(id)arg2;
-- (BOOL)iMovieActionGroupBackgroundMusicIntoStorylines:(id)arg1 container:(id)arg2 error:(id *)arg3;
 - (BOOL)turnOffAutoTrimBackgroundMusic;
 - (void)setAutoTrimBackgroundMusic:(BOOL)arg1;
 - (BOOL)autoTrimBackgroundMusic;
@@ -908,7 +926,6 @@
 - (BOOL)iMovieOperationConvertItemsBelowSpineToAudioOnly:(id)arg1 container:(id)arg2;
 - (BOOL)iMovieOperationResolveItemsInLane:(long long)arg1 fixedItems:(id)arg2 container:(id)arg3;
 - (BOOL)iMovieOperationResolveItems:(id)arg1 fixedItems:(id)arg2 container:(id)arg3;
-- (BOOL)iMovieOperationGroupBackgroundMusicIntoStorylines:(id)arg1 container:(id)arg2;
 - (BOOL)iMovieOperationResolveBackgroundMusicInserts:(id)arg1 fixedItems:(id)arg2 revisedExcludedItems:(id *)arg3 container:(id)arg4;
 - (id)_segmentsForBackgroundMusicItems:(id)arg1 container:(id)arg2;
 - (BOOL)iMovieOperationFixGapInContainer:(id)arg1;

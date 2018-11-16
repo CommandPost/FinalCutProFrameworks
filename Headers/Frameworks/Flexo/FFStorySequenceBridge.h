@@ -28,6 +28,7 @@
 - (void)notifyLaneChanges:(id)arg1 itemChanges:(id)arg2;
 - (void)audioVideoRoleEnablesHaveChanged:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_notifySequenceEdited:(id)arg1;
 - (void)stopListeningToSequence;
 - (void)startListeningToSequence;
 - (void)dealloc;

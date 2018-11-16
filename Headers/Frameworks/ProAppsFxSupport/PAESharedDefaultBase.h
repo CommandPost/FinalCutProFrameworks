@@ -26,10 +26,12 @@
 - (void)setIgnoresPixelAspectRatio:(BOOL)arg1;
 - (HGRef_0de1db7e)transformFromImage:(id)arg1 toImage:(id)arg2 fit:(BOOL)arg3;
 - (void)transform:(HGRef_0de1db7e *)arg1 fromImage:(id)arg2 toImage:(id)arg3 fit:(BOOL)arg4;
+- (BOOL)smear:(HGRef_0de1db7e)arg1 fromImage:(id)arg2 toImage:(id)arg3 resultNode:(HGRef_0de1db7e *)arg4;
 - (HGRef_0de1db7e)smear:(HGRef_0de1db7e)arg1 fromImage:(id)arg2 toImage:(id)arg3;
 - (HGRef_0de1db7e)cropFromImage:(id)arg1 toImage:(id)arg2;
 - (void)crop:(HGRef_0de1db7e *)arg1 withRect:(PCRect_7f811c82)arg2;
 - (void)crop:(HGRef_0de1db7e *)arg1 fromImage:(id)arg2 toImage:(id)arg3;
+- (BOOL)getCropRectFromImage:(id)arg1 toImage:(id)arg2 output:(PCRect_7f811c82 *)arg3;
 - (PCRect_7f811c82)getCropRectFromImage:(id)arg1 toImage:(id)arg2;
 - (PCRect_7f811c82)getImageBoundary:(id)arg1;
 - (PCVector2_79efa81a)convertRelativeToPixelCoordinates:(const PCVector2_79efa81a *)arg1 withImage:(id)arg2;

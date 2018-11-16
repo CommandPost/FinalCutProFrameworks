@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 @interface FFNRFlatInputBufferObj : NSObject
 {
     FFPixelBuffer *_colorData;
-    FFPixelBuffer *_alphaData;
+    FFPixelBuffer *_preservedData;
 }
 
-@property(retain) FFPixelBuffer *alphaData; // @synthesize alphaData=_alphaData;
+@property(retain) FFPixelBuffer *preservedData; // @synthesize preservedData=_preservedData;
 @property(readonly) FFPixelBuffer *colorData; // @synthesize colorData=_colorData;
 - (void)dealloc;
 - (id)initWithColorData:(id)arg1;

@@ -23,7 +23,7 @@
     CALayer *_panelLayer;
     _Bool _renderingSelected;
     _Bool _resetSoloFlag;
-    vector_a9c0768e _soloedNodeIDs;
+    vector_12da65de _soloedNodeIDs;
     NSConditionLock *_backgroundTaskConditionLock;
     FFBackgroundTask *_backgroundTask;
     CKTranscodingOperation *_transcodingOperation;
@@ -70,7 +70,6 @@
 - (void)exportMovieModalForWindow:(id)arg1;
 - (void)exportCurrentFrameModalForWindow:(id)arg1;
 - (void)publishVimeoModalForWindow:(id)arg1;
-- (void)publishFacebookModalForWindow:(id)arg1;
 - (void)publishYouTubeModalForWindow:(id)arg1;
 - (void)sendEmailModalForWindow:(id)arg1;
 - (void)burnBlurayModalForWindow:(id)arg1;

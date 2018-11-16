@@ -41,6 +41,7 @@
 @property(nonatomic) TLKLayoutContext *enclosingLayoutContext; // @synthesize enclosingLayoutContext=_enclosingLayoutContext;
 @property(nonatomic) TLKContainerInfo *containerInfo; // @synthesize containerInfo=_containerInfo;
 @property(nonatomic) TLKLineFragment *lineFragment; // @synthesize lineFragment=_lineFragment;
+- (double)offsetForNegativeStartTime;
 @property(readonly, nonatomic) id lineFragmentAndContainerID;
 - (long long)layoutRegionAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toLayoutContext:(id)arg2;

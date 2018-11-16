@@ -36,7 +36,7 @@
 + (id)collectionWithPath:(id)arg1 resolvedPath:(id)arg2 parent:(id)arg3;
 + (BOOL)shouldSuppressNotifications;
 + (void)suppressNotifications:(BOOL)arg1;
-@property(retain, nonatomic) TMCollectionHeader *parentCollection; // @synthesize parentCollection=_parentCollection;
+@property(nonatomic) TMCollectionHeader *parentCollection; // @synthesize parentCollection=_parentCollection;
 @property(nonatomic) BOOL isSystemCollection; // @synthesize isSystemCollection=_isSystemCollection;
 @property(nonatomic) BOOL isTemplateCollection; // @synthesize isTemplateCollection=_isTemplateCollection;
 @property(nonatomic) int collectionType; // @synthesize collectionType=_collectionType;

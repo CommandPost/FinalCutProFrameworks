@@ -6,7 +6,7 @@
 
 #import <Flexo/FFHeliumEffect.h>
 
-@class CHChannelDouble, CHChannelEnum;
+@class CHChannelDouble, CHChannelEnum, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFNoiseReduction : FFHeliumEffect
@@ -16,19 +16,25 @@ __attribute__((visibility("hidden")))
     CHChannelDouble *_temporalChroma;
     CHChannelDouble *_spatialLuma;
     CHChannelDouble *_spatialChroma;
-    CHChannelDouble *_sharpness;
+    CHChannelEnum *_sharpness;
     CHChannelEnum *_customSetting;
     CHChannelEnum *_qualityModeSetting;
     CHChannelEnum *_denoiseAmount;
+    _Bool _uiCurrentlyShowingUnavailable;
+    NSString *_originalLabelCtrlClassName;
+    NSString *_uiCurrentlyShowingUnavailableToolTip;
+    struct PCProcrastinatedDispatch_t _updateLabelCtrlProcrastDisp;
 }
 
 + (void)registerEffects;
 + (id)copyClassDescription;
 @property(readonly, nonatomic) _Bool denoise360Media; // @synthesize denoise360Media=_denoise360Media;
+- (id).cxx_construct;
+- (id)unavailableOnCurrentConfigForContext:(id)arg1;
 - (id)primaryAnimationChannel;
 - (id)qualityModeSetting;
 - (id)customSetting;
-- (id)sharpnessChannel;
+- (int)sharpnessAmount;
 - (id)temporalChromaChannel;
 - (id)temporalLumaChannel;
 - (id)spatialChromaChannel;
@@ -42,7 +48,9 @@ __attribute__((visibility("hidden")))
 - (id)keyframeableChannels;
 - (id)inputKeys;
 - (void)createChannelsInFolder:(id)arg1;
-- (id)newNoiseReduceChannelInFolder:(id)arg1 name:(id)arg2 channelID:(unsigned int)arg3 defaultCurve:(double)arg4 minCurve:(double)arg5 minUI:(double)arg6 maxUI:(double)arg7 hidden:(BOOL)arg8 transformerName:(id)arg9;
+- (void)setWarningToolTip:(id)arg1;
+- (id)warningToolTip;
+- (id)newNoiseReduceChannelInFolder:(id)arg1 name:(id)arg2 channelID:(unsigned int)arg3 defaultCurve:(double)arg4 minCurve:(double)arg5 maxCurve:(double)arg6 minUI:(double)arg7 maxUI:(double)arg8 hidden:(BOOL)arg9 transformerName:(id)arg10;
 - (void)channelParameterChanged:(id)arg1;
 - (void)setDenoiseCustomSettingEnable:(BOOL)arg1 operationBeginEnd:(BOOL)arg2;
 - (void)_showHideChannelWithOperation:(id)arg1 show:(BOOL)arg2 operationBeginEnd:(BOOL)arg3;
@@ -53,9 +61,11 @@ __attribute__((visibility("hidden")))
 - (id)_newNRTokInternalAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 forScheduling:(BOOL)arg7 graphBuildInfo:(id)arg8;
 - (CDStruct_bdcb2b0d)_calcFinalActualMD5:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withSourceStream:(id)arg3 context:(id)arg4 sliderSettingsArray:(id)arg5;
 - (id)_newContextForCacheLookup:(id)arg1;
-- (unsigned long long)denoiseOrPassThru:(id)arg1 bounds:(struct CGRect)arg2 shouldEverProcess:(char *)arg3;
+- (unsigned long long)denoiseOrPassThru:(id)arg1 bounds:(struct CGRect)arg2 shouldEverProcess:(char *)arg3 unsupportedSize:(char *)arg4;
+- (void)_setUIShowsUnavailable:(BOOL)arg1 toolTip:(id)arg2;
+- (struct __CFString *)_getSizeLimInfo:(id)arg1;
 - (id)newSliderSettingsArrayForTime:(CDStruct_1b6d18a9)arg1;
-- (id)_newNoiseReductionTokenInternal:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5 isScheduling:(BOOL)arg6 withInputStream:(id)arg7 withOffset:(CDStruct_1b6d18a9)arg8 withSliderSettings:(id)arg9 isStill:(BOOL)arg10 fieldOrder:(int)arg11 frameDuration:(CDStruct_1b6d18a9)arg12 sampleDuration:(CDStruct_1b6d18a9)arg13 abortIfOutputCacheMiss:(BOOL)arg14 effectStreamVideoProps:(id)arg15;
+- (id)_newNoiseReductionTokenInternal:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5 isScheduling:(BOOL)arg6 withInputStream:(id)arg7 withOffset:(CDStruct_1b6d18a9)arg8 withSliderSettings:(id)arg9 isStill:(BOOL)arg10 noiseReductionObjectBelongsToLibrary:(BOOL)arg11 fieldOrder:(int)arg12 frameDuration:(CDStruct_1b6d18a9)arg13 sampleDuration:(CDStruct_1b6d18a9)arg14 effectSourceToObserve:(id)arg15 abortIfOutputCacheMiss:(BOOL)arg16 effectStreamVideoProps:(id)arg17;
 - (void)firstVideoStreamOpenedOnEffect;
 - (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2 pixelTransform:(id)arg3;
 - (BOOL)shouldChannelBeAdjustedByRetime:(id)arg1;
@@ -63,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (struct HGNode *)newNodeForContext:(id)arg1;
 - (BOOL)writeDefaultChannels;
 - (void)lastVideoStreamClosedOnEffect;
+- (BOOL)effectIntroducesAlpha;
 - (BOOL)isNoOp;
 - (BOOL)channelsNoOp;
 - (id)curveDisplayName;

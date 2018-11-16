@@ -8,10 +8,11 @@
 
 #import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class LKFFTimecodeFormatDeputy, LKHMSTimecodeFormatDeputy, LKMeasuredTimecodeFormatDeputy, LKOneDAudioTimecodeFormatDeputy, LKOneDTimeTimecodeFormatDeputy, LKOneDVideoTimecodeFormatDeputy, LKSMPTETimecodeFormatDeputy;
 
-@interface _LKTimecodeFormatterDeputyCollection : NSObject <NSCopying, NSCoding>
+@interface _LKTimecodeFormatterDeputyCollection : NSObject <NSCopying, NSCoding, NSSecureCoding>
 {
     LKSMPTETimecodeFormatDeputy *SMPTEDeputy;
     LKHMSTimecodeFormatDeputy *HMSDeputy;
@@ -22,6 +23,7 @@
     LKFFTimecodeFormatDeputy *feetFramesDeputy;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

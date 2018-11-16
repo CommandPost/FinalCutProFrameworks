@@ -15,7 +15,7 @@
     unsigned int _hitNodeID;
     NSMutableDictionary *_textAttribs;
     PGDrawableTexture *_textTexture;
-    vector_a9c0768e _objectsArray;
+    vector_12da65de _objectsArray;
 }
 
 - (id).cxx_construct;

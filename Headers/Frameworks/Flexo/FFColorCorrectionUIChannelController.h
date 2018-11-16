@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     BOOL _isTrackingUndoRedoChanges;
 }
 
++ (BOOL)shouldDisplayReset;
 + (BOOL)shouldDisplayAnimIndicator;
 - (void)channelCustomUIResized:(id)arg1;
 - (void)dealloc;

@@ -8,7 +8,7 @@
 
 #import "NSSaveRolePresetAsPanelDelegate.h"
 
-@class CKSource, FFShareExportMediaDestination, NSPopUpButton, NSString, NSURL;
+@class FFSharePanelRolesDataSource, NSArray, NSPopUpButton, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFSharePanelRolesPresetsDelegate : NSObject <NSSaveRolePresetAsPanelDelegate>
@@ -16,14 +16,18 @@ __attribute__((visibility("hidden")))
     BOOL _replaceExistingRolePreset;
     BOOL _isObservingDestination;
     NSURL *_userRolePresetsDirectoryURL;
-    FFShareExportMediaDestination *_destination;
-    CKSource *_source;
+    FFSharePanelRolesDataSource *_dataSource;
     NSPopUpButton *_rolesAsButton;
+    long long _batchTransactionCount;
+    NSArray *_destinations;
 }
 
+@property(copy, nonatomic) NSArray *destinations; // @synthesize destinations=_destinations;
+@property(nonatomic) long long batchTransactionCount; // @synthesize batchTransactionCount=_batchTransactionCount;
+@property(nonatomic) BOOL isObservingDestination; // @synthesize isObservingDestination=_isObservingDestination;
+@property(nonatomic) BOOL replaceExistingRolePreset; // @synthesize replaceExistingRolePreset=_replaceExistingRolePreset;
 @property(retain, nonatomic) NSPopUpButton *rolesAsButton; // @synthesize rolesAsButton=_rolesAsButton;
-@property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
-@property(retain, nonatomic) FFShareExportMediaDestination *destination; // @synthesize destination=_destination;
+@property(readonly, nonatomic) FFSharePanelRolesDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) NSURL *userRolePresetsDirectoryURL; // @synthesize userRolePresetsDirectoryURL=_userRolePresetsDirectoryURL;
 - (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 delegate:(id)arg3 didRecoverSelector:(SEL)arg4 contextInfo:(void *)arg5;
 - (BOOL)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
@@ -35,18 +39,24 @@ __attribute__((visibility("hidden")))
 - (void)saveRolePresetAs:(id)arg1;
 - (void)saveRolePreset:(id)arg1;
 - (void)selectRolePreset:(id)arg1;
+- (id)rolePresetWithName:(id)arg1 forDestination:(id)arg2;
+- (void)saveUserRolePresetsWithDestination:(id)arg1;
 - (void)saveUserRolePresets;
 - (void)loadUserRolePresets;
 - (id)readUserRolePresetsFromDirectoryURL:(id)arg1;
-- (id)newRolesAsMenu;
+- (void)executeAndReloadWithBlock:(CDUnknownBlockType)arg1;
+- (id)newRolesAsMenuWithDestination:(id)arg1;
 - (void)populateMenu:(id)arg1 withPresets:(id)arg2;
 - (void)updateRolesAsMenu;
 - (void)syncPopUpButtonSelectionToCurrentRolePreset:(id)arg1;
 - (BOOL)rolesAsButtonShouldBeEnabled;
+- (void)batchDidChange:(id)arg1;
+- (void)batchWillChange:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)stopObservingDestination;
-- (void)startObservingDestination;
+- (void)stopObservingDestinations;
+- (void)startObservingDestinations;
 - (void)dealloc;
+- (id)initWithDataSource:(id)arg1;
 - (id)init;
 
 // Remaining properties

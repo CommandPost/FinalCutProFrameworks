@@ -29,10 +29,10 @@ struct PCBitmap {
     int _field8;
     struct PCColorSpaceHandle _field9;
     _Bool _field10;
-    void *_field11;
-    int _field12;
-    _Bool _field13;
+    struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> _field11;
 };
+
+struct PCBitmapRep;
 
 struct PCColorSpaceHandle {
     struct CGColorSpace *_field1;
@@ -45,6 +45,12 @@ struct __shared_weak_count;
 struct shared_ptr<PCBitmap> {
     struct PCBitmap *_field1;
     struct __shared_weak_count *_field2;
+};
+
+struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> {
+    struct __compressed_pair<PCBitmapRep *, std::__1::default_delete<PCBitmapRep>> {
+        struct PCBitmapRep *_field1;
+    } _field1;
 };
 
 struct weak_ptr<PCImage> {

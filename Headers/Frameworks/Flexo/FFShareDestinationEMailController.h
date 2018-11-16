@@ -14,10 +14,8 @@
 }
 
 @property(nonatomic) LKPopUpButton *compressionPopup; // @synthesize compressionPopup=_compressionPopup;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)selectSetting:(id)arg1;
 - (void)awakeFromNib;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 
 @end
 

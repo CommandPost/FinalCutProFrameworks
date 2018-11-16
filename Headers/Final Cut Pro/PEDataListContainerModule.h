@@ -19,6 +19,7 @@
 }
 
 @property(readonly, nonatomic) FFDataListModule *dataList; // @synthesize dataList=_dataList;
+- (void)showCaptionEditorForCaption:(id)arg1;
 - (id)activeEditorModule;
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
 - (id)selectedItems;

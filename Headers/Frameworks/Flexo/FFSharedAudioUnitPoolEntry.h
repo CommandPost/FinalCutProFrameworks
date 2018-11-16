@@ -13,21 +13,26 @@ __attribute__((visibility("hidden")))
 {
     NSString *_effectID;
     NSMapTable *_defaultPresetMap;
-    NSMapTable *_freeList;
-    struct set<FFSharedAudioUnit *, std::__1::less<FFSharedAudioUnit *>, std::__1::allocator<FFSharedAudioUnit *>> *_reservedList;
-    struct map<void *, unsigned int, std::__1::less<void *>, std::__1::allocator<std::__1::pair<void *const, unsigned int>>> *_allocationRegistry;
+    NSMapTable *_freeListMap;
+    NSMapTable *_reservedListMap;
+    NSMapTable *_allocationMap;
+    NSMapTable *_allocationRegistry;
     double _lastReturnTime;
 }
 
 @property(readonly, nonatomic) NSString *effectID; // @synthesize effectID=_effectID;
+- (id)_demandAllocationListForFormatKey:(id)arg1;
+- (id)_demandReservedListForFormatKey:(id)arg1;
 - (id)_demandFreeListForFormatKey:(id)arg1;
-- (unsigned int)_hasAvailableNonPlaybackUnits;
-- (unsigned int)_reservedAllocation;
-- (unsigned int)_freeListAllocation;
-- (unsigned int)_requestedAllocation;
+- (unsigned int)_hasAvailableNonPlaybackUnitsForFormatKey:(id)arg1;
+- (unsigned int)_reservedAllocationForFormatKey:(id)arg1;
+- (unsigned int)_freeListAllocationForFormatKey:(id)arg1;
+- (unsigned int)_requestedAllocationForFormatKey:(id)arg1;
 - (BOOL)canDispose;
 - (BOOL)updateAudioUnitAllocationWithTimeLimit:(double)arg1;
-- (void)setAllocation:(unsigned int)arg1 forObject:(id)arg2;
+- (BOOL)updateAudioUnitAllocationForFormatKey:(id)arg1 timeLimit:(double)arg2;
+- (void)clearAllocationForObject:(id)arg1;
+- (void)setAllocation:(unsigned int)arg1 sampleRate:(double)arg2 numChannels:(unsigned int)arg3 forObject:(id)arg4;
 - (void)purgeAudioUnit:(id)arg1;
 - (void)returnAudioUnit:(id)arg1;
 - (id)reserveAudioUnitWithSampleRate:(double)arg1 andNumChannels:(unsigned int)arg2 forPlayback:(BOOL)arg3 defaultPreset:(id *)arg4 isFreeListUnit:(char *)arg5;

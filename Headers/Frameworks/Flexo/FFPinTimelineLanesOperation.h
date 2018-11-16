@@ -31,6 +31,7 @@
 - (struct CGRect)_visibleRectInContainerUsingLayoutContext:(id)arg1;
 - (double)_distanceFromTopOfVisibleRectToTopOfLayoutContext:(id)arg1;
 - (void)_offsetCaptionLayersInLayoutContext:(id)arg1 byOffset:(double)arg2;
+- (void)_resetCaptionLayersOffsetInLayoutContext:(id)arg1;
 - (void)_pinCaptionLanesInLayoutContext:(id)arg1;
 - (void)main;
 - (void)dealloc;

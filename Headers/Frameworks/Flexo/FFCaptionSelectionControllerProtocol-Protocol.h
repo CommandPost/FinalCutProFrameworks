@@ -17,6 +17,7 @@
 @property(retain, nonatomic) FFCaptionEditorTextView *textView;
 @property(readonly, retain, nonatomic) FFCaptionTextBlock *textBlock;
 @property(readonly, retain, nonatomic) FFAnchoredCaption *caption;
+- (void)setSelectedRange:(struct _NSRange)arg1;
 - (void)teardownObservationAndDelegation;
 - (void)setCaptionTextBlockFromUI;
 - (long long)justification;

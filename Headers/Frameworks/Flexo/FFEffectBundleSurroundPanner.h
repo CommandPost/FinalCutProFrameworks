@@ -10,7 +10,6 @@
 
 @class FFAnchoredObject, NSString;
 
-__attribute__((visibility("hidden")))
 @interface FFEffectBundleSurroundPanner : FFEffectBundleInternalBundle <FFChannelChangeControllerDivorcedDelegate>
 {
     FFAnchoredObject *m_object;
@@ -25,10 +24,10 @@ __attribute__((visibility("hidden")))
 + (id)descriptionForPreset:(id)arg1;
 + (id)nonSurroundPresetNames;
 + (id)surroundPresetNames;
-+ (id)_bundlePresetNames;
++ (id)bundlePresetNames;
 + (id)pannerEffectBundleParts;
 - (int)bundleEncodingOptions;
-- (void)createActivePartEffectChannelsInFolder:(id)arg1;
+- (void)createEffectChannelsForEffectBundlePart:(id)arg1 inFodler:(id)arg2;
 - (void)partChanged;
 - (id)copyBundlePartAtIndex:(int)arg1;
 - (id)bundlePartAtIndex:(int)arg1;

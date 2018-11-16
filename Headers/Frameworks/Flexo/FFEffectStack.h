@@ -6,6 +6,7 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
+#import "FFAnchoredSequenceDSObservedObject.h"
 #import "FFCHChannelDelegate.h"
 #import "FFDataModelProtocol.h"
 #import "FFMD5Protocol.h"
@@ -14,7 +15,7 @@
 
 @class FFAnchoredObject, FFCHObservableFolder, FFCHRootChannel, FFEffect, FFMD5AndOffset, NSArray, NSMutableArray, NSRecursiveLock, NSString;
 
-@interface FFEffectStack : FFBaseDSObject <NSCoding, NSCopying, FFCHChannelDelegate, FFDataModelProtocol, FFMD5Protocol>
+@interface FFEffectStack : FFBaseDSObject <NSCoding, NSCopying, FFCHChannelDelegate, FFDataModelProtocol, FFMD5Protocol, FFAnchoredSequenceDSObservedObject>
 {
     NSMutableArray *_effectInstances;
     NSMutableArray *_intrinsicEffectInstances;
@@ -27,7 +28,7 @@
     FFCHObservableFolder *_objectChannels;
     NSArray *_savedAnalyzingAudioEffects;
     NSArray *_legacyPreservedOrderIntrinsicEffectIDs;
-    FFCHObservableFolder *_audioPropertyChannels;
+    FFCHObservableFolder *_auxPropertyChannels;
     FFEffect *_selectedColorEffect;
     FFAnchoredObject *_anchoredObject;
     NSString *_filterType;
@@ -40,8 +41,11 @@
     BOOL _pendingEffectsChangeNotification;
     CDUnknownBlockType _placeholderEffectStackWillModifyBlock;
     NSRecursiveLock *_placeholderEffectStackLock;
-    NSMutableArray *_addEffectsScopeList;
-    int _addEffectsNestCount;
+    NSMutableArray *_activateEffectsScopeList;
+    int _activateEffectsNestCount;
+    NSMutableArray *_deactivateEffectsScopeList;
+    int _deactivateEffectsNestCount;
+    NSString *_persistedAnchoredObjectID;
 }
 
 + (BOOL)effectIsNoiseReduction:(id)arg1;
@@ -91,6 +95,7 @@
 @property(retain, nonatomic) NSArray *legacyPreservedOrderIntrinsicEffectIDs; // @synthesize legacyPreservedOrderIntrinsicEffectIDs=_legacyPreservedOrderIntrinsicEffectIDs;
 @property(readonly, retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 @property(retain, nonatomic) NSString *filterType; // @synthesize filterType=_filterType;
+- (id)anchoredObjectForSequenceDSObserving;
 - (void)colorPropertyChannelChanged:(id)arg1;
 - (void)audioPropertyChannelChanged:(id)arg1;
 - (void)setAudioDuckingChannelData:(id)arg1;
@@ -98,6 +103,7 @@
 - (void)removeAudioPropertyChannel:(id)arg1;
 - (void)insertAudioPropertyChannel:(id)arg1;
 - (unsigned long long)_audioPropertiesInsertIndexForID:(unsigned int)arg1;
+- (void)_releaseAuxPropertyChannels;
 - (void)_releaseAudioPropertyChannels;
 - (id)demandColorPropertyChannels;
 - (id)_demandAudioPropertyChannels;
@@ -224,6 +230,7 @@
 - (void)removeEffect:(id)arg1;
 - (void)removeEffectAtIndex:(unsigned long long)arg1;
 - (void)moveEffect:(id)arg1 toIndex:(unsigned long long)arg2;
+- (void)_moveEffect:(id)arg1 fromIndex:(long long)arg2 toIndex:(unsigned long long)arg3;
 - (long long)firstOccuranceOfEffectID:(id)arg1;
 - (void)listEffect;
 - (void)insertEffect:(id)arg1 atIndex:(unsigned long long)arg2 reason:(int)arg3;
@@ -291,13 +298,15 @@
 - (BOOL)compositeEffectValidForKenBurns:(id)arg1;
 - (id)visibleEffects;
 - (id)intrinsicEffects;
-- (void)_notifyEffectWasAddedToStack:(id)arg1 reason:(int)arg2;
-- (void)endAddEffectsScope;
-- (void)beginAddEffectsScope;
-- (void)_endAddEffectsScope:(BOOL)arg1;
-- (void)_beginAddEffectsScope:(BOOL)arg1;
-- (void)_undoEndAddEffectsScope;
-- (void)_undoBeginAddEffectsScope;
+- (void)_deactivateEffect:(id)arg1;
+- (void)_activateEffect:(id)arg1 reason:(int)arg2;
+- (void)endActivateEffectsScope;
+- (void)beginActivateEffectsScope;
+- (void)_endDeactivateEffectsScope;
+- (void)_beginDeactivateEffectsScope:(id)arg1;
+- (void)_endActivateEffectsScope:(BOOL)arg1;
+- (void)_beginActivateEffectsScope:(BOOL)arg1;
+- (void)_undoBeginDeactivateEffectsScope:(id)arg1;
 - (void)removeObjectFromEffectsAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inEffectsAtIndex:(unsigned long long)arg2;
 - (void)_removeEffectAtIndex:(unsigned long long)arg1;
@@ -305,16 +314,19 @@
 - (void)setUserEffectsDisabled:(BOOL)arg1;
 - (BOOL)userEffectsDisabled;
 - (id)effects;
+- (void)_moveObjectInEffectsArray:(id)arg1 atIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)_removeObjectFromEffectsArray:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_insertObject:(id)arg1 inEffectsArray:(id)arg2 atIndex:(unsigned long long)arg3 postNotification:(BOOL)arg4 reason:(int)arg5;
+- (void)_notifyEffectAddedRemovedOrMoved:(id)arg1 inEffectsArray:(id)arg2;
 - (void)invalidateSourceRangeForObjectWithPossibleRefChange:(CDStruct_e83c9415)arg1;
 - (BOOL)_shouldSendNotificationForEffectsArray:(id)arg1;
 - (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3 forChannel:(id)arg4;
 - (id)observedObjectForChannel:(id)arg1;
 - (void)setCompChannelsData:(id)arg1;
 - (id)compChannelsData;
-- (void)resetAnchoredObject:(id)arg1;
-- (void)setAnchoredObject:(id)arg1;
+- (void)resetAnchoredObject:(id)arg1 persist:(BOOL)arg2;
+- (void)setPersistedAnchoredObject:(id)arg1;
+- (id)persistedAnchoredObject;
 - (id)anchoredObject;
 - (BOOL)effectResetConstantRetimingRateFromFreeze;
 - (BOOL)effectResetRetiming:(CDStruct_1b6d18a9 *)arg1 newTimeEnd:(CDStruct_1b6d18a9 *)arg2 newTimeIn:(CDStruct_1b6d18a9 *)arg3 newTimeOut:(CDStruct_1b6d18a9 *)arg4;

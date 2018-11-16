@@ -10,9 +10,11 @@
 #import "FFEditActionMgrDelegateProtocol.h"
 #import "FFEditActionSourceProtocol.h"
 #import "FFErrorReportingProtocol.h"
+#import "FFProExtensionHostTargetProtocol.h"
 #import "FFRolesMenuDelegate.h"
 #import "FFSharePanelAnimationProtocol.h"
 #import "FFSharedAppControllerInterface.h"
+#import "LKModuleLayoutManagerDelegate.h"
 #import "LKViewModuleDelegate.h"
 #import "NSApplicationDelegate.h"
 #import "NSMenuDelegate.h"
@@ -20,9 +22,9 @@
 #import "NSUserNotificationCenterDelegate.h"
 #import "PEFullScreenWindowDelegate.h"
 
-@class FFAnchoredSequence, FFEditActionMgr, FFMessageTracer, LKWindow, NSAlert, NSMapTable, NSMenu, NSMenuItem, NSMutableArray, NSMutableSet, NSString, NSTimer, PECaptionEditorContainerModule, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceOverWindowController, PEWorkspacesMenuDelegate, Stopwatch;
+@class FFAnchoredSequence, FFEditActionMgr, FFExternalProvidersManager, FFMessageTracer, LKWindow, NSAlert, NSArray, NSMapTable, NSMenu, NSMenuItem, NSMutableArray, NSMutableSet, NSString, NSTimer, PECaptionEditorContainerModule, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PEPlayerTimecodeWindowController, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceOverWindowController, PEWorkspacesMenuDelegate, Stopwatch;
 
-@interface PEAppController : NSObject <FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol, FFSharedAppControllerInterface, LKViewModuleDelegate, FFDupCaptionsToNewLanguageMenuDelegate, NSUserNotificationCenterDelegate>
+@interface PEAppController : NSObject <FFProExtensionHostTargetProtocol, FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol, FFSharedAppControllerInterface, LKViewModuleDelegate, FFDupCaptionsToNewLanguageMenuDelegate, NSUserNotificationCenterDelegate, LKModuleLayoutManagerDelegate>
 {
     NSMenuItem *_openLibraryMenuItem;
     NSMenuItem *_closeLibraryMenuItem;
@@ -74,6 +76,8 @@
     PEEditorContainerModule *_activeEditorContainer;
     id _projectTranslator;
     PEVoiceOverWindowController *_voiceoverRecordController;
+    PEPlayerTimecodeWindowController *_playerTimecodeController;
+    PEPlayerTimecodeWindowController *_playerTimecodeCanvasController;
     Stopwatch *_startupTimer;
     LKWindow *_stacksPopOverWindow;
     PEVariantsContainerModule *_stacksMod;
@@ -102,6 +106,10 @@
     FFMessageTracer *_messageTracer;
     NSMapTable *_openDocumentOriginForURL;
     NSMutableSet *_fullscreenWindowModules;
+    NSMenuItem *_menuSeparatorBeforePlugInsItems;
+    FFExternalProvidersManager *_externalProviderManager;
+    NSArray *_plugInsItems;
+    NSMutableArray *_plugInWindowControllers;
     BOOL _fullscreenViewerIsDisallowed;
     BOOL _disablingOrganizerIsAllowed;
     BOOL _disablingTimelineIsAllowed;
@@ -192,9 +200,6 @@
 - (void)setOSC360DisplayValue:(id)arg1;
 - (void)setOSCTimelineDisplayValue:(id)arg1;
 - (void)toggleDebugCGContextDraw:(id)arg1;
-- (void)toggleUseOSCCaptionRenderer:(id)arg1;
-- (void)toggleCaptionSupportOnMacOS_10_12:(id)arg1;
-- (void)setOSCTimecodeDisplayValue:(id)arg1;
 - (void)summarizeObjectCacheToConsole:(id)arg1;
 - (void)showFFDataViewer:(id)arg1;
 - (void)dumpProjectClipStats:(id)arg1;
@@ -237,7 +242,7 @@
 - (void)revealProject:(id)arg1;
 - (BOOL)canRevealProject;
 - (void)snapshotProject:(id)arg1;
-- (BOOL)canSnapshotProject;
+- (BOOL)canSnapshotProject:(id)arg1;
 - (void)duplicate:(id)arg1;
 - (BOOL)canDuplicate:(id)arg1;
 - (BOOL)timelineHasExplicitSelection;
@@ -253,6 +258,8 @@
 - (void)toggleVideoOut:(id)arg1;
 - (void)toggleVoiceoverRecording:(id)arg1;
 - (void)toggleVoiceoverRecordView:(id)arg1;
+- (void)togglePlayerCanvasTimecode:(id)arg1;
+- (void)togglePlayerTimecode:(id)arg1;
 - (void)toggleConsumerVoiceOver:(id)arg1;
 - (void)toggleHMD:(id)arg1;
 - (void)toggleBackgroundTasksList:(id)arg1;
@@ -266,6 +273,10 @@
 - (void)enterFullscreenDisplayArea:(id)arg1;
 - (void)toggleFullscreenOrganizer:(id)arg1;
 - (void)toggleEventViewer:(id)arg1;
+- (void)toggleCompareViewer:(id)arg1;
+- (void)toggleFocusCompareMainViewer:(id)arg1;
+- (void)addCompareFrame:(id)arg1;
+- (void)goToCompareViewer:(id)arg1;
 - (void)goToEventViewer:(id)arg1;
 - (void)goToViewer:(id)arg1;
 - (void)goToOrganizer:(id)arg1;
@@ -369,6 +380,8 @@
 - (void)showTrailersInTimeline:(id)arg1;
 - (void)exportCaptions:(id)arg1;
 - (void)_insertCaptionsIntoTimeline:(id)arg1 withCaptionRole:(id)arg2;
+- (id)_findOrMakeCaptionSubRoleForMainRole:(id)arg1 andLanguageIdentifier:(id)arg2 inLibrary:(id)arg3;
+- (id)_findOrMakeCaptionMainRoleForUID:(id)arg1 andFormat:(id)arg2 inLibrary:(id)arg3 withImportMode:(int)arg4;
 - (void)importCaptions:(id)arg1;
 - (void)importClipBundle:(id)arg1;
 - (void)exportClipBundle:(id)arg1;
@@ -395,6 +408,8 @@
 - (id)audioMeterModule;
 - (id)backgroundTaskListModule;
 - (id)variantsPicker;
+- (id)playerTimecodeCanvasController;
+- (id)playerTimecodeController;
 - (id)speedEditor;
 - (id)markerEditor;
 - (id)captionEditor;
@@ -416,6 +431,7 @@
 - (id)upperDeckContainer;
 - (BOOL)isMainDisplayAreaFullscreen;
 - (BOOL)isTimelineFullscreen;
+- (id)compareViewer;
 - (id)eventViewer;
 - (id)mainDisplayArea;
 - (id)mainWorkspaceContainer;
@@ -445,8 +461,10 @@
 - (void)prepareForApplicationTerminate;
 - (unsigned long long)applicationShouldTerminate:(id)arg1;
 - (void)appHasStartedProcessingBlock:(CDUnknownBlockType)arg1;
+- (void)observeThePlugIns:(id)arg1;
+- (void)_plugInMenuAction:(id)arg1;
+- (void)_updateThirdPartyUI;
 - (void)applicationDidFinishLaunching:(id)arg1;
-- (void)_convertColorPresetsToEffectPresets;
 - (BOOL)_migratePreGodzillaColorPresets;
 - (void)restoreOpenDocuments;
 - (void)applicationWillFinishLaunching:(id)arg1;
@@ -466,6 +484,7 @@
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)init;
+- (id)hostTimelineTarget;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

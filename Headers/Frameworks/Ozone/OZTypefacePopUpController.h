@@ -32,7 +32,7 @@
 - (void)_saveDefaultFont:(int)arg1;
 - (struct OZFontFamily *)getCurrentFamily;
 - (struct OZFontCollection *)getCurrentCollection;
-- (struct OZFontFace *)getFontFaceForChannel:(struct OZChannel *)arg1;
+- (shared_ptr_9ca9139c)getFontFaceForChannel:(struct OZChannel *)arg1;
 - (BOOL)areAllFontsEqual;
 - (void)updatePopUpMenu:(BOOL)arg1;
 - (void)changeChannel:(id)arg1;

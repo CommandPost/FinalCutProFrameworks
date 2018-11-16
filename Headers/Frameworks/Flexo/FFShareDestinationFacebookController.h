@@ -6,34 +6,15 @@
 
 #import <Flexo/FFShareDestinationWebController.h>
 
-@class LKButton, LKPopUpButton, NSDictionary, NSString, NSTextField;
-
 @interface FFShareDestinationFacebookController : FFShareDestinationWebController
 {
-    LKButton *_signInBtn;
-    LKPopUpButton *_viewableByPopup;
-    LKPopUpButton *_compressionPopup;
-    NSString *_nameWithUserInfo;
-    unsigned long long _authenticationPhase;
-    NSTextField *_messageStr;
 }
 
-@property(retain, nonatomic) NSString *nameWithUserInfo; // @synthesize nameWithUserInfo=_nameWithUserInfo;
-@property(nonatomic) NSTextField *messageStr; // @synthesize messageStr=_messageStr;
-@property(nonatomic) LKPopUpButton *compressionPopup; // @synthesize compressionPopup=_compressionPopup;
-@property(nonatomic) LKPopUpButton *viewableByPopup; // @synthesize viewableByPopup=_viewableByPopup;
-@property(nonatomic) LKButton *signInBtn; // @synthesize signInBtn=_signInBtn;
-- (void)updateSignInButton;
-- (void)signInModalForWindow:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)learnMore:(id)arg1;
 - (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)signIn:(id)arg1;
-- (BOOL)validateAuthentication:(id *)arg1;
-@property(copy, nonatomic) NSDictionary *privacy;
 - (void)dealloc;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
 - (void)awakeFromNib;
-- (void)updateTitle;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 
 @end
 

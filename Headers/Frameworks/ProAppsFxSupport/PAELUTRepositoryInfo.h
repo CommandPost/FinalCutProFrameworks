@@ -6,17 +6,18 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class NSArray, NSMutableArray, NSMutableDictionary;
 
-@interface PAELUTRepositoryInfo : NSObject <NSCoding>
+@interface PAELUTRepositoryInfo : NSObject <NSSecureCoding>
 {
     int _version;
     NSMutableDictionary *_items;
     NSMutableArray *_recents;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)repositoryInfo;
 @property(readonly, nonatomic) NSArray *recents; // @synthesize recents=_recents;
 @property(readonly, nonatomic) int version; // @synthesize version=_version;

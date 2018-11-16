@@ -23,6 +23,14 @@
 + (BOOL)canEjectCameraDevice:(id)arg1;
 @property(readonly) MIOPTPDownloadQueue *downloadQueue; // @synthesize downloadQueue=_downloadQueue;
 @property(readonly) NSArray *cameraDevices; // @synthesize cameraDevices=_cameraDevices;
+- (void)deviceDidBecomeReadyWithCompleteContentCatalog:(id)arg1;
+- (void)cameraDevice:(id)arg1 didReceivePTPEvent:(id)arg2;
+- (void)cameraDevice:(id)arg1 didReceiveMetadataForItem:(id)arg2;
+- (void)cameraDevice:(id)arg1 didReceiveThumbnailForItem:(id)arg2;
+- (void)cameraDeviceDidChangeCapability:(id)arg1;
+- (void)cameraDevice:(id)arg1 didCompleteDeleteFilesWithError:(id)arg2;
+- (void)cameraDevice:(id)arg1 didRenameItems:(id)arg2;
+- (void)cameraDevice:(id)arg1 didAddItem:(id)arg2;
 - (void)cameraDevice:(id)arg1 didRemoveItem:(id)arg2;
 - (void)didRemoveDevice:(id)arg1;
 - (void)deviceBrowser:(id)arg1 didRemoveDevice:(id)arg2 moreGoing:(BOOL)arg3;

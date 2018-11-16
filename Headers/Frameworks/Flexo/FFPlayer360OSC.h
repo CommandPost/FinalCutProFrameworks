@@ -6,7 +6,7 @@
 
 #import <Flexo/FFOSC.h>
 
-@class FFLRUImageCacheObject, FFOpenGLInfoGrid2, NSDictionary, NSString;
+@class FFLRUImageCacheObject, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFPlayer360OSC : FFOSC
@@ -15,8 +15,6 @@ __attribute__((visibility("hidden")))
     NSDictionary *_360TextAttributesNumbers;
     NSDictionary *_360TextAttributesText2X;
     NSDictionary *_360TextAttributesNumbers2X;
-    FFOpenGLInfoGrid2 *_objectDetailsGrid;
-    FFOpenGLInfoGrid2 *_footerDetailsGrid;
     FFLRUImageCacheObject *_lastTextImageObject;
     NSString *_lastTextKey;
     struct CGRect _setBounds;

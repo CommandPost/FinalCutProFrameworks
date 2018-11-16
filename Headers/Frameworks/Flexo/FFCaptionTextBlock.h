@@ -35,10 +35,10 @@ __attribute__((visibility("hidden")))
 - (id)_setJustificationLeft:(id)arg1;
 @property(nonatomic) unsigned long long animationHeight;
 @property(nonatomic) long long animationStyle;
-- (long long)ITTRegionPosition;
-- (void)setITTRegionPosition:(long long)arg1;
-- (void)setITTRegion:(id)arg1;
-- (id)ITTRegion;
+- (long long)non608RegionPosition;
+- (void)setNon608RegionPosition:(long long)arg1;
+- (void)setNon608Region:(id)arg1;
+- (id)non608Region;
 - (void)moveTextToHorizontalCenter;
 - (void)moveTextToVerticalCenter;
 - (void)moveTextToRight;

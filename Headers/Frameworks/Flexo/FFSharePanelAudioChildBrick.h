@@ -4,42 +4,28 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFSharePanelBrick.h>
-
-@class NSButton, NSImageView, NSMenu, NSPopUpButton, NSString, NSTextField;
+#import <Flexo/FFSharePanelChildBrick.h>
 
 __attribute__((visibility("hidden")))
-@interface FFSharePanelAudioChildBrick : FFSharePanelBrick
+@interface FFSharePanelAudioChildBrick : FFSharePanelChildBrick
 {
-    NSTextField *_typeLabel;
-    NSImageView *_typeIcon;
-    NSButton *_removeButton;
-    NSTextField *_audioChannelLayoutLabel;
-    NSPopUpButton *_audioChannelLayoutButton;
-    NSPopUpButton *_addRoleButton;
-    long long _desiredAudioChannelLayout;
-    BOOL _canRemove;
-    BOOL _useFileIcon;
-    BOOL _hideAudioChannelLayoutControls;
-    BOOL _canAddRole;
-    NSString *_typeString;
-    NSMenu *_addRoleButtonMenu;
 }
 
-@property(nonatomic) BOOL canAddRole; // @synthesize canAddRole=_canAddRole;
-@property(retain, nonatomic) NSMenu *addRoleButtonMenu; // @synthesize addRoleButtonMenu=_addRoleButtonMenu;
-@property(nonatomic) BOOL hideAudioChannelLayoutControls; // @synthesize hideAudioChannelLayoutControls=_hideAudioChannelLayoutControls;
-@property(retain, nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
-@property(nonatomic) BOOL useFileIcon; // @synthesize useFileIcon=_useFileIcon;
-@property(nonatomic) BOOL canRemove; // @synthesize canRemove=_canRemove;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)addRole:(id)arg1;
-- (void)removeRoleOutput:(id)arg1;
-- (void)chooseAudioChannelLayout:(id)arg1;
+- (BOOL)canRemove;
+- (id)menuForDownmixingWithTarget:(id)arg1;
+- (BOOL)hasMultipleAudioChannelLayouts;
+- (long long)lowestAudioChannelLayout;
+- (id)menuItemForDownmixingWithTarget:(id)arg1 audioChannelLayout:(long long)arg2;
+@property(nonatomic) BOOL splitToMono;
+@property(readonly, nonatomic) BOOL canSplitToMono;
+- (long long)audioChannelLayoutForTheSequenceWithSource:(id)arg1;
 @property(nonatomic) long long audioChannelLayout; // @dynamic audioChannelLayout;
-- (void)viewDidLoad;
-- (void)dealloc;
-- (id)init;
+- (id)collectAudioChannelLayouts;
+@property(readonly, nonatomic) BOOL canSetAudioChannelLayout;
+- (id)initWithDataSource:(id)arg1;
+- (id)typeStringFallbackWhenNoRolePreset;
+- (unsigned long long)roleOutputFilterType;
+- (int)roleFilterType;
 
 @end
 

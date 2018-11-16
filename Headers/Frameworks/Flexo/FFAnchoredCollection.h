@@ -172,6 +172,7 @@
 - (id)_firstContainedItemIgnoringTransitions;
 - (id)_contiguousSpineItemsSeparatedByItems:(id)arg1;
 - (id)getObjectUnderPlayheadForMultiCam:(CDStruct_1b6d18a9)arg1 showOnlyObject:(id)arg2;
+- (id)getTopmostEnabledVideoObjectForTime:(CDStruct_1b6d18a9)arg1 clippedRange:(CDStruct_e83c9415 *)arg2 roles:(id)arg3 previousEdit:(BOOL)arg4;
 - (BOOL)canClippedItemRangeOnChildCausesRipple:(id)arg1;
 - (BOOL)offSpine:(id)arg1;
 - (BOOL)onSpine:(id)arg1;
@@ -261,6 +262,7 @@
 - (BOOL)isAudioOnlyClipOrCollection;
 - (BOOL)_isAudioOnlyCollection:(BOOL)arg1;
 - (int)anchoredObjectUIType;
+- (BOOL)isSynchronizedAndOneVideoSource;
 - (BOOL)isTrimmed;
 - (BOOL)isCollection;
 - (id)supportedLogProcessingModes;
@@ -316,6 +318,7 @@
 @property(readonly, nonatomic) BOOL isAnchored;
 @property(readonly, nonatomic) BOOL isAudioOnly;
 @property(readonly, nonatomic) BOOL isCaption;
+@property(readonly, nonatomic) BOOL isConnectedStoryline;
 @property(readonly, nonatomic) BOOL isPrimaryComponent;
 @property(readonly, nonatomic) BOOL isSecondaryComponent;
 @property(readonly, nonatomic) BOOL isSpineItem;
@@ -324,12 +327,14 @@
 @property(readonly, nonatomic) id <FFStorylineItem> nextStoryItem;
 @property(readonly, nonatomic) id <FFStorylineItem> parentStoryItem;
 @property(readonly, nonatomic) id <FFStorylineItem> previousStoryItem;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 sourceAnchorTime;
 @property(readonly, nonatomic) unsigned long long storyItemSubType;
 @property(readonly, nonatomic) unsigned long long storyItemType;
 @property(readonly, nonatomic) id <FFStoryline> storyline;
 @property(readonly, nonatomic) id <FFStorylineClip> storylineClip;
 @property(readonly, nonatomic) unsigned long long storylineRegion;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 targetAnchorTime;
 @property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
 @property(nonatomic) CDStruct_e83c9415 timeRangeInAsset;
 @property(nonatomic) long long verticalIndex;

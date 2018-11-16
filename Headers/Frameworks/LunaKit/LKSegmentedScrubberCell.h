@@ -47,6 +47,7 @@
     NSLayoutManager *_layoutManager;
     NSTextContainer *_textContainer;
     BOOL _isDisplayingPlaceHolder;
+    BOOL _isEditing;
 }
 
 + (void)getXOffset:(double *)arg1 yOffset:(double *)arg2 forFont:(id)arg3 withAlignment:(unsigned long long)arg4 inFrameWidth:(double)arg5 typesetterBehavior:(long long)arg6;
@@ -75,7 +76,6 @@
 - (BOOL)_allowFocusRing;
 - (unsigned long long)focusRingType;
 - (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (BOOL)_currentlyEditing;
 - (void)drawTableRolloverBackgroundInFrame:(struct CGRect)arg1;
 - (struct CGRect)rolloverPillRectInFrame:(struct CGRect)arg1;
 - (BOOL)showingRolloverPillIfNotScrubbing;

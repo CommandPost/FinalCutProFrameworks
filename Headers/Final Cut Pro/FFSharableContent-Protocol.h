@@ -4,9 +4,10 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFAnchoredSequence, NSWindow;
+@class FFAnchoredSequence, FFShareHelper, NSWindow;
 
 @protocol FFSharableContent
+- (FFShareHelper *)shareHelper;
 - (BOOL)supportsExcludingDisabledRolesInShareOfSequence:(FFAnchoredSequence *)arg1;
 - (NSWindow *)window;
 - (id)shareSelection:(id)arg1;

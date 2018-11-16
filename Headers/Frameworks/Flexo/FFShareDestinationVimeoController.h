@@ -6,7 +6,7 @@
 
 #import <Flexo/FFShareDestinationWebController.h>
 
-@class LKButton, LKPopUpButton, NSButton, NSDictionary, NSSecureTextField, NSString, NSTextField, NSWindow;
+@class LKButton, LKPopUpButton, NSArray, NSButton, NSDictionary, NSMapTable, NSSecureTextField, NSString, NSTextField, NSWindow;
 
 @interface FFShareDestinationVimeoController : FFShareDestinationWebController
 {
@@ -18,11 +18,11 @@
     NSSecureTextField *_password;
     NSButton *_storeInKeychain;
     NSTextField *_messageStr;
-    NSString *_nameWithUserInfo;
+    NSMapTable *_mapDestinationToNameWithUserInfo;
 }
 
 + (id)keyPathsForValuesAffectingIsPasswordBasedPrivacy;
-@property(retain, nonatomic) NSString *nameWithUserInfo; // @synthesize nameWithUserInfo=_nameWithUserInfo;
+@property(copy, nonatomic) NSMapTable *mapDestinationToNameWithUserInfo; // @synthesize mapDestinationToNameWithUserInfo=_mapDestinationToNameWithUserInfo;
 @property(nonatomic) NSTextField *messageStr; // @synthesize messageStr=_messageStr;
 @property(nonatomic) NSSecureTextField *password; // @synthesize password=_password;
 @property(nonatomic) NSTextField *username; // @synthesize username=_username;
@@ -37,12 +37,18 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(nonatomic) BOOL isPasswordBasedPrivacy;
 @property(copy, nonatomic) NSDictionary *privacy;
+@property(readonly, nonatomic) NSArray *privacyList;
+@property(nonatomic) BOOL rememberPrivacyPassword;
+@property(copy, nonatomic) NSString *privacyPassword;
 - (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)validateUsernamePassword:(id *)arg1 withDestination:(id)arg2;
 - (BOOL)validateUsernamePassword:(id *)arg1;
 - (void)dealloc;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 - (void)awakeFromNib;
-- (void)updateTitle;
+- (id)buttonTitle;
+- (void)updateTitleWithDestination:(id)arg1;
+@property(readonly, nonatomic) NSString *nameWithUserInfo;
 
 @end
 

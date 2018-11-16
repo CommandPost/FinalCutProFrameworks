@@ -4,31 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFSharePanelAudioVideoParentBrick.h>
+#import <Flexo/FFSharePanelParentBrick.h>
 
-@class NSButton, NSImageView, NSString, NSTextField;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFSharePanelMultitrackParentBrick : FFSharePanelAudioVideoParentBrick
+@interface FFSharePanelMultitrackParentBrick : FFSharePanelParentBrick
 {
-    BOOL _canAddVideoRoleOutput;
-    NSString *_typeString;
-    NSTextField *_typeLabel;
-    NSImageView *_typeIcon;
-    NSButton *_addVideoButton;
 }
 
-@property(nonatomic) NSButton *addVideoButton; // @synthesize addVideoButton=_addVideoButton;
-@property(nonatomic) NSImageView *typeIcon; // @synthesize typeIcon=_typeIcon;
-@property(nonatomic) NSTextField *typeLabel; // @synthesize typeLabel=_typeLabel;
-@property(nonatomic) BOOL canAddVideoRoleOutput; // @synthesize canAddVideoRoleOutput=_canAddVideoRoleOutput;
-@property(retain, nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
-- (void)addVideoRoleOutput:(id)arg1;
-- (void)addRoleOutput:(id)arg1;
-@property(nonatomic) BOOL canAddAudioRoleOutput; // @dynamic canAddAudioRoleOutput;
-- (id)addButtonTitleString;
-- (void)viewDidLoad;
-- (void)dealloc;
+@property(readonly, nonatomic) NSString *typeString;
+- (id)initWithDataSource:(id)arg1;
 
 @end
 

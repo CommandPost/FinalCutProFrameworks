@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)supportedOverrideAlphaModes;
 - (int)getNativeAlphaType;
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (BOOL)nativelyFloat;
 - (id)nativeVideoProps;
 - (id)renderFormat:(id)arg1;
 - (CDStruct_e83c9415)timeRange;

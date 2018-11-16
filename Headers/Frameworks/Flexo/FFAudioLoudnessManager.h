@@ -57,8 +57,7 @@ __attribute__((visibility("hidden")))
 - (float)duckLevelForMasterClip:(id)arg1;
 - (void)setDuckLevel:(float)arg1 forMasterClip:(id)arg2;
 - (id)_demandMasterClipInfo:(id)arg1;
-- (void)_sequenceUpdated;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_notifySequenceEdited:(id)arg1;
 - (void)_removeSequenceObserving;
 - (void)_addSequenceObserving;
 - (void)dealloc;

@@ -13,6 +13,7 @@
 }
 
 + (id)clipWithDataSource:(id)arg1 volume:(id)arg2;
+- (id)clipFormatName;
 - (struct opaqueCMSampleBuffer *)copyVideoSampleBufferForWriterInput:(struct opaqueCMSampleBuffer *)arg1;
 - (BOOL)isValidSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)assetImportDidEnd;

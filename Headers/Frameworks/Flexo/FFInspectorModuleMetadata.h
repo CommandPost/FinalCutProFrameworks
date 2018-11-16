@@ -98,8 +98,8 @@ __attribute__((visibility("hidden")))
 - (void)changeMetadataViewSet:(id)arg1;
 - (Class)_itemClassForMetadataDefinition:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_notifyMetaDataChange:(id)arg1;
+- (void)_notifySequenceEdited:(id)arg1;
+- (void)_notifyMetaDataChange;
 - (void)setCurrentItems:(id)arg1;
 - (void)_reloadData;
 - (void)_setupMetadataWithItems:(id)arg1;

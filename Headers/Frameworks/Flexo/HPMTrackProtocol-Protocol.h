@@ -18,10 +18,13 @@
 @property(readonly) int editRate;
 @property(retain) NSString *name;
 @property(readonly) int trackType;
-- (int)stepInPresentationOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMCursor *)arg3;
-- (int)stepInDecodeOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMCursor *)arg3;
-- (long long)decodePositionForDisplayPosition:(long long)arg1 cursor:(const struct HPMCursor *)arg2;
+- (int)stepInPresentationOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMEditCursor *)arg3;
+- (int)stepInDecodeOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMEditCursor *)arg3;
+- (long long)decodePositionForDisplayPosition:(long long)arg1 cursor:(const struct HPMEditCursor *)arg2;
 - (void)addComponent:(id <HPMComponentProtocol>)arg1;
 - (id <HPMComponentProtocol>)componentAtIndex:(unsigned long long)arg1;
+
+@optional
+- (long long)componentIndexWithPosition:(long long)arg1 componentStart:(long long *)arg2;
 @end
 

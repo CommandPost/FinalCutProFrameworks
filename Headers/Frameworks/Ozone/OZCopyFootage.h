@@ -6,29 +6,29 @@
 
 #import "NSObject.h"
 
-@class NSPanel, NSProgressIndicator, NSString, NSTextField;
+@class NSOperationQueue, NSPanel, NSProgressIndicator, NSString, NSTextField;
 
 @interface OZCopyFootage : NSObject
 {
-    struct vector<OZSceneNode *, std::__1::allocator<OZSceneNode *>> *_pFootage;
-    NSString *_pDestinationRoot;
-    BOOL _copyCanceled;
-    NSString *_pProgressActionString;
-    NSString *_pProgressRemainingString;
-    unsigned long long _totalToCopy;
-    unsigned long long _totalCopied;
-    struct PCTimer *_globalTimer;
+    NSOperationQueue *_copyQueue;
     NSPanel *_pProgressPanel;
     NSTextField *_pProgressActionText;
     NSTextField *_pProgressRemainingText;
     NSProgressIndicator *_pProgressIndicator;
+    NSString *_pProgressActionString;
+    NSString *_pProgressRemainingString;
 }
 
++ (id)progressStringWithFormat:(id)arg1 defaultTimeRemainingString:(id)arg2 elapsedTime:(double)arg3 bytesCopied:(unsigned long long)arg4 totalSizeInBytes:(unsigned long long)arg5;
++ (id)progressActionStringWithFormat:(id)arg1 fileCount:(unsigned long long)arg2 destinationPath:(id)arg3;
++ (id)timeRemainingStringFromElapsedTime:(double)arg1 bytesCopied:(unsigned long long)arg2 totalSizeInBytes:(unsigned long long)arg3;
++ (id)fileSizeStringFromNumBytes:(unsigned long long)arg1;
 + (id)sharedInstance;
-- (void)copyFootage:(CDStruct_2b00b5b2 *)arg1;
-- (void)threadedCopyFootage:(id)arg1;
 - (void)cancelCopy:(id)arg1;
-- (void)updateCopyProgressDisplay:(id)arg1;
+- (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)copyFootage:(struct NSMapTable *)arg1 destination:(id)arg2 progressBlock:(CDUnknownBlockType)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)updateDisplayedElapsedTime:(double)arg1 bytesCopied:(unsigned long long)arg2 totalSizeInBytes:(unsigned long long)arg3 defaultTimeRemainingString:(id)arg4;
+- (void)updateDisplayedProgressWithFileCount:(unsigned long long)arg1 destinationPath:(id)arg2;
 - (void)dealloc;
 - (id)init;
 

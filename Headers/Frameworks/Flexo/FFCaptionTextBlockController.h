@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFCaptionEditorTextView *textView; // @synthesize textView=_textView;
 @property(readonly, retain, nonatomic) FFCaptionTextBlock *textBlock; // @synthesize textBlock=_textBlock;
 @property(readonly, retain, nonatomic) FFAnchoredCaption *caption; // @synthesize caption=_caption;
+- (void)setSelectedRange:(struct _NSRange)arg1;
 - (void)teardownObservationAndDelegation;
 - (void)setCaptionTextBlockFromUI;
 - (long long)cellY;

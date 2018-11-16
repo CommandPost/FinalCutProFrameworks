@@ -11,6 +11,8 @@
     struct FxHostCapabilitiesPriv *_hostCapPriv;
 }
 
++ (id)getRemoteHostCapabilities;
++ (void)setRemoteHostCapabilities:(id)arg1;
 - (id)glContextPixelFormatAttributes;
 - (unsigned long long)timeBase;
 - (BOOL)supportsTemporalBitmaps;

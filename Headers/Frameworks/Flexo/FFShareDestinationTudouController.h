@@ -6,7 +6,7 @@
 
 #import <Flexo/FFShareDestinationWebController.h>
 
-@class LKButton, LKPopUpButton, NSArray, NSArrayController, NSButton, NSDictionary, NSSecureTextField, NSString, NSTextField, NSWindow;
+@class LKButton, LKPopUpButton, NSArray, NSArrayController, NSButton, NSDictionary, NSMapTable, NSSecureTextField, NSString, NSTextField, NSWindow;
 
 @interface FFShareDestinationTudouController : FFShareDestinationWebController
 {
@@ -19,10 +19,12 @@
     NSSecureTextField *_password;
     NSButton *_storeInKeychain;
     NSTextField *_messageStr;
+    NSMapTable *_mapDestinationToNameWithUserInfo;
     NSString *_nameWithUserInfo;
 }
 
-@property(retain, nonatomic) NSString *nameWithUserInfo; // @synthesize nameWithUserInfo=_nameWithUserInfo;
+@property(readonly, nonatomic) NSString *nameWithUserInfo; // @synthesize nameWithUserInfo=_nameWithUserInfo;
+@property(copy, nonatomic) NSMapTable *mapDestinationToNameWithUserInfo; // @synthesize mapDestinationToNameWithUserInfo=_mapDestinationToNameWithUserInfo;
 @property(nonatomic) NSTextField *messageStr; // @synthesize messageStr=_messageStr;
 @property(nonatomic) NSSecureTextField *password; // @synthesize password=_password;
 @property(nonatomic) NSTextField *username; // @synthesize username=_username;
@@ -39,11 +41,12 @@
 - (void)okcancelClicked:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)validateUsernamePassword:(id *)arg1 withDestination:(id)arg2;
 - (BOOL)validateUsernamePassword:(id *)arg1;
 - (void)dealloc;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 - (void)awakeFromNib;
-- (void)updateTitle;
+- (void)updateTitleWithDestination:(id)arg1;
 
 @end
 

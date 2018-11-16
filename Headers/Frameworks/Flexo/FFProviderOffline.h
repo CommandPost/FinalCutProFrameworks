@@ -6,7 +6,7 @@
 
 #import <Flexo/FFProvider.h>
 
-@class FFImage, FFMedia;
+@class FFImage, FFMedia, NSError;
 
 @interface FFProviderOffline : FFProvider
 {
@@ -20,6 +20,7 @@
     int _offlineReason;
     int _openStreamCount;
     FFImage *_consumerOfflineImages[2];
+    NSError *_consumerOfflineImageTriedButFailed[2];
     BOOL _hasConcreteMedia;
 }
 
@@ -31,6 +32,7 @@
 - (id)object;
 - (int)openStreamCount;
 - (void)_adjustStreamCount:(int)arg1;
+- (void)ensureOfflineImageForThumbnail:(BOOL)arg1 videoProps:(id)arg2 detailedDescription:(id)arg3;
 - (id)newOfflineImageForThumbnail:(BOOL)arg1 videoProps:(id)arg2 detailedDescription:(id)arg3;
 - (id)displayName;
 - (id)nativeVideoProps;
@@ -38,7 +40,7 @@
 - (void)dealloc;
 - (id)initWithMedia:(id)arg1;
 - (id)initWithMedia:(id)arg1 offlineReason:(int)arg2;
-- (BOOL)hasImageForThumb:(BOOL)arg1;
+- (BOOL)hasImageForThumb:(BOOL)arg1 retError:(id *)arg2;
 - (id)_imageForOfflineReason:(int)arg1 wants4x3:(BOOL)arg2 forThumbnail:(BOOL)arg3 detailedDescription:(id)arg4;
 - (id)_origImageForOfflineReason:(int)arg1 wants4x3:(BOOL)arg2 forThumbnail:(BOOL)arg3 detailedDescription:(id)arg4;
 - (id)_detailedDescriptionForOfflineReason:(int)arg1;

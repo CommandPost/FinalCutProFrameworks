@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     FFEffect *_effectPreviewEffect;
     FFEffectStack *_effectPreviewEffectStack;
     FFMediaEventDocument *_effectPreviewDocument;
+    FFAnchoredObject *_effectPreviewObservedObject;
     NSMutableDictionary *_skimmableCache;
     BOOL _isDragging;
     FFEffectLibraryItemView *_hitView;
@@ -66,6 +67,8 @@ __attribute__((visibility("hidden")))
 - (void)mouseEntered:(id)arg1;
 - (struct CGPoint)_convertCollectionViewPointToSkimmingLayerPoint:(struct CGPoint)arg1 forEffectItemView:(id)arg2;
 - (id)_effectItemViewForPoint:(struct CGPoint)arg1;
+- (void)_effectPreviewObservedObjectChanged:(id)arg1;
+- (void)_cleanupEffectPreview;
 - (void)setupEffectPreviewSelectedClip;
 - (struct CGRect)skimmingModule:(id)arg1 videoThumbnailFrameForLayer:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (BOOL)skimmingModuleShowVideoThumbnail:(id)arg1;
@@ -104,7 +107,6 @@ __attribute__((visibility("hidden")))
 - (void)windowDidResignKey:(id)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;
-- (void)_cleanupEffectPreview;
 - (void)viewDidChangeBackingProperties;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 

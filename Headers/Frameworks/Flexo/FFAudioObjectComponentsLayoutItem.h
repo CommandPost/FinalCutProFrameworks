@@ -24,7 +24,6 @@
 @property(readonly, nonatomic) struct PC_CMTimePair scopeStartEndTimes; // @synthesize scopeStartEndTimes=_scopeStartEndTimes;
 @property(readonly, nonatomic) FFEffectStack *effectStack; // @synthesize effectStack=_effectStack;
 @property(readonly, nonatomic) int itemType; // @synthesize itemType=_itemType;
-@property(readonly, nonatomic) FFRole *role; // @synthesize role=_role;
 @property(readonly, nonatomic) BOOL muted; // @synthesize muted=_muted;
 @property(readonly, nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 - (BOOL)isOrphanEligible;
@@ -40,6 +39,7 @@
 - (id)orphanedRoleName;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (unsigned int)numOutputChannels:(unsigned int)arg1;
+- (id)role;
 - (BOOL)isEquivalentLayoutItemUsingOrphanCriteria:(id)arg1;
 - (id)equivalencePropertiesForVersion:(unsigned int)arg1;
 - (CDStruct_bdcb2b0d)equivalenceMD5;

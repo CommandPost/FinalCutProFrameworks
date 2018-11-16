@@ -43,6 +43,7 @@
 - (void)matchDone:(id)arg1;
 - (void)_enableApplyButton:(BOOL)arg1;
 - (id)playerAccessoryView;
+- (void)footerNeedsUpdate:(id)arg1;
 - (id)playerFooterView;
 - (BOOL)isMatchTool;
 - (BOOL)isModalTool;

@@ -7,11 +7,6 @@
 #import "NSColor.h"
 
 @interface NSColor (RCAdditions)
-+ (id)violetColor;
-+ (id)navyColor;
-+ (id)greyColor;
-+ (id)goldColor;
-+ (id)colorFromString:(id)arg1 inColorSpace:(id)arg2;
 + (id)colorFromrgbaDictionary:(id)arg1;
 + (id)colorWithLeopardR:(int)arg1 G:(int)arg2 B:(int)arg3 alpha:(float)arg4;
 + (id)colorWithR:(int)arg1 G:(int)arg2 B:(int)arg3 alpha:(float)arg4;

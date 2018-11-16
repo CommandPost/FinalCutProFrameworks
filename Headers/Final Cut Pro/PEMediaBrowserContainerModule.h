@@ -6,14 +6,13 @@
 
 #import "LKTabModule.h"
 
-#import "FFEditActionSourceProtocol.h"
 #import "FFEffectLibraryModuleDelegate.h"
 #import "FFOrganizerDelegate.h"
 #import "FFOrganizerSkimmingDelegate.h"
 
 @class FFContentBrowserWrapperModule, LKButton, LKTextField, NSNumber, NSString, NSView;
 
-@interface PEMediaBrowserContainerModule : LKTabModule <FFEditActionSourceProtocol, FFOrganizerDelegate, FFOrganizerSkimmingDelegate, FFEffectLibraryModuleDelegate>
+@interface PEMediaBrowserContainerModule : LKTabModule <FFOrganizerDelegate, FFOrganizerSkimmingDelegate, FFEffectLibraryModuleDelegate>
 {
     NSNumber *_desiredModePostLayout;
     int _mode;
@@ -29,12 +28,6 @@
     BOOL _observingTimeline;
 }
 
-- (struct CGRect)animationStartRectForEditAction:(id)arg1;
-- (id)animationViewForEditAction:(id)arg1;
-- (struct CGImage *)newAnimationImageForEditAction:(id)arg1;
-- (BOOL)writeDataForEditAction:(id)arg1 toPasteboardWithName:(id)arg2;
-- (id)dataForEditAction:(id)arg1;
-- (BOOL)canSourceDataForEditAction:(id)arg1;
 - (void)didFinishRelinkingForOrganizerModule:(id)arg1;
 - (void)willBeginRelinkingForOrganizerModule:(id)arg1;
 - (void)writeSelectionToPasteboard:(id)arg1;
@@ -67,9 +60,7 @@
 - (void)hideMediaBrowser:(id)arg1;
 - (void)selectBrowserMode:(id)arg1;
 - (void)selectThemesMode:(id)arg1;
-- (void)selectGeneratorsMode:(id)arg1;
 - (void)selectTransitionsMode:(id)arg1;
-- (void)selectTitlesMode:(id)arg1;
 - (void)selectEffectsMode:(id)arg1;
 - (void)selectBrowserModeCore:(int)arg1;
 - (unsigned long long)labelAlignment;

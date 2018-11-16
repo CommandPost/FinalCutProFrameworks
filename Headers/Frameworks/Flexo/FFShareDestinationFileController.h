@@ -42,7 +42,7 @@
 @property(nonatomic) id <CKStompSetting> selectedAudioSetting;
 - (void)dealloc;
 - (void)awakeFromNib;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 
 @end
 

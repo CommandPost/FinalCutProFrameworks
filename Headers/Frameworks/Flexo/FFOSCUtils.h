@@ -6,13 +6,13 @@
 
 #import "NSObject.h"
 
-__attribute__((visibility("hidden")))
 @interface FFOSCUtils : NSObject
 {
 }
 
 + (id)newWrapTextArray:(id)arg1 textAttributes:(id)arg2 textRectWidth:(double)arg3 playerView:(id)arg4;
 + (void)drawImage:(id)arg1 intoGLContext:(struct _CGLContextObject *)arg2 atPoint:(struct CGPoint)arg3;
++ (id)newClipDisplayObjectArrayFromObjects:(id)arg1 container:(id)arg2 time:(CDStruct_1b6d18a9)arg3 selectedItems:(id)arg4 selectionImplicit:(BOOL)arg5 timeCodeProjectColor:(id)arg6 requestedRoles:(id)arg7;
 + (void)initialize;
 + (void)registerForNSUD:(id)arg1;
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

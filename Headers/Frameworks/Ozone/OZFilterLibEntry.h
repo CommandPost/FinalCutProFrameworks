@@ -13,9 +13,11 @@
     NSString *_previewName;
 }
 
++ (BOOL)supportsSecureCoding;
 + (void)buildInternalTreeWithRoot:(id)arg1;
 + (BOOL)FCPOnlyFilter:(Class)arg1;
 + (BOOL)groupContainsValidPlugins:(id)arg1;
++ (BOOL)isDynamicOrRemote:(id)arg1;
 - (id)getSmallPreviewIconForEntry:(BOOL)arg1;
 - (id)getPreviewMovie;
 - (int)getPreviewType;
@@ -25,6 +27,8 @@
 - (BOOL)getPasteEntries:(struct OZPasteList *)arg1;
 - (BOOL)shouldBeArchived;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithParent:(id)arg1 name:(id)arg2 factory:(struct OZFactory *)arg3;
 
 @end

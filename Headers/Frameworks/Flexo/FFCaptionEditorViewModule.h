@@ -45,6 +45,8 @@
 @property(nonatomic) NSStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) FFCaptionSharedHeader *header; // @synthesize header=_header;
 @property(retain, nonatomic) NSView *firstKeyView; // @synthesize firstKeyView=_firstKeyView;
+- (void)selectPreviousTextView:(id)arg1;
+- (void)selectNextTextView:(id)arg1;
 - (void)handleEnterOrFunctionReturnKeysPressed;
 - (void)roleWillChange;
 - (void)roleDidChange;

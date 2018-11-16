@@ -22,6 +22,7 @@
     int _writeLockCount;
     _Bool _deferredWritePending;
     NSMutableArray *_deferredWantToWriteBlocks;
+    _Bool _deferredWriteQueueIsSuspended;
     NSObject<OS_dispatch_queue> *_deferredWriteQueue;
     void *_deferredWriteOverrides;
     int _disableDeferredWritePrioritization;
@@ -47,6 +48,7 @@
 - (void)_updateDeferredWriteOverrides;
 - (unsigned long long)collectThreadsBlockingRead:(struct FFThread **)arg1 maxCount:(unsigned long long)arg2;
 - (unsigned long long)collectThreadsBlockingWrite:(struct FFThread **)arg1 maxCount:(unsigned long long)arg2;
+- (void)_updateDWQStateWhileHoldingGuard;
 - (void)dealloc;
 - (id)init;
 

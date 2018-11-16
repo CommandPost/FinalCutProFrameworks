@@ -6,14 +6,15 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface PAEMD5Value : NSObject <NSCoding, NSCopying>
+@interface PAEMD5Value : NSObject <NSSecureCoding, NSCopying>
 {
     struct PCHash128State _state;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)MD5WithArray:(id)arg1;
 + (id)MD5WithMD5s:(id)arg1;
 + (id)MD5WithMD5s:(id *)arg1 count:(unsigned long long)arg2;

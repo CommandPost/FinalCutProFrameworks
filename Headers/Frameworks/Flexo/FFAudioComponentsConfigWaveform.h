@@ -41,9 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)skimmingModule:(id)arg1 skimmingLensLayerForSkimmingLayer:(id)arg2;
 - (id)skimmingModule:(id)arg1 skimmingLayerForSkimmable:(struct NSObject *)arg2;
 - (void)mouseDown:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseEntered:(id)arg1;
+- (void)updateWaveformSkimming:(id)arg1;
 - (void)shutdownSkimming;
 - (void)notifyPendingRebuildWaveform;
 - (BOOL)needsRebuildWaveform;

@@ -8,28 +8,29 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class LKModuleLayoutManager, NSButton, NSString, NSTextField;
+@class LKModuleLayoutDisplayName, NSButton, NSString, NSTextField;
 
 @interface LKCreateLayoutDialog : NSWindowController <NSTextFieldDelegate>
 {
-    LKModuleLayoutManager *_layoutManager;
+    id <LKCreateLayoutDialogDelegate> _delegate;
+    LKModuleLayoutDisplayName *_suggestedLayoutName;
+    LKModuleLayoutDisplayName *_displayName;
     NSButton *_cancelButton;
     NSButton *_saveButton;
-    NSTextField *_layoutName;
-    NSTextField *_description;
+    NSTextField *_layoutNameTextField;
+    NSTextField *_descriptionTextField;
 }
 
-@property(retain, nonatomic) LKModuleLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
+@property(copy, nonatomic) LKModuleLayoutDisplayName *displayName; // @synthesize displayName=_displayName;
+@property(copy, nonatomic) LKModuleLayoutDisplayName *suggestedLayoutName; // @synthesize suggestedLayoutName=_suggestedLayoutName;
+@property(nonatomic) id <LKCreateLayoutDialogDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)controlTextDidChange:(id)arg1;
 - (void)cancel:(id)arg1;
 - (void)save:(id)arg1;
-- (void)saveLayoutWithName:(id)arg1 displayName:(id)arg2 keyEquivalent:(id)arg3;
 - (void)windowDidLoad;
 - (void)awakeFromNib;
 - (long long)runModal;
-- (void)prepareUniqueLayoutName;
 - (void)dealloc;
-- (id)initWithWindowNibName:(id)arg1;
 - (id)init;
 
 // Remaining properties

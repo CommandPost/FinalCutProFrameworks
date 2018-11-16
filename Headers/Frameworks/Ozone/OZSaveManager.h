@@ -10,7 +10,7 @@
 
 @interface OZSaveManager : NSObject
 {
-    struct vector<OZSceneNode *, std::__1::allocator<OZSceneNode *>> *_footageList;
+    struct NSMapTable *_fileURLToFootageInfoMap;
     BOOL _includeUnused;
     unsigned int _saveMethod;
     unsigned int _saveTemplateMethod;
@@ -18,15 +18,15 @@
 }
 
 + (id)sharedInstance;
-@property BOOL includeUnused; // @synthesize includeUnused=_includeUnused;
-@property unsigned int saveTemplateMethod; // @synthesize saveTemplateMethod=_saveTemplateMethod;
-@property unsigned int saveMethod; // @synthesize saveMethod=_saveMethod;
-@property OZObjCDocument *doc; // @synthesize doc=_doc;
-- (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (unsigned int)footageListSize;
+@property(nonatomic) BOOL includeUnused; // @synthesize includeUnused=_includeUnused;
+@property(nonatomic) unsigned int saveTemplateMethod; // @synthesize saveTemplateMethod=_saveTemplateMethod;
+@property(nonatomic) unsigned int saveMethod; // @synthesize saveMethod=_saveMethod;
+@property(nonatomic) OZObjCDocument *doc; // @synthesize doc=_doc;
+- (unsigned long long)footageListSize;
 - (unsigned long long)mediaSize;
+- (void)deleteUnusedFootage;
 - (BOOL)findExternalMediaForDocument:(id)arg1;
-- (void)buildFootageListForDocument:(id)arg1;
+- (void)buildFootageListForDocument:(id)arg1 destination:(id)arg2;
 - (void)collectMediaToDirectory:(id)arg1;
 - (BOOL)collectForTemplate:(id)arg1;
 - (void)collectForSaveAs:(id)arg1;

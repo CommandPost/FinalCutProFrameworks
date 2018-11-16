@@ -15,6 +15,7 @@
     unsigned long long _selectedVideoStompSettingIndex;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)videoStompSettings;
 + (id)audioStompSettings;
 + (long long)defaultSelectedVideoStompSettingIndex;

@@ -38,8 +38,8 @@ __attribute__((visibility("hidden")))
     CHChannelBase *_channel;
     CHChannelFolder *_rootChannel;
     NSArray *_channels;
-    vector_3f7ffb82 _samplesY;
-    vector_4f732a7b _samplesX;
+    vector_b67dfe3a _samplesY;
+    vector_0821a7d5 _samplesX;
     unsigned int _numberOfSamples;
     BOOL _dirty;
     FFCurveEditorSelection *_selection;

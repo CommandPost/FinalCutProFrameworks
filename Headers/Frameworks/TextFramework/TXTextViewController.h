@@ -42,6 +42,7 @@
 - (void)appendResizeView;
 - (id)findMotionEffect;
 - (void)notify:(unsigned int)arg1;
+- (void)updateTextViewStringIfAffectedByRig;
 - (void)textSelectionChanged:(id)arg1;
 - (struct TXTextInput *)text;
 - (void)textDeleted:(id)arg1;

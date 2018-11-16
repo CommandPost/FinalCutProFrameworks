@@ -162,6 +162,7 @@
 - (void)mediaIdentifier:(id)arg1 performBlockWithMediaWhenReady:(CDUnknownBlockType)arg2;
 - (BOOL)performMediaReadyBlocksIsOK;
 - (void)performMediaReadyBlocksIfPossible;
+- (id)comparedObjects;
 - (void)_rebindAssetIdentifiers:(id)arg1;
 - (BOOL)nonProxyMediaExistsInLibrary:(id)arg1;
 - (BOOL)mediaIdentifierExistsInLibrary:(id)arg1;
@@ -229,6 +230,11 @@
 - (id)sequencesBeingShared;
 @property(readonly, nonatomic) FFMediaEventFolder *folder;
 @property(readonly, nonatomic) FFMediaEventProject *event;
+- (id)objectSpecifier;
+- (id)uniqueIdentifier;
+- (id)events;
+- (id)containerPropertyName;
+- (id)containerObject;
 - (id)itemIconSelected:(BOOL)arg1;
 - (id)itemIcon;
 - (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;

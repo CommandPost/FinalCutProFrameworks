@@ -19,8 +19,9 @@
 @property(nonatomic) LKButton *wifiBtn; // @synthesize wifiBtn=_wifiBtn;
 @property(nonatomic) LKButton *cellularBtn; // @synthesize cellularBtn=_cellularBtn;
 - (void)toggleSelectedSetting:(id)arg1;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 - (void)awakeFromNib;
+- (long long)controlStateWithStompIndex:(unsigned long long)arg1;
 
 @end
 

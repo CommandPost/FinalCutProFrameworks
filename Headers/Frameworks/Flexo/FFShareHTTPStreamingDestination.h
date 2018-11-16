@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)setting;
 + (id)defaultName;
 + (id)defaultDestinationURL;

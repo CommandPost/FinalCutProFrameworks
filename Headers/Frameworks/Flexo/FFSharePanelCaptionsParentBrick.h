@@ -6,22 +6,18 @@
 
 #import <Flexo/FFSharePanelBrick.h>
 
-@class NSPopUpButton, NSTextField;
-
 __attribute__((visibility("hidden")))
 @interface FFSharePanelCaptionsParentBrick : FFSharePanelBrick
 {
-    NSTextField *_countLabel;
-    NSPopUpButton *_timingModeButton;
+    int _timingMode;
     unsigned long long _count;
 }
 
+@property(nonatomic) int timingMode; // @synthesize timingMode=_timingMode;
 @property(nonatomic) unsigned long long count; // @synthesize count=_count;
-@property(nonatomic) NSPopUpButton *timingModeButton; // @synthesize timingModeButton=_timingModeButton;
-@property(nonatomic) NSTextField *countLabel; // @synthesize countLabel=_countLabel;
-- (void)chooseTimingMode:(id)arg1;
-- (void)viewDidLoad;
-- (id)init;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)dealloc;
+- (id)initWithDataSource:(id)arg1;
 
 @end
 

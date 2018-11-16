@@ -34,7 +34,7 @@
 + (id)newRoleChangeOperationForMediaReplacement:(id)arg1 withNewMedia:(id)arg2;
 + (id)newRoleChangeOperationForMulticamDeleteAngle:(id)arg1 angleID:(id)arg2;
 + (id)newRoleChangeOperationForMulticamAudioAngleSwitchTo:(id)arg1 forObjects:(id)arg2;
-+ (id)newRoleChangeOperationForReplaceEditActionWithPasteboard:(id)arg1 replaceActionType:(int)arg2 trackType:(id)arg3 selectedObject:(id)arg4;
++ (id)newRoleChangeOperationForReplaceEditActionWithPasteboard:(id)arg1 replaceActionType:(int)arg2 trackType:(id)arg3 objectsToReplace:(id)arg4;
 + (id)newRoleChangeOperationForBreakApartClips:(id)arg1;
 + (id)newRoleChangeOperationForAddEffectsForObjects:(id)arg1;
 + (id)newRoleChangeOperationForMixdownToRoleGroup:(BOOL)arg1 forObjects:(id)arg2;

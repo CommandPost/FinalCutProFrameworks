@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *payload; // @synthesize payload=_payload;
 @property(nonatomic) int state; // @synthesize state=_state;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
-@property(nonatomic) __weak FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
+@property(retain, nonatomic) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
 @property(retain, nonatomic) NSData *resumeData; // @synthesize resumeData=_resumeData;
 @property(retain, nonatomic) NSURL *temporaryFileURL; // @synthesize temporaryFileURL=_temporaryFileURL;
 @property(retain, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;

@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)columnForID:(id)arg1;
 - (id)searchTooltip;
 - (void)reloadData;
+- (void)tableDoubleClickAction:(id)arg1;
 - (void)changeCaptionsFilterType:(id)arg1;
 - (void)toggleEndTimeColumn:(id)arg1;
 - (void)toggleStartTimeColumn:(id)arg1;

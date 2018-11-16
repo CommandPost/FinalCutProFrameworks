@@ -6,7 +6,12 @@
 
 #import "NSObject.h"
 
+@class NSBundle, NSString, NSURL;
+
 @protocol FxHostPrivateAPI <NSObject>
+- (NSURL *)URLForHostResource:(NSString *)arg1 withExtension:(NSString *)arg2 subDirectory:(NSString *)arg3 inBundleWithURL:(NSURL *)arg4;
+- (NSURL *)URLForHostResource:(NSString *)arg1 withExtension:(NSString *)arg2 subDirectory:(NSString *)arg3 inBundleWithIdentifier:(NSString *)arg4;
+- (NSURL *)URLForHostResource:(NSString *)arg1 withExtension:(NSString *)arg2 subDirectory:(NSString *)arg3 inBundle:(NSBundle *)arg4;
 - (BOOL)giveEffectUIFocus;
 - (BOOL)navigateToTime:(CDUnion_2516e51e)arg1;
 @end

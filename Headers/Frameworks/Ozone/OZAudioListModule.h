@@ -8,7 +8,7 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class LKButton, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSArrayController, NSBox, NSButton, NSCollectionViewItem, NSImageView, NSLayoutConstraint, NSMutableArray, NSPredicate, NSScrollView, NSSlider, NSString, NSTimer, NSView, OZAudioListCollectionView, OZAudioListPrototypeView, OZAudioPeakMeter;
+@class LKButton, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSArrayController, NSBox, NSButton, NSCollectionViewItem, NSImageView, NSLayoutConstraint, NSMutableArray, NSPredicate, NSScrollView, NSSlider, NSString, NSTimer, NSView, OZAudioListCollectionView, OZAudioListPrototypeView, OZAudioNodeWrapper, OZAudioPeakMeter;
 
 @interface OZAudioListModule : OZProViewModule <NSTextFieldDelegate>
 {
@@ -65,12 +65,13 @@
     NSMutableArray *_masterTracksArray;
     BOOL _dropClone;
     BOOL _dropReplace;
-    id _placeholderAudioNode;
     NSTimer *_meteringTimer;
     NSLayoutConstraint *_masterContainerViewBottomToBorderedViewTopConstraint;
     NSLayoutConstraint *_searchSlideUpBottomConstraint;
+    OZAudioNodeWrapper *_placeholderAudioNode;
 }
 
+@property(retain, nonatomic) OZAudioNodeWrapper *placeholderAudioNode; // @synthesize placeholderAudioNode=_placeholderAudioNode;
 @property(retain, nonatomic) NSLayoutConstraint *searchSlideUpBottomConstraint; // @synthesize searchSlideUpBottomConstraint=_searchSlideUpBottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *masterContainerViewBottomToBorderedViewTopConstraint; // @synthesize masterContainerViewBottomToBorderedViewTopConstraint=_masterContainerViewBottomToBorderedViewTopConstraint;
 @property(retain, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;

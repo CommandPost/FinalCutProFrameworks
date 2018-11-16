@@ -162,6 +162,7 @@ __attribute__((visibility("hidden")))
 - (void)addStabilizationAdjustment:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
 - (void)addBlendAdjustment:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
 - (void)addCropInfo:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
+- (void)addOrientationAdjustment:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
 - (void)add360TransformAdjustment:(id)arg1 effectStack:(id)arg2 toObject:(id)arg3;
 - (void)addAdjustment:(id)arg1 type:(CDUnknownFunctionPointerType)arg2 effectStack:(id)arg3 toObject:(id)arg4;
 - (void)addAttributes:(id)arg1 map:(id)arg2 toObject:(id)arg3;

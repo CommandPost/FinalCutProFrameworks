@@ -32,17 +32,19 @@
     LKTextField *_templatePathTF;
     LKPopUpButton *_saveOptionsPopup;
     LKButton *_skipPreviewsButton;
-    LKButton *_skipSavingUIButton;
     LKPopUpButton *_kernelType;
     LKSlider *_supersamples;
     LKTextField *_sceneHashTF;
     LKButton *_allowDropZoneAsPlaceholderButton;
+    LKButton *_allowAnimatedStillsButton;
+    LKButton *_doNotSaveUISettingsButton;
 }
 
 + (id)sharedController;
+- (void)doNotSaveUISettings:(id)arg1;
+- (void)allowAnimatedStills:(id)arg1;
 - (void)allowDropZoneAsPlaceholder:(id)arg1;
 - (void)updateSceneHash:(id)arg1;
-- (void)skipSavingUISettings:(id)arg1;
 - (void)skipTemplatePreviews:(id)arg1;
 - (void)generateTemplatePreviews:(id)arg1;
 - (void)chooseTemplatePath:(id)arg1;

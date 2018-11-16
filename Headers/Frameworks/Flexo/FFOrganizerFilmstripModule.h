@@ -107,10 +107,12 @@
     CATextLayer *_trailerButtonLabel;
     CATextLayer *_importButtonLabel;
     CATextLayer *_emptyProjectModeInstructions;
+    NSMenuItem *_projectShareMenuItem;
 }
 
 + (id)viewTypeMenuLabel;
 + (id)keyPathsForValuesAffectingSelectedItems;
+@property NSMenuItem *projectShareMenuItem; // @synthesize projectShareMenuItem=_projectShareMenuItem;
 @property(nonatomic) CATextLayer *emptyProjectModeInstructions; // @synthesize emptyProjectModeInstructions=_emptyProjectModeInstructions;
 @property(nonatomic) CATextLayer *importButtonLabel; // @synthesize importButtonLabel=_importButtonLabel;
 @property(nonatomic) CATextLayer *trailerButtonLabel; // @synthesize trailerButtonLabel=_trailerButtonLabel;
@@ -280,6 +282,7 @@
 - (CDStruct_1b6d18a9)_findSmallestStartingTime:(id)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 dropFrame:(long long)arg3;
 - (id)createNewProjectWithSelection;
 - (id)createNewProject;
+- (void)dummyShareAction:(id)arg1;
 - (void)newProjectWithSelection:(id)arg1;
 - (void)newProject:(id)arg1;
 - (void)createCompoundClip:(id)arg1;
@@ -533,6 +536,9 @@
 - (id)mediaRangesForClipArray:(id)arg1;
 - (BOOL)supportsExcludingDisabledRolesInShareOfSequence:(id)arg1;
 - (void)shareDestinationPicker:(id)arg1;
+- (BOOL)doesRangeObjectHaveMedia:(id)arg1;
+- (id)predicateRemovingEmptyShareItems;
+- (id)filterShareSelectionRemovingEmptyItems:(id)arg1;
 - (id)shareSelection:(id)arg1;
 - (double)maxItemSize;
 - (double)minItemSize;
@@ -630,6 +636,7 @@
 - (BOOL)shouldFocusSearchFieldWhenInstalled;
 - (BOOL)shouldShowHUDButton;
 - (id)contextualMenuForSelection:(id)arg1;
+- (void)setupShareMenuForItem:(id)arg1;
 - (id)lastKeyView;
 - (id)firstKeyView;
 - (void)updateItemsString;

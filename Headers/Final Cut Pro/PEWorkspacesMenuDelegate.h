@@ -12,14 +12,14 @@
 
 @interface PEWorkspacesMenuDelegate : NSObject <NSMenuDelegate>
 {
-    NSMenu *workspacesMenu;
-    NSMenuItem *workspacesSeparator;
+    NSMenu *_workspacesMenu;
+    NSMenuItem *_workspacesSeparator;
 }
 
-@property(retain, nonatomic) NSMenuItem *workspacesSeparator; // @synthesize workspacesSeparator;
-@property(retain, nonatomic) NSMenu *workspacesMenu; // @synthesize workspacesMenu;
+@property(retain, nonatomic) NSMenuItem *workspacesSeparator; // @synthesize workspacesSeparator=_workspacesSeparator;
+@property(retain, nonatomic) NSMenu *workspacesMenu; // @synthesize workspacesMenu=_workspacesMenu;
 - (void)populateWorkspacesMenu:(id)arg1 withSeparator:(id)arg2;
-- (void)partialPopulateWorkspacesMenu:(id)arg1 withDirectory:(id)arg2 keyboardShortcutIndex:(unsigned long long *)arg3;
+- (void)partialPopulateWorkspacesMenu:(id)arg1 withCategory:(int)arg2;
 - (id)nextWorkspaceKeyEquivalent:(unsigned long long *)arg1;
 - (unsigned long long)nextWorkspaceKeyModifierMask:(unsigned long long)arg1;
 - (void)stripMenuItemsBefore:(id)arg1 forMenu:(id)arg2;

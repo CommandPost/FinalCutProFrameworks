@@ -16,14 +16,15 @@ __attribute__((visibility("hidden")))
     NSArray *_iconViews;
     NSArray *_labelViews;
     NSPopover *_hostingPopover;
-    id <CKStompSetting> _setting;
+    NSArray *_settings;
 }
 
++ (id)sharedCompatibilityViewControllerWithSettings:(id)arg1;
 + (id)sharedCompatibilityViewControllerWithSetting:(id)arg1;
 + (id)sharedCompatibilityViewController;
 @property(retain, nonatomic) NSArray *labelViews; // @synthesize labelViews=_labelViews;
 @property(retain, nonatomic) NSArray *iconViews; // @synthesize iconViews=_iconViews;
-@property(retain, nonatomic) id <CKStompSetting> setting; // @synthesize setting=_setting;
+@property(retain, nonatomic) NSArray *settings; // @synthesize settings=_settings;
 - (void)close;
 - (void)showRelativeToRect:(struct CGRect)arg1 ofView:(id)arg2 preferredEdge:(unsigned long long)arg3;
 - (void)dealloc;

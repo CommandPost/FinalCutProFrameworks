@@ -11,7 +11,7 @@
 @interface MEBackgroundLoadStylePreviewRequest : FFBackgroundLoadRequest
 {
     shared_ptr_e0e110e1 _style;
-    list_752fd9b9 _dependentObjs;
+    list_e89ce44a _dependentObjs;
     struct OZRenderNode *_node;
     NSObject<MEBackgroundLoadPreviewClient> *_client;
     NSImage *_previewImage;
@@ -29,10 +29,10 @@
 - (void).cxx_destruct;
 - (void)executeRequestOnTask:(id)arg1;
 - (void)setPreviewBlock:(CDUnknownBlockType)arg1 node:(struct OZRenderNode *)arg2;
-- (void)setDependentObjects:(list_752fd9b9 *)arg1;
+- (void)setDependentObjects:(list_e89ce44a *)arg1;
 - (void)setStyle:(const shared_ptr_e0e110e1 *)arg1;
 - (void)dealloc;
-- (id)initWithStyle:(const shared_ptr_e0e110e1 *)arg1 dependentObjects:(list_752fd9b9 *)arg2 client:(id)arg3;
+- (id)initWithStyle:(const shared_ptr_e0e110e1 *)arg1 dependentObjects:(list_e89ce44a *)arg2 client:(id)arg3;
 
 @end
 

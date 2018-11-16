@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     FFSchedInfo *_schedInfo;
     PCMatrix44Double *_downstreamPT;
     int _maxPrioritySeen;
-    _Bool _enableNoMotionCompensation;
+    _Bool _disableMotionCompensation;
     struct FFThread *_flatteningThread;
     CDStruct_1b6d18a9 _t1;
     CDStruct_1b6d18a9 _t2;
@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedCache;
-+ (id)newDeinterlaceTokenBySchedulingOrCacheLookup:(id)arg1 inStream:(id)arg2 key:(CDStruct_bdcb2b0d)arg3 time:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 context:(id)arg6 schedInfo:(id)arg7 downstreamPT:(id)arg8 isScheduling:(BOOL)arg9 enableNoMotionCompensation:(_Bool)arg10;
++ (id)newDeinterlaceTokenBySchedulingOrCacheLookup:(id)arg1 inStream:(id)arg2 key:(CDStruct_bdcb2b0d)arg3 time:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 context:(id)arg6 schedInfo:(id)arg7 downstreamPT:(id)arg8 isScheduling:(BOOL)arg9 disableMotionCompensation:(_Bool)arg10;
 + (void)initialize;
 - (void)_libraryClosed:(id)arg1;
 - (void)_removeLibraryClosedObserving;
@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (id)copyDeinterlacedImageWithBuildInfo:(id)arg1;
 - (id)_newRepresentationalImage;
 - (void)_ensureUnderlyingImages:(id)arg1;
+- (id)_lockableModelObject:(id)arg1;
 - (void)_scheduleInputSources;
 - (void)_setupInputPixelFormatInfo;
 - (id)_copyInputPixelFormatInfoRetHeliumFormat:(int *)arg1 retycbcrFormat:(int *)arg2 retWorkingSpace:(int *)arg3;
@@ -76,7 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)addEntriesFromDictionary:(id)arg1;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 inputStream:(id)arg2 key:(CDStruct_bdcb2b0d)arg3 time:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 context:(id)arg6 schedInfo:(id)arg7 downstreamPT:(id)arg8 enableNoMotionCompensation:(_Bool)arg9;
+- (id)initWithStream:(id)arg1 inputStream:(id)arg2 key:(CDStruct_bdcb2b0d)arg3 time:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 context:(id)arg6 schedInfo:(id)arg7 downstreamPT:(id)arg8 disableMotionCompensation:(_Bool)arg9;
 
 @end
 

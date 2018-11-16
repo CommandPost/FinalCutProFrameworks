@@ -7,11 +7,12 @@
 #import "NSDocumentController.h"
 
 @interface NSDocumentController (OZAdditions)
++ (id)previouslyOpenDocumentsOrLastOpenDocument;
 - (void)generateTemplatePreviewsInDirectory:(id)arg1 withSaveOptions:(int)arg2;
 - (void)restoreDocumentFromAutosave:(id)arg1 setDocFileURL:(id)arg2 setDocType:(int)arg3;
 - (void)updateAutosaveVault;
 - (void)releaseResourcesOfDocuments;
 - (void)savePathsOfOpenDocuments;
-- (void)openPreviouslyOpenDocuments;
+- (id)openPreviouslyOpenDocuments;
 @end
 

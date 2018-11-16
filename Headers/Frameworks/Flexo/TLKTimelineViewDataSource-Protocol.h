@@ -51,7 +51,6 @@
 - (BOOL)timelineView:(TLKTimelineView *)arg1 shouldOrderItem:(id <TLKTimelineItem>)arg2 aboveItems:(NSArray *)arg3 belowItems:(NSArray *)arg4 besideItems:(NSArray *)arg5;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 shouldAnchorItems:(NSArray *)arg2 inContainer:(id <TLKTimelineItem>)arg3 byAnchoringItem:(id <TLKTimelineItem>)arg4 inLane:(id)arg5 atTime:(CDStruct_1b6d18a9)arg6;
 - (id <TLKTimelineItem>)timelineView:(TLKTimelineView *)arg1 prepareItemAsContainer:(id <TLKTimelineItem>)arg2 forMovingItems:(NSArray *)arg3 toIndex:(unsigned long long)arg4 atTime:(CDStruct_1b6d18a9)arg5;
-- (NSArray *)timelineView:(TLKTimelineView *)arg1 filterOutLeadingTrailingTransitions:(NSArray *)arg2;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 shouldMoveItems:(NSArray *)arg2 byPlacingItem:(id <TLKTimelineItem>)arg3 inContainer:(id <TLKTimelineItem>)arg4 atIndex:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 shouldRollEdge:(NSString *)arg2 ofRangeItem:(id)arg3 toTime:(CDStruct_1b6d18a9 *)arg4;
 - (void)timelineView:(TLKTimelineView *)arg1 willRollEdge:(NSString *)arg2 ofItem:(id)arg3 adjacentItem:(id)arg4;

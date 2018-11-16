@@ -6,7 +6,7 @@
 
 #import <Flexo/FFMediaSidebarController.h>
 
-@class NSMutableSet;
+@class NSIndexSet, NSMutableSet, NSTimer;
 
 @interface FFEventMediaSidebarController : FFMediaSidebarController
 {
@@ -14,7 +14,10 @@
     NSMutableSet *_nonEmptyMediaManagers;
     NSMutableSet *_emptyMediaManagers;
     long long _nodeSet;
+    NSIndexSet *_indexToSpringLoad;
+    NSTimer *_springLoadingTimer;
     BOOL _observingEventProjectDataDidLoad;
+    BOOL _shouldReturnToSourceSidebar;
     BOOL _silenceSelectionChange;
     BOOL _showYears;
     int _sortType;
@@ -47,11 +50,15 @@
 - (id)outlineView:(id)arg1 toolTipForCell:(id)arg2 rect:(struct CGRect *)arg3 tableColumn:(id)arg4 item:(id)arg5 mouseLocation:(struct CGPoint)arg6;
 - (id)outlineView:(id)arg1 selectionIndexesForProposedSelection:(id)arg2;
 - (void)outlineViewSelectionDidChangeAutonomously:(id)arg1;
+- (void)outlineViewSelectionIsChanging:(id)arg1;
 - (void)outlineViewRootDidRepopulate:(id)arg1;
 - (void)outlineViewRootDidDepopulate:(id)arg1;
 - (void)outlineViewSelectionDidChange:(id)arg1;
 - (BOOL)acceptDrop:(id)arg1 onNode:(id)arg2 atChildIndex:(long long)arg3;
 - (unsigned long long)validateDrop:(id)arg1 onNode:(id)arg2 atChildIndex:(long long)arg3;
+- (void)_setupSpringLoadingForNode:(id)arg1;
+- (void)_springLoadingAction:(id)arg1;
+- (void)_invalidateSpringLoading;
 - (void)addNodes:(id)arg1 toPasteboard:(id)arg2;
 - (void)_addNodes:(id)arg1 toPasteboard:(id)arg2;
 - (id)_pasteboardTypeDictionariesForWritingNodes:(id)arg1 toPasteboard:(id)arg2 xmlNodes:(id *)arg3;

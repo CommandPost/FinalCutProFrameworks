@@ -30,6 +30,9 @@
 - (id)sequenceInfo;
 - (id)sequence;
 - (id)project;
+- (id)uniqueIdentifier;
+- (id)containerPropertyName;
+- (id)containerObject;
 - (id)ffImageBrowserSubtitle;
 - (id)ffImageBrowserTitle;
 - (struct CGImage *)ffImageBrowserRepresentation;

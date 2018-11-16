@@ -1195,7 +1195,7 @@ struct vector<PCVector2<double>, std::__1::allocator<PCVector2<double>>> {
     PCVector2_79efa81a *__begin_;
     PCVector2_79efa81a *__end_;
     struct __compressed_pair<PCVector2<double>*, std::__1::allocator<PCVector2<double>>> {
-        PCVector2_79efa81a *__first_;
+        PCVector2_79efa81a *__value_;
     } __end_cap_;
 };
 
@@ -1219,7 +1219,7 @@ struct vector<POKeypoint, std::__1::allocator<POKeypoint>> {
     struct POKeypoint *__begin_;
     struct POKeypoint *__end_;
     struct __compressed_pair<POKeypoint *, std::__1::allocator<POKeypoint>> {
-        struct POKeypoint *__first_;
+        struct POKeypoint *__value_;
     } __end_cap_;
 };
 
@@ -1227,7 +1227,7 @@ struct vector<PSHVertexData, std::__1::allocator<PSHVertexData>> {
     struct PSHVertexData *__begin_;
     struct PSHVertexData *__end_;
     struct __compressed_pair<PSHVertexData *, std::__1::allocator<PSHVertexData>> {
-        struct PSHVertexData *__first_;
+        struct PSHVertexData *__value_;
     } __end_cap_;
 };
 
@@ -1275,7 +1275,7 @@ struct vector<void *, std::__1::allocator<void *>> {
     void **__begin_;
     void **__end_;
     struct __compressed_pair<void **, std::__1::allocator<void *>> {
-        void **__first_;
+        void **__value_;
     } __end_cap_;
 };
 

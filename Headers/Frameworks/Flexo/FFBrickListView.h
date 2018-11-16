@@ -18,6 +18,14 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 @property(copy, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+- (void)mouseDraggedWhileTrackingWithOriginalOrigin:(struct CGPoint)arg1 eventPoint:(struct CGPoint)arg2 initialEventPoint:(struct CGPoint)arg3 layersForViews:(id)arg4 layerForDraggedView:(id)arg5 draggedView:(id)arg6 layerForDragRangeDebugging:(id)arg7 allowableDragRect:(struct CGRect)arg8;
+- (void)brick:(id)arg1 didMoveTo:(unsigned long long)arg2;
+- (void)clampPosition:(unsigned long long *)arg1 forDraggedView:(id)arg2;
+- (struct _NSRange)allowablePositionsForDraggedView:(id)arg1;
+- (void)dragReorderView:(id)arg1 withEvent:(id)arg2;
+- (struct CGRect)allowableDragRectWithAllowablePositions:(struct _NSRange)arg1 andFrameForDraggedView:(struct CGRect)arg2 layersForView:(id)arg3;
+- (void)mouseDragged:(id)arg1;
+- (BOOL)dragToReorderIsEnabled;
 - (void)removeAllBricks;
 - (id)addBrickForRepresentedObject:(id)arg1 withControlPanel:(id)arg2 container:(id)arg3 divider:(id)arg4 class:(Class)arg5;
 - (id)wrapperViewAtPosition:(unsigned long long)arg1;
@@ -28,6 +36,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)BrickListView_commonInit;
+
+// Remaining properties
+@property __weak id <FFBrickListViewDelegate> delegate; // @dynamic delegate;
 
 @end
 

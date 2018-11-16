@@ -8,10 +8,11 @@
 
 #import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSNumberFormatter;
 
-@interface LKMeasuredTimecodeFormatDeputy : LKFormatDeputy <NSCoding, NSCopying>
+@interface LKMeasuredTimecodeFormatDeputy : LKFormatDeputy <NSCoding, NSCopying, NSSecureCoding>
 {
     long long pMtf_separator;
     BOOL pMtf_displaysDivisionsAndTicks;
@@ -20,6 +21,7 @@
     NSNumberFormatter *pMtf_beatsDecimalPlacesFormatter;
 }
 
++ (BOOL)supportsSecureCoding;
 + (long long)version;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

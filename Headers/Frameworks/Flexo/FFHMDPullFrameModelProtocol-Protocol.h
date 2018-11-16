@@ -7,6 +7,7 @@
 @class FFImage;
 
 @protocol FFHMDPullFrameModelProtocol
+- (void)checkForUpdatedImageLocation;
 - (void)reportGetFrameCost:(CDStruct_1b6d18a9)arg1 newlyDetectedDrops:(unsigned int)arg2 newlyDetectedReproj:(unsigned int)arg3 dropRateLastSecond:(float)arg4;
 - (FFImage *)copyEquirectForTimeOffset:(CDStruct_1b6d18a9)arg1 retCamMode:(int *)arg2 retHMDConfig:(int *)arg3;
 @end

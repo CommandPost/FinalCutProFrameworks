@@ -8,11 +8,12 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class LKTextField, NSString;
+@class LKTextField, NSLayoutConstraint, NSString;
 
 @interface OZChanTextController : OZViewController <NSTextFieldDelegate>
 {
     LKTextField *_textField;
+    NSLayoutConstraint *_trailingConstraint;
 }
 
 - (void)controlTextDidChange:(id)arg1;

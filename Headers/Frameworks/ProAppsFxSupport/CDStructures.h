@@ -41,11 +41,48 @@ struct FxKeyframeInfo {
     double _field7;
 };
 
+struct FxLightInfo {
+    unsigned long long _field1;
+    CDUnion_2516e51e _field2;
+    unsigned long long _field3;
+    id _field4;
+    float _field5;
+    float _field6;
+    float _field7;
+    float _field8;
+    char _field9;
+    float _field10;
+    float _field11;
+    struct FxPoint3D _field12;
+    struct FxPoint3D _field13;
+};
+
+struct FxPathGeometryInfo {
+    double _field1;
+    struct CGPoint _field2;
+    struct CGPoint _field3;
+    id _field4;
+};
+
+struct FxPoint3D {
+    double _field1;
+    double _field2;
+    double _field3;
+};
+
 struct FxRect {
     int _field1;
     int _field2;
     int _field3;
     int _field4;
+};
+
+struct FxVertex {
+    struct CGPoint _field1;
+    struct CGPoint _field2;
+    struct CGPoint _field3;
+    double _field4;
+    unsigned long long _field5;
 };
 
 struct GraphStats;
@@ -254,6 +291,16 @@ struct HGSyncData;
 
 struct HGTransform;
 
+struct ImageTileDescriptor {
+    struct FxRect _field1;
+    struct FxRect _field2;
+    id _field3;
+    id _field4;
+    unsigned long long _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+};
+
 struct OZChannel {
     CDUnknownFunctionPointerType *_field1;
     struct OZFactory *_field2;
@@ -342,6 +389,11 @@ struct PCRect<float> {
     float _field4;
 };
 
+struct PCRecursiveMutex {
+    CDUnknownFunctionPointerType *_vptr$PCMutex;
+    struct _opaque_pthread_mutex_t _Mutex;
+};
+
 struct PCSharedCount {
     struct PC_Sp_counted_base *_field1;
 };
@@ -371,12 +423,12 @@ struct _CGLContextObject;
 struct __CFString;
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *_field1;
+    struct __tree_node_base<void *> *__left_;
 };
 
 struct _opaque_pthread_mutex_t {
-    long long _field1;
-    char _field2[56];
+    long long __sig;
+    char __opaque[56];
 };
 
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
@@ -401,6 +453,18 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
             } _field1;
         } _field1;
     } _field1;
+};
+
+struct map<_opaque_pthread_t *, NSData *, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, NSData *>>> {
+    struct __tree<std::__1::__value_type<_opaque_pthread_t *, NSData *>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, NSData *>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, NSData *>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, NSData *>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, NSData *>, std::__1::less<_opaque_pthread_t *>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
 };
 
 struct map<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge, std::__1::less<std::__1::tuple<unsigned long, unsigned long>>, std::__1::allocator<std::__1::pair<const std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>>> {
@@ -456,6 +520,14 @@ struct vector<HGExecutionUnit *, std::__1::allocator<HGExecutionUnit *>> {
 };
 
 struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>>;
+
+struct vector<void *, std::__1::allocator<void *>> {
+    void **_field1;
+    void **_field2;
+    struct __compressed_pair<void **, std::__1::allocator<void *>> {
+        void **_field1;
+    } _field3;
+};
 
 #pragma mark Typedef'd Structures
 
@@ -529,6 +601,14 @@ typedef struct PCVector2<float> {
     float _field1;
     float _field2;
 } PCVector2_79a470e1;
+
+typedef struct vector<void *, std::__1::allocator<void *>> {
+    void **_field1;
+    void **_field2;
+    struct __compressed_pair<void **, std::__1::allocator<void *>> {
+        void **_field1;
+    } _field3;
+} vector_9e9b204a;
 
 #pragma mark Typedef'd Unions
 

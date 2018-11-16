@@ -70,6 +70,8 @@
 - (BOOL)isMultiAngle;
 - (BOOL)isSpine;
 - (CDStruct_e83c9415)timelineRange;
+- (CDStruct_e83c9415)timelineRangeInContainerSpace:(id)arg1;
+- (CDStruct_e83c9415)timeRangeInContainerSpace:(id)arg1;
 - (int)cachedAVContainmentType;
 - (id)usedRangesMediaIdentifier;
 - (id)displayName;
@@ -90,6 +92,7 @@
 - (BOOL)hasVideo;
 - (id)debugDescription;
 - (BOOL)isAudioSummary;
+- (void)trimLeadingEdgeByOffset:(CDStruct_1b6d18a9)arg1;
 
 @end
 

@@ -19,9 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)_drawMissingImageAtTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)drawEmptyBackground;
-- (id)supportedPixelFormats;
-- (struct CGColorSpace *)colorSpace;
-- (int)imageLocation;
+- (id)requestedImageInfo;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
 - (void)setColorspace:(struct CGColorSpace *)arg1;
 @property long long overrideColorSpace; // @dynamic overrideColorSpace;

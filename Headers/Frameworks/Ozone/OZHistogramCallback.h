@@ -10,7 +10,7 @@
 
 @interface OZHistogramCallback : NSObject
 {
-    shared_ptr_1a5c5a10 *_bitmap;
+    shared_ptr_1bfae1da *_bitmap;
     struct CGSize _size;
     int _width;
     int _height;
@@ -26,7 +26,7 @@
 - (void)setHeight:(int)arg1;
 - (void)setWidth:(int)arg1;
 - (void)setSize:(struct CGSize)arg1;
-- (void)setBitmap:(const shared_ptr_1a5c5a10 *)arg1;
+- (void)setBitmap:(const shared_ptr_1bfae1da *)arg1;
 - (void)dealloc;
 
 @end

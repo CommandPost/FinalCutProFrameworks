@@ -49,7 +49,6 @@
 + (Class)CKHTTPLiveStreamingJobActionClass;
 + (Class)CKHTTPLiveStreamingExportPanelClass;
 + (Class)CKFacebookJobActionClass;
-+ (Class)CKFacebookExportPanelClass;
 + (Class)CKErrorClass;
 + (Class)CKeMailJobActionClass;
 + (Class)CKeMailExportPanelClass;

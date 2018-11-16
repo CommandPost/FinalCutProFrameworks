@@ -26,12 +26,8 @@
     NSString *_collectMediaFolderString2;
     NSString *_collectMediaNoSpaceString1;
     NSString *_collectMediaNoSpaceString2;
-    unsigned long long _totalSize;
-    unsigned long long _mediaSize;
     unsigned long long _unusedSize;
     unsigned long long _freeSize;
-    unsigned int _footageListSize;
-    unsigned int _totalListSize;
     BOOL _didCancel;
 }
 

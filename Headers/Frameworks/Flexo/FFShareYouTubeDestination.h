@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)setting;
 + (id)defaultName;
 + (id)requiredMetatdataKeys;
@@ -26,6 +27,8 @@
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
 - (id)taskIdentifier;
+- (unsigned long long)srtStyleSupport;
+- (BOOL)supportsBatchExport;
 
 @end
 

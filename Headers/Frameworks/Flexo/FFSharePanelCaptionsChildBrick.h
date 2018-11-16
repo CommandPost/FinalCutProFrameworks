@@ -6,22 +6,18 @@
 
 #import <Flexo/FFSharePanelBrick.h>
 
-@class NSButton, NSTextField;
-
 __attribute__((visibility("hidden")))
 @interface FFSharePanelCaptionsChildBrick : FFSharePanelBrick
 {
-    NSTextField *_typeLabel;
-    NSButton *_checkbox;
     BOOL _exportEnabled;
+    BOOL _formattingEnabled;
     long long _type;
 }
 
+@property(nonatomic) BOOL formattingEnabled; // @synthesize formattingEnabled=_formattingEnabled;
 @property(nonatomic) BOOL exportEnabled; // @synthesize exportEnabled=_exportEnabled;
 @property(nonatomic) long long type; // @synthesize type=_type;
-- (void)toggle:(id)arg1;
-- (void)viewDidLoad;
-- (id)init;
+- (id)initWithDataSource:(id)arg1;
 
 @end
 

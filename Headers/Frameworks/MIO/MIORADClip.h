@@ -179,6 +179,7 @@
 - (id)mediaMap;
 - (id)metadata;
 - (id)extendedProperties;
+- (id)clipFormatName;
 - (id)locationISO6709;
 - (id)cameraName;
 - (BOOL)isVFR;

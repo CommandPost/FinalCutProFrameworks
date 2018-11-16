@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (struct OZChannelPercent *)getOffsetChan;
 - (struct OZChanRotoshapeRefWithPicker *)getGeometryChan;
 - (struct OZChannelPosition *)getEndPointChan;
-- (int)getShapeSamplesX:(vector_3f7ffb82 *)arg1 Y:(vector_3f7ffb82 *)arg2 Z:(vector_3f7ffb82 *)arg3 T:(vector_3f7ffb82 *)arg4;
+- (int)getShapeSamplesX:(vector_b67dfe3a *)arg1 Y:(vector_b67dfe3a *)arg2 Z:(vector_b67dfe3a *)arg3 T:(vector_b67dfe3a *)arg4;
 - (void)updateSpeedCurve;
 - (void)disableSelected:(list_9b90a499 *)arg1;
 - (void)deleteSelected:(list_9b90a499 *)arg1;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)offsetSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
 - (void)moveSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
 - (BOOL)updateSelection:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5 move:(_Bool)arg6;
-- (BOOL)getRelatedHandlesForSelection:(list_9b90a499 *)arg1 handles:(vector_9e9b204a *)arg2 times:(vector_4f732a7b *)arg3;
+- (BOOL)getRelatedHandlesForSelection:(list_9b90a499 *)arg1 handles:(vector_9e9b204a *)arg2 times:(vector_0821a7d5 *)arg3;
 - (void)addVertexAtTime:(CDStruct_1b6d18a9)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 handleX:(void **)arg5 handleY:(void **)arg6 handleZ:(void **)arg7;
 - (PCVector3_457fd1f0)calculateOwnerOffset;
 - (void)applyObjectTransform:(double *)arg1 y:(double *)arg2 z:(double *)arg3;

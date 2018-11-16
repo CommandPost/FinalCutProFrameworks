@@ -49,7 +49,7 @@
     OZTextCtrlResetDelegate *_advancedFormatCtrlResetDelegate;
 }
 
-- (void)updateLayoutControllers:(list_752fd9b9 *)arg1;
+- (void)updateLayoutControllers:(list_e89ce44a *)arg1;
 - (void)enableDisableUI:(unsigned int)arg1;
 - (void)notify:(unsigned int)arg1;
 - (shared_ptr_e0e110e1)getCurrentStyle;

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)newComponentWaveformWithWaveformManager:(id)arg1 delegate:(id)arg2;
 - (void)setComponentWaveformsContainer:(id)arg1;
 - (void)buildRootView;
-- (BOOL)hasDisplayClearMixdown;
+- (BOOL)hasMixdownView;
 - (BOOL)hasSummaryWaveform;
 - (void)micaRefSelectionLayersForComponentWaveform:(id)arg1 selectionRingLayer:(id *)arg2 componentLayer:(id *)arg3;
 - (id)micaRefItemLayer:(int)arg1;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSRecursiveLock *_componentSourceMapLock;
     BOOL _observingRoleChanges;
     BOOL _showOrphans;
+    NSMapTable *_cachedReferenceLayouts;
 }
 
 + (void)resetEffectStacksForAudioComponentsLayout:(id)arg1;
@@ -94,6 +95,9 @@ __attribute__((visibility("hidden")))
 - (void)delegateContainedItemsChanged;
 - (void)delegateRolesChanged:(id)arg1;
 - (void)referenceLayoutMapChanged:(id)arg1;
+- (void)clearCachedReferenceLayouts;
+- (id)uncachedReferenceAudioComponentsLayoutForKey:(id)arg1;
+- (id)referenceAudioComponentsLayoutForKey:(id)arg1;
 - (void)setPersistedLayoutMode:(int)arg1;
 - (int)persistedLayoutMode;
 - (int)layoutMode;

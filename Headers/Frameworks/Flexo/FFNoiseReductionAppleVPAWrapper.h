@@ -22,15 +22,17 @@ __attribute__((visibility("hidden")))
     unsigned long long _sourceProcessedNumber;
 }
 
-+ (id)sharedInstance;
++ (id)sharedInstance:(int)arg1;
 - (int)processFrame:(struct VPA_NR_ProcessFrameParams_BM3D)arg1 processKey:(id)arg2;
 - (void)unLock;
 - (void)lock;
 - (void)removeMd5AndOffsetFromBotom;
+- (void)removeLastMd5;
 - (void)addMd5AndOffset:(id)arg1;
 - (BOOL)currentProcessedMD5sMatchToProcessMD5sApartFromLast:(id)arg1;
 - (BOOL)currentProcessedMD5sMatchToProcessMD5s:(id)arg1;
 - (BOOL)createFilterWithParams:(struct VPA_NR_InstanceCreateParams_BM3D)arg1 userParams:(struct VPA_NR_UserConfigParams_BM3D)arg2;
+- (void)updateUserParams:(struct VPA_NR_UserConfigParams_BM3D)arg1;
 - (struct VPA_NR_UserConfigParams_BM3D)getFilterAutomaticParams;
 - (BOOL)setUserParams:(struct VPA_NR_UserConfigParams_BM3D)arg1;
 - (long long)sourceProcessedNumber:(BOOL)arg1;

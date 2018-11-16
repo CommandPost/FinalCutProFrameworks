@@ -184,10 +184,10 @@ struct PCBitmap {
     int _field8;
     struct PCColorSpaceHandle _field9;
     _Bool _field10;
-    void *_field11;
-    int _field12;
-    _Bool _field13;
+    struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> _field11;
 };
+
+struct PCBitmapRep;
 
 struct PCColorSpaceHandle {
     struct CGColorSpace *_field1;
@@ -232,6 +232,12 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
                 } _field3;
             } _field1;
         } _field1;
+    } _field1;
+};
+
+struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> {
+    struct __compressed_pair<PCBitmapRep *, std::__1::default_delete<PCBitmapRep>> {
+        struct PCBitmapRep *_field1;
     } _field1;
 };
 
@@ -287,7 +293,7 @@ struct vector<void *, std::__1::allocator<void *>> {
     void **__begin_;
     void **__end_;
     struct __compressed_pair<void **, std::__1::allocator<void *>> {
-        void **__first_;
+        void **__value_;
     } __end_cap_;
 };
 
@@ -355,7 +361,7 @@ typedef struct vector<void *, std::__1::allocator<void *>> {
     void **__begin_;
     void **__end_;
     struct __compressed_pair<void **, std::__1::allocator<void *>> {
-        void **__first_;
+        void **__value_;
     } __end_cap_;
-} vector_875fa760;
+} vector_80acc5a3;
 

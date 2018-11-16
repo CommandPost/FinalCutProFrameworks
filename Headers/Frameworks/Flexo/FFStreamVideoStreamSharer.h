@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)endSharingHGNodes;
 - (void)beginSharingHGNodes;
 - (void)_decCountFor:(struct PC_CMTimePair)arg1 context:(id)arg2;
+- (void)_markTokensForInval;
 - (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;

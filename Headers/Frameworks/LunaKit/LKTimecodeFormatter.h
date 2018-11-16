@@ -9,10 +9,11 @@
 #import "LKScrubbableFormatter.h"
 #import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSString;
 
-@interface LKTimecodeFormatter : NSFormatter <LKScrubbableFormatter, NSCoding, NSCopying>
+@interface LKTimecodeFormatter : NSFormatter <LKScrubbableFormatter, NSCoding, NSSecureCoding, NSCopying>
 {
     id ptf_formatDeputies;
     long long ptf_format;
@@ -27,6 +28,7 @@
     void *reserved3;
 }
 
++ (BOOL)supportsSecureCoding;
 + (void)initialize;
 + (id)keyPathsForValuesAffectingSMPTEDisplaysFrameDivision;
 + (BOOL)_proSMPTETimecodeFormatterUsesHighOrderTyping;

@@ -11,6 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (float)suggestedMinParamWidth;
+- (float)suggestedMaxLabelWidth;
+- (float)suggestedMinLabelWidth;
 - (void)update;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 usingResetBlock:(CDUnknownBlockType)arg3;
 

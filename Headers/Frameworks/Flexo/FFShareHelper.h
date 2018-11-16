@@ -15,7 +15,10 @@
 
 + (id)disabledAssignedAVRolesForSequence:(id)arg1 includeAudio:(BOOL)arg2;
 @property(nonatomic) id <NSObject><FFSharableContent> owner; // @synthesize owner=_owner;
+- (id)helperAppPathWithDestination:(id)arg1;
+- (unsigned long long)numberOfProjectsInShareSelection:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)_dummyShareAction:(id)arg1;
 - (id)shareActions;
 - (void)openInCompressorAsITMSPackage:(BOOL)arg1;
 - (void)openITMSPackageInCompressor:(id)arg1;
@@ -23,7 +26,8 @@
 - (void)shareToDefaultDestination:(id)arg1;
 - (void)shareToDestination:(id)arg1;
 - (void)_shareToDestination:(id)arg1 isDefault:(BOOL)arg2;
-- (BOOL)_shouldExcludeDisabledRolesInShare:(id)arg1;
+- (BOOL)_shouldExcludeDisabledRolesWithRangeAndObject:(id)arg1;
+- (id)_shouldExcludeDisabledRolesInShare:(id)arg1;
 - (void)_exportUsingSelector:(SEL)arg1 sender:(id)arg2;
 - (void)missingMediaAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)warnForMissingMedia:(id)arg1 withSender:(id)arg2 andSelector:(SEL)arg3;

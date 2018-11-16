@@ -6,7 +6,7 @@
 
 #import "AVCaption.h"
 
-@class NSArray, NSAttributedString, NSNumber;
+@class NSArray, NSNumber;
 
 @interface AVCaption (FFAdditions)
 + (id)FFAppleiTTRegions;
@@ -26,7 +26,6 @@
 @property(readonly, nonatomic) long long FFCellY;
 @property(readonly, nonatomic) long long FFCellX;
 @property(readonly, nonatomic) BOOL FFHasCellXY;
-@property(readonly, nonatomic) NSAttributedString *FFAttributedString;
 @property(readonly, nonatomic) NSNumber *FFTimeRangeDuration;
 @property(readonly, nonatomic) NSNumber *FFTimeRangeStart;
 - (id)description;

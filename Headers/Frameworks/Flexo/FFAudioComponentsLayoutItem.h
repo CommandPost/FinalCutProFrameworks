@@ -42,6 +42,7 @@
 - (unsigned int)numOutputChannels:(unsigned int)arg1;
 - (unsigned int)numOutputChannels;
 - (unsigned int)numChannels;
+- (id)role;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

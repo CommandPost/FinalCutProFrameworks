@@ -37,6 +37,7 @@
 - (CDStruct_1b6d18a9)timelineView:(TLKTimelineView *)arg1 adjustTimePerMarker:(CDStruct_1b6d18a9)arg2;
 - (void)timelineView:(TLKTimelineView *)arg1 didSetPlayheadTime:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_1b6d18a9)timelineView:(TLKTimelineView *)arg1 willSetPlayheadTime:(CDStruct_1b6d18a9)arg2 snap:(BOOL)arg3;
+- (void)timelineView:(TLKTimelineView *)arg1 marqueeWillSelectObjects:(NSArray *)arg2;
 - (void)selectionManager:(TLKSelectionManager *)arg1 didSelectTimeRange:(CDStruct_e83c9415)arg2 withObjects:(NSArray *)arg3;
 - (CDStruct_e83c9415)selectionManager:(TLKSelectionManager *)arg1 willSelectTimeRange:(CDStruct_e83c9415)arg2 withObjects:(NSArray *)arg3;
 - (NSArray *)selectionManager:(TLKSelectionManager *)arg1 willDeselectObjects:(NSArray *)arg2 selectionMask:(unsigned long long)arg3;

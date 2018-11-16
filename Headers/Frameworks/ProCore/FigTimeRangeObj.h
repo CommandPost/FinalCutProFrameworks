@@ -7,15 +7,16 @@
 #import "NSObject.h"
 
 #import "FigTimeRangeOperationCopying.h"
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface FigTimeRangeObj : NSObject <FigTimeRangeOperationCopying, NSCopying, NSCoding>
+@interface FigTimeRangeObj : NSObject <FigTimeRangeOperationCopying, NSCopying, NSSecureCoding>
 {
     CDStruct_e83c9415 _range;
 }
 
 + (id)rangeWithRange:(CDStruct_e83c9415)arg1;
++ (BOOL)supportsSecureCoding;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (long long)sortByStartTimeDescending:(id)arg1;

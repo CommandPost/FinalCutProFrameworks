@@ -24,7 +24,6 @@
 - (void)_saveDefaultFont:(int)arg1;
 - (struct OZFontFamily *)getCurrentFamily;
 - (struct OZFontCollection *)getCurrentCollection;
-- (struct OZFontFace *)getFontFaceForChannel:(struct OZChannel *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

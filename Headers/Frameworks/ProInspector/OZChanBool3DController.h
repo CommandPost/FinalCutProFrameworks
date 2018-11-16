@@ -6,11 +6,12 @@
 
 #import <ProInspector/OZViewController.h>
 
-@class LKSegmentedControl;
+@class LKSegmentedControl, NSLayoutConstraint;
 
 @interface OZChanBool3DController : OZViewController
 {
     LKSegmentedControl *_pSegmented;
+    NSLayoutConstraint *_pTrailingConstraint;
 }
 
 - (BOOL)areAllChannelsEqual;

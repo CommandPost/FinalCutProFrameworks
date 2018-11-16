@@ -47,7 +47,6 @@
 + (id)copyClassDescription;
 @property(readonly, nonatomic) FFAudioComponentsLayoutItem *layoutItemKey; // @synthesize layoutItemKey=m_layoutItemKey;
 @property(readonly, nonatomic) NSString *layoutKey; // @synthesize layoutKey=m_layoutKey;
-@property(readonly, nonatomic) FFAnchoredObject *rootObject; // @synthesize rootObject=m_rootObject;
 - (void)update_disabledRangesFormatChange;
 - (BOOL)writerIsWaiting;
 - (void)_readUnlock;
@@ -173,9 +172,11 @@
 - (id)role;
 - (void)updateLayoutItemKey:(id)arg1;
 - (int)componentSourceType;
+- (id)rootObject;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithRootObject:(id)arg1 layoutKey:(id)arg2 layoutItemKey:(id)arg3;
+- (CDStruct_e83c9415)timeRangeInContainerSpace:(id)arg1;
 @property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
 @property(readonly, nonatomic) BOOL isPrimaryComponent;
 - (id)primaryItemComponent;
@@ -201,12 +202,15 @@
 @property(readonly, nonatomic) BOOL isAnchored;
 @property(readonly, nonatomic) BOOL isAudioOnly;
 @property(readonly, nonatomic) BOOL isCaption;
+@property(readonly, nonatomic) BOOL isConnectedStoryline;
 @property(readonly, nonatomic) BOOL isStorylineClip;
 @property(readonly, nonatomic) BOOL isVideoOnly;
 @property(readonly, nonatomic) id <FFStorylineItem> nextStoryItem;
 @property(readonly, nonatomic) id <FFStorylineItem> previousStoryItem;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 sourceAnchorTime;
 @property(readonly, nonatomic) unsigned long long storylineRegion;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 targetAnchorTime;
 @property(nonatomic) CDStruct_e83c9415 timeRangeInAsset;
 @property(nonatomic) long long verticalIndex;
 @property(copy, nonatomic) id videoRoleIdentifier;

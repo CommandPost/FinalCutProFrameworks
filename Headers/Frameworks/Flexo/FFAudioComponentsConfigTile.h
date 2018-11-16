@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     NSView *m_rootView;
     FFRoleColorEnableButton *m_enableButton;
     NSTextView *m_displayText;
-    FFAudioComponentsConfigMixdownView *m_displayClearMixdownText;
+    FFAudioComponentsConfigMixdownView *m_mixdownView;
     FFAudioComponentsConfigPopUpButton *m_popUpButton;
     NSButton *m_popUpButtonArrows;
     NSImageView *m_effectsBadgeView;
@@ -40,6 +40,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FFAudioComponentsConfigManager *componentsConfigManager; // @synthesize componentsConfigManager=m_configMgr;
 @property(readonly, nonatomic) BOOL expanded; // @synthesize expanded=m_expanded;
 - (void)mouseDown:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (void)mouseEntered:(id)arg1;
 - (void)selectPopUpButtonMenuItem:(id)arg1;
 - (void)toggleDisclosure:(id)arg1;
 - (void)toggleEnable:(id)arg1;
@@ -65,7 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)setComponentWaveformsContainer:(id)arg1;
 - (void)setSummaryWaveform:(id)arg1;
 - (void)setDisclosureButton:(id)arg1;
-- (void)setClearMixdownText:(id)arg1;
+- (void)setMixdownView:(id)arg1;
 - (void)setDisplayPopUpButton:(id)arg1;
 - (void)setEffectsBadge:(id)arg1;
 - (void)setPopUpButton:(id)arg1;
@@ -80,14 +83,14 @@ __attribute__((visibility("hidden")))
 - (void)buildFXBadge;
 - (void)buildPopUpButtonArrow;
 - (void)buildPopUpButton;
-- (void)buildDisplayClearMixdownText;
+- (void)buildMixdownView;
 - (void)buildDisplayText;
 - (void)buildEnableButton;
 - (void)buildRootView;
 - (BOOL)hasComponentWaveforms;
 - (BOOL)hasSummaryWaveform;
 - (BOOL)hasDisclosureButton;
-- (BOOL)hasDisplayClearMixdown;
+- (BOOL)hasMixdownView;
 - (BOOL)hasFXBadge;
 - (BOOL)hasPopUpButton;
 - (void)micaRefSelectionLayersForComponentWaveform:(id)arg1 selectionRingLayer:(id *)arg2 componentLayer:(id *)arg3;

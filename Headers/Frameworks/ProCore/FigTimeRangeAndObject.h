@@ -7,8 +7,9 @@
 #import <ProCore/FigTimeRangeObj.h>
 
 #import "FigTimeRangeOperationCopying.h"
+#import "NSCoding.h"
 
-@interface FigTimeRangeAndObject : FigTimeRangeObj <FigTimeRangeOperationCopying>
+@interface FigTimeRangeAndObject : FigTimeRangeObj <FigTimeRangeOperationCopying, NSCoding>
 {
     id _object;
 }

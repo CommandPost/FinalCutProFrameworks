@@ -43,6 +43,7 @@
 - (void)releaseRenderer:(id)arg1;
 - (id)getRendererIfAvailable:(struct HGRenderer *)arg1;
 - (id)rendererForLocation:(int)arg1;
+- (int)getFFImageLocationForMtlDevice:(id)arg1;
 - (int)resolveIfSingleImageLocation:(int)arg1;
 - (void)dealloc;
 - (id)rendererDescriptionForVScreen:(int)arg1;

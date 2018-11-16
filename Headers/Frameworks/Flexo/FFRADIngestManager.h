@@ -11,7 +11,7 @@
 #import "MIOCoreDelegateProtocol.h"
 #import "MIODestinationProtocol.h"
 
-@class FFBackgroundTask, FFMediaEventProject, FFPTPDownloadManager, MIORADCore, NSCondition, NSHashTable, NSMutableDictionary, NSMutableSet, NSSet;
+@class FFBackgroundTask, FFPTPDownloadManager, MIORADCore, NSCondition, NSHashTable, NSMutableDictionary, NSMutableSet;
 
 @interface FFRADIngestManager : NSObject <MIOCoreDelegateProtocol, MIODestinationProtocol, FFStorageLocationOutOfDiskSpaceProtocol, FFBackgroundTaskTarget>
 {
@@ -23,7 +23,6 @@
     NSMutableDictionary *_ingestClipsInProgress;
     NSCondition *_condition;
     NSMutableDictionary *_ingestStopwatches;
-    FFMediaEventProject *_currentEvent;
     MIORADCore *_radCore;
     BOOL _willCloseDown;
     BOOL _showsAlert;
@@ -31,16 +30,15 @@
     NSHashTable *_preIngestRADAssets;
     NSMutableSet *_clipsToThumbnail;
     FFPTPDownloadManager *_ptpDownloadManager;
-    NSSet *_keywords;
     NSMutableDictionary *_destinationTempFolders;
     BOOL _pausedThumbnailRequests;
     BOOL _autoCorrect;
 }
 
 + (void)removeFileImportUserNotifications;
-+ (id)radVolumeForPTPDeviceSerial:(id)arg1;
-+ (void)postUserNotificationForPTPDeviceSerial:(id)arg1;
-+ (void)removeRADVolumeUserNotificationPTPDeviceSerial:(id)arg1;
++ (id)radVolumeForPTPDeviceLocationID:(id)arg1;
++ (void)postUserNotificationForPTPDeviceLocationID:(id)arg1;
++ (void)removeRADVolumeUserNotificationPTPDeviceLocationID:(id)arg1;
 + (void)removeRADVolumeUserNotificationForURL:(id)arg1;
 + (void)removeUserNotificationOnRADVolume:(id)arg1;
 + (void)ejectRADVolumeAtPath:(id)arg1;
@@ -50,20 +48,18 @@
 + (id)rangeStringWithRADClip:(id)arg1;
 + (id)stringWithFilename:(id)arg1 rangeString:(id)arg2;
 + (BOOL)isFullClipImport:(CDStruct_e83c9415)arg1 mediaRange:(CDStruct_e83c9415)arg2 frameDuration:(CDStruct_1b6d18a9)arg3;
-+ (void)removeClipsFromEvent:(id)arg1;
++ (void)takeClipsOffline:(id)arg1;
 + (void)addKeywords:(id)arg1 toClip:(id)arg2 inEvent:(id)arg3;
 + (id)radCore;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
 + (id)keyPathsForValuesAffectingImporting;
-@property(retain) NSSet *keywords; // @synthesize keywords=_keywords;
 @property BOOL showsAlert; // @synthesize showsAlert=_showsAlert;
 @property BOOL willCloseDown; // @synthesize willCloseDown=_willCloseDown;
 @property BOOL autoCorrect; // @synthesize autoCorrect=_autoCorrect;
 @property(retain) NSMutableDictionary *ingestClipsInProgress; // @synthesize ingestClipsInProgress=_ingestClipsInProgress;
 @property(retain) NSCondition *condition; // @synthesize condition=_condition;
 @property(retain) FFBackgroundTask *ingestBackgroundTask; // @synthesize ingestBackgroundTask=_ingestBackgroundTask;
-@property(retain) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
 - (void)removeTempFolderForSubSegment:(id)arg1;
 - (void)clipRemovedFromQueue:(id)arg1;
 - (void)_updateStatusTextDescription;
@@ -85,8 +81,8 @@
 - (void)radVolumeWillUnmount:(id)arg1;
 - (void)unregisterRADAssetForVolumeNotifications:(id)arg1;
 - (void)registerRADAssetForVolumeNotifications:(id)arg1;
-- (id)importRangesOfMedia:(id)arg1;
-- (void)restoreOriginalClipIfNecessaryForAsset:(id)arg1 inEvent:(id)arg2;
+- (id)importRangesOfMedia:(id)arg1 toEvent:(id)arg2 withKeywords:(id)arg3;
+- (void)restoreOriginalClipIfNecessaryForAsset:(id)arg1 inEvent:(id)arg2 withKeywords:(id)arg3;
 - (void)completedTask:(id)arg1;
 - (void)startedTask:(id)arg1;
 - (void)canceledTask:(id)arg1;

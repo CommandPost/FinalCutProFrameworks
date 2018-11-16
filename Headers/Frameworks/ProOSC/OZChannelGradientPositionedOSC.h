@@ -15,8 +15,8 @@
     NSMenu *_pOpacityInterpolationMenu;
     NSMenu *_pPresetsMenu;
     vector_386daaa8 *_pPositions;
-    PCVector2_79efa81a *_pStart;
-    PCVector2_79efa81a *_pEnd;
+    PCVector2_79efa81a _start;
+    PCVector2_79efa81a _end;
     struct OZChannelGradientSample *_pSample;
     struct OZChannelEnum *_pColorInterpolation;
     struct OZChannelEnum *_pOpacityInterpolation;
@@ -32,6 +32,7 @@
 + (BOOL)validate:(struct OZChannelBase *)arg1;
 + (BOOL)hasChannelGradientPositioned:(struct OZChannelFolder *)arg1;
 + (void)findChannelGradientPositioned:(struct OZChannelFolder *)arg1 foundChannels:(vector_386daaa8 *)arg2;
+- (id).cxx_construct;
 - (BOOL)needsRightMouseEvents;
 - (BOOL)postRedisplayOnActivePartChange;
 - (void)drawWithDrawProperties:(id)arg1;

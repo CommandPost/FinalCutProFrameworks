@@ -33,6 +33,7 @@
     long long pt_maintainedFrames;
 }
 
++ (BOOL)supportsSecureCoding;
 + (unsigned long long)timeRateForTimecodeModes:(id)arg1 otherTimeRates:(id)arg2;
 + (long long)fallbackTimecodeMode;
 + (void)setFallbackTimecodeMode:(long long)arg1;

@@ -20,6 +20,7 @@
 + (BOOL)_isInIBCocoaSimulator;
 + (id)headerAppearanceLight;
 + (id)viewerAppearance;
++ (id)HUDRevealedAppearance;
 + (id)proToolbarAppearance;
 + (id)proTokenAppearance;
 + (id)proInspectorAppearance;

@@ -42,6 +42,8 @@
 
 + (BOOL)unregisterMediaServerRenderer;
 + (BOOL)registerMediaServerRenderer;
++ (id)useGPUResourceChoiceMode;
++ (void)setUseGPUResourceChoiceMode:(id)arg1;
 + (BOOL)useGPU;
 + (void)setUseGPU:(BOOL)arg1;
 + (void)setIsStandaloneRenderer:(BOOL)arg1;

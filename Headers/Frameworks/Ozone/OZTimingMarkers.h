@@ -9,7 +9,7 @@
 #import "NSPopoverDelegate.h"
 #import "OZTimingView.h"
 
-@class NSPopover, NSString, NSTrackingArea, OZTimingCoordinator;
+@class NSPopover, NSString, NSTextField, NSTrackingArea, OZTimingCoordinator;
 
 @interface OZTimingMarkers : OZTimingMarkersBase <OZTimingView, NSPopoverDelegate>
 {
@@ -20,6 +20,7 @@
     int _moving;
     NSTrackingArea *_trackingArea;
     NSPopover *_markerInfoPopover;
+    NSTextField *_markerInfoPopoverTextField;
     const struct OZTimeMarker *_hoveredMarker;
     BOOL _dragCursorsOn;
     BOOL _drawBackgroundFromSuperclass;
@@ -53,9 +54,8 @@
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
-- (void)popoverDidClose:(id)arg1;
 - (void)mouseMoved:(id)arg1;
-- (void)_dismissMarkerTitlePopover:(id)arg1 now:(BOOL)arg2;
+- (void)_dismissMarkerInfoPopover;
 - (id)_markerTitlePopover:(const struct OZTimeMarker *)arg1;
 - (id)_textImageForMarker:(const struct OZTimeMarker *)arg1;
 - (void)mouseEntered:(id)arg1;

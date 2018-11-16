@@ -8,21 +8,23 @@
 
 #import "CAAnimationDelegate.h"
 #import "FFAutoexpandingTextFieldDelegate.h"
+#import "FFShareExtraSettingsConfiguratorDelegate.h"
 #import "NSOpenSavePanelDelegate.h"
 #import "NSTextFieldDelegate.h"
 #import "NSTokenFieldDelegate.h"
 
-@class CALayer, CKBatch, CKSource, FFShareDestination, FFShareDestinationController, LKButton, NSArray, NSColor, NSDictionary, NSImage, NSImageView, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTrackingArea, NSURL, NSView;
+@class CALayer, CKBatch, CKSource, FFShareDataModel, FFShareDestination, FFShareDestinationController, FFShareExportPanelsHelper, FFShareSourcesListViewController, LKButton, LKScroller, NSArray, NSColor, NSDictionary, NSImage, NSImageView, NSMapTable, NSMutableDictionary, NSSet, NSString, NSTrackingArea, NSURL, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFBaseSharePanel : NSWindowController <CAAnimationDelegate, NSOpenSavePanelDelegate, NSTextFieldDelegate, NSTokenFieldDelegate, FFAutoexpandingTextFieldDelegate>
+@interface FFBaseSharePanel : NSWindowController <CAAnimationDelegate, NSOpenSavePanelDelegate, NSTextFieldDelegate, NSTokenFieldDelegate, FFAutoexpandingTextFieldDelegate, FFShareExtraSettingsConfiguratorDelegate>
 {
-    CKSource *_source;
+    NSArray *_sources;
     FFShareDestination *_originalDestination;
     NSArray *_destinationControllers;
     NSArray *_batches;
     NSURL *_destinationURL;
-    NSMutableDictionary *_metadata;
+    NSMutableDictionary *_reducedCollatedMetadata;
+    BOOL _usesVideoPreview;
     NSView *_previewView;
     CALayer *_topLayer;
     CALayer *_previewLayer;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
     id _skimmingTransform;
     double _glossLayerOpacity;
     struct CGPoint _glossLayerPosition;
+    FFShareSourcesListViewController *_sourcesListViewController;
     BOOL _sharingFromTheater;
     id <FFSharePanelDelegate> _delegate;
     unsigned long long _selectedDestinationIndex;
@@ -43,14 +46,20 @@ __attribute__((visibility("hidden")))
     LKButton *_addToTheaterButton;
     NSImageView *_backgroundImageView;
     NSView *_infoView;
+    LKScroller *_infoViewVerticalScroller;
+    LKScroller *_infoViewHorizontalScroller;
     NSDictionary *_metadataFields;
     NSSet *_requiredMetadataKeys;
     NSImage *_previewImage;
-    NSMutableSet *_validFileNames;
     NSArray *_errors;
     BOOL _observingTargets;
+    FFShareExportPanelsHelper *_panelsHelper;
+    FFShareDataModel *_dataModel;
+    NSMapTable *_mapDestinationToMetadata;
 }
 
++ (id)sharePanelWithSources:(id)arg1 destination:(id)arg2 error:(id *)arg3;
++ (id)sharePanelWithSource:(id)arg1 destination:(id)arg2 error:(id *)arg3;
 + (id)keyPathsForValuesAffectingCanSelectPrevious;
 + (id)keyPathsForValuesAffectingCanSelectNext;
 + (id)keyPathsForValuesAffectingErrorDescriptionColor;
@@ -62,10 +71,16 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingDestination;
 + (id)keyPathsForValuesAffectingHasMultipleDestinations;
 + (void)initialize;
+@property(retain, nonatomic) FFShareExportPanelsHelper *panelsHelper; // @synthesize panelsHelper=_panelsHelper;
+@property(readonly, nonatomic) NSMapTable *mapDestinationToMetadata; // @synthesize mapDestinationToMetadata=_mapDestinationToMetadata;
 @property(nonatomic) double previewTime; // @synthesize previewTime=_previewTime;
+@property(retain, nonatomic) FFShareSourcesListViewController *sourcesListViewController; // @synthesize sourcesListViewController=_sourcesListViewController;
+@property(nonatomic) BOOL usesVideoPreview; // @synthesize usesVideoPreview=_usesVideoPreview;
+@property(retain, nonatomic) FFShareDataModel *dataModel; // @synthesize dataModel=_dataModel;
 @property(retain, nonatomic) NSArray *errors; // @synthesize errors=_errors;
-@property(retain, nonatomic) NSMutableSet *validFileNames; // @synthesize validFileNames=_validFileNames;
 @property(retain, nonatomic) NSDictionary *metadataFields; // @synthesize metadataFields=_metadataFields;
+@property(nonatomic) LKScroller *infoViewHorizontalScroller; // @synthesize infoViewHorizontalScroller=_infoViewHorizontalScroller;
+@property(nonatomic) LKScroller *infoViewVerticalScroller; // @synthesize infoViewVerticalScroller=_infoViewVerticalScroller;
 @property(nonatomic) NSView *infoView; // @synthesize infoView=_infoView;
 @property(nonatomic) NSImageView *backgroundImageView; // @synthesize backgroundImageView=_backgroundImageView;
 @property(nonatomic) LKButton *addToTheaterButton; // @synthesize addToTheaterButton=_addToTheaterButton;
@@ -87,10 +102,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property(retain, nonatomic) NSArray *destinationControllers; // @synthesize destinationControllers=_destinationControllers;
 @property(retain, nonatomic) FFShareDestination *originalDestination; // @synthesize originalDestination=_originalDestination;
-@property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
+@property(copy, nonatomic) NSArray *sources; // @synthesize sources=_sources;
+- (void)didConfigureExtraSettings:(id)arg1;
+- (void)willConfigureExtraSettings:(id)arg1;
+- (id)helperAppPathWithDestination:(id)arg1;
 - (void)updateUI;
 - (void)postProcessErrors:(id)arg1;
 - (void)updateErrors;
+- (id)reconcileValues:(id)arg1 withFallback:(id)arg2;
+- (id)reduceCollatedMetadata:(id)arg1;
+- (id)collateMetadataDictionaries:(id)arg1;
 - (id)requiredMetadataKeys;
 - (double)autoexpandingControl:(id)arg1 adjustHeight:(double)arg2 toFitSize:(struct CGSize)arg3;
 - (void)viewDidBecomeFirstResponder:(id)arg1;
@@ -107,7 +128,17 @@ __attribute__((visibility("hidden")))
 - (void)doSubmitAnimation:(id)arg1 toDestination:(struct CGRect)arg2;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (id)newPreviewImageRep;
-- (void)postProcessSource:(id)arg1 withDestinationController:(id)arg2;
+- (void)postProcessSource:(id)arg1 withDestinationController:(id)arg2 andDestination:(id)arg3;
+- (id)batchNameWithBatch:(id)arg1 andDestination:(id)arg2;
+- (BOOL)sourceIsProject:(id)arg1;
+- (BOOL)areAllSourcesProjects;
+- (id)stringTypeDescriptionOfItemsSelectedForExport;
+- (id)outputURLWithDestination:(id)arg1;
+- (id)fileNamesToRevealInUserNotificationWithDestinationController:(id)arg1;
+- (id)newUserNotificationGroup:(id)arg1;
+- (void)assignDestination:(id)arg1 toUserNotificationGroup:(id)arg2;
+- (void)assignDestinationsToUserNotificationGroupsWithDestinationController:(id)arg1;
+- (void)assignDestinationsToUserNotificationGroups;
 - (void)closeWithCode:(long long)arg1;
 - (BOOL)isSheet;
 - (void)beginSheetModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -116,13 +147,8 @@ __attribute__((visibility("hidden")))
 - (void)selectPrevious:(id)arg1;
 - (void)selectNext:(id)arg1;
 - (void)cancel:(id)arg1;
-- (void)showSavePanelForDestinationsAtIndexes:(id)arg1;
-- (void)progressCanceled:(id)arg1;
-- (BOOL)configureExtraSettings:(char *)arg1 count:(unsigned long long)arg2 destinationURL:(id)arg3 libraryURL:(id)arg4;
-- (void)getHelperApplicationOutputLocation:(id)arg1 withHelperApp:(id)arg2;
-- (void)userAgreementPanelDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)showUserAgreementPanelForDestination:(id)arg1 contextInfo:(id)arg2;
-- (void)showPanelsWithContextInfo:(id)arg1;
+- (id)captionSidecarFilesForDestination:(id)arg1;
+- (unsigned long long)numberOfOutputFilesForDestination:(id)arg1;
 - (void)ok:(id)arg1;
 - (void)okButtonFinalize;
 @property(readonly, nonatomic) NSColor *errorDescriptionColor;
@@ -140,16 +166,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CKBatch *batch;
 @property(readonly, nonatomic) FFShareDestination *destination;
 @property(readonly, nonatomic) BOOL hasMultipleDestinations;
-@property(copy, nonatomic) NSDictionary *metadata;
+- (void)setReducedCollatedMetadata:(id)arg1;
+@property(readonly, nonatomic) NSDictionary *reducedCollatedMetadata;
 @property(readonly, nonatomic) NSArray *targets;
 @property(readonly, nonatomic) NSArray *batches;
 @property(readonly, retain, nonatomic) NSArray *destinations;
-- (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 delegate:(id)arg3 didRecoverSelector:(SEL)arg4 contextInfo:(void *)arg5;
-- (BOOL)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
-- (id)panel:(id)arg1 userEnteredFilename:(id)arg2 confirmed:(BOOL)arg3;
-- (BOOL)panel:(id)arg1 validateURL:(id)arg2 error:(id *)arg3;
-- (id)invalidDestinationErrorWithFileName:(id)arg1;
-- (id)fileExistsErrorWithFileName:(id)arg1;
+@property(readonly, nonatomic) CKSource *source; // @dynamic source;
+- (void)hideVideoPreview;
+- (void)configureVideoPreview;
 - (void)windowDidLoad;
 - (void)mouseMoved:(id)arg1;
 - (void)mouseExited:(id)arg1;
@@ -157,6 +181,11 @@ __attribute__((visibility("hidden")))
 - (void)stopObservingValidationErrors;
 - (void)startObservingValidationErrors;
 - (void)dealloc;
+- (id)errorForDisabledBatchExportToThirdPartyAppWithPath:(id)arg1;
+- (BOOL)isBatchExportToThirdPartyAppWithPath:(id)arg1 sources:(id)arg2;
+- (id)appNameWithPath:(id)arg1;
+- (id)errorForDisabledBatchExportToThirdPartyApp:(id)arg1;
+- (id)initWithSources:(id)arg1 destination:(id)arg2 nibName:(id)arg3 error:(id *)arg4;
 - (id)initWithSource:(id)arg1 destination:(id)arg2 nibName:(id)arg3 error:(id *)arg4;
 
 // Remaining properties

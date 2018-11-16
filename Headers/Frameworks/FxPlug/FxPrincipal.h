@@ -6,12 +6,24 @@
 
 #import "NSObject.h"
 
-@interface FxPrincipal : NSObject
+#import "FxXPCProtocol.h"
+
+@interface FxPrincipal : NSObject <FxXPCProtocol>
 {
+    struct FxConnectionMap connectionMap;
 }
 
 + (void)startServicePrincipal;
 + (id)embeddedPrincipal;
++ (id)sharedPrincipal;
+@property struct FxConnectionMap connectionMap; // @synthesize connectionMap;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)createNewConnectionForProcessID:(int)arg1 minimumVersion:(unsigned long long)arg2 maximumVersion:(unsigned long long)arg3 hostCapabilities:(id)arg4 reply:(CDUnknownBlockType)arg5;
+- (id)errorForHostVersionTooNew:(unsigned long long)arg1;
+- (id)errorForHostVersionTooOld:(unsigned long long)arg1;
+- (void)dealloc;
+- (id)init;
 
 @end
 

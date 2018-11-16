@@ -20,14 +20,19 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completionHandler;
     NSPopUpButton *_langPopUpButton;
     NSImageView *_iconView;
+    BOOL _useActiveCaptionRole;
+    BOOL _uniformActiveRole;
     FFSelectClosedCaptionsRoleInfoView *_roleInfoView;
     NSSet *_disabledRoles;
 }
 
+@property(nonatomic) BOOL uniformActiveRole; // @synthesize uniformActiveRole=_uniformActiveRole;
 @property(retain) NSSet *disabledRoles; // @synthesize disabledRoles=_disabledRoles;
 @property(nonatomic) FFSelectClosedCaptionsRoleInfoView *roleInfoView; // @synthesize roleInfoView=_roleInfoView;
+@property(nonatomic) BOOL useActiveCaptionRole; // @synthesize useActiveCaptionRole=_useActiveCaptionRole;
 @property(retain) FFRole *selectedRole; // @synthesize selectedRole=_selectedRole;
-- (void)langPopupClicked:(id)arg1;
+- (void)activeCaptionMenuItemSelected:(id)arg1;
+- (void)captionMenuItemSelected:(id)arg1;
 - (void)closeWithCode:(long long)arg1;
 - (void)beginSheetModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)runModal;
@@ -37,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)awakeFromNib;
 - (void)_prepareLangPopUp;
 - (void)dealloc;
-- (id)initWithRoles:(id)arg1 disabledRoles:(id)arg2;
+- (id)initWithRoles:(id)arg1 disabledRoles:(id)arg2 defaultRole:(id)arg3 uniformActiveRole:(BOOL)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

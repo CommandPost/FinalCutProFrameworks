@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     NSArray *_effectBundleSnapshots;
     NSSet *_unriggedChannelIndexPaths;
     int _missingElements;
-    BOOL TEMP_inEffectBundlePostInitScope;
     NSArray *_effectsDefaultData;
     NSString *_name;
     NSString *_description;
@@ -30,13 +29,14 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_bundleSnapshotsObservingSnapshotValuesUpdateList;
     NSArray *_cachedSnapshotChannels;
     int _effectBundleEncodingOptions;
+    BOOL _bundlePartActivated;
 }
 
 + (id)copyClassDescription;
-@property(nonatomic) BOOL TEMP_inEffectBundlePostInitScope; // @synthesize TEMP_inEffectBundlePostInitScope;
 @property(nonatomic) int effectBundleEncodingOptions; // @synthesize effectBundleEncodingOptions=_effectBundleEncodingOptions;
-@property(retain, nonatomic) CHChannelDouble *amountChannel; // @synthesize amountChannel=_channel;
 @property(nonatomic) double defaultValue; // @synthesize defaultValue=_defaultValue;
+@property(readonly, nonatomic) BOOL isBundlePartActivated; // @synthesize isBundlePartActivated=_bundlePartActivated;
+@property(retain, nonatomic) CHChannelDouble *amountChannel; // @synthesize amountChannel=_channel;
 - (id)exportAsXMLElement;
 - (id)initFromXMLElement:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -48,13 +48,15 @@ __attribute__((visibility("hidden")))
 - (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3 forChannel:(id)arg4;
 - (id)observedObjectForChannel:(id)arg1;
 - (id)_findEffectForChannel:(id)arg1;
+- (void)deactivateBundlePartEffects;
+- (void)activateBundlePartEffects:(int)arg1;
+- (void)deactivateBundlePart;
+- (void)activateBundlePart:(int)arg1;
 - (void)updateEffectsEncodingOptions:(BOOL)arg1;
 - (void)clearCachedSnapshotChannels;
 - (BOOL)effectsLoaded;
 - (void)unloadEffects;
 - (void)loadEffects;
-- (void)didSetEffects;
-- (void)willSetEffects;
 - (void)loadEffects:(id)arg1;
 - (void)setModifiedStateForEffectChannel:(id)arg1;
 - (BOOL)isBundlePartEffectModified:(id)arg1;
@@ -64,9 +66,6 @@ __attribute__((visibility("hidden")))
 - (void)resetBundlePart:(BOOL)arg1;
 - (void)resetEffect:(id)arg1;
 - (void)_resetEffect:(id)arg1;
-- (BOOL)hasEffectChannelsInFolder:(id)arg1;
-- (void)deleteEffectChannelsInFolder:(id)arg1;
-- (void)createEffectChannelsInFolder:(id)arg1;
 - (void)setDescription:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)setName:(id)arg1;

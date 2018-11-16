@@ -109,7 +109,7 @@
 - (void)drawElementOutline:(const PCMatrix44Tmpl_e98c85ee *)arg1 red:(double)arg2 green:(double)arg3 blue:(double)arg4;
 - (void)clipOutline:(const PCVector2_5d498db0 *)arg1 numPoints:(int)arg2 edges:(PCVector2_5d498db0 *)arg3 returnVisible:(vector_a7cf9eda *)arg4;
 - (void)clipPoints:(const vector_ced1dec3 *)arg1 returnVisible:(vector_a7cf9eda *)arg2;
-- (PCRect_3a266109)getTransformedBounds;
+- (BOOL)getTransformedBounds:(PCRect_3a266109 *)arg1;
 - (void)getTransformedCorner1:(PCVector2_5d498db0 *)arg1 c2:(PCVector2_5d498db0 *)arg2 c3:(PCVector2_5d498db0 *)arg3 c4:(PCVector2_5d498db0 *)arg4;
 - (PCBox_dd92ab54)getLocalVolume;
 - (PCRect_3a266109)getSceneBounds;
@@ -212,6 +212,7 @@
 - (void)setRotation:(const PCVector3_457fd1f0 *)arg1;
 - (void)offsetPosition:(const PCVector3_457fd1f0 *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
 - (void)offsetPosition:(const PCVector3_457fd1f0 *)arg1;
+- (void)offsetPositionFromScale:(const PCVector3_457fd1f0 *)arg1;
 - (void)setPosition:(const PCVector3_457fd1f0 *)arg1;
 - (PCVector3_457fd1f0)getPivot;
 - (PCVector3_457fd1f0)getScale;

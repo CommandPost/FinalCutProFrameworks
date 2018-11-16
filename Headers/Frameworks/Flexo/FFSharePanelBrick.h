@@ -4,20 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSViewController.h"
+#import "NSObject.h"
 
-@class FFSharePanelRolesViewController;
+@class FFSharePanelRolesDataSource, FFWeakPointerValue;
 
 __attribute__((visibility("hidden")))
-@interface FFSharePanelBrick : NSViewController
+@interface FFSharePanelBrick : NSObject
 {
-    FFSharePanelRolesViewController *_rolesViewController;
+    FFWeakPointerValue *_dataSourceWeakPointer;
 }
 
-+ (id)brick:(id)arg1;
-+ (Class)brickViewClass;
-@property(readonly, nonatomic) FFSharePanelRolesViewController *rolesViewController; // @synthesize rolesViewController=_rolesViewController;
-- (id)initWithRolesViewController:(id)arg1;
+@property(retain, nonatomic) FFWeakPointerValue *dataSourceWeakPointer; // @synthesize dataSourceWeakPointer=_dataSourceWeakPointer;
+@property(readonly, nonatomic) FFSharePanelRolesDataSource *dataSource;
+- (void)dealloc;
+- (id)initWithDataSource:(id)arg1;
 - (id)init;
 
 @end
