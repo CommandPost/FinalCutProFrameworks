@@ -11,7 +11,7 @@
 #import "OZListController.h"
 #import "OZOutlineVarRowHeightDelegate.h"
 
-@class LKSearchField, LKSegmentedControl, LKSlider, NSMenuItem, NSProThemeImageView, NSTableColumn, NSView, OZLayerListOutlineView;
+@class LKSearchField, LKSegmentedControl, LKSlider, NSMenuItem, NSProThemeImageView, NSString, NSTableColumn, NSView, OZLayerListOutlineView;
 
 @interface OZLayerListModule : OZProViewModule <OZListController, NSOutlineViewDataSource, NSOutlineViewDelegate, OZOutlineVarRowHeightDelegate>
 {
@@ -127,6 +127,12 @@
 - (void)dealloc;
 - (id)init;
 - (struct OZDocument *)currentOZDocument;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

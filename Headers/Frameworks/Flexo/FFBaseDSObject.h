@@ -22,6 +22,7 @@
 - (void)setUserDefaults:(id)arg1;
 - (id)userDefaults;
 @property(readonly, nonatomic) FFUndoHandler *undoHandler;
+- (id)modelDocument;
 - (id)projectDocument;
 - (id)project;
 - (id)libraryItem;

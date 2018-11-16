@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKPanel, LKSegmentedControl;
+@class LKPanel, LKSegmentedControl, NSString;
 
 @interface OZMarkerInfoPanel : NSObject <NSWindowDelegate>
 {
@@ -46,6 +46,12 @@
 - (void)openWithRoot:(struct OZChannelObjectRoot *)arg1 currentMarker:(const struct OZTimeMarker *)arg2 range:(const struct PCTimeRange *)arg3;
 - (void)setDocument:(struct OZDocument *)arg1;
 - (void)awakeFromNib;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

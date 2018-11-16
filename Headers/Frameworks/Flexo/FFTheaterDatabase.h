@@ -9,7 +9,7 @@
 #import "FFOrganizerMasterItemDropTarget.h"
 #import "NSFilePresenter.h"
 
-@class FFLibraryDocument, FFMediaEventDocument, FFTheaterStore, NSData, NSMutableArray, NSOperationQueue, NSRecursiveLock, NSSet, NSURL, NSUndoManager;
+@class FFLibraryDocument, FFMediaEventDocument, FFTheaterStore, NSData, NSMutableArray, NSOperationQueue, NSRecursiveLock, NSSet, NSString, NSURL, NSUndoManager;
 
 @interface FFTheaterDatabase : NSObject <FFOrganizerMasterItemDropTarget, NSFilePresenter>
 {
@@ -53,8 +53,8 @@
 @property(retain, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 - (void)removeItems:(id)arg1 addDeletionRecords:(BOOL)arg2 scheduleArchiveRepresentationsForDeletion:(id)arg3;
 - (void)addItems:(id)arg1;
-@property(readonly, nonatomic) NSSet *items;
-@property(readonly, nonatomic) FFMediaEventDocument *theaterDocument;
+@property(readonly, copy, nonatomic) NSSet *items;
+@property(readonly, retain, nonatomic) FFMediaEventDocument *theaterDocument;
 - (id)_databaseBackupFileURL;
 - (id)_databaseFileURL;
 - (id)shareMediaRelativePathForSequence:(id)arg1 setting:(id)arg2;
@@ -65,6 +65,8 @@
 - (void)_presentErrorsOnCurrentQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentErrors:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)databaseShareUnavailableError;
+- (id)databaseViewUnavailableError;
 - (BOOL)checkEligibilityForItems:(id)arg1 error:(id *)arg2;
 - (BOOL)canWrite:(id *)arg1;
 - (BOOL)canRead:(id *)arg1;
@@ -77,8 +79,8 @@
 - (void)savePresentedItemChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)presentedItemDidChange;
 - (void)relinquishPresentedItemToWriter:(CDUnknownBlockType)arg1;
-@property(readonly) NSOperationQueue *presentedItemOperationQueue;
-@property(readonly) NSURL *presentedItemURL;
+@property(readonly, retain) NSOperationQueue *presentedItemOperationQueue;
+@property(readonly, copy) NSURL *presentedItemURL;
 - (void)saveBackupWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_setupEmptyStoreUnlessOnOldOS:(BOOL)arg1;
 - (id)_readDatabaseCorruptError;
@@ -101,7 +103,7 @@
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (void)_removeObservers;
 - (void)_addObservers;
@@ -128,7 +130,10 @@
 - (id)_upgradeDatabaseBeforeReadIfNeededWithStoreData:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
-@property(readonly) NSURL *primaryPresentedItemURL;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSURL *primaryPresentedItemURL;
+@property(readonly) Class superclass;
 
 @end
 

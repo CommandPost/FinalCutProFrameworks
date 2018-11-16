@@ -8,7 +8,7 @@
 
 #import "OZCurveEditorAppDelegate.h"
 
-@class OZTimingCoordinator;
+@class NSString, OZTimingCoordinator;
 
 @interface OZMoCurveEditorAppDelegate : NSObject <OZCurveEditorAppDelegate>
 {
@@ -50,6 +50,12 @@
 - (void)postNotification:(unsigned int)arg1;
 - (void)setTimingCoordinator:(id)arg1;
 - (id)initWithOZDocument:(struct OZDocument *)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

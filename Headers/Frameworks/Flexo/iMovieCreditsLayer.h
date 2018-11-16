@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface iMovieCreditsLayer : CALayer <iMovieMicaPlugin>
 {
 }
@@ -29,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)addCastMembersWithVerticalOffset:(double *)arg1 containerLayer:(id)arg2;
 - (void)addMovieNameWithVerticalOffset:(double *)arg1 containerLayer:(id)arg2;
 - (void)buildEverythingForDisplay;
+- (BOOL)isTitleRTL;
 - (void)removeContainerLayer;
 - (id)containerLayer;
 - (void)setCreditsFromExtendedTitleDefinition:(id)arg1 showMovieName:(BOOL)arg2;

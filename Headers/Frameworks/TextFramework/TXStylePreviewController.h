@@ -6,22 +6,29 @@
 
 #import "OZViewController.h"
 
+#import "MEBackgroundLoadPreviewClient.h"
 #import "OZRenderClient.h"
 
-@class TXLibraryPresetsButton;
+@class MEBackgroundLoadStylePreviewRequest, NSDate, TXLibraryPresetsButton;
 
-@interface TXStylePreviewController : OZViewController <OZRenderClient>
+@interface TXStylePreviewController : OZViewController <OZRenderClient, MEBackgroundLoadPreviewClient>
 {
     TXLibraryPresetsButton *_pPresets;
     struct TXTextStyle *_style;
     struct PCHash128 _hash;
     struct PCRecursiveMutex _renderLock;
     unsigned long long _renderJobID;
+    MEBackgroundLoadStylePreviewRequest *_lastRequest;
+    NSDate *_lastRequestDate;
 }
 
++ (void)willTerminate:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)backgroundRequestCompleted:(id)arg1;
+- (void)discardLastPreviewRenderRequest;
 - (void)loadPreset:(struct OZPasteList *)arg1 sender:(id)arg2;
+- (void)notifyMotionInspectorToRebuild;
 - (void)loadPasteboard:(id)arg1 intoSceneNode:(struct OZSceneNode *)arg2;
 - (void)resetChannel:(id)arg1;
 - (void)_resetStyle:(struct TXTextStyle *)arg1;
@@ -36,11 +43,12 @@
 - (void)renderNodeCancelled:(const CDStruct_198678f7 *)arg1 userData:(void *)arg2;
 - (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
 - (void)_finishedWithDocumentInRenderJob:(id)arg1;
-- (struct TXTextLayout *)makeStylePreviewText:(struct TXTextStyle *)arg1 string:(id)arg2 dependentObjects:(list_1192f13f *)arg3;
+- (struct TXTextLayout *)makeStylePreviewText:(struct TXTextStyle *)arg1 string:(id)arg2 dependentObjects:(list_d81b4758 *)arg3;
 - (void)queueRenderJob:(struct OZRenderNode *)arg1 scene:(struct OZScene *)arg2;
 - (void)getRenderRequestRenderParams:(struct OZRenderParams *)arg1 atTime:(CDStruct_198678f7)arg2;
 - (void)renderPreviewImage;
 - (void)dealloc;
+- (oneway void)release;
 - (id)init;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 summary:(BOOL)arg3;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;

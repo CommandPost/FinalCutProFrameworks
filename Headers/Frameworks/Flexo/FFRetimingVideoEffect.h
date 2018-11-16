@@ -6,36 +6,46 @@
 
 #import <Flexo/FFRetimingEffect.h>
 
-@class CHChannelBool, CHChannelEnum;
+#import "FFRateConformAndRetimingVideoProtocol.h"
+
+@class CHChannelBool, CHChannelEnum, FFSegmentStoreWriteLockIndexTracker;
 
 __attribute__((visibility("hidden")))
-@interface FFRetimingVideoEffect : FFRetimingEffect
+@interface FFRetimingVideoEffect : FFRetimingEffect <FFRateConformAndRetimingVideoProtocol>
 {
     CHChannelEnum *_chFrameSamplingMode;
     CHChannelBool *_chFlowVectorDisplay;
-    BOOL _waitingForAnalysis;
+    unsigned int _pendingHQRescan;
+    FFSegmentStoreWriteLockIndexTracker *_hqFramesIndexTracker;
 }
 
 + (void)registerEffects;
-- (BOOL)waitingForAnalysis;
 - (id)newEffectNode;
 - (id)inputKeys;
 - (void)usePresetsChannelFolder:(struct CHChannelFolder *)arg1;
 - (void)createChannelsInFolder:(id)arg1;
 - (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7 graphBuildInfo:(id)arg8;
+- (_Bool)shouldCheckCacheForTime:(CDStruct_1b6d18a9)arg1 withInputStream:(id)arg2 context:(id)arg3 props:(id)arg4;
+- (CDStruct_1b6d18a9)sampleDurationForHQCaching;
+- (id)highQualityFlowFrameRequestsForRange:(CDStruct_e83c9415)arg1 outputStartTime:(CDStruct_1b6d18a9)arg2 outputFrameDuration:(CDStruct_1b6d18a9)arg3;
+- (id)hqOpticalFlowRenderFilePaths;
+- (id)hqOpticalFlowRenderProps;
+- (int)getEffectSchedulingFlags;
+- (void)recordOffsetNeedingUpdate:(long long)arg1 forKey:(id)arg2;
+- (BOOL)hasHQFlowFrameForKey:(id)arg1 atOffset:(long long)arg2;
+- (void)_queueHQSegmentStoreCheck;
+- (void)_rescanForHQRenderedFrames;
 - (BOOL)hasFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3;
 - (BOOL)_checkTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3 mediaRep:(id)arg4;
 - (BOOL)currentSettingsRequireFlowVectors;
-- (id)newImageWithFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 inputImage:(id)arg2 stream:(id)arg3;
-- (id)newFlowInterpolatedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 frameDuration:(CDStruct_1b6d18a9)arg5 sampleDuration:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
 - (void)_performFlowAnalysis;
-- (id)newBlendedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 frameDuration:(CDStruct_1b6d18a9)arg5 sampleDuration:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
 - (void)setFrameSampleMode:(long long)arg1;
 - (long long)frameSampleMode;
 - (BOOL)isAtDefaultSettings;
 - (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
 - (void)dealloc;
+- (id)initWithEffectID:(id)arg1;
 
 @end
 

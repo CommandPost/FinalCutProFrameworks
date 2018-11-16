@@ -140,7 +140,7 @@
 - (BOOL)stopRecording;
 - (BOOL)startRecording;
 - (id)_newFileNameFromSequence:(id)arg1;
-- (void)_preparePlayerForRecord;
+- (void)_preparePlayerForRecord:(CDStruct_1b6d18a9)arg1;
 - (void)_restorePlayerStatePostRecord;
 - (id)_videoModule;
 - (id)_timelineModule;
@@ -173,7 +173,7 @@
 - (id)_osc;
 - (void)_addAnimationClip;
 - (BOOL)_finalizeVoiceoverRecording;
-- (id)_createClipForEvent:(id)arg1 fromURL:(id)arg2;
+- (id)_newClipForEvent:(id)arg1 fromURL:(id)arg2;
 - (CDStruct_e83c9415)_calculateClippedRange;
 - (BOOL)_addClipToAudition:(id)arg1;
 - (BOOL)_addClipToTimeline:(id)arg1;

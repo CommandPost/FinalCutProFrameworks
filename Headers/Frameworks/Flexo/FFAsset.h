@@ -47,6 +47,7 @@
     BOOL _forceNoProxy;
     BOOL _videoCodecMissing;
     BOOL _isReferenceMovie;
+    BOOL _needsAudioPropertiesUpdate;
 }
 
 + (void)invalidateMultipleAssets:(id)arg1;
@@ -57,6 +58,7 @@
 + (void)playerQualityChanged;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property(readonly, nonatomic) BOOL needsAudioPropertiesUpdate; // @synthesize needsAudioPropertiesUpdate=_needsAudioPropertiesUpdate;
 @property(nonatomic) BOOL isUnmounting; // @synthesize isUnmounting=_isUnmounting;
 @property(nonatomic) BOOL isTrailerAsset; // @synthesize isTrailerAsset=_isTrailerAsset;
 @property(readonly, nonatomic) BOOL isReferenceMovie; // @synthesize isReferenceMovie=_isReferenceMovie;
@@ -65,6 +67,9 @@
 @property(nonatomic) BOOL forceNoProxy; // @synthesize forceNoProxy=_forceNoProxy;
 @property(retain, nonatomic) NSString *uttype; // @synthesize uttype=_uttype;
 @property(readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
+- (BOOL)update_removeBadMP3TranscodedFiles;
+- (BOOL)update_rebuildAssetAudioProperties;
+- (BOOL)update_addAudioSourceDict;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (void)setMetadataColorSpaceOverride:(long long)arg1;
 - (long long)metadataColorSpaceOverride;
@@ -150,7 +155,10 @@
 - (void)_establishSupportedOverrideInfo:(id)arg1 beingCalledFromInit:(BOOL)arg2;
 - (id)videoPropsForSourceKey:(id)arg1;
 - (long long)videoSourceCount;
-- (id)audioSourceChannelCountMap;
+- (id)audioSourcePropertiesMap;
+- (void)setNeedsAudioPropertiesUpdate:(BOOL)arg1;
+- (int)audioSourceDictVersion;
+- (void)setAudioSourceDictVersion:(int)arg1;
 @property(retain, nonatomic) NSDictionary *audioSourceDict;
 @property(nonatomic) long long audioSourceCount;
 - (void)organizeMediaRepIntoEvent:(id)arg1;
@@ -167,7 +175,8 @@
 - (void)setDominantMotionMediaRep:(id)arg1;
 - (id)dominantMotionMediaRep;
 - (void)createFlowMediaRep;
-- (void)setFlowVectors:(CDStruct_e83c9415)arg1;
+- (void)setFlow:(CDStruct_e83c9415)arg1 mode:(long long)arg2 info:(id)arg3;
+- (void)setFlowVectors:(CDStruct_e83c9415)arg1 mode:(long long)arg2;
 - (void)setFlowMediaRep:(id)arg1;
 - (id)flowMediaRep;
 - (void)setProxyMediaRep:(id)arg1;
@@ -187,9 +196,9 @@
 - (void)dealloc;
 - (id)addMediaRepForURL:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 project:(id)arg4;
 - (void)_updateVideoProps:(int)arg1;
-- (BOOL)update_addAudioSourceDict;
+- (BOOL)canRebuildAudioProperties;
 - (void)rebuildAudioProperties;
-- (void)rebuildAudioSourceDictWithProvider:(id)arg1;
+- (void)rebuildAudioPropertiesWithProvider:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 manageFileType:(int)arg2 project:(id)arg3;
 - (id)_initWithBasics;

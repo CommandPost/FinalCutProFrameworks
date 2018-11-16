@@ -29,6 +29,7 @@
     NSString *_textFont;
     NSString *_selectedTextFont;
     double _indentationOffset;
+    double _textOffset;
     BOOL _needsLayout;
     BOOL _indented;
     BOOL _ignoreTextNotifications;
@@ -44,12 +45,13 @@
 @property(copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property(nonatomic) BOOL drawRule; // @synthesize drawRule=_drawRule;
 @property(nonatomic) BOOL hidesDisclosureButton; // @synthesize hidesDisclosureButton=_hidesDisclosureButton;
+@property(nonatomic) double textOffset; // @synthesize textOffset=_textOffset;
 @property(nonatomic) double indentationOffset; // @synthesize indentationOffset=_indentationOffset;
 @property(nonatomic) double indentationWidth; // @synthesize indentationWidth=_indentationWidth;
 @property(retain, nonatomic) FFOutlineViewRow *row; // @synthesize row=_row;
 @property(readonly, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
 - (void)dealloc;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)menuForEvent:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (BOOL)acceptsFirstMouse:(id)arg1;
@@ -133,6 +135,11 @@
 - (id)filteredChildrenElements:(id)arg1;
 @property(readonly, nonatomic) id disclosureButtonElement;
 @property(readonly, nonatomic) LKSyntheticUIElement *staticTextElement;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

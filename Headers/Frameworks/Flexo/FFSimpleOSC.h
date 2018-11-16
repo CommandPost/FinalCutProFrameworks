@@ -18,7 +18,11 @@ __attribute__((visibility("hidden")))
 
 - (CDStruct_1b6d18a9)getChannelTime;
 - (void)_setupEvent:(id)arg1 x:(double *)arg2 y:(double *)arg3;
+- (void)convertPointsFromSpace:(int)arg1 fromXs:(double *)arg2 fromYs:(double *)arg3 toSpace:(int)arg4 toXs:(double *)arg5 toYs:(double *)arg6 clampInToSpace:(BOOL)arg7 count:(unsigned long long)arg8;
 - (void)convertPointFromSpace:(int)arg1 fromX:(double)arg2 fromY:(double)arg3 toSpace:(int)arg4 toX:(double *)arg5 toY:(double *)arg6;
+- (void)_internal_convertPointFromSpace:(int)arg1 fromX:(double)arg2 fromY:(double)arg3 toSpace:(int)arg4 toX:(double *)arg5 toY:(double *)arg6 clampInToSpace:(BOOL)arg7 convParams:(struct FFOSCPointConversionData *)arg8;
+- (void)clampToViewBoundsXs:(double *)arg1 pointYs:(double *)arg2 count:(unsigned long long)arg3;
+- (void)_internal_clampToViewBoundsX:(double *)arg1 pointY:(double *)arg2 pcd:(struct FFOSCPointConversionData *)arg3;
 - (struct CGRect)inputBounds;
 - (BOOL)hitTest:(struct CGPoint)arg1;
 - (BOOL)isToolBased;

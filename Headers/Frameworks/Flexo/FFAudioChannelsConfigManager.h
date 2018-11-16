@@ -27,8 +27,6 @@
 - (BOOL)containsChannelsConfigSupportedObjects;
 - (void)setCurrentChannelLayoutAsAutoDetectedLayout;
 - (BOOL)updateToSelectedLayout:(id)arg1 error:(id *)arg2;
-- (BOOL)displayUseReferenceClipLayoutAlertDialog:(char *)arg1;
-- (BOOL)displayReferenceClipLayoutChangeAlertDialog:(char *)arg1;
 - (void)populateLayoutMenu:(id)arg1;
 - (id)backingAnchoredObjects;
 - (id)audioChannelsConfigObjects;

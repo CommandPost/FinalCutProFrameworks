@@ -11,7 +11,7 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class NSArray, NSButton, NSPanel, NSPathControl, NSTableView, NSTextField, NSTextView, NSURL, NSView;
+@class NSArray, NSButton, NSPanel, NSPathControl, NSString, NSTableView, NSTextField, NSTextView, NSURL, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFLibraryManagerPanelController : NSWindowController <NSWindowDelegate, NSOpenSavePanelDelegate, NSTableViewDelegate, NSTableViewDataSource>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSArray *_items;
     NSArray *_selectedURLs;
     NSURL *_excludedURL;
+    BOOL _libraryIsNew;
     NSTableView *_activeTableView;
     NSPathControl *_activePathControl;
     NSButton *_activeChooseButton;
@@ -54,6 +55,7 @@ __attribute__((visibility("hidden")))
 + (id)beginMoveTask:(id)arg1 copy:(BOOL)arg2 error:(id *)arg3;
 + (id)copyTaskOptionsFromDictionary:(id)arg1;
 + (id)chooseLibraryOptions:(id)arg1 isMove:(BOOL)arg2;
++ (id)openLibraries:(BOOL)arg1 windowTextMessage:(id)arg2 windowDescriptionMessage:(id)arg3 libraryIsNew:(char *)arg4 error:(id *)arg5;
 + (id)openLibraries:(BOOL)arg1 windowTextMessage:(id)arg2 windowDescriptionMessage:(id)arg3 error:(id *)arg4;
 + (id)openLibraries:(BOOL)arg1 error:(id *)arg2;
 + (id)chooseLocation:(id)arg1 tagNames:(id *)arg2;
@@ -77,6 +79,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) NSTextView *switchTopicDescriptionTextView; // @synthesize switchTopicDescriptionTextView=_switchTopicDescriptionTextView;
 @property(nonatomic) NSTextField *switchTopicTextField; // @synthesize switchTopicTextField=_switchTopicTextField;
 @property(nonatomic) NSPanel *switchPanel; // @synthesize switchPanel=_switchPanel;
+@property BOOL libraryIsNew; // @synthesize libraryIsNew=_libraryIsNew;
 - (void)configureMoveOrCopyPanel:(BOOL)arg1;
 - (void)configureModalSwitchPanel:(BOOL)arg1 windowTextMessage:(id)arg2 windowDescriptionMessage:(id)arg3;
 - (void)tableView:(id)arg1 sortDescriptorsDidChange:(id)arg2;
@@ -113,6 +116,12 @@ __attribute__((visibility("hidden")))
 - (void)updateChooseButton;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -18,7 +18,7 @@
 + (BOOL)containsOnlyAudioOnlyItems:(id)arg1;
 + (BOOL)containsAudioOnlyItems:(id)arg1;
 + (id)editActionDataWithNativeData:(id)arg1 containsOnlyAudioOnly:(BOOL)arg2 containsSomeAudioOnly:(BOOL)arg3;
-@property(readonly, nonatomic) NSArray *nativeData; // @synthesize nativeData=_nativeData;
+@property(readonly, retain, nonatomic) NSArray *nativeData; // @synthesize nativeData=_nativeData;
 @property(readonly, nonatomic) BOOL containsSomeAudioOnly; // @synthesize containsSomeAudioOnly=_containsSomeAudioOnly;
 @property(readonly, nonatomic) BOOL containsOnlyAudioOnly; // @synthesize containsOnlyAudioOnly=_containsOnlyAudioOnly;
 - (void)dealloc;

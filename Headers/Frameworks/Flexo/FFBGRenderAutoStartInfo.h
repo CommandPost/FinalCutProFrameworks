@@ -16,13 +16,15 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _range;
     int _priority;
     _Bool _onlyDropSegs;
+    _Bool _knownNotToNeedRender;
 }
 
 @property(readonly) _Bool onlyDropSegs; // @synthesize onlyDropSegs=_onlyDropSegs;
+@property _Bool knownNotToNeedRender; // @synthesize knownNotToNeedRender=_knownNotToNeedRender;
 @property(readonly) int priority; // @synthesize priority=_priority;
 @property(readonly) CDStruct_e83c9415 range; // @synthesize range=_range;
-@property(readonly) NSIndexSet *statesToRender; // @synthesize statesToRender=_statesToRender;
-@property(readonly) FFRenderStateTracker *tracker; // @synthesize tracker=_tracker;
+@property(readonly, retain) NSIndexSet *statesToRender; // @synthesize statesToRender=_statesToRender;
+@property(readonly, retain) FFRenderStateTracker *tracker; // @synthesize tracker=_tracker;
 - (id)description;
 - (void)segmentDropDetected:(id)arg1;
 - (_Bool)needsRender;

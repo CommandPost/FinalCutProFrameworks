@@ -9,7 +9,7 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class TLKAccessoryHandler, TLKEventDispatcher, TLKTimelineView;
+@class NSString, TLKAccessoryHandler, TLKEventDispatcher, TLKTimelineView;
 
 @interface TLKAccessoryLayer : CALayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
@@ -34,6 +34,7 @@
 - (BOOL)startTracking:(id)arg1;
 - (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
+- (BOOL)wantsToHandlePredominantDrag;
 - (void)setSkimmingPlayheadHidden:(BOOL)arg1;
 - (BOOL)popUpMenu:(id)arg1 positioningItem:(id)arg2 atPoint:(struct CGPoint)arg3;
 - (struct CGPoint)convertPointFromTimeline:(struct CGPoint)arg1;
@@ -45,6 +46,12 @@
 @property(readonly) double height;
 - (void)layerDidBecomeVisible:(BOOL)arg1;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     FFContext *_alternateContext;
     CDStruct_1b6d18a9 _nUpDisplayTime;
     BOOL _forcePrimaryPlayerNoUpdate;
+    BOOL _nUpDisplayBeginInProgress;
 }
 
 @property BOOL force2UpDisplay; // @synthesize force2UpDisplay=_force2UpDisplay;

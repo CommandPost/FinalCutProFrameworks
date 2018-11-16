@@ -8,7 +8,7 @@
 
 #import "NSSplitViewDelegate.h"
 
-@class NSView, OZCurveEditorModule, OZMoCurveEditorAudioDelegate, OZTimeAxis, OZTimelineModule, OZTimingControlModule, OZTimingCoordinator, OZTimingMarkers;
+@class NSString, NSView, OZCurveEditorModule, OZMoCurveEditorAudioDelegate, OZTimeAxis, OZTimelineModule, OZTimingControlModule, OZTimingCoordinator, OZTimingMarkers;
 
 @interface OZMoCurveEditorCtrl : OZCurveEditorCtrl <NSSplitViewDelegate>
 {
@@ -40,10 +40,11 @@
 - (void)showHideTimeAxis:(BOOL)arg1;
 - (void)prepareForDraggingTab;
 - (void)findSnaps:(vector_7856d79e *)arg1 forceAllVisible:(BOOL)arg2;
-- (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
-- (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
+- (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
+- (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
 - (void)splitViewDidResizeSubviews:(id)arg1;
+- (double)dividerPosition;
 - (void)magnifyGestureWithEvent:(id)arg1 andFactor:(double)arg2;
 - (void)keyDown:(id)arg1;
 - (void)currentViewVolumeChangedTo:(const struct CGRect *)arg1;
@@ -96,6 +97,12 @@
 - (void)createAutomaticCurveSets;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,7 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class FFHGAsyncCustomJob;
+
 @protocol HGRQCustomJobProtocol
-- (void)customHGRenderQueueJobCallback:(struct HGRenderer *)arg1;
+- (void)customHGRenderQueueJobCallback:(struct HGRenderer *)arg1 theJob:(FFHGAsyncCustomJob *)arg2;
 @end
 

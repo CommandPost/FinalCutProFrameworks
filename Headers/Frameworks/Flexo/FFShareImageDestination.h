@@ -22,6 +22,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
+- (id)taskIdentifier;
 
 @end
 

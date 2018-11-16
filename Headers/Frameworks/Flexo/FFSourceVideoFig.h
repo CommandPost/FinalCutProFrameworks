@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_md5CacheArray;
     int _sampleContentAndFieldOrder;
     BOOL _workaround15320638;
+    BOOL _workaround20684866;
 }
 
 + (Class)streamClass;
@@ -64,6 +65,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) BOOL unsupportedReferenceMovie; // @synthesize unsupportedReferenceMovie=_unsupportedReferenceMovie;
 @property _Bool reportedAwfulFigNCLCGuess; // @synthesize reportedAwfulFigNCLCGuess=_reportedAwfulFigNCLCGuess;
 @property _Bool reportedNonStandardNCLC; // @synthesize reportedNonStandardNCLC=_reportedNonStandardNCLC;
+- (id).cxx_construct;
 - (BOOL)isValid;
 - (double)preferredScaleFactorForQuality:(int)arg1;
 - (id)codecName;

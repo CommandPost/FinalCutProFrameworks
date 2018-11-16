@@ -8,14 +8,13 @@
 
 #import "FFArrangedItemsModuleDelegate.h"
 #import "FFOrganizerFilmstripModuleDelegate.h"
-#import "FFOrganizerFilterHUDDelegate.h"
 #import "FFSidebarModuleDelegate.h"
 #import "NSSplitViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFArrangedItemsModule, FFCapsController, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFOrganizerFilterHUD, FFOrganizerLinenBackground, FFOrganizerSplitView, FFOrganizerTextFieldView, FFSidebarModule, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKWindow, LKWindowModule, NSArray, NSBox, NSMenuItem, NSProView, NSView, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
+@class FFArrangedItemsModule, FFCapsController, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFOrganizerFilterHUD, FFOrganizerLinenBackground, FFOrganizerSplitView, FFOrganizerTextFieldView, FFSidebarModule, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKWindow, LKWindowModule, NSArray, NSBox, NSMenuItem, NSProView, NSString, NSView, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
 
-@interface FFOrganizerModule : LKViewModule <FFOrganizerFilmstripModuleDelegate, FFSidebarModuleDelegate, NSSplitViewDelegate, FFArrangedItemsModuleDelegate, FFOrganizerFilterHUDDelegate, NSWindowDelegate>
+@interface FFOrganizerModule : LKViewModule <FFOrganizerFilmstripModuleDelegate, FFSidebarModuleDelegate, NSSplitViewDelegate, FFArrangedItemsModuleDelegate, NSWindowDelegate>
 {
     FFSidebarModule *_sidebarModule;
     FFArrangedItemsModule *_itemsModule;
@@ -164,6 +163,12 @@
 - (id)targetSelection;
 - (id)targetObjectForItem:(id)arg1 inModule:(id)arg2;
 - (id)targetObjectForItem:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

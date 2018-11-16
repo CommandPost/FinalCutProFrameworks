@@ -65,7 +65,7 @@
 @property(retain) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
 - (void)removeTempFolderForSubSegment:(id)arg1;
 - (void)clipRemovedFromQueue:(id)arg1;
-- (id)_importStatusTextDescription;
+- (void)_updateStatusTextDescription;
 - (id)sidebarCameraItems;
 - (void)postFileImportCompleteUserNotification;
 - (void)postIngestCompleteUserNotificationOnRADVolume:(id)arg1;
@@ -79,6 +79,7 @@
 - (id)assetsChanging;
 - (id)assetsInUse;
 - (void)stopWritingFilesToLocation:(id)arg1;
+- (void)invalidateAssetForVolumeDidMount:(id)arg1;
 - (void)invalidateRADAssets:(id)arg1;
 - (void)radVolumeWillUnmount:(id)arg1;
 - (void)unregisterRADAssetForVolumeNotifications:(id)arg1;

@@ -9,6 +9,7 @@
 @interface OZLibraryPreviewCtrl : LKViewModule
 {
     struct OZSceneNode *_pSceneNode;
+    unsigned int _pSceneNodeID;
     struct OZScene *_pScene;
     CDStruct_1b6d18a9 _timeStart;
     CDStruct_1b6d18a9 _duration;
@@ -24,6 +25,7 @@
 - (void)update:(const CDStruct_1b6d18a9 *)arg1;
 - (void)setTimeRange:(const struct PCTimeRange *)arg1;
 - (void)setShouldDeleteDocument:(BOOL)arg1;
+- (void)setSceneNodeID:(unsigned int)arg1;
 - (void)dealloc;
 - (id)initWithRenderNode:(struct OZRenderNode *)arg1 scene:(struct OZScene *)arg2;
 

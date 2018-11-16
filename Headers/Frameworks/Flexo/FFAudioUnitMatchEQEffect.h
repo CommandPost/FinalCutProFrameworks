@@ -6,10 +6,12 @@
 
 #import <Flexo/FFAudioUnitAnalyzingEffect.h>
 
-@class FFAnchoredObject;
+#import "FFEffectSubEffectContainment.h"
+
+@class FFAnchoredObject, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioUnitMatchEQEffect : FFAudioUnitAnalyzingEffect
+@interface FFAudioUnitMatchEQEffect : FFAudioUnitAnalyzingEffect <FFEffectSubEffectContainment>
 {
     int _mode;
     FFAnchoredObject *_matchComponent;
@@ -20,6 +22,12 @@ __attribute__((visibility("hidden")))
 - (id)matchObject;
 - (void)setMatchObject:(id)arg1;
 - (void)setMatchEQMode:(int)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

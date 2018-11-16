@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class NSArray, NSMenu, NSSet;
+@class NSArray, NSMenu, NSSet, NSString;
 
 @interface FFRolesMenuController : NSObject <NSMenuDelegate>
 {
@@ -32,6 +32,12 @@
 - (void)dealloc;
 - (id)initWithRolesMenuDelegate:(id)arg1 menu:(id)arg2;
 - (id)initWithRolesMenuDelegate:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

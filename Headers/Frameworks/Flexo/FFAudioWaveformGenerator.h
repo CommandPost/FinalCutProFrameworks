@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
 - (id)peaksDataConvert:(id)arg1 fromSampleRate:(double)arg2 toSampleRate:(double)arg3;
-- (id)peaksDataForRequest:(id)arg1 synchronously:(BOOL)arg2 wasFinalQuality:(char *)arg3 waveformHandlePixels:(unsigned int)arg4;
-- (id)peaksDataForRequest:(id)arg1 synchronously:(BOOL)arg2 wasFinalQuality:(char *)arg3;
+- (id)peaksDataForRequest:(id)arg1 synchronously:(BOOL)arg2 waveformHandlePixels:(unsigned int)arg3;
+- (id)peaksDataForRequest:(id)arg1 synchronously:(BOOL)arg2;
 - (void)dealloc;
 - (oneway void)release;
 - (id)init;

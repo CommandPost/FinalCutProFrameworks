@@ -15,6 +15,7 @@
     BOOL _stopAnimations;
     BOOL _showPeak;
     BOOL _resetPeak;
+    BOOL _forceRedraw;
     int _meterNumber;
     double _peak;
     int _peakCounter;
@@ -31,6 +32,8 @@
 - (void)_calculateMaskRatio:(double)arg1;
 - (void)layoutSublayers;
 - (void)setupMeterLayers;
+- (void)_frameChanged:(id)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

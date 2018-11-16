@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKButton, LKPanel, NSMatrix;
+@class LKButton, LKPanel, NSMatrix, NSString;
 
 @interface OZRecordingOptionsPanel : NSObject <NSWindowDelegate>
 {
@@ -33,6 +33,12 @@
 - (void)setRecordingOptions:(int)arg1;
 - (int)getRecordingOptions;
 - (struct OZScene *)scene;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

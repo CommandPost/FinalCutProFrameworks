@@ -6,25 +6,51 @@
 
 #import <TextFramework/OZAutoTextInspectorController.h>
 
-@class OZViewController, OZViewControllerGroup;
+@class OZViewController, OZViewControllerGroup, TXMaterialAssignmentFolderController;
 
 @interface OZAutoTextStyleController : OZAutoTextInspectorController
 {
     struct TXTextLayout *_text;
     OZViewController *_stylePreviewCtrl;
+    OZViewController *_extrusionCtrl;
+    OZViewController *_extrusionDepthCtrl;
+    OZViewController *_extrusionDirectionCtrl;
+    OZViewController *_extrusionWeightCtrl;
+    OZViewController *_frontCornerTypeCtrl;
+    OZViewController *_frontCornerSizeCtrl;
+    OZViewController *_backCornerTypeCtrl;
+    OZViewController *_backCornerSizeCtrl;
+    OZViewController *_cornerStyleCtrl;
+    OZViewControllerGroup *_lightingCtrl;
+    OZViewController *_lightingStyleSelectionCtrl;
+    OZViewController *_lightingStyleIntensityCtrl;
+    OZViewController *_selfShadowsCtrl;
+    OZViewController *_environmentFolderCtrl;
+    TXMaterialAssignmentFolderController *_materialAssignmentFolderCtrl;
     OZViewControllerGroup *_faceCtrl;
     OZViewControllerGroup *_outlineCtrl;
     OZViewController *_glowCtrl;
     OZViewController *_dropShadowCtrl;
 }
 
+@property(readonly) TXMaterialAssignmentFolderController *materialAssignmentFolderCtrl; // @synthesize materialAssignmentFolderCtrl=_materialAssignmentFolderCtrl;
 - (struct TXTextStyle *)getCurrentStyle;
 - (void)notify:(unsigned int)arg1;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
+- (void)updateInspector2D3DBricks:(BOOL)arg1;
+- (void)updateCornerControllers:(struct OZ3DExtrusionProperties *)arg1;
+- (void)updateLightingIntensityController:(struct OZ3DExtrusionProperties *)arg1;
+- (void)updateEnvironmentController:(struct OZ3DExtrusionProperties *)arg1;
 - (void)delayedRelease;
 - (void)delayedReleaseCB:(id)arg1;
 - (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
+- (void)addOrResetChannelToLightingBrick:(struct OZ3DExtrusionProperties *)arg1 reset:(BOOL)arg2;
+- (void)addOrResetChannelToExtrusionBrick:(struct OZ3DExtrusionProperties *)arg1 reset:(BOOL)arg2;
+- (void)didBuildUI;
+- (void)styleAttributeControllerDidCreateEnclosingGroup:(id)arg1;
 - (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
+- (id)augmentUIWithLightingBrick:(struct OZ3DExtrusionProperties *)arg1 context:(id)arg2;
+- (id)augmentUIWith3DTextBrick:(struct OZ3DExtrusionProperties *)arg1 context:(id)arg2;
 - (void)showHideColorSourceChannels:(int)arg1 colorChan:(struct OZChannelColorNoAlpha *)arg2 gradientChan:(struct OZChannelGradient *)arg3 textureChan:(struct OZChannelImageWithOptions *)arg4 controller:(id)arg5;
 - (void)linkFourCornerChannels:(struct OZChannelQuad *)arg1 controller:(id)arg2 faceChan:(struct OZChannelQuad *)arg3 link:(BOOL)arg4 reset:(BOOL)arg5;
 - (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;

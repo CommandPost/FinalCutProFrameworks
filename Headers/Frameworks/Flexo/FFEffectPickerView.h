@@ -8,7 +8,7 @@
 
 #import "FFSkimmingModuleDelegate.h"
 
-@class CALayer, FFAnchoredCollection, FFAnchoredObject, FFEffect, FFSkimmingModule, FFThumbnailRequest, NSArray, NSDictionary, NSImage, NSMutableArray;
+@class CALayer, FFAnchoredCollection, FFAnchoredObject, FFEffect, FFSkimmingModule, FFThumbnailRequest, NSArray, NSDictionary, NSImage, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectPickerView : NSView <FFSkimmingModuleDelegate>
@@ -96,6 +96,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 isVideo:(BOOL)arg2;
 - (void)viewDidChangeBackingProperties;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -34,7 +34,7 @@
 @property(nonatomic) BOOL livesInThemeFolder; // @synthesize livesInThemeFolder=_livesInThemeFolder;
 @property(nonatomic) BOOL deleteable; // @synthesize deleteable=_deleteable;
 @property(nonatomic) int type; // @synthesize type=_type;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)setDescription:(id)arg1;
 - (BOOL)trash;
 - (BOOL)renameTo:(id)arg1;
@@ -60,6 +60,11 @@
 - (BOOL)belongsToTheme:(id)arg1;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1 resolvedPath:(id)arg2 collection:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

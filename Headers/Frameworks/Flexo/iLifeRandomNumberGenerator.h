@@ -9,12 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface iLifeRandomNumberGenerator : NSObject
 {
-    unsigned long long m_index;
-    unsigned long long m_seed;
+    unsigned long long _seed;
+    unsigned long long _index;
 }
 
 + (id)randomNumberGeneratorWithSeed:(unsigned long long)arg1;
-@property unsigned long long seed; // @synthesize seed=m_seed;
+@property(nonatomic) unsigned long long index; // @synthesize index=_index;
+@property unsigned long long seed; // @synthesize seed=_seed;
 - (double)randomNumberWithinRangeStart:(double)arg1 rangeEnd:(double)arg2;
 - (double)randomNumberBetweenZeroAndOne;
 

@@ -6,18 +6,25 @@
 
 #import <ProInspector/OZViewControllerGroup.h>
 
-@class NSPopUpButton, PIParameterPulldown;
+#import "NSMenuDelegate.h"
 
-@interface OZChanEnumController : OZViewControllerGroup
+@class NSPopUpButton, NSString, PIParameterPulldown;
+
+@interface OZChanEnumController : OZViewControllerGroup <NSMenuDelegate>
 {
     NSPopUpButton *_pPopUp;
     PIParameterPulldown *_pParamPulldown;
     BOOL _areAllChansEqual;
     struct set<int, std::less<int>, std::allocator<int>> *_pDisabledItemIndices;
     struct map<int, int, std::less<int>, std::allocator<std::pair<const int, int>>> *_pDisplayValueMap;
-    struct vector<unsigned int, std::allocator<unsigned int>> *_pStringsTableChangeCounts;
+    vector_632d33ce *_pStringsTableChangeCounts;
 }
 
+@property(readonly, nonatomic) NSPopUpButton *popUp; // @synthesize popUp=_pPopUp;
+- (id)imageForMenuItemIndex:(unsigned int)arg1;
+- (void)setImagesForPopUp:(BOOL)arg1;
+- (void)menuWillOpen:(id)arg1;
+- (void)menuDidClose:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)enableItemForValue:(unsigned int)arg1 isEnabled:(BOOL)arg2;
 - (void)mapValue:(int)arg1 toDisplayValue:(int)arg2;
@@ -30,7 +37,15 @@
 - (void)enable;
 - (void)update;
 - (void)dealloc;
+- (void)setPopUpDisplay:(id)arg1;
+- (void)menuWillSendAction:(id)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

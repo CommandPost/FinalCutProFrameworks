@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     PDFDocument *_pdfDocument;
     unsigned long long _pageCount;
     CDStruct_bdcb2b0d _md5;
-    int _openStreams;
     NSRecursiveLock *_lock;
     NSString *_MD5Seed;
 }

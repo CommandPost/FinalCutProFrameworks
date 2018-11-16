@@ -9,7 +9,7 @@
 #import "NSMenuDelegate.h"
 #import "NSUserInterfaceValidations.h"
 
-@class FFFileSet, NSArray, NSMenu, NSMutableSet;
+@class FFFileSet, NSArray, NSMenu, NSMutableSet, NSString;
 
 @interface FFWorkspace : NSObject <NSMenuDelegate, NSUserInterfaceValidations>
 {
@@ -21,11 +21,13 @@
     NSArray *_tagNames;
     NSMutableSet *_documentsUpgradedAtLaunch;
     BOOL _closingDocumentsForAppTermination;
+    BOOL _isRestoringDocuments;
 }
 
 + (id)defaultWorkspace;
 + (BOOL)noSuchFileError:(id)arg1;
 + (BOOL)isFileInTrash:(id)arg1;
++ (id)errorForDamagedLibraryItem:(id)arg1;
 + (BOOL)useSecurityBookmarks;
 + (id)resolveBookmark:(id)arg1 isStale:(char *)arg2 error:(id *)arg3;
 + (id)bookmarkDataForURL:(id)arg1 error:(id *)arg2;
@@ -42,6 +44,7 @@
 - (id)chooseNewLibraryLocation:(id)arg1 tagNames:(id *)arg2;
 - (BOOL)restoreActiveDocuments:(BOOL)arg1 error:(id *)arg2;
 - (void)restoreDocuments:(BOOL)arg1 urls:(id)arg2;
+- (BOOL)isRestoringDocuments;
 - (id)recentDocumentURLs;
 - (id)recentFileSet;
 - (void)noteNewRecentDocumentURL:(id)arg1;
@@ -71,6 +74,12 @@
 - (void)dealloc;
 - (id)initWithURL:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

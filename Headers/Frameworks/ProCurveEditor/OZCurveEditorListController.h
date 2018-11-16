@@ -8,7 +8,7 @@
 
 #import "NSOutlineViewDelegate.h"
 
-@class NSNumberFormatter, OZBoolFormatter, OZCurveEditorChannelList, OZCurveEditorCtrl, OZDecibelFormatter;
+@class NSNumberFormatter, NSString, OZBoolFormatter, OZCurveEditorChannelList, OZCurveEditorCtrl, OZDecibelFormatter;
 
 @interface OZCurveEditorListController : NSObject <NSOutlineViewDelegate>
 {
@@ -64,6 +64,12 @@
 - (void)dealloc;
 - (id)init;
 - (long long)mouseInPartIndex;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

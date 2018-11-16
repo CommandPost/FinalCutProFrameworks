@@ -8,6 +8,8 @@
 
 #import "TLKLayoutManagerDelegate.h"
 
+@class NSString;
+
 @interface TLKLayoutDelegate : NSObject <TLKLayoutManagerDelegate>
 {
     struct CGSize _defaultTileSize;
@@ -20,6 +22,12 @@
 - (struct CGRect)_precisionEditorFrameForItemComponentFragment:(id)arg1 proposedFrame:(struct CGRect)arg2 layoutDatabase:(id)arg3;
 - (void)layoutManager:(id)arg1 didCompleteLayoutForTile:(id)arg2 atEnd:(BOOL)arg3;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

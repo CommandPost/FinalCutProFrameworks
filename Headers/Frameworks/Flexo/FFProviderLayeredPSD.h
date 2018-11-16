@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)extensions;
 + (id)utis;
 @property(readonly) unsigned int layerCount; // @synthesize layerCount=_layerCount;
+- (id).cxx_construct;
 - (CDStruct_bdcb2b0d)_md5WithContext:(id)arg1;
 - (id)nativeVideoProps;
 - (CDStruct_1b6d18a9)duration;

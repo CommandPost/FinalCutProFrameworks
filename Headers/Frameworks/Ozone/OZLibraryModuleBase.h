@@ -75,8 +75,12 @@
     OZLibraryEntry *_dropParent;
     BOOL _listenToNotifications;
     BOOL _tnailReadQueued;
+    unsigned long long _moduleUpdateContext;
 }
 
++ (void)setIcon:(id)arg1 forFileAtPath:(id)arg2;
++ (_Bool)saveCGImage:(struct CGImage *)arg1 toPath:(id)arg2;
++ (void)saveNSImage:(id)arg1 toPath:(id)arg2;
 + (id)writePasteEntryToXML:(struct OZPasteList *)arg1 entryToWrite:(int)arg2 parent:(id)arg3 substitutePrimaryType:(const struct PCUUID *)arg4 fileName:(id)arg5 theme:(id)arg6 customIcon:(id)arg7;
 + (id)createUniqueName:(id)arg1 parentEntry:(id)arg2;
 + (id)getEntryForPath:(id)arg1 fromRoot:(id)arg2 byDisplayName:(BOOL)arg3;
@@ -127,6 +131,7 @@
 - (void)abortDelayedPreviewPlaying;
 - (void)stopPreviewPlaying;
 - (void)startPreviewPlaying;
+- (void)setPreviewedEntry:(id)arg1;
 - (id)getPreviewedEntry;
 - (id)realMovieForMovieView:(id)arg1;
 - (void)showEntryPreview:(id)arg1 multipleSelection:(BOOL)arg2;
@@ -135,7 +140,6 @@
 - (id)getRootFolder;
 - (void)setRootFolder:(id)arg1;
 - (void)outlineViewSelectionDidChange:(id)arg1;
-- (void)setListenToOVNotifications:(BOOL)arg1;
 - (void)outlineViewDoubleClick:(id)arg1;
 - (void)updateTableHeaderToMatchCurrentSort:(id)arg1;
 - (BOOL)outlineView:(id)arg1 shouldSelectTableColumn:(id)arg2;
@@ -218,12 +222,20 @@
 - (int)getViewMode;
 - (void)prefsChanged:(id)arg1;
 - (void)dealloc;
+- (void)setNeedsUpdateForContext:(unsigned long long)arg1;
+- (void)update;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)viewDidLoad;
 - (void)_setupCALayers;
 - (id)init;
 - (id)initWithModuleNibName:(id)arg1 quarantined:(BOOL)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -53,15 +53,22 @@
         unsigned int showInvalidCursor:1;
         unsigned int showTimecodeDisplay:1;
         unsigned int clickMovesPlayhead:1;
-        unsigned int allowWidthUpdate:1;
+        unsigned int allowWidthUpdateDuringDrag:1;
+        unsigned int allowFilmstripUpdateDuringDrag:1;
         unsigned int needsWidthUpdate:1;
         unsigned int performingDeferredLayerUpdates:1;
         unsigned int deferredLayerUpdatesSuppressDragItems:1;
         unsigned int reloadLayersOnDurationChange:1;
-        unsigned int RESERVED:12;
+        unsigned int RESERVED:10;
     } _dhFlags;
+    BOOL _stretchFilmstripDuringDrag;
+    BOOL _originalTimelineViewStretchFilmstrips;
+    BOOL _originalTimelineViewFilmstripUpdatesEnabled;
 }
 
+@property BOOL originalTimelineViewFilmstripUpdatesEnabled; // @synthesize originalTimelineViewFilmstripUpdatesEnabled=_originalTimelineViewFilmstripUpdatesEnabled;
+@property BOOL originalTimelineViewStretchFilmstrips; // @synthesize originalTimelineViewStretchFilmstrips=_originalTimelineViewStretchFilmstrips;
+@property BOOL stretchFilmstripDuringDrag; // @synthesize stretchFilmstripDuringDrag=_stretchFilmstripDuringDrag;
 @property(copy, nonatomic) NSSet *draggedItemsBelowSpine; // @synthesize draggedItemsBelowSpine=_draggedItemsBelowSpine;
 @property(copy, nonatomic) NSSet *draggedItemsAboveSpine; // @synthesize draggedItemsAboveSpine=_draggedItemsAboveSpine;
 @property(retain, nonatomic) TLKItemLaneInfo *itemLaneOverrideInfo; // @synthesize itemLaneOverrideInfo=_itemLaneOverrideInfo;
@@ -96,11 +103,11 @@
 - (void)startHandling:(id)arg1;
 - (void)cancelTracking:(id)arg1;
 - (BOOL)stopTracking:(id)arg1;
+- (void)_resetDragState;
 - (BOOL)continueTracking:(id)arg1;
 - (void)_restoreSelectionStateIfNeeded;
 - (void)_saveSelectionStateForItems:(id)arg1 forClickedItem:(id)arg2;
 - (BOOL)startTracking:(id)arg1;
-- (void)pressAndHoldCanceled:(id)arg1;
 - (void)_applyTransformToLayer:(id)arg1;
 - (void)_captureContainerRegionOverrideStateForItems:(id)arg1;
 @property(nonatomic) BOOL defersContainerRegionUpdates;
@@ -127,8 +134,8 @@
 - (BOOL)_anchorDraggedItemsHorizontally:(id)arg1 inLayoutContext:(id)arg2 itemLaneFragment:(id)arg3 fromPoint:(struct CGPoint)arg4 toPoint:(struct CGPoint)arg5 atTime:(CDStruct_1b6d18a9)arg6;
 - (BOOL)_offsetLeadingEdgeOfAnchoredContainer:(id)arg1 bySubtractingTime:(CDStruct_1b6d18a9)arg2 inLane:(id)arg3;
 - (struct CGRect)_calculateBoundingBoxForDraggedItems:(id)arg1 beforeLocation:(double)arg2 inLayoutContext:(id)arg3 duration:(CDStruct_1b6d18a9 *)arg4;
-- (long long)_findAnchorTarget:(id *)arg1 inLayoutContext:(id)arg2 intersectingFrame:(struct CGRect)arg3 atPoint:(struct CGPoint)arg4 hitEdge:(int *)arg5;
-- (int)_rectEdgeOfFrame:(struct CGRect)arg1 closestToRect:(struct CGRect)arg2;
+- (long long)_findAnchorTarget:(id *)arg1 inLayoutContext:(id)arg2 intersectingFrame:(struct CGRect)arg3 atPoint:(struct CGPoint)arg4 hitEdge:(unsigned int *)arg5;
+- (unsigned int)_rectEdgeOfFrame:(struct CGRect)arg1 closestToRect:(struct CGRect)arg2;
 - (struct CGSize)_anchoredSpineTargetPadding;
 - (void)_resolveCollisionsForAnchoredItems:(id)arg1 inLayoutContext:(id)arg2;
 - (void)_updateLayoutSegmentTablesForItemInfoIfNeeded:(id)arg1 aboveSpine:(BOOL)arg2;
@@ -180,6 +187,7 @@
 - (void)_clearDragFiltersForItemComponentFragments:(id)arg1;
 - (void)_addDragFilters:(id)arg1 toItemLayer:(id)arg2;
 - (id)_itemDragFilters;
+- (id)_generateShadowAnimation;
 - (id)_itemComponentFragmentsForItems:(id)arg1;
 - (id)_relatedItemsForItems:(id)arg1;
 - (void)applyConfiguration:(id)arg1;

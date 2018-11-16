@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (const CDStruct_bdcb2b0d *)compositeMD5Ptr;
 - (void)_ensureCompositeMD5;
 - (id)description;
+- (id)initWithMD5:(CDStruct_bdcb2b0d)arg1;
 - (id)initWithMD5:(CDStruct_bdcb2b0d)arg1 andOffset:(long long)arg2;
 
 @end

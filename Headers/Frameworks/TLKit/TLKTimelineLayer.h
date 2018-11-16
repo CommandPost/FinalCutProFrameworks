@@ -28,12 +28,14 @@
         unsigned int RESERVED:18;
     } _tlkItemFlags;
     NSArray *_anchorShadowLayer;
+    struct CGRect _visibleRect;
 }
 
 + (struct CGRect)frameForItem:(struct CGRect)arg1 withType:(int)arg2 andContainmentType:(int)arg3;
 + (struct CGRect)frameRectForRect:(struct CGRect)arg1;
-@property(readonly, nonatomic) NSArray *anchorShadowLayer; // @synthesize anchorShadowLayer=_anchorShadowLayer;
+@property(readonly, retain, nonatomic) NSArray *anchorShadowLayer; // @synthesize anchorShadowLayer=_anchorShadowLayer;
 @property(nonatomic) CDStruct_e83c9415 dropHighlightRange; // @synthesize dropHighlightRange=_dropHighlightRange;
+@property(nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 @property(nonatomic) TLKItemComponentFragment *itemComponentFragment; // @synthesize itemComponentFragment=_itemComponentFragment;
 - (void)audioWaveFormProportionChanged;
 - (void)updateAppearance;

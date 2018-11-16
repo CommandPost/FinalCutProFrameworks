@@ -18,6 +18,9 @@
 - (void)updateTranslation:(const PCVector3_457fd1f0 *)arg1;
 - (void)draw;
 - (PCVector3_457fd1f0)getDraggingAxis;
+- (_Bool)isFreeMoveActive:(int)arg1;
+- (_Bool)isTranslateHandleActive:(int)arg1;
+- (int)handleForAxis:(unsigned int)arg1;
 - (unsigned int)freeMoveHandle;
 - (void)enableAxes:(unsigned int)arg1;
 - (BOOL)translating;

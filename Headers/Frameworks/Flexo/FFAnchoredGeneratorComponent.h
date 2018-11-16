@@ -23,6 +23,7 @@
 - (id)inspectorClassName;
 - (int)anchoredObjectUIType;
 - (void)setClippedRange:(CDStruct_e83c9415)arg1;
+- (void)updateEffectiveDurationForMD5;
 - (void)wasAnchoredTo:(id)arg1;
 - (BOOL)wantsGammaCompositing;
 - (BOOL)wantsAutoKenBurns;
@@ -30,6 +31,7 @@
 - (BOOL)isAnimaticGenerator;
 - (BOOL)isBackgroundGenerator;
 - (BOOL)hasDefaultEditingAdjustment;
+- (BOOL)isMapStill;
 - (BOOL)isMapGenerator;
 - (BOOL)isGenerator;
 - (id)videoProps;

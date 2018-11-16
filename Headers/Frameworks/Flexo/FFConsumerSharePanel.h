@@ -18,12 +18,16 @@ __attribute__((visibility("hidden")))
     FFAutoexpandingTextField *_tagsField;
     FFConsumerShareInfoController *_shareInfoController;
     NSProTextField *_errorField;
+    FFAutoexpandingTextField *_descriptionTitle;
+    FFAutoexpandingTextField *_tagsTitle;
     NSView *_settingsView;
     NSTrackingArea *_compatibilityTrackingArea;
     NSTrackingArea *_errorTrackingArea;
 }
 
 + (id)sharePanelWithSource:(id)arg1 destination:(id)arg2 error:(id *)arg3;
+@property(nonatomic) FFAutoexpandingTextField *tagsTitle; // @synthesize tagsTitle=_tagsTitle;
+@property(nonatomic) FFAutoexpandingTextField *descriptionTitle; // @synthesize descriptionTitle=_descriptionTitle;
 @property(nonatomic) NSView *settingsView; // @synthesize settingsView=_settingsView;
 @property(nonatomic) FFConsumerShareInfoController *shareInfoController; // @synthesize shareInfoController=_shareInfoController;
 @property(nonatomic) FFAutoexpandingTextField *tagsField; // @synthesize tagsField=_tagsField;

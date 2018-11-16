@@ -13,8 +13,7 @@ __attribute__((visibility("hidden")))
 {
     struct FFVideoScopesHistogramViewPrivate *_histogramContext;
     unsigned long long _histogramIsaIndex;
-    long long _viewMode;
-    long long _displayColorMode;
+    long long _displayMode;
     float _traceBrightness;
     CDStruct_3de7261d _state;
     CDStruct_69458254 _action_opt;
@@ -32,8 +31,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;
 - (void)setShowGuides:(BOOL)arg1;
-- (void)setDisplayColorMode:(long long)arg1;
-- (void)setViewMode:(long long)arg1;
+- (void)setDisplayMode:(long long)arg1;
 - (void)setHistogramContext:(struct FFVideoScopesHistogramViewPrivate *)arg1;
 - (void)setTraceBrightness:(float)arg1;
 - (id)init;

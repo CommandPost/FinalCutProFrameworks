@@ -36,6 +36,7 @@
 - (BOOL)sceneListChanged:(unsigned int)arg1;
 - (BOOL)timeRangeChanged:(unsigned int)arg1;
 - (BOOL)channelChanged:(unsigned int)arg1;
+- (void)notifyShapeChanged;
 - (void)notifyPathChanged;
 - (void)notifyInspectorContentsChanged;
 - (void)notifySceneChange;

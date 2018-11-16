@@ -6,7 +6,7 @@
 
 #import <Flexo/FFScheduleToken.h>
 
-@class FFImage, FFSVContext, FFSegmentStoreRef, FFStreamVideo, FFStreamVideoDeinterlace, NSCondition, PCMatrix44Double;
+@class FFGraphBuildInformation, FFImage, FFSVContext, FFSegmentStoreRef, FFStreamVideo, FFStreamVideoDeinterlace, NSCondition, NSError, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFScheduleTokenDeinterlace : FFScheduleToken
@@ -19,21 +19,22 @@ __attribute__((visibility("hidden")))
     PCMatrix44Double *_downstreamPT;
     int _maxPrioritySeen;
     _Bool _enableNoMotionCompensation;
-    struct CGRect _expectedROI;
     CDStruct_1b6d18a9 _t1;
     CDStruct_1b6d18a9 _t2;
     CDStruct_1b6d18a9 _t_next;
     CDStruct_1b6d18a9 _t5;
     CDStruct_1b6d18a9 _t6;
+    FFScheduleToken *_requestedTimeToken;
     FFScheduleToken *_inputsToken;
     _Bool _hasBeenHinted;
     _Bool _autoHinted;
     _Bool _hasBeenImaged;
     FFSegmentStoreRef *_segStoreRef;
-    PCMatrix44Double *_outputPT;
+    PCMatrix44Double *_deintStreamPT;
     NSCondition *_cond;
     int _state;
-    struct CGRect _roi;
+    NSError *_deinterlaceError;
+    FFGraphBuildInformation *_buildInfo;
     FFImage *_img1;
     FFImage *_img2;
     FFImage *_img3;
@@ -42,7 +43,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedCache;
-+ (id)newDeinterlaceTokenBySchedulingOrCacheLookup:(id)arg1 inStream:(id)arg2 key:(CDStruct_bdcb2b0d)arg3 time:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 context:(id)arg6 downstreamPT:(id)arg7 isScheduling:(BOOL)arg8 roiHint:(const struct CGRect *)arg9 enableNoMotionCompensation:(_Bool)arg10;
++ (id)newDeinterlaceTokenBySchedulingOrCacheLookup:(id)arg1 inStream:(id)arg2 key:(CDStruct_bdcb2b0d)arg3 time:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 context:(id)arg6 downstreamPT:(id)arg7 isScheduling:(BOOL)arg8 enableNoMotionCompensation:(_Bool)arg9;
 + (void)initialize;
 - (id).cxx_construct;
 - (_Bool)hiPriority;
@@ -52,13 +53,14 @@ __attribute__((visibility("hidden")))
 - (_Bool)readyToProcessForMode:(int)arg1;
 - (int)state;
 - (id)_getFlatImageNow;
-- (id)copyDeinterlacedImage:(struct CGRect)arg1;
+- (id)copyDeinterlacedImageWithBuildInfo:(id)arg1;
 - (id)_newRepresentationalImage;
-- (void)_ensureUnderlyingImages:(struct CGRect *)arg1 info:(id)arg2;
+- (void)_ensureUnderlyingImages:(id)arg1;
 - (void)_scheduleInputSources;
 - (id)_getInputPixelFormatInfoRetHeliumFormat:(int *)arg1 retycbcrFormat:(int *)arg2;
 - (void)updatePrioritySeen:(int)arg1;
 - (_Bool)hintWillImageSoon;
+- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (_Bool)areStatusFlagsClear:(unsigned int)arg1;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (unsigned int)scheduleStatusInformation;

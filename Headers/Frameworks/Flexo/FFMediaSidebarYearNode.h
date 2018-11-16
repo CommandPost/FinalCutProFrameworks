@@ -6,10 +6,14 @@
 
 #import <Flexo/FFMediaSidebarNode.h>
 
+@class NSArray;
+
 @interface FFMediaSidebarYearNode : FFMediaSidebarNode
 {
+    NSArray *_eventNodesToReuse;
 }
 
+@property(copy, nonatomic) NSArray *eventNodesToReuse; // @synthesize eventNodesToReuse=_eventNodesToReuse;
 - (id)projects;
 - (id)_libraryNode;
 - (long long)year;
@@ -18,6 +22,7 @@
 - (id)persistentID;
 - (id)iconImage:(BOOL)arg1;
 - (id)title;
+- (void)dealloc;
 - (id)initWithYear:(long long)arg1;
 - (id)initWithRepresentedObject:(id)arg1;
 

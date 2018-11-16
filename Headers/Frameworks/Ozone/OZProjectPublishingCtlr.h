@@ -16,13 +16,16 @@
     OZProjCtlrDelegate *_pProjDelegate;
     struct OZProjectNode *_pProjectNode;
     NSMutableArray *_pSelfReassociatingControllers;
+    NSMutableArray *_pMaterialControllers;
 }
 
 - (void)setPublishedNamesInCtlr:(id)arg1 settings:(struct OZPublishSettings *)arg2;
 - (void)textSelectionChanged:(id)arg1;
+- (void)materialsChanged:(id)arg1;
 - (void)notify:(unsigned int)arg1;
 - (void)updateEnableState;
 - (id)delegate;
+- (void)reassociateMaterialChannels;
 - (void)reassociateChannels;
 - (void)didBuildUI;
 - (void)buildUI:(id)arg1 forFolder:(struct OZChannelFolder *)arg2 context:(id)arg3;

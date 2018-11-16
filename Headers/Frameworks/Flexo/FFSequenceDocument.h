@@ -14,7 +14,9 @@
 + (id)projectsRootName;
 + (id)defaultFileExtension;
 - (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
+- (BOOL)update_fixAudioLevelChannelIgnoreFadesFlag;
 - (BOOL)update_projectSequenceToSequenceInfo;
+- (BOOL)update_HeColorEffectToMaskedEffect;
 - (BOOL)update_redTintThumbnails;
 - (BOOL)update_fixAnalysisKeywords;
 - (BOOL)update_disableAudioUnitEffectClumpFolderReset;

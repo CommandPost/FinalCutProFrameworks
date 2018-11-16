@@ -12,7 +12,7 @@
 
 @optional
 - (void)setForiMovie;
-- (FFLibrary *)runLibraryChooser:(NSURL *)arg1 importFileURL:(NSURL *)arg2 error:(id *)arg3;
+- (FFLibrary *)runLibraryChooser:(NSURL *)arg1 importFileURL:(NSURL *)arg2 libraryIsNew:(char *)arg3 error:(id *)arg4;
 - (BOOL)userCancelled;
 - (void)hideProgressWindow;
 - (void)showProgressWindow;

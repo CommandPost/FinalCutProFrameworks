@@ -20,6 +20,8 @@
 - (void)animView:(id)arg1 setFrameOrigin:(struct CGPoint)arg2;
 - (void)animView:(id)arg1 setHidden:(BOOL)arg2;
 - (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
+- (void)scrollToOffset:(double)arg1;
+- (double)scrollOffset;
 - (void)scrollToChannel:(struct OZChannelBase *)arg1;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (id)mainView;

@@ -9,7 +9,7 @@
 #import "FFREDRAWSettingsDataSource.h"
 #import "FFREDRAWSettingsDelegate.h"
 
-@class NSArray, NSMapTable, NSMutableArray, NSMutableSet;
+@class NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFREDRAWSettingsController : NSObject <FFREDRAWSettingsDelegate, FFREDRAWSettingsDataSource>
@@ -107,6 +107,12 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *anchoredObjects; // @dynamic anchoredObjects;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

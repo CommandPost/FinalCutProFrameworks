@@ -77,5 +77,11 @@
 - (void)dealloc;
 - (id)initWithPath:(id)arg1 resolvedPath:(id)arg2 parent:(id)arg3;
 
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
 @end
 

@@ -8,7 +8,7 @@
 
 #import "FFTransportDelegate.h"
 
-@class FFContext, FFTransportViewController, NSTrackingArea, NSView;
+@class FFContext, FFTransportViewController, NSString, NSTrackingArea, NSView;
 
 @interface FFTransportControlsOSC : FFOSC <FFTransportDelegate>
 {
@@ -66,6 +66,12 @@
 - (void)_transportViewMovedToWindow:(id)arg1;
 - (id)initWithType:(int)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

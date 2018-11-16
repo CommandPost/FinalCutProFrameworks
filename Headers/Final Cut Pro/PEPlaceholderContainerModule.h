@@ -33,6 +33,7 @@
 - (id)firstKeyView;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
+- (BOOL)isBackgroundGrabbableAtPoint:(struct CGPoint)arg1;
 - (BOOL)isBackgroundViewGrabbable:(id)arg1;
 - (BOOL)isBackgroundGrabbable;
 - (id)submoduleHeaderView;

@@ -8,7 +8,7 @@
 
 #import "NSOpenSavePanelDelegate.h"
 
-@class NSImageView, NSProgressIndicator, NSTextField, NSView, NSWindow;
+@class NSImageView, NSProgressIndicator, NSString, NSTextField, NSView, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFLibraryUpgradeController : NSObject <NSOpenSavePanelDelegate>
@@ -51,6 +51,12 @@ __attribute__((visibility("hidden")))
 - (id)upgradeProjectsAndEvents;
 - (void)dealloc;
 - (id)initWithInitialUpgrade:(BOOL)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

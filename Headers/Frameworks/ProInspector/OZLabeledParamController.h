@@ -20,23 +20,26 @@
     BOOL _isAutosizing;
     NSMutableArray *_pMouseInObservers;
     NSTrackingArea *_pTrackingArea;
-    struct vector<unsigned int, std::allocator<unsigned int>> *_pAssociatedSceneNodeIDs;
+    vector_632d33ce *_pAssociatedSceneNodeIDs;
     NSString *_pAssociatedFolderChanPath;
     NSString *_pAssociatedChanPath;
 }
 
+@property(nonatomic) vector_632d33ce *associatedSceneNodeIDs; // @synthesize associatedSceneNodeIDs=_pAssociatedSceneNodeIDs;
 @property(retain, nonatomic) NSString *associatedFolderChanPath; // @synthesize associatedFolderChanPath=_pAssociatedFolderChanPath;
 @property(retain, nonatomic) NSString *associatedChanPath; // @synthesize associatedChanPath=_pAssociatedChanPath;
-- (void)reassociateChannels;
+- (BOOL)reassociateChannels;
 - (void)addOrResetAssociatedID:(unsigned int)arg1 isAdd:(BOOL)arg2;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
+- (void)registerMouseInObserver:(id)arg1;
 - (void)registerMouseInObserversForController:(id)arg1;
 - (void)registerMouseInObserversForView:(id)arg1;
 - (id)labelView;
 - (id)paramView;
 - (BOOL)isMouseInLabelView:(id)arg1;
 - (void)flippedView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
+- (double)minLabelWidth;
 - (void)setIsAutosizing:(BOOL)arg1;
 - (id)paramController;
 - (id)labelController;

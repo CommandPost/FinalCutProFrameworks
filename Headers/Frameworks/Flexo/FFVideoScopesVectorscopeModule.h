@@ -8,29 +8,29 @@
 
 #import "FFDestVideoScopesGLDelegate.h"
 
-__attribute__((visibility("hidden")))
 @interface FFVideoScopesVectorscopeModule : FFPlayerVideoScopesModule <FFDestVideoScopesGLDelegate>
 {
 }
 
+- (void)colorspaceDidChangeForVideoScopes:(id)arg1;
 - (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (id)viewProperties;
 - (void)setViewProperties:(id)arg1;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)updateLabel;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)viewWillBeRemoved;
 - (void)viewWasInstalled;
-- (void)toggleMonochrome:(id)arg1;
-- (void)changeBrightness:(id)arg1;
 - (void)showWaveform:(id)arg1;
 - (void)showVectorscope:(id)arg1;
 - (void)showHistogram:(id)arg1;
 - (void)toggleSkinToneIndicator:(id)arg1;
 - (void)changeBarTarget75p:(id)arg1;
 - (void)changeBarTarget100p:(id)arg1;
+- (void)_setBarTarget:(long long)arg1;
 - (void)changePhaseMark3:(id)arg1;
 - (void)changePhaseVector:(id)arg1;
+- (void)_setPhase:(long long)arg1;
+- (void)_postPropertyChange;
 
 @end
 

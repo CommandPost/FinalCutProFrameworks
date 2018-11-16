@@ -28,6 +28,9 @@ __attribute__((visibility("hidden")))
 + (struct CGImage *)newCGImageRefFromImage:(id)arg1;
 + (struct CGColor *)newSelectionCGColor;
 + (id)selectionNSColor;
++ (BOOL)isYosemiteOrLater;
++ (BOOL)isSystemVersionOrLaterMajor:(int)arg1 minor:(int)arg2 bugFix:(int)arg3;
++ (void)systemVersionMajor:(int *)arg1 minor:(int *)arg2 bugFix:(int *)arg3;
 + (void)loadILMBPlugins;
 + (BOOL)areILMBPluginsLoaded;
 + (BOOL)isModuleInImportWindow:(id)arg1;

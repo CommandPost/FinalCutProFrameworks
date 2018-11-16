@@ -21,6 +21,8 @@
 - (void)disable;
 - (void)enable;
 - (void)notify:(unsigned int)arg1;
+- (void)displaySceneNodeRefImagePreview;
+- (void)didBuildUI;
 - (void)update;
 - (struct OZScene *)thisScene;
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;

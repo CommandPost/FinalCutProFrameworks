@@ -24,9 +24,7 @@
     PENavSegmentedControl *_timelineNavigationControl;
     LKPaneCapSegmentedControl *_timelineOptions;
     LKPopUpButton *_storySegmentNavigator;
-    NSProView *_cellDurationContainer;
     LKSlider *_cellDurationSlider;
-    LKTextField *_cellDurationTextField;
     LKButton *_hideConnectionsButton;
     LKButton *_showWaveformButton;
     LKPopUpButton *_rolesButton;
@@ -232,6 +230,12 @@
 - (struct CGSize)viewMinSize;
 - (void)dealloc;
 - (BOOL)wantsHeaderBar;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

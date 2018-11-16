@@ -6,12 +6,13 @@
 
 #import <Flexo/FFSourceVideo.h>
 
-@class FFREDClip;
+@class FFREDClip, FFVideoProps;
 
 __attribute__((visibility("hidden")))
 @interface FFSourceVideoRED : FFSourceVideo
 {
     FFREDClip *_clip;
+    FFVideoProps *_videoProps;
     CDStruct_e83c9415 _timeRange;
 }
 

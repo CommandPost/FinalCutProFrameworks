@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKButton, LKSplashView, NSButton, NSTextField, NSView, NSWindow;
+@class LKButton, LKSplashView, NSButton, NSString, NSTextField, NSView, NSWindow;
 
 @interface LKAboutPanel : NSObject <NSWindowDelegate>
 {
@@ -53,9 +53,16 @@
 - (void)orderFrontAboutPanel:(id)arg1;
 - (void)orderOutSplash:(id)arg1;
 - (void)orderFrontSplash:(id)arg1;
+- (id)window;
 - (id)buildVersionString;
 - (id)versionString;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

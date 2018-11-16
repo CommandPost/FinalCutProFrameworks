@@ -38,8 +38,8 @@
     BOOL _hasVideo;
     BOOL _hasAudio;
     BOOL _isOpaque;
-    BOOL _suspendEffectChangedNotifications;
-    BOOL _pendingEffectChangeNotification;
+    BOOL _suspendEffectsChangedNotifications;
+    BOOL _pendingEffectsChangeNotification;
 }
 
 + (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
@@ -48,6 +48,8 @@
 + (BOOL)DSObjectCanProxy;
 + (BOOL)supportsVideoRateConform:(id)arg1;
 + (BOOL)requiresVideoRateConform:(id)arg1 videoProps:(id)arg2;
++ (BOOL)canResetAudioEnhancementsForEffectStack:(id)arg1;
++ (BOOL)resetAudioEnhancementsForEffectStack:(id)arg1;
 + (Class)audioIntrinsicEffectClassForEffectID:(id)arg1;
 + (Class)loudnessEffectClass;
 + (id)eqEffectID;
@@ -58,6 +60,7 @@
 + (id)noiseRemovalEffectID;
 + (id)loudnessAnalyzerEffectID;
 + (id)loudnessEffectID;
++ (id)surroundPannerEffectID;
 @property(retain, nonatomic) NSArray *legacyPreservedOrderIntrinsicEffectIDs; // @synthesize legacyPreservedOrderIntrinsicEffectIDs=_legacyPreservedOrderIntrinsicEffectIDs;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 @property(retain, nonatomic) NSString *filterType; // @synthesize filterType=_filterType;
@@ -74,6 +77,7 @@
 - (void)beginEditing;
 - (BOOL)isEditing;
 - (id)undoHandler;
+- (id)augmentChannelChangeDescriptionForNotification:(id)arg1;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (void)_clearCachedAudioMD5;
 - (id)effectForEffectID:(id)arg1 createIfNotFound:(_Bool)arg2;
@@ -92,10 +96,21 @@
 - (id)conformEffect;
 - (id)trimEffect;
 - (id)cropEffect;
+- (BOOL)isMatchToEffectEnabled;
+- (BOOL)hasMatchToEffect;
+- (BOOL)isUserBalanceEffectEnabled;
+- (BOOL)hasUserBalanceEffect;
 - (id)consumerColorEffect;
 - (id)consumerMatchHueEffect;
 - (id)consumerBalanceColorEffect;
-- (id)colorEffect;
+- (unsigned long long)matchToEffectSourceEffectCount;
+- (id)matchToEffect;
+- (unsigned long long)balanceColorEffectSourceEffectCount;
+- (unsigned long long)_colorSourceEffectCountForEffect:(id)arg1;
+- (id)balanceColorEffect;
+- (id)allColorCorrectionEffects;
+- (id)colorCorrectionEffects;
+- (id)_colorCorrectionEffects:(int)arg1;
 - (BOOL)requiresOpticalFlow;
 - (void)_writeUnlock;
 - (void)_writeLock;
@@ -106,12 +121,12 @@
 - (BOOL)operationAddEffect:(id)arg1 ranges:(id)arg2 error:(id *)arg3;
 - (BOOL)operationInsertEffectID:(id)arg1 atIndex:(unsigned long long)arg2 ranges:(id)arg3 error:(id *)arg4;
 - (BOOL)operationInsertEffect:(id)arg1 atIndex:(unsigned long long)arg2 ranges:(id)arg3 error:(id *)arg4;
-- (void)endEffectStackChanges;
-- (void)beginEffectStackChanges;
-- (void)postEffectStackChangedNotification;
+- (void)endEffectsChanges;
+- (void)beginEffectsChanges;
 - (void)postEffectsChangedNotification;
 - (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3;
 - (void)effect:(id)arg1 channelParameterChanged:(id)arg2;
+- (void)_userEffectChannelsChanged:(id)arg1;
 - (void)intrinsicChannelChanged:(id)arg1;
 - (void)channelParameterChanged:(id)arg1;
 - (BOOL)moreChannelParameterChanged_CheckIfNeedStreamInval:(id)arg1;
@@ -149,6 +164,7 @@
 - (struct CGRect)boundsUpToEffectIndex:(unsigned long long)arg1 atTime:(CDStruct_1b6d18a9)arg2 transformed:(BOOL)arg3;
 - (unsigned long long)evaluationIndexForEffect:(id)arg1;
 - (id)_newEffectsInEvaluationOrder;
+- (long long)indexOfEffect:(id)arg1;
 - (id)effectAtIndex:(unsigned long long)arg1;
 - (unsigned long long)visibleEffectCount;
 - (unsigned long long)effectCount;
@@ -171,7 +187,6 @@
 - (void)XYPercentageToPixelValuesXY:(double *)arg1 y:(double *)arg2;
 - (void)pixelValuesToPercentageLRTB:(double *)arg1 right:(double *)arg2 top:(double *)arg3 bottom:(double *)arg4;
 - (void)percentageToPixelValuesLRTB:(double *)arg1 right:(double *)arg2 top:(double *)arg3 bottom:(double *)arg4;
-- (void)waitingForMotionAnalysisOrOpticalFlow:(char *)arg1 waitingForOpticalFlowAnalysis:(char *)arg2;
 - (id)anchoredObjectForChannelAssociateModelObject:(id)arg1;
 - (BOOL)_checkOpacity;
 - (BOOL)_isOpaque;
@@ -221,11 +236,14 @@
 - (void)removeObjectFromEffectsAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inEffectsAtIndex:(unsigned long long)arg2;
 - (void)insertObject:(id)arg1 inEffectsAtIndex:(unsigned long long)arg2 postNotification:(BOOL)arg3 updateHasObjectReferenceAndNonIntrinsicEffects:(BOOL)arg4;
+- (void)setUserEffectsDisabled:(BOOL)arg1;
+- (BOOL)userEffectsDisabled;
 - (id)effects;
 - (void)_removeObjectFromEffectsArray:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_insertObject:(id)arg1 inEffectsArray:(id)arg2 atIndex:(unsigned long long)arg3 postNotification:(BOOL)arg4;
 - (void)invalidateSourceRangeForObjectWithPossibleRefChange:(CDStruct_e83c9415)arg1;
 - (BOOL)_shouldSendNotificationForEffectsArray:(id)arg1;
+- (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3 forChannel:(id)arg4;
 - (id)observedObjectForChannel:(id)arg1;
 - (void)setCompChannelsData:(id)arg1;
 - (id)compChannelsData;
@@ -250,6 +268,15 @@
 - (BOOL)constantRetimeChannel:(id)arg1 rate:(double)arg2 currentRate:(double)arg3 timescale:(int)arg4 retimeEffect:(id)arg5 newStartTime:(CDStruct_1b6d18a9 *)arg6 newEndTime:(CDStruct_1b6d18a9 *)arg7 newInTime:(CDStruct_1b6d18a9 *)arg8 newOutTime:(CDStruct_1b6d18a9 *)arg9;
 - (id)_setupBeforeChangeChannel;
 - (void)checkChannelKeys:(id)arg1 msg:(id)arg2;
+- (BOOL)projectUpdaterConvertHeColorEffectToMaskedEffectWithError:(id *)arg1;
+- (void)removeShapeAndMaskSelectFromStack;
+- (BOOL)operationAddIsolationMaskToEffect:(id)arg1 error:(id *)arg2;
+- (BOOL)operationAddImprovedEllipseMaskToEffect:(id)arg1 error:(id *)arg2;
+- (BOOL)operationAddEllipseMaskToEffect:(id)arg1 error:(id *)arg2;
+- (BOOL)operationAddMaskToEffect:(id)arg1 maskClass:(Class)arg2 error:(id *)arg3;
+- (BOOL)operationGroupEffects:(id)arg1 error:(id *)arg2;
+- (id)maskedEffects;
+- (void)setShowMatte:(BOOL)arg1 forMaskedEffect:(id)arg2;
 - (void)offsetKeyframes:(CDStruct_1b6d18a9)arg1;
 - (void)_offsetEffectsKeyframes:(id)arg1 offset:(CDStruct_1b6d18a9)arg2;
 - (void)_offsetChannelKeyframes:(id)arg1 channel:(id)arg2 offset:(CDStruct_1b6d18a9)arg3;
@@ -268,6 +295,9 @@
 - (void)turnOffRateConformOpticalFlowWithSamplingMethod:(long long)arg1;
 - (void)performRateConformOpticalFlow;
 - (void)performRetimeOpticalFlow;
+- (void)performHighQualityRetimeOpticalFlowWithSource:(id)arg1 md5:(CDStruct_bdcb2b0d)arg2 segmentStoreRef:(id)arg3 renderProps:(id)arg4 uponCompletion:(id)arg5;
+- (id)mediaFrameTimesToGenerateForOpticalFlowRange:(CDStruct_e83c9415 *)arg1 outputStartTime:(CDStruct_1b6d18a9 *)arg2 outputFrameDuration:(CDStruct_1b6d18a9 *)arg3;
+- (id)highQualityFlowFramesToGenerate;
 - (void)_updateMediaRange;
 - (CDStruct_1b6d18a9)globalTimeFromMediaTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)mediaTimeFromGlobalTimeClippedToUnclippedRange:(CDStruct_1b6d18a9)arg1;
@@ -314,6 +344,7 @@
 - (id)humRemovalEffect:(BOOL)arg1;
 - (id)matchEffect:(BOOL)arg1;
 - (id)_intrinsicAudioEffectForEffectID:(id)arg1 addIfNotFound:(BOOL)arg2;
+- (void)update_fixAudioLevelChannelIgnoreFadesFlag;
 - (BOOL)update_removeDisabledAudioEnhancementEffects;
 - (BOOL)update_moveVolumePanFolder;
 - (BOOL)update_migrateAudioIntrinsics;
@@ -326,7 +357,12 @@
 - (id)stabilizationEffect;
 - (void)addRollingShutterEffect;
 - (void)addStabilizationEffect;
-- (id)arrayWithSecondaryEffects;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

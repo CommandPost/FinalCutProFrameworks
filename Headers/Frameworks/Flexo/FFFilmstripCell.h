@@ -6,12 +6,11 @@
 
 #import "NSObject.h"
 
-@class CALayer, FFThumbnailRequest, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>, TLKThemeBackedLayer;
+@class CALayer, FFMD5AndOffset, FFThumbnailRequest, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>, TLKThemeBackedLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFFilmstripCell : NSObject
 {
-    struct NSObject *_skimmable;
     struct CGRect _frame;
     double _contentsScale;
     CDStruct_e83c9415 _timeRange;
@@ -30,12 +29,13 @@ __attribute__((visibility("hidden")))
     BOOL _showSecondary;
     BOOL _showAudioInSecondary;
     int _requestTimeType;
-    FFThumbnailRequest *_ir1;
-    FFThumbnailRequest *_ir2;
-    CDStruct_bdcb2b0d _ir1MD5;
-    CDStruct_bdcb2b0d _ir2MD5;
+    FFMD5AndOffset *_ir1MD5;
+    FFMD5AndOffset *_ir2MD5;
     long long _effectCount;
     id <FFFilmstripCellDelegate> _priorityDelegate;
+    FFThumbnailRequest *_imageRequestPrimary;
+    FFThumbnailRequest *_imageRequestSecondary;
+    struct NSObject *_skimmable;
     CDStruct_e83c9415 _filmStripTimeRange;
 }
 
@@ -43,9 +43,12 @@ __attribute__((visibility("hidden")))
 + (struct CGColor *)filmstripClipBaseVideoEmpty;
 + (struct CGColor *)blueBackground;
 + (struct CGColor *)greenBackground;
-+ (struct CGColor *)_placeholderAudioColorForScale:(double)arg1;
++ (struct CGColor *)_placeholderAudioColorForScale:(double)arg1 startOffset:(double)arg2;
 @property(nonatomic) CDStruct_e83c9415 filmStripTimeRange; // @synthesize filmStripTimeRange=_filmStripTimeRange;
-@property(nonatomic) id <FFFilmstripCellDelegate> priorityDelegate; // @synthesize priorityDelegate=_priorityDelegate;
+@property(retain) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable; // @synthesize skimmable=_skimmable;
+@property(retain, nonatomic) FFThumbnailRequest *imageRequestSecondary; // @synthesize imageRequestSecondary=_imageRequestSecondary;
+@property(retain, nonatomic) FFThumbnailRequest *imageRequestPrimary; // @synthesize imageRequestPrimary=_imageRequestPrimary;
+@property id <FFFilmstripCellDelegate> priorityDelegate; // @synthesize priorityDelegate=_priorityDelegate;
 @property(nonatomic) BOOL forceVideoColor; // @synthesize forceVideoColor=_forceVideoColor;
 @property(nonatomic) BOOL transparentBackground; // @synthesize transparentBackground=_transparentBackground;
 @property(nonatomic) double audioHeight; // @synthesize audioHeight=_audioHeight;
@@ -58,17 +61,22 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 @property(nonatomic) double contentsScale; // @synthesize contentsScale=_contentsScale;
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
-@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable; // @synthesize skimmable=_skimmable;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
-- (BOOL)isRoughlyEquavilentToFilmstripCell:(id)arg1;
 - (BOOL)isEquavilentToFilmstripCell:(id)arg1;
 - (void)cancelRequest;
+- (void)_setThumbImageFromOldCachedImageRequest:(id)arg1 forLayer:(int)arg2;
+- (void)_updateIfNeededBackground;
+- (void)_queueImageRequest:(id)arg1;
 - (void)updateIfNeeded;
+- (BOOL)updateRequired;
+@property(readonly, nonatomic) BOOL updatesEnabled;
 - (void)secondaryThumbImageReady:(id)arg1;
 - (void)primaryThumbImageReady:(id)arg1;
-- (void)secondaryThumbImageReadyOnMainThread:(id)arg1;
-- (void)primaryThumbImageReadyOnMainThread:(id)arg1;
-- (void)_setContents:(struct CGImage *)arg1 forLayer:(id)arg2;
+- (void)_setThumbImage:(struct CGImage *)arg1 forLayerIdentifier:(int)arg2;
+- (id)_layerWithIdentifier:(int)arg1;
+- (void)_setThumbImage:(struct CGImage *)arg1 forLayer:(int)arg2;
+@property(readonly) CALayer *audioLayer;
+- (void)_updateAudioPlaceholderWaveformBackgroundColor;
 - (BOOL)shouldShowSecondary;
 - (void)releaseLayer;
 - (BOOL)hasLayer;
@@ -77,6 +85,8 @@ __attribute__((visibility("hidden")))
 - (void)setSublayerIfExists:(id)arg1 toWidth:(double)arg2;
 - (struct CGImage *)newRepresentativeThumb;
 @property(readonly, nonatomic) struct CGRect thumbFrame;
+- (void)_performLater:(CDUnknownBlockType)arg1;
+- (void)_performInBackground:(CDUnknownBlockType)arg1;
 - (id)debugDescription;
 - (id)description;
 - (void)dealloc;

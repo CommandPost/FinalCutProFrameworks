@@ -6,7 +6,7 @@
 
 #import <Flexo/FFScheduleToken.h>
 
-@class FFImage, FFPixelBuffer, NSData, NSObject<OS_dispatch_semaphore>, PCMatrix44Double;
+@class FFImageRepFFPixelBuffer, FFPixelBuffer, NSData, NSObject<OS_dispatch_semaphore>, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFScheduleTokenRED : FFScheduleToken
@@ -18,23 +18,33 @@ __attribute__((visibility("hidden")))
     int _sampleNumber;
     _Bool _canUseSoftware;
     _Bool _canUseHardware;
+    _Bool _canUseAsyncGPU;
     int _priority;
     int _decoderType;
-    NSData *_frameData;
     int _ipSettingsRevision;
     id <REDImageProcessing> _ipSettings;
     id <REDClipReading> _reader;
     int _whichRocket;
+    NSData *_rawImageData;
     FFPixelBuffer *_pixelBuffer;
+    NSData *_frameData;
+    _Bool _frameDataSet;
+    NSObject<OS_dispatch_semaphore> *_frameDataSetSemaphore;
     _Bool _decodeComplete;
+    _Bool _decodeSuccess;
     NSObject<OS_dispatch_semaphore> *_decodeCompleteSemaphore;
-    FFImage *_image;
+    FFImageRepFFPixelBuffer *_imageRepFFPixelBuffer;
+    NSObject<OS_dispatch_semaphore> *_textureBufferSemaphore;
+    struct vector<TextureBufferRecord, std::allocator<TextureBufferRecord>> _textureBufferRecords;
     _Bool _canceled;
     struct FFVideoDecoderRED *_videoDecoderRED;
     double _startTime;
+    long long _predicateDebayerAndReadBack;
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
+- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (_Bool)areStatusFlagsClear:(unsigned int)arg1;
 - (unsigned int)scheduleStatusInformation;
@@ -48,12 +58,16 @@ __attribute__((visibility("hidden")))
 - (int)priority;
 - (_Bool)bumpPriority:(int)arg1;
 - (BOOL)matches:(int)arg1 pixelType:(int)arg2 sampleNumber:(int)arg3 ipSettingsRevision:(int)arg4;
-- (id)waitForImage;
-- (id)waitForImageForUpTo:(long long)arg1;
-- (id)getImage;
-- (void)setImage:(id)arg1;
+- (id)getImageRepFFPixelBuffer;
+- (void)waitForImageRep;
+- (void)waitForImageRepForUpTo:(long long)arg1;
+- (void)setImageRepToNull;
+- (void)setImageRep:(id)arg1;
+- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
 - (void)processFinishedJob:(int)arg1;
+- (void)processRawImageOnGPUAndReadBack;
 - (void)setPixelBuffer:(id)arg1;
+- (void)setRawImageData:(id)arg1;
 - (int)whichRocket;
 - (void)setWhichRocket:(int)arg1;
 - (unsigned int)dataSize;
@@ -65,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)ipSettings;
 - (int)decoderType;
 - (void)setDecoderType:(int)arg1;
+- (_Bool)canUseAsyncGPU;
 - (_Bool)canUseHardware;
 - (_Bool)canUseSoftware;
 - (int)sampleNumber;
@@ -74,7 +89,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)pixelSpaceBounds;
 - (int)decodeMode;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 decodeMode:(int)arg2 pixelType:(int)arg3 sampleNumber:(int)arg4 canUseSoftware:(_Bool)arg5 canUseHardware:(_Bool)arg6 priority:(int)arg7 ipSettingsRevision:(int)arg8 ipSettings:(id)arg9 reader:(id)arg10;
+- (id)initWithStream:(id)arg1 decodeMode:(int)arg2 pixelType:(int)arg3 sampleNumber:(int)arg4 canUseSoftware:(_Bool)arg5 canUseHardware:(_Bool)arg6 canUseAsyncGPU:(_Bool)arg7 priority:(int)arg8 ipSettingsRevision:(int)arg9 ipSettings:(id)arg10 reader:(id)arg11;
 
 @end
 

@@ -40,7 +40,7 @@
 @property(nonatomic) struct CGRect unusedAudioMediaRect; // @synthesize unusedAudioMediaRect=_unusedAudioMediaRect;
 @property(nonatomic) struct CGRect unusedMediaRect; // @synthesize unusedMediaRect=_unusedMediaRect;
 @property(nonatomic) struct CGRect transitionMediaRect; // @synthesize transitionMediaRect=_transitionMediaRect;
-@property(readonly, nonatomic) NSArray *rangeItemLayers; // @synthesize rangeItemLayers=_rangeItemLayers;
+@property(readonly, copy, nonatomic) NSArray *rangeItemLayers; // @synthesize rangeItemLayers=_rangeItemLayers;
 - (void)layoutRangeItemLayers;
 - (void)layoutTextBadges;
 - (id)contextMenu;
@@ -126,6 +126,12 @@
 - (BOOL)isTransition;
 - (id)accessibilityPartAtPoint:(struct CGPoint)arg1;
 - (BOOL)containsPart:(id)arg1 atPoint:(struct CGPoint)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

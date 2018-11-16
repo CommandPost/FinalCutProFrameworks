@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFMIORADAsset, NSDictionary, NSURL;
+@class FFMIORADAsset, NSDictionary, NSObject<OS_dispatch_group>, NSURL;
 
 @interface FFMovieInstanceFig : NSObject
 {
@@ -23,6 +23,10 @@
     unsigned long long _keepAliveTime;
     struct stat _statbuf;
     NSDictionary *_growthInfo;
+    BOOL _toBeEvicted;
+    NSObject<OS_dispatch_group> *_readyGroup;
+    BOOL _isReady;
+    FFMovieInstanceFig *_newVersion;
 }
 
 + (id)copyFFMovieInstanceFigForRADAsset:(id)arg1;
@@ -33,9 +37,10 @@
 + (void)teardown;
 @property(readonly) NSURL *url; // @synthesize url=_url;
 @property(readonly) int status; // @synthesize status=_status;
+- (id).cxx_construct;
 - (id)description;
+- (CDStruct_bdcb2b0d)md5;
 - (int)storageTypeMustBeSSD;
-- (void)setGrowthInfo:(id)arg1;
 - (id)growthInfo;
 - (id)radAsset;
 - (void)_openMovie:(id)arg1;
@@ -49,9 +54,16 @@
 - (struct OpaqueFigByteStreamProvider *)byteStreamProvider;
 - (id)urlForTrackID:(int)arg1;
 - (_Bool)statInfoMatches:(struct stat *)arg1;
+- (_Bool)sameFile:(struct stat *)arg1;
 - (void)_keepAlive;
+- (BOOL)toBeEvicted;
+- (void)setToBeEvicted:(BOOL)arg1;
+- (void)setNewVersion:(id)arg1;
+- (id)newVersion;
+- (BOOL)isReady;
+- (void)waitUntilReady;
 - (void)dealloc;
-- (id)initWithURL:(id)arg1 pathHint:(id)arg2 statInfo:(struct stat *)arg3;
+- (id)initWithURL:(id)arg1 pathHint:(id)arg2 statInfo:(const struct stat *)arg3;
 - (id)initWithRADAsset:(id)arg1;
 
 @end

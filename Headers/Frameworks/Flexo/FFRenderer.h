@@ -31,11 +31,13 @@
     BOOL _shouldUpdateState;
     BOOL _autoCancelWhenEndTimeReached;
     _Bool _stoppedDueToStorageLocFull;
+    _Bool _stoppedDueToDestError;
     NSConditionLock *_renderComplete;
     NSConditionLock *_pause;
     BOOL _ackedPause;
 }
 
+@property _Bool stoppedDueToDestError; // @synthesize stoppedDueToDestError=_stoppedDueToDestError;
 - (_Bool)stoppedDueToStorageLocFull;
 - (id)description;
 - (void)setWaitForThreadToAck:(_Bool)arg1;
@@ -54,10 +56,11 @@
 - (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2;
 - (void)renderFrame:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
 - (void)stopWritingFilesToLocation:(id)arg1;
+- (void)destUnableToProcessFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 error:(id)arg3;
 - (void)didRenderFrames:(CDStruct_e83c9415)arg1 forLastDest:(BOOL)arg2;
 - (void)checkForPauseWhileRenderingFrames;
 - (void)willRenderFrames;
-- (void)_blockRenderIfPausedAndCheckForFullStorageLocation;
+- (void)_blockRenderIfPausedAndCheckForRenderError;
 - (CDStruct_e83c9415)lastRenderedRange;
 - (void)resetLastRenderedRange;
 - (void)setLastRenderedRange:(CDStruct_e83c9415)arg1;

@@ -4,22 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Ozone/OZTool.h>
+#import <Ozone/OZShapeTool.h>
 
 @class LKColorWell, OZRotoshapeOnscreenControl;
 
-@interface OZSplineTool : OZTool
+@interface OZSplineTool : OZShapeTool
 {
-    struct OZRotoshape *_roto;
     OZRotoshapeOnscreenControl *_rotoOSC;
     unsigned int _interpolation;
-    int _hitActivePart;
     _Bool _creating;
-    _Bool _animateFlag;
     _Bool _addingToScene;
-    _Bool _isMask;
-    _Bool _localSpace;
-    struct PCString *_pUndoString;
     LKColorWell *_pPrimaryColorWell;
 }
 
@@ -34,15 +28,10 @@
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)mouseMoved:(id)arg1;
-- (BOOL)testPoint:(id)arg1 xpos:(double)arg2 ypos:(double)arg3;
-- (BOOL)projectPoint:(id)arg1 xpos:(double *)arg2 ypos:(double *)arg3;
 - (void)didCancelDrawing;
-- (void)addToScene:(struct OZScene *)arg1;
-- (struct OZElement *)getSelectedElement:(struct OZScene *)arg1;
 - (BOOL)selectNone:(id)arg1;
 - (BOOL)selectAll:(id)arg1;
 - (void)draw;
-- (void)setViewMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 state:(const struct OZRenderState *)arg2;
 - (void)endWithDocument:(struct OZDocument *)arg1;
 - (id)menuForEvent:(id)arg1;
 - (id)getCursorWithEvent:(id)arg1;

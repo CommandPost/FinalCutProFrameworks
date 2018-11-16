@@ -35,6 +35,7 @@
     OZViewController *_scaleParamCtrl;
     OZViewController *_scaleXCtrl;
     OZViewController *_scaleYCtrl;
+    OZViewController *_scaleZCtrl;
     OZViewController *_offsetCtrl;
     OZViewController *_scaleAffectsLayoutCtrl;
     OZViewController *_slantCtrl;
@@ -46,7 +47,7 @@
     OZViewControllerGroup *_rotateCtrlGrp;
 }
 
-- (void)updateLayoutControllers:(list_1192f13f *)arg1;
+- (void)updateLayoutControllers:(list_d81b4758 *)arg1;
 - (void)enableDisableUI:(unsigned int)arg1;
 - (void)notify:(unsigned int)arg1;
 - (struct TXTextStyle *)getCurrentStyle;

@@ -13,7 +13,9 @@
     NSPanel *_pMissingPanel;
     NSPanel *_pUnsupportedPanel;
     NSPanel *_pMissingAndUnsupportedPanel;
-    NSTableView *_pTableView;
+    NSTableView *_pMissingAndUnsupportedTableView;
+    NSTableView *_pUnsupportedTableView;
+    NSTableView *_pMissingTableView;
     NSButton *_pReconnectButton;
     NSButton *_pSearchButton;
     struct OZScene *_pScene;

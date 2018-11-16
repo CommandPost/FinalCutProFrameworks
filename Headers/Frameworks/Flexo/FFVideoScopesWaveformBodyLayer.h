@@ -11,8 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)waveformBody;
++ (id)waveformBodyLayer;
 - (void)setDelegate:(id)arg1;
+- (void)hideGraticuleLabels:(BOOL)arg1;
+- (void)setMonochrome:(BOOL)arg1;
+- (void)setShowGuides:(BOOL)arg1;
+- (void)setTraceBrightness:(float)arg1;
 
 @end
 

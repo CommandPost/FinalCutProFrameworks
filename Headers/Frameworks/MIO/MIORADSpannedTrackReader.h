@@ -8,7 +8,7 @@
 
 #import "MIORADTrackReaderProtocol.h"
 
-@class NSArray;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MIORADSpannedTrackReader : MIOObject <MIORADTrackReaderProtocol>
@@ -50,9 +50,14 @@ __attribute__((visibility("hidden")))
 - (id)url;
 - (unsigned int)mediaType;
 - (BOOL)isEnabled;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithTrackReaders:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

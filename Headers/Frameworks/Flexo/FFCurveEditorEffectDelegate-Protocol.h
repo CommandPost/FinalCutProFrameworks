@@ -12,6 +12,6 @@
 - (NSArray *)effectsToDisplay;
 
 @optional
-- (void)sender:(id)arg1 willSetChannel:(CHChannelBase *)arg2;
+- (BOOL)sender:(id)arg1 willSetChannel:(CHChannelBase *)arg2;
 @end
 

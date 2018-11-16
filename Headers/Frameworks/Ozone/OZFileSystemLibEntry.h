@@ -31,6 +31,7 @@
 + (id)buildTreeForPath:(id)arg1 rootName:(id)arg2 flags:(unsigned int)arg3 withOwner:(id)arg4;
 + (void)validateTree:(id)arg1;
 + (id)buildTree;
++ (BOOL)recreateXMLCache;
 - (id)getDescriptionLine5;
 - (id)getDescriptionLine4;
 - (id)getDescriptionLine3;

@@ -29,7 +29,6 @@
 - (void)demandAudioComponentSources:(int)arg1;
 - (BOOL)hasActiveAudioComponentSources;
 - (BOOL)supportsRoles;
-- (id)roles;
 - (id)rolesWithPlayEnable:(int)arg1;
 - (void)resetRoles;
 - (void)addRole:(id)arg1;
@@ -40,10 +39,9 @@
 - (CDStruct_1b6d18a9)duration;
 - (CDStruct_1b6d18a9)sampleDuration;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
-- (double)audioSampleRate;
+- (double)nativeAudioSampleRate;
 - (double)videoAspectRatio;
-- (long long)audioChannelCount:(int)arg1;
-- (long long)audioChannelCount;
+- (long long)nativeAudioChannelCount:(int)arg1;
 - (void)setStartingTimecode:(CDStruct_1b6d18a9)arg1;
 - (void)setVideoProps:(id)arg1;
 - (id)videoProps;
@@ -127,6 +125,7 @@
 - (BOOL)isCompoundClip;
 - (BOOL)isGap;
 - (BOOL)isPlaceholder;
+- (id)effect;
 - (BOOL)isTitle;
 - (BOOL)isGenerator;
 - (BOOL)isPSD;

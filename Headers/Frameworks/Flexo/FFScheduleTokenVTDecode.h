@@ -8,7 +8,7 @@
 
 #import "SampleBufferProvider.h"
 
-@class FFImage, FFSampleCursor, NSObject<OS_dispatch_semaphore>, PCMatrix44Double;
+@class FFImage, FFSampleCursor, NSObject<OS_dispatch_semaphore>, NSString, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFScheduleTokenVTDecode : FFScheduleToken <SampleBufferProvider>
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     int _playbackMode;
     int _spatialQuality;
     int _priority;
+    CDStruct_1b6d18a9 _outputPTS;
     PCMatrix44Double *_xform[3];
     BOOL _canceled;
     int _whichDRJP;
@@ -37,23 +38,27 @@ __attribute__((visibility("hidden")))
     CDUnknownFunctionPointerType _decompressionOutputCallback;
     void *_videoDecoder;
     BOOL _needsReset;
+    BOOL _fileIsGrowing;
 }
 
 @property BOOL prefetchHasBegun; // @synthesize prefetchHasBegun=_prefetchHasBegun;
 - (id).cxx_construct;
+- (struct opaqueCMFormatDescription *)copyFormatDescription;
 - (void)setImages:(id)arg1 upper:(id)arg2 lower:(id)arg3 allNoFilt:(id)arg4 upperNoFilt:(id)arg5 lowerNoFilt:(id)arg6 andError:(int)arg7;
 - (void)getXforms:(id *)arg1 upper:(id *)arg2 lower:(id *)arg3;
 - (id)waitForImageOrError:(int)arg1 disableFiltering:(BOOL)arg2 withTimeout:(CDStruct_1b6d18a9)arg3 errorReturn:(int *)arg4;
+- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (_Bool)hintWillImageSoon;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (unsigned int)scheduleStatusInformation;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (BOOL)needsReset;
 - (void)setNeedsReset:(BOOL)arg1;
 - (void *)videoDecoder;
 - (void)setVideoDecoder:(void *)arg1;
 - (CDUnknownFunctionPointerType)decompressionOutputCallback;
 - (int)diskWaitTimeInSeconds;
+- (CDStruct_1b6d18a9)outputPTS;
 - (_Bool)invertAlpha;
 - (int)overrideAlphaType;
 - (int)nativeAlphaType;
@@ -90,8 +95,14 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)presentationStart;
 - (CDStruct_e83c9415)presentationRange;
 - (BOOL)includesPTS:(CDStruct_1b6d18a9)arg1;
+- (struct __CFString *)eventDocumentIDAndPath;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 ffSampleCursor:(id)arg2 presentationRange:(CDStruct_e83c9415)arg3 playbackMode:(int)arg4 actualQuality:(int)arg5 priority:(int)arg6 allLineXForm:(id)arg7 upperXForm:(id)arg8 lowerXForm:(id)arg9 outputCallback:(CDUnknownFunctionPointerType)arg10;
+- (id)initWithStream:(id)arg1 ffSampleCursor:(id)arg2 presentationRange:(CDStruct_e83c9415)arg3 playbackMode:(int)arg4 actualQuality:(int)arg5 priority:(int)arg6 outputPTS:(CDStruct_1b6d18a9)arg7 allLineXForm:(id)arg8 upperXForm:(id)arg9 lowerXForm:(id)arg10 outputCallback:(CDUnknownFunctionPointerType)arg11 fileIsGrowing:(BOOL)arg12;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

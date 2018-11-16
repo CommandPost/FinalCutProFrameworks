@@ -9,7 +9,7 @@
 #import "NSTableViewDataSource.h"
 #import "NSTableViewDelegate.h"
 
-@class FFShareRolloverTableView, NSArray, NSProTextField;
+@class FFShareRolloverTableView, NSArray, NSProTextField, NSString;
 
 @interface FFShareDestinationViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 {
@@ -31,6 +31,12 @@
 - (void)awakeFromNib;
 - (struct CGRect)fullViewSize;
 - (id)initWithSharePopoverDelegate:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

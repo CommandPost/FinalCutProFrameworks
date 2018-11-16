@@ -21,6 +21,9 @@
     BOOL _altKeyDown;
 }
 
+- (_Bool)isTranslateHandleActive:(int)arg1;
+- (_Bool)isRotateHandleActive:(int)arg1;
+- (_Bool)isFreeMoveHandleActive:(int)arg1;
 - (void)setActivePart:(int)arg1;
 - (BOOL)is3DOSC;
 - (BOOL)postRedisplayOnActivePartChange;

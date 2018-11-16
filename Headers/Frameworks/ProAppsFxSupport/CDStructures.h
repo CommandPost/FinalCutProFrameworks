@@ -29,7 +29,7 @@ struct FxHeliumImagePriv {
 
 struct FxKeyframeInfo {
     unsigned long long _field1;
-    double _field2;
+    CDUnion_2516e51e _field2;
     unsigned long long _field3;
     double _field4;
     double _field5;
@@ -97,20 +97,27 @@ struct HGNode {
     int _field12;
     struct HGBitmap *_field13;
     _Bool _field14;
-    struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field15;
-    int _field16;
-    struct HGNode *_field17;
-    struct HGRect _field18;
-    struct HGRect _field19;
-    struct HGRenderer *_field20;
-    struct HGBitmap *_field21;
-    int _field22;
-    int _field23;
-    int _field24;
-    struct HGShaderBinding _field25;
-    struct HGNodeChain *_field26;
-    struct HGShaderEntry *_field27;
-    int _field28;
+    _Bool _field15;
+    _Bool _field16;
+    struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field17;
+    int _field18;
+    struct HGNode *_field19;
+    struct HGRect _field20;
+    struct HGRect _field21;
+    struct HGRenderer *_field22;
+    struct HGBitmap *_field23;
+    struct HGNode *_field24;
+    int _field25;
+    int _field26;
+    int _field27;
+    struct HGRect _field28;
+    int _field29;
+    int _field30;
+    struct HGBitmap *_field31;
+    struct HGShaderBinding _field32;
+    struct HGNodeChain *_field33;
+    struct HGShaderEntry *_field34;
+    int _field35;
 };
 
 struct HGNodeChain;
@@ -132,24 +139,26 @@ struct HGRef<HGNode> {
     struct HGNode *_field1;
 };
 
+struct HGRenderQueue;
+
 struct HGRenderer {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
-    struct HGBuffer *_field3;
-    struct HGRendererTextureUnit _field4[8];
-    struct vector<DepthBufferManager *, std::allocator<DepthBufferManager *>> _field5;
-    struct vector<HGExecutionUnit *, std::allocator<HGExecutionUnit *>> _field6;
-    struct HGExecutionData *_field7;
-    struct HGSyncData *_field8;
+    struct HGNode *_field3;
+    struct HGBuffer *_field4;
+    struct HGRendererTextureUnit _field5[8];
+    struct vector<DepthBufferManager *, std::allocator<DepthBufferManager *>> _field6;
+    struct vector<HGExecutionUnit *, std::allocator<HGExecutionUnit *>> _field7;
+    struct HGExecutionData *_field8;
+    struct HGSyncData *_field9;
     struct _opaque_pthread_rwlock_t {
         long long _field1;
         char _field2[192];
-    } _field9;
-    struct _opaque_pthread_mutex_t _field10;
-    struct HGLUTCacheManager *_field11;
-    struct GraphStats *_field12;
-    struct RendererStats *_field13;
-    int _field14;
+    } _field10;
+    struct _opaque_pthread_mutex_t _field11;
+    struct HGLUTCacheManager *_field12;
+    struct GraphStats *_field13;
+    struct RendererStats *_field14;
     int _field15;
     int _field16;
     int _field17;
@@ -176,20 +185,25 @@ struct HGRenderer {
     int _field38;
     int _field39;
     int _field40;
-    struct HGCache _field41;
-    _Bool _field42;
-    _Bool _field43;
-    _Bool _field44;
-    unsigned int _field45;
-    struct HGLimits *_field46;
-    int _field47;
-    struct HGDotTree _field48;
-    struct HGBufferDumper _field49;
-    unsigned int _field50;
-    int _field51;
-    unsigned long long _field52;
-    unsigned long long _field53;
+    int _field41;
+    int _field42;
+    int _field43;
+    struct HGCache _field44;
+    _Bool _field45;
+    _Bool _field46;
+    _Bool _field47;
+    unsigned int _field48;
+    struct HGLimits *_field49;
+    int _field50;
+    struct HGDotTree _field51;
+    struct HGBufferDumper _field52;
+    unsigned int _field53;
     int _field54;
+    unsigned long long _field55;
+    unsigned long long _field56;
+    int _field57;
+    struct HGRenderQueue *_field58;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field59;
 };
 
 struct HGRendererTextureUnit {
@@ -306,6 +320,11 @@ struct PCVector2<double> {
     double _y;
 };
 
+struct PCVector2<float> {
+    float _field1;
+    float _field2;
+};
+
 struct PC_Sp_counted_base;
 
 struct POMultiResTexture;
@@ -390,14 +409,14 @@ typedef struct {
 } CDStruct_198678f7;
 
 typedef struct {
-    double _field1;
+    CDUnion_2516e51e _field1;
     unsigned long long _field2;
     unsigned long long _field3;
     double _field4;
     double _field5;
     struct _CGLContextObject *_field6;
     unsigned long long _field7;
-} CDStruct_8b442eb9;
+} CDStruct_6b9ed609;
 
 // Template types
 typedef struct HGRef<HGBitmap> {
@@ -435,4 +454,16 @@ typedef struct PCVector2<double> {
     double _x;
     double _y;
 } PCVector2_79efa81a;
+
+typedef struct PCVector2<float> {
+    float _field1;
+    float _field2;
+} PCVector2_79a470e1;
+
+#pragma mark Typedef'd Unions
+
+typedef union {
+    double _field1;
+    struct *_field2;
+} CDUnion_2516e51e;
 

@@ -23,6 +23,8 @@
     BOOL _needsToBeKeyframed;
     BOOL _enabled;
     BOOL _didMove;
+    BOOL _didOpenUndoScope;
+    struct OZChannelFolder *_channelToCopy;
 }
 
 - (id).cxx_construct;

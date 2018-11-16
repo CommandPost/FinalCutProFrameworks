@@ -7,32 +7,59 @@
 #import "NSObject.h"
 
 #import "FxPathAPI.h"
+#import "FxPathAPI_v2.h"
 
-@interface OZFxPlugPathHandler : NSObject <FxPathAPI>
+@interface OZFxPlugPathHandler : NSObject <FxPathAPI, FxPathAPI_v2>
 {
     struct OZFxPlugSharedBase *_plugin;
 }
 
+- (BOOL)setPath:(void *)arg1 toColor:(unsigned long long)arg2 error:(id *)arg3;
 - (void)setPath:(void *)arg1 color:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)pathGeometryInfo:(struct FxPathGeometryInfo *)arg1 forPath:(void *)arg2 atTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
+- (BOOL)blendMode:(unsigned long long *)arg1 ofPath:(void *)arg2 error:(id *)arg3;
 - (unsigned long long)blendModeOfPath:(void *)arg1 error:(id *)arg2;
+- (BOOL)length:(double *)arg1 ofSegment:(unsigned long long)arg2 ofPath:(void *)arg3 atFxTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
 - (double)lengthOfSegment:(unsigned long long)arg1 ofPath:(void *)arg2 atTime:(double)arg3 error:(id *)arg4;
+- (double)_lengthOfSegment:(unsigned long long)arg1 ofPath:(void *)arg2 atTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
+- (BOOL)point:(struct CGPoint *)arg1 atPercentageOfParameter:(double)arg2 alongPath:(void *)arg3 atTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
 - (struct CGPoint)pointAtPercentageOfParameter:(double)arg1 alongPath:(void *)arg2 atTime:(double)arg3 error:(id *)arg4;
+- (struct CGPoint)_pointAtPercentageOfParameter:(double)arg1 alongPath:(void *)arg2 atTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
+- (BOOL)point:(struct CGPoint *)arg1 atPercentageOfDistance:(double)arg2 alongPath:(void *)arg3 atTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
 - (struct CGPoint)pointAtPercentageOfDistance:(double)arg1 alongPath:(void *)arg2 atTime:(double)arg3 error:(id *)arg4;
+- (struct CGPoint)_pointAtPercentageOfDistance:(double)arg1 alongPath:(void *)arg2 atTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
+- (BOOL)vertex:(struct FxVertex *)arg1 atIndex:(unsigned long long)arg2 ofPath:(void *)arg3 atFxTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
 - (void)vertex:(struct FxVertex *)arg1 atIndex:(unsigned long long)arg2 ofPath:(void *)arg3 atTime:(double)arg4 error:(id *)arg5;
+- (void)_vertex:(struct FxVertex *)arg1 atIndex:(unsigned long long)arg2 ofPath:(void *)arg3 atTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
+- (BOOL)numberOfVertices:(unsigned long long *)arg1 inPath:(void *)arg2 atFxTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
 - (unsigned long long)numberOfVerticesInPath:(void *)arg1 atTime:(double)arg2 error:(id *)arg3;
+- (unsigned long long)_numberOfVerticesInPath:(void *)arg1 atTime:(CDUnion_2516e51e)arg2 error:(id *)arg3;
+- (BOOL)length:(double *)arg1 ofPath:(void *)arg2 atFxTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
 - (double)lengthOfPath:(void *)arg1 atTime:(double)arg2 error:(id *)arg3;
+- (double)_lengthOfPath:(void *)arg1 atTime:(CDUnion_2516e51e)arg2 error:(id *)arg3;
+- (BOOL)style:(unsigned long long *)arg1 ofPath:(void *)arg2 error:(id *)arg3;
 - (unsigned long long)styleOfPath:(void *)arg1 error:(id *)arg2;
+- (BOOL)isPath:(void *)arg1 inverted:(char *)arg2 atFxTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
 - (BOOL)isPath:(void *)arg1 invertedAtTime:(double)arg2 error:(id *)arg3;
+- (BOOL)_isPath:(void *)arg1 invertedAtTime:(CDUnion_2516e51e)arg2 error:(id *)arg3;
+- (BOOL)isPath:(void *)arg1 open:(char *)arg2 atFxTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
 - (BOOL)isPath:(void *)arg1 openAtTime:(double)arg2 error:(id *)arg3;
+- (BOOL)_isPath:(void *)arg1 openAtTime:(CDUnion_2516e51e)arg2 error:(id *)arg3;
+- (BOOL)name:(id *)arg1 ofPath:(void *)arg2 error:(id *)arg3;
 - (id)nameOfPath:(void *)arg1 error:(id *)arg2;
+- (BOOL)pathID:(void **)arg1 forIndex:(unsigned long long)arg2 error:(id *)arg3;
 - (void *)pathIDForIndex:(unsigned long long)arg1 error:(id *)arg2;
+- (unsigned long long)numberOfPathsAtFxTime:(CDUnion_2516e51e)arg1;
 - (unsigned long long)numberOfPathsAtTime:(double)arg1;
-- (struct CGPoint)_parametricallyEvaluateXSplineVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(double)arg4 error:(id *)arg5;
-- (struct CGPoint)_parametricallyEvaluateBezierVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(double)arg4 error:(id *)arg5;
-- (struct CGPoint)_parametricallyEvaluateLinearVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(double)arg4 error:(id *)arg5;
+- (unsigned long long)_numberOfPathsAtTime:(CDUnion_2516e51e)arg1;
+- (struct CGPoint)_parametricallyEvaluateSuperEllipse:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
+- (struct CGPoint)_parametricallyEvaluateRectangle:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
+- (struct CGPoint)_parametricallyEvaluateXSplineVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
+- (struct CGPoint)_parametricallyEvaluateBezierVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
+- (struct CGPoint)_parametricallyEvaluateLinearVertex:(unsigned long long)arg1 ofPath:(void *)arg2 atPercent:(double)arg3 atTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
 - (struct OZRenderState)_renderState;
 - (unsigned long long)_interpToPathStyle:(unsigned int)arg1;
-- (id)_rotoshape:(struct OZRotoshape **)arg1 forPathID:(void *)arg2;
+- (BOOL)_rotoShape:(struct OZRotoshape **)arg1 forPathID:(void *)arg2 error:(id *)arg3;
 - (struct OZElement *)_element;
 - (id)_pathErrorWithCode:(long long)arg1 andString:(id)arg2 inMethod:(const char *)arg3;
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;

@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property(retain) FFImportFileSystemTreeNode *savedSelectedTreeNode; // @synthesize savedSelectedTreeNode=_savedSelectedTreeNode;
 @property(retain) NSOperationQueue *metadataFetchQueue; // @synthesize metadataFetchQueue=_metadataFetchQueue;
 @property(retain) NSMutableDictionary *nodeInfo; // @synthesize nodeInfo=_nodeInfo;
-@property(readonly) NSOperationQueue *networkVolumeMountQueue; // @synthesize networkVolumeMountQueue=_networkVolumeMountQueue;
+@property(readonly, retain) NSOperationQueue *networkVolumeMountQueue; // @synthesize networkVolumeMountQueue=_networkVolumeMountQueue;
 @property(nonatomic) FFOrganizerFilmListViewController *outlineViewController; // @synthesize outlineViewController=_outlineViewController;
 @property(retain) FFImportFavoritesSidebarCollection *favoritesCollection; // @synthesize favoritesCollection=_favoritesCollection;
 @property(retain) MIORADManager *radManager; // @synthesize radManager=_radManager;
@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)workspaceVolumeDidUnmount:(id)arg1;
 - (void)workspaceVolumeWillUnmount:(id)arg1;
 - (void)workspaceVolumeDidMount:(id)arg1;
+- (void)appWillTerminate:(id)arg1;
 - (void)dealloc;
 - (oneway void)release;
 - (id)init;

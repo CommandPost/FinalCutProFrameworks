@@ -23,8 +23,10 @@
 - (BOOL)isDependentOnBounds;
 - (void)updateInfoBarWithScale;
 - (void)updateInfoBarWithScale:(const PCVector3_457fd1f0 *)arg1 andChange:(const PCVector3_457fd1f0 *)arg2;
+- (int)baseName;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (struct POScale3DImpl *)makeNewScale3DImpl;
 
 @end
 

@@ -8,35 +8,30 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBackgroundTaskWithPauseCondition, NSCondition, NSLock, NSMutableArray;
+@class NSMapTable;
 
 @interface FFThumbnailGenerator : NSObject <FFBackgroundTaskTarget>
 {
-    int _outstandingThumbRequests;
-    FFBackgroundTaskWithPauseCondition *_bTask;
-    NSCondition *_lock;
-    NSMutableArray *_requestsNew;
-    NSLock *_requestsLock;
-    _Bool _appShuttingDown;
+    NSMapTable *_activeRequestsMap;
+    BOOL _appShuttingDown;
 }
 
++ (void)addVideoThumbnailToEventForRequest:(id)arg1;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
 - (id)librariesInUse;
 - (id)assetsInUse;
-- (void)addVideoThumbnailToEventForRequest:(id)arg1;
 - (void)stop;
 - (void)resume;
 - (void)generateThumbnailsForClips:(id)arg1;
-- (void)appWillTerminate:(id)arg1;
+- (void)_notifyShutdown:(id)arg1;
 - (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
 - (void)_waitForBGTaskToFinish;
 - (void)_cancelBGTask;
-- (void)_startBackgroundTask;
+- (void)_startBackgroundTaskForClips:(id)arg1;
 - (void)dealloc;
 - (oneway void)release;
 - (id)init;
-- (void)thumbImageReady:(id)arg1;
 
 @end
 

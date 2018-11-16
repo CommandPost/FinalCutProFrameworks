@@ -6,7 +6,7 @@
 
 #import "NSTreeNode.h"
 
-@class NSMutableDictionary, NSRecursiveLock, NSString;
+@class NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFImportFileSystemTreeNode : NSTreeNode
@@ -16,10 +16,13 @@ __attribute__((visibility("hidden")))
     NSRecursiveLock *_childNodesLock;
     BOOL _isObservingFFMIORADVolume;
     BOOL _isProcessing;
+    NSMutableSet *_unhiddenURLs;
     struct __FSEventStream *_fsEventStreamRef;
     NSString *_fsEventWatchPath;
+    BOOL _isHidden;
 }
 
+@property BOOL isHidden; // @synthesize isHidden=_isHidden;
 - (void)insertObjects:(id)arg1 inSubNodesAtIndexes:(id)arg2;
 - (void)insertObject:(id)arg1 inSubNodesAtIndex:(unsigned long long)arg2;
 - (void)removeSubNodesAtIndexes:(id)arg1;
@@ -36,11 +39,14 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(nonatomic) BOOL isProcessing; // @synthesize isProcessing=_isProcessing;
 - (void)addFFMIORADVolumeObserver;
+- (void)removeFFMIORADVolumeObserver;
 - (void)fsEventAtPaths:(id)arg1;
 - (BOOL)isChildNodesInstantiated;
 - (void)invalidateChildNodes:(BOOL)arg1;
 - (id)childNodesDictionary;
 - (id)childNodes;
+- (void)addTreeNodeForURL:(id)arg1 dataNode:(id)arg2 newChildNodesDictionary:(id)arg3 newChildNodes:(id)arg4 isHidden:(BOOL)arg5;
+- (void)unhideURL:(id)arg1;
 - (id)url;
 - (void)scheduleFSeventStream;
 - (void)_setParentNodeSimple:(id)arg1;

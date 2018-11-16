@@ -6,12 +6,14 @@
 
 #import "OZViewCtlrRoot.h"
 
-@class LKButtonCell, NSBox, NSMatrix, NSView, OZAutoTextFormatController, OZAutoTextLayoutController, OZAutoTextStyleController, OZViewControllerGroup, PIBuildContext;
+#import "TXMaterialControllerDelegate.h"
 
-@interface OZTextInspectorController : OZViewCtlrRoot
+@class LKButtonCell, NSBox, NSMatrix, NSView, OZAutoInspectorController, OZAutoTextFormatController, OZAutoTextLayoutController, OZAutoTextStyleController, PIBuildContext;
+
+@interface OZTextInspectorController : OZViewCtlrRoot <TXMaterialControllerDelegate>
 {
     struct TXTextLayout *_text;
-    list_ff0a6df5 *_styles;
+    list_4c133ab0 *_styles;
     NSView *_pMainView;
     NSBox *_pBox;
     NSMatrix *_pMatrix;
@@ -21,15 +23,25 @@
     OZAutoTextFormatController *_pFormatController;
     OZAutoTextStyleController *_pStyleController;
     OZAutoTextLayoutController *_pLayoutController;
-    OZViewControllerGroup *_pCurrController;
+    OZAutoInspectorController *_pCurrController;
     BOOL _capturingChannels;
-    list_1192f13f *_textList;
+    list_d81b4758 *_textList;
     PIBuildContext *_pContext;
+    BOOL _settingAssociatedStyles;
+    BOOL _repeatStyleReassociation;
 }
 
+@property BOOL repeatStyleReassociation; // @synthesize repeatStyleReassociation=_repeatStyleReassociation;
+@property BOOL settingAssociatedStyles; // @synthesize settingAssociatedStyles=_settingAssociatedStyles;
+- (void)reassociateAllStyles;
+- (void)rebuildInspector;
+- (void)didChangeMaterial:(BOOL)arg1;
+- (void)willChangeMaterial;
+- (void)scrollToOffset:(double)arg1;
+- (double)scrollOffset;
 - (_Bool)useGlyphTool;
 - (id)newFormatControllerWithSceneNode:(struct OZSceneNode *)arg1;
-- (void)setAssociatedStyles:(list_ff0a6df5 *)arg1 force:(BOOL)arg2;
+- (void)setAssociatedStyles:(list_4c133ab0 *)arg1 force:(BOOL)arg2;
 - (void)setAssociatedStyle:(struct TXTextStyle *)arg1;
 - (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
@@ -47,8 +59,11 @@
 - (id)getNSFontForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_198678f7)arg2;
 - (id)mainView;
 - (void)dealloc;
-- (id)initWithSceneNodes:(list_1192f13f *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
-- (id)initWithSceneNodes:(list_1192f13f *)arg1 viewCtlrDelegate:(id)arg2;
+- (id)initWithSceneNodes:(list_d81b4758 *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
+- (id)initWithSceneNodes:(list_d81b4758 *)arg1 viewCtlrDelegate:(id)arg2;
+- (void)didCreateNewMaterialLayerControllers;
+- (BOOL)isInhibitingUpdates;
+- (void)setInhibitUpdates:(BOOL)arg1;
 
 @end
 

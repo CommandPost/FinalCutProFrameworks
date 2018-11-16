@@ -78,7 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)purgeBookmarkData;
 - (id)bookmarkData;
 - (void)setBookmarkData:(id)arg1;
-- (int)syncWithMedia:(id)arg1 options:(unsigned int)arg2 needsUpdate:(char *)arg3 error:(id *)arg4;
+- (int)syncWithMedia:(id)arg1 options:(unsigned long long)arg2 needsUpdate:(char *)arg3 error:(id *)arg4;
 - (BOOL)isRMD;
 - (BOOL)usingSubfolder;
 - (BOOL)_updateLastModifiedFileDate:(int)arg1;

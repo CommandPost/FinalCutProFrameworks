@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     FFScheduleToken *_heliumGraphToken;
 }
 
+- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (_Bool)areStatusFlagsClear:(unsigned int)arg1;
 - (unsigned int)scheduleStatusInformation;

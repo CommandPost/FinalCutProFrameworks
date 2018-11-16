@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
-- (void)_clampToViewBoundsX:(double *)arg1 pointY:(double *)arg2;
 - (void)getPos_x1:(double *)arg1 y1:(double *)arg2 x2:(double *)arg3 y2:(double *)arg4 x3:(double *)arg5 y3:(double *)arg6 x4:(double *)arg7 y4:(double *)arg8;
 - (void)dealloc;
 - (void)_setStartingMaskPointsChannelID:(int)arg1 x:(double)arg2 y:(double)arg3;

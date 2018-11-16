@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)description;
-- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
+- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5 graphBuildInfo:(id)arg6;
 - (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
 - (id)_newScheduledImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 forScheduling:(BOOL)arg3;
 - (void)_installScheduleOpIfNeeded:(CDStruct_bdcb2b0d)arg1 qualityIndex:(int)arg2 priority:(int)arg3 forScheduling:(BOOL)arg4;

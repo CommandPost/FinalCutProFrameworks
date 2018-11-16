@@ -9,7 +9,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKPopUpButton, LKTextField, NSArray, OZProjectPreset;
+@class LKPopUpButton, LKTextField, NSArray, NSString, OZProjectPreset;
 
 @interface OZProjectPresetController : NSWindowController <NSWindowDelegate, NSTextFieldDelegate>
 {
@@ -35,6 +35,12 @@
 - (void)windowDidLoad;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

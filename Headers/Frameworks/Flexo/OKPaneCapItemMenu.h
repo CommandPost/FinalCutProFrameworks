@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned int _useMenuDelay:1;
 }
 
-@property(readonly) LKMenu *menu; // @synthesize menu=_menu;
+@property(readonly, retain) LKMenu *menu; // @synthesize menu=_menu;
 - (void)dealloc;
 - (void)refreshSegmentedControl;
 - (void)setMenu:(id)arg1 isPopUp:(BOOL)arg2 useMenuDelay:(BOOL)arg3;

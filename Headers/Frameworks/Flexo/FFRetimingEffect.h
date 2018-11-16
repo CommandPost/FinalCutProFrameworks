@@ -18,8 +18,6 @@ __attribute__((visibility("hidden")))
     CHChannelDouble *_chConstantSpeed;
     CHChannelBool *_chDirection;
     CHChannelFolder *_folderAdvanced;
-    int _activeSegment;
-    CDStruct_1b6d18a9 _lastOutTime;
     CDStruct_1b6d18a9 _mediaStartTime;
     CDStruct_1b6d18a9 _mediaEndTime;
     CDStruct_1b6d18a9 _mediaSampleDuration;
@@ -29,11 +27,14 @@ __attribute__((visibility("hidden")))
     double _audioOutMediaTime;
     double *_anchoredSecondMediaTimes;
     double _anchoredFirstMediaTime;
+    BOOL _suppressChannelChangeUpdate;
 }
 
 + (id)effectForEffectStack:(id)arg1;
 + (id)effectIDForEffectStack:(id)arg1;
 - (id).cxx_construct;
+- (BOOL)suppressChannelChangeUpdate;
+- (void)setSuppressChannelChangeUpdate:(BOOL)arg1;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)retimingReset;
 - (CDStruct_1b6d18a9)lastKeyValueInTime;
@@ -72,6 +73,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)effectVariesOverTime;
 - (BOOL)isNoOp;
 - (BOOL)isAtDefaultSettings;
+- (CDStruct_1b6d18a9)getTimeForInputTime:(CDStruct_1b6d18a9)arg1 streamOffset:(CDStruct_1b6d18a9)arg2;
+- (BOOL)supportsReentrancy;
 - (BOOL)isRetimeEffect;
 - (void)setSmoothTransitionAtKeyframe:(BOOL)arg1 index:(int)arg2;
 - (BOOL)smoothTransitionAtKeyframe:(int)arg1;
@@ -88,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)addKeyWithNoTransitionAtTime:(CDStruct_1b6d18a9)arg1 value:(double)arg2;
 - (void)addKeyWithDefaultTransitionAtTime:(CDStruct_1b6d18a9)arg1 value:(double)arg2;
 - (struct PC_CMTimePair)transitionTimesForKeyframe:(void *)arg1;
+- (void)deriveEvalCurve:(BOOL)arg1;
 - (void)deriveEvalCurve;
 - (void)computeSmoothBezierTangents;
 - (CDStruct_1b6d18a9)constantRetimedTimeFromUntimedTime:(CDStruct_1b6d18a9)arg1 useAbosoluteSpeed:(BOOL)arg2;
@@ -118,18 +122,13 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)mediaEndTime;
 - (void)setMediaStartTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)mediaStartTime;
-- (void)setActiveSegment:(int)arg1;
-- (int)activeSegment;
-- (void)setLastOutTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)lastOutTime;
-- (void)setFrameSampleMode:(long long)arg1;
-- (long long)frameSampleMode;
 - (BOOL)timeMapChannelValueAtTime:(CDStruct_1b6d18a9)arg1 equalToValue:(double)arg2;
 - (id)interpolationChannel;
 - (id)directionChannel;
 - (id)constantSpeedChannel;
 - (id)timeMapEvalChannel;
 - (id)timeMapUIChannel;
+- (BOOL)isSecondaryRetimeEffect;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1;
 

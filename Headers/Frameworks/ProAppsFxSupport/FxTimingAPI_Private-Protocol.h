@@ -5,8 +5,10 @@
 //
 
 @protocol FxTimingAPI_Private
-- (double)durationOfMediaForFilter:(id <FxFilter>)arg1;
-- (double)startTimeOfMediaForFilter:(id <FxFilter>)arg1;
+- (void)durationFxTimeOfMedia:(CDUnion_2516e51e *)arg1;
+- (CDUnion_2516e51e)durationOfMediaForFilter:(id <FxFilter>)arg1;
+- (void)startFxTimeOfMedia:(CDUnion_2516e51e *)arg1;
+- (CDUnion_2516e51e)startTimeOfMediaForFilter:(id <FxFilter>)arg1;
 - (_Bool)isAtStartofStoryline:(id <FxTransition>)arg1;
 - (_Bool)isAtEndofStoryline:(id <FxTransition>)arg1;
 - (_Bool)isGapBefore:(id <FxTransition>)arg1;

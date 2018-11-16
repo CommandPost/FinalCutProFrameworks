@@ -8,7 +8,7 @@
 
 #import "FFFilmstripLayerDelegate.h"
 
-@class FFAudioComponentSource, FFFilmstripLayer;
+@class FFAudioComponentSource, FFFilmstripLayer, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioChannelsConfigWaveformLayer : CALayer <FFFilmstripLayerDelegate>
@@ -33,6 +33,12 @@ __attribute__((visibility("hidden")))
 - (void)updateUIWithDisplayMode:(int)arg1 enable:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithComponentSource:(id)arg1 waveformTimeRange:(CDStruct_e83c9415)arg2 colorTheme:(int)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

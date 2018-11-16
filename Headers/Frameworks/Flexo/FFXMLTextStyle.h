@@ -8,15 +8,18 @@
 
 #import "NSCopying.h"
 
-@class NSMutableDictionary;
+@class FFXMLExporter, FFXMLImporter, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FFXMLTextStyle : NSObject <NSCopying>
 {
     NSMutableDictionary *_styleData;
+    FFXMLExporter *_exporter;
+    FFXMLImporter *_importer;
 }
 
 - (void)scaleFontSize:(double)arg1;
+- (void)conformMaterialsAndLayersTo:(id)arg1;
 - (id)newStringAttributes;
 - (id)newTextStyleElement;
 - (void)adjustUsingXMLElement:(id)arg1;
@@ -24,7 +27,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithAttributes:(id)arg1;
+- (id)initWithAttributes:(id)arg1 forExporter:(id)arg2;
+- (id)initWithImporter:(id)arg1;
 - (id)init;
 
 @end

@@ -147,5 +147,11 @@
 - (void)awakeFromNib;
 - (id)initWithProvider:(id)arg1 sequenceType:(int)arg2 createNotModify:(BOOL)arg3;
 
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
 @end
 

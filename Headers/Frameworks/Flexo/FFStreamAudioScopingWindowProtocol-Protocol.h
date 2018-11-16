@@ -8,6 +8,6 @@
 
 @protocol FFStreamAudioScopingWindowProtocol
 - (CDStruct_e83c9415)calculateScopingWindowTimeRange:(CDStruct_e83c9415)arg1 prerollRange:(CDStruct_e83c9415)arg2;
-- (void)advanceScopingWindow:(FFPrerollSync *)arg1;
+- (void)advanceScopingWindow:(CDStruct_1b6d18a9)arg1 sync:(FFPrerollSync *)arg2;
 @end
 

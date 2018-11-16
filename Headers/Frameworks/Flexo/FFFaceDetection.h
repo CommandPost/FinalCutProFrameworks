@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     int _downSampleRate;
     int _numFramesReceived;
+    BOOL _inputIsStill;
     int _frameNo;
     int _currGOF;
     CDStruct_e83c9415 _timeRangeOfCurrGOF;

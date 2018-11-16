@@ -35,7 +35,7 @@
 - (struct TXTextLayout *)getTextLayout;
 - (void)refreshMotionPaths;
 - (void)notify:(unsigned int)arg1;
-- (BOOL)flagsChanged:(id)arg1;
+- (void)flagsChanged:(id)arg1;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 

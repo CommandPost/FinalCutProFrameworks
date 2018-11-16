@@ -19,7 +19,7 @@
 @property(readonly) unsigned int controlID; // @synthesize controlID=mCMIODALControlID;
 @property NSDictionary *properties;
 - (void)propertyDidChange:(const struct CMIOObjectPropertyAddress *)arg1;
-@property(readonly) NSString *name;
+@property(readonly, retain) NSString *name;
 - (id)exposedBindings;
 - (void)dealloc;
 - (id)initWithCMIODALControlID:(unsigned int)arg1 classID:(unsigned int)arg2;

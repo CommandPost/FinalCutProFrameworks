@@ -6,42 +6,30 @@
 
 #import <Flexo/FFVideoScopesView.h>
 
-#import "FFPlayerVideoScopesModuleViewDelegate.h"
-
-@class LKMenu;
+#import "FFDestVideoScopesGLDelegate.h"
 
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesWaveformView : FFVideoScopesView <FFPlayerVideoScopesModuleViewDelegate>
+@interface FFVideoScopesWaveformView : FFVideoScopesView <FFDestVideoScopesGLDelegate>
 {
-    LKMenu *_contextualMenu;
-    long long _viewMode;
+    long long _displayMode;
     long long _compositeVideoUnits;
-    CDStruct_3de7261d _state;
     void *_FFVideoScopesWaveformViewPrivate;
 }
 
-- (id).cxx_construct;
 - (id)_initVideoScopesWaveformView;
 - (struct FFVideoScopesWaveformViewPrivate *)_Private;
 - (id)accessibilityAttributeValue:(id)arg1;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (id)menuForVideoScopeOptions;
-- (void)drawScopeViewWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)scrollWheel:(id)arg1;
 - (void)rightMouseDown:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)setZoomFactor:(float)arg1;
-- (void)removeFromSuperview;
 - (void)setFrameSize:(struct CGSize)arg1;
-- (void)viewDidUnhide;
-- (void)viewWillMoveToSuperview:(id)arg1;
 - (void)awakeFromNib;
-- (void)teardownLayers;
 - (void)buildLayers;
 @property long long compositeVideoUnits; // @dynamic compositeVideoUnits;
-@property long long viewMode; // @dynamic viewMode;
-@property BOOL showGuides; // @dynamic showGuides;
+@property long long displayMode; // @dynamic displayMode;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

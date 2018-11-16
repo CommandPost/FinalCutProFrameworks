@@ -9,7 +9,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFAnchoredSequence, InaccessibleImageView, NSArrayController, NSButton, NSImageView, NSMutableArray, NSPanel, NSTableView, NSTextField, NSTimer, NSUndoManager, NSView, SquareImagePicker;
+@class FFAnchoredSequence, InaccessibleImageView, NSArrayController, NSButton, NSImageView, NSMutableArray, NSPanel, NSString, NSTableView, NSTextField, NSTimer, NSUndoManager, NSView, SquareImagePicker;
 
 @interface RCTeamController : NSWindowController <NSWindowDelegate, NSTextFieldDelegate>
 {
@@ -132,6 +132,12 @@
 - (void)awakeFromNib;
 - (void)_adjustWindowSizeForSports;
 - (void)windowDidLoad;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

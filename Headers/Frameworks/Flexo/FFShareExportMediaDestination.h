@@ -77,13 +77,16 @@
 - (id)iconTitle;
 - (id)largeImage;
 - (id)image;
+- (id)customImage;
 - (void)setIsHelperApplicationForCurrentAction;
+- (id)_helperApp;
 - (void)setAction:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
+- (id)taskIdentifier;
 
 @end
 

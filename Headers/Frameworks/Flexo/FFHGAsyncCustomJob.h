@@ -17,7 +17,7 @@
     int _priority;
 }
 
-- (_Bool)cancel;
+- (_Bool)dequeueJobIfNotStarted;
 - (_Bool)enqueueToRenderLocation:(int)arg1 preferredLocation:(int)arg2 priority:(int)arg3 serializeLimit:(int)arg4;
 - (_Bool)enqueueToRenderLocation:(int)arg1 priority:(int)arg2;
 - (void)_jobFinished;

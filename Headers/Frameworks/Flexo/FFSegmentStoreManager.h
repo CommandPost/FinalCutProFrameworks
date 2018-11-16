@@ -63,9 +63,9 @@
 - (id)readOperationQueue;
 - (void)addPath:(id)arg1;
 - (id)findSegmentStore:(CDStruct_bdcb2b0d)arg1 paths:(id)arg2;
-- (id)copySegmentStoreForMD5:(CDStruct_bdcb2b0d)arg1 openFlags:(unsigned int)arg2 paths:(id)arg3 renderProps:(id)arg4;
-- (id)copySegmentStoreForDiskMD5:(CDStruct_bdcb2b0d)arg1 openFlags:(unsigned int)arg2 paths:(id)arg3 renderPropsForCreation:(id)arg4;
-- (id)copySegmentStoreForMD5:(CDStruct_bdcb2b0d)arg1 createIfNeeded:(BOOL)arg2 paths:(id)arg3 renderProps:(id)arg4;
+- (id)copySegmentStoreForMD5:(CDStruct_bdcb2b0d)arg1 openFlags:(unsigned int)arg2 paths:(id)arg3 renderProps:(id)arg4 error:(id *)arg5;
+- (id)copySegmentStoreForDiskMD5:(CDStruct_bdcb2b0d)arg1 openFlags:(unsigned int)arg2 paths:(id)arg3 renderPropsForCreation:(id)arg4 error:(id *)arg5;
+- (id)copySegmentStoreForMD5:(CDStruct_bdcb2b0d)arg1 createIfNeeded:(BOOL)arg2 paths:(id)arg3 renderProps:(id)arg4 error:(id *)arg5;
 - (void)checkForAgingDecompressors;
 - (void)checkForAgingCompressors;
 - (CDStruct_bdcb2b0d)md5ForSegmentStore:(CDStruct_bdcb2b0d)arg1 renderProps:(id)arg2;
@@ -77,6 +77,7 @@
 - (id)init;
 - (void)_queueAsyncCompressorIdler;
 - (void)shutdown;
+- (void)_appWillTerminate:(id)arg1;
 - (void)cancelPendingOperations;
 
 @end

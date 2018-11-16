@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKPopOverWindow, NSArray, NSTextField, NSView;
+@class LKPopOverWindow, NSArray, NSString, NSTextField, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFTransitionAttributesPopoverController : NSObject <NSWindowDelegate>
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)_currentTransitionName;
 - (BOOL)_setTransitionDurations:(id)arg1;
 - (CDStruct_1b6d18a9)_transitionMaxDuration:(id)arg1;
+- (CDStruct_1b6d18a9)_maxAnchorsCanMove:(id)arg1 toLeft:(BOOL)arg2 editingFrameDuration:(CDStruct_1b6d18a9)arg3;
 - (void)_updateTransitionNameUI;
 - (void)_updateTransitionDurationUI;
 - (void)applyToAllTransitions:(id)arg1;
@@ -50,6 +51,12 @@ __attribute__((visibility("hidden")))
 - (void)presentWithTargetRect:(struct CGRect)arg1 inView:(id)arg2;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

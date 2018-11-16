@@ -7,7 +7,6 @@
 @class FFPlayerModule, NSArray, NSEvent;
 
 @protocol FFPlayerModuleDelegate
-@property(nonatomic) BOOL layoutScopesVertically;
 
 @optional
 - (NSArray *)playerModuleOrderedZoomLevels:(FFPlayerModule *)arg1;

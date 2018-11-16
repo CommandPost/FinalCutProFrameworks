@@ -42,5 +42,11 @@ __attribute__((visibility("hidden")))
 - (void)removeFromFavoriteURLs:(id)arg1 forVolumeURL:(id)arg2;
 - (void)addToFavoriteURLs:(id)arg1 forVolumeURL:(id)arg2;
 
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
 @end
 

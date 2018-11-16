@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class NSMenu, NSMenuItem;
+@class NSMenu, NSMenuItem, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFResponderLayerPopupButton : FFResponderLayerControl <NSMenuDelegate>
@@ -41,6 +41,12 @@ __attribute__((visibility("hidden")))
 - (void)setItemSelectedHandlerWithTarget:(id)arg1 action:(SEL)arg2;
 - (struct CGPoint)popupPoint;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

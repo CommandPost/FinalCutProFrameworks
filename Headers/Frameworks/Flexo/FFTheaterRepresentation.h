@@ -42,9 +42,9 @@
 + (id)representationWithExternalFileURL:(id)arg1 qualityRating:(int)arg2;
 + (id)representationWithExternalFileURL:(id)arg1;
 + (id)representationWithStreamingURL:(id)arg1 creationDate:(id)arg2 qualities:(id)arg3;
-@property(readonly, nonatomic) NSString *shareFingerPrint; // @synthesize shareFingerPrint=_shareFingerPrint;
-@property(readonly, nonatomic) FFSharingSnapshot *snapshot; // @synthesize snapshot=_snapshot;
-@property(readonly, nonatomic) NSURL *sequenceRefURL; // @synthesize sequenceRefURL=_sequenceRefURL;
+@property(readonly, retain, nonatomic) NSString *shareFingerPrint; // @synthesize shareFingerPrint=_shareFingerPrint;
+@property(readonly, retain, nonatomic) FFSharingSnapshot *snapshot; // @synthesize snapshot=_snapshot;
+@property(readonly, retain, nonatomic) NSURL *sequenceRefURL; // @synthesize sequenceRefURL=_sequenceRefURL;
 @property(readonly, nonatomic) CDStruct_e83c9415 range; // @synthesize range=_range;
 @property(nonatomic) FFTheaterItem *item; // @synthesize item=_item;
 @property(readonly) NSString *fileRelativePath; // @synthesize fileRelativePath=_fileRelativePath;
@@ -60,10 +60,10 @@
 - (void)clearSnapshot;
 - (void)invalidateCachedSequence;
 @property(readonly, nonatomic) FFTheaterDatabase *database;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)encodeWithJSONCoder:(id)arg1;
 - (id)initWithJSONCoder:(id)arg1;
@@ -75,6 +75,10 @@
 - (id)initWithFilePath:(id)arg1 inMediaDirectory:(id)arg2 qualityRatings:(id)arg3;
 - (id)initWithExternalFileURL:(id)arg1 qualityRatings:(id)arg2;
 - (id)initWithStreamingURL:(id)arg1 creationDate:(id)arg2 qualities:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class CALayer, CHChannel, NSMutableArray, TLKThemeBackedLayer, TLKTimelineView;
+@class CALayer, CHChannel, NSMutableArray, NSString, TLKThemeBackedLayer, TLKTimelineView;
 
 __attribute__((visibility("hidden")))
 @interface FFFadeHandlesLayer : FFResponderLayer <NSMenuDelegate>
@@ -61,6 +61,12 @@ __attribute__((visibility("hidden")))
 - (void)layoutSublayers;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

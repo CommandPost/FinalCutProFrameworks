@@ -8,6 +8,8 @@
 
 #import "NSMenuDelegate.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface FFMotionPath : POMotionPath <NSMenuDelegate>
 {
@@ -58,6 +60,12 @@ __attribute__((visibility("hidden")))
 - (struct OZSceneNode *)getSceneNode;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

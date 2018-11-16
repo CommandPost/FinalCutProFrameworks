@@ -10,7 +10,7 @@
 #import "NSOutlineViewDelegate.h"
 #import "OZOutlineVarRowHeightDelegate.h"
 
-@class OZTableHeaderView, OZTimelineLayerScroll, OZTimelineViewMulti;
+@class NSString, OZTableHeaderView, OZTimelineLayerScroll, OZTimelineViewMulti;
 
 @interface OZTimelineLayerCoordinator : OZLayerListModule <NSOutlineViewDelegate, NSOutlineViewDataSource, OZOutlineVarRowHeightDelegate>
 {
@@ -65,6 +65,12 @@
 - (void)dealloc;
 @property(nonatomic) BOOL containsHeaderView; // @synthesize containsHeaderView=_containsHeaderView;
 - (id)initWithView:(id)arg1 controller:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

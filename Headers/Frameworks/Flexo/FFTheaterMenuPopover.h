@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class FFTheaterMenuViewController, LKPopOverWindow;
+@class FFTheaterMenuViewController, LKPopOverWindow, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFTheaterMenuPopover : NSObject <NSWindowDelegate>
@@ -30,6 +30,12 @@ __attribute__((visibility("hidden")))
 - (void)showTheaterMenuForItem:(id)arg1 targetRect:(struct CGRect)arg2 parentWindow:(id)arg3;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -5,6 +5,6 @@
 //
 
 @protocol FxRenderNotificationAPI
-- (void)forceRenderAtTime:(double)arg1;
+- (void)forceRenderAtTime:(CDUnion_2516e51e)arg1;
 @end
 

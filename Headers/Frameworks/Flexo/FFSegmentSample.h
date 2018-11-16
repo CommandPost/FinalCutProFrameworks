@@ -6,7 +6,7 @@
 
 #import "NSOperation.h"
 
-@class FFSegmentStore, NSCondition;
+@class FFSegmentStore, NSCondition, NSError;
 
 __attribute__((visibility("hidden")))
 @interface FFSegmentSample : NSOperation
@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     FFSegmentStore *_store;
     id _sample;
     int _svPriority;
-    _Bool _errorFrame;
+    NSError *_errorInfo;
 }
 
 + (void)initialize;
 @property(readonly) long long offset; // @synthesize offset=_offset;
+- (void)setErrorInfo:(id)arg1;
+- (id)errorInfo;
 - (void)cancel;
 - (void)main;
 - (int)svPriority;

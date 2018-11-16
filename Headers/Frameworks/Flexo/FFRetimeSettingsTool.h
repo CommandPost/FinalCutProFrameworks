@@ -42,7 +42,7 @@
 - (void)setSpeedForRangeAndObjects:(id)arg1 rateArray:(id)arg2;
 - (void)togglePreservePitch:(id)arg1;
 - (void)toggleReverseSpeed:(id)arg1;
-- (void)toggleSmoothInerterpolation:(id)arg1;
+- (void)toggleSmoothInterpolation:(id)arg1;
 - (void)changeRetimeState:(id)arg1;
 - (void)setRetimeState:(int)arg1;
 - (void)setSpeed:(double)arg1;
@@ -54,9 +54,10 @@
 - (id)newAdjustmentDictionaryForSelection:(id)arg1;
 - (void)_fillRetimeStateTitle;
 - (id)_titleForRetimeState:(int)arg1;
+- (BOOL)retimeForwardStateForObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2;
 - (double)retimeRateForObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2;
 - (id)_selectedSmoothInerpolationStates;
-- (BOOL)_supportsSmoothInerterpolation;
+- (BOOL)_supportsSmoothInterpolation;
 - (id)_selectedPreservePitchStates;
 - (BOOL)_supportsPreservePitch;
 - (id)_selectedConstantRetimingStates;

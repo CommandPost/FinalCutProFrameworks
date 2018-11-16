@@ -14,8 +14,12 @@
     unsigned int _containingViewFirstResponder:1;
 }
 
+- (void)layoutSublayers;
 - (void)setContainingViewFirstResponder:(BOOL)arg1;
 - (BOOL)containingViewFirstResponder;
+- (id)_selectionRingLayers;
+- (id)_rightHandleLayers;
+- (id)_leftHandleLayers;
 - (id)rightHandle;
 - (id)leftHandle;
 - (void)dealloc;

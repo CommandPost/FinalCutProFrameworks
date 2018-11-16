@@ -11,14 +11,17 @@
     unsigned long long _screenNumber;
     BOOL _fullscreen;
     struct CGRect _nonFullscreenFrame;
+    struct CGRect _actualFullscreenFrame;
 }
 
 + (unsigned long long)nextAvailableScreenIndexExcludingIndexes:(id)arg1;
 + (unsigned long long)nextAvailableScreenIndexExcluding:(unsigned long long)arg1;
 + (Class)windowClass;
 + (id)fullScreenWindowModule;
+@property(readonly, nonatomic) struct CGRect actualFullscreenFrame; // @synthesize actualFullscreenFrame=_actualFullscreenFrame;
 @property(nonatomic) unsigned long long screenNumber; // @synthesize screenNumber=_screenNumber;
 @property(nonatomic, getter=isFullscreen) BOOL fullscreen; // @synthesize fullscreen=_fullscreen;
+- (void)windowDidMove:(id)arg1;
 - (void)dealloc;
 - (id)customWindowsToEnterFullScreenForWindow:(id)arg1;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;

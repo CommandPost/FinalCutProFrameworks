@@ -8,7 +8,7 @@
 
 #import "NSOpenSavePanelDelegate.h"
 
-@class LKButton, NSMatrix;
+@class LKButton, NSMatrix, NSString;
 
 @interface PEAppImportPreferencesModule : NSProPreferencesModule <NSOpenSavePanelDelegate>
 {
@@ -34,6 +34,12 @@
 - (void)dealloc;
 - (void)awakeFromNib;
 - (BOOL)isResizable;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

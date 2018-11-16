@@ -12,6 +12,9 @@
 - (BOOL)variesOverTime;
 
 @optional
+- (NSDictionary *)dynamicPropertiesAtTime:(CDUnion_2516e51e)arg1 withError:(id *)arg2;
+- (void)schedule:(unsigned long long)arg1 frames:(CDUnion_2516e51e *)arg2 forParam:(unsigned int)arg3 forRenderAtTime:(CDUnion_2516e51e)arg4;
+- (unsigned long long)numberOfFramesToScheduleAtRenderTime:(CDUnion_2516e51e)arg1 forParam:(unsigned int)arg2;
 - (BOOL)finishInitialSetup:(id *)arg1;
 - (BOOL)parameterChanged:(unsigned int)arg1;
 @end

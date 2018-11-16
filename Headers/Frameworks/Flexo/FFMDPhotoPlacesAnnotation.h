@@ -9,7 +9,7 @@
 #import "MKAnnotation.h"
 #import "NSCopying.h"
 
-@class ILMediaGroup, ILMediaManager, NSSet, NSString;
+@class ILMediaGroup, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMDPhotoPlacesAnnotation : NSObject <MKAnnotation, NSCopying>
@@ -17,15 +17,20 @@ __attribute__((visibility("hidden")))
     NSSet *_childAnnotations;
     FFMDPhotoPlacesAnnotation *_parentAnnotation;
     ILMediaGroup *_group;
-    CDStruct_2c43369c _coordinate;
+    struct {
+        double latitude;
+        double longitude;
+    } _coordinate;
+    CDStruct_02837cd9 _bounds;
     NSString *_title;
-    ILMediaManager *_photoPlugin;
+    double _weight;
 }
 
-+ (id)photoPlacesAnnotationWithGroup:(id)arg1 coordinate:(CDStruct_2c43369c)arg2 plugin:(id)arg3;
-@property(retain, nonatomic) ILMediaManager *photoPlugin; // @synthesize photoPlugin=_photoPlugin;
++ (id)photoPlacesAnnotationWithGroup:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 bounds:(CDStruct_02837cd9)arg3 weight:(double)arg4;
+@property(readonly, nonatomic) double weight; // @synthesize weight=_weight;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property(nonatomic) CDStruct_2c43369c coordinate; // @synthesize coordinate=_coordinate;
+@property(readonly, nonatomic) CDStruct_02837cd9 bounds; // @synthesize bounds=_bounds;
+@property(nonatomic) CDStruct_c3b9c2ee coordinate; // @synthesize coordinate=_coordinate;
 @property(retain, nonatomic) ILMediaGroup *group; // @synthesize group=_group;
 @property(nonatomic) FFMDPhotoPlacesAnnotation *parentAnnotation; // @synthesize parentAnnotation=_parentAnnotation;
 @property(retain, nonatomic) NSSet *childAnnotations; // @synthesize childAnnotations=_childAnnotations;
@@ -33,10 +38,14 @@ __attribute__((visibility("hidden")))
 - (id)displayedGroups;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithGroup:(id)arg1 coordinate:(CDStruct_2c43369c)arg2 plugin:(id)arg3;
+- (id)initWithGroup:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 bounds:(CDStruct_02837cd9)arg3 weight:(double)arg4;
 
 // Remaining properties
-@property(readonly, nonatomic) NSString *subtitle;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic) NSString *subtitle;
+@property(readonly) Class superclass;
 
 @end
 

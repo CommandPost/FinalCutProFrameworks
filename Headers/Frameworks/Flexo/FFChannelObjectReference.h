@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 - (void)setChannelPath:(id)arg1;
 - (id)channelPath;
-- (void)setReferencedObject:(id)arg1;
 - (id)referencedObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

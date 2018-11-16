@@ -19,6 +19,7 @@
     FFStreamVideo *_streamVideo;
     FFStreamVideo *_emptyStream;
     NSMutableArray *_destVideos;
+    CDStruct_1b6d18a9 _minDestFDLimit;
     NSMutableSet *_outOfDateDests;
     FFPlayerSchedTokenQueue *_schedTokQueue;
     FFPMRLogFunnel *_detailPMRFunnel;
@@ -48,9 +49,10 @@
     NSMutableArray *_scheduledFrames;
     FFPlayerScheduledData *_currentScrubFrame;
     NSMutableArray *_recentlyPushed;
-    FFPlayerScheduledData *_lastFrameMD5Only;
+    NSMutableArray *_lastFramesMD5Only;
     double _rate;
     NSMutableArray *_savedFramesForRateChange;
+    _Bool _stopping;
     NSThread *_localThread;
     _Bool _waitForThreadToAck;
     FFStreamVideoOptions *_currentVideoOptions;
@@ -226,9 +228,8 @@
 - (void)clearStatus;
 - (void)setStatus:(id)arg1;
 - (CDStruct_1b6d18a9)stepDuration;
-- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)sampleDuration;
-- (void)setFrameDuration:(CDStruct_1b6d18a9)arg1;
+- (void)updateFieldModeAndDurationsFromProps:(id)arg1;
 - (CDStruct_1b6d18a9)frameDuration;
 - (void)regenerateOSCs;
 - (void)processDeferredOSCs;
@@ -254,7 +255,7 @@
 - (void)muteAudioPlayback:(BOOL)arg1;
 - (unsigned int)numAudioOutputChannels;
 - (void)getMeterAudioLevels:(float *)arg1 channels:(unsigned int *)arg2;
-- (BOOL)destsUpToDate;
+- (BOOL)_debugOnly_destsUpToDate;
 - (void)destAudioRenderCallback;
 - (void)videoDestCallback:(BOOL)arg1 forVideoDest:(id)arg2;
 - (void)_rebuildDestLists;
@@ -322,6 +323,8 @@
 - (void)removeAllDestVideos;
 - (void)removeDestVideo:(id)arg1;
 - (void)addDestVideo:(id)arg1;
+- (_Bool)_debug_startedPlayingRecently;
+- (CDStruct_1b6d18a9)_calculateMinimumFrameDurForDests;
 - (void)cancelWorkIfNoDestsRemain;
 - (long long)videoDestCount;
 - (void)setupComplete;
@@ -340,7 +343,6 @@
 - (void)setNeedsUpdate:(BOOL)arg1;
 - (void)_setNeedsUpdateInternal:(BOOL)arg1 enableLiveEditsOptimization:(BOOL)arg2;
 - (void)setContext:(id)arg1;
-- (id)_newEmptyImageForRect:(struct CGRect)arg1 pixelTransform:(id)arg2 loc:(int)arg3;
 - (void)_waitForThreadToFinish;
 - (void)shutdown;
 - (void)dealloc;

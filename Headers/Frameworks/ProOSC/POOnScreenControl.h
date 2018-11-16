@@ -20,6 +20,12 @@
     struct OZChannelBase *_channel;
 }
 
+- (BOOL)nudgeLeft:(id)arg1;
+- (BOOL)nudgeRight:(id)arg1;
+- (BOOL)nudgeDown:(id)arg1;
+- (BOOL)nudgeUp:(id)arg1;
+- (BOOL)selectNone:(id)arg1;
+- (BOOL)selectAll:(id)arg1;
 - (void)willBeRemoved;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
@@ -62,6 +68,7 @@
 - (void)mouseDown:(id)arg1;
 - (void)mouseMoved:(id)arg1;
 - (BOOL)activeOnFullCanvas:(id)arg1;
+- (void)select:(id)arg1;
 - (int)hitCheck:(id)arg1;
 - (int)hitCheckWithViewCoords:(PCVector2_7e488b7d *)arg1;
 - (void)renderWithDrawProperties:(id)arg1;

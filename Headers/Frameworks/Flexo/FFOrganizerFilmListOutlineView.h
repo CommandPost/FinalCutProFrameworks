@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) long long lastRowClicked; // @synthesize lastRowClicked=_lastRowClicked;
 @property BOOL ignoresCommandUpDownArrowKeys; // @synthesize ignoresCommandUpDownArrowKeys=_ignoresCommandUpDownArrowKeys;
 - (void)draggingExited:(id)arg1;
+- (unsigned long long)draggingEntered:(id)arg1;
 - (void)adjustSelectionForContextualMenu:(id)arg1;
 - (void)windowDidBecomeKey:(id)arg1;
 - (void)viewDidMoveToWindow;

@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 - (void)matchReference:(id)arg1;
 - (BOOL)isValidObject:(id)arg1;
 - (BOOL)alignContextTimeToPlayheadTime;
-@property(readonly, nonatomic) FFAnchoredTimelineModule *timelineModule; // @dynamic timelineModule;
-@property(readonly, nonatomic) FFMatchTool *matchTool;
+@property(readonly, retain, nonatomic) FFAnchoredTimelineModule *timelineModule; // @dynamic timelineModule;
+@property(readonly, retain, nonatomic) FFMatchTool *matchTool;
 - (void)movePlayheadToCurrentPosition:(id)arg1;
 - (BOOL)shouldSkimPlayhead;
 - (BOOL)shouldSkimItem:(id)arg1;

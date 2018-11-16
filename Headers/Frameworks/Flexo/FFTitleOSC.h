@@ -10,7 +10,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFEffect<FFTitleDelegate>, FFTitleDocumentView, NSMutableArray, NSView;
+@class FFEffect<FFTitleDelegate>, FFTitleDocumentView, NSMutableArray, NSString, NSView;
 
 @interface FFTitleOSC : FFComponentOSC <NSTextFieldDelegate, NSControlTextEditingDelegate, NSWindowDelegate>
 {
@@ -24,7 +24,13 @@
 + (id)shrinkToFit:(id)arg1 inRect:(struct CGRect)arg2 originalFontSize:(double)arg3 wrap:(BOOL)arg4;
 + (double)lineHeightForFont:(id)arg1 string:(id)arg2;
 + (struct CGRect)boundingBoxForAttributedString:(id)arg1 lineWidth:(float)arg2;
+@property(readonly) NSView *titleOverlayView; // @synthesize titleOverlayView=_titleOverlayView;
+@property(readonly) FFTitleDocumentView *documentView; // @synthesize documentView=_documentView;
 @property(readonly) FFEffect<FFTitleDelegate> *title; // @synthesize title=_title;
+- (void)enableOverlayWindowForNoRangeOverlap;
+- (void)removeOverlayWindowForNoRangeOverlap;
+- (void)syncTextFieldPositionWithBarPosition:(struct CGRect)arg1;
+- (void)configureExtraForTextField:(id)arg1;
 - (BOOL)hitTest:(struct CGPoint)arg1;
 - (BOOL)needsCustomFieldEditor;
 - (BOOL)overlayCanBecomeKey;
@@ -35,11 +41,13 @@
 - (void)configureTextField:(id)arg1;
 - (id)shrinkToFit:(id)arg1 inRect:(struct CGRect)arg2 originalFontSize:(double)arg3;
 - (id)shrinkToFit:(id)arg1 inTextField:(unsigned long long)arg2;
+- (BOOL)titleIsAppPreviewContent;
 - (BOOL)titleWrapLines;
 - (BOOL)titleShrinkToFit;
 - (BOOL)titlePrefersShrinkToFit;
 - (void)applyTextFieldsToTitle;
 - (void)initTitleOverlay;
+- (id)textFieldAtIndex:(unsigned long long)arg1;
 - (unsigned long long)_textFieldCount;
 - (struct CGRect)_configureTextFieldBounds:(id)arg1;
 - (void)setAttributedString:(id)arg1 forTextField:(unsigned long long)arg2;
@@ -52,9 +60,16 @@
 - (void)controlTextDidChange:(id)arg1;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;
 - (id)windowWillReturnFieldEditor:(id)arg1 toObject:(id)arg2;
+- (unsigned long long)validModesForFontPanel:(id)arg1;
 - (void)makeTextFieldFirstResponder;
 - (void)dealloc;
 - (id)initWithTitle:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

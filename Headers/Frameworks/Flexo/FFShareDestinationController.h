@@ -34,6 +34,7 @@
 @property(retain, nonatomic) LKTextField *name; // @synthesize name=_name;
 @property(retain, nonatomic) LKImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) NSProView *headerView; // @synthesize headerView=_headerView;
+- (id)destinationNameByAppendingSignedInUserEmail:(id)arg1;
 - (id)destinationNameByAppendingUserNameFrom:(id)arg1;
 - (id)destinationNameByRemovingUserNameFrom:(id)arg1;
 - (id)extractUsernameFrom:(id)arg1;
@@ -41,6 +42,7 @@
 - (struct CGSize)actualVideoResolutionFromPotentialVideoResolution:(struct CGSize)arg1;
 - (long long)buildSettingsMenu:(id)arg1 withSize:(BOOL)arg2 withOne:(BOOL)arg3;
 - (void)selectSetting:(id)arg1;
+- (BOOL)isAppStorePreview;
 - (BOOL)displaysDeviceCompatibilityInfo;
 - (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)theImageForResource:(id)arg1;

@@ -32,7 +32,6 @@
 - (void)reset;
 - (BOOL)isEnabled;
 - (void)setEnabled:(BOOL)arg1;
-- (void)setAutoZoom:(BOOL)arg1;
 - (void)update;
 - (void)HUDifyView;
 - (id)initWithFrame:(struct CGRect)arg1;

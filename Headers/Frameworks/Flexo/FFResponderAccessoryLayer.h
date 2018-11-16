@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint _mostRecentPartPoint;
 }
 
+- (BOOL)wantsToHandlePredominantDrag;
 - (id)stringForToolTipAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (id)accessibilityFocusedUIElement;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;

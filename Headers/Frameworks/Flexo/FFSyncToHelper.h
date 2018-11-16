@@ -32,5 +32,11 @@ __attribute__((visibility("hidden")))
 - (void)setEventHandlerID:(id)arg1 forTimelineView:(id)arg2;
 - (void)dealloc;
 
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
 @end
 

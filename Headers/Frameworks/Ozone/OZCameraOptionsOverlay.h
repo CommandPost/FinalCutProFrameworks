@@ -22,7 +22,7 @@
 }
 
 + (void)updateCameraMenu:(id)arg1 forScene:(struct OZScene *)arg2 target:(id)arg3;
-+ (id)createCameraPickerMenuForViewer:(id)arg1;
++ (id)newCameraPickerMenuForViewer:(id)arg1;
 + (id)addItemToMenu:(id)arg1 withTitle:(const struct PCString *)arg2 action:(SEL)arg3 tag:(int)arg4 target:(id)arg5;
 - (BOOL)needsRightMouseEvents;
 - (id)getCursorWithEvent:(id)arg1;

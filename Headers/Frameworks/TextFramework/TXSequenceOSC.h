@@ -31,7 +31,7 @@
 - (void)_addParamToSequenceBH:(unsigned int)arg1;
 - (struct OZChannelQuad *)getFourCornerChannel:(struct TXTextStyle *)arg1 forAttribute:(int)arg2;
 - (struct OZChannelRotation3D *)getRotationChannel:(struct TXTextStyle *)arg1;
-- (struct OZChannelScale *)getScaleChannel:(struct TXTextStyle *)arg1;
+- (struct OZChannelScale3D *)getScaleChannel:(struct TXTextStyle *)arg1;
 - (struct OZChannelPosition3D *)getOffsetChannel:(struct TXTextStyle *)arg1;
 - (struct OZChannelScale *)getDropShadowScaleChannel:(struct TXTextStyle *)arg1;
 - (struct OZChannelAngle *)getDropShadowAngleChannel:(struct TXTextStyle *)arg1;

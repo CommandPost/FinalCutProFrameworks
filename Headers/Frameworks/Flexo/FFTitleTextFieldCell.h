@@ -9,9 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface FFTitleTextFieldCell : NSTextFieldCell
 {
+    BOOL _drawOutline;
 }
 
+@property(nonatomic) BOOL drawOutline; // @synthesize drawOutline=_drawOutline;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)init;
 
 @end
 

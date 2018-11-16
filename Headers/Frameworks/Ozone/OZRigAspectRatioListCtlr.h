@@ -9,7 +9,7 @@
 #import "NSTableViewDataSource.h"
 #import "NSTableViewDelegate.h"
 
-@class LKSegmentedControl, NSButton, NSMutableArray, NSTableView;
+@class LKSegmentedControl, NSButton, NSMutableArray, NSString, NSTableView;
 
 @interface OZRigAspectRatioListCtlr : OZViewController <NSTableViewDataSource, NSTableViewDelegate>
 {
@@ -48,6 +48,12 @@
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (void)dealloc;
 - (id)initWithWidget:(struct OZRigWidget *)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

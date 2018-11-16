@@ -11,14 +11,37 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (CDStruct_c3b9c2ee)locationForMediaObject:(id)arg1;
++ (id)predicateForPlacesContaining:(id)arg1 libraryType:(int)arg2;
++ (id)predicateForObjectFavoriteMatching:(BOOL)arg1 libraryType:(int)arg2;
++ (id)predicateForObjectFlaggedMatching:(BOOL)arg1 libraryType:(int)arg2;
++ (id)predicateForObjectMediaTypeMatching:(unsigned long long)arg1 libraryType:(int)arg2;
++ (id)predicateForObjectKeywordsContaining:(id)arg1 libraryType:(int)arg2;
++ (id)predicateForGroupNameContaining:(id)arg1 libraryType:(int)arg2;
++ (id)predicateForNameContaining:(id)arg1 libraryType:(int)arg2;
++ (id)predicateForGroupKeywordsContaining:(id)arg1 libraryType:(int)arg2;
++ (id)predicateForCommentsContaining:(id)arg1 libraryType:(int)arg2;
++ (id)predicateForCaptionContaining:(id)arg1 libraryType:(int)arg2;
++ (id)predicateForAlbumNameContaining:(id)arg1 libraryType:(int)arg2;
 + (id)mediaObjectPredicateForFilterString:(id)arg1 libraryType:(int)arg2;
 + (id)mediaGroupPredicateForFilterString:(id)arg1 libraryType:(int)arg2;
++ (id)searchTooltipForLibraryType:(int)arg1;
 + (id)displayNameForGroups:(id)arg1 plugin:(id)arg2;
 + (id)_clusteredNamesForGroups:(id)arg1 plugin:(id)arg2;
-+ (CDStruct_2c43369c)centerCoordinateForCoordinateValues:(id)arg1 weights:(id)arg2;
-+ (id)localizedToolTipForGroupType:(id)arg1;
-+ (id)localizedStringForGroupType:(id)arg1;
++ (CDStruct_c3b9c2ee)centerCoordinateForCoordinateValues:(id)arg1 weights:(id)arg2;
++ (id)localizedToolTipForGroupType:(int)arg1;
++ (id)localizedStringForGroupType:(int)arg1;
 + (id)groupsOfTypes:(id)arg1 plugin:(id)arg2 includeEmptyGroups:(BOOL)arg3;
++ (id)availableGroupTypesForLibraryType:(int)arg1;
++ (id)groupTypeIdentifiersForGroupType:(int)arg1 libraryType:(int)arg2;
++ (id)displayableGroupTypesForLibraryType:(int)arg1;
++ (int)filterTagToFilterType:(id)arg1;
++ (id)filterTagFromFilterType:(int)arg1;
++ (int)groupTagToGroupType:(id)arg1;
++ (id)groupTagFromGroupType:(int)arg1;
++ (int)libraryTagToLibraryType:(id)arg1;
++ (id)libraryTagFromLibraryType:(int)arg1;
++ (int)libraryTypeForPlugin:(id)arg1;
 + (id)pluginForLibraryType:(int)arg1;
 + (int)photoLibraryTypeForILifeMediaGroup:(id)arg1;
 + (BOOL)photoLibraryAvailiableForType:(int)arg1;

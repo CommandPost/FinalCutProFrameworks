@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     NSEvent *_selectedViewMouseDownEvent;
     long long _numRows;
     long long _numCols;
+    BOOL _observing;
 }
 
 @property(retain, nonatomic) NSString *effectViewToolTip; // @synthesize effectViewToolTip=_effectViewToolTip;
@@ -44,6 +45,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
+- (void)unfavorite:(id)arg1;
+- (void)favorite:(id)arg1;
 - (void)playSelected:(id)arg1;
 - (void)nextEdit:(id)arg1;
 - (void)previousEdit:(id)arg1;
@@ -87,6 +90,8 @@ __attribute__((visibility("hidden")))
 - (void)consumerReloadData:(id)arg1 sequence:(id)arg2;
 - (id)sortArray:(id)arg1 withDictionary:(id)arg2;
 - (void)reloadData:(id)arg1;
+- (void)_makeTopOfListIfEffectIDFound:(id)arg1 isAudioAndVideo:(BOOL)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)reloadData;
 - (void)layoutSubviews:(BOOL)arg1;
 - (long long)numberOfColumns;
@@ -97,6 +102,12 @@ __attribute__((visibility("hidden")))
 - (void)_cleanupEffectPreview;
 - (void)viewDidChangeBackingProperties;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

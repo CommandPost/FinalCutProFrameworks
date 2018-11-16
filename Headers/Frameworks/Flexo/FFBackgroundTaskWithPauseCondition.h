@@ -14,7 +14,6 @@
     BOOL _ackedPause;
 }
 
-- (void)override_ackedPause:(BOOL)arg1;
 - (void)blockIfPaused;
 - (BOOL)hasPaused;
 - (BOOL)supportsPaused;

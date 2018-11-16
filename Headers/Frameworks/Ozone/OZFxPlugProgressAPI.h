@@ -9,6 +9,8 @@
 #import "FxProgressAPI.h"
 #import "PROAPIObject.h"
 
+@class NSString;
+
 @interface OZFxPlugProgressAPI : NSObject <FxProgressAPI, PROAPIObject>
 {
 }
@@ -20,6 +22,12 @@
 - (BOOL)userHasCancelled;
 - (void)_setControl:(const struct OZProcessControl *)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

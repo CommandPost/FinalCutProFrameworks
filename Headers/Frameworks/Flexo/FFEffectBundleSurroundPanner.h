@@ -8,7 +8,7 @@
 
 #import "FFChannelChangeControllerDivorcedDelegate.h"
 
-@class FFAnchoredObject;
+@class FFAnchoredObject, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectBundleSurroundPanner : FFEffectBundleInternalBundle <FFChannelChangeControllerDivorcedDelegate>
@@ -35,9 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)presetNames;
 - (void)effectStackAnchoredObjectDidChange;
 - (void)effectWasRemovedFromStack;
-- (void)effectWasReloadedToStack;
-- (void)effectWasAddedToStack;
-- (void)setEffectStack:(id)arg1;
+- (void)effectWasAddedToStack:(int)arg1;
 - (void)_removeAnchoredObjectObserving;
 - (void)_addAnchoredObjectObserving;
 - (void)_updateDefaultPanMode;
@@ -51,6 +49,12 @@ __attribute__((visibility("hidden")))
 - (id)keyframeableChannels;
 - (void)_postInit:(id)arg1;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

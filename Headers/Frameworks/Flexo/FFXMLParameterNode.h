@@ -21,10 +21,18 @@ __attribute__((visibility("hidden")))
     int _fadeInType;
     int _fadeOutType;
     BOOL _isDefault;
+    BOOL _alwaysSave;
+    BOOL _disabled;
+    BOOL _canBeDisabled;
+    BOOL _disabledByDefault;
     NSXMLElement *_sourceXMLElement;
 }
 
 @property(retain, nonatomic) NSXMLElement *sourceXMLElement; // @synthesize sourceXMLElement=_sourceXMLElement;
+@property(nonatomic) BOOL disabledByDefault; // @synthesize disabledByDefault=_disabledByDefault;
+@property(nonatomic) BOOL canBeDisabled; // @synthesize canBeDisabled=_canBeDisabled;
+@property(nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
+@property(nonatomic) BOOL alwaysSave; // @synthesize alwaysSave=_alwaysSave;
 @property(nonatomic) BOOL isDefault; // @synthesize isDefault=_isDefault;
 @property(retain, nonatomic) NSString *initialValue; // @synthesize initialValue=_value;
 @property(retain, nonatomic) NSString *paramKey; // @synthesize paramKey=_paramKey;
@@ -43,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (int)fadeInCurve;
 - (CDStruct_1b6d18a9)fadeOutDuration;
 - (CDStruct_1b6d18a9)fadeInDuration;
+- (void)setValue:(id)arg1 interpolation:(id)arg2 forTime:(CDStruct_1b6d18a9)arg3 smooth:(BOOL)arg4;
 - (void)setValue:(id)arg1 interpolation:(id)arg2 forTime:(CDStruct_1b6d18a9)arg3;
 - (unsigned long long)keyframeIndexForObject:(id)arg1 startingAtIndex:(unsigned long long)arg2;
 - (id)keyframes;

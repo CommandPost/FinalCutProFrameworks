@@ -9,9 +9,11 @@
 @protocol CBControllerDataSource
 
 @optional
+- (long long)addCorrection;
 - (BOOL)isMaskedForCorrectionID:(long long)arg1;
 - (void)setColorCorrectionsEnabled:(BOOL)arg1;
 - (BOOL)isColorCorrectionsEnabled;
+- (BOOL)hasCurrentCorrection;
 - (BOOL)isEnabledForCorrectionID:(long long)arg1;
 - (void)setCurrentCorrectionInner:(BOOL)arg1;
 - (BOOL)isCurrentCorrectionInner;

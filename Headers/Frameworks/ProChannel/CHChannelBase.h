@@ -40,6 +40,7 @@
 - (void)reset;
 - (BOOL)isStateModified;
 - (void)saveStateAsDefault;
+- (BOOL)testDefaultFlag:(unsigned long long)arg1;
 - (void)resetFlag:(unsigned long long)arg1;
 - (void)setFlag:(unsigned long long)arg1;
 - (BOOL)testFlag:(unsigned long long)arg1;
@@ -69,6 +70,7 @@
 - (id)initWithOZChannel:(struct OZChannelBase *)arg1 freeWhenDone:(BOOL)arg2;
 - (void)setAllowsKeyframes:(BOOL)arg1;
 - (BOOL)allowsKeyframes;
+- (id)reverseDNSName:(id)arg1;
 
 @end
 

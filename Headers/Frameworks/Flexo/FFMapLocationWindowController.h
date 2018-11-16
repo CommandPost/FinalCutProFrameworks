@@ -43,13 +43,19 @@
 - (void)searchTextDidChange:(id)arg1;
 - (id)locationOfSelectedCity;
 - (int)indexOfCityWithLatitude:(float)arg1 longitude:(float)arg2;
-- (id)mapLocationNearest:(CDStruct_2c43369c)arg1;
+- (id)mapLocationNearest:(CDStruct_c3b9c2ee)arg1;
 - (id)mapLocationForCity:(id)arg1 country:(id)arg2;
 - (void)addAirportsToArray:(id)arg1;
 - (void)addWorldCitiesToArray:(id)arg1;
 - (void)windowDidLoad;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

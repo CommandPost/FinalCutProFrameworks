@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSArray *_selectionMarkers;
     NSMutableSet *_observedObjects;
     NSMutableSet *_usedMediaSnapTimes;
+    BOOL _isUsedRangeInvalidationObserving;
     id _delegate;
 }
 

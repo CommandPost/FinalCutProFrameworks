@@ -7,9 +7,13 @@
 #import "NSObject.h"
 
 #import "FxTimingAPI.h"
+#import "FxTimingAPI_v2.h"
+#import "FxTimingAPI_v3.h"
 #import "PROAPIObject.h"
 
-@interface OZFxPlugTimingAPI : NSObject <FxTimingAPI, PROAPIObject>
+@class NSString;
+
+@interface OZFxPlugTimingAPI : NSObject <FxTimingAPI, FxTimingAPI_v2, FxTimingAPI_v3, PROAPIObject>
 {
     struct OZFxPlugSharedBase *_plugin;
 }
@@ -17,6 +21,29 @@
 - (const struct OZSceneSettings *)sceneSettings;
 - (struct OZScene *)scene;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
+- (void)imageFxTime:(CDUnion_2516e51e *)arg1 forParmId:(unsigned int)arg2 fromTimelineTime:(CDUnion_2516e51e)arg3;
+- (void)inputBFxTime:(CDUnion_2516e51e *)arg1 fromTimelineTime:(CDUnion_2516e51e)arg2;
+- (void)inputAFxTime:(CDUnion_2516e51e *)arg1 fromTimelineTime:(CDUnion_2516e51e)arg2;
+- (void)inputFxTime:(CDUnion_2516e51e *)arg1 fromTimelineTime:(CDUnion_2516e51e)arg2;
+- (void)timelineFxTime:(CDUnion_2516e51e *)arg1 fromImageTime:(CDUnion_2516e51e)arg2 forParmId:(unsigned int)arg3;
+- (void)timelineFxTime:(CDUnion_2516e51e *)arg1 fromInputBTime:(CDUnion_2516e51e)arg2;
+- (void)timelineFxTime:(CDUnion_2516e51e *)arg1 fromInputATime:(CDUnion_2516e51e)arg2;
+- (void)timelineFxTime:(CDUnion_2516e51e *)arg1 fromInputTime:(CDUnion_2516e51e)arg2;
+- (void)outPointFxTimeOfTimelineForEffect:(CDUnion_2516e51e *)arg1;
+- (void)inPointFxTimeOfTimelineForEffect:(CDUnion_2516e51e *)arg1;
+- (void)durationFxTime:(CDUnion_2516e51e *)arg1 ofImageParm:(unsigned int)arg2;
+- (void)startFxTime:(CDUnion_2516e51e *)arg1 ofImageParam:(unsigned int)arg2;
+- (void)durationFxTimeOfInputToFilter:(CDUnion_2516e51e *)arg1;
+- (void)startFxTimeOfInputToFilter:(CDUnion_2516e51e *)arg1;
+- (void)durationFxTimeOfInputBToTransition:(CDUnion_2516e51e *)arg1;
+- (void)durationFxTimeOfInputAToTransition:(CDUnion_2516e51e *)arg1;
+- (void)startFxTimeOfInputBToTransition:(CDUnion_2516e51e *)arg1;
+- (void)startFxTimeOfInputAToTransition:(CDUnion_2516e51e *)arg1;
+- (void)durationFxTimeForEffect:(CDUnion_2516e51e *)arg1;
+- (void)startFxTimeForEffect:(CDUnion_2516e51e *)arg1;
+- (void)sampleDuration:(CDUnion_2516e51e *)arg1;
+- (void)frameDuration:(CDUnion_2516e51e *)arg1;
+- (double)transitionTimeFractionAtTime:(double)arg1;
 - (unsigned long long)fieldOrderForImageParm:(unsigned int)arg1 forEffect:(id)arg2;
 - (unsigned long long)fieldOrderForInputBToTransition:(id)arg1;
 - (unsigned long long)fieldOrderForInputAToTransition:(id)arg1;
@@ -45,7 +72,16 @@
 - (double)startTimeOfInputBToTransition:(id)arg1;
 - (double)startTimeOfInputAToTransition:(id)arg1;
 - (double)startTimeOfInputToFilter:(id)arg1;
+- (CDUnion_2516e51e)zeroTime;
+- (CDUnion_2516e51e)invalidTime;
+- (void)copyFxTime:(CDUnion_2516e51e)arg1 toFxTime:(CDUnion_2516e51e *)arg2;
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

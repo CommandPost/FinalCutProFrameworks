@@ -20,6 +20,7 @@
     NSColor *_textShadowColor;
     unsigned int _selected:1;
     unsigned int _rollover:1;
+    unsigned int _simpleEditingMode:1;
 }
 
 @property NSColor *textShadowColor; // @synthesize textShadowColor=_textShadowColor;
@@ -27,6 +28,7 @@
 @property(retain) NSColor *selectedTextColor; // @synthesize selectedTextColor=_selectedTextColor;
 - (void)setContentsScale:(double)arg1;
 @property double fontSize;
+@property BOOL simpleEditingMode;
 @property BOOL rollover;
 @property BOOL selected;
 - (struct CGSize)preferredFrameSize;

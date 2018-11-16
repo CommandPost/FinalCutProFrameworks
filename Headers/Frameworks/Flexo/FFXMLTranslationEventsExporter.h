@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)windowSourceIcon;
 - (id)windowSourceName;
 - (id)librariesForExport;
-- (BOOL)exportXMLForLibrary:(id)arg1 toURL:(id)arg2 usingVersion:(id)arg3 taskDelegate:(id)arg4 error:(id *)arg5;
+- (BOOL)exportXMLForLibrary:(id)arg1 toURL:(id)arg2 replace:(BOOL)arg3 usingVersion:(id)arg4 withMetadataViewSet:(id)arg5 taskDelegate:(id)arg6 error:(id *)arg7;
 - (void)dealloc;
 - (id)initWithEvents:(id)arg1;
 

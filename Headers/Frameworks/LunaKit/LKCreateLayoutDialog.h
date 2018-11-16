@@ -8,7 +8,7 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class NSButton, NSTextField;
+@class NSButton, NSString, NSTextField;
 
 @interface LKCreateLayoutDialog : NSWindowController <NSTextFieldDelegate>
 {
@@ -27,6 +27,12 @@
 - (void)awakeFromNib;
 - (void)beginSheetForWindow:(id)arg1 modalDelegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

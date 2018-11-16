@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property CDStruct_1b6d18a9 time; // @synthesize time=_time;
 @property(copy) NSDictionary *inputValues; // @synthesize inputValues=_inputValues;
 @property(retain) QCRenderer *renderer; // @synthesize renderer=_renderer;
+- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (_Bool)hintWillImageSoon;
 - (unsigned int)scheduleStatusInformation;

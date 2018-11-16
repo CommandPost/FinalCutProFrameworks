@@ -19,6 +19,7 @@
 + (void)openWithFactoryBase:(struct OZFactoryBase *)arg1 andPresetType:(const struct PCUUID *)arg2;
 - (void)cancelNotify:(id)arg1;
 - (void)saveNotify:(id)arg1;
+- (id)customIcon:(struct OZFactoryBase *)arg1;
 - (void)dealloc;
 - (void)_openWithFactoryBase:(struct OZFactoryBase *)arg1 andPresetType:(const struct PCUUID *)arg2;
 

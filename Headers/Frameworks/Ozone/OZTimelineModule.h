@@ -10,7 +10,7 @@
 #import "OZTimeAxisRangeSelect.h"
 #import "OZTimelineLayerControllerIF.h"
 
-@class LKPaneCapSegmentedControl, LKPaneCapView, LKSplitView, NSMenu, NSMenuItem, NSProHorizontalZoomSlider, NSView, OZTimeAxis, OZTimelineLayerCoordinator, OZTimelinePasteSpecialPanel, OZTimingControlModule, OZTimingCoordinator, OZTimingMarkers, OZTimingVerticalSplitView;
+@class LKPaneCapSegmentedControl, LKPaneCapView, LKSplitView, NSMenu, NSMenuItem, NSProHorizontalZoomSlider, NSString, NSView, OZTimeAxis, OZTimelineLayerCoordinator, OZTimelinePasteSpecialPanel, OZTimingControlModule, OZTimingCoordinator, OZTimingMarkers, OZTimingVerticalSplitView;
 
 @interface OZTimelineModule : OZProViewModule <OZTimeAxisRangeSelect, OZTimeAxisFrameChangedTarget, OZTimelineLayerControllerIF>
 {
@@ -111,6 +111,7 @@
 - (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
 - (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
+- (id)splitView;
 - (void)resetHeaderViewFrame:(struct CGRect)arg1;
 - (void)splitViewDidResizeSubviews:(id)arg1;
 - (void)splitViewWillResizeSubviews:(id)arg1;
@@ -150,6 +151,12 @@
 - (BOOL)isViewOrderedBelow;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

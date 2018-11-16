@@ -6,8 +6,12 @@
 
 #import <Flexo/FFMDMusicModule.h>
 
+@class FFAlwaysHitButton;
+
 @interface FFMDGarageBandModule : FFMDMusicModule
 {
+    FFAlwaysHitButton *_toggleSidebarButton;
+    FFAlwaysHitButton *_dividerLine;
 }
 
 - (BOOL)supportsMovie;
@@ -17,6 +21,7 @@
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)mediaPlugInLoadCompletionNotificationName;
 - (id)mediaPlugInIdentifier;
+- (void)viewWasInstalled;
 - (void)dealloc;
 - (id)init;
 

@@ -84,7 +84,9 @@ __attribute__((visibility("hidden")))
 - (id)chunkForRangeOfMedia:(id)arg1;
 - (id)chunkContainerForRangeOfMedia:(id)arg1;
 - (id)chunkFilmstripAtPoint:(struct CGPoint)arg1 inSpaceOfLayer:(id)arg2;
+- (id)chunkAtPoint:(struct CGPoint)arg1 onlyWithLayers:(_Bool)arg2;
 - (id)chunkAtPoint:(struct CGPoint)arg1;
+- (id)chunkContainerAtPoint:(struct CGPoint)arg1 onlyWithLayers:(_Bool)arg2;
 - (id)chunkContainerAtPoint:(struct CGPoint)arg1;
 - (BOOL)_shouldIncludeChunksLayerBecauseOfSelectionOverlap:(id)arg1;
 - (void)addChunksToLayer:(id)arg1 forVisibleRect:(struct CGRect)arg2;

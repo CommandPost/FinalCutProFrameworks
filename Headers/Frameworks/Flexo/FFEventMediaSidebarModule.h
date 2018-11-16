@@ -34,7 +34,10 @@
 - (void)moveToTrash:(id)arg1;
 - (void)closeLibrary:(id)arg1;
 - (void)revealInFinder:(id)arg1;
+- (void)sortByDateDescending:(id)arg1;
+- (void)sortByDateAscending:(id)arg1;
 - (void)sortByDate:(id)arg1;
+- (void)sortByNameAscending:(id)arg1;
 - (void)sortByName:(id)arg1;
 - (void)sortDescending:(id)arg1;
 - (void)sortAscending:(id)arg1;
@@ -47,6 +50,7 @@
 - (id)newSidebarController;
 - (void)sidebarDidRepopulate;
 - (void)sidebarDidDepopulate;
+- (void)_cleanupKVOObservers:(id)arg1;
 - (void)viewWillBeRemoved;
 - (id)contentLayoutDictionary;
 - (void)takeContentLayoutFromDictionary:(id)arg1;

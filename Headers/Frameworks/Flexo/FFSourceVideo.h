@@ -11,6 +11,7 @@
 }
 
 + (Class)streamClass;
+- (CDStruct_1b6d18a9)sampleDurForCacheLookup;
 - (id)codecName;
 - (id)deepDescription;
 - (id)description;

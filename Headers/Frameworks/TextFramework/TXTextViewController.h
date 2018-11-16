@@ -18,6 +18,7 @@
     FFMotionEffect *_motionEffect;
     BOOL _isChangingText;
     LKScrollView *_textScrollView;
+    double _startResizeY;
     TXMsgTracerLogger *_msgTracerLogger;
 }
 
@@ -33,6 +34,11 @@
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (BOOL)textView:(id)arg1 doCommandBySelector:(SEL)arg2;
 - (int)textOperation;
+- (void)stopResizeTextView:(struct CGPoint)arg1;
+- (void)resizeTextView:(struct CGPoint)arg1;
+- (void)startResizeTextView:(struct CGPoint)arg1;
+- (void)resizeHeightToDefault:(BOOL)arg1;
+- (void)appendResizeView;
 - (id)findMotionEffect;
 - (void)notify:(unsigned int)arg1;
 - (void)textSelectionChanged:(id)arg1;

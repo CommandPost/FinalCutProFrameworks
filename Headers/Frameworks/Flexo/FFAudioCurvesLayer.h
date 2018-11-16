@@ -21,9 +21,6 @@ __attribute__((visibility("hidden")))
 - (id)selectedLayers;
 - (id)selectedLayer;
 - (BOOL)isValidAudioChannelForEffectStack:(id)arg1;
-- (BOOL)observeAngleForKey:(id)arg1;
-- (void)removeAngleObservers;
-- (void)addAngleObservers;
 - (void)dealloc;
 - (id)initAsOverlayWithObject:(id)arg1 splitEdit:(BOOL)arg2 timeline:(id)arg3;
 - (id)initWithObject:(id)arg1 topToBottom:(BOOL)arg2 timeline:(id)arg3;

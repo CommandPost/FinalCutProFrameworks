@@ -16,7 +16,7 @@
     LKPaneCapView *topBar;
 }
 
-@property(readonly, nonatomic) FFDataListModule *dataList; // @synthesize dataList=_dataList;
+@property(readonly, retain, nonatomic) FFDataListModule *dataList; // @synthesize dataList=_dataList;
 - (id)activeEditorModule;
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
 - (id)selectedItems;

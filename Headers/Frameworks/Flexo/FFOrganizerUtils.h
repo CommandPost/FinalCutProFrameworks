@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
 + (id)sequenceFromFigTimeRangeAndObject:(id)arg1 inflateSequenceIfNecessary:(BOOL)arg2;
 + (id)newFigTimeRangeAndObjectWithRange:(CDStruct_e83c9415)arg1 andSequence:(id)arg2;
 + (BOOL)useDataItemObjectsInFigTimeRangeAndObjects;
++ (CDStruct_e83c9415)removeRoundingFlagFromFigTimeRange:(CDStruct_e83c9415)arg1;
++ (CDStruct_1b6d18a9)removeRoundingFlagFromFigTime:(CDStruct_1b6d18a9)arg1;
 + (CDStruct_e83c9415)constrainRange:(CDStruct_e83c9415)arg1 byFrameBoundaryForSequence:(id)arg2;
 + (void)removeSelectionMarkersFromClip:(id)arg1 atRange:(CDStruct_e83c9415)arg2 onlyRemoveOverlap:(BOOL)arg3;
 + (void)addSelectionMarkerToClip:(id)arg1 atRange:(CDStruct_e83c9415)arg2;

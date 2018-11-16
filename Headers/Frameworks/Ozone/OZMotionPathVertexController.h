@@ -4,12 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Ozone/OZVertexPosition3DController.h>
+#import "OZVertexPosition3DController.h"
 
 @interface OZMotionPathVertexController : OZVertexPosition3DController
 {
 }
 
+- (void)notify:(unsigned int)arg1;
+- (struct OZDocument *)document;
 - (void)updateScrubberColor:(id)arg1;
 - (void)aboutToChangeChannel;
 - (void)setObjectTranslation:(struct OZChannelBase *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;

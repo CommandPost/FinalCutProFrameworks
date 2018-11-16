@@ -52,6 +52,7 @@
     FFChannelChangeController *_changeController;
 }
 
+@property(readonly) int activePart; // @synthesize activePart=_activePart;
 - (id).cxx_construct;
 - (double)backingScaleFactor;
 - (void)toggleKeyframeForCheckedChannels;
@@ -73,6 +74,8 @@
 - (void *)createContextSentry;
 - (BOOL)absolutePoints;
 - (BOOL)shouldFlip;
+- (void)findCustomGradientChannels:(struct vector<OZChannelRef *, std::allocator<OZChannelRef *>> *)arg1;
+- (BOOL)hasCustomGradientChannels;
 - (BOOL)shouldDrawGradientOSC;
 - (void)didSelectContextMenuItem;
 - (void)deleteObject;
@@ -236,6 +239,8 @@
 - (CDStruct_1b6d18a9)getFrameDuration;
 - (float)getHeight;
 - (float)getWidth;
+- (void)performSelectForEvent:(id)arg1 osc:(id)arg2;
+- (int)performHitCheckForEvent:(id)arg1 osc:(id)arg2;
 - (void)postRedisplay:(_Bool)arg1;
 - (void)postRedisplay;
 - (PCVector2_79a470e1)getCenterInFilmCoords;
@@ -305,6 +310,7 @@
 - (void)postNotification:(unsigned int)arg1;
 - (void)gotoStartOrEndTime:(_Bool)arg1;
 - (void)setTime:(CDStruct_1b6d18a9)arg1;
+- (void)notifyShapeChanged;
 - (void)notifyPathChanged;
 - (void)notifyInspectorContentsChanged;
 - (void)notifySceneChange;
@@ -337,6 +343,12 @@
 - (void)otherMouseUp:(id)arg1;
 - (void)otherMouseDown:(id)arg1;
 - (void)mouseEntered:(id)arg1;
+- (void)nudgeRight:(id)arg1;
+- (void)nudgeLeft:(id)arg1;
+- (void)nudgeDown:(id)arg1;
+- (void)nudgeUp:(id)arg1;
+- (void)selectNone:(id)arg1;
+- (void)selectAll:(id)arg1;
 - (BOOL)acceptPassiveEvent:(id)arg1;
 - (id)menuForEvent:(id)arg1;
 - (void)keyUp:(id)arg1;
@@ -347,6 +359,7 @@
 - (BOOL)mouseCreatesUndo;
 - (void)mouseExited:(id)arg1;
 - (void)mouseDragged:(id)arg1;
+- (BOOL)shouldAddUndoOnMouseDown;
 - (BOOL)settingChannelsFromOSC;
 - (void)ensureIntrinsic;
 - (void)_startProOSCBegin:(id)arg1 actionName:(id)arg2;
@@ -354,6 +367,7 @@
 - (void)_willDidSetChannels:(id)arg1 willSet:(BOOL)arg2;
 - (id)getCursor;
 - (void)mouseMoved:(id)arg1;
+- (BOOL)shouldSetContextAttributesOnMouseMoved;
 - (void)mouseUp:(id)arg1;
 - (void)_finishMouseTracking;
 - (void)_localMouseUp:(id)arg1;
@@ -381,6 +395,7 @@
 - (id)findCropEffect:(id)arg1;
 - (id)findTransformEffect:(id)arg1;
 - (id)effectIntrinsicsForClass:(Class)arg1 effectStack:(id)arg2;
+- (void)setActivePart:(int)arg1;
 
 @end
 

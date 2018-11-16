@@ -38,6 +38,7 @@
 - (void)setNumericEntryValue:(id)arg1;
 - (void)numericEntryDidEnd;
 - (void)numericEntryWillBegin;
+- (void)importClips;
 - (void)revealMediaRangesInEvents:(id)arg1;
 - (void)showImportPanel:(id)arg1;
 - (void)importWindowWillStartClosing:(id)arg1;

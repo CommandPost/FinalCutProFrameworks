@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)tapeArchiveEndedForDevice:(id)arg1;
 - (void)startTapeArchiveAtPath:(id)arg1 tapeDevice:(id)arg2;
 - (BOOL)writeMetadataDictionary:(id)arg1 atArchivePath:(id)arg2 clipIDs:(id)arg3 isTape:(BOOL)arg4 isPrimary:(BOOL)arg5;
+- (id)panel:(id)arg1 userEnteredFilename:(id)arg2 confirmed:(BOOL)arg3;
 - (BOOL)panel:(id)arg1 validateURL:(id)arg2 error:(id *)arg3;
 - (void)beginOptionsSheetForWindow:(id)arg1 source:(id)arg2;
 - (void)beginOptionsSheetForWindow:(id)arg1 volume:(id)arg2;
@@ -74,6 +75,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (oneway void)release;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

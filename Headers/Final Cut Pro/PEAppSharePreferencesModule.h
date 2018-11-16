@@ -8,7 +8,7 @@
 
 #import "NSOutlineViewDataSource.h"
 
-@class LKButton, LKImageView, LKTileView, NSArray, NSMutableArray, NSTreeController, NSUndoManager, PEAPPSharePreferencesFooterView, PEAppSharePreferencesOutlineView;
+@class LKButton, LKImageView, LKTileView, NSArray, NSMutableArray, NSString, NSTreeController, NSUndoManager, PEAPPSharePreferencesFooterView, PEAppSharePreferencesOutlineView;
 
 @interface PEAppSharePreferencesModule : NSProPreferencesModule <NSOutlineViewDataSource>
 {
@@ -97,6 +97,12 @@
 - (id)preferencesNibName;
 - (void)dealloc;
 - (void)awakeFromNib;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

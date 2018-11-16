@@ -9,7 +9,7 @@
 #import "HGRQCustomJobProtocol.h"
 #import "HGRQJobProtocol.h"
 
-@class FFHGAsyncCustomJob, FFHGAsyncFanoutJob, FFMD5AndOffsetWithInfo, FFSVContext, FFScheduleToken, FFStreamVideo, FFSubRangeMD5Info, NSArray, NSCondition, NSDictionary, NSLock, NSMutableArray, NSSet, NSString;
+@class FFGraphBuildInformation, FFHGAsyncCustomJob, FFHGAsyncFanoutJob, FFMD5AndOffsetWithInfo, FFSVContext, FFScheduleToken, FFStreamVideo, FFSubRangeMD5Info, NSArray, NSCondition, NSDictionary, NSError, NSLock, NSMutableArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFPlayerScheduledData : NSObject <HGRQJobProtocol, HGRQCustomJobProtocol>
@@ -58,9 +58,9 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _diskIOCompletionTime;
     double _scheduleTokenTime;
     double _generateGraphTime;
-    CDStruct_4cc81c56 _scheduleTokenBlockedInfo;
-    CDStruct_4cc81c56 _graphBuildBlockedInfo;
-    CDStruct_4cc81c56 _graphExecBlockedInfo;
+    CDStruct_0ea56580 _scheduleTokenBlockedInfo;
+    CDStruct_0ea56580 _graphBuildBlockedInfo;
+    CDStruct_0ea56580 _graphExecBlockedInfo;
     long long _readLockWait;
     _Bool _boundToRenderer;
     _Bool _notScheduledWhenChosen;
@@ -75,16 +75,15 @@ __attribute__((visibility("hidden")))
     _Bool _notReadyAtJobStart;
     _Bool _fromSegmentStore;
     _Bool _fromRAMCache;
+    FFGraphBuildInformation *_graphBuildInfos[3];
     FFHGAsyncFanoutJob *_flatteningImages[3];
     NSArray *_outputsForDests[3];
     _Bool _inval;
     NSCondition *_guard;
     int _state;
-    char *_errDetail;
     NSArray *_overlayTexturesForDests;
     NSArray *_overlayInfoForDests;
     _Bool _copiedFlattenedImage;
-    _Bool _isErrorFrame;
     _Bool _isBlankFrame;
     _Bool _isAudioFrame;
     _Bool _isRateChangeFrame;
@@ -98,6 +97,7 @@ __attribute__((visibility("hidden")))
     _Bool _canceledByLiveEdit;
     int _liveEditSpecialHandling;
     _Bool _wasUrgentlyScheduled;
+    NSError *_errorInfo;
     long long distanceFromLoopPoint;
 }
 
@@ -110,7 +110,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isRateChangeFrame; // @synthesize isRateChangeFrame=_isRateChangeFrame;
 @property(nonatomic) _Bool isAudioFrame; // @synthesize isAudioFrame=_isAudioFrame;
 @property(readonly) _Bool isBlankFrame; // @synthesize isBlankFrame=_isBlankFrame;
-@property _Bool isErrorFrame; // @synthesize isErrorFrame=_isErrorFrame;
 @property _Bool fromRAMCache; // @synthesize fromRAMCache=_fromRAMCache;
 @property _Bool fromSegmentStore; // @synthesize fromSegmentStore=_fromSegmentStore;
 @property(readonly) _Bool notReadyAtJobStart; // @synthesize notReadyAtJobStart=_notReadyAtJobStart;
@@ -136,6 +135,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CDStruct_1b6d18a9 nativeFrameDur; // @synthesize nativeFrameDur=_nativeFrameDur;
 @property(readonly) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(readonly) FFStreamVideo *stream; // @synthesize stream=_stream;
+- (void)setErrorInfo:(id)arg1;
+- (id)errorInfo;
 - (id)description;
 - (void)markForLiveEditSpecialHandling:(int)arg1;
 - (int)liveEditSpecialHandling;
@@ -165,9 +166,9 @@ __attribute__((visibility("hidden")))
 - (id)copyPushableImageForDest:(unsigned int)arg1 contextNum:(unsigned int)arg2;
 - (_Bool)_flattenedImagesCompatibleWithOwnDests:(_Bool)arg1;
 - (void)generateImageRepsAndQueueFlattenToExecuteOn:(int)arg1 withLocationPreference:(int)arg2;
-- (void)jobFinished;
-- (void)jobStarted;
-- (void)customHGRenderQueueJobCallback:(struct HGRenderer *)arg1;
+- (void)jobFinished:(id)arg1;
+- (void)jobStarted:(id)arg1;
+- (void)customHGRenderQueueJobCallback:(struct HGRenderer *)arg1 theJob:(id)arg2;
 - (id)newFlattenImageJob:(id)arg1 contextNum:(int)arg2 renderer:(struct HGRenderer *)arg3 bgInfo:(id)arg4 streamProps:(id)arg5;
 - (_Bool)doesDest:(id)arg1 needContext:(int)arg2;
 - (_Bool)betterThan:(id)arg1;
@@ -180,10 +181,10 @@ __attribute__((visibility("hidden")))
 - (id)assignedDests;
 - (_Bool)waitForFlattenedImagesBeforeDate:(id)arg1;
 - (_Bool)flattenedImagesReady;
+- (_Bool)waitAndCheckTokenForAsyncError:(id)arg1 contextNum:(int)arg2;
 - (_Bool)codecHasStarted;
 - (_Bool)pushToCodecWithTestForAbort:(CDUnknownBlockType)arg1 retPreviouslyPushed:(_Bool *)arg2;
 - (_Bool)pushedToCodec;
-- (_Bool)pushedToCodecWithErrorCheck:(BOOL)arg1;
 - (_Bool)waitForInputImagesReadyBeforeTimeInterval:(double)arg1;
 - (_Bool)waitForReadyToImageBeforeTimeInterval:(double)arg1;
 - (_Bool)_internal_waitForFlagsClear:(unsigned int)arg1 beforeTimeInterval:(double)arg2;
@@ -202,7 +203,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)timeForContextNumber:(int)arg1;
 - (void)schedule;
 - (_Bool)usableFor:(id)arg1 timeRepresented:(CDStruct_1b6d18a9)arg2 duration:(CDStruct_1b6d18a9)arg3 nativeFrameDur:(CDStruct_1b6d18a9)arg4 nativeSampleDur:(CDStruct_1b6d18a9)arg5 context1:(id)arg6 context2:(id)arg7 aaContext:(id)arg8 aaRepeats:(int)arg9;
-- (void)updateState:(_Bool)arg1 newState:(int)arg2;
+- (void)updateState:(_Bool)arg1 newState:(int)arg2 cause:(id)arg3;
 - (void)validateIvarsForState:(int)arg1;
 - (_Bool)getFlattenedImagesFrom:(id)arg1 proposedDests:(id)arg2 willSkipDests:(id)arg3;
 - (void)_getFlattenedImagesFrom:(id)arg1;
@@ -213,6 +214,7 @@ __attribute__((visibility("hidden")))
 - (id)copyForLiveEdit:(id)arg1 saveGrid:(_Bool)arg2 saveF1F2:(_Bool)arg3;
 - (id)copyForNewOSCsForProposedDests:(id)arg1 withUnneededDests:(id)arg2;
 - (id)copyForNewGraph;
+- (void)_checkSchedTokFlags:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithStream:(id)arg1 streamMutex:(id)arg2 time:(CDStruct_1b6d18a9)arg3 timeRepresented:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 nativeFrameDur:(CDStruct_1b6d18a9)arg6 nativeSampleDur:(CDStruct_1b6d18a9)arg7 context1:(id)arg8 context2:(id)arg9 aaContext:(id)arg10 aaRepeats:(int)arg11 bounds:(struct CGRect)arg12 schedQueue:(id)arg13 inRenderMode:(_Bool)arg14 waitForLoadingFX:(_Bool)arg15 isBlankFrame:(_Bool)arg16 isAudioFrame:(_Bool)arg17 frameRepString:(id)arg18;
 

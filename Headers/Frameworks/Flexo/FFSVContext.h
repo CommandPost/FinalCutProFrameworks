@@ -23,8 +23,10 @@
     int _locationHint;
     unsigned int _additionalRenderingFlags;
     FFSVContext *_cachedNoFieldPairingContext;
+    int _CGProviderCacheNodePolicy;
 }
 
+@property(readonly, nonatomic) int getCGProviderCacheNodePolicy; // @synthesize getCGProviderCacheNodePolicy=_CGProviderCacheNodePolicy;
 @property(readonly, nonatomic) unsigned int additionalRenderingFlags; // @synthesize additionalRenderingFlags=_additionalRenderingFlags;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)compareTo:(id)arg1 withCompareFlags:(unsigned int)arg2;
@@ -37,6 +39,7 @@
 - (BOOL)draftTextMode;
 - (int)locationHint;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyWithCGProviderCacheNodePolicy:(int)arg1;
 - (id)copyWithLiveEditFlag:(BOOL)arg1;
 - (id)copyWithPairFields:(BOOL)arg1;
 - (id)copyWithAdjustedPriority:(int)arg1 andLocationHint:(int)arg2;
@@ -60,6 +63,7 @@
 - (void)dealloc;
 - (id)initWithColorSpaceRef:(struct CGColorSpace *)arg1 pixelFormat:(id)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 spatialQuality:(int)arg5 temporalQuality:(int)arg6 priority:(int)arg7 options:(id)arg8 locationHint:(int)arg9;
 - (id)initWithColorSpaceRef:(struct CGColorSpace *)arg1 pixelFormat:(id)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 spatialQuality:(int)arg5 temporalQuality:(int)arg6 priority:(int)arg7 options:(id)arg8 locationHint:(int)arg9 flags:(unsigned int)arg10;
+- (id)initWithColorSpaceRef:(struct CGColorSpace *)arg1 pixelFormat:(id)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 spatialQuality:(int)arg5 temporalQuality:(int)arg6 priority:(int)arg7 options:(id)arg8 locationHint:(int)arg9 flags:(unsigned int)arg10 cgProviderCachePolicy:(int)arg11;
 - (id)initWithColorSpaceRef:(struct CGColorSpace *)arg1 pixelFormat:(id)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 spatialQuality:(int)arg5 temporalQuality:(int)arg6 priority:(int)arg7 options:(id)arg8;
 
 @end

@@ -8,7 +8,7 @@
 
 #import "NSOpenSavePanelDelegate.h"
 
-@class LKPopUpButton;
+@class LKPopUpButton, NSString;
 
 @interface PEAppGeneralPreferencesModule : NSProPreferencesModule <NSOpenSavePanelDelegate>
 {
@@ -27,6 +27,12 @@
 - (id)titleForIdentifier:(id)arg1;
 - (BOOL)isResizable;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

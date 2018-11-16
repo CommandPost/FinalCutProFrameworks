@@ -16,6 +16,7 @@
     BOOL _togglingCurveEditor;
 }
 
+@property(readonly) OZTimingVerticalSplitView *pSplitView; // @synthesize pSplitView=_pSplitView;
 @property(readonly) BOOL togglingCurveEditor; // @synthesize togglingCurveEditor=_togglingCurveEditor;
 @property(readonly) OZMoCurveEditorCtrl *curveEditor; // @synthesize curveEditor=_pCurveEditor;
 - (void)setDividerPosition:(double)arg1;

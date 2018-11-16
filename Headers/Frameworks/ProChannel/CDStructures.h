@@ -19,6 +19,11 @@ struct CGPoint {
     double _field2;
 };
 
+struct ColorComponents {
+    int _field1;
+    double _field2[5];
+};
+
 struct OZChannel {
     CDUnknownFunctionPointerType *_field1;
     struct OZFactory *_field2;
@@ -272,6 +277,7 @@ struct OZChannelButton {
     CDUnknownFunctionPointerType _field20;
     struct PCString _field21;
     void *_field22;
+    struct PCString _field23;
 };
 
 struct OZChannelColor {
@@ -428,9 +434,11 @@ struct OZChannelDiscreteColor {
     struct OZChannelInfo *_field18;
     struct OZCurve *_field19;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
-    struct vector<int, std::allocator<int>> _field21;
-    struct PCString _field22;
+    struct PCString _field21;
+    struct vector<int, std::allocator<int>> _field22;
     unsigned int _field23;
+    struct PCString _field24;
+    struct vector<PCString, std::allocator<PCString>> _field25;
 };
 
 struct OZChannelDouble {
@@ -476,9 +484,11 @@ struct OZChannelEnum {
     struct OZChannelInfo *_field18;
     struct OZCurve *_field19;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
-    struct vector<int, std::allocator<int>> _field21;
-    struct PCString _field22;
+    struct PCString _field21;
+    struct vector<int, std::allocator<int>> _field22;
     unsigned int _field23;
+    struct PCString _field24;
+    struct vector<PCString, std::allocator<PCString>> _field25;
 };
 
 struct OZChannelEnumInterpMode {
@@ -502,9 +512,11 @@ struct OZChannelEnumInterpMode {
     struct OZChannelInfo *_field18;
     struct OZCurve *_field19;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
-    struct vector<int, std::allocator<int>> _field21;
-    struct PCString _field22;
+    struct PCString _field21;
+    struct vector<int, std::allocator<int>> _field22;
     unsigned int _field23;
+    struct PCString _field24;
+    struct vector<PCString, std::allocator<PCString>> _field25;
 };
 
 struct OZChannelFolder {
@@ -691,6 +703,7 @@ struct OZChannelGradientPositioned {
     struct OZChannelEnum _field24;
     struct OZChannelPosition _field25;
     struct OZChannelPosition _field26;
+    _Bool _field27;
 };
 
 struct OZChannelGradientRGBFolder {
@@ -837,6 +850,7 @@ struct OZChannelHistogram {
     struct OZChannelHistogramSample _field22;
     struct OZChannelHistogramSample _field23;
     struct OZChannelHistogramSample _field24;
+    struct OZHistogramDelegate *_field25;
 };
 
 struct OZChannelHistogramSample {
@@ -1394,6 +1408,8 @@ struct OZFactories {
 
 struct OZFactory;
 
+struct OZHistogramDelegate;
+
 struct OZInterpolators;
 
 struct OZSplineNode;
@@ -1414,7 +1430,7 @@ struct OZSplineState {
 struct OZVertex;
 
 struct PCColor {
-    struct vector<double, std::allocator<double>> _field1;
+    struct ColorComponents _field1;
     struct PCColorSpaceHandle _field2;
 };
 

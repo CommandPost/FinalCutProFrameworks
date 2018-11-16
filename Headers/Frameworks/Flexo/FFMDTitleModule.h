@@ -6,13 +6,15 @@
 
 #import <Flexo/FFMDModule.h>
 
-@class FFAnchoredSequence, FFEffectLibraryCollectionView, LKImageView, NSDictionary, NSScrollView;
+@class FFAlwaysHitButton, FFAnchoredSequence, FFEffectLibraryCollectionView, LKImageView, NSDictionary, NSScrollView;
 
 @interface FFMDTitleModule : FFMDModule
 {
     NSScrollView *_scrollView;
     FFEffectLibraryCollectionView *_effectCollectionView;
     LKImageView *_headerIcon;
+    FFAlwaysHitButton *_toggleSidebarButton;
+    FFAlwaysHitButton *_dividerLine;
     id _skimmingDelegate;
     FFAnchoredSequence *_currentSequence;
     NSDictionary *_sortOrder;

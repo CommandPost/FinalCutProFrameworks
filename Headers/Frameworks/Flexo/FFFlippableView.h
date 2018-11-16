@@ -6,14 +6,13 @@
 
 #import "NSView.h"
 
-__attribute__((visibility("hidden")))
 @interface FFFlippableView : NSView
 {
     BOOL _ffFlippedViewFlipped;
 }
 
 - (void)setFlipped:(BOOL)arg1;
-- (BOOL)flipped;
+- (BOOL)isFlipped;
 
 @end
 

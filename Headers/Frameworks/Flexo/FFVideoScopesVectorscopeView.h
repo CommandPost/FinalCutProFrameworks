@@ -6,14 +6,11 @@
 
 #import <Flexo/FFVideoScopesView.h>
 
-#import "FFPlayerVideoScopesModuleViewDelegate.h"
-
-@class LKMenu;
+#import "FFDestVideoScopesGLDelegate.h"
 
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesVectorscopeView : FFVideoScopesView <FFPlayerVideoScopesModuleViewDelegate>
+@interface FFVideoScopesVectorscopeView : FFVideoScopesView <FFDestVideoScopesGLDelegate>
 {
-    LKMenu *_contextualMenu;
     long long _phase;
     long long _barTarget;
     CDStruct_d36b2e56 _state;
@@ -24,20 +21,15 @@ __attribute__((visibility("hidden")))
 - (id)_initVideoScopesVectorscopeView;
 - (struct FFVideoScopesVectorscopeViewPrivate *)_Private;
 - (id)accessibilityAttributeValue:(id)arg1;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (id)menuForVideoScopeOptions;
-- (void)drawScopeViewWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)colorspaceDidChangeForVideoScopes:(id)arg1;
+- (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)scrollWheel:(id)arg1;
 - (void)rightMouseDown:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)setZoomFactor:(float)arg1;
-- (void)removeFromSuperview;
 - (void)setFrameSize:(struct CGSize)arg1;
-- (void)viewDidUnhide;
-- (void)viewWillMoveToSuperview:(id)arg1;
 - (void)awakeFromNib;
-- (void)teardownLayers;
 - (void)buildLayers;
 @property long long barTarget; // @dynamic barTarget;
 @property long long phase; // @dynamic phase;

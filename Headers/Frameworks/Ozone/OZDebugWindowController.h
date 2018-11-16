@@ -8,7 +8,7 @@
 
 #import "NSTabViewDelegate.h"
 
-@class LKButton, LKPopUpButton, LKSegmentedCell, LKTabView, LKTableView, LKTextField, NSArray, NSTextView, NSTimer, NSView;
+@class LKButton, LKPopUpButton, LKSegmentedCell, LKSlider, LKTabView, LKTableView, LKTextField, NSArray, NSString, NSTextView, NSTimer, NSView;
 
 @interface OZDebugWindowController : NSWindowController <NSTabViewDelegate>
 {
@@ -23,6 +23,7 @@
     BOOL _isLogging;
     NSTimer *_threadTimer;
     LKSegmentedCell *_selectViewButtons;
+    NSView *_tabParentView;
     NSView *_debugOptionsView;
     NSView *_loggingView;
     NSView *_performanceView;
@@ -32,6 +33,8 @@
     LKPopUpButton *_saveOptionsPopup;
     LKButton *_skipPreviewsButton;
     LKButton *_skipSavingUIButton;
+    LKPopUpButton *_kernelType;
+    LKSlider *_supersamples;
     LKTextField *_sceneHashTF;
 }
 
@@ -64,6 +67,12 @@
 - (void)windowDidLoad;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

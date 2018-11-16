@@ -9,7 +9,7 @@
 #import "FFSkimmingModuleDelegate.h"
 #import "NSDraggingSource.h"
 
-@class CALayer, CATextLayer, FFContext, FFImageBrowserView, FFThemeFacetLayer, NSArray;
+@class CALayer, CATextLayer, FFContext, FFImageBrowserView, FFThemeFacetLayer, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFImageBrowserCell : FFResponderLayer <NSDraggingSource, FFSkimmingModuleDelegate>
@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)addSnapXCoordinate:(double)arg1;
 - (double)xCoordinateFromTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)timeFromPointInImageSpace:(struct CGPoint)arg1;
+- (void)loopRangeEndReachedForContext:(id)arg1 withObject:(id)arg2;
 - (void)timeRateChangedForContext:(id)arg1;
 - (id)skimmingModule:(id)arg1 newContextForSkimmable:(struct NSObject *)arg2;
 - (long long)skimmingModule:(id)arg1 effectCountForSkimmable:(struct NSObject *)arg2;
@@ -106,6 +107,12 @@ __attribute__((visibility("hidden")))
 - (id)imageLayer;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

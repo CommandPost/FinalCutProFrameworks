@@ -8,12 +8,11 @@
 
 #import "FFColorSubEffect.h"
 
-@class FFHeColorEffect;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFConsumerColorEffect : FFHeliumEffect <FFColorSubEffect>
 {
-    FFHeColorEffect *_colorEffect;
 }
 
 + (BOOL)isNoOpForSoleOpEffect:(id)arg1;
@@ -23,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)colorEffect;
 - (void)setColorEffect:(id)arg1;
 - (void)populateUsingLegacyIMovieParams:(CDStruct_a68fe99b *)arg1;
-- (void)setDoubleValue:(double)arg1 forChannelID:(unsigned int)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)_setDoubleValue:(double)arg1 forChannelID:(unsigned int)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
 - (struct HGNode *)newNodeForContext:(id)arg1;
 - (id)processingPixelFormat;
@@ -32,6 +31,15 @@ __attribute__((visibility("hidden")))
 - (id)inputKeys;
 - (void)createChannelsInFolder:(id)arg1;
 - (id)initWithEffectID:(id)arg1;
+- (void)finishedSettingEffectParameters;
+- (id)designatedChannelsForXMLExport;
+- (BOOL)hasDesignatedChannelsForXMLExport;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

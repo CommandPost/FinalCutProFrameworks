@@ -19,16 +19,13 @@ __attribute__((visibility("hidden")))
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)updateLabel;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)viewWillBeRemoved;
 - (void)viewWasInstalled;
-- (void)toggleMonochrome:(id)arg1;
-- (void)changeBrightness:(id)arg1;
 - (void)showWaveform:(id)arg1;
 - (void)showVectorscope:(id)arg1;
 - (void)showHistogram:(id)arg1;
-- (void)toggleGuides:(id)arg1;
 - (void)changeUnitsMillivolts:(id)arg1;
 - (void)changeUnitsIRE:(id)arg1;
+- (void)_setCompositeVideoUnits:(long long)arg1;
 - (void)changeModeYCbCr:(id)arg1;
 - (void)changeModeChroma:(id)arg1;
 - (void)changeModeLuma:(id)arg1;
@@ -37,6 +34,8 @@ __attribute__((visibility("hidden")))
 - (void)changeModeRedChannel:(id)arg1;
 - (void)changeModeOverlay:(id)arg1;
 - (void)changeModeParade:(id)arg1;
+- (void)_setDisplayMode:(long long)arg1;
+- (void)_postPropertyChange;
 
 @end
 

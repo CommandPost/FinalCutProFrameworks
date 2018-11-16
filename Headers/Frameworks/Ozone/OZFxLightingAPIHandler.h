@@ -7,12 +7,15 @@
 #import "NSObject.h"
 
 #import "FxLightingAPI.h"
+#import "FxLightingAPI_v2.h"
 
-@interface OZFxLightingAPIHandler : NSObject <FxLightingAPI>
+@interface OZFxLightingAPIHandler : NSObject <FxLightingAPI, FxLightingAPI_v2>
 {
     struct OZFxPlugSharedBase *_plugin;
 }
 
+- (void)lightInfo:(struct FxLightInfo *)arg1 forLight:(unsigned long long)arg2 atFxTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
+- (unsigned long long)numberOfLightsAtFxTime:(CDUnion_2516e51e)arg1;
 - (void)lightInfo:(struct FxLightInfo *)arg1 forLight:(unsigned long long)arg2 atTime:(double)arg3 error:(id *)arg4;
 - (unsigned long long)numberOfLightsAtTime:(double)arg1;
 - (void)endLightAccess;

@@ -41,6 +41,8 @@ __attribute__((visibility("hidden")))
 - (void)updatePuckUI;
 - (void)notificationHandler:(id)arg1;
 - (void)addNotificationObservers;
+- (BOOL)puckIsSelected;
+- (void)setPuckSelected:(BOOL)arg1;
 - (void)setPuckFocus:(BOOL)arg1;
 - (BOOL)puckHasFocus;
 - (id)legendImage;

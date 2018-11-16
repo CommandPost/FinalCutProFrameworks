@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
 - (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (id)latestDate;
 - (id)earliestDate;
+- (id)dateRange;
 - (id)displayName;
 - (id)thumbnailAtIndex:(long long)arg1 getFlipped:(char *)arg2;
 - (id)thumbnailAtIndex:(long long)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 
 @end

@@ -8,7 +8,7 @@
 
 #import "FFColorSubEffect.h"
 
-@class FFErfCache, FFHeColorEffect;
+@class FFErfCache, FFHeColorEffect, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFColorSecondaryEffect : FFHeliumEffect <FFColorSubEffect>
@@ -94,6 +94,12 @@ __attribute__((visibility("hidden")))
 @property(readonly) BOOL hasOuterChannel; // @dynamic hasOuterChannel;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

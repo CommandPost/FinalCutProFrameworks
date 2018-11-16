@@ -8,7 +8,7 @@
 
 #import "NSTextViewDelegate.h"
 
-@class NSAttributedString, NSTextView, NSView;
+@class NSAttributedString, NSString, NSTextView, NSView;
 
 @interface TLKStringEditorView : NSControl <NSTextViewDelegate>
 {
@@ -65,6 +65,12 @@
 - (BOOL)isFlipped;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

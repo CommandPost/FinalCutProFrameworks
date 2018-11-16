@@ -15,11 +15,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)effectStack;
-- (void)sender:(id)arg1 willSetChannel:(id)arg2;
+- (BOOL)sender:(id)arg1 willSetChannel:(id)arg2;
 - (id)effectsToDisplay;
-- (BOOL)observeAngleForKey:(id)arg1;
-- (void)removeAngleObservers;
-- (void)addAngleObservers;
 - (void)dealloc;
 - (id)initWithObject:(id)arg1 topToBottom:(BOOL)arg2 timeline:(id)arg3;
 - (id)intrinsicOrDummyWithID:(id)arg1;

@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
     NSButton *mCancelButton;
 }
 
-@property(readonly) NSButton *cancelButton; // @synthesize cancelButton=mCancelButton;
-@property(readonly) NSTextField *textField; // @synthesize textField=mTextField;
-@property(readonly) NSProgressIndicator *progressIndicator; // @synthesize progressIndicator=mProgressIndicator;
+@property(readonly, retain) NSButton *cancelButton; // @synthesize cancelButton=mCancelButton;
+@property(readonly, retain) NSTextField *textField; // @synthesize textField=mTextField;
+@property(readonly, retain) NSProgressIndicator *progressIndicator; // @synthesize progressIndicator=mProgressIndicator;
 - (void)cancel:(id)arg1;
 - (void)awakeFromNib;
 - (id)init;

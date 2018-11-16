@@ -4,10 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Ozone/OZSplineTool.h>
+#import <Ozone/OZTool.h>
 
-@interface OZShapeTool : OZSplineTool
+@interface OZShapeTool : OZTool
 {
+    struct OZRotoshape *_roto;
+    struct PCString *_pUndoString;
+    _Bool _isMask;
+    _Bool _animateFlag;
+    _Bool _localSpace;
+    int _hitActivePart;
     struct CGPoint _startPos;
     struct CGPoint _originalMousePos;
     struct CGPoint _currentMousePos;
@@ -20,15 +26,22 @@
 }
 
 - (id).cxx_construct;
+- (BOOL)showEditToolOnCompletion;
 - (BOOL)oscFlagsChanged:(id)arg1;
 - (BOOL)keyDownOSC:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)projectShape:(id)arg1;
+- (void)setViewMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 state:(const struct OZRenderState *)arg2;
 - (struct OZRotoshape *)createSceneNode;
 - (void)createShape:(CDStruct_1b6d18a9)arg1;
+- (struct PCUUID)getOSCClassID;
+- (BOOL)testPoint:(id)arg1 xpos:(double)arg2 ypos:(double)arg3;
+- (BOOL)projectPoint:(id)arg1 xpos:(double *)arg2 ypos:(double *)arg3;
 - (void)endWithDocument:(struct OZDocument *)arg1;
+- (void)addToScene:(struct OZScene *)arg1;
+- (struct OZElement *)getSelectedElement:(struct OZScene *)arg1;
 - (id)getCursorWithEvent:(id)arg1;
 - (id)getDefaultCursor;
 - (void)dealloc;

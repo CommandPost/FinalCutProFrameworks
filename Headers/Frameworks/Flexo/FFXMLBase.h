@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)setForiMovie;
-- (id)runLibraryChooser:(id)arg1 importFileURL:(id)arg2 error:(id *)arg3;
+- (id)runLibraryChooser:(id)arg1 importFileURL:(id)arg2 libraryIsNew:(char *)arg3 error:(id *)arg4;
 - (BOOL)userCancelled;
 - (void)hideProgressWindow;
 - (void)showProgressWindow;

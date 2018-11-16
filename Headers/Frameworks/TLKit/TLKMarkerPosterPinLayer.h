@@ -8,7 +8,7 @@
 
 #import "TLKPartInfo.h"
 
-@class TLKTimelineLayer;
+@class NSString, TLKTimelineLayer;
 
 @interface TLKMarkerPosterPinLayer : TLKThemeBackedLayer <TLKPartInfo>
 {
@@ -27,6 +27,12 @@
 - (void)invalidate;
 - (id)init;
 - (id)timelineView;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

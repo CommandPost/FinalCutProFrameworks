@@ -9,7 +9,7 @@
 #import "FFColorSelectionOSCDelegate.h"
 #import "FFRollbackRecordProtocol.h"
 
-@class NSArray;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _WhiteBalanceSelectionToolDelegate : FFModalToolDelegate <FFColorSelectionOSCDelegate, FFRollbackRecordProtocol>
@@ -37,6 +37,12 @@ __attribute__((visibility("hidden")))
 - (void)_resyncToolControls;
 - (void)selectedItemsChanged:(id)arg1;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

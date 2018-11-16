@@ -24,6 +24,7 @@
 - (id)view;
 - (id)identifier;
 - (id)eventDescriptions;
+@property(readonly) BOOL allowPressAndHold;
 - (BOOL)isEnabled;
 - (void)setEnabled:(BOOL)arg1;
 - (BOOL)performKeyEquivalent:(id)arg1;
@@ -60,16 +61,11 @@
 - (void)notifyDelegate:(id)arg1 didPerformSelector:(SEL)arg2 draggingInfo:(id)arg3;
 - (BOOL)notifyDelegate:(id)arg1 willPerformSelector:(SEL)arg2 draggingInfo:(id)arg3;
 - (id)delegate;
-- (void)pressAndHoldCanceled:(id)arg1;
-- (void)_pressAndHoldCanceled:(id)arg1;
 - (void)prepareForPressAndHold:(id)arg1;
-- (void)_prepareForPressAndHold:(id)arg1;
 - (void)stopHandling:(id)arg1;
-- (void)_stopHandling:(id)arg1;
 - (void)resumeHandling:(id)arg1;
 - (void)pauseHandling:(id)arg1;
 - (void)startHandling:(id)arg1;
-- (void)_startHandling:(id)arg1;
 - (void)applyConfiguration:(id)arg1;
 - (id)stopwatch;
 - (void)dealloc;

@@ -61,6 +61,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasMarkedText;
 - (void)unmarkText;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
+- (void)nudgeLeft:(id)arg1;
+- (void)nudgeRight:(id)arg1;
+- (void)nudgeUp:(id)arg1;
+- (void)nudgeDown:(id)arg1;
+- (void)deselectAll:(id)arg1;
 - (void)selectNone:(id)arg1;
 - (void)selectAll:(id)arg1;
 - (void)pasteAsPlainText:(id)arg1;
@@ -104,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (id)makeBackingLayer;
 - (id)_playerVideoModule;
 - (void)_setPlayerVideoModule:(id)arg1;
+- (BOOL)isSuperEllipseOSCActive;
 - (BOOL)isTextOSCActive;
 - (BOOL)isOpaque;
 - (float)windowBackingScaleFactor;

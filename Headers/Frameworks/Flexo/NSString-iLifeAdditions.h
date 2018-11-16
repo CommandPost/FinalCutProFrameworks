@@ -12,6 +12,11 @@
 + (id)stringWithInt:(int)arg1;
 - (id)arrayOfWordRanges;
 - (id)arrayOfWords;
+- (BOOL)isRTL;
+- (BOOL)containsHebrewCharacters;
+- (BOOL)containsArabicCharacters;
+- (BOOL)containsRTLScript;
+- (BOOL)containsJoinedGlyphs;
 - (BOOL)containsString:(id)arg1 caseSensitive:(BOOL)arg2;
 - (BOOL)containsString:(id)arg1;
 @end

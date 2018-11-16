@@ -16,6 +16,7 @@
 
 + (Class)streamClass;
 + (long long)sourceCount;
+- (BOOL)sourceEnabled;
 - (id)displayName;
 - (BOOL)isValid;
 - (long long)timecodeDisplayDropFrame;

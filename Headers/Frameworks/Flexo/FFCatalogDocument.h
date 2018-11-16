@@ -41,8 +41,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)readFromURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
 - (BOOL)makeDefaultStore:(id)arg1 error:(id *)arg2;
 - (void)setDeferSyncCatalogIfNecessary:(BOOL)arg1;
-- (void)endUndoContext:(id)arg1;
-- (void)beginUndoContext:(id)arg1;
+- (void)undoDidPerformAction:(id)arg1;
 - (void)stopObservingCatalog;
 - (void)startObservingCatalog;
 - (void)updateChangeCount:(unsigned long long)arg1;

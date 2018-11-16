@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 
 + (id)extensions;
 + (id)utis;
-@property(readonly, nonatomic) NSSet *roles; // @synthesize roles=_roles;
-@property(readonly, nonatomic) NSSet *showOnlyObjects; // @synthesize showOnlyObjects=_showOnlyObjects;
+@property(readonly, retain, nonatomic) NSSet *roles; // @synthesize roles=_roles;
+@property(readonly, retain, nonatomic) NSSet *showOnlyObjects; // @synthesize showOnlyObjects=_showOnlyObjects;
 - (id)anchoredObject;
 - (BOOL)writerIsWaiting;
 - (void)_readUnlock;

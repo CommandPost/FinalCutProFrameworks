@@ -8,21 +8,25 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBackgroundTask, FFStreamVideoCache, NSConditionLock, NSLock, NSMutableArray;
+@class FFStreamVideoCache, NSConditionLock, NSCountedSet;
 
 @interface FFThumbnailRequestManager : NSObject <FFBackgroundTaskTarget>
 {
-    NSMutableArray *_requests;
-    NSLock *_requestsLock;
-    NSMutableArray *_highPriorityRequests;
-    NSLock *_highPriorityRequestsLock;
+    struct FFLocklessQueue<FFThumbnailRequest *> *_requests;
+    struct FFLocklessQueue<FFThumbnailRequest *> *_highPriorityRequests;
+    NSCountedSet *_skimmablesForRequests;
     FFStreamVideoCache *_streamVideoCache;
-    FFBackgroundTask *_bTask;
-    NSConditionLock *_pause;
-    long long _playersPlayering;
+    NSConditionLock *_isPlayingLock;
+    BOOL _isPlaybackActive;
     BOOL _isAudio;
     struct CGImage *_offlineImage;
     struct CGImage *_emptyClipImage;
+    int _numQueuedRequests;
+    int _numOutstandingDispatches;
+    long long _numTotalTaskRequests;
+    long long _numProcessedTaskRequests;
+    long long _numCurrentTaskBaseline;
+    struct FFSemaphore *_taskSemaphore;
     BOOL _disallowNewThumbnailRequests;
 }
 
@@ -40,12 +44,17 @@
 - (id)assetsInUse;
 - (id)_copySkimmableItems;
 - (void)_teardown;
+- (void)_notifyShutdown:(id)arg1;
 - (void)disallowAndCancelAllAsyncImageRequests;
 - (BOOL)newImage:(struct CGImage **)arg1 forRequest:(id)arg2;
 - (void)addAsyncImageRequest:(id)arg1;
+- (void)_unregisterImageRequest:(id)arg1;
+- (void)_registerImageRequest:(id)arg1;
 - (void)_waitForBGTaskToFinish;
 - (void)_cancelBGTask;
-- (void)_startBackgroundTask;
+- (void)_resumeBackgroundTask;
+- (void)_backgroundTaskCompleted;
+- (void)_dispatchBackgroundTask;
 - (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
 - (void)canceledTask:(id)arg1;
 - (void)uiPlaybackStateChange:(id)arg1;

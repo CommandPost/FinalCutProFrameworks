@@ -11,28 +11,32 @@
 __attribute__((visibility("hidden")))
 @interface MicaTextGroup : NSObject
 {
-    long long m_identifier;
-    CALayer *m_rootLayer;
-    NSMutableArray *m_textLayers;
-    NSMutableArray *m_boundaryLayers;
-    double m_originalFontSize;
+    long long _identifier;
+    CALayer *_rootLayer;
+    NSMutableArray *_textLayers;
+    NSMutableArray *_boundaryLayers;
+    double _originalFontSize;
 }
 
 + (void)clearDelegatesInAllGroups:(id)arg1;
 + (void)clearTextInAllGroups:(id)arg1;
 + (id)micaTextGroupFromPublishedObjects:(id)arg1 textLayerKey:(id)arg2 rootLayer:(id)arg3;
 + (id)arrayOfMicaTextGroupsFromPublishedObjects:(id)arg1 rootLayer:(id)arg2;
-@property(nonatomic) double originalFontSize; // @synthesize originalFontSize=m_originalFontSize;
-@property(retain, nonatomic) NSMutableArray *boundaryLayers; // @synthesize boundaryLayers=m_boundaryLayers;
-@property(retain, nonatomic) NSMutableArray *textLayers; // @synthesize textLayers=m_textLayers;
-@property(retain, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=m_rootLayer;
-@property(nonatomic) long long identifier; // @synthesize identifier=m_identifier;
+@property(nonatomic) double originalFontSize; // @synthesize originalFontSize=_originalFontSize;
+@property(retain, nonatomic) NSMutableArray *boundaryLayers; // @synthesize boundaryLayers=_boundaryLayers;
+@property(retain, nonatomic) NSMutableArray *textLayers; // @synthesize textLayers=_textLayers;
+@property(retain, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
+@property(nonatomic) long long identifier; // @synthesize identifier=_identifier;
+- (void).cxx_destruct;
 - (double)bestFontSizeForEditing;
 - (struct CGRect)editBoundsInCoordinatesOfLayer:(id)arg1;
 - (void)addTextLayer:(id)arg1 textLayerKey:(id)arg2 publishedObjects:(id)arg3;
 - (id)firstTextLayer;
+- (BOOL)hasRTLString;
 - (BOOL)hasShrinkToFitText;
 - (BOOL)hasLegacyLayers;
+@property(nonatomic) struct CGColor *foregroundColor;
+@property(copy, nonatomic) NSString *fontName;
 @property(nonatomic, getter=isHidden) BOOL hidden;
 @property(nonatomic) struct CGRect bounds;
 @property(copy, nonatomic) NSString *string5;
@@ -52,15 +56,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct CGColor *foregroundColor4;
 @property(readonly, nonatomic) struct CGColor *foregroundColor3;
 @property(readonly, nonatomic) struct CGColor *foregroundColor2;
-@property(readonly, nonatomic) struct CGColor *foregroundColor;
-@property(readonly, nonatomic) NSString *fontName;
 @property(readonly, nonatomic) double fontSize;
-@property(readonly, nonatomic) NSString *verticalAlignmentMode;
-@property(readonly, nonatomic) NSString *horizontalAlignmentMode;
+@property(readonly, copy, nonatomic) NSString *verticalAlignmentMode;
+@property(readonly, copy, nonatomic) NSString *horizontalAlignmentModeRTL;
+@property(readonly, copy, nonatomic) NSString *horizontalAlignmentMode;
 @property(readonly, nonatomic, getter=isWrapped) BOOL wrapped;
 @property(readonly, nonatomic) struct CGRect frame;
 @property(readonly, nonatomic) struct CGPoint position;
-- (void)dealloc;
 - (id)initWithRootLayer:(id)arg1;
 
 @end

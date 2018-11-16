@@ -23,7 +23,6 @@
 - (CDStruct_1b6d18a9)sourceSampleDuration;
 - (struct CGRect)imageSpaceBoundsAtTime:(CDStruct_1b6d18a9)arg1;
 - (struct CGRect)squarePixelSourceRect;
-- (CDStruct_1b6d18a9)sampleDuration;
 - (id)videoProps;
 - (CDStruct_1b6d18a9)timeOffset;
 - (CDStruct_e83c9415)mediaRange;
@@ -42,7 +41,6 @@
 - (id)inspectorTabClassNames;
 - (id)inspectorClassName;
 - (BOOL)supportsRoles;
-- (id)roles;
 - (id)rolesWithPlayEnable:(int)arg1;
 @property(retain, nonatomic) NSString *role;
 - (void)addRole:(id)arg1;

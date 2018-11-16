@@ -11,18 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface iMovieCollidingTextLayer : iMovieMultiTextLayer
 {
-    MicaAnimator *m_micaAnimatorTemplate;
+    MicaAnimator *_micaAnimatorTemplate;
 }
 
 + (id)defaultValueForKey:(id)arg1;
 + (id)timeStretchableBeginTimeProperties;
 + (id)micaPluginProperties;
-@property(retain, nonatomic) MicaAnimator *micaAnimatorTemplate; // @synthesize micaAnimatorTemplate=m_micaAnimatorTemplate;
+@property(retain, nonatomic) MicaAnimator *micaAnimatorTemplate; // @synthesize micaAnimatorTemplate=_micaAnimatorTemplate;
+- (void).cxx_destruct;
 - (id)groupsOfSublayersInContainerLayer:(id)arg1;
 - (void)addRightSlideInAnimationToLayer:(id)arg1 micaAnimatorTemplate:(id)arg2;
 - (void)addMiddleSlideInAnimationToLayer:(id)arg1 micaAnimatorTemplate:(id)arg2;
 - (void)addLeftSlideInAnimationToLayer:(id)arg1 micaAnimatorTemplate:(id)arg2;
-- (void)dealloc;
 - (void)addAnimations;
 - (void)customizeSublayers;
 

@@ -31,7 +31,7 @@
 
 + (void)mergeFlagDetails:(id)arg1 into:(id *)arg2;
 + (CDStruct_bdcb2b0d)adjustedMD5ForTemporalInaccuracy:(CDStruct_1b6d18a9)arg1 fromBaseMD5:(CDStruct_bdcb2b0d)arg2 isConstantOffset:(_Bool)arg3;
-@property(readonly, nonatomic) NSDictionary *flagDetails; // @synthesize flagDetails=_flagDetails;
+@property(readonly, retain, nonatomic) NSDictionary *flagDetails; // @synthesize flagDetails=_flagDetails;
 @property(readonly, nonatomic) unsigned long long estimatedBandwidth; // @synthesize estimatedBandwidth=_estimatedBandwidth;
 @property(readonly, nonatomic) unsigned int md5FlagsForOring; // @synthesize md5FlagsForOring=_oredMd5Flags;
 @property(readonly, nonatomic) unsigned int md5FlagsForAnding; // @synthesize md5FlagsForAnding=_andedMd5Flags;
@@ -59,6 +59,7 @@
 - (long long)lastOffsetIncludedInSubRange;
 - (long long)offsetForTime:(CDStruct_1b6d18a9)arg1;
 - (long long)_offsetForTime:(CDStruct_1b6d18a9)arg1 silent:(_Bool)arg2;
+- (id)copyWithAdditionalOrFlags:(int)arg1;
 - (id)newSubRangeByReplacingActualMD5:(CDStruct_bdcb2b0d)arg1 idealMD5:(CDStruct_bdcb2b0d)arg2 replacementOpaqueBounds:(struct CGRect)arg3 replacementCost:(double)arg4;
 - (id)newSubRangeByReplacingActualMD5:(CDStruct_bdcb2b0d)arg1 idealMD5:(CDStruct_bdcb2b0d)arg2;
 - (id)newSubRangeByAddingOffset:(CDStruct_1b6d18a9)arg1 thenIntersectingWith:(CDStruct_e83c9415)arg2;

@@ -8,7 +8,7 @@
 
 #import "NSDraggingDestination.h"
 
-@class CALayer, CIContext, FFImageBrowserCell, FFSkimmingModule, NSArray, NSIndexSet, NSMutableArray, NSMutableDictionary, NSTrackingArea;
+@class CALayer, CIContext, FFImageBrowserCell, FFSkimmingModule, NSArray, NSIndexSet, NSMutableArray, NSMutableDictionary, NSString, NSTrackingArea;
 
 __attribute__((visibility("hidden")))
 @interface FFImageBrowserView : FFResponderLayerHostView <NSDraggingDestination>
@@ -88,6 +88,8 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityAttributeNames;
 - (BOOL)accessibilityIsIgnored;
 - (void)_movePlayerToPersistentPlayheadWithLocationInImageLayer:(struct CGPoint)arg1;
+- (void)clearPersistentPlayhead;
+- (void)continuePlaybackWithNextCell;
 - (void)movePlayerToPersistentPlayhead;
 - (void)movePersistentPlayheadToCell:(id)arg1;
 - (void)mouseExited:(id)arg1;
@@ -156,6 +158,12 @@ __attribute__((visibility("hidden")))
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

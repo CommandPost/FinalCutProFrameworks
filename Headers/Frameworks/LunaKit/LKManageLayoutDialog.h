@@ -9,7 +9,7 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class NSArrayController, NSButton, NSTableView;
+@class NSArrayController, NSButton, NSString, NSTableView;
 
 @interface LKManageLayoutDialog : NSWindowController <NSWindowDelegate, NSTableViewDelegate>
 {
@@ -38,6 +38,12 @@
 - (void)beginSheetForWindow:(id)arg1 modalDelegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
 - (void)awakeFromNib;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

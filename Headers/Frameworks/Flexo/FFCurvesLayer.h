@@ -8,7 +8,7 @@
 
 #import "FFCurveEditorEffectDelegate.h"
 
-@class CHChannelBase, FFAnchoredTimelineModule, FFCurveEditorLayer, FFEffect, FFEffectStack, NSMutableArray;
+@class CHChannelBase, FFAnchoredTimelineModule, FFCurveEditorLayer, FFEffect, FFEffectStack, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFCurvesLayer : FFResponderLayer <FFCurveEditorEffectDelegate>
@@ -34,16 +34,14 @@ __attribute__((visibility("hidden")))
     FFEffectStack *_currentEffectStack;
     BOOL _isOverlay;
     FFAnchoredTimelineModule *_timeline;
+    struct CGRect _visibleRect;
 }
 
+@property(nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 - (BOOL)accessibilityIsIgnored;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
 - (id)accessibilityChildren;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (BOOL)observeAngleForKey:(id)arg1;
-- (void)removeAngleObservers;
-- (void)addAngleObservers;
 - (id)currentItem;
 - (id)effectStack;
 - (id)effectsToDisplay;
@@ -59,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (void)_effectsChanged;
 - (void)_effectStackChanged;
+- (void)_rebuildCurveEditor;
 - (void)pasteKeyframes:(id)arg1;
 - (void)cutKeyframes:(id)arg1;
 - (void)copyKeyframes:(id)arg1;
@@ -75,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)displayMenuForPart:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)contextMenuForPart:(id)arg1;
+- (BOOL)wantsToHandlePredominantDrag;
 - (id)layerAtPoint:(struct CGPoint)arg1 ignoreLayer:(id)arg2;
 - (void)resignFocusOwner;
 - (void)becomeFocusOwner;
@@ -94,6 +94,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initAsOverlayWithObject:(id)arg1 timeline:(id)arg2;
 - (id)initWithObject:(id)arg1 topToBottom:(BOOL)arg2 timeline:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

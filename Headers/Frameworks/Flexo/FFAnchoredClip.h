@@ -57,8 +57,8 @@
 - (id)referencedSequence;
 - (id)clipRef;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
-@property(readonly, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
-@property(readonly, nonatomic) FFEffectStack *videoEffects; // @synthesize videoEffects=_videoEffects;
+@property(readonly, retain, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
+@property(readonly, retain, nonatomic) FFEffectStack *videoEffects; // @synthesize videoEffects=_videoEffects;
 - (BOOL)hasDefinedVideoRate;
 - (BOOL)isReferenceClip;
 - (BOOL)isMultiAngle;

@@ -18,6 +18,7 @@
 + (id)defaultToolManager;
 + (void)initialize;
 - (BOOL)activeToolAllowsEffectOSCs;
+- (Class)toolClassForAnchoredObject:(id)arg1;
 - (Class)editingToolClassForEvent:(id)arg1 target:(id)arg2;
 - (void)selectedItemsChanged:(id)arg1 target:(id)arg2;
 - (void)handleCursorUpdateEvent:(id)arg1 target:(id)arg2;

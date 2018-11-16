@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property BOOL disabled; // @synthesize disabled=_disabled;
 @property int layerNumber; // @synthesize layerNumber=_layerNumber;
 @property(retain) ProPSDLayerRef *layerRef; // @synthesize layerRef=_layerRef;
+- (id).cxx_construct;
 - (int)blendMode;
 - (id)displayName;
 - (double)opacity;

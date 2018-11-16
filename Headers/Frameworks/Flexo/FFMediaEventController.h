@@ -33,6 +33,7 @@
 - (void)syncMediaForEventInBackground:(id)arg1;
 - (BOOL)syncMediaForEvent:(id)arg1 asynchronously:(BOOL)arg2 error:(id *)arg3;
 - (void)syncMedia;
+- (BOOL)syncLibraryDocument:(id)arg1 error:(id *)arg2;
 - (BOOL)_syncMedia:(id *)arg1;
 - (BOOL)_syncMediaForEvent:(id)arg1 selector:(const CDStruct_335aa10f *)arg2 asynchronously:(BOOL)arg3 error:(id *)arg4;
 - (void)_syncCameraClipsForEvent:(id)arg1;

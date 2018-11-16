@@ -11,6 +11,9 @@
 }
 
 - (BOOL)acceptDrop:(id)arg1 childIndex:(long long)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)stopObservingChildNodes;
+- (void)startObservingChildNodes;
 - (void)_sortEventRecords:(id)arg1;
 - (id)_eventRecordsForYear:(long long)arg1;
 - (id)projectsForYear:(long long)arg1;
@@ -19,6 +22,7 @@
 - (void)_updateChildEventNodes;
 - (id)_updateChildYearNodes;
 - (long long)_addEventNode:(id)arg1 toEventNodesByYear:(id)arg2;
+- (id)libraryFolderNode;
 - (id)_updateChildNodesExpandingNodes;
 - (void)updateChildNodes;
 - (BOOL)isExpandable;

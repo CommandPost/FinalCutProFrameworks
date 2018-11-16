@@ -25,9 +25,12 @@
 #import "FxPlugAPIDelegate.h"
 #import "FxRenderNotificationAPI.h"
 #import "FxUndoAPI.h"
+#import "OZFxPlugInternalParamAPI.h"
 #import "PROAPIObject.h"
 
-@interface OZFxPlugParameterHandler : NSObject <FxParameterCreationAPI, FxParameterCreationAPI_v2, FxParameterCreationAPI_v3, FxParameterRetrievalAPI, FxParameterRetrievalAPI_v2, FxParameterRetrievalAPI_v3, FxParameterSettingAPI, FxParameterSettingAPI_v2, FxParameterSettingAPI_v3, FxOptionalParameterCreationAPI, FxOptionalParameterRetrievalAPI, FxOptionalParameterSettingAPI, PROAPIObject, FxPlugAPIDelegate, FxRenderNotificationAPI, FxUndoAPI, FxParameterRetrievalAPIPrivate, FxParameterSettingAPIPrivate, FxParameterAPIPrivate, FxMixingAPI>
+@class NSString;
+
+@interface OZFxPlugParameterHandler : NSObject <FxParameterCreationAPI, FxParameterCreationAPI_v2, FxParameterCreationAPI_v3, FxParameterRetrievalAPI, FxParameterRetrievalAPI_v2, FxParameterRetrievalAPI_v3, FxParameterSettingAPI, FxParameterSettingAPI_v2, FxParameterSettingAPI_v3, FxOptionalParameterCreationAPI, FxOptionalParameterRetrievalAPI, FxOptionalParameterSettingAPI, PROAPIObject, FxPlugAPIDelegate, FxRenderNotificationAPI, FxUndoAPI, FxParameterRetrievalAPIPrivate, FxParameterSettingAPIPrivate, FxParameterAPIPrivate, FxMixingAPI, OZFxPlugInternalParamAPI>
 {
     struct stack<OZChannelFolder *, std::deque<OZChannelFolder *, std::allocator<OZChannelFolder *>>> *_folderStack;
     map_84d8bcc2 *_channelMap;
@@ -52,23 +55,26 @@
     BOOL _hasPointParam;
     BOOL _isNewGradientColorize;
     BOOL _appTerminating;
-    struct OZFxPlugThreadContextManager _threadContextManager;
+    struct OZFxPlugRenderContextManager _threadContextManager;
     struct map<unsigned int, unsigned long long, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned long long>>> *_flagMap;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (struct OZFxPlugRenderContextManager *)contextManager;
 - (id)flexoObjectForSceneNode:(struct OZSceneNode *)arg1;
 - (BOOL)isImageWellMediaFlexoMediaForSceneNode:(struct OZSceneNode *)arg1;
 - (struct GLRenderer *)renderer;
 - (BOOL)_setupRenderer;
 - (void)getLayerOffsetX:(double *)arg1 andOffsetY:(double *)arg2 fromSceneNode:(struct OZSceneNode *)arg3 withRenderParams:(struct OZRenderParams)arg4;
-- (void)finalizeImage:(id)arg1 withSceneNode:(struct OZSceneNode *)arg2 pixelBounds:(PCRect_07ce470f)arg3 agent:(struct LiAgent *)arg4 andRenderParams:(struct OZRenderParams)arg5 atTime:(double)arg6;
+- (void)finalizeImage:(id)arg1 withSceneNode:(struct OZSceneNode *)arg2 pixelBounds:(PCRect_07ce470f)arg3 agent:(struct LiAgent *)arg4 andRenderParams:(struct OZRenderParams)arg5 atTime:(CDUnion_2516e51e)arg6;
 - (double)getPixelAspectRatioFromSceneNode:(struct OZSceneNode *)arg1;
 - (PCPtr_04d56345)makeSourceFromSceneNode:(struct OZSceneNode *)arg1 withRenderParams:(struct OZRenderParams)arg2;
 - (PCRect_b601f9f3)getBoundsFromSceneNode:(struct OZSceneNode *)arg1 withRenderParams:(struct OZRenderParams *)arg2;
 - (BOOL)hasPointParameters;
 - (void)getPointChannel:(struct OZChannel **)arg1 nearestPoint:(PCVector2_79efa81a)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (struct OZRenderState)getTempContextRenderState;
+- (struct OZChannelFolder *)baseChannel;
 - (void)setIsNewGradientColorize:(BOOL)arg1;
 - (vector_20d56dda *)customParameterList;
 - (BOOL)isRendering;
@@ -78,7 +84,6 @@
 - (int)numWriteActions;
 - (void)actionEnded;
 - (void)actionStarted;
-- (void)unsetInputBounds;
 - (void)getFieldMode:(int *)arg1 fromFootage:(struct OZFootage *)arg2;
 - (void)setRenderParams:(const struct OZRenderParams *)arg1 withLithiumInput:(PCPtr_04d56345 *)arg2 withLithiumAgent:(struct LiAgent *)arg3;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
@@ -87,47 +92,66 @@
 - (BOOL)endUndoGroup;
 - (BOOL)startUndoGroup:(id)arg1;
 - (BOOL)setPathID:(void *)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
-- (BOOL)setGradientStartEnd:(double)arg1 startY:(double)arg2 endX:(double)arg3 endY:(double)arg4 toParm:(unsigned int)arg5 atTime:(double)arg6;
-- (BOOL)setStringParameterValue:(id)arg1 toParm:(unsigned int)arg2;
-- (BOOL)setParameterFlags:(unsigned int)arg1 toParm:(unsigned int)arg2;
-- (BOOL)setLevelsBlack:(double)arg1 White:(double)arg2 Gamma:(double)arg3 forParm:(unsigned int)arg4 atTime:(double)arg5;
-- (BOOL)setHistogramBlackIn:(double)arg1 BlackOut:(double)arg2 WhiteIn:(double)arg3 WhiteOut:(double)arg4 Gamma:(double)arg5 forChannel:(unsigned long long)arg6 fromParm:(unsigned int)arg7 atTime:(double)arg8;
 - (BOOL)setCustomParameterValue:(id)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
-- (BOOL)setCustomParameterValue:(id)arg1 toParm:(unsigned int)arg2;
 - (BOOL)setXValue:(double)arg1 YValue:(double)arg2 toParm:(unsigned int)arg3 atTime:(double)arg4;
-- (BOOL)setRedValue:(double)arg1 GreenValue:(double)arg2 BlueValue:(double)arg3 AlphaValue:(double)arg4 toParm:(unsigned int)arg5 atTime:(double)arg6;
 - (BOOL)setRedValue:(double)arg1 greenValue:(double)arg2 blueValue:(double)arg3 alphaValue:(double)arg4 toParm:(unsigned int)arg5 atTime:(double)arg6;
-- (BOOL)setRedValue:(double)arg1 GreenValue:(double)arg2 BlueValue:(double)arg3 toParm:(unsigned int)arg4 atTime:(double)arg5;
 - (BOOL)setRedValue:(double)arg1 greenValue:(double)arg2 blueValue:(double)arg3 toParm:(unsigned int)arg4 atTime:(double)arg5;
 - (BOOL)setBoolValue:(BOOL)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
 - (BOOL)setIntValue:(int)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
 - (BOOL)setFloatValue:(double)arg1 toParm:(unsigned int)arg2 atTime:(double)arg3;
+- (BOOL)_setPathID:(void *)arg1 toParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
+- (BOOL)setGradientStartEnd:(double)arg1 startY:(double)arg2 endX:(double)arg3 endY:(double)arg4 toParm:(unsigned int)arg5 atTime:(CDUnion_2516e51e)arg6;
+- (BOOL)setStringParameterValue:(id)arg1 toParm:(unsigned int)arg2;
+- (BOOL)setParameterFlags:(unsigned int)arg1 toParm:(unsigned int)arg2;
+- (BOOL)setLevelsBlack:(double)arg1 White:(double)arg2 Gamma:(double)arg3 forParm:(unsigned int)arg4 atTime:(CDUnion_2516e51e)arg5;
+- (BOOL)setHistogramBlackIn:(double)arg1 BlackOut:(double)arg2 WhiteIn:(double)arg3 WhiteOut:(double)arg4 Gamma:(double)arg5 forChannel:(unsigned long long)arg6 fromParm:(unsigned int)arg7 atTime:(double)arg8;
+- (BOOL)_setHistogramBlackIn:(double)arg1 BlackOut:(double)arg2 WhiteIn:(double)arg3 WhiteOut:(double)arg4 Gamma:(double)arg5 forChannel:(unsigned long long)arg6 fromParm:(unsigned int)arg7 atTime:(CDUnion_2516e51e)arg8;
+- (BOOL)_setCustomParameterValue:(id)arg1 toParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
+- (BOOL)setCustomParameterValue:(id)arg1 toParm:(unsigned int)arg2;
+- (BOOL)_setXValue:(double)arg1 YValue:(double)arg2 toParm:(unsigned int)arg3 atTime:(CDUnion_2516e51e)arg4;
+- (BOOL)setRedValue:(double)arg1 GreenValue:(double)arg2 BlueValue:(double)arg3 AlphaValue:(double)arg4 toParm:(unsigned int)arg5 atTime:(double)arg6;
+- (BOOL)_setRedValue:(double)arg1 greenValue:(double)arg2 blueValue:(double)arg3 alphaValue:(double)arg4 toParm:(unsigned int)arg5 atTime:(CDUnion_2516e51e)arg6;
+- (BOOL)setRedValue:(double)arg1 GreenValue:(double)arg2 BlueValue:(double)arg3 toParm:(unsigned int)arg4 atTime:(double)arg5;
+- (BOOL)_setRedValue:(double)arg1 greenValue:(double)arg2 blueValue:(double)arg3 toParm:(unsigned int)arg4 atTime:(CDUnion_2516e51e)arg5;
+- (BOOL)_setBoolValue:(BOOL)arg1 toParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
+- (BOOL)_setIntValue:(int)arg1 toParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
+- (BOOL)_setFloatValue:(double)arg1 toParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
 - (BOOL)safeToSetParameters;
 - (void)postChannelChange:(struct OZChannelBase *)arg1 flagsOnly:(BOOL)arg2;
 - (void)preChannelChange:(struct OZChannelBase *)arg1 flagsOnly:(BOOL)arg2;
 - (id)findMotionEffect;
-- (BOOL)getPathID:(void **)arg1 fromParm:(unsigned int)arg2 atTime:(double)arg3;
+- (BOOL)_getPathID:(void **)arg1 fromParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
 - (BOOL)getStringParameterValue:(id *)arg1 fromParm:(unsigned int)arg2;
 - (BOOL)getParameterFlags:(unsigned int *)arg1 fromParm:(unsigned int)arg2;
-- (BOOL)getGradientStartEnd:(double *)arg1 startY:(double *)arg2 endX:(double *)arg3 endY:(double *)arg4 type:(int *)arg5 fromParm:(unsigned int)arg6 atTime:(double)arg7;
+- (BOOL)getGradientStartEnd:(double *)arg1 startY:(double *)arg2 endX:(double *)arg3 endY:(double *)arg4 type:(int *)arg5 fromParm:(unsigned int)arg6 atTime:(CDUnion_2516e51e)arg7;
 - (BOOL)getGradientSamples:(void *)arg1 numSamples:(unsigned long long)arg2 depth:(unsigned long long)arg3 fromParm:(unsigned int)arg4 atTime:(double)arg5;
-- (BOOL)getLevelsBlack:(double *)arg1 White:(double *)arg2 Gamma:(double *)arg3 fromParm:(unsigned int)arg4 atTime:(double)arg5;
+- (BOOL)_getGradientSamples:(void *)arg1 numSamples:(unsigned long long)arg2 depth:(unsigned long long)arg3 fromParm:(unsigned int)arg4 atTime:(CDUnion_2516e51e)arg5;
+- (BOOL)getLevelsBlack:(double *)arg1 White:(double *)arg2 Gamma:(double *)arg3 fromParm:(unsigned int)arg4 atTime:(CDUnion_2516e51e)arg5;
 - (BOOL)getHistogramBlackIn:(double *)arg1 BlackOut:(double *)arg2 WhiteIn:(double *)arg3 WhiteOut:(double *)arg4 Gamma:(double *)arg5 forChannel:(unsigned long long)arg6 fromParm:(unsigned int)arg7 atTime:(double)arg8;
+- (BOOL)_getHistogramBlackIn:(double *)arg1 BlackOut:(double *)arg2 WhiteIn:(double *)arg3 WhiteOut:(double *)arg4 Gamma:(double *)arg5 forChannel:(unsigned long long)arg6 fromParm:(unsigned int)arg7 atTime:(CDUnion_2516e51e)arg8;
+- (BOOL)getPathID:(void **)arg1 fromParm:(unsigned int)arg2 atTime:(double)arg3;
 - (BOOL)getCustomParameterValue:(id *)arg1 fromParm:(unsigned int)arg2 atTime:(double)arg3;
-- (BOOL)getCustomParameterValue:(id *)arg1 fromParm:(unsigned int)arg2;
-- (BOOL)getHeliumImage:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_8b442eb9)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
-- (BOOL)getTexture:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_8b442eb9)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
-- (BOOL)getBitmap:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_8b442eb9)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
-- (BOOL)retrieveImage:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_8b442eb9)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6 retriever:(SEL)arg7 imageType:(unsigned long long)arg8;
-- (BOOL)getAngle:(double *)arg1 fromParm:(unsigned int)arg2 atTime:(double)arg3;
 - (BOOL)getXValue:(double *)arg1 YValue:(double *)arg2 fromParm:(unsigned int)arg3 atTime:(double)arg4;
-- (BOOL)getRedValue:(double *)arg1 GreenValue:(double *)arg2 BlueValue:(double *)arg3 AlphaValue:(double *)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
 - (BOOL)getRedValue:(double *)arg1 greenValue:(double *)arg2 blueValue:(double *)arg3 alphaValue:(double *)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
-- (BOOL)getRedValue:(double *)arg1 GreenValue:(double *)arg2 BlueValue:(double *)arg3 fromParm:(unsigned int)arg4 atTime:(double)arg5;
 - (BOOL)getRedValue:(double *)arg1 greenValue:(double *)arg2 blueValue:(double *)arg3 fromParm:(unsigned int)arg4 atTime:(double)arg5;
 - (BOOL)getBoolValue:(char *)arg1 fromParm:(unsigned int)arg2 atTime:(double)arg3;
 - (BOOL)getIntValue:(int *)arg1 fromParm:(unsigned int)arg2 atTime:(double)arg3;
 - (BOOL)getFloatValue:(double *)arg1 fromParm:(unsigned int)arg2 atTime:(double)arg3;
+- (BOOL)_getCustomParameterValue:(id *)arg1 fromParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
+- (BOOL)getCustomParameterValue:(id *)arg1 fromParm:(unsigned int)arg2;
+- (BOOL)getHeliumImage:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_6b9ed609)arg4 fromParm:(unsigned int)arg5 atTime:(CDUnion_2516e51e)arg6;
+- (BOOL)getTexture:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_6b9ed609)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
+- (BOOL)getBitmap:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_6b9ed609)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
+- (BOOL)retrieveImage:(id *)arg1 layerOffsetX:(double *)arg2 layerOffsetY:(double *)arg3 requestInfo:(CDStruct_6b9ed609)arg4 fromParm:(unsigned int)arg5 atTime:(CDUnion_2516e51e)arg6 retriever:(SEL)arg7 imageType:(unsigned long long)arg8;
+- (BOOL)_getAngle:(double *)arg1 fromParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
+- (BOOL)_getXValue:(double *)arg1 YValue:(double *)arg2 fromParm:(unsigned int)arg3 atTime:(CDUnion_2516e51e)arg4;
+- (BOOL)getRedValue:(double *)arg1 GreenValue:(double *)arg2 BlueValue:(double *)arg3 AlphaValue:(double *)arg4 fromParm:(unsigned int)arg5 atTime:(double)arg6;
+- (BOOL)_getRedValue:(double *)arg1 greenValue:(double *)arg2 blueValue:(double *)arg3 alphaValue:(double *)arg4 fromParm:(unsigned int)arg5 atTime:(CDUnion_2516e51e)arg6;
+- (BOOL)getRedValue:(double *)arg1 GreenValue:(double *)arg2 BlueValue:(double *)arg3 fromParm:(unsigned int)arg4 atTime:(double)arg5;
+- (BOOL)_getRedValue:(double *)arg1 greenValue:(double *)arg2 blueValue:(double *)arg3 fromParm:(unsigned int)arg4 atTime:(CDUnion_2516e51e)arg5;
+- (BOOL)_getBoolValue:(char *)arg1 fromParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
+- (BOOL)_getIntValue:(int *)arg1 fromParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
+- (BOOL)_getFloatValue:(double *)arg1 fromParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
 - (BOOL)addPathPickerWithName:(id)arg1 parmId:(unsigned int)arg2 parmFlags:(unsigned int)arg3;
 - (BOOL)addStringParameterWithName:(id)arg1 parmId:(unsigned int)arg2 defaultValue:(id)arg3 parmFlags:(unsigned int)arg4;
 - (BOOL)addGradientPositionedWithName:(id)arg1 parmId:(unsigned int)arg2 parmFlags:(unsigned int)arg3;
@@ -144,15 +168,15 @@
 - (BOOL)addPointParameterWithName:(id)arg1 parmId:(unsigned int)arg2 defaultX:(double)arg3 defaultY:(double)arg4 parmFlags:(unsigned int)arg5;
 - (BOOL)addColorParameterWithName:(id)arg1 parmId:(unsigned int)arg2 defaultRed:(double)arg3 defaultGreen:(double)arg4 defaultBlue:(double)arg5 defaultAlpha:(double)arg6 parmFlags:(unsigned int)arg7;
 - (BOOL)addColorParameterWithName:(id)arg1 parmId:(unsigned int)arg2 defaultRed:(double)arg3 defaultGreen:(double)arg4 defaultBlue:(double)arg5 parmFlags:(unsigned int)arg6;
-- (void)setColorFromFxPlugColorSpace:(struct PCColor *)arg1 red:(float)arg2 green:(float)arg3 blue:(float)arg4 alpha:(float)arg5;
-- (void)getColorInFxPlugColorSpace:(struct PCColor *)arg1 red:(float *)arg2 green:(float *)arg3 blue:(float *)arg4 alpha:(float *)arg5;
-- (struct CGColorSpace *)getPluginColorSpace;
+- (void)setColorFromFxPlugColorSpace:(struct PCColor *)arg1 red:(float)arg2 green:(float)arg3 blue:(float)arg4 alpha:(float)arg5 atTime:(CDStruct_1b6d18a9)arg6;
+- (void)getColorInFxPlugColorSpace:(struct PCColor *)arg1 red:(float *)arg2 green:(float *)arg3 blue:(float *)arg4 alpha:(float *)arg5 atTime:(CDStruct_1b6d18a9)arg6;
+- (struct CGColorSpace *)getPluginColorSpaceAtTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)addAngleSliderWithName:(id)arg1 parmId:(unsigned int)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 parmFlags:(unsigned int)arg6;
 - (BOOL)addToggleButtonWithName:(id)arg1 parmId:(unsigned int)arg2 defaultValue:(BOOL)arg3 parmFlags:(unsigned int)arg4;
 - (BOOL)addIntSliderWithName:(id)arg1 parmId:(unsigned int)arg2 defaultValue:(int)arg3 parameterMin:(int)arg4 parameterMax:(int)arg5 sliderMin:(int)arg6 sliderMax:(int)arg7 delta:(int)arg8 parmFlags:(unsigned int)arg9;
 - (BOOL)addPercentSliderWithName:(id)arg1 parmId:(unsigned int)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 sliderMin:(double)arg6 sliderMax:(double)arg7 delta:(double)arg8 parmFlags:(unsigned int)arg9;
 - (BOOL)addFloatSliderWithName:(id)arg1 parmId:(unsigned int)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 sliderMin:(double)arg6 sliderMax:(double)arg7 delta:(double)arg8 parmFlags:(unsigned int)arg9;
-- (void)forceRenderAtTime:(double)arg1;
+- (void)forceRenderAtTime:(CDUnion_2516e51e)arg1;
 - (void)movePublishOSCChannelToEnd;
 - (void)copyHiddenChannelsFrom:(id)arg1;
 - (void)reAddHiddenParameters;
@@ -177,7 +201,7 @@
 - (void)addFlipCheckbox:(unsigned int)arg1;
 - (unsigned int)flipCheckbox;
 - (void)setFlipCheckbox:(unsigned int)arg1;
-- (double)mixAmountAtTime:(double)arg1;
+- (double)mixAmountAtTime:(CDUnion_2516e51e)arg1;
 - (struct OZChannelPercent *)mixChannel;
 - (void)addMixSlider:(unsigned int)arg1 withChannel:(struct OZChannelPercent *)arg2;
 - (void)addMixSlider:(unsigned int)arg1;
@@ -187,12 +211,16 @@
 - (void)markForDynamicParameterUsage;
 - (void)endOperationWithChannel:(struct OZChannelBase *)arg1;
 - (void)beginOperationWithChannel:(struct OZChannelBase *)arg1;
-- (CDStruct_1b6d18a9)figTimeInTimeScaleOf:(id)arg1 fromFrames:(double)arg2 inTimeScaleOf:(id)arg3;
+- (CDStruct_1b6d18a9)figTimeInTimeScaleOf:(id)arg1 fromTime:(CDUnion_2516e51e)arg2 inTimeScaleOf:(id)arg3;
+- (BOOL)usesRationalTime;
 - (void)endTimingOperation:(void *)arg1;
-- (void *)beginTimingOperation:(double)arg1 forChannel:(struct OZChannelBase *)arg2;
+- (void *)beginTimingOperation:(CDStruct_1b6d18a9)arg1 forChannel:(struct OZChannelBase *)arg2;
 - (void)setHandlingOSCEvents:(BOOL)arg1;
+- (CDUnion_2516e51e)figDurationToFxDuration:(CDStruct_1b6d18a9 *)arg1 withConversionData:(void *)arg2;
+- (CDUnion_2516e51e)figTimeToFxTime:(CDStruct_1b6d18a9 *)arg1 withConversionData:(void *)arg2;
+- (CDStruct_1b6d18a9)fxTimeToFigTime:(CDUnion_2516e51e)arg1 withConversionData:(void *)arg2;
 - (CDStruct_1b6d18a9)convertToFigTime:(double)arg1;
-- (double)convertFromFigTime:(CDStruct_1b6d18a9)arg1;
+- (double)convertFromFigTime:(const CDStruct_1b6d18a9 *)arg1;
 - (void)updateInspector;
 - (void)updateInspectorAndDeleteChannel:(id)arg1;
 - (void)removeParameter:(unsigned int)arg1;
@@ -203,6 +231,7 @@
 - (void)restoreParameterFlagsForChannel:(struct OZChannelBase *)arg1;
 - (void)saveParameterFlags;
 - (BOOL)containsParameterWithID:(unsigned int)arg1;
+- (vector_77d837c3)imageParamIDs;
 - (void)updateChannelMap;
 - (map_84d8bcc2 *)channelMap;
 - (void)sendNotifications:(id)arg1;
@@ -218,6 +247,12 @@
 - (id)initWithBaseChannel:(struct OZChannelFolder *)arg1 andCopy:(id)arg2 Skip:(int)arg3;
 - (id)initWithBaseChannel:(struct OZChannelFolder *)arg1 andCopy:(id)arg2;
 - (id)initWithBaseChannel:(struct OZChannelFolder *)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

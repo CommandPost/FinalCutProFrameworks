@@ -9,7 +9,7 @@
 #import "FFSpeedEditorDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFSpeedEditorViewModule, PAESpeedEditorPopOverWindow;
+@class FFSpeedEditorViewModule, NSString, PAESpeedEditorPopOverWindow;
 
 @interface PESpeedEditorContainerModule : LKViewModule <FFSpeedEditorDelegate, NSWindowDelegate>
 {
@@ -38,6 +38,12 @@
 - (void)moduleViewWasInstalled:(id)arg1;
 - (struct CGSize)viewMinSize;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

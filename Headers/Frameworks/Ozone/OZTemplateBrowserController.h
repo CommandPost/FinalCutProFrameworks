@@ -7,10 +7,11 @@
 #import "NSWindowController.h"
 
 #import "NSSplitViewDelegate.h"
+#import "OZCurrentVirtualScreenDelegate.h"
 
 @class LKBox, LKButton, LKPopUpButton, LKScrollView, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSArray, NSBox, NSImageView, NSString, NSView, OZPaneCapFooterView, OZSplitView, OZTBSearchFieldDelegate, OZTBTextFieldDelegate, OZTimecodeFormatter, QTMovieView, TBOutlineView, TMMatrix, TMScrollView, TMTemplate;
 
-@interface OZTemplateBrowserController : NSWindowController <NSSplitViewDelegate>
+@interface OZTemplateBrowserController : NSWindowController <NSSplitViewDelegate, OZCurrentVirtualScreenDelegate>
 {
     TBOutlineView *collectionTableView;
     LKPopUpButton *formatPopUp;
@@ -85,11 +86,13 @@
     OZTBSearchFieldDelegate *_sfDelegate;
     BOOL _observersRegistered;
     NSString *_selectedTheme;
+    int currentVirtualScreen;
 }
 
 + (id)sharedController;
 + (BOOL)isInitialized;
 + (void)closeBrowserIfOpen;
+@property int currentVirtualScreen; // @synthesize currentVirtualScreen;
 - (void)willEndSheet;
 - (void)willStartSheet;
 - (struct CGRect)splitView:(id)arg1 additionalEffectiveRectOfDividerAtIndex:(long long)arg2;
@@ -187,6 +190,12 @@
 - (BOOL)_areDurationAndResolutionValid;
 - (BOOL)_isCustomPresetSelected;
 - (void)selectBlankCollection;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -13,6 +13,8 @@
 }
 
 + (id)clipWithDataSource:(id)arg1 volume:(id)arg2;
+- (BOOL)hasTimecode;
+- (BOOL)useAssetImportPath;
 - (BOOL)isiOSClip;
 - (id)uti;
 - (id)clipURLs;
@@ -86,6 +88,7 @@
 - (id)ingestObject;
 - (BOOL)isMediaDurationAccurate;
 - (id)mediaDuration;
+- (id)timecodeStart;
 - (id)mediaStart;
 - (double)transportRate;
 - (id)name;

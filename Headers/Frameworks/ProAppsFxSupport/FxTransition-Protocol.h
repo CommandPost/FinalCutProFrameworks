@@ -9,9 +9,9 @@
 @class FxImage;
 
 @protocol FxTransition <FxBaseEffect>
-- (BOOL)renderOutput:(FxImage *)arg1 withInputA:(FxImage *)arg2 withInputB:(FxImage *)arg3 withTimeFraction:(float)arg4 withInfo:(CDStruct_8b442eb9)arg5;
+- (BOOL)renderOutput:(FxImage *)arg1 withInputA:(FxImage *)arg2 withInputB:(FxImage *)arg3 withTimeFraction:(float)arg4 withInfo:(CDStruct_6b9ed609)arg5;
 - (BOOL)frameCleanup;
-- (BOOL)frameSetup:(CDStruct_8b442eb9)arg1 inputInfoA:(CDStruct_4a07eeda)arg2 inputInfoB:(CDStruct_4a07eeda)arg3 timeFraction:(float)arg4 hardware:(char *)arg5 software:(char *)arg6;
-- (BOOL)getOutputWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 withInputA:(CDStruct_4a07eeda)arg3 withInputB:(CDStruct_4a07eeda)arg4 withTimeFraction:(float)arg5 withInfo:(CDStruct_8b442eb9)arg6;
+- (BOOL)frameSetup:(CDStruct_6b9ed609)arg1 inputInfoA:(CDStruct_4a07eeda)arg2 inputInfoB:(CDStruct_4a07eeda)arg3 timeFraction:(float)arg4 hardware:(char *)arg5 software:(char *)arg6;
+- (BOOL)getOutputWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 withInputA:(CDStruct_4a07eeda)arg3 withInputB:(CDStruct_4a07eeda)arg4 withTimeFraction:(float)arg5 withInfo:(CDStruct_6b9ed609)arg6;
 @end
 

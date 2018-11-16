@@ -25,6 +25,7 @@
 }
 
 @property(nonatomic) BOOL ignoreChanVisibilityState; // @synthesize ignoreChanVisibilityState=_ignoreChanVisibilityState;
+- (void)addCustomItemsToParameterPulldown:(id)arg1;
 - (double)viewFinalOriginY;
 - (double)viewFinalHeight;
 - (struct CGRect)viewFinalFrame;
@@ -58,6 +59,7 @@
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1;
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
 - (void)aboutToChangeController;
+- (BOOL)ignoreDifferingRootIDs;
 - (BOOL)areMultipleAssociatedChannels;
 - (list_eea5731a *)associatedChannelList;
 - (struct OZChannelBase *)associatedChannel;

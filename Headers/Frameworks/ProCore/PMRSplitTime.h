@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     NSString *_comment;
     NSMutableArray *_splitTimes;
     long long _level;
+    unsigned long long _duration;
 }
 
 @property(copy, nonatomic) NSArray *splitTimes; // @synthesize splitTimes=_splitTimes;
+@property(nonatomic) unsigned long long duration; // @synthesize duration=_duration;
 @property(nonatomic) unsigned long long splitTime; // @synthesize splitTime=_splitTime;
 @property(nonatomic) long long level; // @synthesize level=_level;
 @property(copy, nonatomic) NSString *comment; // @synthesize comment=_comment;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)_subtreeDescription;
 - (id)description;
 - (void)dealloc;
+- (id)initWithKey:(id)arg1 comment:(id)arg2 level:(long long)arg3 duration:(unsigned long long)arg4;
 - (id)initWithKey:(id)arg1 comment:(id)arg2 level:(long long)arg3;
 
 @end

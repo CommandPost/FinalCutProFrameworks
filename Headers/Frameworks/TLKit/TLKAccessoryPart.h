@@ -8,7 +8,7 @@
 
 #import "TLKPartInfo.h"
 
-@class NSMenu;
+@class NSMenu, NSString;
 
 @interface TLKAccessoryPart : NSObject <TLKPartInfo>
 {
@@ -23,13 +23,16 @@
 @property int partCode; // @synthesize partCode=_partCode;
 - (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)debugDescription;
-- (id)description;
-- (unsigned long long)hash;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAccessoryPart:(id)arg1;
 - (void)dealloc;
 - (id)initWithPartCode:(int)arg1 representedObject:(id)arg2;
+
+// Remaining properties
+@property(readonly) Class superclass;
 
 @end
 

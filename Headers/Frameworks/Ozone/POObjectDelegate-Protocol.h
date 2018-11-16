@@ -14,6 +14,8 @@
 - (struct OZChannelFolder *)generatorRoot;
 - (BOOL)absolutePoints;
 - (BOOL)shouldFlip;
+- (void)findCustomGradientChannels:(struct vector<OZChannelRef *, std::allocator<OZChannelRef *>> *)arg1;
+- (BOOL)hasCustomGradientChannels;
 - (BOOL)shouldDrawGradientOSC;
 - (void)didSelectContextMenuItem;
 - (void)deleteObject;
@@ -130,5 +132,13 @@
 - (void)enableDistort:(BOOL)arg1;
 - (void)enableCrop:(BOOL)arg1;
 - (unsigned int)getProperties;
+
+@optional
+- (PCVector3_457fd1f0)getPivotBeforeScale;
+- (PCBox_dd92ab54)getLocalVolumeBeforeScale;
+- (void)updateScale:(const PCVector3_457fd1f0 *)arg1 translate:(const PCVector3_457fd1f0 *)arg2 event:(NSEvent *)arg3;
+- (void)getLocalToParentBeforeScale:(PCMatrix44Tmpl_e98c85ee *)arg1 withFlattening:(BOOL)arg2;
+- (void)getLocalToWorldBeforeScale:(PCMatrix44Tmpl_e98c85ee *)arg1 withFlattening:(BOOL)arg2;
+- (void)updateScale:(const PCVector3_457fd1f0 *)arg1 translate:(const PCVector3_457fd1f0 *)arg2;
 @end
 

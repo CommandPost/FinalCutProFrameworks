@@ -7,7 +7,6 @@
 @class NSException, TLKEventDispatcher, TLKPartArray;
 
 @protocol TLKEventDispatcherView
-- (BOOL)dragSelectsRange;
 - (BOOL)eventDispatcher:(TLKEventDispatcher *)arg1 shouldHandleException:(NSException *)arg2;
 - (TLKPartArray *)partArrayAtPoint:(struct CGPoint)arg1;
 @end

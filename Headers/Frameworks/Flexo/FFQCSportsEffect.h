@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 
 + (void)registerEffects;
 - (id)designatedChannelsForXMLExport;
+- (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)createChannelsInFolder:(id)arg1;
 - (struct CGPoint)team2Anchor16x9;
 - (struct CGPoint)team1Anchor16x9;
 - (BOOL)team2ControlsAboveAnchor;
 - (BOOL)team1ControlsAboveAnchor;
+- (BOOL)isTransition;
 - (unsigned long long)teamCount;
 - (BOOL)showPlayer;
 - (BOOL)showTeam2;

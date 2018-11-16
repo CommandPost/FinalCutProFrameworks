@@ -9,7 +9,7 @@
 #import "NSOutlineViewDataSource.h"
 #import "NSOutlineViewDelegate.h"
 
-@class NSOutlineView, OZFileBrowserModule;
+@class NSOutlineView, NSString, OZFileBrowserModule;
 
 @interface OZFileBrowserTopPaneController : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate>
 {
@@ -30,6 +30,12 @@
 - (void)setIgnoreSelectionChange:(BOOL)arg1;
 - (void)dealloc;
 - (id)initWithBrowserController:(id)arg1 outlineView:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

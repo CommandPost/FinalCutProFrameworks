@@ -8,27 +8,24 @@
 
 #import "FFOrganizerFilterHUDTileDelegate.h"
 
-@class FFEventsSuperModule, LKBox, LKButton, LKPopUpButton, LKTextField, LKTileView, NSArray, NSButton, NSDictionary, NSObject<FFOrganizerFilterHUDDelegate>, NSView;
+@class FFEventsSuperModule, LKBox, LKButton, LKPopUpButton, NSArray, NSButton, NSDictionary, NSLayoutConstraint, NSMutableArray, NSObject<FFOrganizerFilterHUDDelegate>, NSTableView, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilterHUD : LKViewModule <FFOrganizerFilterHUDTileDelegate>
 {
-    NSView *_topAccessoryView;
-    NSView *_tileContainerView;
+    NSMutableArray *_filterTileArray;
     NSView *_bottomAccessoryView;
-    LKTextField *_hudTitleTextField;
-    LKBox *_fancyLineBox;
+    NSLayoutConstraint *_bottomAccessoryViewHeightConstraint;
+    LKBox *_topHorizontalLine;
+    LKBox *_bottomHorizontalLine;
     LKPopUpButton *_matchAnyAllPopUp;
-    LKButton *_stacksOnlyCheckBox;
     LKPopUpButton *_addFilterPullDown;
-    LKTileView *_filterTileView;
+    NSTableView *_filterTileTableView;
     LKButton *_newSmartCollectionButton;
-    LKButton *_closeButton;
     NSObject<FFOrganizerFilterHUDDelegate> *_HUDDelegate;
     NSArray *_tilePulldownClassArray;
     NSArray *_tilePulldownTitleArray;
     NSDictionary *_initialFiltersDictionary;
-    double _bottomAccessoryViewHeight;
     struct FFProcrastinatedDispatch_t _procrastinatedUpdate;
     FFEventsSuperModule *_organizerDelegate;
 }
@@ -46,9 +43,14 @@ __attribute__((visibility("hidden")))
 - (void)setFiltersDict:(id)arg1;
 - (id)filtersDict;
 - (void)setNewSmartCollecitonButtonHidden:(BOOL)arg1;
-- (void)setHUDTitle:(id)arg1;
 - (void)newSmartCollectionButtonAction:(id)arg1;
+- (BOOL)selectionShouldChangeInTableView:(id)arg1;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
+- (long long)numberOfRowsInTableView:(id)arg1;
+- (double)tableView:(id)arg1 heightOfRow:(long long)arg2;
+- (id)tableView:(id)arg1 viewForTableColumn:(id)arg2 row:(long long)arg3;
 - (void)_addTileWithNibName:(id)arg1 filterDict:(id)arg2;
+- (id)_newTileWithNibName:(id)arg1 filterDict:(id)arg2;
 - (id)_roleSetsForTile:(id)arg1;
 - (id)_keywordsForTile:(id)arg1;
 - (id)_nibNameForFilterType:(id)arg1;

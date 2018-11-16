@@ -10,7 +10,6 @@
 
 @interface OZHistogramGutterIn : NSProView
 {
-    struct OZChannelHistogram *_pChannelHistogram;
     struct OZChannelLevels *_pChannelLevels;
     struct CGPoint _startingLocation;
     double _startingValue;
@@ -22,6 +21,7 @@
     BOOL _drawGamma;
     NSFont *_labelFont;
     OZViewController *_pViewCtlr;
+    id <OZHistogramManager> _pHistogramManager;
     NSMutableParagraphStyle *_labelJustification;
 }
 
@@ -36,7 +36,8 @@
 - (void)dealloc;
 - (void)setViewController:(id)arg1;
 - (void)setLevelsChannel:(struct OZChannelLevels *)arg1;
-- (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
+- (struct OZChannelHistogram *)histogramChannel;
+- (void)setHistogramManager:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

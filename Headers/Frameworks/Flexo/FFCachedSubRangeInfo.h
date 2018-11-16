@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFSubRangeMD5Info;
+@class FFSVContext, FFSubRangeMD5Info;
 
 __attribute__((visibility("hidden")))
 @interface FFCachedSubRangeInfo : NSObject
@@ -15,16 +15,14 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _start;
     CDStruct_1b6d18a9 _end;
     CDStruct_1b6d18a9 _sd;
-    int _spatialQuality;
-    int _temporalQuality;
-    unsigned int _additionalSVContextRenderingFlags;
+    FFSVContext *_context;
 }
 
 @property(readonly) FFSubRangeMD5Info *info; // @synthesize info=_info;
 - (id).cxx_construct;
-- (_Bool)usableForTime:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2 spatialQ:(int)arg3 temporalQ:(int)arg4 additionalSVContextgFlags:(unsigned int)arg5;
+- (_Bool)usableForTime:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 compareFlags:(unsigned int)arg4;
 - (void)dealloc;
-- (id)initWithInfo:(id)arg1 forSampleDuration:(CDStruct_1b6d18a9)arg2 spatialQ:(int)arg3 temporalQ:(int)arg4 additionalSVContextgFlags:(unsigned int)arg5;
+- (id)initWithInfo:(id)arg1 forSampleDuration:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 
 @end
 

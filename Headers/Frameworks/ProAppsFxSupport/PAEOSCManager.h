@@ -6,11 +6,11 @@
 
 #import "NSObject.h"
 
-#import "FxOnScreenControl_v2.h"
+#import "FxOnScreenControl_v3.h"
 
 @class NSMutableArray, PAEOSC;
 
-@interface PAEOSCManager : NSObject <FxOnScreenControl_v2>
+@interface PAEOSCManager : NSObject <FxOnScreenControl_v3>
 {
     id <PROAPIAccessing> _apiManager;
     NSMutableArray *_OSCs;
@@ -28,16 +28,16 @@
 - (void)notifyDidFocus:(id)arg1;
 - (PCVector2_79efa81a)mouseDownPosition;
 - (PCVector2_79efa81a)mousePosition;
-- (void)keyUp:(double)arg1 positionY:(double)arg2 keyPressed:(unsigned short)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 didHandle:(char *)arg6 time:(double)arg7;
-- (void)keyDown:(double)arg1 positionY:(double)arg2 keyPressed:(unsigned short)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 didHandle:(char *)arg6 time:(double)arg7;
-- (void)mouseUp:(double)arg1 positionY:(double)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 time:(double)arg6;
-- (void)mouseDragged:(double)arg1 positionY:(double)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 time:(double)arg6;
-- (void)mouseExitedWithPositionX:(double)arg1 positionY:(double)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(double)arg5;
-- (void)mouseMovedWithPositionX:(double)arg1 positionY:(double)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 time:(double)arg6;
-- (void)mouseEnteredWithPositionX:(double)arg1 positionY:(double)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 time:(double)arg5;
-- (void)mouseDown:(double)arg1 positionY:(double)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 time:(double)arg6;
+- (void)keyUp:(double)arg1 positionY:(double)arg2 keyPressed:(unsigned short)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 didHandle:(char *)arg6 atFxTime:(CDUnion_2516e51e)arg7;
+- (void)keyDown:(double)arg1 positionY:(double)arg2 keyPressed:(unsigned short)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 didHandle:(char *)arg6 atFxTime:(CDUnion_2516e51e)arg7;
+- (void)mouseUp:(double)arg1 positionY:(double)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 atFxTime:(CDUnion_2516e51e)arg6;
+- (void)mouseDragged:(double)arg1 positionY:(double)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 atFxTime:(CDUnion_2516e51e)arg6;
+- (void)mouseExitedWithPositionX:(double)arg1 positionY:(double)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 atFxTime:(CDUnion_2516e51e)arg5;
+- (void)mouseMovedWithPositionX:(double)arg1 positionY:(double)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 atFxTime:(CDUnion_2516e51e)arg6;
+- (void)mouseEnteredWithPositionX:(double)arg1 positionY:(double)arg2 modifiers:(unsigned long long)arg3 forceUpdate:(char *)arg4 atFxTime:(CDUnion_2516e51e)arg5;
+- (void)mouseDown:(double)arg1 positionY:(double)arg2 activePart:(long long)arg3 modifiers:(unsigned long long)arg4 forceUpdate:(char *)arg5 atFxTime:(CDUnion_2516e51e)arg6;
 - (void)drawEntireCanvasForSelectionWithWidth:(long long)arg1 height:(long long)arg2;
-- (void)drawOSC:(long long)arg1 height:(long long)arg2 activePart:(long long)arg3 time:(double)arg4;
+- (void)drawOSC:(long long)arg1 height:(long long)arg2 activePart:(long long)arg3 atFxTime:(CDUnion_2516e51e)arg4;
 - (unsigned long long)drawingCoordinates;
 - (void)addOSC:(id)arg1;
 - (void)dealloc;

@@ -11,14 +11,15 @@
 #import "FFErrorReportingProtocol.h"
 #import "FFRolesMenuDelegate.h"
 #import "FFSharePanelAnimationProtocol.h"
+#import "FFSharedAppControllerInterface.h"
 #import "NSApplicationDelegate.h"
 #import "NSMenuDelegate.h"
 #import "NSUserInterfaceValidations.h"
 #import "PEFullScreenWindowDelegate.h"
 
-@class CEWelcomeScreenWindowController, FFAnchoredSequence, FFEditActionMgr, LKWindow, NSAlert, NSMenu, NSMenuItem, NSMutableArray, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceOverWindowController, Stopwatch;
+@class FFAnchoredSequence, FFEditActionMgr, FFMessageTracer, LKWindow, NSAlert, NSMenu, NSMenuItem, NSMutableArray, NSString, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceOverWindowController, Stopwatch;
 
-@interface PEAppController : NSObject <FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol>
+@interface PEAppController : NSObject <FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol, FFSharedAppControllerInterface>
 {
     NSMenuItem *_openLibraryMenuItem;
     NSMenuItem *_closeLibraryMenuItem;
@@ -67,16 +68,18 @@
     BOOL _toggleSkimmingIsDown;
     BOOL _toggleSnappingIsDown;
     BOOL _cleanUpFromEventMerge;
+    BOOL _userIsScrollingThroughFonts;
     NSAlert *_coRunningAlert;
     BOOL _showTheaterAfterLaunch;
     struct _flags {
         unsigned int inspectorWasVisible:1;
     } _flags;
     FFEditActionMgr *_editActionMgr;
-    CEWelcomeScreenWindowController *_welcomeScreen;
+    FFMessageTracer *_messageTracer;
 }
 
 + (id)appController;
+@property(nonatomic) BOOL userIsScrollingThroughFonts; // @synthesize userIsScrollingThroughFonts=_userIsScrollingThroughFonts;
 - (struct CGRect)animationStartRectForEditAction:(id)arg1;
 - (id)animationViewForEditAction:(id)arg1;
 - (struct CGImage *)newAnimationImageForEditAction:(id)arg1;
@@ -90,6 +93,8 @@
 - (void)didEvaluateCoachTipStatePredicates:(id)arg1;
 - (void)willEvaluateCoachTipStatePredicates:(id)arg1;
 - (void)_shareUserDestinationsChanged:(id)arg1;
+- (void)setupShareMenu;
+- (BOOL)shareSelectionSupportsAppPreview;
 - (void)_setupShareMenu;
 - (void)_removeShare:(long long)arg1;
 - (void)_moveWorkspaceModulesToFullscreen:(id)arg1 withLabel:(id)arg2 animate:(BOOL)arg3;
@@ -120,6 +125,7 @@
 - (void)removeFromFacebook:(id)arg1;
 - (void)removeFromCNNiReport:(id)arg1;
 - (void)newTrailer:(id)arg1;
+- (void)newAppStorePreviewProject:(id)arg1;
 - (void)newThemedProject:(id)arg1;
 - (void)exportMovieModal:(id)arg1;
 - (void)exportShareArchive:(id)arg1;
@@ -155,9 +161,7 @@
 - (void)insertPlaceholder:(id)arg1;
 - (void)stamp:(id)arg1;
 - (void)lift:(id)arg1;
-- (void)whatsNewInIMovie:(id)arg1;
-- (void)welcomeToIMovie:(id)arg1;
-- (void)cleanupWelcomeScreen;
+- (void)whatsNew:(id)arg1;
 - (void)toggleSportsTeamEditor:(id)arg1;
 - (void)layoutForAudioEditing:(id)arg1;
 - (void)layoutForDefault:(id)arg1;
@@ -211,9 +215,6 @@
 - (void)toggleMediaBrowser:(id)arg1;
 - (void)switchToInspector:(id)arg1;
 - (void)goToColorBoard:(id)arg1;
-- (BOOL)vectorscopeVisible;
-- (BOOL)waveformVisible;
-- (BOOL)histogramVisible;
 - (BOOL)eventViewerScopesVisible;
 - (BOOL)scopesVisible;
 - (void)showVectorscope:(id)arg1;
@@ -248,6 +249,7 @@
 - (void)showFCPFeedback:(id)arg1;
 - (void)showPreferencesHelp:(id)arg1;
 - (void)showSupportedCameras:(id)arg1;
+- (void)showLogicEffectsReference:(id)arg1;
 - (void)showKeyboardShortcuts:(id)arg1;
 - (void)showUpdatingToLibraries:(id)arg1;
 - (void)resetWindowLayout:(id)arg1;
@@ -260,8 +262,6 @@
 - (void)showTrailersInTimeline:(id)arg1;
 - (void)importClipBundle:(id)arg1;
 - (void)exportClipBundle:(id)arg1;
-- (void)dumpNextAudioGraphPlayedToConsole:(id)arg1;
-- (void)viewNextAudioGraphPlayedAsPdf:(id)arg1;
 - (void)dumpSelectionAsModelObjectToDotFile:(id)arg1;
 - (void)dumpSelectedEventAsModelObjectToDotFile:(id)arg1;
 - (BOOL)_dumpSingleObjectToDotFile:(id)arg1;
@@ -290,7 +290,7 @@
 - (id)speedEditor;
 - (id)markerEditor;
 - (id)mediaBrowserModule;
-- (id)consumerVoiceOverModule;
+- (id)consumerTransportControlsModule;
 - (id)consumerInspectorModule;
 - (id)inspectorModule;
 - (id)consumerToolbarModule;
@@ -315,6 +315,7 @@
 - (BOOL)applicationSystemFontIsMedium;
 - (id)_editorSharedPreferences;
 - (void)enableAdjustmentInspector;
+- (void)showAdjustmentInspector;
 - (void)hideAdjustmentInspector;
 - (void)stopPlayback;
 - (void)haveOrganizerOpenInTimeline;
@@ -348,6 +349,12 @@
 - (id)activeEditSourceForToolBar;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

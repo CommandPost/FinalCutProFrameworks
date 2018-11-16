@@ -6,15 +6,17 @@
 
 #import "NSProView.h"
 
-@class FFColorSlider, FFPentaSlider;
+@class FFColorSlider, FFPentaSlider, LKButton;
 
 @interface FFColorView : NSProView
 {
     FFColorSlider *_saturationSlider;
     FFColorSlider *_tintSlider;
     FFPentaSlider *_lumaSlider;
+    LKButton *_resetButton;
 }
 
+@property(retain, nonatomic) LKButton *resetButton; // @synthesize resetButton=_resetButton;
 @property(retain, nonatomic) FFPentaSlider *lumaSlider; // @synthesize lumaSlider=_lumaSlider;
 @property(retain, nonatomic) FFColorSlider *tintSlider; // @synthesize tintSlider=_tintSlider;
 @property(retain, nonatomic) FFColorSlider *saturationSlider; // @synthesize saturationSlider=_saturationSlider;

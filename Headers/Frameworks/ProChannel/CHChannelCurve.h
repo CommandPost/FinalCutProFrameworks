@@ -13,6 +13,9 @@
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 - (struct OZChannelCurve *)ozChannel;
+- (id)vertexChannelFolders;
+- (id)addVertexChannelsWithXMLTypeInfoForX:(id)arg1 andForY:(id)arg2;
+- (id)addNewChannelWithXMLTypeInfo:(id)arg1;
 
 @end
 

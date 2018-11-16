@@ -65,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (struct CGColorSpace *)colorSpace;
 - (int)imageLocation;
 - (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_1b6d18a9)frameDurationForMaximumOutputRate;
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
 - (id)player;
 - (void)setPlayer:(id)arg1;

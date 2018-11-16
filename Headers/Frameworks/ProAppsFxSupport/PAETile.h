@@ -10,13 +10,13 @@
 {
 }
 
-- (BOOL)frameSetup:(CDStruct_8b442eb9)arg1 inputInfo:(CDStruct_4a07eeda)arg2 hardware:(char *)arg3 software:(char *)arg4;
-- (BOOL)canThrowRenderOutput:(id)arg1 withInput:(id)arg2 withInfo:(CDStruct_8b442eb9)arg3;
+- (BOOL)frameSetup:(CDStruct_6b9ed609)arg1 inputInfo:(CDStruct_4a07eeda)arg2 hardware:(char *)arg3 software:(char *)arg4;
+- (BOOL)canThrowRenderOutput:(id)arg1 withInput:(id)arg2 withInfo:(CDStruct_6b9ed609)arg3;
 - (HGRef_0de1db7e)transformAndTile:(HGRef_0de1db7e)arg1 withXValue:(double)arg2 YValue:(double)arg3 skew:(double)arg4 scale:(double)arg5 stretch:(double)arg6 rotation:(double)arg7 resolution:(PCVector2_79efa81a)arg8 inputImage:(id)arg9;
-- (void)retrieveXValue:(double *)arg1 YValue:(double *)arg2 skew:(double *)arg3 scale:(double *)arg4 stretch:(double *)arg5 rotation:(double *)arg6 forOutputImage:(id)arg7 withRenderInfo:(CDStruct_8b442eb9)arg8;
+- (void)retrieveXValue:(double *)arg1 YValue:(double *)arg2 skew:(double *)arg3 scale:(double *)arg4 stretch:(double *)arg5 rotation:(double *)arg6 forOutputImage:(id)arg7 withRenderInfo:(CDStruct_6b9ed609)arg8;
 - (void)_compute_2x2_matrix:(float *)arg1 withScale:(float)arg2 angle:(float)arg3 skew:(float)arg4 stretch:(float)arg5;
 - (BOOL)addParameters;
-- (void)getEdgeMode:(unsigned int *)arg1 withInfo:(CDStruct_8b442eb9)arg2;
+- (void)getEdgeMode:(unsigned int *)arg1 withInfo:(CDStruct_6b9ed609)arg2;
 - (id)properties;
 - (id)initWithAPIManager:(id)arg1;
 

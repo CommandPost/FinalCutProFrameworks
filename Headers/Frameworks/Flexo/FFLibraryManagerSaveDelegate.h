@@ -8,6 +8,8 @@
 
 #import "NSOpenSavePanelDelegate.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface FFLibraryManagerSaveDelegate : NSObject <NSOpenSavePanelDelegate>
 {
@@ -15,6 +17,12 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)panel:(id)arg1 validateURL:(id)arg2 error:(id *)arg3;
 - (id)panel:(id)arg1 userEnteredFilename:(id)arg2 confirmed:(BOOL)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

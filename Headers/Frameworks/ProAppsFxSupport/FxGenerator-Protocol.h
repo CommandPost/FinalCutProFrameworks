@@ -9,8 +9,8 @@
 @class FxImage;
 
 @protocol FxGenerator <FxBaseEffect>
-- (BOOL)renderOutput:(FxImage *)arg1 withInfo:(CDStruct_8b442eb9)arg2;
+- (BOOL)renderOutput:(FxImage *)arg1 withInfo:(CDStruct_6b9ed609)arg2;
 - (BOOL)frameCleanup;
-- (BOOL)frameSetup:(CDStruct_8b442eb9)arg1 hardware:(char *)arg2 software:(char *)arg3;
+- (BOOL)frameSetup:(CDStruct_6b9ed609)arg1 hardware:(char *)arg2 software:(char *)arg3;
 @end
 

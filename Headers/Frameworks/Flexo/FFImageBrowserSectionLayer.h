@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
     BOOL _showDividerLine;
 }
 
-@property(readonly, nonatomic) CALayer *dividerLayer; // @synthesize dividerLayer=_dividerLayer;
-@property(readonly, nonatomic) CALayer *sectionTitleLayer; // @synthesize sectionTitleLayer=_sectionTitleLayer;
+@property(readonly, retain, nonatomic) CALayer *dividerLayer; // @synthesize dividerLayer=_dividerLayer;
+@property(readonly, retain, nonatomic) CALayer *sectionTitleLayer; // @synthesize sectionTitleLayer=_sectionTitleLayer;
 @property(nonatomic) struct _NSRange range; // @synthesize range=_range;
 @property(nonatomic) BOOL showDividerLine; // @synthesize showDividerLine=_showDividerLine;
 @property(nonatomic) double titleLeftMargin; // @synthesize titleLeftMargin=_titleLeftMargin;

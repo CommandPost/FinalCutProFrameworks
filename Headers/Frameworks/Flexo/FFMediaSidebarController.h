@@ -9,7 +9,7 @@
 #import "FFMediaSidebarOutlineViewDelegate.h"
 #import "NSOutlineViewDataSource.h"
 
-@class FFMediaSidebarNode, FFMediaSidebarOutlineView, LKViewModule, NSView;
+@class FFMediaSidebarNode, FFMediaSidebarOutlineView, LKViewModule, NSString, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaSidebarController : NSObject <NSOutlineViewDataSource, FFMediaSidebarOutlineViewDelegate>
@@ -122,6 +122,12 @@ __attribute__((visibility("hidden")))
 - (void)_restoreExpandedPersistentIDs:(id)arg1;
 - (id)_expandedPersistentIDs;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

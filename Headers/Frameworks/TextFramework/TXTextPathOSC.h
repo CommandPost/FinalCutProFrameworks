@@ -44,8 +44,8 @@
 - (void)getLocalToWorld:(PCMatrix44Tmpl_93ed1289 *)arg1 atTime:(const CDStruct_198678f7 *)arg2;
 - (BOOL)selectAll:(id)arg1;
 - (void)addVertexAtTime:(CDStruct_198678f7)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 handleX:(void **)arg5 handleY:(void **)arg6 handleZ:(void **)arg7;
-- (void)moveSelected:(list_816acb53 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
-- (BOOL)offsetSelected:(list_816acb53 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
+- (void)moveSelected:(list_5245b10b *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
+- (BOOL)offsetSelected:(list_5245b10b *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
 - (void)notify:(unsigned int)arg1;
 - (void)drawVertices:(const PCMatrix44Tmpl_93ed1289 *)arg1 mode:(unsigned int)arg2;
 - (void)drawPath;

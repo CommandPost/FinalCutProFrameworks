@@ -9,11 +9,11 @@
 @class NSString;
 
 @protocol MKAnnotation <NSObject>
-@property(readonly, nonatomic) CDStruct_2c43369c coordinate;
+@property(readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
 
 @optional
-@property(readonly, nonatomic) NSString *subtitle;
-@property(readonly, nonatomic) NSString *title;
-- (void)setCoordinate:(CDStruct_2c43369c)arg1;
+@property(readonly, copy, nonatomic) NSString *subtitle;
+@property(readonly, copy, nonatomic) NSString *title;
+- (void)setCoordinate:(CDStruct_c3b9c2ee)arg1;
 @end
 

@@ -12,7 +12,7 @@
 #import "NSSplitViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFCapsController, FFEventLibrarySplitView, FFEventsDetailModule, FFEventsLibraryLinenBackground, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFMediaSidebarModule, FFOrganizerFilterHUD, FFOrganizerTextFieldView, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKTextField, LKWindowModule, NSArray, NSBox, NSMenuItem, NSProView, NSView, NSWindow, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
+@class FFCapsController, FFEventLibrarySplitView, FFEventsDetailModule, FFEventsLibraryLinenBackground, FFItemsContainerView, FFMediaEventProject, FFMediaSidebarModule, FFOrganizerFilterHUD, FFOrganizerTextFieldView, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKTextField, LKWindow, LKWindowModule, NSArray, NSBox, NSMenuItem, NSObject<FFOrganizerFilterHUDDelegate>, NSProView, NSString, NSView, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
 
 @interface FFEventsSuperModule : LKViewModule <FFOrganizerFilmstripModuleDelegate, NSSplitViewDelegate, FFEventsDetailModuleDelegate, FFOrganizerFilterHUDDelegate, NSWindowDelegate>
 {
@@ -22,9 +22,9 @@
     FFEventsDetailModule *_itemsModule;
     FFCapsController *_capsController;
     FFOrganizerFilterHUD *_filterHUD;
-    NSWindow *_filterHUDPopoverWindow;
+    LKWindow *_filterHUDPopoverWindow;
     LKWindowModule *_filterWindowModule;
-    FFMediaEventSmartCollection *_sidebarHUDOwner;
+    NSObject<FFOrganizerFilterHUDDelegate> *_sidebarHUDOwner;
     OKPaneCapFilterMenuAndStatus *_searchStatusCapItem;
     OKPaneCapItemMenu *_filterMenuPaneCapItem;
     OKPaneCapItemMenu *_actionMenuPaneCapItem;
@@ -54,9 +54,11 @@
     LKTextField *_emptyFileImportLabel;
     LKButton *_emptyCameraImport;
     LKButton *_emptyCameraImportBigButton;
+    FFMediaEventProject *_currentMediaEventProject;
 }
 
 + (id)defaultModuleNibName;
+@property(readonly, nonatomic) FFMediaEventProject *currentMediaEventProject; // @synthesize currentMediaEventProject=_currentMediaEventProject;
 @property(retain, nonatomic) FFMediaSidebarModule *mediaSidebarModule; // @synthesize mediaSidebarModule=_mediaSidebarModule;
 @property(readonly, nonatomic) LKMenu *filterPulldownMenu; // @synthesize filterPulldownMenu=_filterPulldownMenu;
 @property(readonly, nonatomic) NSView *sidebarModuleViewContainer; // @synthesize sidebarModuleViewContainer=_sidebarModuleViewContainer;
@@ -119,7 +121,6 @@
 - (BOOL)showFilmstripView;
 - (id)roleSetsForCurrentProject;
 - (id)keywordsForCurrentProject;
-- (id)_scrapedKeywordsFromSidebarProviderArray:(id)arg1;
 - (void)filterHUDDidUpdate:(id)arg1;
 - (id)_submoduleWithTag:(long long)arg1;
 - (void)moveToRangeOfMedia:(id)arg1 andTime:(CDStruct_1b6d18a9)arg2;
@@ -133,6 +134,7 @@
 - (id)selectedItems;
 - (void)openFilterHUDForSidebarItem:(id)arg1 atLocation:(struct CGRect)arg2;
 - (void)filterHUDAction:(id)arg1;
+- (void)_openFilterHUDWithFrame:(struct CGRect)arg1;
 - (void)windowWillClose:(id)arg1;
 - (void)clearFilterToStartingPoint;
 - (void)setTextFilter:(id)arg1;
@@ -144,7 +146,6 @@
 - (id)module:(id)arg1 fieldEditorForView:(id)arg2 cell:(id)arg3;
 - (BOOL)module:(id)arg1 validate:(char *)arg2 userInterfaceItem:(id)arg3;
 - (id)submoduleLayoutArray;
-@property(readonly, nonatomic) FFMediaEventProject *currentMediaEventProject;
 - (id)targetModules;
 - (id)firstKeyView;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
@@ -169,6 +170,12 @@
 @property(readonly) NSView *moduleHeaderAccessoryView;
 - (id)capsController;
 @property(readonly, nonatomic) LKSplitView *splitView;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -9,7 +9,7 @@
 #import "NSWindowDelegate.h"
 #import "OZObjCObserver.h"
 
-@class HUDListEntry, NSTimer;
+@class HUDListEntry, NSString, NSTimer;
 
 @interface OZHUDManager : NSObject <OZObjCObserver, NSWindowDelegate>
 {
@@ -21,6 +21,7 @@
     struct OZDocument *_pDocument;
     list_bbacc03b *_pObjectIDs;
     struct OZToolOptionsHUDComponent *_pCurrOptionsHUDComponent;
+    BOOL _isMouseDown;
 }
 
 + (double)bottomMargin;
@@ -28,6 +29,7 @@
 + (double)horizontalMargin;
 + (void)initialize;
 + (id)instance;
+@property(nonatomic) BOOL isMouseDown; // @synthesize isMouseDown=_isMouseDown;
 - (id).cxx_construct;
 - (id)currentController;
 - (BOOL)windowShouldClose:(id)arg1;
@@ -67,6 +69,12 @@
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

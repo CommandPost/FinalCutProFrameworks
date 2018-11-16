@@ -13,6 +13,6 @@
 - (NSImage *)windowSourceIcon;
 - (NSString *)windowSourceName;
 - (NSArray *)librariesForExport;
-- (BOOL)exportXMLForLibrary:(FFLibrary *)arg1 toURL:(NSURL *)arg2 usingVersion:(NSNumber *)arg3 taskDelegate:(id <FFXMLTaskDelegate>)arg4 error:(id *)arg5;
+- (BOOL)exportXMLForLibrary:(FFLibrary *)arg1 toURL:(NSURL *)arg2 replace:(BOOL)arg3 usingVersion:(NSNumber *)arg4 withMetadataViewSet:(NSString *)arg5 taskDelegate:(id <FFXMLTaskDelegate>)arg6 error:(id *)arg7;
 @end
 

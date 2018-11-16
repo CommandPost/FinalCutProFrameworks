@@ -10,7 +10,7 @@
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 #import "MIOPTPDownloadQueueDelegate.h"
 
-@class FFBackgroundTask, MIOPTPDeviceManager, NSCondition, NSMutableArray, NSMutableDictionary;
+@class FFBackgroundTask, MIOPTPDeviceManager, NSCondition, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface FFPTPDownloadManager : NSObject <MIOPTPDownloadQueueDelegate, FFStorageLocationOutOfDiskSpaceProtocol, FFBackgroundTaskTarget>
 {
@@ -61,6 +61,12 @@
 - (void)dealloc;
 - (oneway void)release;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

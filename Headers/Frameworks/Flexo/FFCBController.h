@@ -44,7 +44,8 @@ __attribute__((visibility("hidden")))
 - (double)hitAreaInsetForPuckType:(int)arg1;
 - (struct CGSize)puckSizeForBoardType:(int)arg1 puckType:(int)arg2;
 - (struct CGSize)defaultPuckSizeForBoardType:(int)arg1;
-- (void)selectPuckForType:(int)arg1 boardType:(int)arg2;
+- (void)deselectPuckForType:(int)arg1 boardType:(int)arg2 resignFocus:(BOOL)arg3;
+- (void)selectPuckForType:(int)arg1 boardType:(int)arg2 becomeFocus:(BOOL)arg3;
 - (BOOL)selectedStateForPuckType:(int)arg1 boardType:(int)arg2;
 - (BOOL)isXAxisConstrainedForPuckType:(int)arg1 boardType:(int)arg2;
 - (BOOL)isYAxisConstrainedForPuckType:(int)arg1 boardType:(int)arg2;
@@ -74,11 +75,12 @@ __attribute__((visibility("hidden")))
 - (void)usePresetAtIndex:(long long)arg1;
 - (long long)numberOfPresets;
 - (void)updatePresets;
-- (void)setColorCorrectionsEnabled:(BOOL)arg1;
-- (BOOL)isColorCorrectionsEnabled;
+- (long long)addCorrection;
+- (BOOL)hasCurrentCorrection;
 - (BOOL)isMaskedForCorrectionID:(long long)arg1;
 - (BOOL)isEnabledForCurrentCorrection;
 - (BOOL)isEnabledForCorrectionID:(long long)arg1;
+- (void)setEnabled:(BOOL)arg1 forCorrectionID:(long long)arg2;
 - (id)nameForCorrectionID:(long long)arg1;
 - (void)setCurrentCorrectionInnerMask:(BOOL)arg1;
 - (BOOL)isCurrentCorrectionInnerMask;

@@ -10,7 +10,7 @@
 #import "FFSkimmingModuleDelegate.h"
 #import "NSTextFieldDelegate.h"
 
-@class CALayer, CATextLayer, FFAudioChannelsConfigWaveformLayer, FFAudioComponentSource, FFThemeFacetLayer, LKButton, LKTextField;
+@class CALayer, CATextLayer, FFAudioChannelsConfigWaveformLayer, FFAudioComponentSource, FFThemeFacetLayer, LKButton, LKTextField, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioChannelsConfigTileChannelView : FFAudioChannelsConfigFlippedView <FFSkimmingModuleDelegate, FFAudioChannelsConfigTextEditDelegate, NSTextFieldDelegate>
@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     id <FFAudioChannelsConfigTileDelegate> m_delegate;
     FFAudioComponentSource *m_componentSource;
     struct NSObject *m_skimmable;
+    BOOL m_skimInContext;
+    CDStruct_e83c9415 m_skimmableClippedRange;
     FFAudioChannelsConfigWaveformLayer *m_waveformLayer;
     int m_colorTheme;
     CALayer *m_backingLayer;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) FFAudioComponentSource *componentSource; // @synthesize componentSource=m_componentSource;
+- (id)skimmingModule:(id)arg1 newContextForSkimmable:(struct NSObject *)arg2;
 - (BOOL)skimmingModule:(id)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
 - (void)skimmingModuleStopSkimmingInViewer:(id)arg1;
 - (BOOL)skimmingModule:(id)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4;
@@ -56,6 +59,12 @@ __attribute__((visibility("hidden")))
 - (void)toggleEnable:(id)arg1;
 - (void)dealloc;
 - (id)initWithComponentSource:(id)arg1 waveformTimeRange:(CDStruct_e83c9415)arg2 colorTheme:(int)arg3 delegate:(id)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

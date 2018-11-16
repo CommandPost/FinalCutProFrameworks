@@ -45,6 +45,7 @@
 - (id)debugDescrptionWithIndentLevel:(unsigned int)arg1;
 - (id)description;
 - (void)dealloc;
+- (id)addNewChannelWithXMLTypeInfo:(id)arg1;
 
 @end
 

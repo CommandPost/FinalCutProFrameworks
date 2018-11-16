@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFImage, FFSubRangeMD5Info, FFTextureBuffer, NSMapTable;
+@class FFGraphBuildInformation, FFImage, FFSubRangeMD5Info, FFTextureBuffer, NSError, NSMapTable;
 
 @interface FFPlayerFrame : NSObject
 {
@@ -20,14 +20,16 @@
     double _rate;
     unsigned int _timecodeType;
     BOOL _viewed;
-    BOOL _isErrorFrame;
     BOOL _isBlankFrame;
     BOOL _isAudioFrame;
     CDStruct_b80813c2 _healthLevels;
     FFSubRangeMD5Info *_image1_MD5;
     FFSubRangeMD5Info *_image2_MD5;
+    FFGraphBuildInformation *_gBuildInfo1;
+    FFGraphBuildInformation *_gBuildInfo2;
     FFTextureBuffer *_overlayTexture;
     NSMapTable *_drawProperties;
+    NSError *_errorInfo;
 }
 
 @property(readonly, nonatomic) CDStruct_1b6d18a9 nativeFrameDur; // @synthesize nativeFrameDur=_nativeFrameDur;
@@ -35,23 +37,24 @@
 @property(readonly, nonatomic) unsigned int timecodeType; // @synthesize timecodeType=_timecodeType;
 @property BOOL isAudioFrame; // @synthesize isAudioFrame=_isAudioFrame;
 @property BOOL isBlankFrame; // @synthesize isBlankFrame=_isBlankFrame;
-@property BOOL isErrorFrame; // @synthesize isErrorFrame=_isErrorFrame;
 @property(readonly, nonatomic) double rate; // @synthesize rate=_rate;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 alwaysFwdTime; // @synthesize alwaysFwdTime=_alwaysFwdTime;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 timeRepresented; // @synthesize timeRepresented=_timeRepresented;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
+- (id)errorInfo;
+- (void)setErrorInfo:(id)arg1;
 - (CDStruct_b80813c2 *)healthLevels;
 - (void)updateHealthLevels:(CDStruct_b80813c2 *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)graphBuildInfo2;
+- (id)graphBuildInfo1;
 - (id)image2_MD5;
 - (id)image1_MD5;
-- (void)setImage2:(id)arg1 withMD5:(id)arg2;
-- (void)setImage1:(id)arg1 withMD5:(id)arg2;
+- (void)setImage2:(id)arg1 withMD5:(id)arg2 graphBuildInfo:(id)arg3;
+- (void)setImage1:(id)arg1 withMD5:(id)arg2 graphBuildInfo:(id)arg3;
 - (id)image2;
 - (id)image1;
-- (void)setImage2:(id)arg1;
-- (void)setImage1:(id)arg1;
 - (BOOL)viewed;
 - (void)setViewed;
 - (id)overlayTexture;

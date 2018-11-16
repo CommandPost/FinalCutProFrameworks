@@ -72,8 +72,7 @@
 - (id)cachedAudioUnit;
 - (void)effectStackAnchoredObjectDidChange;
 - (void)effectWasRemovedFromStack;
-- (void)effectWasReloadedToStack;
-- (void)effectWasAddedToStack;
+- (void)effectWasAddedToStack:(int)arg1;
 - (void)setEffectStack:(id)arg1;
 - (void)_removeAnchoredObjectObserving;
 - (void)_addAnchoredObjectObserving;

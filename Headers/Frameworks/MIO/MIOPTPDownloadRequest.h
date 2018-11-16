@@ -30,18 +30,18 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain) id userData; // @synthesize userData=_userData;
-@property(readonly) NSString *deviceName; // @synthesize deviceName=_deviceName;
-@property(readonly) NSString *clipID; // @synthesize clipID=_clipID;
+@property(readonly, copy) NSString *deviceName; // @synthesize deviceName=_deviceName;
+@property(readonly, copy) NSString *clipID; // @synthesize clipID=_clipID;
 @property BOOL downloadCanceled; // @synthesize downloadCanceled=_downloadCanceled;
 @property(retain) NSDate *downloadStartDate; // @synthesize downloadStartDate=_downloadStartDate;
-@property(readonly) NSString *customCameraName; // @synthesize customCameraName=_customCameraName;
-@property(readonly) NSString *customFileName; // @synthesize customFileName=_customFileName;
-@property(readonly) NSString *tempFileExtension; // @synthesize tempFileExtension=_tempFileExtension;
+@property(readonly, copy) NSString *customCameraName; // @synthesize customCameraName=_customCameraName;
+@property(readonly, copy) NSString *customFileName; // @synthesize customFileName=_customFileName;
+@property(readonly, copy) NSString *tempFileExtension; // @synthesize tempFileExtension=_tempFileExtension;
 @property(copy) NSString *destinationFilePath; // @synthesize destinationFilePath=_destinationFilePath;
 @property(copy) NSString *destinationDirectoryPath; // @synthesize destinationDirectoryPath=_destinationDirectoryPath;
 @property long long bytesRead; // @synthesize bytesRead=_bytesRead;
 @property(readonly) long long fileSize; // @synthesize fileSize=_fileSize;
-@property(readonly) ICCameraFile *cameraFile; // @synthesize cameraFile=_cameraFile;
+@property(readonly, retain) ICCameraFile *cameraFile; // @synthesize cameraFile=_cameraFile;
 - (long long)nextDownloadSegmentSize;
 - (id)fileHandle;
 - (id)generateDestinationFilePathUsingTempFileExtension:(BOOL)arg1;

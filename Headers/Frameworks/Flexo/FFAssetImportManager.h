@@ -10,7 +10,7 @@
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 #import "MIOAssetImportQueueDelegate.h"
 
-@class FFBackgroundTask, MIOAssetImportQueue, NSCondition, NSMutableArray, NSMutableDictionary;
+@class FFBackgroundTask, MIOAssetImportQueue, NSCondition, NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAssetImportManager : NSObject <MIOAssetImportQueueDelegate, FFStorageLocationOutOfDiskSpaceProtocol, FFBackgroundTaskTarget>
@@ -27,7 +27,9 @@ __attribute__((visibility("hidden")))
 
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
-@property(readonly) MIOAssetImportQueue *importQueue; // @synthesize importQueue=_importQueue;
+@property(readonly, retain) MIOAssetImportQueue *importQueue; // @synthesize importQueue=_importQueue;
+- (void)reimportAssetRef:(id)arg1 intoEvent:(id)arg2;
+- (void)postProcessImportRequestForReingest:(id)arg1;
 - (void)postProcessImportRequest:(id)arg1;
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (void)canceledTask:(id)arg1;
@@ -57,6 +59,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (oneway void)release;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

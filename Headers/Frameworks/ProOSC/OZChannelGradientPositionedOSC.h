@@ -34,6 +34,7 @@
 + (void)findChannelGradientPositioned:(struct OZChannelFolder *)arg1 foundChannels:(vector_b0298db6 *)arg2;
 - (BOOL)needsRightMouseEvents;
 - (BOOL)postRedisplayOnActivePartChange;
+- (void)drawWithDrawProperties:(id)arg1;
 - (void)draw;
 - (void)drawTags:(map_ebcf14c8)arg1 color:(BOOL)arg2 renderMode:(int)arg3 start:(const PCVector3_457fd1f0 *)arg4 end:(const PCVector3_457fd1f0 *)arg5 matrix:(const PCMatrix44Tmpl_e98c85ee *)arg6 state:(const struct OZRenderState *)arg7 direction:(PCVector2_79efa81a)arg8 perpendicular:(PCVector2_79efa81a)arg9 handle:(int *)arg10;
 - (id)menuForEvent:(id)arg1;

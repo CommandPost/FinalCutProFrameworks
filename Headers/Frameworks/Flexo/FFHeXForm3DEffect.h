@@ -21,10 +21,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
+- (id)augmentChannelChangeDescriptionForNotification:(id)arg1;
 - (BOOL)supportsReentrancy;
 - (id)inputKeys;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (void)_postInit:(id)arg1;
+- (void)_resetCachedIvars;
 - (void)channelParameterChanged:(id)arg1;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)addMotionPath;

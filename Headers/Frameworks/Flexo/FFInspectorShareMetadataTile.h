@@ -8,7 +8,7 @@
 
 #import "NSTokenFieldDelegate.h"
 
-@class FFInspectorSharingRolloverButton, LKButton, LKMenu, NSProView, NSTrackingArea;
+@class FFInspectorSharingRolloverButton, LKButton, LKMenu, NSProView, NSString, NSTrackingArea;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorShareMetadataTile : FFInspectorShareAutoresizingTile <NSTokenFieldDelegate>
@@ -44,6 +44,12 @@ __attribute__((visibility("hidden")))
 - (void)mouseEntered:(id)arg1;
 - (void)awakeFromNib;
 - (void)updateTracking:(BOOL)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

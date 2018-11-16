@@ -10,7 +10,7 @@
 - (void)operationEnd;
 - (void)operationBegin;
 - (id)associatedModelObject;
-- (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3;
+- (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3 postNotificationOnSelf:(BOOL)arg4;
 - (id)_findDelegate;
 @end
 

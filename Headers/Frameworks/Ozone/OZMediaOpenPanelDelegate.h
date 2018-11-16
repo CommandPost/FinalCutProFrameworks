@@ -8,7 +8,7 @@
 
 #import "NSOpenSavePanelDelegate.h"
 
-@class NSButton, NSOpenPanel, NSView;
+@class NSButton, NSOpenPanel, NSString, NSView;
 
 @interface OZMediaOpenPanelDelegate : NSObject <NSOpenSavePanelDelegate>
 {
@@ -21,6 +21,12 @@
 - (void)panelSelectionDidChange:(id)arg1;
 - (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
 - (BOOL)doSequenceSearch;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

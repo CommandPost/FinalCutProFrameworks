@@ -12,18 +12,20 @@
 
 @interface OZHistogramView : NSProView <OZRenderClient>
 {
-    struct OZChannelHistogram *_pHistogramChannel;
     NSImage *_pHistogramImage;
     NSBitmapImageRep *_pHistogramRep;
     BOOL _histogramOutOfDate;
     struct PCHash128 *_imageHash;
     struct GLRenderer *_renderer;
+    id <OZHistogramManager> _histogramManager;
 }
 
 - (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
 - (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
 - (void)renderCancel:(id)arg1;
 - (void)renderCompletion:(id)arg1;
+- (struct OZChannelHistogram *)histogramChannel;
+- (void)setHistogramManager:(id)arg1;
 - (void)setHistogramOutOfDate:(BOOL)arg1;
 - (void)allocateImage:(struct CGSize)arg1;
 - (void)computeHistogramImage:(struct PCBitmap *)arg1 size:(struct CGSize)arg2;
@@ -33,7 +35,6 @@
 - (void)drawRect:(struct CGRect)arg1;
 - (BOOL)isOpaque;
 - (void)dealloc;
-- (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

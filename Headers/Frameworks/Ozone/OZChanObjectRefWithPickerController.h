@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class LKPopUpButton, NSImage, NSTextField, OZObjectDragTarget;
+@class LKPopUpButton, NSImage, NSString, NSTextField, OZObjectDragTarget;
 
 @interface OZChanObjectRefWithPickerController : OZViewControllerGroup <NSMenuDelegate>
 {
@@ -42,6 +42,12 @@
 - (struct OZScene *)thisScene;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

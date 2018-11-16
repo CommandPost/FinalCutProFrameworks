@@ -9,7 +9,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class CALayer, FFAnchoredTimeMarker, FFContext, FFMarkerLayer, FFOrganizerAbstractChunk, FFOrganizerFilmstripChunk, FFOrganizerFilmstripDurationLayer, FFOrganizerFilmstripViewLayout, FFPlayerModule, FigTimeRangeAndObject, LKPopOverWindow, LKTextField, NSArray, NSDictionary, NSEvent, NSImageView, NSMapTable, NSMutableDictionary, NSSet, NSTextField, NSTrackingArea, NSView;
+@class CALayer, FFAnchoredTimeMarker, FFContext, FFMarkerLayer, FFOrganizerAbstractChunk, FFOrganizerFilmstripChunk, FFOrganizerFilmstripDurationLayer, FFOrganizerFilmstripViewLayout, FFPlayerModule, FigTimeRangeAndObject, LKPopOverWindow, LKTextField, NSArray, NSDictionary, NSEvent, NSImageView, NSMapTable, NSMutableDictionary, NSSet, NSString, NSTextField, NSTrackingArea, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripView : FFOrganizerImportDropResponderLayerHostView <NSTextFieldDelegate, NSWindowDelegate>
@@ -126,6 +126,8 @@ __attribute__((visibility("hidden")))
     struct CGRect _draggedMarkerStartRect;
     FigTimeRangeAndObject *_activePaintToolRO;
     BOOL _reflowingChunks;
+    BOOL _respondingToFirstResponderChange;
+    BOOL _playerIsFullScreen;
     NSView *_actionOptionsView;
 }
 
@@ -146,9 +148,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL singleFilmstripMode; // @synthesize singleFilmstripMode=_singleFilmstripMode;
 @property(retain, nonatomic) NSDictionary *_storedSelectionRangeDataByURL; // @synthesize _storedSelectionRangeDataByURL;
 @property(nonatomic) double frameDuration; // @synthesize frameDuration=_frameDuration;
-@property(nonatomic) double audioHeight; // @synthesize audioHeight=_audioHeight;
 @property(nonatomic) double frameHeight; // @synthesize frameHeight=_frameHeight;
-@property(readonly, nonatomic) FFOrganizerFilmstripViewLayout *layout; // @synthesize layout=_layout;
+@property(readonly, retain, nonatomic) FFOrganizerFilmstripViewLayout *layout; // @synthesize layout=_layout;
 @property(nonatomic) FFPlayerModule *playerModule; // @synthesize playerModule=_playerModule;
 @property(nonatomic) BOOL removingFromModule; // @synthesize removingFromModule=_removingFromModule;
 @property(nonatomic) BOOL skimming; // @synthesize skimming=_skimming;
@@ -184,9 +185,12 @@ __attribute__((visibility("hidden")))
 - (id)_selectionRangeElementWithSelectionMarker:(id)arg1 contextIndex:(unsigned long long)arg2;
 - (id)_mediaElementWithRangeObject:(id)arg1;
 - (id)_chunkContainerElementWithChunkContainer:(id)arg1;
+- (id)_clusterHeaderDisclosureElementWithChunkContainer:(id)arg1;
+- (id)_clusterHeaderElementWithChunkContainer:(id)arg1;
 - (id)_playheadElementAsPersistent:(BOOL)arg1;
 - (BOOL)accessibilityIsIgnored;
 - (id)accessibilityAttributeNames;
+- (struct CGRect)_accessibilityRectForClusterHeader:(id)arg1 disclosureRect:(struct CGRect *)arg2;
 - (struct CGRect)_accessibilityRectForRangeObject:(id)arg1 part:(int)arg2;
 - (struct CGPoint)_snapPoint:(struct CGPoint)arg1 withRange:(id)arg2;
 - (CDStruct_1b6d18a9)_snapTime:(CDStruct_1b6d18a9)arg1 withRange:(id)arg2;
@@ -205,6 +209,7 @@ __attribute__((visibility("hidden")))
 - (void)popOverWindow:(id)arg1 didEndAnimation:(id)arg2;
 - (void)removePlayheadInfoPopoverWithAnimation:(BOOL)arg1;
 - (void)_updatePlayheadInfoPopover:(BOOL)arg1 animate:(BOOL)arg2;
+- (BOOL)durationPopoverShouldShowAndOverrideSkimmerInfoSetting;
 - (void)playheadInfoShouldShow:(BOOL)arg1;
 - (void)_deferredUpdatePlayheadInfoPopover;
 - (id)_playheadInfoPopoverWindowWithChunk:(id)arg1 keywords:(id)arg2 analysisKeywords:(id)arg3 markers:(id)arg4 playheadTime:(CDStruct_1b6d18a9)arg5 arrowDirection:(int)arg6;
@@ -345,6 +350,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_dragCanBeginFromSomeMouseMotion;
 - (BOOL)_dragCanBeginFromVerticalMouseMotion;
 - (BOOL)_dragCanBeginFromHorizontalMouseMotion;
+- (void)_dragClipsOutOfOrganizer:(struct CGPoint)arg1 withEvent:(id)arg2 andRangeAndObjects:(id)arg3;
 - (void)_dragClipsOutOfOrganizer:(struct CGPoint)arg1 event:(id)arg2;
 - (void)_doneDragging:(int)arg1;
 - (struct CGPoint)_pointOfSelectionHandleClosestToPoint:(struct CGPoint)arg1 getOpositeSelectionTime:(CDStruct_1b6d18a9 *)arg2 rangeBeingExtended:(id *)arg3;
@@ -394,9 +400,13 @@ __attribute__((visibility("hidden")))
 - (void)notificationHandler:(id)arg1;
 - (void)_setAutoScrolling:(BOOL)arg1;
 - (void)activeToolDidChange:(id)arg1;
+- (void)_playerDidExitFullScreen:(id)arg1;
+- (void)_playerWillEnterFullScreen:(id)arg1;
+@property(nonatomic) double audioHeight;
 - (void)_restorePlayheadChunkScrollOffsetAfterReload;
 - (id)_clusterFilteredRangesByMetadataValue:(id)arg1;
 - (void)_reflowChunks;
+- (void)_hidePlayerLayer:(BOOL)arg1;
 - (BOOL)_rangesContainClip:(id)arg1;
 - (void)_delayedReflowPlayer;
 - (void)_reflowPlayer;
@@ -444,6 +454,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isImportFilmstripViewMode;
 - (BOOL)_isOrganizerFilmListViewMode;
 - (BOOL)_isOrganizerFilmstripViewMode;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

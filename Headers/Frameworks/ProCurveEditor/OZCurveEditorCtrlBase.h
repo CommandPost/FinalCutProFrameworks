@@ -95,7 +95,9 @@
 - (void)deselectAllChannels;
 - (unsigned int)numberOfSketchedChannels;
 - (id)sketchedChannels;
+- (id)selectedRoots;
 - (id)selectedChannels;
+- (unsigned int)numberOfSelectedRootItems;
 - (unsigned int)numberOfRootItems;
 - (unsigned int)numberOfChannelItems;
 - (unsigned int)numberOfSelectedChannels;
@@ -148,6 +150,7 @@
 - (id)getCurveMenu;
 - (id)getTangentMenu;
 - (id)getKeyframeMenu;
+- (struct CGRect)getMaxViewVolume;
 - (void)didSetViewContentsHorizontalOffset:(double)arg1;
 - (void)didSetViewContentsHorizontalOrigin:(double)arg1 andDuration:(double)arg2;
 - (void)resetDisplayRangeToProjectDuration:(id)arg1;

@@ -29,6 +29,7 @@
 - (void)zoomTimelineIn:(id)arg1;
 - (void)resetDisplayRangeToProjectDuration:(id)arg1;
 - (void)resetDisplayRangeToPlayRange:(id)arg1;
+- (double)getSplitViewDividerPosition;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)setSplitViewDividerPositions:(double)arg1;
 - (id)timelineModule;

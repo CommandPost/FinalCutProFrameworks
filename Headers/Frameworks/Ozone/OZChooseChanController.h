@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class NSPopUpButton;
+@class NSPopUpButton, NSString;
 
 @interface OZChooseChanController : OZViewController <NSMenuDelegate>
 {
@@ -32,6 +32,12 @@
 - (void)enable;
 - (void)update;
 - (id)initWithContext:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class LKPopUpButton;
+@class LKPopUpButton, NSString;
 
 @interface TXFontFamilyPopUpController : OZViewControllerGroup <NSMenuDelegate>
 {
@@ -18,13 +18,13 @@
     BOOL _isMenuOpen;
 }
 
-+ (void)initialize;
-+ (void)rebuildImageCache:(double)arg1;
-+ (id)createImageForFontMenuItem:(id)arg1 size:(struct CGSize)arg2 backingScaleFactor:(double)arg3;
 @property(retain, nonatomic) LKPopUpButton *popUpButton; // @synthesize popUpButton=_popUpButton;
+- (void)setChannel:(struct OZChannel *)arg1 value:(int)arg2 time:(CDStruct_198678f7)arg3;
 - (void)saveDefaultFont:(int)arg1;
 - (void)menu:(id)arg1 willHighlightItem:(id)arg2;
 - (void)menuDidClose:(id)arg1;
+- (void)inspectorWillDealloc;
+- (BOOL)isMenuOpen;
 - (void)menuWillOpen:(id)arg1;
 - (void)setChannelValue:(id)arg1;
 - (void)changeChannel:(id)arg1;
@@ -36,10 +36,16 @@
 - (void)updatePopUpMenu:(BOOL)arg1;
 - (struct OZFontCollection *)getCurrentCollection;
 - (BOOL)areAllChannelsEqual;
-- (void)windowDidChangeBackingProperties:(id)arg1;
 - (void)collectionChanged:(id)arg1;
 - (void)dealloc;
+- (double)backingScaleFactor;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

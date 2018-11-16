@@ -12,9 +12,11 @@
 {
     FFProjectExtrasSidebarController *_contentLibrarySidebarController;
     LKMenu *_contextualMenu;
+    id _previousSidebarSelectionState;
 }
 
 + (id)defaultModuleNibName;
+@property(retain, nonatomic, getter=_previousSidebarSelectionState, setter=_setPreviousSidebarSelectionState:) id previousSidebarSelectionState; // @synthesize previousSidebarSelectionState=_previousSidebarSelectionState;
 @property(retain, nonatomic) LKMenu *contextualMenu; // @synthesize contextualMenu=_contextualMenu;
 @property(retain, nonatomic) FFProjectExtrasSidebarController *contentLibrarySidebarController; // @synthesize contentLibrarySidebarController=_contentLibrarySidebarController;
 - (void)selectDisplayType:(int)arg1;
@@ -22,10 +24,10 @@
 - (void)projectExtrasDidSelectNodes:(id)arg1;
 - (void)sidebarDidSelectNodes:(id)arg1;
 - (void)exportToFinalCut:(id)arg1;
-- (void)sortBy:(id)arg1;
-- (void)arrangebySortOrderAction:(id)arg1;
-- (void)arrangingingPopUpAction:(id)arg1;
+- (void)sortByDateDescending:(id)arg1;
+- (void)sortByDateAscending:(id)arg1;
 - (void)sortByDate:(id)arg1;
+- (void)sortByNameAscending:(id)arg1;
 - (void)sortByName:(id)arg1;
 - (void)newEvent:(id)arg1;
 - (id)localModuleActions;

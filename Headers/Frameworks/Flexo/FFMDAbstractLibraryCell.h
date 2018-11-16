@@ -6,13 +6,12 @@
 
 #import "NSImageCell.h"
 
-@class NSAttributedString, NSString, NSTimer;
+@class NSAttributedString, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMDAbstractLibraryCell : NSImageCell
 {
     NSString *imagePath;
-    NSTimer *durationTimer;
     BOOL mReallyPlaying;
     struct CGRect _movieBounds;
     NSAttributedString *attribTitle;
@@ -74,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfChildren;
 - (id)latestDate;
 - (id)earliestDate;
+- (id)dateRange;
 - (id)displayName;
 - (id)thumbnailAtIndex:(long long)arg1;
 - (id)persistentID;

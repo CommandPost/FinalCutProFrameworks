@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_rigChannelControllers;
 }
 
+- (void)_indentMasksSubControllers;
 - (void)setParentController:(id)arg1;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;

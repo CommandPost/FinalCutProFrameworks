@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)usingScheduledIO;
 - (id)eventDocumentIDAndPath;
 - (int)numSamplesPerFrame;
-- (struct opaqueCMSampleBuffer *)createSampleBuffer:(id)arg1 waitTimeInSeconds:(int)arg2;
+- (struct opaqueCMSampleBuffer *)createSampleBuffer:(id)arg1 outputPTS:(CDStruct_1b6d18a9)arg2 waitTimeInSeconds:(int)arg3;
 - (void)prefetch:(id)arg1 schedToken:(id)arg2;
 - (CDStruct_1b6d18a9)getPresentationTimeStampOfFirstSampleInDecodeOrder;
 - (id)newFFSampleCursorAtPresentationTimeStamp:(CDStruct_1b6d18a9)arg1 fieldDuration:(CDStruct_1b6d18a9)arg2;

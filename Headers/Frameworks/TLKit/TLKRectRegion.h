@@ -16,7 +16,7 @@
 
 - (void)unionRect:(struct CGRect)arg1;
 - (unsigned long long)splitAtLocation:(double)arg1;
-- (struct CGRect)appendRect:(struct CGRect)arg1 toEdge:(int)arg2;
+- (struct CGRect)appendRect:(struct CGRect)arg1 toEdge:(unsigned int)arg2;
 - (struct _NSRange)_rangeOfRectsInLocationRange:(struct _TLKRange)arg1;
 - (unsigned long long)_insertionIndexOfRectAtLocation:(double)arg1;
 - (unsigned long long)hash;

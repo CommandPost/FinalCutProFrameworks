@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)supportedPixelFormats;
 - (struct CGColorSpace *)colorSpace;
 - (void)updateOutputDevice:(id)arg1;
+- (BOOL)hasConnection;
 - (void)disableVideoOutOnRelease;
 - (id)deviceUID;
 - (void)willBecomeActive;

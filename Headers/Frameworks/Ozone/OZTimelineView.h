@@ -89,6 +89,8 @@
 + (BOOL)anyRootsInSetLocked:(set_6f566e68 *)arg1 ignoreBehaviorsAndEffects:(BOOL)arg2;
 + (BOOL)anyRootsLocked:(struct OZChannelFolder *)arg1 checkLinked:(BOOL)arg2 ignoreBehaviorsAndEffects:(BOOL)arg3;
 + (void)getLinkedVideo:(set_6f566e68 *)arg1 fromAudio:(set_6f566e68 *)arg2;
++ (void)pasteKeyframes:(map_984ba245 *)arg1 document:(struct OZDocument *)arg2;
++ (void)copyKeyframes:(map_984ba245 *)arg1 document:(struct OZDocument *)arg2;
 + (void)deleteKeyframes:(map_984ba245 *)arg1;
 @property(nonatomic) BOOL showTimeAxis; // @synthesize showTimeAxis=_showTimeAxis;
 - (id).cxx_construct;

@@ -8,7 +8,6 @@
 
 @class FFAudioComponentSource, FFAudioLayoutItemComponentSource, FFEffectStack, NSString;
 
-__attribute__((visibility("hidden")))
 @interface FFAudioObjectComponentsLayoutItem : FFAudioComponentsLayoutItem
 {
     BOOL m_enabled;
@@ -36,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithAudioComponentsLayoutItem:(id)arg1;
 - (id)initWithName:(id)arg1 channelMap:(id)arg2 audioChannelRoutingMap:(id)arg3;
+- (id)initWithName:(id)arg1 channelMap:(id)arg2 audioChannelRoutingMap:(id)arg3 enabled:(BOOL)arg4;
 
 @end
 

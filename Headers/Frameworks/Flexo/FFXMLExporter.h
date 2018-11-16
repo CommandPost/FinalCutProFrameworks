@@ -6,7 +6,7 @@
 
 #import <Flexo/FFXMLBase.h>
 
-@class FFProject, NSDictionary, NSMapTable, NSURL, NSXMLDocument;
+@class FFMetadataViewSet, FFProject, NSDictionary, NSMapTable, NSMutableArray, NSURL, NSXMLDocument;
 
 __attribute__((visibility("hidden")))
 @interface FFXMLExporter : FFXMLBase
@@ -18,18 +18,23 @@ __attribute__((visibility("hidden")))
     NSMapTable *_resByLocalID;
     NSMapTable *_projectIDMap;
     NSMapTable *_projectElementMap;
+    NSDictionary *_backgroundAssetsDict;
+    NSMutableArray *_errors;
     FFProject *_project;
     id *_alternateRoleLabels;
     NSURL *_destURL;
     NSMapTable *_textStyleMap;
     unsigned int _textStyleCount;
     NSDictionary *_customMetadataRepresentationDict;
+    FFMetadataViewSet *_metadataViewSet;
 }
 
+@property(readonly) unsigned int exportVersion; // @synthesize exportVersion=_exportVersion;
 - (void)dealloc;
-- (id)initWithVersion:(unsigned int)arg1 destURL:(id)arg2 taskDelegate:(id)arg3;
+- (id)initWithVersion:(unsigned int)arg1 metadataViewSet:(id)arg2 destURL:(id)arg3 taskDelegate:(id)arg4;
 - (BOOL)exportEventClips:(id)arg1 error:(id *)arg2;
 - (BOOL)exportEvents:(id)arg1 selectedEventClipsMap:(id)arg2 exportEventFolder:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)prepareDocument;
 - (BOOL)writeDocument:(id)arg1 importOptionsElement:(id)arg2 error:(id *)arg3;
 - (id)newEventProjectNode:(id)arg1 selectedEventClips:(id)arg2 exportEventFolder:(BOOL)arg3;
 - (id)newSequenceProjectNodeForPreV1_4:(id)arg1;
@@ -77,16 +82,20 @@ __attribute__((visibility("hidden")))
 - (void)addBlendAdjustment:(id)arg1 element:(id)arg2;
 - (id)addAdjustment:(id)arg1 name:(id)arg2 type:(CDUnknownFunctionPointerType)arg3 element:(id)arg4;
 - (void)addColorInfo:(id)arg1 element:(id)arg2;
-- (void)addColorASCCDLInfoForMaskEffect:(id)arg1 element:(id)arg2;
+- (void)addColorASCCDLInfoForCorrectionEffect:(id)arg1 element:(id)arg2;
 - (void)addFormat:(id)arg1 element:(id)arg2;
 - (void)addNotes:(id)arg1 element:(id)arg2;
 - (BOOL)addConsumerExportChannelsForEffect:(id)arg1 toElement:(id)arg2;
 - (void)_adjustParameterNode:(id)arg1 sourceParamKey:(id)arg2 forEffect:(id)arg3;
 - (void)moveChildrenFromElement:(id)arg1 toElement:(id)arg2 insertionIndex:(unsigned long long)arg3;
+- (void)addSingleEffect:(id)arg1 element:(id)arg2;
+- (void)addMaskAndEffects:(id)arg1 element:(id)arg2;
+- (void)addColorCorrectionEffectAsAdjustment:(id)arg1 element:(id)arg2;
 - (void)addEffectChannelsForEffect:(id)arg1 element:(id)arg2;
 - (void)addEffectChannels:(id)arg1 rootChannel:(id)arg2 element:(id)arg3 addIfDefault:(BOOL)arg4;
 - (BOOL)addEffectChannelsForFolder:(id)arg1 element:(id)arg2 addIfDefault:(BOOL)arg3 usingFilterBlock:(CDUnknownBlockType)arg4;
 - (BOOL)addEffectChannelsForFolder:(id)arg1 element:(id)arg2 addIfDefault:(BOOL)arg3 usingFilterBlock:(CDUnknownBlockType)arg4 usingParamKeyBlock:(CDUnknownBlockType)arg5;
+- (BOOL)addEffectChannelsForFolder:(id)arg1 element:(id)arg2 addIfDefault:(BOOL)arg3 includeHiddenFolder:(BOOL)arg4 processFolder:(BOOL)arg5 usingFilterBlock:(CDUnknownBlockType)arg6 usingParamKeyBlock:(CDUnknownBlockType)arg7 usingNameBlock:(CDUnknownBlockType)arg8;
 - (BOOL)addChannel:(id)arg1 name:(id)arg2 paramKey:(id)arg3 element:(id)arg4;
 - (BOOL)addChannel:(id)arg1 name:(id)arg2 paramKey:(id)arg3 attribute:(BOOL)arg4 addIfDefault:(BOOL)arg5 element:(id)arg6;
 - (BOOL)addAttributes:(id)arg1 addIfDefault:(BOOL)arg2 element:(id)arg3;
@@ -129,6 +138,8 @@ __attribute__((visibility("hidden")))
 - (id)registerProjectRef:(id)arg1;
 - (id)registerSequenceProject:(id)arg1;
 - (id)registerResource:(id)arg1 name:(id)arg2 modelID:(id)arg3;
+- (BOOL)exportCancelled;
+- (void)log:(id)arg1 warningOnly:(BOOL)arg2;
 
 @end
 

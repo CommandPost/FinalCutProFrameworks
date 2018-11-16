@@ -6,7 +6,7 @@
 
 #import <Flexo/FFOrganizerFilmstripModule.h>
 
-@class FFCapsController, LKButton, LKMenu, LKPopOverWindow, LKSlider, LKTextField, NSPopUpButton, NSProThemeImageView, NSProView, NSString, NSView, OKPaneCapItemMenu;
+@class FFAlwaysHitButton, FFCapsController, LKButton, LKMenu, LKPopOverWindow, LKSearchField, LKSlider, LKTextField, NSPopUpButton, NSProThemeImageView, NSProView, NSString, NSView, OKPaneCapItemMenu;
 
 @interface FFConsumerOrganizerFilmstripModule : FFOrganizerFilmstripModule
 {
@@ -14,6 +14,9 @@
     NSProView *_eventNameContainer;
     LKButton *_eventNameButton;
     LKButton *_selectionInfoButton;
+    FFAlwaysHitButton *_toggleSidebarButton;
+    FFAlwaysHitButton *_dividerLine;
+    LKSearchField *_parentSearchField;
     LKButton *_clipAppearanceButton;
     NSProThemeImageView *_minClipHeightImage;
     NSProThemeImageView *_maxClipHeightImage;
@@ -39,6 +42,7 @@
 @property(retain, nonatomic) LKPopOverWindow *clipAppearanceHUD; // @synthesize clipAppearanceHUD;
 @property(retain, nonatomic) OKPaneCapItemMenu *filterMenuPaneCapItem; // @synthesize filterMenuPaneCapItem;
 @property(retain, nonatomic) NSView *headerView; // @synthesize headerView;
+- (void)clearFilters;
 - (double)rightDraggableExclusionMargin;
 - (id)localModuleActions;
 - (void)refreshFilterMenu;

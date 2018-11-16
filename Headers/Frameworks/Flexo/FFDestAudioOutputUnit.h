@@ -16,6 +16,7 @@
     struct FFAudioPerfRenderHook *_perfHook;
     struct FFAudioSignalClamper *_signalClamp;
     struct FFDestAudioStartTimebaseRenderHook *_startTimebaseHook;
+    struct FFDestAudioOutputUnitIsRunningPropertyMgr *_isRunningPropertyMgr;
 }
 
 - (void)reset;
@@ -26,7 +27,6 @@
 - (void)setPullCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 - (void)setPullGraph:(struct FFAudioGraph *)arg1 node:(struct FFAudioNode *)arg2 elem:(unsigned int)arg3;
 - (unsigned long long)maximumBufferFrames;
-- (unsigned long long)maximumChannels;
 - (void)setSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
 - (BOOL)matchesSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
 - (struct FFAudioNode *)_sourceNode;

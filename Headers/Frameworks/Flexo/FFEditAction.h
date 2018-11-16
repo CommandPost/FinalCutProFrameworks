@@ -20,7 +20,7 @@
 + (id)editActionOfReplaceType:(int)arg1;
 + (id)editActionOfKind:(int)arg1 backTimed:(BOOL)arg2 trackType:(id)arg3;
 @property(readonly, nonatomic) int replaceType; // @synthesize replaceType=_replaceType;
-@property(readonly, nonatomic) NSString *trackType; // @synthesize trackType=_trackType;
+@property(readonly, retain, nonatomic) NSString *trackType; // @synthesize trackType=_trackType;
 @property(readonly, nonatomic) BOOL backTimed; // @synthesize backTimed=_backTimed;
 @property(readonly, nonatomic) int editAction; // @synthesize editAction=_editAction;
 @property(nonatomic) BOOL shouldPerform; // @synthesize shouldPerform=_shouldPerform;

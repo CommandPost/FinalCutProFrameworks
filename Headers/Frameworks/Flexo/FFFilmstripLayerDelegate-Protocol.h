@@ -6,10 +6,14 @@
 
 #import "NSObject.h"
 
+@class FFFilmstripCell, FFFilmstripLayer;
+
 @protocol FFFilmstripLayerDelegate <NSObject>
 - (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
 
 @optional
+- (BOOL)filmstripLayer:(FFFilmstripLayer *)arg1 shouldStretchCellsInRange:(CDStruct_e83c9415)arg2;
+- (BOOL)filmstripLayer:(FFFilmstripLayer *)arg1 shouldUpdateCell:(FFFilmstripCell *)arg2;
 - (BOOL)useImageCache;
 @end
 

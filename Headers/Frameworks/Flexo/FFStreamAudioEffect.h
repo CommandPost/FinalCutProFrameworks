@@ -26,7 +26,9 @@ __attribute__((visibility("hidden")))
 - (id)allInputStreamKeys;
 - (id)firstInputStream;
 - (CDStruct_e83c9415)calculateScopingWindowTimeRange:(CDStruct_e83c9415)arg1 prerollRange:(CDStruct_e83c9415)arg2;
-- (void)advanceScopingWindow:(id)arg1;
+- (void)advanceScopingWindow:(CDStruct_1b6d18a9)arg1 sync:(id)arg2;
+- (void)preRenderEnd;
+- (void)preRenderBegin:(CDStruct_1b6d18a9)arg1 sync:(id)arg2;
 - (void)prerollEnd;
 - (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
 - (void)dealloc;

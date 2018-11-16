@@ -34,12 +34,12 @@
 @property long long bytesRead; // @synthesize bytesRead=_bytesRead;
 @property BOOL importCanceled; // @synthesize importCanceled=_importCanceled;
 @property(retain) NSDate *importStartDate; // @synthesize importStartDate=_importStartDate;
-@property(readonly) NSString *cameraName; // @synthesize cameraName=_cameraName;
-@property(readonly) NSString *tempFileExtension; // @synthesize tempFileExtension=_tempFileExtension;
+@property(readonly, copy) NSString *cameraName; // @synthesize cameraName=_cameraName;
+@property(readonly, copy) NSString *tempFileExtension; // @synthesize tempFileExtension=_tempFileExtension;
 @property(copy) NSString *destinationFilePath; // @synthesize destinationFilePath=_destinationFilePath;
 @property(copy) NSString *destinationDirectoryPath; // @synthesize destinationDirectoryPath=_destinationDirectoryPath;
-@property(readonly) NSString *fileName; // @synthesize fileName=_fileName;
-@property(readonly) NSString *clipID; // @synthesize clipID=_clipID;
+@property(readonly, copy) NSString *fileName; // @synthesize fileName=_fileName;
+@property(readonly, copy) NSString *clipID; // @synthesize clipID=_clipID;
 @property(readonly) CDStruct_e83c9415 importRange; // @synthesize importRange=_importRange;
 @property(readonly) struct OpaqueCMByteStream *byteStream; // @synthesize byteStream=_byteStream;
 - (id)generateDestinationFilePathUsingTempFileExtension:(BOOL)arg1;

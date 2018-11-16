@@ -5,6 +5,6 @@
 //
 
 @protocol FxMixingAPI
-- (double)mixAmountAtTime:(double)arg1;
+- (double)mixAmountAtTime:(CDUnion_2516e51e)arg1;
 @end
 

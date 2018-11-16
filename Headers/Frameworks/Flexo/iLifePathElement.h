@@ -11,16 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface iLifePathElement : NSObject
 {
-    int m_type;
-    NSMutableArray *m_points;
+    int _type;
+    NSMutableArray *_points;
 }
 
 + (id)elementWithCGPathElement:(const struct CGPathElement *)arg1;
-@property(retain, nonatomic) NSMutableArray *points; // @synthesize points=m_points;
-@property(nonatomic) int type; // @synthesize type=m_type;
+@property(retain, nonatomic) NSMutableArray *points; // @synthesize points=_points;
+@property(nonatomic) int type; // @synthesize type=_type;
+- (void).cxx_destruct;
 - (struct CGPoint)endPoint;
 - (struct CGPoint)startPoint;
-- (void)dealloc;
 
 @end
 

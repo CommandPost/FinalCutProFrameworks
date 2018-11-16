@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 @property MIORADManager *radManager; // @synthesize radManager=_radManager;
 @property NSUndoManager *undoManager; // @synthesize undoManager=_undoManager;
 @property BOOL done; // @synthesize done=_done;
-@property(readonly) NSMutableArray *pathArray; // @synthesize pathArray=_pathArray;
-@property(readonly) NSConditionLock *lock; // @synthesize lock=_lock;
+@property(readonly, retain) NSMutableArray *pathArray; // @synthesize pathArray=_pathArray;
+@property(readonly, retain) NSConditionLock *lock; // @synthesize lock=_lock;
 @property(readonly, nonatomic) id <MIORADPlugin><NSObject> plugin; // @synthesize plugin=_plugin;
 - (id)volumeWithPath:(id)arg1 error:(id *)arg2;
 - (id)createVolumeForPath:(id)arg1 error:(id *)arg2;

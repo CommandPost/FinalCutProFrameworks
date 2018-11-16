@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class LKPopUpButton;
+@class LKPopUpButton, NSString;
 
 @interface OZTypefacePopUpController : OZViewController <NSMenuDelegate>
 {
@@ -38,6 +38,12 @@
 - (void)familyChanged:(id)arg1;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

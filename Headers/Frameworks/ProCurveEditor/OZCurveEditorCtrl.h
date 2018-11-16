@@ -9,7 +9,7 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKButton, LKCornerView, LKPaneCapSegmentedControl, LKPanel, LKScrubber, LKSegmentedControl, LKSlider, LKTextField, LKZoomScroller, NSArray, NSMutableArray, NSProHorizontalZoomSlider, OZCurveEditorChannelList, OZCurveEditorListController, OZCurveSet, OZCurveSetAll, OZCurveSetAnimated, OZCurveSetCurrent, OZCurveSetManagerList, OZCurveSetOpacity, OZCurveSetPivot, OZCurveSetPosition, OZCurveSetRetiming, OZCurveSetRotation, OZCurveSetScale, OZCurveSetShear;
+@class LKButton, LKCornerView, LKPaneCapSegmentedControl, LKPanel, LKScrubber, LKSegmentedControl, LKSlider, LKTextField, LKZoomScroller, NSArray, NSMutableArray, NSProHorizontalZoomSlider, NSString, OZCurveEditorChannelList, OZCurveEditorListController, OZCurveSet, OZCurveSetAll, OZCurveSetAnimated, OZCurveSetCurrent, OZCurveSetManagerList, OZCurveSetOpacity, OZCurveSetPivot, OZCurveSetPosition, OZCurveSetRetiming, OZCurveSetRotation, OZCurveSetScale, OZCurveSetShear;
 
 @interface OZCurveEditorCtrl : OZCurveEditorCtrlBase <NSTableViewDelegate, NSWindowDelegate>
 {
@@ -64,6 +64,7 @@
 
 @property(readonly, nonatomic) OZCurveEditorListController *channelsList; // @synthesize channelsList=_channelsList;
 @property(nonatomic) LKPaneCapSegmentedControl *curveSetsPopUp; // @synthesize curveSetsPopUp=_curveSetsPopUp;
+- (CDStruct_1b6d18a9)getTimeOffsetForChannel:(struct OZChannelBase *)arg1;
 - (void)showRetiming:(id)arg1;
 - (void)showPivot:(id)arg1;
 - (void)showShear:(id)arg1;
@@ -104,6 +105,7 @@
 - (void)_refreshViewAndBrowserForItem:(id)arg1;
 - (void)_refreshViewAndBrowser;
 - (void)selectionChangedTo:(id)arg1;
+- (BOOL)shouldAutoZoom;
 - (void)verticalZoomScroll:(id)arg1;
 - (void)setAutoZoom:(id)arg1;
 - (void)setCurrentTool:(id)arg1;
@@ -192,6 +194,12 @@
 - (void)createAutomaticCurveSets;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

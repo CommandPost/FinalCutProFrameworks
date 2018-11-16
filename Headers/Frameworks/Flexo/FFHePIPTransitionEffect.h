@@ -20,7 +20,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (BOOL)supportsReentrancy;
+- (BOOL)effectDurationImpactsMD5;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7 graphBuildInfo:(id)arg8;
 - (struct HGNode *)newBorderDropShadowNode:(struct HGNode *)arg1 inImageBounds:(PCRect_3a266109)arg2 pt:(PCMatrix44Tmpl_93ed1289)arg3 borderWidth:(double)arg4 dropShadow:(BOOL)arg5;
 - (void)createChannelsInFolder:(id)arg1;
 - (id)dropShadowChannel;

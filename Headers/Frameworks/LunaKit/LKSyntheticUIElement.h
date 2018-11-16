@@ -34,7 +34,7 @@
 + (id)standardAttributeNames;
 @property(readonly, nonatomic) id parent; // @synthesize parent=_parent;
 @property(copy, nonatomic) NSString *subrole; // @synthesize subrole=_subrole;
-@property(readonly, nonatomic) NSString *role; // @synthesize role=_role;
+@property(readonly, copy, nonatomic) NSString *role; // @synthesize role=_role;
 @property(nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long contextIndex; // @synthesize contextIndex=_contextIndex;
 @property(retain, nonatomic) id contextObject; // @synthesize contextObject=_contextObject;

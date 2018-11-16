@@ -192,6 +192,22 @@ struct CVSMPTETime {
     short _field9;
 };
 
+struct ColorBalanceOptions {
+    int balanceOption;
+    char wantsFacesOnDemand;
+    struct {
+        double red;
+        double green;
+        double blue;
+    } selection;
+    struct {
+        char *data;
+        double width;
+        double height;
+        unsigned int bytesPerRow;
+    } buffer;
+};
+
 struct Color_Pucks_Container {
     struct CGPoint _field1;
     struct CGPoint _field2;
@@ -255,17 +271,17 @@ struct FFAudioBufferList {
     CDUnknownFunctionPointerType *_field1;
     CDStruct_1b6d18a9 _field2;
     unsigned long long _field3;
-    struct auto_array<char> _field4;
-    struct auto_array<char> _field5;
-    struct AudioBufferList *_field6;
-    struct AudioStreamBasicDescription _field7;
+    struct AudioBufferList *_field4;
+    struct AudioStreamBasicDescription _field5;
+    struct auto_array<char> _field6;
+    struct auto_array<char> _field7;
 };
 
 struct FFAudioBuss;
 
 struct FFAudioDuckingChannelData {
     id _field1;
-    map_b81d382e *_field2;
+    map_226dfcf4 *_field2;
     CDStruct_bdcb2b0d _field3;
     vector_10091177 _field4;
     vector_419cd555 _field5;
@@ -277,17 +293,17 @@ struct FFAudioDuckingMasterRangeData;
 struct FFAudioDynamicScopingWindow {
     CDUnknownFunctionPointerType *_field1;
     CDUnknownFunctionPointerType *_field2;
-    CDUnknownFunctionPointerType *_field3;
+    _Bool _field3;
     _Bool _field4;
     _Bool _field5;
-    _Bool _field6;
-    struct Thread *_field7;
+    struct Thread *_field6;
+    struct Synchronizable _field7;
     struct Synchronizable _field8;
-    struct Synchronizable _field9;
-    unsigned int _field10;
+    unsigned int _field9;
+    _Bool _field10;
     _Bool _field11;
-    _Bool _field12;
-    struct list<FFAudioSourceScope, std::allocator<FFAudioSourceScope>> _field13;
+    struct list<FFAudioSourceScope, std::allocator<FFAudioSourceScope>> _field12;
+    struct vector<FFAudioStreamScope *, std::allocator<FFAudioStreamScope *>> _field13;
     struct vector<FFAudioStreamScope *, std::allocator<FFAudioStreamScope *>> _field14;
     struct vector<FFAudioStreamScope *, std::allocator<FFAudioStreamScope *>> _field15;
     struct vector<FFAudioStreamScope *, std::allocator<FFAudioStreamScope *>> _field16;
@@ -309,12 +325,10 @@ struct FFAudioDynamicScopingWindow {
     struct FFAudioNode *_field32;
     struct FFAudioNode *_field33;
     struct FFAudioNode *_field34;
-    struct FFAudioNode *_field35;
-    unsigned long long _field36;
-    id _field37;
-    struct auto_ptr<FFAudioBuss> _field38;
-    id _field39;
-    id _field40;
+    unsigned long long _field35;
+    id _field36;
+    struct auto_ptr<FFAudioBuss> _field37;
+    id _field38;
 };
 
 struct FFAudioEffectChain;
@@ -402,16 +416,15 @@ struct FFAudioPlayer {
     _Bool _field23;
     _Bool _field24;
     _Bool _field25;
-    struct FFSemaphore *_field26;
+    struct auto_ptr<FFAudioBufferList> _field26;
     struct auto_ptr<FFAudioBufferList> _field27;
-    struct auto_ptr<FFAudioBufferList> _field28;
-    id _field29;
+    id _field28;
+    CDStruct_1b6d18a9 _field29;
     CDStruct_1b6d18a9 _field30;
-    CDStruct_1b6d18a9 _field31;
-    struct auto_ptr<FFAudioBufferList> _field32;
-    struct Synchronizable _field33;
-    _Bool _field34;
-    int _field35;
+    struct auto_ptr<FFAudioBufferList> _field31;
+    struct Synchronizable _field32;
+    _Bool _field33;
+    int _field34;
 };
 
 struct FFAudioPlayerMeteringHook;
@@ -445,11 +458,13 @@ struct FFAudioRecorder {
     struct AudioStreamBasicDescription _field26;
     id _field27;
     CDStruct_1b6d18a9 _field28;
-    _Bool _field29;
-    double _field30;
-    double _field31;
-    unsigned long long _field32;
-    int _field33;
+    id _field29;
+    struct FFConditionLock _field30;
+    _Bool _field31;
+    double _field32;
+    double _field33;
+    unsigned long long _field34;
+    int _field35;
 };
 
 struct FFAudioRecorderBufferWriteTaskQueue;
@@ -578,6 +593,20 @@ struct FFColorAnalysis {
     unsigned int _field19;
 };
 
+struct FFConditionLock {
+    CDUnknownFunctionPointerType *_field1;
+    struct _opaque_pthread_t *_field2;
+    unsigned int _field3;
+    struct _opaque_pthread_mutex_t _field4;
+    struct _opaque_pthread_cond_t _field5;
+    long long _field6;
+};
+
+struct FFDestAudioOutputUnitIsRunningPropertyMgr {
+    struct ComponentInstanceRecord *_field1;
+    _Bool _field2;
+};
+
 struct FFDestAudioStartTimebaseRenderHook {
     CDUnknownFunctionPointerType *_field1;
     struct OpaqueCMTimebase *_field2;
@@ -598,6 +627,16 @@ struct FFKVOAdapterClient {
 };
 
 struct FFLocklessQueue<FFEffectLibraryItemView *> {
+    CDUnknownFunctionPointerType *_field1;
+    int _field2;
+    struct ElementBase *_field3;
+    struct ElementBase *_field4;
+    struct ElementBase *_field5;
+    CDUnknownFunctionPointerType _field6;
+    void *_field7;
+};
+
+struct FFLocklessQueue<FFThumbnailRequest *> {
     CDUnknownFunctionPointerType *_field1;
     int _field2;
     struct ElementBase *_field3;
@@ -647,6 +686,16 @@ struct FFLocklessQueue<void (^)()> {
     void *_field7;
 };
 
+struct FFOSCPointConversionData {
+    CDUnknownFunctionPointerType *_field1;
+    id _field2;
+    struct CGRect _field3;
+    CDStruct_1b6d18a9 _field4;
+    id _field5;
+    id _field6;
+    struct CGRect _field7;
+};
+
 struct FFPMRContextImpl {
     id _field1;
     id _field2;
@@ -667,26 +716,6 @@ struct FFPMRMemoryMeter {
 struct FFPMRSimpleTimer {
     unsigned long long mStartTime;
     unsigned char mShouldLog;
-};
-
-struct FFParameterChaser {
-    struct STParameterEventQueue *_field1;
-    id _field2;
-    struct STParameter *_field3;
-    double _field4;
-    long long _field5;
-    long long _field6;
-    double _field7;
-    unsigned int _field8;
-    CDStruct_1b6d18a9 _field9;
-    _Bool _field10;
-    long long _field11;
-    _Bool _field12;
-    id _field13;
-    _Bool _field14;
-    _Bool _field15;
-    _Bool _field16;
-    _Bool _field17;
 };
 
 struct FFPeaks {
@@ -798,7 +827,100 @@ struct FFScopesBeginVectorscopeViewport {
     struct fbo *_field19;
 };
 
-struct FFSemaphore;
+struct FFSemaphore {
+    CDUnknownFunctionPointerType *_field1;
+    id _field2;
+};
+
+struct FFShape {
+    CDUnknownFunctionPointerType *_field1;
+    struct PCRecursiveMutex _field2;
+    struct OZChannelFolder _field3;
+    struct OZChannelShape _field4;
+    struct OZChannelEnum _field5;
+    struct OZChannelBool _field6;
+    struct OZChannelUint32 _field7;
+    struct OZChannelBool _field8;
+    struct OZChannelPosition _field9;
+    struct OZChannelDouble _field10;
+    _Bool _field11;
+    unsigned int _field12;
+    PCVector2_5d498db0 _field13;
+    struct OZShapeRenderParams *_field14;
+    struct OZShapeRenderParams *_field15;
+    struct list<OZShapeContour *, std::allocator<OZShapeContour *>> _field16;
+    struct list<OZShapeContour *, std::allocator<OZShapeContour *>> _field17;
+    struct list<OZShapeReparametrizedContour *, std::allocator<OZShapeReparametrizedContour *>> _field18;
+    struct OZChannelFolder _field19;
+    struct OZChannelEnum _field20;
+    struct OZChannelColorNoAlpha _field21;
+    struct OZChannelPercent _field22;
+    struct OZChannelGradientPositioned _field23;
+    struct OZChannelFolder _field24;
+    struct OZChannelEnum _field25;
+    struct OZChannelColorNoAlpha _field26;
+    struct OZChannelPercent _field27;
+    struct OZChannelUint32 _field28;
+    struct OZChannelBool _field29;
+    struct OZChannelEnum _field30;
+    struct OZChannelEnum _field31;
+    struct OZChannelEnum _field32;
+    struct OZChannelDouble _field33;
+    struct OZChannelDouble _field34;
+    struct OZChannelEnum _field35;
+    struct OZChannelPercent _field36;
+    struct OZChannelPercent _field37;
+    struct OZChannelPercentOverRange _field38;
+    struct OZChannelBool _field39;
+    struct OZChannelDouble _field40;
+    struct OZChannelPercentOverRange _field41;
+    struct OZChannel2DOverRange _field42;
+    struct OZChannelPercentOverRange _field43;
+    struct OZChannelDouble _field44;
+    struct OZChannelDouble _field45;
+    struct OZChannelEnum _field46;
+    struct OZChannelPercent _field47;
+    struct OZChannel2D _field48;
+    struct OZChannelButton _field49;
+    struct OZChannelBool _field50;
+    struct OZChannelEnum _field51;
+    struct OZChannelBool _field52;
+    struct OZChannelDouble _field53;
+    struct OZChannelDouble _field54;
+    struct OZChannelBool _field55;
+    struct OZChannelBool _field56;
+    struct OZChannelDiscreteColor _field57;
+    struct OZChannelBool _field58;
+    struct OZChannelText _field59;
+    struct OZChannelPosition _field60;
+    struct OZChannelPosition _field61;
+    struct OZChannelPosition _field62;
+    struct OZChannelPosition _field63;
+    struct OZChannelDouble _field64;
+    struct OZChannelPosition _field65;
+    CDStruct_1b6d18a9 _field66;
+    double _field67;
+    double _field68;
+    double _field69;
+    struct vector<PSHVertexData, std::allocator<PSHVertexData>> _field70;
+    _Bool _field71;
+    double _field72;
+    double _field73;
+    double _field74;
+    double _field75;
+    double _field76;
+    double _field77;
+    double _field78;
+    double _field79;
+    struct OZGradientGroupShader *_field80;
+    id _field81;
+    struct OZChannelFolder _field82;
+    struct OZChannelPosition _field83;
+    struct OZChannelAngle _field84;
+    struct OZChannelScale _field85;
+    struct OZChannelEnum _field86;
+    struct OZChannel2D _field87;
+};
 
 struct FFSimpleCropParameters {
     int _field1;
@@ -846,6 +968,12 @@ struct FFVideoDecoderRED {
     int _field9;
     int _field10;
     int *_field11;
+    id _field12;
+    id _field13;
+    int _field14;
+    int _field15;
+    id _field16;
+    _Bool _field17;
 };
 
 struct FFVideoScopesHistogramViewPrivate {
@@ -892,6 +1020,20 @@ struct GainStageParameterChaser;
 
 struct GraphStats;
 
+struct HFDominantMotionTracker;
+
+struct HFDominantMotionTracker2;
+
+struct HFDominantMotionTracker2Interface {
+    CDUnknownFunctionPointerType *_field1;
+    struct HFDominantMotionTracker2 *_field2;
+};
+
+struct HFDominantMotionTrackerInterface {
+    CDUnknownFunctionPointerType *_field1;
+    struct HFDominantMotionTracker *_field2;
+};
+
 struct HFSUniStr255 {
     unsigned short _field1;
     unsigned short _field2[255];
@@ -914,29 +1056,36 @@ struct HGBitmapLoader {
     int _field12;
     struct HGBitmap *_field13;
     _Bool _field14;
-    struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field15;
-    int _field16;
-    struct HGNode *_field17;
-    struct HGRect _field18;
-    struct HGRect _field19;
-    struct HGRenderer *_field20;
-    struct HGBitmap *_field21;
-    int _field22;
-    int _field23;
-    int _field24;
-    struct HGShaderBinding _field25;
-    struct HGNodeChain *_field26;
-    struct HGShaderEntry *_field27;
-    int _field28;
-    struct HGRef<HGBitmap> _field29;
-    struct HGRef<HGTexture> _field30;
-    _Bool _field31;
-    struct HGBitmapLoader *_field32;
-    struct HGNode *_field33;
-    struct HGNode *_field34;
-    struct HGNode *_field35;
-    struct HGNode *_field36;
-    struct HGNode *_field37;
+    _Bool _field15;
+    _Bool _field16;
+    struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field17;
+    int _field18;
+    struct HGNode *_field19;
+    struct HGRect _field20;
+    struct HGRect _field21;
+    struct HGRenderer *_field22;
+    struct HGBitmap *_field23;
+    struct HGNode *_field24;
+    int _field25;
+    int _field26;
+    int _field27;
+    struct HGRect _field28;
+    int _field29;
+    int _field30;
+    struct HGBitmap *_field31;
+    struct HGShaderBinding _field32;
+    struct HGNodeChain *_field33;
+    struct HGShaderEntry *_field34;
+    int _field35;
+    struct HGRef<HGBitmap> _field36;
+    struct HGRef<HGTexture> _field37;
+    _Bool _field38;
+    struct HGBitmapLoader *_field39;
+    struct HGNode *_field40;
+    struct HGNode *_field41;
+    struct HGNode *_field42;
+    struct HGNode *_field43;
+    struct HGNode *_field44;
 };
 
 struct HGBuffer;
@@ -976,56 +1125,63 @@ struct HGColorConform {
     int _field12;
     struct HGBitmap *_field13;
     _Bool _field14;
-    struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field15;
-    int _field16;
-    struct HGNode *_field17;
-    struct HGRect _field18;
-    struct HGRect _field19;
-    struct HGRenderer *_field20;
-    struct HGBitmap *_field21;
-    int _field22;
-    int _field23;
-    int _field24;
-    struct HGShaderBinding _field25;
-    struct HGNodeChain *_field26;
-    struct HGShaderEntry *_field27;
-    int _field28;
-    struct HGNode *_field29;
-    struct HGNode *_field30;
-    struct HGColorConformNodeListCacheItem *_field31;
-    _Bool _field32;
-    int _field33;
-    int _field34;
+    _Bool _field15;
+    _Bool _field16;
+    struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field17;
+    int _field18;
+    struct HGNode *_field19;
+    struct HGRect _field20;
+    struct HGRect _field21;
+    struct HGRenderer *_field22;
+    struct HGBitmap *_field23;
+    struct HGNode *_field24;
+    int _field25;
+    int _field26;
+    int _field27;
+    struct HGRect _field28;
+    int _field29;
+    int _field30;
+    struct HGBitmap *_field31;
+    struct HGShaderBinding _field32;
+    struct HGNodeChain *_field33;
+    struct HGShaderEntry *_field34;
     int _field35;
-    int _field36;
-    int _field37;
-    struct HGRect _field38;
+    struct HGNode *_field36;
+    struct HGNode *_field37;
+    struct HGColorConformNodeListCacheItem *_field38;
     _Bool _field39;
-    _Bool _field40;
-    float _field41;
-    float _field42;
+    int _field40;
+    int _field41;
+    int _field42;
     int _field43;
-    struct __CFData *_field44;
-    float _field45;
-    float _field46;
-    unsigned long long _field47;
-    unsigned long long _field48;
-    unsigned long long _field49;
-    _Bool _field50;
-    int _field51;
-    struct vector<unsigned char, std::allocator<unsigned char>> _field52;
+    int _field44;
+    struct HGRect _field45;
+    _Bool _field46;
+    _Bool _field47;
+    float _field48;
+    float _field49;
+    int _field50;
+    struct __CFData *_field51;
+    float _field52;
     float _field53;
-    float _field54;
-    float _field55;
-    float _field56;
+    unsigned long long _field54;
+    unsigned long long _field55;
+    unsigned long long _field56;
     _Bool _field57;
-    float _field58[3];
-    float _field59[3];
-    float _field60[3];
+    int _field58;
+    struct vector<unsigned char, std::allocator<unsigned char>> _field59;
+    float _field60;
     float _field61;
-    _Bool _field62;
+    float _field62;
     float _field63;
     _Bool _field64;
+    float _field65[3];
+    float _field66[3];
+    float _field67[3];
+    float _field68;
+    _Bool _field69;
+    float _field70;
+    _Bool _field71;
 };
 
 struct HGColorConformNodeListCacheItem;
@@ -1079,13 +1235,8 @@ struct HGGLTexture {
     int _field21;
     int _field22;
     _Bool _field23;
+    _Bool _field24;
 };
-
-struct HGGPUCopyJob;
-
-struct HGImageStatsJob;
-
-struct HGImageStatsParams;
 
 struct HGLUTCacheManager;
 
@@ -1106,20 +1257,27 @@ struct HGNode {
     int _field12;
     struct HGBitmap *_field13;
     _Bool _field14;
-    struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field15;
-    int _field16;
-    struct HGNode *_field17;
-    struct HGRect _field18;
-    struct HGRect _field19;
-    struct HGRenderer *_field20;
-    struct HGBitmap *_field21;
-    int _field22;
-    int _field23;
-    int _field24;
-    struct HGShaderBinding _field25;
-    struct HGNodeChain *_field26;
-    struct HGShaderEntry *_field27;
-    int _field28;
+    _Bool _field15;
+    _Bool _field16;
+    struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> _field17;
+    int _field18;
+    struct HGNode *_field19;
+    struct HGRect _field20;
+    struct HGRect _field21;
+    struct HGRenderer *_field22;
+    struct HGBitmap *_field23;
+    struct HGNode *_field24;
+    int _field25;
+    int _field26;
+    int _field27;
+    struct HGRect _field28;
+    int _field29;
+    int _field30;
+    struct HGBitmap *_field31;
+    struct HGShaderBinding _field32;
+    struct HGNodeChain *_field33;
+    struct HGShaderEntry *_field34;
+    int _field35;
 };
 
 struct HGNodeChain;
@@ -1175,21 +1333,22 @@ struct HGRenderJob {
     struct HGRenderer *_field12;
     int _field13;
     int _field14;
-    unsigned char _field15;
-    unsigned long long _field16;
-    void *_field17;
-    char *_field18;
-    struct HGRenderQueue *_field19;
-    struct HGRenderContext *_field20;
-    CDUnknownFunctionPointerType _field21;
-    unsigned long long _field22;
+    _Bool _field15;
+    unsigned char _field16;
+    unsigned long long _field17;
+    void *_field18;
+    char *_field19;
+    struct HGRenderQueue *_field20;
+    struct HGRenderContext *_field21;
+    CDUnknownFunctionPointerType _field22;
     unsigned long long _field23;
-    unsigned int _field24;
+    unsigned long long _field24;
     unsigned int _field25;
     unsigned int _field26;
-    struct HGSynchronizable *_field27;
+    unsigned int _field27;
     struct HGSynchronizable *_field28;
-    struct vector<HGRenderNode *, std::allocator<HGRenderNode *>> _field29;
+    struct HGSynchronizable *_field29;
+    struct vector<HGRenderNode *, std::allocator<HGRenderNode *>> _field30;
 };
 
 struct HGRenderNode {
@@ -1214,10 +1373,9 @@ struct HGRenderNode {
     char *_field19;
     CDUnknownFunctionPointerType _field20;
     double _field21;
-    struct HGImageStatsParams *_field22;
-    struct HGRenderer *_field23;
-    struct HGRenderJob *_field24;
-    struct HGRenderQueue *_field25;
+    struct HGRenderer *_field22;
+    struct HGRenderJob *_field23;
+    struct HGRenderQueue *_field24;
 };
 
 struct HGRenderQueue {
@@ -1235,80 +1393,64 @@ struct HGRenderQueue {
     int _field12;
     _Bool _field13;
     _Bool _field14;
-    _Bool _field15;
+    unsigned int _field15;
     _Bool _field16;
-    unsigned int _field17;
+    _Bool _field17;
     _Bool _field18;
     _Bool _field19;
-    _Bool _field20;
-    _Bool _field21;
-    unsigned int _field22;
-    int _field23;
-    struct list<HGRenderExecUnit *, std::allocator<HGRenderExecUnit *>> _field24;
-    struct HGSynchronizable *_field25;
-    struct HGSynchronizable *_field26;
-    struct list<HGRenderJob *, std::allocator<HGRenderJob *>> _field27;
-    struct list<HGRenderJob *, std::allocator<HGRenderJob *>> _field28;
-    unsigned long long _field29;
-    unsigned long long _field30;
-    struct map<int, bool, std::less<int>, std::allocator<std::pair<const int, bool>>> _field31;
-    struct map<int, bool, std::less<int>, std::allocator<std::pair<const int, bool>>> _field32;
-    struct map<int, unsigned long long, std::less<int>, std::allocator<std::pair<const int, unsigned long long>>> _field33;
-    struct map<int, HGSynchronizable *, std::less<int>, std::allocator<std::pair<const int, HGSynchronizable *>>> _field34;
-    struct deque<HGRenderJob *, std::allocator<HGRenderJob *>> _field35;
-    struct HGSynchronizable *_field36;
-    _Bool _field37;
-    unsigned long long _field38;
-    struct list<HGUserExecUnit *, std::allocator<HGUserExecUnit *>> _field39;
+    unsigned int _field20;
+    struct list<HGRenderExecUnit *, std::allocator<HGRenderExecUnit *>> _field21;
+    struct HGSynchronizable *_field22;
+    struct HGSynchronizable *_field23;
+    struct list<HGRenderJob *, std::allocator<HGRenderJob *>> _field24;
+    struct list<HGRenderJob *, std::allocator<HGRenderJob *>> _field25;
+    unsigned long long _field26;
+    unsigned long long _field27;
+    struct map<int, bool, std::less<int>, std::allocator<std::pair<const int, bool>>> _field28;
+    struct map<int, bool, std::less<int>, std::allocator<std::pair<const int, bool>>> _field29;
+    struct map<int, unsigned long long, std::less<int>, std::allocator<std::pair<const int, unsigned long long>>> _field30;
+    struct map<int, HGSynchronizable *, std::less<int>, std::allocator<std::pair<const int, HGSynchronizable *>>> _field31;
+    struct deque<HGRenderJob *, std::allocator<HGRenderJob *>> _field32;
+    struct HGSynchronizable *_field33;
+    _Bool _field34;
+    unsigned long long _field35;
+    struct list<HGUserExecUnit *, std::allocator<HGUserExecUnit *>> _field36;
+    struct HGSynchronizable *_field37;
+    struct list<HGUserJob *, std::allocator<HGUserJob *>> _field38;
+    struct deque<HGUserJob *, std::allocator<HGUserJob *>> _field39;
     struct HGSynchronizable *_field40;
-    struct list<HGUserJob *, std::allocator<HGUserJob *>> _field41;
-    struct deque<HGUserJob *, std::allocator<HGUserJob *>> _field42;
-    struct HGSynchronizable *_field43;
-    struct deque<HGImageStatsJob *, std::allocator<HGImageStatsJob *>> _field44;
-    struct HGSynchronizable *_field45;
-    struct list<HGImageStatsExecUnit *, std::allocator<HGImageStatsExecUnit *>> _field46;
+    struct list<HGPBOReadbackExecUnit *, std::allocator<HGPBOReadbackExecUnit *>> _field41;
+    struct HGSynchronizable *_field42;
+    unsigned long long _field43;
+    unsigned long long _field44;
+    unsigned long long _field45;
+    struct deque<HGPBOReadbackJob *, std::allocator<HGPBOReadbackJob *>> _field46;
     struct HGSynchronizable *_field47;
-    _Bool _field48;
-    unsigned long long _field49;
-    unsigned long long _field50;
-    struct list<HGPBOReadbackExecUnit *, std::allocator<HGPBOReadbackExecUnit *>> _field51;
-    struct HGSynchronizable *_field52;
-    unsigned long long _field53;
-    unsigned long long _field54;
-    unsigned long long _field55;
-    struct deque<HGPBOReadbackJob *, std::allocator<HGPBOReadbackJob *>> _field56;
-    struct HGSynchronizable *_field57;
-    struct list<HGPBOReadbackJob *, std::allocator<HGPBOReadbackJob *>> _field58;
-    struct map<HGPixelBufferObj *, unsigned long long, std::less<HGPixelBufferObj *>, std::allocator<std::pair<HGPixelBufferObj *const, unsigned long long>>> _field59;
-    struct HGSynchronizable *_field60;
-    struct deque<HGPixelBufferObj *, std::allocator<HGPixelBufferObj *>> _field61;
-    struct deque<HGRef<HGGLContext>, std::allocator<HGRef<HGGLContext>>> _field62;
-    struct list<HGGPUCopyExecUnit *, std::allocator<HGGPUCopyExecUnit *>> _field63;
-    struct HGSynchronizable *_field64;
-    unsigned long long _field65;
-    unsigned long long _field66;
-    struct deque<HGGPUCopyJob *, std::allocator<HGGPUCopyJob *>> _field67;
-    struct HGSynchronizable *_field68;
+    struct list<HGPBOReadbackJob *, std::allocator<HGPBOReadbackJob *>> _field48;
+    struct map<HGPixelBufferObj *, unsigned long long, std::less<HGPixelBufferObj *>, std::allocator<std::pair<HGPixelBufferObj *const, unsigned long long>>> _field49;
+    struct HGSynchronizable *_field50;
+    struct deque<HGPixelBufferObj *, std::allocator<HGPixelBufferObj *>> _field51;
+    struct deque<HGRef<HGGLContext>, std::allocator<HGRef<HGGLContext>>> _field52;
 };
 
 struct HGRenderer {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
-    struct HGBuffer *_field3;
-    struct HGRendererTextureUnit _field4[8];
-    struct vector<DepthBufferManager *, std::allocator<DepthBufferManager *>> _field5;
-    struct vector<HGExecutionUnit *, std::allocator<HGExecutionUnit *>> _field6;
-    struct HGExecutionData *_field7;
-    struct HGSyncData *_field8;
+    struct HGNode *_field3;
+    struct HGBuffer *_field4;
+    struct HGRendererTextureUnit _field5[8];
+    struct vector<DepthBufferManager *, std::allocator<DepthBufferManager *>> _field6;
+    struct vector<HGExecutionUnit *, std::allocator<HGExecutionUnit *>> _field7;
+    struct HGExecutionData *_field8;
+    struct HGSyncData *_field9;
     struct _opaque_pthread_rwlock_t {
         long long _field1;
         char _field2[192];
-    } _field9;
-    struct _opaque_pthread_mutex_t _field10;
-    struct HGLUTCacheManager *_field11;
-    struct GraphStats *_field12;
-    struct RendererStats *_field13;
-    int _field14;
+    } _field10;
+    struct _opaque_pthread_mutex_t _field11;
+    struct HGLUTCacheManager *_field12;
+    struct GraphStats *_field13;
+    struct RendererStats *_field14;
     int _field15;
     int _field16;
     int _field17;
@@ -1335,20 +1477,25 @@ struct HGRenderer {
     int _field38;
     int _field39;
     int _field40;
-    struct HGCache _field41;
-    _Bool _field42;
-    _Bool _field43;
-    _Bool _field44;
-    unsigned int _field45;
-    struct HGLimits *_field46;
-    int _field47;
-    struct HGDotTree _field48;
-    struct HGBufferDumper _field49;
-    unsigned int _field50;
-    int _field51;
-    unsigned long long _field52;
-    unsigned long long _field53;
+    int _field41;
+    int _field42;
+    int _field43;
+    struct HGCache _field44;
+    _Bool _field45;
+    _Bool _field46;
+    _Bool _field47;
+    unsigned int _field48;
+    struct HGLimits *_field49;
+    int _field50;
+    struct HGDotTree _field51;
+    struct HGBufferDumper _field52;
+    unsigned int _field53;
     int _field54;
+    unsigned long long _field55;
+    unsigned long long _field56;
+    int _field57;
+    struct HGRenderQueue *_field58;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field59;
 };
 
 struct HGRendererTextureUnit {
@@ -1385,14 +1532,6 @@ struct HistoRange;
 
 struct ID {
     struct __CFString *mRef;
-};
-
-struct IHDominantMotionTracker2Interface {
-    CDUnknownFunctionPointerType *_field1;
-};
-
-struct IHDominantMotionTrackerInterface {
-    CDUnknownFunctionPointerType *_field1;
 };
 
 struct LSItemInfoRecord {
@@ -1465,6 +1604,8 @@ struct OMHistoLumRegion;
 
 struct OMRgbChar;
 
+struct OZChannel;
+
 struct OZChannel2D {
     CDUnknownFunctionPointerType *_field1;
     struct OZFactory *_field2;
@@ -1486,6 +1627,30 @@ struct OZChannel2D {
     _Bool _field18;
     struct OZChannelDouble _field19;
     struct OZChannelDouble _field20;
+};
+
+struct OZChannel2DOverRange {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    _Bool _field18;
+    struct OZChannelDouble _field19;
+    struct OZChannelDouble _field20;
+    struct PCString _field21;
 };
 
 struct OZChannelAngle {
@@ -1525,6 +1690,108 @@ struct OZChannelBase {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
+};
+
+struct OZChannelBool {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
+};
+
+struct OZChannelButton {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
+    CDUnknownFunctionPointerType _field20;
+    struct PCString _field21;
+    void *_field22;
+    struct PCString _field23;
+};
+
+struct OZChannelColorNoAlpha {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    _Bool _field18;
+    struct OZChannelDouble _field19;
+    struct OZChannelDouble _field20;
+    struct OZChannelDouble _field21;
+    struct OZChannelDouble _field22;
+    struct OZChannelEnum _field23;
+};
+
+struct OZChannelDiscreteColor {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
+    struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
+    struct PCString _field21;
+    struct vector<int, std::allocator<int>> _field22;
+    unsigned int _field23;
+    struct PCString _field24;
+    struct vector<PCString, std::allocator<PCString>> _field25;
 };
 
 struct OZChannelDouble {
@@ -1570,9 +1837,11 @@ struct OZChannelEnum {
     struct OZChannelInfo *_field18;
     struct OZCurve *_field19;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
-    struct vector<int, std::allocator<int>> _field21;
-    struct PCString _field22;
+    struct PCString _field21;
+    struct vector<int, std::allocator<int>> _field22;
     unsigned int _field23;
+    struct PCString _field24;
+    struct vector<PCString, std::allocator<PCString>> _field25;
 };
 
 struct OZChannelEnumInterpMode {
@@ -1596,9 +1865,11 @@ struct OZChannelEnumInterpMode {
     struct OZChannelInfo *_field18;
     struct OZCurve *_field19;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field20;
-    struct vector<int, std::allocator<int>> _field21;
-    struct PCString _field22;
+    struct PCString _field21;
+    struct vector<int, std::allocator<int>> _field22;
     unsigned int _field23;
+    struct PCString _field24;
+    struct vector<PCString, std::allocator<PCString>> _field25;
 };
 
 struct OZChannelFolder {
@@ -1668,6 +1939,7 @@ struct OZChannelGradientPositioned {
     struct OZChannelEnum _field24;
     struct OZChannelPosition _field25;
     struct OZChannelPosition _field26;
+    _Bool _field27;
 };
 
 struct OZChannelGradientRGBFolder {
@@ -1738,6 +2010,29 @@ struct OZChannelPercent {
     struct OZChannelInfo *_field17;
     struct OZChannelInfo *_field18;
     struct OZCurve *_field19;
+};
+
+struct OZChannelPercentOverRange {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
+    struct PCString _field20;
 };
 
 struct OZChannelPosition {
@@ -1834,6 +2129,29 @@ struct OZChannelRotation3D {
     struct PCSpinLock _field23;
 };
 
+struct OZChannelScale {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    _Bool _field18;
+    struct OZChannelDouble _field19;
+    struct OZChannelDouble _field20;
+};
+
 struct OZChannelScale3D {
     CDUnknownFunctionPointerType *_field1;
     struct OZFactory *_field2;
@@ -1858,11 +2176,166 @@ struct OZChannelScale3D {
     struct OZChannelDouble _field21;
 };
 
+struct OZChannelShape {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
+    struct OZChannelVertexFolder _field20;
+    struct OZDynamicCurve _field21;
+    struct OZDynamicCurve _field22;
+    double _field23;
+    double _field24;
+    double _field25;
+    double _field26;
+    double _field27;
+    _Bool _field28;
+    _Bool _field29;
+    void *_field30;
+    vector_419cd555 _field31;
+    vector_419cd555 _field32;
+    struct OZShape *_field33;
+};
+
+struct OZChannelText {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
+    struct PCString _field20;
+    _Bool _field21;
+};
+
 struct OZChannelTimeConverter;
+
+struct OZChannelUint32 {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
+    struct OZCurve *_field19;
+};
+
+struct OZChannelVertexFolder {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> *_field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    struct OZChannel *_field18;
+};
 
 struct OZCurve;
 
+struct OZDynamicCurve {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZDynamicSpline _field2;
+    struct OZSplineState _field3;
+};
+
+struct OZDynamicSpline {
+    CDUnknownFunctionPointerType *_field1;
+    struct PCSpinLock _field2;
+    struct vector<OZVertex *, std::allocator<OZVertex *>> _field3;
+    struct __normal_iterator<OZVertex **, std::vector<OZVertex *, std::allocator<OZVertex *>>> _field4;
+    struct __normal_iterator<OZVertex **, std::vector<OZVertex *, std::allocator<OZVertex *>>> _field5;
+    struct OZVertex *_field6;
+    struct OZVertex *_field7;
+    struct __normal_iterator<OZVertex **, std::vector<OZVertex *, std::allocator<OZVertex *>>> _field8;
+    struct __normal_iterator<OZVertex **, std::vector<OZVertex *, std::allocator<OZVertex *>>> _field9;
+    struct vector<OZVertex *, std::allocator<OZVertex *>> _field10;
+    _Bool _field11;
+    int _field12;
+    int _field13;
+    _Bool _field14;
+    _Bool _field15;
+    struct OZInterpolators *_field16;
+    struct OZSplineNode *_field17;
+    struct OZSplineState *_field18;
+};
+
 struct OZFactory;
+
+struct OZGradientGroupShader;
+
+struct OZInterpolators;
+
+struct OZShape;
+
+struct OZShapeRenderParams;
+
+struct OZSplineNode;
+
+struct OZSplineState {
+    _Bool _field1;
+    _Bool _field2;
+    _Bool _field3;
+    _Bool _field4;
+    _Bool _field5;
+    CDStruct_1b6d18a9 _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+    _Bool _field10;
+};
+
+struct OZVertex;
 
 struct OpaqueAUGraph;
 
@@ -1916,6 +2389,10 @@ struct PCRect<double> {
     double _field4;
 };
 
+struct PCRecursiveMutex {
+    struct _opaque_pthread_mutex_t _field1;
+};
+
 struct PCSharedCount {
     struct PC_Sp_counted_base *_field1;
 };
@@ -1965,13 +2442,9 @@ struct PC_Sp_counted_base;
 
 struct POVertexAsset;
 
-struct RendererStats;
+struct PSHVertexData;
 
-struct SFUZipEndOfCentralDirectory {
-    unsigned long long _field1;
-    long long _field2;
-    long long _field3;
-};
+struct RendererStats;
 
 struct SMPTETime {
     short mSubframes;
@@ -1984,10 +2457,6 @@ struct SMPTETime {
     short mSeconds;
     short mFrames;
 };
-
-struct STParameter;
-
-struct STParameterEventQueue;
 
 struct StartTimebaseTask;
 
@@ -2014,6 +2483,8 @@ struct Table<unsigned long> {
 };
 
 struct TaskQueue;
+
+struct TextureBufferRecord;
 
 struct TextureHandle {
     struct shared_ptr<ProGL::Private::TextureImpl> _field1;
@@ -3089,18 +3560,11 @@ struct _CGLContextObject {
 
 struct _CGLPrivateObject;
 
-struct _Deque_iterator<HGGPUCopyJob *, HGGPUCopyJob *&, HGGPUCopyJob **> {
-    struct HGGPUCopyJob **_field1;
-    struct HGGPUCopyJob **_field2;
-    struct HGGPUCopyJob **_field3;
-    struct HGGPUCopyJob ***_field4;
-};
-
-struct _Deque_iterator<HGImageStatsJob *, HGImageStatsJob *&, HGImageStatsJob **> {
-    struct HGImageStatsJob **_field1;
-    struct HGImageStatsJob **_field2;
-    struct HGImageStatsJob **_field3;
-    struct HGImageStatsJob ***_field4;
+struct _CleanSegmentStoreFrameInfo {
+    unsigned long long _field1;
+    unsigned int _field2;
+    unsigned short _field3[2];
+    unsigned long long _field4;
 };
 
 struct _Deque_iterator<HGPBOReadbackJob *, HGPBOReadbackJob *&, HGPBOReadbackJob **> {
@@ -3203,6 +3667,14 @@ struct _Rb_tree<FFAudioNode *, FFAudioNode *, std::_Identity<FFAudioNode *>, std
     struct _Rb_tree_impl<std::less<FFAudioNode *>, false> _field1;
 };
 
+struct _Rb_tree<FFMD5, FFMD5, std::_Identity<FFMD5>, std::less<FFMD5>, std::allocator<FFMD5>> {
+    struct _Rb_tree_impl<std::less<FFMD5>, false> _field1;
+};
+
+struct _Rb_tree<FFSVQualityEnum, std::pair<const FFSVQualityEnum, double>, std::_Select1st<std::pair<const FFSVQualityEnum, double>>, std::less<FFSVQualityEnum>, std::allocator<std::pair<const FFSVQualityEnum, double>>> {
+    struct _Rb_tree_impl<std::less<FFSVQualityEnum>, false> _field1;
+};
+
 struct _Rb_tree<HGNodeInput *, HGNodeInput *, std::_Identity<HGNodeInput *>, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> {
     struct _Rb_tree_impl<std::less<HGNodeInput *>, false> _field1;
 };
@@ -3213,6 +3685,10 @@ struct _Rb_tree<HGPixelBufferObj *, std::pair<HGPixelBufferObj *const, unsigned 
 
 struct _Rb_tree<NSString *, std::pair<NSString *const, NSArray *>, std::_Select1st<std::pair<NSString *const, NSArray *>>, std::less<NSString *>, std::allocator<std::pair<NSString *const, NSArray *>>> {
     struct _Rb_tree_impl<std::less<NSString *>, false> _field1;
+};
+
+struct _Rb_tree<_opaque_pthread_t *, std::pair<_opaque_pthread_t *const, FFStreamSharedHGNodeInfo *>, std::_Select1st<std::pair<_opaque_pthread_t *const, FFStreamSharedHGNodeInfo *>>, std::less<_opaque_pthread_t *>, std::allocator<std::pair<_opaque_pthread_t *const, FFStreamSharedHGNodeInfo *>>> {
+    struct _Rb_tree_impl<std::less<_opaque_pthread_t *>, false> _M_impl;
 };
 
 struct _Rb_tree<int, std::pair<const int, HGSynchronizable *>, std::_Select1st<std::pair<const int, HGSynchronizable *>>, std::less<int>, std::allocator<std::pair<const int, HGSynchronizable *>>> {
@@ -3253,6 +3729,18 @@ struct _Rb_tree_impl<std::less<FFAudioNode *>, false> {
     unsigned long long _field3;
 };
 
+struct _Rb_tree_impl<std::less<FFMD5>, false> {
+    struct less<FFMD5> _field1;
+    struct _Rb_tree_node_base _field2;
+    unsigned long long _field3;
+};
+
+struct _Rb_tree_impl<std::less<FFSVQualityEnum>, false> {
+    struct less<FFSVQualityEnum> _field1;
+    struct _Rb_tree_node_base _field2;
+    unsigned long long _field3;
+};
+
 struct _Rb_tree_impl<std::less<HGNodeInput *>, false> {
     struct less<HGNodeInput *> _field1;
     struct _Rb_tree_node_base _field2;
@@ -3269,6 +3757,12 @@ struct _Rb_tree_impl<std::less<NSString *>, false> {
     struct less<NSString *> _field1;
     struct _Rb_tree_node_base _field2;
     unsigned long long _field3;
+};
+
+struct _Rb_tree_impl<std::less<_opaque_pthread_t *>, false> {
+    struct less<_opaque_pthread_t *> _M_key_compare;
+    struct _Rb_tree_node_base _M_header;
+    unsigned long long _M_node_count;
 };
 
 struct _Rb_tree_impl<std::less<int>, false> {
@@ -3294,10 +3788,10 @@ struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::al
 };
 
 struct _Rb_tree_node_base {
-    int _field1;
-    struct _Rb_tree_node_base *_field2;
-    struct _Rb_tree_node_base *_field3;
-    struct _Rb_tree_node_base *_field4;
+    int _M_color;
+    struct _Rb_tree_node_base *_M_parent;
+    struct _Rb_tree_node_base *_M_left;
+    struct _Rb_tree_node_base *_M_right;
 };
 
 struct _SegmentStoreFileHeader {
@@ -3315,6 +3809,11 @@ struct _SegmentStoreFrameInfo {
 
 struct _Sp_counted_base<2>;
 
+struct _TLKRange {
+    double _field1;
+    double _field2;
+};
+
 struct _VersionAtom_t {
     unsigned int _field1;
     unsigned int _field2;
@@ -3323,32 +3822,8 @@ struct _VersionAtom_t {
 
 struct __CFString;
 
-struct __sFILE {
-    char *_field1;
-    int _field2;
-    int _field3;
-    short _field4;
-    short _field5;
-    struct __sbuf _field6;
-    int _field7;
-    void *_field8;
-    CDUnknownFunctionPointerType _field9;
-    CDUnknownFunctionPointerType _field10;
-    CDUnknownFunctionPointerType _field11;
-    CDUnknownFunctionPointerType _field12;
-    struct __sbuf _field13;
-    struct __sFILEX *_field14;
-    int _field15;
-    unsigned char _field16[3];
-    unsigned char _field17[1];
-    struct __sbuf _field18;
-    int _field19;
-    long long _field20;
-};
-
-struct __sbuf {
-    char *_field1;
-    int _field2;
+struct __normal_iterator<OZVertex **, std::vector<OZVertex *, std::allocator<OZVertex *>>> {
+    struct OZVertex **_field1;
 };
 
 struct __shared_count<2> {
@@ -3368,7 +3843,7 @@ struct _opaque_pthread_mutex_t {
 struct _opaque_pthread_t {
     long long _field1;
     struct __darwin_pthread_handler_rec *_field2;
-    char _field3[1168];
+    char _field3[8176];
 };
 
 struct _xPy {
@@ -3473,24 +3948,6 @@ struct cc_rgb {
     float _field3;
 };
 
-struct deque<HGGPUCopyJob *, std::allocator<HGGPUCopyJob *>> {
-    struct _Deque_impl {
-        struct HGGPUCopyJob ***_field1;
-        unsigned long long _field2;
-        struct _Deque_iterator<HGGPUCopyJob *, HGGPUCopyJob *&, HGGPUCopyJob **> _field3;
-        struct _Deque_iterator<HGGPUCopyJob *, HGGPUCopyJob *&, HGGPUCopyJob **> _field4;
-    } _field1;
-};
-
-struct deque<HGImageStatsJob *, std::allocator<HGImageStatsJob *>> {
-    struct _Deque_impl {
-        struct HGImageStatsJob ***_field1;
-        unsigned long long _field2;
-        struct _Deque_iterator<HGImageStatsJob *, HGImageStatsJob *&, HGImageStatsJob **> _field3;
-        struct _Deque_iterator<HGImageStatsJob *, HGImageStatsJob *&, HGImageStatsJob **> _field4;
-    } _field1;
-};
-
 struct deque<HGPBOReadbackJob *, std::allocator<HGPBOReadbackJob *>> {
     struct _Deque_impl {
         struct HGPBOReadbackJob ***_field1;
@@ -3538,19 +3995,23 @@ struct deque<HGUserJob *, std::allocator<HGUserJob *>> {
 
 struct fbo;
 
-struct internal_state;
-
 struct less<ComponentInstanceRecord *>;
 
 struct less<FFAnchoredObject *>;
 
 struct less<FFAudioNode *>;
 
+struct less<FFMD5>;
+
+struct less<FFSVQualityEnum>;
+
 struct less<HGNodeInput *>;
 
 struct less<HGPixelBufferObj *>;
 
 struct less<NSString *>;
+
+struct less<_opaque_pthread_t *>;
 
 struct less<int>;
 
@@ -3574,12 +4035,8 @@ struct list<FFMotionPathCurveNode *, std::allocator<FFMotionPathCurveNode *>> {
     struct _List_impl _field1;
 };
 
-struct list<HGGPUCopyExecUnit *, std::allocator<HGGPUCopyExecUnit *>> {
-    struct _List_impl _field1;
-};
-
-struct list<HGImageStatsExecUnit *, std::allocator<HGImageStatsExecUnit *>> {
-    struct _List_impl _field1;
+struct list<FFStreamSharerLiveTokenInfo *, std::allocator<FFStreamSharerLiveTokenInfo *>> {
+    struct _List_impl _M_impl;
 };
 
 struct list<HGPBOReadbackExecUnit *, std::allocator<HGPBOReadbackExecUnit *>> {
@@ -3607,6 +4064,14 @@ struct list<HGUserJob *, std::allocator<HGUserJob *>> {
 };
 
 struct list<OZChannelBase *, std::allocator<OZChannelBase *>> {
+    struct _List_impl _field1;
+};
+
+struct list<OZShapeContour *, std::allocator<OZShapeContour *>> {
+    struct _List_impl _field1;
+};
+
+struct list<OZShapeReparametrizedContour *, std::allocator<OZShapeReparametrizedContour *>> {
     struct _List_impl _field1;
 };
 
@@ -3642,12 +4107,20 @@ struct map<FFAnchoredObject *, FFAudioDuckingClipInfo, std::less<FFAnchoredObjec
     struct _Rb_tree<FFAnchoredObject *, std::pair<FFAnchoredObject *const, FFAudioDuckingClipInfo>, std::_Select1st<std::pair<FFAnchoredObject *const, FFAudioDuckingClipInfo>>, std::less<FFAnchoredObject *>, std::allocator<std::pair<FFAnchoredObject *const, FFAudioDuckingClipInfo>>> _field1;
 };
 
+struct map<FFSVQualityEnum, double, std::less<FFSVQualityEnum>, std::allocator<std::pair<const FFSVQualityEnum, double>>> {
+    struct _Rb_tree<FFSVQualityEnum, std::pair<const FFSVQualityEnum, double>, std::_Select1st<std::pair<const FFSVQualityEnum, double>>, std::less<FFSVQualityEnum>, std::allocator<std::pair<const FFSVQualityEnum, double>>> _field1;
+};
+
 struct map<HGPixelBufferObj *, unsigned long long, std::less<HGPixelBufferObj *>, std::allocator<std::pair<HGPixelBufferObj *const, unsigned long long>>> {
     struct _Rb_tree<HGPixelBufferObj *, std::pair<HGPixelBufferObj *const, unsigned long long>, std::_Select1st<std::pair<HGPixelBufferObj *const, unsigned long long>>, std::less<HGPixelBufferObj *>, std::allocator<std::pair<HGPixelBufferObj *const, unsigned long long>>> _field1;
 };
 
 struct map<NSString *, NSArray *, std::less<NSString *>, std::allocator<std::pair<NSString *const, NSArray *>>> {
     struct _Rb_tree<NSString *, std::pair<NSString *const, NSArray *>, std::_Select1st<std::pair<NSString *const, NSArray *>>, std::less<NSString *>, std::allocator<std::pair<NSString *const, NSArray *>>> _field1;
+};
+
+struct map<_opaque_pthread_t *, FFStreamSharedHGNodeInfo *, std::less<_opaque_pthread_t *>, std::allocator<std::pair<_opaque_pthread_t *const, FFStreamSharedHGNodeInfo *>>> {
+    struct _Rb_tree<_opaque_pthread_t *, std::pair<_opaque_pthread_t *const, FFStreamSharedHGNodeInfo *>, std::_Select1st<std::pair<_opaque_pthread_t *const, FFStreamSharedHGNodeInfo *>>, std::less<_opaque_pthread_t *>, std::allocator<std::pair<_opaque_pthread_t *const, FFStreamSharedHGNodeInfo *>>> _M_t;
 };
 
 struct map<int, HGSynchronizable *, std::less<int>, std::allocator<std::pair<const int, HGSynchronizable *>>> {
@@ -3674,6 +4147,10 @@ struct opaqueCMFormatDescription;
 
 struct set<FFAudioNode *, std::less<FFAudioNode *>, std::allocator<FFAudioNode *>> {
     struct _Rb_tree<FFAudioNode *, FFAudioNode *, std::_Identity<FFAudioNode *>, std::less<FFAudioNode *>, std::allocator<FFAudioNode *>> _field1;
+};
+
+struct set<FFMD5, std::less<FFMD5>, std::allocator<FFMD5>> {
+    struct _Rb_tree<FFMD5, FFMD5, std::_Identity<FFMD5>, std::less<FFMD5>, std::allocator<FFMD5>> _field1;
 };
 
 struct set<HGNodeInput *, std::less<HGNodeInput *>, std::allocator<HGNodeInput *>> {
@@ -3852,6 +4329,22 @@ struct vector<OMRgbChar, std::allocator<OMRgbChar>> {
 
 struct vector<OZChannelBase *, std::allocator<OZChannelBase *>>;
 
+struct vector<OZVertex *, std::allocator<OZVertex *>> {
+    struct _Vector_impl {
+        struct OZVertex **_field1;
+        struct OZVertex **_field2;
+        struct OZVertex **_field3;
+    } _field1;
+};
+
+struct vector<PCString, std::allocator<PCString>> {
+    struct _Vector_impl {
+        struct PCString *_field1;
+        struct PCString *_field2;
+        struct PCString *_field3;
+    } _field1;
+};
+
 struct vector<PCVector2<double>, std::allocator<PCVector2<double>>> {
     struct _Vector_impl {
         PCVector2_5d498db0 *_field1;
@@ -3866,6 +4359,22 @@ struct vector<PCVector3<double>, std::allocator<PCVector3<double>>> {
         PCVector3_515d8d1c *_field2;
         PCVector3_515d8d1c *_field3;
     } _field1;
+};
+
+struct vector<PSHVertexData, std::allocator<PSHVertexData>> {
+    struct _Vector_impl {
+        struct PSHVertexData *_field1;
+        struct PSHVertexData *_field2;
+        struct PSHVertexData *_field3;
+    } _field1;
+};
+
+struct vector<TextureBufferRecord, std::allocator<TextureBufferRecord>> {
+    struct _Vector_impl {
+        struct TextureBufferRecord *_M_start;
+        struct TextureBufferRecord *_M_finish;
+        struct TextureBufferRecord *_M_end_of_storage;
+    } _M_impl;
 };
 
 struct vector<Vec2i, std::allocator<Vec2i>> {
@@ -3950,23 +4459,6 @@ struct vector<void *, std::allocator<void *>> {
         void **_field2;
         void **_field3;
     } _field1;
-};
-
-struct z_stream_s {
-    char *next_in;
-    unsigned int avail_in;
-    unsigned long long total_in;
-    char *next_out;
-    unsigned int avail_out;
-    unsigned long long total_out;
-    char *msg;
-    struct internal_state *state;
-    CDUnknownFunctionPointerType zalloc;
-    CDUnknownFunctionPointerType zfree;
-    void *opaque;
-    int data_type;
-    unsigned long long adler;
-    unsigned long long reserved;
 };
 
 #if 0
@@ -4069,11 +4561,6 @@ typedef struct {
 } CDStruct_83cd8af5;
 
 typedef struct {
-    double latitude;
-    double longitude;
-} CDStruct_2c43369c;
-
-typedef struct {
     float numDecoded;
     float diskReadComplete;
     float diskReadNotDecoded;
@@ -4096,14 +4583,18 @@ typedef struct {
 
 typedef struct {
     int _nestDepth;
-    long long _startTimes[5];
-    long long _blockedTimes[18];
-} CDStruct_4cc81c56;
+    long long _startTimes[16];
+    long long _blockedTimes[22];
+} CDStruct_0ea56580;
 
 typedef struct {
     int width;
     int height;
 } CDStruct_79c71658;
+
+typedef struct {
+    int _field1;
+} CDStruct_fcaf9308;
 
 typedef struct {
     long long value;
@@ -4165,9 +4656,15 @@ typedef struct {
 } CDStruct_a68fe99b;
 
 typedef struct {
-    CDStruct_2c43369c _field1;
-    CDStruct_2c43369c _field2;
-} CDStruct_2f492f29;
+    struct {
+        double x;
+        double y;
+    } origin;
+    struct {
+        double width;
+        double height;
+    } size;
+} CDStruct_02837cd9;
 
 typedef struct {
     CDStruct_1b6d18a9 _field1;
@@ -4201,8 +4698,17 @@ typedef struct {
 } CDStruct_d36b2e56;
 
 typedef struct {
+    unsigned int hasOpenTransaction:1;
+} CDStruct_122fea49;
+
+typedef struct {
     unsigned int showGuides:1;
 } CDStruct_3de7261d;
+
+typedef struct {
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
 
 typedef struct HGRef<HGNode> {
     struct HGNode *_field1;
@@ -4278,11 +4784,11 @@ typedef struct list<void *, std::allocator<void *>> {
 
 typedef struct map<FFAnchoredObject *, FFAudioDuckingChannelMD5Info, std::less<FFAnchoredObject *>, std::allocator<std::pair<FFAnchoredObject *const, FFAudioDuckingChannelMD5Info>>> {
     struct _Rb_tree<FFAnchoredObject *, std::pair<FFAnchoredObject *const, FFAudioDuckingChannelMD5Info>, std::_Select1st<std::pair<FFAnchoredObject *const, FFAudioDuckingChannelMD5Info>>, std::less<FFAnchoredObject *>, std::allocator<std::pair<FFAnchoredObject *const, FFAudioDuckingChannelMD5Info>>> _field1;
-} map_27291466;
+} map_920bb60f;
 
 typedef struct map<FFAnchoredObject *, FFAudioDuckingClipInfo, std::less<FFAnchoredObject *>, std::allocator<std::pair<FFAnchoredObject *const, FFAudioDuckingClipInfo>>> {
     struct _Rb_tree<FFAnchoredObject *, std::pair<FFAnchoredObject *const, FFAudioDuckingClipInfo>, std::_Select1st<std::pair<FFAnchoredObject *const, FFAudioDuckingClipInfo>>, std::less<FFAnchoredObject *>, std::allocator<std::pair<FFAnchoredObject *const, FFAudioDuckingClipInfo>>> _field1;
-} map_b81d382e;
+} map_226dfcf4;
 
 typedef struct vector<CMTime, std::allocator<CMTime>> {
     struct _Vector_impl {

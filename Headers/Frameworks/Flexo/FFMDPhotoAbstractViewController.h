@@ -6,23 +6,48 @@
 
 #import "NSViewController.h"
 
+#import "FFEditActionSourceProtocol.h"
+#import "NSUserInterfaceValidations.h"
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface FFMDPhotoAbstractViewController : NSViewController
+@interface FFMDPhotoAbstractViewController : NSViewController <NSUserInterfaceValidations, FFEditActionSourceProtocol>
 {
-    BOOL _isHidden;
-    id <FFMDPhotoViewControllerDataSource> _photoDataSource;
-    id <FFMDPhotoViewControllerDelegate> _photoDelegate;
+    NSString *_filterString;
+    int _filterType;
+    id <FFMDPhotoViewControllerDataSource> photoDataSource;
+    id <FFMDPhotoViewControllerDelegate> photoDelegate;
 }
 
-@property(nonatomic) id <FFMDPhotoViewControllerDelegate> photoDelegate; // @synthesize photoDelegate=_photoDelegate;
-@property(nonatomic) id <FFMDPhotoViewControllerDataSource> photoDataSource; // @synthesize photoDataSource=_photoDataSource;
-@property(nonatomic) BOOL isHidden; // @synthesize isHidden=_isHidden;
-- (void)filterByType:(int)arg1;
-- (void)filterByString:(id)arg1;
++ (BOOL)automaticallyNotifiesObserversOfFilterType;
++ (BOOL)automaticallyNotifiesObserversOfFilterString;
+@property(nonatomic) int filterType; // @synthesize filterType=_filterType;
+@property(copy, nonatomic) NSString *filterString; // @synthesize filterString=_filterString;
+@property(nonatomic) id <FFMDPhotoViewControllerDelegate> photoDelegate; // @synthesize photoDelegate;
+@property(nonatomic) id <FFMDPhotoViewControllerDataSource> photoDataSource; // @synthesize photoDataSource;
+- (struct CGPoint)startPointConvertedToView;
+- (id)dragImage;
+- (struct CGRect)animationStartRectForEditAction:(id)arg1;
+- (id)animationViewForEditAction:(id)arg1;
+- (struct CGImage *)newAnimationImageForEditAction:(id)arg1;
+- (BOOL)writeDataForEditAction:(id)arg1 toPasteboardWithName:(id)arg2;
+- (id)dataForEditAction:(id)arg1;
+- (BOOL)canSourceDataForEditAction:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)resetViewState;
+- (void)writeViewPrefsToDict:(id)arg1;
+- (void)readViewPrefsFromDict:(id)arg1;
+- (void)_syncToSelection;
+- (void)filterStringChanged;
+- (void)filterTypeChanged;
+- (id)selectedItems;
 - (id)initialFirstResponder;
-- (void)viewControllerDidUnhide;
-- (void)viewControllerDidHide;
+- (void)resetQuery;
 - (void)reloadData;
+@property(readonly, nonatomic) BOOL isHidden;
+- (void)awakeFromNib;
+- (void)dealloc;
 
 @end
 

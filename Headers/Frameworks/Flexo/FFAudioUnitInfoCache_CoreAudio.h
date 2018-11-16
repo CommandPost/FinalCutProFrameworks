@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSArray *_auInfos;
 }
 
++ (id)channelSupportDataForAudioUnitWithConfigurationInfo:(id)arg1;
 - (id)channelSupportDataForAudioUnitWithDescription:(const struct AudioComponentDescription *)arg1;
 - (BOOL)hasAudioUnitWithDescription:(const struct AudioComponentDescription *)arg1;
 - (BOOL)isAudioUnitEnabledWithDescription:(const struct AudioComponentDescription *)arg1;

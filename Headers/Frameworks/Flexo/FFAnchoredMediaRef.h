@@ -38,7 +38,6 @@
 - (CDStruct_e83c9415)untimedUnclippedRange;
 - (CDStruct_e83c9415)mediaRange;
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
-- (id)roles;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (void)_refInvalidationChange:(id)arg1;
 - (void)_rangeInvalidated:(id)arg1;
@@ -48,9 +47,9 @@
 - (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
 - (void)addAssetsToSet:(id)arg1;
 - (double)referencedPrimaryAudioSampleRate;
-- (double)audioSampleRate;
+- (double)nativeAudioSampleRate;
 - (long long)referencedPrimaryAudioChannelCount;
-- (long long)audioChannelCount:(int)arg1;
+- (long long)nativeAudioChannelCount:(int)arg1;
 - (id)videoProps;
 - (long long)timecodeDisplayDropFrame;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;

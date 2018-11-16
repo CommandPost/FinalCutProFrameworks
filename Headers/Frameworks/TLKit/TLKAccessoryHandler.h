@@ -8,6 +8,8 @@
 
 @interface TLKAccessoryHandler : TLKTimelineHandler
 {
+    BOOL _dragFallbackSupported;
+    BOOL _abortAccessoryDragAndEngageFallback;
 }
 
 - (id)stringForToolTipAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
@@ -22,7 +24,9 @@
 - (void)cancelTracking:(id)arg1;
 - (BOOL)continueTracking:(id)arg1;
 - (BOOL)startTracking:(id)arg1;
+- (BOOL)_setupAccessoryLayer:(id)arg1 andStartTracking:(id)arg2;
 - (BOOL)_isTimelineLayer:(id)arg1;
+- (void)applyConfiguration:(id)arg1;
 
 @end
 

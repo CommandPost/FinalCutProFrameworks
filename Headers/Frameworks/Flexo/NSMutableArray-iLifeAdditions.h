@@ -7,6 +7,8 @@
 #import "NSMutableArray.h"
 
 @interface NSMutableArray (iLifeAdditions)
+- (void)addObjectsFromArray:(id)arg1 avoidDuplicates:(BOOL)arg2;
+- (void)addObject:(id)arg1 avoidDuplicates:(BOOL)arg2;
 - (void)addCGPoint:(struct CGPoint)arg1;
 @end
 

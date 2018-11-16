@@ -8,7 +8,7 @@
 
 #import "NSOpenSavePanelDelegate.h"
 
-@class NSArray, NSMutableSet, NSSet;
+@class NSArray, NSMutableSet, NSSet, NSString;
 
 @interface FFStorageManager : NSObject <NSOpenSavePanelDelegate>
 {
@@ -24,7 +24,7 @@
 + (id)legacyLocationURLs;
 + (id)moviesURL;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
-+ (BOOL)warnAboutUnsupportedLocationForURL:(id)arg1 error:(id *)arg2;
++ (BOOL)warnAboutUnsupportedLocationForURL:(id)arg1 saving:(BOOL)arg2 error:(id *)arg3;
 + (BOOL)isQuarantined:(id)arg1;
 + (BOOL)isReadOnly:(id)arg1;
 + (BOOL)isFileURL:(id)arg1 descendantOfFileURL:(id)arg2;
@@ -68,6 +68,12 @@
 - (void)dealloc;
 - (oneway void)release;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

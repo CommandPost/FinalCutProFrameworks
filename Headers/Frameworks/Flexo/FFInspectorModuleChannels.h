@@ -6,7 +6,7 @@
 
 #import <Flexo/FFInspectorModule.h>
 
-@class FFInspectorModuleOZViewCtlrDelegate, NSImageView, NSMapTable, NSProThemeImageView, NSSet, NSString, NSTextField, NSView, OZViewCtlrRoot;
+@class FFInspectorModuleOZViewCtlrDelegate, LKButton, NSImageView, NSMapTable, NSProThemeImageView, NSSet, NSString, NSTextField, NSView, OZViewCtlrRoot;
 
 @interface FFInspectorModuleChannels : FFInspectorModule
 {
@@ -19,10 +19,14 @@
     NSTextField *_inspectorTitle;
     NSTextField *_durationField;
     NSView *_channelView;
+    NSView *_footerView;
+    LKButton *_effectsPresetButton;
     NSMapTable *_channelToItemMap;
     NSSet *_currentItemsSet;
     BOOL _needToRebuildInspector;
+    BOOL _isFilterChangedCallPending;
     BOOL _currentItemsReadLockHeld;
+    BOOL _observingUserDefaults;
     long long _suspendEffectsChangedObserving;
 }
 
@@ -36,6 +40,7 @@
 - (void)_removeObservingForCurrentItems;
 - (void)_addObservingForCurrentItems;
 - (void)_updateLabel:(BOOL)arg1;
+- (void)toggleColorCorrectionOff:(id)arg1;
 - (void)delete:(id)arg1;
 - (void)shiftDelete:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
@@ -49,6 +54,7 @@
 - (BOOL)_isVideoChannel:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)timeRateChangedForContext:(id)arg1;
+- (void)_effectSelectionStateChangedFromOSC:(id)arg1;
 - (void)_effectEnabledStateChanged:(id)arg1;
 - (void)_effectSelectionStateChanged:(id)arg1;
 - (void)_rangeInvalidation:(id)arg1;
@@ -69,6 +75,7 @@
 - (void)setContext:(id)arg1;
 - (void)setCurrentItems:(id)arg1;
 - (unsigned long long)labelAlignment;
+- (id)moduleFooterAccessoryView;
 - (id)moduleAccessoryView;
 - (void)moduleDidUnhide;
 - (void)viewDidLoad;

@@ -93,7 +93,10 @@
     NSArray *_activeSelection;
     NSDictionary *_filmstripContentLayout;
     NSDictionary *_filmListContentLayout;
-    NSMutableDictionary *_clusterDisclosureStates;
+    NSMutableDictionary *_filmstripViewClusterDisclosureStates;
+    NSMutableDictionary *_outlineViewClusterDisclosureStates;
+    BOOL _shareDisclosureStates;
+    BOOL _shouldSetViewTypeWithDelegate;
     struct FFProcrastinatedDispatch_t _procrastinatedUpdateItemsString;
 }
 
@@ -215,6 +218,8 @@
 - (void)selectPreviousVariantInSelection:(id)arg1;
 - (void)_selectVariantInSelection:(BOOL)arg1;
 - (void)doMute:(id)arg1;
+- (void)volumeMinusInfinity:(id)arg1;
+- (void)volumeZero:(id)arg1;
 - (void)adjustVolumeAbsolute:(id)arg1;
 - (void)adjustVolumeRelative:(id)arg1;
 - (void)volumeDown:(id)arg1;
@@ -225,8 +230,6 @@
 - (void)copyItemsToLibrary:(id)arg1;
 - (void)copyToLibrary:(id)arg1;
 - (void)_mmToLibrary:(id)arg1 isCopy:(BOOL)arg2;
-- (void)crossCorrelateUsingPeakData:(id)arg1;
-- (void)crossCorrelateUsingAudioSamples:(id)arg1;
 - (void)mergeClips:(id)arg1;
 - (void)allowTimelineEditing:(id)arg1;
 - (BOOL)allowTimelineEditingState;
@@ -498,7 +501,6 @@
 - (void)toggleMatchAudio:(id)arg1;
 - (void)toggleMatchColor:(id)arg1;
 - (void)toggleBalanceColor:(id)arg1;
-- (void)toggleColorCorrectionOff:(id)arg1;
 - (id)defaultEventForNewProject;
 - (id)project;
 - (id)_extractReferenceClipsForProjects:(id)arg1;
@@ -566,6 +568,7 @@
 - (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
 - (void)_removeClusterItemsFromSelection:(id)arg1;
 - (void)setAllClusterDisclosedStates:(BOOL)arg1;
+- (void)_setShouldSetViewTypeWithDelegate:(BOOL)arg1;
 - (void)setDisclosedState:(BOOL)arg1 forCluster:(id)arg2;
 - (BOOL)disclosedStateForCluster:(id)arg1;
 - (id)_disclosedClusterKeyForMetadataKey:(id)arg1 andCluster:(id)arg2;
@@ -577,6 +580,7 @@
 - (void)_divideItems:(id)arg1 intoProjects:(id *)arg2 andClips:(id *)arg3;
 - (id)_splitClips:(id)arg1 intoEventMapAndEventList:(id *)arg2;
 - (id)_itemsClusteredByMetadata:(id)arg1;
+- (void)_expandClusterForItem:(id)arg1;
 - (BOOL)allClustersClosed;
 - (BOOL)hasFilteredItems;
 - (BOOL)hasUnFilteredItems;
@@ -638,7 +642,7 @@
 - (void)switchDisplayViews:(int)arg1;
 - (id)newListViewController;
 - (void)toggleListMode:(id)arg1;
-- (BOOL)selectionHasNoMulticamClips;
+- (BOOL)selectionHasNoMulticamClipsOrProjects;
 - (BOOL)selectionCanBecomeAMulticamClip;
 - (BOOL)hasAngles:(id)arg1;
 - (BOOL)selectionCanSynchronizeClips;
@@ -652,7 +656,14 @@
 - (id)identifier;
 - (void)dealloc;
 - (id)init;
+- (void)_deferUsedMediaRangeInvals:(id)arg1;
 @property BOOL skimming;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

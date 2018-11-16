@@ -9,7 +9,7 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class CALayer, TLKThemeBackedLayer, TLKTimelineView;
+@class CALayer, NSString, TLKThemeBackedLayer, TLKTimelineView;
 
 @interface TLKRangeItemLayer : TLKAccessibilityLayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
@@ -63,6 +63,12 @@
 - (id)hitTest:(struct CGPoint)arg1;
 - (void)invalidate;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

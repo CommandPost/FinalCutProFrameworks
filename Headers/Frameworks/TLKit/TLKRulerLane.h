@@ -15,6 +15,7 @@
     NSArray *_rulerMarkerLines;
     NSMutableArray *_renderInfoLayers;
     BOOL _hiddenState;
+    BOOL _timeLabelUpdated;
     CDStruct_1b6d18a9 _timePerMarker;
     CDStruct_1b6d18a9 _frameDuration;
     int _numberSubTicks;

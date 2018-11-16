@@ -67,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (id)creditsPropertiesChannel;
 - (void)setCreditsProperties:(id)arg1;
 - (id)creditsProperties;
-- (void)clippedRangeDidChange:(CDStruct_e83c9415)arg1;
+- (void)effectiveRangeDidChange;
 - (void)wasAnchoredTo:(id)arg1;
 - (BOOL)wantsGammaCompositing;
 - (void)willReplace:(id)arg1;

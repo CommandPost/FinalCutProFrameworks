@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface FFAuditionerCoverFlowView : NSView
 {
     id delegate;
+    BOOL _scrollWheelDisabled;
 }
 
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)scrollWheel:(id)arg1;
+- (void)_clearScrollWheelWait;
 - (void)keyDown:(id)arg1;
 - (BOOL)acceptsFirstResponder;
 

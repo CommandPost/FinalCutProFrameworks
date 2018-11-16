@@ -9,7 +9,7 @@
 #import "NSTabViewDelegate.h"
 #import "OZHGUserJobClient.h"
 
-@class NSBox, NSProThemeImageView, NSProView, OZInspectorPreviewModule, OZProTabPaneCapSegmentedControl, OZViewControllerGroup;
+@class NSBox, NSProThemeImageView, NSProView, NSString, OZInspectorPreviewModule, OZProTabPaneCapSegmentedControl, OZViewControllerGroup;
 
 @interface OZInspectorModule : OZProViewModule <NSTabViewDelegate, OZHGUserJobClient>
 {
@@ -80,7 +80,7 @@
 - (void)showObject:(struct OZObjectManipulator *)arg1;
 - (id)currentTabController;
 - (void)updateTabs:(unsigned int)arg1;
-- (void)rebuildTabs;
+- (void)rebuildTabsAndRestoreScrollOffset:(BOOL)arg1;
 - (void)removeExistingControllers;
 - (void)updateTabEnableState;
 - (void)updateObjectTabTitle;
@@ -95,6 +95,12 @@
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

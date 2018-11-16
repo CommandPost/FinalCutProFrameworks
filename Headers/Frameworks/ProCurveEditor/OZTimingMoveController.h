@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKTextField, NSPanel, NSProView;
+@class LKTextField, NSPanel, NSProView, NSString;
 
 @interface OZTimingMoveController : NSObject <NSWindowDelegate>
 {
@@ -28,6 +28,12 @@
 - (void)dealloc;
 - (id)init;
 - (void)awakeFromNib;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,6 +8,8 @@
 
 #import "NSSplitViewDelegate.h"
 
+@class NSString;
+
 @interface LKSplitViewModule : LKViewModule <NSSplitViewDelegate>
 {
     BOOL _isVertical;
@@ -39,6 +41,12 @@
 - (void)dealloc;
 - (void)_removeViewForModule:(id)arg1;
 - (void)_installViewForModule:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

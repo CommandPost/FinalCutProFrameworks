@@ -8,9 +8,12 @@
 
 #import "Fx3DAPI.h"
 #import "Fx3DAPI_v2.h"
+#import "Fx3DAPI_v3.h"
 #import "PROAPIObject.h"
 
-@interface OZFxPlug3DAPI : NSObject <Fx3DAPI, Fx3DAPI_v2, PROAPIObject>
+@class NSString;
+
+@interface OZFxPlug3DAPI : NSObject <Fx3DAPI, Fx3DAPI_v2, Fx3DAPI_v3, PROAPIObject>
 {
     PCMatrix44Tmpl_e98c85ee _cameraMatrix;
     PCMatrix44Tmpl_e98c85ee _worldToFilmMatrix;
@@ -25,6 +28,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
+- (double)focalLengthAtFxTime:(CDUnion_2516e51e)arg1;
 - (double)focalLengthAtTime:(double)arg1;
 - (BOOL)isUsingCamera;
 - (BOOL)is3D;
@@ -42,6 +46,12 @@
 - (void)_setLayerMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
 - (void)_setWorldToFilmMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
 - (void)_setCameraMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

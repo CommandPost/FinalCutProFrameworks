@@ -28,15 +28,11 @@
     int _categoryType;
     TMTheme *_lastSelectedTheme;
     struct map<unsigned int, unsigned int, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned int>>> _dropZonesFootageIDs;
-    CDUnknownBlockType _completionHandler;
-    BOOL _didEnd;
 }
 
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)releaseCompletionHandler;
 - (void)createNewCollection:(id)arg1;
 - (void)selectCollection:(id)arg1;
 - (struct CGSize)scaleSize:(struct CGSize)arg1 toSize:(struct CGSize)arg2;
@@ -53,14 +49,13 @@
 - (vector_77d837c3)replaceDropZonesForDocument:(id)arg1;
 - (BOOL)isValidFilenameForPath:(id)arg1;
 - (BOOL)isEnoughDiskSpaceAtPath:(id)arg1 withSize:(unsigned long long)arg2;
-- (void)closeWithCode:(long long)arg1;
+- (void)didEndSheet:(long long)arg1;
 - (void)save:(id)arg1;
 - (void)cancel:(id)arg1;
 - (void)didSelectPublishAsFCPGenButton:(id)arg1;
-- (void)beginSheetModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)windowDidLoad;
 - (void)dealloc;
-- (id)init;
+- (id)initWithDocument:(id)arg1;
 - (void)setInformativeText;
 
 @end

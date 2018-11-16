@@ -51,8 +51,8 @@ __attribute__((visibility("hidden")))
 - (id)_rangesFromIndexSet:(id)arg1;
 - (void)_closeIndexGapsSmallerThan:(unsigned long long)arg1 indexes:(id *)arg2;
 - (unsigned long long)_largestContiguousIndexGreaterThanOrEqualTo:(unsigned long long)arg1 indexes:(id)arg2;
-- (void)_checkShakinessDT2:(struct IHDominantMotionTracker2Interface *)arg1 index:(int)arg2 start:(int)arg3 end:(int)arg4 lastX:(double *)arg5 lastY:(double *)arg6 shakyIndexes:(id *)arg7 uncertainIndexes:(id *)arg8;
-- (void)_checkShakinessDT:(struct IHDominantMotionTrackerInterface *)arg1 index:(int)arg2 start:(int)arg3 end:(int)arg4 lastX:(double *)arg5 lastY:(double *)arg6 shakyIndexes:(id *)arg7 uncertainIndexes:(id *)arg8;
+- (void)_checkShakinessDT2:(struct HFDominantMotionTracker2Interface *)arg1 index:(int)arg2 start:(int)arg3 end:(int)arg4 lastX:(double *)arg5 lastY:(double *)arg6 shakyIndexes:(id *)arg7 uncertainIndexes:(id *)arg8;
+- (void)_checkShakinessDT:(struct HFDominantMotionTrackerInterface *)arg1 index:(int)arg2 start:(int)arg3 end:(int)arg4 lastX:(double *)arg5 lastY:(double *)arg6 shakyIndexes:(id *)arg7 uncertainIndexes:(id *)arg8;
 - (BOOL)alreadyAnalyzedRange:(CDStruct_e83c9415)arg1 checkInertiaCam:(BOOL)arg2 lowConfidence:(char *)arg3;
 - (BOOL)alreadyAnalyzedRange:(CDStruct_e83c9415)arg1;
 - (struct _NSRange)indexRangeFromRange:(CDStruct_e83c9415)arg1;
@@ -73,8 +73,6 @@ __attribute__((visibility("hidden")))
 - (void)pausedTask:(id)arg1;
 - (BOOL)confirmIsPaused:(id)arg1;
 - (void)_performAnalysisOnRange:(CDStruct_e83c9415)arg1 onTask:(id)arg2 algorithmRequested:(int)arg3 inertiaCamLowConfidence:(BOOL)arg4 algorithmUsed:(int *)arg5;
-- (void)analyzeSubRangeDT2:(id)arg1 startFrame:(int)arg2 endFrame:(int)arg3 forceInertiaCam:(BOOL)arg4 fallback:(char *)arg5;
-- (void)analyzeSubRangeDT:(id)arg1 startFrame:(int)arg2 endFrame:(int)arg3;
 - (void)analyzeSubRange:(id)arg1 analysisRange:(struct _NSRange)arg2 visibleRange:(struct _NSRange)arg3 algorithmRequested:(int)arg4 inertiaCamLowConfidence:(BOOL)arg5 algorithmUsed:(int *)arg6;
 - (int)_analyzeUseRendererForRange:(struct _NSRange)arg1 visibleRange:(struct _NSRange)arg2 useInertiaCam:(BOOL)arg3 forceInertiaCam:(BOOL)arg4 runningTask:(id)arg5;
 - (void)_reportTime:(id)arg1;
@@ -84,8 +82,8 @@ __attribute__((visibility("hidden")))
 - (int)allFrames;
 - (void)increaseFinishedFrames:(float)arg1;
 - (float)finishedFrames;
-- (void)setupTrackerForRangeDT2:(CDStruct_e83c9415)arg1 tracker:(struct IHDominantMotionTracker2Interface *)arg2 startFrame:(int)arg3 endFrame:(int)arg4;
-- (void)setupTrackerForRangeDT:(CDStruct_e83c9415)arg1 tracker:(struct IHDominantMotionTrackerInterface *)arg2 startFrame:(int)arg3 endFrame:(int)arg4;
+- (void)setupTrackerForRangeDT2:(CDStruct_e83c9415)arg1 tracker:(struct HFDominantMotionTracker2Interface *)arg2 startFrame:(int)arg3 endFrame:(int)arg4;
+- (void)setupTrackerForRangeDT:(CDStruct_e83c9415)arg1 tracker:(struct HFDominantMotionTrackerInterface *)arg2 startFrame:(int)arg3 endFrame:(int)arg4;
 - (void)cacheAnalysisDataForRange:(struct _NSRange)arg1 analysisData:(id)arg2;
 - (void)cacheAnalysisData;
 - (id)newMutableAnalysisDataForRange:(struct _NSRange)arg1;

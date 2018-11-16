@@ -12,7 +12,7 @@
 
 - (BOOL)effectVariesOverTime;
 - (BOOL)useSourcePixelSpace;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7 graphBuildInfo:(id)arg8;
 - (struct CGRect)getROIForOutput:(const struct CGRect *)arg1 atTime:(CDStruct_1b6d18a9)arg2 input:(id)arg3 pt:(id)arg4 downstreamPT:(id)arg5;
 - (struct HGNode *)_newInterlaceProgressiveConversionNode:(struct HGNode *)arg1 inputImage:(id)arg2 inputStream:(id)arg3 index:(unsigned long long)arg4 context:(id)arg5 requestedPT:(id)arg6 colorSpace:(struct CGColorSpace *)arg7 pixelFormat:(id)arg8 filterQuality:(int)arg9 newBoundsForInput:(struct CGRect *)arg10 didConvert:(char *)arg11;
 -     // Error parsing type: ^{HGTransform=^^?I(?=[4][16f][16d])}24@0:8@16, name: newHGTransformFromPCMatrix44Double:

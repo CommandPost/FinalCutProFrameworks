@@ -10,7 +10,7 @@
 #import "NSMenuDelegate.h"
 #import "NSTokenFieldDelegate.h"
 
-@class FFAnchoredObject, FFInspectorFileInfoClipController, FFInspectorMetadataContentRow, FFInspectorMetadataContentView, FFMedia, FFRolesMenuController, LKSegmentedControl, NSArray, NSArrayController, NSMenu, NSMutableDictionary, NSPopUpButton, NSProImageView, NSProThemeImageView, NSScrollView, NSSet, NSTextField, NSView, NSWindow;
+@class FFAnchoredObject, FFInspectorFileInfoClipController, FFInspectorMetadataContentRow, FFInspectorMetadataContentView, FFMedia, FFRolesMenuController, LKSegmentedControl, NSArray, NSArrayController, NSMenu, NSMutableDictionary, NSPopUpButton, NSProImageView, NSProThemeImageView, NSScrollView, NSSet, NSString, NSTextField, NSView, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleMetadata : FFInspectorModule <NSMenuDelegate, FFRolesMenuDelegate, NSTokenFieldDelegate>
@@ -133,6 +133,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

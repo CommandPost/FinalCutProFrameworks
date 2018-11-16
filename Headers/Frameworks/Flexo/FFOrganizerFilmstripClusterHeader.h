@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
 @property(readonly, nonatomic) BOOL isDisclosed; // @synthesize isDisclosed=_isDisclosed;
+- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (id)_facetForCurrentState;
 - (void)updateAllDisclosureStates:(BOOL)arg1;
 - (void)updateDisclosureState:(BOOL)arg1;

@@ -12,10 +12,10 @@
 {
 }
 
-- (void)filteredEdges:(char *)arg1 withInfo:(CDStruct_8b442eb9)arg2;
-- (BOOL)frameSetup:(CDStruct_8b442eb9)arg1 hardware:(char *)arg2 software:(char *)arg3;
-- (BOOL)canThrowRenderOutput:(id)arg1 withInfo:(CDStruct_8b442eb9)arg2;
-- (BOOL)renderOutput:(id)arg1 withInfo:(CDStruct_8b442eb9)arg2;
+- (void)filteredEdges:(char *)arg1 withInfo:(CDStruct_6b9ed609)arg2;
+- (BOOL)frameSetup:(CDStruct_6b9ed609)arg1 hardware:(char *)arg2 software:(char *)arg3;
+- (BOOL)canThrowRenderOutput:(id)arg1 withInfo:(CDStruct_6b9ed609)arg2;
+- (BOOL)renderOutput:(id)arg1 withInfo:(CDStruct_6b9ed609)arg2;
 
 @end
 

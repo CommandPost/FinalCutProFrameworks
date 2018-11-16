@@ -6,7 +6,7 @@
 
 #import "NSWindowController.h"
 
-@class NSButton, NSProgressIndicator, NSTextField;
+@class NSButton, NSProgressIndicator, NSTextField, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFProgressSheetController : NSWindowController
@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
     NSProgressIndicator *_progressIndicator;
     NSTextField *_progressMessageField;
     NSButton *_cancelButton;
+    NSWindow *_hostWindow;
 }
 
+- (void)idle;
 - (void)endProgressSheet;
 - (void)beginProgressSheetForWindow:(id)arg1 withTitle:(id)arg2 message:(id)arg3 cancelTarget:(id)arg4 cancelAction:(SEL)arg5 indeterminate:(BOOL)arg6;
 - (void)setCancelAction:(SEL)arg1;

@@ -11,12 +11,10 @@
 }
 
 + (id)sharedDocumentController;
-- (void)closeLibrary:(id)arg1;
-- (void)openLibrary:(id)arg1;
 - (void)newLibrary:(id)arg1;
+- (void)openLibrary:(id)arg1;
 - (void)newDocument:(id)arg1;
 - (void)openDocument:(id)arg1;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)addDocument:(id)arg1;
 - (id)documentForURL:(id)arg1;
 - (id)typeForContentsOfURL:(id)arg1 error:(id *)arg2;

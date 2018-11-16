@@ -29,6 +29,7 @@
 - (id)allItems;
 - (id)enabledItems;
 - (id)enabledItem;
+- (id)selectedRootItems;
 - (id)selectedItems;
 - (id)selectedItem;
 - (void)takeSnapshot:(BOOL)arg1;
@@ -36,6 +37,7 @@
 - (void)disableAll;
 - (void)deselectAll;
 - (unsigned int)numberOfChannelItems;
+- (unsigned int)numberOfSelectedRootItems;
 - (unsigned int)numberOfSelectedItems;
 - (unsigned int)numberOfEnabledItems;
 - (unsigned int)numberOfItems;

@@ -14,6 +14,7 @@
 }
 
 + (void)setGuaranteeMemoryCallback:(CDUnknownFunctionPointerType)arg1;
+- (void)_setOwned:(BOOL)arg1;
 - (void)_setOwnedDataPtr:(void *)arg1;
 - (BOOL)_ownsData;
 - (BOOL)_verifyImage;

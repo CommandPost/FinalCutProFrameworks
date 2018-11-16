@@ -12,9 +12,9 @@
 
 + (BOOL)supportsObjectForExport:(id)arg1;
 + (id)import:(id)arg1 library:(id)arg2 taskDelegate:(id)arg3 warnings:(id *)arg4 error:(id *)arg5;
-+ (BOOL)exportEvents:(id)arg1 usingVersion:(id)arg2 toURL:(id)arg3 taskDelegate:(id)arg4 error:(id *)arg5;
-+ (BOOL)exportEventClips:(id)arg1 usingVersion:(id)arg2 toURL:(id)arg3 taskDelegate:(id)arg4 error:(id *)arg5;
-+ (id)newExporterWithVersion:(id)arg1 url:(id)arg2 taskDelegate:(id)arg3;
++ (BOOL)exportEvents:(id)arg1 usingVersion:(id)arg2 withMetadataViewSet:(id)arg3 toURL:(id)arg4 replace:(BOOL)arg5 taskDelegate:(id)arg6 error:(id *)arg7;
++ (BOOL)exportEventClips:(id)arg1 usingVersion:(id)arg2 withMetadataViewSet:(id)arg3 toURL:(id)arg4 replace:(BOOL)arg5 taskDelegate:(id)arg6 error:(id *)arg7;
++ (id)newExporterWithVersion:(id)arg1 metadataViewSet:(id)arg2 url:(id)arg3 taskDelegate:(id)arg4;
 
 @end
 

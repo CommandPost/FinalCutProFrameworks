@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)encodeDataOptionsDictionary:(id)arg1;
 - (id)decodeMetadataRecord:(id)arg1;
 - (id)encodeMetadataDictionary:(id)arg1;
+- (id)decodeLibraryRecord:(id)arg1;
 - (id)packageLocationRecordWithMedia:(id)arg1 andDesc:(id)arg2;
 - (id)decodeLocationRecord:(id)arg1;
 - (id)sendOpenDocumentsEvent:(id)arg1;

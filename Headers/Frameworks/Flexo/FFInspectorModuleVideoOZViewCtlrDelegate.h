@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)controllerDoesOverrideName:(id)arg1;
 - (void)controller:(id)arg1 willChangeChannel:(struct OZChannelBase *)arg2;
 
 @end

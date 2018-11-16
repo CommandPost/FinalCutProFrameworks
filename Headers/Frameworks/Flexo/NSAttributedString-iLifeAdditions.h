@@ -8,6 +8,7 @@
 
 @interface NSAttributedString (iLifeAdditions)
 + (id)attributedStringWithString:(id)arg1 fontName:(id)arg2 pointSize:(double)arg3 color:(struct CGColor *)arg4 lineBreakMode:(unsigned char)arg5;
+- (long long)glyphCountExcludingGlyphsWithoutPath;
 - (int)glyphCount;
 - (id)capitalizedString;
 - (id)lowercaseString;

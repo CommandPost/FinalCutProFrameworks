@@ -38,7 +38,6 @@
 - (id)effectChainModelObject;
 - (id)effectChainEffects;
 - (id)newAudioMD5AndOffset:(int)arg1;
-- (void)effectWasRemovedFromStack;
 - (void)removePresetChannelObserving;
 - (void)addPresetChannelObserving;
 - (void)createActivePartEffectChannelsInFolder:(id)arg1;

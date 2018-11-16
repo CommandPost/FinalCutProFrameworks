@@ -6,11 +6,13 @@
 
 #import "NSProView.h"
 
-@class NSPopUpButton, OZHistogramGradientView, OZHistogramGutterIn, OZHistogramGutterOut, OZHistogramView;
+#import "HistogramReferrer.h"
+#import "OZHistogramManager.h"
 
-@interface OZHistogramEditor : NSProView
+@class NSPopUpButton, NSString, OZHistogramGradientView, OZHistogramGutterIn, OZHistogramGutterOut, OZHistogramView;
+
+@interface OZHistogramEditor : NSProView <OZHistogramManager, HistogramReferrer>
 {
-    id _delegate;
     struct OZChannelHistogram *_histogramChannel;
     NSPopUpButton *_popUp;
     NSProView *_masterView;
@@ -20,14 +22,21 @@
     OZHistogramGutterOut *_gutterOut;
 }
 
+- (void)removeReference:(struct OZChannelBase *)arg1;
 - (void)setChannelValue:(id)arg1;
 - (void)update;
 - (void)awakeFromNib;
+- (struct OZChannelHistogram *)histogramChannel;
 - (void)setViewController:(id)arg1;
 - (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

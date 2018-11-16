@@ -8,7 +8,7 @@
 
 #import "FFOZViewControllerChannelChangeDelegate.h"
 
-@class FFChannelChangeController, FFEffectStack, NSArray, NSCountedSet, NSMapTable, NSMutableArray, NSString, OZLabeledParamController, OZViewControllerGroup;
+@class FFChannelChangeController, FFEffectStack, NSArray, NSCountedSet, NSMapTable, NSMutableArray, NSMutableSet, NSString, OZLabeledParamController, OZViewControllerGroup;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioPanController : OZFolderGroupController <FFOZViewControllerChannelChangeDelegate>
@@ -19,7 +19,8 @@ __attribute__((visibility("hidden")))
     NSCountedSet *m_channelChangeControllerObjects;
     NSMapTable *m_channelToEffectStackMap;
     NSMutableArray *m_selectedEffectStacks;
-    NSMutableArray *m_observedBundleParts;
+    NSMutableSet *m_observedBundleParts;
+    NSMutableSet *m_observedSurroundBundles;
     OZViewControllerGroup *m_panGroupController;
     OZLabeledParamController *m_panModeController;
     OZLabeledParamController *m_panAmountController;
@@ -32,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (void)controller:(id)arg1 willSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
 - (void)controller:(id)arg1 didChangeChannel:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 willChangeChannel:(struct OZChannelBase *)arg2;
+- (void)_removeObservingForSurroundPanner:(id)arg1;
+- (void)_addObservingForSurroundPanner:(id)arg1;
 - (void)_updatePanModeMenu;
 - (void)_releaseSurroundControllers;
 - (void)selectPanMode:(id)arg1;
@@ -40,6 +43,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

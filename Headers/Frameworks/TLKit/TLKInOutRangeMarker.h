@@ -8,7 +8,7 @@
 
 #import "TLKPartInfo.h"
 
-@class TLKThemeBackedLayer;
+@class NSString, TLKThemeBackedLayer;
 
 @interface TLKInOutRangeMarker : CALayer <TLKPartInfo>
 {
@@ -27,6 +27,12 @@
 - (struct CGRect)markerFrame;
 - (id)init;
 - (void)_updateMarker;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

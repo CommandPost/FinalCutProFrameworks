@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
 {
     struct FFLocklessQueue<FFEffectLibraryItemView *> *_requests;
     FFBackgroundTask *_bTask;
-    unsigned int _progressStep;
+    unsigned int _progressNumProcessed;
     unsigned int _progressTotal;
+    unsigned int _progressCurrentBaseline;
     FFSegmentStoreRef *_segmentStoreRef;
+    BOOL _disallowNewThumbnailRequests;
 }
 
 + (void)releaseSharedInstance;

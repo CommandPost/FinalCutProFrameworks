@@ -37,7 +37,8 @@ __attribute__((visibility("hidden")))
     unsigned int _colorHandlingFlags;
     NSString *_uti;
     struct CGImageSource *_cachedImgSourceRef;
-    unsigned long long _cachedImgSourceDisposeAfterTime;
+    double _cachedImgSourceDisposeAfterTime;
+    unsigned int _emptyCachedImageSourceDispatchPending;
 }
 
 + (void)initialize;
@@ -47,7 +48,7 @@ __attribute__((visibility("hidden")))
 @property _Bool canFitAsTexture; // @synthesize canFitAsTexture=_canFitAsTexture;
 - (id)renderFilesPaths;
 - (id)renderFormat;
-- (_Bool)shouldUseTextureCacher:(int)arg1 size:(struct CGRect)arg2 shouldLog:(_Bool *)arg3;
+- (_Bool)shouldUseTextureCacher:(int)arg1 size:(struct CGRect)arg2 shouldLog:(_Bool *)arg3 retUseIGMode:(char *)arg4;
 - (id)MD5Seed;
 - (void)setMD5Seed:(id)arg1;
 - (CDStruct_bdcb2b0d)_debugGetMD5WithoutCreating:(int)arg1;

@@ -18,12 +18,14 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)description;
+- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (id)newTokenForPassThruStream:(id)arg1 retainOnlyObject:(id)arg2;
 - (void)hintCacheData:(unsigned int)arg1;
 - (_Bool)hintWillImageSoon;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (_Bool)areStatusFlagsClear:(unsigned int)arg1;
 - (unsigned int)scheduleStatusInformation;
+- (id)_underlyingToken;
 - (void)dealloc;
 - (id)initWithStream:(id)arg1 andSubToken:(id)arg2 retainOnlyObject:(id)arg3;
 - (id)initWithStream:(id)arg1 andSubToken:(id)arg2 additionalStreams:(id)arg3 retainOnlyObjects:(id)arg4;

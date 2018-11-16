@@ -13,14 +13,14 @@
 __attribute__((visibility("hidden")))
 @interface iMovieElegantFadeTextLayer : iMovieScalableTextLayer <iMovieMicaPlugin>
 {
-    MicaAnimator *m_micaAnimatorTemplate;
+    MicaAnimator *_micaAnimatorTemplate;
 }
 
 + (id)defaultValueForKey:(id)arg1;
 + (id)timeStretchableBeginTimeProperties;
 + (id)micaPluginProperties;
-@property(retain, nonatomic) MicaAnimator *micaAnimatorTemplate; // @synthesize micaAnimatorTemplate=m_micaAnimatorTemplate;
-- (void)dealloc;
+@property(retain, nonatomic) MicaAnimator *micaAnimatorTemplate; // @synthesize micaAnimatorTemplate=_micaAnimatorTemplate;
+- (void).cxx_destruct;
 - (void)addAnimations;
 - (void)customizeSublayers;
 

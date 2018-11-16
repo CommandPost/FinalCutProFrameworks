@@ -18,10 +18,14 @@ __attribute__((visibility("hidden")))
     BOOL _inset;
     BOOL _intrinsic;
     BOOL _video;
+    BOOL _hasKeyframes;
+    BOOL _changedFromDefaultState;
     int _elementType;
 }
 
 @property(nonatomic) int elementType; // @synthesize elementType=_elementType;
+@property(nonatomic) BOOL changedFromDefaultState; // @synthesize changedFromDefaultState=_changedFromDefaultState;
+@property(nonatomic) BOOL hasKeyframes; // @synthesize hasKeyframes=_hasKeyframes;
 @property(nonatomic) BOOL video; // @synthesize video=_video;
 @property(nonatomic) BOOL intrinsic; // @synthesize intrinsic=_intrinsic;
 @property(nonatomic) BOOL inset; // @synthesize inset=_inset;

@@ -15,7 +15,8 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableArray *_outstandingScheduleTokens;
     FFREDClip *_clip;
-    BOOL _rocketAvailable;
+    BOOL _canUseRocket;
+    BOOL _canUseGPUAcceleration;
     int _fileIndex;
     unsigned long long _videoOffset;
     unsigned long long _videoSize;
@@ -23,7 +24,7 @@ __attribute__((visibility("hidden")))
     int _fd;
 }
 
-- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
+- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5 graphBuildInfo:(id)arg6;
 - (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
 - (void)removeToken:(id)arg1;
 - (id)copyOrCreateScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;

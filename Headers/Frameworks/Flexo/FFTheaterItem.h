@@ -39,7 +39,7 @@
 + (id)theaterItemWithDisplayName:(id)arg1 duration:(CDStruct_1b6d18a9)arg2 type:(int)arg3 representation:(id)arg4;
 + (id)theaterItemWithDisplayName:(id)arg1 duration:(CDStruct_1b6d18a9)arg2 type:(int)arg3;
 @property(nonatomic) BOOL isDirty; // @synthesize isDirty=_isDirty;
-@property(readonly, nonatomic) NSSet *representations; // @synthesize representations=_representations;
+@property(readonly, copy, nonatomic) NSSet *representations; // @synthesize representations=_representations;
 @property(nonatomic) BOOL allowsAutomaticUpload; // @synthesize allowsAutomaticUpload=_allowsAutomaticUpload;
 @property(retain, nonatomic) NSString *sourceDeviceID; // @synthesize sourceDeviceID=_sourceDeviceID;
 @property(nonatomic) int type; // @synthesize type=_type;
@@ -72,10 +72,10 @@
 - (id)thumbnailURL;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)regenerateUID;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)encodeWithJSONCoder:(id)arg1;
 - (id)initWithJSONCoder:(id)arg1;
@@ -90,6 +90,10 @@
 - (struct CGImage *)ffImageBrowserRepresentation;
 - (id)ffImageBrowserUID;
 @property(retain, nonatomic) NSString *subtitle;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

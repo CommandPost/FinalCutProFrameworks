@@ -7,10 +7,11 @@
 #import "NSWindowController.h"
 
 #import "NSTableViewDataSource.h"
+#import "NSTableViewDelegate.h"
 
-@class LKButton, NSMutableArray, OZOpticalFlowTableView;
+@class LKButton, NSMutableArray, NSString, OZOpticalFlowTableView;
 
-@interface OZOpticalFlowProgressController : NSWindowController <NSTableViewDataSource>
+@interface OZOpticalFlowProgressController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource>
 {
     OZOpticalFlowTableView *_progressList;
     LKButton *_autocloseButton;
@@ -22,6 +23,7 @@
 - (BOOL)tableView:(id)arg1 writeRowsWithIndexes:(id)arg2 toPasteboard:(id)arg3;
 - (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
 - (long long)numberOfRowsInTableView:(id)arg1;
+- (id)entryByBackgroundTask:(id)arg1;
 - (id)entryByJobID:(const struct JobID *)arg1;
 - (id)entryAtIndex:(unsigned int)arg1;
 - (void)tickleProgressMainThread:(id)arg1;
@@ -31,7 +33,14 @@
 - (BOOL)isVisible;
 - (void)toggleVisibility;
 - (void)dealloc;
+- (void)windowDidLoad;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

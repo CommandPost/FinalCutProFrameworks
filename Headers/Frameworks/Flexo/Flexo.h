@@ -15,6 +15,10 @@
 + (BOOL)isUnitTesting;
 + (void)setMessageTracerEnabled:(BOOL)arg1;
 + (BOOL)messageTracerEnabled;
++ (void)setPlaybackDuringEditOperations:(BOOL)arg1;
++ (BOOL)playbackDuringEditOperations;
++ (void)setRenderSingleStreamsWithDrop:(BOOL)arg1;
++ (BOOL)renderSingleStreamsWithDrop;
 + (void)setLegacyExceptionReporting:(BOOL)arg1;
 + (BOOL)legacyExceptionReporting;
 + (void)setCanCloseAllLibraries:(BOOL)arg1;

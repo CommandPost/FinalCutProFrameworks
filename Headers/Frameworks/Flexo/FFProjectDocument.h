@@ -34,8 +34,6 @@
 + (id)defaultFileExtension;
 + (id)projectInfo:(id)arg1;
 + (Class)_classForContentsOfURL:(id)arg1 error:(id *)arg2;
-+ (void)initialize;
-+ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_operationResetFlag:(unsigned long long)arg1 onChannel:(id)arg2 delegate:(id)arg3;
 - (void)_operationSetFlag:(unsigned long long)arg1 onChannel:(id)arg2 delegate:(id)arg3;
 - (void)_operationMoveChannel:(id)arg1 inParentFolder:(id)arg2 toIndex:(unsigned long long)arg3 delegate:(id)arg4;

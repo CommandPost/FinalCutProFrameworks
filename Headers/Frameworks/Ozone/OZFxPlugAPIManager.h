@@ -8,7 +8,7 @@
 
 #import "PROAPIAccessing.h"
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSString;
 
 @interface OZFxPlugAPIManager : NSObject <PROAPIAccessing>
 {
@@ -23,6 +23,12 @@
 - (void)registerAPIObject:(id)arg1 forProtocol:(id)arg2 version:(unsigned int)arg3;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

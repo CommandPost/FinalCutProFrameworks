@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class NSTimer;
+@class NSString, NSTimer;
 
 @interface PEAnimatedModalWindow : LKWindow <NSWindowDelegate>
 {
@@ -42,6 +42,12 @@
 - (BOOL)isImportWindow;
 - (void)dealloc;
 - (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

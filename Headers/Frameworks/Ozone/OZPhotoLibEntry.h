@@ -6,19 +6,24 @@
 
 #import <Ozone/OZFileSystemLibEntry.h>
 
-@class NSString;
+@class MLMediaObject, NSString;
 
 @interface OZPhotoLibEntry : OZFileSystemLibEntry
 {
     NSString *_thumbnailPath;
+    MLMediaObject *_mediaObject;
 }
 
++ (id)libraryEntryFromMediaGroup:(id)arg1;
++ (id)mediaSourceFromMediaLibrary:(id)arg1;
++ (id)mediaLibrary;
 + (BOOL)validateTree:(id)arg1;
 + (id)buildTree:(id)arg1;
+@property(retain) MLMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
 - (BOOL)shouldBeArchived;
 - (id)getThumbnailPath;
-- (void)setThumbnailPath:(id)arg1;
 - (id)getAbsolutePath:(BOOL)arg1 rootFlags:(unsigned int)arg2;
+- (id)getSmallPreviewIconForEntry:(BOOL)arg1;
 - (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

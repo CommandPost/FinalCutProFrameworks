@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, nonatomic) NSString *layoutKey; // @synthesize layoutKey=m_layoutKey;
 @property(readonly, nonatomic) FFAnchoredObject *componentParentItem; // @synthesize componentParentItem=m_componentParentItem;
+- (id)project;
 - (id)layoutItem;
 - (id)newProvider;
 - (id)newProviderWithEffectCount:(long long)arg1;

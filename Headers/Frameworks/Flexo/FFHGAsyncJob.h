@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain) NSString *userLabel; // @synthesize userLabel=_userLabel;
-- (_Bool)cancel;
+- (_Bool)dequeueJobIfNotStarted;
 - (double)executionTime;
 - (void)setExecutionTime:(double)arg1;
 - (void)dealloc;

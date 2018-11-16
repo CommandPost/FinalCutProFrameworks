@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFTheaterDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
 @property(retain, nonatomic) NSString *lastUpdatedOperation; // @synthesize lastUpdatedOperation=_lastUpdatedOperation;
 @property(retain, nonatomic) NSMutableArray *runningOperations; // @synthesize runningOperations=_runningOperations;
-@property(readonly, nonatomic) NSError *displayedError; // @synthesize displayedError=_displayedError;
+@property(readonly, retain, nonatomic) NSError *displayedError; // @synthesize displayedError=_displayedError;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
