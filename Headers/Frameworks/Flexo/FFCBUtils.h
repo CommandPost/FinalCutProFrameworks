@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
 + (struct CGRect)imageRect:(id)arg1;
 + (id)imageWithName:(id)arg1;
 + (struct CGRect)centerRect:(struct CGRect)arg1 inRect:(struct CGRect)arg2;
-+ (struct CGRect)insetCGRect:(struct CGRect)arg1 withSides:(CDStruct_d2b197d1)arg2;
-+ (struct CGRect)insetNSRect:(struct CGRect)arg1 withSides:(CDStruct_d2b197d1)arg2;
++ (struct CGRect)insetCGRect:(struct CGRect)arg1 withSides:(CDStruct_83cd8af5)arg2;
++ (struct CGRect)insetNSRect:(struct CGRect)arg1 withSides:(CDStruct_83cd8af5)arg2;
 + (id)uniqueIDString;
 
 @end

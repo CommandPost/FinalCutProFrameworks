@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSDate, NSMutableDictionary, NSMutableSet, NSOperation, NSOperationQueue;
+@class NSArray, NSDate, NSMutableDictionary, NSMutableSet, NSOperation, NSOperationQueue;
 
 @interface FFBackgroundTaskQueue : NSObject
 {
@@ -25,14 +25,22 @@
     int _queuedUpdateProgressPerformSelector;
     long long _completedTaskCount;
     long long _totalTaskCount;
+    NSArray *_performSelectorModes;
+    unsigned int _assertionID;
+    BOOL _hasPowerAssertion;
 }
 
-+ (BOOL)canStartDestructiveActionAffectingAssetRefs:(id)arg1 projects:(id)arg2;
++ (BOOL)canStartActionAffectingAsset:(id)arg1 forUseDictionary:(id)arg2 error:(id *)arg3;
++ (id)alertForBlockingBackgroundTaskNamed:(id)arg1;
++ (id)errorForBlockingTaskNamed:(id)arg1;
++ (id)backgroundAssetsForUse:(int)arg1;
++ (BOOL)canStartActionAffectingAssets:(id)arg1 forUse:(int)arg2;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
 @property BOOL tasksPending; // @synthesize tasksPending=_tasksPending;
 @property double aggregateProgress; // @synthesize aggregateProgress=_aggregateProgress;
 @property id delegate; // @synthesize delegate=_delegate;
+- (void)cancelTasks:(id)arg1 timeout:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)waitUntilAllOperationsAreFinishedBeforeDate:(id)arg1;
 - (void)waitUntilAllOperationsAreFinished;
 - (void)cancelAllOperations;
@@ -40,6 +48,7 @@
 - (void)setSuspended:(BOOL)arg1;
 - (BOOL)isSuspended;
 - (id)operations;
+- (id)_copyOperationsInternal;
 - (void)setRunGroupMaxSimultaneousOperations:(unsigned long long)arg1 forRunGroup:(id)arg2;
 - (id)resumeAllTasks;
 - (id)pauseAllTasks;
@@ -66,14 +75,16 @@
 - (void)addNote:(id)arg1;
 - (BOOL)waitForLowOverheadAcknowledgementBeforeDate:(id)arg1;
 - (BOOL)waitForTasksInRunGroup:(id)arg1 beforeDate:(id)arg2;
-- (BOOL)canStartDestructiveActionAffectingAssetRefs:(id)arg1 projects:(id)arg2;
-- (id)tasksUsingMediaRefs:(id)arg1;
-- (id)_tasksUsingAssetRefs:(id)arg1;
-- (id)_tasksUsingProjects:(id)arg1;
+- (id)backgroundAssetsForUse:(int)arg1;
+- (BOOL)canStartActionAffectingAssets:(id)arg1 forUse:(int)arg2;
+- (id)tasksUsingAssets:(id)arg1 forUse:(int)arg2;
+- (id)_taskNamesUsingAssets:(id)arg1 forUse:(int)arg2;
 - (BOOL)notableTasksPending;
 - (id)_notableTasks;
 @property(readonly) BOOL inLowOverheadMode;
 - (void)appWillTerminate:(id)arg1;
+- (void)finalizeShutdown;
+- (void)beginShutdown;
 - (void)dealloc;
 - (id)init;
 

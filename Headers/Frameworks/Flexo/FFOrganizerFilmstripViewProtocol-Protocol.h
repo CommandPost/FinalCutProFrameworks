@@ -4,7 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFAnchoredSequence, FFContext, FFMarkerLayer, FFOrganizerFilmstripView, FFPersistentModule, FFPlayerModule, FigTimeRangeAndObject, NSArray, NSObject, NSSet, NSString, NSView, NSWindow;
+@class FFAnchoredSequence, FFContext, FFMarkerLayer, FFOrganizerFilmstripView, FFPlayerModule, FigTimeRangeAndObject, NSArray, NSObject, NSSet, NSString, NSView, NSWindow;
 
 @protocol FFOrganizerFilmstripViewProtocol
 - (void)restorePlayheadTo:(FigTimeRangeAndObject *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
@@ -16,6 +16,7 @@
 - (void)performColorMatch;
 - (void)setAudioHeight:(double)arg1;
 - (double)audioHeight;
+- (void)synchronousReloadData;
 - (void)setNeedsData:(BOOL)arg1;
 - (void)removeObserversAndNotifications:(NSObject *)arg1;
 - (void)attachObserversAndNotifications:(NSObject *)arg1;
@@ -41,6 +42,8 @@
 - (void)moveToPreviousClipExtendingSelection:(BOOL)arg1;
 - (void)moveToLastClip;
 - (void)moveToFirstClip;
+- (void)moveToEndOfClip;
+- (void)moveToStartOfClip;
 - (void)moveToFirstSelectedClip;
 - (void)moveToSelectionEnd;
 - (void)moveToSelectionStart;
@@ -72,8 +75,6 @@
 - (void)restoreProjectSelectionAndPersistentPlayheadPosition:(id)arg1;
 - (void)savePersistentPlayheadPosition:(id)arg1;
 - (void)saveProjectSelection:(id)arg1;
-- (void)storeDefaults:(FFPersistentModule *)arg1;
-- (void)loadDefaults:(FFPersistentModule *)arg1;
 - (void)setDelegate:(id <FFOrganizerFilmstripViewDelegate>)arg1;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toView:(NSView *)arg2;
 - (struct CGRect)bounds;

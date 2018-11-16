@@ -20,6 +20,12 @@ __attribute__((visibility("hidden")))
     BOOL _pressed;
 }
 
+- (void)accessibilityPerformAction:(id)arg1;
+- (id)accessibilityActionNames;
+- (BOOL)accessibilityIsIgnored;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)mouseDragged:(id)arg1;

@@ -15,6 +15,7 @@
     unsigned int _textID;
 }
 
+- (void)dealloc;
 - (void)delayedDelete;
 
 @end

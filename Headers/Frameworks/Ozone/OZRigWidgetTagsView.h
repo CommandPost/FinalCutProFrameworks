@@ -12,7 +12,7 @@
 {
     OZViewController *_pController;
     struct OZRigWidget *_pWidget;
-    struct OZScene *_pScene;
+    struct OZDocument *_pDocument;
     unsigned int _widgetID;
     struct OZRigSnapshot *_pDraggingSnapshot;
     BOOL _isSnapshotRemoved;

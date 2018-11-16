@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (void)setNodeBasicMD5OringFlags:(unsigned int)arg1;
 - (id)sortedAllInputKeys;
 - (void)_setupSources;
+- (Class)getSourceVideoEffectClass;
 
 @end
 

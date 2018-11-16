@@ -6,7 +6,7 @@
 
 #import "NSTextDelegate.h"
 
-@class NSArray, NSDictionary, NSEvent, NSMenu, NSNotification, NSOrthography, NSPasteboard, NSString, NSTextAttachment, NSTextView, NSURL, NSUndoManager;
+@class NSArray, NSDictionary, NSEvent, NSMenu, NSNotification, NSOrthography, NSPasteboard, NSSharingServicePicker, NSString, NSTextAttachment, NSTextView, NSURL, NSUndoManager;
 
 @protocol NSTextViewDelegate <NSTextDelegate>
 
@@ -16,6 +16,7 @@
 - (void)textView:(NSTextView *)arg1 doubleClickedOnCell:(id <NSTextAttachmentCell>)arg2 inRect:(struct CGRect)arg3;
 - (void)textView:(NSTextView *)arg1 clickedOnCell:(id <NSTextAttachmentCell>)arg2 inRect:(struct CGRect)arg3;
 - (BOOL)textView:(NSTextView *)arg1 clickedOnLink:(id)arg2;
+- (NSSharingServicePicker *)textView:(NSTextView *)arg1 willShowSharingServicePicker:(NSSharingServicePicker *)arg2 forItems:(NSArray *)arg3;
 - (NSURL *)textView:(NSTextView *)arg1 URLForContentsOfTextAttachment:(NSTextAttachment *)arg2 atIndex:(unsigned long long)arg3;
 - (NSArray *)textView:(NSTextView *)arg1 didCheckTextInRange:(struct _NSRange)arg2 types:(unsigned long long)arg3 options:(NSDictionary *)arg4 results:(NSArray *)arg5 orthography:(NSOrthography *)arg6 wordCount:(long long)arg7;
 - (NSDictionary *)textView:(NSTextView *)arg1 willCheckTextInRange:(struct _NSRange)arg2 options:(NSDictionary *)arg3 types:(unsigned long long *)arg4;

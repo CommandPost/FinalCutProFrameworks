@@ -6,7 +6,9 @@
 
 #import <Ozone/OZMoCurveEditorView.h>
 
-@interface OZAudioWaveform : OZMoCurveEditorView
+#import "OZHGUserJobClient.h"
+
+@interface OZAudioWaveform : OZMoCurveEditorView <OZHGUserJobClient>
 {
     char *_waveBuffer;
     unsigned int _numChannels;
@@ -38,6 +40,8 @@
 - (_Bool)initAudioMixer;
 - (void)rebuildWaveform;
 - (void)postRenderInstruction:(CDStruct_1b6d18a9)arg1 lastSample:(CDStruct_1b6d18a9)arg2;
+- (void)userJobCanceled:(struct OZHGUserJob *)arg1;
+- (void)userJobFinished:(struct OZHGUserJob *)arg1;
 - (void)processStereoBuffer:(char *)arg1 samples:(unsigned int)arg2;
 - (void)processMonoBuffer:(char *)arg1 samples:(unsigned int)arg2;
 - (void)processBuffer:(char *)arg1 samples:(unsigned int)arg2;

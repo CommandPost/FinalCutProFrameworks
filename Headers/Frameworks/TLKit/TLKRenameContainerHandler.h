@@ -16,10 +16,8 @@
 }
 
 - (void)stringEditorView:(id)arg1 didEndEditing:(id)arg2;
-- (void)_delayStartEditing:(id)arg1;
-- (void)_cancelStartEditing:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
 - (BOOL)startTracking:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
 - (void)dealloc;
 
 @end

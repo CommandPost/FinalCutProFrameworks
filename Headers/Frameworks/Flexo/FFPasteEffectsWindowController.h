@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     NSArray *_targets;
     FFAnchoredObject *_ao;
     NSMutableDictionary *_channelDict;
+    NSMutableArray *_intrinsicsToPaste;
     long long *_keyframeMode;
     NSMutableArray *_videoEffectCheckboxes;
     NSMutableArray *_audioEffectCheckboxes;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
     struct CGImage *_destThumbCGImage;
 }
 
++ (id)intrinsicEffectIDs:(BOOL)arg1;
 - (void)windowDidLoad;
 - (BOOL)targetsHaveAudio;
 - (void)loadSourceAndDestThumbnails;
@@ -52,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (void)drawSource:(id)arg1;
 - (void)setupCheckboxArrays;
 - (void)reorderAudioCheckboxes;
-- (void)reorderVideoCheckboxes;
 - (id)newCheckboxWithFrame:(struct CGRect)arg1 andName:(id)arg2 video:(BOOL)arg3 enabled:(BOOL)arg4;
 - (void)audioCheckboxHandler:(id)arg1;
 - (void)videoCheckboxHandler:(id)arg1;
@@ -63,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)cancel:(id)arg1;
 - (void)ok:(id)arg1;
 - (void)dealloc;
-- (id)initWithEffectStacks:(id)arg1 andAnchoredObject:(id)arg2 channelDict:(id)arg3 keyframeMode:(long long *)arg4 targets:(id)arg5;
+- (id)initWithEffectStacks:(id)arg1 andAnchoredObject:(id)arg2 channelDict:(id)arg3 intrinsicsToPaste:(id)arg4 keyframeMode:(long long *)arg5 targets:(id)arg6;
 
 @end
 

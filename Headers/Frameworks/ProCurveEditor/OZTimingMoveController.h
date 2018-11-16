@@ -24,6 +24,8 @@
 - (void)cancelNotify:(id)arg1;
 - (void)windowWillClose:(id)arg1;
 - (BOOL)openWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 value:(double *)arg3 isDelta:(char *)arg4;
+- (void)buildUI;
+- (void)dealloc;
 - (id)init;
 - (void)awakeFromNib;
 

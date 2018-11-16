@@ -17,6 +17,7 @@
 @property BOOL roundedBottomAudioComponent;
 - (void)setCornerRadius:(double)arg1;
 - (void)updateAppearanceType:(int)arg1 withMask:(int)arg2 split:(BOOL)arg3 sourceSplit:(BOOL)arg4;
+- (void)invalidate;
 - (id)init;
 
 @end

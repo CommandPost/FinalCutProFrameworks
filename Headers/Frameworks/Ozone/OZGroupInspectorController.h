@@ -15,7 +15,7 @@
 - (void)dealloc;
 - (void)delayedRelease;
 - (void)delayedReleaseCB:(id)arg1;
-- (BOOL)buildUIWithSceneNodes:(list_1192f13f *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_d81b4758 *)arg1 context:(id)arg2;
 - (BOOL)updateHiddenChannels;
 - (void)changeBlendModeToNormal;
 - (BOOL)updateRasterizationFlags;

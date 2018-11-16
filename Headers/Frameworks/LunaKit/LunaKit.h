@@ -10,6 +10,9 @@
 {
 }
 
++ (BOOL)hasHUDContextMenus;
++ (BOOL)useSelectedSegmentedControlTextHUDColor;
++ (BOOL)hasHUDMenus;
 + (BOOL)useAquaSecondarySelectedControlColor;
 + (unsigned int)smoothingStyleIsUsed:(char *)arg1 forFont:(id)arg2;
 + (BOOL)swapSystemFontRegularForMedium;
@@ -19,6 +22,8 @@
 + (Class)windowTheme;
 + (id)theme;
 + (void)install;
++ (id)CarFileIdentifier;
++ (BOOL)_wantsConsumerLook;
 + (void)initialize;
 + (BOOL)_isInIBCocoaSimulator;
 

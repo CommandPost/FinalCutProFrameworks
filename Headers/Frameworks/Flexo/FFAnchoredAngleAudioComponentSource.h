@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)componentsLayoutSkimmable;
 - (id)backingAnchoredObject;
 - (id)demandEffectStack;
-- (id)backingLayoutKey;
+- (id)layoutKey;
 - (id)backingLayoutMap;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

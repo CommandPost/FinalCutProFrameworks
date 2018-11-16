@@ -15,6 +15,7 @@
 - (void)performCallback;
 - (void)setCallback:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)callback;
+- (void)setSelector:(SEL)arg1 andTarget:(id)arg2;
 - (struct OZChannelButton *)ozChannel;
 
 @end

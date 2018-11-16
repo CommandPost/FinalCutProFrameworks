@@ -4,7 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFPersistentModule.h>
+#import "LKViewModule.h"
 
 #import "FFArrangedItemsModuleDelegate.h"
 #import "FFOrganizerFilmstripModuleDelegate.h"
@@ -15,7 +15,7 @@
 
 @class FFArrangedItemsModule, FFCapsController, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFOrganizerFilterHUD, FFOrganizerLinenBackground, FFOrganizerSplitView, FFOrganizerTextFieldView, FFSidebarModule, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKWindow, LKWindowModule, NSArray, NSBox, NSMenuItem, NSProView, NSView, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
 
-@interface FFOrganizerModule : FFPersistentModule <FFOrganizerFilmstripModuleDelegate, FFSidebarModuleDelegate, NSSplitViewDelegate, FFArrangedItemsModuleDelegate, FFOrganizerFilterHUDDelegate, NSWindowDelegate>
+@interface FFOrganizerModule : LKViewModule <FFOrganizerFilmstripModuleDelegate, FFSidebarModuleDelegate, NSSplitViewDelegate, FFArrangedItemsModuleDelegate, FFOrganizerFilterHUDDelegate, NSWindowDelegate>
 {
     FFSidebarModule *_sidebarModule;
     FFArrangedItemsModule *_itemsModule;
@@ -102,6 +102,7 @@
 - (void)openStack:(id)arg1;
 - (void)setShowFilmstripView:(BOOL)arg1;
 - (BOOL)showFilmstripView;
+- (id)defaultEventForNewProject;
 - (id)roleSetsForCurrentProject;
 - (id)keywordsForCurrentProject;
 - (id)_scrapedKeywordsFromSidebarProviderArray:(id)arg1;
@@ -112,21 +113,7 @@
 - (struct CGRect)screenRectForMarkerLayer:(id)arg1;
 - (struct CGRect)playheadFrame;
 - (struct CGRect)selectedRangeFrame;
-- (void)selectNextVariantInSelection:(id)arg1;
-- (void)selectPreviousVariantInSelection:(id)arg1;
-- (void)collapseSelectionIntoVariant:(id)arg1;
-- (void)makeVariantGroupFromSelection:(id)arg1;
-- (void)openInTimeline:(id)arg1;
 - (void)favoriteFilterMenu:(id)arg1;
-- (void)allowTimelineEditing:(id)arg1;
-- (void)revealInFinder:(id)arg1;
-- (void)breakApartClipItems:(id)arg1;
-- (void)createMultiAngleClip:(id)arg1;
-- (void)createCompoundClip:(id)arg1;
-- (void)toggleFavoritesAndAllFilters:(id)arg1;
-- (void)copy:(id)arg1;
-- (BOOL)module:(id)arg1 cutWithSender:(id)arg2;
-- (BOOL)module:(id)arg1 copyWithSender:(id)arg2;
 - (id)selectedRangesOfMediaForTimelineEditing;
 - (id)selectedRangesOfMedia;
 - (id)selectedItems;
@@ -137,22 +124,18 @@
 - (void)setTextFilter:(id)arg1;
 - (void)hideHUD;
 - (void)updateSearchStatusToFilterDict:(id)arg1 andFavFilter:(int)arg2;
-- (void)showMarkedRanges:(id)arg1;
-- (void)showSkimmerInfo:(id)arg1;
 - (void)searchAction:(id)arg1;
 - (void)sidebarModuleSelectionDidChange:(id)arg1;
 - (void)toggleSidebarHidden:(id)arg1;
 - (id)module:(id)arg1 fieldEditorForView:(id)arg2 cell:(id)arg3;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (BOOL)module:(id)arg1 validate:(char *)arg2 userInterfaceItem:(id)arg3;
-- (id)contentLayoutDictionary;
-- (void)takeContentLayoutFromDictionary:(id)arg1;
 - (id)submoduleLayoutArray;
 @property(readonly, nonatomic) FFMediaEventProject *currentMediaEventProject;
 - (id)targetModules;
 - (id)firstKeyView;
-- (void)storeDefaults;
-- (void)loadDefaults;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
 - (void)viewDidLoad;
 @property(retain, nonatomic) NSView *itemsModuleBottomAccessoryView;
 @property(readonly, nonatomic) FFItemsContainerView *itemsModuleViewContainer;
@@ -169,8 +152,6 @@
 - (BOOL)wantsHeaderBar;
 @property(readonly) NSView *moduleFooterAccessoryView;
 @property(readonly) NSView *moduleHeaderAccessoryView;
-- (void)setSidebarUserWidth:(double)arg1;
-@property(readonly, nonatomic) double sidebarUserWidth;
 - (id)capsController;
 @property(readonly, nonatomic) LKSplitView *splitView;
 - (void)didUninstallItemsModule;

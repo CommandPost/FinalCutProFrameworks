@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFOrganizerFilmListViewController, NSInvocationOperation, NSObject<FFMetadataProtocol>, NSString;
+@class FFOrganizerFilmListViewController, NSInvocationOperation, NSMutableSet, NSObject<FFMetadataProtocol>, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmListOutlineDataNode : NSObject
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSString *_dataIdentifier;
     FFOrganizerFilmListViewController *_outlineViewController;
     BOOL _isObserving;
+    NSMutableSet *_observedObjects;
     BOOL _needsNodeDataHelper;
     BOOL _isObservingMetadataGenerator;
     BOOL _isInvalidSequence;
@@ -28,9 +29,12 @@ __attribute__((visibility("hidden")))
 + (BOOL)isFileSystemType:(int)arg1;
 + (BOOL)isClusterType:(int)arg1;
 + (BOOL)isTimeMarkerType:(int)arg1;
++ (BOOL)isUsedMediaRangeType:(int)arg1;
 + (BOOL)isMarkerType:(int)arg1;
++ (BOOL)isProjectType:(int)arg1;
 + (BOOL)isClipType:(int)arg1;
 + (void)releaseSharedFormatters;
+@property(nonatomic) BOOL needsNodeDataHelper; // @synthesize needsNodeDataHelper=_needsNodeDataHelper;
 @property(retain) NSInvocationOperation *metadataGeneratorOperation; // @synthesize metadataGeneratorOperation=_metadataGeneratorOperation;
 @property(nonatomic) FFOrganizerFilmListViewController *outlineViewController; // @synthesize outlineViewController=_outlineViewController;
 @property(retain, nonatomic) NSString *dataIdentifier; // @synthesize dataIdentifier=_dataIdentifier;
@@ -105,11 +109,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)isValidFileSystemNode;
 - (BOOL)isFileSystemNode;
 - (BOOL)isTimeMarkerNode;
+- (BOOL)isUsedMediaRangeNode;
 - (BOOL)isMarkerNode;
 - (BOOL)isMultiCamClip;
+- (BOOL)isRADPreIngestClipNode;
 - (BOOL)isPTPMovieClipNode;
 - (BOOL)isPTPClipNode;
 - (BOOL)isStillClipNode;
+- (BOOL)isProjectNode;
 - (BOOL)isClipNode;
 - (BOOL)isClusterNode;
 - (BOOL)isClipOffline;

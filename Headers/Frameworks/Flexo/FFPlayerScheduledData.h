@@ -9,7 +9,7 @@
 #import "HGRQCustomJobProtocol.h"
 #import "HGRQJobProtocol.h"
 
-@class FFHGAsyncCustomJob, FFHGAsyncFanoutJob, FFMD5AndOffset, FFSVContext, FFScheduleToken, FFStreamVideo, NSArray, NSCondition, NSDictionary, NSLock, NSMutableArray, NSNumber, NSOperation, NSSet;
+@class FFHGAsyncCustomJob, FFHGAsyncFanoutJob, FFMD5AndOffsetWithInfo, FFSVContext, FFScheduleToken, FFStreamVideo, FFSubRangeMD5Info, NSArray, NSCondition, NSDictionary, NSLock, NSMutableArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFPlayerScheduledData : NSObject <HGRQJobProtocol, HGRQCustomJobProtocol>
@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     FFStreamVideo *_stream;
     CDStruct_1b6d18a9 _time;
     CDStruct_1b6d18a9 _timeRepresented;
+    NSString *_frameRepresentedString;
+    CDStruct_1b6d18a9 _alwaysFwdTime;
     CDStruct_1b6d18a9 _duration;
     CDStruct_1b6d18a9 _nativeFrameDur;
     CDStruct_1b6d18a9 _nativeSampleDur;
@@ -24,18 +26,18 @@ __attribute__((visibility("hidden")))
     int _fieldCount;
     CDStruct_e83c9415 _streamTimeRange;
     FFSVContext *_contexts[3];
-    NSOperation *_scheduleOp;
+    struct CGRect _opaqueBounds[3];
     FFScheduleToken *_tokens[3];
     FFScheduleToken *_compositeToken;
-    _Bool _alreadyFoundInputsReady;
+    unsigned int _knownClearFlags;
     FFScheduleToken *_hintTokens[3];
     CDStruct_1b6d18a9 _schedTimes[3];
     struct CGColorSpace *_cachedDestColorSpace[3];
     _Bool _cachedDestColorSpaceCompareResult[3];
     CDStruct_1b6d18a9 _pushedToDestsTime;
-    FFMD5AndOffset *_schedMD5AndOffsets[3];
-    FFMD5AndOffset *_md5AndOffsets[3];
-    NSNumber *_md5FlagsForOring[3];
+    FFMD5AndOffsetWithInfo *_schedMD5AndOffsets[3];
+    FFMD5AndOffsetWithInfo *_md5AndOffsets[3];
+    FFSubRangeMD5Info *_md5Infos[3];
     id _imgCost[3];
     NSDictionary *_imgDicts[3];
     int _aaRepeats;
@@ -47,18 +49,27 @@ __attribute__((visibility("hidden")))
     _Bool _inRenderMode;
     _Bool _waitForLoadingFX;
     _Bool _forPreroll;
+    _Bool _atEndOfLoopRange;
+    float _skipLevelWhenCreated;
     _Bool _sentPMRLogs;
     FFHGAsyncCustomJob *_generateImageJob;
+    int _executionLocation;
+    CDStruct_1b6d18a9 _diskIOScheduledTime;
+    CDStruct_1b6d18a9 _diskIOCompletionTime;
     double _scheduleTokenTime;
     double _generateGraphTime;
+    CDStruct_18280053 _graphBuildBlockedInfo;
+    CDStruct_18280053 _graphExecBlockedInfo;
     long long _readLockWait;
     _Bool _boundToRenderer;
     _Bool _notScheduledWhenChosen;
     double _waitForSchedulingDuration;
     _Bool _diskNotCompleteWhenChosen;
+    _Bool _imagedWhileTokenBlockingFlagsSet;
     double _waitForNewSchedLockTime;
     double _waitForNewImageLockTime;
     NSLock *_streamMutex;
+    _Bool _gotStreamMutexForGraphing;
     _Bool _notReadyAtEnqueue;
     _Bool _notReadyAtJobStart;
     _Bool _fromSegmentStore;
@@ -73,6 +84,8 @@ __attribute__((visibility("hidden")))
     NSArray *_overlayInfoForDests;
     _Bool _copiedFlattenedImage;
     _Bool _isErrorFrame;
+    _Bool _isBlankFrame;
+    _Bool _isAudioFrame;
     _Bool _isRateChangeFrame;
     _Bool _ibpIntoHelium;
     _Bool _ibpMulticam;
@@ -83,6 +96,7 @@ __attribute__((visibility("hidden")))
     _Bool _bwIsUncertain;
     _Bool _canceledByLiveEdit;
     int _liveEditSpecialHandling;
+    _Bool _wasUrgentlyScheduled;
 }
 
 @property _Bool bwIsUncertain; // @synthesize bwIsUncertain=_bwIsUncertain;
@@ -92,6 +106,8 @@ __attribute__((visibility("hidden")))
 @property _Bool ibpMulticam; // @synthesize ibpMulticam=_ibpMulticam;
 @property _Bool ibpIntoHelium; // @synthesize ibpIntoHelium=_ibpIntoHelium;
 @property(nonatomic) _Bool isRateChangeFrame; // @synthesize isRateChangeFrame=_isRateChangeFrame;
+@property(nonatomic) _Bool isAudioFrame; // @synthesize isAudioFrame=_isAudioFrame;
+@property(readonly) _Bool isBlankFrame; // @synthesize isBlankFrame=_isBlankFrame;
 @property _Bool isErrorFrame; // @synthesize isErrorFrame=_isErrorFrame;
 @property _Bool fromRAMCache; // @synthesize fromRAMCache=_fromRAMCache;
 @property _Bool fromSegmentStore; // @synthesize fromSegmentStore=_fromSegmentStore;
@@ -101,16 +117,21 @@ __attribute__((visibility("hidden")))
 @property double waitForNewSchedLockTime; // @synthesize waitForNewSchedLockTime=_waitForNewSchedLockTime;
 @property double generateGraphTime; // @synthesize generateGraphTime=_generateGraphTime;
 @property double waitForSchedulingDuration; // @synthesize waitForSchedulingDuration=_waitForSchedulingDuration;
+@property _Bool imagedWhileTokenBlockingFlagsSet; // @synthesize imagedWhileTokenBlockingFlagsSet=_imagedWhileTokenBlockingFlagsSet;
 @property _Bool diskNotCompleteWhenChosen; // @synthesize diskNotCompleteWhenChosen=_diskNotCompleteWhenChosen;
 @property _Bool notScheduledWhenChosen; // @synthesize notScheduledWhenChosen=_notScheduledWhenChosen;
+@property _Bool gotStreamMutexForGraphing; // @synthesize gotStreamMutexForGraphing=_gotStreamMutexForGraphing;
 @property _Bool boundToRenderer; // @synthesize boundToRenderer=_boundToRenderer;
 @property double scheduleTokenTime; // @synthesize scheduleTokenTime=_scheduleTokenTime;
+@property(readonly) int executionLocation; // @synthesize executionLocation=_executionLocation;
+@property float skipLevelWhenCreated; // @synthesize skipLevelWhenCreated=_skipLevelWhenCreated;
+@property _Bool atEndOfLoopRange; // @synthesize atEndOfLoopRange=_atEndOfLoopRange;
 @property _Bool forPreroll; // @synthesize forPreroll=_forPreroll;
 @property(readonly) int fieldCount; // @synthesize fieldCount=_fieldCount;
-@property(readonly) CDStruct_1b6d18a9 timeRepresented; // @synthesize timeRepresented=_timeRepresented;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 timeRepresented; // @synthesize timeRepresented=_timeRepresented;
 @property CDStruct_1b6d18a9 time; // @synthesize time=_time;
-@property(readonly) CDStruct_1b6d18a9 nativeSampleDur; // @synthesize nativeSampleDur=_nativeSampleDur;
-@property(readonly) CDStruct_1b6d18a9 nativeFrameDur; // @synthesize nativeFrameDur=_nativeFrameDur;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 nativeSampleDur; // @synthesize nativeSampleDur=_nativeSampleDur;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 nativeFrameDur; // @synthesize nativeFrameDur=_nativeFrameDur;
 @property(readonly) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(readonly) FFStreamVideo *stream; // @synthesize stream=_stream;
 - (id)description;
@@ -123,6 +144,9 @@ __attribute__((visibility("hidden")))
 - (id)statusInfo;
 - (void)sendPMRLogs:(id)arg1 scrubbing:(_Bool)arg2;
 - (double)bufferCopyTime;
+- (double)executeGraphBlockedTime;
+- (double)generateGraphBlockedTime;
+- (double)diskIOElapsedTime;
 - (double)executeGraphTime;
 - (_Bool)_onlyPrimaryContext;
 - (BOOL)drawMultiAngle;
@@ -130,15 +154,14 @@ __attribute__((visibility("hidden")))
 - (long long)readLockWait;
 - (_Bool)isCancelled;
 - (void)cancel;
-- (void)setAllAnglesHintToken:(id)arg1;
-- (id)copyAllAnglesScheduleTokenWithRange;
+- (void)setHintTokens:(id *)arg1;
 - (void)hintCacheData:(unsigned int)arg1;
-- (_Bool)pushFramesToAssignedDests:(double)arg1 retDestsPushed:(id)arg2 currentTimecodeType:(unsigned int)arg3;
+- (_Bool)pushFramesToAssignedDests:(double)arg1 retDestsPushed:(id)arg2 currentTimecodeType:(unsigned int)arg3 healthLevels:(CDStruct_b80813c2)arg4;
 - (void)generateOverlayInfo:(double)arg1 currentTimecodeType:(unsigned int)arg2;
 - (id)_newPlayerFrameForDestNum:(int)arg1 forRate:(double)arg2 forTimecodeType:(unsigned int)arg3;
 - (id)copyPushableImageForDest:(unsigned int)arg1 contextNum:(unsigned int)arg2;
 - (_Bool)_flattenedImagesCompatibleWithOwnDests:(_Bool)arg1;
-- (void)generateImageRepsAndQueueFlattenToExecutateOn:(int)arg1;
+- (void)generateImageRepsAndQueueFlattenToExecuteOn:(int)arg1 enablePreferredLoc:(_Bool)arg2;
 - (void)jobFinished;
 - (void)jobStarted;
 - (void)customHGRenderQueueJobCallback:(struct HGRenderer *)arg1;
@@ -154,19 +177,27 @@ __attribute__((visibility("hidden")))
 - (id)assignedDests;
 - (_Bool)waitForFlattenedImagesBeforeDate:(id)arg1;
 - (_Bool)flattenedImagesReady;
-- (_Bool)pushToCodecBeforeDate:(id)arg1;
+- (_Bool)codecHasStarted;
+- (_Bool)pushToCodecWithTestForAbort:(CDUnknownBlockType)arg1 retPreviouslyPushed:(_Bool *)arg2;
 - (_Bool)pushedToCodec;
-- (_Bool)waitForReadyToImageBeforeDate:(id)arg1;
+- (_Bool)pushedToCodecWithErrorCheck:(BOOL)arg1;
+- (_Bool)waitForInputImagesReadyBeforeTimeInterval:(double)arg1;
+- (_Bool)waitForReadyToImageBeforeTimeInterval:(double)arg1;
+- (_Bool)_internal_waitForFlagsClear:(unsigned int)arg1 beforeTimeInterval:(double)arg2;
 - (_Bool)readyToImage;
+- (_Bool)diskIOComplete;
 - (_Bool)inputSourcesReady;
+- (_Bool)_internalTestFlags:(unsigned int)arg1;
+- (void)_updateDiskIOCompletedTime;
 - (id)_sharedLock;
+- (_Bool)noLongerNeedsScheduling;
 - (_Bool)waitUntilScheduled:(id)arg1;
 - (_Bool)schedulingComplete;
-- (_Bool)_scheduleInternal:(_Bool)arg1;
-- (_Bool)_precalculateMD5_andCheckForLoadingFX:(id)arg1;
+- (void)queueUrgentSchedule;
+- (_Bool)_scheduleInternal;
+- (_Bool)_precalculateMD5_magicFrame_andCheckForLoadingFX:(id)arg1;
 - (CDStruct_1b6d18a9)timeForContextNumber:(int)arg1;
 - (void)schedule;
-- (void)_asyncSchedule:(id)arg1;
 - (_Bool)usableFor:(id)arg1 timeRepresented:(CDStruct_1b6d18a9)arg2 duration:(CDStruct_1b6d18a9)arg3 nativeFrameDur:(CDStruct_1b6d18a9)arg4 nativeSampleDur:(CDStruct_1b6d18a9)arg5 context1:(id)arg6 context2:(id)arg7 aaContext:(id)arg8 aaRepeats:(int)arg9;
 - (void)updateState:(_Bool)arg1 newState:(int)arg2;
 - (void)validateIvarsForState:(int)arg1;
@@ -176,11 +207,11 @@ __attribute__((visibility("hidden")))
 - (id)_getFrameCacheInfo:(int)arg1;
 - (id)_getFrameCacheInfoAlreadyHoldingLock:(int)arg1;
 - (_Bool)noGridForGrid;
-- (id)copyForLiveEdit:(id)arg1;
+- (id)copyForLiveEdit:(id)arg1 saveGrid:(_Bool)arg2 saveF1F2:(_Bool)arg3;
 - (id)copyForNewOSCsForProposedDests:(id)arg1 withUnneededDests:(id)arg2;
 - (id)copyForNewGraph;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 streamMutex:(id)arg2 time:(CDStruct_1b6d18a9)arg3 timeRepresented:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 nativeFrameDur:(CDStruct_1b6d18a9)arg6 nativeSampleDur:(CDStruct_1b6d18a9)arg7 context1:(id)arg8 context2:(id)arg9 aaContext:(id)arg10 aaRepeats:(int)arg11 bounds:(struct CGRect)arg12 asyncQueue:(id)arg13 inRenderMode:(_Bool)arg14 waitForLoadingFX:(_Bool)arg15;
+- (id)initWithStream:(id)arg1 streamMutex:(id)arg2 time:(CDStruct_1b6d18a9)arg3 timeRepresented:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 nativeFrameDur:(CDStruct_1b6d18a9)arg6 nativeSampleDur:(CDStruct_1b6d18a9)arg7 context1:(id)arg8 context2:(id)arg9 aaContext:(id)arg10 aaRepeats:(int)arg11 bounds:(struct CGRect)arg12 schedQueue:(id)arg13 inRenderMode:(_Bool)arg14 waitForLoadingFX:(_Bool)arg15 isBlankFrame:(_Bool)arg16 isAudioFrame:(_Bool)arg17 frameRepString:(id)arg18;
 
 @end
 

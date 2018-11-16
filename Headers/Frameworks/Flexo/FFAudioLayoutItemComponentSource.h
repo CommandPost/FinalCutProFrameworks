@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (id)sourceName;
 - (void)resetLayoutItemKey:(id)arg1;
 - (id)componentsLayoutSkimmable;
-- (id)backingLayoutKey;
 - (id)backingLayoutMap;
 - (id)initWithLayoutItemKey:(id)arg1;
 

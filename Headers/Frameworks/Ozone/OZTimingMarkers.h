@@ -54,7 +54,7 @@
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)mouseMoved:(id)arg1;
-- (void)_dismissMarkerTitlePopover;
+- (void)_dismissMarkerTitlePopover:(id)arg1;
 - (id)_markerTitlePopoverWindow:(const struct OZTimeMarker *)arg1;
 - (id)_textImageForMarker:(const struct OZTimeMarker *)arg1;
 - (void)mouseEntered:(id)arg1;

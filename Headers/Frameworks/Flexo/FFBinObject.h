@@ -24,6 +24,12 @@
 + (id)copyClassDescription;
 + (id)keyPathsForValuesAffectingItemDisplayName;
 - (id)inspectorClassName;
+- (void)setUserDefaultFigTime:(CDStruct_1b6d18a9)arg1 forKey:(id)arg2;
+- (CDStruct_1b6d18a9)userDefaultFigTimeForKey:(id)arg1;
+- (void)setUserDefaultInteger:(long long)arg1 forKey:(id)arg2;
+- (long long)userDefaultIntegerForKey:(id)arg1;
+- (void)clearUserDefaultValueForKey:(id)arg1;
+- (BOOL)hasUserDefaultValueForKey:(id)arg1;
 - (id)mdLocalValueForKey:(id)arg1;
 - (id)mdValueForKey:(id)arg1;
 - (void)mdSetLocalValue:(id)arg1 forKey:(id)arg2;
@@ -51,6 +57,7 @@
 - (void)setItemDisplayName:(id)arg1;
 @property(readonly, nonatomic) BOOL itemDisplayNameEditable;
 @property(readonly, nonatomic) NSString *itemDisplayName;
+- (id)itemIconSelected:(BOOL)arg1;
 @property(readonly, nonatomic) NSImage *itemIcon;
 - (id)itemParent;
 - (BOOL)actionEndSetMetadataValueWithError:(id *)arg1;

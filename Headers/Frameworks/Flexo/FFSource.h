@@ -17,6 +17,7 @@
 + (Class)streamClass;
 + (long long)sourceCount;
 - (id)displayName;
+- (BOOL)isValid;
 - (long long)timecodeDisplayDropFrame;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (CDStruct_1b6d18a9)nativeSampleDuration;

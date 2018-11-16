@@ -23,6 +23,9 @@
 + (id)clipIDForCameraFile:(id)arg1;
 + (id)creationDateForCameraFile:(id)arg1;
 + (id)serialNumberForCameraDevice:(id)arg1;
++ (void)addMetadataToMetadataArray:(id)arg1 key:(id)arg2 object:(id)arg3;
++ (id)metadataArrayFromMetadataReader:(struct OpaqueFigMetadataReader *)arg1;
++ (struct OpaqueFigMetadataReader *)quicktimeMetadataReaderForFileURL:(id)arg1;
 + (id)keyPathsForValuesAffectingPercentageDone;
 @property(readonly) NSArray *downloadRequests; // @synthesize downloadRequests=_downloadRequests;
 @property id <MIOPTPDownloadQueueDelegate> delegate; // @synthesize delegate=_delegate;
@@ -33,9 +36,6 @@
 - (BOOL)writeMetadata;
 - (void)addProAppsMetadataToMetadataArray:(id)arg1;
 - (void)fetchDeviceInfofromIOKitForCameraDevice:(id)arg1 manufacturer:(id *)arg2 modelName:(id *)arg3;
-- (void)addMetadataToMetadataArray:(id)arg1 key:(id)arg2 object:(id)arg3;
-- (id)metadataArrayFromMetadataReader:(struct OpaqueFigMetadataReader *)arg1;
-- (struct OpaqueFigMetadataReader *)quicktimeMetadataReaderForFileURL:(id)arg1;
 - (void)didDownloadFile:(id)arg1 error:(id)arg2 options:(id)arg3 contextInfo:(void *)arg4;
 - (void)didReadData:(id)arg1 fromFile:(id)arg2 error:(id)arg3 contextInfo:(void *)arg4;
 - (void)cancelCurrentDownloadRequest;

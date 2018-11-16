@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateAudioRetimingChannels;
 - (void)setPreservesPitch:(BOOL)arg1;
 - (BOOL)preservesPitch;
+- (id)preservesPitchChannel;
 - (id)newEffectNode;
 - (id)inputKeys;
 - (void)createChannelsInFolder:(id)arg1;

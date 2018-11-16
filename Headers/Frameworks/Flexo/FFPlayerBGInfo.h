@@ -10,10 +10,12 @@ __attribute__((visibility("hidden")))
 @interface FFPlayerBGInfo : NSObject
 {
     int _bg;
+    _Bool _fullyOpaque;
 }
 
+- (id)description;
 - (_Bool)usableForBG:(int)arg1;
-- (id)initWithBG:(int)arg1;
+- (id)initWithBG:(int)arg1 imageFullyOpaque:(_Bool)arg2;
 
 @end
 

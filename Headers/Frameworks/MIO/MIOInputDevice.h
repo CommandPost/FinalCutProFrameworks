@@ -19,7 +19,6 @@
     MIOTimecode *mStoppedEarlyAtTC;
     unsigned long long mLastFrameTC;
     BOOL mLastFrameTCInitialized;
-    NSTimer *mMeterTimer;
     int mDroppedFramesHandling;
     int mTimecodeBreakHandling;
     int mStreamErrorsHandling;
@@ -29,8 +28,6 @@
     BOOL mSegmentEnded;
     NSString *mNewFilePath;
     int mPreroll;
-    double mLimitSeconds;
-    unsigned long long mLimitSize;
     unsigned long long mMinFreeSpace;
     double mTimecodeOffset;
     BOOL mPrerollStarted;
@@ -47,7 +44,6 @@
     BOOL mNoDataDetectionRADDataReceived;
     NSConditionLock *mFileCompletionEndLock;
     NSConditionLock *mCMIOFinishLock;
-    unsigned int mNumInputMeters;
     NSMutableArray *mFileCompletionDictArray;
     NSMutableDictionary *mEndSegmentDict;
     BOOL mWillCloseDown;
@@ -110,7 +106,6 @@
 - (id)currentSegment;
 - (void)setCurrentSegment:(id)arg1;
 - (BOOL)startProcessing;
-- (BOOL)enableTranscoding:(id)arg1;
 - (void)setChunkSize;
 - (BOOL)setupPulldownRemovalForSubSegment:(id)arg1 isTape:(BOOL)arg2;
 - (BOOL)setIngestObject:(id)arg1 andRefCon:(void *)arg2;
@@ -122,8 +117,6 @@
 - (BOOL)setDestinationFilePath:(id)arg1;
 - (id)destinationFolderPath;
 - (void)setDestinationFolderPath:(id)arg1;
-- (void)updateMeters:(id)arg1;
-- (BOOL)setMetering:(BOOL)arg1;
 - (void)getVideoRate:(int *)arg1 audioRate:(int *)arg2 audioChannels:(int *)arg3;
 - (void)setupMetadataFileWriterOptions:(id)arg1;
 - (id)cmioMetadaDictionaryWithObject:(id)arg1 forKey:(id)arg2 inLocale:(id)arg3;
@@ -138,8 +131,6 @@
 - (int)inputStyle;
 - (unsigned long long)minFreeSpace;
 - (void)setMinFreeSpace:(unsigned long long)arg1;
-- (void)setSizeLimit:(unsigned long long)arg1;
-- (void)setDurationLimit:(double)arg1;
 - (int)sceneChangeHandling;
 - (void)setSceneChangeHandling:(int)arg1;
 - (int)streamErrorHandling;

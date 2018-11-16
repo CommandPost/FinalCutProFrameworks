@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
             struct opaqueCMFormatDescription *formatDesc;
             unsigned long long sequenceNumber;
             unsigned long long frameSize;
+            struct __CFDictionary *pixelBufferAttachments;
+            struct __CVPixelBufferPool *outputPixelBufferPool;
         } twovuy;
     } mStorage;
     CDStruct_15084369 mPcb;

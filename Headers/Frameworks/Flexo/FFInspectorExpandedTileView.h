@@ -9,8 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface FFInspectorExpandedTileView : LKTileView
 {
+    BOOL _shouldNotDrawDividerForTile;
+    BOOL _suppressScrolling;
 }
 
+@property(nonatomic) BOOL suppressScrolling; // @synthesize suppressScrolling=_suppressScrolling;
+@property BOOL shouldNotDrawDividerForTile; // @synthesize shouldNotDrawDividerForTile=_shouldNotDrawDividerForTile;
+- (void)scrollTileToVisible:(id)arg1;
 - (BOOL)shouldResizeToFit;
 - (void)drawDividerForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
 - (void)drawBackgroundForTile:(id)arg1 inClipRect:(struct CGRect)arg2;

@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
 + (id)_todoUnselectedCompletedFacet;
 + (id)_todoSelectedNotCompletedFacet;
 + (id)_todoUnselectedNotCompletedFacet;
++ (id)_momentSelectedFacet;
++ (id)_momentUnselectedFacet;
 + (id)_noteSelectedFacet;
 + (id)_noteUnselectedFacet;
 + (unsigned long long)_themeRef;

@@ -27,10 +27,11 @@ __attribute__((visibility("hidden")))
 - (CDStruct_bdcb2b0d)_md5WithContext:(id)arg1;
 - (id)nativeVideoProps;
 - (CDStruct_1b6d18a9)duration;
+- (id)newSourceForKey:(id)arg1;
 - (void)_setupSources;
 - (void)_setupLayer:(id)arg1 groupDisabled:(BOOL)arg2;
 - (BOOL)_layerIsValid:(id)arg1;
-- (id)_newImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3 layer:(id)arg4;
+- (id)_newImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3 layer:(id)arg4 useComposite:(BOOL)arg5;
 - (void)dealloc;
 - (void)setFlat;
 - (id)initWithAssetFileID:(id)arg1;

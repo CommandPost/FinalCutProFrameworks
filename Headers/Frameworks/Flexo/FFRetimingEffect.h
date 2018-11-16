@@ -6,23 +6,19 @@
 
 #import <Flexo/FFEffect.h>
 
-@class CHChannelDouble, CHChannelEnum, CHChannelFolder;
+@class CHChannelBool, CHChannelDouble, CHChannelEnum, CHChannelFolder;
 
 __attribute__((visibility("hidden")))
 @interface FFRetimingEffect : FFEffect
 {
-    CHChannelEnum *_chRetimingMode;
     CHChannelEnum *_chRetimingInterpolation;
     CHChannelEnum *_chRetimingExtrapolation;
-    CHChannelDouble *_chTimeMap;
+    CHChannelDouble *_chTimeMapUI;
+    CHChannelDouble *_chTimeMapEval;
+    CHChannelDouble *_chConstantSpeed;
+    CHChannelBool *_chDirection;
     CHChannelFolder *_folderAdvanced;
     int _activeSegment;
-    CHChannelFolder *_folderSweetSpotPreset;
-    CHChannelDouble *_chSweetSpotFrame;
-    CHChannelDouble *_chSweetStartFrame;
-    CHChannelDouble *_chSweetEndFrame;
-    CHChannelDouble *_chSpeedBeforeSweetSpot;
-    CHChannelDouble *_chSpeedAfterSweetSpot;
     CDStruct_1b6d18a9 _lastOutTime;
     CDStruct_1b6d18a9 _mediaStartTime;
     CDStruct_1b6d18a9 _mediaEndTime;
@@ -33,18 +29,19 @@ __attribute__((visibility("hidden")))
     double _audioOutMediaTime;
     double *_anchoredSecondMediaTimes;
     double _anchoredFirstMediaTime;
-    CDStruct_1b6d18a9 _sweetStartFrameComponentTime;
-    CDStruct_1b6d18a9 _sweetEndFrameComponentTime;
 }
 
 + (id)effectForEffectStack:(id)arg1;
 + (id)effectIDForEffectStack:(id)arg1;
 - (id).cxx_construct;
 - (void)createChannelsInFolder:(id)arg1;
+- (void)retimingReset;
 - (CDStruct_1b6d18a9)lastKeyValueInTime;
 - (CDStruct_1b6d18a9)firstKeyValueInTime;
 - (CDStruct_1b6d18a9)lastKeyTime;
 - (CDStruct_1b6d18a9)firstKeyTime;
+- (CDStruct_1b6d18a9)UICurveTimeFromEvalCurveTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)evalCurveTimeFromUICurveTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1 withContext:(id)arg2;
 - (CDStruct_e83c9415)untimeRange:(CDStruct_e83c9415)arg1;
 - (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1;
@@ -55,10 +52,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)mapMediaTimeInSeconds:(double)arg1 toComponentKeyTime:(CDStruct_1b6d18a9 *)arg2 inComponentTimeRange:(CDStruct_e83c9415)arg3;
 - (int)segmentCount;
 - (double)mediaTimeAlongPrevSegment:(CDStruct_1b6d18a9)arg1 keyIndex:(unsigned int)arg2;
-- (int)segmentIndexForComponentTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_e83c9415)segmentTimeRangeAtIndex:(int)arg1;
-- (double)segmentRetimingRateAtSegmentIndex:(int)arg1;
-- (double)segmentRetimingRateAroundComponentTime:(CDStruct_1b6d18a9)arg1;
+- (double)retimingRateForRange:(CDStruct_e83c9415)arg1;
+- (int)evalSegmentIndexForComponentTime:(CDStruct_1b6d18a9)arg1;
+- (int)UIsegmentIndexForComponentTime:(CDStruct_1b6d18a9)arg1;
+- (int)_segmentIndexForChannel:(id)arg1 componentTime:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_e83c9415)evalSegmentTimeRangeAtIndex:(int)arg1;
+- (CDStruct_e83c9415)evalSegmentTimeRangeAtUIIndex:(int)arg1;
+- (CDStruct_e83c9415)_segmentTimeRangeForChannel:(id)arg1 segmentIndex:(int)arg2;
+- (double)evalSegmentRetimingRateAtSegmentIndex:(int)arg1;
+- (double)UIsegmentRetimingRateAtSegmentIndex:(int)arg1;
+- (double)_segmentRetimingRateForChannel:(id)arg1 segmentIndex:(int)arg2;
+- (double)UIsegmentRetimingRateAroundComponentTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)retimeInForwardState:(CDStruct_e83c9415)arg1;
 - (double)constantRetimingRate;
 - (BOOL)effectIntroducesAlpha;
@@ -66,12 +70,22 @@ __attribute__((visibility("hidden")))
 - (BOOL)isNoOp;
 - (BOOL)isAtDefaultSettings;
 - (BOOL)isRetimeEffect;
-- (void)setConstantRetiming:(BOOL)arg1;
+- (void)setSmoothTransitionAtKeyframe:(BOOL)arg1 index:(int)arg2;
+- (BOOL)smoothTransitionAtKeyframe:(int)arg1;
+- (BOOL)smoothTransitionPossibleAtKeyframe:(int)arg1;
+- (BOOL)allLinearTransitions;
+- (BOOL)allSmoothTransitions;
 - (BOOL)constantRetiming;
-- (void)setSmoothInterpolation:(BOOL)arg1;
+- (void)resetTransitionFalloffs;
+- (void)setInterpolation:(long long)arg1;
+- (long long)interpolation;
 - (BOOL)smoothInterpolation;
-- (void)setRetimingInterpolation;
 - (void)setRetimingExtrapolation;
+- (void)copyKeyValueWithTransitionFalloff:(void *)arg1 toTime:(CDStruct_1b6d18a9)arg2;
+- (void)addKeyWithNoTransitionAtTime:(CDStruct_1b6d18a9)arg1 value:(double)arg2;
+- (void)addKeyWithDefaultTransitionAtTime:(CDStruct_1b6d18a9)arg1 value:(double)arg2;
+- (struct FigTimePair)transitionTimesForKeyframe:(void *)arg1;
+- (void)deriveEvalCurve;
 - (void)computeSmoothBezierTangents;
 - (CDStruct_1b6d18a9)constantRetimedTimeFromUntimedTime:(CDStruct_1b6d18a9)arg1 useAbosoluteSpeed:(BOOL)arg2;
 - (CDStruct_e83c9415)constantRetimedRangeFromUntimedRange:(CDStruct_e83c9415)arg1;
@@ -80,17 +94,6 @@ __attribute__((visibility("hidden")))
 - (double)constantTimeMapInverseUseAbsoluteSpeed:(CDStruct_1b6d18a9)arg1;
 - (double)constantTimeMapInverseSecondsUseAbsoluteSpeed:(double)arg1;
 - (double)constantTimeMap:(CDStruct_1b6d18a9)arg1;
-- (double)sweetFrameDuration;
-- (double)speedAfterSweetSpot;
-- (double)speedBeforeSweetSpot;
-- (int)sweetSpotFrameOffset;
-- (int)sweetSpotEndFrameOffset;
-- (int)sweetSpotStartFrameOffset;
-- (CDStruct_1b6d18a9)sweetEndFrameComponentTime;
-- (CDStruct_1b6d18a9)sweetStartFrameComponentTime;
-- (void)setSweetSpotFrameComponentTime:(CDStruct_1b6d18a9)arg1;
-- (void)setSweetSpotEndFrameComponentTime:(CDStruct_1b6d18a9)arg1 computeOffset:(BOOL)arg2;
-- (void)setSweetSpotStartFrameComponentTime:(CDStruct_1b6d18a9)arg1;
 - (int)_computeMediaFrameOffsetFromComponentTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)setRetimeCurveNewMediaStart:(CDStruct_1b6d18a9)arg1 newMediaEnd:(CDStruct_1b6d18a9)arg2;
 - (BOOL)needToExtendRetimeCurveWithMediaStart:(CDStruct_1b6d18a9)arg1 mediaEnd:(CDStruct_1b6d18a9)arg2;
@@ -119,7 +122,11 @@ __attribute__((visibility("hidden")))
 - (void)setFrameSampleMode:(long long)arg1;
 - (long long)frameSampleMode;
 - (BOOL)timeMapChannelValueAtTime:(CDStruct_1b6d18a9)arg1 equalToValue:(double)arg2;
-- (id)timeMapChannel;
+- (id)interpolationChannel;
+- (id)directionChannel;
+- (id)constantSpeedChannel;
+- (id)timeMapEvalChannel;
+- (id)timeMapUIChannel;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1;
 

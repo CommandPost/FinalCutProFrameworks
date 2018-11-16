@@ -6,16 +6,17 @@
 
 #import "NSResponder.h"
 
-@class FFPlayerVideoModule, NSView;
+@class FFPlayerVideoModule, NSView, NSWindow;
 
 @interface FFOSC : NSResponder
 {
     FFPlayerVideoModule *_playerVideoModule;
     BOOL _selectionBased;
     NSView *_overlayView;
+    NSWindow *_overlayWindow;
 }
 
-+ (id)overlayWindowCreateIfNeeded:(BOOL)arg1;
+- (BOOL)isCropOSC;
 - (void)enableOverlayWindowForNoRangeOverlap;
 - (void)removeOverlayWindowForNoRangeOverlap;
 - (id)getCursor;
@@ -33,7 +34,9 @@
 - (id)accessibilityAttributeNames;
 - (BOOL)isAccessorized;
 - (void)_playerViewFrameChanged:(id)arg1;
-- (void)_didBecomeKey:(id)arg1;
+- (void)_playerWindowDidEndSheet:(id)arg1;
+- (void)_playerWindowWillBeginSheet:(id)arg1;
+- (BOOL)overlayViewIsSet;
 - (void)setOverlayView:(id)arg1;
 - (void)_setupOverlayWindow;
 - (void)selectNone:(id)arg1;
@@ -51,22 +54,31 @@
 - (id)playerView;
 - (struct CGPoint)mousePointInView:(struct CGPoint)arg1;
 - (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
+- (BOOL)isAvailableForDestVideo:(id)arg1;
 - (BOOL)isAvailableForMultiAngleState:(BOOL)arg1;
 - (BOOL)isAvailableDuringPlayback;
 - (BOOL)supportsTool:(Class)arg1;
 - (void)setSelectionBased:(BOOL)arg1;
+- (BOOL)isToolBased;
 - (BOOL)isSelectionBased;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (BOOL)passCommonOSCDrawProperties;
 - (BOOL)oscHandlesScroll;
+- (BOOL)removesOverlayViewWhenNotActive;
+- (BOOL)needsCustomFieldEditor;
 - (BOOL)vendsAnOverlayWindow;
+- (BOOL)overlayCanBecomeKey;
 - (void)resignActiveOSC;
 - (void)becomeActiveOSC;
 - (BOOL)hitTest:(struct CGPoint)arg1;
+- (struct CGSize)maxSize;
+- (struct CGSize)minSize;
 - (void)setPlayerVideoModule:(id)arg1;
 - (id)playerVideoModule;
 - (void)dealloc;
+- (id)overlayWindowCreateIfNeeded:(BOOL)arg1;
+- (id)overlayWindow;
 
 @end
 

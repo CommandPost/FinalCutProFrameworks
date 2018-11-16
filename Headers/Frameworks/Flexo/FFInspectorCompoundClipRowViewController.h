@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (int)setAssetRef:(id)arg1 missingEvent:(BOOL)arg2 inClipInspector:(BOOL)arg3;
 - (int)setAssetRef:(id)arg1 missingEvent:(BOOL)arg2;
 - (int)setAssetRef:(id)arg1;
-- (int)setProject:(id)arg1 refs:(id)arg2;
+- (int)setProject:(id)arg1 refs:(id)arg2 isProject:(BOOL)arg3;
 - (void)forceClipCount;
 - (id)assetRef;
 - (id)project;

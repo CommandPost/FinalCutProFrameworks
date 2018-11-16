@@ -28,9 +28,9 @@
 - (void)buildUI:(id)arg1 forFolder:(struct OZChannelFolder *)arg2 context:(id)arg3;
 - (void)buildUI:(id)arg1 forChannelBase:(struct OZChannelBase *)arg2 context:(id)arg3;
 - (void)buildUI:(id)arg1 forChannel:(struct OZChannel *)arg2 context:(id)arg3;
-- (BOOL)buildUIWithSceneNodes:(list_1192f13f *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_d81b4758 *)arg1 context:(id)arg2;
 - (void)dealloc;
-- (id)initWithSceneNodes:(list_1192f13f *)arg1 viewCtlrDelegate:(id)arg2 includeHeader:(BOOL)arg3 context:(id)arg4;
+- (id)initWithSceneNodes:(list_d81b4758 *)arg1 viewCtlrDelegate:(id)arg2 includeHeader:(BOOL)arg3 context:(id)arg4;
 
 @end
 

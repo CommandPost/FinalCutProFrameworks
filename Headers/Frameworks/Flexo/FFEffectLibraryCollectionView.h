@@ -8,14 +8,17 @@
 
 #import "FFSkimmingModuleDelegate.h"
 
-@class FFAnchoredCollection, FFAnchoredObject, FFAnchoredSequence, FFEffect, FFEffectLibraryItemView, FFSkimmingModule, NSEvent, NSMutableArray, NSMutableDictionary;
+@class FFAnchoredCollection, FFAnchoredObject, FFAnchoredSequence, FFEffect, FFEffectLibraryItemView, FFSkimmingModule, NSEvent, NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectLibraryCollectionView : NSView <FFSkimmingModuleDelegate>
 {
     id _module;
     FFEffectLibraryItemView *_selectedView;
+    id _skimmingDelegate;
+    NSString *_effectViewToolTip;
     NSMutableArray *_effectViewList;
+    NSMutableArray *_subviewsToBe;
     FFSkimmingModule *_effectPreviewModule;
     FFAnchoredCollection *_effectPreviewSelectedClip;
     FFAnchoredObject *_effectPreviewObject;
@@ -28,9 +31,19 @@ __attribute__((visibility("hidden")))
     FFEffectLibraryItemView *_hitView;
     double _hitViewInitialTime;
     NSEvent *_selectedViewMouseDownEvent;
+    long long _numRows;
+    long long _numCols;
 }
 
+@property(retain, nonatomic) NSString *effectViewToolTip; // @synthesize effectViewToolTip=_effectViewToolTip;
+@property(retain, nonatomic) id skimmingDelegate; // @synthesize skimmingDelegate=_skimmingDelegate;
 @property(readonly) FFEffectLibraryItemView *selectedView; // @synthesize selectedView=_selectedView;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (BOOL)accessibilityIsIgnored;
+- (void)accessibilitySetValue:(id)arg1 forAttribute:(id)arg2;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
 - (void)playSelected:(id)arg1;
 - (void)nextEdit:(id)arg1;
 - (void)previousEdit:(id)arg1;
@@ -64,18 +77,26 @@ __attribute__((visibility("hidden")))
 - (id)_viewerSkimmingDelegate;
 - (void)_firstResponderChanged:(id)arg1;
 - (void)_makeFirstResponder;
+- (void)doubleClickWithEffectID:(id)arg1;
 - (void)writeSelectionToPasteboard:(id)arg1;
 - (BOOL)acceptsFirstResponder;
 - (void)copy:(id)arg1;
 - (void)resizeWithOldSuperviewSize:(struct CGSize)arg1;
 - (void)setSelectedView:(id)arg1;
 - (BOOL)isFlipped;
+- (void)consumerReloadData:(id)arg1 sequence:(id)arg2;
+- (id)sortArray:(id)arg1 withDictionary:(id)arg2;
 - (void)reloadData:(id)arg1;
 - (void)reloadData;
-- (void)layoutSubviews;
+- (void)layoutSubviews:(BOOL)arg1;
+- (long long)numberOfColumns;
+- (long long)numberOfRows;
+- (void)getNumberOfRows:(long long *)arg1 columns:(long long *)arg2;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (void)_cleanupEffectPreview;
+- (void)viewDidChangeBackingProperties;
+- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 
 @end
 

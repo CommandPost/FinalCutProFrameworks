@@ -14,6 +14,7 @@
 
 + (Class)windowControllerClass;
 + (Class)windowClass;
+- (void)postLayout:(id)arg1;
 - (void)windowDidBecomeMain:(id)arg1;
 - (void)windowDidEndSheet:(id)arg1;
 - (void)windowWillBeginSheet:(id)arg1;

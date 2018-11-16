@@ -6,20 +6,21 @@
 
 #import <TLKit/TLKTimelineHandler.h>
 
-@class TLKItemLayer, TLKRangeSelectionLayer;
+@class TLKAbstractRangeSelectionLayer, TLKItemLayer;
 
 @interface TLKRangeSelectionHandler : TLKTimelineHandler
 {
     TLKItemLayer *_clickedLayer;
-    TLKRangeSelectionLayer *_rangeLayer;
-    double _initialX;
+    TLKAbstractRangeSelectionLayer *_rangeLayer;
+    struct CGPoint _initialPoint;
     struct {
+        unsigned int simpleCursors:1;
         unsigned int draggingLeftHandle:1;
         unsigned int draggingRightHandle:1;
         unsigned int draggingSelection:1;
         unsigned int rollover:1;
         unsigned int beginSelectionHistoryGrouping:1;
-        unsigned int RESERVED:27;
+        unsigned int RESERVED:26;
     } _dhFlags;
 }
 
@@ -35,8 +36,14 @@
 - (BOOL)shouldSkimItem:(id)arg1;
 - (BOOL)continueTracking:(id)arg1;
 - (BOOL)startTracking:(id)arg1;
+- (void)prepareForPressAndHold:(id)arg1;
+- (void)setSelectedRangeFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
+- (BOOL)_initializeTrackingState:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (id)rangeLayerAtCurrentPoint:(struct CGPoint)arg1;
+- (id)clickedLayer;
+- (void)applyConfiguration:(id)arg1;
 - (BOOL)isDraggingLeadingEdge;
-- (void)_setSelectedRangeStart:(double)arg1 andRangeEnd:(double)arg2;
+- (void)dealloc;
 
 @end
 

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3 rootItem:(id)arg4;
-- (CDStruct_e83c9415)calculateScopingWindowTimeRange:(CDStruct_e83c9415)arg1;
+- (CDStruct_e83c9415)calculateScopingWindowTimeRange:(CDStruct_e83c9415)arg1 prerollRange:(CDStruct_e83c9415)arg2;
 - (void)advanceScopingWindow:(id)arg1;
 - (void)setRate:(double)arg1;
 - (void)prerollEnd;

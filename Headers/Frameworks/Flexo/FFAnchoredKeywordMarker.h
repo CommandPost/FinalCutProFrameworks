@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 - (id)_describeAdditionalObjectsWithIndent:(long long)arg1 recurse:(BOOL)arg2;
 - (id)descriptionWithIndent:(long long)arg1;
+- (id)markerKeywordDisplayNames;
 - (void)setMarkerKeywords:(id)arg1;
 - (id)markerKeywords;
 - (void)setDisplayName:(id)arg1;

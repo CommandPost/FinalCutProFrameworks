@@ -6,20 +6,19 @@
 
 #import "NSView.h"
 
-#import "NSProSyntheticUIElementSupport.h"
+@class LKContainerItemView, LKContainerNode, LKPaneCapView, NSColor, NSDictionary, NSMutableArray, NSMutableDictionary, NSProWindow, NSString;
 
-@class LKContainerItemView, LKContainerNode, LKPaneCapView, NSDictionary, NSMutableArray, NSMutableDictionary, NSProWindow, NSString;
-
-@interface LKContainerView : NSView <NSProSyntheticUIElementSupport>
+@interface LKContainerView : NSView
 {
+    NSDictionary *_seamDraggingInfos;
+    unsigned int _isDoingSeamDragging:1;
+    NSMutableArray *_draggingAreas;
     NSMutableArray *_containerItems;
     NSMutableArray *_newItems;
     LKContainerNode *_rootNode;
     id _representedModule;
-    NSMutableArray *_draggingAreas;
     LKPaneCapView *_windowFooterView;
     NSMutableDictionary *_windowFooterAccessoryViews;
-    NSDictionary *_seamDraggingInfos;
     LKContainerNode *_resizedNode1;
     LKContainerNode *_resizedNode2;
     struct CGSize _resizedNode1OriginalSize;
@@ -35,14 +34,12 @@
     LKContainerNode *_draggedReplacementNode;
     LKContainerNode *_draggedNode;
     LKContainerItemView *_draggedItemView;
-    LKContainerNode *_previousTransitioningNode;
-    LKContainerNode *_transitioningNode;
     NSProWindow *_draggedContainerWindow;
     LKContainerView *_draggingContainerView;
     NSProWindow *_windowToClose;
     NSMutableDictionary *_layoutCustomizationOperation;
+    NSColor *_backgroundColor;
     unsigned int _highlightCurrentSeamArea:1;
-    unsigned int _isDoingSeamDragging:1;
     unsigned int _useLayerBacking:1;
     unsigned int _isAnimating:1;
     unsigned int _canCustomizeLayout:1;
@@ -50,9 +47,8 @@
 }
 
 + (void)initialize;
-+ (id)_firstKeyContainerView;
-+ (id)_proContainerViewInView:(id)arg1;
 + (void)_setThemeVariant:(long long)arg1 recursivelyForView:(id)arg2;
+@property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)syntheticUIElementAttributeNames:(id)arg1;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
@@ -61,9 +57,6 @@
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)_splitterChildren;
 - (BOOL)accessibilityIsIgnored;
-- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
-- (void)animationDidStart:(id)arg1;
-- (void)_finishFrameChangesForNode:(id)arg1;
 - (void)_animationFinished:(id)arg1;
 - (id)_layoutCustomizationOperationForPoint:(struct CGPoint)arg1;
 - (void)_moveSubmodulesInNode:(id)arg1 fromContainerView:(id)arg2 toContainerView:(id)arg3;
@@ -84,7 +77,6 @@
 - (void)_computeSeamDraggingAreas;
 - (void)_determineSeamDraggingAreasForNode:(id)arg1;
 - (void)_redisplaySeamAreas;
-- (void)_layoutNodes;
 - (BOOL)mouseTracker:(id)arg1 didStopTrackingWithEvent:(id)arg2;
 - (BOOL)mouseTracker:(id)arg1 shouldContinueTrackingWithEvent:(id)arg2;
 - (void)_updateDraggingContainerWindowWithMouseTracker:(id)arg1;
@@ -97,21 +89,27 @@
 - (void)removeContainerItemWithIdentifier:(id)arg1;
 - (id)nodeOfItemWithIdentifier:(id)arg1;
 - (id)moduleForIdentifier:(id)arg1;
-- (void)hideContainerItemWithIdentifier:(id)arg1 revealStyle:(long long)arg2;
+- (void)nodeWithIdentifier:(id)arg1 didChangeMaxSize:(struct CGSize)arg2;
+- (void)nodeWithIdentifier:(id)arg1 didChangeMinSize:(struct CGSize)arg2;
+- (id)_flexibleSiblingsOfNode:(id)arg1 orientation:(int)arg2;
+- (void)hideContainerItemWithIdentifier:(id)arg1 revealStyle:(unsigned long long)arg2;
 - (void)hideContainerItemWithIdentifier:(id)arg1;
-- (void)showContainerItemWithIdentifier:(id)arg1 revealStyle:(long long)arg2;
+- (void)showContainerItemWithIdentifier:(id)arg1 revealStyle:(unsigned long long)arg2;
 - (void)showContainerItemWithIdentifier:(id)arg1;
 - (void)startTrackingAt:(struct CGPoint)arg1 withModifierFlags:(unsigned int)arg2;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
+- (BOOL)mouseDownCanMoveWindow;
 - (void)_normalizeSeamDraggingInfosForGrabbableModule:(id)arg1;
+- (BOOL)_testSeam:(id)arg1 forGrabbableModule:(id)arg2 againstNode:(id)arg3;
 - (BOOL)_testSeam:(id)arg1 forGrabbableModule:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1;
 - (void)_selectItemViewIfNeeded:(id)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 - (void)cursorUpdate:(id)arg1;
+- (id)_seamInfoForDraggingAreaOfEvent:(id)arg1;
 - (void)installViews;
 - (id)layoutDictionary;
 - (void)setLayoutDictionary:(id)arg1;
@@ -145,6 +143,7 @@
 - (BOOL)isAnimating;
 - (void)updatePropotionsForSubnodesOfNode:(id)arg1;
 - (void)setLayoutNode:(id)arg1;
+- (void)moveContainerItemWithIdentifier:(id)arg1 before:(BOOL)arg2 siblingItemWithIdentififier:(id)arg3;
 - (void)swapContainerItemWithIdentifier:(id)arg1 withContainerItemWithIdentifier:(id)arg2;
 - (void)removeContainerItemView:(id)arg1;
 - (void)addContainerItemView:(id)arg1;
@@ -152,6 +151,7 @@
 - (void)setSeamDraggingInfos:(id)arg1;
 - (id)focusedOnItem;
 - (void)setFocusOnItem:(id)arg1;
+- (void)_layoutNodes;
 
 @end
 

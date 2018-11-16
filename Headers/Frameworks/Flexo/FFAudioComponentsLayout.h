@@ -24,7 +24,7 @@
 + (Class)mutableLayoutItemClass;
 + (Class)layoutItemClass;
 + (id)copyClassDescription;
-+ (id)newAudioComponentsLayoutMapForObject:(id)arg1;
++ (BOOL)supportsObject:(id)arg1;
 + (id)referenceRolesForObject:(id)arg1 key:(id)arg2 layoutItemKey:(id)arg3;
 + (id)sortedSpineAnchorIDsForClip:(id)arg1;
 + (id)spineAnchorObjectForID:(id)arg1 inClip:(id)arg2;

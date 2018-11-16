@@ -15,6 +15,8 @@
 }
 
 + (id)copyClassDescription;
++ (float)defaultStillDurationInSeconds;
++ (float)defaultGeneratorDurationInSeconds;
 + (id)roleForXMLValue:(id)arg1 element:(id)arg2 error:(id *)arg3;
 @property(retain, nonatomic) FFEffectStack *effectStack; // @synthesize effectStack=_effectStack;
 - (void)returnContainedComponentsIn:(id)arg1;
@@ -26,9 +28,6 @@
 - (CDStruct_1b6d18a9)timeOffset;
 - (CDStruct_e83c9415)mediaRange;
 - (id)newProvider;
-- (void)endEditing;
-- (void)beginEditing;
-- (BOOL)isEditing;
 - (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
 - (void)actionBegin:(id)arg1 animationHint:(id)arg2 deferUpdates:(BOOL)arg3;
 - (id)mdTargetForKey:(id)arg1;

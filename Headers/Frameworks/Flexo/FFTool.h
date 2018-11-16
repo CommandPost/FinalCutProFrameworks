@@ -9,18 +9,29 @@
 @interface FFTool : NSResponder
 {
     id _currentTarget;
+    unsigned int _adjustmentState;
+    id _module;
 }
 
++ (id)toolbarFacetSelected;
 + (id)toolbarFacet;
 + (id)cursor;
 + (id)toolTip;
++ (long long)sortOrderForGroup:(id)arg1;
 + (id)groups;
 + (id)displayName;
 + (BOOL)isToolForTLKEventHandler:(id)arg1;
 + (id)TLKEventHandlerID;
+@property(retain) id module; // @synthesize module=_module;
+- (BOOL)isToolClassOrSubToolClassOf:(Class)arg1;
+- (unsigned int)adjustmentState;
+- (void)setAdjustmentState:(unsigned int)arg1;
+- (BOOL)isCropTool;
+- (id)adjustmentsToolbarView;
 - (id)matchWindow;
 - (id)playerAccessoryView;
 - (id)playerFooterView;
+- (id)onScreenControlsForTool;
 - (BOOL)allowsEffectOSCs;
 - (BOOL)allowInspectorToTrackSelection;
 - (void)selectedItemsChanged:(id)arg1;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface MIORADPathPack : NSObject
 {
     NSMutableArray *mRecognizers;
+    NSMutableArray *mClaimedURLs;
     NSString *mName;
     NSString *mPath;
     BOOL mIsCustom;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL isCustom; // @synthesize isCustom=mIsCustom;
 @property(copy) NSString *path; // @synthesize path=mPath;
 @property(copy) NSString *name; // @synthesize name=mName;
+@property(retain) NSMutableArray *claimedURLs; // @synthesize claimedURLs=mClaimedURLs;
 @property(retain) NSMutableArray *recognizers; // @synthesize recognizers=mRecognizers;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

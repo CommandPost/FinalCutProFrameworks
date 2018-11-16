@@ -25,10 +25,12 @@
 - (void)module:(id)arg1 didDoubleClickWithEffectID:(id)arg2;
 - (void)updateFilter:(id)arg1;
 - (void)toggleSidebar:(id)arg1;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)viewDidUnload;
 - (void)viewDidLoad;
-- (void)updateBrowserContents:(id)arg1;
+- (void)updateBrowserContents:(id)arg1 clearSearchString:(BOOL)arg2;
 
 @end
 

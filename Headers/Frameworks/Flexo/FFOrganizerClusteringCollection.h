@@ -14,19 +14,23 @@ __attribute__((visibility("hidden")))
     NSString *_itemDisplayName;
     BOOL _itemIsDisclosable;
     NSDate *_dateData;
+    long long _type;
     NSMutableArray *_items;
 }
 
+@property(nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) NSDate *dateData; // @synthesize dateData=_dateData;
 @property(nonatomic) BOOL itemIsDisclosable; // @synthesize itemIsDisclosable=_itemIsDisclosable;
 @property(retain, nonatomic) NSString *itemDisplayName; // @synthesize itemDisplayName=_itemDisplayName;
 - (void)removeAllObjects;
+- (id)leafItems;
 - (id)items;
 - (void)addItem:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)initWithItemDisplayName:(id)arg1 type:(long long)arg2;
 - (id)initWithItemDisplayName:(id)arg1;
 - (id)init;
 

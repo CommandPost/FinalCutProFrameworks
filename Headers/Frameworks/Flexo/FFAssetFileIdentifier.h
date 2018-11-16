@@ -6,25 +6,20 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
-#import "NSCopying.h"
-
 @class NSString, NSURL;
 
-@interface FFAssetFileIdentifier : NSObject <NSCoding, NSCopying>
+@interface FFAssetFileIdentifier : NSObject
 {
+    NSString *_libraryID;
     NSString *_eventDocumentID;
     NSString *_path;
     NSURL *_url;
 }
 
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (id)eventDocumentIDAndProjectRelativePath;
+- (id)eventDocumentIDAndPath;
 - (id)projectRelativePath;
 - (id)projectURL;
 - (void)resetURL;
@@ -33,10 +28,13 @@
 - (id)path;
 - (void)setEventDocumentID:(id)arg1;
 - (id)eventDocumentID;
+- (id)libraryID;
 - (id)newFileIdentifierWithPath:(id)arg1;
+- (id)copyFileIdentifierForProject:(id)arg1 libraryID:(id)arg2;
 - (void)dealloc;
-- (id)initWithPath:(id)arg1 eventDocumentID:(id)arg2;
+- (id)initWithPath:(id)arg1 eventDocumentID:(id)arg2 libraryID:(id)arg3;
 - (id)initWithPath:(id)arg1 project:(id)arg2;
+- (id)initWithAbsolutePath:(id)arg1 project:(id)arg2;
 
 @end
 

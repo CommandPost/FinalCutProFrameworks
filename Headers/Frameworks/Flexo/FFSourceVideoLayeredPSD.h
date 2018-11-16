@@ -17,10 +17,12 @@ __attribute__((visibility("hidden")))
     CDStruct_bdcb2b0d _md5;
     int _layerNumber;
     BOOL _disabled;
+    BOOL _isCompositeSource;
 }
 
 + (Class)streamClass;
 + (id)type;
+@property BOOL isCompositeSource; // @synthesize isCompositeSource=_isCompositeSource;
 @property BOOL disabled; // @synthesize disabled=_disabled;
 @property int layerNumber; // @synthesize layerNumber=_layerNumber;
 @property(retain) ProPSDLayerRef *layerRef; // @synthesize layerRef=_layerRef;

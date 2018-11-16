@@ -13,6 +13,7 @@
 + (void)modalExport:(id)arg1 toURL:(id)arg2 withCodec:(unsigned int)arg3 flags:(unsigned int)arg4 customData:(id)arg5 startFrame:(unsigned long long)arg6 endFrame:(unsigned long long)arg7 application:(id)arg8;
 + (void)modalExport:(id)arg1 toURL:(id)arg2 withRenderFormat:(id)arg3 flags:(unsigned int)arg4 customData:(id)arg5 startFrame:(unsigned long long)arg6 endFrame:(unsigned long long)arg7 application:(id)arg8;
 + (void)modalExport:(id)arg1 toURL:(id)arg2 withCodec:(unsigned int)arg3 flags:(unsigned int)arg4 application:(id)arg5 trackRoles:(id)arg6;
++ (void)modalExport:(id)arg1 toURLs:(id)arg2 withRenderFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5 trackRoles:(id)arg6;
 + (void)modalExport:(id)arg1 toURL:(id)arg2 withRenderFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5 trackRoles:(id)arg6;
 + (void)modalExportDialog:(id)arg1;
 

@@ -43,7 +43,7 @@
 - (struct OZChannelGradientSample *)findSampleRangeContaining:(double)arg1 from:(struct OZChannelGradientFolder *)arg2 time:(CDStruct_1b6d18a9)arg3;
 - (void)menuAction:(id)arg1;
 - (void)buildPresetMenu;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)rightMouseUp:(id)arg1;
 - (void)rightMouseDragged:(id)arg1;
 - (void)rightMouseDown:(id)arg1;

@@ -24,6 +24,8 @@
 - (id)pathToPartWithIdentifier:(id)arg1;
 - (id)partWithIdentifier:(id)arg1;
 - (id)allParts;
+- (id)penultimateSubpart;
+- (id)penultimatePart;
 - (id)topSubpart;
 - (id)topPart;
 - (id)copyWithZone:(struct _NSZone *)arg1;

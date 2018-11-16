@@ -18,9 +18,11 @@
 }
 
 - (_Bool)cancel;
+- (_Bool)enqueueToRenderLocation:(int)arg1 preferredLocation:(int)arg2 priority:(int)arg3 serializeLimit:(int)arg4;
 - (_Bool)enqueueToRenderLocation:(int)arg1 priority:(int)arg2;
 - (void)_jobFinished;
 - (void)_runCallback:(struct HGRenderer *)arg1;
+- (id)description;
 - (void)dealloc;
 - (id)initWithObject:(id)arg1;
 

@@ -40,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (int)writeAudio:(struct opaqueCMSampleBuffer *)arg1 audioTrackIndex:(unsigned int)arg2;
 - (int)createAudioTracks:(unsigned int)arg1 chunkSize:(unsigned int)arg2 withCompressionPreset:(struct __CFString *)arg3;
 - (int)writeVideo:(struct opaqueCMSampleBuffer *)arg1;
-- (int)_endAssetWriterSession;
 - (int)_beginAssetWriterSession;
 - (int)_throttleWriterTrackQueue;
 - (int)createVideoTrack:(struct opaqueCMFormatDescription *)arg1 timescale:(int)arg2;

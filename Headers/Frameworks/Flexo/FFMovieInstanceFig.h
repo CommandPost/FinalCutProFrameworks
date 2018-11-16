@@ -19,28 +19,36 @@
     NSURL *_url;
     FFMIORADAsset *_radAsset;
     int _status;
+    int _storageType;
+    unsigned long long _keepAliveTime;
+    struct stat _statbuf;
 }
 
 + (id)copyFFMovieInstanceFigForRADAsset:(id)arg1;
++ (void)invalidateFFMovieInstanceFigForRADAsset:(id)arg1;
++ (void)invalidateFFMovieInstanceFigForURL:(id)arg1;
++ (id)copyFFMovieInstanceFigForURL:(id)arg1 standardizedFileURL:(id)arg2 path:(id)arg3;
 + (id)copyFFMovieInstanceFigForURL:(id)arg1;
++ (void)teardown;
+@property(readonly) NSURL *url; // @synthesize url=_url;
 @property(readonly) int status; // @synthesize status=_status;
 - (id)description;
-- (struct OpaqueFigScheduledIO *)appThrottledIO;
-- (struct OpaqueFigScheduledIO *)throttleIO;
+- (int)storageTypeMustBeSSD;
 - (id)radAsset;
-- (void)_openMovie;
+- (void)_openMovie:(id)arg1;
 - (void)_cacheMovieBuffer:(struct OpaqueCMBlockBuffer *)arg1 forKey:(id)arg2;
 - (struct OpaqueCMBlockBuffer *)_newBufferFromLookupInQTImporterCache:(id)arg1;
 - (id)_newKeyForQTImporterCacheLookup:(id)arg1;
 - (void)_openRADComponent;
-- (struct OpaqueFigScheduledIO *)_schedIO;
 - (struct OpaqueFigScheduledIO *)schedIOForTrackID:(int)arg1;
 - (struct OpaqueFigFormatReader *)formatReader;
 - (struct OpaqueCMByteStream *)byteStreamForTrackID:(int)arg1;
 - (struct OpaqueFigByteStreamProvider *)byteStreamProvider;
 - (id)urlForTrackID:(int)arg1;
+- (_Bool)statInfoMatches:(struct stat *)arg1;
+- (void)_keepAlive;
 - (void)dealloc;
-- (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 pathHint:(id)arg2 statInfo:(struct stat *)arg3;
 - (id)initWithRADAsset:(id)arg1;
 
 @end

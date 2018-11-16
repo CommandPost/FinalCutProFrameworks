@@ -34,8 +34,7 @@
 - (void)signInSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)okcancelClicked:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (long long)showModalPanelIfNeeded;
-- (void)showPanelIfNeededModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)validateUsernamePassword:(id *)arg1;
 @property(copy, nonatomic) NSDictionary *privacy;
 - (void)dealloc;

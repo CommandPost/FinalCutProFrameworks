@@ -68,11 +68,6 @@
     double _draggingPivotX;
     double _draggingPivotY;
     double _draggingPivotZ;
-    struct PCPtr<POMultiResTexture> _handlesTexture[3];
-    struct PCPtr<POMultiResTexture> _warpHandlesTexture[3];
-    struct PCPtr<POMultiResTexture> _shearHandlesTexture[3];
-    struct PCPtr<POMultiResTexture> _rotationTexture[3];
-    struct PCPtr<POMultiResTexture> _pivotTexture;
     BOOL _moving;
     BOOL _rotating;
     BOOL _3dtranslating;
@@ -132,7 +127,7 @@
 - (void)updateSelection:(id)arg1;
 - (void)initSelectionInOSC:(id)arg1;
 - (void)updateRotation:(id)arg1 change:(const PCQuat_de30948b *)arg2;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (BOOL)keyDownOSC:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;

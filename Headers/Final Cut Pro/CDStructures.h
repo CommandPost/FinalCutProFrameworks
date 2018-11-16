@@ -4,6 +4,8 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSObject<OS_dispatch_queue>;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -25,19 +27,11 @@ struct CGSize {
     double height;
 };
 
-struct ControlPoints {
-    struct CGPoint _field1;
-    struct CGPoint _field2;
-    struct CGPoint _field3;
-    struct CGPoint _field4;
-    struct CGPoint _field5;
-};
-
 struct FFProcrastinatedDispatch_t {
     int lock;
     double executionTime;
     double executionTimeLimit;
-    struct dispatch_queue_s *queue;
+    NSObject<OS_dispatch_queue> *queue;
     CDUnknownBlockType block;
     CDUnknownFunctionPointerType work;
     void *workContext;
@@ -54,22 +48,15 @@ struct PEValidNumberDescription {
     unsigned int maxFractional;
 };
 
-struct SurroundPannerVisualData {
-    float theta;
-    float height;
-    float theta2;
-    float height2;
-    float width;
-    float fillColor[4];
-    float strokeColor[4];
+struct PEVoiceOverPlayerState {
+    char mIsLooping;
+    char mPlayPastLoopEnd;
 };
 
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
 };
-
-struct dispatch_queue_s;
 
 #pragma mark Typedef'd Structures
 
@@ -84,25 +71,4 @@ typedef struct {
     CDStruct_1b6d18a9 _field1;
     CDStruct_1b6d18a9 _field2;
 } CDStruct_5c5366e1;
-
-typedef struct {
-    unsigned int _field1;
-    float _field2;
-    struct CGRect _field3;
-} CDStruct_3bc548f3;
-
-#pragma mark Named Unions
-
-union _themeatom_union {
-    unsigned int _field1;
-    struct _themeatom {
-        unsigned int :3;
-        unsigned int :2;
-        unsigned int :3;
-        unsigned int :8;
-        unsigned int :8;
-        unsigned int :4;
-        unsigned int :4;
-    } _field2;
-};
 

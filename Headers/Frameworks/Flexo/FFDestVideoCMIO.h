@@ -6,20 +6,21 @@
 
 #import <Flexo/FFDestVideo.h>
 
-@class FFPixelBuffer, FFPrerollSync, MIODeviceConnection, MIOOutputCore, NSLock, NSMutableArray, NSString;
+#import "FFDestVideoDeviceManaging.h"
+
+@class FFPrerollSync, MIODeviceConnection, MIOOutputCore, NSLock, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFDestVideoCMIO : FFDestVideo
+@interface FFDestVideoCMIO : FFDestVideo <FFDestVideoDeviceManaging>
 {
     NSLock *_queueLock;
     NSMutableArray *_renderedFrames;
-    FFPixelBuffer *_cachedFrameBuffer;
     NSString *_deviceUID;
     MIODeviceConnection *_deviceConnection;
     MIOOutputCore *_outputCore;
     int _destRunningState;
     BOOL _needsUpdate;
-    struct OpaqueFigTimebase *_playerTimebase;
+    struct OpaqueCMTimebase *_playerTimebase;
     FFPrerollSync *_startSync;
     BOOL _destStartedForPlayback;
     CDStruct_1b6d18a9 _durationPulled;
@@ -39,6 +40,10 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _errorLastTimingInfoPTS;
     unsigned long long _errorLastTimingInfoSequenceNumber;
     struct CGColorSpace *_deviceColorSpace;
+    double _pmrTotalCopyTime;
+    double _pmrMinCopyTime;
+    double _pmrMaxCopyTime;
+    int _pmrCopyTimeCt;
 }
 
 - (id).cxx_construct;
@@ -72,11 +77,17 @@ __attribute__((visibility("hidden")))
 - (void)pushFrame:(id)arg1;
 - (void)liveFlushWithRunout:(unsigned int)arg1 playerTime:(CDStruct_1b6d18a9)arg2 rate:(double)arg3;
 - (void)flush:(BOOL)arg1;
+- (void)_outputPMRReport;
+- (void)_logPMRCopyTime:(double)arg1;
+- (void)_resetPMRTracking;
 - (void)notifyDeviceAvailableWithConnection:(id)arg1;
+- (void)disableVideoOutOnRelease;
+- (unsigned long long)videoOutScreenIndex;
 - (BOOL)hasOutputDevice;
 - (void)releaseOutputDevice;
 - (void)_releaseOutputDeviceInternal;
 - (void)setupOutputDevice:(id)arg1;
+- (void)updateOutputDevice:(id)arg1;
 - (void)unregisterFromOutputDevice;
 - (void)registerForOutputDevice;
 - (void)setPlayer:(id)arg1;

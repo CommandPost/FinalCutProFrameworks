@@ -61,7 +61,7 @@
 - (BOOL)selectObjects:(id)arg1 byExtendingSelection:(BOOL)arg2 selectionMask:(unsigned long long)arg3;
 - (id)selectedObjectsForTimeRange:(CDStruct_e83c9415)arg1;
 - (BOOL)selectTimeRange:(CDStruct_e83c9415 *)arg1 withObjects:(id)arg2 byExtendingSelection:(BOOL)arg3;
-- (id)selectedTimeRangesAndObjectsForSelectionMask:(unsigned long long)arg1;
+- (id)selectedTimeRangesAndObjects;
 - (id)selectedObjectsForSelectionMask:(unsigned long long)arg1;
 - (void)setSelectedTimeRange:(CDStruct_e83c9415)arg1 withObjects:(id)arg2;
 - (void)extendSelection:(id)arg1 selectionMask:(unsigned long long)arg2;

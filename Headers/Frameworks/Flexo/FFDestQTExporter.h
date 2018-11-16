@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     FFQTMovieWriter *_movieWriter;
     BOOL _didCreateTracks;
-    struct OpaqueFigMemoryPool *_memoryPoolRef;
+    struct OpaqueCMMemoryPool *_memoryPoolRef;
     struct OpaqueVTCompressionSession *_compressionSession;
     struct opaqueCMFormatDescription *_videoFormatDescription;
     unsigned int _videoFrameCount;

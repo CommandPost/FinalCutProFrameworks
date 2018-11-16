@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFAssetFileIdentifier, FFVideoProps, NSMutableArray, NSURL;
+@class FFAssetFileIdentifier, FFVideoProps, NSMutableArray, NSObject<OS_dispatch_semaphore>, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFREDClip : NSObject
@@ -20,14 +20,14 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _timecodeFrameDuration;
     CDStruct_1b6d18a9 _startTimeCode;
     unsigned long long _startTimeCodeInFrames;
-    vector_77d837c3 _fileCumulativeVideoFrameCounts;
+    struct vector<unsigned int, std::allocator<unsigned int>> _fileCumulativeVideoFrameCounts;
     unsigned int _maxVideoFrameSize;
     int _revision;
     id <REDImageProcessing> _settings;
     int _savedRevision;
     id <REDImageProcessing> _savedSettings;
     id <REDImageProcessing> _cameraSettingsInRmdSpace;
-    struct dispatch_semaphore_s *_semaphore;
+    NSObject<OS_dispatch_semaphore> *_semaphore;
 }
 
 + (id)copyClipInstanceForURL:(id)arg1 assetFileID:(id)arg2;

@@ -12,6 +12,7 @@
 {
     int _transitionOverlapType;
     int _transitionNilSourceFillType;
+    BOOL _includesTitles;
     FFMD5AndOffset *_cachedAudioMD5;
     FFEffectStack *_audioEffects;
     FFEffectStack *_videoEffects;
@@ -19,6 +20,7 @@
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)copyClassDescription;
+@property(nonatomic) BOOL includesTitles; // @synthesize includesTitles=_includesTitles;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 @property(nonatomic) int transitionNilSourceFillType; // @synthesize transitionNilSourceFillType=_transitionNilSourceFillType;
 @property(nonatomic) int transitionOverlapType; // @synthesize transitionOverlapType=_transitionOverlapType;
@@ -72,6 +74,7 @@
 - (long long)audioChannelCount:(int)arg1;
 - (BOOL)hasAudio;
 - (BOOL)contributesToCompoundClip;
+- (BOOL)isThemedTransition;
 - (BOOL)isTransition;
 @property(retain, nonatomic) FFEffectStack *audioEffects;
 @property(retain, nonatomic) FFEffectStack *videoEffects;

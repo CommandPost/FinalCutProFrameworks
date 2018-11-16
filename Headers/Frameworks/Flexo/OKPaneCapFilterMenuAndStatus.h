@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     LKButton *_metadataFilterButton;
     LKButton *_formatFilterButton;
     LKButton *_roleFilterButton;
+    LKButton *_usedFilterButton;
     LKButton *_clearFilterButton;
     NSMutableArray *_currentFilterButtons;
     id filtersTarget;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)reinstallFilterButtons;
 - (void)clearWhiteSelection;
 - (void)resetFilterButtonsTargetAndAction;
+- (void)setShowUsedFilter:(BOOL)arg1;
 - (void)setShowRoleFilter:(BOOL)arg1;
 - (void)setShowFormatFilter:(BOOL)arg1;
 - (void)setShowDateFilter:(BOOL)arg1;

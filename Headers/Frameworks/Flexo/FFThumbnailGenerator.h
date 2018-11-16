@@ -8,27 +8,24 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFAnchoredSequence, FFBackgroundTaskWithPauseCondition, NSCondition, NSLock, NSMutableArray;
+@class FFBackgroundTaskWithPauseCondition, NSCondition, NSLock, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFThumbnailGenerator : NSObject <FFBackgroundTaskTarget>
 {
     int _outstandingThumbRequests;
     FFBackgroundTaskWithPauseCondition *_bTask;
-    float _totalThumbs;
-    float _thumbCount;
     NSCondition *_lock;
-    unsigned long long _stopRequestCount;
     NSMutableArray *_requestsNew;
     NSLock *_requestsLock;
     _Bool _appShuttingDown;
-    FFAnchoredSequence *_currentClip;
 }
 
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (id)librariesInUse;
+- (id)assetsInUse;
+- (void)addVideoThumbnailToEventForRequest:(id)arg1;
 - (void)stop;
 - (void)resume;
 - (void)generateThumbnailsForClips:(id)arg1;

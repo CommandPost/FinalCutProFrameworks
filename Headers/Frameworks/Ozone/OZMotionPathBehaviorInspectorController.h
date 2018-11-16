@@ -20,7 +20,7 @@
 - (void)buildUI:(struct OZMotionPathBehavior *)arg1;
 - (void)delayedRelease;
 - (void)delayedReleaseCB:(id)arg1;
-- (id)initWithBehaviors:(list_94e47a03 *)arg1;
+- (id)initWithBehaviors:(list_fc228e28 *)arg1;
 
 @end
 

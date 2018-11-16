@@ -28,6 +28,10 @@
     unsigned int _saveTemplateMethod;
     NSString *_fpath;
     OZDocumentKeyResponder *_documentKeyResponder;
+    struct FFPMRSimpleTimer _pmrTimer;
+    unsigned long long _numFramesToExport;
+    CDUnknownBlockType _exportCompletionHandler;
+    long long _saveResult;
 }
 
 + (void)checkAutosaveVaultMax;
@@ -39,7 +43,10 @@
 + (id)getDateOrderedContentsOf:(id)arg1 directoriesOnly:(BOOL)arg2;
 + (id)createUniqueUntitledName:(id)arg1;
 + (id)autosaveVaultPath;
+@property(nonatomic) long long saveResult; // @synthesize saveResult=_saveResult;
 @property(readonly, nonatomic) OZDocumentKeyResponder *documentKeyResponder; // @synthesize documentKeyResponder=_documentKeyResponder;
+- (id).cxx_construct;
+- (void)exportWillStart:(unsigned long long)arg1;
 - (void)watchProgressFFQTMovieExporter;
 - (void)QTProgressFinished:(id)arg1;
 - (void)openSelectedInQuickTime:(unsigned int)arg1;
@@ -65,7 +72,8 @@
 - (void)printShowingPrintPanel:(BOOL)arg1;
 - (void)setTemplateTheme:(id)arg1;
 - (void)setTemplateFormat:(unsigned int)arg1;
-- (void)setIsTemplate:(BOOL)arg1;
+- (void)runExportCompletionHandler;
+- (void)releaseExportCompletionHandler;
 - (void)saveTemplateWithDelegate:(id)arg1 didSaveSelector:(SEL)arg2 contextInfo:(void *)arg3;
 - (void)saveAsTemplate:(id)arg1;
 - (void)findAndReplacePrevious:(id)arg1;
@@ -112,6 +120,7 @@
 - (void)setSaveTemplateRan:(BOOL)arg1 withMethod:(unsigned int)arg2;
 - (void)setSavePanelRan:(BOOL)arg1 withMethod:(unsigned int)arg2;
 - (void)saveDocumentWithDelegate:(id)arg1 didSaveSelector:(SEL)arg2 contextInfo:(void *)arg3;
+- (void)alertDidEnd:(id)arg1 wasPresentedWithResult:(long long)arg2 soContinue:(CDUnknownBlockType)arg3;
 - (void)saveDocumentAs:(id)arg1;
 - (void)addWindowController:(id)arg1;
 - (void)makeWindowControllers;
@@ -127,6 +136,7 @@
 - (id)initWithContentsOfURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
 - (void)setIsProcessing:(BOOL)arg1;
 - (BOOL)isProcessing;
+- (id)initWithOZDocument:(struct OZDocument *)arg1;
 - (id)init;
 
 @end

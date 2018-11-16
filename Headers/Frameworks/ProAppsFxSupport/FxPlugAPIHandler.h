@@ -18,9 +18,7 @@
     NSObject<FxPlugAPIDelegate> *_delegate;
 }
 
-- (id)delegate;
-- (void)setDelegate:(id)arg1;
-- (void)dealloc;
+@property(nonatomic) NSObject<FxPlugAPIDelegate> *delegate; // @synthesize delegate=_delegate;
 - (id)initWithDelegate:(id)arg1;
 - (void)setKeyframeInfo:(struct FxKeyframeInfo)arg1 toChannel:(struct OZChannel *)arg2 atTime:(CDStruct_198678f7)arg3;
 - (void)keyframeInfo:(struct FxKeyframeInfo *)arg1 fromChannel:(struct OZChannel *)arg2 atTime:(CDStruct_198678f7)arg3;

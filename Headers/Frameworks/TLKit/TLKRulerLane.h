@@ -22,6 +22,7 @@
     NSProTimecodeFormatter *_timecodeFormatter;
 }
 
++ (void)initialize;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)hideMarkings;
@@ -30,6 +31,8 @@
 - (void)reloadVisibleLayers;
 - (void)updateRenderInfo;
 - (void)_updateRulerMarkerLines;
+- (BOOL)_updateNonLinearMarkerLines:(CDStruct_e83c9415)arg1;
+- (BOOL)_updateLinearMarkerLines:(CDStruct_e83c9415)arg1;
 - (void)updateRulerMarkerInfo;
 - (void)_updateRulerMarkerInfo;
 - (void)setScrolling:(BOOL)arg1;

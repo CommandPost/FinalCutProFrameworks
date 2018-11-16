@@ -31,11 +31,13 @@
 
 + (unsigned int)temporalFieldForTime:(CDStruct_1b6d18a9)arg1 withVideoProps:(id)arg2;
 + (BOOL)isReallyClose16x9s:(struct CGRect)arg1 bounds2:(struct CGRect)arg2;
++ (BOOL)isPanorama:(struct CGRect)arg1;
 + (CDStruct_1b6d18a9)defaultSampleDurationForStillImage;
 + (struct CGColorSpace *)guessYCbCrColorSpaceFromHeight:(int)arg1;
 + (id)newPropsFromCType:(unsigned int)arg1 dimensions:(CDStruct_79c71658)arg2 extensionsDict:(id)arg3 frameDuration:(CDStruct_1b6d18a9)arg4 anamorphicHint:(BOOL)arg5 ambiguous:(char *)arg6;
 + (id)newPropsFromVideoFormatDescription:(struct opaqueCMFormatDescription *)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 anamorphicHint:(BOOL)arg3 isRotated:(BOOL)arg4 ambiguous:(char *)arg5;
 + (id)newPropsFromVideoFormat:(id)arg1;
++ (void)initialize;
 + (void)releaseSharedInstance;
 + (Class)classForKeyedUnarchiver;
 + (BOOL)classIsAbstract;
@@ -66,6 +68,9 @@
 + (id)pixelTransformToHalfWidth;
 + (id)pixelTransformIdentity;
 - (id).cxx_construct;
+- (id)bestSupportedFormatForEditing;
+- (BOOL)_heightCloserTo720Than1080:(float)arg1;
+- (BOOL)supportedForEditing;
 - (BOOL)isQuadHDOr4K;
 - (BOOL)supportsAnamorphicFormat;
 - (id)matchingPropsWithAnamorphicType:(int)arg1;

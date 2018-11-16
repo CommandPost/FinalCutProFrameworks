@@ -15,20 +15,17 @@
     double _startDistance;
     double _startAngle;
     double _startBlur;
-    PCPtr_df275998 _handlesTexture[2];
     BOOL _moving;
     BOOL _capturing;
 }
 
 + (BOOL)validate:(struct OZChannelBase *)arg1;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (BOOL)postRedisplayOnActivePartChange;
 - (void)draw;
 - (BOOL)isDependentOnBounds;
 - (void)move:(id)arg1 deltaX:(double)arg2 deltaY:(double)arg3;
 - (void)blur:(id)arg1 amount:(double)arg2;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;

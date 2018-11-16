@@ -15,9 +15,21 @@ __attribute__((visibility("hidden")))
     void *_trailingKeyframe;
     CDStruct_e83c9415 _timeRange;
     BOOL _enabled;
+    CDStruct_e83c9415 _leadingFadeRange;
+    void *_leadingFadeKeyframe;
+    unsigned int _leadingFadeInterpolation;
+    CDStruct_e83c9415 _trailingFadeRange;
+    void *_trailingFadeKeyframe;
+    unsigned int _trailingFadeInterpolation;
     FFTimelineComponentProxy *_proxy;
 }
 
+@property(nonatomic) unsigned int trailingFadeInterpolation; // @synthesize trailingFadeInterpolation=_trailingFadeInterpolation;
+@property(nonatomic) CDStruct_e83c9415 trailingFadeRange; // @synthesize trailingFadeRange=_trailingFadeRange;
+@property(nonatomic) void *trailingFadeKeyframe; // @synthesize trailingFadeKeyframe=_trailingFadeKeyframe;
+@property(nonatomic) unsigned int leadingFadeInterpolation; // @synthesize leadingFadeInterpolation=_leadingFadeInterpolation;
+@property(nonatomic) CDStruct_e83c9415 leadingFadeRange; // @synthesize leadingFadeRange=_leadingFadeRange;
+@property(nonatomic) void *leadingFadeKeyframe; // @synthesize leadingFadeKeyframe=_leadingFadeKeyframe;
 @property(nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 @property(nonatomic) void *trailingKeyframe; // @synthesize trailingKeyframe=_trailingKeyframe;

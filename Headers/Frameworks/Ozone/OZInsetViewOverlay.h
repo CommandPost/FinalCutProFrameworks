@@ -6,9 +6,11 @@
 
 #import <Ozone/OZOverlay.h>
 
+#import "OZRenderClient.h"
+
 @class PGDrawableTexture;
 
-@interface OZInsetViewOverlay : OZOverlay
+@interface OZInsetViewOverlay : OZOverlay <OZRenderClient>
 {
     shared_ptr_92745eb9 *_image;
     struct PCMutex *_imageLock;
@@ -21,6 +23,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
 - (id)getCursorWithEvent:(id)arg1;
 - (void)notify:(unsigned int)arg1;
 - (void)renderFrame;

@@ -4,22 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKThemeBackedLayer.h>
+#import <TLKit/TLKAbstractPrecisionEditorEditPointLayer.h>
 
-#import "TLKPartInfo.h"
-
-@interface TLKPrecisionEditorEditPointLayer : TLKThemeBackedLayer <TLKPartInfo>
+@interface TLKPrecisionEditorEditPointLayer : TLKAbstractPrecisionEditorEditPointLayer
 {
-    id <TLKTimelineItem> _itemStartingAtPoint;
-    BOOL _isTransition;
 }
 
-@property(nonatomic) id <TLKTimelineItem> itemStartingAtPoint; // @synthesize itemStartingAtPoint=_itemStartingAtPoint;
-@property(nonatomic) BOOL isTransition;
-- (void)setThemeFacet:(id)arg1;
-- (id)partIdentifier;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)init;
++ (id)transitionThemeFacet;
++ (id)editPointThemeFacet;
 
 @end
 

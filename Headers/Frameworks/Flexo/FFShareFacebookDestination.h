@@ -11,8 +11,11 @@
 }
 
 + (id)defaultName;
+- (id)currentUser;
+- (BOOL)requiresLogin;
 - (id)iconTitle;
 - (long long)iconIndex;
+- (id)lightImage;
 - (id)largeImage;
 - (id)image;
 - (void)encodeWithCoder:(id)arg1;

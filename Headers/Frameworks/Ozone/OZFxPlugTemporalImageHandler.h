@@ -13,7 +13,6 @@
 {
     struct OZImageNode *_imageNode;
     struct GLRenderer *_renderer;
-    struct vector<std::tr1::shared_ptr<PCImage>, std::allocator<std::tr1::shared_ptr<PCImage>>> *_imageList;
     BOOL _appTerminating;
     struct OZFxPlugThreadContextManager _threadContextManager;
 }

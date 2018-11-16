@@ -13,14 +13,14 @@ __attribute__((visibility("hidden")))
 
 + (struct FFAudioSyncHelperResults)synchronizeItem:(id)arg1 referenceItem:(id)arg2 offsetToRefItem:(CDStruct_1b6d18a9)arg3 syncDuration:(CDStruct_1b6d18a9)arg4 cachedUtilB:(id *)arg5;
 + (struct FFAudioSyncHelperResults)synchronizeItem:(id)arg1 itemRange:(CDStruct_e83c9415)arg2 referenceItem:(id)arg3 referenceItemRange:(CDStruct_e83c9415)arg4 usePeaks:(BOOL)arg5 secondPassDuration:(CDStruct_1b6d18a9)arg6 cachedUtilB:(id *)arg7;
-+ (struct FFAudioSyncHelperResults)synchronizeItemUsingPeaks:(id)arg1 refItem:(id)arg2;
++ (struct FFAudioSyncHelperResults)synchronizeItemUsingPeaks:(id)arg1 refItem:(id)arg2 onTask:(id)arg3;
 + (struct FFAudioSyncHelperResults)defaultResults;
 + (struct FFAudioSyncHelperResults)xCorrPeaksCompareItem:(id)arg1 itemRange:(CDStruct_e83c9415)arg2 toRefItem:(id)arg3 refItemRange:(CDStruct_e83c9415)arg4 secondPassDuration:(CDStruct_1b6d18a9)arg5;
 + (struct FFAudioSyncHelperResults)xCorrCompareItem:(id)arg1 toRefItem:(id)arg2 offsetToRefItem:(CDStruct_1b6d18a9)arg3 syncDuration:(CDStruct_1b6d18a9)arg4 downSampleRate:(int)arg5 cachedUtilB:(id *)arg6;
 + (struct FFAudioSyncHelperResults)xCorrCompareItem:(id)arg1 itemRange:(CDStruct_e83c9415)arg2 toRefItem:(id)arg3 refItemRange:(CDStruct_e83c9415)arg4 downSampleRate:(int)arg5 cachedUtilB:(id *)arg6;
 + (struct FFAudioSyncHelperResults)xCorrCalculateUsingPeakData:(id)arg1 sampleRateA:(double)arg2 peaksDataB:(id)arg3 sampleRateB:(double)arg4;
 + (float)getPeaksDataRMS:(id)arg1;
-+ (id)getPeaksData:(id)arg1 samplesPerPeak:(float)arg2 synchronously:(_Bool)arg3;
++ (id)getPeaksData:(id)arg1 samplesPerPeak:(float)arg2 synchronously:(_Bool)arg3 onTask:(id)arg4;
 
 @end
 

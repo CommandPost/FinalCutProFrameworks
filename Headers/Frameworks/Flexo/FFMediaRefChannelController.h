@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
     LKButton *_clearButton;
     NSView *_pickingHighlightView;
     FFEffectStack *_effectStack;
+    CDStruct_bdcb2b0d _cachedMD5;
 }
 
+- (id).cxx_construct;
 - (void)_effectsChanged:(id)arg1;
 - (void)mouseExitedRow:(id)arg1;
 - (void)mouseEnteredRow:(id)arg1;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)disable;
 - (void)enable;
 - (void)update;
+- (CDStruct_bdcb2b0d)_getThumbMD5ForTime:(CDStruct_1b6d18a9)arg1 stream:(id)arg2 sourceObject:(id)arg3 contentsScale:(double)arg4;
 - (void)activeToolChanged:(id)arg1;
 - (void)updatePlaceholderThumbnail;
 - (void)dealloc;

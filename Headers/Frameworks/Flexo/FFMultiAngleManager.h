@@ -59,8 +59,8 @@
 
 + (void)enableLogging:(BOOL)arg1;
 @property BOOL isTesting; // @synthesize isTesting=_isTesting;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (BOOL)arrangeItemsByAngleAndWrapIntoStorylines:(BOOL)arg1;
 - (BOOL)_applySyncAngleToMonitorAngleChanges;
 - (BOOL)_applyChanges;

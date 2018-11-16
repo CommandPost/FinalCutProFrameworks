@@ -8,20 +8,20 @@
 
 #import "NSAnimationDelegate.h"
 
-@class FFStorageLocation, NSOpenPanel, NSPopUpButton;
+@class FFLibrary, NSOpenPanel, NSPopUpButton;
 
 @interface FFXMLImportDialogController : NSViewController <NSAnimationDelegate>
 {
     NSOpenPanel *_panel;
     NSPopUpButton *_storagePopup;
-    FFStorageLocation *_storageLocation;
+    FFLibrary *_storageLocation;
 }
 
 - (void)dealloc;
-- (id)initWithOpenPanel:(id)arg1 openProjects:(id)arg2;
+- (id)initWithOpenPanel:(id)arg1;
 - (void)storageChanged:(id)arg1;
 - (void)updateLocationPopup;
-- (id)storageLocation;
+- (id)library;
 
 @end
 

@@ -18,6 +18,7 @@
 
 + (Class)windowClass;
 @property(getter=isReleasedWhenClosed) BOOL releasedWhenClosed; // @synthesize releasedWhenClosed=_releasedWhenClosed;
+- (void)toggleCoachTips:(id)arg1;
 - (BOOL)window:(id)arg1 shouldPopUpDocumentPathMenu:(id)arg2;
 - (void)keyDown:(id)arg1;
 - (void)takeContentLayoutFromDictionary:(id)arg1;

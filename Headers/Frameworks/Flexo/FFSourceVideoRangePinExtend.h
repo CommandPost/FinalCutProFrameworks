@@ -6,9 +6,14 @@
 
 #import <Flexo/FFSourceVideo.h>
 
+@class FFSubRangeMD5Info, NSMutableArray;
+
 __attribute__((visibility("hidden")))
 @interface FFSourceVideoRangePinExtend : FFSourceVideo
 {
+    NSMutableArray *_cachedRanges;
+    FFSubRangeMD5Info *_leftGap;
+    FFSubRangeMD5Info *_rightGap;
 }
 
 + (Class)streamClass;
@@ -18,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithProvider:(id)arg1;
 - (void)rangePinExtendVideoRangeInvalidated:(id)arg1;
+- (void)_clearCachedSubRangeMD5s;
 
 @end
 

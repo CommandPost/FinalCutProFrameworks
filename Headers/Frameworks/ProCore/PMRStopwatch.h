@@ -13,17 +13,28 @@
     unsigned long long _startTime;
     NSMutableArray *_splitTimes;
     NSString *_domain;
+    NSMutableArray *_splitTimeStack;
+    unsigned long long _maxSplitTimes;
 }
 
++ (void)setSharedStopwatch:(id)arg1;
++ (id)sharedStopwatch;
+@property(nonatomic) unsigned long long maxSplitTimes; // @synthesize maxSplitTimes=_maxSplitTimes;
 @property(copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
-@property(copy, nonatomic) NSArray *splitTimes; // @synthesize splitTimes=_splitTimes;
+@property(readonly, nonatomic) NSArray *splitTimes; // @synthesize splitTimes=_splitTimes;
 @property(nonatomic) unsigned long long startTime; // @synthesize startTime=_startTime;
 - (void)writeToFile:(id)arg1 key:(id)arg2 comment:(id)arg3 fileFormat:(int)arg4;
 - (void)logWithFormat:(int)arg1;
 - (id)descriptionWithFormat:(int)arg1 key:(id)arg2 comment:(id)arg3;
-- (void)captureSplitTimeWithKey:(id)arg1 comment:(id)arg2;
+- (void)logEvent:(id)arg1 comment:(id)arg2;
+- (void)endTimingGroup;
+- (void)beginTimingGroupForMethod:(SEL)arg1 inClass:(Class)arg2 comment:(id)arg3;
+- (void)_purgeOldestSplitTimeIfNeeded;
 - (void)reset;
+- (id)_subtreeDescription;
+- (id)description;
 - (void)dealloc;
+- (id)initWithDomain:(id)arg1;
 - (id)init;
 
 @end

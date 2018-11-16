@@ -7,14 +7,11 @@
 #import "LKViewModule.h"
 
 #import "FFEnhanceAudioDelegate.h"
-#import "PEAudioCleanupSliderDelegate.h"
 
-@class FFChannelChangeController, FFEnhanceAudioManager, LKButton, NSImageView, NSProView, PEAudioCleanupView;
+@class FFChannelChangeController, LKButton, NSCountedSet, NSImageView, NSMapTable, NSProView, NSString, PEAudioCleanupView;
 
-@interface PEAudioCleanupContainerModule : LKViewModule <FFEnhanceAudioDelegate, PEAudioCleanupSliderDelegate>
+@interface PEAudioCleanupContainerModule : LKViewModule <FFEnhanceAudioDelegate>
 {
-    FFEnhanceAudioManager *_manager;
-    FFChannelChangeController *_channelChangeController;
     PEAudioCleanupView *_cleanupView;
     NSProView *_headerView;
     NSProView *_backgroundView;
@@ -23,14 +20,18 @@
     LKButton *_inspectorButton;
     NSProView *_footerView;
     BOOL _moduleHidden;
+    NSMapTable *_effectStackToManagerMap;
+    FFChannelChangeController *_channelChangeController;
+    NSCountedSet *_actionRegistrationSet;
+    NSString *_actionName;
+    BOOL _suspendUpdates;
 }
 
-@property(retain, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
-@property(retain) NSProView *footerView; // @synthesize footerView=_footerView;
-@property(retain) FFEnhanceAudioManager *manager; // @synthesize manager=_manager;
-@property(retain) NSProView *headerView; // @synthesize headerView=_headerView;
-@property(retain) LKButton *inspectorButton; // @synthesize inspectorButton=_inspectorButton;
-@property BOOL moduleHidden; // @synthesize moduleHidden=_moduleHidden;
+@property(readonly, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
+@property(retain, nonatomic) NSProView *footerView; // @synthesize footerView=_footerView;
+@property(retain, nonatomic) NSProView *headerView; // @synthesize headerView=_headerView;
+@property(retain, nonatomic) LKButton *inspectorButton; // @synthesize inspectorButton=_inspectorButton;
+@property(nonatomic) BOOL moduleHidden; // @synthesize moduleHidden=_moduleHidden;
 - (void)_updateView;
 - (void)_updateViewHeaderForSelection:(id)arg1;
 - (void)_firstResponderChanged:(id)arg1;
@@ -52,17 +53,38 @@
 - (BOOL)acceptsFirstResponder;
 - (BOOL)wantsFirstResponder;
 - (void)viewDidLoad;
-- (void)loudnessUniformitySliderChanged:(id)arg1;
-- (void)loudnessAmountSliderChanged:(id)arg1;
-- (void)loudnessButtonToggle:(id)arg1;
-- (void)humSelectionChanged:(id)arg1;
-- (void)humReductionButtonToggle:(id)arg1;
-- (void)noiseRedutionSliderChanged:(id)arg1;
-- (void)noiseReductionButtonToggle:(id)arg1;
-- (void)autoFixButtonToggle:(id)arg1;
+- (void)endSliderTracking:(id)arg1;
+- (void)startSliderTracking:(id)arg1;
+- (id)_actionNameForSliderKey:(id)arg1 multipleSelection:(BOOL)arg2;
+- (void)setLoudnessUniformity:(double)arg1;
+- (void)setLoudnessAmount:(double)arg1;
+- (void)setLoudnessEnable:(BOOL)arg1;
+- (void)setHumReductionFrequencyIndex:(int)arg1;
+- (void)setHumReductionEnable:(BOOL)arg1;
+- (void)setNoiseReductionAmount:(double)arg1;
+- (void)setNoiseReductionEnable:(BOOL)arg1;
+- (void)performAutoFix;
+- (BOOL)_performSliderActionUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_performOperationUsingBlock:(CDUnknownBlockType)arg1 andActionNameBlock:(CDUnknownBlockType)arg2;
+- (id)humReductionFrequencyValue;
+- (long long)humReductionEnabledState;
+- (id)noiseReductionAmountValue;
+- (long long)noiseReductionEnabledState;
+- (id)loudnessUniformityValue;
+- (id)loudnessAmountValue;
+- (long long)loudnessEnabledState;
+- (int)warningStateForAnalysisOperation:(int)arg1;
+- (int)warningState;
 - (void)analysisDidComplete:(id)arg1;
 - (void)analysisDidCancel:(id)arg1;
 - (void)analysisDidStart:(id)arg1;
+- (void)_updateNoiseReduction:(id)arg1;
+- (void)_performAnalysisDidCompleteOnMainThread:(id)arg1;
+- (void)_performAnalysisDidCancelOnMainThread:(id)arg1;
+- (void)_performAnalysisDidStartOnMainThread:(id)arg1;
+- (void)_effectStackUpdated:(id)arg1;
+- (void)_removeObserving;
+- (void)_addObserving;
 - (void)updateWithSelection:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;

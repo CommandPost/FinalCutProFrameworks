@@ -10,7 +10,7 @@
 #import "POObjectDelegate.h"
 #import "POViewDelegate.h"
 
-@class FFCHRootChannel, FFChannelChangeController, FFHeCropEffect, FFHeDistortEffect, FFHeliumXFormEffect, NSCursor, NSString, POOnScreenControl;
+@class FFCHRootChannel, FFChannelChangeController, FFEffect, FFHeCropEffect, FFHeDistortEffect, FFHeliumXFormEffect, NSCursor, NSString, POOnScreenControl;
 
 @interface FFProOSC : FFComponentOSC <POHostDelegate, POViewDelegate, POObjectDelegate>
 {
@@ -25,6 +25,7 @@
     FFHeCropEffect *_crop;
     FFHeDistortEffect *_distort;
     unsigned long long _nodeIndex;
+    FFEffect *_oscEffect;
     unsigned long long _numEffects;
     struct PCUUID _id;
     BOOL _doRegister;
@@ -86,6 +87,9 @@
 - (void)addToUndoWillDelete:(id)arg1;
 - (void)addToUndo:(id)arg1;
 - (void)dirty;
+- (BOOL)handleBGTranslates;
+- (BOOL)showSideScaleOSC;
+- (BOOL)showRotationOSC;
 - (void)drawGeometry:(_Bool)arg1;
 - (void)drawElementOutline:(const PCMatrix44Tmpl_93ed1289 *)arg1 red:(double)arg2 green:(double)arg3 blue:(double)arg4;
 - (void)clipOutline:(const PCVector2_5d498db0 *)arg1 numPoints:(int)arg2 edges:(PCVector2_5d498db0 *)arg3 returnVisible:(vector_69938c0b *)arg4;
@@ -127,6 +131,7 @@
 - (void)getPostTransform:(int)arg1 matrix:(PCMatrix44Tmpl_93ed1289 *)arg2;
 - (void)getPreTransform:(int)arg1 matrix:(PCMatrix44Tmpl_93ed1289 *)arg2;
 - (void)getLocalToWorld:(PCMatrix44Tmpl_93ed1289 *)arg1;
+- (long long)getDistortIndex;
 - (unsigned int)translationChannelsVisible;
 - (unsigned int)rotationChannelsVisible;
 - (unsigned int)scaleChannelsVisible;
@@ -154,6 +159,7 @@
 - (BOOL)setScaleKeypoint:(struct OZChannelScale3D *)arg1 time:(const CDStruct_1b6d18a9 *)arg2 newTime:(const CDStruct_1b6d18a9 *)arg3 newScale:(const PCVector3_515d8d1c *)arg4;
 - (BOOL)setRotationKeypoint:(struct OZChannelRotation3D *)arg1 time:(const CDStruct_1b6d18a9 *)arg2 newTime:(const CDStruct_1b6d18a9 *)arg3 newRot:(const PCVector3_515d8d1c *)arg4;
 - (BOOL)setPositionKeypoint:(struct OZChannelPosition3D *)arg1 time:(const CDStruct_1b6d18a9 *)arg2 delta:(const PCVector3_515d8d1c *)arg3;
+- (BOOL)_pathPointWasSetToLinear:(struct OZChannelPosition3D *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
 - (void)findSpeedKeypoint:(int)arg1 channel:(struct OZChannelPercent *)arg2;
 - (void)findScaleKeypoint:(int)arg1 channel:(struct OZChannelScale3D *)arg2;
 - (void)findPivotKeypoint:(int)arg1 channel:(struct OZChannelPosition3D *)arg2;
@@ -167,6 +173,8 @@
 - (void)enableCrop:(BOOL)arg1;
 - (void)setMultiCamAngle:(int)arg1;
 - (void)getMultiCamAngle:(int *)arg1;
+- (void)setKenBurnsInterpolationType:(int)arg1;
+- (int)getKenBurnsInterpolationType;
 - (BOOL)cropDisplaysNameForType:(int)arg1;
 - (void)setCropKeyframeForType:(int)arg1 kf:(int)arg2 andL:(double)arg3 andR:(double)arg4 andB:(double)arg5 andT:(double)arg6;
 - (void)getCropKeyframeForType:(int)arg1 kf:(int)arg2 andL:(double *)arg3 andR:(double *)arg4 andB:(double *)arg5 andT:(double *)arg6;
@@ -212,7 +220,7 @@
 - (PCVector2_79a470e1)filmToViewCoords:(const PCVector2_79a470e1 *)arg1;
 - (BOOL)showToolInfo;
 - (void)postRenderInstruction;
-- (struct LiCamera *)getCamera;
+- (PCPtr_af78c7cb)getCamera;
 - (void)selectCamera:(int)arg1 animate:(BOOL)arg2;
 - (BOOL)isPlaying;
 - (void)clearOSCCursor;
@@ -245,6 +253,7 @@
 - (void)dismissSnaps;
 - (void)calculateSnapBounds:(double *)arg1 y1:(double *)arg2 x2:(double *)arg3 y2:(double *)arg4;
 - (void)checkSnapsForX:(double)arg1 andY:(double)arg2 withDeltaX:(double *)arg3 andDeltaY:(double *)arg4 exact:(BOOL)arg5;
+- (void)addOSCSpecificSnappingPointsToVertical:(id)arg1 horizontal:(id)arg2;
 - (void)checkSnapsFor:(PCRect_3a266109)arg1 withX:(double *)arg2 andY:(double *)arg3 exact:(BOOL)arg4;
 - (BOOL)isSnapping;
 - (void)startSnappingWithSelectedOnly:(BOOL)arg1;
@@ -259,6 +268,7 @@
 - (void)getFilmToView:(PCMatrix44Tmpl_93ed1289 *)arg1;
 - (void)getWorldToFilm:(PCMatrix44Tmpl_93ed1289 *)arg1;
 - (id)getView;
+- (BOOL)proUI;
 - (BOOL)isMotion;
 - (id)createScaleOSCWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_ada7b58d *)arg2;
@@ -332,19 +342,21 @@
 - (BOOL)mouseCreatesUndo;
 - (void)mouseExited:(id)arg1;
 - (void)mouseDragged:(id)arg1;
+- (void)ensureIntrinsic;
 - (void)_startProOSCBegin:(id)arg1 actionName:(id)arg2;
 - (void)multipleWillDidSetChannels:(list_ada7b58d)arg1 willSet:(BOOL)arg2;
 - (void)_willDidSetChannels:(id)arg1 willSet:(BOOL)arg2;
 - (id)getCursor;
 - (void)mouseMoved:(id)arg1;
 - (void)mouseUp:(id)arg1;
+- (void)_finishMouseTracking;
 - (void)_localMouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)proOSCMouseDownInitialize:(id)arg1;
 - (id)selectedItemForOSC;
 - (id)intrinsicCrop;
 - (id)intrinsicTransform;
-- (struct OZChannelBase *)undoChannel;
+- (id)undoChannels;
 - (BOOL)hitTest:(struct CGPoint)arg1;
 - (void)setChannel:(struct OZChannelBase *)arg1;
 - (void)dealloc;

@@ -4,43 +4,28 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProWindow.h"
+#import "NSProPopOverWindow.h"
 
-@class LKPopOverView, NSView;
+@class LKPopOverView;
 
-@interface LKPopOverWindow : NSProWindow
+@interface LKPopOverWindow : NSProPopOverWindow
 {
-    struct CGRect _targetRect;
-    struct CGRect _displayRect;
-    BOOL _shouldAutoreleaseOnClose;
-    BOOL _isAnimating;
-    double _animationDuration;
+    id _target;
 }
 
-+ (double)animationDuration;
++ (id)commandsToForward;
++ (id)consumerCallOutPopOverWindowWithDocumentView:(id)arg1 arrowDirection:(int)arg2;
++ (id)consumerPopOverWindowWithDocumentView:(id)arg1 arrowDirection:(int)arg2;
 + (id)callOutPopOverWindowWithDocumentView:(id)arg1 arrowDirection:(int)arg2;
-+ (id)popOverWindowWithDocumentView:(id)arg1 arrowDirection:(int)arg2;
 + (void)initialize;
-@property(readonly) BOOL validWindowLocationFound;
-@property(readonly) LKPopOverView *popOverView;
-@property NSView *documentView;
-@property int arrowDirection;
-@property(nonatomic) struct CGRect displayRect;
-@property(nonatomic) struct CGRect targetRect;
-@property(nonatomic) double animationDuration;
-- (void)_setFrameCommon:(struct CGRect)arg1 display:(BOOL)arg2 stashSize:(BOOL)arg3;
-- (void)updateWindowFrame;
-- (void)_updateWindowPosition;
-- (void)orderOutWithAnimationStyle:(int)arg1 autorelease:(BOOL)arg2;
-- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
-- (BOOL)presentWithTargetRect:(struct CGRect)arg1 inParentWindow:(id)arg2 displayRect:(struct CGRect)arg3 makeKey:(BOOL)arg4 animationStyle:(int)arg5 arrowDirection:(int)arg6;
-- (BOOL)presentWithTargetRect:(struct CGRect)arg1 inParentWindow:(id)arg2 displayRect:(struct CGRect)arg3 makeKey:(BOOL)arg4 animationStyle:(int)arg5;
+@property(retain, nonatomic) id target; // @synthesize target=_target;
+- (void)cancelOperation:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)sendEvent:(id)arg1;
+@property(readonly, nonatomic) LKPopOverView *popOverView;
 - (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
-- (void)_removeAnimations;
-- (void)_setupAnimations;
 - (Class)popUpViewClass;
-- (void)_popOverCommonSetup;
-- (BOOL)canBecomeKeyWindow;
+- (void)dealloc;
 
 @end
 

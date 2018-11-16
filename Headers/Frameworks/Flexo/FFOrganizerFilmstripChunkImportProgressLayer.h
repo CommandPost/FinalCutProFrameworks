@@ -6,7 +6,7 @@
 
 #import "CALayer.h"
 
-@class CATextLayer, FFBackgroundTask, FFMIORADAsset, FFThemeFacetLayer, NSString;
+@class CATextLayer, FFBackgroundTask, FFMIORADAsset, FFThemeFacetLayer, FigTimeRangeAndObject, NSDate, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripChunkImportProgressLayer : CALayer
@@ -22,14 +22,19 @@ __attribute__((visibility("hidden")))
     unsigned long long _progress;
     FFMIORADAsset *_radAsset;
     FFBackgroundTask *_processingTask;
+    NSSet *_processingAssets;
     BOOL _hasImportObserver;
     BOOL _inImportWindow;
     unsigned long long _spannedClipGlyphID;
     NSString *_ptpPercentageDonePath;
+    NSString *_iOSPercentageDonePath;
+    FigTimeRangeAndObject *_rangeOfMedia;
+    NSDate *_creationDate;
 }
 
 + (id)layerAsSubLayerOf:(id)arg1 filmstripCell:(id)arg2 rangeOfMedia:(id)arg3;
 + (BOOL)shouldDrawStillAsMovie:(id)arg1;
+@property(retain) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property unsigned long long progress; // @synthesize progress=_progress;
 @property(retain) FFMIORADAsset *radAsset; // @synthesize radAsset=_radAsset;
 - (void)setContentsScale:(double)arg1;

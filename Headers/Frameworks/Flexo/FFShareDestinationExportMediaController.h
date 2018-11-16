@@ -6,12 +6,16 @@
 
 #import <Flexo/FFShareDestinationController.h>
 
+#import "NSSaveRolePresetAsPanelDelegate.h"
+
 @class LKTextField, NSArrayController, NSPopUpButton, NSString, NSURL, NSView;
 
-@interface FFShareDestinationExportMediaController : FFShareDestinationController
+@interface FFShareDestinationExportMediaController : FFShareDestinationController <NSSaveRolePresetAsPanelDelegate>
 {
     NSURL *_userRolePresetsDirectoryURL;
+    NSURL *_oldUserRolePresetsDirectoryURL;
     BOOL _observing;
+    BOOL _replaceExistingRolePreset;
     NSPopUpButton *_exportPopUpButton;
     NSPopUpButton *_videoPresetPopUpButton;
     NSPopUpButton *_videoResolutionPopUpButton;
@@ -31,6 +35,7 @@
 + (id)keyPathsForValuesAffectingCanAddVideoRoleOutput;
 + (id)keyPathsForValuesAffectingAddAudioRoleOutputLabel;
 + (id)keyPathsForValuesAffectingAddVideoRoleOutputLabel;
+@property(nonatomic) BOOL replaceExistingRolePreset; // @synthesize replaceExistingRolePreset=_replaceExistingRolePreset;
 @property(nonatomic) NSView *roleOutputsView; // @synthesize roleOutputsView=_roleOutputsView;
 @property(nonatomic) NSView *rolesView; // @synthesize rolesView=_rolesView;
 @property(nonatomic) LKTextField *audioPresetTextField; // @synthesize audioPresetTextField=_audioPresetTextField;
@@ -44,7 +49,11 @@
 @property(nonatomic) NSPopUpButton *videoPresetPopUpButton; // @synthesize videoPresetPopUpButton=_videoPresetPopUpButton;
 @property(nonatomic) NSPopUpButton *exportPopUpButton; // @synthesize exportPopUpButton=_exportPopUpButton;
 @property(nonatomic, getter=isObserving) BOOL observing; // @synthesize observing=_observing;
+@property(retain, nonatomic) NSURL *oldUserRolePresetsDirectoryURL; // @synthesize oldUserRolePresetsDirectoryURL=_oldUserRolePresetsDirectoryURL;
 @property(retain, nonatomic) NSURL *userRolePresetsDirectoryURL; // @synthesize userRolePresetsDirectoryURL=_userRolePresetsDirectoryURL;
+- (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 delegate:(id)arg3 didRecoverSelector:(SEL)arg4 contextInfo:(void *)arg5;
+- (BOOL)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
+- (BOOL)panel:(id)arg1 validateName:(id)arg2 error:(id *)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)validateMenuItem:(id)arg1;
 - (struct CGSize)optimalVideoResolution;
@@ -54,6 +63,7 @@
 - (id)addVideoRoleOutputLabel;
 - (void)saveUserRolePresets;
 - (void)loadUserRolePresets;
+- (id)readUserRolePresetsFromDirectoryURL:(id)arg1;
 @property(readonly) NSString *actionMenuLabelName;
 - (void)addRecentApplication:(id)arg1;
 - (id)recentApplications;

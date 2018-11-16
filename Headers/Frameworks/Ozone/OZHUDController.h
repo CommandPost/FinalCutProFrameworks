@@ -8,18 +8,18 @@
 
 @interface OZHUDController : OZProViewModule
 {
-    struct OZScene *_pScene;
-    list_37573188 *_pObjects;
-    list_89d338e7 *_pObjectIDs;
+    struct OZDocument *_pDocument;
+    list_4c5ca08a *_pObjects;
+    list_bbacc03b *_pObjectIDs;
     vector_77d837c3 *_pMagicNumbers;
     struct CGRect _prevViewFrame;
 }
 
-@property(readonly, nonatomic) struct OZScene *scene; // @synthesize scene=_pScene;
+@property(readonly, nonatomic) struct OZDocument *document; // @synthesize document=_pDocument;
 - (id).cxx_construct;
 - (void)updateViewFinalFrame;
 - (void)encloseInCenteringView;
-- (BOOL)allObjectsAreSameType:(const list_0555a7a2 *)arg1;
+- (BOOL)allObjectsAreSameType:(const list_e68da02e *)arg1;
 - (void)windowDeminimized:(id)arg1;
 - (void)windowMinimized:(id)arg1;
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1;
@@ -30,11 +30,12 @@
 - (void)update;
 - (void)viewDidLoad;
 - (BOOL)representedObjectsExist;
-- (list_37573188 *)objectList;
+- (list_4c5ca08a *)objectList;
+- (struct OZScene *)scene;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)dealloc;
-- (id)initWithObjectList:(list_0555a7a2 *)arg1;
+- (id)initWithObjectList:(list_e68da02e *)arg1;
 
 @end
 

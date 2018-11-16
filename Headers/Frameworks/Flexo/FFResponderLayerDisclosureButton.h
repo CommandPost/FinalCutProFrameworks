@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
     long long _state;
     BOOL _animationInProgress;
     BOOL _restoreToRolloverState;
+    id _target;
+    SEL _action;
 }
 
 @property(nonatomic) long long state; // @synthesize state=_state;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)mouseEntered:(id)arg1;
 - (BOOL)mouseDown:(id)arg1;
 - (void)_handleButtonActuated;
+- (void)setPressedHandlerWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)configureWithState:(long long)arg1;
 
 @end

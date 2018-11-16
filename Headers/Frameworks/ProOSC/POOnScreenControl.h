@@ -47,7 +47,7 @@
 - (BOOL)is3DOSC;
 - (void)setDrawInFilmSpace:(BOOL)arg1;
 - (BOOL)postRedisplayOnActivePartChange;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)rightMouseUp:(id)arg1;
 - (void)rightMouseDragged:(id)arg1;
 - (void)rightMouseDown:(id)arg1;
@@ -62,6 +62,7 @@
 - (void)mouseMoved:(id)arg1;
 - (BOOL)activeOnFullCanvas:(id)arg1;
 - (int)hitCheck:(id)arg1;
+- (int)hitCheckWithViewCoords:(PCVector2_7e488b7d *)arg1;
 - (void)renderWithDrawProperties:(id)arg1;
 - (void)drawWithDrawProperties:(id)arg1;
 - (void)draw;

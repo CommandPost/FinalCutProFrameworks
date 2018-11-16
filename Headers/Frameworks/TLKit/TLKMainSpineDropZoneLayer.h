@@ -4,14 +4,23 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import "CAReplicatorLayer.h"
 
-@interface TLKMainSpineDropZoneLayer : CALayer
+@class CALayer;
+
+@interface TLKMainSpineDropZoneLayer : CAReplicatorLayer
 {
     CALayer *_videoIconLayer;
+    CAReplicatorLayer *_topLineLayer;
+    CAReplicatorLayer *_bottomLineLayer;
+    int _editingMode;
+    unsigned int _setInstanceCount;
 }
 
 - (void)layoutSublayers;
+- (void)setDelegate:(id)arg1;
+- (void)setInstanceCount:(long long)arg1;
+@property int editingMode;
 - (id)init;
 
 @end

@@ -16,7 +16,7 @@
 - (unsigned long long)controller:(OZViewController *)arg1 validateDrop:(id <NSDraggingInfo>)arg2 proposedDropLocation:(unsigned int)arg3;
 - (NSArray *)controller:(OZViewController *)arg1 droppedTypes:(NSView *)arg2;
 - (unsigned long long)controller:(OZViewController *)arg1 draggingSourceOperationMaskForChannel:(struct OZChannelBase *)arg2 forLocal:(BOOL)arg3;
-- (void)controller:(OZViewController *)arg1 writeChannels:(list_eea5731a *)arg2 toPasteboard:(NSPasteboard *)arg3;
+- (void)controller:(OZViewController *)arg1 writeChannels:(list_e802f8b8 *)arg2 toPasteboard:(NSPasteboard *)arg3;
 - (BOOL)controller:(OZViewController *)arg1 shouldDragChannel:(struct OZChannelBase *)arg2;
 - (unsigned int)controller:(OZViewController *)arg1 checkboxTypeForChannel:(struct OZChannelBase *)arg2;
 - (void)controller:(OZViewController *)arg1 setName:(NSString *)arg2;

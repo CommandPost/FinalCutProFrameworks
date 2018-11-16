@@ -39,7 +39,7 @@
 - (void)setEnabled:(BOOL)arg1;
 - (void)update;
 - (BOOL)manageSubview:(id)arg1 on:(BOOL)arg2;
-- (id)createController:(struct OZChannelBase *)arg1;
+- (id)allocCurveEditorController:(struct OZChannelBase *)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

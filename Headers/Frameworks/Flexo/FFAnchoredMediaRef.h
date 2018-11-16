@@ -14,9 +14,12 @@
     NSSet *_cachedAssets;
     BOOL _hasAudio;
     BOOL _hasVideo;
+    BOOL _invalNeedsRange;
+    int _overrideAV;
 }
 
 + (id)copyClassDescription;
+@property(nonatomic) int overrideAV; // @synthesize overrideAV=_overrideAV;
 @property(retain, nonatomic) FFMedia *media; // @synthesize media=_media;
 - (void)logContent;
 - (id)_describeAdditionalObjectsWithIndent:(long long)arg1 recurse:(BOOL)arg2;
@@ -35,6 +38,7 @@
 - (CDStruct_e83c9415)untimedUnclippedRange;
 - (CDStruct_e83c9415)mediaRange;
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
+- (id)roles;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (void)_refInvalidationChange:(id)arg1;
 - (void)_rangeInvalidated:(id)arg1;
@@ -43,13 +47,16 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
 - (void)addAssetsToSet:(id)arg1;
+- (double)referencedPrimaryAudioSampleRate;
 - (double)audioSampleRate;
+- (long long)referencedPrimaryAudioChannelCount;
 - (long long)audioChannelCount:(int)arg1;
 - (id)videoProps;
 - (long long)timecodeDisplayDropFrame;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (CDStruct_1b6d18a9)timeOffset;
 - (BOOL)canBePlacedInSpine;
+- (BOOL)isProject;
 - (BOOL)isMultiAngle;
 - (BOOL)isMediaRef;
 - (id)secondaryEffectStack;
@@ -62,6 +69,7 @@
 - (id)auditionName;
 - (id)firstAudioAnchoredComponent;
 - (id)firstVideoAnchoredComponent;
+- (id)targetLibraryItem;
 - (id)referencedPrimary;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

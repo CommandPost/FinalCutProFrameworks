@@ -17,7 +17,7 @@
 + (BOOL)iconIsDefault:(id)arg1;
 - (struct NSObject *)newSkimmableForEffectPreview;
 - (id)_newIconImageWithTimeOffset:(double)arg1;
-- (struct NSObject *)_newSkimmable:(id)arg1 loadInForeground:(BOOL)arg2;
+- (struct NSObject *)_newSkimmable:(id)arg1 loadInForeground:(BOOL)arg2 previewTime:(inout CDStruct_1b6d18a9 *)arg3;
 - (long long)effectLibraryItemCompare:(id)arg1;
 - (id)effectID;
 - (id)valueForUndefinedKey:(id)arg1;

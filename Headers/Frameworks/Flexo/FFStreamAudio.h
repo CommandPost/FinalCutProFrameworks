@@ -17,6 +17,7 @@
     long long _lastRenderTime;
     unsigned int _lastChannelBitmap;
     struct CAStreamBasicDescription *_lastFormat;
+    CDStruct_1b6d18a9 _lastMaxRenderTime;
 }
 
 - (id).cxx_construct;
@@ -28,9 +29,11 @@
 - (struct FFAudioGraph *)graph;
 - (unsigned int)maximumBufferSize;
 - (BOOL)setMaximumBufferSize:(unsigned int)arg1;
+- (unsigned int)render:(struct AudioBufferList *)arg1 withFormat:(const struct AudioStreamBasicDescription *)arg2 forTime:(CDStruct_1b6d18a9)arg3 andFrames:(unsigned int)arg4 channels:(unsigned int)arg5;
+- (unsigned int)render:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned int)arg3 maxRenderTime:(CDStruct_1b6d18a9)arg4;
 - (unsigned int)render:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned int)arg3;
 - (unsigned int)render:(struct AudioBufferList *)arg1 withFormat:(const struct AudioStreamBasicDescription *)arg2 forTime:(CDStruct_1b6d18a9)arg3;
-- (unsigned int)render:(struct AudioBufferList *)arg1 withFormat:(const struct AudioStreamBasicDescription *)arg2 forTime:(CDStruct_1b6d18a9)arg3 andFrames:(unsigned int)arg4 channels:(unsigned int)arg5;
+- (unsigned int)render:(struct AudioBufferList *)arg1 withFormat:(const struct AudioStreamBasicDescription *)arg2 forTime:(CDStruct_1b6d18a9)arg3 andFrames:(unsigned int)arg4 maxRenderTime:(CDStruct_1b6d18a9)arg5 channels:(unsigned int)arg6;
 - (struct AudioStreamBasicDescription)streamFormatInfo;
 - (id)audioStreamOptions;
 - (void)dealloc;

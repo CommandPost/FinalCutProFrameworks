@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface FFCombinedCropOSC : FFProOSC
 {
     POCombinedCrop *_combinedCropOSC;
-    FFCHObservableFolder *_undoChannel;
     NSProSegmentedControl *_exitButton;
     NSProSegmentedControl *_playButton;
     NSProSegmentedControl *_flipButton;
@@ -32,6 +31,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
+- (BOOL)isCropOSC;
+- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_ada7b58d *)arg2;
+- (void)ensureIntrinsic;
 - (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
 - (void)checkChannelParameterChanged:(id)arg1;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
@@ -45,17 +47,20 @@ __attribute__((visibility("hidden")))
 - (void)setCropTypeCombinedCropOSC:(id)arg1;
 - (void)flipCombinedCropOSC:(id)arg1;
 - (void)_setButtonStateForCropType:(int)arg1;
+- (void)keyDown:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)enableOverlayWindowForNoRangeOverlap;
 - (void)removeOverlayWindowForNoRangeOverlap;
 - (BOOL)oscHandlesTranslation;
-- (struct OZChannelBase *)undoChannel;
+- (id)undoChannels;
 - (BOOL)supportsTool:(Class)arg1;
 - (void)dealloc;
+- (void)addOSCSpecificSnappingPointsToVertical:(id)arg1 horizontal:(id)arg2;
 - (void)cleanUpPlayerLoop;
 - (void)setAnchoredObjectSingledOutValue:(BOOL)arg1 immediate:(BOOL)arg2;
 - (void)setKenBurnsObjectOnMainThread:(id)arg1;
+- (struct CGSize)minSize;
 - (id)initWithHeCropEffect:(id)arg1 effectStack:(id)arg2;
 
 @end

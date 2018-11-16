@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     double _contentsScale;
     CDStruct_e83c9415 _timeRange;
     BOOL wantsDebug;
-    BOOL _audioHasVideo;
     double _audioHeight;
     BOOL _audioOnly;
     BOOL _transparentBackground;
@@ -27,6 +26,7 @@ __attribute__((visibility("hidden")))
     TLKThemeBackedLayer *_thumbLoadingLayer;
     CALayer *_primaryImageLayer;
     CALayer *_secondaryImageLayer;
+    BOOL _showAudioInPrimary;
     BOOL _showSecondary;
     BOOL _showAudioInSecondary;
     int _requestTimeType;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 + (struct CGColor *)filmstripClipBaseVideoEmpty;
 + (struct CGColor *)blueBackground;
 + (struct CGColor *)greenBackground;
++ (struct CGColor *)_placeholderAudioColorForScale:(double)arg1;
 @property(nonatomic) id <FFFilmstripCellDelegate> priorityDelegate; // @synthesize priorityDelegate=_priorityDelegate;
 @property(nonatomic) BOOL forceVideoColor; // @synthesize forceVideoColor=_forceVideoColor;
 @property(nonatomic) BOOL transparentBackground; // @synthesize transparentBackground=_transparentBackground;
@@ -65,11 +66,12 @@ __attribute__((visibility("hidden")))
 - (void)primaryThumbImageReady:(id)arg1;
 - (void)secondaryThumbImageReadyOnMainThread:(id)arg1;
 - (void)primaryThumbImageReadyOnMainThread:(id)arg1;
-- (void)_setContents:(id)arg1 forLayer:(id)arg2;
+- (void)_setContents:(struct CGImage *)arg1 forLayer:(id)arg2;
 - (BOOL)shouldShowSecondary;
 - (void)releaseLayer;
 - (BOOL)hasLayer;
 - (id)layer;
+- (struct CGImage *)newRepresentativeThumb;
 @property(readonly, nonatomic) struct CGRect thumbFrame;
 - (id)description;
 - (void)dealloc;

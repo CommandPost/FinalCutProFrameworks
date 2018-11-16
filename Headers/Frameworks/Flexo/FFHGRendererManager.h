@@ -15,7 +15,14 @@
     BOOL _doLinear;
 }
 
++ (void)initialize;
++ (void)initOnMainThread:(id)arg1;
++ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 + (id)sharedManager;
+- (_Bool)hasBuiltInGPU;
+- (_Bool)hasMultipleMatchedGPUs;
+- (int)getGPUCount;
+- (void)_countGPUs;
 - (_Bool)canFitTextureWithBounds:(struct CGRect)arg1;
 - (_Bool)threadAccessedRenderQueueRenderer;
 - (void)setRenderQueueRendererForCurrentThread:(struct HGRenderer *)arg1;

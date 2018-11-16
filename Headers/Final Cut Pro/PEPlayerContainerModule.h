@@ -8,10 +8,11 @@
 
 #import "FFErrorReportingProtocol.h"
 #import "FFPlayerModuleDelegate.h"
+#import "PEPlayerContainerViewDelegate.h"
 
 @class LKPaneCapSegmentedControl, LKSegmentedControl, LKWindow, NSArray, NSImageView, NSMenu, NSMutableArray, NSMutableDictionary, NSProView, NSTextField, NSView, PEViewedClipSet;
 
-@interface PEPlayerContainerModule : LKViewModule <FFErrorReportingProtocol, FFPlayerModuleDelegate>
+@interface PEPlayerContainerModule : LKViewModule <PEPlayerContainerViewDelegate, FFErrorReportingProtocol, FFPlayerModuleDelegate>
 {
     int _mode;
     int _defaultMode;
@@ -77,6 +78,7 @@
     NSMutableDictionary *_scopesInfo;
     NSMutableArray *_cachedPlayers;
     long long _multiAngleEditStyle;
+    struct FFProcrastinatedDispatch_t _procrastinatedSetNeedsDisplayContext;
 }
 
 + (id)tools;
@@ -94,6 +96,7 @@
 - (id)localModuleActions;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)_displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 preferAudio:(BOOL)arg4;
+- (void)_projectChanged:(id)arg1;
 - (void)_setupVout;
 - (void)_ignoreObservingActivePlayer;
 - (void)_observeActivePlayer;
@@ -133,6 +136,7 @@
 - (void)displayAreaGainedFocus:(id)arg1;
 - (void)firstResponderChanged:(id)arg1;
 - (void)activeToolChanged:(id)arg1;
+- (int)_preferredDisplayModeForToolClass:(Class)arg1;
 - (void)setupOptionsMenuKeyEquivalents:(id)arg1;
 - (void)changeToolPaletteTool:(id)arg1;
 - (void)selectTool:(id)arg1;
@@ -143,12 +147,16 @@
 - (void)multiAngleEditStyleVideo:(id)arg1;
 - (void)multiAngleEditStyleAudio:(id)arg1;
 - (void)multiAngleEditStyleAudioVideo:(id)arg1;
+- (void)exitFullScreen:(id)arg1;
 - (void)sendFullScreen:(id)arg1;
 - (void)previousNextEdit:(id)arg1;
 - (void)previousNextFrame:(id)arg1;
 - (void)toggleLoopPlayback:(id)arg1;
 - (void)playSegmentedControlAction:(id)arg1;
 - (void)toggleAdvancedColorControls:(id)arg1;
+- (void)selectPlaybackQuality:(id)arg1;
+- (void)selectPlaybackMedia:(id)arg1;
+- (void)_warnUserAboutBackgroundShareProcessAndProxyMedia;
 - (void)toggleBalance:(id)arg1;
 - (void)paste:(id)arg1;
 - (void)cut:(id)arg1;
@@ -183,6 +191,7 @@
 - (BOOL)isMainDisplayArea;
 - (void)setModeIgnoringAccessories:(int)arg1;
 - (BOOL)toolShouldNotShowOrAllowScopes:(Class)arg1;
+- (id)shadowRects;
 - (void)view:(id)arg1 didMoveToWindow:(id)arg2;
 - (void)view:(id)arg1 willMoveToWindow:(id)arg2;
 - (void)splitViewDidEndDragging:(id)arg1;
@@ -195,6 +204,7 @@
 - (BOOL)splitView:(id)arg1 canCollapseSubview:(id)arg2;
 - (BOOL)isSplitterAdjustableForMode:(int)arg1;
 - (id)fullscreenPlayerPresentationOptions;
+- (BOOL)isInFullScreenMode;
 - (BOOL)isLooping;
 - (BOOL)isPlaying;
 - (id)_activePlayerModule;
@@ -206,8 +216,10 @@
 - (unsigned long long)_activePlayerModuleIndex;
 - (void)selectDisplayAreaMode:(id)arg1;
 - (id)moduleFooterAccessoryView;
+- (BOOL)wantsTransparentBackground;
 - (BOOL)wantsFooterBar;
 - (id)moduleAccessoryView;
+- (BOOL)wantsCapBar;
 - (id)targetModules;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;
@@ -217,6 +229,7 @@
 - (void)preLayout:(id)arg1;
 - (id)contentLayoutDictionary;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
+- (id)playerLayoutName;
 - (id)submoduleLayoutArray;
 - (id)lastKeyView;
 - (id)firstKeyView;

@@ -8,11 +8,17 @@
 
 #import "FFMatchToolDelegate.h"
 
+@class NSString, TLKTimelineView;
+
 __attribute__((visibility("hidden")))
 @interface FFSyncToHelper : NSObject <FFMatchToolDelegate>
 {
+    CDStruct_1b6d18a9 _contextTime;
+    NSString *_eventHandlerID;
+    TLKTimelineView *_timelineView;
 }
 
+- (void)setSelectedItems:(id)arg1 withContextTime:(CDStruct_1b6d18a9)arg2;
 - (BOOL)matchToolShouldCancelOnUndo:(id)arg1;
 - (BOOL)referenceChanged:(id)arg1 reference:(id)arg2;
 - (void)matchToolWasResigned:(id)arg1;
@@ -22,6 +28,9 @@ __attribute__((visibility("hidden")))
 - (id)accessoryTitle;
 - (id)footerText;
 - (id)footerNibName;
+- (BOOL)alignContextTimeToPlayheadTime;
+- (void)setEventHandlerID:(id)arg1 forTimelineView:(id)arg2;
+- (void)dealloc;
 
 @end
 

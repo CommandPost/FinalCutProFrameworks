@@ -48,6 +48,7 @@
     BOOL _dontRedrawOnInvals;
     BOOL _deferSelectionOSCUpdate;
     BOOL _isPrimaryVout;
+    BOOL _canShowTransportControls;
     NSCountedSet *_meterObservers;
     unsigned long long _meterObserverCount;
     NSTimer *_meteringTimer;
@@ -59,6 +60,7 @@
 + (int)temporalQualityForFramesPerPixel:(unsigned int)arg1;
 + (void)initialize;
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+@property(nonatomic) BOOL canShowTransportControls; // @synthesize canShowTransportControls=_canShowTransportControls;
 @property(nonatomic) BOOL notificationsDisabled; // @synthesize notificationsDisabled=_notificationsDisabled;
 @property(retain, nonatomic) id selectionHandler; // @synthesize selectionHandler;
 @property(nonatomic) BOOL shouldTakeFocusOnLoad; // @synthesize shouldTakeFocusOnLoad;
@@ -86,6 +88,8 @@
 - (void)setStopOnDroppedFrame:(BOOL)arg1;
 - (void)notifyAudioPlaybackStateChanged;
 - (BOOL)isAudioPlaybackOn;
+- (void)endRecording;
+- (void)beginRecording:(CDStruct_1b6d18a9)arg1;
 - (void)endStepPlayback;
 - (void)beginStepPlayback:(CDStruct_1b6d18a9)arg1;
 - (void)_maybeStartSkimming;
@@ -139,6 +143,7 @@
 - (void)_loopRangeStartReached:(id)arg1;
 - (void)_timeRateChanged;
 - (BOOL)_useLowOverheadForPlayer;
+- (void)_notifyContextObservers:(SEL)arg1 withObject:(id)arg2 force:(BOOL)arg3;
 - (void)_notifyContextObservers:(SEL)arg1 withObject:(id)arg2;
 - (void)_notifyContextObservers:(SEL)arg1;
 - (void)removeObserver:(id)arg1;

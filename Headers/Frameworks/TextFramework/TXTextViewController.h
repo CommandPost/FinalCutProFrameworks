@@ -20,6 +20,7 @@
 }
 
 @property(retain, nonatomic) FFMotionEffect *motionEffect; // @synthesize motionEffect=_motionEffect;
+- (id)txTextView;
 - (void)viewDidResignFirstResponder;
 - (id)inspectorModule;
 - (id)notificationUserInfo;

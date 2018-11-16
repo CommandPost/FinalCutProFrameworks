@@ -6,9 +6,11 @@
 
 #import <Ozone/OZTimelineViewMulti.h>
 
+#import "OZHGUserJobClient.h"
+
 @class NSTimer;
 
-@interface OZTimelineViewAudio : OZTimelineViewMulti
+@interface OZTimelineViewAudio : OZTimelineViewMulti <OZHGUserJobClient>
 {
     struct map<OZTimelineAudioImageTag, OZTimelineAudioImage, std::less<OZTimelineAudioImageTag>, std::allocator<std::pair<const OZTimelineAudioImageTag, OZTimelineAudioImage>>> *_images;
     NSTimer *_sweepTimer;
@@ -29,6 +31,8 @@
 - (id)allocRow:(int)arg1;
 - (void)verticalZoomChanged;
 - (id)imageForAudio:(struct OZAudioTrack *)arg1 startTime:(CDStruct_1b6d18a9)arg2 endTime:(CDStruct_1b6d18a9)arg3 size:(struct CGSize)arg4;
+- (void)userJobCanceled:(struct OZHGUserJob *)arg1;
+- (void)userJobFinished:(struct OZHGUserJob *)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)timeDisplayRangeModified;
 - (void)timeDisplayRangeModificationEnd;

@@ -10,6 +10,9 @@
 {
 }
 
+- (void)setThemeVariant:(long long)arg1;
+- (void)drawKnobSlotInRect:(struct CGRect)arg1 highlight:(BOOL)arg2;
+- (void)awakeFromNib;
 - (id)_thumbFacet;
 - (id)_cornerFacet;
 - (id)_arrowFacetForArrowPosition:(unsigned long long)arg1 configuration:(int)arg2;

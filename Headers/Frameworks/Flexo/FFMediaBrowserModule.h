@@ -6,23 +6,27 @@
 
 #import "LKViewModule.h"
 
-@class ILMediaBrowserView;
+@class FFPlayerModule, ILMediaBrowserView;
 
 @interface FFMediaBrowserModule : LKViewModule
 {
     ILMediaBrowserView *_mediaBrowserView;
     BOOL _photosShown;
     BOOL _audioShown;
+    FFPlayerModule *_playerModule;
 }
 
 - (void)setInitialSplitPositionForBrowserType:(long long)arg1;
 - (id)mediaBrowserView:(id)arg1 displayNameForMediaGroup:(id)arg2;
 - (BOOL)mediaBrowserView:(id)arg1 shouldDisplayMediaObject:(id)arg2;
 - (void)writeSelectionToPasteboard:(id)arg1;
+- (id)selectedMediaObjects;
+- (void)mediaBrowserViewPreviewWillBeginPlaying:(id)arg1;
+- (void)playerModuleDidPlayPause:(id)arg1;
 - (void)stopPreview:(id)arg1;
+- (void)iLMBAllocAndConfigure;
+- (void)moduleDidUnhide;
 - (void)updateBrowserViewMode:(long long)arg1;
-- (void)viewDidLoad;
-- (void)awakeFromNib;
 - (void)dealloc;
 - (id)init;
 

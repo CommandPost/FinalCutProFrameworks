@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 {
     NSMutableSet *_anchoredObjects;
     NSMutableArray *_controllers;
-    NSMutableSet *_mediaRefs;
+    NSMutableSet *_assets;
     NSMutableSet *_clips;
     NSMapTable *_clipToAssetMap;
     Class _REDImageProcessingClass;

@@ -16,6 +16,8 @@
 - (void)cancelOnSelectionOnMatchTool:(FFMatchTool *)arg1;
 
 @optional
+- (CDStruct_1b6d18a9)contextTime;
+- (void)setSelectedItems:(NSArray *)arg1 withContextTime:(CDStruct_1b6d18a9)arg2;
 - (NSString *)okButtonTitle;
 - (NSString *)accessoryTitle;
 - (NSString *)footerText;

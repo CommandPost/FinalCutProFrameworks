@@ -6,11 +6,10 @@
 
 #import "NSObject.h"
 
-@class NSObject<OZListController>, OZListNodeRenderer;
+@class NSObject<OZListController>;
 
 @interface OZListImageCompletion : NSObject
 {
-    OZListNodeRenderer *_nodeRenderer;
     NSObject<OZListController> *_listController;
     unsigned int _renderNodeID;
     shared_ptr_92745eb9 _image;
@@ -23,7 +22,6 @@
 @property(nonatomic, getter=imageRef, setter=setImageRef:) shared_ptr_92745eb9 image; // @synthesize image=_image;
 @property unsigned int renderNodeID; // @synthesize renderNodeID=_renderNodeID;
 @property(retain) NSObject<OZListController> *listController; // @synthesize listController=_listController;
-@property(retain) OZListNodeRenderer *nodeRenderer; // @synthesize nodeRenderer=_nodeRenderer;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;

@@ -10,7 +10,7 @@
 {
 }
 
-- (id)createCellWithChannel:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)newCellWithChannel:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

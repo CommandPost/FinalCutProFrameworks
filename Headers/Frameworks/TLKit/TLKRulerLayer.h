@@ -10,12 +10,15 @@
 
 @interface TLKRulerLayer : TLKThemeBackedLayer <TLKPartInfo>
 {
+    int _editingMode;
 }
 
 - (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)actionForKey:(id)arg1;
+@property int editingMode;
 - (id)init;
+- (void)_updateThemeFacet;
 
 @end
 

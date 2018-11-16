@@ -14,6 +14,7 @@
 - (BOOL)isEqualToPlugIn:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (id)apiUsedByPlugInForProtocol:(id)arg1;
+- (id)pluginKitPlug;
 - (id)implementedProtocols;
 - (id)icon;
 - (id)infoString;

@@ -8,12 +8,11 @@
 
 #import "NSAnimationDelegate.h"
 
-@class NSString, NSView;
+@class NSView;
 
 @interface LKSwapModule : LKViewModule <NSAnimationDelegate>
 {
     LKViewModule *_activeModule;
-    NSString *_moduleToActivateID;
     NSView *_accessoryView;
     NSView *_accessoryFooterView;
     int _animationStyle;
@@ -38,6 +37,7 @@
 - (BOOL)isSubmoduleHidden:(id)arg1;
 - (void)removeSubmodule:(id)arg1;
 - (id)activeModule;
+- (id)lastKeyView;
 - (id)firstKeyView;
 - (unsigned long long)revealAnimationStyle;
 - (id)moduleFooterAccessoryView;
@@ -48,7 +48,6 @@
 - (unsigned long long)labelAlignment;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
-- (void)viewDidLoad;
 - (BOOL)loadView;
 - (void)dealloc;
 

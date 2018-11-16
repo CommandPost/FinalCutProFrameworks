@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)menuForVideoScopeOptions;
 - (void)drawScopeViewWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)scrollWheel:(id)arg1;
 - (void)rightMouseDown:(id)arg1;
 - (void)mouseDown:(id)arg1;

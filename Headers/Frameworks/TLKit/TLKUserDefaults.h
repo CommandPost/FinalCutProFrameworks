@@ -10,6 +10,8 @@
 {
 }
 
++ (BOOL)writeOutMicaArchive;
++ (BOOL)showRenderBar;
 + (BOOL)showMisalignedEdges;
 + (BOOL)showZeroHeightSpineItems;
 + (BOOL)showUsedRegion;
@@ -19,7 +21,9 @@
 + (BOOL)showContainerBounds;
 + (BOOL)showItemLayoutInfo;
 + (BOOL)showInvalidLayoutRects;
++ (BOOL)showLastItemGap;
 + (BOOL)showContentLayers;
++ (BOOL)raisesExceptionOnAssert;
 + (BOOL)logRecyclingLayerChanges;
 + (BOOL)logVisibleRectChanges;
 + (BOOL)logVisibleLayerChanges;
@@ -29,9 +33,9 @@
 + (BOOL)loadDebugMicaAssets;
 + (BOOL)forceLayoutOnDrag;
 + (BOOL)showItemLaneIndex;
-+ (BOOL)enableIncrementalReload;
 + (BOOL)disableOptimizedDrawing;
 + (BOOL)disableClipSublayers;
++ (BOOL)debugLogLevel;
 + (BOOL)allowNegativeTimeAfterTrim;
 + (void)initialize;
 + (void)_loadUserDefaults;

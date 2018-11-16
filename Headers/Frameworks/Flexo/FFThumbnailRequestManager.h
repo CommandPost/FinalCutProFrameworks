@@ -10,20 +10,15 @@
 
 @class FFBackgroundTask, FFStreamVideoCache, NSConditionLock, NSLock, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface FFThumbnailRequestManager : NSObject <FFBackgroundTaskTarget>
 {
     NSMutableArray *_requests;
     NSLock *_requestsLock;
     NSMutableArray *_highPriorityRequests;
     NSLock *_highPriorityRequestsLock;
-    struct NSObject *_lastImageMedia;
-    CDStruct_1b6d18a9 _lastTimeInLastImageMedia;
     FFStreamVideoCache *_streamVideoCache;
     FFBackgroundTask *_bTask;
-    unsigned int _progressStep;
-    unsigned int _progressTotal;
-    _Bool _appShuttingDown;
+    BOOL _disallowNewThumbnailRequests;
     NSConditionLock *_pause;
     long long _playersPlayering;
     BOOL _isAudio;
@@ -38,9 +33,10 @@ __attribute__((visibility("hidden")))
 + (void)releaseSharedInstanceAudio;
 + (id)sharedInstanceAudio;
 + (struct CGImage *)_copyThemeCGImage:(long long)arg1;
-- (id).cxx_construct;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+@property BOOL disallowNewThumbnailRequests; // @synthesize disallowNewThumbnailRequests=_disallowNewThumbnailRequests;
+- (id)librariesInUse;
+- (id)assetsInUse;
+- (id)_copySkimmableItems;
 - (void)appWillTerminate:(id)arg1;
 - (BOOL)newImage:(struct CGImage **)arg1 forRequest:(id)arg2;
 - (void)addAsyncImageRequest:(id)arg1;
@@ -48,18 +44,11 @@ __attribute__((visibility("hidden")))
 - (void)_cancelBGTask;
 - (void)_startBackgroundTask;
 - (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
-- (void)flushCompressorsWithOldStream:(id)arg1 segStore:(id)arg2 lastMD5:(CDStruct_bdcb2b0d)arg3;
 - (void)canceledTask:(id)arg1;
 - (void)uiPlaybackStateChange:(id)arg1;
-- (BOOL)_newAudioImage:(struct CGImage **)arg1 request:(id)arg2 synchronously:(BOOL)arg3;
-- (struct CGImage *)_newAudioWaveformImageFromImageRequest:(id)arg1 andPeaks:(id)arg2;
-- (struct CGImage *)_copySegmentStoreCGImageForMD5:(id)arg1 offset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4;
-- (void)_cacheImage:(struct CGImage *)arg1 request:(id)arg2 cost:(double)arg3;
-- (struct CGImage *)_copyCachedCGImageForKey:(CDStruct_bdcb2b0d)arg1;
 - (id)streamVideoCache;
 - (void)dealloc;
 - (id)initForAudio:(BOOL)arg1;
-- (void)_waveformPreferenceChanged:(id)arg1;
 
 @end
 

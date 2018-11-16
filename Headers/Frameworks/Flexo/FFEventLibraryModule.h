@@ -6,20 +6,13 @@
 
 #import <Flexo/FFEventsSuperModule.h>
 
-#import "FFSharableContent.h"
 #import "NSMenuDelegate.h"
 
-@class FFAnalyzeMediaWindowController, FFEventSidebarModule, FFMediaEventSidebarProvider, FFModifyContentCreationDateWindowController, FFOrganizerFilmstripModule, FFShareHelper, FFTranscodeMediaWindowController, OKPaneCapItemButton;
+@class FFMediaSidebarModule, FFOrganizerFilmstripModule, OKPaneCapItemButton;
 
-@interface FFEventLibraryModule : FFEventsSuperModule <NSMenuDelegate, FFSharableContent>
+@interface FFEventLibraryModule : FFEventsSuperModule <NSMenuDelegate>
 {
-    FFMediaEventSidebarProvider *_eventProvider;
-    FFTranscodeMediaWindowController *_transcodeController;
-    FFAnalyzeMediaWindowController *_analyzeController;
-    FFModifyContentCreationDateWindowController *_creationDateWindowController;
     OKPaneCapItemButton *_listViewPaneCapItem;
-    id _objectForContextualMenu;
-    FFShareHelper *_shareHelper;
 }
 
 @property(retain) OKPaneCapItemButton *listViewPaneCapItem; // @synthesize listViewPaneCapItem=_listViewPaneCapItem;
@@ -27,62 +20,16 @@
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (double)splitView:(id)arg1 constrainSplitPosition:(double)arg2 ofSubviewAt:(long long)arg3;
 - (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
-- (void)exportXML:(id)arg1;
-- (void)removeSelectedNetworkLocation:(id)arg1;
-- (void)addNetworkLocation:(id)arg1;
-- (void)moveToTrash:(id)arg1;
-- (BOOL)_deleteEvents:(id)arg1 error:(id *)arg2;
-- (BOOL)_deleteFolderObjects:(id)arg1 types:(int)arg2 error:(id *)arg3;
-- (void)modifyContentCreationDate:(id)arg1;
-- (void)analyzeAndFix:(id)arg1;
-- (void)transcodeMedia:(id)arg1;
-- (void)toggleArrangeEventsByMostRecent:(id)arg1;
-- (void)groupEventsByDate:(id)arg1;
-- (void)toggleGroupEventsByDisk:(id)arg1;
-- (void)toggleShowDateRangesInEventList:(id)arg1;
-- (void)editSmartCollection:(id)arg1;
-- (id)shareSelection:(id)arg1;
-- (void)duplicate:(id)arg1;
-- (void)consolidateFiles:(id)arg1;
-- (unsigned int)_organizerSelectionState;
-- (void)newSmartCollection:(id)arg1;
-- (void)newProjectFolder:(id)arg1;
-- (void)newKeyword:(id)arg1;
-- (void)newEvent:(id)arg1;
-- (void)relinkFiles:(id)arg1;
-- (void)importFile:(id)arg1;
-- (void)forwardInvocation:(id)arg1;
-- (id)methodSignatureForSelector:(SEL)arg1;
-- (BOOL)respondsToSelector:(SEL)arg1;
-- (id)shareHelper;
+- (id)defaultEventForNewProject;
 - (id)player;
 - (id)context;
 - (BOOL)revealObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2 atPlayhead:(CDStruct_1b6d18a9)arg3;
-- (void)arrangebySortOrderAction:(id)arg1;
-- (void)arrangingingPopUpAction:(id)arg1;
-- (void)clusteringSortOrderAction:(id)arg1;
-- (void)clusteringPopUpAction:(id)arg1;
-- (void)setShowListMode:(id)arg1;
-- (void)setShowFilmstripMode:(id)arg1;
-- (void)toggleListMode:(id)arg1;
-- (void)setShowFilmstripView:(BOOL)arg1;
-- (BOOL)showFilmstripView;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (id)localModuleActions;
-- (void)menuDidClose:(id)arg1;
-- (void)menuWillOpen:(id)arg1;
-- (id)sidebarModule:(id)arg1 menuForItem:(id)arg2 event:(id)arg3;
-- (int)_targetTypesForSender:(id)arg1 coalesceTargets:(BOOL)arg2 targets:(id *)arg3;
-- (int)_sidebarTargetTypesForSender:(id)arg1 coalesceTargets:(BOOL)arg2 targets:(id *)arg3;
-- (int)_targetTypesForSender:(id)arg1 inModule:(id)arg2 coalesceTargets:(BOOL)arg3 targets:(id *)arg4;
-- (void)dealloc;
-- (void)loadDefaults;
-- (id)registrationDefaults;
-- (void)storeDefaults;
-- (void)configureSidebar:(id)arg1;
+- (void)showImportPanelWithKeywords:(id)arg1 forEvent:(id)arg2;
+- (void)ensureSidebarVisible;
+- (void)newEventUsingDefaultLibrary:(id)arg1;
 - (id)newItemsModule;
-- (id)newSidebarModule;
-@property(readonly, nonatomic) FFEventSidebarModule *eventListModule;
+- (id)newMediaSidebarModule;
+@property(readonly, nonatomic) FFMediaSidebarModule *eventListModule;
 @property(readonly, nonatomic) FFOrganizerFilmstripModule *filmstripModule;
 
 @end

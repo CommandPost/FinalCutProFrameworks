@@ -6,7 +6,9 @@
 
 #import <Ozone/OZSceneNodeDragTarget.h>
 
-@interface OZMoveableImageDragTarget : OZSceneNodeDragTarget
+#import "OZRenderClient.h"
+
+@interface OZMoveableImageDragTarget : OZSceneNodeDragTarget <OZRenderClient>
 {
     double _offsetX;
     double _offsetY;
@@ -19,11 +21,11 @@
 }
 
 - (id).cxx_construct;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (BOOL)acceptsFirstResponder;
-- (void)renderCompletionMethod:(struct OZRenderCompletionParams *)arg1;
 - (void)display:(struct OZRenderNode *)arg1 forTime:(const CDStruct_1b6d18a9 *)arg2;
 - (void)setController:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -13,7 +13,7 @@
 }
 
 - (CDStruct_1b6d18a9)timeToKeepStatic;
-- (BOOL)shouldMoveEdgeUsingDelta:(id)arg1;
+- (BOOL)shouldMoveEdgeUsingDelta;
 - (BOOL)stopTrackingWithCommit:(BOOL)arg1;
 - (void)adjustFramesOfItems:(id)arg1;
 - (void)restoreClickedLayer:(id)arg1;

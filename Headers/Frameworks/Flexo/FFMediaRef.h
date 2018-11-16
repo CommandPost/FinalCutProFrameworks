@@ -15,30 +15,30 @@
 __attribute__((visibility("hidden")))
 @interface FFMediaRef : FFMedia <NSCoding, NSCopying, FFSkimmableProtocol>
 {
-    NSString *_eventDocumentID;
-    NSString *_mediaIdentifier;
     FFMedia *_media;
+    NSString *_mediaIdentifier;
     BOOL _changingMedia;
     int _offlineReason;
     FFMedia *_mediaForRefInvalidation;
+    NSString *_cachedLibraryID;
 }
 
-+ (BOOL)mediaRefSetContents:(id)arg1 matchSet:(id)arg2;
-+ (id)mediaRefComparisonSetFromMediaRefSet:(id)arg1;
++ (id)scrapedOldRefDataForObject:(id)arg1 createIfNotFound:(BOOL)arg2;
++ (id)mediaIdentifiersForMediaRefs:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property(retain, nonatomic) NSString *cachedLibraryID; // @synthesize cachedLibraryID=_cachedLibraryID;
 @property(retain, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
 @property(readonly, nonatomic) int offlineReason; // @synthesize offlineReason=_offlineReason;
 - (id)mdTargetForKey:(id)arg1;
+- (id)videoProps;
 - (id)newProviderWithEffectCount:(long long)arg1;
 - (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
 - (id)newProvider;
-- (void)undidMoveToTrash:(id)arg1;
 - (void)assetChangeChange:(id)arg1;
 - (void)refInvalidationChange:(id)arg1;
 - (void)sourceRangeInvalidated:(id)arg1;
 - (id)_offlineCacheIdentifier;
-- (void)_updateRefState;
 - (id)fileURLs:(int)arg1;
 - (void)addAssetsToSet:(id)arg1;
 - (id)assets;
@@ -47,17 +47,9 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)setIsGood:(BOOL)arg1;
-- (void)setAudioSampleRate:(double)arg1;
-- (void)setAudioChannelCount:(long long)arg1;
-- (void)setTimecodeFrameDuration:(CDStruct_1b6d18a9)arg1;
-- (void)setHasVideo:(BOOL)arg1;
-- (void)setHasAudio:(BOOL)arg1;
-- (void)setMediaRange:(CDStruct_e83c9415)arg1;
-- (void)setDisplayName:(id)arg1;
-- (id)displayName;
 - (BOOL)isAssetRef;
 - (BOOL)isClipRef;
+- (BOOL)isProject;
 - (BOOL)performBlockWithMediaWhenReady:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 @property(readonly, nonatomic) int proxyOfflineReason;
@@ -66,19 +58,20 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL originalAvailable;
 @property(readonly, nonatomic) BOOL highQualityAvailable;
 @property(readonly, nonatomic) BOOL proxyAvailable;
-- (id)descriptionText;
 - (id)eventName;
 - (id)event;
-- (id)mediaRefComparisonValue;
 - (BOOL)isEqualToRef:(id)arg1;
+- (id)targetLibraryItem;
 - (id)media;
+- (id)library;
 - (BOOL)isRefMediaCached;
-- (id)_resolveMedia:(id)arg1 inEvent:(id)arg2;
 - (void)dealloc;
+- (void)releaseFinal;
+- (oneway void)release;
 - (id)initWithMedia:(id)arg1 mediaEvent:(id)arg2;
 - (void)_deferredNotification;
 - (id)init;
-- (void)setEventDocumentID:(id)arg1;
+- (id)legacyEventDocumentID;
 - (id)eventDocumentID;
 
 @end

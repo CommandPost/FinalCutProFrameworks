@@ -7,8 +7,16 @@
 #import "CALayer.h"
 
 @interface CALayer (TLKAdditions)
+- (BOOL)tlkParentLayerHidden;
+- (void)tlkRecursivelyPerformSelector:(SEL)arg1;
+- (void)tlkRemoveFrameAnimationsRecursively:(BOOL)arg1;
+- (void)tlkRemoveAnimations:(id)arg1 recursively:(BOOL)arg2;
+- (void)tlkBringToFront;
+- (void)tlkReplaceLayer:(id)arg1 copyingAttributesToLayer:(id)arg2;
 - (void)tlkUpdateLayers:(id)arg1 withDelegate:(id)arg2;
+- (void)tlkChangeConstraints:(id)arg1 constraint:(id)arg2 withScale:(double)arg3;
 - (void)tlkChangeConstraints:(id)arg1 constraint:(id)arg2 withOffset:(double)arg3;
+- (id)tlkFindConstraint:(int)arg1 scale:(double)arg2 inLayer:(id)arg3;
 - (id)tlkFindConstraint:(int)arg1 offset:(double)arg2 inLayer:(id)arg3;
 @end
 

@@ -7,10 +7,11 @@
 #import "LKViewModule.h"
 
 #import "FFEditorModuleDelegate.h"
+#import "NSWindowDelegate.h"
 
-@class FFAnchoredTimelineModule, FFEditorModule, LKButton, LKPaneCapSegmentedControl, LKPopOverWindow, LKPopUpButton, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSProThemeImageView, NSProView, NSView, PEDataListContainerModule, PEEditorContainerSplitView, PENavSegmentedControl, PEViewedClipSet, PEZoomBezelSegmentedControl;
+@class FFAnchoredTimelineModule, FFEditorModule, LKButton, LKPaneCapSegmentedControl, LKPopOverWindow, LKPopUpButton, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSDictionary, NSProThemeImageView, NSProView, NSString, NSView, PEDataListContainerModule, PEEditorContainerSplitView, PENavSegmentedControl, PEViewedClipSet, PEZoomBezelSegmentedControl;
 
-@interface PEEditorContainerModule : LKViewModule <FFEditorModuleDelegate>
+@interface PEEditorContainerModule : LKViewModule <FFEditorModuleDelegate, NSWindowDelegate>
 {
     NSProView *_timelineView;
     NSProView *_timelineIndexView;
@@ -23,18 +24,16 @@
     PENavSegmentedControl *_timelineNavigationControl;
     LKPaneCapSegmentedControl *_timelineOptions;
     LKPopUpButton *_storySegmentNavigator;
-    LKSegmentedControl *_cellDurationControl;
     NSProView *_cellDurationContainer;
     LKSlider *_cellDurationSlider;
     LKTextField *_cellDurationTextField;
-    NSProThemeImageView *_cellDurationImageView;
     LKButton *_hideConnectionsButton;
+    LKButton *_showWaveformButton;
     LKPopUpButton *_rolesButton;
     NSView *_navPathControlView;
     LKButton *_closePrecisionEditorButton;
     LKSlider *_audioPercentageDisplaySlider;
     LKSlider *_heightAdjustmentDisplaySlider;
-    LKButton *_projectBrowserToggle;
     LKSegmentedControl *_timelineIndexToggle;
     LKSegmentedControl *_audioScrubbingToggle;
     LKButton *_projectNavIcon;
@@ -46,6 +45,8 @@
     LKSegmentedControl *_audioPercentageControl;
     NSProThemeImageView *_smallHeightImage;
     NSProThemeImageView *_largeHeightImage;
+    LKButton *_newProjectButton;
+    NSString *_lastOpenSequenceID;
     LKPopOverWindow *_clipAttributesPopOverWindow;
     LKSegmentedControl *_auditionPalette;
     LKSegmentedControl *_viewMenu;
@@ -57,6 +58,8 @@
     FFEditorModule *_editorModule;
     NSArray *_selectedItems;
     PEViewedClipSet *_skimmingClipSet;
+    NSDictionary *_timelineIndexContents;
+    NSString *_currentLabel;
 }
 
 @property FFEditorModule *editorModule; // @synthesize editorModule=_editorModule;
@@ -82,6 +85,10 @@
 - (void)_timelineViewSuperViewBoundsChanged:(id)arg1;
 - (void)_makeEditorActive:(id)arg1;
 - (void)_stopObservingEditorModule;
+- (void)setShowWaveForms:(BOOL)arg1;
+- (BOOL)showWaveForms;
+- (void)setCellDuration:(double)arg1;
+- (double)cellDuration;
 - (void)setShowAnchors:(BOOL)arg1;
 - (BOOL)showAnchors;
 - (void)_startObservingEditorModule;
@@ -97,6 +104,9 @@
 - (BOOL)canBeginPlaying;
 - (BOOL)canSkimWithAudio;
 - (BOOL)canBeginSkimming;
+- (BOOL)speedEditorIsShown;
+- (void)hideSpeedEditor;
+- (void)showSpeedEditorForObjects:(id)arg1 orObjectsAndRanges:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3 segmentIndex:(int)arg4 forTransition:(BOOL)arg5;
 - (BOOL)markerEditorIsShown;
 - (void)hideMarkerEditor;
 - (void)showMarkerEditorForMarkerLayer:(id)arg1 object:(id)arg2;
@@ -107,6 +117,7 @@
 - (void)openCropPanel;
 - (void)openEffectsPanel;
 - (void)openInspectorToSubmodule:(id)arg1;
+- (void)toggleAdjustmentsPanel;
 - (void)openAdjustmentsPanel;
 - (void)openColorBoardForItem:(id)arg1;
 - (void)openStack:(id)arg1;
@@ -121,6 +132,7 @@
 - (void)openSettingsWithModule:(id)arg1;
 - (void)makeSequenceActive:(id)arg1 withTime:(CDStruct_1b6d18a9)arg2;
 - (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_5c5366e1)arg2;
+- (void)performAction:(id)arg1 withProject:(id)arg2 andSelection:(id)arg3;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 loadingBlock:(CDUnknownBlockType)arg4 unloadingBlock:(CDUnknownBlockType)arg5;
@@ -132,11 +144,11 @@
 - (void)_soloChangedNotification:(id)arg1;
 - (void)rangeInvalidated:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_checkSequenceBinAndClose:(id)arg1;
-- (void)_binObjectWillDelete:(id)arg1;
+- (void)_updateOpenSequenceIdentifier;
 - (void)_updateSoloState:(id)arg1;
 - (void)windowWillClose:(id)arg1;
 - (void)windowDidBecomeKey:(id)arg1;
+- (void)documentWasRemoved:(id)arg1;
 - (void)windowDidResignKey:(id)arg1;
 - (void)layoutDidChange:(id)arg1;
 - (void)firstResponderChanged:(id)arg1;
@@ -145,18 +157,16 @@
 - (void)setClipAppearanceAudioSmaller:(id)arg1;
 - (void)setClipAppearanceCommand:(id)arg1;
 - (int)clipAppearance;
-- (void)shareDestinationPicker:(id)arg1;
 - (void)setAudioPercentage:(int)arg1;
 - (void)bezelHUDDidResignKey:(id)arg1;
 - (void)reenableZoomBezel;
+- (void)popOverWindowDidCancel:(id)arg1;
 - (void)popUpClipAttributes:(id)arg1;
+- (void)showHideWaveForms:(id)arg1;
 - (void)searchAction:(id)arg1;
 - (void)showProjectShareStatusInfo:(id)arg1;
 - (void)setDisplayBroadcastSafeZones:(id)arg1;
 - (void)setColorChannelDisplay:(id)arg1;
-- (void)retimeHold:(id)arg1;
-- (void)retimeNormal:(id)arg1;
-- (void)retimeReset:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)moduleForAction:(SEL)arg1;
 - (void)setLabel:(id)arg1;
@@ -169,11 +179,11 @@
 - (id)stripLeadingZerosFromTimeString:(id)arg1;
 - (void)buildNavPathControls:(id)arg1;
 - (void)buildNavigationMenus;
+- (id)facetForItem:(id)arg1;
 - (id)menuPathTitleStringForObject:(id)arg1;
 - (id)displayVideoFormat;
 - (id)moduleFooterAccessoryView;
 - (BOOL)wantsFooterBar;
-- (void)_setupStorySegmentNavigatorForCurrentActiveModule;
 - (void)updateControlSelectionState;
 - (void)selectNextTimelineItem:(id)arg1;
 - (void)selectPreviousTimelineItem:(id)arg1;
@@ -184,7 +194,6 @@
 - (void)zoomIn:(id)arg1;
 - (void)toggleEditModuleOptions:(id)arg1;
 - (void)toggleTimelineIndex:(id)arg1;
-- (void)toggleProjectBrowser:(id)arg1;
 - (void)closePrecisionEditor:(id)arg1;
 - (void)toggleItemSkimming:(id)arg1;
 - (void)toggleAudioScrubbing:(id)arg1;
@@ -200,12 +209,13 @@
 - (id)visibleSubmodule;
 - (id)visibleSubmodules;
 - (id)makeSubmoduleVisible:(id)arg1;
-- (void)persistPerSequencePropertiesOnSubmodules;
 - (id)toolTip:(id)arg1 forProCommand:(id)arg2;
 - (id)moduleAccessoryView;
 - (id)lastKeyView;
 - (id)firstKeyView;
 - (id)targetModules;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
 - (void)insertSubmodule:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
@@ -214,9 +224,9 @@
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)awakeFromNib;
 - (id)submoduleLayoutArray;
-- (id)identifier;
+- (void)viewDidLoad;
+- (void)loadEditorForSequence:(id)arg1;
 - (struct CGSize)viewMinSize;
-- (void)hide:(id)arg1;
 - (void)dealloc;
 - (BOOL)wantsHeaderBar;
 

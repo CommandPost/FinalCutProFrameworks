@@ -21,7 +21,7 @@
 - (struct OZChannelPercent *)getOffsetChan;
 - (struct OZChanRotoshapeRefWithPicker *)getGeometryChan;
 - (struct OZChannelPosition *)getEndPointChan;
-- (int)getShapeSamplesX:(vector_419cd555 *)arg1 Y:(vector_419cd555 *)arg2 Z:(vector_419cd555 *)arg3 T:(vector_419cd555 *)arg4;
+- (int)getShapeSamplesX:(vector_3396ec90 *)arg1 Y:(vector_3396ec90 *)arg2 Z:(vector_3396ec90 *)arg3 T:(vector_3396ec90 *)arg4;
 - (PCVector3_457fd1f0)calculateOwnerOffset;
 - (void)applyObjectTransform:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
 - (CDStruct_1b6d18a9)getTimeOffset;

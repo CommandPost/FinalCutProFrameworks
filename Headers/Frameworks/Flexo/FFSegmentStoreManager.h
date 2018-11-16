@@ -8,7 +8,7 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBackgroundTask, FFSegmentStoreOperationQueue, NSConditionLock, NSMutableArray, NSString;
+@class FFBackgroundTask, FFSegmentStoreOperationQueue, NSCondition, NSConditionLock, NSMutableArray, NSString;
 
 @interface FFSegmentStoreManager : NSObject <FFBackgroundTaskTarget>
 {
@@ -23,22 +23,27 @@
     int _segmentStoreIdleCompressors;
     double _lastCheckedForAgedCompressors;
     NSMutableArray *_decompressionSessionCache;
+    NSCondition *_pendingStillsCondition;
     NSMutableArray *_pendingStillJobs;
     FFBackgroundTask *_pendingStillTask;
+    BOOL _shuttingDown;
 }
 
 + (void)teardown;
 + (id)sharedInstance;
-+ (void)initialize;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (BOOL)shuttingDown;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (_Bool)waitUntilPendingStillsBelow:(unsigned long long)arg1 beforeDate:(id)arg2;
 - (unsigned long long)numPendingStills;
-- (void)queueNonReadyStillToSegmentStore:(id)arg1 token:(id)arg2 requestedPT:(id)arg3 md5Info:(id)arg4 videoProps:(id)arg5 renderFilePaths:(id)arg6 renderProps:(id)arg7 assetRef:(id)arg8;
+- (void)queueNonReadyStillToSegmentStore:(id)arg1 token:(id)arg2 requestedPT:(id)arg3 md5Info:(id)arg4 videoProps:(id)arg5 renderFilePaths:(id)arg6 renderProps:(id)arg7 asset:(id)arg8;
 - (void)_saveStillsInBackground:(id)arg1 onTask:(id)arg2;
 - (id)stoppedLock;
 - (void)performInvocationWhenPendingWritesFinish:(id)arg1;
+- (BOOL)flushSegmentsWithPathRoots:(id)arg1;
+- (BOOL)flushSegmentsAtPath:(id)arg1;
 - (BOOL)deleteSegmentsAtPath:(id)arg1 error:(id *)arg2;
+- (BOOL)_flushSegmentsAtPath:(id)arg1 andDeleteFromDisk:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)deleteSegment:(CDStruct_bdcb2b0d)arg1 path:(id)arg2 renderProps:(id)arg3 error:(id *)arg4;
 - (void)addPaths:(id)arg1;
 - (id)copyCurrentPath;

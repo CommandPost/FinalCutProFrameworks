@@ -6,7 +6,6 @@
 
 #import "NSObject.h"
 
-__attribute__((visibility("hidden")))
 @interface FFOrganizerFilmListUtils : NSObject
 {
 }
@@ -16,6 +15,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedImageWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
 + (id)imageWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 dimension2:(long long)arg4 state:(long long)arg5 value:(long long)arg6 variant:(long long)arg7;
 + (id)imageWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 dimension2:(long long)arg4;
++ (id)imageWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 size:(long long)arg4;
 + (id)imageWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
 
 @end

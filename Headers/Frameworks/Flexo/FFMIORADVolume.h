@@ -9,11 +9,12 @@
 #import "FFOrganizerItemDraggingSource.h"
 #import "FFOrganizerMasterItem.h"
 
-@class FFCameraArchiveMetadata, MIORADVolume, NSArray, NSDate, NSImage, NSMutableArray, NSOperationQueue, NSString, NSURL;
+@class FFCameraArchiveMetadata, FFMIOAFCDevice, MIORADVolume, NSArray, NSDate, NSImage, NSMutableArray, NSMutableSet, NSOperationQueue, NSString, NSURL;
 
 @interface FFMIORADVolume : FFOrganizerItem <FFOrganizerMasterItem, FFOrganizerItemDraggingSource>
 {
     MIORADVolume *_volume;
+    FFMIOAFCDevice *_afcDevice;
     NSString *_archivePath;
     FFCameraArchiveMetadata *_archiveMetadata;
     FFCameraArchiveMetadata *_archiveMetadata2;
@@ -29,18 +30,23 @@
     BOOL _loadingClips;
     NSString *_persistentID;
     unsigned long long _loadedClipsCount;
+    struct _opaque_pthread_mutex_t _addingThreadMutex;
+    double _mainAdderThreadTime;
     BOOL _useTempClips;
     BOOL _unmounted;
     unsigned long long _removedClipsCount;
     NSDate *_dateCreated;
-    unsigned long long _unclaimedURLsCount;
+    BOOL _afcClipLoadingSuspended;
+    BOOL _observingPTPDevices;
+    NSMutableSet *_importRequestsInQueue;
+    long long _totalBytesProcessed;
 }
 
 + (id)volumeWithURL:(id)arg1;
 + (id)volumeWithArchivePath:(id)arg1;
 + (id)volumeWithVolume:(id)arg1 loadClipsSynchronously:(BOOL)arg2;
 + (id)volumeWithVolume:(id)arg1;
-+ (id)keyPathsForValuesAffectingDisplayMediaSet;
++ (id)keyPathsForValuesAffectingDisplayOwnedClips;
 + (id)keyPathsForValuesAffectingItems;
 + (void *)KVOContext;
 @property BOOL unmounted; // @synthesize unmounted=_unmounted;
@@ -54,6 +60,7 @@
 @property(retain) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property(copy, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(copy, nonatomic) NSString *archivePath; // @synthesize archivePath=_archivePath;
+@property(retain, nonatomic) FFMIOAFCDevice *afcDevice; // @synthesize afcDevice=_afcDevice;
 @property(retain, nonatomic) MIORADVolume *volume; // @synthesize volume=_volume;
 - (void)setClipLoadingSuspended:(BOOL)arg1;
 - (BOOL)conformsToProtocol:(id)arg1;
@@ -75,11 +82,16 @@
 @property(readonly) FFCameraArchiveMetadata *archiveMetadata2;
 @property(readonly) FFCameraArchiveMetadata *archiveMetadata;
 @property(readonly) BOOL canArchive;
+- (void)updatePercentageDone;
+- (void)importRequestsRemovedFromQueue:(id)arg1;
+- (void)importRequestsAddedToQueue:(id)arg1;
 - (void)clipRemovedFromQueue:(id)arg1;
 - (void)clipAddedToQueue:(id)arg1;
 - (void)subSegmentDone:(id)arg1;
 - (void)updateArchiveProgressMainThread:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)itemsUpdated;
+- (void)allowAfcClipLoading;
 - (void)replaceClipsAtIndexes:(id)arg1;
 - (void)removeClipsAtIndexes:(id)arg1;
 - (void)invalidateRADAssetOnClip:(id)arg1;
@@ -88,7 +100,11 @@
 - (void)addUnclaimedClipMainThread:(id)arg1;
 - (void)addClips:(id)arg1;
 - (void)addClipMainThread:(id)arg1;
+- (void)checkPercentDone;
 - (id)ffClipWithMIORADClip:(id)arg1;
+- (void)invalidateUnclaimedURLs:(id)arg1;
+- (void)volumeWillUnmount:(id)arg1;
+- (void)radVolumeWillUnmount:(id)arg1;
 - (void)unmountArchiveVolume;
 - (void)unmountClips;
 @property(readonly, nonatomic) NSArray *items; // @synthesize items=_items;
@@ -97,6 +113,9 @@
 @property(readonly, nonatomic) unsigned long long totalClipsCount;
 - (void)appWillTerminate:(id)arg1;
 - (void)saveAsset;
+- (void)locateAFCDevice;
+- (void)ptpDeviceDidMount:(id)arg1;
+- (BOOL)setupAFCDevice:(id)arg1;
 - (void)dealloc;
 - (id)initWithVolume:(id)arg1 loadClipsSynchronously:(BOOL)arg2;
 

@@ -28,9 +28,9 @@
 - (BOOL)dividerHitCheck:(struct CGPoint)arg1;
 - (BOOL)draggingDivider;
 - (void)mouseUp:(id)arg1;
-- (BOOL)mouseDragged:(id)arg1;
+- (BOOL)canvasMouseDragged:(id)arg1;
 - (void)moveDivider:(id)arg1 delta:(float)arg2 changedViews:(id)arg3;
-- (BOOL)mouseDown:(id)arg1;
+- (BOOL)canvasMouseDown:(id)arg1;
 - (void)makeDividers;
 - (id)findDivider:(struct CGRect)arg1;
 - (BOOL)autoresizesSubviews;

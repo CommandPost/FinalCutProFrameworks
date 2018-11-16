@@ -8,23 +8,19 @@
 
 #import "NSCoding.h"
 
-@class NSDate, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSURL;
+@class NSDate, NSMutableDictionary, NSSet, NSString, NSURL;
 
 @interface FFProject : FFBinObject <NSCoding>
 {
-    NSMutableSet *_assetReferences;
-    NSMutableSet *_clipReferences;
-    NSMutableSet *_effectReferences;
-    NSMutableSet *_previousAssetReferences;
+    NSSet *_assetReferences;
+    NSSet *_clipReferences;
+    NSSet *_effectReferences;
+    NSSet *_previousAssetReferences;
     NSDate *_modDate;
-    NSMutableSet *_mediaRefsOfflineReasonEvent;
-    NSMutableSet *_mediaRefsOfflineReasonClip;
-    NSMutableSet *_mediaRefsOfflineReasonFile;
-    NSMutableSet *_mediaRefsOfflineReasonModifiedFile;
-    NSMutableSet *_mediaRefsOfflineReasonProxy;
-    NSMutableSet *_mediaRefsOfflineReasonModifiedProxy;
-    NSMutableSet *_mediaRefsOfflineReasonCamera;
-    NSMutableSet *_referencedDocumentIDs;
+    NSSet *_mediaRefsOfflineHighQuality;
+    NSSet *_mediaRefsOfflineProxyQuality;
+    NSSet *_referencedLibraryItemIDs;
+    NSSet *_referencedClipLibraryItemIDs;
     NSSet *_mediaReferences;
     NSURL *_directory;
     int _mediaAvailable;
@@ -35,8 +31,6 @@
     NSString *_pathForLastCachedDirectory;
 }
 
-+ (BOOL)otherClipReferencesExistForEvent:(id)arg1;
-+ (BOOL)otherReferencesExistForProjects:(id)arg1;
 + (id)builtinColorPresetsPaths;
 + (id)colorPresetsPaths;
 + (id)colorFilePathForObject:(id)arg1;
@@ -49,44 +43,28 @@
 + (id)renderFilesPathsForObject:(id)arg1 quality:(int)arg2;
 + (id)noProjectRenderFilesPaths;
 + (id)effectThumbnailPaths;
++ (id)globalRenderCache;
 + (id)_projectForObject:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property(readonly, nonatomic) NSSet *mediaRefsOfflineProxyQuality; // @synthesize mediaRefsOfflineProxyQuality=_mediaRefsOfflineProxyQuality;
+@property(readonly, nonatomic) NSSet *mediaRefsOfflineHighQuality; // @synthesize mediaRefsOfflineHighQuality=_mediaRefsOfflineHighQuality;
 - (id)namesForKeywords:(id)arg1;
 - (id)keywordsForNames:(id)arg1 createIfNeeded:(BOOL)arg2;
 @property(readonly, nonatomic) NSSet *allKeywordNames;
-@property(readonly, nonatomic) NSSet *mediaRefsOfflineReasonCamera;
-- (void)removeMediaRefsOfflineReasonCameraObject:(id)arg1;
-- (void)addMediaRefsOfflineReasonCameraObject:(id)arg1;
-@property(readonly, nonatomic) NSSet *mediaRefsOfflineReasonModifiedProxy;
-- (void)removeMediaRefsOfflineReasonModifiedProxyObject:(id)arg1;
-- (void)addMediaRefsOfflineReasonModifiedProxyObject:(id)arg1;
-@property(readonly, nonatomic) NSSet *mediaRefsOfflineReasonProxy;
-- (void)removeMediaRefsOfflineReasonProxyObject:(id)arg1;
-- (void)addMediaRefsOfflineReasonProxyObject:(id)arg1;
-@property(readonly, nonatomic) NSSet *mediaRefsOfflineReasonModifiedFile;
-- (void)removeMediaRefsOfflineReasonModifiedFileObject:(id)arg1;
-- (void)addMediaRefsOfflineReasonModifiedFileObject:(id)arg1;
-@property(readonly, nonatomic) NSSet *mediaRefsOfflineReasonFile;
-- (void)removeMediaRefsOfflineReasonFileObject:(id)arg1;
-- (void)addMediaRefsOfflineReasonFileObject:(id)arg1;
-@property(readonly, nonatomic) NSSet *mediaRefsOfflineReasonClip;
-- (void)removeMediaRefsOfflineReasonClipObject:(id)arg1;
-- (void)addMediaRefsOfflineReasonClipObject:(id)arg1;
-@property(readonly, nonatomic) NSSet *mediaRefsOfflineReasonEvent;
-- (void)removeMediaRefsOfflineReasonEventObject:(id)arg1;
-- (void)addMediaRefsOfflineReasonEventObject:(id)arg1;
+- (void)removeMediaRefsOfflineProxyQualityObject:(id)arg1;
+- (void)addMediaRefsOfflineProxyQualityObject:(id)arg1;
+- (void)removeMediaRefsOfflineHighQualityObject:(id)arg1;
+- (void)addMediaRefsOfflineHighQualityObject:(id)arg1;
 @property(readonly, nonatomic) NSSet *mediaRefsOffline;
 - (id)mediaRefsOffline:(int)arg1;
-- (void)resetMediaAvailable;
-- (void)_deferredAssetChangedNotification;
+- (void)resetMediaAvailable:(id)arg1;
+- (void)_deferredAssetChangedNotification:(id)arg1;
 - (void)_assetsChangedNotification:(id)arg1;
 - (BOOL)lastKnownMediaAvailable;
 - (BOOL)mediaAvailable;
 - (BOOL)_updateOfflineReasonsForQuality:(int)arg1;
 - (void)_offlineMediaChanged;
-- (void)_invalMediaRefs:(id)arg1;
-- (id)_offlineReasonSetForReason:(int)arg1;
 @property(readonly, nonatomic) int mediaStatus;
 - (int)mediaQuality;
 - (BOOL)effectsAvailable;
@@ -96,13 +74,14 @@
 - (int)mediaAvailableQuality;
 - (BOOL)_isMediaAvailable:(SEL)arg1;
 - (BOOL)mediaIsSyncing;
-- (id)mediaRefUsedForMediaID:(id)arg1 eventID:(id)arg2;
-- (BOOL)referencesExistForProjects:(id)arg1;
 - (id)findOrRegisterCommonMediaRef:(id)arg1;
-@property(readonly, nonatomic) NSSet *referencedDocumentIDs;
+@property(readonly, nonatomic) NSSet *referencedClipLibraryItemIDs;
+@property(readonly, nonatomic) NSSet *referencedLibraryItemIDs;
 - (void)resetMediaReferences;
 - (void)resetMediaReferencesForRefSubstitution;
-- (void)_resetMediaReferences:(BOOL)arg1;
+- (void)_resetMediaReferences:(BOOL)arg1 checkedProjects:(id)arg2;
+- (void)_deferredOwnedMediaClipChangedNotification:(id)arg1;
+- (void)_ownedMediaClipsChangedNotification:(id)arg1;
 @property(readonly, nonatomic) NSSet *clipReferences;
 - (void)removeClipReferencesObject:(id)arg1;
 - (void)addClipReferencesObject:(id)arg1;
@@ -114,10 +93,12 @@
 - (void)addEffectReferencesObject:(id)arg1;
 - (void)resetEffectReferences;
 @property(readonly, nonatomic) NSSet *effectReferences;
+- (id)document;
+- (BOOL)isProject;
+- (BOOL)isIPhotoProject;
 - (BOOL)isDetailedProjectDataLoaded;
 - (id)resolveObject:(id)arg1 error:(id *)arg2;
 - (void)setDisplayName:(id)arg1;
-- (id)displayNameWithVolume;
 - (id)displayName;
 - (id)objectFromID:(id)arg1;
 - (id)defaultMediaEvent;
@@ -127,6 +108,7 @@
 - (id)renderFilesThumbnailPaths;
 - (id)renderFilesPaths:(int)arg1;
 - (id)renderFilesPaths;
+- (id)renderFilesURL;
 - (id)backupsFolderPath;
 - (id)sharedItemsFolderPath;
 - (id)colorFolderPath;
@@ -140,8 +122,7 @@
 - (id)location;
 - (id)url;
 - (id)dataBaseFileURL;
-- (id)assetSet;
-@property(readonly, nonatomic) NSDate *modDate;
+@property(copy, nonatomic) NSDate *modDate;
 - (void)bumpModDate;
 - (id)contentType;
 - (id)description;

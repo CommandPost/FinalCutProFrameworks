@@ -16,12 +16,17 @@
     CDStruct_1b6d18a9 _currentSequenceTime;
     FFPlayerModule *_playerModule;
     NSString *_projectPath;
+    BOOL _isTheaterSelection;
 }
 
++ (void)registerMediaServerONCE;
 + (id)fingerPrintForSelection:(id)arg1;
 + (id)shareDirectoryPath:(id)arg1;
 + (id)sequenceExporterWithSelection:(id)arg1 currentSequenceTime:(CDStruct_1b6d18a9)arg2;
 + (id)sequenceExporterWithSelection:(id)arg1;
++ (id)GetSequenceForShare:(id)arg1 upgradeLegacyProjects:(BOOL)arg2;
++ (id)GetSequenceForShare:(id)arg1;
+@property(readonly) BOOL isTheaterSelection; // @synthesize isTheaterSelection=_isTheaterSelection;
 @property(copy, nonatomic) NSString *projectPath; // @synthesize projectPath=_projectPath;
 @property(copy, nonatomic) NSArray *selection; // @synthesize selection=_selection;
 - (id).cxx_construct;
@@ -41,23 +46,6 @@
 - (void)shareToDestination:(id)arg1 parentWindow:(id)arg2;
 - (void)stopPlayback;
 - (void)registerMediaServer;
-- (void)exportUsingCompressorSettingModalForWindow:(id)arg1;
-- (void)exportHTTPLiveStreamingModalForWindow:(id)arg1;
-- (void)exportImageSequenceModalForWindow:(id)arg1;
-- (void)exportStillFrameModalForWindow:(id)arg1;
-- (void)exportMediaModalForWindow:(id)arg1;
-- (void)exportAudioModalForWindow:(id)arg1;
-- (void)exportMovieModalForWindow:(id)arg1;
-- (void)publishCNNiReportModalForWindow:(id)arg1;
-- (void)publishVimeoModalForWindow:(id)arg1;
-- (void)publishFacebookModalForWindow:(id)arg1;
-- (void)publishYouTubeModalForWindow:(id)arg1;
-- (void)sendEmailModalForWindow:(id)arg1;
-- (void)burnBlurayModalForWindow:(id)arg1;
-- (void)burnDVDModalForWindow:(id)arg1;
-- (void)exportiTunesModalForWindow:(id)arg1;
-- (void)exportMediaBrowserModalForWindow:(id)arg1;
-- (void)exportUsingPanelClass:(Class)arg1 window:(id)arg2;
 - (id)setupExportAndReturnSources;
 - (BOOL)foregroundSharing:(id)arg1;
 - (id)destinationPath;

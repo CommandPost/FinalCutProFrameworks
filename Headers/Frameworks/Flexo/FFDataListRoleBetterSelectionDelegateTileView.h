@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 - (void)selectTileIndexes:(id)arg1 byExtendingSelection:(BOOL)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)keyDown:(id)arg1;
+- (void)_rolesScrollViewFrameDidChange:(id)arg1;
+- (void)viewDidMoveToSuperview;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

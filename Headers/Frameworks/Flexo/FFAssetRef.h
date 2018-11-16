@@ -6,52 +6,26 @@
 
 #import <Flexo/FFMediaRef.h>
 
-@class FFVideoProps, NSString, NSURL;
-
 __attribute__((visibility("hidden")))
 @interface FFAssetRef : FFMediaRef
 {
-    NSString *_cameraClipID;
-    BOOL _isPSD;
-    NSURL *_originalMediaURL;
-    NSURL *_originalVolumeURL;
-    NSString *_uttype;
-    FFVideoProps *_videoProps;
-    NSString *_videoFormatName;
 }
 
 + (id)keyPathsForValuesAffectingAsset;
 + (id)copyClassDescription;
-@property(retain, nonatomic) NSString *uttype; // @synthesize uttype=_uttype;
-@property(readonly, nonatomic) BOOL isPSD; // @synthesize isPSD=_isPSD;
-@property(copy, nonatomic) NSString *cameraClipID; // @synthesize cameraClipID=_cameraClipID;
 - (void)addClipRefsToSet:(id)arg1;
 - (id)clipRefs;
 - (id)eventName;
 - (void)addAssetRefsToSet:(id)arg1;
 - (id)assetRefs;
 - (id)mdTargetForKey:(id)arg1;
-- (BOOL)isAssetRef;
-- (void)setIsPSD:(BOOL)arg1;
-- (void)setOriginalMediaURL:(id)arg1;
-@property(readonly, nonatomic) NSURL *originalMediaURL; // @synthesize originalMediaURL=_originalMediaURL;
-- (void)setOriginalVolumeURL:(id)arg1;
-@property(readonly, nonatomic) NSURL *originalVolumeURL; // @synthesize originalVolumeURL=_originalVolumeURL;
-- (void)setVideoFormatName:(id)arg1;
-- (id)videoFormatName;
-@property(readonly, nonatomic) FFVideoProps *videoProps; // @synthesize videoProps=_videoProps;
-- (void)_updateRefState;
-- (void)_forceSetVideoProps:(id)arg1;
-- (void)setDescriptionText:(id)arg1;
-- (id)sidecarMediaRep;
-- (id)dominantMotionMediaRep;
-- (id)newDominantMotionMediaRep;
-- (id)flowMediaRep;
 - (void)setFlowVectors:(CDStruct_e83c9415)arg1;
+- (id)flowMediaRep;
 - (void)createFlowMediaRep;
-- (void)invalidate;
+- (BOOL)isAssetRef;
 - (int)highQualityOfflineReason;
 - (int)proxyOfflineReason;
+- (BOOL)isPSD;
 - (BOOL)mediaAvailable;
 - (BOOL)originalAvailable;
 - (BOOL)highQualityAvailable;
@@ -59,12 +33,10 @@ __attribute__((visibility("hidden")))
 - (id)proxyMediaRep;
 - (id)optimizedMediaRep;
 - (id)originalMediaRep;
+- (id)originalMediaURL;
 - (BOOL)verifyFileCompatibility:(id)arg1 returnIsIdentical:(char *)arg2 returnIsCompatible:(char *)arg3 returnNewMediaRange:(CDStruct_e83c9415 *)arg4 returnAssetID:(id *)arg5 returnAudioSourceDict:(id *)arg6 error:(id *)arg7;
 - (id)asset;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)dealloc;
 - (id)initWithAsset:(id)arg1 assetEvent:(id)arg2;
 
 @end

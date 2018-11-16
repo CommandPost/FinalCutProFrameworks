@@ -125,7 +125,7 @@
 - (void)activeViewPerformSelector:(SEL)arg1;
 - (BOOL)customKeyEquivalent:(id)arg1;
 - (void)doResignKeyWindow;
-- (void)commonOnScreenControls:(list_46ab5fec *)arg1;
+- (void)commonOnScreenControls:(list_b8d8639a *)arg1;
 - (void)toggleVideoOutput;
 - (BOOL)isVideoOutputEnabled;
 - (void)updateRenderManager;
@@ -133,7 +133,7 @@
 - (void)postRenderInstruction;
 - (struct OZSceneNode *)getIsolatedIncludeAnimating;
 - (struct OZSceneNode *)getIsolatedNode;
-- (struct LiCamera *)getCamera;
+- (PCPtr_41ab8147)getCamera;
 - (void)zoomOutKeepCentered;
 - (void)zoomInKeepCentered;
 - (void)zoomCenteredWithRect:(struct CGRect)arg1 zoomIn:(BOOL)arg2;
@@ -284,7 +284,6 @@
 - (void)updateInfoBarFrameRate;
 - (void)updateInfoBarWithFilm:(const PCVector2_79efa81a *)arg1 view:(id)arg2;
 - (void)notify:(unsigned int)arg1;
-- (void)setRenderTime:(const CDStruct_1b6d18a9 *)arg1;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
 - (void)postRedisplayToSubViews;
 - (void)setActiveView:(id)arg1;

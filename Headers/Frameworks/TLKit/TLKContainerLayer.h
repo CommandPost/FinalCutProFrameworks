@@ -6,15 +6,16 @@
 
 #import <TLKit/TLKTimelineLayer.h>
 
+#import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class CALayer, NSArray, TLKContainerHandleLayer, TLKTextLayer, TLKThemeBackedLayer, TLKTiledContainerBackgroundLayer;
+@class NSArray, TLKContainerHandleLayer, TLKLayoutContext, TLKTextLayer, TLKThemeBackedLayer, TLKTiledContainerBackgroundLayer;
 
-@interface TLKContainerLayer : TLKTimelineLayer <TLKPartInfo>
+@interface TLKContainerLayer : TLKTimelineLayer <TLKAccessibilityProtocol, TLKPartInfo>
 {
-    CALayer *_contentLayer;
     TLKContainerHandleLayer *_handleLayer;
     TLKTiledContainerBackgroundLayer *_backgroundLayer;
+    TLKLayoutContext *_layoutContext;
     TLKTextLayer *_textLayer;
     TLKThemeBackedLayer *_dragHandlelayer;
     NSArray *_badgeArray;
@@ -30,7 +31,6 @@
 - (id)hitTest:(struct CGPoint)arg1;
 - (void)layoutSublayers;
 - (void)_layoutBadgesAndTextInVisibleBounds:(struct CGRect)arg1;
-@property(retain) CALayer *contentLayer;
 @property BOOL hideTextBadges;
 @property BOOL hasTitleLayer;
 @property BOOL hasHandleLayer;
@@ -38,7 +38,32 @@
 - (void)updateAppearance;
 - (void)_updateSelectionAppearance;
 - (void)invalidate;
+@property TLKLayoutContext *layoutContext;
 - (void)dealloc;
+- (id)init;
+- (void)syntheticUIElement:(id)arg1 performAction:(id)arg2;
+- (id)syntheticUIElement:(id)arg1 actionDescription:(id)arg2;
+- (id)syntheticUIElementActions:(id)arg1;
+- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
+- (id)syntheticUIElementAttributeNames:(id)arg1;
+- (id)syntheticUIElementHelp:(id)arg1;
+- (id)syntheticUIElementValueDescription:(id)arg1;
+- (id)syntheticUIElementValue:(id)arg1;
+- (id)syntheticUIElementTitle:(id)arg1;
+- (id)syntheticUIElementSize:(id)arg1;
+- (id)syntheticUIElementPosition:(id)arg1;
+- (struct CGRect)syntheticUIElementRect:(id)arg1;
+- (id)syntheticUIElementDescription:(id)arg1;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityParent;
+- (id)accessibilityChildren;
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityDescription;
+- (id)accessibilityRole;
+- (struct CGRect)accessibilityRectForPart:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (id)partAtPoint:(struct CGPoint)arg1;
 
 @end
 

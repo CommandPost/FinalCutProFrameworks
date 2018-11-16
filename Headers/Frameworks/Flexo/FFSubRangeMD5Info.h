@@ -6,7 +6,7 @@
 
 #import "FigTimeRangeObj.h"
 
-@class FFMD5AndOffset, NSDictionary, NSNumber;
+@class FFMD5AndOffsetWithInfo, NSDictionary;
 
 @interface FFSubRangeMD5Info : FigTimeRangeObj
 {
@@ -20,9 +20,8 @@
     _Bool _isConstantOffset;
     _Bool _hasZeroTimeOffset;
     long long _constantOffset;
-    FFMD5AndOffset *_constantMD5AndOffsetObj;
+    FFMD5AndOffsetWithInfo *_constantMD5AndOffsetObj;
     double _segCost;
-    NSNumber *_segCostNSNumber;
     struct CGRect _opaqueBounds;
     unsigned int _andedMd5Flags;
     unsigned int _oredMd5Flags;
@@ -38,7 +37,6 @@
 @property(readonly, nonatomic) unsigned int md5FlagsForAnding; // @synthesize md5FlagsForAnding=_andedMd5Flags;
 @property(readonly, nonatomic) _Bool actualIdealMismatch; // @synthesize actualIdealMismatch=_actualIdealMismatch;
 @property(readonly, nonatomic) struct CGRect opaqueBounds; // @synthesize opaqueBounds=_opaqueBounds;
-@property(readonly, nonatomic) NSNumber *segCostNSNumber; // @synthesize segCostNSNumber=_segCostNSNumber;
 @property(readonly, nonatomic) double segCost; // @synthesize segCost=_segCost;
 @property(readonly, nonatomic) _Bool isConstantOffset; // @synthesize isConstantOffset=_isConstantOffset;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 timeOffsetForSampleOffset; // @synthesize timeOffsetForSampleOffset=_timeOffsetForSampleOffset;
@@ -57,9 +55,11 @@
 - (CDStruct_e83c9415)timeRangeForSampleOffsetRange:(long long)arg1 lastIncludedOffset:(long long)arg2 constrain:(_Bool)arg3;
 - (CDStruct_e83c9415)timeRangeForSampleOffset:(long long)arg1 constrain:(_Bool)arg2;
 - (id)newMD5AndOffsetForTime:(CDStruct_1b6d18a9)arg1;
+- (id)newMD5AndOffsetForTime:(CDStruct_1b6d18a9)arg1 useActual:(BOOL)arg2;
 - (long long)lastOffsetIncludedInSubRange;
 - (long long)offsetForTime:(CDStruct_1b6d18a9)arg1;
 - (long long)_offsetForTime:(CDStruct_1b6d18a9)arg1 silent:(_Bool)arg2;
+- (id)newSubRangeByReplacingActualMD5:(CDStruct_bdcb2b0d)arg1 idealMD5:(CDStruct_bdcb2b0d)arg2 replacementOpaqueBounds:(struct CGRect)arg3 replacementCost:(double)arg4;
 - (id)newSubRangeByReplacingActualMD5:(CDStruct_bdcb2b0d)arg1 idealMD5:(CDStruct_bdcb2b0d)arg2;
 - (id)newSubRangeByAddingOffset:(CDStruct_1b6d18a9)arg1 thenIntersectingWith:(CDStruct_e83c9415)arg2;
 - (id)newSubRangeByIntersectingWith:(CDStruct_e83c9415)arg1;
@@ -69,11 +69,11 @@
 - (id)newPList;
 - (id)initWithPList:(id)arg1;
 - (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_bdcb2b0d)arg3 idealMD5:(CDStruct_bdcb2b0d)arg4 constantOffset:(long long)arg5 segmentCost:(double)arg6 opaqueBounds:(struct CGRect)arg7 flagsForAnding:(unsigned int)arg8 flagsForOring:(unsigned int)arg9 flagDetails:(id)arg10;
-- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_bdcb2b0d)arg3 idealMD5:(CDStruct_bdcb2b0d)arg4 constantOffset:(long long)arg5 segmentCostNSN:(id)arg6 opaqueBounds:(struct CGRect)arg7 flagsForAnding:(unsigned int)arg8 flagsForOring:(unsigned int)arg9 flagDetails:(id)arg10 dataRatePerSecond:(unsigned long long)arg11;
-- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_bdcb2b0d)arg3 idealMD5:(CDStruct_bdcb2b0d)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 segmentCostNSN:(id)arg7 opaqueBounds:(struct CGRect)arg8 flagsForAnding:(unsigned int)arg9 flagsForOring:(unsigned int)arg10 flagDetails:(id)arg11 dataRatePerSecond:(unsigned long long)arg12;
+- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_bdcb2b0d)arg3 idealMD5:(CDStruct_bdcb2b0d)arg4 constantOffset:(long long)arg5 segmentCost:(double)arg6 opaqueBounds:(struct CGRect)arg7 flagsForAnding:(unsigned int)arg8 flagsForOring:(unsigned int)arg9 flagDetails:(id)arg10 dataRatePerSecond:(unsigned long long)arg11;
+- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_bdcb2b0d)arg3 idealMD5:(CDStruct_bdcb2b0d)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 segmentCost:(double)arg7 opaqueBounds:(struct CGRect)arg8 flagsForAnding:(unsigned int)arg9 flagsForOring:(unsigned int)arg10 flagDetails:(id)arg11 dataRatePerSecond:(unsigned long long)arg12;
 - (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_bdcb2b0d)arg3 idealMD5:(CDStruct_bdcb2b0d)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 segmentCostNSN:(id)arg7 opaqueBounds:(struct CGRect)arg8 flagsForAnding:(unsigned int)arg9 flagsForOring:(unsigned int)arg10 flagDetails:(id)arg11;
 - (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_bdcb2b0d)arg3 idealMD5:(CDStruct_bdcb2b0d)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 segmentCost:(double)arg7 opaqueBounds:(struct CGRect)arg8 flagsForAnding:(unsigned int)arg9 flagsForOring:(unsigned int)arg10 flagDetails:(id)arg11;
-- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_bdcb2b0d)arg3 idealMD5:(CDStruct_bdcb2b0d)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 isConstantOffset:(_Bool)arg7 constantOffset:(long long)arg8 segmentCostNSN:(id)arg9 opaqueBounds:(struct CGRect)arg10 flagsForAnding:(unsigned int)arg11 flagsForOring:(unsigned int)arg12 flagDetails:(id)arg13 dataRatePerSecond:(unsigned long long)arg14;
+- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_bdcb2b0d)arg3 idealMD5:(CDStruct_bdcb2b0d)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 isConstantOffset:(_Bool)arg7 constantOffset:(long long)arg8 segmentCost:(double)arg9 opaqueBounds:(struct CGRect)arg10 flagsForAnding:(unsigned int)arg11 flagsForOring:(unsigned int)arg12 flagDetails:(id)arg13 dataRatePerSecond:(unsigned long long)arg14;
 - (void)_setupCachedValues;
 
 @end

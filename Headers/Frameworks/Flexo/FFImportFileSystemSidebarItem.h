@@ -19,11 +19,14 @@ __attribute__((visibility("hidden")))
     float _percentDone;
     NSImage *_icon;
     BOOL _isFavorite;
+    BOOL _canUnmount;
 }
 
 + (id)sidebarItemWithTreeNode:(id)arg1 isFavorite:(BOOL)arg2;
 + (id)sidebarItemWithURL:(id)arg1 isFavorite:(BOOL)arg2;
-+ (id)keyPathsForValuesAffectingDisplayMediaSet;
++ (id)keyPathsForValuesAffectingDisplayOwnedClips;
+@property(retain) NSImage *icon; // @synthesize icon=_icon;
+@property BOOL canUnmount; // @synthesize canUnmount=_canUnmount;
 @property BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
 @property float percentDone; // @synthesize percentDone=_percentDone;
 @property BOOL canRemove; // @synthesize canRemove=_canRemove;

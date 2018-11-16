@@ -17,12 +17,15 @@ __attribute__((visibility("hidden")))
     long long _colorChannelDisplayMode;
     BOOL _useNearestNeighbor;
     BOOL _debugDrawing;
+    BOOL _detailedDebugInfo;
     FFHGObjectInfo *_inputNodeInfo;
     FFHGObjectInfo *_xformNodeInfo;
     FFHGObjectInfo *_colorMatrixNodeInfo;
     long long _colorChannelforMatrixNode;
     Stopwatch *_watch;
     unsigned int _frameCount;
+    int _interveningDrops;
+    float _nextFPSDraw;
     struct CGRect _currentBounds;
     unsigned int _currentVirtualScreen;
     BOOL _virtualScreenHasBeenSet;
@@ -39,19 +42,22 @@ __attribute__((visibility("hidden")))
     unsigned int _textureForInterlacing;
     struct CGRect _rectForInterlacing;
     int _testCounter;
-    struct CGRect _testViewBounds;
-    struct CGRect _testDrawRect;
-    int _testVirtualScreen;
-    double _testStartTime;
+    struct CGRect _testLastViewBounds;
+    struct CGRect _testLastDrawRect;
+    int _testLastVirtualScreen;
     Stopwatch *_testWatch;
     BOOL _testInited;
+    CDStruct_b80813c2 _healthLevels;
     struct CGContext *_debugText;
     unsigned int _debugTextTexture;
 }
 
++ (struct CGSize)getMaximumDrawingSizeForLocation:(int)arg1;
 + (struct FFImageDisplayContext *)sharedKVOContext;
++ (BOOL)highQualityViewerScaling;
+@property BOOL detailedDebugInfo; // @synthesize detailedDebugInfo=_detailedDebugInfo;
 - (id).cxx_construct;
-- (BOOL)drawImageHe:(id)arg1 CGLContext:(struct _CGLContextObject *)arg2 colorSpace:(struct CGColorSpace *)arg3 viewBounds:(struct CGRect)arg4 drawRect:(struct CGRect)arg5 imageSourceRect:(struct CGRect)arg6 angleSourceRects:(struct CGRect *)arg7 angleDrawRects:(struct CGRect *)arg8 angleCount:(long long)arg9 lockedContext:(char *)arg10 drawInterlaced:(BOOL)arg11 drawFieldsAlternately:(BOOL)arg12 overlayTextureBuffer:(id)arg13 overlayEnabled:(BOOL)arg14 forThumbnail:(BOOL)arg15 fieldType:(unsigned int)arg16 howLate:(double)arg17 backgroundColor:(id)arg18;
+- (BOOL)drawImageHe:(id)arg1 CGLContext:(struct _CGLContextObject *)arg2 colorSpace:(struct CGColorSpace *)arg3 viewBounds:(struct CGRect)arg4 drawRect:(struct CGRect)arg5 imageSourceRect:(struct CGRect)arg6 angleSourceRects:(struct CGRect *)arg7 angleDrawRects:(struct CGRect *)arg8 angleCount:(long long)arg9 lockedContext:(char *)arg10 drawInterlaced:(BOOL)arg11 drawFieldsAlternately:(BOOL)arg12 overlayTextureBuffer:(id)arg13 forThumbnail:(BOOL)arg14 playbackQuality:(int)arg15 fieldType:(unsigned int)arg16 howLate:(double)arg17 backgroundColor:(id)arg18;
 - (unsigned int)drawInterlacedFrameToContext:(struct _CGLContextObject *)arg1 textureID:(unsigned int)arg2 fieldRect:(struct CGRect)arg3 fieldType:(unsigned int)arg4 imageIsUpright:(BOOL)arg5;
 - (void)setupFBOForInterlacing:(struct _CGLContextObject *)arg1 drawRect:(struct CGRect)arg2;
 - (unsigned int)makeNewStencilBufferForContext:(struct _CGLContextObject *)arg1 fbo:(unsigned int)arg2 drawRect:(struct CGRect)arg3 fieldOffset:(float)arg4;
@@ -59,8 +65,10 @@ __attribute__((visibility("hidden")))
 - (void)updateObservedValuesForContext:(void *)arg1;
 - (void)setColorChannelDisplayMode:(long long)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_updateDebugText:(float)arg1;
-- (void)drawViewBorders:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2 drawRect:(struct CGRect)arg3 isRed:(BOOL)arg4 howLate:(double)arg5 backgroundColor:(id)arg6;
+- (void)_updateDebugText:(float)arg1 dropFPS:(float)arg2;
+- (void)updateInterveningDrops:(int)arg1;
+- (void)updateHealthLevels:(CDStruct_b80813c2 *)arg1;
+- (BOOL)drawViewBorders:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2 drawRect:(struct CGRect)arg3 forMissingImage:(BOOL)arg4 howLate:(double)arg5 backgroundColor:(id)arg6;
 - (struct _CGLContextObject *)overlayContext:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2;
 - (void)updateInternalContexts:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2;
 - (id)newOverlayTextureBuffer;

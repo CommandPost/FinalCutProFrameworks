@@ -6,9 +6,17 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredObject, FFContext, FFEditorModule, FFMarkerLayer, FFOrganizerFilmstripView, FFPersistentModule, FigTimeRangeAndObject, LKPopOverWindow, LKViewModule, NSArray, NSMenu, NSPasteboard, NSTreeNode;
+@class FFAnchoredObject, FFAnchoredTimeMarker, FFContext, FFEditorModule, FFMarkerLayer, FFOrganizerFilmstripView, FigTimeRangeAndObject, LKPopOverWindow, LKViewModule, NSArray, NSMenu, NSPasteboard, NSSet, NSString, NSTreeNode;
 
 @protocol FFOrganizerFilmstripViewDelegate <NSObject>
+- (BOOL)shouldAlwaysPlacePlayhead;
+- (void)performEditAction;
+- (BOOL)editActionAllowed;
+- (void)performPlayheadButton1Action;
+- (BOOL)action1OrAction2;
+- (BOOL)wantsPlayheadActions;
+- (BOOL)wantsRanges;
+- (BOOL)wantsSkimmerInfo;
 - (void)setMaintianFilmstripSelectionOnNextUpdate:(BOOL)arg1;
 - (void)deactivateActiveSelections;
 - (void)deactivateRangeOfMedia:(FigTimeRangeAndObject *)arg1;
@@ -17,6 +25,7 @@
 - (void)removeSelectionMarkers:(NSArray *)arg1 onlyRemoveOverlap:(BOOL)arg2 addSelectionMarkers:(NSArray *)arg3 extendingSelection:(BOOL)arg4;
 - (void)modifySelectionMarkersFromClip:(FigTimeRangeAndObject *)arg1 removeRange:(CDStruct_e83c9415)arg2 onlyRemoveOverlap:(BOOL)arg3 rangeToAdd:(CDStruct_e83c9415)arg4 newSelection:(NSArray *)arg5 extending:(BOOL)arg6;
 - (FFEditorModule *)editorModule;
+- (void)stopUsingMedia:(NSSet *)arg1;
 - (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 unloadingBlock:(void (^)(void))arg4;
 - (BOOL)canDisplayPlayer;
 - (BOOL)canBeginSkimming;
@@ -28,7 +37,6 @@
 - (NSArray *)filteredRanges;
 - (void)invalidateFilteredItems;
 - (void)invalidateUnfilteredItems;
-- (FFPersistentModule *)persistentModuleForFilmstripView:(FFOrganizerFilmstripView *)arg1;
 - (NSMenu *)contextualMenuForSelection:(NSArray *)arg1;
 - (NSArray *)itemsClusteredByMetadataValue:(NSArray *)arg1;
 - (BOOL)isClustering;
@@ -39,12 +47,20 @@
 - (LKViewModule *)module;
 
 @optional
+- (NSArray *)filterRanges:(NSArray *)arg1;
+- (NSArray *)sidebarRanges;
+- (NSArray *)unfilteredRanges;
 - (void)filmstripView:(FFOrganizerFilmstripView *)arg1 didCreatePlayheadInfoPopover:(LKPopOverWindow *)arg2;
 - (BOOL)shouldDisableRangeSelectionForObject:(id)arg1;
 - (NSTreeNode *)fileSystemRootNode;
+- (NSString *)defaultEditDurationString;
 - (BOOL)canEditDisplayName;
 - (void)playingRangeOfMediaDidChange;
+- (void)playingRangeOfMediaWillChange;
+- (void)persistentPlayheadRangeOfMediaDidChange;
+- (void)persistentPlayheadRangeOfMediaWillChange;
 - (void)showKeywordEditor;
+- (BOOL)actionMoveMarker:(FFAnchoredTimeMarker *)arg1 toRange:(FigTimeRangeAndObject *)arg2 error:(id *)arg3;
 - (BOOL)markerEditorIsShown;
 - (void)hideMarkerEditor;
 - (void)showMarkerEditorForMarkerLayer:(FFMarkerLayer *)arg1 object:(FFAnchoredObject *)arg2;

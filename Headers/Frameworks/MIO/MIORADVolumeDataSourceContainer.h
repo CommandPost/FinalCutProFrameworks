@@ -17,8 +17,10 @@
 - (BOOL)supportsSpannedClips;
 - (id)defaultReelName;
 - (id)description;
+- (BOOL)isiOSDevice;
 - (id)volumeClipURLs;
 - (id)path;
+- (id)consumerIcon;
 - (id)icon;
 - (id)name;
 - (BOOL)isEqualTo:(id)arg1;

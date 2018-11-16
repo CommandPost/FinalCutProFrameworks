@@ -17,14 +17,16 @@
     CALayer *_backgroundLayer;
     NSMutableArray *_parts;
     CDStruct_1b6d18a9 _time;
+    BOOL _alignToEnd;
 }
 
+@property BOOL alignToEnd; // @synthesize alignToEnd=_alignToEnd;
 @property(readonly) TLKGuideLayer *layer; // @synthesize layer=_layer;
 @property id owner; // @synthesize owner=_owner;
+- (struct CGRect)frameForPart:(id)arg1;
 @property CDStruct_1b6d18a9 time; // @dynamic time;
 @property NSProColor *foregroundColor; // @dynamic foregroundColor;
 @property NSProColor *backgroundColor; // @dynamic backgroundColor;
-- (struct CGRect)frameForPart:(id)arg1;
 - (void)dealloc;
 - (id)initWithLayer:(id)arg1;
 

@@ -91,8 +91,8 @@
 - (void)delete:(id)arg1;
 - (void)pasteSpecialOverwrite;
 - (void)pasteSpecialInsert;
-- (void)restoreSelection:(list_89d338e7 *)arg1 forScene:(struct OZScene *)arg2;
-- (void)saveSelection:(list_89d338e7 *)arg1 forScene:(struct OZScene *)arg2;
+- (void)restoreSelection:(list_bbacc03b *)arg1 forScene:(struct OZScene *)arg2;
+- (void)saveSelection:(list_bbacc03b *)arg1 forScene:(struct OZScene *)arg2;
 - (void)pasteSpecialReplace;
 - (void)pasteSpecial:(id)arg1;
 - (void)paste:(id)arg1;

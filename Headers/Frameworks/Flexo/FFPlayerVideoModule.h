@@ -10,16 +10,15 @@
 #import "FFSelectionHandler.h"
 #import "NSAnimationDelegate.h"
 
-@class FFDestVideoCMIO, FFDestVideoGL, FFOSC, FFPlayerView, FFSnapGrid, FFTimecodeFormatter, LKButton, NSDictionary, NSLock, NSMenu, NSMutableArray, NSProThemeImageView, NSRecursiveLock, NSView, NSViewAnimation, PCMatrix44Double;
+@class FFDestVideo<FFDestVideoDeviceManaging>, FFDestVideoGL, FFOSC, FFPlayerView, FFSnapGrid, FFThemeFacet, FFTimecodeFormatter, LKButton, NSArray, NSDictionary, NSLock, NSMenu, NSMutableArray, NSProThemeImageView, NSRecursiveLock, NSView, NSViewAnimation, PCMatrix44Double;
 
-__attribute__((visibility("hidden")))
 @interface FFPlayerVideoModule : FFPlayerItemModule <FFSelectionHandler, FFFieldDisplaySetting, NSAnimationDelegate>
 {
     FFPlayerView *_playerView;
     NSProThemeImageView *_multiangleHeaderView;
     NSView *_multiangleFooterView;
     FFDestVideoGL *_destVideoGL;
-    FFDestVideoCMIO *_destVideoCMIO;
+    FFDestVideo<FFDestVideoDeviceManaging> *_destVideoCMIO;
     BOOL _useDestVideoCMIO;
     BOOL _primaryDestVideoCMIO;
     unsigned int _viewDisplay;
@@ -58,7 +57,7 @@ __attribute__((visibility("hidden")))
     LKButton *_multianglePrevBankButton;
     NSViewAnimation *_bankAreaAnimation;
     FFSnapGrid *_snapGrid;
-    BOOL _effectChangedObserversInstalled;
+    NSArray *_effectChangedObservers;
     BOOL _isActiveModule;
     BOOL _contextualMenuEnabled;
     BOOL _destAddedToPlayer;
@@ -68,15 +67,21 @@ __attribute__((visibility("hidden")))
     BOOL _hasVideo;
     BOOL _installedWindowObservers;
     BOOL _oscsEnabled;
+    BOOL _transportControlsEnabled;
     NSRecursiveLock *_lastCommonDrawPropertiesLock;
     NSDictionary *_lastCommonDrawProperties;
     BOOL _bankSelectorNeedsUpdate;
     FFTimecodeFormatter *_timecodeFormatter;
+    unsigned long long _suspendEffectsChangedNotification;
+    BOOL _suppressToolManagerSelectionChanges;
+    FFThemeFacet *_audioIcon;
 }
 
+@property BOOL suppressToolManagerSelectionChanges; // @synthesize suppressToolManagerSelectionChanges=_suppressToolManagerSelectionChanges;
 @property(nonatomic) long long multiAngleEditStyle; // @synthesize multiAngleEditStyle=_multiAngleEditStyle;
 @property(nonatomic) BOOL primaryDestVideoCMIO; // @synthesize primaryDestVideoCMIO=_primaryDestVideoCMIO;
 @property(nonatomic) BOOL useDestVideoCMIO; // @synthesize useDestVideoCMIO=_useDestVideoCMIO;
+@property(nonatomic) BOOL transportControlsEnabled; // @synthesize transportControlsEnabled=_transportControlsEnabled;
 @property(nonatomic) BOOL OSCsEnabled; // @synthesize OSCsEnabled=_oscsEnabled;
 @property(nonatomic) BOOL ignoreSelectedStateChange; // @synthesize ignoreSelectedStateChange=_ignoreSelectedStateChange;
 @property(nonatomic) BOOL contextualMenuEnabled; // @synthesize contextualMenuEnabled=_contextualMenuEnabled;
@@ -90,25 +95,29 @@ __attribute__((visibility("hidden")))
 - (void)setToolTransform:(id)arg1;
 - (id)toolsContextMenu:(id)arg1;
 - (void)buildToolsContextMenu;
+- (void)drawAudioIcon:(struct CGRect)arg1 inContext:(struct _CGLContextObject *)arg2 backgroundColor:(id)arg3;
 - (id)itemsInRect:(struct CGRect)arg1;
 - (id)itemAtPoint:(struct CGPoint)arg1;
 - (id)itemAtPoint:(struct CGPoint)arg1 keepSelectionIfMultipleTextObjects:(BOOL)arg2;
 - (void)setSelectedItems:(id)arg1;
 - (id)contextRootObject;
-- (id)selectedItems;
 - (void)cancelDropZoneTool:(id)arg1;
 - (void)cancelTextTool:(id)arg1;
 - (void)activeToolChanged:(id)arg1;
+- (id)_toolObjectsFromSelectedItems:(id)arg1;
 - (void)_OSCSelectionsNeedUpdatePossibleDefer;
 - (void)selectedItemEffectsSelectedStateChanged:(id)arg1;
 - (void)effectsChanged:(id)arg1;
+- (void)resumeEffectsChangedNotification;
+- (void)suspendEffectsChangedNotification;
 - (void)_addOSCsForSelectionHandlerItemsMainThread;
 - (void)_addOSCsForSelectionHandlerItems;
-- (void)_addOSCsForSelectionHandlerItemsWithContext:(id)arg1;
+- (void)_addOSCsForSelectionHandlerItemsWithSelection:(id)arg1;
 - (void)_handledDeferredAction:(SEL)arg1;
 - (void)_scheduleDeferredAction:(SEL)arg1;
 - (void)addOSCsForItems:(id)arg1;
 - (void)_addOSCsForItem:(id)arg1;
+- (void)setOSCForActiveTool:(id)arg1;
 - (BOOL)acceptPassiveOSCEvent:(id)arg1;
 - (BOOL)drawOSCsAtTime:(CDStruct_1b6d18a9)arg1 inRect:(struct CGRect)arg2 drawContext:(struct _CGLContextObject *)arg3 drawProperties:(id)arg4 isDisplaying:(BOOL)arg5;
 - (void)setSelectionBasedOSCsEnabled:(BOOL)arg1;
@@ -116,6 +125,7 @@ __attribute__((visibility("hidden")))
 - (id)OSCAtPoint:(struct CGPoint)arg1;
 - (void)readUnlockSequence;
 - (void)readLockSequence;
+- (void)removeToolBasedOSCs;
 - (void)removeSelectionBasedOSCs;
 - (void)removeAllOSCs;
 - (void)removeOSC:(id)arg1;
@@ -214,13 +224,19 @@ __attribute__((visibility("hidden")))
 - (void)updatePlayerAndDest:(id)arg1;
 - (void)userDefaultsChanged:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)selectedItemsForContext:(id)arg1;
+- (id)_orderedInspectableObjectsFromSelection:(id)arg1;
 - (struct CGRect)getSourceRectAndDrawRect:(struct CGRect *)arg1 imageBounds:(struct CGRect)arg2 isFlipped:(BOOL)arg3;
+- (struct CGRect)filmBoundsInViewSpace;
 - (id)retainedViewToFilmTransform;
 - (id)retainedFilmToViewTransform;
 - (id)_retainedFilmToViewTransform:(BOOL)arg1;
-- (void)_updateReportedZoomFactor;
+- (float)_updateReportedZoomFactor;
+- (void)_setPlayerModuleReportedZoomFactor:(id)arg1;
 - (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)addCommonDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3;
+- (id)showOnlyObjectForContext:(id)arg1;
+- (id)destVideoCMIOUID;
 - (void)setLastTimeCallback:(id)arg1 callbackSel:(SEL)arg2;
 - (void)notifyLastTimeDisplayed:(id)arg1;
 - (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
@@ -228,6 +244,7 @@ __attribute__((visibility("hidden")))
 - (void)setDrawingEnabled:(BOOL)arg1;
 - (struct CGRect)viewBoundsInPixels;
 - (BOOL)shouldDrawVideoDest:(id)arg1;
+- (void)deviceChangedFormat:(id)arg1;
 - (void)_updateDestVideoCMIO;
 - (void)_teardownDestVideoCMIO;
 - (void)_setupDestVideoCMIO;
@@ -256,6 +273,8 @@ __attribute__((visibility("hidden")))
 - (void)_startObservingWindow:(id)arg1;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;
+- (void)context:(id)arg1 didRebuildPlayer:(id)arg2;
+- (void)context:(id)arg1 willTeardownPlayer:(id)arg2;
 - (void)didStartPlayingWithPlayer:(id)arg1;
 - (void)willStopPlayingWithPlayer:(id)arg1;
 - (void)_removeDestsFromPlayer:(id)arg1;

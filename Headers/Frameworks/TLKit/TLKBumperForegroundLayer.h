@@ -10,8 +10,11 @@
 
 @interface TLKBumperForegroundLayer : TLKThemeBackedLayer <TLKPartInfo>
 {
+    unsigned int _drawsBackground:1;
 }
 
+- (BOOL)drawsBackground;
+- (void)setDrawsBackground:(BOOL)arg1;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)partIdentifier;
 - (id)init;

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
         unsigned int checkedForHelp:1;
     } plugInFlags;
     id <PROPlugInDelegate> delegate;
+    id <PKPlugIn> pluginKitPlug;
 }
 
 - (id)apiUsedByPlugInForProtocol:(id)arg1;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)reportError:(id)arg1;
 - (id)uuidString;
 - (struct __CFUUID *)uuid;
+- (id)pluginKitPlug;
 - (void)setDelegate:(id)arg1;
 - (id)delegate;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -55,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqualToPlugIn:(id)arg1;
 - (id)bundle;
 - (void)dealloc;
+- (id)initWithDictionary:(id)arg1 bundle:(id)arg2 delegate:(id)arg3 pluginKitPlug:(id)arg4;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2 delegate:(id)arg3;
 
 @end

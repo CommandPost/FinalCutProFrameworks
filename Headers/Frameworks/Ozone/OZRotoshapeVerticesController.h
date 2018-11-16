@@ -6,17 +6,14 @@
 
 #import <Ozone/OZVerticesController.h>
 
-@class OZAnimIndicator;
-
 @interface OZRotoshapeVerticesController : OZVerticesController
 {
-    OZAnimIndicator *_pAnim;
 }
 
 - (void)updateLockFlags;
-- (id)addVertexController:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
+- (id)newVertexController:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
 - (unsigned int)getNumberOfVertices:(struct OZChannelBase *)arg1;
-- (id)addMainController:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)allocMainController:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end

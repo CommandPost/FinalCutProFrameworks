@@ -6,7 +6,7 @@
 
 #import <Flexo/FFScheduleToken.h>
 
-@class FFImage, FFPixelBuffer, NSData, PCMatrix44Double;
+@class FFImage, FFPixelBuffer, NSData, NSObject<OS_dispatch_semaphore>, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFScheduleTokenRED : FFScheduleToken
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
     int _whichRocket;
     FFPixelBuffer *_pixelBuffer;
     _Bool _decodeComplete;
-    struct dispatch_semaphore_s *_decodeCompleteSemaphore;
+    NSObject<OS_dispatch_semaphore> *_decodeCompleteSemaphore;
     FFImage *_image;
     _Bool _canceled;
     struct FFVideoDecoderRED *_videoDecoderRED;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
+- (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (_Bool)areStatusFlagsClear:(unsigned int)arg1;
 - (unsigned int)scheduleStatusInformation;
 - (_Bool)hintWillImageSoon;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)bumpPriority:(int)arg1;
 - (BOOL)matches:(int)arg1 pixelType:(int)arg2 sampleNumber:(int)arg3 ipSettingsRevision:(int)arg4;
 - (id)waitForImage;
+- (id)waitForImageForUpTo:(long long)arg1;
 - (id)getImage;
 - (void)setImage:(id)arg1;
 - (void)processFinishedJob:(int)arg1;

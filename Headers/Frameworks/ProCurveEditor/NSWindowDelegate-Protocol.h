@@ -6,11 +6,12 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSCoder, NSEvent, NSMenu, NSNotification, NSPasteboard, NSUndoManager, NSWindow;
+@class NSArray, NSCoder, NSEvent, NSMenu, NSNotification, NSPasteboard, NSScreen, NSUndoManager, NSWindow;
 
 @protocol NSWindowDelegate <NSObject>
 
 @optional
+- (void)windowDidChangeOcclusionState:(NSNotification *)arg1;
 - (void)windowDidExitVersionBrowser:(NSNotification *)arg1;
 - (void)windowWillExitVersionBrowser:(NSNotification *)arg1;
 - (void)windowDidEnterVersionBrowser:(NSNotification *)arg1;
@@ -43,6 +44,8 @@
 - (void)window:(NSWindow *)arg1 willEncodeRestorableState:(NSCoder *)arg2;
 - (struct CGSize)window:(NSWindow *)arg1 willResizeForVersionBrowserWithMaxPreferredSize:(struct CGSize)arg2 maxAllowedSize:(struct CGSize)arg3;
 - (void)windowDidFailToExitFullScreen:(NSWindow *)arg1;
+- (void)window:(NSWindow *)arg1 startCustomAnimationToEnterFullScreenOnScreen:(NSScreen *)arg2 withDuration:(double)arg3;
+- (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)arg1 onScreen:(NSScreen *)arg2;
 - (void)window:(NSWindow *)arg1 startCustomAnimationToExitFullScreenWithDuration:(double)arg2;
 - (NSArray *)customWindowsToExitFullScreenForWindow:(NSWindow *)arg1;
 - (void)windowDidFailToEnterFullScreen:(NSWindow *)arg1;

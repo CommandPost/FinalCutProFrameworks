@@ -14,6 +14,7 @@
     NSMutableArray *_looks;
 }
 
++ (BOOL)migrateColorPresets:(id *)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)sharedColorLooksList;
 - (BOOL)loadColorLooksAtIndex:(unsigned long long)arg1 anchoredObject:(id)arg2 error:(id *)arg3;

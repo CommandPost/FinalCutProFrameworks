@@ -6,15 +6,15 @@
 
 #import "OZViewController.h"
 
-@class FFAnchoredObject, FFAudioUnitEffect, NSPopUpButton;
+@class NSMapTable, NSPopUpButton;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioUnitEffectPresetMenuController : OZViewController
 {
-    FFAnchoredObject *m_object;
-    FFAudioUnitEffect *m_audioUnitEffect;
+    NSMapTable *m_objectToEffectMap;
     NSPopUpButton *m_popUpButton;
     struct __FSEventStream *m_eventStream;
+    BOOL m_isObserving;
 }
 
 - (void)selectFactoryPresetMenuItem:(id)arg1;
@@ -24,8 +24,11 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_removeObservers;
 - (void)_addObservers;
-- (id)appendUserPresets:(id)arg1 toMenu:(id)arg2 currentPreset:(id)arg3;
+- (id)_uniqueMenuTitleInMenu:(id)arg1 forBaseMenuTitle:(id)arg2;
+- (void)_appendMenuTitles:(id)arg1 withPresetDirtyStates:(id)arg2 andBaseMenuTitle:(id)arg3;
+- (BOOL)appendUserPresets:(id)arg1 toMenu:(id)arg2 selectedPresetsInfo:(id)arg3 selectedMenuItems:(id)arg4 menuTitles:(id)arg5 defaultPreset:(id)arg6 foundDefaultPreset:(char *)arg7;
 - (void)populateMenu;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

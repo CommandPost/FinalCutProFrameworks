@@ -11,15 +11,22 @@
 @interface PEImportControlsModule : LKViewModule
 {
     LKButton *_closeWindowAfterImportCheckbox;
-    LKButton *_createArchiveButton;
     LKButton *_stopImportButton;
     LKButton *_importButton;
     BOOL _closeWindowAfterImport;
     BOOL _fileOrRADIsImporting;
     NSMutableSet *_importBackgroundTasks;
+    BOOL _hasSidebarSelection;
+    double _stopImportButtonOffset;
 }
 
+@property double stopImportButtonOffset; // @synthesize stopImportButtonOffset=_stopImportButtonOffset;
+@property BOOL hasSidebarSelection; // @synthesize hasSidebarSelection=_hasSidebarSelection;
 @property BOOL fileOrRADIsImporting; // @synthesize fileOrRADIsImporting=_fileOrRADIsImporting;
+- (id)importString;
+- (id)importSelectedString;
+- (id)importAllString;
+- (void)hideImportButton:(BOOL)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)taskQueueDidCompleteTask:(id)arg1;
 - (void)taskQueueDidCompleteTaskMainThread:(id)arg1;

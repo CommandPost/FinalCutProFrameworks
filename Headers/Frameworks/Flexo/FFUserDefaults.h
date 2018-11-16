@@ -23,6 +23,7 @@
 - (void)removeObjectForKey:(id)arg1;
 - (void)removeValueForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (BOOL)isValidValueForUserDefaults:(id)arg1;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (void)setFigTimeRange:(CDStruct_e83c9415)arg1 forKey:(id)arg2;
 - (void)setFigTime:(CDStruct_1b6d18a9)arg1 forKey:(id)arg2;

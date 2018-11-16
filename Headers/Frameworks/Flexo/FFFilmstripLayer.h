@@ -8,47 +8,71 @@
 
 #import "FFFilmstripCellDelegate.h"
 
-@class CAReplicatorLayer, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>, TLKThemeBackedLayer;
+@class CAReplicatorLayer, CAShapeLayer, FFAnchoredObject, NSArray, NSMutableArray, TLKThemeBackedLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFFilmstripLayer : CALayer <FFFilmstripCellDelegate>
 {
-    struct NSObject *_skimmableObject;
+    FFAnchoredObject *_skimmableObject;
     CDStruct_e83c9415 _clippedRange;
-    CDStruct_e83c9415 _unclippedRange;
     double _timePerHorizontalPixel;
+    NSArray *_segments;
+    NSArray *_times;
+    NSArray *_timePerPoints;
     int _filmstripMode;
     NSMutableArray *_cellArray;
     CAReplicatorLayer *_creaseLayer;
-    CDStruct_1b6d18a9 _timePerCell;
     struct CGRect _visibleBounds;
-    unsigned long long _totalCellCount;
-    double _totalWidth;
     TLKThemeBackedLayer *_videoLayerInnerShadow;
-    id <FFFilmstripLayerDelegate> _priorityDelegate;
+    CALayer *_videoLayerOverlay;
+    CAShapeLayer *_audioDuckingOverlay;
     unsigned int _forceNoUpdate:1;
-    unsigned int _forceUpdate:1;
-    unsigned int _forceVideoColor:1;
+    unsigned int _showInnerShadow:1;
+    unsigned int _filmstripOverlay:1;
+    unsigned int _firstVideoFrameFull:1;
+    unsigned int _lastVideoFrameOffset:1;
+    unsigned int _usingTimePerPixel;
+    unsigned int _storedOffset:1;
+    unsigned int _duckingChannelVisible:1;
+    double _offset;
+    double _savedOffset;
+    id <FFFilmstripLayerDelegate> _priorityDelegate;
 }
 
-@property(nonatomic) id <FFFilmstripLayerDelegate> priorityDelegate; // @synthesize priorityDelegate=_priorityDelegate;
+@property(retain, nonatomic) id <FFFilmstripLayerDelegate> priorityDelegate; // @synthesize priorityDelegate=_priorityDelegate;
+- (id).cxx_construct;
 - (void)setContentsScale:(double)arg1;
-- (BOOL)highPriorityThumbnailGeneration;
+- (BOOL)useImageCache;
+- (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
 - (void)updateIfNeeded;
+- (void)_updateDuckingShape;
+- (double)xLocationForTime:(CDStruct_1b6d18a9)arg1;
+- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
 - (void)_invalidateCells;
+- (struct CGRect)_integralRect:(struct CGRect)arg1;
 - (double)_cellWidth;
 - (double)_frameAspectRatio;
 - (void)layoutSublayers;
+@property(nonatomic) BOOL showDuckingChannel;
+- (void)clearStoredOffset;
+@property(nonatomic) BOOL storeOffset;
+@property(nonatomic) BOOL lastVideoFrameOffset;
+@property(nonatomic) BOOL firstVideoFrameFull;
+@property(nonatomic) BOOL showFilmstripOverlay;
+@property(nonatomic) BOOL showInnerShadow;
 - (void)_recomputeCells;
+- (void)_recomputeCellsRanges;
+- (void)_recomputeCellsTPP;
 - (id)_createFilmstripCellWithframe:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3 startIndex:(unsigned long long *)arg4;
-@property(nonatomic) BOOL forceVideoColor;
-@property(nonatomic) BOOL forceUpdate;
 @property(nonatomic) BOOL forceNoUpdate;
 @property(nonatomic) struct CGRect visibleBounds;
 @property(nonatomic) int filmstripMode;
+- (void)setSegmentRanges:(id)arg1 timePerPoints:(id)arg2 andTimes:(id)arg3;
 @property(nonatomic) double timePerHorizontalPixel;
 @property(nonatomic) CDStruct_e83c9415 clippedRange;
-@property(retain, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmableObject;
+@property(retain, nonatomic) FFAnchoredObject *skimmableObject;
+- (id)_fullDescription;
+- (id)description;
 - (void)dealloc;
 - (id)init;
 

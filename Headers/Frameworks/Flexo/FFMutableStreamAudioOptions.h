@@ -10,10 +10,12 @@
 {
 }
 
+- (void)setComponentsPlaybackInfo:(id)arg1 forPlayObject:(id)arg2;
 - (void)setComponentsPlaybackInfo:(id)arg1;
 - (void)setAudioEffects:(id)arg1;
-- (void)setScopeRange:(CDStruct_e83c9415)arg1;
-- (void)setTailTime:(unsigned int)arg1;
+- (void)setEffectPrerollScopeRange:(CDStruct_e83c9415)arg1;
+- (void)setPrerollScopeRange:(CDStruct_e83c9415)arg1;
+- (void)setPrimeDuration:(CDStruct_1b6d18a9)arg1;
 - (void)clearStreamAudioFlagsForPlayObject:(id)arg1;
 - (void)setStreamAudioFlags:(unsigned long long)arg1 withMask:(unsigned long long)arg2 forPlayObject:(id)arg3;
 - (void)setPlayObjects:(id)arg1;

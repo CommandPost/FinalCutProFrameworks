@@ -6,12 +6,13 @@
 
 #import <Flexo/FFArrangedItemsModule.h>
 
-@class FFEffectLibraryCollectionView, NSString;
+@class FFEffectLibraryCollectionView, LKScrollView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectLibraryModule : FFArrangedItemsModule
 {
     FFEffectLibraryCollectionView *_effectCollectionView;
+    LKScrollView *_scrollView;
     NSString *_searchString;
     BOOL _active;
 }
@@ -28,6 +29,9 @@ __attribute__((visibility("hidden")))
 - (void)module:(id)arg1 didDoubleClickWithEffect:(id)arg2;
 - (void)module:(id)arg1 didDoubleClickWithEffectID:(id)arg2;
 - (void)didChangeArrangedItems:(id)arg1;
+- (void)syncToEffectFolder:(id)arg1;
+- (void)setArrangedItems:(id)arg1;
+- (void)addScrollViewDescription;
 @property(nonatomic) id <FFEffectLibraryModuleDelegate> delegate;
 
 @end

@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (int)maxTextureSizeHalfFloat;
 - (void)releaseRenderer:(id)arg1;
 - (id)renderer;
+- (id)_rendererInternal;
 - (int)location;
 - (void)dealloc;
 - (id)initWithLocation:(int)arg1;

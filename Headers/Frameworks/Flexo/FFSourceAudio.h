@@ -11,6 +11,8 @@
 }
 
 + (Class)streamClass;
+- (BOOL)isValid;
+- (id)metadataAudioChannelLayout;
 - (id)audioChannelLayout;
 - (long long)timeInFrames:(CDStruct_1b6d18a9)arg1 roundingMethod:(unsigned int)arg2;
 - (long long)durationInFrames;

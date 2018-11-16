@@ -23,6 +23,8 @@
 - (void)selectItems:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)sequenceDidChange:(id)arg1;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
 - (id)firstKeyView;
 - (BOOL)wantsFooterBar;
 - (BOOL)wantsHeaderBar;
@@ -35,7 +37,6 @@
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
 - (unsigned long long)revealAnimationStyle;
-- (id)identifier;
 - (void)dealloc;
 - (id)init;
 

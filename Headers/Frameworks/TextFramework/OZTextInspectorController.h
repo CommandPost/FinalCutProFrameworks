@@ -28,7 +28,7 @@
 }
 
 - (_Bool)useGlyphTool;
-- (id)createFormatControllerWithSceneNode:(struct OZSceneNode *)arg1;
+- (id)newFormatControllerWithSceneNode:(struct OZSceneNode *)arg1;
 - (void)setAssociatedStyles:(list_ff0a6df5 *)arg1 force:(BOOL)arg2;
 - (void)setAssociatedStyle:(struct TXTextStyle *)arg1;
 - (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
@@ -43,7 +43,7 @@
 - (void)notify:(unsigned int)arg1;
 - (void)syncFontPanelIfNeeded:(BOOL)arg1;
 - (BOOL)isFontPanelVisible;
-- (id)createNSShadowForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_198678f7)arg2;
+- (id)newNSShadowForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_198678f7)arg2;
 - (id)getNSFontForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_198678f7)arg2;
 - (id)mainView;
 - (void)dealloc;

@@ -6,7 +6,7 @@
 
 #import "NSViewController.h"
 
-@class CKSource, FFShareDestination, LKImageView, LKTextField, NSProView;
+@class CKSource, FFShareDestination, LKImageView, LKPopUpButton, LKTextField, NSProView;
 
 @interface FFShareDestinationController : NSViewController
 {
@@ -15,8 +15,10 @@
     LKTextField *_name;
     LKTextField *_infoText;
     NSProView *_expandableView;
+    LKPopUpButton *_sizePopup;
     FFShareDestination *_destination;
     CKSource *_source;
+    BOOL _hasConsumerView;
     CDUnknownBlockType _completionHandler;
 }
 
@@ -25,6 +27,8 @@
 + (id)shareDestinationControllerForDestination:(id)arg1;
 @property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
 @property(retain, nonatomic) FFShareDestination *destination; // @synthesize destination=_destination;
+@property(nonatomic) BOOL hasConsumerView; // @synthesize hasConsumerView=_hasConsumerView;
+@property(nonatomic) LKPopUpButton *sizePopup; // @synthesize sizePopup=_sizePopup;
 @property(retain, nonatomic) NSProView *expandableView; // @synthesize expandableView=_expandableView;
 @property(retain, nonatomic) LKTextField *infoText; // @synthesize infoText=_infoText;
 @property(retain, nonatomic) LKTextField *name; // @synthesize name=_name;
@@ -38,8 +42,7 @@
 - (long long)buildSettingsMenu:(id)arg1 withSize:(BOOL)arg2 withOne:(BOOL)arg3;
 - (void)selectSetting:(id)arg1;
 - (BOOL)displaysDeviceCompatibilityInfo;
-- (long long)showModalPanelIfNeeded;
-- (void)showPanelIfNeededModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)theImageForResource:(id)arg1;
 - (void)dealloc;
 - (id)initWithDestination:(id)arg1 withSource:(id)arg2;

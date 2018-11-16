@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 
 @property(retain) NSMutableDictionary *separates; // @synthesize separates=_separates;
 - (void)main;
-- (void)separatesForTreeNode:(id)arg1 separatesArray:(id)arg2 processedNodes:(id)arg3 shouldKeyword:(BOOL)arg4;
+- (void)separatesForTreeNode:(id)arg1 separatesArray:(id)arg2 processedNodes:(id)arg3 shouldKeyword:(BOOL)arg4 keywords:(id)arg5;
 - (void)dealloc;
 - (id)initWithSelectedNodes:(id)arg1 isKeywording:(BOOL)arg2;
 

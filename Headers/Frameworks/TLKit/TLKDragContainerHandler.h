@@ -6,12 +6,13 @@
 
 #import <TLKit/TLKTimelineHandler.h>
 
-@class NSArray;
+@class NSArray, NSMapTable;
 
 @interface TLKDragContainerHandler : TLKTimelineHandler
 {
     NSArray *_selectedTracks;
-    id <TLKTimelineItem> _clickedItem;
+    NSMapTable *_savedParentLayers;
+    id _clickedItem;
     struct CGPoint _clickedPosition;
     struct CGSize _savedShadowOffset;
     unsigned int _rangeSelectionVisible:1;
@@ -27,7 +28,7 @@
 - (void)updateSelectionWithClickedPoint:(struct CGPoint)arg1 modifierFlags:(unsigned long long)arg2;
 - (void)_updateClickedPositionWithPoint:(struct CGPoint)arg1;
 - (void)dragSelectionFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 withInitialPoint:(struct CGPoint)arg3 modifierFlags:(unsigned long long)arg4;
-- (void)_moveLayersForTracks:(id)arg1 byOffset:(struct CGPoint)arg2;
+- (void)_moveLayers:(id)arg1 forTracks:(id)arg2 byOffset:(struct CGPoint)arg3;
 - (void)_requestDataSourceToMoveTracks:(id)arg1 toIndex:(unsigned long long)arg2;
 - (unsigned long long)_dropIndexAtPoint:(struct CGPoint)arg1 inLayer:(id)arg2;
 - (void)_constrainCurrentPoint:(struct CGPoint *)arg1 previousPoint:(struct CGPoint *)arg2 inLayer:(id)arg3 withInitialPoint:(struct CGPoint)arg4 modifierFlags:(unsigned long long)arg5;

@@ -6,12 +6,9 @@
 
 #import "NSObject.h"
 
-#import "FFUndoHandler.h"
+@class FFUndoGuard, FFUndoHistory, FFUndoManager, NSMutableArray, NSMutableSet, NSSet, NSString;
 
-@class FFUndoHistory, FFUndoManager, NSMutableArray, NSMutableSet, NSSet, NSString;
-
-__attribute__((visibility("hidden")))
-@interface FFUndoHandler : NSObject <FFUndoHandler>
+@interface FFUndoHandler : NSObject
 {
     id <FFUndoHandlerDelegate> _delegate;
     NSString *_displayName;
@@ -20,11 +17,18 @@ __attribute__((visibility("hidden")))
     unsigned long long _undoOrRedo;
     unsigned long long _rollbackLevel;
     FFUndoHistory *_history;
+    FFUndoGuard *_guard;
     NSMutableSet *_uiControllers;
+    id _runLoopObserver;
+    unsigned long long _undoErrorDisabled;
+    double _undoErrorDetected;
 }
 
++ (void)registerGuardForLibraryItems:(id)arg1;
 + (id)fromCurrentTransaction;
+@property(retain, nonatomic) FFUndoGuard *guard; // @synthesize guard=_guard;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+- (void)appendGuardToStackIfNecessary;
 - (void)didOpenUndo:(id)arg1;
 - (void)didRedo:(id)arg1;
 - (void)willRedo:(id)arg1;
@@ -40,15 +44,26 @@ __attribute__((visibility("hidden")))
 - (BOOL)undoableEnd:(id)arg1 option:(int)arg2 error:(id *)arg3;
 - (BOOL)undoableEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
 - (void)undoableBegin:(id)arg1;
+- (void)failedToCloseUndoScope;
+- (void)resetUndoWarningTimer;
+- (BOOL)isUndoWarningSuppressed;
+- (void)enableUndoWarning;
+- (void)disableUndoWarning;
+- (BOOL)isUndoWarningEnabled;
 - (void)logAction:(id)arg1;
 - (id)actionName;
+- (id)firstActionName;
 - (BOOL)canceled;
 - (void)_performRollbackWithBlock:(CDUnknownBlockType)arg1;
 - (void)_performRollbackWithBlock0:(CDUnknownBlockType)arg1;
 - (void)_didRollback;
 - (void)_willRollback;
 - (BOOL)_transactionEnd:(int)arg1 error:(id *)arg2;
+- (void)_transactionEndUndoRedo;
+- (void)_transactionBeginUndoRedo;
 - (void)_transactionBegin;
+- (void)_transactionCleanup;
+- (void)_transactionPrepare;
 - (unsigned long long)_actionLevel;
 - (id)_actionStack;
 - (void)assertNoUndoScope;

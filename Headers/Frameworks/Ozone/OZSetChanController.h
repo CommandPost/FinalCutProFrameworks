@@ -26,7 +26,7 @@
 - (void)enable;
 - (void)update;
 - (void)dealloc;
-- (id)initWithBehaviors:(list_94e47a03 *)arg1 context:(id)arg2;
+- (id)initWithBehaviors:(list_fc228e28 *)arg1 context:(id)arg2;
 
 @end
 

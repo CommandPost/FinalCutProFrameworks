@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _showAlternate;
     BOOL _usedForTrimming;
     BOOL _reverse2UpOrder;
+    BOOL _force2UpDisplay;
     int _primaryFrame;
     FFAnchoredObject *_primaryClip;
     FFAnchoredObject *_primaryFrameClip;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
     BOOL _forcePrimaryPlayerNoUpdate;
 }
 
+@property BOOL force2UpDisplay; // @synthesize force2UpDisplay=_force2UpDisplay;
 @property BOOL reverse2UpOrder; // @synthesize reverse2UpOrder=_reverse2UpOrder;
 @property(nonatomic) BOOL usedForTrimming; // @synthesize usedForTrimming=_usedForTrimming;
 @property(readonly) FFAnchoredObject *alternateClip; // @synthesize alternateClip=_alternateClip;

@@ -11,10 +11,10 @@
 @interface OZFreeHandSplineTool : OZSplineTool
 {
     vector_9ae9b2a4 *_vertices;
-    vector_419cd555 *_lengths;
-    vector_419cd555 *_pressures;
+    vector_3396ec90 *_lengths;
+    vector_3396ec90 *_pressures;
     vector_9ae9b2a4 *_tilts;
-    vector_419cd555 *_times;
+    vector_3396ec90 *_times;
     struct PCMutex *_interactiveValuesLock;
     vector_25e13bfd *_missingFootage;
     struct OZFreeHandEvent _eventRingBuffer[4];
@@ -52,11 +52,11 @@
 - (void)addToScene:(struct OZScene *)arg1;
 - (void)setPreviewDelegate:(id)arg1;
 - (struct OZRotoshape *)getRotoshape;
-- (void)calculateLengths:(vector_419cd555 *)arg1;
-- (void)applyTiming:(vector_419cd555 *)arg1;
-- (void)applySpeeds:(vector_419cd555 *)arg1;
-- (void)applyTilts:(vector_419cd555 *)arg1;
-- (void)applyPressures:(vector_419cd555 *)arg1;
+- (void)calculateLengths:(vector_3396ec90 *)arg1;
+- (void)applyTiming:(vector_3396ec90 *)arg1;
+- (void)applySpeeds:(vector_3396ec90 *)arg1;
+- (void)applyTilts:(vector_3396ec90 *)arg1;
+- (void)applyPressures:(vector_3396ec90 *)arg1;
 - (void)simplify:(CDStruct_1b6d18a9)arg1 isClosed:(_Bool)arg2;
 - (void)setupGaussianKernel:(double *)arg1 sigma:(double)arg2 radius:(int)arg3;
 - (void)addVertices:(CDStruct_1b6d18a9)arg1 isClosed:(_Bool)arg2;

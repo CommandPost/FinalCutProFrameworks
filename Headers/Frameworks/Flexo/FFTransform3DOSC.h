@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)ensureIntrinsic;
 - (BOOL)supportsTool:(Class)arg1;
 - (void)dealloc;
 - (id)initWithHeXFormEffect:(id)arg1 effectStack:(id)arg2;

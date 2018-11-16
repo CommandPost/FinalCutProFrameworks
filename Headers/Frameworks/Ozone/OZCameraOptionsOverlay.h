@@ -10,9 +10,6 @@
 
 @interface OZCameraOptionsOverlay : OZOverlay
 {
-    PCPtr_df275998 _viewControlIcons[16];
-    struct PCPtr<POMultiResMultiPartTexture> _cameraButtonTexture[4];
-    struct PCPtr<POMultiResStringTexture> _cameraNameTexture;
     long long _viewControlToolTips[4];
     OZTool *_activeTool;
     int _hitPart;
@@ -27,8 +24,6 @@
 + (void)updateCameraMenu:(id)arg1 forScene:(struct OZScene *)arg2 target:(id)arg3;
 + (id)createCameraPickerMenuForViewer:(id)arg1;
 + (id)addItemToMenu:(id)arg1 withTitle:(const struct PCString *)arg2 action:(SEL)arg3 tag:(int)arg4 target:(id)arg5;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (BOOL)needsRightMouseEvents;
 - (id)getCursorWithEvent:(id)arg1;
 - (int)hitCheck:(id)arg1;

@@ -12,6 +12,7 @@
 @property(readonly, nonatomic) NSImage *itemIcon;
 @property(readonly, nonatomic) BOOL itemDisplayNameEditable;
 @property(readonly, nonatomic) NSString *itemDisplayName;
+- (NSImage *)itemIconSelected:(BOOL)arg1;
 
 @optional
 @property(readonly, nonatomic) double itemRowHeight;

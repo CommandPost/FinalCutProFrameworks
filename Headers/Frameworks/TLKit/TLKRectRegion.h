@@ -6,17 +6,19 @@
 
 #import "NSObject.h"
 
-@interface TLKRectRegion : NSObject
+#import "NSCopying.h"
+
+@interface TLKRectRegion : NSObject <NSCopying>
 {
     struct TLKCRectArray *_rectArray;
     struct CGRect _bounds;
 }
 
 - (void)unionRect:(struct CGRect)arg1;
-- (unsigned long long)_indexOfClosestRectAtLocation:(double)arg1;
 - (unsigned long long)splitAtLocation:(double)arg1;
 - (struct CGRect)appendRect:(struct CGRect)arg1 toEdge:(int)arg2;
 - (struct _NSRange)_rangeOfRectsFromLocation:(double)arg1 toLocation:(double)arg2;
+- (unsigned long long)_insertionIndexOfRectAtLocation:(double)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)description;
@@ -30,6 +32,7 @@
 - (void)_setBounds:(struct CGRect)arg1;
 @property(readonly) struct CGRect bounds;
 - (struct CGRect)_calculatedBoundsInRange:(struct _NSRange)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
 

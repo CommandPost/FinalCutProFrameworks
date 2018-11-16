@@ -36,8 +36,9 @@
 - (NSArray *)selectionManager:(TLKSelectionManager *)arg1 willSelectObjects:(NSArray *)arg2 selectionMask:(unsigned long long)arg3;
 - (BOOL)selectionManagerShouldChange:(TLKSelectionManager *)arg1;
 - (void)selectionManagerDidChange:(TLKSelectionManager *)arg1;
+- (NSArray *)timelineView:(TLKTimelineView *)arg1 draggableItemsForProposedSelection:(NSArray *)arg2;
 - (int)timelineView:(TLKTimelineView *)arg1 visibilityForItem:(id <TLKTimelineItem>)arg2;
-- (void)timelineView:(TLKTimelineView *)arg1 didDoubleClickAudioWaveformOfItem:(id <TLKTimelineItem>)arg2;
-- (void)timelineView:(TLKTimelineView *)arg1 didDoubleClickItem:(id <TLKTimelineItem>)arg2;
+- (BOOL)timelineView:(TLKTimelineView *)arg1 didDoubleClickAudioWaveformOfItem:(id <TLKTimelineItem>)arg2;
+- (BOOL)timelineView:(TLKTimelineView *)arg1 didDoubleClickItem:(id <TLKTimelineItem>)arg2;
 @end
 

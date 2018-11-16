@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _analysisRequestInProgress;
     CDStruct_e83c9415 _requestedRange;
     id _notificationHandler;
+    BOOL _suppressChannelChangeUpdate;
 }
 
 + (id)effectForEffectStack:(id)arg1;
@@ -30,12 +31,14 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void)analysisDataReady:(id)arg1;
 - (void)channelParameterChanged:(id)arg1;
+- (void)setSuppressChannelChangeUpdate:(BOOL)arg1;
 - (id)inputKeys;
 - (BOOL)waitingForAnalysis;
 - (void)loadPersistentData:(id)arg1;
 - (id)persistentData;
 - (void)createChannelsInFolder:(id)arg1;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
+- (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5;
 - (void)requestCorrectionTransform;
 - (void)_retrieveCorrectionTransform:(CDStruct_e83c9415)arg1;
 - (void)_setCorrectionTransformsIfNoPendingRequest:(id)arg1;
@@ -46,8 +49,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)requestPending;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
 - (int)frameFromTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)sampleTimeFromTime:(CDStruct_1b6d18a9)arg1;
 - (int)sampleFromTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)mediaStartTime;
+- (void)setAmount:(int)arg1;
+- (int)amount;
 - (float)correctionAmount;
 - (struct HGNode *)newNodeForContext:(id)arg1;
 - (BOOL)analysisAvailable;

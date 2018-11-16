@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 - (id)newAudioComponentSourceForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (BOOL)hasEnabledLayoutItems;
 - (id)referenceRolesForKey:(id)arg1 layoutItemKey:(id)arg2;
-- (BOOL)isIntrinsicLayoutForKey:(id)arg1;
 - (void)_didChangeAudioComponentsLayoutMap:(id)arg1;
 - (void)_updateAudioAnglesForAngleID:(id)arg1;
 - (void)_maybeRemoveRedundantLayoutForAngleID:(id)arg1;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     FFHGAsyncQueue *_queue;
 }
 
+- (struct HGGLTexture *)getHGGLTexture;
 - (void)dealloc;
 - (id)initWithHGGLTexture:(struct HGGLTexture *)arg1 queue:(id)arg2;
 

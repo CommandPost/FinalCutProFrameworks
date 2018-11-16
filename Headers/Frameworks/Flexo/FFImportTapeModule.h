@@ -6,7 +6,7 @@
 
 #import <Flexo/FFEventsDetailModule.h>
 
-@class FFGrayBackgroundView, FFImportTapeDevice, FFImportTapePreviewTimecodeLayer, LKSegmentedControl, MIOCaptureCore, MIOPreviewView, NSProView, NSTimer;
+@class FFGrayBackgroundView, FFImportTapeControlsContainerView, FFImportTapeDevice, FFImportTapePreviewTimecodeLayer, FFMIODeviceConnection, LKButton, LKSegmentedControl, MIOCaptureCore, MIOPreviewView, NSProView, NSTimer;
 
 @interface FFImportTapeModule : FFEventsDetailModule
 {
@@ -18,6 +18,11 @@
     LKSegmentedControl *_playControl;
     LKSegmentedControl *_previousNextFrameControl;
     LKSegmentedControl *_previousNextEditControl;
+    LKButton *_iMovieiSightRecordButton;
+    FFImportTapeControlsContainerView *_iMovieTransportControlsContainerView;
+    LKButton *_iMoviePlayPauseButton;
+    LKButton *_iMovieRewindButton;
+    LKButton *_iMovieFastForwardButton;
     FFImportTapeDevice *_tapeDevice;
     MIOCaptureCore *_captureCore;
     BOOL _stopPlayingIsDown;
@@ -29,18 +34,24 @@
     BOOL _tapeInitialized;
     double _ingestStartTime;
     NSTimer *_iSightElapsedTimeTimer;
+    FFMIODeviceConnection *_deviceConnection;
 }
 
 + (id)defaultModuleNibName;
 + (id)viewTypeMenuGlyph;
 + (id)viewTypeMenuLabel;
+@property(retain) FFMIODeviceConnection *deviceConnection; // @synthesize deviceConnection=_deviceConnection;
 @property(retain) FFImportTapePreviewTimecodeLayer *previewTimecodeLayer; // @synthesize previewTimecodeLayer=_previewTimecodeLayer;
 @property MIOCaptureCore *captureCore; // @synthesize captureCore=_captureCore;
 @property(retain, nonatomic) FFImportTapeDevice *tapeDevice; // @synthesize tapeDevice=_tapeDevice;
+- (void)setRewindButtonSelected:(BOOL)arg1;
+- (void)setFastForwardButtonSelected:(BOOL)arg1;
+- (void)setPlayPauseButtonSelected:(BOOL)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_fireISightElapsedTimeTimer:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)localModuleActions;
+- (void)recordiSight:(id)arg1;
 - (void)previousNextEdit:(id)arg1;
 - (void)previousNextFrame:(id)arg1;
 - (void)playSegmentedControlAction:(id)arg1;

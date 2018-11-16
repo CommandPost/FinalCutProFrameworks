@@ -18,11 +18,13 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_channelsToCheckForkeyFrames;
 }
 
+- (void)ensureIntrinsic;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (void)keyFramePreviousAddNext:(id)arg1;
 - (id)keyFrameButton;
 - (id)channelsToCheckForKeyframes;
 - (void)exitOSC:(id)arg1;
+- (void)keyDown:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)enableOverlayWindowForNoRangeOverlap;

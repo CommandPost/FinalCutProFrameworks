@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)openEffectInEditor:(id)arg1;
 - (id)menu;
 - (void)beginDraggingEffectIcon:(id)arg1;
+- (id)dragImage;
 - (void)effectIconReady:(id)arg1;
 - (id)effectItem;
 - (BOOL)canBecomeKeyView;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillDraw;
 - (void)dealloc;
 - (id)initWithEffect:(id)arg1;
+- (void)viewDidChangeBackingProperties;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 
 @end

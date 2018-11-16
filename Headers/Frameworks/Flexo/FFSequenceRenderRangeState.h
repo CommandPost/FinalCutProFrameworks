@@ -11,9 +11,12 @@ __attribute__((visibility("hidden")))
 {
     int _state;
     CDStruct_bdcb2b0d _internalUseMD5s[2];
+    CDStruct_bdcb2b0d _internalUseSegmentMD5s[2];
     char _internalUseHasData[2];
+    BOOL _segmentDropped;
 }
 
+@property BOOL segmentDropped; // @synthesize segmentDropped=_segmentDropped;
 @property(readonly) int state; // @synthesize state=_state;
 - (id).cxx_construct;
 - (id)renderDescription;
@@ -21,13 +24,14 @@ __attribute__((visibility("hidden")))
 - (int)renderState;
 - (BOOL)needsRenderFile;
 - (BOOL)hasRenderData:(int)arg1;
+- (CDStruct_bdcb2b0d)internalSegMD5:(int)arg1;
 - (CDStruct_bdcb2b0d)internalMD5:(int)arg1;
 - (_Bool)canMergeWith:(id)arg1;
 - (_Bool)canMergeWith:(id)arg1 ignoreMD5:(_Bool)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)stringForState;
-- (id)initWithFigTimeRange:(CDStruct_e83c9415)arg1 state:(int)arg2 md5s:(CDStruct_bdcb2b0d *)arg3 hasData:(char *)arg4;
+- (id)initWithFigTimeRange:(CDStruct_e83c9415)arg1 state:(int)arg2 segmentMD5s:(CDStruct_bdcb2b0d *)arg3 diskMD5s:(CDStruct_bdcb2b0d *)arg4 hasData:(char *)arg5 segmentDropped:(BOOL)arg6;
 
 @end
 

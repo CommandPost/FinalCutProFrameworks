@@ -6,66 +6,58 @@
 
 #import "NSObject.h"
 
-@class NSArray, TLKAccessoryHostLayer, TLKContainerSegment, TLKItemLayer, TLKLayoutManager, TLKTimelineLayer;
+#import "NSCopying.h"
 
-@interface TLKItemLayoutInfo : NSObject
+@class NSArray, TLKContainerInfo, TLKItemLaneInfo;
+
+@interface TLKItemLayoutInfo : NSObject <NSCopying>
 {
-    struct CGRect _itemLayerFrame;
-    struct CGRect _itemSplitLayerFrame;
-    TLKTimelineLayer *_itemLayer;
-    TLKItemLayer *_itemSplitLayer;
-    NSArray *_components;
-    TLKAccessoryHostLayer *_accessoryHostLayer;
-    TLKLayoutManager *_layoutManager;
-    TLKContainerSegment *_containerSegment;
-    int _itemVisibility;
+    TLKContainerInfo *_containerInfo;
+    id _representedObject;
+    NSArray *_itemComponentRecords;
     int _itemType;
-    int _containmentTypeMask;
+    int _itemVisibility;
     struct {
         unsigned int isAboveSpine:1;
         unsigned int isAnchoredItem:1;
-        unsigned int isComponent:1;
         unsigned int isContainerItem:1;
         unsigned int isDraggedItem:1;
-        unsigned int isDeleted:1;
-        unsigned int itemLayerFrameNeedsUpdate:1;
-        unsigned int needsLayout:1;
-        unsigned int nestingLevel:2;
-        unsigned int splitItemLayerFrameNeedsUpdate:1;
-        unsigned int itemComponentLayerFramesNeedUpdate:1;
         unsigned int markLayersForRemoval:1;
-        unsigned int RESERVED:19;
+        unsigned int nestingLevel:2;
+        unsigned int RESERVED:24;
     } _layoutFlags;
+    TLKItemLaneInfo *_itemLaneInfo;
 }
 
-@property(nonatomic) int containmentTypeMask; // @synthesize containmentTypeMask=_containmentTypeMask;
+@property(nonatomic) TLKItemLaneInfo *itemLaneInfo; // @synthesize itemLaneInfo=_itemLaneInfo;
+@property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 @property(nonatomic) int itemType; // @synthesize itemType=_itemType;
-@property(retain, nonatomic) TLKContainerSegment *containerSegment; // @synthesize containerSegment=_containerSegment;
-@property(retain, nonatomic) TLKLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
-@property(readonly, nonatomic) BOOL areComponentsVisible;
-@property(readonly, nonatomic) BOOL isSplitItemVisible;
+- (id)allLayers;
+- (id)itemLayers;
+- (struct _TLKRange)locationRange;
+- (id)itemComponentFragmentsGroupedByLayoutContext;
+- (id)itemComponentFragmentsForLayoutContext:(id)arg1;
+- (id)itemComponentFragments;
+- (id)secondaryItemComponents;
+- (id)secondaryItemComponentRecords;
+- (id)primaryItemComponent;
+- (id)primaryItemComponentRecord;
+- (id)itemComponents;
 @property(nonatomic) int itemVisibility;
-@property(nonatomic) BOOL isDeleted;
 @property(nonatomic) BOOL isDraggedItem;
 @property(nonatomic) BOOL isContainerItem;
-@property(nonatomic) BOOL isComponent;
 @property(nonatomic) BOOL isAnchoredItem;
 @property(nonatomic) BOOL isAboveSpine;
-@property(retain, nonatomic) TLKItemLayer *itemSplitLayer;
-@property(retain, nonatomic) TLKTimelineLayer *itemLayer;
-- (BOOL)splitShowsAccessoryHostLayer;
-@property(retain, nonatomic) TLKAccessoryHostLayer *accessoryHostLayer;
-@property BOOL needsLayout;
-@property(readonly, nonatomic) BOOL layerFramesNeedUpdate;
-@property(nonatomic) BOOL itemComponentLayerFramesNeedUpdate;
-@property(nonatomic) BOOL splitItemLayerFrameNeedsUpdate;
-@property(nonatomic) BOOL itemLayerFrameNeedsUpdate;
-@property(copy, nonatomic) NSArray *components;
-@property(nonatomic) struct CGRect itemSplitLayerFrame;
-@property(nonatomic) struct CGRect itemLayerFrame;
+@property(copy, nonatomic) NSArray *itemComponentRecords;
+@property(nonatomic) TLKContainerInfo *containerInfo;
+@property(readonly, nonatomic) id container;
 @property(nonatomic) BOOL markLayersForRemoval;
 @property unsigned long long nestingLevel;
+- (id)_subtreeDescription;
+- (id)debugDescription;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)initWithItem:(id)arg1;
 - (id)init;
 
 @end

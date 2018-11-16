@@ -23,6 +23,8 @@
 + (id)elementWithRole:(id)arg1 parent:(id)arg2 contextObject:(id)arg3;
 + (id)elementWithRole:(id)arg1 parent:(id)arg2 contextInfo:(void *)arg3;
 + (id)handleAttributeNames;
++ (id)staticTextAttributeNames;
++ (id)groupAttributeNames;
 + (id)valueIndicatorAttributeNames;
 + (id)imageAttributeNames;
 + (id)_buttonAttributeNames:(id)arg1;
@@ -34,9 +36,9 @@
 @property(copy, nonatomic) NSString *subrole; // @synthesize subrole=_subrole;
 @property(readonly, nonatomic) NSString *role; // @synthesize role=_role;
 @property(nonatomic) id delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) unsigned long long contextIndex; // @synthesize contextIndex=_contextIndex;
-@property(readonly, nonatomic) id contextObject; // @synthesize contextObject=_contextObject;
-@property(readonly, nonatomic) void *contextInfo; // @synthesize contextInfo=_contextInfo;
+@property(nonatomic) unsigned long long contextIndex; // @synthesize contextIndex=_contextIndex;
+@property(retain, nonatomic) id contextObject; // @synthesize contextObject=_contextObject;
+@property(nonatomic) void *contextInfo; // @synthesize contextInfo=_contextInfo;
 - (id)accessibilityFocusedUIElement;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (BOOL)accessibilityIsIgnored;
@@ -47,6 +49,9 @@
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
+- (BOOL)_getStaticTextOptionalAttribute:(id)arg1 value:(id *)arg2;
+- (BOOL)_getGroupOptionalAttribute:(id)arg1 value:(id *)arg2;
+- (BOOL)_getValueIndicatorOptionalAttribute:(id)arg1 value:(id *)arg2;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

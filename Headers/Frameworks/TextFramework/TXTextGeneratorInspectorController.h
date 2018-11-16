@@ -14,7 +14,7 @@
     LKButtonCell *_generatorButtonCell;
 }
 
-- (id)createGeneratorControllerWithSceneNode:(struct OZSceneNode *)arg1;
+- (id)newGeneratorControllerWithSceneNode:(struct OZSceneNode *)arg1;
 - (void)switchPane:(id)arg1;
 - (void)dealloc;
 - (id)initWithSceneNodes:(list_1192f13f *)arg1 viewCtlrDelegate:(id)arg2;

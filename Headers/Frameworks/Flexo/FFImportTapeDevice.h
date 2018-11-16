@@ -8,7 +8,7 @@
 
 #import "MIOCoreDelegateProtocol.h"
 
-@class FFMediaEventProject, MIOCaptureCore, NSMutableArray, NSString;
+@class FFMediaEventProject, MIOCaptureCore, NSDate, NSMutableArray, NSSet, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFImportTapeDevice : NSObject <MIOCoreDelegateProtocol>
@@ -17,26 +17,35 @@ __attribute__((visibility("hidden")))
     FFMediaEventProject *_currentEvent;
     NSString *_currentArchivePath;
     NSMutableArray *_currentClipIDs;
+    NSSet *_keywords;
+    NSURL *_externalLocation;
     BOOL _isRewinding;
     BOOL _captureEntireTape;
+    BOOL _addArchiveToFavorites;
     BOOL _isSeeking;
     BOOL _isProcessing;
     BOOL _canProcess;
     BOOL _isTapeRolling;
     BOOL _ingestStopped;
+    BOOL _addArchiteToFavorites;
     BOOL _isArchivable;
+    NSDate *_captureStartDate;
 }
 
 + (id)deviceWithDeviceConnection:(id)arg1;
 + (id)keyPathsForValuesAffectingCanProcess;
 + (id)keyPathsForValuesAffectingIsProcessing;
+@property(retain) NSDate *captureStartDate; // @synthesize captureStartDate=_captureStartDate;
+@property(retain) NSURL *externalLocation; // @synthesize externalLocation=_externalLocation;
 @property(nonatomic) BOOL ingestStopped; // @synthesize ingestStopped=_ingestStopped;
 @property(nonatomic) BOOL isArchivable; // @synthesize isArchivable=_isArchivable;
 @property(nonatomic) BOOL isProcessing; // @synthesize isProcessing=_isProcessing;
 @property BOOL isSeeking; // @synthesize isSeeking=_isSeeking;
 @property BOOL isTapeRolling; // @synthesize isTapeRolling=_isTapeRolling;
 @property BOOL isRewinding; // @synthesize isRewinding=_isRewinding;
+@property BOOL addArchiveToFavorites; // @synthesize addArchiveToFavorites=_addArchiteToFavorites;
 @property BOOL captureEntireTape; // @synthesize captureEntireTape=_captureEntireTape;
+@property(retain) NSSet *keywords; // @synthesize keywords=_keywords;
 @property(retain) NSMutableArray *currentClipIDs; // @synthesize currentClipIDs=_currentClipIDs;
 @property(copy) NSString *currentArchivePath; // @synthesize currentArchivePath=_currentArchivePath;
 @property(retain) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;

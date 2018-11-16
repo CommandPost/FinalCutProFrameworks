@@ -26,6 +26,7 @@
     NSArray *_enumConstants;
     BOOL _dontImportFromFile;
     NSString *_predicate;
+    int _whiteList;
     NSDictionary *_options;
 }
 
@@ -42,6 +43,8 @@
 + (void)setCustomMetadataDictionary:(id)arg1;
 + (BOOL)loadSpotlightAsMetadefinitionInDictionary:(id)arg1 key:(id)arg2 metadataType:(id)arg3 displayName:(id)arg4 predicate:(id)arg5;
 + (id)unfilteredMetadataDefinitions;
++ (id)metadataFromSanitizedMetadata:(id)arg1;
++ (id)sanitizedMetadata:(id)arg1;
 + (id)keyForSanitizedKey:(id)arg1;
 + (id)metadataSources;
 + (void)_clearMetadataSourcesCache;
@@ -55,6 +58,7 @@
 + (id)_defsDictFromDict:(id)arg1;
 + (id)defaultViewSetPredicate;
 + (void)releaseSharedInstance;
+@property(nonatomic) int whiteList; // @synthesize whiteList=_whiteList;
 @property(retain, nonatomic) NSString *predicate; // @synthesize predicate=_predicate;
 @property(nonatomic) BOOL dontImportFromFile; // @synthesize dontImportFromFile=_dontImportFromFile;
 @property(retain, nonatomic) NSDictionary *options; // @synthesize options=_options;
@@ -85,7 +89,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)initWithKey:(id)arg1 keyPathFormat:(id)arg2 displayName:(id)arg3 displayDescription:(id)arg4 metadataType:(id)arg5 editable:(BOOL)arg6 formatter:(id)arg7 valueTransformer:(id)arg8 options:(id)arg9 predicate:(id)arg10;
+- (id)initWithKey:(id)arg1 keyPathFormat:(id)arg2 displayName:(id)arg3 displayDescription:(id)arg4 metadataType:(id)arg5 editable:(BOOL)arg6 formatter:(id)arg7 valueTransformer:(id)arg8 options:(id)arg9 predicate:(id)arg10 whiteList:(int)arg11;
 - (id)description;
 
 @end

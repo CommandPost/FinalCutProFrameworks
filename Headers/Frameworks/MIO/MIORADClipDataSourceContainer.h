@@ -13,6 +13,8 @@
 }
 
 + (id)clipWithDataSource:(id)arg1 volume:(id)arg2;
+- (BOOL)isiOSClip;
+- (id)uti;
 - (id)clipURLs;
 - (BOOL)enableScrubber;
 - (BOOL)limitedPlayback;

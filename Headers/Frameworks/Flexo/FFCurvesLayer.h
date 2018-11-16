@@ -36,6 +36,10 @@ __attribute__((visibility("hidden")))
     FFAnchoredTimelineModule *_timeline;
 }
 
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (id)accessibilityChildren;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)observeAngleForKey:(id)arg1;
 - (void)removeAngleObservers;
@@ -55,6 +59,9 @@ __attribute__((visibility("hidden")))
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (void)_effectsChanged;
 - (void)_effectStackChanged;
+- (void)pasteKeyframes:(id)arg1;
+- (void)cutKeyframes:(id)arg1;
+- (void)copyKeyframes:(id)arg1;
 - (void)nudgeRight:(id)arg1;
 - (void)nudgeLeft:(id)arg1;
 - (void)nudgeDown:(id)arg1;
@@ -62,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)previousKeyframe:(id)arg1;
 - (void)nextKeyframe:(id)arg1;
 - (void)addKeyframe:(id)arg1;
+- (void)deleteKeyframes:(id)arg1;
 - (void)delete:(id)arg1;
 - (void)deselectAll:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;

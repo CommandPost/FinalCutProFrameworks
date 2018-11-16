@@ -9,8 +9,11 @@
 @interface TLKBumperBackgroundLayer : TLKThemeBackedLayer
 {
     TLKThemeBackedLayer *_shadowLayer;
+    unsigned int _drawsBackground:1;
 }
 
+- (BOOL)drawsBackground;
+- (void)setDrawsBackground:(BOOL)arg1;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)layoutSublayers;
 - (id)init;

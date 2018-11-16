@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)browser:(id)arg1 selectionIndexesForProposedSelection:(id)arg2 inColumn:(long long)arg3;
+- (void)browser:(id)arg1 willDisplayCell:(id)arg2 atRow:(long long)arg3 column:(long long)arg4;
 - (id)browser:(id)arg1 objectValueForItem:(id)arg2;
 - (BOOL)browser:(id)arg1 isLeafItem:(id)arg2;
 - (id)browser:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;

@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CDStruct_1b6d18a9 offset; // @synthesize offset=_offset;
 @property(readonly, nonatomic) FFSource *source; // @synthesize source=_source;
 - (id).cxx_construct;
-- (CDStruct_e83c9415)srcTimeRangeInOffsetCoords;
 - (CDStruct_e83c9415)srcTimeRange;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 offset:(CDStruct_1b6d18a9)arg2 identifier:(id)arg3;

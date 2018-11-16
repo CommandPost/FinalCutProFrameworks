@@ -21,6 +21,13 @@ __attribute__((visibility("hidden")))
 @property(retain) NSString *clipLabelSizeDefaultKey; // @synthesize clipLabelSizeDefaultKey=_clipLabelSizeDefaultKey;
 @property BOOL selectedRangesObserverAttached; // @synthesize selectedRangesObserverAttached=_selectedRangesObserverAttached;
 @property(retain) FFOrganizerFilmstripView *filmstripView; // @synthesize filmstripView=_filmstripView;
+- (void)performEditAction;
+- (BOOL)editActionAllowed;
+- (void)performPlayheadButton1Action;
+- (BOOL)action1OrAction2;
+- (BOOL)wantsPlayheadActions;
+- (BOOL)wantsRanges;
+- (BOOL)wantsSkimmerInfo;
 - (void)restorePlayheadTo:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (id)persistentPlayheadMediaRange;
 - (CDStruct_1b6d18a9)persistentPlayheadTime;
@@ -30,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)performColorMatch;
 - (void)setAudioHeight:(double)arg1;
 - (double)audioHeight;
+- (void)synchronousReloadData;
 - (void)setNeedsData:(BOOL)arg1;
 - (void)setDeferRangeInvalidations:(BOOL)arg1;
 - (id)valueForKey:(id)arg1;
@@ -47,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (double)frameHeight;
 - (void)setFrameDuration:(double)arg1;
 - (double)frameDuration;
-- (void)changeClipLabelSize:(int)arg1 persistentModule:(id)arg2;
+- (void)changeClipLabelSize:(int)arg1;
 - (void)setClipLabelSize:(int)arg1;
 - (int)clipLabelSize;
 - (void)setShowsClipLabels:(BOOL)arg1;
@@ -58,6 +66,8 @@ __attribute__((visibility("hidden")))
 - (void)moveToPreviousClipExtendingSelection:(BOOL)arg1;
 - (void)moveToLastClip;
 - (void)moveToFirstClip;
+- (void)moveToEndOfClip;
+- (void)moveToStartOfClip;
 - (void)moveToFirstSelectedClip;
 - (void)moveToSelectionEnd;
 - (void)moveToSelectionStart;
@@ -109,8 +119,8 @@ __attribute__((visibility("hidden")))
 - (void)restoreProjectSelectionAndPersistentPlayheadPosition:(id)arg1;
 - (void)savePersistentPlayheadPosition:(id)arg1;
 - (void)saveProjectSelection:(id)arg1;
-- (void)storeDefaults:(id)arg1;
-- (void)loadDefaults:(id)arg1;
+- (void)takeContentLayoutDictionary:(id)arg1;
+- (id)contentLayoutDictionary;
 - (void)setDelegate:(id)arg1;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toView:(id)arg2;
 - (struct CGRect)bounds;

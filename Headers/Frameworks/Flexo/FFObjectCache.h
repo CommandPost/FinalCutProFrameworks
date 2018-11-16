@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFObjectCacheEntry, NSHashTable, NSMutableDictionary, NSOperationQueue, NSRecursiveLock;
+@class FFObjectCacheEntry, NSHashTable, NSMutableDictionary, NSObject<OS_dispatch_queue>, NSRecursiveLock;
 
 @interface FFObjectCache : NSObject
 {
@@ -30,9 +30,11 @@
         CDUnknownFunctionPointerType describe;
     } _hashTableCallbacks;
     FFObjectCacheEntry *_localEntryForLookups;
-    NSOperationQueue *_maintenanceOpQueue;
+    _Bool _isShuttingDown;
+    NSObject<OS_dispatch_queue> *_maintQueue;
     int _unstartedAsyncOp;
     NSMutableDictionary *_groupInfos;
+    float _syncPurgeThreshhold;
 }
 
 + (BOOL)recentlyUnderVMPressure;
@@ -40,6 +42,7 @@
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
 @property _Bool respondToMemoryPressure; // @synthesize respondToMemoryPressure=_respondToMemoryPressure;
+- (void)setSynchronousPurgeThreshhold:(float)arg1;
 - (void)reserveCacheMemory:(long long)arg1;
 - (int)purgeCacheEntries:(id)arg1;
 - (int)purgeCacheEntriesOperation:(id)arg1;
@@ -65,7 +68,7 @@
 - (unsigned long long)currentSize;
 - (unsigned long long)reservedMemorySize;
 - (void)dealloc;
-- (id)initWithCacheSize:(double)arg1;
+- (id)initWithCacheSize:(double)arg1 label:(const char *)arg2;
 
 @end
 

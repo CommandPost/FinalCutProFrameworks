@@ -8,6 +8,7 @@
 
 @class MIORADIngestObject, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface MIOFileImporter : MIOObject
 {
     struct OpaqueCMIOGraph *_graph;

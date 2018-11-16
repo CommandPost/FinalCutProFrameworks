@@ -22,10 +22,12 @@
 + (id)defaultViewSetWithName:(id)arg1;
 + (id)selectedViewSet;
 + (void)setSelectedViewSet:(id)arg1;
++ (id)viewSetNames;
 + (id)viewSets;
 + (void)setViewSets:(id)arg1;
 + (id)defaultViewSets;
 + (id)externalViewSets;
++ (id)viewSetFromDict:(id)arg1;
 + (void)releaseSharedInstance;
 + (BOOL)classIsAbstract;
 @property(retain, nonatomic) NSString *predicate; // @synthesize predicate=_predicate;

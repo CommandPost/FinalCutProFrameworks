@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (void)registerEffects;
 - (BOOL)useSourcePixelSpace;
+- (BOOL)supportsReentrancy;
 - (BOOL)outputIsFullyTransparentAtTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)effectIntroducesAlpha;
 - (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;

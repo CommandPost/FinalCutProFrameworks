@@ -15,18 +15,18 @@ __attribute__((visibility("hidden")))
     CDStruct_bdcb2b0d _baseMD5;
     FFPixelFormat *_prefPixelFormat;
     int _expectedLoc;
-    NSMutableSet *_heldTextures;
+    NSMutableSet *_heldRequests;
     NSMutableIndexSet *_requestedLocs;
 }
 
 + (void)teardownCache;
 - (id)description;
-- (id)_newTextureFromCache:(CDStruct_bdcb2b0d)arg1;
+- (id)_newTextureReqFromCache:(CDStruct_bdcb2b0d)arg1;
 - (CDStruct_bdcb2b0d)_md5ValueForPF:(id)arg1 cs:(struct CGColorSpace *)arg2 pt:(id)arg3 loc:(int)arg4 roi:(struct CGRect)arg5;
 - (id)newScheduleTokenForImageRep:(id)arg1;
 - (_Bool)canProvideNativeTextureFor:(int)arg1 withoutRenderer:(struct HGRenderer *)arg2;
-- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
-- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
+- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
 - (struct CGRect)pixelSpaceBounds;
 - (id)type;
 - (id)nativePixelFormat;

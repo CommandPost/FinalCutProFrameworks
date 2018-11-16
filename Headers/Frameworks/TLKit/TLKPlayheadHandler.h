@@ -9,13 +9,17 @@
 @interface TLKPlayheadHandler : TLKTimelineHandler
 {
     CDStruct_1b6d18a9 _initialTime;
+    unsigned int _useHandCursor:1;
 }
 
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (BOOL)stopTracking:(id)arg1;
 - (void)cancelTracking:(id)arg1;
 - (BOOL)continueTracking:(id)arg1;
+- (CDStruct_1b6d18a9)_currentTime:(id)arg1;
 - (BOOL)startTracking:(id)arg1;
 - (int)autoscrollDirection;
+- (void)applyConfiguration:(id)arg1;
 
 @end
 

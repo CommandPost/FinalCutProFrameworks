@@ -8,8 +8,11 @@
 
 #import "NSTabViewDelegate.h"
 
+@class LKTabView;
+
 @interface LKTabModule : LKViewModule <NSTabViewDelegate>
 {
+    LKTabView *_tabView;
     LKViewModule *_activeModule;
     unsigned int _bulkRemoval:1;
     unsigned int _unhiding:1;
@@ -21,6 +24,7 @@
 + (Class)tabViewItemClass;
 + (Class)tabViewClass;
 + (void)setDraggedModule:(id)arg1;
+@property(retain, nonatomic) LKTabView *tabView; // @synthesize tabView=_tabView;
 - (void)tabView:(id)arg1 didInsertTabViewItem:(id)arg2;
 - (id)tabView:(id)arg1 contextMenuForTabViewItem:(id)arg2;
 - (void)tabView:(id)arg1 didSelectTabViewItem:(id)arg2;

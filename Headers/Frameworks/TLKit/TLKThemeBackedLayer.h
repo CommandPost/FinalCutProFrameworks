@@ -19,7 +19,7 @@
 }
 
 + (id)_newCacheKeyForFacet:(id)arg1;
-- (void)setIgnoresHitTesting:(BOOL)arg1;
+@property BOOL ignoresHitTesting;
 - (void)setContentsScale:(double)arg1;
 @property(retain) NSProThemeFacet *themeFacet;
 - (void)_updateContents;

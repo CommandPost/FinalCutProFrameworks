@@ -14,24 +14,32 @@
     struct CGColorSpace *_colorSpace;
     unsigned int _field;
     unsigned long long _approximateMemoryUsage;
+    int _errorCode;
 }
 
 @property unsigned long long approximateMemoryUsage; // @synthesize approximateMemoryUsage=_approximateMemoryUsage;
 - (void)getSampleBuffer:(struct opaqueCMSampleBuffer **)arg1 alphaKnownToBeFullyOpaque:(char *)arg2;
 - (BOOL)disable422InputFiltering;
 - (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
-- (_Bool)nativelyPremulBlack;
+- (_Bool)existingAlphaChannelCompatibleWithPremulBlack;
+- (_Bool)alphaWantsClamping;
+- (_Bool)alphaWantsInversion;
+- (int)nativeAlphaType;
 - (void)setColorSpace:(struct CGColorSpace *)arg1;
 - (struct CGColorSpace *)colorSpace;
 - (void)setPixelTransform:(id)arg1;
 - (id)pixelTransform;
-- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
-- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (void)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
+- (void)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
+- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
 - (unsigned int)field;
 - (struct CGRect)pixelSpaceBounds;
 - (struct CGRect)imageSpaceBounds;
 - (id)type;
 - (id)nativePixelFormat;
+- (void)setErrorCode:(int)arg1;
+- (int)errorCode;
 - (void)dealloc;
 - (id)initWithRepresentation:(id)arg1;
 - (id)initWithColorSpace:(struct CGColorSpace *)arg1 pixelTransform:(id)arg2;

@@ -22,6 +22,7 @@
     BOOL _storePassword;
     BOOL _includesChapterMarkers;
     struct CGSize _videoResolution;
+    NSString *_uuid;
 }
 
 + (id)defaultName;
@@ -32,11 +33,14 @@
 + (id)defaultUserDestination;
 + (void)replaceUserDestination:(id)arg1 withDestination:(id)arg2;
 + (void)setUserDestinations:(id)arg1;
++ (id)userDestinationsWithDefault:(id)arg1;
 + (id)userDestinations;
 + (id)newDestinationWithType:(id)arg1;
++ (id)addUserDestinationFromURL:(id)arg1;
 + (void)restoreStandardDestinations;
 + (id)standardDestinations:(id *)arg1;
 + (id)keyPathsForValuesAffectingAction;
+@property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(nonatomic) struct CGSize videoResolution; // @synthesize videoResolution=_videoResolution;
 @property(copy, nonatomic) NSString *originalSettingsName; // @synthesize originalSettingsName=_originalSettingsName;
 @property BOOL includesChapterMarkers; // @synthesize includesChapterMarkers=_includesChapterMarkers;
@@ -52,6 +56,8 @@
 - (BOOL)storePasswordInKeychain:(id)arg1 forUser:(id)arg2;
 - (void)removeFromKeychain:(id)arg1;
 - (id)getQueryDict:(id)arg1;
+- (id)currentUser;
+- (BOOL)requiresLogin;
 - (id)targetFileNameSuffix;
 - (BOOL)requiresSettingActionOutputURL;
 - (BOOL)requiresTargetDestinationURL;

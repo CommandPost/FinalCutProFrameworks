@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
 - (void)menu:(id)arg1 willHighlightItem:(id)arg2;
 - (void)buildPointMenu;
 - (void)drawVertices:(const PCMatrix44Tmpl_93ed1289 *)arg1 mode:(unsigned int)arg2;
-- (PCPtr_fc939811)initAsset:(unsigned int)arg1 largeAssets:(_Bool)arg2;
+- (PCPtr_ca97d389)initAsset:(unsigned int)arg1 largeAssets:(_Bool)arg2;
 - (void)inverseConvertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
 - (void)convertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
-- (PCPtr_fc939811)getVertexAsset:(int)arg1;
+- (PCPtr_ca97d389)getVertexAsset:(int)arg1;
 - (void)drawPath;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (_Bool)transformPath;

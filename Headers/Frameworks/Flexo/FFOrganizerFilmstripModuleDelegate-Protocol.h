@@ -6,38 +6,44 @@
 
 #import "FFEventsDetailModuleDelegate.h"
 
-@class FFAnchoredObject, FFAnchoredStack, FFContext, FFEditorModule, FFMarkerLayer, FFSettingsModule, LKMenu, LKPopOverWindow, NSArray, NSError, NSProView, NSSet, OKPaneCapItem;
+@class FFAnchoredObject, FFAnchoredStack, FFAnchoredTimeMarker, FFContext, FFEditorModule, FFMarkerLayer, FFMediaEventProject, FFProject, FFSettingsModule, FigTimeRangeAndObject, LKMenu, LKPopOverWindow, NSArray, NSError, NSProView, NSSet, OKPaneCapItem;
 
 @protocol FFOrganizerFilmstripModuleDelegate <FFEventsDetailModuleDelegate>
-- (void)refreshFilterMenu;
-- (void)revealMediaRanges:(NSArray *)arg1;
-- (LKMenu *)filterPulldownMenu;
-- (FFEditorModule *)editorModule;
-- (void)stopUsingMedia:(NSSet *)arg1;
-- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3;
-- (BOOL)canBeginPlaying;
-- (BOOL)canSkimWithAudio;
-- (BOOL)canBeginSkimming;
-- (void)makeSequenceActive:(id)arg1;
-- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 loadingBlock:(void (^)(FFPlayerModule *))arg4 unloadingBlock:(void (^)(void))arg5;
-- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 unloadingBlock:(void (^)(void))arg4;
-- (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
-- (void)stopSkimmingForOwner:(id)arg1;
-- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
-- (BOOL)presentError:(NSError *)arg1;
-- (void)removePaneCapItem:(OKPaneCapItem *)arg1;
-- (void)addPaneCapItem:(OKPaneCapItem *)arg1;
-- (void)openSettingsWithModule:(FFSettingsModule *)arg1;
-- (BOOL)markerEditorIsShown;
-- (void)hideMarkerEditor;
-- (void)showMarkerEditorForMarkerLayer:(FFMarkerLayer *)arg1 object:(FFAnchoredObject *)arg2;
-- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(FFAnchoredObject *)arg2;
-- (void)openStack:(FFAnchoredStack *)arg1;
-- (void)setShowFilmstripView:(BOOL)arg1;
-- (BOOL)showFilmstripView;
 
 @optional
 - (void)clipAttributesPopOverWindowDidResign:(LKPopOverWindow *)arg1;
 - (NSProView *)customClipAttributesPopOverView;
+- (FFMediaEventProject *)defaultEventForNewProject;
+- (NSProView *)clipActionOptionsView;
+- (FFProject *)project;
+- (void)openSettingsWithModule:(FFSettingsModule *)arg1;
+- (BOOL)deleteSpecificMarker:(FFAnchoredTimeMarker *)arg1;
+- (BOOL)actionMoveMarker:(FFAnchoredTimeMarker *)arg1 toRange:(FigTimeRangeAndObject *)arg2 error:(id *)arg3;
+- (void)hideMarkerEditor;
+- (BOOL)markerEditorIsShown;
+- (void)openStack:(FFAnchoredStack *)arg1;
+- (void)revealMediaRanges:(NSArray *)arg1;
+- (BOOL)presentError:(NSError *)arg1;
+- (void)showMarkerEditorForMarkerLayer:(FFMarkerLayer *)arg1 object:(FFAnchoredObject *)arg2;
+- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(FFAnchoredObject *)arg2;
+- (BOOL)canBeginPlaying;
+- (BOOL)canSkimWithAudio;
+- (BOOL)canBeginSkimming;
+- (void)clearActiveSequence;
+- (void)makeSequenceActive:(id)arg1;
+- (void)stopUsingMedia:(NSSet *)arg1;
+- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 loadingBlock:(void (^)(FFPlayerModule *))arg4 unloadingBlock:(void (^)(void))arg5;
+- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 unloadingBlock:(void (^)(void))arg4;
+- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3;
+- (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
+- (void)stopSkimmingForOwner:(id)arg1;
+- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
+- (void)refreshFilterMenu;
+- (LKMenu *)filterPulldownMenu;
+- (void)addPaneCapItem:(OKPaneCapItem *)arg1;
+- (void)removePaneCapItem:(OKPaneCapItem *)arg1;
+- (void)setShowFilmstripView:(BOOL)arg1;
+- (BOOL)showFilmstripView;
+- (FFEditorModule *)editorModule;
 @end
 

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     FFSourceVideo *_mediaSource;
 }
 
++ (CDStruct_1b6d18a9)intermediateSampleDuration:(CDStruct_1b6d18a9)arg1 targetSampleDuration:(CDStruct_1b6d18a9)arg2;
 + (id)effectForEffectStack:(id)arg1;
 + (id)effectInstanceForEffectStack:(id)arg1;
 + (id)effectIDForEffectStack:(id)arg1;
@@ -41,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (CDStruct_e83c9415)retimeRange:(CDStruct_e83c9415)arg1;
 - (CDStruct_1b6d18a9)retime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)mapMediaTimeToSequenceTimeWithTargetSampleDuration:(CDStruct_1b6d18a9)arg1 mediaTime:(CDStruct_1b6d18a9)arg2;
-- (CDStruct_1b6d18a9)intermediateSampleDuration:(CDStruct_1b6d18a9)arg1 targetSampleDuration:(CDStruct_1b6d18a9)arg2;
 - (id)labelFromIntermediatSampleDuration:(CDStruct_1b6d18a9)arg1 sourceSampleDuration:(CDStruct_1b6d18a9)arg2;
 - (BOOL)integerFrameRate:(CDStruct_1b6d18a9)arg1;
 - (void)setFrameSampleMode:(long long)arg1;

@@ -6,31 +6,37 @@
 
 #import <TLKit/TLKTimelineLayer.h>
 
+#import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class CALayer, NSArray, NSMutableArray, NSString, TLKEdgeSelectionLayer, TLKFilmstripLayer, TLKItemBackgroundLayer, TLKItemContentsLayer, TLKItemSelectionLayer, TLKRoundedSideLayer, TLKTextLayer;
+@class CALayer, NSArray, NSMutableArray, NSString, TLKAbstractEdgeSelectionLayer, TLKAbstractItemBackgroundLayer, TLKAbstractItemSelectionLayer, TLKFilmstripLayer, TLKItemContentsLayer, TLKPrecisionEditorTransitionClipLayer, TLKPrecisionEditorUnusedMediaOverlayLayer, TLKRoundedSideLayer, TLKTextLayer;
 
-@interface TLKItemLayer : TLKTimelineLayer <TLKPartInfo>
+@interface TLKItemLayer : TLKTimelineLayer <TLKAccessibilityProtocol, TLKPartInfo>
 {
-    TLKItemBackgroundLayer *_backgroundLayer;
+    TLKAbstractItemBackgroundLayer *_backgroundLayer;
     CALayer *_filmstripDividerLayer;
-    TLKEdgeSelectionLayer *_edgeSelectionLayer;
+    TLKAbstractEdgeSelectionLayer *_edgeSelectionLayer;
     TLKTextLayer *_textLayer;
     TLKItemContentsLayer *_overlayContentsLayer;
     TLKFilmstripLayer *_videoContentsLayer;
     TLKFilmstripLayer *_audioContentsLayer;
-    TLKItemSelectionLayer *_selectionLayer;
+    TLKAbstractItemSelectionLayer *_selectionLayer;
     TLKRoundedSideLayer *_disabledLayer;
-    CALayer *_unusedMediaOverlay;
-    CALayer *_transitionMediaOverlay;
+    TLKPrecisionEditorUnusedMediaOverlayLayer *_unusedMediaOverlay;
+    TLKPrecisionEditorTransitionClipLayer *_transitionMediaOverlay;
+    TLKPrecisionEditorUnusedMediaOverlayLayer *_unusedAudioMediaOverlay;
+    TLKPrecisionEditorTransitionClipLayer *_transitionAudioMediaOverlay;
     NSArray *_badgeArray;
     NSMutableArray *_rangeItemLayers;
     struct CGRect _transitionMediaRect;
     struct CGRect _unusedMediaRect;
+    struct CGRect _unusedAudioMediaRect;
     unsigned int _hideTextBadges:1;
+    unsigned int _unusedAudioMediaRectChangedFromDefault:1;
 }
 
 + (struct CGRect)frameForItem:(struct CGRect)arg1 withType:(int)arg2 andContainmentType:(int)arg3;
+@property(nonatomic) struct CGRect unusedAudioMediaRect; // @synthesize unusedAudioMediaRect=_unusedAudioMediaRect;
 @property(nonatomic) struct CGRect unusedMediaRect; // @synthesize unusedMediaRect=_unusedMediaRect;
 @property(nonatomic) struct CGRect transitionMediaRect; // @synthesize transitionMediaRect=_transitionMediaRect;
 @property(readonly, nonatomic) NSArray *rangeItemLayers; // @synthesize rangeItemLayers=_rangeItemLayers;
@@ -51,9 +57,10 @@
 - (void)_updateSelectionAppearance;
 - (void)_createEdgeSelectionIfNeeded;
 - (void)_updatePrecisionEditorAppearance;
+@property(nonatomic) BOOL unusedAudioMediaRectChangedFromDefault;
 @property(readonly, nonatomic) struct CGRect usedMediaRect;
-@property(readonly) TLKItemBackgroundLayer *backgroundLayer;
-@property(readonly) TLKEdgeSelectionLayer *edgeSelectionLayer;
+@property(readonly) TLKAbstractEdgeSelectionLayer *edgeSelectionLayer;
+@property(readonly) TLKAbstractItemBackgroundLayer *backgroundLayer;
 @property BOOL roundedBottomAudioComponent;
 @property BOOL audioComponent;
 @property BOOL sourceSplitEdit;
@@ -62,8 +69,14 @@
 @property(readonly) TLKTextLayer *textLayer;
 @property(copy) NSString *displayName;
 - (void)layoutSublayers;
+- (void)_updateOverlayTimeSegments;
+- (void)_updateAVTimeSegments;
+- (void)_updateTimeSegmentsOfLayers:(id)arg1;
+- (void)layoutAccessoryLayerwithBounds:(struct CGRect)arg1 backgroundFrame:(struct CGRect)arg2 audioOnlyOffSpineItem:(BOOL)arg3;
 - (void)_applyFiltersForItemType:(int)arg1 containmentMask:(int)arg2;
 - (struct CGRect)rectForPart:(id)arg1;
+- (struct CGRect)_rectForTitlePart;
+- (double)_audioWaveFormHeight;
 - (struct CGRect)visibleBoundsOfLayer:(id)arg1 accountingForOverlap:(BOOL)arg2;
 - (id)overlayContentsLayer;
 - (id)audioContentsLayer;
@@ -71,6 +84,47 @@
 - (void)invalidate;
 - (void)dealloc;
 - (id)initWithTimelineView:(id)arg1;
+- (void)syntheticUIElement:(id)arg1 performAction:(id)arg2;
+- (id)syntheticUIElement:(id)arg1 actionDescription:(id)arg2;
+- (id)syntheticUIElementActions:(id)arg1;
+- (void)syntheticUIElement:(id)arg1 setValue:(id)arg2 forAttribute:(id)arg3;
+- (BOOL)_nudgeItemByTimeOffset:(CDStruct_1b6d18a9)arg1;
+- (BOOL)_moveItemByTimeOffset:(CDStruct_1b6d18a9)arg1;
+- (BOOL)_trimEdge:(id)arg1 byTimeOffset:(CDStruct_1b6d18a9)arg2 trimType:(int)arg3;
+- (BOOL)syntheticUIElement:(id)arg1 isAttributeSettable:(id)arg2;
+- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
+- (id)syntheticUIElementAttributeNames:(id)arg1;
+- (id)syntheticUIElementHelp:(id)arg1;
+- (id)syntheticUIElementValueDescription:(id)arg1;
+- (id)syntheticUIElementValue:(id)arg1;
+- (CDStruct_1b6d18a9)syntheticUIElementTime:(id)arg1;
+- (id)syntheticUIElementTitle:(id)arg1;
+- (id)syntheticUIElementSize:(id)arg1;
+- (id)syntheticUIElementPosition:(id)arg1;
+- (struct CGRect)syntheticUIElementRect:(id)arg1;
+- (id)syntheticUIElementDescription:(id)arg1;
+- (void)accessibilityPerformAction:(id)arg1;
+- (id)accessibilityActionDescription:(id)arg1;
+- (id)accessibilityActionNames;
+- (void)accessibilityShowContextMenu;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (struct CGRect)accessibilityRect;
+- (id)accessibilityParent;
+- (id)accessibilityHandles;
+- (id)accessibilityChildren;
+- (id)accessibilityChildren:(id)arg1;
+- (id)accessibilityChildren:(id)arg1 handlesOnly:(BOOL)arg2;
+- (id)accessibilityIsSelected;
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityDescription;
+- (id)accessibilityRole;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (struct CGRect)accessibilityRectForPart:(id)arg1;
+- (BOOL)isTransition;
+- (id)accessibilityPartAtPoint:(struct CGPoint)arg1;
+- (BOOL)containsPart:(id)arg1 atPoint:(struct CGPoint)arg2;
 
 @end
 

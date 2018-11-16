@@ -6,12 +6,11 @@
 
 #import "NSWindowController.h"
 
-#import "FFAnchoredSequenceSettingsModuleDelegate.h"
 #import "NSAnimationDelegate.h"
 
 @class FFSettingsModule, NSButton, NSView;
 
-@interface PEProviderSettingsWindow : NSWindowController <FFAnchoredSequenceSettingsModuleDelegate, NSAnimationDelegate>
+@interface PEProviderSettingsWindow : NSWindowController <NSAnimationDelegate>
 {
     FFSettingsModule *module;
     NSView *settingsView;
@@ -24,13 +23,13 @@
 - (void)didEndSheet:(id)arg1 returnCode:(int)arg2 contextInfo:(void *)arg3;
 - (void)cancelSettings:(id)arg1;
 - (void)acceptSettings:(id)arg1;
+- (BOOL)presentError:(id)arg1;
 - (void)runSheetForWindow:(id)arg1;
 - (void)moduleViewFrameChanged:(id)arg1;
 - (void)animationDidEnd:(id)arg1;
 @property(retain) FFSettingsModule *module;
 - (void)_resizeToFitModule;
 - (void)_setupAutomaticCustomSettingsButton;
-- (id)currentProjectSequence;
 - (void)dealloc;
 - (id)initWithSettingsModule:(id)arg1;
 

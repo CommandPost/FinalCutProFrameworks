@@ -94,6 +94,7 @@
 - (id)titleForIdentifier:(id)arg1;
 - (BOOL)isResizable;
 - (void)saveChanges;
+- (id)preferencesNibName;
 - (void)dealloc;
 - (void)awakeFromNib;
 

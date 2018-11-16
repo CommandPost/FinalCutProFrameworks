@@ -4,39 +4,28 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "DSObject.h"
+#import <Flexo/FFModelObject.h>
 
-#import "FFModelLocking.h"
 #import "FFObjectCompare.h"
-#import "NSCoding.h"
 
 @class FFUndoHandler, FFUserDefaults, NSString;
 
-@interface FFBaseDSObject : DSObject <NSCoding, FFModelLocking, FFObjectCompare>
+@interface FFBaseDSObject : FFModelObject <FFObjectCompare>
 {
     NSString *_cacheIdentifier;
     FFUserDefaults *_userDefaults;
 }
 
-+ (id)query:(id)arg1;
-+ (id)queryWithPredicate:(id)arg1;
-+ (id)queryAllInstances;
 + (id)copyClassDescription;
-+ (Class)DSClassDescriptionClass;
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
-- (void)property:(id)arg1 change:(id)arg2;
-- (BOOL)_hasWriteLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
-- (void)_readLock;
-- (id)sharedLock;
 - (id)loadUserDefaults:(BOOL)arg1;
 - (void)setUserDefaults:(id)arg1;
 - (id)userDefaults;
 @property(readonly, nonatomic) FFUndoHandler *undoHandler;
 - (id)projectDocument;
 - (id)project;
+- (id)libraryItem;
+- (id)library;
 - (id)cacheIdentifier;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

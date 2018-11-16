@@ -10,6 +10,7 @@
 {
 }
 
++ (id)newVideoPropsAfterRotation:(long long)arg1 videoProps:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setPaspV:(int)arg1;
 - (void)setPaspH:(int)arg1;

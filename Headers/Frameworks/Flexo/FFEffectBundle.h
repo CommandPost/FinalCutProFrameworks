@@ -45,7 +45,6 @@
 - (id)presetChannel;
 - (id)primaryAnimationChannel;
 - (void)channelParameterChanged:(id)arg1;
-- (void)setEnabled:(BOOL)arg1;
 - (void)presetChanged:(id)arg1;
 - (void)partChanged;
 - (void)partChangedHook;
@@ -55,6 +54,7 @@
 - (void)updatePresetsInEnumChannel:(id)arg1 withPresetNames:(id)arg2;
 - (id)availableBundleParts;
 - (id)presetNames;
+- (void)effectStackAnchoredObjectDidChange;
 - (void)setEffectStack:(id)arg1;
 - (id)inputKeys;
 - (id)newEffectNodeWithInput:(id)arg1 forKey:(id)arg2 withOffset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4;

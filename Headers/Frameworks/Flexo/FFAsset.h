@@ -4,47 +4,52 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFMedia.h>
+#import <Flexo/FFMediaState.h>
 
 #import "NSCoding.h"
 #import "NSCopying.h"
 
 @class FFDominantMotionMediaRep, FFFlowMediaRep, FFMediaRep, FFProvider, FFVideoProps, NSDictionary, NSIndexSet, NSString;
 
-@interface FFAsset : FFMedia <NSCoding, NSCopying>
+@interface FFAsset : FFMediaState <NSCoding, NSCopying>
 {
     NSString *_mediaIdentifier;
+    float _rotationDegrees;
     FFVideoProps *_videoProps;
     NSString *_videoFormatName;
     FFMediaRep *_originalMediaRep;
+    NSString *_uttype;
+    long long _audioSourceCount;
+    long long _alphaHandling;
+    long long _fieldDominanceOverride;
+    long long _colorSpaceOverride;
+    long long _anamorphicType;
+    int _logEncodingType;
+    long long _logProcessingMode;
+    BOOL _isUnmounting;
     FFMediaRep *_optimizedMediaRep;
     FFMediaRep *_proxyMediaRep;
     FFFlowMediaRep *_flowMediaRep;
     FFDominantMotionMediaRep *_dominantMotionMediaRep;
     FFMediaRep *_sidecarMediaRep;
     long long _frameExtractionMode;
-    NSString *_uttype;
-    float _rotationDegrees;
-    long long _alphaHandling;
     NSIndexSet *_supportedAlphaHandlingModes;
-    long long _fieldDominanceOverride;
     NSIndexSet *_supportedDominanceOverrides;
-    long long _colorSpaceOverride;
     NSIndexSet *_supportedColorSpaceOverrides;
-    long long _anamorphicType;
-    int _logEncodingType;
-    long long _logProcessingMode;
     NSIndexSet *_supportedLogProcessingModes;
-    long long _audioSourceCount;
+    BOOL _useTimecodeZero;
     NSDictionary *_audioSourceDict;
     NSDictionary *_videoSourceDict;
+    BOOL _isTrailerAsset;
     FFProvider *_provider;
     int _quality;
     BOOL _isObservingQuality;
     BOOL _forceNoProxy;
     BOOL _videoCodecMissing;
+    BOOL _isReferenceMovie;
 }
 
++ (void)invalidateMultipleAssets:(id)arg1;
 + (BOOL)playerQualityChanging;
 + (int)currentQuality;
 + (void)initialize;
@@ -52,6 +57,9 @@
 + (void)playerQualityChanged;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property(nonatomic) BOOL isUnmounting; // @synthesize isUnmounting=_isUnmounting;
+@property(nonatomic) BOOL isTrailerAsset; // @synthesize isTrailerAsset=_isTrailerAsset;
+@property(readonly, nonatomic) BOOL isReferenceMovie; // @synthesize isReferenceMovie=_isReferenceMovie;
 @property(readonly, nonatomic) BOOL videoCodecMissing; // @synthesize videoCodecMissing=_videoCodecMissing;
 @property(readonly, nonatomic) NSDictionary *videoSourceDict; // @synthesize videoSourceDict=_videoSourceDict;
 @property(nonatomic) BOOL forceNoProxy; // @synthesize forceNoProxy=_forceNoProxy;
@@ -67,7 +75,9 @@
 - (void)setMetadataAlphaHandling:(long long)arg1;
 - (long long)metadataAlphaHandling;
 - (id)mdTargetForKey:(id)arg1;
+- (id)assetFileIDs:(unsigned int)arg1 forCopy:(id)arg2;
 - (id)analysisFileURLs;
+- (id)_analysisFileURLs:(BOOL)arg1;
 - (id)fileURLs:(int)arg1;
 - (void)addClipRefsToSet:(id)arg1;
 - (id)clipRefs;
@@ -77,14 +87,17 @@
 - (id)assets;
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
 - (id)newProvider;
-- (id)_newFrameExtractionProviderForQuality:(int)arg1 disableFilePropertyOverrides:(BOOL)arg2;
+- (int)quality;
+- (id)newFrameExtractionProviderForQuality:(int)arg1 disableFilePropertyOverrides:(BOOL)arg2;
 - (id)_newMediaRepProviderForQuality:(int)arg1 fallBackToAnyQuality:(BOOL)arg2 disableFilePropertyOverrides:(BOOL)arg3;
 - (id)_offlineCacheIdentifier:(int)arg1;
 - (id)_frameExtractionCacheIdentifier;
 - (id)assetCacheIdentifier:(int)arg1;
 - (id)_appendCacheIdentifierAdditions:(id)arg1;
 - (BOOL)assetHasPropertyOverrides;
-- (id)_fileOverridesDict;
+- (id)_newFileOverridesDict;
+- (id)_copyVideoPropsOverrides;
+- (id)_copyVideoOverrides;
 - (void)_playerQualityChangedObserver:(id)arg1;
 - (void)sourceRangeInvalidated:(id)arg1;
 - (void)_startObservingProvider:(id)arg1;
@@ -104,6 +117,8 @@
 - (id)currentRep;
 - (BOOL)relinkMedia:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 fileContentChanged:(BOOL)arg4 error:(id *)arg5;
 - (void)invalidate;
+- (void)invalidateAndSendSourceChange:(BOOL)arg1;
+- (void)invalidateProviders;
 - (void)invalidateWithUnknownActionScope:(CDUnknownBlockType)arg1;
 - (void)_invalidateProvider:(id)arg1;
 - (void)deferredInvalidate;
@@ -112,12 +127,14 @@
 - (void)purgeGeneratedMedia;
 - (BOOL)isPSD;
 - (void)setMediaIdentifierForOfflineAsset:(id)arg1;
+- (void)setOriginalRelativePath:(id)arg1;
 - (id)assetFilename;
 - (BOOL)supportsLogProcessing;
 @property(nonatomic) long long logProcessingMode;
 - (BOOL)supportsColorSpaceOverride;
 @property(nonatomic) long long colorSpaceOverride; // @synthesize colorSpaceOverride=_colorSpaceOverride;
 - (BOOL)supportsAnamorphicType;
+@property(nonatomic) BOOL useTimecodeZero; // @synthesize useTimecodeZero=_useTimecodeZero;
 @property(nonatomic) long long anamorphicType; // @synthesize anamorphicType=_anamorphicType;
 - (BOOL)supportsDominanceOverride;
 @property(nonatomic) long long fieldDominanceOverride; // @synthesize fieldDominanceOverride=_fieldDominanceOverride;
@@ -126,8 +143,8 @@
 - (void)_establishSupportedOverrideInfo:(id)arg1 beingCalledFromInit:(BOOL)arg2;
 - (id)videoPropsForSourceKey:(id)arg1;
 - (long long)videoSourceCount;
-- (void)setAudioSourceDict:(id)arg1;
-@property(readonly, nonatomic) NSDictionary *audioSourceDict;
+- (id)audioSourceChannelCountMap;
+@property(retain, nonatomic) NSDictionary *audioSourceDict;
 @property(nonatomic) long long audioSourceCount;
 - (void)organizeMediaRepIntoEvent:(id)arg1;
 - (void)originalMediaRepChanged;
@@ -156,15 +173,19 @@
 @property(retain, nonatomic) FFVideoProps *videoProps;
 - (void)setVideoFormatName:(id)arg1;
 - (id)videoFormatName;
+- (id)originalMediaVolume;
+- (id)originalMediaLibrary;
 - (id)originalMediaURL;
 - (BOOL)_supportsProxyMedia;
 - (void)dealloc;
 - (BOOL)addMediaRepForURL:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 project:(id)arg4;
 - (void)_updateVideoProps:(int)arg1;
 - (BOOL)update_addAudioSourceDict;
+- (void)rebuildAudioProperties;
 - (void)rebuildAudioSourceDictWithProvider:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 manageFileType:(int)arg2 project:(id)arg3;
+- (id)_initWithBasics;
 - (id)init;
 - (void)updateIdentity;
 - (id)_fileMD5StringForURL:(id)arg1 baseFilename:(id)arg2;

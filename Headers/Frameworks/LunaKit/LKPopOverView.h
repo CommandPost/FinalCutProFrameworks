@@ -4,45 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSView.h"
+#import "NSProPopOverView.h"
 
-@class LKPopOverDrawingDefinition, NSImage;
-
-@interface LKPopOverView : NSView
+@interface LKPopOverView : NSProPopOverView
 {
-    NSView *_documentView;
-    int _arrowDirection;
-    int _validArrowDirection;
-    BOOL _foundValidWindowOrigin;
-    LKPopOverDrawingDefinition *_drawingDefinition;
-    float _documentPadding;
-    NSImage *_cachedBackground;
-    float _arrowPointOffset;
-    BOOL _animates;
-    BOOL _isCallout;
 }
 
-+ (id)_pathForRect:(struct CGRect)arg1 radius:(float)arg2 arrowHeight:(float)arg3 arrowInset:(float)arg4 arrowPointOffset:(float)arg5 arrowWidth:(float)arg6 direction:(int)arg7;
-@property(nonatomic) BOOL isCallout; // @synthesize isCallout=_isCallout;
-@property BOOL animates; // @synthesize animates=_animates;
-@property float arrowPointOffset; // @synthesize arrowPointOffset=_arrowPointOffset;
-@property(nonatomic) float documentPadding; // @synthesize documentPadding=_documentPadding;
-@property(nonatomic) int arrowDirection; // @synthesize arrowDirection=_arrowDirection;
-@property(retain, nonatomic) LKPopOverDrawingDefinition *drawingDefinition;
-@property(nonatomic) NSView *documentView;
-- (void)_animateOutPreviousDocumentViewDidEnd;
-- (void)_windowFrameAnimationDidEndForDocumentViewChange;
-- (BOOL)_foundValidWindowOrigin;
-- (void)updateFrame;
-- (void)_clearCachedBackgroundAndDisplay:(BOOL)arg1;
-- (struct CGPoint)_documentViewOrigin;
-- (struct CGSize)_frameSizeForDocumentView:(id)arg1 arrowDirection:(int)arg2;
-- (struct CGRect)frameForTargetRect:(struct CGRect)arg1 arrowDirection:(int *)arg2 displayRect:(struct CGRect)arg3 arrowPointOffset:(float *)arg4;
-- (id)_backgroundImage;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)_setupDrawingDefinition;
+- (void)_setupConsumerCalloutDrawingDefinition;
+- (void)_setupConsumerDrawingDefinition;
+- (void)_setupCalloutDrawingDefinition;
+- (void)_setupProDrawingDefinition;
+- (void)setPopOverStyle:(int)arg1;
 
 @end
 

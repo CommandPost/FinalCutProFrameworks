@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     NSString *m_role;
     FFAudioLayoutItemComponentSource *m_componentSource;
     BOOL m_forcePersistedEffectStack;
-    CDStruct_bdcb2b0d m_defaultEffectStackMD5;
 }
 
 + (id)copyClassDescription;
@@ -26,9 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FFEffectStack *effectStack; // @synthesize effectStack=m_effectStack;
 @property(readonly, nonatomic) BOOL enabled; // @synthesize enabled=m_enabled;
 - (id)activeEffectStack;
-- (BOOL)isDefaultEffectStack;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
-@property(readonly, nonatomic) NSString *defaultEffectStackMD5;
 @property(readonly, nonatomic) FFAudioComponentSource *persistentComponentSource;
 @property(readonly, nonatomic) FFEffectStack *persistentEffectStack;
 - (unsigned int)numOutputChannels:(unsigned int)arg1;

@@ -23,13 +23,13 @@
 - (void)scrollToChannel:(struct OZChannelBase *)arg1;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (id)mainView;
-- (BOOL)buildUIWithSceneNodes:(list_1192f13f *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_d81b4758 *)arg1 context:(id)arg2;
 - (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
 - (void)didBuildUI;
 - (void)dealloc;
-- (id)initWithSceneNodes:(list_1192f13f *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
-- (id)initWithSceneNodes:(list_1192f13f *)arg1 viewCtlrDelegate:(id)arg2;
-- (id)initWithSceneNodes:(list_1192f13f *)arg1;
+- (id)initWithSceneNodes:(list_d81b4758 *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
+- (id)initWithSceneNodes:(list_d81b4758 *)arg1 viewCtlrDelegate:(id)arg2;
+- (id)initWithSceneNodes:(list_d81b4758 *)arg1;
 - (id)initWithNode:(struct OZSceneNode *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
 - (id)initWithNode:(struct OZSceneNode *)arg1;
 - (void)commonInit;

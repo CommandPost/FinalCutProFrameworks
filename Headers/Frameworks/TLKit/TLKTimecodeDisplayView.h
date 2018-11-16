@@ -16,6 +16,7 @@
     struct CGRect _edgeRect;
     int _type;
     int _mode;
+    int _editingMode;
 }
 
 - (void)drawRect:(struct CGRect)arg1;
@@ -37,7 +38,8 @@
 @property int type;
 - (void)_updateMargins:(BOOL)arg1;
 - (id)_facetForType:(int)arg1;
-- (BOOL)isCallout:(int)arg1;
+- (BOOL)_isCallout:(int)arg1;
+@property int editingMode;
 
 @end
 

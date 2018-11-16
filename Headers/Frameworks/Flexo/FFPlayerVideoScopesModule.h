@@ -30,6 +30,8 @@
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
+- (void)context:(id)arg1 didRebuildPlayer:(id)arg2;
+- (void)context:(id)arg1 willTeardownPlayer:(id)arg2;
 - (void)didStartPlayingWithPlayer:(id)arg1;
 - (void)willStopPlayingWithPlayer:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

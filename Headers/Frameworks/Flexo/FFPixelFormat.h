@@ -29,6 +29,7 @@
 + (id)pixelFormatARGB8StraightAlpha;
 + (id)pixelFormatRGBAfStraightAlpha;
 + (id)pixelFormat_y416StraightAlpha;
++ (id)pixelFormat_FullRangeLuma8;
 + (id)straightAlphaPixelFormatFor:(id)arg1;
 + (id)pixelFormatWithName:(id)arg1;
 + (id)pixelFormatWithFourCC:(unsigned int)arg1;

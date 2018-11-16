@@ -12,7 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)audioVolumeOverlay:(id)arg1 splitEdit:(BOOL)arg2 timeline:(id)arg3;
+- (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
 - (void)_rangeChanged;
+- (BOOL)_parentLayerHidden;
 - (id)effectsToDisplay;
 - (id)effectStack;
 - (id)selectedLayers;

@@ -12,18 +12,20 @@
 {
     long long _flags;
     NSMutableDictionary *_segmentStores;
-    BOOL _finishedThumbSave;
 }
 
 + (struct CGRect)computeROI:(id)arg1 forSquared:(BOOL)arg2 full:(BOOL)arg3 quality:(int)arg4;
 - (id)newPTforRequestSquared:(BOOL)arg1 field:(unsigned int)arg2 quality:(int)arg3 Ydown:(BOOL)arg4;
+- (id)newFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4;
+- (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4;
 - (id)newFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3;
+- (id)newSquaredFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 quality:(int)arg2 temporalQuality:(int)arg3 bypassSegmentStore:(BOOL)arg4 backgroundColor:(id)arg5 returnImageMD5:(id *)arg6;
 - (id)newSquaredFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 quality:(int)arg2 temporalQuality:(int)arg3 bypassSegmentStore:(BOOL)arg4 returnImageMD5:(id *)arg5;
 - (id)newForcedGPURenderedThumbnail:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 pixelFormat:(id)arg5;
 - (id)newThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 returnImageMD5:(id *)arg3 contentsScale:(double)arg4;
 - (void)_saveThumbnailImageForMD5AndOffset:(CDStruct_bdcb2b0d)arg1 sampleOffset:(long long)arg2 image:(id)arg3;
 - (id)_newThumbnailImageForMD5AndOffset:(CDStruct_bdcb2b0d)arg1 sampleOffset:(long long)arg2;
-- (id)renderFormat;
+- (id)renderFormat:(id)arg1;
 - (BOOL)md5AndOffsetForCGThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 md5:(CDStruct_bdcb2b0d *)arg3 sampleOffset:(long long *)arg4 contentsScale:(double)arg5;
 - (void)newContextAndPixelTransformForQuality:(int)arg1 temporalQuality:(int)arg2 context:(id *)arg3 pixelTransform:(id *)arg4;
 - (struct CGImage *)newCGThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 returnImageMD5:(id *)arg3 contentsScale:(double)arg4;
@@ -33,6 +35,7 @@
 - (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
 - (id)newScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3;
 - (id)newScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
+- (_Bool)shouldCheckCacheForTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 props:(id)arg3;
 - (void)setFlags:(long long)arg1;
 - (long long)flags;
 - (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 context:(id)arg2 downstreamPT:(id)arg3 roi:(const struct CGRect *)arg4;

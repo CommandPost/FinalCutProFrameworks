@@ -9,7 +9,7 @@
 #import "PROBundleHandlerDelegate.h"
 #import "PROVersionedAPIAccess.h"
 
-@class NSMutableArray, NSMutableDictionary, PROReadWriteLock;
+@class NSMutableArray, NSMutableDictionary, NSRecursiveLock, PROReadWriteLock;
 
 __attribute__((visibility("hidden")))
 @interface PROConcretePlugInManager : PROPlugInManager <PROVersionedAPIAccess, PROBundleHandlerDelegate>
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int respondsToDidLoadPlugIn:1;
         unsigned int useStrictLoading:1;
     } managerFlags;
+    NSRecursiveLock *mutex;
 }
 
 - (BOOL)validateProtocols:(id)arg1;
@@ -52,8 +53,10 @@ __attribute__((visibility("hidden")))
 - (void)bundleHandler:(id)arg1 didAddPlugIn:(id)arg2;
 - (BOOL)bundleHandler:(id)arg1 shouldAddPlugIn:(id)arg2;
 - (void)scanForPlugInsInBundle:(id)arg1;
+- (void)scanForPlugInsInBundle:(id)arg1 withPluginKitPlugIn:(id)arg2;
 - (void)scanForPlugInsInDirectory:(id)arg1;
-- (void)scanForPlugInsInBundleHelper:(id)arg1 zone:(struct _NSZone *)arg2;
+- (void)scanForPlugIns;
+- (void)scanForPlugInsInBundleHelper:(id)arg1 zone:(struct _NSZone *)arg2 withPluginKitPlugIn:(id)arg3;
 - (void)mergeGroupsDictionaryWith:(id)arg1;
 - (void)addPlugIn:(id)arg1;
 - (void)removeAllPlugIns;

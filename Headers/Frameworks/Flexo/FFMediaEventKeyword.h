@@ -51,6 +51,7 @@
 @property(readonly, nonatomic) BOOL hasMasterSubitems;
 @property(readonly, nonatomic) NSArray *items;
 @property(readonly, nonatomic) NSString *itemPersistentIdentifier;
+- (id)itemIconSelected:(BOOL)arg1;
 @property(readonly, nonatomic) NSImage *itemIcon;
 @property(readonly, nonatomic) BOOL itemDisplayNameEditable;
 - (void)setItemDisplayName:(id)arg1;

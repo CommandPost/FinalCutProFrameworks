@@ -8,40 +8,36 @@
 
 #import "FFEnhanceAudioDelegate.h"
 
-@class FFChannelChangeController, FFEnhanceAudioManager, FFInspectorModuleTextField, LKButton, NSMutableArray, NSProProgressIndicator;
+@class FFChannelChangeController, FFInspectorModuleTextField, LKButton, NSMutableSet, NSProProgressIndicator;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioAnalysisParameterController : OZViewController <FFEnhanceAudioDelegate>
 {
-    BOOL _analyzed;
     LKButton *_showAudioEnhanceButton;
     LKButton *_warningIndicator;
     FFInspectorModuleTextField *_text;
-    FFEnhanceAudioManager *_analysisManager;
-    FFChannelChangeController *_channelChangeController;
     NSProProgressIndicator *_analysisSpinner;
     int _warningState;
-    NSMutableArray *_managerList;
-    NSMutableArray *_effectStackList;
+    NSMutableSet *_managerList;
+    FFChannelChangeController *_channelChangeController;
 }
 
-@property(nonatomic) BOOL analyzed; // @synthesize analyzed=_analyzed;
-@property(retain, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
+@property(readonly, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)checkForAnalysis;
-- (void)determineWarningState;
+- (void)updateWarningState;
 - (void)updateAudioEnhanceButton;
 - (void)updateStatusText;
 - (void)updateStatusBadge;
-- (BOOL)shouldEnableShowAudioEnhancements;
-- (id)facetForShowAudioEnhanceButton;
 - (void)showAudioEnhancements:(id)arg1;
 - (void)analysisDidStart:(id)arg1;
 - (void)analysisDidComplete:(id)arg1;
 - (float)suggestedMaxParamWidth;
-- (void)update;
+- (void)_notifyUpdateControllerUI;
+- (void)_updateControllerUIOnMainThread:(id)arg1;
+- (void)_updateControllerUI;
 - (void)didBuildUI;
-- (void)addAssociatedChannel:(struct OZChannelBase *)arg1;
+- (id)_selectedEffectStacks;
+- (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

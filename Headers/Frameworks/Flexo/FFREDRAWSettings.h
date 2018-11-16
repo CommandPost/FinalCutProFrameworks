@@ -87,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelSettings:(id)arg1;
 - (void)saveSettings:(id)arg1;
 - (void)_revertToRMDSettings:(id)arg1;
+- (void)appWillTerminate:(id)arg1;
 - (id)_complimentaryControlForControl:(id)arg1;
 - (void)awakeFromNib;
 - (unsigned long long)retainCount;
@@ -99,6 +100,7 @@ __attribute__((visibility("hidden")))
 - (void)closeHUD;
 - (void)openHUD;
 - (void)dealloc;
+- (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

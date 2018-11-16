@@ -6,18 +6,22 @@
 
 #import "NSObject.h"
 
+#import "NSCopying.h"
+
 @class NSMutableDictionary;
 
-@interface PIBuildContext : NSObject
+@interface PIBuildContext : NSObject <NSCopying>
 {
     BOOL _isHUD;
     BOOL _shouldDiscloseCompoundChans;
+    BOOL _shouldDisplayParameterMenu;
     struct __CFString *_bundleID;
     NSMutableDictionary *_pValues;
     BOOL isRoot;
     BOOL shouldDisplayAnimIndicator;
 }
 
+@property(nonatomic) BOOL shouldDisplayParameterMenu; // @synthesize shouldDisplayParameterMenu=_shouldDisplayParameterMenu;
 @property(nonatomic) BOOL shouldDiscloseCompoundChans; // @synthesize shouldDiscloseCompoundChans=_shouldDiscloseCompoundChans;
 @property(nonatomic) BOOL shouldDisplayAnimIndicator; // @synthesize shouldDisplayAnimIndicator;
 @property(nonatomic) BOOL isRoot; // @synthesize isRoot;
@@ -29,12 +33,12 @@
 - (double)headingRowHeight;
 - (struct CGSize)frameSize;
 - (double)rowHeight;
-- (BOOL)shouldDisplayParameterMenu;
 - (BOOL)isRigDisplay;
 - (BOOL)isMotionHUD;
 - (struct __CFString *)bundleID;
 - (BOOL)isHUD;
 - (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithIsHUD:(BOOL)arg1 bundleID:(struct __CFString *)arg2;
 

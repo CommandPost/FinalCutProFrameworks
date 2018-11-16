@@ -29,11 +29,15 @@ __attribute__((visibility("hidden")))
 - (void)channelParameterChanged:(id)arg1;
 - (void)setCropParmeterValuesForCropType:(int)arg1 operationBeginEnd:(BOOL)arg2;
 - (void)_showHideChannelWithOperation:(id)arg1 show:(BOOL)arg2 operationBeginEnd:(BOOL)arg3;
+- (void)setupDefaultConsumerCropValues:(BOOL)arg1 channelOperation:(BOOL)arg2 checkForSequenceDefaults:(BOOL)arg3;
+- (void)defaultValuesForConsumerSetup:(struct FFSimpleCropParameters *)arg1 checkForSequenceDefaults:(BOOL)arg2;
 - (void)_setupValuesForCropTypeIfValuesStillNoOp;
+- (void)computeStartEndRectangles:(struct FFSimpleCropParameters *)arg1 frameBounds:(struct CGRect)arg2 squareInputBounds:(struct CGRect)arg3;
 - (void)_adjustLRTBToBounds:(double *)arg1 right:(double *)arg2 top:(double *)arg3 bottom:(double *)arg4 squareInputBounds:(struct CGRect)arg5 faceCenterX:(double)arg6 faceCenterY:(double)arg7;
-- (void)setCropKeyframeForType:(int)arg1 kf:(int)arg2 andL:(double)arg3 andR:(double)arg4 andB:(double)arg5 andT:(double)arg6 time:(CDStruct_1b6d18a9)arg7 options:(unsigned int)arg8;
-- (void)_setCropKeyframeForTypePercentage:(int)arg1 kf:(int)arg2 andL:(double)arg3 andR:(double)arg4 andB:(double)arg5 andT:(double)arg6 time:(CDStruct_1b6d18a9)arg7 options:(unsigned int)arg8;
+- (void)setCropKeyframeForType:(int)arg1 kf:(int)arg2 andL:(double)arg3 andR:(double)arg4 andB:(double)arg5 andT:(double)arg6 time:(CDStruct_1b6d18a9)arg7 options:(unsigned int)arg8 channelOperation:(BOOL)arg9;
+- (void)setCropKeyframeForTypePercentage:(int)arg1 kf:(int)arg2 andL:(double)arg3 andR:(double)arg4 andB:(double)arg5 andT:(double)arg6 time:(CDStruct_1b6d18a9)arg7 options:(unsigned int)arg8 channelOperation:(BOOL)arg9;
 - (void)_computeFrameBoudsRectangleInImageSpaceAdjustments:(double *)arg1 right:(double *)arg2 top:(double *)arg3 bottom:(double *)arg4;
+- (void)computeFrameBoundsRectangleInImageSpace:(double *)arg1 right:(double *)arg2 top:(double *)arg3 bottom:(double *)arg4;
 - (BOOL)shouldNotificationsChannelCauseInternalStateChange:(id)arg1;
 - (id)keyframeableChannels;
 - (CDStruct_1b6d18a9)durationToUseForMD5Calcs;
@@ -69,6 +73,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)writeDefaultChannels;
 - (BOOL)isNoOp;
 - (BOOL)cropCropChannelsNoOp;
+- (BOOL)KenBurnsEndValueChannelsNoOp;
+- (BOOL)KenBurnsStartValueChannelsNoOp;
 - (BOOL)kenBurnsChannelsNoOp;
 - (BOOL)trimChannelsNoOp;
 - (id)curveDisplayName;

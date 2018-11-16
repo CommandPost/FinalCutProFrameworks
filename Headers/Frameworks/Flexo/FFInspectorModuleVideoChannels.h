@@ -6,12 +6,20 @@
 
 #import <Flexo/FFInspectorModuleChannels.h>
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleVideoChannels : FFInspectorModuleChannels
 {
+    NSArray *_dummyIntrinsics;
 }
 
 - (void)updateChannelHeaderForItems:(id)arg1 updateIcon:(BOOL)arg2;
+- (void)controller:(id)arg1 willChangeChannel:(struct OZChannelBase *)arg2;
+- (void)_rebuildInspectorWithChannelFolders:(id)arg1 currentItems:(id)arg2 buildContext:(id)arg3 shouldReadLock:(BOOL)arg4;
+- (id)_videoEffectsForItem:(id)arg1;
+- (Class)_inspectorDelegateClass;
+- (void)dealloc;
 
 @end
 

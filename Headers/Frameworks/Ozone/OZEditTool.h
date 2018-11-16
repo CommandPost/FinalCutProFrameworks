@@ -6,9 +6,11 @@
 
 #import <Ozone/OZTool.h>
 
+#import "OZRenderClient.h"
+
 @class NSImage, NSTimer;
 
-@interface OZEditTool : OZTool
+@interface OZEditTool : OZTool <OZRenderClient>
 {
     _Bool _setUndo;
     _Bool _cloned;
@@ -33,6 +35,8 @@
     NSImage *_renderImageResult;
 }
 
+- (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
 - (void)draw;
 - (BOOL)nudgeRightBig:(id)arg1;
 - (BOOL)nudgeLeftBig:(id)arg1;
@@ -45,7 +49,7 @@
 - (BOOL)keyDownOSC:(id)arg1;
 - (BOOL)nudgeX:(double)arg1 Y:(double)arg2;
 - (void)_snapTimer:(id)arg1;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;

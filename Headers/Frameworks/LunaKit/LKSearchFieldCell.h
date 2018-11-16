@@ -10,6 +10,7 @@
 {
 }
 
+- (void)_updateSearchMenu;
 - (id)searchFieldButtonFacetForButtonCode:(long long)arg1;
 - (id)_baseFacet;
 

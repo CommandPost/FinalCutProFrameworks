@@ -17,6 +17,7 @@
     int _importType;
 }
 
+@property int importType; // @synthesize importType=_importType;
 - (void)endImport;
 - (void)beginImportForName:(id)arg1;
 - (void)cancelImport:(id)arg1;

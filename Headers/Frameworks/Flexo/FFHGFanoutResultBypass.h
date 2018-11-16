@@ -14,10 +14,14 @@ __attribute__((visibility("hidden")))
     FFImage *_image;
     FFPixelFormat *_pf;
     int _location;
+    _Bool _cancelled;
+    struct CGColorSpace *_colorSpace;
 }
 
+@property _Bool cancelled; // @synthesize cancelled=_cancelled;
 - (id)description;
 - (id)newImage;
+- (void)ensureFlattened:(_Bool)arg1;
 - (struct CGColorSpace *)colorSpace;
 - (int)location;
 - (void)dealloc;

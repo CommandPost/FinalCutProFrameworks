@@ -51,8 +51,11 @@
 @property(nonatomic) BOOL overrideConnections; // @synthesize overrideConnections=_overrideConnections;
 @property(nonatomic) BOOL directionIsReversed; // @synthesize directionIsReversed=_directionIsReversed;
 @property(nonatomic) BOOL inhibitPlayheadSnapping; // @synthesize inhibitPlayheadSnapping=_inhibitPlayheadSnapping;
+@property(nonatomic) double snappingDistance; // @synthesize snappingDistance=_snappingDistance;
 @property(nonatomic) id <FFSnappingDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void)_didSnapClips:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)_didSnapClips:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 withAligment:(BOOL)arg3;
+- (CDStruct_1b6d18a9)_audioFadeDuration;
+- (BOOL)_clipIsBackgroundMusic:(id)arg1;
 - (BOOL)_clipIsValid:(id)arg1;
 - (BOOL)_clipIsTransition:(id)arg1;
 - (BOOL)_clipIsStoryline:(id)arg1;
@@ -77,6 +80,7 @@
 - (id)_clipsDownstreamFromClips:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
 - (id)_clipsWithSplitAudioInRange:(CDStruct_e83c9415)arg1;
 - (id)_clipsInRange:(CDStruct_e83c9415)arg1;
+- (CDStruct_e83c9415)_snappableRangeForTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)_ceilingTime:(CDStruct_1b6d18a9)arg1 temporalResolutionMode:(int)arg2;
 - (CDStruct_1b6d18a9)_floorTime:(CDStruct_1b6d18a9)arg1 temporalResolutionMode:(int)arg2;
 - (CDStruct_e83c9415)_visibleTimeRange;
@@ -117,7 +121,7 @@
 - (void)snapClip:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 toLeadingEdgeOfClip:(id)arg3 inRange:(CDStruct_e83c9415)arg4;
 - (void)snapClip:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 toClip:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
 - (void)displayGuides;
-- (void)displayGuideForClip:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 snapping:(BOOL)arg3;
+- (void)displayGuideForClip:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 snapping:(BOOL)arg3 withAligment:(BOOL)arg4;
 - (void)addGuideAtTime:(CDStruct_1b6d18a9)arg1 fromClip:(id)arg2 toClip:(id)arg3;
 - (void)addClips:(id)arg1 options:(int)arg2;
 - (void)addClip:(id)arg1 options:(int)arg2;

@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "FFPersistentModuleDelegate.h"
+#import "NSObject.h"
 
 @class FFOrganizerMasterItemNode, FFSidebarModule, NSArray, NSEvent, NSMenu, NSObject<FFOrganizerMasterItem>;
 
-@protocol FFSidebarModuleDelegate <FFPersistentModuleDelegate>
+@protocol FFSidebarModuleDelegate <NSObject>
 
 @optional
 - (void)openFilterHUDForSidebarItem:(FFOrganizerMasterItemNode *)arg1 atLocation:(struct CGRect)arg2;

@@ -21,9 +21,11 @@
     int _alphaType;
     _Bool _needPremultClamp;
     _Bool _invertAlpha;
+    BOOL _backedByPBO;
 }
 
 + (id)newFrameFromFirstField:(id)arg1 secondField:(id)arg2 fieldDominance:(int)arg3;
+@property(readonly) BOOL backedByPBO; // @synthesize backedByPBO=_backedByPBO;
 @property _Bool invertAlpha; // @synthesize invertAlpha=_invertAlpha;
 @property _Bool needPremultClamp; // @synthesize needPremultClamp=_needPremultClamp;
 @property(readonly) int alphaType; // @synthesize alphaType=_alphaType;
@@ -46,6 +48,7 @@
 - (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2 alphaType:(int)arg3;
 - (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4;
 - (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 alphaType:(int)arg5;
+- (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 alphaType:(int)arg5 backedByPBO:(BOOL)arg6;
 
 @end
 

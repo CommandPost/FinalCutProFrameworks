@@ -10,6 +10,7 @@
 
 @interface TLKTextLayer : CALayer
 {
+    CALayer *_rolloverBackgroundLayer;
     struct CGSize _stringSize;
     NSMutableAttributedString *_attrStr;
     struct CGRect _visibleBounds;
@@ -18,7 +19,7 @@
     NSColor *_textColor;
     NSColor *_textShadowColor;
     unsigned int _selected:1;
-    unsigned int reserved:30;
+    unsigned int _rollover:1;
 }
 
 @property NSColor *textShadowColor; // @synthesize textShadowColor=_textShadowColor;
@@ -26,8 +27,9 @@
 @property(retain) NSColor *selectedTextColor; // @synthesize selectedTextColor=_selectedTextColor;
 - (void)setContentsScale:(double)arg1;
 @property double fontSize;
+@property BOOL rollover;
 @property BOOL selected;
-@property(readonly) struct CGSize stringSize;
+- (struct CGSize)preferredFrameSize;
 @property(readonly) NSAttributedString *attributedString;
 @property(copy) NSString *string;
 - (void)_updateString:(id)arg1;

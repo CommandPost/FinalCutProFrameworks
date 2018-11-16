@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (int)matchingTypeIterationOption;
 + (id)copyClassDescription;
 + (id)keyPathsForValuesAffectingItemDisplayName;
+- (void)update_fixAnalysisKeywords;
 - (id)duplicate;
 @property(retain, nonatomic) NSDictionary *filtersDictionary;
 - (id)roleSetsForCurrentProject;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL hasMasterSubitems;
 @property(readonly, nonatomic) NSArray *items;
 @property(readonly, nonatomic) NSString *itemPersistentIdentifier;
+- (id)itemIconSelected:(BOOL)arg1;
 @property(readonly, nonatomic) NSImage *itemIcon;
 @property(readonly, nonatomic) BOOL itemDisplayNameEditable;
 - (void)setItemDisplayName:(id)arg1;

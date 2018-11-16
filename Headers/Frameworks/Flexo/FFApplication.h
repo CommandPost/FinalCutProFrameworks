@@ -8,17 +8,20 @@
 
 #import "FFApplicationEventFilter.h"
 
-@class NSMutableSet;
+@class NSException, NSMutableSet;
 
 @interface FFApplication : LKApplication <FFApplicationEventFilter>
 {
     NSMutableSet *_eventFilters;
     NSMutableSet *_actionRedirectionTargets;
+    NSException *_exception;
 }
 
-+ (BOOL)isFCP;
 + (void)initialize;
-- (void)shutDownDueToCorruptDatabase:(id)arg1;
++ (BOOL)isTerminating;
+- (id)exceptionOnTerminate;
+- (void)setExceptionOnTerminate:(id)arg1;
+- (void)reportExceptionOnTerminate;
 - (void)terminate:(id)arg1;
 - (void)sendEvent:(id)arg1;
 - (BOOL)sendAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;
@@ -29,9 +32,6 @@
 - (void)addEventFilter:(id)arg1;
 - (void)finishLaunching;
 - (void)dealloc;
-- (void)_checkForCorruptDatabases;
-- (void)_scanKnownDatabasesAndReplace:(id)arg1;
-- (void)_scanForEmptyDatabases;
 
 @end
 

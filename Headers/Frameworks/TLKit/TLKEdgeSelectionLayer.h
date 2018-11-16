@@ -4,9 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import <TLKit/TLKAbstractEdgeSelectionLayer.h>
 
-@interface TLKEdgeSelectionLayer : CALayer
+@class CALayer;
+
+@interface TLKEdgeSelectionLayer : TLKAbstractEdgeSelectionLayer
 {
     CALayer *_leadingEdge;
     CALayer *_leadingEdgeBorderLayer;
@@ -26,16 +28,8 @@
 
 - (void)setCornerRadius:(double)arg1;
 - (void)layoutSublayers;
-- (void)invalidate;
-- (void)replaceSublayer:(id)arg1 with:(id)arg2;
-- (void)insertSublayer:(id)arg1 above:(id)arg2;
-- (void)insertSublayer:(id)arg1 below:(id)arg2;
-- (void)addSublayer:(id)arg1;
-- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
-- (void)setDelegate:(id)arg1;
-- (void)_updateLayers:(id)arg1;
-- (id)hitTest:(struct CGPoint)arg1;
-@property BOOL containingViewFirstResponder;
+- (void)setContainingViewFirstResponder:(BOOL)arg1;
+- (BOOL)containingViewFirstResponder;
 - (BOOL)allowedOperationForEdge:(id)arg1;
 - (void)setUnaligned:(BOOL)arg1 forEdge:(id)arg2;
 - (void)setAllowedOperation:(BOOL)arg1 forEdge:(id)arg2;

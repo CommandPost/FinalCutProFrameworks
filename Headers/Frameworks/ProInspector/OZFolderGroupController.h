@@ -6,11 +6,14 @@
 
 #import <ProInspector/OZViewControllerGroup.h>
 
+@class PIBuildContext;
+
 @interface OZFolderGroupController : OZViewControllerGroup
 {
     float _desiredLabelWidth;
     float _desiredParamWidth;
     BOOL _hasNoHeading;
+    PIBuildContext *_pContext;
 }
 
 - (void)setEnclosedGroup:(id)arg1 context:(id)arg2;
@@ -19,6 +22,7 @@
 - (void)getTargetChannels:(set_6801396c *)arg1;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (void)didBuildUI;
+- (void)dealloc;
 - (id)initWithHeading:(id)arg1 andEnclosedGroup:(id)arg2 context:(id)arg3;
 - (id)initWithChan:(struct OZChannelBase *)arg1 andEnclosedGroup:(id)arg2 context:(id)arg3;
 - (id)initWithChan:(struct OZChannelBase *)arg1 andEnclosedGroup:(id)arg2 customLabel:(id)arg3 context:(id)arg4;

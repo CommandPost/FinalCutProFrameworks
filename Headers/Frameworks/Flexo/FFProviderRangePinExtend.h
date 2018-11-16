@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _holdBeforeRange;
     CDStruct_e83c9415 _holdAfterRange;
     CDStruct_e83c9415 _maximumRange;
+    CDStruct_e83c9415 _nonGapRange;
 }
 
+@property(readonly, nonatomic) CDStruct_e83c9415 nonGapRange; // @synthesize nonGapRange=_nonGapRange;
 @property(readonly, nonatomic) CDStruct_e83c9415 maximumRange; // @synthesize maximumRange=_maximumRange;
 @property(readonly, nonatomic) CDStruct_e83c9415 holdAfterRange; // @synthesize holdAfterRange=_holdAfterRange;
 @property(readonly, nonatomic) CDStruct_e83c9415 holdBeforeRange; // @synthesize holdBeforeRange=_holdBeforeRange;

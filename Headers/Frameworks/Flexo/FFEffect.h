@@ -11,7 +11,7 @@
 #import "FFMD5Protocol.h"
 #import "NSCopying.h"
 
-@class FFCHObservableFolder, FFEffectController, FFEffectStack, FFMD5AndOffset, NSArray, NSData, NSMutableArray, NSObject, NSString;
+@class FFCHObservableFolder, FFEffectBundlePart, FFEffectController, FFEffectStack, FFMD5AndOffset, NSArray, NSData, NSMutableArray, NSObject, NSString;
 
 @interface FFEffect : FFBaseDSObject <NSCopying, FFCHChannelDelegate, FFMD5Protocol, FFAssetContainerProtocol>
 {
@@ -28,12 +28,18 @@
     BOOL _isOffline;
     int _cachedIsNoOp;
     int _effectBundleEncodingOptions;
+    FFEffectBundlePart *_parentEffectBundlePart;
     FFMD5AndOffset *_cachedAudioMD5;
     int _videoStreamsOpenOnEffect;
     int _pendingVideoStreamCloses;
     FFEffectController *_effectController;
 }
 
++ (id)standardVideoGeneratorWithBackgroundKeysArray;
++ (id)standardVideoCompositorInputKeysArray;
++ (id)standardVideoTransitionInputKeysArray;
++ (id)standardVideoFilterInputKeysArray;
++ (id)standardVideoGeneratorInputKeysArray;
 + (id)effectIDFromXMLElement:(id)arg1;
 + (id)newEffectWithXMLElement:(id)arg1;
 + (void)registerEffects;
@@ -63,16 +69,21 @@
 + (void)appFinishedLaunching:(id)arg1;
 + (void)ensureEffectsRegistered;
 + (id)_effectRegistry;
-+ (void)initialize;
++ (void)initEffectRegistry;
 + (void)_registerBuiltInEffects;
 + (void)_registerEffectsInBundle:(id)arg1 atPath:(id)arg2;
 + (id)_registeredEffectClasses;
+@property(retain, nonatomic) FFEffectBundlePart *parentEffectBundlePart; // @synthesize parentEffectBundlePart=_parentEffectBundlePart;
 @property(nonatomic) int effectBundleEncodingOptions; // @synthesize effectBundleEncodingOptions=_effectBundleEncodingOptions;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
+- (void)finishedSettingEffectParameters;
+- (id)designatedChannelsForXMLExport;
+- (BOOL)hasDesignatedChannelsForXMLExport;
 - (id)exportAsXMLElementWithDeprecatedEffectData:(id)arg1;
 - (id)exportAsXMLElementWithExcludedChannels:(id)arg1;
 - (id)exportAsXMLElement;
 - (void)loadEffectWithXMLElement:(id)arg1;
+- (long long)stackCostForEffect;
 - (id)effectController;
 - (CDStruct_1b6d18a9)sampleDurationOfContainer;
 - (id)fileURLs:(int)arg1;
@@ -96,6 +107,7 @@
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (id)newAudioMD5AndOffset:(int)arg1;
 - (void)_clearCachedAudioMD5;
+- (BOOL)wantsStaticThumbnail;
 - (BOOL)isContextAware;
 - (void)willReplace:(id)arg1;
 - (id)newEffectNodeWithInput:(id)arg1 forKey:(id)arg2 withOffset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4;
@@ -118,6 +130,7 @@
 - (BOOL)selected;
 - (void)setEnabled:(BOOL)arg1;
 - (BOOL)enabled;
+- (id)enabledChannel;
 - (CDStruct_1b6d18a9)suggestedDuration;
 - (unsigned int)attributeCopyingFlags;
 - (void)effectStackAnchoredObjectDidChange;
@@ -133,15 +146,18 @@
 - (id)newUpdatedDownstreamPT:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)modifyImageTransform:(id)arg1 andImageSpaceBounds:(struct CGRect *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)createMixChannelInFolder:(id)arg1 withID:(unsigned int)arg2;
+- (BOOL)supportsReentrancy;
 - (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5;
-- (void)setRate:(double)arg1;
-- (void)prerollEnd;
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
+- (void)setRate:(double)arg1 withInputStream:(id)arg2;
+- (void)prerollEndWithInputStream:(id)arg1;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3 withInputStream:(id)arg4;
 - (id)newMixedImageAtTime:(CDStruct_1b6d18a9)arg1 withBeforeImage:(id)arg2 andAfterImage:(id)arg3;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6;
 - (CDStruct_bdcb2b0d)md5;
+- (struct CGRect)calcOpaqueBoundsAtTime:(CDStruct_1b6d18a9)arg1 forInputSource:(id)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
 - (CDStruct_e83c9415)effectSubSegmentForTime:(CDStruct_1b6d18a9)arg1 channelOffset:(CDStruct_1b6d18a9)arg2 sampleDur:(CDStruct_1b6d18a9)arg3;
+- (BOOL)shouldCacheSimplifesResults;
 - (id)simplifiesToPassThruAtTime:(CDStruct_1b6d18a9)arg1 forInputSource:(id)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
 - (id)anchoredObjectForChannelAssociateModelObject:(id)arg1;
 - (void)effectWasReloadedToStack;
@@ -150,8 +166,11 @@
 - (id)inputKeys;
 - (void)markForDynamicParameterUsage;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
+- (id)publishedChannels;
+- (BOOL)hasPublishedChannels;
 - (id)channelChangeDelegate;
 - (id)mixChannel;
+- (id)visibleKeyframeableChannels;
 - (id)keyframeableChannels;
 - (id)primaryAnimationChannel;
 - (id)newChannelFolderWithParent:(id)arg1 name:(id)arg2;
@@ -170,6 +189,7 @@
 - (void)setReferencedObject:(id)arg1 forChannel:(id)arg2;
 - (id)referencedObjectForChannel:(id)arg1;
 - (id)observedObjectForChannel:(id)arg1;
+- (BOOL)containsObjectRefereces;
 - (void)removeObjectFromChannelObjectReferencesAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inChannelObjectReferencesAtIndex:(unsigned long long)arg2;
 - (id)channelObjectReferences;
@@ -194,6 +214,7 @@
 - (BOOL)needsAnalysis;
 - (BOOL)hasOfflineReferences;
 - (BOOL)isOffline;
+- (id)categoryName;
 - (id)effectID;
 - (id)storeForUndo;
 - (void)encodeWithCoder:(id)arg1;

@@ -16,16 +16,20 @@
     unsigned long long _streamAudioFlags;
     NSSet *_playObjects;
     NSMapTable *_streamAudioFlagsForPlayObjects;
-    unsigned int _tailTime;
-    CDStruct_e83c9415 _scopeRange;
+    CDStruct_1b6d18a9 _primeDuration;
+    CDStruct_e83c9415 _prerollScopeRange;
+    CDStruct_e83c9415 _effectPrerollScopeRange;
     FFEffectStack *_audioEffects;
     NSDictionary *_componentsPlaybackInfo;
+    NSMapTable *_componentsPlaybackInfoForPlayObjects;
 }
 
-@property(readonly, nonatomic) CDStruct_e83c9415 scopeRange; // @synthesize scopeRange=_scopeRange;
-@property(readonly, nonatomic) unsigned int tailTime; // @synthesize tailTime=_tailTime;
+@property(readonly, nonatomic) CDStruct_e83c9415 effectPrerollScopeRange; // @synthesize effectPrerollScopeRange=_effectPrerollScopeRange;
+@property(readonly, nonatomic) CDStruct_e83c9415 prerollScopeRange; // @synthesize prerollScopeRange=_prerollScopeRange;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 primeDuration; // @synthesize primeDuration=_primeDuration;
 @property(readonly, nonatomic) unsigned long long streamAudioFlags; // @synthesize streamAudioFlags=_streamAudioFlags;
 - (id).cxx_construct;
+- (id)componentsPlaybackInfoForPlayObject:(id)arg1;
 - (id)componentsPlaybackInfo;
 - (id)audioEffects;
 - (BOOL)streamAudioFlagsForPlayObject:(id)arg1 streamFlags:(unsigned long long *)arg2 streamFlagsMask:(unsigned long long *)arg3;
@@ -34,6 +38,7 @@
 - (unsigned int)numChannels;
 - (double)sampleRate;
 - (void)dealloc;
+- (id)initWithAudioOptionsForTimeRemap:(id)arg1;
 - (id)initWithAudioOptionsForDescendant:(id)arg1;
 - (id)initWithAudioOptions:(id)arg1;
 - (id)initWithSampleRate:(double)arg1 numChannels:(unsigned int)arg2 forPlayback:(BOOL)arg3;

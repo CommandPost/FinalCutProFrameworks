@@ -19,14 +19,7 @@
 + (id)eventWithName:(id)arg1 events:(id)arg2;
 + (id)clipsInEvent:(id)arg1;
 + (id)clipsInProject:(id)arg1;
-+ (id)projectWithName:(id)arg1 projects:(id)arg2;
-+ (id)projectInfosInLocation:(id)arg1;
-+ (id)eventsInLocation:(id)arg1;
-+ (id)_projectInfosForLocation:(id)arg1 error:(id *)arg2;
-+ (id)_eventsForLocation:(id)arg1 error:(id *)arg2;
 + (id)_projectsForUrl:(id)arg1 isEventProject:(BOOL)arg2 error:(id *)arg3;
-+ (id)_projectsURLForLocation:(id)arg1;
-+ (id)_eventsURLForLocation:(id)arg1;
 + (id)pathForTestFile:(id)arg1 inTestFileDir:(id)arg2 class:(Class)arg3;
 + (id)_pathForTestXMLDir:(Class)arg1;
 + (id)_pathForTestMediaDir:(Class)arg1;

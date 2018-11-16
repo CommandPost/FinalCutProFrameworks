@@ -4,22 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKThemeBackedLayer.h>
+#import <TLKit/TLKAbstractPrecisionEditorDividerBar.h>
 
-@class NSMutableArray, TLKTimelineView;
-
-@interface TLKPrecisionEditorDividerBar : TLKThemeBackedLayer
+@interface TLKPrecisionEditorDividerBar : TLKAbstractPrecisionEditorDividerBar
 {
-    TLKTimelineView *_timelineView;
-    NSMutableArray *_editPointLayers;
 }
 
-+ (double)heightOfBar;
-+ (void)initialize;
-@property TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
-- (void)layoutSublayers;
-- (void)dealloc;
-- (id)init;
++ (id)backgroundThemeFacet;
 
 @end
 

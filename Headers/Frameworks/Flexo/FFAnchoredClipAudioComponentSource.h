@@ -17,12 +17,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-@property(readonly, nonatomic) NSString *layoutKey; // @synthesize layoutKey=m_layoutKey;
 @property(readonly, nonatomic) FFAnchoredObject *clip; // @synthesize clip=m_clip;
 - (id)componentsLayoutSkimmable;
 - (id)backingAnchoredObject;
 - (id)demandEffectStack;
-- (id)backingLayoutKey;
+@property(readonly, nonatomic) NSString *layoutKey; // @synthesize layoutKey=m_layoutKey;
 - (id)backingLayoutMap;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

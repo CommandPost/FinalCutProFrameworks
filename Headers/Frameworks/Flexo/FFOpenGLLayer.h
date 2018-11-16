@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)setContentsScale:(double)arg1;
 - (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
 - (BOOL)canDrawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
+- (CDStruct_1b6d18a9)_calcDrawDelay:(double)arg1;
 - (void)dealloc;
 
 @end

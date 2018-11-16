@@ -8,7 +8,7 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBackgroundTask, FFRenderStateTracker, FFRenderer, FFSourceVideo, NSIndexSet;
+@class FFBGRenderAutoStartInfo, FFBackgroundTask, FFRenderStateTracker, FFRenderer, FFSourceVideo, NSIndexSet;
 
 __attribute__((visibility("hidden")))
 @interface FFBackgroundRenderJob : NSObject <FFBackgroundTaskTarget>
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     FFSourceVideo *_source;
     NSIndexSet *_statesToRender;
     CDStruct_e83c9415 _range;
-    id _autoStartInfo;
+    FFBGRenderAutoStartInfo *_autoStartInfo;
     _Bool _programmaticallyCancelled;
     CDStruct_1b6d18a9 _bgRenderLastWallClockOfNotification;
     CDStruct_1b6d18a9 _bgRenderEndOfPreviousNotificationRange;
@@ -30,9 +30,9 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 @property _Bool programmaticallyCancelled; // @synthesize programmaticallyCancelled=_programmaticallyCancelled;
 @property(readonly) FFRenderStateTracker *tracker; // @synthesize tracker=_tracker;
-@property(retain) id autoStartInfo; // @synthesize autoStartInfo=_autoStartInfo;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+@property(retain) FFBGRenderAutoStartInfo *autoStartInfo; // @synthesize autoStartInfo=_autoStartInfo;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_newRenderFilesAvailableByMD5TransferToMainThread:(id)arg1;
 - (void)_newRenderFilesAvailableTransferToMainThread:(id)arg1;
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)autoStarted;
 - (void)readUnlockSeq;
 - (void)readLockSeq:(id)arg1;
+- (id)lockableModelObject;
 - (id)sequence;
 - (void)dealloc;
 - (id)initWithStates:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 autoStartInfo:(id)arg4;

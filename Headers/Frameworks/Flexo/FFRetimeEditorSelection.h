@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGPoint location; // @synthesize location;
 @property(nonatomic) unsigned int index; // @synthesize index;
 @property(nonatomic) unsigned int type; // @synthesize type;
+- (void)dealloc;
 - (void)updateLocation:(struct CGPoint)arg1;
 - (id)description;
 

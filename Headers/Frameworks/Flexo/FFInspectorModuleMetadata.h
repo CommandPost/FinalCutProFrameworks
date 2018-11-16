@@ -10,7 +10,7 @@
 #import "NSMenuDelegate.h"
 #import "NSTokenFieldDelegate.h"
 
-@class FFAnchoredObject, FFColouredView, FFInspectorMetadataContentRow, FFInspectorMetadataContentView, FFInspectorProjectEventsController, FFMedia, FFProFlippedView, FFRolesMenuController, LKButton, LKSegmentedControl, LKTextField, NSArray, NSArrayController, NSMenu, NSMutableArray, NSMutableDictionary, NSPopUpButton, NSProImageView, NSProThemeImageView, NSScrollView, NSSet, NSTextField, NSView, NSWindow;
+@class FFAnchoredObject, FFInspectorFileInfoClipController, FFInspectorMetadataContentRow, FFInspectorMetadataContentView, FFMedia, FFRolesMenuController, LKSegmentedControl, NSArray, NSArrayController, NSMenu, NSMutableDictionary, NSPopUpButton, NSProImageView, NSProThemeImageView, NSScrollView, NSSet, NSTextField, NSView, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleMetadata : FFInspectorModule <NSMenuDelegate, FFRolesMenuDelegate, NSTokenFieldDelegate>
@@ -20,13 +20,12 @@ __attribute__((visibility("hidden")))
     NSView *_currentReferencedEventsView;
     NSMutableDictionary *_metadataViewState;
     NSArrayController *_contentArrayController;
-    NSMutableArray *_timelineVCs;
-    FFInspectorProjectEventsController *_eventsController;
     FFRolesMenuController *_rolesMenuController;
     NSPopUpButton *_activeVideoAnglePopup;
     NSPopUpButton *_activeAudioAnglePopup;
     FFMedia *_media;
     NSScrollView *_scrollView;
+    NSView *_settingsView;
     NSProThemeImageView *_metadataLCDHeader;
     NSProImageView *_metadataLCDIcon;
     NSTextField *_metadataLCDClipName;
@@ -57,41 +56,16 @@ __attribute__((visibility("hidden")))
     NSWindow *_saveMetadataViewWindow;
     NSMenu *_removeCustomMetadataMenu;
     NSView *_footerView;
-    LKTextField *_ccEventFileLocationTitle;
-    LKTextField *_ccEventFileLocation;
-    LKTextField *_ccEventAMRTitle;
-    LKTextField *_ccEventAMROriginal;
-    LKTextField *_ccEventAMROptimized;
-    LKTextField *_ccEventAMRProxy;
-    LKButton *_ccEventAMROptimizedIcon;
-    LKButton *_ccEventAMRProxyIcon;
-    LKButton *_ccEventAMROriginalIcon;
-    NSProThemeImageView *_ccEventClipView;
-    NSProThemeImageView *_ccEventIcon;
-    NSTextField *_ccEventName;
-    NSTextField *_ccEventDriveName;
-    NSTextField *_ccEventContainsClips;
-    LKButton *_ccModifyButton;
-    FFProFlippedView *_ccEventScrolledView;
-    LKButton *_ccModifyRedRawSettingsButton;
-    FFColouredView *_ccEventInfoSeparator;
-    FFColouredView *_ccEventAMRSeparator;
-    FFColouredView *_ccEventFileSeparator;
-    FFColouredView *_ccEventButtonSeparator;
-    LKTextField *_ccEventOriginTitle;
-    LKButton *_ccEventGenerateProxyButton;
-    FFColouredView *_missingEffectSep;
-    LKTextField *_missingEffectTitle;
     NSView *_redRawMultipleView;
-    struct CGRect _proxyTextFrame;
-    struct CGRect _proxyIconFrame;
     NSArray *_currentItemsProxies;
     NSSet *_currentItemsSequences;
+    NSSet *_previousRefs;
     BOOL _itemsChangedThroughRangeInvalidation;
     FFAnchoredObject *_inspectedItem;
+    FFInspectorFileInfoClipController *_fileInfoClipController;
 }
 
-+ (void)initialize;
+@property FFInspectorFileInfoClipController *fileInfoClipController; // @synthesize fileInfoClipController=_fileInfoClipController;
 @property(retain, nonatomic) FFAnchoredObject *inspectedItem; // @synthesize inspectedItem=_inspectedItem;
 @property(retain, nonatomic) NSSet *currentItemsSequences; // @synthesize currentItemsSequences=_currentItemsSequences;
 @property(retain, nonatomic) NSArray *currentItemsProxies; // @synthesize currentItemsProxies=_currentItemsProxies;
@@ -99,7 +73,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSPopUpButton *activeVideoAnglePopup; // @synthesize activeVideoAnglePopup=_activeVideoAnglePopup;
 @property(retain, nonatomic) LKSegmentedControl *metadataActionControl; // @synthesize metadataActionControl=_metadataActionControl;
 @property(retain, nonatomic) LKSegmentedControl *metadataViewSetControl; // @synthesize metadataViewSetControl=_metadataViewSetControl;
-- (id).cxx_construct;
 - (unsigned long long)tokenField:(id)arg1 styleForRepresentedObject:(id)arg2;
 - (id)tokenField:(id)arg1 representedObjectForEditingString:(id)arg2;
 - (id)tokenField:(id)arg1 editingStringForRepresentedObject:(id)arg2;
@@ -130,16 +103,11 @@ __attribute__((visibility("hidden")))
 - (void)updateForChangedItems;
 - (void)rowDidMove:(id)arg1;
 - (void)_setMetadataViewSetFrom:(id)arg1;
-- (void)toggleClipReferences:(id)arg1;
 - (void)_setMetadataViewControls;
 - (id)firstKeyView;
 - (id)_controlGroupFromMetadataDefinition:(id)arg1;
 - (void)_setupMetadata;
 - (id)metadataViewState;
-- (void)reprioritiseCCButtonPressed:(id)arg1;
-- (void)reprioritiseButtonPressed:(id)arg1;
-- (void)modifyRedRawSettingsButtonPressed:(id)arg1;
-- (void)generateProxy:(id)arg1;
 - (void)audioAnglePopupAction:(id)arg1;
 - (void)videoAnglePopupAction:(id)arg1;
 - (void)_setAngleID:(id)arg1 onMultiCamItems:(id)arg2 popupButton:(id)arg3 useAudio:(BOOL)arg4;
@@ -149,13 +117,8 @@ __attribute__((visibility("hidden")))
 - (void)_clearAnglePopupButton:(id)arg1;
 - (void)_setUpAnglePopupUpButton:(id)arg1 withItems:(id)arg2 useAudio:(BOOL)arg3;
 - (void)_updateReferencedEventsForItems:(id)arg1;
-- (void)_removeOldSubviews;
-- (void)_updateMediaRefs:(id)arg1 remap:(BOOL)arg2 sequence:(id)arg3 selection:(id)arg4;
-- (id)_eventNameFromUrl:(id)arg1;
-- (int)_calculateOfflineClipsCountIn:(id)arg1;
+- (id)refsForItems:(id)arg1 owner:(id)arg2;
 - (void)_updateLCD:(BOOL)arg1;
-- (void)_shrinkScrollView;
-- (void)_growScrollView;
 - (void)showEditCompoundClipSettings:(id)arg1;
 - (void)_sequenceSettingsChanged:(int)arg1 inspectedItem:(id)arg2;
 - (void)currentItemSettings:(char *)arg1 isCompundClip:(char *)arg2 isReferenceClip:(char *)arg3 isMultiAngleClip:(char *)arg4 isFreezeFrameClip:(char *)arg5;
@@ -166,7 +129,6 @@ __attribute__((visibility("hidden")))
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)_rangeInvalidated:(id)arg1;
-- (void)_createFacets;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)dealloc;
 - (id)init;

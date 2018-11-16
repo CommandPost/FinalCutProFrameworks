@@ -6,54 +6,33 @@
 
 #import <Flexo/FFProject.h>
 
-#import "FFInspectableObject.h"
-#import "FFInspectorTabDataSource.h"
-#import "FFOrganizerMasterItem.h"
 #import "NSCoding.h"
 
-@class FFAnchoredSequence, FFSequenceInfo, NSArray, NSImage, NSString;
+@class FFAnchoredSequence, FFSequenceInfo, NSString;
 
-@interface FFSequenceProject : FFProject <NSCoding, FFOrganizerMasterItem, FFInspectableObject, FFInspectorTabDataSource>
+@interface FFSequenceProject : FFProject <NSCoding>
 {
     FFSequenceInfo *_sequenceInfo;
     NSString *_defaultMediaEventID;
 }
 
-+ (BOOL)projectReferencesExistForMediaRef:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 - (void)compressVerticalLaneIndexes:(BOOL)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)inspectorTabClassNames;
-- (id)inspectorIdentifier;
-- (id)inspectorClassName;
-- (void)_offlineMediaChanged;
-- (BOOL)projectReferencesExistForMediaRef:(id)arg1;
 - (int)mediaStatus;
 - (id)clipReferences;
 - (id)assetReferences;
 - (id)effectReferences;
-@property(readonly, nonatomic) BOOL itemIsPlaceholder;
-@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
-@property(readonly, nonatomic) NSArray *detailSubitems;
-@property(readonly, nonatomic) NSArray *masterSubitems;
-@property(readonly, nonatomic) BOOL hasMasterSubitems;
-@property(readonly, nonatomic) NSArray *items;
-@property(readonly, nonatomic) NSImage *itemIcon;
-- (void)setItemDisplayName:(id)arg1;
-@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
-@property(readonly, nonatomic) NSString *itemDisplayName;
 - (int)projectShareStatus;
 - (id)contentType;
 - (id)debugDescription;
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
 - (id)description;
-@property(retain, nonatomic) FFAnchoredSequence *activeSequence;
 - (void)setDefaultMediaEvent:(id)arg1;
 - (id)defaultMediaEvent;
 - (void)setDefaultMediaEventID:(id)arg1;
 - (id)defaultMediaEventID;
+@property(readonly, nonatomic) FFAnchoredSequence *activeSequence;
 @property(readonly, nonatomic) FFSequenceInfo *sequenceInfo;
 - (BOOL)isDetailedProjectDataLoaded;
 - (id)project;
@@ -61,14 +40,6 @@
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithDisplayName:(id)arg1;
-
-// Remaining properties
-@property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
-@property(readonly, nonatomic) BOOL hasDetailSubitems;
-@property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
-@property(readonly, nonatomic) BOOL hasItems;
-@property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
-@property(readonly, nonatomic) double itemRowHeight;
 
 @end
 

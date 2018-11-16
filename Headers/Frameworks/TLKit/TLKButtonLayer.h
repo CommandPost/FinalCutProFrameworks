@@ -15,10 +15,28 @@
     CDUnknownBlockType _pressedHandler;
     long long _tag;
     NSString *_toolTip;
+    NSString *_accessibilityTitle;
 }
 
+@property(copy) NSString *accessibilityTitle; // @synthesize accessibilityTitle=_accessibilityTitle;
 @property(copy) NSString *toolTip; // @synthesize toolTip=_toolTip;
 @property long long tag; // @synthesize tag=_tag;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityFocusedUIElement;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (struct CGRect)accessibilityRect;
+- (id)accessibilityEnabled;
+- (void)accessibilityPerformAction:(id)arg1;
+- (id)accessibilityActionDescription:(id)arg1;
+- (id)accessibilityActionNames;
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityParent;
+- (id)accessibilityHelp;
+- (id)accessibilityDescription;
+- (id)accessibilityRole;
+- (id)timelineView;
 - (CDUnknownBlockType)pressedHandler;
 - (void)setPressedHandler:(CDUnknownBlockType)arg1;
 - (id)partIdentifier;

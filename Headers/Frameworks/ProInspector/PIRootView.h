@@ -14,7 +14,6 @@
     OZViewControllerGroup *_pCommonParentCtlr;
     double _insertionHeight;
     OZViewController *_pTargetCtlr;
-    struct CGRect _currTargetRect;
     NSArray *_pDraggingEntries;
     unsigned int _dropLocation;
     unsigned long long _dragOperation;
@@ -23,7 +22,6 @@
 }
 
 @property(nonatomic) OZViewCtlrRoot *rootCtlr; // @synthesize rootCtlr=_pRootCtlr;
-- (id).cxx_construct;
 - (void)cancelDrag;
 - (void)concludeDragOperation:(id)arg1;
 - (BOOL)performDragOperation:(id)arg1;

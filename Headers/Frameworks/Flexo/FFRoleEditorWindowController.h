@@ -52,8 +52,6 @@
 - (void)_removeGroupHeadersToRoleSetsArray;
 - (void)_addGroupHeadersToRoleSetsArray;
 - (BOOL)isValidIndex:(long long)arg1 forTable:(id)arg2;
-- (id)videoRoleSets;
-- (id)audioRoleSets;
 - (void)tableViewSelectionDidChange:(id)arg1;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 row:(long long)arg4;
 - (BOOL)tableView:(id)arg1 shouldEditTableColumn:(id)arg2 row:(long long)arg3;

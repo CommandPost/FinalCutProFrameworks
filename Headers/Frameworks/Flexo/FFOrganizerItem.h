@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (id)keyPathsForValuesAffectingDetailSubitems;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
+- (id)itemIconSelected:(BOOL)arg1;
 @property(readonly, nonatomic) NSImage *itemIcon;
 @property(readonly, nonatomic) BOOL itemDisplayNameEditable;
 - (void)setItemDisplayName:(id)arg1;

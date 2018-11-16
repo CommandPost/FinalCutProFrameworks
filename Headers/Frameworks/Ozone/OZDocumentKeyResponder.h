@@ -21,7 +21,6 @@
 @property(nonatomic) NSWindowController *windowController; // @synthesize windowController=_pWindowController;
 - (void)removeFromYouTube:(id)arg1;
 - (void)removeFromVimeo:(id)arg1;
-- (void)removeFromMobileMe:(id)arg1;
 - (void)removeFromFacebook:(id)arg1;
 - (void)removeFromCNNiReport:(id)arg1;
 - (void)showShareMonitor:(id)arg1;
@@ -137,7 +136,6 @@
 - (void)showAudioTab:(id)arg1;
 - (void)showMediaTab:(id)arg1;
 - (void)showLayersTab:(id)arg1;
-- (void)showTimelineTab:(id)arg1;
 - (void)toggleFileModifiedVisibility:(id)arg1;
 - (void)toggleFileCreatedVisibility:(id)arg1;
 - (void)toggleFileSizeVisibility:(id)arg1;
@@ -258,11 +256,11 @@
 - (void)paste:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
-- (BOOL)validateAction:(SEL)arg1;
 - (void)resetDisplayRangeToProjectDuration:(id)arg1;
 - (void)resetDisplayRangeToPlayRange:(id)arg1;
 - (void)zoomTimelineOut:(id)arg1;
 - (void)zoomTimelineIn:(id)arg1;
+- (BOOL)validateAction:(SEL)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)keyUp:(id)arg1;

@@ -11,7 +11,7 @@
 #import "MIOCoreDelegateProtocol.h"
 #import "MIODestinationProtocol.h"
 
-@class FFBackgroundTask, FFMediaEventProject, FFPTPDownloadManager, MIORADCore, NSCondition, NSHashTable, NSMutableDictionary, NSMutableSet;
+@class FFBackgroundTask, FFMediaEventProject, FFPTPDownloadManager, MIORADCore, NSCondition, NSHashTable, NSMutableDictionary, NSMutableSet, NSSet;
 
 @interface FFRADIngestManager : NSObject <MIOCoreDelegateProtocol, MIODestinationProtocol, FFStorageLocationOutOfDiskSpaceProtocol, FFBackgroundTaskTarget>
 {
@@ -31,13 +31,26 @@
     NSHashTable *_preIngestRADAssets;
     NSMutableSet *_clipsToThumbnail;
     FFPTPDownloadManager *_ptpDownloadManager;
+    NSSet *_keywords;
     BOOL _autoCorrect;
 }
 
++ (id)radVolumeForPTPDeviceSerial:(id)arg1;
++ (void)postUserNotificationForPTPDeviceSerial:(id)arg1;
++ (void)removeRADVolumeUserNotificationPTPDeviceSerial:(id)arg1;
++ (void)removeRADVolumeUserNotificationForURL:(id)arg1;
++ (void)removeUserNotificationOnRADVolume:(id)arg1;
++ (void)ejectRADVolumeAtPath:(id)arg1;
++ (void)restoreOriginalClipIfNecessaryForAsset:(id)arg1 inEvent:(id)arg2;
++ (void)addOwnedClipsToEventMainThread:(id)arg1;
++ (id)generateClipNameFromClip:(id)arg1;
++ (void)removeClipsFromEvent:(id)arg1;
++ (void)addKeywords:(id)arg1 toClip:(id)arg2 inEvent:(id)arg3;
 + (id)radCore;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
 + (id)keyPathsForValuesAffectingImporting;
+@property(retain) NSSet *keywords; // @synthesize keywords=_keywords;
 @property BOOL showsAlert; // @synthesize showsAlert=_showsAlert;
 @property BOOL willCloseDown; // @synthesize willCloseDown=_willCloseDown;
 @property BOOL autoCorrect; // @synthesize autoCorrect=_autoCorrect;
@@ -45,35 +58,47 @@
 @property(retain) NSCondition *condition; // @synthesize condition=_condition;
 @property(retain) FFBackgroundTask *ingestBackgroundTask; // @synthesize ingestBackgroundTask=_ingestBackgroundTask;
 @property(retain) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (id)_importStatusTextDescription;
+- (id)sidebarCameraItems;
+- (void)postIngestCompleteUserNotificationOnRADVolume:(id)arg1;
+- (BOOL)isPTPDownloadRequestPendingOnRADVolume:(id)arg1;
+- (BOOL)isIngestPendingOnRADVolume:(id)arg1;
+- (BOOL)isCopyRequestPendingOnRADVolume:(id)arg1;
+- (void)assetCopyQueueCompletedMainThread:(id)arg1;
+- (void)assetCopyQueueCompleted:(id)arg1;
+- (BOOL)isUserNotificationSupported;
+- (id)librariesInUse;
+- (id)assetsChanging;
+- (id)assetsInUse;
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (void)invalidateRADAssets:(id)arg1;
+- (void)radVolumeWillUnmount:(id)arg1;
 - (void)unregisterRADAssetForVolumeNotifications:(id)arg1;
 - (void)registerRADAssetForVolumeNotifications:(id)arg1;
-- (id)importRangesOfMediaMainThread:(id)arg1;
-- (void)restoreOriginalClipIfNecessaryForAsset:(id)arg1 inEvent:(id)arg2;
-- (void)markImportedRange:(CDStruct_e83c9415)arg1 onClipsWithID:(id)arg2 inVolumes:(id)arg3 originalClip:(id)arg4;
-- (void)addMediaSetToEventMainThread:(id)arg1;
 - (id)importRangesOfMedia:(id)arg1;
-- (id)generateClipNameFromClip:(id)arg1;
+- (void)markImportedRange:(CDStruct_e83c9415)arg1 onClipsWithID:(id)arg2 inVolumes:(id)arg3 originalClip:(id)arg4;
 - (void)canceledTask:(id)arg1;
 - (void)resumedTask:(id)arg1;
 - (BOOL)confirmIsPaused:(id)arg1;
 - (void)pausedTask:(id)arg1;
+- (void)radVolumeDidUnmount:(id)arg1;
+- (void)stopAllIngestsFromVolume:(id)arg1;
 - (void)stopAllIngestsToLocation:(id)arg1;
 - (void)stopAllIngests;
+- (void)updateBackgroundThread;
 - (void)stopIngestOfCurrentClip;
 - (void)restoreMediaMapOnClip:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (BOOL)reimportForOrganizerModule:(id)arg1 organizerSelectionState:(unsigned int)arg2 organizerSelectedBrowser:(unsigned int)arg3 project:(id)arg4 validateOnly:(BOOL)arg5;
+- (BOOL)reimportForClips:(id)arg1 validateOnly:(BOOL)arg2;
+- (BOOL)reimportForSequenceProject:(id)arg1 validateOnly:(BOOL)arg2;
+- (BOOL)reimportForEventProjects:(id)arg1 validateOnly:(BOOL)arg2;
 - (void)reimportAssetRefs:(id)arg1 newEventLocation:(id)arg2;
 - (BOOL)showAllCamerasMissingDialog;
 - (BOOL)showSomeCamerasMissingDialog;
 - (BOOL)showNothingToReimportDialog;
 - (BOOL)showNoCameraClipsReimportDialog;
 - (BOOL)showReimportDialog;
-- (BOOL)ingestClipFFMIORADAsset:(id)arg1 clippedRange:(id)arg2 newClip:(id)arg3 sourceClip:(id)arg4 event:(id)arg5 isReimport:(BOOL)arg6;
+- (BOOL)ingestClipFFMIORADAsset:(id)arg1 clippedRange:(id)arg2 newClip:(id)arg3 sourceClip:(id)arg4 event:(id)arg5 isReimport:(BOOL)arg6 ingestStartDate:(id)arg7;
 - (void)backgroundIngestProgress:(id)arg1 task:(id)arg2;
 - (void)mioIngestError:(id)arg1;
 - (void)mioClipDidIngest:(id)arg1;

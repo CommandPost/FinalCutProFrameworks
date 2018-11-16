@@ -10,26 +10,29 @@
 {
 }
 
-+ (id)projectFolderTree;
-+ (void)ensureProjectsHaveShallowLoaded;
-+ (BOOL)canResetUniqueIdentifierAtOpen:(id)arg1;
 + (id)defaultDocumentName;
-+ (void)setDefaultLocation:(id)arg1;
-+ (id)defaultLocation;
 + (id)projectsRootName;
 + (id)defaultFileExtension;
-+ (id)projectInfo:(id)arg1;
 - (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
+- (BOOL)update_projectSequenceToSequenceInfo;
+- (BOOL)update_redTintThumbnails;
+- (BOOL)update_fixAnalysisKeywords;
+- (BOOL)update_disableAudioUnitEffectClumpFolderReset;
+- (BOOL)update_useRelativeAudioPresetPath;
+- (BOOL)update_removeDisabledAudioEnhancementEffects;
+- (BOOL)update_migrateAudioDisabledChannel;
+- (BOOL)update_moveVolumePanFolder;
+- (BOOL)update_cleanupMediaComponentAudioRoutingMap;
 - (BOOL)update_removeZeroDurationClips;
 - (BOOL)update_clearStorylineClippedRange;
 - (BOOL)update_migrateAudioIntrinsics;
+- (BOOL)update_isTitle;
+- (BOOL)update_hasObjectReferenceAndNonIntrinsicEffects;
 - (BOOL)update_cropAndTrimEffect;
 - (BOOL)update_fixLoudnessAnalysisEffect;
 - (BOOL)update_migrateEffectBundleFormat;
+- (BOOL)update_conformLumaBumpsFromChannelsToData;
 - (BOOL)applyUpdate:(SEL)arg1;
-- (id)initWithCatalog:(id)arg1 store:(id)arg2 ofType:(id)arg3 validate:(BOOL)arg4 error:(id *)arg5;
-- (id)initWithType:(id)arg1 project:(id)arg2 sequence:(id)arg3 error:(id *)arg4;
-- (id)newDefaultProject:(id)arg1 type:(id)arg2;
 
 @end
 

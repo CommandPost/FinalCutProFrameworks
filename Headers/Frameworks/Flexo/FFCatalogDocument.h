@@ -6,49 +6,50 @@
 
 #import "LKDocument.h"
 
-@class FFBinObject, FFCatalog, FFCatalogStore, NSString;
+@class FFCatalog, FFCatalogStore, FFModelObject, NSObject<OS_dispatch_semaphore>, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFCatalogDocument : LKDocument
 {
-    FFBinObject *_root;
-    int _actionLevel;
+    FFModelObject *_root;
     int _syncLevel;
     BOOL _autoCommitEnabled;
     BOOL _needsUpdate;
     BOOL _needsCommit;
-    BOOL _isTemporary;
     BOOL _saveAsync;
     FFCatalog *_catalog;
     FFCatalogStore *_catalogStore;
     NSString *_catalogID;
+    NSObject<OS_dispatch_semaphore> *_backupOK;
 }
 
 + (void)setGlobalDeferSyncCatalogIfNecessary:(BOOL)arg1;
 + (BOOL)copyStore:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
-+ (id)newTemporaryDocument:(id *)arg1;
 + (id)documentFromUniqueIdentifier:(id)arg1;
 + (id)documentForRootObject:(id)arg1;
 + (id)copyCatalogAndObjectID:(id)arg1;
-- (BOOL)keepBackupFile;
-- (void)saveDocumentWithDelegate:(id)arg1 didSaveSelector:(SEL)arg2 contextInfo:(void *)arg3;
+- (void)waitForBackup;
+- (void)scheduleBackup;
+- (id)writeBackup:(id *)arg1;
+- (BOOL)backupNeeded;
 - (BOOL)writeSafelyToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)writeToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 originalContentsURL:(id)arg4 error:(id *)arg5;
 - (BOOL)writeToURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
 - (BOOL)readFromURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
-- (BOOL)createCatalogStore:(id)arg1 error:(id *)arg2;
+- (BOOL)makeDefaultStore:(id)arg1 error:(id *)arg2;
 - (void)setDeferSyncCatalogIfNecessary:(BOOL)arg1;
 - (void)endUndoContext:(id)arg1;
 - (void)beginUndoContext:(id)arg1;
+- (void)stopObservingCatalog;
+- (void)startObservingCatalog;
 - (void)updateChangeCount:(unsigned long long)arg1;
 - (void)canCloseDocumentWithDelegate:(id)arg1 shouldCloseSelector:(SEL)arg2 contextInfo:(void *)arg3;
-- (void)catalogNeedsSave:(id)arg1;
-- (void)catalogNeedsUpdate:(id)arg1;
 - (void)syncCatalogIfPossible;
 - (void)syncCatalogIfNecessary;
+- (BOOL)allowsDeferredSync;
 - (void)syncCatalog:(id)arg1;
 - (void)syncCatalog:(id)arg1 withSave:(int)arg2;
-- (void)commitCatalogFailed:(id)arg1 sendNotification:(BOOL)arg2;
+- (void)commitCatalogFailed:(id)arg1;
 - (BOOL)commitCatalog:(id *)arg1 async:(BOOL)arg2;
 - (BOOL)updateCatalog:(id *)arg1;
 - (BOOL)canAutoCommit;
@@ -61,7 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)rootObjectID;
 - (id)sharedLock;
 - (id)displayName;
-- (unsigned long long)actionLevel;
+- (BOOL)hasOpenUndoScope;
 - (BOOL)needsCommit;
 - (BOOL)needsUpdate;
 - (void)setAutoCommitEnabled:(BOOL)arg1;
@@ -80,11 +81,8 @@ __attribute__((visibility("hidden")))
 - (void)presentedItemDidMoveToURL:(id)arg1;
 - (BOOL)moveStore:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (BOOL)copyStore:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
-- (BOOL)isTemporary;
 - (void)close;
-- (void)_removeTemporaryItems;
 - (void)dealloc;
-- (id)init;
 - (id)initWithType:(id)arg1 error:(id *)arg2;
 - (id)initWithCatalog:(id)arg1 store:(id)arg2 ofType:(id)arg3 error:(id *)arg4;
 - (id)initWithContentsOfURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;

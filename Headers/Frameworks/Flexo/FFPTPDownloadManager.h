@@ -24,6 +24,7 @@
     NSMutableArray *_canceledDownloadRequests;
 }
 
++ (void)updateSpotlightMetadataOfFileAtPath:(id)arg1;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
 - (void)reimportCameraFile:(id)arg1 forAssetRef:(id)arg2 intoEvent:(id)arg3;
@@ -35,14 +36,14 @@
 - (BOOL)confirmIsPaused:(id)arg1;
 - (void)resumedTask:(id)arg1;
 - (void)pausedTask:(id)arg1;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (void)downloadProgress:(id)arg1 onTask:(id)arg2;
 - (void)showCameraFileDownloadErrorAlert:(id)arg1;
 - (void)cameraFileDownloadError:(id)arg1 error:(id)arg2;
 - (void)cameraFileDownloadCanceled:(id)arg1;
 - (void)cameraFileDidDownload:(id)arg1;
-- (void)updateSpotlightMetadataOfFileAtPath:(id)arg1;
+- (void)removeDestinationFolderForDownloadRequest:(id)arg1;
 - (void)cameraFileWillDownload:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)didRemoveDevice:(id)arg1;
@@ -52,7 +53,7 @@
 - (unsigned long long)removeCanceledDownloadRequestsForDevice:(id)arg1;
 - (void)cancelAll;
 - (void)resetImportedRangeMarkerForDownloadRequest:(id)arg1;
-- (id)importRangesOfMedia:(id)arg1 toEvent:(id)arg2;
+- (id)importRangesOfMedia:(id)arg1 toEvent:(id)arg2 keywords:(id)arg3 importStartDate:(id)arg4;
 - (id)ptpDeviceManager;
 - (void)appWillTerminate:(id)arg1;
 - (void)dealloc;

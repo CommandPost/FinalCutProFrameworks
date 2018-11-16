@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FFXMLParameterNode : NSObject
 {
     NSString *_name;
+    NSString *_paramKey;
     NSString *_value;
     NSMutableArray *_keyframes;
     NSMutableArray *_subnodes;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL impliedTimes; // @synthesize impliedTimes=_impliedTimes;
 @property(nonatomic) BOOL isDefault; // @synthesize isDefault=_isDefault;
 @property(copy, nonatomic) NSString *initialValue; // @synthesize initialValue=_value;
+@property(copy, nonatomic) NSString *paramKey; // @synthesize paramKey=_paramKey;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)copyAsVector;
 - (BOOL)isVector;

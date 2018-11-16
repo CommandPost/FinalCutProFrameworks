@@ -13,6 +13,7 @@
 
 @interface PEVoiceoverRecordController : NSWindowController <NSWindowDelegate, NSTextFieldDelegate>
 {
+    struct PEVoiceOverPlayerState _playerState;
     LKButton *_combinedRecordStopButton;
     PERecorderMeterView *_meterView;
     LKPopUpButton *_recordTargetPopup;
@@ -56,6 +57,7 @@
 - (void)toggleRecord:(id)arg1;
 - (void)stopRecord:(BOOL)arg1;
 - (void)startRecord;
+- (void)_configurePlayerForRecording:(BOOL)arg1;
 - (void)showWindow:(id)arg1;
 - (void)windowWillClose:(id)arg1;
 - (void)windowDidExpose:(id)arg1;
@@ -68,13 +70,14 @@
 - (void)changeMediaEventTarget:(id)arg1;
 - (void)_playerModuleDidPlayPause:(id)arg1;
 - (void)_editSequenceClipFromRecordedFile:(id)arg1 displayName:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (BOOL)actionAddMediaObjects:(id)arg1 toEvent:(id)arg2 error:(id *)arg3;
+- (BOOL)actionAddOwnedClipObjects:(id)arg1 toEvent:(id)arg2 error:(id *)arg3;
 - (void)_setUpUIForRecordRolling;
 - (void)_setUpUIForRecordReady;
 - (void)_setEnableRecordButtonFromRate:(double)arg1;
 - (void)_recreateVORecorder;
 - (void)_releaseVORecorder;
 - (void)_createVORecorder;
+- (void)_setupEventSelectionMenu;
 - (void)_registerPlayPauseNotification;
 - (void)_unregisterPlayPauseNotification;
 - (void)_setUpGainTextFields;

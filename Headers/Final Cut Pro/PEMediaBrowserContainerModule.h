@@ -6,12 +6,13 @@
 
 #import "LKTabModule.h"
 
+#import "FFEditActionSourceProtocol.h"
 #import "FFEffectLibraryModuleDelegate.h"
 #import "FFEventsLibraryDelegate.h"
 
 @class FFContentBrowserWrapperModule, FFMediaBrowserModule, LKButton, LKTextField, NSView;
 
-@interface PEMediaBrowserContainerModule : LKTabModule <FFEventsLibraryDelegate, FFEffectLibraryModuleDelegate>
+@interface PEMediaBrowserContainerModule : LKTabModule <FFEditActionSourceProtocol, FFEventsLibraryDelegate, FFEffectLibraryModuleDelegate>
 {
     int _mode;
     FFContentBrowserWrapperModule *_contentBrowserModule;
@@ -21,17 +22,18 @@
     LKButton *_paneCapCategoryButton;
     NSView *_accessoryView;
     LKButton *_closeButton;
+    LKButton *_4kFilterCheckBox;
+    BOOL _observingTimeline;
 }
 
+- (struct CGRect)animationStartRectForEditAction:(id)arg1;
+- (id)animationViewForEditAction:(id)arg1;
+- (struct CGImage *)newAnimationImageForEditAction:(id)arg1;
+- (BOOL)writeDataForEditAction:(id)arg1 toPasteboardWithName:(id)arg2;
+- (id)dataForEditAction:(id)arg1;
+- (BOOL)canSourceDataForEditAction:(id)arg1;
 - (void)didFinishRelinkingForOrganizerModule:(id)arg1;
 - (void)willBeginRelinkingForOrganizerModule:(id)arg1;
-- (void)insertKeyDown:(id)arg1;
-- (void)anchorWithSelectedMediaBacktimed:(id)arg1;
-- (void)overwriteWithSelectedMediaBacktimed:(id)arg1;
-- (void)overwriteWithSelectedMedia:(id)arg1;
-- (void)appendWithSelectedMedia:(id)arg1;
-- (void)insertWithSelectedMedia:(id)arg1;
-- (void)anchorWithSelectedMedia:(id)arg1;
 - (void)writeSelectionToPasteboard:(id)arg1;
 - (void)module:(id)arg1 didDoubleClickWithEffect:(id)arg2;
 - (void)module:(id)arg1 didDoubleClickWithEffectID:(id)arg2;
@@ -56,6 +58,7 @@
 - (void)makeSequenceActive:(id)arg1;
 - (void)makeProjectActive:(id)arg1;
 - (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_5c5366e1)arg2;
+- (void)toggle4k:(id)arg1;
 - (void)hideMediaBrowser:(id)arg1;
 - (void)selectBrowserMode:(id)arg1;
 - (void)selectThemesMode:(id)arg1;
@@ -70,14 +73,20 @@
 - (id)lastKeyView;
 - (id)firstKeyView;
 - (void)moduleDidUnhide;
+- (void)moduleDidHide;
 - (id)moduleAccessoryView;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
 - (id)submoduleLayoutArray;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)viewWasInstalled;
 - (void)addMediaBrowserModule:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)sequenceFormatChanged:(id)arg1;
+- (void)set4kCheckboxForSequence:(id)arg1;
 - (int)currentEffectsMode;
 - (void)setMode:(int)arg1;
-- (void)setBrowserMode;
+- (void)setBrowserMode:(BOOL)arg1;
 - (void)updatePaneCapTitle;
 - (unsigned long long)revealAnimationStyle;
 - (struct CGSize)viewMinSize;

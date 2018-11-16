@@ -13,7 +13,7 @@
 
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
 - (void)dealloc;
-- (BOOL)buildUIWithSceneNodes:(list_1192f13f *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_d81b4758 *)arg1 context:(id)arg2;
 - (void)enableDisableUI;
 
 @end

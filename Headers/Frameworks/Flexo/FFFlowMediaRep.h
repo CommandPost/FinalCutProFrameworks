@@ -8,7 +8,7 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBackgroundTask, NSIndexSet, NSString;
+@class FFBackgroundTask, FFPixelBuffer, FFStreamVideo, NSIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFFlowMediaRep : FFMediaRep <FFBackgroundTaskTarget>
@@ -16,23 +16,35 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _range;
     FFBackgroundTask *_backgroundTask;
     CDStruct_bdcb2b0d _segmentMD5;
+    FFStreamVideo *_stream;
+    FFPixelBuffer *_pixelBuffer1;
+    FFPixelBuffer *_pixelBuffer2;
+    int _allFrames;
+    float _finishedFrames;
     NSString *_folderForMD5;
     NSIndexSet *_cachedHasVectors;
 }
 
 + (id)copyClassDescription;
+@property(retain, nonatomic) FFPixelBuffer *pixelBuffer2; // @synthesize pixelBuffer2=_pixelBuffer2;
+@property(retain, nonatomic) FFPixelBuffer *pixelBuffer1; // @synthesize pixelBuffer1=_pixelBuffer1;
 - (id).cxx_construct;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
-- (id)copyForMedia:(id)arg1;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)analysisURL;
 - (void)drawVectorsIntoBuffer:(id)arg1 motionVector:(void *)arg2 vectorRes:(unsigned int)arg3 drawArrow:(BOOL)arg4 colorSpace:(struct CGColorSpace *)arg5;
 - (void)maxFlow:(void *)arg1 width:(int)arg2 height:(int)arg3 vectorRes:(unsigned int)arg4 maxX:(int *)arg5 maxY:(int *)arg6;
 - (CDStruct_bdcb2b0d)md5Key;
-- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1;
+- (id)backgroundTask;
+- (int)allFrames;
+- (void)increaseFinishedFrames:(float)arg1;
+- (float)finishedFrames;
+- (id)stream;
+- (int)mediaEndSampleNumber;
 - (CDStruct_1b6d18a9)sampleDuration;
+- (unsigned int)flowResolution;
 - (void)setFlowVectors:(CDStruct_e83c9415)arg1;
 - (BOOL)hasFlowVectorForTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2;
 - (id)newScheduledFlowVectorsAtTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2;
@@ -47,7 +59,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateCachedFlowVectors:(long long)arg1 checkDisk:(BOOL)arg2 isInitializing:(BOOL)arg3;
 - (void)setCachedFlowVectors:(id)arg1;
 - (void)anaylyzeRange:(id)arg1 startTime:(CDStruct_1b6d18a9)arg2 endTime:(CDStruct_1b6d18a9)arg3 totalFrames:(int)arg4 finishedFrames:(int)arg5 step:(int)arg6 task:(id)arg7 allFrames:(int)arg8 field:(int)arg9;
-- (void)storeFlowVectors:(id)arg1 frameWidth:(int)arg2 frameHeight:(int)arg3 vectorRes:(unsigned int)arg4 sampleOffset:(long long)arg5 imageBuffer:(id)arg6;
+- (void)analyzeSubRange:(id)arg1 startFrame:(int)arg2 endFrame:(int)arg3;
+- (void)storeFlowVectors:(id)arg1 sampleOffset:(long long)arg2;
 - (id)renderFilesPaths;
 - (id)renderFileFolderURL;
 

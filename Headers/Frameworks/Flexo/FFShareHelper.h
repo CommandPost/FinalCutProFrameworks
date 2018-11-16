@@ -15,25 +15,10 @@
 
 @property(nonatomic) id <NSObject><FFSharableContent> owner; // @synthesize owner=_owner;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (id)shareActions;
 - (void)openInCompressor:(id)arg1;
 - (void)shareToDefaultDestination:(id)arg1;
 - (void)shareToDestination:(id)arg1;
-- (void)exportUsingCompressorSetting:(id)arg1;
-- (void)exportHTTPLiveStreaming:(id)arg1;
-- (void)exportImageSequence:(id)arg1;
-- (void)exportStillFrame:(id)arg1;
-- (void)exportMedia:(id)arg1;
-- (void)exportAudio:(id)arg1;
-- (void)exportMovie:(id)arg1;
-- (void)publishCNNiReport:(id)arg1;
-- (void)publishVimeo:(id)arg1;
-- (void)publishFacebook:(id)arg1;
-- (void)publishYouTube:(id)arg1;
-- (void)sendEmail:(id)arg1;
-- (void)burnBluray:(id)arg1;
-- (void)burnDVD:(id)arg1;
-- (void)exportiTunes:(id)arg1;
-- (void)exportMediaBrowser:(id)arg1;
 - (void)_exportUsingSelector:(SEL)arg1 sender:(id)arg2;
 - (void)missingMediaAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)exportUsingSelector:(SEL)arg1 sender:(id)arg2;

@@ -11,7 +11,6 @@
 
 @interface OZFxPlugProgressAPI : NSObject <FxProgressAPI, PROAPIObject>
 {
-    const struct OZProcessControl *_control;
 }
 
 + (void)releaseSharedProgressAPI;

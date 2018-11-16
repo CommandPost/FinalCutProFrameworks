@@ -84,12 +84,13 @@
 - (void)move:(const PCVector3_457fd1f0 *)arg1;
 - (void)rotate:(id)arg1 angle:(double)arg2;
 - (void)updateScale:(const PCVector3_457fd1f0 *)arg1 scaleFromCentre:(_Bool)arg2 hitPart:(int)arg3;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)updateInfoBarWithScale:(const PCVector3_457fd1f0 *)arg1 andRotation:(double)arg2 andRotationDelta:(double)arg3 andRoundness:(double)arg4;
 - (void)updateInfoBarWithPosition;
+- (BOOL)bgIsBeingTranslated;
 - (id)accessibilityHandleName;
 - (struct CGRect)getBounds;
 - (void)snapshotState;

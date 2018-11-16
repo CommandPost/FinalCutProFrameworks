@@ -6,9 +6,12 @@
 
 #import "NSObject.h"
 
-@class NSArray;
+@class CHChannelBase, NSArray;
 
 @protocol FFCurveEditorEffectDelegate <NSObject>
 - (NSArray *)effectsToDisplay;
+
+@optional
+- (void)sender:(id)arg1 willSetChannel:(CHChannelBase *)arg2;
 @end
 

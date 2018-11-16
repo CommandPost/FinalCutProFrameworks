@@ -62,12 +62,14 @@
 - (unsigned int)height;
 - (unsigned int)width;
 @property BOOL inputting;
+- (void)setOutputDisplayOrder:(BOOL)arg1;
+- (unsigned long long)outputNSScreenIndex;
 - (void)setCurrentOutputConfigurationFromStreamID:(unsigned int)arg1;
 @property(retain) NSNumber *currentOutputFrameRate;
 @property(retain) NSNumber *currentInputFrameRate;
 @property(readonly) NSArray *controls; // @synthesize controls=mControls;
 - (void)refreshFormats;
-- (struct OpaqueFigClock *)clock;
+- (struct OpaqueCMClock *)clock;
 - (struct opaqueCMFormatDescription *)currentOutputFormatDescription;
 @property(retain) NSString *currentOutputFormat;
 @property(readonly) NSArray *outputFormats; // @synthesize outputFormats=mOutputFormats;

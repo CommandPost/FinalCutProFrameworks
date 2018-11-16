@@ -34,8 +34,10 @@
 - (void)pauseResumeTasks:(id)arg1;
 - (void)cancelShowTasks:(id)arg1;
 - (void)showHideTasks:(id)arg1;
+- (BOOL)shouldShowTimeRemaining;
 - (BOOL)containsTileForTask:(id)arg1;
 - (id)tileForTask:(id)arg1;
+- (unsigned long long)numberOfTaskTiles;
 - (void)removeTileForTask:(id)arg1;
 - (void)addTileForTask:(id)arg1;
 - (void)_decrementTaskCount:(id)arg1;
@@ -43,7 +45,9 @@
 - (void)_resetTaskCount;
 - (id)_scheduleNewTimer;
 - (void)updateWithTimer:(id)arg1;
+- (void)updateActionView;
 - (void)updateUI;
+- (void)setExpanded:(BOOL)arg1;
 - (void)setCanExpand:(BOOL)arg1;
 - (id)groupName;
 - (void)dealloc;

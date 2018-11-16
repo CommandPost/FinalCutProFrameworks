@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingMasterSubitems;
 + (id)keyPathsForValuesAffectingItems;
 + (id)keyPathsForValuesAffectingItemDisplayName;
+- (BOOL)mergeChild:(id)arg1;
 - (id)addUntitledFolder;
 - (id)addUntitledSmartCollection;
 - (id)addUntitledKeyword;
@@ -75,6 +76,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL hasMasterSubitems;
 @property(readonly, nonatomic) NSArray *items;
 @property(readonly, nonatomic) NSString *itemPersistentIdentifier;
+- (id)itemIconSelected:(BOOL)arg1;
 @property(readonly, nonatomic) NSImage *itemIcon;
 @property(readonly, nonatomic) BOOL itemDisplayNameEditable;
 - (void)setItemDisplayName:(id)arg1;

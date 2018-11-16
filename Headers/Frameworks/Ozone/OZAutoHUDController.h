@@ -6,9 +6,11 @@
 
 #import <Ozone/OZHUDController.h>
 
+#import "OZHGUserJobClient.h"
+
 @class OZMoViewCtlrDelegate, OZViewCtlrRoot;
 
-@interface OZAutoHUDController : OZHUDController
+@interface OZAutoHUDController : OZHUDController <OZHGUserJobClient>
 {
     OZViewCtlrRoot *_pViewController;
     OZMoViewCtlrDelegate *_pViewCtlrDelegate;
@@ -21,15 +23,17 @@
 - (float)defaultParamWidth;
 - (float)defaultLabelWidth;
 - (struct OZChannelFolder *)getRootChan:(struct OZObjectManipulator *)arg1;
-- (void)buildUIWithObjectList:(list_37573188 *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)buildUIWithObjectList:(list_4c5ca08a *)arg1 viewController:(id)arg2 context:(id)arg3;
 - (void)notify:(unsigned int)arg1;
 - (void)evaluateChannels:(struct OZScene *)arg1 atTime:(CDStruct_1b6d18a9)arg2 wait:(BOOL)arg3;
+- (void)userJobCanceled:(struct OZHGUserJob *)arg1;
+- (void)userJobFinished:(struct OZHGUserJob *)arg1;
 - (void)setIsEvaluationComplete:(BOOL)arg1;
 - (void)updateViewFinalFrame;
 - (BOOL)loadView;
 - (id)createViewControllerWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)dealloc;
-- (id)initWithObjectList:(list_0555a7a2 *)arg1;
+- (id)initWithObjectList:(list_e68da02e *)arg1;
 
 @end
 

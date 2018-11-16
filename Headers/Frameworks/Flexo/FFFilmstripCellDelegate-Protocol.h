@@ -7,6 +7,7 @@
 #import "NSObject.h"
 
 @protocol FFFilmstripCellDelegate <NSObject>
-- (BOOL)highPriorityThumbnailGeneration;
+- (BOOL)useImageCache;
+- (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
 @end
 

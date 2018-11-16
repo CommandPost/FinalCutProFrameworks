@@ -10,33 +10,21 @@
 
 @interface TLKLayoutMetrics : NSObject <NSCopying>
 {
-    double _baseSpineItemHeight;
-    double _baseAnchoredItemHeight;
-    double _baseSplitItemHeight;
-    double _audioWaveFormProportion;
-    double _itemHeightAdjustment;
-    double _splitItemOffsetSpacing;
-    struct CGSize _itemSpacing;
+    double _itemLaneSpacing;
+    double _itemLanePadding;
+    double _lineSpacing;
+    double _topLinePadding;
+    double _bottomLinePadding;
     int _clipDisplayMode;
-    struct {
-        unsigned int showClipTitlesOnly:1;
-        unsigned int RESERVED:31;
-    } _tlkLayoutFlags;
 }
 
-@property(nonatomic) double splitItemOffsetSpacing; // @synthesize splitItemOffsetSpacing=_splitItemOffsetSpacing;
-@property(nonatomic) int displayMode; // @synthesize displayMode=_clipDisplayMode;
-@property(nonatomic) struct CGSize itemSpacing; // @synthesize itemSpacing=_itemSpacing;
-@property(nonatomic) double itemHeightAdjustment; // @synthesize itemHeightAdjustment=_itemHeightAdjustment;
-@property(nonatomic) double audioWaveFormProportion; // @synthesize audioWaveFormProportion=_audioWaveFormProportion;
-@property(nonatomic) double baseSplitItemHeight; // @synthesize baseSplitItemHeight=_baseSplitItemHeight;
-@property(nonatomic) double baseAnchoredItemHeight; // @synthesize baseAnchoredItemHeight=_baseAnchoredItemHeight;
-@property(nonatomic) double baseSpineItemHeight; // @synthesize baseSpineItemHeight=_baseSpineItemHeight;
-- (double)audioComponentItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
-- (double)splitItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
-- (double)anchoredItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
-@property(readonly, nonatomic) double spineItemHeight;
-@property(nonatomic) BOOL showClipTitlesOnly;
+@property(nonatomic) int clipDisplayMode; // @synthesize clipDisplayMode=_clipDisplayMode;
+@property(nonatomic) double lineSpacing; // @synthesize lineSpacing=_lineSpacing;
+@property(nonatomic) double bottomLinePadding; // @synthesize bottomLinePadding=_bottomLinePadding;
+@property(nonatomic) double topLinePadding; // @synthesize topLinePadding=_topLinePadding;
+@property(nonatomic) double itemLaneSpacing; // @synthesize itemLaneSpacing=_itemLaneSpacing;
+@property(nonatomic) double itemLanePadding; // @synthesize itemLanePadding=_itemLanePadding;
+- (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

@@ -8,43 +8,42 @@
 
 #import "FFAssetCopyQueueDelegateProtocol.h"
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
+#import "NSOpenSavePanelDelegate.h"
 
-@class FFStorageLocation, NSArrayController, NSButton, NSMutableArray, NSMutableDictionary, NSPopUpButton, NSProgressIndicator, NSString, NSTextField, NSWindow;
+@class FFStorageLocation, NSButton, NSMutableArray, NSMutableDictionary, NSProgressIndicator, NSString, NSTextField, NSView, NSWindow;
 
 __attribute__((visibility("hidden")))
-@interface FFCameraArchiveController : NSWindowController <FFAssetCopyQueueDelegateProtocol, FFStorageLocationOutOfDiskSpaceProtocol>
+@interface FFCameraArchiveController : NSWindowController <FFAssetCopyQueueDelegateProtocol, FFStorageLocationOutOfDiskSpaceProtocol, NSOpenSavePanelDelegate>
 {
-    NSTextField *_archiveNameTextField;
-    NSTextField *_archiveSizeLabelTextField;
+    NSButton *_addArchiveToFavoritesCheckbox;
     NSTextField *_archiveSizeTextField;
-    NSPopUpButton *_storageLocationsPopupMenu;
-    NSArrayController *_storageLocationsArrayController;
-    NSButton *_okButton;
+    NSView *_savePanelAccessoryView;
     NSWindow *_archiveMountProgressWindow;
     NSTextField *_archiveMountLabel;
     NSProgressIndicator *_archiveMountProgressIndicator;
     NSString *_archiveMountLabelFormatString;
     NSMutableArray *_archiveVolumesToMount;
     FFStorageLocation *_selectedStorageLocation;
-    NSString *_archiveName;
-    NSString *_lastStorageLocationDiskUUID;
     unsigned long long _archiveSize;
     NSMutableArray *_archives;
     NSMutableDictionary *_archivesDict;
     NSMutableDictionary *_archiveCopyQueueDict;
     NSMutableDictionary *_archiveSourceVolumesDict;
+    NSString *_archiveName;
+    NSString *_lastStorageLocationDiskUUID;
 }
 
++ (BOOL)isNetworkVolume:(id)arg1;
 + (id)pluginUUIDForRADVolume:(id)arg1;
 + (BOOL)isValidCameraArchive:(id)arg1;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
+@property(copy) NSString *lastStorageLocationDiskUUID; // @synthesize lastStorageLocationDiskUUID=_lastStorageLocationDiskUUID;
+@property(copy) NSString *archiveName; // @synthesize archiveName=_archiveName;
 @property(retain) NSMutableDictionary *archiveSourceVolumesDict; // @synthesize archiveSourceVolumesDict=_archiveSourceVolumesDict;
 @property(retain) NSMutableDictionary *archiveCopyQueueDict; // @synthesize archiveCopyQueueDict=_archiveCopyQueueDict;
 @property(retain) NSMutableDictionary *archivesDict; // @synthesize archivesDict=_archivesDict;
 @property(retain) NSMutableArray *archives; // @synthesize archives=_archives;
-@property(copy) NSString *lastStorageLocationDiskUUID; // @synthesize lastStorageLocationDiskUUID=_lastStorageLocationDiskUUID;
-@property(copy) NSString *archiveName; // @synthesize archiveName=_archiveName;
 @property(retain) FFStorageLocation *selectedStorageLocation; // @synthesize selectedStorageLocation=_selectedStorageLocation;
 - (void)archiveVolumeFailedToMount:(id)arg1;
 - (void)archiveVolumeDidMount:(id)arg1;
@@ -55,15 +54,10 @@ __attribute__((visibility("hidden")))
 - (void)mountArchiveVolume:(id)arg1;
 - (void)updateArchiveSourceVolume:(id)arg1;
 - (id)sourceVolumeForPath:(id)arg1;
-- (id)archiveVolumeForPath:(id)arg1;
-- (void)removeArchiveVolume:(id)arg1;
-- (void)addArchiveVolume:(id)arg1;
-- (void)refreshArchivesListForArchiveRootPath:(id)arg1;
-- (void)refreshArchivesList;
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (void)taskWasCancelled:(id)arg1;
 - (void)finalizeCopyQueueForCopyRequest:(id)arg1 canceled:(BOOL)arg2;
-- (void)refreshSidebarOnArchiveCompletionForVolume:(id)arg1;
+- (void)addArchiveToFavorites:(id)arg1;
 - (void)copyCompleted:(id)arg1;
 - (id)clipIDForQTFileAtPath:(id)arg1;
 - (BOOL)writeMetadataDictionaryForQTArchive:(id)arg1 atArchivePath:(id)arg2 isPrimary:(BOOL)arg3;
@@ -73,13 +67,10 @@ __attribute__((visibility("hidden")))
 - (void)tapeArchiveEndedForDevice:(id)arg1;
 - (void)startTapeArchiveAtPath:(id)arg1 tapeDevice:(id)arg2;
 - (BOOL)writeMetadataDictionary:(id)arg1 atArchivePath:(id)arg2 clipIDs:(id)arg3 isTape:(BOOL)arg4 isPrimary:(BOOL)arg5;
-- (void)archiveOptionsSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)endSheet:(id)arg1;
-- (void)beginOptionsSheetForWindow:(id)arg1 source:(id)arg2 initialStorageLocation:(id)arg3;
-- (void)beginOptionsSheetForWindow:(id)arg1 volume:(id)arg2 initialStorageLocation:(id)arg3;
-- (void)beginOptionsSheetForWindow:(id)arg1 tapeDevice:(id)arg2 defaultArchiveName:(id)arg3;
-- (void)unbind;
-- (void)bind;
+- (BOOL)panel:(id)arg1 validateURL:(id)arg2 error:(id *)arg3;
+- (void)beginOptionsSheetForWindow:(id)arg1 source:(id)arg2;
+- (void)beginOptionsSheetForWindow:(id)arg1 volume:(id)arg2;
+- (void)beginOptionsSheetForWindow:(id)arg1 tapeDevice:(id)arg2;
 - (void)dealloc;
 - (id)init;
 

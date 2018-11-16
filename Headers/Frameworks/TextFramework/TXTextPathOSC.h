@@ -10,13 +10,10 @@
 
 @interface TXTextPathOSC : POCustomMotionPath <OZObjCObserver>
 {
-    struct PCPtr<POMultiResTexture> _textPathHandlesTexture;
     struct OZChannelRef *_pChannelRef;
 }
 
 + (void)maybeInitResources;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (struct TXTextLayout *)getTextLayout;
 - (id)returnCurveMenu:(id)arg1;
 - (id)returnPointMenu:(id)arg1;

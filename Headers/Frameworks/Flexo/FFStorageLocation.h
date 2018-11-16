@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFStorageManager, NSAttributedString, NSLock, NSMutableArray, NSString, NSThread, NSURL;
+@class FFFileLock, FFStorageManager, NSAttributedString, NSImage, NSLock, NSMutableArray, NSObject<OS_dispatch_semaphore>, NSObject<OS_dispatch_source>, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFStorageLocation : NSObject
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     double _availableSpace;
     BOOL _isBootVolume;
     BOOL _isMoviesVolume;
-    BOOL _use;
     BOOL _isNetworkVolume;
     NSURL *_volumeURL;
     NSURL *_storageRootURL;
@@ -26,17 +25,18 @@ __attribute__((visibility("hidden")))
     unsigned long long _minimumAvailableSpace;
     NSMutableArray *_outOfDiskSpaceObservers;
     NSLock *_outOfDiskSpaceObserversLock;
-    NSThread *_checkAvailableDiskSpaceThread;
-    BOOL _isLocked;
-    int _fileLock;
+    NSObject<OS_dispatch_semaphore> *_timerLock;
+    NSObject<OS_dispatch_semaphore> *_timerSync;
+    NSObject<OS_dispatch_source> *_timer;
+    unsigned long long _lastIntervalSet;
+    FFFileLock *_fileLock;
     NSString *_hostName;
+    NSImage *_itemIcon;
 }
 
-+ (id)createPath:(id)arg1;
 + (id)valueStringWithUnitFromByteValue:(double)arg1;
 + (id)actualDevicePathIfPathIsDiskImage:(id)arg1;
 + (long long)sizeInBytesOfFileAtURL:(id)arg1;
-+ (id)sharedPrefsDirectory;
 @property(readonly) short volumeRefNum; // @synthesize volumeRefNum=_volumeRefNum;
 @property(readonly) NSString *hostName; // @synthesize hostName=_hostName;
 @property(readonly) BOOL isNetworkVolume; // @synthesize isNetworkVolume=_isNetworkVolume;
@@ -46,11 +46,11 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSURL *volumeURL; // @synthesize volumeURL=_volumeURL;
 @property(readonly) NSString *locationName; // @synthesize locationName=_locationName;
 @property(readonly) NSString *diskUUID; // @synthesize diskUUID=_diskUUID;
+@property(readonly, nonatomic) NSImage *itemIcon;
 - (BOOL)unlock;
 - (BOOL)lock;
 - (void)renameVolume:(id)arg1;
 - (id)locationNameWithAvailableSize;
-@property BOOL use;
 - (id)volumePath;
 @property(readonly) NSAttributedString *usableSpaceString;
 @property(readonly) NSAttributedString *availableSpaceString;
@@ -64,10 +64,9 @@ __attribute__((visibility("hidden")))
 - (long long)availableSpaceInBytes;
 - (BOOL)isCaseSensitive;
 - (BOOL)isTimeMachineVolume;
-- (void)updateName;
 - (id)description;
 - (void)dealloc;
-- (id)initWithVolumeRefNum:(short)arg1 storageManager:(id)arg2 networkPath:(id)arg3 inUse:(char *)arg4;
+- (id)initWithVolumeRefNum:(short)arg1 storageManager:(id)arg2 networkPath:(id)arg3;
 - (BOOL)stringIsIPAddress:(id)arg1;
 
 @end

@@ -13,7 +13,7 @@
 
 - (void)setupDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 channel:(struct OZChannelBase *)arg3 location:(unsigned int)arg4;
 - (unsigned long long)controller:(id)arg1 draggingSourceOperationMaskForChannel:(struct OZChannelBase *)arg2 forLocal:(BOOL)arg3;
-- (void)controller:(id)arg1 writeChannels:(list_eea5731a *)arg2 toPasteboard:(id)arg3;
+- (void)controller:(id)arg1 writeChannels:(list_e802f8b8 *)arg2 toPasteboard:(id)arg3;
 - (BOOL)controller:(id)arg1 shouldDragChannel:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 setName:(id)arg2;
 - (id)controllerOverriddenName:(id)arg1;

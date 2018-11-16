@@ -44,7 +44,7 @@
 - (double)canvasZoom;
 - (void)convertPointFromSpace:(unsigned long long)arg1 fromX:(double)arg2 fromY:(double)arg3 toSpace:(unsigned long long)arg4 toX:(double *)arg5 toY:(double *)arg6;
 - (int)getActivePart;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (BOOL)keyUpOSC:(id)arg1;
 - (BOOL)keyDownOSC:(id)arg1;
 - (void)mouseExited:(id)arg1;

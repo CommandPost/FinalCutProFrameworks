@@ -11,6 +11,7 @@
 @protocol NSApplicationDelegate <NSObject>
 
 @optional
+- (void)applicationDidChangeOcclusionState:(NSNotification *)arg1;
 - (void)applicationDidChangeScreenParameters:(NSNotification *)arg1;
 - (void)applicationWillTerminate:(NSNotification *)arg1;
 - (void)applicationDidUpdate:(NSNotification *)arg1;

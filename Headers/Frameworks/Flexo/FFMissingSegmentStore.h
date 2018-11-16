@@ -16,11 +16,12 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
+- (BOOL)removePaths:(id)arg1;
 - (void)addPaths:(id)arg1;
 - (BOOL)pathsInclude:(id)arg1;
 - (BOOL)matches:(CDStruct_bdcb2b0d *)arg1;
 - (void)dealloc;
-- (id)initWithMD5:(CDStruct_bdcb2b0d)arg1;
+- (id)initWithMD5:(CDStruct_bdcb2b0d)arg1 andPathSet:(id)arg2;
 
 @end
 

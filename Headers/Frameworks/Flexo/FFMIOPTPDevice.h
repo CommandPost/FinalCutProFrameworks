@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)keyPathsForValuesAffectingPercentDone;
-+ (id)keyPathsForValuesAffectingDisplayMediaSet;
++ (id)keyPathsForValuesAffectingDisplayOwnedClips;
 @property float percentDone; // @synthesize percentDone=_percentDone;
 @property(readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property(readonly) ICCameraDevice *cameraDevice; // @synthesize cameraDevice=_cameraDevice;

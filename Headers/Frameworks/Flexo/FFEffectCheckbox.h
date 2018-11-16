@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FFEffectCheckbox : NSObject
 {
     NSString *_name;
+    NSString *_effectID;
     FFEffect *_effect;
     LKButton *_checkbox;
     BOOL _inset;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL inset; // @synthesize inset=_inset;
 @property(nonatomic) LKButton *checkbox; // @synthesize checkbox=_checkbox;
 @property(nonatomic) FFEffect *effect; // @synthesize effect=_effect;
+@property(nonatomic) NSString *effectID; // @synthesize effectID=_effectID;
 @property(nonatomic) NSString *name; // @synthesize name=_name;
 
 @end

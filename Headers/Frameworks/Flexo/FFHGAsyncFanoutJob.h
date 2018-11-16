@@ -6,7 +6,7 @@
 
 #import <Flexo/FFHGAsyncJob.h>
 
-@class FFHGAsyncQueue, FFImage, NSConditionLock, NSMutableArray, NSObject<HGRQJobProtocol>;
+@class FFHGAsyncQueue, FFImage, NSConditionLock, NSMutableArray, NSObject<HGRQJobProtocol>, NSObject<OS_dispatch_group>;
 
 @interface FFHGAsyncFanoutJob : FFHGAsyncJob
 {
@@ -15,10 +15,16 @@
     FFImage *_image;
     struct HGRenderJob *_renderJob;
     NSMutableArray *_outputs;
+    NSMutableArray *_bypassOutputs;
+    NSObject<OS_dispatch_group> *_bypassJobsGroup;
     struct HGRenderer *_specificRenderer;
     NSObject<HGRQJobProtocol> *_cbObj;
     _Bool _dumpGraph;
     _Bool _dumpDotFile;
+    CDStruct_18280053 _blockedInfo;
+    struct _opaque_pthread_t *_threadThatInstalledBlockedInfo;
+    long long _bypassCostUSec;
+    CDStruct_18280053 _bypassBlockedInfo;
     _Bool _dumpRenderStats;
 }
 
@@ -26,6 +32,9 @@
 @property _Bool dumpDotFile; // @synthesize dumpDotFile=_dumpDotFile;
 @property _Bool dumpGraph; // @synthesize dumpGraph=_dumpGraph;
 @property struct HGRenderer *specificRenderer; // @synthesize specificRenderer=_specificRenderer;
+- (id).cxx_construct;
+- (int)virtualScreen;
+- (CDStruct_18280053 *)graphExecBlockedInfo;
 - (double)totalBufferCopyTime;
 - (_Bool)cancel;
 - (_Bool)enqueueToRenderLocation:(int)arg1 priority:(int)arg2;
@@ -33,6 +42,7 @@
 - (void)_nodeDidFinish:(id)arg1;
 - (void)_jobStarted;
 - (_Bool)isComplete;
+- (_Bool)bypassComplete;
 - (_Bool)waitForCompletionBeforeDate:(id)arg1;
 - (id)newRequestedOutput:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 location:(int)arg3 roi:(struct CGRect)arg4 pixelTransform:(id)arg5 filterQuality:(int)arg6 dithered:(BOOL)arg7 background:(int)arg8;
 - (struct HGNode *)_newNodeWithBackground:(int)arg1 pixelFormat:(id)arg2 colorSpace:(struct CGColorSpace *)arg3 location:(int)arg4 roi:(struct CGRect)arg5 pixelTransform:(id)arg6 filterQuality:(int)arg7;

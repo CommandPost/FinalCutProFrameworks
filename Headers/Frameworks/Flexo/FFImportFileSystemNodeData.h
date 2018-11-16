@@ -17,12 +17,14 @@ __attribute__((visibility("hidden")))
     NSImage *_icon;
     NSNumber *_isDirectory;
     NSNumber *_isPackage;
+    NSNumber *_isCameraArchive;
     NSNumber *_isAlias;
     NSNumber *_isValid;
     NSNumber *_canPreview;
     NSColor *_labelColor;
     NSDate *_dateModified;
     NSDate *_dateAdded;
+    BOOL _didGenerateDateCreated;
     NSDate *_dateCreated;
     NSDate *_dateLastOpened;
     NSString *_kind;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)kind;
 - (id)dateLastOpened;
 - (id)dateCreated;
+- (void)_checkCreationDate;
 - (id)dateAdded;
 - (id)dateModified;
 - (id)labelColor;
@@ -53,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isValid;
 - (void)setIsValid:(BOOL)arg1;
 - (BOOL)isAlias;
+- (BOOL)isCameraArchive;
 - (BOOL)isPackage;
 - (BOOL)isDirectory;
 - (id)volumeURL;

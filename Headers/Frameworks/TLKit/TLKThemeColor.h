@@ -10,6 +10,7 @@
 {
 }
 
++ (id)unknownClipTypeColor;
 + (id)titleHightlightedClipBackgroundColor;
 + (id)titleClipBackgroundColor;
 + (id)timelineGuidelineSnappingLightColor;
@@ -23,9 +24,21 @@
 + (id)slimContainerClipBorderColor;
 + (id)slimAudioClipBorderColor;
 + (id)slimAVClipBorderColor;
++ (id)simpleSelectionLayerRejectStroke;
++ (id)simpleSelectionLayerRejectBackground;
++ (id)simpleSelectionLayerNormal;
++ (id)simpleSelectionLayerEmphasized;
++ (id)simpleSelectionLayerEditStroke;
++ (id)simpleSelectionLayerEditBackground;
++ (id)simpleSelectionFavoriteStroke;
++ (id)simpleSelectionFavoriteBackground;
++ (id)simpleModePrecisionEditorDividerBarColor;
++ (id)simpleModeDisallowedEdgeDrag;
++ (id)simpleModeAllowedEdgeDrag;
 + (id)selectionMarqueeDisabledColor;
 + (id)selectionMarqueeColor;
 + (id)selectedItemTextColor;
++ (id)rowDividerColor;
 + (id)multiangleEditorMonitoringAngleTextEngraveColor;
 + (id)multiangleEditorMonitoringAngleTextColor;
 + (id)itemTextColor;
@@ -38,6 +51,7 @@
 + (id)edgeAllowedColor;
 + (id)disabledClipColor;
 + (id)disabledAudioBackgroundColor;
++ (id)backgroundMusicDividerColor;
 + (id)avSplitBackgroundColor;
 + (id)avClipHighlightedClipBackgroundColor;
 + (id)avClipBackgroundColor;

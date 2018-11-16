@@ -39,6 +39,7 @@
 + (struct OZLibraryPresetsMap *)getPresets:(const struct PCUUID *)arg1 exclude:(const struct PCUUID *)arg2;
 + (void)addPresets:(id)arg1 withFilter:(id)arg2 toMap:(struct OZLibraryPresetsMap *)arg3 defaultRoot:(id)arg4;
 + (void)cleanup;
++ (id)sharedLibraryModule;
 - (id).cxx_construct;
 - (double)splitView:(id)arg1 constrainSplitPosition:(double)arg2 ofSubviewAt:(long long)arg3;
 - (void)hideiTunesColumns;
