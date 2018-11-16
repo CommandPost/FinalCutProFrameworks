@@ -6,9 +6,11 @@
 
 #import <Flexo/FFDestVideo.h>
 
-@class FFNRTFigClock, FFRenderProps, NSArray, NSLock, NSObject<FFDestRendererFrameStartingFinishingProtocol>;
+#import "FFDestRenderUnitProtocol.h"
 
-@interface FFDestRenderer : FFDestVideo
+@class FFDestRenderUnit, FFNRTFigClock, FFRenderProps, NSArray, NSLock;
+
+@interface FFDestRenderer : FFDestVideo <FFDestRenderUnitProtocol>
 {
     FFNRTFigClock *_clock;
     NSLock *_lock;
@@ -18,8 +20,7 @@
     BOOL _needsUpdate;
     FFRenderProps *_renderProps;
     NSArray *_renderFilesPaths;
-    NSObject<FFDestRendererFrameStartingFinishingProtocol> *_frameStartFinishDelegate;
-    void *_frameStartFinishDelegateContext;
+    FFDestRenderUnit *_renderUnit;
 }
 
 - (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderProps:(id)arg2 renderFilesPaths:(id)arg3;
@@ -30,7 +31,8 @@
 - (void)flush:(BOOL)arg1;
 - (void)startingToProcess:(CDStruct_1b6d18a9)arg1;
 - (void)finishedProcessing:(CDStruct_1b6d18a9)arg1;
-- (void)setFrameStartFinishDelegate:(id)arg1 context:(void *)arg2;
+- (void)beginRenderWithDelegate:(id)arg1 context:(void *)arg2;
+- (void)endRender;
 - (void)start:(id)arg1;
 - (void)stop;
 - (BOOL)isRunning;

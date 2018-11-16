@@ -46,6 +46,10 @@ __attribute__((visibility("hidden")))
 - (void)flagsChanged:(id)arg1;
 - (id)getCursor;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (BOOL)isAccessorized;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
 
 @end
 

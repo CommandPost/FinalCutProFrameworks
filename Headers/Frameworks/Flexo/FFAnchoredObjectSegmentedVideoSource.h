@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSSet *_roles;
     long long _angleOffset;
     long long _angleCount;
+    CDStruct_1b6d18a9 _magicFrameTime;
 }
 
 + (Class)streamClass;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)_videoProps;
 - (id)nativeVideoProps;
 - (double)preferredScaleFactorForQuality:(int)arg1;
+- (void)updateMagicFrame;
 - (void)rangeInvalidated:(id)arg1;
 - (id)initWithProvider:(id)arg1 effectCount:(long long)arg2 videoAngle:(id)arg3 toLane:(long long)arg4 showOnlyObjects:(id)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8;
 - (long long)effectCount;

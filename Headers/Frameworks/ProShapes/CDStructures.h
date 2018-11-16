@@ -50,7 +50,7 @@ struct OZChannelShape {
     CDStruct_198678f7 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
     struct OZChannelVertexFolder _field22;
     struct OZDynamicCurve _field23;
     struct OZDynamicCurve _field24;
@@ -147,21 +147,13 @@ struct PCString {
     struct __CFString *_field1;
 };
 
-struct RecordingCallbackData;
-
 struct __CFString;
 
 struct __normal_iterator<OZVertex**, std::vector<OZVertex*, std::allocator<OZVertex*>>> {
     struct OZVertex **_field1;
 };
 
-struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> {
-    struct _Vector_impl {
-        struct RecordingCallbackData *_field1;
-        struct RecordingCallbackData *_field2;
-        struct RecordingCallbackData *_field3;
-    } _field1;
-};
+struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>>;
 
 struct vector<OZChannelBase*, std::allocator<OZChannelBase*>>;
 

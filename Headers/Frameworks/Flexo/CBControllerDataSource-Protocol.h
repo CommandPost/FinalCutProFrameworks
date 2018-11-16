@@ -10,7 +10,6 @@
 - (void)controller:(id)arg1 switchToDataForAnchoredObject:(id)arg2;
 - (void)controller:(id)arg1 switchToDataForDefaultCorrectionForAnchoredObject:(id)arg2;
 - (void)controller:(id)arg1 switchToDataForCorrection:(id)arg2;
-- (void)controller:(id)arg1 switchToDataForCorrection:(id)arg2 force:(BOOL)arg3;
 - (id)currentAnchoredObjectForController:(id)arg1;
 - (id)arrayOfCorrectionIDs;
 - (id)arrayOfCorrectionNames;

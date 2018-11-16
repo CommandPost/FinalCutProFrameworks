@@ -6,48 +6,13 @@
 
 #import "NSObject.h"
 
-@class FFXMLRootElement, NSMutableDictionary;
-
 @interface FFXMLTranslation : NSObject
 {
-    NSMutableDictionary *_correlationTable;
-    FFXMLRootElement *_rootNode;
-    NSMutableDictionary *_options;
-    BOOL _shouldApplyImportOptionsToAll;
 }
 
 + (id)importPublicXMLFile:(id)arg1 storageLocation:(id)arg2 warnings:(id *)arg3 error:(id *)arg4;
 + (BOOL)exportXMLForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
 + (id)XMLDataForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
-+ (BOOL)checkXMLVers:(id)arg1 fileName:(id)arg2 error:(id *)arg3;
-+ (BOOL)checkXMEMLVers:(id)arg1 fileName:(id)arg2 error:(id *)arg3;
-+ (BOOL)checkFileXMLVers:(id)arg1 error:(id *)arg2;
-+ (BOOL)eventOnlyXmlAtURL:(id)arg1;
-+ (BOOL)exportAXELForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
-+ (BOOL)handlerForUTIType:(id)arg1 extension:(id)arg2;
-+ (id)defaultImportOptions;
-+ (id)defaultExportOptions;
-+ (id)defaultXMLExportOptions;
-- (void)setRootNode:(id)arg1;
-- (id)rootNode;
-- (id)errors;
-- (void)setImportOptions:(id)arg1;
-- (id)importOptions;
-- (BOOL)shouldApplyImportOptionsToAll;
-- (void)setShouldApplyToAll:(BOOL)arg1;
-- (void)logAndClearErrors:(id *)arg1;
-- (BOOL)importToSequence:(id)arg1 event:(id)arg2 error:(id *)arg3;
-- (void)readSingleAssetUseageFlagFromXML:(id)arg1 intoAssetUseage:(int *)arg2;
-- (int)readAssetUseageFromXML:(id)arg1;
-- (BOOL)readXMLImportOptionsfromXML:(id)arg1;
-- (id)projectNameForRootAndPath:(id)arg1;
-- (BOOL)setURL:(id)arg1 options:(id)arg2 allowXMEML:(BOOL)arg3 error:(id *)arg4;
-- (BOOL)setURL:(id)arg1 allowXMEML:(BOOL)arg2 error:(id *)arg3;
-- (id)initWithURL:(id)arg1 options:(id)arg2 allowXMEML:(BOOL)arg3 error:(id *)arg4;
-- (id)initWithURL:(id)arg1 defaultOptions:(BOOL)arg2 allowXMEML:(BOOL)arg3 error:(id *)arg4;
-- (id)initWithURL:(id)arg1 allowXMEML:(BOOL)arg2 error:(id *)arg3;
-- (id)init;
-- (void)dealloc;
 
 @end
 

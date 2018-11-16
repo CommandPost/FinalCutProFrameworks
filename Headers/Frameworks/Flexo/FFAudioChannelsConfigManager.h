@@ -25,6 +25,7 @@
 - (void)populateLayoutMenu:(id)arg1;
 - (BOOL)updateToSelectedLayout:(id)arg1 error:(id *)arg2;
 - (void)setCurrentChannelLayoutAsAutoDetectedLayout;
+- (void)resetToDefaultLayout;
 - (BOOL)supportsAudioChannelsConfigFilmstrips;
 - (id)associatedObjectsForAnchoredObject:(id)arg1;
 - (id)_getLayoutOptionsForNumAudioChannels:(int)arg1;

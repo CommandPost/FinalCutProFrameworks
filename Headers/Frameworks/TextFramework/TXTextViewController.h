@@ -43,6 +43,7 @@
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (id)notificationUserInfo;
 - (id)inspectorModule;
+- (void)viewDidResignFirstResponder;
 @property(retain, nonatomic) FFMotionEffect *motionEffect; // @synthesize motionEffect=_motionEffect;
 
 @end

@@ -26,15 +26,17 @@
     struct CGRect _opaqueBounds;
     unsigned int _andedMd5Flags;
     unsigned int _oredMd5Flags;
+    unsigned long long _estimatedBandwidth;
 }
 
 + (CDStruct_60067b7e)adjustedMD5ForTemporalInaccuracy:(CDStruct_1b6d18a9)arg1 fromBaseMD5:(CDStruct_60067b7e)arg2 isConstantOffset:(_Bool)arg3;
 - (void)_setupCachedValues;
-- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_60067b7e)arg3 idealMD5:(CDStruct_60067b7e)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 isConstantOffset:(_Bool)arg7 constantOffset:(long long)arg8 segmentCostNSN:(id)arg9 opaqueBounds:(struct CGRect)arg10 flagsForAnding:(unsigned int)arg11 flagsForOring:(unsigned int)arg12;
-- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_60067b7e)arg3 idealMD5:(CDStruct_60067b7e)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 isConstantOffset:(_Bool)arg7 constantOffset:(long long)arg8 segmentCost:(double)arg9 opaqueBounds:(struct CGRect)arg10 flagsForAnding:(unsigned int)arg11 flagsForOring:(unsigned int)arg12;
+- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_60067b7e)arg3 idealMD5:(CDStruct_60067b7e)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 isConstantOffset:(_Bool)arg7 constantOffset:(long long)arg8 segmentCostNSN:(id)arg9 opaqueBounds:(struct CGRect)arg10 flagsForAnding:(unsigned int)arg11 flagsForOring:(unsigned int)arg12 dataRatePerSecond:(unsigned long long)arg13;
+- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_60067b7e)arg3 idealMD5:(CDStruct_60067b7e)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 isConstantOffset:(_Bool)arg7 constantOffset:(long long)arg8 segmentCost:(double)arg9 opaqueBounds:(struct CGRect)arg10 flagsForAnding:(unsigned int)arg11 flagsForOring:(unsigned int)arg12 dataRatePerSecond:(unsigned long long)arg13;
 - (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_60067b7e)arg3 idealMD5:(CDStruct_60067b7e)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 segmentCost:(double)arg7 opaqueBounds:(struct CGRect)arg8 flagsForAnding:(unsigned int)arg9 flagsForOring:(unsigned int)arg10;
 - (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_60067b7e)arg3 idealMD5:(CDStruct_60067b7e)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 segmentCostNSN:(id)arg7 opaqueBounds:(struct CGRect)arg8 flagsForAnding:(unsigned int)arg9 flagsForOring:(unsigned int)arg10;
-- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_60067b7e)arg3 idealMD5:(CDStruct_60067b7e)arg4 constantOffset:(long long)arg5 segmentCostNSN:(id)arg6 opaqueBounds:(struct CGRect)arg7 flagsForAnding:(unsigned int)arg8 flagsForOring:(unsigned int)arg9;
+- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_60067b7e)arg3 idealMD5:(CDStruct_60067b7e)arg4 timeOffsetForSampleOffset:(CDStruct_1b6d18a9)arg5 sampleDurForOffsetCalc:(CDStruct_1b6d18a9)arg6 segmentCostNSN:(id)arg7 opaqueBounds:(struct CGRect)arg8 flagsForAnding:(unsigned int)arg9 flagsForOring:(unsigned int)arg10 dataRatePerSecond:(unsigned long long)arg11;
+- (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_60067b7e)arg3 idealMD5:(CDStruct_60067b7e)arg4 constantOffset:(long long)arg5 segmentCostNSN:(id)arg6 opaqueBounds:(struct CGRect)arg7 flagsForAnding:(unsigned int)arg8 flagsForOring:(unsigned int)arg9 dataRatePerSecond:(unsigned long long)arg10;
 - (id)initWithSubRange:(CDStruct_e83c9415)arg1 fullRange:(CDStruct_e83c9415)arg2 actualMD5:(CDStruct_60067b7e)arg3 idealMD5:(CDStruct_60067b7e)arg4 constantOffset:(long long)arg5 segmentCost:(double)arg6 opaqueBounds:(struct CGRect)arg7 flagsForAnding:(unsigned int)arg8 flagsForOring:(unsigned int)arg9;
 - (id)initWithPList:(id)arg1;
 - (id)newPList;
@@ -58,19 +60,19 @@
 - (void)setDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setRange:(CDStruct_e83c9415)arg1;
 - (void)limitMaximumSubRange:(CDStruct_e83c9415 *)arg1 myOffset:(CDStruct_1b6d18a9)arg2;
-- (id)newDictForScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 useActualMD5:(_Bool)arg2 temporalInaccuracy:(CDStruct_1b6d18a9)arg3;
 - (id)newDictForScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 useActualMD5:(_Bool)arg2 temporalInaccuracy:(CDStruct_1b6d18a9)arg3 fromSegmentStore:(BOOL)arg4;
-@property(readonly) unsigned int md5FlagsForOring; // @synthesize md5FlagsForOring=_oredMd5Flags;
-@property(readonly) unsigned int md5FlagsForAnding; // @synthesize md5FlagsForAnding=_andedMd5Flags;
-@property(readonly) _Bool actualIdealMismatch; // @synthesize actualIdealMismatch=_actualIdealMismatch;
-@property(readonly) struct CGRect opaqueBounds; // @synthesize opaqueBounds=_opaqueBounds;
-@property(readonly) NSNumber *segCostNSNumber; // @synthesize segCostNSNumber=_segCostNSNumber;
-@property(readonly) double segCost; // @synthesize segCost=_segCost;
-@property(readonly) _Bool isConstantOffset; // @synthesize isConstantOffset=_isConstantOffset;
-@property(readonly) CDStruct_1b6d18a9 timeOffsetForSampleOffset; // @synthesize timeOffsetForSampleOffset=_timeOffsetForSampleOffset;
-@property(readonly) CDStruct_e83c9415 fullRange; // @synthesize fullRange=_fullRange;
-@property(readonly) CDStruct_bdcb2b0d idealMD5; // @synthesize idealMD5=_idealMD5;
-@property(readonly) CDStruct_bdcb2b0d actualMD5; // @synthesize actualMD5=_actualMD5;
+@property(readonly, nonatomic) unsigned long long estimatedBandwidth; // @synthesize estimatedBandwidth=_estimatedBandwidth;
+@property(readonly, nonatomic) unsigned int md5FlagsForOring; // @synthesize md5FlagsForOring=_oredMd5Flags;
+@property(readonly, nonatomic) unsigned int md5FlagsForAnding; // @synthesize md5FlagsForAnding=_andedMd5Flags;
+@property(readonly, nonatomic) _Bool actualIdealMismatch; // @synthesize actualIdealMismatch=_actualIdealMismatch;
+@property(readonly, nonatomic) struct CGRect opaqueBounds; // @synthesize opaqueBounds=_opaqueBounds;
+@property(readonly, nonatomic) NSNumber *segCostNSNumber; // @synthesize segCostNSNumber=_segCostNSNumber;
+@property(readonly, nonatomic) double segCost; // @synthesize segCost=_segCost;
+@property(readonly, nonatomic) _Bool isConstantOffset; // @synthesize isConstantOffset=_isConstantOffset;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 timeOffsetForSampleOffset; // @synthesize timeOffsetForSampleOffset=_timeOffsetForSampleOffset;
+@property(readonly, nonatomic) CDStruct_e83c9415 fullRange; // @synthesize fullRange=_fullRange;
+@property(readonly, nonatomic) CDStruct_bdcb2b0d idealMD5; // @synthesize idealMD5=_idealMD5;
+@property(readonly, nonatomic) CDStruct_bdcb2b0d actualMD5; // @synthesize actualMD5=_actualMD5;
 
 @end
 

@@ -57,6 +57,7 @@
 - (id)creationDate;
 - (id)creationDateTimeZone;
 - (id)creationDateISO8601String;
+- (id)locationISO6709;
 - (int)pulldown;
 - (id)formatReader;
 - (BOOL)useBuiltInFormatReader;

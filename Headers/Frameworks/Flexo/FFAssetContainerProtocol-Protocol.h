@@ -6,8 +6,11 @@
 
 @protocol FFAssetContainerProtocol
 - (id)assets;
+- (void)addAssetsToSet:(id)arg1;
 - (id)assetRefs;
+- (void)addAssetRefsToSet:(id)arg1;
 - (id)clipRefs;
+- (void)addClipRefsToSet:(id)arg1;
 - (id)mediaRefs;
 - (id)fileURLs:(int)arg1;
 @end

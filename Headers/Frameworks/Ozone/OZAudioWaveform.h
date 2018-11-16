@@ -45,9 +45,11 @@
 - (void)drawDividerLine:(struct CGRect)arg1;
 - (void)drawChannel:(struct CGRect)arg1 withChannel:(int)arg2;
 - (void)drawWaveform:(struct CGRect)arg1;
+- (void)drawLinen;
 - (void)drawEndpoints;
 - (void)displayRangeModified:(CDStruct_e83c9415)arg1;
 - (void)drawGrid;
+- (void)drawBackground;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawCurrentTime:(struct CGRect)arg1;
 - (void)processBuffer:(char *)arg1 samples:(unsigned int)arg2;

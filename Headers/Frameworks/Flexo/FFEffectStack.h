@@ -122,6 +122,7 @@
 - (struct CGRect)boundsUpToEffectIndex:(unsigned long long)arg1 atTime:(CDStruct_1b6d18a9)arg2 transformed:(BOOL)arg3;
 - (struct CGRect)boundsUpToEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 transformed:(BOOL)arg3;
 - (id)customEffect;
+- (void)setCustomEffect:(id)arg1 sendWasAdded:(BOOL)arg2;
 - (void)setCustomEffect:(id)arg1;
 - (void)adjustEffectsAfterBlade:(BOOL)arg1;
 - (void)adjustEffectsAfterTrimmingLeft:(BOOL)arg1 right:(_Bool)arg2 clippedRange:(CDStruct_e83c9415)arg3;

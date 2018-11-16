@@ -42,7 +42,7 @@
 - (id)newObjectSourceForTimeWithExtender:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9 anchoredObject:(id)arg10;
 - (BOOL)isPullingSourceFromBelowForLeft;
 - (BOOL)isPullingSourceFromBelowForRight;
-- (id)backgroundForFillMode;
+- (id)backgroundForFillMode:(BOOL)arg1;
 - (id)_newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (struct CGRect)imageSpaceBoundsAtTime:(CDStruct_1b6d18a9)arg1;
@@ -80,6 +80,7 @@
 - (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
 - (BOOL)canRemoveChannel:(id)arg1;
 - (void)removeChannel:(id)arg1;
+- (void)checkForBlendModeChangeRequired;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 
 @end

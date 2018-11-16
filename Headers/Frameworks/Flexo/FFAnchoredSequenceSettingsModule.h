@@ -53,7 +53,7 @@
     NSString *_startTimeString;
 }
 
-+ (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 videoSetPropertyManually:(BOOL)arg9 audioSetPropertyManually:(BOOL)arg10 createAutomatically:(int)arg11 multiAngleSyncBy:(int)arg12 multiAngleArrangeBy:(int)arg13 multiAngleOrderBy:(int)arg14 multiAngleFineSyncByAudio:(int)arg15;
++ (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 videoSetPropertyManually:(BOOL)arg9 audioSetPropertyManually:(BOOL)arg10 videoSetPropertyManuallyForCompoundClip:(BOOL)arg11 audioSetPropertyManuallyForCompoundClip:(BOOL)arg12 videoSetPropertyManuallyForMultiCam:(BOOL)arg13 audioSetPropertyManuallyForMultiCam:(BOOL)arg14 createAutomatically:(int)arg15 createCompoundClipAutomatically:(int)arg16 createMultiCamAutomatically:(int)arg17 multiAngleSyncBy:(int)arg18 multiAngleArrangeBy:(int)arg19 multiAngleOrderBy:(int)arg20 multiAngleFineSyncByAudio:(int)arg21;
 - (id)initWithProvider:(id)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;

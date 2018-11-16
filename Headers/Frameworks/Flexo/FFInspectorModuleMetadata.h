@@ -9,7 +9,7 @@
 #import "FFRolesMenuDelegate.h"
 #import "NSMenuDelegate.h"
 
-@class FFColouredView, FFInspectorMetadataContentRow, FFInspectorMetadataContentView, FFInspectorProjectEventsController, FFMedia, FFProFlippedView, FFRolesMenuController, LKButton, LKSegmentedControl, LKTextField, NSArrayController, NSMenu, NSMutableArray, NSMutableDictionary, NSPopUpButton, NSProImageView, NSProThemeImageView, NSScrollView, NSTextField, NSView, NSWindow;
+@class FFColouredView, FFInspectorMetadataContentRow, FFInspectorMetadataContentView, FFInspectorProjectEventsController, FFMedia, FFProFlippedView, FFRolesMenuController, LKButton, LKSegmentedControl, LKTextField, NSArray, NSArrayController, NSMenu, NSMutableArray, NSMutableDictionary, NSPopUpButton, NSProImageView, NSProThemeImageView, NSScrollView, NSSet, NSTextField, NSView, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleMetadata : FFInspectorModule <NSMenuDelegate, FFRolesMenuDelegate>
@@ -81,6 +81,9 @@ __attribute__((visibility("hidden")))
     LKTextField *_missingEffectTitle;
     struct CGRect _proxyTextFrame;
     struct CGRect _proxyIconFrame;
+    NSArray *_currentItemsProxies;
+    NSSet *_currentItemsSequences;
+    BOOL _itemsChangedThroughRangeInvalidation;
 }
 
 - (id)init;
@@ -101,7 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)showEditCompoundClipSettings:(id)arg1;
 - (void)_growScrollView;
 - (void)_shrinkScrollView;
-- (void)_updateLCD;
+- (void)_updateLCD:(BOOL)arg1;
 - (int)_calculateOfflineClipsCountIn:(id)arg1;
 - (id)_eventNameFromUrl:(id)arg1;
 - (void)_updateMediaRefs:(id)arg1 remap:(BOOL)arg2 sequence:(id)arg3 selection:(id)arg4;
@@ -126,6 +129,8 @@ __attribute__((visibility("hidden")))
 - (void)toggleClipReferences:(id)arg1;
 - (void)_setMetadataViewSetFrom:(id)arg1;
 - (void)rowDidMove:(id)arg1;
+- (void)updateForChangedItems;
+- (void)_rangeInvalidatedForMetadata:(id)arg1;
 - (void)_addObservingForCurrentItems;
 - (void)_removeObservingForCurrentItems;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -147,6 +152,8 @@ __attribute__((visibility("hidden")))
 - (id)anchoredObjectsForRolesMenuController:(id)arg1;
 - (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 toAnchoredObjects:(id)arg3;
 - (void)shouldEditRolesForRolesMenuController:(id)arg1;
+@property(retain, nonatomic) NSSet *currentItemsSequences; // @synthesize currentItemsSequences=_currentItemsSequences;
+@property(retain, nonatomic) NSArray *currentItemsProxies; // @synthesize currentItemsProxies=_currentItemsProxies;
 @property(retain, nonatomic) NSPopUpButton *activeAudioAnglePopup; // @synthesize activeAudioAnglePopup=_activeAudioAnglePopup;
 @property(retain, nonatomic) NSPopUpButton *activeVideoAnglePopup; // @synthesize activeVideoAnglePopup=_activeVideoAnglePopup;
 @property(retain, nonatomic) LKSegmentedControl *metadataActionControl; // @synthesize metadataActionControl=_metadataActionControl;

@@ -157,6 +157,7 @@
 - (void)resetRoles;
 - (id)roles;
 - (BOOL)supportsRoles;
+- (id)mdTargetForKey:(id)arg1;
 - (id)valueForKeyPath:(id)arg1;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
 - (BOOL)validateValue:(id *)arg1 forKeyPath:(id)arg2 error:(id *)arg3;

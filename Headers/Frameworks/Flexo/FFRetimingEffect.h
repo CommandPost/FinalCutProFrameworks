@@ -66,6 +66,8 @@ __attribute__((visibility("hidden")))
 - (double)anchoredFirstMediaTime;
 - (void)setupDefaultKeyframes:(CDStruct_e83c9415)arg1;
 - (void)setupDefaultKeyframesFromSource;
+- (void)minUntimedTime:(double *)arg1 maxUntimedTime:(double *)arg2 forTimeRange:(CDStruct_e83c9415)arg3;
+- (BOOL)needToExtendRetimeCurveWithMediaStart:(CDStruct_1b6d18a9)arg1 mediaEnd:(CDStruct_1b6d18a9)arg2;
 - (BOOL)setRetimeCurveNewMediaStart:(CDStruct_1b6d18a9)arg1 newMediaEnd:(CDStruct_1b6d18a9)arg2;
 - (int)_computeMediaFrameOffsetFromComponentTime:(CDStruct_1b6d18a9)arg1;
 - (void)setSweetSpotStartFrameComponentTime:(CDStruct_1b6d18a9)arg1;

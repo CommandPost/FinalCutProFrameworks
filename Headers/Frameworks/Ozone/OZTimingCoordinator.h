@@ -69,6 +69,7 @@
 - (void)notify:(unsigned int)arg1;
 - (void)update;
 - (void)masterViewNotify:(id)arg1;
+- (void)setZoom:(double)arg1 offsetPercentage:(double)arg2;
 - (void)horizontalZoomScroll:(id)arg1;
 - (void)startZoomScrollerAction:(id)arg1 withPart:(int)arg2;
 - (void)endZoomScrollerAction:(id)arg1 withPart:(int)arg2;

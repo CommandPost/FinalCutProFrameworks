@@ -25,7 +25,7 @@
     unsigned long long _lastDragOperation;
     NSMutableArray *_anchoredSpineItemsNeedingUpdate;
     NSArray *_savedSelectedItems;
-    TLKTimelineLayer *_lastLayoutItem;
+    TLKTimelineLayer *_lastLayoutItemLayer;
     struct CGRect _lastLayoutItemFrame;
     struct {
         unsigned int acceptedDropIsTracking:1;

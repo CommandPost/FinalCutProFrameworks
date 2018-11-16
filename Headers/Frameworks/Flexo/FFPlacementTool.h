@@ -14,9 +14,7 @@
 + (id)displayName;
 + (id)toolTip;
 + (id)toolbarFacet;
-- (void)becomeActiveTool;
 - (BOOL)handlesSelection;
-- (void)resignActiveTool;
 
 @end
 

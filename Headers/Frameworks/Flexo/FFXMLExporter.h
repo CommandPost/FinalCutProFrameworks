@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSMapTable, NSString, NSXMLDocument;
+@class FFProject, NSMapTable, NSString, NSXMLDocument;
 
 __attribute__((visibility("hidden")))
 @interface FFXMLExporter : NSObject
@@ -14,10 +14,11 @@ __attribute__((visibility("hidden")))
     NSXMLDocument *_xmlDoc;
     NSMapTable *_resByModelID;
     NSMapTable *_resByLocalID;
-    BOOL _inEvent;
+    FFProject *_project;
     NSString **_alternateRoleLabels;
 }
 
+- (BOOL)isEvent;
 - (id)registerResource:(id)arg1 name:(id)arg2 modelID:(id)arg3;
 - (id)registerProjectRef:(id)arg1;
 - (id)registerEffect:(id)arg1;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)addCropInfo:(id)arg1 element:(id)arg2;
 - (void)addIntrinsicChannels:(id)arg1 element:(id)arg2;
 - (void)addMarkers:(id)arg1 element:(id)arg2;
+- (void)addMultiAngleSources:(id)arg1 element:(id)arg2;
 - (void)addClip:(id)arg1 element:(id)arg2;
 - (void)addObjects:(id)arg1 element:(id)arg2;
 - (void)addRetimingInfo:(id)arg1 element:(id)arg2;

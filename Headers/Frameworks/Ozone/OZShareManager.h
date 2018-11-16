@@ -23,6 +23,7 @@
     _Bool _renderingSelected;
     _Bool _resetSoloFlag;
     vector_77d837c3 _soloedNodeIDs;
+    BOOL _createSourcesForPROMSRendererTool;
 }
 
 + (id)sharedInstance;
@@ -52,11 +53,11 @@
 @property(copy, nonatomic) NSArray *selection; // @synthesize selection=_selection;
 @property(copy, nonatomic) OZObjCDocument *document; // @synthesize document=_objCDoc;
 - (id)destinationURL:(BOOL)arg1;
+- (id)currentAppProjectMediaServerSourceWithURL:(id)arg1;
 - (void)export:(CDUnknownBlockType)arg1;
 - (void)exportUsingPanelClass:(Class)arg1 window:(id)arg2 addRenderTab:(BOOL)arg3;
 - (void)exportMediaBrowserModalForWindow:(id)arg1;
 - (void)exportAudioModalForWindow:(id)arg1;
-- (void)exportPodCastProducerModalForWindow:(id)arg1;
 - (void)exportiTunesModalForWindow:(id)arg1;
 - (void)burnDVDModalForWindow:(id)arg1;
 - (void)burnBlurayModalForWindow:(id)arg1;
@@ -85,6 +86,7 @@
 - (void)setPreviewTime:(double)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) BOOL createSourcesForPROMSRendererTool; // @synthesize createSourcesForPROMSRendererTool=_createSourcesForPROMSRendererTool;
 
 @end
 

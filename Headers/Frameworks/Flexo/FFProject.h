@@ -8,13 +8,15 @@
 
 #import "NSCoding.h"
 
-@class NSMutableSet, NSSet, NSURL;
+@class NSDate, NSMutableDictionary, NSMutableSet, NSSet, NSURL;
 
 @interface FFProject : FFBinObject <NSCoding>
 {
     NSMutableSet *_assetReferences;
     NSMutableSet *_clipReferences;
     NSMutableSet *_effectReferences;
+    NSMutableSet *_previousAssetReferences;
+    NSDate *_modDate;
     NSMutableSet *_mediaRefsOfflineReasonEvent;
     NSMutableSet *_mediaRefsOfflineReasonClip;
     NSMutableSet *_mediaRefsOfflineReasonFile;
@@ -28,6 +30,7 @@
     int _mediaAvailable;
     unsigned int _mediaSyncStatusCount;
     int _effectsAvailable;
+    NSMutableDictionary *_mediaReferencesDict;
 }
 
 + (BOOL)classIsAbstract;
@@ -57,6 +60,8 @@
 - (id)undoHandler;
 - (id)description;
 - (id)contentType;
+- (void)bumpModDate;
+@property(readonly, copy, nonatomic) NSDate *modDate;
 - (id)dataBaseFileURL;
 - (id)url;
 - (id)location;
@@ -82,6 +87,7 @@
 - (id)displayNameWithVolume;
 - (void)setDisplayName:(id)arg1;
 - (id)resolveObject:(id)arg1 error:(id *)arg2;
+- (BOOL)isDetailedProjectDataLoaded;
 @property(readonly, nonatomic) NSSet *effectReferences;
 - (void)resetEffectReferences;
 - (void)addEffectReferencesObject:(id)arg1;
@@ -93,8 +99,11 @@
 - (void)addClipReferencesObject:(id)arg1;
 - (void)removeClipReferencesObject:(id)arg1;
 @property(readonly, nonatomic) NSSet *clipReferences;
+- (void)_resetMediaReferences:(BOOL)arg1;
+- (void)resetMediaReferencesForRefSubstitution;
 - (void)resetMediaReferences;
 @property(readonly, nonatomic) NSSet *referencedDocumentIDs;
+- (id)findOrRegisterCommonMediaRef:(id)arg1;
 - (BOOL)referencesExistForProjects:(id)arg1;
 - (BOOL)otherMultiAngleReferencesExist;
 - (id)mediaRefUsedForMediaID:(id)arg1 eventID:(id)arg2;

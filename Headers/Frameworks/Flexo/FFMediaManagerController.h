@@ -53,6 +53,7 @@
 + (void)_prepareForDestructivePart;
 + (void)_finishDestructivePart;
 + (id)uniqueURLFromURL:(id)arg1;
++ (id)allFileURLsInFolder:(id)arg1;
 - (id)initWithWindowNibName:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;

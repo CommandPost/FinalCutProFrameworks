@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (int)desiredThreads;
 - (BOOL)isReadyWithoutDependencies;
 - (void)main;
+- (void)cancel;
 @property(nonatomic) _Bool doAsyncFlatten; // @synthesize doAsyncFlatten=_doAsyncFlatten;
 
 @end

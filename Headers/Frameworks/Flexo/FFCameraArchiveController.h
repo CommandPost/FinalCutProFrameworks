@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)bind;
 - (void)unbind;
-- (void)beginOptionsSheetForWindow:(id)arg1 tapeDevice:(id)arg2;
+- (void)beginOptionsSheetForWindow:(id)arg1 tapeDevice:(id)arg2 defaultArchiveName:(id)arg3;
 - (void)beginOptionsSheetForWindow:(id)arg1 volume:(id)arg2 initialStorageLocation:(id)arg3;
 - (void)beginOptionsSheetForWindow:(id)arg1 source:(id)arg2 initialStorageLocation:(id)arg3;
 - (void)endSheet:(id)arg1;

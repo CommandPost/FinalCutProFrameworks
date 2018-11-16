@@ -5,6 +5,5 @@
 //
 
 @protocol FFObjectCompare
-- (BOOL)isEqual:(id)arg1 withPath:(id)arg2 log:(BOOL)arg3 alreadyProcessed:(id)arg4;
 @end
 

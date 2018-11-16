@@ -34,6 +34,5 @@
 - (void)timelineView:(id)arg1 updateItemSkimming:(id)arg2 layer:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
 - (void)timelineViewStopItemSkimming:(id)arg1;
 - (id)timelineView:(id)arg1 contextMenuForItem:(id)arg2;
-- (int)timelineView:(id)arg1 itemSizeForItem:(id)arg2;
 @end
 

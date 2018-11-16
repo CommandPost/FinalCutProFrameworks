@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _needsUpdate;
     BOOL _needsCommit;
     BOOL _isTemporary;
+    BOOL _saveAsync;
     FFCatalog *_catalog;
     FFCatalogStore *_catalogStore;
     NSString *_catalogID;
@@ -49,6 +50,8 @@ __attribute__((visibility("hidden")))
 - (id)uniqueIdentifier;
 - (id)catalog;
 - (id)store;
+- (void)catalogLock;
+- (void)catalogUnlock;
 - (BOOL)setCatalog:(id)arg1 store:(id)arg2 error:(id *)arg3;
 - (BOOL)autoCommitEnabled;
 - (void)setAutoCommitEnabled:(BOOL)arg1;
@@ -66,8 +69,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)canUpdate;
 - (BOOL)canAutoCommit;
 - (BOOL)updateCatalog:(id *)arg1;
-- (BOOL)commitCatalog:(id *)arg1;
-- (void)syncCatalog:(id)arg1 allowSave:(BOOL)arg2;
+- (BOOL)commitCatalog:(id *)arg1 async:(BOOL)arg2;
+- (void)commitCatalogFailed:(id)arg1 sendNotification:(BOOL)arg2;
+- (void)syncCatalog:(id)arg1 withSave:(int)arg2;
 - (void)syncCatalog:(id)arg1;
 - (void)syncCatalogIfNecessary;
 - (void)syncCatalogIfPossible;

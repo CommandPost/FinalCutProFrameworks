@@ -4,33 +4,26 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFEffectBundle.h>
+#import <Flexo/FFEffectBundleInternalBundle.h>
 
 #import "FFChannelChangeControllerDivorcedDelegate.h"
 
 @class CHChannel, FFAnchoredObject;
 
 __attribute__((visibility("hidden")))
-@interface FFEffectBundleSurroundPanner : FFEffectBundle <FFChannelChangeControllerDivorcedDelegate>
+@interface FFEffectBundleSurroundPanner : FFEffectBundleInternalBundle <FFChannelChangeControllerDivorcedDelegate>
 {
     FFAnchoredObject *m_object;
     CHChannel *m_amountChannel;
     BOOL m_lastAmountChannelIsModified;
     BOOL m_defaultPartIsInMonoMode;
-    BOOL m_needToMigrateChannelFolder;
 }
 
 + (id)pannerEffectBundleParts;
++ (id)surroundPannerPresetNames;
 + (id)copyClassDescription;
 + (void)unrigChannel:(id)arg1 inPanner:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)dealloc;
-- (void)_postInit:(id)arg1;
-- (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
-- (void)encodeWithCoder:(id)arg1;
-- (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
-- (void)setActivePresetIndex:(int)arg1;
-- (int)activePresetIndex;
-- (id)channelFolder;
 - (id)keyframeableChannels;
 - (id)unriggedChannels;
 - (id)channelByXMLName:(id)arg1;
@@ -47,12 +40,13 @@ __attribute__((visibility("hidden")))
 - (void)setEffectStack:(id)arg1;
 - (void)effectStackAnchoredObjectDidChange;
 - (void)_amountChannelChanged:(id)arg1;
-- (void)partChanged;
 - (id)presetNames;
-- (unsigned long long)activePartIndex;
-- (id)readEffectBundlePartsFromFile;
-- (void)createActivePartEffectChannels;
-- (void)setEffectBundleParts:(id)arg1;
+- (id)bundlePartAtIndex:(int)arg1;
+- (id)copyBundlePartAtIndex:(int)arg1;
+- (void)partChanged;
+- (id)initialEffectBundleParts;
+- (void)createActivePartEffectChannelsInFolder:(id)arg1;
+- (int)bundleEncodingOptions;
 
 @end
 

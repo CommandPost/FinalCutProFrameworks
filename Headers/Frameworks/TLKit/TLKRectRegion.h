@@ -14,9 +14,10 @@
 
 - (id)init;
 - (void)dealloc;
+- (struct CGRect)_calculatedBoundsInRange:(struct _NSRange)arg1;
 @property(readonly) struct CGRect bounds;
 - (void)_setBounds:(struct CGRect)arg1;
-- (struct CGRect)_calculatedBoundsInRange:(struct _NSRange)arg1;
+- (void)_invalidateBounds;
 - (unsigned long long)count;
 - (struct CGRect)rectAtIndex:(unsigned long long)arg1;
 - (unsigned long long)indexOfRectAtLocation:(double)arg1;

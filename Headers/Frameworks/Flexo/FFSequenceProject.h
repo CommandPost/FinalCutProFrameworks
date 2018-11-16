@@ -27,6 +27,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)project;
+- (BOOL)isDetailedProjectDataLoaded;
 @property(readonly, nonatomic) FFSequenceInfo *sequenceInfo;
 @property(retain, nonatomic) FFAnchoredSequence *activeSequence;
 - (id)defaultMediaEventID;
@@ -59,6 +60,7 @@
 - (id)inspectorTabClassNames;
 - (id)inspectorTabIdentifiers;
 - (id)labelForInspectorTabIdentifier:(id)arg1;
+- (void)compressVerticalLaneIndexes:(BOOL)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;

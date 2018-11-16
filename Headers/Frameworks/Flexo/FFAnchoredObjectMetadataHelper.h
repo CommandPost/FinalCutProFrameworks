@@ -8,24 +8,24 @@
 
 #import "FFMetadataProtocol.h"
 
-@class FFMetadataProxy, NSObject<FFMetadataProtocol>;
+@class NSObject<FFMetadataProtocol>;
 
 __attribute__((visibility("hidden")))
 @interface FFAnchoredObjectMetadataHelper : NSObject <FFMetadataProtocol>
 {
     NSObject<FFMetadataProtocol> *_ao;
     CDStruct_e83c9415 _range;
-    FFMetadataProxy *_md;
 }
 
 - (id)initWithAnchoredObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2;
 - (void)dealloc;
 - (void)setMetadata:(id)arg1;
 - (id)metadata;
-- (id)md;
 - (void)mdSetValue:(id)arg1 forKey:(id)arg2;
+- (void)actionBeginSetMetadataValue:(id)arg1;
+- (BOOL)actionEndSetMetadataValueWithError:(id *)arg1 forKey:(id)arg2;
 - (id)mdValueForKey:(id)arg1;
-- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)mdTargetForKey:(id)arg1;
 - (BOOL)validateMetadataSelectionStart:(id *)arg1 error:(id *)arg2;
 - (void)setMetadataSelectionStart:(id)arg1;
 - (id)metadataSelectionStart;
@@ -35,9 +35,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)validateMetadataSelectionDuration:(id *)arg1 error:(id *)arg2;
 - (void)setMetadataSelectionDuration:(id)arg1;
 - (id)metadataSelectionDuration;
-- (id)valueForUndefinedKey:(id)arg1;
-- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
-- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
 - (void)_writeLock;
 - (void)_writeUnlock;
 - (void)_readLock;

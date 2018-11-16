@@ -69,6 +69,7 @@
 - (void)mouseMoved:(id)arg1;
 - (int)hitCheck:(id)arg1;
 - (void)mouseExited:(id)arg1;
+- (_Bool)handlesDoubleClicks;
 - (void)mouseDown:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;
@@ -203,7 +204,7 @@
 - (void)orbit:(const PCVector3_457fd1f0 *)arg1 withState:(const struct OZRenderState *)arg2;
 - (struct OZScene *)getScene;
 - (const struct OZRenderState *)getRenderState;
-- (void)setIgnoreTransformsForElement:(struct OZSceneNode *)arg1;
+- (void)setIgnoreTransformationsForElement:(struct OZSceneNode *)arg1;
 - (BOOL)canEnableTransformPoints;
 - (void)transformPointsWithTime:(CDStruct_1b6d18a9 *)arg1;
 - (void)thinKeyframes;

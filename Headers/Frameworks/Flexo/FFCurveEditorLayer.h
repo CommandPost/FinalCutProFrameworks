@@ -43,7 +43,6 @@ __attribute__((visibility("hidden")))
     NSArray *_channels;
     vector_419cd555 _samplesY;
     vector_10091177 _samplesX;
-    CDStruct_1b6d18a9 _sampleRate;
     unsigned int _numberOfSamples;
     BOOL _dirty;
     FFCurveEditorSelection *_selection;

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     long long _currentCorrectionID;
     FFAnchoredObject *_currentAnchoredObject;
     FFChannelChangeController *_channelChangeController;
-    CHChannelFolder *_effectFolder;
+    CHChannelFolder *_puckFolder;
     FFEffectStack *_observedStack;
     CHChannelBase *_modifiedChannel;
     BOOL _ignoreObservedStackChanges;
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)controller:(id)arg1 switchToDataForAnchoredObject:(id)arg2;
 - (void)controller:(id)arg1 switchToDataForDefaultCorrectionForAnchoredObject:(id)arg2;
 - (void)controller:(id)arg1 switchToDataForCorrection:(id)arg2;
-- (void)controller:(id)arg1 switchToDataForCorrection:(id)arg2 force:(BOOL)arg3;
 - (id)currentAnchoredObjectForController:(id)arg1;
 - (id)getPuckData:(id)arg1;
 - (void)setData:(id)arg1 forPuck:(id)arg2;
@@ -52,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (void)setColorCorrectionsEnabled:(BOOL)arg1;
 - (BOOL)isEnabledForCorrectionID:(long long)arg1;
 - (BOOL)isMaskedForCorrectionID:(long long)arg1;
-- (void)switchToAnchoredObject:(id)arg1;
 - (void)setData:(id)arg1 forPuckType:(int)arg2 boardType:(int)arg3;
 - (void)resetPuckData:(id)arg1;
 - (id)dataForPuckType:(int)arg1 boardType:(int)arg2;
@@ -64,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)_uiBegin:(id)arg1;
 - (void)_uiEnd:(id)arg1;
 - (void)addEffectToCurrentAnchoredObject;
+- (void)_angleChanged:(id)arg1;
 - (void)_effectStackChanged:(id)arg1;
 - (void)updatePresets;
 - (long long)numberOfPresets;
@@ -74,7 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateInspectorSelectionForCurrentAnchoredObject;
 - (void)_updateShapeMaskToolForEffect:(id)arg1;
 @property(retain, nonatomic) FFEffectStack *observedStack; // @synthesize observedStack=_observedStack;
-@property(retain, nonatomic) CHChannelFolder *effectFolder; // @synthesize effectFolder=_effectFolder;
+@property(retain, nonatomic) CHChannelFolder *puckFolder; // @synthesize puckFolder=_puckFolder;
 @property(retain, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
 @property(retain, nonatomic) FFAnchoredObject *currentAnchoredObject; // @synthesize currentAnchoredObject=_currentAnchoredObject;
 @property(nonatomic) long long currentCorrectionID; // @synthesize currentCorrectionID=_currentCorrectionID;

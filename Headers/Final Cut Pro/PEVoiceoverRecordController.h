@@ -9,7 +9,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFMedia, FFMediaEventProject, FFPlayerModule, FFVORecorder, LKButton, LKPopUpButton, LKSlider, LKTextField, NSArrayController, NSColor, NSURL, PERecorderMeterView;
+@class FFContext, FFMedia, FFMediaEventProject, FFPlayerModule, FFVORecorder, LKButton, LKPopUpButton, LKSlider, LKTextField, NSArrayController, NSColor, NSURL, PERecorderMeterView;
 
 @interface PEVoiceoverRecordController : NSWindowController <NSWindowDelegate, NSTextFieldDelegate>
 {
@@ -36,6 +36,7 @@
     FFMedia *_previousSelectedSequence;
     CDStruct_1b6d18a9 _playerTimeAtRecordStart;
     FFPlayerModule *_playerModule;
+    FFContext *_context;
 }
 
 - (void)_setSubmenuItemActions:(SEL)arg1 forMenu:(id)arg2;
@@ -77,6 +78,8 @@
 - (void)changeMonitorMute:(id)arg1;
 - (void)resetMeter:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)timeRateChangedForContext:(id)arg1;
+- (void)_setContext:(id)arg1;
 @property BOOL shouldCreateNewEvent; // @synthesize shouldCreateNewEvent=_shouldCreateNewEvent;
 @property FFMediaEventProject *selectedEvent; // @synthesize selectedEvent=_selectedEvent;
 

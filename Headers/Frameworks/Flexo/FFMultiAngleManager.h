@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredSequence, FFBackgroundTask, FFMultiAngleInfo, NSDate, NSLock, NSMutableArray, NSMutableDictionary;
+@class FFAnchoredSequence, FFBackgroundTask, FFMultiAngleInfo, NSArray, NSDate, NSLock, NSMutableArray, NSMutableDictionary;
 
 @interface FFMultiAngleManager : NSObject
 {
@@ -40,7 +40,8 @@
         unsigned int hasIntersectedItems:1;
         unsigned int fineSyncedByAudio:1;
         unsigned int isDropTC:1;
-        unsigned int reserved:14;
+        unsigned int isMixedTCT:1;
+        unsigned int reserved:13;
     } _multiAngleManagerFlags;
     NSLock *_bgTaskIVarLock;
     FFBackgroundTask *_backgroundCalculationTask;
@@ -54,6 +55,8 @@
     CDStruct_1b6d18a9 _audioSyncRefAngleStart;
 }
 
+@property(readonly) NSArray *items;
+@property(readonly) NSArray *angles;
 - (CDStruct_1b6d18a9)multiAngleDuration;
 @property(readonly) CDStruct_1b6d18a9 tcMultiAngleStart;
 @property(readonly) NSDate *todMultiAngleStart;
@@ -102,13 +105,12 @@
 - (BOOL)_syncItemsByMarker;
 - (BOOL)syncItemsByFirstMarker;
 - (void)_updateMultiAngleStartTimeByAligningAngle:(id)arg1;
-- (void)_subtractTimeFromMultiAngleStartTime:(CDStruct_1b6d18a9)arg1;
-- (void)_subtractTimeFromAngleItemsStartTime:(id)arg1 time:(CDStruct_1b6d18a9)arg2;
 - (BOOL)_syncItemsByTC;
 - (BOOL)syncItemsByTimecode;
 - (BOOL)_syncItemsByTOD;
 - (BOOL)syncItemsByTimeOfDay;
 - (id)_findReferenceAngle;
+- (BOOL)canSyncByTC;
 - (BOOL)syncItemsByAuto;
 - (BOOL)_fineSyncAnglesByAudioToRefAngle:(id)arg1;
 - (BOOL)_syncAnglesByAudioToRefAngle:(id)arg1 usePeaksOnly:(BOOL)arg2;
@@ -121,16 +123,18 @@
 - (void)_endProgressController;
 - (BOOL)anglesSyncedByAudio;
 - (BOOL)shouldFineSyncByAudio;
-- (void)_alignItems;
-- (void)_alignAngles;
 - (CDStruct_1b6d18a9)_synchronizedAudioOffsetForItem:(id)arg1 itemSyncTime:(CDStruct_1b6d18a9)arg2 toRefItem:(id)arg3 refItemSyncTime:(CDStruct_1b6d18a9)arg4 syncDuration:(CDStruct_1b6d18a9)arg5 useFullRange:(BOOL)arg6 confidence:(float *)arg7;
 - (BOOL)_synchronizeItemByAudio:(id)arg1 itemSyncTime:(CDStruct_1b6d18a9)arg2 refItem:(id)arg3 refItemSyncTime:(CDStruct_1b6d18a9)arg4 syncDuration:(CDStruct_1b6d18a9)arg5 useFullRange:(BOOL)arg6;
 - (CDStruct_e83c9415)_syncRangeForItem:(id)arg1 syncOffset:(CDStruct_1b6d18a9)arg2 syncDuration:(CDStruct_1b6d18a9)arg3;
 - (BOOL)_fineSyncAllItemsByAudio;
 - (BOOL)fineSyncItemsByAudio;
 - (id)angleForAngleContainer:(id)arg1;
+- (id)itemForItemObject:(id)arg1;
+- (id)angleItemsForItems:(id)arg1;
+- (BOOL)audioSyncItems:(id)arg1 syncRanges:(id)arg2 toAngle:(id)arg3;
 - (BOOL)audioSyncAngle:(id)arg1 toMonitorAngle:(id)arg2;
 - (BOOL)syncAnglesAndItemsByAudio:(BOOL)arg1 syncItems:(BOOL)arg2;
+- (BOOL)_applyChanges;
 - (BOOL)_applySyncAngleToMonitorAngleChanges;
 - (BOOL)arrangeItemsByAngleAndWrapIntoStorylines:(BOOL)arg1;
 @property BOOL isTesting; // @synthesize isTesting=_isTesting;

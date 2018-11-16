@@ -19,9 +19,6 @@
     CDStruct_1b6d18a9 _start;
     CDStruct_1b6d18a9 _duration;
     NSMutableArray *_playerItems;
-    BOOL _allowsHardwareMonitor;
-    BOOL _usesCMIO;
-    BOOL _deviceListIsBuilding;
     BOOL _stopPlayingIsDown;
     BOOL _fastForwardIsDown;
     BOOL _rewindIsDown;
@@ -81,12 +78,8 @@
 - (CDStruct_1b6d18a9)_mediaUIStart;
 - (CDStruct_1b6d18a9)mediaDuration;
 - (CDStruct_1b6d18a9)frameDuration;
-- (BOOL)usesCMIO;
-- (void)setUsesCMIO:(BOOL)arg1;
-- (BOOL)allowsHardwareMonitor;
-- (void)setAllowsHardwareMonitor:(BOOL)arg1;
-- (BOOL)deviceListIsBuilding;
-- (void)setDeviceListIsBuilding:(BOOL)arg1;
+- (BOOL)useDestVideoCMIO;
+- (void)setUseDestVideoCMIO:(BOOL)arg1;
 @property(nonatomic, getter=isPlaying) BOOL playing;
 - (void)updatePlayerOnSampleBoundary;
 @property(readonly, nonatomic) FFPlayer *player;
@@ -155,9 +148,6 @@
 - (id)inspectorClassName;
 - (id)selectedItems;
 - (void)appWillTerminate:(id)arg1;
-- (void)deviceListIsBuilding:(id)arg1;
-- (void)deviceListIsDone:(id)arg1;
-- (void)newHardwarePlayerAvailable:(id)arg1;
 - (void)_teardownPlayer;
 - (void)_rebuildPlayer;
 - (void)_rebuildPlayerWithDrawingSuspension;

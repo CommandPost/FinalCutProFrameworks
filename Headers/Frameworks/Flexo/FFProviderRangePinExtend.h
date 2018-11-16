@@ -19,7 +19,9 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _maximumRange;
 }
 
+- (id)initWithSource:(id)arg1 unmodifiedRange:(CDStruct_e83c9415)arg2 holdBefore:(CDStruct_1b6d18a9)arg3 holdAfter:(CDStruct_1b6d18a9)arg4 gapBefore:(CDStruct_1b6d18a9)arg5 gapAfter:(CDStruct_1b6d18a9)arg6 identifier:(id)arg7;
 - (id)initWithSource:(id)arg1 unmodifiedRange:(CDStruct_e83c9415)arg2 holdBefore:(CDStruct_1b6d18a9)arg3 holdAfter:(CDStruct_1b6d18a9)arg4 identifier:(id)arg5;
+- (id)initWithRange:(CDStruct_e83c9415)arg1 definedRangeToUseFromInput:(CDStruct_e83c9415)arg2 input:(id)arg3 identifier:(id)arg4;
 - (void)dealloc;
 - (void)_setupSources;
 - (CDStruct_1b6d18a9)_mapRequestedTimeToInputTime:(CDStruct_1b6d18a9)arg1 adjustedDuration:(CDStruct_1b6d18a9 *)arg2;

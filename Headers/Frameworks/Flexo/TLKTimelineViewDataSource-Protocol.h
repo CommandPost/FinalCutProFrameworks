@@ -19,6 +19,7 @@
 - (void)timelineView:(id)arg1 moveTracks:(id)arg2 toIndex:(unsigned long long)arg3;
 - (id)timelineView:(id)arg1 rolesForItem:(id)arg2;
 - (id)timelineView:(id)arg1 angleTitleForItem:(id)arg2;
+- (int)timelineView:(id)arg1 itemSizeForItem:(id)arg2;
 - (void)timelineView:(id)arg1 setAnchorTime:(CDStruct_1b6d18a9)arg2 inItem:(id)arg3;
 - (void)timelineView:(id)arg1 trimEdge:(id)arg2 trimType:(int)arg3 edgeType:(int)arg4 ofItems:(id)arg5 byTimeOffset:(CDStruct_1b6d18a9 *)arg6 movementType:(int)arg7;
 - (void)timelineView:(id)arg1 rollEdge:(id)arg2 edgeType:(int)arg3 ofSpineItem:(id)arg4 byTimeOffset:(CDStruct_1b6d18a9 *)arg5;
@@ -37,6 +38,7 @@
 - (BOOL)timelineView:(id)arg1 shouldRollEdge:(id)arg2 edgeType:(int)arg3 ofSpineItem:(id)arg4 byTimeOffset:(CDStruct_1b6d18a9 *)arg5;
 - (void)timelineView:(id)arg1 willRollEdge:(id)arg2 edgeType:(int)arg3 ofSpineItem:(id)arg4;
 - (BOOL)timelineView:(id)arg1 shouldMoveItems:(id)arg2 byPlacingItem:(id)arg3 inContainer:(id)arg4 atIndex:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6;
+- (id)timelineView:(id)arg1 filterOutLeadingTrailingTransitions:(id)arg2;
 - (id)timelineView:(id)arg1 prepareItemAsContainer:(id)arg2 forMovingItems:(id)arg3 toIndex:(unsigned long long)arg4 atTime:(CDStruct_1b6d18a9)arg5;
 - (BOOL)timelineView:(id)arg1 shouldAnchorItems:(id)arg2 inContainer:(id)arg3 byAnchoringItem:(id)arg4 atTime:(CDStruct_1b6d18a9)arg5;
 - (BOOL)timelineView:(id)arg1 shouldOrderItem:(id)arg2 aboveItems:(id)arg3 belowItems:(id)arg4 besideItems:(id)arg5;
@@ -44,7 +46,7 @@
 - (unsigned long long)timelineView:(id)arg1 validateDrop:(id)arg2 onItem:(id)arg3 atIndex:(long long)arg4 dropTime:(CDStruct_1b6d18a9 *)arg5;
 - (id)timelineView:(id)arg1 acceptDrop:(id)arg2 onItem:(id)arg3 atIndex:(long long)arg4 dropTime:(CDStruct_1b6d18a9)arg5;
 - (void)timelineView:(id)arg1 draggingSessionEnded:(BOOL)arg2;
-- (void)timelineView:(id)arg1 renameItem:(id)arg2 to:(id)arg3;
+- (void)timelineView:(id)arg1 setDisplayName:(id)arg2 forItem:(id)arg3;
 - (void)timelineViewWillBeginDataAccess:(id)arg1 readOnly:(BOOL)arg2;
 - (void)timelineViewDidEndDataAccess:(id)arg1 readOnly:(BOOL)arg2;
 - (void)timelineViewDidBeginTransaction:(id)arg1;

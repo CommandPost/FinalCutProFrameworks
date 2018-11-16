@@ -50,10 +50,12 @@ __attribute__((visibility("hidden")))
 - (void)setVideoFormatName:(id)arg1;
 @property(readonly, nonatomic) NSURL *originalMediaURL; // @synthesize originalMediaURL=_originalMediaURL;
 - (void)setOriginalMediaURL:(id)arg1;
-- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)mdTargetForKey:(id)arg1;
 - (id)assetRefs;
+- (void)addAssetRefsToSet:(id)arg1;
 - (id)eventName;
 - (id)clipRefs;
+- (void)addClipRefsToSet:(id)arg1;
 - (BOOL)isPSD;
 @property(retain, nonatomic) NSString *uttype; // @synthesize uttype=_uttype;
 @property(readonly, nonatomic) NSString *cameraClipID; // @synthesize cameraClipID=_cameraClipID;

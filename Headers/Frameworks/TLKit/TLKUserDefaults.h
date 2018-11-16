@@ -14,9 +14,11 @@
 + (void)initialize;
 + (BOOL)allowNegativeTimeAfterTrim;
 + (BOOL)disableClipSublayers;
-+ (BOOL)loadDebugMicaAssets;
++ (BOOL)disableOptimizedDrawing;
 + (BOOL)enableIncrementalReload;
 + (BOOL)forceLayoutOnDrag;
++ (BOOL)loadDebugMicaAssets;
++ (BOOL)performanceMonitorEnabled;
 + (BOOL)logParts;
 + (BOOL)logReloadRequests;
 + (BOOL)logVisibleLayerChanges;

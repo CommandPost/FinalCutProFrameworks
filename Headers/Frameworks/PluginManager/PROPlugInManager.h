@@ -21,6 +21,7 @@
 - (id)plugInSearchDirectories;
 - (void)scanForPlugIns;
 - (void)scanForPlugInsInDirectory:(id)arg1;
+- (void)scanForPlugInsInBundle:(id)arg1;
 - (void)removeAllPlugIns;
 - (id)plugInGroups;
 - (id)plugIns;

@@ -6,7 +6,7 @@
 
 #import "OZViewController.h"
 
-@class FFMediaRefThumbnailContainer, LKButton, LKTextField, NSImageView, NSView;
+@class FFEffectStack, FFMediaRefThumbnailContainer, LKButton, LKTextField, NSImageView, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaRefChannelController : OZViewController
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     LKTextField *_promptLabel;
     LKButton *_clearButton;
     NSView *_pickingHighlightView;
+    FFEffectStack *_effectStack;
 }
 
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)pick:(id)arg1;
 - (void)mouseEnteredRow:(id)arg1;
 - (void)mouseExitedRow:(id)arg1;
+- (void)_effectsChanged:(id)arg1;
 
 @end
 

@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)moduleAccessoryView;
 - (unsigned long long)labelAlignment;
 - (void)setCurrentItems:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_rangeInvalidated:(id)arg1;
 - (void)_addObservingForCurrentItems;
 - (void)_removeObservingForCurrentItems;
 - (void)_updateHeader;

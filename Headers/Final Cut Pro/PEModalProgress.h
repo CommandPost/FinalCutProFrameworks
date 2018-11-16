@@ -8,10 +8,11 @@
 
 #import "FFModalProgress.h"
 
-@class NSDate, NSMutableArray, NSProgressIndicator, NSRecursiveLock;
+@class NSButton, NSDate, NSMutableArray, NSProgressIndicator, NSRecursiveLock, NSWindow;
 
 @interface PEModalProgress : NSWindowController <FFModalProgress>
 {
+    id _titleText;
     id _statusText;
     NSProgressIndicator *_progressIndicator;
     NSRecursiveLock *_lock;
@@ -19,6 +20,11 @@
     NSMutableArray *_statusStrings;
     int _progressStatus;
     NSDate *_requestDate;
+    NSWindow *_targetWindow;
+    BOOL _allowCancel;
+    BOOL _hasCancelled;
+    double _maxValue;
+    NSButton *_cancelButton;
 }
 
 + (void)initialize;
@@ -32,9 +38,13 @@
 - (void)_showSheet;
 - (void)_hideSheet;
 - (void)_refreshStatus;
-- (void)beginModalProgress:(id)arg1 showType:(int)arg2;
+- (void)awakeFromNib;
+- (void)cancelAction:(id)arg1;
+- (void)beginModalProgress:(id)arg1 titleText:(id)arg2 showType:(int)arg3 targetWindow:(id)arg4;
+- (BOOL)updateModalProgress:(id)arg1 currentValue:(double)arg2 maxValue:(double)arg3 allowCancel:(BOOL)arg4;
 - (void)endModalProgress;
 - (void)showIfTime;
+@property(retain, nonatomic) NSWindow *targetWindow; // @synthesize targetWindow=_targetWindow;
 @property(retain, nonatomic) NSDate *requestDate; // @synthesize requestDate=_requestDate;
 
 @end

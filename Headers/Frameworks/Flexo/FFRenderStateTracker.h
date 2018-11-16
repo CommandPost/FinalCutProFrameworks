@@ -60,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_addToDirtyRanges:(CDStruct_e83c9415)arg1;
 - (void)_removeFromDirtyRanges:(CDStruct_e83c9415)arg1;
 - (void)_insertIntoKnownRange:(id)arg1;
-- (CDStruct_e83c9415)_findAndRemoveNextDirtyInRange:(CDStruct_e83c9415)arg1;
+- (CDStruct_e83c9415)_findNextDirtyInRange:(CDStruct_e83c9415)arg1;
 - (void)setState:(int)arg1 forRange:(CDStruct_e83c9415)arg2 withMD5s:(CDStruct_60067b7e *)arg3 nativeSampleDur:(CDStruct_1b6d18a9)arg4;
 - (void)rangeInvalidated:(id)arg1;
 - (void)deferredRenderStateNotify:(id)arg1;
@@ -75,7 +75,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
 - (void)checkRangeForRecentlyCreatedRenderFiles:(id)arg1;
 - (BOOL)_analyzeSegmentStoreForInfo:(id)arg1 checkActual:(_Bool)arg2 startAt:(CDStruct_1b6d18a9)arg3 renderFilePaths:(id)arg4 exitTime:(CDStruct_1b6d18a9)arg5 retRange:(CDStruct_e83c9415 *)arg6 diskMD5:(CDStruct_60067b7e *)arg7;
-- (int)_getStateForInfo:(id)arg1 startAt:(CDStruct_1b6d18a9)arg2 exitTime:(CDStruct_1b6d18a9)arg3 retRange:(CDStruct_e83c9415 *)arg4 diskMD5s:(CDStruct_60067b7e *)arg5;
+- (int)_getStateForInfo:(id)arg1 startAt:(CDStruct_1b6d18a9)arg2 exitTime:(CDStruct_1b6d18a9)arg3 retRange:(CDStruct_e83c9415 *)arg4 diskMD5s:(CDStruct_60067b7e *)arg5 context:(id)arg6;
 - (BOOL)_analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
 - (BOOL)_calculateRenderStatesOnTask:(id)arg1 timeout:(CDStruct_1b6d18a9)arg2;
 - (void)cancelBackgroundOps;

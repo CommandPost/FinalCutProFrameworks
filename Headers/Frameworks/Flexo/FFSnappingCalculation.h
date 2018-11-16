@@ -21,6 +21,7 @@
     BOOL _leadingEdgeRipple;
     BOOL _inhibitPlayheadSnapping;
     BOOL _directionIsReversed;
+    BOOL _timePreservingMode;
     BOOL _snappingLeadingEdge;
     BOOL _snappingTrailingEdge;
     BOOL _isTrimming;
@@ -87,6 +88,8 @@
 - (CDStruct_1b6d18a9)snapTrailingEdgeRippleTrimOffset:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)snapRollTrimOffset:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)snapResizeTrimOffset:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)snapTimePreservingTrimOffset:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)snapSlipTrimOffset:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)snapTrimOffset:(CDStruct_1b6d18a9)arg1 command:(int)arg2 edgeType:(int)arg3;
 - (CDStruct_1b6d18a9)_playheadTime;
 - (CDStruct_1b6d18a9)_skimmingPlayheadTime;
@@ -106,6 +109,7 @@
 - (id)_trailingEdgeTransitionForClip:(id)arg1;
 - (id)_clipsAnchoredToClip:(id)arg1;
 - (id)_clipsInStoryline:(id)arg1;
+- (id)_parentOfClip:(id)arg1;
 - (CDStruct_e83c9415)_timeRangeOfClip:(id)arg1;
 - (CDStruct_e83c9415)_timeRangeLimitsOfClip:(id)arg1;
 - (CDStruct_e83c9415)_audioTimeRangeOfClip:(id)arg1;
@@ -115,7 +119,9 @@
 - (BOOL)_clipIsMarker:(id)arg1;
 - (BOOL)_clipIsStoryline:(id)arg1;
 - (BOOL)_clipIsTransition:(id)arg1;
+- (BOOL)_clipIsValid:(id)arg1;
 - (void)_didSnapClips:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+@property BOOL timePreservingMode; // @synthesize timePreservingMode=_timePreservingMode;
 @property BOOL directionIsReversed; // @synthesize directionIsReversed=_directionIsReversed;
 @property BOOL inhibitPlayheadSnapping; // @synthesize inhibitPlayheadSnapping=_inhibitPlayheadSnapping;
 @property(nonatomic) id <FFSnappingDataSource> dataSource; // @synthesize dataSource=_dataSource;

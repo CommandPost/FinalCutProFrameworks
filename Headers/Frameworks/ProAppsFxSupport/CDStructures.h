@@ -127,7 +127,7 @@ struct OZChannel {
     CDStruct_198678f7 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
 };
 
 struct OZChannelFolder {
@@ -162,8 +162,6 @@ struct PCString {
     struct __CFString *_field1;
 };
 
-struct RecordingCallbackData;
-
 struct _Rb_tree<HGNodeInput*, HGNodeInput*, std::_Identity<HGNodeInput*>, std::less<HGNodeInput*>, std::allocator<HGNodeInput*>> {
     struct _Rb_tree_impl<std::less<HGNodeInput*>, false> _field1;
 };
@@ -181,12 +179,6 @@ struct _Rb_tree_node_base {
     struct _Rb_tree_node_base *_field4;
 };
 
-struct _Vector_impl {
-    struct RecordingCallbackData *_field1;
-    struct RecordingCallbackData *_field2;
-    struct RecordingCallbackData *_field3;
-};
-
 struct __CFString;
 
 struct less<HGNodeInput*>;
@@ -195,9 +187,7 @@ struct set<HGNodeInput*, std::less<HGNodeInput*>, std::allocator<HGNodeInput*>> 
     struct _Rb_tree<HGNodeInput*, HGNodeInput*, std::_Identity<HGNodeInput*>, std::less<HGNodeInput*>, std::allocator<HGNodeInput*>> _field1;
 };
 
-struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> {
-    struct _Vector_impl _field1;
-};
+struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>>;
 
 struct vector<OZChannelBase*, std::allocator<OZChannelBase*>>;
 

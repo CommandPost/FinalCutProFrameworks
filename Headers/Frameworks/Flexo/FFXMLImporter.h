@@ -91,8 +91,8 @@ __attribute__((visibility("hidden")))
 - (id)copyClipRef:(id)arg1 error:(id *)arg2;
 - (id)copyAssetRef:(id)arg1 error:(id *)arg2;
 - (id)createEventDocument:(id)arg1 name:(id)arg2 error:(id *)arg3;
-- (id)bindExternalProject:(id)arg1 error:(id *)arg2;
-- (void)prepareResources:(id)arg1 andDefaultEvent:(id *)arg2;
+- (id)bindExternalProject:(id)arg1 create:(BOOL)arg2 error:(id *)arg3;
+- (void)prepareResources:(id)arg1 defaultEventID:(id)arg2;
 - (void)closeAndDeleteDocumentFiles:(id)arg1;
 - (id)newSequenceProjectFromNode:(struct NSXMLElement *)arg1 error:(id *)arg2;
 - (id)newMulticamMediaSetItem:(id)arg1;

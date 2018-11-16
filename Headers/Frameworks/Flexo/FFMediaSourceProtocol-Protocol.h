@@ -6,10 +6,13 @@
 
 @protocol FFMediaSourceProtocol
 - (id)media;
-- (id)providerSourceKey;
-- (id)sourceChannelMap;
 - (void)setMedia:(id)arg1;
+- (id)providerSourceKey;
 - (void)setProviderSourceKey:(id)arg1;
+- (id)sourceChannelMap;
 - (void)setSourceChannelMap:(id)arg1;
+- (id)audioChannelRoutingMap;
+- (void)setAudioChannelRoutingMap:(id)arg1;
+- (void)setMedia:(id)arg1 providerSourceKey:(id)arg2 sourceChannelMap:(id)arg3 audioChannelRoutingMap:(id)arg4 updateFlags:(int)arg5;
 @end
 

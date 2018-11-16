@@ -25,8 +25,10 @@ __attribute__((visibility("hidden")))
     NSTextField *_sharingTextAudioChannels;
     NSProThemeImageView *_sharingFormatRightBadge;
     NSProThemeImageView *_sharingFormatLeftBadge;
+    BOOL _projectIsInSyncWithShareMedia;
 }
 
+- (id)init;
 - (void)dealloc;
 - (void)updateHeaderUI;
 - (id)getShareStatusImage:(BOOL)arg1;

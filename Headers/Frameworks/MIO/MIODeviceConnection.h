@@ -61,6 +61,7 @@
 - (id)UID;
 - (unsigned int)framerate;
 - (int)timecodeFormat;
+- (CDStruct_1b6d18a9)frameduration;
 - (unsigned int)vendorID;
 - (id)vendor;
 - (id)modelUID;
@@ -100,7 +101,6 @@
 - (BOOL)canDoInput;
 - (BOOL)canDoOutput;
 @property NSDictionary *properties;
-- (unsigned int)outputStreamLatencyInFrames;
 @property int iSightStatus; // @synthesize iSightStatus=miSightStatus;
 @property BOOL iSightHasIris; // @synthesize iSightHasIris=miSightHasIris;
 @property BOOL isiSight; // @synthesize isiSight=mIsiSight;

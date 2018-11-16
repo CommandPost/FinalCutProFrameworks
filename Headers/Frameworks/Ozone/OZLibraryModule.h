@@ -54,6 +54,7 @@
 - (void)updateThemePopupLabel;
 - (void)getFolderKey:(id)arg1 stream:(struct PCHashWriteStream *)arg2 symbolicLinkLevel:(int)arg3;
 - (struct PCHash128)calcCacheKey;
+- (id)libraryCachePath;
 - (void)writeLibraryCacheToDisk;
 - (void)willTerminateNotification:(id)arg1;
 - (int)defaultViewMode;
@@ -62,6 +63,8 @@
 - (id)getAllDirectory;
 - (id)addRootFolder:(int)arg1;
 - (void)createDefaultDirsAtPath:(id)arg1;
+- (void)buildTreeForMotion;
+- (void)buildTreeForMotionEffect;
 - (void)buildTree;
 - (void)updateTopPaneSelection;
 - (void)refreshTopPane;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 - (id)init;
 - (void)updateLocation:(struct CGPoint)arg1;
+- (void)dealloc;
 @property(retain, nonatomic) CALayer *layer; // @synthesize layer;
 @property(nonatomic) struct CGPoint location; // @synthesize location;
 @property(nonatomic) CDStruct_1b6d18a9 time; // @synthesize time;

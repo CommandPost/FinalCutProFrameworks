@@ -48,7 +48,6 @@
 + (Class)CKMutableSourceClass;
 + (Class)CKOpenJobActionClass;
 + (Class)CKOtherSettingExportPanelClass;
-+ (Class)CKPodcastExportPanelClass;
 + (Class)CKPodcastJobActionClass;
 + (Class)CKRoleClass;
 + (Class)CKRoleOutputClass;

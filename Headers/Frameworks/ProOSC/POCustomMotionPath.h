@@ -8,12 +8,12 @@
 
 @interface POCustomMotionPath : POParametricMotionPath
 {
-    PCPtr_ca909b16 _motionPathHandlesTexture;
     PCPtr_ca909b16 _handlesTexture;
     PCVector3_457fd1f0 _invOffset;
     struct PCMutex _samplesLock;
 }
 
++ (void)maybeInitResources;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (void)dealloc;
 - (unsigned int)getPathActivePart;

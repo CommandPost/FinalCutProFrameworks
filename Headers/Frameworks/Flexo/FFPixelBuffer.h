@@ -27,6 +27,7 @@
 - (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 flipped:(BOOL)arg5 alphaType:(int)arg6;
 - (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 flipped:(BOOL)arg5;
 - (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2 alphaType:(int)arg3;
+- (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2 alphaType:(int)arg3 clearBuffer:(BOOL)arg4;
 - (id)initWithBounds:(struct CGRect)arg1 pixelFormat:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isPremultipliedBlack;

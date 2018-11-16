@@ -20,11 +20,14 @@ __attribute__((visibility("hidden")))
     double mMediaRate;
     long long mHighestVideoPresentationTimeStamp[2];
     long long mHighestVideoDuration[2];
+    long long mLastAudioPresentationTimeStamp[2];
+    long long mLastAudioDuration[2];
     id mCurrentIngestObject;
     int mCurrentIngestObjectIndex;
 }
 
 - (id)initWithIngestObjects:(id)arg1 andPathSets:(id)arg2 andRefCons:(id)arg3 andDurations:(id)arg4 andMediaRate:(double)arg5;
+- (id)ingestObjects;
 - (void)dealloc;
 - (void)performSelector:(SEL)arg1 onObjects:(id)arg2 withObjects:(id)arg3;
 - (int)initialize:(void *)arg1;
@@ -37,9 +40,9 @@ __attribute__((visibility("hidden")))
 - (int)setInPoint:(CDStruct_1b6d18a9)arg1 inRefCon:(void *)arg2;
 - (int)setOutPoint:(CDStruct_1b6d18a9)arg1 inRefCon:(void *)arg2;
 - (int)setKeepMediaVideoRate:(BOOL)arg1 inRefCon:(void *)arg2;
+- (int)getNextMedia:(struct MIORADPlugInMediaSpecifier *)arg1 inRefCon:(void *)arg2;
 - (int)getNextMedia_Deprecated:(struct MIORADPlugInMediaSpecifier_Deprecated *)arg1 inRefCon:(void *)arg2;
 - (BOOL)useCMTime;
-- (int)getNextMedia:(struct MIORADPlugInMediaSpecifier *)arg1 inRefCon:(void *)arg2;
 
 @end
 

@@ -50,6 +50,8 @@
 - (BOOL)drawAllAngles;
 - (BOOL)disable422Filtering;
 - (struct CGRect)pixelSpaceBounds;
+- (BOOL)compareTo:(id)arg1 withCompareFlags:(unsigned int)arg2;
+- (BOOL)isEqual:(id)arg1;
 @property(readonly, nonatomic) unsigned int additionalRenderingFlags; // @synthesize additionalRenderingFlags=_additionalRenderingFlags;
 
 @end

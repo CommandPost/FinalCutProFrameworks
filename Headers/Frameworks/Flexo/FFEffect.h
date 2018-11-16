@@ -27,12 +27,14 @@
     NSMutableArray *_channelObjectRefs;
     BOOL _isOffline;
     int _cachedIsNoOp;
+    int _effectBundleEncodingOptions;
     FFMD5AndOffset *_cachedAudioMD5;
     int _videoStreamsOpenOnEffect;
     int _pendingVideoStreamCloses;
     FFEffectController *_effectController;
 }
 
++ (Class)classForKeyedUnarchiver;
 + (id)copyClassDescription;
 + (void)registerEffects;
 + (id)newEffectWithXMLElement:(id)arg1;
@@ -148,6 +150,7 @@
 - (void)updateEffectModelVersion:(int)arg1 newVersion:(int)arg2;
 - (BOOL)isContextAware;
 - (void)_clearCachedAudioMD5;
+- (id)newAudioMD5AndOffset:(int)arg1;
 - (CDStruct_60067b7e)audioMD5:(int)arg1;
 - (void)firstVideoStreamOpenedOnEffect;
 - (void)lastVideoStreamClosedOnEffect;
@@ -158,8 +161,11 @@
 - (void)_installVideoStreamClosedSelectorOutsideOfLockScopes:(id)arg1;
 - (void)videoStreamClosed:(id)arg1;
 - (id)assets;
+- (void)addAssetsToSet:(id)arg1;
 - (id)assetRefs;
+- (void)addAssetRefsToSet:(id)arg1;
 - (id)clipRefs;
+- (void)addClipRefsToSet:(id)arg1;
 - (id)mediaRefs;
 - (id)fileURLs:(int)arg1;
 - (CDStruct_1b6d18a9)sampleDurationOfContainer;
@@ -168,6 +174,7 @@
 - (id)exportAsXMLElement;
 - (id)exportAsXMLElementWithExcludedChannels:(id)arg1;
 - (id)exportAsXMLElementWithDeprecatedEffectData:(id)arg1;
+@property(nonatomic) int effectBundleEncodingOptions; // @synthesize effectBundleEncodingOptions=_effectBundleEncodingOptions;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 
 @end

@@ -4,17 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSCoder.h"
+#import <Flexo/FFEffectBundle.h>
 
 __attribute__((visibility("hidden")))
-@interface FFXMLArchiver : NSCoder
+@interface FFEffectBundleUserBundle : FFEffectBundle
 {
-    struct FFXMLArchiverStack *_stack;
 }
 
-- (id)init;
-- (void)dealloc;
-- (const struct FFXMLArchiverItem *)currentRecord;
+- (id)initialEffectBundleParts;
+- (id)presetNames;
+- (id)availableBundleParts;
+- (void)partChangedHook;
 
 @end
 

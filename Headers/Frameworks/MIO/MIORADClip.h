@@ -132,6 +132,7 @@
 - (BOOL)canSetInOut;
 - (BOOL)isVFR;
 - (id)cameraName;
+- (id)locationISO6709;
 - (id)extendedProperties;
 - (id)metadata;
 - (id)mediaMap;

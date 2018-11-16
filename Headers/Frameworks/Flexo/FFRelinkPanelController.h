@@ -11,7 +11,7 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFRelinkOpenAccessoryViewController, LKBox, LKButton, LKScrollView, LKTableView, LKTextField, NSArray, NSMatrix, NSMutableArray, NSProThemeImageView, NSTextView, NSView;
+@class FFRelinkOpenAccessoryViewController, LKBox, LKButton, LKScrollView, LKTableView, LKTextField, NSArray, NSCondition, NSMatrix, NSMutableArray, NSProThemeImageView, NSString, NSTextView, NSURL, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFRelinkPanelController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSOpenSavePanelDelegate>
@@ -32,6 +32,14 @@ __attribute__((visibility("hidden")))
     double _initialTableHeight;
     double _showMatchedExtraHeight;
     double _matchedTableDistanceFromBoxTop;
+    NSURL *_lastStatusURL;
+    NSString *_backgroundStatusString;
+    NSCondition *_condition;
+    int _backgroundStatus;
+    BOOL _reportProgress;
+    int _currentProgress;
+    int _maxProgress;
+    BOOL _abort;
     NSProThemeImageView *_relinkBadge;
     LKTextField *_titleTextField;
     NSTextView *_introTextView;
@@ -70,12 +78,12 @@ __attribute__((visibility("hidden")))
 - (id)_chosenUnmatchedAssetRefs;
 - (BOOL)_urlIsFolder:(id)arg1;
 - (BOOL)_verifyCompatibleMatch:(id)arg1 error:(id *)arg2;
-- (id)_baseNameFromURL:(id)arg1;
-- (id)_findMatchForAssetRef:(id)arg1 filesDict:(id)arg2 baseNameDict:(id)arg3 isCaseSensitive:(BOOL)arg4 incompatibleFileCount:(int *)arg5 error:(id *)arg6;
+- (void)_examineURL:(id)arg1 getDifferentBaseName:(id *)arg2 getDifferentRootName:(id *)arg3;
+- (id)_findMatchForAssetRef:(id)arg1 filesDict:(id)arg2 baseNameDict:(id)arg3 rootNameDict:(id)arg4 isCaseSensitive:(BOOL)arg5 incompatibleFileCount:(int *)arg6 error:(id *)arg7;
 - (id)_findTreeMatchesForAssetRefs:(id)arg1 oldRootPath:(id)arg2 newRootPath:(id)arg3 compareOptions:(unsigned long long)arg4 incompatibleFileCount:(int *)arg5 error:(id *)arg6;
 - (void)_rootsForURL1:(id)arg1 URL2:(id)arg2 root1:(id *)arg3 root2:(id *)arg4 compareOptions:(unsigned long long)arg5;
 - (id)_findMatchesInFolder:(id)arg1 incompatibleFileCount:(int *)arg2 error:(id *)arg3;
-- (unsigned long long)_matchSelectedTo:(id)arg1 incompatibleFileCount:(int *)arg2 error:(id *)arg3;
+- (void)_matchSelectedTo:(id)arg1 selectedRowAssetRefs:(id)arg2;
 - (void)_adjustLayout:(id)arg1;
 - (void)windowWillClose:(id)arg1;
 - (void)windowDidMove:(id)arg1;
@@ -92,9 +100,15 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
 - (void)tableViewSelectionDidChange:(id)arg1;
 - (id)tableView:(id)arg1 toolTipForCell:(id)arg2 rect:(struct CGRect *)arg3 tableColumn:(id)arg4 row:(long long)arg5 mouseLocation:(struct CGPoint)arg6;
+- (void)_updateOpenPanelStatusStringCallback;
+- (BOOL)_isFindMatchCancelled;
+- (void)_cancelBackgroundStatus;
 - (void)_updateOpenPanelStatusString:(id)arg1 url:(id)arg2;
 - (void)panel:(id)arg1 didChangeToDirectoryURL:(id)arg2;
 - (void)panelSelectionDidChange:(id)arg1;
+- (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
+@property(retain, nonatomic) NSString *backgroundStatusString; // @synthesize backgroundStatusString=_backgroundStatusString;
+@property(retain, nonatomic) NSURL *lastStatusURL; // @synthesize lastStatusURL=_lastStatusURL;
 
 @end
 

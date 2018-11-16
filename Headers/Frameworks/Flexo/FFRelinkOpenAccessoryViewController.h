@@ -6,17 +6,19 @@
 
 #import "NSViewController.h"
 
-@class NSTextField;
+@class NSProgressIndicator, NSTextField;
 
 __attribute__((visibility("hidden")))
 @interface FFRelinkOpenAccessoryViewController : NSViewController
 {
+    NSProgressIndicator *_progressIndicator;
     NSTextField *_statusText;
     NSTextField *_referenceFilePath;
+    BOOL _showingProgress;
 }
 
 - (id)init;
-- (void)setStatusText:(id)arg1;
+- (void)setStatusText:(id)arg1 showProgress:(BOOL)arg2;
 - (void)setReferenceFilePath:(id)arg1;
 
 @end

@@ -37,7 +37,7 @@
 - (CDStruct_1b6d18a9)currentTimeForChannel:(id)arg1;
 - (CDStruct_1b6d18a9)griddedTimeForChannel:(id)arg1;
 - (void)setCurrentTime:(CDStruct_1b6d18a9)arg1 forChannel:(id)arg2;
-- (void)updateChannelHeaderForItems:(id)arg1;
+- (void)updateChannelHeaderForItems:(id)arg1 updateIcon:(BOOL)arg2;
 - (void)_scheduleDeferredAction:(SEL)arg1;
 - (void)_handledDeferredAction:(SEL)arg1;
 - (void)_filtersChangedFinal;
@@ -46,7 +46,7 @@
 - (void)_updateChannels;
 - (void)_updateMedia;
 - (void)_mediaInvalidated:(id)arg1;
-- (void)_inspectorChannelChanged:(id)arg1;
+- (void)_rangeInvalidation:(id)arg1;
 - (void)_effectSelectionStateChanged:(id)arg1;
 - (void)_effectEnabledStateChanged:(id)arg1;
 - (void)timeRateChangedForContext:(id)arg1;
@@ -61,7 +61,7 @@
 - (id)localModuleActions;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)delete:(id)arg1;
-- (void)_updateLabel;
+- (void)_updateLabel:(BOOL)arg1;
 - (void)_addObservingForCurrentItems;
 - (void)_removeObservingForCurrentItems;
 - (BOOL)_allItemsHaveChannelID:(unsigned int)arg1;

@@ -79,7 +79,9 @@
 - (CDStruct_1b6d18a9)globalToLocalTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)getTime:(CDStruct_1b6d18a9 *)arg1 forCurveDoubleValue:(double)arg2 inRange:(CDStruct_5c5366e1)arg3 options:(unsigned int)arg4;
 - (id)suffix;
+- (void)setSuffix:(id)arg1;
 - (double)scale;
+- (void)setScale:(double)arg1;
 
 @end
 

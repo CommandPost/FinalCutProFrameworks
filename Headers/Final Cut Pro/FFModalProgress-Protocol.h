@@ -5,7 +5,8 @@
 //
 
 @protocol FFModalProgress
-- (void)beginModalProgress:(id)arg1 showType:(int)arg2;
+- (void)beginModalProgress:(id)arg1 titleText:(id)arg2 showType:(int)arg3 targetWindow:(id)arg4;
+- (BOOL)updateModalProgress:(id)arg1 currentValue:(double)arg2 maxValue:(double)arg3 allowCancel:(BOOL)arg4;
 - (void)endModalProgress;
 - (void)showIfTime;
 @end

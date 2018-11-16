@@ -59,6 +59,7 @@
 - (id)url;
 - (id)uttype;
 - (id)suiteID;
+- (id)assetFileID;
 - (void)_setupSources;
 - (void)_setSource:(id)arg1 forKey:(id)arg2;
 - (void)_removeSourceForKey:(id)arg1;

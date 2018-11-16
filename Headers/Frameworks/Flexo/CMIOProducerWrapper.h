@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
             CDUnknownFunctionPointerType outputNotificationProc;
             void *outputNotificationRefcon;
             struct opaqueCMFormatDescription *formatDesc;
-            CDStruct_1b6d18a9 sampleDuration;
             unsigned long long sequenceNumber;
             unsigned long long frameSize;
         } twovuy;

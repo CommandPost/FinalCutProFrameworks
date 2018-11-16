@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)updateName;
 - (BOOL)isTimeMachineVolume;
+- (BOOL)isCaseSensitive;
 - (long long)availableSpaceInBytes;
 - (BOOL)_isOutOfDiskSpace;
 - (void)_dealWithOutOfDiskSpace;

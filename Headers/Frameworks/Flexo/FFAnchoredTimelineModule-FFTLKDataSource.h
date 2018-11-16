@@ -6,11 +6,14 @@
 
 #import <Flexo/FFAnchoredTimelineModule.h>
 
+#import "FFNUpDisplayDelegate.h"
 #import "TLKTimelineViewDataSource.h"
 #import "TLKTimelineViewDelegate.h"
 
-@interface FFAnchoredTimelineModule (FFTLKDataSource) <TLKTimelineViewDataSource, TLKTimelineViewDelegate>
+@interface FFAnchoredTimelineModule (FFTLKDataSource) <TLKTimelineViewDataSource, TLKTimelineViewDelegate, FFNUpDisplayDelegate>
 + (BOOL)_shouldShowImplicitTransitionForAudioItem:(id)arg1 leftEdge:(BOOL)arg2 timeRange:(CDStruct_e83c9415 *)arg3;
+- (BOOL)isAcceptingDrop;
+- (void)setIsAcceptingDrop:(BOOL)arg1;
 - (id)_anchoredClipsFromPasteboard:(id)arg1 videoProps:(id *)arg2 displayDropFrame:(long long *)arg3;
 - (struct __CFString *)_performanceInstrumentNameForHandler:(id)arg1;
 - (void)startPerformanceTimerForHandler:(id)arg1;
@@ -86,12 +89,9 @@
 - (BOOL)_isCopyMode;
 - (id)_itemsInContainerTimeForItems:(id)arg1 inContainer:(id)arg2 byAnchoringItem:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
 - (BOOL)_operationAnchorItems:(id *)arg1 inContainer:(id)arg2 byAnchoringItem:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4 error:(id *)arg5;
-- (id)_itemsToFilteredSortedContiguousBlocks:(id)arg1;
-- (id)_liftGapAnchoredItemsFromGap:(id)arg1;
-- (void)_reanchorGapAnchoredItems:(id)arg1 inContainer:(id)arg2;
 - (BOOL)_operationMoveItems:(id)arg1 toContainer:(id)arg2 atIndex:(unsigned long long)arg3 atTime:(CDStruct_1b6d18a9)arg4 error:(id *)arg5;
 - (BOOL)_operationMoveItems:(id)arg1 byPlacingItem:(id)arg2 inContainer:(id)arg3 atIndex:(unsigned long long)arg4 atTime:(CDStruct_1b6d18a9)arg5 error:(id *)arg6;
-- (void)timelineView:(id)arg1 renameItem:(id)arg2 to:(id)arg3;
+- (void)timelineView:(id)arg1 setDisplayName:(id)arg2 forItem:(id)arg3;
 - (void)timelineView:(id)arg1 moveTracks:(id)arg2 toIndex:(unsigned long long)arg3;
 - (int)_temporalResolutionModeForEdits:(id)arg1 edgeType:(int *)arg2;
 - (int)_trimCommandForTrimEdge:(id)arg1 trimType:(int)arg2 edgeType:(int)arg3 ofEdits:(id)arg4;
@@ -106,14 +106,16 @@
 - (BOOL)timelineView:(id)arg1 shouldRollEdge:(id)arg2 edgeType:(int)arg3 ofSpineItem:(id)arg4 byTimeOffset:(CDStruct_1b6d18a9 *)arg5;
 - (void)timelineView:(id)arg1 rollEdge:(id)arg2 edgeType:(int)arg3 ofSpineItem:(id)arg4 byTimeOffset:(CDStruct_1b6d18a9 *)arg5;
 - (BOOL)wouldMoveItemsIntoNegativeTime:(id)arg1 byPlacingItem:(id)arg2 inContainer:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
+- (id)timelineView:(id)arg1 filterOutLeadingTrailingTransitions:(id)arg2;
 - (BOOL)timelineView:(id)arg1 shouldMoveItems:(id)arg2 byPlacingItem:(id)arg3 inContainer:(id)arg4 atIndex:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6;
 - (void)timelineView:(id)arg1 moveItems:(id)arg2 byPlacingItem:(id)arg3 inContainer:(id)arg4 atIndex:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6;
 - (id)timelineView:(id)arg1 prepareItemAsContainer:(id)arg2 forMovingItems:(id)arg3 toIndex:(unsigned long long)arg4 atTime:(CDStruct_1b6d18a9)arg5;
-- (CDStruct_1b6d18a9)_snappedTimeForAnchoringItem:(id)arg1 toTime:(CDStruct_1b6d18a9)arg2 inSpine:(id)arg3;
+- (CDStruct_1b6d18a9)_snapOffsetForAnchoringItems:(id)arg1 atTimes:(CDStruct_1b6d18a9 *)arg2;
 - (CDStruct_1b6d18a9)_adjustmentForAnchoringItems:(id)arg1 atTimes:(CDStruct_1b6d18a9 *)arg2 inContainer:(id)arg3;
 - (BOOL)_validateAnchorTime:(CDStruct_1b6d18a9 *)arg1 byIgnoringItems:(id)arg2 inContainer:(id)arg3;
 - (id)_shouldAnchorItems:(id)arg1 inContainer:(id)arg2 byAnchoringItem:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
 - (BOOL)timelineView:(id)arg1 shouldAnchorItems:(id)arg2 inContainer:(id)arg3 byAnchoringItem:(id)arg4 atTime:(CDStruct_1b6d18a9)arg5;
+- (CDStruct_1b6d18a9)_minimumAnchorTimeForAnchoringItems:(id)arg1 inContainer:(id)arg2 withClickedItem:(id)arg3;
 - (id)timelineView:(id)arg1 anchorItems:(id)arg2 inContainer:(id)arg3 byAnchoringItem:(id)arg4 atTime:(CDStruct_1b6d18a9)arg5;
 - (BOOL)timelineView:(id)arg1 shouldSetAnchorTime:(CDStruct_1b6d18a9 *)arg2 inItem:(id)arg3;
 - (void)timelineView:(id)arg1 setAnchorTime:(CDStruct_1b6d18a9)arg2 inItem:(id)arg3;
@@ -145,6 +147,7 @@
 - (id)timelineView:(id)arg1 timecodeAtTime:(CDStruct_1b6d18a9)arg2;
 - (id)selectionManager:(id)arg1 willSelectObjects:(id)arg2 selectionMask:(unsigned long long)arg3;
 - (id)selectionManager:(id)arg1 willDeselectObjects:(id)arg2 selectionMask:(unsigned long long)arg3;
+- (void)_updateKenBurnsObject;
 - (void)selectionManagerDidChange:(id)arg1;
 - (CDStruct_e83c9415)selectionManager:(id)arg1 willSelectTimeRange:(CDStruct_e83c9415)arg2 withObjects:(id)arg3;
 - (void)selectionManager:(id)arg1 didSelectTimeRange:(CDStruct_e83c9415)arg2 withObjects:(id)arg3;
@@ -175,12 +178,14 @@
 - (void)handlerDidUpdateSkimming:(id)arg1;
 - (void)_updateHandlerPasteboardWithDraggingInfo:(id)arg1;
 - (void)timelineHandler:(id)arg1 willPerformDraggingEntered:(id)arg2;
+- (id)_skimTargetForTransition:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)_updateToolSkimming:(id)arg1 anchoredObject:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)endToolSkimming;
 - (BOOL)isToolSkimming;
 - (void)eventDispatcher:(id)arg1 willSetCurrentHandler:(id)arg2;
 - (void)eventDispatcher:(id)arg1 didSetCurrentHandler:(id)arg2;
 - (void)_skimObject:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)updateToolSkimmingWithChangeDictionary:(id)arg1;
 - (void)timelineViewStopItemSkimming:(id)arg1;
 - (void)timelineView:(id)arg1 updateItemSkimming:(id)arg2 layer:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
 - (id)updateContextualMenuForMultiangle:(id)arg1 forItem:(id)arg2;
@@ -200,10 +205,11 @@
 - (void)_createNUpDisplayForResizeEdge:(id)arg1 ofItems:(id)arg2;
 - (void)_createNUpDisplayForTrimEdge:(id)arg1 ofItems:(id)arg2 withCommand:(int)arg3;
 - (void)_endNUpDisplay;
+- (void)nUpDisplayWillBegin:(id)arg1;
+- (void)nUpDisplayDidEnd:(id)arg1;
 - (double)_xCoordAtTime:(CDStruct_1b6d18a9)arg1 containingItemClippedRange:(CDStruct_e83c9415)arg2 superlayer:(id)arg3;
 - (void)_addMarkerLayersForMarkers:(id)arg1 superlayer:(id)arg2 containingItemClippedRange:(CDStruct_e83c9415)arg3 userInfo:(id)arg4;
 - (void)_removeMarkerLayersForMarkers:(id)arg1 userInfo:(id)arg2;
-- (BOOL)_angleEditorCanInsertItems:(id)arg1 inContainer:(id)arg2 atIndex:(unsigned long long)arg3;
 - (BOOL)canInsertItems:(id)arg1 inContainer:(id)arg2 atIndex:(unsigned long long)arg3;
 @end
 

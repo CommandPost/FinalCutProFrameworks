@@ -33,6 +33,10 @@
 - (BOOL)refreshIsCMIOOutputDone;
 - (void)setCMIODroppedFrames:(BOOL)arg1;
 - (BOOL)cmioReportedDroppedFrames;
+- (void)setOutputBufferQueueSize:(unsigned int)arg1;
+- (void)setOutputBuffersRequiredForStartup:(unsigned int)arg1;
+- (unsigned int)outputLatencyInFrames;
+- (int)minimumInFlightFramesForThrottledPlayback;
 @property(retain) id cmioAProducer; // @synthesize cmioAProducer=mCMIOAProducer;
 @property(retain) id cmioVProducer; // @synthesize cmioVProducer=mCMIOVProducer;
 

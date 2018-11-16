@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSObject<FFMetadataProtocol> *_nodeDataHelper;
     NSString *_dataIdentifier;
     FFOrganizerFilmListViewController *_outlineViewController;
+    BOOL _isObserving;
 }
 
 + (void)releaseSharedFormatters;

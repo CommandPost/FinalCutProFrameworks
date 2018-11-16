@@ -34,6 +34,7 @@
 - (BOOL)enterRollover:(id)arg1;
 - (void)exitRollover:(id)arg1;
 - (void)clickedInBackground:(id)arg1;
+- (BOOL)shouldAutoscroll:(id)arg1;
 
 @end
 

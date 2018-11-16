@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
     NSButton *_createProxyMediaCheckBox;
     NSButton *_removePulldownCheckBox;
     NSButton *_colorAutoCorrectCheckBox;
-    NSButton *_imageStabilizationCheckBox;
     NSButton *_faceDetectionCheckBox;
     NSButton *_findPeopleConsolidateResultsCheckBox;
     NSButton *_createSmartCollectionsCheckBox;

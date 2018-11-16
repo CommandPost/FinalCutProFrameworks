@@ -39,7 +39,8 @@
         unsigned int rollTargetingPartHidden:1;
         unsigned int leadingEdgePartHidden:1;
         unsigned int trailingEdgePartHidden:1;
-        unsigned int RESERVED:24;
+        unsigned int invalidated:1;
+        unsigned int RESERVED:23;
     } _tlkItemBackgroudflags;
 }
 
@@ -66,6 +67,7 @@
 - (void)invalidate;
 - (void)setItemType:(int)arg1 andContainmentMask:(int)arg2;
 - (id)actionForKey:(id)arg1;
+- (void)_adjustTransitionHandles;
 - (void)layoutSublayers;
 - (void)setPart:(id)arg1 hidden:(BOOL)arg2;
 - (struct CGRect)rectForPart:(id)arg1;

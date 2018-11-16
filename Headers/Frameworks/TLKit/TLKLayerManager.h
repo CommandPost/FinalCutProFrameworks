@@ -51,8 +51,12 @@
 - (id)newItemLayerForItem:(id)arg1 isSplitEdit:(BOOL)arg2;
 - (void)_logChangedLayer:(id)arg1 changeType:(id)arg2;
 - (void)_updateNestedContainerLayersForItemsIfNeeded:(id)arg1;
-- (void)synchronizeLayersForUpdatedItems:(id)arg1;
-- (void)synchronizeLayersForRemovedItems:(id)arg1;
+- (void)_pruneUnusedContainerLayersForItems:(id)arg1;
+- (void)updateFilmstripItems:(id)arg1;
+- (void)reloadLayersForItems:(id)arg1;
+- (void)removeLayersForItem:(id)arg1;
+- (void)removeLayersForItems:(id)arg1;
+- (void)_adjustFrameTakingIntoAccountPlayheadSkimmerPosition:(struct CGRect *)arg1;
 - (struct CGRect)_expandContainerBounds:(struct CGRect)arg1 toIncludeVisibleRect:(struct CGRect)arg2;
 - (void)_sizeToFitMultipleTracks;
 - (void)_sizeToFitSingleTrack;

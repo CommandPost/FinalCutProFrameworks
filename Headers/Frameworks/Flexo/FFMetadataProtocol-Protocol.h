@@ -7,12 +7,9 @@
 #import "FFModelLocking.h"
 
 @protocol FFMetadataProtocol <FFModelLocking>
-- (id)md;
-- (id)mdMappedKeyPathForKey:(id)arg1;
 - (void)mdSetValue:(id)arg1 forKey:(id)arg2;
 - (id)mdValueForKey:(id)arg1;
-- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
-- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
+- (id)mdTargetForKey:(id)arg1;
 
 @optional
 - (BOOL)validateMetadataItem:(id)arg1;

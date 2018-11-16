@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     long long _anglesCount;
     long long _anglesOffset;
     FFSourceVideo *_angles;
+    int _providerRetainCount;
 }
 
 + (void)_sendAngleCountNotification:(id)arg1;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)makeAnglesSource:(BOOL)arg1;
 - (id)initWithProvider:(id)arg1 chosenVideo:(id)arg2;
 - (void)dealloc;
+- (int)providerRetainCount;
 - (void)setAnglesCount:(long long)arg1 andOffset:(long long)arg2;
 - (long long)anglesCount;
 - (long long)anglesOffset;

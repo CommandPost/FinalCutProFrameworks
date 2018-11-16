@@ -44,7 +44,7 @@ struct OZChannel {
     CDStruct_1b6d18a9 _field18;
     unsigned int _field19;
     unsigned int _field20;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field21;
 };
 
 struct OZChannelBase {
@@ -112,7 +112,6 @@ struct OZChannelObjectRootBase {
 
 struct OZChannelRef {
     struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field1;
-    struct PCString _field2;
 };
 
 struct OZChannelTimeConverter;
@@ -180,8 +179,6 @@ struct PCTimeRange {
     CDStruct_1b6d18a9 _field2;
 };
 
-struct RecordingCallbackData;
-
 struct _Alloc_hider {
     char *_M_p;
 };
@@ -199,13 +196,7 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
     struct _Alloc_hider _M_dataplus;
 };
 
-struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> {
-    struct _Vector_impl {
-        struct RecordingCallbackData *_M_start;
-        struct RecordingCallbackData *_M_finish;
-        struct RecordingCallbackData *_M_end_of_storage;
-    } _M_impl;
-};
+struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>>;
 
 struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> {
     struct _Vector_impl {

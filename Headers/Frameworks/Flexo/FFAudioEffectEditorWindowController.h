@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     FFAudioUnitEffect *_effect;
     FFEffectStack *_effectStack;
     FFContext *_context;
+    id _selectionHandler;
     BOOL _isPlaying;
     CHChannelEnum *_presetChannel;
     NSMutableArray *_parameterTrackers;
@@ -73,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)startListeningToCocoaView:(id)arg1;
 - (void)stopListeningToCocoaView:(id)arg1;
 - (void)handleViewFrameDidChangeNotification:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(readonly, nonatomic) BOOL preferGeneric; // @synthesize preferGeneric=_preferGeneric;
 @property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) id <FFChannelChangeControllerDivorcedDelegate> controllerDelegate; // @synthesize controllerDelegate=_delegate;

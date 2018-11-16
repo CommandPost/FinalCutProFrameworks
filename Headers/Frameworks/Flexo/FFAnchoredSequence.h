@@ -48,6 +48,7 @@
     BOOL _editWontChangeGrid;
     NSSet *_preActionAssets;
     BOOL _doNotResetMediaReferences;
+    BOOL _updateChangeListsOutsideOfWritelock;
 }
 
 + (id)copyClassDescription;
@@ -108,6 +109,7 @@
 - (void)_updateBackgroundEffectLoadOnObject:(id)arg1 forceStreamAndSampleChange:(BOOL)arg2;
 - (void)notifyEffectsDidLoadInBackground:(id)arg1;
 - (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3;
+- (void)compressLaneIndexesInContainer:(id)arg1 resolveLaneConflicts:(BOOL)arg2;
 @property(readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
 - (void)resetMediaIdentifier;
 - (id)sequence;
@@ -182,8 +184,8 @@
 - (void)informParentContainedItemsChanged:(BOOL)arg1;
 - (void)informParentIsCompoundClipChanged;
 - (void)informParentEffectsChanged;
-- (void)informParentMDWillChange;
-- (void)informParentMDDidChange;
+- (void)informParentRolesWillChange;
+- (void)informParentRolesDidChange;
 - (long long)getFirstSetAnchoredLaneValueInParentsAndSelf:(id)arg1;
 - (BOOL)hasAudio;
 - (BOOL)hasVideo;
@@ -211,8 +213,11 @@
 - (id)activeVariant;
 - (void)setActiveVariant:(id)arg1;
 - (id)assets;
+- (void)addAssetsToSet:(id)arg1;
 - (id)assetRefs;
+- (void)addAssetRefsToSet:(id)arg1;
 - (id)clipRefs;
+- (void)addClipRefsToSet:(id)arg1;
 - (id)activeAssetRefs;
 - (id)activeMediaRefs;
 - (id)fileURLs:(int)arg1;
@@ -230,7 +235,7 @@
 - (id)defaultTransitionTypes;
 - (int)defaultTransitionOverlapType;
 - (void)getRowColumnValueForAngleCount:(int)arg1 rows:(int *)arg2 columns:(int *)arg3;
-- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)mdTargetForKey:(id)arg1;
 - (BOOL)validateMetadataSelectionStart:(id *)arg1 error:(id *)arg2;
 - (void)setMetadataSelectionStart:(id)arg1;
 - (id)metadataSelectionStart;
@@ -252,6 +257,7 @@
 - (id)newProviderWithEffectCount:(long long)arg1;
 - (CDStruct_60067b7e)audioMD5:(int)arg1;
 - (id)fullPath;
+@property(nonatomic) BOOL updateChangeListsOutsideOfWritelock; // @synthesize updateChangeListsOutsideOfWritelock=_updateChangeListsOutsideOfWritelock;
 @property(nonatomic) BOOL doNotResetMediaReferences; // @synthesize doNotResetMediaReferences=_doNotResetMediaReferences;
 @property(nonatomic) BOOL editWontChangeGrid; // @synthesize editWontChangeGrid=_editWontChangeGrid;
 @property(nonatomic) BOOL previousEditShouldNotCauseUpdateOnPlay; // @synthesize previousEditShouldNotCauseUpdateOnPlay=_previousEditShouldNotCauseUpdateOnPlay;

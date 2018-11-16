@@ -50,6 +50,8 @@
 + (id)makeUniqueDirectory:(id)arg1 error:(id *)arg2;
 + (id)projectFileName;
 + (BOOL)isProjectURL:(id)arg1;
++ (void)forceUpdatingProjects;
++ (BOOL)isForceUpdatingProjects;
 + (id)localizedErrorDict:(id)arg1 param:(id)arg2 resolution:(id)arg3;
 + (BOOL)isReservedName:(id)arg1;
 + (id)invalidCharacterSet;
@@ -96,8 +98,6 @@
 - (id)displayName;
 - (id)storesEnumerator;
 - (BOOL)rename:(id)arg1 makeUnique:(BOOL)arg2 error:(id *)arg3;
-- (double)lastBackupTime;
-- (void)setLastBackupTime:(double)arg1;
 - (BOOL)readFromURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
 - (void)limitBackupsTo:(int)arg1 in:(id)arg2;
 - (BOOL)writeSafelyToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 error:(id *)arg4;

@@ -71,6 +71,7 @@
     float _monitorGamma;
     double _rate;
     BOOL _didPreroll;
+    BOOL _isScheduling;
     struct FFPMRSimpleTimer *_pmrTimer;
     struct OZProxyScrub _proxyScrub;
     int _proxyRendCount;
@@ -152,6 +153,7 @@
 - (_Bool)isPlaying;
 - (BOOL)didPreroll;
 - (void)setDidPreroll:(BOOL)arg1;
+- (BOOL)isScheduling;
 - (void)setPlayForward:(_Bool)arg1;
 - (_Bool)isPlayingForward;
 - (_Bool)isAnimatingCamera;
@@ -299,9 +301,9 @@
 - (void)initSchedulingAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)scheduleTokensAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)hintTokensWillImageAtTime:(CDStruct_1b6d18a9)arg1;
-- (void)pruneTokensAtTime:(CDStruct_1b6d18a9)arg1 reason:(struct PCString)arg2;
-- (void)pruneTokensExceptAtTime:(CDStruct_1b6d18a9)arg1 reason:(struct PCString)arg2;
-- (void)pruneAllTokens:(struct PCString)arg1;
+- (void)pruneTokensAtTime:(CDStruct_1b6d18a9)arg1 reason:(const char *)arg2;
+- (void)pruneTokensExceptAtTime:(CDStruct_1b6d18a9)arg1 reason:(const char *)arg2;
+- (void)pruneAllTokens:(const char *)arg1;
 - (void)willSetChannel:(struct OZChannelBase *)arg1;
 - (void)didSetChannel:(struct OZChannelBase *)arg1;
 - (id).cxx_construct;

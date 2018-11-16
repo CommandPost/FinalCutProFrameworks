@@ -30,6 +30,7 @@
 - (void)buildDeviceListEnd:(id)arg1;
 - (void)buildDeviceList;
 - (void)removeDeviceList;
+- (BOOL)outputDeviceAvailable;
 - (void)populateOutputDeviceMenu:(id)arg1;
 - (id)deviceConnectionForProMediaIODevice:(unsigned int)arg1;
 - (id)deviceConnectionWithFormat:(int)arg1 forInput:(BOOL)arg2;

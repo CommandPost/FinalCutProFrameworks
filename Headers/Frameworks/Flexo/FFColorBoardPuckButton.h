@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1;
 - (void)keyDown:(id)arg1;
 - (BOOL)performKeyEquivalent:(id)arg1;
+- (BOOL)_wantsKeyDownForEvent:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;

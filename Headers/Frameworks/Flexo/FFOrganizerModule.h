@@ -105,7 +105,6 @@
 - (void)windowWillClose:(id)arg1;
 - (void)filterHUDAction:(id)arg1;
 - (void)openFilterHUDForSidebarItem:(id)arg1 atLocation:(struct CGRect)arg2;
-- (void)exportAXEL:(id)arg1;
 - (id)selectedItems;
 - (id)selectedRangesOfMedia;
 - (id)selectedRangesOfMediaForTimelineEditing;

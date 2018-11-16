@@ -6,11 +6,12 @@
 
 #import "NSObject.h"
 
-@class CALayer, NSArray, NSMutableSet, TLKContainerSegmentTable, TLKLayoutMetrics, TLKTimelineView;
+@class CALayer, NSArray, NSMutableSet, TLKContainerSegmentTable, TLKLayoutDatabase, TLKLayoutMetrics, TLKTimelineView;
 
 @interface TLKLayoutManager : NSObject
 {
     TLKTimelineView *_timelineView;
+    TLKLayoutDatabase *_layoutDatabase;
     struct CGRect _bounds;
     NSMutableSet *_managedItems;
     id <TLKTimelineItem> _container;
@@ -34,7 +35,6 @@
 
 - (id)initWithTimelineView:(id)arg1 container:(id)arg2;
 - (void)dealloc;
-- (id)layoutDatabase;
 @property(readonly, nonatomic) BOOL precisionEditorLayoutMode;
 @property(readonly, retain, nonatomic) CALayer *layer;
 - (id)managedItems;
@@ -52,7 +52,6 @@
 - (void)_showBoundsForContainer:(id)arg1;
 - (void)reloadLayersForItem:(id)arg1;
 - (void)reloadVisibleLayersForItems:(id)arg1;
-- (CDStruct_1b6d18a9)_durationOfItem:(id)arg1;
 - (struct CGRect)_calculatedSplitLayerFrameForItem:(id)arg1;
 - (struct CGRect)upperAccessoryLayerFrameForItem:(id)arg1;
 - (struct CGRect)lowerAccessoryLayerFrameForItem:(id)arg1;
@@ -101,6 +100,7 @@
 @property(retain, nonatomic) id <TLKTimelineItem> leftPrecisionEdit; // @synthesize leftPrecisionEdit=_leftPrecisionEdit;
 @property(retain, nonatomic) TLKContainerSegmentTable *segmentTableBelowSpine; // @synthesize segmentTableBelowSpine=_segmentTableBelowSpine;
 @property(retain, nonatomic) TLKContainerSegmentTable *segmentTableAboveSpine; // @synthesize segmentTableAboveSpine=_segmentTableAboveSpine;
+@property(nonatomic) TLKLayoutDatabase *layoutDatabase; // @synthesize layoutDatabase=_layoutDatabase;
 @property(readonly, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 @property(readonly, retain, nonatomic) id <TLKTimelineItem> container; // @synthesize container=_container;
 @property(nonatomic) BOOL keepsDraggedItemsVerticallyFixed; // @synthesize keepsDraggedItemsVerticallyFixed=_keepsDraggedItemsVerticallyFixed;

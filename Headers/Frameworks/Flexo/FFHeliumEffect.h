@@ -17,9 +17,9 @@
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6;
 - (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2 pixelTransform:(id)arg3;
--     // Error parsing type: ^{HGTransform=^^?I($_4944=[4][16f][16d])}24@0:8@16, name: createBaseTransformFromInversePixelTransform:
--     // Error parsing type: v32@0:8^{HGTransform=^^?I($_4944=[4][16f][16d])}16@24, name: convertHGTransformBackToPixelTransformSpace:pixelTransform:
--     // Error parsing type: ^{HGTransform=^^?I($_4944=[4][16f][16d])}24@0:8@16, name: newHGTransformFromPCMatrix44Double:
+-     // Error parsing type: ^{HGTransform=^^?I($_4945=[4][16f][16d])}24@0:8@16, name: createBaseTransformFromInversePixelTransform:
+-     // Error parsing type: v32@0:8^{HGTransform=^^?I($_4945=[4][16f][16d])}16@24, name: convertHGTransformBackToPixelTransformSpace:pixelTransform:
+-     // Error parsing type: ^{HGTransform=^^?I($_4945=[4][16f][16d])}24@0:8@16, name: newHGTransformFromPCMatrix44Double:
 - (struct HGNode *)_newInterlaceProgressiveConversionNode:(struct HGNode *)arg1 inputImage:(id)arg2 inputStream:(id)arg3 index:(unsigned long long)arg4 context:(id)arg5 requestedPT:(id)arg6 colorSpace:(struct CGColorSpace *)arg7 pixelFormat:(id)arg8 filterQuality:(int)arg9 newBoundsForInput:(struct CGRect *)arg10 didConvert:(char *)arg11;
 - (struct CGRect)getROIForOutput:(struct CGRect *)arg1 atTime:(CDStruct_1b6d18a9)arg2 input:(id)arg3 pt:(id)arg4 downstreamPT:(id)arg5;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7;

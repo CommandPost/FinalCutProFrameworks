@@ -23,6 +23,7 @@
 - (CDStruct_1b6d18a9)getTimeOffsetForResult:(id)arg1;
 - (CDStruct_1b6d18a9)getTimeOffset:(id)arg1;
 - (void)getSearchResults:(vector_d1504541 *)arg1 forString:(const struct PCString *)arg2 withFlags:(unsigned int)arg3;
+- (void)resetSelectionRangeForResult:(struct FFTextSearchResult)arg1;
 - (void)setSelectionRangeForResult:(struct FFTextSearchResult)arg1;
 - (void)resetSelection:(BOOL)arg1;
 - (void)setSelectionRangeFrom:(unsigned int)arg1 to:(unsigned int)arg2;

@@ -71,6 +71,11 @@ __attribute__((visibility("hidden")))
     _Bool _isRateChangeFrame;
     _Bool _ibpIntoHelium;
     _Bool _ibpMulticam;
+    _Bool _unoptIntoHelium;
+    _Bool _unoptMulticam;
+    unsigned long long _segmentBandwidthEstimate[3];
+    unsigned long long _bandwidthEstimate;
+    _Bool _bwIsUncertain;
 }
 
 - (id)initWithStream:(id)arg1 streamMutex:(id)arg2 time:(CDStruct_1b6d18a9)arg3 timeRepresented:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5 nativeFrameDur:(CDStruct_1b6d18a9)arg6 nativeSampleDur:(CDStruct_1b6d18a9)arg7 context1:(id)arg8 context2:(id)arg9 aaContext:(id)arg10 aaRepeats:(int)arg11 bounds:(struct CGRect)arg12 asyncQueue:(id)arg13 inRenderMode:(_Bool)arg14;
@@ -78,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (id)copyForNewGraph;
 - (id)copyForNewOSCsForProposedDests:(id)arg1 withUnneededDests:(id)arg2;
 - (_Bool)noGridForGrid;
+- (id)_getFrameCacheInfoAlreadyHoldingLock:(int)arg1;
 - (id)_getFrameCacheInfo:(int)arg1;
 - (_Bool)canUseFlattenedImagesFrom:(id)arg1 proposedDests:(id)arg2 willSkipDests:(id)arg3;
 - (void)_getFlattenedImagesFrom:(id)arg1;
@@ -108,7 +114,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)_schedTokenFlags;
 - (_Bool)betterThan:(id)arg1;
 - (_Bool)doesDest:(id)arg1 needContext:(int)arg2;
-- (id)newFlattenImageJob:(id)arg1 contextNum:(int)arg2 renderer:(struct HGRenderer *)arg3 bgInfo:(id)arg4;
+- (id)newFlattenImageJob:(id)arg1 contextNum:(int)arg2 renderer:(struct HGRenderer *)arg3 bgInfo:(id)arg4 streamProps:(id)arg5;
 - (void)customHGRenderQueueJobCallback:(struct HGRenderer *)arg1;
 - (void)jobStarted;
 - (void)jobFinished;
@@ -119,7 +125,7 @@ __attribute__((visibility("hidden")))
 - (void)generateOverlayInfo:(double)arg1;
 - (_Bool)pushFramesToAssignedDests:(double)arg1 retDestsPushed:(id)arg2;
 - (void)hintCacheData:(unsigned int)arg1;
-- (id)copyAllAnglesScheduleToken;
+- (id)copyAllAnglesScheduleTokenWithRange;
 - (void)setAllAnglesHintToken:(id)arg1;
 - (void)cancel;
 - (_Bool)isCancelled;
@@ -132,6 +138,10 @@ __attribute__((visibility("hidden")))
 - (void)setInval:(_Bool)arg1;
 - (_Bool)inval;
 - (id)description;
+@property _Bool bwIsUncertain; // @synthesize bwIsUncertain=_bwIsUncertain;
+@property unsigned long long bandwidthEstimate; // @synthesize bandwidthEstimate=_bandwidthEstimate;
+@property _Bool unoptMulticam; // @synthesize unoptMulticam=_unoptMulticam;
+@property _Bool unoptIntoHelium; // @synthesize unoptIntoHelium=_unoptIntoHelium;
 @property _Bool ibpMulticam; // @synthesize ibpMulticam=_ibpMulticam;
 @property _Bool ibpIntoHelium; // @synthesize ibpIntoHelium=_ibpIntoHelium;
 @property(nonatomic) _Bool isRateChangeFrame; // @synthesize isRateChangeFrame=_isRateChangeFrame;

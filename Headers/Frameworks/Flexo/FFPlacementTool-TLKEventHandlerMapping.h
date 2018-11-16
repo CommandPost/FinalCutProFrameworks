@@ -8,5 +8,7 @@
 
 @interface FFPlacementTool (TLKEventHandlerMapping)
 + (id)TLKEventHandlerID;
+- (void)willSetAsHandlerForTimeline:(id)arg1;
+- (void)willRemoveAsHandlerForTimeline:(id)arg1;
 @end
 

@@ -19,6 +19,7 @@
     BOOL _wasCancelled;
     NSMutableArray *_dests;
     NSMutableArray *_analyzingDests;
+    NSMutableArray *_audioRenderDests;
     NSMutableDictionary *_clipAnalysesQueue;
 }
 
@@ -27,9 +28,12 @@
 + (unsigned int)videoCodecForURL:(id)arg1;
 + (BOOL)_isAssetStillImage:(id)arg1;
 + (unsigned int)_videoCodecForAsset:(id)arg1;
++ (BOOL)needsOptimizationForAudioFormat:(id)arg1;
 + (BOOL)_isClipAudioOnly:(id)arg1;
-+ (BOOL)_needsOptimizationForStill:(id)arg1;
-+ (BOOL)_needsOptimizationForAsset:(id)arg1;
++ (BOOL)_needsCacheForLargeStill:(id)arg1;
++ (BOOL)needsOptimizationForStill:(id)arg1;
++ (BOOL)_needsOptimizationForAsset:(id)arg1 prefersOptimize:(BOOL)arg2;
++ (BOOL)_needsOptimizationForClip:(id)arg1 prefersOptimize:(BOOL)arg2;
 + (BOOL)needsOptimizationForClip:(id)arg1;
 + (BOOL)_assetHasProxy:(id)arg1;
 + (BOOL)clipHasProxy:(id)arg1;
@@ -46,6 +50,7 @@
 - (void)_cancelAndWaitForTaskToFinish:(id)arg1;
 - (void)_transcodeStillImage:(struct CGImageSource *)arg1 destPath:(id)arg2 downscaleFactor:(int)arg3 destExtPtr:(id *)arg4;
 - (id)defaultAnalyzeAndOptimizeOptions:(BOOL)arg1;
+- (BOOL)confirmIsPaused:(id)arg1;
 - (void)pausedTask:(id)arg1;
 - (void)resumedTask:(id)arg1;
 - (void)canceledTask:(id)arg1;
@@ -54,6 +59,7 @@
 - (void)_analyzeAndOptimizeClipForAudio:(id)arg1;
 - (void)_analyzeAndOptimizeClip:(id)arg1;
 - (void)_assetCopyQueueCompleted:(id)arg1;
+- (struct AudioStreamBasicDescription)_optimizedAudioFileFormatForFormat:(struct AudioStreamBasicDescription)arg1;
 - (void)analyzeAndOptimizeClipBackgroundThread:(id)arg1 onTask:(id)arg2;
 - (BOOL)verifyDiskSpaceAvailable:(id)arg1;
 - (void)warnAboutOutOfDiskSpaceWithDetails:(id)arg1;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     BOOL _scaleSelected;
     long long _activePart;
     int _dragCount;
+    struct CGPoint _mouseDownOffset;
     FFChannelChangeController *_changeController;
     BOOL _transactionStarted;
     NSString *_transactionName;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseMoved:(id)arg1;
+- (void)mouseExited:(id)arg1;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (void)drawSuperEllipseToContext:(struct _CGLContextObject *)arg1 withTransform:(id)arg2 withCurvature:(double)arg3 withRadius:(struct CGPoint)arg4 withOffset:(struct CGPoint)arg5;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
@@ -52,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)endUndoTransaction;
 - (id)getCursor;
 - (id)cropMatrix;
+@property(nonatomic) struct CGPoint mouseDownOffset; // @synthesize mouseDownOffset=_mouseDownOffset;
 @property(readonly, nonatomic) CHChannelFolder *parentChannel; // @synthesize parentChannel=_chShape;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) BOOL visible; // @synthesize visible=_shapeVisible;

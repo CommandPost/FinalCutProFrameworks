@@ -182,6 +182,8 @@
 - (id)project;
 - (void)toggleColorCorrectionOff:(id)arg1;
 - (void)toggleBalanceColor:(id)arg1;
+- (void)toggleMatchColor:(id)arg1;
+- (void)toggleMatchAudio:(id)arg1;
 - (void)performColorMatch:(id)arg1;
 - (void)setFrameDuration:(double)arg1;
 - (double)frameDuration;

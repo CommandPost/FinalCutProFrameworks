@@ -75,6 +75,7 @@
 - (id)description;
 - (id)contentType;
 @property(readonly, nonatomic) NSURL *eventURL;
+- (BOOL)isDetailedProjectDataLoaded;
 - (BOOL)isProjectDataLoaded;
 - (id)_projectData:(BOOL)arg1;
 @property(readonly, nonatomic) FFMediaEventProjectData *projectData;
@@ -102,6 +103,7 @@
 - (id)volumeName;
 - (id)sourceURL;
 - (id)location;
+- (void)compressVerticalLaneIndexes:(BOOL)arg1;
 @property(readonly, nonatomic) BOOL hasRootFolderChildren; // @synthesize hasRootFolderChildren=_hasRootFolderChildren;
 @property(readonly, nonatomic) NSDate *eventEarliestDate; // @synthesize eventEarliestDate=_eventEarliestDate;
 @property(readonly, nonatomic) NSDate *eventLatestDate; // @synthesize eventLatestDate=_eventLatestDate;

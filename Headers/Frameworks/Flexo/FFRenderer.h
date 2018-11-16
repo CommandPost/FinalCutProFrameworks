@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-#import "FFDestRendererFrameStartingFinishingProtocol.h"
+#import "FFDestRenderUnitDelegate.h"
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 
 @class FFContext, FFProvider, NSArray, NSConditionLock;
 
-@interface FFRenderer : NSObject <FFStorageLocationOutOfDiskSpaceProtocol, FFDestRendererFrameStartingFinishingProtocol>
+@interface FFRenderer : NSObject <FFStorageLocationOutOfDiskSpaceProtocol, FFDestRenderUnitDelegate>
 {
     FFProvider *_provider;
     NSArray *_dests;
@@ -44,8 +44,8 @@
 - (void)setLatestFrameTimeRendered:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)latestFrameTimeRendered;
 - (void)_blockRenderIfPaused;
-- (void)startingPushFrame:(CDStruct_1b6d18a9)arg1 whichDest:(id)arg2 context:(void *)arg3;
-- (void)finishedPushFrame:(CDStruct_1b6d18a9)arg1 whichDest:(id)arg2 context:(void *)arg3;
+- (void)willRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(id)arg2 context:(void *)arg3;
+- (void)didRenderFrames:(CDStruct_e83c9415)arg1 whichDest:(id)arg2 context:(void *)arg3;
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (void)renderFrame:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
 - (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2;
