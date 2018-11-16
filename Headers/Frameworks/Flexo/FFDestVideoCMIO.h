@@ -6,7 +6,7 @@
 
 #import <Flexo/FFDestVideo.h>
 
-@class MIODeviceManager, MIOOutputCore, NSLock, NSMutableArray;
+@class FFPrerollSync, MIODeviceManager, MIOOutputCore, NSLock, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFDestVideoCMIO : FFDestVideo
@@ -18,23 +18,40 @@ __attribute__((visibility("hidden")))
     MIODeviceManager *_deviceManager;
     BOOL _isRunning;
     BOOL _needsUpdate;
-    char *_testBuffer1;
-    char *_testBuffer2;
-    long long _lastPushTime;
+    struct OpaqueFigTimebase *_playerTimebase;
+    FFPrerollSync *_startSync;
+    BOOL _destStartedForPlayback;
+    CDStruct_1b6d18a9 _durationPulled;
+    CDStruct_1b6d18a9 _playerFrameDuration;
+    BOOL _destLatchHostTimeValid;
+    unsigned long long _destLatchHostTime;
+    unsigned long long _destLatchSequenceNumber;
+    BOOL _destFirstSequenceNumberValid;
+    unsigned long long _destFirstSequenceNumber;
+    NSLock *_destStartTimebaseTimeLock;
+    CDStruct_1b6d18a9 _destStartTimebaseTime;
+    struct FFDestVideoTundraStartTimebaseTimeQueue *_startTimebaseTimeQueue;
+    struct FFDestVideoTundraPlaybackTimingInfoQueue *_timingInfoQueue;
+    struct FFDestVideoTundraPlaybackErrorQueue *_errorQueue;
+    CDStruct_1b6d18a9 _errorAdjustedTime;
+    CDStruct_1b6d18a9 _errorLastTimingInfoPTS;
+    CDStruct_1b6d18a9 _errorLastPulledFramePTS;
+    CDStruct_1b6d18a9 _errorPendingSkippedFramesCompensation;
 }
 
 - (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1;
 - (void)releaseOutputDevice;
 - (void)dealloc;
 - (CDStruct_1b6d18a9)sampleDuration;
+- (id)connectionUID;
 - (void)flush:(BOOL)arg1;
 - (void)pushFrame:(id)arg1;
 - (unsigned char)hasData;
-- (id)newFrameFromField1:(id)arg1 field2:(id)arg2 fieldDominance:(int)arg3;
-- (unsigned char)getFrame:(char *)arg1;
-- (void)start;
+- (unsigned char)getFrame:(char *)arg1 forSequenceNumber:(unsigned long long)arg2 playState:(char *)arg3;
+- (void)start:(id)arg1;
 - (void)stop;
-- (BOOL)wantsMoreFrames;
+- (int)_getFrameQueueStatusInternal;
+- (int)getFrameQueueStatus;
 - (int)imageLocation;
 - (void)setNeedsUpdate:(BOOL)arg1;
 - (BOOL)needsUpdate;
@@ -42,7 +59,13 @@ __attribute__((visibility("hidden")))
 - (int)fieldDominance;
 - (struct CGColorSpace *)colorSpace;
 - (id)supportedPixelFormats;
+- (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
+- (void)scheduledOutputNotification:(unsigned long long)arg1 outputHosttime:(unsigned long long)arg2;
+- (void)_timebaseStarted;
 - (void *)figClock;
+- (unsigned int)outputLatencyInFrames;
+- (CDStruct_1b6d18a9)getPlayerFrameduration;
+- (id)description;
 
 @end
 

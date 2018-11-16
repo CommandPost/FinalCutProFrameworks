@@ -17,5 +17,9 @@
 + (id)mediaSourcesForObject:(id)arg1;
 + (id)newMediaSourceForObject:(id)arg1;
 + (id)sortMediaSourceChannels:(id)arg1;
++ (int)numMediaSourceChannelsForAssetAudioSourceDict:(id)arg1;
++ (id)mediaSourceChannelsForAudioSourcesDict:(id)arg1 usingMedia:(id)arg2;
++ (id)mediaForMediaSourceObject:(id)arg1;
++ (id)inferAudioSourceDictForAssetID:(id)arg1 withMediaComponents:(id)arg2;
 @end
 

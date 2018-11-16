@@ -10,7 +10,9 @@
 {
 }
 
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (id)formatterClassName;
+- (id)sliderClassName;
 
 @end
 

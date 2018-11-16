@@ -22,6 +22,7 @@
 }
 
 + (id)copyClassDescription;
++ (void)updateAudioMediaComponents:(id)arg1 fromAudioSourceDict:(id)arg2 toAudioSourceDict:(id)arg3;
 - (CDStruct_e83c9415)unclippedRange;
 - (void)_initIntrinsicMediaComponentEffects;
 - (id)initWithDescription:(id)arg1;
@@ -38,7 +39,7 @@
 - (id)inspectorTabIdentifiers;
 - (id)labelForInspectorTabIdentifier:(id)arg1;
 - (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)_newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 clippedByContainer:(BOOL)arg6;
+- (id)_newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (id)_guessAudioRole;
 - (void)_guessAndSetAudioRole;
 - (id)_guessVideoRole;
@@ -46,10 +47,13 @@
 - (void)_guessAndSetRoles;
 - (void)resetRoles;
 - (void)_checkRoleIntegrity;
-- (id)assets;
-- (id)assetRefs;
-- (id)fileURLs:(int)arg1;
+- (void)_assets:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3;
+- (void)_assetRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3;
+- (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3;
+- (void)_fileURLs:(id)arg1 repChoice:(int)arg2 includeAnchored:(BOOL)arg3 activeOnly:(BOOL)arg4;
+- (BOOL)isMediaComponent;
 - (BOOL)isStill;
+- (BOOL)isPSD;
 - (BOOL)isGenerator;
 - (id)providerSourceKey;
 - (void)setProviderSourceKey:(id)arg1;
@@ -67,11 +71,13 @@
 - (id)videoProps;
 - (id)mediaVideoProps;
 - (long long)audioChannelCount;
+- (long long)audioChannelCount:(int)arg1;
 - (double)audioSampleRate;
+- (long long)metadataAudioChannelCount;
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (void)invalidateStreamRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
-- (void)_updateToNewProvider:(id)arg1 oldProvider:(id)arg2;
+- (void)_updateToAudioSourceDict:(id)arg1 oldAudioSourceDict:(id)arg2;
 - (void)_rangeInvalidated:(id)arg1;
 - (void)_startObservingMedia;
 - (void)_stopObservingMedia;
@@ -83,6 +89,8 @@
 - (CDStruct_1b6d18a9)localToRateConformedTime:(CDStruct_1b6d18a9)arg1 withTargetSampleDuration:(CDStruct_1b6d18a9)arg2;
 - (void)_clearCachedAudioMD5;
 - (CDStruct_60067b7e)audioMD5:(int)arg1;
+- (id)newProviderWithEffectCount:(long long)arg1;
+- (void)setMedia:(id)arg1 providerSourceKey:(id)arg2 sourceChannelMap:(id)arg3 audioChannelRoutingMap:(id)arg4 updateFlags:(int)arg5;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5_NoIntrinsics; // @synthesize cachedAudioMD5_NoIntrinsics=_cachedAudioMD5_NoIntrinsics;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 

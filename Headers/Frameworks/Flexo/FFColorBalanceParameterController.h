@@ -6,18 +6,21 @@
 
 #import <Flexo/FFColorBaseViewController.h>
 
-@class OZLabelText;
+@class CHChannelBase, OZLabelText;
 
 __attribute__((visibility("hidden")))
 @interface FFColorBalanceParameterController : FFColorBaseViewController
 {
     OZLabelText *_labelText;
+    CHChannelBase *_observedChannel;
 }
 
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
 - (void)didBuildUI;
 - (void)update;
 - (id)stringForLabel;
+- (void)autoBalanceChanged:(id)arg1;
 
 @end
 

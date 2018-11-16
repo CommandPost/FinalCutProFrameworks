@@ -8,7 +8,6 @@
 
 @class CHChannelEnum, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface FFEffectBundle : FFEffect
 {
     BOOL _initing;
@@ -20,12 +19,15 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 + (void)registerBundleAtPath:(id)arg1;
 + (void)registerEffects;
-+ (BOOL)writeEffectToFile:(id)arg1 error:(id *)arg2;
 + (BOOL)saveEffects:(id)arg1 asBundleWithName:(id)arg2 partName:(id)arg3 effectType:(id)arg4 defaultValue:(double)arg5 error:(id *)arg6;
 + (BOOL)addEffects:(id)arg1 toBundle:(id)arg2 asPartWithName:(id)arg3 defaultValue:(double)arg4 error:(id *)arg5;
 + (BOOL)addEffects:(id)arg1 asSnapshotToPart:(unsigned long long)arg2 ofBundle:(id)arg3 atValue:(double)arg4 error:(id *)arg5;
 + (id)cachedPartNamesForBundle:(id)arg1;
 + (id)partNamesForBundle:(id)arg1;
++ (BOOL)writeEffectToFile:(id)arg1 error:(id *)arg2;
++ (id)effectBundlePartsFromXMLDocument:(id)arg1;
++ (id)_documentForArchiveURL:(id)arg1;
++ (id)readEffectBundlePartsForEffectBundle:(id)arg1;
 - (id)initWithEffectID:(id)arg1;
 - (void)dealloc;
 - (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
@@ -35,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (void)_postInit:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)saveCurrentEffectBundleDataAsDefault;
 - (void)insertObject:(id)arg1 inEffectBundlePartsAtIndex:(unsigned long long)arg2;
 - (void)removeObjectFromEffectBundlePartsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)activePartIndex;
@@ -48,7 +49,9 @@ __attribute__((visibility("hidden")))
 - (id)newEffectNodeWithInput:(id)arg1 forKey:(id)arg2 withOffset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4;
 - (id)inputKeys;
 - (void)setEffectStack:(id)arg1;
-- (void)createPresetsInEnumChannel:(id)arg1 addItemForNone:(BOOL)arg2;
+- (id)presetNames;
+- (void)updatePresetsInEnumChannel:(id)arg1 withPresetNames:(id)arg2;
+- (id)newAmountChannelForEffectBundlePart:(id)arg1 inFolder:(id)arg2 withChannelID:(int)arg3;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)_showEffectWindow:(id)arg1;
 - (void)partChanged;
@@ -56,8 +59,15 @@ __attribute__((visibility("hidden")))
 - (void)setEnabled:(BOOL)arg1;
 - (void)channelParameterChanged:(id)arg1;
 - (id)primaryAnimationChannel;
+- (id)presetChannel;
+- (void)createActivePartEffectChannels;
+- (void)addPresetChannelObserving;
+- (void)removePresetChannelObserving;
 - (void)effectWasRemovedFromStack;
 - (CDStruct_60067b7e)audioMD5:(int)arg1;
+- (id)exportAsXMLDocument;
+- (id)readEffectBundlePartsFromFile;
+- (id)initWithEffectID:(id)arg1 andXMLDocument:(id)arg2;
 
 @end
 

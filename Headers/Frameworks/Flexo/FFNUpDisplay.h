@@ -6,15 +6,17 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredObject, FFAnchoredTimelineModule, FFContext;
+@class FFAnchoredObject, FFAnchoredTimelineModule, FFContext, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFNUpDisplay : NSObject
 {
     FFAnchoredTimelineModule *_editorModule;
+    NSString *_identifier;
     BOOL _inProgress;
     BOOL _showAlternate;
     BOOL _usedForTrimming;
+    BOOL _reverse2UpOrder;
     int _primaryFrame;
     FFAnchoredObject *_primaryClip;
     FFAnchoredObject *_primaryFrameClip;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)setShowsAlternateClip:(BOOL)arg1;
 - (void)setTime:(CDStruct_1b6d18a9)arg1;
 - (void)forcePrimaryPlayerNoUpdate:(BOOL)arg1;
+- (BOOL)_shouldShow2Up;
 - (struct NSObject *)_mediaForClip:(id)arg1 withFrame:(int)arg2;
 - (id)_soloedObjectForClip:(id)arg1 withFrame:(int)arg2;
 - (void)_replaceMedia:(struct NSObject *)arg1 context:(id)arg2 withMedia:(struct NSObject *)arg3 context:(id)arg4;
@@ -49,9 +52,12 @@ __attribute__((visibility("hidden")))
 - (void)_updateActiveClip;
 - (CDStruct_1b6d18a9)_timeForClip:(id)arg1 withFrame:(int)arg2 ofClip:(id)arg3;
 - (CDStruct_1b6d18a9)_timeInContainer:(id)arg1 withFrame:(int)arg2 ofClip:(id)arg3;
+@property BOOL reverse2UpOrder; // @synthesize reverse2UpOrder=_reverse2UpOrder;
 @property(nonatomic) BOOL usedForTrimming; // @synthesize usedForTrimming=_usedForTrimming;
 @property(readonly) FFAnchoredObject *alternateClip; // @synthesize alternateClip=_alternateClip;
 @property(readonly) FFAnchoredObject *primaryClip; // @synthesize primaryClip=_primaryClip;
+@property(copy) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly) FFAnchoredTimelineModule *editorModule; // @synthesize editorModule=_editorModule;
 
 @end
 

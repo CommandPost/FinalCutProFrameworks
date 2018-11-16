@@ -6,14 +6,13 @@
 
 #import <TLKit/TLKTimelineHandler.h>
 
-@class CALayer, NSArray, TLKMarqueeLayer;
+@class NSArray, TLKMarqueeLayer;
 
 @interface TLKMarqueeHandler : TLKTimelineHandler
 {
     struct CGRect _highlightRect;
     TLKMarqueeLayer *_marqueeLayer;
     NSArray *_initialSelection;
-    struct CGPoint _initialPoint;
     struct {
         unsigned int commandModifier:1;
         unsigned int shiftModifier:1;
@@ -28,20 +27,21 @@
 }
 
 - (void)dealloc;
-- (BOOL)handleSelection;
-- (void)endSelection:(id)arg1;
+- (void)startSelection:(id)arg1;
+- (void)cancelSelection:(id)arg1;
+- (void)stopSelection:(id)arg1;
 - (struct CGRect)marqueeRect;
-- (void)_clearMarqueeRect;
-- (void)_setMarqueeRect:(struct CGRect)arg1 inContainerLayer:(id)arg2;
+- (void)_removeMarqueeLayer;
+- (void)_updateMarqueeLayer;
 - (struct CGRect)_marqueeRectFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
-- (void)_updateSelectionFromRect:(struct CGRect)arg1 inLayoutManager:(id)arg2;
+- (void)_addEdits:(id)arg1 intersectingRect:(struct CGRect)arg2 inLayoutManager:(id)arg3;
+- (void)_updateSelectionForItems:(id)arg1;
+- (void)performSelection:(id)arg1;
 - (BOOL)startTracking:(id)arg1;
 - (BOOL)continueTracking:(id)arg1;
 - (void)cancelTracking:(id)arg1;
 - (BOOL)stopTracking:(id)arg1;
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-@property(retain) CALayer *marqueeLayer; // @synthesize marqueeLayer=_marqueeLayer;
-@property(retain) NSArray *initialSelection; // @synthesize initialSelection=_initialSelection;
 
 @end
 

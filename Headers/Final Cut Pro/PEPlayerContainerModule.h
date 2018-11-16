@@ -27,7 +27,7 @@
     NSView *_oneUpAccessoryView;
     LKPaneCapSegmentedControl *_oneUpModeControl;
     LKPaneCapSegmentedControl *_oneUpViewerControls;
-    NSImageView *_playerLabel;
+    NSImageView *_oneUpViewerIcon;
     NSTextField *_oneUpViewerTitle;
     NSView *_twoUpAccessoryView;
     LKPaneCapSegmentedControl *_twoUpModeControl;
@@ -37,6 +37,8 @@
     NSTextField *_twoUpCanvasTitle;
     NSView *_twoUpViewerPaneCap;
     NSView *_twoUpCanvasPaneCap;
+    NSImageView *_twoUpViewerIcon;
+    NSImageView *_twoUpCanvasIcon;
     NSMenu *_videoScaleMenu;
     NSMenu *_twoUpScaleMenu;
     NSMenu *_onScreenControlsMenu;
@@ -54,15 +56,19 @@
     LKWindow *_matchWindow;
     NSProView *_matchControlsFooterView;
     NSProView *_matchAccessoryView;
+    BOOL _splitViewIsDragging;
     BOOL _showMatchControls;
     BOOL _viewerIsDominant;
     BOOL _dominanceBeforeTransientViewing;
     BOOL _showColorControls;
     BOOL _advancedWasOpen;
     id _observedActive;
+    NSMutableDictionary *_splitterPositions;
     unsigned int _playerUsesLayers:1;
     unsigned int _unusedBits:31;
     NSMutableDictionary *_playersInfo;
+    NSMutableDictionary *_scopesInfo;
+    NSMutableArray *_cachedPlayers;
 }
 
 + (id)makeDisplayArea;
@@ -99,8 +105,15 @@
 - (BOOL)isPlaying;
 - (BOOL)isLooping;
 - (id)fullscreenPlayerPresentationOptions;
-- (void)setTwoPlayersMode;
-- (void)setOnePlayerMode;
+- (BOOL)isSplitterAdjustableForMode:(int)arg1;
+- (BOOL)splitView:(id)arg1 canCollapseSubview:(id)arg2;
+- (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
+- (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
+- (void)splitViewWillResizeSubviews:(id)arg1;
+- (void)adjustTwoUpPaneCapForSplitterPosition:(double)arg1;
+- (void)splitViewDidResizeSubviews:(id)arg1;
+- (void)splitViewWillBeginDragging:(id)arg1;
+- (void)splitViewDidEndDragging:(id)arg1;
 - (BOOL)toolShouldNotShowOrAllowScopes:(Class)arg1;
 @property(nonatomic) int mode; // @synthesize mode=_mode;
 @property(nonatomic) BOOL viewerIsDominant; // @synthesize viewerIsDominant=_viewerIsDominant;
@@ -108,20 +121,18 @@
 - (id)displayUnitForMedia:(id)arg1;
 - (id)selectedItems;
 - (id)context;
-- (void)showMatchWindow:(id)arg1;
-- (void)hideMatchWindow:(id)arg1;
-- (void)syncMatchWindowFrame:(BOOL)arg1;
-- (void)playerFrameChanged:(id)arg1;
 @property(nonatomic) BOOL showMatchControls; // @synthesize showMatchControls=_showMatchControls;
 - (id)playerChangedNotificationKey;
 - (void)reportError:(id)arg1;
 - (void)selectPlayerTab:(id)arg1;
 - (void)addPlayerTab:(id)arg1;
+- (void)showMultiangle:(id)arg1;
 - (void)showEventsAndTimeline:(id)arg1;
 - (void)showHistogram:(id)arg1;
 - (void)showVectorscope:(id)arg1;
 - (void)showWaveform:(id)arg1;
 - (void)toggleScopes:(id)arg1;
+- (void)toggleVideoScopes:(id)arg1;
 - (void)selectDisplayAreaMode:(id)arg1;
 - (unsigned long long)_activePlayerModuleIndex;
 - (id)_canvasPlayerModule;
@@ -154,14 +165,16 @@
 - (void)activeToolChanged:(id)arg1;
 - (void)firstResponderChanged:(id)arg1;
 - (void)userDefaultsChanged:(id)arg1;
-- (void)transportControlsFooterViewChanged:(id)arg1;
 - (void)displayAreaFrameChanged:(id)arg1;
 - (void)displayAreaModeShouldChange:(id)arg1;
+- (void)displayAreaScopesPropertyChanged:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_addPlayerTabsToModule:(id)arg1 forMenu:(id)arg2 indentLevel:(long long)arg3 target:(id)arg4;
 - (id)optionsMenuForPlayerScopesModule:(id)arg1 ofIdentifier:(id)arg2;
 - (void)_setViewedClips:(id)arg1;
-- (void)_updateViewerLabelIcon;
+- (int)mediaBrowserModeIcon;
+- (void)_updateOneUpViewerIcon;
+- (void)_updateTwoUpViewerIcon;
 - (void)_setupPlayerModules;
 - (void)_conformPlayersToLayoutStyle:(int)arg1;
 - (void)_makePlayersForMode:(int)arg1 layoutStyle:(int)arg2;
@@ -171,6 +184,8 @@
 - (void)_layoutPlayersForMode:(int)arg1 layoutStyle:(int)arg2;
 - (void)_updatePlayersToPlayerInfo;
 - (void)_updatePlayerInfoToPlayer;
+- (void)_updateScopesToScopesInfo;
+- (void)_updateScopesInfoToPlayers;
 - (void)importClips:(id)arg1;
 - (void)goToInspectorViewer:(id)arg1;
 - (void)_assignMediaToPlayers;
@@ -186,6 +201,7 @@
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (id)localModuleActions;
 - (void)playerModule:(id)arg1 didExitFullScreenForEvent:(id)arg2;
+@property(readonly) int previousScopesMode; // @synthesize previousScopesMode=_previousScopesMode;
 @property(readonly) NSArray *playerModules; // @synthesize playerModules=_playerModules;
 
 @end

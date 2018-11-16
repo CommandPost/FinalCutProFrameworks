@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     long long _offset;
     FFSegmentStore *_store;
     id _sample;
+    BOOL _hasStarted;
 }
 
 - (id)initWithOffset:(long long)arg1 store:(id)arg2;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)waitForFinished;
 - (id)sample;
 - (void)cancel;
+@property BOOL hasStarted; // @synthesize hasStarted=_hasStarted;
 @property(readonly) long long offset; // @synthesize offset=_offset;
 
 @end

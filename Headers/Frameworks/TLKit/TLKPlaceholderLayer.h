@@ -11,20 +11,12 @@
 @interface TLKPlaceholderLayer : TLKItemBackgroundLayer
 {
     id _representedObject;
-    CALayer *_backgroundLayer;
+    CALayer *_itemBackgroundLayer;
 }
 
 - (id)init;
 - (void)dealloc;
 @property(retain) id <TLKTimelineItem> representedObject;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
-- (void)setDelegate:(id)arg1;
-- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
-- (void)addSublayer:(id)arg1;
-- (void)insertSublayer:(id)arg1 below:(id)arg2;
-- (void)insertSublayer:(id)arg1 above:(id)arg2;
-- (void)replaceSublayer:(id)arg1 with:(id)arg2;
-- (void)layoutSublayers;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "FFEditorModuleDelegate.h"
 
-@class FFEditorModule, LKButton, LKPaneCapSegmentedControl, LKPopOverWindow, LKPopUpButton, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSProThemeImageView, NSProView, NSView, PEDataListContainerModule, PEEditorContainerSplitView, PENavSegmentedControl, PEViewedClipSet, PEZoomBezelSegmentedControl;
+@class FFAnchoredTimelineModule, FFEditorModule, LKButton, LKPaneCapSegmentedControl, LKPopOverWindow, LKPopUpButton, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSProThemeImageView, NSProView, NSView, PEDataListContainerModule, PEEditorContainerSplitView, PENavSegmentedControl, PEViewedClipSet, PEZoomBezelSegmentedControl;
 
 @interface PEEditorContainerModule : LKViewModule <FFEditorModuleDelegate>
 {
@@ -88,8 +88,10 @@
 - (BOOL)unhideSubmodule:(id)arg1;
 - (BOOL)_timelineIndexHidden;
 - (void)_setTimelineIndexHidden:(BOOL)arg1;
+@property(readonly) FFAnchoredTimelineModule *timelineModule;
 - (void)toggleEditAccessoryPanel:(id)arg1;
 - (void)toggleAudioScrubbing:(id)arg1;
+- (void)toggleItemSkimming:(id)arg1;
 - (void)closePrecisionEditor:(id)arg1;
 - (void)toggleProjectBrowser:(id)arg1;
 - (void)toggleTimelineIndex:(id)arg1;
@@ -141,7 +143,8 @@
 - (void)rangeInvalidated:(id)arg1;
 - (void)_soloChangedNotification:(id)arg1;
 - (void)_assetsChangedNotification:(id)arg1;
-- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
+- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 controlCanvas:(BOOL)arg5 showAngles:(BOOL)arg6 owner:(id)arg7;
+- (BOOL)replaceSkimmedObject:(struct NSObject *)arg1 context:(id)arg2 withSkimmable:(struct NSObject *)arg3 context:(id)arg4 effectCount:(long long)arg5 allowPlayback:(BOOL)arg6 controlCanvas:(BOOL)arg7 showAngles:(BOOL)arg8 owner:(id)arg9;
 - (void)stopSkimmingForOwner:(id)arg1;
 - (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 loadingBlock:(CDUnknownBlockType)arg4 unloadingBlock:(CDUnknownBlockType)arg5;
@@ -153,6 +156,7 @@
 - (void)startNUpViewerWithMedia:(id)arg1 contexts:(id)arg2 effectCounts:(id)arg3;
 - (void)replaceNUpMedia:(struct NSObject *)arg1 context:(id)arg2 withMedia:(struct NSObject *)arg3 context:(id)arg4;
 - (void)stopNUpViewer;
+- (BOOL)editorModuleShouldShow2UpDisplay:(id)arg1;
 - (void)editorModule:(id)arg1 didSelectItems:(id)arg2;
 - (void)viewChangedForEditorModule:(id)arg1;
 - (void)sequenceChangedForEditorModule:(id)arg1;
@@ -160,6 +164,7 @@
 - (void)openStack:(id)arg1;
 - (void)openColorBoardForItem:(id)arg1;
 - (void)openAdjustmentsPanel;
+- (void)openInspectorToSubmodule:(id)arg1;
 - (void)openEffectsPanel;
 - (void)openCropPanel;
 - (void)openStabilizationPanel;

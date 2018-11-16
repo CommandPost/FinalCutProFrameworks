@@ -34,9 +34,6 @@
 - (void)overwriteWithSelectedMedia:(id)arg1;
 - (void)overwriteWithSelectedMediaAudio:(id)arg1;
 - (void)overwriteWithSelectedMediaVideo:(id)arg1;
-- (void)insertWithSelectedMediaBacktimed:(id)arg1;
-- (void)insertWithSelectedMediaAudioBacktimed:(id)arg1;
-- (void)insertWithSelectedMediaVideoBacktimed:(id)arg1;
 - (void)overwriteWithSelectedMediaBacktimed:(id)arg1;
 - (void)overwriteWithSelectedMediaAudioBacktimed:(id)arg1;
 - (void)overwriteWithSelectedMediaVideoBacktimed:(id)arg1;

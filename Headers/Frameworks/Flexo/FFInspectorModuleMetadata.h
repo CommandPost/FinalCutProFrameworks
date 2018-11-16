@@ -9,7 +9,7 @@
 #import "FFRolesMenuDelegate.h"
 #import "NSMenuDelegate.h"
 
-@class FFAsset, FFColouredView, FFInspectorMetadataContentRow, FFInspectorMetadataContentView, FFInspectorProjectEventsController, FFProFlippedView, FFRolesMenuController, LKButton, LKSegmentedControl, LKTextField, NSArrayController, NSMenu, NSMutableArray, NSMutableDictionary, NSPopUpButton, NSProImageView, NSProThemeImageView, NSScrollView, NSTextField, NSView, NSWindow;
+@class FFColouredView, FFInspectorMetadataContentRow, FFInspectorMetadataContentView, FFInspectorProjectEventsController, FFMedia, FFProFlippedView, FFRolesMenuController, LKButton, LKSegmentedControl, LKTextField, NSArrayController, NSMenu, NSMutableArray, NSMutableDictionary, NSPopUpButton, NSProImageView, NSProThemeImageView, NSScrollView, NSTextField, NSView, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleMetadata : FFInspectorModule <NSMenuDelegate, FFRolesMenuDelegate>
@@ -22,7 +22,9 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_timelineVCs;
     FFInspectorProjectEventsController *_eventsController;
     FFRolesMenuController *_rolesMenuController;
-    FFAsset *_asset;
+    NSPopUpButton *_activeVideoAnglePopup;
+    NSPopUpButton *_activeAudioAnglePopup;
+    FFMedia *_media;
     NSScrollView *_scrollView;
     NSProThemeImageView *_metadataLCDHeader;
     NSProImageView *_metadataLCDIcon;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
     FFInspectorMetadataContentRow *_metadataRatingControlGroup;
     FFInspectorMetadataContentRow *_metadataTintColorControlGroup;
     FFInspectorMetadataContentRow *_metadataRolesControlGroup;
+    FFInspectorMetadataContentRow *_metadataMultiCamAngleControlGroup;
     LKSegmentedControl *_metadataActionControl;
     NSWindow *_addCustomMetadataWindow;
     NSTextField *_customMetadataNameTextField;
@@ -76,6 +79,8 @@ __attribute__((visibility("hidden")))
     LKButton *_ccEventGenerateProxyButton;
     FFColouredView *_missingEffectSep;
     LKTextField *_missingEffectTitle;
+    struct CGRect _proxyTextFrame;
+    struct CGRect _proxyIconFrame;
 }
 
 - (id)init;
@@ -90,6 +95,8 @@ __attribute__((visibility("hidden")))
 - (id)selectionOwner;
 - (void)setCurrentItems:(id)arg1;
 - (BOOL)isCurrentItemACompoundClip;
+- (BOOL)isCurrentItemAMultiAngle;
+- (BOOL)isCurrentItemASequence;
 - (void)_sequenceSettingsChanged:(int)arg1 inspectedItem:(id)arg2;
 - (void)showEditCompoundClipSettings:(id)arg1;
 - (void)_growScrollView;
@@ -97,9 +104,17 @@ __attribute__((visibility("hidden")))
 - (void)_updateLCD;
 - (int)_calculateOfflineClipsCountIn:(id)arg1;
 - (id)_eventNameFromUrl:(id)arg1;
-- (void)_updateClipRefs:(id)arg1 remap:(BOOL)arg2 sequence:(id)arg3 selection:(id)arg4;
+- (void)_updateMediaRefs:(id)arg1 remap:(BOOL)arg2 sequence:(id)arg3 selection:(id)arg4;
 - (void)_removeOldSubviews;
 - (void)_updateReferencedEventsForItems:(id)arg1;
+- (void)_setUpAnglePopupUpButton:(id)arg1 withItems:(id)arg2 useAudio:(BOOL)arg3;
+- (void)_clearAnglePopupButton:(id)arg1;
+- (void)_populateAnglePopupButton:(id)arg1 withMultiCamItems:(id)arg2;
+- (void)_setAnglePopupButton:(id)arg1 forMultiCamItems:(id)arg2 useAudioAngle:(BOOL)arg3;
+- (BOOL)_hasSameMultiCamItems:(id)arg1;
+- (void)_setAngleID:(id)arg1 onMultiCamItems:(id)arg2 popupButton:(id)arg3 useAudio:(BOOL)arg4;
+- (void)videoAnglePopupAction:(id)arg1;
+- (void)audioAnglePopupAction:(id)arg1;
 - (void)generateProxy:(id)arg1;
 - (void)reprioritiseButtonPressed:(id)arg1;
 - (void)reprioritiseCCButtonPressed:(id)arg1;
@@ -132,6 +147,8 @@ __attribute__((visibility("hidden")))
 - (id)anchoredObjectsForRolesMenuController:(id)arg1;
 - (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 toAnchoredObjects:(id)arg3;
 - (void)shouldEditRolesForRolesMenuController:(id)arg1;
+@property(retain, nonatomic) NSPopUpButton *activeAudioAnglePopup; // @synthesize activeAudioAnglePopup=_activeAudioAnglePopup;
+@property(retain, nonatomic) NSPopUpButton *activeVideoAnglePopup; // @synthesize activeVideoAnglePopup=_activeVideoAnglePopup;
 @property(retain, nonatomic) LKSegmentedControl *metadataActionControl; // @synthesize metadataActionControl=_metadataActionControl;
 @property(retain, nonatomic) LKSegmentedControl *metadataViewSetControl; // @synthesize metadataViewSetControl=_metadataViewSetControl;
 

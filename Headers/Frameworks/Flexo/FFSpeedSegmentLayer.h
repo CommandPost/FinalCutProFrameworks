@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     TLKThemeBackedLayer *_patternLayer;
     TLKThemeBackedLayer *_menuIndicatorLayer;
     struct CGRect _rect;
+    struct CGRect _visibleRect;
     BOOL _lastSegment;
     int _keyframeWidth;
     BOOL _active;
@@ -85,6 +86,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)active;
 - (void)setRect:(struct CGRect)arg1;
 - (struct CGRect)rect;
+- (void)setVisibleRect:(struct CGRect)arg1;
+- (struct CGRect)visibleRect;
 - (void)layoutSublayers;
 - (void)applySetRatePreset:(double)arg1;
 - (void)applyNormalSpeed:(id)arg1;

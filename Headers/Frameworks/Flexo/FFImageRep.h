@@ -32,6 +32,8 @@
 - (void)setColorSpace:(struct CGColorSpace *)arg1;
 - (_Bool)nativelyPremulBlack;
 - (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (BOOL)disable422InputFiltering;
+- (void)getSampleBuffer:(struct opaqueCMSampleBuffer **)arg1 alphaKnownToBeFullyOpaque:(char *)arg2;
 @property unsigned long long approximateMemoryUsage; // @synthesize approximateMemoryUsage=_approximateMemoryUsage;
 
 @end

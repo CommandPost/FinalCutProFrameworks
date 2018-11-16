@@ -16,9 +16,6 @@
 
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (BOOL)getLayerBlendMode:(int *)arg1;
-- (BOOL)setLayerBlendMode:(int)arg1;
-- (BOOL)enableLayerBlendModeChannel:(BOOL)arg1;
 - (BOOL)navigateToTime:(double)arg1;
 - (BOOL)giveEffectUIFocus;
 

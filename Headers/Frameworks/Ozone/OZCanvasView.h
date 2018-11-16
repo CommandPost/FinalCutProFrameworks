@@ -22,6 +22,7 @@
 }
 
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
 - (id)setSubViewLayoutForCanvas:(int)arg1 withActiveSubViewIndex:(unsigned long long)arg2 layoutIndex:(unsigned long long)arg3;
 - (unsigned long long)viewIndexFromCanvasLayout:(unsigned long long)arg1 forSubView:(id)arg2;
 - (BOOL)isOpaque;

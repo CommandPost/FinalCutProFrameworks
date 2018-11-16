@@ -21,10 +21,14 @@ __attribute__((visibility("hidden")))
 - (void)showHistogram:(id)arg1;
 - (void)showVectorscope:(id)arg1;
 - (void)showWaveform:(id)arg1;
+- (void)changeBrightness:(id)arg1;
+- (void)toggleMonochrome:(id)arg1;
 - (void)viewWasInstalled;
 - (void)viewWillBeRemoved;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)updateLabel;
+- (void)setViewProperties:(id)arg1;
+- (id)viewProperties;
 - (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 
 @end

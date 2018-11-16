@@ -16,6 +16,8 @@
 - (void)dealloc;
 - (BOOL)animate;
 - (void)setAnimate:(BOOL)arg1;
+- (BOOL)shouldOffset;
+- (void)setShouldOffset:(BOOL)arg1;
 - (CDStruct_1b6d18a9)currentTime;
 - (void)setCurrentTime:(CDStruct_1b6d18a9)arg1;
 

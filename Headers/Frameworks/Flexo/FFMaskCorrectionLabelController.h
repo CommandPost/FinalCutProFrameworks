@@ -4,12 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFColorBaseViewController.h>
+#import <Flexo/FFColorBaseLabelController.h>
 
 @class LKButton, OZLabelText;
 
 __attribute__((visibility("hidden")))
-@interface FFMaskCorrectionLabelController : FFColorBaseViewController
+@interface FFMaskCorrectionLabelController : FFColorBaseLabelController
 {
     LKButton *_disclosureButton;
     LKButton *_toggleButton;
@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didBuildUI;
 - (void)update;
-- (BOOL)isLeftJustified;
 - (void)toggleDisclosure:(id)arg1;
 - (void)toggleMask:(id)arg1;
 

@@ -31,6 +31,7 @@
 }
 
 + (void)releaseSharedInstance;
++ (id)defaultViewSetPredicate;
 + (id)_definitionsDict;
 + (id)definitionForKey:(id)arg1;
 + (void)_clearMetadataDefinitionsCache;

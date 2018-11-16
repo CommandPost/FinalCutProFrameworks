@@ -124,6 +124,7 @@
 - (struct OZViewerState *)activeViewerState;
 - (struct OZViewerState *)getViewerStateForView:(id)arg1;
 - (const struct OZRenderState *)getRenderState;
+- (void)setIgnoreTransformationsForElement:(struct OZTransformNode *)arg1;
 - (id)activeView;
 - (void)setActiveView:(id)arg1;
 - (void)postRedisplayToSubViews;
@@ -222,6 +223,8 @@
 - (void)goToEnd:(id)arg1;
 - (void)stopPause;
 - (_Bool)isPlaying;
+- (BOOL)didPreroll;
+- (void)setDidPreroll:(BOOL)arg1;
 - (void)setPlayForward:(_Bool)arg1;
 - (_Bool)isPlayingForward;
 - (int)getPlayMode;

@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class CATextLayer, CHChannelBase, CHChannelFolder, FFAnchoredTimelineModule, FFChannelChangeController, FFCurveEditorBackgroundLayer, FFCurveEditorSelection, FFEffect, FFResponderLayerCheckbox, NSArray, NSMutableArray, NSProThemeFacet, NSString, OZDecibelFormatter, TLKButtonLayer, TLKThemeBackedLayer;
+@class CATextLayer, CHChannelBase, CHChannelFolder, FFAnchoredTimelineModule, FFChannelChangeController, FFCurveEditorBackgroundLayer, FFCurveEditorSelection, FFEffect, FFEffectStack, FFResponderLayerCheckbox, NSArray, NSMutableArray, NSProThemeFacet, NSString, OZDecibelFormatter, TLKButtonLayer, TLKThemeBackedLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFCurveEditorLayer : CALayer <NSMenuDelegate>
@@ -28,12 +28,15 @@ __attribute__((visibility("hidden")))
     CALayer *_foregroundLayer;
     CALayer *_maskLayer;
     FFEffect *_effect;
+    FFEffectStack *_effectStack;
     id <FFCurveEditorEffectDelegate> _effectDelegate;
     NSProThemeFacet *_fadeAsset;
+    NSProThemeFacet *_fadeAssetFocused;
     struct CGColor **_fadeColor;
     struct CGColor **_curveColor;
     struct CGColor **_curveColorPressed;
     struct CGColor **_curveColorRollover;
+    struct CGColor **_curveColorPressedOutline;
     struct CGColor **_fadeCurveColor;
     CHChannelBase *_channel;
     CHChannelFolder *_rootChannel;
@@ -52,6 +55,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint _initialMouseLocation;
     struct CGPoint _mouseOrigin;
     struct CGPoint _lastMousePos;
+    struct CGPoint _lastSelectionPos;
     BOOL _startDrag;
     BOOL _snapping;
     BOOL _selecting;
@@ -60,10 +64,13 @@ __attribute__((visibility("hidden")))
     BOOL _showValue;
     BOOL _offsetLevel;
     BOOL _segmentWasCreated;
+    BOOL _didSelectNewSegment;
     BOOL _keyframeWasCreated;
     BOOL _curveIsPositive;
     BOOL _rollover;
     BOOL _isObserving;
+    BOOL _soloAnimation;
+    BOOL _fineAdjustment;
     int _direction;
     FFCurveEditorSelection *_rolloverSelection;
     BOOL _isOverlay;
@@ -79,8 +86,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)initWithChannel:(id)arg1 rootChannel:(id)arg2 effect:(id)arg3 actionName:(id)arg4 forItem:(id)arg5 isAudio:(BOOL)arg6 isOverlay:(BOOL)arg7 timeline:(id)arg8;
+- (void)addObservers:(id)arg1;
+- (void)removeObservers:(id)arg1;
 - (void)curveEditorWillClose;
-- (void)curveEditorWillBeRemoved:(id)arg1;
+- (void)curveEditorWillBeRemoved;
+- (void)layerDidBecomeVisible:(BOOL)arg1;
 - (void)dealloc;
 - (struct CGRect)displayBounds;
 - (struct CGRect)adjustedRectForCurveRect:(struct CGRect)arg1;
@@ -109,6 +119,8 @@ __attribute__((visibility("hidden")))
 - (void)refreshKeyframesLayers;
 - (void)refreshSamples;
 - (void)refreshChannel;
+- (BOOL)showLeftFade;
+- (BOOL)showRightFade;
 - (void)refreshMixHandles;
 - (id)associatedEffect;
 - (id)effect;

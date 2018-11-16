@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
 {
     NSRecursiveLock *_streamPrivatelock;
     FFMutableVideoProps *_videoProps;
-    FFImage *_pendingImages[4];
-    FFImage *_completedImages[4];
-    NSOperation *_asyncOps[4];
+    FFImage *_pendingImages[5];
+    FFImage *_completedImages[5];
+    NSOperation *_asyncOps[5];
 }
 
 - (id)initWithSource:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;

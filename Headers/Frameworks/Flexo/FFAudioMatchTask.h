@@ -6,15 +6,14 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredObject, FFAudioMatchRequest, FFBackgroundTask;
+@class FFAnchoredObject, FFAudioMatchRequest, FFBackgroundTask, NSDictionary;
 
-__attribute__((visibility("hidden")))
 @interface FFAudioMatchTask : NSObject
 {
     FFAnchoredObject *_objectToModify;
     FFAudioMatchRequest *_pendingRequest;
     FFBackgroundTask *_backgroundTask;
-    void *_preset;
+    NSDictionary *_effectState;
     id _delegate;
 }
 

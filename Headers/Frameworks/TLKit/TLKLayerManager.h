@@ -6,14 +6,14 @@
 
 #import "NSObject.h"
 
-@class NSMapTable, NSMutableArray, TLKSplitLayer, TLKTimelineView;
+@class NSMapTable, NSMutableArray, TLKContainerGroupLayer, TLKTimelineView;
 
 @interface TLKLayerManager : NSObject
 {
-    NSMapTable *_containerLayersMap;
     NSMutableArray *_recycledItemLayers;
     NSMutableArray *_recycledContainerLayers;
-    TLKSplitLayer *_splitLayer;
+    NSMapTable *_containerLayersMap;
+    TLKContainerGroupLayer *_containerGroupLayer;
     TLKTimelineView *_timelineView;
     struct {
         unsigned int recyclesLayers:1;
@@ -22,32 +22,49 @@
 }
 
 - (id)init;
+- (void)_setupLayerTree;
 - (id)initWithTimelineView:(id)arg1;
 - (void)dealloc;
 @property(readonly, nonatomic) TLKTimelineView *timelineView;
 - (id)layoutDatabase;
 - (BOOL)shouldUpdateLayers;
-- (id)containerLayerForContainer:(id)arg1;
-- (id)selectionFeedbackLayerForContainer:(id)arg1;
 @property(nonatomic) BOOL recyclesLayers;
 - (id)_newRecycledLayerFromArray:(id)arg1;
 - (void)recycleLayersForItem:(id)arg1;
 - (void)recycleLayersForItems:(id)arg1;
-- (id)newItemLayerForItem:(id)arg1 isSplitEdit:(BOOL)arg2;
-- (id)newContainerLayerForItem:(id)arg1;
-- (void)_logChangedLayer:(id)arg1 changeType:(id)arg2;
-- (void)synchronizeLayersForUpdatedItems:(id)arg1;
-- (void)synchronizeLayersForRemovedItems:(id)arg1;
+- (id)containerGroupLayer;
+- (id)containerGroupLayerForContainer:(id)arg1;
+- (id)containerLayerForContainer:(id)arg1;
+- (id)spineBackgroundLayerForContainer:(id)arg1;
+- (id)itemLayerForItem:(id)arg1;
+- (id)layersForItem:(id)arg1;
+- (id)layersForTrack:(id)arg1;
+- (id)rulerLayer;
+- (id)_newContainerLayerForContainer:(id)arg1;
+- (void)_setupLayerForTrack:(id)arg1;
+- (void)addLayersForTracks:(id)arg1;
+- (void)removeLayersForTracks:(id)arg1;
+- (void)discardLayersForManagedItem:(id)arg1;
 - (void)discardAllManagedItemLayersForContainer:(id)arg1;
 - (void)discardAllManagedItemLayers;
-- (void)_contentLayerBoundsDidChange:(id)arg1 forKey:(id)arg2;
-- (id)newScrollLayer;
-- (id)enclosingScrollLayerForContainer:(id)arg1;
-- (void)addScrollLayer:(id)arg1 forContainer:(id)arg2;
-- (void)removeScrollLayerForContainer:(id)arg1;
+- (id)makeLayerForNestedContainer:(id)arg1;
+- (id)newItemLayerForItem:(id)arg1 isSplitEdit:(BOOL)arg2;
+- (void)_logChangedLayer:(id)arg1 changeType:(id)arg2;
+- (void)_updateNestedContainerLayersForItemsIfNeeded:(id)arg1;
+- (void)synchronizeLayersForUpdatedItems:(id)arg1;
+- (void)synchronizeLayersForRemovedItems:(id)arg1;
+- (struct CGRect)_expandContainerBounds:(struct CGRect)arg1 toIncludeVisibleRect:(struct CGRect)arg2;
+- (void)_sizeToFitMultipleTracks;
+- (void)_sizeToFitSingleTrack;
+- (void)sizeToFit;
+- (void)_tileContainerGroupLayer;
+- (void)_tileRuler;
+- (void)tile;
+- (id)closestTrackLayerAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)centerScanRect:(struct CGRect)arg1 forLayer:(id)arg2;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-@property(retain, nonatomic) TLKSplitLayer *splitLayer; // @synthesize splitLayer=_splitLayer;
+- (id)savedFrameStateForItems:(id)arg1;
+- (id)savedFrameStateForTracks:(id)arg1;
+- (void)restoreSavedFrameState:(id)arg1;
 
 @end
 

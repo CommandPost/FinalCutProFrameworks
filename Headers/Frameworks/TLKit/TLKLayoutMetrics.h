@@ -17,10 +17,6 @@
     double _itemHeightAdjustment;
     double _splitItemSpacingHeight;
     struct CGSize _itemSpacing;
-    double _topBoundsPadding;
-    double _leftBoundsPadding;
-    double _bottomBoundsPadding;
-    double _rightBoundsPadding;
     int _clipDisplayMode;
     struct {
         unsigned int showClipTitlesOnly:1;
@@ -28,7 +24,6 @@
     } _tlkLayoutFlags;
 }
 
-+ (id)defaultLayoutMetrics;
 - (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(nonatomic) BOOL showClipTitlesOnly;
@@ -36,10 +31,6 @@
 - (double)anchoredItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
 - (double)splitItemHeightForItemType:(int)arg1 containmentMask:(int)arg2;
 @property(nonatomic) int displayMode; // @synthesize displayMode=_clipDisplayMode;
-@property(nonatomic) double rightBoundsPadding; // @synthesize rightBoundsPadding=_rightBoundsPadding;
-@property(nonatomic) double bottomBoundsPadding; // @synthesize bottomBoundsPadding=_bottomBoundsPadding;
-@property(nonatomic) double leftBoundsPadding; // @synthesize leftBoundsPadding=_leftBoundsPadding;
-@property(nonatomic) double topBoundsPadding; // @synthesize topBoundsPadding=_topBoundsPadding;
 @property(nonatomic) double splitItemSpacingHeight; // @synthesize splitItemSpacingHeight=_splitItemSpacingHeight;
 @property(nonatomic) struct CGSize itemSpacing; // @synthesize itemSpacing=_itemSpacing;
 @property(nonatomic) double itemHeightAdjustment; // @synthesize itemHeightAdjustment=_itemHeightAdjustment;

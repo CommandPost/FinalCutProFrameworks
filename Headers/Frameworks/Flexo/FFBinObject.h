@@ -30,7 +30,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)uniqueBinObjectIdentifier;
-@property(readonly, nonatomic) NSString *identifier;
+- (id)identifier;
 @property(copy, nonatomic) NSString *displayName;
 - (void)clearComponentAncestors;
 @property(readonly, nonatomic) NSString *contentType;

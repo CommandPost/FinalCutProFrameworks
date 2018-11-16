@@ -330,6 +330,7 @@ struct OZChannelGradientPositioned {
     struct OZChannelDouble _gamma;
     struct OZChannelEnum _colorSpaceID;
     int _defaultState;
+    _Bool _doLinearGrayscale;
     struct OZChannelEnum _gradientType;
     struct OZChannelPosition _gradientStart;
     struct OZChannelPosition _gradientEnd;
@@ -768,6 +769,11 @@ struct PCPtr<POTexture> {
     struct PCSharedCount _refcount;
 };
 
+struct PCPtr<POVertexAsset> {
+    struct POVertexAsset *_field1;
+    struct PCSharedCount _field2;
+};
+
 struct PCQuat<double> {
     double _scalar;
     PCVector3_457fd1f0 _vector;
@@ -865,13 +871,6 @@ struct POColor {
     float _y;
     float _z;
     float _w;
-};
-
-struct POCornerHandle {
-    PCPtr_ca909b16 _field1;
-    PCPtr_ca909b16 _field2;
-    PCPtr_ca909b16 _field3;
-    PCPtr_ca909b16 _field4;
 };
 
 struct POCropMargins {
@@ -976,9 +975,7 @@ struct POScale3DOSC {
 
 struct POTexture;
 
-struct POVertexAsset {
-    CDUnknownFunctionPointerType *_field1;
-};
+struct POVertexAsset;
 
 struct PSHVertexData;
 
@@ -1212,6 +1209,11 @@ typedef struct PCPtr<POTexture> {
     struct POTexture *_ptr;
     struct PCSharedCount _refcount;
 } PCPtr_ca909b16;
+
+typedef struct PCPtr<POVertexAsset> {
+    struct POVertexAsset *_field1;
+    struct PCSharedCount _field2;
+} PCPtr_fc939811;
 
 typedef struct PCQuat<double> {
     double _scalar;

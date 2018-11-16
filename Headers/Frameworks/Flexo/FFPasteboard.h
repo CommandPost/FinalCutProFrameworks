@@ -54,6 +54,7 @@
 - (BOOL)_cachedFromURLForKey:(id)arg1;
 - (void)_setCachedFromURL:(BOOL)arg1 forKey:(id)arg2;
 - (id)_newObjectsWithProjectCore:(id)arg1 assetFlags:(int)arg2 fromURL:(char *)arg3 options:(id)arg4;
+- (id)_findSequenceInEventsForObject:(id)arg1;
 - (id)_newObjectsWithProject:(id)arg1 assetFlags:(int)arg2 fromURL:(char *)arg3 options:(id)arg4;
 - (CDStruct_1b6d18a9)_playheadWithProject:(id)arg1 assetFlags:(int)arg2 options:(id)arg3;
 - (id)_newMediaWithProject:(id)arg1 andSequence:(id)arg2 fromURL:(char *)arg3 options:(id)arg4;

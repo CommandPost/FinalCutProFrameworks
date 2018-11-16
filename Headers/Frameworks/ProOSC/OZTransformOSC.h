@@ -6,8 +6,6 @@
 
 #import <ProOSC/POScaleControl.h>
 
-@class NSColor;
-
 @interface OZTransformOSC : POScaleControl
 {
     double _startX;
@@ -30,10 +28,6 @@
     PCVector3_457fd1f0 _startPivot;
     PCVector2_79efa81a _startShear;
     PCVector2_79efa81a _priorRotHandlePos;
-    PCPtr_ca909b16 _handlesTexture[3];
-    PCPtr_ca909b16 _rotationTexture[3];
-    PCPtr_ca909b16 _pivotTexture[3];
-    PCPtr_ca909b16 _roundnessTexture;
     PCVector2_79efa81a _corners[8];
     PCVector2_79efa81a _handle[2];
     BOOL _moving;
@@ -42,28 +36,13 @@
     BOOL _mouseDown;
     BOOL _elementBeingDragged;
     BOOL _rotationSnapped;
-    struct POColor _playerOSCScaleBoxStrokeDragging;
-    struct POColor _playerOSCScaleBoxStroke;
-    struct POColor _playerOSCScaleBoxBoost;
-    struct POColor _playerOSCRotateTrackShadow;
-    struct POColor _playerOSCRotateTrackStroke;
-    struct POColor _playerOSCRotatePreviousMarkerFill;
-    struct POColor _playerOSCRotatePreviousMarkerStroke;
-    struct POColor _playerOSCRotateLineStroke;
-    struct POColor _playerOSCRotateLineStrokeConstrained;
-    struct POColor _playerOSCRotateLineShadow;
-    struct POColor _playerOSCRotateLineShadowConstrained;
-    NSColor *_playerStatusText;
-    NSColor *_playerStatusTextLocked;
-    NSColor *_playerStatusTextUnit;
-    NSColor *_playerStatusTextDeltaUnmodified;
-    NSColor *_playerStatusTextDeltaGreater;
-    NSColor *_playerStatusTextDeltaGreaterUnit;
-    NSColor *_playerStatusTextDeltaLess;
-    NSColor *_playerStatusTextDeltaLessUnit;
 }
 
++ (void)maybeInitResources;
 + (id)allocInfoBarTextWithPosition:(const PCVector2_79efa81a *)arg1;
++ (PCPtr_ca909b16)getHandlesTexture:(int)arg1;
++ (PCPtr_ca909b16)getPivotTexture:(int)arg1;
++ (PCPtr_ca909b16)getRotationTexture:(int)arg1;
 - (void)_init;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4 scaleOnly:(BOOL)arg5;

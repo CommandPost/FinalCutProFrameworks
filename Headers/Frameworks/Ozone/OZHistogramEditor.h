@@ -24,6 +24,7 @@
 - (void)dealloc;
 - (void)setDelegate:(id)arg1;
 - (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
+- (void)setViewController:(id)arg1;
 - (void)awakeFromNib;
 - (void)update;
 - (void)setChannelValue:(id)arg1;

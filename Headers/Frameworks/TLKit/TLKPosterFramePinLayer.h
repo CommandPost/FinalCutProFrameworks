@@ -25,7 +25,6 @@
 
 + (struct CGSize)posterPinSize;
 - (id)init;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
 - (void)setDelegate:(id)arg1;
 @property id <TLKPosterFrameInfoProtocol> representedObject;
 - (void)updateAppearence;

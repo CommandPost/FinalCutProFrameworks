@@ -18,6 +18,8 @@
 - (unsigned int)sampleCurve:(double **)arg1 timeSamples:(struct **)arg2 count:(unsigned int *)arg3 overRange:(CDStruct_5c5366e1)arg4 withStep:(CDStruct_1b6d18a9)arg5;
 - (unsigned int)sampleRamps:(double **)arg1 timeSamples:(struct **)arg2 count:(unsigned int *)arg3 overRange:(CDStruct_5c5366e1)arg4 withStep:(CDStruct_1b6d18a9)arg5;
 - (void)setCurveDoubleValue:(double)arg1 atTime:(CDStruct_1b6d18a9)arg2 options:(unsigned int)arg3;
+- (double)initialCurveDoubleValue;
+- (void)setInitialCurveDoubleValue:(double)arg1;
 - (double)defaultCurveDoubleValue;
 - (void)setDefaultCurveDoubleValue:(double)arg1;
 - (double)minCurveDoubleValue;

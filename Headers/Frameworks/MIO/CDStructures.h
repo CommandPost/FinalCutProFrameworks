@@ -54,23 +54,18 @@ struct BaseDevice {
     _Bool _field5;
     _Bool _field6;
     char _field7;
-    struct Thread *_field8;
-    _Bool _field9;
+    struct Synchronizable _field8;
+    struct Synchronizable _field9;
     struct Synchronizable _field10;
-    _Bool _field11;
+    struct Synchronizable _field11;
     _Bool _field12;
-    struct Synchronizable _field13;
-    struct Synchronizable _field14;
-    struct Synchronizable _field15;
-    struct Synchronizable _field16;
-    _Bool _field17;
-    double _field18;
-    double _field19;
-    _Bool _field20;
-    char _field21;
-    int _field22;
-    MIODeviceConnection *_field23;
-    MIOTimecode *_field24;
+    double _field13;
+    double _field14;
+    _Bool _field15;
+    char _field16;
+    int _field17;
+    MIODeviceConnection *_field18;
+    MIOTimecode *_field19;
 };
 
 struct CGPoint {
@@ -179,8 +174,6 @@ struct Synchronizable {
         char __opaque[40];
     } mCondVar;
 };
-
-struct Thread;
 
 struct TimecodeInfo {
     long long counter;

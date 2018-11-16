@@ -10,8 +10,8 @@
 - (BOOL)timelineView:(id)arg1 shouldHandleException:(id)arg2;
 
 @optional
-- (BOOL)timelineView:(id)arg1 isItemExpandable:(id)arg2;
 - (void)timelineView:(id)arg1 didDoubleClickItem:(id)arg2;
+- (BOOL)timelineView:(id)arg1 shouldShowSplitForItem:(id)arg2;
 - (void)selectionManagerDidChange:(id)arg1;
 - (BOOL)selectionManagerShouldChange:(id)arg1;
 - (id)selectionManager:(id)arg1 willSelectObjects:(id)arg2 selectionMask:(unsigned long long)arg3;
@@ -25,8 +25,7 @@
 - (void)timelineView:(id)arg1 enablePlayheadSkimming:(BOOL)arg2;
 - (BOOL)timelineViewIsPlayheadSkimming:(id)arg1;
 - (BOOL)timelineViewShouldSkimPlayhead:(id)arg1;
-- (CDStruct_1b6d18a9)timelineView:(id)arg1 adjustSkimmingTime:(CDStruct_1b6d18a9)arg2 forItem:(id)arg3 snapped:(BOOL)arg4;
-- (void)timelineView:(id)arg1 willSkimItem:(id)arg2 atTime:(CDStruct_1b6d18a9 *)arg3 didSnap:(char *)arg4;
+- (BOOL)timelineView:(id)arg1 shouldSkimItem:(id)arg2 atTime:(CDStruct_1b6d18a9 *)arg3 didSnap:(char *)arg4;
 - (void)timelineView:(id)arg1 layoutSublayers:(id)arg2 forItem:(id)arg3;
 - (void)timelineView:(id)arg1 layoutSublayersOfVideoLayer:(id)arg2 audioLayer:(id)arg3 forItem:(id)arg4;
 - (id)timelineView:(id)arg1 badgeLayersForItem:(id)arg2 currentBadges:(id)arg3;

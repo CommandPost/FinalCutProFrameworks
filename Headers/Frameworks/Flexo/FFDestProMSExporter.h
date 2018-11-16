@@ -25,7 +25,7 @@
 - (id)copyFrameAtTime:(CDStruct_1b6d18a9)arg1 waitUntilFound:(BOOL)arg2;
 - (void)flush:(BOOL)arg1;
 - (void)pushFrame:(id)arg1;
-- (BOOL)wantsMoreFrames;
+- (int)getFrameQueueStatus;
 - (unsigned long long)maxQueueSize;
 - (BOOL)wantsDithering:(id)arg1;
 

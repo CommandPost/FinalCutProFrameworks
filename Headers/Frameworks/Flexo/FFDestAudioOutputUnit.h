@@ -29,7 +29,7 @@
 - (void)setPullGraph:(struct FFAudioGraph *)arg1 node:(struct FFAudioNode *)arg2 elem:(unsigned int)arg3;
 - (void)setPullCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 - (void *)figClock;
-- (void)start;
+- (void)start:(id)arg1;
 - (void)stop;
 - (BOOL)isRunning;
 - (void)reset;

@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithDeviceConnection:(id)arg1;
 @property(retain, nonatomic) MIODeviceConnection *deviceConnection; // @synthesize deviceConnection=_deviceConnection;
 @property(readonly, nonatomic) NSString *itemDisplayName;
+- (void)setItemDisplayName:(id)arg1;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
 @property(readonly, nonatomic) NSImage *itemIcon;
 @property(readonly, nonatomic) NSString *itemPersistentIdentifier;
 @property(readonly, nonatomic) NSArray *items;
@@ -32,7 +34,6 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
 @property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
-@property(readonly, nonatomic) BOOL itemDisplayNameEditable; // @dynamic itemDisplayNameEditable;
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 @property(readonly, nonatomic) double itemRowHeight;

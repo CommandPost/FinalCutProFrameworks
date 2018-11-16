@@ -18,12 +18,12 @@
 
 + (id)importPublicXMLFile:(id)arg1 storageLocation:(id)arg2 warnings:(id *)arg3 error:(id *)arg4;
 + (BOOL)exportXMLForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
++ (id)XMLDataForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
 + (BOOL)checkXMLVers:(id)arg1 fileName:(id)arg2 error:(id *)arg3;
 + (BOOL)checkXMEMLVers:(id)arg1 fileName:(id)arg2 error:(id *)arg3;
 + (BOOL)checkFileXMLVers:(id)arg1 error:(id *)arg2;
 + (BOOL)eventOnlyXmlAtURL:(id)arg1;
 + (BOOL)exportAXELForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
-+ (id)XMLDataForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
 + (BOOL)handlerForUTIType:(id)arg1 extension:(id)arg2;
 + (id)defaultImportOptions;
 + (id)defaultExportOptions;

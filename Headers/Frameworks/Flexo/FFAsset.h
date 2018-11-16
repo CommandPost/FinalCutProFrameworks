@@ -9,11 +9,11 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFDominantMotionMediaRep, FFFlowMediaRep, FFMediaRep, FFProvider, FFVideoProps, NSIndexSet, NSString;
+@class FFDominantMotionMediaRep, FFFlowMediaRep, FFMediaRep, FFProvider, FFVideoProps, NSDictionary, NSIndexSet, NSString;
 
 @interface FFAsset : FFMedia <NSCoding, NSCopying>
 {
-    NSString *_identifier;
+    NSString *_mediaIdentifier;
     FFVideoProps *_videoProps;
     NSString *_videoFormatName;
     FFMediaRep *_originalMediaRep;
@@ -22,6 +22,7 @@
     FFFlowMediaRep *_flowMediaRep;
     FFDominantMotionMediaRep *_dominantMotionMediaRep;
     long long _frameExtractionMode;
+    NSString *_uttype;
     float _rotationDegrees;
     long long _alphaHandling;
     NSIndexSet *_supportedAlphaHandlingModes;
@@ -30,6 +31,8 @@
     long long _colorSpaceOverride;
     NSIndexSet *_supportedColorSpaceOverrides;
     long long _audioSourceCount;
+    NSDictionary *_audioSourceDict;
+    NSDictionary *_videoSourceDict;
     FFProvider *_provider;
     int _quality;
     BOOL _isObservingQuality;
@@ -49,6 +52,8 @@
 - (id)init;
 - (id)initWithURL:(id)arg1 manageFileType:(int)arg2 project:(id)arg3;
 - (id)initWithURL:(id)arg1;
+- (void)rebuildAudioSourceDictWithProvider:(id)arg1;
+- (BOOL)update_addAudioSourceDict;
 - (void)_updateVideoProps:(int)arg1;
 - (BOOL)addMediaRepForURL:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 project:(id)arg4;
 - (void)dealloc;
@@ -80,6 +85,10 @@
 - (void)originalMediaRepChanged;
 - (void)organizeMediaRepIntoEvent:(id)arg1;
 @property(nonatomic) long long audioSourceCount;
+@property(readonly, nonatomic) NSDictionary *audioSourceDict;
+- (void)setAudioSourceDict:(id)arg1;
+- (long long)videoSourceCount;
+- (id)videoPropsForSourceKey:(id)arg1;
 @property(nonatomic) long long alphaHandling; // @synthesize alphaHandling=_alphaHandling;
 - (void)_establishSupportedOverrideInfo:(id)arg1 beingCalledFromInit:(BOOL)arg2;
 - (BOOL)supportsAlphaOverride;
@@ -88,13 +97,14 @@
 @property(nonatomic) long long colorSpaceOverride; // @synthesize colorSpaceOverride=_colorSpaceOverride;
 - (BOOL)supportsColorSpaceOverride;
 - (id)assetFilename;
-- (void)setIdentifierForOfflineAsset:(id)arg1;
+- (void)setMediaIdentifierForOfflineAsset:(id)arg1;
+- (BOOL)isPSD;
 - (void)purgeGeneratedMedia;
 - (void)_mainThreadInvalidate;
 - (void)deferredInvalidate;
 - (void)_invalidateProvider:(id)arg1;
 - (void)invalidate;
-- (BOOL)reconnectMedia:(id)arg1 manageFileType:(int)arg2 error:(id *)arg3;
+- (BOOL)relinkMedia:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 fileContentChanged:(BOOL)arg4 error:(id *)arg5;
 - (id)currentRep;
 - (BOOL)proxyAvailable;
 - (BOOL)originalAvailable;
@@ -125,6 +135,7 @@
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
 - (id)assets;
 - (id)assetRefs;
+- (id)clipRefs;
 - (id)fileURLs:(int)arg1;
 - (id)analysisFileURLs;
 - (id)mdMappedKeyPathForKey:(id)arg1;
@@ -135,8 +146,10 @@
 - (long long)metadataColorSpaceOverride;
 - (void)setMetadataColorSpaceOverride:(long long)arg1;
 - (CDStruct_60067b7e)audioMD5:(int)arg1;
+@property(readonly, nonatomic) NSDictionary *videoSourceDict; // @synthesize videoSourceDict=_videoSourceDict;
 @property(nonatomic) BOOL forceNoProxy; // @synthesize forceNoProxy=_forceNoProxy;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(retain, nonatomic) NSString *uttype; // @synthesize uttype=_uttype;
+@property(readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
 
 @end
 

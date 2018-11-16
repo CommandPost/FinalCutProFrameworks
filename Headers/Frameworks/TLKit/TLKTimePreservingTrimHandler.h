@@ -10,14 +10,7 @@
 {
 }
 
-- (id)_itemBeforeItem:(id)arg1;
-- (id)_itemAfterItem:(id)arg1;
-- (BOOL)_itemIsGap:(id)arg1;
-- (id)clickedItem:(id)arg1;
-- (id)partToDrag:(id)arg1;
-- (BOOL)shouldPerformRoll:(id)arg1;
 - (CDStruct_1b6d18a9)timeToKeepStatic;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 
 @end
 

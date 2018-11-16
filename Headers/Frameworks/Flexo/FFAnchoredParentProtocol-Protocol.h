@@ -11,8 +11,8 @@
 - (void)informParentContainedItemsChanged:(BOOL)arg1;
 - (void)informParentIsCompoundClipChanged;
 - (void)informParentEffectsChanged;
-- (void)informParentRolesWillChange;
-- (void)informParentRolesDidChange;
+- (void)informParentMDWillChange;
+- (void)informParentMDDidChange;
 - (long long)getFirstSetAnchoredLaneValueInParentsAndSelf:(id)arg1;
 - (CDStruct_1b6d18a9)childToParentOffsetForChild:(id)arg1;
 - (CDStruct_e83c9415)localEffectiveRange;

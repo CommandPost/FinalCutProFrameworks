@@ -16,6 +16,7 @@
 - (void)setStreamAudioFlags:(unsigned long long)arg1;
 - (void)addStreamAudioFlags:(unsigned long long)arg1;
 - (void)removeStreamAudioFlags:(unsigned long long)arg1;
+- (void)setPlayOnlyObjects:(id)arg1;
 
 @end
 

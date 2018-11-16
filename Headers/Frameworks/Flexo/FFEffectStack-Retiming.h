@@ -13,6 +13,7 @@
 - (unsigned long long)indexForRetiming;
 - (void)createRetimingFilterWithRange:(CDStruct_e83c9415)arg1;
 - (void)addRetimingFilterWithRange:(CDStruct_e83c9415)arg1;
+- (void)copyRetimeCurveToEffectStack:(id)arg1;
 - (void)resetMediaRangeInRetimigFilter;
 - (id)retimeEffect;
 - (id)retimeChannel;
@@ -39,7 +40,7 @@
 - (CDStruct_1b6d18a9)sampleDuration;
 - (void)adjustRetimeKeysAfterAddRateConform:(id)arg1 videoFormat:(id)arg2;
 - (unsigned long long)indexForRateConform;
-- (void)conformToVideoProps:(id)arg1;
+- (void)conformToVideoProps:(id)arg1 forceNoRateConformScale:(BOOL)arg2;
 - (double)constantRetimingRate;
 - (double)segmentRetimingRateAroundComponentTime:(CDStruct_1b6d18a9)arg1;
 - (double)segmentRetimingRateAtSegmentIndex:(int)arg1;

@@ -6,20 +6,25 @@
 
 #import <Flexo/FFStreamOptions.h>
 
+@class NSSet;
+
 @interface FFStreamAudioOptions : FFStreamOptions
 {
     double _sampleRate;
     unsigned int _numChannels;
     BOOL _forPlayback;
     unsigned long long _streamAudioFlags;
+    NSSet *_playOnlyObjects;
 }
 
 - (id)initWithSampleRate:(double)arg1 numChannels:(unsigned int)arg2 forPlayback:(BOOL)arg3;
 - (id)initWithAudioOptions:(id)arg1;
 - (id)initWithAudioOptionsForDescendant:(id)arg1;
+- (void)dealloc;
 - (double)sampleRate;
 - (unsigned int)numChannels;
 - (BOOL)isForPlayback;
+- (id)playOnlyObjects;
 @property(readonly, nonatomic) unsigned long long streamAudioFlags; // @synthesize streamAudioFlags=_streamAudioFlags;
 
 @end

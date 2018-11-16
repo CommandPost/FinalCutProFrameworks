@@ -5,13 +5,15 @@
 //
 
 @protocol FFEditorModuleDelegate
-- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
+- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 controlCanvas:(BOOL)arg5 showAngles:(BOOL)arg6 owner:(id)arg7;
+- (BOOL)replaceSkimmedObject:(struct NSObject *)arg1 context:(id)arg2 withSkimmable:(struct NSObject *)arg3 context:(id)arg4 effectCount:(long long)arg5 allowPlayback:(BOOL)arg6 controlCanvas:(BOOL)arg7 showAngles:(BOOL)arg8 owner:(id)arg9;
 - (void)stopSkimmingForOwner:(id)arg1;
 - (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
 - (void)pauseSkimmingForPlayback;
 - (void)startNUpViewerWithMedia:(id)arg1 contexts:(id)arg2 effectCounts:(id)arg3;
 - (void)replaceNUpMedia:(struct NSObject *)arg1 context:(id)arg2 withMedia:(struct NSObject *)arg3 context:(id)arg4;
 - (void)stopNUpViewer;
+- (BOOL)editorModuleShouldShow2UpDisplay:(id)arg1;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 loadingBlock:(CDUnknownBlockType)arg4 unloadingBlock:(CDUnknownBlockType)arg5;
@@ -29,6 +31,7 @@
 - (id)selectionOwner;
 - (void)openStack:(id)arg1;
 - (void)openColorBoardForItem:(id)arg1;
+- (void)openInspectorToSubmodule:(id)arg1;
 - (void)openAdjustmentsPanel;
 - (void)openCropPanel;
 - (void)openTransformPanel;

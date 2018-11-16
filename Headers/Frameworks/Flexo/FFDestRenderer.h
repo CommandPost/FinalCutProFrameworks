@@ -6,20 +6,20 @@
 
 #import <Flexo/FFDestVideo.h>
 
-@class FFNRTFigClock, FFRenderProps, NSArray, NSLock, NSObject<FFDestRendererLastTimeReceivedProtocol>;
+@class FFNRTFigClock, FFRenderProps, NSArray, NSLock, NSObject<FFDestRendererFrameStartingFinishingProtocol>;
 
 @interface FFDestRenderer : FFDestVideo
 {
     FFNRTFigClock *_clock;
     NSLock *_lock;
-    CDStruct_1b6d18a9 _lastTimeReceived;
     CDStruct_bdcb2b0d _lastUsedSegmentMD5;
     long long _lastUsedSegmentOffset;
     BOOL _isRunning;
     BOOL _needsUpdate;
     FFRenderProps *_renderProps;
     NSArray *_renderFilesPaths;
-    NSObject<FFDestRendererLastTimeReceivedProtocol> *_lastTimeDelegate;
+    NSObject<FFDestRendererFrameStartingFinishingProtocol> *_frameStartFinishDelegate;
+    void *_frameStartFinishDelegateContext;
 }
 
 - (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderProps:(id)arg2 renderFilesPaths:(id)arg3;
@@ -28,17 +28,17 @@
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
 - (void)setPlayer:(id)arg1;
 - (void)flush:(BOOL)arg1;
-- (CDStruct_1b6d18a9)lastTimeReceived;
-- (void)setLastTimeReceived:(CDStruct_1b6d18a9)arg1;
-- (void)setLastTimeDelegate:(id)arg1;
-- (void)start;
+- (void)startingToProcess:(CDStruct_1b6d18a9)arg1;
+- (void)finishedProcessing:(CDStruct_1b6d18a9)arg1;
+- (void)setFrameStartFinishDelegate:(id)arg1 context:(void *)arg2;
+- (void)start:(id)arg1;
 - (void)stop;
 - (BOOL)isRunning;
 - (void)_notifyPlayer;
 - (void)_updateSegmentStoreWhenWritesFinish;
 - (void)writeFrame:(id)arg1;
 - (void)pushFrame:(id)arg1;
-- (BOOL)wantsMoreFrames;
+- (int)getFrameQueueStatus;
 - (void)setNeedsUpdate:(BOOL)arg1;
 - (int)drawFieldsInterlaced;
 - (int)imageLocation;

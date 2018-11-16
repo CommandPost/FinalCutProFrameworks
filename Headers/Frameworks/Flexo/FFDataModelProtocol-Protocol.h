@@ -8,6 +8,6 @@
 
 @protocol FFDataModelProtocol <FFModelLocking>
 - (id)undoHandler;
-- (id)identifier;
+- (id)mediaIdentifier;
 @end
 

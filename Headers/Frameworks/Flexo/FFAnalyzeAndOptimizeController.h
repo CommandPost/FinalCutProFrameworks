@@ -8,7 +8,7 @@
 
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 
-@class FFRenderer, NSMutableArray, NSMutableSet;
+@class FFRenderer, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 @interface FFAnalyzeAndOptimizeController : NSObject <FFStorageLocationOutOfDiskSpaceProtocol>
 {
@@ -18,14 +18,20 @@
     BOOL _isPaused;
     BOOL _wasCancelled;
     NSMutableArray *_dests;
+    NSMutableArray *_analyzingDests;
+    NSMutableDictionary *_clipAnalysesQueue;
 }
 
 + (id)sharedInstance;
 + (void)releaseSharedInstance;
 + (unsigned int)videoCodecForURL:(id)arg1;
-+ (BOOL)_isStillImage:(id)arg1;
-+ (unsigned int)_videoCodecForClip:(id)arg1;
++ (BOOL)_isAssetStillImage:(id)arg1;
++ (unsigned int)_videoCodecForAsset:(id)arg1;
++ (BOOL)_isClipAudioOnly:(id)arg1;
++ (BOOL)_needsOptimizationForStill:(id)arg1;
++ (BOOL)_needsOptimizationForAsset:(id)arg1;
 + (BOOL)needsOptimizationForClip:(id)arg1;
++ (BOOL)_assetHasProxy:(id)arg1;
 + (BOOL)clipHasProxy:(id)arg1;
 + (BOOL)needsOptimizationForFourCharCode:(unsigned int)arg1;
 - (id)init;
@@ -45,11 +51,13 @@
 - (void)canceledTask:(id)arg1;
 - (void)analyzeAndOptimizeClipBackgroundThreadDone:(id)arg1;
 - (void)assetDone:(id)arg1;
+- (void)_analyzeAndOptimizeClipForAudio:(id)arg1;
+- (void)_analyzeAndOptimizeClip:(id)arg1;
+- (void)_assetCopyQueueCompleted:(id)arg1;
 - (void)analyzeAndOptimizeClipBackgroundThread:(id)arg1 onTask:(id)arg2;
 - (BOOL)verifyDiskSpaceAvailable:(id)arg1;
-- (void)warnAboutOutOfDiskSpace;
+- (void)warnAboutOutOfDiskSpaceWithDetails:(id)arg1;
 - (id)preflightClip:(id)arg1 withOptions:(id)arg2;
-- (void)analyzeAndOptimizeClip:(id)arg1;
 - (id)preflightForCameraClips:(id)arg1;
 - (void)analyzeAndOptimizeClips:(id)arg1 options:(id)arg2;
 - (void)stopWritingFilesToLocation:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import "FFEnhanceAudioDelegate.h"
 
-@class FFAnchoredObject, FFChannelChangeController, FFEnhanceAudioManager, FFInspectorModulePopUpButton, LKButton, NSMutableArray, NSProProgressIndicator;
+@class FFAnchoredObject, FFChannelChangeController, FFEffectStack, FFEnhanceAudioManager, FFInspectorModulePopUpButton, LKButton, NSMutableArray, NSProProgressIndicator;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioEqualizationParameterController : OZViewController <FFEnhanceAudioDelegate>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     FFAnchoredObject *_object;
     FFEnhanceAudioManager *_analysisManager;
     FFChannelChangeController *_channelChangeController;
+    FFEffectStack *_savedEffectStack;
     NSProProgressIndicator *_analysisSpinner;
     int _warningState;
     BOOL _currentlyMatching;
@@ -42,7 +43,6 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)activeToolChanged:(id)arg1;
 @property(retain, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
-@property(retain) FFEnhanceAudioManager *analysisManager; // @synthesize analysisManager=_analysisManager;
 @property(retain) FFAnchoredObject *object; // @synthesize object=_object;
 
 @end

@@ -13,7 +13,6 @@
 @interface OZRecordingOptionsPanel : NSObject <NSWindowDelegate>
 {
     LKButton *_record;
-    LKButton *_recordOnlyAnimated;
     LKButton *_recordOk;
     LKButton *_recordCancel;
     NSMatrix *_recordingOptions;
@@ -25,8 +24,6 @@
 - (void)setRecordingOptions:(int)arg1;
 - (BOOL)getRecordKeyFrames;
 - (void)setRecordKeyFrames:(BOOL)arg1;
-- (BOOL)getRecordOnlyAnimated;
-- (void)setRecordOnlyAnimated:(BOOL)arg1;
 - (void)load;
 - (void)save;
 - (id)init;

@@ -28,6 +28,7 @@
     LKTextField *_templatePathTF;
     LKPopUpButton *_saveOptionsPopup;
     LKButton *_skipPreviewsButton;
+    LKButton *_skipSavingUIButton;
 }
 
 + (id)sharedController;
@@ -55,6 +56,7 @@
 - (void)chooseTemplatePath:(id)arg1;
 - (void)generateTemplatePreviews:(id)arg1;
 - (void)skipTemplatePreviews:(id)arg1;
+- (void)skipSavingUISettings:(id)arg1;
 
 @end
 

@@ -26,6 +26,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)newInfoRetrievedFromFile:(id)arg1;
++ (id)faceDetectionInfoCollectionForAnchoredObject:(id)arg1;
++ (id)findLargestAmongFaces:(id)arg1;
++ (id)findOneLargeAndCentralAmongFaces:(id)arg1;
 - (id)init;
 - (void)dealloc;
 - (void)setFrameDurationAndGofSize:(CDStruct_1b6d18a9)arg1;
@@ -33,8 +36,12 @@ __attribute__((visibility("hidden")))
 - (int)getNumGOFsIn2min;
 - (int)getNumFramesIn2min;
 - (int)getFrameIndexForTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)getTimeForFrameIndex:(int)arg1;
 - (int)getNumberOfFacesInFrame:(int)arg1;
-- (id)getFaceDetectionInfo:(int)arg1 faceIndex:(int)arg2;
+- (id)faceDetectionInfoAt:(int)arg1 faceIndex:(int)arg2;
+- (BOOL)isFaceDetectionInfoAccurateAt:(int)arg1;
+- (id)faceDetectionInfoForLargestFaceAt:(int)arg1;
+- (id)faceDetectionInfoForOneLargeAndCentralFaceAt:(int)arg1;
 - (double)getAvgLargestFaceAreaOverFrames:(int)arg1 frameIndexEnd:(int)arg2;
 - (int)getBoundingBoxOfAllFacesInImageCoordForFrame:(int)arg1 topY:(double *)arg2 leftX:(double *)arg3 bottomY:(double *)arg4 rightX:(double *)arg5;
 - (void)addFacesForFrameAtTime:(CDStruct_1b6d18a9)arg1 faces:(id)arg2;
@@ -43,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (int)refineNumberOfFacesOverFrames:(int)arg1 frameIndexEnd:(int)arg2;
 - (void)relateFacesInAdjacentFrames:(int)arg1 frameIndexEnd:(int)arg2;
 - (void)_selectFacesToKeep;
-- (CDStruct_1b6d18a9)_getTimeForFrameIndex:(int)arg1;
 - (id)summarizeIntoRanges;
 - (void)debugLog;
 - (void)debugLog:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import "FFCurveEditorEffectDelegate.h"
 
-@class CHChannelBase, FFAnchoredTimelineModule, FFCurveEditorLayer, FFEffect, NSMutableArray;
+@class CHChannelBase, FFAnchoredTimelineModule, FFCurveEditorLayer, FFEffect, FFEffectStack, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFCurvesLayer : FFResponderLayer <FFCurveEditorEffectDelegate>
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     BOOL _topToBottom;
     BOOL _splitEdit;
     BOOL _isObserving;
+    BOOL _soloAnimation;
     BOOL _updateLayers;
     BOOL _reordering;
     BOOL _didReorder;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_reorderedEffectList;
     FFEffect *_defaultEffect;
     CHChannelBase *_defaultChannel;
+    FFEffectStack *_currentEffectStack;
     BOOL _isOverlay;
     FFAnchoredTimelineModule *_timeline;
 }
@@ -74,9 +76,14 @@ __attribute__((visibility("hidden")))
 - (void)mouseExited:(id)arg1;
 - (void)mouseMoved:(id)arg1;
 - (id)cursorAtPoint:(struct CGPoint)arg1 event:(id)arg2;
+- (BOOL)shouldAutoscroll:(id)arg1;
 - (id)effectsToDisplay;
 - (id)effectStack;
 - (id)currentItem;
+- (void)addAngleObservers;
+- (void)removeAngleObservers;
+- (BOOL)observeAngleForKey:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end
 

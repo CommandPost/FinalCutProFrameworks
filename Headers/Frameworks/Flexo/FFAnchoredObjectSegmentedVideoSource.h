@@ -6,7 +6,7 @@
 
 #import <Flexo/FFSourceVideo.h>
 
-@class NSSet;
+@class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAnchoredObjectSegmentedVideoSource : FFSourceVideo
@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     struct list<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem*, std::allocator<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem*>> _segmentMD5InfoCache;
     struct vector<FFAnchoredObjectSegmentedVideoStream*, std::allocator<FFAnchoredObjectSegmentedVideoStream*>> _openStreams;
     long long _effectCount;
-    long long _angle;
+    NSString *_videoAngle;
     long long _toLane;
     NSSet *_showOnlyObjects;
     NSSet *_roles;
+    long long _angleOffset;
+    long long _angleCount;
 }
 
 + (Class)streamClass;
@@ -28,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)nativeVideoProps;
 - (double)preferredScaleFactorForQuality:(int)arg1;
 - (void)rangeInvalidated:(id)arg1;
-- (id)initWithProvider:(id)arg1 effectCount:(long long)arg2 angle:(long long)arg3 toLane:(long long)arg4 showOnlyObjects:(id)arg5 roles:(id)arg6;
+- (id)initWithProvider:(id)arg1 effectCount:(long long)arg2 videoAngle:(id)arg3 toLane:(long long)arg4 showOnlyObjects:(id)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8;
 - (long long)effectCount;
 - (void)dealloc;
 - (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;

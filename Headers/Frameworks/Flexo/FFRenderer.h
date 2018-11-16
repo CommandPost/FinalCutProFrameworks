@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-#import "FFDestRendererLastTimeReceivedProtocol.h"
+#import "FFDestRendererFrameStartingFinishingProtocol.h"
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 
 @class FFContext, FFProvider, NSArray, NSConditionLock;
 
-@interface FFRenderer : NSObject <FFStorageLocationOutOfDiskSpaceProtocol, FFDestRendererLastTimeReceivedProtocol>
+@interface FFRenderer : NSObject <FFStorageLocationOutOfDiskSpaceProtocol, FFDestRendererFrameStartingFinishingProtocol>
 {
     FFProvider *_provider;
     NSArray *_dests;
@@ -43,11 +43,13 @@
 - (void)renderAllAndCancelAtRangeEnd:(BOOL)arg1;
 - (void)setLatestFrameTimeRendered:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)latestFrameTimeRendered;
-- (void)updateLastTimeReceived:(CDStruct_1b6d18a9)arg1;
+- (void)_blockRenderIfPaused;
+- (void)startingPushFrame:(CDStruct_1b6d18a9)arg1 whichDest:(id)arg2 context:(void *)arg3;
+- (void)finishedPushFrame:(CDStruct_1b6d18a9)arg1 whichDest:(id)arg2 context:(void *)arg3;
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (void)renderFrame:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
-- (void)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2;
-- (void)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2 storageLocationsToWatch:(id)arg3;
+- (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2;
+- (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2 storageLocationsToWatch:(id)arg3;
 - (id)player;
 - (void)_teardownPlayer;
 - (void)_rebuildPlayer;

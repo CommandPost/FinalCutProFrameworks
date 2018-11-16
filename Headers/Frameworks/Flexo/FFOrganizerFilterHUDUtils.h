@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)generateFormatInfoDictActive:(BOOL)arg1 formatInfo:(id)arg2 comparisonType:(int)arg3 searchText:(id)arg4;
 + (id)generateTextDictActive:(BOOL)arg1 comparisonType:(int)arg2 searchText:(id)arg3 hideClose:(BOOL)arg4;
 + (id)generateMediaTypeDictActive:(BOOL)arg1 comparisonType:(int)arg2 mediaType:(int)arg3;
++ (id)generateClipTypeDictActive:(BOOL)arg1 comparisonType:(int)arg2 clipType:(int)arg3;
 + (id)generateStabilizationDictActive:(BOOL)arg1 show:(BOOL)arg2;
 + (id)generateTimeDictActive:(BOOL)arg1 dateMetadataKey:(id)arg2 comparisonType:(int)arg3 timeString:(id)arg4 date:(id)arg5 timeUints:(int)arg6;
 + (id)generateRoleDictActive:(BOOL)arg1 comparisonType:(int)arg2 roleSets:(id)arg3 selectedRoles:(id)arg4;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)_performFormatInfoFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performKeywordsFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performMediaTypeFilter:(id)arg1 onRange:(id)arg2;
++ (id)_performClipTypeFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performTextFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performStabilizationFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performTimeFilter:(id)arg1 onRange:(id)arg2;

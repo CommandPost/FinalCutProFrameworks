@@ -32,12 +32,14 @@
 + (BOOL)timecodeOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
 + (BOOL)markerOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
 + (BOOL)creationDateOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
-+ (BOOL)xCorrCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3 andDownsample:(_Bool)arg4 cachedUtilB:(id *)arg5;
++ (BOOL)xCorrCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3 andDownsample:(_Bool)arg4 useNewStatistics:(_Bool)arg5 cachedUtilB:(id *)arg6;
 + (BOOL)xCorrCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3 andDownsample:(_Bool)arg4;
-+ (BOOL)xCorrPeaksCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)xCorrPeaksCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3 useNewStatistics:(_Bool)arg4;
 + (BOOL)markerCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
 + (BOOL)startingTimecodeCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
 + (BOOL)creationDateCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)synchronizeRnOByAudio:(id)arg1 referenceRnO:(id)arg2;
++ (CDStruct_1b6d18a9)synchronizeByAudio:(id)arg1 itemRange:(CDStruct_e83c9415)arg2 referenceItem:(id)arg3 referenceItemRange:(CDStruct_e83c9415)arg4 usePeaksOnly:(BOOL)arg5 confidence:(float *)arg6 cachedUtilB:(id *)arg7;
 + (void)synchronizeRnOWithAudio:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3;
 - (id)initWithRangesAndObjects:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3;
 - (void)dealloc;
@@ -47,7 +49,7 @@
 - (void)_adjustOffsetsOfItems:(id)arg1 withOffsets:(id)arg2;
 - (void)_setAnchoredPairFromDictionary:(id)arg1;
 - (void)_synchronizeWithAudio:(id)arg1 onTask:(id)arg2;
-- (void)synchronizeRnO:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3;
+- (void)synchronizeRnO:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3 withAudio:(BOOL)arg4;
 
 @end
 

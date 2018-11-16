@@ -12,10 +12,11 @@
     PCVector3_457fd1f0 _initialOffset;
 }
 
++ (void)maybeInitResources;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (void)dealloc;
 - (void)draw;
-- (struct POVertexAsset *)initAsset:(unsigned int)arg1 largeAssets:(_Bool)arg2;
+- (PCPtr_fc939811)getVertexAsset:(int)arg1;
 - (double)getPixelAspectRatio;
 - (void)calcInitialOffset;
 - (void)convertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;

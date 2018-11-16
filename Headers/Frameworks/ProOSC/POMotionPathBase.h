@@ -29,10 +29,10 @@
     _Bool _creating;
     _Bool _needsUpdate;
     _Bool _isObserving;
-    _Bool _needsAssetSetup;
     _Bool _isMovingVertices;
     _Bool _willModifyBias;
     _Bool _modifyBias;
+    _Bool _didAddPoint;
     unsigned int _constrainMove;
     _Bool _allowsSweepSelection;
     _Bool _useHUDRovingTip;
@@ -69,10 +69,6 @@
     NSMenu *_pOnPointMenu;
     NSMenu *_pOnTangentMenu;
     PCVector2_7e488b7d _menuFilmCoords;
-    struct POVertexAsset *_vertexAssets[6];
-    PCPtr_ca909b16 _tangentAsset;
-    PCPtr_ca909b16 _handleFill;
-    PCPtr_ca909b16 _handleFillSelected;
     NSColor *_playerStatusText;
     NSColor *_playerStatusTextUnit;
     struct POPath _path;
@@ -91,9 +87,10 @@
     NSTimer *_keySnapTimer;
 }
 
++ (void)maybeInitResources;
++ (PCPtr_ca909b16)getTangentImage;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (void)dealloc;
-- (void)setupAssets;
 - (struct OZChannelPosition3D *)getPosition;
 - (int)hitCheck:(id)arg1;
 - (int)hitCheckPoint:(const PCVector2_7e488b7d *)arg1;
@@ -162,8 +159,7 @@
 - (_Bool)setVisible:(_Bool)arg1;
 - (_Bool)largeAssets;
 - (void)setLargeAssets:(_Bool)arg1;
-- (struct POVertexAsset *)initAsset:(unsigned int)arg1 largeAssets:(_Bool)arg2;
-- (PCPtr_ca909b16)getTangentImage;
+- (PCPtr_fc939811)getVertexAsset:(int)arg1;
 - (void)clipPoints:(const vector_8d17e539 *)arg1 visible:(vector_69938c0b *)arg2;
 - (void)updateKeypoints;
 - (BOOL)sameKeyPoint:(struct POPathSelection *)arg1 keyPoint:(const struct POKeypoint *)arg2;
@@ -178,6 +174,7 @@
 - (void)drawSelectionRect;
 - (void)moveSelected:(list_5245b10b *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
 - (BOOL)offsetSelected:(list_5245b10b *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
+- (BOOL)offsetCurve:(list_5245b10b *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
 - (void)makeXYZKeypoints:(struct POPathSelection *)arg1 pU:(CDStruct_1b6d18a9 *)arg2 pVX:(double *)arg3 pVY:(double *)arg4 pVZ:(double *)arg5;
 - (void)getKeypoint:(CDStruct_1b6d18a9)arg1 prevPoint:(struct POPathSelection *)arg2;
 - (void)getPreviousKeypoint:(CDStruct_1b6d18a9)arg1 prevPoint:(struct POPathSelection *)arg2;
@@ -224,6 +221,7 @@
 - (CDStruct_1b6d18a9)getVertexUInfo:(CDStruct_1b6d18a9)arg1;
 - (BOOL)canAddVertex;
 - (void)updateSpeedCurve;
+- (BOOL)allowsCurveOffset;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 

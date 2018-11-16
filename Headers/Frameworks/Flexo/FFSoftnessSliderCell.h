@@ -16,6 +16,9 @@ __attribute__((visibility("hidden")))
     FFColorSecondaryEffect *_colorSecondaryEffect;
     FFChannelChangeController *_changeController;
     CHChannelDouble *_softnessChannel;
+    struct {
+        unsigned int hasOpenTransaction:1;
+    } _state;
 }
 
 - (id)init;

@@ -8,7 +8,7 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class FFProject, NSButton, NSInvocation, NSMatrix, NSPopUpButton, NSString, NSTextField, NSView;
+@class FFProject, NSBox, NSButton, NSInvocation, NSMatrix, NSPopUpButton, NSString, NSTextField, NSView;
 
 @interface FFAnchoredSequenceSettingsModule : FFSettingsModule <NSTextFieldDelegate>
 {
@@ -20,22 +20,41 @@
     NSPopUpButton *renderFormatMenu;
     NSPopUpButton *sampleRateMenu;
     NSPopUpButton *channelCountMenu;
+    NSPopUpButton *multiAngleSyncByMenu;
+    NSPopUpButton *multiAngleArrangeByMenu;
+    NSPopUpButton *multiAngleOrderByMenu;
+    NSButton *multiAngleFineSyncByAudio;
+    NSBox *multiAngleBox;
     NSMatrix *videoModeMatrix;
     NSMatrix *audioModeMatrix;
     NSButton *timecodeDisplayDropFrame;
     NSTextField *startingTimecode;
+    NSView *customSettingsGroup;
+    NSView *defaultEventSettingsGroup;
+    NSView *multiAngleAudioSyncSettingsGroup;
+    NSView *multiAngleSettingsGroup;
+    NSView *timecodeSettingsGroup;
     NSView *videoSettingsGroup;
     NSView *audioSettingsGroup;
     NSView *videoSettingsCustomControls;
     NSView *audioSettingsCustomControls;
+    NSView *multiAngleSettingsCustomControls;
+    NSTextField *videoPropsSummaryField;
+    NSTextField *commonVideoPropField;
+    NSTextField *defaultAudioPropField;
     unsigned long long _videoSetPropertyMethod;
     BOOL _changeSettingsBecauseFirstClipNotRecognized;
+    BOOL _forceToCustomizeVideoProperty;
+    BOOL _mixedTCTracksClockTime;
+    BOOL _automaticBasedOnMostCommon;
+    BOOL _createAutomatically;
     FFProject *_project;
     NSInvocation *_completionCallback;
     NSString *_startTimeString;
 }
 
-+ (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 videoSetPropertyManually:(BOOL)arg9 audioSetPropertyManually:(BOOL)arg10;
++ (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 videoSetPropertyManually:(BOOL)arg9 audioSetPropertyManually:(BOOL)arg10 createAutomatically:(int)arg11 multiAngleSyncBy:(int)arg12 multiAngleArrangeBy:(int)arg13 multiAngleOrderBy:(int)arg14 multiAngleFineSyncByAudio:(int)arg15;
+- (id)initWithProvider:(id)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (BOOL)modifySequenceSettings;
@@ -46,8 +65,13 @@
 - (void)setProject:(id)arg1;
 - (BOOL)isNewProject;
 - (BOOL)createCompoundClip;
+- (BOOL)createMultiAngleClip;
 - (BOOL)isEmptyProject;
+- (BOOL)inCreationMode;
 - (void)setCompletionCallback:(id)arg1;
+- (void)setForceToCustomizeVideoProperty:(BOOL)arg1;
+- (void)setAutomaticBasedOnMostCommon:(BOOL)arg1;
+- (void)setMixedTCTracksClockTime:(BOOL)arg1;
 - (void)_setStartingTimecode:(CDStruct_1b6d18a9)arg1 timeString:(id)arg2 frameDuration:(CDStruct_1b6d18a9)arg3;
 - (void)_updateStartingTimecodeWithFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)_updateTimecodeDisplay;
@@ -59,14 +83,22 @@
 - (void)_buildFormatMenuBasedOnCurrentRate;
 - (void)_buildSizeMenuBasedOnCurrentRateAndFormat;
 - (void)_buildRateMenuBasedOnCurrentRateAndFormatAndSize;
+- (void)toggleCreationSettings;
+- (BOOL)createAutomatically;
+- (void)_configCreationSettings;
 - (BOOL)loadView;
 - (void)changeDefaultMediaEvent:(id)arg1;
 - (void)changeSetPropertyMethod:(id)arg1;
 - (void)setAudioSettingsMode:(id)arg1;
+- (void)setCustomSettingsHidden:(BOOL)arg1;
+- (void)setDefaultEventSettingsHidden:(BOOL)arg1;
+- (void)setMultiAngleAudioSyncSettingsHidden:(BOOL)arg1;
+- (void)setMultiAngleSettingsHidden:(BOOL)arg1;
 - (void)setVideoManualSettingsHidden:(BOOL)arg1;
 - (void)setVideoModeMatrixHidden:(BOOL)arg1;
 - (void)setAudioManualSettingsHidden:(BOOL)arg1;
 - (void)setAudioModeMatrixHidden:(BOOL)arg1;
+- (void)changeSyncByForMultiAngle:(id)arg1;
 - (void)changeVideoRate:(id)arg1;
 - (void)changeVideoFormat:(id)arg1;
 - (void)changeVideoSize:(id)arg1;

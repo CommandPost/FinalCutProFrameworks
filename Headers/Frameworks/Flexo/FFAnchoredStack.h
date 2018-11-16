@@ -56,6 +56,7 @@
 - (id)firstAudioAnchoredComponent;
 - (id)containedItems;
 - (id)topLevelContainedItems;
+- (id)topLevelAllContainedItems;
 - (id)containedItemAtTime:(CDStruct_1b6d18a9)arg1;
 - (id)descendentCompositedObjects;
 - (void)insertObject:(id)arg1 inContainedItemsAtIndex:(unsigned long long)arg2;
@@ -84,8 +85,8 @@
 - (BOOL)isAudioOnlyCollection;
 - (BOOL)isCollection;
 - (BOOL)isComponent;
+- (int)multiAngleDetail;
 - (BOOL)supportsDropFrame;
-- (BOOL)isMultiCam;
 - (void)_setDeferUpdates:(BOOL)arg1;
 - (BOOL)_deferUpdates;
 - (void)_processDeferredUpdates;
@@ -111,6 +112,7 @@
 - (CDStruct_e83c9415)audioClippedRange;
 - (void)setClippedRangeAudio:(CDStruct_e83c9415)arg1;
 - (CDStruct_e83c9415)unclippedRange;
+- (CDStruct_1b6d18a9)unclippedStart;
 - (CDStruct_e83c9415)anchoredItemsRange;
 - (CDStruct_e83c9415)combinedAudioVideoClippedRange;
 - (BOOL)audioClippedRangeValid;
@@ -129,7 +131,7 @@
 - (BOOL)hasRateConform;
 - (BOOL)hasRateConformScale;
 - (CDStruct_1b6d18a9)localToRateConformedTime:(CDStruct_1b6d18a9)arg1 withTargetSampleDuration:(CDStruct_1b6d18a9)arg2;
-- (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 clippedByContainer:(BOOL)arg7;
+- (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (id)newProvider;
 - (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
 - (id)newProviderWithEffectCount:(long long)arg1;

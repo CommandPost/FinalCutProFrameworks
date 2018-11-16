@@ -31,10 +31,11 @@ __attribute__((visibility("hidden")))
     FFProject *_project;
     int _thumbQuality;
     long long _effectCount;
+    BOOL _useAudioPeaksAvailable;
 }
 
 - (struct CGImage *)dummyImage;
-- (id)initWithSkimmable:(struct NSObject *)arg1 imageTimeRange:(CDStruct_e83c9415)arg2 imageSize:(struct CGSize)arg3 requestAudio:(BOOL)arg4 target:(id)arg5 imageReadySelector:(SEL)arg6 requestTimeType:(int)arg7 constrainedTimeRange:(CDStruct_e83c9415)arg8 highPriority:(BOOL)arg9 effectCount:(long long)arg10;
+- (id)initWithSkimmable:(struct NSObject *)arg1 imageTimeRange:(CDStruct_e83c9415)arg2 imageSize:(struct CGSize)arg3 requestAudio:(BOOL)arg4 target:(id)arg5 imageReadySelector:(SEL)arg6 requestTimeType:(int)arg7 constrainedTimeRange:(CDStruct_e83c9415)arg8 highPriority:(BOOL)arg9 useAudioPeaksAvailable:(BOOL)arg10 effectCount:(long long)arg11;
 - (id)initWithSegmentStoreMD5:(id)arg1 segmentStoreOffset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4;
 - (void)dealloc;
 - (oneway void)release;

@@ -15,8 +15,10 @@
     unsigned long long _length;
 }
 
++ (id)indexPathWithString:(id)arg1;
 + (id)indexPathWithIndex:(unsigned long long)arg1;
 + (id)indexPathWithIndexes:(unsigned long long *)arg1 length:(unsigned long long)arg2;
+- (id)stringValue;
 - (id)_initWithIndexesPtr:(unsigned long long *)arg1 length:(unsigned long long)arg2;
 - (id)initWithIndexes:(unsigned long long *)arg1 length:(unsigned long long)arg2;
 - (id)initWithIndex:(unsigned long long)arg1;
@@ -31,6 +33,7 @@
 - (unsigned long long)indexAtPosition:(unsigned long long)arg1;
 - (unsigned long long)length;
 - (void)getIndexes:(unsigned long long *)arg1;
+- (unsigned long long)lastIndex;
 - (long long)compare:(id)arg1;
 - (id)description;
 - (BOOL)isEqual:(id)arg1;

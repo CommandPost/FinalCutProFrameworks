@@ -21,7 +21,10 @@ __attribute__((visibility("hidden")))
 - (void)sequenceSoloedClips:(id)arg1 didChange:(id)arg2;
 - (void)_updateEditedSequenceForPlayback;
 - (void)sequenceEditing:(id)arg1 didChange:(id)arg2;
+- (void)simulateSequenceEdited:(id)arg1;
+- (void)audioAngle:(id)arg1 didChange:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5 installSequenceObservers:(BOOL)arg6;
 - (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
 - (void)setRate:(double)arg1;
 - (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3;

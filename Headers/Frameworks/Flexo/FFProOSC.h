@@ -10,7 +10,7 @@
 #import "POObjectDelegate.h"
 #import "POViewDelegate.h"
 
-@class FFCHRootChannel, FFChannelChangeController, FFHeCropEffect, FFHeDistortEffect, FFHeMultiCamEffect, FFHeliumXFormEffect, NSCursor, NSString, POOnScreenControl;
+@class FFCHRootChannel, FFChannelChangeController, FFHeCropEffect, FFHeDistortEffect, FFHeliumXFormEffect, NSCursor, NSString, POOnScreenControl;
 
 @interface FFProOSC : FFComponentOSC <POHostDelegate, POViewDelegate, POObjectDelegate>
 {
@@ -24,7 +24,6 @@
     FFHeliumXFormEffect *_transform;
     FFHeCropEffect *_crop;
     FFHeDistortEffect *_distort;
-    FFHeMultiCamEffect *_multiCam;
     unsigned long long _nodeIndex;
     unsigned long long _numEffects;
     struct PCUUID _id;
@@ -55,7 +54,6 @@
 - (id)findTransformEffect:(id)arg1;
 - (id)findCropEffect:(id)arg1;
 - (id)findDistortEffect:(id)arg1;
-- (id)findMultiCamEffect:(id)arg1;
 - (void)_autokeyframeChangedNotification:(id)arg1;
 - (int)isAutoKeframingEnabled;
 - (_Bool)isTransformAnimated;
@@ -112,6 +110,7 @@
 - (BOOL)has3DObjects;
 - (BOOL)applyFlatten;
 - (const struct OZRenderState *)renderState;
+- (void)setIgnoreTransformationsForElement:(struct OZTransformNode *)arg1;
 - (double)getSceneWidth;
 - (double)getSceneHeight;
 - (double)pixelAspectRatio;
@@ -219,7 +218,6 @@
 - (id)transform;
 - (void)setEffect:(id)arg1;
 - (id)crop;
-- (id)multiCam;
 - (struct OZChannelBase *)getChannel;
 - (struct OZChannelBase *)getSceneChannelRoot;
 - (void)willDeleteChannel:(struct OZChannelBase *)arg1;

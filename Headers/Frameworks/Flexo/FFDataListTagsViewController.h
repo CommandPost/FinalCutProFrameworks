@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)selectedIndexes;
 - (BOOL)isRowSelected:(long long)arg1;
 - (id)selectedKeywordMarkers;
-- (void)displayDataListPlayheadAtIndex:(long long)arg1 andPosition:(int)arg2;
+- (void)displayDataListPlayheadAtIndex:(long long)arg1 andPosition:(int)arg2 animate:(BOOL)arg3;
 - (id)nameForItem:(id)arg1;
 - (void)setName:(id)arg1 forItem:(id)arg2;
 - (id)startTimecodeForItem:(id)arg1;

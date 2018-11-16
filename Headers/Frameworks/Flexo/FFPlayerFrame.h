@@ -19,6 +19,7 @@
     double _rate;
     BOOL _viewed;
     BOOL _isErrorFrame;
+    BOOL _isBlankFrame;
     FFTextureBuffer *_overlayTexture;
     NSMapTable *_drawProperties;
 }
@@ -31,16 +32,19 @@
 - (id)overlayTexture;
 - (void)setViewed;
 - (BOOL)viewed;
+- (void)setImage1:(id)arg1;
+- (void)setImage2:(id)arg1;
+- (id)image1;
+- (id)image2;
 - (id)description;
 - (void)dealloc;
-@property(readonly) CDStruct_1b6d18a9 nativeFrameDur; // @synthesize nativeFrameDur=_nativeFrameDur;
-@property(readonly) struct CGRect bounds; // @synthesize bounds=_bounds;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 nativeFrameDur; // @synthesize nativeFrameDur=_nativeFrameDur;
+@property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
+@property BOOL isBlankFrame; // @synthesize isBlankFrame=_isBlankFrame;
 @property BOOL isErrorFrame; // @synthesize isErrorFrame=_isErrorFrame;
-@property(readonly) double rate; // @synthesize rate=_rate;
-@property(retain) FFImage *image2; // @synthesize image2=_image2;
-@property(retain) FFImage *image1; // @synthesize image1=_image1;
-@property(readonly) CDStruct_1b6d18a9 timeRepresented; // @synthesize timeRepresented=_timeRepresented;
-@property(readonly) CDStruct_1b6d18a9 time; // @synthesize time=_time;
+@property(readonly, nonatomic) double rate; // @synthesize rate=_rate;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 timeRepresented; // @synthesize timeRepresented=_timeRepresented;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 
 @end
 

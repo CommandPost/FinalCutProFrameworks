@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFDestAudio, FFDestVideo, FFPlayer, NSCountedSet, NSHashTable, NSSet, NSTimer;
+@class FFDestAudio, FFDestVideoCMIO, FFPlayer, NSCountedSet, NSHashTable, NSSet, NSTimer;
 
 @interface FFContext : NSObject
 {
@@ -26,7 +26,7 @@
     int _rangeChanged;
     FFPlayer *_player;
     FFDestAudio *_audioDest;
-    FFDestVideo *_cmioDest;
+    FFDestVideoCMIO *_cmioDest;
     unsigned long long _streamAudioFlags;
     NSSet *_showObjects;
     NSSet *_roles;
@@ -38,7 +38,7 @@
     float _preScrubbingPlaybackRate;
     CDStruct_e83c9415 _preScrubbingPlaybackLoopRange;
     BOOL _isSkimming;
-    int _stepPlaybackCount;
+    BOOL _inStepPlayback;
     BOOL shouldTakeFocusOnLoad;
     BOOL _scrubEnteredLOMode;
     BOOL _showMagicFrame;
@@ -49,6 +49,7 @@
     unsigned long long _meterObserverCount;
     NSTimer *_meteringTimer;
     BOOL _notificationsDisabled;
+    long long _numDraftTextModeRequests;
 }
 
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -92,8 +93,10 @@
 - (void)loopRangeEndReached:(double)arg1;
 - (void)setPlayer:(id)arg1;
 - (id)player;
+- (void)objectRequestsDraftTextMode:(BOOL)arg1;
 - (void)makePlayerForProvider:(id)arg1 playAudio:(BOOL)arg2 hasHardwareOut:(BOOL)arg3;
 - (void)makePlayerForProvider:(id)arg1 playAudio:(BOOL)arg2 hasHardwareOut:(BOOL)arg3 forRender:(BOOL)arg4;
+- (BOOL)videoOutActive;
 - (void)doneUsingPlayer:(id)arg1;
 - (void)_teardownPlayer;
 - (void)beginScrubbing:(CDStruct_1b6d18a9)arg1;
@@ -102,14 +105,16 @@
 - (BOOL)isSkimming;
 - (void)beginSkimming;
 - (void)endSkimming;
+- (void)resumeSkimming;
 - (void)_maybeStartSkimming;
 - (void)beginStepPlayback:(CDStruct_1b6d18a9)arg1;
-- (void)endStepPlayback:(BOOL)arg1;
+- (void)endStepPlayback;
 - (BOOL)isAudioPlaybackOn;
 - (void)notifyAudioPlaybackStateChanged;
 - (void)setStopOnDroppedFrame:(BOOL)arg1;
 - (BOOL)stopOnDroppedFrame;
 - (void)notifyStoppedDueToDroppedFrame:(id)arg1;
+- (void)notifyPlayCompletedWithDrops:(id)arg1;
 - (BOOL)showMagicFrame;
 - (void)setShowMagicFrame:(BOOL)arg1;
 - (BOOL)deferSelectionOSCUpdate;

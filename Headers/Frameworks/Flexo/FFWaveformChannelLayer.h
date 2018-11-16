@@ -14,11 +14,15 @@ __attribute__((visibility("hidden")))
     struct FFVideoScopesWaveformViewPrivate *_waveformContext;
     long long _viewMode;
     unsigned long long _option;
+    float _traceBrightness;
+    _Bool _monochrome;
     CDStruct_69458254 _action_opt;
 }
 
 - (id)init;
 - (void)dealloc;
+- (void)setTraceBrightness:(float)arg1;
+- (void)setMonochrome:(BOOL)arg1;
 - (void)setWaveformContext:(struct FFVideoScopesWaveformViewPrivate *)arg1;
 - (void)setViewMode:(long long)arg1;
 - (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;

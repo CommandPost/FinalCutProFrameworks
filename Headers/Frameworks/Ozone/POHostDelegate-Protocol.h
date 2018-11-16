@@ -11,6 +11,7 @@
 - (PCVector3_457fd1f0)filmCoords3DForEvent:(id)arg1;
 - (CDStruct_1b6d18a9)getTime;
 - (const struct OZRenderState *)renderState;
+- (void)setIgnoreTransformationsForElement:(struct OZTransformNode *)arg1;
 - (double)pixelAspectRatio;
 - (double)getSceneWidth;
 - (double)getSceneHeight;

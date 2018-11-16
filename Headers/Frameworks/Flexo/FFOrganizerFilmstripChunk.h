@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     FFFilmstripSelectionLayer *_selectionLayer;
     CALayer *_stackBadgeLayer;
     CALayer *_compoundClipBadgeLayer;
+    CALayer *_multiCamClipBadgeLayer;
+    CALayer *_psdClipBadgeLayer;
     NSMutableDictionary *_markerRangeToLayerMap;
     NSMutableArray *_rangeLayers;
     FFFilmstripBezelLayer *_bezelLayer;
@@ -29,6 +31,8 @@ __attribute__((visibility("hidden")))
     NSArray *_selection;
     BOOL _shouldShowStackBadges;
     BOOL _shouldShowComposedBadge;
+    BOOL _shouldShowMultiCamBadge;
+    BOOL _shouldShowPSDBadge;
     int _clipLabelSize;
     BOOL _hasAudio;
     BOOL _hasVideo;
@@ -47,6 +51,8 @@ __attribute__((visibility("hidden")))
 - (void)setSelectedRangesOfMedia:(id)arg1;
 @property(nonatomic) BOOL shouldShowStackBadges; // @synthesize shouldShowStackBadges=_shouldShowStackBadges;
 @property(nonatomic) BOOL shouldShowComposedBadge; // @synthesize shouldShowComposedBadge=_shouldShowComposedBadge;
+@property(nonatomic) BOOL shouldShowMultiCamBadge; // @synthesize shouldShowMultiCamBadge=_shouldShowMultiCamBadge;
+@property(nonatomic) BOOL shouldShowPSDBadge; // @synthesize shouldShowPSDBadge=_shouldShowPSDBadge;
 - (void)updateKeywordsInRange:(CDStruct_e83c9415)arg1;
 @property NSArray *keywordRanges;
 - (void)updateMarkersInRange:(CDStruct_e83c9415)arg1;

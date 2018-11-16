@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)setSequence:(id)arg1;
 - (void)_createFacets;
+- (void)_add:(id)arg1 toUniqueSet:(id)arg2;
+- (void)_intersect:(id)arg1 usingIdsIn:(id)arg2;
 @property(retain, nonatomic) FFMediaEventProject *project; // @synthesize project=_project;
 - (void)setAssetRef:(id)arg1;
 - (void)useLargeFacet;

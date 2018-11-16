@@ -12,7 +12,6 @@
 {
     OZViewController *_blendingCtrl;
     OZViewController *_opacityCtrl;
-    OZViewController *_lineSpacingCtrl;
 }
 
 - (void)_resizeRowCtrl:(id)arg1 width:(double)arg2;
@@ -21,7 +20,6 @@
 - (void)buildUIWithObjectList:(list_2c251165 *)arg1 viewController:(id)arg2 context:(id)arg3;
 - (void)notify:(unsigned int)arg1;
 - (_Bool)useGlyphTool;
-@property(retain, nonatomic) OZViewController *lineSpacingCtrl; // @synthesize lineSpacingCtrl=_lineSpacingCtrl;
 @property(retain, nonatomic) OZViewController *blendingCtrl; // @synthesize blendingCtrl=_blendingCtrl;
 @property(retain, nonatomic) OZViewController *opacityCtrl; // @synthesize opacityCtrl=_opacityCtrl;
 

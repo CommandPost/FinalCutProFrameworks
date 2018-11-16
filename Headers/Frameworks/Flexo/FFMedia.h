@@ -44,7 +44,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)newProvider;
 - (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2 roles:(id)arg3;
+- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
 - (id)newProviderWithEffectCount:(long long)arg1;
 - (id)videoProps;
 - (void)setTimecodeDisplayDropFrame:(long long)arg1;
@@ -84,13 +84,18 @@
 - (BOOL)hasAudio;
 - (void)setHasAudio:(BOOL)arg1;
 - (BOOL)isStill;
+- (BOOL)isPSD;
 - (id)description;
 - (CDStruct_1b6d18a9)videoSampleDuration;
 - (CDStruct_1b6d18a9)videoFrameDuration;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
+- (id)mediaIdentifier;
+- (id)originalMediaURL;
 - (id)assets;
 - (id)assetRefs;
+- (id)clipRefs;
+- (id)mediaRefs;
 - (id)fileURLs:(int)arg1;
 - (id)rootChannel;
 - (BOOL)validateMetadataItem:(id)arg1;
@@ -104,6 +109,7 @@
 - (id)metadataVideoSampleRate;
 - (id)metadataVideoFrameRate;
 - (id)metadataAudioChannelCount;
+- (id)metadataAudioChannelConfig;
 - (id)metadataAudioFormat;
 - (long long)compareMediaForDisplayName:(id)arg1;
 - (id)descriptionWithIndent:(long long)arg1;

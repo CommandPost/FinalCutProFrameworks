@@ -17,6 +17,7 @@
     BOOL _transient;
     BOOL _takeFocusOnLoad;
     BOOL _preferAudio;
+    BOOL _allowsAngleViewer;
     id _owner;
     CDUnknownBlockType _loadingBlock;
     CDUnknownBlockType _unloadingBlock;
@@ -31,6 +32,7 @@
 - (CDUnknownBlockType)unloadingBlock;
 - (id)description;
 @property(nonatomic) BOOL takeFocusOnLoad; // @synthesize takeFocusOnLoad=_takeFocusOnLoad;
+@property(nonatomic) BOOL allowsAngleViewer; // @synthesize allowsAngleViewer=_allowsAngleViewer;
 @property(nonatomic) BOOL preferAudio; // @synthesize preferAudio=_preferAudio;
 @property(nonatomic) BOOL transient; // @synthesize transient=_transient;
 @property(readonly, retain, nonatomic) id owner; // @synthesize owner=_owner;

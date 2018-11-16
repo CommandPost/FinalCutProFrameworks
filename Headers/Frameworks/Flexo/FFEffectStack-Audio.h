@@ -9,6 +9,7 @@
 @interface FFEffectStack (Audio)
 - (id)matchEffect:(_Bool)arg1;
 - (id)humRemovalEffect:(_Bool)arg1;
+- (id)loudEffect:(_Bool)arg1;
 - (id)eqEffect:(_Bool)arg1;
 - (id)dynamicsEffect:(_Bool)arg1;
 - (id)voiceMatchEffect:(_Bool)arg1;

@@ -70,12 +70,14 @@ __attribute__((visibility("hidden")))
 - (void)syncCatalog:(id)arg1 allowSave:(BOOL)arg2;
 - (void)syncCatalog:(id)arg1;
 - (void)syncCatalogIfNecessary;
+- (void)syncCatalogIfPossible;
 - (void)catalogNeedsUpdate:(id)arg1;
 - (void)catalogNeedsSave:(id)arg1;
 - (void)canCloseDocumentWithDelegate:(id)arg1 shouldCloseSelector:(SEL)arg2 contextInfo:(void *)arg3;
 - (void)updateChangeCount:(unsigned long long)arg1;
 - (void)beginUndoContext:(id)arg1;
 - (void)endUndoContext:(id)arg1;
+- (void)setDeferSyncCatalogIfNecessary:(BOOL)arg1;
 - (BOOL)createCatalogStore:(id)arg1 error:(id *)arg2;
 - (BOOL)readFromURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
 - (BOOL)writeToURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;

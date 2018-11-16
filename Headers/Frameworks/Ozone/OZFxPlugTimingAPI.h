@@ -23,6 +23,7 @@
 - (double)durationOfInputAToTransition:(id)arg1;
 - (double)durationOfInputBToTransition:(id)arg1;
 - (double)durationOfImageParm:(unsigned int)arg1 forEffect:(id)arg2;
+- (id)_motionEffectSequence;
 - (unsigned long long)timelineFpsNumeratorForEffect:(id)arg1;
 - (unsigned long long)timelineFpsDenominatorForEffect:(id)arg1;
 - (double)inPointOfTimelineForEffect:(id)arg1;

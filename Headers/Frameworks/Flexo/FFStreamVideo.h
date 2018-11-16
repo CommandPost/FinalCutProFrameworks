@@ -15,6 +15,7 @@
     BOOL _finishedThumbSave;
 }
 
++ (struct CGRect)computeROI:(id)arg1 forSquared:(BOOL)arg2 full:(BOOL)arg3 quality:(int)arg4;
 - (id)initWithSource:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
 - (void)dealloc;
 - (id)videoProps;
@@ -47,7 +48,6 @@
 - (id)newForcedGPURenderedThumbnail:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 pixelFormat:(id)arg5;
 - (id)newSquaredFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 quality:(int)arg2 temporalQuality:(int)arg3 bypassSegmentStore:(BOOL)arg4 returnImageMD5:(id *)arg5;
 - (id)newFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3;
-- (struct CGRect)computeROIforSquared:(BOOL)arg1 full:(BOOL)arg2 quality:(int)arg3;
 - (id)newPTforRequestSquared:(BOOL)arg1 field:(unsigned int)arg2 quality:(int)arg3 Ydown:(BOOL)arg4;
 
 @end

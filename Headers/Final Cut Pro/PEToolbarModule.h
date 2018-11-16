@@ -126,7 +126,6 @@
 - (void)toggleMatchColor:(id)arg1;
 - (void)toggleMatchAudio:(id)arg1;
 - (void)toggleColorBoard:(id)arg1;
-- (void)saveAsReferenceFrame:(id)arg1;
 - (void)toggleEnhanceAudio:(id)arg1;
 - (void)audioMetersControlClick:(id)arg1;
 - (void)revealMediaBrowserModeFromTag:(id)arg1;
@@ -189,10 +188,10 @@
 - (void)timeRateChangedForContext:(id)arg1;
 - (void)updatePlayheadLabel;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)colorBoardVisibiltyChanged:(id)arg1;
 - (void)playerScopesVisibilityChanged:(id)arg1;
 - (void)shouldOpenColorBoard:(id)arg1;
 - (void)shouldOpenAudioEnhance:(id)arg1;
+- (void)toggleAudioCleanup:(id)arg1;
 
 @end
 

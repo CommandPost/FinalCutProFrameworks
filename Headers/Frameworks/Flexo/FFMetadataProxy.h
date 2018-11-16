@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)validateValue:(id *)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (id)valueForKey:(id)arg1;
+- (id)unlockedValueForKey:(id)arg1;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
 - (id)valueForKeyPath:(id)arg1;
 @property(retain, nonatomic) NSMutableDictionary *mappedKeyPaths; // @synthesize mappedKeyPaths=_mappedKeyPaths;

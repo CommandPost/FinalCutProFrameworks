@@ -20,6 +20,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithThemeFacet:(id)arg1;
 - (id)buildSublayers;
 - (void)setMenu:(id)arg1;
+- (void)configureNormal;
+- (void)configureRollover;
+- (void)configurePressed;
+- (void)configureInactive;
+- (void)configureDisabled;
+- (void)configureEmphasized;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
 @property struct CGSize bottomLeftMargin; // @synthesize bottomLeftMargin=_bottomLeftMargin;

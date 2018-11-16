@@ -6,53 +6,44 @@
 
 #import "CALayer.h"
 
-@class NSDictionary, NSMutableArray;
+@class NSDictionary;
 
 @interface TLKItemBackgroundLayer : CALayer
 {
     int _itemType;
     int _avContainmentType;
     double _textSize;
-    NSMutableArray *_roundingLayers;
-    NSMutableArray *_shadowRoundingLayers;
-    NSMutableArray *_darkRoundingLayers;
-    NSMutableArray *_shadowLayers;
-    NSDictionary *_mappingTable;
+    CALayer *_shadowLayer;
     CALayer *_rootLayer;
-    CALayer *_headerTitleOnlyLayer;
-    CALayer *_headerLayer;
-    CALayer *_minimizedHeaderLayer;
-    CALayer *_videoLayer;
-    CALayer *_audioLayer;
-    CALayer *_videoVideoOnlyLayer;
-    CALayer *_minimizedVideoLayer;
-    CALayer *_minimizedAudioLayer;
-    CALayer *_minimizedBodyLayer;
-    CALayer *_transitionGlossLayer;
-    CALayer *_transitionRollTargetingLayer;
-    CALayer *_transitionHeaderOnlyRollTargetingLayer;
-    CALayer *_transitionHeaderLeadingEdgeLayer;
-    CALayer *_transitionHeaderTrailingEdgeLayer;
-    CALayer *_transitionHeaderOnlyLeadingEdgeLayer;
-    CALayer *_transitionHeaderOnlyTrailingEdgeLayer;
-    CALayer *_transitionHeaderOnlyGlyph;
+    NSDictionary *_mappingTable;
+    CALayer *_backgroundLayer;
+    CALayer *_backgroundFillLayer;
+    CALayer *_backgroundGlossLayer;
+    CALayer *_backgroundInnerGlossLayer;
     CALayer *_transitionHeaderGlyph;
+    CALayer *_transitionRollTargetingLayer;
     CALayer *_transitionLeadingRollTargetingLayer;
     CALayer *_transitionTrailingRollTargetingLayer;
-    CALayer *_transitionHeaderOnlyLeadingRollTargetingLayer;
-    CALayer *_transitionHeaderOnlyTrailingRollTargetingLayer;
+    CALayer *_transitionLeadingEdgeLayer;
+    CALayer *_transitionTrailingEdgeLayer;
+    CALayer *_leadingEdgeVideoStitchingLayer;
+    CALayer *_trailingEdgeVideoStitchingLayer;
+    CALayer *_leadingEdgeAudioStitchingLayer;
+    CALayer *_trailingEdgeAudioStitchingLayer;
     struct {
         unsigned int sourceSplitEdit:1;
         unsigned int splitEdit:1;
-        unsigned int forceVisualUpdate:1;
         unsigned int spineItem:1;
         unsigned int leadingEdgeAllowedOperation:1;
         unsigned int trailingEdgeAllowedOperation:1;
-        unsigned int focused:1;
-        unsigned int RESERVED:25;
+        unsigned int rollTargetingPartHidden:1;
+        unsigned int leadingEdgePartHidden:1;
+        unsigned int trailingEdgePartHidden:1;
+        unsigned int RESERVED:24;
     } _tlkItemBackgroudflags;
 }
 
++ (void)initialize;
 + (double)cornerRadiusForWidth:(double)arg1;
 + (double)itemHeaderHeight;
 + (double)itemHeaderOnlyHeight;
@@ -64,10 +55,8 @@
 @property BOOL splitEdit;
 @property BOOL sourceSplitEdit;
 @property BOOL spineItem;
-@property BOOL focused;
-@property(readonly) CALayer *audioLayer;
+- (void)_updateAppearanceType:(int)arg1 withMask:(int)arg2;
 @property double textSize;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
 - (void)addSublayer:(id)arg1;

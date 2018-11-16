@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)buildLayers;
 - (void)teardownLayers;
 - (void)awakeFromNib;
+- (void)viewDidUnhide;
 - (void)removeFromSuperview;
 - (void)setZoomFactor:(float)arg1;
 - (void)mouseDown:(id)arg1;

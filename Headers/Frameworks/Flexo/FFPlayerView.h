@@ -81,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)doCommandBySelector:(SEL)arg1;
 - (BOOL)multipleSelection;
 - (void)dragWentIdle;
+- (void)_fullscreenHideCursor:(id)arg1;
 - (void)mouseMoved:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 - (void)mouseExited:(id)arg1;

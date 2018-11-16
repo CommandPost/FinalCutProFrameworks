@@ -16,12 +16,13 @@
     BOOL _pathIsSinglePoint;
 }
 
++ (int)largeAssetFlagToIndex:(_Bool)arg1;
++ (void)maybeInitResources:(_Bool)arg1;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (void)dealloc;
 - (id)getCursorWithEvent:(id)arg1 addCursor:(BOOL)arg2;
 - (unsigned int)getPathActivePart;
 - (void)update;
-- (struct POVertexAsset *)initAsset:(unsigned int)arg1 largeAssets:(_Bool)arg2;
 - (id)motionPathOSCColor;
 - (BOOL)okToDraw;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
@@ -31,6 +32,7 @@
 - (BOOL)sameKeyPoint:(struct POPathSelection *)arg1 keyPoint:(const struct POKeypoint *)arg2;
 - (void)drawCurve:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2 keyPoints:(BOOL)arg3;
 - (void)drawPath;
+- (PCPtr_fc939811)getVertexAsset:(int)arg1;
 - (_Bool)getSamples:(const PCMatrix44Tmpl_e98c85ee *)arg1;
 - (void)getLocalToWorld:(PCMatrix44Tmpl_e98c85ee *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
 - (void)getWorldToLocal:(PCMatrix44Tmpl_e98c85ee *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
@@ -38,6 +40,7 @@
 - (void)addVertexAtTime:(CDStruct_1b6d18a9)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 handleX:(void **)arg5 handleY:(void **)arg6 handleZ:(void **)arg7;
 - (id)controlPointInfoString;
 - (CDStruct_1b6d18a9)getVertexUInfo:(CDStruct_1b6d18a9)arg1;
+- (BOOL)allowsCurveOffset;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import "NSButton.h"
 
-@class CBPuckController;
+@class FFCBPuckController;
 
 __attribute__((visibility("hidden")))
 @interface FFColorBoardPuckButton : NSButton
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowPositionAnimation;
     struct CGPoint _mouseDownPoint;
     struct CGPoint _mouseDownOffset;
-    CBPuckController *_puckController;
+    FFCBPuckController *_puckController;
 }
 
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)removeViewFromPuckController;
 - (BOOL)hasFocus;
 - (void)setFocus:(BOOL)arg1;
-@property(retain, nonatomic) CBPuckController *puckController; // @synthesize puckController=_puckController;
+@property(retain, nonatomic) FFCBPuckController *puckController; // @synthesize puckController=_puckController;
 @property(nonatomic) struct CGPoint mouseDownOffset; // @synthesize mouseDownOffset=_mouseDownOffset;
 @property(nonatomic) struct CGPoint mouseDownPoint; // @synthesize mouseDownPoint=_mouseDownPoint;
 @property(nonatomic) BOOL allowPositionAnimation; // @synthesize allowPositionAnimation=_allowPositionAnimation;

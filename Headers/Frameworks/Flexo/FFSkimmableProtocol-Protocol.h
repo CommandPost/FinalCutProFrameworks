@@ -8,7 +8,7 @@
 - (id)newProvider;
 - (id)newProviderWithEffectCount:(long long)arg1;
 - (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2 roles:(id)arg3;
+- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
 - (id)displayName;
 - (CDStruct_e83c9415)mediaRange;
 - (BOOL)hasAudio;

@@ -15,9 +15,6 @@
     NSMutableArray *_effects;
     FFEffect *_soleOpEffect;
     NSData *_cacheMaskChannels;
-    struct {
-        unsigned int shouldPostEffectsChangedNotification:1;
-    } _state;
 }
 
 + (void)registerEffects;
@@ -26,11 +23,17 @@
 - (id)initWithEffectID:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
+@property(readonly, nonatomic) NSArray *effects; // @dynamic effects;
+@property(readonly, nonatomic) FFEffect *soleOpEffect; // @dynamic soleOpEffect;
+@property(readonly, nonatomic) NSData *colorCacheMaskChannels; // @dynamic colorCacheMaskChannels;
 - (void)addEffect:(id)arg1;
 - (void)removeEffect:(id)arg1;
 - (id)effectOfEffectID:(id)arg1;
 - (id)effectOfEffectID:(id)arg1 ofIndex:(unsigned long long)arg2;
 - (id)effectForChannel:(id)arg1;
+- (unsigned long long)indexOfEffect:(id)arg1;
+- (BOOL)canReorderChannel:(id)arg1;
+- (void)moveEffect:(id)arg1 toIndex:(unsigned long long)arg2;
 - (BOOL)effectIsNoOp:(id)arg1;
 - (void)resetAll;
 - (id)document;
@@ -98,10 +101,13 @@
 - (void)didInsertChannel:(id)arg1 intoFolder:(id)arg2 inEffect:(id)arg3 atIndex:(unsigned long long)arg4;
 - (void)willRemoveChannel:(id)arg1 fromFolder:(id)arg2 inEffect:(id)arg3 atIndex:(unsigned long long)arg4;
 - (void)didRemoveChannel:(id)arg1 fromFolder:(id)arg2 inEffect:(id)arg3 atIndex:(unsigned long long)arg4;
+- (void)didMoveChannel:(id)arg1 inFolder:(id)arg2 inEffect:(id)arg3 toIndex:(unsigned long long)arg4;
+- (void)didSetFlag:(unsigned long long)arg1 onChannel:(id)arg2;
 - (void)didResetFlag:(unsigned long long)arg1 onChannel:(id)arg2;
 - (unsigned long long)preferedSubEffectIndexForEffect:(id)arg1;
 - (BOOL)isEffectInsertable:(id)arg1;
 - (BOOL)isEffectRemovable:(id)arg1;
+- (BOOL)isEffectReorderable:(id)arg1;
 - (void)createEffectFolderInFolder:(id)arg1 forEffect:(id)arg2;
 - (void)removeEffectFolderInFolder:(id)arg1 forEffect:(id)arg2;
 - (unsigned long long)numberOfInstancesForEffect:(id)arg1;
@@ -116,10 +122,9 @@
 - (void)maskIntrinsicFolderChanged:(id)arg1;
 - (unsigned int)_nextAvailableShapeChannelIDForMaskIntrinsicFolder:(id)arg1;
 - (id)_shapeChannelNameForMaskIntrinsicFolder:(id)arg1;
+- (id)intrinsicChannelForEffect:(id)arg1;
 - (id)indexedName:(id)arg1 withFolder:(id)arg2;
-@property(readonly, nonatomic) NSData *colorCacheMaskChannels; // @synthesize colorCacheMaskChannels=_cacheMaskChannels;
-@property(readonly, nonatomic) FFEffect *soleOpEffect; // @synthesize soleOpEffect=_soleOpEffect;
-@property(readonly, nonatomic) NSArray *effects; // @synthesize effects=_effects;
+- (id)balanceIntrinsicChannel;
 
 @end
 

@@ -6,6 +6,7 @@
 
 @protocol MIOProducerProtocol
 - (CDStruct_15084369 *)producerCallbacks;
+- (struct CMIOStreamScheduledOutputNotificationProcAndRefCon *)scheduledOutputNotificationProcAndRefcon;
 - (int)setCMIORequestRenderCallbackAndRefCon:(struct CMIORequestRenderCallbackAndRefCon *)arg1;
 @end
 

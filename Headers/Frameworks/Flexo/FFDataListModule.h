@@ -77,6 +77,7 @@
 - (id)startTimecodeForItem:(id)arg1;
 - (id)imageForItem:(id)arg1;
 - (BOOL)isItem:(id)arg1 containedInItem:(id)arg2;
+- (BOOL)isTimeLineInMultiAngleEditMode;
 - (id)sharedImageWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
 - (id)imageWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
 - (id)imageWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3 dimension2:(long long)arg4 fromTheme:(unsigned long long)arg5 state:(long long)arg6 value:(long long)arg7 variant:(long long)arg8;

@@ -9,12 +9,13 @@
 #import "FFAnchoredSequenceSettingsModuleDelegate.h"
 #import "NSAnimationDelegate.h"
 
-@class FFSettingsModule, NSView;
+@class FFSettingsModule, NSButton, NSView;
 
 @interface PEProviderSettingsWindow : NSWindowController <FFAnchoredSequenceSettingsModuleDelegate, NSAnimationDelegate>
 {
     FFSettingsModule *module;
     NSView *settingsView;
+    NSButton *automaticCustomSettingsButtons;
     BOOL _undoSetup;
     BOOL _ignoreModuleFrameChanges;
 }
@@ -22,6 +23,7 @@
 - (id)initWithSettingsModule:(id)arg1;
 - (void)dealloc;
 - (id)currentProjectSequence;
+- (void)_setupAutomaticCustomSettingsButton;
 - (void)_resizeToFitModule;
 @property(retain) FFSettingsModule *module;
 - (void)animationDidEnd:(id)arg1;
@@ -30,6 +32,7 @@
 - (void)acceptSettings:(id)arg1;
 - (void)cancelSettings:(id)arg1;
 - (void)didEndSheet:(id)arg1 returnCode:(int)arg2 contextInfo:(void *)arg3;
+- (void)changeAutomaticCustomSettings:(id)arg1;
 
 @end
 

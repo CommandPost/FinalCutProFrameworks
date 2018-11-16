@@ -45,7 +45,8 @@
 - (void)cancel:(id)arg1;
 - (void)save:(id)arg1;
 - (void)selectUnused:(id)arg1;
-- (void)replaceDropZonesForDocument:(id)arg1 clear:(BOOL)arg2;
+- (vector_77d837c3)replaceDropZonesForDocument:(id)arg1;
+- (void)undoReplaceDropZonesForDocument:(id)arg1 lockedDropZoneIDs:(vector_77d837c3)arg2;
 - (void)generatePosterFrameForDocument:(id)arg1 name:(id)arg2 size:(struct CGSize)arg3;
 - (void)generatePosterFramesForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;
 - (void)generateQuicktimePreviewForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;

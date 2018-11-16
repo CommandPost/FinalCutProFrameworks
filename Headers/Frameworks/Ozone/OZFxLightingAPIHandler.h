@@ -14,6 +14,7 @@
     BOOL _lightAccessValid;
     struct OZRenderParams _renderParams;
     struct LiLightSet *_lights;
+    int _refCount;
 }
 
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;

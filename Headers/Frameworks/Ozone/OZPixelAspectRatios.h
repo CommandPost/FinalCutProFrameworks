@@ -18,8 +18,8 @@
 - (int)numRatios;
 - (id)nameForIndex:(int)arg1;
 - (id)nameForRatio:(float)arg1;
-- (float)ratioForIndex:(int)arg1;
-- (int)indexForRatio:(float)arg1;
+- (double)ratioForIndex:(int)arg1;
+- (int)indexForRatio:(double)arg1;
 
 @end
 

@@ -27,7 +27,6 @@
     int _edgeType;
     int _resolutionMode;
     CDStruct_1b6d18a9 _additionalOffset;
-    CDStruct_1b6d18a9 _previousPlayheadTime;
     NSMutableSet *_leadingEdgesToIgnore;
     NSMutableSet *_trailingEdgesToIgnore;
     NSMutableSet *_leadingEdges;
@@ -108,6 +107,7 @@
 - (id)_clipsAnchoredToClip:(id)arg1;
 - (id)_clipsInStoryline:(id)arg1;
 - (CDStruct_e83c9415)_timeRangeOfClip:(id)arg1;
+- (CDStruct_e83c9415)_timeRangeLimitsOfClip:(id)arg1;
 - (CDStruct_e83c9415)_audioTimeRangeOfClip:(id)arg1;
 - (int)_temporalResolutionForClip:(id)arg1;
 - (BOOL)_clipHasSplitAudio:(id)arg1;

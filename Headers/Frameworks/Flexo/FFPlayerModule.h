@@ -21,6 +21,7 @@
     NSMutableArray *_playerItems;
     BOOL _allowsHardwareMonitor;
     BOOL _usesCMIO;
+    BOOL _deviceListIsBuilding;
     BOOL _stopPlayingIsDown;
     BOOL _fastForwardIsDown;
     BOOL _rewindIsDown;
@@ -62,6 +63,7 @@
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)moduleViewWasInstalled:(id)arg1;
+- (void)moduleDidUnhide;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)viewDidLoad;
 - (struct CGSize)viewMinSize;
@@ -83,6 +85,8 @@
 - (void)setUsesCMIO:(BOOL)arg1;
 - (BOOL)allowsHardwareMonitor;
 - (void)setAllowsHardwareMonitor:(BOOL)arg1;
+- (BOOL)deviceListIsBuilding;
+- (void)setDeviceListIsBuilding:(BOOL)arg1;
 @property(nonatomic, getter=isPlaying) BOOL playing;
 - (void)updatePlayerOnSampleBoundary;
 @property(readonly, nonatomic) FFPlayer *player;
@@ -141,6 +145,8 @@
 - (void)endScrubbing:(BOOL)arg1 resumePlayback:(BOOL)arg2;
 - (void)beginSkimming;
 - (void)endSkimming;
+- (BOOL)isSkimming;
+- (void)resumeSkimming;
 - (void)up:(id)arg1;
 - (void)down:(id)arg1;
 - (void)playAroundCurrentFrameInViewer:(id)arg1;
@@ -149,6 +155,9 @@
 - (id)inspectorClassName;
 - (id)selectedItems;
 - (void)appWillTerminate:(id)arg1;
+- (void)deviceListIsBuilding:(id)arg1;
+- (void)deviceListIsDone:(id)arg1;
+- (void)newHardwarePlayerAvailable:(id)arg1;
 - (void)_teardownPlayer;
 - (void)_rebuildPlayer;
 - (void)_rebuildPlayerWithDrawingSuspension;
@@ -157,6 +166,8 @@
 - (void)videoRolesChangedForContext:(id)arg1;
 - (void)_reportDrop:(id)arg1;
 - (void)stoppedDueToDroppedFrameForContext:(id)arg1 dropInfo:(id)arg2;
+- (void)_maybeReportAtPlaybackCompleted:(id)arg1;
+- (void)playCompletedWithDropsForContext:(id)arg1 info:(id)arg2;
 - (void)_conformStartAndDuration;
 - (void)sequenceFormatChanged:(id)arg1;
 - (void)providerRangeInvalidation:(id)arg1;
@@ -167,7 +178,6 @@
 - (void)_playWithRate:(float)arg1;
 - (void)_stepToTime:(CDStruct_1b6d18a9)arg1;
 - (void)scrubToTime:(CDStruct_1b6d18a9)arg1;
-- (void)_maybeEndStepPlayback;
 - (void)_endStepPlayback;
 - (id)undoManager;
 - (BOOL)validateUserInterfaceItem:(id)arg1;

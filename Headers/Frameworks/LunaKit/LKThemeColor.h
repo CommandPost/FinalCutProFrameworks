@@ -98,6 +98,7 @@
 + (id)globalTextEngraveInactive;
 + (id)globalTextPressed;
 + (id)globalTextRollover;
++ (id)globalTextSecondary;
 + (id)globalTextSelected;
 + (id)globalTextShadow;
 + (id)gradientButtonNormalBrightColor;

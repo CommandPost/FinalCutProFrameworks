@@ -56,6 +56,7 @@
     struct OZChannelPercent *_mixSlider;
     BOOL _postAddParameters;
     BOOL _hasPointParam;
+    BOOL _isNewGradientColorize;
 }
 
 - (id)initWithBaseChannel:(struct OZChannelFolder *)arg1;
@@ -195,6 +196,7 @@
 - (void)setIsRendering:(BOOL)arg1;
 - (BOOL)isRendering;
 - (vector_807f2fe4 *)customParameterList;
+- (void)setIsNewGradientColorize:(BOOL)arg1;
 - (void)getPointChannel:(struct OZChannel **)arg1 nearestPoint:(PCVector2_79efa81a)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (BOOL)hasPointParameters;
 - (PCRect_b601f9f3)getBoundsFromSceneNode:(struct OZSceneNode *)arg1 withRenderParams:(struct OZRenderParams *)arg2;

@@ -6,21 +6,30 @@
 
 #import "NSProPreferencesModule.h"
 
-@class NSMatrix, NSPopUpButton, NSProSegmentedScrubber, NSTextField;
+@class LKButton, NSButton, NSMatrix, NSPopUpButton, NSProSegmentedScrubber, NSTextField;
 
 @interface PEAppPlaybackandRenderPreferencesModule : NSProPreferencesModule
 {
     NSMatrix *_qualityMatrix;
     NSTextField *_qualityLabel;
     NSPopUpButton *_qualityPopup;
+    NSPopUpButton *_avDevicePopup;
+    NSTextField *_avDeviceLabel;
+    NSTextField *_transcodingLabel;
+    NSButton *_optimizedMediaButton;
     NSProSegmentedScrubber *_prerollScrubber;
     NSProSegmentedScrubber *_postrollScrubber;
+    LKButton *_createOptimizedForMulticamClipsCheckBox;
+    BOOL _avPopupAvailable;
 }
 
 - (void)awakeFromNib;
+- (void)dealloc;
+- (void)newOutputDevicesAvailable:(id)arg1;
 - (id)titleForIdentifier:(id)arg1;
 - (void)selectPlaybackMedia:(id)arg1;
 - (void)selectPlaybackQuality:(id)arg1;
+- (void)selectAVOutputDevice:(id)arg1;
 
 @end
 

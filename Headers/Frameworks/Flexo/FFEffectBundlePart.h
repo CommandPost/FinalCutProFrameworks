@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_effects;
     NSArray *_effectBundleSnapshots;
-    NSArray *_defaultEffectBundleData;
+    NSArray *_effectsDefaultData;
     NSString *_name;
     double _defaultValue;
     NSSet *_unriggedChannelIndexPaths;
@@ -26,12 +26,15 @@ __attribute__((visibility("hidden")))
     NSArray *_effectChannels;
     NSMutableSet *_bundleSnapshotsObservingUpdateList;
     NSArray *_cachedSnapshotChannels;
+    int _effectBundleEncodingOptions;
+    int _missingElements;
 }
 
 + (id)copyClassDescription;
 - (id)initWithName:(id)arg1 effects:(id)arg2 defaultValue:(double)arg3;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_generateEffectsDefaultDataWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(retain, nonatomic) CHChannelDouble *amountChannel; // @synthesize amountChannel=_channel;
@@ -44,13 +47,18 @@ __attribute__((visibility("hidden")))
 - (void)setEffects:(id)arg1;
 - (id)effectBundleSnapshots;
 - (void)setEffectBundleSnapshots:(id)arg1;
-- (id)defaultEffectBundleData;
-- (void)setDefaultEffectBundleData:(id)arg1;
+- (id)effectsDefaultData;
+- (void)setEffectsDefaultData:(id)arg1;
 - (id)unriggedChannelIndexPaths;
 - (void)setUnriggedChannelIndexPaths:(id)arg1;
 - (id)modifiedEffectsIndexList;
 - (void)setModifiedEffectsIndexList:(id)arg1;
+@property(nonatomic) int effectBundleEncodingOptions; // @synthesize effectBundleEncodingOptions=_effectBundleEncodingOptions;
+- (void)setEffectBundlePartMissingElements:(int)arg1;
+- (int)effectBundlePartMissingElements;
 - (void)updateRiggedChannels;
+- (void)importSnapshotValuesFromBundlePart:(id)arg1;
+- (void)importEffectsDefaultDataFromBundlePart:(id)arg1;
 - (void)insertObject:(id)arg1 inEffectsAtIndex:(unsigned long long)arg2;
 - (void)removeObjectFromEffectsAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inEffectBundleSnapshotsAtIndex:(unsigned long long)arg2;
@@ -58,15 +66,19 @@ __attribute__((visibility("hidden")))
 - (id)name;
 - (void)setName:(id)arg1;
 - (void)createEffectChannelsInFolder:(id)arg1 atIndex:(int)arg2;
-- (void)_resetEffect:(id)arg1 modifiedEffectsIndexList:(id)arg2;
+- (void)deleteEffectChannels;
+- (void)_resetEffect:(id)arg1 modifiedEffectsIndexList:(id)arg2 reloadEffect:(BOOL)arg3;
 - (void)resetEffect:(id)arg1;
-- (void)resetBundlePart:(BOOL)arg1;
+- (void)resetBundlePart:(BOOL)arg1 reloadEffect:(BOOL)arg2;
 - (void)unrigChannel:(id)arg1 unrig:(BOOL)arg2;
 - (BOOL)isChannelUnrigged:(id)arg1;
 - (BOOL)isBundlePartModified;
 - (BOOL)isBundlePartEffectModified:(id)arg1;
-- (void)saveCurrentEffectBundleDataAsDefault;
 - (void)setModifiedStateForEffectChannel:(id)arg1;
+- (void)loadEffects:(id)arg1;
+- (void)loadEffects;
+- (void)unloadEffects;
+- (BOOL)effectsLoaded;
 - (id)_findEffectForChannel:(id)arg1;
 - (id)observedObjectForChannel:(id)arg1;
 - (id)subEffectForChannel:(id)arg1;
@@ -74,6 +86,8 @@ __attribute__((visibility("hidden")))
 - (void)sender:(id)arg1 endChannelChange:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)sender:(id)arg1 willSetChannel:(id)arg2 toValue:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)initFromXMLElement:(id)arg1;
+- (id)exportAsXMLElement;
 @property(retain, nonatomic) NSArray *effectChannels; // @synthesize effectChannels=_effectChannels;
 @property(nonatomic) double defaultValue; // @synthesize defaultValue=_defaultValue;
 

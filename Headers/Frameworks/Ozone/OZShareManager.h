@@ -22,7 +22,7 @@
     CALayer *_panelLayer;
     _Bool _renderingSelected;
     _Bool _resetSoloFlag;
-    struct vector<unsigned int, std::allocator<unsigned int>> _soloedNodeIDs;
+    vector_77d837c3 _soloedNodeIDs;
 }
 
 + (id)sharedInstance;

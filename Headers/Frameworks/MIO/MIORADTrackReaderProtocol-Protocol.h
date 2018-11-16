@@ -33,5 +33,6 @@
 - (struct CGSize)dimensions;
 - (BOOL)excludeFromAutoSelection;
 - (BOOL)isSelfContained;
+- (BOOL)setUseTimingOffset:(BOOL)arg1;
 @end
 

@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)mouseExited:(id)arg1;
 - (id)cursorAtPoint:(struct CGPoint)arg1 event:(id)arg2;
 - (void)flagsChanged:(id)arg1;
+- (BOOL)shouldAutoscroll:(id)arg1;
 - (id)contextMenuForPart:(id)arg1;
 - (struct CGPoint)mouseLocationInLayer;
 - (struct CGPoint)eventLocationInLayer:(id)arg1;

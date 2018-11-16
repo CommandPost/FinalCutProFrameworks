@@ -8,25 +8,36 @@
 
 #import "TLKPartInfo.h"
 
-@class CALayer, TLKContainerHandleLayer;
+@class CALayer, NSArray, TLKContainerHandleLayer, TLKTextLayer, TLKThemeBackedLayer;
 
 @interface TLKContainerLayer : TLKTimelineLayer <TLKPartInfo>
 {
     CALayer *_contentLayer;
     TLKContainerHandleLayer *_handleLayer;
+    TLKTextLayer *_textLayer;
+    TLKThemeBackedLayer *_dragHandlelayer;
+    NSArray *_badgeArray;
+    unsigned int _titlePresent:1;
+    unsigned int _hideTextBadges:1;
 }
 
-- (id)initWithTimelineView:(id)arg1;
 - (void)dealloc;
 - (void)invalidate;
 - (void)_updateSelectionAppearance;
 - (void)updateAppearance;
+- (id)handleLayer;
 @property BOOL hasHandleLayer;
+@property BOOL hasTitleLayer;
+@property BOOL hideTextBadges;
 @property(retain) CALayer *contentLayer;
+- (void)_layoutBadgesAndTextInVisibleBounds:(struct CGRect)arg1;
 - (void)layoutSublayers;
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)partIdentifier;
+- (struct CGRect)rectForPart:(id)arg1;
+- (id)layoutRegionAtPoint:(struct CGPoint)arg1;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)textLayer;
 
 @end
 

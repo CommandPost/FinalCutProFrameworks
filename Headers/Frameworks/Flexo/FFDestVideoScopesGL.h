@@ -6,15 +6,12 @@
 
 #import <Flexo/FFDestVideoGL.h>
 
-@class FFReducedRateTracker;
-
 __attribute__((visibility("hidden")))
 @interface FFDestVideoScopesGL : FFDestVideoGL
 {
     struct CGColorSpace *_cs;
     BOOL _useR4FL;
     void *_FFDestVideoScopesGLPrivate;
-    FFReducedRateTracker *_reducedRateTracker;
 }
 
 - (id)initWithDisplayID:(unsigned int)arg1 andCGLContext:(struct _CGLContextObject *)arg2 usingCoreAnimation:(BOOL)arg3;
@@ -29,10 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)setDelegate:(id)arg1;
 - (void)_drawMissingImageAtTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
 - (void)_drawImages:(id)arg1 forRate:(double)arg2 clockTime:(CDStruct_1b6d18a9)arg3;
-- (void)pushFrame:(id)arg1;
-- (void)skippedFrame:(CDStruct_1b6d18a9)arg1;
-- (_Bool)shouldSkipFrame:(CDStruct_1b6d18a9)arg1 playRate:(double)arg2;
-- (void)setLastHealthMetric:(float)arg1;
 - (id)_initDestVideoScopesGLPriv;
 
 @end

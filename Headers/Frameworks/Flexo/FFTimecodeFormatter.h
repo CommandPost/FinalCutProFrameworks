@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 + (void)releaseSharedInstance;
++ (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 fromFrameDuration:(CDStruct_1b6d18a9)arg2 fromDropFrame:(long long)arg3 toFrameDuration:(CDStruct_1b6d18a9)arg4 toDropFrame:(long long)arg5;
 - (void)_FFTimecodeFormatter_init;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

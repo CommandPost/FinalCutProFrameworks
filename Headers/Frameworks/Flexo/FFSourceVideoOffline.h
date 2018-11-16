@@ -6,12 +6,15 @@
 
 #import <Flexo/FFSourceVideo.h>
 
+@class FFVideoProps;
+
 __attribute__((visibility("hidden")))
 @interface FFSourceVideoOffline : FFSourceVideo
 {
     CDStruct_1b6d18a9 _start;
     CDStruct_1b6d18a9 _duration;
     CDStruct_bdcb2b0d _uniqueMD5;
+    FFVideoProps *_videoProps;
 }
 
 + (id)type;
@@ -20,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)setStart:(CDStruct_1b6d18a9)arg1;
 - (void)setDuration:(CDStruct_1b6d18a9)arg1;
+- (void)setVideoProps:(id)arg1;
 - (CDStruct_e83c9415)timeRange;
 - (id)nativeVideoProps;
 - (CDStruct_1b6d18a9)timecodeOffset;

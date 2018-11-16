@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)syncToSelectedIndexes:(id)arg1;
 - (void)syncToDisplayedItemsType:(long long)arg1;
 - (id)selectedIndexes;
-- (void)displayDataListPlayheadAtIndex:(long long)arg1 andPosition:(int)arg2;
+- (void)displayDataListPlayheadAtIndex:(long long)arg1 andPosition:(int)arg2 animate:(BOOL)arg3;
 - (BOOL)supportsSearch;
 @property(retain, nonatomic) FFDataListModule *dataListModule; // @synthesize dataListModule=_dataListModule;
 

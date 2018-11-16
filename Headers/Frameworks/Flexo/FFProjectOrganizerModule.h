@@ -9,7 +9,7 @@
 #import "FFSharableContent.h"
 #import "NSMenuDelegate.h"
 
-@class FFOutlineContainerView, FFPlayerModule, FFProjectFolder, FFProjectOrganizerFilmstrip, FFShareHelper, LKButton, LinenBackground, NSArray, NSDateFormatter;
+@class FFOutlineContainerView, FFPlayerModule, FFProjectFolder, FFProjectOrganizerFilmstrip, FFShareHelper, LKButton, LinenBackground, NSArray, NSDateFormatter, NSInvocation;
 
 @interface FFProjectOrganizerModule : FFSidebarModule <FFSharableContent, NSMenuDelegate>
 {
@@ -26,6 +26,7 @@
     NSArray *_draggedIndexPaths;
     FFShareHelper *_shareHelper;
     id _objectForContextualMenu;
+    NSInvocation *_delaySkimmingInvocation;
 }
 
 + (double)projectRowHeight;
@@ -65,6 +66,7 @@
 - (id)outlineView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)outlineView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (BOOL)outlineView:(id)arg1 mouseDownForRowAtIndexPath:(id)arg2 withEvent:(id)arg3;
+- (void)_setupDelayedSkimming:(id)arg1 delay:(double)arg2;
 - (void)_delayedBeginSkimming:(id)arg1;
 - (void)outlineViewSelectionDidChange:(id)arg1;
 - (id)outlineView:(id)arg1 defaultSelectedRowIndexPaths:(id)arg2;
@@ -96,6 +98,7 @@
 - (void)newSmartFolder:(id)arg1;
 - (void)editSmartFolder:(id)arg1;
 - (void)consolidateFiles:(id)arg1;
+- (void)relinkFiles:(id)arg1;
 - (void)duplicate:(id)arg1;
 - (void)consolidateProject:(id)arg1;
 - (void)exportXML:(id)arg1;

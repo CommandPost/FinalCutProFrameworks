@@ -27,6 +27,10 @@
 - (vector_2735d0ca)results;
 - (BOOL)canSearchInSequence;
 - (id)_getTextEffectFromAnchoredObject:(id)arg1;
+- (void)rLock;
+- (void)rUnlock;
+- (void)wLock;
+- (void)wUnlock;
 - (id)getCurrentTextObject;
 - (CDStruct_1b6d18a9)getCurrentTime;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;

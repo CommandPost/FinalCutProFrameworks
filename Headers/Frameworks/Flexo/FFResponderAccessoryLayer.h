@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)exitRollover:(id)arg1;
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (void)flagsChanged:(id)arg1;
+- (BOOL)shouldAutoscroll:(id)arg1;
 - (BOOL)performKeyEquivalent:(id)arg1;
 - (id)_accessibilityParent;
 - (id)accessibilityAttributeNames;

@@ -16,6 +16,7 @@
 + (BOOL)isSnowflakeGeneratorReplacement:(id)arg1;
 + (id)snowflakeGeneratorParent:(id)arg1;
 + (BOOL)isSnowflakeGeneratorOldVersion:(id)arg1;
++ (BOOL)groupContainsValidPlugins:(id)arg1;
 + (void)buildTreeWithRoot:(id)arg1;
 + (void)buildImageUnitTreeWithRoot:(id)arg1;
 - (id)initWithParent:(id)arg1 name:(id)arg2 factory:(struct OZFactory *)arg3;

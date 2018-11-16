@@ -19,6 +19,7 @@
 - (unsigned long long)draggingEntered:(id)arg1;
 - (unsigned long long)draggingUpdated:(id)arg1;
 - (void)draggingExited:(id)arg1;
+- (BOOL)shouldCollapseAutoExpandedItemsForDeposited:(BOOL)arg1;
 - (void)draggedImage:(id)arg1 endedAt:(struct CGPoint)arg2 operation:(unsigned long long)arg3;
 - (void)keyDown:(id)arg1;
 - (void)mouseDown:(id)arg1;

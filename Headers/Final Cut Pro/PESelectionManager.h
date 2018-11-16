@@ -31,6 +31,7 @@
 - (void)setViewedClips:(id)arg1;
 - (void)pushViewedClips:(id)arg1;
 - (void)popViewedClips;
+- (void)replaceViewedClips:(id)arg1 withViewedClips:(id)arg2;
 - (void)removeAnyClipSetContainingObject:(id)arg1;
 @property(readonly) FFAnchoredObject *timelineRootItem;
 @property(readonly) FFContext *timelineContext;

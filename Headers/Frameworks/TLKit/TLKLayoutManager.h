@@ -11,7 +11,6 @@
 @interface TLKLayoutManager : NSObject
 {
     TLKTimelineView *_timelineView;
-    CALayer *_layer;
     struct CGRect _bounds;
     NSMutableSet *_managedItems;
     id <TLKTimelineItem> _container;
@@ -37,6 +36,7 @@
 - (void)dealloc;
 - (id)layoutDatabase;
 @property(readonly, nonatomic) BOOL precisionEditorLayoutMode;
+@property(readonly, retain, nonatomic) CALayer *layer;
 - (id)managedItems;
 - (void)setManagedItems:(id)arg1;
 - (void)addManagedItemsObject:(id)arg1;
@@ -61,6 +61,7 @@
 - (struct CGRect)calculatedFrameForItem:(id)arg1;
 - (struct CGRect)_calculatedBounds;
 - (void)_performHorizontalLayoutForSortedItems:(id)arg1;
+@property(retain, nonatomic) TLKLayoutMetrics *layoutMetrics; // @synthesize layoutMetrics=_layoutMetrics;
 - (void)_showUsedRects:(id)arg1;
 - (void)_performVerticalLayoutForAnchoredItems:(id)arg1 aboveSpine:(BOOL)arg2 usedRects:(id)arg3;
 - (void)_performVerticalLayoutForSplitItems:(id)arg1 usedRects:(id)arg2;
@@ -78,10 +79,8 @@
 - (struct CGRect)anchorRegionAboveSpine;
 - (struct CGRect)anchorRegionBelowSpine;
 - (BOOL)isZeroHeightSpine;
-- (struct _TLKRange)_locationRangeForNonLinearTime:(CDStruct_1b6d18a9)arg1 occurringInTimelineItems:(id)arg2;
-- (double)_locationForNonLinearTime:(CDStruct_1b6d18a9)arg1 inTimelineItem:(id)arg2;
-- (id)topLevelItemsAtTime:(CDStruct_1b6d18a9)arg1;
-- (struct _TLKRange)_locationRangeForNonLinearTime:(CDStruct_1b6d18a9)arg1;
+- (id)spineItemsAtTime:(CDStruct_1b6d18a9)arg1;
+- (BOOL)_needsTimecodeAdjustmentHack;
 - (struct _TLKRange)_locationRangeForLinearTime:(CDStruct_1b6d18a9)arg1;
 - (struct _TLKRange)locationRangeForTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)timeFromLocation:(double)arg1;
@@ -104,9 +103,7 @@
 @property(retain, nonatomic) TLKContainerSegmentTable *segmentTableAboveSpine; // @synthesize segmentTableAboveSpine=_segmentTableAboveSpine;
 @property(readonly, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 @property(readonly, retain, nonatomic) id <TLKTimelineItem> container; // @synthesize container=_container;
-@property(retain, nonatomic) TLKLayoutMetrics *layoutMetrics; // @synthesize layoutMetrics=_layoutMetrics;
 @property(nonatomic) BOOL keepsDraggedItemsVerticallyFixed; // @synthesize keepsDraggedItemsVerticallyFixed=_keepsDraggedItemsVerticallyFixed;
-@property(readonly, retain, nonatomic) CALayer *layer; // @synthesize layer=_layer;
 @property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 
 @end

@@ -10,18 +10,19 @@
 
 @class NSArray, NSDictionary;
 
-__attribute__((visibility("hidden")))
 @interface FFEffectBundleSnapshot : FFBaseDSObject <NSCopying>
 {
     NSArray *_effectValues;
     double _value;
     NSDictionary *_modifiedEffectValues;
+    int _effectBundleEncodingOptions;
 }
 
 + (id)copyClassDescription;
 + (id)snapshotIndexPathForChannel:(id)arg1 inEffects:(id)arg2;
 + (id)channelForSnapshotIndexPath:(id)arg1 inEffects:(id)arg2;
 - (id)initWithEffects:(id)arg1 value:(double)arg2;
+- (id)initWithValue:(double)arg1 usingIndexPaths:(id)arg2 inSnapshot:(id)arg3;
 - (void)dealloc;
 - (id)_mutableCopyDeep:(id)arg1;
 - (id)_copyDeepArrayContents:(id)arg1;
@@ -39,6 +40,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSnapshotModified;
 - (BOOL)isSnapshotModifiedForEffectIndex:(int)arg1;
 - (id)snapshotChannelsForEffects:(id)arg1;
+- (id)indexPathsForSnapshot;
+- (BOOL)isEqualToSnapshot:(id)arg1;
+- (void)importSnapshotValuesFromSnapshot:(id)arg1;
+- (id)initWithXMLElement:(id)arg1;
+- (id)exportAsXMLElementUsingEffects:(id)arg1 isBaseSnapshot:(BOOL)arg2;
+@property(nonatomic) int effectBundleEncodingOptions; // @synthesize effectBundleEncodingOptions=_effectBundleEncodingOptions;
 @property(readonly, nonatomic) NSDictionary *modifiedEffectValues; // @synthesize modifiedEffectValues=_modifiedEffectValues;
 @property(nonatomic) double value; // @synthesize value=_value;
 

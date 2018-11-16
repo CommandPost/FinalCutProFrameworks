@@ -10,7 +10,6 @@
 {
 }
 
-- (BOOL)_isValidItem:(id)arg1;
 - (void)startHandling:(id)arg1;
 - (void)stopHandling:(id)arg1;
 - (void)pauseHandling:(id)arg1;

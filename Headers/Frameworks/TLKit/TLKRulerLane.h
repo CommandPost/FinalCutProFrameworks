@@ -13,9 +13,6 @@
     TLKRulerLayer *_rulerLayer;
     CATiledLayer *_rulerMarkerLayer;
     NSArray *_rulerMarkerLines;
-    CDStruct_1b6d18a9 _currentTimePerMarker;
-    CDStruct_1b6d18a9 _currentTimeDuration;
-    double _currentRulerLineHeight;
     NSMutableArray *_renderInfoLayers;
     BOOL _hiddenState;
     CDStruct_1b6d18a9 _timePerMarker;
@@ -26,6 +23,7 @@
 
 - (id)init;
 - (void)dealloc;
+- (id)rulerLayer;
 - (id)partIdentifier;
 - (double)width;
 - (id)rulerMarkerLayer;

@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 + (Class)streamClass;
 + (CDStruct_e83c9415)effectiveAudioClippedRangeForObject:(id)arg1 untimed:(BOOL)arg2;
 - (void)_rangeInvalidated:(id)arg1;
-- (id)initWithProvider:(id)arg1 untimed:(BOOL)arg2 roles:(id)arg3;
+- (id)initWithProvider:(id)arg1 untimed:(BOOL)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
 - (void)dealloc;
 - (id)anchoredObject;
 - (CDStruct_e83c9415)unclippedTimeRange:(BOOL)arg1;

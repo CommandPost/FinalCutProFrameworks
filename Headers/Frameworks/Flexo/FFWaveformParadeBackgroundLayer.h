@@ -6,12 +6,16 @@
 
 #import <Flexo/FFWaveformBackgroundLayer.h>
 
+@class FFWaveformRasterLabelLayer;
+
 __attribute__((visibility("hidden")))
 @interface FFWaveformParadeBackgroundLayer : FFWaveformBackgroundLayer
 {
     long long _paradeLayoutAlignment;
+    FFWaveformRasterLabelLayer *_rasterLabelLayer;
 }
 
+- (void)buildSublayers;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)setViewMode:(long long)arg1;
 - (void)drawGridInContext:(struct CGContext *)arg1 dirtyRect:(struct CGRect)arg2;

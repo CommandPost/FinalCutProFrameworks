@@ -29,13 +29,12 @@
     NSMutableArray *_savedAnalyzingAudioEffects;
     FFAnchoredObject *_anchoredObject;
     NSString *_filterType;
+    unsigned int _noOpIntrinsicFlags;
     unsigned int _insertingDefaultIntrinsics:1;
     unsigned int _defaultIntrinsics:1;
     BOOL _isOpaque;
     BOOL _suspendEffectChangedNotifications;
     BOOL _pendingEffectChangeNotification;
-    BOOL _processedHum;
-    BOOL _processedNoise;
 }
 
 + (BOOL)DSObjectCanProxy;
@@ -116,6 +115,7 @@
 - (void)removeEffectAtIndex:(unsigned long long)arg1;
 - (void)removeEffect:(id)arg1;
 - (unsigned long long)effectCount;
+- (unsigned long long)visibleEffectCount;
 - (id)effectAtIndex:(unsigned long long)arg1;
 - (id)filterAtEvaluationIndex:(unsigned long long)arg1;
 - (unsigned long long)evaluationIndexForEffect:(id)arg1;
@@ -145,6 +145,7 @@
 - (struct CGRect)squarePixelSourceRect;
 - (struct CGRect)imageSpaceBoundsAtTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)moreChannelParameterChanged_CheckIfChannelWouldCauseTimingChange:(id)arg1;
+- (BOOL)moreChannelParameterChanged_CheckIfNeedStreamInval:(id)arg1;
 - (void)channelParameterChanged:(id)arg1;
 - (void)intrinsicChannelChanged:(id)arg1;
 - (void)effect:(id)arg1 channelParameterChanged:(id)arg2;

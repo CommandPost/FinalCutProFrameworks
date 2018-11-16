@@ -6,33 +6,30 @@
 
 #import <Flexo/FFDestVideoAnalyzerController.h>
 
-#import "FFDestAnalyzerControllerDelegate.h"
+#import "FFDestAnalyzerProtocol.h"
 
 @class NSDictionary, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FFAutoBalance : FFDestVideoAnalyzerController <FFDestAnalyzerControllerDelegate>
+@interface FFAutoBalance : FFDestVideoAnalyzerController <FFDestAnalyzerProtocol>
 {
     NSMutableDictionary *_colorAnalysis;
     float _minDist;
-    CDUnknownBlockType _analyzeImage;
     CDStruct_1b6d18a9 _frameDur;
     BOOL _isReusingAnalysisResults;
 }
 
 + (id)copyColorBalanceDataResultWithFilePath:(id)arg1 error:(id *)arg2;
 + (BOOL)colorBalanceDataResultsAreValid:(id)arg1 forRange:(CDStruct_e83c9415)arg2 frameDuration:(CDStruct_1b6d18a9)arg3;
-- (id)initWithAnchoredObject:(id)arg1;
+- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 clip:(id)arg2 asset:(id)arg3;
 - (void)dealloc;
 - (void)saveColorBalanceData;
-- (void)start;
-- (CDUnknownBlockType)analyzeImage;
-- (void)finish;
-- (void)cancel;
+- (int)analyzeImage:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)startAnalyzing;
+- (void)_finishAndUpdateInspector;
+- (void)finishAnalyzing;
 - (BOOL)reuseDataForAnalyzing;
 - (BOOL)doesSupportDataFilesWithMediaEventProject:(id)arg1 subPath:(id *)arg2 type:(id *)arg3;
-- (int)analyzeImage:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (id)assignAnalyzeImageCallback;
 @property(readonly, nonatomic) NSDictionary *colorAnalysis; // @synthesize colorAnalysis=_colorAnalysis;
 
 @end

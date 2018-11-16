@@ -14,6 +14,7 @@
     ParentVerticalLayer *_parent;
     int _numberOfChannels;
     BOOL _playing;
+    BOOL _miniMode;
 }
 
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -24,6 +25,7 @@
 - (void)resetOverloadIndicator;
 - (void)mouseDown:(id)arg1;
 - (void)awakeFromNib;
+@property(nonatomic) BOOL miniMode; // @synthesize miniMode=_miniMode;
 
 @end
 

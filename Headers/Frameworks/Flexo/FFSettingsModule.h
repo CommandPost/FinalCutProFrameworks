@@ -19,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)closingWithCode:(int)arg1;
 - (BOOL)validate:(id *)arg1;
+- (BOOL)inCreationMode;
+- (void)toggleCreationSettings;
+- (BOOL)createAutomatically;
 @property(retain, nonatomic) FFContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) FFProvider *provider; // @synthesize provider=_provider;
 

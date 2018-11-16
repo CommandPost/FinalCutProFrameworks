@@ -56,6 +56,7 @@
 - (id)init;
 - (void)dealloc;
 - (id)debugDescription;
+- (void)resetState;
 - (void)addTrackingHandlerWithIdentifier:(id)arg1 predicate:(id)arg2 options:(unsigned long long)arg3;
 - (void)removeEventHandlerWithIdentifier:(id)arg1;
 - (void)addHandler:(id)arg1;
@@ -110,6 +111,7 @@
 - (void)otherMouseDragged:(id)arg1;
 - (void)keyDown:(id)arg1;
 - (void)keyUp:(id)arg1;
+- (void)cursorUpdate:(id)arg1;
 - (void)flagsChanged:(id)arg1;
 - (void)tabletPoint:(id)arg1;
 - (void)tabletProximity:(id)arg1;
@@ -141,6 +143,7 @@
 - (void)_setIsTracking:(BOOL)arg1;
 - (BOOL)isTracking;
 - (void)_updateRollover:(id)arg1;
+- (void)_updateRolloverWithEvent:(id)arg1;
 - (BOOL)dispatchEvent:(id)arg1;
 - (BOOL)_performExitPredicateForEventContext:(id)arg1;
 - (BOOL)_evaluateEventDescription:(id)arg1 withEventContext:(id)arg2;

@@ -11,7 +11,7 @@
 + (unsigned int)unmapParameterID:(unsigned int)arg1;
 + (void)_refresh:(id)arg1;
 - (id)newChannelFolderWithParent:(id)arg1 name:(id)arg2;
-- (void)syncChannelsToParametersFromFolder:(id)arg1;
+- (void)syncChannelsToParametersFromFolder:(id)arg1 isCreatingChannelFolder:(BOOL)arg2;
 - (void)syncChannelsToParameters;
 - (id)userPresetsAtFullPath:(id)arg1;
 - (id)manufacturerStringForDescription:(struct AudioComponentDescription)arg1;
@@ -24,11 +24,12 @@
 - (int)setFactoryPreset:(int)arg1;
 - (int)setUserPreset:(id)arg1;
 - (id)newChannelForParamInfo:(const struct FFAudioUnitParameterInfo *)arg1 usingAudioUnit:(struct ComponentInstanceRecord *)arg2;
-- (unsigned int)makeParameterChannelsForAudioUnit:(struct ComponentInstanceRecord *)arg1 withinFolder:(id)arg2 addedParams:(struct FFAudioUnitParameterList *)arg3 createdParamFolder:(id *)arg4;
+- (unsigned int)makeParameterChannelsForAudioUnit:(struct ComponentInstanceRecord *)arg1 withinFolder:(id)arg2 addedParams:(struct FFAudioUnitParameterList *)arg3 createdParamFolder:(id *)arg4 createdClumpedFolders:(id *)arg5 createdNonClumpedFolder:(id *)arg6;
 - (void)createChannelsInFolder:(id)arg1;
 - (id)_fixupChannel:(id)arg1 oldInfo:(const struct FFAudioUnitParameterInfo *)arg2 newInfo:(const struct FFAudioUnitParameterInfo *)arg3 unit:(struct ComponentInstanceRecord *)arg4;
 - (void)_fixupChannelsForChangedParameterList:(const struct FFAudioUnitParameterList *)arg1 added:(const vector_632d33ce *)arg2 removed:(const vector_632d33ce *)arg3 changed:(const vector_632d33ce *)arg4 unit:(struct ComponentInstanceRecord *)arg5;
+- (void)_updateParameterListUsingUnit:(struct ComponentInstanceRecord *)arg1;
 - (void)_parameterChannelChanged:(id)arg1;
-- (void)channelParameterChangedHook:(id)arg1;
+- (void)channelParameterChanged:(id)arg1;
 @end
 

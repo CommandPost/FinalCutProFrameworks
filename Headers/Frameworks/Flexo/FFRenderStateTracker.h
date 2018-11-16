@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFBackgroundTask, FFPMRLogFunnel, FFProvider, FFSVContext, FFSourceVideo, NSMutableArray, NSMutableIndexSet, NSRecursiveLock, NSThread;
+@class FFBackgroundTask, FFPMRLogFunnel, FFProvider, FFSVContext, FFSourceVideo, NSLock, NSMutableArray, NSMutableIndexSet, NSRecursiveLock, NSThread;
 
 __attribute__((visibility("hidden")))
 @interface FFRenderStateTracker : NSObject
@@ -22,20 +22,24 @@ __attribute__((visibility("hidden")))
     int _stateFullyKnownAtLockTime;
     NSThread *_rbLockHolder;
     CDStruct_e83c9415 _primaryInterestTimeRange;
+    NSLock *_bgTaskIVarLock;
     FFBackgroundTask *_backgroundCalculationTask;
     _Bool _bgProcessingEnabled;
     _Bool _timelineIsDragging;
     _Bool _oscIsDragging;
     FFPMRLogFunnel *_pmrFunnel;
+    long long _UIPlayersPlayering;
     int _deferredRenderStateNotify;
 }
 
 - (_Bool)_draggingHoldActive;
+- (void)_delayedRestartCalc;
 - (void)timelineWillStartDragging:(id)arg1;
 - (void)timelineDidStopDragging:(id)arg1;
 - (void)oscWillStartDragging:(id)arg1;
 - (void)oscDidStopDragging:(id)arg1;
 - (void)appWillTerminate:(id)arg1;
+- (void)uiPlaybackStateChange:(id)arg1;
 - (id)init;
 - (id)initWithSourceVideo:(id)arg1;
 - (void)dealloc;

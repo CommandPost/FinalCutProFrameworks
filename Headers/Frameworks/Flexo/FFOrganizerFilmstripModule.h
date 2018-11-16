@@ -12,7 +12,7 @@
 #import "FFRolesMenuDelegate.h"
 #import "FFSharableContent.h"
 
-@class FFAnalyzeMediaWindowController, FFKeywordEditor, FFNumericEntry, FFOrganizerFilmListViewController, FFOrganizerFilmstripViewController, FFOrganizerZoomBezelSegmentedControl, FFRolesMenuController, FFTranscodeMediaWindowController, LKPopOverWindow, LKPopUpButton, LKSlider, LKTextField, NSMenu, NSMenuItem, NSMutableArray, NSProButton, NSProThemeImageView, NSProView, OKPaneCapItemButton, OKPaneCapItemSlider, OKPaneCapItemView;
+@class FFAnalyzeMediaWindowController, FFKeywordEditor, FFModifyContentCreationDateWindowController, FFNumericEntry, FFOrganizerFilmListViewController, FFOrganizerFilmstripViewController, FFOrganizerZoomBezelSegmentedControl, FFRolesMenuController, FFTranscodeMediaWindowController, LKPopOverWindow, LKPopUpButton, LKSlider, LKTextField, NSMenu, NSMenuItem, NSMutableArray, NSProButton, NSProThemeImageView, NSProView, OKPaneCapItemButton, OKPaneCapItemSlider, OKPaneCapItemView;
 
 @interface FFOrganizerFilmstripModule : FFEventsDetailModule <FFOrganizerFilmstripViewDelegate, FFSharableContent, FFOrganizerFilmstripClusteringDelegate, FFNumericEntrySource, FFRolesMenuDelegate>
 {
@@ -56,6 +56,7 @@
     NSMutableArray *_filteredRanges;
     FFTranscodeMediaWindowController *_transcodeController;
     FFAnalyzeMediaWindowController *_analyzeController;
+    FFModifyContentCreationDateWindowController *_creationDateWindowController;
     FFKeywordEditor *_keywordEditor;
     FFOrganizerFilmstripViewController *_currentFilmViewController;
     FFOrganizerFilmstripViewController *_filmstripViewController;
@@ -74,7 +75,11 @@
 - (void)setDelegate:(id)arg1;
 - (void)moduleDidBecomeVisible:(id)arg1;
 - (BOOL)containedInImportModule;
+- (BOOL)selectionCanTranscode;
 - (BOOL)selectionCanSynchOrTranscode;
+- (BOOL)hasAngles:(id)arg1;
+- (BOOL)selectionCanBecomeAMulticamClip;
+- (BOOL)selectionHasNoMulticamClips;
 - (void)toggleListMode:(id)arg1;
 - (void)switchDisplayViews:(int)arg1;
 - (void)syncToDisplayViewType;
@@ -116,6 +121,7 @@
 - (void)bezelHUDDidResignKey:(id)arg1;
 - (BOOL)isClustering;
 - (BOOL)_shouldClusterBySidebarGroup;
+- (BOOL)_sidebarSelectionIsNotMultipleProjects;
 - (void)clusteringPopUpAction:(id)arg1;
 - (void)arrangingingPopUpAction:(id)arg1;
 - (void)clusteringSortOrderAction:(id)arg1;
@@ -156,10 +162,13 @@
 - (id)unfilteredRanges;
 - (void)selectedRangesOfMediaDidChange;
 - (void)selectionDidChangeToObject:(id)arg1;
+- (void)selectionDidChangeToTime:(CDStruct_e83c9415)arg1 inObject:(id)arg2;
 - (void)playingRangeOfMediaDidChange;
 - (BOOL)canEditDisplayName;
 - (void)_saveProjectRelatedPersistentStates;
 - (void)_restoreProjectRelatedPersistentStates;
+- (void)_saveProjectRelatedSelectionStates;
+- (void)_restoreProjectRelatedSelectionStates;
 - (void)setItemSize:(double)arg1;
 - (double)itemSize;
 - (double)minItemSize;
@@ -171,6 +180,7 @@
 - (id)_filteredMediaRanges:(id)arg1 usingFolder:(id)arg2;
 - (void)_updateUnfilteredRanges;
 - (id)project;
+- (void)toggleColorCorrectionOff:(id)arg1;
 - (void)toggleBalanceColor:(id)arg1;
 - (void)performColorMatch:(id)arg1;
 - (void)setFrameDuration:(double)arg1;
@@ -218,6 +228,7 @@
 - (void)setSelectionEnd:(id)arg1;
 - (void)transcodeMedia:(id)arg1;
 - (void)analyzeAndFix:(id)arg1;
+- (void)modifyContentCreationDate:(id)arg1;
 - (void)revealAncestor:(id)arg1;
 - (void)playPause:(id)arg1;
 - (void)stopPlaying:(id)arg1;
@@ -311,9 +322,18 @@
 - (void)unfavorite:(id)arg1;
 - (void)reject:(id)arg1;
 - (void)delete:(id)arg1;
+- (void)_arrangeEditsIntoAngles:(id)arg1 arrangeBy:(int)arg2 syncBy:(int)arg3 orderBy:(int)arg4 fineSyncByAudio:(int)arg5;
 - (void)_addSelectedEdits:(id)arg1 toSequence:(id)arg2;
-- (void)createCompoundClipSheetClosing:(int)arg1 sequence:(id)arg2 actionName:(id)arg3;
+- (void)_workOnMultiAngleCreationSequence:(id)arg1 project:(id)arg2 actionName:(id)arg3;
+- (void)createClip:(id)arg1;
+- (void)createCompoundClipSheetClosing:(int)arg1 sequence:(id)arg2 actionName:(id)arg3 project:(id)arg4;
+- (void)createMultiAngleClip:(id)arg1;
 - (void)createCompoundClip:(id)arg1;
+- (CDStruct_1b6d18a9)_findSmallestStartingTime:(id)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 dropFrame:(long long)arg3;
+- (BOOL)_mixedTCTracksClockTimeInSelection:(id)arg1;
+- (long long)_findMostCommonDisplayDropFrame:(id)arg1 forVideoProps:(id)arg2;
+- (id)_findMostCommonVideoProps:(id)arg1 forBestGuessedOnly:(BOOL)arg2;
+- (void)createNewSequence:(BOOL)arg1;
 - (void)_duplicateMediaRanges:(id)arg1 intoArray:(id)arg2;
 - (void)duplicate:(id)arg1;
 - (BOOL)canBreakApartClipItems;
@@ -322,14 +342,18 @@
 - (void)revealInFinder:(id)arg1;
 - (BOOL)_canPasteFromPasteboardWithName:(id)arg1;
 - (BOOL)_pasteFromPasteboardWithName:(id)arg1 error:(id *)arg2;
+- (id)_clipRefsForClips:(id)arg1;
 - (id)_assetRefsToDeleteForClips:(id)arg1;
-- (BOOL)_externalReferencesExistForAssetRefs:(id)arg1 excludingTheseClips:(id)arg2;
+- (BOOL)_externalReferencesExistForMediaRefs:(id)arg1 excludingTheseClips:(id)arg2;
 - (BOOL)_deleteClips:(id)arg1 error:(id *)arg2;
 - (BOOL)canMoveToTrash;
 - (void)moveToTrash:(id)arg1;
+- (BOOL)canRelinkFiles;
+- (void)relinkFiles:(id)arg1;
 - (void)removeFilters;
 - (BOOL)mediaRangesVisible:(id)arg1;
 - (void)revealObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2 atPlayhead:(CDStruct_1b6d18a9)arg3;
+- (id)openInTimelineMenuTitle;
 - (BOOL)canOpenInTimeline;
 - (void)openInTimeline:(id)arg1;
 - (BOOL)canAllowTimelineEditing;

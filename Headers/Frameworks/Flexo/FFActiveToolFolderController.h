@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
 @interface FFActiveToolFolderController : FFRiggedChannelFolderController
 {
     NSButton *_setToolButton;
+    Class _toolClass;
 }
 
-- (Class)toolClass;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)dealloc;
 - (void)didBuildUI;

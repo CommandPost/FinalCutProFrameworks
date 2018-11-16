@@ -13,8 +13,9 @@ __attribute__((visibility("hidden")))
     BOOL _scalesVertically;
 }
 
-- (id)_initWithFacet:(id)arg1;
+- (id)_initWithFacet:(id)arg1 drawCenter:(BOOL)arg2;
 - (id)_textureForContext:(struct _CGLContextObject *)arg1 state:(long long)arg2 dimension1:(long long)arg3 value:(long long)arg4 size:(struct CGSize)arg5 createIfNeeded:(BOOL)arg6 colorSync:(BOOL)arg7;
+- (void)_drawFacetForState:(long long)arg1 scaledToRect:(struct CGRect)arg2 inContext:(struct _CGLContextObject *)arg3 dimension1:(long long)arg4 colorSync:(BOOL)arg5;
 
 @end
 

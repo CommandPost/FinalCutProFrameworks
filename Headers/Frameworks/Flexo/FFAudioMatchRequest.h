@@ -8,7 +8,6 @@
 
 @class FFAnchoredObject;
 
-__attribute__((visibility("hidden")))
 @interface FFAudioMatchRequest : NSObject
 {
     FFAnchoredObject *_object;

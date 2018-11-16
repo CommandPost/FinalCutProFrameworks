@@ -21,7 +21,7 @@
 
 + (BOOL)classIsAbstract;
 + (id)copyClassDescription;
-+ (BOOL)projectReferencesExistForAssetRef:(id)arg1;
++ (BOOL)projectReferencesExistForMediaRef:(id)arg1;
 - (id)initWithDisplayName:(id)arg1;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
@@ -50,8 +50,9 @@
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 - (id)effectReferences;
 - (id)assetReferences;
+- (id)clipReferences;
 - (int)mediaStatus;
-- (BOOL)projectReferencesExistForAssetRef:(id)arg1;
+- (BOOL)projectReferencesExistForMediaRef:(id)arg1;
 - (void)_offlineMediaChanged;
 - (id)inspectorClassName;
 - (id)inspectorIdentifier;

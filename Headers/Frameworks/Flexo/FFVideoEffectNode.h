@@ -9,10 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface FFVideoEffectNode : FFEffectNode
 {
+    unsigned int _nodeBasicMD5OringFlags;
 }
 
 - (void)_setupSources;
 - (id)sortedAllInputKeys;
+- (void)setNodeBasicMD5OringFlags:(unsigned int)arg1;
+- (unsigned int)nodeBasicMD5OringFlags;
 
 @end
 

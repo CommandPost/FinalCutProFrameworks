@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (double)doubleValueForChannelID:(unsigned int)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)setDoubleValue:(double)arg1 forChannelID:(unsigned int)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)setColorEffect:(id)arg1;
+- (id)colorEffect;
 
 @end
 

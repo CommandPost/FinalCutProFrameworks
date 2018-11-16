@@ -15,6 +15,7 @@
     DSBridge *_bridge;
     int _commitWhenPossible;
     BOOL _needsSync;
+    BOOL _appIsShuttingDown;
 }
 
 + (id)newCatalogWithURL:(id)arg1 error:(id *)arg2;
@@ -39,12 +40,14 @@
 - (id)find:(id)arg1 stores:(id)arg2 error:(id *)arg3;
 - (id)makePersistentID:(struct DSObject *)arg1;
 - (id)fetchObjectsWithIDs:(id)arg1 stores:(id)arg2 error:(id *)arg3;
+- (void)assignObject:(struct DSObject *)arg1 toStore:(id)arg2;
 - (id)objectFromID:(id)arg1 store:(id)arg2;
 - (BOOL)hasLock;
 - (BOOL)hasChanges;
 - (BOOL)wantsSync;
 - (BOOL)wantsCommit;
 - (void)save:(id)arg1;
+- (void)applicationWillTerminate:(id)arg1;
 - (BOOL)saveCatalog:(id *)arg1;
 - (BOOL)sync:(id *)arg1;
 - (BOOL)bringUpToDate:(id *)arg1;

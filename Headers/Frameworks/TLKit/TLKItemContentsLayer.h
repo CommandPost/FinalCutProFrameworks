@@ -38,7 +38,6 @@
 @property(readonly) double trailingEdgeInset;
 - (void)setTimelineZooming:(BOOL)arg1;
 @property(readonly) BOOL timelineZooming;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
 - (void)addSublayer:(id)arg1;

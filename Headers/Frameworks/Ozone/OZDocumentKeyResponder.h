@@ -26,6 +26,7 @@
 - (void)dealloc;
 - (void)keyDown:(id)arg1;
 - (void)keyUp:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (BOOL)validateAction:(SEL)arg1;
 - (void)cut:(id)arg1;

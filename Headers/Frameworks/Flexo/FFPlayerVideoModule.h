@@ -8,13 +8,16 @@
 
 #import "FFFieldDisplaySetting.h"
 #import "FFSelectionHandler.h"
+#import "NSAnimationDelegate.h"
 
-@class FFDestVideoGL, FFOSC, FFPlayerView, FFSnapGrid, NSLock, NSMenu, NSMutableArray, PCMatrix44Double;
+@class FFDestVideoGL, FFOSC, FFPlayerView, FFSnapGrid, FFTimecodeFormatter, LKButton, NSDictionary, NSLock, NSMenu, NSMutableArray, NSProThemeImageView, NSRecursiveLock, NSView, NSViewAnimation, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
-@interface FFPlayerVideoModule : FFPlayerItemModule <FFSelectionHandler, FFFieldDisplaySetting>
+@interface FFPlayerVideoModule : FFPlayerItemModule <FFSelectionHandler, FFFieldDisplaySetting, NSAnimationDelegate>
 {
     FFPlayerView *_playerView;
+    NSProThemeImageView *_multiangleHeaderView;
+    NSView *_multiangleFooterView;
     FFDestVideoGL *_destVideoGL;
     unsigned int _viewDisplay;
     struct CGColorSpace *_viewColorSpace;
@@ -27,6 +30,7 @@ __attribute__((visibility("hidden")))
     unsigned int _displayExcessGamutChannels;
     BOOL _showBothFields;
     BOOL _multipleSelection;
+    NSRecursiveLock *_oscsLock;
     NSMutableArray *_oscs;
     FFOSC *_activeOSC;
     BOOL _selectionBasedOSCsDisabled;
@@ -37,6 +41,18 @@ __attribute__((visibility("hidden")))
     NSLock *_filmToViewLock;
     NSMenu *_toolsContextMenu;
     long long _playerBackground;
+    long long _multiangleDisplayRectCount;
+    long long _multiangleDisplayRows;
+    long long _multiangleDisplayColumns;
+    struct CGRect *_multiangleDisplayRects;
+    NSView *_multiangleBankScrollArea;
+    NSView *_multiangleBankArea;
+    LKButton *_multiangleEditAudioVideo;
+    LKButton *_multiangleEditVideo;
+    LKButton *_multiangleEditAudio;
+    LKButton *_multiangleNextBankButton;
+    LKButton *_multianglePrevBankButton;
+    NSViewAnimation *_bankAreaAnimation;
     FFSnapGrid *_snapGrid;
     BOOL _effectChangedObserversInstalled;
     BOOL _isActiveModule;
@@ -48,6 +64,10 @@ __attribute__((visibility("hidden")))
     BOOL _hasVideo;
     BOOL _installedWindowObservers;
     BOOL _oscsEnabled;
+    NSRecursiveLock *_lastCommonDrawPropertiesLock;
+    NSDictionary *_lastCommonDrawProperties;
+    BOOL _bankSelectorNeedsUpdate;
+    FFTimecodeFormatter *_timecodeFormatter;
 }
 
 - (id)tabLabel;
@@ -55,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;
+- (void)viewDidLoad;
 - (id)firstKeyView;
 - (id)lastKeyView;
 - (void)_setProviderCallback;
@@ -70,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)playerView:(id)arg1 willMoveToWindow:(id)arg2;
 - (void)playerViewDidMoveToWindow:(id)arg1;
 - (id)playerView;
+- (void)_playerViewBoundsChanged:(struct CGRect)arg1;
 - (id)destVideo;
 - (id)layer;
 - (id)backgroundColor;
@@ -88,9 +110,10 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)bounds;
 - (void)setDrawingEnabled:(BOOL)arg1;
 - (BOOL)isDrawingEnabled;
-- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
 - (void)notifyLastTimeDisplayed:(id)arg1;
 - (void)setLastTimeCallback:(id)arg1 callbackSel:(SEL)arg2;
+- (void)addCommonDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3;
 - (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)_updateReportedZoomFactor;
 - (id)_retainedFilmToViewTransform:(BOOL)arg1;
@@ -105,7 +128,78 @@ __attribute__((visibility("hidden")))
 - (void)removeFromSupermodule;
 - (void)setSupermodule:(id)arg1;
 - (id)localModuleActions;
+- (id)objectUnderPlayhead:(char *)arg1;
+- (void)noopMenuItem:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)setDisplayedAngles:(id)arg1;
+- (void)setAngleNameVisible:(id)arg1;
+- (void)setAngleTimecodeVisible:(id)arg1;
+- (void)setMultiangleEditStyle:(id)arg1;
+- (void)multiAngleEditStyleAudioVideo:(id)arg1;
+- (void)multiAngleEditStyleAudio:(id)arg1;
+- (void)multiAngleEditStyleVideo:(id)arg1;
+- (void)showNextAngleBank:(id)arg1;
+- (void)showPrevAngleBank:(id)arg1;
+- (void)showNextAngleBankPage:(id)arg1;
+- (void)showPrevAngleBankPage:(id)arg1;
+- (void)animationDidEnd:(id)arg1;
+- (BOOL)selectionAllowsAngleCommands;
+- (void)selectNextAngle:(BOOL)arg1 video:(BOOL)arg2 audio:(BOOL)arg3;
+- (void)selectNextAngle:(id)arg1;
+- (void)selectNextAudioAngle:(id)arg1;
+- (void)selectNextVideoAngle:(id)arg1;
+- (void)selectPreviousAngle:(id)arg1;
+- (void)selectPreviousAudioAngle:(id)arg1;
+- (void)selectPreviousVideoAngle:(id)arg1;
+- (id)angleNameForIndex:(long long)arg1 objectUnderPlayhead:(id)arg2;
+- (void)switchToAngleIndex:(long long)arg1 cut:(BOOL)arg2;
+- (void)switchAngle01:(id)arg1;
+- (void)switchAngle02:(id)arg1;
+- (void)switchAngle03:(id)arg1;
+- (void)switchAngle04:(id)arg1;
+- (void)switchAngle05:(id)arg1;
+- (void)switchAngle06:(id)arg1;
+- (void)switchAngle07:(id)arg1;
+- (void)switchAngle08:(id)arg1;
+- (void)switchAngle09:(id)arg1;
+- (void)switchAngle10:(id)arg1;
+- (void)switchAngle11:(id)arg1;
+- (void)switchAngle12:(id)arg1;
+- (void)switchAngle13:(id)arg1;
+- (void)switchAngle14:(id)arg1;
+- (void)switchAngle15:(id)arg1;
+- (void)switchAngle16:(id)arg1;
+- (void)cutSwitchAngle01:(id)arg1;
+- (void)cutSwitchAngle02:(id)arg1;
+- (void)cutSwitchAngle03:(id)arg1;
+- (void)cutSwitchAngle04:(id)arg1;
+- (void)cutSwitchAngle05:(id)arg1;
+- (void)cutSwitchAngle06:(id)arg1;
+- (void)cutSwitchAngle07:(id)arg1;
+- (void)cutSwitchAngle08:(id)arg1;
+- (void)cutSwitchAngle09:(id)arg1;
+- (void)cutSwitchAngle10:(id)arg1;
+- (void)cutSwitchAngle11:(id)arg1;
+- (void)cutSwitchAngle12:(id)arg1;
+- (void)cutSwitchAngle13:(id)arg1;
+- (void)cutSwitchAngle14:(id)arg1;
+- (void)cutSwitchAngle15:(id)arg1;
+- (void)cutSwitchAngle16:(id)arg1;
+- (BOOL)isMultiangleHeaderVisible;
+- (void)setMultiangleHeaderVisible:(BOOL)arg1;
+- (BOOL)isMultiangleFooterVisible;
+- (void)setMultiangleFooterVisible:(BOOL)arg1;
+- (BOOL)isMultiangleViewer;
+- (void)multiAngleRowsAndColumnCount:(long long *)arg1 columns:(long long *)arg2 angleOffset:(long long *)arg3;
+- (void)_recalculateMultiangleDisplayRects;
+- (void)getMultiangleDisplayRects:(struct CGRect **)arg1 count:(long long *)arg2;
+- (struct CGRect)multiangleDisplayRectAtRow:(long long)arg1 column:(long long)arg2;
+- (void)_updateMulticamEditModeButtons;
+- (id)_makeAngleBankSelectorButton;
+- (void)_updateAngleBankSelector;
+- (void)_updateNextPrevAngleBankButtons;
+- (void)_updateAngleModeSwitchButtons;
+- (void)switchMultiangleBank:(id)arg1;
 - (void)setMultipleSelection:(BOOL)arg1;
 - (BOOL)multipleSelection;
 - (unsigned long long)OSCCount;
@@ -131,7 +225,7 @@ __attribute__((visibility("hidden")))
 - (id)OSCAtPoint:(struct CGPoint)arg1;
 - (BOOL)selectionBasedOSCsEnabled;
 - (void)setSelectionBasedOSCsEnabled:(BOOL)arg1;
-- (BOOL)drawOSCsAtTime:(CDStruct_1b6d18a9)arg1 inRect:(struct CGRect)arg2 drawContext:(struct _CGLContextObject *)arg3 drawProperties:(id)arg4;
+- (BOOL)drawOSCsAtTime:(CDStruct_1b6d18a9)arg1 inRect:(struct CGRect)arg2 drawContext:(struct _CGLContextObject *)arg3 drawProperties:(id)arg4 isDisplaying:(BOOL)arg5;
 - (BOOL)acceptPassiveOSCEvent:(id)arg1;
 - (void)_addOSCsForItem:(id)arg1;
 - (void)addOSCsForItems:(id)arg1;
@@ -145,6 +239,7 @@ __attribute__((visibility("hidden")))
 - (void)_OSCSelectionsNeedUpdatePossibleDefer;
 - (void)activeToolChanged:(id)arg1;
 - (void)cancelTextTool:(id)arg1;
+- (void)cancelDropZoneTool:(id)arg1;
 - (id)selectedItems;
 - (id)contextRootObject;
 - (void)setSelectedItems:(id)arg1;

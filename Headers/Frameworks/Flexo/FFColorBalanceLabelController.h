@@ -6,19 +6,24 @@
 
 #import <Flexo/FFColorBaseViewController.h>
 
-@class LKButton, OZLabelText;
+@class LKButton, OZLabelText, OZViewCtlrRoot;
 
 __attribute__((visibility("hidden")))
 @interface FFColorBalanceLabelController : FFColorBaseViewController
 {
     LKButton *_toggleButton;
     OZLabelText *_labelText;
+    OZViewCtlrRoot *_observedControllerRoot;
+    BOOL _allMediaIsAvailable;
 }
 
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)dealloc;
+- (void)didBuildUI;
 - (void)update;
 - (void)performBalanceOrToggle:(id)arg1;
+- (void)assetInvalidated:(id)arg1;
+- (id)checkMediaAvailability;
 
 @end
 

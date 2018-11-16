@@ -6,7 +6,7 @@
 
 #import <Flexo/FFComponentOSC.h>
 
-@class CHChannelAngle, CHChannelBase, CHChannelDouble, CHChannelFolder, CHChannelPosition, CHChannelScale, FFChannelChangeController, FFColorSecondaryEffect, NSString;
+@class CHChannelAngle, CHChannelDouble, CHChannelFolder, CHChannelPosition, CHChannelScale, FFChannelChangeController, FFColorSecondaryEffect, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFColorSecondaryOSC : FFComponentOSC
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     int _dragCount;
     FFChannelChangeController *_changeController;
     BOOL _transactionStarted;
-    CHChannelBase *_modifiedChannel;
+    NSString *_transactionName;
     BOOL _shapeActive;
     BOOL _shapeVisible;
     NSString *_name;

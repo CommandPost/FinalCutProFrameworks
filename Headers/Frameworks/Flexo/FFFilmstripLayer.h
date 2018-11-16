@@ -6,10 +6,12 @@
 
 #import "CALayer.h"
 
-@class FFAnchoredObject, NSMapTable, NSMutableArray;
+#import "FFFilmstripCellDelegate.h"
+
+@class FFAnchoredObject, NSMapTable, NSMutableArray, TLKThemeBackedLayer;
 
 __attribute__((visibility("hidden")))
-@interface FFFilmstripLayer : CALayer
+@interface FFFilmstripLayer : CALayer <FFFilmstripCellDelegate>
 {
     FFAnchoredObject *_anchoredObject;
     CDStruct_e83c9415 _clippedRange;
@@ -22,13 +24,13 @@ __attribute__((visibility("hidden")))
     struct CGRect _visibleBounds;
     unsigned long long _totalCellCount;
     double _totalWidth;
-    unsigned int _inited:1;
+    TLKThemeBackedLayer *_videoLayerInnerShadow;
+    id _priorityDelegate;
     unsigned int _forceNoUpdate:1;
     unsigned int _forceUpdate:1;
 }
 
 - (id)init;
-- (id)initWithLayer:(id)arg1;
 - (void)dealloc;
 @property(retain, nonatomic) FFAnchoredObject *anchoredObject;
 @property(nonatomic) CDStruct_e83c9415 clippedRange;
@@ -44,6 +46,8 @@ __attribute__((visibility("hidden")))
 - (double)_cellWidth;
 - (void)_invalidateCells;
 - (void)updateIfNeeded;
+- (BOOL)highPriorityThumbnailGeneration;
+@property(nonatomic) id <FFFilmstripLayerDelegate> priorityDelegate; // @synthesize priorityDelegate=_priorityDelegate;
 
 @end
 

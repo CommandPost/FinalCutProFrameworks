@@ -42,6 +42,7 @@
     struct FFPMRSimpleTimer _timerRender;
 }
 
++ (BOOL)isMotionProject:(id)arg1;
 + (id)loadMediaFromFile:(id)arg1 forItem:(id)arg2;
 + (BOOL)isCompressorKitPresent;
 + (BOOL)isStandaloneRenderer;

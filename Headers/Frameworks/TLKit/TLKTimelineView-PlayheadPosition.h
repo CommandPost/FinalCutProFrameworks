@@ -7,6 +7,10 @@
 #import <TLKit/TLKTimelineView.h>
 
 @interface TLKTimelineView (PlayheadPosition)
-- (void)_updatePlayheadPositionAnimate:(BOOL)arg1 useEdgeBoundary:(BOOL)arg2;
+- (void)_tilePlayhead;
+- (void)_setupTopLevelHandlers;
+- (void)_addTopLevelHandlerIdentifier:(id)arg1;
+- (void)_removeTopLevelHandlerIdentifier:(id)arg1;
+- (void)_updatePlayheadPositionAnimate:(BOOL)arg1;
 @end
 

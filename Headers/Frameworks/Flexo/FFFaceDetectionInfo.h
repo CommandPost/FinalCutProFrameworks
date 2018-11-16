@@ -39,10 +39,13 @@ __attribute__((visibility("hidden")))
 - (void)debugLog;
 - (void)debugLog:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (struct CGPoint)faceCenter;
 @property(readonly) unsigned long long srcImageHeight; // @synthesize srcImageHeight;
 @property(readonly) unsigned long long srcImageWidth; // @synthesize srcImageWidth;
 @property FFFaceRegistryEntry *regEntry; // @synthesize regEntry;
 @property(readonly) double faceArea; // @synthesize faceArea;
+@property(readonly) struct CGPoint faceBottomLeft; // @synthesize faceBottomLeft;
+@property(readonly) struct CGPoint faceTopRight; // @synthesize faceTopRight;
 @property(readonly) struct CGPoint faceBottomRight; // @synthesize faceBottomRight;
 @property(readonly) struct CGPoint faceTopLeft; // @synthesize faceTopLeft;
 @property(readonly) unsigned long long faceIndex; // @synthesize faceIndex;

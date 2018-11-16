@@ -13,7 +13,8 @@ __attribute__((visibility("hidden")))
 {
     NSLock *_queueLock;
     NSMutableArray *_renderedFrames;
-    unsigned int _maxQueueSize;
+    unsigned int _normalQueueSize;
+    unsigned int _maxQueueCapacity;
     int _lateDraw;
     struct __CVDisplayLink *_displayLink;
     BOOL _stopIsPending;
@@ -65,19 +66,22 @@ __attribute__((visibility("hidden")))
 - (void)_notifyVisibleChanged;
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
 - (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (id)newOnScreenControlsTextureForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 drawProperties:(id)arg3;
+- (id)newOnScreenControlsTextureForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
 - (void)_pmrLogQueueDepth:(_Bool)arg1 count:(unsigned int)arg2;
 - (void)flush:(BOOL)arg1;
 - (void)pushFrame:(id)arg1;
-- (BOOL)wantsMoreFrames;
+- (int)_getFrameQueueStatusWithPlayerTime:(CDStruct_1b6d18a9)arg1 rawFrameDuration:(CDStruct_1b6d18a9)arg2 rate:(double)arg3;
+- (int)getFrameQueueStatus;
 - (id)_playerFrameForTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 tbRate:(double)arg3;
 - (void)drawEmptyBackground;
 - (void)_notifyPlayer;
 - (void)_drawMissingImageAtTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
+- (void)debugPrintMultiAngleRects:(id)arg1;
 - (void)_drawImages:(id)arg1 forRate:(double)arg2 clockTime:(CDStruct_1b6d18a9)arg3;
 - (int)_displayTimerCallback;
-- (void)start;
+- (void)start:(id)arg1;
 - (void)stop;
+- (void)_queuedStop;
 - (BOOL)isRunning;
 - (void)_updateRenderBackground:(id)arg1;
 - (void)updateObservedValuesForContext:(void *)arg1;

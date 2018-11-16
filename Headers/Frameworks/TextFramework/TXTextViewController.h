@@ -36,11 +36,13 @@
 - (void)notify:(unsigned int)arg1;
 - (id)findMotionEffect;
 - (int)textOperation;
+- (BOOL)textView:(id)arg1 doCommandBySelector:(SEL)arg2;
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)textViewDidChangeSelection:(id)arg1;
 - (struct _NSRange)textView:(id)arg1 willChangeSelectionFromCharacterRange:(struct _NSRange)arg2 toCharacterRange:(struct _NSRange)arg3;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (id)notificationUserInfo;
+- (id)inspectorModule;
 @property(retain, nonatomic) FFMotionEffect *motionEffect; // @synthesize motionEffect=_motionEffect;
 
 @end

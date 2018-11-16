@@ -11,7 +11,7 @@
     CDStruct_1b6d18a9 _initialTime;
 }
 
-- (BOOL)autoscrollHorizontallyOnly;
+- (int)autoscrollDirection;
 - (BOOL)startTracking:(id)arg1;
 - (BOOL)continueTracking:(id)arg1;
 - (void)cancelTracking:(id)arg1;

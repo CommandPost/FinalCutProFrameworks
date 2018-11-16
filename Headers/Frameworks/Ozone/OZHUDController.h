@@ -11,7 +11,7 @@
     struct OZScene *_pScene;
     list_2c251165 *_pObjects;
     list_909ba1c0 *_pObjectIDs;
-    struct vector<unsigned int, std::allocator<unsigned int>> *_pMagicNumbers;
+    vector_77d837c3 *_pMagicNumbers;
     struct CGRect _prevViewFrame;
 }
 

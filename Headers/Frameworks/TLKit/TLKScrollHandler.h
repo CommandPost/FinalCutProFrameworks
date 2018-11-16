@@ -11,6 +11,7 @@
     unsigned int _isPanning:1;
 }
 
+- (BOOL)shouldSkimItem:(id)arg1;
 - (BOOL)shouldAutoscroll:(id)arg1;
 - (BOOL)startTracking:(id)arg1;
 - (BOOL)continueTracking:(id)arg1;

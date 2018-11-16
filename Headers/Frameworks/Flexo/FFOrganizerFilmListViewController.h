@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)treeNodeMatchingFigTimeRangeAndObject:(id)arg1 dataType:(int)arg2;
 - (id)treeNodeMatchingStartTimeOfFigTimeRangeAndObject:(id)arg1 dataType:(int)arg2;
 - (id)treeNodeMatchingEndTimeOfFigTimeRangeAndObject:(id)arg1 dataType:(int)arg2;
+- (id)bestTreeNodeMatchingFigTimeRangeAndObject:(id)arg1 dataType:(int)arg2;
 - (id)treeNodeMatchingClusterIdentifier:(id)arg1;
 - (id)contextualMenuForTreeNode:(id)arg1;
 - (BOOL)isRowVisible:(long long)arg1;
@@ -179,6 +180,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateFilteredItems;
 - (void)selectedRangesOfMediaDidChange;
 - (void)selectionDidChangeToObject:(id)arg1;
+- (void)selectionDidChangeToTime:(CDStruct_e83c9415)arg1 inObject:(id)arg2;
 - (BOOL)canBeginSkimming;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
 - (id)editorModule;
