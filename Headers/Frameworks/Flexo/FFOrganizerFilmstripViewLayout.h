@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     CALayer *_playerLayer;
     FigTimeRangeAndObject *_lastRangeOfMedia;
     CDStruct_1b6d18a9 _lastPlayheadTime;
+    BOOL _dirty;
     BOOL _hidePlayhead;
     double _playheadWidth;
     CALayer *_playheadLayer;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL showRanges; // @synthesize showRanges=_showRanges;
 @property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
 @property(nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) BOOL dirty; // @synthesize dirty=_dirty;
 @property(readonly, nonatomic) double totalHeight; // @synthesize totalHeight=_totalHeight;
 @property(readonly, nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(readonly, nonatomic) NSArray *visibleRanges; // @synthesize visibleRanges=_visibleRanges;

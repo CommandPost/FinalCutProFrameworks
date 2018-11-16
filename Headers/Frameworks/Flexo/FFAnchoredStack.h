@@ -104,6 +104,7 @@
 - (void)_processDeferredUpdates;
 - (BOOL)_deferUpdates;
 - (void)_setDeferUpdates:(BOOL)arg1;
+- (BOOL)supportsLogProcessing;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
 - (int)multiAngleDetail;

@@ -73,10 +73,12 @@ __attribute__((visibility("hidden")))
 - (void)setRetimingInterpolation;
 - (void)setRetimingExtrapolation;
 - (void)computeSmoothBezierTangents;
-- (CDStruct_1b6d18a9)constantRetimedTimeFromUntimedTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)constantRetimedTimeFromUntimedTime:(CDStruct_1b6d18a9)arg1 useAbosoluteSpeed:(BOOL)arg2;
 - (CDStruct_e83c9415)constantRetimedRangeFromUntimedRange:(CDStruct_e83c9415)arg1;
 - (double)constantTimeMapInverse:(CDStruct_1b6d18a9)arg1;
 - (double)constantTimeMapInverseSeconds:(double)arg1;
+- (double)constantTimeMapInverseUseAbsoluteSpeed:(CDStruct_1b6d18a9)arg1;
+- (double)constantTimeMapInverseSecondsUseAbsoluteSpeed:(double)arg1;
 - (double)constantTimeMap:(CDStruct_1b6d18a9)arg1;
 - (double)sweetFrameDuration;
 - (double)speedAfterSweetSpot;

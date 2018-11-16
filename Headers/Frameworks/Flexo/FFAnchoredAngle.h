@@ -38,6 +38,7 @@
 - (id)audioComponentsLayoutMap;
 - (void)demandAudioComponentSources:(int)arg1;
 @property(readonly, nonatomic) FFAudioAngleComponentsLayoutMap *persistentAudioComponentsLayoutMap;
+- (BOOL)supportsLogProcessing;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
 - (BOOL)supportsRoles;

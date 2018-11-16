@@ -200,6 +200,7 @@
 - (int)multiAngleDetail;
 - (BOOL)isPullingSourceFromBelowForRight;
 - (BOOL)isPullingSourceFromBelowForLeft;
+- (BOOL)supportsLogProcessing;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
 - (BOOL)contributesToCompoundClip;

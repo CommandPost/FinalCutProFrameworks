@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)setAudioHeight:(double)arg1;
 - (double)audioHeight;
 - (void)setNeedsData:(BOOL)arg1;
+- (void)setDeferRangeInvalidations:(BOOL)arg1;
 - (id)valueForKey:(id)arg1;
 - (void)removeObserversAndNotifications:(id)arg1;
 - (void)attachObserversAndNotifications:(id)arg1;
