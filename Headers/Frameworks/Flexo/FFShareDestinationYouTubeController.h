@@ -6,7 +6,7 @@
 
 #import <Flexo/FFShareDestinationWebController.h>
 
-@class GoogleAuthTokenManager, LKButton, LKPopUpButton, NSArray, NSArrayController, NSDictionary, NSString;
+@class GoogleAuthTokenManager, LKButton, LKPopUpButton, NSArray, NSArrayController, NSDictionary, NSMapTable, NSString;
 
 @interface FFShareDestinationYouTubeController : FFShareDestinationWebController
 {
@@ -17,7 +17,7 @@
     LKPopUpButton *_categoryPopup;
     NSArrayController *_categoriesController;
     GoogleAuthTokenManager *_googleAuthTokenManager;
-    NSString *_nameWithUserInfo;
+    NSMapTable *_mapDestinationToNameWithUserInfo;
     BOOL _observing;
     NSString *_buttonTitle;
 }
@@ -26,7 +26,7 @@
 + (id)keyPathsForValuesAffectingButtonTitle;
 + (id)keyPathsForValuesAffectingCategory;
 + (id)keyPathsForValuesAffectingCategories;
-@property(retain, nonatomic) NSString *nameWithUserInfo; // @synthesize nameWithUserInfo=_nameWithUserInfo;
+@property(copy, nonatomic) NSMapTable *mapDestinationToNameWithUserInfo; // @synthesize mapDestinationToNameWithUserInfo=_mapDestinationToNameWithUserInfo;
 @property(nonatomic) GoogleAuthTokenManager *googleAuthTokenManager; // @synthesize googleAuthTokenManager=_googleAuthTokenManager;
 @property(nonatomic) NSArrayController *categoriesController; // @synthesize categoriesController=_categoriesController;
 @property(nonatomic) LKPopUpButton *categoryPopup; // @synthesize categoryPopup=_categoryPopup;
@@ -36,16 +36,20 @@
 @property(copy, nonatomic) NSString *buttonTitle; // @synthesize buttonTitle=_buttonTitle;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)signInModalForWindow:(id)arg1;
+- (void)signInForEachDestinationWithWindow:(id)arg1;
+- (void)updateAfterSignInWithAction:(id)arg1 destination:(id)arg2;
 - (void)signIn:(id)arg1;
 @property(copy, nonatomic) NSDictionary *category;
 @property(readonly, copy, nonatomic) NSArray *categories;
 @property(copy, nonatomic) NSDictionary *privacy;
 - (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)validateUsernamePassword:(id *)arg1 withDestination:(id)arg2;
 - (BOOL)validateUsernamePassword:(id *)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
-- (void)updateTitle;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
+- (void)updateTitleWithDestination:(id)arg1;
+@property(readonly, nonatomic) NSString *nameWithUserInfo;
 
 @end
 

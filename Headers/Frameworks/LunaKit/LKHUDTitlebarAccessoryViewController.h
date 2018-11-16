@@ -15,6 +15,7 @@
     LKPopUpButton *_menuButton;
     LKTextField *_titleTextField;
     NSLayoutConstraint *_titleRightMarginConstraint;
+    NSLayoutConstraint *_menuTrailingConstraint;
 }
 
 @property(nonatomic) BOOL displayInspectorButton; // @synthesize displayInspectorButton=_displayInspectorButton;
@@ -29,6 +30,7 @@
 - (void)windowDidResize:(id)arg1;
 - (void)viewWillAppear;
 - (void)awakeFromNib;
+- (void)_setTitle:(id)arg1;
 
 @end
 

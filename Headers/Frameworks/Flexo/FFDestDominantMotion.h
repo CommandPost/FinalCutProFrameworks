@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     FFDominantMotionMediaRep *_mediaRep;
     BOOL _forceInertiaCam;
     BOOL _useInertiaCamOpenCL;
-    struct _CGLContextObject *_CGLContext;
     struct {
         unsigned int shouldTerminate:1;
         unsigned int estimationInProgress:1;
@@ -53,9 +52,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)wantsDithering:(id)arg1;
 - (int)requestedBackground;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
-- (id)supportedPixelFormats;
-- (struct CGColorSpace *)colorSpace;
-- (int)imageLocation;
+- (id)requestedImageInfo;
 - (int)analysisResultCode;
 - (void)dealloc;
 - (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 mediaRep:(id)arg2 useInertiaCam:(BOOL)arg3 useInertiaCamOpenCL:(BOOL)arg4 forceInertiaCam:(BOOL)arg5 rangeToAnalyze:(struct _NSRange)arg6 visibleRange:(struct _NSRange)arg7;

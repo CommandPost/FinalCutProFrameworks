@@ -23,7 +23,7 @@
 - (void)lightInfo:(struct FxLightInfo *)arg1 forLight:(unsigned long long)arg2 atTime:(double)arg3 error:(id *)arg4;
 - (unsigned long long)numberOfLightsAtTime:(double)arg1;
 - (void)endLightAccess;
-- (void)beginLightAccess:(const struct OZRenderParams *)arg1;
+- (void)beginLightAccess:(const struct OZRenderState *)arg1;
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
 
 // Remaining properties

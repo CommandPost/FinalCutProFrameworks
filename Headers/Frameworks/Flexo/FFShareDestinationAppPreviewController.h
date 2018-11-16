@@ -17,10 +17,9 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) LKTextField *qualityTextField; // @synthesize qualityTextField=_qualityTextField;
 @property(nonatomic) LKTextField *resolutionTextField; // @synthesize resolutionTextField=_resolutionTextField;
-- (struct CGSize)optimalVideoResolution;
 - (BOOL)isAppStorePreview;
 - (void)awakeFromNib;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 
 @end
 

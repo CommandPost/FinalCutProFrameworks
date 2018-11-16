@@ -18,6 +18,7 @@
 + (id)libraryEntryFromMediaGroup:(id)arg1;
 + (id)mediaSourceFromMediaLibrary:(id)arg1;
 + (id)mediaLibrary;
++ (BOOL)supportsSecureCoding;
 + (BOOL)validateTree:(id)arg1;
 + (id)buildTree:(id)arg1;
 @property(retain) MLMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
@@ -30,6 +31,8 @@
 - (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithParent:(id)arg1 name:(id)arg2 typeFlags:(unsigned int)arg3 artist:(id)arg4 album:(id)arg5 audioSamples:(unsigned long long)arg6 audioSampleRate:(double)arg7;
 
 @end

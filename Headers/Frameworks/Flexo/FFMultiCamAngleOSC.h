@@ -6,7 +6,7 @@
 
 #import <Flexo/FFOSC.h>
 
-@class FFCaptionRenderer, FFLRUImageCacheObject, FFOpenGLInfoGrid2, NSDictionary, NSString;
+@class FFCaptionRenderer, FFLRUImageCacheObject, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMultiCamAngleOSC : FFOSC
@@ -17,15 +17,11 @@ __attribute__((visibility("hidden")))
     FFLRUImageCacheObject *_lastTextImageObject;
     NSString *_lastTextKey;
     struct CGSize _audioIconSize;
-    FFOpenGLInfoGrid2 *_objectDetailsGrid;
-    FFOpenGLInfoGrid2 *_footerDetailsGrid;
     struct CGRect _setBounds;
-    long long _showClipDetails;
     long long _showTimeline;
     FFCaptionRenderer *_captionRenderer;
 }
 
-- (void)updateCaptionFormatting:(id)arg1;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
 - (BOOL)isAvailableDuringPlayback;

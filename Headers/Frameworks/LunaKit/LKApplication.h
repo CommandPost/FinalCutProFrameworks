@@ -14,11 +14,11 @@
 }
 
 + (void)_setActionDelegate:(id)arg1;
+- (id)presentingWindowForSheetWindow;
 - (void)finishLaunching;
 - (void)dealloc;
 - (void)_setupAppDiagnosticsMenu;
 - (void)_gatherAppDiagnosticsFromMenuItem:(id)arg1;
-- (void)installModuleLayoutMenuItems;
 - (void)terminate:(id)arg1;
 - (BOOL)_shouldTerminate;
 - (id)targetForAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;

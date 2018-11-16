@@ -41,7 +41,7 @@
     BOOL _multipleSelection;
     BOOL _useColorEffectOSCs;
     BOOL _inSetSkimmable;
-    struct FFSynchronizable _oscsLock;
+    struct FFSynchronizable *_oscsLock;
     NSMutableArray *_oscs;
     FFOSC *_activeOSC;
     BOOL _selectionBasedOSCsDisabled;
@@ -132,6 +132,7 @@
 @property(nonatomic) BOOL OSCsEnabled; // @synthesize OSCsEnabled=_oscsEnabled;
 @property(nonatomic) BOOL ignoreSelectedStateChange; // @synthesize ignoreSelectedStateChange=_ignoreSelectedStateChange;
 @property(nonatomic) BOOL contextualMenuEnabled; // @synthesize contextualMenuEnabled=_contextualMenuEnabled;
+- (id).cxx_construct;
 - (void)toggleGridSnapping:(id)arg1;
 - (id)snapGrid;
 - (void)snapshotPlayer:(id)arg1;
@@ -313,6 +314,7 @@
 - (float)_updateReportedZoomFactor;
 - (void)_setPlayerModuleReportedZoomFactor:(id)arg1;
 - (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (id)stringFromTimecode:(id)arg1;
 - (void)addCommonDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3;
 - (id)showOnlyObjectForContext:(id)arg1;
 - (BOOL)destVideoCMIOHasActiveConnection;

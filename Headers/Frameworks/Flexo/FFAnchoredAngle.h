@@ -29,6 +29,7 @@
 @property(retain, nonatomic) NSSet *audioAngles; // @synthesize audioAngles=_audioAngles;
 @property(retain, nonatomic) FFObjectDict *videoEffectsDict; // @synthesize videoEffectsDict=_videoEffectsDict;
 @property(readonly, retain, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
+- (void)update_fixVideoEffectsAnchoredObject;
 - (id)createUsedRangesMediaIdentifier;
 - (void)updateHasObjectReferenceEffects;
 - (id)angleObjectForAngleID:(id)arg1;

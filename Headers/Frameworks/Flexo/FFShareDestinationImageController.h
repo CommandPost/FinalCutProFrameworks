@@ -18,7 +18,8 @@
 @property(nonatomic) LKTextField *exportInfoText; // @synthesize exportInfoText=_exportInfoText;
 @property(nonatomic) LKButton *scaleBtn; // @synthesize scaleBtn=_scaleBtn;
 @property(nonatomic) LKPopUpButton *exportAsPopup; // @synthesize exportAsPopup=_exportAsPopup;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
+- (id)createSettingsMenuDelegate;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 - (void)awakeFromNib;
 
 @end

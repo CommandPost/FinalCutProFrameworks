@@ -15,7 +15,7 @@
     unsigned long long _oldestReadableVersion;
 }
 
-- (BOOL)update:(id)arg1 error:(id *)arg2;
+- (int)update:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)initWithCurrentVersion:(unsigned long long)arg1 oldestReadableVersion:(unsigned long long)arg2 updates:(id)arg3;
 - (id)init;

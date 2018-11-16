@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (int)writeChapterNames:(id)arg1 videoFrameDuration:(CDStruct_1b6d18a9)arg2;
 - (void)setExpectedVideoDuration:(CDStruct_1b6d18a9)arg1;
 - (int)createVideoTrack:(struct opaqueCMFormatDescription *)arg1 timescale:(int)arg2;
-- (int)createAudioTracks:(unsigned int)arg1 trackMetadata:(id)arg2 chunkSize:(unsigned int)arg3 withCompressionPreset:(int)arg4 numberOfChannels:(const int *)arg5 sampleRate:(int)arg6 formatDescription:(struct opaqueCMFormatDescription *)arg7;
+- (int)createAudioTracks:(unsigned int)arg1 trackMetadata:(id)arg2 withCompressionPreset:(int)arg3 numberOfChannels:(const int *)arg4 sampleRate:(int)arg5 formatDescription:(struct opaqueCMFormatDescription *)arg6;
 - (int)removeListenerForWriteFailure:(const void *)arg1 callback:(CDUnknownFunctionPointerType)arg2;
 - (int)addListenerForWriteFailure:(const void *)arg1 callback:(CDUnknownFunctionPointerType)arg2;
 - (void)dealloc;

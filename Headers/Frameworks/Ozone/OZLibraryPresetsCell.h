@@ -6,11 +6,11 @@
 
 #import "LKPopUpButtonCell.h"
 
-@class NSImage, NSString;
+@class NSImage, NSString, OZViewController<OZPresetControllerIF>;
 
 @interface OZLibraryPresetsCell : LKPopUpButtonCell
 {
-    id _pController;
+    OZViewController<OZPresetControllerIF> *_pController;
     struct OZFactoryBase *_pSaveObject;
     struct OZLibraryPresetsMap *_pPresets;
     NSString *_pSaveItemText;

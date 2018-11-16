@@ -27,7 +27,7 @@
 - (id)selectedTiles;
 - (void)loadView;
 - (void)dealloc;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 
 @end
 

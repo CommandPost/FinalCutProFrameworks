@@ -6,11 +6,16 @@
 
 #import "OZViewControllerGroup.h"
 
+@class NSView;
+
 @interface OZFxPlugCustomParameterController : OZViewControllerGroup
 {
+    NSView *_customView;
 }
 
++ (BOOL)shouldDisplayReset;
 + (BOOL)shouldDisplayAnimIndicator;
+@property(readonly, nonatomic) NSView *customView; // @synthesize customView=_customView;
 - (float)suggestedMaxParamWidth;
 - (void)update;
 - (void)_subviewsNeedDisplay:(id)arg1;

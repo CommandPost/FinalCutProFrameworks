@@ -18,6 +18,7 @@
     unsigned long long _ordinalGroup;
 }
 
++ (BOOL)supportsSecureCoding;
 @property unsigned long long ordinalGroup; // @synthesize ordinalGroup=_ordinalGroup;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)loadIconImage;

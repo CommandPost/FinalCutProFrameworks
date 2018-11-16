@@ -8,11 +8,12 @@
 
 #import "FFInspectableObject.h"
 #import "FFInspectorTabDataSource.h"
+#import "FFLibraryCocoaScripting.h"
 
 @class FFLibrary, FFMediaEventProject, FFModelDocument, NSDictionary, NSMutableSet, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFLibraryItem : FFModelObject <FFInspectableObject, FFInspectorTabDataSource>
+@interface FFLibraryItem : FFModelObject <FFLibraryCocoaScripting, FFInspectableObject, FFInspectorTabDataSource>
 {
     FFLibraryItem *_parentItem;
     NSString *_relativePath;
@@ -112,6 +113,9 @@ __attribute__((visibility("hidden")))
 - (id)newDocument:(id)arg1 catalog:(id)arg2 create:(int)arg3 error:(id *)arg4;
 - (Class)_documentClassForType:(id)arg1;
 - (id)documentType;
+- (id)objectSpecifier;
+- (id)containerPropertyName;
+- (id)containerObject;
 
 @end
 

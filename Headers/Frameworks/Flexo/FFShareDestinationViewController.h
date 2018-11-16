@@ -8,16 +8,20 @@
 
 #import "NSTableViewDataSource.h"
 
-@class FFShareRolloverTableView, LKTextField, NSArray, NSString;
+@class FFRolloverTableView, LKTextField, NSArray, NSLayoutConstraint, NSString, NSView;
 
 @interface FFShareDestinationViewController : NSViewController <NSTableViewDataSource>
 {
-    FFShareRolloverTableView *_destinationsView;
+    FFRolloverTableView *_destinationsView;
     LKTextField *_shareTitle;
     NSArray *_destinations;
     id <FFSharePopoverDelegate> _sharePopoverDelegate;
+    NSView *_positioningView;
+    NSLayoutConstraint *_heightConstraint;
 }
 
+@property NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
+@property(retain) NSView *positioningView; // @synthesize positioningView=_positioningView;
 @property id <FFSharePopoverDelegate> sharePopoverDelegate; // @synthesize sharePopoverDelegate=_sharePopoverDelegate;
 @property(retain) NSArray *destinations; // @synthesize destinations=_destinations;
 - (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
@@ -26,7 +30,9 @@
 - (void)setTitle:(id)arg1;
 - (void)close:(id)arg1;
 - (void)dealloc;
-- (struct CGRect)fullViewSize;
+- (void)viewDidLoad;
+- (void)expandPopoverToRevealFullContents;
+- (double)heightWhichFullyExpandsPopoverWithPositioningView:(id)arg1;
 - (id)initWithSharePopoverDelegate:(id)arg1;
 
 // Remaining properties

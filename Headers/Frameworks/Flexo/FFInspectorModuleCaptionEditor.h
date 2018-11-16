@@ -13,7 +13,7 @@
 #import "NSOutlineViewDelegate.h"
 #import "NSTextViewDelegate.h"
 
-@class FFAnchoredCaption, FFCaptionEditorTextView, FFCaptionSharedHeader, FFInspectorHeaderView, LKButton, LKColorWell, LKDiscreteColorPicker, LKOutlineView, LKPopUpButton, LKSegmentedControl, LKTextField, NSArray, NSButton, NSMutableArray, NSObject<FFCaptionSelectionControllerProtocol>, NSStackView, NSString, NSTextView, NSTreeNode, NSView;
+@class FFAnchoredCaption, FFCaptionSharedHeader, FFInspectorHeaderView, LKButton, LKColorWell, LKDiscreteColorPicker, LKOutlineView, LKPopUpButton, LKSegmentedControl, LKTextField, NSArray, NSButton, NSMutableArray, NSObject<FFCaptionSelectionControllerProtocol>, NSStackView, NSString, NSTextView, NSTreeNode, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleCaptionEditor : FFInspectorModule <NSTextViewDelegate, NSOutlineViewDelegate, NSOutlineViewDataSource, FFCaptionTextBlockControllerDelegate, FFCaptionHeaderDelegate, FFCaptionEditorTextViewDelegate>
@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_textBlockControllers;
     NSObject<FFCaptionSelectionControllerProtocol> *_currentCaptionTextBlockController;
     BOOL _observingCaption;
-    FFCaptionEditorTextView *_previousTextView;
     struct PCProcrastinatedDispatch_t _procrastinatedUpdateForMultipleSelection;
     FFAnchoredCaption *_inspectedItem;
     NSTextView *_textView;
@@ -123,6 +122,9 @@ __attribute__((visibility("hidden")))
 @property LKColorWell *backgroundColorWell; // @synthesize backgroundColorWell=_backgroundColorWell;
 @property NSTextView *textView; // @synthesize textView=_textView;
 @property(retain, nonatomic) FFAnchoredCaption *inspectedItem; // @synthesize inspectedItem=_inspectedItem;
+- (void)handleTextSearchNotification:(id)arg1;
+- (void)selectPreviousTextView:(id)arg1;
+- (void)selectNextTextView:(id)arg1;
 - (void)handleEnterOrFunctionReturnKeysPressed;
 - (void)roleWillChange;
 - (void)roleDidChange;

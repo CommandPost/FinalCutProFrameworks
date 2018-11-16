@@ -86,7 +86,6 @@
 - (void)stepBackward:(id)arg1;
 - (void)hardFastForward:(id)arg1;
 - (void)hardRewind:(id)arg1;
-- (void)cancelOperation:(id)arg1;
 - (void)importClips:(id)arg1;
 - (void)awakeFromNib;
 - (void)viewFrameDidChange:(id)arg1;

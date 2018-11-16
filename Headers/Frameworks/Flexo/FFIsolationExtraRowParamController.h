@@ -6,13 +6,14 @@
 
 #import "OZViewController.h"
 
-@class LKButton, OZColorWell;
+@class FFMaskedEffectBase, LKButton, OZColorWell;
 
 __attribute__((visibility("hidden")))
 @interface FFIsolationExtraRowParamController : OZViewController
 {
     OZColorWell *_colorWell;
     LKButton *_activeMaskButton;
+    FFMaskedEffectBase *_maskedEffectBase;
 }
 
 - (id)maskedEffect;

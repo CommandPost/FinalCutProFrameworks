@@ -28,10 +28,11 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 - (_Bool)performOverfullRecovery;
 - (_Bool)supportsOverfullRecovery;
+- (void)checkForUpdatedImageLocation;
 - (void)reportGetFrameCost:(CDStruct_1b6d18a9)arg1 newlyDetectedDrops:(unsigned int)arg2 newlyDetectedReproj:(unsigned int)arg3 dropRateLastSecond:(float)arg4;
 - (id)copyEquirectForTimeOffset:(CDStruct_1b6d18a9)arg1 retCamMode:(int *)arg2 retHMDConfig:(int *)arg3;
 - (void)_notifyPlayer:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 rate:(double)arg3 rawFrameDur:(CDStruct_1b6d18a9)arg4 needsUpdate:(BOOL)arg5;
-- (id)_copyPlayerFrameForTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 tbRate:(double)arg3 effFrameDur:(CDStruct_1b6d18a9)arg4 retIsStale:(char *)arg5 retQSize:(float *)arg6;
+- (id)_copyPlayerFrameForTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 tbRate:(double)arg3 effFrameDur:(CDStruct_1b6d18a9)arg4 retIsStale:(char *)arg5 retQSize:(unsigned long long *)arg6;
 - (int)getFrameQueueStatus;
 - (int)_getFrameQueueStatusWithPlayerTime:(CDStruct_1b6d18a9)arg1 rawFrameDuration:(CDStruct_1b6d18a9)arg2 rate:(double)arg3;
 - (void)pushFrame:(id)arg1;
@@ -41,12 +42,9 @@ __attribute__((visibility("hidden")))
 - (void)setPlayer:(id)arg1;
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
 - (BOOL)wantsDithering:(id)arg1;
-- (struct CGSize)maxSupportedSize;
-- (id)supportedPixelFormats;
-- (struct CGColorSpace *)colorSpace;
+- (id)requestedImageInfo;
 - (void)_establishHMDPrefColorSpace;
 - (int)influenceOnExecLocation;
-- (int)imageLocation;
 - (int)_queueLocation;
 - (int)_actualHMDLocation;
 - (void)_recordDroppedFrame:(id)arg1;

@@ -25,6 +25,10 @@
 - (id)extendedDescription;
 - (void)setDescription:(id)arg1;
 - (id)description;
+- (void)setDisplayName:(id)arg1;
+- (id)displayName;
+- (void)setIsRegionalDefault:(BOOL)arg1;
+- (BOOL)isRegionalDefault;
 - (void)setPath:(id)arg1;
 - (id)path;
 - (void)setName:(id)arg1;

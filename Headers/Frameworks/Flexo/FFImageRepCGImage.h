@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     int _alphaType;
     _Bool _needPremultClamp;
     _Bool _invertAlpha;
+    _Bool _enableFFBufferPoolAllocator;
 }
 
 + (struct CGColorSpace *)copyColorSpaceForNativeCS:(struct CGColorSpace *)arg1 retFlags:(unsigned int *)arg2;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)setAlphaWantsInversion:(_Bool)arg1;
 - (_Bool)alphaWantsClamping;
 - (void)setAlphaWantsClamping:(_Bool)arg1;
+- (void)setEnableFFBufferPoolAllocator:(_Bool)arg1;
 - (struct CGImage *)CGImageRef;
 - (int)nativeAlphaType;
 - (struct CGRect)pixelSpaceBounds;

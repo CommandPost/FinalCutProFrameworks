@@ -31,7 +31,7 @@
 - (void)getLocalToWorld:(PCMatrix44Tmpl_93ed1289 *)arg1;
 - (PCBox_dd92ab54)getLocalVolume:(struct TXTextObject *)arg1;
 - (PCBox_dd92ab54)getLocalVolume;
-- (struct TXTextObject *)focusedTextObject;
+- (shared_ptr_a6fe21d1)focusedTextObject;
 
 @end
 

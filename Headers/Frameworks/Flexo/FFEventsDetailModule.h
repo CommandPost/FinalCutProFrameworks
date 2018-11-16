@@ -6,7 +6,7 @@
 
 #import <Flexo/FFMDModule.h>
 
-@class NSArray, NSDictionary, NSSet;
+@class FFUndoHandler, NSArray, NSDictionary, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface FFEventsDetailModule : FFMDModule
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSSet *_observedProjects;
     NSDictionary *_filtersDictionary;
     CDUnknownBlockType _UIUpdateBlock;
+    FFUndoHandler *_observingUndoHandler;
 }
 
 @property(retain, nonatomic) NSSet *observedProjects; // @synthesize observedProjects=_observedProjects;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)dealloc;
+- (void)resetObservingUndoHandler:(id)arg1;
 - (id)init;
 - (BOOL)finishedLoading;
 - (void)removeFilters;
@@ -45,7 +47,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *selectedItems;
 @property(readonly, nonatomic) NSArray *unfilteredRanges;
 - (void)updateHeaderUI;
-- (int)favFilterType;
+- (long long)favFilterType;
 - (void)setFavoriteFilter:(int)arg1;
 
 @end

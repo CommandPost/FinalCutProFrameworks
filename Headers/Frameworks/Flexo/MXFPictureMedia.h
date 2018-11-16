@@ -9,7 +9,7 @@
 #import "HPMMediaCursorProtocol.h"
 #import "HPMPictureMediaProtocol.h"
 
-@class NSMutableDictionary, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface MXFPictureMedia : MXFMedia <HPMPictureMediaProtocol, HPMMediaCursorProtocol>
@@ -91,7 +91,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned int bytesPerSample;
 @property(readonly) int codecType;
 @property(readonly, copy) NSString *debugDescription;
-@property(retain) NSMutableDictionary *descriptiveMetadata;
+@property struct __CFDictionary *descriptiveMetadata;
 @property(readonly) int editRate;
 @property(readonly) int essenceType;
 @property(readonly) long long frameDuration;

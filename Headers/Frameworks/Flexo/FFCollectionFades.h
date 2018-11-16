@@ -6,12 +6,13 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
+#import "FFAnchoredSequenceDSObservedObject.h"
 #import "NSCoding.h"
 #import "NSCopying.h"
 
 @class FFAnchoredGeneratorComponent, FFAnchoredObject;
 
-@interface FFCollectionFades : FFBaseDSObject <NSCoding, NSCopying>
+@interface FFCollectionFades : FFBaseDSObject <NSCoding, NSCopying, FFAnchoredSequenceDSObservedObject>
 {
     CDStruct_1b6d18a9 _fadeInStartTime;
     CDStruct_1b6d18a9 _fadeInDuration;
@@ -27,6 +28,7 @@
 @property(nonatomic) CDStruct_1b6d18a9 fadeInDuration; // @synthesize fadeInDuration=_fadeInDuration;
 @property(nonatomic) CDStruct_1b6d18a9 fadeOutStartTime; // @synthesize fadeOutStartTime=_fadeOutStartTime;
 @property(nonatomic) CDStruct_1b6d18a9 fadeInStartTime; // @synthesize fadeInStartTime=_fadeInStartTime;
+- (id)anchoredObjectForSequenceDSObserving;
 - (void)_updateAudioFades;
 - (BOOL)isFadeInOrOutObject:(id)arg1;
 - (id)fadeOutObject;

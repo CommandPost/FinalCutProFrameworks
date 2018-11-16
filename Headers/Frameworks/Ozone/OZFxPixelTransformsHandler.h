@@ -22,7 +22,7 @@
 - (PCMatrix44Tmpl_e98c85ee)pixelTransform;
 - (void)setPostTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1;
 - (void)setPreTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1;
-- (void)setAgent:(struct LiAgent *)arg1;
+- (void)setAgent:(const struct LiAgent *)arg1;
 - (id)init;
 
 // Remaining properties

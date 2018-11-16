@@ -35,7 +35,6 @@
     id _background;
     NSString *_nibName;
     NSBundle *_bundle;
-    id _autounbinder;
     void *_proReserved1;
     void *_proReserved2;
     void *_proReserved3;

@@ -6,33 +6,31 @@
 
 #import "NSObject.h"
 
-@class NSString;
+@class NSColor, NSString;
 
-__attribute__((visibility("hidden")))
 @interface FFClipDisplayObject : NSObject
 {
     NSString *_clipName;
     NSString *_collectionTimeInLocalTime;
     BOOL _hasAudio;
     BOOL _hasVideo;
-    BOOL _leftTouching;
     BOOL _rightTouching;
     struct CGRect _imageRect;
     struct CGRect _displayRect;
     NSString *_persistentID;
+    NSColor *_textColor;
 }
 
+@property(retain, nonatomic) NSColor *textColor; // @synthesize textColor=_textColor;
 @property(retain, nonatomic) NSString *persistentID; // @synthesize persistentID=_persistentID;
 @property(nonatomic) struct CGRect displayRect; // @synthesize displayRect=_displayRect;
 @property(nonatomic) struct CGRect imageRect; // @synthesize imageRect=_imageRect;
-@property(nonatomic) BOOL rightTouching; // @synthesize rightTouching=_rightTouching;
-@property(nonatomic) BOOL leftTouching; // @synthesize leftTouching=_leftTouching;
 @property(nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
 @property(nonatomic) BOOL hasAudio; // @synthesize hasAudio=_hasAudio;
 @property(retain, nonatomic) NSString *collectionTimeInLocalTime; // @synthesize collectionTimeInLocalTime=_collectionTimeInLocalTime;
 @property(retain, nonatomic) NSString *clipName; // @synthesize clipName=_clipName;
 - (void)dealloc;
-- (id)initWithClipNameTimeCodeAndAV:(id)arg1 collectionTimeInLocalTime:(id)arg2 hasAudio:(BOOL)arg3 hasVideo:(BOOL)arg4 leftTouching:(BOOL)arg5 rightTouching:(BOOL)arg6 imageRect:(struct CGRect)arg7 displayRect:(struct CGRect)arg8 persistentID:(id)arg9;
+- (id)initWithClipNameTimeCodeAndAV:(id)arg1 collectionTimeInLocalTime:(id)arg2 textColor:(id)arg3 hasAudio:(BOOL)arg4 hasVideo:(BOOL)arg5 imageRect:(struct CGRect)arg6 displayRect:(struct CGRect)arg7 persistentID:(id)arg8;
 
 @end
 

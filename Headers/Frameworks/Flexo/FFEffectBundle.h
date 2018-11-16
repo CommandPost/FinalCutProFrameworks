@@ -9,12 +9,13 @@
 #import "FFAudioEffectChainDelegate.h"
 #import "FFEffectPresetDirtyProtocol.h"
 
-@class CHChannelEnum, NSArray;
+@class CHChannelEnum, FFEffectBundlePart, NSArray;
 
 @interface FFEffectBundle : FFEffect <FFAudioEffectChainDelegate, FFEffectPresetDirtyProtocol>
 {
     NSArray *_effectBundleParts;
     CHChannelEnum *_presetChannel;
+    FFEffectBundlePart *_activeBundlePart;
     NSArray *_activeEffects;
     BOOL _initWithCoderScope;
 }
@@ -33,21 +34,28 @@
 + (id)_userBundlesDirectory;
 + (void)registerEffects;
 + (void)registerBundleAtPath:(id)arg1 isUserBundle:(BOOL)arg2;
+@property(retain, nonatomic) NSArray *effectBundleParts; // @synthesize effectBundleParts=_effectBundleParts;
 - (BOOL)update_migrateEffectBundleFormat;
 - (BOOL)presetDirty;
 - (id)initWithEffectID:(id)arg1 andXMLDocument:(id)arg2;
 - (id)exportAsXMLDocument;
 - (id)effectChainModelObject;
 - (id)effectChainEffects;
-- (id)newAudioMD5AndOffset:(int)arg1;
+- (void)removeActiveBundlePartObserving;
+- (void)addActiveBundlePartObserving;
+- (void)removeActiveEffectsObserving;
+- (void)addActiveEffectsObserving;
 - (void)removePresetChannelObserving;
 - (void)addPresetChannelObserving;
-- (void)createActivePartEffectChannelsInFolder:(id)arg1;
+- (id)newAudioMD5AndOffset:(int)arg1;
+- (BOOL)hasEffectChannelsInFolder:(id)arg1;
+- (void)deleteEffectChannelsInFolder:(id)arg1;
+- (void)createEffectChannelsForEffectBundlePart:(id)arg1 inFolder:(id)arg2;
 - (id)presetChannel;
 - (id)primaryAnimationChannel;
 - (void)presetChanged:(id)arg1;
 - (void)partChanged;
-- (void)partChangedHook;
+- (void)_undoPartChanged:(id)arg1;
 - (void)_showEffectWindow:(id)arg1;
 - (void)createChannelsInFolder:(id)arg1;
 - (id)newAmountChannelForEffectBundlePart:(id)arg1 inFolder:(id)arg2 withChannelID:(int)arg3;
@@ -63,8 +71,8 @@
 - (id)allEffects;
 - (void)setEffects:(id)arg1;
 - (id)effects;
-- (void)setEffectBundleParts:(id)arg1;
-@property(readonly, nonatomic) NSArray *effectBundleParts;
+- (void)_setActivePart:(id)arg1 initialize:(BOOL)arg2 notify:(BOOL)arg3;
+- (void)_updateActivePart:(BOOL)arg1;
 - (id)activePart;
 - (unsigned long long)activePartIndex;
 - (void)removeObjectFromEffectBundlePartsAtIndex:(unsigned long long)arg1;

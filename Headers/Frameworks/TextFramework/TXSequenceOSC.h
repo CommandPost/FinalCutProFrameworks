@@ -17,9 +17,9 @@
 - (BOOL)useCurrentSequenceValues;
 - (int)getOSCMode;
 - (int)getTransformScope;
-- (struct TXGlyphTransformInfo)getGlyphTransformInfo:(PCPtr_3bd68a10)arg1 forRenderState:(struct OZRenderState *)arg2;
+- (struct TXGlyphTransformInfo)getGlyphTransformInfo:(const shared_ptr_a6fe21d1 *)arg1 forRenderState:(struct OZRenderState *)arg2;
 - (_Bool)scaleAffectsOffset;
-- (struct OZRenderState)getRenderState:(const struct OZRenderState *)arg1 textObject:(PCPtr_3bd68a10)arg2 remapTime:(BOOL)arg3;
+- (struct OZRenderState)getRenderState:(const struct OZRenderState *)arg1 textObject:(struct TXTextObject *)arg2 remapTime:(BOOL)arg3;
 - (BOOL)showSelectedOSC;
 - (BOOL)drawMultipleSelectionBoxes;
 - (int)hitCheck:(id)arg1;
@@ -43,7 +43,7 @@
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)draw;
-- (void)_drawSelectionRange:(const struct OZRenderState *)arg1 viewTransformation:(const PCMatrix44Tmpl_93ed1289 *)arg2;
+- (void)drawSelectionRange:(const struct OZRenderState *)arg1 viewTransformation:(const PCMatrix44Tmpl_93ed1289 *)arg2;
 - (void)_drawCustomPath:(const struct OZRenderState *)arg1 viewTransformation:(const PCMatrix44Tmpl_93ed1289 *)arg2;
 - (void)clipPath:(vector_ced1dec3 *)arg1 edges:(vector_ced1dec3 *)arg2 visible:(vector_a7cf9eda *)arg3;
 - (struct TXSequenceBehavior *)getSequenceBehavior;

@@ -17,15 +17,17 @@
 + (struct CGRect)computeROI:(id)arg1 forSquared:(BOOL)arg2 full:(BOOL)arg3 quality:(int)arg4;
 - (id)newPTforRequestSquared:(BOOL)arg1 field:(unsigned int)arg2 quality:(int)arg3 Ydown:(BOOL)arg4;
 - (int)actualQualityFromRequestedQuality:(int)arg1;
+- (id)newFlattenedImageViaRenderQueue:(int)arg1 atTime:(CDStruct_1b6d18a9)arg2 flattenFormat:(id)arg3 wantSquarePixels:(BOOL)arg4 wsChoice:(int)arg5 progressBlock:(CDUnknownBlockType)arg6 error:(id *)arg7;
 - (id)newFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4;
 - (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4 quality:(int)arg5 wsChoice:(int)arg6;
 - (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4 quality:(int)arg5;
 - (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4;
+- (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 useStreamROI:(BOOL)arg3 fullFrame:(BOOL)arg4 graphBuildInfo:(id)arg5 progressBlock:(CDUnknownBlockType)arg6 error:(id *)arg7;
 - (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 useStreamROI:(BOOL)arg3 fullFrame:(BOOL)arg4 graphBuildInfo:(id)arg5 error:(id *)arg6;
 - (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 useStreamROI:(BOOL)arg3 fullFrame:(BOOL)arg4 graphBuildInfo:(id)arg5;
 - (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4 quality:(int)arg5 useStreamROI:(BOOL)arg6 graphBuildInfo:(id)arg7;
 - (id)newRepresentationalImageAtTime:(CDStruct_1b6d18a9)arg1 Ydown:(BOOL)arg2 field:(unsigned int)arg3 priority:(int)arg4 quality:(int)arg5 useStreamROI:(BOOL)arg6;
-- (id)newSquaredFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 quality:(int)arg2 temporalQuality:(int)arg3 bypassSegmentStore:(BOOL)arg4 backgroundColor:(id)arg5 returnImageMD5:(id *)arg6 error:(id *)arg7;
+- (id)newSquaredFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 quality:(int)arg2 temporalQuality:(int)arg3 bypassSegmentStore:(BOOL)arg4 backgroundColor:(id)arg5 returnImageMD5:(id *)arg6 progressBlock:(CDUnknownBlockType)arg7 error:(id *)arg8;
 - (id)newSquaredFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 quality:(int)arg2 temporalQuality:(int)arg3 bypassSegmentStore:(BOOL)arg4 backgroundColor:(id)arg5 returnImageMD5:(id *)arg6;
 - (id)newSquaredFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 quality:(int)arg2 temporalQuality:(int)arg3 bypassSegmentStore:(BOOL)arg4 returnImageMD5:(id *)arg5;
 - (id)newThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 returnImageMD5:(id *)arg3 contentsScale:(double)arg4;

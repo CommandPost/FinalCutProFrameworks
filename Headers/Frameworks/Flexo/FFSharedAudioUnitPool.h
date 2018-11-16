@@ -12,7 +12,9 @@ __attribute__((visibility("hidden")))
 @interface FFSharedAudioUnitPool : NSObject
 {
     NSMapTable *_effectsMap;
-    BOOL _pendingAudioUnitAllocationUpdate;
+    BOOL _pendingAudioUnitAllocationUpdatedDispatch;
+    BOOL _pendingAudioUnitReturnedDispatch;
+    BOOL _pendingAudioUnitDeinstantiationDispatch;
     BOOL _enabled;
     int _suspended;
     BOOL _performAudioUnitAllocationUpdateOnResume;
@@ -23,11 +25,13 @@ __attribute__((visibility("hidden")))
 + (id)instance;
 - (void)_notifyLibraryUpdateEnd:(id)arg1;
 - (void)_notifyLibraryUpdateBegin:(id)arg1;
+- (void)dispatchAudioUnitAllocationUpdateForDeinstantiation;
 - (void)dispatchAudioUnitAllocationUpdate;
 - (void)_updateAudioUnitAllocation;
-- (void)_notifyAudioUnitAllocationNeedsUpdateWithDelay:(double)arg1;
+- (void)_notifyAudioUnitReturned;
+- (void)_notifyAudioUnitAllocationUpdated;
 - (void)clearAudioUnitAllocationForEffectID:(id)arg1 object:(id)arg2;
-- (void)setAudioUnitAllocation:(unsigned int)arg1 effectID:(id)arg2 object:(id)arg3;
+- (void)setAudioUnitAllocation:(unsigned int)arg1 effectID:(id)arg2 sampleRate:(double)arg3 numChannels:(unsigned int)arg4 object:(id)arg5;
 - (void)_purgeAudioUnit:(id)arg1;
 - (void)returnAudioUnit:(id)arg1;
 - (id)reserveAudioUnitForEffectID:(id)arg1 sampleRate:(double)arg2 numChannels:(unsigned int)arg3 effectState:(id)arg4 forPlayback:(BOOL)arg5 defaultPreset:(id *)arg6;

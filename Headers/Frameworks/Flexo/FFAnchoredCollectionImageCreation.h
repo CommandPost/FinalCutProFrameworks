@@ -8,7 +8,6 @@
 
 @class NSColor;
 
-__attribute__((visibility("hidden")))
 @interface FFAnchoredCollectionImageCreation : NSObject
 {
     double _imageWidth;

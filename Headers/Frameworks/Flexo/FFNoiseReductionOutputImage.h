@@ -11,33 +11,26 @@
 __attribute__((visibility("hidden")))
 @interface FFNoiseReductionOutputImage : NSObject
 {
-    struct __CVBuffer *_outputCVPixelBuffer;
-    FFPixelBuffer *_originalAlpha;
+    FFPixelBuffer *_outputPixelBuffer;
+    FFPixelBuffer *_originalData;
     PCMatrix44Double *_outputPixelTransform;
-    PCMatrix44Double *_outputPixelTransformField2;
     struct CGRect _outputPixelSpaceBounds;
-    struct CGRect _outputPixelSpaceBoundsField2;
-    BOOL _outputNeedToUpscaleBackToFullFrameField1;
-    BOOL _outputNeedToUpscaleBackToFullFrameField2;
-    BOOL _isInterlaced;
     FFImageAbsoluteOutputFormat *_vpaInOutFormat;
-    FFImageAbsoluteOutputFormat *_alphaInOutFormat;
+    FFImageAbsoluteOutputFormat *_preserveFmt;
     CDStruct_1b6d18a9 _requestedTime;
+    PCMatrix44Double *_outputPixelTransformField2;
+    struct CGRect _outputPixelSpaceBoundsField2;
 }
 
-+ (id)newFieldImage:(struct __CVBuffer *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelFormat:(id)arg3 pixelTransform:(id)arg4 requestedField:(int)arg5 origin:(struct CGPoint)arg6 timeForError:(CDStruct_1b6d18a9)arg7 error:(id *)arg8;
-@property(readonly, nonatomic) BOOL outputNeedToUpscaleBackToFullFrameField2; // @synthesize outputNeedToUpscaleBackToFullFrameField2=_outputNeedToUpscaleBackToFullFrameField2;
-@property(readonly, nonatomic) BOOL outputNeedToUpscaleBackToFullFrameField1; // @synthesize outputNeedToUpscaleBackToFullFrameField1=_outputNeedToUpscaleBackToFullFrameField1;
 @property(readonly, nonatomic) struct CGRect outputPixelSpaceBoundsField2; // @synthesize outputPixelSpaceBoundsField2=_outputPixelSpaceBoundsField2;
 @property(readonly, nonatomic) struct CGRect outputPixelSpaceBounds; // @synthesize outputPixelSpaceBounds=_outputPixelSpaceBounds;
 @property(readonly, nonatomic) PCMatrix44Double *outputPixelTransformField2; // @synthesize outputPixelTransformField2=_outputPixelTransformField2;
 @property(readonly, nonatomic) PCMatrix44Double *outputPixelTransform; // @synthesize outputPixelTransform=_outputPixelTransform;
-@property(readonly, nonatomic) struct __CVBuffer *outputCVPixelBuffer; // @synthesize outputCVPixelBuffer=_outputCVPixelBuffer;
-- (id)_newOutputFFImage:(int)arg1 CVIB:(struct __CVBuffer *)arg2 fmt:(id)arg3 error:(id *)arg4;
-- (id)newOutputAlphaFFImage:(int)arg1 error:(id *)arg2;
-- (id)newOutputFFImage:(int)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) FFPixelBuffer *outputPixelBuffer; // @synthesize outputPixelBuffer=_outputPixelBuffer;
+- (id)newOutputOriginalFFImage;
+- (id)newOutputFFImage;
 - (void)dealloc;
-- (id)initWithImage:(struct __CVBuffer *)arg1 outputPixelTransform:(id)arg2 outputPixelTransformField2:(id)arg3 outputPixelSpaceBounds:(struct CGRect)arg4 outputPixelSpaceBoundsField2:(struct CGRect)arg5 outputNeedToUpscaleBackToFullFrameField1:(BOOL)arg6 outputNeedToUpscaleBackToFullFrameField2:(BOOL)arg7 vpaInOutFormat:(id)arg8 alphaInOutFormat:(id)arg9 time:(CDStruct_1b6d18a9)arg10 originalAlpha:(id)arg11;
+- (id)initWithImage:(id)arg1 outputPixelTransform:(id)arg2 outputPixelSpaceBounds:(struct CGRect)arg3 vpaInOutFormat:(id)arg4 preserveInOutFormat:(id)arg5 time:(CDStruct_1b6d18a9)arg6 originalData:(id)arg7;
 
 @end
 

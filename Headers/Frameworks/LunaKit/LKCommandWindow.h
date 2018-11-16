@@ -11,8 +11,6 @@
 }
 
 - (void)sendEvent:(id)arg1;
-- (void)saveFrameUsingName:(id)arg1;
-- (id)frameAutosaveName;
 
 @end
 

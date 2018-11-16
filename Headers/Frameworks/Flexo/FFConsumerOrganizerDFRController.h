@@ -6,7 +6,7 @@
 
 #import "LKDFRController.h"
 
-@class NSArray, NSButton, NSButtonGroupTouchBarItem, NSPopoverTouchBarItem, NSString, NSTouchBarItem;
+@class NSArray, NSButton, NSGroupTouchBarItem, NSPopoverTouchBarItem, NSString, NSTouchBarItem;
 
 __attribute__((visibility("hidden")))
 @interface FFConsumerOrganizerDFRController : LKDFRController
@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
     NSTouchBarItem *_favoriteBarItem;
     NSTouchBarItem *_rejectBarItem;
     NSTouchBarItem *_playPauseBarItem;
-    NSButtonGroupTouchBarItem *_addToiMovieAddAsOverlayButtonGroup;
+    NSGroupTouchBarItem *_addToiMovieAddAsOverlayButtonGroup;
     NSPopoverTouchBarItem *_addToiMovieVideoOverlayPopoverBarItem;
     NSTouchBarItem *_addVideoOverlayOptionsBarItem;
     NSButton *_videoOverlayButton;
     NSButton *_audioOverlayButton;
+    NSTouchBarItem *_addToiMovieItem;
+    NSTouchBarItem *_audioOverlayItem;
     NSArray *_selection;
     NSString *_selectionMarkerType;
 }

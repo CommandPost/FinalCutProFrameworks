@@ -6,7 +6,7 @@
 
 #import <ProInspector/OZViewControllerGroup.h>
 
-@class LKButton, NSAttributedString, NSButton, NSMutableSet, PIParamPulldownCtlr;
+@class LKButton, NSAttributedString, NSButton, NSMutableSet, PIAnimController, PIBuildContext, PIParamPulldownCtlr;
 
 @interface OZChanFolderController : OZViewControllerGroup
 {
@@ -16,6 +16,8 @@
     NSMutableSet *_pCtlrsHiddenWhenCollapsed;
     int _customButtonDisplayOption;
     PIParamPulldownCtlr *_pParamPulldownCtlr;
+    PIAnimController *_pAnimCtlr;
+    PIBuildContext *_pBuildContext;
     NSAttributedString *_pHideAttrStr;
     NSAttributedString *_pShowAttrStr;
     NSAttributedString *_pHideAttrStrInvisible;

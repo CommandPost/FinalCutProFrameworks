@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)defaultUserNotificationDelegate;
+- (id)bestMatchForPartialFileName:(id)arg1;
+- (id)bestMatchesForPartialFileNames:(id)arg1;
 - (void)userNotificationCenter:(id)arg1 didActivateNotification:(id)arg2;
 - (BOOL)userNotificationCenter:(id)arg1 shouldPresentNotification:(id)arg2;
 

@@ -6,7 +6,7 @@
 
 #import "NSWindowController.h"
 
-@class CHChannelEnum, CHChannelFolder, FFAnchoredObject, FFAudioEffectContentView, FFAudioEffectEditorDelegate, FFAudioEffectHeaderView, FFAudioEffectWindowParameterTracker, FFAudioUnitEffect, FFChannelChangeController, FFContext, FFEffectBundle, FFEffectStack, FFSharedAudioUnit, FFUndoHandler, LKButton, LKPopUpButton, LKSegmentedControl, NSArray, NSLayoutConstraint, NSMapTable, NSMutableArray, NSMutableSet, NSString, NSTextField, NSView;
+@class CHChannelBase, CHChannelEnum, CHChannelFolder, FFAnchoredObject, FFAudioEffectContentView, FFAudioEffectEditorDelegate, FFAudioEffectHeaderView, FFAudioEffectWindowParameterTracker, FFAudioUnitEffect, FFChannelChangeController, FFContext, FFEffectBundle, FFEffectStack, FFSharedAudioUnit, FFUndoHandler, LKButton, LKPopUpButton, LKSegmentedControl, NSArray, NSLayoutConstraint, NSMapTable, NSMutableArray, NSMutableSet, NSString, NSTextField, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioEffectEditorWindowController : NSWindowController
@@ -26,8 +26,10 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_effectContainerLeadingConstraint;
     NSLayoutConstraint *_effectContainerTrailingConstraint;
     BOOL _isObserving;
-    struct __FSEventStream *_eventStream;
-    NSArray *_paths;
+    BOOL _observingAUViewFrameChanges;
+    struct __FSEventStream *_observingEventStream;
+    NSArray *_observingPaths;
+    CHChannelBase *_observedBypassChannel;
     BOOL _preferGeneric;
     BOOL _isGeneric;
     FFAudioEffectEditorDelegate *_effectDelegate;
@@ -53,17 +55,17 @@ __attribute__((visibility("hidden")))
     FFAudioEffectWindowParameterTracker *_masterGesturedTracker;
     FFUndoHandler *_disabledUndoWarning;
     BOOL _isKeyWindow;
-    BOOL _observingAUViewFrameChanges;
+    unsigned long long _auScalePercentage;
     BOOL _pendingBundleEffectPartChange;
     BOOL _pendingHandleEffectChange;
     BOOL _pendingParamsFolderChannelChange;
-    unsigned long long _auScalePercentage;
+    BOOL _pendingUpdateDisplayNames;
 }
 
 + (void)prepareForShutdown;
 + (id)effectsForWindowControllers;
 + (id)windowControllerForEffect:(id)arg1;
-+ (void)showWindowControllerForLastEffectAddedToObject:(id)arg1 context:(id)arg2;
++ (void)showWindowControllerForEffect:(id)arg1 context:(id)arg2;
 + (id)showWindowControllerForEffectDelegate:(id)arg1 context:(id)arg2 preferGeneric:(BOOL)arg3;
 + (void)_cacheRemoveWindowController:(id)arg1;
 + (void)_cacheAddWindowController:(id)arg1;
@@ -143,6 +145,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateEffectDelegate:(id)arg1;
 - (void)updateFooterLabels;
 - (void)updateWindowTitleBar;
+- (void)_notifyUpdateDisplayNames;
 - (void)updateDisplayNames;
 - (void)_removeEffectStackAnchoredObjectObservation;
 - (void)_addEffectStackAnchoredObjectObservation;

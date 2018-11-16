@@ -21,6 +21,7 @@
 - (id)defaultPresetKey;
 - (id)alwaysUseDefaultPresetKey;
 - (Class)presetClass;
+- (id)tagOfRegionalDefaultPreset;
 - (void)setAlwaysUseDefaultPreset:(BOOL)arg1;
 - (BOOL)alwaysUseDefaultPreset;
 - (void)setIndexOfDefaultPreset:(int)arg1;

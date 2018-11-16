@@ -50,7 +50,7 @@
 - (void)setCurrentTool:(unsigned int)arg1;
 - (unsigned int)getCurrentTool;
 - (void)setCurveInterpolation:(id)arg1 interpolation:(unsigned int)arg2;
-- (vector_875fa760)getKeypoints:(unsigned int)arg1;
+- (vector_80acc5a3)getKeypoints:(unsigned int)arg1;
 - (void)getSamples:(id)arg1 flag:(BOOL)arg2 minU:(CDStruct_1b6d18a9)arg3 resolution:(CDStruct_1b6d18a9)arg4 samplesU:(struct **)arg5 samplesV:(double **)arg6 number:(unsigned int *)arg7;
 - (void)setBezierPoint:(id)arg1;
 - (void)weightTangents:(id)arg1 flag:(BOOL)arg2;

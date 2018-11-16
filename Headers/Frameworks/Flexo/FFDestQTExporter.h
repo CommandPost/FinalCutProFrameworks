@@ -6,7 +6,7 @@
 
 #import <Flexo/FFDestRenderer.h>
 
-@class FFMovieWriter, NSArray, NSDictionary, NSError, NSMutableArray, NSString;
+@class FFDestVideoRequestInfo, FFMovieWriter, NSArray, NSDictionary, NSError, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFDestQTExporter : FFDestRenderer
@@ -42,6 +42,8 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _sampleBufferDuration;
     BOOL _previousSameStream;
     int _firstSampleOfCurrentSegment;
+    struct FFSynchronizable _cachedReqInfoLock;
+    FFDestVideoRequestInfo *_cachedRequestInfo;
     int _whichSegment;
     struct __CFArray *_reorderBuffer;
 }
@@ -59,7 +61,8 @@ __attribute__((visibility("hidden")))
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
 - (void)stop;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
-- (id)supportedPixelFormats;
+- (id)requestedImageInfo;
+- (id)_copyInternalRequestedImageInfo;
 - (void)dealloc;
 - (void)setTrialRunPass:(BOOL)arg1;
 - (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderProps:(id)arg2 audioRenderers:(id)arg3 movieWriter:(id)arg4;

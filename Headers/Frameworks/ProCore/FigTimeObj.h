@@ -6,16 +6,17 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface FigTimeObj : NSObject <NSCopying, NSCoding>
+@interface FigTimeObj : NSObject <NSCopying, NSSecureCoding>
 {
     CDStruct_1b6d18a9 _time;
 }
 
 + (BOOL)classIsAbstract;
 + (id)timeWithTime:(CDStruct_1b6d18a9)arg1;
++ (BOOL)supportsSecureCoding;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (long long)compareWithTime:(id)arg1;

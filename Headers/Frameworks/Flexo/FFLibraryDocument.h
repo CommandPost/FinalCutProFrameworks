@@ -131,7 +131,7 @@
 - (BOOL)settingsAreDirty;
 - (void)settingsAreDirty:(BOOL)arg1;
 - (BOOL)saveSettings:(id *)arg1;
-- (id)mutableSettings;
+- (void)performSettingsBlock:(CDUnknownBlockType)arg1;
 - (id)readSettingsValueForKey:(id)arg1;
 - (BOOL)writeSettingsValue:(id)arg1 forKey:(id)arg2;
 - (BOOL)syncSettings:(id *)arg1;
@@ -165,6 +165,9 @@
 - (BOOL)warnForBranchIDTag;
 - (void)showIncompatibleLibraryMessage:(id)arg1;
 - (BOOL)warnForUpdate;
+- (void)_checkFor32BitMedia;
+- (BOOL)_shouldShow32BitMediaWarning;
+- (BOOL)_mediaShouldTrigger32BitWarning:(id)arg1;
 - (id)addUpdateLine:(id)arg1 to:(id)arg2;
 - (BOOL)_bringUpToDate:(id *)arg1;
 - (void)_decrementIsPerformingPostLibraryUpdatersCount;
@@ -183,6 +186,7 @@
 - (void)update_migrateToRoleComponents;
 - (void)update_audioMediaComponentWrapup;
 - (BOOL)update_iMovieFixProjectMediaMigration:(id *)arg1;
+- (BOOL)update_resetHiddenEvents_43585635:(id *)arg1;
 - (BOOL)update_resetHiddenEvents:(id *)arg1;
 - (BOOL)updateProjectsIntoHiddenEvents:(id *)arg1;
 - (void)setUpdateProjectsIntoHiddenEvents:(BOOL)arg1;
@@ -222,6 +226,8 @@
 - (void)stopObservingAppBecameActive;
 - (void)startObservingAppBecameActive;
 - (void)close;
+- (void)_closeWhenPossibleWithBlock:(CDUnknownBlockType)arg1;
+- (void)closeWhenPossibleWithBlock:(CDUnknownBlockType)arg1;
 - (void)closeWhenPossible;
 - (BOOL)flushStorage:(id *)arg1;
 - (void)dealloc;

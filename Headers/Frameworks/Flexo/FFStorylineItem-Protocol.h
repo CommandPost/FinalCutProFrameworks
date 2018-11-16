@@ -11,7 +11,10 @@
 @protocol FFStorylineItem <NSObject>
 @property(readonly, nonatomic) id <FFStorylineItem> nextStoryItem;
 @property(readonly, nonatomic) id <FFStorylineItem> previousStoryItem;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 targetAnchorTime;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 sourceAnchorTime;
 @property(readonly, nonatomic) id <FFStorylineItem> anchoredToStoryItem;
+@property(readonly, nonatomic) BOOL isConnectedStoryline;
 @property(readonly, nonatomic) BOOL isAnchored;
 @property(readonly, nonatomic) BOOL isPrimaryComponent;
 @property(readonly, nonatomic) BOOL isSecondaryComponent;
@@ -41,10 +44,15 @@
 @property(copy, nonatomic) NSString *displayName;
 - (long long)compareByStartTime:(id <FFStorylineItem>)arg1;
 - (void)trimTrailingEdgeByOffset:(CDStruct_1b6d18a9)arg1;
+- (void)trimLeadingEdgeByOffset:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 toStoryline:(id <FFStorylineItem>)arg2;
+- (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 fromStoryline:(id <FFStoryline>)arg2;
 - (void)resolveCollisions;
+- (void)wrapInStoryline;
 - (void)disconnect;
 - (void)connectStorylineItem:(id <FFStorylineItem>)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)connectStoryline:(id <FFStoryline>)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (unsigned long long)storyItemTransitionSubType:(BOOL)arg1;
+- (CDStruct_e83c9415)timeRangeInContainerSpace:(id)arg1;
 @end
 

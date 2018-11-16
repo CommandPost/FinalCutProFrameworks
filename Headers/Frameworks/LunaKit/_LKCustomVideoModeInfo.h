@@ -8,13 +8,15 @@
 
 #import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface _LKCustomVideoModeInfo : NSObject <NSCopying, NSCoding>
+@interface _LKCustomVideoModeInfo : NSObject <NSCopying, NSCoding, NSSecureCoding>
 {
     double frameRate;
     int preferredTimeScale;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

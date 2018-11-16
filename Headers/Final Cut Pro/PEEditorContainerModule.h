@@ -7,12 +7,13 @@
 #import "LKViewModule.h"
 
 #import "FFEditorModuleDelegate.h"
+#import "FFProExtensionHostTimelineProtocol.h"
 #import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
 @class FFAnchoredTimelineModule, FFEditorModule, LKButton, LKMenu, LKPaneCapSegmentedControl, LKSegmentedControl, LKTextField, LKTimecodeFormatter, NSArray, NSButton, NSDictionary, NSLayoutConstraint, NSPopover, NSString, NSView, PEAudioMeterModule, PEDataListContainerModule, PEEditorAppearancePopoverController, PEEditorContainerSplitView, PEEditorMenuDelayButton, PEMediaBrowserContainerModule, PETimelineIndexToggleButton, PEViewedClipSet, PEWindowBackgroundColoredView;
 
-@interface PEEditorContainerModule : LKViewModule <FFEditorModuleDelegate, NSWindowDelegate, NSPopoverDelegate>
+@interface PEEditorContainerModule : LKViewModule <FFProExtensionHostTimelineProtocol, FFEditorModuleDelegate, NSWindowDelegate, NSPopoverDelegate>
 {
     NSView *_timelineView;
     NSView *_timelineIndexView;
@@ -216,6 +217,7 @@
 - (id)moduleForAction:(SEL)arg1;
 - (void)setLabel:(id)arg1;
 - (id)selectionOwner;
+- (void)timeRangeChanged;
 - (void)durationOfRootItemChanged;
 - (void)updateNameDurationField;
 - (void)focusChangedUpdateTimelineFooterString;
@@ -285,6 +287,8 @@
 - (void)dealloc;
 - (BOOL)wantsFocusIndicator;
 - (BOOL)wantsHeaderBar;
+- (CDStruct_1b6d18a9)playheadSequenceTime;
+- (void)setPlayheadSequenceTime:(CDStruct_1b6d18a9)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

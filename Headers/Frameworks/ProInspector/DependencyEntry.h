@@ -16,6 +16,7 @@
 
 @property int type; // @synthesize type=_type;
 @property(retain) OZViewController *controller; // @synthesize controller=_pController;
+- (void)dealloc;
 
 @end
 

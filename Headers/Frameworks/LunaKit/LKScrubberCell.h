@@ -38,7 +38,6 @@
 - (void)_setActionType:(long long)arg1;
 - (long long)_actionType;
 - (BOOL)_isEditing;
-- (BOOL)_currentlyEditing;
 - (void)_exitEditState;
 - (void)_enterEditState;
 - (void)_exitIntermediateState;

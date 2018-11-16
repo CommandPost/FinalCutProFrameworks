@@ -20,6 +20,7 @@
     NSSet *_indirectPlayObjects;
     NSMapTable *_streamAudioFlagsForPlayObjects;
     CDStruct_e83c9415 _prerollScopeRange;
+    struct PC_CMTimePair _primeDuration;
     FFEffectStack *_audioEffects;
     NSArray *_audioChannelMap;
     NSDictionary *_componentsPlaybackInfo;
@@ -32,6 +33,8 @@
 - (id)componentsPlaybackInfo;
 - (id)audioChannelMap;
 - (id)audioEffects;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 trailingPrimeDuration;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 leadingPrimeDuration;
 - (BOOL)streamAudioFlagsForPlayObject:(id)arg1 streamFlags:(unsigned int *)arg2 streamFlagsMask:(unsigned int *)arg3;
 - (id)playObjects:(int)arg1;
 - (id)playRoles;

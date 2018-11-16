@@ -179,6 +179,7 @@ __attribute__((visibility("hidden")))
 - (void)jobFinished:(id)arg1;
 - (void)jobStarted:(id)arg1;
 - (void)customHGRenderQueueJobCallback:(struct HGRenderer *)arg1 theJob:(id)arg2;
+- (BOOL)containsMisbehavingPluginTokens:(id [3])arg1;
 - (id)newFlattenImageJob:(id)arg1 bindingInfo:(id)arg2 contextNum:(int)arg3 renderer:(struct HGRenderer *)arg4 bgInfo:(id)arg5 streamProps:(id)arg6;
 - (id)_copyRenderPropsForContext:(int)arg1 props:(id)arg2;
 - (_Bool)doesDest:(id)arg1 needContext:(int)arg2;

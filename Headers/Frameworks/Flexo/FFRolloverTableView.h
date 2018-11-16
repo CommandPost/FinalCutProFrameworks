@@ -4,22 +4,19 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSTableView.h"
+#import "LKTableView.h"
 
-@class NSTrackingArea;
+@class LKScrollView, NSTrackingArea;
 
-__attribute__((visibility("hidden")))
-@interface FFRolloverTableView : NSTableView
+@interface FFRolloverTableView : LKTableView
 {
     NSTrackingArea *_track;
     BOOL _mouseOverView;
     long long _mouseOverRow;
-    long long _mouseOverCol;
-    long long _lastOverRow;
+    LKScrollView *parentScrollView;
 }
 
-@property long long mouseOverColumn; // @synthesize mouseOverColumn=_mouseOverCol;
-@property long long mouseOverRow; // @synthesize mouseOverRow=_mouseOverRow;
++ (id)activeHighlightGradient;
 - (void)viewDidEndLiveResize;
 - (void)mouseExited:(id)arg1;
 - (void)mouseMoved:(id)arg1;
@@ -28,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)updateTrackingAreas;
 - (void)removeTracking;
 - (void)addTracking;
+- (void)highlightSelectionInClipRect:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;
 

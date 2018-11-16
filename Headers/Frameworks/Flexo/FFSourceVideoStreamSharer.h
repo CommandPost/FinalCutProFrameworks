@@ -12,10 +12,14 @@ __attribute__((visibility("hidden")))
     CDStruct_bdcb2b0d _baseMD5ForStream;
     BOOL _cacheTokens;
     long long _lastChannelChangeNumber;
+    struct vector<FFStreamVideoStreamSharer *, std::__1::allocator<FFStreamVideoStreamSharer *>> _openStreams;
 }
 
 + (Class)streamClass;
 @property BOOL cacheTokens; // @synthesize cacheTokens=_cacheTokens;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)_removeOpenStream:(id)arg1;
 - (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
 - (void)delegateVideoRangeInvalidated:(id)arg1;
 - (id)initWithProvider:(id)arg1 delegatingTo:(id)arg2;

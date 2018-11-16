@@ -8,8 +8,9 @@
 
 #import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface LKSMPTETimecodeFormatDeputy : LKFormatDeputy <NSCoding, NSCopying>
+@interface LKSMPTETimecodeFormatDeputy : LKFormatDeputy <NSCoding, NSCopying, NSSecureCoding>
 {
     BOOL pStf_displaysSubframes;
     BOOL pStf_displaysQuarterFrames;
@@ -18,6 +19,7 @@
 }
 
 + (long long)version;
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -47,8 +49,9 @@
 - (id)stringForObjectValue:(id)arg1 formatter:(id)arg2;
 - (id)defaultNilSymbol;
 - (id)privateSeparators;
+- (long long)privateDigitsForFramesWithTimecodeMode:(long long)arg1;
 - (long long)privateMaximumCurrentFields;
-- (BOOL)privateScanSMPTENumberString:(id)arg1 intoFieldArray:(long long *)arg2 length:(long long)arg3 indexAtEnd:(long long *)arg4;
+- (id)privateInsertSeparatorsIntoSMPTENumberString:(id)arg1 withTimecodeMode:(long long)arg2;
 - (id)init;
 
 @end

@@ -30,10 +30,11 @@
 @property(readonly, nonatomic) NSArray *buildTypeNames;
 @property(copy, nonatomic) NSString *buildTypeName;
 - (id)templateMenu;
-- (void)setSource:(id)arg1;
+- (void)onSourcesChanged;
+- (void)setSources:(id)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;
-- (id)initWithDestination:(id)arg1 withSource:(id)arg2;
+- (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 
 @end
 

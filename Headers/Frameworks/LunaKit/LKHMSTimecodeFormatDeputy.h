@@ -8,16 +8,18 @@
 
 #import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSNumberFormatter;
 
-@interface LKHMSTimecodeFormatDeputy : LKFormatDeputy <NSCoding, NSCopying>
+@interface LKHMSTimecodeFormatDeputy : LKFormatDeputy <NSCoding, NSCopying, NSSecureCoding>
 {
     long long pHtf_secondsDecimalPlaces;
     BOOL pHtf_has24HourRollover;
     NSNumberFormatter *pHtf_secondsDecimalPlacesFormatter;
 }
 
++ (BOOL)supportsSecureCoding;
 + (long long)version;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

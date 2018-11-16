@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)setting;
 + (id)defaultName;
 - (id)currentUser;
@@ -25,6 +26,9 @@
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
 - (id)taskIdentifier;
+- (unsigned long long)ittFormatSupport;
+- (unsigned long long)srtStyleSupport;
+- (BOOL)supportsBatchExport;
 
 @end
 

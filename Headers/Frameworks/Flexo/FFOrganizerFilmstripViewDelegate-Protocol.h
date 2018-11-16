@@ -6,7 +6,7 @@
 
 #import "FFOrganizerImportDropController.h"
 
-@class FFAnchoredSequence, FFAnchoredTimeMarker, FFOrganizerFilmstripView, FigTimeRangeAndObject, LKViewModule, NSArray, NSDictionary, NSMenu, NSObject<FFOrganizerMarkerEditorDelegate>, NSObject<FFOrganizerSkimmingDelegate>, NSPasteboard, NSString, NSTreeNode;
+@class FFAnchoredSequence, FFAnchoredTimeMarker, FFOrganizerFilmstripView, FigTimeRangeAndObject, LKViewModule, NSArray, NSDictionary, NSMenu, NSMenuItem, NSObject<FFOrganizerMarkerEditorDelegate>, NSObject<FFOrganizerSkimmingDelegate>, NSPasteboard, NSString, NSTreeNode;
 
 @protocol FFOrganizerFilmstripViewDelegate <FFOrganizerImportDropController>
 - (BOOL)shouldAlwaysPlacePlayhead;
@@ -44,6 +44,7 @@
 - (LKViewModule *)module;
 
 @optional
+- (void)setupShareMenuForItem:(NSMenuItem *)arg1;
 - (void)moveToPreviusClip;
 - (void)moveToNextClip;
 - (NSDictionary *)filtersDictionary;

@@ -8,7 +8,7 @@
 
 @interface TXGlyphAnimationPathOnScreenControl : POAnimationPath
 {
-    PCPtr_3bd68a10 _textObject;
+    shared_ptr_a6fe21d1 _textObject;
     shared_ptr_e0e110e1 _style;
     _Bool _glyphHasOwnStyleRun;
     _Bool _didSplitStyleRun;
@@ -33,8 +33,8 @@
 - (void)clipPath:(vector_ced1dec3 *)arg1 edges:(vector_ced1dec3 *)arg2 visible:(vector_a7cf9eda *)arg3;
 - (void)drawCurve:(const struct OZRenderState *)arg1 viewTransformation:(const PCMatrix44Tmpl_93ed1289 *)arg2 mode:(unsigned int)arg3 keyPoints:(BOOL)arg4 positionChannel:(struct OZChannelPosition3D *)arg5;
 - (struct OZChannelPosition3D *)getPosition;
-- (PCPtr_3bd68a10)getTextObject;
-- (void)setTextObject:(struct TXTextObject *)arg1;
+- (shared_ptr_a6fe21d1)getTextObject;
+- (void)setTextObject:(const shared_ptr_a6fe21d1 *)arg1;
 - (id)init;
 
 @end

@@ -31,6 +31,7 @@
 - (void)logMessageTracer_AudioUnit;
 - (void)logMessageTracer_Stats;
 - (void)logMessageTracer_AppStats;
+- (void)logMessageTracer_UILanguage;
 - (void)dealloc;
 - (id)init;
 

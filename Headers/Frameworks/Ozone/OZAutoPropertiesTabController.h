@@ -11,7 +11,7 @@
 }
 
 - (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
-- (BOOL)buildUIWithSceneNodes:(list_752fd9b9 *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_e89ce44a *)arg1 context:(id)arg2;
 
 @end
 

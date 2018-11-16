@@ -30,7 +30,6 @@
 - (oneway void)release;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1 sampleRate:(double)arg2 numChannels:(unsigned int)arg3;
-- (id)initWithEffectID:(id)arg1;
 
 @end
 

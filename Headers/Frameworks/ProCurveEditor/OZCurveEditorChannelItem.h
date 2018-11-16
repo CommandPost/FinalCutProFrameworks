@@ -21,7 +21,7 @@
     CDStruct_1b6d18a9 *_samplesUSnapshot;
     unsigned int _numberOfSamples;
     unsigned int _numberOfSamplesSnapshot;
-    vector_875fa760 _keypoints;
+    vector_80acc5a3 _keypoints;
     unsigned int _colorIndex;
     double _scaleY;
     double _offsetY;
@@ -58,7 +58,7 @@
 - (void)setScaleY:(double)arg1;
 - (double)scaleY;
 - (unsigned int)numberOfKeypoints;
-- (vector_875fa760 *)keypoints;
+- (vector_80acc5a3 *)keypoints;
 - (unsigned int)numberOfSamples;
 - (unsigned int)numberOfSamplesSnapshot;
 - (void)setNumberOfSamplesSnapshot:(unsigned int)arg1;

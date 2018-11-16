@@ -10,44 +10,70 @@
 #import "NSTableViewDataSource.h"
 #import "NSTableViewDelegate.h"
 
-@class FFAnchoredSequence, NSArray, NSButton, NSMutableDictionary, NSSavePanel, NSString, NSTableView;
+@class FFAnchoredSequence, NSArray, NSButton, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSSavePanel, NSString, NSTableColumn, NSTableView, NSTextField;
 
 @interface FFCaptionExportFileSelector : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSOpenSavePanelDelegate>
 {
-    BOOL _captionsHaveValidationErrors;
+    BOOL _includeSRTFormatting;
     int _timingMode;
     NSSavePanel *_savePanel;
-    NSButton *_timingRadioRelative;
-    NSButton *_timingRadioAbsolute;
-    NSTableView *_languageTableView;
     FFAnchoredSequence *_sequence;
     NSArray *_sortedCaptionRoleUIDs;
     NSArray *_sortedCaptionRoleNames;
+    NSArray *_sortedCaptionLanguageNames;
     NSArray *_sortedCaptionRoleFileTypes;
-    NSArray *_enabledCaptionSubroleUIDs;
+    NSMutableArray *_enabledCaptionSubroleUIDs;
+    NSArray *_captionSubroleUIDsWithValidationErrors;
+    NSMutableArray *_captionSubroleUIDsWithFormattingEnabled;
+    NSArray *_srtCaptionSubroleUIDs;
     NSMutableDictionary *_captionsByRoleUID;
+    NSTextField *_srtFormattingLabel;
+    NSButton *_srtFormattingCheckbox;
+    NSTableView *_languageTableView;
+    NSButton *_timingRadioRelative;
+    NSButton *_timingRadioAbsolute;
+    NSButton *_selectAllCheckBox;
+    NSTableColumn *_srtFormattingColumn;
+    NSTableColumn *_validationWarningColumn;
+    NSLayoutConstraint *_tableWidthConstraint;
 }
 
-@property(retain, nonatomic) NSMutableDictionary *captionsByRoleUID; // @synthesize captionsByRoleUID=_captionsByRoleUID;
-@property(retain, nonatomic) NSArray *enabledCaptionSubroleUIDs; // @synthesize enabledCaptionSubroleUIDs=_enabledCaptionSubroleUIDs;
-@property(retain, nonatomic) NSArray *sortedCaptionRoleFileTypes; // @synthesize sortedCaptionRoleFileTypes=_sortedCaptionRoleFileTypes;
-@property(retain, nonatomic) NSArray *sortedCaptionRoleNames; // @synthesize sortedCaptionRoleNames=_sortedCaptionRoleNames;
-@property(retain, nonatomic) NSArray *sortedCaptionRoleUIDs; // @synthesize sortedCaptionRoleUIDs=_sortedCaptionRoleUIDs;
-@property(nonatomic) int timingMode; // @synthesize timingMode=_timingMode;
-@property(nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
-@property NSTableView *languageTableView; // @synthesize languageTableView=_languageTableView;
+@property NSLayoutConstraint *tableWidthConstraint; // @synthesize tableWidthConstraint=_tableWidthConstraint;
+@property NSTableColumn *validationWarningColumn; // @synthesize validationWarningColumn=_validationWarningColumn;
+@property NSTableColumn *srtFormattingColumn; // @synthesize srtFormattingColumn=_srtFormattingColumn;
+@property NSButton *selectAllCheckBox; // @synthesize selectAllCheckBox=_selectAllCheckBox;
 @property NSButton *timingRadioAbsolute; // @synthesize timingRadioAbsolute=_timingRadioAbsolute;
 @property NSButton *timingRadioRelative; // @synthesize timingRadioRelative=_timingRadioRelative;
+@property NSTableView *languageTableView; // @synthesize languageTableView=_languageTableView;
+@property NSButton *srtFormattingCheckbox; // @synthesize srtFormattingCheckbox=_srtFormattingCheckbox;
+@property NSTextField *srtFormattingLabel; // @synthesize srtFormattingLabel=_srtFormattingLabel;
+@property(retain, nonatomic) NSMutableDictionary *captionsByRoleUID; // @synthesize captionsByRoleUID=_captionsByRoleUID;
+@property(retain, nonatomic) NSArray *srtCaptionSubroleUIDs; // @synthesize srtCaptionSubroleUIDs=_srtCaptionSubroleUIDs;
+@property(retain, nonatomic) NSMutableArray *captionSubroleUIDsWithFormattingEnabled; // @synthesize captionSubroleUIDsWithFormattingEnabled=_captionSubroleUIDsWithFormattingEnabled;
+@property(retain, nonatomic) NSArray *captionSubroleUIDsWithValidationErrors; // @synthesize captionSubroleUIDsWithValidationErrors=_captionSubroleUIDsWithValidationErrors;
+@property(retain, nonatomic) NSMutableArray *enabledCaptionSubroleUIDs; // @synthesize enabledCaptionSubroleUIDs=_enabledCaptionSubroleUIDs;
+@property(retain, nonatomic) NSArray *sortedCaptionRoleFileTypes; // @synthesize sortedCaptionRoleFileTypes=_sortedCaptionRoleFileTypes;
+@property(retain, nonatomic) NSArray *sortedCaptionLanguageNames; // @synthesize sortedCaptionLanguageNames=_sortedCaptionLanguageNames;
+@property(retain, nonatomic) NSArray *sortedCaptionRoleNames; // @synthesize sortedCaptionRoleNames=_sortedCaptionRoleNames;
+@property(retain, nonatomic) NSArray *sortedCaptionRoleUIDs; // @synthesize sortedCaptionRoleUIDs=_sortedCaptionRoleUIDs;
+@property(nonatomic) BOOL includeSRTFormatting; // @synthesize includeSRTFormatting=_includeSRTFormatting;
+@property(nonatomic) int timingMode; // @synthesize timingMode=_timingMode;
+@property(nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
 @property(retain, nonatomic) NSSavePanel *savePanel; // @synthesize savePanel=_savePanel;
 - (id)tableView:(id)arg1 viewForTableColumn:(id)arg2 row:(long long)arg3;
 - (long long)numberOfRowsInTableView:(id)arg1;
 - (BOOL)panel:(id)arg1 validateURL:(id)arg2 error:(id *)arg3;
 - (void)dealloc;
-- (void)selectNoneButtonWasPressed:(id)arg1;
+- (void)updateSRTFormattingEnabledState:(BOOL)arg1;
+- (void)updateSelectAllCheckBoxState;
 - (void)selectAllButtonWasPressed:(id)arg1;
+- (void)selectCaptionSubroleButtonWasPressed:(id)arg1;
+- (void)selectCaptionFormattingButtonWasPressed:(id)arg1;
+- (void)includeFormattingWasPressed:(id)arg1;
 - (void)timingModeWasChanged:(id)arg1;
 - (void)_actuallyExportCaptions;
 - (void)exportCaptions;
+- (void)awakeFromNib;
 - (id)initWithLibrary:(id)arg1 andSequence:(id)arg2;
 
 // Remaining properties

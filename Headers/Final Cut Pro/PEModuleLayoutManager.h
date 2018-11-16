@@ -12,16 +12,16 @@
 
 - (id)cancelButtonLabel;
 - (id)replaceButtonLabel;
-- (id)replaceDescription:(id)arg1;
+- (id)replaceDescriptionWithLayoutDisplayName:(id)arg1;
 - (id)replaceTitle;
-- (id)cannotSaveDescription:(id)arg1;
+- (id)cannotSaveDescriptionWithLayoutDisplayName:(id)arg1;
 - (id)cannotSaveTitle;
 - (id)saveDescription;
 - (id)saveTitle;
-- (id)defaultName;
+- (id)defaultDisplayNameForNewModuleLayout;
+- (id)additionalLayoutInformationDictionary;
 - (id)mainWindowModuleClassName;
 - (void)applyModuleLayout:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)init;
 - (void)_PEModuleLayoutManager_commonInit;
 

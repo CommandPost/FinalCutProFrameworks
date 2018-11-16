@@ -10,11 +10,9 @@
 {
 }
 
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)selectSetting:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;
-- (id)initWithNibName:(id)arg1 destination:(id)arg2 withSource:(id)arg3;
+- (id)initWithNibName:(id)arg1 destination:(id)arg2 withSources:(id)arg3;
 
 @end
 

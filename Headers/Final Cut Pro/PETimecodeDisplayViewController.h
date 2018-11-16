@@ -65,6 +65,7 @@
 - (void)updateViewPlayheadTimeFromContext;
 - (void)updateTimeToViewedClipsContext;
 - (void)updateToTimelineContext;
+- (id)timecode;
 - (void)updateViewPlayheadTime:(CDStruct_1b6d18a9)arg1;
 - (void)updatePlayheadTime:(id)arg1;
 - (void)displayAreaGainedFocus:(id)arg1;

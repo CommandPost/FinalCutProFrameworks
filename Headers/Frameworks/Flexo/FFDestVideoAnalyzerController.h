@@ -15,8 +15,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)reuseDataForAnalyzing;
 - (void)pushFrame:(id)arg1;
 - (BOOL)wantsDithering:(id)arg1;
-- (id)supportedPixelFormats;
-- (struct CGColorSpace *)colorSpace;
+- (id)requestedImageInfo;
 - (BOOL)isAnalyzingStillImage;
 - (id)anchoredVideoMediaComponent;
 

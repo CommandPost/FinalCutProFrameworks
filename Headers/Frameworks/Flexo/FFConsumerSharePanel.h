@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
     NSTrackingArea *_errorTrackingArea;
 }
 
-+ (id)sharePanelWithSource:(id)arg1 destination:(id)arg2 error:(id *)arg3;
 @property(nonatomic) FFAutoexpandingTextField *tagsTitle; // @synthesize tagsTitle=_tagsTitle;
 @property(nonatomic) FFAutoexpandingTextField *descriptionTitle; // @synthesize descriptionTitle=_descriptionTitle;
 @property(nonatomic) NSView *settingsView; // @synthesize settingsView=_settingsView;
@@ -38,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) NSImageView *errorImage; // @synthesize errorImage=_errorImage;
 @property(nonatomic) LKButton *signInButton; // @synthesize signInButton=_signInButton;
 @property(nonatomic) LKScrollView *scrollView; // @synthesize scrollView=_scrollView;
+- (id)batchNameWithBatch:(id)arg1 andDestination:(id)arg2;
 - (void)showSignInPanel:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)windowDidLoad;

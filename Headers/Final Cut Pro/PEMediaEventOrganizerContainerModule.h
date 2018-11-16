@@ -26,6 +26,8 @@
 - (void)sidebarModuleDidChangeSelection:(id)arg1;
 - (BOOL)canPerformEditAction:(id)arg1 withSource:(id)arg2;
 - (void)doubleClickWithEffectID:(id)arg1;
+- (BOOL)allItemsTitles:(id)arg1;
+- (BOOL)itemIsTitle:(id)arg1;
 - (id)getActiveMediaBrowser;
 - (void)setNumericEntryShowsSubframes:(BOOL)arg1;
 - (void)setNumericEntryDirection:(int)arg1;

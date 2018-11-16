@@ -147,14 +147,14 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
 struct list<FrameEntry, std::__1::allocator<FrameEntry>> {
     struct __list_node_base<FrameEntry, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<FrameEntry, void *>>> {
-        unsigned long long __first_;
+        unsigned long long __value_;
     } __size_alloc_;
 };
 
 struct list<RIPEntry, std::__1::allocator<RIPEntry>> {
     struct __list_node_base<RIPEntry, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<RIPEntry, void *>>> {
-        unsigned long long __first_;
+        unsigned long long __value_;
     } __size_alloc_;
 };
 

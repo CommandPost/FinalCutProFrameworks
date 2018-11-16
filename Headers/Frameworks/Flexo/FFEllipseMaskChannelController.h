@@ -6,12 +6,13 @@
 
 #import <Flexo/FFMaskBaseChannelController.h>
 
-@class LKButton;
+@class FFMaskedEffectBase, LKButton;
 
 __attribute__((visibility("hidden")))
 @interface FFEllipseMaskChannelController : FFMaskBaseChannelController
 {
     LKButton *_activeMaskButton;
+    FFMaskedEffectBase *_maskedEffectBase;
 }
 
 - (float)suggestedMinParamWidth;

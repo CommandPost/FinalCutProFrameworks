@@ -6,17 +6,17 @@
 
 #import "NSObject.h"
 
-@class FFAssetFileIdentifier, FFCHRootChannel, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
+@class FFAssetFileIdentifier, NSArray, NSDictionary, NSString;
 
 @interface FFProvider : NSObject
 {
-    FFCHRootChannel *_rootChannel;
     FFAssetFileIdentifier *_assetFileID;
     NSString *_suiteID;
     NSString *_key;
     struct FFSynchronizable _sourcesLock;
-    NSMutableDictionary *_sources;
-    NSMutableArray *_sourceKeys;
+    NSDictionary *_sources;
+    NSArray *_sourceKeys;
+    struct _opaque_pthread_t *_threadInSetupSources;
     long long _providerClusterRefcount;
     int _sourcesState;
     NSDictionary *_videoPropsOverrides;
@@ -32,6 +32,7 @@
 + (id)extensionForURL:(id)arg1;
 + (id)extensions;
 + (id)utis;
++ (unsigned char)providerHasValidSourceForURL:(id)arg1 requires32BitQT:(char *)arg2;
 + (unsigned char)providerHasValidSourceForURL:(id)arg1;
 + (Class)providerClassForUTIType:(id)arg1 extension:(id)arg2;
 + (id)registeredProviderExtensions;
@@ -45,13 +46,13 @@
 + (BOOL)isStill;
 + (BOOL)canHaveAudio;
 + (BOOL)canHaveVideo;
++ (void)DEBUG_getCurrentInternalTokenCount:(int *)arg1 hwmInternal:(int *)arg2 externCount:(int *)arg3 externHWM:(int *)arg4;
 @property(readonly, nonatomic) NSString *libraryIdentifier; // @synthesize libraryIdentifier=_libraryIdentifier;
 - (id)newFirstVideoSource;
 - (id)firstVideoSource;
 - (BOOL)syncFromDocument;
 - (BOOL)saveToDocument;
 - (BOOL)hasUnsavedChanges;
-- (id)rootChannel;
 - (id)inspectorClassName;
 - (id)newPlayerModuleWithContext:(id)arg1 effectCount:(long long)arg2 sublayoutName:(id)arg3;
 - (id)newPlayerModuleWithContext:(id)arg1 effectCount:(long long)arg2 sublayout:(id)arg3;
@@ -65,6 +66,7 @@
 - (BOOL)hasAudio;
 - (id)displayName;
 - (id)description;
+- (void)applyBlockToEachSource:(CDUnknownBlockType)arg1;
 - (id)newFirstSource;
 - (id)firstSource;
 - (id)sourceKeys;
@@ -73,7 +75,6 @@
 - (id)sourceForKey:(id)arg1;
 - (id)sources;
 - (id)_sourcesMakeIfNil;
-- (void)_removeSourceForKey:(id)arg1;
 - (void)_setSource:(id)arg1 forKey:(id)arg2;
 - (void)_setupSources;
 - (id)eventDocumentIDAndPath;

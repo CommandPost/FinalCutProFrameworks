@@ -11,7 +11,6 @@
 }
 
 + (id)sharedInstance;
-- (id)presetForName:(id)arg1;
 - (id)presetMatchingSize:(struct CGSize)arg1 andFrameRate:(double)arg2;
 - (id)presetMatchingSize:(struct CGSize)arg1;
 - (int)presetIndexForDocument:(struct OZDocument *)arg1;

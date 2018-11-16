@@ -26,6 +26,7 @@
 - (void)toggleFill:(id)arg1;
 - (id)contentView;
 - (id)optionsNibName;
+- (void)dealloc;
 - (id)initWithOSC:(id)arg1;
 
 @end

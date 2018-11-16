@@ -13,7 +13,7 @@
 @interface OZTextInspectorController : OZViewCtlrRoot <TXMaterialControllerDelegate>
 {
     struct TXTextLayout *_text;
-    list_af8e95fb _styles;
+    list_bb601910 _styles;
     NSView *_pMainView;
     NSBox *_pBox;
     LKSegmentedControl *_pSegmentedControl;
@@ -22,7 +22,7 @@
     OZAutoTextLayoutController *_pLayoutController;
     OZAutoInspectorController *_pCurrController;
     BOOL _capturingChannels;
-    list_752fd9b9 *_textList;
+    list_e89ce44a *_textList;
     PIBuildContext *_pContext;
     BOOL _settingAssociatedStyles;
     BOOL _repeatStyleReassociation;
@@ -40,7 +40,7 @@
 - (double)scrollOffset;
 - (_Bool)useGlyphTool;
 - (id)newFormatControllerWithSceneNode:(struct OZSceneNode *)arg1;
-- (void)setAssociatedStyles:(list_af8e95fb *)arg1 force:(BOOL)arg2;
+- (void)setAssociatedStyles:(list_bb601910 *)arg1 force:(BOOL)arg2;
 - (void)setAssociatedStyle:(const shared_ptr_e0e110e1 *)arg1;
 - (void)resetOrAddAssociatedStyle:(const shared_ptr_e0e110e1 *)arg1 reset:(BOOL)arg2;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
@@ -57,8 +57,8 @@
 - (id)getNSFontForStyle:(const shared_ptr_e0e110e1 *)arg1 time:(CDStruct_198678f7)arg2;
 - (id)mainView;
 - (void)dealloc;
-- (id)initWithSceneNodes:(list_752fd9b9 *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
-- (id)initWithSceneNodes:(list_752fd9b9 *)arg1 viewCtlrDelegate:(id)arg2;
+- (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
+- (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2;
 - (void)didCreateNewMaterialLayerControllers;
 - (BOOL)isInhibitingUpdates;
 - (void)setInhibitUpdates:(BOOL)arg1;

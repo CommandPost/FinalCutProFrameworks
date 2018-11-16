@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)controller:(id)arg1 ownsMenu:(id)arg2 selectedItem:(id *)arg3;
 - (void)controller:(id)arg1 menu:(id)arg2 sender:(id)arg3 didSelectItem:(id)arg4;
 - (void)controllerContentsDidChange:(id)arg1;
-- (void)reloadDataOnMainTHread;
+- (void)_reloadDataOnMainThread;
 - (void)_reloadData;
 - (id)selectedRepositoryItem;
 - (id)_assetFromItem:(id)arg1;

@@ -21,6 +21,7 @@
 @property SEL action; // @synthesize action=_action;
 @property(retain, nonatomic) NSArray *selectedIndexes; // @synthesize selectedIndexes=_selectedIndexes;
 @property(retain, nonatomic) NSArray *colorsArray; // @synthesize colorsArray=_colorsArray;
+- (void)setAccessibilityLabel:(id)arg1 forIndex:(unsigned long long)arg2;
 - (void)_buttonAction:(id)arg1;
 - (void)setSelectedIndex:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;

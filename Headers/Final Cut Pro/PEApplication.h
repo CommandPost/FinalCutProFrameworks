@@ -13,12 +13,14 @@
     SPODDetector *m_spodDetector;
 }
 
+- (id)presentingWindowForSheetWindow;
 - (BOOL)hideTitlebarWhenFullScreen;
 - (void)miniaturizeAll:(id)arg1;
 - (void)dealloc;
 - (void)finishLaunching;
 - (void)reportException:(id)arg1;
 - (BOOL)useOverlayScrollers;
+- (id)libraries;
 
 @end
 

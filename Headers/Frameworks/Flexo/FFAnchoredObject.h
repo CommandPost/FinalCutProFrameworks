@@ -7,6 +7,7 @@
 #import <Flexo/FFBaseDSObject.h>
 
 #import "FFAnchoredParentProtocol.h"
+#import "FFAnchoredSequenceDSObservedObject.h"
 #import "FFAssetContainerProtocol.h"
 #import "FFDataModelProtocol.h"
 #import "FFEffectContainerProtocol.h"
@@ -24,7 +25,7 @@
 
 @class FFRole, FFSplitAudioTimelineComponent, FFVideoProps, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
-@interface FFAnchoredObject : FFBaseDSObject <TLKTimelineItem, FFStorylineItem, NSCoding, NSCopying, FFDataModelProtocol, FFSkimmableProtocol, FFAnchoredParentProtocol, FFMetadataProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, FFMD5Protocol, FFAssetContainerProtocol, FFEffectContainerProtocol>
+@interface FFAnchoredObject : FFBaseDSObject <TLKTimelineItem, FFStorylineItem, NSCoding, NSCopying, FFDataModelProtocol, FFSkimmableProtocol, FFAnchoredParentProtocol, FFMetadataProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, FFMD5Protocol, FFAssetContainerProtocol, FFEffectContainerProtocol, FFAnchoredSequenceDSObservedObject>
 {
     NSString *_displayName;
     struct PC_CMTimePair _anchorPair;
@@ -74,6 +75,7 @@
 + (id)timeMarkersForItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 + (id)timeMarkersForItem:(id)arg1 inTimeRange:(CDStruct_e83c9415)arg2;
 + (void)_extractCaptionsFromMediaComponent:(id)arg1 extractedCaptions:(id)arg2;
++ (void)extractCaptionsFromItem:(id)arg1 inPrimitiveClip:(id)arg2 extractedCaptions:(id)arg3;
 + (void)_extractCaptionsFromPrimitiveClip:(id)arg1 extractedCaptions:(id)arg2;
 + (void)_extractCaptionsFromSyncClip:(id)arg1 extractedCaptions:(id)arg2;
 + (void)_convertDurationsToContainerTimeOfCaptionRangeAndObjects:(id)arg1 fromObject:(id)arg2;
@@ -81,7 +83,7 @@
 + (void)_extractCaptionsFromAnchoredClip:(id)arg1 extractedCaptions:(id)arg2;
 + (void)_dumpNonActiveCaptions:(id)arg1 currentActiveCaptions:(id)arg2 captionsToAdd:(id)arg3;
 + (id)newArrayOfCaptionsInFigTimeAndRangeObjectForObject:(id)arg1;
-+ (id)_findOrCreateCaptionMainRoleOfFormat:(id)arg1 inLibrary:(id)arg2;
++ (id)findOrCreateCaptionMainRoleOfFormat:(id)arg1 inLibrary:(id)arg2;
 + (id)activeRolesForObject:(id)arg1 excludeDisabledRoles:(BOOL)arg2;
 + (id)topLevelRolesForObject:(id)arg1;
 + (id)copyClassDescription;
@@ -96,7 +98,7 @@
 @property(readonly, nonatomic) unsigned int aoFlagsMask; // @synthesize aoFlagsMask=_aoFlagsMask;
 @property(readonly, nonatomic) unsigned int aoFlags; // @synthesize aoFlags=_aoFlags;
 @property(nonatomic) int playEnable; // @synthesize playEnable=_playEnable;
-@property(retain, nonatomic) NSSet *anchoredItems; // @synthesize anchoredItems=_anchoredItems;
+@property(readonly, nonatomic) NSSet *anchoredItems; // @synthesize anchoredItems=_anchoredItems;
 @property(nonatomic) struct PC_CMTimePair anchorPair; // @synthesize anchorPair=_anchorPair;
 @property(nonatomic) id parentItem; // @synthesize parentItem=_parentItem;
 - (void)update_audioComponentSourceAnchoredLaneKey;
@@ -129,6 +131,7 @@
 - (id)sequenceInflateIfNecessary:(BOOL)arg1;
 - (void)_checkObjectAndDecendentsForAlignmentToSequence:(id)arg1;
 - (BOOL)_conformsToSequenceAudioOrVideoRateSettings:(CDStruct_e83c9415)arg1 sequence:(id)arg2;
+- (id)anchoredObjectForSequenceDSObserving;
 - (void)getObjectsDetails:(CDStruct_1b6d18a9)arg1 inContainer:(BOOL)arg2 chooseProjectName:(BOOL)arg3 objectTimecode:(CDStruct_1b6d18a9 *)arg4 objectFrameDuration:(CDStruct_1b6d18a9 *)arg5 objectDropFrame:(char *)arg6 objectDetailKeys:(id)arg7 objectDetailDict:(id)arg8;
 - (id)keywordsForRange:(CDStruct_e83c9415)arg1;
 - (void)effectStackDidLoad:(id)arg1;
@@ -170,6 +173,7 @@
 - (id)anchoredObjectsForAudioComponentsLayoutKey:(id)arg1;
 - (id)activeAudioComponentsLayoutKeys;
 - (id)audioComponentsLayoutMap;
+- (id)rootObject;
 - (void)resolveAudioComponentRangesAgainstAudioRange;
 - (void)_clearCachedAudioComponentSources;
 - (id)audioComponentSources:(unsigned int)arg1 options:(unsigned int)arg2;
@@ -367,6 +371,7 @@
 - (BOOL)isPSD;
 - (BOOL)isMediaComponent;
 - (BOOL)isComponent;
+- (BOOL)isSynchronizedAndOneVideoSource;
 - (BOOL)isTrimmed;
 - (BOOL)isCollection;
 - (BOOL)isPrimaryObjectForSequence;
@@ -580,6 +585,7 @@
 - (CDStruct_e83c9415)anchoredItemsRange;
 - (long long)timelineVerticalIndex;
 - (CDStruct_e83c9415)timelineRange;
+- (CDStruct_e83c9415)timelineRangeInContainerSpace:(id)arg1;
 - (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 fromContainer:(id)arg2;
 - (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 toContainer:(id)arg2;
 - (CDStruct_e83c9415)untimedUnclippedRange;
@@ -802,9 +808,15 @@
 - (id)audioComponent;
 - (id)videoComponent;
 - (unsigned long long)storylineClipType;
+- (CDStruct_e83c9415)_timeRangeByAddingOffset:(CDStruct_1b6d18a9)arg1 toStartOfTimeRange:(CDStruct_e83c9415)arg2;
+- (id)_findRootItemForItem:(id)arg1;
 - (long long)compareByStartTime:(id)arg1;
 - (void)trimTrailingEdgeByOffset:(CDStruct_1b6d18a9)arg1;
+- (void)trimLeadingEdgeByOffset:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 toStoryline:(id)arg2;
+- (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 fromStoryline:(id)arg2;
 - (void)resolveCollisions;
+- (void)wrapInStoryline;
 - (void)disconnect;
 - (void)connectStorylineItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)connectStoryline:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
@@ -812,6 +824,7 @@
 @property(readonly, nonatomic) NSSet *audioRoleIdentifiers;
 @property(copy, nonatomic) id videoRoleIdentifier;
 @property(readonly, nonatomic) NSSet *videoRoleIdentifiers;
+- (CDStruct_e83c9415)timeRangeInContainerSpace:(id)arg1;
 @property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
 @property(readonly, nonatomic) CDStruct_e83c9415 assetTimeRange;
 @property(nonatomic) CDStruct_e83c9415 timeRangeInAsset;
@@ -826,7 +839,10 @@
 @property(nonatomic) long long verticalIndex;
 - (id)primaryStoryItemComponent;
 @property(readonly, nonatomic) id <FFStorylineClip> storylineClip;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 targetAnchorTime;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 sourceAnchorTime;
 @property(readonly, nonatomic) id <FFStorylineItem> anchoredToStoryItem;
+@property(readonly, nonatomic) BOOL isConnectedStoryline;
 @property(readonly, nonatomic) NSSet *anchoredStoryItems;
 @property(readonly, nonatomic) id <FFStorylineItem> parentStoryItem;
 @property(readonly, nonatomic) BOOL isSpineItem;

@@ -25,7 +25,7 @@
 - (void)didReplace:(id)arg1 didSetNewSelection:(BOOL)arg2;
 - (void)willReplace:(id)arg1;
 - (void)didFindResult:(id)arg1 setSelectionForResult:(struct FFTextSearchResult)arg2;
-- (BOOL)getSearchResults:(vector_473d7ffb *)arg1 forString:(id)arg2 fromTextObject:(id)arg3 withFlags:(unsigned int)arg4 searchForward:(BOOL)arg5 jumpTo:(struct FFTextSearchResult *)arg6;
+- (BOOL)getSearchResults:(vector_9fc01ff5 *)arg1 forString:(id)arg2 fromTextObject:(id)arg3 withFlags:(unsigned int)arg4 searchForward:(BOOL)arg5 jumpTo:(struct FFTextSearchResult *)arg6;
 - (void)getNextTextObject:(id *)arg1 after:(id *)arg2 flags:(unsigned int)arg3 searchForward:(BOOL)arg4;
 - (id)getNextTextObjectFromTime:(const CDStruct_1b6d18a9 *)arg1 andAfterTextObject:(id *)arg2 wrapAround:(BOOL)arg3;
 - (id)getPrevTextObjectFromTime:(const CDStruct_1b6d18a9 *)arg1 andBeforeTextObject:(id *)arg2 wrapAround:(BOOL)arg3;
@@ -38,7 +38,7 @@
 - (void)rLock:(BOOL)arg1;
 - (id)_getTextEffectFromAnchoredObject:(id)arg1;
 - (BOOL)canSearchInSequence;
-- (vector_473d7ffb)results;
+- (vector_9fc01ff5)results;
 - (void)didSelectNewObject;
 - (void)setActive:(BOOL)arg1;
 - (BOOL)active;

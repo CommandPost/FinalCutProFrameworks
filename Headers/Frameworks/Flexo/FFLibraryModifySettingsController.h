@@ -44,6 +44,7 @@
     BOOL _canCloseLibrary;
     NSString *_errorDescription;
     unsigned long long _necessarySpaceAvailable;
+    BOOL _isOpenPanelShown;
 }
 
 + (void)repairSettingsForLibrary:(id)arg1 parentWindow:(id)arg2 errorDescription:(id)arg3 canCancel:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;

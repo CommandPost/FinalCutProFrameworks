@@ -25,7 +25,6 @@
     struct CGSize _pivotHalf;
     int _pivotWidth;
     int _pivotHeight;
-    PCRect_b601f9f3 _snapStartBounds;
     PCVector3_457fd1f0 _startScale;
     PCVector3_457fd1f0 _startRot;
     PCVector3_457fd1f0 _startPivot;
@@ -52,9 +51,8 @@
 
 + (id)allocInfoBarTextWithPosition:(const PCVector2_79efa81a *)arg1;
 + (_Bool)validate:(struct OZChannelBase *)arg1;
-@property(retain, nonatomic) MEDropZonePanScanOSC *meDropZonePanScanOSC; // @synthesize meDropZonePanScanOSC=_meDropZonePanScanOSC;
+@property(nonatomic) __weak MEDropZonePanScanOSC *meDropZonePanScanOSC; // @synthesize meDropZonePanScanOSC=_meDropZonePanScanOSC;
 - (id).cxx_construct;
-- (void).cxx_destruct;
 - (struct OZImageElement *)getImageElement;
 - (struct OZElement *)getElement;
 - (BOOL)postRedisplayOnActivePartChange;

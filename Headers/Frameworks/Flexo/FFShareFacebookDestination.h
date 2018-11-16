@@ -10,8 +10,10 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)setting;
 + (id)defaultName;
+- (BOOL)requiresTargetDestinationURL;
 - (id)currentUser;
 - (BOOL)requiresLogin;
 - (id)iconTitle;
@@ -20,11 +22,11 @@
 - (id)largeImage;
 - (id)pressedImage;
 - (id)image;
-- (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
 - (id)taskIdentifier;
+- (BOOL)supportsBatchExport;
 
 @end
 

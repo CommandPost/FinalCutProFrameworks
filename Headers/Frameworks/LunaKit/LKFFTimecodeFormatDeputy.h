@@ -8,13 +8,15 @@
 
 #import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface LKFFTimecodeFormatDeputy : LKFormatDeputy <NSCoding, NSCopying>
+@interface LKFFTimecodeFormatDeputy : LKFormatDeputy <NSCoding, NSCopying, NSSecureCoding>
 {
     long long pFtf_separator;
     BOOL pFtf_displaysQuarterFrames;
 }
 
++ (BOOL)supportsSecureCoding;
 + (long long)version;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

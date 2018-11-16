@@ -50,6 +50,7 @@
 + (id)autosaveVaultPath;
 + (id)localizedSummaryForConversionFromDocumentType:(int)arg1 toDocumentType:(int)arg2;
 + (id)localizedNameForDocumentType:(int)arg1;
++ (id)fileExtensionForDocumentType:(int)arg1;
 @property(readonly, nonatomic) OZDocumentKeyResponder *documentKeyResponder; // @synthesize documentKeyResponder=_documentKeyResponder;
 - (void)exportWillStart:(unsigned long long)arg1;
 - (void)watchProgressFFQTMovieExporter;
@@ -73,7 +74,7 @@
 - (id)autosaveBuildName:(id)arg1 extension:(id)arg2 date:(id)arg3;
 - (void)autosaveUpdate;
 - (void)processInkGestureEvent:(struct _gestureEventContiner *)arg1;
-- (shared_ptr_1a5c5a10)renderedImage:(double *)arg1;
+- (shared_ptr_1bfae1da)renderedImage:(double *)arg1;
 - (void)document:(id)arg1 didRunPrintOperation:(BOOL)arg2 contextInfo:(void *)arg3;
 - (void)printShowingPrintPanel:(BOOL)arg1;
 - (void)setTemplateTheme:(id)arg1;
@@ -141,6 +142,7 @@
 - (void)saveDocumentAs:(id)arg1;
 - (void)addWindowController:(id)arg1;
 - (void)makeWindowControllers;
+- (void)resetAnticipateROI;
 - (void)windowDidResignMain:(id)arg1;
 - (void)windowBecameMain:(id)arg1;
 - (void)appBecameDeActive:(id)arg1;

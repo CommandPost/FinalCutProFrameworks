@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)showEffectEditor:(id)arg1;
 - (id)_retrieveContext;
 - (float)suggestedMaxParamWidth;
+- (void)notifyParentEffectBundleEnableChanged:(id)arg1;
 - (void)updateUI;
 - (void)didBuildUI;
 - (int)shouldAddDisclosureButton;

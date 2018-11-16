@@ -40,6 +40,7 @@
 + (long long)sortOrderForGroup:(id)arg1;
 + (id)groups;
 @property(nonatomic) BOOL projectFilterMode; // @synthesize projectFilterMode=_projectFilterMode;
+- (void)runModalAudioEffectPicker;
 - (void)runModalAudioEffectPicker:(id)arg1;
 - (int)_audioCellForEffect:(id)arg1;
 - (void)timeRateChangedForContext:(id)arg1;
@@ -56,6 +57,7 @@
 - (id)newAdjustmentDictionaryForSelection:(id)arg1;
 - (id)_effectPickerEffectID:(id)arg1;
 - (BOOL)_validVideoEffectToolEffectID:(id)arg1;
+- (void)runModalVideoEffectPicker;
 - (void)runModalVideoEffectPicker:(id)arg1;
 - (void)resignActiveTool;
 - (void)becomeActiveTool;

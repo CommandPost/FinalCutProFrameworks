@@ -7,16 +7,19 @@
 #import "NSRemoteViewController.h"
 
 __attribute__((visibility("hidden")))
-@interface PluginViewController : NSRemoteViewController
+@interface PlugInViewController : NSRemoteViewController
 {
     id _delegate;
 }
 
++ (id)alloc;
 @property id delegate; // @synthesize delegate=_delegate;
+- (struct CGSize)preferredContentSize;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (id)exportedInterface;
 - (id)serviceViewControllerInterface;
 - (void)viewDidLoad;
+- (id)init;
 
 @end
 

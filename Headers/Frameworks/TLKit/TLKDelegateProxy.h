@@ -18,7 +18,8 @@
         unsigned int layerForLane:1;
         unsigned int didUpdateItemLayer:1;
         unsigned int timecodeAtTime:1;
-        unsigned int RESERVED:25;
+        unsigned int marqueeWillSelectObjects:1;
+        unsigned int RESERVED:24;
     } _respondsToSelector;
     TLKTimelineView *_timelineView;
     id <TLKTimelineViewDelegate> _delegate;
@@ -26,6 +27,7 @@
 
 @property(nonatomic) id <TLKTimelineViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
+- (void)marqueeWillSelectObjects:(id)arg1;
 - (id)timecodeAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)didUpdateItemLayer:(id)arg1;
 - (id)layerForLaneFragment:(id)arg1;

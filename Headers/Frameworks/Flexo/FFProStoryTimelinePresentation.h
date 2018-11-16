@@ -24,11 +24,6 @@
 - (BOOL)canOpenSummariesForClip:(id)arg1;
 - (BOOL)canCloseSummariesForClip:(id)arg1;
 - (BOOL)canCloseComponentsForClip:(id)arg1;
-- (BOOL)useDefaultIndexValueForItemComponent:(id)arg1;
-- (id)organizedIndexValueForItemComponent:(id)arg1;
-- (id)defaultVerticalIndexValueForItemComponent:(id)arg1;
-- (long long)_intrinsicComponentIndexForItemComponent:(id)arg1 isFlipped:(BOOL)arg2;
-- (unsigned long long)_flattenIndexPathForLane:(id)arg1 intoIndexes:(long long *)arg2 isFlipped:(BOOL)arg3;
 - (BOOL)isMultiAngle;
 - (long long)layoutRegionForItemComponent:(id)arg1;
 - (id)presentedLaneForItemComponent:(id)arg1;
@@ -50,11 +45,11 @@
 - (id)emptyLanesPredicate;
 - (id)_emptyAudioLanesPredicate;
 - (id)intrinsicLaneForItem:(id)arg1;
-- (id)primaryStoryLane;
 - (id)_orderedTopLevelLanes;
 - (id)_itemLaneUIDsToFlatten;
+- (void)addAudioSummaryIfOpenForItem:(id)arg1 toArray:(id)arg2;
+- (BOOL)_showsAudioSummaryOrComponentsForItem:(id)arg1;
 - (id)itemComponentsForItem:(id)arg1;
-- (id)_audioSummaryForItem:(id)arg1;
 @property(nonatomic) long long organizedMode;
 - (void)toggleAllAudioLanes;
 - (void)setShowsComponentsState:(BOOL)arg1 forLanes:(id)arg2 wasArranged:(BOOL)arg3;

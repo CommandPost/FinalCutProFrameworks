@@ -32,6 +32,10 @@
     int _cameraMode;
     FFTextureBuffer *_overlayTexture;
     NSMapTable *_drawProperties;
+    struct {
+        int _requestedExecLocation;
+        int _actualExecLocation;
+    } _execLocInfo;
     NSError *_errorInfo;
 }
 
@@ -53,6 +57,8 @@
 - (void)dealloc;
 - (id)description;
 @property(readonly) int cameraMode; // @synthesize cameraMode=_cameraMode;
+- (CDStruct_1ef3fb1f)execLocInfo;
+- (void)setExecLocInfo:(CDStruct_1ef3fb1f)arg1;
 - (id)graphBuildInfo2;
 - (id)graphBuildInfo1;
 - (id)image2_MD5;

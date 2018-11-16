@@ -6,12 +6,12 @@
 
 #import <Flexo/FFProjectExtrasSidebarNode.h>
 
-@class NSImage, NSString;
+@class FFProServiceBase, NSImage, NSString;
 
 @interface FFProjectExtrasExternalMediaServiceNode : FFProjectExtrasSidebarNode
 {
     NSString *_title;
-    id <PKPlugIn> _plugIn;
+    FFProServiceBase *_plugIn;
     NSImage *_plugInIcon;
     NSString *_serviceClassName;
     NSString *_serviceBundleIdentifier;
@@ -19,13 +19,13 @@
 
 @property(readonly) NSString *serviceBundleIdentifier; // @synthesize serviceBundleIdentifier=_serviceBundleIdentifier;
 @property(readonly) NSString *serviceClassName; // @synthesize serviceClassName=_serviceClassName;
-@property(readonly) id <PKPlugIn> plugIn; // @synthesize plugIn=_plugIn;
+@property(readonly) FFProServiceBase *plugIn; // @synthesize plugIn=_plugIn;
 - (id)iconImage:(BOOL)arg1;
 - (int)displayType;
 - (id)moduleKey;
 - (id)title;
 - (void)dealloc;
-- (id)initWithPluginKitPlugin:(id)arg1;
+- (id)initWithPlugIn:(id)arg1;
 - (id)initWithServiceClassName:(id)arg1 bundleIdentifier:(id)arg2;
 
 @end

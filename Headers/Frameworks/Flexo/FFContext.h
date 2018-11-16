@@ -49,6 +49,8 @@
     BOOL _deferSelectionOSCUpdate;
     BOOL _isPrimaryVout;
     BOOL _canShowTransportControls;
+    BOOL _disableEditMarkers;
+    BOOL _disablePlayCommands;
     NSMutableDictionary *_meterObservers;
     unsigned long long _meteredRolesCount;
     NSTimer *_meteringTimer;
@@ -56,11 +58,14 @@
     BOOL _recording;
     long long _numDraftTextModeRequests;
     NSMutableSet *_registeredPlayerModules;
+    BOOL _pendingRebuildPlayers;
 }
 
 + (int)temporalQualityForFramesPerPixel:(unsigned int)arg1;
 + (void)initialize;
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+@property(nonatomic) BOOL disablePlayCommands; // @synthesize disablePlayCommands=_disablePlayCommands;
+@property(nonatomic) BOOL disableEditMarkers; // @synthesize disableEditMarkers=_disableEditMarkers;
 @property(nonatomic) BOOL recording; // @synthesize recording=_recording;
 @property(nonatomic) BOOL canShowTransportControls; // @synthesize canShowTransportControls=_canShowTransportControls;
 @property(nonatomic) BOOL notificationsDisabled; // @synthesize notificationsDisabled=_notificationsDisabled;
@@ -87,6 +92,7 @@
 - (void)notifyStoppedDueToDroppedFrame:(id)arg1;
 - (BOOL)stopOnDroppedFrame;
 - (void)setStopOnDroppedFrame:(BOOL)arg1;
+- (void)notifyRebuildPlayers;
 - (void)notifyAudioPlaybackStateChanged;
 - (BOOL)isAudioPlaybackOn;
 - (void)endStepPlayback;

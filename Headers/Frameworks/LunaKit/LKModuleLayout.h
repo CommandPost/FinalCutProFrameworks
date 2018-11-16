@@ -8,71 +8,50 @@
 
 #import "NSCopying.h"
 
-@class NSMutableDictionary, NSString;
+@class LKModuleLayoutDisplayName, NSArray, NSMutableDictionary, NSUUID;
 
 @interface LKModuleLayout : NSObject <NSCopying>
 {
-    NSString *_name;
-    NSString *_displayName;
-    NSString *_keyEquivalent;
+    LKModuleLayoutDisplayName *_displayName;
+    NSUUID *_identifier;
+    NSUUID *_sourceName;
     struct CGRect _bounds;
-    struct CGSize _screenSize;
-    unsigned int _layoutVersion;
-    unsigned int _appLayoutVersion;
+    unsigned long long _layoutVersion;
+    unsigned long long _appLayoutVersion;
     NSMutableDictionary *_layoutDictionary;
     struct {
         unsigned int category:2;
-        unsigned int type:3;
         unsigned int autolayout:1;
         unsigned int wasInitFromFile:1;
         unsigned int wasInitFromCache:1;
-        unsigned int RESERVED:8;
+        unsigned int wasUpdatedOnInit:1;
+        unsigned int RESERVED:10;
     } _flags;
-    float _layoutInset;
-    NSString *_sourceName;
 }
 
+@property(nonatomic) unsigned long long appLayoutVersion; // @synthesize appLayoutVersion=_appLayoutVersion;
+@property(copy, nonatomic) LKModuleLayoutDisplayName *displayName; // @synthesize displayName=_displayName;
+@property(copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSUUID *sourceName; // @synthesize sourceName=_sourceName;
+- (id)additionalLayoutInformationDictionary;
+- (void)setAdditionalLayoutInformationDictionary:(id)arg1;
+- (BOOL)wasUpdatedOnInit;
 - (id)description;
 - (void)_writeDictionary:(id)arg1 toFile:(id)arg2;
 - (void)writeToFile:(id)arg1;
 - (void)readStateFromDictionary:(id)arg1;
 - (void)writeStateToDictionary:(id)arg1;
 - (struct CGRect)bounds;
-- (void)setAppLayoutVersion:(unsigned long long)arg1;
-- (unsigned long long)appLayoutVersion;
-- (id)keyEquivalent;
-- (void)setKeyEquivalent:(id)arg1;
-- (float)layoutInset;
-- (void)setLayoutInset:(float)arg1;
-- (BOOL)isAutolayout;
-- (void)setAutolayout:(BOOL)arg1;
+@property(nonatomic) BOOL autoLayout; // @dynamic autoLayout;
 - (BOOL)screenArrangementIsAcceptable;
-- (struct CGSize)screenSize;
-- (void)updateScreenSize;
-- (void)setScreenSize:(struct CGSize)arg1;
-- (int)type;
-- (void)setType:(int)arg1;
-- (int)category;
-- (void)setCategory:(int)arg1;
+@property(nonatomic) int category; // @dynamic category;
 - (struct CGRect)_boundsOfLayoutArray:(id)arg1;
-- (id)layoutArray;
-- (void)setLayoutArray:(id)arg1;
+@property(retain, nonatomic) NSArray *layoutArray; // @dynamic layoutArray;
 - (id)_mutableDictionary;
 - (id)dictionary;
 - (void)setDictionary:(id)arg1;
 - (BOOL)canBeDeleted;
-- (BOOL)validateDisplayName:(id *)arg1 error:(id *)arg2;
-- (BOOL)validateName:(id *)arg1 error:(id *)arg2;
-- (void)setDisplayName:(id)arg1;
-- (id)displayName;
-- (id)name;
-- (void)setName:(id)arg1;
-- (id)sourceName;
-- (void)setSourceName:(id)arg1;
 - (id)cache;
-- (long long)compareArrangement:(id)arg1;
-- (long long)compareDisplayNames:(id)arg1;
-- (long long)compareNames:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithCache:(id)arg1;
@@ -80,7 +59,7 @@
 - (id)initWithContentsOfFile:(id)arg1 updater:(id)arg2 error:(id *)arg3;
 - (id)initWithContentsOfFile:(id)arg1 deferLoading:(BOOL)arg2;
 - (id)initWithContentsOfFile:(id)arg1;
-- (id)initWithName:(id)arg1;
+- (id)initWithDisplayName:(id)arg1;
 - (id)init;
 
 @end

@@ -160,7 +160,7 @@
 - (void)fitInWindow;
 - (double)getZoom;
 - (void)setZoom:(double)arg1 center:(const PCVector2_7e488b7d *)arg2;
-- (shared_ptr_1a5c5a10)createRenderedImage;
+- (shared_ptr_1bfae1da)createRenderedImage;
 - (void)updateOnScreenControls;
 - (void)getRenderParams:(struct OZRenderParams *)arg1 forTexture:(BOOL)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)disableObjectHighlight;
@@ -312,6 +312,7 @@
 - (void)notify:(unsigned int)arg1;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
 - (void)postRedisplayToSubViews;
+- (void)resetAnticipateROI;
 - (void)setActiveView:(id)arg1;
 - (id)activeView;
 - (void)setIgnoreTransformationsForElement:(struct OZTransformNode *)arg1;

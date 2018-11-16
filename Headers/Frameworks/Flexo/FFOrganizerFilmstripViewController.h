@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)synchronousReloadData;
 - (void)setNeedsData:(BOOL)arg1;
 - (void)setDeferRangeInvalidations:(BOOL)arg1;
-- (id)valueForKey:(id)arg1;
 - (BOOL)removeObserversAndNotifications:(id)arg1;
 - (BOOL)attachObserversAndNotifications:(id)arg1;
 - (void)didRemoveKeywordsWithRanges:(id)arg1 onSequence:(id)arg2 animationRange:(CDStruct_e83c9415)arg3;

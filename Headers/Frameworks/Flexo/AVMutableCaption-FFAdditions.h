@@ -6,13 +6,10 @@
 
 #import "AVMutableCaption.h"
 
-@class NSAttributedString;
-
 @interface AVMutableCaption (FFAdditions)
 - (void)setFFScroll:(long long)arg1;
 - (void)setFFHeight:(long long)arg1;
 - (void)setFFCellY:(long long)arg1;
 - (void)setFFCellX:(long long)arg1;
-@property(copy, nonatomic) NSAttributedString *FFAttributedString;
 @end
 

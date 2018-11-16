@@ -6,41 +6,63 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "TLKVerticalIndexing.h"
 
-@interface FFVerticalIndexPath : NSObject <NSCopying, NSCoding>
+@class NSString;
+
+@interface FFVerticalIndexPath : NSObject <NSCopying, TLKVerticalIndexing>
 {
-    long long *_indexes;
+    long long _indexes[10];
     unsigned long long _length;
+    id <FFStorylineItem> _storylineItem;
+    id <FFStorylineLane> _intrinsicLane;
+    id <FFStorylineLane> _presentedLane;
+    id <FFStorylineLane> _primaryLane;
+    id <FFStorylineLane> _laneFolderAboveSpine;
+    id <FFStorylineLane> _laneFolderBelowSpine;
+    long long _layoutRegion;
+    id <FFStoryline> _rootItem;
 }
 
 + (id)indexPathWithIndexes:(long long *)arg1 length:(long long)arg2;
 + (id)indexPathWithIndex:(long long)arg1;
-+ (id)indexPathWithString:(id)arg1;
-- (unsigned long long)hash;
+@property(retain, nonatomic) id <FFStoryline> rootItem; // @synthesize rootItem=_rootItem;
+@property(nonatomic) long long layoutRegion; // @synthesize layoutRegion=_layoutRegion;
+@property(retain, nonatomic) id <FFStorylineLane> laneFolderBelowSpine; // @synthesize laneFolderBelowSpine=_laneFolderBelowSpine;
+@property(retain, nonatomic) id <FFStorylineLane> laneFolderAboveSpine; // @synthesize laneFolderAboveSpine=_laneFolderAboveSpine;
+@property(retain, nonatomic) id <FFStorylineLane> primaryLane; // @synthesize primaryLane=_primaryLane;
+@property(retain, nonatomic) id <FFStorylineLane> presentedLane; // @synthesize presentedLane=_presentedLane;
+@property(retain, nonatomic) id <FFStorylineLane> intrinsicLane; // @synthesize intrinsicLane=_intrinsicLane;
+@property(retain, nonatomic) id <FFStorylineItem> storylineItem; // @synthesize storylineItem=_storylineItem;
+- (void)_raiseIfLengthOutOfBounds:(unsigned long long)arg1;
+@property(readonly) unsigned long long hash;
 - (BOOL)isEqual:(id)arg1;
-- (id)debugDescription;
-- (id)description;
-- (id)_indexesDescription;
-- (BOOL)isAncestorOfIndexPath:(id)arg1;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+- (id)_indexPathDescription;
+- (long long)compareVisualOrder:(id)arg1;
 - (long long)compare:(id)arg1;
-- (long long)lastIndex;
-- (void)getIndexes:(long long *)arg1;
 - (unsigned long long)length;
 - (long long)indexAtPosition:(long long)arg1;
-- (id)indexPathByReversingIndexPath;
-- (id)indexPathByRemovingFirstIndex;
-- (id)indexPathByRemovingLastIndex;
 - (id)indexPathByAddingIndex:(long long)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
+- (id)audioComponentsForItem:(id)arg1;
+- (BOOL)useDefaultIndexValueForItemComponent:(id)arg1;
+- (void)_updatePrimaryComponentInSpineIndexes;
+- (void)updateOrganizedIndexValueForItemComponent:(id)arg1;
+- (void)updateDefaultVerticalIndexValueForItemComponent:(id)arg1;
+- (long long)_intrinsicComponentIndexForItemComponent:(id)arg1 isFlipped:(BOOL)arg2;
+- (unsigned long long)_flattenIndexPathForLane:(id)arg1 intoIndexes:(long long *)arg2 isFlipped:(BOOL)arg3;
+- (void)_updateIndexes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithIndex:(long long)arg1;
 - (id)initWithIndexes:(long long *)arg1 length:(long long)arg2;
-- (id)_initWithIndexesPtr:(long long *)arg1 length:(long long)arg2;
-- (id)stringValue;
+- (id)initWithStorylineItem:(id)arg1 intrinsicLane:(id)arg2 presentedLane:(id)arg3 primaryLane:(id)arg4 laneFolderAboveSpine:(id)arg5 laneFolderBelowSpine:(id)arg6 layoutRegion:(long long)arg7 rootItem:(id)arg8;
+- (id)init;
+
+// Remaining properties
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,9 +6,12 @@
 
 #import <Flexo/FFEffectBundle.h>
 
+@class NSXMLDocument;
+
 @interface FFEffectBundleInternalBundle : FFEffectBundle
 {
     BOOL m_needToMigrateChannelFolder;
+    NSXMLDocument *_xmlDocument;
 }
 
 + (id)initialEffectBundlePartsForEffectID:(id)arg1;
@@ -19,7 +22,6 @@
 - (void)_migrateChannelFolder:(id)arg1;
 - (void)setEffectBundleParts:(id)arg1;
 - (int)bundleEncodingOptions;
-- (void)partChangedHook;
 - (id)copyBundlePartAtIndex:(int)arg1;
 - (id)bundlePartAtIndex:(int)arg1;
 - (id)availableBundleParts;
@@ -35,6 +37,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
 - (void)_postInit:(id)arg1;
+- (void)dealloc;
 
 @end
 

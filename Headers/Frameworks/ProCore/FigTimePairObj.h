@@ -6,15 +6,16 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface FigTimePairObj : NSObject <NSCopying, NSCoding>
+@interface FigTimePairObj : NSObject <NSCopying, NSSecureCoding>
 {
     struct PC_CMTimePair _pair;
 }
 
 + (id)pairWithPair:(struct PC_CMTimePair)arg1;
++ (BOOL)supportsSecureCoding;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)getValue:(struct PC_CMTimePair *)arg1;

@@ -24,6 +24,7 @@
     BOOL _jobActionUsesHelperApp;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)baseVideoRoleStompSettings;
 + (id)audioRoleStompSettings;
 + (id)audioOutputStompSettings;
@@ -64,6 +65,7 @@
 - (void)removeObjectFromFactoryRolePresetsAtIndex:(unsigned long long)arg1;
 - (void)insertFactoryRolePresets:(id)arg1 atIndexes:(id)arg2;
 - (void)insertObject:(id)arg1 inFactoryRolePresetsAtIndex:(unsigned long long)arg2;
+- (BOOL)currentRolePresetIsInFactorySet;
 - (void)setVideoStompSetting:(id)arg1 applyPreset:(BOOL)arg2;
 - (void)setVideoStompSettings:(id)arg1 applyPreset:(BOOL)arg2;
 - (void)setAudioStompSetting:(id)arg1 applyPreset:(BOOL)arg2;
@@ -74,6 +76,8 @@
 - (BOOL)isExportingRoles;
 - (BOOL)isExportingAudio;
 - (BOOL)isExportingVideo;
+- (id)firstMultitrackRolePreset;
+- (void)setDestinationRolePresetToMultitrackWhenExportingAsMXF;
 - (id)targetFileNameSuffix;
 - (BOOL)requiresTargetDestinationURL;
 - (id)iconTitle;

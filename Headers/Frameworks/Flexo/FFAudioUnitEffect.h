@@ -8,26 +8,26 @@
 
 #import "FFEffectPresetDirtyProtocol.h"
 
-@class FFAnchoredObject, FFSharedAudioUnit, NSDictionary, NSMutableSet;
+@class FFAnchoredObject, FFWeakPointerValue, NSDictionary, NSMutableSet, NSXMLElement;
 
 @interface FFAudioUnitEffect : FFEffect <FFEffectPresetDirtyProtocol>
 {
-    BOOL _isSyncingChannelsToParameters;
     NSDictionary *_effectState;
     NSDictionary *_preset;
     NSDictionary *_defaultPreset;
     BOOL _presetDirty;
     unsigned int _numChannels;
     double _sampleRate;
-    _Bool _initOnceSetStackHasBeenCalled;
-    BOOL _savingCurrentEffectState;
+    unsigned int _preferredNumChannels;
+    double _preferredSampleRate;
     NSDictionary *_parameterInfoMap;
     unsigned int _numPlaybackUnits;
-    FFSharedAudioUnit *_masterUnit;
+    FFWeakPointerValue *_masterUnit;
     NSMutableSet *_slaveUnits;
     FFAnchoredObject *_observedObject;
     unsigned int _numObservedObjectChannels;
-    BOOL _performingUpdateAudioProperties;
+    unsigned char _runtimeFlags;
+    NSXMLElement *_loadXMLElementOnActivation;
 }
 
 + (void)clearAllPlaybackUnits;
@@ -76,8 +76,10 @@
 + (unsigned int)unmapParameterID:(unsigned int)arg1;
 + (unsigned int)mapParameterID:(unsigned int)arg1;
 @property(nonatomic) BOOL presetDirty; // @synthesize presetDirty=_presetDirty;
-@property(readonly) unsigned int numChannels; // @synthesize numChannels=_numChannels;
-@property(readonly) double sampleRate; // @synthesize sampleRate=_sampleRate;
+@property(nonatomic) double preferredAudioSampleRate; // @synthesize preferredAudioSampleRate=_preferredSampleRate;
+@property(nonatomic) unsigned int preferredAudioChannelCount; // @synthesize preferredAudioChannelCount=_preferredNumChannels;
+@property(nonatomic) double audioSampleRate; // @synthesize audioSampleRate=_sampleRate;
+@property(nonatomic) unsigned int audioChannelCount; // @synthesize audioChannelCount=_numChannels;
 - (void)update_PreEdelXAudioEffectKeyframes;
 - (id)fileURL;
 - (id)exportAsXMLElementWithDeprecatedEffectData:(id)arg1;
@@ -94,9 +96,11 @@
 - (id)requestSlaveUnitForClient:(void *)arg1 forPlayback:(BOOL)arg2 numChannels:(unsigned int)arg3 sampleRate:(double)arg4;
 - (id)requestSlaveUnitForClient:(void *)arg1 forPlayback:(BOOL)arg2;
 - (id)requestMasterUnitForClient:(void *)arg1 forPlayback:(BOOL)arg2;
+- (void)releaseMasterUnit;
 - (id)masterUnitNoDemand;
 - (id)masterUnit;
 - (id)_masterUnit:(BOOL)arg1;
+- (void)_masterUnitWillBeReleased:(id)arg1;
 - (void)DSObjectWasAddedToStore;
 - (void)effectStackAnchoredObjectDidChange;
 - (void)effectDeactivated;
@@ -108,6 +112,7 @@
 - (void)_notifyUpdateAudioProperties:(id)arg1;
 - (void)_updateAudioProperties:(BOOL)arg1;
 - (void)resetPlaybackUnits;
+- (double)_defaultSampleRate;
 - (unsigned int)_defaultNumEffectChannels;
 - (BOOL)isEDELEffect;
 - (void)loadEffectStateIntoAudioUnit:(struct ComponentInstanceRecord *)arg1;
@@ -125,24 +130,32 @@
 - (void)setPreset:(id)arg1;
 - (void)switchToPreset:(id)arg1;
 - (void)_switchToPreset:(id)arg1 preserveOptions:(unsigned int)arg2;
+- (BOOL)testRuntimeFlags:(unsigned int)arg1;
+- (void)clearRuntimeFlags:(unsigned int)arg1;
+- (void)setRuntimeFlags:(unsigned int)arg1;
+- (void)setPreferredSampleRate:(double)arg1;
+- (void)setPreferredNumChannels:(unsigned int)arg1;
+- (void)_updateSampleRate:(double)arg1;
+- (void)_updateNumChannels:(unsigned int)arg1;
+- (void)_demandValidNumChannelsAndSampleRate;
+- (double)sampleRate;
+- (unsigned int)numChannels;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_postInit:(id)arg1;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
 - (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1;
-@property(readonly) double audioSampleRate;
-@property(readonly) unsigned int audioChannelCount;
 - (void)channelParameterChanged:(id)arg1;
 - (void)_parameterChannelChanged:(id)arg1;
 - (void)_updateParameterListUsingUnit:(struct ComponentInstanceRecord *)arg1;
-- (BOOL)_fixupChannelsForChangedParameterList:(const struct FFAudioUnitParameterList *)arg1 unit:(struct ComponentInstanceRecord *)arg2;
+- (BOOL)_updateParameterChannelsUsingParameterList:(const struct FFAudioUnitParameterList *)arg1 audioUnit:(struct ComponentInstanceRecord *)arg2;
 - (void)_refreshEffectStack;
 - (void)createChannelsInFolder:(id)arg1;
-- (unsigned int)makeParameterChannelsForAudioUnit:(struct ComponentInstanceRecord *)arg1 withinFolder:(id)arg2;
+- (void)makeParameterChannelsForAudioUnit:(struct ComponentInstanceRecord *)arg1 withinFolder:(id)arg2;
 - (id)createClumpFolderWithClumpID:(unsigned int)arg1 inFolder:(id)arg2 forAudioUnit:(struct ComponentInstanceRecord *)arg3;
 - (id)newChannelForParamInfo:(const struct FFAudioUnitParameterInfo *)arg1 usingAudioUnit:(struct ComponentInstanceRecord *)arg2;
-- (void)_updateParameterInfoMap:(id)arg1;
+- (void)_undoableSetParameterInfoMap:(id)arg1;
 - (BOOL)hasPresets;
 - (BOOL)setXMLPresetPath:(id)arg1 forPresetType:(int)arg2;
 - (int)setFilePresetPath:(id)arg1 forFilePresetType:(int)arg2 withFullPath:(id)arg3;

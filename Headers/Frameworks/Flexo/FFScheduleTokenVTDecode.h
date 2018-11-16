@@ -62,7 +62,6 @@ __attribute__((visibility("hidden")))
 - (CDUnknownFunctionPointerType)decodeCallback;
 - (void)copyCropValues:(float *)arg1;
 - (void)setCropValues:(float *)arg1;
-- (int)diskWaitTimeInSeconds;
 - (CDStruct_1b6d18a9)outputPTS;
 - (_Bool)invertAlpha;
 - (int)overrideAlphaType;

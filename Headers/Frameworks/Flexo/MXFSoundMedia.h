@@ -9,7 +9,7 @@
 #import "HPMMediaCursorProtocol.h"
 #import "HPMSoundMediaProtocol.h"
 
-@class NSMutableDictionary, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface MXFSoundMedia : MXFMedia <HPMSoundMediaProtocol, HPMMediaCursorProtocol>
@@ -37,14 +37,14 @@ __attribute__((visibility("hidden")))
 @property(readonly) BOOL hasChannelTags;
 @property(readonly) long long indexDataSize;
 - (void)dealloc;
-- (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXKey *)arg2 bodySID:(unsigned int)arg3 descriptor:(const struct MXKLV *)arg4;
+- (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXKey *)arg2 bodySID:(unsigned int)arg3 sourcePack:(const struct MXPackage *)arg4 sourceTrackIndex:(int)arg5;
 
 // Remaining properties
 @property(readonly) unsigned int bytesPerSample;
 @property(readonly) int codecType;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(retain) NSMutableDictionary *descriptiveMetadata;
+@property struct __CFDictionary *descriptiveMetadata;
 @property(readonly) int editRate;
 @property(readonly) int essenceType;
 @property(readonly) long long frameDuration;

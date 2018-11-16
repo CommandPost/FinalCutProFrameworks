@@ -17,6 +17,7 @@
     NSImage *_previewImage;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)buildTree;
 - (id)getDescriptionLine5;
 - (id)getDescriptionLine4;
@@ -30,10 +31,11 @@
 - (void)drawIcon;
 - (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
 - (BOOL)getPasteEntries:(struct OZPasteList *)arg1;
-- (short)getASUFontID:(unsigned int *)arg1;
 - (BOOL)shouldBeArchived;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithParent:(id)arg1 displayName:(id)arg2 fontName:(id)arg3 baseName:(id)arg4 styleName:(id)arg5;
 
 @end

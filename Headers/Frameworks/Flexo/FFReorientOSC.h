@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSNumberFormatter *_numberFormatter;
 }
 
+- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (void)keyFrameReorient:(id)arg1;
 - (void)resetReorient:(id)arg1;
 - (void)exitReorientOSC:(id)arg1;

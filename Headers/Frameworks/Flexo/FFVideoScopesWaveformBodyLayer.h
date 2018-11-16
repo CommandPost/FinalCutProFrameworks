@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)waveformBodyLayer;
 - (void)setDelegate:(id)arg1;
+- (void)highlightMarker:(BOOL)arg1;
 - (void)animateOutTransientMarkerAssignment;
 - (void)hideTransientMarker;
 - (void)showTransientMarkerInGraticuleAtYPos:(double)arg1;
@@ -27,7 +28,8 @@ __attribute__((visibility("hidden")))
 - (double)transformYPosFromIREOrNits:(double)arg1;
 - (double)transformYPosToIREOrNits:(double)arg1;
 - (id)_waveformBackgroundLayers;
-- (struct CGPoint)transformCoordinateInGraticule:(struct CGPoint)arg1;
+- (struct CGPoint)convertPointFromGraticule:(struct CGPoint)arg1;
+- (struct CGPoint)convertPointToGraticule:(struct CGPoint)arg1;
 - (void)hideGraticuleLabels:(BOOL)arg1;
 - (void)setMonochrome:(BOOL)arg1;
 - (void)setShowGuides:(BOOL)arg1;

@@ -6,24 +6,20 @@
 
 #import "LKPreferencesModule.h"
 
-@class LKPopUpButton, LKSegmentedScrubber;
+@class LKSegmentedScrubber;
 
 @interface PEAppEditingPreferencesModule : LKPreferencesModule
 {
-    LKPopUpButton *pixelsOrPercentagePopup;
     LKSegmentedScrubber *transitionsDurationScrubber;
     LKSegmentedScrubber *stillImagesDurationScrubber;
     LKSegmentedScrubber *defaultAudioFadeDurationScrubber;
-    LKPopUpButton *defaultColorCorrection;
 }
 
 - (void)dealloc;
-- (void)pixelsOrPercentage:(id)arg1;
 - (id)titleForIdentifier:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)awakeFromNib;
 - (void)moduleWasInstalled;
-- (void)selectColorEffect:(id)arg1;
 - (BOOL)isResizable;
 - (id)imageForPreferenceNamed:(id)arg1;
 

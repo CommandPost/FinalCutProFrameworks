@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
     CDStruct_79c71658 _videoDimensions;
     BOOL _isReferenceMovie;
     BOOL _unsupportedReferenceMovie;
+    BOOL _uses32BitQTMovieImporter;
     BOOL _wantsOptimize;
     BOOL _subSampled;
     _Bool _recognizedFile360AndStereoTags;
@@ -122,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)fileTrackDuration;
 - (CDStruct_1b6d18a9)fileNativeSampleDuration;
 - (BOOL)_isIFrameOnly;
+@property(readonly, nonatomic) BOOL requires32BitQT;
 @property(readonly, nonatomic) BOOL isReferenceMovie;
 @property(readonly, nonatomic) unsigned int codecType;
 @property(readonly, nonatomic) BOOL codecIs32BitQT;

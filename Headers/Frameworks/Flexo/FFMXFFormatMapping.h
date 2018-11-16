@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 + (int)getCountBasicFormats;
 + (BOOL)checkSettingsFromSourceAndDestination:(id)arg1 source:(id)arg2;
 + (int)checkException:(int)arg1 countAudioChannels:(int)arg2;
-+ (int)isMXFAlowed:(id)arg1;
++ (int)isMXFAlowed:(id)arg1 audioSampleRate:(double)arg2;
 + (id)getRenderFormatByFCC:(id)arg1;
 + (int)getApertureByFileType:(int)arg1 videoFormatKey:(id)arg2;
 + (id)getShortFormatByFileType:(int)arg1;

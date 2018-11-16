@@ -53,7 +53,7 @@
 - (id)motionPathLockedColor;
 - (id)motionPathOSCColor;
 - (void)draw;
-- (PCPtr_fc939811)getVertexAsset:(int)arg1;
+- (PCPtr_ca97d389)getVertexAsset:(int)arg1;
 - (double)getPixelAspectRatio;
 - (void)mouseDown:(id)arg1;
 - (void)mouseDragged:(id)arg1;

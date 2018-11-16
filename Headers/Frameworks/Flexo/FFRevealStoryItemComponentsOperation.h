@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     FFProStoryTimelinePresentation *_storyPresentation;
 }
 
++ (BOOL)updateComponentVisibilityForClip:(id)arg1 storyPresentation:(id)arg2;
 @property(readonly, nonatomic) FFProStoryTimelinePresentation *storyPresentation; // @synthesize storyPresentation=_storyPresentation;
 @property(readonly, nonatomic) NSSet *storyItems; // @synthesize storyItems=_storyItems;
 - (void)main;

@@ -6,15 +6,16 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface PCMatrix44Double : NSObject <NSCoding, NSCopying>
+@interface PCMatrix44Double : NSObject <NSSecureCoding, NSCopying>
 {
     double _m[4][4];
     PCMatrix44Tmpl_93ed1289 *_pcMatrix;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)newPlanarTransformTo:(id)arg1;
 - (id)newTransformTo:(id)arg1;
 - (id)newNSAffineTransform;

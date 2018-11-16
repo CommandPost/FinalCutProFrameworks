@@ -22,6 +22,7 @@
 - (void)setFeather:(id)arg1;
 - (id)optionsNibName;
 - (id)contentView;
+- (void)dealloc;
 - (id)initWithOSC:(id)arg1;
 
 @end

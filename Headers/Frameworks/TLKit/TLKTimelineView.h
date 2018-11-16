@@ -240,9 +240,12 @@
 - (void)moveSelectionDown:(id)arg1;
 - (void)moveSelectionUp:(id)arg1;
 - (void)_selectAdjacentItemHorizontally:(long long)arg1 forItems:(id)arg2 byExtendingSelection:(BOOL)arg3;
+- (id)previousClipInfoForItems:(id)arg1;
+- (id)nextClipInfoForItems:(id)arg1;
+- (id)_nextClipInfoForItems:(id)arg1 inDirection:(long long)arg2;
 - (id)_nextHorizontalItemInDirection:(long long)arg1 forItems:(id)arg2 unoccludedTime:(double *)arg3;
 - (void)_cacheItemComponentForSelectNextForItem:(id)arg1 searchTime:(double)arg2 selectionDirection:(long long)arg3 unoccludedTime:(double)arg4 nextComponent:(id)arg5;
-- (id)_retrieveItemComponentFromSelectNextCacheForItem:(id)arg1 searchTime:(double)arg2 selectionDirection:(long long)arg3 unoccludedTime:(double *)arg4 existsInCache:(char *)arg5;
+- (id)_retrieveItemComponentFromSelectNextCacheForItem:(id)arg1 selectedItems:(id)arg2 searchTime:(double)arg3 selectionDirection:(long long)arg4 unoccludedTime:(double *)arg5 existsInCache:(char *)arg6;
 - (void)_invalidateSelectNextCaches;
 - (void)_selectAdjacentItem:(long long)arg1 forItems:(id)arg2;
 - (id)_nextVerticalItemInDirection:(long long)arg1 forItems:(id)arg2;
@@ -497,6 +500,8 @@
 - (struct CGSize)_constrainedFrameSize:(struct CGSize)arg1;
 - (BOOL)_timePreservingMode;
 @property(readonly, nonatomic) TLKLayoutMetrics *layoutMetrics;
+@property(readonly) struct CGPoint initialPoint;
+@property(readonly) struct CGPoint currentPoint;
 - (BOOL)notifyWillOpenClosePrecisionEditor:(BOOL)arg1 leftItem:(id)arg2 rightItem:(id)arg3 transition:(id)arg4;
 - (BOOL)notifyDoubleClickedItem:(id)arg1 part:(id)arg2;
 - (void)viewDidChangeVisibleRect:(struct CGRect)arg1;
@@ -535,6 +540,7 @@
 - (id)precisionEditorTrimBar;
 - (id)precisionEditorDividerBar;
 @property(readonly) TLKGuideLayer *guideLayer;
+- (struct CGRect)nonWrappingFrameForItemComponent:(id)arg1;
 - (id)framesForItemComponent:(id)arg1;
 - (id)framesForItem:(id)arg1;
 - (struct CGRect)_layerFrameForPotentiallyOffscreenItemComponentFragment:(id)arg1;

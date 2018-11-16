@@ -11,6 +11,8 @@
 @protocol PAELUTRepositoryControllerDelegate <NSObject>
 
 @optional
+- (void)controller:(PAELUTRepositoryController *)arg1 didEndOpenPanelForMenu:(NSMenu *)arg2 result:(long long)arg3;
+- (void)controller:(PAELUTRepositoryController *)arg1 willBeginOpenPanelForMenu:(NSMenu *)arg2;
 - (BOOL)controller:(PAELUTRepositoryController *)arg1 enablesMenuItem:(NSMenuItem *)arg2;
 - (void)controller:(PAELUTRepositoryController *)arg1 populateMenu:(NSMenu *)arg2 wantsRecents:(char *)arg3;
 - (void)controller:(PAELUTRepositoryController *)arg1 didInstallItem:(PAELUTRepositoryItem *)arg2;

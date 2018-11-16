@@ -6,14 +6,14 @@
 
 #import "OZViewCtlrRoot.h"
 
-@class LKScrollView, NSView;
+@class LKScrollView, NSObject<OZViewCtlrDelegate>, NSView;
 
 @interface OZAutoInspectorController : OZViewCtlrRoot
 {
     NSView *_pMainView;
     LKScrollView *_pScrollView;
     BOOL _isRoot;
-    id *_pViewCtlrDelegate;
+    NSObject<OZViewCtlrDelegate> *_pViewCtlrDelegate;
 }
 
 - (void)animView:(id)arg1 setFrameSize:(struct CGSize)arg2;
@@ -25,13 +25,13 @@
 - (void)scrollToChannel:(struct OZChannelBase *)arg1;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (id)mainView;
-- (BOOL)buildUIWithSceneNodes:(list_752fd9b9 *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_e89ce44a *)arg1 context:(id)arg2;
 - (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
 - (void)didBuildUI;
 - (void)dealloc;
-- (id)initWithSceneNodes:(list_752fd9b9 *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
-- (id)initWithSceneNodes:(list_752fd9b9 *)arg1 viewCtlrDelegate:(id)arg2;
-- (id)initWithSceneNodes:(list_752fd9b9 *)arg1;
+- (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
+- (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2;
+- (id)initWithSceneNodes:(list_e89ce44a *)arg1;
 - (id)initWithNode:(struct OZSceneNode *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
 - (id)initWithNode:(struct OZSceneNode *)arg1;
 - (void)commonInit;

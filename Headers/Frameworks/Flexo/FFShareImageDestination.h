@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)setting;
 + (id)defaultName;
 - (BOOL)requiresTargetDestinationURL;
@@ -25,6 +26,7 @@
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
 - (id)taskIdentifier;
+- (BOOL)supportsBatchExport;
 
 @end
 

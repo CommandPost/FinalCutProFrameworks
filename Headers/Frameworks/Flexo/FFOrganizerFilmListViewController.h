@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
     LKMenu *_projectContextualMenu;
     NSMenuItem *_openProjectMenuItem;
     NSMenuItem *_consumerOpenProjectMenuItem;
+    NSMenuItem *_shareProjectContextualMenu;
     LKTableColumn *_colorProfileTableColumn;
     LKTableColumn *_sizeTableColumn;
     struct PCProcrastinatedDispatch_t _procrastinatedReloadData;
@@ -129,7 +130,6 @@ __attribute__((visibility("hidden")))
 - (void)_deferredSyncSelectionToAddedKeyword:(id)arg1;
 - (void)didRemoveKeywordsWithRanges:(id)arg1 onSequence:(id)arg2 animationRange:(CDStruct_e83c9415)arg3;
 - (void)didAddKeywordsNamed:(id)arg1 removeKeywordsNamed:(id)arg2 onSequence:(id)arg3 forRange:(CDStruct_e83c9415)arg4;
-- (id)valueForKey:(id)arg1;
 - (BOOL)removeObserversAndNotifications:(id)arg1;
 - (BOOL)attachObserversAndNotifications:(id)arg1;
 - (void)setClipLabelSize:(int)arg1;

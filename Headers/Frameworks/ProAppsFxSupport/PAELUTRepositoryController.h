@@ -35,6 +35,7 @@
 - (BOOL)_installFileAtURL:(id)arg1 delegate:(id)arg2 options:(long long)arg3 withCallback:(CDUnknownBlockType)arg4 error:(id *)arg5;
 - (void)selectLUT:(id)arg1;
 - (void)_selectLUT:(id)arg1 selectedItem:(id)arg2;
+- (id)_menuFromSender:(id)arg1;
 - (void)repository:(id)arg1 didMoveItem:(id)arg2 toItem:(id)arg3;
 - (void)_didMoveItem:(id)arg1 toItem:(id)arg2;
 - (void)repository:(id)arg1 didChangeItem:(id)arg2;

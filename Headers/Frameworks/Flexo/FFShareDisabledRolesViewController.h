@@ -14,12 +14,15 @@ __attribute__((visibility("hidden")))
 @interface FFShareDisabledRolesViewController : NSViewController <NSPopoverDelegate>
 {
     NSPopover *_hostingPopover;
+    BOOL _hasHomogeneousDisabledRoles;
     NSSet *_disabledRoles;
 }
 
++ (id)sharedDisabledRolesViewControllerWithDisabledRoles:(id)arg1 hasHomogeneousDisabledRoles:(BOOL)arg2;
 + (id)sharedDisabledRolesViewControllerWithDisabledRoles:(id)arg1;
 + (id)sharedDisabledRolesViewController;
 @property(retain, nonatomic) NSSet *disabledRoles; // @synthesize disabledRoles=_disabledRoles;
+@property(nonatomic) BOOL hasHomogeneousDisabledRoles; // @synthesize hasHomogeneousDisabledRoles=_hasHomogeneousDisabledRoles;
 - (void)close;
 - (void)showRelativeToRect:(struct CGRect)arg1 ofView:(id)arg2 preferredEdge:(unsigned long long)arg3;
 - (void)dealloc;

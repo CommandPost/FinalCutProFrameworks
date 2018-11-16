@@ -8,12 +8,14 @@
 
 #import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface LKOneDTimeTimecodeFormatDeputy : LKFormatDeputy <NSCoding, NSCopying>
+@interface LKOneDTimeTimecodeFormatDeputy : LKFormatDeputy <NSCoding, NSCopying, NSSecureCoding>
 {
     long long pTtf_secondsDecimalPlaces;
 }
 
++ (BOOL)supportsSecureCoding;
 + (long long)version;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -14,6 +14,8 @@
 + (void)shutdown;
 + (void)applicationWillTerminate:(id)arg1;
 + (BOOL)isUnitTesting;
++ (void)setSupportsBatchExport:(BOOL)arg1;
++ (BOOL)supportsBatchExport;
 + (void)setWebAssetsEnabled:(BOOL)arg1;
 + (BOOL)webAssetsEnabled;
 + (void)setRemoveProjectPreviewTitles:(BOOL)arg1;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_currentTasks;
 }
 
++ (void)validateCaptionsForSequence:(id)arg1 withLowOverheadBehavior:(int)arg2;
 + (void)validateCaptionsForSequence:(id)arg1;
 + (void)validateCaptionsAdded:(id)arg1 captionsModified:(id)arg2 captionsRemoved:(id)arg3 inSequence:(id)arg4;
 - (void)canceledTask:(id)arg1;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)groupOverlappingCaptions:(id)arg1 exclusivelyEndToEnd:(BOOL)arg2;
 - (id)_validateCaptionSequence:(id)arg1 forClass:(id)arg2 inTask:(id)arg3;
 - (id)_validateCaption:(id)arg1 forClass:(id)arg2;
+- (void)validateCaptionRole:(id)arg1 inSequence:(id)arg2 withLowOverheadBehavior:(int)arg3 deepValidation:(BOOL)arg4;
 - (void)validateCaptionRole:(id)arg1 inSequence:(id)arg2 deepValidation:(BOOL)arg3;
 - (void)shallowValidateCaptionArray:(id)arg1 inTask:(id)arg2;
 - (void)deepValidateCaptionArray:(id)arg1 inTask:(id)arg2;

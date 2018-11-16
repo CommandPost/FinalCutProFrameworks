@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     BOOL _rebuildingInspector;
     FFInspectorTabDFRController *_dfrController;
     struct PCProcrastinatedDispatch_t _procrastinatedContext;
+    int _pendingResyncTabs;
 }
 
 - (void)openSettingsWithModule:(id)arg1;
@@ -90,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (id)tabViewItems;
 - (void)selectInspectorTab:(unsigned long long)arg1;
 - (id)touchBar;
+- (void)_notifyResyncTabs;
 - (void)_rangeInvalidation:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (unsigned long long)labelAlignment;

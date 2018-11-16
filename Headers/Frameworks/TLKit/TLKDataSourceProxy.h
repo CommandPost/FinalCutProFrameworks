@@ -51,7 +51,6 @@
         unsigned int respondsToAdjustTimeOfPosterItem:1;
         unsigned int responseToWillTrimEdge:1;
         unsigned int responseToWillRollEdge:1;
-        unsigned int respondsToFilterOutLeadingTrailingTransitions:1;
         unsigned int respondsToMarkerForIteminTimeRange:1;
         unsigned int respondsToAdjustOffsetMarker:1;
         unsigned int respondsToVisibilityForItem:1;
@@ -63,7 +62,7 @@
         unsigned int respondsToAccessibilityValueDescriptionForTime:1;
         unsigned int respondsToAccessibilityLocalizedString:1;
         unsigned int respondsToOperationsForDragContext:1;
-        unsigned int RESERVED:10;
+        unsigned int RESERVED:11;
     } _tlkDataSourceFlags;
     struct {
         unsigned int respondsToLanesForContainer:1;
@@ -129,7 +128,6 @@
 - (id)anchorItems:(id)arg1 inContainer:(id)arg2 byAnchoringItem:(id)arg3 inLane:(id)arg4 atTime:(CDStruct_1b6d18a9)arg5;
 - (BOOL)shouldAnchorItems:(id)arg1 inContainer:(id)arg2 byAnchoringItem:(id)arg3 inLane:(id)arg4 atTime:(CDStruct_1b6d18a9)arg5;
 - (id)prepareItemAsContainer:(id)arg1 forMovingItems:(id)arg2 toIndex:(unsigned long long)arg3 atTime:(CDStruct_1b6d18a9)arg4;
-- (id)filterOutLeadingTrailingTransitions:(id)arg1;
 - (void)nudgeItems:(id)arg1 byTimeOffset:(CDStruct_1b6d18a9)arg2 inContainer:(id)arg3;
 - (id)operationsForDragContext:(id)arg1;
 - (void)moveItems:(id)arg1 byPlacingItem:(id)arg2 inContainer:(id)arg3 atIndex:(unsigned long long)arg4 atTime:(CDStruct_1b6d18a9)arg5;

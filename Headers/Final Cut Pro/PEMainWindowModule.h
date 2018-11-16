@@ -6,7 +6,7 @@
 
 #import "PEWindowModule.h"
 
-@class LKProgressIndicator, NSArray, NSButton, NSMutableSet, PEDualMonitorControl, PEToolbarActivityButton;
+@class LKButton, LKProgressIndicator, NSArray, NSButton, NSMutableSet, PEDualMonitorControl, PEToolbarActivityButton;
 
 @interface PEMainWindowModule : PEWindowModule
 {
@@ -25,6 +25,7 @@
     NSButton *_inspectorButton;
     NSButton *_shareButton;
     PEDualMonitorControl *_dualMonitorControl;
+    LKButton *_externalProviderControl;
     PEToolbarActivityButton *_taskProgressButton;
     LKProgressIndicator *_taskProgressIndicatorView;
     NSArray *_taskProgressIndicatorTintEffects;
@@ -39,6 +40,7 @@
 @property(retain, nonatomic) NSArray *taskProgressIndicatorTintEffects; // @synthesize taskProgressIndicatorTintEffects=_taskProgressIndicatorTintEffects;
 @property(retain, nonatomic) LKProgressIndicator *taskProgressIndicatorView; // @synthesize taskProgressIndicatorView=_taskProgressIndicatorView;
 @property(retain, nonatomic) PEToolbarActivityButton *taskProgressButton; // @synthesize taskProgressButton=_taskProgressButton;
+@property(retain, nonatomic) LKButton *externalProviderControl; // @synthesize externalProviderControl=_externalProviderControl;
 @property(retain, nonatomic) PEDualMonitorControl *dualMonitorControl; // @synthesize dualMonitorControl=_dualMonitorControl;
 @property(retain, nonatomic) NSButton *shareButton; // @synthesize shareButton=_shareButton;
 @property(retain, nonatomic) NSButton *inspectorButton; // @synthesize inspectorButton=_inspectorButton;
@@ -72,6 +74,7 @@
 - (void)postLayout:(id)arg1;
 - (void)preLayout:(id)arg1;
 - (void)setWindow:(id)arg1;
+- (void)_invalidateTookGeometryLayoutOnceBefore;
 - (id)contentLayoutDictionary;
 - (id)windowTitle;
 - (struct CGSize)viewMinSize;

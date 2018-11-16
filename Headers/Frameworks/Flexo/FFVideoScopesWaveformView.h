@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)videoScopesWaveformYScaleWantsPercentages;
 @property int colorSpaceType; // @dynamic colorSpaceType;
 - (void)_resyncMarkerVisibility;
+- (BOOL)_isMarkerVisible:(double *)arg1;
 @property long long compositeVideoUnits; // @dynamic compositeVideoUnits;
 @property long long displayMode; // @dynamic displayMode;
 - (void)_setColorSpaceType:(int)arg1;

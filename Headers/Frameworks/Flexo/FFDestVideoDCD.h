@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (unsigned int)outputMaxLatencyInFrames;
 - (BOOL)wantsDithering:(id)arg1;
-- (id)supportedPixelFormats;
-- (struct CGColorSpace *)colorSpace;
+- (id)internal_tempSupPFs;
+- (struct CGColorSpace *)internal_tempColorSpace;
 - (void)windowPropertiesChanged:(id)arg1;
 - (void)updateOutputDevice:(id)arg1;
 - (BOOL)hasConnection;

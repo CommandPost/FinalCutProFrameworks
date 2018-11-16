@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     int _overrideAlphaValue;
     unsigned int _nativeAlpha;
     _Bool _invertAlpha;
+    _Bool _nativelyFloat;
     struct CGColorSpace *_fileNativeColorSpace;
     int _depth;
     NSString *_colorModel;
@@ -66,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasAlpha;
 - (int)depth;
 - (int)rotationDegrees;
+- (BOOL)nativelyFloat;
 - (int)getNativeAlphaType;
 - (BOOL)isOpaque;
 - (id)nativeVideoProps;

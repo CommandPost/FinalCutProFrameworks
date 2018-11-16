@@ -61,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)setPrimaryClip:(id)arg1 withFrame:(int)arg2 ofClip:(id)arg3;
 - (void)setPrimaryClip:(id)arg1 withFrame:(int)arg2;
 - (id)initWithEditorModule:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_notifySequenceEdited:(id)arg1;
 - (void)dealloc;
 
 @end

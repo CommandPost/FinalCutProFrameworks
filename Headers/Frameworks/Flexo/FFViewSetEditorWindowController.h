@@ -82,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (long long)runModal;
 - (id)touchBar;
 - (void)dealloc;
+- (void)awakeFromNib;
 - (id)init;
 
 // Remaining properties

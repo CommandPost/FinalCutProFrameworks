@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_semaphore> *_pauseSemaphore;
     BOOL _paused;
     BOOL _canceled;
+    BOOL _firstAudioBuffer;
 }
 
+@property(nonatomic) BOOL firstAudioBuffer; // @synthesize firstAudioBuffer=_firstAudioBuffer;
 @property BOOL canceled; // @synthesize canceled=_canceled;
 - (void)callCompletionHandlerIfNecessary;
 - (void)cancel;

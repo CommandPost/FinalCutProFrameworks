@@ -16,12 +16,21 @@
     NSMutableArray *_pDisplays;
     CDStruct_1b6d18a9 _checkTime;
     BOOL _isObserver;
+    BOOL _grabbingLocks;
+    struct PCMutex _cacheLocksMutex;
+    struct map<CMTime, std::__1::pair<PCHash128, PCNSRef<id>>, std::__1::less<CMTime>, std::__1::allocator<std::__1::pair<const CMTime, std::__1::pair<PCHash128, PCNSRef<id>>>>> _cacheLocks;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)clearBitmapLocks;
+- (void)addBitmapLock:(const CDStruct_1b6d18a9 *)arg1 hash:(const struct PCHash128 *)arg2 lock:(const PCNSRef_443af0a4 *)arg3;
 - (BOOL)isCached:(CDStruct_1b6d18a9)arg1;
 - (void)notify:(unsigned int)arg1;
 - (void)timerAction:(id)arg1;
 - (void)checkSomeFrames:(BOOL)arg1;
+- (void)reacquireCacheLocks;
+- (void)surrenderCacheLocks;
 - (void)stopTimer;
 - (void)resumeTimer;
 - (void)startTimer;

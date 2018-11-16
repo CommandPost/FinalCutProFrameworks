@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)shouldDisplayReset;
 + (BOOL)shouldDisplayAnimIndicator;
 - (void)channelCustomUIResized:(id)arg1;
 - (void)dealloc;

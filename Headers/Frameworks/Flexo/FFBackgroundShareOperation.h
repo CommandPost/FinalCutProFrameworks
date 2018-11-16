@@ -9,7 +9,7 @@
 #import "CKTranscodingOperationTranscodeOverrideDelegate.h"
 #import "FFBackgroundTaskTarget.h"
 
-@class CKTranscodingOperation, FFBackgroundTask, FFSharingSnapshot, NSConditionLock, NSError, NSString;
+@class CKTranscodingOperation, FFBackgroundShareOperationUserNotificationGroup, FFBackgroundTask, FFSharingSnapshot, NSConditionLock, NSError, NSString;
 
 @interface FFBackgroundShareOperation : NSObject <FFBackgroundTaskTarget, CKTranscodingOperationTranscodeOverrideDelegate>
 {
@@ -26,12 +26,14 @@
     BOOL _addToShareHistory;
     BOOL _useTranscodeStatusForDisplayName;
     id <FFBackgroundShareOperationDelegate> _delegate;
+    FFBackgroundShareOperationUserNotificationGroup *_group;
 }
 
 + (id)shareOperationWithBatch:(id)arg1 andSnapshot:(id)arg2;
 + (BOOL)isSynchronousSource:(id)arg1 videoCodecType:(id)arg2;
 + (id)keyPathsForValuesAffectingBackgroundTask;
 + (id)shareOperationWithBatch:(id)arg1;
+@property(retain) FFBackgroundShareOperationUserNotificationGroup *group; // @synthesize group=_group;
 @property BOOL useTranscodeStatusForDisplayName; // @synthesize useTranscodeStatusForDisplayName=_useTranscodeStatusForDisplayName;
 @property BOOL addToShareHistory; // @synthesize addToShareHistory=_addToShareHistory;
 @property BOOL notifySuccess; // @synthesize notifySuccess=_notifySuccess;
@@ -59,8 +61,20 @@
 - (void)queueBackgroundTaskWithDependency:(id)arg1;
 - (void)queueBackgroundTask;
 - (void)canceledTask:(id)arg1;
+- (void)deliverUserNotification:(id)arg1;
+- (id)shareVideoPath;
+- (BOOL)didShareCompleteSuccessfully;
+- (BOOL)didCancel;
+- (Class)userNotificationFactoryClass;
+- (id)newUserNotificationFactory;
+- (id)newUserNotificationForSingleItemCase;
+- (id)newUserNotificationForSingleItemCaseIfAppropriate;
+- (id)newUserNotificationForGroupCaseIfAppropriate;
+- (id)newUserNotificationIfAppropriate;
+- (void)notifyUserIfAppropriate;
+- (void)notifyGroupOfCancellation;
+- (void)notifyGroupOfCompletion;
 - (void)performShareOperation:(id)arg1 task:(id)arg2;
-- (void)notifyUser:(id)arg1;
 @property(readonly) FFBackgroundTask *backgroundTask;
 - (void)dealloc;
 - (id)initWithBatch:(id)arg1 andSnapshot:(id)arg2;

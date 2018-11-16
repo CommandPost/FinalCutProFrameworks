@@ -14,12 +14,9 @@
 
 @property(nonatomic) CALayer *containerOuterLayer; // @synthesize containerOuterLayer=_containerOuterLayer;
 @property(nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
+@property(readonly) struct CGRect topShelfFrame;
 @property(readonly) struct CGSize containerSize;
 - (id)init;
-
-// Remaining properties
-@property(nonatomic) BOOL selected; // @dynamic selected;
-@property(nonatomic) struct CGColor *selectionColor; // @dynamic selectionColor;
 
 @end
 

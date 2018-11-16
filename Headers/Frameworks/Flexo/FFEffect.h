@@ -6,6 +6,7 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
+#import "FFAnchoredSequenceDSObservedObject.h"
 #import "FFAssetContainerProtocol.h"
 #import "FFCHChannelDelegate.h"
 #import "FFMD5Protocol.h"
@@ -13,7 +14,7 @@
 
 @class FFCHObservableFolder, FFEffectController, FFEffectStack, FFMD5AndOffset, NSArray, NSData, NSMutableArray, NSObject, NSString;
 
-@interface FFEffect : FFBaseDSObject <NSCopying, FFCHChannelDelegate, FFMD5Protocol, FFAssetContainerProtocol>
+@interface FFEffect : FFBaseDSObject <NSCopying, FFCHChannelDelegate, FFMD5Protocol, FFAssetContainerProtocol, FFAnchoredSequenceDSObservedObject>
 {
     FFEffectStack *_effectStack;
     NSString *_effectID;
@@ -46,7 +47,9 @@
 + (BOOL)shouldAllowEffectDropInEventProjects;
 + (BOOL)shouldAllowEffectSplitInspector;
 + (BOOL)shouldAllowEffectInEvents;
++ (BOOL)shouldAllowTimelineInTimecode;
 + (BOOL)shouldAllowEffectDropInEvents;
++ (BOOL)shouldAllowDenoiseOnBlacklistedConfigs;
 + (id)messageTracerEffectCountData;
 + (id)colorEffectIDs:(BOOL)arg1;
 + (void)pushRecentEffectID:(id)arg1;
@@ -166,6 +169,7 @@
 - (void)updateMotionEffectDisplayName;
 - (void)folderKeyframeStateAtTime:(CDStruct_1b6d18a9)arg1 keyFrameAtTime:(char *)arg2 previousKeyFrame:(char *)arg3 nextKeyFrame:(char *)arg4;
 - (void)syncChannelsHiddenStateWith:(id)arg1;
+- (id)anchoredObjectForSequenceDSObserving;
 - (_Bool)canObjectBePasted;
 - (void)applyStoredParamsAfterPaste;
 - (void)finishedSettingEffectParameters;
@@ -233,6 +237,7 @@
 - (BOOL)isRateConformEffect;
 - (BOOL)isRetimeEffect;
 - (BOOL)isTrimEffect;
+- (id)unavailableOnCurrentConfigForContext:(id)arg1;
 - (BOOL)inhibitAutoRenderDueToSettings;
 - (void)setSelected:(BOOL)arg1;
 - (BOOL)isMaskedEffect;
@@ -298,6 +303,7 @@
 - (void)fillSubMenuForKeyframeParamters:(id)arg1 curveEditor:(id)arg2;
 - (BOOL)shouldShowAllChannelInCurves;
 - (id)publishedChannels;
+- (id)warningToolTip;
 - (BOOL)hasPublishedChannels;
 - (id)channelChangeDelegate;
 - (id)mixChannel;

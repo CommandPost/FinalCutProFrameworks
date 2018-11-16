@@ -6,7 +6,7 @@
 
 #import <Flexo/FFOSC.h>
 
-@class FFOpenGLInfoGrid, FFOpenGLNSImage, NSDictionary, NSMutableDictionary;
+@class FFOpenGLNSImage, NSDictionary, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FFOverlayOSC : FFOSC
@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
     double _magicAlpha;
     NSMutableDictionary *_textImageCache;
     int _LRUCount;
-    FFOpenGLInfoGrid *_objectDetailsGrid;
     NSDictionary *_dominantMotionOpticalFlowTextAttribute;
     NSDictionary *_dominantMotionOpticalFlowTextAttributeGlow;
 }
@@ -42,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)channelTimeForTime:(CDStruct_1b6d18a9)arg1;
 - (void)dealloc;
 - (void)_setupTextures:(struct _CGLContextObject *)arg1;
-- (void)simpleTextRectangle:(float)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(id)arg4 attributes:(id)arg5 glowAttributes:(id)arg6 paddingX:(double)arg7 paddingY:(double)arg8 roundRectBackground:(BOOL)arg9;
+- (void)simpleTextRectangle:(float)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(id)arg4 attributes:(id)arg5 glowAttributes:(id)arg6 paddingX:(double)arg7 paddingY:(double)arg8 roundRectBackground:(BOOL)arg9 drawProperties:(id)arg10;
 - (id)init;
 
 @end

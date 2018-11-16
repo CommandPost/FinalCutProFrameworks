@@ -12,6 +12,7 @@
 }
 
 - (void)updateSkimming:(id)arg1;
+- (BOOL)isSplitAllModifierKeyPressed;
 - (void)splitAtCurrentLocation:(id)arg1;
 - (BOOL)itemLevelSkimmingEnabled;
 - (void)stopHandling:(id)arg1;

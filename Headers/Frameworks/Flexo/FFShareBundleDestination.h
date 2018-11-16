@@ -13,8 +13,10 @@
     NSMutableArray *_destinations;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)defaultName;
 @property(retain) NSMutableArray *destinations; // @synthesize destinations=_destinations;
+- (BOOL)supportsBatchExport;
 - (void)setChildrenDestinations:(id)arg1;
 - (id)childrenDestinations;
 - (unsigned long long)destinationsCount;

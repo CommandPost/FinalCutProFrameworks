@@ -59,7 +59,8 @@
 - (int)allChansKeyframed;
 - (int)allChansEnabled;
 - (void)didChangeChannels;
-- (void)willChangeChannelsWithDesc:(const char *)arg1;
+- (void)willChangeChannelsWithDesc:(const char *)arg1 onlyKeyframable:(BOOL)arg2;
+- (void)recursivelyAddChannelToUndo:(const struct OZChannelBase *)arg1 onlyKeyframable:(BOOL)arg2 description:(const struct PCString *)arg3;
 - (id)behaviorMenuImage;
 - (id)enableAnimMenuImage;
 - (id)newMenu;

@@ -30,8 +30,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *captionFormat; // @synthesize captionFormat=_captionFormat;
 @property(retain) NSArray *captionArray; // @synthesize captionArray=_captionArray;
 @property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
-- (void)_updateAVCaptionsToRenderForSequence:(id)arg1 inOperation:(id)arg2;
 - (void)_activeCaptionsChangedForSequence:(id)arg1;
+- (void)_updateAVCaptionsToRenderForSequence:(id)arg1 inOperation:(id)arg2;
+- (void)setSequence:(id)arg1;
 - (void)renderInContext:(struct CGContext *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (id)_unusedRenderer;
 - (void)dealloc;

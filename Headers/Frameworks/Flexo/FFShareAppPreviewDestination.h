@@ -11,6 +11,7 @@
 }
 
 + (id)defaultName;
+- (BOOL)supportsBatchExport;
 - (id)smallImage;
 - (id)iconTitle;
 - (id)pressedImage;

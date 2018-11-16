@@ -13,11 +13,15 @@
 @interface PEAppGeneralPreferencesModule : LKPreferencesModule <NSOpenSavePanelDelegate>
 {
     LKPopUpButton *_formatPopUpButton;
+    LKPopUpButton *pixelsOrPercentagePopup;
+    LKPopUpButton *defaultColorCorrection;
 }
 
 + (id)openOrSaveAllowedFileTypes;
 + (id)newTimeFormatter;
 @property(nonatomic) LKPopUpButton *formatPopUpButton; // @synthesize formatPopUpButton=_formatPopUpButton;
+- (void)selectColorEffect:(id)arg1;
+- (void)pixelsOrPercentage:(id)arg1;
 - (void)resetAUCache:(id)arg1;
 - (void)resetDialogWarnings:(id)arg1;
 - (void)changeTimeFormat:(id)arg1;

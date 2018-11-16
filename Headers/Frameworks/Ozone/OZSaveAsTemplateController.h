@@ -27,7 +27,7 @@
     BOOL _didCreateNewCollection;
     int _categoryType;
     TMTheme *_lastSelectedTheme;
-    map_30220020 _dropZonesFootageIDs;
+    map_c92806bd _dropZonesFootageIDs;
 }
 
 + (void)initialize;
@@ -45,8 +45,8 @@
 - (void)generateQuicktimePreviewForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;
 - (void)generatePosterFramesForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;
 - (void)generatePosterFrameForDocument:(id)arg1 name:(id)arg2 size:(struct CGSize)arg3;
-- (void)undoReplaceDropZonesForDocument:(id)arg1 lockedDropZoneIDs:(vector_a9c0768e)arg2;
-- (vector_a9c0768e)replaceDropZonesForDocument:(id)arg1;
+- (void)undoReplaceDropZonesForDocument:(id)arg1 lockedDropZoneIDs:(vector_12da65de)arg2;
+- (vector_12da65de)replaceDropZonesForDocument:(id)arg1;
 - (BOOL)isValidFilenameForPath:(id)arg1;
 - (BOOL)isEnoughDiskSpaceAtPath:(id)arg1 withSize:(unsigned long long)arg2;
 - (void)didEndSheet:(long long)arg1;

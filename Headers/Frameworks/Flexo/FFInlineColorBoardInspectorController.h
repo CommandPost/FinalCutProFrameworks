@@ -63,6 +63,9 @@ __attribute__((visibility("hidden")))
 - (void)nudgePuckDown:(id)arg1;
 - (void)nudgePuckUp:(id)arg1;
 - (void)nudgeSelectedPuck:(struct CGPoint)arg1;
+- (void)nextKeyframe:(id)arg1;
+- (void)previousKeyframe:(id)arg1;
+- (id)singleChannelForTimingForColorEffect;
 - (void)movePuck:(int)arg1 toCenterPosition:(struct CGPoint)arg2;
 - (void)mouseUpOnPuckType:(int)arg1;
 - (void)mouseDragOnPuckType:(int)arg1;

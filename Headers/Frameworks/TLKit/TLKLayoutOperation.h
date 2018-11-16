@@ -46,6 +46,7 @@
 - (BOOL)_reloadLayoutConstraintsForItemComponent:(id)arg1;
 - (void)_clearLayoutConstraintsForItemComponents:(id)arg1;
 - (BOOL)_shouldAddSpineFrameDependencyForItemComponent:(id)arg1 withDependencies:(id)arg2;
+- (void)_removeCircularDependenciesForNode:(id)arg1 inProposedInnerNodes:(id)arg2;
 - (void)_reloadDependenciesForLayoutGraphNodes:(id)arg1;
 - (void)_reloadVerticalIndexTable:(id)arg1 forContainer:(id)arg2 withInsertedNodes:(id)arg3 deletedNodes:(id)arg4 updatedNodes:(id)arg5;
 - (void)_findOuterLayoutDependenciesForNode:(id)arg1 inVerticalIndexTable:(id)arg2 searchRange:(struct _NSRange)arg3 intoMutableSet:(id)arg4;
@@ -60,6 +61,7 @@
 - (void)_createFirstLineFragmentIfNeeded;
 - (void)_performLayoutForItemComponents:(id)arg1;
 - (void)_reloadIndexTablesForContainer:(id)arg1 withInsertedNodes:(id)arg2 deletedNodes:(id)arg3 updatedNodes:(id)arg4;
+- (id)_innerLayoutNodesForNodes:(id)arg1;
 - (void)main;
 - (void)dealloc;
 - (id)initWithChangeLog:(id)arg1 layoutDatabase:(id)arg2;

@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_1b6d18a9 decodeEnd; // @synthesize decodeEnd=mDecodeEnd;
 @property(nonatomic) CDStruct_1b6d18a9 decodeStart; // @synthesize decodeStart=mDecodeStart;
 @property(readonly) BOOL isEssenceTrack; // @synthesize isEssenceTrack=mIsEssenceTrack;
+- (id)mediaType;
 - (struct opaqueCMSampleBuffer *)copyNextSampleBuffer;
 - (BOOL)stepCoursorByTime:(CDStruct_1b6d18a9)arg1;
 - (void)addSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 lastSampleBuffer:(BOOL)arg2;

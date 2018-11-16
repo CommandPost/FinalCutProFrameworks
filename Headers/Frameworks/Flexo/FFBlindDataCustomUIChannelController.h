@@ -6,12 +6,18 @@
 
 #import "OZViewControllerGroup.h"
 
+@class NSView;
+
 __attribute__((visibility("hidden")))
 @interface FFBlindDataCustomUIChannelController : OZViewControllerGroup
 {
+    NSView *_customView;
+    id _modelObject;
 }
 
++ (BOOL)shouldDisplayReset;
 + (BOOL)shouldDisplayAnimIndicator;
+@property(readonly, nonatomic) NSView *customView; // @synthesize customView=_customView;
 - (float)suggestedMaxParamWidth;
 - (void)update;
 - (void)_subviewsNeedDisplay:(id)arg1;

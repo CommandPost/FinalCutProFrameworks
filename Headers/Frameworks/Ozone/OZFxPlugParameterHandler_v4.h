@@ -19,6 +19,7 @@
 {
 }
 
+- (id)pushButtonSelectorNameForParameterID:(unsigned int)arg1;
 - (BOOL)getGradientStartEnd:(double *)arg1 startY:(double *)arg2 endX:(double *)arg3 endY:(double *)arg4 type:(int *)arg5 fromParm:(unsigned int)arg6 atFxTime:(CDUnion_2516e51e)arg7;
 - (BOOL)getGradientSamples:(void *)arg1 numSamples:(unsigned long long)arg2 depth:(unsigned long long)arg3 fromParm:(unsigned int)arg4 atFxTime:(CDUnion_2516e51e)arg5;
 - (BOOL)setHistogramBlackIn:(double)arg1 blackOut:(double)arg2 whiteIn:(double)arg3 whiteOut:(double)arg4 gamma:(double)arg5 forChannel:(unsigned long long)arg6 fromParm:(unsigned int)arg7 atFxTime:(CDUnion_2516e51e)arg8;

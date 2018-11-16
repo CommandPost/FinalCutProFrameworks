@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)nativePixelFormat;
 - (id)performFlatten;
 - (void)dealloc;
-- (id)initWithRenderBlock:(CDUnknownBlockType)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 pixelSpaceBounds:(struct CGRect)arg5 pixelFormat:(id)arg6;
+- (id)initWithRenderBlock:(CDUnknownBlockType)arg1 format:(id)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 pixelSpaceBounds:(struct CGRect)arg5;
 
 @end
 

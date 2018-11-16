@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LKSegmentedControl *alignmentControl; // @synthesize alignmentControl=_alignmentControl;
 @property(retain, nonatomic) FFCaptionEditorTextView *textView; // @synthesize textView=_textView;
 @property(readonly, retain, nonatomic) FFCaptionTextBlock *textBlock; // @synthesize textBlock=_textBlock;
+- (void)setSelectedRange:(struct _NSRange)arg1;
 - (void)rangeInvalidated:(id)arg1;
 - (void)teardownObservationAndDelegation;
 - (void)setCaptionTextBlockFromUI;

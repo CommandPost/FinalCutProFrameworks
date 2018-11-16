@@ -28,6 +28,11 @@
 - (void)_installEffectView;
 - (void)setContentView:(id)arg1;
 - (id)touchBar;
+- (void)makeKeyAndOrderFront:(id)arg1;
+- (void)makeKeyWindow;
+- (void)orderFront:(id)arg1;
+- (void)orderWindow:(long long)arg1 relativeTo:(long long)arg2;
+- (void)_disableDesktopTinting;
 - (void)_commonInit;
 - (void)awakeFromNib;
 - (id)initWithCoder:(id)arg1;

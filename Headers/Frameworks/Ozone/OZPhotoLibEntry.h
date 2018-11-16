@@ -14,6 +14,7 @@
     MLMediaObject *_mediaObject;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)libraryEntryFromMediaGroup:(id)arg1;
 + (id)mediaSourceFromMediaLibrary:(id)arg1;
 + (id)mediaLibrary;
@@ -27,6 +28,8 @@
 - (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

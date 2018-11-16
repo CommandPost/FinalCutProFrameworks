@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)actionForKey:(id)arg1;
 - (void)setMarkerYPos:(double)arg1 strongStyle:(BOOL)arg2;
+- (void)setStrongStyle:(BOOL)arg1;
 - (long long)videoScopesWaveformYScale;
 - (void)setVideoScopesWaveformYScale:(long long)arg1;
 - (void)setDisplayMode:(long long)arg1;

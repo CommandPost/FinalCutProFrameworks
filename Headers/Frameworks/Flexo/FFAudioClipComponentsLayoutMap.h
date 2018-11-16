@@ -6,7 +6,7 @@
 
 #import <Flexo/FFAudioObjectComponentsLayoutMap.h>
 
-@class FFAudioComponentsLayout, NSArray, NSMapTable, NSRecursiveLock;
+@class FFAudioComponentsLayout, NSArray, NSRecursiveLock;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioClipComponentsLayoutMap : FFAudioObjectComponentsLayoutMap
@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     NSArray *_cachedAvailableMediaSources;
     NSArray *_cachedAvailableMediaSourceChannels;
     NSRecursiveLock *_cachedAvailableMediaSourcesLock;
-    NSMapTable *_cachedReferenceLayouts;
 }
 
 + (Class)layoutClass;
@@ -29,17 +28,12 @@ __attribute__((visibility("hidden")))
 - (void)storeLocalLayout:(id)arg1 forKey:(id)arg2;
 - (id)localLayoutForKey:(id)arg1;
 - (id)allLocalKeys;
-- (void)_allocateCaches;
+- (void)_setupAudioClipComponentsLayoutMap;
 - (void)_clearCaches;
 - (void)cachedAvailableMediaSources:(id *)arg1 andChannels:(id *)arg2;
 - (void)setCachedAvailableMediaSources:(id)arg1 andChannels:(id)arg2;
-- (void)delegateRolesChanged:(id)arg1;
 - (void)delegateContainedItemsChanged;
-- (void)referenceLayoutMapChanged:(id)arg1;
-- (id)referenceRoleForKey:(id)arg1 layoutItemKey:(id)arg2;
-- (id)referenceAudioComponentsLayoutForKey:(id)arg1;
-- (void)_clearCachedReferenceLayouts;
-- (id)_clipReferenceAudioComponentsLayoutForKey:(id)arg1;
+- (id)uncachedReferenceAudioComponentsLayoutForKey:(id)arg1;
 - (id)allReferenceKeys;
 - (void)setPersistedLayoutMode:(int)arg1;
 - (void)resetLayoutMap;
