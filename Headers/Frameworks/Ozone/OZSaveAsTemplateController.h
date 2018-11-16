@@ -29,12 +29,14 @@
     TMTheme *_lastSelectedTheme;
     struct map<unsigned int, unsigned int, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned int>>> _dropZonesFootageIDs;
     CDUnknownBlockType _completionHandler;
+    BOOL _didEnd;
 }
 
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)releaseCompletionHandler;
 - (void)createNewCollection:(id)arg1;
 - (void)selectCollection:(id)arg1;
 - (struct CGSize)scaleSize:(struct CGSize)arg1 toSize:(struct CGSize)arg2;

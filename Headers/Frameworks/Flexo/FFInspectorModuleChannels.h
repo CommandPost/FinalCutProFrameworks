@@ -29,11 +29,14 @@
 - (id)selectedItemForChannel:(id)arg1;
 - (id)_selectedItemForChannel:(id)arg1;
 - (void)_setupChannelInspector;
+- (Class)_inspectorDelegateClass;
+- (void)_rebuildInspectorWithChannelFolders:(id)arg1 currentItems:(id)arg2 buildContext:(id)arg3 shouldReadLock:(BOOL)arg4;
 - (BOOL)_allItemsHaveChannelID:(unsigned int)arg1;
 - (void)_removeObservingForCurrentItems;
 - (void)_addObservingForCurrentItems;
 - (void)_updateLabel:(BOOL)arg1;
 - (void)delete:(id)arg1;
+- (void)shiftDelete:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)localModuleActions;
 - (BOOL)_canRemoveSelectedChannels;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;
+- (void)hideGraticuleLabels:(BOOL)arg1;
 - (void)setShowSkinToneIndicator:(BOOL)arg1;
 - (void)setShowIandQ:(BOOL)arg1;
 - (void)setBarTarget:(long long)arg1;

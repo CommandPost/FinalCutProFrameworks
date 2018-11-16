@@ -6,11 +6,12 @@
 
 #import "NSObject.h"
 
+#import "OZRenderClient.h"
 #import "OZRenderProgressManager.h"
 
 @class OZCacheDisplayManager;
 
-@interface OZRamCacheManager : NSObject <OZRenderProgressManager>
+@interface OZRamCacheManager : NSObject <OZRenderProgressManager, OZRenderClient>
 {
     struct OZDocument *_doc;
     OZCacheDisplayManager *_pCacheDisplayManager;
@@ -20,11 +21,23 @@
     struct PCTimer *_timer;
     BOOL _aborted;
     BOOL _closeProgressWhenDone;
+    _Bool _isRendering;
+    struct PCMutex _playbackMutex;
+    struct shared_ptr<OZTimeStrategy> _timeStrategy;
+    struct shared_ptr<OZPlaybackClock> _playbackClock;
+    struct shared_ptr<OZFootageScheduler> _footageScheduler;
 }
 
 + (id)sharedInstance;
 - (id).cxx_construct;
-- (_Bool)postRenderInstruction:(const CDStruct_1b6d18a9 *)arg1;
+- (void).cxx_destruct;
+- (void)updateCacheDisplayManager:(id)arg1;
+- (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
+- (void)getRenderRequestRenderParams:(struct OZRenderParams *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)scheduleNextBuilderJob;
+- (void)stopRamPreview;
+- (void)startRamPreview;
 - (void)updateProgressDialog:(id)arg1;
 - (void)abortRender;
 - (_Bool)renderScene:(struct OZDocument *)arg1 cacheDisplayManager:(id)arg2 startTime:(const CDStruct_1b6d18a9 *)arg3 endTime:(const CDStruct_1b6d18a9 *)arg4;

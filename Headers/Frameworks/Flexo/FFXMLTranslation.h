@@ -10,9 +10,10 @@
 {
 }
 
-+ (id)XMLDataForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
-+ (BOOL)exportXMLForObject:(id)arg1 withName:(id)arg2 error:(id *)arg3;
-+ (id)importPublicXMLFile:(id)arg1 storageLocation:(id)arg2 warnings:(id *)arg3 error:(id *)arg4;
++ (BOOL)exportItemsToFinalCutPro:(id)arg1 error:(id *)arg2;
++ (BOOL)exportToFinalCutBundleSupported;
++ (BOOL)exportXMLForObject:(id)arg1 error:(id *)arg2;
++ (id)importPublicXMLFile:(id)arg1 library:(id)arg2 warnings:(id *)arg3 error:(id *)arg4;
 
 @end
 

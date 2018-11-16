@@ -36,7 +36,7 @@
 - (BOOL)viewIsOrthographic;
 - (BOOL)getNearClip:(PCPlane_d15dbf20 *)arg1;
 - (PCRay3_bdf7da08)computeRay:(const PCVector3_457fd1f0 *)arg1;
-- (struct LiCamera *)getCamera;
+- (PCPtr_41ab8147)getCamera;
 - (void)selectCamera:(int)arg1 animate:(BOOL)arg2;
 - (void)jogFrameBy:(double)arg1;
 - (BOOL)isPlaying;

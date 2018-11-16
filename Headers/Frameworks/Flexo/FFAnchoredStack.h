@@ -12,11 +12,9 @@
 {
     NSMutableArray *_stackItems;
     FFAnchoredObject *_activeVariant;
-    BOOL _anchoredObjectsFromVariant;
 }
 
 + (id)copyClassDescription;
-@property(nonatomic) BOOL anchoredObjectsFromVariant; // @synthesize anchoredObjectsFromVariant=_anchoredObjectsFromVariant;
 @property(retain, nonatomic) FFAnchoredObject *activeVariant; // @synthesize activeVariant=_activeVariant;
 @property(retain, nonatomic) NSArray *stackItems; // @synthesize stackItems=_stackItems;
 - (BOOL)validateValue:(id *)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
@@ -113,19 +111,21 @@
 - (BOOL)isAudioOnlyCollection;
 - (BOOL)isAudioOnlyClipOrCollection;
 - (BOOL)isSpine;
+- (void)wasAnchoredTo:(id)arg1;
+- (BOOL)wantsGammaCompositing;
+- (BOOL)wantsAutoKenBurns;
 - (BOOL)isInCropOrKenBurnsCropMode;
 - (BOOL)isMultiAngle;
-- (int)overideAV;
+- (int)overrideAV;
 - (BOOL)isReferenceClip;
 - (BOOL)isAngle;
 - (BOOL)isFreezeFrame;
-- (BOOL)isAudioComponentSource;
-- (BOOL)isPSD;
 - (BOOL)isCompoundClip;
 - (BOOL)isGap;
 - (BOOL)isPlaceholder;
 - (BOOL)isTitle;
 - (BOOL)isGenerator;
+- (BOOL)isPSD;
 - (BOOL)isStill;
 - (id)trackType;
 - (id)secondaryEffectStack;
@@ -143,17 +143,16 @@
 - (void)insertObject:(id)arg1 inContainedItemsAtIndex:(unsigned long long)arg2;
 - (id)descendentCompositedObjects;
 - (id)containedItemAtTime:(CDStruct_1b6d18a9)arg1;
-- (id)topLevelAllContainedItems;
-- (id)topLevelContainedItems;
 - (id)containedItems;
 - (id)firstAudioAnchoredComponent;
 - (id)firstVideoAnchoredComponent;
-- (void)_enumerateDescendentAnchoredObjects:(BOOL)arg1 includeSelf:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 stop:(char *)arg4;
+- (void)_enumerateDescendentAnchoredObjects:(BOOL)arg1 includeSelf:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 descend:(char *)arg4 stop:(char *)arg5;
 - (id)descendentCompositedObjects:(BOOL)arg1 containerTimeRange:(CDStruct_e83c9415)arg2 useAudioRange:(BOOL)arg3 container:(id)arg4;
 - (void)_collectDescendentCompositedObject:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 intoArray:(id)arg3 useAudioRange:(BOOL)arg4 container:(id)arg5;
 - (void)_descendentAnchoredObject:(id)arg1 includingSelf:(BOOL)arg2;
 - (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
-- (id)_containedItemsAllVariants;
+- (id)allContainedItems;
+- (BOOL)removeAudioOrVideo:(BOOL)arg1 includingAnchoredItems:(BOOL)arg2;
 - (id)onScreenControls;
 - (BOOL)removeAnchoredObject:(id)arg1;
 - (struct FigTimePair)anchorPair;
@@ -166,13 +165,13 @@
 - (void)removeAnchoredItemsObject:(id)arg1;
 - (BOOL)hasAnchoredItemsObject:(id)arg1;
 - (void)addAnchoredItemsObject:(id)arg1;
-- (id)anchoredItemsIntersectingRange:(CDStruct_e83c9415)arg1 ofItemTypes:(id)arg2;
+- (id)markerAnchoredItems;
+- (id)nonMarkerAnchoredItems;
 - (id)anchoredItems;
 - (void)clearCachedValues;
 - (CDStruct_e83c9415)containerEffectiveRangeForChild:(id)arg1 container:(id)arg2;
 - (void)informAudioComponentsLayoutChanged:(id)arg1;
 - (void)justSetActiveVariant:(id)arg1;
-- (BOOL)anchoredObjectFromVariant;
 - (void)_conformActiveVariantAlignment;
 - (void)removeObjectFromStackItemsAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inStackItemsAtIndex:(unsigned long long)arg2;
@@ -185,6 +184,7 @@
 - (void)dealloc;
 - (id)initWithDisplayName:(id)arg1;
 - (id)type;
+- (BOOL)resolveLaneConflictsForActiveVariantWithError:(id *)arg1;
 - (id)nextActiveVariant;
 - (id)nextActiveVariantAllowNil;
 - (id)previousActiveVariant;

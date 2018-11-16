@@ -10,11 +10,17 @@
 {
     int _roundedDirection;
     double _radius;
+    int _offsetEdge;
+    double _edgeoffsetAmount;
     unsigned int _ignoresHitTesting:1;
 }
 
 @property BOOL ignoresHitTesting;
+- (double)edgeOffsetAmount;
+- (int)edgeOffsetEdge;
+- (void)setEdgeOffsetEdge:(int)arg1 amount:(double)arg2;
 @property int roundedDirection;
+- (void)_updateConstraints;
 - (void)setDelegate:(id)arg1;
 - (void)setCornerRadius:(double)arg1;
 - (id)hitTest:(struct CGPoint)arg1;

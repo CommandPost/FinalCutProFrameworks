@@ -6,19 +6,20 @@
 
 #import "NSOperation.h"
 
-@class FFBackgroundTaskQueue, NSDate, NSString, Stopwatch;
+@class FFBackgroundTaskQueue, NSArray, NSDate, NSString, Stopwatch;
 
 @interface FFBackgroundTask : NSOperation
 {
     FFBackgroundTaskQueue *_taskQueue;
     NSString *_displayName;
-    id _target;
+    id <FFBackgroundTaskTarget><NSObject> _target;
     SEL _taskSelector;
     id _taskObject;
     BOOL _modalOnMainThread;
     BOOL _paused;
     BOOL _performanceMonitoringEnabled;
     BOOL _hasStarted;
+    NSArray *_pendingJobNames;
     int _lowOverheadBehavior;
     int _taskType;
     int _actionOptions;
@@ -33,6 +34,7 @@
 
 + (double)progressForPendingTasks:(id)arg1 totalTaskCount:(long long)arg2 excludeIndeterminate:(BOOL)arg3;
 + (double)progressForTasks:(id)arg1;
+@property(retain, nonatomic) NSArray *pendingJobNames; // @synthesize pendingJobNames=_pendingJobNames;
 @property int actionOptions; // @synthesize actionOptions=_actionOptions;
 @property int type; // @synthesize type=_taskType;
 @property BOOL hasStarted; // @synthesize hasStarted=_hasStarted;
@@ -44,13 +46,16 @@
 @property(getter=isModalOnMainThread) BOOL modalOnMainThread; // @synthesize modalOnMainThread=_modalOnMainThread;
 @property(retain) id object; // @synthesize object=_taskObject;
 @property SEL taskSelector; // @synthesize taskSelector=_taskSelector;
-@property(retain) id target; // @synthesize target=_target;
+@property(retain) id <FFBackgroundTaskTarget><NSObject> target; // @synthesize target=_target;
 @property(copy) NSString *displayName; // @synthesize displayName=_displayName;
 @property(retain) FFBackgroundTaskQueue *taskQueue; // @synthesize taskQueue=_taskQueue;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (BOOL)usesLibrary:(id)arg1;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (id)description;
+- (BOOL)waitUntilFinishedWithTimeout:(id)arg1;
 - (BOOL)shouldIgnoreForAggregateProgress;
+- (BOOL)performanceMonitoringEnabled;
 - (void)setProgress:(float)arg1;
 - (float)progress;
 - (BOOL)hasPaused;
@@ -61,7 +66,6 @@
 - (BOOL)supportsPaused;
 - (void)cancel;
 - (void)main;
-- (BOOL)isReady;
 - (void)setQueuePriority:(long long)arg1;
 - (void)dealloc;
 - (id)initWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 priority:(long long)arg4 displayName:(id)arg5 type:(int)arg6 areaName:(id)arg7 lowOverheadBehavior:(int)arg8;

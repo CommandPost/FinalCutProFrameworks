@@ -18,6 +18,7 @@
 - (id)nameForTag:(long long)arg1;
 - (id)normalPresetItem;
 - (id)buildMenu:(const struct OZLibraryPresetsMap *)arg1 isRoot:(BOOL)arg2;
+- (id)cacheAtPath:(id)arg1;
 - (void)addItemWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3;
 - (void)menuWillPopUp:(id)arg1;
 - (void)saveNotify:(id)arg1;

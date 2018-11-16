@@ -50,6 +50,8 @@
 - (void)setName:(id)arg1;
 - (id)name;
 - (id)delegate;
+- (id)channelFromChannelRefPath:(id)arg1;
+- (id)channelRefPath:(id)arg1;
 - (id)rootBase;
 - (id)parent;
 - (struct OZChannelBase *)ozChannel;

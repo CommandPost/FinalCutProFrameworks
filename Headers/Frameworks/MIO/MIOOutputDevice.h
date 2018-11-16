@@ -25,8 +25,11 @@
 
 @property(retain) id cmioAProducer; // @synthesize cmioAProducer=mCMIOAProducer;
 @property(retain) id cmioVProducer; // @synthesize cmioVProducer=mCMIOVProducer;
+- (unsigned long long)nsScreenIndex;
+- (int)virtualScreenNumber;
 - (int)minimumInFlightFramesForThrottledPlayback;
 - (unsigned int)outputLatencyInFrames;
+- (void)setDisableOnMasterRelease:(unsigned char)arg1;
 - (void)setOutputBuffersRequiredForStartup:(unsigned int)arg1;
 - (void)setOutputBufferQueueSize:(unsigned int)arg1;
 - (BOOL)cmioReportedDroppedFrames;

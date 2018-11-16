@@ -6,12 +6,13 @@
 
 #import "NSOperation.h"
 
-@class FFSegmentStore, NSConditionLock;
+@class FFSegmentStore, NSCondition;
 
 __attribute__((visibility("hidden")))
 @interface FFSegmentSample : NSOperation
 {
-    NSConditionLock *_lock;
+    NSCondition *_lock;
+    int _condition;
     long long _offset;
     FFSegmentStore *_store;
     id _sample;
@@ -28,7 +29,9 @@ __attribute__((visibility("hidden")))
 - (id)sample;
 - (void)waitForFinished;
 - (void)waitForState:(int)arg1 why:(id)arg2;
-- (void)warnAboutState:(int)arg1 why:(id)arg2;
+- (void)waitForState:(int)arg1 why:(id)arg2 beforeDate:(id)arg3;
+- (void)warnAboutWaitingForState:(int)arg1 why:(id)arg2 why2:(id)arg3;
+- (void)warnAboutWaitingForState:(int)arg1 why:(id)arg2 why2:(id)arg3 isIndefiniteWait:(_Bool)arg4 stateBeforeWaiting:(int)arg5;
 - (_Bool)sampleFinished;
 - (id)description;
 - (void)dealloc;

@@ -10,8 +10,8 @@
 {
 }
 
-- (id)createGeneratorControllerWithSceneNode:(struct OZSceneNode *)arg1;
-- (id)createFormatControllerWithSceneNode:(struct OZSceneNode *)arg1;
+- (id)newGeneratorControllerWithSceneNode:(struct OZSceneNode *)arg1;
+- (id)newFormatControllerWithSceneNode:(struct OZSceneNode *)arg1;
 
 @end
 

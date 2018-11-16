@@ -11,13 +11,13 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFRelinkOpenAccessoryViewController, LKBox, LKButton, LKScrollView, LKTableView, LKTextField, NSArray, NSCondition, NSMatrix, NSMutableArray, NSProThemeImageView, NSString, NSTextView, NSURL, NSView;
+@class FFImportLocationPopUpController, FFLibrary, FFRelinkOpenAccessoryViewController, LKBox, LKButton, LKPopUpButton, LKScrollView, LKTableView, LKTextField, NSArray, NSCondition, NSMatrix, NSMutableArray, NSProThemeImageView, NSString, NSTextView, NSURL, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFRelinkPanelController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSOpenSavePanelDelegate>
 {
     FFRelinkOpenAccessoryViewController *_accessoryViewController;
-    BOOL _isEventCommand;
+    FFLibrary *_library;
     NSArray *_relinkSelection;
     struct CGRect _initialFrame;
     BOOL _onlyMissing;
@@ -56,6 +56,8 @@ __attribute__((visibility("hidden")))
     LKScrollView *_matchedTableScrollView;
     LKTableView *_matchedTableView;
     LKButton *_copyFilesCheckBox;
+    FFImportLocationPopUpController *_importLocationPopUpController;
+    LKPopUpButton *_importLocationPopUpButton;
     LKButton *_connectMatchedButton;
 }
 
@@ -76,7 +78,6 @@ __attribute__((visibility("hidden")))
 - (void)delete:(id)arg1;
 - (void)connectMatched:(id)arg1;
 - (void)closePanel:(id)arg1;
-- (void)changeCopyFile:(id)arg1;
 - (void)discloseMatchedFileTable:(id)arg1;
 - (void)locateFile:(id)arg1;
 - (void)changeScope:(id)arg1;
@@ -105,6 +106,7 @@ __attribute__((visibility("hidden")))
 - (id)_urlForAssetRef:(id)arg1;
 - (void)_saveWindowFrame;
 - (id)_currentUnmatchedAssetRefs;
+- (void)awakeFromNib;
 - (void)_showRelinkFilesPanel;
 - (void)windowDidLoad;
 - (void)dealloc;

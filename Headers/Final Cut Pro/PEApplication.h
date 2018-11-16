@@ -18,11 +18,8 @@
 - (void)dealloc;
 - (void)finishLaunching;
 - (void)reportException:(id)arg1;
+- (BOOL)useOverlayScrollers;
 - (void)_reportExceptionToUser:(id)arg1;
-- (id)scriptingEvents;
-- (void)importToEventViaAppleScript:(id)arg1;
-- (id)newScriptingObjectOfClass:(Class)arg1 forValueForKey:(id)arg2 withContentsValue:(id)arg3 properties:(id)arg4;
-- (id)objectSpecifierForChild:(id)arg1;
 
 @end
 

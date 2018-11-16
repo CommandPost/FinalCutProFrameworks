@@ -18,6 +18,7 @@
     BOOL mEnterMoviesCalled;
     NSLock *mCaptureLock;
     NSLock *mDeviceAvailableLock;
+    unsigned int mHDMIplugInID;
 }
 
 + (void)releaseSharedDeviceManager;
@@ -26,6 +27,10 @@
 @property(retain) NSMutableArray *outputDeviceConnections; // @synthesize outputDeviceConnections=mOutputDeviceConnections;
 @property(retain) NSMutableArray *inputDeviceConnections; // @synthesize inputDeviceConnections=mInputDeviceConnections;
 @property(retain) NSMutableArray *deviceConnections; // @synthesize deviceConnections=mDeviceConnections;
+- (struct __CFArray *)getNSScreenHDMIIgnoreList;
+- (void)removeNSScreenIndexFromHDMIIgnoreList:(unsigned long long)arg1;
+- (void)addNSScreenIndexToHDMIIgnoreList:(unsigned long long)arg1;
+- (unsigned int)getHDMIPluginID;
 - (BOOL)deviceAvailableTrylock;
 - (void)deviceAvailableUnlock;
 - (void)deviceAvailableLock;

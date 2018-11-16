@@ -4,32 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "LKWindow.h"
+#import "PEAnimatedModalWindow.h"
 
-@class NSTimer;
-
-@interface PEImportWindow : LKWindow
+@interface PEImportWindow : PEAnimatedModalWindow
 {
-    struct CGRect _startRect;
-    struct CGRect _endRect;
-    float _percent;
-    float _step;
-    NSTimer *_timer;
-    BOOL _shouldAnimate;
 }
 
-@property BOOL shouldAnimate; // @synthesize shouldAnimate=_shouldAnimate;
-- (void)dealloc;
-- (void)orderOut:(id)arg1;
-- (void)close;
-- (void)orderFront:(id)arg1;
-- (void)setupAnimation:(BOOL)arg1;
-- (void)timer;
-- (void)stopTimer;
+- (void)didFinishOpening;
+- (void)willStartClosing;
+- (BOOL)isImportWindow;
 - (id)sourceButton;
-- (void)setTransform;
-- (struct CGRect)frameKeptEntirelyVisible:(struct CGRect)arg1;
-- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
 
 @end
 

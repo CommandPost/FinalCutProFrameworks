@@ -15,18 +15,20 @@ __attribute__((visibility("hidden")))
     NSIndexSet *_statesToRender;
     CDStruct_e83c9415 _range;
     int _priority;
-    _Bool _temporaryHold;
+    _Bool _onlyDropSegs;
 }
 
-@property _Bool temporaryHold; // @synthesize temporaryHold=_temporaryHold;
+@property(readonly) _Bool onlyDropSegs; // @synthesize onlyDropSegs=_onlyDropSegs;
 @property(readonly) int priority; // @synthesize priority=_priority;
 @property(readonly) CDStruct_e83c9415 range; // @synthesize range=_range;
 @property(readonly) NSIndexSet *statesToRender; // @synthesize statesToRender=_statesToRender;
 @property(readonly) FFRenderStateTracker *tracker; // @synthesize tracker=_tracker;
 - (id)description;
+- (void)segmentDropDetected:(id)arg1;
 - (_Bool)needsRender;
+- (CDStruct_e83c9415)nextRangeToRenderWithRetStates:(id *)arg1;
 - (void)dealloc;
-- (id)initWithTracker:(id)arg1 states:(id)arg2 range:(CDStruct_e83c9415)arg3 priority:(int)arg4;
+- (id)initWithTracker:(id)arg1 states:(id)arg2 range:(CDStruct_e83c9415)arg3 priority:(int)arg4 onlyForDropSegments:(_Bool)arg5;
 
 @end
 

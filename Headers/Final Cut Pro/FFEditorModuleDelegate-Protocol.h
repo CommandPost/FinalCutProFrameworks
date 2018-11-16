@@ -4,13 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFAnchoredObject, FFAnchoredStack, FFContext, FFEditorModule, FFMarkerLayer, FFSettingsModule, NSArray, NSString;
+@class FFAnchoredObject, FFAnchoredSequence, FFAnchoredStack, FFContext, FFEditorModule, FFMarkerLayer, FFSettingsModule, NSArray, NSString;
 
 @protocol FFEditorModuleDelegate
+- (BOOL)speedEditorIsShown;
+- (void)hideSpeedEditor;
+- (void)showSpeedEditorForObjects:(NSArray *)arg1 orObjectsAndRanges:(NSArray *)arg2 atTime:(CDStruct_1b6d18a9)arg3 segmentIndex:(int)arg4 forTransition:(BOOL)arg5;
 - (BOOL)markerEditorIsShown;
 - (void)hideMarkerEditor;
 - (void)showMarkerEditorForMarkerLayer:(FFMarkerLayer *)arg1 object:(FFAnchoredObject *)arg2;
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(FFAnchoredObject *)arg2;
+- (void)toggleAdjustmentsPanel;
 - (void)openAudioEnhancementsPanel;
 - (void)openEffectsPanel;
 - (void)openStabilizationPanel;
@@ -44,5 +48,8 @@
 - (void)stopSkimmingForOwner:(id)arg1;
 - (BOOL)replaceSkimmedObject:(struct NSObject *)arg1 context:(FFContext *)arg2 withSkimmable:(struct NSObject *)arg3 context:(FFContext *)arg4 effectCount:(long long)arg5 allowPlayback:(BOOL)arg6 controlCanvas:(BOOL)arg7 showAngles:(BOOL)arg8 owner:(id)arg9;
 - (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 controlCanvas:(BOOL)arg5 showAngles:(BOOL)arg6 owner:(id)arg7;
+
+@optional
+- (void)performAction:(NSString *)arg1 withProject:(FFAnchoredSequence *)arg2 andSelection:(NSArray *)arg3;
 @end
 

@@ -20,6 +20,7 @@
     FFMD5AndOffset *_cachedAudioMD5_NoIntrinsics;
     long long _cachedDefaultAudioChannelCount;
     long long _deinterlaceType;
+    long long _rotationAngle;
     FFRenderStateTracker *_renderStateTracker;
 }
 
@@ -29,6 +30,7 @@
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5_NoIntrinsics; // @synthesize cachedAudioMD5_NoIntrinsics=_cachedAudioMD5_NoIntrinsics;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 @property(readonly, nonatomic) FFMedia *media; // @synthesize media=_media;
+- (BOOL)update_cleanupAudioRoutingMap;
 - (void)deinterlace;
 - (void)setMedia:(id)arg1 providerSourceKey:(id)arg2 sourceChannelMap:(id)arg3 audioChannelRoutingMap:(id)arg4 updateFlags:(int)arg5;
 - (id)newDeinterlaceProviderWithEffectCount:(long long)arg1;
@@ -64,6 +66,9 @@
 - (id)_describeAdditionalObjectsWithIndent:(long long)arg1 recurse:(BOOL)arg2;
 - (void)setMetadataDeinterlaceType:(long long)arg1;
 - (long long)metadataDeinterlaceType;
+- (void)setMetadataRotationAngle:(long long)arg1;
+- (long long)metadataRotationAngle;
+@property(nonatomic) long long rotationAngle; // @synthesize rotationAngle=_rotationAngle;
 @property(nonatomic) long long deinterlaceType; // @synthesize deinterlaceType=_deinterlaceType;
 - (void)setAudioChannelRoutingMap:(id)arg1;
 - (id)audioChannelRoutingMap;
@@ -78,7 +83,7 @@
 - (BOOL)isMediaComponent;
 - (void)_fileURLs:(id)arg1 repChoice:(int)arg2 includeAnchored:(BOOL)arg3 activeOnly:(BOOL)arg4;
 - (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
-- (void)_assetRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4;
+- (void)_assetRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)_assets:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3;
 - (void)_checkRoleIntegrity;
 - (void)resetRoles;
@@ -88,6 +93,8 @@
 - (void)_guessAndSetAudioRole;
 - (id)_guessAudioRole;
 - (id)_newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
+- (id)_newRotatedProviderWithInput:(id)arg1;
+- (id)_rotateCacheIdentifierWithSource:(id)arg1;
 - (id)_newDeinterlaceProviderWithInput:(id)arg1;
 - (id)_deinterlaceCacheIdentifierWithSource:(id)arg1;
 - (id)inspectableChannelsForIdentifier:(id)arg1;
@@ -101,6 +108,7 @@
 - (void)effectStackDidLoad:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)_describeAdditionalObjects;
+- (void)notifyAnchoredObjectRemovedFromSequence:(id)arg1;
 - (void)dealloc;
 - (id)initWithMedia:(id)arg1 sourceKey:(id)arg2;
 - (id)initWithDescription:(id)arg1;

@@ -22,7 +22,6 @@
 - (void)cancelTracking:(id)arg1;
 - (BOOL)continueTracking:(id)arg1;
 - (BOOL)startTracking:(id)arg1;
-- (void)_updateLayer:(id)arg1 withSublayers:(id)arg2;
 - (BOOL)_isTimelineLayer:(id)arg1;
 
 @end

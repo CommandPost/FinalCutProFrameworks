@@ -17,16 +17,18 @@ __attribute__((visibility("hidden")))
     double _flattenTime;
     FFPixelFormat *_nativePixFormat;
     struct CGRect _initialPixelSpaceBounds;
-    _Bool _nativelyPremulBlack;
+    int _underlyingAlphaType;
     unsigned int _tokFlags;
     _Bool _autoFlags;
 }
 
-- (_Bool)nativelyPremulBlack;
+- (_Bool)alphaWantsClamping;
+- (_Bool)alphaWantsInversion;
+- (int)nativeAlphaType;
 - (id)newScheduleTokenForImageRep:(id)arg1;
 - (double)flattenTime;
-- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
-- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
+- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
 - (struct CGRect)pixelSpaceBounds;
 - (id)type;
 - (id)nativePixelFormat;

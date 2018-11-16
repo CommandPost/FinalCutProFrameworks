@@ -24,11 +24,13 @@ __attribute__((visibility("hidden")))
     LKTextField *_presetNameField;
     LKButton *_presetOKButton;
     LKButton *inspectorButton;
+    LKTextField *_colorAdjustmentLabel;
     LKButton *_inspectorButton;
 }
 
 + (void)loadControllersAndDataSources;
 + (id)sharedColorBoardModule;
+@property(nonatomic) LKTextField *colorAdjustmentLabel; // @synthesize colorAdjustmentLabel=_colorAdjustmentLabel;
 @property(retain, nonatomic) LKButton *inspectorButton; // @synthesize inspectorButton=_inspectorButton;
 @property(retain, nonatomic) LKButton *presetOKButton; // @synthesize presetOKButton=_presetOKButton;
 @property(retain, nonatomic) LKTextField *presetNameField; // @synthesize presetNameField=_presetNameField;

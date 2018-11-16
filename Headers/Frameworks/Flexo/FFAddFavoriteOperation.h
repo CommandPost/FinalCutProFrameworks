@@ -6,20 +6,20 @@
 
 #import "NSOperation.h"
 
-@class FFImportFavoritesSidebarCollection, NSURL;
+@class FFImportFavoritesSidebarCollection, FFImportFileSystemTreeNode;
 
 __attribute__((visibility("hidden")))
 @interface FFAddFavoriteOperation : NSOperation
 {
     FFImportFavoritesSidebarCollection *_collection;
-    NSURL *_favoriteURL;
+    FFImportFileSystemTreeNode *_favoriteTreeNode;
     BOOL _canRemove;
 }
 
 - (void)main;
-- (id)createFavoriteSidebarItemForURL:(id)arg1 canRemove:(BOOL)arg2;
+- (id)createFavoriteSidebarItemForTreeNode:(id)arg1 canRemove:(BOOL)arg2;
 - (void)dealloc;
-- (id)initWithCollection:(id)arg1 favoriteURL:(id)arg2 canRemove:(BOOL)arg3;
+- (id)initWithCollection:(id)arg1 favoriteTreeNode:(id)arg2 canRemove:(BOOL)arg3;
 
 @end
 

@@ -108,7 +108,7 @@
 - (void)setOverlayOption:(int)arg1 to:(BOOL)arg2;
 - (void)setOSCState:(int)arg1;
 - (int)getOSCState;
-- (void)commonOnScreenControls:(list_46ab5fec *)arg1;
+- (void)commonOnScreenControls:(list_b8d8639a *)arg1;
 - (void)incProxyRend;
 - (void)passMouseDownAndObjectToToolWithEvent:(id)arg1;
 - (BOOL)acceptPassiveOSCEvent:(id)arg1;

@@ -4,31 +4,48 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "FFSequenceDocument.h"
+#import "FFLibraryDocument.h"
 
-@interface PEDocument : FFSequenceDocument
+@class FFAnchoredSequence;
+
+@interface PEDocument : FFLibraryDocument
 {
+    FFAnchoredSequence *_activeSequence;
 }
 
-+ (void)initialize;
++ (void)failureToCloseUndoScope:(id)arg1;
++ (void)stopBackgroundTasks:(id)arg1 forReason:(int)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
++ (void)cancelTasks:(id)arg1 forReason:(int)arg2 completionBlock:(CDUnknownBlockType)arg3;
++ (id)cancelableTasksForDocument:(id)arg1 error:(id *)arg2;
++ (void)alert:(id)arg1 runModalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)alertFinished:(id)arg1 returnCode:(long long)arg2 context:(void *)arg3;
++ (id)makeSequenceActive:(id)arg1;
++ (id)documentForSequence:(id)arg1 createIfNeeded:(BOOL)arg2;
++ (id)documentForProject:(id)arg1;
++ (id)documentForModule:(id)arg1;
++ (id)currentDocument;
 + (Class)documentModuleClass;
++ (id)defaultDocumentName;
 + (id)defaultFileExtension;
-- (void)_makeSequenceModules;
+@property(retain, nonatomic) FFAnchoredSequence *activeSequence; // @synthesize activeSequence=_activeSequence;
 - (void)printDocument:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)saveDocumentAs:(id)arg1;
 - (void)revertDocumentToSaved:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)selectedItemsForAnchoredSequence:(id)arg1;
-- (id)editorModuleForAnchoredSequence:(id)arg1;
+- (void)commitCatalogFailed:(id)arg1;
+- (id)alertForCommitFailure:(id)arg1;
+- (void)alertMissingMedia;
+- (void)setLastBackupError:(id)arg1;
+- (id)makeDefaultEvent:(id *)arg1;
 - (void)makeSequenceActive:(id)arg1;
-- (void)didMoveEditor:(id)arg1 toContainer:(id)arg2;
-- (void)didCloseEditor:(id)arg1;
-- (void)didCloseDocumentModule:(id)arg1;
-- (void)close;
+- (void)canCloseDocumentWithDelegate:(id)arg1 shouldCloseSelector:(SEL)arg2 contextInfo:(void *)arg3;
 - (void)showWindows;
 - (void)makeWindowControllers;
 - (id)windowForSheet;
+- (void)activate;
+- (void)dealloc;
+- (id)init;
 
 @end
 

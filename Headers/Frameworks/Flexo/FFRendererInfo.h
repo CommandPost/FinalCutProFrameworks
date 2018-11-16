@@ -6,14 +6,13 @@
 
 #import "NSObject.h"
 
-@class FFRendererPool, NSLock, QCCGLContext;
+@class FFRendererPool, NSLock;
 
 __attribute__((visibility("hidden")))
 @interface FFRendererInfo : NSObject
 {
     int _location;
     struct HGRenderer *_renderer;
-    QCCGLContext *_qcContext;
     struct __CFArray *_hgObjectsForRelease;
     NSLock *_hgObjectsLock;
     FFRendererPool *_rendererPool;
@@ -23,10 +22,10 @@ __attribute__((visibility("hidden")))
 - (id)rendererPool;
 - (void)setRendererPool:(id)arg1;
 - (void)addHGObjectForRelease:(struct HGObject *)arg1;
-- (struct _CGLContextObject *)cglContextObj;
+- (struct HGGLContextPtr)hgglContextPtr;
 - (struct HGRenderer *)renderer;
 - (int)location;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_heliumDebugSettingsChanged:(id)arg1;
 - (void)dealloc;
 - (id)initWithLocation:(int)arg1;
 

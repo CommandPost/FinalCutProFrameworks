@@ -6,15 +6,13 @@
 
 #import <TextFramework/OZAutoTextGeneratorController.h>
 
-@class OZChanTimecodeController, OZViewController;
+@class OZLabeledParamController;
 
 @interface TXTimecodeGeneratorPaneController : OZAutoTextGeneratorController
 {
     struct TXTimecodeGenerator *_timecodeGenerator;
-    OZChanTimecodeController *_value;
-    OZChanTimecodeController *_offset;
-    OZViewController *_valueLabelParamCtrl;
-    OZViewController *_offsetLabelParamCtrl;
+    OZLabeledParamController *_valueLabelParamCtrl;
+    OZLabeledParamController *_offsetLabelParamCtrl;
 }
 
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;

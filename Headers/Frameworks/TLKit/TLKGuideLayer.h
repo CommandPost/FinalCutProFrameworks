@@ -13,8 +13,9 @@
     NSMutableArray *_guides;
 }
 
+- (void)setContents:(id)arg1;
 - (void)removeGuidesForOwner:(id)arg1;
-- (id)addSnappingGuideAtTime:(CDStruct_1b6d18a9)arg1 withOwner:(id)arg2;
+- (id)addSnappingGuideAtTime:(CDStruct_1b6d18a9)arg1 withOwner:(id)arg2 withAligment:(BOOL)arg3;
 - (void)layoutSublayers;
 - (void)dealloc;
 - (id)init;

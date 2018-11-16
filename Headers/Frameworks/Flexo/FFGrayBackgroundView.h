@@ -6,12 +6,18 @@
 
 #import "NSProView.h"
 
+@class NSProThemeFacet;
+
 __attribute__((visibility("hidden")))
 @interface FFGrayBackgroundView : NSProView
 {
+    NSProThemeFacet *_shadowFacet;
 }
 
+@property(retain) NSProThemeFacet *shadowFacet; // @synthesize shadowFacet=_shadowFacet;
+- (BOOL)acceptsFirstResponder;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)dealloc;
 
 @end
 

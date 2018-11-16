@@ -31,6 +31,8 @@
     OZColorWell *_pBackgroundColorWell;
     LKPopUpButton *_pRenderBackgroundPopUp;
     LKTextField *_pRenderBackgroundDescTF;
+    LKButton *_pIsDesignedFor4kCheck;
+    LKTextField *_pIsDesignedFor4kCheckLabel;
     LKPopUpButton *_pSelectPresetPopUp;
     LKPopUpButton *_pSelectThemePopUp;
     NSProView *_pMotionBlurView;
@@ -58,6 +60,7 @@
 - (void)setMotionBlurSamples:(id)arg1;
 - (void)endSliderAction:(id)arg1;
 - (void)startSliderAction:(id)arg1;
+- (void)setIsDesignedFor4k:(id)arg1;
 - (void)setBackgroundRenderingMode:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setStartTime:(id)arg1;
@@ -76,7 +79,7 @@
 - (void)makeScrubberRevealed:(id)arg1;
 - (id)addFauxBrickForView:(id)arg1 label:(id)arg2 context:(id)arg3;
 - (void)buildPropertiesUI:(id)arg1;
-- (BOOL)buildUIWithSceneNodes:(list_1192f13f *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_d81b4758 *)arg1 context:(id)arg2;
 - (void)dealloc;
 
 @end

@@ -8,15 +8,17 @@
 
 #import "FFOrganizerMasterItem.h"
 
-@class MIODeviceConnection, NSArray, NSImage, NSString;
+@class FFImportTapeDevice, MIODeviceConnection, NSArray, NSImage, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMIODeviceConnection : FFOrganizerItem <FFOrganizerMasterItem>
 {
     MIODeviceConnection *_deviceConnection;
+    FFImportTapeDevice *_tapeDevice;
 }
 
 + (id)deviceConnectionWithDeviceConnection:(id)arg1;
+@property FFImportTapeDevice *tapeDevice; // @synthesize tapeDevice=_tapeDevice;
 @property(retain, nonatomic) MIODeviceConnection *deviceConnection; // @synthesize deviceConnection=_deviceConnection;
 @property(readonly, nonatomic) BOOL hasMasterSubitems;
 @property(readonly, nonatomic) NSArray *masterSubitems;

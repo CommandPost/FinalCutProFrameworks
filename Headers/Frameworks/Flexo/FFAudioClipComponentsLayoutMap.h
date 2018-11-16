@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (void)notifyDelegateContainedItemsChanged;
 - (void)notifyReferenceLayoutMapChanged:(id)arg1;
 - (id)referenceRolesForKey:(id)arg1 layoutItemKey:(id)arg2;
-- (BOOL)isIntrinsicLayoutForKey:(id)arg1;
 - (id)referenceAudioComponentsLayoutForKey:(id)arg1;
 - (void)_clearCachedReferenceLayouts;
 - (id)_clipReferenceAudioComponentsLayoutForKey:(id)arg1;

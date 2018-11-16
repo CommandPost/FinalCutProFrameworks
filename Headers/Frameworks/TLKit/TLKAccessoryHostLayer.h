@@ -6,20 +6,28 @@
 
 #import "CALayer.h"
 
-@class NSString, TLKAccessoryLayer, TLKAccessoryTitleLayer, TLKTimelineView;
+@class NSString, TLKAccessoryLayer, TLKAccessoryTitleLayer, TLKItemLayer, TLKTimelineView;
 
 @interface TLKAccessoryHostLayer : CALayer
 {
-    id <TLKTimelineItem> _representedObject;
+    TLKItemLayer *_itemLayer;
     CALayer *_rootLayer;
     CALayer *_backgroundLayer;
+    CALayer *_glossMaskLayer;
+    CALayer *_glossLayer;
     TLKAccessoryLayer *_upperAccessoryLayer;
     TLKAccessoryLayer *_lowerAccessoryLayer;
     TLKAccessoryTitleLayer *_titleLayer;
     TLKTimelineView *_timelineView;
     NSString *_title;
+    BOOL _isSplitComponent;
+    double _backgroundBorderWidth;
+    double _titleHeight;
 }
 
+@property BOOL isSplitComponent; // @synthesize isSplitComponent=_isSplitComponent;
+@property double titleHeight; // @synthesize titleHeight=_titleHeight;
+@property double backgroundBorderWidth; // @synthesize backgroundBorderWidth=_backgroundBorderWidth;
 @property TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 - (void)syntheticUIElement:(id)arg1 performAction:(id)arg2;
 - (id)syntheticUIElementActions:(id)arg1;
@@ -52,10 +60,10 @@
 - (id)upperAccessoryLayer;
 - (void)setUpperAccessoryLayer:(id)arg1 lowerAccessoryLayer:(id)arg2;
 - (void)setNeedsLayout;
-@property(retain) id <TLKTimelineItem> representedObject;
+@property(readonly) id <TLKTimelineItem> representedObject;
+@property TLKItemLayer *itemLayer;
 @property(retain) NSString *title;
 - (id)hitTest:(struct CGPoint)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

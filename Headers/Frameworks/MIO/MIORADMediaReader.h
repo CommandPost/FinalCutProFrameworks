@@ -6,8 +6,6 @@
 
 #import "NSObject.h"
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface MIORADMediaReader : NSObject
 {
@@ -31,26 +29,21 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _frameDuration;
     long long _timescale;
     BOOL _keepMediaRate;
-    NSString *_filename;
     BOOL _endOfData;
     BOOL _isVFR;
-    struct opaqueCMBufferQueue *_bufferQueue;
 }
 
 + (id)mediaReaderWithFormatReader:(struct OpaqueFigFormatReader *)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2 mediaType:(unsigned int)arg3 trackID:(int)arg4 byteStream:(struct OpaqueCMByteStream *)arg5 timecodeInfo:(struct TimecodeInfo)arg6 frameDuration:(CDStruct_1b6d18a9)arg7;
 @property CDStruct_1b6d18a9 durationToPull; // @synthesize durationToPull=_durationToPull;
 @property(nonatomic) long long durationFramecount; // @synthesize durationFramecount=_durationFramecount;
-@property(retain) NSString *filename; // @synthesize filename=_filename;
 @property(nonatomic) BOOL keepMediaRate; // @synthesize keepMediaRate=_keepMediaRate;
 @property CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
 @property int trackID; // @synthesize trackID=_trackID;
 @property unsigned int mediaType; // @synthesize mediaType=_mediaType;
-@property struct opaqueCMBufferQueue *bufferQueue; // @synthesize bufferQueue=_bufferQueue;
 @property struct OpaqueFigSampleCursorService *sampleCursorService; // @synthesize sampleCursorService=_sampleCursorService;
 - (void)setGOPOffset:(unsigned long long)arg1;
 - (void)setEditOffset:(CDStruct_1b6d18a9)arg1;
 - (void)setIsVFR:(BOOL)arg1;
-- (BOOL)canSchedule;
 - (BOOL)hasData;
 @property(readonly, nonatomic) BOOL isVideo; // @dynamic isVideo;
 - (void)setConstantTimeStart:(CDStruct_1b6d18a9)arg1;
@@ -59,9 +52,8 @@ __attribute__((visibility("hidden")))
 - (int)getNextMedia:(void *)arg1;
 - (void)stop;
 - (void)start;
-- (struct opaqueCMSampleBuffer *)generateSampleBuffer;
+- (int)generateSampleBuffer:(struct opaqueCMSampleBuffer **)arg1;
 - (void)reset;
-- (int)pullFrame:(struct opaqueCMSampleBuffer **)arg1;
 - (void)dealloc;
 - (id)initWithFormatReader:(struct OpaqueFigFormatReader *)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2 mediaType:(unsigned int)arg3 trackID:(int)arg4 byteStream:(struct OpaqueCMByteStream *)arg5 timecodeInfo:(struct TimecodeInfo)arg6 frameDuration:(CDStruct_1b6d18a9)arg7;
 

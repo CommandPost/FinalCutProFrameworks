@@ -28,6 +28,7 @@
         unsigned int wasInitFromCache:1;
         unsigned int RESERVED:8;
     } _flags;
+    float _layoutInset;
     NSString *_sourceName;
 }
 
@@ -41,6 +42,8 @@
 - (unsigned long long)appLayoutVersion;
 - (id)keyEquivalent;
 - (void)setKeyEquivalent:(id)arg1;
+- (float)layoutInset;
+- (void)setLayoutInset:(float)arg1;
 - (BOOL)isAutolayout;
 - (void)setAutolayout:(BOOL)arg1;
 - (struct CGSize)screenSize;

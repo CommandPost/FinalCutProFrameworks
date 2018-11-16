@@ -7,6 +7,7 @@
 #import "NSCoder.h"
 
 @interface NSCoder (flexoExtensions)
++ (id)scanBraces;
 - (id)decodeFFVideoPropsForKey:(id)arg1;
 - (void)encodeFFVideoProps:(id)arg1 forKey:(id)arg2;
 - (id)decodePCMatrix44DoubleForKey:(id)arg1;

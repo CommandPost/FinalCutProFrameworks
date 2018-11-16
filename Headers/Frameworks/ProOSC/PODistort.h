@@ -15,8 +15,6 @@
     PCRect_b601f9f3 _snapStartBounds;
     double _startX;
     double _startY;
-    struct POLayeredAsset _handleOutline[2];
-    PCPtr_df275998 _handleFill[2];
     NSColor *_playerStatusText;
     NSColor *_playerStatusTextUnit;
     PCVector2_79efa81a _handles[8];
@@ -31,7 +29,7 @@
 - (struct CGRect)activeHandleRect;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
 - (BOOL)isDependentOnBounds;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;

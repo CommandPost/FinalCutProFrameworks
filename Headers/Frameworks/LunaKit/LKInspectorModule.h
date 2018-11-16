@@ -54,7 +54,7 @@
 - (void)_inspectorWasCreated:(id)arg1;
 - (void)_layoutDidChange:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)initWithModuleNibName:(id)arg1;
 
 @end
 

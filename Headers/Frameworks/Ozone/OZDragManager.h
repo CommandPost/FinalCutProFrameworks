@@ -62,7 +62,7 @@
 - (void)_copyShape;
 - (unsigned long long)validateDrop:(void *)arg1 dropInfo:(struct OZDropTargetInfo *)arg2;
 - (BOOL)checkForCamerasAndLights:(struct OZPasteList *)arg1 numCameras:(int *)arg2 numLights:(int *)arg3;
-- (void)computeOffsets:(map_0bf39bb6 *)arg1 from:(struct OZPasteList *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3 center:(PCVector3_457fd1f0 *)arg4;
+- (void)computeOffsets:(map_b455ab53 *)arg1 from:(struct OZPasteList *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3 center:(PCVector3_457fd1f0 *)arg4;
 - (void)waitForConversionToComplete:(void *)arg1 createClips:(BOOL)arg2;
 - (void)convertPasteboard:(void *)arg1 createClips:(BOOL)arg2;
 - (void)doConvertPasteboard:(void *)arg1 createClips:(BOOL)arg2;

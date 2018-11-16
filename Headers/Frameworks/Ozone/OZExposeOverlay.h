@@ -43,7 +43,6 @@
 - (void)draw;
 - (void)updateRenderGraph:(double)arg1;
 - (void)buildRenderGraph;
-- (void)renderElements;
 - (void)calculateNewRects;
 - (void)buildExposeListForDrilling:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
 - (void)buildExposeList:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;

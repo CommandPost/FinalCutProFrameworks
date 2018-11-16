@@ -4,25 +4,25 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFPersistentModule.h>
+#import "LKViewModule.h"
 
 #import "FFOutlineViewDataSource.h"
 #import "FFOutlineViewDelegate.h"
 
-@class FFOrganizerMasterItemNode, FFOutlineView, NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSObject<FFOrganizerItem><FFOrganizerMasterItem>, NSWindow;
+@class FFOrganizerMasterItemNode, FFOutlineView, NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSObject<FFOrganizerItem><FFOrganizerMasterItem>;
 
 __attribute__((visibility("hidden")))
-@interface FFSidebarModule : FFPersistentModule <FFOutlineViewDataSource, FFOutlineViewDelegate>
+@interface FFSidebarModule : LKViewModule <FFOutlineViewDataSource, FFOutlineViewDelegate>
 {
     FFOrganizerMasterItemNode *_rootNode;
     FFOutlineView *_outlineView;
     NSMutableArray *_selection;
     NSArray *_visibleNodes;
-    FFPersistentModule *_itemsModule;
+    LKViewModule *_itemsModule;
     unsigned long long _validatedDragOperation;
-    NSWindow *_observedWindow;
     NSIndexPath *_editingIndexPath;
     NSMapTable *_indexPathsByIdentifier;
+    NSMutableArray *_collapsedItems;
 }
 
 + (id)defaultModuleNibName;
@@ -41,9 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)revealMediaRanges:(id)arg1;
 - (void)outlineView:(id)arg1 willMoveToWindow:(id)arg2;
 - (void)outlineViewDidMoveToWindow:(id)arg1;
-@property(retain, nonatomic) NSWindow *observedWindow;
-- (void)windowWillCloseNotification:(id)arg1;
-- (void)windowDidBecomeVisibleNotification:(id)arg1;
 - (void)outlineViewVisibleCellsDidChange:(id)arg1;
 - (id)outlineView:(id)arg1 menuForRowAtIndexPath:(id)arg2 withEvent:(id)arg3;
 - (BOOL)outlineView:(id)arg1 acceptDrop:(id)arg2 atIndexPath:(id)arg3 childInsertionIndex:(long long)arg4;
@@ -92,12 +89,11 @@ __attribute__((visibility("hidden")))
 - (void)node:(id)arg1 insertChildNodesWithIndexes:(id)arg2;
 - (void)nodeReloadChildNodes:(id)arg1;
 - (void)updateVisibleNodes;
-- (void)storeDefaultsScrollPosition;
-- (void)loadDefaultsScrollPosition;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
 - (void)reloadOutlineView;
 - (void)reloadOutlineViewNow;
 - (void)reloadOutlineViewNowWithSidebarProvider:(struct NSObject *)arg1;
-- (id)defaultsIndexPathsForKeyPath:(id)arg1;
 - (id)indexPathForItem:(struct NSObject *)arg1;
 - (id)_indexPathsForItemIdentifiers:(id)arg1;
 - (id)_indexPathForItemIdentifier:(id)arg1;
@@ -120,10 +116,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *selection;
 @property(readonly, nonatomic) NSArray *selectedItems;
 - (id)itemPersistentIdentifiersForNodes:(id)arg1;
-@property(retain, nonatomic) FFPersistentModule *itemsModule;
+@property(retain, nonatomic) LKViewModule *itemsModule;
 @property(retain, nonatomic) NSArray *visibleNodes;
 - (void)stopObservingVisibleNodes:(id)arg1;
 - (void)startObservingVisibleNodes:(id)arg1;
+- (id)init;
 
 @end
 

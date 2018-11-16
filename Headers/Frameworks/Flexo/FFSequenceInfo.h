@@ -9,80 +9,76 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFAnchoredSequence, NSDate, NSMutableArray, NSMutableDictionary, NSString;
+@class FFVideoFormat, NSDictionary, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFSequenceInfo : FFBaseDSObject <NSCoding, NSCopying>
 {
-    NSString *_sequenceID;
-    NSString *_displayName;
     CDStruct_e83c9415 _mediaRange;
-    NSDate *_modDate;
     CDStruct_1b6d18a9 _frameDuration;
     CDStruct_1b6d18a9 _timecodeFrameDuration;
     long long _timecodeDisplayDropFrame;
     int _fieldDominance;
     struct CGSize _frameSize;
-    NSMutableArray *_thumbnailMD5s;
-    NSMutableArray *_proxyThumbnailMD5s;
+    struct CGSize _pixelFrameSize;
+    NSDictionary *_metadata;
+    NSMutableDictionary *_thumbnailMD5sKeyedByQuality;
+    NSString *_mediaIdentifier;
+    NSString *_videoFormatKey;
     BOOL _hasAudio;
     BOOL _hasVideo;
-    BOOL _needToClearSequenceThumbnailMD5Cache;
-    NSMutableArray *_thumbnailRequests;
-    NSMutableArray *_thumbnailCompletionTargets;
-    NSMutableDictionary *_md5Cache;
-    FFAnchoredSequence *_sequence;
+    BOOL _isTrailer;
+    BOOL _requiresLegacyUpgrade;
+    NSMutableDictionary *_thumbnailRequestsKeyedByQuality;
+    NSMutableDictionary *_thumbnailReadyBlocksKeyedByQuality;
+    double _audioSampleRate;
 }
 
-+ (id)keyPathsForValuesAffectingDisplayName;
++ (id)sequenceMDKeysToCache;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
-@property(nonatomic) BOOL needToClearSequenceThumbnailMD5Cache; // @synthesize needToClearSequenceThumbnailMD5Cache=_needToClearSequenceThumbnailMD5Cache;
-@property(copy, nonatomic) NSDate *modDate; // @synthesize modDate=_modDate;
++ (void)initialize;
+@property double audioSampleRate; // @synthesize audioSampleRate=_audioSampleRate;
+@property(nonatomic) BOOL requiresLegacyUpgrade; // @synthesize requiresLegacyUpgrade=_requiresLegacyUpgrade;
+@property(nonatomic) BOOL isTrailer; // @synthesize isTrailer=_isTrailer;
+@property(retain, nonatomic) NSMutableDictionary *thumbnailMD5sKeyedByQuality; // @synthesize thumbnailMD5sKeyedByQuality=_thumbnailMD5sKeyedByQuality;
+@property(nonatomic) struct CGSize frameSize; // @synthesize frameSize=_frameSize;
+@property(nonatomic) int fieldDominance; // @synthesize fieldDominance=_fieldDominance;
+@property long long timecodeDisplayDropFrame; // @synthesize timecodeDisplayDropFrame=_timecodeDisplayDropFrame;
+@property CDStruct_1b6d18a9 timecodeFrameDuration; // @synthesize timecodeFrameDuration=_timecodeFrameDuration;
+@property(nonatomic) CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
+@property(copy, nonatomic) NSString *videoFormatKey; // @synthesize videoFormatKey=_videoFormatKey;
+@property(copy, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (int)_thumbnailCellForRange:(CDStruct_e83c9415)arg1;
-- (void)_updateThumbnailsOnMainThread:(id)arg1;
-- (void)thumbImageReady:(id)arg1;
-- (void)thumbImageReadyOnMainThread:(id)arg1;
-- (void)_updateThumbnails:(double)arg1;
-- (void)_checkSetup;
-- (BOOL)_hasThumbnailMD5s;
-- (void)setHasVideo:(BOOL)arg1;
-- (void)setHasAudio:(BOOL)arg1;
-@property(readonly, nonatomic) BOOL hasVideo;
-@property(readonly, nonatomic) BOOL hasAudio;
-- (double)aspectRatio;
-- (void)cancelRequestsFrom:(id)arg1;
-- (CDStruct_e83c9415)thumbnailRangeForRequestRange:(CDStruct_e83c9415)arg1;
-- (struct CGImage *)thumbnailForRange:(CDStruct_e83c9415)arg1 contentsScale:(double)arg2 target:(id)arg3;
+- (void)setAutoEdit:(BOOL)arg1;
+@property BOOL hasVideo;
+@property BOOL hasAudio;
+- (id)mdValueForKey:(id)arg1;
+- (void)mdSetValue:(id)arg1 forKey:(id)arg2;
+- (id)metadata;
+- (void)setMetadata:(id)arg1;
+- (BOOL)shouldCacheMDValueForKey:(id)arg1;
+- (id)legacySequenceID;
+@property(readonly, nonatomic) FFVideoFormat *videoFormat;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 sampleDuration;
+@property(nonatomic) struct CGSize pixelFrameSize; // @synthesize pixelFrameSize=_pixelFrameSize;
 - (id)sequence;
-- (id)sequenceShareFingerPrint;
-@property(readonly, nonatomic) BOOL isSequenceLoaded;
-- (void)releaseSequence;
-@property(copy, nonatomic) NSString *displayName;
-@property(nonatomic) struct CGSize frameSize;
-@property(nonatomic) int fieldDominance;
-@property(nonatomic) long long timecodeDisplayDropFrame;
-@property(nonatomic) CDStruct_1b6d18a9 timecodeFrameDuration;
-@property(nonatomic) CDStruct_1b6d18a9 frameDuration;
-- (void)resetThumbnailMD5s;
+- (BOOL)isSequenceLoaded;
+- (BOOL)autoEdit;
+- (void)setThumbnailMD5:(id)arg1 forQuality:(int)arg2;
+- (id)thumbnailMD5ForQuality:(int)arg1;
+- (void)thumbImageReady:(id)arg1;
+- (void)performBlockWithThumbnail:(CDUnknownBlockType)arg1 imageQuality:(int)arg2;
+- (void)setModDate:(id)arg1;
+- (id)modDate;
+- (void)setDisplayName:(id)arg1;
+- (id)displayName;
 @property(nonatomic) CDStruct_e83c9415 mediaRange;
-@property(copy, nonatomic) NSString *sequenceID;
-- (void)replaceObjectInProxyThumbnailMD5sAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
-- (void)removeObjectFromProxyThumbnailMD5sAtIndex:(unsigned long long)arg1;
-- (void)insertObject:(id)arg1 inProxyThumbnailMD5sAtIndex:(unsigned long long)arg2;
-- (void)setProxyThumbnailMD5s:(id)arg1;
-- (id)proxyThumbnailMD5s;
-- (void)replaceObjectInThumbnailMD5sAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
-- (void)removeObjectFromThumbnailMD5sAtIndex:(unsigned long long)arg1;
-- (void)insertObject:(id)arg1 inThumbnailMD5sAtIndex:(unsigned long long)arg2;
-- (void)setThumbnailMD5s:(id)arg1;
-- (id)thumbnailMD5s;
 - (void)dealloc;
-- (id)initWithDisplayName:(id)arg1;
+- (id)init;
 
 @end
 

@@ -9,17 +9,14 @@
 @interface POChannelPositionOSC : POChannel
 {
     struct vector<std::pair<OZChannelRef *, bool>, std::allocator<std::pair<OZChannelRef *, bool>>> *_positions;
-    PCPtr_df275998 _pointTexture[2];
     BOOL _moving;
 }
 
 + (BOOL)validate:(struct OZChannelBase *)arg1;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (PCRect_b601f9f3)_OSCBoundary;
 - (BOOL)postRedisplayOnActivePartChange;
 - (void)draw;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)menuAddTrack:(id)arg1;
 - (id)menuForEvent:(id)arg1;
 - (void)mouseUp:(id)arg1;

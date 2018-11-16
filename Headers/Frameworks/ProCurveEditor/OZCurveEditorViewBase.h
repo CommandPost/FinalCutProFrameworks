@@ -220,7 +220,6 @@
 - (void)drawProjection:(unsigned int)arg1;
 - (void)drawSelectionRect;
 - (void)glPrint:(id)arg1 atPos:(struct CGPoint)arg2;
-- (void)initGL:(struct CGRect)arg1;
 - (void)computeVerticalTickMarks;
 - (unsigned int)numberOfTickMarks;
 - (unsigned int)linenShadowAssetAtSize:(struct CGSize)arg1;

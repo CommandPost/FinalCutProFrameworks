@@ -45,6 +45,9 @@
 - (void)addToUndoWillDelete:(id)arg1;
 - (void)addToUndo:(id)arg1;
 - (void)dirty;
+- (BOOL)handleBGTranslates;
+- (BOOL)showSideScaleOSC;
+- (BOOL)showRotationOSC;
 - (void)drawGeometry:(_Bool)arg1;
 - (void)drawElementOutline:(const PCMatrix44Tmpl_e98c85ee *)arg1 red:(double)arg2 green:(double)arg3 blue:(double)arg4;
 - (void)clipOutline:(const PCVector2_79efa81a *)arg1 numPoints:(int)arg2 edges:(PCVector2_79efa81a *)arg3 returnVisible:(vector_69938c0b *)arg4;
@@ -114,6 +117,8 @@
 - (void)setCropKeyframeForType:(int)arg1 kf:(int)arg2 andL:(double)arg3 andR:(double)arg4 andB:(double)arg5 andT:(double)arg6;
 - (void)getCropKeyframeForType:(int)arg1 kf:(int)arg2 andL:(double *)arg3 andR:(double *)arg4 andB:(double *)arg5 andT:(double *)arg6;
 - (BOOL)cropDisplaysNameForType:(int)arg1;
+- (void)setKenBurnsInterpolationType:(int)arg1;
+- (int)getKenBurnsInterpolationType;
 - (void)setCropType:(int)arg1;
 - (int)getCropKeyframeCount;
 - (int)getCropType;

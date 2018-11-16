@@ -10,13 +10,8 @@
 
 @interface OZFxPixelTransformsHandler : NSObject <FxPixelTransformsAPI>
 {
-    struct LiAgent *_agent;
-    PCMatrix44Tmpl_e98c85ee _preTransform;
-    PCMatrix44Tmpl_e98c85ee _postTransform;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (PCMatrix44Tmpl_e98c85ee)destinationInversePixelTransform;
 - (PCMatrix44Tmpl_e98c85ee)destinationPixelTransform;
 - (PCMatrix44Tmpl_e98c85ee)inversePixelTransform;

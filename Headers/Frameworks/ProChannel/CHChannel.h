@@ -25,6 +25,9 @@
 - (double)maxCurveValueAsDouble;
 - (double)minCurveValueAsDouble;
 - (double)defaultCurveValueAsDouble;
+- (void)setInitialCurveValueWithDouble:(double)arg1;
+- (double)initialCurveValueAsDouble;
+- (void)setCurveValueWithDouble:(double)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
 - (double)curveValueAsDoubleAtTime:(CDStruct_198678f7)arg1;
 - (double)valueAsDoubleAtTime:(CDStruct_198678f7)arg1;
 - (BOOL)hasFadeHandles;
@@ -37,12 +40,11 @@
 - (CDStruct_198678f7)fadeInOffset;
 - (void)setFadeOutOffset:(CDStruct_198678f7)arg1;
 - (void)setFadeInOffset:(CDStruct_198678f7)arg1;
-- (BOOL)getKeyframeOutputTangents:(void *)arg1 outTanTime:(double *)arg2 outTanValue:(double *)arg3;
-- (BOOL)getKeyframeInputTangents:(void *)arg1 inTanTime:(double *)arg2 inTanValue:(double *)arg3;
-- (BOOL)setKeyframeOutputTangents:(void *)arg1 outTanTime:(double)arg2 outTanValue:(double)arg3;
-- (BOOL)setKeyframeInputTangents:(void *)arg1 inTanTime:(double)arg2 inTanValue:(double)arg3;
-- (BOOL)appendKeyframes:(unsigned int)arg1 times:(CDStruct_198678f7 *)arg2 values:(double *)arg3;
-- (BOOL)appendKeyframe:(CDStruct_198678f7)arg1 value:(double)arg2;
+- (void)getKeyframeOutputTangents:(void *)arg1 outTanTime:(double *)arg2 outTanValue:(double *)arg3;
+- (void)getKeyframeInputTangents:(void *)arg1 inTanTime:(double *)arg2 inTanValue:(double *)arg3;
+- (void)setKeyframeOutputTangents:(void *)arg1 outTanTime:(double)arg2 outTanValue:(double)arg3;
+- (void)setKeyframeInputTangents:(void *)arg1 inTanTime:(double)arg2 inTanValue:(double)arg3;
+- (void)appendKeyframes:(unsigned int)arg1 times:(CDStruct_198678f7 *)arg2 values:(double *)arg3;
 - (BOOL)moveKeyframe:(void *)arg1 toTime:(CDStruct_198678f7)arg2 constrainToOtherKeys:(BOOL)arg3;
 - (BOOL)removeKeyframe:(void *)arg1;
 - (void *)previousKeyframeFromTime:(CDStruct_198678f7)arg1;
@@ -51,6 +53,7 @@
 - (void *)nextKeyframe:(void *)arg1;
 - (void *)lastKeyframe;
 - (void *)firstKeyframe;
+- (BOOL)getKeyframe:(void *)arg1 time:(CDStruct_198678f7 *)arg2 value:(double *)arg3;
 - (BOOL)getKeyframe:(void *)arg1 time:(CDStruct_198678f7 *)arg2;
 - (void *)keyframeAtTime:(CDStruct_198678f7)arg1;
 - (void)unregisterRecordingCallback:(CDUnknownFunctionPointerType)arg1 context:(void *)arg2;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSString *_effectType;
     NSString *_genre;
     NSMutableArray *_genres;
+    BOOL _isSubcategoryAll;
 }
 
 + (id)standardProvider;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)effectIDWasRegistered:(id)arg1;
 - (void)dealloc;
 - (BOOL)isEqual:(id)arg1;
+- (id)initWithEffectType:(id)arg1 genre:(id)arg2 isSubcategoryAll:(BOOL)arg3;
 - (id)initWithEffectType:(id)arg1 genre:(id)arg2;
 - (void)setupAllAVFXFolder;
 - (void)setupThemesFolder;

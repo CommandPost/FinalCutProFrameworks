@@ -13,6 +13,7 @@
     LKButton *_signInBtn;
     LKButton *_privateBtn;
     LKPopUpButton *_compressionPopup;
+    LKPopUpButton *_viewableByPopup;
     LKPopUpButton *_categoryPopup;
     NSArrayController *_categoriesController;
     NSWindow *_signInPanel;
@@ -44,9 +45,8 @@
 - (void)okcancelClicked:(id)arg1;
 @property(copy, nonatomic) NSDictionary *category;
 @property(readonly, nonatomic) NSArray *categories;
-- (long long)showModalPanelIfNeeded;
-- (void)showPanelIfNeededModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)showPanelIfNeeded:(CDUnknownBlockType)arg1;
+@property(copy, nonatomic) NSDictionary *privacy;
+- (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)validateUsernamePassword:(id *)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;

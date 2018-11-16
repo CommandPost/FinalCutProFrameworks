@@ -6,16 +6,16 @@
 
 #import "LKViewModule.h"
 
-@class FFContext, FFProvider;
+@class FFProvider;
 
 __attribute__((visibility("hidden")))
 @interface FFSettingsModule : LKViewModule
 {
     FFProvider *_provider;
-    FFContext *_context;
+    BOOL _enableAutomaticCustomSettingsButton;
 }
 
-@property(retain, nonatomic) FFContext *context; // @synthesize context=_context;
+@property(nonatomic) BOOL enableAutomaticCustomSettingsButton; // @synthesize enableAutomaticCustomSettingsButton=_enableAutomaticCustomSettingsButton;
 @property(retain, nonatomic) FFProvider *provider; // @synthesize provider=_provider;
 - (BOOL)createAutomatically;
 - (void)toggleCreationSettings;

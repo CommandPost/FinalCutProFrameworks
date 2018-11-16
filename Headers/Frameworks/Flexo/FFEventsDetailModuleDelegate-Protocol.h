@@ -4,10 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "FFPersistentModuleDelegate.h"
+#import "NSObject.h"
 
-@protocol FFEventsDetailModuleDelegate <FFPersistentModuleDelegate>
-- (void)finishedLoadingChanged;
+@protocol FFEventsDetailModuleDelegate <NSObject>
+
+@optional
 - (void)setNoItemsInfoTextVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)finishedLoadingChanged;
 @end
 

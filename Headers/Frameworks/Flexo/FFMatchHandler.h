@@ -16,11 +16,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)toolClass;
-@property(retain) FFMedia *media; // @synthesize media=_media;
-@property(retain) FFContext *context; // @synthesize context=_context;
+@property(readonly, nonatomic) FFMedia *media; // @synthesize media=_media;
+@property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
 - (void)matchReference:(id)arg1;
 - (BOOL)isValidObject:(id)arg1;
-@property(readonly, nonatomic) FFAnchoredTimelineModule *timelineModule;
+- (BOOL)alignContextTimeToPlayheadTime;
+@property(readonly, nonatomic) FFAnchoredTimelineModule *timelineModule; // @dynamic timelineModule;
 @property(readonly, nonatomic) FFMatchTool *matchTool;
 - (void)movePlayheadToCurrentPosition:(id)arg1;
 - (BOOL)shouldSkimPlayhead;

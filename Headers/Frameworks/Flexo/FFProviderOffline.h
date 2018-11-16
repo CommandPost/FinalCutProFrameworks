@@ -27,14 +27,15 @@
 @property(readonly) int offlineReason; // @synthesize offlineReason=_offlineReason;
 @property(retain) FFMedia *media; // @synthesize media=_media;
 - (id).cxx_construct;
-- (id)newOfflineImage;
+- (id)newOfflineImageForThumbnail:(BOOL)arg1;
 - (id)displayName;
 - (id)nativeVideoProps;
 - (void)_setupSources;
 - (void)dealloc;
 - (id)initWithMedia:(id)arg1;
 - (id)initWithMedia:(id)arg1 offlineReason:(int)arg2;
-- (id)_imageForOfflineReason:(int)arg1 wants4x3:(BOOL)arg2;
+- (id)_imageForOfflineReason:(int)arg1 wants4x3:(BOOL)arg2 forThumbnail:(BOOL)arg3;
+- (id)_detailedDescriptionForOfflineReason:(int)arg1;
 - (id)_descriptionForOfflineReason:(int)arg1;
 - (id)_newImageForOfflineReason:(int)arg1;
 - (void)_setupSourcesForAudio:(CDStruct_e83c9415)arg1;

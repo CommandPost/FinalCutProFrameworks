@@ -6,7 +6,7 @@
 
 #import "LKTile.h"
 
-@class NSButton, NSMutableArray, NSProgressIndicator, NSString, NSTextField, NSView;
+@class NSArray, NSButton, NSDate, NSDictionary, NSMutableArray, NSProgressIndicator, NSString, NSTextField, NSTrackingArea, NSView;
 
 @interface PEBackgroundTaskTile : LKTile
 {
@@ -17,18 +17,36 @@
     NSProgressIndicator *_progressBar;
     NSButton *_pauseResumeButton;
     NSButton *_cancelShowButton;
+    NSTextField *_timeRemainingText;
     NSString *_title;
     NSView *_tasksView;
     NSMutableArray *_tasks;
     double _progress;
     BOOL _paused;
     BOOL _ready;
+    BOOL _showElementsAffectedByTracking;
+    NSDictionary *_textLabelAttributes;
+    NSDictionary *_timeRemainingTextLabelAttributes;
+    NSDate *_startProcessingDate;
+    double _startProcessingValue;
+    double _lastTaskProgress;
+    NSTrackingArea *_tileTrackingArea;
+    NSArray *_originalPendingJobNames;
+    unsigned long long _originalPendingJobNameIndex;
 }
 
 @property(getter=isReady) BOOL ready; // @synthesize ready=_ready;
 @property(getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
 @property(retain) NSString *title; // @synthesize title=_title;
+- (id)_humanReadableTimeRemaining:(double)arg1;
+- (BOOL)shouldShowTimeRemaining;
+- (BOOL)_isProcessingCurrentPendingJob;
+- (void)_updateElementsAffectedByTracking;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+@property(readonly, nonatomic) NSDictionary *timeRemainingTextLabelAttributes; // @synthesize timeRemainingTextLabelAttributes=_timeRemainingTextLabelAttributes;
+@property(readonly, nonatomic) NSDictionary *textLabelAttributes; // @synthesize textLabelAttributes=_textLabelAttributes;
 - (void)willRemoveFromTileView;
 - (void)cancelShowTasks:(id)arg1;
 - (void)pauseResumeTasks:(id)arg1;
@@ -41,6 +59,7 @@
 - (id)tasks;
 - (void)awakeFromNib;
 - (void)dealloc;
+- (id)initWithPendingJob:(unsigned long long)arg1 task:(id)arg2;
 - (id)initWithSingleTask:(id)arg1;
 
 @end

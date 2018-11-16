@@ -19,7 +19,7 @@
     OZProjectDARCtlr *_pDARSnapshotsCtlr;
     OZViewControllerGroup *_pCurrCtlr;
     PIBuildContext *_pContext;
-    list_1192f13f *_pNodeList;
+    list_d81b4758 *_pNodeList;
 }
 
 - (void)switchPane:(id)arg1;
@@ -30,8 +30,8 @@
 - (id)mainView;
 - (void)select:(BOOL)arg1 excludeChannel:(struct OZChannelBase *)arg2;
 - (void)dealloc;
-- (id)initWithSceneNodes:(list_1192f13f *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
-- (id)initWithSceneNodes:(list_1192f13f *)arg1 viewCtlrDelegate:(id)arg2;
+- (id)initWithSceneNodes:(list_d81b4758 *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
+- (id)initWithSceneNodes:(list_d81b4758 *)arg1 viewCtlrDelegate:(id)arg2;
 
 @end
 

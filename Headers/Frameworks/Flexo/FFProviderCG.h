@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
     NSString *_MD5Seed;
     _Bool _overrideAlpha;
     int _overrideAlphaValue;
-    int _nativeAlpha;
+    unsigned int _nativeAlpha;
     _Bool _invertAlpha;
     struct CGColorSpace *_fileNativeColorSpace;
     int _depth;

@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
     BOOL _isReloading;
 }
 
-- (id)defaultsValueForKeyPath:(id)arg1;
 - (void)updateCell:(id)arg1 forNode:(id)arg2;
 - (id)createCellWithIdentifier:(id)arg1 forNode:(id)arg2;
 - (id)cellIdentifierForNode:(id)arg1;
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)reloadOutlineViewNowWithSidebarProvider:(struct NSObject *)arg1;
 - (void)viewDidLoad;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (id)init;
 
 @end
 

@@ -62,14 +62,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)isReferenceLayoutMap;
 - (id)referenceLayoutMap;
 - (id)audioComponentsLayoutForKey:(id)arg1;
+- (id)_audioComponentsLayoutForKeyNoCopy:(id)arg1;
 - (id)referenceAudioComponentsLayoutForKey:(id)arg1;
 - (unsigned int)numOutputChannelsForKeys:(id)arg1 withFlags:(unsigned int)arg2;
 - (unsigned int)numOutputChannelsForKeys:(id)arg1;
 - (unsigned int)numChannelsForKeys:(id)arg1;
+- (BOOL)isEqualToLayoutMap:(id)arg1;
 - (id)sortKeys:(id)arg1;
 - (id)allKeys;
 - (id)allReferenceKeys;
 - (BOOL)hasLocalLayouts;
+- (id)copyWithDelegate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

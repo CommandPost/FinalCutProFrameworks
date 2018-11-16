@@ -22,12 +22,15 @@
     FFStreamVideoOptions *_options;
     int _locationHint;
     unsigned int _additionalRenderingFlags;
+    FFSVContext *_cachedNoFieldPairingContext;
 }
 
 @property(readonly, nonatomic) unsigned int additionalRenderingFlags; // @synthesize additionalRenderingFlags=_additionalRenderingFlags;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)compareTo:(id)arg1 withCompareFlags:(unsigned int)arg2;
 - (struct CGRect)pixelSpaceBounds;
+- (BOOL)forLiveEdit;
+- (BOOL)pairFields;
 - (BOOL)effectsBestQuality;
 - (BOOL)disable422Filtering;
 - (BOOL)drawAllAngles;
@@ -35,6 +38,8 @@
 - (void)setLocationHint:(int)arg1;
 - (int)locationHint;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyWithLiveEditFlag:(BOOL)arg1;
+- (id)copyWithPairFields:(BOOL)arg1;
 - (id)copyWithAdjustedPriority:(int)arg1;
 - (id)copyWithFxBestQuality:(BOOL)arg1;
 - (id)copyWithDraftTextMode:(BOOL)arg1;
@@ -43,6 +48,7 @@
 - (id)copyWithUpdatedLocationHint:(int)arg1;
 - (id)copyWithSpatialQuality:(int)arg1 temporalQuality:(int)arg2;
 - (void)setEffectsBestQuality:(BOOL)arg1;
+- (void)setForLiveEditFlag:(BOOL)arg1;
 - (void)setDraftTextMode:(BOOL)arg1;
 - (void)setDisable422Filtering:(BOOL)arg1;
 - (void)setDrawAllAngles:(BOOL)arg1;

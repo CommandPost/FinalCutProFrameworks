@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)didEndSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (BOOL)setCreationDate:(id)arg1 inMovieFile:(id)arg2;
 - (struct OpaqueFigMetadataReader *)createQuickTimeMetadataReaderForFileURL:(id)arg1;
+- (id)init;
 
 @end
 

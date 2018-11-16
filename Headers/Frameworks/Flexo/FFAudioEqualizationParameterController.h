@@ -36,11 +36,11 @@ __attribute__((visibility("hidden")))
 - (void)matchStarted;
 - (void)hideSpinner;
 - (void)_animateSpinner:(id)arg1;
+- (void)_updateAnimateSpinner:(id)arg1;
 - (void)_updateEQMenu;
 - (id)_effectStacksFromManagerList;
-- (void)update;
 - (void)didBuildUI;
-- (void)addAssociatedChannel:(struct OZChannelBase *)arg1;
+- (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

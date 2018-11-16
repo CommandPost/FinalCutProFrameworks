@@ -72,7 +72,7 @@
 - (id)layoutArray;
 - (void)_willFinishChangingModuleLayout;
 - (void)applyModuleLayout:(id)arg1;
-- (void)resizeWindowsToScreen:(id)arg1;
+- (void)resizeWindowsToScreen:(id)arg1 forLayout:(id)arg2;
 - (void)discardChanges;
 - (void)saveLayout:(id)arg1;
 - (void)_saveLayoutToModified;

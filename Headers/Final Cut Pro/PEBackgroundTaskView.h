@@ -24,11 +24,7 @@
 @property(nonatomic) double progress; // @synthesize progress=_progress;
 - (void)cancel:(id)arg1;
 - (void)togglePauseResume:(id)arg1;
-- (void)_updateIsPaused;
-- (void)_updateProgress;
 - (id)_progressLayer;
-- (void)configureWithTasks:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

@@ -6,25 +6,31 @@
 
 #import <Flexo/FFDestVideo.h>
 
-@class FFImageDisplay, FFPMRLogFunnel, NSColor, NSLock, NSMutableArray, NSObject, Stopwatch;
+@class FFImage, FFImageDisplay, FFPMRLogFunnel, FFPlayerFrame, NSColor, NSLock, NSMutableArray, NSObject<OS_dispatch_semaphore>, Stopwatch;
 
 __attribute__((visibility("hidden")))
 @interface FFDestVideoGL : FFDestVideo
 {
     NSLock *_queueLock;
     NSMutableArray *_renderedFrames;
+    FFPlayerFrame *_lastSelectedFrame;
     unsigned int _normalQueueSize;
     unsigned int _maxQueueCapacity;
     int _lateDraw;
     struct __CVDisplayLink *_displayLink;
-    BOOL _stopIsPending;
-    NSObject *_displayLinkSyncObj;
+    BOOL _queuedStopIsPending;
+    NSObject<OS_dispatch_semaphore> *_displayLinkSync;
     BOOL _displayLinkIsRunning;
     double _sleepIntervalStartTime;
+    int _playerQuality;
     BOOL _displayForThumbnail;
+    double _lastDisplayLinkCallTimeInSeconds;
+    double _lastDisplayLinkExecDurationInSeconds;
     Stopwatch *_watch;
     double _performanceIntervalStartTime;
-    double _frameCount;
+    int _unviewedDrops;
+    unsigned long long _frameCount;
+    _Bool _prevFrameWasScrub;
     CDStruct_1b6d18a9 _drawDelay;
     FFImageDisplay *_imageDisplay;
     unsigned int _display;
@@ -44,14 +50,17 @@ __attribute__((visibility("hidden")))
     NSLock *_lock;
     BOOL _drawingSuspended;
     int _requestedBackground;
+    BOOL _observingPlayerBackground;
     int _lateCountDrawing;
     int _displayAttempts;
-    BOOL _debugDrawing;
+    FFImage *_blueFrame;
     FFPMRLogFunnel *_pmrFunnel;
 }
 
 - (id).cxx_construct;
 - (id)description;
+- (_Bool)performOverfullRecovery;
+- (_Bool)supportsOverfullRecovery;
 - (void)setViewBounds:(struct CGRect)arg1;
 - (void)setDeviceColorSpace:(struct CGColorSpace *)arg1 backgroundColor:(id)arg2;
 - (void)setCGLContext:(struct _CGLContextObject *)arg1;
@@ -69,18 +78,21 @@ __attribute__((visibility("hidden")))
 - (void)_queuedStop;
 - (void)stop;
 - (void)start:(id)arg1;
-- (int)_displayTimerCallback;
-- (void)_drawImages:(id)arg1 forRate:(double)arg2 clockTime:(CDStruct_1b6d18a9)arg3;
+- (int)_displayTimerCallback:(const CDStruct_e50ab651 *)arg1 outTime:(const CDStruct_e50ab651 *)arg2;
+- (void)_drawImages:(id)arg1 forRate:(double)arg2 clockTime:(CDStruct_1b6d18a9)arg3 isStaleFrame:(BOOL)arg4 qSize:(float)arg5;
 - (void)debugPrintMultiAngleRects:(id)arg1;
+- (void)_drawAudioImageAtTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
 - (void)_drawMissingImageAtTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
-- (void)_notifyPlayer;
+- (void)_notifyPlayer:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 rate:(double)arg3 rawFrameDur:(CDStruct_1b6d18a9)arg4 needsUpdate:(BOOL)arg5;
 - (void)drawEmptyBackground;
-- (id)_copyPlayerFrameForTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 tbRate:(double)arg3;
+- (id)_copyPlayerFrameForTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 tbRate:(double)arg3 retQSize:(float *)arg4;
+- (id)_copyPlayerFrameForTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 tbRate:(double)arg3 retIsStale:(char *)arg4 retQSize:(float *)arg5;
 - (int)getFrameQueueStatus;
 - (int)_getFrameQueueStatusWithPlayerTime:(CDStruct_1b6d18a9)arg1 rawFrameDuration:(CDStruct_1b6d18a9)arg2 rate:(double)arg3;
 - (void)pushFrame:(id)arg1;
 - (void)liveFlushWithRunout:(unsigned int)arg1 playerTime:(CDStruct_1b6d18a9)arg2 rate:(double)arg3;
 - (void)flush:(BOOL)arg1;
+- (void)_internalFlush:(BOOL)arg1 keepLastSelected:(BOOL)arg2;
 - (void)_pmrLogQueueDepth:(_Bool)arg1 count:(unsigned int)arg2;
 - (id)newOnScreenControlsTextureForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
 - (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;

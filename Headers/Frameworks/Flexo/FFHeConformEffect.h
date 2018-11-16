@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
+- (BOOL)supportsReentrancy;
 - (BOOL)useSourcePixelSpace;
 - (BOOL)effectIntroducesAlpha;
 - (CDStruct_bdcb2b0d)md5;

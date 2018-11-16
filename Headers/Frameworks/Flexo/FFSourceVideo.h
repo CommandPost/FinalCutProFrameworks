@@ -22,6 +22,7 @@
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (CDStruct_1b6d18a9)nativeSampleDuration;
 - (CDStruct_1b6d18a9)magicFrameTime;
+- (id)renderFormat:(id)arg1;
 - (id)nativeVideoProps;
 - (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
 - (id)type;

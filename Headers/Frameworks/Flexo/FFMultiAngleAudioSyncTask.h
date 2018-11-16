@@ -30,15 +30,15 @@
 }
 
 @property BOOL useFullMediaRange; // @synthesize useFullMediaRange=_useFullMediaRange;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (BOOL)syncAngles:(BOOL)arg1 syncItems:(BOOL)arg2 taskCanceled:(char *)arg3;
 - (BOOL)syncItems:(char *)arg1;
 - (BOOL)syncAngles:(char *)arg1;
 - (void)_synchronize:(id)arg1 onTask:(id)arg2;
 - (void)_fixItems:(id)arg1 inAngles:(id)arg2;
 - (BOOL)_syncAngles:(id)arg1 toRefAngle:(id)arg2 findMaxConfidence:(BOOL)arg3;
-- (BOOL)_peakSyncAngles:(id)arg1 toRefAngle:(id)arg2 findMaxConfidence:(BOOL)arg3;
+- (BOOL)_peakSyncAngles:(id)arg1 toRefAngle:(id)arg2 findMaxConfidence:(BOOL)arg3 onTask:(id)arg4;
 - (BOOL)_fullRangeSyncItemsInAngles:(BOOL)arg1;
 - (BOOL)_fineSyncItemsInAngles:(BOOL)arg1;
 - (void)_resetFineSyncInfo;

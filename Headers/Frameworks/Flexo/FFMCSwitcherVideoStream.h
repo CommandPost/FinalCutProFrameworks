@@ -26,17 +26,18 @@ __attribute__((visibility("hidden")))
 
 - (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
 - (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5;
+- (_Bool)shouldCheckCacheForTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 props:(id)arg3;
 - (id)pixelTransformToField2ForQuality:(int)arg1;
 - (id)pixelTransformToField1ForQuality:(int)arg1;
 - (id)pixelTransformToFrameForQuality:(int)arg1;
 - (CDStruct_e83c9415)timeRange;
-- (id)renderFormat;
+- (id)renderFormat:(id)arg1;
 - (id)videoProps;
 - (id)copyMappedContext:(id)arg1;
 - (void)setRate:(double)arg1;
 - (void)prerollEnd;
 - (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
-- (id)angles;
+- (id)copyAngles;
 - (void)checkLocked;
 - (void)unlockSwitchables;
 - (void)lockSwitchables;

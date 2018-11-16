@@ -8,14 +8,20 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class FFProject, NSBox, NSButton, NSInvocation, NSMatrix, NSPopUpButton, NSString, NSTextField, NSView;
+@class FFLibrary, FFProject, NSBox, NSButton, NSInvocation, NSMatrix, NSPopUpButton, NSString, NSTextField, NSView;
 
 @interface FFAnchoredSequenceSettingsModule : FFSettingsModule <NSTextFieldDelegate>
 {
+    NSTextField *nameLabelTextField;
     NSTextField *nameTextField;
-    NSPopUpButton *defaultMediaEventMenu;
+    NSPopUpButton *locationMenu;
+    NSButton *alsoCreateNewProjectButton;
+    NSPopUpButton *mediaEventMenu;
     NSPopUpButton *videoFormatMenu;
     NSPopUpButton *videoSizeMenu;
+    NSView *videoCustomSizeView;
+    NSTextField *videoWidthField;
+    NSTextField *videoHeightField;
     NSPopUpButton *videoRateMenu;
     NSPopUpButton *renderFormatMenu;
     NSPopUpButton *sampleRateMenu;
@@ -29,8 +35,9 @@
     NSMatrix *audioModeMatrix;
     NSButton *timecodeDisplayDropFrame;
     NSTextField *startingTimecode;
+    NSView *locationGroup;
     NSView *customSettingsGroup;
-    NSView *defaultEventSettingsGroup;
+    NSView *mediaEventSettingsGroup;
     NSView *multiAngleAudioSyncSettingsGroup;
     NSView *multiAngleSettingsGroup;
     NSView *timecodeSettingsGroup;
@@ -39,7 +46,6 @@
     NSView *videoSettingsCustomControls;
     NSView *audioSettingsCustomControls;
     NSView *multiAngleSettingsCustomControls;
-    NSTextField *videoPropsSummaryField;
     NSTextField *commonVideoPropField;
     NSTextField *defaultAudioPropField;
     unsigned long long _videoSetPropertyMethod;
@@ -48,17 +54,22 @@
     BOOL _mixedTCTracksClockTime;
     BOOL _automaticBasedOnMostCommon;
     BOOL _createAutomatically;
+    BOOL _userModifySettings;
     FFProject *_project;
     NSInvocation *_completionCallback;
     NSString *_startTimeString;
+    FFLibrary *_defaultSelectedLibrary;
 }
 
 + (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 videoSetPropertyManually:(BOOL)arg9 audioSetPropertyManually:(BOOL)arg10 videoSetPropertyManuallyForCompoundClip:(BOOL)arg11 audioSetPropertyManuallyForCompoundClip:(BOOL)arg12 videoSetPropertyManuallyForMultiCam:(BOOL)arg13 audioSetPropertyManuallyForMultiCam:(BOOL)arg14 createAutomatically:(BOOL)arg15 createCompoundClipAutomatically:(BOOL)arg16 createMultiCamAutomatically:(BOOL)arg17 multiAngleSyncBy:(int)arg18 multiAngleArrangeBy:(int)arg19 multiAngleOrderBy:(int)arg20 multiAngleFineSyncByAudio:(BOOL)arg21;
+@property(retain, nonatomic) FFLibrary *defaultSelectedLibrary; // @synthesize defaultSelectedLibrary=_defaultSelectedLibrary;
 - (BOOL)validate:(id *)arg1;
 - (void)closingWithCode:(int)arg1;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;
 @property(nonatomic) long long audioChannelCount;
+- (BOOL)automaticAudioChannelCount;
 @property(nonatomic) long long audioSampleRate;
+- (BOOL)automaticAudioSampleRate;
 @property(nonatomic) NSString *renderFormat;
 - (void)changeStartingTimecode:(id)arg1;
 - (void)changeTimecodeDisplay:(id)arg1;
@@ -72,38 +83,53 @@
 - (void)setVideoManualSettingsHidden:(BOOL)arg1;
 - (void)setMultiAngleSettingsHidden:(BOOL)arg1;
 - (void)setMultiAngleAudioSyncSettingsHidden:(BOOL)arg1;
-- (void)setDefaultEventSettingsHidden:(BOOL)arg1;
+- (void)setMediaEventSettingsHidden:(BOOL)arg1;
+- (void)setLocationSettingsHidden:(BOOL)arg1;
 - (void)setCustomSettingsHidden:(BOOL)arg1;
 - (void)setAudioSettingsMode:(id)arg1;
 - (void)changeSetPropertyMethod:(id)arg1;
-- (void)changeDefaultMediaEvent:(id)arg1;
+- (BOOL)alsoCreateNewProject;
+- (void)changeAlsoCreateNewProject:(id)arg1;
+- (id)nameValue;
+- (id)selectedLibrary;
+- (void)changeLocation:(id)arg1;
+- (void)changeMediaEvent:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)viewWasInstalled;
 - (BOOL)loadView;
 - (void)_configCreationSettings;
 - (BOOL)createAutomatically;
 - (void)toggleCreationSettings;
+- (void)_validateEventNameForLibrary:(id)arg1;
 - (void)_buildRateMenuBasedOnCurrentRateAndFormatAndSize;
 - (void)_buildSizeMenuBasedOnCurrentRateAndFormat;
 - (void)_buildFormatMenuBasedOnCurrentRate;
 - (void)_buildRateMenuBasedOnFormatAndSize;
 - (void)_buildSizeMenuBasedOnFormat;
-- (void)_buildRateMenu;
+- (void)_buildRateMenuBasedOnFrameDuration;
+- (void)_buildProgressiveRateMenu;
 - (void)_buildFormatMenu;
 - (void)_updateStartTimeString;
 - (void)_updateTimecodeDisplay;
 - (void)_updateStartingTimecodeWithFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)_setStartingTimecode:(CDStruct_1b6d18a9)arg1 timeString:(id)arg2 frameDuration:(CDStruct_1b6d18a9)arg3;
 - (void)setMixedTCTracksClockTime:(BOOL)arg1;
+- (void)setUserModifySettings:(BOOL)arg1;
 - (void)setAutomaticBasedOnMostCommon:(BOOL)arg1;
 - (void)setForceToCustomizeVideoProperty:(BOOL)arg1;
 - (void)setCompletionCallback:(id)arg1;
 - (BOOL)inCreationMode;
+- (BOOL)isNewProject;
+- (BOOL)isNewEvent;
 - (BOOL)isEmptyProject;
+- (BOOL)editOldCompoundClipOrSynchronizedClip;
+- (BOOL)editCompoundClip;
+- (BOOL)editProjectSetting;
+- (BOOL)editMultiAngleClip;
 - (BOOL)createMultiAngleClip;
 - (BOOL)createCompoundClip;
-- (BOOL)isNewProject;
 - (void)setProject:(id)arg1;
 - (id)project;
-- (id)currentProjectSequence;
 - (id)sequence;
 - (id)providerObject;
 - (BOOL)modifySequenceSettings;

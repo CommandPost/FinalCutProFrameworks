@@ -6,10 +6,12 @@
 
 #import "NSProView.h"
 
-@class FFInspectorMetadataContentRow, NSMutableArray;
+#import "FFInspectorContainerViewProtocol.h"
+
+@class FFInspectorMetadataContentRow, NSMutableArray, NSMutableSet;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorMetadataContentView : NSProView
+@interface FFInspectorMetadataContentView : NSProView <FFInspectorContainerViewProtocol>
 {
     BOOL _isSyncingToData;
     long long _movedPostingDisableCount;
@@ -20,8 +22,10 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_contentRowList;
     FFInspectorMetadataContentRow *_bottomRow;
     FFInspectorMetadataContentRow *_draggedRow;
+    NSMutableSet *_appendedViews;
 }
 
+@property(retain) NSMutableSet *appendedViews; // @synthesize appendedViews=_appendedViews;
 @property(retain) FFInspectorMetadataContentRow *draggedRow; // @synthesize draggedRow=_draggedRow;
 @property(retain) FFInspectorMetadataContentRow *bottomRow; // @synthesize bottomRow=_bottomRow;
 @property(retain) NSMutableArray *contentRowList; // @synthesize contentRowList=_contentRowList;
@@ -34,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)dictASString:(id)arg1;
 - (id)arrayASString:(id)arg1;
 - (void)logMetaDefinitions;
+- (void)containedInspectorDidResize;
 - (void)syncRowsToData;
 - (void)addRow:(id)arg1;
 - (void)resetKeyViewLoop;
@@ -44,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)rearrangeRows:(id)arg1;
 - (BOOL)isContentRowView:(id)arg1;
 - (id)rowAtPoint:(struct CGPoint)arg1;
+- (void)appendView:(id)arg1;
 - (BOOL)isFlipped;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;

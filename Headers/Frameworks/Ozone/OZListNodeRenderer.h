@@ -6,9 +6,11 @@
 
 #import "NSObject.h"
 
+#import "OZRenderClient.h"
+
 @class NSImage;
 
-@interface OZListNodeRenderer : NSObject
+@interface OZListNodeRenderer : NSObject <OZRenderClient>
 {
     id <OZListController> _list;
     struct OZSceneNode *_renderNode;
@@ -18,6 +20,8 @@
     _Bool _used;
 }
 
+- (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
 - (void)_imageReady:(id)arg1;
 - (id)imageFor:(struct OZSceneNode *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2 scene:(struct OZScene *)arg3 view:(id)arg4;
 - (void)dirty;

@@ -9,12 +9,12 @@
 @class FFChannelChangeController, FFContext, FFEffectStack;
 
 @protocol FFEnhanceAudioDelegate <NSObject>
+- (FFChannelChangeController *)channelChangeController;
 
 @optional
 - (FFContext *)retrieveContext;
 - (void)analysisDidCancel:(FFEffectStack *)arg1;
 - (void)analysisDidComplete:(FFEffectStack *)arg1;
 - (void)analysisDidStart:(FFEffectStack *)arg1;
-- (FFChannelChangeController *)channelChangeController;
 @end
 

@@ -16,8 +16,8 @@
     Class _eventContextClass;
     NSMutableArray *_handlerStack;
     NSMutableDictionary *_exitPredicateMap;
-    TLKEventHandler *_temporaryHandler;
     TLKEventHandler *_potentialHandler;
+    TLKEventHandler *_currentPressHoldHandler;
     TLKEventContext *_potentialHandlerContext;
     NSArray *_rolloverDescriptions;
     NSView<TLKEventDispatcherView> *_view;
@@ -110,8 +110,11 @@
 - (void)draggingExited:(id)arg1;
 - (unsigned long long)draggingUpdated:(id)arg1;
 - (unsigned long long)draggingEntered:(id)arg1;
-- (BOOL)_endSnowLeopardWorkaroundForMissingDraggingEndedBug;
-- (void)_beginSnowLeopardWorkaroundForMissingDraggingEndedBug:(id)arg1;
+- (void)handleUndoHandlerOpenUndoScopeDetected;
+- (void)_cleanupDraggingEnded;
+- (BOOL)_removeDraggingEndedMonitor;
+- (BOOL)_endWorkaroundForMissingDraggingEndedBug;
+- (void)_beginWorkaroundForMissingDraggingEndedBug:(id)arg1;
 - (id)newCursorTrackingArea;
 - (void)updateCursor;
 - (BOOL)acceptsFirstResponder;
@@ -119,6 +122,7 @@
 - (void)beginGestureWithEvent:(id)arg1;
 - (void)swipeWithEvent:(id)arg1;
 - (void)rotateWithEvent:(id)arg1;
+- (void)smartMagnifyWithEvent:(id)arg1;
 - (void)magnifyWithEvent:(id)arg1;
 - (void)tabletProximity:(id)arg1;
 - (void)tabletPoint:(id)arg1;
@@ -142,6 +146,7 @@
 - (void)_delayMouseDown;
 - (void)_handleDelay:(id)arg1;
 - (void)_startWaitingForMouseDown;
+- (void)_cancelClickAndHold;
 - (void)_clearWaitingForMouseDown;
 - (id)eventDescriptionForIdentifier:(id)arg1;
 - (id)_handlerForEventDescription:(id)arg1;
@@ -172,8 +177,6 @@
 - (id)previousHandler;
 - (id)currentHandler;
 - (void)setCurrentHandler:(id)arg1;
-- (id)temporaryHandler;
-- (void)setTemporaryHandler:(id)arg1 exitPredicate:(id)arg2;
 - (void)_loadAllHandlers;
 - (id)handlers;
 - (id)handlerDescriptionForIdentifier:(id)arg1;
@@ -183,7 +186,7 @@
 - (void)removeEventHandlerWithIdentifier:(id)arg1;
 - (void)addTrackingHandlerWithIdentifier:(id)arg1 predicate:(id)arg2 options:(unsigned long long)arg3;
 - (void)resetState;
-- (id)debugDescription;
+- (id)description;
 - (void)dealloc;
 - (id)init;
 

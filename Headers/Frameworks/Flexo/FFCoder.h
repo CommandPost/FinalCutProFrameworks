@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)unarchiver:(id)arg1 didDecodeObject:(id)arg2;
 + (void)archiver:(id)arg1 didEncodeObject:(id)arg2;
 + (id)archiver:(id)arg1 willEncodeObject:(id)arg2;
 + (id)encodeData:(id)arg1 options:(id)arg2 error:(id *)arg3;

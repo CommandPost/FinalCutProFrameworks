@@ -6,21 +6,27 @@
 
 #import "LKTextField.h"
 
-@class FFAutoexpandingTextFieldImpl;
+@class FFAutoexpandingTextFieldImpl, NSTrackingArea;
 
 __attribute__((visibility("hidden")))
 @interface FFAutoexpandingTextField : LKTextField
 {
     FFAutoexpandingTextFieldImpl *_impl;
+    NSTrackingArea *_trackingArea;
+    BOOL _trackingIsOn;
 }
 
+@property(nonatomic) BOOL trackingIsOn; // @synthesize trackingIsOn=_trackingIsOn;
 @property(nonatomic) id <FFAutoexpandingTextFieldDelegate> autoexpandingDelegate;
 @property(nonatomic) BOOL autoresizesSuperview;
 - (void)textDidChange:(id)arg1;
 - (void)setObjectValue:(id)arg1;
 - (void)setStringValue:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
 - (BOOL)resignFirstResponder;
 - (BOOL)becomeFirstResponder;
+- (long long)themeVariant;
 - (void)dealloc;
 - (void)_init;
 - (id)initWithCoder:(id)arg1;

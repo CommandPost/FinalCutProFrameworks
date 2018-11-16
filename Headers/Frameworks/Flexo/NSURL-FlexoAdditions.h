@@ -7,6 +7,8 @@
 #import "NSURL.h"
 
 @interface NSURL (FlexoAdditions)
+- (BOOL)containsURL:(id)arg1;
+- (id)relativePathFromURL:(id)arg1;
 - (id)volumeName;
 - (id)volumePath;
 @end

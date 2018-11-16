@@ -8,9 +8,11 @@
 
 @interface TLKPrecisionEditorHandler : TLKTimelineHandler
 {
+    unsigned int _deselectMultipleEdgsOnExit;
 }
 
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (void)clickedOnBackgroundOfTimeline:(id)arg1;
 - (void)_exitPrecisionEditor:(id)arg1;
 - (void)_enterPrecisionEditorWithLeftItem:(id)arg1 rightItem:(id)arg2;
 - (void)_enterPrecisionEditorWithRightItem:(id)arg1;
@@ -25,13 +27,11 @@
 - (void)moveToLeadingEdge:(id)arg1;
 - (void)moveToEditPoint:(id)arg1;
 - (void)movePlayheadToCurrentPosition:(id)arg1;
-- (void)updateSkimming:(id)arg1;
 - (BOOL)shouldSkimItem:(id)arg1;
 - (void)cancel:(id)arg1;
-- (void)resumeHandling:(id)arg1;
-- (void)pauseHandling:(id)arg1;
 - (void)stopHandling:(id)arg1;
 - (void)startHandling:(id)arg1;
+- (void)applyConfiguration:(id)arg1;
 
 @end
 

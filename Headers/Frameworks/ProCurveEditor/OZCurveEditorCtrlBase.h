@@ -52,7 +52,7 @@
 - (void)setCurrentTool:(unsigned int)arg1;
 - (unsigned int)getCurrentTool;
 - (void)setCurveInterpolation:(id)arg1 interpolation:(unsigned int)arg2;
-- (void)getKeypoints:(unsigned int)arg1 keypoints:(void ***)arg2 number:(unsigned int *)arg3;
+- (vector_dd51e4ce)getKeypoints:(unsigned int)arg1;
 - (void)getSamples:(id)arg1 flag:(BOOL)arg2 minU:(CDStruct_1b6d18a9)arg3 resolution:(CDStruct_1b6d18a9)arg4 samplesU:(struct **)arg5 samplesV:(double **)arg6 number:(unsigned int *)arg7;
 - (void)setBezierPoint:(id)arg1;
 - (void)weightTangents:(id)arg1 flag:(BOOL)arg2;
@@ -165,7 +165,7 @@
 - (_Bool)snapshotChannels;
 - (id)getOGLView;
 - (id)appDelegate;
-- (id)createAppDelegate;
+- (id)allocAppDelegate;
 - (void)dealloc;
 - (id)init;
 

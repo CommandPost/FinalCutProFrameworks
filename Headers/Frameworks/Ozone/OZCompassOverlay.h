@@ -54,7 +54,7 @@
 - (BOOL)isActivePartClosestObjectPicked;
 - (BOOL)postRedisplayOnActivePartChange;
 - (id)getCursorWithEvent:(id)arg1;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)rightMouseUp:(id)arg1;
 - (void)rightMouseDragged:(id)arg1;
 - (void)rightMouseDown:(id)arg1;

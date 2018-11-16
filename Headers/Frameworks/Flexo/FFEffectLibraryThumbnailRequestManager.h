@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (id)segmentStoreRef;
 - (id)copyCachedImageForItem:(id)arg1;
 - (void)queueRequestForItem:(id)arg1;

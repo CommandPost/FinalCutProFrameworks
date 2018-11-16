@@ -8,7 +8,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface FFRollbackRecord : NSObject
 {
     NSMutableArray *_records;
@@ -16,12 +15,15 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) id delegate; // @synthesize delegate=_delegate;
+- (id)saveChangesWithBlock:(CDUnknownBlockType)arg1;
 - (id)saveChanges;
 - (id)rollbackChanges;
 - (id)_rollbackChanges;
 - (id)storeAnyStateChanges;
 - (void)setIntermediateEffect:(id)arg1 forAnchoredObject:(id)arg2;
 - (void)createRecordsForItems:(id)arg1;
+- (void)updateEffectsForRecords;
+- (void)updateEffectsForRecord:(id)arg1;
 - (id)_undoHandler;
 - (void)dealloc;
 - (id)init;

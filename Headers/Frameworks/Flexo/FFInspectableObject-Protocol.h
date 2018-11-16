@@ -10,6 +10,7 @@
 - (NSString *)inspectorClassName;
 
 @optional
+- (BOOL)isReferenceClip;
 - (BOOL)rebuildForOldTool:(Class)arg1 newTool:(Class)arg2;
 - (NSString *)videoInfoInspectorText;
 - (NSString *)audioInfoInspectorText;

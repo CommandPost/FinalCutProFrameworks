@@ -24,10 +24,11 @@ __attribute__((visibility("hidden")))
 - (void)setRole:(id)arg1;
 - (id)roles;
 - (void)_didChangeAudioComponentsLayoutMap:(id)arg1;
+- (id)copyWithDelegate:(id)arg1;
 - (void)demandAudioComponentSourceForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (id)newAudioComponentSourceForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (BOOL)hasEnabledLayoutItems;
-- (BOOL)isIntrinsicObjectLayoutForKey:(id)arg1;
+- (BOOL)isIntrinsicLayoutForKey:(id)arg1;
 - (BOOL)isIntrinsicObjectLayout:(id)arg1;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (CDStruct_bdcb2b0d)_audioMD5:(int)arg1 forLayout:(id)arg2;

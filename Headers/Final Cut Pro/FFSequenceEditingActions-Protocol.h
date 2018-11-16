@@ -11,6 +11,7 @@
 - (void)insertPlaceholder;
 - (void)freezeFrameWithPasteboard:(NSString *)arg1 backtimed:(BOOL)arg2 trackType:(NSString *)arg3;
 - (void)replaceWithPasteboard:(NSString *)arg1 replaceActionType:(int)arg2;
+- (void)anchorToMarkersWithPasteboard:(NSString *)arg1 backtimed:(BOOL)arg2 trackType:(NSString *)arg3;
 - (void)anchorWithPasteboard:(NSString *)arg1 backtimed:(BOOL)arg2 trackType:(NSString *)arg3;
 - (void)appendWithPasteboard:(NSString *)arg1 trackType:(NSString *)arg2;
 - (void)overwriteWithPasteboard:(NSString *)arg1 backtimed:(BOOL)arg2 trackType:(NSString *)arg3;

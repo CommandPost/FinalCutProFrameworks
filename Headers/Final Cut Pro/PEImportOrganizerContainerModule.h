@@ -15,6 +15,23 @@
     PEImportPlayerContainerModule *_importPlayerContainerModule;
 }
 
++ (void)radVolumeDidMount:(id)arg1;
++ (void)startObservingPTPDeviceNotification;
++ (void)startObservingiOSRADVolumeDidMountNotification;
++ (void)startObservingNSVolumeDidMountNotification;
++ (void)volumeDidMount:(id)arg1;
++ (void)importWindowWillStartClosing:(id)arg1;
++ (void)windowWillClose:(id)arg1;
++ (void)willBecomeActive;
++ (void)willResignActive;
++ (id)activeImportModule;
++ (BOOL)isImportingTape;
++ (void)shutdownTasks;
++ (void)startupTasks;
++ (id)importWindow;
++ (void)showImportPanelWithKeywords:(id)arg1 forEvent:(id)arg2;
++ (void)closeImportWindow;
++ (void)openImportWindowWithKeywords:(id)arg1 forEvent:(id)arg2;
 - (void)setNumericEntryShowsSubframes:(BOOL)arg1;
 - (void)setNumericEntryDirection:(long long)arg1;
 - (void)setNumericEntryType:(unsigned long long)arg1;
@@ -22,11 +39,13 @@
 - (void)numericEntryDidEnd;
 - (void)numericEntryWillBegin;
 - (void)revealMediaRangesInEvents:(id)arg1;
+- (void)showImportPanel:(id)arg1;
 - (void)importWindowWillStartClosing:(id)arg1;
 - (void)importWindowDidFinishOpening:(id)arg1;
 - (void)importWindowDidBecomeKey:(id)arg1;
 - (void)stopSkimmingForOwner:(id)arg1;
 - (struct CGSize)viewMinSize;
+- (void)organizerModule:(id)arg1 didSelectItems:(id)arg2;
 - (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 owner:(id)arg3;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 unloadingBlock:(CDUnknownBlockType)arg3;
@@ -35,9 +54,11 @@
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (BOOL)wantsHeaderBar;
+- (id)customContentSeparatorColorForState:(BOOL)arg1;
 - (Class)organizerModuleClass;
 - (void)dealloc;
 - (id)init;
+- (void)stopUsingMedia:(id)arg1;
 
 @end
 

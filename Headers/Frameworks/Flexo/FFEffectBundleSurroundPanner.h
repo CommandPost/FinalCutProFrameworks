@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 {
     FFAnchoredObject *m_object;
     BOOL m_defaultPartIsInMonoMode;
+    BOOL m_isInStereoMode;
+    BOOL m_isObserving;
 }
 
 + (void)unrigChannel:(id)arg1 inPanner:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
@@ -29,6 +31,9 @@ __attribute__((visibility("hidden")))
 - (id)bundlePartAtIndex:(int)arg1;
 - (id)presetNames;
 - (void)effectStackAnchoredObjectDidChange;
+- (void)effectWasRemovedFromStack;
+- (void)effectWasReloadedToStack;
+- (void)effectWasAddedToStack;
 - (void)setEffectStack:(id)arg1;
 - (void)_removeAnchoredObjectObserving;
 - (void)_addAnchoredObjectObserving;
@@ -41,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)channelByXMLName:(id)arg1;
 - (id)unriggedChannels;
 - (id)keyframeableChannels;
+- (void)_postInit:(id)arg1;
 - (void)dealloc;
 
 @end

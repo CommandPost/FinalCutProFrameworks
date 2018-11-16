@@ -6,7 +6,7 @@
 
 #import "LKViewModule.h"
 
-@class CALayer, CAShapeLayer, FFContext, LKBackgroundImageView, LKMenu, LKSegmentedControl, LKTextField, NSImageView, NSProThemeImageView, NSProView, PELCDProgressIndicator;
+@class CALayer, CAShapeLayer, FFContext, LKBackgroundImageView, LKMenu, LKSegmentedControl, LKTextField, NSImageView, NSProThemeImageView, NSProView, NSView, PELCDProgressIndicator;
 
 @interface PEToolbarModule : LKViewModule
 {
@@ -32,6 +32,7 @@
     LKSegmentedControl *_shareButton;
     NSProThemeImageView *_lcdImage;
     NSProThemeImageView *_lcdGlossImage;
+    NSView *_lcdBackgroundView;
     NSImageView *_progressFinished;
     NSImageView *_progressEmpty;
     NSImageView *_progressFilling;
@@ -56,6 +57,7 @@
     CALayer *_progressLayer;
     CAShapeLayer *_progressMaskLayer;
     double _currentProgress;
+    long long _lastProgressValueDrawn;
     long long _numericDirection;
     int _numericEntryType;
     BOOL _numericEntryInProgress;
@@ -65,6 +67,7 @@
 }
 
 + (id)tools;
+@property(readonly, nonatomic) LKSegmentedControl *importPalette; // @synthesize importPalette=_importPalette;
 @property(retain, nonatomic) FFContext *context; // @synthesize context=_context;
 - (void)toggleAudioCleanup:(id)arg1;
 - (void)shouldOpenAudioEnhance:(id)arg1;
@@ -93,40 +96,6 @@
 - (void)updatePlayheadTime:(id)arg1;
 - (void)setBackgroundProgress:(long long)arg1;
 - (void)updateProgressFillMaskToValue:(long long)arg1;
-- (void)shareDestinationPicker:(id)arg1;
-- (void)toggleRetimeEditor:(id)arg1;
-- (void)retimeTogglePreservesPitch:(id)arg1;
-- (void)retimeTurnOnOpticalFlow:(id)arg1;
-- (void)retimeTurnOnFrameBlending:(id)arg1;
-- (void)retimeTurnOnNearestNeighbor:(id)arg1;
-- (void)retimeTurnOnFloorFrameSampling:(id)arg1;
-- (void)retimeJumpCut:(id)arg1;
-- (void)retimeScratch:(id)arg1;
-- (void)retimeRewindx4:(id)arg1;
-- (void)retimeRewindx2:(id)arg1;
-- (void)retimeRewindx1:(id)arg1;
-- (void)retimeRewindWithSpeed:(double)arg1;
-- (void)retimeInstantReplay:(id)arg1;
-- (void)retimeSpeedRampFromZero:(id)arg1;
-- (void)retimeSpeedRampToZero:(id)arg1;
-- (void)applySpeedRampToZero:(BOOL)arg1 fromZero:(BOOL)arg2;
-- (void)retimeConformSpeed:(id)arg1;
-- (id)_conformRateArray:(id)arg1;
-- (void)retimeReset:(id)arg1;
-- (void)retimeHold:(id)arg1;
-- (void)retimeReverseClip:(id)arg1;
-- (void)retimeNormal:(id)arg1;
-- (void)retimeFastx20:(id)arg1;
-- (void)retimeFastx8:(id)arg1;
-- (void)retimeFastx4:(id)arg1;
-- (void)retimeFastx2:(id)arg1;
-- (void)retimeSlowTenPercent:(id)arg1;
-- (void)retimeSlowQuarter:(id)arg1;
-- (void)retimeSlowHalf:(id)arg1;
-- (void)applyRetimeSetRate:(double)arg1;
-- (void)toggleRetimeHUD:(id)arg1;
-- (void)showRetimeHUD:(id)arg1;
-- (void)toggleImportWindow:(id)arg1;
 - (void)setMediaBrowserButtonState:(BOOL)arg1;
 - (void)setMediaBrowserType:(int)arg1;
 - (void)hideMediaBrowser:(id)arg1;
@@ -139,7 +108,6 @@
 - (void)toggleBackgroundTasks:(id)arg1;
 - (void)toggleAudioMeters:(id)arg1;
 - (void)editStyles:(id)arg1;
-- (void)appendEdit:(id)arg1;
 - (void)sendFullScreen:(id)arg1;
 - (void)toggleInspectorModule:(id)arg1;
 - (void)updateInspectorButtonState;
@@ -155,21 +123,6 @@
 - (void)avEditModeBoth:(id)arg1;
 - (void)toggleAltModule:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
-- (BOOL)_retimeInForwardState;
-- (BOOL)_retimeEditorAlreadyOpen;
-- (long long)_retimeOpticalFlowState;
-- (long long)_retimeFrameBlendingState;
-- (long long)_retimeNearestNeighborState;
-- (long long)_retimeFloorFrameSamplingState;
-- (BOOL)_canResetClip;
-- (BOOL)_canReverseClip;
-- (id)_objectToRetimeWithRange:(CDStruct_5c5366e1 *)arg1;
-- (id)_objectsAndRangesToRetime;
-- (id)_objectsAndRangesToRetimeFromRangeSelection;
-- (id)_objectsAndRangesToRetimeFromItemSelection;
-- (id)_objectsFromObjectsAndRanges:(id)arg1;
-- (BOOL)_canRetimeObject:(id)arg1;
-- (id)_timelineModule;
 - (void)activeToolChanged:(id)arg1;
 - (void)selectToolZoom:(id)arg1;
 - (void)selectToolHand:(id)arg1;

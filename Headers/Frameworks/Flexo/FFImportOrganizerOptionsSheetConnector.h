@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) id importOptionsSheet; // @synthesize importOptionsSheet=_importOptionsSheet;
-- (void)dealloc;
 - (id)init;
 
 @end

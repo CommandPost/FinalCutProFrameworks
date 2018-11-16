@@ -75,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)oscCursorDidChange:(id)arg1;
 - (void)activeToolDidChange:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
+- (id)_imageFromGLPixels;
 - (BOOL)isDrawingEnabled;
 - (void)setDrawingEnabled:(BOOL)arg1;
 - (struct CGRect)bounds;
@@ -100,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)acceptsFirstResponder;
 - (void)dealloc;
 - (void)awakeFromNib;
+- (id)makeBackingLayer;
 - (id)_playerVideoModule;
 - (void)_setPlayerVideoModule:(id)arg1;
 - (BOOL)isTextOSCActive;

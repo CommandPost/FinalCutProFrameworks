@@ -26,7 +26,7 @@
     LKViewModule *_representedModule;
     NSString *_title;
     id _relatedView;
-    long long _revealStyle;
+    unsigned long long _revealStyle;
     unsigned int _userResizableOnly:1;
     unsigned int _allowSeamDragging:1;
     unsigned int _isPlaceholder:1;
@@ -34,7 +34,7 @@
     unsigned int _isShowing:1;
 }
 
-@property long long revealStyle; // @synthesize revealStyle=_revealStyle;
+@property unsigned long long revealStyle; // @synthesize revealStyle=_revealStyle;
 @property id relatedView; // @synthesize relatedView=_relatedView;
 @property LKViewModule *representedModule; // @synthesize representedModule=_representedModule;
 @property double proportion; // @synthesize proportion=_proportion;
@@ -61,6 +61,7 @@
 @property BOOL isHiding;
 @property BOOL userResizableOnly;
 - (void)syncWithDict:(id)arg1;
+@property(readonly) double seamDraggingThickness;
 @property(readonly) double dividerThickness;
 - (void)print;
 - (void)insertSubNode:(id)arg1 atIndex:(int)arg2;

@@ -6,13 +6,16 @@
 
 #import <TLKit/TLKAnchorLayer.h>
 
-@class TLKAnchorHeadLayer;
+@class TLKAnchorHeadLayer, TLKAnchorTailLayer;
 
 @interface TLKAnchorBodyLayer : TLKAnchorLayer
 {
     TLKAnchorHeadLayer *_headLayer;
+    TLKAnchorTailLayer *_tailLayer;
 }
 
+- (id)anchorTailLayer;
+- (void)setAnchorTailLayer:(id)arg1;
 - (id)anchorHeadLayer;
 - (void)setAnchorHeadLayer:(id)arg1;
 - (void)setAnchorDirection:(int)arg1;

@@ -4,12 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKSelectionLayer.h>
+#import <TLKit/TLKAbstractItemSelectionLayer.h>
 
-@interface TLKItemSelectionLayer : TLKSelectionLayer
+@class TLKSelectionLayer;
+
+@interface TLKItemSelectionLayer : TLKAbstractItemSelectionLayer
 {
+    TLKSelectionLayer *_selectionLayer;
 }
 
+- (id)trailingEdgeHandle;
+- (id)leadingEdgeHandle;
+- (int)displayMode;
+- (void)setDisplayMode:(int)arg1;
+@property BOOL containingViewFirstResponder;
 - (id)init;
 
 @end

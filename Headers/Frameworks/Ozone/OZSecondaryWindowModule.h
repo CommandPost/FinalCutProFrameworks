@@ -27,11 +27,12 @@
 - (void)takeContentLayoutFromDictionary:(id)arg1;
 - (id)contentLayoutDictionary;
 - (void)viewDidLoad;
-- (void)_setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
+- (void)_setFullscreen:(BOOL)arg1;
 - (void)screenParametersChanged:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)containerModule:(id)arg1 willAddViewOfSubmodule:(id)arg2 inContext:(id)arg3;
+- (id)windowTitle;
 
 @end
 

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
+- (id)initWithDisplaynameAndRange:(id)arg1 range:(CDStruct_e83c9415)arg2;
 - (id)trackType;
 - (id)type;
 

@@ -13,8 +13,8 @@
     FFSharedLock *_sharedLock;
     FFUndoHandler *_undoHandler;
     DSBridge *_bridge;
-    int _commitWhenPossible;
-    BOOL _needsSync;
+    int _asyncSaves;
+    int _actionLevel;
     BOOL _appIsShuttingDown;
 }
 
@@ -25,16 +25,19 @@
 + (id)newCatalogWithURL:(id)arg1 error:(id *)arg2;
 - (void)DSBridgeDidRollback:(id)arg1;
 - (void)DSBridgeWillRollback:(id)arg1;
+- (void)DSBridgeDidSave:(id)arg1 error:(id)arg2;
+- (void)DSBridgeWillSave:(id)arg1;
 - (BOOL)transactionEnd:(int)arg1 error:(id *)arg2;
 - (void)transactionBegin;
+- (void)transactionEndUndoRedo;
+- (void)transactionBeginUndoRedo;
 - (id)undoHandler;
 - (BOOL)bringUpToDate:(id *)arg1;
 - (BOOL)sync:(id *)arg1;
 - (BOOL)saveCatalog:(id *)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)applicationWillTerminate:(id)arg1;
-- (void)save:(id)arg1;
-- (BOOL)wantsCommit;
-- (BOOL)wantsSync;
+- (id)outputQueue;
+- (BOOL)savePending;
 - (BOOL)hasChanges;
 - (BOOL)hasLock;
 - (id)objectFromID:(id)arg1 store:(id)arg2;
@@ -45,8 +48,8 @@
 - (BOOL)removeStore:(id)arg1 error:(id *)arg2;
 - (id)addStore:(id)arg1 validate:(BOOL)arg2 error:(id *)arg3;
 - (id)addStore:(id)arg1 error:(id *)arg2;
-- (id)storesByURL;
-- (void)commitWhenPossible;
+- (id)storeForURL:(id)arg1;
+- (id)stores;
 - (void)DSBridge:(id)arg1 changed:(id)arg2;
 - (id)DSBridge;
 - (void)unlock;

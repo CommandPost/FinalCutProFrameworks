@@ -6,7 +6,7 @@
 
 #import <Flexo/FFResponderLayer.h>
 
-@class CALayer, CHChannel, FFFilmstripSelectionLayer, FFNUpDisplay, FFRetimeEditorSelection, FFRetimingEffect, FFSpeedLayer, NSImage, NSMutableArray, NSProThemeFacet, NSString, TLKItemLayer;
+@class CALayer, CHChannel, FFFilmstripSelectionLayer, FFNUpDisplay, FFRetimeEditorSelection, FFRetimingEffect, FFSpeedLayer, NSImage, NSMutableArray, NSProThemeFacet, NSString, TLKItemLayer, TLKThemeBackedLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFRetimeEditorLayer : FFResponderLayer
@@ -15,33 +15,43 @@ __attribute__((visibility("hidden")))
     FFSpeedLayer *_speedLayer;
     NSMutableArray *_mtKeyHandleLayers;
     NSMutableArray *_ctKeyHandleLayers;
+    NSMutableArray *_transitionLayers;
     int _speedLayerHeight;
     float _grabberWidth;
     float _grabberHeight;
-    NSMutableArray *_keyPairXpositions;
+    NSMutableArray *_keyHandlePositions;
     id _item;
     struct CGRect _itemRect;
     id _module;
     struct NSObject *_skimmable;
     FFRetimingEffect *_retimeEffect;
     CHChannel *_retimeChannel;
+    CHChannel *_retimeInterpolationChannel;
     CDStruct_e83c9415 _retimedRange;
     CDStruct_1b6d18a9 _mouseDownComponentTime;
     CDStruct_1b6d18a9 _mouseDownComponentTimeBefore;
     CDStruct_1b6d18a9 _mouseDownComponentTimeAfter;
     CDStruct_1b6d18a9 _mouseDownDuration;
-    CDStruct_1b6d18a9 _transitionDuration;
+    CDStruct_1b6d18a9 _clipTransitionDuration;
     CDStruct_1b6d18a9 _containerFrameDuration;
     int _activeHandle;
     TLKItemLayer *_itemLayer;
     int _startThumbnailIdx;
     int _endThumbnailIdx;
     BOOL _isMouseDown;
+    CDStruct_e83c9415 _speedTransitionAdjustableRange;
+    CDStruct_e83c9415 _speedTransitionConstrainedRange;
+    CDStruct_e83c9415 _speedTransitionRangeAtMouseDown;
     NSProThemeFacet *_segmentGrabberFacet;
     NSProThemeFacet *_sourcePickerFacet;
+    NSProThemeFacet *_anchorFacet;
     NSImage *_grabberImage;
     NSImage *_grabberRolloverImage;
+    NSImage *_grabberPressedImage;
     NSImage *_sourcePickerImage;
+    NSImage *_sourcePickerRolloverImage;
+    NSImage *_sourcePickerPressedImage;
+    NSImage *_anchorImage;
     FFRetimeEditorSelection *_selection;
     FFFilmstripSelectionLayer *_selectionLayer;
     struct CGRect _selectionFrame;
@@ -61,6 +71,7 @@ __attribute__((visibility("hidden")))
     CALayer *_beforeSegmentImageAudioLayer;
     struct CGImage *_videoImage;
     struct CGImage *_audioImage;
+    TLKThemeBackedLayer *_retimeBadgeLayer;
     double _mouseDownKeyPos;
     float _dragOffset;
     struct CGPoint _mouseDownLocation;
@@ -68,14 +79,23 @@ __attribute__((visibility("hidden")))
     double _lastSuccessfullMediaTime;
 }
 
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
 - (void)updateLayout:(id)arg1;
+- (BOOL)setTransitionFallOffsAtKey:(unsigned int)arg1 leftFallOff:(double)arg2 rightFallOff:(double)arg3;
 - (BOOL)moveComponentTimeKey:(unsigned int)arg1 deltaTime:(CDStruct_1b6d18a9)arg2 event:(id)arg3;
 - (BOOL)moveMediaTimeKey:(unsigned int)arg1 toTime:(double)arg2 event:(id)arg3;
 - (void)_adjustAfterRetime;
+- (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
 - (id)cursorAtPoint:(struct CGPoint)arg1 event:(id)arg2;
 - (BOOL)shouldAutoscroll:(id)arg1;
 - (void)resignFocusOwner;
 - (void)becomeFocusOwner;
+- (id)hitTest:(struct CGPoint)arg1;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)mouseMoved:(id)arg1;
 - (BOOL)mouseEntered:(id)arg1;
@@ -91,12 +111,21 @@ __attribute__((visibility("hidden")))
 - (void)_createChangeSourceFrameLayersForFilmStripLayer:(id)arg1 forVideo:(BOOL)arg2 mouseLocation:(struct CGPoint)arg3;
 - (void)_createSquishyLayersForFilmStripLayer:(id)arg1 forVideo:(BOOL)arg2 mouseLocation:(struct CGPoint)arg3;
 - (void)hitCheck:(struct CGPoint)arg1;
-- (void)showEndSourceFramePicker:(int)arg1;
+- (void)toggleEndSourceFramePicker:(int)arg1;
 - (void)updateTimelineSelection:(int)arg1;
-- (void)updateKeyPairs;
+- (void)updateSpeedTransitionLayers;
+- (void *)_keyframeAtIndex:(int)arg1;
+- (void)updateKeyHandles;
 - (void)updateSpeedLayer;
 - (void)updateTimeRange;
+- (BOOL)includeTransition;
 - (void)_computeRetimedRangeClippedByTransition:(CDStruct_e83c9415 *)arg1 includingTransition:(CDStruct_e83c9415 *)arg2;
+- (void)openRetimeEditorForSegment:(int)arg1;
+- (void)commitSourceChangeForSegment:(unsigned long long)arg1;
+- (void)commitSpeedChangeForSegment:(unsigned long long)arg1;
+- (id)ctKeyHandleLayers;
+- (id)mtKeyHandleLayers;
+- (id)speedLayer;
 - (void)layoutSublayers;
 - (void)_retrieveTimelineItemLayer;
 - (void)dealloc;

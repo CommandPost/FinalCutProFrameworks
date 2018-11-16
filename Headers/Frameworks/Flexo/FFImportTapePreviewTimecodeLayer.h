@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)layerWithFrame:(struct CGRect)arg1 superlayer:(id)arg2;
+@property(readonly, nonatomic) CATextLayer *timecodeTextLayer; // @synthesize timecodeTextLayer=_timecodeTextLayer;
+@property(readonly, nonatomic) CATextLayer *statusTextLayer; // @synthesize statusTextLayer=_statusTextLayer;
 @property(nonatomic) long long elapsedSeconds; // @synthesize elapsedSeconds=_elapsedSeconds;
 @property(nonatomic) int importProcessingType; // @synthesize importProcessingType=_importProcessingType;
 @property(nonatomic) long long iSightStatus; // @synthesize iSightStatus=_iSightStatus;

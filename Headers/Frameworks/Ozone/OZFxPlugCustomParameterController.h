@@ -4,21 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "OZViewController.h"
+#import "OZViewControllerGroup.h"
 
 @class OZAnimIndicator, PIParameterPulldown;
 
-@interface OZFxPlugCustomParameterController : OZViewController
+@interface OZFxPlugCustomParameterController : OZViewControllerGroup
 {
     OZAnimIndicator *_pAnim;
     PIParameterPulldown *_pParamPulldown;
 }
 
-- (void)disable;
-- (void)enable;
 - (void)update;
-- (void)dealloc;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 andView:(id)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

@@ -6,28 +6,15 @@
 
 #import "NSProPreferencesModule.h"
 
-@class LKButton, LKPopUpButton, NSBox, NSProSegmentedScrubber, NSProView;
+@class LKPopUpButton;
 
 @interface PEAppEditingPreferencesModule : NSProPreferencesModule
 {
-    LKPopUpButton *formatPopUp;
-    NSBox *configurationBox;
-    NSProView *HMSFConfigurationView;
-    LKButton *HMSF24HourRolloverCheckbox;
-    NSProView *secondsConfigurationView;
-    NSProSegmentedScrubber *secondsDecimalPlacesField;
     LKPopUpButton *pixelsOrPercentagePopup;
 }
 
-+ (id)newFormatter;
-- (void)_configureTimecodeFormatter:(id)arg1 forFormat:(long long)arg2;
-- (void)_installConfigurationViewForFormat:(long long)arg1;
 - (void)pixelsOrPercentage:(id)arg1;
-- (void)resetDialogWarnings:(id)arg1;
-- (void)changeTimeFormatParameter:(id)arg1;
 - (id)titleForIdentifier:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
 - (void)moduleWasInstalled;
 - (BOOL)isResizable;
 

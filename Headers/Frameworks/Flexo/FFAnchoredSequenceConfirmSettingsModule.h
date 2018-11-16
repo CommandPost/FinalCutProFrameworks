@@ -12,10 +12,13 @@ __attribute__((visibility("hidden")))
 @interface FFAnchoredSequenceConfirmSettingsModule : FFAnchoredSequenceSettingsModule
 {
     FFVideoFormat *_bestGuess;
+    struct CGSize _clipSize;
 }
 
 - (void)closingWithCode:(int)arg1;
 - (BOOL)loadView;
+- (void)changeVideoFormat:(id)arg1;
+- (void)setClipSize:(struct CGSize)arg1;
 - (void)setBestGuess:(id)arg1;
 - (BOOL)isEmptyProject;
 - (BOOL)manuallySetProperty;

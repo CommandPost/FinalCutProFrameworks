@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)pixelTransformToField2ForQuality:(int)arg1;
 - (id)pixelTransformToField1ForQuality:(int)arg1;
 - (id)pixelTransformToFrameForQuality:(int)arg1;
-- (id)renderFormat;
+- (id)renderFormat:(id)arg1;
 - (id)videoProps;
 - (id)anchoredObject;
 

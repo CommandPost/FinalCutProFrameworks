@@ -4,14 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import <Flexo/FFResponderLayer.h>
 
-@class CATextLayer, LKTextField, NSProThemeFacet, NSString, TLKThemeBackedLayer;
+@class CALayer, CATextLayer, LKTextField, NSProThemeFacet, NSString, TLKThemeBackedLayer;
 
 __attribute__((visibility("hidden")))
-@interface FFSpeedSegmentLayer : CALayer
+@interface FFSpeedSegmentLayer : FFResponderLayer
 {
     id _item;
+    id _module;
     int _globalIndex;
     int _visibleIndex;
     CDStruct_e83c9415 _timeRange;
@@ -26,12 +27,20 @@ __attribute__((visibility("hidden")))
     TLKThemeBackedLayer *_backgroundLayer;
     TLKThemeBackedLayer *_patternLayer;
     TLKThemeBackedLayer *_menuIndicatorLayer;
+    TLKThemeBackedLayer *_mascotLayer;
     struct CGRect _rect;
+    struct CGRect _itemRect;
     struct CGRect _visibleRect;
     BOOL _lastSegment;
     int _keyframeWidth;
     BOOL _active;
     BOOL _showGrabber;
+    BOOL _showSmoothEndTransitionMenu;
+    NSProThemeFacet *_rabbitFacet;
+    NSProThemeFacet *_tortoiseFacet;
+    NSProThemeFacet *_reverseRabbitFacet;
+    NSProThemeFacet *_reverseTortoiseFacet;
+    NSProThemeFacet *_reverseFacet;
     NSProThemeFacet *_normalSpeedFacet;
     NSProThemeFacet *_slowSpeedFacet;
     NSProThemeFacet *_fastSpeedFacet;
@@ -57,8 +66,29 @@ __attribute__((visibility("hidden")))
     struct CGSize _reversePatternSize;
     float _grabberWidth;
     float _menuIndicatorWidth;
+    CALayer *_controlTrackLayer;
 }
 
+- (void)syntheticUIElement:(id)arg1 performAction:(id)arg2;
+- (id)syntheticUIElementActions:(id)arg1;
+- (void)syntheticUIElement:(id)arg1 setValue:(id)arg2 forAttribute:(id)arg3;
+- (BOOL)syntheticUIElement:(id)arg1 isAttributeSettable:(id)arg2;
+- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
+- (id)syntheticUIElementAttributeNames:(id)arg1;
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (id)_accessibilityChildren;
+- (struct CGRect)proposedAccessibilityScreenRect;
+- (id)_sourceHandleElement;
+- (id)_sourceHandleLayer;
+- (id)_speedHandleElement;
+- (id)_speedHandleLayer;
+- (id)_mascotElement;
+- (id)_controlTrackElement;
+- (id)hitTest:(struct CGPoint)arg1;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)segmentMenu;
 - (void)_buildReverseMenuItems:(id)arg1;
@@ -72,12 +102,20 @@ __attribute__((visibility("hidden")))
 - (void)applyReverseQuarterSpeed:(id)arg1;
 - (void)applyReverseHalfSpeed:(id)arg1;
 - (void)applyReverseNormalSpeed:(id)arg1;
+- (void)_buildSmoothEndTransitionMenuItem:(id)arg1;
+- (BOOL)isHoldSegment;
+- (BOOL)smoothEndTransitionPossible;
+- (BOOL)smoothEndTransition;
+- (BOOL)smoothTransitionInterpolation;
+- (void)toggleSmoothEndTransition:(id)arg1;
 - (void)_buildChangeEndSourceFrameMenuItems:(id)arg1;
-- (void)showEndSourceFramePicker:(id)arg1;
+- (void)toggleEndSourceFramePicker:(id)arg1;
 - (id)_retimeEditorLayer;
+- (void)_buildCustomMenuItem:(id)arg1;
 - (void)_buildForwardMenuItems:(id)arg1;
 - (void)_buildSlowMotionMenuItem:(id)arg1;
 - (void)_buildFastForwardMenuItem:(id)arg1;
+- (void)applyCustom:(id)arg1;
 - (void)apply20xSpeed:(id)arg1;
 - (void)applyEightTimesSpeed:(id)arg1;
 - (void)applyFourTimesSpeed:(id)arg1;
@@ -88,6 +126,7 @@ __attribute__((visibility("hidden")))
 - (void)applyNormalSpeed:(id)arg1;
 - (void)applySetRatePreset:(double)arg1;
 - (void)layoutSublayers;
+- (void)updateItemRect:(struct CGRect)arg1;
 - (struct CGRect)visibleRect;
 - (void)setVisibleRect:(struct CGRect)arg1;
 - (struct CGRect)rect;
@@ -106,17 +145,19 @@ __attribute__((visibility("hidden")))
 - (double)speedValue;
 - (void)deselectSpeedLabel;
 - (void)selectSpeedLabel;
-- (void)finishChangeSpeed:(id)arg1;
-- (void)beginChangeSpeed:(id)arg1 timelinePoint:(struct CGPoint)arg2 pointInLayer:(struct CGPoint)arg3;
 - (BOOL)isSelected;
 - (id)menuIndicatorLayer;
 - (BOOL)pointInMenuIndicatorRect:(struct CGPoint)arg1;
 - (BOOL)pointInSpeedLabelRect:(struct CGPoint)arg1;
+- (void)setShowSmoothEndTransitionMenu:(BOOL)arg1;
+- (BOOL)showSmoothEndTransitionMenu;
 - (void)setShowGrabber:(BOOL)arg1;
 - (BOOL)showGrabber;
+- (BOOL)mascotLayerHidden;
+- (float)mascotLayerWidth;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (void)dealloc;
-- (id)initWithItem:(id)arg1 rect:(struct CGRect)arg2 module:(id)arg3 globalIndex:(int)arg4 visibleIndex:(int)arg5 lastSegment:(BOOL)arg6;
+- (id)initWithItem:(id)arg1 rect:(struct CGRect)arg2 itemRect:(struct CGRect)arg3 module:(id)arg4 globalIndex:(int)arg5 visibleIndex:(int)arg6 lastSegment:(BOOL)arg7;
 
 @end
 

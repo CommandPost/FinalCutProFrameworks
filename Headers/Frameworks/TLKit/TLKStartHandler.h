@@ -8,7 +8,6 @@
 
 @interface TLKStartHandler : TLKTimelineHandler
 {
-    double _cumulativeMagnifyDelta;
 }
 
 - (BOOL)respondsToSelector:(SEL)arg1;

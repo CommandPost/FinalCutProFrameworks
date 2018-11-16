@@ -69,7 +69,9 @@
 @property(retain) NSMutableArray *metadataArray; // @synthesize metadataArray=_metadataArray;
 @property(retain) NSMutableDictionary *customMetadata; // @synthesize customMetadata=_customMetadata;
 - (id).cxx_construct;
+- (BOOL)isiOSClip;
 - (id)__pluginUUID;
+- (id)uti;
 - (BOOL)enableScrubber;
 - (BOOL)limitedPlayback;
 - (BOOL)stereoMixDown;

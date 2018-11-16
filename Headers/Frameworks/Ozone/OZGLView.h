@@ -29,6 +29,7 @@
 - (void)postRedisplay;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)reshape;
+- (void)initializeVirtualScreen;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

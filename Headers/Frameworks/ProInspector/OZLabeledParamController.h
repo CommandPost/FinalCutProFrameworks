@@ -35,6 +35,7 @@
 - (void)registerMouseInObserversForView:(id)arg1;
 - (id)labelView;
 - (id)paramView;
+- (BOOL)isMouseInLabelView:(id)arg1;
 - (void)flippedView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
 - (void)setIsAutosizing:(BOOL)arg1;
 - (id)paramController;
@@ -46,6 +47,7 @@
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (void)update;
 - (void)dealloc;
+- (void)setupFlippedViewWithChan:(struct OZChannelBase *)arg1;
 - (id)initWithLabelController:(id)arg1 withParamController:(id)arg2 context:(id)arg3;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)setLabelController:(id)arg1 paramController:(id)arg2;

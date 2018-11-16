@@ -11,6 +11,7 @@
     CALayer *_rootLayer;
 }
 
+- (void)setPosition:(struct CGPoint)arg1;
 - (void)setDelegate:(id)arg1;
 - (id)init;
 

@@ -13,19 +13,17 @@
     PCVector3_457fd1f0 _delta;
     PCVector3_457fd1f0 _pivot;
     struct POMove3DOSC *_pos3Dtool;
-    PCPtr_df275998 _centerTexture;
     BOOL _moving;
 }
 
 - (id).cxx_construct;
-- (void).cxx_destruct;
 - (BOOL)postRedisplayOnActivePartChange;
 - (void)draw;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
 - (BOOL)isDependentOnBounds;
 - (void)drawOutline;
 - (void)movePivot:(const PCVector3_457fd1f0 *)arg1;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;

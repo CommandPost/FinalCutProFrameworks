@@ -21,6 +21,7 @@
     BOOL _didDrag;
     BOOL _isMouseDown;
     BOOL _isInFocusedPane;
+    BOOL _isIgnoringMouseEvents;
     BOOL _isPrimarySeparatorEnabled;
     BOOL _isSecondarySeparatorEnabled;
     struct CGPoint _downLocation;

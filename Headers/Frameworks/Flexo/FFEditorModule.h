@@ -6,18 +6,28 @@
 
 #import "LKViewModule.h"
 
-@class FFContext, FFProvider, NSMutableArray;
+#import "FFEditActionDestinationProtocol.h"
 
-@interface FFEditorModule : LKViewModule
+@class FFContext, FFProvider, FFRenderStateTracker, NSMutableArray;
+
+@interface FFEditorModule : LKViewModule <FFEditActionDestinationProtocol>
 {
     FFContext *_context;
     BOOL _showsStoryOutline;
     NSMutableArray *_history;
     unsigned long long _activeIndex;
     BOOL _movingDeeper;
+    FFRenderStateTracker *_renderStateTracker;
 }
 
+@property(readonly) FFRenderStateTracker *renderStateTracker; // @synthesize renderStateTracker=_renderStateTracker;
 @property(nonatomic) BOOL showsStoryOutline; // @synthesize showsStoryOutline=_showsStoryOutline;
+- (struct CGRect)animationEndRectForEditAction:(id)arg1 pasteboardName:(id)arg2;
+- (void)performEditAction:(id)arg1 fromPasteboardWithName:(id)arg2 fromAnimation:(BOOL)arg3;
+- (BOOL)canPerformEditAction:(id)arg1 withData:(id)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)registerForRenderTrackingAndBGRender;
+- (void)unregisterForRenderTrackingAndBGRender;
 - (BOOL)hasSelection;
 - (BOOL)movingDeeper;
 - (id)sequence;
@@ -29,6 +39,7 @@
 - (void)gotoNextRootItem:(id)arg1;
 - (void)gotoPreviousRootItem:(id)arg1;
 - (void)validateHistory:(id)arg1;
+- (void)_projectChanged:(id)arg1;
 - (BOOL)canNavigateToRootItem:(BOOL)arg1;
 - (void)pushRootItem:(id)arg1;
 - (id)rootContainerForActiveItem;
@@ -36,7 +47,7 @@
 - (void)activeRootItemWillChange;
 - (id)nextRootItems;
 - (id)previousRootItems;
-- (id)rootItemsHeirarchy;
+- (id)rootItemsHierarchy;
 - (id)rootItems;
 - (id)currentItemInfo;
 - (void)setCurrentItemInfo:(id)arg1;

@@ -15,7 +15,6 @@
 - (void)mouseDown:(id)arg1;
 - (void)_takeColorFromTransientColorPicker:(id)arg1;
 - (void)awakeFromNib;
-- (void)popUpTransientColorPickerWithStyle:(unsigned long long)arg1 atLocation:(struct CGPoint)arg2;
 - (BOOL)acceptEvents;
 - (void)setAcceptsEvents:(BOOL)arg1;
 - (BOOL)hasAlpha;

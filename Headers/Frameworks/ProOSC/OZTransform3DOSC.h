@@ -26,7 +26,7 @@
 - (BOOL)postRedisplayOnActivePartChange;
 - (BOOL)acceptPassiveEvent:(id)arg1;
 - (struct CGRect)getBounds;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;

@@ -28,7 +28,7 @@
 - (void)setShouldDoMenu:(BOOL)arg1;
 - (void)setViewController:(id)arg1;
 - (void)dealloc;
-- (id)initTextCell:(id)arg1 isHUD:(BOOL)arg2 animStatusCellClass:(Class)arg3;
+- (id)initTextCell:(id)arg1 isHUD:(BOOL)arg2 animStatusCellClass:(Class)arg3 context:(id)arg4;
 
 @end
 

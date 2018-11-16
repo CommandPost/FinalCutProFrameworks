@@ -11,7 +11,7 @@
     struct OZDocument *_pDocument;
 }
 
-- (id)createAppDelegate;
+- (id)allocAppDelegate;
 - (id)initWithView:(id)arg1 andChannel:(struct OZChannelBase *)arg2;
 
 @end

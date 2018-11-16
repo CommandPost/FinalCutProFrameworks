@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSLock *_subRangeInfosLock;
     NSMutableArray *_cachedSubrangeInfos;
     NSMutableArray *_failedSubRangeInfos;
+    NSMutableArray *_cachedSimplifiesInfo;
     CDStruct_bdcb2b0d _cacheChannelMD5;
 }
 
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)nativeVideoProps;
 - (double)preferredScaleFactorForQuality:(int)arg1;
 - (id)getPassThruAtTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
+- (id)getPassThruStringAtTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
 - (struct CGRect)_calcOpaqueBoundsForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)deepDescription;
 - (id)deepDescriptionWithIndent:(long long)arg1;
@@ -42,7 +44,8 @@ __attribute__((visibility("hidden")))
 - (id)_newPassThroughInfo:(id)arg1 passthruOffset:(CDStruct_1b6d18a9)arg2 sd:(CDStruct_1b6d18a9)arg3 atTime:(CDStruct_1b6d18a9)arg4 costSubSegment:(const CDStruct_e83c9415 *)arg5 context:(id)arg6;
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)_newSubRangeForTooDeepEffect:(long long)arg1;
-- (long long)_updateEffectDepth:(long long)arg1;
+- (long long)_updateEffectDepth:(long long)arg1 withMutableData:(id)arg2;
+- (id)_getEffectDepthPtr;
 - (void)_addInfoToCache:(id)arg1 forSD:(const CDStruct_1b6d18a9 *)arg2 atTime:(const CDStruct_1b6d18a9 *)arg3 context:(id)arg4 successArray:(id)arg5 failureArray:(id)arg6;
 - (id)_copySubRangeCachedInfoForSD:(const CDStruct_1b6d18a9 *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2 context:(id)arg3 retFailedRequest:(_Bool *)arg4 retCacheArray:(id *)arg5 retFailedRequestArray:(id *)arg6;
 - (_Bool)_validSubRangeTimeRequest:(CDStruct_1b6d18a9)arg1;

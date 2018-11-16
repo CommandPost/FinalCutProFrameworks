@@ -47,6 +47,7 @@
 - (void)flagsChanged:(id)arg1;
 - (BOOL)stopTracking:(id)arg1;
 - (void)cancelTracking:(id)arg1;
+- (void)autoscrollWithChange:(struct CGRect)arg1 andAfter:(struct CGRect)arg2;
 - (BOOL)shouldAutoscroll:(id)arg1;
 - (BOOL)shouldAutoscrollView:(id)arg1 withPoint:(struct CGPoint)arg2 inRect:(struct CGRect)arg3;
 - (BOOL)continueTracking:(id)arg1;
@@ -57,8 +58,12 @@
 - (void)notifyDelegateDidPerformSelector:(SEL)arg1 withDelegate:(id)arg2;
 - (void)notifyDelegateWillPerformSelector:(SEL)arg1 withDelegate:(id)arg2;
 - (void)notifyDelegate:(id)arg1 didPerformSelector:(SEL)arg2 draggingInfo:(id)arg3;
-- (void)notifyDelegate:(id)arg1 willPerformSelector:(SEL)arg2 draggingInfo:(id)arg3;
+- (BOOL)notifyDelegate:(id)arg1 willPerformSelector:(SEL)arg2 draggingInfo:(id)arg3;
 - (id)delegate;
+- (void)pressAndHoldCanceled:(id)arg1;
+- (void)_pressAndHoldCanceled:(id)arg1;
+- (void)prepareForPressAndHold:(id)arg1;
+- (void)_prepareForPressAndHold:(id)arg1;
 - (void)stopHandling:(id)arg1;
 - (void)_stopHandling:(id)arg1;
 - (void)resumeHandling:(id)arg1;

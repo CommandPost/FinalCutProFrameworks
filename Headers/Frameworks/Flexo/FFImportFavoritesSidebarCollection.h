@@ -19,13 +19,16 @@ __attribute__((visibility("hidden")))
     NSLock *_favoriteURLsLock;
     NSOperationQueue *_operationQueue;
     BOOL _firstLaunch;
+    NSLock *_itemsLock;
 }
 
 + (id)readableTypesForPasteboard:(id)arg1;
+@property(retain) NSLock *itemsLock; // @synthesize itemsLock=_itemsLock;
 @property FFImportDevicesSidebarCollection *devicesCollection; // @synthesize devicesCollection=_devicesCollection;
 @property(retain) NSMutableDictionary *favoriteURLs; // @synthesize favoriteURLs=_favoriteURLs;
 @property(readonly, nonatomic) NSString *itemDisplayName; // @synthesize itemDisplayName=_itemDisplayName;
 - (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
+- (unsigned long long)validateDrop:(id)arg1;
 - (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
 - (double)itemRowHeight;
 - (BOOL)hasMasterSubitems;

@@ -6,11 +6,12 @@
 
 #import "CALayer.h"
 
+#import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
 @class TLKAccessoryHandler, TLKEventDispatcher, TLKTimelineView;
 
-@interface TLKAccessoryLayer : CALayer <TLKPartInfo>
+@interface TLKAccessoryLayer : CALayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
     TLKAccessoryHandler *_currentEventHandler;
     TLKEventDispatcher *_currentEventDispatcher;
@@ -19,6 +20,7 @@
 }
 
 @property TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
+- (id)stringForToolTipAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (BOOL)shouldAutoscroll:(id)arg1;
 - (BOOL)performKeyEquivalent:(id)arg1;
 - (void)flagsChanged:(id)arg1;

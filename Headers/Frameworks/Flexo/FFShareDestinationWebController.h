@@ -6,14 +6,10 @@
 
 #import <Flexo/FFShareDestinationController.h>
 
-@class LKPopUpButton;
-
 @interface FFShareDestinationWebController : FFShareDestinationController
 {
-    LKPopUpButton *_sizePopup;
 }
 
-@property(nonatomic) LKPopUpButton *sizePopup; // @synthesize sizePopup=_sizePopup;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)selectSetting:(id)arg1;
 - (void)dealloc;

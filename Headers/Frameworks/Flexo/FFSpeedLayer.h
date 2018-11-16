@@ -12,13 +12,13 @@ __attribute__((visibility("hidden")))
 @interface FFSpeedLayer : CALayer
 {
     id _item;
+    struct CGRect _itemRect;
     id _module;
     CDStruct_e83c9415 _retimedRange;
     CALayer *_backgroundLayer;
     NSMutableArray *_segmentLayers;
 }
 
-- (void)layoutSublayers;
 - (void)updateSegmentLayers;
 - (id)segmentAtGlobalIndex:(int)arg1;
 - (int)_visibleKeyframeCount:(id)arg1;
@@ -31,8 +31,9 @@ __attribute__((visibility("hidden")))
 - (void)setActiveSegment:(int)arg1;
 - (int)pointInSegment:(struct CGPoint)arg1;
 - (void)dealloc;
+- (void)updateItemRect:(struct CGRect)arg1;
 - (void)updateRect:(struct CGRect)arg1;
-- (id)initWithItem:(id)arg1 rect:(struct CGRect)arg2 module:(id)arg3 retimedRange:(CDStruct_e83c9415)arg4;
+- (id)initWithItem:(id)arg1 rect:(struct CGRect)arg2 itemRect:(struct CGRect)arg3 module:(id)arg4 retimedRange:(CDStruct_e83c9415)arg5;
 
 @end
 

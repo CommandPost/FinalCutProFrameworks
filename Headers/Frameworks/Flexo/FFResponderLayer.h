@@ -6,15 +6,22 @@
 
 #import "CATiledLayer.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface FFResponderLayer : CATiledLayer
 {
     id _trackedPart;
     id <FFResponderLayerHost> _host;
+    NSString *_toolTip;
+    long long _toolTipTag;
 }
 
+@property(nonatomic) long long toolTipTag; // @synthesize toolTipTag=_toolTipTag;
+@property(retain, nonatomic) NSString *toolTip; // @synthesize toolTip=_toolTip;
 @property(nonatomic) id <FFResponderLayerHost> host; // @synthesize host=_host;
 @property(retain, nonatomic) id trackedPart; // @synthesize trackedPart=_trackedPart;
+- (id)accessibilityLocalizedString:(id)arg1;
 - (struct CGPoint)accessibilityConvertScreenPoint:(struct CGPoint)arg1;
 - (id)accessibilitySizeForChildLayer:(id)arg1;
 - (id)accessibilityPositionForChildLayer:(id)arg1;
@@ -29,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
 - (id)_accessibilityParent;
+- (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
 - (void)setSkimmingPlayheadHidden:(BOOL)arg1;
 - (BOOL)popUpMenu:(id)arg1 positioningItem:(id)arg2 atPoint:(struct CGPoint)arg3;
 - (struct CGPoint)eventLocationInLayer:(id)arg1;
@@ -53,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)_convertPointToScreen:(struct CGPoint)arg1;
 - (struct CGPoint)_convertPointToView:(struct CGPoint)arg1;
 - (struct CGPoint)_convertPointToLayer:(struct CGPoint)arg1;
+- (id)hostView;
 - (id)_hostView;
 - (id)_findHost;
 - (void)dealloc;

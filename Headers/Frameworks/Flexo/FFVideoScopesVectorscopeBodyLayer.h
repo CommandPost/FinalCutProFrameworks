@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)waveformBody;
 - (id)actionForKey:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)hideGraticuleLabels:(BOOL)arg1;
 
 @end
 

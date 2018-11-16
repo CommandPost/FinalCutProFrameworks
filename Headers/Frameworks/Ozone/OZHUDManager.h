@@ -19,7 +19,7 @@
     struct timeval _lastFadeOutTime;
     int _suppressCount;
     struct OZDocument *_pDocument;
-    list_89d338e7 *_pObjectIDs;
+    list_bbacc03b *_pObjectIDs;
     struct OZToolOptionsHUDComponent *_pCurrOptionsHUDComponent;
 }
 

@@ -6,10 +6,11 @@
 
 #import "CALayer.h"
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 @interface TLKSelectionLayer : CALayer
 {
+    NSDictionary *_mapping;
     CALayer *_rootLayer;
     CALayer *_emphasizedLayer;
     CALayer *_emphasizedRingLayer;
@@ -17,23 +18,26 @@
     CALayer *_normalLayer;
     CALayer *_normalRingLayer;
     CALayer *_normalInnerShadowLayer;
+    int _displayMode;
     NSArray *_roundingLayers;
     unsigned int _containingViewFirstResponder:1;
     unsigned int _ignoresHitTesting:1;
     unsigned int reserved:30;
 }
 
+- (id)trailingEdgeHandle;
+- (id)leadingEdgeHandle;
 - (id)shadowedLayer;
 - (id)hitTest:(struct CGPoint)arg1;
 @property BOOL ignoresHitTesting;
 - (void)setCornerRadius:(double)arg1;
 - (void)layoutSublayers;
 - (void)setDelegate:(id)arg1;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
 - (void)invalidate;
 - (void)_updateLayers:(id)arg1;
 @property BOOL containingViewFirstResponder;
-- (void)_updateFirstResponderStatus;
+- (void)_updateBackground;
+@property int displayMode;
 - (void)dealloc;
 - (id)init;
 

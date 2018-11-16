@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     id _delegate;
     FFPlayer *_player;
-    int _drawFieldsInterlaced;
     CDStruct_1b6d18a9 _sampleDuration;
     CDStruct_1b6d18a9 _frameDuration;
     int _fieldDominance;
@@ -23,10 +22,16 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)automaticallyNotifiesObserversForEnableDrawAllAngles;
++ (void)initialize;
++ (void)registerForDrawInterlaced:(id)arg1;
++ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
++ (int)drawInterlacedUserPref;
 @property(retain) FFReducedRateTracker *reducedRateTracker; // @synthesize reducedRateTracker=_rrt;
 @property(readonly) CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
 @property(readonly) CDStruct_1b6d18a9 sampleDuration; // @synthesize sampleDuration=_sampleDuration;
 - (id).cxx_construct;
+- (_Bool)performOverfullRecovery;
+- (_Bool)supportsOverfullRecovery;
 - (_Bool)usesOSThrottlingForAllDiskIO;
 - (_Bool)inefficientFrameDurationWarning:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2;
 - (unsigned int)outputMaxLatencyInFrames;
@@ -39,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)setEnableDrawAllAngles:(BOOL)arg1;
 - (BOOL)enableDrawAllAngles;
 - (int)drawFieldsInterlaced;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (const char *)_getFrameQueueStatusString;
 - (int)getFrameQueueStatus;
 - (void)pushFrame:(id)arg1;

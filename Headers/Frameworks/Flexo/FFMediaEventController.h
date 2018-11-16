@@ -6,45 +6,23 @@
 
 #import "NSObject.h"
 
-@class FFCatalog, FFMediaEventProject, FFStorageManager, NSMapTable, NSMutableSet, NSSet;
+@class NSMapTable;
 
 @interface FFMediaEventController : NSObject
 {
-    FFCatalog *_catalog;
-    NSMutableSet *_mediaEvents;
     NSMapTable *_syncRequests;
-    FFStorageManager *_storageManager;
-    FFMediaEventProject *_defaultMediaEvent;
-    unsigned int _mediaIsSyncing;
-    unsigned int _flags;
     BOOL _hasDoneInitialSyncMedia;
 }
 
-+ (id)projectsURLForLocation:(id)arg1;
-+ (id)eventsURLForLocation:(id)arg1;
-+ (id)eventForIdentifier:(id)arg1;
-+ (id)identifierForEvent:(id)arg1;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
-+ (void)initialize;
-+ (id)mediaComponentReferencesToEventID:(id)arg1 mediaID:(id)arg2;
-+ (id)mediaComponentReferencesToEventID:(id)arg1 mediaID:(id)arg2 inSelection:(id)arg3;
-+ (id)_mediaComponentReferencesInObject:(id)arg1 eventID:(id)arg2 mediaID:(id)arg3 includeAnchored:(BOOL)arg4;
-+ (id)keyPathsForValuesAffectingMediaEvents;
++ (id)mediaComponentReferencesToMediaID:(id)arg1 inLibrary:(id)arg2;
++ (id)mediaComponentReferencesToMediaID:(id)arg1 inSelection:(id)arg2;
++ (id)_mediaComponentReferencesInObject:(id)arg1 mediaID:(id)arg2 includeAnchored:(BOOL)arg3;
 @property(readonly, nonatomic) BOOL hasDoneInitialSyncMedia; // @synthesize hasDoneInitialSyncMedia=_hasDoneInitialSyncMedia;
-- (id)description;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (BOOL)_loadEvents:(id *)arg1;
-- (BOOL)loadAllEvents:(id *)arg1;
-@property(nonatomic) BOOL autoLoadEvents;
-- (BOOL)_eventsToAddForLocation:(id)arg1 returnEvents:(id *)arg2 error:(id *)arg3;
-- (id)eventClipsForMediaRefs:(id)arg1;
-- (id)loadEventAtURL:(id)arg1;
+- (BOOL)deleteEvents:(id)arg1 error:(id *)arg2;
 - (void)setDefaultMediaEvent:(id)arg1;
 - (id)defaultMediaEvent;
-- (id)newEventAtLocation:(id)arg1 name:(id)arg2 error:(id *)arg3;
-- (id)newEventAtURL:(id)arg1 error:(id *)arg2;
-- (id)undoHandler;
 - (void)dealloc;
 - (id)init;
 - (void)appWillBecomeActive:(id)arg1;
@@ -61,16 +39,9 @@
 - (void)_registerSyncRequest:(id)arg1;
 - (id)_findSyncInfo:(id)arg1 identifier:(id)arg2;
 - (void)_updateModifiedMediaRep:(id)arg1 returnIsIncompatibleOriginal:(char *)arg2;
-@property(nonatomic) BOOL mediaIsSyncing;
-- (void)removeMediaEvents:(id)arg1;
-- (void)addMediaEvents:(id)arg1;
-- (void)removeMediaEventsObject:(id)arg1;
-- (void)addMediaEventsObject:(id)arg1;
-- (void)_didRemoveMediaEventProject:(id)arg1;
-- (void)_didAddMediaEventProject:(id)arg1;
-@property(readonly, nonatomic) NSSet *mediaEvents;
 - (BOOL)actionAddSnapShotOfSkimmableItemToEventController:(CDStruct_1b6d18a9)arg1 skimmable:(struct NSObject *)arg2 error:(id *)arg3;
-- (BOOL)actionMoveClipsToTrash:(id)arg1 assetRefsToTrash:(id)arg2 error:(id *)arg3;
+- (BOOL)actionMoveClipsToTrash:(id)arg1 mediaRefsToDelete:(id)arg2 error:(id *)arg3;
+- (id)undoHandler;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "FFMatchToolDelegate.h"
 
-@class FFBackgroundTask, FFEnhanceAudioManager, NSMutableArray;
+@class FFBackgroundTask, FFEnhanceAudioManager, NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioMatchHelper : NSObject <FFMatchToolDelegate>
@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     FFBackgroundTask *_backgroundTaskForMatch;
     FFEnhanceAudioManager *_analysisManager;
     BOOL _matchCompleted;
+    NSArray *_selectedItems;
 }
 
 @property BOOL matchCompleted; // @synthesize matchCompleted=_matchCompleted;
 @property(retain) FFEnhanceAudioManager *analysisManager; // @synthesize analysisManager=_analysisManager;
+- (void)setSelectedItems:(id)arg1 withContextTime:(CDStruct_1b6d18a9)arg2;
 - (id)accessoryTitle;
 - (id)footerText;
 - (BOOL)allowsReferenceChangeFromOrganizerListView;

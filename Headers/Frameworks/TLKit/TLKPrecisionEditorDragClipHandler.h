@@ -11,7 +11,7 @@
 }
 
 - (int)movementType;
-- (BOOL)shouldMoveEdgeUsingDelta:(id)arg1;
+- (BOOL)shouldMoveEdgeUsingDelta;
 - (CDStruct_1b6d18a9)timeToKeepStatic;
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (id)cursorNameAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;

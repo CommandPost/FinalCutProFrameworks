@@ -22,6 +22,7 @@
     struct CGRect _futureFooterFrame;
 }
 
+- (CDStruct_d2b197d1)_borderMetrics;
 - (void)setFrameSize:(struct CGSize)arg1;
 - (void)updateLabel;
 - (struct CGRect)draggingAreaFrame;
@@ -51,6 +52,7 @@
 - (void)_setNormalState;
 - (void)_setDragState;
 - (void)_recomputeFrames;
+- (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
 - (void)_refreshPaneCaps;
 - (void)_updateFooterAccessoryView;
 - (id)_footerAccessoryView;

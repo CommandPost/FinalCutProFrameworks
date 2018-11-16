@@ -15,7 +15,7 @@
 }
 
 - (_Bool)performMouseDragAction:(id)arg1;
-- (_Bool)walk:(double)arg1:(double)arg2;
+- (_Bool)walk:(double)arg1 pan:(double)arg2;
 - (_Bool)walkBackward:(id)arg1;
 - (_Bool)walkForward:(id)arg1;
 - (_Bool)walkRight:(id)arg1;

@@ -32,6 +32,7 @@
 - (void)alphaSpread:(id)arg1;
 - (void)rgbFlop:(id)arg1;
 - (void)rgbSpread:(id)arg1;
+- (void)didChangeGradientAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)_aboutToChangeGradientAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)_addKeyframeToChannel:(struct OZChannelBase *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)update;

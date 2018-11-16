@@ -10,12 +10,10 @@
 
 @interface FFShareDestinationEMailController : FFShareDestinationController
 {
-    LKPopUpButton *_sizePopup;
     LKPopUpButton *_compressionPopup;
 }
 
 @property(nonatomic) LKPopUpButton *compressionPopup; // @synthesize compressionPopup=_compressionPopup;
-@property(nonatomic) LKPopUpButton *sizePopup; // @synthesize sizePopup=_sizePopup;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)selectSetting:(id)arg1;
 - (void)awakeFromNib;

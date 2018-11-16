@@ -21,6 +21,7 @@
     NSString *_nameWithUserInfo;
 }
 
++ (id)keyPathsForValuesAffectingIsPasswordBasedPrivacy;
 @property(retain, nonatomic) NSString *nameWithUserInfo; // @synthesize nameWithUserInfo=_nameWithUserInfo;
 @property(nonatomic) NSTextField *messageStr; // @synthesize messageStr=_messageStr;
 @property(nonatomic) NSSecureTextField *password; // @synthesize password=_password;
@@ -34,9 +35,9 @@
 - (void)signInSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)okcancelClicked:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+@property(nonatomic) BOOL isPasswordBasedPrivacy;
 @property(copy, nonatomic) NSDictionary *privacy;
-- (long long)showModalPanelIfNeeded;
-- (void)showPanelIfNeededModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)validateUsernamePassword:(id *)arg1;
 - (void)dealloc;
 - (id)initWithDestination:(id)arg1 withSource:(id)arg2;

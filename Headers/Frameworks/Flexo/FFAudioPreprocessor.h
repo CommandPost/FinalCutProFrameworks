@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
 + (void)performProcessingIfNecessary:(id)arg1 index:(unsigned long long)arg2;
 @property BOOL cachedState; // @synthesize cachedState=_cachedState;
 @property struct ComponentInstanceRecord *audioUnit; // @synthesize audioUnit=_audioUnit;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (int)setMatchEQToMatchMode;
 - (int)postRenderMatchEQForPass:(int)arg1;
 - (int)preRenderMatchEQForPass:(int)arg1;

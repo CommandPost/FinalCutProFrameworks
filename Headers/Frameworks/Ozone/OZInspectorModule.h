@@ -7,16 +7,18 @@
 #import <Ozone/OZProViewModule.h>
 
 #import "NSTabViewDelegate.h"
+#import "OZHGUserJobClient.h"
 
 @class NSBox, NSProThemeImageView, NSProView, OZInspectorPreviewModule, OZProTabPaneCapSegmentedControl, OZViewControllerGroup;
 
-@interface OZInspectorModule : OZProViewModule <NSTabViewDelegate>
+@interface OZInspectorModule : OZProViewModule <NSTabViewDelegate, OZHGUserJobClient>
 {
     OZProTabPaneCapSegmentedControl *_pTabSegmentedControl;
     NSProView *_pDummyView;
     NSBox *_pBackgroundView;
     long long _currTabIndex;
-    long long _prevInvalidTabIndex;
+    long long _lastRequestedTabIndex;
+    long long _sceneNodeTabIndex;
     NSProThemeImageView *_pPreview;
     OZViewControllerGroup *_pPropertiesControllers;
     OZViewControllerGroup *_pBehaviorsControllers;
@@ -24,10 +26,10 @@
     OZViewControllerGroup *_pObjectControllers;
     NSBox *_pPreviewBox;
     OZInspectorPreviewModule *_pPreviewController;
-    list_89d338e7 *_pLockedNodeIDs;
+    list_bbacc03b *_pLockedNodeIDs;
     unsigned int _lastSeenNextUniqueID;
-    list_89d338e7 *_pObjectIDs;
-    list_37573188 *_pObjects;
+    list_bbacc03b *_pObjectIDs;
+    list_4c5ca08a *_pObjects;
     struct map<unsigned int, unsigned int, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned int>>> *_pObjectIDToMagic;
     BOOL _isEvalulationComplete;
     unsigned int _missedNotifications;
@@ -47,6 +49,8 @@
 - (struct OZScene *)currentScene;
 - (void)cancelEvaluation;
 - (void)evaluateChannels:(struct OZScene *)arg1 atTime:(CDStruct_1b6d18a9)arg2 forController:(id)arg3 wait:(BOOL)arg4;
+- (void)userJobCanceled:(struct OZHGUserJob *)arg1;
+- (void)userJobFinished:(struct OZHGUserJob *)arg1;
 - (void)setIsEvaluationComplete:(BOOL)arg1;
 - (void)evalCancelation;
 - (void)evalCompletion:(id)arg1;
@@ -59,7 +63,7 @@
 - (void)switchToTabWithSelectedObjects;
 - (void)suppressOnceShowSelectedObjects;
 - (void)showSelectedObjects;
-- (void)getSceneNodeList:(list_1192f13f *)arg1;
+- (void)getSceneNodeList:(list_d81b4758 *)arg1;
 - (id)lockedTitle;
 - (void)validateLockedInspector;
 - (void)unlockInspector;

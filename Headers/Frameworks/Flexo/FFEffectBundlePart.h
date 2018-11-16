@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
     NSSet *_unriggedChannelIndexPaths;
     NSSet *_modifiedEffectsIndexList;
     CHChannelDouble *_channel;
-    NSArray *_effectChannels;
-    NSMutableSet *_bundleSnapshotsObservingUpdateList;
+    NSMutableSet *_bundleSnapshotsObservingModifiedValuesUpdateList;
+    NSMutableSet *_bundleSnapshotsObservingSnapshotValuesUpdateList;
     NSArray *_cachedSnapshotChannels;
     int _effectBundleEncodingOptions;
     int _missingElements;
@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 
 + (id)copyClassDescription;
 @property(nonatomic) int effectBundleEncodingOptions; // @synthesize effectBundleEncodingOptions=_effectBundleEncodingOptions;
-@property(retain, nonatomic) NSArray *effectChannels; // @synthesize effectChannels=_effectChannels;
 @property(retain, nonatomic) CHChannelDouble *amountChannel; // @synthesize amountChannel=_channel;
 @property(nonatomic) double defaultValue; // @synthesize defaultValue=_defaultValue;
 - (id)exportAsXMLElement;
@@ -49,6 +48,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)effectsLoaded;
 - (void)unloadEffects;
 - (void)loadEffects;
+- (void)didSetEffects;
+- (void)willSetEffects;
 - (void)loadEffects:(id)arg1;
 - (void)setModifiedStateForEffectChannel:(id)arg1;
 - (BOOL)isBundlePartEffectModified:(id)arg1;
@@ -58,14 +59,16 @@ __attribute__((visibility("hidden")))
 - (void)resetBundlePart:(BOOL)arg1 reloadEffect:(BOOL)arg2;
 - (void)resetEffect:(id)arg1;
 - (void)_resetEffect:(id)arg1 modifiedEffectsIndexList:(id)arg2 reloadEffect:(BOOL)arg3;
+- (BOOL)hasEffectChannelsInFolder:(id)arg1;
 - (void)deleteEffectChannelsInFolder:(id)arg1;
-- (void)createEffectChannelsInFolder:(id)arg1 atIndex:(int)arg2;
+- (void)createEffectChannelsInFolder:(id)arg1;
 - (void)setName:(id)arg1;
 - (id)name;
 - (void)removeObjectFromEffectBundleSnapshotsAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inEffectBundleSnapshotsAtIndex:(unsigned long long)arg2;
 - (void)removeObjectFromEffectsAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inEffectsAtIndex:(unsigned long long)arg2;
+- (void)effectSnapshotsChanged;
 - (void)importEffectsDefaultDataFromBundlePart:(id)arg1;
 - (void)importSnapshotValuesFromBundlePart:(id)arg1;
 - (void)updateRiggedChannels;
@@ -92,13 +95,10 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 effects:(id)arg2 defaultValue:(double)arg3;
-- (void)didSetUnriggedChannelIndexPaths:(id)arg1 removedIndexPaths:(id)arg2;
-- (void)effectSnapshotsChanged;
-- (void)didSetEffects;
-- (void)willSetEffects;
-- (void)updateCurveInterfaces;
-- (void)detachCurveInterfaces;
-- (void)hookUpCurveInterfaces;
+- (void)updateUnriggedChannelIndexPaths:(id)arg1 removedIndexPaths:(id)arg2;
+- (void)updateSlaveCurveInterfaces;
+- (void)detachSlaveCurveInterfaces;
+- (void)hookUpSlaveCurveInterfaces;
 - (void)_iterateOverEffectRootChannelsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_processChannel:(struct OZChannelBase *)arg1 indexPath:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_setupValueMap:(struct ValueMap *)arg1 forIndexPath:(id)arg2;

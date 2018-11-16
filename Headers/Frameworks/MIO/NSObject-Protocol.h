@@ -26,5 +26,8 @@
 - (Class)superclass;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+
+@optional
+- (NSString *)debugDescription;
 @end
 

@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
 - (void)frameDidChangeNotification:(id)arg1;
 - (void)didBuildUI;
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (void)audioShowReferenceWaveformsDidChange;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

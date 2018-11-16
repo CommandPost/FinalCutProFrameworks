@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKSplashView, NSButton, NSTextField, NSView, NSWindow;
+@class LKButton, LKSplashView, NSButton, NSTextField, NSView, NSWindow;
 
 @interface LKAboutPanel : NSObject <NSWindowDelegate>
 {
@@ -18,15 +18,32 @@
     NSTextField *_versionText;
     NSTextField *_copyrightText;
     NSTextField *_statusText;
+    NSTextField *_trialText;
+    LKSplashView *_consumerSplashView;
+    NSTextField *_consumerVersionText;
+    NSTextField *_consumerCopyrightText;
+    LKButton *_consumerAcknowledgementsButton;
+    LKButton *_consumerLicenseButton;
+    BOOL _trial;
+    BOOL _consumer;
+    BOOL _hideAppNameInCopyright;
     NSButton *_closeButton;
     BOOL _isSplash;
 }
 
++ (id)sharedConsumerAboutPanel;
++ (id)sharedTrialAboutPanel;
 + (id)sharedAboutPanel;
+@property BOOL hideAppNameInCopyright; // @synthesize hideAppNameInCopyright=_hideAppNameInCopyright;
+@property(retain, nonatomic) NSTextField *_trialText; // @synthesize _trialText;
+@property(nonatomic, getter=isConsumer) BOOL consumer; // @synthesize consumer=_consumer;
+@property(nonatomic, getter=isTrial) BOOL trial; // @synthesize trial=_trial;
 @property BOOL isSplash; // @synthesize isSplash=_isSplash;
 - (void)windowDidBecomeKey:(id)arg1;
 - (void)windowDidResignKey:(id)arg1;
 - (void)updateNib;
+- (void)consumerNibSetup;
+- (void)proNibSetup;
 - (void)loadNib;
 - (void)toggleAlternateVersion:(id)arg1;
 - (void)showAcknowledgements:(id)arg1;

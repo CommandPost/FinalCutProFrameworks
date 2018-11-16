@@ -32,10 +32,6 @@
     PCVector3_457fd1f0 _startOffset;
     PCVector2_79efa81a _startShear;
     PCVector2_79efa81a _priorRotHandlePos;
-    PCPtr_df275998 _handlesTexture[3];
-    PCPtr_df275998 _rotationTexture[3];
-    PCPtr_df275998 _pivotTexture[3];
-    PCPtr_df275998 _roundnessTexture;
     PCVector2_79efa81a _corners[8];
     PCVector2_79efa81a _handle[2];
     BOOL _moving;
@@ -86,9 +82,9 @@
 - (BOOL)projectPoint:(PCVector3_457fd1f0 *)arg1 toSpaceOf:(int)arg2;
 - (PCVector3_457fd1f0)calcDragFrom:(const PCVector3_457fd1f0 *)arg1 to:(const PCVector3_457fd1f0 *)arg2;
 - (PCVector2_7e488b7d)getPivotSize;
-- (PCPtr_df275998)getCurrentRotationTexture;
-- (PCPtr_df275998)getCurrentPivotTexture;
-- (PCPtr_df275998)getCurrentHandlesTexture:(int)arg1;
+- (PCPtr_a02aef32)getCurrentRotationTexture;
+- (PCPtr_a02aef32)getCurrentPivotTexture;
+- (PCPtr_a02aef32)getCurrentHandlesTexture:(int)arg1;
 - (BOOL)isActiveHandle:(int)arg1;
 - (double)getRoundness;
 - (void)setRoundness:(double)arg1;
@@ -101,7 +97,7 @@
 - (void)setScale:(const PCVector3_457fd1f0 *)arg1;
 - (void)offsetPosition:(const PCVector3_457fd1f0 *)arg1;
 - (void)getTransformMatrix:(PCMatrix44Tmpl_e98c85ee *)arg1 imageElement:(struct OZImageElement *)arg2 renderParams:(struct OZRenderParams *)arg3;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
@@ -120,7 +116,6 @@
 - (id)getDefaultCursor;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)_init;
 
 @end
 

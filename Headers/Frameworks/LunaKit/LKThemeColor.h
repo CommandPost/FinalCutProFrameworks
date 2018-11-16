@@ -88,6 +88,7 @@
 + (id)selectedTextColor;
 + (id)selectedTextBackgroundHUDColor;
 + (id)selectedTextBackgroundColor;
++ (id)selectedSegmentedControlTextHUDColor;
 + (id)selectedMenuItemTopHUDColor;
 + (id)selectedMenuItemTopColor;
 + (id)selectedMenuItemTextHUDColor;
@@ -250,6 +251,10 @@
 + (id)menuBackgroundOutlineColor;
 + (id)menuBackgroundInnerOutlineSelected;
 + (id)menuBackgroundInnerOutline;
++ (id)menuBackgroundHUDInnerOutlineSelected;
++ (id)menuBackgroundHUDInnerOutline;
++ (id)menuBackgroundHUDGradientStart;
++ (id)menuBackgroundHUDGradientEnd;
 + (id)menuBackgroundHUDColor;
 + (id)menuBackgroundGradientStart;
 + (id)menuBackgroundGradientEnd;
@@ -445,6 +450,7 @@
 + (id)aboutPanelSeparator;
 + (id)aboutPanelLoadingText;
 + (id)aboutPanelCopyrightText;
++ (id)aboutPanelButtonTextColor;
 + (unsigned long long)themeIndex;
 
 @end

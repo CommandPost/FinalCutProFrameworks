@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)inputOffsetForKey:(id)arg1;
 - (id)inputStreamForKey:(id)arg1 retOffset:(CDStruct_1b6d18a9 *)arg2;
 - (id)inputStreamForKey:(id)arg1;
+- (id)allInputStreamKeysEnumerator;
 - (id)allInputStreamKeys;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;

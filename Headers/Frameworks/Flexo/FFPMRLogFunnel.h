@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSString;
+@class NSObject<OS_dispatch_queue>, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFPMRLogFunnel : NSObject
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     NSString *_instrumentName;
     void *_instrument;
     int _queuedLogs;
-    struct dispatch_queue_s *_loggingQueue;
+    NSObject<OS_dispatch_queue> *_loggingQueue;
     int _discardedCount;
     int _highWaterMark;
 }

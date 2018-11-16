@@ -23,11 +23,12 @@
 @property(retain) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
 @property(retain) FFAudioMatchRequest *pendingRequest; // @synthesize pendingRequest=_pendingRequest;
 @property(retain) FFAnchoredObject *objectToModify; // @synthesize objectToModify=_objectToModify;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (void)kickoffBackgroundTask;
 - (void)addRequest:(id)arg1;
 - (void)_matchRunLoop:(id)arg1 onTask:(id)arg2;
+- (void)_completeMatchAnalysisOnMainThread:(id)arg1;
 - (void)match:(id)arg1 forPass:(int)arg2 onTask:(id)arg3;
 - (void)_setMatchParameterOnChannelFolder:(id)arg1 templateLearn:(BOOL)arg2 materialLearn:(BOOL)arg3 materialMatch:(BOOL)arg4;
 - (void)dealloc;

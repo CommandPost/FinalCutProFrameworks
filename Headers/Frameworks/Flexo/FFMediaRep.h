@@ -10,12 +10,12 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFAssetFileIdentifier, FFMedia, NSArray, NSMutableDictionary, NSString, NSURL;
+@class FFAsset, FFAssetFileIdentifier, NSArray, NSMutableDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaRep : FFBaseDSObject <NSCoding, NSCopying, FFMetadataProtocol>
 {
-    FFMedia *_media;
+    FFAsset *_media;
     NSMutableDictionary *_metadata;
     NSString *_repType;
     NSString *_projectRelativePath;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     int _syncStatus;
     NSString *_md5Seed;
     NSArray *_additionalFilenames;
+    BOOL _showRepAsMissing;
     FFAssetFileIdentifier *_assetFileID;
     id _syncInfo;
     int _lastModifiedFileDate;
@@ -44,6 +45,8 @@ __attribute__((visibility("hidden")))
 + (id)_repTypeToFolderString:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property(readonly, nonatomic) BOOL showRepAsMissing; // @synthesize showRepAsMissing=_showRepAsMissing;
+- (void)consolidateGPSMetadata;
 - (void)setMetadataContentCreated:(id)arg1;
 - (id)metadataContentCreated;
 - (id)mdLocalValueForKey:(id)arg1;
@@ -54,13 +57,14 @@ __attribute__((visibility("hidden")))
 - (id)metadata;
 - (void)setMetadata:(id)arg1;
 - (id)description;
-- (id)copyForMedia:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)setupProjectRelativeFileNamed:(id)arg1 manageFileType:(int)arg2 project:(id)arg3;
+- (void)mergeMetadataToMediaRep:(id)arg1;
+- (void)setupProjectRelativeFileNamed:(id)arg1 manageFileType:(int)arg2 project:(id)arg3 externalFolderURL:(id)arg4;
 - (void)organizeIntoEvent:(id)arg1;
 @property(readonly, nonatomic) BOOL mediaAvailable;
+- (void)purgeBookmarkData;
 @property(readonly, nonatomic) int syncStatus;
 - (void)setSyncStatus:(int)arg1;
 - (BOOL)syncBookmarkData:(id)arg1 forceUpdate:(BOOL)arg2;
@@ -75,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)fileTypes;
 @property(readonly, nonatomic) NSArray *fileURLs;
 @property(readonly, nonatomic) NSURL *fileURL;
+- (id)assetFileIDForCopy;
 - (id)localFilenameFromAdditionalFilename:(id)arg1;
 - (id)additionalLocalFilenames;
 @property(readonly, nonatomic) NSArray *additionalFilenames;
@@ -85,18 +90,24 @@ __attribute__((visibility("hidden")))
 - (id)cacheIdentifierIncludingOverrides:(id)arg1;
 - (int)manageFileType;
 - (id)repType;
-@property(readonly, nonatomic) FFMedia *media;
+@property(readonly, nonatomic) FFAsset *media;
 - (void)dealloc;
 - (id)initWithFileURL:(id)arg1 media:(id)arg2 repType:(id)arg3 manageFileType:(int)arg4 project:(id)arg5;
+- (id)initWithFileURL:(id)arg1 media:(id)arg2 repType:(id)arg3 manageFileType:(int)arg4 project:(id)arg5 showRepAsMissing:(BOOL)arg6;
 - (id)_projectRelativePathForURL:(id)arg1 recommendedName:(id)arg2 project:(id)arg3;
 - (void)_checkCreationDate:(id)arg1;
 - (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2;
+- (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2 externalFolderURL:(id)arg3;
+- (id)_externalFileURL:(id)arg1;
 - (void)setPersistentFileURL:(id)arg1;
 - (id)persistentFileURL;
 - (void)setOrganizeStateString:(id)arg1;
 - (id)organizeStateString;
 - (void)_setOrganizeStateString:(id)arg1;
 - (id)_organizeStateString;
+- (void)updateAssetFilename;
+- (void)fixProjectRelativePath;
+- (void)setRelativePath:(id)arg1;
 - (void)setProjectRelativePath:(id)arg1;
 - (id)projectRelativePath;
 - (id)assetFileID;

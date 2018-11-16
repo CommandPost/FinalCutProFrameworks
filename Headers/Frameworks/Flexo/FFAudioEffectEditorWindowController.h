@@ -6,7 +6,7 @@
 
 #import "NSWindowController.h"
 
-@class CHChannelEnum, CHChannelFolder, FFAudioEffectWindowParameterTracker, FFAudioUnitEffect, FFChannelChangeController, FFContext, FFEffectStack, FFSharedAudioUnit, LKBox, NSMapTable, NSMutableArray, NSMutableSet, NSString;
+@class CHChannelEnum, CHChannelFolder, FFAudioEffectWindowParameterTracker, FFAudioUnitEffect, FFChannelChangeController, FFContext, FFEffectStack, FFSharedAudioUnit, FFUndoHandler, LKBox, NSMapTable, NSMutableArray, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioEffectEditorWindowController : NSWindowController
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_linkedGesturedTrackers;
     NSMutableSet *_gesturedTrackers;
     FFAudioEffectWindowParameterTracker *_masterGesturedTracker;
+    FFUndoHandler *_disabledUndoWarning;
 }
 
 + (id)effectsForWindowControllers;
@@ -56,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)synchronizeWindowTitleWithDisplayName:(id)arg1;
 - (void)timeRateChangedForContext:(id)arg1;
 - (void)_handleParameterEvent:(id)arg1 event:(const struct AudioUnitEvent *)arg2 newValue:(float)arg3;
-- (void)_storeEffectState;
+- (void)_storeEffectState:(BOOL)arg1;
 - (void)_channelChangeEnd:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)_channelChangeBegin:(id)arg1 actionName:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)_channelChangeDidSetValue:(id)arg1 toValue:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
@@ -71,6 +72,8 @@ __attribute__((visibility("hidden")))
 - (struct ComponentInstanceRecord *)audioUnit;
 - (void)awakeFromNib;
 - (void)dealloc;
+- (void)_enableUndoWarning;
+- (void)_disableUndoWarning;
 - (id)initWithEffect:(id)arg1 context:(id)arg2 preferGeneric:(BOOL)arg3;
 - (void)closeWindow;
 - (void)_closeWindow:(id)arg1;

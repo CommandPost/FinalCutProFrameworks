@@ -24,8 +24,12 @@ __attribute__((visibility("hidden")))
 - (id)newPendingImageForSampleNumber:(long long)arg1 requestedQuality:(int)arg2 colorSpace:(struct CGColorSpace *)arg3;
 - (id)description;
 - (void)cancel;
+- (struct CGRect)encodedBounds;
+- (id)decodePixelFormat;
+- (int)getFieldOrder;
 - (void)main;
 - (id)copyReadResults:(_Bool)arg1;
+- (_Bool)waitForScheduleStatusFlags:(unsigned int)arg1 beforeDate:(id)arg2;
 - (unsigned int)scheduleStatusInformation;
 - (id)sampleData;
 - (void)setSample:(id)arg1;

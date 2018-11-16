@@ -19,6 +19,7 @@
     _Bool _addingToScene;
     _Bool _isMask;
     _Bool _localSpace;
+    struct PCString *_pUndoString;
     LKColorWell *_pPrimaryColorWell;
 }
 
@@ -42,10 +43,10 @@
 - (BOOL)selectAll:(id)arg1;
 - (void)draw;
 - (void)setViewMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 state:(const struct OZRenderState *)arg2;
-- (id)getCursorWithEvent:(id)arg1;
-- (id)getDefaultCursor;
 - (void)endWithDocument:(struct OZDocument *)arg1;
 - (id)menuForEvent:(id)arg1;
+- (id)getCursorWithEvent:(id)arg1;
+- (id)getDefaultCursor;
 - (struct PCUUID)getClassID;
 - (id)getTooltip;
 - (id)getName;

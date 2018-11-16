@@ -6,10 +6,15 @@
 
 #import "FFModelLocking.h"
 
-@class FFUndoHandler, NSString;
+@class FFAnchoredSequence, FFUndoHandler;
 
 @protocol FFDataModelProtocol <FFModelLocking>
-- (NSString *)mediaIdentifier;
 - (FFUndoHandler *)undoHandler;
+
+@optional
+- (FFAnchoredSequence *)sequence;
+- (void)endEditing;
+- (void)beginEditing;
+- (BOOL)isEditing;
 @end
 

@@ -25,7 +25,7 @@
 - (void)_handlePlayPause:(id)arg1;
 - (BOOL)canBeginSkimming;
 - (BOOL)markerEditorIsShown;
-- (void)cancel;
+- (void)popOverWindowDidCancel:(id)arg1;
 - (void)markerHUDDidResignKey:(id)arg1;
 - (void)hideMarkerEditor;
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2 forEditorModule:(id)arg3;

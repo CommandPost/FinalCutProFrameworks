@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)positionedRangeLayerForRange:(id)arg1 placementLayer:(id)arg2 superlayer:(id)arg3 timeToXCoordFunction:(CDUnknownBlockType)arg4;
 + (struct CGRect)frameForRangeLayer:(id)arg1 placementLayer:(id)arg2 superlayer:(id)arg3 timeToXCoordFunction:(CDUnknownBlockType)arg4;
++ (id)_usedMediaFacet;
 + (id)_analysisFacet;
 + (id)_favoriteFacet;
 + (id)_rejectFacet;

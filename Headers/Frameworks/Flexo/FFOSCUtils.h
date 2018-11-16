@@ -12,6 +12,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)drawImage:(id)arg1 intoGLContext:(struct _CGLContextObject *)arg2 atPoint:(struct CGPoint)arg3;
++ (void)initialize;
++ (void)registerForNSUD:(id)arg1;
++ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
++ (long long)getFFEnableGuards;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <ProOSC/POOnScreenControl.h>
 
-@class NSColor;
+@class NSColor, NSMenu;
 
 @interface POCombinedCrop : POOnScreenControl
 {
@@ -33,13 +33,16 @@
     NSColor *_playerStatusText;
     NSColor *_playerStatusTextUnit;
     struct POAwesomeType *_awesomeType;
+    BOOL _isPro;
+    PCRect_b601f9f3 _cornerRectInWorld;
+    NSMenu *_pEaseInOutMenu;
 }
 
 + (BOOL)validate:(id)arg1;
 + (id)textForCropTypeAndKeyFrame:(int)arg1 keyframe:(int)arg2;
-+ (struct POColor)textPOColorForCropTypeAndKeyFrame:(int)arg1 keyframe:(int)arg2 foreGround:(_Bool)arg3;
++ (struct POColor)textPOColorForCropTypeAndKeyFrame:(int)arg1 keyframe:(int)arg2 foreGround:(_Bool)arg3 proUI:(BOOL)arg4 active:(BOOL)arg5;
 + (struct POColor)POColorForCropTypeAndKeyFrame:(int)arg1 keyframe:(int)arg2 foreGround:(_Bool)arg3;
-+ (void)maybeInitResources;
++ (void)maybeInitResources:(BOOL)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)postRedisplayOnActivePartChange;
@@ -52,10 +55,11 @@
 - (void)crop:(PCVector3_457fd1f0)arg1 withEvent:(id)arg2;
 - (struct CGRect)getCropBoundingRectangle:(int)arg1;
 - (void)move:(const PCVector3_457fd1f0 *)arg1;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
+- (void)_getCropXYForPartFromCornerRect:(int)arg1 snapStartX:(double *)arg2 snapStartY:(double *)arg3;
 - (void)updateInfoBar;
 - (int)keyFrameFromActivePart;
 - (id)accessibilityHandleName;
@@ -68,9 +72,14 @@
 - (_Bool)shouldDrawSideHandesForCropMode:(int)arg1;
 - (_Bool)showDrawCrossForCropMode:(int)arg1;
 - (_Bool)shouldCropTypeDisplayNonActiveAreaGreying:(int)arg1;
+- (void)setActiveKeyframe:(int)arg1;
+- (id)getCursorWithEvent:(id)arg1;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)_init;
+- (id)menuForEvent:(id)arg1;
+- (void)buildEaseInOutMenu;
+- (void)easeInAndOut:(id)arg1;
+- (void)_init:(BOOL)arg1;
 
 @end
 

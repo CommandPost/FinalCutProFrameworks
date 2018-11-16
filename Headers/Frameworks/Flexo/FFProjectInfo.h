@@ -6,20 +6,20 @@
 
 #import "NSObject.h"
 
-@class NSDocument, NSString, NSURL;
+@class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFProjectInfo : NSObject
 {
     NSURL *_url;
-    NSURL *_fileRef;
     NSString *_type;
-    NSDocument *_document;
+    BOOL _shouldLoad;
 }
 
+@property(nonatomic) BOOL shouldLoad; // @synthesize shouldLoad=_shouldLoad;
 @property(readonly, nonatomic) NSString *type; // @synthesize type=_type;
 - (id)description;
-@property(readonly, nonatomic) NSString *name;
+@property(readonly, nonatomic) NSString *displayName;
 @property(copy, nonatomic) NSURL *URL;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1 type:(id)arg2;

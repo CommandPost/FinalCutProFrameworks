@@ -15,11 +15,10 @@
     NSMutableDictionary *_dictm;
 }
 
-- (id)newTokenForPassThruStream:(id)arg1;
+- (id)newTokenForPassThruStream:(id)arg1 retainOnlyObject:(id)arg2;
 - (id)objectForKey:(id)arg1;
 - (void)addEntriesFromDictionary:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
-- (void)_ensureDictM;
 - (id)description;
 - (void)hintCacheData:(unsigned int)arg1;
 - (_Bool)hintWillImageSoon;

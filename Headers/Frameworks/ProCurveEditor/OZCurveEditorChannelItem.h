@@ -21,8 +21,7 @@
     CDStruct_1b6d18a9 *_samplesUSnapshot;
     unsigned int _numberOfSamples;
     unsigned int _numberOfSamplesSnapshot;
-    void **_keypoints;
-    unsigned int _numberOfKeypoints;
+    vector_dd51e4ce _keypoints;
     unsigned int _colorIndex;
     double _scaleY;
     double _offsetY;
@@ -33,6 +32,8 @@
     struct OZChannel *_backupChannel;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (struct OZChannel *)snapshotChannel;
 - (id)compoundChannelComponents;
 - (BOOL)isCompound;
@@ -57,9 +58,7 @@
 - (void)setScaleY:(double)arg1;
 - (double)scaleY;
 - (unsigned int)numberOfKeypoints;
-- (void)setNumberOfKeypoints:(unsigned int)arg1;
-- (void **)keypoints;
-- (void)setKeypoints:(void **)arg1;
+- (vector_dd51e4ce *)keypoints;
 - (unsigned int)numberOfSamples;
 - (unsigned int)numberOfSamplesSnapshot;
 - (void)setNumberOfSamplesSnapshot:(unsigned int)arg1;

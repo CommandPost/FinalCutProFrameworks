@@ -15,6 +15,7 @@
     SEL _sel;
 }
 
+- (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (unsigned int)scheduleStatusInformation;
 - (id)description;
 - (void)dealloc;

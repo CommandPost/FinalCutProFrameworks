@@ -12,26 +12,34 @@
 {
     NSTreeNode *_fileSystemRootNode;
     NSOperationQueue *_operationQueue;
+    BOOL _importWindowClosing;
 }
 
 + (id)defaultModuleNibName;
+@property(getter=isImportWindowClosing) BOOL importWindowClosing; // @synthesize importWindowClosing=_importWindowClosing;
+- (BOOL)shouldAlwaysPlacePlayhead;
+- (void)performEditAction;
+- (BOOL)editActionAllowed;
+- (void)performPlayheadButton1Action;
+- (BOOL)action1OrAction2;
+- (BOOL)wantsPlayheadActions;
+- (BOOL)wantsRanges;
+- (BOOL)wantsSkimmerInfo;
+- (id)selectedSidebarItem;
 - (BOOL)shouldDisableRangeSelectionForObject:(id)arg1;
 - (id)fileSystemRootNode;
 - (void)removeSelectionMarkers:(id)arg1 onlyRemoveOverlap:(BOOL)arg2 addSelectionMarkers:(id)arg3 extendingSelection:(BOOL)arg4;
 - (void)modifySelectionMarkersFromClip:(id)arg1 removeRange:(CDStruct_e83c9415)arg2 onlyRemoveOverlap:(BOOL)arg3 rangeToAdd:(CDStruct_e83c9415)arg4 newSelection:(id)arg5 extending:(BOOL)arg6;
-- (void)storeDefaults;
-- (void)loadDefaults;
 - (void)_saveProjectRelatedPersistentStates;
 - (void)_restoreProjectRelatedPersistentStates;
 - (void)_restoreProjectRelatedSelectionStates;
 - (void)_saveProjectRelatedSelectionStates;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)loop:(id)arg1;
-- (void)switchDisplayViews:(int)arg1;
-- (void)importClips:(id)arg1;
+- (void)importClipsWithKeywords:(id)arg1 toEvent:(id)arg2;
 - (void)_startProcessFilesOperation:(id)arg1;
 - (id)viewSwitcherSegementedControl;
-- (id)_itemsArrangeByMetadata:(id)arg1;
+- (BOOL)finishedLoading;
 - (void)updateItemsString;
 - (id)numberOfItemsString;
 - (void)revealInFinder:(id)arg1;
@@ -43,9 +51,13 @@
 - (void)_updateFilteredRanges;
 - (void)invalidateFileSystemRootNode;
 - (void)_updateFileSystemRootNode;
+- (void)sidebarRADVolumeDidEject:(id)arg1;
+- (void)sidebarRADVolumeWillEject:(id)arg1;
+- (BOOL)wantsImportMediaButton;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (id)newListViewController;
+- (id)identifier;
 - (void)dealloc;
 - (id)init;
 

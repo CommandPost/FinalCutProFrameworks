@@ -33,8 +33,6 @@
 - (void)setInitialCurveDoubleValue:(double)arg1;
 - (double)initialCurveDoubleValue;
 - (void)setCurveDoubleValue:(double)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
-- (unsigned int)sampleRamps:(double **)arg1 timeSamples:(struct **)arg2 count:(unsigned int *)arg3 overRange:(CDStruct_3c1748cc)arg4 withStep:(CDStruct_198678f7)arg5;
-- (unsigned int)sampleCurve:(double **)arg1 timeSamples:(struct **)arg2 count:(unsigned int *)arg3 overRange:(CDStruct_3c1748cc)arg4 withStep:(CDStruct_198678f7)arg5;
 - (void)getExtremaBetweenStart:(CDStruct_198678f7)arg1 end:(CDStruct_198678f7)arg2 minDoubleValue:(double *)arg3 maxDoubleValue:(double *)arg4;
 - (double)curveDoubleValueAtTime:(CDStruct_198678f7)arg1;
 - (double)doubleValueAtTime:(CDStruct_198678f7)arg1;

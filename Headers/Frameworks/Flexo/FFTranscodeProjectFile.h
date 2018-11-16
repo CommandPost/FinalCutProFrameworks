@@ -11,7 +11,6 @@
 }
 
 + (id)ReadSequenceFromFile:(id)arg1 forItem:(id)arg2 error:(id *)arg3;
-+ (id)MediaEventDocument;
 + (id)EventProject;
 + (void)ShutDown;
 + (void)Initialize;

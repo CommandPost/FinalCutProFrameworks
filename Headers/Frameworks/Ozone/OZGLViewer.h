@@ -6,14 +6,17 @@
 
 #import <Ozone/OZGLViewerOSC.h>
 
+#import "OZHGUserJobClient.h"
+#import "OZRenderClient.h"
 #import "POHostDelegate.h"
 #import "POViewDelegate.h"
 
 @class NSFont, NSImage, NSTimer;
 
-@interface OZGLViewer : OZGLViewerOSC <POHostDelegate, POViewDelegate>
+@interface OZGLViewer : OZGLViewerOSC <POHostDelegate, POViewDelegate, OZRenderClient, OZHGUserJobClient>
 {
     struct OZRenderManager *_pRenderManager;
+    struct OZDisplayCallback *_displayCallback;
     shared_ptr_92745eb9 *_pRender;
     PCRect_07ce470f _roi;
     struct PCTimer _roiChangedTimer;
@@ -25,13 +28,13 @@
     BOOL _VSyncOn;
     struct PCMutex _instructionMutex;
     struct OZRenderInstruction *_pRenderInstruction;
-    struct queue<OZRenderResult *, std::deque<OZRenderResult *, std::allocator<OZRenderResult *>>> *_pDisplayQueue;
-    struct PCMutex *_pDisplayQueueLock;
+    struct queue<std::tr1::shared_ptr<OZRenderResult>, std::deque<std::tr1::shared_ptr<OZRenderResult>, std::allocator<std::tr1::shared_ptr<OZRenderResult>>>> _displayQueue;
+    struct PCMutex _displayQueueLock;
     NSTimer *_pDisplayTimer;
     struct PCTimer *_pViewerTimer;
     struct PCAtomicValue *_pNeedsRender;
     struct PCAtomicValue *_pRenderReady;
-    struct OZRenderState *_pRenderState;
+    struct OZRenderState _renderState;
     shared_ptr_f006f9e7 *_pRenderTex;
     struct shared_ptr<PGContext> *_pCurrentColorContext;
     struct shared_ptr<PGSurface> *_pCurrentColorSurface;
@@ -46,7 +49,6 @@
     PCVector2_79efa81a _animEndPan;
     struct OZVideoOutput *_pVideoOutput;
     BOOL _channelDoneChanging;
-    BOOL _videoOutputHasError;
     BOOL _voPostDisplay;
     BOOL _useMainRenderForVideoOut;
     BOOL _renderFullViewWasOn;
@@ -56,7 +58,6 @@
     unsigned int _audioLoopCount;
     BOOL _playAudio;
     double _updateTimes[60];
-    BOOL _haveShownTooBigDialog;
     BOOL _useSceneTimeRangeEnd;
     struct PCSemaphore *_pRenderImageSignal;
     NSImage *_pRenderImageResult;
@@ -77,22 +78,24 @@
     struct OZViewPainter *_painter;
     _Bool _painterUsesHelium;
     float _backingScale;
+    struct shared_ptr<OZTimeStrategy> _timeStrategy;
+    struct shared_ptr<OZPlaybackClock> _playbackClock;
+    struct shared_ptr<OZFrameQueue> _frameQueue;
+    struct PCMutex _playbackMutex;
+    struct shared_ptr<OZFootageScheduler> _footageScheduler;
+    long long _playbackLoopCount;
+    _Bool _stopLooping;
+    double _renderRateFPS;
+    struct shared_ptr<OZPlaybackScheduler> _playbackScheduler;
 }
 
-+ (PCPtr_4c450fa5)getCamera:(int)arg1 forScene:(struct OZScene *)arg2 atTime:(const CDStruct_1b6d18a9 *)arg3 forViewState:(struct OZViewerState *)arg4;
++ (PCPtr_41ab8147)getCamera:(int)arg1 forScene:(struct OZScene *)arg2 atTime:(const CDStruct_1b6d18a9 *)arg3 forViewState:(struct OZViewerState *)arg4;
 @property(nonatomic) NSFont *tmpFont; // @synthesize tmpFont=_tmpFont;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (double)backingScaleFactor;
 - (void)didSetChannel:(struct OZChannelBase *)arg1;
 - (void)willSetChannel:(struct OZChannelBase *)arg1;
-- (void)pruneAllTokens:(const char *)arg1;
-- (void)pruneTokensExceptAtTime:(CDStruct_1b6d18a9)arg1 reason:(const char *)arg2;
-- (void)pruneTokensAtTime:(CDStruct_1b6d18a9)arg1 reason:(const char *)arg2;
-- (void)hintTokensWillImageAtTime:(CDStruct_1b6d18a9)arg1;
-- (void)scheduleTokensAtTime:(CDStruct_1b6d18a9)arg1;
-- (void)initSchedulingAtTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)getScheduleTime:(const CDStruct_1b6d18a9 *)arg1 withOffset:(const CDStruct_1b6d18a9 *)arg2 playingForward:(_Bool)arg3 withFrameDuration:(const CDStruct_1b6d18a9 *)arg4;
 - (void)locateViewTimeAtSampleBoundary;
 - (void)hideInfoBarObjectStatus;
 - (void)updateInfoBarObjectStatus:(id)arg1;
@@ -118,9 +121,10 @@
 - (void)getFilmToView:(PCMatrix44Tmpl_e98c85ee *)arg1;
 - (void)getWorldToFilm:(PCMatrix44Tmpl_e98c85ee *)arg1;
 - (id)getView;
+- (BOOL)proUI;
 - (BOOL)isMotion;
 - (id)createScaleOSCWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_f235e77a *)arg2;
+- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_ada7b58d *)arg2;
 - (void)deregisterOSC:(id)arg1 withID:(const struct PCUUID *)arg2;
 - (void)registerOSC:(id)arg1 withID:(const struct PCUUID *)arg2;
 - (void)drawElementOutline:(struct OZElement *)arg1 state:(const struct OZRenderState *)arg2 viewTransformation:(const PCMatrix44Tmpl_e98c85ee *)arg3 color:(id)arg4;
@@ -212,23 +216,24 @@
 - (void)updateAudioPlayback;
 - (void)scrubAudio:(BOOL)arg1;
 - (void)updateRenderManager;
+- (void)setUpPlayback;
 - (void)clearDisplayQueue;
 - (void)addVideoOutputRender:(struct OZRenderResult *)arg1;
-- (void)addRender:(struct OZRenderResult *)arg1;
+- (void)addRender:(shared_ptr_7e020609)arg1;
 - (_Bool)needsRender;
 - (void)ignoreNextDisplay;
 - (void)invalidatePendingRenders;
 - (void)abortRenders;
 - (void)lockFrameRate:(id)arg1;
 - (BOOL)isVSyncOn;
-- (CDStruct_1b6d18a9)getRenderTime;
-- (void)setRenderTime:(const CDStruct_1b6d18a9 *)arg1;
+- (CDStruct_1b6d18a9)frameDuration;
+- (BOOL)hasReachedEndOfPlayRange:(const CDStruct_1b6d18a9 *)arg1;
+- (CDStruct_1b6d18a9)getCurrentTime;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
+- (void)setCurrentTimeFromDisplayLink:(id)arg1;
 - (CDStruct_1b6d18a9)getNextFrameTime:(CDStruct_1b6d18a9)arg1;
-- (void)updateTime:(CDStruct_1b6d18a9 *)arg1;
-- (void)updateTime;
-- (void)checkCurrentTimeForLooping;
 - (double)getPlaybackFrameRate;
+- (BOOL)isLooping;
 - (int)getPlayMode;
 - (void)setPlayMode:(int)arg1;
 - (void)setPlayAudio:(BOOL)arg1;
@@ -243,27 +248,38 @@
 - (void)stopPause;
 - (void)thinKeyframes;
 - (void)doPause;
+- (void)resumePlaybackAfterAbort;
+- (void)pausePlaybackAfterAbort;
+- (void)stopPlayback;
+- (void)startPlayback:(const CDStruct_1b6d18a9 *)arg1;
+- (void)doPlayFromTime:(const CDStruct_1b6d18a9 *)arg1;
 - (void)doPlayFromStart;
 - (void)doPlay;
 - (void)postRedisplay:(_Bool)arg1;
 - (void)setVSync;
 - (void)updateViewerFPS;
 - (void)updateDisplay;
+- (void)animateCamera;
+- (void)updateDisplayFromDisplayLink:(struct OZRenderResult *)arg1;
+- (void)updateDisplayFromMainThread;
 - (void)requestNewRender;
 - (void)updateDisplayFromTimer;
 - (void)stopDisplayTimer;
 - (void)startDisplayTimer;
+- (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
 - (void)getRenderRequestRenderParams:(struct OZRenderParams *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)getRenderParams:(struct OZRenderParams *)arg1 forTexture:(BOOL)arg2 atTime:(CDStruct_1b6d18a9)arg3 forceFullView:(BOOL)arg4 mayReduceSpatialQuality:(BOOL)arg5;
+- (void)getRenderParams:(struct OZRenderParams *)arg1 forTexture:(BOOL)arg2 atTime:(CDStruct_1b6d18a9)arg3 forceFullView:(BOOL)arg4 mayReduceSpatialQuality:(BOOL)arg5 renderProjectResolution:(BOOL)arg6;
 - (void)getRenderParams:(struct OZRenderParams *)arg1 forTexture:(BOOL)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)postRenderInstructionForVideoOutput;
 - (void)clearRenderInstruction;
 - (void)postRenderInstructionForViewer;
 - (void)postRenderInstruction;
-- (void)postGraphBuilderInstruction;
 - (void)postEvalInstruction;
 - (void)postAudioPrefetchInstruction:(CDStruct_1b6d18a9)arg1;
 - (void)postPrefetchInstruction:(CDStruct_1b6d18a9)arg1;
+- (void)userJobCanceled:(struct OZHGUserJob *)arg1;
+- (void)userJobFinished:(struct OZHGUserJob *)arg1;
 - (_Bool)get3DIntersectionAntialiasing:(_Bool)arg1;
 - (_Bool)getScrubShapeAntialiasing:(_Bool)arg1;
 - (_Bool)getScrubHighQualityResampling:(_Bool)arg1;
@@ -271,7 +287,6 @@
 - (int)getScrubQuality:(int)arg1;
 - (_Bool)proxyScrub;
 - (void)markNeedingDisplay;
-- (void)renderCancelledFunc;
 - (PCRect_07ce470f)anticipateROI:(const PCRect_07ce470f *)arg1 forTransform:(const PCMatrix44Tmpl_e98c85ee *)arg2;
 - (float)getMonitorGamma;
 - (void)updateMonitorGamma;
@@ -294,7 +309,9 @@
 - (PCRect_07ce470f)renderBounds;
 - (PCRect_07ce470f)roi;
 - (PCRect_b601f9f3)renderGate;
+- (PCRect_b601f9f3)getViewGateAtTime:(const CDStruct_1b6d18a9 *)arg1;
 - (PCRect_b601f9f3)getViewGate;
+- (_Bool)fullViewAtTime:(const CDStruct_1b6d18a9 *)arg1;
 - (_Bool)fullView;
 - (BOOL)isActiveView;
 - (void)setDynamicResolutionMode:(_Bool)arg1;

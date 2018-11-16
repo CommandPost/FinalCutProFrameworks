@@ -16,12 +16,13 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _range;
     struct NSObject *_skimmable;
     CDStruct_1b6d18a9 _sampleDuration;
+    CDStruct_1b6d18a9 _cellDuration;
     CDStruct_e83c9415 _timeRange;
     struct CGSize _thumbSize;
     double _audioHeight;
     CDStruct_e83c9415 _clippedRange;
     double _clippedWidth;
-    unsigned long long _thumbCount;
+    double _thumbCount;
     double _contentsScale;
     BOOL _forceRegenerateLastCell;
     unsigned int _audioHasVideo:1;
@@ -32,8 +33,8 @@ __attribute__((visibility("hidden")))
 
 + (struct CGSize)thumbFrameSizeForSkimmable:(struct NSObject *)arg1 thumbHeight:(double)arg2 audioHeight:(double)arg3 maxThumbWidth:(double)arg4;
 + (struct CGSize)thumbFrameSizeForSkimmable:(struct NSObject *)arg1 thumbHeight:(double)arg2 audioHeight:(double)arg3;
-+ (id)filmstripWithSkimmable:(struct NSObject *)arg1 andRange:(CDStruct_e83c9415)arg2 timeRange:(CDStruct_e83c9415)arg3 thumbHeight:(double)arg4 audioHeight:(double)arg5 forEditing:(BOOL)arg6 clippedRange:(CDStruct_e83c9415)arg7 clippedWidth:(double)arg8 thumbCount:(unsigned long long)arg9 maxThumbWidth:(double)arg10;
-+ (id)filmstripWithSkimmable:(struct NSObject *)arg1 andRange:(CDStruct_e83c9415)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 forEditing:(BOOL)arg5 clippedRange:(CDStruct_e83c9415)arg6 clippedWidth:(double)arg7 thumbCount:(unsigned long long)arg8 maxThumbWidth:(double)arg9;
++ (id)filmstripWithSkimmable:(struct NSObject *)arg1 andRange:(CDStruct_e83c9415)arg2 timeRange:(CDStruct_e83c9415)arg3 thumbHeight:(double)arg4 audioHeight:(double)arg5 forEditing:(BOOL)arg6 clippedRange:(CDStruct_e83c9415)arg7 clippedWidth:(double)arg8 thumbCount:(double)arg9 maxThumbWidth:(double)arg10 cellDuration:(CDStruct_1b6d18a9)arg11 squareThumbs:(BOOL)arg12;
++ (id)filmstripWithSkimmable:(struct NSObject *)arg1 andRange:(CDStruct_e83c9415)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 forEditing:(BOOL)arg5 clippedRange:(CDStruct_e83c9415)arg6 clippedWidth:(double)arg7 thumbCount:(double)arg8 maxThumbWidth:(double)arg9 cellDuration:(CDStruct_1b6d18a9)arg10 squareThumbs:(BOOL)arg11;
 @property(readonly, nonatomic) double audioHeight; // @synthesize audioHeight=_audioHeight;
 @property(readonly, nonatomic) struct CGSize thumbSize; // @synthesize thumbSize=_thumbSize;
 @property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable; // @synthesize skimmable=_skimmable;
@@ -57,14 +58,14 @@ __attribute__((visibility("hidden")))
 - (void)populateThumbnails;
 @property(readonly, nonatomic) struct CGSize overallSize;
 @property(nonatomic) double contentsScale;
-- (void)setThumbCount:(unsigned long long)arg1;
-@property(readonly, nonatomic) unsigned long long thumbCount;
+- (void)setThumbCount:(double)arg1;
+@property(readonly, nonatomic) double thumbCount;
 - (void)replaceCell:(id)arg1 withCell:(id)arg2;
 - (id)description;
 - (void)dealloc;
 - (void)releaseLayer;
 - (void)updateIfNeeded;
-- (id)initWithSkimmable:(struct NSObject *)arg1 andRange:(CDStruct_e83c9415)arg2 timeRange:(CDStruct_e83c9415)arg3 thumbHeight:(double)arg4 audioHeight:(double)arg5 forEditing:(BOOL)arg6 clippedRange:(CDStruct_e83c9415)arg7 clippedWidth:(double)arg8 thumbCount:(unsigned long long)arg9 maxThumbWidth:(double)arg10;
+- (id)initWithSkimmable:(struct NSObject *)arg1 andRange:(CDStruct_e83c9415)arg2 timeRange:(CDStruct_e83c9415)arg3 thumbHeight:(double)arg4 audioHeight:(double)arg5 forEditing:(BOOL)arg6 clippedRange:(CDStruct_e83c9415)arg7 clippedWidth:(double)arg8 thumbCount:(double)arg9 maxThumbWidth:(double)arg10 cellDuration:(CDStruct_1b6d18a9)arg11 squareThumbs:(BOOL)arg12;
 
 @end
 

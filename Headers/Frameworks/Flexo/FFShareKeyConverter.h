@@ -8,15 +8,14 @@
 
 #import "FFMetadataProtocol.h"
 
-@class FFAnchoredSequence;
-
 __attribute__((visibility("hidden")))
 @interface FFShareKeyConverter : NSObject <FFMetadataProtocol>
 {
-    FFAnchoredSequence *_target;
+    id _target;
 }
 
 + (id)defaultValueForKey:(id)arg1;
++ (id)defaultConsumerValueForKey:(id)arg1;
 - (void)_writeUnlock:(const char *)arg1;
 - (void)_writeLock:(const char *)arg1 file:(const char *)arg2 line:(unsigned int)arg3;
 - (void)_readUnlock:(const char *)arg1;

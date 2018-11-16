@@ -7,6 +7,7 @@
 @class NSEvent, NSObject<POHostDelegate>, NSObject<POObjectDelegate>, NSObject<POViewDelegate>, NSString, POOnScreenControl;
 
 @protocol POHostDelegate
+- (BOOL)proUI;
 - (BOOL)isMotion;
 - (id)createScaleOSCWithHostDelegate:(NSObject<POHostDelegate> *)arg1 andViewDelegate:(NSObject<POViewDelegate> *)arg2 andObjectDelegate:(NSObject<POObjectDelegate> *)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_ada7b58d *)arg2;

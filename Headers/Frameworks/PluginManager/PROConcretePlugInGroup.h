@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSMutableArray, NSMutableDictionary, NSString;
+@class NSLock, NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface PROConcretePlugInGroup : NSObject
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSString *name;
     NSString *displayName;
     NSMutableDictionary *protocols;
+    NSLock *mutex;
 }
 
 - (id)plugInsForProtocols:(id)arg1;

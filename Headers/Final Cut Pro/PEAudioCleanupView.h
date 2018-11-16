@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class LKButton, LKProgressIndicator, LKScrollView, LKSegmentedControl, LKTextField, NSProThemeImageView, NSProView, PEAudioCleanupBox, PEAudioCleanupContainerModule, PEAudioCleanupSlider, PEAudioCleanupViewTileView;
+@class LKButton, LKProgressIndicator, LKScrollView, LKSegmentedControl, LKSlider, LKTextField, NSProThemeImageView, NSProView, PEAudioCleanupBox, PEAudioCleanupContainerModule, PEAudioCleanupViewTileView;
 
 @interface PEAudioCleanupView : NSView
 {
@@ -18,9 +18,9 @@
     LKButton *_humEnabledButton;
     LKButton *_noiseEnabledButton;
     LKButton *_loudEnabledButton;
-    PEAudioCleanupSlider *_noiseAmountSlider;
-    PEAudioCleanupSlider *_loudAmountSlider;
-    PEAudioCleanupSlider *_loudUniformitySlider;
+    LKSlider *_noiseAmountSlider;
+    LKSlider *_loudAmountSlider;
+    LKSlider *_loudUniformitySlider;
     LKButton *_humToggle;
     LKTextField *_noiseAmountText;
     LKTextField *_loudAmountText;
@@ -59,28 +59,38 @@
 @property BOOL panelEnabled; // @synthesize panelEnabled=_panelEnabled;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 - (void)_layoutBoxElements;
-- (void)_layoutHeaderAndFooter;
+- (void)_layoutAutoFixButton;
 - (void)_setupNothingToEnhanceText;
 - (void)_setAllInfoText:(id)arg1;
 - (void)_syncEffectStateToUI;
 - (void)_updateWarnings;
-- (void)_updateSliderValues;
+- (void)_updateWarningForOperation:(int)arg1 withImageView:(id)arg2;
 - (void)setAutoEnhanceButtonEnabled:(BOOL)arg1;
 - (void)_setAutoEnhanceButtonEnabled:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
-- (void)setNoiseAmountText:(double)arg1;
-- (void)setLoudUniformText:(double)arg1;
-- (void)setLoudAmountText:(double)arg1;
+- (void)setNoiseAmountText:(id)arg1;
+- (void)setLoudUniformText:(id)arg1;
+- (void)setLoudAmountText:(id)arg1;
 - (void)setHeaderDurationText:(id)arg1;
 - (void)setHeaderNameText:(id)arg1;
 - (void)hideSpinners;
 - (void)stopSpinner:(id)arg1;
 - (void)_stopSpinner:(id)arg1;
 - (void)setPanelToAnalyzing:(BOOL)arg1;
-- (void)_setPanelToAnalyzing:(id)arg1;
 - (void)hideEnhanceUI:(BOOL)arg1;
 - (void)updatePanel;
-- (void)setupControls;
+- (void)endSliderAction:(id)arg1;
+- (void)startSliderAction:(id)arg1;
+- (id)_sliderKeyFromControl:(id)arg1;
+- (void)_setupControlActions;
+- (void)humSelectionChanged:(id)arg1;
+- (void)humReductionButtonToggle:(id)arg1;
+- (void)noiseRedutionSliderChanged:(id)arg1;
+- (void)noiseReductionButtonToggle:(id)arg1;
+- (void)loudnessUniformitySliderChanged:(id)arg1;
+- (void)loudnessAmountSliderChanged:(id)arg1;
+- (void)loudnessButtonToggle:(id)arg1;
+- (void)autoFixButtonToggle:(id)arg1;
 - (void)awakeFromNib;
 
 @end

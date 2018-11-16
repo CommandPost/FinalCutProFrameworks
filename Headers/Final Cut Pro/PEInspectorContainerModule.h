@@ -63,11 +63,12 @@
 - (void)viewDidLoad;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)unhideWithoutActivation:(id)arg1;
+- (void)moduleDidFinishRevealAnimation;
 - (unsigned long long)revealAnimationStyle;
 - (void)hideModule:(id)arg1;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
-- (void)setSuspended:(BOOL)arg1;
 - (void)dealloc;
 - (id)init;
 

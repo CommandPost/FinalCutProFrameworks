@@ -24,7 +24,7 @@
 - (void)sidebarModuleSelectionDidChange:(id)arg1;
 - (void)updateFilter:(id)arg1;
 - (void)setNoItemsInfoTextVisible:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)updateBrowserContents:(id)arg1;
+- (void)updateBrowserContents:(id)arg1 clearSearchString:(BOOL)arg2;
 - (void)module:(id)arg1 setItemCountTextField:(id)arg2;
 - (void)module:(id)arg1 didDoubleClickWithEffect:(id)arg2;
 - (void)module:(id)arg1 didDoubleClickWithEffectID:(id)arg2;
@@ -41,6 +41,7 @@
 - (void)configureSidebar:(id)arg1;
 - (id)newSidebarModule;
 - (id)newItemsModule;
+- (void)dealloc;
 
 @end
 

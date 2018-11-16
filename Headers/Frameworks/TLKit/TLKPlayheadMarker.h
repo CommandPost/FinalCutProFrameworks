@@ -4,13 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import <TLKit/TLKAccessibilityLayer.h>
 
+#import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
 @class TLKThemeBackedLayer;
 
-@interface TLKPlayheadMarker : CALayer <TLKPartInfo>
+@interface TLKPlayheadMarker : TLKAccessibilityLayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
     TLKThemeBackedLayer *_head;
     TLKThemeBackedLayer *_body;
@@ -24,6 +25,13 @@
     } _pmFlags;
 }
 
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (id)accessibilityDescription;
+- (id)accessibilityRole;
+- (struct CGRect)accessibilityRect;
+- (struct CGRect)elementFrame;
 @property BOOL snapped;
 @property BOOL skimming;
 @property BOOL skimmingPlayhead;
@@ -34,8 +42,10 @@
 - (id)partIdentifier;
 - (void)layoutSublayers;
 - (struct CGRect)playheadFrame;
+- (void)setPosition:(struct CGPoint)arg1;
 - (id)init;
 - (void)updatePlayhead;
+- (void)setDelegate:(id)arg1;
 - (id)timelineView;
 
 @end

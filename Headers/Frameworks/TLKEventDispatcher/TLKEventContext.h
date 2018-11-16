@@ -6,13 +6,12 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSDictionary, NSEvent, TLKEventDispatcher, TLKEventHandler, TLKPartArray;
+@class NSDictionary, NSEvent, TLKEventDispatcher, TLKEventHandler, TLKPartArray;
 
 @interface TLKEventContext : NSObject
 {
     TLKEventDispatcher *_dispatcher;
     TLKPartArray *_partArray;
-    NSArray *_partNames;
     TLKEventHandler *_handler;
     NSEvent *_event;
     NSDictionary *_eventDescription;

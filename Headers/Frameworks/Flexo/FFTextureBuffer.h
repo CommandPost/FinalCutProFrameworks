@@ -19,6 +19,8 @@
 
 + (void)teardown;
 + (void)initialize;
+- (id).cxx_construct;
+- (struct HGGLTexture *)newHGTextureWithDetachFromRenderer;
 - (void)setBackingObject:(id)arg1;
 - (double)height;
 - (double)width;

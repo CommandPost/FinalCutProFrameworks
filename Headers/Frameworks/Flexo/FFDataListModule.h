@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFPersistentModule.h>
+#import "LKViewModule.h"
 
 @class FFAnchoredCollection, FFContext, FFDataListHeaderView, FFDataListModeViewController, LKButton, LKSearchField, LKTextField, NSArray, NSMutableDictionary, NSSet, NSView;
 
-@interface FFDataListModule : FFPersistentModule
+@interface FFDataListModule : LKViewModule
 {
     BOOL _showsContainedItems;
     BOOL _searchesEffects;
@@ -34,9 +34,13 @@
     NSView *_contentContainerView;
     FFDataListModeViewController *_curModeViewController;
     BOOL _debugDisplayPlayheadOnItem;
+    long long clipFilterTyle;
+    long long tagFilterType;
 }
 
 @property(nonatomic) BOOL debugDisplayPlayheadOnItem; // @synthesize debugDisplayPlayheadOnItem=_debugDisplayPlayheadOnItem;
+@property(nonatomic) long long tagFilterType; // @synthesize tagFilterType;
+@property(nonatomic) long long clipFilterTyle; // @synthesize clipFilterTyle;
 @property(retain, nonatomic) FFDataListModeViewController *curModeViewController; // @synthesize curModeViewController=_curModeViewController;
 @property(retain, nonatomic) NSView *contentContainerView; // @synthesize contentContainerView=_contentContainerView;
 @property(retain, nonatomic) LKTextField *infoLabel; // @synthesize infoLabel=_infoLabel;
@@ -79,8 +83,6 @@
 - (void)syncToTimelineSelection:(id)arg1;
 - (void)timelineDidStopDragging:(id)arg1;
 - (void)timelineWillStartDragging:(id)arg1;
-- (long long)tagsDisplayedItemTypes;
-- (long long)clipsDisplayedItemTypes;
 - (void)dataListShouldDeleteItemsAtIndexPaths:(id)arg1;
 - (void)dataListShouldSearch;
 - (void)timeRateChangedForContext:(id)arg1;
@@ -101,9 +103,8 @@
 - (void)switchModes:(int)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)rangeInvalidated:(id)arg1;
-- (void)storeDefaults;
-- (void)loadDefaults;
-- (id)registrationDefaults;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

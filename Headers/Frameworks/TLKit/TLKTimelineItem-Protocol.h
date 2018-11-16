@@ -18,7 +18,6 @@
 @property(readonly) long long timelineVerticalIndex;
 @property(readonly) CDStruct_1b6d18a9 timelineParentAnchorOffset;
 @property(readonly) CDStruct_1b6d18a9 timelineAnchorOffset;
-@property(readonly) struct CGSize aspectRatio;
 @property(readonly) NSString *timelineDisplayName;
 @end
 

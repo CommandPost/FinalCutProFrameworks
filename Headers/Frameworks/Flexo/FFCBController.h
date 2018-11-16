@@ -55,8 +55,8 @@ __attribute__((visibility("hidden")))
 - (void)setPuckControllersDataSource:(id)arg1;
 - (void)addPuckControllersToList:(id)arg1 forBoard:(int)arg2;
 - (void)loadPuckControllerList;
-- (CDStruct_d2b197d1)trackingInsetsForBoardType:(int)arg1;
-- (CDStruct_d2b197d1)imageInsetsForBoardType:(int)arg1;
+- (CDStruct_83cd8af5)trackingInsetsForBoardType:(int)arg1;
+- (CDStruct_83cd8af5)imageInsetsForBoardType:(int)arg1;
 - (id)imageForBoardType:(int)arg1;
 - (id)accessibilityHelpTagForBoardType:(int)arg1;
 - (id)accessibilityTitleForBoardType:(int)arg1;

@@ -21,19 +21,23 @@
     NSUndoManager *_undoManager;
     NSImage *_icon;
     BOOL _isUnmounting;
+    BOOL _useUnclaimedURLs;
     NSMutableArray *_unclaimedURLs;
+    NSMutableArray *_pathPackClaimedURLs;
 }
 
 + (short)volumeRefNumFromPath:(id)arg1;
 + (BOOL)pathIsValidVolume:(id)arg1;
 + (id)volumeWithPath:(id)arg1 undoManager:(id)arg2;
 - (id).cxx_construct;
+- (BOOL)isiOSDevice;
 - (BOOL)isFolder;
 - (BOOL)isArchive;
 - (BOOL)isUnmounting;
 - (BOOL)isLeaf;
+- (id)consumerIcon;
 - (id)icon;
-- (void)addUnclaimedURLs:(id)arg1;
+- (void)addClaimedURLs:(id)arg1;
 - (id)unclaimedURLs;
 - (id)valueForUndefinedKey:(id)arg1;
 - (id)valueForKey:(id)arg1;

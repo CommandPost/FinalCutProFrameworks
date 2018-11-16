@@ -13,6 +13,7 @@
     struct CGRect _nonFullscreenFrame;
 }
 
++ (unsigned long long)nextAvailableScreenIndexExcludingIndexes:(id)arg1;
 + (unsigned long long)nextAvailableScreenIndexExcluding:(unsigned long long)arg1;
 + (Class)windowClass;
 + (id)fullScreenWindowModule;

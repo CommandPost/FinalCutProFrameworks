@@ -11,7 +11,7 @@
 #import "NSOpenSavePanelDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFImportGoToFolderSheetController, FFImportNavigationController, FFImportOrganizerFilmstripModule, FFImportOrganizerOptionsSheetConnector, FFImportOrganizerSplitView, FFImportTapeModule, FFNavHeaderView, FFSidebarModule, LKButton, LKImageView, LKPaneCapView, LKPopUpButton, LKProgressIndicator, LKSegmentedControl, LKSlider, LKTextField, LKViewModule, NSObject<FFOrganizerMasterItem>, NSProButton, NSProThemeImageView, NSProView, NSView, OKPaneCapItemView;
+@class FFImportGoToFolderSheetController, FFImportNavigationController, FFImportOrganizerFilmstripModule, FFImportOrganizerOptionsSheetConnector, FFImportOrganizerSplitView, FFImportSeparator, FFImportTapeModule, FFLibrary, FFMediaEventProject, FFNavHeaderView, LKButton, LKImageView, LKPaneCapView, LKPopOverWindow, LKPopUpButton, LKProgressIndicator, LKSegmentedControl, LKSlider, LKTextField, LKViewModule, NSProButton, NSProTextField, NSProThemeImageView, NSProView, NSSet, NSTextField, NSView, NSWindow, OKPaneCapItemView;
 
 @interface FFImportOrganizerModule : FFEventsSuperModule <NSWindowDelegate, FFImportTapeModuleDelegate, NSOpenSavePanelDelegate, NSMenuDelegate>
 {
@@ -23,7 +23,6 @@
     FFImportOrganizerFilmstripModule *_filmstripModule;
     FFImportTapeModule *_tapeModule;
     LKViewModule *_playerContainerModule;
-    FFSidebarModule *_mediaEventOrganizerSidebarModule;
     FFImportOrganizerSplitView *_radSplitView;
     FFImportOrganizerSplitView *_tapeSplitView;
     LKPaneCapView *_filmstripHeaderPaneCapView;
@@ -32,7 +31,6 @@
     LKTextField *_itemsCountTextField;
     OKPaneCapItemView *_itemsCountPaneCapItemView;
     LKButton *_createCameraArchiveButton;
-    NSObject<FFOrganizerMasterItem> *_sidebarItemForContextualMenu;
     FFImportNavigationController *_navController;
     BOOL _restoreShowSkimmerInfo;
     BOOL _ptpDeviceSelected;
@@ -43,12 +41,20 @@
     BOOL _updatingSplitViewPosition;
     BOOL _treeNodeIsProcessing;
     BOOL _observingTranscodingCheckBoxes;
+    BOOL _revertCopyToMediaFolderPreference;
+    BOOL _previousCopyToMediaFolderPreference;
+    LKPopOverWindow *_navClipAttributesPopOverWindow;
+    FFMediaEventProject *_initialEvent;
+    NSSet *_initialKeywords;
     NSProView *_clipAppearancePopOverView_Filmstrip;
     NSProView *_clipAppearancePopOverView_List;
     NSProView *_clipAppearancePopOverView_List_FileSystem;
     NSProThemeImageView *_smallZoomImage;
     NSProThemeImageView *_largeZoomImage;
     LKSlider *_itemSizeSlider;
+    NSProTextField *_clipSizeLabel;
+    NSProTextField *_optionsLabel;
+    FFImportSeparator *_separatorBox;
     NSProButton *_toggleAudioWaveformsCheckbox_Filmstrip;
     NSProButton *_toggleAudioWaveformsCheckbox_List;
     NSProButton *_toggleAudioWaveformsCheckbox_List_FileSystem;
@@ -63,15 +69,45 @@
     LKPopUpButton *_navPathPopUpButton;
     LKImageView *_navCameraImageView;
     LKTextField *_navCameraNameTextField;
+    LKButton *_navClipAttributesButton;
+    LKTextField *_importToLabel;
+    LKPopUpButton *_eventPopUpButton;
+    NSTextField *_eventTextField;
+    NSWindow *_newEventPanel;
+    LKPopUpButton *_photoVideoPopup;
+    FFLibrary *_eventLibrary;
+    FFMediaEventProject *_currentEvent;
 }
 
++ (void)targetInfoForItems:(id)arg1 targetInfo:(CDStruct_7da301ea *)arg2;
++ (void)initialize;
 + (id)keyPathsForValuesAffectingCanArchive;
+@property(retain, nonatomic) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
+@property(retain, nonatomic) FFLibrary *eventLibrary; // @synthesize eventLibrary=_eventLibrary;
+@property NSTextField *eventTextField; // @synthesize eventTextField=_eventTextField;
+@property(retain, nonatomic) NSSet *initialKeywords; // @synthesize initialKeywords=_initialKeywords;
+@property(retain, nonatomic) FFMediaEventProject *initialEvent; // @synthesize initialEvent=_initialEvent;
+@property LKPopUpButton *eventPopUpButton; // @synthesize eventPopUpButton=_eventPopUpButton;
+@property(readonly) FFNavHeaderView *navHeaderView; // @synthesize navHeaderView=_navHeaderView;
 @property BOOL treeNodeIsProcessing; // @synthesize treeNodeIsProcessing=_treeNodeIsProcessing;
 @property(readonly) unsigned long long fileItemsCount; // @synthesize fileItemsCount=_fileItemsCount;
 @property(readonly) unsigned long long selectedFileItemsCount; // @synthesize selectedFileItemsCount=_selectedFileItemsCount;
 @property(retain, nonatomic) FFImportNavigationController *navController; // @synthesize navController=_navController;
-@property(retain, nonatomic) FFSidebarModule *mediaEventOrganizerSidebarModule; // @synthesize mediaEventOrganizerSidebarModule=_mediaEventOrganizerSidebarModule;
 @property(retain, nonatomic) LKViewModule *playerContainerModule; // @synthesize playerContainerModule=_playerContainerModule;
+- (void)removeAllSelectionMarkersFromRADClips;
+- (id)sidebarItemForMenuEvent;
+- (void)selectSidebarItem:(id)arg1;
+- (id)selectedSidebarItem;
+- (id)validateAndCreateEvent;
+- (void)newEventSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)newEventSheetOKButton:(id)arg1;
+- (void)newEventSheetCancelButton:(id)arg1;
+- (void)eventSelected:(id)arg1;
+- (void)resetNewEventName;
+- (void)resetEventPopUpButtonAndTextField;
+- (void)resetEventPopUpButtonForNewEvent:(id)arg1;
+- (void)chooseNewEventLibrary:(id)arg1;
+- (void)addEventsToMenu:(id)arg1;
 - (BOOL)canBeginPlaying;
 - (void)setDataReloadingSuspended:(BOOL)arg1;
 - (BOOL)clipLoadingSuspended;
@@ -112,9 +148,9 @@
 - (void)goForward:(id)arg1;
 - (void)goBack:(id)arg1;
 - (void)goToNavigationItem:(id)arg1 isBackwards:(BOOL)arg2;
-- (void)sidebarModuleSelectionDidChange:(id)arg1;
-- (void)sidebarModule:(id)arg1 willSelectItems:(id)arg2;
-- (BOOL)sidebarModule:(id)arg1 shouldSelectItem:(id)arg2;
+- (void)sidebarModuleSelectionDidChangeToItem:(id)arg1;
+- (void)sidebarModuleSelectionWillChangeToItem:(id)arg1;
+- (void)importMediaSidebarSelectionDidChangeNotification:(id)arg1;
 - (void)setNewItemsModule:(id)arg1 newImportMode:(int)arg2 animate:(BOOL)arg3;
 - (BOOL)windowShouldClose:(id)arg1;
 - (void)deselectAll:(id)arg1;
@@ -134,24 +170,29 @@
 - (void)revertCameraVolumeName:(id)arg1;
 - (void)renameCameraVolume:(id)arg1;
 - (void)revealVolumeInFinder:(id)arg1;
+- (void)stopUsingMedia:(id)arg1;
 - (void)unmountVolume:(id)arg1;
 - (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
 - (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)showImportPanel:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)menuDidClose:(id)arg1;
-- (void)menuWillOpen:(id)arg1;
-- (id)sidebarModule:(id)arg1 menuForItem:(id)arg2 event:(id)arg3;
 - (void)keyDown:(id)arg1;
 - (void)goToFolderSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)setShowFilmstripView:(BOOL)arg1;
 - (BOOL)showFilmstripView;
 - (void)volumeWillUnmount:(id)arg1;
-- (void)configureSidebar:(id)arg1;
+- (void)configureSidebar;
 - (id)currentNoItemsString;
 @property(readonly, nonatomic) FFImportTapeModule *tapeModule;
 @property(readonly, nonatomic) FFImportOrganizerFilmstripModule *filmstripModule;
-- (id)newSidebarModule;
+- (id)newMediaSidebarModule;
 - (id)newItemsModule;
+- (void)photoVideoPopupAction:(id)arg1;
+- (void)popOverWindowDidCancel:(id)arg1;
+- (void)reenableNavClipAttributesButton;
+- (void)navClipAttributesDidResignKey:(id)arg1;
+- (void)popUpNavClipAttributes:(id)arg1;
 - (void)clipAttributesPopOverWindowDidResign:(id)arg1;
 - (void)reenableZoomBezel;
 - (void)popUpClipAttributes:(id)arg1;
@@ -159,12 +200,14 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_stopObservingTranscodingCheckBoxes;
 - (void)_startObservingTranscodingCheckBoxes;
+- (void)removePaneCapItem:(id)arg1;
 - (void)addPaneCapItem:(id)arg1;
 - (void)unloadClipAppearanceNib;
 - (void)loadClipAppearanceNib;
 - (void)unloadNavControlsNib;
 - (void)loadNavControlsNib;
 - (void)resetNavHeaderView;
+- (id)contentLayoutDictionary;
 - (id)moduleFooterAccessoryView;
 - (BOOL)wantsFooterBar;
 - (void)viewDidLoad;

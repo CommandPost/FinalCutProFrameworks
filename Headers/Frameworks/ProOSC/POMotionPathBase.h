@@ -54,11 +54,11 @@
     double *_samplesX;
     double *_samplesY;
     double *_samplesZ;
-    int _numberOfSamples;
+    unsigned int _numberOfSamples;
     unsigned int _sampling;
-    void **_keypointsX;
-    void **_keypointsY;
-    void **_keypointsZ;
+    struct vector<void *, std::allocator<void *>> _keypointsX;
+    struct vector<void *, std::allocator<void *>> _keypointsY;
+    struct vector<void *, std::allocator<void *>> _keypointsZ;
     struct vector<POKeypoint, std::allocator<POKeypoint>> _keypoints;
     double _resolution;
     struct CGRect _selectionViewVolume;

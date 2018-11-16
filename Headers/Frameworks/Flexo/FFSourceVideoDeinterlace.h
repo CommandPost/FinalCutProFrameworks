@@ -17,7 +17,9 @@ __attribute__((visibility("hidden")))
 + (Class)streamClass;
 - (double)preferredScaleFactorForQuality:(int)arg1;
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (unsigned long long)getDeinterlaceTypeToUseForContext:(id)arg1;
 - (CDStruct_e83c9415)timeRange;
+- (id)renderFormat:(id)arg1;
 - (id)nativeVideoProps;
 - (unsigned long long)deinterlaceType;
 - (void)dealloc;

@@ -6,9 +6,11 @@
 
 #import "NSProView.h"
 
+#import "OZRenderClient.h"
+
 @class NSBitmapImageRep, NSImage;
 
-@interface OZHistogramView : NSProView
+@interface OZHistogramView : NSProView <OZRenderClient>
 {
     struct OZChannelHistogram *_pHistogramChannel;
     NSImage *_pHistogramImage;
@@ -18,6 +20,8 @@
     struct GLRenderer *_renderer;
 }
 
+- (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
 - (void)renderCancel:(id)arg1;
 - (void)renderCompletion:(id)arg1;
 - (void)setHistogramOutOfDate:(BOOL)arg1;

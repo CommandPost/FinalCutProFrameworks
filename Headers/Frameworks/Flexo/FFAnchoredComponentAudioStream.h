@@ -10,7 +10,6 @@ __attribute__((visibility("hidden")))
 @interface FFAnchoredComponentAudioStream : FFStreamAudio
 {
     double _sampleRate;
-    struct FFGraphAttachedParameterChaser *_keyframeChaser;
     struct FFAudioEffectsBuss *_effectsBuss;
     struct FFAudioNode *_sequenceTimeNode;
 }

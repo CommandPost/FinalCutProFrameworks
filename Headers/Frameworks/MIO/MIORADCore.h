@@ -21,10 +21,15 @@
     NSMutableArray *mAutoIngestVolumesInProgress;
     NSString *mDestinationPath;
     id <FFRADAnalyzerControllerDelegate> _dominantMotionTracker;
+    BOOL _forceStereoMixdown;
+    BOOL _hasProCameraSupport;
 }
 
++ (void)updateRADGPSMetadataToSpotlightInDictionary:(id)arg1;
 + (id)coreWithPath:(id)arg1;
 + (id)core;
+@property BOOL hasProCameraSupport; // @synthesize hasProCameraSupport=_hasProCameraSupport;
+@property BOOL forceStereoMixdown; // @synthesize forceStereoMixdown=_forceStereoMixdown;
 @property BOOL isTearingDown; // @synthesize isTearingDown=mIsTearingDown;
 @property BOOL isPaused; // @synthesize isPaused=mIsPaused;
 @property BOOL isIngesting; // @synthesize isIngesting=mIsIngesting;
@@ -65,7 +70,7 @@
 - (id)metadataKeys;
 - (void)dealloc;
 - (id)init;
-- (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 proCameraSupport:(BOOL)arg2;
 
 @end
 

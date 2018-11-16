@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-@class FFFileImportProcessingFilesDialogController, FFFileImportRejectedDialogController, FFFileImportValidateFilesDialogController, FFMediaEventProject, NSArray, NSMutableArray, NSMutableDictionary, NSSet;
+@class FFFileImportProcessingFilesDialogController, FFFileImportRejectedDialogController, FFFileImportValidateFilesDialogController, FFMediaEventProject, NSArray, NSDictionary, NSMutableArray, NSSet, NSThread;
 
 @interface FFFileImporter : NSObject
 {
-    NSMutableDictionary *_options;
     NSArray *_importURLs;
+    NSDictionary *_importURLsInfo;
     NSMutableArray *_acceptedURLs;
     NSMutableArray *_acceptedKeywordSets;
     NSSet *_initialEventKeywordNames;
@@ -20,11 +20,13 @@
     FFFileImportValidateFilesDialogController *_validateFilesController;
     FFFileImportProcessingFilesDialogController *_processingFilesController;
     FFFileImportRejectedDialogController *_rejectedDialogController;
+    NSThread *_validationThread;
 }
 
 @property(retain) FFFileImportRejectedDialogController *rejectedDialogController; // @synthesize rejectedDialogController=_rejectedDialogController;
 - (void)rejectedSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (BOOL)validateURLs:(id)arg1 forImportToLocation:(id)arg2 showWarnings:(BOOL)arg3 window:(id)arg4 acceptedURLs:(id *)arg5;
+- (void)cancelValidation;
+- (BOOL)validateURLs:(id)arg1 withURLsInfo:(id)arg2 forImportToLocation:(id)arg3 showWarnings:(BOOL)arg4 window:(id)arg5 copyFiles:(BOOL)arg6 acceptedURLs:(id *)arg7;
 - (void)preflightFilesBackgroundThread:(id)arg1;
 - (void)scanURLForFiles:(id)arg1 fileURLs:(id)arg2 keywordSets:(id)arg3 keywords:(id)arg4 rejectedURLs:(id)arg5;
 - (id)importToEvent:(id)arg1 manageFileType:(int)arg2 processNow:(BOOL)arg3 warnClipsAlreadyExist:(BOOL)arg4 error:(id *)arg5;

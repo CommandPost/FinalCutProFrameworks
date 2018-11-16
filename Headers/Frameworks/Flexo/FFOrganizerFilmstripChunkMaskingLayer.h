@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _isStill;
 }
 
-+ (id)makeNewLayerAsMaskLayerOf:(id)arg1;
++ (id)makeNewLayerAsMaskLayerOf:(id)arg1 leftinset:(double)arg2 rightinset:(double)arg3;
 @property BOOL isStill; // @synthesize isStill=_isStill;
 - (void)drawInContext:(struct CGContext *)arg1;
 @property int leftEdgeType;

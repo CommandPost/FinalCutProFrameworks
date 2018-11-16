@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)rangeInvalidated:(id)arg1;
 - (void)updateMagicFrame;
 - (double)preferredScaleFactorForQuality:(int)arg1;
+- (id)renderFormat:(id)arg1;
 - (id)nativeVideoProps;
 - (id)_videoProps;
 - (CDStruct_e83c9415)timeRange;

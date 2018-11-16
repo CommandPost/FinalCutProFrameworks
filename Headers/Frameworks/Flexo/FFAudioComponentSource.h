@@ -61,10 +61,6 @@ __attribute__((visibility("hidden")))
 - (id)cachedSortedLocalizedRoles;
 - (id)transitionTimelineItemNext;
 - (id)transitionTimelineItemPrevious;
-- (void)_effectWasRemoved:(id)arg1;
-- (void)_effectWillBeRemoved:(id)arg1;
-- (void)_effectWasModified:(id)arg1;
-- (void)_effectWasAdded:(id)arg1;
 - (id)modelLockingObject;
 - (id)trackType;
 - (id)mdTargetForKey:(id)arg1;
@@ -100,6 +96,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEquivalentToComponentSource:(id)arg1;
 - (unsigned int)numSourceChannels;
 - (id)layoutItemKey;
+- (id)layoutKey;
 - (struct NSObject *)skimmableObject;
 - (id)backingAnchoredObject;
 - (id)copyWithZone:(struct _NSZone *)arg1;

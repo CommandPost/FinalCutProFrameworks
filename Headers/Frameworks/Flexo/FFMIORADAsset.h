@@ -19,7 +19,6 @@
     BOOL _canIngest;
     CDStruct_1b6d18a9 _startForOfflineProvider;
     CDStruct_1b6d18a9 _durationForOfflineProvider;
-    BOOL _isUnmounting;
     BOOL _isUnmounted;
     BOOL _isTempAsset;
     MIOInputSubSegment *_subSegment;
@@ -37,6 +36,7 @@
 @property BOOL ingested; // @synthesize ingested=_ingested;
 @property(retain, nonatomic) NSString *clipID; // @synthesize clipID=_clipID;
 @property(retain, nonatomic) MIORADClip *clip; // @synthesize clip=_clip;
+- (void)updateGPSMetadata;
 - (long long)timecodeDisplayDropFrame;
 - (int)highQualityOfflineReason;
 - (BOOL)mediaAvailable;
@@ -45,9 +45,8 @@
 - (void)invalidateAssetForNotification:(id)arg1 withClip:(id)arg2;
 - (void)setInOutPair:(struct FigTimePair)arg1;
 - (id)contentType;
-- (void)ingestFinishedWithURL:(id)arg1 event:(id)arg2;
+- (void)ingestFinishedWithURL:(id)arg1 event:(id)arg2 isIngestingToExternal:(BOOL)arg3;
 - (BOOL)isMounted;
-- (BOOL)isUnmounting;
 - (id)newProvider;
 - (void)updateRADClip;
 - (id)copyWithZone:(struct _NSZone *)arg1;

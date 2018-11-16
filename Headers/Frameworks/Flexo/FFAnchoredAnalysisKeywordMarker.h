@@ -11,7 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)analysisKeywordForLocalizedString:(id)arg1;
++ (id)displayNameForKeyword:(id)arg1;
 + (id)copyClassDescription;
+- (BOOL)update_fixAnalysisKeywords;
+- (id)markerKeywordDisplayNames;
 - (void)setDisplayName:(id)arg1;
 - (id)displayName;
 - (id)trackType;

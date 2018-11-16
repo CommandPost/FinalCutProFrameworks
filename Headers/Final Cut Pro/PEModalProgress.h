@@ -8,14 +8,15 @@
 
 #import "FFModalProgress.h"
 
-@class NSButton, NSDate, NSMutableArray, NSProgressIndicator, NSRecursiveLock, NSWindow;
+@class NSButton, NSDate, NSMutableArray, NSObject, NSProgressIndicator, NSWindow;
 
 @interface PEModalProgress : NSWindowController <FFModalProgress>
 {
     id _titleText;
     id _statusText;
     NSProgressIndicator *_progressIndicator;
-    NSRecursiveLock *_lock;
+    NSObject *_lock;
+    unsigned long long _lockCount;
     BOOL _isPastStartup;
     NSMutableArray *_statusStrings;
     int _progressStatus;
@@ -44,6 +45,9 @@
 - (id)_statusDisplay;
 - (void)_clearRequestDate;
 - (void)setIsPastStartup:(BOOL)arg1;
+- (unsigned long long)lockReset:(unsigned long long)arg1;
+- (void)unlock;
+- (void)lock;
 - (void)dealloc;
 - (id)init;
 

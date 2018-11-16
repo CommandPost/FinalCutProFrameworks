@@ -24,10 +24,13 @@
 - (id)newPopUpOptionsControllers:(id)arg1;
 - (id)newSliderOptionsControllers:(id)arg1;
 - (id)newSnapshotControllers:(id)arg1;
+- (void)populateSnapshotsGroupController:(id)arg1 context:(id)arg2;
 - (void)startEditMode:(id)arg1;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
+- (void)removeUnregisteredRigControllers;
 - (void)updateEnableState;
+- (void)update;
 - (id)initHUDWithWidget:(struct OZRigWidget *)arg1 context:(id)arg2;
 - (id)initWithWidget:(struct OZRigWidget *)arg1 isNested:(BOOL)arg2 context:(id)arg3;
 

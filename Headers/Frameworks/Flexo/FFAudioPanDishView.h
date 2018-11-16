@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (float)parameterDefaultValue:(unsigned long long)arg1;
 - (float)parameterMaxValue:(unsigned long long)arg1;
 - (float)parameterMinValue:(unsigned long long)arg1;
-- (void)_handleTouch:(BOOL)arg1 forChannel:(id)arg2 addKeyframe:(BOOL)arg3 withValue:(double)arg4;
 - (id)_channelForParameter:(unsigned long long)arg1;
 - (void)update;
 - (void)channelParameterChanged:(id)arg1;

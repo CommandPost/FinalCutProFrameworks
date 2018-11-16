@@ -19,6 +19,7 @@
 -     // Error parsing type: v32@0:8^{HGTransform=^^?I(?=[4][16f][16d])}16@24, name: convertHGTransformBackToPixelTransformSpace:pixelTransform:
 -     // Error parsing type: ^{HGTransform=^^?I(?=[4][16f][16d])}24@0:8@16, name: createBaseTransformFromInversePixelTransform:
 - (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2 pixelTransform:(id)arg3;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
 - (void)analyzeInputStream:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3 pixelTransform:(id)arg4 downstreamPT:(id)arg5;

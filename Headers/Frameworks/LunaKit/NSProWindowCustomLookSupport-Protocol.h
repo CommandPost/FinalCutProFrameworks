@@ -4,7 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSFont, NSProThemeFacet;
+@class NSDictionary, NSFont, NSProThemeFacet, NSWindow;
 
 @protocol NSProWindowCustomLookSupport
 + (NSFont *)_titleFontForStyleMask:(unsigned long long)arg1 isKey:(BOOL)arg2 isMain:(BOOL)arg3;
@@ -15,5 +15,12 @@
 + (NSProThemeFacet *)_controlFacetForButton:(int)arg1 styleMask:(unsigned long long)arg2;
 + (NSProThemeFacet *)_titlebarFacetForStyleMask:(unsigned long long)arg1;
 + (NSProThemeFacet *)_windowBorderFacetForStyleMask:(unsigned long long)arg1;
+
+@optional
++ (BOOL)_drawTitleStringInRect:(struct CGRect)arg1 forWindow:(NSWindow *)arg2 withState:(NSDictionary *)arg3;
++ (BOOL)_drawTitlebarInRect:(struct CGRect)arg1 forWindow:(NSWindow *)arg2 withState:(NSDictionary *)arg3;
++ (BOOL)_drawWindowBackgroundInterior:(NSWindow *)arg1 inRect:(struct CGRect)arg2 clip:(struct CGRect)arg3 withState:(NSDictionary *)arg4;
++ (BOOL)_drawWindowBackground:(NSWindow *)arg1 inRect:(struct CGRect)arg2 withState:(NSDictionary *)arg3;
++ (BOOL)_bottomCornerRoundedForStyle:(unsigned long long)arg1;
 @end
 

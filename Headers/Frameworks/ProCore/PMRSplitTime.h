@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSString;
+@class NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface PMRSplitTime : NSObject
@@ -14,13 +14,22 @@ __attribute__((visibility("hidden")))
     unsigned long long _splitTime;
     NSString *_key;
     NSString *_comment;
+    NSMutableArray *_splitTimes;
+    long long _level;
 }
 
+@property(copy, nonatomic) NSArray *splitTimes; // @synthesize splitTimes=_splitTimes;
 @property(nonatomic) unsigned long long splitTime; // @synthesize splitTime=_splitTime;
+@property(nonatomic) long long level; // @synthesize level=_level;
 @property(copy, nonatomic) NSString *comment; // @synthesize comment=_comment;
 @property(copy, nonatomic) NSString *key; // @synthesize key=_key;
+- (void)removeSplitTimesObject:(id)arg1;
+- (void)addSplitTimesObject:(id)arg1;
+- (id)dumpTraceLog;
+- (id)_subtreeDescription;
+- (id)description;
 - (void)dealloc;
-- (id)initWithKey:(id)arg1 comment:(id)arg2;
+- (id)initWithKey:(id)arg1 comment:(id)arg2 level:(long long)arg3;
 
 @end
 

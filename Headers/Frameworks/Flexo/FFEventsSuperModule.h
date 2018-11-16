@@ -4,28 +4,35 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFPersistentModule.h>
+#import "LKViewModule.h"
 
 #import "FFEventsDetailModuleDelegate.h"
 #import "FFOrganizerFilmstripModuleDelegate.h"
 #import "FFOrganizerFilterHUDDelegate.h"
-#import "FFSidebarModuleDelegate.h"
 #import "NSSplitViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFCapsController, FFEventLibrarySplitView, FFEventsDetailModule, FFEventsLibraryLinenBackground, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFOrganizerFilterHUD, FFOrganizerTextFieldView, FFSidebarModule, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKWindowModule, NSArray, NSBox, NSMenuItem, NSProView, NSView, NSWindow, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
+@class FFCapsController, FFEventLibrarySplitView, FFEventsDetailModule, FFEventsLibraryLinenBackground, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFMediaSidebarModule, FFOrganizerFilterHUD, FFOrganizerTextFieldView, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKTextField, LKWindowModule, NSArray, NSBox, NSMenuItem, NSProView, NSView, NSWindow, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
 
-@interface FFEventsSuperModule : FFPersistentModule <FFOrganizerFilmstripModuleDelegate, FFSidebarModuleDelegate, NSSplitViewDelegate, FFEventsDetailModuleDelegate, FFOrganizerFilterHUDDelegate, NSWindowDelegate>
+@interface FFEventsSuperModule : LKViewModule <FFOrganizerFilmstripModuleDelegate, NSSplitViewDelegate, FFEventsDetailModuleDelegate, FFOrganizerFilterHUDDelegate, NSWindowDelegate>
 {
-    FFSidebarModule *_sidebarModule;
+    BOOL _restorePlayheadInfo;
+    int _channelChangeCount;
+    FFMediaSidebarModule *_mediaSidebarModule;
     FFEventsDetailModule *_itemsModule;
-    NSView *_sidebarModuleViewContainer;
-    FFItemsContainerView *_itemsModuleViewContainer;
     FFCapsController *_capsController;
     FFOrganizerFilterHUD *_filterHUD;
     NSWindow *_filterHUDPopoverWindow;
     LKWindowModule *_filterWindowModule;
     FFMediaEventSmartCollection *_sidebarHUDOwner;
+    OKPaneCapFilterMenuAndStatus *_searchStatusCapItem;
+    OKPaneCapItemMenu *_filterMenuPaneCapItem;
+    OKPaneCapItemMenu *_actionMenuPaneCapItem;
+    OKPaneCapItemSidebarHeader *_sidebarHeaderPaneCapItem;
+    OKPaneCapItemButton *_showHideSidebarPaneCapItem;
+    FFOrganizerTextFieldView *_fieldEditor;
+    NSView *_sidebarModuleViewContainer;
+    FFItemsContainerView *_itemsModuleViewContainer;
     FFEventLibrarySplitView *_splitView;
     NSProView *_taskProgressContainerView;
     LKProgressIndicator *_taskProgressIndicator;
@@ -44,23 +51,17 @@
     LKButton *_linenShadow;
     LKButton *_emptyFileImport;
     LKButton *_emptyFileImportBigButton;
+    LKTextField *_emptyFileImportLabel;
     LKButton *_emptyCameraImport;
     LKButton *_emptyCameraImportBigButton;
-    OKPaneCapFilterMenuAndStatus *_searchStatusCapItem;
-    OKPaneCapItemMenu *_filterMenuPaneCapItem;
-    OKPaneCapItemMenu *_actionMenuPaneCapItem;
-    OKPaneCapItemSidebarHeader *_sidebarHeaderPaneCapItem;
-    OKPaneCapItemButton *_showHideSidebarPaneCapItem;
-    FFOrganizerTextFieldView *_fieldEditor;
-    BOOL _restorePlayheadInfo;
-    int _channelChangeCount;
 }
 
 + (id)defaultModuleNibName;
+@property(retain, nonatomic) FFMediaSidebarModule *mediaSidebarModule; // @synthesize mediaSidebarModule=_mediaSidebarModule;
 @property(readonly, nonatomic) LKMenu *filterPulldownMenu; // @synthesize filterPulldownMenu=_filterPulldownMenu;
 @property(readonly, nonatomic) NSView *sidebarModuleViewContainer; // @synthesize sidebarModuleViewContainer=_sidebarModuleViewContainer;
 @property(retain, nonatomic) FFEventsDetailModule *itemsModule; // @synthesize itemsModule=_itemsModule;
-@property(readonly, nonatomic) FFSidebarModule *sidebarModule; // @synthesize sidebarModule=_sidebarModule;
+- (void)syncToNewSidebarState:(BOOL)arg1;
 - (void)didUninstallItemsModule;
 - (void)willUninstallItemsModule;
 - (void)didInstallItemsModule;
@@ -79,15 +80,18 @@
 - (void)uiActionBeginForProject:(id)arg1 mediaRanges:(id)arg2 playingRange:(id)arg3 atTime:(CDStruct_1b6d18a9)arg4 actionType:(long long)arg5;
 - (void)revealMediaRanges:(id)arg1;
 - (void)setNoItemsInfoTextVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)_shouldDisplayImportControlsInOrganizer;
+- (id)_firstSelectedSidebarItem;
+- (unsigned long long)_organizerItemCount;
 - (BOOL)noItemsOrNoEventOrEmptySelection;
 - (id)currentNoItemsString;
-- (BOOL)organizerEmpty;
 - (void)splitViewDidResizeSubviews:(id)arg1;
 - (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (BOOL)splitView:(id)arg1 shouldAdjustSizeOfSubview:(id)arg2;
 @property(nonatomic, getter=isSidebarHidden) BOOL sidebarHidden;
-- (id)sidebarModule:(id)arg1 menuForItem:(id)arg2 event:(id)arg3;
+- (void)sidebarModule:(id)arg1 didSelectNodes:(id)arg2;
+- (id)project;
 - (void)removePaneCapItem:(id)arg1;
 - (void)addPaneCapItem:(id)arg1;
 - (BOOL)presentError:(id)arg1;
@@ -121,25 +125,7 @@
 - (struct CGRect)screenRectForMarkerLayer:(id)arg1;
 - (struct CGRect)playheadFrame;
 - (struct CGRect)selectedRangeFrame;
-- (void)addToFavorites:(id)arg1;
-- (void)selectNextVariantInSelection:(id)arg1;
-- (void)selectPreviousVariantInSelection:(id)arg1;
-- (void)collapseSelectionIntoVariant:(id)arg1;
-- (void)makeVariantGroupFromSelection:(id)arg1;
-- (void)openInTimeline:(id)arg1;
 - (void)favoriteFilterMenu:(id)arg1;
-- (void)allowTimelineEditing:(id)arg1;
-- (void)revealInFinder:(id)arg1;
-- (void)breakApartClipItems:(id)arg1;
-- (void)duplicate:(id)arg1;
-- (void)consolidateFiles:(id)arg1;
-- (void)createMultiAngleClip:(id)arg1;
-- (void)createReferencedClip:(id)arg1;
-- (void)createCompoundClip:(id)arg1;
-- (void)toggleFavoritesAndAllFilters:(id)arg1;
-- (void)copy:(id)arg1;
-- (BOOL)module:(id)arg1 cutWithSender:(id)arg2;
-- (BOOL)module:(id)arg1 copyWithSender:(id)arg2;
 - (id)selectedRangesOfMediaForTimelineEditing;
 - (id)selectedRangesOfMedia;
 - (id)selectedItems;
@@ -148,34 +134,30 @@
 - (void)windowWillClose:(id)arg1;
 - (void)clearFilterToStartingPoint;
 - (void)setTextFilter:(id)arg1;
+- (id)localModuleActions;
 - (void)hideHUD;
 - (void)updateSearchStatusToFilterDict:(id)arg1 andFavFilter:(int)arg2;
-- (void)showMarkedRanges:(id)arg1;
-- (void)showSkimmerInfo:(id)arg1;
 - (void)searchAction:(id)arg1;
-- (void)sidebarModuleSelectionDidChange:(id)arg1;
 - (void)toggleSidebarHidden:(id)arg1;
 - (id)module:(id)arg1 fieldEditorForView:(id)arg2 cell:(id)arg3;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
 - (BOOL)module:(id)arg1 validate:(char *)arg2 userInterfaceItem:(id)arg3;
-- (id)contentLayoutDictionary;
-- (void)takeContentLayoutFromDictionary:(id)arg1;
 - (id)submoduleLayoutArray;
 @property(readonly, nonatomic) FFMediaEventProject *currentMediaEventProject;
 - (id)targetModules;
 - (id)firstKeyView;
-- (void)storeDefaults;
-- (void)loadDefaults;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
+- (id)contentLayoutDictionary;
+- (void)loadSideBar;
 - (void)viewDidLoad;
 @property(retain, nonatomic) NSView *itemsModuleBottomAccessoryView;
 @property(readonly, nonatomic) FFItemsContainerView *itemsModuleViewContainer;
 - (id)newItemsModule;
-- (id)newSidebarModule;
+- (id)newMediaSidebarModule;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)notificationHandler:(id)arg1;
 - (void)finishedLoadingChanged;
-- (void)configureSidebar:(id)arg1;
 @property(readonly) NSArray *sidebarSelectedItems;
 - (void)dealloc;
 - (id)init;
@@ -183,8 +165,6 @@
 - (BOOL)wantsHeaderBar;
 @property(readonly) NSView *moduleFooterAccessoryView;
 @property(readonly) NSView *moduleHeaderAccessoryView;
-- (void)setSidebarUserWidth:(double)arg1;
-@property(readonly, nonatomic) double sidebarUserWidth;
 - (id)capsController;
 @property(readonly, nonatomic) LKSplitView *splitView;
 

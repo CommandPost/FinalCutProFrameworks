@@ -216,7 +216,7 @@
 - (id)getTopEntryPath;
 - (void)setViewMode:(int)arg1;
 - (int)getViewMode;
-- (void)prefsChanged;
+- (void)prefsChanged:(id)arg1;
 - (void)dealloc;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;

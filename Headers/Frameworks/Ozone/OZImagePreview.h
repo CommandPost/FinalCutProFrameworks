@@ -6,9 +6,11 @@
 
 #import "LKImageView.h"
 
+#import "OZRenderClient.h"
+
 @class OZPreviewPlayButtonView;
 
-@interface OZImagePreview : LKImageView
+@interface OZImagePreview : LKImageView <OZRenderClient>
 {
     struct OZRenderNode *_renderNode;
     struct PCMutex *_lock;
@@ -20,6 +22,8 @@
 }
 
 @property(nonatomic) OZPreviewPlayButtonView *playButtonView; // @synthesize playButtonView=_playButtonView;
+- (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (double)getInset;

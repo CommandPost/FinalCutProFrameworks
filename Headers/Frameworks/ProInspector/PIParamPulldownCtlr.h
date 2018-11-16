@@ -14,6 +14,7 @@
 }
 
 + (id)addPulldownControllerToController:(id)arg1 channel:(struct OZChannelBase *)arg2 context:(id)arg3;
++ (double)defaultWidth;
 - (void)reset;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

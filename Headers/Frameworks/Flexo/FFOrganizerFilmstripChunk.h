@@ -4,78 +4,103 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <Flexo/FFOrganizerAbstractChunk.h>
 
-@class CALayer, FFFilmstrip, FFFilmstripBezelLayer, FFFilmstripSelectionLayer, FFOrganizerFilmstripChunkImportProgressLayer, FFOrganizerFilmstripChunkMaskingLayer, FFOrganizerFilmstripClipLabelLayer, FigTimeRangeAndObject, NSArray, NSMutableArray, NSMutableDictionary;
+@class CALayer, CATextLayer, FFFilmstrip, FFFilmstripBezelLayer, FFFilmstripSelectionLayer, FFOrganizerFilmstripChunkImportProgressLayer, FFOrganizerFilmstripChunkMaskingLayer, FFOrganizerFilmstripClipLabelLayer, FigTimeRangeAndObject, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
-@interface FFOrganizerFilmstripChunk : NSObject
+@interface FFOrganizerFilmstripChunk : FFOrganizerAbstractChunk
 {
     FFFilmstrip *_filmstrip;
-    FigTimeRangeAndObject *_rangeOfMedia;
-    struct CGRect _frame;
-    CALayer *_layer;
+    CDStruct_e83c9415 _chunkRange;
+    CDStruct_e83c9415 _filmstripRange;
+    CDStruct_1b6d18a9 _timePerThumb;
     FFOrganizerFilmstripChunkMaskingLayer *_filmstripMaskLayer;
     NSMutableArray *_selectionLayers;
     FFFilmstripSelectionLayer *_draggingSelectionLayer;
+    BOOL _DraggingSelectionLayerShowHandles;
     CALayer *_selectionContainerLayer;
+    FFFilmstripSelectionLayer *_skimmingHilightLayer;
+    CALayer *_stillBadgeLayer;
     CALayer *_stackBadgeLayer;
     CALayer *_compoundClipBadgeLayer;
     CALayer *_multiCamClipBadgeLayer;
     CALayer *_psdClipBadgeLayer;
     CALayer *_clipBadgeLayer;
+    CALayer *_hfrClipBadgeLayer;
+    CALayer *_durationLayer;
+    CATextLayer *_durationTextLayer;
     NSMutableDictionary *_markerRangeToLayerMap;
     NSMutableArray *_rangeLayers;
+    NSMutableArray *_usedMediaLayers;
     FFFilmstripBezelLayer *_bezelLayer;
     FFOrganizerFilmstripClipLabelLayer *_titleLayer;
     FFOrganizerFilmstripChunkImportProgressLayer *_importProgressLayer;
+    CDStruct_1b6d18a9 _playheadTime;
+    CDStruct_1b6d18a9 _skimmingHilightDuration;
+    int _skimmingDurationPosition;
     NSArray *_selectionMarkers;
     NSArray *_selection;
     NSArray *_keywordRanges;
+    NSMutableSet *_usedMediaRanges;
     NSMutableArray *_markerRanges;
     BOOL _shouldShowStackBadges;
     BOOL _shouldShowComposedBadge;
     BOOL _shouldShowMultiCamBadge;
     BOOL _shouldShowPSDBadge;
-    BOOL _disableRangeSelection;
-    int _clipLabelSize;
-    BOOL _hasAudio;
-    BOOL _hasVideo;
-    BOOL _isStill;
+    BOOL _shouldShowHFRBadge;
+    BOOL _shouldShowDuration;
+    BOOL _inImportWindow;
     BOOL _focused;
     BOOL _showInactive;
+    BOOL _dragingSelectionHighlight;
     BOOL _shouldShowClipBadge;
 }
 
-+ (unsigned long long)numberOfThumbsThatWillFitInWidth:(double)arg1 forMedia:(id)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 maxThumbWidth:(double)arg5;
+@property(nonatomic) CDStruct_1b6d18a9 timePerThumb; // @synthesize timePerThumb=_timePerThumb;
+@property(nonatomic) CDStruct_e83c9415 filmstripRange; // @synthesize filmstripRange=_filmstripRange;
+@property(nonatomic) CDStruct_e83c9415 chunkRange; // @synthesize chunkRange=_chunkRange;
 @property(readonly, nonatomic) FFOrganizerFilmstripClipLabelLayer *titleLayer; // @synthesize titleLayer=_titleLayer;
-@property(readonly, nonatomic) int clipLabelSize; // @synthesize clipLabelSize=_clipLabelSize;
 @property(readonly, nonatomic) NSArray *selectionLayers; // @synthesize selectionLayers=_selectionLayers;
-@property(readonly, nonatomic) FigTimeRangeAndObject *rangeOfMedia; // @synthesize rangeOfMedia=_rangeOfMedia;
-@property(nonatomic) BOOL disableRangeSelection; // @synthesize disableRangeSelection=_disableRangeSelection;
+@property(nonatomic) BOOL shouldShowDuration; // @synthesize shouldShowDuration=_shouldShowDuration;
+@property(nonatomic) BOOL shouldShowHFRBadge; // @synthesize shouldShowHFRBadge=_shouldShowHFRBadge;
 @property(nonatomic) BOOL shouldShowClipBadge; // @synthesize shouldShowClipBadge=_shouldShowClipBadge;
 @property(nonatomic) BOOL shouldShowPSDBadge; // @synthesize shouldShowPSDBadge=_shouldShowPSDBadge;
 @property(nonatomic) BOOL shouldShowMultiCamBadge; // @synthesize shouldShowMultiCamBadge=_shouldShowMultiCamBadge;
 @property(nonatomic) BOOL shouldShowComposedBadge; // @synthesize shouldShowComposedBadge=_shouldShowComposedBadge;
 @property(nonatomic) BOOL shouldShowStackBadges; // @synthesize shouldShowStackBadges=_shouldShowStackBadges;
-@property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(retain, nonatomic) FFFilmstrip *filmstrip; // @synthesize filmstrip=_filmstrip;
 - (id)tooltipStringAtPoint:(struct CGPoint)arg1;
 - (id)tooltipRects;
+- (struct CGRect)editFrame;
+- (id)editLayer;
+- (struct CGRect)visibleFilmstripFrameInSpaceOfLayer:(id)arg1;
+- (CDStruct_e83c9415)timeRange;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
+- (BOOL)isStill;
 - (void)setContentsScale:(double)arg1;
 - (double)contentsScale;
+- (void)_updateSkimmingHilightForTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_e83c9415)skimmingHighlightRange;
+- (CDStruct_e83c9415)currentHighlightRangeForTime:(CDStruct_1b6d18a9)arg1;
+- (void)setSkimmingHightlightColor:(id)arg1;
+- (void)setSkimmingHilightDuration:(CDStruct_1b6d18a9)arg1 skimmerPosition:(int)arg2;
+- (CDStruct_1b6d18a9)playheadTime;
+- (void)setPlayheadTime:(CDStruct_1b6d18a9)arg1;
 - (void)showInactiveSelections:(BOOL)arg1;
 - (void)showHandlesForSelection:(id)arg1;
+- (void)setDragSelectionHighlight:(int)arg1;
 - (void)setGhostSelection:(BOOL)arg1;
 - (void)setFocused:(BOOL)arg1;
+- (void)setShowDuration:(BOOL)arg1;
+- (id)rangeOfMediaForChunk;
 - (struct CGPoint)constrainPointToFilmstrip:(struct CGPoint)arg1;
+- (CDStruct_1b6d18a9)mediaPlaybackTimeForPoint:(struct CGPoint)arg1 inSpaceOfFilmstripLayer:(id)arg2;
 - (BOOL)markerAreaContainsPoint:(struct CGPoint)arg1;
 - (id)markerAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)markerRectAtPoint:(struct CGPoint)arg1;
 - (id)markerLayerAtPoint:(struct CGPoint)arg1;
 - (id)rangeAtPoint:(struct CGPoint)arg1;
-- (id)rangeOfMediaForChunk;
 - (BOOL)titleAreaContainsPoint:(struct CGPoint)arg1;
 - (BOOL)displayNameContainsPoint:(struct CGPoint)arg1;
 - (BOOL)badgeContainsPoint:(struct CGPoint)arg1;
@@ -83,27 +108,37 @@ __attribute__((visibility("hidden")))
 - (BOOL)thumbnailContainsPoint:(struct CGPoint)arg1;
 - (id)selectionContainsPoint:(struct CGPoint)arg1 isActive:(char *)arg2;
 - (id)handlesContainPoint:(struct CGPoint)arg1;
+- (BOOL)hasFilmstripAtPoint:(struct CGPoint)arg1 inSpaceOfLayer:(id)arg2;
+- (BOOL)hasFilmstrip;
 - (id)_selectionLayer:(id)arg1 handlesContainPoint:(struct CGPoint)arg2;
 @property(readonly, nonatomic) NSArray *markerLayers;
 @property NSArray *markerRanges;
 - (void)updateMarkersInRange:(CDStruct_e83c9415)arg1;
 @property NSArray *keywordRanges;
-- (void)setDraggingSelectionRange:(CDStruct_e83c9415)arg1;
+- (void)addUsedMediaRanges:(id)arg1;
+- (void)resetUsedMediaRanges;
+- (void)setDraggingSelectionRange:(CDStruct_e83c9415)arg1 showHandles:(BOOL)arg2;
 - (void)setSelectedRangesOfMedia:(id)arg1 selectionMarkers:(id)arg2;
 - (void)_removeAllSelectionLayers;
 - (void)_removeSelectionsForRange:(id)arg1;
 - (id)_rangeObjectForLayer:(id)arg1;
 - (id)_selectionLayerForRange:(id)arg1;
 - (id)_addSelectionLayer;
+- (id)_createSelectionLayer;
 - (void)updateIfNeeded;
 - (void)releaseLayer;
 - (BOOL)hasLayer;
-@property(readonly, nonatomic) CALayer *layer;
+- (void)_setupSkimmingHighlightLayer;
+- (id)layer;
+- (id)bezelLayer;
+- (id)displayName;
 - (id)description;
 - (void)dealloc;
-- (BOOL)isEquavlientToFilmstripChunk:(id)arg1;
-- (id)initWithRangeOfMedia:(id)arg1 chunkRange:(CDStruct_e83c9415)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 numberOfThumbs:(unsigned long long)arg5 clipLabelSize:(int)arg6 maxThumbWidth:(double)arg7 contentsScale:(double)arg8;
-- (id)initWithFilmstrip:(id)arg1;
+- (BOOL)isEquivalentToChunk:(id)arg1;
+- (id)initWithRangeOfMedia:(id)arg1 chunkRange:(CDStruct_e83c9415)arg2 filmstripRange:(CDStruct_e83c9415)arg3 chunkFrame:(struct CGRect)arg4 thumbHeight:(double)arg5 audioHeight:(double)arg6 numberOfThumbs:(double)arg7 showLabel:(BOOL)arg8 clipLabelSize:(int)arg9 maxThumbWidth:(double)arg10 timePerThumb:(CDStruct_1b6d18a9)arg11 contentsScale:(double)arg12 squareThumbs:(BOOL)arg13;
+
+// Remaining properties
+@property(readonly, nonatomic) FigTimeRangeAndObject *rangeOfMedia;
 
 @end
 

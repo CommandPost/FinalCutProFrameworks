@@ -17,6 +17,7 @@
 }
 
 + (id)taskTypeToDisplayGroupMapping;
+- (void)_removeGroupTileForTask:(id)arg1;
 - (id)groupTileForTask:(id)arg1;
 - (void)backgroundTaskQueue:(id)arg1 taskWasCancelled:(id)arg2;
 - (void)backgroundTaskQueue:(id)arg1 didCompleteTask:(id)arg2;
@@ -26,6 +27,7 @@
 - (void)playerDidExitFullScreen:(id)arg1;
 - (void)playerWillEnterFullScreen:(id)arg1;
 - (void)showShareMonitor;
+- (void)updateWindowSize;
 - (void)_setTasks:(id)arg1;
 - (void)closeModalProgressSheet;
 - (void)openModalProgressSheetForTask:(id)arg1;

@@ -24,8 +24,8 @@
     NSDictionary *_customData;
     NSArray *_trackRoles;
     BOOL _usePlayRange;
-    unsigned long long _startFrame;
-    unsigned long long _endFrame;
+    int _startVideoFrame;
+    int _endVideoFrame;
     NSString *_appName;
     BOOL _shouldConductUI;
     BOOL _includeChapters;
@@ -34,6 +34,7 @@
 
 + (id)exporterForMedia:(id)arg1 toFile:(id)arg2 withFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5;
 + (id)exporterForSequence:(id)arg1 toFile:(id)arg2 flags:(unsigned int)arg3 application:(id)arg4;
+@property(readonly) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property(retain) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(readonly) NSError *error; // @synthesize error=_error;
 @property BOOL includeChapters; // @synthesize includeChapters=_includeChapters;

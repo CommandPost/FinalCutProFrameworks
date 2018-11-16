@@ -17,7 +17,8 @@
 + (BOOL)openWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 timeValue:(double *)arg3 timeIsDelta:(char *)arg4;
 - (struct CGPoint)getPanelLocation:(struct CGPoint)arg1 parentFrame:(struct CGRect)arg2;
 - (void)valueFieldChanged:(id)arg1;
-- (id)init;
+- (void)buildUI;
+- (void)dealloc;
 
 @end
 

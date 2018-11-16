@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     struct HGRenderQueue *_queue;
     NSMutableArray *_renderInfos;
+    NSMutableArray *_XGPURenderInfos;
 }
 
 + (void)teardown;
@@ -20,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)setMinExecutionPriority:(int)arg1;
 - (id)description;
 - (void)ensureRendererForLocation:(int)arg1;
-- (struct _CGLContextObject *)getContextObjForLocation:(int)arg1;
+- (struct HGGLContextPtr)getContextPtrForLocation:(int)arg1;
 - (struct HGRenderQueue *)queue;
 - (void)dealloc;
 - (void)drainQueue;

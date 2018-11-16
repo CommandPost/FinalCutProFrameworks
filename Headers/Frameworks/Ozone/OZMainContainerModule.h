@@ -8,9 +8,9 @@
 
 @interface OZMainContainerModule : LKContainerModule
 {
+    id _ozMainContainerModuleDelegate;
 }
 
-- (id)containerModule:(id)arg1 willAddViewOfSubmodule:(id)arg2 inContext:(id)arg3;
 - (void)dealloc;
 - (id)init;
 

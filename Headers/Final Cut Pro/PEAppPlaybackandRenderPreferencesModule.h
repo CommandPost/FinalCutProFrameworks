@@ -6,13 +6,10 @@
 
 #import "NSProPreferencesModule.h"
 
-@class LKButton, NSButton, NSMatrix, NSPopUpButton, NSProSegmentedScrubber, NSTextField;
+@class LKButton, NSButton, NSPopUpButton, NSProSegmentedScrubber, NSTextField;
 
 @interface PEAppPlaybackandRenderPreferencesModule : NSProPreferencesModule
 {
-    NSMatrix *_qualityMatrix;
-    NSTextField *_qualityLabel;
-    NSPopUpButton *_qualityPopup;
     NSPopUpButton *_avDevicePopup;
     NSTextField *_avDeviceLabel;
     NSTextField *_transcodingLabel;
@@ -27,10 +24,9 @@
 - (BOOL)preferencesWindowShouldClose;
 - (void)willBeDisplayed;
 - (void)selectAVOutputDevice:(id)arg1;
-- (void)selectPlaybackQuality:(id)arg1;
-- (void)selectPlaybackMedia:(id)arg1;
-- (void)_warnUserAboutBackgroundShareProcessAndProxyMedia;
 - (id)titleForIdentifier:(id)arg1;
+- (void)deviceChangedFormat:(id)arg1;
+- (void)existingOutputDevicesRemoved:(id)arg1;
 - (void)newOutputDevicesAvailable:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;

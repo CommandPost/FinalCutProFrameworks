@@ -13,6 +13,7 @@
 + (id)toolbarFacet;
 + (id)displayName;
 + (void)initialize;
+- (BOOL)isCropTool;
 - (BOOL)allowsEffectOSCs;
 - (BOOL)handlesSelection;
 

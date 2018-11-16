@@ -9,7 +9,7 @@
 #import "CKTranscodingOperationTranscodeOverrideDelegate.h"
 #import "FFBackgroundTaskTarget.h"
 
-@class CKTranscodingOperation, FFBackgroundTask, FFSharingSnapshot, NSConditionLock, NSString;
+@class CKTranscodingOperation, FFBackgroundTask, FFSharingSnapshot, NSConditionLock, NSError, NSString;
 
 @interface FFBackgroundShareOperation : NSObject <FFBackgroundTaskTarget, CKTranscodingOperationTranscodeOverrideDelegate>
 {
@@ -21,10 +21,21 @@
     NSString *_transcoderMessage;
     BOOL _doingDelegateTranscode;
     BOOL _cancelRequested;
+    NSError *_shareError;
+    BOOL _notifySuccess;
+    BOOL _addToShareHistory;
+    BOOL _useTranscodeStatusForDisplayName;
+    id <FFBackgroundShareOperationDelegate> _delegate;
 }
 
++ (id)keyPathsForValuesAffectingBackgroundTask;
 + (id)shareOperationWithBatch:(id)arg1 andSnapshot:(id)arg2;
 + (id)shareOperationWithBatch:(id)arg1;
+@property BOOL useTranscodeStatusForDisplayName; // @synthesize useTranscodeStatusForDisplayName=_useTranscodeStatusForDisplayName;
+@property BOOL addToShareHistory; // @synthesize addToShareHistory=_addToShareHistory;
+@property BOOL notifySuccess; // @synthesize notifySuccess=_notifySuccess;
+@property(retain) NSError *shareError; // @synthesize shareError=_shareError;
+@property id <FFBackgroundShareOperationDelegate> delegate; // @synthesize delegate=_delegate;
 @property BOOL cancelRequested; // @synthesize cancelRequested=_cancelRequested;
 @property(retain) NSString *transcoderMessage; // @synthesize transcoderMessage=_transcoderMessage;
 @property double percentDone; // @synthesize percentDone=_percentDone;
@@ -39,11 +50,13 @@
 - (void)operationDidFinish:(id)arg1;
 - (void)operation:(id)arg1 didFailWithError:(id)arg2;
 - (void)operationStatusChanged:(id)arg1;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (void)queueBackgroundTask;
 - (void)canceledTask:(id)arg1;
 - (void)performShareOperation:(id)arg1 task:(id)arg2;
+- (void)notifyUser:(id)arg1;
+@property(readonly) FFBackgroundTask *backgroundTask;
 - (void)dealloc;
 - (id)initWithBatch:(id)arg1 andSnapshot:(id)arg2;
 

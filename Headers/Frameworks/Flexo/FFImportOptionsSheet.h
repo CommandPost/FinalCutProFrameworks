@@ -6,24 +6,23 @@
 
 #import "NSPanel.h"
 
-@class FFStorageLocation, NSArrayController, NSButton, NSMatrix;
+@class FFEventRecord, FFImportLocationPopUpController, FFLibrary, FFMediaEventProject, NSButton, NSMatrix, NSPopUpButton;
 
 __attribute__((visibility("hidden")))
 @interface FFImportOptionsSheet : NSPanel
 {
-    id _saveToMenu;
     NSMatrix *_eventRadioButtonMatrix;
     id _existingEventMenu;
     id _newEventName;
-    NSArrayController *_saveToMenuArrayController;
-    NSArrayController *_eventArrayController;
-    id _selectedEvent;
-    FFStorageLocation *_selectedLocation;
+    NSPopUpButton *_saveToButton;
+    FFEventRecord *_selectedEventRecord;
     BOOL _shouldCreateNewEvent;
     struct CGRect _expandedWindowRect;
     struct CGRect _collapsedWindowRect;
     long long _lastRemovePulldownState;
-    NSButton *_copyFilesToEventsCheckBox;
+    FFImportLocationPopUpController *_importLocationPopUpController;
+    id _importLocationPopUpButton;
+    NSMatrix *_importLocationRadioButtonMatrix;
     NSButton *_importFoldersAsKeywordsCheckBox;
     NSButton *_optimizeMediaCheckBox;
     NSButton *_createProxyMediaCheckBox;
@@ -36,27 +35,34 @@ __attribute__((visibility("hidden")))
     NSButton *_relatedAudioTracksCheckBox;
     NSButton *_cleanupAudioCheckBox;
     NSButton *_removeSilentChannelsBox;
+    FFLibrary *_selectedLibrary;
 }
 
-@property BOOL shouldCreateNewEvent; // @synthesize shouldCreateNewEvent=_shouldCreateNewEvent;
-@property id selectedLocation; // @synthesize selectedLocation=_selectedLocation;
-@property id selectedEvent; // @synthesize selectedEvent=_selectedEvent;
+@property(retain, nonatomic) FFLibrary *selectedLibrary; // @synthesize selectedLibrary=_selectedLibrary;
+@property(nonatomic) NSMatrix *importLocationRadioButtonMatrix; // @synthesize importLocationRadioButtonMatrix=_importLocationRadioButtonMatrix;
+@property(nonatomic) BOOL shouldCreateNewEvent; // @synthesize shouldCreateNewEvent=_shouldCreateNewEvent;
+@property(retain, nonatomic) FFEventRecord *selectedEventRecord; // @synthesize selectedEventRecord=_selectedEventRecord;
 - (void)cancel:(id)arg1;
 - (void)import:(id)arg1;
 - (void)eventRadioButtonMatrixAction:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)updateImportLocationPopupLibraryName;
+- (void)dealloc;
+- (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
 - (void)cleanup;
 - (void)awakeFromNib;
+- (void)rebuildEventMenu;
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)eventSelected:(id)arg1;
+- (void)librarySelected:(id)arg1;
 - (void)findPeopleAction:(id)arg1;
 - (void)smartCollectionAction:(id)arg1;
 - (void)setNeedsOptimizing:(BOOL)arg1;
 - (void)setRemovePulldownCheckBoxEnabled:(BOOL)arg1;
-- (void)setCopyFilesToEventsCheckBoxState:(long long)arg1;
-- (void)setCopyFilesToEventsCheckBoxEnabled:(BOOL)arg1;
 - (void)setImportFoldersAsKeywordsCheckBoxEnabled:(BOOL)arg1;
 - (void)setDefaultNewEventString;
-- (void)selectTargetLocation:(id)arg1;
 - (void)selectTargetEvent:(id)arg1;
-- (void)dealloc;
+@property(readonly, nonatomic) FFMediaEventProject *selectedEvent;
 
 @end
 

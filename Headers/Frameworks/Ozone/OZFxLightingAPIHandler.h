@@ -11,19 +11,12 @@
 @interface OZFxLightingAPIHandler : NSObject <FxLightingAPI>
 {
     struct OZFxPlugSharedBase *_plugin;
-    BOOL _lightAccessValid;
-    struct OZRenderParams _renderParams;
-    struct LiLightSet *_lights;
-    int _refCount;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)lightInfo:(struct FxLightInfo *)arg1 forLight:(unsigned long long)arg2 atTime:(double)arg3 error:(id *)arg4;
-- (unsigned long long)lightModelToFxLightType:(struct LiLight)arg1;
 - (unsigned long long)numberOfLightsAtTime:(double)arg1;
 - (void)endLightAccess;
-- (void)beginLightAccess:(struct OZRenderParams)arg1;
+- (void)beginLightAccess:(const struct OZRenderParams *)arg1;
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
 
 @end

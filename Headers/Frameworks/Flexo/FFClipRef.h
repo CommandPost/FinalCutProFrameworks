@@ -6,15 +6,16 @@
 
 #import <Flexo/FFMediaRef.h>
 
-__attribute__((visibility("hidden")))
 @interface FFClipRef : FFMediaRef
 {
 }
 
 + (id)copyClassDescription;
+- (id)initWithCoder:(id)arg1;
+- (CDStruct_e83c9415)mediaRange;
+- (BOOL)hasVideo;
+- (BOOL)hasAudio;
 - (BOOL)isClipRef;
-- (id)videoProps;
-- (void)invalidate;
 - (int)highQualityOfflineReason;
 - (int)proxyOfflineReason;
 - (BOOL)mediaAvailable;
@@ -23,6 +24,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)proxyAvailable;
 - (id)clipRefs;
 - (id)assetRefs;
+- (void)setDisplayName:(id)arg1;
+- (id)displayName;
+- (id)sequenceInfo;
 - (id)primaryObject;
 - (id)referencedSequence;
 

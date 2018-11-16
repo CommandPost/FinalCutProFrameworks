@@ -8,16 +8,16 @@
 
 @interface OZAutoBehaviorHUDController : OZAutoHUDController
 {
-    list_94e47a03 *_pBehaviorList;
+    list_fc228e28 *_pBehaviorList;
 }
 
 - (void)didUpdateHiddenFlags;
-- (list_94e47a03 *)getBehaviorList;
+- (list_fc228e28 *)getBehaviorList;
 - (struct OZChannelFolder *)getRootChan:(struct OZObjectManipulator *)arg1;
 - (void)notify:(unsigned int)arg1;
 - (BOOL)loadView;
 - (void)dealloc;
-- (id)initWithObjectList:(list_0555a7a2 *)arg1;
+- (id)initWithObjectList:(list_e68da02e *)arg1;
 
 @end
 

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (void)createChannelsInFolder:(id)arg1;
 - (id)newUpdatedDownstreamPT:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (BOOL)effectIntroducesAlpha;
 - (void)modifyImageTransform:(id)arg1 andImageSpaceBounds:(struct CGRect *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)calcTransform:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;

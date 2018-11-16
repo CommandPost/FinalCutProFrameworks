@@ -6,14 +6,19 @@
 
 #import "NSProView.h"
 
-__attribute__((visibility("hidden")))
+@class NSProThemeFacet;
+
 @interface FFNavHeaderView : NSProView
 {
     BOOL _drawsBlackLine;
+    NSProThemeFacet *_navBarFacet;
 }
 
+@property(retain) NSProThemeFacet *navBarFacet; // @synthesize navBarFacet=_navBarFacet;
+- (BOOL)isOpaque;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setDrawsBlackLine:(BOOL)arg1;
+- (void)dealloc;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "FFOrganizerFilterHUDTileDelegate.h"
 
-@class FFEventsSuperModule, LKBox, LKButton, LKPopUpButton, LKTextField, LKTileView, NSArray, NSDictionary, NSObject<FFOrganizerFilterHUDDelegate>, NSView;
+@class FFEventsSuperModule, LKBox, LKButton, LKPopUpButton, LKTextField, LKTileView, NSArray, NSButton, NSDictionary, NSObject<FFOrganizerFilterHUDDelegate>, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilterHUD : LKViewModule <FFOrganizerFilterHUDTileDelegate>
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     FFEventsSuperModule *_organizerDelegate;
 }
 
+@property(readonly, nonatomic, getter=smartCollectionButton) NSButton *newSmartCollectionButton; // @synthesize newSmartCollectionButton=_newSmartCollectionButton;
 @property(retain, nonatomic) NSDictionary *initialFiltersDictionary; // @synthesize initialFiltersDictionary=_initialFiltersDictionary;
 @property(retain, nonatomic) FFEventsSuperModule *organizerDelegate; // @synthesize organizerDelegate=_organizerDelegate;
 @property(retain, nonatomic) NSObject<FFOrganizerFilterHUDDelegate> *HUDDelegate; // @synthesize HUDDelegate=_HUDDelegate;

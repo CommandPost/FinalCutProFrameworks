@@ -27,9 +27,6 @@
     _Bool _isDraggingEdge;
     unsigned int _mouseActivePart;
     _Bool _useBoxTransform;
-    PCPtr_df275998 _handlesTexture[2];
-    PCPtr_df275998 _rotationTexture[2];
-    PCPtr_df275998 _pivotTexture;
     NSColor *_playerStatusText;
     NSColor *_playerStatusTextUnit;
     _Bool _translate;
@@ -81,7 +78,7 @@
 - (BOOL)nudgeLeft:(id)arg1;
 - (BOOL)nudgeDown:(id)arg1;
 - (BOOL)nudgeUp:(id)arg1;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (id)menuForEvent:(id)arg1;
 - (void)mouseUpHandler:(id)arg1 primary:(_Bool)arg2;
 - (void)mouseUp:(id)arg1;

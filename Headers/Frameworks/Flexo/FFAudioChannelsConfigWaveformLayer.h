@@ -6,10 +6,12 @@
 
 #import "CALayer.h"
 
+#import "FFFilmstripLayerDelegate.h"
+
 @class FFAudioComponentSource, FFFilmstripLayer;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioChannelsConfigWaveformLayer : CALayer
+@interface FFAudioChannelsConfigWaveformLayer : CALayer <FFFilmstripLayerDelegate>
 {
     CALayer *m_leftDimLayer;
     CALayer *m_rightDimLayer;
@@ -23,6 +25,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) FFFilmstripLayer *filmstripLayer; // @synthesize filmstripLayer=m_filmstripLayer;
+- (BOOL)useImageCache;
+- (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
 - (void)layoutSublayers;
 - (struct CGRect)_clippedRangeAreaFrame;
 - (CDStruct_e83c9415)_filmstripClippedRange;

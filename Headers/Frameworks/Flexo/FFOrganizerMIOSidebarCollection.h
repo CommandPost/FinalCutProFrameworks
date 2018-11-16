@@ -8,7 +8,7 @@
 
 #import "FFOrganizerMasterItemDropTarget.h"
 
-@class FFCameraArchiveSidebarProvider, FFImportDevicesSidebarCollection, MIODeviceManager, MIOPTPDeviceManager, MIORADManager, NSLock, NSString;
+@class FFImportDevicesSidebarCollection, MIODeviceManager, MIOPTPDeviceManager, MIORADManager, NSLock, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerMIOSidebarCollection : FFOrganizerMasterItem <FFOrganizerMasterItemDropTarget>
@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     MIODeviceManager *_deviceManager;
     NSString *_itemDisplayName;
     NSLock *_itemsLock;
-    FFCameraArchiveSidebarProvider *_cameraArchiveSidebarProvider;
     FFImportDevicesSidebarCollection *_devicesSidebarCollection;
 }
 
@@ -29,15 +28,12 @@ __attribute__((visibility("hidden")))
 @property(retain) NSLock *itemsLock; // @synthesize itemsLock=_itemsLock;
 @property(readonly, nonatomic) NSString *itemDisplayName; // @synthesize itemDisplayName=_itemDisplayName;
 @property(retain) FFImportDevicesSidebarCollection *devicesSidebarCollection; // @synthesize devicesSidebarCollection=_devicesSidebarCollection;
-@property(retain) FFCameraArchiveSidebarProvider *cameraArchiveSidebarProvider; // @synthesize cameraArchiveSidebarProvider=_cameraArchiveSidebarProvider;
 @property(retain) MIODeviceManager *deviceManager; // @synthesize deviceManager=_deviceManager;
 @property(retain) MIOPTPDeviceManager *ptpDeviceManager; // @synthesize ptpDeviceManager=_ptpDeviceManager;
 @property(retain) MIORADManager *radManager; // @synthesize radManager=_radManager;
 - (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
 - (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
 - (void)setClipLoadingSuspended:(BOOL)arg1;
-- (void)removeAllSelectionMarkersFromClips;
-- (id)cameraArchives;
 - (BOOL)hasMasterSubitems;
 - (void)unlockItems;
 - (void)lockItems;

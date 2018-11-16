@@ -6,17 +6,11 @@
 
 #import "NSView.h"
 
-@class CALayer, CATextLayer;
-
 __attribute__((visibility("hidden")))
 @interface FFEffectLibraryDividerView : NSView
 {
-    CALayer *_rootLayer;
-    CATextLayer *_nameLayer;
-    CALayer *_dividerLayer;
 }
 
-- (void)dealloc;
 - (id)initWithName:(id)arg1 andLine:(BOOL)arg2;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
 

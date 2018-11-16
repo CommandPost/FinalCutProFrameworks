@@ -10,7 +10,7 @@
 
 @interface FFNRTFigClock : NSObject
 {
-    struct OpaqueFigClock *_clock;
+    struct OpaqueCMClock *_clock;
     CDStruct_1b6d18a9 _timeIncrement;
     CDStruct_1b6d18a9 _clockTime;
     NSLock *_lock;
@@ -22,7 +22,7 @@
 - (CDStruct_1b6d18a9)getTime;
 - (void)incrementTimeByDuration:(CDStruct_1b6d18a9)arg1;
 - (void)incrementTime;
-- (struct OpaqueFigClock *)figClock;
+- (struct OpaqueCMClock *)figClock;
 - (void)dealloc;
 - (id)initWithTimeIncrement:(CDStruct_1b6d18a9)arg1;
 

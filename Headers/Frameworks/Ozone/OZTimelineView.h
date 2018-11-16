@@ -178,6 +178,8 @@
 - (void)keyDown:(id)arg1;
 - (BOOL)resignFirstResponder;
 - (BOOL)acceptsFirstResponder;
+- (void)undo:(id)arg1;
+- (void)performSelectorOnFirstResponder:(SEL)arg1 withObject:(id)arg2;
 - (void)nudgeBy:(CDStruct_1b6d18a9)arg1;
 - (BOOL)shortcutting;
 - (BOOL)slipping;

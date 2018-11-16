@@ -6,7 +6,7 @@
 
 #import "TLKThemeBackedLayer.h"
 
-@class CATextLayer, FFOrganizerClusteringCollection, FFResponderLayerDisclosureButton;
+@class CALayer, CATextLayer, FFOrganizerClusteringCollection, FFResponderLayerDisclosureButton;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripClusterHeaderLayer : TLKThemeBackedLayer
@@ -16,12 +16,18 @@ __attribute__((visibility("hidden")))
     CATextLayer *_clusterLabelLayer;
     CATextLayer *_itemCountLayer;
     FFResponderLayerDisclosureButton *_disclosureTriangleLayer;
+    CALayer *_dividerLayer;
 }
 
++ (double)dividerLayerSideMargin;
++ (id)dividerLineLayer;
 @property(readonly, nonatomic) FFOrganizerClusteringCollection *cluster; // @synthesize cluster=_clusteringCollection;
 @property(nonatomic) BOOL disclosed; // @synthesize disclosed=_disclosed;
 - (void)setContentsScale:(double)arg1;
 - (void)dealloc;
+- (void)_setupLayersForIMovie;
+- (long long)_countFigTimeRangAndObjectsInCollection:(id)arg1;
+- (void)_setupLayersForFCP;
 - (id)initWithClusteringCollection:(id)arg1 inRect:(struct CGRect)arg2 isDisclosed:(BOOL)arg3 facet:(id)arg4;
 - (void)_toggleDisclosed;
 

@@ -15,7 +15,6 @@
     double _anchorY;
     _Bool _stretchX;
     _Bool _stretchY;
-    struct PCPtr<POMultiResTexture> _handlesTexture[3];
     NSProCursor *_cursor;
     double _startObjX;
     double _startObjY;

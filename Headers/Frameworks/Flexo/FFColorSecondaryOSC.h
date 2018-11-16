@@ -28,10 +28,6 @@ __attribute__((visibility("hidden")))
     BOOL _shapeActive;
     BOOL _shapeVisible;
     NSString *_name;
-    struct PCPtr<POMultiResTexture> _handlesTexture[3];
-    struct PCPtr<POMultiResTexture> _pivotHandleTexture[3];
-    struct PCPtr<POMultiResTexture> _rotationHandleTexture[3];
-    struct PCPtr<POMultiResTexture> _curvatureHandleTexture[3];
 }
 
 @property(nonatomic) struct CGPoint mouseDownOffset; // @synthesize mouseDownOffset=_mouseDownOffset;
@@ -40,7 +36,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL visible; // @synthesize visible=_shapeVisible;
 @property(nonatomic) BOOL active; // @synthesize active=_shapeActive;
 - (id).cxx_construct;
-- (void).cxx_destruct;
 - (id)cropMatrix;
 - (id)getCursor;
 - (void)endUndoTransaction;

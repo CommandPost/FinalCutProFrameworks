@@ -21,6 +21,7 @@
     CKRolePreset *_rolePreset;
     CKRolePreset *_backupRolePreset;
     BOOL _observingRolePreset;
+    BOOL _jobActionUsesHelperApp;
 }
 
 + (id)baseVideoRoleStompSettings;
@@ -49,6 +50,7 @@
 @property(retain, nonatomic) id <CKStompSetting> audioStompSetting; // @synthesize audioStompSetting=_audioStompSetting;
 @property(retain, nonatomic) NSArray *audioStompSettings; // @synthesize audioStompSettings=_audioStompSettings;
 @property(nonatomic) long long exportOption; // @synthesize exportOption=_exportOption;
+@property(nonatomic) BOOL usesHelperApp; // @synthesize usesHelperApp=_jobActionUsesHelperApp;
 - (void)stopObservingRolePreset:(id)arg1;
 - (void)startObservingRolePreset:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -75,6 +77,8 @@
 - (id)iconTitle;
 - (id)largeImage;
 - (id)image;
+- (void)setIsHelperApplicationForCurrentAction;
+- (void)setAction:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

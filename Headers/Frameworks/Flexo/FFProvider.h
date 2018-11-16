@@ -35,7 +35,6 @@
 + (Class)providerClassForExtension:(id)arg1;
 + (id)_providerExtensionsDictionary;
 + (void)_registerProviderClass:(Class)arg1;
-+ (id)registeredProviders;
 + (void)_registerBuiltInProviders;
 + (void)_registerProvidersInBundle:(id)arg1 atPath:(id)arg2;
 + (void)initialize;

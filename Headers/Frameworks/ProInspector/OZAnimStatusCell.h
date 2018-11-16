@@ -20,6 +20,7 @@
     BOOL _hasPreviousKeyframe;
     BOOL _hasNextKeyframe;
     BOOL _areAnyOverRangeChannels;
+    BOOL _shouldDisableKeyframeItems;
     unsigned int _mouseDownLocation;
     id _pResetDelegate;
     struct CGRect _trackingCellFrame;
@@ -27,6 +28,7 @@
     NSTrackingArea *_pTrackingArea2;
 }
 
+@property(nonatomic) BOOL shouldDisableKeyframeItems; // @synthesize shouldDisableKeyframeItems=_shouldDisableKeyframeItems;
 @property(nonatomic) BOOL isMouseOverRow; // @synthesize isMouseOverRow=_isMouseOverRow;
 @property(nonatomic) unsigned int mouseOverLocation; // @synthesize mouseOverLocation=_mouseOverLocation;
 @property(nonatomic) unsigned int mouseDownLocation; // @synthesize mouseDownLocation=_mouseDownLocation;

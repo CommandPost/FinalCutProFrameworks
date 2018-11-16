@@ -17,10 +17,9 @@
     NSMutableArray *_itemInfos;
     NSMutableArray *_movedLanes;
     NSArray *_testItemInfos;
-    BOOL _isTesting;
+    int _flags;
 }
 
-@property BOOL isTesting; // @synthesize isTesting=_isTesting;
 - (void)updateItems;
 - (void)updateItemsReturnChanged:(id)arg1;
 - (BOOL)resolveVerticalOrderForItems:(id)arg1 fixedItems:(id)arg2;
@@ -34,12 +33,13 @@
 - (BOOL)_resolveGapsForLaneIndex:(long long)arg1 moveFixedItems:(BOOL)arg2;
 - (BOOL)_resolveConflictForLaneIndex:(long long)arg1;
 - (BOOL)initWithItems:(id)arg1 fixedItems:(id)arg2;
-- (BOOL)initWithItems:(id)arg1 fixedItems:(id)arg2 range:(CDStruct_e83c9415)arg3 compressLanes:(BOOL)arg4;
+- (BOOL)initWithItems:(id)arg1 fixedItems:(id)arg2 range:(CDStruct_e83c9415)arg3 flags:(int)arg4;
 - (void)setupIntersectingItems2;
 - (void)setupIntersectingItemsWithRange:(CDStruct_e83c9415)arg1;
 - (void)setupIntersectingItems;
 - (void)sortItemInfosByPriority:(id)arg1;
 - (void)sortItemInfos:(id)arg1;
+- (void)sortItemsByDuration:(id)arg1;
 - (id)_groupedItemsByVerticalIndex:(id)arg1;
 - (id)description;
 - (id)_itemsAtVerticalIndex:(long long)arg1;
@@ -48,6 +48,9 @@
 - (void)dealloc;
 - (id)init;
 - (void)initLanes;
+@property(readonly) BOOL compressLanes;
+@property(readonly) BOOL iMovieMode;
+@property(readonly) BOOL isTesting;
 - (void)createUnitTestCaseForItems:(id)arg1 fixedItems:(id)arg2;
 - (void)generateTestData:(id)arg1;
 - (void)createUnitTestCase:(BOOL)arg1;

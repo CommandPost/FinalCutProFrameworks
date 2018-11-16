@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 + (void)registerEffects;
 @property _Bool overlayAlpha; // @synthesize overlayAlpha=_overlayAlpha;
 - (id).cxx_construct;
-- (void)didInsertChannel:(id)arg1 intoFolder:(id)arg2 inEffect:(id)arg3 atIndex:(unsigned long long)arg4;
+- (void)didInsertChannel:(id)arg1 intoFolder:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)updateCacheInfo;
 - (unsigned long long)_preferredChannelFolderIndexForChannelID:(unsigned int)arg1 inFolder:(id)arg2;
 - (unsigned int)nextAvailableShapeChannelID;

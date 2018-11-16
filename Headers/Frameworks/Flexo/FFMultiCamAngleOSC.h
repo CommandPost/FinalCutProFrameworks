@@ -6,7 +6,7 @@
 
 #import <Flexo/FFOSC.h>
 
-@class FFLRUImageCacheObject, NSDictionary, NSString;
+@class FFLRUImageCacheObject, FFThemeFacet, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMultiCamAngleOSC : FFOSC
@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     NSDictionary *_angleClipTextAttributes;
     FFLRUImageCacheObject *_lastTextImageObject;
     NSString *_lastTextKey;
+    FFThemeFacet *_audioIcon;
+    struct CGSize _audioIconSize;
 }
 
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;

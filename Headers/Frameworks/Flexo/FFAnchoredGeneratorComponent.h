@@ -22,8 +22,14 @@
 - (id)inspectorIdentifier;
 - (id)inspectorClassName;
 - (int)anchoredObjectUIType;
-- (BOOL)isTitle;
+- (void)setClippedRange:(CDStruct_e83c9415)arg1;
+- (void)wasAnchoredTo:(id)arg1;
+- (BOOL)wantsGammaCompositing;
+- (BOOL)wantsAutoKenBurns;
 - (BOOL)contributesToCompoundClip;
+- (BOOL)isAnimaticGenerator;
+- (BOOL)isBackgroundGenerator;
+- (BOOL)isMapGenerator;
 - (BOOL)isGenerator;
 - (id)videoProps;
 - (struct CGRect)imageSpaceBoundsAtTime:(CDStruct_1b6d18a9)arg1;

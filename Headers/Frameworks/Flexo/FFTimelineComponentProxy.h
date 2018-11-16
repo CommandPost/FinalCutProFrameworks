@@ -6,16 +6,15 @@
 
 #import "NSObject.h"
 
-@class CHChannelBool, CHChannelFolder, FFAnchoredObject, FFAudioChannelsConfigObject, FFAudioComponentSource, FFEffectStack, FFProject, NSArray, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>;
+@class CHChannelDouble, CHChannelFolder, FFAnchoredObject, FFAudioComponentSource, FFEffectStack, FFProject, NSArray, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>;
 
 @interface FFTimelineComponentProxy : NSObject
 {
     FFAudioComponentSource *_componentSource;
-    FFAudioChannelsConfigObject *_configObject;
     FFAnchoredObject *_clip;
     FFEffectStack *_audioEffects;
     CHChannelFolder *_instrinsicChannels;
-    CHChannelBool *_channel;
+    CHChannelDouble *_channel;
     NSMutableArray *_rangeItems;
     NSMutableArray *_oldRangeItems;
     unsigned long long _keyframeCount;
@@ -25,22 +24,30 @@
 
 + (id)proxiesForAudioComponentsForObject:(id)arg1 demandAudioComponentSources:(BOOL)arg2;
 + (id)proxiesForAudioComponentsForObject:(id)arg1;
-+ (BOOL)configurationOfObject:(id)arg1 matchesProxies:(id)arg2;
 + (BOOL)objectSupportsAudioComponents:(id)arg1;
-@property(retain, nonatomic) CHChannelBool *channel; // @synthesize channel=_channel;
++ (BOOL)update_migrateAudioDisabledChannel:(id)arg1;
+@property(retain, nonatomic) CHChannelDouble *channel; // @synthesize channel=_channel;
 @property(retain, nonatomic) CHChannelFolder *intrinsicChannels; // @synthesize intrinsicChannels=_intrinsicChannels;
 @property(retain, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
 @property(readonly, nonatomic) FFAnchoredObject *clip; // @synthesize clip=_clip;
-@property(readonly, nonatomic) FFAudioChannelsConfigObject *configObject; // @synthesize configObject=_configObject;
 @property(readonly, nonatomic) FFAudioComponentSource *componentSource; // @synthesize componentSource=_componentSource;
+- (void)_keyframeWasDeleted:(id)arg1;
 - (void)_intrinsicAudioChannelsWereInvalidated:(id)arg1;
 - (void)_channelWasInvalidated:(id)arg1;
 - (void)_updateRangeItems;
+- (CDStruct_1b6d18a9)_endTimeOfLastEnabledRange;
+- (CDStruct_1b6d18a9)_startTimeOfFirstEnabledRange;
+- (BOOL)_shouldTrimClipToMoveEdge:(int)arg1 ofRangeItem:(id)arg2 toTime:(CDStruct_1b6d18a9 *)arg3 trimClip:(BOOL)arg4;
+- (void)_fixOuterKeyframes;
+- (void)_deleteRangeItem:(id)arg1;
+- (void)_deleteKeyframe:(void *)arg1;
+@property(readonly, nonatomic) NSArray *visibleRangeItems;
 @property(readonly, nonatomic) id channelObject;
 @property(readonly, nonatomic) NSArray *rangeItems;
 @property(readonly, nonatomic) id <FFModelLocking> lockingObject;
 @property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable;
 @property(readonly, nonatomic) FFProject *project;
+- (CDStruct_1b6d18a9)minFadeLength;
 - (CDStruct_1b6d18a9)unclippedStartTime;
 - (CDStruct_e83c9415)unclippedRange;
 - (CDStruct_e83c9415)clippedRange;
@@ -52,14 +59,29 @@
 - (CDStruct_1b6d18a9)localToContainerTime:(CDStruct_1b6d18a9)arg1 container:(id)arg2;
 - (CDStruct_e83c9415)containerToLocalTimeRange:(CDStruct_e83c9415)arg1 container:(id)arg2;
 - (CDStruct_e83c9415)localToContainerTimeRange:(CDStruct_e83c9415)arg1 container:(id)arg2;
-- (CDStruct_1b6d18a9)endTimeOfLastEnabledRange;
-- (CDStruct_1b6d18a9)startTimeOfFirstEnabledRange;
 - (id)nextItem:(id)arg1;
 - (id)previousItem:(id)arg1;
 - (id)itemWithLeadingKeyframe:(void *)arg1;
-- (id)initWithComponentSource:(id)arg1 fromConfigObject:(id)arg2 clip:(id)arg3;
-- (id)extendedDescription;
+- (id)itemAtTime:(CDStruct_1b6d18a9)arg1;
+- (double)valueAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)createInitialKeyframes;
+- (BOOL)removeRampsOnClippedRangeBoundaries;
+- (BOOL)removeOrAdjustRampAtTime:(CDStruct_1b6d18a9)arg1;
+- (BOOL)_keyframesAroundTime:(CDStruct_1b6d18a9)arg1 prevKeyframe:(void **)arg2 prevKeyFrameValue:(double *)arg3 nextKeyframe:(void **)arg4 nextKeyframeValue:(double *)arg5;
+- (void)adjustFadeHandlesAtEdge:(int)arg1;
+- (void)retimeWithEffect:(id)arg1;
+- (void)untimeWithEffect:(id)arg1;
+- (void)_retime:(BOOL)arg1 reverse:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)moveEdge:(int)arg1 ofRangeItem:(id)arg2 toTime:(CDStruct_1b6d18a9 *)arg3 trimClip:(BOOL)arg4;
+- (BOOL)constrainMoveEdge:(int)arg1 ofRangeItem:(id)arg2 toTime:(CDStruct_1b6d18a9 *)arg3;
+- (void)setDisableAudio:(BOOL)arg1 forRange:(CDStruct_e83c9415)arg2 trimClip:(BOOL)arg3;
+- (void)_setDisableAudio:(BOOL)arg1 forRange:(CDStruct_e83c9415)arg2 trimClip:(BOOL)arg3 useChannelChangeController:(BOOL)arg4;
+- (void)setEffectStackPersists:(BOOL)arg1;
+- (id)initWithComponentSource:(id)arg1;
+- (id)debugDescription;
+- (BOOL)isEqual:(id)arg1;
 - (void)dealloc;
+- (void)setDisableAudioForXMLImport:(BOOL)arg1 forRange:(CDStruct_e83c9415)arg2;
 
 @end
 

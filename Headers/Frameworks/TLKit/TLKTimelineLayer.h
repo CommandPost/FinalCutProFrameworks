@@ -4,14 +4,19 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import <TLKit/TLKAccessibilityLayer.h>
 
-@class TLKAnchorLayer, TLKTimelineView;
+@class CALayer, NSArray, TLKAnchorLayer, TLKItemComponentFragment, TLKTimelineView;
 
-@interface TLKTimelineLayer : CALayer
+@interface TLKTimelineLayer : TLKAccessibilityLayer
 {
+    TLKItemComponentFragment *_itemComponentFragment;
     id <TLKTimelineItem> _representedObject;
     TLKAnchorLayer *_anchorLayer;
+    NSArray *_anchorShadowLayers;
+    NSArray *_markerLayers;
+    CALayer *_dropFeedbackLayer;
+    CDStruct_e83c9415 _dropHighlightRange;
     struct {
         unsigned int hasDragHandle:1;
         unsigned int selectionMask:8;
@@ -19,32 +24,37 @@
         unsigned int splitEdit:1;
         unsigned int audioComponent:1;
         unsigned int hideUnusedMediaOverlay:1;
-        unsigned int RESERVED:19;
+        unsigned int mouseOverLayer:1;
+        unsigned int RESERVED:18;
     } _tlkItemFlags;
+    NSArray *_anchorShadowLayer;
 }
 
 + (struct CGRect)frameForItem:(struct CGRect)arg1 withType:(int)arg2 andContainmentType:(int)arg3;
 + (struct CGRect)frameRectForRect:(struct CGRect)arg1;
-- (id)_subtreeDescription;
-- (id)_fullSubtreeDescription;
-- (id)_subtreeDescriptionForLayer:(id)arg1 withDepth:(long long)arg2 compact:(BOOL)arg3 layerCount:(unsigned long long *)arg4;
-- (id)_briefDescriptionForLayer:(id)arg1;
+@property(readonly, nonatomic) NSArray *anchorShadowLayer; // @synthesize anchorShadowLayer=_anchorShadowLayer;
+@property(nonatomic) CDStruct_e83c9415 dropHighlightRange; // @synthesize dropHighlightRange=_dropHighlightRange;
+@property(nonatomic) TLKItemComponentFragment *itemComponentFragment; // @synthesize itemComponentFragment=_itemComponentFragment;
 - (void)audioWaveFormProportionChanged;
 - (void)updateAppearance;
 @property(nonatomic) unsigned long long selectionMask;
 - (void)invalidate;
+- (CDStruct_e83c9415)dropHighlightRegion;
+@property(nonatomic) BOOL mouseOverLayer;
 @property(nonatomic) BOOL hideUnusedMediaOverlay;
 @property(nonatomic) BOOL audioComponent;
 @property(nonatomic) BOOL sourceSplitEdit;
 @property(nonatomic) BOOL splitEdit;
+- (id)associatedLayers;
+@property(retain, nonatomic) NSArray *markerLayers;
 - (id)anchorLayers;
+@property(retain, nonatomic) NSArray *anchorShadowLayers;
 @property(retain, nonatomic) TLKAnchorLayer *anchorLayer;
-@property(nonatomic) id <TLKTimelineItem> representedObject;
+@property(retain, nonatomic) id <TLKTimelineItem> representedObject;
 @property(readonly, nonatomic) TLKTimelineView *timelineView;
 - (void)dealloc;
 - (id)initWithTimelineView:(id)arg1;
 - (struct CGRect)visibleBoundsOfLayer:(id)arg1 accountingForOverlap:(BOOL)arg2;
-- (void)setContents:(id)arg1;
 
 @end
 

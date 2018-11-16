@@ -4,13 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import <TLKit/TLKAccessibilityLayer.h>
 
+#import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class TLKThemeBackedLayer, TLKTimelineView;
+@class CALayer, TLKThemeBackedLayer, TLKTimelineView;
 
-@interface TLKRangeItemLayer : CALayer <TLKPartInfo>
+@interface TLKRangeItemLayer : TLKAccessibilityLayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
     id _representedObject;
     id <TLKTimelineItem> _timelineItem;
@@ -27,6 +28,25 @@
 
 @property(nonatomic) id <TLKTimelineItem> timelineItem; // @synthesize timelineItem=_timelineItem;
 @property(nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
+- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
+- (id)syntheticUIElementAttributeNames:(id)arg1;
+- (id)syntheticUIElementHelp:(id)arg1;
+- (id)syntheticUIElementValueDescription:(id)arg1;
+- (id)syntheticUIElementValue:(id)arg1;
+- (id)syntheticUIElementSize:(id)arg1;
+- (id)syntheticUIElementPosition:(id)arg1;
+- (struct CGRect)syntheticUIElementRect:(id)arg1;
+- (id)syntheticUIElementDescription:(id)arg1;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityParent;
+- (id)accessibilityChildren;
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityDescription;
+- (id)accessibilityRole;
+- (id)accessibilityAttributeNames;
+- (struct CGRect)accessibilityRectForPart:(id)arg1;
+- (id)accessibilityPartAtPoint:(struct CGPoint)arg1;
 - (void)layoutSublayers;
 - (void)_updateEdgeLayers;
 - (struct CGRect)rectForPart:(id)arg1;

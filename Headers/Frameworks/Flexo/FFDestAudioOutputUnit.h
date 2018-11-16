@@ -10,14 +10,16 @@
 {
     struct FFAudioGraph *_graph;
     struct FFAudioNode *_channelConformer;
+    struct FFAudioNode *_levelNode;
     struct ComponentInstanceRecord *_outputUnit;
     BOOL _connected;
-    struct OpaqueFigTimebase *_timebase;
+    struct OpaqueCMTimebase *_timebase;
     struct FFAudioPerfRenderHook *_perfHook;
     struct FFAudioSignalClamper *_signalClamp;
     struct FFDestAudioStartTimebaseRenderHook *_startTimebaseHook;
 }
 
+- (void)setMute:(BOOL)arg1;
 - (void)reset;
 - (BOOL)isRunning;
 - (void)stop;
@@ -29,6 +31,7 @@
 - (unsigned long long)maximumChannels;
 - (void)setSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
 - (BOOL)matchesSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
+- (struct FFAudioNode *)_sourceNode;
 - (struct ComponentInstanceRecord *)outputUnit;
 - (void)dealloc;
 - (id)initWithOutputUnit:(const struct ComponentDescription *)arg1 playbackContext:(id)arg2;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct __CFArray *colorProfRelevantTagSignatures; // @synthesize colorProfRelevantTagSignatures=_colorProfRelevantTagSignatures;
 @property(readonly, nonatomic) struct ColorSyncProfile *colorSyncProfile; // @synthesize colorSyncProfile=_colorSyncProfile;
 @property(readonly, nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
+- (id)description;
 - (void)dealloc;
 - (id)initWithColorSpace:(struct CGColorSpace *)arg1;
 

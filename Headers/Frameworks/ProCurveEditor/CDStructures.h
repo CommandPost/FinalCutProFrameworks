@@ -38,10 +38,10 @@ struct OZChannel {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelBase {
@@ -60,8 +60,6 @@ struct OZChannelBase {
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
 };
-
-struct OZChannelFade;
 
 struct OZChannelFolder {
     CDUnknownFunctionPointerType *_field1;
@@ -82,6 +80,8 @@ struct OZChannelFolder {
     unsigned int _field16;
     unsigned int _field17;
 };
+
+struct OZChannelImpl;
 
 struct OZChannelInfo;
 
@@ -135,8 +135,6 @@ struct OZCompoundChannel {
     unsigned int _field17;
     _Bool _field18;
 };
-
-struct OZCurve;
 
 struct OZCurveSetListSerializer {
     CDUnknownFunctionPointerType *_field1;
@@ -196,8 +194,6 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
     struct _Alloc_hider _field1;
 };
 
-struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>>;
-
 struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> {
     struct _Vector_impl {
         struct OZChannelBase **_field1;
@@ -220,6 +216,14 @@ struct vector<OZCurveSetSerializer *, std::allocator<OZCurveSetSerializer *>> {
         struct OZCurveSetSerializer **_field2;
         struct OZCurveSetSerializer **_field3;
     } _field1;
+};
+
+struct vector<void *, std::allocator<void *>> {
+    struct _Vector_impl {
+        void **_M_start;
+        void **_M_finish;
+        void **_M_end_of_storage;
+    } _M_impl;
 };
 
 struct weak_ptr<PCImage> {
@@ -259,4 +263,12 @@ typedef struct vector<OZChannelRef, std::allocator<OZChannelRef>> {
         struct OZChannelRef *_field3;
     } _field1;
 } vector_6694fb0a;
+
+typedef struct vector<void *, std::allocator<void *>> {
+    struct _Vector_impl {
+        void **_M_start;
+        void **_M_finish;
+        void **_M_end_of_storage;
+    } _M_impl;
+} vector_dd51e4ce;
 

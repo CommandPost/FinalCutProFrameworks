@@ -11,6 +11,7 @@
 @interface TXHUDColorController : OZViewController
 {
     OZColorWell *_colorWell;
+    BOOL _isUpdatingColorWell;
 }
 
 - (void)update;

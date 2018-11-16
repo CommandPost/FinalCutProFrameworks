@@ -11,13 +11,14 @@
 @interface OZMiniCurveEditorStripView : NSOpenGLView
 {
     OZMiniCurveEditorStripController *_pController;
-    struct OZChannelBase *_pChan;
     unsigned int _numberOfSamples;
     unsigned int _numberOfKeypoints;
     CDStruct_1b6d18a9 _resolution;
     double *_samplesY;
     CDStruct_1b6d18a9 *_keypointsX;
     double *_keypointsY;
+    double _minVal;
+    double _maxVal;
 }
 
 - (id).cxx_construct;
@@ -25,7 +26,6 @@
 - (void)update;
 - (void)sample;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)setChannel:(struct OZChannelBase *)arg1;
 - (void)reshape;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

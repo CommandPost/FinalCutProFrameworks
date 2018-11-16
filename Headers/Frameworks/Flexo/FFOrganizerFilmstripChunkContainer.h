@@ -6,18 +6,21 @@
 
 #import "NSObject.h"
 
-@class FigTimeRangeAndObject, NSArray, NSMutableArray;
+@class FigTimeRangeAndObject, NSArray, NSMutableArray, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripChunkContainer : NSObject
 {
     NSMutableArray *_chunkArray;
     FigTimeRangeAndObject *_ro;
-    id _delegate;
+    CDStruct_e83c9415 _cachedMediaRange;
     BOOL _hasVideo;
     BOOL _hasAudio;
     NSArray *_selection;
     NSArray *_selectionMarkers;
+    NSMutableSet *_observedObjects;
+    NSMutableSet *_usedMediaSnapTimes;
+    id _delegate;
 }
 
 @property(readonly) BOOL hasAudio; // @synthesize hasAudio=_hasAudio;
@@ -25,18 +28,13 @@ __attribute__((visibility("hidden")))
 @property(readonly) FigTimeRangeAndObject *rangeObject; // @synthesize rangeObject=_ro;
 @property id delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSArray *chunkArray; // @synthesize chunkArray=_chunkArray;
-- (BOOL)syntheticUIElement:(id)arg1 isAttributeSettable:(id)arg2;
-- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
-- (id)accessibilityFocusedUIElement;
-- (id)accessibilityHitTest:(struct CGPoint)arg1;
-- (BOOL)accessibilityIsIgnored;
-- (void)accessibilitySetValue:(id)arg1 forAttribute:(id)arg2;
-- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)accessibilityAttributeNames;
 - (void)setContentsScale:(double)arg1;
+- (void)setSkimmingHightlightColor:(id)arg1;
+- (void)setSkimmingHilightDuration:(CDStruct_1b6d18a9)arg1 skimmerPosition:(int)arg2;
+- (void)setPlayheadTime:(CDStruct_1b6d18a9)arg1;
 - (void)showInactiveSelections:(BOOL)arg1;
 - (void)showHandlesForSelection:(id)arg1;
+- (void)setDragSelectionHighlight:(int)arg1;
 - (void)setGhostSelection:(BOOL)arg1;
 - (void)setFocused:(BOOL)arg1;
 - (struct CGRect)frame;
@@ -48,31 +46,37 @@ __attribute__((visibility("hidden")))
 - (id)chunkAtPoint:(struct CGPoint)arg1;
 - (struct CGPoint)closestPointInChunkContainerGivenPoint:(struct CGPoint)arg1;
 - (id)chunkFigTimeRangeAndObject;
+- (void)updateSelectionMarkers;
+- (void)_updateSelectionMarkerCache;
+- (void)updateVideoRangeInfo:(id)arg1;
 - (void)updateKeywordsInRange:(CDStruct_e83c9415)arg1;
 - (void)updateMarkersInRange:(CDStruct_e83c9415)arg1;
 - (void)loadMarkers;
-- (id)_gatherKeywordRangesForObject:(id)arg1;
+- (id)_gatherKeywordRangesForObjectOfFigTimeRangeAndObject:(id)arg1;
 - (void)loadItems;
 - (struct CGRect)selectionFrame;
 - (void)setMarkerRanges:(id)arg1;
+- (id)usedMediaSnapTimes;
 - (void)setKeywordRanges:(id)arg1;
 - (void)setTemporarySelection:(id)arg1;
-- (void)setDraggingSelectionRange:(CDStruct_e83c9415)arg1;
+- (void)setShowDuration:(BOOL)arg1;
+- (void)setDraggingSelectionRange:(CDStruct_e83c9415)arg1 showHandles:(BOOL)arg2;
 - (void)setSelectedRangesOfMedia:(id)arg1;
 - (BOOL)hasLayer;
 - (void)addChunk:(id)arg1;
+- (BOOL)chunkShouldHaveDuration:(id)arg1;
+- (BOOL)chunkShouldHaveHFRBadge:(id)arg1;
 - (BOOL)chunkShouldHaveClipBadge:(id)arg1;
 - (BOOL)chunkShouldHavePSDBadge:(id)arg1;
 - (BOOL)chunkShouldHaveMultiBadge:(id)arg1;
 - (BOOL)chunkShouldHaveComposedBadge:(id)arg1;
 - (BOOL)chunkShouldHaveVariantBadge:(id)arg1;
 - (void)replaceChunk:(id)arg1 withChunk:(id)arg2;
-- (BOOL)isEquavlientToFilmstripChunkContanier:(id)arg1;
+- (BOOL)isEquivalentToFilmstripChunkContainer:(id)arg1;
 - (id)description;
 - (void)dealloc;
 - (id)initWithRangeOfMedia:(id)arg1;
 - (void)rangeInvalidated:(id)arg1;
-- (void)rangeInvalidatedDeferred:(id)arg1;
 
 @end
 

@@ -62,6 +62,8 @@ __attribute__((visibility("hidden")))
 - (void)unhandledKeyUp:(id)arg1;
 - (void)unhandledKeyDown:(id)arg1;
 - (void)unhandledMouseDown:(id)arg1;
+- (void)endToolTipTrackingForLayer:(id)arg1;
+- (void)beginToolTipTrackingForLayer:(id)arg1;
 - (void)_clearTrackingInfoForLayer:(id)arg1;
 - (void)_setTrackingInfo:(id)arg1 forLayer:(id)arg2;
 - (struct CGPoint)_eventLocationInBase:(id)arg1;

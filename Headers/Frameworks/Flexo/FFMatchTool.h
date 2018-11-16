@@ -6,17 +6,15 @@
 
 #import <Flexo/FFTool.h>
 
-@class FFContext, FFEventFilter, LKButton, LKTextField, NSArray, NSProView;
+@class FFEventFilter, LKButton, LKTextField, NSProView;
 
 @interface FFMatchTool : FFTool
 {
-    NSArray *_selectedItems;
     FFEventFilter *_matchEventFilter;
-    FFContext *_context;
     id _delegate;
-    CDStruct_1b6d18a9 _playheadTime;
     float _canvasZoomFactor;
     struct CGPoint _canvasOrigin;
+    BOOL _viewerWasDominant;
     int _displayAreaMode;
     NSProView *_matchFooterView;
     LKTextField *_matchFooterText;
@@ -32,13 +30,12 @@
     long long _matchState;
 }
 
++ (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
+@property BOOL viewerWasDominant; // @synthesize viewerWasDominant=_viewerWasDominant;
 @property(nonatomic) int displayAreaMode; // @synthesize displayAreaMode=_displayAreaMode;
 @property(nonatomic) struct CGPoint canvasOrigin; // @synthesize canvasOrigin=_canvasOrigin;
 @property(nonatomic) float canvasZoomFactor; // @synthesize canvasZoomFactor=_canvasZoomFactor;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 playheadTime; // @synthesize playheadTime=_playheadTime;
-@property(copy, nonatomic) NSArray *selectedItems; // @synthesize selectedItems=_selectedItems;
 @property(retain, nonatomic) id delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
 - (id).cxx_construct;
 - (BOOL)_shouldCloseOnUndo;
 - (void)matchCancel:(id)arg1;
@@ -47,6 +44,7 @@
 - (id)playerAccessoryView;
 - (id)playerFooterView;
 - (id)checkForMatchEvents:(id)arg1;
+- (void)setSelectedItems:(id)arg1 contextTime:(CDStruct_1b6d18a9)arg2;
 - (void)referenceChanged:(id)arg1;
 - (void)_stopObservingOrganizerListViewNotifications;
 - (void)_startObservingOrganizerListViewNotifications;
@@ -60,9 +58,9 @@
 - (BOOL)allowsEffectOSCs;
 - (BOOL)allowInspectorToTrackSelection;
 - (void)selectedItemsChanged:(id)arg1;
-- (void)updatePlayheadTime;
 - (void)resignActiveTool;
 - (void)becomeActiveTool;
+@property(getter=isReferenceChanged) BOOL referenceChanged; // @dynamic referenceChanged;
 
 @end
 

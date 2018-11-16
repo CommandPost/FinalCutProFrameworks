@@ -4,13 +4,40 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFMotionEffect, FFSVContext;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
+
+struct AnalysisRequest {
+    struct OZFootage *_field1;
+    struct JobID _field2;
+    struct CacheFile _field3;
+    unsigned int _field4;
+};
+
+struct AnalyzerImpl {
+    CDUnknownFunctionPointerType *_field1;
+    struct PCSpinLock _field2;
+    struct set<OZImageElement *, std::less<OZImageElement *>, std::allocator<OZImageElement *>> _field3;
+    struct map<OZDocument *, int, std::less<OZDocument *>, std::allocator<std::pair<OZDocument *const, int>>> _field4;
+    struct PCMutex _field5;
+    struct vector<OZOpticalFlow::Private::JobImpl, std::allocator<OZOpticalFlow::Private::JobImpl>> _field6;
+    struct OZDocument *_field7;
+    struct OZScene *_field8;
+    struct OZRenderManager *_field9;
+    struct PCAtomicValue _field10;
+    struct JobID _field11;
+    unsigned int _field12;
+    struct AnalysisRequest _field13;
+    struct MotionEstimator _field14;
+    id _field15;
+    struct PCMutex _field16;
+    struct map<OZFootage *, OZOpticalFlow::ErrorCode, std::less<OZFootage *>, std::allocator<std::pair<OZFootage *const, OZOpticalFlow::ErrorCode>>> _field17;
+    id _field18;
+    id _field19;
+};
 
 struct BandPassFilter {
     double _field1;
@@ -25,34 +52,6 @@ struct BandPassFilter {
 };
 
 struct BuilderRequest;
-
-struct CATransform3D {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    double _field7;
-    double _field8;
-    double _field9;
-    double _field10;
-    double _field11;
-    double _field12;
-    double _field13;
-    double _field14;
-    double _field15;
-    double _field16;
-};
-
-struct CGAffineTransform {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-};
 
 struct CGColorSpace;
 
@@ -97,8 +96,8 @@ struct ElementInfo;
 struct Entry;
 
 struct FFPMRSimpleTimer {
-    unsigned long long _field1;
-    unsigned char _field2;
+    unsigned long long mStartTime;
+    unsigned char mShouldLog;
 };
 
 struct FFTextSearchResult {
@@ -114,6 +113,8 @@ struct FloatRect {
     float _field3;
     float _field4;
 };
+
+struct FrameOrder;
 
 struct FxKeyframeInfo {
     unsigned long long _field1;
@@ -168,14 +169,19 @@ struct GLRenderer {
     struct PCHash128 _field3[2];
     struct PCPtr<BuilderRequest> _field4[2];
     unsigned int _field5;
-    struct PCMutex _field6;
 };
 
 struct HGBitmap;
 
+struct HGGLContext;
+
 struct HGGLRenderer;
 
+struct HGImageStatsParams;
+
 struct HGNode;
+
+struct HGPixelBufferObj;
 
 struct HGRect {
     int _field1;
@@ -188,9 +194,17 @@ struct HGRef<HGBitmap> {
     struct HGBitmap *_field1;
 };
 
+struct HGRef<HGGLContext> {
+    struct HGGLContext *_field1;
+};
+
 struct HGRef<HGNode> {
     struct HGNode *_field1;
 };
+
+struct HGRenderJob;
+
+struct HGRenderQueue;
 
 struct HGRenderer;
 
@@ -206,7 +220,15 @@ struct HighPassFilter {
     double _field9;
 };
 
+struct IHOpticalFlowAnalyzerInterface;
+
 struct Impl;
+
+struct Interval;
+
+struct IntervalSet<unsigned int> {
+    struct vector<RetimingMath::IntervalSet<unsigned int>::Interval, std::allocator<RetimingMath::IntervalSet<unsigned int>::Interval>> _field1;
+};
 
 struct Job {
     struct JobID _field1;
@@ -220,6 +242,8 @@ struct Job {
 struct JobID {
     unsigned int _field1;
 };
+
+struct JobImpl;
 
 struct LiAgent {
     struct LiAgent *_field1;
@@ -260,12 +284,7 @@ struct LiAgent {
 
 struct LiAgentData;
 
-struct LiCamera {
-    CDUnknownFunctionPointerType *_field1;
-    CDUnknownFunctionPointerType *_field2;
-    struct PCWeakCount _field3;
-    _Bool _field4;
-};
+struct LiCamera;
 
 struct LiChannel;
 
@@ -306,58 +325,14 @@ struct LiImagePolygon {
 
 struct LiImageSource;
 
-struct LiLight {
-    CDUnknownFunctionPointerType *_field1;
-    PCMatrix44Tmpl_e98c85ee _field2;
-    int _field3;
-    struct PCPtr<PCBlendOptions> _field4;
-    _Bool _field5;
-    struct LiString _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    int _field9;
-    int _field10;
-    int _field11;
-    _Bool _field12;
-    _Bool _field13;
-    double _field14;
-    _Bool _field15;
-    _Bool _field16;
-    _Bool _field17;
-    _Bool _field18;
-    _Bool _field19;
-    int _field20;
-    _Bool _field21;
-    unsigned int _field22;
-    PCVector3_457fd1f0 _field23;
-    double _field24;
-    struct PCManagedColorTemplate<1> _field25;
-    PCVector3_457fd1f0 _field26;
-    double _field27;
-    int _field28;
-    PCVector3_457fd1f0 _field29;
-    double _field30;
-    double _field31;
-    double _field32;
-    _Bool _field33;
-    _Bool _field34;
-    _Bool _field35;
-    struct PCManagedColorTemplate<1> _field36;
-    double _field37;
-    _Bool _field38;
-    PCMatrix44Tmpl_e98c85ee _field39;
-    struct ShadowCubeMap _field40;
-    CDUnknownFunctionPointerType *_field41;
-    struct PCWeakCount _field42;
-    _Bool _field43;
-};
+struct LiLight;
 
 struct LiLightSet {
-    CDUnknownFunctionPointerType *_vptr$PCArray;
-    int _sz;
-    int _num;
-    struct LiLight *_array;
-    _Bool _hasInactiveLight;
+    CDUnknownFunctionPointerType *_field1;
+    int _field2;
+    int _field3;
+    struct LiLight *_field4;
+    _Bool _field5;
 };
 
 struct LiRenderParameters;
@@ -382,8 +357,26 @@ struct LiSceneObject;
 
 struct LiSimpleCamera;
 
-struct LiString {
-    char *_field1;
+struct MotionEstimator {
+    struct PCSpinLock _field1;
+    struct IHOpticalFlowAnalyzerInterface *_field2;
+    struct set<OZOpticalFlow::Private::MotionEstimator::FrameRec, OZOpticalFlow::Private::MotionEstimator::FrameOrder, std::allocator<OZOpticalFlow::Private::MotionEstimator::FrameRec>> _field3;
+    struct IntervalSet<unsigned int> _field4;
+    unsigned int _field5;
+    _Bool _field6;
+    int _field7;
+    int _field8;
+    int _field9;
+    int _field10;
+    int _field11;
+    int _field12;
+    int _field13;
+    int _field14;
+    int _field15;
+    struct vector<float, std::allocator<float>> _field16;
+    struct vector<float, std::allocator<float>> _field17;
+    struct shared_ptr<OZOpticalFlow::VectorField> _field18;
+    struct shared_ptr<OZOpticalFlow::VectorField> _field19;
 };
 
 struct OZAddRemoveChanIF {
@@ -491,7 +484,7 @@ struct OZAudioMasterTrack {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -539,39 +532,41 @@ struct OZAudioMixer {
     struct OpaqueSTTransportOverloadNotifier *_field12;
     struct OZMasterSupplierData *_field13;
     struct vector<OZSupplierData *, std::allocator<OZSupplierData *>> _field14;
-    struct __CFRunLoopTimer *_field15;
-    struct __CFRunLoopTimer *_field16;
-    unsigned int _field17;
-    _Bool _field18;
-    _Bool _field19;
+    _Bool _field15;
+    _Bool _field16;
+    struct __CFRunLoopTimer *_field17;
+    struct __CFRunLoopTimer *_field18;
+    unsigned int _field19;
     _Bool _field20;
     _Bool _field21;
     _Bool _field22;
     _Bool _field23;
     _Bool _field24;
-    CDStruct_1b6d18a9 _field25;
-    CDStruct_1b6d18a9 _field26;
-    _Bool _field27;
-    _Bool _field28;
-    unsigned int _field29;
+    _Bool _field25;
+    _Bool _field26;
+    CDStruct_1b6d18a9 _field27;
+    CDStruct_1b6d18a9 _field28;
+    _Bool _field29;
     _Bool _field30;
-    _Bool _field31;
+    unsigned int _field31;
     _Bool _field32;
     _Bool _field33;
-    double _field34;
-    CDStruct_1b6d18a9 _field35;
-    CDStruct_1b6d18a9 _field36;
+    _Bool _field34;
+    _Bool _field35;
+    double _field36;
     CDStruct_1b6d18a9 _field37;
-    unsigned int _field38;
-    unsigned int _field39;
+    CDStruct_1b6d18a9 _field38;
+    CDStruct_1b6d18a9 _field39;
     unsigned int _field40;
-    double _field41;
-    double _field42;
+    unsigned int _field41;
+    unsigned int _field42;
     double _field43;
-    _Bool _field44;
-    _Bool _field45;
+    double _field44;
+    double _field45;
     _Bool _field46;
-    unsigned int _field47;
+    _Bool _field47;
+    _Bool _field48;
+    unsigned int _field49;
 };
 
 struct OZAudioTrack {
@@ -590,7 +585,7 @@ struct OZAudioTrack {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -667,7 +662,7 @@ struct OZCamera {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -727,10 +722,10 @@ struct OZChanAudioTrackRefWithPicker {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     _Bool _field19;
     _Bool _field20;
     _Bool _field21;
@@ -763,10 +758,10 @@ struct OZChanFootageRef {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     _Bool _field19;
     _Bool _field20;
     _Bool _field21;
@@ -790,10 +785,10 @@ struct OZChanFootageRefWithPicker {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     _Bool _field19;
     _Bool _field20;
     _Bool _field21;
@@ -826,10 +821,10 @@ struct OZChanObjectManipRef {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     _Bool _field19;
     _Bool _field20;
 };
@@ -849,10 +844,10 @@ struct OZChanObjectRefWithPicker {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     _Bool _field19;
     _Bool _field20;
     _Bool _field21;
@@ -885,10 +880,10 @@ struct OZChanRotoshapeRefWithPicker {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     _Bool _field19;
     _Bool _field20;
     _Bool _field21;
@@ -921,10 +916,10 @@ struct OZChannel {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannel2D {
@@ -1013,10 +1008,10 @@ struct OZChannelAffectedNodes {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelAngle {
@@ -1034,10 +1029,10 @@ struct OZChannelAngle {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelAspectRatio {
@@ -1055,10 +1050,10 @@ struct OZChannelAspectRatio {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelAspectRatioFootage {
@@ -1076,10 +1071,10 @@ struct OZChannelAspectRatioFootage {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelBase {
@@ -1144,7 +1139,8 @@ struct OZChannelBehaviorRoot {
     struct OZObjectManipulator *_field22;
     struct OZTimeMarkerSet *_field23;
     struct list<OZSimulationBehavior *, std::allocator<OZSimulationBehavior *>> _field24;
-    struct OZBehavior *_field25;
+    struct PCString _field25;
+    struct OZBehavior *_field26;
 };
 
 struct OZChannelBlendMode {
@@ -1162,10 +1158,10 @@ struct OZChannelBlendMode {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
     struct vector<int, std::allocator<int>> _field20;
     struct PCString _field21;
@@ -1189,10 +1185,10 @@ struct OZChannelBool {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelButton {
@@ -1210,12 +1206,13 @@ struct OZChannelButton {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     CDUnknownFunctionPointerType _field19;
-    void *_field20;
+    struct PCString _field20;
+    void *_field21;
 };
 
 struct OZChannelColor {
@@ -1311,10 +1308,10 @@ struct OZChannelDecibel {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelDiscreteColor {
@@ -1332,10 +1329,10 @@ struct OZChannelDiscreteColor {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
     struct vector<int, std::allocator<int>> _field20;
     struct PCString _field21;
@@ -1357,10 +1354,10 @@ struct OZChannelDouble {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelDoubleOverRange {
@@ -1378,10 +1375,10 @@ struct OZChannelDoubleOverRange {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct PCString _field19;
 };
 
@@ -1400,10 +1397,10 @@ struct OZChannelEnum {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
     struct vector<int, std::allocator<int>> _field20;
     struct PCString _field21;
@@ -1425,10 +1422,10 @@ struct OZChannelEnumDimension {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
     struct vector<int, std::allocator<int>> _field20;
     struct PCString _field21;
@@ -1450,10 +1447,10 @@ struct OZChannelEnumInterpMode {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
     struct vector<int, std::allocator<int>> _field20;
     struct PCString _field21;
@@ -1475,10 +1472,10 @@ struct OZChannelEnumLayer {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
     struct vector<int, std::allocator<int>> _field20;
     struct PCString _field21;
@@ -1500,10 +1497,10 @@ struct OZChannelEnumRetime {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
     struct vector<int, std::allocator<int>> _field20;
     struct PCString _field21;
@@ -1525,17 +1522,15 @@ struct OZChannelEnumWithList {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct _Rb_tree_iterator<std::pair<const PCString, std::vector<PCString, std::allocator<PCString>>>> _field19;
     struct vector<int, std::allocator<int>> _field20;
     struct PCString _field21;
     unsigned int _field22;
 };
-
-struct OZChannelFade;
 
 struct OZChannelFolder {
     CDUnknownFunctionPointerType *_field1;
@@ -1557,6 +1552,31 @@ struct OZChannelFolder {
     unsigned int _field17;
 };
 
+struct OZChannelFont {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    vector_53b492d6 *_field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    _Bool _field18;
+    struct OZChannelEnum _field19;
+    struct OZChannelEnum _field20;
+    struct PCString _field21;
+    struct PCString _field22;
+};
+
 struct OZChannelGammaFootage {
     CDUnknownFunctionPointerType *_field1;
     struct OZFactory *_field2;
@@ -1572,10 +1592,10 @@ struct OZChannelGammaFootage {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelGradientAlphaFolder {
@@ -1700,6 +1720,62 @@ struct OZChannelHistogramSample {
     struct OZChannelDouble _field23;
 };
 
+struct OZChannelImageForImageWithOptions {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
+    _Bool _field19;
+    _Bool _field20;
+    _Bool _field21;
+    _Bool _field22;
+    struct OZChannel2D *_field23;
+    _Bool _field24;
+    struct OZChannelImageWithOptions *_field25;
+};
+
+struct OZChannelImageWithOptions {
+    CDUnknownFunctionPointerType *_field1;
+    struct OZFactory *_field2;
+    CDUnknownFunctionPointerType *_field3;
+    unsigned int _field4;
+    struct PCString _field5;
+    struct PCString *_field6;
+    struct OZChannelFolder *_field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    void *_field10;
+    struct __CFString *_field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct OZChannelTimeConverter *_field14;
+    vector_53b492d6 *_field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    _Bool _field18;
+    struct OZChannelImageForImageWithOptions _field19;
+    struct OZChannelUint32 _field20;
+    struct OZChannelBool _field21;
+    struct OZChannelPosition _field22;
+    struct OZChannelEnum _field23;
+};
+
+struct OZChannelImpl;
+
 struct OZChannelInfo {
     CDUnknownFunctionPointerType *_field1;
     double _field2;
@@ -1728,10 +1804,10 @@ struct OZChannelMoveableImage {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     _Bool _field19;
     _Bool _field20;
     _Bool _field21;
@@ -1765,6 +1841,7 @@ struct OZChannelObjectRoot {
     struct OZObjectManipulator *_field22;
     struct OZTimeMarkerSet *_field23;
     struct list<OZSimulationBehavior *, std::allocator<OZSimulationBehavior *>> _field24;
+    struct PCString _field25;
 };
 
 struct OZChannelObjectRootBase {
@@ -1806,10 +1883,10 @@ struct OZChannelPercent {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelPercentOverRange {
@@ -1827,10 +1904,10 @@ struct OZChannelPercentOverRange {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct PCString _field19;
 };
 
@@ -1857,11 +1934,11 @@ struct OZChannelPosition {
     struct OZChannelDouble _field20;
     _Bool _field21;
     PCMatrix44Tmpl_e98c85ee _field22;
-    vector_419cd555 _field23;
-    vector_419cd555 _field24;
-    vector_419cd555 _field25;
-    vector_419cd555 _field26;
-    vector_419cd555 _field27;
+    vector_3396ec90 _field23;
+    vector_3396ec90 _field24;
+    vector_3396ec90 _field25;
+    vector_3396ec90 _field26;
+    vector_3396ec90 _field27;
     unsigned int _field28;
     struct PCSpinLock _field29;
 };
@@ -1889,14 +1966,14 @@ struct OZChannelPosition3D {
     struct OZChannelDouble _field20;
     _Bool _field21;
     PCMatrix44Tmpl_e98c85ee _field22;
-    vector_419cd555 _field23;
-    vector_419cd555 _field24;
-    vector_419cd555 _field25;
-    vector_419cd555 _field26;
-    vector_419cd555 _field27;
+    vector_3396ec90 _field23;
+    vector_3396ec90 _field24;
+    vector_3396ec90 _field25;
+    vector_3396ec90 _field26;
+    vector_3396ec90 _field27;
     unsigned int _field28;
     struct PCSpinLock _field29;
-    vector_419cd555 _field30;
+    vector_3396ec90 _field30;
     _Bool _field31;
     _Bool _field32;
     struct OZChannelDouble _field33;
@@ -1946,10 +2023,10 @@ struct OZChannelRetimeFrame {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelRotation3D {
@@ -2050,7 +2127,8 @@ struct OZChannelSceneNode {
     struct OZObjectManipulator *_field22;
     struct OZTimeMarkerSet *_field23;
     struct list<OZSimulationBehavior *, std::allocator<OZSimulationBehavior *>> _field24;
-    struct OZSceneNode *_field25;
+    struct PCString _field25;
+    struct OZSceneNode *_field26;
 };
 
 struct OZChannelShape {
@@ -2068,10 +2146,10 @@ struct OZChannelShape {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct OZChannelVertexFolder _field19;
     struct OZDynamicCurve _field20;
     struct OZDynamicCurve _field21;
@@ -2083,8 +2161,8 @@ struct OZChannelShape {
     _Bool _field27;
     _Bool _field28;
     void *_field29;
-    vector_419cd555 _field30;
-    vector_419cd555 _field31;
+    vector_3396ec90 _field30;
+    vector_3396ec90 _field31;
     struct OZShape *_field32;
 };
 
@@ -2126,10 +2204,10 @@ struct OZChannelShearAngle {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelTimeConverter;
@@ -2149,10 +2227,10 @@ struct OZChannelUint32 {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
 };
 
 struct OZChannelVaryingFolder {
@@ -2217,8 +2295,6 @@ struct OZCompoundChannel {
     _Bool _field18;
 };
 
-struct OZCurve;
-
 struct OZCurveEditorState {
     CDUnknownFunctionPointerType *_field1;
     _Bool _field2;
@@ -2238,6 +2314,24 @@ struct OZCurveSetListSerializer {
 
 struct OZCurveSetSerializer;
 
+struct OZDisplayCallback {
+    CDUnknownFunctionPointerType *_field1;
+    id _field2;
+    struct OZFrameQueue *_field3;
+    struct shared_ptr<OZPlaybackClock> _field4;
+    struct PCAtomicValue _field5;
+};
+
+struct OZDisplayTimer {
+    CDUnknownFunctionPointerType *_field1;
+    id _field2;
+    struct OZFrameQueue *_field3;
+    struct shared_ptr<OZPlaybackClock> _field4;
+    struct PCAtomicValue _field5;
+    id _field6;
+    id _field7;
+};
+
 struct OZDocument {
     CDUnknownFunctionPointerType *_field1;
     CDUnknownFunctionPointerType *_field2;
@@ -2255,23 +2349,25 @@ struct OZDocument {
     int _field14;
     struct PCString _field15;
     struct PCString _field16;
-    unsigned long long _field17;
-    struct OZNotificationManager *_field18;
-    id _field19;
-    struct OZViewerState *_field20[4];
-    struct OZCanvasState *_field21;
-    struct OZProjectPanelState *_field22;
-    struct OZTimelineState *_field23;
-    struct OZCurveEditorState *_field24;
-    struct OZInspectorState *_field25;
-    _Bool _field26;
-    unsigned int _field27;
-    unsigned int _field28;
-    struct PCString _field29;
-    _Bool _field30;
-    struct OZRigWidget *_field31;
-    vector_6694fb0a _field32;
-    int _field33;
+    unsigned int _field17;
+    unsigned long long _field18;
+    struct OZNotificationManager *_field19;
+    id _field20;
+    _Bool _field21;
+    struct OZViewerState *_field22[4];
+    struct OZCanvasState *_field23;
+    struct OZProjectPanelState *_field24;
+    struct OZTimelineState *_field25;
+    struct OZCurveEditorState *_field26;
+    struct OZInspectorState *_field27;
+    _Bool _field28;
+    unsigned int _field29;
+    unsigned int _field30;
+    struct PCString _field31;
+    _Bool _field32;
+    struct OZRigWidget *_field33;
+    vector_6694fb0a _field34;
+    int _field35;
 };
 
 struct OZDropTargetInfo {
@@ -2364,7 +2460,7 @@ struct OZElement {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -2419,7 +2515,7 @@ struct OZElement {
     unsigned int _field68;
     unsigned int _field69;
     unsigned int _field70;
-    list_1192f13f _field71;
+    list_d81b4758 _field71;
     struct OZChannelFolder _field72;
     struct OZChanFootageRef _field73;
     struct PCHash128 _field74;
@@ -2544,15 +2640,17 @@ struct OZFolderMaterialProperties {
     vector_53b492d6 *_field15;
     unsigned int _field16;
     unsigned int _field17;
-    struct OZChannelColor _field18;
-    struct OZChannelDouble _field19;
-    struct OZChannelColor _field20;
-    struct OZChannelDouble _field21;
-    struct OZChannelColor _field22;
-    struct OZChannelDouble _field23;
-    struct OZChannelColor _field24;
-    struct OZChannelDouble _field25;
+    struct OZChannelDouble _field18;
 };
+
+struct OZFontCollection {
+    CDUnknownFunctionPointerType *_field1;
+    struct PCString _field2;
+    struct PCString _field3;
+    struct vector<OZFontFamily *, std::allocator<OZFontFamily *>> _field4;
+};
+
+struct OZFontFamily;
 
 struct OZFootage {
     CDUnknownFunctionPointerType *_field1;
@@ -2570,7 +2668,7 @@ struct OZFootage {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -2640,6 +2738,10 @@ struct OZFootage {
     _Bool _field83;
 };
 
+struct OZFootageScheduler;
+
+struct OZFrameQueue;
+
 struct OZFrameSet {
     struct _Rb_tree<PCTimeRange, PCTimeRange, std::_Identity<PCTimeRange>, std::less<PCTimeRange>, std::allocator<PCTimeRange>> _field1;
 };
@@ -2668,19 +2770,28 @@ struct OZFxPlugSharedBase {
     void *_field14;
     void *_field15;
     void *_field16;
-    struct PCString _field17;
-    _Bool _field18;
-    _Bool _field19;
-    _Bool _field20;
+    void *_field17;
+    void *_field18;
+    void *_field19;
+    struct PCString _field20;
     _Bool _field21;
     _Bool _field22;
     _Bool _field23;
     _Bool _field24;
-    int _field25;
-    struct OZChannelBase *_field26;
-    void *_field27;
-    struct __CFUUID *_field28[7];
-    unsigned int _field29;
+    _Bool _field25;
+    _Bool _field26;
+    _Bool _field27;
+    int _field28;
+    _Bool _field29;
+    _Bool _field30;
+    _Bool _field31;
+    struct OZChannelBase *_field32;
+    _Bool _field33;
+    void *_field34;
+    void *_field35;
+    struct __CFUUID *_field36[7];
+    struct PCMutex _field37;
+    unsigned int _field38;
 };
 
 struct OZFxPlugThreadContextManager {
@@ -2707,7 +2818,7 @@ struct OZGroup {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -2762,11 +2873,11 @@ struct OZGroup {
     unsigned int _field68;
     unsigned int _field69;
     unsigned int _field70;
-    list_1192f13f _field71;
+    list_d81b4758 _field71;
     struct OZChannelFolder _field72;
     struct OZChanFootageRef _field73;
     struct PCHash128 _field74;
-    list_1192f13f _field75;
+    list_d81b4758 _field75;
     struct OZChannelFolder _field76;
     struct OZChannelEnumDimension _field77;
     struct OZChannelBool _field78;
@@ -2785,6 +2896,60 @@ struct OZGuideSet {
     struct _Rb_tree<OZGuide, OZGuide, std::_Identity<OZGuide>, std::less<OZGuide>, std::allocator<OZGuide>> _field2;
 };
 
+struct OZHGRenderNode {
+    CDUnknownFunctionPointerType *_field1;
+    unsigned int _field2;
+    int _field3;
+    struct HGNode *_field4;
+    struct HGBitmap *_field5;
+    struct HGRect _field6;
+    int _field7;
+    _Bool _field8;
+    int _field9;
+    int _field10;
+    int _field11;
+    struct HGRef<HGGLContext> _field12;
+    _Bool _field13;
+    double _field14;
+    double _field15;
+    struct HGPixelBufferObj *_field16;
+    unsigned long long _field17;
+    void *_field18;
+    char *_field19;
+    CDUnknownFunctionPointerType _field20;
+    double _field21;
+    struct HGImageStatsParams *_field22;
+    struct HGRenderer *_field23;
+    struct HGRenderJob *_field24;
+    struct HGRenderQueue *_field25;
+    struct OZRenderParams _field26;
+    CDStruct_1b6d18a9 _field27;
+    struct PCHash128 _field28;
+    id _field29;
+    struct OZProcessControl _field30;
+    void *_field31;
+    _Bool _field32;
+    _Bool _field33;
+    unsigned long long _field34;
+};
+
+struct OZHGUserJob {
+    CDUnknownFunctionPointerType *_field1;
+    unsigned int _field2;
+    int _field3;
+    int _field4;
+    unsigned int _field5;
+    double _field6;
+    unsigned long long _field7;
+    void *_field8;
+    char *_field9;
+    struct HGRenderQueue *_field10;
+    CDUnknownFunctionPointerType _field11;
+    struct OZProcessControl _field12;
+    id _field13;
+    void *_field14;
+};
+
 struct OZImageElement {
     CDUnknownFunctionPointerType *_field1;
     struct OZFactory *_field2;
@@ -2801,7 +2966,7 @@ struct OZImageElement {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -2856,7 +3021,7 @@ struct OZImageElement {
     unsigned int _field68;
     unsigned int _field69;
     unsigned int _field70;
-    list_1192f13f _field71;
+    list_d81b4758 _field71;
     struct OZChannelFolder _field72;
     struct OZChanFootageRef _field73;
     struct PCHash128 _field74;
@@ -2900,6 +3065,7 @@ struct OZImageElement {
     struct PCHash128 _field112;
     _Bool _field113;
     id _field114;
+    _Bool _field115;
 };
 
 struct OZImageEnvironment {
@@ -2918,7 +3084,7 @@ struct OZImageEnvironment {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -2973,7 +3139,7 @@ struct OZImageEnvironment {
     unsigned int _field68;
     unsigned int _field69;
     unsigned int _field70;
-    list_1192f13f _field71;
+    list_d81b4758 _field71;
     struct OZChannelFolder _field72;
     struct OZChanFootageRef _field73;
     struct PCHash128 _field74;
@@ -3004,7 +3170,7 @@ struct OZImageGenerator {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -3059,7 +3225,7 @@ struct OZImageGenerator {
     unsigned int _field68;
     unsigned int _field69;
     unsigned int _field70;
-    list_1192f13f _field71;
+    list_d81b4758 _field71;
     struct OZChannelFolder _field72;
     struct OZChanFootageRef _field73;
     struct PCHash128 _field74;
@@ -3109,7 +3275,7 @@ struct OZLight {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -3165,7 +3331,9 @@ struct OZLightingFolder {
     unsigned int _field16;
     unsigned int _field17;
     struct OZChannelEnum _field18;
-    struct OZFolderMaterialProperties _field19;
+    struct OZChannelBool _field19;
+    struct OZChannelDouble _field20;
+    struct OZFolderMaterialProperties _field21;
 };
 
 struct OZMasterSupplierData;
@@ -3253,10 +3421,10 @@ struct OZMoShape {
     struct OZElement *_field80;
     struct OZParticlePaintIF *_field81;
     vector_9ae9b2a4 *_field82;
-    vector_419cd555 *_field83;
-    vector_419cd555 *_field84;
+    vector_3396ec90 *_field83;
+    vector_3396ec90 *_field84;
     vector_9ae9b2a4 *_field85;
-    vector_419cd555 *_field86;
+    vector_3396ec90 *_field86;
     struct PCMutex *_field87;
     struct PCHash128 _field88;
     shared_ptr_f006f9e7 _field89;
@@ -3349,6 +3517,10 @@ struct OZPasteList {
     _Bool _field3;
 };
 
+struct OZPlaybackClock;
+
+struct OZPlaybackScheduler;
+
 struct OZPrefetchUnit;
 
 struct OZProcessControl {
@@ -3407,7 +3579,7 @@ struct OZProjectNode {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -3464,20 +3636,6 @@ struct OZPublishSettings {
     struct map<unsigned int, double, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, double>>> _field7;
 };
 
-struct OZRenderCompletionParams {
-    shared_ptr_92745eb9 _field1;
-    struct OZRenderState _field2;
-    void *_field3;
-    unsigned int _field4;
-    struct OZScene *_field5;
-    PCRect_b601f9f3 _field6;
-    PCRect_07ce470f _field7;
-    PCRect_b601f9f3 _field8;
-    PCRect_07ce470f _field9;
-    PCRect_b601f9f3 _field10;
-    PCMatrix44Tmpl_e98c85ee _field11;
-};
-
 struct OZRenderInstruction {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
@@ -3503,9 +3661,10 @@ struct OZRenderManager {
     struct OZPrefetchUnit *_field4;
     struct OZAudioUnit *_field5;
     struct PCAtomicValue _field6;
+    struct GLRenderer *_field7;
+    id _field8;
+    unsigned int _field9;
 };
-
-struct OZRenderMutex;
 
 struct OZRenderNode {
     CDUnknownFunctionPointerType *_field1;
@@ -3514,68 +3673,69 @@ struct OZRenderNode {
 };
 
 struct OZRenderParams {
-    struct OZRenderState _state;
-    struct OZProcessControl *_control;
-    struct GLRenderer *_renderer;
-    int _virtualScreen;
-    struct PCImageAttributes _imageAttr;
-    struct PCHash128 _hash;
-    struct PCHash128 _hashWithoutTime;
-    int _renderQuality;
-    int _textRenderQuality;
-    _Bool _doHighQualityResampling;
-    _Bool _doShapeAntialiasing;
-    _Bool _do3DIntersectionAntialiasing;
-    _Bool _reducedResolutionMedia;
-    _Bool _reducedResolutionOverride;
-    _Bool _doRenderFields;
-    int _fieldRenderingMode;
-    _Bool _doMotionBlur;
-    unsigned int _motionBlurSamples;
-    double _motionBlurDuration;
-    _Bool _doFrameBlending;
-    _Bool _useLighting;
-    _Bool _doShadows;
-    _Bool _doReflection;
-    _Bool _doDepthOfField;
-    struct PCColor _backgroundColor;
-    _Bool _dithering;
-    PCRect_b601f9f3 _renderBounds;
-    PCRect_b601f9f3 _renderGate;
-    PCRect_07ce470f _roi;
-    PCRect_b601f9f3 _outputGate;
-    _Bool _flip;
-    struct PCColorSpaceHandle _outputColorSpace;
-    PCMatrix44Tmpl_e98c85ee _pixelTransform;
-    _Bool _havePixelTransform;
-    FFSVContext *_ffInputContext;
-    CDStruct_1b6d18a9 _ffSourceTime;
-    struct map<unsigned int, HGRef<HGNode>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, HGRef<HGNode>>>> *_ffInputNodes;
-    struct map<unsigned int, PCMatrix44Tmpl<double>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, PCMatrix44Tmpl<double>>>> _ffInputPixelTransforms;
-    struct map<unsigned int, FFStreamVideo *, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, FFStreamVideo *>>> *_ffInputStreams;
-    struct map<unsigned int, CMTime, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, CMTime>>> _ffInputTimes;
-    struct map<unsigned int, CMTime, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, CMTime>>> _ffInputOffsets;
-    double _motionEffectScale;
-    FFMotionEffect *_motionEffect;
-    CDStruct_1b6d18a9 _timecode;
-    CDStruct_1b6d18a9 _sequenceTimecode;
-    double _motionEffectFrameRate;
-    _Bool _motionEffectDropFrame;
-    _Bool _sequenceDropFrame;
-    _Bool _cropToRenderBounds;
-    shared_ptr_92745eb9 _outImage;
-    _Bool _outImageWidthIsClipped;
-    _Bool _outImageHeightIsClipped;
-    struct map<PCString, void *, std::less<PCString>, std::allocator<std::pair<const PCString, void *>>> _map;
-    double _sx;
-    double _sy;
-    _Bool _useScale;
-    PCPtr_4c450fa5 _camera;
-    _Bool _display3DGrid;
-    _Bool _displaySlivers;
-    struct LiRenderingTechnology _renderingTechnology;
-    struct LiLightSet _shadowLights;
-    _Bool _isExpose;
+    struct OZRenderState _field1;
+    struct OZProcessControl *_field2;
+    struct GLRenderer *_field3;
+    int _field4;
+    struct PCImageAttributes _field5;
+    struct PCHash128 _field6;
+    struct PCHash128 _field7;
+    int _field8;
+    int _field9;
+    _Bool _field10;
+    _Bool _field11;
+    _Bool _field12;
+    _Bool _field13;
+    _Bool _field14;
+    _Bool _field15;
+    int _field16;
+    _Bool _field17;
+    unsigned int _field18;
+    double _field19;
+    _Bool _field20;
+    _Bool _field21;
+    _Bool _field22;
+    _Bool _field23;
+    _Bool _field24;
+    struct PCColor _field25;
+    _Bool _field26;
+    PCRect_b601f9f3 _field27;
+    PCRect_b601f9f3 _field28;
+    PCRect_07ce470f _field29;
+    PCRect_b601f9f3 _field30;
+    _Bool _field31;
+    struct PCColorSpaceHandle _field32;
+    PCMatrix44Tmpl_e98c85ee _field33;
+    _Bool _field34;
+    id _field35;
+    id _field36;
+    CDStruct_1b6d18a9 _field37;
+    struct map<unsigned int, HGRef<HGNode>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, HGRef<HGNode>>>> *_field38;
+    struct map<unsigned int, PCMatrix44Tmpl<double>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, PCMatrix44Tmpl<double>>>> _field39;
+    struct map<unsigned int, FFStreamVideo *, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, FFStreamVideo *>>> *_field40;
+    struct map<unsigned int, CMTime, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, CMTime>>> _field41;
+    struct map<unsigned int, CMTime, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, CMTime>>> _field42;
+    double _field43;
+    id _field44;
+    CDStruct_1b6d18a9 _field45;
+    CDStruct_1b6d18a9 _field46;
+    CDStruct_1b6d18a9 _field47;
+    _Bool _field48;
+    _Bool _field49;
+    _Bool _field50;
+    shared_ptr_92745eb9 _field51;
+    _Bool _field52;
+    _Bool _field53;
+    struct map<PCString, void *, std::less<PCString>, std::allocator<std::pair<const PCString, void *>>> _field54;
+    double _field55;
+    double _field56;
+    _Bool _field57;
+    PCPtr_41ab8147 _field58;
+    _Bool _field59;
+    _Bool _field60;
+    struct LiRenderingTechnology _field61;
+    struct LiLightSet _field62;
+    _Bool _field63;
 };
 
 struct OZRenderResult {
@@ -3589,6 +3749,10 @@ struct OZRenderResult {
     PCRect_b601f9f3 _field8;
     double _field9;
     PCMatrix44Tmpl_e98c85ee _field10;
+    void *_field11;
+    struct OZProcessControl *_field12;
+    _Bool _field13;
+    double _field14;
 };
 
 struct OZRenderState {
@@ -3612,6 +3776,7 @@ struct OZRenderState {
     _Bool _doCrop;
     _Bool _doFourCorner;
     struct TransformSet _transformations;
+    struct set<OZElement *, std::less<OZElement *>, std::allocator<OZElement *>> *_unrenderedElements;
 };
 
 struct OZRenderUnit;
@@ -3634,7 +3799,7 @@ struct OZRig {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -3642,7 +3807,7 @@ struct OZRig {
     struct _List_iterator<OZSceneNode *> _field21;
     unsigned int _field22;
     struct OZChannelFolder _field23;
-    list_1192f13f _field24;
+    list_d81b4758 _field24;
     unsigned int _field25;
     _Bool _field26;
     _Bool _field27;
@@ -3706,7 +3871,7 @@ struct OZRigWidget {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -3721,7 +3886,7 @@ struct OZRigWidget {
     struct OZChannelUint32 _field28;
     struct OZChannelFolder _field29;
     struct vector<OZRigSnapshot *, std::allocator<OZRigSnapshot *>> _field30;
-    list_89d338e7 _field31;
+    list_bbacc03b _field31;
     unsigned int _field32;
     _Bool _field33;
     _Bool _field34;
@@ -3746,7 +3911,7 @@ struct OZRotoshape {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -3801,7 +3966,7 @@ struct OZRotoshape {
     unsigned int _field68;
     unsigned int _field69;
     unsigned int _field70;
-    list_1192f13f _field71;
+    list_d81b4758 _field71;
     struct OZChannelFolder _field72;
     struct OZChanFootageRef _field73;
     struct PCHash128 _field74;
@@ -3826,30 +3991,33 @@ struct OZScene {
     struct OZPublishSettings _field7;
     struct OZChannelObjectRoot _field8;
     CDStruct_1b6d18a9 _field9;
-    list_1192f13f _field10;
+    list_d81b4758 _field10;
     struct OZSceneNode *_field11;
     struct OZGroup *_field12;
-    struct map<unsigned int, std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>>*, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>>*>>> _field13;
-    struct OZNodeMap _field14;
-    struct PCTimeRange _field15;
+    struct set<OZElement *, std::less<OZElement *>, std::allocator<OZElement *>> _field13;
+    struct map<unsigned int, std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>>*, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>>*>>> _field14;
+    struct OZNodeMap _field15;
     struct PCTimeRange _field16;
-    struct OZCurveSetListSerializer _field17;
-    struct OZRenderManager *_field18;
-    struct OZGuideSet _field19;
-    unsigned int _field20;
+    struct PCTimeRange _field17;
+    struct OZCurveSetListSerializer _field18;
+    struct OZRenderManager *_field19;
+    struct OZGuideSet _field20;
     unsigned int _field21;
-    _Bool _field22;
-    _Bool _field23;
-    struct OZDocument *_field24;
-    unsigned int _field25;
-    struct PCHash128 _field26;
-    struct PCMutex _field27;
-    struct map<PCHash128, PCMutexRef, std::less<PCHash128>, std::allocator<std::pair<const PCHash128, PCMutexRef>>> _field28;
-    struct set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>> _field29;
-    _Bool _field30;
-    _Bool _field31;
-    unsigned int _field32;
-    int _field33;
+    unsigned int _field22;
+    struct vector<OZObjectManipulator *, std::allocator<OZObjectManipulator *>> _field23;
+    _Bool _field24;
+    _Bool _field25;
+    struct OZDocument *_field26;
+    unsigned int _field27;
+    struct PCHash128 _field28;
+    struct PCMutex _field29;
+    struct map<PCHash128, PCMutexRef, std::less<PCHash128>, std::allocator<std::pair<const PCHash128, PCMutexRef>>> _field30;
+    struct PCSpinLock _field31;
+    struct set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>> _field32;
+    _Bool _field33;
+    _Bool _field34;
+    unsigned int _field35;
+    int _field36;
 };
 
 struct OZSceneNode {
@@ -3868,7 +4036,7 @@ struct OZSceneNode {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -3910,6 +4078,8 @@ struct OZSceneSettings {
     _Bool _field30;
     int _field31;
     _Bool _field32;
+    int _field33;
+    int _field34;
 };
 
 struct OZShape {
@@ -4004,12 +4174,11 @@ struct OZShapeBehavior {
     struct PCMutex _field12;
     struct vector<OZShapeBehaviorBakeEntry *, std::allocator<OZShapeBehaviorBakeEntry *>> _field13;
     _Bool _field14;
-    _Bool _field15;
-    struct vector<std::list<OZShapeBehaviorVertexCacheEntry *, std::allocator<OZShapeBehaviorVertexCacheEntry *>>, std::allocator<std::list<OZShapeBehaviorVertexCacheEntry *, std::allocator<OZShapeBehaviorVertexCacheEntry *>>>> _field16;
-    struct PCRecursiveMutex _field17;
-    struct list<OZShapeBehaviorGlobalCacheEntry *, std::allocator<OZShapeBehaviorGlobalCacheEntry *>> _field18;
-    struct PCRecursiveMutex _field19;
-    struct PCHash128 _field20;
+    struct vector<std::list<OZShapeBehaviorVertexCacheEntry *, std::allocator<OZShapeBehaviorVertexCacheEntry *>>, std::allocator<std::list<OZShapeBehaviorVertexCacheEntry *, std::allocator<OZShapeBehaviorVertexCacheEntry *>>>> _field15;
+    struct PCRecursiveMutex _field16;
+    struct list<OZShapeBehaviorGlobalCacheEntry *, std::allocator<OZShapeBehaviorGlobalCacheEntry *>> _field17;
+    struct PCRecursiveMutex _field18;
+    struct PCHash128 _field19;
 };
 
 struct OZShapeBehaviorBakeEntry;
@@ -4069,6 +4238,8 @@ struct OZTimeMarkerSet {
 };
 
 struct OZTimeSnap;
+
+struct OZTimeStrategy;
 
 struct OZTimelineBar {
     unsigned int _field1;
@@ -4168,7 +4339,7 @@ struct OZTransformNode {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -4201,7 +4372,7 @@ struct OZTransitiveBehavior {
     CDUnknownFunctionPointerType *_field10;
     struct OZChannelEnum _field11;
     struct OZChannelAffectedNodes _field12;
-    list_89d338e7 _field13;
+    list_bbacc03b _field13;
     unsigned int _field14;
     _Bool _field15;
     unsigned int _field16;
@@ -4251,10 +4422,10 @@ struct OZViewerState {
     int _field24;
     _Bool _field25;
     _Bool _field26;
-    PCPtr_4c450fa5 _field27;
+    PCPtr_41ab8147 _field27;
     struct PCPtr<LiSimpleCamera> _field28;
     struct PCPtr<LiSimpleCamera> _field29[6];
-    PCPtr_4c450fa5 _field30;
+    PCPtr_41ab8147 _field30;
     int _field31;
     int _field32;
     struct PCString _field33;
@@ -4315,8 +4486,6 @@ struct PCBitmap {
     _Bool _field13;
 };
 
-struct PCBlendOptions;
-
 struct PCBox<double> {
     double _field1;
     double _field2;
@@ -4327,12 +4496,12 @@ struct PCBox<double> {
 };
 
 struct PCColor {
-    vector_419cd555 _components;
-    struct PCColorSpaceHandle _colorSpace;
+    vector_3396ec90 _field1;
+    struct PCColorSpaceHandle _field2;
 };
 
 struct PCColorSpaceHandle {
-    struct CGColorSpace *_cgColorSpace;
+    struct CGColorSpace *_field1;
 };
 
 struct PCConditionVariable {
@@ -4388,22 +4557,18 @@ struct PCHashWriteStream {
 struct PCImage;
 
 struct PCImageAttributes {
-    int _type;
-    unsigned int _width;
-    unsigned int _height;
-    unsigned int _depth;
-    unsigned int _numChannels;
-    int _format;
-    struct PCColorSpaceHandle _colorSpace;
-    unsigned int _target;
-    int _storage;
-    _Bool _premultiplied;
-    void *_data;
-    void *_context;
-};
-
-struct PCManagedColorTemplate<1> {
-    float _field1[4];
+    int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    int _field6;
+    struct PCColorSpaceHandle _field7;
+    unsigned int _field8;
+    int _field9;
+    _Bool _field10;
+    void *_field11;
+    void *_field12;
 };
 
 struct PCMatrix44Tmpl<double> {
@@ -4425,8 +4590,8 @@ struct PCPtr<BuilderRequest> {
 };
 
 struct PCPtr<LiCamera> {
-    struct LiCamera *_ptr;
-    struct PCSharedCount _refcount;
+    struct LiCamera *_field1;
+    struct PCSharedCount _field2;
 };
 
 struct PCPtr<LiGroup> {
@@ -4449,11 +4614,6 @@ struct PCPtr<LiSimpleCamera> {
     struct PCSharedCount _field2;
 };
 
-struct PCPtr<PCBlendOptions> {
-    struct PCBlendOptions *_field1;
-    struct PCSharedCount _field2;
-};
-
 struct PCPtr<POMultiResMultiPartTexture> {
     struct POMultiResMultiPartTexture *_ptr;
     struct PCSharedCount _refcount;
@@ -4465,8 +4625,8 @@ struct PCPtr<POMultiResStringTexture> {
 };
 
 struct PCPtr<POMultiResTexture> {
-    struct POMultiResTexture *_ptr;
-    struct PCSharedCount _refcount;
+    struct POMultiResTexture *_field1;
+    struct PCSharedCount _field2;
 };
 
 struct PCPtr<TXTextObject>;
@@ -4543,6 +4703,7 @@ struct PCTimer {
 
 struct PCURL {
     struct __CFURL *_field1;
+    struct __CFData *_field2;
 };
 
 struct PCUUID {
@@ -4576,10 +4737,6 @@ struct PCVector3<double> {
 struct PCVector3<int>;
 
 struct PCVector4<double>;
-
-struct PCWeakCount {
-    struct PC_Sp_counted_base *_field1;
-};
 
 struct PC_Sp_counted_base;
 
@@ -4626,10 +4783,13 @@ struct PMClip {
     vector_69938c0b _field4;
     void *_field5;
     struct PCURL _field6;
-    unsigned int _field7;
+    struct PCString _field7;
     _Bool _field8;
     _Bool _field9;
-    struct PCMutex _field10;
+    unsigned int _field10;
+    _Bool _field11;
+    _Bool _field12;
+    struct PCMutex _field13;
 };
 
 struct PMFormatDescription {
@@ -4705,15 +4865,6 @@ struct STMixer;
 
 struct STModule;
 
-struct ShadowCubeMap {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    int _field3;
-    struct ShadowMapsLazy *_field4;
-};
-
-struct ShadowMapsLazy;
-
 struct State {
     PCVector2_7e488b7d _scale;
     _Bool _continuousScrub;
@@ -4758,10 +4909,10 @@ struct TXChannelString {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZCurve *_field15;
-    struct OZChannelInfo *_field16;
-    struct OZChannelFade *_field17;
-    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> *_field18;
+    struct OZChannelImpl *_field15;
+    struct OZChannelImpl *_field16;
+    struct OZChannelInfo *_field17;
+    struct OZChannelInfo *_field18;
     struct PCString _field19;
     _Bool _field20;
 };
@@ -4863,7 +5014,7 @@ struct TXTextInput {
     struct OZSceneNode *_field13;
     struct OZScene *_field14;
     struct list<OZEffect *, std::allocator<OZEffect *>> _field15;
-    list_94e47a03 _field16;
+    list_fc228e28 _field16;
     unsigned int _field17;
     double _field18;
     struct PCHash128 _field19;
@@ -4918,7 +5069,7 @@ struct TXTextInput {
     unsigned int _field68;
     unsigned int _field69;
     unsigned int _field70;
-    list_1192f13f _field71;
+    list_d81b4758 _field71;
     struct OZChannelFolder _field72;
     struct OZChanFootageRef _field73;
     struct PCHash128 _field74;
@@ -5001,7 +5152,7 @@ struct TXTextInput {
     double _field151;
     double _field152;
     struct TXLayoutCallbackParams _field153;
-    struct OZRenderMutex *_field154;
+    struct PCRecursiveMutex *_field154;
     struct OZSystemSimulator _field155;
     _Bool _field156;
     _Bool _field157;
@@ -5083,6 +5234,8 @@ struct TXTextInput {
     _Bool _field233;
     _Bool _field234;
     _Bool _field235;
+    _Bool _field236;
+    struct FFPMRSimpleTimer _field237;
 };
 
 struct TXTextLayout;
@@ -5095,6 +5248,8 @@ struct UnsignedWide {
     unsigned int lo;
     unsigned int hi;
 };
+
+struct VectorField;
 
 struct _Alloc_hider {
     char *_field1;
@@ -5928,6 +6083,166 @@ struct _CGLContextObject {
         CDUnknownFunctionPointerType _field812;
         CDUnknownFunctionPointerType _field813;
         CDUnknownFunctionPointerType _field814;
+        CDUnknownFunctionPointerType _field815;
+        CDUnknownFunctionPointerType _field816;
+        CDUnknownFunctionPointerType _field817;
+        CDUnknownFunctionPointerType _field818;
+        CDUnknownFunctionPointerType _field819;
+        CDUnknownFunctionPointerType _field820;
+        CDUnknownFunctionPointerType _field821;
+        CDUnknownFunctionPointerType _field822;
+        CDUnknownFunctionPointerType _field823;
+        CDUnknownFunctionPointerType _field824;
+        CDUnknownFunctionPointerType _field825;
+        CDUnknownFunctionPointerType _field826;
+        CDUnknownFunctionPointerType _field827;
+        CDUnknownFunctionPointerType _field828;
+        CDUnknownFunctionPointerType _field829;
+        CDUnknownFunctionPointerType _field830;
+        CDUnknownFunctionPointerType _field831;
+        CDUnknownFunctionPointerType _field832;
+        CDUnknownFunctionPointerType _field833;
+        CDUnknownFunctionPointerType _field834;
+        CDUnknownFunctionPointerType _field835;
+        CDUnknownFunctionPointerType _field836;
+        CDUnknownFunctionPointerType _field837;
+        CDUnknownFunctionPointerType _field838;
+        CDUnknownFunctionPointerType _field839;
+        CDUnknownFunctionPointerType _field840;
+        CDUnknownFunctionPointerType _field841;
+        CDUnknownFunctionPointerType _field842;
+        CDUnknownFunctionPointerType _field843;
+        CDUnknownFunctionPointerType _field844;
+        CDUnknownFunctionPointerType _field845;
+        CDUnknownFunctionPointerType _field846;
+        CDUnknownFunctionPointerType _field847;
+        CDUnknownFunctionPointerType _field848;
+        CDUnknownFunctionPointerType _field849;
+        CDUnknownFunctionPointerType _field850;
+        CDUnknownFunctionPointerType _field851;
+        CDUnknownFunctionPointerType _field852;
+        CDUnknownFunctionPointerType _field853;
+        CDUnknownFunctionPointerType _field854;
+        CDUnknownFunctionPointerType _field855;
+        CDUnknownFunctionPointerType _field856;
+        CDUnknownFunctionPointerType _field857;
+        CDUnknownFunctionPointerType _field858;
+        CDUnknownFunctionPointerType _field859;
+        CDUnknownFunctionPointerType _field860;
+        CDUnknownFunctionPointerType _field861;
+        CDUnknownFunctionPointerType _field862;
+        CDUnknownFunctionPointerType _field863;
+        CDUnknownFunctionPointerType _field864;
+        CDUnknownFunctionPointerType _field865;
+        CDUnknownFunctionPointerType _field866;
+        CDUnknownFunctionPointerType _field867;
+        CDUnknownFunctionPointerType _field868;
+        CDUnknownFunctionPointerType _field869;
+        CDUnknownFunctionPointerType _field870;
+        CDUnknownFunctionPointerType _field871;
+        CDUnknownFunctionPointerType _field872;
+        CDUnknownFunctionPointerType _field873;
+        CDUnknownFunctionPointerType _field874;
+        CDUnknownFunctionPointerType _field875;
+        CDUnknownFunctionPointerType _field876;
+        CDUnknownFunctionPointerType _field877;
+        CDUnknownFunctionPointerType _field878;
+        CDUnknownFunctionPointerType _field879;
+        CDUnknownFunctionPointerType _field880;
+        CDUnknownFunctionPointerType _field881;
+        CDUnknownFunctionPointerType _field882;
+        CDUnknownFunctionPointerType _field883;
+        CDUnknownFunctionPointerType _field884;
+        CDUnknownFunctionPointerType _field885;
+        CDUnknownFunctionPointerType _field886;
+        CDUnknownFunctionPointerType _field887;
+        CDUnknownFunctionPointerType _field888;
+        CDUnknownFunctionPointerType _field889;
+        CDUnknownFunctionPointerType _field890;
+        CDUnknownFunctionPointerType _field891;
+        CDUnknownFunctionPointerType _field892;
+        CDUnknownFunctionPointerType _field893;
+        CDUnknownFunctionPointerType _field894;
+        CDUnknownFunctionPointerType _field895;
+        CDUnknownFunctionPointerType _field896;
+        CDUnknownFunctionPointerType _field897;
+        CDUnknownFunctionPointerType _field898;
+        CDUnknownFunctionPointerType _field899;
+        CDUnknownFunctionPointerType _field900;
+        CDUnknownFunctionPointerType _field901;
+        CDUnknownFunctionPointerType _field902;
+        CDUnknownFunctionPointerType _field903;
+        CDUnknownFunctionPointerType _field904;
+        CDUnknownFunctionPointerType _field905;
+        CDUnknownFunctionPointerType _field906;
+        CDUnknownFunctionPointerType _field907;
+        CDUnknownFunctionPointerType _field908;
+        CDUnknownFunctionPointerType _field909;
+        CDUnknownFunctionPointerType _field910;
+        CDUnknownFunctionPointerType _field911;
+        CDUnknownFunctionPointerType _field912;
+        CDUnknownFunctionPointerType _field913;
+        CDUnknownFunctionPointerType _field914;
+        CDUnknownFunctionPointerType _field915;
+        CDUnknownFunctionPointerType _field916;
+        CDUnknownFunctionPointerType _field917;
+        CDUnknownFunctionPointerType _field918;
+        CDUnknownFunctionPointerType _field919;
+        CDUnknownFunctionPointerType _field920;
+        CDUnknownFunctionPointerType _field921;
+        CDUnknownFunctionPointerType _field922;
+        CDUnknownFunctionPointerType _field923;
+        CDUnknownFunctionPointerType _field924;
+        CDUnknownFunctionPointerType _field925;
+        CDUnknownFunctionPointerType _field926;
+        CDUnknownFunctionPointerType _field927;
+        CDUnknownFunctionPointerType _field928;
+        CDUnknownFunctionPointerType _field929;
+        CDUnknownFunctionPointerType _field930;
+        CDUnknownFunctionPointerType _field931;
+        CDUnknownFunctionPointerType _field932;
+        CDUnknownFunctionPointerType _field933;
+        CDUnknownFunctionPointerType _field934;
+        CDUnknownFunctionPointerType _field935;
+        CDUnknownFunctionPointerType _field936;
+        CDUnknownFunctionPointerType _field937;
+        CDUnknownFunctionPointerType _field938;
+        CDUnknownFunctionPointerType _field939;
+        CDUnknownFunctionPointerType _field940;
+        CDUnknownFunctionPointerType _field941;
+        CDUnknownFunctionPointerType _field942;
+        CDUnknownFunctionPointerType _field943;
+        CDUnknownFunctionPointerType _field944;
+        CDUnknownFunctionPointerType _field945;
+        CDUnknownFunctionPointerType _field946;
+        CDUnknownFunctionPointerType _field947;
+        CDUnknownFunctionPointerType _field948;
+        CDUnknownFunctionPointerType _field949;
+        CDUnknownFunctionPointerType _field950;
+        CDUnknownFunctionPointerType _field951;
+        CDUnknownFunctionPointerType _field952;
+        CDUnknownFunctionPointerType _field953;
+        CDUnknownFunctionPointerType _field954;
+        CDUnknownFunctionPointerType _field955;
+        CDUnknownFunctionPointerType _field956;
+        CDUnknownFunctionPointerType _field957;
+        CDUnknownFunctionPointerType _field958;
+        CDUnknownFunctionPointerType _field959;
+        CDUnknownFunctionPointerType _field960;
+        CDUnknownFunctionPointerType _field961;
+        CDUnknownFunctionPointerType _field962;
+        CDUnknownFunctionPointerType _field963;
+        CDUnknownFunctionPointerType _field964;
+        CDUnknownFunctionPointerType _field965;
+        CDUnknownFunctionPointerType _field966;
+        CDUnknownFunctionPointerType _field967;
+        CDUnknownFunctionPointerType _field968;
+        CDUnknownFunctionPointerType _field969;
+        CDUnknownFunctionPointerType _field970;
+        CDUnknownFunctionPointerType _field971;
+        CDUnknownFunctionPointerType _field972;
+        CDUnknownFunctionPointerType _field973;
+        CDUnknownFunctionPointerType _field974;
     } _field2;
     struct _CGLPrivateObject *_field3;
     void *_field4;
@@ -5972,8 +6287,15 @@ struct _Deque_iterator<PCScope *, PCScope *&, PCScope **> {
     struct PCScope ***_field4;
 };
 
+struct _Deque_iterator<std::tr1::shared_ptr<OZRenderResult>, std::tr1::shared_ptr<OZRenderResult>&, std::tr1::shared_ptr<OZRenderResult>*> {
+    shared_ptr_7e020609 *_M_cur;
+    shared_ptr_7e020609 *_M_first;
+    shared_ptr_7e020609 *_M_last;
+    shared_ptr_7e020609 **_M_node;
+};
+
 struct _List_impl {
-    struct _List_node_base _field1;
+    struct _List_node_base _M_node;
 };
 
 struct _List_iterator<OZSceneNode *> {
@@ -5981,8 +6303,8 @@ struct _List_iterator<OZSceneNode *> {
 };
 
 struct _List_node_base {
-    struct _List_node_base *_field1;
-    struct _List_node_base *_field2;
+    struct _List_node_base *_M_next;
+    struct _List_node_base *_M_prev;
 };
 
 struct _NSRange {
@@ -6014,12 +6336,32 @@ struct _Rb_tree<OZChannelObjectRoot *, std::pair<OZChannelObjectRoot *const, boo
     struct _Rb_tree_impl<std::less<OZChannelObjectRoot *>, false> _field1;
 };
 
+struct _Rb_tree<OZDocument *, std::pair<OZDocument *const, int>, std::_Select1st<std::pair<OZDocument *const, int>>, std::less<OZDocument *>, std::allocator<std::pair<OZDocument *const, int>>> {
+    struct _Rb_tree_impl<std::less<OZDocument *>, false> _field1;
+};
+
+struct _Rb_tree<OZElement *, OZElement *, std::_Identity<OZElement *>, std::less<OZElement *>, std::allocator<OZElement *>> {
+    struct _Rb_tree_impl<std::less<OZElement *>, false> _field1;
+};
+
 struct _Rb_tree<OZElement *, std::pair<OZElement *const, PCVector2<double>>, std::_Select1st<std::pair<OZElement *const, PCVector2<double>>>, std::less<OZElement *>, std::allocator<std::pair<OZElement *const, PCVector2<double>>>> {
     struct _Rb_tree_impl<std::less<OZElement *>, false> _field1;
 };
 
+struct _Rb_tree<OZFootage *, std::pair<OZFootage *const, OZOpticalFlow::ErrorCode>, std::_Select1st<std::pair<OZFootage *const, OZOpticalFlow::ErrorCode>>, std::less<OZFootage *>, std::allocator<std::pair<OZFootage *const, OZOpticalFlow::ErrorCode>>> {
+    struct _Rb_tree_impl<std::less<OZFootage *>, false> _field1;
+};
+
 struct _Rb_tree<OZGuide, OZGuide, std::_Identity<OZGuide>, std::less<OZGuide>, std::allocator<OZGuide>> {
     struct _Rb_tree_impl<std::less<OZGuide>, false> _field1;
+};
+
+struct _Rb_tree<OZImageElement *, OZImageElement *, std::_Identity<OZImageElement *>, std::less<OZImageElement *>, std::allocator<OZImageElement *>> {
+    struct _Rb_tree_impl<std::less<OZImageElement *>, false> _field1;
+};
+
+struct _Rb_tree<OZOpticalFlow::Private::MotionEstimator::FrameRec, OZOpticalFlow::Private::MotionEstimator::FrameRec, std::_Identity<OZOpticalFlow::Private::MotionEstimator::FrameRec>, OZOpticalFlow::Private::MotionEstimator::FrameOrder, std::allocator<OZOpticalFlow::Private::MotionEstimator::FrameRec>> {
+    struct _Rb_tree_impl<OZOpticalFlow::Private::MotionEstimator::FrameOrder, false> _field1;
 };
 
 struct _Rb_tree<OZOverlay *, std::pair<OZOverlay *const, std::tr1::shared_ptr<std::set<OZSnap, std::less<OZSnap>, std::allocator<OZSnap>>>>, std::_Select1st<std::pair<OZOverlay *const, std::tr1::shared_ptr<std::set<OZSnap, std::less<OZSnap>, std::allocator<OZSnap>>>>>, std::less<OZOverlay *>, std::allocator<std::pair<OZOverlay *const, std::tr1::shared_ptr<std::set<OZSnap, std::less<OZSnap>, std::allocator<OZSnap>>>>>> {
@@ -6071,7 +6413,7 @@ struct _Rb_tree<PCString, std::pair<const PCString, std::pair<CMTime, CMTime>>, 
 };
 
 struct _Rb_tree<PCString, std::pair<const PCString, void *>, std::_Select1st<std::pair<const PCString, void *>>, std::less<PCString>, std::allocator<std::pair<const PCString, void *>>> {
-    struct _Rb_tree_impl<std::less<PCString>, false> _M_impl;
+    struct _Rb_tree_impl<std::less<PCString>, false> _field1;
 };
 
 struct _Rb_tree<PCTimeRange, PCTimeRange, std::_Identity<PCTimeRange>, std::less<PCTimeRange>, std::allocator<PCTimeRange>> {
@@ -6087,7 +6429,7 @@ struct _Rb_tree<const char *, std::pair<const char *const, OZProfilerStat *>, st
 };
 
 struct _Rb_tree<unsigned int, std::pair<const unsigned int, CMTime>, std::_Select1st<std::pair<const unsigned int, CMTime>>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, CMTime>>> {
-    struct _Rb_tree_impl<std::less<unsigned int>, false> _M_impl;
+    struct _Rb_tree_impl<std::less<unsigned int>, false> _field1;
 };
 
 struct _Rb_tree<unsigned int, std::pair<const unsigned int, OZChannelBase *>, std::_Select1st<std::pair<const unsigned int, OZChannelBase *>>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, OZChannelBase *>>> {
@@ -6111,7 +6453,7 @@ struct _Rb_tree<unsigned int, std::pair<const unsigned int, OZTimelineRow *>, st
 };
 
 struct _Rb_tree<unsigned int, std::pair<const unsigned int, PCMatrix44Tmpl<double>>, std::_Select1st<std::pair<const unsigned int, PCMatrix44Tmpl<double>>>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, PCMatrix44Tmpl<double>>>> {
-    struct _Rb_tree_impl<std::less<unsigned int>, false> _M_impl;
+    struct _Rb_tree_impl<std::less<unsigned int>, false> _field1;
 };
 
 struct _Rb_tree<unsigned int, std::pair<const unsigned int, double>, std::_Select1st<std::pair<const unsigned int, double>>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, double>>> {
@@ -6138,6 +6480,12 @@ struct _Rb_tree_const_iterator<OZTimeMarker> {
     struct _Rb_tree_node_base *_field1;
 };
 
+struct _Rb_tree_impl<OZOpticalFlow::Private::MotionEstimator::FrameOrder, false> {
+    struct FrameOrder _field1;
+    struct _Rb_tree_node_base _field2;
+    unsigned long long _field3;
+};
+
 struct _Rb_tree_impl<OZProfiler::ltstr, false> {
     struct ltstr _field1;
     struct _Rb_tree_node_base _field2;
@@ -6162,14 +6510,32 @@ struct _Rb_tree_impl<std::less<OZChannelObjectRoot *>, false> {
     unsigned long long _field3;
 };
 
+struct _Rb_tree_impl<std::less<OZDocument *>, false> {
+    struct less<OZDocument *> _field1;
+    struct _Rb_tree_node_base _field2;
+    unsigned long long _field3;
+};
+
 struct _Rb_tree_impl<std::less<OZElement *>, false> {
     struct less<OZElement *> _field1;
     struct _Rb_tree_node_base _field2;
     unsigned long long _field3;
 };
 
+struct _Rb_tree_impl<std::less<OZFootage *>, false> {
+    struct less<OZFootage *> _field1;
+    struct _Rb_tree_node_base _field2;
+    unsigned long long _field3;
+};
+
 struct _Rb_tree_impl<std::less<OZGuide>, false> {
     struct less<OZGuide> _field1;
+    struct _Rb_tree_node_base _field2;
+    unsigned long long _field3;
+};
+
+struct _Rb_tree_impl<std::less<OZImageElement *>, false> {
+    struct less<OZImageElement *> _field1;
     struct _Rb_tree_node_base _field2;
     unsigned long long _field3;
 };
@@ -6229,9 +6595,9 @@ struct _Rb_tree_impl<std::less<PCHash128>, false> {
 };
 
 struct _Rb_tree_impl<std::less<PCString>, false> {
-    struct less<PCString> _M_key_compare;
-    struct _Rb_tree_node_base _M_header;
-    unsigned long long _M_node_count;
+    struct less<PCString> _field1;
+    struct _Rb_tree_node_base _field2;
+    unsigned long long _field3;
 };
 
 struct _Rb_tree_impl<std::less<PCTimeRange>, false> {
@@ -6363,15 +6729,30 @@ struct deque<PCScope *, std::allocator<PCScope *>> {
     } _field1;
 };
 
+struct deque<std::tr1::shared_ptr<OZRenderResult>, std::allocator<std::tr1::shared_ptr<OZRenderResult>>> {
+    struct _Deque_impl {
+        shared_ptr_7e020609 **_M_map;
+        unsigned long long _M_map_size;
+        struct _Deque_iterator<std::tr1::shared_ptr<OZRenderResult>, std::tr1::shared_ptr<OZRenderResult>&, std::tr1::shared_ptr<OZRenderResult>*> _M_start;
+        struct _Deque_iterator<std::tr1::shared_ptr<OZRenderResult>, std::tr1::shared_ptr<OZRenderResult>&, std::tr1::shared_ptr<OZRenderResult>*> _M_finish;
+    } _M_impl;
+};
+
 struct less<CMTime>;
 
 struct less<OZChannelBase *>;
 
 struct less<OZChannelObjectRoot *>;
 
+struct less<OZDocument *>;
+
 struct less<OZElement *>;
 
+struct less<OZFootage *>;
+
 struct less<OZGuide>;
+
+struct less<OZImageElement *>;
 
 struct less<OZOverlay *>;
 
@@ -6464,7 +6845,7 @@ struct list<OZRigEditModeEntry, std::allocator<OZRigEditModeEntry>> {
 };
 
 struct list<OZSceneNode *, std::allocator<OZSceneNode *>> {
-    struct _List_impl _field1;
+    struct _List_impl _M_impl;
 };
 
 struct list<OZShapeBehaviorGlobalCacheEntry *, std::allocator<OZShapeBehaviorGlobalCacheEntry *>> {
@@ -6539,8 +6920,16 @@ struct map<OZChannelObjectRoot *, bool, std::less<OZChannelObjectRoot *>, std::a
     struct _Rb_tree<OZChannelObjectRoot *, std::pair<OZChannelObjectRoot *const, bool>, std::_Select1st<std::pair<OZChannelObjectRoot *const, bool>>, std::less<OZChannelObjectRoot *>, std::allocator<std::pair<OZChannelObjectRoot *const, bool>>> _field1;
 };
 
+struct map<OZDocument *, int, std::less<OZDocument *>, std::allocator<std::pair<OZDocument *const, int>>> {
+    struct _Rb_tree<OZDocument *, std::pair<OZDocument *const, int>, std::_Select1st<std::pair<OZDocument *const, int>>, std::less<OZDocument *>, std::allocator<std::pair<OZDocument *const, int>>> _field1;
+};
+
 struct map<OZElement *, PCVector2<double>, std::less<OZElement *>, std::allocator<std::pair<OZElement *const, PCVector2<double>>>> {
     struct _Rb_tree<OZElement *, std::pair<OZElement *const, PCVector2<double>>, std::_Select1st<std::pair<OZElement *const, PCVector2<double>>>, std::less<OZElement *>, std::allocator<std::pair<OZElement *const, PCVector2<double>>>> _field1;
+};
+
+struct map<OZFootage *, OZOpticalFlow::ErrorCode, std::less<OZFootage *>, std::allocator<std::pair<OZFootage *const, OZOpticalFlow::ErrorCode>>> {
+    struct _Rb_tree<OZFootage *, std::pair<OZFootage *const, OZOpticalFlow::ErrorCode>, std::_Select1st<std::pair<OZFootage *const, OZOpticalFlow::ErrorCode>>, std::less<OZFootage *>, std::allocator<std::pair<OZFootage *const, OZOpticalFlow::ErrorCode>>> _field1;
 };
 
 struct map<OZOverlay *, std::tr1::shared_ptr<std::set<OZSnap, std::less<OZSnap>, std::allocator<OZSnap>>>, std::less<OZOverlay *>, std::allocator<std::pair<OZOverlay *const, std::tr1::shared_ptr<std::set<OZSnap, std::less<OZSnap>, std::allocator<OZSnap>>>>>> {
@@ -6576,7 +6965,7 @@ struct map<PCString, std::pair<CMTime, CMTime>, std::less<PCString>, std::alloca
 };
 
 struct map<PCString, void *, std::less<PCString>, std::allocator<std::pair<const PCString, void *>>> {
-    struct _Rb_tree<PCString, std::pair<const PCString, void *>, std::_Select1st<std::pair<const PCString, void *>>, std::less<PCString>, std::allocator<std::pair<const PCString, void *>>> _M_t;
+    struct _Rb_tree<PCString, std::pair<const PCString, void *>, std::_Select1st<std::pair<const PCString, void *>>, std::less<PCString>, std::allocator<std::pair<const PCString, void *>>> _field1;
 };
 
 struct map<TXTextStyle *, TXFont *, std::less<TXTextStyle *>, std::allocator<std::pair<TXTextStyle *const, TXFont *>>>;
@@ -6590,7 +6979,7 @@ struct map<const char *, OZProfilerStat *, OZProfiler::ltstr, std::allocator<std
 };
 
 struct map<unsigned int, CMTime, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, CMTime>>> {
-    struct _Rb_tree<unsigned int, std::pair<const unsigned int, CMTime>, std::_Select1st<std::pair<const unsigned int, CMTime>>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, CMTime>>> _M_t;
+    struct _Rb_tree<unsigned int, std::pair<const unsigned int, CMTime>, std::_Select1st<std::pair<const unsigned int, CMTime>>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, CMTime>>> _field1;
 };
 
 struct map<unsigned int, FFStreamVideo *, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, FFStreamVideo *>>>;
@@ -6618,7 +7007,7 @@ struct map<unsigned int, OZTimelineRow *, std::less<unsigned int>, std::allocato
 };
 
 struct map<unsigned int, PCMatrix44Tmpl<double>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, PCMatrix44Tmpl<double>>>> {
-    struct _Rb_tree<unsigned int, std::pair<const unsigned int, PCMatrix44Tmpl<double>>, std::_Select1st<std::pair<const unsigned int, PCMatrix44Tmpl<double>>>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, PCMatrix44Tmpl<double>>>> _M_t;
+    struct _Rb_tree<unsigned int, std::pair<const unsigned int, PCMatrix44Tmpl<double>>, std::_Select1st<std::pair<const unsigned int, PCMatrix44Tmpl<double>>>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, PCMatrix44Tmpl<double>>>> _field1;
 };
 
 struct map<unsigned int, double, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, double>>> {
@@ -6643,6 +7032,10 @@ struct queue<OZRenderResult *, std::deque<OZRenderResult *, std::allocator<OZRen
     struct deque<OZRenderResult *, std::allocator<OZRenderResult *>> _field1;
 };
 
+struct queue<std::tr1::shared_ptr<OZRenderResult>, std::deque<std::tr1::shared_ptr<OZRenderResult>, std::allocator<std::tr1::shared_ptr<OZRenderResult>>>> {
+    struct deque<std::tr1::shared_ptr<OZRenderResult>, std::allocator<std::tr1::shared_ptr<OZRenderResult>>> c;
+};
+
 struct reverse_iterator<std::_Rb_tree_const_iterator<OZTimeMarker>> {
     struct _Rb_tree_const_iterator<OZTimeMarker> _field1;
 };
@@ -6653,6 +7046,18 @@ struct set<OZChannelBase *, std::less<OZChannelBase *>, std::allocator<OZChannel
 
 struct set<OZChannelObjectRoot *, std::less<OZChannelObjectRoot *>, std::allocator<OZChannelObjectRoot *>> {
     struct _Rb_tree<OZChannelObjectRoot *, OZChannelObjectRoot *, std::_Identity<OZChannelObjectRoot *>, std::less<OZChannelObjectRoot *>, std::allocator<OZChannelObjectRoot *>> _field1;
+};
+
+struct set<OZElement *, std::less<OZElement *>, std::allocator<OZElement *>> {
+    struct _Rb_tree<OZElement *, OZElement *, std::_Identity<OZElement *>, std::less<OZElement *>, std::allocator<OZElement *>> _field1;
+};
+
+struct set<OZImageElement *, std::less<OZImageElement *>, std::allocator<OZImageElement *>> {
+    struct _Rb_tree<OZImageElement *, OZImageElement *, std::_Identity<OZImageElement *>, std::less<OZImageElement *>, std::allocator<OZImageElement *>> _field1;
+};
+
+struct set<OZOpticalFlow::Private::MotionEstimator::FrameRec, OZOpticalFlow::Private::MotionEstimator::FrameOrder, std::allocator<OZOpticalFlow::Private::MotionEstimator::FrameRec>> {
+    struct _Rb_tree<OZOpticalFlow::Private::MotionEstimator::FrameRec, OZOpticalFlow::Private::MotionEstimator::FrameRec, std::_Identity<OZOpticalFlow::Private::MotionEstimator::FrameRec>, OZOpticalFlow::Private::MotionEstimator::FrameOrder, std::allocator<OZOpticalFlow::Private::MotionEstimator::FrameRec>> _field1;
 };
 
 struct set<OZSceneNode *, std::less<OZSceneNode *>, std::allocator<OZSceneNode *>> {
@@ -6667,6 +7072,16 @@ struct set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int>> 
     struct _Rb_tree<unsigned int, unsigned int, std::_Identity<unsigned int>, std::less<unsigned int>, std::allocator<unsigned int>> _field1;
 };
 
+struct shared_ptr<OZFootageScheduler> {
+    struct OZFootageScheduler *_M_ptr;
+    struct __shared_count<2> _M_refcount;
+};
+
+struct shared_ptr<OZFrameQueue> {
+    struct OZFrameQueue *_M_ptr;
+    struct __shared_count<2> _M_refcount;
+};
+
 struct shared_ptr<OZLibraryPresetsMap> {
     struct OZLibraryPresetsMap *_field1;
     struct __shared_count<2> _field2;
@@ -6675,6 +7090,31 @@ struct shared_ptr<OZLibraryPresetsMap> {
 struct shared_ptr<OZOpticalFlow::CacheFile::Impl> {
     struct Impl *_field1;
     struct __shared_count<2> _field2;
+};
+
+struct shared_ptr<OZOpticalFlow::VectorField> {
+    struct VectorField *_field1;
+    struct __shared_count<2> _field2;
+};
+
+struct shared_ptr<OZPlaybackClock> {
+    struct OZPlaybackClock *_M_ptr;
+    struct __shared_count<2> _M_refcount;
+};
+
+struct shared_ptr<OZPlaybackScheduler> {
+    struct OZPlaybackScheduler *_M_ptr;
+    struct __shared_count<2> _M_refcount;
+};
+
+struct shared_ptr<OZRenderResult> {
+    struct OZRenderResult *_field1;
+    struct __shared_count<2> _field2;
+};
+
+struct shared_ptr<OZTimeStrategy> {
+    struct OZTimeStrategy *_M_ptr;
+    struct __shared_count<2> _M_refcount;
 };
 
 struct shared_ptr<PCBitmap> {
@@ -6748,8 +7188,6 @@ struct vector<OZCamera *, std::allocator<OZCamera *>> {
     } _field1;
 };
 
-struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>>;
-
 struct vector<OZChannelBase *, std::allocator<OZChannelBase *>> {
     struct _Vector_impl {
         struct OZChannelBase **_field1;
@@ -6806,6 +7244,14 @@ struct vector<OZExposeObject *, std::allocator<OZExposeObject *>> {
     } _field1;
 };
 
+struct vector<OZFontFamily *, std::allocator<OZFontFamily *>> {
+    struct _Vector_impl {
+        struct OZFontFamily **_field1;
+        struct OZFontFamily **_field2;
+        struct OZFontFamily **_field3;
+    } _field1;
+};
+
 struct vector<OZFootage *, std::allocator<OZFootage *>> {
     struct _Vector_impl {
         struct OZFootage **_field1;
@@ -6819,6 +7265,22 @@ struct vector<OZLight *, std::allocator<OZLight *>> {
         struct OZLight **_field1;
         struct OZLight **_field2;
         struct OZLight **_field3;
+    } _field1;
+};
+
+struct vector<OZObjectManipulator *, std::allocator<OZObjectManipulator *>> {
+    struct _Vector_impl {
+        struct OZObjectManipulator **_field1;
+        struct OZObjectManipulator **_field2;
+        struct OZObjectManipulator **_field3;
+    } _field1;
+};
+
+struct vector<OZOpticalFlow::Private::JobImpl, std::allocator<OZOpticalFlow::Private::JobImpl>> {
+    struct _Vector_impl {
+        struct JobImpl *_field1;
+        struct JobImpl *_field2;
+        struct JobImpl *_field3;
     } _field1;
 };
 
@@ -6928,14 +7390,6 @@ struct vector<PCQuat<double>, std::allocator<PCQuat<double>>> {
     } _M_impl;
 };
 
-struct vector<PCString, std::allocator<PCString>> {
-    struct _Vector_impl {
-        struct PCString *_field1;
-        struct PCString *_field2;
-        struct PCString *_field3;
-    } _field1;
-};
-
 struct vector<PCTimeRange, std::allocator<PCTimeRange>> {
     struct _Vector_impl {
         struct PCTimeRange *_field1;
@@ -7000,6 +7454,14 @@ struct vector<PSHVertexData, std::allocator<PSHVertexData>> {
     } _field1;
 };
 
+struct vector<RetimingMath::IntervalSet<unsigned int>::Interval, std::allocator<RetimingMath::IntervalSet<unsigned int>::Interval>> {
+    struct _Vector_impl {
+        struct Interval *_field1;
+        struct Interval *_field2;
+        struct Interval *_field3;
+    } _field1;
+};
+
 struct vector<TXGlyphGroup *, std::allocator<TXGlyphGroup *>> {
     struct _Vector_impl {
         struct TXGlyphGroup **_field1;
@@ -7030,10 +7492,18 @@ struct vector<bool, std::allocator<bool>> {
 
 struct vector<double, std::allocator<double>> {
     struct _Vector_impl {
-        double *_M_start;
-        double *_M_finish;
-        double *_M_end_of_storage;
-    } _M_impl;
+        double *_field1;
+        double *_field2;
+        double *_field3;
+    } _field1;
+};
+
+struct vector<float, std::allocator<float>> {
+    struct _Vector_impl {
+        float *_field1;
+        float *_field2;
+        float *_field3;
+    } _field1;
 };
 
 struct vector<int, std::allocator<int>> {
@@ -7057,14 +7527,6 @@ struct vector<std::pair<OZChannelObjectRoot *, OZChannelObjectRoot *>, std::allo
         struct pair<OZChannelObjectRoot *, OZChannelObjectRoot *> *_field1;
         struct pair<OZChannelObjectRoot *, OZChannelObjectRoot *> *_field2;
         struct pair<OZChannelObjectRoot *, OZChannelObjectRoot *> *_field3;
-    } _field1;
-};
-
-struct vector<std::tr1::shared_ptr<PCImage>, std::allocator<std::tr1::shared_ptr<PCImage>>> {
-    struct _Vector_impl {
-        shared_ptr_92745eb9 *_field1;
-        shared_ptr_92745eb9 *_field2;
-        shared_ptr_92745eb9 *_field3;
     } _field1;
 };
 
@@ -7161,9 +7623,9 @@ typedef struct PCPlane<double> {
 } PCPlane_d15dbf20;
 
 typedef struct PCPtr<LiCamera> {
-    struct LiCamera *_ptr;
-    struct PCSharedCount _refcount;
-} PCPtr_4c450fa5;
+    struct LiCamera *_field1;
+    struct PCSharedCount _field2;
+} PCPtr_41ab8147;
 
 typedef struct PCPtr<LiImageSource> {
     struct LiImageSource *_field1;
@@ -7171,9 +7633,9 @@ typedef struct PCPtr<LiImageSource> {
 } PCPtr_04d56345;
 
 typedef struct PCPtr<POMultiResTexture> {
-    struct POMultiResTexture *_ptr;
-    struct PCSharedCount _refcount;
-} PCPtr_df275998;
+    struct POMultiResTexture *_field1;
+    struct PCSharedCount _field2;
+} PCPtr_a02aef32;
 
 typedef struct PCQuat<double> {
     double _field1;
@@ -7229,43 +7691,43 @@ typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> 
 
 typedef struct list<OZBehavior *, std::allocator<OZBehavior *>> {
     struct _List_impl _field1;
-} list_94e47a03;
+} list_fc228e28;
 
 typedef struct list<OZChannelBase *, std::allocator<OZChannelBase *>> {
     struct _List_impl _field1;
-} list_eea5731a;
+} list_e802f8b8;
 
 typedef struct list<OZChannelObjectRoot *, std::allocator<OZChannelObjectRoot *>> {
     struct _List_impl _field1;
-} list_288eb408;
+} list_23a7b31a;
 
 typedef struct list<OZFactoryBase *, std::allocator<OZFactoryBase *>> {
     struct _List_impl _field1;
-} list_0555a7a2;
+} list_e68da02e;
 
 typedef struct list<OZObjectManipulator *, std::allocator<OZObjectManipulator *>> {
     struct _List_impl _field1;
-} list_37573188;
+} list_4c5ca08a;
 
 typedef struct list<OZOnScreenControlComponent *, std::allocator<OZOnScreenControlComponent *>> {
     struct _List_impl _field1;
-} list_46ab5fec;
+} list_b8d8639a;
 
 typedef struct list<OZSceneNode *, std::allocator<OZSceneNode *>> {
-    struct _List_impl _field1;
-} list_1192f13f;
+    struct _List_impl _M_impl;
+} list_d81b4758;
 
 typedef struct list<OZTransformNode *, std::allocator<OZTransformNode *>> {
     struct _List_impl _field1;
-} list_7b3c46fd;
+} list_dab3ab9d;
 
 typedef struct list<unsigned int, std::allocator<unsigned int>> {
     struct _List_impl _field1;
-} list_89d338e7;
+} list_bbacc03b;
 
 typedef struct list<void *, std::allocator<void *>> {
     struct _List_impl _field1;
-} list_f235e77a;
+} list_ada7b58d;
 
 typedef struct map<CMTime, bool, std::less<CMTime>, std::allocator<std::pair<const CMTime, bool>>> {
     struct _Rb_tree<CMTime, std::pair<const CMTime, bool>, std::_Select1st<std::pair<const CMTime, bool>>, std::less<CMTime>, std::allocator<std::pair<const CMTime, bool>>> _field1;
@@ -7285,7 +7747,7 @@ typedef struct map<OZTimelineKeyframeDrag, CMTime, std::less<OZTimelineKeyframeD
 
 typedef struct map<PCString, std::pair<CMTime, CMTime>, std::less<PCString>, std::allocator<std::pair<const PCString, std::pair<CMTime, CMTime>>>> {
     struct _Rb_tree<PCString, std::pair<const PCString, std::pair<CMTime, CMTime>>, std::_Select1st<std::pair<const PCString, std::pair<CMTime, CMTime>>>, std::less<PCString>, std::allocator<std::pair<const PCString, std::pair<CMTime, CMTime>>>> _field1;
-} map_0bf39bb6;
+} map_b455ab53;
 
 typedef struct map<unsigned int, OZChannelBase *, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, OZChannelBase *>>> {
     struct _Rb_tree<unsigned int, std::pair<const unsigned int, OZChannelBase *>, std::_Select1st<std::pair<const unsigned int, OZChannelBase *>>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, OZChannelBase *>>> _field1;
@@ -7302,6 +7764,11 @@ typedef struct set<OZChannelObjectRoot *, std::less<OZChannelObjectRoot *>, std:
 typedef struct set<OZSnap, std::less<OZSnap>, std::allocator<OZSnap>> {
     struct _Rb_tree<OZSnap, OZSnap, std::_Identity<OZSnap>, std::less<OZSnap>, std::allocator<OZSnap>> _field1;
 } set_b780a99c;
+
+typedef struct shared_ptr<OZRenderResult> {
+    struct OZRenderResult *_field1;
+    struct __shared_count<2> _field2;
+} shared_ptr_7e020609;
 
 typedef struct shared_ptr<PCBitmap> {
     struct PCBitmap *_field1;
@@ -7428,11 +7895,11 @@ typedef struct vector<bool, std::allocator<bool>> {
 
 typedef struct vector<double, std::allocator<double>> {
     struct _Vector_impl {
-        double *_M_start;
-        double *_M_finish;
-        double *_M_end_of_storage;
-    } _M_impl;
-} vector_419cd555;
+        double *_field1;
+        double *_field2;
+        double *_field3;
+    } _field1;
+} vector_3396ec90;
 
 typedef struct vector<std::pair<OZChannelObjectRoot *, OZChannelObjectRoot *>, std::allocator<std::pair<OZChannelObjectRoot *, OZChannelObjectRoot *>>> {
     struct _Vector_impl {

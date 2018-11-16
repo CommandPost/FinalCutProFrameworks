@@ -6,13 +6,13 @@
 
 #import "CALayer.h"
 
-@class FFFilmstrip, NSProThemeFacet;
+@class FFFilmstrip, TLKAbstractItemSelectionLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFFilmstripSelectionLayer : CALayer
 {
+    TLKAbstractItemSelectionLayer *_rangeSelectionLayer;
     CALayer *_maskLayer;
-    CALayer *_outlineLayer;
     CALayer *_leftHandleLayer;
     CALayer *_rightHandleLayer;
     CDStruct_1b6d18a9 _leftTime;
@@ -25,21 +25,22 @@ __attribute__((visibility("hidden")))
     BOOL _showHandles;
     BOOL _emphasized;
     BOOL _ghosted;
+    int _highlight;
     struct CGRect _leftSelectionHandleRect;
     struct CGRect _rightSelectionHandleRect;
     BOOL _forStillImage;
     BOOL _usesAutoKeywordsStyle;
     FFFilmstrip *_filmstrip;
-    NSProThemeFacet *_outlineLayerFacet;
-    double _lastFacetWidth;
-    BOOL _lastFacetStillImage;
 }
 
 + (id)_rightFacetHandle;
 + (id)_leftFacetHandle;
 + (unsigned long long)_themeRef;
++ (id)layer;
++ (id)unusedLayerPool;
 @property(nonatomic) BOOL usesAutoKeywordsStyle; // @synthesize usesAutoKeywordsStyle=_usesAutoKeywordsStyle;
 @property(nonatomic) BOOL forStillImage; // @synthesize forStillImage=_forStillImage;
+@property(nonatomic) int highlight; // @synthesize highlight=_highlight;
 @property(nonatomic) BOOL ghosted; // @synthesize ghosted=_ghosted;
 @property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
 @property(nonatomic) BOOL focused; // @synthesize focused=_focused;
@@ -51,18 +52,20 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_1b6d18a9 rightTime; // @synthesize rightTime=_rightTime;
 @property(nonatomic) CDStruct_1b6d18a9 leftTime; // @synthesize leftTime=_leftTime;
 @property(retain, nonatomic) FFFilmstrip *filmstrip; // @synthesize filmstrip=_filmstrip;
-- (void)_updateFacetFrameForWidth:(double)arg1 forStillImage:(BOOL)arg2;
+- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (BOOL)_shouldHideHandles;
 @property(readonly, nonatomic) struct CGRect rightSelectionHandleRect;
 @property(readonly, nonatomic) struct CGRect leftSelectionHandleRect;
 - (void)setTimeRange:(CDStruct_e83c9415)arg1 focused:(BOOL)arg2 emphasized:(BOOL)arg3;
 @property(nonatomic) CDStruct_e83c9415 timeRange;
-- (long long)_themeState;
+- (int)_selectionDisplayMode;
 - (void)_updateFrameProperties;
 - (void)layoutSublayers;
 - (void)dealloc;
 - (void)setContentsScale:(double)arg1;
 - (id)init;
+- (void)removeFromSuperlayer;
+- (void)resetToDefaults;
 
 @end
 

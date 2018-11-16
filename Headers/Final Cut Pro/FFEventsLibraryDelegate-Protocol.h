@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "FFPersistentModuleDelegate.h"
+#import "NSObject.h"
 
 @class FFAnchoredObject, FFAnchoredStack, FFContext, FFEditorModule, FFEventsSuperModule, FFMarkerLayer, FFSettingsModule, NSArray, NSSet, NSURL;
 
-@protocol FFEventsLibraryDelegate <FFPersistentModuleDelegate>
+@protocol FFEventsLibraryDelegate <NSObject>
 - (void)didFinishRelinkingForOrganizerModule:(id)arg1;
 - (void)willBeginRelinkingForOrganizerModule:(id)arg1;
 - (NSArray *)timelineSelection;
@@ -30,7 +30,7 @@
 - (BOOL)canDisplayURL:(NSURL *)arg1;
 
 @optional
-- (void)showProjectLibrary;
+- (void)ensureSidebarVisible;
 - (void)openSettingsWithModule:(FFSettingsModule *)arg1;
 - (void)setKeywordEditorVisible:(BOOL)arg1;
 - (BOOL)markerEditorIsShown;

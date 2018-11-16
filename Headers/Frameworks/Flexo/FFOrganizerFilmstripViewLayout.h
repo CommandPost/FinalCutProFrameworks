@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *_chunkContainerArray;
     NSMutableArray *_clusterHeaderArray;
+    long long _emptyMediaLayerDisplayType;
+    struct CGRect _emptyMediaLayerRect;
+    CALayer *_emptyMediaLayer;
+    CDUnknownBlockType _buttonHandler;
     NSMutableArray *_visibleRanges;
     struct CGRect _frame;
     CDStruct_1b6d18a9 _timePerThumb;
@@ -23,6 +27,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint _insertionPoint;
     double _heightOfTallestItemOnLine;
     double _totalHeight;
+    BOOL _lastRangeWasProject;
     CALayer *_playerLayer;
     FigTimeRangeAndObject *_lastRangeOfMedia;
     CDStruct_1b6d18a9 _lastPlayheadTime;
@@ -37,16 +42,20 @@ __attribute__((visibility("hidden")))
     id _delegate;
     BOOL _emphasized;
     BOOL _showRanges;
+    BOOL _showUsedMediaRanges;
     NSArray *_selectedRangesOfMedia;
     id <FFOrganizerFilmstripClusteringDelegate> _clusteringDelegate;
 }
 
+@property(nonatomic) long long emptyMediaLayerDisplayType; // @synthesize emptyMediaLayerDisplayType=_emptyMediaLayerDisplayType;
 @property(nonatomic) id <FFOrganizerFilmstripClusteringDelegate> clusteringDelegate; // @synthesize clusteringDelegate=_clusteringDelegate;
 @property(retain, nonatomic) NSArray *selectedRangesOfMedia; // @synthesize selectedRangesOfMedia=_selectedRangesOfMedia;
+@property(nonatomic) BOOL showUsedMediaRanges; // @synthesize showUsedMediaRanges=_showUsedMediaRanges;
 @property(nonatomic) BOOL showRanges; // @synthesize showRanges=_showRanges;
 @property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
 @property(nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) BOOL dirty; // @synthesize dirty=_dirty;
+@property(readonly, nonatomic) double audioHeight; // @synthesize audioHeight=_audioHeight;
 @property(readonly, nonatomic) double totalHeight; // @synthesize totalHeight=_totalHeight;
 @property(readonly, nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(readonly, nonatomic) NSArray *visibleRanges; // @synthesize visibleRanges=_visibleRanges;
@@ -57,11 +66,14 @@ __attribute__((visibility("hidden")))
 - (double)contentsScale;
 - (void)showInactiveSelections:(BOOL)arg1;
 - (void)showHandlesForSelection:(id)arg1;
+- (void)setDragSelectionHighlight:(int)arg1;
 - (void)setGhostSelection:(BOOL)arg1;
+- (void)setPersistentPlayheadHidden:(BOOL)arg1;
 - (void)setPlayheadHidden:(BOOL)arg1;
 - (void)setPlayheadTime:(CDStruct_1b6d18a9)arg1 inRangeOfMedia:(id)arg2 updatePlayerLayer:(BOOL)arg3;
 - (void)setPersistentPlayheadTime:(CDStruct_1b6d18a9)arg1 inRangeOfMedia:(id)arg2;
 - (void)setPlayerLayer:(id)arg1;
+- (struct CGRect)persistentPlayheadRectInSpaceOfLayer:(id)arg1;
 - (struct CGRect)playheadRectInSpaceOfLayer:(id)arg1;
 - (struct CGRect)playerRect;
 - (id)rangeObjectArrayforRect:(struct CGRect)arg1;
@@ -75,22 +87,34 @@ __attribute__((visibility("hidden")))
 - (id)chunkContainerAtPoint:(struct CGPoint)arg1;
 - (BOOL)_shouldIncludeChunksLayerBecauseOfSelectionOverlap:(id)arg1;
 - (void)addChunksToLayer:(id)arg1 forVisibleRect:(struct CGRect)arg2;
+- (id)_dividerLineLayer;
+- (id)_informativeTextLayer:(id)arg1;
+- (id)_makeEmptySearchResultLayer;
+- (id)_makeImportMediaButton;
+- (void)setEmptyMediaLayerDisplay:(long long)arg1 buttonHandler:(CDUnknownBlockType)arg2;
 - (void)scavengeLayersFromLayout:(id)arg1 forVisibleRect:(struct CGRect)arg2;
 - (void)addGroupSeparatorToLayout:(id)arg1;
 - (void)addRangeOfMediaToLayout:(id)arg1 singleFilmstripMode:(BOOL)arg2;
 - (double)maxThumbWidth;
 - (struct CGPoint)invertPointYAxis:(struct CGPoint)arg1;
 - (struct CGRect)invertRectToMatchDisplayCoords:(struct CGRect)arg1;
-- (void)endLayout;
+- (void)endLayout:(BOOL)arg1;
+- (void)_setImportMediaLayerRect;
 - (void)moveInsertionPointToNextLine;
 - (void)adjustInsertionPointForItemsFrame:(struct CGRect)arg1;
 - (double)remainingLineWidth;
-- (void)beginLayout;
+- (double)verticalBottomMargin;
+- (double)verticalTopMargin;
+- (double)horizontalMargin;
+- (double)verticalClusterGap;
+- (double)verticalItemGap;
+- (double)horizontalItemGap;
+- (void)beginLayout:(BOOL)arg1;
 - (void)reloadData;
 - (BOOL)isEquivalentToLayout:(id)arg1;
 - (id)description;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 timePerThumb:(CDStruct_1b6d18a9)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 clipLabelSize:(int)arg5 contentsScale:(double)arg6 showRanges:(BOOL)arg7;
+- (id)initWithFrame:(struct CGRect)arg1 timePerThumb:(CDStruct_1b6d18a9)arg2 thumbHeight:(double)arg3 audioHeight:(double)arg4 clipLabelSize:(int)arg5 contentsScale:(double)arg6 showRanges:(BOOL)arg7 showUsedMediaRanges:(BOOL)arg8;
 
 @end
 

@@ -12,7 +12,7 @@
 - (void)changeAttributes:(id)arg1;
 - (BOOL)setDropShadowChannels:(id)arg1 time:(CDStruct_198678f7)arg2 style:(struct TXTextStyle *)arg3 text:(struct TXTextLayout *)arg4;
 - (id)getSelectedTextAttributes:(struct TXTextLayout *)arg1;
-- (id)createNSShadowForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_198678f7)arg2;
+- (id)newNSShadowForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_198678f7)arg2;
 - (id)getNSFontForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_198678f7)arg2;
 @end
 

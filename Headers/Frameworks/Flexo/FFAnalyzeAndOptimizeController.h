@@ -9,7 +9,7 @@
 #import "FFBackgroundTaskTarget.h"
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 
-@class FFRenderer, NSMutableDictionary, NSMutableSet;
+@class FFRenderer, NSMapTable, NSMutableSet;
 
 @interface FFAnalyzeAndOptimizeController : NSObject <FFStorageLocationOutOfDiskSpaceProtocol, FFBackgroundTaskTarget>
 {
@@ -17,7 +17,7 @@
     NSMutableSet *_optimizationTasks;
     BOOL _willCloseDown;
     BOOL _wasCancelled;
-    NSMutableDictionary *_clipAnalysesQueue;
+    NSMapTable *_clipAnalysesQueue;
 }
 
 + (BOOL)needsOptimizationForFourCharCode:(unsigned int)arg1;
@@ -34,21 +34,24 @@
 + (unsigned int)videoCodecForURL:(id)arg1;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
-- (id)projectsInUse;
-- (id)assetRefsInUseByTask:(id)arg1;
-- (id)assetRefsInUse;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (void)stopWritingFilesToLocation:(id)arg1;
+- (BOOL)actionPerformAnalyzeAndOptimizeClips:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)analyzeAndOptimizeClips:(id)arg1 options:(id)arg2;
+- (void)_analyzeAndOptimizeClips:(id)arg1 options:(id)arg2 forAssetImport:(BOOL)arg3;
 - (id)preflightForCameraClips:(id)arg1;
 - (id)preflightClip:(id)arg1 withOptions:(id)arg2;
 - (void)warnAboutOutOfDiskSpaceWithDetails:(id)arg1;
 - (BOOL)verifyDiskSpaceAvailable:(id)arg1;
 - (void)analyzeAndOptimizeClipBackgroundThread:(id)arg1 onTask:(id)arg2;
+- (id)_tmpFilenameFromName:(id)arg1 identifier:(id)arg2 proxy:(BOOL)arg3;
 - (id)_optimizedVideoFormatForCodec:(unsigned int)arg1;
 - (struct AudioStreamBasicDescription)_optimizedAudioFileFormatForFormat:(struct AudioStreamBasicDescription)arg1;
 - (void)_assetCopyQueueCompleted:(id)arg1;
-- (void)_analyzeAndOptimizeClip:(id)arg1;
-- (void)_analyzeAndOptimizeClipForAudio:(id)arg1;
+- (void)_analyzeAndOptimizeClip:(id)arg1 forAssetImport:(BOOL)arg2;
+- (void)_audioAnalyzeClipForAssetImport:(id)arg1;
+- (void)_audioAnalyzeClip:(id)arg1 forAssetImport:(BOOL)arg2;
 - (void)assetDone:(id)arg1;
 - (void)analyzeAndOptimizeClipBackgroundThreadDone;
 - (void)canceledTask:(id)arg1;

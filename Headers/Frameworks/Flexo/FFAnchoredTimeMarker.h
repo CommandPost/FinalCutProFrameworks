@@ -7,36 +7,38 @@
 #import <Flexo/FFAnchoredMarker.h>
 
 #import "TLKPosterFrameInfoProtocol.h"
-#import "TLKTimelineItem.h"
+#import "TLKTimelineMarkerItem.h"
 
-@class FFChapterPinLayer, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFAnchoredTimeMarker : FFAnchoredMarker <TLKPosterFrameInfoProtocol, TLKTimelineItem>
+@interface FFAnchoredTimeMarker : FFAnchoredMarker <TLKPosterFrameInfoProtocol, TLKTimelineMarkerItem>
 {
     BOOL _isTodo;
     BOOL _isCompleted;
     BOOL _isChapter;
+    BOOL _isMoment;
     CDStruct_1b6d18a9 _posterOffset;
     BOOL _isSelected;
     BOOL _isHighlighted;
     BOOL _isHidden;
     BOOL _isActive;
     BOOL _displayNameIsDefault;
-    FFChapterPinLayer *_chapterPinLayer;
 }
 
 + (id)copyClassDescription;
-@property(retain, nonatomic) FFChapterPinLayer *chapterPinLayer; // @synthesize chapterPinLayer=_chapterPinLayer;
 @property(nonatomic) BOOL displayNameIsDefault; // @synthesize displayNameIsDefault=_displayNameIsDefault;
 @property(nonatomic) BOOL isActive; // @synthesize isActive=_isActive;
 @property(nonatomic) BOOL isHidden; // @synthesize isHidden=_isHidden;
 @property(nonatomic) BOOL isHighlighted; // @synthesize isHighlighted=_isHighlighted;
 @property(nonatomic) BOOL isSelected; // @synthesize isSelected=_isSelected;
 @property(nonatomic) CDStruct_1b6d18a9 posterOffset; // @synthesize posterOffset=_posterOffset;
+@property(nonatomic) BOOL isMoment; // @synthesize isMoment=_isMoment;
 @property(nonatomic) BOOL isChapter; // @synthesize isChapter=_isChapter;
 @property(nonatomic) BOOL isCompleted; // @synthesize isCompleted=_isCompleted;
 @property(nonatomic) BOOL isTodo; // @synthesize isTodo=_isTodo;
+@property(readonly) CDStruct_1b6d18a9 timelineMarkerPosterOffset;
+@property(readonly) int timelineMarkerType;
 @property(readonly) id <TLKTimelineItem> timelineContainer;
 @property(readonly) int timelineAVContainmentType;
 @property(readonly) int timelineItemType;
@@ -46,7 +48,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) long long timelineVerticalIndex;
 @property(readonly) CDStruct_1b6d18a9 timelineParentAnchorOffset;
 @property(readonly) CDStruct_1b6d18a9 timelineAnchorOffset;
-@property(readonly) struct CGSize aspectRatio;
+- (struct CGSize)aspectRatio;
 @property(readonly) NSString *timelineDisplayName;
 - (BOOL)defaultPosition;
 - (id)label;
@@ -58,12 +60,10 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)timeClippedToContainerRange:(CDStruct_1b6d18a9)arg1;
 - (BOOL)doesContainerRangeInclude:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_e83c9415)_trueContainerRange;
-- (void)destroyChapterPinLayer;
 - (id)trackType;
 - (id)type;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 
 @end

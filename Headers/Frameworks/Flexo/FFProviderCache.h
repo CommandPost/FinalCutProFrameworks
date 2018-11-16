@@ -8,7 +8,6 @@
 
 @class NSMapTable, NSRecursiveLock;
 
-__attribute__((visibility("hidden")))
 @interface FFProviderCache : NSObject
 {
     NSMapTable *_cache;
@@ -21,9 +20,11 @@ __attribute__((visibility("hidden")))
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
 + (void)initialize;
-- (void)purgeCacheOfSequence:(id)arg1;
+- (void)dumpProviderCacheDetails;
+- (void)purgeCacheOfSequence:(id)arg1 force:(BOOL)arg2;
 - (void)pruneIgnoring:(id)arg1;
 - (void)prune;
+- (void)purgeKeysUsingBlock:(CDUnknownBlockType)arg1;
 - (void)invalidateProvider:(id)arg1;
 - (void)sourceInvalidated:(id)arg1;
 - (id)newProviderForKey:(id)arg1;

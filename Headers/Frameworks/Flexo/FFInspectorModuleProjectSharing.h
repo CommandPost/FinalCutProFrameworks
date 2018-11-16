@@ -8,14 +8,15 @@
 
 #import "FFInspectorShareMetadataTileProtocol.h"
 
-@class CKShareStatus, FFInspectorShareTileView, FFSequenceProject, NSArray, NSMutableArray, NSProImageView, NSProThemeImageView, NSProView, NSTextField;
+@class FFAnchoredSequence, FFInspectorShareTileView, FFShareStatus, NSArray, NSMutableArray, NSProImageView, NSProThemeImageView, NSProView, NSTextField;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleProjectSharing : FFInspectorModule <FFInspectorShareMetadataTileProtocol>
 {
     FFInspectorShareTileView *_shareTilesView;
-    FFSequenceProject *_inspectedProject;
-    CKShareStatus *_ckShareStatus;
+    id _inspectedProject;
+    FFAnchoredSequence *_inspectedSequence;
+    FFShareStatus *_shareStatus;
     NSProThemeImageView *_sharingHeaderView;
     NSProImageView *_sharingProjectImage;
     NSTextField *_sharingClipName;
@@ -43,17 +44,17 @@ __attribute__((visibility("hidden")))
 - (void)showAllFields:(id)arg1;
 - (void)removeSharedItem:(id)arg1;
 - (void)tellAFriendOfSharedItem:(id)arg1;
+- (void)_projectChanged:(id)arg1;
 - (void)shareMetadataChanged:(id)arg1;
+- (void)showShareMetadataChanges;
 - (void)shareNotification:(id)arg1;
+- (void)reloadData;
+- (void)moduleDidUnhide;
 - (void)setCurrentItems:(id)arg1;
 - (void)_assetsChangedNotification:(id)arg1;
 - (id)_sequenceFromInspectedProject:(id)arg1;
 - (void)rebuildShareTilesView:(BOOL)arg1;
-- (id)sortItemsArray:(id)arg1;
-- (id)sortShareArray:(id)arg1 withID:(id)arg2;
-- (id)latestDateFromArray:(id)arg1;
 - (void)addNewTileFor:(id)arg1 withArray:(id)arg2 withFingerPrint:(id)arg3;
-- (BOOL)isVideoPathLocal:(id)arg1;
 - (id)getStatusImageString;
 - (id)getRevealImage;
 - (id)getShareStatusImage:(BOOL)arg1;
@@ -71,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (id)valueForKeyPath:(id)arg1;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
 - (BOOL)areVlauesForKeyPathSame:(id)arg1;
+- (void)viewDidLoad;
 - (void)dealloc;
 - (id)init;
 

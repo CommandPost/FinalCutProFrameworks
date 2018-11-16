@@ -7,8 +7,8 @@
 @class FFAnchoredObject, FFProvider, FFSubRangeMD5Info, FFVideoProps, NSSet, NSString;
 
 @protocol FFSkimmableProtocol
-- (void)addThumbMD5Info:(FFSubRangeMD5Info *)arg1 contentsScale:(double)arg2;
-- (FFSubRangeMD5Info *)thumbMD5InfoForTime:(CDStruct_1b6d18a9)arg1 contentsScale:(double)arg2;
+- (void)addThumbMD5Info:(FFSubRangeMD5Info *)arg1 imageQuality:(int)arg2;
+- (FFSubRangeMD5Info *)thumbMD5InfoForTime:(CDStruct_1b6d18a9)arg1 imageQuality:(int)arg2;
 - (CDStruct_1b6d18a9)containerToLocalTime:(CDStruct_1b6d18a9)arg1 container:(FFAnchoredObject *)arg2;
 - (CDStruct_1b6d18a9)localToContainerTime:(CDStruct_1b6d18a9)arg1 container:(FFAnchoredObject *)arg2;
 - (CDStruct_e83c9415)unclippedRange;
@@ -26,10 +26,13 @@
 - (long long)timecodeDisplayDropFrame;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (CDStruct_1b6d18a9)timeOffset;
+- (CDStruct_1b6d18a9)frameDuration;
+- (struct CGSize)frameSize;
 - (BOOL)hasVideo;
 - (BOOL)hasAudio;
 - (CDStruct_e83c9415)mediaRange;
 - (id <FFModelLocking>)modelLockingObject;
+- (NSString *)mediaIdentifier;
 - (NSString *)displayName;
 - (FFProvider *)newProviderWithEffectCount:(long long)arg1 showObjects:(NSSet *)arg2 roles:(NSSet *)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
 - (FFProvider *)newProviderWithEffectCount:(long long)arg1 showObjects:(NSSet *)arg2;

@@ -4,7 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class CHChannelBase, FFAnchoredSequence, FFCHRootChannel, NSArray, NSString;
+@class CHChannelBase, FFAnchoredSequence, FFCHRootChannel, FFUndoHandler, NSArray, NSString;
 
 @protocol FFInspectorChannelDataSource
 - (BOOL)containsChannel:(CHChannelBase *)arg1;
@@ -14,7 +14,7 @@
 @optional
 - (BOOL)actionEnd:(NSString *)arg1 save:(BOOL)arg2 error:(id *)arg3;
 - (void)actionBegin:(NSString *)arg1 animationHint:(NSString *)arg2 deferUpdates:(BOOL)arg3;
-- (id <FFUndoHandler>)undoHandler;
+- (FFUndoHandler *)undoHandler;
 - (FFCHRootChannel *)channelRootBase;
 - (void)removeChannel:(CHChannelBase *)arg1;
 - (BOOL)canRemoveChannel:(CHChannelBase *)arg1;

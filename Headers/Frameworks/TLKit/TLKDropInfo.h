@@ -8,20 +8,24 @@
 
 #import "NSCopying.h"
 
-@class TLKLayoutManager;
+@class TLKItemLaneFragment, TLKLayoutContext;
 
 @interface TLKDropInfo : NSObject <NSCopying>
 {
     long long _dropIndex;
     CDStruct_1b6d18a9 _dropTime;
-    id <TLKTimelineItem> _targetItem;
-    TLKLayoutManager *_layoutManager;
+    CDStruct_e83c9415 _highlightRange;
+    TLKLayoutContext *_targetLayoutContext;
+    id _targetItem;
+    TLKItemLaneFragment *_targetItemLaneFragment;
 }
 
-@property(retain) id <TLKTimelineItem> targetItem; // @synthesize targetItem=_targetItem;
-@property(retain) TLKLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
-@property CDStruct_1b6d18a9 dropTime; // @synthesize dropTime=_dropTime;
-@property long long dropIndex; // @synthesize dropIndex=_dropIndex;
+@property(retain, nonatomic) TLKItemLaneFragment *targetItemLaneFragment; // @synthesize targetItemLaneFragment=_targetItemLaneFragment;
+@property(nonatomic) CDStruct_e83c9415 highlightRange; // @synthesize highlightRange=_highlightRange;
+@property(retain, nonatomic) id targetItem; // @synthesize targetItem=_targetItem;
+@property(retain, nonatomic) TLKLayoutContext *targetLayoutContext; // @synthesize targetLayoutContext=_targetLayoutContext;
+@property(nonatomic) CDStruct_1b6d18a9 dropTime; // @synthesize dropTime=_dropTime;
+@property(nonatomic) long long dropIndex; // @synthesize dropIndex=_dropIndex;
 - (id)debugDescription;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

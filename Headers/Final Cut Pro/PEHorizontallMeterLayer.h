@@ -10,6 +10,7 @@
 {
 }
 
+- (void)setupMeterLayers;
 - (void)maskToHeight:(double)arg1;
 - (void)layoutSublayers;
 - (id)init;

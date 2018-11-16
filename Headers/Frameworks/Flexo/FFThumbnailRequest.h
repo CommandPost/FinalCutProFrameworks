@@ -6,9 +6,8 @@
 
 #import "NSObject.h"
 
-@class CHChannelDouble, FFMD5AndOffset, FFProject, NSString;
+@class CHChannelDouble, FFBackgroundTask, FFMD5AndOffset, FFProject, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>, NSString;
 
-__attribute__((visibility("hidden")))
 @interface FFThumbnailRequest : NSObject
 {
     BOOL _highPriority;
@@ -19,33 +18,39 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _sampleTimeRange;
     BOOL _isAudio;
     struct CGSize _imageSize;
-    double _contentsScale;
-    FFMD5AndOffset *_imageMD5;
+    int _imageQuality;
+    FFMD5AndOffset *_md5AndOffset;
     CDStruct_bdcb2b0d _cachedMD5;
     BOOL _isAVClip;
     struct CGImage *_image;
     BOOL _canceled;
     int _attemptCount;
     CHChannelDouble *_volumeChannel;
+    CHChannelDouble *_duckingChannel;
     BOOL _audioWasHighQuality;
-    NSString *_segmentStoreMD5;
-    long long _segmentStoreOffset;
+    int _temporalQuality;
+    NSString *_segmentMD5String;
+    long long _segmentOffset;
     FFProject *_project;
-    int _thumbQuality;
     long long _effectCount;
-    BOOL _useAudioPeaksAvailable;
+    BOOL _useImageCache;
+    FFBackgroundTask *_taskThatInitiatedRequest;
 }
 
-- (int)thumbQuality;
+@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable; // @synthesize skimmable=_skimmable;
+@property(readonly, nonatomic) BOOL useImageCache; // @synthesize useImageCache=_useImageCache;
+@property(retain) FFBackgroundTask *taskThatInitiatedRequest; // @synthesize taskThatInitiatedRequest=_taskThatInitiatedRequest;
+- (int)imageQuality;
 - (id)project;
-- (long long)segmentStoreOffset;
-- (id)segmentStoreMD5;
-- (void)recalculateImageMD5:(id)arg1;
-- (void)setVideoImageMD5:(id)arg1;
+- (long long)segmentOffset;
+- (id)segmentMD5String;
+- (void)calculateMD5AndOffsetFromSkimmableWithVideoSource:(id)arg1;
+- (void)calculateMD5AndOffset;
+- (BOOL)hasImage;
+- (void)setMD5:(CDStruct_bdcb2b0d)arg1 offset:(long long)arg2;
 - (CDStruct_bdcb2b0d)cachedMD5;
 - (CDStruct_bdcb2b0d)audioMD5;
-- (CDStruct_bdcb2b0d)imageMD5;
-- (CDStruct_bdcb2b0d)imageMD5Cached;
+- (CDStruct_bdcb2b0d)imageMD5:(BOOL)arg1;
 - (void)addImageToSegmentStore;
 - (BOOL)isAudio;
 - (BOOL)canceled;
@@ -58,9 +63,8 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (oneway void)release;
 - (void)dealloc;
-- (id)initWithSegmentStoreMD5:(id)arg1 segmentStoreOffset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4;
-- (id)initWithSkimmable:(struct NSObject *)arg1 imageTimeRange:(CDStruct_e83c9415)arg2 imageSize:(struct CGSize)arg3 contentsScale:(double)arg4 requestAudio:(BOOL)arg5 target:(id)arg6 imageReadySelector:(SEL)arg7 requestTimeType:(int)arg8 constrainedTimeRange:(CDStruct_e83c9415)arg9 highPriority:(BOOL)arg10 useAudioPeaksAvailable:(BOOL)arg11 effectCount:(long long)arg12;
-- (struct CGImage *)dummyImage;
+- (id)initWithSegmentMD5String:(id)arg1 segmentOffset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4 taskThatInitiatedRequest:(id)arg5;
+- (id)initWithSkimmable:(struct NSObject *)arg1 imageTimeRange:(CDStruct_e83c9415)arg2 imageSize:(struct CGSize)arg3 imageQuality:(int)arg4 requestAudio:(BOOL)arg5 target:(id)arg6 imageReadySelector:(SEL)arg7 requestTimeType:(int)arg8 constrainedTimeRange:(CDStruct_e83c9415)arg9 highPriority:(BOOL)arg10 useImageCache:(BOOL)arg11 effectCount:(long long)arg12 taskThatInitiatedRequest:(id)arg13;
 
 @end
 

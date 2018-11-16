@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) NSSet *selectedKeywordSet; // @synthesize selectedKeywordSet=_selectedKeywordSet;
 @property(retain, nonatomic) NSSet *keywordSet; // @synthesize keywordSet=_keywordSet;
+- (id)displayNameForKeyword:(id)arg1;
 - (void)keywordButtonClicked:(id)arg1;
 - (id)sortKeywords:(id)arg1;
 - (id)comparisonTypesAllowed;

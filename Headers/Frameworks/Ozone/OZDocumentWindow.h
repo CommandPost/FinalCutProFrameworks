@@ -19,7 +19,6 @@
 - (BOOL)customKeyEquivalent:(id)arg1;
 - (void)selectPreviousKeyView:(id)arg1;
 - (void)selectNextKeyView:(id)arg1;
-- (BOOL)makeFirstResponder:(id)arg1;
 - (void)resignKeyWindow;
 - (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
 

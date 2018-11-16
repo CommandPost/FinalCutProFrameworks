@@ -15,11 +15,16 @@
     PEAudioLayeredMeterView *_layeredMeterView;
     FFContext *_context;
     unsigned int _numChannels;
+    int _skipCount;
     BOOL _isPlaying;
     BOOL _moduleIsShowing;
     BOOL _observingMeterUpdates;
+    FFContext *_playbackContext;
+    FFContext *_skimmingContext;
 }
 
+- (void)playbackStopped:(id)arg1;
+- (void)playbackStarted:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)resetOverloadIndicators;
 - (void)moduleDidHide;
@@ -28,6 +33,9 @@
 - (void)moduleViewWasInstalled:(BOOL)arg1;
 - (void)contextMeterUpdate:(const float *)arg1 channels:(unsigned long long)arg2;
 - (void)timeRateChangedForContext:(id)arg1;
+- (void)_updatePlaybackContext:(id)arg1;
+- (void)_updateSkimmingContext:(id)arg1;
+- (void)_updateContext;
 - (void)_setContext:(id)arg1;
 - (void)_addContextMeteringObservers;
 - (void)_removeContextMeteringObservers;

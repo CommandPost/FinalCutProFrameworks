@@ -23,8 +23,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)dump;
-+ (void)dealloc:(void *)arg1;
-+ (void *)alloc:(unsigned long long)arg1;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
 + (void)initialize;

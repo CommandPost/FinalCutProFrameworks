@@ -17,11 +17,10 @@
     struct CGPoint _topRight;
     struct CGPoint _bottomLeft;
     struct CGPoint _bottomRight;
-    struct PCString *_pUndoString;
 }
 
 - (id).cxx_construct;
-- (BOOL)flagsChanged:(id)arg1;
+- (BOOL)oscFlagsChanged:(id)arg1;
 - (BOOL)keyDownOSC:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;
@@ -29,7 +28,6 @@
 - (void)projectShape:(id)arg1;
 - (struct OZRotoshape *)createSceneNode;
 - (void)createShape:(CDStruct_1b6d18a9)arg1;
-- (void)draw;
 - (void)endWithDocument:(struct OZDocument *)arg1;
 - (id)getCursorWithEvent:(id)arg1;
 - (id)getDefaultCursor;

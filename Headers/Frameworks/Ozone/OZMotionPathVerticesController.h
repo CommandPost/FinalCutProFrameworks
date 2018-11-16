@@ -10,7 +10,7 @@
 {
 }
 
-- (id)addVertexController:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
+- (id)newVertexController:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
 - (unsigned int)getNumberOfVertices:(struct OZChannelBase *)arg1;
 
 @end

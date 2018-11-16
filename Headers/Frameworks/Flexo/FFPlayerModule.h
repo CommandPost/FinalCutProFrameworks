@@ -8,10 +8,11 @@
 
 #import "NSWindowDelegate.h"
 
-@class FFContext, FFPlayer, FFProvider, FFSourceAudio, FFSourceVideo, LKModuleLayout, NSDictionary, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>;
+@class FFContext, FFPlayer, FFProvider, FFSourceAudio, FFSourceVideo, LKModuleLayout, NSDictionary, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>, NSView;
 
 @interface FFPlayerModule : LKViewModule <NSWindowDelegate>
 {
+    NSView *_submodulesView;
     struct NSObject *_skimmable;
     FFProvider *_provider;
     FFContext *_context;
@@ -35,10 +36,16 @@
     FFSourceVideo *_observingVideoSource;
     NSDictionary *_fullScreenOptions;
     id _savedFirstResponder;
+    BOOL _autoHideCursorInFullScreen;
+    BOOL _loadEventProjects;
+    BOOL _displaysProjectInfoOSC;
 }
 
 + (Class)videoModuleClass;
 + (id)defaultSublayoutName;
+@property(nonatomic) BOOL displaysProjectInfoOSC; // @synthesize displaysProjectInfoOSC=_displaysProjectInfoOSC;
+@property(nonatomic) BOOL loadEventProjects; // @synthesize loadEventProjects=_loadEventProjects;
+@property(nonatomic) BOOL autoHideCursorInFullScreen; // @synthesize autoHideCursorInFullScreen=_autoHideCursorInFullScreen;
 @property(nonatomic) float reportedZoomFactor; // @synthesize reportedZoomFactor=_reportedZoomFactor;
 @property(nonatomic) int playerRole; // @synthesize playerRole=_playerRole;
 @property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
@@ -46,6 +53,8 @@
 @property(readonly, nonatomic) long long effectCount; // @synthesize effectCount=_effectCount;
 @property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable; // @synthesize skimmable=_skimmable;
 - (id)orderedZoomLevels;
+- (void)_fadeDisplayFromBlackWithDuration:(double)arg1 token:(unsigned int)arg2;
+- (unsigned int)_fadeDisplayToBlackWithDuration:(double)arg1;
 - (void)_exitFullScreenForEvent:(id)arg1;
 - (BOOL)isInFullScreenMode;
 - (void)exitFullScreenModeWithOptions:(id)arg1;
@@ -57,6 +66,8 @@
 - (void)_stepToTime:(CDStruct_1b6d18a9)arg1;
 - (void)_playWithRate:(float)arg1;
 - (void)_updateLabel;
+- (void)_updateProjectInfoOSC;
+@property(readonly, nonatomic) BOOL canPlay;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_handlePreferencesKeyPathChange:(id)arg1;
 - (void)rangeInvalidated:(id)arg1;
@@ -72,10 +83,13 @@
 - (void)timeRateChangedForContext:(id)arg1;
 - (void)_rebuildPlayerWithDrawingSuspension;
 - (void)_rebuildPlayer;
+- (BOOL)_shouldLoadProviderForSkimmable:(struct NSObject *)arg1;
+- (BOOL)_isEventProject:(struct NSObject *)arg1;
 - (void)_teardownPlayer;
 - (void)appWillTerminate:(id)arg1;
 - (id)selectedItems;
 - (id)inspectorClassName;
+- (void)loadEventProject:(id)arg1;
 - (void)importClips:(id)arg1;
 - (void)playInToOutInViewer:(id)arg1;
 - (void)playAroundCurrentFrameInViewer:(id)arg1;
@@ -160,8 +174,10 @@
 - (id)visiblePlayerItemModule;
 - (void)viewDidLoad;
 - (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleDidHide;
 - (void)moduleDidUnhide;
 - (void)moduleViewWasInstalled:(id)arg1;
+@property(nonatomic) struct CGSize subviewInset;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
 - (id)waveformModule;

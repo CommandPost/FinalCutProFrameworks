@@ -13,15 +13,13 @@
 
 + (Class)documentModuleClass;
 + (id)defaultDocumentName;
++ (id)lastSelectedLibrary;
 + (void)setDefaultLocation:(id)arg1;
 + (id)defaultLocation;
-+ (id)temporaryRootName;
 + (id)projectsRootName;
 + (id)defaultFileExtension;
-+ (id)projectInfo:(id)arg1;
-- (void)_moveClipsToTrashActionBegin:(id)arg1;
-- (void)_moveClipsToTrashActionEnd:(id)arg1;
-- (BOOL)actionMoveAssetFilesToTrash:(id)arg1 useTrash:(BOOL)arg2 error:(id *)arg3;
++ (id)newTemporaryDocument:(id *)arg1;
+- (BOOL)operationMoveAssetFilesToTrash:(id)arg1 error:(id *)arg2;
 - (void)_recycleURLs:(id)arg1;
 - (BOOL)_recycleURLsOSWrapper:(id)arg1 newURLs:(id *)arg2 error:(id *)arg3;
 - (void)_undoRecycleURLs:(id)arg1;
@@ -29,18 +27,36 @@
 - (void)actionBegin:(id)arg1;
 - (BOOL)_actionEndEditing:(BOOL)arg1 error:(id *)arg2;
 - (void)_actionBeginEditing;
+- (void)close;
 - (void)makeWindowControllers;
+- (BOOL)canPurgeRenderFiles;
 - (id)mediaEventProject;
 - (id)rootObject;
 - (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
+- (BOOL)update_redTintThumbnails;
+- (BOOL)update_fixAnalysisKeywords;
+- (BOOL)update_canonTC;
+- (BOOL)update_disableAudioUnitEffectClumpFolderReset;
+- (BOOL)update_useRelativeAudioPresetPath;
+- (BOOL)update_removeDisabledAudioEnhancementEffects;
+- (BOOL)update_migrateAudioDisabledChannel;
+- (BOOL)update_moveVolumePanFolder;
+- (BOOL)update_projectSequenceToProjectData;
+- (BOOL)update_projectSequenceToSequenceInfo;
+- (BOOL)update_cleanupMediaComponentAudioRoutingMap;
+- (BOOL)update_conformLumaBumpsFromChannelsToData;
+- (BOOL)update_audioUseTimecodeZero;
+- (BOOL)update_GPSMetadata;
 - (BOOL)update_compoundToClipref;
 - (BOOL)update_migrateAudioIntrinsics;
+- (BOOL)update_isTitle;
+- (BOOL)update_hasObjectReferenceAndNonIntrinsicEffects;
 - (BOOL)update_cropAndTrimEffect;
 - (BOOL)update_fixLoudnessAnalysisEffect;
 - (BOOL)update_migrateEffectBundleFormat;
 - (BOOL)update_addAudioSourceDicts;
-- (id)initWithEventURL:(id)arg1 catalog:(id)arg2 create:(BOOL)arg3 error:(id *)arg4;
-- (id)newDefaultProject:(id)arg1 type:(id)arg2;
+- (id)getOwnedClipsAndNonProjectOwnedMedia;
+- (id)newRootObject:(id)arg1 type:(id)arg2;
 
 @end
 

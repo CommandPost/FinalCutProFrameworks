@@ -31,10 +31,13 @@
         unsigned int viewIsInstalled:1;
         unsigned int disableAutounbinder:1;
         unsigned int reusePolicy:2;
-        unsigned int RESERVED:25;
+        unsigned int hideOnAnimationStop:1;
+        unsigned int RESERVED:24;
     } _mFlags;
     LKModuleLayout *_subLayout;
     id _autounbinder;
+    NSArray *_coachTipSpecifiers;
+    BOOL loadNibFailed;
 }
 
 + (id)sharedInstanceIdentifier;
@@ -43,6 +46,7 @@
 + (id)moduleWithTag:(long long)arg1;
 + (id)_mappedClassName:(id)arg1;
 + (id)defaultModuleNibName;
+@property BOOL loadNibFailed; // @synthesize loadNibFailed;
 - (BOOL)canBeInspected;
 - (id)selectedItems;
 - (void)setSelectedItems:(id)arg1;
@@ -74,6 +78,7 @@
 - (void)makeKeyAndOrderFront:(id)arg1;
 - (void)orderFront:(id)arg1;
 - (void)activate:(id)arg1;
+- (void)moduleDidFinishRevealAnimation;
 - (void)hide:(id)arg1;
 - (void)unhideWithoutActivation:(id)arg1;
 - (void)unhide:(id)arg1;
@@ -101,7 +106,9 @@
 - (id)geometryLayoutDictionary;
 - (BOOL)saveViewFrameInGeometryDictionary;
 - (BOOL)moduleEnforcesViewMinSize;
+- (void)submodule:(id)arg1 didChangeMaxSize:(struct CGSize)arg2;
 - (struct CGSize)viewMaxSize;
+- (void)submodule:(id)arg1 didChangeMinSize:(struct CGSize)arg2;
 - (struct CGSize)viewMinSize;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)forwardInvocation:(id)arg1;
@@ -144,6 +151,7 @@
 - (BOOL)needsUpdate;
 - (id)document;
 - (void)showWindow:(id)arg1;
+- (BOOL)containsActiveModule;
 - (BOOL)isActive;
 - (id)windowController;
 - (id)window;
@@ -171,6 +179,7 @@
 - (void)viewDidLoad;
 - (void)_doPendingLayout;
 - (void)_viewDidLoad;
+- (void)_configureCoachTips;
 - (void)awakeFromNib;
 - (BOOL)loadView;
 - (void)viewWillLoad;

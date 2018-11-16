@@ -177,6 +177,7 @@ struct TimecodeInfo {
     long long counter;
     unsigned long long frameQuanta;
     char isDropFrame;
+    CDStruct_1b6d18a9 frameDuration;
     char isValid;
 };
 

@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
 + (id)newRenderStream:(id)arg1;
 + (BOOL)needsRenderFor:(id)arg1;
 - (id).cxx_construct;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (id)librariesInUse;
+- (id)assetsInUse;
 - (void)prepareAndPostNotification:(id)arg1;
 - (void)prerollRenderFile:(id)arg1;
 - (int)renderAUOL:(struct AudioComponentDescription)arg1 WithPreset:(void *)arg2 andDuration:(CDStruct_1b6d18a9)arg3 onTask:(id)arg4;

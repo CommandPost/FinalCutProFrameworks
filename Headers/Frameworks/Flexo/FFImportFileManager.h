@@ -19,9 +19,11 @@
 + (id)sharedInstance;
 @property(retain) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
 @property(retain) NSDictionary *postponedFileImportInfo; // @synthesize postponedFileImportInfo=_postponedFileImportInfo;
+- (void)cancelValidation;
+- (void)_selectInitiallyCreatedProject:(id)arg1;
 - (void)processFiles:(id)arg1;
 - (void)rejectedSheetDidEnd:(id)arg1;
-- (id)importFiles:(id)arg1 window:(id)arg2 isValid:(char *)arg3;
+- (id)importFiles:(id)arg1 keywords:(id)arg2 window:(id)arg3 isValid:(char *)arg4;
 - (void)dealloc;
 - (id)init;
 

@@ -49,14 +49,6 @@
     PCVector2_79efa81a _botButtonArrow[3];
     PCRect_b601f9f3 _paragraphBounds;
     PCRect_b601f9f3 _imageBounds;
-    struct PCPtr<POMultiResTexture> _scrollBarContTop;
-    struct PCPtr<POMultiResTexture> _scrollBarContMiddle;
-    struct PCPtr<POMultiResTexture> _scrollBarContBottom;
-    struct PCPtr<POMultiResTexture> _scrollBarTop;
-    struct PCPtr<POMultiResTexture> _scrollBarMiddle;
-    struct PCPtr<POMultiResTexture> _scrollBarBottom;
-    struct PCPtr<POMultiResTexture> _arrowButtonTop;
-    struct PCPtr<POMultiResTexture> _arrowButtonBottom;
 }
 
 - (id).cxx_construct;
@@ -76,7 +68,6 @@
 - (void)mouseDown:(id)arg1;
 - (void)setText:(struct TXTextLayout *)arg1;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)initTextures;
 
 @end
 

@@ -6,23 +6,24 @@
 
 #import "NSObject.h"
 
+#import "FFBackgroundTaskTarget.h"
 #import "FaceRecognitionManagerDetectionDelegate.h"
 
-@class FFAnchoredObject, FFFaceDetectionInfo;
+@class FFAnchoredObject, FFBackgroundTask, FFFaceDetectionInfo;
 
 __attribute__((visibility("hidden")))
-@interface FFFaceDetectionOnDemand : NSObject <FaceRecognitionManagerDetectionDelegate>
+@interface FFFaceDetectionOnDemand : NSObject <FaceRecognitionManagerDetectionDelegate, FFBackgroundTaskTarget>
 {
     FFFaceDetectionInfo *_faceDetectionInfo;
     FFAnchoredObject *_anchoredObj;
     CDStruct_1b6d18a9 _time;
-    double _totalMs;
+    BOOL _isReady;
+    FFBackgroundTask *_bgTask;
+    struct CGColorSpace *_colorSpace;
+    BOOL _verbose;
 }
 
-+ (id)faceInfoDictForPixelBuffer:(id)arg1 forAnchoredObject:(id)arg2 withColorSpace:(struct CGColorSpace *)arg3 atTime:(CDStruct_1b6d18a9)arg4 verbose:(BOOL)arg5;
-+ (void)releaseSharedInstance;
-+ (id)sharedInstance;
-@property(nonatomic) double totalMs; // @synthesize totalMs=_totalMs;
+@property(nonatomic) BOOL isReady; // @synthesize isReady=_isReady;
 @property(nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 @property(retain, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObj;
 @property(retain, nonatomic) FFFaceDetectionInfo *faceDetectionInfo; // @synthesize faceDetectionInfo=_faceDetectionInfo;
@@ -34,6 +35,14 @@ __attribute__((visibility("hidden")))
 - (void)releaseCGImage:(struct CGImage *)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
 - (struct CGImage *)getCGImageOfPhoto:(void *)arg1 userInfo:(void **)arg2 maxDimension:(double)arg3 sender:(id)arg4 context:(void *)arg5;
 - (BOOL)writeDetectionAndThumbnailInfoOfFaces:(id)arg1 ofPhoto:(void *)arg2 withUserInfo:(void *)arg3 sender:(id)arg4 context:(void *)arg5;
+- (void)canceledTask:(id)arg1;
+- (id)librariesInUse;
+- (id)assetsInUse;
+- (id)faceInfoDictAtTime:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 verbose:(BOOL)arg3;
+- (void)faceDetectionOnBackgroundThreadDone;
+- (void)faceDetectionOnBackgroundThread:(id)arg1 onTask:(id)arg2;
+- (void)runFaceDetectionAtTime:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 verbose:(BOOL)arg3;
+- (id)faceInfoDictForPixelBuffer:(id)arg1 forAnchoredObject:(id)arg2 withColorSpace:(struct CGColorSpace *)arg3 atTime:(CDStruct_1b6d18a9)arg4 verbose:(BOOL)arg5;
 - (void)dealloc;
 - (id)init;
 

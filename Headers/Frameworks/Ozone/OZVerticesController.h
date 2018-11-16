@@ -15,8 +15,8 @@
     NSMutableArray *_verticesController;
 }
 
-- (id)addMainController:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (id)addVertexController:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
+- (id)allocMainController:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)newVertexController:(struct OZChannelBase *)arg1 index:(unsigned int)arg2 context:(id)arg3;
 - (unsigned int)getNumberOfVertices:(struct OZChannelBase *)arg1;
 - (void)notify:(unsigned int)arg1;
 - (BOOL)isSelected;

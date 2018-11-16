@@ -14,12 +14,6 @@
     CALayer *_backgroundLayer;
 }
 
-- (void)replaceSublayer:(id)arg1 with:(id)arg2;
-- (void)insertSublayer:(id)arg1 above:(id)arg2;
-- (void)insertSublayer:(id)arg1 below:(id)arg2;
-- (void)addSublayer:(id)arg1;
-- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
-- (void)setDelegate:(id)arg1;
 - (void)setItemType:(int)arg1 andContainmentMask:(int)arg2;
 - (id)init;
 

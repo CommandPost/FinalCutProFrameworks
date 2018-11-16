@@ -6,11 +6,11 @@
 
 #import <MIO/MIODALControl.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray;
 
 @interface MIODALSelectorControl : MIODALControl
 {
-    NSMutableArray *mValues;
+    NSArray *mValues;
     BOOL mSettingValue;
 }
 

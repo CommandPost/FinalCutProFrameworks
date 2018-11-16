@@ -41,10 +41,8 @@ __attribute__((visibility("hidden")))
 @property(retain) MIORADBufferManager *bufferManager; // @synthesize bufferManager=_bufferManager;
 @property(retain) NSMutableArray *audioReaders; // @synthesize audioReaders=_audioReaders;
 @property(retain) MIORADMediaReader *videoReader; // @synthesize videoReader=_videoReader;
+- (id).cxx_construct;
 - (int)getNextMedia:(struct MIORADPlugInMediaSpecifier *)arg1 inRefCon:(void *)arg2;
-- (CDStruct_1b6d18a9)mediaTimeFromEditTime:(CDStruct_1b6d18a9)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2;
-- (CDStruct_1b6d18a9)mediaTimeFromEditTime_EditCursor:(CDStruct_1b6d18a9)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2;
-- (CDStruct_1b6d18a9)mediaTimeFromEditTime_TrackEditWithIndex:(CDStruct_1b6d18a9)arg1 trackReader:(struct OpaqueFigTrackReader *)arg2;
 - (id)firstAudioReader;
 - (int)getNextMedia_Deprecated:(struct MIORADPlugInMediaSpecifier_Deprecated *)arg1 inRefCon:(void *)arg2;
 - (int)setKeepMediaVideoRate:(BOOL)arg1 inRefCon:(void *)arg2;
@@ -57,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (int)start:(void *)arg1;
 - (int)teardown:(void *)arg1;
 - (int)initialize:(void *)arg1;
-@property(readonly) BOOL hasValidTimecode;
 - (void)dealloc;
 - (id)init;
 - (id)initWithClip:(id)arg1;

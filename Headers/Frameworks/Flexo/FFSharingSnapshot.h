@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharingSnapshotWithSequence:(id)arg1;
++ (void)closeTemporaryDocument:(id)arg1;
 @property(readonly) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
 - (void)dealloc;
 - (id)initWithSequence:(id)arg1;

@@ -6,9 +6,11 @@
 
 #import "NSObject.h"
 
+#import "FFBackgroundTaskTarget.h"
+
 @class FFAnchoredSequence, FigTimeRangeAndObject, NSMutableArray, NSSet;
 
-@interface FFAutoStackIngestTask : NSObject
+@interface FFAutoStackIngestTask : NSObject <FFBackgroundTaskTarget>
 {
     NSSet *_rangesAndObjectsToSynchronize;
     FigTimeRangeAndObject *_referenceRangeAndObject;
@@ -41,14 +43,16 @@
 + (CDStruct_1b6d18a9)_getMarkerFigTimePos:(id)arg1;
 + (id)_getMarkersInRangeAndObject:(id)arg1;
 + (BOOL)checkHasAudio:(id)arg1;
-- (id)projectsInUse;
-- (id)assetRefsInUse;
+- (id)librariesInUse;
+- (id)assetsChanging;
+- (id)assetsInUse;
 - (void)synchronizeRnO:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3 withAudio:(BOOL)arg4;
 - (void)_synchronizeWithAudio:(id)arg1 onTask:(id)arg2;
 - (void)_setAnchoredPairFromDictionary:(id)arg1;
+- (void)_sequenceInsertGapFromDictionary:(id)arg1;
 - (void)_adjustOffsetsOfItems:(id)arg1 withOffsets:(id)arg2;
 - (void)mergedClipTypeUpdate:(id)arg1;
-- (void)postNotificationToRefresh;
+- (void)postNotificationToRefreshSynchronizedClip;
 - (void)canceledTask:(id)arg1;
 - (void)dealloc;
 - (id)initWithRangesAndObjects:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3;

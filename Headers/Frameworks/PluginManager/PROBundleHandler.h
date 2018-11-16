@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     id <PROBundleHandlerDelegate> delegate;
     id <PROVersionedAPIAccess> apiManager;
     PROPlugInFirewall *apiAccessPoint;
+    id <PKPlugIn> pluginKitPlug;
 }
 
 - (BOOL)plugInShouldLoadPlugInInstanceForTheFirstTime:(id)arg1;
@@ -42,6 +43,8 @@ __attribute__((visibility("hidden")))
 - (id)apiManagerForPlugInInstances;
 - (id)principalClassInstance;
 - (BOOL)isPrincipalClassAvailable;
+- (id)pluginKitPlug;
+- (void)setPluginKitPlug:(id)arg1;
 - (id)plugIns;
 - (void)setAPIManager:(id)arg1;
 - (id)apiManager;

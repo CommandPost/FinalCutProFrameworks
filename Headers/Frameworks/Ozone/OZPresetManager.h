@@ -27,7 +27,7 @@
 - (int)indexOfDefaultPreset;
 - (id)defaultPreset;
 - (BOOL)deletePresetAtIndex:(int)arg1;
-- (id)duplicatePresetAtIndex:(int)arg1;
+- (id)copyPresetAtIndex:(int)arg1;
 - (BOOL)rename:(id)arg1 to:(id)arg2 errorString:(id *)arg3;
 - (id)newPreset;
 - (id)userPresetPath;
