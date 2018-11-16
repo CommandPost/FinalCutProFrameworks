@@ -74,6 +74,7 @@ __attribute__((visibility("hidden")))
     BOOL _activeToolSkims;
     BOOL _disableSnapping;
     BOOL _deferAnchoredItemSnapUpdate;
+    BOOL _deferRangeInvalidations;
     int _clipLabelSize;
     BOOL _analysis;
     CDStruct_1b6d18a9 _oppositeSelectionTime;
@@ -133,6 +134,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)_snapPoint:(struct CGPoint)arg1 withRange:(id)arg2;
 - (CDStruct_1b6d18a9)_snapTime:(CDStruct_1b6d18a9)arg1 withRange:(id)arg2;
 - (id)_allSnapTimesForRange:(id)arg1;
+- (void)_updateAnchoredItemSnapTimesForClip:(id)arg1;
 - (void)_updateAnchoredItemSnapTimes;
 - (void)_updatePlayheadSnapTimes;
 - (void)_updateRangeSelectionSnapTimes;
@@ -338,6 +340,7 @@ __attribute__((visibility("hidden")))
 - (void)setDisableSkimming:(BOOL)arg1;
 - (BOOL)disableSkimming;
 @property(readonly, nonatomic) FFPersistentModule *persistentModule;
+@property(nonatomic) BOOL deferRangeInvalidations;
 
 @end
 

@@ -140,8 +140,13 @@
 - (void)windowDidResignKey:(id)arg1;
 - (void)layoutDidChange:(id)arg1;
 - (void)firstResponderChanged:(id)arg1;
-- (void)shareDestinationPicker:(id)arg1;
 - (void)selectAudioPercentage:(id)arg1;
+- (void)setClipAppearanceAudioBigger:(id)arg1;
+- (void)setClipAppearanceAudioSmaller:(id)arg1;
+- (void)setClipAppearanceCommand:(id)arg1;
+- (int)clipAppearance;
+- (void)shareDestinationPicker:(id)arg1;
+- (void)setAudioPercentage:(int)arg1;
 - (void)bezelHUDDidResignKey:(id)arg1;
 - (void)reenableZoomBezel;
 - (void)popUpClipAttributes:(id)arg1;

@@ -241,6 +241,7 @@
 - (BOOL)_isAudioOnlyCollection:(BOOL)arg1;
 - (int)anchoredObjectUIType;
 - (BOOL)isCollection;
+- (BOOL)supportsLogProcessing;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
 - (BOOL)removeObjectFromContainedItems:(id)arg1;

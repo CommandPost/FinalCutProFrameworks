@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (int)drawFieldsInterlaced;
 - (void)updateObservedValuesForContext:(void *)arg1;
 - (void)_updateRenderBackground:(id)arg1;
+- (BOOL)isLayerBacked;
 - (BOOL)isRunning;
 - (void)_queuedStop;
 - (void)stop;
