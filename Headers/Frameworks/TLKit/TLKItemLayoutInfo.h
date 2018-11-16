@@ -8,11 +8,12 @@
 
 #import "NSCopying.h"
 
-@class ERLCalculatedAttribute, NSArray, NSMutableArray, NSString, TLKAnchorLayer, TLKContainerInfo, TLKItemComponentFragment, TLKItemComponentInfo, TLKItemComponentWebbingLayer;
+@class ERLCalculatedAttribute, NSArray, NSMutableArray, NSMutableSet, NSSet, NSString, TLKAnchorLayer, TLKContainerInfo, TLKItemComponentFragment, TLKItemComponentInfo, TLKItemComponentWebbingLayer;
 
 @interface TLKItemLayoutInfo : ERLRelationalObject <NSCopying>
 {
     NSMutableArray *_itemComponentRecords;
+    NSMutableSet *_anchoredItems;
     struct {
         unsigned int isContainerItem:1;
         unsigned int isDraggedItem:1;
@@ -39,13 +40,13 @@
 + (id)keyPathsForValuesAffectingSecondaryItemComponentRecords;
 + (id)keyPathsForValuesAffectingPrimaryItemComponentRecord;
 @property(readonly, nonatomic) ERLCalculatedAttribute *anchorLocationAttribute; // @synthesize anchorLocationAttribute=_anchorLocationAttribute;
-@property(retain, nonatomic) TLKContainerInfo *enclosingContainerInfo; // @synthesize enclosingContainerInfo=_enclosingContainerInfo;
+@property(nonatomic) TLKContainerInfo *enclosingContainerInfo; // @synthesize enclosingContainerInfo=_enclosingContainerInfo;
 @property(retain, nonatomic) TLKItemComponentWebbingLayer *componentWebbingLayer; // @synthesize componentWebbingLayer=_componentWebbingLayer;
 @property(retain, nonatomic) TLKAnchorLayer *anchorLayer; // @synthesize anchorLayer=_anchorLayer;
 @property(nonatomic) BOOL anchorFollowsItemLayer; // @synthesize anchorFollowsItemLayer=_anchorFollowsItemLayer;
 @property(nonatomic) double anchorLocation; // @synthesize anchorLocation=_anchorLocation;
 @property(nonatomic) CDStruct_1b6d18a9 relativeAnchorTime; // @synthesize relativeAnchorTime=_relativeAnchorTime;
-@property(retain, nonatomic) TLKItemLayoutInfo *anchoredToItem; // @synthesize anchoredToItem=_anchoredToItem;
+@property(nonatomic) TLKItemLayoutInfo *anchoredToItem; // @synthesize anchoredToItem=_anchoredToItem;
 @property(nonatomic) int itemVisibility; // @synthesize itemVisibility=_itemVisibility;
 @property(nonatomic) int itemType; // @synthesize itemType=_itemType;
 @property(readonly, nonatomic) int containmentTypeMask; // @synthesize containmentTypeMask=_containmentTypeMask;
@@ -55,6 +56,9 @@
 @property(readonly, nonatomic) TLKItemComponentFragment *anchorToItemComponentFragment;
 @property(readonly, nonatomic) TLKItemComponentFragment *anchorFromItemComponentFragment;
 @property(readonly, nonatomic) BOOL isAnchoredItem;
+- (void)removeAnchoredItemsObject:(id)arg1;
+- (void)addAnchoredItemsObject:(id)arg1;
+@property(copy, nonatomic) NSSet *anchoredItems;
 - (id)allLayers;
 - (id)itemLayers;
 - (struct _TLKRange)locationRange;
@@ -74,6 +78,9 @@
 @property(nonatomic) BOOL isContainerItem;
 @property(nonatomic) BOOL isAboveSpine;
 @property(readonly, nonatomic) NSString *itemTypeName;
+- (void)_updateItemComponentIndexes;
+- (void)removeItemComponentRecordsObject:(id)arg1;
+- (void)addItemComponentRecordsObject:(id)arg1;
 @property(copy, nonatomic) NSArray *itemComponentRecords;
 @property(nonatomic) BOOL markLayersForRemoval;
 @property unsigned long long nestingLevel;
@@ -82,7 +89,7 @@
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithItem:(id)arg1;
+- (id)initWithRepresentedObject:(id)arg1;
 - (id)init;
 
 @end

@@ -106,7 +106,10 @@ __attribute__((visibility("hidden")))
 - (void)addEffectMask:(id)arg1 forEffect:(id)arg2 toObject:(id)arg3;
 - (void)addFilterNode:(id)arg1 toObject:(id)arg2;
 - (void)addFilterNode:(id)arg1 video:(id)arg2 audio:(id)arg3 toObject:(id)arg4;
+- (void)addCaptionNode:(id)arg1 toObject:(id)arg2;
+- (id)newCaptionBlockFromTextNode:(id)arg1 forObject:(id)arg2;
 - (void)addTitleNode:(id)arg1 toObject:(id)arg2;
+- (id)newAttributedStringFromTextStyleNodes:(id)arg1;
 - (void)registerTextStylesInNode:(id)arg1;
 - (void)registerTextStyle:(id)arg1;
 - (id)newTextStyleForElement:(id)arg1;

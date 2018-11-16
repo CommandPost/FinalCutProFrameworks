@@ -51,7 +51,6 @@
 - (BOOL)reviewDuckingEnabledClips:(id *)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)readVideoFormat:(id *)arg1;
 - (BOOL)ingestProjectArchive:(id)arg1 error:(id *)arg2 progress:(CDUnknownBlockType)arg3;
-- (BOOL)isOSVersion10_13Later;
 - (id)_parseArchiveEntry:(id)arg1 error:(id *)arg2;
 - (void)_removeCreatedTempDirectory;
 - (BOOL)_createAndSetTempDirectory;

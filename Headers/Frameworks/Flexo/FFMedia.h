@@ -26,6 +26,10 @@
 + (id)newAudioSourcePropertiesMapForProvider:(id)arg1;
 + (void)sortSequences:(id)arg1 usingOptions:(unsigned long long)arg2;
 + (void)sortMedia:(id)arg1 usingOptions:(unsigned long long)arg2;
+- (id)subtitlesInRange:(CDStruct_e83c9415)arg1;
+- (id)closedCaptionsInRange:(CDStruct_e83c9415)arg1;
+- (BOOL)hasSubtitles;
+- (BOOL)hasClosedCaptions;
 - (id)metadataNameForAudioChannel:(unsigned long long)arg1 withSourceKey:(id)arg2;
 - (void)setLastMarkerNumber:(unsigned long long)arg1;
 - (unsigned long long)lastMarkerNumber;

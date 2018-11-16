@@ -41,6 +41,8 @@ __attribute__((visibility("hidden")))
     BOOL _needsReset;
     BOOL _fileIsGrowing;
     CDStruct_79c71658 _decodedFrameDimensions;
+    _Bool _cropValuesInitialized;
+    float _cropValues[4];
 }
 
 @property BOOL prefetchHasBegun; // @synthesize prefetchHasBegun=_prefetchHasBegun;
@@ -58,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (void *)videoDecoder;
 - (void)setVideoDecoder:(void *)arg1;
 - (CDUnknownFunctionPointerType)decodeCallback;
+- (void)copyCropValues:(float *)arg1;
+- (void)setCropValues:(float *)arg1;
 - (int)diskWaitTimeInSeconds;
 - (CDStruct_1b6d18a9)outputPTS;
 - (_Bool)invertAlpha;

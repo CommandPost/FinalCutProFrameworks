@@ -21,6 +21,7 @@
     BOOL _shouldAddVolumesSynchronously;
 }
 
++ (void)flushRADManager;
 + (void)releaseSharedRADManager;
 + (id)sharedRADManager;
 + (void)initialize;

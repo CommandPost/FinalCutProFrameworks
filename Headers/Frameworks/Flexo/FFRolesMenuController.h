@@ -32,6 +32,7 @@
 - (int)_tagForRole:(id)arg1;
 - (void)menuNeedsUpdate:(id)arg1;
 - (void)_setupMenu;
+- (void)_libraryClosed:(id)arg1;
 - (void)dealloc;
 - (id)initWithRolesMenuDelegate:(id)arg1 menu:(id)arg2 withOptions:(unsigned long long)arg3;
 - (id)initWithRolesMenuDelegate:(id)arg1 withOptions:(unsigned long long)arg2;

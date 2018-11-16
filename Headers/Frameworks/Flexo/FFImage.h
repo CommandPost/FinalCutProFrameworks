@@ -61,6 +61,8 @@
 - (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 flattenOptions:(const CDStruct_302d8f15 *)arg4 workingSpace:(int)arg5;
 - (id)createTransformedImage:(id)arg1;
 - (id)createScaledImageByX:(double)arg1 Y:(double)arg2;
+- (void)setImageRepBindingInfo:(id)arg1;
+- (id)imageRepBindingInfo;
 - (struct CGColorSpace *)colorSpace;
 - (struct CGRect)squarePixelRect;
 - (id)pixelTransform;
@@ -109,6 +111,8 @@
 - (id)initWithFFPixelBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 disable422Filtering:(BOOL)arg5;
 - (struct __CVBuffer *)newCVPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 flipped:(BOOL)arg5;
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 pixelFormat:(id)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 field:(unsigned int)arg5;
+- (id)initWithCVImageBufferEvenIfOnlyNCLCTags:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5 disable422Filtering:(BOOL)arg6;
+- (id)initWithCVImageBufferEvenIfOnlyNCLCTags:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5;
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5 disable422Filtering:(BOOL)arg6;
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5;
 - (id)initWithFFTextureBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;

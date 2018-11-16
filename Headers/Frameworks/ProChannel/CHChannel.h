@@ -77,6 +77,7 @@
 - (void)setCurveExtrapolation:(unsigned int)arg1 direction:(unsigned int)arg2;
 - (void)setCurveInterpolation:(unsigned int)arg1;
 - (unsigned int)curveInterpolation;
+- (void)offsetKeyframesInTime:(CDStruct_198678f7)arg1;
 - (void)retimeKeyframesWithScale:(double)arg1;
 - (BOOL)moveKeyframeAtTime:(CDStruct_198678f7)arg1 toTime:(CDStruct_198678f7)arg2;
 - (BOOL)removeKeyframeAtTime:(CDStruct_198678f7)arg1;

@@ -31,11 +31,17 @@ __attribute__((visibility("hidden")))
 - (void)controller:(id)arg1 willSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
 - (void)controller:(id)arg1 didChangeChannel:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 willChangeChannel:(struct OZChannelBase *)arg2;
+- (void)_libraryClosed:(id)arg1;
+- (void)_removeLibraryCloseObserving;
+- (void)_addLibraryCloseObserving;
+- (void)_removeObservingForObservedSurroundPanners;
 - (void)_removeObservingForSurroundPanner:(id)arg1;
 - (void)_addObservingForSurroundPanner:(id)arg1;
 - (void)_updatePanModeMenu;
 - (void)selectPanMode:(id)arg1;
 - (void)update;
+- (void)_teardown;
+- (void)willTeardownUI;
 - (void)didBuildUI;
 - (void)_setupPanModePopUp;
 - (id)_newPanAmountControllerForChannels:(vector_b71873ec *)arg1;

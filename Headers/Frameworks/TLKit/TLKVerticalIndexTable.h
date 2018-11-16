@@ -38,7 +38,7 @@
 - (BOOL)removeLayoutGraphNode:(id)arg1;
 - (BOOL)_removeLayoutGraphNode:(id)arg1 forVerticalIndexTableKey:(id)arg2;
 - (void)updateLayoutGraphNodeObjects:(id)arg1;
-- (BOOL)updateLayoutGraphNode:(id)arg1;
+- (void)updateLayoutGraphNode:(id)arg1;
 - (void)addLayoutGraphNodeObjects:(id)arg1;
 - (void)addLayoutGraphNode:(id)arg1;
 - (void)removeObjectsForVerticalIndexTableKey:(id)arg1;

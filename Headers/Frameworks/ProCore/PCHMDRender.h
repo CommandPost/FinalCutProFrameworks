@@ -36,6 +36,7 @@
     struct PCTimer _timer;
     HMDFramerate *_hmdFramerate;
     struct PCMutex _hmdStateMutex;
+    int _hmdThreadInitializationErrorDetail;
 }
 
 + (BOOL)hmdIsPresent;
@@ -44,6 +45,7 @@
 - (void).cxx_destruct;
 - (unsigned int)hmdHeight;
 - (unsigned int)hmdWidth;
+- (int)hmdInitializationError;
 - (BOOL)hmdEncounteredInitializationError;
 - (BOOL)hmdIsInitialized;
 - (void)setHMDIsActive:(BOOL)arg1;

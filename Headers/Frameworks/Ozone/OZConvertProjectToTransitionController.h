@@ -23,8 +23,8 @@
 - (BOOL)selectedTransitionBIsNewPlaceholder;
 - (unsigned int)selectedTransitionANodeID;
 - (BOOL)selectedTransitionAIsNewPlaceholder;
-- (id)localizedSummaryFormatString;
 - (id)defaultNibName;
+- (id)initWithDocument:(id)arg1;
 
 @end
 

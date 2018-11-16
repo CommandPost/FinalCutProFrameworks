@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)updateChildNodes;
 - (id)_categoryArrayForEffectType:(id)arg1;
+- (void)_installProExternalNodes;
 - (void)_installProContentNodes;
 - (void)_installProMediaNodes;
 - (void)_installProLibraryNodes;

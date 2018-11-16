@@ -6,21 +6,22 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSPasteboardReading.h"
 #import "NSPasteboardWriting.h"
+#import "NSSecureCoding.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _FFInspectorPasteboardItem : NSObject <NSCoding, NSPasteboardWriting, NSPasteboardReading>
+@interface _FFInspectorPasteboardItem : NSObject <NSSecureCoding, NSPasteboardWriting, NSPasteboardReading>
 {
-    id _representedObject;
+    NSString *_representedObject;
 }
 
 + (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
 + (id)readableTypesForPasteboard:(id)arg1;
-@property(retain, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
++ (BOOL)supportsSecureCoding;
+@property(retain, nonatomic) NSString *representedObject; // @synthesize representedObject=_representedObject;
 - (id)pasteboardPropertyListForType:(id)arg1;
 - (id)writableTypesForPasteboard:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

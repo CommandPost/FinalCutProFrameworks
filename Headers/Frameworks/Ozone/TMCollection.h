@@ -8,11 +8,12 @@
 
 #import "NSPasteboardReading.h"
 #import "NSPasteboardWriting.h"
+#import "NSSecureCoding.h"
 #import "TMBrowserOutlineItem.h"
 
 @class NSDate, NSImage, NSMutableArray, NSMutableDictionary, NSString, TMCollectionHeader;
 
-@interface TMCollection : NSObject <TMBrowserOutlineItem, NSPasteboardWriting, NSPasteboardReading>
+@interface TMCollection : NSObject <TMBrowserOutlineItem, NSSecureCoding, NSPasteboardWriting, NSPasteboardReading>
 {
     NSString *_path;
     NSString *_resolvedPath;
@@ -31,6 +32,8 @@
 
 + (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
 + (id)readableTypesForPasteboard:(id)arg1;
++ (BOOL)supportsSecureCoding;
++ (id)collectionWithPath:(id)arg1 resolvedPath:(id)arg2 parent:(id)arg3;
 + (BOOL)shouldSuppressNotifications;
 + (void)suppressNotifications:(BOOL)arg1;
 @property(retain, nonatomic) TMCollectionHeader *parentCollection; // @synthesize parentCollection=_parentCollection;
@@ -73,6 +76,8 @@
 - (id)userPathFromSystemPath;
 - (id)resolvedPath;
 - (id)path;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1 resolvedPath:(id)arg2 parent:(id)arg3;

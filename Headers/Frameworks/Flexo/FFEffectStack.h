@@ -11,12 +11,10 @@
 #import "FFMD5Protocol.h"
 #import "NSCoding.h"
 #import "NSCopying.h"
-#import "NSPasteboardReading.h"
-#import "NSPasteboardWriting.h"
 
 @class FFAnchoredObject, FFCHObservableFolder, FFCHRootChannel, FFEffect, FFMD5AndOffset, NSArray, NSMutableArray, NSRecursiveLock, NSString;
 
-@interface FFEffectStack : FFBaseDSObject <NSCoding, NSCopying, FFCHChannelDelegate, FFDataModelProtocol, FFMD5Protocol, NSPasteboardWriting, NSPasteboardReading>
+@interface FFEffectStack : FFBaseDSObject <NSCoding, NSCopying, FFCHChannelDelegate, FFDataModelProtocol, FFMD5Protocol>
 {
     NSMutableArray *_effectInstances;
     NSMutableArray *_intrinsicEffectInstances;
@@ -46,8 +44,8 @@
     int _addEffectsNestCount;
 }
 
-+ (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
-+ (id)readableTypesForPasteboard:(id)arg1;
++ (BOOL)effectIsNoiseReduction:(id)arg1;
++ (BOOL)subEffectIsNoiseReduction:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)DSObjectCanProxy;
 + (id)_intrinsicEffectIDsAfterUserEffects;
@@ -93,8 +91,6 @@
 @property(retain, nonatomic) NSArray *legacyPreservedOrderIntrinsicEffectIDs; // @synthesize legacyPreservedOrderIntrinsicEffectIDs=_legacyPreservedOrderIntrinsicEffectIDs;
 @property(readonly, retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 @property(retain, nonatomic) NSString *filterType; // @synthesize filterType=_filterType;
-- (id)pasteboardPropertyListForType:(id)arg1;
-- (id)writableTypesForPasteboard:(id)arg1;
 - (void)colorPropertyChannelChanged:(id)arg1;
 - (void)audioPropertyChannelChanged:(id)arg1;
 - (void)setAudioDuckingChannelData:(id)arg1;
@@ -132,6 +128,7 @@
 - (BOOL)isDistortEffectNOP;
 - (id)distortEffect;
 - (void)computeConformScaleX:(double *)arg1 scaleY:(double *)arg2 frameBounds:(struct CGRect *)arg3 squareInputBounds:(struct CGRect *)arg4;
+- (void)computeConformScaleX:(double *)arg1 scaleY:(double *)arg2 frameBounds:(struct CGRect *)arg3 squareInputBounds:(struct CGRect *)arg4 scaleType:(int)arg5;
 - (BOOL)isInCropOrKenBurnsCropMode;
 - (id)effectPickerEffect:(BOOL)arg1;
 - (BOOL)hasTrimEffect;
@@ -164,6 +161,8 @@
 - (BOOL)operationAddEffect:(id)arg1 ranges:(id)arg2 error:(id *)arg3;
 - (BOOL)operationInsertEffectID:(id)arg1 atIndex:(unsigned long long)arg2 ranges:(id)arg3 error:(id *)arg4;
 - (BOOL)operationInsertEffect:(id)arg1 atIndex:(unsigned long long)arg2 ranges:(id)arg3 error:(id *)arg4;
+- (BOOL)allowEffectOnlyIfNoOtherNoiseReduction:(id)arg1;
+- (BOOL)effectStackContainsNoiseReduction;
 - (void)endEffectsChanges;
 - (void)beginEffectsChanges;
 - (void)postEffectsChangedNotification;
@@ -436,12 +435,6 @@
 - (BOOL)hasColorTabEffect;
 - (BOOL)canGoToPreviousNextColorEffect:(BOOL)arg1;
 - (id)newColorEffectsInStack:(id *)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

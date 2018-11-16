@@ -6,13 +6,18 @@
 
 #import <Flexo/FFAudioPreprocessor.h>
 
+@class FFAudioUnitAnalyzingEffect;
+
 __attribute__((visibility("hidden")))
 @interface FFAudioPreprocessorOnePass : FFAudioPreprocessor
 {
+    FFAudioUnitAnalyzingEffect *_preprocessorEffect;
 }
 
+- (void)teardownEffects;
 - (void)configureEffects:(id)arg1;
 - (void)process:(id)arg1 onTask:(id)arg2;
+- (void)dealloc;
 
 @end
 

@@ -36,12 +36,14 @@
     NSDictionary *_metadata;
     NSNumber *_cKExportOption;
     NSString *_ckColorSpaceSetting;
+    NSArray *_captionSets;
 }
 
 + (id)exporterForMedia:(id)arg1 toFile:(id)arg2 withFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5;
 + (id)exporterForSequence:(id)arg1 toFile:(id)arg2 flags:(unsigned int)arg3 application:(id)arg4;
 @property(readonly) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property(retain) NSArray *tracks; // @synthesize tracks=_tracks;
+@property(retain) NSArray *captionSets; // @synthesize captionSets=_captionSets;
 @property(retain) NSString *CKColorSpaceSetting; // @synthesize CKColorSpaceSetting=_ckColorSpaceSetting;
 @property(retain) NSNumber *cKExportOption; // @synthesize cKExportOption=_cKExportOption;
 @property(retain) NSDictionary *metadata; // @synthesize metadata=_metadata;

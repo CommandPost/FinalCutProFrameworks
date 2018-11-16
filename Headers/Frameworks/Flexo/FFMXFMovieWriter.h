@@ -72,7 +72,7 @@ __attribute__((visibility("hidden")))
 - (int)writeTimecode:(struct opaqueCMFormatDescription *)arg1 sampleValue:(unsigned int)arg2;
 - (void)willWriteTimecode;
 - (int)writeAudio:(struct opaqueCMSampleBuffer *)arg1 audioTrackIndex:(unsigned int)arg2;
-- (int)createAudioTracks:(unsigned int)arg1 chunkSize:(unsigned int)arg2 withCompressionPreset:(int)arg3;
+- (int)createAudioTracks:(unsigned int)arg1 trackMetadata:(id)arg2 chunkSize:(unsigned int)arg3 withCompressionPreset:(int)arg4;
 - (int)mergeVideoWithAudio;
 - (int)writeVideo:(struct opaqueCMSampleBuffer *)arg1;
 - (int)createVideoTrack:(struct opaqueCMFormatDescription *)arg1 timescale:(int)arg2;

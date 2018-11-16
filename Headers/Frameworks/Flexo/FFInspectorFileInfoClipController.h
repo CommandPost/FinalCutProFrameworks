@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
     FFInspectorFileInfoTile *_infoTile;
 }
 
+- (void)clearAllItems;
 - (void)updateWithItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
 - (void)_addTilesForItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
+- (void)_clearFileInfoContainerSubviews;
 @property NSView *fileInfoContainerView; // @dynamic fileInfoContainerView;
 - (void)dealloc;
 

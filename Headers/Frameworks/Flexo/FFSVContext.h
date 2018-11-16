@@ -35,15 +35,17 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)compareTo:(id)arg1 withCompareFlags:(unsigned int)arg2;
 - (struct CGRect)pixelSpaceBounds;
+- (BOOL)drawingInsideMultiAngleGrid;
 - (BOOL)allowCustomPreviewMode;
 - (BOOL)forLiveEdit;
 - (BOOL)pairFields;
 - (BOOL)effectsBestQuality;
 - (BOOL)disable422Filtering;
-- (BOOL)drawAllAngles;
+- (BOOL)drawAllAnglesTopLevel;
 - (BOOL)draftTextMode;
 - (int)locationHint;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyForOtherField;
 - (id)copyWithAllowCustomPreviewMode:(BOOL)arg1;
 - (id)copyWithUpdatedWorkingSpace:(int)arg1;
 - (id)copyWithCGProviderCacheNodePolicy:(int)arg1;

@@ -149,6 +149,7 @@
 + (id)_newEmptySrcForProps:(id)arg1;
 + (void)notifyAppWillTerminate;
 + (void)waitForPendingShutdownsToComplete;
++ (void)_internalwaitForPendingShutdownsToComplete;
 + (void)callbackWhenPendingShutdownsComplete:(CDUnknownBlockType)arg1;
 + (void)teardown;
 + (BOOL)suspendBackgroundOperationsDuringPlayback;
@@ -200,7 +201,7 @@
 - (struct __CFDictionary *)copyPixelTransforms:(id)arg1 forField:(int)arg2;
 - (void)setAbortPreroll:(BOOL)arg1;
 - (void)streamAudioFlagsChangedForContext:(id)arg1;
-- (void)videoRolesChangedForContext:(id)arg1;
+- (void)avRolesChangedForContext:(id)arg1;
 - (void)videoShowObjectsOptionsChangedForContext:(id)arg1;
 - (void)videoShowObjectsChangedForContext:(id)arg1;
 - (void)videoTemporalQualityChangedForContext:(id)arg1;
@@ -314,6 +315,8 @@
 - (void)_playCompletedWithDrops:(id)arg1;
 - (void)_generateOverlayTextures:(id)arg1 pmrMsg:(struct __CFString *)arg2;
 - (void)_flushInternalDueToContentChange:(BOOL)arg1 contextChange:(BOOL)arg2 enableLiveEditsOptimization:(BOOL)arg3 trimmerCase:(BOOL)arg4;
+- (void)_renScrubPrerollDelayBeforeEnqueueingFrame:(id)arg1;
+- (_Bool)_internalWaitForFlags:(id)arg1 flagsToWaitFor:(unsigned int)arg2 bailTime:(CDStruct_1b6d18a9)arg3 label:(id)arg4;
 - (void)inhibitLoopingUntilStop;
 - (void)toggleLoopingPostroll;
 - (void)toggleLoopingPreroll;

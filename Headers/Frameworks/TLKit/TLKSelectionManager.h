@@ -41,6 +41,7 @@
 - (BOOL)isDelegateNotificationEnabled;
 - (void)enableDelegateNotification;
 - (void)disableDelegateNotification;
+- (void)clearSelectionHistory;
 - (unsigned long long)selectionHistoryLevels;
 - (void)setSelectionHistoryLevels:(unsigned long long)arg1;
 - (void)redoSelection:(id)arg1;

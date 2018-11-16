@@ -42,6 +42,7 @@
 @property(nonatomic) LKTextField *timecodeTextField; // @synthesize timecodeTextField=_timecodeTextField;
 @property(nonatomic) BOOL canDoNumericEntry; // @synthesize canDoNumericEntry=_canDoNumericEntry;
 @property(nonatomic) BOOL useExternalControlMode; // @synthesize useExternalControlMode=_useExternalControlMode;
+- (void)_libraryClosed:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)updatePlayheadLabel;
 - (void)timeRateChangedForContext:(id)arg1;
@@ -71,6 +72,8 @@
 - (void)awakeFromNib;
 - (void)viewDidLoad;
 - (void)dealloc;
+- (void)_unregisterSkimmableObservers;
+- (void)_registerSkimmableObservers;
 - (void)_unregisterObservers;
 - (void)_registerObservers;
 

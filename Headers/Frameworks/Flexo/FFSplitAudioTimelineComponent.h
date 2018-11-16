@@ -14,7 +14,7 @@
 }
 
 + (BOOL)instancesRespondToSelector:(SEL)arg1;
-@property(retain, nonatomic) FFAnchoredObject *timelineItem; // @synthesize timelineItem=_timelineItem;
+@property(nonatomic) FFAnchoredObject *timelineItem; // @synthesize timelineItem=_timelineItem;
 - (BOOL)isStorylineClip;
 - (BOOL)isAudioOnly;
 - (BOOL)isVideoOnly;
@@ -89,7 +89,6 @@
 - (BOOL)hasAudio;
 - (BOOL)hasVideo;
 - (id)debugDescription;
-- (void)dealloc;
 - (BOOL)isAudioSummary;
 
 @end

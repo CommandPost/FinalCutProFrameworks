@@ -33,6 +33,8 @@
 + (id)pixelFormat_FullRangeLuma8;
 + (id)pixelFormat_420v;
 + (id)pixelFormat_420f;
++ (id)pixelFormat_n16b;
++ (id)pixelFormat_n64b;
 + (id)pixelFormat_x420;
 + (id)pixelFormat_xf20;
 + (id)pixelFormat_grey8LumaPlane;

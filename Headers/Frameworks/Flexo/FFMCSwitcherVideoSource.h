@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     long long _anglesCount;
     long long _anglesOffset;
     FFSourceVideo *_angles;
-    int _providerRetainCount;
 }
 
 + (Class)streamClass;

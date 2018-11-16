@@ -28,6 +28,7 @@
 @property(readonly) double audioSampleRate; // @synthesize audioSampleRate=_audioSampleRate;
 @property(readonly) int offlineReason; // @synthesize offlineReason=_offlineReason;
 @property(retain) FFMedia *media; // @synthesize media=_media;
+- (id)object;
 - (int)openStreamCount;
 - (void)_adjustStreamCount:(int)arg1;
 - (id)newOfflineImageForThumbnail:(BOOL)arg1 videoProps:(id)arg2 detailedDescription:(id)arg3;

@@ -59,6 +59,7 @@
 + (Class)CKCNNJobActionClass;
 + (Class)CKClusterBrowserClass;
 + (Class)CKClusterClass;
++ (Class)CKCaptionSetClass;
 + (Class)CKBluerayJobActionClass;
 + (Class)CKBlurayExportPanelClass;
 + (Class)CKBatchClass;

@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (int)postRender;
 - (int)preRender;
 - (void)process:(id)arg1 onTask:(id)arg2;
+- (void)teardownEffects;
 - (void)configureEffects:(id)arg1;
 - (void)kickoffBackgroundProcess;
 - (void)analyzeObject:(id)arg1 onTask:(id)arg2;

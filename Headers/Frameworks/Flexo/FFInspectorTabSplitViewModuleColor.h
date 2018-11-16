@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)_removeObservingForCurrentItems;
 - (void)_addObservingForCurrentItems;
+- (void)_libraryClosed:(id)arg1;
 - (void)possibleMaskChanged:(id)arg1;
 - (void)_possibleMaskChangedAllmostFinal;
 - (void)_possibleMaskChangedFinal;

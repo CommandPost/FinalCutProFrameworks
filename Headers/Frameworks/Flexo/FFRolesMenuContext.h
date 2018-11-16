@@ -15,6 +15,7 @@
     NSSet *_roleUIDsUsedByAny;
     BOOL _selectionHasAudio;
     BOOL _selectionHasVideo;
+    BOOL _selectionHasCaption;
     BOOL _selectionSupportsShowingAudioSubRoles;
     BOOL _selectionSupportsAssigningAudioSubRoles;
     BOOL _selectionSupportsAssigningAudioMainRoles;
@@ -23,12 +24,14 @@
 @property(readonly, nonatomic) BOOL selectionSupportsAssigningAudioMainRoles; // @synthesize selectionSupportsAssigningAudioMainRoles=_selectionSupportsAssigningAudioMainRoles;
 @property(readonly, nonatomic) BOOL selectionSupportsAssigningAudioSubRoles; // @synthesize selectionSupportsAssigningAudioSubRoles=_selectionSupportsAssigningAudioSubRoles;
 @property(readonly, nonatomic) BOOL selectionSupportsShowingAudioSubRoles; // @synthesize selectionSupportsShowingAudioSubRoles=_selectionSupportsShowingAudioSubRoles;
+@property(readonly, nonatomic) BOOL selectionHasCaption; // @synthesize selectionHasCaption=_selectionHasCaption;
 @property(readonly, nonatomic) BOOL selectionHasVideo; // @synthesize selectionHasVideo=_selectionHasVideo;
 @property(readonly, nonatomic) BOOL selectionHasAudio; // @synthesize selectionHasAudio=_selectionHasAudio;
 @property(readonly, retain, nonatomic) NSSet *roleUIDsUsedByAll; // @synthesize roleUIDsUsedByAll=_roleUIDsUsedByAll;
 @property(readonly, retain, nonatomic) NSSet *roleUIDsUsedByAny; // @synthesize roleUIDsUsedByAny=_roleUIDsUsedByAny;
 @property(readonly, retain, nonatomic) FFLibrary *library; // @synthesize library=_library;
 - (void)dealloc;
+- (id)initWithLibrary:(id)arg1;
 
 @end
 

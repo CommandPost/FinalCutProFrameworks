@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void)autoFillMultipleItems;
 - (void)autoFillNoItems;
-- (void)setColorAnd360Info:(id)arg1;
+- (void)setColorAnd360Info:(id)arg1 colorSpaceDisplayName:(id)arg2;
 - (void)setLastModifiedDate:(id)arg1;
 - (void)setAudioSampleRateInHz:(double)arg1;
 - (void)setAudioType:(id)arg1;

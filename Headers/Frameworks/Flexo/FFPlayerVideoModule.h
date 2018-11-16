@@ -91,6 +91,10 @@
     FFOpenGLNSImage *_audioIcon;
     _FFPlayerModuleLineView *_focusUnderBar;
     NSArray *_focusUnderBarConstraints;
+    double _magicRed;
+    double _magicGreen;
+    double _magicBlue;
+    double _magicAlpha;
     id _eventMonitor;
     NSTimer *_lookTimer;
     struct CGPoint _lookDelta;
@@ -110,6 +114,10 @@
 
 @property(nonatomic) int sequenceCameraMode; // @synthesize sequenceCameraMode=_sequenceCameraMode;
 @property(nonatomic) struct CGRect sequenceBounds; // @synthesize sequenceBounds=_sequenceBounds;
+@property(nonatomic) double magicAlpha; // @synthesize magicAlpha=_magicAlpha;
+@property(nonatomic) double magicBlue; // @synthesize magicBlue=_magicBlue;
+@property(nonatomic) double magicGreen; // @synthesize magicGreen=_magicGreen;
+@property(nonatomic) double magicRed; // @synthesize magicRed=_magicRed;
 @property(nonatomic) BOOL mirrorHMD; // @synthesize mirrorHMD=_360LatchHMD;
 @property(nonatomic) double rollDegrees360; // @synthesize rollDegrees360=_360rollDegrees;
 @property(nonatomic) double tiltDegrees360; // @synthesize tiltDegrees360=_360tiltDegrees;

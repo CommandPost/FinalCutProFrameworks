@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _time;
     CDStruct_1b6d18a9 _timeRepresented;
     NSString *_frameRepresentedString;
+    NSString *_displayName;
     NSObject *_objectForCustomJobSyncer;
     CDStruct_1b6d18a9 _alwaysFwdTime;
     CDStruct_1b6d18a9 _duration;
@@ -61,9 +62,9 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _diskIOCompletionTime;
     double _scheduleTokenTime;
     double _generateGraphTime;
-    CDStruct_0ea56580 _scheduleTokenBlockedInfo;
-    CDStruct_0ea56580 _graphBuildBlockedInfo;
-    CDStruct_0ea56580 _graphExecBlockedInfo;
+    CDStruct_c0b5f609 _scheduleTokenBlockedInfo;
+    CDStruct_c0b5f609 _graphBuildBlockedInfo;
+    CDStruct_c0b5f609 _graphExecBlockedInfo;
     long long _readLockWait;
     _Bool _boundToRenderer;
     _Bool _notScheduledWhenChosen;
@@ -178,7 +179,7 @@ __attribute__((visibility("hidden")))
 - (void)jobFinished:(id)arg1;
 - (void)jobStarted:(id)arg1;
 - (void)customHGRenderQueueJobCallback:(struct HGRenderer *)arg1 theJob:(id)arg2;
-- (id)newFlattenImageJob:(id)arg1 contextNum:(int)arg2 renderer:(struct HGRenderer *)arg3 bgInfo:(id)arg4 streamProps:(id)arg5;
+- (id)newFlattenImageJob:(id)arg1 bindingInfo:(id)arg2 contextNum:(int)arg3 renderer:(struct HGRenderer *)arg4 bgInfo:(id)arg5 streamProps:(id)arg6;
 - (id)_copyRenderPropsForContext:(int)arg1 props:(id)arg2;
 - (_Bool)doesDest:(id)arg1 needContext:(int)arg2;
 - (_Bool)betterThan:(id)arg1;
@@ -197,6 +198,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)pushedToCodec;
 - (_Bool)waitForInputImagesReadyBeforeTimeInterval:(double)arg1;
 - (_Bool)waitForReadyToImageBeforeTimeInterval:(double)arg1;
+- (_Bool)waitForSchedTokFlagsClear:(unsigned int)arg1 beforeTimeInterval:(double)arg2;
 - (_Bool)_internal_waitForFlagsClear:(unsigned int)arg1 beforeTimeInterval:(double)arg2;
 - (_Bool)readyToImage;
 - (_Bool)diskIOComplete;
@@ -225,7 +227,7 @@ __attribute__((visibility("hidden")))
 - (id)copyForNewGraph:(id)arg1;
 - (void)_checkSchedTokFlags:(_Bool)arg1;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 time:(CDStruct_1b6d18a9)arg2 timeRepresented:(CDStruct_1b6d18a9)arg3 duration:(CDStruct_1b6d18a9)arg4 nativeFrameDur:(CDStruct_1b6d18a9)arg5 nativeSampleDur:(CDStruct_1b6d18a9)arg6 context1:(id)arg7 context2:(id)arg8 aaContext:(id)arg9 aaRepeats:(int)arg10 bounds:(struct CGRect)arg11 schedQueue:(id)arg12 inRenderMode:(_Bool)arg13 forScrub:(_Bool)arg14 schedInfo:(id)arg15 waitForLoadingFX:(_Bool)arg16 isBlankFrame:(_Bool)arg17 isAudioFrame:(_Bool)arg18 frameRepString:(id)arg19 customJobSyncer:(id)arg20;
+- (id)initWithStream:(id)arg1 time:(CDStruct_1b6d18a9)arg2 timeRepresented:(CDStruct_1b6d18a9)arg3 duration:(CDStruct_1b6d18a9)arg4 nativeFrameDur:(CDStruct_1b6d18a9)arg5 nativeSampleDur:(CDStruct_1b6d18a9)arg6 context1:(id)arg7 context2:(id)arg8 aaContext:(id)arg9 aaRepeats:(int)arg10 bounds:(struct CGRect)arg11 schedQueue:(id)arg12 inRenderMode:(_Bool)arg13 forScrub:(_Bool)arg14 schedInfo:(id)arg15 waitForLoadingFX:(_Bool)arg16 isBlankFrame:(_Bool)arg17 isAudioFrame:(_Bool)arg18 frameRepString:(id)arg19 displayName:(id)arg20 customJobSyncer:(id)arg21;
 
 @end
 

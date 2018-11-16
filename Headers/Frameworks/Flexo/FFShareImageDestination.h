@@ -18,6 +18,7 @@
 - (id)largeImage;
 - (id)pressedImage;
 - (id)image;
+- (BOOL)supportsAudio;
 - (BOOL)requiresVideo;
 - (BOOL)forCurrentFrameOnly;
 - (id)initWithCoder:(id)arg1;

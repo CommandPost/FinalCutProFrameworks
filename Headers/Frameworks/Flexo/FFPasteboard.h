@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSMapTable, NSPasteboard;
+@class FFPasteboardTaskDelegate, NSError, NSMapTable, NSPasteboard;
 
 @interface FFPasteboard : NSObject
 {
@@ -16,9 +16,12 @@
     long long _cachedPBCount;
     long long _cachedFromURLPBCount;
     BOOL _cacheEnabled;
+    NSError *_importError;
+    FFPasteboardTaskDelegate *_taskDelegate;
 }
 
 + (id)readableTypes;
+@property(retain, nonatomic) NSError *importError; // @synthesize importError=_importError;
 @property(retain, nonatomic) NSPasteboard *pasteboard; // @synthesize pasteboard=_pasteboard;
 - (CDStruct_1b6d18a9)playhead:(id)arg1 options:(id)arg2;
 - (id)newEffectsWithProject:(id)arg1 forEffectType:(id)arg2 options:(id)arg3;

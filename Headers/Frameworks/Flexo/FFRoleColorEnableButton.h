@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 {
     NSDictionary *_baseImages;
     NSColor *_roleTint;
+    NSDictionary *_overrideImageDictionary;
 }
 
+@property(copy, nonatomic) NSDictionary *overrideImageDictionary; // @synthesize overrideImageDictionary=_overrideImageDictionary;
 @property(copy, nonatomic) NSColor *roleTint; // @synthesize roleTint=_roleTint;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)awakeFromNib;

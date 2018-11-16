@@ -74,10 +74,15 @@
 - (void)_updateTransitionAppearanceAsAudioOnly:(BOOL)arg1;
 - (void)updateAppearance:(unsigned long long)arg1;
 - (void)_updateStitchingAppearance;
-- (void)_setupThroughEditLayer:(id *)arg1 name:(id)arg2 isVisible:(BOOL)arg3 angleFlag:(int)arg4;
+- (void)_updateStitchingLayer:(id *)arg1 name:(id)arg2 isVisible:(BOOL)arg3 angleFlag:(int)arg4;
 - (void)_updateStitchingPatternForLayer:(id)arg1 angleFlag:(int)arg2;
 - (struct CGColor *)_verticalSameStitchingPattern;
 - (struct CGColor *)_verticalDiffStitchingPattern;
+- (BOOL)_isLayerWideEnoughForThroughEditStitchingLayer;
+- (BOOL)_shouldShowTrailingAudioStitchingLayer;
+- (BOOL)_shouldShowLeadingAudioStitchingLayer;
+- (BOOL)_shouldShowTrailingVideoStitchingLayer;
+- (BOOL)_shouldShowLeadingVideoStitchingLayer;
 - (BOOL)_isTrailingAudioThroughEditVisible;
 - (BOOL)_isLeadingAudioThroughEditVisible;
 - (BOOL)_isTrailingVideoThroughEditVisible;

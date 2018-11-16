@@ -8,6 +8,7 @@
 
 @interface NSString (FlexoUtilities)
 + (id)stringFromOSType:(unsigned int)arg1;
++ (id)decomposeAttributedStringToMultipleLines:(id)arg1 withCharactersPerLine:(unsigned long long)arg2 andMonospacedFontFamilyName:(id)arg3;
 + (id)humanReadableSize:(long long)arg1 useCompactedStr:(BOOL)arg2;
 + (id)humanReadableSeconds:(float)arg1 useCompactedStr:(BOOL)arg2 singleUnit:(BOOL)arg3;
 + (id)universalUniqueID;

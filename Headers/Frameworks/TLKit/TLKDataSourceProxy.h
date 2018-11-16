@@ -8,9 +8,6 @@
 
 @interface TLKDataSourceProxy : NSObject
 {
-    id _timelineView;
-    id <TLKTimelineViewDataSource> _dataSource;
-    long long _transactionLevel;
     struct {
         unsigned int respondsToBeginDataAccess:1;
         unsigned int respondsToEndDataAccess:1;
@@ -81,10 +78,17 @@
         unsigned int respondsToShouldMoveLane:1;
         unsigned int respondsToShouldHidePrimaryComponent:1;
         unsigned int respondsToMoveLane:1;
-        unsigned int RESERVED:22;
+        unsigned int respondsToLayoutRegionForItemLane:1;
+        unsigned int RESERVED:21;
     } _tlkDataSourceFlags2;
+    id <TLKTimelineViewDataSource> _dataSource;
+    id _timelineView;
+    long long _transactionLevel;
 }
 
+@property(nonatomic) long long transactionLevel; // @synthesize transactionLevel=_transactionLevel;
+@property(readonly, nonatomic) id timelineView; // @synthesize timelineView=_timelineView;
+@property(nonatomic) id <TLKTimelineViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (id)accessibilityLocalizedString:(id)arg1;
 - (id)accessibilityValueDescriptionForTime:(CDStruct_1b6d18a9)arg1;
 - (id)accessibilityValueForTime:(CDStruct_1b6d18a9)arg1;
@@ -116,8 +120,7 @@
 - (id)acceptDrop:(id)arg1 onItem:(id)arg2 atIndex:(long long)arg3 inLane:(id)arg4 dropTime:(CDStruct_1b6d18a9)arg5 dropHighlight:(CDStruct_e83c9415 *)arg6;
 - (unsigned long long)validateDrop:(id)arg1 onItem:(id)arg2 atIndex:(long long)arg3 inLane:(id)arg4 dropTime:(CDStruct_1b6d18a9 *)arg5 proposedHighlightItems:(id *)arg6;
 - (unsigned long long)validateDrop:(id)arg1 onItem:(id)arg2 atIndex:(long long)arg3 inLane:(id)arg4 dropTime:(CDStruct_1b6d18a9 *)arg5;
-- (void)setDisplayName:(id)arg1 forItem:(id)arg2;
-- (BOOL)shouldSetDisplayNameForItem:(id)arg1;
+- (void)setDisplayName:(id)arg1 forItems:(id)arg2;
 - (id)orderItemInfosAbove:(id)arg1 itemInfosBelow:(id)arg2;
 - (void)resolveVerticalOrderAfterTrimForStartEdits:(id)arg1 endEdits:(id)arg2;
 - (BOOL)orderItem:(id)arg1 aboveItems:(id)arg2 belowItems:(id)arg3 besideItems:(id)arg4;
@@ -134,7 +137,6 @@
 - (void)moveTracks:(id)arg1 toIndex:(unsigned long long)arg2;
 - (void)endTransaction;
 - (void)beginTransaction;
-- (long long)transactionLevel;
 - (void)endDataAccess:(BOOL)arg1;
 - (void)beginDataAccess:(BOOL)arg1;
 - (int)fetchTypeForItem:(id)arg1;
@@ -166,6 +168,7 @@
 - (BOOL)fetchIsItemLaneExpanded:(id)arg1;
 - (id)fetchBackgroundColorForLaneInfo:(id)arg1;
 - (id)fetchNameForLaneInfo:(id)arg1;
+- (long long)fetchLayoutRegionForLaneInfo:(id)arg1;
 - (id)fetchChildLanesForItemLaneInfo:(id)arg1;
 - (id)fetchLaneForItemComponentInfo:(id)arg1;
 - (id)fetchBackgroundMusicLaneForContainer:(id)arg1;
@@ -177,9 +180,6 @@
 - (id)containerForItemComponent:(id)arg1;
 - (id)fetchItemsForContainer:(id)arg1;
 - (id)fetchTracks;
-- (void)setDataSource:(id)arg1;
-- (id)dataSource;
-- (id)timelineView;
 - (id)initWithTimelineView:(id)arg1;
 
 @end

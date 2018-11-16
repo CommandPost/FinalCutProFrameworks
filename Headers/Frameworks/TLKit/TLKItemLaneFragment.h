@@ -26,10 +26,12 @@
 - (void)removeItemComponentFragmentsObject:(id)arg1;
 - (void)addItemComponentFragmentsObject:(id)arg1;
 @property(nonatomic) TLKItemLaneInfo *itemLaneInfo;
+@property(readonly) struct CGRect layerFrame;
 @property(nonatomic) struct CGRect frame;
 @property(readonly, nonatomic) struct CGPoint position;
 - (id)debugDescription;
 - (id)description;
+- (void)_clearWeakInverseReferencesOnDealloc;
 - (void)dealloc;
 - (id)init;
 

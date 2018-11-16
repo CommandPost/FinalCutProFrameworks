@@ -66,6 +66,7 @@
 - (id)_newExtendedSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 sourceid:(id)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9 unclippedRangeRequired:(CDStruct_e83c9415)arg10;
 - (id)_newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (BOOL)isComponent;
+- (BOOL)hasExtractableCaptions;
 @property BOOL hasVideo;
 - (BOOL)supportsAudio;
 @property BOOL hasAudio;

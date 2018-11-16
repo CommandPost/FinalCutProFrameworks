@@ -23,6 +23,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL hasMismatchingEffects; // @synthesize hasMismatchingEffects=_hasMismatchingEffects;
 @property(readonly, nonatomic) BOOL hasNoEffects; // @synthesize hasNoEffects=_hasNoEffects;
 @property(readonly, nonatomic) NSSet *selectedEffectStacks; // @synthesize selectedEffectStacks=_selectedEffectStacks;
+- (void)_libraryClosed:(id)arg1;
+- (void)_removeLibraryCloseObserving;
+- (void)_addLibraryCloseObserving;
 - (void)setSelectedEffectStacks:(id)arg1;
 - (void)dealloc;
 

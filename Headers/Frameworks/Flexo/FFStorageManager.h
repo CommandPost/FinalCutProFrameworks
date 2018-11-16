@@ -28,6 +28,7 @@
 + (BOOL)isReadOnly:(id)arg1;
 + (BOOL)isFileURL:(id)arg1 descendantOfFileURL:(id)arg2;
 + (BOOL)isFileURL:(id)arg1 equalToFileURL:(id)arg2;
++ (BOOL)isFileURL:(id)arg1 pathEqualToFileURLPath:(id)arg2;
 + (BOOL)isVolumeForURL:(id)arg1 sameAsVolumeForURL:(id)arg2;
 + (BOOL)isWritable:(id)arg1;
 + (BOOL)isNetworkPath:(id)arg1;

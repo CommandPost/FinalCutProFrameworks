@@ -35,6 +35,7 @@
     int _unstartedAsyncOp;
     NSMutableDictionary *_groupInfos;
     float _syncPurgeThreshhold;
+    int _ariadneID;
 }
 
 + (BOOL)recentlyUnderVMPressure;
@@ -46,6 +47,7 @@
 - (void)reserveCacheMemory:(long long)arg1;
 - (int)purgeCacheEntries:(id)arg1;
 - (int)purgeCacheEntriesOperation:(id)arg1;
+- (void)synchronousPurge;
 - (void)startAsyncPurgeIfNeeded;
 - (void)startPurgeIfNeeded:(_Bool)arg1;
 - (id)newObjectCacheSummary;

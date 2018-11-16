@@ -19,15 +19,18 @@
     struct FFDataListLanesDropRetargetingInfo *_dropRetargetingInfo;
 }
 
++ (void)setReorderingLanesHack:(BOOL)arg1;
++ (BOOL)isReorderingLanesHack;
 @property(readonly, nonatomic) BOOL result; // @synthesize result=_result;
 @property(readonly, nonatomic) struct FFDataListLanesDropRetargetingInfo *dropRetargetingInfo; // @synthesize dropRetargetingInfo=_dropRetargetingInfo;
-- (BOOL)_dragLane:(id)arg1 proposedLane:(id)arg2 proposedIndex:(long long)arg3 retargetInfo:(struct FFDataListLanesDropRetargetingInfo *)arg4 validateOnly:(BOOL)arg5;
-- (BOOL)_dragInCompositionWithParams:(id)arg1;
-- (BOOL)_dragInCompositionWithSafeParams:(id)arg1;
+- (BOOL)_dragWithParams:(struct DragParams *)arg1;
+- (BOOL)_retargetDragWithParams:(struct DragParams *)arg1;
+- (BOOL)_dragInCompositionWithUnsafeDictionary:(id)arg1;
+- (BOOL)_dragInCompositionWithSafeDictionary:(id)arg1;
 - (void)_moveLaneNode:(id)arg1 below:(id)arg2;
 - (void)_moveStoryLane:(id)arg1 below:(id)arg2;
 - (BOOL)shouldMoveLane:(id)arg1 below:(id)arg2;
-- (long long)_indexOfFirstTopLevelAudioLane;
+- (unsigned long long)_indexOfFirstTopLevelAudioLane;
 - (void)main;
 - (void)dealloc;
 - (id)initWithDataSource:(id)arg1 draggedLane:(id)arg2 proposedLane:(id)arg3 proposedIndex:(long long)arg4 validateOnly:(BOOL)arg5;

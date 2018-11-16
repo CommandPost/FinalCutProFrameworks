@@ -18,6 +18,7 @@
 + (BOOL)_wantsConsumerLook;
 + (void)initialize;
 + (BOOL)_isInIBCocoaSimulator;
++ (id)headerAppearanceLight;
 + (id)viewerAppearance;
 + (id)proToolbarAppearance;
 + (id)proTokenAppearance;

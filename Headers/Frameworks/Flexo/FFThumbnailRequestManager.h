@@ -33,6 +33,7 @@
     NSMutableSet *_inFlightRequests;
     BOOL _shuttingDown;
     NSCountedSet *_libaryIdentifiersForRequests;
+    NSMutableSet *_registeredLibraries;
     struct FFPMRAutoTimer *PMR_currentTaskTimer;
     NSMutableSet *PMR_clipsProcessed;
     CDUnknownBlockType _pmrRequestBeginCallback;
@@ -75,6 +76,8 @@
 - (void)_migrateIncomingRequests;
 - (void)uiPlaybackStateChange:(id)arg1;
 - (id)streamVideoCache;
+- (void)unregisterLibrary:(id)arg1;
+- (void)registerLibrary:(id)arg1;
 - (void)dealloc;
 - (oneway void)release;
 - (id)initForAudio:(BOOL)arg1;

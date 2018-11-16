@@ -6,13 +6,14 @@
 
 #import "NSObject.h"
 
-@class NSCondition, NSMutableArray;
+@class NSCondition, NSDictionary, NSMutableArray;
 
 @interface FFHGRendererManager : NSObject
 {
     NSMutableArray *_rendererInfos;
     NSCondition *_cond;
     BOOL _doLinear;
+    NSDictionary *_imageLocToRendererDescription;
 }
 
 + (void)initialize;
@@ -33,8 +34,9 @@
 - (void)_countGPUs;
 - (_Bool)canFitTextureWithBounds:(struct CGRect)arg1;
 - (_Bool)threadAccessedRenderQueueRenderer;
-- (void)setRenderQueueRendererForCurrentThread:(struct HGRenderer *)arg1;
+- (void)setRenderQueueRendererForCurrentThread:(struct HGRenderer *)arg1 bindingInfo:(id)arg2;
 - (struct HGRenderer *)renderQueueRendererForCurrentThread;
+- (struct HGRenderer *)renderQueueRendererForCurrentThreadWithRetBindingInfo:(id *)arg1;
 - (_Bool)isManagedRenderer:(struct HGRenderer *)arg1;
 - (BOOL)processLinear;
 - (_Bool)threadHoldsImmediateModeRenderer;
@@ -43,6 +45,7 @@
 - (id)rendererForLocation:(int)arg1;
 - (int)resolveIfSingleImageLocation:(int)arg1;
 - (void)dealloc;
+- (id)rendererDescriptionForVScreen:(int)arg1;
 - (void)_ensureRenderersSetup;
 - (void)_setupRenderers;
 - (id)init;

@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)valueForKeyPath:(id)arg1;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
 - (BOOL)_areValuesForKeyPathSame:(id)arg1;
+- (void)_libraryClosed:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)shareMetadataChanged:(id)arg1;
 - (void)assetsChangedNotification:(id)arg1;
@@ -67,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLoad;
 - (void)_reloadData;
 - (void)dealloc;
+- (id)init;
 - (void)_endObservingCurrentItems;
 - (void)_beginObservingCurrentItems;
 - (id)_sequenceForItem:(id)arg1;

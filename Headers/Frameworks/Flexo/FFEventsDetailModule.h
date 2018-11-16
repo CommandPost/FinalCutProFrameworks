@@ -21,7 +21,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSSet *observedProjects; // @synthesize observedProjects=_observedProjects;
 @property(copy, nonatomic) CDUnknownBlockType UIUpdateBlock; // @synthesize UIUpdateBlock=_UIUpdateBlock;
 @property(retain, nonatomic) NSDictionary *filtersDictionary; // @synthesize filtersDictionary=_filtersDictionary;
+- (void)appWillTerminate:(id)arg1;
 - (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleViewWasInstalled:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (BOOL)finishedLoading;

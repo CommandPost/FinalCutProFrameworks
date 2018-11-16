@@ -10,10 +10,10 @@
 
 @interface TLKLayoutConstraint : NSObject
 {
+    id <TLKLayoutConstraining> _referenceObject;
     unsigned long long _attribute;
     TLKItemComponentInfo *_object;
     unsigned long long _referenceAttribute;
-    id <TLKLayoutConstraining> _referenceObject;
     double _offset;
     NSString *_identifier;
 }
@@ -24,13 +24,13 @@
 + (id)minYLayoutConstraintFromObject:(id)arg1 toObject:(id)arg2 offset:(double)arg3;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) double offset; // @synthesize offset=_offset;
-@property(readonly, nonatomic) id <TLKLayoutConstraining> referenceObject; // @synthesize referenceObject=_referenceObject;
 @property(readonly, nonatomic) unsigned long long referenceAttribute; // @synthesize referenceAttribute=_referenceAttribute;
 @property(readonly, nonatomic) TLKItemComponentInfo *object; // @synthesize object=_object;
 @property(readonly, nonatomic) unsigned long long attribute; // @synthesize attribute=_attribute;
 - (struct CGRect)constrainRect:(struct CGRect)arg1 inLayoutContext:(id)arg2;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+@property(readonly, nonatomic) id <TLKLayoutConstraining> referenceObject;
 - (id)description;
 - (id)_humanReadableStringForAttribute:(unsigned long long)arg1;
 - (void)dealloc;

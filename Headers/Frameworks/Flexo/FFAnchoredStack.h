@@ -118,6 +118,7 @@
 - (BOOL)_deferUpdates;
 - (void)_setDeferUpdates:(BOOL)arg1;
 - (BOOL)supportsLogProcessing;
+- (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;
 - (BOOL)supportsAnamorphicFormat;
@@ -157,6 +158,7 @@
 - (id)videoEffects;
 - (BOOL)hasVideoIncludingVariants;
 - (BOOL)hasAudioIncludingVariants;
+- (BOOL)hasExtractableCaptions;
 - (BOOL)hasVideo;
 - (BOOL)supportsAudio;
 - (BOOL)hasAudio;

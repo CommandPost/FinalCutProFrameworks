@@ -18,8 +18,8 @@
 - (void)populateWindowUI;
 - (unsigned int)selectedEffectSourceNodeID;
 - (BOOL)selectedEffectSourceIsNewPlaceholder;
-- (id)localizedSummaryFormatString;
 - (id)defaultNibName;
+- (id)initWithDocument:(id)arg1;
 
 @end
 

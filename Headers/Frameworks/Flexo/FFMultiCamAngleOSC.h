@@ -6,13 +6,14 @@
 
 #import <Flexo/FFOSC.h>
 
-@class FFLRUImageCacheObject, FFOpenGLInfoGrid2, NSDictionary, NSString;
+@class FFCaptionRenderer, FFLRUImageCacheObject, FFOpenGLInfoGrid2, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMultiCamAngleOSC : FFOSC
 {
     NSDictionary *_angleClipTextAttributes;
     NSDictionary *_captionTextAttributes;
+    NSDictionary *_previousCaptionTextAttributes;
     FFLRUImageCacheObject *_lastTextImageObject;
     NSString *_lastTextKey;
     struct CGSize _audioIconSize;
@@ -21,12 +22,15 @@ __attribute__((visibility("hidden")))
     struct CGRect _setBounds;
     long long _showClipDetails;
     long long _showTimeline;
+    FFCaptionRenderer *_captionRenderer;
 }
 
+- (void)updateCaptionFormatting:(id)arg1;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
 - (BOOL)isAvailableDuringPlayback;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (void)renderCaptionsWithinBounds:(struct CGRect)arg1 intoContext:(struct _CGLContextObject *)arg2;
 - (void)simpleTextRectangle:(id)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(id)arg4 attributes:(id)arg5 attributeCode:(int)arg6 paddingX:(double)arg7 paddingYT:(double)arg8 paddingYB:(double)arg9 cornerSize:(double)arg10;
 - (CDStruct_1b6d18a9)currentChannelTime;
 - (CDStruct_1b6d18a9)channelTimeForTime:(CDStruct_1b6d18a9)arg1;

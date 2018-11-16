@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredSequence, FFOrganizedLaneManager, FFStorySequenceBridge, FFTimelineItemAppearanceTable, FFTimelineLayoutMetrics, NSMapTable, NSMutableArray, NSMutableSet, NSSet;
+@class FFAnchoredSequence, FFOrganizedLaneManager, FFStorySequenceBridge, FFTimelineItemAppearanceTable, FFTimelineLayoutMetrics, FFUserDefaults, NSMapTable, NSMutableArray, NSMutableSet, NSSet;
 
 @interface FFStoryTimelinePresentation : NSObject
 {
@@ -22,12 +22,14 @@
     FFStorySequenceBridge *_storySequenceBridge;
     NSMapTable *_tmpObjectStorage;
     NSMutableArray *_storylineTransactionStack;
+    FFUserDefaults *_observedDefaults;
     NSMutableSet *_focusedLanesCache;
     NSMutableSet *_expandedLanesCache;
 }
 
 @property(retain) NSMutableSet *expandedLanesCache; // @synthesize expandedLanesCache=_expandedLanesCache;
 @property(retain) NSMutableSet *focusedLanesCache; // @synthesize focusedLanesCache=_focusedLanesCache;
+@property(retain, nonatomic) FFUserDefaults *observedDefaults; // @synthesize observedDefaults=_observedDefaults;
 @property(copy, nonatomic) NSMutableArray *storylineTransactionStack; // @synthesize storylineTransactionStack=_storylineTransactionStack;
 @property(copy, nonatomic) NSMapTable *tmpObjectStorage; // @synthesize tmpObjectStorage=_tmpObjectStorage;
 @property(retain, nonatomic) FFStorySequenceBridge *storySequenceBridge; // @synthesize storySequenceBridge=_storySequenceBridge;
@@ -40,6 +42,14 @@
 @property(retain, nonatomic) FFTimelineLayoutMetrics *timelineLayoutMetrics; // @synthesize timelineLayoutMetrics=_timelineLayoutMetrics;
 @property(readonly, nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
 @property(readonly, nonatomic) id <FFStoryline> rootItem; // @synthesize rootItem=_rootItem;
+- (void)_syncTimelineLayoutMetricsWithAudioLanesHeaderShown;
+- (void)_syncTimelineLayoutMetricsWithSequenceDefaults;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_stopListeningToSequenceDefaults;
+- (void)_stopListeningToSEquenceDefaultsIfObserving;
+- (void)_startListeningToSequenceDefaults;
+- (id)sequenceDefaults;
+- (BOOL)timelineIndexSimpleClipMode;
 @property(nonatomic) BOOL shouldShowWaveformsForPrecisionEditor;
 @property(nonatomic) BOOL isTitleOnly;
 - (void)stopListeningToSequence;
@@ -59,7 +69,11 @@
 - (id)layerForLane:(id)arg1;
 - (void)setShowsComponentsState:(BOOL)arg1 forLanes:(id)arg2 wasArranged:(BOOL)arg3;
 - (id)_dependentLanesForLanes:(id)arg1;
+- (BOOL)containsCaptionStorylineItem;
+- (BOOL)isItemLaneCaption:(id)arg1;
 - (BOOL)itemLaneShowsComponents:(id)arg1;
+- (void)setHiddenState:(BOOL)arg1 forLanes:(id)arg2;
+- (BOOL)isItemLaneHidden:(id)arg1;
 - (void)setFocusedState:(int)arg1 forLanes:(id)arg2;
 - (void)setFocusedState:(BOOL)arg1 forLanes:(id)arg2 extendFocus:(BOOL)arg3;
 - (BOOL)isItemLaneHighlighted:(id)arg1;
@@ -72,12 +86,12 @@
 - (void)persistLaneStatesToSequence;
 - (id)backgroundColorForItemComponent:(id)arg1;
 - (id)nameForItemLane:(id)arg1;
-- (void)setEnabledState:(BOOL)arg1 forLanes:(id)arg2;
 - (BOOL)isItemLaneEnabled:(id)arg1;
 - (BOOL)itemLaneAllowsEnabled:(id)arg1;
 - (id)storyLanesForStorylineItem:(id)arg1;
 @property(readonly, nonatomic) id <FFStorylineLane> storylineLaneFolderBelowSpine;
 @property(readonly, nonatomic) id <FFStorylineLane> storylineLaneFolderAboveSpine;
+@property(readonly, nonatomic) id <FFStorylineLane> storylineLaneFolderCaptions;
 - (long long)layoutRegionForItemComponent:(id)arg1;
 - (id)audioComponentsForItem:(id)arg1;
 - (unsigned long long)nestingLevelForItemComponent:(id)arg1;
@@ -102,6 +116,8 @@
 - (void)updateFocusedLanesCache;
 - (void)clearFocusedLanesCache;
 - (id)emptyLanesPredicate;
+- (id)timelineIndexEmptyLanesPredicate;
+- (id)_emptyLanesPredicateRespectingHidden:(BOOL)arg1;
 - (id)emptyAudioLanesInLanes:(id)arg1;
 - (id)orderedChildLanesForLane:(id)arg1;
 - (void)dealloc;

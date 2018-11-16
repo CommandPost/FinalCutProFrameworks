@@ -14,8 +14,11 @@
     NSArray *_centeringConstraints;
 }
 
-@property(nonatomic) LKPopUpButton *popupButton; // @synthesize popupButton=_popupButton;
+- (void)prepareForReuse;
+- (void)setObjectValue:(id)arg1;
+- (void)_cleanUp;
 - (void)dealloc;
+@property(nonatomic) LKPopUpButton *popupButton; // @synthesize popupButton=_popupButton;
 
 @end
 

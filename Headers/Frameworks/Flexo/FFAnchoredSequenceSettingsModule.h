@@ -80,6 +80,7 @@
 - (void)setClipSampleDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setClipSize:(struct CGSize)arg1;
 - (BOOL)validate:(id *)arg1;
+- (void)_clearStrongReferencesToLibraryObjectsOnClose;
 - (void)closingWithCode:(int)arg1;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;
 @property(nonatomic) unsigned int audioChannelCount;

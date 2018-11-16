@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)isPassThruEffectWhenColorMasking;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
 - (id)simplifiesToPassThruAtTime:(CDStruct_1b6d18a9)arg1 forInputSource:(id)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
-- (HGRef_0de1db7e)makeMaskNodeAtTime:(CDStruct_1b6d18a9)arg1 withInputImage:(id)arg2 workingSpace:(int)arg3;
+- (HGRef_265f9e4c)makeMaskNodeAtTime:(CDStruct_1b6d18a9)arg1 withInputImage:(id)arg2 workingSpace:(int)arg3;
 - (id)keyerPremulInputFormat:(int)arg1;
 - (id)keyerStraightInputFormat:(int)arg1;
 - (struct HGNode *)newBlendNodeForMask:(id)arg1;

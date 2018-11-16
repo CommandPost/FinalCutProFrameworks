@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     id _item;
     struct CGRect _itemRect;
     id _module;
-    struct NSObject *_skimmable;
     FFRetimingEffect *_retimeEffect;
     CHChannel *_retimeChannel;
     CHChannel *_retimeInterpolationChannel;
@@ -131,6 +130,9 @@ __attribute__((visibility("hidden")))
 - (void)_endEditing;
 - (void)_beginEditingWithMouseLocation:(struct CGPoint)arg1;
 - (id)_timelineItemLayer;
+- (void)_libraryClosed:(id)arg1;
+- (void)_removeItemObserving;
+- (void)_addItemObserving;
 - (void)dealloc;
 - (id)initWithItem:(id)arg1 module:(id)arg2;
 

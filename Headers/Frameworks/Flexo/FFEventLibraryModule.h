@@ -15,7 +15,7 @@
 #import "NSTouchBarProvider.h"
 #import "NSWindowDelegate.h"
 
-@class FFEventLibraryContentContainer, FFEventLibraryContentFooterView, FFEventLibraryContentHeaderView, FFEventLibraryModuleHeaderContainerView, FFEventLibraryModuleSplitView, FFEventsDetailModule, FFItemsContainerView, FFMediaDetailContainerModule, FFMediaEventProject, FFMediaSidebarDFRController, FFMediaSidebarModule, FFOrganizerFilmstripModule, FFOrganizerFilterHUD, FFOrganizerMediaDetailSearchHeader, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKTextField, LKWindow, LKWindowModule, NSArray, NSBox, NSLayoutConstraint, NSMenuItem, NSObject<FFOrganizerFilterHUDDelegate>, NSString, NSTouchBar, NSView;
+@class FFEventLibraryContentContainer, FFEventLibraryContentFooterView, FFEventLibraryContentHeaderView, FFEventLibraryModuleHeaderContainerView, FFEventLibraryModuleSplitView, FFEventLibrarySidebarButtonView, FFEventsDetailModule, FFItemsContainerView, FFMediaDetailContainerModule, FFMediaEventProject, FFMediaSidebarDFRController, FFMediaSidebarModule, FFOrganizerFilmstripModule, FFOrganizerFilterHUD, FFOrganizerMediaDetailSearchHeader, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKTextField, LKWindow, LKWindowModule, NSArray, NSBox, NSLayoutConstraint, NSMenuItem, NSObject<FFOrganizerFilterHUDDelegate>, NSString, NSTouchBar, NSTrackingArea, NSView;
 
 @interface FFEventLibraryModule : LKViewModule <NSSplitViewDelegate, FFOrganizerDelegatePassthrough, FFOrganizerFilterHUDDelegate, FFMediaDetailContainerModuleDelegate, FFOrganizerFilmstripModuleDelegate, NSWindowDelegate, NSMenuDelegate, NSTouchBarProvider>
 {
@@ -35,7 +35,8 @@
     FFItemsContainerView *_itemsModuleViewContainer;
     FFEventLibraryContentContainer *_contentContainerView;
     FFEventLibraryModuleSplitView *_splitView;
-    NSView *_sidebarControlButtonView;
+    FFEventLibrarySidebarButtonView *_sidebarControlButtonView;
+    NSTrackingArea *_sidebarControlButtonViewTrackingArea;
     NSView *_taskProgressContainerView;
     LKProgressIndicator *_taskProgressIndicator;
     FFOrganizerMediaDetailSearchHeader *_searchHeaderViewController;
@@ -56,10 +57,11 @@
     LKButton *_emptyCameraImport;
     LKButton *_emptyCameraImportBigButton;
     FFMediaSidebarDFRController *_dfrController;
+    FFMediaSidebarModule *_dragSourceSidebarModule;
+    BOOL _ignoreDraggedBasedSideBarSwitch;
     BOOL _librarySidebarActive;
     BOOL _mediaSidebarActive;
     BOOL _contentSidebarActive;
-    FFMediaSidebarModule *_dragSourceSidebarModule;
     FFMediaEventProject *_currentMediaEventProject;
     unsigned long long _filterHUDDelegateType;
     LKButton *_librarySidebarButton;
@@ -93,11 +95,11 @@
 @property(nonatomic, getter=isLibrarySidebarActive) BOOL librarySidebarActive; // @synthesize librarySidebarActive=_librarySidebarActive;
 @property(nonatomic) unsigned long long filterHUDDelegateType; // @synthesize filterHUDDelegateType=_filterHUDDelegateType;
 @property(readonly, nonatomic) FFMediaEventProject *currentMediaEventProject; // @synthesize currentMediaEventProject=_currentMediaEventProject;
-@property(retain, nonatomic) FFMediaSidebarModule *dragSourceSidebarModule; // @synthesize dragSourceSidebarModule=_dragSourceSidebarModule;
 @property(readonly, nonatomic) FFMediaSidebarModule *activeSidebarModule; // @synthesize activeSidebarModule=_activeSidebarModule;
 @property(retain, nonatomic) FFMediaSidebarModule *contentSidebarModule; // @synthesize contentSidebarModule=_contentSidebarModule;
 @property(retain, nonatomic) FFMediaSidebarModule *mediaSidebarModule; // @synthesize mediaSidebarModule=_mediaSidebarModule;
 @property(retain, nonatomic) FFMediaSidebarModule *librarySidebarModule; // @synthesize librarySidebarModule=_librarySidebarModule;
+@property(retain, nonatomic) FFMediaSidebarModule *dragSourceSidebarModule; // @synthesize dragSourceSidebarModule=_dragSourceSidebarModule;
 @property(readonly, nonatomic) LKMenu *filterPulldownMenu; // @synthesize filterPulldownMenu=_filterPulldownMenu;
 @property(readonly, nonatomic) NSView *sidebarModuleViewContainer; // @synthesize sidebarModuleViewContainer=_sidebarModuleViewContainer;
 @property(readonly, nonatomic) FFMediaDetailContainerModule *mediaDetailContainerModule; // @synthesize mediaDetailContainerModule=_mediaDetailContainerModule;
@@ -215,6 +217,9 @@
 - (void)dealloc;
 - (id)init;
 - (void)_installSidebarModuleView:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)forgetDragSourceSidebar;
 - (void)returnToDragSourceSidebar;
 - (void)showLibrarySidebarForDragFromSidebar:(id)arg1;
 - (void)contentSidebarButtonAction:(id)arg1;

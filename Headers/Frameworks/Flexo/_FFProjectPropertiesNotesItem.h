@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 + (id)itemWithLabelString:(id)arg1 properties:(id)arg2;
 - (void)notesFieldChanged:(id)arg1;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;
+- (BOOL)control:(id)arg1 textShouldEndEditing:(id)arg2;
+- (void)cleanup;
 - (BOOL)control:(id)arg1 textShouldBeginEditing:(id)arg2;
 - (id)_sequenceForInspectedProject;
 - (id)parameterViewController;

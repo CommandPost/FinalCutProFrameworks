@@ -33,7 +33,8 @@ __attribute__((visibility("hidden")))
     NSColor *_roleOnOffCheckboxColor;
     NSColor *_roleFocusActiveColor;
     NSColor *_roleDividerColor;
-    NSColor *_retinaRoleDividerColor;
+    NSColor *_subroleDividerColor;
+    NSColor *_retinaSubroleDividerColor;
     NSColor *_curveEditorBackgroundSelected;
     NSColor *_curveEditorBackgroundDeselected;
     NSColor *_curveEditorBackgroundSelectedDisabled;
@@ -50,7 +51,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSColor *curveEditorBackgroundSelectedDisabled; // @synthesize curveEditorBackgroundSelectedDisabled=_curveEditorBackgroundSelectedDisabled;
 @property(readonly, nonatomic) NSColor *curveEditorBackgroundDeselected; // @synthesize curveEditorBackgroundDeselected=_curveEditorBackgroundDeselected;
 @property(readonly, nonatomic) NSColor *curveEditorBackgroundSelected; // @synthesize curveEditorBackgroundSelected=_curveEditorBackgroundSelected;
-@property(readonly, nonatomic) NSColor *retinaRoleDividerColor; // @synthesize retinaRoleDividerColor=_retinaRoleDividerColor;
+@property(readonly, nonatomic) NSColor *retinaSubroleDividerColor; // @synthesize retinaSubroleDividerColor=_retinaSubroleDividerColor;
+@property(readonly, nonatomic) NSColor *subroleDividerColor; // @synthesize subroleDividerColor=_subroleDividerColor;
 @property(readonly, nonatomic) NSColor *roleDividerColor; // @synthesize roleDividerColor=_roleDividerColor;
 @property(readonly, nonatomic) NSColor *roleFocusActiveColor; // @synthesize roleFocusActiveColor=_roleFocusActiveColor;
 @property(readonly, nonatomic) NSColor *roleOnOffCheckboxColor; // @synthesize roleOnOffCheckboxColor=_roleOnOffCheckboxColor;
@@ -64,12 +66,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSColor *referenceWaveformColor; // @synthesize referenceWaveformColor=_referenceWaveformColor;
 @property(readonly, nonatomic) NSColor *audioWaveformColor; // @synthesize audioWaveformColor=_audioWaveformColor;
 @property(readonly, nonatomic) NSColor *itemUnfocusedBackgroundColor; // @synthesize itemUnfocusedBackgroundColor=_itemUnfocusedBackgroundColor;
-@property(readonly, nonatomic) NSColor *itemBackgroundDarkerColor; // @synthesize itemBackgroundDarkerColor=_itemBackgroundDarkerColor;
+@property(copy, nonatomic) NSColor *itemBackgroundDarkerColor; // @synthesize itemBackgroundDarkerColor=_itemBackgroundDarkerColor;
 @property(readonly, nonatomic) NSColor *itemBackgroundT139Color; // @synthesize itemBackgroundT139Color=_itemBackgroundT139Color;
-@property(readonly, nonatomic) NSColor *itemBackgroundLighterColor; // @synthesize itemBackgroundLighterColor=_itemBackgroundLighterColor;
-@property(readonly, nonatomic) NSColor *itemBackgroundColor; // @synthesize itemBackgroundColor=_itemBackgroundColor;
-@property(readonly, nonatomic) NSColor *itemForegroundColor; // @synthesize itemForegroundColor=_itemForegroundColor;
-@property(readonly, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(copy, nonatomic) NSColor *itemBackgroundLighterColor; // @synthesize itemBackgroundLighterColor=_itemBackgroundLighterColor;
+@property(copy, nonatomic) NSColor *itemBackgroundColor; // @synthesize itemBackgroundColor=_itemBackgroundColor;
+@property(copy, nonatomic) NSColor *itemForegroundColor; // @synthesize itemForegroundColor=_itemForegroundColor;
+@property(copy, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(readonly, nonatomic) NSColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property(readonly, nonatomic) NSColor *baseColor; // @synthesize baseColor=_baseColor;
 - (id)_curveEditorCollapsedLineForBaseColor:(id)arg1;
@@ -77,7 +79,8 @@ __attribute__((visibility("hidden")))
 - (id)_curveEditorMajorGuidelineForBaseColor:(id)arg1;
 - (id)_curveEditorBackgroundDeselectedColorForBaseColor:(id)arg1;
 - (id)_curveEditorBackgroundSelectedColorForBaseColor:(id)arg1;
-- (id)_roleDividerColorForBaseColor:(id)arg1 forScalingFactor:(double)arg2;
+- (id)_subroleDividerColorForBaseColor:(id)arg1 forScalingFactor:(double)arg2;
+- (id)_roleDividerColorForBaseColor:(id)arg1;
 - (id)_roleFocusActiveColorForBaseColor:(id)arg1;
 - (id)_roleOnOffCheckboxColorForBaseColor:(id)arg1;
 - (id)_componentWebbingBackgroundColorForBaseColor:(id)arg1 forScalingFactor:(double)arg2;
@@ -91,8 +94,8 @@ __attribute__((visibility("hidden")))
 - (id)_itemUnfocusedBackgroundColorForBaseColor:(id)arg1;
 - (id)_itemForegroundColorForBaseColor:(id)arg1;
 - (id)_itemBackgroundT139ColorForBaseColor:(id)arg1;
-- (id)_itemBackgroundLighterColorForBaseColor:(id)arg1;
-- (id)_itemBackgroundDarkerColorForBaseColor:(id)arg1;
+- (id)_itemBackgroundLighterColorForBackgroundColor:(id)arg1;
+- (id)_itemBackgroundDarkerColorForBackgroundColor:(id)arg1;
 - (id)_itemBackgroundColorForBaseColor:(id)arg1;
 - (id)_laneForegroundColorForBaseColor:(id)arg1;
 - (id)_laneBackgroundColorForBaseColor:(id)arg1;

@@ -210,7 +210,6 @@
 - (void)aquireWriteLock;
 - (void)releaseReadLock;
 - (void)aquireReadLock;
-- (id)parentLayerForItemComponentFragment:(id)arg1;
 - (void)setCurveEditorDraggedItem:(id)arg1;
 - (void)setSuspendLayerUpdatesForAnchoredClips:(BOOL)arg1;
 @property(readonly) BOOL isScrolling;
@@ -219,7 +218,8 @@
 - (void)beginTrackingItems:(id)arg1 enumeratingWithBlock:(CDUnknownBlockType)arg2;
 - (void)beginTrackingItems:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)tooltipOverrideForItem:(id)arg1;
-- (void)startEditingTitleForItem:(id)arg1;
+- (id)clickedItemComponent;
+- (void)startEditingTitleForItemsSelected;
 - (struct CGRect)adjustedHitTargetForRect:(struct CGRect)arg1;
 - (void)setRenderInfoNeedsDisplay;
 - (id)_timecodeAtTime:(CDStruct_1b6d18a9)arg1;
@@ -250,6 +250,8 @@
 - (id)_itemsInContainer:(id)arg1 intersectingLocation:(double)arg2;
 - (void)deselectAll:(id)arg1;
 - (void)selectAll:(id)arg1;
+- (id)_expandSelectionForSelectAll:(id)arg1;
+- (void)_HACK_filterNonSelectableItems:(id)arg1;
 - (void)_selectAllInMultipleTracksMode;
 - (void)selectClipAtPlayhead:(id)arg1;
 - (id)_itemAtTime:(CDStruct_1b6d18a9)arg1 inTrack:(id)arg2;
@@ -450,6 +452,7 @@
 @property(nonatomic) BOOL wraps;
 - (void)_resetMarginsAndPadding;
 - (void)_hackFirstLineFragmentWhenSwitchingToWrappingMode:(BOOL)arg1;
+- (void)cancelDelayLayoutUpdate;
 - (double)distanceToPrimarySpineForItemComponent:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (id)itemAtPoint:(struct CGPoint)arg1;
 - (void)_delayLayoutUpdate;
@@ -496,9 +499,12 @@
 @property(readonly, nonatomic) TLKLayoutMetrics *layoutMetrics;
 - (BOOL)notifyWillOpenClosePrecisionEditor:(BOOL)arg1 leftItem:(id)arg2 rightItem:(id)arg3 transition:(id)arg4;
 - (BOOL)notifyDoubleClickedItem:(id)arg1 part:(id)arg2;
+- (void)viewDidChangeVisibleRect:(struct CGRect)arg1;
+- (void)viewDidReload;
 - (void)didUpdateLayersWithClipRect:(struct CGRect)arg1;
 - (void)willUpdateLayersWithClipRect:(struct CGRect)arg1;
 - (void)setNeedsDisplayForItems:(id)arg1;
+- (void)reloadDataPreservingState;
 - (void)reloadData;
 - (void)_updateFilmstripItems:(id)arg1;
 - (void)reloadPendingChangesWithAnimation:(BOOL)arg1 afterDelay:(double)arg2;
@@ -507,6 +513,7 @@
 - (void)reloadPendingHeightChangesWithAnimation:(BOOL)arg1;
 - (void)reloadPendingChangesWithAnimation:(BOOL)arg1 viewState:(id)arg2;
 - (void)reloadPendingChangesWithAnimation:(BOOL)arg1;
+- (void)queueUpdatedObjectsForDisplay:(id)arg1 ofType:(id)arg2;
 - (void)queueUpdatedObjectsForLayout:(id)arg1 ofType:(id)arg2;
 - (void)queueUpdatedObjectsForReload:(id)arg1 ofType:(id)arg2;
 - (void)queueDeletedObjectsForReload:(id)arg1 ofType:(id)arg2;
@@ -530,6 +537,7 @@
 @property(readonly) TLKGuideLayer *guideLayer;
 - (id)framesForItemComponent:(id)arg1;
 - (id)framesForItem:(id)arg1;
+- (struct CGRect)_layerFrameForPotentiallyOffscreenItemComponentFragment:(id)arg1;
 - (id)framesForComponentInfo:(id)arg1;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromLayer:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toLayer:(id)arg2;
@@ -665,6 +673,13 @@
 - (void)_updateLayoutManagersInVisibleRect:(struct CGRect)arg1;
 - (void)synchronizeLayerAppearanceForItems:(id)arg1;
 - (void)_synchronizeLayerSelectionMasks;
+- (id)_ancestorContainersForItem:(id)arg1;
+- (BOOL)_doesSelectionContainContainersOfParentOfItem:(id)arg1;
+- (BOOL)_doesSelectionContainParentOfItem:(id)arg1;
+- (BOOL)_doesSelectionContainParentOrContainersOfParentOfItem:(id)arg1;
+- (BOOL)_doesSelectionContainAnyComponentOfItem:(id)arg1;
+- (BOOL)_doesItemWantAnchor:(id)arg1;
+- (void)_updateAnchorVisibilityForItem:(id)arg1;
 - (void)_updateAnchorVisibilityForItems:(id)arg1;
 - (void)_reloadVisibleLayers;
 - (id)_addContentLayerWithName:(id)arg1 toLayer:(id)arg2 layerClass:(Class)arg3;

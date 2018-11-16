@@ -6,16 +6,15 @@
 
 #import "LKTextFieldCell.h"
 
-@class FFMediaSidebarNode;
+@class FFWeakPointerValue;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaSidebarCell : LKTextFieldCell
 {
-    FFMediaSidebarNode *_node;
     int _lastEditableState;
+    FFWeakPointerValue *_node;
 }
 
-@property(retain, nonatomic) FFMediaSidebarNode *node; // @synthesize node=_node;
 - (void)showDefinitionForAttributedString:(id)arg1 range:(struct _NSRange)arg2 options:(id)arg3 baselineOriginProvider:(CDUnknownBlockType)arg4;
 - (void)_drawRolloverAdornment:(struct CGRect)arg1 inView:(id)arg2;
 - (void)_drawAdornment:(struct CGRect)arg1 inView:(id)arg2;
@@ -42,6 +41,8 @@ __attribute__((visibility("hidden")))
 - (id)_iconImage;
 - (double)_iconWidth;
 - (BOOL)_displaysIcon;
+- (id)node;
+- (void)setNode:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 

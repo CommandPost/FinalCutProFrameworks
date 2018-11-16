@@ -10,6 +10,11 @@
 {
 }
 
++ (id)sharePanelBrickAddButtonColor;
++ (id)sharePanelBrickRemoveButtonColor;
++ (id)sharePanelBrickSelectedBackgroundColor;
++ (id)sharePanelBrickUnselectedBackgroundColor;
++ (id)sharePanelBrickListBackgroundColor;
 + (id)windowTitlebarTextInactive;
 + (id)windowTitlebarTextEngraveInactive;
 + (id)windowTitlebarTextEngraveHUDInactive;
@@ -142,6 +147,7 @@
 + (id)ruleEditorSliceSeparatorShadowColor;
 + (id)ruleEditorSliceBackgroundColor;
 + (id)ruleEditorRowSeparator;
++ (id)roleEditorNoCaptionsFontColor;
 + (id)roleEditorRoleRowFontColor;
 + (id)roleEditorHeaderRowFontColor;
 + (id)roleEditorShowHideFontColor;
@@ -387,6 +393,9 @@
 + (id)dialDimpleOutlineColor;
 + (id)dialDimpleBottomHUDColor;
 + (id)dialDimpleBottomColor;
++ (id)timelineIndexCaptionErrorHighlightColor;
++ (id)timelineIndexCaptionErrorLabelColor;
++ (id)timelineIndexCaptionLabelColor;
 + (id)timelineIndexToggleDiamondIndicatorColor;
 + (id)dataListSubRoleTextColor;
 + (id)dataListRoleGroupTextColor;

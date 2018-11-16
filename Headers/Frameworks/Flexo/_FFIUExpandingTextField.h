@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)intrinsicContentSize;
 - (void)layout;
 - (void)setNeedsLayout:(BOOL)arg1;
+- (BOOL)becomeFirstResponder;
 
 @end
 

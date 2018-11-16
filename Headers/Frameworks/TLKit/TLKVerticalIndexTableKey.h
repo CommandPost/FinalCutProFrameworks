@@ -20,6 +20,8 @@
 @property(readonly, nonatomic) TLKItemLaneInfo *laneInfo; // @synthesize laneInfo=_laneInfo;
 @property(readonly, nonatomic) id <TLKVerticalIndexing> verticalIndexValue; // @synthesize verticalIndexValue=_verticalIndexValue;
 - (BOOL)isValidForLayoutGraphNode:(id)arg1;
+- (long long)compareVerticalIndexOrder:(id)arg1;
+- (long long)compareLaneOrder:(id)arg1;
 - (long long)compare:(id)arg1;
 - (long long)visualOrderCompare:(id)arg1;
 - (unsigned long long)hash;

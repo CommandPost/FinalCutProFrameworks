@@ -6,7 +6,7 @@
 
 #import "OZFolderGroupController.h"
 
-@class FFAddMaskButton, FFAnchoredObject, FFButtonWithRolloverHighlight, FFChannelChangeController, FFEffect, FFEffectStack, LKButton, LKMenu, LKPopUpButton, NSTrackingArea;
+@class FFAddMaskButton, FFAnchoredObject, FFButtonWithRolloverHighlight, FFChannelChangeController, FFEffect, LKButton, LKMenu, LKPopUpButton, NSTrackingArea;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleColorHeaderController : OZFolderGroupController
@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
     LKButton *_addBalanceButton;
     int _keyFrameAtTime;
     LKMenu *_viewMenu;
-    FFEffectStack *_observedEffects;
     FFAnchoredObject *_selectedItem;
     FFEffect *_selectedEffect;
     BOOL _outsideCorrection;
@@ -36,6 +35,9 @@ __attribute__((visibility("hidden")))
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 - (struct OZChannelBase *)associatedChannel;
+- (void)_libraryClosed:(id)arg1;
+- (void)_removeSelectedItemObserving;
+- (void)_addSelectedItemObserving;
 - (void)didBuildUI;
 - (void)update;
 - (void)getSelectedControllers:(id)arg1 doShallowSearch:(BOOL)arg2;

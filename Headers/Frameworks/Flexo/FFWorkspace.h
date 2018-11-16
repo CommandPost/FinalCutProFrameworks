@@ -18,9 +18,10 @@
     NSMenu *_copyToLibraryMenu;
     NSMenu *_moveToLibraryMenu;
     NSArray *_tagNames;
-    BOOL _closingDocumentsForAppTermination;
     BOOL _isRestoringDocuments;
     FFFileSet *_recentFileSet;
+    BOOL _applicationIsTerminating;
+    BOOL _rememberActiveDocumentsDisabled;
 }
 
 + (id)defaultWorkspace;
@@ -33,6 +34,7 @@
 + (void)setDefaultURL:(id)arg1 forKey:(id)arg2;
 + (id)defaultURLForKey:(id)arg1 allowTrash:(BOOL)arg2;
 + (id)defaultURLForKey:(id)arg1;
+@property(nonatomic) BOOL rememberActiveDocumentsDisabled; // @synthesize rememberActiveDocumentsDisabled=_rememberActiveDocumentsDisabled;
 - (void)undoNewLibrary:(id)arg1;
 - (void)redoNewLibrary:(id)arg1;
 - (id)makeNewLibrary:(id)arg1 createDefaultEvent:(BOOL)arg2 error:(id *)arg3;
@@ -65,12 +67,13 @@
 - (id)itemsCopyToLibraryMenu;
 - (id)newLibraryDocumentsMenuWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)invalidateLibraryMenus;
+- (void)prepareForApplicationTerminate;
 - (void)notifyDocumentRemoved:(id)arg1;
 - (void)notifyDocumentAdded:(id)arg1;
 - (id)readActiveDocumentURLs;
-- (void)closeDocumentsForApplicationTermination;
+- (void)closeAllDocumentsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_documentController:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(void *)arg3;
-- (void)_rememberActiveDocuments;
+- (void)rememberActiveDocuments;
 - (void)_rememberActiveDocumentsSoon;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1;

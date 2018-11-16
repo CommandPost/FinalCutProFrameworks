@@ -36,6 +36,7 @@
 - (id)getCursor;
 - (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
 - (void)modifyAdjustmentsWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 bufferData:(char *)arg4 bufferWidth:(double)arg5 bufferHeight:(double)arg6 bytesPerRow:(unsigned int)arg7;
+- (id)newPixelBufferClampedTo8Bits;
 - (BOOL)wantsHDRDelinearizedForWorkingSpace:(int)arg1;
 - (id)effect;
 - (long long)effectCountForReference;

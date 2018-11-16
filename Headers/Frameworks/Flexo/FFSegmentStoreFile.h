@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)frameExists:(unsigned int)arg1;
 - (long long)startFrame;
 - (int)setFrameData:(id)arg1 sampleNumber:(unsigned int)arg2 pixelTransformIndex1:(unsigned long long)arg3 pixelTransformIndex2:(unsigned long long)arg4;
-- (id)newFrameData:(const struct _CleanSegmentStoreFrameInfo *)arg1 sampleObj:(id)arg2;
+- (id)newFrameData:(const struct _CleanSegmentStoreFrameInfo *)arg1 sampleObj:(id)arg2 error:(id *)arg3;
 - (struct _CleanSegmentStoreFrameInfo)lookupOffsetInfoFor:(long long)arg1;
 - (void)ensureFlushedToDisk;
 - (int)fileDescriptor;

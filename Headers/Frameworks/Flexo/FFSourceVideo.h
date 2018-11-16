@@ -11,8 +11,10 @@
 }
 
 + (Class)streamClass;
++ (void)waitForQueuedDeferredSourceToFinishForLibrary:(id)arg1;
 + (BOOL)waitForQueuedDeferredSourcesToFinish:(id)arg1;
-+ (void)enqueueDeferredSourceRelease:(id)arg1;
++ (void)enqueueDeferredSourceRelease:(id)arg1 library:(id)arg2;
++ (void)enableDeferredSourceDeletions:(BOOL)arg1 forLibrary:(id)arg2;
 - (id)copyRenderInfoForVideoProps:(id)arg1 context:(id)arg2;
 - (id)copyRenderInfoForVideoProps:(id)arg1 context:(id)arg2 csChoice:(int)arg3;
 - (CDStruct_1b6d18a9)sampleDurForCacheLookup;

@@ -19,8 +19,8 @@
 - (unsigned int)selectedTitleSourceNodeID;
 - (BOOL)selectedTitleSourceIsNewPlaceholder;
 - (BOOL)selectedTitleSourceIsNone;
-- (id)localizedSummaryFormatString;
 - (id)defaultNibName;
+- (id)initWithDocument:(id)arg1;
 
 @end
 

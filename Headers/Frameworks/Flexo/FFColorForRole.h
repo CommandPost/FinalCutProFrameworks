@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)colorSchemeForIndex:(long long)arg1;
 + (id)colorSchemeForRolesOfObject:(id)arg1;
 + (id)colorSchemeForAudioRoles:(id)arg1 videoRoles:(id)arg2 inLibrary:(id)arg3;
++ (id)colorSchemeForCaption;
 + (id)colorSchemeForTransition;
 + (id)colorSchemeForDisabledAudioRole;
 + (id)colorSchemeForNoRoles;

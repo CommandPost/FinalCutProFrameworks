@@ -18,6 +18,7 @@
 
 + (id)userDefaultsForObject:(id)arg1 createFromObject:(id)arg2;
 + (id)userDefaultsForObject:(id)arg1 create:(BOOL)arg2;
++ (id)userDefaultsForObject:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 - (void)removeObjectForKey:(id)arg1;

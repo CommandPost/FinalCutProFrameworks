@@ -35,7 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)_resyncLanesUnderRootToLibraryRoles;
 - (int)_typeOfRoleUID:(id)arg1 inLibrary:(id)arg2;
 - (id)_orderedSubRoleUIDsForMainRoleUID:(id)arg1 inLibrary:(id)arg2;
-- (id)_orderedMainRoleUIDsForAudioNotVideo:(BOOL)arg1 inLibrary:(id)arg2;
+- (id)orderedMainRoleUIDsWithRoleType:(int)arg1 inLibrary:(id)arg2;
+- (id)orderedMainRolesWithRoleType:(int)arg1 inLibrary:(id)arg2;
 - (void)_indexAudioSummary:(id)arg1 forTopLevelItem:(id)arg2;
 - (void)_indexAudioComponents:(id)arg1 forTopLevelItem:(id)arg2;
 - (void)dealloc;

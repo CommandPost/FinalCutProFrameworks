@@ -16,24 +16,32 @@
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFLibrary, FFRole, FFRoleEditorDFRController, FFRoleEditorOutlineView, NSButton, NSMutableArray, NSMutableAttributedString, NSPopover, NSScrollView, NSString, NSTableView, NSView;
+@class FFLibrary, FFRole, FFRoleEditorDFRController, FFRoleEditorOutlineView, LKTabView, NSButton, NSMutableArray, NSMutableAttributedString, NSPopover, NSScrollView, NSString, NSTableView, NSView;
 
 @interface FFRoleEditorController : NSWindowController <FFRoleEditorOutlineViewProtocol, FFRoleColorPickerTableViewProtocol, NSOutlineViewDataSource, NSOutlineViewDelegate, NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSTextFieldDelegate, NSPopoverDelegate>
 {
     FFLibrary *_library;
-    NSMutableArray *_rootMainRoles;
+    NSMutableArray *_rootAllMainRoles;
+    NSMutableArray *_rootMediaMainRoles;
     NSMutableArray *_rootVideoRoles;
     NSMutableArray *_rootAudioRoles;
     FFRole *_rootVideoHeaderRole;
     FFRole *_rootAudioHeaderRole;
+    NSMutableArray *_rootAccessibilityMainRoles;
+    NSMutableArray *_rootCaptionRoles;
+    FFRole *_rootCaptionHeaderRole;
     NSMutableArray *_actions;
     BOOL _observingFirstResponder;
+    unsigned long long _openToTabChoice;
     FFRoleEditorDFRController *_dfrController;
     long long _insideControlTextDidEndEditing;
     BOOL _runningModal;
     BOOL _saveBeforeClosing;
-    FFRoleEditorOutlineView *_outlineView;
-    NSScrollView *_scrollView;
+    LKTabView *_tabView;
+    FFRoleEditorOutlineView *_mediaOutlineView;
+    NSScrollView *_mediaScrollView;
+    FFRoleEditorOutlineView *_accessibilityOutlineView;
+    NSScrollView *_accessibilityScrollView;
     NSTableView *_colorPickerTableView;
     NSView *_colorPickerHUDView;
     NSButton *_applyButton;
@@ -45,25 +53,33 @@
     NSMutableAttributedString *_showText;
     NSMutableAttributedString *_hideText;
     NSMutableAttributedString *_addSubroleText;
+    NSMutableAttributedString *_addLanguageText;
     NSMutableAttributedString *_videoText;
     NSMutableAttributedString *_audioText;
+    NSMutableAttributedString *_captionText;
     NSMutableAttributedString *_addVideoText;
     NSMutableAttributedString *_addAudioText;
+    NSMutableAttributedString *_addCaptionText;
     NSPopover *_colorPickerHUD;
     FFRole *_colorPickerRole;
     long long _colorPickerRow;
+    FFRole *_targetMainRoleForLanguageSubrole;
 }
 
 + (id)_nameForNewSubRoleInMainRole:(id)arg1;
 + (BOOL)_roleName:(id)arg1 alreadyUsedByMainRole:(id)arg2 orOneOfItsSubrolesOtherThan:(id)arg3;
 + (id)openedInstance;
+@property(retain, nonatomic) FFRole *targetMainRoleForLanguageSubrole; // @synthesize targetMainRoleForLanguageSubrole=_targetMainRoleForLanguageSubrole;
 @property(nonatomic) long long colorPickerRow; // @synthesize colorPickerRow=_colorPickerRow;
 @property(retain, nonatomic) FFRole *colorPickerRole; // @synthesize colorPickerRole=_colorPickerRole;
 @property(retain, nonatomic) NSPopover *colorPickerHUD; // @synthesize colorPickerHUD=_colorPickerHUD;
+@property(retain, nonatomic) NSMutableAttributedString *addCaptionText; // @synthesize addCaptionText=_addCaptionText;
 @property(retain, nonatomic) NSMutableAttributedString *addAudioText; // @synthesize addAudioText=_addAudioText;
 @property(retain, nonatomic) NSMutableAttributedString *addVideoText; // @synthesize addVideoText=_addVideoText;
+@property(retain, nonatomic) NSMutableAttributedString *captionText; // @synthesize captionText=_captionText;
 @property(retain, nonatomic) NSMutableAttributedString *audioText; // @synthesize audioText=_audioText;
 @property(retain, nonatomic) NSMutableAttributedString *videoText; // @synthesize videoText=_videoText;
+@property(retain, nonatomic) NSMutableAttributedString *addLanguageText; // @synthesize addLanguageText=_addLanguageText;
 @property(retain, nonatomic) NSMutableAttributedString *addSubroleText; // @synthesize addSubroleText=_addSubroleText;
 @property(retain, nonatomic) NSMutableAttributedString *hideText; // @synthesize hideText=_hideText;
 @property(retain, nonatomic) NSMutableAttributedString *showText; // @synthesize showText=_showText;
@@ -77,15 +93,19 @@
 @property(nonatomic) NSButton *applyButton; // @synthesize applyButton=_applyButton;
 @property(nonatomic) NSView *colorPickerHUDView; // @synthesize colorPickerHUDView=_colorPickerHUDView;
 @property(nonatomic) NSTableView *colorPickerTableView; // @synthesize colorPickerTableView=_colorPickerTableView;
-@property(nonatomic) NSScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property(nonatomic) FFRoleEditorOutlineView *outlineView; // @synthesize outlineView=_outlineView;
+@property(nonatomic) NSScrollView *accessibilityScrollView; // @synthesize accessibilityScrollView=_accessibilityScrollView;
+@property(nonatomic) FFRoleEditorOutlineView *accessibilityOutlineView; // @synthesize accessibilityOutlineView=_accessibilityOutlineView;
+@property(nonatomic) NSScrollView *mediaScrollView; // @synthesize mediaScrollView=_mediaScrollView;
+@property(nonatomic) FFRoleEditorOutlineView *mediaOutlineView; // @synthesize mediaOutlineView=_mediaOutlineView;
+@property(nonatomic) LKTabView *tabView; // @synthesize tabView=_tabView;
 - (void)_removeFirstResponderObserving;
 - (void)_addFirstResponderObserving;
 - (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
+- (BOOL)_canDragRole:(id)arg1;
 - (void)outlineView:(id)arg1 draggingSession:(id)arg2 willBeginAtPoint:(struct CGPoint)arg3 forItems:(id)arg4;
 - (void)outlineView:(id)arg1 draggingSession:(id)arg2 endedAtPoint:(struct CGPoint)arg3 operation:(unsigned long long)arg4;
 - (void)outlineView:(id)arg1 updateDraggingItemsForDrag:(id)arg2;
-- (void)_updateDragDropSelection;
+- (void)_updateDragDropSelectionForOutlineView:(id)arg1;
 - (unsigned long long)outlineView:(id)arg1 validateDrop:(id)arg2 proposedItem:(id)arg3 proposedChildIndex:(long long)arg4;
 - (BOOL)outlineView:(id)arg1 acceptDrop:(id)arg2 item:(id)arg3 childIndex:(long long)arg4;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;
@@ -105,20 +125,26 @@
 - (void)_showColorPickerOverView:(id)arg1 onRow:(long long)arg2;
 - (BOOL)isColorPickerHUDDisplayed;
 - (long long)_roleColorIndexForColorPickerRowIndex:(long long)arg1 colIndex:(long long)arg2;
-- (id)_nameForNewMainRoleOfType:(int)arg1;
-- (BOOL)_roleName:(id)arg1 alreadyUsedByMainRoleOtherThan:(id)arg2;
 - (id)_reservedRoleNameInConflictWith:(id)arg1;
 - (BOOL)_canDeleteRole:(id)arg1;
 - (BOOL)_canRenameRole:(id)arg1;
 - (void)showHideSubRoles:(id)arg1;
 - (void)addMainRole:(id)arg1;
 - (void)addSubRole:(id)arg1;
+- (void)_showAvailableLocalesPopupForNewLanguageSubRoleInMainRole:(id)arg1 overView:(id)arg2;
+- (void)_showAvailableCaptionFormatsPopupOverView:(id)arg1;
+- (void)_availableLanguageIdentifiersMenuSelected:(id)arg1;
+- (void)_availableCaptionFormatsMenuSelected:(id)arg1;
 - (void)removeRole:(id)arg1;
+- (id)activeOutlineView;
+- (id)outlineViewForRole:(id)arg1;
+- (id)ancesterOutlineViewForView:(id)arg1;
+- (id)rootMainRolesForOutlineView:(id)arg1;
 - (void)openColorPicker:(id)arg1;
 - (void)cancelEditorWindow:(id)arg1;
 - (void)saveAndCloseEditorWindow:(id)arg1;
 - (void)mouseOverRole:(id)arg1 forOutlineView:(id)arg2;
-- (void)_hoverRoleHasChanged;
+- (void)_hoverRoleHasChangedForOutlineView:(id)arg1;
 - (void)_updateTableCellView:(id)arg1 forRole:(id)arg2;
 - (id)_tableCellViewForRole:(id)arg1;
 - (void)_hideSubRolesForMainRole:(id)arg1;
@@ -144,8 +170,9 @@
 - (void)_debugLogActions;
 - (void)_scrollRoleIntoView:(id)arg1;
 - (void)_addMainRole:(id)arg1;
-- (void)_addMainRoleOfRoleType:(int)arg1;
+- (void)_addMainRoleOfRoleType:(int)arg1 withAttributes:(id)arg2;
 - (void)_addSubRole:(id)arg1 toMainRole:(id)arg2;
+- (void)_addSubRoleOfType:(int)arg1 withLanguageIdentifier:(id)arg2 toMainRole:(id)arg3;
 - (void)_addSubRoleWithName:(id)arg1 toMainRole:(id)arg2;
 - (BOOL)_tryToEndEditing;
 - (BOOL)_isEditing;
@@ -155,7 +182,7 @@
 - (void)outlineView:(id)arg1 didAddRowView:(id)arg2 forRow:(long long)arg3;
 - (double)outlineView:(id)arg1 heightOfRowByItem:(id)arg2;
 - (void)outlineViewClicked:(id)arg1;
-- (void)_removeItemAtRow:(long long)arg1;
+- (void)_removeItemAtRow:(long long)arg1 outlineView:(id)arg2;
 - (BOOL)_hasPendingMergeOrMoveIntoToRole:(id)arg1;
 - (id)outlineView:(id)arg1 viewForTableColumn:(id)arg2 item:(id)arg3;
 - (id)outlineView:(id)arg1 objectValueForTableColumn:(id)arg2 byItem:(id)arg3;
@@ -187,7 +214,7 @@
 - (id)touchBar;
 - (void)dealloc;
 - (void)_setupAttributedStrings;
-- (id)initWithLibrary:(id)arg1;
+- (id)initWithLibrary:(id)arg1 openToTabChoice:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

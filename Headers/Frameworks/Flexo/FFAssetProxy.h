@@ -13,6 +13,7 @@
 + (id)copyClassDescription;
 - (void)setCustomCameraLUTProps:(id)arg1;
 - (void)setLogProcessingMode:(long long)arg1;
+- (void)setRawToLogConversion:(long long)arg1;
 - (void)setColorSpaceOverride:(long long)arg1;
 - (unsigned long long)audioSourceCount;
 - (BOOL)canRebuildAudioProperties;

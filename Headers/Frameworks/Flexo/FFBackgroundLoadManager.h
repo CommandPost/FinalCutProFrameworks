@@ -8,11 +8,13 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBackgroundTask, NSMutableArray, NSRecursiveLock;
+@class FFBackgroundLoadRequest, FFBackgroundTask, NSConditionLock, NSMutableArray, NSRecursiveLock;
 
 @interface FFBackgroundLoadManager : NSObject <FFBackgroundTaskTarget>
 {
     NSMutableArray *_requests;
+    FFBackgroundLoadRequest *_inFlightRequest;
+    NSConditionLock *_inFlightRequestBlocker;
     NSRecursiveLock *_requestsLock;
     FFBackgroundTask *_task;
 }
@@ -22,11 +24,14 @@
 + (id)sharedInstance;
 - (id)librariesInUse:(id)arg1;
 - (id)assetsInUse:(id)arg1;
+- (void)cancelRequestsUsingFilterBlock:(CDUnknownBlockType)arg1;
+- (void)_internalCancelRequestsUsingFilterBlock:(CDUnknownBlockType)arg1;
 - (void)moveRequestToFrontOfQueue:(id)arg1;
 - (void)enqueueRequest:(id)arg1;
 - (void)_waitForBGTaskToFinish;
 - (void)_cancelBGTask;
 - (void)_restartBackgroundTask;
+- (int)backgroundTaskType;
 - (id)newBackgroundTask;
 - (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
 - (id)taskLoadingFormatString;

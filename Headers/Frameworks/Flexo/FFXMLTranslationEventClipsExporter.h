@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_eventClipsLibraryMap;
 }
 
+- (void)_libraryClosed:(id)arg1;
 - (id)selectedSequences;
 - (BOOL)upgradeLegacyiMovieProjects:(id *)arg1;
 - (void)_calculateSourceNameAndIcon;

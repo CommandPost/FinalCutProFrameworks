@@ -6,12 +6,11 @@
 
 #import "NSOperation.h"
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMapTable, NSMutableArray;
 
 @interface FFVerticalOrderManager : NSOperation
 {
-    NSMutableArray *_lanesP;
-    NSMutableArray *_lanesN;
+    NSMapTable *_lanes;
     long long _laneMinIndex;
     long long _laneMaxIndex;
     NSMutableArray *_itemInfos;
@@ -48,6 +47,7 @@
 - (id)description;
 - (id)_itemsAtVerticalIndex:(long long)arg1;
 - (BOOL)isInitialized;
+- (id)_keyForIndex:(int)arg1;
 - (void)_releaseItems;
 - (void)main;
 - (void)dealloc;

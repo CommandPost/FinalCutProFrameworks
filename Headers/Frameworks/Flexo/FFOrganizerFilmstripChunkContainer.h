@@ -68,13 +68,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasLayer;
 - (void)addChunk:(id)arg1;
 - (BOOL)chunkShouldHaveDuration:(id)arg1;
+- (BOOL)chunkShouldHaveCCBadge:(id)arg1;
 - (BOOL)chunkShouldHaveHFRBadge:(id)arg1;
-- (BOOL)chunkShouldHaveClipBadge:(id)arg1;
 - (BOOL)chunkShouldHave360Badge:(id)arg1;
 - (BOOL)chunkShouldHavePSDBadge:(id)arg1;
 - (BOOL)chunkShouldHaveSynchedClipBadge:(id)arg1;
 - (BOOL)chunkShouldHaveMultiBadge:(id)arg1;
-- (BOOL)chunkShouldHaveComposedBadge:(id)arg1;
+- (BOOL)chunkShouldHaveCompoundBadge:(id)arg1;
 - (BOOL)chunkShouldHaveVariantBadge:(id)arg1;
 - (void)replaceChunk:(id)arg1 withChunk:(id)arg2;
 - (BOOL)isEquivalentToFilmstripChunkContainer:(id)arg1;

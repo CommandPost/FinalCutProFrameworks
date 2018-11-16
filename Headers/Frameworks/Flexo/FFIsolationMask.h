@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)OSCWasResigned:(id)arg1;
 - (id)onscreenControlsForEffectStack:(id)arg1;
 - (id)parameterControllerClassName;
-- (_Bool)setNuvoKeyer:(HGRef_0de1db7e *)arg1 initialNode:(HGRef_0de1db7e *)arg2 mBW:(struct Mat4f *)arg3 atTime:(CDStruct_1b6d18a9)arg4 shapeMaskBefore:(_Bool)arg5;
+- (_Bool)setNuvoKeyer:(HGRef_265f9e4c *)arg1 initialNode:(HGRef_265f9e4c *)arg2 mBW:(struct Mat4f *)arg3 atTime:(CDStruct_1b6d18a9)arg4 shapeMaskBefore:(_Bool)arg5;
 - (id)colorIsolationAverageColor:(CDStruct_1b6d18a9)arg1;
 - (id)keyframeableChannels;
 - (id)matrixChannel23;

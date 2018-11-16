@@ -26,6 +26,7 @@
     TLKContainerInfo *_enclosingContainerInfo;
     NSString *_name;
     NSColor *_backgroundColor;
+    long long _layoutRegion;
     TLKBoxMetrics *_boxMetrics;
     long long _laneIndex;
     TLKItemLaneInfo *_parentLaneInfo;
@@ -35,6 +36,7 @@
 @property(nonatomic) TLKItemLaneInfo *parentLaneInfo; // @synthesize parentLaneInfo=_parentLaneInfo;
 @property(nonatomic) long long laneIndex; // @synthesize laneIndex=_laneIndex;
 @property(retain, nonatomic) TLKBoxMetrics *boxMetrics; // @synthesize boxMetrics=_boxMetrics;
+@property(nonatomic) long long layoutRegion; // @synthesize layoutRegion=_layoutRegion;
 @property(copy, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) TLKContainerInfo *enclosingContainerInfo; // @synthesize enclosingContainerInfo=_enclosingContainerInfo;
@@ -58,13 +60,13 @@
 - (void)removeItemLaneFragmentsObject:(id)arg1;
 - (void)addItemLaneFragmentsObject:(id)arg1;
 @property(copy, nonatomic) NSSet *itemLaneFragments;
+@property(readonly, nonatomic) NSArray *itemComponentsSortedByTime;
 - (void)removeItemComponentInfoRecordsObject:(id)arg1;
 - (void)addItemComponentInfoRecordsObject:(id)arg1;
 @property(copy, nonatomic) NSSet *itemComponentInfoRecords;
 @property(nonatomic) BOOL isBackgroundMusicLane;
 @property(nonatomic, getter=isExpanded) BOOL expanded;
 @property(readonly, nonatomic) struct CGColor *backgroundColorRef;
-@property(readonly, nonatomic) long long layoutRegion;
 @property(readonly, nonatomic) BOOL isAbovePrimaryLane;
 @property(readonly, nonatomic) BOOL isPrimaryLane;
 @property(readonly, copy) NSString *debugDescription;

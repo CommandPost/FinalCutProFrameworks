@@ -52,7 +52,7 @@
 - (struct CGRect)getExpectedEncodedPixelBounds:(int)arg1;
 - (id)getPixelFormatForQuality:(int)arg1;
 - (int)getFieldOrderForSampleNum:(long long)arg1 requestedQuality:(int)arg2 retFieldMode:(const struct __CFString **)arg3;
-- (id)newFrameData:(long long)arg1 threadInfo:(id)arg2 sampleObj:(id)arg3;
+- (id)newFrameData:(long long)arg1 threadInfo:(id)arg2 sampleObj:(id)arg3 error:(id *)arg4;
 - (BOOL)frameExists:(int)arg1;
 - (BOOL)quickApproximateFrameExists:(int)arg1;
 - (BOOL)ageOutCompressor:(BOOL)arg1;

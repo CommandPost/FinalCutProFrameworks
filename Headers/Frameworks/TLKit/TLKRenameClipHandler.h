@@ -16,7 +16,7 @@
 }
 
 - (void)stringEditorView:(id)arg1 didEndEditing:(id)arg2;
-- (void)startEditingTitleForItem:(id)arg1;
+- (void)startEditingTitleForItemComponent:(id)arg1;
 
 @end
 

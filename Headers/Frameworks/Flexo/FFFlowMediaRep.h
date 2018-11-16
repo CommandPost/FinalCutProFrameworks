@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (id)analysisURLs;
 - (void)drawVectorsIntoBuffer:(id)arg1 motionVector:(void *)arg2 vectorRes:(unsigned int)arg3 drawArrow:(BOOL)arg4 colorSpace:(struct CGColorSpace *)arg5;
 - (CDStruct_bdcb2b0d)segmentMD5ForMode:(long long)arg1;
-- (id)backgroundTask;
 - (struct CGRect)pixelSpaceFrameBounds;
 - (CDStruct_1b6d18a9)sampleDuration;
 - (unsigned int)flowResolution;
@@ -45,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithMedia:(id)arg1;
 - (BOOL)performOpticalFlowAnalysisWithMode:(long long)arg1 info:(id)arg2;
+- (void)_backgroundTaskCompleted;
 - (BOOL)opticalFlowAnalysisInBackgroundWithMode:(long long)arg1 info:(id)arg2;
 - (void)_runBackgroundFlowAnalysisTask:(id)arg1 onTask:(id)arg2;
 - (void)_runBackgroundHighQualityFlowAnalysisTask:(id)arg1 onTask:(id)arg2;

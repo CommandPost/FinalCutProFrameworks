@@ -12,11 +12,12 @@
 #import "FFSourceVideoOverrideCameraProjectionMode.h"
 #import "FFSourceVideoOverrideColorspace.h"
 #import "FFSourceVideoOverrideFieldDominance.h"
+#import "FFSourceVideoRAWToLogProtocol.h"
 
 @class FFVideoProps, NSCondition, NSMutableArray, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
-@interface FFSourceVideoFig : FFSourceVideo <FFSourceVideoOverrideAlphaProtocol, FFSourceVideoInvertAlphaProtocol, FFSourceVideoOverrideFieldDominance, FFSourceVideoOverrideColorspace, FFSourceVideoCameraLUTProcessingProtocol, FFSourceVideoOverrideCameraProjectionMode>
+@interface FFSourceVideoFig : FFSourceVideo <FFSourceVideoOverrideAlphaProtocol, FFSourceVideoInvertAlphaProtocol, FFSourceVideoOverrideFieldDominance, FFSourceVideoOverrideColorspace, FFSourceVideoRAWToLogProtocol, FFSourceVideoCameraLUTProcessingProtocol, FFSourceVideoOverrideCameraProjectionMode>
 {
     FFVideoProps *_trueNativeVideoProps;
     FFVideoProps *_nativeVideoProps;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
     BOOL _codecIs64BitVT;
     BOOL _codecIs32BitQT;
     unsigned int _codecType;
+    CDStruct_79c71658 _videoDimensions;
     BOOL _isReferenceMovie;
     BOOL _unsupportedReferenceMovie;
     BOOL _wantsOptimize;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
     NSCondition *_lockForImageInfoQualityCache;
     struct __CFDictionary *_imageInfoForQualityCache;
     struct CGRect _opaqueBounds;
+    int _rawToLogConversion;
     struct FFSourceColorConformBaseClass *_cameraLUTProcessingInfo;
     int _cameraLUTProcessingTargetColorSpace;
     _Bool _reportedAwfulFigNCLCGuess;
@@ -88,6 +91,9 @@ __attribute__((visibility("hidden")))
 - (void)setCameraLUTProcessingInfo:(struct FFSourceColorConformBaseClass *)arg1 targetColorSpace:(int)arg2;
 - (int)cameraLUTProcessingTargetColorSpace;
 - (struct FFSourceColorConformBaseClass *)cameraLUTProcessingInfo;
+- (void)setRAWToLogConversion:(int)arg1;
+- (int)rawToLogConversion;
+- (id)supportedRAWToLogConversions;
 - (BOOL)isOverrideColorSpaceSupported:(struct CGColorSpace *)arg1;
 - (struct CGColorSpace *)getNativeColorSpace;
 - (int)getNativeTaggedDominance;

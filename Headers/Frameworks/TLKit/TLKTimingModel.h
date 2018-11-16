@@ -59,6 +59,7 @@
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)_setupOneToOneMappingOfSecondsToPixels;
 - (id)init;
 
 @end

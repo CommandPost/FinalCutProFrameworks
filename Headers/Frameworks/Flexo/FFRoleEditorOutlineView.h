@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFRole *dropDstRole; // @synthesize dropDstRole=_dropDstRole;
 @property(retain, nonatomic) FFRole *dragSrcRole; // @synthesize dragSrcRole=_dragSrcRole;
 @property(retain, nonatomic) FFRole *hoverRole; // @synthesize hoverRole=_hoverRole;
+- (void)drawRect:(struct CGRect)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 - (void)mouseMoved:(id)arg1;

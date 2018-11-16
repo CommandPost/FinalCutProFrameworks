@@ -41,7 +41,9 @@
 @property(readonly, nonatomic) FFOrganizedLaneArranger *arranger; // @synthesize arranger=_arranger;
 @property(readonly, nonatomic) FFOrganizedLane *rootLane; // @synthesize rootLane=_rootLane;
 @property(nonatomic) BOOL suppressUpdates; // @synthesize suppressUpdates=_suppressUpdates;
-- (void)_updateSequenceOnWhatRolesAreDisabled;
+- (void)syncAllAudioVideoLaneEnables;
+- (void)syncAllCaptionLaneEnables;
+- (void)_syncLaneEnable:(id)arg1;
 - (void)persistLaneStatesToSequence;
 @property(readonly, nonatomic) BOOL hasFocusedLanes;
 @property(readonly, copy) NSString *description;
@@ -70,8 +72,11 @@
 - (void)setColorScheme:(id)arg1 forOrganizedLane:(id)arg2;
 - (id)colorScheme:(id)arg1;
 - (void)setName:(id)arg1 forOrganizedLane:(id)arg2;
-- (id)nameForOrganizedLane:(id)arg1;
 - (BOOL)canRenameOrganizedLane:(id)arg1;
+- (BOOL)pinnedStateForOrganizedLane:(id)arg1;
+- (void)setHidden:(BOOL)arg1 forOrganizedLane:(id)arg2;
+- (BOOL)hiddenForOrganizedLane:(id)arg1;
+- (BOOL)hidableForOrganizedLane:(id)arg1;
 - (void)setShowsComponents:(BOOL)arg1 forOrganizedLane:(id)arg2;
 - (BOOL)showsComponentsForOrganizedLane:(id)arg1;
 - (BOOL)canShowComponentsForOrganizedLane:(id)arg1;
@@ -99,8 +104,11 @@
 - (void)noteSequenceChangedWithChangeLog:(id)arg1;
 - (void)_rolesInLibraryChanged:(id)arg1;
 - (void)checkLanesAreUpToDate;
-@property(readonly, nonatomic) id <FFStorylineLane> storylineLaneFolderBelowSpine;
 - (id)topMostLaneForStorylineItem:(id)arg1;
+@property(readonly, nonatomic) id <FFStorylineLane> storylineLaneFolderBelowSpine;
+@property(readonly, nonatomic) id <FFStorylineLane> storylineLaneFolderCaptions;
+@property(readonly, nonatomic) id <FFStorylineLane> storylineLaneFolderAudio;
+@property(readonly, nonatomic) id <FFStorylineLane> storylineLaneFolderVideo;
 @property(readonly, nonatomic) id <FFStorylineLane> storylineLaneFolderAboveSpine;
 @property(readonly, nonatomic) FFAnchoredSequence *sequence;
 @property(readonly, nonatomic) id <FFStoryline> storyline;

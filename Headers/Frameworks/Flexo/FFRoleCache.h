@@ -12,12 +12,16 @@ __attribute__((visibility("hidden")))
 @interface FFRoleCache : NSObject
 {
     NSSet *_rolesCacheAll;
+    NSSet *_rolesCacheAudioAndVideoOnly;
     NSSet *_rolesCacheVideoOnly;
     NSSet *_rolesCacheAudioOnly;
+    NSSet *_rolesCacheCaptionOnly;
 }
 
 + (id)newRoleCacheWithRoles:(id)arg1;
+- (id)allRoles;
 - (id)audioAndVideoRoles;
+- (id)captionRoles;
 - (id)videoRoles;
 - (id)audioRoles;
 - (id)initWithRoles:(id)arg1;

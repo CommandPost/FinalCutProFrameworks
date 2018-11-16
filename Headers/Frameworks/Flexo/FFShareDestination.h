@@ -9,7 +9,7 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class CKAction, CKSetting, NSError, NSImage, NSString;
+@class CKAction, CKSetting, NSError, NSImage, NSSet, NSString;
 
 @interface FFShareDestination : NSObject <NSCoding, NSCopying>
 {
@@ -26,6 +26,8 @@
     struct CGSize _videoResolution;
     NSString *_uuid;
     NSError *_destinationError;
+    BOOL _canExcludeDisabledRoles;
+    NSSet *_embeddedCaptionRoles;
 }
 
 + (id)setting;
@@ -46,6 +48,8 @@
 + (id)standardDestinations:(id *)arg1;
 + (id)keyPathsForValuesAffectingAction;
 + (id)keyPathsForValuesAffectingDisplayName;
+@property(retain, nonatomic) NSSet *embeddedCaptionRoles; // @synthesize embeddedCaptionRoles=_embeddedCaptionRoles;
+@property(nonatomic) BOOL canExcludeDisabledRoles; // @synthesize canExcludeDisabledRoles=_canExcludeDisabledRoles;
 @property(copy, nonatomic) NSString *savedRenderFormatName; // @synthesize savedRenderFormatName=_savedRenderFormatName;
 @property(retain) NSError *destinationError; // @synthesize destinationError=_destinationError;
 @property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
@@ -77,6 +81,7 @@
 @property(readonly, retain) NSImage *pressedImage;
 @property(readonly, retain) NSImage *image;
 @property(retain) CKAction *action;
+- (BOOL)supportsAudio;
 - (BOOL)requiresAudio;
 - (BOOL)requiresVideo;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -93,6 +98,7 @@
 @property(readonly, nonatomic) NSString *displayName;
 @property(copy, nonatomic) NSString *name;
 - (BOOL)validateName:(id *)arg1 error:(id *)arg2;
+- (BOOL)willExcludeDisabledRoles;
 
 @end
 

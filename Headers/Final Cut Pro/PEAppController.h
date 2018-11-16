@@ -6,6 +6,7 @@
 
 #import "NSObject.h"
 
+#import "FFDupCaptionsToNewLanguageMenuDelegate.h"
 #import "FFEditActionMgrDelegateProtocol.h"
 #import "FFEditActionSourceProtocol.h"
 #import "FFErrorReportingProtocol.h"
@@ -16,11 +17,12 @@
 #import "NSApplicationDelegate.h"
 #import "NSMenuDelegate.h"
 #import "NSUserInterfaceValidations.h"
+#import "NSUserNotificationCenterDelegate.h"
 #import "PEFullScreenWindowDelegate.h"
 
-@class FFAnchoredSequence, FFEditActionMgr, FFMessageTracer, LKWindow, NSAlert, NSMapTable, NSMenu, NSMenuItem, NSMutableArray, NSMutableSet, NSString, NSTimer, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceOverWindowController, PEWorkspacesMenuDelegate, Stopwatch;
+@class FFAnchoredSequence, FFEditActionMgr, FFMessageTracer, LKWindow, NSAlert, NSMapTable, NSMenu, NSMenuItem, NSMutableArray, NSMutableSet, NSString, NSTimer, PECaptionEditorContainerModule, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceOverWindowController, PEWorkspacesMenuDelegate, Stopwatch;
 
-@interface PEAppController : NSObject <FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol, FFSharedAppControllerInterface, LKViewModuleDelegate>
+@interface PEAppController : NSObject <FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol, FFSharedAppControllerInterface, LKViewModuleDelegate, FFDupCaptionsToNewLanguageMenuDelegate, NSUserNotificationCenterDelegate>
 {
     NSMenuItem *_openLibraryMenuItem;
     NSMenuItem *_closeLibraryMenuItem;
@@ -42,6 +44,8 @@
     NSMenuItem *_clearSplitMenuItem;
     NSMenuItem *_assignAudioRolesMenuItem;
     NSMenuItem *_assignVideoRolesMenuItem;
+    NSMenuItem *_assignCaptionRolesMenuItem;
+    NSMenuItem *_duplicateCaptionsToNewLanguageMenuItem;
     NSMenuItem *_applyCustomNameMenuItem;
     NSMenuItem *_debugMenu;
     NSMenuItem *_avOutMenu;
@@ -52,8 +56,12 @@
     NSMenu *_audioTransitionsMenu;
     NSMenu *_videoGeneratorsMenu;
     NSMenu *_timelineRowHeightMenu;
-    NSMenu *_tracksMenu;
     NSMenu *_shareMenu;
+    NSMenuItem *_exportCaptionsMenuItem;
+    NSMenuItem *_importCaptionsMenuItem;
+    NSMenuItem *_captionsSubmenu;
+    NSMenuItem *_captionsSubmenuSeparator;
+    NSMenuItem *_timelineIndexCaptionsMenuItem;
     NSMenuItem *_showProviderSettingsMenuItem;
     NSMenuItem *_sendToFCPXMenuItem;
     NSMenu *_workspacesMenu;
@@ -70,6 +78,7 @@
     LKWindow *_stacksPopOverWindow;
     PEVariantsContainerModule *_stacksMod;
     BOOL _stacksModClosing;
+    PECaptionEditorContainerModule *_captionEditorContainerModule;
     PEMarkerEditorContainerModule *_markerEditorContainerModule;
     PEMediaSourceEditorContainerModule *_mediaSourceEditorContainerModule;
     PESpeedEditorContainerModule *_speedEditorContainerModule;
@@ -152,6 +161,8 @@
 - (void)moduleLayoutWillChange:(id)arg1;
 - (void)reportError:(id)arg1;
 - (BOOL)application:(id)arg1 delegateHandlesKey:(id)arg2;
+- (void)userNotificationCenter:(id)arg1 didActivateNotification:(id)arg2;
+- (BOOL)userNotificationCenter:(id)arg1 shouldPresentNotification:(id)arg2;
 - (void)menuNeedsUpdate:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (BOOL)_validateUserInterfaceItem:(id)arg1 usingModule:(id)arg2;
@@ -166,7 +177,9 @@
 - (void)newAppStorePreviewProject:(id)arg1;
 - (void)newThemedProject:(id)arg1;
 - (void)exportMovieModal:(id)arg1;
-- (void)exportShareArchive:(id)arg1;
+- (void)_exportShareArchive:(id)arg1 excludeDisabledRoles:(BOOL)arg2;
+- (void)exportShareArchiveExcludeDisabledRoles:(id)arg1;
+- (void)exportShareArchiveAllRoles:(id)arg1;
 - (void)shareAnimationDidEnd;
 - (void)shareAnimationWillBegin;
 - (struct CGRect)shareAnimationDestinationRect;
@@ -178,6 +191,9 @@
 - (void)setEnableNewTouchBars:(id)arg1;
 - (void)setOSC360DisplayValue:(id)arg1;
 - (void)setOSCTimelineDisplayValue:(id)arg1;
+- (void)toggleDebugCGContextDraw:(id)arg1;
+- (void)toggleUseOSCCaptionRenderer:(id)arg1;
+- (void)toggleCaptionSupportOnMacOS_10_12:(id)arg1;
 - (void)setOSCTimecodeDisplayValue:(id)arg1;
 - (void)summarizeObjectCacheToConsole:(id)arg1;
 - (void)showFFDataViewer:(id)arg1;
@@ -187,6 +203,7 @@
 - (void)dumpAndVerifyRoleSet:(id)arg1;
 - (void)editRoles:(id)arg1;
 - (id)_targetLibrary;
+- (id)activeEditorModule;
 - (void)applyNamePreset:(id)arg1;
 - (void)showEditPresetsWindow:(id)arg1;
 - (void)showNewPresetsWindow:(id)arg1;
@@ -253,6 +270,8 @@
 - (void)goToViewer:(id)arg1;
 - (void)goToOrganizer:(id)arg1;
 - (void)goToInspector:(id)arg1;
+- (void)selectPreviousTabViewItemAction:(id)arg1;
+- (void)selectNextTabViewItemAction:(id)arg1;
 - (void)auditionSelectedVariant:(id)arg1;
 - (void)openStack:(id)arg1 fromModule:(id)arg2;
 - (void)_closeAuditionHUDIfNecessary:(id)arg1;
@@ -263,6 +282,9 @@
 - (void)hideSpeedEditor:(id)arg1;
 - (void)showMarkerEditorForMarkerLayer:(id)arg1 object:(id)arg2 editorModule:(id)arg3;
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2 forEditorModule:(id)arg3;
+- (void)showCaptionEditorForRect:(struct CGRect)arg1 object:(id)arg2 mainRoleUID:(id)arg3 localeIdentifier:(id)arg4 sequence:(id)arg5 forEditorModule:(id)arg6;
+- (void)showCaptionEditorAtTime:(CDStruct_1b6d18a9)arg1 mainRoleUID:(id)arg2 languageIdentifier:(id)arg3 sequence:(id)arg4 forEditorModule:(id)arg5 createNewCaption:(BOOL)arg6;
+- (BOOL)captionEditorIsShown;
 - (BOOL)markerEditorIsShown;
 - (void)hideMarkerEditor:(id)arg1;
 - (void)toggleDataListAndSwitchTabs:(id)arg1;
@@ -345,6 +367,9 @@
 - (void)use2xQCContent:(id)arg1;
 - (void)usePreviewMediaForTrailers:(id)arg1;
 - (void)showTrailersInTimeline:(id)arg1;
+- (void)exportCaptions:(id)arg1;
+- (void)_insertCaptionsIntoTimeline:(id)arg1 withCaptionRole:(id)arg2;
+- (void)importCaptions:(id)arg1;
 - (void)importClipBundle:(id)arg1;
 - (void)exportClipBundle:(id)arg1;
 - (void)dumpSelectionAsModelObjectToDotFile:(id)arg1;
@@ -372,6 +397,7 @@
 - (id)variantsPicker;
 - (id)speedEditor;
 - (id)markerEditor;
+- (id)captionEditor;
 - (id)mediaBrowserModule;
 - (id)consumerTransportControlsModule;
 - (id)consumerInspectorModule;
@@ -416,6 +442,7 @@
 - (void)applicationDidMiniaturizeAll:(id)arg1;
 - (BOOL)applicationShouldHandleReopen:(id)arg1 hasVisibleWindows:(BOOL)arg2;
 - (void)applicationWillTerminate:(id)arg1;
+- (void)prepareForApplicationTerminate;
 - (unsigned long long)applicationShouldTerminate:(id)arg1;
 - (void)appHasStartedProcessingBlock:(CDUnknownBlockType)arg1;
 - (void)applicationDidFinishLaunching:(id)arg1;

@@ -4335,15 +4335,14 @@ struct TXTextStyle {
     struct OZChannelPercent _field97;
     struct OZChannelPercent _field98;
     struct OZChannelFolder _field99;
-    struct PCMutex *_field100;
+    unsigned int _field100;
     unsigned int _field101;
-    unsigned int _field102;
+    _Bool _field102;
     _Bool _field103;
     _Bool _field104;
-    _Bool _field105;
-    struct PCString _field106;
-    struct OZFontFace *_field107;
-    struct PCMutex _field108;
+    struct PCString _field105;
+    struct OZFontFace *_field106;
+    struct PCMutex _field107;
 };
 
 struct TXTextStyleRun;

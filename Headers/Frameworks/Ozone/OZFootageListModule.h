@@ -9,7 +9,7 @@
 #import "OZListController.h"
 #import "OZOutlineVarRowHeightDelegate.h"
 
-@class LKSearchField, LKSegmentedControl, LKSlider, NSImage, NSImageView, NSMenuItem, NSMutableArray, NSString, NSView, OZFootageListOutlineView, OZTimecodeFormatter;
+@class LKSearchField, LKSegmentedControl, LKSlider, NSImage, NSImageView, NSLayoutConstraint, NSMenuItem, NSMutableArray, NSString, NSView, OZFootageListOutlineView, OZTimecodeFormatter;
 
 @interface OZFootageListModule : OZProViewModule <OZListController, OZOutlineVarRowHeightDelegate>
 {
@@ -60,8 +60,10 @@
     BOOL _fileModifiedOn;
     NSImage *_speakerImage;
     NSImage *_missingImage;
+    NSLayoutConstraint *_scrollViewBottomToBorderedViewTopConstraint;
 }
 
+@property(retain, nonatomic) NSLayoutConstraint *scrollViewBottomToBorderedViewTopConstraint; // @synthesize scrollViewBottomToBorderedViewTopConstraint=_scrollViewBottomToBorderedViewTopConstraint;
 - (void)magnifyWithEvent:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)contentsControlAction:(id)arg1;
