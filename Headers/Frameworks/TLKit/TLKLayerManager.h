@@ -60,6 +60,8 @@
 - (void)_sizeToFitMultipleTracks;
 - (void)_invalidateIntrinsicBounds;
 - (struct CGRect)intrinsicBounds;
+- (struct CGRect)_computedFrameForItemComponentFragment:(id)arg1;
+- (void)_updateLayerFramesForItemComponentFragments:(id)arg1;
 - (void)timelineView:(id)arg1 didChangeVisibleRect:(struct CGRect)arg2;
 - (void)layoutDatabaseDidChange:(id)arg1;
 - (id)_itemFragmentsIncludingLayoutDependencies:(id)arg1;
