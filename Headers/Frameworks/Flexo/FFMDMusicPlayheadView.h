@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSImage *playheadImage; // @synthesize playheadImage=_playheadImage;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)generatePlayheadForHeight:(double)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

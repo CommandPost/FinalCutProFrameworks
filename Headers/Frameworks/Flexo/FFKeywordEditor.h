@@ -6,7 +6,7 @@
 
 #import "NSWindowController.h"
 
-@class LKButton, LKSegmentedControl, NSArray, NSMutableSet, NSString, NSTokenField, NSView, NSWindow;
+@class LKButton, LKSegmentedControl, NSArray, NSLayoutConstraint, NSMutableSet, NSStackView, NSString, NSTokenField, NSView, NSWindow;
 
 @interface FFKeywordEditor : NSWindowController
 {
@@ -25,7 +25,9 @@
     NSView *_tokenFieldArea;
     NSTokenField *_keywordsTokenField;
     NSTokenField *_autoKeywordsTokenField;
+    NSLayoutConstraint *_keywordGroupHeightConstraint;
     NSView *_keywordGroupsArea;
+    NSStackView *_keywordGroupsStackView;
     LKSegmentedControl *_autoKeywordsButton;
     LKButton *_keywordGroupsButton;
     NSView *_headerArea;
@@ -78,7 +80,7 @@
 - (void)_setDescription:(id)arg1;
 - (void)_configureAutoKeywords;
 - (void)_configureKeywordGroups;
-- (void)_layoutKeywordGroupsEtAl;
+- (void)_updateCommandButtons;
 - (void)_setSavedKeyWindow:(id)arg1;
 - (void)takeAutoKeywordsEnabledFrom:(id)arg1;
 @property(nonatomic) BOOL autoKeywordsEnabled;

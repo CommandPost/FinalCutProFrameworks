@@ -4,16 +4,44 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProZoomScroller.h"
+#import <LunaKit/LKScroller.h>
 
-@interface LKZoomScroller : NSProZoomScroller
+@interface LKZoomScroller : LKScroller
 {
+    struct __LKZSFlags {
+        unsigned int part:4;
+        unsigned int isTrackingDisabled:1;
+        unsigned int reserved:27;
+    } _pzsFlags;
+    double _mPlayHeadProportion;
+    BOOL _mDrawsPlayHead;
+    float _mMinimumKnobProportion;
+    SEL _doubleAction;
 }
 
-- (id)_knobFacet;
-- (id)_cornerFacet;
-- (id)_arrowFacetForArrowPosition:(unsigned long long)arg1 configuration:(int)arg2;
-- (id)_slotFacet;
+- (SEL)doubleAction;
+- (void)setDoubleAction:(SEL)arg1;
+- (BOOL)isTrackingEnabled;
+- (void)setTrackingEnabled:(BOOL)arg1;
+- (float)minimumKnobProportion;
+- (void)setMinimumKnobProportion:(float)arg1;
+- (BOOL)drawsPlayHead;
+- (void)setDrawsPlayHead:(BOOL)arg1;
+- (double)playHeadProportion;
+- (void)setPlayHeadProportion:(double)arg1;
+- (void)drawKnobSlotInRect:(struct CGRect)arg1 highlight:(BOOL)arg2;
+- (void)drawKnob;
+- (void)trackZoom:(id)arg1 part:(int)arg2;
+- (void)mouseDown:(id)arg1;
+- (unsigned long long)hitPart;
+- (unsigned long long)testPart:(struct CGPoint)arg1;
+- (struct CGRect)rectForPlayhead;
+- (struct CGRect)_drawingRectForPart:(unsigned long long)arg1;
+- (struct CGRect)rectForPart:(int)arg1;
+- (void)setFloatValue:(float)arg1 knobProportion:(double)arg2;
+- (void)setKnobProportion:(double)arg1;
+- (double)_adjustZoomKnobProportion:(double)arg1;
+- (void)_proAutomateLiveZoom;
 
 @end
 

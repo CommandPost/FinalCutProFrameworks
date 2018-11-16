@@ -6,18 +6,19 @@
 
 #import <Flexo/FFAnchoredObject.h>
 
-@class FFEffectStack, NSString;
+#import "FFRoleChangeProtocol.h"
 
-@interface FFAnchoredComponent : FFAnchoredObject
+@class FFEffectStack, FFRole, NSString;
+
+@interface FFAnchoredComponent : FFAnchoredObject <FFRoleChangeProtocol>
 {
     FFEffectStack *_effectStack;
-    NSString *_role;
+    FFRole *_vendedRole;
 }
 
 + (id)copyClassDescription;
 + (float)defaultStillDurationInSeconds;
 + (float)defaultGeneratorDurationInSeconds;
-+ (id)roleForXMLValue:(id)arg1 element:(id)arg2 error:(id *)arg3;
 @property(retain, nonatomic) FFEffectStack *effectStack; // @synthesize effectStack=_effectStack;
 - (void)returnContainedComponentsIn:(id)arg1;
 - (CDStruct_1b6d18a9)sourceSampleDuration;
@@ -36,14 +37,22 @@
 - (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
 - (BOOL)canReorderChannel:(id)arg1;
 - (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
 - (id)inspectorTabIdentifiers;
-- (id)inspectorTabClassNames;
-- (id)inspectorClassName;
+- (id)persistentID;
 - (BOOL)supportsRoles;
 - (id)rolesWithPlayEnable:(int)arg1;
-@property(retain, nonatomic) NSString *role;
-- (void)addRole:(id)arg1;
+- (void)informEndRoleChanges:(id)arg1;
+- (id)defaultBuiltInMainRoleUID;
+- (id)guessVideoBuiltInMainRoleUID;
+- (id)guessAudioBuiltInMainRoleUID;
+- (BOOL)isRoleInferred;
+- (void)resetRoleToDefault;
+- (void)setRole:(id)arg1;
+- (void)setRoleUID:(id)arg1;
+@property(readonly, retain, nonatomic) NSString *roleUID;
+@property(readonly, retain, nonatomic) FFRole *vendedRole;
+- (void)initializeRoleUID:(id)arg1;
+- (void)_updateVendedRoleFromRoleUID:(id)arg1;
 - (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
 - (void)_collectDescendentCompositedObject:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 intoArray:(id)arg3 useAudioRange:(BOOL)arg4 container:(id)arg5;
 - (id)firstAudioAnchoredComponent;
@@ -52,22 +61,24 @@
 - (id)secondaryEffectStack;
 - (id)primaryEffectStack;
 - (id)videoEffects;
-- (id)audioEffects;
+- (id)localAudioEffects;
 - (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (id)_newExtendedSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 sourceid:(id)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9 unclippedRangeRequired:(CDStruct_e83c9415)arg10;
 - (id)_newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (BOOL)isComponent;
 @property BOOL hasVideo;
+- (BOOL)supportsAudio;
 @property BOOL hasAudio;
 - (CDStruct_e83c9415)unclippedRange;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)shouldEncodeEffectStackWithCoder:(id)arg1;
+- (id)awakeAfterUsingCoder:(id)arg1;
+- (void)_markRolePropertiesAsDirty;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithDisplayName:(id)arg1 andFilterType:(id)arg2;
 - (id)type;
-- (id)copyXMLValueForRole:(id)arg1;
 
 @end
 

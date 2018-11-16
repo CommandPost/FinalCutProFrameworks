@@ -21,9 +21,6 @@
 @property(nonatomic) NSWindowController *windowController; // @synthesize windowController=_pWindowController;
 - (void)previewSceneAsCAAR:(id)arg1;
 - (void)exportSceneAsCAAR:(id)arg1;
-- (void)removeFromYouTube:(id)arg1;
-- (void)removeFromVimeo:(id)arg1;
-- (void)removeFromFacebook:(id)arg1;
 - (void)exportCurrentFrame:(id)arg1;
 - (void)exportUsingCompressorSettings:(id)arg1;
 - (void)openInCompressor:(id)arg1;
@@ -40,7 +37,6 @@
 - (void)exportAudio:(id)arg1;
 - (void)exportiTunes:(id)arg1;
 - (void)exportMediaBrowser:(id)arg1;
-- (void)enableExpose3D:(id)arg1;
 - (void)enableExposeObjects:(id)arg1;
 - (void)enableExposeAllObjects:(id)arg1;
 - (void)enableExposeLayers:(id)arg1;
@@ -69,6 +65,8 @@
 - (void)blendMode:(id)arg1;
 - (void)frameDisplayFrames:(id)arg1;
 - (void)frameDisplayTimecode:(id)arg1;
+- (void)importAsAudio:(id)arg1;
+- (void)importAsUnusedMedia:(id)arg1;
 - (void)importFiles:(id)arg1;
 - (void)revealInFinder:(id)arg1;
 - (void)openInQuickTime:(id)arg1;
@@ -84,6 +82,8 @@
 - (void)openOnTheWebPage:(id)arg1;
 - (void)openFeedbackPage:(id)arg1;
 - (void)downloadAdditionalContent:(id)arg1;
+- (void)activateMaskBSplineTool:(id)arg1;
+- (void)activateMaskBezierTool:(id)arg1;
 - (void)activateMaskFreeHandTool:(id)arg1;
 - (void)activateMaskCircleTool:(id)arg1;
 - (void)activateMaskRectTool:(id)arg1;
@@ -92,11 +92,26 @@
 - (void)activateRectTool:(id)arg1;
 - (void)activateMaskTool:(id)arg1;
 - (BOOL)maskToolValid;
+- (void)activateEditToolWithSubMode:(struct PCUUID)arg1 andSender:(id)arg2;
+- (void)activateWalkTool:(id)arg1;
+- (void)activateCropTool:(id)arg1;
+- (void)activateDistortTool:(id)arg1;
+- (void)activateDropshadowTool:(id)arg1;
+- (void)activateAnchorTool:(id)arg1;
+- (void)activateBSplineShapeTool:(id)arg1;
+- (void)activateBezierShapeTool:(id)arg1;
 - (void)activateShapeTool:(id)arg1;
 - (void)activateTransform3DTool:(id)arg1;
 - (void)activatePaintStrokeTool:(id)arg1;
+- (void)activateTextTool3D:(id)arg1;
+- (void)activateTextTool2D:(id)arg1;
 - (void)activateTextTool:(id)arg1;
 - (void)activateAndResetEditTool:(id)arg1;
+- (void)activateAdjustTool:(id)arg1;
+- (void)activateEditTransformTextGlyphTool:(id)arg1;
+- (void)activateEditCircleTool:(id)arg1;
+- (void)activateEditRectangleTool:(id)arg1;
+- (void)activateEditControlPointsTool:(id)arg1;
 - (void)activateEditTool:(id)arg1;
 - (void)activatePanTool:(id)arg1;
 - (void)activateZoomTool:(id)arg1;
@@ -129,7 +144,6 @@
 - (void)toggleUtilityVisibility:(id)arg1;
 - (void)toggleProjectVisibility:(id)arg1;
 - (void)showInspectorTab:(id)arg1;
-- (void)showFileBrowserTab:(id)arg1;
 - (void)showLibraryTab:(id)arg1;
 - (void)showObjectTab:(id)arg1;
 - (void)showEffectsTab:(id)arg1;
@@ -207,6 +221,7 @@
 - (void)showMotionBlur:(id)arg1;
 - (void)toggleDoRenderFields:(id)arg1;
 - (void)setCustomRenderQuality:(id)arg1;
+- (void)setViewGamut:(id)arg1;
 - (void)setRenderQuality:(id)arg1;
 - (void)setDynamicResolution:(id)arg1;
 - (void)setResolution:(id)arg1;
@@ -221,6 +236,7 @@
 - (void)goToStart:(id)arg1;
 - (void)stopPlaying:(id)arg1;
 - (void)transformPoints:(id)arg1;
+- (void)playAround:(id)arg1;
 - (void)playBackward:(id)arg1;
 - (void)playForwardDummy:(id)arg1;
 - (void)playFromStart:(id)arg1;
@@ -269,7 +285,7 @@
 - (void)keyDown:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)ozdkr__removeShare:(long long)arg1;
+- (void)stopPlaybackInAllDocuments;
 - (id)ozdkr__timingModule;
 - (id)ozdkr__toolbarModule;
 - (id)ozdkr__canvasModule;

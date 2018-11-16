@@ -18,16 +18,21 @@
     unsigned long long _activeIndex;
     BOOL _movingDeeper;
     FFRenderStateTracker *_renderStateTracker;
+    double _itemHeight;
 }
 
+@property(nonatomic) double itemHeight; // @synthesize itemHeight=_itemHeight;
 @property(readonly) FFRenderStateTracker *renderStateTracker; // @synthesize renderStateTracker=_renderStateTracker;
 @property(nonatomic) BOOL showsStoryOutline; // @synthesize showsStoryOutline=_showsStoryOutline;
 - (struct CGRect)animationEndRectForEditAction:(id)arg1 pasteboardName:(id)arg2;
 - (void)performEditAction:(id)arg1 fromPasteboardWithName:(id)arg2 fromAnimation:(BOOL)arg3;
 - (BOOL)canPerformEditAction:(id)arg1 withData:(id)arg2;
+- (void)dumpRenderTrackerToConsole:(_Bool)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)registerForRenderTrackingAndBGRender;
 - (void)unregisterForRenderTrackingAndBGRender;
+- (BOOL)updateSelectionWithObjects:(id)arg1;
+- (id)selectedRangesOrItems;
 - (BOOL)hasSelection;
 - (BOOL)movingDeeper;
 - (id)sequence;

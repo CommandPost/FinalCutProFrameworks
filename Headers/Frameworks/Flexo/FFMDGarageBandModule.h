@@ -6,14 +6,11 @@
 
 #import <Flexo/FFMDMusicModule.h>
 
-@class FFAlwaysHitButton;
-
 @interface FFMDGarageBandModule : FFMDMusicModule
 {
-    FFAlwaysHitButton *_toggleSidebarButton;
-    FFAlwaysHitButton *_dividerLine;
 }
 
+- (id)mediaBrowserIdentifier;
 - (BOOL)supportsMovie;
 - (BOOL)supportsAudio;
 - (void)revealInFinder:(id)arg1;

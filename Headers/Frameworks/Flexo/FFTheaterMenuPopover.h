@@ -6,27 +6,23 @@
 
 #import "NSObject.h"
 
-#import "NSWindowDelegate.h"
+#import "NSPopoverDelegate.h"
 
-@class FFTheaterMenuViewController, LKPopOverWindow, NSString;
+@class FFTheaterMenuViewController, NSPopover, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFTheaterMenuPopover : NSObject <NSWindowDelegate>
+@interface FFTheaterMenuPopover : NSObject <NSPopoverDelegate>
 {
     FFTheaterMenuViewController *_viewController;
-    LKPopOverWindow *_popoverWindow;
+    NSPopover *_menuPopover;
     id <FFTheaterMenuDelegate> _delegate;
-    BOOL _closingWindow;
 }
 
 @property(nonatomic) id <FFTheaterMenuDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)cleanup;
 - (BOOL)theaterMenuIsShown;
-- (void)popOverWindowDidCancel:(id)arg1;
 - (void)hideTheaterMenu;
-- (void)_hidePopoverWithoutCleanup;
-- (void)_resignPopoverWindow:(id)arg1;
-- (void)_popoverDidResignKey:(id)arg1;
+- (void)popoverDidClose:(id)arg1;
 - (void)showTheaterMenuForItem:(id)arg1 targetRect:(struct CGRect)arg2 parentWindow:(id)arg3;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;

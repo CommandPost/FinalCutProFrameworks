@@ -58,6 +58,7 @@
 - (void)dealloc;
 - (void)DO_initWith:(id)arg1;
 - (id)initWith:(id)arg1;
+- (id)localizedString:(id)arg1;
 - (void)logBoundsForFrame:(id)arg1 imageSelector:(SEL)arg2;
 - (int)copyPixelBufferData:(id)arg1 toField:(unsigned int)arg2;
 - (id)newRenderedSourceImage:(id)arg1 hasFields:(BOOL)arg2;

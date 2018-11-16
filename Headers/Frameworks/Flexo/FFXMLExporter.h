@@ -6,7 +6,7 @@
 
 #import <Flexo/FFXMLBase.h>
 
-@class FFMetadataViewSet, FFProject, NSDictionary, NSMapTable, NSMutableArray, NSURL, NSXMLDocument;
+@class FFMetadataViewSet, FFProject, NSDictionary, NSMapTable, NSMutableArray, NSSet, NSURL, NSXMLDocument;
 
 __attribute__((visibility("hidden")))
 @interface FFXMLExporter : FFXMLBase
@@ -14,6 +14,10 @@ __attribute__((visibility("hidden")))
     NSXMLDocument *_xmlDoc;
     BOOL _isConsumerExport;
     unsigned int _exportVersion;
+    BOOL _exportAssetClips;
+    BOOL _exportAsLibrary;
+    BOOL _exportAsEvents;
+    unsigned int _catalogVersion;
     NSMapTable *_resByModelID;
     NSMapTable *_resByLocalID;
     NSMapTable *_projectIDMap;
@@ -21,29 +25,49 @@ __attribute__((visibility("hidden")))
     NSDictionary *_backgroundAssetsDict;
     NSMutableArray *_errors;
     FFProject *_project;
+    NSSet *_projectsToExport;
     id *_alternateRoleLabels;
     NSURL *_destURL;
+    id *_destString;
+    id *_destData;
     NSMapTable *_textStyleMap;
     unsigned int _textStyleCount;
     NSDictionary *_customMetadataRepresentationDict;
     FFMetadataViewSet *_metadataViewSet;
+    struct {
+        char _exclude_mod_date_on_sequences;
+        char _exclude_asset_file_info;
+        char _use_keyword_marker_keyword;
+    } _flags_for_compare;
 }
 
++ (BOOL)isCensoredKeyForPreviousVersion:(id)arg1;
++ (BOOL)isCensoredKey:(id)arg1 forVersion:(unsigned long long)arg2;
 @property(readonly) unsigned int exportVersion; // @synthesize exportVersion=_exportVersion;
 - (void)dealloc;
-- (id)initWithVersion:(unsigned int)arg1 metadataViewSet:(id)arg2 destURL:(id)arg3 taskDelegate:(id)arg4;
+- (id)initWithOptions:(id)arg1 taskDelegate:(id)arg2;
+- (id)initWithVersion:(unsigned int)arg1 metadataViewSet:(id)arg2 destURL:(id)arg3 destString:(id *)arg4 destData:(id *)arg5 taskDelegate:(id)arg6 excludeModDate:(BOOL)arg7 options:(id)arg8;
+- (id)initWithVersion:(unsigned int)arg1 metadataViewSet:(id)arg2 destURL:(id)arg3 taskDelegate:(id)arg4 excludeModDate:(BOOL)arg5;
 - (BOOL)exportEventClips:(id)arg1 error:(id *)arg2;
+- (BOOL)exportEvents:(id)arg1 selectedEventClipsMap:(id)arg2 library:(id)arg3 libraryFolders:(id)arg4 exportEventFolder:(BOOL)arg5 error:(id *)arg6;
 - (BOOL)exportEvents:(id)arg1 selectedEventClipsMap:(id)arg2 exportEventFolder:(BOOL)arg3 error:(id *)arg4;
-- (BOOL)prepareDocument;
-- (BOOL)writeDocument:(id)arg1 importOptionsElement:(id)arg2 error:(id *)arg3;
+- (void)collectProjectsToExport:(id)arg1 selectedEventClipsMap:(id)arg2;
+- (BOOL)prepareDocument:(id)arg1;
+- (id)xmlDocument;
+- (id)xmlData;
+- (id)xmlString;
+- (BOOL)writeDocument:(id *)arg1;
+- (BOOL)createDocument:(id)arg1 importOptionsElement:(id)arg2 error:(id *)arg3;
+- (id)newResourcesElement;
 - (id)newEventProjectNode:(id)arg1 selectedEventClips:(id)arg2 exportEventFolder:(BOOL)arg3;
 - (id)newSequenceProjectNodeForPreV1_4:(id)arg1;
+- (void)addSequenceProject:(id)arg1 element:(id)arg2 modDate:(id)arg3;
 - (void)addSequenceProject:(id)arg1 element:(id)arg2;
 - (void)addConsumerUIAudioFeaturesAsEffects:(id)arg1 element:(id)arg2;
 - (void)addChildrenForMediaEventFolder:(id)arg1 element:(id)arg2;
 - (void)addMediaEventFolderObject:(id)arg1 element:(id)arg2;
 - (id)newMediaEventSmartCollectionElement:(id)arg1;
-- (id)newSmartCollectionRoleFilterElement:(id)arg1;
+- (id)newSmartCollectionRoleUIDFilterElement:(id)arg1;
 - (id)newSmartCollectionTimeFilterElement:(id)arg1;
 - (id)newSmartCollectionPropertyFilterElement:(id)arg1;
 - (id)newSmartCollectionPeopleFilterElement:(id)arg1;
@@ -57,19 +81,23 @@ __attribute__((visibility("hidden")))
 - (id)newSmartCollectionTextFilterElement:(id)arg1;
 - (void)populateEffectNode:(id)arg1 forEffectBundle:(id)arg2;
 - (void)populateEffectNode:(id)arg1 forAudioUnitEffect:(id)arg2;
+- (void)addEventStillClip:(id)arg1 element:(id)arg2 modDate:(id)arg3;
 - (void)addEventStillClip:(id)arg1 element:(id)arg2;
 - (void)addEffects:(id)arg1 element:(id)arg2;
 - (void)addEffect:(id)arg1 element:(id)arg2;
 - (void)addRetimingInfo:(id)arg1 element:(id)arg2;
 - (void)addObjects:(id)arg1 element:(id)arg2;
+- (void)addClip:(id)arg1 element:(id)arg2 modDate:(id)arg3;
 - (void)addClip:(id)arg1 element:(id)arg2;
 - (void)addMultiAngleSources:(id)arg1 element:(id)arg2;
 - (void)addMarkers:(id)arg1 element:(id)arg2;
 - (void)addIntrinsicChannels:(id)arg1 element:(id)arg2;
-- (void)addAudioIntrinsicChannels:(id)arg1 element:(id)arg2;
+- (void)addAudioEnhancements:(id)arg1 element:(id)arg2;
+- (void)addAudioIntrinsicChannelsForObject:(id)arg1 element:(id)arg2;
 - (void)addVideoIntrinsicChannels:(id)arg1 element:(id)arg2;
 - (void)addCropInfo:(id)arg1 element:(id)arg2;
-- (void)addAudioLayoutItems:(id)arg1 key:(id)arg2 element:(id)arg3;
+- (void)addAudioComponents:(id)arg1 element:(id)arg2;
+- (void)addAudioComponentsForKey:(id)arg1 object:(id)arg2 element:(id)arg3;
 - (void)addAudioMute:(id)arg1 element:(id)arg2;
 - (void)addAudioPanner:(id)arg1 element:(id)arg2;
 - (void)addMatchEQ:(id)arg1 element:(id)arg2;
@@ -120,15 +148,18 @@ __attribute__((visibility("hidden")))
 - (id)newCompositeNode:(id)arg1 isSequence:(BOOL)arg2;
 - (id)newAuditionNode:(id)arg1;
 - (id)newSpineNode:(id)arg1;
+- (void)addRoleGroupAttributeForSimpleClipWithMedia:(id)arg1 element:(id)arg2;
+- (void)addAttributesForClipWithMedia:(id)arg1 mediaID:(id)arg2 sourceID:(id)arg3 element:(id)arg4;
+- (void)addAttributesForAnchoredObject:(id)arg1 element:(id)arg2;
 - (void)addSequenceKeywords:(id)arg1 element:(id)arg2;
 - (id)copyChannelStringValue:(id)arg1 withKeyframe:(void *)arg2 isRadians:(BOOL)arg3 isDefault:(char *)arg4;
+- (id)registerColorSpace:(struct CGColorSpace *)arg1;
 - (id)registerVideoProps:(id)arg1;
 - (id)registerMediaElement:(id)arg1;
 - (id)registerProjectIDForMediaRef:(id)arg1;
 - (BOOL)addBookmarkForURL:(id)arg1 toElement:(id)arg2;
 - (void)addMetadataToElement:(id)arg1 forObject:(id)arg2;
 - (id)sanitizedMetadataType:(id)arg1;
-- (BOOL)isCensoredKey:(id)arg1;
 - (BOOL)addMetadataValue:(id)arg1 forKey:(id)arg2 fromObject:(id)arg3 withDef:(id)arg4 toElement:(id)arg5;
 - (BOOL)addCustomMetadataRepresentationForKey:(id)arg1 WithValue:(id)arg2 ToElement:(id)arg3;
 - (void)addProjectIDAttributes;
@@ -138,8 +169,12 @@ __attribute__((visibility("hidden")))
 - (id)registerProjectRef:(id)arg1;
 - (id)registerSequenceProject:(id)arg1;
 - (id)registerResource:(id)arg1 name:(id)arg2 modelID:(id)arg3;
+- (id)exportOptions;
 - (BOOL)exportCancelled;
 - (void)log:(id)arg1 warningOnly:(BOOL)arg2;
+- (id)newMediaElement:(id)arg1;
+- (id)newProjectSequenceElement:(id)arg1;
+- (id)newEventClipElement:(id)arg1;
 
 @end
 

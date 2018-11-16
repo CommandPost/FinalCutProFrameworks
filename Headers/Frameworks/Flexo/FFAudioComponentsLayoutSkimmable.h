@@ -4,35 +4,34 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <Flexo/FFSkimmableProxy.h>
 
 #import "FFMD5Protocol.h"
 
-@class FFAnchoredObject, FFAudioComponentsLayoutItem, NSString;
+@class FFAnchoredObject, FFAudioComponentsLayoutItem, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioComponentsLayoutSkimmable : NSObject <FFMD5Protocol>
+@interface FFAudioComponentsLayoutSkimmable : FFSkimmableProxy <FFMD5Protocol>
 {
-    FFAnchoredObject *m_componentParentItem;
+    FFAnchoredObject *m_rootObject;
     NSString *m_layoutKey;
     FFAudioComponentsLayoutItem *m_layoutItemKey;
+    NSMapTable *m_cachedProviderMap;
 }
 
-@property(readonly, nonatomic) NSString *layoutKey; // @synthesize layoutKey=m_layoutKey;
-@property(readonly, nonatomic) FFAnchoredObject *componentParentItem; // @synthesize componentParentItem=m_componentParentItem;
-- (id)project;
-- (id)layoutItem;
-- (id)newProvider;
-- (id)newProviderWithEffectCount:(long long)arg1;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
-- (id)audioEffects;
+@property(readonly, nonatomic) FFAnchoredObject *rootObject; // @synthesize rootObject=m_rootObject;
+- (id)_layoutItem;
+- (BOOL)isOrphanAudioComponent;
+- (BOOL)isAudioComponentSource;
+- (id)skimmableDefaultProviderOptions;
+- (id)newSkimmableProviderWithOptions:(id)arg1;
+- (id)skimmableRolesWithPlayEnable:(int)arg1;
+- (id)skimmableAudioLevelEffects;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
-- (BOOL)conformsToProtocol:(id)arg1;
-- (id)valueForUndefinedKey:(id)arg1;
-- (id)forwardingTargetForSelector:(SEL)arg1;
+- (CDStruct_e83c9415)audioClippedRange;
+- (id)description;
 - (void)dealloc;
-- (id)initWithComponentParentItem:(id)arg1 layoutKey:(id)arg2 layoutItemKey:(id)arg3;
+- (id)initWithRootObject:(id)arg1 layoutKey:(id)arg2 layoutItemKey:(id)arg3;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <Flexo/FFAdjustmentTool.h>
 
-@class FFAdjustmentToolSlider, FFChannelChangeController, FFKeyerOSC, FFProOSC, FFSegmentedControl, FFSimpleMaskOSC, LKButton, LKColorWell, LKMenu, LKSegmentedControl, LKTextField, NSArray, NSMutableArray, NSPopUpButton, NSTextField, NSView;
+@class FFAdjustmentToolSlider, FFChannelChangeController, FFKeyerOSC, FFProOSC, FFSegmentedControl, FFSimpleMaskOSC, LKButton, LKMenu, LKSegmentedControl, LKTextField, NSArray, NSColorWell, NSMutableArray, NSPopUpButton, NSTextField, NSView;
 
 @interface FFCutawayTool : FFAdjustmentTool
 {
@@ -24,10 +24,11 @@
     FFAdjustmentToolSlider *_pipEffectTransition;
     LKTextField *_pipEffectTransitionInSeconds;
     FFSegmentedControl *_pipBorderWidthIndex;
-    LKColorWell *_pipBorderColor;
+    NSColorWell *_pipBorderColor;
     LKButton *_pipBorderColorDisabled;
     LKButton *_pipDropShadow;
     FFSegmentedControl *_sbsLeftRight;
+    NSPopUpButton *_sbsPosition;
     FFAdjustmentToolSlider *_sbsSlide;
     LKTextField *_sbsSlideInSeconds;
     NSView *_cutawayView;
@@ -36,6 +37,7 @@
     NSView *_sbsView;
     LKMenu *_modeMenu;
     LKMenu *_pipEffectMenu;
+    LKMenu *_sbsMenu;
     FFChannelChangeController *_changeController;
     FFKeyerOSC *_keyerOSC;
     FFSimpleMaskOSC *_maskOSC;
@@ -50,20 +52,26 @@
 + (BOOL)removeCutawayEffectsForObject:(id)arg1;
 + (int)modeForObject:(id)arg1;
 + (id)sideBySideEffectForObject:(id)arg1;
++ (id)sideBySideEffectForObject:(id)arg1 createIfAbsent:(BOOL)arg2;
 + (id)pipTransitionEffectForObject:(id)arg1;
++ (id)pipTransitionEffectForObject:(id)arg1 createIfAbsent:(BOOL)arg2;
++ (id)transformEffectForObject:(id)arg1;
 + (id)transformEffectForObject:(id)arg1 createIfAbsent:(BOOL)arg2;
 + (id)blendEffectForObject:(id)arg1;
 + (id)blendEffectForObject:(id)arg1 createIfAbsent:(BOOL)arg2;
 + (id)maskEffectForObject:(id)arg1;
 + (id)keyerEffectForObject:(id)arg1 createIfAbsent:(BOOL)arg2;
 + (id)toolTip;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 + (id)groups;
 @property(copy, nonatomic) NSArray *selectedItems; // @synthesize selectedItems=_selectedItems;
-- (void)awakeFromNib;
 - (void)resetChannelsForObject:(id)arg1;
 - (void)setAdjustmentStateFromDictionary:(id)arg1;
 - (int)_updateChannelsAndAdjustmentStateForSingleSelection:(id)arg1;
@@ -76,6 +84,8 @@
 - (id)pipTransitionDurationChannelForFolder:(id)arg1;
 - (id)pipTransitionTypeChannelForFolder:(id)arg1;
 - (id)slideDurationChannelForFolder:(id)arg1;
+- (id)topChannelForFolder:(id)arg1;
+- (id)topBottomChannelForFolder:(id)arg1;
 - (id)leftChannelForFolder:(id)arg1;
 - (id)softnessChannelForFolder:(id)arg1;
 - (void)endColorChange:(id)arg1;
@@ -88,6 +98,7 @@
 - (void)ok:(id)arg1;
 - (void)setSlideDurationInSeconds:(id)arg1;
 - (void)slideDuration:(id)arg1;
+- (void)changeSideBySidePosition:(id)arg1;
 - (void)changeLeftRight:(id)arg1;
 - (void)dropShadow:(id)arg1;
 - (void)borderColor:(id)arg1;

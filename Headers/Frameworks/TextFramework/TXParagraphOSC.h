@@ -6,7 +6,7 @@
 
 #import "POOnScreenControl.h"
 
-@class NSProCursor;
+@class LKCursor;
 
 @interface TXParagraphOSC : POOnScreenControl
 {
@@ -15,7 +15,7 @@
     double _anchorY;
     _Bool _stretchX;
     _Bool _stretchY;
-    NSProCursor *_cursor;
+    LKCursor *_cursor;
     double _startObjX;
     double _startObjY;
     double _startObjZ;

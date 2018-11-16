@@ -42,6 +42,7 @@
 - (id)partArray;
 - (id)dispatcher;
 - (void)_updateCurrentPoint;
+@property(readonly) BOOL inLiveRangeSelectionMode;
 - (void)dealloc;
 - (id)initWithDispatcher:(id)arg1 handler:(id)arg2 event:(id)arg3 partArray:(id)arg4 dragFallback:(BOOL)arg5 pressAndHold:(BOOL)arg6;
 

@@ -6,7 +6,7 @@
 
 #import "NSWindowController.h"
 
-@class LKButton, LKHyperlinkLabel, NSBox, NSImageView, NSTabView, NSTextView, NSView;
+@class LKButton, LKHyperlinkLabel, NSBox, NSButton, NSImageView, NSStackView, NSTabView, NSTextView, NSView;
 
 @interface LKWelcomeScreenWindowController : NSWindowController
 {
@@ -14,6 +14,10 @@
     LKButton *_continueButton;
     LKButton *_getStartedButton;
     LKButton *_continueAndCloseButton;
+    NSStackView *_dfrButtonsStackView;
+    NSButton *_dfrContinueButton;
+    NSButton *_dfrGetStartedButton;
+    NSButton *_dfrContinueAndCloseButton;
     LKHyperlinkLabel *_legalLabel;
     NSBox *_contentContainerView;
     NSView *_welcomeView;
@@ -35,12 +39,6 @@
     BOOL _isWelcome;
 }
 
-+ (id)theatreBulletFacet;
-+ (id)editingBulletFacet;
-+ (id)newlyAddedThemesFacet;
-+ (id)sharingFacet;
-+ (id)designFacet;
-+ (id)welcomeButtonFacet;
 + (id)licenseFormatString;
 + (id)licenseLinkString;
 + (id)licenseURL;
@@ -75,6 +73,9 @@
 @property LKButton *getStartedButton; // @synthesize getStartedButton=_getStartedButton;
 @property LKButton *continueButton; // @synthesize continueButton=_continueButton;
 - (id)windowNibName;
+- (id)touchBar:(id)arg1 makeItemForIdentifier:(id)arg2;
+- (id)makeTouchBar;
+- (void)_updateDFRButtons;
 - (BOOL)windowShouldClose:(id)arg1;
 - (void)close:(id)arg1;
 - (double)_animationDurationMultiplier;
@@ -88,7 +89,10 @@
 - (void)showWhatsNew:(id)arg1;
 - (BOOL)acceptsMouseMovedEvents;
 - (void)_displayModally;
-- (id)_initAndConfigure:(BOOL)arg1;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithWindow:(id)arg1;
+- (id)initWithIsWelcomeScreen:(BOOL)arg1;
 - (void)whatsNewViewSetup;
 - (void)welcomeScreenViewSetup;
 

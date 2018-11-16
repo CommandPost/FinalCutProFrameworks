@@ -13,8 +13,10 @@
     TLKMarkerPosterPinLayer *_activeLayer;
     struct CGPoint _clickedPosition;
     CDStruct_1b6d18a9 _startingTime;
+    id _referenceContainer;
 }
 
+@property(retain, nonatomic) id referenceContainer; // @synthesize referenceContainer=_referenceContainer;
 - (id)stringForToolTipAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (void)updateRollover:(id)arg1;
 - (void)exitRollover:(id)arg1;

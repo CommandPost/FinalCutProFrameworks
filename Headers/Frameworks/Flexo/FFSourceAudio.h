@@ -12,6 +12,7 @@
 
 + (Class)streamClass;
 - (BOOL)isValid;
+- (id)audioTrackNamesFromMetadata;
 - (id)metadataAudioChannelLayout;
 - (id)audioChannelLayout;
 - (long long)timeInFrames:(CDStruct_1b6d18a9)arg1 roundingMethod:(unsigned int)arg2;
@@ -25,8 +26,9 @@
 - (id)audioFormatString;
 - (double)sampleRate;
 - (CDStruct_1b6d18a9)nativeSampleDuration;
-- (unsigned int)numberOfChannelsForStreamAudioFlags:(unsigned long long)arg1;
+- (unsigned int)numberOfChannelsForStreamAudioFlags:(unsigned int)arg1;
 - (unsigned int)numberOfChannels;
+- (id)newUntimedSource;
 - (id)newStreamForRender;
 - (id)newStreamForRenderWithOptions:(id)arg1;
 - (id)newStreamForRender:(id)arg1 withOptions:(id)arg2;

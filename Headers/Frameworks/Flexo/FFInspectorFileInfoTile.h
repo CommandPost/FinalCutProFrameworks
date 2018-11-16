@@ -4,24 +4,29 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFInspectorShareAutoresizingTile.h>
+#import <Flexo/FFInspectorFileInfoCollapsableContainerTile.h>
 
-@class FFInspectorSharingRolloverButton, NSTrackingArea;
+#import "FFInspectorFileInfoReferencesTile.h"
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorFileInfoTile : FFInspectorShareAutoresizingTile
+@interface FFInspectorFileInfoTile : FFInspectorFileInfoCollapsableContainerTile <FFInspectorFileInfoReferencesTile>
 {
-    NSTrackingArea *_trackingArea;
-    FFInspectorSharingRolloverButton *_expandButton;
 }
 
-@property(nonatomic) FFInspectorSharingRolloverButton *expandButton; // @synthesize expandButton=_expandButton;
-- (void)toggleExpandedView:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseEntered:(id)arg1;
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)updateTracking:(BOOL)arg1;
++ (Class)classForHeaderController;
+- (void)updateWithItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
+- (void)addTilesForItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
+- (id)_addTileOfClass:(Class)arg1 items:(id)arg2 references:(id)arg3 owner:(id)arg4;
+- (id)_missingEffectsForItem:(id)arg1 references:(id)arg2;
+- (void)drawDividerInRect:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

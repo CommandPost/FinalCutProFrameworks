@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_semaphore> *_decodeCompleteSemaphore;
     FFImageRepFFPixelBuffer *_imageRepFFPixelBuffer;
     NSObject<OS_dispatch_semaphore> *_textureBufferSemaphore;
-    struct vector<TextureBufferRecord, std::allocator<TextureBufferRecord>> _textureBufferRecords;
+    struct vector<TextureBufferRecord, std::__1::allocator<TextureBufferRecord>> _textureBufferRecords;
     _Bool _canceled;
     struct FFVideoDecoderRED *_videoDecoderRED;
     double _startTime;
@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)waitForImageRepForUpTo:(long long)arg1;
 - (void)setImageRepToNull;
 - (void)setImageRep:(id)arg1;
-- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 flattenOptions:(const CDStruct_c1a9016d *)arg6;
+- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
 - (void)processFinishedJob:(int)arg1;
 - (void)processRawImageOnGPUAndReadBack;
 - (void)setPixelBuffer:(id)arg1;

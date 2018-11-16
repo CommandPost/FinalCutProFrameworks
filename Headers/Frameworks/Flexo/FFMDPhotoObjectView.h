@@ -9,8 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface FFMDPhotoObjectView : FFImageBrowserView
 {
+    BOOL _allowRangeSelection;
 }
 
+@property(readonly, nonatomic) BOOL allowRangeSelection; // @synthesize allowRangeSelection=_allowRangeSelection;
 - (void)selectAll:(id)arg1;
 - (void)_hidePlayheadInfoWindowWithAnimation:(BOOL)arg1;
 - (void)_photoViewFrameDidChange:(id)arg1;
@@ -18,9 +20,14 @@ __attribute__((visibility("hidden")))
 - (void)mouseExited:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (BOOL)resignFirstResponder;
+- (void)unhandledKeyUp:(id)arg1;
+- (void)keyUp:(id)arg1;
+- (void)unhandledKeyDown:(id)arg1;
+- (void)keyDown:(id)arg1;
 - (id)newCellForRepresentedItem:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

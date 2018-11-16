@@ -10,9 +10,9 @@
 - (unsigned long long)validModesForFontPanel:(id)arg1;
 - (void)changeFont:(id)arg1;
 - (void)changeAttributes:(id)arg1;
-- (BOOL)setDropShadowChannels:(id)arg1 time:(CDStruct_198678f7)arg2 style:(struct TXTextStyle *)arg3 text:(struct TXTextLayout *)arg4;
+- (BOOL)setDropShadowChannels:(id)arg1 time:(CDStruct_198678f7)arg2 style:(const shared_ptr_e0e110e1 *)arg3 text:(struct TXTextLayout *)arg4;
 - (id)getSelectedTextAttributes:(struct TXTextLayout *)arg1;
-- (id)newNSShadowForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_198678f7)arg2;
-- (id)getNSFontForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_198678f7)arg2;
+- (id)newNSShadowForStyle:(const shared_ptr_e0e110e1 *)arg1 time:(CDStruct_198678f7)arg2;
+- (id)getNSFontForStyle:(const shared_ptr_e0e110e1 *)arg1 time:(CDStruct_198678f7)arg2;
 @end
 

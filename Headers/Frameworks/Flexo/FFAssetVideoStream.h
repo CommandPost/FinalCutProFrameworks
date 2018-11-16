@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
     BOOL _alreadyFoundCachedStill;
 }
 
-- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
-- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5 graphBuildInfo:(id)arg6;
+- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5;
+- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5 roi:(const struct CGRect *)arg6 graphBuildInfo:(id)arg7;
 - (BOOL)_maybeQueueToStillCache:(CDStruct_1b6d18a9)arg1 context:(id)arg2 adjustedContext:(id)arg3 downstreamPT:(id)arg4;
 - (id)_downgradedContextBasedOnDownStreamPT:(id)arg1 context:(id)arg2;
 - (void)setRate:(double)arg1;

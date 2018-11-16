@@ -15,13 +15,7 @@
     BOOL _isEnabled;
 }
 
-- (void)panWithPage:(double)arg1 y:(double)arg2;
-- (void)pan:(double)arg1 y:(double)arg2;
-- (void)zoomWithFactor:(double)arg1 y:(double)arg2;
-- (void)zoom:(double)arg1 y:(double)arg2;
 - (void)drawGrid;
-- (struct CGRect)getOriginalViewVolume;
-- (struct CGRect)getCurrentViewVolume;
 - (void)setCurrentViewVolume:(struct CGRect)arg1;
 - (id)menuForEvent:(id)arg1;
 - (void)scrollWheel:(id)arg1;
@@ -29,9 +23,11 @@
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
+- (unsigned int)numberOfTickMarks;
 - (void)reset;
 - (BOOL)isEnabled;
 - (void)setEnabled:(BOOL)arg1;
+- (double)getZoomPadding;
 - (void)update;
 - (void)HUDifyView;
 - (id)initWithFrame:(struct CGRect)arg1;

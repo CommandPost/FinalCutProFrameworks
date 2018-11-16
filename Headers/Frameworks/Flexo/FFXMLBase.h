@@ -6,18 +6,28 @@
 
 #import "NSObject.h"
 
-@class NSMutableArray;
+#import "FFMergeTaskDelegate.h"
+
+@class FFXMLTranslationOptions, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFXMLBase : NSObject
+@interface FFXMLBase : NSObject <FFMergeTaskDelegate>
 {
     id <FFXMLTaskDelegate> _taskDelegate;
+    FFXMLTranslationOptions *_translationOptions;
     NSMutableArray *_progressScopeStack;
     NSMutableArray *_progressScopeTokenStack;
 }
 
+@property(readonly) id <FFXMLTaskDelegate> taskDelegate; // @synthesize taskDelegate=_taskDelegate;
 - (void)setForiMovie;
-- (id)runLibraryChooser:(id)arg1 importFileURL:(id)arg2 libraryIsNew:(char *)arg3 error:(id *)arg4;
+- (BOOL)foriMovie;
+- (void)registerMediaIdentifierAliases:(id)arg1 with:(id)arg2 forMergeMode:(int)arg3;
+- (int)confirmMerge:(id)arg1 with:(id)arg2;
+- (void)advanceTaskType;
+@property(copy) FFXMLTranslationOptions *options;
+- (BOOL)showLibraryColorProcessingModeConfirmationAlert:(id)arg1 libraryMode:(int)arg2 importingMode:(int)arg3 error:(id *)arg4;
+- (BOOL)chooseLibraryForImport:(id)arg1 error:(id *)arg2;
 - (BOOL)userCancelled;
 - (void)hideProgressWindow;
 - (void)showProgressWindow;
@@ -28,6 +38,12 @@ __attribute__((visibility("hidden")))
 - (void *)pushRelativeProgressScope:(id)arg1;
 - (void)dealloc;
 - (id)initWithTaskDelegate:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -15,7 +15,7 @@
     NSButton *_pDeleteButton;
     struct OZTransitiveBehavior *_pBehavior;
     struct OZScene *_pScene;
-    list_bbacc03b *_pNodeIDs;
+    list_45f779fc *_pNodeIDs;
 }
 
 - (BOOL)tableView:(id)arg1 acceptDrop:(id)arg2 row:(int)arg3 dropOperation:(unsigned long long)arg4;

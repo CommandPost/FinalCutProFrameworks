@@ -4,24 +4,33 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <TLKit/ERLRelationalObject.h>
 
-@class CALayer, NSMutableSet, NSSet;
+@class CALayer, NSMutableSet, NSSet, TLKLayoutDatabase;
 
-@interface TLKLineFragment : NSObject
+@interface TLKLineFragment : ERLRelationalObject
 {
-    struct CGRect _bounds;
-    struct CGPoint _position;
-    struct _TLKRange _locationRange;
-    CALayer *_layer;
     NSMutableSet *_layoutContexts;
     BOOL _hasTornLeadingEdge;
     BOOL _hasTornTrailingEdge;
+    BOOL _locationRangeNeedsUpdate;
+    CALayer *_layer;
+    TLKLayoutDatabase *_layoutDatabase;
+    struct CGPoint _position;
+    struct _TLKRange _timeRangeInSeconds;
+    struct _TLKRange _locationRange;
+    struct CGRect _bounds;
 }
 
+@property(nonatomic) TLKLayoutDatabase *layoutDatabase; // @synthesize layoutDatabase=_layoutDatabase;
 @property(retain, nonatomic) CALayer *layer; // @synthesize layer=_layer;
+@property(nonatomic) BOOL locationRangeNeedsUpdate; // @synthesize locationRangeNeedsUpdate=_locationRangeNeedsUpdate;
+@property(nonatomic) struct _TLKRange locationRange; // @synthesize locationRange=_locationRange;
+@property(nonatomic) struct _TLKRange timeRangeInSeconds; // @synthesize timeRangeInSeconds=_timeRangeInSeconds;
 @property(nonatomic) BOOL hasTornTrailingEdge; // @synthesize hasTornTrailingEdge=_hasTornTrailingEdge;
 @property(nonatomic) BOOL hasTornLeadingEdge; // @synthesize hasTornLeadingEdge=_hasTornLeadingEdge;
+@property(nonatomic) struct CGPoint position; // @synthesize position=_position;
+@property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromLineFragment:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toLineFragment:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromLineFragment:(id)arg2;
@@ -35,10 +44,8 @@
 - (void)addLayoutContextsObject:(id)arg1;
 @property(copy, nonatomic) NSSet *layoutContexts;
 - (BOOL)isEmpty;
-@property(nonatomic) struct _TLKRange locationRange;
 @property(nonatomic) struct CGRect frame;
-@property(nonatomic) struct CGRect bounds;
-@property(nonatomic) struct CGPoint position;
+- (struct _TLKRange)locationRangeForSeconds:(double)arg1;
 - (id)debugDescription;
 - (id)description;
 - (void)dealloc;

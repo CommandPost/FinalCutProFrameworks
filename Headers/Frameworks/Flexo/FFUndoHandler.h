@@ -10,7 +10,6 @@
 
 @interface FFUndoHandler : NSObject
 {
-    id <FFUndoHandlerDelegate> _delegate;
     NSString *_displayName;
     FFUndoManager *_undoMgr;
     NSMutableArray *_actionStack;
@@ -22,12 +21,14 @@
     id _runLoopObserver;
     unsigned long long _undoErrorDisabled;
     double _undoErrorDetected;
+    NSMutableArray *_debugActionNames;
 }
 
 + (void)performDeferredBlocks;
 + (void)performBlockOutsideUndoScope:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;
 + (void)performBlockOutsideUndoScope:(CDUnknownBlockType)arg1;
 + (void)registerGuardForLibraryItems:(id)arg1;
++ (void)disableUndoWarningWhilePerformingBlock:(CDUnknownBlockType)arg1;
 + (id)fromCurrentTransaction;
 @property(retain, nonatomic) FFUndoGuard *guard; // @synthesize guard=_guard;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -56,6 +57,8 @@
 - (void)logAction:(id)arg1;
 - (id)actionName;
 - (id)firstActionName;
+- (id)copyDebugActionNames;
+- (unsigned long long)actionLevel;
 - (BOOL)canceled;
 - (void)_performRollbackWithBlock:(CDUnknownBlockType)arg1;
 - (void)_performRollbackWithBlock0:(CDUnknownBlockType)arg1;
@@ -72,7 +75,6 @@
 - (void)assertNoUndoScope;
 - (id)undoManager;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
 - (id)init;
 - (BOOL)_disableRemoveAllActions:(BOOL)arg1;
 

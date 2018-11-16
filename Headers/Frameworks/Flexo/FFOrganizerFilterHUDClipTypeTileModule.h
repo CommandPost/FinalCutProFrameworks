@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     LKPopUpButton *_clipTypePopUpButton;
 }
 
-- (id)tileTypeFacet;
+- (id)tileGlyphString;
 - (id)filterDict;
 - (void)setFilterDict:(id)arg1;
 - (void)clipTypeFilterMenu:(id)arg1;

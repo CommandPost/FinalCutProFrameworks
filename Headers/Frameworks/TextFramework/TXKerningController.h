@@ -17,6 +17,7 @@
 - (struct OZChannelBase *)associatedChannel;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
 - (void)setChannelValue:(id)arg1;
+- (id)findMotionEffect:(struct TXTextLayout *)arg1;
 
 @end
 

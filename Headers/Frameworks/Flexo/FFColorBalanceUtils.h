@@ -10,12 +10,17 @@
 {
 }
 
++ (BOOL)actionRemoveOnAnchoredObjects:(id)arg1 error:(id *)arg2;
++ (BOOL)actionInsertOrEnableForAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
++ (BOOL)actionToggleAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
++ (BOOL)_actionPerformOnAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 insertBalanceEffect:(BOOL)arg3 error:(id *)arg4;
 + (void)operationRemoveOnAnchoredObjects:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 + (void)operationEnableOrInsertForAnchoredObjects:(id)arg1;
 + (void)analyseAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 options:(struct ColorBalanceOptions)arg3 progressBlock:(CDUnknownBlockType)arg4;
 + (void)_queueEnableEffectForAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 options:(struct ColorBalanceOptions)arg3 progressBlock:(CDUnknownBlockType)arg4;
 + (id)_newAnalysesForAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 options:(struct ColorBalanceOptions)arg3;
 + (BOOL)shouldEnableOrInsertForAnchoredObjects:(id)arg1;
++ (CDStruct_1b6d18a9)bestAnalysisFrameForAnchoredObject:(id)arg1 projectedTime:(CDStruct_1b6d18a9)arg2 range:(CDStruct_e83c9415 *)arg3;
 + (long long)consumerBalanceWhiteBalanceState:(id)arg1;
 + (long long)consumerBalanceFacesState:(id)arg1;
 + (long long)consumerBalanceAutomaticState:(id)arg1;
@@ -24,6 +29,7 @@
 + (long long)_effectsState:(id)arg1 testBlock:(CDUnknownBlockType)arg2;
 + (id)arrayOfColorBalanceEffectsFromAnchoredObjects:(id)arg1;
 + (id)colorBalanceEffectFromAnchoredObject:(id)arg1;
++ (id)newPixelBufferForAnchoredObject:(id)arg1 time:(CDStruct_1b6d18a9)arg2 effectCount:(long long)arg3 facesInfo:(id *)arg4;
 
 @end
 

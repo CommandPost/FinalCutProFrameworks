@@ -46,10 +46,10 @@
 - (id)buildMenu:(const struct OZLibraryPresetsMap *)arg1;
 - (id)materialMenu:(long long)arg1;
 - (void)getSelectedControllers:(id)arg1 doShallowSearch:(BOOL)arg2;
-- (void)getSelectedMaterialLayerChansForMaterial:(struct OZLayeredMaterial *)arg1 selectedMaterialLayerChans:(vector_53b492d6 *)arg2;
-- (vector_53b492d6)getSelectedMaterialLayerChans;
+- (void)getSelectedMaterialLayerChansForMaterial:(struct OZLayeredMaterial *)arg1 selectedMaterialLayerChans:(vector_b71873ec *)arg2;
+- (vector_b71873ec)getSelectedMaterialLayerChans;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)doDrag:(list_e802f8b8 *)arg1 viewList:(id)arg2;
+- (void)doDrag:(list_e5c8e430 *)arg1 viewList:(id)arg2;
 - (id)delegate;
 - (id)getControllerForLayerChan:(struct OZChannelBase *)arg1;
 - (void)updateGlobalPlacementVisibility;
@@ -93,6 +93,7 @@
 - (void)setMaterialCtrlDelegate:(id)arg1;
 - (unsigned int)facetAssignment;
 - (void)fixLabelParamSizes;
+- (void)tweakForNewLook;
 - (void)didBuildUI;
 - (void)addLayerButtonAction:(id)arg1;
 - (id)getViewControllerForLayer:(struct OZMaterialLayerBase *)arg1;

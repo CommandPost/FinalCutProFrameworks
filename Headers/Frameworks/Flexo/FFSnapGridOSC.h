@@ -10,6 +10,10 @@ __attribute__((visibility("hidden")))
 @interface FFSnapGridOSC : FFOSC
 {
     BOOL drawAllSnaps;
+    int _lastX;
+    int _lastArticulatedX;
+    int _lastY;
+    int _lastArticulatedY;
 }
 
 @property(nonatomic) BOOL drawAllSnaps; // @synthesize drawAllSnaps;

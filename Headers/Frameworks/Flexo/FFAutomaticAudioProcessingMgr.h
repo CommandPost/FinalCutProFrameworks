@@ -10,12 +10,13 @@
 {
 }
 
-+ (void)performAudioProcessingForMedia:(id)arg1 options:(id)arg2 forAssetImport:(BOOL)arg3;
++ (void)performAudioEnhancementsForClip:(id)arg1 forAssetImport:(BOOL)arg2;
++ (void)performAudioChannelAnalysisForClip:(id)arg1 options:(id)arg2 forAssetImport:(BOOL)arg3 withCompletionBlock:(CDUnknownBlockType)arg4;
 + (BOOL)hasRunningBackgroundTasks:(id)arg1 withBeep:(BOOL)arg2;
 + (void)_addObject:(id)arg1 toSequence:(id)arg2;
 + (BOOL)_objectIsMergedClip:(id)arg1;
-+ (void)autoDetectRelatedAudioComponents:(id)arg1 onTask:(id)arg2;
-+ (void)removeSilentAudioComponents:(id)arg1 onTask:(id)arg2;
++ (BOOL)autoDetectRelatedAudioComponents:(id)arg1 onTask:(id)arg2;
++ (BOOL)removeSilentAudioComponents:(id)arg1 onTask:(id)arg2;
 + (void)_removeOneSilentChannel:(id)arg1 inArrayOfSources:(id)arg2 withVirtualSource:(id)arg3 andRemoveArray:(id)arg4 andAddArray:(id)arg5 andSilentChannels:(id)arg6;
 + (BOOL)_channelExists:(id)arg1 inArray:(id)arg2 inSilentArray:(id)arg3;
 + (_Bool)_hasSilence:(id)arg1 onTask:(id)arg2;

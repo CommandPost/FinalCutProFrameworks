@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
     } plugInFlags;
     id <PROPlugInDelegate> delegate;
     id <PKPlugIn> pluginKitPlug;
+    BOOL _isBlocked;
+    NSString *_blockedLookupKey;
 }
 
 - (id)apiUsedByPlugInForProtocol:(id)arg1;
@@ -48,6 +50,10 @@ __attribute__((visibility("hidden")))
 - (void)reportError:(id)arg1;
 - (id)uuidString;
 - (struct __CFUUID *)uuid;
+- (void)setBlockedLookupKey:(id)arg1 pluginName:(id)arg2 version:(id)arg3;
+- (id)blockedLookupKey;
+- (void)setIsBlocked:(BOOL)arg1;
+- (BOOL)isBlocked;
 - (id)pluginKitPlug;
 - (void)setDelegate:(id)arg1;
 - (id)delegate;

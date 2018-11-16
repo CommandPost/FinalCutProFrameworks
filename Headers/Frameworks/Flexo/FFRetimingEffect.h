@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 
 + (id)effectForEffectStack:(id)arg1;
 + (id)effectIDForEffectStack:(id)arg1;
-- (id).cxx_construct;
 - (BOOL)suppressChannelChangeUpdate;
 - (void)setSuppressChannelChangeUpdate:(BOOL)arg1;
 - (void)createChannelsInFolder:(id)arg1;
@@ -46,9 +45,11 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1 withContext:(id)arg2;
 - (CDStruct_e83c9415)untimeRange:(CDStruct_e83c9415)arg1;
 - (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1;
-- (BOOL)_timeOnDownSlope:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1 cachingStruct:(struct FFCachesForRepeatedRetimingCalculations *)arg2;
+- (BOOL)_timeOnDownSlope:(CDStruct_1b6d18a9)arg1 cachingStruct:(struct FFCachesForRepeatedRetimingCalculations *)arg2;
 - (CDStruct_1b6d18a9)curveLookup:(CDStruct_1b6d18a9)arg1;
 - (double)untimeToSeconds:(CDStruct_1b6d18a9)arg1;
+- (double)untimeToSeconds:(CDStruct_1b6d18a9)arg1 cachingStruct:(struct FFCachesForRepeatedRetimingCalculations *)arg2;
 - (BOOL)mapMediaTime:(CDStruct_1b6d18a9)arg1 toComponentTime:(CDStruct_1b6d18a9 *)arg2 inComponentTimeRange:(CDStruct_e83c9415)arg3;
 - (BOOL)mapMediaTimeInSeconds:(double)arg1 toComponentTime:(CDStruct_1b6d18a9 *)arg2 inComponentTimeRange:(CDStruct_e83c9415)arg3;
 - (BOOL)mapMediaTimeInSeconds:(double)arg1 toComponentKeyTime:(CDStruct_1b6d18a9 *)arg2 inComponentTimeRange:(CDStruct_e83c9415)arg3;
@@ -59,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (int)evalSegmentIndexForComponentTime:(CDStruct_1b6d18a9)arg1;
 - (int)UIsegmentIndexForComponentTime:(CDStruct_1b6d18a9)arg1;
 - (int)_segmentIndexForChannel:(id)arg1 componentTime:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_1b6d18a9)UIsegmentDurationForComponentTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)_segmentDurationForChannel:(id)arg1 componentTime:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_e83c9415)UISegmentTimeRangeAtIndex:(int)arg1;
 - (CDStruct_e83c9415)evalSegmentTimeRangeAtIndex:(int)arg1;
 - (CDStruct_e83c9415)evalSegmentTimeRangeAtUIIndex:(int)arg1;

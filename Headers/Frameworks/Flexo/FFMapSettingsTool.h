@@ -6,18 +6,19 @@
 
 #import <Flexo/FFAdjustmentTool.h>
 
+#import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFChannelChangeController, LKPopOverWindow, NSButton, NSMatrix, NSString, NSView;
+@class FFChannelChangeController, NSButton, NSMatrix, NSPopover, NSString, NSView;
 
-@interface FFMapSettingsTool : FFAdjustmentTool <NSWindowDelegate>
+@interface FFMapSettingsTool : FFAdjustmentTool <NSWindowDelegate, NSPopoverDelegate>
 {
     NSView *_adjustmentToolbarView;
     NSButton *_startLocationButton;
     NSButton *_endLocationButton;
     NSButton *_switchLocationsButton;
     NSButton *_showMapOptionsButton;
-    LKPopOverWindow *_mapOptionsPopover;
+    NSPopover *_mapOptionsPopover;
     NSView *_mapOptionsView;
     NSMatrix *_mapStyleMatrix;
     NSView *_globeOptionsView;
@@ -27,19 +28,21 @@
     FFChannelChangeController *_changeController;
 }
 
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)toolTip;
 + (id)displayName;
 + (id)groups;
 + (void)initialize;
 - (void)resetTool:(id)arg1;
-- (void)popoverDidResignKey:(id)arg1;
 - (void)showCloudsAction:(id)arg1;
 - (void)zoomInAction:(id)arg1;
 - (void)showRouteLinesAction:(id)arg1;
 - (void)mapStyleAction:(id)arg1;
-- (void)mapOptionsDoneAction:(id)arg1;
 - (void)showMapOptionsAction:(id)arg1;
 - (void)switchLocationsAction:(id)arg1;
 - (void)endLocationAction:(id)arg1;
@@ -54,7 +57,8 @@
 - (void)_updateMapOptionsButtonForEffect:(id)arg1;
 - (void)_updateCheckbox:(id)arg1 withChannelID:(unsigned int)arg2 inFolder:(id)arg3;
 - (void)_updateUIWithValue:(id)arg1;
-- (void)popOverWindowDidCancel:(id)arg1;
+- (void)popoverDidShow:(id)arg1;
+- (id)mapStylePopover;
 - (id)adjustmentsToolbarView;
 - (BOOL)supportsMultipleSelection;
 - (BOOL)handlesSelection;

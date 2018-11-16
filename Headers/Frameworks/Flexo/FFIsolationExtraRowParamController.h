@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (void)_syncActiveOSCState;
 - (void)toggleOSC:(id)arg1;
 - (id)_isolationMask;
-- (id)facetForActiveMaskButton;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

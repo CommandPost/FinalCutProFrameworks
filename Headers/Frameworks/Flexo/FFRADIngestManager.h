@@ -33,6 +33,7 @@
     FFPTPDownloadManager *_ptpDownloadManager;
     NSSet *_keywords;
     NSMutableDictionary *_destinationTempFolders;
+    BOOL _pausedThumbnailRequests;
     BOOL _autoCorrect;
 }
 
@@ -75,9 +76,9 @@
 - (void)assetCopyQueueCompletedMainThread:(id)arg1;
 - (void)assetCopyQueueCompleted:(id)arg1;
 - (BOOL)isUserNotificationSupported;
-- (id)librariesInUse;
-- (id)assetsChanging;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsChanging:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (void)invalidateAssetForVolumeDidMount:(id)arg1;
 - (void)invalidateRADAssets:(id)arg1;
@@ -86,7 +87,8 @@
 - (void)registerRADAssetForVolumeNotifications:(id)arg1;
 - (id)importRangesOfMedia:(id)arg1;
 - (void)restoreOriginalClipIfNecessaryForAsset:(id)arg1 inEvent:(id)arg2;
-- (void)markImportedRange:(CDStruct_e83c9415)arg1 onClipsWithID:(id)arg2 inVolumes:(id)arg3 originalClip:(id)arg4;
+- (void)completedTask:(id)arg1;
+- (void)startedTask:(id)arg1;
 - (void)canceledTask:(id)arg1;
 - (void)resumedTask:(id)arg1;
 - (BOOL)confirmIsPaused:(id)arg1;
@@ -97,7 +99,6 @@
 - (void)stopAllIngests;
 - (void)updateBackgroundThread;
 - (void)stopIngestOfCurrentClip;
-- (void)restoreMediaMapOnClip:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)reimportForClips:(id)arg1 validateOnly:(BOOL)arg2;
 - (BOOL)reimportForSequenceProject:(id)arg1 validateOnly:(BOOL)arg2;

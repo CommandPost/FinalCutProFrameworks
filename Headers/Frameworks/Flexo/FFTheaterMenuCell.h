@@ -4,16 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProImageAndTextCell.h"
+#import "LKImageAndTextCell.h"
 
 __attribute__((visibility("hidden")))
-@interface FFTheaterMenuCell : NSProImageAndTextCell
+@interface FFTheaterMenuCell : LKImageAndTextCell
 {
 }
 
 - (void)accessibilityPerformAction:(id)arg1;
 - (id)accessibilityActionDescription:(id)arg1;
 - (id)accessibilityActionNames;
+- (struct CGRect)drawingRectForBounds:(struct CGRect)arg1;
 - (BOOL)sendAction:(SEL)arg1 to:(id)arg2;
 - (id)proDisabledTextColor;
 

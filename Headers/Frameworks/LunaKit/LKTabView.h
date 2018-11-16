@@ -4,11 +4,51 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProTabView.h"
+#import "NSTabView.h"
 
-@interface LKTabView : NSProTabView
+@interface LKTabView : NSTabView
 {
+    int _rodStyle;
+    BOOL _showBezel;
 }
+
++ (void)initialize;
+- (void)moveDown:(id)arg1;
+- (void)moveUp:(id)arg1;
+- (void)moveLeft:(id)arg1;
+- (void)moveRight:(id)arg1;
+- (BOOL)_wantsKeyDownForEvent:(id)arg1;
+- (void)_windowChangedKeyState;
+- (void)superSuperWindowChangedKeyState;
+- (id)tabViewItemAtPoint:(struct CGPoint)arg1;
+- (struct CGSize)contentSizeForFrameSize:(struct CGSize)arg1;
+- (struct CGSize)frameSizeForContentSize:(struct CGSize)arg1;
+- (void)removeTabViewItem:(id)arg1;
+- (void)insertTabViewItem:(id)arg1 atIndex:(long long)arg2;
+- (void)_switchTabViewItem:(id)arg1 oldView:(id)arg2 withTabViewItem:(id)arg3 newView:(id)arg4 initialFirstResponder:(id)arg5 lastKeyView:(id)arg6;
+- (void)_installRodAccessoryView:(id)arg1;
+- (void)_prepareToSwitchTabItem:(id)arg1 with:(id)arg2;
+- (id)_findFirstValidKeyViewStartingFrom:(id)arg1 inTabViewItem:(id)arg2;
+- (struct CGRect)_labelRectForTabRect:(struct CGRect)arg1 forItem:(id)arg2;
+- (struct CGRect)_tabRectForTabViewItem:(id)arg1;
+- (void)_resizeSelectedTabViewItem;
+- (double)_doLayoutTabs:(double)arg1;
+- (double)_firstTabOffset;
+- (struct CGRect)tabRect;
+- (struct CGRect)_themeTabAndBarArea;
+- (struct CGRect)_themeContentRect;
+- (struct CGRect)_rodContentRect;
+- (double)_tabRodHeight;
+- (double)_tabHeight;
+- (struct CGSize)minimumSize;
+- (struct CGRect)contentRect;
+- (BOOL)_hasBezelBorder;
+- (BOOL)showsBezel;
+- (void)setShowsBezel:(BOOL)arg1;
+- (int)_rodStyle;
+- (void)_changeRodStyle:(int)arg1;
+- (BOOL)isOpaque;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

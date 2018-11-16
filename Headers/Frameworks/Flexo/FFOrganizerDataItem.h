@@ -9,7 +9,7 @@
 #import "FFModelLocking.h"
 #import "FFOrganizerClassTypeProtocol.h"
 
-@class FFAnchoredSequence, FFSequenceInfo, FFSequenceRecord, NSString;
+@class FFAnchoredSequence, FFLibrary, FFSequenceInfo, FFSequenceRecord, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerDataItem : NSObject <FFModelLocking, FFOrganizerClassTypeProtocol>
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FFSequenceRecord *sequenceRecord; // @synthesize sequenceRecord=_sequenceRecord;
 @property(readonly, nonatomic) FFSequenceInfo *sequenceInfo;
 @property(readonly, nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
+@property(readonly, nonatomic) FFLibrary *library;
 - (id)representedToolObject;
 - (id)primaryObject;
 - (id)sortObject;

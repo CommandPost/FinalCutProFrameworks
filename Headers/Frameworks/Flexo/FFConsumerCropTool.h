@@ -21,8 +21,12 @@
 }
 
 + (id)toolTip;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;
@@ -37,6 +41,7 @@
 - (BOOL)forceIntoCropModeIfTrim;
 - (void)setCropType:(id)arg1;
 - (void)setCropMode:(int)arg1;
+- (id)selectionToWorkOn;
 - (void)setSourceCrop:(id)arg1;
 - (id)adjustmentsToolbarView;
 - (void)setAdjustmentStateFromDictionary:(id)arg1;

@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 
 @property int elementID; // @synthesize elementID=_elementId;
 @property int partID; // @synthesize partID=_partId;
-- (id)_baseFacet;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 

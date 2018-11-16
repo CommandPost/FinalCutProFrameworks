@@ -6,42 +6,43 @@
 
 #import "LKViewModule.h"
 
-@class FFColorBoardContentViewController, LKButton, LKPaneCapSegmentedControl, LKSegmentedControl, LKTextField, NSProView, NSProWindow, NSView;
+@class FFColorBoardContentViewController, FFInspectorAccessoryView, LKButton, LKPaneCapSegmentedControl, LKPopUpButton, LKSegmentedControl, LKTextField, LKWindow, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFColorBoardModule : LKViewModule
 {
     BOOL _colorBoardIsActive;
     FFColorBoardContentViewController *_colorBoardContentViewController;
-    NSProView *_headerView;
-    NSProView *_footerView;
+    FFInspectorAccessoryView *_headerView;
+    NSView *_footerView;
     NSView *_contentContainerView;
     LKPaneCapSegmentedControl *_secondariesControl;
     LKSegmentedControl *_maskControl;
     LKTextField *_maskLabel;
-    LKSegmentedControl *_presetControl;
-    NSProWindow *_presetWindow;
+    LKPopUpButton *_presetControl;
+    LKWindow *_presetWindow;
     LKTextField *_presetNameField;
     LKButton *_presetOKButton;
     LKButton *inspectorButton;
+    LKButton *_colorBoardButton;
     LKTextField *_colorAdjustmentLabel;
     LKButton *_inspectorButton;
 }
 
 + (void)loadControllersAndDataSources;
 + (id)sharedColorBoardModule;
+@property(retain, nonatomic) LKButton *colorBoardButton; // @synthesize colorBoardButton=_colorBoardButton;
 @property(nonatomic) LKTextField *colorAdjustmentLabel; // @synthesize colorAdjustmentLabel=_colorAdjustmentLabel;
 @property(retain, nonatomic) LKButton *inspectorButton; // @synthesize inspectorButton=_inspectorButton;
 @property(retain, nonatomic) LKButton *presetOKButton; // @synthesize presetOKButton=_presetOKButton;
 @property(retain, nonatomic) LKTextField *presetNameField; // @synthesize presetNameField=_presetNameField;
-@property(retain, nonatomic) NSProWindow *presetWindow; // @synthesize presetWindow=_presetWindow;
-@property(retain, nonatomic) LKSegmentedControl *presetControl; // @synthesize presetControl=_presetControl;
+@property(retain, nonatomic) LKWindow *presetWindow; // @synthesize presetWindow=_presetWindow;
+@property(readonly, nonatomic) LKPopUpButton *presetControl; // @synthesize presetControl=_presetControl;
 @property(retain, nonatomic) LKTextField *maskLabel; // @synthesize maskLabel=_maskLabel;
 @property(retain, nonatomic) LKSegmentedControl *maskControl; // @synthesize maskControl=_maskControl;
 @property(retain, nonatomic) LKPaneCapSegmentedControl *secondariesControl; // @synthesize secondariesControl=_secondariesControl;
 @property(retain, nonatomic) NSView *contentContainerView; // @synthesize contentContainerView=_contentContainerView;
-@property(retain, nonatomic) NSProView *footerView; // @synthesize footerView=_footerView;
-@property(retain, nonatomic) NSProView *headerView; // @synthesize headerView=_headerView;
+@property(retain, nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
 @property(retain, nonatomic) FFColorBoardContentViewController *colorBoardContentViewController; // @synthesize colorBoardContentViewController=_colorBoardContentViewController;
 @property(nonatomic) BOOL colorBoardIsActive; // @synthesize colorBoardIsActive=_colorBoardIsActive;
 - (void)setAnchoredObjects:(id)arg1 withContext:(id)arg2;

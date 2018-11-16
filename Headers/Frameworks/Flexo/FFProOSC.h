@@ -54,6 +54,8 @@
 
 @property(readonly) int activePart; // @synthesize activePart=_activePart;
 - (id).cxx_construct;
+- (void)releaseWriteLock;
+- (void)acquireWriteLock;
 - (double)backingScaleFactor;
 - (void)toggleKeyframeForCheckedChannels;
 - (void)locateViewTimeAtSampleBoundary;
@@ -63,6 +65,12 @@
 - (CDStruct_1b6d18a9)nextKeyframeFromTime:(CDStruct_1b6d18a9)arg1 returnTimesInRangeOnly:(BOOL)arg2;
 - (CDStruct_1b6d18a9)previousKeyframeFromTime:(CDStruct_1b6d18a9)arg1 returnTimesInRangeOnly:(BOOL)arg2;
 - (void)setKeyframeAddFromKeyframeAtCurrentPosition;
+- (id)deleteKeyFrameImage;
+- (id)addKeyFrameImage;
+- (id)nextKeyFrameSelectedImage;
+- (id)nextKeyFrameNotSelectedImage;
+- (id)previousKeyFrameSelectedImage;
+- (id)previousKeyFrameNotSelectedImage;
 - (id)keyFrameButton;
 - (id)channelsToCheckForKeyframes;
 - (void)didSetChannel:(struct OZChannelBase *)arg1;
@@ -74,7 +82,7 @@
 - (void *)createContextSentry;
 - (BOOL)absolutePoints;
 - (BOOL)shouldFlip;
-- (void)findCustomGradientChannels:(struct vector<OZChannelRef *, std::allocator<OZChannelRef *>> *)arg1;
+- (void)findCustomGradientChannels:(struct vector<OZChannelRef *, std::__1::allocator<OZChannelRef *>> *)arg1;
 - (BOOL)hasCustomGradientChannels;
 - (BOOL)shouldDrawGradientOSC;
 - (void)didSelectContextMenuItem;
@@ -96,8 +104,8 @@
 - (BOOL)showRotationOSC;
 - (void)drawGeometry:(_Bool)arg1;
 - (void)drawElementOutline:(const PCMatrix44Tmpl_93ed1289 *)arg1 red:(double)arg2 green:(double)arg3 blue:(double)arg4;
-- (void)clipOutline:(const PCVector2_5d498db0 *)arg1 numPoints:(int)arg2 edges:(PCVector2_5d498db0 *)arg3 returnVisible:(vector_69938c0b *)arg4;
-- (void)clipPoints:(const vector_8d17e539 *)arg1 returnVisible:(vector_69938c0b *)arg2;
+- (void)clipOutline:(const PCVector2_5d498db0 *)arg1 numPoints:(int)arg2 edges:(PCVector2_5d498db0 *)arg3 returnVisible:(vector_a7cf9eda *)arg4;
+- (void)clipPoints:(const vector_ced1dec3 *)arg1 returnVisible:(vector_a7cf9eda *)arg2;
 - (PCRect_3a266109)getTransformedBounds;
 - (void)getTransformedCorner1:(PCVector2_5d498db0 *)arg1 c2:(PCVector2_5d498db0 *)arg2 c3:(PCVector2_5d498db0 *)arg3 c4:(PCVector2_5d498db0 *)arg4;
 - (PCBox_dd92ab54)getLocalVolume;
@@ -106,10 +114,10 @@
 - (PCRect_3a266109)getOriginalBounds;
 - (void)convertPixelValuesToXYZSamplesPercentageXYZSamplesIfRequired:(int)arg1 samplesX:(double *)arg2 samplesY:(double *)arg3 samplesZ:(double *)arg4;
 - (void)convertXYZSamplesPercentageToPixelValuesXYZSamplesIfRequired:(int)arg1 samplesX:(double *)arg2 samplesY:(double *)arg3 samplesZ:(double *)arg4;
-- (void)getCorners:(vector_9ae9b2a4 *)arg1 withFourCorner:(BOOL)arg2;
+- (void)getCorners:(vector_d8ace1c2 *)arg1 withFourCorner:(BOOL)arg2;
 - (PCRect_3a266109)getBounds;
 - (PCRay3_021fa152)computeRay:(const PCVector3_515d8d1c *)arg1 withFlattening:(BOOL)arg2;
-- (BOOL)projectPoints:(vector_8d17e539 *)arg1 toSpaceOf:(int)arg2;
+- (BOOL)projectPoints:(vector_ced1dec3 *)arg1 toSpaceOf:(int)arg2;
 - (PCMatrix44Tmpl_93ed1289)transformWithoutDistortAtTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)projectPoint:(PCVector3_515d8d1c *)arg1 toSpaceOf:(int)arg2;
 - (BOOL)projectPointToObjectX:(double *)arg1 y:(double *)arg2 z:(double *)arg3 transform:(PCMatrix44Tmpl_93ed1289 *)arg4;
@@ -175,6 +183,7 @@
 - (BOOL)positionHasMotionPathBehavior:(struct OZChannelPosition3D *)arg1;
 - (BOOL)positionHasActiveBehaviors:(struct OZChannelPosition3D *)arg1;
 - (struct OZChannelPosition3D *)getPositionChannel;
+- (BOOL)shouldDrawAnimationPath;
 - (BOOL)shouldDrawMotionPath;
 - (void)enableDistort:(BOOL)arg1;
 - (void)enableCrop:(BOOL)arg1;
@@ -281,7 +290,7 @@
 - (BOOL)proUI;
 - (BOOL)isMotion;
 - (id)createScaleOSCWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_ada7b58d *)arg2;
+- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_e1ec2d4c *)arg2;
 - (void)deregisterOSC:(id)arg1 withID:(const struct PCUUID *)arg2;
 - (void)registerOSC:(id)arg1 withID:(const struct PCUUID *)arg2;
 - (id)makeKeyForID:(const struct PCUUID *)arg1;
@@ -324,6 +333,8 @@
 - (double)getSceneWidth;
 - (void)setIgnoreTransformationsForElement:(struct OZTransformNode *)arg1;
 - (const struct OZRenderState *)renderState;
+- (float)blendingGamma;
+- (struct CGColorSpace *)workingColorSpace;
 - (BOOL)applyFlatten;
 - (BOOL)has3DObjects;
 - (CDStruct_1b6d18a9)getTime;
@@ -343,6 +354,10 @@
 - (void)otherMouseUp:(id)arg1;
 - (void)otherMouseDown:(id)arg1;
 - (void)mouseEntered:(id)arg1;
+- (void)nudgeRightMany:(id)arg1;
+- (void)nudgeLeftMany:(id)arg1;
+- (void)nudgeDownMany:(id)arg1;
+- (void)nudgeUpMany:(id)arg1;
 - (void)nudgeRight:(id)arg1;
 - (void)nudgeLeft:(id)arg1;
 - (void)nudgeDown:(id)arg1;
@@ -359,11 +374,12 @@
 - (BOOL)mouseCreatesUndo;
 - (void)mouseExited:(id)arg1;
 - (void)mouseDragged:(id)arg1;
+- (id)getActionName;
 - (BOOL)shouldAddUndoOnMouseDown;
 - (BOOL)settingChannelsFromOSC;
 - (void)ensureIntrinsic;
 - (void)_startProOSCBegin:(id)arg1 actionName:(id)arg2;
-- (void)multipleWillDidSetChannels:(list_ada7b58d)arg1 willSet:(BOOL)arg2;
+- (void)multipleWillDidSetChannels:(list_e1ec2d4c)arg1 willSet:(BOOL)arg2;
 - (void)_willDidSetChannels:(id)arg1 willSet:(BOOL)arg2;
 - (id)getCursor;
 - (void)mouseMoved:(id)arg1;

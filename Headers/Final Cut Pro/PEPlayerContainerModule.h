@@ -8,12 +8,14 @@
 
 #import "FFErrorReportingProtocol.h"
 #import "FFPlayerModuleDelegate.h"
+#import "NSTouchBarProvider.h"
 #import "PEPlayerContainerViewDelegate.h"
 
-@class LKContainerItemView, LKPaneCapSegmentedControl, LKSegmentedControl, LKWindow, NSArray, NSDictionary, NSImageView, NSMenu, NSMutableArray, NSMutableDictionary, NSProView, NSSplitView, NSTextField, NSView, PEViewedClipSet;
+@class LKButton, LKContainerItemView, LKMenu, LKPopUpButton, LKSegmentedControl, LKTextField, LKWindow, NSArray, NSDictionary, NSImageView, NSLayoutConstraint, NSMenu, NSMutableArray, NSMutableDictionary, NSResponder, NSString, NSTextField, NSTouchBar, NSView, PEAudioMeterModule, PEPlayerDFRController, PETimecodeDisplayViewController, PEToolbarMetersButton, PEViewedClipSet;
 
-@interface PEPlayerContainerModule : LKViewModule <PEPlayerContainerViewDelegate, FFErrorReportingProtocol, FFPlayerModuleDelegate>
+@interface PEPlayerContainerModule : LKViewModule <PEPlayerContainerViewDelegate, FFErrorReportingProtocol, FFPlayerModuleDelegate, NSTouchBarProvider>
 {
+    PEPlayerDFRController *_dfrController;
     int _mode;
     int _defaultMode;
     int _previousMode;
@@ -21,25 +23,30 @@
     PEViewedClipSet *_viewedClips;
     PEViewedClipSet *_viewedClipsOutstandingRequest;
     unsigned long long _canvasIndex;
-    NSProView *_accessoryView;
-    NSProView *_footerView;
-    NSProView *_transportControlsFooterView;
-    NSProView *_colorControlsFooterView;
+    NSView *_accessoryView;
+    NSView *_footerView;
+    NSView *_transportControlsFooterView;
+    NSView *_timecodeDisplayContainerView;
+    NSView *_colorControlsFooterView;
     NSView *_oneUpAccessoryView;
-    LKPaneCapSegmentedControl *_oneUpModeControl;
-    LKPaneCapSegmentedControl *_oneUpViewerControls;
+    LKPopUpButton *_oneUpModeControl;
+    LKPopUpButton *_oneUpViewerControls;
     NSImageView *_oneUpViewerIcon;
     NSTextField *_oneUpViewerTitle;
+    LKTextField *_oneUpResolutionLabel;
+    LKTextField *_oneUpInfoTitle;
     NSView *_twoUpAccessoryView;
-    LKPaneCapSegmentedControl *_twoUpModeControl;
-    LKPaneCapSegmentedControl *_twoUpViewerControls;
-    LKPaneCapSegmentedControl *_twoUpCanvasControls;
+    LKPopUpButton *_twoUpModeControl;
+    LKPopUpButton *_twoUpViewerControls;
+    LKPopUpButton *_twoUpCanvasControls;
     NSTextField *_twoUpViewerTitle;
     NSTextField *_twoUpCanvasTitle;
     NSView *_twoUpViewerPaneCap;
     NSView *_twoUpCanvasPaneCap;
     NSImageView *_twoUpViewerIcon;
     NSImageView *_twoUpCanvasIcon;
+    LKTextField *_twoUpCanvasResolutionLabel;
+    LKTextField *_twoUpViewerResolutionLabel;
     NSMenu *_videoScaleMenu;
     NSMenu *_videoScaleMenuHiDPI;
     NSMenu *_twoUpScaleMenu;
@@ -50,16 +57,23 @@
     NSMenu *_colorDisplayMenu;
     NSMenu *_selectedModeMenu;
     NSMenu *_combinedOptionsMenu;
-    LKSegmentedControl *_previousNextEditControl;
-    LKSegmentedControl *_playControl;
+    LKMenu *_enhancementMenu;
+    LKMenu *_retimeMenu;
+    NSLayoutConstraint *_timecodeCenteringConstraint;
+    NSLayoutConstraint *_retainedTimecodeCenteringConstraint;
+    LKButton *_playButton;
     LKSegmentedControl *_previousNextFrameControl;
-    LKSegmentedControl *_fullScreenButton;
+    LKButton *_fullScreenButton;
     LKSegmentedControl *_loopControl;
     LKSegmentedControl *_showAdvancedButton;
     LKSegmentedControl *_toolPalette;
+    LKPopUpButton *_enhancePopup;
+    LKPopUpButton *_retimePopup;
+    NSView *_audioMeters;
+    PEToolbarMetersButton *_audioMetersButton;
     LKWindow *_matchWindow;
-    NSProView *_matchControlsFooterView;
-    NSProView *_matchAccessoryView;
+    NSView *_matchControlsFooterView;
+    NSView *_matchAccessoryView;
     BOOL _splitViewIsDragging;
     BOOL _showMatchControls;
     BOOL _viewerIsDominant;
@@ -70,20 +84,27 @@
     id _observedActive;
     BOOL _layoutScopesVertically;
     BOOL _layoutAngleViewerVertically;
+    BOOL _numericEntryInProgress;
     NSMutableDictionary *_splitterPositions;
-    NSSplitView *_verticalNUpView;
+    struct CGRect _scopesFrameAfterLayout;
+    PEAudioMeterModule *_babyMeters;
     unsigned int _playerUsesLayers:1;
     unsigned int _unusedBits:31;
     NSMutableDictionary *_playersInfo;
     NSMutableDictionary *_scopesInfo;
     NSMutableArray *_cachedPlayers;
     long long _multiAngleEditStyle;
+    PETimecodeDisplayViewController *_timecodeDisplayViewController;
     struct FFProcrastinatedDispatch_t _procrastinatedSetNeedsDisplayContext;
     BOOL _isInFullscreenMode;
     id _savedFirstResponder;
+    id _savedActiveModule;
+    NSResponder *_savedModuleNextResponder;
+    NSResponder *_savedModuleViewNextResponder;
     NSDictionary *_fullScreenOptions;
     LKContainerItemView *_savedContainerItemView;
     int _savedDisplayAreaMode;
+    BOOL _textOSCActive;
 }
 
 + (id)tools;
@@ -95,6 +116,8 @@
 @property(nonatomic) BOOL viewerIsDominant; // @synthesize viewerIsDominant=_viewerIsDominant;
 @property(nonatomic) int defaultMode; // @synthesize defaultMode=_defaultMode;
 @property(nonatomic) int mode; // @synthesize mode=_mode;
+- (void)layoutDidChange:(id)arg1;
+- (void)reconfigurePlayers;
 - (void)playerModule:(id)arg1 didExitFullScreenForEvent:(id)arg2;
 - (id)localModuleActions;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
@@ -107,6 +130,7 @@
 - (void)_rebuildPaneCapMenus;
 - (void)_statusInfoChanged:(id)arg1;
 - (void)_updateLabel;
+- (id)displayVideoFormat:(id)arg1;
 - (void)_updateZoomLabel;
 - (void)_updateZoomMenus;
 - (id)_newPlayerModuleForMode:(int)arg1 context:(id)arg2 layoutStyle:(int)arg3 sublayoutName:(id)arg4;
@@ -120,6 +144,7 @@
 - (void)_updateScopesToScopesInfo;
 - (void)_updatePlayerInfoToPlayer;
 - (void)_updatePlayersToPlayerInfo;
+- (void)_updatePlayerZoomFactorIfNecessary;
 - (void)_layoutPlayersForMode:(int)arg1 layoutStyle:(int)arg2;
 - (void)_layoutPlayersForNUpWithMode:(int)arg1;
 - (void)_layoutPlayersForMode:(int)arg1;
@@ -130,26 +155,40 @@
 - (void)_setupPlayerModules;
 - (void)_updateTwoUpViewerIcon;
 - (void)_updateOneUpViewerIcon;
+- (id)imageNameForType:(int)arg1;
 - (int)mediaBrowserModeIcon;
 - (void)_setViewedClips:(id)arg1 updatePlayers:(BOOL)arg2;
 - (void)updatePlayers;
 - (void)_addPlayerTabsToModule:(id)arg1 forMenu:(id)arg2 indentLevel:(long long)arg3 target:(id)arg4;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)numericEntryDidEndNotification:(id)arg1;
+- (void)numericEntryDidBeginNotification:(id)arg1;
 - (void)displayAreaFrameChanged:(id)arg1;
 - (void)userDefaultsChanged:(id)arg1;
 - (void)displayAreaDidBeginPlayback:(id)arg1;
 - (void)displayAreaGainedFocus:(id)arg1;
+- (void)textOSCBecameInActive:(id)arg1;
 - (void)textOSCBecameActive:(id)arg1;
 - (void)firstResponderChanged:(id)arg1;
+- (void)updateSelectionState;
+- (void)setRangeCheckDrawMode:(id)arg1;
+- (void)setRangeCheckSpace:(id)arg1;
+- (id)_copyPlayerModulesForRangeCheck;
+- (void)audioMetersControlClick:(id)arg1;
+- (void)toggleAudioMeters:(id)arg1;
+- (void)toggleEnhanceAudio:(id)arg1;
+- (void)toggleColorBoard:(id)arg1;
 - (void)activeToolChanged:(id)arg1;
 - (int)_preferredDisplayModeForToolClass:(Class)arg1;
 - (void)setupOptionsMenuKeyEquivalents:(id)arg1;
 - (void)changeToolPaletteTool:(id)arg1;
 - (void)selectTool:(id)arg1;
 - (void)selectTransformTool:(id)arg1;
-- (void)selectCropTool:(id)arg1;
 - (void)_setupToolPalette;
+- (BOOL)_shouldShowFancyControlsForCanvas;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)rangeCheckLabelMenuItem:(id)arg1;
+- (void)noopMenuItem:(id)arg1;
 - (void)multiAngleEditStyleVideo:(id)arg1;
 - (void)multiAngleEditStyleAudio:(id)arg1;
 - (void)multiAngleEditStyleAudioVideo:(id)arg1;
@@ -202,6 +241,7 @@
 - (id)displayUnitForMedia:(id)arg1;
 - (BOOL)isMainDisplayArea;
 - (void)setModeIgnoringAccessories:(int)arg1;
+- (void)_updateTimecodeDisplayMode;
 - (BOOL)toolShouldNotShowOrAllowScopes:(Class)arg1;
 - (id)shadowRects;
 - (void)view:(id)arg1 didMoveToWindow:(id)arg2;
@@ -233,8 +273,11 @@
 - (BOOL)wantsTransparentBackground;
 - (BOOL)wantsFooterBar;
 - (id)moduleAccessoryView;
+- (BOOL)useWindowForFocusIndicator;
+- (BOOL)wantsFocusIndicator;
 - (BOOL)wantsCapBar;
 - (id)targetModules;
+- (void)shouldOpenColorBoard:(id)arg1;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
@@ -248,13 +291,23 @@
 - (id)lastKeyView;
 - (id)firstKeyView;
 - (struct CGSize)viewMinSize;
+- (void)cleanupBabyAudioMeters;
+- (void)setupBabyAudioMeters;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
+- (void)viewDidLoad;
+@property(readonly) NSTouchBar *touchBar;
 - (id)toolTip:(id)arg1 forProCommand:(id)arg2;
 - (void)hideModule:(id)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

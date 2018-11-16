@@ -6,14 +6,17 @@
 
 #import "NSObject.h"
 
+#import "FFPhaseCounterChanged.h"
+
 @class FFContext, FFPMRLogFunnel, FFPlaybackContext, FFPlayerDropTracker, FFPlayerSchedTokenQueue, FFPlayerScheduledData, FFProvider, FFSVContext, FFSourceVideo, FFStreamVideo, FFStreamVideoCache, FFStreamVideoOptions, FFVideoProps, NSConditionLock, NSLock, NSMutableArray, NSMutableSet, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_source>, NSThread;
 
-@interface FFPlayer : NSObject
+@interface FFPlayer : NSObject <FFPhaseCounterChanged>
 {
     FFContext *_ffContext;
     FFPlaybackContext *_context;
     FFProvider *_sourceVideoProvider;
     FFSourceVideo *_sourceVideo;
+    int _libraryWorkingSpace;
     FFVideoProps *_fallbackVideoProps;
     FFStreamVideoCache *_streamVideoCache;
     FFStreamVideo *_streamVideo;
@@ -44,7 +47,6 @@
     NSMutableSet *_blockingDests;
     NSMutableSet *_starvingDests;
     NSLock *_cachedPropsLock;
-    NSLock *_streamMutex;
     long long _currentScheduleFrameIndex;
     NSMutableArray *_scheduledFrames;
     FFPlayerScheduledData *_currentScrubFrame;
@@ -60,7 +62,7 @@
     FFSVContext *_scrubContexts[3];
     FFSVContext *_playContexts[3];
     CDStruct_1b6d18a9 _timeForContext;
-    long long _rateForContext;
+    double _rateForContext;
     CDStruct_1b6d18a9 _sampleDuration;
     CDStruct_1b6d18a9 _frameDuration;
     CDStruct_1b6d18a9 _smallestSampleDuration;
@@ -71,10 +73,10 @@
     BOOL _highSpeedPlayReducesTQual;
     BOOL _scrubHighQuality;
     BOOL _draftTextMode;
-    unsigned long long _streamAudioFlags;
+    unsigned int _streamAudioFlags;
     struct CGColorSpace *_colorSpace;
     int _mode;
-    BOOL _renderModeUseAppThrottlingOnly;
+    int _destVideoRecommendedPriority;
     BOOL _destsStarted;
     BOOL _abortPreroll;
     _Bool _enteredLOHMode;
@@ -102,6 +104,7 @@
     unsigned long long _pmrPeakKnownBandwidth;
     unsigned long long _pmrPeakUncertainBandwidth;
     int _framesFromSegmentStore;
+    int _framesPartiallyFromSegmentStore;
     int _framesFromRAMCache;
     int _framesWithNewImageError;
     int _nThrottled;
@@ -139,13 +142,15 @@
 }
 
 + (id)_newEmptySrcForProps:(id)arg1;
++ (void)notifyAppWillTerminate;
 + (void)teardown;
 + (BOOL)suspendBackgroundOperationsDuringPlayback;
 + (id)newReducedRateTrackerForMultiAngle;
++ (id)newHighQualityContextForSource:(id)arg1 field:(unsigned int)arg2 workingSpace:(int)arg3;
 + (id)newHighQualityContextForSource:(id)arg1 field:(unsigned int)arg2;
-+ (id)newContextForStream:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7;
-+ (id)newContextForPT:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7;
-+ (id)newContextForPT:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7 locationHint:(int)arg8;
++ (id)newContextForStream:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7 workingSpace:(int)arg8;
++ (id)newContextForPT:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7 workingSpace:(int)arg8;
++ (id)newContextForPT:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7 locationHint:(int)arg8 workingSpace:(int)arg9;
 + (void)uiPlayStateChanged;
 + (void)initialize;
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -157,7 +162,6 @@
 @property BOOL stopOnDroppedFrame; // @synthesize stopOnDroppedFrame=_stopOnDroppedFrame;
 @property BOOL dontRedrawOnInvals; // @synthesize dontRedrawOnInvals=_dontRedrawOnInvals;
 @property _Bool waitForThreadToAck; // @synthesize waitForThreadToAck=_waitForThreadToAck;
-- (id).cxx_construct;
 - (void)setDropTrackerWarningLimit:(int)arg1;
 - (int)dropTrackerWarningLimit;
 - (void)_idleThreadIfSatisfied:(int)arg1;
@@ -195,7 +199,7 @@
 - (void)videoTemporalQualityChangedForContext:(id)arg1;
 - (void)videoQualityChangedForContext:(id)arg1;
 - (void)timeRateChangedForContext:(id)arg1;
-- (void)_updateFFContextTime:(CDStruct_1b6d18a9)arg1 rate:(long long)arg2 mustUpdate:(_Bool)arg3;
+- (void)_updateFFContextTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 mustUpdate:(_Bool)arg3;
 - (void)_updateTimeViaTimer:(id)arg1;
 - (id)copyCurrentScrubContext;
 - (struct CGRect)sequenceBounds;
@@ -254,7 +258,7 @@
 - (void)setAuxiliaryPlaybackUnit:(struct FFAudioPlaybackUnit *)arg1;
 - (void)muteAudioPlayback:(BOOL)arg1;
 - (unsigned int)numAudioOutputChannels;
-- (void)getMeterAudioLevels:(float *)arg1 channels:(unsigned int *)arg2;
+- (unsigned int)meterAudioLevelsForRole:(id)arg1 channels:(unsigned int)arg2 peakValues:(float *)arg3 loudnessValues:(CDStruct_818bb265 *)arg4;
 - (BOOL)_debugOnly_destsUpToDate;
 - (void)destAudioRenderCallback;
 - (void)videoDestCallback:(BOOL)arg1 forVideoDest:(id)arg2;
@@ -264,18 +268,22 @@
 - (void)_waitForNextNInputs:(unsigned long long)arg1 beforeDate:(id)arg2;
 - (void)idle;
 - (int)_renderVideo;
+- (void)_checkForPause:(id)arg1;
+- (void)_updateZebraTimer:(_Bool)arg1;
+- (void)counterPhaseChangedWithSender:(id)arg1;
 - (void)maybeInstallSnapBack;
 - (void)maybeSnapBack;
 - (_Bool)lastFrameWantsSnapBackRedraw;
 - (BOOL)videoDestsWantFrame;
 - (void)_ensureScheduledFramesHaveUsableDests;
-- (_Bool)_maybeQueueFrame:(id)arg1 referenceFrames:(id)arg2 dests:(id)arg3 renderLocation:(int)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5;
+- (_Bool)_maybeQueueFrame:(id)arg1 referenceFrames:(id)arg2 dests:(id)arg3 renderLocation:(int)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5 outOfOrderCount:(int *)arg6;
 - (id)_copyDestsToSkipForTime:(CDStruct_1b6d18a9)arg1 destList:(id)arg2;
 - (void)_transferReusableFlattenedFrames:(id)arg1 dests:(id)arg2 last:(id)arg3;
-- (void)_advanceFramesWhileDestsFull:(id)arg1 destsCopy:(id)arg2 allowedWait:(double)arg3;
+- (void)_advanceFramesWhileDestsFull:(id)arg1 destsCopy:(id)arg2 allowedWait:(double)arg3 frameDur:(CDStruct_1b6d18a9)arg4;
 - (int)_advanceFrames:(id)arg1 rate:(double)arg2 destsCopy:(id)arg3 renderLocation:(int)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5 testForAbort:(CDUnknownBlockType)arg6 retAnythingLeftToAdvance:(_Bool *)arg7;
 - (_Bool)_maybeQueueFrameFrom:(id)arg1 referenceFrames:(id)arg2 dests:(id)arg3 renderLocation:(int)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5 testForAbort:(CDUnknownBlockType)arg6;
 - (BOOL)_buildOneFrame:(double)arg1 isPrerolling:(_Bool)arg2 retSchedTime:(CDStruct_1b6d18a9 *)arg3 maxDestLatency:(unsigned int)arg4;
+- (BOOL)_currentScheduleIndexOutOfBounds:(double)arg1 frameDur:(CDStruct_1b6d18a9)arg2 maxDestLatency:(unsigned int)arg3 retSchedulableRange:(CDStruct_e83c9415 *)arg4;
 - (int)_waitForSufficientlyScheduled:(id)arg1 maximumWait:(float)arg2 testForAbort:(CDUnknownBlockType)arg3;
 - (_Bool)_sufficientlyScheduled:(id)arg1;
 - (id)_firstFrameAwaitingScheduling:(id)arg1 retCount:(int *)arg2;
@@ -286,7 +294,7 @@
 - (int)_cancelMostLateFrames:(id)arg1 rate:(double)arg2 nowTime:(CDStruct_1b6d18a9)arg3 chosenFrame:(id)arg4 maxDestLatency:(unsigned int)arg5 dests:(id)arg6 allowances:(CDStruct_869f9c67 *)arg7 reason:(struct __CFString *)arg8;
 - (void)_cancelFrame:(id)arg1 andUpdateDropInfoDict:(id *)arg2 originalChoice:(id)arg3 originalChoiceString:(id *)arg4;
 - (id)copyFirstOnTimeFrameFromArray:(id)arg1 rate:(double)arg2 nowTime:(CDStruct_1b6d18a9)arg3 maxDestLatency:(unsigned int)arg4 slowGraphBuildWorkaround:(_Bool)arg5;
-- (void)_noteDroppedFrames:(id)arg1 pmrInfo:(struct __CFString *)arg2 alreadyHoldingPlayerLock:(_Bool)arg3;
+- (void)_noteDroppedFrames:(id)arg1 pmrInfo:(struct __CFString *)arg2 effectiveRate:(double)arg3 alreadyHoldingPlayerLock:(_Bool)arg4;
 - (void)_stopDueToDrop:(id)arg1;
 - (void)fillStopDueToDropDict:(CDStruct_1b6d18a9)arg1 cause:(struct __CFString *)arg2 infoDict:(id)arg3 alreadyHoldingPlayerLock:(_Bool)arg4;
 - (void)maybeReportPlaybackCompleteDropSkipWarningForTotalDropCount:(int)arg1 totalPushed:(int)arg2 diskRelated:(int)arg3 oldRate:(float)arg4 showAllAngles:(BOOL)arg5;
@@ -337,7 +345,7 @@
 - (void)channelChangeBegin:(id)arg1;
 - (void)setEnableSnapBackToBestForChannelManipulation:(BOOL)arg1;
 - (void)videoRangeInvalidated:(id)arg1;
-- (void)_videoRangeInvalidatedDuringPlayback:(id)arg1;
+- (void)_videoRangeInvalidatedDuringPlayback:(id)arg1 workToDoUponLocking:(id)arg2;
 - (void)_markAllDestsAsNeedingRedraw;
 - (void)_forceAllDestsToRedraw;
 - (void)setNeedsUpdate:(BOOL)arg1;
@@ -348,7 +356,7 @@
 - (void)dealloc;
 - (BOOL)playsSelected;
 - (void)setPlaysSelected:(BOOL)arg1;
-- (id)initWithVideoSource:(id)arg1 fallbackVideoProps:(id)arg2 quality:(int)arg3 playbackContext:(id)arg4 mode:(int)arg5;
+- (id)initWithVideoSource:(id)arg1 fallbackVideoProps:(id)arg2 quality:(int)arg3 playbackContext:(id)arg4 mode:(int)arg5 overrideWorkingSpace:(int *)arg6;
 - (id)initWithVideoSource:(id)arg1 quality:(int)arg2 playbackContext:(id)arg3 mode:(int)arg4;
 - (id)initWithMode:(int)arg1;
 - (void)_suspendBGOpsDuringPlayObserver:(id)arg1;

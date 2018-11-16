@@ -9,24 +9,26 @@
 #import "FFPlayerVideoScopesModuleDelegate.h"
 #import "NSSplitViewDelegate.h"
 
-@class LKButton, NSArray, NSMapTable, NSProThemeImageView, NSString, PEScopesContainerView, PEScopesSettingsWindowController;
+@class LKButton, LKTextField, NSArray, NSMapTable, NSString, NSView, PEScopesContainerView, PEScopesSettingsViewController;
 
 @interface PEScopesContainerModule : LKViewModule <FFPlayerVideoScopesModuleDelegate, NSSplitViewDelegate>
 {
-    NSProThemeImageView *_paneCapView;
+    NSView *_paneCapView;
     PEScopesContainerView *_scopesView;
     LKButton *_layoutButton;
+    LKTextField *_colorSpaceLabel;
     long long _scopesLayoutMode;
     BOOL _layoutScopesVertically;
     NSMapTable *_scopesSpecifiedViews;
     PEScopesContainerView *_1x2SplitView;
     NSArray *_2x2SplitViews;
-    PEScopesSettingsWindowController *_settingsWindowController;
+    PEScopesSettingsViewController *_settingsViewController;
 }
 
+@property(nonatomic) LKTextField *colorSpaceLabel; // @synthesize colorSpaceLabel=_colorSpaceLabel;
 @property(nonatomic) LKButton *layoutButton; // @synthesize layoutButton=_layoutButton;
 @property(nonatomic) PEScopesContainerView *scopesView; // @synthesize scopesView=_scopesView;
-@property(nonatomic) NSProThemeImageView *paneCapView; // @synthesize paneCapView=_paneCapView;
+@property(nonatomic) NSView *paneCapView; // @synthesize paneCapView=_paneCapView;
 - (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (BOOL)splitView:(id)arg1 canCollapseSubview:(id)arg2;
@@ -41,12 +43,13 @@
 - (void)setLayoutScopesVertically:(BOOL)arg1;
 - (long long)scopesLayoutMode;
 - (void)setScopesLayoutMode:(long long)arg1;
+- (void)moduleDidHide;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
-- (void)awakeFromNib;
 - (id)identifier;
+- (void)updateLayoutFromScopesInfo:(id)arg1;
 - (void)showScopesSettings:(id)arg1;
 - (void)teardownPlayerScopesViews;
 - (id)selectedScopeAtIndex:(unsigned long long)arg1;
@@ -55,6 +58,7 @@
 - (void)_insert1x2SplitViewIntoView:(id)arg1;
 - (unsigned long long)_indexOfVectorscopeModule;
 - (id)_viewOfSubmoduleAtIndex:(unsigned long long)arg1;
+- (void)updateColorSpaceLabelForSkimmable:(struct NSObject *)arg1;
 - (void)updateScopesInfo:(id)arg1 withPlayerModules:(id)arg2;
 - (void)updatePlayerModules:(id)arg1 withScopesInfo:(id)arg2;
 - (id)_identifierForLayoutMode:(long long)arg1;

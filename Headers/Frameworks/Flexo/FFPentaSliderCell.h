@@ -40,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
 - (id)_cells;
 - (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)_drawTicksWithFrame:(struct CGRect)arg1;
 - (void)_drawTrackWithFrame:(struct CGRect)arg1;

@@ -4,19 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKThemeBackedLayer.h>
+#import "CALayer.h"
 
 #import "TLKPartInfo.h"
 
 @class NSString;
 
-@interface TLKBumperForegroundLayer : TLKThemeBackedLayer <TLKPartInfo>
+@interface TLKBumperForegroundLayer : CALayer <TLKPartInfo>
 {
-    unsigned int _drawsBackground:1;
+    BOOL _drawsBackground;
 }
 
-- (BOOL)drawsBackground;
-- (void)setDrawsBackground:(BOOL)arg1;
+@property(nonatomic) BOOL drawsBackground; // @synthesize drawsBackground=_drawsBackground;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)partIdentifier;
 - (id)init;

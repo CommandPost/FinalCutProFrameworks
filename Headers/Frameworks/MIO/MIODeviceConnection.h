@@ -40,6 +40,7 @@
     NSString *mCurrentOutputFormat;
     NSArray *mOutputFrameRates;
     NSNumber *mCurrentOutputFrameRate;
+    BOOL mIsiOSScreenReader;
     BOOL mIsiSight;
     BOOL miSightHasIris;
     int miSightStatus;
@@ -50,6 +51,7 @@
 + (id)deviceConnectionWithCMIOObjectID:(unsigned int)arg1;
 @property int iSightStatus; // @synthesize iSightStatus=miSightStatus;
 @property BOOL iSightHasIris; // @synthesize iSightHasIris=miSightHasIris;
+@property BOOL isiOSScreenReader; // @synthesize isiOSScreenReader=mIsiOSScreenReader;
 @property BOOL isiSight; // @synthesize isiSight=mIsiSight;
 @property BOOL available; // @synthesize available=mAvailable;
 @property NSDictionary *properties;
@@ -60,6 +62,7 @@
 - (BOOL)isFileProxyDevice;
 - (int)format;
 - (unsigned int)height;
+- (id)colorspace;
 - (unsigned int)width;
 @property BOOL inputting;
 - (void)setOutputDisplayOrder:(BOOL)arg1;
@@ -69,7 +72,7 @@
 @property(retain) NSNumber *currentInputFrameRate;
 @property(readonly, retain) NSArray *controls; // @synthesize controls=mControls;
 - (void)refreshFormats;
-- (struct OpaqueCMClock *)clock;
+- (void *)clock;
 - (struct opaqueCMFormatDescription *)currentOutputFormatDescription;
 @property(retain) NSString *currentOutputFormat;
 @property(readonly, retain) NSArray *outputFormats; // @synthesize outputFormats=mOutputFormats;

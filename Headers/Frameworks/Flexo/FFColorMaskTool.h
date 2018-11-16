@@ -13,7 +13,8 @@
     CHChannelBase *_activeChannel;
 }
 
-+ (id)toolbarFacet;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 @property(retain, nonatomic) CHChannelBase *activeChannel; // @synthesize activeChannel=_activeChannel;

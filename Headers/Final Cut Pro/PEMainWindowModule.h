@@ -6,10 +6,71 @@
 
 #import "PEWindowModule.h"
 
+@class LKProgressIndicator, NSArray, NSButton, NSMutableSet, PEDualMonitorControl, PEToolbarActivityButton;
+
 @interface PEMainWindowModule : PEWindowModule
 {
+    NSMutableSet *_observingVisibleOnThese;
+    BOOL _observingEditorVisible;
+    BOOL _listeningForDocumentWasAdded;
+    BOOL _listeningForDocumentWasRemoved;
+    BOOL _listeningForImportWindowClosing;
+    BOOL _tookGeometryLayoutOnceBefore;
+    BOOL _progressIndeterminate;
+    BOOL _progressIsFilling;
+    NSButton *_importButton;
+    NSButton *_keywordButton;
+    NSButton *_organizerButton;
+    NSButton *_timelineButton;
+    NSButton *_inspectorButton;
+    NSButton *_shareButton;
+    PEDualMonitorControl *_dualMonitorControl;
+    PEToolbarActivityButton *_taskProgressButton;
+    LKProgressIndicator *_taskProgressIndicatorView;
+    NSArray *_taskProgressIndicatorTintEffects;
+    double _currentTasksProgress;
+    long long _lastProgressValueDrawn;
 }
 
+@property(nonatomic) long long lastProgressValueDrawn; // @synthesize lastProgressValueDrawn=_lastProgressValueDrawn;
+@property(nonatomic) BOOL progressIsFilling; // @synthesize progressIsFilling=_progressIsFilling;
+@property(nonatomic) BOOL progressIndeterminate; // @synthesize progressIndeterminate=_progressIndeterminate;
+@property(nonatomic) double currentTasksProgress; // @synthesize currentTasksProgress=_currentTasksProgress;
+@property(retain, nonatomic) NSArray *taskProgressIndicatorTintEffects; // @synthesize taskProgressIndicatorTintEffects=_taskProgressIndicatorTintEffects;
+@property(retain, nonatomic) LKProgressIndicator *taskProgressIndicatorView; // @synthesize taskProgressIndicatorView=_taskProgressIndicatorView;
+@property(retain, nonatomic) PEToolbarActivityButton *taskProgressButton; // @synthesize taskProgressButton=_taskProgressButton;
+@property(retain, nonatomic) PEDualMonitorControl *dualMonitorControl; // @synthesize dualMonitorControl=_dualMonitorControl;
+@property(retain, nonatomic) NSButton *shareButton; // @synthesize shareButton=_shareButton;
+@property(retain, nonatomic) NSButton *inspectorButton; // @synthesize inspectorButton=_inspectorButton;
+@property(retain, nonatomic) NSButton *timelineButton; // @synthesize timelineButton=_timelineButton;
+@property(retain, nonatomic) NSButton *organizerButton; // @synthesize organizerButton=_organizerButton;
+@property(retain, nonatomic) NSButton *keywordButton; // @synthesize keywordButton=_keywordButton;
+@property(retain, nonatomic) NSButton *importButton; // @synthesize importButton=_importButton;
+- (void)toggleBackgroundTasksList:(id)arg1;
+- (void)updateProgressFillMaskToValue:(long long)arg1;
+- (void)setBackgroundProgress:(long long)arg1 evenIfValueUnchanged:(BOOL)arg2;
+- (void)appWillTerminate:(id)arg1;
+- (void)_unregisterFromBackgroundTasksActivity;
+- (void)_registerForBackgroundTasksActivity;
+- (void)dealloc;
+- (void)_removeAllObservers;
+- (void)_stopObservingVisible;
+- (id)toolbarAllowedItemIdentifiers:(id)arg1;
+- (BOOL)validateToolbarItem:(id)arg1;
+- (id)toolbarDefaultItemIdentifiers:(id)arg1;
+- (id)toolbar:(id)arg1 itemForItemIdentifier:(id)arg2 willBeInsertedIntoToolbar:(BOOL)arg3;
+- (void)_prepareToolBarElements;
+- (id)_defaultToolBarButton;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_removeObservers;
+- (void)_addObservers;
+- (void)_restoreImportButtonState:(id)arg1;
+- (void)_updateImportButtonState:(id)arg1;
+- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)takeGeometryLayoutFromDictionary:(id)arg1;
+- (void)postLayout:(id)arg1;
+- (void)preLayout:(id)arg1;
 - (void)setWindow:(id)arg1;
 - (id)contentLayoutDictionary;
 - (id)windowTitle;

@@ -17,13 +17,12 @@ __attribute__((visibility("hidden")))
     FFBalanceColorBaseEffect *_effect;
     struct ColorBalanceOptions _balanceOptions;
     CDStruct_1b6d18a9 _time;
-    vector_f452ca5f *_adjustment;
+    vector_37556099 *_adjustment;
     NSDictionary *_faceInfo;
     float _shadowsDetail;
     float _highlightsDetail;
 }
 
-- (id).cxx_construct;
 - (BOOL)writerIsWaiting;
 - (void)_writeUnlock;
 - (void)_writeLock;

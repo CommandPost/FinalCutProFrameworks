@@ -6,9 +6,11 @@
 
 #import "NSObject.h"
 
-@class CALayer, NSMapTable, NSMutableArray, TLKChangeLog, TLKEditorCloseView, TLKLayoutDatabase, TLKTimelineView;
+#import "TLKVisibleRectObserving.h"
 
-@interface TLKLayerManager : NSObject
+@class CALayer, NSMapTable, NSMutableArray, PCChangeLog, TLKEditorCloseView, TLKLayoutDatabase, TLKTimelineView;
+
+@interface TLKLayerManager : NSObject <TLKVisibleRectObserving>
 {
     CALayer *_rootLayer;
     TLKEditorCloseView *_closeView;
@@ -16,7 +18,6 @@
     NSMutableArray *_recycledItemLayers;
     NSMutableArray *_recycledContainerLayers;
     NSMapTable *_recycledLayersByClass;
-    TLKChangeLog *_updatesQueue;
     struct CGRect _intrinsicBounds;
     TLKTimelineView *_timelineView;
     TLKLayoutDatabase *_layoutDatabase;
@@ -25,9 +26,11 @@
         unsigned int suspendLayerUpdatesForAnchoredClips:1;
         unsigned int RESERVED:30;
     } _lmFlags;
+    PCChangeLog *_updatesQueue;
 }
 
 @property(retain) TLKLayoutDatabase *layoutDatabase; // @synthesize layoutDatabase=_layoutDatabase;
+@property(readonly, nonatomic) PCChangeLog *updatesQueue; // @synthesize updatesQueue=_updatesQueue;
 - (void)restoreSavedFrameState:(id)arg1;
 - (id)savedFrameStateForTracks:(id)arg1;
 - (id)savedFrameStateForItemComponentFragments:(id)arg1;
@@ -51,7 +54,9 @@
 - (void)_sizeToFitMultipleTracks;
 - (void)_invalidateIntrinsicBounds;
 - (struct CGRect)intrinsicBounds;
+- (void)timelineView:(id)arg1 didChangeVisibleRect:(struct CGRect)arg2;
 - (void)layoutDatabaseDidChange:(id)arg1;
+- (id)_itemFragmentsIncludingLayoutDependencies:(id)arg1;
 - (void)processPendingChangesWithClipRect:(struct CGRect)arg1;
 - (void)_removeLayersForLineFragments:(id)arg1;
 - (void)_reloadLayersForModifiedLineFragments:(id)arg1;
@@ -60,10 +65,12 @@
 - (void)reloadLayersForTracksAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)_removeLayersForLayoutContexts:(id)arg1;
 - (void)_reloadLayersForLayoutContexts:(id)arg1;
+- (void)reloadLayersForRangeSelection;
 - (void)reloadMarkerLayersForItemComponentFragment:(id)arg1;
 - (void)_reloadLayersForMarkers:(id)arg1 onItemComponentFragment:(id)arg2;
 - (void)_removeLayersForItemLaneFragments:(id)arg1;
 - (void)_reloadLayersForItemLaneFragments:(id)arg1;
+- (void)discardAssociatedLayersForDeletedItems:(id)arg1;
 - (void)reloadVisibleLayersForItems:(id)arg1;
 - (void)reloadLayersForItem:(id)arg1;
 - (void)reloadLayersWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 clipRect:(struct CGRect)arg4;
@@ -72,25 +79,25 @@
 - (void)_removeLayersForItemInfo:(id)arg1;
 - (void)_removeLayersForItemComponentFragments:(id)arg1;
 - (void)reloadLayersForItemComponentFragments:(id)arg1 clipRect:(struct CGRect)arg2 force:(BOOL)arg3;
+- (void)_hackFixForRadar14625939:(struct CGRect)arg1;
 - (void)reloadLayersForItemComponentFragments:(id)arg1 clipRect:(struct CGRect)arg2;
 - (void)_reloadLayersForContainerComponentFragment:(id)arg1;
 - (void)_reloadLayersForItemComponentFragment:(id)arg1;
+- (id)parentLayerForAnchorLayerOfItemComponentFragment:(id)arg1;
 - (id)parentLayerForItemComponentFragment:(id)arg1;
-- (void)_swapAccessoryLayerForItemComponentFragmentIfNeeded:(id)arg1;
 - (void)_reparentItemFragmentLayer:(id)arg1 inLayer:(id)arg2;
 - (void)_updateTransitionPlaceholderLayersInRect:(struct CGRect)arg1;
-- (void)layoutShadowForItemComponentFragment:(id)arg1;
 - (void)updateMediaRectsForItemComponentFragment:(id)arg1;
 - (struct CGRect)_precisionEditorFrameForSpineItemComponentFragment:(id)arg1;
 - (void)_tilePrecisionEditorPieces;
-- (void)reloadSplitConnectorLayerForItem:(id)arg1;
-- (void)_reloadSplitConnectorFromPrimaryFragment:(id)arg1 toSecondaryFragment:(id)arg2;
-- (void)reloadAnchorLayerForItem:(id)arg1 horizontally:(BOOL)arg2 vertically:(BOOL)arg3;
-- (void)discardAnchorLayersForItemComponentInfo:(id)arg1;
+- (void)reloadAnchorLayersForItems:(id)arg1;
+- (void)reloadAnchorLayerForItem:(id)arg1;
+- (void)discardComponentWebbingLayerForItemInfo:(id)arg1;
+- (void)discardAnchorLayerForItemInfo:(id)arg1;
 @property(nonatomic) BOOL suspendLayerUpdatesForAnchoredClips;
 - (void)updateFilmstripItems:(id)arg1;
 - (void)updateFilmstripsForItemComponentFragments:(id)arg1;
-- (id)newItemLayerForItemComponent:(id)arg1;
+- (id)newItemLayerForItemComponentFragment:(id)arg1;
 - (id)layerFromRecyclePoolOfClass:(Class)arg1;
 - (void)addLayerToRecyclePool:(id)arg1;
 - (id)makeLayerForNestedContainer:(id)arg1;
@@ -99,7 +106,7 @@
 - (id)_newLayerForLineFragment:(id)arg1;
 - (id)_newLayerForTrack:(id)arg1;
 - (id)_newContainerLayerForContainer:(id)arg1;
-- (id)_newAnchorLayerForItem:(id)arg1 itemType:(int)arg2 containmentType:(int)arg3;
+- (id)spineBackgroundLayer;
 - (id)rulerLayer;
 - (id)containerLayerForItem:(id)arg1;
 - (id)containerLayerForContainer:(id)arg1;
@@ -108,6 +115,7 @@
 - (void)recycleLayersForItemComponentFragment:(id)arg1;
 - (id)_newRecycledLayerFromArray:(id)arg1;
 @property(nonatomic) BOOL recyclesLayers;
+- (void)reset;
 - (BOOL)shouldUpdateLayerFrames;
 - (id)layoutManager;
 @property(readonly, nonatomic) TLKTimelineView *timelineView;

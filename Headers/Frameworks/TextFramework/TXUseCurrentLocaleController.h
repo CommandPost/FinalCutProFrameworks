@@ -6,12 +6,13 @@
 
 #import "OZViewController.h"
 
-@class LKPopUpButton;
+@class LKButton, LKPopUpButton;
 
 @interface TXUseCurrentLocaleController : OZViewController
 {
     unsigned int _textID;
     LKPopUpButton *_regionButton;
+    LKButton *_useCurrentButton;
 }
 
 - (void)setCurrentLocale:(id)arg1;

@@ -6,14 +6,15 @@
 
 #import "NSObject.h"
 
-@class FFFadeHandlesLayer;
+@class FFAudioComponentSource, FFFadeHandlesLayer, NSSet;
 
 @protocol FFFadeHandlesDataSource <NSObject>
+- (BOOL)shouldMoveAlignedFadesTogether:(FFFadeHandlesLayer *)arg1;
 - (BOOL)shouldDisplayFadeCurveMenu:(FFFadeHandlesLayer *)arg1;
 - (BOOL)hasMultipleFadeHandlesOnComponent:(FFFadeHandlesLayer *)arg1;
-- (BOOL)fadeHandlesLayer:(FFFadeHandlesLayer *)arg1 moveFadeAtIndex:(unsigned long long)arg2 toTime:(CDStruct_1b6d18a9 *)arg3;
-- (BOOL)fadeHandlesLayer:(FFFadeHandlesLayer *)arg1 canMoveFadeAtIndex:(unsigned long long)arg2 toTime:(CDStruct_1b6d18a9 *)arg3;
-- (int)fadeHandlesLayer:(FFFadeHandlesLayer *)arg1 fadeTypeForFadeAtIndex:(unsigned long long)arg2;
+- (BOOL)audioComponentSource:(FFAudioComponentSource *)arg1 moveFadeAtIndex:(unsigned long long)arg2 toTime:(CDStruct_1b6d18a9 *)arg3 componentSourcesFadeAligned:(NSSet *)arg4;
+- (BOOL)fadeHandlesLayer:(FFFadeHandlesLayer *)arg1 moveFadeAtIndex:(unsigned long long)arg2 toTime:(CDStruct_1b6d18a9 *)arg3 symmetric:(BOOL)arg4 componentSourcesFadeAligned:(NSSet *)arg5;
+- (int)fadeHandlesLayer:(FFFadeHandlesLayer *)arg1 fadeTypeForFadeAtIndex:(unsigned long long)arg2 isLeading:(char *)arg3;
 - (void)fadeHandlesLayer:(FFFadeHandlesLayer *)arg1 setCurveType:(unsigned int)arg2 forFadeAtIndex:(unsigned long long)arg3;
 - (unsigned int)fadeHandlesLayer:(FFFadeHandlesLayer *)arg1 curveTypeForFadeAtIndex:(unsigned long long)arg2;
 - (CDStruct_e83c9415)fadeHandlesLayer:(FFFadeHandlesLayer *)arg1 timeRangeForFadeAtIndex:(unsigned long long)arg2;

@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) CDStruct_1b6d18a9 sampDur; // @synthesize sampDur=_sampDur;
 @property(readonly) unsigned int field; // @synthesize field=_field;
 @property(readonly) FFSourceVideo *src; // @synthesize src=_src;
-- (id).cxx_construct;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 field:(unsigned int)arg2 sampDur:(CDStruct_1b6d18a9)arg3;
 

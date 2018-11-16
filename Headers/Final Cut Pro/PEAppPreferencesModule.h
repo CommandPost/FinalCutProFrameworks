@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProPreferencesModule.h"
+#import "LKPreferencesModule.h"
 
-@class LKButton, LKPopUpButton, LKTextField, NSBox, NSButton, NSMatrix, NSPopUpButton, NSProView, NSView;
+@class LKButton, LKPopUpButton, LKTextField, NSBox, NSButton, NSMatrix, NSPopUpButton, NSView;
 
-@interface PEAppPreferencesModule : NSProPreferencesModule
+@interface PEAppPreferencesModule : LKPreferencesModule
 {
     NSView *_view;
     LKButton *frameDivisionsCheckbox;
@@ -25,12 +25,12 @@
     LKTextField *secondsDecimalPlacesField;
     LKTextField *beatsDecimalPlacesField;
     NSBox *configurationBox;
-    NSProView *HMSFConfigurationView;
-    NSProView *HMSConfigurationView;
-    NSProView *secondsConfigurationView;
-    NSProView *BBConfigurationView;
-    NSProView *FFConfigurationView;
-    NSProView *messageView;
+    NSView *HMSFConfigurationView;
+    NSView *HMSConfigurationView;
+    NSView *secondsConfigurationView;
+    NSView *BBConfigurationView;
+    NSView *FFConfigurationView;
+    NSView *messageView;
     NSButton *mediaGroupingCheckbox;
     NSPopUpButton *datePopup;
 }

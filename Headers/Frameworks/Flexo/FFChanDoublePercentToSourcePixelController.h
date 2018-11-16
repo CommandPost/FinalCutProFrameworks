@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     BOOL _showOffsetsInPercentage;
 }
 
+- (float)suggestedMaxParamWidth;
+- (float)suggestedMinParamWidth;
 - (void)update;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

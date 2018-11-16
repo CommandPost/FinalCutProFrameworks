@@ -23,7 +23,6 @@
 
 @property(retain, nonatomic) LKPopUpButton *popUpButton; // @synthesize popUpButton=_popUpButton;
 - (void)setChannel:(struct OZChannel *)arg1 value:(int)arg2 time:(CDStruct_198678f7)arg3;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (void)menu:(id)arg1 willHighlightItem:(id)arg2;
 - (void)menuDidClose:(id)arg1;
 - (void)menuWillOpen:(id)arg1;
@@ -33,12 +32,15 @@
 - (void)disable;
 - (void)enable;
 - (void)update;
+- (struct OZFontCollection *)getCurrentCollection;
 - (void)reset;
 - (BOOL)areAllFontsEqual;
+- (void)setMenuTitle;
 - (void)selectItemAtIndex:(int)arg1 setChannel:(_Bool)arg2;
 - (void)inspectorWillDealloc;
 - (BOOL)isMenuOpen;
 - (void)updatePopUpMenu:(BOOL)arg1;
+- (void)familyChanged;
 - (void)familyChanged:(id)arg1;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;

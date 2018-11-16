@@ -11,6 +11,7 @@
 }
 
 + (id)sharedDocumentController;
+- (id)willPresentError:(id)arg1;
 - (void)newLibrary:(id)arg1;
 - (void)openLibrary:(id)arg1;
 - (void)newDocument:(id)arg1;
@@ -18,7 +19,6 @@
 - (void)addDocument:(id)arg1;
 - (id)documentForURL:(id)arg1;
 - (id)typeForContentsOfURL:(id)arg1 error:(id *)arg2;
-- (id)openXMLDocumentWithURL:(id)arg1 display:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)reopenDocumentForURL:(id)arg1 withContentsOfURL:(id)arg2 error:(id *)arg3;
 - (id)openDocumentWithContentsOfURL:(id)arg1 display:(BOOL)arg2 error:(id *)arg3;
 - (id)makeUntitledDocumentOfType:(id)arg1 error:(id *)arg2;

@@ -17,24 +17,24 @@ __attribute__((visibility("hidden")))
     LKTextField *_eventClipTotalDurationLabel;
     LKTextField *_eventNumStillsLabel;
     LKTextField *_eventNumAudioFilesLabel;
-    LKTextField *_eventNumProjectsLabel;
     LKTextField *_eventEventSizeLabel;
     LKTextField *_eventLastModifiedLabel;
     NSImageView *_eventInfoIcon;
-    NSImageView *_eventProjectIcon;
     FFCPSClapperboardView *_eventPosterView;
     FFEventRecord *_currentEventRecord;
     LKTextField *_eventDebugLabel;
+    LKTextField *_eventNumProjectsLabel;
+    NSImageView *_eventProjectIcon;
 }
 
+@property(retain, nonatomic) NSImageView *eventProjectIcon; // @synthesize eventProjectIcon=_eventProjectIcon;
+@property(retain, nonatomic) LKTextField *eventNumProjectsLabel; // @synthesize eventNumProjectsLabel=_eventNumProjectsLabel;
 @property(retain, nonatomic) LKTextField *eventDebugLabel; // @synthesize eventDebugLabel=_eventDebugLabel;
 @property(retain, nonatomic) FFEventRecord *currentEventRecord; // @synthesize currentEventRecord=_currentEventRecord;
 @property(retain, nonatomic) FFCPSClapperboardView *eventPosterView; // @synthesize eventPosterView=_eventPosterView;
-@property(retain, nonatomic) NSImageView *eventProjectIcon; // @synthesize eventProjectIcon=_eventProjectIcon;
 @property(retain, nonatomic) NSImageView *eventInfoIcon; // @synthesize eventInfoIcon=_eventInfoIcon;
 @property(retain, nonatomic) LKTextField *eventLastModifiedLabel; // @synthesize eventLastModifiedLabel=_eventLastModifiedLabel;
 @property(retain, nonatomic) LKTextField *eventEventSizeLabel; // @synthesize eventEventSizeLabel=_eventEventSizeLabel;
-@property(retain, nonatomic) LKTextField *eventNumProjectsLabel; // @synthesize eventNumProjectsLabel=_eventNumProjectsLabel;
 @property(retain, nonatomic) LKTextField *eventNumAudioFilesLabel; // @synthesize eventNumAudioFilesLabel=_eventNumAudioFilesLabel;
 @property(retain, nonatomic) LKTextField *eventNumStillsLabel; // @synthesize eventNumStillsLabel=_eventNumStillsLabel;
 @property(retain, nonatomic) LKTextField *eventClipTotalDurationLabel; // @synthesize eventClipTotalDurationLabel=_eventClipTotalDurationLabel;

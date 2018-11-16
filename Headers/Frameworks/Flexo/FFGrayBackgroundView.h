@@ -4,20 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
-
-@class NSProThemeFacet;
+#import "NSView.h"
 
 __attribute__((visibility("hidden")))
-@interface FFGrayBackgroundView : NSProView
+@interface FFGrayBackgroundView : NSView
 {
-    NSProThemeFacet *_shadowFacet;
 }
 
-@property(retain) NSProThemeFacet *shadowFacet; // @synthesize shadowFacet=_shadowFacet;
 - (BOOL)acceptsFirstResponder;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)dealloc;
 
 @end
 

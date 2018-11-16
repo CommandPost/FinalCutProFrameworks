@@ -11,10 +11,10 @@
 }
 
 + (id)sharedShareAddDestination;
+- (BOOL)isEditable;
 - (void)dealloc;
 - (id)iconTitle;
 - (id)image;
-- (long long)iconIndex;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

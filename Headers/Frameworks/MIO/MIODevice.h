@@ -51,6 +51,7 @@
 - (id)init;
 - (id)initWithDeviceConnection:(id)arg1;
 - (void)initInstanceVariablesLocal;
+- (BOOL)presentError:(id)arg1;
 - (void)setIsPreviewing:(BOOL)arg1;
 - (BOOL)isProcessing;
 - (void)stopProcessing;

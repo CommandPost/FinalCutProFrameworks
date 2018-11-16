@@ -6,7 +6,7 @@
 
 #import <TLKit/TLKTimelineHandler.h>
 
-@class NSString, TLKItemLayer, TLKSimpleTrimEdgeBox;
+@class NSSet, NSString, TLKItemLayer, TLKSimpleTrimEdgeBox;
 
 @interface TLKDragEdgesHandler : TLKTimelineHandler
 {
@@ -47,7 +47,6 @@
         unsigned int hiddenSkimmingLine:1;
         unsigned int draggingTransition:1;
         unsigned int draggingAnchoredObject:1;
-        unsigned int draggingAudioComponent:1;
         unsigned int draggingSplitEdit:1;
         unsigned int mouseDidMove:1;
         unsigned int isRollTrim:1;
@@ -58,11 +57,14 @@
         unsigned int terminalTransition:1;
         unsigned int needsToRestoreMinimumItemComponentFragmentWidth:1;
         unsigned int halfThumbnailDragStartMode:1;
-        unsigned int reloadTimelineDuringDrag:1;
+        unsigned int optionKeyPressed:1;
+        unsigned int shiftKeyPressed:1;
         unsigned int RESERVED:11;
     } _dhFlags;
+    NSSet *_itemComponentsWithVerticalLayoutConstraints;
 }
 
+@property(copy, nonatomic) NSSet *itemComponentsWithVerticalLayoutConstraints; // @synthesize itemComponentsWithVerticalLayoutConstraints=_itemComponentsWithVerticalLayoutConstraints;
 @property(retain) id <TLKTimelineItem> container; // @synthesize container=_container;
 @property(retain, nonatomic) id <TLKTimelineItem> adjacentItem; // @synthesize adjacentItem=_adjacentItem;
 @property(readonly) CDStruct_1b6d18a9 deltaTime; // @synthesize deltaTime=_deltaTime;
@@ -70,10 +72,13 @@
 @property(retain) TLKItemLayer *clickedLayer; // @synthesize clickedLayer=_clickedLayer;
 @property(retain) id <TLKTimelineItem> draggedItem; // @synthesize draggedItem=_draggedItem;
 @property(retain) id <TLKTimelineItem> clickedItem; // @synthesize clickedItem=_clickedItem;
+- (BOOL)shouldUpdateSkimmerPosition;
 - (int)autoscrollDirection;
 @property(readonly) double draggingClipWidth;
 - (double)_calculateCurrentLocation:(double)arg1 cursorPosition:(double)arg2;
 - (void)_updateItemInfo:(id)arg1;
+- (void)_selectItem:(id)arg1 eventDispatcher:(id)arg2;
+- (void)_updateTrimType:(id)arg1;
 - (void)exitRollover:(id)arg1;
 - (void)updateRollover:(id)arg1;
 - (BOOL)enterRollover:(id)arg1;
@@ -87,17 +92,18 @@
 - (CDStruct_1b6d18a9)_startTimeOfItemInContainerSpace:(id)arg1;
 - (BOOL)_itemHasValidLayoutInfo:(id)arg1;
 - (BOOL)isSplitEdit;
-@property(nonatomic) BOOL reloadTimelineDuringDrag;
 - (BOOL)rollOver;
 - (CDStruct_1b6d18a9)_visibleDurationOfItem:(id)arg1;
-- (BOOL)_itemIsGap:(id)arg1;
 - (BOOL)_itemIsLastSpineItem:(id)arg1;
 - (BOOL)_itemIsFirstSpineItem:(id)arg1;
-- (BOOL)_itemIsAudioComponent:(id)arg1;
 - (id)_itemAfterItem:(id)arg1;
 - (id)_itemBeforeItem:(id)arg1;
-- (id)_itemAdjacentToEdge:(id)arg1 ofItem:(id)arg2;
 - (BOOL)_item:(id)arg1 hasTransitionAtEdge:(id)arg2;
+- (void)_resetComponentWebbingElasticEdgeForItemComponents:(id)arg1;
+- (void)_updateComponentWebbingElasticEdgeForItemComponents:(id)arg1;
+- (void)_clearVerticalLayoutConstraints;
+- (void)_addVerticalLayoutConstraintIfNeededForItemComponents:(id)arg1;
+- (id)_itemsNeedingVerticalLayoutConstraintsForClickedItemComponent:(id)arg1;
 - (BOOL)isGearDownActive;
 @property(readonly, nonatomic) int movementType;
 - (BOOL)shouldMoveEdgeUsingDelta;
@@ -111,6 +117,7 @@
 - (id)partToDrag:(id)arg1;
 - (void)autoscrollWithChange:(struct CGRect)arg1 andAfter:(struct CGRect)arg2;
 - (BOOL)isDraggingLeadingEdge;
+- (int)trimType;
 - (void)resumeHandling:(id)arg1;
 - (void)pauseHandling:(id)arg1;
 - (void)stopHandling:(id)arg1;
@@ -118,6 +125,7 @@
 - (double)gearFactor;
 - (BOOL)stopTracking:(id)arg1;
 - (BOOL)stopTrackingWithCommit:(BOOL)arg1;
+- (void)_updateItemsLayers:(id)arg1;
 - (BOOL)continueTracking:(id)arg1;
 - (CDStruct_1b6d18a9)moveEdgeToPoint:(struct CGPoint)arg1;
 - (id)_validItemForTimeCodeDisplay;
@@ -147,6 +155,7 @@
 - (double)_convertLocationFromTimelineView:(double)arg1;
 - (CDStruct_1b6d18a9)_timeModulo:(CDStruct_1b6d18a9)arg1 divisor:(CDStruct_1b6d18a9)arg2;
 - (void)applyConfiguration:(id)arg1;
+- (id)clickedItemComponent;
 - (void)dealloc;
 
 @end

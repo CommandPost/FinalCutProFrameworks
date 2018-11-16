@@ -9,7 +9,7 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class NSArray, NSString, TLKContainerHandleLayer, TLKLayoutContext, TLKTextLayer, TLKThemeBackedLayer, TLKTiledContainerBackgroundLayer;
+@class CALayer, NSArray, NSString, TLKContainerHandleLayer, TLKImageLayer, TLKLayoutContext, TLKTextLayer, TLKTiledContainerBackgroundLayer;
 
 @interface TLKContainerLayer : TLKTimelineLayer <TLKAccessibilityProtocol, TLKPartInfo>
 {
@@ -17,24 +17,34 @@
     TLKTiledContainerBackgroundLayer *_backgroundLayer;
     TLKLayoutContext *_layoutContext;
     TLKTextLayer *_textLayer;
-    TLKThemeBackedLayer *_dragHandlelayer;
+    TLKImageLayer *_dragHandlelayer;
     NSArray *_badgeArray;
+    unsigned int _hasDragHeader:1;
     unsigned int _titlePresent:1;
     unsigned int _hideTextBadges:1;
+    CALayer *_selectionLayer;
 }
 
+@property(retain) CALayer *selectionLayer; // @synthesize selectionLayer=_selectionLayer;
 - (id)textLayer;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)layoutRegionAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)rectForPart:(id)arg1;
 - (id)partIdentifier;
 - (id)hitTest:(struct CGPoint)arg1;
+- (void)_layoutTitleSublayer;
+- (void)_layoutDragHandleSublayer;
+- (void)_layoutHandleSublayer;
 - (void)layoutSublayers;
+- (void)_layoutSelection;
 - (void)_layoutBadgesAndTextInVisibleBounds:(struct CGRect)arg1;
+- (BOOL)showContainerLayoutInfo;
 @property BOOL hideTextBadges;
 @property BOOL hasTitleLayer;
+@property BOOL hasDragHeader;
 @property BOOL hasHandleLayer;
 - (id)handleLayer;
+- (void)updateAppearance:(unsigned long long)arg1;
 - (void)updateAppearance;
 - (void)_updateSelectionAppearance;
 - (void)invalidate;

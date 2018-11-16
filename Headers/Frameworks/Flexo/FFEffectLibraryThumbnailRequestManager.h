@@ -19,17 +19,18 @@ __attribute__((visibility("hidden")))
     unsigned int _progressTotal;
     unsigned int _progressCurrentBaseline;
     FFSegmentStoreRef *_segmentStoreRef;
-    BOOL _disallowNewThumbnailRequests;
+    BOOL _shuttingDown;
 }
 
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (id)segmentStoreRef;
 - (id)copyCachedImageForItem:(id)arg1;
 - (void)queueRequestForItem:(id)arg1;
-- (void)_stopBackgroundTask:(id)arg1;
+- (void)_notifyDidShutdown:(id)arg1;
+- (void)_notifyWillShutdown:(id)arg1;
 - (void)_waitForBGTaskToFinish;
 - (void)_cancelBGTask;
 - (void)_startBackgroundTask;

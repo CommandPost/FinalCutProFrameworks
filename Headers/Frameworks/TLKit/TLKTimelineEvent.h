@@ -30,6 +30,7 @@
 @property(retain, nonatomic) id item; // @synthesize item=_item;
 @property(retain, nonatomic) NSArray *trailingEdgeObjects; // @synthesize trailingEdgeObjects=_trailingEdgeObjects;
 @property(retain, nonatomic) NSArray *leadingEdgeObjects; // @synthesize leadingEdgeObjects=_leadingEdgeObjects;
+- (id)description;
 - (void)dealloc;
 - (id)init;
 

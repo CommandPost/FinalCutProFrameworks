@@ -6,11 +6,15 @@
 
 #import "NSObject.h"
 
-@class FFModalTool, FFNotification, NSEvent;
+@class FFModalTool, FFNotification, NSArray, NSEvent;
 
 @protocol FFModalToolDelegate <NSObject>
 
 @optional
+- (void)cancelledSelection;
+- (void)completedSelection;
+- (NSArray *)selectedItems;
+- (void)modalTool:(FFModalTool *)arg1 selectedItemsChanged:(NSArray *)arg2;
 - (NSEvent *)modalTool:(FFModalTool *)arg1 handleFilteredEvent:(NSEvent *)arg2;
 - (void)modalTool:(FFModalTool *)arg1 willUndoRedoWithNotification:(FFNotification *)arg2;
 - (void)willResignModalTool:(FFModalTool *)arg1;

@@ -12,7 +12,7 @@
 {
     CDStruct_1b6d18a9 _time;
     struct OZChannelBase *_pChan;
-    list_eea5731a *_pChanList;
+    list_e5c8e430 *_pChanList;
     OZViewController *_pViewCtlr;
     unsigned int _mouseOverLocation;
     BOOL _isMouseOverRow;
@@ -26,22 +26,19 @@
     struct CGRect _trackingCellFrame;
     NSTrackingArea *_pTrackingArea1;
     NSTrackingArea *_pTrackingArea2;
+    NSTrackingArea *_pTrackingArea3;
 }
 
 @property(nonatomic) BOOL shouldDisableKeyframeItems; // @synthesize shouldDisableKeyframeItems=_shouldDisableKeyframeItems;
 @property(nonatomic) BOOL isMouseOverRow; // @synthesize isMouseOverRow=_isMouseOverRow;
 @property(nonatomic) unsigned int mouseOverLocation; // @synthesize mouseOverLocation=_mouseOverLocation;
 @property(nonatomic) unsigned int mouseDownLocation; // @synthesize mouseDownLocation=_mouseDownLocation;
-- (id).cxx_construct;
+- (BOOL)useResetButtonBehavior;
 - (void)gridTime;
-- (id)behaviorMenuFacet;
-- (id)onKeyframeMenuFacet;
-- (id)keyframedMenuFacet;
-- (id)animDisabledMenuFacet;
 - (id)imageForAnimState:(int)arg1 withIsMouseOver:(BOOL)arg2;
 - (void)updateTrackingAreasForView:(id)arg1;
 - (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
-- (list_eea5731a *)getChannelList;
+- (list_e5c8e430 *)getChannelList;
 - (BOOL)allowsShowInCurveEditor;
 - (void)addCustomMenuItems:(id)arg1;
 - (void)postNotification:(unsigned int)arg1;
@@ -91,9 +88,12 @@
 - (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
 - (unsigned int)mouseDownLocationForPoint:(struct CGPoint)arg1;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)keyframeDirectionAsset:(int)arg1;
 - (BOOL)isOpaque;
 - (id)resetDelegate;
 - (void)setResetDelegate:(id)arg1;
+- (id)missingAssetImage;
+- (id)getStatusImageWithDirection:(int)arg1 andState:(int)arg2;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initCell;

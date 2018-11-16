@@ -8,7 +8,7 @@
 
 #import "FFXMLTaskDelegate.h"
 
-@class FFProgressSheetController, NSString;
+@class FFLibraryTaskMergeController, FFProgressSheetController, FFXMLTranslationOptions, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFXMLTranslationTaskDelegate : NSObject <FFXMLTaskDelegate>
@@ -19,10 +19,19 @@ __attribute__((visibility("hidden")))
     float _progressTaskScopeEnd;
     BOOL _foriMovie;
     BOOL _canceled;
+    FFXMLTranslationOptions *_options;
+    FFLibraryTaskMergeController *_mergeController;
+    BOOL _originCleared;
 }
 
+- (BOOL)foriMovie;
 - (void)setForiMovie;
-- (id)runLibraryChooser:(id)arg1 importFileURL:(id)arg2 libraryIsNew:(char *)arg3 error:(id *)arg4;
+- (int)runOneTimeConfrimationForImportFromExternalOrigin:(id)arg1 withDocument:(id)arg2 intoLibrary:(id)arg3;
+- (void)setupMergeController;
+- (int)confirmMerge:(id)arg1 with:(id)arg2;
+- (void)advanceTaskType;
+- (BOOL)showLibraryColorProcessingModeConfirmationAlert:(id)arg1 libraryMode:(int)arg2 importingMode:(int)arg3 error:(id *)arg4;
+- (BOOL)chooseLibraryForImport:(id)arg1 error:(id *)arg2;
 - (void)hideProgressWindow;
 - (void)showProgressWindow;
 - (void)setProgressMessage:(int)arg1 messageInfo:(id)arg2;
@@ -32,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)performCancel;
 - (void)resetProgressValueScope;
 - (void)setProgressValueScopeWithStart:(float)arg1 andEnd:(float)arg2;
+@property(copy) FFXMLTranslationOptions *options;
 - (void)dealloc;
 - (id)initWithTask:(int)arg1;
 

@@ -8,7 +8,7 @@
 
 @interface PAESkewOSC : PAEOSC
 {
-    long long _currentState;
+    unsigned int _currentState;
     unsigned int _offsetParameter;
 }
 

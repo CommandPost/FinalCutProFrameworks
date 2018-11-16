@@ -14,10 +14,11 @@
 {
     id _container;
     NSMutableArray *_layoutSegments;
-    TLKItemEdgeTable *_itemEdgeTable;
     BOOL _isFlipped;
+    TLKItemEdgeTable *_itemEdgeTable;
 }
 
+@property(retain) TLKItemEdgeTable *itemEdgeTable; // @synthesize itemEdgeTable=_itemEdgeTable;
 @property(nonatomic) BOOL isFlipped; // @synthesize isFlipped=_isFlipped;
 @property(readonly, nonatomic) id container; // @synthesize container=_container;
 - (id)layoutSegmentsNeedingLayout;
@@ -29,14 +30,11 @@
 - (id)layoutSegmentAtTime:(CDStruct_1b6d18a9)arg1;
 - (id)layoutSegmentForItem:(id)arg1;
 - (void)removeObject:(id)arg1;
-- (void)_addSpineObject:(id)arg1 withTimeRange:(CDStruct_e83c9415)arg2;
-- (void)_addAnchoredObject:(id)arg1 withTimeRange:(CDStruct_e83c9415)arg2;
 - (void)removeLayoutSegmentsObject:(id)arg1;
 - (void)addLayoutSegmentsObject:(id)arg1;
 @property(copy, nonatomic) NSArray *layoutSegments;
 - (id)_subtreeDescription;
 - (id)description;
-- (void)reset;
 - (CDStruct_e83c9415)timeRange;
 - (BOOL)isEmpty;
 - (id)copyWithZone:(struct _NSZone *)arg1;

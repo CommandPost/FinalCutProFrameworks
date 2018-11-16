@@ -6,7 +6,7 @@
 
 #import <Flexo/FFResponderLayer.h>
 
-@class CALayer, CHChannel, FFFilmstripSelectionLayer, FFNUpDisplay, FFRetimeEditorSelection, FFRetimingEffect, FFSpeedLayer, NSImage, NSMutableArray, NSProThemeFacet, NSString, TLKItemLayer, TLKThemeBackedLayer;
+@class CALayer, CHChannel, FFFilmstripSelectionLayer, FFNUpDisplay, FFRetimeEditorSelection, FFRetimingEffect, FFSpeedLayer, NSImage, NSMutableArray, NSString, TLKItemLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFRetimeEditorLayer : FFResponderLayer
@@ -42,9 +42,6 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _speedTransitionAdjustableRange;
     CDStruct_e83c9415 _speedTransitionConstrainedRange;
     CDStruct_e83c9415 _speedTransitionRangeAtMouseDown;
-    NSProThemeFacet *_segmentGrabberFacet;
-    NSProThemeFacet *_sourcePickerFacet;
-    NSProThemeFacet *_anchorFacet;
     NSImage *_grabberImage;
     NSImage *_grabberRolloverImage;
     NSImage *_grabberPressedImage;
@@ -71,7 +68,7 @@ __attribute__((visibility("hidden")))
     CALayer *_beforeSegmentImageAudioLayer;
     struct CGImage *_videoImage;
     struct CGImage *_audioImage;
-    TLKThemeBackedLayer *_retimeBadgeLayer;
+    CALayer *_retimeBadgeLayer;
     double _mouseDownKeyPos;
     float _dragOffset;
     struct CGPoint _mouseDownLocation;
@@ -86,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
+- (void)hostLayerChanged;
 - (void)updateLayout:(id)arg1;
 - (BOOL)setTransitionFallOffsAtKey:(unsigned int)arg1 leftFallOff:(double)arg2 rightFallOff:(double)arg3;
 - (BOOL)moveComponentTimeKey:(unsigned int)arg1 deltaTime:(CDStruct_1b6d18a9)arg2 minDeltaToPrevSegment:(double)arg3 event:(id)arg4;

@@ -27,7 +27,7 @@
     BOOL _didCreateNewCollection;
     int _categoryType;
     TMTheme *_lastSelectedTheme;
-    struct map<unsigned int, unsigned int, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned int>>> _dropZonesFootageIDs;
+    map_c341eac7 _dropZonesFootageIDs;
 }
 
 + (void)initialize;
@@ -45,8 +45,8 @@
 - (void)generateQuicktimePreviewForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;
 - (void)generatePosterFramesForDocument:(id)arg1 name:(id)arg2 automatic:(BOOL)arg3;
 - (void)generatePosterFrameForDocument:(id)arg1 name:(id)arg2 size:(struct CGSize)arg3;
-- (void)undoReplaceDropZonesForDocument:(id)arg1 lockedDropZoneIDs:(vector_77d837c3)arg2;
-- (vector_77d837c3)replaceDropZonesForDocument:(id)arg1;
+- (void)undoReplaceDropZonesForDocument:(id)arg1 lockedDropZoneIDs:(vector_a9c0768e)arg2;
+- (vector_a9c0768e)replaceDropZonesForDocument:(id)arg1;
 - (BOOL)isValidFilenameForPath:(id)arg1;
 - (BOOL)isEnoughDiskSpaceAtPath:(id)arg1 withSize:(unsigned long long)arg2;
 - (void)didEndSheet:(long long)arg1;

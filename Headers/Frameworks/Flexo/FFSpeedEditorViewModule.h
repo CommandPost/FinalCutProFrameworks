@@ -34,7 +34,6 @@
 }
 
 @property(nonatomic) id <FFSpeedEditorDelegate> speedEditorDelegate; // @synthesize speedEditorDelegate=_speedEditorDelegate;
-- (id).cxx_construct;
 - (void)updateUI:(id)arg1;
 - (void)_removeObserversForRetimeChannels;
 - (void)_addObserversForRetimedObjects;
@@ -65,6 +64,7 @@
 - (BOOL)isConstantRetime;
 - (void)_fillRateField;
 - (void)_fillDurationField;
+- (void)awakeFromNib;
 - (id)initWithObjects:(id)arg1 orObjectsAndRanges:(id)arg2 segmentIndex:(int)arg3 delegate:(id)arg4;
 
 // Remaining properties

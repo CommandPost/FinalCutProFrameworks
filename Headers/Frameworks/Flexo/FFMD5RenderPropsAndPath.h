@@ -8,21 +8,20 @@
 
 #import "NSCopying.h"
 
-@class FFRenderProps, NSString;
+@class FFOnDiskRenderInfo, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMD5RenderPropsAndPath : NSObject <NSCopying>
 {
     CDStruct_bdcb2b0d _md5;
-    FFRenderProps *_renderProps;
+    FFOnDiskRenderInfo *_renderProps;
     NSString *_path;
     unsigned long long _hashVal;
 }
 
-@property(readonly) FFRenderProps *renderProps; // @synthesize renderProps=_renderProps;
+@property(readonly) FFOnDiskRenderInfo *renderProps; // @synthesize renderProps=_renderProps;
 @property(readonly) NSString *path; // @synthesize path=_path;
 @property(readonly) CDStruct_bdcb2b0d md5; // @synthesize md5=_md5;
-- (id).cxx_construct;
 - (id)description;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)hash;

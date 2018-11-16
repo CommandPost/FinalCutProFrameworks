@@ -18,7 +18,7 @@
     OZViewController *_lineSpacingCtrl;
     TXAlignmentColorController *_alignmentCtrl;
     BOOL _capturingChannels;
-    list_4c133ab0 *_styles;
+    list_2d8084dd _styles;
 }
 
 @property(retain, nonatomic) OZViewController *extrusionDepthCtrl; // @synthesize extrusionDepthCtrl=_extrusionDepthCtrl;
@@ -28,14 +28,16 @@
 @property(retain, nonatomic) TXAlignmentColorController *alignmentCtrl; // @synthesize alignmentCtrl=_alignmentCtrl;
 @property(retain, nonatomic) OZViewController *fontCtrl; // @synthesize fontCtrl=_fontCtrl;
 @property(retain, nonatomic) OZViewController *presetCtrl; // @synthesize presetCtrl=_presetCtrl;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (_Bool)useGlyphTool;
 - (void)textSelectionChanged:(id)arg1;
 - (void)notify:(unsigned int)arg1;
 - (void)updateFor3D:(BOOL)arg1;
-- (void)setAssociatedLineSpacingChannels:(vector_cd78f990 *)arg1;
-- (void)updateLineSpacingController:(list_4c5ca08a *)arg1;
-- (void)setAssociatedStyles:(list_4c133ab0 *)arg1;
-- (void)addOrResetAssociatedStyle:(struct TXTextStyle *)arg1 isAdd:(BOOL)arg2;
+- (void)setAssociatedLineSpacingChannels:(vector_358c9849 *)arg1;
+- (void)updateLineSpacingController:(list_281b6609 *)arg1;
+- (void)setAssociatedStyles:(list_2d8084dd *)arg1;
+- (void)addOrResetAssociatedStyle:(const shared_ptr_e0e110e1 *)arg1 isAdd:(BOOL)arg2;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
 - (void)dealloc;

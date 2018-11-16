@@ -33,6 +33,7 @@
 - (void)rejectedSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)cancelValidation;
 - (BOOL)validateURLs:(id)arg1 withURLsInfo:(id)arg2 forImportToLocation:(id)arg3 showWarnings:(BOOL)arg4 window:(id)arg5 copyFiles:(BOOL)arg6 acceptedURLs:(id *)arg7 options:(id)arg8;
+- (void)stopValidationModal:(id)arg1;
 - (void)preflightFilesBackgroundThread:(id)arg1;
 - (void)scanURLForFiles:(id)arg1 fileURLs:(id)arg2 keywordSets:(id)arg3 keywords:(id)arg4 rejectedURLs:(id)arg5;
 - (id)importToEvent:(id)arg1 manageFileType:(int)arg2 processNow:(BOOL)arg3 warnClipsAlreadyExist:(BOOL)arg4 error:(id *)arg5;

@@ -6,21 +6,21 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSMapTable, TLKLayoutContext;
+@class NSMapTable, TLKLayoutContext;
 
 @interface TLKTimelineViewState : NSObject
 {
-    CDStruct_1b6d18a9 _referenceTime;
-    NSMapTable *_spineOriginsInWindow;
-    TLKLayoutContext *_selectedLayoutContext;
-    id _nonWrappingVisibleRectState;
     struct {
         unsigned int hasSavedWrappingState:1;
         unsigned int keepsContentVisible:1;
         unsigned int wrapped:1;
         unsigned int RESERVED:29;
     } _vsFlags;
+    TLKLayoutContext *_selectedLayoutContext;
+    NSMapTable *_layoutContextViewStates;
+    NSMapTable *_visibleItemComponentViewStates;
     struct CGPoint _distanceToVisibleRectOrigin;
+    CDStruct_1b6d18a9 _referenceTime;
 }
 
 + (long long)optionsMaskForTimeline:(id)arg1;
@@ -28,20 +28,33 @@
 + (void)preserveStateForTimelineView:(id)arg1 referenceTime:(CDStruct_1b6d18a9)arg2 duringCallback:(CDUnknownBlockType)arg3;
 + (void)preserveStateForTimelineView:(id)arg1 referenceTime:(CDStruct_1b6d18a9)arg2 options:(long long)arg3 duringCallback:(CDUnknownBlockType)arg4;
 + (id)visibleRectStateForTimelineView:(id)arg1;
+@property(copy, nonatomic) NSMapTable *visibleItemComponentViewStates; // @synthesize visibleItemComponentViewStates=_visibleItemComponentViewStates;
+@property(copy, nonatomic) NSMapTable *layoutContextViewStates; // @synthesize layoutContextViewStates=_layoutContextViewStates;
+@property(nonatomic) CDStruct_1b6d18a9 referenceTime; // @synthesize referenceTime=_referenceTime;
 @property(retain, nonatomic) TLKLayoutContext *selectedLayoutContext; // @synthesize selectedLayoutContext=_selectedLayoutContext;
 @property struct CGPoint distanceToVisibleRectOrigin; // @synthesize distanceToVisibleRectOrigin=_distanceToVisibleRectOrigin;
+- (void)resetVisibleRectForTimelineView:(id)arg1;
 - (void)restoreViewStateForTimelineView:(id)arg1;
 - (void)updateReferenceTimeForPreviousLogicalStartTimeWithTimelineView:(id)arg1;
 - (void)_restoreVisibleRectStateForTimelineView:(id)arg1;
+- (struct CGPoint)_distanceToVisibleRectOriginForTime:(CDStruct_1b6d18a9)arg1 inTimelineView:(id)arg2;
 - (struct CGRect)_constrainVisibleBounds:(struct CGRect)arg1 toIntrinsicBounds:(struct CGRect)arg2;
 - (id)_firstVisibleLayoutContext;
-- (void)_setVisibleContentRect:(struct CGRect)arg1 forTimelineView:(id)arg2;
+- (void)setVisibleContentRect:(struct CGRect)arg1 forTimelineView:(id)arg2;
 - (void)_saveVisibleRectStateForTimelineView:(id)arg1;
-- (struct CGPoint)_savedPositionOfLayoutContext:(id)arg1 inTimelineView:(id)arg2;
-- (struct CGPoint)_distanceToVisibleRectOriginForTime:(CDStruct_1b6d18a9)arg1 inTimelineView:(id)arg2;
-- (void)setSpineOrigin:(struct CGPoint)arg1 forLayoutContext:(id)arg2 inView:(id)arg3;
-- (struct CGPoint)spineOriginForLayoutContext:(id)arg1 inView:(id)arg2;
-@property(readonly, nonatomic) NSArray *savedLayoutContexts;
+- (id)viewStateForLayoutContext:(id)arg1;
+- (id)savedLayoutContexts;
+- (struct CGPoint)_convertPointFromGlobalSpace:(struct CGPoint)arg1 toView:(id)arg2;
+- (struct CGPoint)_convertPointToGlobalSpace:(struct CGPoint)arg1 fromView:(id)arg2;
+- (BOOL)_hasVisibleRectState;
+- (id)_findBestItemComponentReference;
+- (void)saveVisibleRectStateForItemComponentObjects:(id)arg1 inTimelineView:(id)arg2;
+- (struct CGPoint)_globalPositionOfItemComponentFragment:(id)arg1 inTimelineView:(id)arg2;
+- (void)_saveLaneStateForLayoutContext:(id)arg1 inTimelineView:(id)arg2 clipRect:(struct CGRect)arg3;
+- (struct CGPoint)_savedPositionOfLaneFragment:(id)arg1 inTimelineView:(id)arg2;
+- (void)_saveSpineOriginForLayoutContext:(id)arg1 inTimelineView:(id)arg2 contextInDatabase:(BOOL)arg3;
+- (struct CGPoint)_savedPositionOfLayoutContext:(id)arg1 inTimelineView:(id)arg2 contextInDatabase:(BOOL)arg3;
+- (void)_setSpineOrigin:(struct CGPoint)arg1 forLayoutContext:(id)arg2 inView:(id)arg3;
 - (void)_restoreWrappingStateForTimelineView:(id)arg1;
 - (void)_saveWrappingStateForTimelineView:(id)arg1;
 - (void)_saveDistanceToVisibleRectOriginForTimelineView:(id)arg1;

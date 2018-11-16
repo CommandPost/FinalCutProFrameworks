@@ -15,18 +15,9 @@
 
 @interface OZFxPlug3DAPI : NSObject <Fx3DAPI, Fx3DAPI_v2, Fx3DAPI_v3, PROAPIObject>
 {
-    PCMatrix44Tmpl_e98c85ee _cameraMatrix;
-    PCMatrix44Tmpl_e98c85ee _worldToFilmMatrix;
-    PCMatrix44Tmpl_e98c85ee _layerMatrix;
-    PCMatrix44Tmpl_e98c85ee _worldToLayerMatrix;
-    PCMatrix44Tmpl_e98c85ee _worldToObjectMatrix;
-    PCMatrix44Tmpl_e98c85ee _worldToEyeMatrix;
     BOOL _is3D;
-    double _focalLength;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 - (double)focalLengthAtFxTime:(CDUnion_2516e51e)arg1;
 - (double)focalLengthAtTime:(double)arg1;

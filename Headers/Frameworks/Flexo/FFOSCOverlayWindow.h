@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property BOOL overlayCanBeKey; // @synthesize overlayCanBeKey;
+- (void)setAppearance:(id)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (BOOL)accessibilityIsIgnored;
 - (BOOL)canBecomeKeyWindow;

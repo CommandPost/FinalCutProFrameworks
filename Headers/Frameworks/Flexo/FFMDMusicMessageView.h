@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class NSImageView, NSProThemeImageView, NSTextField;
+@class NSImageView, NSTextField;
 
 __attribute__((visibility("hidden")))
 @interface FFMDMusicMessageView : NSView
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _observingResizes;
     NSImageView *_messageImageView;
     NSTextField *_messageField;
-    NSProThemeImageView *_topShadowView;
+    NSImageView *_topShadowView;
 }
 
 - (void)drawDividerLine;
@@ -22,11 +22,7 @@ __attribute__((visibility("hidden")))
 - (double)messageHeight;
 - (void)setMessage:(id)arg1;
 - (void)setMessageIcon:(id)arg1;
-- (void)frameDidChangeNotification:(id)arg1;
 - (void)awakeFromNib;
-- (void)_centerAlignIconAndMessageViews;
-- (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

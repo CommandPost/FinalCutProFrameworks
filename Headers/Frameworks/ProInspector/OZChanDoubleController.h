@@ -6,17 +6,17 @@
 
 #import <ProInspector/OZCommonScrubberController.h>
 
-@class LKTextField, NSSlider, PISegmentedScrubber;
+@class LKSlider, LKTextField, PISegmentedScrubber;
 
 @interface OZChanDoubleController : OZCommonScrubberController
 {
     PISegmentedScrubber *_pTF;
-    NSSlider *_pSlider;
+    LKSlider *_pSlider;
     LKTextField *_pSuffixTF;
     BOOL _isIntegerController;
     BOOL _isOffsetting;
     Class _pSliderTransformer;
-    struct list<double, std::allocator<double>> *_pMouseDownValues;
+    struct list<double, std::__1::allocator<double>> *_pMouseDownValues;
     int _decimalDigits;
     int _sliderNaturalTickCount;
     BOOL _isSubrangeSet;
@@ -27,6 +27,8 @@
     Class _formatterClass;
 }
 
+- (float)suggestedMaxParamWidth;
+- (float)suggestedMinParamWidth;
 - (id)sliderClassName;
 - (id)formatterClassName;
 - (double)valueBias;

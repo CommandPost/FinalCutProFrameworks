@@ -10,10 +10,8 @@
 {
 }
 
-- (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
-- (id)effect;
-- (long long)effectCountForReference;
-- (void)modifyAdjustmentsWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 bufferData:(char *)arg4 bufferWidth:(double)arg5 bufferHeight:(double)arg6 bytesPerRow:(unsigned int)arg7;
+- (void)ensureIntrinsic;
+- (id)undoChannels;
 - (BOOL)supportsTool:(Class)arg1;
 
 @end

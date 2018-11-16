@@ -6,12 +6,13 @@
 
 #import <Flexo/FFScheduleToken.h>
 
-@class FFProviderOffline, NSCondition, NSOperation;
+@class FFProviderOffline, FFVideoProps, NSCondition, NSOperation;
 
 __attribute__((visibility("hidden")))
 @interface FFSchedTokenForOfflineProvider : FFScheduleToken
 {
     FFProviderOffline *_provider;
+    FFVideoProps *_videoProps;
     BOOL _forThumb;
     NSCondition *_cond;
     NSOperation *_op;
@@ -21,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (unsigned int)scheduleStatusInformation;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 forThumb:(BOOL)arg2;
+- (id)initWithStream:(id)arg1 forThumb:(BOOL)arg2 videoProps:(id)arg3;
 
 @end
 

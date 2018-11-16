@@ -22,7 +22,7 @@
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)draw;
-- (void)getAllLightNodes:(struct OZScene *)arg1:(vector_313ad82b *)arg2;
+- (void)getAllLightNodes:(struct OZScene *)arg1:(vector_2a6e9a14 *)arg2;
 - (void)dealloc;
 - (int)getDrawingOrder;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;

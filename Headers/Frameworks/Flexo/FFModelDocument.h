@@ -7,15 +7,20 @@
 #import <Flexo/FFCatalogDocument.h>
 
 #import "DSStoreDelegateProtocol.h"
+#import "FFModalDocumentSession.h"
 
 @class FFFileLock, FFLibraryItem, NSString, NSURL;
 
-@interface FFModelDocument : FFCatalogDocument <DSStoreDelegateProtocol>
+@interface FFModelDocument : FFCatalogDocument <DSStoreDelegateProtocol, FFModalDocumentSession>
 {
     FFLibraryItem *_libraryItem;
     FFFileLock *_fileLock;
     NSURL *_documentDirectory;
+    BOOL _isUpdating;
     NSString *_statusString;
+    NSString *_statusTitle;
+    double _statusUpdate;
+    int _catalogVersionBase;
     int _catalogVersion;
 }
 
@@ -29,7 +34,6 @@
 + (BOOL)URL:(id)arg1 containsURL:(id)arg2;
 + (id)sharedUndoManager;
 + (id)sharedUndoHandler;
-+ (id)sharedCatalog;
 + (id)documentPathForFolderURL:(id)arg1;
 + (id)findLatestBackupInDirectory:(id)arg1;
 + (BOOL)_moveURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
@@ -39,18 +43,23 @@
 + (id)localizedErrorDict:(id)arg1 param:(id)arg2 resolution:(id)arg3;
 + (BOOL)showProgress;
 + (void)setShowProgress:(BOOL)arg1;
++ (id)fileLockURLForDocument:(id)arg1;
 + (id)documentFileName;
++ (id)backupFileName;
 + (id)makeUniqueDirectory:(id)arg1 error:(id *)arg2;
 + (int)versionOldest;
 + (int)versionCurrent;
 + (id)defaultDocumentNameExtension;
 + (id)defaultDocumentName;
 + (id)defaultLocation;
++ (id)uniqueIdentifier:(id)arg1 error:(id *)arg2;
 + (id)resetUniqueIdentifier:(id)arg1 error:(id *)arg2;
++ (id)_resetUniqueIdentifier:(id)arg1 checkOpenURL:(id)arg2;
 + (BOOL)canResetUniqueIdentifierAtOpen:(id)arg1;
 + (id)newUniqueName:(id)arg1 extension:(id)arg2 iteration:(int)arg3;
 + (id)defaultFileExtension;
 + (void)initialize;
+@property(nonatomic) BOOL isUpdating; // @synthesize isUpdating=_isUpdating;
 @property(nonatomic) FFLibraryItem *libraryItem; // @synthesize libraryItem=_libraryItem;
 - (void)_handleUndoRedoOperationBefore:(CDUnknownBlockType)arg1 operationAfter:(CDUnknownBlockType)arg2;
 - (void)_handleUndoRedoOperationAfter:(CDUnknownBlockType)arg1 operationBefore:(CDUnknownBlockType)arg2;
@@ -62,8 +71,9 @@
 - (id)_mapDocumentURLs:(id)arg1 forURL:(id)arg2;
 - (id)makeRelativeURL:(id)arg1;
 - (BOOL)isInTrash;
-- (BOOL)operationCreateHardlink:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
+- (BOOL)operationCreateHardlink:(id)arg1 fromURL:(id)arg2 error:(id *)arg3;
 - (BOOL)operationCreateSymlink:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
+- (void)registerUndoForOperationCreateSymlink:(id)arg1;
 - (BOOL)operationCreateDirectory:(id)arg1 error:(id *)arg2;
 - (BOOL)operationRename:(id)arg1 error:(id *)arg2;
 - (BOOL)actionRename:(id)arg1 actionName:(id)arg2 error:(id *)arg3;
@@ -72,6 +82,9 @@
 - (id)operationPrepareURLsForAsyncCopying:(id)arg1 error:(id *)arg2;
 - (BOOL)operationMoveURLsToTrash:(id)arg1 error:(id *)arg2;
 - (BOOL)isContainerForURL:(id)arg1;
+- (void)_updateModelWithBlock:(CDUnknownBlockType)arg1;
+- (void)_undoableWriteLockEnd;
+- (void)_undoableWriteLockBegin;
 - (BOOL)_actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
 - (void)_actionBegin:(id)arg1;
 - (void)_registerUndoBlock:(CDUnknownBlockType)arg1;
@@ -85,38 +98,56 @@
 - (void)_undoRedoAction:(struct NSObject *)arg1;
 - (void)_undoRedoUIState:(id)arg1;
 - (id)_UIState;
+- (id)undoHandler;
 - (id)newDocumentCatalog:(id *)arg1;
+- (BOOL)handlePotentialUnmountedDocumentError:(id)arg1;
+- (id)objectFromID:(id)arg1 error:(id *)arg2;
 - (void)commitCatalogFailed:(id)arg1;
-- (void)saveDocument:(id)arg1;
-- (BOOL)saveToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)writeSafelyToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 error:(id *)arg4;
 - (void)limitBackupsTo:(int)arg1 in:(id)arg2;
 - (BOOL)readFromURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
 - (BOOL)rename:(id)arg1 makeUnique:(BOOL)arg2 error:(id *)arg3;
+- (id)documentFileLock;
 @property(retain, nonatomic) NSURL *documentDirectory;
 - (void)setFileURL:(id)arg1;
 - (id)displayName;
-- (BOOL)moveStore:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
+- (void)registerUndoWithBlock:(CDUnknownBlockType)arg1;
+- (void)registerUndoWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 object:(id)arg4;
 - (void)registerUndoWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
 - (void)close;
 - (BOOL)documentDirectoryIsEmpty;
-- (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
+- (void)_appendUpdateHistory:(id)arg1 forGroup:(id)arg2;
+- (void)updateFinished:(id)arg1;
+- (void)updateWithHandler:(id)arg1;
 - (BOOL)_bringUpToDate:(id *)arg1;
 - (BOOL)_shouldUpdateNow;
-- (void)didBringUpToDate;
-- (void)willBringUpToDate;
+- (BOOL)didBringUpToDate:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)willBringUpToDate:(id *)arg1;
+- (id)referenceUpdateHistory;
+- (void)setCatalogBranchID:(id)arg1;
+- (id)catalogBranchID;
 - (void)setCatalogVersionBase:(int)arg1;
 - (int)catalogVersionBase;
 - (void)setCatalogVersion:(int)arg1;
 - (int)catalogVersion;
+- (void)_loadCatalogVersionInfo;
+- (void)showModalProgress:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)showModalProgress:(CDUnknownBlockType)arg1;
 - (id)statusString;
 - (void)progressBlock:(CDUnknownBlockType)arg1;
 - (void)store:(id)arg1 processing:(unsigned long long)arg2 of:(unsigned long long)arg3;
 - (void)setProgress:(id)arg1 current:(unsigned long long)arg2 max:(unsigned long long)arg3;
 - (void)setProgress:(id)arg1;
-- (void)showProgress:(id)arg1 whileExecutingBlock:(CDUnknownBlockType)arg2;
+- (void)setProgressTitle:(id)arg1;
+- (void)showFetchProgress:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (BOOL)warnForBranchIDTag;
+- (void)showIncompatibleLibraryMessage:(id)arg1;
 - (BOOL)warnForUpdate;
+- (BOOL)lastUpdateFailedToSave;
 - (BOOL)allowsDeferredSync;
+- (id)library;
+- (id)libraryIfAvailable;
+- (id)sharedLock;
 - (BOOL)isTemporary;
 - (id)initWithCatalog:(id)arg1 store:(id)arg2 ofType:(id)arg3 error:(id *)arg4;
 - (id)initWithType:(id)arg1 error:(id *)arg2;
@@ -126,7 +157,7 @@
 - (id)initWithCatalog:(id)arg1 store:(id)arg2 ofType:(id)arg3 validate:(BOOL)arg4 libraryItem:(id)arg5 error:(id *)arg6;
 - (void)dealloc;
 - (BOOL)_validateStore:(id)arg1 location:(id)arg2 error:(id *)arg3;
-- (BOOL)_setFileLock:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)_setFileLock:(id)arg1 error:(id *)arg2;
 - (BOOL)usesFileLock;
 - (id)documentFileName;
 - (id)documentName;

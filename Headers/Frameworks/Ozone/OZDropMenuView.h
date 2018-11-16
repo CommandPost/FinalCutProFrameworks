@@ -20,8 +20,6 @@
     NSString *_subText;
     NSMutableDictionary *_subTextAttributes;
     NSImage *_icon;
-    int _element;
-    int _part;
 }
 
 - (void)concludeDragOperation:(id)arg1;

@@ -19,8 +19,8 @@
 + (void)operationRemoveChannel:(id)arg1 fromParentFolder:(id)arg2 project:(id)arg3 delegate:(id)arg4;
 + (void)operationInsertChannel:(id)arg1 toParentFolder:(id)arg2 atIndex:(unsigned long long)arg3 project:(id)arg4 delegate:(id)arg5;
 + (void)operationAddChannel:(id)arg1 toParentFolder:(id)arg2 project:(id)arg3 delegate:(id)arg4;
-+ (id)actionNewProject:(id)arg1 name:(id)arg2 sequence:(id)arg3 actionName:(id)arg4 extraUndoGroup:(BOOL)arg5 error:(id *)arg6;
-+ (id)actionNewEvent:(id)arg1 name:(id)arg2 actionName:(id)arg3 extraUndoGroup:(BOOL)arg4 error:(id *)arg5;
++ (id)actionNewProject:(id)arg1 name:(id)arg2 sequence:(id)arg3 actionName:(id)arg4 error:(id *)arg5;
++ (id)actionNewEvent:(id)arg1 name:(id)arg2 actionName:(id)arg3 error:(id *)arg4;
 + (BOOL)isForceUpdatingProjects;
 + (void)forceUpdatingProjects;
 + (id)projectFileName;
@@ -40,7 +40,7 @@
 - (void)_operationRemoveChannel:(id)arg1 fromParentFolder:(id)arg2 delegate:(id)arg3;
 - (void)_operationInsertChannel:(id)arg1 toParentFolder:(id)arg2 atIndex:(unsigned long long)arg3 delegate:(id)arg4;
 - (void)operationApplyState:(id)arg1 toChannel:(id)arg2;
-- (void)_undoNewEvent:(id)arg1 actionName:(id)arg2;
+- (BOOL)moveToLibraryTrash:(id *)arg1;
 - (void)update_clippedSequencesFromVersion:(int)arg1;
 - (void)setRootObject:(id)arg1;
 - (id)rootObject;
@@ -48,7 +48,7 @@
 - (BOOL)isProjectLoaded;
 - (id)project;
 - (void)close;
-- (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
+- (void)updateWithHandler:(id)arg1;
 - (void)dealloc;
 - (id)projectFileName;
 - (id)projectDirectory;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
     struct MD5Cache *_video;
     struct MD5Cache *_audio;
+    struct MD5Cache *_transition;
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 
 + (id)effectID;
 + (void)registerEffects;
+- (_Bool)canObjectBePasted;
+- (void)applyStoredParamsAfterPaste;
 - (void)createChannelsInFolder:(id)arg1;
 
 @end

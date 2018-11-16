@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property(retain) FFReducedRateTracker *reducedRateTracker; // @synthesize reducedRateTracker=_rrt;
 @property(readonly) CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
 @property(readonly) CDStruct_1b6d18a9 sampleDuration; // @synthesize sampleDuration=_sampleDuration;
-- (id).cxx_construct;
 - (void)resetDropInfos;
 - (id)copyDropInfosByPopping;
 - (void)recordDropInfo:(id)arg1;
@@ -40,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)setEnableDropDetection:(BOOL)arg1;
 - (_Bool)performOverfullRecovery;
 - (_Bool)supportsOverfullRecovery;
-- (_Bool)usesOSThrottlingForAllDiskIO;
+- (int)destRecommendedFFSVPriority;
 - (_Bool)inefficientFrameDurationWarning:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2;
 - (unsigned int)outputMaxLatencyInFrames;
 - (id)description;
@@ -58,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)liveFlushWithRunout:(unsigned int)arg1 playerTime:(CDStruct_1b6d18a9)arg2 rate:(double)arg3;
 - (void)flush:(BOOL)arg1;
 - (BOOL)wantsDithering:(id)arg1;
+- (unsigned int)rangeCheckZebraMode;
 - (int)requestedBackground;
 - (struct CGSize)maxSupportedSize;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;

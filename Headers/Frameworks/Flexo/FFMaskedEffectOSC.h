@@ -6,15 +6,14 @@
 
 #import <Flexo/FFComponentOSC.h>
 
-@class FFMaskedEffectBase, NSMutableArray;
+@class FFMaskedEffectBase, FFOSC<FFMaskOSC>, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFMaskedEffectOSC : FFComponentOSC
 {
     FFMaskedEffectBase *_maskedEffect;
-    NSMutableArray *_shapeOSCs;
-    id <FFMaskOSC> _keyerOSC;
-    id <FFMaskOSC> _activeOSC;
+    NSMutableArray *_OSCs;
+    FFOSC<FFMaskOSC> *_activeOSC;
 }
 
 - (void)flagsChanged:(id)arg1;
@@ -29,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)mouseEntered:(id)arg1;
 - (void)mouseMoved:(id)arg1;
 - (BOOL)hitTest:(struct CGPoint)arg1;
+- (BOOL)_isActivelySampling;
 - (void)activeMaskChanged:(id)arg1;
 - (void)syncActiveOSC;
 - (void)dealloc;

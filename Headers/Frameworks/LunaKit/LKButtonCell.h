@@ -4,36 +4,45 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProButtonCell.h"
+#import "NSButtonCell.h"
 
-@class NSMutableDictionary, NSProThemeFacet;
-
-@interface LKButtonCell : NSProButtonCell
+@interface LKButtonCell : NSButtonCell
 {
-    long long elementID;
-    long long partID;
-    NSProThemeFacet *customFacet;
-    NSMutableDictionary *_cachedFacets;
     BOOL _ignoresBorderChangeOnDragEnter;
+    BOOL _drawsCustomBezel;
+    BOOL _changesBorderWhenMouseInside;
+    unsigned long long _tintIndex;
+    long long _partID;
+    long long _elementID;
+    long long _version;
+    int _code;
+    int _part;
+    int _imageIndex;
+    int _glyphIndex;
+    int _glyphPart;
+    int _variant;
+    int _tint;
+    BOOL _pulsing;
 }
 
 @property BOOL ignoresBorderChangeOnDragEnter; // @synthesize ignoresBorderChangeOnDragEnter=_ignoresBorderChangeOnDragEnter;
-@property long long partID; // @synthesize partID;
-@property long long elementID; // @synthesize elementID;
-- (void)mouseEntered:(id)arg1;
-- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)autosizeControlHeight;
-- (float)_heightNeeded;
-- (void)setProButtonType:(int)arg1;
-- (id)_disclosureTriangleFacet;
-- (id)_disclosureKnobGlyphFacet;
-- (id)_gradientFacet;
-- (void)_setupForProButtonType:(int)arg1;
+@property long long partID; // @synthesize partID=_partID;
+@property long long elementID; // @synthesize elementID=_elementID;
+@property(nonatomic) unsigned long long tintIndex; // @synthesize tintIndex=_tintIndex;
+- (void)setChangesBorderWhenMouseInside:(BOOL)arg1;
+- (BOOL)changesBorderWhenMouseInside;
+- (void)setDrawsCustomBezel:(BOOL)arg1;
+- (BOOL)drawsCustomBezel;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)setAlternateImage:(id)arg1;
+- (id)initImageCell:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_baseFacet;
-@property(retain) NSProThemeFacet *customFacet;
-- (void)dealloc;
+- (void)_setProUseButtonImageSource:(long long)arg1;
+- (long long)_proUseButtonImageSource;
+- (void)_setProHasKeyEquivalentInsteadOfImage:(long long)arg1;
+- (long long)_proHasKeyEquivalentInsteadOfImage;
+- (void)autosizeControlHeight;
 
 @end
 

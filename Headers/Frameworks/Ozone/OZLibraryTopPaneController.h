@@ -8,7 +8,7 @@
 
 #import "NSBrowserDelegate.h"
 
-@class NSCell, NSMutableArray, NSString, OZLibraryModule, OZLibraryTopPaneEntry;
+@class NSCell, NSDictionary, NSMutableArray, NSString, OZLibraryModule, OZLibraryTopPaneEntry;
 
 @interface OZLibraryTopPaneController : NSObject <NSBrowserDelegate>
 {
@@ -19,6 +19,7 @@
     NSCell *_hitCell;
     NSCell *_lastHitCell;
     NSString *_oldName;
+    NSDictionary *_stringAttributes;
 }
 
 + (int)allDirectoryItems:(id)arg1 withFilter:(id)arg2;

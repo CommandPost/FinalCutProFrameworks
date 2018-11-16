@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
     int _pmrCopyTimeCt;
 }
 
-- (id).cxx_construct;
 - (void)mioOutputDroppedFrames:(id)arg1;
 - (id)description;
 - (struct SMPTETime)getPlayerFrameSMPTETime;

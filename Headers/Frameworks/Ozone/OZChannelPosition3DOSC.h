@@ -8,7 +8,7 @@
 
 @interface OZChannelPosition3DOSC : POChannel
 {
-    struct vector<OZChannelRef *, std::allocator<OZChannelRef *>> *_positions;
+    struct vector<OZChannelRef *, std::__1::allocator<OZChannelRef *>> *_positions;
     BOOL _moving;
     double _mouseX;
     double _mouseY;

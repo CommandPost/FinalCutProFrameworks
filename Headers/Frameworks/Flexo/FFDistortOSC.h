@@ -6,13 +6,13 @@
 
 #import <Flexo/FFProOSC.h>
 
-@class FFCHObservableFolder, NSMutableArray, NSProSegmentedControl, NSView;
+@class FFCHObservableFolder, LKSegmentedControl, NSMutableArray, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFDistortOSC : FFProOSC
 {
-    NSProSegmentedControl *_keyframeButton;
-    NSProSegmentedControl *_exitButton;
+    LKSegmentedControl *_keyframeButton;
+    LKSegmentedControl *_exitButton;
     NSView *_distortOverlayView;
     FFCHObservableFolder *_channelFolder;
     NSMutableArray *_channelsToCheckForkeyFrames;

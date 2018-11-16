@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 + (Class)streamClass;
 @property BOOL cacheTokens; // @synthesize cacheTokens=_cacheTokens;
-- (id).cxx_construct;
 - (id)newStream:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
 - (void)delegateVideoRangeInvalidated:(id)arg1;
 - (id)initWithProvider:(id)arg1 delegatingTo:(id)arg2;

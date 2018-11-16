@@ -6,12 +6,12 @@
 
 @protocol OZRenderClient
 - (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
-- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_3bf61ddf *)arg2;
 
 @optional
 - (int)currentVirtualScreen;
 - (void)resumePlaybackAfterAbort;
-- (void)pausePlaybackAfterAbort;
+- (void)pausePlaybackDuringAbort;
 - (BOOL)isLooping;
 - (BOOL)isPlaying;
 - (void)getRenderRequestRenderParams:(struct OZRenderParams *)arg1 atTime:(CDStruct_1b6d18a9)arg2;

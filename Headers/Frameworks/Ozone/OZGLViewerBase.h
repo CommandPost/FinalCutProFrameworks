@@ -13,7 +13,7 @@
     struct OZDocument *_document;
     struct OZViewerState *_pViewerState;
     double _border;
-    vector_6694fb0a *_pChannelChanged;
+    vector_cdb86442 *_pChannelChanged;
     struct PCAtomicValue *_pAreChannelsEvaluated;
     CDStruct_1b6d18a9 _startRecordTime;
     CDStruct_1b6d18a9 _endRecordTime;
@@ -27,7 +27,6 @@
     double _originalZoom;
 }
 
-- (id).cxx_construct;
 - (void)setShowRenderFields:(id)arg1;
 - (void)setShowDepthOfField:(id)arg1;
 - (void)setShowShadows:(id)arg1;
@@ -38,7 +37,6 @@
 - (void)setUseDropZones:(id)arg1;
 - (CDStruct_1b6d18a9)getTime;
 - (void)magnifyWithEvent:(id)arg1;
-- (void)beginGestureWithEvent:(id)arg1;
 - (void)postRedisplay:(_Bool)arg1;
 - (struct OZSceneNode *)getIsolatedIncludeAnimating;
 - (struct OZSceneNode *)getIsolatedNode;

@@ -4,12 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
 @class FFShareHistoryItemEntryView, LKImageView, LKTextField, NSBox, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FFShareHistoryItemHeaderView : NSProView
+@interface FFShareHistoryItemHeaderView : NSView
 {
     NSBox *_separator;
     LKImageView *_shareIcon;

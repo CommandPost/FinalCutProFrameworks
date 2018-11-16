@@ -8,20 +8,20 @@
 
 #import "NSMenuDelegate.h"
 
-@class CALayer, CATextLayer, CHChannelBase, CHChannelFolder, FFAnchoredTimelineModule, FFChannelChangeController, FFCurveEditorBackgroundLayer, FFCurveEditorSelection, FFCurveEditorSelectionList, FFEffect, FFEffectStack, FFResponderLayerCheckbox, NSArray, NSMutableArray, NSProThemeFacet, NSString, OZDecibelFormatter, TLKButtonLayer, TLKThemeBackedLayer;
+@class CALayer, CATextLayer, CHChannelBase, CHChannelFolder, FFAnchoredTimelineModule, FFChannelChangeController, FFCurveEditorBackgroundLayer, FFCurveEditorFadeHandleLayer, FFCurveEditorSelection, FFCurveEditorSelectionList, FFEffect, FFEffectStack, FFResponderLayerRoleTintedCheckbox, FFRoleColorScheme, NSArray, NSMutableArray, NSString, OZDecibelFormatter, TLKButtonLayer, TLKImageLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFCurveEditorLayer : FFResponderLayer <NSMenuDelegate>
 {
-    TLKThemeBackedLayer *_fadeInLayer;
-    TLKThemeBackedLayer *_fadeOutLayer;
-    TLKThemeBackedLayer *_marqueeLayer;
+    FFCurveEditorFadeHandleLayer *_fadeInLayer;
+    FFCurveEditorFadeHandleLayer *_fadeOutLayer;
+    TLKImageLayer *_marqueeLayer;
     TLKButtonLayer *_menuButtonLayer;
     TLKButtonLayer *_disclosureButtonLayer;
     CALayer *_marqueeLeftLayer;
     CALayer *_marqueeRightLayer;
     FFCurveEditorBackgroundLayer *_backgroundLayer;
-    FFResponderLayerCheckbox *_checkBoxLayer;
+    FFResponderLayerRoleTintedCheckbox *_checkBoxLayer;
     NSMutableArray *_keyLayers;
     NSMutableArray *_curveLayers;
     CATextLayer *_nameLayer;
@@ -30,10 +30,7 @@ __attribute__((visibility("hidden")))
     FFEffect *_effect;
     FFEffectStack *_effectStack;
     id <FFCurveEditorEffectDelegate> _effectDelegate;
-    NSProThemeFacet *_fadeAsset;
-    NSProThemeFacet *_fadeAssetFocused;
     struct CGColor **_fadeColor;
-    struct CGColor **_curveColor;
     struct CGColor **_curveColorPressed;
     struct CGColor **_curveColorRollover;
     struct CGColor **_curveColorPressedOutline;
@@ -41,8 +38,8 @@ __attribute__((visibility("hidden")))
     CHChannelBase *_channel;
     CHChannelFolder *_rootChannel;
     NSArray *_channels;
-    vector_419cd555 _samplesY;
-    vector_10091177 _samplesX;
+    vector_3f7ffb82 _samplesY;
+    vector_4f732a7b _samplesX;
     unsigned int _numberOfSamples;
     BOOL _dirty;
     FFCurveEditorSelection *_selection;
@@ -90,8 +87,13 @@ __attribute__((visibility("hidden")))
     id <FFChannelChangeControllerDivorcedDelegate> _channelChangeDelegate;
     BOOL _isModelLayer;
     BOOL _instantiatingIntrinsic;
+    FFRoleColorScheme *_roleColorScheme;
+    BOOL _drawOutline;
+    unsigned long long _currentPredominantDragDirection;
 }
 
+@property unsigned long long currentPredominantDragDirection; // @synthesize currentPredominantDragDirection=_currentPredominantDragDirection;
+@property BOOL drawOutline; // @synthesize drawOutline=_drawOutline;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
@@ -115,7 +117,6 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)fadeCurveContextMenu:(BOOL)arg1;
 - (id)channelContextMenu;
-- (void)menu:(id)arg1 willHighlightItem:(id)arg2;
 - (id)segmentContextMenu;
 - (id)keyframeContextMenu;
 - (BOOL)shouldDisplayMenu:(id)arg1;
@@ -145,6 +146,7 @@ __attribute__((visibility("hidden")))
 - (void)displayChannelMenu;
 - (unsigned long long)_curveEditDirectionForDragDirection:(unsigned long long)arg1;
 - (BOOL)wantsToHandlePredominantDrag;
+- (unsigned long long)_computePredominantDragDirection;
 - (unsigned long long)_predominantDragDirection;
 - (BOOL)hasKeyframes;
 - (BOOL)shouldHandleAddKeyframe;
@@ -152,7 +154,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldHandleNextKeyframe;
 - (BOOL)shouldHandlePaste;
 - (BOOL)shouldHandleCopy;
-- (BOOL)shouldHandleNudge;
+- (BOOL)shouldHandleNudgeLeftRight;
+- (BOOL)shouldHandleNudgeUpDown;
 - (BOOL)shouldHandleDeleteAllKeyframes;
 - (BOOL)shouldHandleDelete:(BOOL)arg1;
 - (unsigned int)numberOfKeyframes;
@@ -233,6 +236,7 @@ __attribute__((visibility("hidden")))
 - (void)updateBackground;
 - (void)updateFadeColors;
 - (void)setKeyframeAsset:(id)arg1;
+- (id)roleColorScheme;
 - (id)channel;
 - (void)setChannel:(id)arg1 keepSelection:(BOOL)arg2;
 - (void)setEffect:(id)arg1 andChannel:(id)arg2 changeSelection:(BOOL)arg3;
@@ -246,6 +250,7 @@ __attribute__((visibility("hidden")))
 - (void)updateSamples;
 - (void)updateKeyframesLayers;
 - (void)updateCurveLayers;
+- (void)colorSchemeHasChanged;
 - (unsigned long long)findAssociatedKeyframeLayer:(CDStruct_1b6d18a9)arg1;
 - (unsigned long long)findAssociatedCurveLayer:(CDStruct_1b6d18a9)arg1;
 - (void)instantiateIntrinsicEffectIfNeeded;

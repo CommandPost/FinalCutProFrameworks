@@ -21,7 +21,6 @@
     double _maxVal;
 }
 
-- (id).cxx_construct;
 - (void)setController:(id)arg1;
 - (void)update;
 - (void)sample;

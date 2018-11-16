@@ -15,6 +15,9 @@
     OZViewController *_paramPulldownCtlr;
 }
 
+- (float)suggestedMinParamWidth;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)fontFamilyControllerDidChange;
 - (void)notify:(unsigned int)arg1;
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (struct OZChannelEnum *)fontTypefaceChannelForChannel:(struct OZChannelBase *)arg1;

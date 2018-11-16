@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     LKButton *_toggleButton;
     OZLabelText *_labelText;
-    LKButton *_disclosureButton;
     OZViewCtlrRoot *_observedControllerRoot;
     BOOL _allMediaIsAvailable;
 }

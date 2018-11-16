@@ -4,11 +4,10 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFOrganizerFilterHUDTile;
+@class FFLibrary, FFOrganizerFilterHUDTile;
 
 @protocol FFOrganizerFilterHUDTileDelegate
-- (void)updateRolesForTile:(FFOrganizerFilterHUDTile *)arg1;
-- (void)updateKeywordsForTile:(FFOrganizerFilterHUDTile *)arg1;
+- (FFLibrary *)library;
 - (void)tileUpdated:(FFOrganizerFilterHUDTile *)arg1;
 - (void)removeTile:(FFOrganizerFilterHUDTile *)arg1;
 @end

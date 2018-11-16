@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
 @interface FFStreamVideoStreamSharer : FFStreamDelegatingVideo <FFStreamSharerHGNodeSharing>
 {
     NSObject<OS_dispatch_queue> *_cachingLock;
-    struct list<FFStreamSharerLiveTokenInfo *, std::allocator<FFStreamSharerLiveTokenInfo *>> _liveTokens;
+    struct list<FFStreamSharerLiveTokenInfo *, std::__1::allocator<FFStreamSharerLiveTokenInfo *>> _liveTokens;
     NSObject<OS_dispatch_queue> *_nodeSharingLock;
-    struct map<_opaque_pthread_t *, FFStreamSharedHGNodeInfo *, std::less<_opaque_pthread_t *>, std::allocator<std::pair<_opaque_pthread_t *const, FFStreamSharedHGNodeInfo *>>> _sharedHGNodeInfos;
+    struct map<_opaque_pthread_t *, FFStreamSharedHGNodeInfo *, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, FFStreamSharedHGNodeInfo *>>> _sharedHGNodeInfos;
     NSObject<OS_dispatch_queue> *_prerollAndRateLock;
     int _prerollCount;
     double _currentRate;
@@ -24,14 +24,14 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5 graphBuildInfo:(id)arg6;
+- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5 roi:(const struct CGRect *)arg6 graphBuildInfo:(id)arg7;
 - (void)setRate:(double)arg1;
 - (void)prerollEnd;
 - (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
 - (void)endSharingHGNodes;
 - (void)beginSharingHGNodes;
 - (void)_decCountFor:(struct PC_CMTimePair)arg1 context:(id)arg2;
-- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
+- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
 

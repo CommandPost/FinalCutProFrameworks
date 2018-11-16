@@ -4,63 +4,77 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <TLKit/ERLRelationalObject.h>
 
 #import "NSCopying.h"
 
-@class NSArray, NSMutableArray, NSMutableSet, NSSet, TLKContainerMetrics, TLKLayoutSegmentTable;
+@class NSArray, NSMutableArray, NSMutableSet, NSSet, NSString, TLKContainerMetrics, TLKLayoutSegmentTable, TLKVerticalIndexTable;
 
-@interface TLKContainerInfo : NSObject <NSCopying>
+@interface TLKContainerInfo : ERLRelationalObject <NSCopying>
 {
-    NSMutableSet *_itemInfoRecords;
+    NSMutableSet *_itemComponentInfoRecords;
+    NSMutableArray *_itemLaneInfoRecords;
     NSMutableSet *_subcontainerInfoRecords;
     NSMutableSet *_layoutContexts;
-    NSMutableArray *_itemLaneInfoRecords;
-    id _representedObject;
     NSArray *_spineItems;
     TLKContainerMetrics *_containerMetrics;
     TLKLayoutSegmentTable *_segmentTableAboveSpine;
     TLKLayoutSegmentTable *_segmentTableBelowSpine;
     BOOL _isTrack;
+    BOOL _precisionEditorIsChangingEditPoint;
+    int _precisionEditorState;
+    id _representedObject;
+    TLKContainerInfo *_enclosingContainerInfo;
+    unsigned long long _trackIndex;
+    NSString *_accessibilityDisplayName;
+    TLKVerticalIndexTable *_verticalIndexTableOnSpine;
+    TLKVerticalIndexTable *_verticalIndexTableAboveSpine;
+    TLKVerticalIndexTable *_verticalIndexTableBelowSpine;
     id _leftPrecisionEditorItem;
     id _rightPrecisionEditorItem;
     id _precisionEditorTransitionItem;
-    int _precisionEditorState;
-    BOOL _precisionEditorIsChangingEditPoint;
-    TLKContainerInfo *_enclosingContainerInfo;
-    unsigned long long _trackIndex;
     id _savedWrappingState;
+    NSSet *_items;
+    CDStruct_e83c9415 _timeRange;
 }
 
-@property(copy, nonatomic) NSSet *itemInfoRecords; // @synthesize itemInfoRecords=_itemInfoRecords;
+@property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
+@property(copy, nonatomic) NSSet *itemComponentInfoRecords; // @synthesize itemComponentInfoRecords=_itemComponentInfoRecords;
+@property(copy, nonatomic) NSSet *items; // @synthesize items=_items;
 @property(retain, nonatomic) id savedWrappingState; // @synthesize savedWrappingState=_savedWrappingState;
 @property(nonatomic) BOOL precisionEditorIsChangingEditPoint; // @synthesize precisionEditorIsChangingEditPoint=_precisionEditorIsChangingEditPoint;
 @property(nonatomic) int precisionEditorState; // @synthesize precisionEditorState=_precisionEditorState;
 @property(retain, nonatomic) id precisionEditorTransitionItem; // @synthesize precisionEditorTransitionItem=_precisionEditorTransitionItem;
 @property(retain, nonatomic) id rightPrecisionEditorItem; // @synthesize rightPrecisionEditorItem=_rightPrecisionEditorItem;
 @property(retain, nonatomic) id leftPrecisionEditorItem; // @synthesize leftPrecisionEditorItem=_leftPrecisionEditorItem;
+@property(retain, nonatomic) TLKVerticalIndexTable *verticalIndexTableBelowSpine; // @synthesize verticalIndexTableBelowSpine=_verticalIndexTableBelowSpine;
+@property(retain, nonatomic) TLKVerticalIndexTable *verticalIndexTableAboveSpine; // @synthesize verticalIndexTableAboveSpine=_verticalIndexTableAboveSpine;
+@property(retain, nonatomic) TLKVerticalIndexTable *verticalIndexTableOnSpine; // @synthesize verticalIndexTableOnSpine=_verticalIndexTableOnSpine;
 @property(readonly, nonatomic) TLKLayoutSegmentTable *segmentTableBelowSpine; // @synthesize segmentTableBelowSpine=_segmentTableBelowSpine;
 @property(readonly, nonatomic) TLKLayoutSegmentTable *segmentTableAboveSpine; // @synthesize segmentTableAboveSpine=_segmentTableAboveSpine;
 @property(retain, nonatomic) TLKContainerMetrics *containerMetrics; // @synthesize containerMetrics=_containerMetrics;
+@property(copy, nonatomic) NSString *accessibilityDisplayName; // @synthesize accessibilityDisplayName=_accessibilityDisplayName;
 @property(copy, nonatomic) NSArray *spineItems; // @synthesize spineItems=_spineItems;
 @property(nonatomic) unsigned long long trackIndex; // @synthesize trackIndex=_trackIndex;
 @property(nonatomic) BOOL isTrack; // @synthesize isTrack=_isTrack;
 @property(nonatomic) TLKContainerInfo *enclosingContainerInfo; // @synthesize enclosingContainerInfo=_enclosingContainerInfo;
+@property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 @property(readonly, nonatomic) NSSet *timelineItems;
+- (id)newUnifiedVisuallyOrderedVerticalIndexTable;
+- (id)verticalIndexTableForLayoutRegion:(long long)arg1;
+- (id)itemLaneInfoRecordsForLayoutRegion:(long long)arg1;
 - (void)removeItemLaneInfoRecordsObject:(id)arg1;
 - (void)addItemLaneInfoRecordsObject:(id)arg1;
 @property(copy, nonatomic) NSArray *itemLaneInfoRecords;
-- (void)enumerateSubcontainerInfoRecordsWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeSubcontainerInfoRecordsObject:(id)arg1;
 - (void)addSubcontainerInfoRecordsObject:(id)arg1;
 @property(copy, nonatomic) NSSet *subcontainerInfoRecords;
 - (void)removeLayoutContextsObject:(id)arg1;
 - (void)addLayoutContextsObject:(id)arg1;
 @property(copy, nonatomic) NSSet *layoutContexts;
-- (void)removeItemInfoRecordsObject:(id)arg1;
-- (void)addItemInfoRecordsObject:(id)arg1;
-@property(readonly, nonatomic) id representedObject;
-- (CDStruct_e83c9415)timeRange;
+- (void)removeItemComponentInfoRecordsObject:(id)arg1;
+- (void)addItemComponentInfoRecordsObject:(id)arg1;
+@property(readonly, nonatomic) unsigned long long nestingLevel;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

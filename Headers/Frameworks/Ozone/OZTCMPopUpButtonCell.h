@@ -11,11 +11,9 @@
     BOOL _displayCustom;
 }
 
-- (void)drawBorderAndBackgroundWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (struct CGRect)titleRectForBounds:(struct CGRect)arg1;
 - (id)_textColor;
-- (id)font;
 - (void)drawTitleWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (BOOL)_proDrawsArrowOnly;
 - (void)setDisplayCustom:(BOOL)arg1;
 
 @end

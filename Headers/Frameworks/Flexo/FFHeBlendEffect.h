@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
 - (CDStruct_e83c9415)effectSubSegmentForTime:(CDStruct_1b6d18a9)arg1 channelOffset:(CDStruct_1b6d18a9)arg2 sampleDur:(CDStruct_1b6d18a9)arg3;
 - (struct CGRect)calcOpaqueBoundsAtTime:(CDStruct_1b6d18a9)arg1 forInputSource:(id)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
-- (struct CGColorSpace *)processingColorSpace;
+- (id)processingFormat:(int)arg1;
 - (BOOL)supportsReentrancy;
 - (BOOL)shouldCacheSimplifesResults;
 - (id)simplifiesToPassThruAtTime:(CDStruct_1b6d18a9)arg1 forInputSource:(id)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;

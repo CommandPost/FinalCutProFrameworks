@@ -12,10 +12,8 @@
 {
     NSImage *_meterImage[2];
     NSImage *_peakImage[2];
-    NSImage *_embossImage;
     struct CGSize _meterImageSize;
     struct CGSize _peakImageSize;
-    struct CGSize _embossImageSize;
     struct CGRect _peakRect;
     double _minValue;
     double _value;
@@ -29,7 +27,6 @@
     double _peakExpirationTime;
 }
 
-- (id).cxx_construct;
 - (void)mouseDown:(id)arg1;
 - (void)_resetPeakIndicator:(id)arg1;
 - (double)peakLightValue;
@@ -46,12 +43,10 @@
 - (void)_redraw;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)_drawVerticalMeter:(struct CGRect)arg1 usingPeak:(id)arg2;
-- (void)setEmbossImage:(id)arg1 active:(BOOL)arg2;
 - (void)setPeakImage:(id)arg1 active:(BOOL)arg2;
 - (void)setMeterImage:(id)arg1 active:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)_localImageNamed:(long long)arg1;
 
 @end
 

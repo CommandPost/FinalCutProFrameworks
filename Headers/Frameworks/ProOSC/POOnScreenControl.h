@@ -20,6 +20,10 @@
     struct OZChannelBase *_channel;
 }
 
+- (BOOL)nudgeLeftBig:(id)arg1;
+- (BOOL)nudgeRightBig:(id)arg1;
+- (BOOL)nudgeDownBig:(id)arg1;
+- (BOOL)nudgeUpBig:(id)arg1;
 - (BOOL)nudgeLeft:(id)arg1;
 - (BOOL)nudgeRight:(id)arg1;
 - (BOOL)nudgeDown:(id)arg1;
@@ -46,6 +50,7 @@
 - (BOOL)showSelectedOSC;
 - (id)getAssociatedOSC;
 - (BOOL)isActivePartClosestObjectPicked;
+- (void)mouseIsDownInEditTool:(BOOL)arg1;
 - (void)initSelectionInOSC:(id)arg1;
 - (BOOL)updateSelectionInOSC:(id)arg1 withRect:(PCRect_b601f9f3 *)arg2;
 - (void)setViewer:(id)arg1;

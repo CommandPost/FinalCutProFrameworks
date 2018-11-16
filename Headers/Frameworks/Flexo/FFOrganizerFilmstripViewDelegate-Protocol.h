@@ -6,7 +6,7 @@
 
 #import "FFOrganizerImportDropController.h"
 
-@class FFAnchoredObject, FFAnchoredTimeMarker, FFContext, FFEditorModule, FFMarkerLayer, FFOrganizerFilmstripView, FigTimeRangeAndObject, LKPopOverWindow, LKViewModule, NSArray, NSMenu, NSPasteboard, NSSet, NSString, NSTreeNode;
+@class FFAnchoredTimeMarker, FFOrganizerFilmstripView, FigTimeRangeAndObject, LKViewModule, NSArray, NSDictionary, NSMenu, NSObject<FFOrganizerMarkerEditorDelegate>, NSObject<FFOrganizerSkimmingDelegate>, NSPasteboard, NSString, NSTreeNode;
 
 @protocol FFOrganizerFilmstripViewDelegate <FFOrganizerImportDropController>
 - (BOOL)shouldAlwaysPlacePlayhead;
@@ -24,11 +24,7 @@
 - (void)removeAllSelectionMarkersFromClips:(NSArray *)arg1;
 - (void)removeSelectionMarkers:(NSArray *)arg1 onlyRemoveOverlap:(BOOL)arg2 addSelectionMarkers:(NSArray *)arg3 extendingSelection:(BOOL)arg4;
 - (void)modifySelectionMarkersFromClip:(FigTimeRangeAndObject *)arg1 removeRange:(CDStruct_e83c9415)arg2 onlyRemoveOverlap:(BOOL)arg3 rangeToAdd:(CDStruct_e83c9415)arg4 newSelection:(NSArray *)arg5 extending:(BOOL)arg6;
-- (FFEditorModule *)editorModule;
-- (void)stopUsingMedia:(NSSet *)arg1;
-- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 unloadingBlock:(void (^)(void))arg4;
 - (BOOL)canDisplayPlayer;
-- (BOOL)canBeginSkimming;
 - (NSArray *)activeSelection;
 - (void)setActiveSelection:(NSArray *)arg1;
 - (void)selectionDidChangeToTime:(CDStruct_e83c9415)arg1 inObject:(id)arg2;
@@ -40,17 +36,20 @@
 - (NSMenu *)contextualMenuForSelection:(NSArray *)arg1;
 - (NSArray *)itemsClusteredByMetadataValue:(NSArray *)arg1;
 - (BOOL)isClustering;
-- (void)makeSequenceActive:(id)arg1;
 - (void)openItemFromRangeObject:(FigTimeRangeAndObject *)arg1;
 - (void)organizerFilmstripViewDidReloadData:(FFOrganizerFilmstripView *)arg1;
 - (unsigned long long)filmstripView:(FFOrganizerFilmstripView *)arg1 writeRangesOfMedia:(NSArray *)arg2 toPasteboard:(NSPasteboard *)arg3;
+- (NSObject<FFOrganizerMarkerEditorDelegate> *)markerEditorDelegate;
+- (NSObject<FFOrganizerSkimmingDelegate> *)skimmingDelegate;
 - (LKViewModule *)module;
 
 @optional
+- (void)moveToPreviusClip;
+- (void)moveToNextClip;
+- (NSDictionary *)filtersDictionary;
 - (NSArray *)filterRanges:(NSArray *)arg1;
 - (NSArray *)newSidebarRanges;
 - (NSArray *)unfilteredRanges;
-- (void)filmstripView:(FFOrganizerFilmstripView *)arg1 didCreatePlayheadInfoPopover:(LKPopOverWindow *)arg2;
 - (BOOL)shouldDisableRangeSelectionForObject:(id)arg1;
 - (NSTreeNode *)fileSystemRootNode;
 - (NSString *)defaultEditDurationString;
@@ -61,9 +60,5 @@
 - (void)persistentPlayheadRangeOfMediaWillChange;
 - (void)showKeywordEditor;
 - (BOOL)actionMoveMarker:(FFAnchoredTimeMarker *)arg1 toRange:(FigTimeRangeAndObject *)arg2 error:(id *)arg3;
-- (BOOL)markerEditorIsShown;
-- (void)hideMarkerEditor;
-- (void)showMarkerEditorForMarkerLayer:(FFMarkerLayer *)arg1 object:(FFAnchoredObject *)arg2;
-- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(FFAnchoredObject *)arg2;
 @end
 

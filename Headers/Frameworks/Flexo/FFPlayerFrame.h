@@ -16,6 +16,8 @@
     CDStruct_1b6d18a9 _nativeFrameDur;
     FFImage *_image1;
     FFImage *_image2;
+    unsigned int _zebraMode1;
+    unsigned int _zebraMode2;
     struct CGRect _bounds;
     double _rate;
     unsigned int _timecodeType;
@@ -32,6 +34,8 @@
     NSError *_errorInfo;
 }
 
+@property(readonly) unsigned int zebraMode2; // @synthesize zebraMode2=_zebraMode2;
+@property(readonly) unsigned int zebraMode1; // @synthesize zebraMode1=_zebraMode1;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 nativeFrameDur; // @synthesize nativeFrameDur=_nativeFrameDur;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(readonly, nonatomic) unsigned int timecodeType; // @synthesize timecodeType=_timecodeType;
@@ -51,8 +55,8 @@
 - (id)graphBuildInfo1;
 - (id)image2_MD5;
 - (id)image1_MD5;
-- (void)setImage2:(id)arg1 withMD5:(id)arg2 graphBuildInfo:(id)arg3;
-- (void)setImage1:(id)arg1 withMD5:(id)arg2 graphBuildInfo:(id)arg3;
+- (void)setImage2:(id)arg1 withMD5:(id)arg2 graphBuildInfo:(id)arg3 zebraMode:(unsigned int)arg4;
+- (void)setImage1:(id)arg1 withMD5:(id)arg2 graphBuildInfo:(id)arg3 zebraMode:(unsigned int)arg4;
 - (id)image2;
 - (id)image1;
 - (BOOL)viewed;

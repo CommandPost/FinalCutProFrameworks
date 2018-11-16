@@ -8,7 +8,7 @@
 
 @interface POChannelPositionOSC : POChannel
 {
-    struct vector<std::pair<OZChannelRef *, bool>, std::allocator<std::pair<OZChannelRef *, bool>>> *_positions;
+    struct vector<std::__1::pair<OZChannelRef *, bool>, std::__1::allocator<std::__1::pair<OZChannelRef *, bool>>> *_positions;
     BOOL _moving;
 }
 

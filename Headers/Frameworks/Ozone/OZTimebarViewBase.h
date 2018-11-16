@@ -4,13 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
 #import "OZObjCObserver.h"
 
-@class OZCacheDisplayManager, OZViewRectCache;
+@class NSDate, NSImage, OZCacheDisplayManager, OZViewRectCache;
 
-@interface OZTimebarViewBase : NSProView <OZObjCObserver>
+@interface OZTimebarViewBase : NSView <OZObjCObserver>
 {
     struct PCTimeRange *_startingRange;
     CDStruct_1b6d18a9 *_cachedCurrentTime;
@@ -20,7 +20,7 @@
     struct CGPoint _startingLocation;
     struct CGPoint _currentLocation;
     int _moving;
-    vector_7856d79e *_snaps;
+    vector_f7e3fd5f *_snaps;
     id _snapsDelegate;
     OZViewRectCache *_viewRectCache;
     BOOL _useViewRectCache;
@@ -32,10 +32,13 @@
     struct OZDocument *_document;
     OZCacheDisplayManager *_pCacheDisplayManager;
     BOOL _livesInCanvas;
+    NSImage *_playheadImage;
+    NSImage *_inPointImage;
+    NSImage *_outPointImage;
+    NSDate *_lastMouseDragTime;
 }
 
 @property(nonatomic) BOOL livesInCanvas; // @synthesize livesInCanvas=_livesInCanvas;
-- (id).cxx_construct;
 - (void)postFrameChanged:(BOOL)arg1;
 - (void)notify:(unsigned int)arg1;
 - (void)updateRectInPlayhead;
@@ -54,6 +57,7 @@
 - (const struct PCTimeRange *)getDisplayRange;
 - (double)getPixelsPerSecond;
 - (CDStruct_1b6d18a9)getSecondsPerPixel;
+- (struct CGPoint)backingAlignedPoint:(struct CGPoint)arg1;
 - (struct CGRect)controlBounds;
 - (struct CGRect)playRangeEndRect;
 - (struct CGRect)playRangeBeginRect;
@@ -72,18 +76,15 @@
 - (void)pause;
 - (void)play;
 - (BOOL)isPlaying;
-- (id)inactiveRangeFacet;
-- (id)outPointFacet:(BOOL)arg1;
-- (id)inPointFacet:(BOOL)arg1;
-- (id)playlineFacet:(BOOL)arg1;
-- (id)playheadFacet:(BOOL)arg1;
+- (id)outPointImage;
+- (id)inPointImage;
+- (id)playheadImage;
 - (void)drawPlayhead:(struct CGRect)arg1;
 - (void)drawForeground:(struct CGRect)arg1;
 - (void)drawPlayRangeHandles;
 - (void)drawMidground:(struct CGRect)arg1;
 - (void)drawBackground:(struct CGRect)arg1;
 - (void)drawCachedRange:(struct CGRect)arg1;
-- (BOOL)hasTimebarShadow;
 - (void)drawRect:(struct CGRect)arg1;
 - (BOOL)isOpaque;
 - (void)updateCacheDisplay;

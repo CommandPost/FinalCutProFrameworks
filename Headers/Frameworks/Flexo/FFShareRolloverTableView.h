@@ -4,16 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProTableView.h"
+#import "LKTableView.h"
 
-@class NSProScrollView, NSTrackingArea;
+@class LKScrollView, NSTrackingArea;
 
-@interface FFShareRolloverTableView : NSProTableView
+@interface FFShareRolloverTableView : LKTableView
 {
     NSTrackingArea *_track;
     BOOL _mouseOverView;
     long long _mouseOverRow;
-    NSProScrollView *parentScrollView;
+    LKScrollView *parentScrollView;
 }
 
 - (void)viewDidEndLiveResize;

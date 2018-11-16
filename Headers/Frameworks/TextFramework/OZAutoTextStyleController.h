@@ -34,7 +34,7 @@
 }
 
 @property(readonly) TXMaterialAssignmentFolderController *materialAssignmentFolderCtrl; // @synthesize materialAssignmentFolderCtrl=_materialAssignmentFolderCtrl;
-- (struct TXTextStyle *)getCurrentStyle;
+- (shared_ptr_e0e110e1)getCurrentStyle;
 - (void)notify:(unsigned int)arg1;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
 - (void)updateInspector2D3DBricks:(BOOL)arg1;
@@ -43,7 +43,7 @@
 - (void)updateEnvironmentController:(struct OZ3DExtrusionProperties *)arg1;
 - (void)delayedRelease;
 - (void)delayedReleaseCB:(id)arg1;
-- (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
+- (void)resetOrAddAssociatedStyle:(const shared_ptr_e0e110e1 *)arg1 reset:(BOOL)arg2;
 - (void)addOrResetChannelToLightingBrick:(struct OZ3DExtrusionProperties *)arg1 reset:(BOOL)arg2;
 - (void)addOrResetChannelToExtrusionBrick:(struct OZ3DExtrusionProperties *)arg1 reset:(BOOL)arg2;
 - (void)didBuildUI;

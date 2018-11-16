@@ -6,32 +6,51 @@
 
 #import <Flexo/FFModelObject.h>
 
+#import "FFMergeObjectProtocol.h"
 #import "FFObjectCompare.h"
 
 @class FFUndoHandler, FFUserDefaults, NSString;
 
-@interface FFBaseDSObject : FFModelObject <FFObjectCompare>
+@interface FFBaseDSObject : FFModelObject <FFMergeObjectProtocol, FFObjectCompare>
 {
     NSString *_cacheIdentifier;
     FFUserDefaults *_userDefaults;
 }
 
 + (id)copyClassDescription;
++ (id)mergeDescription;
++ (id)uniqueKeyFor:(id)arg1 among:(id)arg2;
 - (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
 - (id)loadUserDefaults:(BOOL)arg1;
 - (void)setUserDefaults:(id)arg1;
 - (id)userDefaults;
 @property(readonly, nonatomic) FFUndoHandler *undoHandler;
-- (id)modelDocument;
+- (id)mediaEventProject;
 - (id)projectDocument;
 - (id)project;
 - (id)libraryItem;
+- (id)libraryOrTargetLibrary;
 - (id)library;
 - (id)cacheIdentifier;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+- (BOOL)mergeChildObject:(id)arg1 with:(id)arg2 delegate:(id)arg3;
+- (BOOL)mergeValue:(id)arg1 forKey:(id)arg2;
+- (BOOL)merge:(id)arg1 withDelegate:(id)arg2;
+- (BOOL)merge:(id)arg1;
+- (BOOL)mergeEnumeratedCollection:(id)arg1 intoProxy:(id)arg2 withDescription:(id)arg3 delegate:(id)arg4;
+- (BOOL)mergeIndexedCollection:(id)arg1 intoProxy:(id)arg2 withDescription:(id)arg3 delegate:(id)arg4;
+- (BOOL)mergeKeyedCollection:(id)arg1 and:(id)arg2 into:(id)arg3 withDescription:(id)arg4 delegate:(id)arg5;
+- (BOOL)mergeScalerPropertyFrom:(id)arg1 forKey:(id)arg2 withDescription:(id)arg3 delegate:(id)arg4;
+- (id)uniqueKeyFor:(id)arg1 among:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

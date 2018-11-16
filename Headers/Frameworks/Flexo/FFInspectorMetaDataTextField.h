@@ -6,27 +6,12 @@
 
 #import "LKTextField.h"
 
-@class FFInspectorMetadataContentRow, NSTextView;
-
 __attribute__((visibility("hidden")))
 @interface FFInspectorMetaDataTextField : LKTextField
 {
-    NSTextView *_tempTextView;
-    FFInspectorMetadataContentRow *_contentRow;
 }
 
-@property FFInspectorMetadataContentRow *contentRow; // @synthesize contentRow=_contentRow;
-@property(retain) NSTextView *tempTextView; // @synthesize tempTextView=_tempTextView;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)updateFieldHeightForText;
-- (double)actualTextHeight;
-- (void)setupTempTextView;
-- (void)textDidChange:(id)arg1;
-- (void)setStringValue:(id)arg1;
-- (void)dealloc;
-- (void)commonInit;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
++ (void)initialize;
 
 @end
 

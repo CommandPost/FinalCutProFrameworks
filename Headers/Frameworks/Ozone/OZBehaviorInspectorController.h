@@ -11,7 +11,7 @@
 @interface OZBehaviorInspectorController : OZViewCtlrRoot
 {
     struct OZBehavior *_pBehavior;
-    list_fc228e28 *_pBehaviors;
+    list_de2015bc *_pBehaviors;
     OZMoViewCtlrDelegate *_pMyDelegate;
 }
 
@@ -19,8 +19,8 @@
 - (void)twiddle;
 - (void)dealloc;
 - (id)initWithBehaviorDontBuild:(struct OZBehavior *)arg1;
-- (id)initWithBehaviorsDontBuild:(list_fc228e28 *)arg1;
-- (id)initWithBehaviors:(list_fc228e28 *)arg1;
+- (id)initWithBehaviorsDontBuild:(list_de2015bc *)arg1;
+- (id)initWithBehaviors:(list_de2015bc *)arg1;
 
 @end
 

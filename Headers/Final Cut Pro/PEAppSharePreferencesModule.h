@@ -4,21 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProPreferencesModule.h"
+#import "LKPreferencesModule.h"
 
 #import "NSOutlineViewDataSource.h"
 
-@class LKButton, LKImageView, LKTileView, NSArray, NSMutableArray, NSString, NSTreeController, NSUndoManager, PEAPPSharePreferencesFooterView, PEAppSharePreferencesOutlineView;
+@class LKButton, LKTileView, NSArray, NSMutableArray, NSString, NSTreeController, NSUndoManager, PEAppSharePreferencesOutlineView;
 
-@interface PEAppSharePreferencesModule : NSProPreferencesModule <NSOutlineViewDataSource>
+@interface PEAppSharePreferencesModule : LKPreferencesModule <NSOutlineViewDataSource>
 {
     NSTreeController *_destinationsController;
     PEAppSharePreferencesOutlineView *_destinationsView;
     LKTileView *_destinationTilesView;
-    PEAPPSharePreferencesFooterView *_footerView;
-    LKImageView *_separator1;
-    LKImageView *_separator2;
-    LKButton *_addBtn;
     LKButton *_removeBtn;
     NSArray *_draggedFilePaths;
     BOOL _draggedFilePathsIncludesBundle;
@@ -30,12 +26,8 @@
 @property(retain, nonatomic) NSMutableArray *destinations; // @synthesize destinations=_destinations;
 @property(retain, nonatomic) NSTreeController *destinationsController; // @synthesize destinationsController=_destinationsController;
 - (void)userShareDestinationsDidChange:(id)arg1;
-- (BOOL)outlineView:(id)arg1 shouldEditTableColumn:(id)arg2 item:(id)arg3;
 - (id)outlineView:(id)arg1 selectionIndexesForProposedSelection:(id)arg2;
 - (void)outlineViewSelectionDidChange:(id)arg1;
-- (void)outlineView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 item:(id)arg4;
-- (BOOL)outlineView:(id)arg1 shouldShowCellExpansionForTableColumn:(id)arg2 item:(id)arg3;
-- (id)outlineView:(id)arg1 toolTipForCell:(id)arg2 rect:(struct CGRect *)arg3 tableColumn:(id)arg4 item:(id)arg5 mouseLocation:(struct CGPoint)arg6;
 - (BOOL)outlineView:(id)arg1 acceptDrop:(id)arg2 item:(id)arg3 childIndex:(long long)arg4;
 - (void)_dropDestinations:(id)arg1 onItem:(id)arg2 childIndex:(long long)arg3;
 - (void)_dropDestinationTypes:(id)arg1 onItem:(id)arg2 childIndex:(long long)arg3;
@@ -46,11 +38,11 @@
 - (void)_setDraggedFilePaths:(id)arg1 includesBundle:(BOOL)arg2;
 - (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
 - (id)outlineView:(id)arg1 namesOfPromisedFilesDroppedAtDestination:(id)arg2 forDraggedItems:(id)arg3;
-- (void)outlineView:(id)arg1 setObjectValue:(id)arg2 forTableColumn:(id)arg3 byItem:(id)arg4;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
 - (id)_targetedIndexPaths:(id *)arg1;
 - (id)_targetedNodes:(id *)arg1;
+- (void)editCell:(id)arg1;
 - (void)_updateRemoveButtonEnabledState;
 - (void)selectAddDestination:(id)arg1;
 - (void)moveToTrash:(id)arg1;
@@ -97,6 +89,7 @@
 - (id)preferencesNibName;
 - (void)dealloc;
 - (void)awakeFromNib;
+- (id)imageForPreferenceNamed:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

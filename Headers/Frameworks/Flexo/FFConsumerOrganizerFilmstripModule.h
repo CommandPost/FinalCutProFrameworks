@@ -6,20 +6,23 @@
 
 #import <Flexo/FFOrganizerFilmstripModule.h>
 
-@class FFAlwaysHitButton, FFCapsController, LKButton, LKMenu, LKPopOverWindow, LKSearchField, LKSlider, LKTextField, NSPopUpButton, NSProThemeImageView, NSProView, NSString, NSView, OKPaneCapItemMenu;
+#import "NSPopoverDelegate.h"
+#import "NSTouchBarProvider.h"
 
-@interface FFConsumerOrganizerFilmstripModule : FFOrganizerFilmstripModule
+@class FFAlwaysHitButton, FFCapsController, FFConsumerOrganizerDFRController, LKButton, LKMenu, LKPopUpButton, LKSearchField, LKSlider, LKTextField, NSImageView, NSPopover, NSString, NSTouchBar, NSView;
+
+@interface FFConsumerOrganizerFilmstripModule : FFOrganizerFilmstripModule <NSTouchBarProvider, NSPopoverDelegate>
 {
-    NSPopUpButton *_filterPopupButton;
-    NSProView *_eventNameContainer;
+    LKPopUpButton *_filterPopupButton;
+    NSView *_eventNameContainer;
     LKButton *_eventNameButton;
     LKButton *_selectionInfoButton;
     FFAlwaysHitButton *_toggleSidebarButton;
     FFAlwaysHitButton *_dividerLine;
     LKSearchField *_parentSearchField;
     LKButton *_clipAppearanceButton;
-    NSProThemeImageView *_minClipHeightImage;
-    NSProThemeImageView *_maxClipHeightImage;
+    NSImageView *_minClipHeightImage;
+    NSImageView *_maxClipHeightImage;
     LKSlider *_clipHeightSlider;
     LKSlider *_thumbnailDurationSlider;
     LKTextField *_thumbnailDurationText;
@@ -27,21 +30,24 @@
     struct CGRect _thumbnailDurationTextRect;
     BOOL _editPaintInProgress;
     NSString *_eventTitle;
+    FFConsumerOrganizerDFRController *_consumerDfrController;
     NSView *headerView;
-    OKPaneCapItemMenu *filterMenuPaneCapItem;
-    LKPopOverWindow *clipAppearanceHUD;
+    LKPopUpButton *filterPopUpButton;
+    NSPopover *clipAppearanceHUD;
     FFCapsController *capsController;
     LKMenu *filterMenu;
-    NSProView *clipAppearanceHUDView;
+    NSView *clipAppearanceHUDView;
 }
 
 + (id)defaultModuleNibName;
-@property(retain, nonatomic) NSProView *clipAppearanceHUDView; // @synthesize clipAppearanceHUDView;
+@property(readonly, nonatomic) FFConsumerOrganizerDFRController *consumerDfrController; // @synthesize consumerDfrController=_consumerDfrController;
+@property(retain, nonatomic) NSView *clipAppearanceHUDView; // @synthesize clipAppearanceHUDView;
 @property(retain, nonatomic) LKMenu *filterMenu; // @synthesize filterMenu;
 @property(retain, nonatomic) FFCapsController *capsController; // @synthesize capsController;
-@property(retain, nonatomic) LKPopOverWindow *clipAppearanceHUD; // @synthesize clipAppearanceHUD;
-@property(retain, nonatomic) OKPaneCapItemMenu *filterMenuPaneCapItem; // @synthesize filterMenuPaneCapItem;
+@property(retain, nonatomic) NSPopover *clipAppearanceHUD; // @synthesize clipAppearanceHUD;
+@property(retain, nonatomic) LKPopUpButton *filterPopUpButton; // @synthesize filterPopUpButton;
 @property(retain, nonatomic) NSView *headerView; // @synthesize headerView;
+@property(readonly) NSTouchBar *touchBar;
 - (void)clearFilters;
 - (double)rightDraggableExclusionMargin;
 - (id)localModuleActions;
@@ -51,6 +57,7 @@
 - (void)setActiveSelection:(id)arg1;
 @property(nonatomic) SEL backButtonAction;
 @property(nonatomic) id backButtonTarget;
+- (void)toggleSidebar:(id)arg1;
 - (void)filterMenuAction:(id)arg1;
 - (void)searchFieldAction:(id)arg1;
 - (void)searchAction:(id)arg1;
@@ -58,11 +65,11 @@
 - (void)clipHeightSliderAction:(id)arg1;
 - (void)toggleClipAppearanceAudioWaveformsAction:(id)arg1;
 - (void)clipAppearanceAction:(id)arg1;
+- (void)updateThumbnails;
 - (void)syncThumbnailDurationStringToIndex:(long long)arg1;
 - (double)durationValueIndexToThumbnailDurationValue:(long long)arg1;
 - (long long)thumbnailDurationValueToDurationValueIndex:(double)arg1;
-- (void)clipAppearanceHUDNotificationHandler:(id)arg1;
-- (void)popOverWindowDidCancel:(id)arg1;
+- (void)popoverDidClose:(id)arg1;
 - (void)showClipAppearanceHUD;
 - (BOOL)isClipAppearanceHUDDisplayed;
 - (void)_headerFrameChanged:(id)arg1;
@@ -79,9 +86,19 @@
 - (void)setupEventNameButtons;
 - (void)setupCapsController;
 - (void)setupViews;
+- (void)_documentWasAddedOrRemoved:(id)arg1;
+- (void)moduleDidUnhide;
+- (void)moduleDidHide;
 - (void)viewDidLoad;
+- (id)newSidebarRanges;
 - (void)dealloc;
 - (void)awakeFromNib;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

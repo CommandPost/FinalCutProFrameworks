@@ -10,7 +10,7 @@
 #import "CBPuckControllerDataSource.h"
 #import "FFControllerProtocol.h"
 
-@class CHChannelBase, CHChannelFolder, FFAnchoredObject, FFChannelChangeController, FFEffect<FFColorBoardableObject>, FFEffectStack, NSArray;
+@class CHChannelBase, CHChannelFolder, FFAnchoredObject, FFChannelChangeController, FFEffect<FFColorBoardableObject>, FFEffectStack, NSArray, NSMapTable;
 
 __attribute__((visibility("hidden")))
 @interface FFCBDataSource : NSObject <CBControllerDataSource, CBPuckControllerDataSource, FFControllerProtocol>
@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
     CHChannelBase *_modifiedChannel;
     BOOL _ignoreObservedStackChanges;
     NSArray *_effectsChangedObservers;
+    BOOL _cachedUseExtendedSpaceConversion;
+    NSMapTable *_dataFormatters;
 }
 
 + (void)puckType:(int *)arg1 boardType:(int *)arg2 fromChannelID:(int)arg3;
@@ -73,7 +75,6 @@ __attribute__((visibility("hidden")))
 - (id)arrayOfCorrectionIDs;
 - (id)dataForPuck:(id)arg1;
 - (void)setData:(id)arg1 forPuck:(id)arg2;
-- (id)getPuckData:(id)arg1;
 - (id)currentAnchoredObjectForController:(id)arg1;
 - (void)controller:(id)arg1 switchToDataForCorrection:(id)arg2;
 - (void)_validateAndSetPuckFolderForBoardableEffect:(id)arg1 createIfAbsent:(BOOL)arg2;
@@ -82,8 +83,8 @@ __attribute__((visibility("hidden")))
 - (id)boardableEffects;
 - (void)setColorBoardHidden:(BOOL)arg1;
 - (void)dealloc;
-- (void)_unregisterBoardableEffectsObservers;
-- (void)_registerBoardableEffectsObservers;
+- (void)_unregisterObservers;
+- (void)_registerObservers;
 - (id)init;
 @property(retain, nonatomic) FFAnchoredObject *currentAnchoredObject; // @dynamic currentAnchoredObject;
 

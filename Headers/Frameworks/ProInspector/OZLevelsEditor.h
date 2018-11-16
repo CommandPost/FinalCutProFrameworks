@@ -4,15 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
 @class OZHistogramGradientView, OZHistogramGutterIn;
 
-@interface OZLevelsEditor : NSProView
+@interface OZLevelsEditor : NSView
 {
     id _delegate;
     struct OZChannelLevels *_levelsChannel;
-    NSProView *_masterView;
+    NSView *_masterView;
     OZHistogramGradientView *_gradientView;
     OZHistogramGutterIn *_gutterIn;
 }

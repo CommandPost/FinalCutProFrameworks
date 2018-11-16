@@ -10,7 +10,7 @@
 
 @interface OZSaveManager : NSObject
 {
-    struct vector<OZSceneNode *, std::allocator<OZSceneNode *>> *_footageList;
+    struct vector<OZSceneNode *, std::__1::allocator<OZSceneNode *>> *_footageList;
     BOOL _includeUnused;
     unsigned int _saveMethod;
     unsigned int _saveTemplateMethod;

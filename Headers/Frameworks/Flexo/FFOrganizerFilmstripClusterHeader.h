@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFOrganizerClusteringCollection, FFOrganizerFilmstripClusterHeaderLayer, NSProThemeFacet;
+@class FFOrganizerClusteringCollection, FFOrganizerFilmstripClusterHeaderLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripClusterHeader : NSObject
@@ -17,8 +17,6 @@ __attribute__((visibility("hidden")))
     id <FFOrganizerFilmstripClusteringDelegate> _clusteringDelegate;
     FFOrganizerFilmstripClusterHeaderLayer *_layer;
     FFOrganizerClusteringCollection *_cluster;
-    NSProThemeFacet *_emphasizedFacet;
-    NSProThemeFacet *_unemphaiszedFacet;
 }
 
 @property(retain, nonatomic) FFOrganizerClusteringCollection *cluster; // @synthesize cluster=_cluster;
@@ -27,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
 @property(readonly, nonatomic) BOOL isDisclosed; // @synthesize isDisclosed=_isDisclosed;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
-- (id)_facetForCurrentState;
 - (void)updateAllDisclosureStates:(BOOL)arg1;
 - (void)updateDisclosureState:(BOOL)arg1;
 - (void)releaseLayer;

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) double glyphTitleGap; // @synthesize glyphTitleGap=_glyphTitleGap;
 - (void)drawImageWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (struct CGRect)titleRectForBounds:(struct CGRect)arg1;
 - (void)drawBorderAndBackgroundWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

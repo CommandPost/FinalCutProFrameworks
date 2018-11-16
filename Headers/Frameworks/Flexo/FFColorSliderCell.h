@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_sendActionFrom:(id)arg1;
 - (BOOL)continueTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3;
 - (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)_drawTicksWithFrame:(struct CGRect)arg1;
 - (void)_drawThumbWithFrame:(struct CGRect)arg1;

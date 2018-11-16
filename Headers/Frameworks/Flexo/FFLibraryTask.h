@@ -7,10 +7,11 @@
 #import "DSObject.h"
 
 #import "FFAssetCopyQueueDelegateProtocol.h"
+#import "FFMergeTaskDelegate.h"
 
-@class FFAssetCopyQueue, FFLibrary, FFLibraryDocument, FFLibraryTaskOptions, NSDictionary, NSMapTable, NSMutableArray, NSString, NSURL;
+@class FFAssetCopyQueue, FFLibrary, FFLibraryDocument, FFLibraryTaskOptions, FFMediaIdentifierAliasMap, NSDictionary, NSMapTable, NSMutableArray, NSMutableSet, NSObject<FFMergeTaskDelegate>, NSString, NSURL;
 
-@interface FFLibraryTask : DSObject <FFAssetCopyQueueDelegateProtocol>
+@interface FFLibraryTask : DSObject <FFAssetCopyQueueDelegateProtocol, FFMergeTaskDelegate>
 {
     NSMapTable *_oldMediaIdentifierToNewMediaMap;
     NSMapTable *_oldMediaPersistentIDToNewClipMap;
@@ -30,20 +31,34 @@
     BOOL _crossLibraryEditAsFileRef;
     BOOL _makingSnapshot;
     BOOL _mergingEvents;
-    BOOL _overwriteOwnedMedia;
-    BOOL _askAboutOwnedMediaConflicts;
+    FFMediaIdentifierAliasMap *_mediaIdentifierAliasesMap;
+    NSObject<FFMergeTaskDelegate> *_taskDelegate;
+    NSMutableSet *_consolidatedEffectURLs;
 }
 
 + (BOOL)mergeEvents:(id)arg1 into:(id)arg2 error:(id *)arg3;
++ (id)prepareMoveOwnedMedia:(id)arg1 copy:(BOOL)arg2 consolidate:(BOOL)arg3 aliases:(id)arg4 taskDelegate:(id)arg5 error:(id *)arg6;
 + (id)prepareMoveOwnedMedia:(id)arg1 copy:(BOOL)arg2 error:(id *)arg3;
 + (id)prepareMove:(id)arg1 to:(id)arg2 options:(id)arg3 copy:(BOOL)arg4 isSnapshot:(BOOL)arg5 error:(id *)arg6;
++ (BOOL)showDifferentLibraryColorProcessingAlert:(int)arg1 targetMode:(int)arg2 isCopy:(BOOL)arg3;
++ (void)consolidateProjectEffectsAndURLs:(id)arg1 newProject:(id)arg2 sourceLibrary:(id)arg3 destLibrary:(id)arg4;
 + (id)sourceDocumentForObject:(id)arg1;
++ (BOOL)reclaimUnusedOwnedMedia:(id)arg1 error:(id *)arg2;
++ (id)mediaToTrashInEvents:(id)arg1;
++ (id)copyEventOwnedMediaMap:(id)arg1;
++ (id)copyOrderedDependentMedia:(id)arg1 withFilter:(CDUnknownBlockType)arg2;
 + (id)mediaToMigrateForEventsMoving:(id)arg1;
 + (id)targetLibraryItemForItemOrURL:(id)arg1 srcLibrary:(id)arg2 error:(id *)arg3;
 + (void)syncDocuments;
 + (BOOL)resolveClipAndAssetReferencesFromOtherLibrariesForSequence:(id)arg1 clipRefsAndEditsNotInLibrary:(id)arg2 assetRefsAndEditsNotInLibrary:(id)arg3 clipRefsInDestLibrary:(id)arg4 proxiesToRemove:(id)arg5 resolution:(int)arg6 crossLibraryEditAsFileRef:(BOOL)arg7 error:(id *)arg8;
-+ (BOOL)timeRangeAndObjectOrAnchoredObjectsContainsClipRefsOrMediaRefsNotInDestSequenceLibrary:(id)arg1 timeRangeAndObjectOrAnchoredObjects:(id)arg2;
++ (BOOL)effectIsExternalToTargetLibrary:(id)arg1 targetLibrary:(id)arg2;
++ (id)allVideoEffectsInAnchoredObject:(id)arg1 options:(unsigned long long)arg2;
++ (id)externalConsolidatedEffectsInAnchoredObject:(id)arg1 targetLibrary:(id)arg2;
++ (BOOL)timeRangeAndObjectOrAnchoredObjectsContainsClipRefsOrMediaRefsNotInDestSequenceLibrary:(id)arg1 timeRangeAndObjectOrAnchoredObjects:(id)arg2 search:(int)arg3;
 + (id)readLink:(id)arg1 error:(id *)arg2;
++ (void)consolidateCollidingEffects:(id)arg1 sourceLibrary:(id)arg2 destLibrary:(id)arg3 sourceCollidingEffectFileUUIDs:(id)arg4;
++ (id)consolidateNonCollidingEffectsFromProjectEffectsAndURLs:(id)arg1 sourceLibrary:(id)arg2 destLibrary:(id)arg3;
++ (id)projectEffectsAndURLs:(id)arg1;
 + (id)copyObject:(id)arg1 forLibraryItem:(id)arg2 error:(id *)arg3;
 + (long long)calcFileSize:(id)arg1 error:(id *)arg2;
 + (void)calcFileSize:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
@@ -60,9 +75,11 @@
 @property(retain, nonatomic) FFLibrary *sourceLibrary; // @synthesize sourceLibrary=_sourceLibrary;
 @property(readonly, nonatomic) NSMapTable *oldMediaPersistentIDToNewClipMap; // @synthesize oldMediaPersistentIDToNewClipMap=_oldMediaPersistentIDToNewClipMap;
 @property(readonly, nonatomic) NSMapTable *oldMediaIdentifierToNewMediaMap; // @synthesize oldMediaIdentifierToNewMediaMap=_oldMediaIdentifierToNewMediaMap;
+- (int)confirmMerge:(id)arg1 with:(id)arg2;
 - (void)dealloc;
 - (id)initWithDestLibrary:(id)arg1 options:(id)arg2 actionName:(id)arg3 error:(id *)arg4;
 - (id)init;
+- (void)configureUserInteractionWithUserDefaults:(int)arg1;
 - (BOOL)finish:(id *)arg1;
 - (BOOL)mergeEvents:(id)arg1 into:(id)arg2 error:(id *)arg3;
 - (BOOL)mergeRenderFolder:(id)arg1 into:(id)arg2 url:(id)arg3 error:(id *)arg4;
@@ -74,22 +91,29 @@
 - (void)_copyCompleted:(id)arg1;
 - (void)request:(id)arg1 deleteSourceAfterCopy:(int)arg2;
 - (void)taskWasCancelled:(id)arg1 queuedRequests:(id)arg2;
+- (void)updateIdentifiersInClips:(id)arg1 forIdentifier:(id)arg2 withMedia:(id)arg3;
 - (BOOL)updateIdentifiersAndMakeClips:(id *)arg1;
 - (BOOL)copyAdditionalReferencedMedia:(id *)arg1;
 - (BOOL)_findAdditionalReferencedMediaForSequence:(id)arg1 targetLibraryItem:(id)arg2 mediaToLibraryItemMap:(id)arg3 error:(id *)arg4;
 - (BOOL)move:(BOOL)arg1 clips:(id)arg2 event:(id)arg3 error:(id *)arg4;
 - (BOOL)moveOwnedMedia:(id)arg1 copy:(BOOL)arg2 error:(id *)arg3;
-- (BOOL)_askAboutOverwritingOwnedMedia:(id)arg1 error:(id *)arg2;
 - (id)prepareCopyRequest:(id)arg1 to:(id)arg2 targetAsset:(id)arg3 error:(id *)arg4;
 - (id)prepareAsyncMediaURLForImport:(id)arg1 to:(id)arg2;
 - (id)calcExternalMediaFileName:(id)arg1;
 - (BOOL)isMediaFileType:(id)arg1;
 - (BOOL)moveAssetFilesFromAsset:(id)arg1 toAsset:(id)arg2 toLibraryItem:(id)arg3 copy:(BOOL)arg4 overwrite:(BOOL)arg5 error:(id *)arg6;
-- (BOOL)moveAssetFiles:(id)arg1 targetFiles:(id)arg2 sourceLibraryItem:(id)arg3 targetLibraryItem:(id)arg4 targetAsset:(id)arg5 copy:(BOOL)arg6 error:(id *)arg7;
-- (BOOL)moveAssetFile_legacy:(id)arg1 targetAssetFile:(id)arg2 targetAsset:(id)arg3 copy:(BOOL)arg4 error:(id *)arg5;
+- (BOOL)moveAssetFile_legacy:(id)arg1 targetAssetFile:(id)arg2 fromAsset:(id)arg3 targetAsset:(id)arg4 copy:(BOOL)arg5 error:(id *)arg6;
 - (BOOL)moveAssetFile:(id)arg1 targetAssetFile:(id)arg2 targetAsset:(id)arg3 copy:(BOOL)arg4 error:(id *)arg5;
+- (BOOL)moveLibraryItem:(id)arg1 targetLibraryItem:(id)arg2 copy:(BOOL)arg3 override:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)moveLibraryItem:(id)arg1 targetLibraryItem:(id)arg2 copy:(BOOL)arg3 error:(id *)arg4;
 - (id)newURLForRoot:(id)arg1 scheme:(id)arg2;
+- (id)consolidatedEffectURLs;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

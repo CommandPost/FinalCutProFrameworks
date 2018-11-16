@@ -12,10 +12,8 @@
 
 - (void)toggleInspectorModule;
 - (void)toggleLibraryModule;
-- (void)toggleFileBrowserModule;
 - (void)showInspectorModule;
 - (void)showLibraryModule;
-- (void)showFileBrowserModule;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (BOOL)wantsFooterBar;

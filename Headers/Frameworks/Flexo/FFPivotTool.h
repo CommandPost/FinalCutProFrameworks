@@ -10,9 +10,11 @@
 {
 }
 
-+ (id)toolbarFacet;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
+- (BOOL)shouldMakeIntrinsicsForEffectStack;
 - (BOOL)handlesSelection;
 
 @end

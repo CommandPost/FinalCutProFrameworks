@@ -14,15 +14,17 @@ __attribute__((visibility("hidden")))
 @interface FFAutomaticAudioProcessingBackgroundTaskTarget : NSObject <FFBackgroundTaskTarget>
 {
     FFAnchoredObject *_object;
+    CDUnknownBlockType _completionBlock;
 }
 
-- (id)librariesInUse;
-- (id)assetsChanging;
-- (id)assetsInUse;
+@property(copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsChanging:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)autoDetectRelatedAudioComponents:(id)arg1 onTask:(id)arg2;
 - (void)removeSilentAudioComponents:(id)arg1 onTask:(id)arg2;
 - (void)dealloc;
-- (id)initWithObject:(id)arg1;
+- (id)initWithObject:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 
 @end
 

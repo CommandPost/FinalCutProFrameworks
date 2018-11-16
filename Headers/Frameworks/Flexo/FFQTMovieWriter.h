@@ -4,31 +4,27 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
-
-@class NSString;
+#import <Flexo/FFMovieWriter.h>
 
 __attribute__((visibility("hidden")))
-@interface FFQTMovieWriter : NSObject
+@interface FFQTMovieWriter : FFMovieWriter
 {
-    NSString *_fileFormat;
+    int _fileFormat;
     CDStruct_1b6d18a9 _movieFragmentInterval;
     struct OpaqueFigAssetWriter *_writer;
-    BOOL _writerSessionOpen;
     struct OpaqueFigSemaphore *_writerQueueLowSemaphore;
+    BOOL _writerSessionOpen;
     int _videoTrackID;
     CDStruct_79c71658 _videoTrackDimensions;
     CDStruct_1b6d18a9 _videoFrameDuration;
     CDStruct_1b6d18a9 _videoDuration;
-    CDStruct_1b6d18a9 _audioDuration;
     int *_audioTrackIDs;
     unsigned int _audioTrackCount;
-    unsigned long long *_audioSampleCounts;
-    BOOL _needTimecodeTrack;
+    CDStruct_1b6d18a9 _audioDuration;
     int _timecodeTrackID;
+    CDStruct_1b6d18a9 _timecodeDurationWritten;
     struct opaqueCMFormatDescription *_timecodeDesc;
     unsigned int _timecodeCounterValue;
-    CDStruct_1b6d18a9 _timecodeDurationWritten;
     BOOL _needChapterNameTrack;
     int _chapterNameTrackID;
 }
@@ -36,14 +32,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_1b6d18a9 movieFragmentInterval; // @synthesize movieFragmentInterval=_movieFragmentInterval;
 - (int)close;
 - (int)writeMetadata:(id)arg1;
-- (int)writeChapterNames:(id)arg1;
+- (int)writeChapterNames:(id)arg1 videoFrameDuration:(CDStruct_1b6d18a9)arg2;
 - (void)willWriteChapterNames;
 - (int)_createChapterNameTrack;
 - (int)_writeTimecode;
 - (void)setStartTimecode:(struct opaqueCMFormatDescription *)arg1 value:(unsigned int)arg2;
 - (int)_createTimecodeTrack;
 - (int)writeAudio:(struct opaqueCMSampleBuffer *)arg1 audioTrackIndex:(unsigned int)arg2;
-- (int)createAudioTracks:(unsigned int)arg1 chunkSize:(unsigned int)arg2 withCompressionPreset:(struct __CFString *)arg3;
+- (int)createAudioTracks:(unsigned int)arg1 chunkSize:(unsigned int)arg2 withCompressionPreset:(int)arg3 numberOfChannels:(int)arg4 sampleRate:(int)arg5 formatDescription:(struct opaqueCMFormatDescription *)arg6;
 - (int)writeVideo:(struct opaqueCMSampleBuffer *)arg1;
 - (int)_beginAssetWriterSession;
 - (int)_throttleWriterTrackQueue;
@@ -53,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (int)addListenerForWriteFailure:(const void *)arg1 callback:(CDUnknownFunctionPointerType)arg2;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1 error:(int *)arg2;
-- (id)initWithPath:(id)arg1 fileFormat:(id)arg2 error:(int *)arg3;
+- (id)initWithPath:(id)arg1 fileFormat:(int)arg2 error:(int *)arg3;
 
 @end
 

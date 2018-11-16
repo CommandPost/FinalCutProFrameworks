@@ -26,6 +26,8 @@
     } _tlkEdgeSelectionFlags;
 }
 
+- (void)setTrailingEdgeCornerRadius:(double)arg1;
+- (void)setLeadingEdgeCornerRadius:(double)arg1;
 - (void)setCornerRadius:(double)arg1;
 - (void)layoutSublayers;
 - (void)setContainingViewFirstResponder:(BOOL)arg1;

@@ -4,19 +4,19 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
-@class FFEventLibraryModule, FFOrganizerImportDropResponderLayerHostView, LKTextField, NSBox, NSString, NSView;
+@class FFEventLibraryModule, FFOrganizerImportDropResponderLayerHostView, LKTextField, NSBox, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFItemsContainerView : NSProView
+@interface FFItemsContainerView : NSView
 {
     NSView *_headerView;
     NSView *_mainView;
     NSView *_footerView;
     FFOrganizerImportDropResponderLayerHostView *_infoView;
     LKTextField *_infoTextView;
-    NSProView *_infoViewFirstLaunch;
+    NSView *_infoViewFirstLaunch;
     NSBox *_emptyEventsOptions;
     BOOL _showsHeaderView;
     BOOL _showsInfoView;
@@ -40,6 +40,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *infoText;
 - (void)setShowsHeaderView:(BOOL)arg1 animated:(BOOL)arg2;
 @property(nonatomic) BOOL showsHeaderView;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

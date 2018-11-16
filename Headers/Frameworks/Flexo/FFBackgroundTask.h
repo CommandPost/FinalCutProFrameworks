@@ -12,6 +12,7 @@
 {
     FFBackgroundTaskQueue *_taskQueue;
     NSString *_displayName;
+    BOOL _hiddenInTaskWindow;
     id <FFBackgroundTaskTarget><NSObject> _target;
     SEL _taskSelector;
     id _taskObject;
@@ -33,7 +34,7 @@
     NSString *_displayHeaderName;
 }
 
-+ (double)progressForPendingTasks:(id)arg1 totalTaskCount:(long long)arg2 excludeIndeterminate:(BOOL)arg3;
++ (double)progressForPendingTasks:(id)arg1 totalTaskCount:(long long)arg2 excludeIndeterminate:(BOOL)arg3 excludeUnremarkable:(BOOL)arg4;
 + (double)progressForTasks:(id)arg1;
 @property(copy) NSString *displayHeaderName; // @synthesize displayHeaderName=_displayHeaderName;
 @property(retain) NSArray *pendingJobNames; // @synthesize pendingJobNames=_pendingJobNames;
@@ -49,6 +50,7 @@
 @property(retain) id object; // @synthesize object=_taskObject;
 @property SEL taskSelector; // @synthesize taskSelector=_taskSelector;
 @property(retain) id <FFBackgroundTaskTarget><NSObject> target; // @synthesize target=_target;
+@property(nonatomic) BOOL hiddenInTaskWindow; // @synthesize hiddenInTaskWindow=_hiddenInTaskWindow;
 @property(copy) NSString *displayName; // @synthesize displayName=_displayName;
 @property(retain) FFBackgroundTaskQueue *taskQueue; // @synthesize taskQueue=_taskQueue;
 - (BOOL)usesLibrary:(id)arg1;
@@ -56,7 +58,7 @@
 - (id)assetsInUse;
 - (id)description;
 - (BOOL)waitUntilFinishedWithTimeout:(id)arg1;
-- (BOOL)shouldIgnoreForAggregateProgress;
+- (BOOL)isNotableTask;
 - (BOOL)performanceMonitoringEnabled;
 - (void)setProgress:(float)arg1;
 - (float)progress;

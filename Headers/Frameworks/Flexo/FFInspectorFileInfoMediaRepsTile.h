@@ -4,43 +4,27 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFInspectorFileInfoBaseTile.h>
+#import <Flexo/FFInspectorFileInfoContainerTile.h>
 
-@class FFAnchoredSequence, FFMedia, LKButton, LKTextField, NSArray;
+#import "FFInspectorFileInfoReferencesTile.h"
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorFileInfoMediaRepsTile : FFInspectorFileInfoBaseTile
+@interface FFInspectorFileInfoMediaRepsTile : FFInspectorFileInfoContainerTile <FFInspectorFileInfoReferencesTile>
 {
-    struct CGRect _origProxyIconFrame;
-    struct CGRect _origProxyTextFrame;
-    FFAnchoredSequence *_sequenceToProxy;
-    FFMedia *_media;
-    NSArray *_currentRefs;
-    NSArray *_currentItems;
-    id _currentOwner;
-    LKButton *_generateProxyButton;
-    LKTextField *_availableRepresentations;
-    LKTextField *_originalText;
-    LKButton *_originalIcon;
-    LKTextField *_optimisedText;
-    LKButton *_optimisedIcon;
-    LKTextField *_proxyText;
-    LKButton *_proxyIcon;
 }
 
-@property LKButton *proxyIcon; // @synthesize proxyIcon=_proxyIcon;
-@property LKTextField *proxyText; // @synthesize proxyText=_proxyText;
-@property LKButton *optimisedIcon; // @synthesize optimisedIcon=_optimisedIcon;
-@property LKTextField *optimisedText; // @synthesize optimisedText=_optimisedText;
-@property LKButton *originalIcon; // @synthesize originalIcon=_originalIcon;
-@property LKTextField *originalText; // @synthesize originalText=_originalText;
-@property LKTextField *availableRepresentations; // @synthesize availableRepresentations=_availableRepresentations;
-@property LKButton *generateProxyButton; // @synthesize generateProxyButton=_generateProxyButton;
-- (void)_rangeInvalidated:(id)arg1;
-- (void)generateProxy:(id)arg1;
-- (void)updateWithRefs:(id)arg1 items:(id)arg2 forOwner:(id)arg3;
-- (void)dealloc;
-- (void)awakeFromNib;
++ (Class)classForHeaderController;
+- (void)updateWithItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
+- (void)addTilesForItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
+- (id)title;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

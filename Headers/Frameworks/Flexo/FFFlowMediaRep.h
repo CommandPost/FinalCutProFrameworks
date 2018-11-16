@@ -25,9 +25,8 @@ __attribute__((visibility("hidden")))
 
 + (void)_processQueuedInvals;
 + (id)copyClassDescription;
-- (id).cxx_construct;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)analysisURLs;
@@ -53,8 +52,8 @@ __attribute__((visibility("hidden")))
 - (void)_queueInvalForRange:(CDStruct_e83c9415)arg1 andMode:(long long)arg2;
 - (void)_postInvalForRange:(id)arg1 mode:(long long)arg2;
 - (void)_updateCachedFlowVectors:(long long)arg1 checkDisk:(BOOL)arg2 isInitializing:(BOOL)arg3 mode:(long long)arg4;
-- (void)setCachedMediumQualityFlowVectors:(id)arg1;
-- (void)setCachedFlowVectors:(id)arg1;
+- (void)setCachedMediumQualityFlowVectors:(id)arg1 isInitializing:(BOOL)arg2;
+- (void)setCachedFlowVectors:(id)arg1 isInitializing:(BOOL)arg2;
 - (void)analyzeSubRange:(id)arg1 startFrame:(int)arg2 endFrame:(int)arg3 infoForTracker:(id)arg4;
 - (BOOL)storeFlowVectors:(id)arg1 sampleOffset:(long long)arg2 mode:(long long)arg3 error:(id *)arg4;
 - (id)copySegStoreRef:(id *)arg1;

@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_rigChannelControllers;
 }
 
+- (float)suggestedMinParamWidth;
+- (BOOL)shouldAddDisclosureButton;
 - (void)_indentMasksSubControllers;
 - (void)setParentController:(id)arg1;
 - (void)dealloc;

@@ -6,7 +6,7 @@
 
 #import <Ozone/OZLibraryModuleBase.h>
 
-@class LKPaneCapSegmentedControl, LKPanel, LKTableColumn, LKTextField, NSArray, NSBrowser, NSMutableArray, NSString, NSTextView, OZFileSystemLibEntry, OZLibraryEntry, OZLibraryTopPaneController;
+@class LKPanel, LKPopUpButton, LKTableColumn, LKTextField, LKTextView, NSArray, NSBrowser, NSMutableArray, NSString, OZFileSystemLibEntry, OZLibraryEntry, OZLibraryTopPaneController;
 
 @interface OZLibraryModule : OZLibraryModuleBase
 {
@@ -15,10 +15,10 @@
     LKTableColumn *_albumColumn;
     LKTableColumn *_durationColumn;
     LKTableColumn *_sizeColumn;
-    LKPaneCapSegmentedControl *_themePopup;
+    LKPopUpButton *_themePopup;
     OZLibraryTopPaneController *_topPaneCtrl;
     LKPanel *_editDescriptionPanel;
-    NSTextView *_descriptionTextField;
+    LKTextView *_descriptionTextField;
     LKPanel *_newThemePanel;
     LKTextField *_newThemeName;
     OZFileSystemLibEntry *_descriptionEntry;

@@ -4,16 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProOutlineView.h"
+#import "NSOutlineView.h"
 
-@interface LKOutlineView : NSProOutlineView
+@interface LKOutlineView : NSOutlineView
 {
 }
 
-+ (Class)_cornerCellClass;
-+ (Class)_headerViewClass;
-- (id)_disclosureImageSource;
-- (Class)ibDefaultTableColumnClassForInsertion;
+- (id)menuForEvent:(id)arg1;
+- (id)enclosingScrollView;
+- (double)sizeToFitWidthOfColumn:(long long)arg1;
 
 @end
 

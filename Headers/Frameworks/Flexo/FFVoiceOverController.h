@@ -53,7 +53,7 @@
     FFMediaEventProject *_previousEvent;
     FFAnchoredObject *_gapClip;
     NSString *_customFilename;
-    CDStruct_1b6d18a9 _prerollTime;
+    CDStruct_1b6d18a9 _prerolledTime;
     CDStruct_1b6d18a9 _previousTime;
     CDStruct_1b6d18a9 _playheadTime;
 }
@@ -78,10 +78,10 @@
 @property(nonatomic) unsigned int prerollTimeInSeconds; // @synthesize prerollTimeInSeconds=_prerollTimeInSeconds;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 playheadTime; // @synthesize playheadTime=_playheadTime;
 @property(nonatomic) CDStruct_1b6d18a9 previousTime; // @synthesize previousTime=_previousTime;
-@property(nonatomic) CDStruct_1b6d18a9 prerollTime; // @synthesize prerollTime=_prerollTime;
+@property(nonatomic) CDStruct_1b6d18a9 prerolledTime; // @synthesize prerolledTime=_prerolledTime;
 @property(nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) BOOL startingRecord; // @synthesize startingRecord=_startingRecord;
-- (id).cxx_construct;
+- (void)_reloadTimelineViewWithNewClips:(id)arg1 modifiedClips:(id)arg2 removedClips:(id)arg3;
 - (BOOL)canStartRecording;
 - (void)context:(id)arg1 didRebuildPlayer:(id)arg2;
 - (void)context:(id)arg1 willTeardownPlayer:(id)arg2;
@@ -145,6 +145,8 @@
 - (id)_videoModule;
 - (id)_timelineModule;
 - (id)_timelineRootItem;
+- (void)_insureVoiceOverRoleValid;
+- (void)mediaEventChanged;
 - (id)_mediaEvent;
 - (void)resetForNewTimeline;
 - (void)_removeUserDefaultsObjectForKey:(id)arg1;
@@ -172,8 +174,9 @@
 - (void)setCountdownStyle:(int)arg1;
 - (id)_osc;
 - (void)_addAnimationClip;
+- (id)_setupVoiceOverTakeWithClippedRange:(CDStruct_e83c9415)arg1 role:(id)arg2 library:(id)arg3;
 - (BOOL)_finalizeVoiceoverRecording;
-- (id)_newClipForEvent:(id)arg1 fromURL:(id)arg2;
+- (id)_newClipForEvent:(id)arg1 fromTempURL:(id)arg2;
 - (CDStruct_e83c9415)_calculateClippedRange;
 - (BOOL)_addClipToAudition:(id)arg1;
 - (BOOL)_addClipToTimeline:(id)arg1;

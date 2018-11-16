@@ -32,11 +32,11 @@
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (_Bool)useControlPolygon;
-- (void)moveSelected:(list_816acb53 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
-- (void)deleteSelected:(list_816acb53 *)arg1;
+- (void)moveSelected:(list_54fac194 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
+- (void)deleteSelected:(list_54fac194 *)arg1;
 - (void)drawCurve:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2 keyPoints:(BOOL)arg3;
 - (void)drawPath;
-- (int)getShapeSamplesX:(vector_3396ec90 *)arg1 Y:(vector_3396ec90 *)arg2 Z:(vector_3396ec90 *)arg3 T:(vector_3396ec90 *)arg4;
+- (int)getShapeSamplesX:(vector_8f06c10f *)arg1 Y:(vector_8f06c10f *)arg2 Z:(vector_8f06c10f *)arg3 T:(vector_8f06c10f *)arg4;
 - (void)drawVertices:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
 - (void)drawVertexHandleInViewCoords:(const PCMatrix44Tmpl_e98c85ee *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 texture:(const PCPtr_df275998 *)arg5;
 - (void)processHits;

@@ -10,7 +10,7 @@
 {
 }
 
-- (set_b780a99c *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
+- (set_f8d10c04 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 - (int)hitCheck:(id)arg1;
 - (void)draw;
 - (void)dealloc;

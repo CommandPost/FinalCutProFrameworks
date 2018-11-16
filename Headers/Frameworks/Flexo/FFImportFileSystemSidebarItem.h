@@ -13,13 +13,13 @@
 __attribute__((visibility("hidden")))
 @interface FFImportFileSystemSidebarItem : FFOrganizerItem <FFOrganizerMasterItem>
 {
-    FFImportFileSystemTreeNode *_rootNode;
     NSMutableArray *_items;
     BOOL _canRemove;
-    float _percentDone;
-    NSImage *_icon;
     BOOL _isFavorite;
     BOOL _canUnmount;
+    float _percentDone;
+    FFImportFileSystemTreeNode *_rootNode;
+    NSImage *_icon;
 }
 
 + (id)sidebarItemWithTreeNode:(id)arg1 isFavorite:(BOOL)arg2;
@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 @property(retain) NSImage *icon; // @synthesize icon=_icon;
 @property BOOL canUnmount; // @synthesize canUnmount=_canUnmount;
 @property BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
-@property float percentDone; // @synthesize percentDone=_percentDone;
 @property BOOL canRemove; // @synthesize canRemove=_canRemove;
+@property float percentDone; // @synthesize percentDone=_percentDone;
 @property(retain) FFImportFileSystemTreeNode *rootNode; // @synthesize rootNode=_rootNode;
 - (BOOL)canCancel;
 - (BOOL)isTemporary;
@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)volumeURL;
 - (id)currentURL;
 - (id)rootURL;
-@property(readonly, retain, nonatomic) FFImportFileSystemTreeNode *currentNode;
+@property(retain, nonatomic) FFImportFileSystemTreeNode *currentNode;
 - (void)dealloc;
 - (id)initWithTreeNode:(id)arg1 isFavorite:(BOOL)arg2;
 - (id)initWithURL:(id)arg1 isFavorite:(BOOL)arg2;

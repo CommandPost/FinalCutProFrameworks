@@ -117,6 +117,7 @@
 - (id)renderFilesURL;
 - (id)findCacheFolder:(id)arg1;
 - (id)sharedItemsFolderPath;
+- (id)flowTransFolderPath;
 - (id)stabilizationFolderPath;
 - (id)opticalFlowFolderPath;
 - (id)colorFolderPath;
@@ -143,6 +144,7 @@
 @property(readonly, nonatomic) NSURL *directory;
 - (void)_setDirectory:(id)arg1;
 - (id)project;
+- (void)update_resetDamagedAssetRefs;
 - (BOOL)update_changeAssetRefToMediaRef;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

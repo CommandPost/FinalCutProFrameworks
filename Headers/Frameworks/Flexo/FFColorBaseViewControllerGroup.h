@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     CDStruct_cb905f8c _base_state;
 }
 
-- (id).cxx_construct;
 - (BOOL)isAllProxyMediaOnline;
 - (BOOL)isAppointedFromOrganizer;
 - (BOOL)isAppointedFromSequenceProject;

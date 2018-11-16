@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSDictionary, NSFormatter, NSMutableSet, NSSet, NSString, NSValueTransformer;
+@class NSArray, NSDictionary, NSFormatter, NSMutableSet, NSPredicate, NSSet, NSString, NSValueTransformer;
 
 @interface FFMetadataDefinition : NSObject
 {
@@ -28,6 +28,7 @@
     BOOL _dontImportFromFile;
     NSString *_predicate;
     int _whiteList;
+    NSPredicate *_actualPredicate;
     NSDictionary *_options;
 }
 
@@ -47,20 +48,24 @@
 + (id)metadataFromSanitizedMetadata:(id)arg1;
 + (id)sanitizedMetadata:(id)arg1;
 + (id)keyForSanitizedKey:(id)arg1;
++ (BOOL)isCensoredKey:(id)arg1;
 + (id)metadataSources;
 + (void)_clearMetadataSourcesCache;
 + (id)metadataDefinitionsForSource:(id)arg1;
 + (id)metadataDefinitions;
 + (void)_clearMetadataDefinitionsCache;
++ (BOOL)anyMetaDataSortKeysHaveChanged:(id)arg1 newMetaData:(id)arg2;
 + (id)definitionForKey:(id)arg1;
 + (id)_definitionsDict;
 + (void)initialize;
 + (id)_externalDefinitions;
++ (id)_localizedDefsDictFromDict:(id)arg1;
++ (id)_enumDefsFromArray:(id)arg1;
 + (id)_defsDictFromDict:(id)arg1;
 + (id)defaultViewSetPredicate;
 + (void)releaseSharedInstance;
 @property(nonatomic) int whiteList; // @synthesize whiteList=_whiteList;
-@property(retain, nonatomic) NSString *predicate; // @synthesize predicate=_predicate;
+@property(readonly, nonatomic) NSString *predicate; // @synthesize predicate=_predicate;
 @property(nonatomic) BOOL dontImportFromFile; // @synthesize dontImportFromFile=_dontImportFromFile;
 @property(retain, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property(retain, nonatomic) NSArray *enumConstants; // @synthesize enumConstants=_enumConstants;
@@ -88,6 +93,7 @@
 - (id)sortDescriptors;
 - (id)newFormatter;
 - (id)valueTransformer;
+- (id)actualPredicate;
 - (Class)objectClass;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

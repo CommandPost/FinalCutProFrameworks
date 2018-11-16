@@ -10,11 +10,12 @@
 #import "FFOrganizerItemDraggingSource.h"
 #import "FFOrganizerMasterItem.h"
 #import "FFOrganizerMasterItemDropTarget.h"
+#import "FFXMLTranslationTarget.h"
 #import "NSCoding.h"
 
-@class FFEventInfo, FFMediaEventFolder, FFMediaEventProjectData, FFMediaEventThumbnail, FFSequenceInfo, NSArray, NSDate, NSImage, NSMutableSet, NSSet, NSString, NSURL;
+@class FFEventInfo, FFLibrary, FFMediaEventFolder, FFMediaEventProjectData, FFMediaEventThumbnail, FFRoleSet, FFSequenceInfo, NSArray, NSData, NSDate, NSImage, NSMutableSet, NSSet, NSString, NSURL;
 
-@interface FFMediaEventProject : FFProject <FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, NSCoding>
+@interface FFMediaEventProject : FFProject <FFXMLTranslationTarget, FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, NSCoding>
 {
     NSString *_projectDataID;
     NSDate *_eventEarliestDate;
@@ -31,20 +32,26 @@
     NSMutableSet *_persistentOwnedMediaIdentifiers;
     NSMutableSet *_persistentOwnedProxyAssetMediaIdentifiers;
     NSString *_legacyEventPath;
+    NSData *_roleSetData;
     FFMediaEventProjectData *_projectData;
     BOOL _mediaIsSyncing;
     BOOL _isLoadingProjectData;
     BOOL _isVideoEvent;
     NSMutableSet *_undoOwnedAssetIdentifiers;
     NSMutableSet *_ownedMediaIdentifiers;
+    FFRoleSet *_cachedRoleSet;
+    NSMutableSet *_mediaDescsForMakingOwnedClips;
 }
 
++ (struct NSSet *)copyMediaDescForObject:(id)arg1;
++ (id)wrapperClipForProjectClip:(id)arg1 createIfMissing:(BOOL)arg2;
 + (id)newCopyOfMediaRanges:(id)arg1;
 + (id)keyPathsForValuesAffectingProjectSet;
 + (id)keyPathsForValuesAffectingOwnedClips;
 + (id)setFromBinObjectsArray:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
++ (id)mergeDescription;
 + (id)readableTypesForPasteboard:(id)arg1;
 + (id)keyPathsForValuesAffectingItemDisplayNameExtraText;
 + (id)keyPathsForValuesAffectingHasMasterSubitems;
@@ -57,6 +64,7 @@
 + (BOOL)_actionDeleteItems:(id)arg1 inProject:(id)arg2 error:(id *)arg3;
 + (id)_deletingActionNameForItems:(id)arg1;
 + (id)flattenMediaArray:(id)arg1;
+@property(retain, nonatomic) NSData *roleSetData; // @synthesize roleSetData=_roleSetData;
 @property(retain, nonatomic) NSString *legacyEventPath; // @synthesize legacyEventPath=_legacyEventPath;
 @property(readonly, nonatomic) BOOL isVideoEvent; // @synthesize isVideoEvent=_isVideoEvent;
 @property(retain, nonatomic) FFSequenceInfo *sequenceInfo; // @synthesize sequenceInfo=_sequenceInfo;
@@ -68,12 +76,22 @@
 @property(readonly, nonatomic) NSDate *eventEarliestDate; // @synthesize eventEarliestDate=_eventEarliestDate;
 @property(readonly, nonatomic) NSDate *eventLatestDate; // @synthesize eventLatestDate=_eventLatestDate;
 @property(readonly, nonatomic) NSString *projectDataID; // @synthesize projectDataID=_projectDataID;
+- (BOOL)verifyRoleSetMatchesLibraryRoleSet:(id)arg1 exactly:(BOOL)arg2;
+- (void)syncToRolesFromLibraryPreservingContents:(BOOL)arg1;
+- (void)dumpRoleSet;
+- (void)reassignRoles:(id)arg1 renameExistingRoles:(id)arg2 changeColorOfExistingRoles:(id)arg3 removeRolesWithUIDs:(id)arg4;
+@property(readonly, retain, nonatomic) FFRoleSet *cachedRoleSet;
 - (void)compressVerticalLaneIndexes:(BOOL)arg1;
 - (id)sourceURL;
 - (id)volumeName;
 - (id)clipReferences;
 - (id)assetReferences;
 - (id)effectReferences;
+- (id)effectsMatchingFileUUIDs:(id)arg1;
+- (id)_indexOfEffectsWithFileUUIDs:(BOOL)arg1;
+- (id)_copyWeakEffectRefsSatisfyingBlock:(CDUnknownBlockType)arg1;
+- (void)effect:(id)arg1 indexFileUUID:(BOOL)arg2;
+- (id)newTableOfMediaRepsByFilename:(SEL)arg1 forAsset:(id)arg2;
 - (id)newTableOfMediaRepsByFilename:(SEL)arg1;
 - (void)_deferredAssetChangedNotification:(id)arg1;
 - (int)mediaStatus;
@@ -85,6 +103,12 @@
 - (CDStruct_1b6d18a9)constrainDefaultEditDuration:(CDStruct_1b6d18a9)arg1;
 @property(nonatomic) CDStruct_1b6d18a9 defaultTransitionDuration;
 - (CDStruct_1b6d18a9)constrainDefaultTransitionDuration:(CDStruct_1b6d18a9)arg1;
+- (void)actionMakeOwnedClipsForMediaDescs:(id)arg1 immediately:(BOOL)arg2;
+- (void)makeOwnedClipsForMediaDescsCallback:(id)arg1;
+- (void)addMediaDescsForMakingOwnedClips:(id)arg1;
+- (void)removeMediaDescsForMakingOwnedClips:(id)arg1;
+- (void)gatherOwnedClipsByMediaDesc:(id)arg1 keepExisting:(BOOL)arg2;
+- (id)ownedClipsByMediaDesc;
 - (void)delayedInvalidateMedia:(id)arg1;
 - (void)removeThumbnailsForMedia:(id)arg1;
 - (void)addThumbnail:(id)arg1;
@@ -112,10 +136,10 @@
 - (id)newClipFromAssetRef:(id)arg1;
 - (id)newClipFromURL:(id)arg1 manageFileType:(int)arg2;
 - (id)newClipFromURL:(id)arg1 manageFileType:(int)arg2 foundExistingFile:(char *)arg3;
-- (void)loadProjectDataKeepTempFiles;
+- (id)setupProjectSequence:(id)arg1;
 - (id)loadProjectData;
 @property(readonly, nonatomic) FFMediaEventProjectData *projectData;
-- (id)_projectData:(BOOL)arg1;
+- (id)_projectData;
 - (BOOL)isProjectDataLoaded;
 - (BOOL)_prefetchProjectData:(id *)arg1;
 - (BOOL)prefetchProjectData:(id *)arg1;
@@ -130,6 +154,7 @@
 - (void)willClose;
 - (void)dealloc;
 - (void)setDisplayName:(id)arg1;
+- (id)displayName;
 - (id)initWithDisplayName:(id)arg1;
 - (void)_recalcEventType;
 - (void)createProjectsSmartCollection;
@@ -193,13 +218,13 @@
 - (id)newAssetRefFromURL:(id)arg1 manageFileType:(int)arg2 foundExistingFile:(char *)arg3;
 - (id)newAssetRefFromAsset:(id)arg1 manageFileType:(int)arg2 prefersExistingRep:(BOOL)arg3 externalFolderURL:(id)arg4 foundExistingFile:(char *)arg5;
 - (id)newAssetRefFromURL:(id)arg1 manageFileType:(int)arg2 prefersExistingRep:(BOOL)arg3 externalFolderURL:(id)arg4 foundExistingFile:(char *)arg5;
-- (void)registerGrowingAsset:(id)arg1 forEvent:(id)arg2;
 - (BOOL)ownedMediaObjectIsInTrashOrDifferentEventUndo:(id)arg1;
 - (BOOL)ownedMediaObjectIsInUndo:(id)arg1;
 - (BOOL)ownedMediaIdentifierIsInUndo:(id)arg1;
-- (void)clearTempFilesFromEventFileSystem;
-- (void)_clearTempFilesFromEventFolder:(id)arg1;
 - (void)_initialProjectData:(id)arg1 projectDataID:(id)arg2;
+@property(readonly, nonatomic) FFMediaEventFolder *folder;
+@property(readonly, nonatomic) FFMediaEventProject *event;
+- (void)setOwnedClips:(id)arg1;
 - (id)pasteboardPropertyListForType:(id)arg1;
 - (id)writableTypesForPasteboard:(id)arg1;
 - (void)mediaManagerDone:(id)arg1;
@@ -235,6 +260,7 @@
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 @property(readonly, nonatomic) NSString *itemPersistentIdentifier;
 @property(readonly, nonatomic) double itemRowHeight;
+@property(readonly, nonatomic) FFLibrary *library;
 @property(readonly) Class superclass;
 
 @end

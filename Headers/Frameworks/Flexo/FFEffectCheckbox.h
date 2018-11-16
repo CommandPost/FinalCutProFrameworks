@@ -17,16 +17,16 @@ __attribute__((visibility("hidden")))
     LKButton *_checkbox;
     BOOL _inset;
     BOOL _intrinsic;
-    BOOL _video;
     BOOL _hasKeyframes;
     BOOL _changedFromDefaultState;
     int _elementType;
+    unsigned long long _tag;
 }
 
+@property(nonatomic) unsigned long long tag; // @synthesize tag=_tag;
 @property(nonatomic) int elementType; // @synthesize elementType=_elementType;
 @property(nonatomic) BOOL changedFromDefaultState; // @synthesize changedFromDefaultState=_changedFromDefaultState;
 @property(nonatomic) BOOL hasKeyframes; // @synthesize hasKeyframes=_hasKeyframes;
-@property(nonatomic) BOOL video; // @synthesize video=_video;
 @property(nonatomic) BOOL intrinsic; // @synthesize intrinsic=_intrinsic;
 @property(nonatomic) BOOL inset; // @synthesize inset=_inset;
 @property(nonatomic) LKButton *checkbox; // @synthesize checkbox=_checkbox;

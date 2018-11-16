@@ -62,8 +62,8 @@
 + (void)enableLogging:(BOOL)arg1;
 @property(readonly) BOOL forSyncNotMulticamClip; // @synthesize forSyncNotMulticamClip=_forSyncNotMulticamClip;
 @property BOOL isTesting; // @synthesize isTesting=_isTesting;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (BOOL)arrangeItemsInNewSyncClip;
 - (id)spineObjectForSyncClipSelection:(id)arg1;
 - (BOOL)arrangeItemsByAngleAndWrapIntoStorylines:(BOOL)arg1;

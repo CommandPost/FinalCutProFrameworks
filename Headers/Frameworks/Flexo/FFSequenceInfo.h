@@ -35,15 +35,15 @@ __attribute__((visibility("hidden")))
     long long _transitionCount;
     NSMutableDictionary *_thumbnailRequestsKeyedByQuality;
     NSMutableDictionary *_thumbnailReadyBlocksKeyedByQuality;
+    unsigned int _audioChannelCount;
     double _audioSampleRate;
-    long long _audioChannelCount;
 }
 
 + (id)sequenceMDKeysToCache;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 + (void)initialize;
-@property long long audioChannelCount; // @synthesize audioChannelCount=_audioChannelCount;
+@property unsigned int audioChannelCount; // @synthesize audioChannelCount=_audioChannelCount;
 @property double audioSampleRate; // @synthesize audioSampleRate=_audioSampleRate;
 @property long long transitionCount; // @synthesize transitionCount=_transitionCount;
 @property long long effectCount; // @synthesize effectCount=_effectCount;
@@ -80,8 +80,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)autoEdit;
 - (void)setThumbnailMD5:(id)arg1 forQuality:(int)arg2;
 - (id)thumbnailMD5ForQuality:(int)arg1;
-- (void)thumbImageReady:(id)arg1;
-- (void)performBlockWithThumbnail:(CDUnknownBlockType)arg1 imageQuality:(int)arg2;
+- (void)thumbImageReadyForRequest:(id)arg1 thumbnailImage:(struct CGImage *)arg2 requestCanceled:(BOOL)arg3 addThumbnailToEvent:(BOOL)arg4;
+- (void)requestThumbnailImageForQuality:(int)arg1 addThumbnailToEvent:(BOOL)arg2 removeTitles:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)setModDate:(id)arg1;
 - (id)modDate;
 - (void)setDisplayName:(id)arg1;

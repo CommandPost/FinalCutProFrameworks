@@ -11,7 +11,6 @@
 }
 
 + (Class)defaultPreferencesClass;
-- (Class)_proToolbarClass;
 
 @end
 

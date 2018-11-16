@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
     NSURL *_URI;
 }
 
++ (void)initialize;
 - (BOOL)bringUpToDate:(id *)arg1;
 - (void)setClientVersion:(int)arg1;
 - (int)clientVersion;
+- (long long)catalogVersion;
 - (void)setRootObject:(id)arg1;
-- (id)objectWithID:(id)arg1;
+- (id)objectWithID:(id)arg1 error:(id *)arg2;
 - (void)setIdentifier:(id)arg1;
 - (id)URI;
 - (id)catalog;

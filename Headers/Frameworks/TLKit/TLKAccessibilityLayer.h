@@ -6,11 +6,12 @@
 
 #import "CALayer.h"
 
+@class TLKTimelineView;
+
 @interface TLKAccessibilityLayer : CALayer
 {
 }
 
-+ (id)itemLayerForItem:(id)arg1 timelineView:(id)arg2;
 + (struct CGPoint)convertFromScreenPoint:(struct CGPoint)arg1 timelineView:(id)arg2;
 + (struct CGRect)convertToScreenRect:(struct CGRect)arg1 fromLayer:(id)arg2 timelineView:(id)arg3;
 + (struct CGPoint)convertToScreenPoint:(struct CGPoint)arg1 timelineView:(id)arg2;
@@ -55,6 +56,9 @@
 - (id)accessibilityDelimiterString;
 - (id)accessibilityLocalizedString:(id)arg1;
 - (id)timelineView;
+
+// Remaining properties
+@property __weak TLKTimelineView *delegate; // @dynamic delegate;
 
 @end
 

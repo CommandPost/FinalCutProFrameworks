@@ -17,20 +17,17 @@ __attribute__((visibility("hidden")))
     NSSet *_childAnnotations;
     FFMDPhotoPlacesAnnotation *_parentAnnotation;
     ILMediaGroup *_group;
-    struct {
-        double latitude;
-        double longitude;
-    } _coordinate;
+    struct CLLocationCoordinate2D _coordinate;
     CDStruct_02837cd9 _bounds;
     NSString *_title;
     double _weight;
 }
 
-+ (id)photoPlacesAnnotationWithGroup:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 bounds:(CDStruct_02837cd9)arg3 weight:(double)arg4;
++ (id)photoPlacesAnnotationWithGroup:(id)arg1 coordinate:(struct CLLocationCoordinate2D)arg2 bounds:(CDStruct_02837cd9)arg3 weight:(double)arg4;
 @property(readonly, nonatomic) double weight; // @synthesize weight=_weight;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) CDStruct_02837cd9 bounds; // @synthesize bounds=_bounds;
-@property(nonatomic) CDStruct_c3b9c2ee coordinate; // @synthesize coordinate=_coordinate;
+@property(nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
 @property(retain, nonatomic) ILMediaGroup *group; // @synthesize group=_group;
 @property(nonatomic) FFMDPhotoPlacesAnnotation *parentAnnotation; // @synthesize parentAnnotation=_parentAnnotation;
 @property(retain, nonatomic) NSSet *childAnnotations; // @synthesize childAnnotations=_childAnnotations;
@@ -38,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)displayedGroups;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithGroup:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 bounds:(CDStruct_02837cd9)arg3 weight:(double)arg4;
+- (id)initWithGroup:(id)arg1 coordinate:(struct CLLocationCoordinate2D)arg2 bounds:(CDStruct_02837cd9)arg3 weight:(double)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

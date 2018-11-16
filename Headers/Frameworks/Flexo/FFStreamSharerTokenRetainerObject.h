@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     FFSVContext *_context;
 }
 
-- (id).cxx_construct;
 - (void)dealloc;
 - (id)initWithStream:(id)arg1 pair:(struct PC_CMTimePair)arg2 context:(id)arg3;
 

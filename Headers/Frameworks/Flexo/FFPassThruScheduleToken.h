@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (unsigned int)scheduleStatusInformation;
 - (id)_underlyingToken;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 andSubToken:(id)arg2 retainOnlyObject:(id)arg3;
 - (id)initWithStream:(id)arg1 andSubToken:(id)arg2 additionalStreams:(id)arg3 retainOnlyObjects:(id)arg4;
 
 @end

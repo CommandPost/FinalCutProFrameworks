@@ -10,9 +10,9 @@
 
 @interface OZShapeOSC : POOnScreenControl
 {
-    list_d3676a1d *_previousSelection;
-    list_d3676a1d *_currentSelection;
-    list_d3676a1d *_selection;
+    list_bf350f3c *_previousSelection;
+    list_bf350f3c *_currentSelection;
+    list_bf350f3c *_selection;
     struct OZShape *_shape;
     int _numHits;
     unsigned int _buffer[8192];
@@ -30,9 +30,9 @@
     NSMapTable *_GLNames;
     unsigned int _nextGLName;
     struct CGRect _selectionViewVolume;
-    PCPtr_df275998 _normalVertexAssets[6];
+    PCPtr_df275998 _normalVertexAssets[5];
     PCVector2_79efa81a *_normalVertexSize;
-    PCPtr_df275998 _selectedVertexAssets[6];
+    PCPtr_df275998 _selectedVertexAssets[5];
     PCVector2_79efa81a *_selectedVertexSize;
     PCPtr_df275998 _tangentAsset;
     PCVector2_79efa81a *_tangentSize;
@@ -76,9 +76,9 @@
 - (void)clearSelection;
 - (void)clearPreviousSelection;
 - (void)clearCurrentSelection;
-- (list_d3676a1d *)getSelection;
-- (list_d3676a1d *)getCurrentSelection;
-- (void)cleanSelection:(list_d3676a1d *)arg1;
+- (list_bf350f3c *)getSelection;
+- (list_bf350f3c *)getCurrentSelection;
+- (void)cleanSelection:(list_bf350f3c *)arg1;
 - (void)select:(id)arg1;
 - (int)hitCheck:(id)arg1;
 - (BOOL)activeOnFullCanvas:(id)arg1;

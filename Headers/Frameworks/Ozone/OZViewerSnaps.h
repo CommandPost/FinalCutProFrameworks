@@ -10,7 +10,7 @@
 
 @interface OZViewerSnaps : NSObject
 {
-    struct map<OZOverlay *, std::tr1::shared_ptr<std::set<OZSnap, std::less<OZSnap>, std::allocator<OZSnap>>>, std::less<OZOverlay *>, std::allocator<std::pair<OZOverlay *const, std::tr1::shared_ptr<std::set<OZSnap, std::less<OZSnap>, std::allocator<OZSnap>>>>>> *_snaps;
+    struct map<OZOverlay *, std::__1::shared_ptr<std::__1::set<OZSnap, std::__1::less<OZSnap>, std::__1::allocator<OZSnap>>>, std::__1::less<OZOverlay *>, std::__1::allocator<std::__1::pair<OZOverlay *const, std::__1::shared_ptr<std::__1::set<OZSnap, std::__1::less<OZSnap>, std::__1::allocator<OZSnap>>>>>> *_snaps;
     OZGLViewerOSC *_viewer;
 }
 

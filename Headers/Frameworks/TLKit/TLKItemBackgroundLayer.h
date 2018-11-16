@@ -16,6 +16,7 @@
     CALayer *_backgroundLayer;
     CALayer *_backgroundFillLayer;
     CALayer *_backgroundGlossLayer;
+    struct CGColor *_overrideBackgroundColor;
     CALayer *_transitionHeaderGlyph;
     CALayer *_transitionRollTargetingLayer;
     CALayer *_transitionLeadingRollTargetingLayer;
@@ -26,6 +27,10 @@
     CALayer *_trailingEdgeVideoStitchingLayer;
     CALayer *_leadingEdgeAudioStitchingLayer;
     CALayer *_trailingEdgeAudioStitchingLayer;
+    unsigned int _cacheStateFlags;
+    int _previousType;
+    int _previousMask;
+    BOOL _previousAudioOnly;
     struct {
         unsigned int audioComponent:1;
         unsigned int roundedBottomAudioComponent:1;
@@ -42,6 +47,7 @@
 + (double)cornerRadiusForWidth:(double)arg1;
 + (struct CGRect)frameForItem:(struct CGRect)arg1 withType:(int)arg2 andContainmentType:(int)arg3;
 + (void)initialize;
+@property(readonly) CALayer *backgroundFillLayer; // @synthesize backgroundFillLayer=_backgroundFillLayer;
 - (BOOL)allowedOperationForEdge:(id)arg1;
 - (void)setAllowedOperation:(BOOL)arg1 forEdge:(id)arg2;
 - (struct CGRect)rectForPart:(id)arg1;
@@ -52,8 +58,8 @@
 - (void)_adjustTransitionHandles;
 - (void)setItemType:(int)arg1 andContainmentMask:(int)arg2;
 - (void)updateAppearanceType:(int)arg1 withMask:(int)arg2;
-- (struct CGColor *)_verticalSameStitchingPattern;
-- (struct CGColor *)_verticalDiffStitchingPattern;
+- (void)_updateBackgroundOfType:(int)arg1 withMask:(int)arg2;
+- (void)setOverideColorForBackgroundFill:(struct CGColor *)arg1;
 - (BOOL)roundedBottomAudioComponent;
 - (void)setRoundedBottomAudioComponent:(BOOL)arg1;
 - (BOOL)audioComponent;

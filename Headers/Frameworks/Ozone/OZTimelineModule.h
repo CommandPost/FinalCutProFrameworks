@@ -10,19 +10,18 @@
 #import "OZTimeAxisRangeSelect.h"
 #import "OZTimelineLayerControllerIF.h"
 
-@class LKPaneCapSegmentedControl, LKPaneCapView, LKSplitView, NSMenu, NSMenuItem, NSProHorizontalZoomSlider, NSString, NSView, OZTimeAxis, OZTimelineLayerCoordinator, OZTimelinePasteSpecialPanel, OZTimingControlModule, OZTimingCoordinator, OZTimingMarkers, OZTimingVerticalSplitView;
+@class LKSegmentedControl, LKSplitView, NSMenu, NSMenuItem, NSString, NSView, OZBorderedView, OZTimeAxis, OZTimelineLayerCoordinator, OZTimelinePasteSpecialPanel, OZTimingControlModule, OZTimingCoordinator, OZTimingMarkers, OZTimingVerticalSplitView;
 
 @interface OZTimelineModule : OZProViewModule <OZTimeAxisRangeSelect, OZTimeAxisFrameChangedTarget, OZTimelineLayerControllerIF>
 {
-    NSProHorizontalZoomSlider *_horizontalZoomSlider;
     OZTimingMarkers *_timingMarkers;
     OZTimeAxis *_timeAxis;
     OZTimingVerticalSplitView *_verticalSplit;
     LKSplitView *_leftSplit;
     LKSplitView *_rightSplit;
-    LKPaneCapSegmentedControl *_resetRangeButton;
-    LKPaneCapSegmentedControl *_snappingControl;
-    LKPaneCapSegmentedControl *_showKeyframes;
+    LKSegmentedControl *_resetRangeButton;
+    LKSegmentedControl *_snappingControl;
+    LKSegmentedControl *_showKeyframes;
     id _currentFrameField;
     NSMenu *_menu;
     NSMenu *_objectMenu;
@@ -30,8 +29,7 @@
     NSMenu *_audioMenu;
     NSMenu *_audioObjectMenu;
     NSMenuItem *_keyEquivalentMenuItem;
-    NSView *_timelineButtonView;
-    LKPaneCapSegmentedControl *_layerListTools;
+    LKSegmentedControl *_layerListTools;
     struct OZTimelineState *_timelineState;
     struct PCTimeRange *_totalRange;
     struct PCTimeRange *_rangeSelect;
@@ -47,14 +45,14 @@
     BOOL _isSnapped;
     OZTimingControlModule *_timingControlModule;
     BOOL _externalModuleIsSettingDividerPosition;
-    LKPaneCapView *_rightSplitHeader;
+    OZBorderedView *_timelineButtonView;
+    OZBorderedView *_rightSplitHeader;
 }
 
 @property(readonly, nonatomic) OZTimeAxis *timeAxis; // @synthesize timeAxis=_timeAxis;
 @property(readonly, nonatomic) OZTimingCoordinator *timingCoordinator; // @synthesize timingCoordinator=_timingCoordinator;
 @property(nonatomic) OZTimingControlModule *timingControlModule; // @synthesize timingControlModule=_timingControlModule;
 @property(nonatomic) BOOL externalModuleIsSettingDividerPosition; // @synthesize externalModuleIsSettingDividerPosition=_externalModuleIsSettingDividerPosition;
-- (id).cxx_construct;
 - (BOOL)audioTimelineVisible;
 - (BOOL)imageTimelineVisible;
 - (void)didToggleTimeline:(BOOL)arg1;
@@ -78,7 +76,7 @@
 - (BOOL)isSnappedAtTime:(CDStruct_1b6d18a9 *)arg1;
 - (BOOL)isSnapping;
 - (void)setSnapped:(BOOL)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)findSnaps:(vector_7856d79e *)arg1 forceAllVisible:(BOOL)arg2;
+- (void)findSnaps:(vector_f7e3fd5f *)arg1 forceAllVisible:(BOOL)arg2;
 - (void)resetDisplayRangeToProjectDuration:(id)arg1;
 - (void)resetDisplayRangeToPlayRange:(id)arg1;
 - (void)resetDisplayRangeToggle:(id)arg1;
@@ -91,8 +89,8 @@
 - (void)delete:(id)arg1;
 - (void)pasteSpecialOverwrite;
 - (void)pasteSpecialInsert;
-- (void)restoreSelection:(list_bbacc03b *)arg1 forScene:(struct OZScene *)arg2;
-- (void)saveSelection:(list_bbacc03b *)arg1 forScene:(struct OZScene *)arg2;
+- (void)restoreSelection:(list_45f779fc *)arg1 forScene:(struct OZScene *)arg2;
+- (void)saveSelection:(list_45f779fc *)arg1 forScene:(struct OZScene *)arg2;
 - (void)pasteSpecialReplace;
 - (void)pasteSpecial:(id)arg1;
 - (void)paste:(id)arg1;
@@ -112,7 +110,6 @@
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
 - (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
 - (id)splitView;
-- (void)resetHeaderViewFrame:(struct CGRect)arg1;
 - (void)splitViewDidResizeSubviews:(id)arg1;
 - (void)splitViewWillResizeSubviews:(id)arg1;
 - (double)dividerThickness;

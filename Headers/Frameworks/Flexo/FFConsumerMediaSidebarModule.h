@@ -6,12 +6,15 @@
 
 #import <Flexo/FFEventMediaSidebarModule.h>
 
-@class FFProjectExtrasSidebarController, LKMenu;
+@class FFProjectExtrasSidebarController, LKMenu, NSString;
 
 @interface FFConsumerMediaSidebarModule : FFEventMediaSidebarModule
 {
     FFProjectExtrasSidebarController *_contentLibrarySidebarController;
     LKMenu *_contextualMenu;
+    BOOL _includeCurrentProjectItem;
+    BOOL _isAudio;
+    NSString *_persistenceKey;
     id _previousSidebarSelectionState;
 }
 
@@ -19,6 +22,9 @@
 @property(retain, nonatomic, getter=_previousSidebarSelectionState, setter=_setPreviousSidebarSelectionState:) id previousSidebarSelectionState; // @synthesize previousSidebarSelectionState=_previousSidebarSelectionState;
 @property(retain, nonatomic) LKMenu *contextualMenu; // @synthesize contextualMenu=_contextualMenu;
 @property(retain, nonatomic) FFProjectExtrasSidebarController *contentLibrarySidebarController; // @synthesize contentLibrarySidebarController=_contentLibrarySidebarController;
+@property(copy, nonatomic) NSString *persistenceKey; // @synthesize persistenceKey=_persistenceKey;
+@property(readonly) BOOL isAudio; // @synthesize isAudio=_isAudio;
+@property(readonly) BOOL includeCurrentProjectItem; // @synthesize includeCurrentProjectItem=_includeCurrentProjectItem;
 - (void)selectDisplayType:(int)arg1;
 - (void)debug_toggleProjectExtrasSidebarAction:(id)arg1;
 - (void)projectExtrasDidSelectNodes:(id)arg1;
@@ -42,6 +48,8 @@
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
 - (void)dealloc;
+- (id)initWithAudio:(BOOL)arg1;
+- (id)initWithIncludeCurrentProjectItem:(BOOL)arg1;
 
 @end
 

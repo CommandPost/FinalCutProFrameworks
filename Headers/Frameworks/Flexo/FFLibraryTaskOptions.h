@@ -11,7 +11,6 @@
 
 @class NSDictionary, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface FFLibraryTaskOptions : NSObject <NSCoding, NSCopying>
 {
     _Bool _consolidateMedia;

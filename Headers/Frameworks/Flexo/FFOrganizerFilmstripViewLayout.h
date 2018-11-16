@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class CALayer, FigTimeRangeAndObject, NSArray, NSMapTable, NSMutableArray, NSProThemeFacet;
+@class CALayer, FigTimeRangeAndObject, NSArray, NSMapTable, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripViewLayout : NSObject
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
     CALayer *_playheadLayer;
     CALayer *_lastPlayheadChunkLayer;
     CALayer *_persistentPlayheadLayer;
-    NSProThemeFacet *_persistentPlayheadFacet;
     struct CGRect _persistentPlayheadRect;
     id _delegate;
     BOOL _emphasized;
@@ -104,14 +103,14 @@ __attribute__((visibility("hidden")))
 - (void)endLayout:(BOOL)arg1;
 - (void)_setImportMediaLayerRect;
 - (void)moveInsertionPointToNextLine;
-- (void)adjustInsertionPointForItemsFrame:(struct CGRect)arg1;
+- (void)adjustInsertionPointForItemsFrame:(struct CGRect)arg1 forChunk:(id)arg2;
 - (double)remainingLineWidth;
 - (double)verticalBottomMargin;
 - (double)verticalTopMargin;
 - (double)horizontalMargin;
 - (double)verticalClusterGap;
 - (double)verticalItemGap;
-- (double)horizontalItemGap;
+- (double)horizontalItemGapForChunk:(id)arg1;
 - (void)beginLayout:(BOOL)arg1;
 - (void)reloadData;
 - (id)visibleRangesMapTable;

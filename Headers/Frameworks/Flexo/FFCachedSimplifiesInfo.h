@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, retain) NSString *simplifiesAnswer; // @synthesize simplifiesAnswer=_answer;
-- (id).cxx_construct;
 - (_Bool)canBeUsedFor:(CDStruct_1b6d18a9)arg1 sampleDur:(CDStruct_1b6d18a9)arg2 spatialQ:(int)arg3 temporalQ:(int)arg4 additionalSVContextgFlags:(unsigned int)arg5;
 - (void)dealloc;
 - (id)initWithSimplifyResult:(id)arg1 range:(CDStruct_e83c9415)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 spatialQ:(int)arg4 temporalQ:(int)arg5 additionalSVContextgFlags:(unsigned int)arg6;

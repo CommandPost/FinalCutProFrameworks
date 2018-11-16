@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     BOOL _inFrameChange;
 }
 
+- (void)drawRect:(struct CGRect)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)_sizeToFitSubview:(id)arg1;
 - (void)dealloc;

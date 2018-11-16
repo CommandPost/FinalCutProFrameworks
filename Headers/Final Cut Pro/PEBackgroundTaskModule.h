@@ -14,6 +14,7 @@
     PEBackgroundTaskProgress *_modalTaskProgress;
     LKTileView *_tileView;
     BOOL _unhideAfterFullScreen;
+    BOOL _hiddenAfterLayout;
 }
 
 + (id)taskTypeToDisplayGroupMapping;
@@ -24,9 +25,11 @@
 - (void)backgroundTaskQueue:(id)arg1 didStartTask:(id)arg2;
 - (void)backgroundTaskQueue:(id)arg1 didAddTask:(id)arg2;
 - (void)didAddTask:(id)arg1;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
+- (id)contentLayoutDictionary;
+- (void)displayPostAutoLayout;
 - (void)playerDidExitFullScreen:(id)arg1;
 - (void)playerWillEnterFullScreen:(id)arg1;
-- (void)showShareMonitor;
 - (void)updateWindowSize;
 - (void)_setTasks:(id)arg1;
 - (void)closeModalProgressSheet;
@@ -36,6 +39,7 @@
 - (void)hideModule:(id)arg1;
 - (void)viewDidLoad;
 - (struct CGSize)viewMinSize;
+- (void)awakeFromNib;
 - (void)dealloc;
 - (id)init;
 

@@ -6,6 +6,8 @@
 
 #import "CALayer.h"
 
+@class TLKTimelineView;
+
 @interface TLKAbstractItemBackgroundLayer : CALayer
 {
     int _itemType;
@@ -37,7 +39,7 @@
 - (void)insertSublayer:(id)arg1 below:(id)arg2;
 - (void)addSublayer:(id)arg1;
 - (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
-- (void)setDelegate:(id)arg1;
+@property __weak TLKTimelineView *delegate; // @dynamic delegate;
 @property double textSize;
 - (void)setContentsScale:(double)arg1;
 - (void)audioWaveFormProportionChanged;

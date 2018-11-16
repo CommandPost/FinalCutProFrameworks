@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     struct AudioStreamBasicDescription m_clientFormat;
 }
 
-- (id).cxx_construct;
 - (void)endRender;
 - (void)pushBufferHook:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned long long)arg3;
 - (void)beginRenderWithRenderer:(id)arg1 forLastDest:(BOOL)arg2;

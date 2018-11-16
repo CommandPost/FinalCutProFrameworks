@@ -8,7 +8,7 @@
 
 #import "FFModalProgress.h"
 
-@class NSButton, NSDate, NSMutableArray, NSObject, NSProgressIndicator, NSWindow;
+@class NSButton, NSDate, NSMutableArray, NSObject, NSProgressIndicator, NSString, NSWindow;
 
 @interface PEModalProgress : NSWindowController <FFModalProgress>
 {
@@ -19,6 +19,7 @@
     unsigned long long _lockCount;
     BOOL _isPastStartup;
     NSMutableArray *_statusStrings;
+    NSString *_titleString;
     int _progressStatus;
     NSDate *_requestDate;
     NSWindow *_targetWindow;
@@ -26,6 +27,8 @@
     BOOL _hasCancelled;
     double _maxValue;
     NSButton *_cancelButton;
+    struct _NSModalSession *_modalSession;
+    unsigned long long _modalSessionEnabled;
     double _lastUpdate;
 }
 
@@ -36,6 +39,7 @@
 @property(retain, nonatomic) NSDate *requestDate; // @synthesize requestDate=_requestDate;
 - (void)showIfTime;
 - (void)endModalProgress;
+- (void)updateTitle:(id)arg1;
 - (BOOL)updateModalProgress:(id)arg1 currentValue:(double)arg2 maxValue:(double)arg3 allowCancel:(BOOL)arg4;
 - (void)beginModalProgress:(id)arg1 titleText:(id)arg2 showType:(int)arg3 targetWindow:(id)arg4;
 - (void)cancelAction:(id)arg1;
@@ -49,6 +53,7 @@
 - (unsigned long long)lockReset:(unsigned long long)arg1;
 - (void)unlock;
 - (void)lock;
+- (void)appBeginTerminate:(id)arg1;
 - (void)dealloc;
 - (oneway void)release;
 - (id)init;

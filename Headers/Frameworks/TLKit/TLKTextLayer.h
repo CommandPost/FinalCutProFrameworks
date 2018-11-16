@@ -23,9 +23,9 @@
     unsigned int _simpleEditingMode:1;
 }
 
-@property NSColor *textShadowColor; // @synthesize textShadowColor=_textShadowColor;
-@property(retain) NSColor *textColor; // @synthesize textColor=_textColor;
+@property(retain) NSColor *textShadowColor; // @synthesize textShadowColor=_textShadowColor;
 @property(retain) NSColor *selectedTextColor; // @synthesize selectedTextColor=_selectedTextColor;
+@property(retain) NSColor *textColor;
 - (void)setContentsScale:(double)arg1;
 @property double fontSize;
 @property BOOL simpleEditingMode;

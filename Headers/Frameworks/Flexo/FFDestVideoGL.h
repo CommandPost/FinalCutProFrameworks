@@ -6,10 +6,12 @@
 
 #import <Flexo/FFDestVideo.h>
 
+#import "FFDestVideoOptionalMethods.h"
+
 @class FFImage, FFImageDisplay, FFPMRLogFunnel, FFPlayerFrame, NSColor, NSLock, NSMutableArray, NSObject<OS_dispatch_semaphore>, Stopwatch;
 
 __attribute__((visibility("hidden")))
-@interface FFDestVideoGL : FFDestVideo
+@interface FFDestVideoGL : FFDestVideo <FFDestVideoOptionalMethods>
 {
     NSLock *_queueLock;
     NSMutableArray *_renderedFrames;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
     BOOL _willDisplay;
     BOOL _didDisplay;
     BOOL _isVisible;
+    unsigned int _rangeCheckMode;
     NSLock *_lock;
     BOOL _drawingSuspended;
     int _requestedBackground;
@@ -57,7 +60,6 @@ __attribute__((visibility("hidden")))
     FFPMRLogFunnel *_pmrFunnel;
 }
 
-- (id).cxx_construct;
 - (id)description;
 - (void)_recordDroppedFrame:(id)arg1;
 - (_Bool)performOverfullRecovery;
@@ -102,6 +104,8 @@ __attribute__((visibility("hidden")))
 - (void)_notifyVisibleChanged;
 - (BOOL)_updateVisible;
 - (void)setPlayer:(id)arg1;
+- (void)setRangeCheckZebraMode:(unsigned int)arg1;
+- (unsigned int)rangeCheckZebraMode;
 - (int)requestedBackground;
 - (BOOL)wantsDithering:(id)arg1;
 - (struct CGSize)maxSupportedSize;

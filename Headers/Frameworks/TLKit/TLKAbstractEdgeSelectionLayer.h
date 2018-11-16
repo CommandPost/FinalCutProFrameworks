@@ -8,10 +8,14 @@
 
 @interface TLKAbstractEdgeSelectionLayer : CALayer
 {
+    double _leadingEdgeCornerRadius;
+    double _trailingEdgeCornerRadius;
 }
 
 + (Class)edgeSelectionLayerClass;
 + (void)setEdgeSelectionLayerClass:(Class)arg1;
+@property double trailingEdgeCornerRadius; // @synthesize trailingEdgeCornerRadius=_trailingEdgeCornerRadius;
+@property double leadingEdgeCornerRadius; // @synthesize leadingEdgeCornerRadius=_leadingEdgeCornerRadius;
 - (void)invalidate;
 - (void)replaceSublayer:(id)arg1 with:(id)arg2;
 - (void)insertSublayer:(id)arg1 above:(id)arg2;

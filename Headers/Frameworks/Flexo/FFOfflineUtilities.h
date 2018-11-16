@@ -8,7 +8,7 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFAnchoredObject, FFCHObservableFolder, FFStreamAudio, NSString;
+@class CHChannelFolder, FFAnchoredObject, FFStreamAudio, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFOfflineUtilities : NSObject <FFBackgroundTaskTarget>
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     void *_presetDict;
     id _delegate;
     long long _sourceLengthFrames;
-    FFCHObservableFolder *_effectChannelFolder;
+    CHChannelFolder *_effectChannelFolder;
     struct FFAudioBufferList *_buffer;
     unsigned int downsampledRate;
 }
@@ -31,9 +31,8 @@ __attribute__((visibility("hidden")))
 + (void)updateAUFromChannel:(id)arg1 andAudioUnit:(struct ComponentInstanceRecord *)arg2;
 + (id)newRenderStream:(id)arg1;
 + (BOOL)needsRenderFor:(id)arg1;
-- (id).cxx_construct;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)prepareAndPostNotification:(id)arg1;
 - (void)prerollRenderFile:(id)arg1;
 - (int)renderAUOL:(struct AudioComponentDescription)arg1 WithPreset:(void *)arg2 andDuration:(CDStruct_1b6d18a9)arg3 onTask:(id)arg4;

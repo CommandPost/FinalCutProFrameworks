@@ -4,22 +4,24 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProPreferencesModule.h"
+#import "LKPreferencesModule.h"
 
-@class LKButton, NSButton, NSPopUpButton, NSProSegmentedScrubber, NSTextField;
+@class LKButton, LKSegmentedScrubber, NSButton, NSPopUpButton, NSTextField;
 
-@interface PEAppPlaybackandRenderPreferencesModule : NSProPreferencesModule
+@interface PEAppPlaybackandRenderPreferencesModule : LKPreferencesModule
 {
     NSPopUpButton *_avDevicePopup;
     NSTextField *_avDeviceLabel;
     NSTextField *_transcodingLabel;
     NSButton *_optimizedMediaButton;
-    NSProSegmentedScrubber *_prerollScrubber;
-    NSProSegmentedScrubber *_postrollScrubber;
+    LKSegmentedScrubber *_prerollScrubber;
+    LKSegmentedScrubber *_postrollScrubber;
+    LKSegmentedScrubber *_renderingStartingDelayScrubber;
     LKButton *_createOptimizedForMulticamClipsCheckBox;
     BOOL _avPopupAvailable;
 }
 
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)moduleCanBeRemoved;
 - (BOOL)preferencesWindowShouldClose;
 - (void)willBeDisplayed;
@@ -31,6 +33,7 @@
 - (void)dealloc;
 - (void)awakeFromNib;
 - (BOOL)isResizable;
+- (id)imageForPreferenceNamed:(id)arg1;
 
 @end
 

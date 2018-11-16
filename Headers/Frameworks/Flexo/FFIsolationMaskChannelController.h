@@ -19,12 +19,13 @@ __attribute__((visibility("hidden")))
 
 @property FFIsoSoftnessSlider *softnessSlider; // @synthesize softnessSlider=_softnessSlider;
 @property OZColorWell *keyerWell; // @synthesize keyerWell=_keyerWell;
+- (float)suggestedMinParamWidth;
+- (BOOL)shouldAddDisclosureButton;
 - (void)_syncActiveOSCState;
 - (void)toggleOSC:(id)arg1;
 - (void)validateSoftnessState:(id)arg1;
 - (void)update;
 - (void)didBuildUI;
-- (id)facetForActiveMaskButton;
 - (id)_isolationMask;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;

@@ -36,7 +36,7 @@
 - (CDStruct_e83c9415)notifyWillSelectTimeRange:(CDStruct_e83c9415)arg1 withObjects:(id)arg2;
 - (void)notifySelectionDidChange;
 - (id)notifyWillDeselectObjects:(id)arg1 selectionMask:(unsigned long long)arg2;
-- (id)notifyWillSelectObjects:(id)arg1 byExtendingSelection:(BOOL)arg2 selectionMask:(unsigned long long)arg3;
+- (id)notifyWillSelectObjects:(id)arg1 byExtendingSelection:(BOOL)arg2 selectionMask:(unsigned long long *)arg3;
 - (BOOL)userCanChangeSelection;
 - (BOOL)isDelegateNotificationEnabled;
 - (void)enableDelegateNotification;
@@ -52,12 +52,13 @@
 - (BOOL)isObjectSelected:(id)arg1;
 - (unsigned long long)numberOfSelectedObjects;
 - (void)deselectObjects:(id)arg1;
-- (void)selectObjects:(id)arg1 byExtendingSelection:(BOOL)arg2;
+- (BOOL)selectObjects:(id)arg1 byExtendingSelection:(BOOL)arg2;
 - (id)selectedObjects;
 - (unsigned long long)selectionMaskForSelectedObjects;
 - (unsigned long long)selectionMaskForObject:(id)arg1;
 - (BOOL)isObjectSelected:(id)arg1 selectionMask:(unsigned long long)arg2;
 - (unsigned long long)numberOfSelectedObjectsForSelectionMask:(unsigned long long)arg1;
+- (BOOL)hasSelectedObjectsForSelectionMask:(unsigned long long)arg1;
 - (BOOL)deselectObjects:(id)arg1 selectionMask:(unsigned long long)arg2;
 - (BOOL)selectObjects:(id)arg1 byExtendingSelection:(BOOL)arg2 selectionMask:(unsigned long long)arg3;
 - (id)selectedObjectsForTimeRange:(CDStruct_e83c9415)arg1;

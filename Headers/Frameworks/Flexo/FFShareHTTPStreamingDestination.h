@@ -15,7 +15,7 @@
 + (id)defaultDestinationURL;
 - (BOOL)requiresSettingActionOutputURL;
 - (id)iconTitle;
-- (long long)iconIndex;
+- (id)smallImage;
 - (id)largeImage;
 - (id)image;
 - (id)initWithCoder:(id)arg1;

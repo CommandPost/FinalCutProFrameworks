@@ -12,7 +12,7 @@
     BOOL _fixed;
     id <associatedOSC> _associatedOSC;
     BOOL _snapped;
-    long long _currentState;
+    unsigned int _currentState;
     PCPtr_e070f502 *_textures;
 }
 

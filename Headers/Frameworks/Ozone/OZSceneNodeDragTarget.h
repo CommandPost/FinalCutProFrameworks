@@ -15,7 +15,6 @@
     struct OZRenderNode *_pDraggingRenderNode;
 }
 
-- (id).cxx_construct;
 - (void)draggedImage:(id)arg1 endedAt:(struct CGPoint)arg2 operation:(unsigned long long)arg3;
 - (void)draggedImage:(id)arg1 movedTo:(struct CGPoint)arg2;
 - (void)mouseDragged:(id)arg1;

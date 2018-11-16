@@ -6,11 +6,11 @@
 
 #import <LunaKit/LKTabModule.h>
 
-#import "NSProTearOffTabViewDelegate.h"
+#import "LKTearOffTabViewDelegate.h"
 
 @class NSString;
 
-@interface LKTearOffTabModule : LKTabModule <NSProTearOffTabViewDelegate>
+@interface LKTearOffTabModule : LKTabModule <LKTearOffTabViewDelegate>
 {
     void *_reserved11;
     void *_reserved12;

@@ -8,7 +8,6 @@
 
 @class NSButton, NSProgressIndicator, NSTextField, NSWindow;
 
-__attribute__((visibility("hidden")))
 @interface FFProgressSheetController : NSWindowController
 {
     NSTextField *_progressHeaderField;
@@ -16,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSTextField *_progressMessageField;
     NSButton *_cancelButton;
     NSWindow *_hostWindow;
+    struct _NSModalSession *_session;
 }
 
 - (void)idle;

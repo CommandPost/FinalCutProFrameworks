@@ -29,7 +29,6 @@
 @property(readonly) BOOL isTheaterSelection; // @synthesize isTheaterSelection=_isTheaterSelection;
 @property(copy, nonatomic) NSString *projectPath; // @synthesize projectPath=_projectPath;
 @property(copy, nonatomic) NSArray *selection; // @synthesize selection=_selection;
-- (id).cxx_construct;
 - (BOOL)writeSelectionToURL:(id)arg1 error:(id *)arg2;
 - (void)panel:(id)arg1 willCloseWithCode:(long long)arg2;
 - (id)previewLayer;

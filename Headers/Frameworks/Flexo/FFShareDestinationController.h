@@ -6,20 +6,21 @@
 
 #import "NSViewController.h"
 
-@class CKSource, FFShareDestination, LKImageView, LKPopUpButton, LKTextField, NSProView;
+@class CKSource, FFShareDestination, LKImageView, LKPopUpButton, LKTextField, NSString, NSView;
 
 @interface FFShareDestinationController : NSViewController
 {
-    NSProView *_headerView;
+    NSView *_headerView;
     LKImageView *_imageView;
     LKTextField *_name;
     LKTextField *_infoText;
-    NSProView *_expandableView;
+    NSView *_expandableView;
     LKPopUpButton *_sizePopup;
     FFShareDestination *_destination;
     CKSource *_source;
     BOOL _hasConsumerView;
     CDUnknownBlockType _completionHandler;
+    NSString *_colorSpaceDisplayName;
 }
 
 + (id)inactiveHighlightGradient;
@@ -29,11 +30,11 @@
 @property(retain, nonatomic) FFShareDestination *destination; // @synthesize destination=_destination;
 @property(nonatomic) BOOL hasConsumerView; // @synthesize hasConsumerView=_hasConsumerView;
 @property(nonatomic) LKPopUpButton *sizePopup; // @synthesize sizePopup=_sizePopup;
-@property(retain, nonatomic) NSProView *expandableView; // @synthesize expandableView=_expandableView;
+@property(retain, nonatomic) NSView *expandableView; // @synthesize expandableView=_expandableView;
 @property(retain, nonatomic) LKTextField *infoText; // @synthesize infoText=_infoText;
 @property(retain, nonatomic) LKTextField *name; // @synthesize name=_name;
 @property(retain, nonatomic) LKImageView *imageView; // @synthesize imageView=_imageView;
-@property(retain, nonatomic) NSProView *headerView; // @synthesize headerView=_headerView;
+@property(retain, nonatomic) NSView *headerView; // @synthesize headerView=_headerView;
 - (id)destinationNameByAppendingSignedInUserEmail:(id)arg1;
 - (id)destinationNameByAppendingUserNameFrom:(id)arg1;
 - (id)destinationNameByRemovingUserNameFrom:(id)arg1;
@@ -45,6 +46,8 @@
 - (BOOL)isAppStorePreview;
 - (BOOL)displaysDeviceCompatibilityInfo;
 - (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)colorSpaceDisplayName:(char *)arg1;
+@property(readonly, copy, nonatomic) NSString *colorSpaceDisplayName; // @synthesize colorSpaceDisplayName=_colorSpaceDisplayName;
 - (id)theImageForResource:(id)arg1;
 - (void)dealloc;
 - (id)initWithDestination:(id)arg1 withSource:(id)arg2;

@@ -20,8 +20,18 @@
 - (id)plugInWithUUID:(struct __CFUUID *)arg1;
 - (id)plugInsForProtocols:(id)arg1;
 - (id)plugInsForProtocol:(id)arg1;
+- (id)blockedDocumentPlugins;
+- (id)blockedLibraryPlugins;
 - (id)plugIns;
+- (id)plugInGroupsMutable;
 - (id)plugInGroups;
+- (void)removeAllBlockedDocumentPlugins;
+- (void)getNameOverrides:(id)arg1 pluginName:(id *)arg2 bundleName:(id *)arg3;
+- (BOOL)checkIfShouldBlockPlugin:(id)arg1 returnPluginDictionary:(id *)arg2;
+- (BOOL)checkPluginVersionAgainstBlockList:(id)arg1 blockDict:(id)arg2;
+- (id)loadBlockPluginList:(struct __CFString *)arg1;
+- (void)addDocumentBlockedPlugin:(id)arg1;
+- (void)addLibraryBlockedPlugin:(id)arg1 bundleName:(id)arg2 pluginName:(id)arg3 version:(id)arg4;
 - (void)removeAllPlugIns;
 - (void)scanForPlugInsInBundle:(id)arg1 withPluginKitPlugIn:(id)arg2;
 - (void)scanForPlugInsInBundle:(id)arg1;

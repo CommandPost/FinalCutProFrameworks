@@ -13,7 +13,7 @@
 
 - (void)setShapeDimensionsAtTime:(CDStruct_1b6d18a9 *)arg1 dimensions:(struct CGSize)arg2;
 - (struct CGSize)shapeDimensionsAtTime:(CDStruct_1b6d18a9 *)arg1;
-- (vector_69ff6f07)getContourWithRoundness:(double)arg1 radiusX:(double)arg2 radiusY:(double)arg3;
+- (vector_3830c793)getContourWithRoundness:(double)arg1 radiusX:(double)arg2 radiusY:(double)arg3;
 - (void)mouseDragged:(id)arg1;
 - (void)drawShapeHandlesWithTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
 - (void)drawOSCSpecificCurvesWithTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2 pick:(BOOL)arg3;

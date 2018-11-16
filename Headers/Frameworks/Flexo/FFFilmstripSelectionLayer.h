@@ -33,9 +33,6 @@ __attribute__((visibility("hidden")))
     FFFilmstrip *_filmstrip;
 }
 
-+ (id)_rightFacetHandle;
-+ (id)_leftFacetHandle;
-+ (unsigned long long)_themeRef;
 + (id)layer;
 + (id)unusedLayerPool;
 @property(nonatomic) BOOL usesAutoKeywordsStyle; // @synthesize usesAutoKeywordsStyle=_usesAutoKeywordsStyle;

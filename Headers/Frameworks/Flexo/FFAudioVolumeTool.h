@@ -23,6 +23,7 @@
     FFAdjustmentToolSlider *_volumeSlider;
     LKButton *_normalizeButton;
     LKTextField *_gainPercentText;
+    LKTextField *_gainPercentSymbolLabel;
     FFAdjustmentToolSlider *_duckingSlider;
     LKButton *_duckingButton;
     LKTextField *_duckingText;
@@ -43,8 +44,12 @@
 + (BOOL)toggleMute:(BOOL)arg1;
 + (void)setMute:(BOOL)arg1 onObject:(id)arg2;
 + (id)toolTip;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;
@@ -73,7 +78,9 @@
 - (void)autoEnhanceButtonToggle:(id)arg1;
 - (void)_updateAutoEnhanceButton;
 - (BOOL)autoEnhanced;
+- (void)stopVolumeSliderAction:(id)arg1;
 - (void)endSliderAction:(id)arg1;
+- (void)startVolumeSliderAction:(id)arg1;
 - (void)startSliderAction:(id)arg1;
 - (id)_actionNameForTag:(int)arg1;
 - (void)duckingSliderChanged:(id)arg1;

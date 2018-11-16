@@ -42,6 +42,7 @@
 - (id)initialAccessoryPart;
 - (id)currentAccessoryPart;
 - (id)currentEventHandler;
+- (void)hostLayerChanged;
 - (void)setNeedsHeightChanged:(double)arg1;
 @property(readonly) double height;
 - (void)layerDidBecomeVisible:(BOOL)arg1;

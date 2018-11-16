@@ -40,19 +40,15 @@ struct PCColorSpaceHandle {
 
 struct PCImage;
 
-struct _Sp_counted_base<2>;
+struct __shared_weak_count;
 
 struct shared_ptr<PCBitmap> {
     struct PCBitmap *_field1;
-    struct __shared_count<2> {
-        struct _Sp_counted_base<2> *_field1;
-    } _field2;
+    struct __shared_weak_count *_field2;
 };
 
 struct weak_ptr<PCImage> {
     struct PCImage *_field1;
-    struct __weak_count<2> {
-        struct _Sp_counted_base<2> *_field1;
-    } _field2;
+    struct __shared_weak_count *_field2;
 };
 

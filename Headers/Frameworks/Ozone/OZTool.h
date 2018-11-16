@@ -38,7 +38,6 @@
 - (void)beginWithDocument:(struct OZDocument *)arg1;
 - (float)getRefreshInterval;
 - (id)getDefaultCursor;
-- (id)getBundle;
 - (id)getTooltip;
 - (id)getName;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;

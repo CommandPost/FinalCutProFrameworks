@@ -4,14 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProTokenFieldCell.h"
+#import "NSTokenFieldCell.h"
 
-@interface LKTokenFieldCell : NSProTokenFieldCell
+@interface LKTokenFieldCell : NSTokenFieldCell
 {
 }
 
-- (id)_pullDownFacet;
-- (id)_baseFacet;
+- (id)_attributedStringForRepresentedObjects:(id)arg1;
 
 @end
 

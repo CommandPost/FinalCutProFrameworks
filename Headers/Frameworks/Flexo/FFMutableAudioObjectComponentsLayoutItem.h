@@ -13,12 +13,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)setForcePersistedEffectStack:(BOOL)arg1;
-- (id)demandEffectStack;
-- (void)resetComponentSource:(id)arg1;
+- (void)setScopeStart:(CDStruct_1b6d18a9)arg1 andEnd:(CDStruct_1b6d18a9)arg2;
+- (void)setEffectStack:(id)arg1;
 - (void)setRole:(id)arg1;
+- (void)setRoleUID:(id)arg1;
+- (void)setMuted:(BOOL)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setItemName:(id)arg1;
+- (BOOL)hasFullPersistence;
 
 @end
 

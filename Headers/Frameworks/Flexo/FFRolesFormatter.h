@@ -9,8 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface FFRolesFormatter : NSFormatter
 {
+    BOOL _displayMixedRatherThanConcatenate;
 }
 
+@property(nonatomic) BOOL displayMixedRatherThanConcatenate; // @synthesize displayMixedRatherThanConcatenate=_displayMixedRatherThanConcatenate;
 - (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
 - (id)stringForObjectValue:(id)arg1;
 

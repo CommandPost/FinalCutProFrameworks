@@ -6,7 +6,7 @@
 
 #import <Flexo/FFSourceVideo.h>
 
-@class FFVideoProps, NSLock, NSMutableArray, NSObject, NSObject<OS_dispatch_queue>;
+@class FFVideoProps, NSLock, NSMutableArray, NSObject;
 
 __attribute__((visibility("hidden")))
 @interface FFSourceVideoEffect : FFSourceVideo
@@ -17,8 +17,9 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_cachedSubrangeInfos;
     NSMutableArray *_failedSubRangeInfos;
     NSMutableArray *_cachedSimplifiesInfo;
-    NSObject<OS_dispatch_queue> *_qualityScaleLock;
-    struct map<FFSVQualityEnum, double, std::less<FFSVQualityEnum>, std::allocator<std::pair<const FFSVQualityEnum, double>>> *_cachedQualityToScale;
+    struct FFSynchronizable *_qualityScaleLock;
+    struct map<FFSVQualityEnum, double, std::__1::less<FFSVQualityEnum>, std::__1::allocator<std::__1::pair<const FFSVQualityEnum, double>>> *_cachedQualityToScale;
+    struct FFSynchronizable *_videoPropsSynchronizable;
 }
 
 + (Class)streamClass;

@@ -12,12 +12,10 @@ __attribute__((visibility("hidden")))
     BOOL _allValuesAreEqual;
 }
 
-+ (id)formatterWithSuffix:(id)arg1 min:(double)arg2 max:(double)arg3 decimalDigits:(unsigned int)arg4;
 @property BOOL allValuesAreEqual; // @synthesize allValuesAreEqual=_allValuesAreEqual;
 - (id)editingStringForObjectValue:(id)arg1;
 - (BOOL)getObjectValue:(out id *)arg1 forString:(id)arg2 errorDescription:(out id *)arg3;
 - (id)stringForObjectValue:(id)arg1;
-- (id)initWithSuffix:(id)arg1 min:(double)arg2 max:(double)arg3 decimalDigits:(unsigned int)arg4;
 
 @end
 

@@ -13,7 +13,10 @@
 + (id)defaultDocumentName;
 + (id)projectsRootName;
 + (id)defaultFileExtension;
-- (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
+- (void)updateWithHandler:(id)arg1;
+- (BOOL)update_sourceChannelMapToAudioChannelMap;
+- (void)update_disabledRangesFormatChange;
+- (BOOL)update_persistedAudioComponentsLayoutMap;
 - (BOOL)update_fixAudioLevelChannelIgnoreFadesFlag;
 - (BOOL)update_projectSequenceToSequenceInfo;
 - (BOOL)update_HeColorEffectToMaskedEffect;
@@ -35,7 +38,6 @@
 - (BOOL)update_fixLoudnessAnalysisEffect;
 - (BOOL)update_migrateEffectBundleFormat;
 - (BOOL)update_conformLumaBumpsFromChannelsToData;
-- (BOOL)applyUpdate:(SEL)arg1;
 
 @end
 

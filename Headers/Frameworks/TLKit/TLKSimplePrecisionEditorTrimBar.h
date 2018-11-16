@@ -10,14 +10,14 @@
 {
 }
 
++ (double)rightBarAlign;
++ (double)leftBarAlign;
++ (double)bowTieWidthAdjustment;
 + (struct CGRect)insetSpineFrame:(struct CGRect)arg1;
 + (double)singleHandleInset;
++ (double)singleBarCenterOffset;
 + (double)leftHandleInset;
 + (double)rightHandleInset;
-+ (id)transitionBowTieFacet;
-+ (id)transitionHandleFacet;
-+ (id)editHandleFacet;
-+ (void)initialize;
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)init;
 

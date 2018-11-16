@@ -6,37 +6,106 @@
 
 #import <Flexo/FFAudioComponentsLayoutMap.h>
 
-@class NSMapTable;
+@class NSMapTable, NSRecursiveLock;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioObjectComponentsLayoutMap : FFAudioComponentsLayoutMap
 {
-    NSMapTable *_cachedReferenceRoles;
+    BOOL m_enabled;
+    int m_persistedLayoutMode;
+    long long m_updateRoleComponentsSuspended;
+    NSMapTable *m_cachedReferenceRoles;
+    NSMapTable *m_cachedReferenceRoleComponents;
+    NSMapTable *m_componentSourceMap;
+    NSRecursiveLock *m_componentSourceMapLock;
+    BOOL m_observingRoleChanges;
+    BOOL m_showOrphans;
 }
 
-- (id)referenceRolesForKey:(id)arg1 layoutItemKey:(id)arg2;
-- (id)_referenceRolesForKey:(id)arg1 layoutItemKey:(id)arg2;
-- (id)rolesForKey:(id)arg1 layoutItemKey:(id)arg2;
-- (id)localRoleToPreserveForKey:(id)arg1;
++ (void)resetEffectStacksForAudioComponentsLayout:(id)arg1;
++ (BOOL)_isIntrinsicObjectLayout:(id)arg1;
++ (BOOL)_isIntrinsicObjectLayoutItem:(id)arg1;
++ (id)copyClassDescription;
++ (void)setOrphanedLayoutItemAdoptionEnabled:(BOOL)arg1;
++ (BOOL)orphanedLayoutItemAdoptionEnabled;
++ (BOOL)canSetShowOrphanedLayoutItems;
++ (void)setShowOrphanedLayoutItems:(BOOL)arg1;
++ (BOOL)showOrphanedLayoutItems;
++ (void)initOrphanedDebugMethodValues;
+@property(nonatomic) BOOL enabled; // @synthesize enabled=m_enabled;
+- (void)performLoadSync;
+- (id)_orphanLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (BOOL)isOrphanEligibleLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (BOOL)isOrphanedLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (BOOL)hasOrphanedLayoutItems;
+- (void)showOrphanLayoutItemsToggled:(id)arg1;
+- (void)setShowOrphanedLayoutItems:(BOOL)arg1;
+- (BOOL)showOrphanedLayoutItems;
+- (void)setLegacyChannelsLayoutMode;
+- (BOOL)isLegacyChannelsLayoutMode;
+- (unsigned long long)effectCount;
+- (BOOL)isValidLayoutItem:(id)arg1;
+- (BOOL)hasReferenceLayoutMap;
+- (id)localLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (id)layoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (id)demandMutableLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (void)setLocalLayout:(id)arg1 forKey:(id)arg2;
+- (void)_didSetLocalLayoutForKey:(id)arg1;
+- (void)_willSetLocalLayoutForKey:(id)arg1;
 - (void)setRole:(id)arg1 forKey:(id)arg2;
-- (id)rolesForKey:(id)arg1;
-- (id)_rolesForKey:(id)arg1 localOnly:(BOOL)arg2 findRoleToPreserve:(BOOL)arg3;
-- (id)_rolesForKey:(id)arg1 layoutItemKey:(id)arg2 localOnly:(BOOL)arg3;
-- (void)setRole:(id)arg1;
-- (id)roles;
-- (void)_didChangeAudioComponentsLayoutMap:(id)arg1;
-- (id)copyWithDelegate:(id)arg1;
-- (void)demandAudioComponentSourceForKey:(id)arg1 layoutItemKey:(id)arg2;
-- (id)newAudioComponentSourceForKey:(id)arg1 layoutItemKey:(id)arg2;
-- (BOOL)hasEnabledLayoutItems;
-- (BOOL)isIntrinsicLayoutForKey:(id)arg1;
-- (BOOL)_isIntrinsicObjectLayout:(id)arg1;
-- (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
-- (CDStruct_bdcb2b0d)_audioMD5:(int)arg1 forLayout:(id)arg2;
-- (id)demandMutableObjectLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
-- (void)notifyDelegateRolesChanged;
+- (id)referenceRoleForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (id)_referenceRoleForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (id)defaultRoleForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (id)roleForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (BOOL)hasLocalRoleForKey:(id)arg1;
+- (id)rolesForKey:(id)arg1 activeOnly:(BOOL)arg2;
+- (id)_rolesForKey:(id)arg1 activeOnly:(BOOL)arg2 findLocalRole:(BOOL)arg3;
+- (id)_roleForKey:(id)arg1 layoutItemKey:(id)arg2 activeOnly:(BOOL)arg3 localOnly:(BOOL)arg4;
+- (id)_roles:(BOOL)arg1;
+- (id)activeRoles;
+- (id)allRoles;
+- (void)updateRoleComponents:(id)arg1;
+- (void)resumeRoleComponentsUpdate;
+- (void)suspendRoleComponentsUpdate;
+- (void)_updateRoleComponents:(id)arg1 forLoadSync:(BOOL)arg2;
+- (id)containedRolesForRoleKeys:(id)arg1;
+- (id)containedRolesForRoleKey:(id)arg1;
+- (id)roleKeysForContainedRoles:(id)arg1;
+- (id)roleKeyForContainedRole:(id)arg1;
+- (BOOL)isRoleComponentsLayoutMap;
+- (void)_rolesInLibraryDidChange:(id)arg1;
+- (void)_removeRolesChangedObserving;
+- (void)_addRolesChangedObserving;
+- (void)_setComponentSourceMap:(id)arg1;
+- (void)_setupAudioObjectComponentsLayoutMap;
 - (void)_clearCachedRoles;
+- (void)notifyDidChangeLayoutMap:(id)arg1;
+- (void)notifyWillChangeLayoutMap:(id)arg1;
+- (id)displayNameForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (id)effectStackForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (void)moveAudioComponentSource:(id)arg1 toKey:(id)arg2 layoutItemKey:(id)arg3;
+- (id)audioComponentSourceForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (BOOL)hasEnabledLayoutItems;
+- (BOOL)isIntrinsicLayoutMap;
+- (BOOL)isIntrinsicLayoutForKey:(id)arg1;
+- (id)sortLayoutItems:(id)arg1 forLayoutKey:(id)arg2;
+- (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
+- (id)demandMutableObjectLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (void)delegateContainedItemsChanged;
+- (void)delegateRolesChanged:(id)arg1;
+- (void)referenceLayoutMapChanged:(id)arg1;
+- (void)setPersistedLayoutMode:(int)arg1;
+- (int)persistedLayoutMode;
+- (int)layoutMode;
+- (void)setLayoutMode:(int)arg1;
+- (void)setLayoutMapEnabled:(BOOL)arg1;
+- (BOOL)isLayoutMapEnabled;
+- (id)rootObject;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)initWithDelegate:(id)arg1;
 
 @end
 

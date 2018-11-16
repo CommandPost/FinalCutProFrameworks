@@ -26,7 +26,7 @@
 - (BOOL)killTimer;
 - (struct PCUUID)getClassID;
 - (id)getDefaultCursor;
-- (basic_string_1cdf7af0)toolUndoString;
+- (basic_string_a1f69cfb)toolUndoString;
 - (id)getTooltip;
 - (id)getName;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;

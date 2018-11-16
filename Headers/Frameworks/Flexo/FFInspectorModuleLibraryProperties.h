@@ -6,63 +6,44 @@
 
 #import <Flexo/FFInspectorModule.h>
 
-@class FFColouredView, FFLibrary, FFProFlippedView, LKButton, LKImageView, LKPopUpButton, LKTextField, NSDictionary, NSMutableArray, NSProThemeImageView;
+#import "FFInspectorLabelParameterContainerDataSource.h"
+
+@class FFInspectorContainerController, FFInspectorLibraryHeaderController, FFLibrary, LKScrollView, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorModuleLibraryProperties : FFInspectorModule
+@interface FFInspectorModuleLibraryProperties : FFInspectorModule <FFInspectorLabelParameterContainerDataSource>
 {
-    NSProThemeImageView *_metadataLCDHeader;
-    LKImageView *_libraryIcon;
-    LKTextField *_libraryNameText;
-    LKTextField *_libraryLocationText;
-    LKTextField *_librarySizeText;
-    LKImageView *_libraryMediaLocationIcon;
-    LKTextField *_libraryMediaLocationText;
-    LKImageView *_libraryCacheLocationIcon;
-    LKTextField *_libraryCacheLocationText;
-    LKImageView *_libraryBackupLocationIcon;
-    LKTextField *_libraryBackupLocationText;
-    LKPopUpButton *_libraryMediaLocationPopup;
-    LKPopUpButton *_libraryCacheLocationPopup;
-    LKPopUpButton *_libraryBackupLocationPopup;
-    LKButton *_consolidateLibraryButton;
-    LKTextField *_libraryCacheDiskUsage;
-    FFColouredView *_libraryInspectorSeparator1;
-    FFColouredView *_libraryInspectorSeparator2;
-    FFColouredView *_libraryInspectorSeparator3;
-    FFColouredView *_libraryInspectorSeparator4;
-    FFProFlippedView *_libraryInspectorContentView;
-    NSMutableArray *_volumeInformationViews;
-    NSDictionary *_volumeNameTextAttributes;
-    NSDictionary *_volumeUsagePrefixTextAttributes;
-    NSDictionary *_librarySizePrefixTextAttributes;
-    NSDictionary *_volumeUsageTextAttributes;
-    NSDictionary *_volumeUsageSuffixTextAttributes;
-    FFLibrary *library;
+    FFLibrary *_library;
+    FFInspectorLibraryHeaderController *_headerController;
+    FFInspectorContainerController *_propertiesController;
+    LKScrollView *_scrollView;
+    BOOL _cachedHasSetupItems;
+    struct FFProcrastinatedDispatch_t _procrastinatedReload;
+    NSMutableDictionary *_info;
 }
 
-@property(retain, nonatomic) FFLibrary *library; // @synthesize library;
-@property(readonly, nonatomic) NSDictionary *volumeUsageSuffixTextAttributes; // @synthesize volumeUsageSuffixTextAttributes=_volumeUsageSuffixTextAttributes;
-@property(readonly, nonatomic) NSDictionary *volumeUsageTextAttributes; // @synthesize volumeUsageTextAttributes=_volumeUsageTextAttributes;
-@property(readonly, nonatomic) NSDictionary *librarySizePrefixTextAttributes; // @synthesize librarySizePrefixTextAttributes=_librarySizePrefixTextAttributes;
-@property(readonly, nonatomic) NSDictionary *volumeUsagePrefixTextAttributes; // @synthesize volumeUsagePrefixTextAttributes=_volumeUsagePrefixTextAttributes;
-@property(readonly, nonatomic) NSDictionary *volumeNameTextAttributes; // @synthesize volumeNameTextAttributes=_volumeNameTextAttributes;
+- (void)consolidateLibraryTemplates:(id)arg1;
 - (void)consolidateLibraryMedia:(id)arg1;
 - (void)modifyLibraryProperties:(id)arg1;
-- (void)libraryBackupLocationChanged:(id)arg1;
-- (void)libraryCacheLocationChanged:(id)arg1;
-- (void)libraryMediaLocationChanged:(id)arg1;
+- (void)setCurrentItems:(id)arg1;
+- (void)moduleDidHide;
+- (void)moduleDidUnhide;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)_setupCurrentItems;
 - (void)_updateLibraryProperties;
-- (id)_facetForURL:(id)arg1;
+- (void)_updateHeader;
 - (void)_backgroundTaskFinished:(id)arg1;
 - (void)_libraryPropertiesChanged:(id)arg1;
-- (id)humanReadableDiskUsage:(unsigned long long)arg1 useMiBs:(BOOL)arg2;
-- (void)_removeVolumeInformationViews;
-- (void)setCurrentItems:(id)arg1;
-- (void)viewWillBeRemoved;
-- (void)viewWasInstalled;
+- (void)_unregisterForPropertyChangeNotifications;
+- (void)_registerForPropertyChangeNotifications;
 - (void)viewDidLoad;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

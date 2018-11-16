@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)_performScheduling;
 - (void)dealloc;
 - (id)init;
+- (id)initWithQOS:(unsigned int)arg1 relative_pri:(int)arg2;
 
 @end
 

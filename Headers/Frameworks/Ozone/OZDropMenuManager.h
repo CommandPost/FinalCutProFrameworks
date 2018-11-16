@@ -24,7 +24,6 @@
 }
 
 + (id)manager;
-- (id).cxx_construct;
 - (void)invalidateDestructionTimer;
 - (void)destroyTargetWindowIfNotDragging:(id)arg1;
 - (struct CGPoint)dropPoint;

@@ -32,6 +32,7 @@
     struct OZFactory *_factory;
     OZLibraryEntry *_cloneOfEntry;
     NSString *_theme;
+    BOOL _isFullyBlocked;
 }
 
 + (struct PCMutex *)getThumbnailCacheLock;
@@ -141,6 +142,8 @@
 - (id)findDescendant:(id)arg1 useDisplayName:(BOOL)arg2 locFlags:(unsigned int)arg3;
 - (void)setGetDescendants:(BOOL)arg1;
 - (BOOL)isSequence;
+- (void)setIsFullyBlocked:(BOOL)arg1;
+- (BOOL)getIsFullyBlocked;
 - (BOOL)isTypeOfObject:(const struct PCUUID *)arg1;
 - (struct OZFactory *)getFactory;
 - (struct PCUUID)getFactoryID;

@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct CGColorSpace *)processingColorSpace;
-- (id).cxx_construct;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (BOOL)hitTest:(struct CGPoint)arg1;
 - (void)mouseMoved:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;

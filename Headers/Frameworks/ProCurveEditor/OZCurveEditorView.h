@@ -14,11 +14,6 @@
     BOOL _showAudio;
 }
 
-- (void)panWithPage:(double)arg1 y:(double)arg2;
-- (void)pan:(double)arg1 y:(double)arg2;
-- (void)setVerticalZoom:(double)arg1 offsetPercentage:(double)arg2;
-- (void)zoomWithFactor:(double)arg1 y:(double)arg2;
-- (void)zoom:(double)arg1 y:(double)arg2;
 - (void)drawCurveUnits;
 - (void)drawGrid;
 - (void)keyDown:(id)arg1;

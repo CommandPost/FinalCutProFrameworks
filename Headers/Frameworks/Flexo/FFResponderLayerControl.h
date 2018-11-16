@@ -6,14 +6,14 @@
 
 #import <Flexo/FFResponderLayer.h>
 
-@class FFThemeFacetLayer, NSString;
+@class FFImageLayer, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFResponderLayerControl : FFResponderLayer
 {
     BOOL _isModelLayer;
     BOOL _rolloverHighlightingDisabled;
-    FFThemeFacetLayer *_facetLayer;
+    FFImageLayer *_ffimageLayer;
     long long _themeState;
     NSString *_accessibilityDescription;
 }
@@ -38,10 +38,10 @@ __attribute__((visibility("hidden")))
 - (void)configureNormal;
 - (void)setContentsScale:(double)arg1;
 - (void)dealloc;
-- (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
-- (id)initWithElement:(long long)arg1 part:(long long)arg2;
-- (id)initWithThemeFacet:(id)arg1;
-- (id)_initWithThemeFacetLayer:(id)arg1;
+- (id)initWithBundle:(id)arg1 valueOff:(id)arg2 valueOn:(id)arg3;
+- (id)initWithBundle:(id)arg1 normal:(id)arg2 pressed:(id)arg3;
+- (id)initWithBundle:(id)arg1 normalOff:(id)arg2 normalOn:(id)arg3 pressedOff:(id)arg4 pressedOn:(id)arg5;
+- (id)_initWithImageLayer:(id)arg1;
 - (id)init;
 
 @end

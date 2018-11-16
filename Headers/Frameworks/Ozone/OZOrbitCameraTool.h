@@ -12,7 +12,7 @@
 
 - (void)performReset:(id)arg1;
 - (_Bool)performMouseDragAction:(id)arg1;
-- (basic_string_1cdf7af0)toolUndoString;
+- (basic_string_a1f69cfb)toolUndoString;
 - (struct PCUUID)getClassID;
 - (id)getTooltip;
 - (id)getImageName;

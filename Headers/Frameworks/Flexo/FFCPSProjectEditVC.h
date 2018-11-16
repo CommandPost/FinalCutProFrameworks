@@ -6,7 +6,7 @@
 
 #import <Flexo/FFCPSViewController.h>
 
-@class FFAdjustmentToolSlider, FFCPSClapperboardView, FFCPSShadowView, LKBox, LKButton, LKPopUpButton, LKTextField, NSString;
+@class FFAdjustmentToolSlider, FFAnchoredSequence, FFCPSClapperboardView, FFCPSShadowView, LKBox, LKButton, LKPopUpButton, LKTextField, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFCPSProjectEditVC : FFCPSViewController
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     BOOL _changingTheme;
     NSString *_currentThemeName;
     LKTextField *_debugLabel;
+    FFAnchoredSequence *_observedSequence;
 }
 
 @property(retain, nonatomic) LKTextField *debugLabel; // @synthesize debugLabel=_debugLabel;

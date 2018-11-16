@@ -4,17 +4,21 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProPaneCapSegmentedCell.h"
+#import <LunaKit/LKSegmentedCell.h>
 
-@interface LKPaneCapSegmentedCell : NSProPaneCapSegmentedCell
+#import "LKPaneCapProtocol.h"
+
+@interface LKPaneCapSegmentedCell : LKSegmentedCell <LKPaneCapProtocol>
 {
+    int _paneCapStyle;
+    int _paneCapTint;
+    long long _menuIndicatorAlignment;
 }
 
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
-- (long long)_currentThemeStateInView:(id)arg1 forSegment:(long long)arg2;
-- (id)_separatorFacet;
-- (id)_baseFacet;
-- (id)_indicatorFacet;
+@property long long menuIndicatorAlignment; // @synthesize menuIndicatorAlignment=_menuIndicatorAlignment;
+@property int paneCapStyle; // @synthesize paneCapStyle=_paneCapStyle;
+@property int paneCapTint; // @synthesize paneCapTint=_paneCapTint;
+- (BOOL)_useEdgeMetricsForMenuIndicator;
 
 @end
 

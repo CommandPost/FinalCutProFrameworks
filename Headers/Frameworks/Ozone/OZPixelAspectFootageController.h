@@ -6,11 +6,11 @@
 
 #import "OZViewController.h"
 
-@class NSPopUpButton, NSTextField;
+@class LKPopUpButton, NSTextField;
 
 @interface OZPixelAspectFootageController : OZViewController
 {
-    NSPopUpButton *_pPopUp;
+    LKPopUpButton *_pPopUp;
     NSTextField *_pTF;
 }
 

@@ -10,7 +10,7 @@
 
 @interface FFTextSearchDelegateBase : NSObject
 {
-    vector_2735d0ca _results;
+    vector_473d7ffb _results;
     BOOL _active;
     struct PCString _string;
     unsigned int _flags;
@@ -27,12 +27,12 @@
 - (id)searchableObjects;
 - (void)rLock:(BOOL)arg1;
 - (void)wLock:(BOOL)arg1;
-- (void)didReplaceAll:(vector_cb3c6831 *)arg1 textObjects:(vector_8a98cfff *)arg2;
-- (void)willReplaceAll:(vector_cb3c6831 *)arg1 textObjects:(vector_8a98cfff *)arg2;
+- (void)didReplaceAll:(vector_3858c263 *)arg1 textObjects:(vector_9e9b204a *)arg2;
+- (void)willReplaceAll:(vector_3858c263 *)arg1 textObjects:(vector_9e9b204a *)arg2;
 - (void)postSearchOverlayNotification:(BOOL)arg1;
 - (void)_postSearchOverlayNotification:(id)arg1;
 - (void)replaceString:(id)arg1 withString:(id)arg2 withFlags:(unsigned int)arg3 goToNext:(BOOL)arg4 replaceAll:(BOOL)arg5;
-- (vector_2735d0ca)getSearchResults:(id)arg1 withFlags:(unsigned int)arg2 searchForward:(BOOL)arg3 setSelection:(BOOL)arg4;
+- (vector_473d7ffb)getSearchResults:(id)arg1 withFlags:(unsigned int)arg2 searchForward:(BOOL)arg3 setSelection:(BOOL)arg4;
 - (void)updateCanvas;
 - (void)didReplace:(id)arg1 didSetNewSelection:(BOOL)arg2;
 - (void)willReplace:(id)arg1;
@@ -41,7 +41,7 @@
 - (id)getPrevTextObjectFromTime:(const CDStruct_1b6d18a9 *)arg1 andBeforeTextObject:(id *)arg2 wrapAround:(BOOL)arg3;
 - (void)getNextTextObject:(id *)arg1 after:(id *)arg2 flags:(unsigned int)arg3 searchForward:(BOOL)arg4;
 - (id)getCurrentTextObject;
-- (BOOL)getSearchResults:(vector_2735d0ca *)arg1 forString:(id)arg2 fromTextObject:(id)arg3 withFlags:(unsigned int)arg4 searchForward:(BOOL)arg5 jumpTo:(struct FFTextSearchResult *)arg6;
+- (BOOL)getSearchResults:(vector_473d7ffb *)arg1 forString:(id)arg2 fromTextObject:(id)arg3 withFlags:(unsigned int)arg4 searchForward:(BOOL)arg5 jumpTo:(struct FFTextSearchResult *)arg6;
 - (BOOL)getResultFoundAndJumpTo:(struct FFTextSearchResult *)arg1 searchForward:(BOOL)arg2 forSelectionLeft:(unsigned int)arg3 right:(unsigned int)arg4;
 - (BOOL)getResultFoundAndJumpTo:(struct FFTextSearchResult *)arg1 searchForward:(BOOL)arg2 forSelectionLeft:(unsigned int)arg3 right:(unsigned int)arg4 andResultID:(unsigned int)arg5;
 - (void)setCurrentObject:(id *)arg1;

@@ -6,17 +6,17 @@
 
 #import "NSView.h"
 
-@class FFCPSClapperboardView, NSProThemeFacet;
+@class FFCPSClapperboardView, NSImage;
 
 __attribute__((visibility("hidden")))
 @interface FFCPSShadowView : NSView
 {
-    NSProThemeFacet *_shadowFacet;
+    NSImage *_shadowImage;
     FFCPSClapperboardView *_clapperView;
 }
 
-@property(retain, nonatomic) FFCPSClapperboardView *clapperView; // @synthesize clapperView=_clapperView;
-@property(retain, nonatomic) NSProThemeFacet *shadowFacet; // @synthesize shadowFacet=_shadowFacet;
+@property(nonatomic) FFCPSClapperboardView *clapperView; // @synthesize clapperView=_clapperView;
+@property(retain, nonatomic) NSImage *shadowImage; // @synthesize shadowImage=_shadowImage;
 - (struct CGRect)scaleCenterClapperViewInRect:(struct CGRect)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;

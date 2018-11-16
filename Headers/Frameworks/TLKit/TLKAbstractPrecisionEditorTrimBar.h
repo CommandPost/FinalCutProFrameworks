@@ -9,7 +9,7 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class NSString, TLKAbstractEdgeSelectionLayer, TLKAbstractPrecisionEditorVerticalLinesLayer, TLKThemeBackedLayer;
+@class NSString, TLKAbstractEdgeSelectionLayer, TLKAbstractPrecisionEditorVerticalLinesLayer, TLKPrecisionEditorEditButtonLayer, TLKPrecisionEditorTransitionButtonLayer;
 
 @interface TLKAbstractPrecisionEditorTrimBar : TLKAccessibilityLayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
@@ -17,8 +17,8 @@
     TLKAbstractPrecisionEditorVerticalLinesLayer *_rightBar;
     TLKAbstractEdgeSelectionLayer *_outgoingSelectionLayer;
     TLKAbstractEdgeSelectionLayer *_incomingSelectionLayer;
-    TLKThemeBackedLayer *_editHandleLayer;
-    TLKThemeBackedLayer *_bowTieLayer;
+    TLKPrecisionEditorEditButtonLayer *_editHandleLayer;
+    TLKPrecisionEditorTransitionButtonLayer *_bowTieLayer;
     id <TLKTimelineItem> _leftItem;
     id <TLKTimelineItem> _rightItem;
     double _layerWidth;
@@ -28,14 +28,15 @@
     } _tbFlags;
 }
 
++ (double)rightBarAlign;
++ (double)leftBarAlign;
++ (double)bowTieWidthAdjustment;
 + (double)trimBarVerticalLinesWidth;
 + (struct CGRect)insetSpineFrame:(struct CGRect)arg1;
 + (double)singleHandleInset;
++ (double)singleBarCenterOffset;
 + (double)leftHandleInset;
 + (double)rightHandleInset;
-+ (id)transitionBowTieFacet;
-+ (id)transitionHandleFacet;
-+ (id)editHandleFacet;
 + (Class)trimBarLayerClass;
 + (void)setTrimBarClassLayer:(Class)arg1;
 @property(nonatomic) id <TLKTimelineItem> rightItem; // @synthesize rightItem=_rightItem;
@@ -64,6 +65,8 @@
 - (id)accessibilityAttributeNames;
 - (struct CGRect)accessibilityRectForPart:(id)arg1;
 - (id)accessibilityPartAtPoint:(struct CGPoint)arg1;
+- (void)didStopTracking;
+- (void)willStartTracking;
 - (void)reloadVisibleLayers;
 - (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;

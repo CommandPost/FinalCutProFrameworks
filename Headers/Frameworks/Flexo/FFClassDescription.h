@@ -31,9 +31,9 @@
 - (void)addPropertySelector:(SEL)arg1 type:(int)arg2;
 - (void)setClassXMLKey:(id)arg1;
 - (id)classXMLKey;
-- (void)addProperty:(SEL)arg1 type:(int)arg2 entity:(const char *)arg3 xmlInfo:(CDStruct_a8c8b80b)arg4 valueType:(CDUnknownFunctionPointerType)arg5 flags:(unsigned int)arg6;
-- (void)addRelationship:(SEL)arg1 type:(int)arg2 entity:(const char *)arg3 xmlInfo:(CDStruct_a8c8b80b)arg4 flags:(unsigned int)arg5;
-- (void)addAttribute:(SEL)arg1 valueType:(CDUnknownFunctionPointerType)arg2 xmlInfo:(CDStruct_a8c8b80b)arg3 flags:(unsigned int)arg4;
+- (BOOL)addProperty:(SEL)arg1 type:(int)arg2 entity:(const char *)arg3 xmlInfo:(CDStruct_a8c8b80b)arg4 valueType:(CDUnknownFunctionPointerType)arg5 flags:(unsigned int)arg6;
+- (BOOL)addRelationship:(SEL)arg1 type:(int)arg2 entity:(const char *)arg3 xmlInfo:(CDStruct_a8c8b80b)arg4 flags:(unsigned int)arg5;
+- (BOOL)addAttribute:(SEL)arg1 valueType:(CDUnknownFunctionPointerType)arg2 xmlInfo:(CDStruct_a8c8b80b)arg3 flags:(unsigned int)arg4;
 - (void)dealloc;
 - (id)init;
 - (id)initWithClass:(Class)arg1;

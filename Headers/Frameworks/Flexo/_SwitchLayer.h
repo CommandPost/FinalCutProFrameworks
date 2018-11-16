@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
     long long _state;
 }
 
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)enableInactiveState;
 - (void)enablePressedState;

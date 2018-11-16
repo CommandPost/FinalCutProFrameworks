@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)toolbarFacet;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 

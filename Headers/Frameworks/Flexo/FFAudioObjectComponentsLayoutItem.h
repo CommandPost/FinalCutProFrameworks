@@ -6,34 +6,52 @@
 
 #import <Flexo/FFAudioComponentsLayoutItem.h>
 
-@class FFAudioComponentSource, FFAudioLayoutItemComponentSource, FFEffectStack, NSString;
+@class FFEffectStack, FFRole;
 
 @interface FFAudioObjectComponentsLayoutItem : FFAudioComponentsLayoutItem
 {
+    int m_itemType;
     BOOL m_enabled;
+    BOOL m_muted;
     FFEffectStack *m_effectStack;
-    NSString *m_role;
-    FFAudioLayoutItemComponentSource *m_componentSource;
-    BOOL m_forcePersistedEffectStack;
+    FFRole *m_role;
+    struct PC_CMTimePair m_scopeStartEndTimes;
+    BOOL m_isOrphan;
 }
 
 + (id)copyClassDescription;
-@property(readonly, nonatomic) FFAudioLayoutItemComponentSource *componentSource; // @synthesize componentSource=m_componentSource;
-@property(readonly, nonatomic) BOOL forcePersistedEffectStack; // @synthesize forcePersistedEffectStack=m_forcePersistedEffectStack;
-@property(readonly, nonatomic) NSString *role; // @synthesize role=m_role;
+@property(nonatomic) BOOL isOrphan; // @synthesize isOrphan=m_isOrphan;
+@property(readonly, nonatomic) struct PC_CMTimePair scopeStartEndTimes; // @synthesize scopeStartEndTimes=m_scopeStartEndTimes;
+@property(readonly, nonatomic) FFRole *role; // @synthesize role=m_role;
 @property(readonly, nonatomic) FFEffectStack *effectStack; // @synthesize effectStack=m_effectStack;
+@property(readonly, nonatomic) BOOL muted; // @synthesize muted=m_muted;
 @property(readonly, nonatomic) BOOL enabled; // @synthesize enabled=m_enabled;
-- (id)activeEffectStack;
+@property(readonly, nonatomic) int itemType; // @synthesize itemType=m_itemType;
+- (BOOL)isOrphanEligible;
+- (void)notifyRolesDidChangeForLibrary:(id)arg1 removedRoleUIDs:(id)arg2;
+- (void)_markRolePropertiesAsDirty;
+- (void)_setRoleInternal:(id)arg1;
+- (void)setRole:(id)arg1;
+- (id)roleUID;
+- (void)setRoleUID:(id)arg1;
+- (void)_setScopeStartEndTimes:(struct PC_CMTimePair)arg1;
+- (CDStruct_1b6d18a9)scopeEnd;
+- (CDStruct_1b6d18a9)scopeStart;
+- (id)orphanedRoleName;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
-@property(readonly, nonatomic) FFAudioComponentSource *persistentComponentSource;
-@property(readonly, nonatomic) FFEffectStack *persistentEffectStack;
 - (unsigned int)numOutputChannels:(unsigned int)arg1;
+- (BOOL)isEquivalentLayoutItemUsingOrphanCriteria:(id)arg1;
+- (CDStruct_bdcb2b0d)equivalenceMD5;
+- (id)newEquivalenceProperties;
 - (BOOL)isEqualToLayoutItem:(id)arg1;
+- (BOOL)hasFullPersistence;
+- (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)dealloc;
 - (id)initWithAudioComponentsLayoutItem:(id)arg1;
+- (id)initAsRoleType:(id)arg1 numChannels:(unsigned int)arg2;
 - (id)initWithName:(id)arg1 channelMap:(id)arg2 audioChannelRoutingMap:(id)arg3;
 - (id)initWithName:(id)arg1 channelMap:(id)arg2 audioChannelRoutingMap:(id)arg3 enabled:(BOOL)arg4;
 

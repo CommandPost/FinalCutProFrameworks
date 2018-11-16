@@ -15,7 +15,7 @@
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
 - (void)delayedRelease;
 - (void)delayedReleaseCB:(id)arg1;
-- (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
+- (void)resetOrAddAssociatedStyle:(const shared_ptr_e0e110e1 *)arg1 reset:(BOOL)arg2;
 - (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
 - (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
 - (void)dealloc;

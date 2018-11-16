@@ -20,6 +20,9 @@
 - (void)cut:(id)arg1;
 - (void)copy:(id)arg1;
 - (BOOL)needsPanelToBecomeKey;
+- (void)_drawEmptyColumnsForView:(id)arg1 inRect:(struct CGRect)arg2;
+- (id)_createColumn:(struct CGRect)arg1 empty:(BOOL)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -6,33 +6,31 @@
 
 #import <Flexo/FFSourceAudio.h>
 
-@class NSDictionary, NSSet;
+@class FFAnchoredObject, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FFAnchoredSequenceAudioSource : FFSourceAudio
 {
     BOOL _untimed;
-    NSSet *_roles;
+    FFAnchoredObject *_anchoredObject;
     NSDictionary *_componentsPlaybackInfo;
 }
 
 + (CDStruct_e83c9415)effectiveAudioClippedRangeForObject:(id)arg1 untimed:(BOOL)arg2;
 + (Class)streamClass;
-@property(retain, nonatomic) NSDictionary *componentsPlaybackInfo; // @synthesize componentsPlaybackInfo=_componentsPlaybackInfo;
-- (id)roles;
+@property(readonly, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObject;
 - (double)sampleRate;
-- (unsigned int)numberOfChannelsForStreamAudioFlags:(unsigned long long)arg1;
+- (unsigned int)numberOfChannelsForStreamAudioFlags:(unsigned int)arg1;
 - (unsigned int)numberOfChannels;
+- (id)newUntimedSource;
 - (id)newStreamForRenderWithOptions:(id)arg1;
 - (id)newStream:(id)arg1 options:(id)arg2;
 - (id)_adjustAudioStreamOptions:(id)arg1;
 - (CDStruct_e83c9415)timeRange;
 - (CDStruct_e83c9415)clippedTimeRange:(BOOL)arg1;
 - (CDStruct_e83c9415)unclippedTimeRange:(BOOL)arg1;
-- (id)anchoredObject;
 - (void)dealloc;
-- (id)initWithProvider:(id)arg1 untimed:(BOOL)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
-- (void)_rangeInvalidated:(id)arg1;
+- (id)initWithProvider:(id)arg1 untimed:(BOOL)arg2 componentsPlaybackInfo:(id)arg3;
 
 @end
 

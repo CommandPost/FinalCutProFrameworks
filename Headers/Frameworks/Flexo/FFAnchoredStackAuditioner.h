@@ -7,11 +7,15 @@
 #import "LKViewModule.h"
 
 #import "FFSkimmingModuleDelegate.h"
+#import "NSCollectionViewDataSource.h"
+#import "NSCollectionViewDelegate.h"
+#import "NSTouchBarProvider.h"
 
-@class CALayer, CAScrollLayer, FFAnchoredObject, FFAnchoredStack, FFAuditionerCoverFlowView, FFContext, FFSkimmingModule, LKButton, LKImageView, LKTextField, NSMatrix, NSMenu, NSMutableArray, NSString;
+@class FFAnchoredObject, FFAnchoredStack, FFAuditionCollectionView, FFContext, FFSkimmingModule, LKButton, LKEmptyDFRController, LKImageView, LKTextField, NSMatrix, NSMenu, NSMutableArray, NSString, NSTouchBar;
 
-@interface FFAnchoredStackAuditioner : LKViewModule <FFSkimmingModuleDelegate>
+@interface FFAnchoredStackAuditioner : LKViewModule <FFSkimmingModuleDelegate, NSCollectionViewDataSource, NSCollectionViewDelegate, NSTouchBarProvider>
 {
+    FFAuditionCollectionView *_auditionCollectionView;
     LKTextField *_auditioningCountField;
     LKTextField *_currentActiveNameRangeField;
     LKButton *_auditionButton;
@@ -19,41 +23,41 @@
     LKImageView *_leftFade;
     LKImageView *_rightFade;
     NSMenu *_contextualMenu;
-    FFAuditionerCoverFlowView *_coverFlowView;
     NSMatrix *_paginationMatrix;
     CDStruct_1b6d18a9 _playerOrigTime;
     CDStruct_1b6d18a9 _playerOrigTimeIn;
     CDStruct_1b6d18a9 _playerOrigTimeOut;
     BOOL _playerOrigLoop;
-    BOOL _auditionEnabled;
     BOOL _audition;
-    BOOL _layersCreated;
     BOOL _scrolling;
     BOOL _closing;
+    BOOL _firstItemDisplayed;
     FFAnchoredStack *_anchoredStack;
     FFContext *_playerContext;
     NSMutableArray *_observedVariants;
-    NSMutableArray *_variantFilmstrips;
-    NSMutableArray *_filmstripRelfections;
     struct FFProcrastinatedDispatch_t _procrastinatedReload;
     id _skimDelegate;
-    CAScrollLayer *_bodyLayer;
-    CALayer *_starLayer;
-    CALayer *_shadowLayer;
-    struct CATransform3D _sublayerTransform;
     FFSkimmingModule *_skimmingModule;
     struct CGSize _filmstripSize;
     int _selectedVariantIndex;
-    int _oldSelectedIndex;
     struct __CFDictionary *_layerDictionary;
     FFAnchoredObject *_originalPick;
+    LKEmptyDFRController *_dfrController;
 }
 
-+ (struct CGColor *)color:(int)arg1;
 @property(retain, nonatomic) FFAnchoredObject *originalPick; // @synthesize originalPick=_originalPick;
 @property(retain, nonatomic) id <FFAuditionerSkimDelegate> skimDelegate; // @synthesize skimDelegate=_skimDelegate;
 @property(retain, nonatomic) FFAnchoredStack *anchoredStack; // @synthesize anchoredStack=_anchoredStack;
 @property(retain, nonatomic) FFContext *playerContext; // @synthesize playerContext=_playerContext;
+- (void)updateSelectedClipDurationField;
+- (id)runtimeString;
+- (id)runtimeTimecode;
+- (void)_stopListeningToAnchoredStack:(id)arg1;
+- (void)_startListeningToAnchoredStack:(id)arg1;
+- (void)_stopListeningToVariant:(id)arg1;
+- (void)_startListeningToVariant:(id)arg1;
+- (void)rangeInvalidated:(id)arg1;
+- (void)_updateFilmstripForPick:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)rebuildStackItems;
 - (void)rebuildActiveVariant;
@@ -68,24 +72,13 @@
 - (double)skimmingModule:(id)arg1 timePerHorizontalPixelForSkimmingLayer:(id)arg2;
 - (id)skimmingModule:(id)arg1 skimmingLayerForSkimmable:(struct NSObject *)arg2;
 - (struct NSObject *)skimmingModule:(id)arg1 skimmableObjectAtPoint:(struct CGPoint)arg2;
-- (void)handleMouseMoved:(id)arg1;
-- (void)handleMouseDown:(id)arg1;
-- (id)variantItemAtPoint:(struct CGPoint)arg1;
-- (void)updateSelection;
-- (void)notScrollingAnymore;
-- (void)fixUpOpacityForNewSelection;
+- (void)mouseMoved:(id)arg1;
+- (void)updateSelection:(BOOL)arg1;
 - (void)moveSelection:(int)arg1;
 - (void)moveSelectionToIndex:(unsigned long long)arg1;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
-- (void)createLayersForCoverFlow;
-- (float)positionOfSelectedInBodyLayer;
-- (void)stackItemsChanged;
-- (id)filmstripForVariantAtIndex:(unsigned long long)arg1;
-- (void)cleanUpOldFilmstrips;
 - (id)layerForVariant:(id)arg1;
-- (unsigned long long)indexOfObservedVariant:(id)arg1;
 - (id)observedVariantAtIndex:(unsigned long long)arg1;
-- (unsigned long long)numberOfItemsInCoverFlow;
 - (BOOL)canBeginPlaying;
 - (BOOL)canSkimWithAudio;
 - (BOOL)canBeginSkimming;
@@ -103,11 +96,15 @@
 - (void)initiateAuditionWithActiveComponent;
 - (void)updateAuditioningClipNumberField;
 - (void)makeStackDelegatesActiveSelection;
-- (void)setAuditioningEnabled:(BOOL)arg1;
+- (void)selectAnchoredObject:(id)arg1;
+- (void)_resetPaginationMatrixWithCount:(unsigned long long)arg1;
 - (void)updatePaginationSelection;
+- (BOOL)collectionView:(id)arg1 acceptDrop:(id)arg2 indexPath:(id)arg3 dropOperation:(long long)arg4;
+- (unsigned long long)collectionView:(id)arg1 validateDrop:(id)arg2 proposedIndexPath:(id *)arg3 dropOperation:(long long *)arg4;
+- (id)collectionView:(id)arg1 itemForRepresentedObjectAtIndexPath:(id)arg2;
+- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)stopPlaying:(id)arg1;
 - (void)playPause:(id)arg1;
-- (void)pasteEffectsAsVariant:(id)arg1;
 - (void)newVariantFromActiveNoEffects:(id)arg1;
 - (void)newVariantFromCurrentInSelection:(id)arg1;
 - (void)newVersionOfSelected:(id)arg1;
@@ -133,17 +130,9 @@
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)viewDidLoad;
 - (id)identifier;
+@property(readonly) NSTouchBar *touchBar;
 - (void)dealloc;
 - (id)init;
-- (void)updateSelectedClipDurationField;
-- (id)runtimeString;
-- (id)runtimeTimecode;
-- (void)_stopListeningToAuditionEdit:(id)arg1;
-- (void)_startListeningToAuditionEdit:(id)arg1;
-- (void)_stopListeningToVariant:(id)arg1;
-- (void)_startListeningToVariant:(id)arg1;
-- (void)rangeInvalidated:(id)arg1;
-- (void)_updateFilmstripForPick:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

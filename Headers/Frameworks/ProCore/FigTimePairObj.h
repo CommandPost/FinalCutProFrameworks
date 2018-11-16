@@ -15,7 +15,6 @@
 }
 
 + (id)pairWithPair:(struct PC_CMTimePair)arg1;
-- (id).cxx_construct;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)getValue:(struct PC_CMTimePair *)arg1;

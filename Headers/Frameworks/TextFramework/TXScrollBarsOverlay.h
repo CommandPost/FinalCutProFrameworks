@@ -56,7 +56,6 @@
 - (BOOL)enablePreview;
 - (id)getCursorWithEvent:(id)arg1;
 - (void)drawScrollBar:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
-- (void)drawScrollButtons:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
 - (void)drawContainerPit:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
 - (void)drawContainerBG:(struct GL *)arg1 asOutline:(_Bool)arg2 asTicker:(_Bool)arg3;
 - (void)drawContainer:(struct GL *)arg1 drawScrollbar:(_Bool)arg2 asOutline:(_Bool)arg3 asTicker:(_Bool)arg4;

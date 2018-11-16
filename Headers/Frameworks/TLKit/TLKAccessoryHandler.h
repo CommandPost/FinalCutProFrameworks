@@ -6,10 +6,13 @@
 
 #import <TLKit/TLKTimelineHandler.h>
 
+@class TLKAccessoryLayer;
+
 @interface TLKAccessoryHandler : TLKTimelineHandler
 {
     BOOL _dragFallbackSupported;
     BOOL _abortAccessoryDragAndEngageFallback;
+    TLKAccessoryLayer *_currentRolloverAccessoryLayer;
 }
 
 - (id)stringForToolTipAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
@@ -17,6 +20,7 @@
 - (BOOL)shouldAutoscroll:(id)arg1;
 - (void)flagsChanged:(id)arg1;
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (void)_updateCurrentRolloverAccessoryLayer:(id)arg1 eventContext:(id)arg2;
 - (void)exitRollover:(id)arg1;
 - (void)updateRollover:(id)arg1;
 - (BOOL)enterRollover:(id)arg1;
@@ -27,6 +31,7 @@
 - (BOOL)_setupAccessoryLayer:(id)arg1 andStartTracking:(id)arg2;
 - (BOOL)_isTimelineLayer:(id)arg1;
 - (void)applyConfiguration:(id)arg1;
+- (void)dealloc;
 
 @end
 

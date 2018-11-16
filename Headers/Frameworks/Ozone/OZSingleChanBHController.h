@@ -10,7 +10,7 @@
 {
 }
 
-- (id)initWithBehaviors:(list_fc228e28 *)arg1;
+- (id)initWithBehaviors:(list_de2015bc *)arg1;
 
 @end
 

@@ -8,14 +8,16 @@
 
 #import "FFAudioComponentsLayoutMapDelegate.h"
 #import "FFSegmentedSourceProtocol.h"
+#import "FFStoryline.h"
 
-@class FFAudioClipComponentsLayoutMap, FFEffectStack, FFMD5AndOffset, FFVideoProps, FFVideoSegmenter, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class FFAudioClipComponentsLayoutMap, FFCollectionFades, FFEffectStack, FFMD5AndOffset, FFRoleCache, FFVideoProps, FFVideoSegmenter, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 
-@interface FFAnchoredCollection : FFAnchoredObject <FFSegmentedSourceProtocol, FFAudioComponentsLayoutMapDelegate>
+@interface FFAnchoredCollection : FFAnchoredObject <FFStoryline, FFSegmentedSourceProtocol, FFAudioComponentsLayoutMapDelegate>
 {
     CDStruct_1b6d18a9 _unclippedStart;
     NSMutableArray *_containedItems;
     FFVideoSegmenter *_videoSegmenter;
+    FFCollectionFades *_fades;
     CDStruct_e83c9415 _cachedUntimedUnclippedRange;
     CDStruct_e83c9415 _cachedUnclippedRange;
     BOOL _lanesSorted;
@@ -45,14 +47,17 @@
     NSString *_angleID;
     NSDate *_contentCreated;
     FFAudioClipComponentsLayoutMap *_audioComponentsLayoutMap;
-    NSMutableSet *_rolesCacheForkFPlayAll;
+    FFRoleCache *_roleCache;
     FFMD5AndOffset *_cachedAudioMD5;
     FFMD5AndOffset *_cachedAudioMD5_NoIntrinsics;
+    BOOL _audioComponentsLayoutMapNeedsLoadSync;
 }
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)copyClassDescription;
 + (void)initialize;
++ (id)storylineWithItems:(id)arg1;
+@property(readonly, nonatomic) FFCollectionFades *fades; // @synthesize fades=_fades;
 @property(nonatomic) BOOL isSyncronized; // @synthesize isSyncronized=_isSyncronized;
 @property(retain, nonatomic) NSDate *contentCreated; // @synthesize contentCreated=_contentCreated;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5_NoIntrinsics; // @synthesize cachedAudioMD5_NoIntrinsics=_cachedAudioMD5_NoIntrinsics;
@@ -63,11 +68,14 @@
 @property(nonatomic) BOOL isFreezeFrame; // @synthesize isFreezeFrame=_isFreezeFrame;
 @property(nonatomic) BOOL isPSD; // @synthesize isPSD=_isPSD;
 @property(nonatomic) BOOL isCompoundClip; // @synthesize isCompoundClip=_isCompoundClip;
+@property(retain, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
 @property(readonly, nonatomic) FFVideoSegmenter *videoSegmenter; // @synthesize videoSegmenter=_videoSegmenter;
 @property(readonly, retain, nonatomic) NSArray *containedItems; // @synthesize containedItems=_containedItems;
 @property(retain, nonatomic) NSString *angleID; // @synthesize angleID=_angleID;
+- (id)newTopLevelObjectsAtTimeSortedByLaneIndex:(CDStruct_1b6d18a9)arg1;
 - (id)createUsedRangesMediaIdentifier;
 - (void)_angleCountOrBankChanged;
+- (void)setUserDefaultsToCurrentVideoAndAudioAnglesIfUnset;
 - (void)setAudioAngles:(id)arg1;
 - (id)audioAngles;
 - (void)setVideoAngle:(id)arg1;
@@ -80,6 +88,8 @@
 - (long long)metadataRotationAngle;
 - (void)setMetadataDeinterlaceType:(long long)arg1;
 - (long long)metadataDeinterlaceType;
+- (void)setColorSpaceOverride:(long long)arg1;
+- (long long)colorSpaceOverride;
 - (void)setMetadataAnamorphicType:(long long)arg1;
 - (long long)metadataAnamorphicType;
 - (void)setMetadataFieldDominanceOverride:(long long)arg1;
@@ -93,20 +103,22 @@
 - (id)componentForTrim;
 - (id)_metadataMediaComponent;
 - (id)_metadataAsset;
-- (void)_resetAudioComponentsLayoutMap;
+- (void)_updateAudioComponentsLayoutMap;
+- (void)disableAudioComponents;
 - (id)anchoredObjectsForAudioComponentsLayoutKey:(id)arg1;
-- (id)activeAudioComponentsLayoutKeys;
-- (BOOL)_shouldPlayAudioComponents;
+- (void)setAudioComponentsLayoutMap:(id)arg1;
+- (BOOL)canSetAudioComponentsLayoutMap;
 - (id)audioComponentsLayoutMap;
-- (void)demandAudioComponentSources:(int)arg1;
-@property(readonly, nonatomic) FFAudioClipComponentsLayoutMap *persistentAudioComponentsLayoutMap;
+- (void)_ensureMediaRefAudioComponentsLayoutMapLoadSynced:(id)arg1;
 - (id)onScreenControls;
+- (id)inspectableObjectForAudioComponents;
 - (id)inspectableChannelsForIdentifier:(id)arg1;
 - (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
 - (id)inspectorTabIdentifiers;
-- (id)inspectorTabClassNames;
 - (void)addAnyTransitionRelationshipsForContainedObject:(id)arg1;
 - (BOOL)supportsSegmentation;
+- (BOOL)checkLanesForOverlaps;
 - (id)lanes;
 - (void)_updateCollectionLanes;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
@@ -114,13 +126,11 @@
 - (void)_clearCachedAudioMD5;
 - (void)setStartingTimecode:(CDStruct_1b6d18a9)arg1;
 - (BOOL)supportsRoles;
-- (void)resetRoles;
-- (void)addRole:(id)arg1;
 - (id)rolesWithPlayEnable:(int)arg1;
 - (void)clearRolesCacheIfSet;
 - (double)nativeAudioSampleRate;
 - (double)maxDescendantAudioSampleRate;
-- (long long)nativeAudioChannelCount:(int)arg1;
+- (unsigned int)nativeAudioChannelCount:(int)arg1;
 @property(retain, nonatomic) FFVideoProps *videoProps; // @synthesize videoProps=_videoProps;
 - (id)_copyCalculatedVideoProps_Internal;
 - (id)_rawVideoProps;
@@ -130,20 +140,12 @@
 - (CDStruct_1b6d18a9)editingFrameDuration;
 - (CDStruct_1b6d18a9)timeOffset;
 - (CDStruct_e83c9415)mediaRange;
-- (id)newProviderWithEffectCount:(long long)arg1;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
-- (id)newProviderWithEffectCount:(long long)arg1 audioAngles:(id)arg2 videoAngle:(id)arg3 toLane:(long long)arg4 showOnlyObjects:(id)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8;
+- (id)_newProviderWithOptions:(id)arg1;
+- (id)_newProviderWithOptions:(id)arg1 audioAngles:(id)arg2 videoAngle:(id)arg3;
 - (id)newProvider;
 - (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 clippedByContainer:(BOOL)arg6 audioAngles:(id)arg7 videoAngle:(id)arg8 roles:(id)arg9 angleOffset:(long long)arg10 angleCount:(long long)arg11;
 - (id)newSegmentedSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 audioAngles:(id)arg6 videoAngle:(id)arg7 toLane:(long long)arg8 showOnlyObjects:(id)arg9 roles:(id)arg10 angleOffset:(long long)arg11 angleCount:(long long)arg12 clippedByContainer:(BOOL)arg13;
-- (CDStruct_e83c9415)untimedCombinedAudioVideoClippedRange;
-- (CDStruct_e83c9415)untimedAudioClippedRange;
-- (CDStruct_e83c9415)untimedClippedRange;
-- (CDStruct_e83c9415)untimeAudioRange:(CDStruct_e83c9415)arg1;
-- (CDStruct_e83c9415)untimeRange:(CDStruct_e83c9415)arg1;
-- (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)containsMultiAngle;
 - (id)referenceAngleForContainer;
 - (id)videoAngleObject;
@@ -151,6 +153,9 @@
 - (id)availableMultiAngleIDs;
 - (id)availableMultiAngleObjects;
 - (void)_updateCachedMultiAngles;
+- (void)setFadeObject:(int)arg1 time:(CDStruct_1b6d18a9)arg2 duration:(CDStruct_1b6d18a9)arg3;
+- (BOOL)hasFadeObject:(int)arg1;
+- (CDStruct_e83c9415)projectFadeTimeRange:(int)arg1;
 - (id)anchorableTimeRangesForTimePreservingMode;
 - (id)anchorableTimeRangesByIgnoringItems:(id)arg1;
 - (id)_indexesOfUnanchorableSegmentsInSegments:(id)arg1;
@@ -175,9 +180,8 @@
 - (void)_processDeferredUpdates;
 - (void)_sendDeferredUpdate:(id)arg1 sendDuration:(BOOL)arg2 doesntChangeGrid:(BOOL)arg3;
 - (CDStruct_e83c9415)_retimeInvalidRange:(CDStruct_e83c9415)arg1;
-- (void)_enumerateDescendentAnchoredObjects:(BOOL)arg1 includeSelf:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 descend:(char *)arg4 stop:(char *)arg5;
+- (void)_enumerateDescendentAnchoredObjectsWithOptions:(unsigned int)arg1 includeAnchored:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 descend:(char *)arg4 stop:(char *)arg5;
 - (void)_descendentAnchoredObject:(id)arg1 includingSelf:(BOOL)arg2;
-- (id)descendentAnchoredComponents:(BOOL)arg1 containerTimeRange:(CDStruct_e83c9415)arg2 useAudioRange:(BOOL)arg3 container:(id)arg4;
 - (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
 - (id)descendentCompositedObjects;
 - (id)descendentCompositedObjects:(BOOL)arg1 containerTimeRange:(CDStruct_e83c9415)arg2 useAudioRange:(BOOL)arg3 container:(id)arg4;
@@ -188,7 +192,7 @@
 - (id)itemsAtTime:(CDStruct_1b6d18a9)arg1 ofItemTypes:(id)arg2 iterationFlags:(int)arg3;
 - (id)itemsIntersectingRange:(CDStruct_e83c9415)arg1 iterationFlags:(int)arg2;
 - (id)itemsAtTime:(CDStruct_1b6d18a9)arg1 iterationFlags:(int)arg2;
-- (CDStruct_e83c9415)_clippedRangeOfItem:(id)arg1 includeOpenSplits:(BOOL)arg2 includeAllSplits:(BOOL)arg3;
+- (CDStruct_e83c9415)_clippedRangeOfItem:(id)arg1 iterationFlags:(int)arg2;
 - (id)firstAudioAnchoredComponent;
 - (id)firstVideoAnchoredComponent;
 - (void)returnContainedComponentsIn:(id)arg1;
@@ -202,9 +206,10 @@
 - (BOOL)hasAudioIncludingVariants;
 - (BOOL)hasVideoIncludingVariants;
 - (BOOL)_hasVideoIncludingVariants;
-- (BOOL)hasVideo;
+@property(readonly, nonatomic) BOOL hasVideo;
 - (BOOL)_hasVideo;
-- (BOOL)hasAudio;
+- (BOOL)supportsAudio;
+@property(readonly, nonatomic) BOOL hasAudio;
 - (BOOL)_hasAudio;
 - (CDStruct_e83c9415)effectiveAudioRangeOfObject:(id)arg1 andOffset:(CDStruct_1b6d18a9 *)arg2;
 - (CDStruct_e83c9415)effectiveAudioRangeOfObjectIncludingTransitions:(id)arg1;
@@ -220,24 +225,26 @@
 - (CDStruct_e83c9415)_oldEffectiveRangeOfObject:(id)arg1 clippedByTransitions:(BOOL)arg2 useAudioRanges:(BOOL)arg3;
 - (CDStruct_e83c9415)_newEffectiveRangeOfObject:(id)arg1 clippedByTransitions:(BOOL)arg2 useAudioRanges:(BOOL)arg3;
 - (CDStruct_e83c9415)unclippedRange;
+- (void)setClippedRange:(CDStruct_e83c9415)arg1;
 - (void)_ensureRetimeCurveUpdatedIfNeededOrWarnOnly:(BOOL)arg1;
 - (CDStruct_e83c9415)untimedUnclippedRange;
 - (void)_computeUntimedUnclippedRange;
 - (CDStruct_e83c9415)_calculatedTimeRangeOfSpine:(BOOL)arg1 anchors:(BOOL)arg2;
-- (CDStruct_1b6d18a9)childToParentOffsetForChild:(id)arg1;
-- (CDStruct_1b6d18a9)_childOffsetForObject:(id)arg1;
+- (CDStruct_1b6d18a9)childToParentOffsetForChildCachingSiblings:(id)arg1;
+- (CDStruct_1b6d18a9)_childOffsetForObjectCachingSiblings:(id)arg1;
 - (CDStruct_1b6d18a9)unclippedStart;
 - (void)setUnclippedStart:(CDStruct_1b6d18a9)arg1;
-- (void)informParentIsCompoundClipChanged:(BOOL)arg1;
+- (void)informContainedItemsAddedRemovedOrPlayEnableChanged:(unsigned int)arg1;
 - (id)_containedAssets;
-- (void)informParentContainedItemsChanged:(BOOL)arg1;
+- (void)informParentContainedItemsChanged:(unsigned int)arg1;
 - (void)clearCalculatedVideoProps;
 - (void)clearCachedValues;
-- (void)clearAudioValues;
+- (void)clearCachedAudioValues;
 - (void)_setIgnoreClearForContained:(BOOL)arg1;
 - (void)setParentItem:(id)arg1;
 - (id)newCompositedSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 clippedByContainer:(BOOL)arg6 container:(id)arg7 bgSource:(id)arg8 bgOffset:(CDStruct_1b6d18a9)arg9 bgIdentifier:(id)arg10 bgRange:(CDStruct_e83c9415)arg11 numberOfRows:(long long)arg12 numberOfCols:(long long)arg13 angle:(long long)arg14 roles:(id)arg15 angleOffset:(long long)arg16 angleCount:(long long)arg17;
 - (BOOL)removeAnchoredObject:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)objectInContainedItems:(id)arg1;
 - (BOOL)isAudioOnlyCollectionForEdits:(id)arg1;
 - (BOOL)isAudioOnlyCollection;
@@ -248,14 +255,16 @@
 - (BOOL)isCollection;
 - (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
+- (id)supportedColorSpaceOverrides;
+- (BOOL)supportsColorSpaceOverride;
+- (id)firstAssetIfOnlyOneVideo;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
 - (BOOL)removeObjectFromContainedItems:(id)arg1;
 - (void)removeObjectFromContainedItemsAtIndex:(unsigned long long)arg1;
+- (void)addObjectToContainedItems:(id)arg1;
 - (void)insertObject:(id)arg1 inContainedItemsAtIndex:(unsigned long long)arg2;
-- (id)secondaryEffectStack;
-- (id)primaryEffectStack;
-@property(retain, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
+- (id)localAudioEffects;
 @property(retain, nonatomic) FFEffectStack *videoEffects; // @synthesize videoEffects=_videoEffects;
 - (void)logContent;
 - (id)_describeAdditionalObjectsWithIndent:(long long)arg1 recurse:(BOOL)arg2;
@@ -263,20 +272,56 @@
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)shouldEncodeAudioEffectsWithCoder:(id)arg1;
 - (BOOL)shouldEncodeVideoEffectsWithCoder:(id)arg1;
+- (id)awakeAfterUsingCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (oneway void)release;
 - (id)initWithDisplayName:(id)arg1;
 - (id)initWithDisplayName:(id)arg1 multiClip:(BOOL)arg2;
 - (id)allContainedItems;
-- (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3;
 - (id)type;
+@property(readonly, nonatomic) BOOL reflectsEntireMedia;
+- (id)clipWithURL:(id)arg1 timeRange:(CDStruct_e83c9415)arg2 name:(id)arg3;
+- (id)clipWithURL:(id)arg1 timeRange:(CDStruct_e83c9415)arg2;
+- (id)mediaForFileURL:(id)arg1;
+- (void)removeStorylineItems:(id)arg1;
+- (void)addStorylineItems:(id)arg1;
+@property(copy, nonatomic) NSArray *storylineItems;
 - (void)removeMediaSources:(id)arg1;
+- (void)addMediaSources:(id)arg1 useMediaSourceRole:(BOOL)arg2;
 - (void)addMediaSources:(id)arg1;
-- (void)removeMediaSource:(id)arg1;
-- (void)moveMediaSource:(id)arg1 toIndex:(unsigned long long)arg2;
-- (void)copyMediaSource:(id)arg1 toIndex:(unsigned long long)arg2;
-- (id)copyXMLValueForRole:(id)arg1;
+
+// Remaining properties
+@property(readonly, nonatomic) NSSet *anchoredStoryItems;
+@property(readonly, nonatomic) id <FFStorylineItem> anchoredToStoryItem;
+@property(readonly, nonatomic) CDStruct_e83c9415 assetTimeRange;
+@property(copy, nonatomic) id audioRoleIdentifier;
+@property(readonly, nonatomic) NSSet *audioRoleIdentifiers;
+@property(readonly, nonatomic) unsigned long long contentsMask;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) BOOL isAnchored;
+@property(readonly, nonatomic) BOOL isAudioOnly;
+@property(readonly, nonatomic) BOOL isPrimaryComponent;
+@property(readonly, nonatomic) BOOL isSecondaryComponent;
+@property(readonly, nonatomic) BOOL isSpineItem;
+@property(readonly, nonatomic) BOOL isStorylineClip;
+@property(readonly, nonatomic) BOOL isVideoOnly;
+@property(readonly, nonatomic) id <FFStorylineItem> nextStoryItem;
+@property(readonly, nonatomic) id <FFStorylineItem> parentStoryItem;
+@property(readonly, nonatomic) id <FFStorylineItem> previousStoryItem;
+@property(readonly, nonatomic) unsigned long long storyItemSubType;
+@property(readonly, nonatomic) unsigned long long storyItemType;
+@property(readonly, nonatomic) id <FFStoryline> storyline;
+@property(readonly, nonatomic) id <FFStorylineClip> storylineClip;
+@property(readonly, nonatomic) unsigned long long storylineRegion;
+@property(readonly) Class superclass;
+@property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
+@property(nonatomic) CDStruct_e83c9415 timeRangeInAsset;
+@property(nonatomic) long long verticalIndex;
+@property(copy, nonatomic) id videoRoleIdentifier;
+@property(readonly, nonatomic) NSSet *videoRoleIdentifiers;
 
 @end
 

@@ -12,13 +12,13 @@ __attribute__((visibility("hidden")))
 @interface FFAudioDuckingWriteChannelsInfo : NSObject
 {
     NSSet *m_updateObjects;
-    struct vector<FFAudioDuckingChannelData *, std::allocator<FFAudioDuckingChannelData *>> *m_channelDataList;
+    struct vector<FFAudioDuckingChannelData *, std::__1::allocator<FFAudioDuckingChannelData *>> *m_channelDataList;
 }
 
-@property(readonly, nonatomic) struct vector<FFAudioDuckingChannelData *, std::allocator<FFAudioDuckingChannelData *>> *channelDataList; // @synthesize channelDataList=m_channelDataList;
+@property(readonly, nonatomic) struct vector<FFAudioDuckingChannelData *, std::__1::allocator<FFAudioDuckingChannelData *>> *channelDataList; // @synthesize channelDataList=m_channelDataList;
 @property(readonly, nonatomic) NSSet *updateObjects; // @synthesize updateObjects=m_updateObjects;
 - (void)dealloc;
-- (id)initWithUpdateObjects:(id)arg1 andChannelDataList:(struct vector<FFAudioDuckingChannelData *, std::allocator<FFAudioDuckingChannelData *>> *)arg2;
+- (id)initWithUpdateObjects:(id)arg1 andChannelDataList:(struct vector<FFAudioDuckingChannelData *, std::__1::allocator<FFAudioDuckingChannelData *>> *)arg2;
 
 @end
 

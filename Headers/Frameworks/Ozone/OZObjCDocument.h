@@ -6,9 +6,11 @@
 
 #import "NSDocument.h"
 
+#import "OZDocumentOwner.h"
+
 @class NSCalendarDate, NSMutableArray, NSString, NSTimer, OZDocumentKeyResponder, OZSaveAsTemplateController, OZTemporaryUndoHandler;
 
-@interface OZObjCDocument : NSDocument
+@interface OZObjCDocument : NSDocument <OZDocumentOwner>
 {
     struct OZDocument *_document;
     OZTemporaryUndoHandler *_tempUndoHandler;
@@ -31,6 +33,7 @@
     struct FFPMRSimpleTimer _pmrTimer;
     unsigned long long _numFramesToExport;
     OZSaveAsTemplateController *_saveAsTemplateController;
+    BOOL _isAppActive;
 }
 
 + (void)checkAutosaveVaultMax;
@@ -43,7 +46,6 @@
 + (id)createUniqueUntitledName:(id)arg1;
 + (id)autosaveVaultPath;
 @property(readonly, nonatomic) OZDocumentKeyResponder *documentKeyResponder; // @synthesize documentKeyResponder=_documentKeyResponder;
-- (id).cxx_construct;
 - (void)exportWillStart:(unsigned long long)arg1;
 - (void)watchProgressFFQTMovieExporter;
 - (void)QTProgressFinished:(id)arg1;
@@ -66,7 +68,7 @@
 - (id)autosaveBuildName:(id)arg1 extension:(id)arg2 date:(id)arg3;
 - (void)autosaveUpdate;
 - (void)processInkGestureEvent:(struct _gestureEventContiner *)arg1;
-- (id)renderedImage:(double *)arg1;
+- (shared_ptr_1a5c5a10)renderedImage:(double *)arg1;
 - (void)document:(id)arg1 didRunPrintOperation:(BOOL)arg2 contextInfo:(void *)arg3;
 - (void)printShowingPrintPanel:(BOOL)arg1;
 - (void)setTemplateTheme:(id)arg1;
@@ -135,6 +137,12 @@
 - (BOOL)isProcessing;
 - (id)initWithOZDocument:(struct OZDocument *)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

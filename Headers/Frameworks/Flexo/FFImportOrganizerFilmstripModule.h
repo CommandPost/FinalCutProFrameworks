@@ -14,9 +14,11 @@
     NSOperationQueue *_operationQueue;
     NSTreeNode *_changedChildNode;
     BOOL _importWindowClosing;
+    BOOL _viewSwitcherHidden;
 }
 
 + (id)defaultModuleNibName;
+@property(getter=isViewSwitcherHidden) BOOL viewSwitcherHidden; // @synthesize viewSwitcherHidden=_viewSwitcherHidden;
 @property(getter=isImportWindowClosing) BOOL importWindowClosing; // @synthesize importWindowClosing=_importWindowClosing;
 - (BOOL)shouldAlwaysPlacePlayhead;
 - (void)performEditAction;
@@ -33,17 +35,18 @@
 - (id)fileSystemRootNode;
 - (void)removeSelectionMarkers:(id)arg1 onlyRemoveOverlap:(BOOL)arg2 addSelectionMarkers:(id)arg3 extendingSelection:(BOOL)arg4;
 - (void)modifySelectionMarkersFromClip:(id)arg1 removeRange:(CDStruct_e83c9415)arg2 onlyRemoveOverlap:(BOOL)arg3 rangeToAdd:(CDStruct_e83c9415)arg4 newSelection:(id)arg5 extending:(BOOL)arg6;
+- (id)touchBar;
 - (void)_saveProjectRelatedPersistentStates;
 - (void)_restoreProjectRelatedPersistentStates;
 - (void)_restoreProjectRelatedSelectionStates;
 - (void)_saveProjectRelatedSelectionStates;
 - (long long)_bytesUsedByNode:(id)arg1;
+- (BOOL)useFilterPulldownMenu;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)loop:(id)arg1;
 - (void)importClipsWithKeywords:(id)arg1 toEvent:(id)arg2;
 - (void)postImportDidBeginNotification;
-- (void)_startProcessFilesOperation:(id)arg1;
-- (id)viewSwitcherSegementedControl;
+- (void)stopProcessingFilesModal:(id)arg1;
 - (BOOL)finishedLoading;
 - (void)updateItemsString;
 - (id)numberOfItemsString;

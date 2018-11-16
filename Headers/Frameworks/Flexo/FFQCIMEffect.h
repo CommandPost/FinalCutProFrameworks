@@ -26,9 +26,11 @@ __attribute__((visibility("hidden")))
 - (Class)defaultAdjustmentToolForEffect;
 - (id)designatedChannelsForXMLExport;
 - (BOOL)hasDesignatedChannelsForXMLExport;
+- (void)adjustImportedTextForField:(unsigned long long)arg1;
 - (id)defaultTextForField:(unsigned long long)arg1;
 - (BOOL)setLightGrayBackgroundForField:(unsigned long long)arg1;
 - (BOOL)shrinkToFit;
+- (BOOL)wantsXMLStyledText;
 - (BOOL)allowsFontEditing;
 - (BOOL)scaleFieldHeightToTextHeight;
 - (int)verticalAlignmentModeForField:(unsigned long long)arg1;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)boundingBoxForField:(unsigned long long)arg1;
 - (void)setTextString:(id)arg1 forField:(unsigned long long)arg2;
 - (void)setText:(id)arg1 forField:(unsigned long long)arg2;
+- (id)stringForField:(unsigned long long)arg1;
 - (id)textForField:(unsigned long long)arg1;
 - (unsigned long long)textFieldCount;
 - (BOOL)wantsGammaCompositing;
@@ -52,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)backgroundIndex2Channel;
 - (id)backgroundIndexChannel;
 - (void)createChannelsInFolder:(id)arg1;
-- (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1 use4K:(BOOL)arg2;
 - (BOOL)usesBackgroundComposition;
 - (id)_ensureSomeNonwhitespace:(id)arg1;
 - (BOOL)_splitMultipleLines;

@@ -26,7 +26,6 @@
     struct CGRect _precisionFrame;
 }
 
-- (id).cxx_construct;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
 - (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
 - (void)_updateOnRandomChange:(struct TXNumberGenerator *)arg1;

@@ -6,7 +6,7 @@
 
 #import <Flexo/FFResponderLayer.h>
 
-@class CALayer, CATextLayer, LKTextField, NSProThemeFacet, NSString, TLKThemeBackedLayer;
+@class CALayer, CATextLayer, FFImageLayer, LKTextField, NSImage, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFSpeedSegmentLayer : FFResponderLayer
@@ -24,10 +24,10 @@ __attribute__((visibility("hidden")))
     LKTextField *_speedTextField;
     CATextLayer *_speedTextLayer;
     CATextLayer *_tempTextLayer;
-    TLKThemeBackedLayer *_backgroundLayer;
-    TLKThemeBackedLayer *_patternLayer;
-    TLKThemeBackedLayer *_menuIndicatorLayer;
-    TLKThemeBackedLayer *_mascotLayer;
+    FFImageLayer *_backgroundLayer;
+    CALayer *_patternLayer;
+    FFImageLayer *_menuIndicatorLayer;
+    FFImageLayer *_mascotLayer;
     struct CGRect _rect;
     struct CGRect _itemRect;
     struct CGRect _visibleRect;
@@ -36,30 +36,31 @@ __attribute__((visibility("hidden")))
     BOOL _active;
     BOOL _showGrabber;
     BOOL _showSmoothEndTransitionMenu;
-    NSProThemeFacet *_rabbitFacet;
-    NSProThemeFacet *_tortoiseFacet;
-    NSProThemeFacet *_reverseRabbitFacet;
-    NSProThemeFacet *_reverseTortoiseFacet;
-    NSProThemeFacet *_reverseFacet;
-    NSProThemeFacet *_normalSpeedFacet;
-    NSProThemeFacet *_slowSpeedFacet;
-    NSProThemeFacet *_fastSpeedFacet;
-    NSProThemeFacet *_holdSpeedFacet;
-    NSProThemeFacet *_normalSpeedActiveFacet;
-    NSProThemeFacet *_slowSpeedActiveFacet;
-    NSProThemeFacet *_fastSpeedActiveFacet;
-    NSProThemeFacet *_holdSpeedActiveFacet;
-    NSProThemeFacet *_normalSpeedNarrowFacet;
-    NSProThemeFacet *_slowSpeedNarrowFacet;
-    NSProThemeFacet *_fastSpeedNarrowFacet;
-    NSProThemeFacet *_holdSpeedNarrowFacet;
-    NSProThemeFacet *_normalSpeedNarrowActiveFacet;
-    NSProThemeFacet *_slowSpeedNarrowActiveFacet;
-    NSProThemeFacet *_fastSpeedNarrowActiveFacet;
-    NSProThemeFacet *_holdSpeedNarrowActiveFacet;
-    NSProThemeFacet *_reversePatternFacet;
-    NSProThemeFacet *_menuIndicatorFacet;
-    NSProThemeFacet *_menuIndicatorActiveFacet;
+    NSImage *_rabbitFacetImage;
+    NSImage *_tortoiseFacetImage;
+    NSImage *_reverseRabbitFacetImage;
+    NSImage *_reverseTortoiseFacetImage;
+    NSImage *_reverseFacetImage;
+    NSImage *_holdFacetImage;
+    NSImage *_normalSpeedImage;
+    NSImage *_slowSpeedImage;
+    NSImage *_fastSpeedImage;
+    NSImage *_holdSpeedImage;
+    NSImage *_normalSpeedActiveImage;
+    NSImage *_slowSpeedActiveImage;
+    NSImage *_fastSpeedActiveImage;
+    NSImage *_holdSpeedActiveImage;
+    NSImage *_normalSpeedNarrowImage;
+    NSImage *_slowSpeedNarrowImage;
+    NSImage *_fastSpeedNarrowImage;
+    NSImage *_holdSpeedNarrowImage;
+    NSImage *_normalSpeedNarrowActiveImage;
+    NSImage *_slowSpeedNarrowActiveImage;
+    NSImage *_fastSpeedNarrowActiveImage;
+    NSImage *_holdSpeedNarrowActiveImage;
+    NSImage *_menuIndicatorImage;
+    NSImage *_menuIndicatorActiveImage;
+    NSImage *_menuIndicatorRolloverImage;
     struct CGSize _themeFacetImageSize;
     struct CGSize _themeFacetBottomLeft;
     struct CGSize _themeFacetTopRight;
@@ -146,6 +147,7 @@ __attribute__((visibility("hidden")))
 - (void)deselectSpeedLabel;
 - (void)selectSpeedLabel;
 - (BOOL)isSelected;
+- (void)setMenuIndicatorState:(long long)arg1;
 - (id)menuIndicatorLayer;
 - (BOOL)pointInMenuIndicatorRect:(struct CGPoint)arg1;
 - (BOOL)pointInSpeedLabelRect:(struct CGPoint)arg1;

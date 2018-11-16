@@ -8,7 +8,7 @@
 
 #import "OZRenderClient.h"
 
-@class OZPreviewPlayButtonView;
+@class NSImage, OZPreviewPlayButtonView;
 
 @interface OZImagePreview : LKImageView <OZRenderClient>
 {
@@ -16,14 +16,14 @@
     struct PCMutex *_lock;
     id _renderDelegate;
     BOOL _shouldDrawBackground;
-    long long _customElementID;
-    long long _customPartID;
+    BOOL _selected;
+    NSImage *_customFrameImage;
     OZPreviewPlayButtonView *_playButtonView;
 }
 
 @property(nonatomic) OZPreviewPlayButtonView *playButtonView; // @synthesize playButtonView=_playButtonView;
 - (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
-- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_3bf61ddf *)arg2;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (double)getInset;
@@ -34,7 +34,7 @@
 - (void)display:(struct OZRenderNode *)arg1;
 - (struct OZRenderManager *)renderManagerForNode:(struct OZRenderNode *)arg1;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)setCustomFrameElement:(long long)arg1 part:(long long)arg2;
+- (void)setCustomFrameImage:(id)arg1;
 - (void)setShouldDrawBackground:(BOOL)arg1;
 - (void)setImage:(id)arg1;
 - (id)image;

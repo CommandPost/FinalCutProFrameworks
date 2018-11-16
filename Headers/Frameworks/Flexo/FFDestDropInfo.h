@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) BOOL dropCountIsExact; // @synthesize dropCountIsExact=_dropCountIsExact;
 @property(readonly) CDStruct_1b6d18a9 timeDropped; // @synthesize timeDropped=_timeDropped;
 @property(readonly) struct FFTimeAndTimebasePair timeDropDetected; // @synthesize timeDropDetected=_timeDropDetected;
-- (id).cxx_construct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initForDroppedTime:(CDStruct_1b6d18a9)arg1 dropCount:(int)arg2 countIsExact:(BOOL)arg3;

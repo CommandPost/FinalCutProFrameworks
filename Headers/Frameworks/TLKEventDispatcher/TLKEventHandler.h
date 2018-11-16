@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSView, PMRStopwatch;
+@class NSString, NSView, PMRStopwatch;
 
 @interface TLKEventHandler : NSObject
 {
@@ -19,8 +19,11 @@
         unsigned int isCanceled:1;
         unsigned int RESERVED:28;
     } _ehFlags;
+    NSString *_identifier;
+    BOOL _disableReload;
 }
 
+@property BOOL disableReload; // @synthesize disableReload=_disableReload;
 - (id)view;
 - (id)identifier;
 - (id)eventDescriptions;

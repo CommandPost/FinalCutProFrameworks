@@ -11,10 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)library;
 - (void)controlUpdated:(id)arg1;
-- (id)tileTypeFacet;
+- (id)tileGlyphString;
 - (id)metadataKey;
-- (void)setRoleSets:(id)arg1 selectedRoles:(id)arg2;
+- (void)updateWithSelectedRoleUIDs:(id)arg1;
 - (void)setKeywords:(id)arg1 selectedKeywords:(id)arg2;
 - (id)filterDict;
 - (void)setFilterDict:(id)arg1;

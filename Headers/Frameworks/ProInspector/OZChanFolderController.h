@@ -6,7 +6,7 @@
 
 #import <ProInspector/OZViewControllerGroup.h>
 
-@class LKButton, NSButton, NSMutableSet, PIParamPulldownCtlr;
+@class LKButton, NSAttributedString, NSButton, NSMutableSet, PIParamPulldownCtlr;
 
 @interface OZChanFolderController : OZViewControllerGroup
 {
@@ -16,14 +16,21 @@
     NSMutableSet *_pCtlrsHiddenWhenCollapsed;
     int _customButtonDisplayOption;
     PIParamPulldownCtlr *_pParamPulldownCtlr;
+    NSAttributedString *_pHideAttrStr;
+    NSAttributedString *_pShowAttrStr;
+    NSAttributedString *_pHideAttrStrInvisible;
+    NSAttributedString *_pShowAttrStrInvisible;
+    BOOL _shouldAddDisclosureButton;
 }
 
+@property(nonatomic) BOOL shouldAddDisclosureButton; // @synthesize shouldAddDisclosureButton=_shouldAddDisclosureButton;
+- (void)hideDisclosureButton;
 - (BOOL)hasCustomButton;
 - (void)toggleDisclosure:(id)arg1;
 - (void)mouseExitedRow:(id)arg1;
 - (void)mouseEnteredRow:(id)arg1;
 - (void)setDisplayCustomButton:(BOOL)arg1;
-- (id)blueBoldStringForString:(id)arg1;
+- (id)newAttributedStringForString:(id)arg1 invisible:(BOOL)arg2;
 - (void)resetOneChannel:(struct OZChannelBase *)arg1;
 - (void)resetChannel:(id)arg1;
 - (BOOL)shouldBackUpEntireFolderOnReset;
@@ -33,12 +40,13 @@
 - (void)setAnimStatusClass:(Class)arg1;
 - (void)setIsResetButtonHidden:(BOOL)arg1;
 - (float)suggestedMaxParamWidth;
+- (float)suggestedMinParamWidth;
 - (void)addButton:(id)arg1 display:(int)arg2;
 - (void)didBuildUI;
-- (BOOL)shouldAddDisclosureButton;
 - (void)disable;
 - (void)enable;
 - (void)update;
+- (void)setResetDelegateForPulldownCtlr:(id)arg1;
 - (void)dealloc;
 - (void)initResetButton;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;

@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface FFBackgroundDeinterlaceProcessorTask : NSObject <FFBackgroundTaskTarget>
 {
-    struct list<FFMD5, std::allocator<FFMD5>> _todo;
+    struct list<FFMD5, std::__1::allocator<FFMD5>> _todo;
     int _awaitingU;
     int _awaitingDI;
     NSCondition *_cond;
@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)addTask:(CDStruct_bdcb2b0d)arg1;
 - (void)tokenStateChangeAdjustAwaitingUImg:(int)arg1 awaitingDI:(int)arg2;
 - (void)doDeint:(id)arg1 onTask:(id)arg2;

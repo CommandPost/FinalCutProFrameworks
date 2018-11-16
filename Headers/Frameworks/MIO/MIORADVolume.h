@@ -24,6 +24,7 @@
     BOOL _useUnclaimedURLs;
     BOOL _isHybridVolume;
     BOOL _isHybridMaster;
+    unsigned int _hybridCount;
     NSMutableArray *_unclaimedURLs;
     NSMutableArray *_pathPackClaimedURLs;
 }
@@ -31,7 +32,7 @@
 + (short)volumeRefNumFromPath:(id)arg1;
 + (BOOL)pathIsValidVolume:(id)arg1;
 + (id)volumeWithPath:(id)arg1 undoManager:(id)arg2;
-- (id).cxx_construct;
+@property unsigned int hybridCount; // @synthesize hybridCount=_hybridCount;
 - (id)metadata;
 - (void)becomeHybridVolumeAsMaster:(BOOL)arg1;
 - (BOOL)isHybridMaster;

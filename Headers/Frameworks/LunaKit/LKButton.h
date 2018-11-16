@@ -4,13 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProButton.h"
+#import "NSButton.h"
 
-@interface LKButton : NSProButton
+@interface LKButton : NSButton
 {
 }
 
 + (void)initialize;
+- (void)setRomanOnly:(BOOL)arg1;
+- (BOOL)isRomanOnly;
+- (void)awakeFromNib;
 
 @end
 

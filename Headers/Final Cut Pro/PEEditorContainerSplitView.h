@@ -6,12 +6,22 @@
 
 #import "LKSplitView.h"
 
+@class NSLayoutConstraint, NSView;
+
 @interface PEEditorContainerSplitView : LKSplitView
 {
+    NSView *_rightMostView;
+    NSLayoutConstraint *_rightMostViewConstraint;
 }
 
+@property(retain, nonatomic) NSLayoutConstraint *rightMostViewConstraint; // @synthesize rightMostViewConstraint=_rightMostViewConstraint;
+@property(nonatomic) NSView *rightMostView; // @synthesize rightMostView=_rightMostView;
+- (void)dealloc;
+- (void)mouseDown:(id)arg1;
 - (void)drawDividerInRect:(struct CGRect)arg1;
 - (double)dividerThickness;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

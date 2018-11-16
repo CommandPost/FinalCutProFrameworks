@@ -20,15 +20,15 @@
     BOOL _isAutosizing;
     NSMutableArray *_pMouseInObservers;
     NSTrackingArea *_pTrackingArea;
-    vector_632d33ce *_pAssociatedSceneNodeIDs;
+    vector_f672cb0f *_pAssociatedSceneNodeIDs;
     NSString *_pAssociatedFolderChanPath;
     NSString *_pAssociatedChanPath;
 }
 
-@property(nonatomic) vector_632d33ce *associatedSceneNodeIDs; // @synthesize associatedSceneNodeIDs=_pAssociatedSceneNodeIDs;
+@property(nonatomic) vector_f672cb0f *associatedSceneNodeIDs; // @synthesize associatedSceneNodeIDs=_pAssociatedSceneNodeIDs;
 @property(retain, nonatomic) NSString *associatedFolderChanPath; // @synthesize associatedFolderChanPath=_pAssociatedFolderChanPath;
 @property(retain, nonatomic) NSString *associatedChanPath; // @synthesize associatedChanPath=_pAssociatedChanPath;
-- (BOOL)reassociateChannels;
+- (BOOL)reassociateChannels:(vector_b71873ec *)arg1;
 - (void)addOrResetAssociatedID:(unsigned int)arg1 isAdd:(BOOL)arg2;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;

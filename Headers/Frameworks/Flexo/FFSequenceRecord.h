@@ -6,13 +6,17 @@
 
 #import <Flexo/FFLibraryItem.h>
 
+#import "FFImageBrowserRepresentedItem.h"
 #import "FFMetadataProtocol.h"
 #import "FFOrganizerClassTypeProtocol.h"
 
-@interface FFSequenceRecord : FFLibraryItem <FFOrganizerClassTypeProtocol, FFMetadataProtocol>
+@class NSString;
+
+@interface FFSequenceRecord : FFLibraryItem <FFImageBrowserRepresentedItem, FFOrganizerClassTypeProtocol, FFMetadataProtocol>
 {
 }
 
++ (id)documentType;
 - (id)organizerDataItem;
 - (id)mdLocalValueForKey:(id)arg1;
 - (id)mdValueForKey:(id)arg1;
@@ -20,11 +24,22 @@
 - (void)mdSetValue:(id)arg1 forKey:(id)arg2;
 - (id)mdTargetForKey:(id)arg1;
 - (CDStruct_d55ca1ec)findCachedMDValueForKey:(id)arg1;
+- (id)displayName;
+- (BOOL)isProject;
 - (BOOL)isSequenceLoaded;
 - (id)sequenceInfo;
 - (id)sequence;
 - (id)project;
-- (id)documentType;
+- (id)ffImageBrowserSubtitle;
+- (id)ffImageBrowserTitle;
+- (struct CGImage *)ffImageBrowserRepresentation;
+- (id)ffImageBrowserUID;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,32 +6,52 @@
 
 #import "LKButton.h"
 
-@class NSTimer;
+#import "NSGestureRecognizerDelegate.h"
+
+@class NSString, NSTimer, NSTrackingArea;
 
 __attribute__((visibility("hidden")))
-@interface FFTransportLongPressButton : LKButton
+@interface FFTransportLongPressButton : LKButton <NSGestureRecognizerDelegate>
 {
     BOOL _repeatsLongPressAction;
     BOOL _isPressed;
     BOOL _isLongPress;
+    BOOL _handlePressure;
+    int _numberOfPressureStates;
+    int _currentPressureState;
     SEL _longPressAction;
     SEL _shortPressAction;
+    SEL _pressurePressAction;
     double _minLongPressTimeInterval;
     NSTimer *_longPressTimer;
+    NSTrackingArea *_trackingArea;
 }
 
+@property(retain, nonatomic) NSTrackingArea *trackingArea; // @synthesize trackingArea=_trackingArea;
+@property(nonatomic) BOOL handlePressure; // @synthesize handlePressure=_handlePressure;
 @property(nonatomic) NSTimer *longPressTimer; // @synthesize longPressTimer=_longPressTimer;
+@property(nonatomic) int currentPressureState; // @synthesize currentPressureState=_currentPressureState;
+@property(nonatomic) int numberOfPressureStates; // @synthesize numberOfPressureStates=_numberOfPressureStates;
 @property(nonatomic) BOOL isLongPress; // @synthesize isLongPress=_isLongPress;
 @property(nonatomic) BOOL isPressed; // @synthesize isPressed=_isPressed;
 @property(nonatomic) BOOL repeatsLongPressAction; // @synthesize repeatsLongPressAction=_repeatsLongPressAction;
 @property(nonatomic) double minLongPressTimeInterval; // @synthesize minLongPressTimeInterval=_minLongPressTimeInterval;
+@property(nonatomic) SEL pressurePressAction; // @synthesize pressurePressAction=_pressurePressAction;
 @property(nonatomic) SEL shortPressAction; // @synthesize shortPressAction=_shortPressAction;
 @property(nonatomic) SEL longPressAction; // @synthesize longPressAction=_longPressAction;
 - (void)_sendLongPressAction:(id)arg1;
+- (void)_finishHandlingEvents;
 - (void)mouseDown:(id)arg1;
+- (void)updateTrackingAreas;
 - (void)dealloc;
 - (void)awakeFromNib;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

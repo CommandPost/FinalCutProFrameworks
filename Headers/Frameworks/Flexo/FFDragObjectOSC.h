@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     FFHeXForm3DEffect *_xformEffect;
 }
 
-- (id).cxx_construct;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
 - (void)keyUp:(id)arg1;
 - (void)keyDown:(id)arg1;

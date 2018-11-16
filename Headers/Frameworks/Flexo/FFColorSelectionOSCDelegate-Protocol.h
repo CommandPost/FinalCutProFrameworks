@@ -9,10 +9,14 @@
 @class FFColorSelectionOSC, FFEffect, FFEffectStack;
 
 @protocol FFColorSelectionOSCDelegate <NSObject>
+- (FFEffect *)effect;
+- (long long)effectCountForReference;
 
 @optional
+@property(readonly, getter=wantsSaturatedResult) BOOL wantsSaturatedResult;
 - (void)colorSelectionOSC:(FFColorSelectionOSC *)arg1 didModifyAdjustmentsForToolClass:(Class)arg2;
 - (void)colorSelectionOSC:(FFColorSelectionOSC *)arg1 willModifyAdjustmentsForToolClass:(Class)arg2;
 - (void)didInsertIntrinsicEffect:(FFEffect *)arg1 toEffectStack:(FFEffectStack *)arg2 atIndex:(unsigned long long)arg3;
+- (void)modifyAdjustmentsWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 bufferData:(char *)arg4 bufferWidth:(double)arg5 bufferHeight:(double)arg6 bytesPerRow:(unsigned int)arg7;
 @end
 

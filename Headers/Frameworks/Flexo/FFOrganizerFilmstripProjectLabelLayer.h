@@ -14,11 +14,12 @@ __attribute__((visibility("hidden")))
     CATextLayer *_nameLayer;
     NSString *_nameText;
     int _clipLabelSize;
+    NSString *_alignmentMode;
 }
 
-+ (double)heightForLabelSize:(int)arg1;
-+ (struct CGSize)preferredSizeOfString:(id)arg1 forLabelSize:(int)arg2;
-+ (void)setupCommonSettingsForTextLayer:(id)arg1 forLabelSize:(int)arg2;
++ (double)heightForLabelSize:(int)arg1 alignmentMode:(id)arg2;
++ (struct CGSize)preferredSizeOfString:(id)arg1 forLabelSize:(int)arg2 alignmentMode:(id)arg3;
++ (void)setupCommonSettingsForTextLayer:(id)arg1 forLabelSize:(int)arg2 alignmentMode:(id)arg3;
 + (id)fontName;
 + (struct FFEdgeInsets)textInsets;
 + (double)fontSizeForLabelSize:(int)arg1;
@@ -32,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CATextLayer *nameLayer;
 - (id)init;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 labelSize:(int)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 labelSize:(int)arg2 alignmentMode:(id)arg3;
 
 @end
 

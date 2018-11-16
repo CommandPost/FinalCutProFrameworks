@@ -8,12 +8,16 @@
 
 #import "FxPathAPI.h"
 #import "FxPathAPI_v2.h"
+#import "PROAPIObject.h"
 
-@interface OZFxPlugPathHandler : NSObject <FxPathAPI, FxPathAPI_v2>
+@class NSString;
+
+@interface OZFxPlugPathHandler : NSObject <PROAPIObject, FxPathAPI, FxPathAPI_v2>
 {
     struct OZFxPlugSharedBase *_plugin;
 }
 
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 - (BOOL)setPath:(void *)arg1 toColor:(unsigned long long)arg2 error:(id *)arg3;
 - (void)setPath:(void *)arg1 color:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)pathGeometryInfo:(struct FxPathGeometryInfo *)arg1 forPath:(void *)arg2 atTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
@@ -63,6 +67,12 @@
 - (struct OZElement *)_element;
 - (id)_pathErrorWithCode:(long long)arg1 andString:(id)arg2 inMethod:(const char *)arg3;
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

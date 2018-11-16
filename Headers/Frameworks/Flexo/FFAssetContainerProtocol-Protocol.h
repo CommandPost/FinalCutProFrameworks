@@ -14,6 +14,7 @@
 - (NSSet *)clipRefs;
 - (void)addAssetRefsToSet:(NSMutableSet *)arg1;
 - (NSSet *)assetRefs;
+- (NSSet *)assetsIncludingAnchored:(BOOL)arg1 activeOnly:(BOOL)arg2;
 - (void)addAssetsToSet:(NSMutableSet *)arg1;
 - (NSSet *)assets;
 @end

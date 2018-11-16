@@ -8,20 +8,24 @@
 
 @interface TLKOrderItemInfo : NSObject
 {
-    id item;
-    id refItem;
-    double distanceFromSpine;
-    struct {
-        unsigned int isAboveSpine:1;
-        unsigned int isAboveRefItem:1;
-        unsigned int RESERVED:30;
-    } flags;
-    struct CGRect frame;
+    BOOL _isAboveSpine;
+    BOOL _isAboveReferenceItemComponent;
+    id _itemComponent;
+    id _referenceItemComponent;
+    double _distanceFromSpine;
+    struct CGRect _frame;
 }
 
+@property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
+@property(nonatomic) double distanceFromSpine; // @synthesize distanceFromSpine=_distanceFromSpine;
+@property(nonatomic) BOOL isAboveReferenceItemComponent; // @synthesize isAboveReferenceItemComponent=_isAboveReferenceItemComponent;
+@property(nonatomic) BOOL isAboveSpine; // @synthesize isAboveSpine=_isAboveSpine;
+@property(retain, nonatomic) id referenceItemComponent; // @synthesize referenceItemComponent=_referenceItemComponent;
+@property(readonly, nonatomic) id itemComponent; // @synthesize itemComponent=_itemComponent;
 - (id)description;
-- (id)initWithItem:(id)arg1 refItem:(id)arg2;
-- (id)initWithItem:(id)arg1 refItem:(id)arg2 aboveSpine:(BOOL)arg3 aboveRefItem:(BOOL)arg4;
+- (void)dealloc;
+- (id)initWithItemComponent:(id)arg1;
+- (id)init;
 
 @end
 

@@ -27,6 +27,7 @@
 - (BOOL)_allowsContextMenus;
 - (void)setObjectValue:(id)arg1;
 - (void)setImageAndText:(id)arg1;
+- (id)highlightColorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (id)font;
 - (id)cellImage;
 - (id)copyWithZone:(struct _NSZone *)arg1;

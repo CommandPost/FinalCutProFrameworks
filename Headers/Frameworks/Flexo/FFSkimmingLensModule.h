@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)isSkimmingLens;
 - (BOOL)playerUsesLayers;
 - (BOOL)acceptsFirstResponder;
 - (void)addOSC:(id)arg1;

@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)verifyNoRunningBackgroundTasksForAnchoredObjects:(id)arg1;
 + (id)sharedController;
-- (id).cxx_construct;
 - (void)warnUserAboutPotentialLossOfChangesWithUncommitedClipSet:(id)arg1;
 - (BOOL)selectionChangeShouldWarnUserOfUncommittedChanges:(id)arg1 uncommitedClipSet:(id *)arg2;
 - (id)setOfREDClipsFromSelection:(id)arg1;

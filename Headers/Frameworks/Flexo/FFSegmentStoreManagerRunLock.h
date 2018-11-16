@@ -16,16 +16,15 @@ __attribute__((visibility("hidden")))
     int _stopWaiting;
     _Bool _mainThreadWaiting;
     NSThread *_stopThread;
+    struct FFThread *_stopFFThread;
     NSCondition *_guard;
 }
 
 - (void)decrementRun:(int)arg1;
 - (int)incrementRun;
 - (void)runExit;
-- (void)runEnter;
 - (BOOL)runEnterBeforeDate:(id)arg1;
 - (void)restart;
-- (void)stop;
 - (BOOL)stopBeforeDate:(id)arg1;
 - (void)dealloc;
 - (id)init;

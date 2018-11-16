@@ -6,7 +6,7 @@
 
 #import <ProInspector/OZViewControllerGroup.h>
 
-@class LKTextField, NSProScrubbableNumberFormatter, OZMixedSlider, PISegmentedScrubber;
+@class LKScrubbableNumberFormatter, LKTextField, OZMixedSlider, PISegmentedScrubber;
 
 @interface OZChan3DPropController : OZViewControllerGroup
 {
@@ -17,9 +17,9 @@
     double _aRatios[2];
     BOOL _isSliding;
     BOOL _isMultiplying;
-    NSProScrubbableNumberFormatter *_pEqualFormatter;
-    NSProScrubbableNumberFormatter *_pUnequalFormatter;
-    struct list<PCVector3<double>, std::allocator<PCVector3<double>>> *_pMouseDownValues;
+    LKScrubbableNumberFormatter *_pEqualFormatter;
+    LKScrubbableNumberFormatter *_pUnequalFormatter;
+    struct list<PCVector3<double>, std::__1::allocator<PCVector3<double>>> *_pMouseDownValues;
     int _decimalDigits;
 }
 

@@ -4,13 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <TLKit/ERLRelationalModel.h>
 
 #import "NSCopying.h"
 
-@class NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSSet, TLKChangeLog, TLKDataSourceProxy, TLKLayoutManager, TLKTimingModel;
+@class ERLRelationalTable, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSSet, PCChangeLog, TLKDataSourceProxy, TLKItemLaneInfo, TLKLayoutGraph, TLKLayoutManager, TLKRangeSelection, TLKTimingModel;
 
-@interface TLKLayoutDatabase : NSObject <NSCopying>
+@interface TLKLayoutDatabase : ERLRelationalModel <NSCopying>
 {
     TLKLayoutManager *_layoutManager;
     TLKDataSourceProxy *_dataSourceProxy;
@@ -28,10 +28,9 @@
     NSMapTable *_itemLanesIndex;
     NSMutableSet *_itemLaneFragments;
     NSMapTable *_itemLaneFragmentsIndex;
+    NSMutableArray *_lineFragments;
     NSMutableArray *_tracks;
     NSMutableArray *_layoutTiles;
-    NSMutableArray *_lineFragments;
-    TLKChangeLog *_changeLog;
     unsigned long long _transactionLevel;
     NSSet *_insertedItems;
     NSSet *_deletedItems;
@@ -41,8 +40,7 @@
     CDStruct_1b6d18a9 _logicalStartTime;
     int _rulerPlacementMode;
     int _layoutRoundingMode;
-    id <TLKLayoutManagerDelegate> _delegate;
-    NSSet *_draggedItems;
+    NSSet *_draggedObjects;
     struct {
         unsigned int showsTransitionPlaceholders:1;
         unsigned int RESERVED:31;
@@ -53,13 +51,45 @@
         unsigned int willUseLineFragmentRectForItems:1;
         unsigned int RESERVED:29;
     } _delegateRespondsTo;
+    NSMutableSet *_cachedLayoutContexts;
+    TLKItemLaneInfo *_backgroundMusicLane;
+    BOOL _backgroundMusicLaneIsValid;
+    BOOL _allowsMultipleTracks;
+    BOOL _reloadTriggersLayout;
     double _minThumbnailCount;
+    TLKRangeSelection *_rangeSelection;
+    ERLRelationalTable *_containersTable;
+    ERLRelationalTable *_itemsTable;
+    ERLRelationalTable *_itemComponentsTable;
+    ERLRelationalTable *_itemComponentFragmentsTable;
+    ERLRelationalTable *_lineFragmentsTable;
+    ERLRelationalTable *_lanesTable;
+    ERLRelationalTable *_laneFragmentsTable;
+    ERLRelationalTable *_layoutContextsTable;
+    TLKLayoutGraph *_layoutGraph;
+    NSSet *_selectedItemComponents;
+    NSSet *_containerInfoRecords;
 }
 
-@property(readonly, nonatomic) TLKChangeLog *changeLog; // @synthesize changeLog=_changeLog;
+@property(copy, nonatomic) NSSet *managedItemComponents; // @synthesize managedItemComponents=_managedItemComponents;
+@property(copy, nonatomic) NSSet *managedItems; // @synthesize managedItems=_managedItems;
+@property(copy, nonatomic) NSSet *containerInfoRecords; // @synthesize containerInfoRecords=_containerInfoRecords;
+@property(copy, nonatomic) NSSet *selectedItemComponents; // @synthesize selectedItemComponents=_selectedItemComponents;
+@property(retain, nonatomic) TLKLayoutGraph *layoutGraph; // @synthesize layoutGraph=_layoutGraph;
+@property(readonly, nonatomic) ERLRelationalTable *layoutContextsTable; // @synthesize layoutContextsTable=_layoutContextsTable;
+@property(readonly, nonatomic) ERLRelationalTable *laneFragmentsTable; // @synthesize laneFragmentsTable=_laneFragmentsTable;
+@property(readonly, nonatomic) ERLRelationalTable *lanesTable; // @synthesize lanesTable=_lanesTable;
+@property(readonly, nonatomic) ERLRelationalTable *lineFragmentsTable; // @synthesize lineFragmentsTable=_lineFragmentsTable;
+@property(readonly, nonatomic) ERLRelationalTable *itemComponentFragmentsTable; // @synthesize itemComponentFragmentsTable=_itemComponentFragmentsTable;
+@property(readonly, nonatomic) ERLRelationalTable *itemComponentsTable; // @synthesize itemComponentsTable=_itemComponentsTable;
+@property(readonly, nonatomic) ERLRelationalTable *itemsTable; // @synthesize itemsTable=_itemsTable;
+@property(readonly, nonatomic) ERLRelationalTable *containersTable; // @synthesize containersTable=_containersTable;
+@property(nonatomic) BOOL reloadTriggersLayout; // @synthesize reloadTriggersLayout=_reloadTriggersLayout;
 @property(retain, nonatomic) NSMapTable *removedItemsContainerMap; // @synthesize removedItemsContainerMap=_removedItemsContainerMap;
 @property(retain, nonatomic) NSMapTable *movedItemsContainerMap; // @synthesize movedItemsContainerMap=_movedItemsContainerMap;
+@property(readonly, nonatomic) TLKRangeSelection *rangeSelection; // @synthesize rangeSelection=_rangeSelection;
 @property(nonatomic) CDStruct_e83c9415 trimmingTimeRift; // @synthesize trimmingTimeRift=_trimmingTimeRift;
+@property(nonatomic) BOOL allowsMultipleTracks; // @synthesize allowsMultipleTracks=_allowsMultipleTracks;
 @property(retain, nonatomic) TLKTimingModel *timingModel; // @synthesize timingModel=_timingModel;
 @property(retain, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
 @property(nonatomic) double minThumbnailCount; // @synthesize minThumbnailCount=_minThumbnailCount;
@@ -68,8 +98,10 @@
 @property(nonatomic) int rulerPlacementMode; // @synthesize rulerPlacementMode=_rulerPlacementMode;
 - (id)transitionPlaceholderIndexesForContainer:(id)arg1;
 - (id)itemLaneFragmentForItemLane:(id)arg1 inLayoutContext:(id)arg2;
+- (id)laneFragmentForLaneInfo:(id)arg1 inLayoutContext:(id)arg2;
 - (void)removeItemLaneFragment:(id)arg1;
 - (void)addItemLaneFragment:(id)arg1;
+- (id)_newPrimaryKeyForItemLaneFragmentsTableWithLaneInfo:(id)arg1 layoutContext:(id)arg2;
 - (void)setItemLaneFragments:(id)arg1;
 - (id)itemLaneFragments;
 - (unsigned long long)countOfItemLaneFragments;
@@ -77,6 +109,7 @@
 - (id)layoutContextForContainer:(id)arg1 inLineFragment:(id)arg2;
 - (void)enumerateLayoutContextsWithBlock:(CDUnknownBlockType)arg1;
 - (id)layoutContexts;
+- (void)resetCachedLayoutContexts;
 - (void)removeLineFragment:(id)arg1;
 - (void)addLineFragment:(id)arg1;
 - (void)setLineFragments:(id)arg1;
@@ -93,12 +126,19 @@
 - (struct CGRect)boundingBox;
 - (void)reloadWithTracksAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)reloadWithTracksAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 timelineView:(id)arg4;
+- (void)reloadWithLanesAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
+- (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 needingLayout:(id)arg4;
 - (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)_deleteReferencesToRemovedItems:(id)arg1;
 - (void)_updateRemovedItemsContainerMapForItems:(id)arg1;
+- (void)_cacheLayoutInfoForObjectsNeedingLayout:(id)arg1;
 - (void)_cacheLayoutInfoForItems:(id)arg1 createIfNeeded:(BOOL)arg2;
-- (void)_cacheLayoutInfoForItem:(id)arg1 withContainerInfo:(id)arg2 createIfNeeded:(BOOL)arg3;
-- (void)_cacheItemComponentsForItem:(id)arg1 expansionStyle:(int)arg2;
+- (BOOL)_cacheLayoutInfoForItem:(id)arg1 withContainerInfo:(id)arg2 createIfNeeded:(BOOL)arg3;
+- (BOOL)_cacheItemComponentsForItem:(id)arg1;
+- (id)_cacheItemComponentForObject:(id)arg1 ofItemInfo:(id)arg2;
+- (BOOL)_cacheLayoutPropertiesForItemComponent:(id)arg1;
+- (double)heightForItemComponentInfo:(id)arg1;
+- (void)_cacheTimelineLanesForItemComponentRecords:(id)arg1;
 - (void)_discardContainerInfoForContainers:(id)arg1;
 - (void)_reloadCachedSpineItemsIfNeeded;
 - (void)_cacheContainerInfoForContainer:(id)arg1 enclosingContainerInfo:(id)arg2;
@@ -107,8 +147,8 @@
 - (id)_invalidSpineItemsForModifiedContainers:(id)arg1;
 - (void)_expandRemovedItemsToIncludeDependencies:(id)arg1;
 - (void)_expandAddedItemsToIncludeDependencies:(id)arg1;
+@property(readonly, nonatomic) PCChangeLog *changeLog;
 - (void)endTransaction;
-- (void)_postDidChangeNotificationIfNeeded;
 - (void)beginTransaction;
 - (void)setDeletedItems:(id)arg1;
 - (id)deletedItems;
@@ -116,6 +156,7 @@
 - (id)updatedItems;
 - (void)setInsertedItems:(id)arg1;
 - (id)insertedItems;
+- (id)itemComponentInfoRecords;
 @property(nonatomic) BOOL showsTransitionPlaceholders;
 - (void)enumerateTracksWithBlock:(CDUnknownBlockType)arg1;
 - (void)setTracks:(id)arg1 timelineView:(id)arg2;
@@ -124,36 +165,35 @@
 - (id)objectAtIndexInTracks:(unsigned long long)arg1;
 - (unsigned long long)indexOfObjectInTracks:(id)arg1;
 - (unsigned long long)numberOfTracks;
+- (void)reset;
 - (id)focusedTrack;
 - (id)timingTrack;
-- (id)backgroundMusicLane;
 - (id)backgroundMusicLaneInfo;
+- (void)resetBackgroundMusicLane;
 - (id)spineLaneInfo;
 - (id)itemLanesForTrack:(id)arg1;
 - (void)setItemLaneInfo:(id)arg1 forItemLane:(id)arg2 inTrack:(id)arg3;
 - (id)itemLaneInfoForItemLane:(id)arg1 inTrack:(id)arg2;
 - (id)_indexKeyForItemLane:(id)arg1 inTrack:(id)arg2;
+- (id)topLevelLanesPredicate;
 - (id)itemLaneInfoRecords;
-- (id)itemLanes;
-- (unsigned long long)countOfItemLaneInfoRecords;
 - (void)setContainerInfo:(id)arg1 forContainer:(id)arg2;
 - (id)containerInfoForContainer:(id)arg1;
-- (id)containerInfoRecords;
-- (void)setLayoutInfo:(id)arg1 forItemComponent:(id)arg2 isSplit:(BOOL)arg3;
+- (void)setLayoutInfo:(id)arg1 forItemComponent:(id)arg2;
 - (id)layoutInfoForItemComponent:(id)arg1;
 - (void)setLayoutInfo:(id)arg1 forItem:(id)arg2;
 - (id)layoutInfoForItem:(id)arg1;
 - (id)containersForItem:(id)arg1;
 - (id)itemsGroupedByContainer:(id)arg1;
+- (id)itemComponentFragments;
 - (id)itemInfoRecords;
 - (unsigned long long)countOfItemInfoRecords;
-@property(copy, nonatomic) NSSet *draggedItems;
+@property(copy, nonatomic) NSSet *draggedObjects;
+- (void)_setIsDragging:(BOOL)arg1 forObject:(id)arg2;
 - (BOOL)isManagedItem:(id)arg1;
-- (id)managedItems;
 - (id)timelineItemComponents;
 - (id)timelineItems;
 - (id)containers;
-@property(nonatomic) id delegate;
 @property(readonly, nonatomic) TLKLayoutManager *layoutManager;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

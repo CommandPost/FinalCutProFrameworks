@@ -6,7 +6,7 @@
 
 #import <TLKit/TLKTimelineLane.h>
 
-@class CALayer, TLKClipTrimmerEditingClipContainerLayer, TLKClipTrimmerEditingClipOverlayerLayer, TLKClipTrimmerEditingClipShadowLayer, TLKClipTrimmerRangeLayer, TLKClipTrimmerSourceClipOverLayLayer, TLKEditorCloseView, TLKItemLayer;
+@class CALayer, TLKClipTrimmerEditingClipContainerLayer, TLKClipTrimmerEditingClipOverlayerLayer, TLKClipTrimmerEditingClipShadowLayer, TLKClipTrimmerRangeLayer, TLKClipTrimmerSourceClipOverLayLayer, TLKEditorCloseView, TLKItemLayer, TLKTimelineLayer;
 
 @interface TLKClipTrimmerLane : TLKTimelineLane
 {
@@ -16,7 +16,7 @@
     double _timePerPixel;
     CDStruct_e83c9415 _timeRange;
     CDStruct_e83c9415 _limitsRange;
-    TLKItemLayer *_editingLayer;
+    TLKTimelineLayer *_editingLayer;
     TLKClipTrimmerEditingClipOverlayerLayer *_elClipOverLeadingLayer;
     TLKClipTrimmerEditingClipOverlayerLayer *_elClipOverTrailingLayer;
     TLKClipTrimmerRangeLayer *_elClipTrimmerLayer;

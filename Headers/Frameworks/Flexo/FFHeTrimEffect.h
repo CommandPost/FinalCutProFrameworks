@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)resetForObject:(id)arg1;
 - (id)primaryAnimationChannel;
 - (void)channelsWereReset;
+- (void)notifyEffectWasAddedToStack:(int)arg1;
 - (void)trimValues:(double *)arg1 andR:(double *)arg2 andB:(double *)arg3 andT:(double *)arg4;
 - (void)setTrimValues:(double)arg1 andR:(double)arg2 andB:(double)arg3 andT:(double)arg4;
 @property(retain, nonatomic) NSString *lrtbAsString; // @synthesize lrtbAsString=_lrtbAsString;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)onScreenControlsForToolForEffect;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (void)createChannelsInFolder:(id)arg1;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7 graphBuildInfo:(id)arg8;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
 - (void)modifyImageTransform:(id)arg1 andImageSpaceBounds:(struct CGRect *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2 pixelTransform:(id)arg3;
 - (id)newUpdatedDownstreamPT:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;

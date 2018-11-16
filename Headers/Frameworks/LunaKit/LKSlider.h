@@ -4,14 +4,25 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProSlider.h"
+#import "NSSlider.h"
 
-@interface LKSlider : NSProSlider
+@interface LKSlider : NSSlider
 {
+    BOOL _centered;
+    BOOL _drawCustom;
+    BOOL _lightBackground;
 }
 
 + (void)initialize;
 + (Class)backgroundViewClass;
++ (void)popUpSlider:(id)arg1 withEvent:(id)arg2;
+- (void)setMinValue:(double)arg1;
+- (void)setMaxValue:(double)arg1;
+@property(nonatomic) unsigned long long trackFillMode;
+@property(nonatomic) double trackCenterValue;
+- (void)setLightBackground:(BOOL)arg1;
+- (void)setDrawCustom:(BOOL)arg1;
+- (void)setCentered:(BOOL)arg1;
 
 @end
 

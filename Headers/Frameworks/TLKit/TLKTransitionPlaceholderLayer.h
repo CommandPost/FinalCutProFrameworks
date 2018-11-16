@@ -8,17 +8,22 @@
 
 #import "TLKPartInfo.h"
 
-@class CALayer, NSString, TLKThemeBackedLayer;
+@class CALayer, NSDictionary, NSString;
 
 @interface TLKTransitionPlaceholderLayer : TLKAccessibilityLayer <TLKPartInfo>
 {
     CALayer *_rootLayer;
-    TLKThemeBackedLayer *_editBase;
+    NSDictionary *_mappingTable;
+    BOOL rollover;
+    BOOL _enableRolloverState;
 }
 
-@property long long themeState;
+@property(nonatomic) BOOL enableRolloverState; // @synthesize enableRolloverState=_enableRolloverState;
+@property(nonatomic) BOOL rollover; // @synthesize rollover;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)partIdentifier;
+- (void)_setEditBaseWithArchiveName:(id)arg1;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

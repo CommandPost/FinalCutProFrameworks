@@ -8,13 +8,14 @@
 
 #import "FFArrangedItemsModuleDelegate.h"
 #import "FFOrganizerFilmstripModuleDelegate.h"
+#import "FFOrganizerSkimmingDelegate.h"
 #import "FFSidebarModuleDelegate.h"
 #import "NSSplitViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFArrangedItemsModule, FFCapsController, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFOrganizerFilterHUD, FFOrganizerLinenBackground, FFOrganizerSplitView, FFOrganizerTextFieldView, FFSidebarModule, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKWindow, LKWindowModule, NSArray, NSBox, NSMenuItem, NSProView, NSString, NSView, OKPaneCapFilterMenuAndStatus, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
+@class FFArrangedItemsModule, FFCapsController, FFItemsContainerView, FFMediaEventProject, FFMediaEventSmartCollection, FFOrganizerFilterHUD, FFOrganizerLinenBackground, FFOrganizerSplitView, FFSidebarModule, LKButton, LKMenu, LKProgressIndicator, LKSplitView, LKWindow, LKWindowModule, NSArray, NSBox, NSMenuItem, NSString, NSView, OKPaneCapItemButton, OKPaneCapItemMenu, OKPaneCapItemSidebarHeader;
 
-@interface FFOrganizerModule : LKViewModule <FFOrganizerFilmstripModuleDelegate, FFSidebarModuleDelegate, NSSplitViewDelegate, FFArrangedItemsModuleDelegate, NSWindowDelegate>
+@interface FFOrganizerModule : LKViewModule <FFOrganizerFilmstripModuleDelegate, FFSidebarModuleDelegate, NSSplitViewDelegate, FFOrganizerSkimmingDelegate, FFArrangedItemsModuleDelegate, NSWindowDelegate>
 {
     FFSidebarModule *_sidebarModule;
     FFArrangedItemsModule *_itemsModule;
@@ -27,7 +28,7 @@
     FFMediaEventSmartCollection *_sidebarHUDOwner;
     BOOL _filterSearch;
     FFOrganizerSplitView *_splitView;
-    NSProView *_taskProgressContainerView;
+    NSView *_taskProgressContainerView;
     LKProgressIndicator *_taskProgressIndicator;
     LKMenu *_filterPulldownMenu;
     LKMenu *_gearMenu;
@@ -46,12 +47,10 @@
     LKButton *_emptyFileImportBigButton;
     LKButton *_emptyCameraImport;
     LKButton *_emptyCameraImportBigButton;
-    OKPaneCapFilterMenuAndStatus *_searchStatusCapItem;
     OKPaneCapItemMenu *_filterMenuPaneCapItem;
     OKPaneCapItemMenu *_actionMenuPaneCapItem;
     OKPaneCapItemSidebarHeader *_sidebarHeaderPaneCapItem;
     OKPaneCapItemButton *_showHideSidebarPaneCapItem;
-    FFOrganizerTextFieldView *_fieldEditor;
     BOOL _restorePlayheadInfo;
     int _channelChangeCount;
 }
@@ -73,14 +72,13 @@
 - (id)currentNoItemsString;
 - (BOOL)organizerEmpty;
 - (void)splitViewDidResizeSubviews:(id)arg1;
-- (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
-- (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
-- (BOOL)splitView:(id)arg1 shouldAdjustSizeOfSubview:(id)arg2;
 @property(nonatomic, getter=isSidebarHidden) BOOL sidebarHidden;
 - (id)sidebarModule:(id)arg1 menuForItem:(id)arg2 event:(id)arg3;
 - (void)removePaneCapItem:(id)arg1;
 - (void)addPaneCapItem:(id)arg1;
 - (BOOL)presentError:(id)arg1;
+- (id)organizerSelection;
+- (id)timelineSelection;
 - (void)stopUsingMedia:(id)arg1;
 - (BOOL)canBeginPlaying;
 - (BOOL)canSkimWithAudio;
@@ -94,15 +92,15 @@
 - (void)stopSkimmingForOwner:(id)arg1;
 - (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
 - (void)openSettingsWithModule:(id)arg1;
-- (BOOL)markerEditorIsShown;
-- (void)hideMarkerEditor;
-- (void)showMarkerEditorForMarkerLayer:(id)arg1 object:(id)arg2;
-- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
+- (id)organizerDelegate;
+- (id)markerEditorDelegate;
+- (id)skimmingDelegate;
 - (void)openStack:(id)arg1;
 - (void)setShowFilmstripView:(BOOL)arg1;
 - (BOOL)showFilmstripView;
 - (id)defaultEventForNewProject;
-- (id)roleSetsForCurrentProject;
+- (id)libraryForCurrentProject;
+- (id)mainRolesForCurrentProject;
 - (id)keywordsForCurrentProject;
 - (id)_scrapedKeywordsFromSidebarProviderArray:(id)arg1;
 - (void)filterHUDDidUpdate:(id)arg1;
@@ -126,7 +124,6 @@
 - (void)searchAction:(id)arg1;
 - (void)sidebarModuleSelectionDidChange:(id)arg1;
 - (void)toggleSidebarHidden:(id)arg1;
-- (id)module:(id)arg1 fieldEditorForView:(id)arg2 cell:(id)arg3;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (BOOL)module:(id)arg1 validate:(char *)arg2 userInterfaceItem:(id)arg3;
 - (id)submoduleLayoutArray;

@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)drawRect:(struct CGRect)arg1;
 - (BOOL)acceptsFirstResponder;
 - (BOOL)canBecomeKeyView;
 - (void)notificationHandler:(id)arg1;

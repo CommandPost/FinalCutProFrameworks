@@ -37,12 +37,12 @@ __attribute__((visibility("hidden")))
 - (id)inputParameters;
 - (id)compositionInputKeys;
 - (void)setBackgroundCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1;
-- (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1 use4K:(BOOL)arg2;
 - (id)compositionDirectoryName;
 - (id)backgroundCompositionName;
 - (id)compositionName;
-- (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5;
-- (struct CGColorSpace *)processingColorSpace;
+- (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6;
+- (id)processingFormat:(int)arg1;
 - (BOOL)needsClamping;
 - (BOOL)handlesCompositing;
 - (BOOL)renderInEditMode;
@@ -53,8 +53,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)effectVariesOverTime;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(const struct CGRect *)arg7 graphBuildInfo:(id)arg8;
-- (void)renderIntoContext:(struct _CGLContextObject *)arg1 roi:(struct CGRect)arg2 outputSize:(struct CGSize)arg3 numInputTextures:(int)arg4 inputTextures:(unsigned int *)arg5 renderTime:(double)arg6 inputValues:(id)arg7 backgroundInputValues:(id)arg8 location:(int)arg9;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
+- (void)renderIntoContext:(struct _CGLContextObject *)arg1 roi:(struct CGRect)arg2 outputSize:(struct CGSize)arg3 numInputTextures:(int)arg4 inputTextures:(unsigned int *)arg5 renderTime:(double)arg6 inputValues:(id)arg7 backgroundInputValues:(id)arg8 location:(int)arg9 workingSpace:(int)arg10;
 
 @end
 

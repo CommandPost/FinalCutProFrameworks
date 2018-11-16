@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)drawWithExpansionFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (double)_adornmentWidth;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 

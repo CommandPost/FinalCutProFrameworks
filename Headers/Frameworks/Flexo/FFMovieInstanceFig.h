@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFMIORADAsset, NSDictionary, NSObject<OS_dispatch_group>, NSURL;
+@class FFMIORADAsset, NSDictionary, NSObject<OS_dispatch_queue>, NSURL;
 
 @interface FFMovieInstanceFig : NSObject
 {
@@ -14,17 +14,15 @@
     struct OpaqueCMByteStream *_byteStream;
     struct OpaqueFigFormatReader *_formatReader;
     struct OpaqueFigScheduledIO *_schedIO;
-    struct OpaqueFigScheduledIO *_throttleIO;
-    struct OpaqueFigScheduledIO *_appThrottledIO;
     NSURL *_url;
     FFMIORADAsset *_radAsset;
     int _status;
     int _storageType;
-    unsigned long long _keepAliveTime;
+    double _keepAliveTime;
     struct stat _statbuf;
-    NSDictionary *_growthInfo;
+    NSDictionary *_metadata;
     BOOL _toBeEvicted;
-    NSObject<OS_dispatch_group> *_readyGroup;
+    NSObject<OS_dispatch_queue> *_asyncOpenQueue;
     BOOL _isReady;
     FFMovieInstanceFig *_newVersion;
 }
@@ -37,11 +35,11 @@
 + (void)teardown;
 @property(readonly) NSURL *url; // @synthesize url=_url;
 @property(readonly) int status; // @synthesize status=_status;
-- (id).cxx_construct;
 - (id)description;
 - (CDStruct_bdcb2b0d)md5;
+- (BOOL)isGrowable;
 - (int)storageTypeMustBeSSD;
-- (id)growthInfo;
+- (id)metadata;
 - (id)radAsset;
 - (void)_openMovie:(id)arg1;
 - (void)_cacheMovieBuffer:(struct OpaqueCMBlockBuffer *)arg1 forKey:(id)arg2;

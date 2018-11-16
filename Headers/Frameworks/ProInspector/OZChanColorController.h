@@ -29,6 +29,7 @@
 - (BOOL)isEnabled;
 - (void)update;
 - (void)dealloc;
+- (void)setColorWellColorSpace:(struct OZChannelObjectRootBase *)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end

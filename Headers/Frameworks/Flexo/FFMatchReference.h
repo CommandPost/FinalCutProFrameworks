@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSString *projectDocumentID; // @synthesize projectDocumentID=_projectDocumentID;
 @property(readonly) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 @property(readonly, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObjectRef;
-- (id).cxx_construct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;

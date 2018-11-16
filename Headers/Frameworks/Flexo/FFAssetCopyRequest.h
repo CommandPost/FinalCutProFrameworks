@@ -8,7 +8,6 @@
 
 @class FFAsset, FFAssetFileIdentifier, NSString;
 
-__attribute__((visibility("hidden")))
 @interface FFAssetCopyRequest : NSObject
 {
     FFAssetFileIdentifier *_sourceFileID;
@@ -16,6 +15,7 @@ __attribute__((visibility("hidden")))
     id _completionTarget;
     SEL _completionSelector;
     FFAsset *_targetAsset;
+    FFAsset *_sourceAsset;
     long long _bytesToCopy;
     long long _bytesCopied;
     struct __FSFileOperation *_fileOp;
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(retain) id customObject2; // @synthesize customObject2=_customObject2;
 @property(retain) id customObject; // @synthesize customObject=_customObject;
 @property(retain) id clientInfo; // @synthesize clientInfo=_clientInfo;
+- (id)targetLibrary;
 - (void)reset;
 - (void)addDuplicateRequest:(id)arg1;
 - (void)asyncCopyCompleted;
@@ -49,10 +50,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)usesLibrary:(id)arg1;
 - (SEL)completionSelector;
 - (id)completionTarget;
+- (id)sourceAsset;
 - (id)targetAsset;
 - (void)queueRequest;
 - (id)description;
 - (void)dealloc;
+- (id)initWithSourceFileID:(id)arg1 targetFileID:(id)arg2 completionTarget:(id)arg3 completionSelector:(SEL)arg4 targetAsset:(id)arg5 sourceAsset:(id)arg6;
 - (id)initWithSourceFileID:(id)arg1 targetFileID:(id)arg2 completionTarget:(id)arg3 completionSelector:(SEL)arg4 targetAsset:(id)arg5;
 
 @end

@@ -9,19 +9,22 @@
 __attribute__((visibility("hidden")))
 @interface FFMaskAdditionsAnimStateCell : OZAnimStatusCell
 {
+    id _cachedRepresentedObject;
 }
 
 - (void)invertMasks:(id)arg1;
-- (void)showMatte:(id)arg1;
 - (void)addIsolationMask:(id)arg1;
 - (void)addImprovedEllipseMask:(id)arg1;
-- (void)addEllipseMask:(id)arg1;
 - (void)addMaskOfClass:(Class)arg1 actionName:(id)arg2;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)addCustomMenuItems:(id)arg1;
 - (id)customKeyframeTitle;
 - (BOOL)shouldShowMasks;
-- (id)_maskedEffect;
+- (BOOL)shouldDisableKeyframeItems;
+- (void)setShouldDisableKeyframeItems:(BOOL)arg1;
+- (id)_mask;
+- (id)_effect;
+- (id)_representedObject;
 
 @end
 

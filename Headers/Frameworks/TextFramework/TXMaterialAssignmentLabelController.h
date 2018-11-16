@@ -18,6 +18,7 @@
 }
 
 @property(nonatomic) TXMaterialAssignmentFolderController *materialAssignmentFolder; // @synthesize materialAssignmentFolder=_materialAssignmentFolder;
+- (BOOL)rejectsTwoColumnLayout;
 - (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_198678f7)arg3;
 - (void)setMaterialAssignmentMode:(unsigned int)arg1;
 - (void)setExistingMaterial:(id)arg1;

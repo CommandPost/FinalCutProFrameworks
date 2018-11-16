@@ -6,18 +6,18 @@
 
 #import <Flexo/FFProOSC.h>
 
-@class FFAnchoredObject, FFCHObservableFolder, FFContext, FFEffect, NSMutableArray, NSProSegmentedControl, NSView, POCombinedCrop;
+@class FFAnchoredObject, FFCHObservableFolder, FFContext, FFEffect, LKSegmentedControl, NSMutableArray, NSView, POCombinedCrop;
 
 __attribute__((visibility("hidden")))
 @interface FFCombinedCropOSC : FFProOSC
 {
     POCombinedCrop *_combinedCropOSC;
-    NSProSegmentedControl *_exitButton;
-    NSProSegmentedControl *_playButton;
-    NSProSegmentedControl *_flipButton;
-    NSProSegmentedControl *_cropTypeButton;
-    NSProSegmentedControl *_keyFrameButton;
-    NSProSegmentedControl *_interpolationButton;
+    LKSegmentedControl *_exitButton;
+    LKSegmentedControl *_playButton;
+    LKSegmentedControl *_flipButton;
+    LKSegmentedControl *_cropTypeButton;
+    LKSegmentedControl *_keyFrameButton;
+    LKSegmentedControl *_interpolationButton;
     NSView *_combinedCropOverlayView;
     FFAnchoredObject *_anchoredObject;
     CDStruct_e83c9415 _prePlayingLoopRange;
@@ -30,9 +30,8 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_channelsToCheckForkeyFramesTrim;
 }
 
-- (id).cxx_construct;
 - (BOOL)isCropOSC;
-- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_ada7b58d *)arg2;
+- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_e1ec2d4c *)arg2;
 - (void)ensureIntrinsic;
 - (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
 - (void)checkChannelParameterChanged:(id)arg1;

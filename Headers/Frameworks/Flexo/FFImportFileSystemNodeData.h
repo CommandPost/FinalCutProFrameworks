@@ -6,40 +6,36 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredSequence, NSColor, NSDate, NSImage, NSMutableDictionary, NSNumber, NSString, NSURL;
+@class FFAnchoredSequence, NSDate, NSImage, NSMutableDictionary, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFImportFileSystemNodeData : NSObject
 {
     NSURL *_url;
-    NSURL *_volumeURL;
     NSString *_displayName;
     NSImage *_icon;
     NSNumber *_isDirectory;
-    NSNumber *_isPackage;
     NSNumber *_isCameraArchive;
-    NSNumber *_isAlias;
     NSNumber *_isValid;
     NSNumber *_canPreview;
-    NSColor *_labelColor;
-    NSDate *_dateModified;
-    NSDate *_dateAdded;
     BOOL _didGenerateDateCreated;
     NSDate *_dateCreated;
-    NSDate *_dateLastOpened;
-    NSString *_kind;
-    NSNumber *_size;
-    NSString *_label;
     NSMutableDictionary *_metadata;
     struct __MDItem *_mdItem;
+    BOOL _checkIsFinderCopying;
+    BOOL _isFinderCopying;
+    BOOL _isValidSequence;
     FFAnchoredSequence *_sequence;
 }
 
-@property(retain, nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
+@property BOOL isValidSequence; // @synthesize isValidSequence=_isValidSequence;
+@property(retain) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
 - (void)_readUnlock:(const char *)arg1;
 - (void)_readLock:(const char *)arg1 file:(const char *)arg2 line:(unsigned int)arg3;
 - (void)_readUnlock;
 - (void)_readLock;
+- (BOOL)isFinderCopying;
+- (void)invalidateIsFinderCopying;
 - (id)mdValueForKey:(id)arg1;
 - (id)label;
 - (id)size;

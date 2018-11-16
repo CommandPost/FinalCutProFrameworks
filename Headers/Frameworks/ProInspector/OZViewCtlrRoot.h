@@ -6,21 +6,26 @@
 
 #import <ProInspector/OZViewControllerGroup.h>
 
-@class NSMapTable, NSMutableArray, NSViewAnimation;
+#import "NSAnimationDelegate.h"
 
-@interface OZViewCtlrRoot : OZViewControllerGroup
+@class NSMapTable, NSMutableArray, NSString, NSViewAnimation;
+
+@interface OZViewCtlrRoot : OZViewControllerGroup <NSAnimationDelegate>
 {
     id <OZViewCtlrDelegate> _pDelegate;
     NSViewAnimation *_pViewAnimation;
     NSMutableArray *_pPendingAnimations;
     NSMapTable *_pViewFrameCache;
     BOOL _isInteractive;
+    NSMutableArray *_pAnimatingViewsIn;
+    NSMutableArray *_pAnimatingViewsOut;
 }
 
 + (BOOL)isGlobalAnimationEnabled;
 + (void)setIsGlobalAnimationEnabled:(BOOL)arg1;
 - (void)adjustLabelAndParamWidthsForView:(id)arg1;
 - (void)encloseViewInScrollView;
+- (void)applyBrickMargins;
 - (void)animView:(id)arg1 setFrameSize:(struct CGSize)arg2;
 - (void)animView:(id)arg1 setFrameOrigin:(struct CGPoint)arg2;
 - (void)animView:(id)arg1 setFrame:(struct CGRect)arg2;
@@ -28,6 +33,12 @@
 - (void)flushAnimation;
 - (void)startAnimation;
 - (void)addAnimation:(id)arg1;
+- (void)animationDidEnd:(id)arg1;
+- (void)animationDidStop:(id)arg1;
+- (void)addInFlightViewAnimations:(id)arg1;
+- (void)removeInFlightViewAnimations:(id)arg1;
+- (BOOL)viewIsAnimatingIn:(id)arg1;
+- (BOOL)viewIsAnimatingOut:(id)arg1;
 @property(nonatomic) BOOL isInteractive;
 - (_Bool)isAnimationEnabled;
 - (void)setDelegate:(id)arg1;
@@ -37,6 +48,12 @@
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (id)initWithView:(id)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

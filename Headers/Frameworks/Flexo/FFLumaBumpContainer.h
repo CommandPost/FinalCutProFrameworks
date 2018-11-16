@@ -13,14 +13,18 @@
 @interface FFLumaBumpContainer : FFBaseDSObject <NSCopying>
 {
     NSMutableArray *_lumaBumpChannels;
-    NSMutableArray *_lumaBumps;
+    NSArray *_lumaBumps;
 }
 
 + (id)copyClassDescription;
-@property(readonly, nonatomic) NSArray *lumaBumps; // @synthesize lumaBumps=_lumaBumps;
+@property(readonly, nonatomic) NSArray *bumps; // @synthesize bumps=_lumaBumps;
 @property(readonly, nonatomic) NSArray *lumaBumpChannels; // @synthesize lumaBumpChannels=_lumaBumpChannels;
 - (BOOL)projectUpdaterConformLumaBumpsToDataWithEffect:(id)arg1 error:(id *)arg2;
+- (void)reset;
 - (CDStruct_bdcb2b0d)md5;
+- (void)removeObjectFromBumpsAtIndex:(unsigned long long)arg1;
+- (void)insertObject:(id)arg1 inBumpsAtIndex:(unsigned long long)arg2;
+@property(readonly, nonatomic) NSArray *lumaBumps;
 - (BOOL)isAtDefaultSettings;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     FFMediaRefChannelController *_controller;
 }
 
+- (void)mouseExited:(id)arg1;
+- (void)mouseEntered:(id)arg1;
 - (void)delete:(id)arg1;
 - (void)paste:(id)arg1;
 - (BOOL)resignFirstResponder;

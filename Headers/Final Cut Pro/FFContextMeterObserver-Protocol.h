@@ -5,6 +5,6 @@
 //
 
 @protocol FFContextMeterObserver
-- (void)contextMeterUpdate:(const float *)arg1 channels:(unsigned long long)arg2;
+- (void)contextMeterUpdate:(unsigned long long)arg1 peakValues:(const float *)arg2 loudnessValues:(CDStruct_818bb265 *)arg3;
 @end
 

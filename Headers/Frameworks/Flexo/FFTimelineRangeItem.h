@@ -6,36 +6,37 @@
 
 #import "NSObject.h"
 
-@class FFTimelineComponentProxy;
+@class FFAnchoredObject;
 
 __attribute__((visibility("hidden")))
 @interface FFTimelineRangeItem : NSObject
 {
     void *_leadingKeyframe;
     void *_trailingKeyframe;
-    CDStruct_e83c9415 _timeRange;
     BOOL _enabled;
-    CDStruct_e83c9415 _leadingFadeRange;
-    void *_leadingFadeKeyframe;
-    unsigned int _leadingFadeInterpolation;
-    CDStruct_e83c9415 _trailingFadeRange;
-    void *_trailingFadeKeyframe;
-    unsigned int _trailingFadeInterpolation;
-    FFTimelineComponentProxy *_proxy;
+    CDStruct_1b6d18a9 _rangeStart;
+    CDStruct_1b6d18a9 _rangeEnd;
+    CDStruct_1b6d18a9 _leadingFadeLength;
+    CDStruct_1b6d18a9 _trailingFadeLength;
+    int _leadingFadeType;
+    int _trailingFadeType;
+    FFAnchoredObject *_object;
 }
 
-@property(nonatomic) unsigned int trailingFadeInterpolation; // @synthesize trailingFadeInterpolation=_trailingFadeInterpolation;
-@property(nonatomic) CDStruct_e83c9415 trailingFadeRange; // @synthesize trailingFadeRange=_trailingFadeRange;
-@property(nonatomic) void *trailingFadeKeyframe; // @synthesize trailingFadeKeyframe=_trailingFadeKeyframe;
-@property(nonatomic) unsigned int leadingFadeInterpolation; // @synthesize leadingFadeInterpolation=_leadingFadeInterpolation;
-@property(nonatomic) CDStruct_e83c9415 leadingFadeRange; // @synthesize leadingFadeRange=_leadingFadeRange;
-@property(nonatomic) void *leadingFadeKeyframe; // @synthesize leadingFadeKeyframe=_leadingFadeKeyframe;
+@property(nonatomic) int trailingFadeType; // @synthesize trailingFadeType=_trailingFadeType;
+@property(nonatomic) int leadingFadeType; // @synthesize leadingFadeType=_leadingFadeType;
+@property(nonatomic) CDStruct_1b6d18a9 trailingFadeLength; // @synthesize trailingFadeLength=_trailingFadeLength;
+@property(nonatomic) CDStruct_1b6d18a9 leadingFadeLength; // @synthesize leadingFadeLength=_leadingFadeLength;
+@property(nonatomic) CDStruct_1b6d18a9 rangeEnd; // @synthesize rangeEnd=_rangeEnd;
+@property(nonatomic) CDStruct_1b6d18a9 rangeStart; // @synthesize rangeStart=_rangeStart;
 @property(nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
-@property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
-@property(nonatomic) void *trailingKeyframe; // @synthesize trailingKeyframe=_trailingKeyframe;
-@property(nonatomic) void *leadingKeyframe; // @synthesize leadingKeyframe=_leadingKeyframe;
-@property(nonatomic) FFTimelineComponentProxy *proxy; // @synthesize proxy=_proxy;
+@property(nonatomic) FFAnchoredObject *object; // @synthesize object=_object;
 - (id)description;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 trailingFadeTime;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 leadingFadeTime;
+@property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
+- (id)initWithEnabledRangeStart:(CDStruct_1b6d18a9)arg1 enabledRangeEnd:(CDStruct_1b6d18a9)arg2 object:(id)arg3;
+- (id)initWithDisabledRange:(id)arg1 object:(id)arg2;
 
 @end
 

@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 - (void)ensureCacheForType:(int)arg1 waitUntilDone:(BOOL)arg2;
 - (void)enqueueCacheOperationForMapType:(int)arg1;
 - (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)createMapOfType:(int)arg1;
 - (void)drawDot:(id)arg1 size:(struct CGSize)arg2;
 - (void)drawLabel:(id)arg1 type:(int)arg2 height:(int)arg3;

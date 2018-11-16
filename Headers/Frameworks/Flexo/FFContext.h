@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFDestAudio, FFPlayer, NSCountedSet, NSHashTable, NSMapTable, NSMutableSet, NSSet, NSTimer;
+@class FFDestAudio, FFPlayer, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSTimer;
 
 @interface FFContext : NSObject
 {
@@ -26,7 +26,7 @@
     int _rangeChanged;
     FFPlayer *_player;
     FFDestAudio *_audioDest;
-    unsigned long long _streamAudioFlags;
+    unsigned int _streamAudioFlags;
     NSSet *_showObjects;
     NSMapTable *_showObjectsOptions;
     BOOL _showObjectTime;
@@ -49,8 +49,8 @@
     BOOL _deferSelectionOSCUpdate;
     BOOL _isPrimaryVout;
     BOOL _canShowTransportControls;
-    NSCountedSet *_meterObservers;
-    unsigned long long _meterObserverCount;
+    NSMutableDictionary *_meterObservers;
+    unsigned long long _meteredRolesCount;
     NSTimer *_meteringTimer;
     BOOL _notificationsDisabled;
     BOOL _recording;
@@ -66,10 +66,8 @@
 @property(nonatomic) BOOL notificationsDisabled; // @synthesize notificationsDisabled=_notificationsDisabled;
 @property(retain, nonatomic) id selectionHandler; // @synthesize selectionHandler;
 @property(nonatomic) BOOL shouldTakeFocusOnLoad; // @synthesize shouldTakeFocusOnLoad;
-- (void)removeAllMeterObservers:(id)arg1;
 - (void)removeMeterObserver:(id)arg1;
-- (void)_removeMeterObserver:(id)arg1 completely:(BOOL)arg2;
-- (void)addMeterObserver:(id)arg1;
+- (void)addMeterObserver:(id)arg1 forRoleUID:(id)arg2;
 - (void)_meteringAudioPlaybackStateChanged;
 - (void)_meteringRateChanged;
 - (void)_checkStartMeteringTimer;
@@ -103,15 +101,15 @@
 - (void)_teardownPlayer;
 - (void)doneUsingPlayer:(id)arg1;
 - (void)startUsingPlayer:(id)arg1;
-- (void)makePlayerForProvider:(id)arg1 playAudio:(BOOL)arg2 forRender:(BOOL)arg3 fallbackVideoProps:(id)arg4;
+- (void)makePlayerForProvider:(id)arg1 playAudio:(BOOL)arg2 forRender:(BOOL)arg3 fallbackVideoProps:(id)arg4 overrideWorkingSpace:(int *)arg5;
 - (void)makePlayerForProvider:(id)arg1 playAudio:(BOOL)arg2;
 - (void)objectRequestsDraftTextMode:(BOOL)arg1;
 - (id)player;
 - (void)setPlayer:(id)arg1;
 - (void)loopRangeEndReached:(double)arg1;
 - (void)loopRangeStartReached:(double)arg1;
-- (unsigned long long)streamAudioFlags;
-- (void)setStreamAudioFlags:(unsigned long long)arg1;
+- (unsigned int)streamAudioFlags;
+- (void)setStreamAudioFlags:(unsigned int)arg1;
 - (id)roles;
 - (void)setRoles:(id)arg1;
 - (id)optionsForKey:(id)arg1 forShowObject:(id)arg2;

@@ -33,6 +33,7 @@
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
 - (id)targetModules;
 - (id)submoduleLayoutArray;
+- (id)layoutDictionary;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)cleanup;
 - (void)moduleViewWasInstalled:(id)arg1;

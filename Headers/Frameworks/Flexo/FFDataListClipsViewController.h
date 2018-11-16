@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     LKSegmentedControl *_clipsItemTypesAllButton;
     LKSegmentedControl *_clipsItemTypesControl;
     NSMenu *_tableHeaderMenu;
+    long long _isReloadingData;
 }
 
 @property(retain, nonatomic) NSMenu *tableHeaderMenu; // @synthesize tableHeaderMenu=_tableHeaderMenu;
@@ -27,11 +28,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LKSegmentedControl *clipsItemTypesAllButton; // @synthesize clipsItemTypesAllButton=_clipsItemTypesAllButton;
 @property(retain, nonatomic) NSView *clipsItemTypesBar; // @synthesize clipsItemTypesBar=_clipsItemTypesBar;
 @property(retain, nonatomic) FFDataListTableView *tableView; // @synthesize tableView=_tableView;
-- (void)shouldEditRolesForRolesMenuController:(id)arg1;
-- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 toAnchoredObjects:(id)arg3;
-- (id)anchoredObjectsForRolesMenuController:(id)arg1;
+- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 forContext:(id)arg3;
+- (id)contextForRolesMenuController:(id)arg1;
 - (BOOL)isValidIndex:(long long)arg1 forArray:(id)arg2;
-- (void)adjustRolesCell:(id)arg1 forItem:(id)arg2;
+- (void)adjustRolesCell:(id)arg1 forItem:(id)arg2 isVideoNotAudio:(BOOL)arg3;
+- (void)setNote:(id)arg1;
+- (void)setDisplayName:(id)arg1;
+- (id)_itemForSender:(id)arg1;
+- (id)tableView:(id)arg1 viewForTableColumn:(id)arg2 row:(long long)arg3;
 - (void)tableViewSelectionDidChange:(id)arg1;
 - (BOOL)tableView:(id)arg1 shouldReorderColumn:(long long)arg2 toColumn:(long long)arg3;
 - (BOOL)tableView:(id)arg1 shouldTypeSelectForEvent:(id)arg2 withCurrentSearchString:(id)arg3;
@@ -46,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)activeAngleForItem:(id)arg1;
 - (void)setNotes:(id)arg1 forItem:(id)arg2;
 - (id)notesForItem:(id)arg1;
-- (id)rolesStrForItem:(id)arg1;
+- (id)rolesStrForItem:(id)arg1 isVideoNotAudio:(BOOL)arg2;
 - (id)startTimecodeForItem:(id)arg1;
 - (void)setName:(id)arg1 forItem:(id)arg2;
 - (id)nameForItem:(id)arg1;
@@ -61,7 +65,8 @@ __attribute__((visibility("hidden")))
 - (void)changeClipFilterType:(id)arg1;
 - (void)toggleActiveAngleColumn:(id)arg1;
 - (void)toggleNotesColumn:(id)arg1;
-- (void)togglRolesColumn:(id)arg1;
+- (void)toggleAudioRolesColumn:(id)arg1;
+- (void)toggleVideoRolesColumn:(id)arg1;
 - (void)toggleTimeColumn:(id)arg1;
 - (void)hideAllColumns:(id)arg1;
 - (void)showAllColumns:(id)arg1;

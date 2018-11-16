@@ -12,16 +12,17 @@
 
 @interface FFEffectBundle : FFEffect <FFAudioEffectChainDelegate>
 {
-    BOOL _initing;
     NSArray *_effectBundleParts;
     CHChannelEnum *_presetChannel;
     NSArray *_activeEffects;
+    BOOL _initWithCoderScope;
 }
 
 + (id)readEffectBundlePartsForEffectBundle:(id)arg1;
 + (id)_documentForArchiveURL:(id)arg1;
 + (id)effectBundlePartsFromXMLDocument:(id)arg1;
 + (BOOL)writeEffectToFile:(id)arg1 error:(id *)arg2;
++ (id)initialEffectBundlePartsForEffectID:(id)arg1;
 + (id)partNamesForBundle:(id)arg1;
 + (id)cachedPartNamesForBundle:(id)arg1;
 + (BOOL)addEffects:(id)arg1 asSnapshotToPart:(unsigned long long)arg2 ofBundle:(id)arg3 atValue:(double)arg4 error:(id *)arg5;
@@ -34,7 +35,6 @@
 - (BOOL)update_migrateEffectBundleFormat;
 - (id)initWithEffectID:(id)arg1 andXMLDocument:(id)arg2;
 - (id)exportAsXMLDocument;
-- (id)effectChainEffectStack;
 - (id)effectChainModelObject;
 - (id)effectChainEffects;
 - (id)newAudioMD5AndOffset:(int)arg1;
@@ -43,7 +43,6 @@
 - (void)createActivePartEffectChannelsInFolder:(id)arg1;
 - (id)presetChannel;
 - (id)primaryAnimationChannel;
-- (void)channelParameterChanged:(id)arg1;
 - (void)presetChanged:(id)arg1;
 - (void)partChanged;
 - (void)partChangedHook;
@@ -53,6 +52,8 @@
 - (void)updatePresetsInEnumChannel:(id)arg1 withPresetNames:(id)arg2;
 - (id)availableBundleParts;
 - (id)presetNames;
+- (void)effectWillBeRemovedFromStack;
+- (void)effectWasAddedToStack:(int)arg1;
 - (void)effectStackAnchoredObjectDidChange;
 - (void)setEffectStack:(id)arg1;
 - (id)inputKeys;
@@ -61,10 +62,9 @@
 - (void)setEffects:(id)arg1;
 - (id)effects;
 - (void)setEffectBundleParts:(id)arg1;
-- (id)effectBundleParts;
+@property(readonly, nonatomic) NSArray *effectBundleParts;
 - (id)activePart;
 - (unsigned long long)activePartIndex;
-- (id)initialEffectBundleParts;
 - (void)removeObjectFromEffectBundlePartsAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inEffectBundlePartsAtIndex:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
@@ -72,9 +72,9 @@
 - (void)_postInit:(id)arg1;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_initForCopy:(id)arg1;
 - (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
 - (void)dealloc;
+- (id)initWithEffectID:(id)arg1 effectBundleParts:(id)arg2;
 - (id)initWithEffectID:(id)arg1;
 
 @end

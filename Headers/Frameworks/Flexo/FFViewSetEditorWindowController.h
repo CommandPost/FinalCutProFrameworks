@@ -11,7 +11,7 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKPopUpButton, LKSearchField, LKTableView, LKTextField, NSArray, NSArrayController, NSMutableArray, NSMutableDictionary, NSPredicate, NSString, NSWindow;
+@class LKEmptyDFRController, LKPopUpButton, LKSearchField, LKTableView, LKTextField, NSArray, NSArrayController, NSMutableArray, NSMutableDictionary, NSPredicate, NSString, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFViewSetEditorWindowController : NSWindowController <NSWindowDelegate, NSMenuDelegate, NSTableViewDelegate, NSTableViewDataSource>
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     LKTextField *_customMetadataNameTextField;
     LKTextField *_customMetadataDescriptionTextField;
     NSWindow *_saveMetadataViewWindow;
+    LKEmptyDFRController *_dfrController;
     NSArrayController *_extendedViewSetsController;
     NSMutableDictionary *_customMetadataDictionary;
     NSMutableDictionary *_removedCustomMetadataDictionary;
@@ -92,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (void)toggleCheckBoxOnSelectedItems;
 - (BOOL)setSelectionIndexes:(id)arg1;
 - (long long)runModal;
+- (id)touchBar;
 - (void)dealloc;
 - (id)init;
 

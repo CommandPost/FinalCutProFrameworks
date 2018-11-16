@@ -24,7 +24,6 @@
 - (void)setTotalRange:(const CDStruct_1b6d18a9 *)arg1 duration:(const CDStruct_1b6d18a9 *)arg2;
 - (id)createXController:(id)arg1 channel:(struct OZChannelBase *)arg2 withMiniCurveEditor:(id)arg3 context:(id)arg4;
 - (id)createYController:(id)arg1 channel:(struct OZChannelBase *)arg2 withMiniCurveEditor:(id)arg3 context:(id)arg4;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end

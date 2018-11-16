@@ -6,11 +6,15 @@
 
 #import "NSOutlineViewDelegate.h"
 
-@class FFMediaSidebarOutlineView, NSEvent, NSMenu;
+@class FFMediaSidebarOutlineView, NSArray, NSEvent, NSMenu;
 
 @protocol FFMediaSidebarOutlineViewDelegate <NSOutlineViewDelegate>
 
 @optional
+- (BOOL)isCurrentSidebar;
+- (void)sidebarDragDidEnd;
+- (void)sidebarDragDidBegin;
+- (NSArray *)supportedDragTypes;
 - (void)outlineViewRootDidDepopulate:(FFMediaSidebarOutlineView *)arg1;
 - (void)outlineViewRootDidRepopulate:(FFMediaSidebarOutlineView *)arg1;
 - (void)outlineViewSelectionDidChangeAutonomously:(FFMediaSidebarOutlineView *)arg1;

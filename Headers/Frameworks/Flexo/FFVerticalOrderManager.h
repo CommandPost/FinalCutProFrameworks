@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import "NSOperation.h"
 
 @class NSArray, NSMutableArray;
 
-@interface FFVerticalOrderManager : NSObject
+@interface FFVerticalOrderManager : NSOperation
 {
     NSMutableArray *_lanesP;
     NSMutableArray *_lanesN;
@@ -20,23 +20,27 @@
     int _flags;
 }
 
++ (void)createUnitTestCaseForItems:(id)arg1 fixedItems:(id)arg2;
+- (void)endOperationOnMainThread:(id)arg1;
 - (void)updateItems;
 - (void)updateItemsReturnChanged:(id)arg1;
-- (BOOL)resolveVerticalOrderForItems:(id)arg1 fixedItems:(id)arg2;
-- (BOOL)resolveVerticalConflictsForItems:(id)arg1 fixedItems:(id)arg2;
-- (BOOL)resolveVerticalGapsForItems:(id)arg1;
-- (BOOL)resolveVerticalGapsForItems:(id)arg1 moveFixedItems:(BOOL)arg2;
 - (BOOL)resolveOrder;
 - (BOOL)resolveGaps;
-- (BOOL)resolveGaps:(BOOL)arg1;
+- (BOOL)resolveGaps:(long long)arg1;
+- (BOOL)resolveAudioConflicts;
 - (BOOL)resolveConflicts;
-- (BOOL)_resolveGapsForLaneIndex:(long long)arg1 moveFixedItems:(BOOL)arg2;
+- (BOOL)_resolveGapsForLaneIndex:(long long)arg1 flags:(long long)arg2;
+- (BOOL)_resolveAudioConflictsForLaneIndex:(long long)arg1;
 - (BOOL)_resolveConflictForLaneIndex:(long long)arg1;
-- (BOOL)initWithItems:(id)arg1 fixedItems:(id)arg2;
-- (BOOL)initWithItems:(id)arg1 fixedItems:(id)arg2 range:(CDStruct_e83c9415)arg3 flags:(int)arg4;
+- (BOOL)setup;
+- (id)initWithItems:(id)arg1 fixedItems:(id)arg2;
+- (id)initWithItems:(id)arg1 fixedItems:(id)arg2 range:(CDStruct_e83c9415)arg3 flags:(int)arg4;
+- (id)initWithItems:(id)arg1 fixedItems:(id)arg2 range:(CDStruct_e83c9415)arg3 flags:(int)arg4 setup:(BOOL)arg5;
+- (id)initWithItemInfos:(id)arg1 flags:(int)arg2 setup:(BOOL)arg3;
 - (void)setupIntersectingItems2;
 - (void)setupIntersectingItemsWithRange:(CDStruct_e83c9415)arg1;
 - (void)setupIntersectingItems;
+- (void)sortAudioItemInfosByPriority:(id)arg1;
 - (void)sortItemInfosByPriority:(id)arg1;
 - (void)sortItemInfos:(id)arg1;
 - (void)sortItemsByDuration:(id)arg1;
@@ -44,14 +48,14 @@
 - (id)description;
 - (id)_itemsAtVerticalIndex:(long long)arg1;
 - (BOOL)isInitialized;
-- (void)releaseItems;
+- (void)_releaseItems;
+- (void)main;
 - (void)dealloc;
 - (id)init;
-- (void)initLanes;
+- (void)_initLanes;
 @property(readonly) BOOL compressLanes;
 @property(readonly) BOOL iMovieMode;
 @property(readonly) BOOL isTesting;
-- (void)createUnitTestCaseForItems:(id)arg1 fixedItems:(id)arg2;
 - (void)generateTestData:(id)arg1;
 - (void)createUnitTestCase:(BOOL)arg1;
 - (BOOL)moveItem:(id)arg1 fromLane:(long long)arg2 toLane:(long long)arg3;

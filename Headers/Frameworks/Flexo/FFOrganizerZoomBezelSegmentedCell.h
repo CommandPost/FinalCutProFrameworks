@@ -11,8 +11,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)_baseFacet;
-- (id)_separatorFacet;
-
 @end
 

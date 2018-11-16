@@ -165,7 +165,7 @@
 - (void)toggleAudioScrubbing:(id)arg1;
 - (void)toggleSnappingDown:(id)arg1;
 - (void)arrangebySortOrderAction:(id)arg1;
-- (void)arrangingingPopUpAction:(id)arg1;
+- (void)arrangingPopupAction:(id)arg1;
 - (void)zoomToFit:(id)arg1;
 - (void)zoomOut:(id)arg1;
 - (void)zoomIn:(id)arg1;
@@ -188,8 +188,6 @@
 - (void)revealInFinder:(id)arg1;
 - (void)revealAncestor:(id)arg1;
 - (void)showProviderSettings:(id)arg1;
-- (void)newTrailer:(id)arg1;
-- (void)newThemedProject:(id)arg1;
 - (void)newEvent:(id)arg1;
 - (void)down:(id)arg1;
 - (void)up:(id)arg1;

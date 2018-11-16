@@ -38,12 +38,14 @@ __attribute__((visibility("hidden")))
 - (id)writableTypesForPasteboard:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)newObjectsWithProject:(id)arg1 assetFlags:(int)arg2 outUserInfo:(id *)arg3;
 - (id)newObjectsWithProject:(id)arg1 assetFlags:(int)arg2;
-- (id)_newDecodeObjectsWithProject:(id)arg1 assetFlags:(int)arg2;
+- (id)_newDecodedDataWithProject:(id)arg1 assetFlags:(int)arg2;
 - (id)modelObjectIDs;
 - (void)setModelObjectIDs:(id)arg1;
+- (id)initWithArray:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4 userInfo:(id)arg5;
 - (id)initWithArray:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4;
-- (void)_initHelperWithObject:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4;
+- (void)_initHelperWithObject:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4 userInfo:(id)arg5;
 - (void)dealloc;
 - (id)init;
 

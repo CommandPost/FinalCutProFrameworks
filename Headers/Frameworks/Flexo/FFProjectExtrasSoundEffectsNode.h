@@ -10,9 +10,9 @@
 {
 }
 
+- (id)iconImage:(BOOL)arg1;
 - (int)displayType;
 - (id)moduleKey;
-- (long long)_dimension1;
 - (id)toolTip;
 - (id)title;
 

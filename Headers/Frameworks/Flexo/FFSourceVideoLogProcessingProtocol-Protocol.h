@@ -7,6 +7,6 @@
 @class FFLogProcessingInfo;
 
 @protocol FFSourceVideoLogProcessingProtocol
-- (void)setLogProcessingInfo:(FFLogProcessingInfo *)arg1;
+- (void)setLogProcessingInfo:(FFLogProcessingInfo *)arg1 targetColorSpace:(int)arg2;
 @end
 

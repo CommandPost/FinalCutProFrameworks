@@ -38,8 +38,8 @@ __attribute__((visibility("hidden")))
 - (void)taskWasCancelled:(id)arg1 queuedRequests:(id)arg2;
 - (BOOL)canCancelTask;
 - (void)cacheCopyComplete:(id)arg1;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)consolidateCacheBackgroundTask:(id)arg1 onTask:(id)arg2;
 - (void)preflightItemsAtURL:(id)arg1 dstDirectoryRelativePath:(id)arg2 srcDirectoryName:(id)arg3 srcDirectoryURLIndex:(unsigned long long)arg4;
 - (void)migrateWithOptions:(int)arg1;

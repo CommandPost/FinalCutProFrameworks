@@ -21,6 +21,7 @@
     BOOL _allowsSelfReference;
 }
 
+- (id)attributedStringForNodeName:(id)arg1;
 - (struct OZDocument *)document;
 - (void)menuNeedsUpdate:(id)arg1;
 - (void)buildDummyMenu;

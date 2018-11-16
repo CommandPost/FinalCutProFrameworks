@@ -14,10 +14,6 @@
 + (double)singleHandleInset;
 + (double)rightHandleInset;
 + (double)leftHandleInset;
-+ (id)transitionBowTieFacet;
-+ (id)transitionHandleFacet;
-+ (id)editHandleFacet;
-+ (void)initialize;
 - (id)hitTest:(struct CGPoint)arg1;
 
 @end

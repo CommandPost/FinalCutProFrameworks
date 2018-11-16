@@ -11,6 +11,10 @@
 }
 
 + (Class)streamClass;
++ (BOOL)waitForQueuedDeferredSourcesToFinish:(id)arg1;
++ (void)enqueueDeferredSourceRelease:(id)arg1;
+- (id)copyRenderInfoForVideoProps:(id)arg1 context:(id)arg2;
+- (id)copyRenderInfoForVideoProps:(id)arg1 context:(id)arg2 csChoice:(int)arg3;
 - (CDStruct_1b6d18a9)sampleDurForCacheLookup;
 - (id)codecName;
 - (id)deepDescription;

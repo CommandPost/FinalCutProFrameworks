@@ -16,7 +16,6 @@
     BOOL _shouldDeleteDoc;
 }
 
-- (id).cxx_construct;
 - (double)frameInterval;
 - (CDStruct_1b6d18a9)nextPlayTime:(const CDStruct_1b6d18a9 *)arg1;
 - (BOOL)isPlaying;

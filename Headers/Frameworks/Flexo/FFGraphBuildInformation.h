@@ -10,11 +10,20 @@
 {
     BOOL _retimeApproximateDueToMissingFlowVectors;
     BOOL _approximateDueToMissingDominantMotion;
+    BOOL _flowTransitionNeedsAnalysis;
+    BOOL _oneOrMoreCacheHits;
+    unsigned int _cacheHitReasons;
 }
 
 + (id)graphBuildInformation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)unionBuildInfo:(id)arg1;
+- (unsigned int)getCacheHitReasons;
+- (void)updateCacheHitReasons:(unsigned int)arg1;
+- (BOOL)oneOrMoreCacheHits;
+- (void)setOneOrMoreCacheHits:(BOOL)arg1;
+- (BOOL)flowTransitionNeedsAnalysis;
+- (void)setFlowTransitionNeedsAnalysis:(BOOL)arg1;
 - (BOOL)approximateDueToMissingDominantMotion;
 - (void)setApproximateDueToMissingDominantMotion:(BOOL)arg1;
 - (BOOL)retimeApproximateDueToMissingFlowVectors;

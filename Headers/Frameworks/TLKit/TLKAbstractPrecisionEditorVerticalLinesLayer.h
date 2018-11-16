@@ -6,19 +6,22 @@
 
 #import "CALayer.h"
 
+#import "TLKLayerState.h"
 #import "TLKPartInfo.h"
 
 @class NSString;
 
-@interface TLKAbstractPrecisionEditorVerticalLinesLayer : CALayer <TLKPartInfo>
+@interface TLKAbstractPrecisionEditorVerticalLinesLayer : CALayer <TLKPartInfo, TLKLayerState>
 {
     int _edgeType;
     int _sidesToShow;
     int _sizesToShow;
+    int _layerState;
 }
 
 + (Class)verticalLinesClassLayer;
 + (void)setVerticalLinesClassLayer:(Class)arg1;
+@property(nonatomic) int layerState; // @synthesize layerState=_layerState;
 @property(nonatomic) int sidesToShow; // @synthesize sidesToShow=_sizesToShow;
 @property(nonatomic) int edgeType; // @synthesize edgeType=_edgeType;
 - (id)subpartAtPoint:(struct CGPoint)arg1;

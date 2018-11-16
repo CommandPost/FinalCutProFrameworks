@@ -9,7 +9,7 @@
 #import "FFSkimmingModuleDelegate.h"
 #import "NSDraggingSource.h"
 
-@class CALayer, CATextLayer, FFContext, FFImageBrowserView, FFThemeFacetLayer, NSArray, NSString;
+@class CALayer, CATextLayer, FFContext, FFImageBrowserView, FFImageLayer, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFImageBrowserCell : FFResponderLayer <NSDraggingSource, FFSkimmingModuleDelegate>
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
     CALayer *_imageLayer;
     CATextLayer *_titleLayer;
     CATextLayer *_subtitleLayer;
-    FFThemeFacetLayer *_persistentPlayheadLayer;
+    FFImageLayer *_persistentPlayheadLayer;
     BOOL _isSkimming;
 }
 
@@ -78,10 +78,12 @@ __attribute__((visibility("hidden")))
 - (void)mouseExited:(id)arg1;
 - (BOOL)mouseEntered:(id)arg1;
 - (void)stopSkimming;
-- (BOOL)startSkimming;
+- (BOOL)startSkimming:(id)arg1;
 - (void)movePersistentPlayheadToTime:(CDStruct_1b6d18a9)arg1 point:(struct CGPoint)arg2;
 - (void)resignPersistentPlayhead;
 - (id)_persistentPlayheadLayer;
+- (id)cellManagedThumbnail;
+- (BOOL)cellManagesThumbnail;
 - (id)dragImage;
 - (id)namesOfPromisedFilesDroppedAtDestination:(id)arg1;
 - (BOOL)mouseDragged:(id)arg1;
@@ -91,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (void)setContentsScale:(double)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (BOOL)isSelected;
+- (BOOL)canSelectCell;
 - (void)_updateImageLayer;
 - (void)reloadData;
 - (void)layoutSublayers;

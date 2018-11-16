@@ -16,12 +16,14 @@ __attribute__((visibility("hidden")))
     NSDictionary *_faceInfo;
 }
 
+@property(readonly) int colorPrimaries; // @dynamic colorPrimaries;
 - (id)pixelBuffer;
 - (id)faceInfo;
 - (struct OMHistoAnalysis *)histo;
 - (void)analyseWithBuffer:(id)arg1;
 - (void)analyseWithBuffer:(id)arg1 andFaceInfo:(id)arg2;
 - (void)dealloc;
+- (id)initWithColorPrimaries:(int)arg1;
 - (id)init;
 
 @end

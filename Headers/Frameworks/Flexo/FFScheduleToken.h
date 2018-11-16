@@ -15,6 +15,7 @@
     NSMutableDictionary *_dictm;
 }
 
++ (id)newScheduleTokenForGroupOfTokensForStream:(id)arg1 subTokens:(id)arg2 retainOnlyObjects:(id)arg3 flattenPassThrusInGroup:(BOOL)arg4;
 - (_Bool)hasErrorInfo;
 - (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (id)newTokenForPassThruStream:(id)arg1 retainOnlyObject:(id)arg2;

@@ -7,18 +7,31 @@
 #import "NSViewController.h"
 
 #import "NSAnimationDelegate.h"
+#import "NSOpenSavePanelDelegate.h"
 
-@class FFLibrary, NSOpenPanel, NSPopUpButton, NSString;
+@class FFLibrary, FFXMLImportOptions, NSButton, NSMatrix, NSOpenPanel, NSPopUpButton, NSString, NSView;
 
-@interface FFXMLImportDialogController : NSViewController <NSAnimationDelegate>
+@interface FFXMLImportDialogController : NSViewController <NSAnimationDelegate, NSOpenSavePanelDelegate>
 {
     NSOpenPanel *_panel;
     NSPopUpButton *_storagePopup;
     FFLibrary *_storageLocation;
+    BOOL _useAlternateAccessoryView;
+    NSView *_alternateAccessoryView;
+    NSPopUpButton *_alternateStoragePopup;
+    NSButton *_incrementalImportCheckBox;
+    NSMatrix *_resolveConflictRadioButtons;
+    FFXMLImportOptions *_options;
 }
 
 - (void)dealloc;
 - (id)initWithOpenPanel:(id)arg1;
+- (void)optionChanged:(id)arg1;
+@property(copy, nonatomic) FFXMLImportOptions *importOptions;
+- (void)enableResolveConflictOption:(BOOL)arg1;
+@property(nonatomic) unsigned long long resolveConflictOption;
+- (void)enableIncrementalImportOption:(BOOL)arg1;
+@property(nonatomic) BOOL incrementalImportOption;
 - (void)storageChanged:(id)arg1;
 - (void)updateLocationPopup;
 - (id)library;

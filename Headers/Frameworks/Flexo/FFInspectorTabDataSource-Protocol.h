@@ -8,7 +8,10 @@
 
 @protocol FFInspectorTabDataSource
 - (NSString *)labelForInspectorTabIdentifier:(NSString *)arg1;
+- (NSString *)classNameForInspectorTabIdentifier:(NSString *)arg1;
 - (NSArray *)inspectorTabIdentifiers;
-- (NSArray *)inspectorTabClassNames;
+
+@optional
+- (NSArray *)tabSplitIdentifiersForInspectorTabIdentifier:(NSString *)arg1;
 @end
 

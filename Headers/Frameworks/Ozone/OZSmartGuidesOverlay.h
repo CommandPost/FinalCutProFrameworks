@@ -8,12 +8,12 @@
 
 @interface OZSmartGuidesOverlay : OZOverlay
 {
-    set_b780a99c *_drawSnaps;
+    set_f8d10c04 *_drawSnaps;
 }
 
 - (void)snapEnd;
-- (void)snappedTo:(const set_b780a99c *)arg1;
-- (set_b780a99c *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
+- (void)snappedTo:(const set_f8d10c04 *)arg1;
+- (set_f8d10c04 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 - (void)draw;
 - (int)getDrawingOrder;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;

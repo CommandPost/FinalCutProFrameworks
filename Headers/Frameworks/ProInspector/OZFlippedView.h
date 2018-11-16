@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
 @class NSTrackingArea, OZViewController;
 
-@interface OZFlippedView : NSProView
+@interface OZFlippedView : NSView
 {
     BOOL _isBrick;
     BOOL _isBrickWithinBrick;
@@ -25,7 +25,17 @@
     BOOL _isIgnoringMouseEvents;
     BOOL _isPrimarySeparatorEnabled;
     BOOL _isSecondarySeparatorEnabled;
+    BOOL _recursiveSecondarySeparatorDisabled;
+    BOOL _isAlternatingGroupContainer;
+    BOOL _isAlternatingBlock;
+    BOOL _noDividerLine;
     BOOL _forceDrawSelectionHighlight;
+    BOOL _drawsGroupBox;
+    BOOL _isUserEffectsContainer;
+    BOOL _isTextMaterialContainer;
+    BOOL _isMaterialLayer;
+    BOOL _isLevelOneBrick;
+    BOOL _isMaterialLayerBackground;
     struct CGPoint _downLocation;
     SEL _doubleClickAction;
     id _pTarget;
@@ -33,11 +43,24 @@
     OZViewController *_pController;
     NSTrackingArea *_trackingArea;
     OZViewController *_trackingAreaOwner;
+    NSView *_customContainerView;
+    BOOL _drawsBrick;
+    BOOL _forceNonUserEffectsDrawing;
 }
 
-+ (double)BrickVerticalGap;
-+ (double)BrickHorizontalMargin;
-+ (double)BrickVerticalMargin;
+@property(nonatomic) BOOL forceNonUserEffectsDrawing; // @synthesize forceNonUserEffectsDrawing=_forceNonUserEffectsDrawing;
+@property(nonatomic) BOOL drawsBrick; // @synthesize drawsBrick=_drawsBrick;
+@property(retain, nonatomic) NSView *customContainerView; // @synthesize customContainerView=_customContainerView;
+@property(nonatomic) BOOL noDividerLine; // @synthesize noDividerLine=_noDividerLine;
+@property(nonatomic) BOOL isAlternatingBlock; // @synthesize isAlternatingBlock=_isAlternatingBlock;
+@property(nonatomic) BOOL isAlternatingGroupContainer; // @synthesize isAlternatingGroupContainer=_isAlternatingGroupContainer;
+@property(nonatomic) BOOL recursiveSecondarySeparatorDisabled; // @synthesize recursiveSecondarySeparatorDisabled=_recursiveSecondarySeparatorDisabled;
+@property(nonatomic) BOOL isMaterialLayerBackground; // @synthesize isMaterialLayerBackground=_isMaterialLayerBackground;
+@property(nonatomic) BOOL isLevelOneBrick; // @synthesize isLevelOneBrick=_isLevelOneBrick;
+@property(nonatomic) BOOL isMaterialLayer; // @synthesize isMaterialLayer=_isMaterialLayer;
+@property(nonatomic) BOOL isTextMaterialContainer; // @synthesize isTextMaterialContainer=_isTextMaterialContainer;
+@property(nonatomic) BOOL isUserEffectsContainer; // @synthesize isUserEffectsContainer=_isUserEffectsContainer;
+@property(nonatomic) BOOL drawsGroupBox; // @synthesize drawsGroupBox=_drawsGroupBox;
 @property(nonatomic) OZViewController *viewController; // @synthesize viewController=_pController;
 @property(nonatomic) id resizeDelegate; // @synthesize resizeDelegate=_pResizeDelegate;
 @property(nonatomic) id target; // @synthesize target=_pTarget;
@@ -52,8 +75,11 @@
 @property(nonatomic) BOOL isCollapsed; // @synthesize isCollapsed=_isCollapsed;
 @property(nonatomic) BOOL isBrickWithinBrick; // @synthesize isBrickWithinBrick=_isBrickWithinBrick;
 @property(nonatomic) BOOL isBrick; // @synthesize isBrick=_isBrick;
-- (id).cxx_construct;
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
+- (BOOL)lockFocusIfCanDraw;
+- (BOOL)isAnyParentSelected;
+- (BOOL)isTextMaterialContainerSubview;
+- (BOOL)isUserEffectsSubview;
+- (BOOL)isRecursiveSecondarySeparatorDisabled;
 - (void)setIsSecondarySeparatorEnabled:(_Bool)arg1;
 - (void)setIsPrimarySeparatorEnabled:(_Bool)arg1;
 - (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;

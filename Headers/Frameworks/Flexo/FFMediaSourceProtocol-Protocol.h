@@ -7,11 +7,11 @@
 @class FFMedia, NSArray, NSString;
 
 @protocol FFMediaSourceProtocol
-- (void)setMedia:(FFMedia *)arg1 providerSourceKey:(NSString *)arg2 sourceChannelMap:(NSArray *)arg3 audioChannelRoutingMap:(NSArray *)arg4 updateFlags:(int)arg5;
+- (void)setMedia:(FFMedia *)arg1 providerSourceKey:(NSString *)arg2 audioChannelMap:(NSArray *)arg3 audioChannelRoutingMap:(NSArray *)arg4 updateFlags:(int)arg5;
 - (void)setAudioChannelRoutingMap:(NSArray *)arg1;
 - (NSArray *)audioChannelRoutingMap;
-- (void)setSourceChannelMap:(NSArray *)arg1;
-- (NSArray *)sourceChannelMap;
+- (void)setAudioChannelMap:(NSArray *)arg1;
+- (NSArray *)audioChannelMap;
 - (void)setProviderSourceKey:(NSString *)arg1;
 - (NSString *)providerSourceKey;
 - (void)setMedia:(FFMedia *)arg1;

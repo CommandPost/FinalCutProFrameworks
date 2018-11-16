@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
     CDStruct_bdcb2b0d _cachedMD5;
 }
 
-- (id).cxx_construct;
+- (id)attributedStringForMediaName:(id)arg1;
 - (void)_effectsChanged:(id)arg1;
-- (void)mouseExitedRow:(id)arg1;
-- (void)mouseEnteredRow:(id)arg1;
+- (void)mouseExitedThumbnailContainer:(id)arg1;
+- (void)mouseEnteredThumbnailContainer:(id)arg1;
 - (void)pick:(id)arg1;
 - (void)clearSelection:(id)arg1;
 - (void)paste:(id)arg1;

@@ -12,7 +12,7 @@
 
 @interface OZTimelineViewAudio : OZTimelineViewMulti <OZHGUserJobClient>
 {
-    struct map<OZTimelineAudioImageTag, OZTimelineAudioImage, std::less<OZTimelineAudioImageTag>, std::allocator<std::pair<const OZTimelineAudioImageTag, OZTimelineAudioImage>>> *_images;
+    struct map<OZTimelineAudioImageTag, OZTimelineAudioImage, std::__1::less<OZTimelineAudioImageTag>, std::__1::allocator<std::__1::pair<const OZTimelineAudioImageTag, OZTimelineAudioImage>>> *_images;
     NSTimer *_sweepTimer;
     CDStruct_1b6d18a9 _audioChunkFrames;
     double _audioChunkPixels;
@@ -20,7 +20,6 @@
     BOOL _audioImagesUpdated;
 }
 
-- (id).cxx_construct;
 - (void)stopTimers;
 - (void)imagesOutOfDate;
 - (unsigned int)rasterColor;

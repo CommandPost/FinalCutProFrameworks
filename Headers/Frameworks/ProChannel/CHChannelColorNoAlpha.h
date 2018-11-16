@@ -27,6 +27,7 @@
 - (double)greenValueAtTime:(CDStruct_198678f7)arg1;
 - (double)redValueAtTime:(CDStruct_198678f7)arg1;
 - (void)getColorAtTime:(CDStruct_198678f7)arg1 red:(double *)arg2 green:(double *)arg3 blue:(double *)arg4;
+- (void)setColorSpaceIDNoConversion:(int)arg1;
 - (void)setDefaultCurveRed:(double)arg1 curveGreen:(double)arg2 curveBlue:(double)arg3;
 - (struct OZChannelColorNoAlpha *)ozChannel;
 

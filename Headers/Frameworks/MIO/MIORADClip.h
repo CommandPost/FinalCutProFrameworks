@@ -61,11 +61,15 @@
     MIOTimecode *_unadulteredOutTC;
     BOOL _didSetUpAudio;
     MIOTimecode *_timecodeStart;
+    NSNumber *_assetImportPercentageDone;
+    NSMutableArray *_inProgressAssetImportRequests;
 }
 
 + (id)clipWithName:(id)arg1 volume:(id)arg2;
 + (id)keyPathsForValuesAffectingTargetDataSize;
 + (id)keyPathsForValuesAffectingDurationTC;
+@property(retain) NSMutableArray *inProgressAssetImportRequests; // @synthesize inProgressAssetImportRequests=_inProgressAssetImportRequests;
+@property(retain) NSNumber *assetImportPercentageDone; // @synthesize assetImportPercentageDone=_assetImportPercentageDone;
 @property(retain) MIOTimecode *unadulteredOutTC; // @synthesize unadulteredOutTC=_unadulteredOutTC;
 @property(retain) MIOTimecode *unadulteredInTC; // @synthesize unadulteredInTC=_unadulteredInTC;
 @property(nonatomic) CDStruct_1b6d18a9 outTime; // @synthesize outTime=_outTime;
@@ -73,7 +77,12 @@
 @property(nonatomic) CDStruct_1b6d18a9 mediaStartTime; // @synthesize mediaStartTime=_mediaStartTime;
 @property(retain) NSMutableArray *metadataArray; // @synthesize metadataArray=_metadataArray;
 @property(retain) NSMutableDictionary *customMetadata; // @synthesize customMetadata=_customMetadata;
-- (id).cxx_construct;
+- (struct opaqueCMSampleBuffer *)copyVideoSampleBufferForWriterInput:(struct opaqueCMSampleBuffer *)arg1;
+- (BOOL)isValidSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (void)assetImportDidEnd;
+- (void)assetImportWillStart;
+- (id)resourceLoaderQueue;
+- (id)resourceLoaderDelegate;
 - (BOOL)hasTimecode;
 - (BOOL)useAssetImportPath;
 - (BOOL)isiOSClip;
@@ -113,6 +122,9 @@
 - (id)spannedClipID;
 - (BOOL)spansAcrossVolumes;
 - (BOOL)isSpanned;
+- (id)avAsset;
+- (id)URL;
+- (id)clipURLs;
 - (BOOL)parseEntireFile;
 - (id)tempClipDefaults;
 - (id)avchdMetadataDictionaryForFigFormatReader;

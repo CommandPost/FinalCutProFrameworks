@@ -19,7 +19,6 @@
     struct OZChannelBase *_overlayChan;
 }
 
-- (id).cxx_construct;
 - (double)calcScaleFactorForPoint:(PCVector3_457fd1f0 *)arg1 objToView:(PCMatrix44Tmpl_93ed1289 *)arg2;
 - (double)getSecondsSince:(struct timeval *)arg1;
 - (void)stopAlphaTimer;

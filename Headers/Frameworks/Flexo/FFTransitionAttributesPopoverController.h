@@ -4,15 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import "NSViewController.h"
 
-#import "NSWindowDelegate.h"
+#import "NSPopoverDelegate.h"
 
-@class LKPopOverWindow, NSArray, NSString, NSTextField, NSView;
+@class NSArray, NSPopover, NSString, NSTextField, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFTransitionAttributesPopoverController : NSObject <NSWindowDelegate>
+@interface FFTransitionAttributesPopoverController : NSViewController <NSPopoverDelegate>
 {
+    NSPopover *_popover;
     BOOL _preventDismissDuringModelChange;
     BOOL _isAnimating;
     BOOL _isDismissing;
@@ -20,7 +21,6 @@ __attribute__((visibility("hidden")))
     NSView *_popoverView;
     NSTextField *_durationTextField;
     NSTextField *_nameTextField;
-    LKPopOverWindow *_popoverWindow;
     NSArray *_selectedItems;
 }
 
@@ -28,11 +28,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL isAnimating; // @synthesize isAnimating=_isAnimating;
 @property(nonatomic) BOOL preventDismissDuringModelChange; // @synthesize preventDismissDuringModelChange=_preventDismissDuringModelChange;
 @property(retain, nonatomic) NSArray *selectedItems; // @synthesize selectedItems=_selectedItems;
-@property(retain, nonatomic) LKPopOverWindow *popoverWindow; // @synthesize popoverWindow=_popoverWindow;
 @property(nonatomic) NSTextField *nameTextField; // @synthesize nameTextField=_nameTextField;
 @property(nonatomic) NSTextField *durationTextField; // @synthesize durationTextField=_durationTextField;
 @property(retain, nonatomic) NSView *popoverView; // @synthesize popoverView=_popoverView;
 @property(nonatomic) id <FFTransitionAttributesPopoverControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly) NSPopover *popover; // @synthesize popover=_popover;
 - (id)_currentTransitionEffectID;
 - (id)_currentTransitionName;
 - (BOOL)_setTransitionDurations:(id)arg1;
@@ -44,13 +44,16 @@ __attribute__((visibility("hidden")))
 - (void)updateTransitionDuration:(id)arg1;
 - (void)_popoverDidDismiss;
 - (void)dismiss;
-- (void)popOverWindowDidCancel:(id)arg1;
-- (void)popoverDidResignKey:(id)arg1;
-- (void)popOverWindow:(id)arg1 didEndAnimation:(id)arg2;
 - (void)_dismissPopoverAnimated:(BOOL)arg1;
+- (BOOL)popoverShouldClose:(id)arg1;
+- (void)popoverDidClose:(id)arg1;
+- (void)popoverWillClose:(id)arg1;
+- (void)popoverDidShow:(id)arg1;
+- (void)popoverWillShow:(id)arg1;
 - (void)presentWithTargetRect:(struct CGRect)arg1 inView:(id)arg2;
 - (void)dealloc;
-- (id)init;
+- (id)nibBundle;
+- (id)nibName;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

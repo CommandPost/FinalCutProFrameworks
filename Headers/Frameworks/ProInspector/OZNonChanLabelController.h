@@ -11,11 +11,15 @@
 @interface OZNonChanLabelController : OZViewController
 {
     OZLabelText *_pLabelText;
-    float _currIndentAmount;
+    float _cachedLabelTextWidth;
+    BOOL _cachedLabelTextWidthIsValid;
 }
 
 - (void)toggleDisclosure:(id)arg1;
 - (float)suggestedMinLabelWidth;
+- (float)suggestedMaxLabelWidth;
+- (void)invalidateCachedLabelTextWidth;
+- (float)labelTextWidth;
 - (void)setAlignment:(unsigned long long)arg1;
 - (void)setDoubleValue:(double)arg1;
 - (void)setFormatter:(id)arg1;

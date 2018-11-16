@@ -6,18 +6,17 @@
 
 #import <TLKit/TLKAbstractRangeSelectionLayer.h>
 
-@class TLKSelectionLayer, TLKThemeBackedLayer;
+@class TLKImageLayer, TLKSelectionLayer;
 
 @interface TLKRangeSelectionLayer : TLKAbstractRangeSelectionLayer
 {
     TLKSelectionLayer *_selectionLayer;
-    TLKThemeBackedLayer *_leftHandle;
-    TLKThemeBackedLayer *_rightHandle;
+    TLKImageLayer *_leftHandle;
+    TLKImageLayer *_rightHandle;
     unsigned int _containingViewFirstResponder:1;
     unsigned int RESERVED:31;
 }
 
-- (id)hitTest:(struct CGPoint)arg1;
 - (struct CGRect)_rightHandleFrame;
 - (struct CGRect)_leftHandleFrame;
 - (void)layoutSublayers;

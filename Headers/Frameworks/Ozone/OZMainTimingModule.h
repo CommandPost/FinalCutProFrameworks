@@ -6,16 +6,16 @@
 
 #import <Ozone/OZProViewModule.h>
 
-@class LKWindow, NSProView, OZPlaylineView, OZTimelineCurveEditorModule, OZTimingControlModule;
+@class NSView, NSWindow, OZPlaylineView, OZTimelineCurveEditorModule, OZTimingControlModule;
 
 @interface OZMainTimingModule : OZProViewModule
 {
-    NSProView *_timingControlView;
-    NSProView *_timingMainView;
+    NSView *_timingControlView;
+    NSView *_timingMainView;
     OZTimingControlModule *_timingControlModule;
     OZTimelineCurveEditorModule *_timelineCurveEditorModule;
     OZPlaylineView *_playlineView;
-    LKWindow *_playlineWindow;
+    NSWindow *_playlineWindow;
     char _viewStateOnHide[3];
 }
 

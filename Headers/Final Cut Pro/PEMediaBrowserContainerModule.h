@@ -8,15 +8,18 @@
 
 #import "FFEditActionSourceProtocol.h"
 #import "FFEffectLibraryModuleDelegate.h"
-#import "FFEventsLibraryDelegate.h"
+#import "FFOrganizerDelegate.h"
+#import "FFOrganizerSkimmingDelegate.h"
 
-@class FFContentBrowserWrapperModule, FFMediaBrowserModule, LKButton, LKTextField, NSString, NSView;
+@class FFContentBrowserWrapperModule, LKButton, LKTextField, NSNumber, NSString, NSView;
 
-@interface PEMediaBrowserContainerModule : LKTabModule <FFEditActionSourceProtocol, FFEventsLibraryDelegate, FFEffectLibraryModuleDelegate>
+@interface PEMediaBrowserContainerModule : LKTabModule <FFEditActionSourceProtocol, FFOrganizerDelegate, FFOrganizerSkimmingDelegate, FFEffectLibraryModuleDelegate>
 {
+    NSNumber *_desiredModePostLayout;
     int _mode;
     FFContentBrowserWrapperModule *_contentBrowserModule;
-    FFMediaBrowserModule *_ilmbModule;
+    BOOL _hiddenAfterLayout;
+    struct CGRect _desiredFrameAfterLayout;
     NSView *_accessoryViewBackground;
     LKTextField *_paneCapTitle;
     LKButton *_paneCapCategoryButton;
@@ -40,6 +43,7 @@
 - (void)module:(id)arg1 setCategoryTextField:(id)arg2;
 - (void)stopUsingMedia:(id)arg1;
 - (void)setNoItemsInfoTextVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (id)organizerSelection;
 - (id)timelineSelection;
 - (id)selectionOwner;
 - (void)organizerModule:(id)arg1 didSelectItems:(id)arg2;
@@ -53,8 +57,9 @@
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 loadingBlock:(CDUnknownBlockType)arg4 unloadingBlock:(CDUnknownBlockType)arg5;
-- (void)displayURL:(id)arg1;
-- (BOOL)canDisplayURL:(id)arg1;
+- (id)organizerDelegate;
+- (id)markerEditorDelegate;
+- (id)skimmingDelegate;
 - (void)makeSequenceActive:(id)arg1;
 - (void)makeProjectActive:(id)arg1;
 - (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_5c5366e1)arg2;
@@ -65,8 +70,6 @@
 - (void)selectGeneratorsMode:(id)arg1;
 - (void)selectTransitionsMode:(id)arg1;
 - (void)selectTitlesMode:(id)arg1;
-- (void)selectPhotosMode:(id)arg1;
-- (void)selectSoundMode:(id)arg1;
 - (void)selectEffectsMode:(id)arg1;
 - (void)selectBrowserModeCore:(int)arg1;
 - (unsigned long long)labelAlignment;
@@ -76,11 +79,11 @@
 - (void)moduleDidHide;
 - (id)moduleAccessoryView;
 - (id)contentLayoutDictionary;
+- (void)displayPostAutoLayout;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
 - (id)submoduleLayoutArray;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)viewWasInstalled;
-- (void)addMediaBrowserModule:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)sequenceFormatChanged:(id)arg1;
 - (void)set4kCheckboxForSequence:(id)arg1;

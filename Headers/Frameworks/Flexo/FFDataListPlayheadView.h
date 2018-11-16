@@ -6,18 +6,19 @@
 
 #import "NSView.h"
 
-@class FFDataListTableView;
+@class FFDataListTableView, NSImage, NSLayoutConstraint;
 
 __attribute__((visibility("hidden")))
 @interface FFDataListPlayheadView : NSView
 {
     long long _playheadRow;
     FFDataListTableView *_tableView;
+    NSLayoutConstraint *_yContraint;
+    NSImage *_playheadImage;
 }
 
 @property(retain, nonatomic) FFDataListTableView *tableView; // @synthesize tableView=_tableView;
 @property(nonatomic) long long playheadRow; // @synthesize playheadRow=_playheadRow;
-- (void)drawPlayheadInFrame:(struct CGRect)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (struct CGRect)playheadFrameForRow:(long long)arg1;
 - (void)movePlayheadToRow:(long long)arg1 position:(int)arg2 animate:(BOOL)arg3;

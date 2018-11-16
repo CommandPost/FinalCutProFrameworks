@@ -6,7 +6,7 @@
 
 #import "NSWindowController.h"
 
-@class NSArray, NSButton, NSMatrix, NSProThemeImageView, NSTextField;
+@class NSArray, NSButton, NSImageView, NSMatrix, NSTextField;
 
 __attribute__((visibility("hidden")))
 @interface FFPurgeRenderFilesWindowController : NSWindowController
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     NSMatrix *_purgeTypeMatrix;
     id _okButton;
     id _cancelButton;
-    NSProThemeImageView *_trashIcon;
+    NSImageView *_trashIcon;
     NSTextField *_headerText;
     NSTextField *_projectText;
     id _radioGroupOptions;

@@ -11,7 +11,7 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class NSArray, NSButton, NSPanel, NSPathControl, NSString, NSTableView, NSTextField, NSTextView, NSURL, NSView;
+@class FFXMLImportOptions, LKEmptyDFRController, NSArray, NSButton, NSMatrix, NSPanel, NSPathControl, NSString, NSTableView, NSTextField, NSTextView, NSURL, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFLibraryManagerPanelController : NSWindowController <NSWindowDelegate, NSOpenSavePanelDelegate, NSTableViewDelegate, NSTableViewDataSource>
@@ -43,12 +43,26 @@ __attribute__((visibility("hidden")))
     NSButton *_moveOrCopyAdvancedOptimizedMediaButton;
     NSButton *_moveOrCopyAdvancedProxyMediaButton;
     NSButton *_moveOrCopyAdvancedConsolidateCopyButton;
+    NSPanel *_importIntoPanel;
+    NSTextField *_importIntoTopicTextField;
+    NSTextView *_importIntoTopicDescriptionTextView;
+    NSPathControl *_importIntoExistingPathControl;
+    NSButton *_importIntoOtherLibraryButton;
+    NSButton *_importIntoNewLibraryButton;
+    NSTableView *_importIntoExistingLibraryTableView;
+    NSButton *_importIntoChooseButton;
+    NSView *_importIntoExtraView;
+    NSButton *_importIntoExtraIncrementalImportButton;
+    NSMatrix *_importIntoExtraResolveConflictRadioButtons;
+    LKEmptyDFRController *_dfrController;
     struct CGRect _initialSwitchFrame;
     BOOL _moveFiles;
     struct CGRect _initialMoveOrCopyFrame;
     double _initialMoveOrCopyExistingLibraryViewHeight;
     double _initialMoveOrCopyAdvancedViewHeight;
     double _initialMoveOrCopyDistanceBetweenAdvancedAndLibraryViews;
+    struct CGRect _initialImportIntoFrame;
+    FFXMLImportOptions *_importOptions;
 }
 
 + (id)openOrSaveAllowedFileTypes;
@@ -59,6 +73,17 @@ __attribute__((visibility("hidden")))
 + (id)openLibraries:(BOOL)arg1 windowTextMessage:(id)arg2 windowDescriptionMessage:(id)arg3 error:(id *)arg4;
 + (id)openLibraries:(BOOL)arg1 error:(id *)arg2;
 + (id)chooseLocation:(id)arg1 tagNames:(id *)arg2;
+@property(nonatomic) NSMatrix *importIntoExtraResolveConflictRadioButtons; // @synthesize importIntoExtraResolveConflictRadioButtons=_importIntoExtraResolveConflictRadioButtons;
+@property(nonatomic) NSButton *importIntoExtraIncrementalImportButton; // @synthesize importIntoExtraIncrementalImportButton=_importIntoExtraIncrementalImportButton;
+@property(nonatomic) NSView *importIntoExtraView; // @synthesize importIntoExtraView=_importIntoExtraView;
+@property(nonatomic) NSButton *importIntoChooseButton; // @synthesize importIntoChooseButton=_importIntoChooseButton;
+@property(nonatomic) NSTableView *importIntoExistingLibraryTableView; // @synthesize importIntoExistingLibraryTableView=_importIntoExistingLibraryTableView;
+@property(nonatomic) NSButton *importIntoNewLibraryButton; // @synthesize importIntoNewLibraryButton=_importIntoNewLibraryButton;
+@property(nonatomic) NSButton *importIntoOtherLibraryButton; // @synthesize importIntoOtherLibraryButton=_importIntoOtherLibraryButton;
+@property(nonatomic) NSPathControl *importIntoExistingPathControl; // @synthesize importIntoExistingPathControl=_importIntoExistingPathControl;
+@property(nonatomic) NSTextView *importIntoTopicDescriptionTextView; // @synthesize importIntoTopicDescriptionTextView=_importIntoTopicDescriptionTextView;
+@property(nonatomic) NSTextField *importIntoTopicTextField; // @synthesize importIntoTopicTextField=_importIntoTopicTextField;
+@property(nonatomic) NSPanel *importIntoPanel; // @synthesize importIntoPanel=_importIntoPanel;
 @property(nonatomic) NSButton *moveOrCopyAdvancedConsolidateCopyButton; // @synthesize moveOrCopyAdvancedConsolidateCopyButton=_moveOrCopyAdvancedConsolidateCopyButton;
 @property(nonatomic) NSButton *moveOrCopyAdvancedProxyMediaButton; // @synthesize moveOrCopyAdvancedProxyMediaButton=_moveOrCopyAdvancedProxyMediaButton;
 @property(nonatomic) NSButton *moveOrCopyAdvancedOptimizedMediaButton; // @synthesize moveOrCopyAdvancedOptimizedMediaButton=_moveOrCopyAdvancedOptimizedMediaButton;
@@ -79,7 +104,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) NSTextView *switchTopicDescriptionTextView; // @synthesize switchTopicDescriptionTextView=_switchTopicDescriptionTextView;
 @property(nonatomic) NSTextField *switchTopicTextField; // @synthesize switchTopicTextField=_switchTopicTextField;
 @property(nonatomic) NSPanel *switchPanel; // @synthesize switchPanel=_switchPanel;
-@property BOOL libraryIsNew; // @synthesize libraryIsNew=_libraryIsNew;
+- (void)configureModalImportIntoPanel:(BOOL)arg1 windowTextMessage:(id)arg2 windowDescriptionMessage:(id)arg3;
 - (void)configureMoveOrCopyPanel:(BOOL)arg1;
 - (void)configureModalSwitchPanel:(BOOL)arg1 windowTextMessage:(id)arg2 windowDescriptionMessage:(id)arg3;
 - (void)tableView:(id)arg1 sortDescriptorsDidChange:(id)arg2;
@@ -92,6 +117,10 @@ __attribute__((visibility("hidden")))
 - (void)windowWillClose:(id)arg1;
 - (void)_saveWindowFrame;
 - (void)appWillTerminate:(id)arg1;
+- (void)chooseImportIntoNewLibrary:(id)arg1;
+- (void)chooseImportIntoOtherLibrary:(id)arg1;
+- (void)cancelImportIntoLibrary:(id)arg1;
+- (void)chooseImportIntoLibrary:(id)arg1;
 - (void)cancelMoveOrCopyLibrary:(id)arg1;
 - (void)chooseMoveOrCopyLibrary:(id)arg1;
 - (void)chooseMoveOrCopyNewLibrary:(id)arg1;
@@ -101,6 +130,15 @@ __attribute__((visibility("hidden")))
 - (void)chooseSwitchLibrary:(id)arg1;
 - (void)windowDidLoad;
 - (void)awakeFromNib;
+- (void)enableResolveConflictOption:(BOOL)arg1;
+@property(nonatomic) unsigned long long resolveConflictOption;
+- (void)enableIncrementalImportOptions:(BOOL)arg1;
+@property(nonatomic) BOOL incrementalImportOption;
+- (void)optionChanged:(id)arg1;
+@property(copy, nonatomic) FFXMLImportOptions *importOptions;
+- (id)initForXMLImport:(id)arg1 fromiMovie:(BOOL)arg2 preferredLibraryURL:(id)arg3;
+- (id)_validateLibraryURLs:(id)arg1 error:(id *)arg2;
+- (id)selectAndOpenLibraries:(id *)arg1;
 - (void)newLibrary:(id)arg1;
 - (void)doubleClick:(id)arg1;
 - (void)dismissWindow:(long long)arg1;
@@ -108,12 +146,14 @@ __attribute__((visibility("hidden")))
 - (void)reloadData;
 - (id)options;
 - (void)setOptions:(id)arg1;
+@property(nonatomic) BOOL libraryIsNew;
 - (id)excludedURL;
 - (void)setExcludedURL:(id)arg1;
 - (id)selectedURL;
 - (id)selectedURLs;
 - (void)setSelectedURLs:(id)arg1;
 - (void)updateChooseButton;
+- (id)touchBar;
 - (void)dealloc;
 - (id)init;
 

@@ -18,6 +18,7 @@
     FFChannelChangeController *_changeController;
     CHChannelFolder *_resettingFolder;
     BOOL _isAnyInspectorRebuilding;
+    NSMutableArray *_changeInfoStack;
 }
 
 - (void)toggleSelectedVideoEffects;
@@ -35,7 +36,7 @@
 - (id)controller:(id)arg1 droppedTypes:(id)arg2;
 - (void)controllerFinishedDrag:(id)arg1;
 - (unsigned long long)controller:(id)arg1 draggingSourceOperationMaskForChannel:(struct OZChannelBase *)arg2 forLocal:(BOOL)arg3;
-- (void)controller:(id)arg1 writeChannels:(list_e802f8b8 *)arg2 toPasteboard:(id)arg3;
+- (void)controller:(id)arg1 writeChannels:(list_e5c8e430 *)arg2 toPasteboard:(id)arg3;
 - (BOOL)controller:(id)arg1 shouldDragChannel:(struct OZChannelBase *)arg2;
 - (unsigned int)controller:(id)arg1 checkboxTypeForChannel:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 setName:(id)arg2;

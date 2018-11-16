@@ -6,13 +6,13 @@
 
 #import <Flexo/FFProvider.h>
 
-#import "FFMovieInstanceFigBasedProvider.h"
+#import "FFMediaReaderBasedProvider.h"
 #import "FFSeedProviderMD5Protocol.h"
 
-@class FFMIORADAsset, NSDictionary, NSObject<OS_dispatch_queue>, NSString, NSURL;
+@class FFMIORADAsset, NSObject<OS_dispatch_queue>, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFProviderFig : FFProvider <FFSeedProviderMD5Protocol, FFMovieInstanceFigBasedProvider>
+@interface FFProviderFig : FFProvider <FFSeedProviderMD5Protocol, FFMediaReaderBasedProvider>
 {
     CDStruct_bdcb2b0d _md5;
     FFMIORADAsset *_radAsset;
@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     NSURL *_lastKnownURLStandardized;
     NSString *_lastKnownURLPath;
     unsigned long long _estimatedBandwidth;
-    NSDictionary *_growthInfo;
 }
 
 + (unsigned int)videoCodecForURL:(id)arg1;
@@ -31,25 +30,24 @@ __attribute__((visibility("hidden")))
 + (id)utis;
 + (void)releaseSharedInstance;
 + (void)initialize;
-@property(readonly, nonatomic) NSDictionary *growthInfo; // @synthesize growthInfo=_growthInfo;
-- (id).cxx_construct;
-- (void)replaceCodecNames:(id)arg1;
+- (void)fixSpotlightMetadata:(id)arg1;
 - (void)sniffSpotlightMetadataFig:(id)arg1;
 - (id)copyTimecodeBasedReelName;
-- (id)copyMovieInstanceObject;
+- (void *)copyMediaReaderObject;
 - (unsigned long long)estimatedBandwidth;
 - (id)MD5Seed;
 - (void)setMD5Seed:(id)arg1;
 - (CDStruct_e83c9415)_avRange;
 - (CDStruct_bdcb2b0d)_md5;
 - (id)displayName;
+- (id)eventDocumentIDAndPath;
 - (id)radAsset;
 - (void)_setupSources;
-- (int)_establishBaseTimecode:(int *)arg1 editTimeForBaseTimecode:(CDStruct_1b6d18a9 *)arg2 timecodeFrameDuration:(CDStruct_1b6d18a9 *)arg3 dropFrame:(char *)arg4 formatReader:(struct OpaqueFigFormatReader *)arg5 timecodeReader:(struct OpaqueFigTrackReader *)arg6 byteStream:(struct OpaqueCMByteStream *)arg7 byteStreamProvider:(struct OpaqueFigByteStreamProvider *)arg8;
 - (id)_debugFileName;
 - (void)dealloc;
 - (id)initWithMedia:(id)arg1;
 - (id)initWithAssetFileID:(id)arg1;
+- (struct FFMediaReader *)copyMediaReader;
 
 @end
 

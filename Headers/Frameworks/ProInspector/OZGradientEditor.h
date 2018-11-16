@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
 @class LKButton, OZGradientGutter, OZGradientView, OZViewController;
 
-@interface OZGradientEditor : NSProView
+@interface OZGradientEditor : NSView
 {
     id _delegate;
     struct OZScene *_pScene;
@@ -17,7 +17,7 @@
     struct OZChannelRef *_selectedSampleRef;
     OZViewController *_viewCtlr;
     BOOL _middleSelected;
-    NSProView *_masterView;
+    NSView *_masterView;
     OZGradientView *_gradientView;
     OZGradientGutter *_gradientGutterRGB;
     OZGradientGutter *_gradientGutterAlpha;

@@ -8,7 +8,7 @@
 
 #import "FFSkimmingModuleDelegate.h"
 
-@class CALayer, FFAnchoredCollection, FFAnchoredObject, FFEffect, FFSkimmingModule, FFThumbnailRequest, NSArray, NSDictionary, NSImage, NSMutableArray, NSString;
+@class CALayer, FFAnchoredCollection, FFAnchoredObject, FFAnchoredSequence, FFEffect, FFSkimmingModule, FFThumbnailRequest, NSArray, NSDictionary, NSImage, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectPickerView : NSView <FFSkimmingModuleDelegate>
@@ -21,7 +21,9 @@ __attribute__((visibility("hidden")))
     NSDictionary *_textAttributes;
     NSMutableArray *_cellLayers;
     FFAnchoredObject *_thumbnailAO;
+    FFAnchoredSequence *_thumbnailSequence;
     FFAnchoredCollection *_skimmingAO;
+    FFAnchoredSequence *_skimmingSequence;
     FFThumbnailRequest *_thumbnailRequest;
     struct CGImage *_backgroundThumb;
     int _backgroundThumbNumber;
@@ -36,8 +38,12 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _startTimeForSkimmingLayer;
     double _timePerHorizontalPixel;
     int _flippedEffectCell;
+    FFAnchoredCollection *_projectFilterCollection;
+    BOOL _projectFilterMode;
 }
 
+@property(nonatomic) BOOL projectFilterMode; // @synthesize projectFilterMode=_projectFilterMode;
+@property(retain, nonatomic) FFAnchoredCollection *projectFilterCollection; // @synthesize projectFilterCollection=_projectFilterCollection;
 - (void)_removeEffectPickerEffect:(id)arg1;
 - (id)_effectPickerEffectID:(id)arg1;
 - (void)syntheticUIElement:(id)arg1 performAction:(id)arg2;
@@ -74,8 +80,7 @@ __attribute__((visibility("hidden")))
 - (struct NSObject *)skimmingModule:(id)arg1 skimmableObjectAtPoint:(struct CGPoint)arg2;
 - (void)setSelectedItems:(id)arg1;
 - (void)generateThumbnails;
-- (void)thumbImageReady:(id)arg1;
-- (void)addThumbToLayer:(id)arg1;
+- (void)thumbImageReady:(struct CGImage *)arg1;
 - (void)generateOneEffectThumbnail;
 - (BOOL)selectedItemsHaveEffectID:(id)arg1;
 - (BOOL)selectedItemsHaveNoEffect;
@@ -83,6 +88,8 @@ __attribute__((visibility("hidden")))
 - (void)_setCellUnderMouse:(int)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)_applyEffectUsingCellIndex:(int)arg1;
+- (void)_applyProjectFilterEffectID:(id)arg1 forCollection:(id)arg2;
+- (void)_addImageToSequenceIfNoItemsAndSetProjectFilterFlag:(id)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)mouseMoved:(id)arg1;
 - (void)_auditionEffectUsingCellIndex:(int)arg1;
@@ -96,6 +103,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 isVideo:(BOOL)arg2;
 - (void)viewDidChangeBackingProperties;
+- (int)thumbnailColumns;
+- (int)thumbnailRows;
+- (int)thumbnailCount;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

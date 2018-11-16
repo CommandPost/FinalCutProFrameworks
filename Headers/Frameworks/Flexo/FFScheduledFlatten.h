@@ -16,8 +16,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool doAsyncFlatten; // @synthesize doAsyncFlatten=_doAsyncFlatten;
 - (void)cancel;
 - (void)main;
-- (BOOL)isReadyWithoutDependencies;
-- (int)desiredThreads;
 - (void)dealloc;
 - (id)initWithCacheKey:(CDStruct_bdcb2b0d)arg1;
 

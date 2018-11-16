@@ -8,16 +8,21 @@
 
 #import "FFEditActionSourceProtocol.h"
 
-@class LKSearchField, NSView;
+@class LKSearchField, NSString, NSView;
 
 @interface FFMDModule : LKViewModule <FFEditActionSourceProtocol>
 {
     NSView *_headerView;
+    NSView *_proHeaderView;
     LKSearchField *_searchField;
+    NSString *_searchFieldText;
 }
 
+@property(retain, nonatomic) NSString *searchFieldText; // @synthesize searchFieldText=_searchFieldText;
 @property(retain, nonatomic) LKSearchField *searchField; // @synthesize searchField=_searchField;
+@property(retain, nonatomic) NSView *proHeaderView; // @synthesize proHeaderView=_proHeaderView;
 @property(retain, nonatomic) NSView *headerView; // @synthesize headerView=_headerView;
+- (id)mediaBrowserIdentifier;
 - (void)toggleSidebar:(id)arg1;
 - (struct CGRect)animationStartRectForEditAction:(id)arg1;
 - (id)animationViewForEditAction:(id)arg1;

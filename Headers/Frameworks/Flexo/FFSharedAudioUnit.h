@@ -6,21 +6,32 @@
 
 #import "NSObject.h"
 
+@class NSString;
+
 @interface FFSharedAudioUnit : NSObject
 {
     struct ComponentInstanceRecord *_unit;
-    void *_playbackOwner;
+    void *_client;
+    NSString *_effectID;
+    double _sampleRate;
+    unsigned int _numChannels;
+    BOOL _purgeFlag;
 }
 
++ (BOOL)loadAudioUnit:(struct ComponentInstanceRecord *)arg1 withClassInfo:(struct __CFDictionary *)arg2;
 + (int)audioUnitCount;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)doneWithPlayback:(void *)arg1;
-- (BOOL)grabForPlayback:(void *)arg1;
+@property(readonly, nonatomic) unsigned int numChannels; // @synthesize numChannels=_numChannels;
+@property(readonly, nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
+@property(readonly, nonatomic) NSString *effectID; // @synthesize effectID=_effectID;
+- (void)unlockAudioUnit:(void *)arg1;
+- (BOOL)lockAudioUnit:(void *)arg1;
+- (BOOL)setSampleRate:(double)arg1 numChannels:(unsigned int)arg2 effectState:(id)arg3;
 - (struct ComponentInstanceRecord *)audioUnit;
+- (void)setPurgeFlag;
+- (oneway void)release;
 - (void)dealloc;
-- (id)initWithEffectID:(id)arg1 sampleRate:(double)arg2 channels:(unsigned int)arg3;
-- (void)_disposeAudioUnit;
+- (id)initWithEffectID:(id)arg1 sampleRate:(double)arg2 numChannels:(unsigned int)arg3;
+- (id)initWithEffectID:(id)arg1;
 
 @end
 

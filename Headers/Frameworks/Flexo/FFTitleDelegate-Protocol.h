@@ -7,6 +7,7 @@
 @class CHChannelBase, NSAttributedString, NSString;
 
 @protocol FFTitleDelegate
+- (BOOL)wantsXMLStyledText;
 - (BOOL)allowsFontEditing;
 - (BOOL)scaleFieldHeightToTextHeight;
 - (int)verticalAlignmentModeForField:(unsigned long long)arg1;
@@ -17,6 +18,7 @@
 - (struct CGRect)documentBounds;
 - (void)setTextString:(NSString *)arg1 forField:(unsigned long long)arg2;
 - (void)setText:(NSAttributedString *)arg1 forField:(unsigned long long)arg2;
+- (NSString *)stringForField:(unsigned long long)arg1;
 - (NSAttributedString *)textForField:(unsigned long long)arg1;
 - (unsigned long long)textFieldCount;
 
@@ -26,7 +28,8 @@
 - (BOOL)prefersShrinkToFit;
 - (NSAttributedString *)shrinkToFit:(NSAttributedString *)arg1 forField:(unsigned long long)arg2;
 - (BOOL)setLightGrayBackgroundForField:(unsigned long long)arg1;
-- (void)titleOSCChangedText:(unsigned long long)arg1 string:(NSAttributedString *)arg2;
+- (BOOL)needsUpdatingWhileEditing;
+- (void)updateTitleWhileEditing:(unsigned long long)arg1 string:(NSAttributedString *)arg2;
 - (void)willCloseUndoGroup;
 - (void)willOpenUndoGroup;
 - (struct CGRect)rawBoundingBoxFromDocumentForField:(unsigned long long)arg1;
@@ -47,5 +50,6 @@
 - (BOOL)buildInEnabled;
 - (BOOL)supportsOptionalBuildIn;
 - (BOOL)allowsAlignmentEditing;
+- (void)adjustImportedTextForField:(unsigned long long)arg1;
 @end
 

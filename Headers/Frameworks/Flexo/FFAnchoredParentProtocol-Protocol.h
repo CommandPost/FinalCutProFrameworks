@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "FFModelChangedProtocol.h"
+@class FFAnchoredCollection, FFAnchoredObject, FFAnchoredSequence, FFNotificationID_, FFRoleChangeContext, NSDictionary, NSString;
 
-@class FFAnchoredCollection, FFAnchoredObject, FFAnchoredSequence, FFNotificationID_, NSDictionary, NSString;
-
-@protocol FFAnchoredParentProtocol <FFModelChangedProtocol>
+@protocol FFAnchoredParentProtocol
+- (void)informParentRoleChangeWillBegin:(FFRoleChangeContext *)arg1;
+- (void)informAudioComponentsLayoutChanged:(NSDictionary *)arg1;
 - (FFAnchoredSequence *)sequence;
 - (BOOL)canContainObject:(FFAnchoredObject *)arg1;
 - (FFAnchoredCollection *)container;
@@ -18,13 +18,11 @@
 - (BOOL)canClippedItemRangeOnChildCausesRipple:(FFAnchoredObject *)arg1;
 - (BOOL)objectInContainedItems:(FFAnchoredObject *)arg1;
 - (CDStruct_e83c9415)localEffectiveRange;
-- (CDStruct_1b6d18a9)childToParentOffsetForChild:(FFAnchoredObject *)arg1;
+- (CDStruct_1b6d18a9)childToParentOffsetForChildCachingSiblings:(FFAnchoredObject *)arg1;
 - (long long)getFirstSetAnchoredLaneValueInParentsAndSelf:(FFAnchoredObject *)arg1;
-- (void)informParentRolesDidChange;
-- (void)informParentRolesWillChange;
 - (void)informParentEffectsChanged;
-- (void)informParentIsCompoundClipChanged:(BOOL)arg1;
-- (void)informParentContainedItemsChanged:(BOOL)arg1;
+- (void)informContainedItemsAddedRemovedOrPlayEnableChanged:(unsigned int)arg1;
+- (void)informParentContainedItemsChanged:(unsigned int)arg1;
 - (void)invalidateStreamRange:(CDStruct_e83c9415)arg1 forType:(NSString *)arg2;
 - (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(NSString *)arg2;
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(NSString *)arg2;

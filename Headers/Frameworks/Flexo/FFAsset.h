@@ -9,7 +9,7 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFDominantMotionMediaRep, FFFlowMediaRep, FFMediaRep, FFProvider, FFVideoProps, NSDictionary, NSIndexSet, NSString;
+@class FFDominantMotionMediaRep, FFFlowMediaRep, FFMediaRep, FFProvider, FFVideoOverrideInfo, FFVideoProps, NSDictionary, NSString;
 
 @interface FFAsset : FFMediaState <NSCoding, NSCopying>
 {
@@ -19,24 +19,20 @@
     NSString *_videoFormatName;
     FFMediaRep *_originalMediaRep;
     NSString *_uttype;
-    long long _audioSourceCount;
+    unsigned long long _audioSourceCount;
     long long _alphaHandling;
     long long _fieldDominanceOverride;
     long long _colorSpaceOverride;
     long long _anamorphicType;
     long long _logProcessingMode;
     BOOL _isUnmounting;
+    FFVideoOverrideInfo *_videoOverrides;
     FFMediaRep *_optimizedMediaRep;
     FFMediaRep *_proxyMediaRep;
     FFFlowMediaRep *_flowMediaRep;
     FFDominantMotionMediaRep *_dominantMotionMediaRep;
     FFMediaRep *_sidecarMediaRep;
     long long _frameExtractionMode;
-    NSIndexSet *_supportedAlphaHandlingModes;
-    NSIndexSet *_supportedDominanceOverrides;
-    NSIndexSet *_supportedColorSpaceOverrides;
-    NSIndexSet *_supportedLogProcessingModes;
-    NSDictionary *_logProcessingInfoDictionary;
     BOOL _useTimecodeZero;
     NSDictionary *_audioSourceDict;
     NSDictionary *_videoSourceDict;
@@ -48,6 +44,7 @@
     BOOL _videoCodecMissing;
     BOOL _isReferenceMovie;
     BOOL _needsAudioPropertiesUpdate;
+    BOOL _needsVideoPropertiesUpdate;
 }
 
 + (void)invalidateMultipleAssets:(id)arg1;
@@ -58,6 +55,8 @@
 + (void)playerQualityChanged;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property(nonatomic) unsigned long long audioSourceCount; // @synthesize audioSourceCount=_audioSourceCount;
+@property(nonatomic) BOOL needsVideoPropertiesUpdate; // @synthesize needsVideoPropertiesUpdate=_needsVideoPropertiesUpdate;
 @property(readonly, nonatomic) BOOL needsAudioPropertiesUpdate; // @synthesize needsAudioPropertiesUpdate=_needsAudioPropertiesUpdate;
 @property(nonatomic) BOOL isUnmounting; // @synthesize isUnmounting=_isUnmounting;
 @property(nonatomic) BOOL isTrailerAsset; // @synthesize isTrailerAsset=_isTrailerAsset;
@@ -67,7 +66,7 @@
 @property(nonatomic) BOOL forceNoProxy; // @synthesize forceNoProxy=_forceNoProxy;
 @property(retain, nonatomic) NSString *uttype; // @synthesize uttype=_uttype;
 @property(readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
-- (BOOL)update_removeBadMP3TranscodedFiles;
+- (BOOL)update_removeBadTranscodedFiles;
 - (BOOL)update_rebuildAssetAudioProperties;
 - (BOOL)update_addAudioSourceDict;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
@@ -85,6 +84,7 @@
 - (id)assetFileIDs:(unsigned int)arg1 forCopy:(id)arg2;
 - (id)analysisFileURLs;
 - (id)_analysisFileURLs:(BOOL)arg1 targetProject:(id)arg2;
+- (id)mediaRepForRepType:(id)arg1;
 - (id)fileURLs:(int)arg1;
 - (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)addClipRefsToSet:(id)arg1;
@@ -126,6 +126,7 @@
 - (BOOL)relinkMedia:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 fileContentChanged:(BOOL)arg4 error:(id *)arg5;
 - (void)_assetCollection:(id)arg1;
 - (void)invalidate;
+- (void)invalidateProviderIncludingCache:(BOOL)arg1 andSourceRange:(CDStruct_e83c9415)arg2;
 - (void)invalidateAndSendSourceChange:(BOOL)arg1;
 - (void)invalidateProviders;
 - (void)invalidateWithUnknownActionScope:(CDUnknownBlockType)arg1;
@@ -143,6 +144,7 @@
 - (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
 @property(nonatomic) long long logProcessingMode;
+- (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;
 @property(nonatomic) long long colorSpaceOverride; // @synthesize colorSpaceOverride=_colorSpaceOverride;
 - (BOOL)supportsAnamorphicType;
@@ -152,7 +154,8 @@
 @property(nonatomic) long long fieldDominanceOverride; // @synthesize fieldDominanceOverride=_fieldDominanceOverride;
 - (BOOL)supportsAlphaOverride;
 @property(nonatomic) long long alphaHandling; // @synthesize alphaHandling=_alphaHandling;
-- (void)_establishSupportedOverrideInfo:(id)arg1 beingCalledFromInit:(BOOL)arg2;
+- (id)newVideoOverrides:(id)arg1;
+- (id)videoOverrides;
 - (id)videoPropsForSourceKey:(id)arg1;
 - (long long)videoSourceCount;
 - (id)audioSourcePropertiesMap;
@@ -160,7 +163,6 @@
 - (int)audioSourceDictVersion;
 - (void)setAudioSourceDictVersion:(int)arg1;
 @property(retain, nonatomic) NSDictionary *audioSourceDict;
-@property(nonatomic) long long audioSourceCount;
 - (void)organizeMediaRepIntoEvent:(id)arg1;
 - (void)originalMediaRepChanged;
 - (void)setRotationDegrees:(int)arg1;
@@ -199,6 +201,8 @@
 - (BOOL)canRebuildAudioProperties;
 - (void)rebuildAudioProperties;
 - (void)rebuildAudioPropertiesWithProvider:(id)arg1;
+- (id)audioTrackNamesFromMetadataMadeUnique:(BOOL)arg1;
+- (void)_setLogProcessingModeFromCustomcolorMetadataValue:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 manageFileType:(int)arg2 project:(id)arg3;
 - (id)_initWithBasics;
@@ -206,6 +210,8 @@
 - (void)updateIdentity;
 - (id)_fileMD5StringForURL:(id)arg1 baseFilename:(id)arg2;
 - (BOOL)hasCameraTag;
+@property(readonly, nonatomic) unsigned long long expectedGrowthRefreshRate;
+@property(readonly, nonatomic) BOOL isGrowing;
 
 @end
 

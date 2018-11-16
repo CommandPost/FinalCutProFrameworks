@@ -6,13 +6,12 @@
 
 #import "NSObject.h"
 
-@class ICCameraDevice, NSArray, NSImage, NSMutableArray, NSMutableSet, NSOperationQueue, NSString;
+@class ICCameraDevice, NSArray, NSMutableArray, NSMutableSet, NSOperationQueue, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMIOAFCDevice : NSObject
 {
     ICCameraDevice *_cameraDevice;
-    NSImage *_cameraDeviceIcon;
     NSMutableArray *_cameraFiles;
     NSMutableArray *_items;
     NSMutableArray *_displayedCameraFiles;
@@ -46,7 +45,6 @@ __attribute__((visibility("hidden")))
 - (id)masterSubitems;
 - (BOOL)hasMasterSubitems;
 - (id)itemPersistentIdentifier;
-- (id)itemIcon;
 - (BOOL)itemDisplayNameEditable;
 - (void)setItemDisplayName:(id)arg1;
 - (id)itemDisplayName;

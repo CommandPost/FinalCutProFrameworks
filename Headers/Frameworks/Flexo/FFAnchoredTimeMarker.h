@@ -39,17 +39,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL isTodo; // @synthesize isTodo=_isTodo;
 @property(readonly) CDStruct_1b6d18a9 timelineMarkerPosterOffset;
 @property(readonly) int timelineMarkerType;
-@property(readonly) id <TLKTimelineItem> timelineContainer;
-@property(readonly) int timelineAVContainmentType;
+@property(readonly) id timelineContainer;
 @property(readonly) int timelineItemType;
 @property(readonly) id <TLKTimelineItem> transitionTimelineItemNext;
 @property(readonly) id <TLKTimelineItem> transitionTimelineItemPrevious;
-@property(readonly) id <TLKTimelineItem> anchoredToTimelineItem;
-@property(readonly) long long timelineVerticalIndex;
+@property(readonly) id anchoredToTimelineItem;
+- (long long)timelineVerticalIndex;
 @property(readonly) CDStruct_1b6d18a9 timelineParentAnchorOffset;
 @property(readonly) CDStruct_1b6d18a9 timelineAnchorOffset;
 - (struct CGSize)aspectRatio;
-@property(readonly, copy) NSString *timelineDisplayName;
 - (BOOL)defaultPosition;
 - (id)label;
 - (CDStruct_1b6d18a9)posterTime;
@@ -62,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_e83c9415)_trueContainerRange;
 - (id)trackType;
 - (id)type;
+- (BOOL)isTimeMarker;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

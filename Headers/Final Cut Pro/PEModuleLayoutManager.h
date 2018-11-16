@@ -10,5 +10,19 @@
 {
 }
 
+- (id)cancelButtonLabel;
+- (id)replaceButtonLabel;
+- (id)replaceDescription:(id)arg1;
+- (id)replaceTitle;
+- (id)cannotSaveDescription:(id)arg1;
+- (id)cannotSaveTitle;
+- (id)saveDescription;
+- (id)saveTitle;
+- (id)defaultName;
+- (id)mainWindowModuleClassName;
+- (void)applyModuleLayout:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
+
 @end
 

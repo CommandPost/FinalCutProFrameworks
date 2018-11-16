@@ -8,18 +8,24 @@
 
 #import "FFAudioEffectChainDelegate.h"
 
-@class FFEffectStack;
+@class CHChannelBase, FFEffectStack;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectStackEffectChainDelegate : NSObject <FFAudioEffectChainDelegate>
 {
     FFEffectStack *m_effectStack;
     unsigned int m_sectionType;
+    CHChannelBase *m_observedEffectChannels;
 }
 
+- (id)postFaderEffects;
+- (id)preFaderEffects;
+- (void)_effectChannelsChanged:(id)arg1;
+- (BOOL)effectChainEffectIsBypassed:(id)arg1;
 - (id)effectChainEffectStack;
 - (id)effectChainModelObject;
 - (id)effectChainEffects;
+- (void)dealloc;
 - (id)initWithEffectStack:(id)arg1 effectsSection:(unsigned int)arg2;
 
 @end

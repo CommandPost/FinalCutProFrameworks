@@ -8,7 +8,7 @@
 
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 
-@class FFContext, FFProvider, NSArray, NSConditionLock, NSObject<OS_dispatch_semaphore>;
+@class FFContext, FFProvider, NSArray, NSConditionLock, NSLock;
 
 @interface FFRenderer : NSObject <FFStorageLocationOutOfDiskSpaceProtocol>
 {
@@ -25,11 +25,14 @@
     CDStruct_1b6d18a9 _firstTimeToRender;
     CDStruct_1b6d18a9 _lastTimeToRender;
     double _renderDuration_seconds;
-    NSObject<OS_dispatch_semaphore> *_lastRenderedRangeLock;
+    NSLock *_lastRenderedRangeLock;
     CDStruct_e83c9415 _lastRenderedRange;
-    NSObject<OS_dispatch_semaphore> *_stateUpdateLock;
+    double _hostTimeOfLastUpdate;
+    NSLock *_stateUpdateLock;
     BOOL _shouldUpdateState;
     BOOL _autoCancelWhenEndTimeReached;
+    BOOL _enableWorkingSpaceOverride;
+    int _workingSpaceOverride;
     _Bool _stoppedDueToStorageLocFull;
     _Bool _stoppedDueToDestError;
     NSConditionLock *_renderComplete;
@@ -71,7 +74,7 @@
 - (float)progress;
 - (id)getObjectToLock;
 - (void)dealloc;
-- (id)initWithProvider:(id)arg1 destVideos:(id)arg2 destAudios:(id)arg3 renderQuality:(int)arg4;
+- (id)initWithProvider:(id)arg1 destVideos:(id)arg2 destAudios:(id)arg3 renderQuality:(int)arg4 overrideWorkingSpace:(int *)arg5;
 - (id)initWithProvider:(id)arg1 destVideos:(id)arg2 destAudios:(id)arg3;
 
 @end

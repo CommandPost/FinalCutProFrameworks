@@ -6,18 +6,13 @@
 
 #import "NSObject.h"
 
-@class NSString;
-
 @protocol TLKTimelineItem <NSObject>
-@property(readonly) id <TLKTimelineItem> timelineContainer;
-@property(readonly) int timelineAVContainmentType;
+@property(readonly) id timelineContainer;
 @property(readonly) int timelineItemType;
 @property(readonly) id <TLKTimelineItem> transitionTimelineItemNext;
 @property(readonly) id <TLKTimelineItem> transitionTimelineItemPrevious;
-@property(readonly) id <TLKTimelineItem> anchoredToTimelineItem;
-@property(readonly) long long timelineVerticalIndex;
+@property(readonly) id anchoredToTimelineItem;
 @property(readonly) CDStruct_1b6d18a9 timelineParentAnchorOffset;
 @property(readonly) CDStruct_1b6d18a9 timelineAnchorOffset;
-@property(readonly, copy) NSString *timelineDisplayName;
 @end
 

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     int _undoneAssetsState;
     BOOL _setupCatalogWillSaveObserver;
     BOOL _allowDuplicateClips;
+    BOOL _observeTasksPending;
 }
 
 + (id)keyPathsForValuesAffectingDisplayOwnedClips;
@@ -67,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)_cleanupAndLockInProject:(id)arg1;
 - (void)_processAtSave:(id)arg1;
 - (void)_processClips:(id)arg1 isImportingFromImovie:(BOOL)arg2 existingLibraryClips:(id)arg3;
+- (void)_observeTasksPending:(BOOL)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (id)initWithProject:(id)arg1;

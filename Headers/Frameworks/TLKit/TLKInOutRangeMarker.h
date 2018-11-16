@@ -8,23 +8,22 @@
 
 #import "TLKPartInfo.h"
 
-@class NSString, TLKThemeBackedLayer;
+@class NSString, TLKImageLayer;
 
 @interface TLKInOutRangeMarker : CALayer <TLKPartInfo>
 {
-    TLKThemeBackedLayer *_head;
-    TLKThemeBackedLayer *_body;
-    long long _markerState;
+    TLKImageLayer *_head;
+    TLKImageLayer *_body;
     BOOL _isInMarker;
 }
 
-@property long long markerState;
-@property BOOL isInMarker;
+@property(nonatomic) BOOL isInMarker; // @synthesize isInMarker=_isInMarker;
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)partIdentifier;
 - (void)layoutSublayers;
 - (struct CGRect)markerFrame;
+- (void)dealloc;
 - (id)init;
 - (void)_updateMarker;
 

@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 {
     NSOpenGLContext *_openGLContext;
     FFImageDisplay *_imageDisplay;
+    float _backingScale;
 }
 
+@property(readonly) float backingScale; // @synthesize backingScale=_backingScale;
 - (void)reshape;
 - (id)imageDisplay;
 - (struct _CGLContextObject *)cglContext;
@@ -22,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isOpaque;
 - (void)lockFocus;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 backingScale:(float)arg2;
 
 @end
 

@@ -35,7 +35,7 @@
 - (BOOL)outlineView:(id)arg1 canChangeHeightOfItem:(id)arg2;
 - (double)outlineView:(id)arg1 heightForItem:(id)arg2;
 - (long long)rowToSelectForNodeWrapper:(id)arg1 parents:(id)arg2;
-- (void)findSnaps:(vector_7856d79e *)arg1 forceAllVisible:(BOOL)arg2;
+- (void)findSnaps:(vector_f7e3fd5f *)arg1 forceAllVisible:(BOOL)arg2;
 - (double)verticalLineScroll;
 - (void)verticalScrollBy:(double)arg1;
 - (struct OZChannelFolder *)folderFilter:(struct OZChannelBase *)arg1;

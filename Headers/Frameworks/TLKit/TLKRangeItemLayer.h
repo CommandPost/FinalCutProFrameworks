@@ -9,15 +9,15 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class CALayer, NSString, TLKThemeBackedLayer, TLKTimelineView;
+@class CALayer, NSString, TLKImageLayer, TLKTimelineView;
 
 @interface TLKRangeItemLayer : TLKAccessibilityLayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
     id _representedObject;
     id <TLKTimelineItem> _timelineItem;
     CALayer *_rootLayer;
-    TLKThemeBackedLayer *_leadingEdgeLayer;
-    TLKThemeBackedLayer *_trailingEdgeLayer;
+    TLKImageLayer *_leadingEdgeLayer;
+    TLKImageLayer *_trailingEdgeLayer;
     struct {
         unsigned int disabled:1;
         unsigned int firstItem:1;

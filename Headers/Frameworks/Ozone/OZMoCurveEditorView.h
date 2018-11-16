@@ -26,11 +26,11 @@
 - (void)scrollWheel:(id)arg1;
 - (double)_scrollWheelMultiplier;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
-- (CDStruct_5c5366e1)getDisplayRange;
-- (CDStruct_5c5366e1)getTotalRange;
+- (CDStruct_e83c9415)getDisplayRange;
+- (CDStruct_e83c9415)getTotalRange;
 - (CDStruct_1b6d18a9)getCurveEditorCurrentTime;
-- (CDStruct_5c5366e1)getCurveEditorDisplayRange;
-- (CDStruct_5c5366e1)getAudioEditorDisplayRange;
+- (CDStruct_e83c9415)getCurveEditorDisplayRange;
+- (CDStruct_e83c9415)getAudioEditorDisplayRange;
 - (void)timeDisplayRangeModified;
 - (void)setTimingCoordinator:(id)arg1;
 - (BOOL)performDragOperation:(id)arg1;

@@ -6,38 +6,67 @@
 
 #import <Flexo/FFHeliumEffect.h>
 
-@class FFLumaBumpContainer;
+@class FFLumaBumpContainer, FFRefColorMatchInfoContainer;
 
 @interface FFBalanceColorBaseEffect : FFHeliumEffect
 {
     BOOL _deferOperation;
     FFLumaBumpContainer *_lumaBumps;
+    int _balanceOptions;
+    double _skinColorRed;
+    double _skinColorGreen;
+    double _skinColorBlue;
+    double _whiteBalanceColorRed;
+    double _whiteBalanceColorGreen;
+    double _whiteBalanceColorBlue;
+    FFRefColorMatchInfoContainer *_refColorMatchInfo;
+    BOOL _cachedIsAtDefaultSettings;
 }
 
 + (id)copyClassDescription;
-@property(readonly, nonatomic) FFLumaBumpContainer *lumaBumps; // @synthesize lumaBumps=_lumaBumps;
+@property(readonly, nonatomic) FFLumaBumpContainer *lumaBumpContainer; // @synthesize lumaBumpContainer=_lumaBumps;
 @property BOOL deferOperation; // @synthesize deferOperation=_deferOperation;
 - (BOOL)projectUpdaterConformLumaBumpsToDataWithError:(id *)arg1;
-- (id)propertiesToRecord;
-- (void)setWithRecordedProperties:(id)arg1;
-- (id)extendedDataForRecording;
-- (void)setExtendedDataForRecording:(id)arg1;
 - (CDStruct_bdcb2b0d)md5;
+- (BOOL)isNoOp;
+- (void)channelParameterChanged:(id)arg1;
+- (void)effectiveRangeDidChange;
+- (BOOL)_cachedIsAtDefaultSettings;
 - (BOOL)isAtDefaultSettings;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
-- (void)balanceWithHistoAnalysis:(struct OMHistoAnalysis *)arg1 faceInfo:(id)arg2 isEncompassingTransaction:(BOOL)arg3;
-- (void)setAdjustment:(vector_f452ca5f *)arg1 isEncompassingTransaction:(BOOL)arg2;
 - (struct HGNode *)newNodeForContext:(id)arg1;
-- (id)processingPixelFormat;
-- (struct CGColorSpace *)processingColorSpace;
+- (id)processingFormat:(int)arg1;
 - (BOOL)writeDefaultChannels;
 - (id)inputKeys;
-- (BOOL)isNoOp;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_postInit:(id)arg1;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
 - (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
 - (id)description;
+- (id)propertiesToRecordWithCatalogVersion:(unsigned long long)arg1;
+- (void)reset;
+- (void)didChangeWithRecordedProperties;
+- (void)willChangeWithRecordedProperties:(id)arg1;
+- (id)propertiesToRecord;
+- (void)setWithRecordedProperties:(id)arg1;
+- (id)extendedDataForRecording;
+- (void)setExtendedDataForRecording:(id)arg1;
+- (void)balanceWithHistoAnalysis:(struct OMHistoAnalysis *)arg1 faceInfo:(id)arg2 isEncompassingTransaction:(BOOL)arg3 balanceOptions:(int)arg4 red:(double)arg5 green:(double)arg6 blue:(double)arg7;
+- (void)balanceWithHistoAnalysis:(struct OMHistoAnalysis *)arg1 faceInfo:(id)arg2 isEncompassingTransaction:(BOOL)arg3;
+- (void)setAdjustment:(vector_37556099 *)arg1 isEncompassingTransaction:(BOOL)arg2;
+- (void)didChangeProperties;
+- (void)willChangeProperties;
+@property(readonly, nonatomic) FFRefColorMatchInfoContainer *refColorMatchInfo; // @dynamic refColorMatchInfo;
+- (void)setRefColorMatchInfo:(id)arg1;
+@property double whiteBalanceColorBlue; // @dynamic whiteBalanceColorBlue;
+@property double whiteBalanceColorGreen; // @dynamic whiteBalanceColorGreen;
+@property double whiteBalanceColorRed; // @dynamic whiteBalanceColorRed;
+@property double skinColorBlue; // @dynamic skinColorBlue;
+@property double skinColorGreen; // @dynamic skinColorGreen;
+@property double skinColorRed; // @dynamic skinColorRed;
+@property int balanceOptions; // @dynamic balanceOptions;
+- (void)setLumaBumpContainer:(id)arg1;
+@property(readonly, nonatomic) FFLumaBumpContainer *lumaBumps; // @dynamic lumaBumps;
 - (void)setLumaBumps:(id)arg1;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1;

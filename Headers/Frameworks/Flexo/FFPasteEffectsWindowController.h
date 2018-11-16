@@ -6,10 +6,12 @@
 
 #import "NSWindowController.h"
 
-@class CALayer, FFAnchoredObject, FFThumbnailRequest, LKButton, LKImageView, LKPopUpButton, LKScrollView, LKTextField, LKWindow, NSArray, NSBox, NSImageView, NSMatrix, NSMutableArray, NSMutableDictionary, NSView;
+#import "NSWindowDelegate.h"
+
+@class CALayer, FFAnchoredObject, FFAudioEffectsObjectBundle, FFEffectStack, FFThumbnailRequest, LKButton, LKImageView, LKPopUpButton, LKScrollView, LKTextField, LKWindow, NSArray, NSBox, NSImageView, NSMapTable, NSMatrix, NSMutableArray, NSSet, NSString, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFPasteEffectsWindowController : NSWindowController
+@interface FFPasteEffectsWindowController : NSWindowController <NSWindowDelegate>
 {
     LKTextField *_fromText;
     LKTextField *_toText;
@@ -39,38 +41,49 @@ __attribute__((visibility("hidden")))
     LKTextField *_categoryText;
     LKTextField *_nameText;
     NSImageView *_effectIcon;
-    BOOL _hasAudio;
-    NSArray *_effectStacks;
+    LKTextField *_removeAttributesHeader;
+    BOOL _isRunningModal;
+    int _variant;
+    unsigned int _featureFlags;
+    FFAnchoredObject *_sourceObject;
     NSArray *_targets;
-    FFAnchoredObject *_ao;
-    NSMutableDictionary *_channelDict;
-    NSMutableArray *_intrinsicsToPaste;
-    long long *_keyframeMode;
+    FFEffectStack *_videoEffects;
+    FFAudioEffectsObjectBundle *_audioEffectsObjectBundle;
+    NSMapTable *_removeAttributesMap;
+    NSArray *_selectedChannels;
+    NSArray *_selectedIntrinsics;
+    long long _selectedKeyframeMode;
+    NSSet *_selectedUserEffectIDsToRemove;
     NSMutableArray *_videoEffectCheckboxes;
     NSMutableArray *_audioEffectCheckboxes;
     FFThumbnailRequest *_sourceThumbnailRequest;
     FFThumbnailRequest *_destThumbnailRequest;
+    struct CGSize _sourceThumbnailSize;
+    struct CGSize _destThumbnailSize;
     CALayer *_sourceThumbLayer;
     CALayer *_destThumbLayer;
     struct CGImage *_sourceThumbCGImage;
     struct CGImage *_destThumbCGImage;
-    int _variant;
-    NSMutableDictionary *_presetNames;
 }
 
++ (id)_nameForAudioEnhancementEffectWithID:(id)arg1;
++ (id)removeAttributesIntrinsicVideoEffectIDs;
 + (id)intrinsicEffectIDs:(BOOL)arg1;
++ (id)intrinsicAudioEffectIDs;
++ (id)intrinsicVideoEffectIDs:(BOOL)arg1;
+@property(readonly, nonatomic) long long selectedKeyframeMode; // @synthesize selectedKeyframeMode=_selectedKeyframeMode;
+@property(readonly, nonatomic) NSArray *selectedIntrinsics; // @synthesize selectedIntrinsics=_selectedIntrinsics;
+@property(readonly, nonatomic) NSArray *selectedChannels; // @synthesize selectedChannels=_selectedChannels;
 - (void)windowDidLoad;
-- (BOOL)targetsHaveAudio;
+- (void)_setupRemoveAttributesMap;
+- (void)_addRemoveAttributesMapObjects:(id)arg1 forKey:(id)arg2;
 - (void)loadSourceAndDestThumbnails;
-- (void)destThumbImageReady:(id)arg1;
-- (void)drawDest:(id)arg1;
-- (void)sourceThumbImageReady:(id)arg1;
-- (void)drawSource:(id)arg1;
-- (void)selectPresetEffects;
+- (void)drawDest:(struct CGImage *)arg1;
+- (void)drawSource:(struct CGImage *)arg1;
+- (void)initializeCheckboxStates;
 - (BOOL)effectHasKeyframes:(id)arg1;
 - (BOOL)channelFolderHasKeyframes:(id)arg1;
 - (void)setupCheckboxArrays;
-- (void)reorderAudioCheckboxes;
 - (id)newCheckboxWithFrame:(struct CGRect)arg1 andName:(id)arg2 video:(BOOL)arg3 enabled:(BOOL)arg4;
 - (void)audioCheckboxHandler:(id)arg1;
 - (void)videoCheckboxHandler:(id)arg1;
@@ -78,6 +91,9 @@ __attribute__((visibility("hidden")))
 - (void)updateSpecialVideoCheckboxes;
 - (void)videoRetimeCheckboxSetState:(long long)arg1;
 - (void)audioRetimeCheckboxSetState:(long long)arg1;
+- (void)syncVideoRetimeWithAudio;
+- (void)syncAudioRetimeWithVideo;
+- (void)setEffectCheckbox:(id)arg1 toState:(long long)arg2;
 - (void)categoryPopupSelected:(id)arg1;
 - (void)didEndSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)newCategorySheetCancel:(id)arg1;
@@ -87,9 +103,21 @@ __attribute__((visibility("hidden")))
 - (void)presetSave:(id)arg1;
 - (BOOL)isAnythingSelected;
 - (void)cancel:(id)arg1;
+- (void)showWindow:(id)arg1;
+- (void)windowWillClose:(id)arg1;
 - (void)ok:(id)arg1;
+- (id)selectedUserEffectIDsToRemove;
+- (id)presetCategory;
+- (id)presetName;
 - (void)dealloc;
-- (id)initWithEffectStacks:(id)arg1 andAnchoredObject:(id)arg2 channelDict:(id)arg3 intrinsicsToPaste:(id)arg4 keyframeMode:(long long *)arg5 targets:(id)arg6 presetNames:(id)arg7 variant:(int)arg8;
+- (id)initForRemoveAttributesWithTargets:(id)arg1;
+- (id)initWithVariant:(int)arg1 targets:(id)arg2 videoEffects:(id)arg3 audioEffects:(id)arg4 sourceObject:(id)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

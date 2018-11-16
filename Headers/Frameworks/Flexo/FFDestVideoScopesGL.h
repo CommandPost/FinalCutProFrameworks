@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface FFDestVideoScopesGL : FFDestVideoGL
 {
+    long long _overrideColorSpace;
     struct CGColorSpace *_cs;
     void *_FFDestVideoScopesGLPrivate;
 }
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (int)imageLocation;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
 - (void)setColorspace:(struct CGColorSpace *)arg1;
+@property long long overrideColorSpace; // @dynamic overrideColorSpace;
 - (void)dealloc;
 - (id)initWithDisplayID:(unsigned int)arg1 andCGLContext:(struct _CGLContextObject *)arg2 usingCoreAnimation:(BOOL)arg3;
 

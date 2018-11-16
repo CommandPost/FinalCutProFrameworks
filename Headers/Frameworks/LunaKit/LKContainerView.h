@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class LKContainerItemView, LKContainerNode, LKPaneCapView, NSColor, NSDictionary, NSMutableArray, NSMutableDictionary, NSProWindow, NSString;
+@class LKContainerItemView, LKContainerNode, LKPaneCapView, LKWindow, NSColor, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface LKContainerView : NSView
 {
@@ -34,9 +34,9 @@
     LKContainerNode *_draggedReplacementNode;
     LKContainerNode *_draggedNode;
     LKContainerItemView *_draggedItemView;
-    NSProWindow *_draggedContainerWindow;
+    LKWindow *_draggedContainerWindow;
     LKContainerView *_draggingContainerView;
-    NSProWindow *_windowToClose;
+    LKWindow *_windowToClose;
     NSMutableDictionary *_layoutCustomizationOperation;
     NSColor *_backgroundColor;
     unsigned int _highlightCurrentSeamArea:1;
@@ -44,10 +44,13 @@
     unsigned int _isAnimating:1;
     unsigned int _canCustomizeLayout:1;
     unsigned int _isPerformingDrag:1;
+    BOOL _delegate_implements_backgroundColor;
+    BOOL _delegate_implements_inactive_backgroundColor;
+    id _appearanceDelegate;
+    long long _focusDisabled;
 }
 
 + (void)initialize;
-+ (void)_setThemeVariant:(long long)arg1 recursivelyForView:(id)arg2;
 @property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)syntheticUIElementAttributeNames:(id)arg1;
@@ -84,10 +87,10 @@
 - (void)_removeDraggedReplacementNode;
 - (id)_containerViewAtScreenPoint:(struct CGPoint)arg1;
 - (BOOL)mouseTracker:(id)arg1 shouldStartTrackingWithEvent:(id)arg2;
-- (void)lookDidChangeNotification:(id)arg1;
 @property BOOL canRearrangeLayout;
 - (id)viewForIdentifier:(id)arg1;
 - (void)removeContainerItemWithIdentifier:(id)arg1;
+- (id)rootNode;
 - (id)nodeOfItemWithIdentifier:(id)arg1;
 - (id)moduleForIdentifier:(id)arg1;
 - (void)nodeWithIdentifier:(id)arg1 didChangeMaxSize:(struct CGSize)arg2;
@@ -119,10 +122,14 @@
 - (struct CGSize)minSize;
 - (BOOL)isFlipped;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)setFrameSize:(struct CGSize)arg1;
 - (BOOL)isOpaque;
 - (void)dealloc;
 @property BOOL showWindowFooter;
 @property BOOL useLayerBacking;
+- (void)_updateFocus;
+- (void)_enableFocusUpdate:(id)arg1;
+- (void)_disableFocusUpdate:(id)arg1;
 - (void)_firstResponderChanged:(id)arg1;
 - (void)viewWillMoveToWindow:(id)arg1;
 - (BOOL)acceptsFirstMouse:(id)arg1;
@@ -131,6 +138,7 @@
 - (void)_updateNode1Size:(struct CGSize)arg1 node2Size:(struct CGSize)arg2;
 - (void)updateItemViewFrames;
 - (id)representedModule;
+- (void)_setAppareanceDelegate:(id)arg1;
 - (void)setRepresentedModule:(id)arg1;
 - (id)_rootNode;
 - (void)syncSublayoutWithDict:(id)arg1;
@@ -138,7 +146,7 @@
 - (void)_layoutSubnodesOf:(id)arg1 inRect:(struct CGRect)arg2;
 - (BOOL)_nodeHasBottomViewOrderedBelow:(id)arg1;
 - (BOOL)_nodeHasFirstViewOrderedBelow:(id)arg1;
-- (void)_layoutWithParameters:(CDStruct_6cce754d *)arg1 count:(unsigned long long)arg2 newSize:(double)arg3;
+- (void)_layoutWithParameters:(CDStruct_d212b10b *)arg1 count:(unsigned long long)arg2 newSize:(double)arg3;
 - (void)setIsAnimating:(BOOL)arg1;
 - (BOOL)isAnimating;
 - (void)updatePropotionsForSubnodesOfNode:(id)arg1;

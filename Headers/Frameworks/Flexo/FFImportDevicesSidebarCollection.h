@@ -11,21 +11,24 @@
 __attribute__((visibility("hidden")))
 @interface FFImportDevicesSidebarCollection : FFOrganizerMasterItem
 {
-    MIORADManager *_radManager;
-    NSString *_itemDisplayName;
-    FFImportFavoritesSidebarCollection *_favoritesCollection;
+    NSMutableArray *_radFolderURLsToMount;
     NSMutableSet *_radFolders;
     NSLock *_radFoldersLock;
-    NSOperationQueue *_networkVolumeMountQueue;
+    FFFileImportProcessingFilesDialogController *_processingWindowController;
+    NSString *_itemDisplayName;
+    MIORADManager *_radManager;
+    FFImportFavoritesSidebarCollection *_favoritesCollection;
     FFOrganizerFilmListViewController *_outlineViewController;
+    NSOperationQueue *_networkVolumeMountQueue;
     NSMutableDictionary *_nodeInfo;
     NSOperationQueue *_metadataFetchQueue;
     FFImportFileSystemTreeNode *_savedSelectedTreeNode;
     NSMutableSet *_validatedNodes;
-    FFFileImportProcessingFilesDialogController *_processingWindowController;
-    NSMutableArray *_radFodlerURLsToMount;
 }
 
++ (id)treeNodeForURL:(id)arg1 inTreeNode:(id)arg2;
++ (void)replaceFileSystemNodeDataWithRADVolume:(id)arg1;
++ (BOOL)isMountableRADFolder:(id)arg1;
 + (void)setLoadingSuspended:(BOOL)arg1;
 + (BOOL)loadingSuspended;
 + (void)releaseSharedInstance;
@@ -39,34 +42,31 @@ __attribute__((visibility("hidden")))
 @property(retain) FFImportFavoritesSidebarCollection *favoritesCollection; // @synthesize favoritesCollection=_favoritesCollection;
 @property(retain) MIORADManager *radManager; // @synthesize radManager=_radManager;
 @property(readonly, nonatomic) NSString *itemDisplayName; // @synthesize itemDisplayName=_itemDisplayName;
+- (id)allSidebarItems;
+- (id)treeNodeforURL:(id)arg1 returnEnclosingDirectoryNode:(BOOL)arg2;
+- (id)sidebarItemForURL:(id)arg1 domain:(int)arg2;
+- (void)updateProcessingString;
 - (void)removeAllSelectionMarkersFromClips;
 - (void)addRadFoldersObject:(id)arg1;
 - (id)radFolders;
-- (id)allSidebarItems;
-- (id)treeNodeforURL:(id)arg1 returnEnclosingDirectoryNode:(BOOL)arg2;
-- (id)treeNodeForURL:(id)arg1 inTreeNode:(id)arg2;
-- (id)sidebarItemForURL:(id)arg1 domain:(int)arg2;
-- (double)itemRowHeight;
-- (id)itemPersistentIdentifier;
 - (void)volumeImportPercentDoneDidUpdate:(id)arg1;
 - (void)radVolumeDidMount:(id)arg1;
 - (void)radFolderFailedToMount:(id)arg1;
 - (void)mountRADFolders:(id)arg1;
-- (void)updateProcessingString;
 - (void)workspaceVolumeDidRename:(id)arg1;
 - (void)workspaceVolumeDidUnmount:(id)arg1;
-- (void)workspaceVolumeWillUnmount:(id)arg1;
 - (void)workspaceVolumeDidMount:(id)arg1;
+- (void)addFileSystemSidebarItem:(id)arg1 toCollection:(id)arg2;
+- (void)replaceFileSystemSidebarItemForURL:(id)arg1;
+- (void)addFileSystemSidebarItemForURL:(id)arg1;
+- (void)removeTempFileSystemSidebarItemForURL:(id)arg1;
+- (void)addTempFileSystemSidebarItemForURL:(id)arg1;
+- (double)itemRowHeight;
+- (id)itemPersistentIdentifier;
 - (void)appWillTerminate:(id)arg1;
 - (void)dealloc;
 - (oneway void)release;
 - (id)init;
-- (void)removeTempFileSystemSidebarItemForURL:(id)arg1;
-- (void)addFileSystemSidebarItemForURL:(id)arg1;
-- (void)addTempFileSystemSidebarItemForURL:(id)arg1;
-- (void)addFileSystemSidebarItem:(id)arg1 toCollection:(id)arg2;
-- (void)setOutlineViewOnSidebarItem:(id)arg1;
-- (void)replaceFileSystemSidebarItemForURL:(id)arg1;
 
 @end
 

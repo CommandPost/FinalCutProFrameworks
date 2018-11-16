@@ -9,7 +9,7 @@
 #import "OZListController.h"
 #import "OZOutlineVarRowHeightDelegate.h"
 
-@class LKSearchField, LKSegmentedControl, LKSlider, NSImage, NSMenuItem, NSMutableArray, NSProThemeImageView, NSString, NSView, OZFootageListOutlineView, OZTimecodeFormatter;
+@class LKSearchField, LKSegmentedControl, LKSlider, NSImage, NSImageView, NSMenuItem, NSMutableArray, NSString, NSView, OZFootageListOutlineView, OZTimecodeFormatter;
 
 @interface OZFootageListModule : OZProViewModule <OZListController, OZOutlineVarRowHeightDelegate>
 {
@@ -28,19 +28,16 @@
     id _fileSizeColumn;
     id _fileCreatedColumn;
     id _fileModifiedColumn;
-    LKSegmentedControl *_plusMinusSegmentedControl;
     LKSearchField *_searchField;
     LKSlider *_zoomSlider;
-    NSProThemeImageView *_smallZoomImage;
-    NSProThemeImageView *_largeZoomImage;
-    id _zoomMinButton;
-    id _zoomMaxButton;
+    NSImageView *_smallZoomImage;
+    NSImageView *_largeZoomImage;
     NSMenuItem *_keyEquivalentMenuItem;
     NSView *_slideUpSearchView;
     LKSegmentedControl *_contentsControl;
     OZTimecodeFormatter *_formatter;
     struct OZProjectPanelState *_mediaState;
-    struct map<unsigned int, OZFootageNodeWrapper *, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, OZFootageNodeWrapper *>>> *_wrapperMap;
+    struct map<unsigned int, OZFootageNodeWrapper *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, OZFootageNodeWrapper *>>> *_wrapperMap;
     NSMutableArray *_footageArray;
     NSMutableArray *_sortedFootageArray;
     NSString *_sortColumn;
@@ -101,9 +98,6 @@
 - (void)setTypeVisibility:(BOOL)arg1;
 - (void)setPreviewVisibility:(BOOL)arg1;
 - (void)openColumnMenu:(id)arg1;
-- (void)minusButton:(id)arg1;
-- (void)plusButton:(id)arg1;
-- (void)plusMinusPressed:(id)arg1;
 - (void)importFiles:(id)arg1;
 - (void)search:(id)arg1;
 - (void)outlineView:(id)arg1 didClickTableColumn:(id)arg2;

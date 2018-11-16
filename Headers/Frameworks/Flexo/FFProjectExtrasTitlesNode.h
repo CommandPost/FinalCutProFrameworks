@@ -10,8 +10,10 @@
 {
 }
 
+- (BOOL)isExpandable;
 - (int)displayType;
 - (id)moduleKey;
+- (id)iconImage:(BOOL)arg1;
 - (long long)_dimension1;
 - (id)toolTip;
 - (id)title;

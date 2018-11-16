@@ -29,6 +29,7 @@
 - (double)computeFontScaleToFitSingleLineTextInFrame:(struct __CTFrame *)arg1 context:(struct CGContext *)arg2;
 - (BOOL)doesTextFitInFrame:(struct __CTFrame *)arg1 context:(struct CGContext *)arg2 fontSize:(double)arg3;
 - (BOOL)hasWrappedWordInFrame:(struct __CTFrame *)arg1;
+- (BOOL)isStringJapanese:(id)arg1;
 - (double)textWidthForFrame:(struct __CTFrame *)arg1 context:(struct CGContext *)arg2 lineBounds:(id)arg3;
 - (double)textHeightForFrame:(struct __CTFrame *)arg1 context:(struct CGContext *)arg2 lineBounds:(id)arg3;
 - (double)textHeight;

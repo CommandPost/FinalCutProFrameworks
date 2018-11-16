@@ -6,26 +6,22 @@
 
 #import "NSObject.h"
 
-@class FFCloudAccount;
+@class NSObject<OS_dispatch_queue>, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface FFCloudStorageManager : NSObject
 {
-    FFCloudAccount *account;
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    id _iCloudLoginToken;
+    NSURL *_iCloudStorageUrl;
 }
 
 + (id)sharedInstance;
-@property(retain, nonatomic) FFCloudAccount *account; // @synthesize account;
-- (BOOL)documentStorageIsEnabled;
-- (BOOL)documentStorageIsAvailable;
-- (id)accountError;
-- (BOOL)accountIsActive;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_updateConnectionState;
++ (void)initialize;
 - (void)_ubiquityIdentityDidChange:(id)arg1;
-- (void)_resetConnectionState;
+- (void)_checkAccountStatus;
+- (id)iCloudStorageUrl;
+- (BOOL)accountIsActive;
 - (void)dealloc;
-- (oneway void)release;
 - (id)init;
 
 @end

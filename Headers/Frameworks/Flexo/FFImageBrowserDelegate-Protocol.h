@@ -18,7 +18,9 @@
 - (void)imageBrowserStopSkimmingInViewer:(FFImageBrowserView *)arg1;
 - (BOOL)imageBrowser:(FFImageBrowserView *)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(FFContext *)arg3 effectCount:(long long)arg4;
 - (struct NSObject *)imageBrowser:(FFImageBrowserView *)arg1 skimmingMediaForCell:(FFImageBrowserCell *)arg2;
-- (BOOL)imageBrowser:(FFImageBrowserView *)arg1 canStartSkimmingCell:(FFImageBrowserCell *)arg2;
+- (BOOL)imageBrowser:(FFImageBrowserView *)arg1 canStartSkimmingCell:(FFImageBrowserCell *)arg2 event:(NSEvent *)arg3;
+- (void)imageCellWillDealloc:(FFImageBrowserCell *)arg1;
+- (void)imageBrowser:(FFImageBrowserView *)arg1 mouseExited:(NSEvent *)arg2;
 - (NSArray *)imageBrowser:(FFImageBrowserView *)arg1 namesOfPromisedFilesDroppedAtDestination:(NSURL *)arg2 forItemsAtIndexes:(NSIndexSet *)arg3;
 - (NSArray *)imageBrowser:(FFImageBrowserView *)arg1 promisedFileTypesForDraggingItemsAtIndexes:(NSIndexSet *)arg2;
 - (BOOL)imageBrowser:(FFImageBrowserView *)arg1 writeItemsAtIndexes:(NSIndexSet *)arg2 toPasteboard:(NSPasteboard *)arg3;

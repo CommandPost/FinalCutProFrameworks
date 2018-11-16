@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFRendererPool, NSLock;
+@class FFHGRendererManager, NSLock;
 
 __attribute__((visibility("hidden")))
 @interface FFRendererInfo : NSObject
@@ -15,15 +15,33 @@ __attribute__((visibility("hidden")))
     struct HGRenderer *_renderer;
     struct __CFArray *_hgObjectsForRelease;
     NSLock *_hgObjectsLock;
-    FFRendererPool *_rendererPool;
+    _Bool _inUse;
+    struct _opaque_pthread_t *_inUseBy;
+    struct __CFArray *_waitingThreads;
+    int _maxTextureSizeHalfFloat;
+    unsigned long long _maxTextureSizeInBytes;
+    FFHGRendererManager *_manager;
 }
 
+- (_Bool)canLoadImageAsTexture:(struct CGRect)arg1;
+- (BOOL)currentThreadAtHeadOfList;
+- (BOOL)hasWaitingThreads;
+- (struct FFThread *)getFFThreadHoldingRenderer;
+- (void)removeRequestRendererForCurrentThread;
+- (void)requestRendererForCurrentThread;
+- (void)unclaimForCurrentThread;
+- (id)claimForCurrentThread;
+- (void)checkForRecursiveRenderDeadlock;
+- (BOOL)compatibleWithExecLoc:(int)arg1;
+- (BOOL)available;
 - (void)releaseHGObjects;
-- (id)rendererPool;
-- (void)setRendererPool:(id)arg1;
+- (void)setManager:(id)arg1;
 - (void)addHGObjectForRelease:(struct HGObject *)arg1;
 - (struct HGGLContextPtr)hgglContextPtr;
 - (struct HGRenderer *)renderer;
+- (id)description;
+- (id)gpuName;
+- (id)_gpuNameInternal;
 - (int)location;
 - (void)_heliumDebugSettingsChanged:(id)arg1;
 - (void)dealloc;

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 + (void)registerEffects;
 - (id)designatedChannelsForXMLExport;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
-- (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)setCompositionParameterValuesAtTime:(CDStruct_1b6d18a9)arg1 use4K:(BOOL)arg2;
 - (void)createChannelsInFolder:(id)arg1;
 - (struct CGPoint)team2Anchor16x9;
 - (struct CGPoint)team1Anchor16x9;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)boundingBoxForField:(unsigned long long)arg1;
 - (unsigned long long)characterCaseModeForField:(unsigned long long)arg1;
 - (BOOL)scaleFieldHeightToTextHeight;
+- (BOOL)wantsXMLStyledText;
 - (BOOL)allowsFontEditing;
 - (BOOL)wrapLines;
 - (BOOL)shrinkToFit;

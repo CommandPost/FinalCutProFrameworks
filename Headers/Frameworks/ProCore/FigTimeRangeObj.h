@@ -16,7 +16,6 @@
 }
 
 + (id)rangeWithRange:(CDStruct_e83c9415)arg1;
-- (id).cxx_construct;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (long long)sortByStartTimeDescending:(id)arg1;

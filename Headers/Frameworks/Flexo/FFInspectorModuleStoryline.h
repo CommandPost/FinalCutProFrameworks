@@ -6,27 +6,10 @@
 
 #import <Flexo/FFInspectorModule.h>
 
-@class NSImageView, NSProThemeImageView, NSProView, NSTextField, NSView;
-
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleStoryline : FFInspectorModule
 {
-    NSView *_accessoryView;
-    NSProThemeImageView *_headerView;
-    NSImageView *_itemIcon;
-    NSTextField *_inspectorTitle;
-    NSTextField *_durationField;
-    NSProView *_contentView;
 }
-
-- (void)_updateHeader;
-- (void)_removeObservingForCurrentItems;
-- (void)_addObservingForCurrentItems;
-- (void)_rangeInvalidated:(id)arg1;
-- (void)setCurrentItems:(id)arg1;
-- (unsigned long long)labelAlignment;
-- (id)moduleAccessoryView;
-- (void)viewDidLoad;
 
 @end
 

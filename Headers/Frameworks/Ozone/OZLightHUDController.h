@@ -14,7 +14,7 @@
 }
 
 - (void)viewDidLoad;
-- (void)buildUIWithObjectList:(list_4c5ca08a *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)buildUIWithObjectList:(list_281b6609 *)arg1 viewController:(id)arg2 context:(id)arg3;
 - (void)channelChanged:(struct OZChannelBase *)arg1 groupController:(id)arg2 time:(CDStruct_1b6d18a9)arg3 qualifiers:(int)arg4;
 - (void)notify:(unsigned int)arg1;
 

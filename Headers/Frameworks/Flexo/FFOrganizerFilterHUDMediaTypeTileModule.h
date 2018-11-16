@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     LKPopUpButton *_mediaTypePopUpButton;
 }
 
-- (id)tileTypeFacet;
+- (id)tileGlyphString;
 - (id)filterDict;
 - (void)setFilterDict:(id)arg1;
 - (void)mediaTypeFilterMenu:(id)arg1;

@@ -31,8 +31,12 @@
 }
 
 + (id)toolTip;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)toolTipDescriptionDisabled;
 + (id)displayName;
 + (void)initialize;

@@ -41,6 +41,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int boardType; // @synthesize boardType=_boardType;
 - (struct CGPoint)puck:(id)arg1 convertPuckToNormalizedCoord:(struct CGPoint)arg2;
 - (struct CGPoint)puck:(id)arg1 convertNormalizedToPuckCoord:(struct CGPoint)arg2;
+- (BOOL)becomeFirstResponder;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)canBecomeKeyView;
 - (BOOL)puck:(id)arg1 willMoveTo:(struct CGPoint *)arg2;
 - (struct CGPoint)convertNormalizedColorToBoardCoord:(struct CGPoint)arg1;
 - (struct CGPoint)convertBoardToNormalizedColorCoord:(struct CGPoint)arg1;
@@ -57,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (void)notificationHandler:(id)arg1;
 - (void)removeNotificationObservers;
 - (void)addNotificationObservers;
+- (void)mouseDown:(id)arg1;
+- (void)_deselectAllPucksNotMatchingPuckType:(int)arg1 boardType:(int)arg2;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

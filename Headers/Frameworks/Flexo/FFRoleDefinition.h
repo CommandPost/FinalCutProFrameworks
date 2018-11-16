@@ -6,21 +6,12 @@
 
 #import "NSObject.h"
 
-__attribute__((visibility("hidden")))
 @interface FFRoleDefinition : NSObject
 {
 }
 
-+ (CDUnknownBlockType)roleComparator;
-+ (CDUnknownBlockType)roleSetComparator;
-+ (BOOL)shouldEnablePlaybackOfType:(int)arg1 forRoles:(id)arg2 withRequestedRoles:(id)arg3;
-+ (BOOL)shouldEnablePlaybackOfType:(int)arg1 forObject:(id)arg2 withRequestedRoles:(id)arg3;
 + (BOOL)isRoleSet:(id)arg1;
 + (BOOL)isGenericRole:(id)arg1;
-+ (id)videoUndefinedRole;
-+ (id)audioUndefinedRole;
-+ (id)localizedStringForRoleSet:(id)arg1;
-+ (id)localizedStringForRole:(id)arg1;
 + (id)fcpDefinedRoleSets;
 + (id)fcpDefinedRoles;
 + (id)genericRoleDefinitionWithRoleSet:(id)arg1;
@@ -32,12 +23,7 @@ __attribute__((visibility("hidden")))
 + (int)typeOfRole:(id)arg1;
 + (id)nameForRoleSet:(id)arg1;
 + (id)nameForRoleDefinition:(id)arg1;
-+ (id)roleSets;
-+ (id)rolesForRoleSet:(id)arg1;
 + (id)roleSetForRole:(id)arg1;
-+ (id)roleDefinitions;
-+ (void)removeRoleDefinition:(id)arg1;
-+ (id)addRoleDefinition:(id)arg1;
 + (void)releaseSharedInstance;
 + (void)initialize;
 

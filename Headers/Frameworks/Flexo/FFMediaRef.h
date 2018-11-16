@@ -34,8 +34,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) int offlineReason; // @synthesize offlineReason=_offlineReason;
 - (id)mdTargetForKey:(id)arg1;
 - (id)videoProps;
-- (id)newProviderWithEffectCount:(long long)arg1;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
 - (id)newProvider;
 - (void)assetChangeChange:(id)arg1;
 - (void)refInvalidationChange:(id)arg1;
@@ -70,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)releaseFinal;
 - (oneway void)release;
+- (id)initWithMedia:(id)arg1 displayName:(id)arg2 mediaEvent:(id)arg3;
 - (id)initWithMedia:(id)arg1 mediaEvent:(id)arg2;
 - (id)init;
 - (id)legacyEventDocumentID;

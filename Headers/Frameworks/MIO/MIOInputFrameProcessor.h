@@ -76,7 +76,6 @@
 @property BOOL useCMTime; // @synthesize useCMTime=mUseCMTime;
 @property CDStruct_1b6d18a9 currentOutTime; // @synthesize currentOutTime=mCurrentOutTime;
 @property CDStruct_1b6d18a9 currentInTime; // @synthesize currentInTime=mCurrentInTime;
-- (id).cxx_construct;
 - (void)handleFileWritingControlCallbackForBus:(unsigned int)arg1 token:(struct OpaqueFileWritingControlToken *)arg2;
 - (void)handleInputUnitRenderCallbackWithBuNumber:(unsigned int)arg1 inRenderFlags:(unsigned int)arg2 outRenderingProcessHints:(unsigned int *)arg3 outCMIOSampleBuffer:(struct opaqueCMSampleBuffer **)arg4;
 - (struct OpaqueFileWritingControlToken *)fileControlToken;

@@ -8,13 +8,13 @@
 
 #import "FFMediaSourceProtocol.h"
 
-@class FFMD5AndOffset, FFMedia, FFRenderStateTracker, NSArray, NSNumber, NSString;
+@class FFMD5AndOffset, FFMedia, FFRenderStateTracker, FFVideoProps, NSArray, NSNumber, NSSet, NSString;
 
 @interface FFAnchoredMediaComponent : FFAnchoredComponent <FFMediaSourceProtocol>
 {
     FFMedia *_media;
     NSString *_providerSourceKey;
-    NSArray *_sourceChannelMap;
+    NSArray *_audioChannelMap;
     NSArray *_audioChannelRoutingMap;
     FFMD5AndOffset *_cachedAudioMD5;
     FFMD5AndOffset *_cachedAudioMD5_NoIntrinsics;
@@ -24,29 +24,26 @@
     long long _rotationAngle;
     FFRenderStateTracker *_renderStateTracker;
     NSString *_deInterlaceProviderKey;
+    FFVideoProps *_calculatedVideoProps;
 }
 
 + (void)updateAudioMediaComponents:(id)arg1 fromAudioSourceDict:(id)arg2 toAudioSourceDict:(id)arg3;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)copyClassDescription;
++ (void)updateMediaComponents:(id)arg1 forAsset:(id)arg2 forMeidaRep:(id)arg3 needReset:(BOOL)arg4;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5_NoIntrinsics; // @synthesize cachedAudioMD5_NoIntrinsics=_cachedAudioMD5_NoIntrinsics;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 @property(readonly, nonatomic) FFMedia *media; // @synthesize media=_media;
 - (id)createUsedRangesMediaIdentifier;
 - (BOOL)update_cleanupAudioRoutingMap;
 - (void)deinterlace;
-- (void)setMedia:(id)arg1 providerSourceKey:(id)arg2 sourceChannelMap:(id)arg3 audioChannelRoutingMap:(id)arg4 updateFlags:(int)arg5;
+- (void)setMedia:(id)arg1 providerSourceKey:(id)arg2 audioChannelMap:(id)arg3 audioChannelRoutingMap:(id)arg4 updateFlags:(int)arg5;
 - (id)newDeinterlaceProviderWithEffectCount:(long long)arg1;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2 roles:(id)arg3 angleOffset:(long long)arg4 angleCount:(long long)arg5;
-- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
-- (id)newProviderWithEffectCount:(long long)arg1;
+- (id)_newProviderWithOptions:(id)arg1;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (void)_clearCachedAudioProperties;
 - (CDStruct_1b6d18a9)localToRateConformedTime:(CDStruct_1b6d18a9)arg1 withTargetSampleDuration:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_e83c9415)untimedUnclippedRange;
-- (CDStruct_e83c9415)untimedClippedRange;
-- (CDStruct_e83c9415)untimeRange:(CDStruct_e83c9415)arg1;
-- (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)canBeRetimed;
 - (void)setMedia:(id)arg1;
 - (void)_stopObservingMedia;
@@ -60,9 +57,12 @@
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (void)_clearCachedAudioSampleRate;
 - (double)nativeAudioSampleRate;
-- (long long)nativeAudioChannelCount:(int)arg1;
+- (unsigned int)nativeAudioChannelCount:(int)arg1;
 - (id)mediaVideoProps;
+- (BOOL)canSetVideoProps;
 - (id)videoProps;
+- (id)_copyCalculatedVideoProps_Internal;
+- (void)clearCalculatedVideoProps;
 - (void)localPercentageToPixelValuesLRTB:(double *)arg1 right:(double *)arg2 top:(double *)arg3 bottom:(double *)arg4;
 - (id)unTrimmedVideoProps;
 - (long long)timecodeDisplayDropFrame;
@@ -79,8 +79,8 @@
 @property(nonatomic) long long deinterlaceType; // @synthesize deinterlaceType=_deinterlaceType;
 - (void)setAudioChannelRoutingMap:(id)arg1;
 - (id)audioChannelRoutingMap;
-- (void)setSourceChannelMap:(id)arg1;
-- (id)sourceChannelMap;
+- (void)setAudioChannelMap:(id)arg1;
+- (id)audioChannelMap;
 - (void)setProviderSourceKey:(id)arg1;
 - (id)providerSourceKey;
 - (id)componentForTrim;
@@ -94,22 +94,22 @@
 - (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)_assetRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)_assets:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3;
-- (void)_checkRoleIntegrity;
-- (void)resetRoles;
-- (void)_guessAndSetRoles;
-- (void)_guessAndSetVideoRole;
-- (id)_guessVideoRole;
-- (void)_guessAndSetAudioRole;
-- (id)_guessAudioRole;
+- (id)guessAudioBuiltInMainRoleUID;
 - (id)_newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
 - (id)_newRotatedProviderWithInput:(id)arg1;
 - (id)_rotateCacheIdentifierWithSource:(id)arg1;
+- (id)supportedLogProcessingModes;
+- (BOOL)supportsLogProcessing;
+- (id)supportedColorSpaceOverrides;
+- (BOOL)supportsColorSpaceOverride;
+- (void)setParentItem:(id)arg1;
+- (id)firstAssetIfOnlyOneVideo;
 - (id)_newDeinterlaceProviderWithInput:(id)arg1;
 - (id)_deinterlaceCacheIdentifierWithSource:(id)arg1;
 - (id)inspectableChannelsForIdentifier:(id)arg1;
 - (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
 - (id)inspectorTabIdentifiers;
-- (id)inspectorTabClassNames;
 - (id)inspectorClassName;
 - (void)_mediaChanged:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -123,6 +123,9 @@
 - (id)initWithDescription:(id)arg1;
 - (void)_initIntrinsicMediaComponentEffects;
 - (CDStruct_e83c9415)unclippedRange;
+@property(readonly, nonatomic) NSSet *roleGroups;
+- (BOOL)hasSystemGeneratedSubRoleWithIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) BOOL reflectsMediaRange;
 
 @end
 

@@ -5,46 +5,34 @@
 //
 
 #import "FFEventsDetailModuleDelegate.h"
+#import "FFOrganizerDelegatePassthrough.h"
 
-@class FFAnchoredObject, FFAnchoredStack, FFAnchoredTimeMarker, FFContext, FFEditorModule, FFMarkerLayer, FFMediaEventProject, FFMediaSidebarModule, FFProject, FFSettingsModule, FigTimeRangeAndObject, LKMenu, LKPopOverWindow, NSArray, NSError, NSProView, NSSet, OKPaneCapItem;
+@class FFAnchoredTimeMarker, FFEditorModule, FFProject, FigTimeRangeAndObject, LKMenu, NSArray, NSError, NSObject<FFOrganizerMediaDetailSearchHeaderDelegate>, NSPopover, NSView, OKPaneCapItem;
 
-@protocol FFOrganizerFilmstripModuleDelegate <FFEventsDetailModuleDelegate>
+@protocol FFOrganizerFilmstripModuleDelegate <FFEventsDetailModuleDelegate, FFOrganizerDelegatePassthrough>
 
 @optional
-- (void)clipAttributesPopOverWindowDidResign:(LKPopOverWindow *)arg1;
-- (NSProView *)customClipAttributesPopOverView;
-- (FFMediaSidebarModule *)sidebarModule;
-- (FFMediaEventProject *)defaultEventForNewProject;
-- (NSProView *)clipActionOptionsView;
+- (void)clipAttributesPopOverDidClose:(NSPopover *)arg1;
+- (NSView *)customClipAttributesPopOverView;
+- (void)didSwitchViewMode;
 - (FFProject *)project;
-- (void)openSettingsWithModule:(FFSettingsModule *)arg1;
 - (BOOL)deleteSpecificMarker:(FFAnchoredTimeMarker *)arg1;
 - (BOOL)actionMoveMarker:(FFAnchoredTimeMarker *)arg1 toRange:(FigTimeRangeAndObject *)arg2 error:(id *)arg3;
-- (void)hideMarkerEditor;
-- (BOOL)markerEditorIsShown;
-- (void)openStack:(FFAnchoredStack *)arg1;
 - (void)revealMediaRanges:(NSArray *)arg1;
 - (BOOL)presentError:(NSError *)arg1;
-- (void)showMarkerEditorForMarkerLayer:(FFMarkerLayer *)arg1 object:(FFAnchoredObject *)arg2;
-- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(FFAnchoredObject *)arg2;
-- (BOOL)canBeginPlaying;
-- (BOOL)canSkimWithAudio;
-- (BOOL)canBeginSkimming;
 - (void)clearActiveSequence;
-- (void)makeSequenceActive:(id)arg1;
-- (void)stopUsingMedia:(NSSet *)arg1;
-- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 loadingBlock:(void (^)(FFPlayerModule *))arg4 unloadingBlock:(void (^)(void))arg5;
-- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 unloadingBlock:(void (^)(void))arg4;
-- (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3;
-- (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
-- (void)stopSkimmingForOwner:(id)arg1;
-- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
+- (void)setFooterView:(NSView *)arg1;
+- (void)dismissSearchHeaderAndOptionallyClearFilters:(BOOL)arg1;
+- (void)showSearchHeader:(NSObject<FFOrganizerMediaDetailSearchHeaderDelegate> *)arg1;
+- (void)resizeHeaderView;
 - (void)refreshFilterMenu;
 - (LKMenu *)filterPulldownMenu;
 - (void)addPaneCapItem:(OKPaneCapItem *)arg1;
 - (void)removePaneCapItem:(OKPaneCapItem *)arg1;
 - (void)setShowFilmstripView:(BOOL)arg1;
 - (BOOL)showFilmstripView;
+- (void)doCreateProject:(id)arg1;
+- (void)doCreateTrailer:(id)arg1;
 - (FFEditorModule *)editorModule;
 @end
 

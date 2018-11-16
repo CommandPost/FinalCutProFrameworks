@@ -41,7 +41,6 @@ __attribute__((visibility("hidden")))
 @property(retain) MIORADBufferManager *bufferManager; // @synthesize bufferManager=_bufferManager;
 @property(retain) NSMutableArray *audioReaders; // @synthesize audioReaders=_audioReaders;
 @property(retain) MIORADMediaReader *videoReader; // @synthesize videoReader=_videoReader;
-- (id).cxx_construct;
 - (int)getNextMedia:(struct MIORADPlugInMediaSpecifier *)arg1 inRefCon:(void *)arg2;
 - (id)firstAudioReader;
 - (int)getNextMedia_Deprecated:(struct MIORADPlugInMediaSpecifier_Deprecated *)arg1 inRefCon:(void *)arg2;

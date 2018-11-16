@@ -12,7 +12,6 @@
     struct CGPoint _position;
 }
 
-- (id).cxx_construct;
 - (struct CGPoint)getPosition;
 - (struct OZTimelineKeyframeDrag *)getKeyframe;
 - (id)initWithKeyframe:(const struct OZTimelineKeyframeDrag *)arg1 pos:(struct CGPoint)arg2;

@@ -11,7 +11,7 @@
 }
 
 - (void)doLoadWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)buildUIWithObjectList:(list_4c5ca08a *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)buildUIWithObjectList:(list_281b6609 *)arg1 viewController:(id)arg2 context:(id)arg3;
 
 @end
 

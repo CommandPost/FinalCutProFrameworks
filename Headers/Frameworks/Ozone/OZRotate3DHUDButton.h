@@ -9,8 +9,8 @@
 @interface OZRotate3DHUDButton : OZTransform3DHUDButton
 {
     PCVector3_457fd1f0 *_storedRot;
-    struct vector<PCVector3<int>, std::allocator<PCVector3<int>>> _windings;
-    struct vector<PCQuat<double>, std::allocator<PCQuat<double>>> _previousQuats;
+    struct vector<PCVector3<int>, std::__1::allocator<PCVector3<int>>> _windings;
+    struct vector<PCQuat<double>, std::__1::allocator<PCQuat<double>>> _previousQuats;
 }
 
 - (id).cxx_construct;

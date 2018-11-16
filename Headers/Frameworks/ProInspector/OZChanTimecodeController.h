@@ -19,7 +19,6 @@
 - (id)timecode;
 - (void)setChannelValue:(id)arg1;
 - (void)update;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end

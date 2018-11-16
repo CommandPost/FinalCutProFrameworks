@@ -6,22 +6,31 @@
 
 #import <ProInspector/OZViewController.h>
 
-@class OZLabelText;
+@class NSColor, OZLabelText;
 
 @interface OZChanLabelController : OZViewController
 {
     OZLabelText *_pLabelText;
     float _currIndentAmount;
     BOOL _isCustomLabelString;
+    NSColor *_enableColor;
+    float _cachedLabelTextWidth;
+    BOOL _cachedLabelTextWidthIsValid;
 }
 
 + (float)indentAmount;
 @property(readonly) OZLabelText *pLabelText; // @synthesize pLabelText=_pLabelText;
+- (void)setEnableColor:(id)arg1;
+- (void)setDisclosureTriangleIndentLevel:(id)arg1;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)doDrag:(list_eea5731a *)arg1 viewList:(id)arg2;
+- (void)doDrag:(list_e5c8e430 *)arg1 viewList:(id)arg2;
 - (void)highlightChannel:(struct OZChannelBase *)arg1;
 - (float)suggestedMinLabelWidth;
+- (float)suggestedMaxLabelWidth;
+- (void)invalidateCachedLabelTextWidth;
+- (float)labelTextWidth;
 - (void)didBuildUI;
+- (BOOL)rejectsTwoColumnLayout;
 - (BOOL)isLeftJustified;
 - (void)setChannelName:(id)arg1;
 - (void)setCustomLabelString:(id)arg1;

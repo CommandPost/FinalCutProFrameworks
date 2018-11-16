@@ -6,12 +6,10 @@
 
 #import <TLKit/TLKTimelineHandler.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSResponder, NSSet, NSString, NSTimer, TLKItemLaneInfo, TLKLayoutContext, TLKRectArray, TLKTimelineLayer;
+@class NSArray, NSMapTable, NSMutableArray, NSResponder, NSSet, NSTimer, TLKItemComponentInfo, TLKItemLaneInfo, TLKLayoutContext, TLKRectArray;
 
 @interface TLKDragItemsHandler : TLKTimelineHandler
 {
-    id <TLKTimelineItem> _clickedItem;
-    id <TLKTimelineItem> _savedClickedItem;
     struct CGPoint _clickedPosition;
     CDStruct_1b6d18a9 _initialAnchorOffset;
     CDStruct_1b6d18a9 _startTime;
@@ -26,10 +24,6 @@
     NSArray *_savedSelectedItems;
     NSArray *_itemLayersWithDropFeedback;
     float _shadowOpacityBeforeDraggingAmount;
-    struct CATransform3D _transformBeforeDragging;
-    TLKTimelineLayer *_lastLayoutItemLayer;
-    struct CGRect _lastLayoutItemFrame;
-    NSString *_containerRegionOverride;
     TLKItemLaneInfo *_itemLaneOverrideInfo;
     struct CGPoint _deferredCurrentPoint;
     struct CGPoint _deferredInitialPoint;
@@ -49,7 +43,6 @@
         unsigned int placeholdersForAnchoredItems:1;
         unsigned int showTransitionPlaceholders:1;
         unsigned int overlapingTransitionModel:1;
-        unsigned int updateTimecodeDisplay:1;
         unsigned int showInvalidCursor:1;
         unsigned int showTimecodeDisplay:1;
         unsigned int clickMovesPlayhead:1;
@@ -59,26 +52,35 @@
         unsigned int performingDeferredLayerUpdates:1;
         unsigned int deferredLayerUpdatesSuppressDragItems:1;
         unsigned int reloadLayersOnDurationChange:1;
-        unsigned int RESERVED:10;
+        unsigned int RESERVED:11;
     } _dhFlags;
     BOOL _stretchFilmstripDuringDrag;
     BOOL _originalTimelineViewStretchFilmstrips;
     BOOL _originalTimelineViewFilmstripUpdatesEnabled;
+    TLKItemComponentInfo *_clickedItemComponent;
+    TLKItemComponentInfo *_savedClickedItemComponent;
+    long long _layoutRegionOverride;
+    NSSet *_itemComponentsWithVerticalLayoutConstraints;
+    double _originalClickedComponentOffset;
 }
 
+@property(nonatomic) double originalClickedComponentOffset; // @synthesize originalClickedComponentOffset=_originalClickedComponentOffset;
+@property(copy, nonatomic) NSSet *itemComponentsWithVerticalLayoutConstraints; // @synthesize itemComponentsWithVerticalLayoutConstraints=_itemComponentsWithVerticalLayoutConstraints;
+@property(retain, nonatomic) NSResponder *savedFirstResponder; // @synthesize savedFirstResponder=_savedFirstResponder;
 @property BOOL originalTimelineViewFilmstripUpdatesEnabled; // @synthesize originalTimelineViewFilmstripUpdatesEnabled=_originalTimelineViewFilmstripUpdatesEnabled;
 @property BOOL originalTimelineViewStretchFilmstrips; // @synthesize originalTimelineViewStretchFilmstrips=_originalTimelineViewStretchFilmstrips;
 @property BOOL stretchFilmstripDuringDrag; // @synthesize stretchFilmstripDuringDrag=_stretchFilmstripDuringDrag;
 @property(copy, nonatomic) NSSet *draggedItemsBelowSpine; // @synthesize draggedItemsBelowSpine=_draggedItemsBelowSpine;
 @property(copy, nonatomic) NSSet *draggedItemsAboveSpine; // @synthesize draggedItemsAboveSpine=_draggedItemsAboveSpine;
 @property(retain, nonatomic) TLKItemLaneInfo *itemLaneOverrideInfo; // @synthesize itemLaneOverrideInfo=_itemLaneOverrideInfo;
-@property(copy, nonatomic) NSString *containerRegionOverride; // @synthesize containerRegionOverride=_containerRegionOverride;
+@property(nonatomic) long long layoutRegionOverride; // @synthesize layoutRegionOverride=_layoutRegionOverride;
 @property(retain, nonatomic) TLKLayoutContext *deferredLayoutContext; // @synthesize deferredLayoutContext=_deferredLayoutContext;
 @property(copy, nonatomic) NSArray *itemLayersWithDropFeedback; // @synthesize itemLayersWithDropFeedback=_itemLayersWithDropFeedback;
+@property(nonatomic) TLKItemComponentInfo *savedClickedItemComponent; // @synthesize savedClickedItemComponent=_savedClickedItemComponent;
 @property CDStruct_1b6d18a9 startTime; // @synthesize startTime=_startTime;
 @property CDStruct_1b6d18a9 initialAnchorOffset; // @synthesize initialAnchorOffset=_initialAnchorOffset;
 @property struct CGPoint clickedPosition; // @synthesize clickedPosition=_clickedPosition;
-@property(retain, nonatomic) id clickedItem; // @synthesize clickedItem=_clickedItem;
+@property(retain, nonatomic) TLKItemComponentInfo *clickedItemComponent; // @synthesize clickedItemComponent=_clickedItemComponent;
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (BOOL)allowsDraggingOutsideInitialContainer;
 - (BOOL)wantsPeriodicDraggingUpdates;
@@ -91,11 +93,14 @@
 - (unsigned long long)draggingEntered:(id)arg1 dispatcher:(id)arg2;
 - (void)_resetDraggingDestinationState;
 - (unsigned long long)_dragOrAcceptDrop:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3 initialPoint:(struct CGPoint)arg4 modifierFlags:(unsigned long long)arg5;
+- (void)_clearVerticalLayoutConstraints;
+- (void)_addVerticalLayoutConstraintIfNeededForItemComponents:(id)arg1;
 - (BOOL)_shouldReacceptDrop:(id)arg1 inContainer:(id)arg2 atPoint:(struct CGPoint)arg3;
 - (id)_acceptDrop:(id)arg1 atPoint:(struct CGPoint)arg2 dropInfo:(id)arg3;
 - (void)_updateLayersForDroppedItems:(id)arg1 atPoint:(struct CGPoint)arg2 dropInfo:(id)arg3;
 - (void)_clearDropFeedback;
 - (void)_clearDropFeedbackForItemLayers:(id)arg1;
+- (void)_showDropFeedback:(id)arg1 atPoint:(struct CGPoint)arg2 proposedHighlightItems:(id)arg3;
 - (void)_showDropFeedback:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)_setResetDragImageAlphaForDraggingInfo:(id)arg1;
 - (void)_setWantsDragImage:(BOOL)arg1 forDraggingInfo:(id)arg2;
@@ -108,7 +113,6 @@
 - (void)_restoreSelectionStateIfNeeded;
 - (void)_saveSelectionStateForItems:(id)arg1 forClickedItem:(id)arg2;
 - (BOOL)startTracking:(id)arg1;
-- (void)_applyTransformToLayer:(id)arg1;
 - (void)_captureContainerRegionOverrideStateForItems:(id)arg1;
 @property(nonatomic) BOOL defersContainerRegionUpdates;
 - (void)_handleDeferredUpdateTimer:(id)arg1;
@@ -117,6 +121,7 @@
 - (void)_stopTrackingTimers;
 - (void)_startTrackingTimers;
 - (void)dragItems:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3 initialPoint:(struct CGPoint)arg4 modifierFlags:(unsigned long long)arg5;
+- (id)_replaceSecondaryItemComponentsWithPrimaryItemComponents:(id)arg1;
 - (BOOL)_needsForcedLayoutForItems:(id)arg1 numberOfItemsFromSpine:(unsigned long long)arg2;
 - (BOOL)_testAnchoredItemsNeedForcedLayout:(id)arg1;
 - (unsigned long long)_numberOfSpineItemsInArray:(id)arg1;
@@ -140,14 +145,17 @@
 - (void)_resolveCollisionsForAnchoredItems:(id)arg1 inLayoutContext:(id)arg2;
 - (void)_updateLayoutSegmentTablesForItemInfoIfNeeded:(id)arg1 aboveSpine:(BOOL)arg2;
 - (void)_populateCollisionRecordsForItems:(id)arg1 inLayoutContext:(id)arg2 isAboveSpine:(BOOL)arg3;
+- (double)_adjustForThinItemsWithCenterPoint:(double)arg1 frame1:(struct CGRect)arg2 frame2:(struct CGRect)arg3 spineFrame:(struct CGRect)arg4 itemSpacing:(double)arg5 isAboveSpine:(BOOL)arg6;
 - (id)_invalidItemsForItemInfo:(id)arg1 inLayoutContext:(id)arg2 withFrame:(struct CGRect)arg3;
 - (id)_OLD_invalidItemsForItemInfo:(id)arg1 inLayoutContext:(id)arg2 withFrame:(struct CGRect)arg3;
+- (id)itemComponentsInRect:(struct CGRect)arg1 forLayoutContext:(id)arg2;
 - (id)itemsInRect:(struct CGRect)arg1 forLayoutContext:(id)arg2;
 - (void)_updateTimecodeDisplay;
 - (void)_removeFrameAnimationsForItems:(id)arg1;
 - (void)_removeAnimationsForItemsInContainer:(id)arg1;
 - (void)_updateItemsAppearance:(id)arg1;
-- (void)_updateLayersToFinalPositions;
+- (void)_updateItemsLayers:(id)arg1;
+- (void)_updateLayersToFinalPositions:(id)arg1;
 - (void)_reloadLayersForItems:(id)arg1;
 - (void)performDeferredLayerUpdates;
 - (BOOL)_resizeLayersForItemsIfNeeded:(id)arg1;
@@ -178,9 +186,13 @@
 - (CDStruct_e83c9415)snapToZeroTimeRangeInContainer:(id)arg1;
 - (void)gearDownWithInitialPoint:(struct CGPoint)arg1 previousPoint:(struct CGPoint *)arg2 currentPoint:(struct CGPoint *)arg3;
 - (BOOL)_shouldConstrainDragWithModifierFlags:(unsigned long long)arg1;
+- (id)_redirectedItemLayerForItemLayer:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (id)clickedItem;
 - (id)clickedItemComponentFragment;
 - (void)_setDraggedItems:(id)arg1;
 - (void)_didStopDraggingItemComponentFragments:(id)arg1;
+- (void)_willStartDraggingItemComponentFragments:(id)arg1;
+- (void)_setAnchorFollowsItemLayer:(BOOL)arg1 forItemComponentFragments:(id)arg2;
 - (void)_removeDraggedAppearanceForItemComponentFragments:(id)arg1;
 - (void)_removeLayersFromDragLayerForItemComponentFragments:(id)arg1;
 - (void)_moveLayersToDragLayerForItemComponentFragments:(id)arg1;

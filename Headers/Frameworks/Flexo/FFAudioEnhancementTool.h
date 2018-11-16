@@ -28,8 +28,12 @@
 }
 
 + (id)toolTip;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;

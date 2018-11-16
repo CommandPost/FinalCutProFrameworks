@@ -19,12 +19,6 @@ __attribute__((visibility("hidden")))
     double _contentsScale;
 }
 
-+ (id)_facetCrease;
-+ (id)_facetSquare;
-+ (id)_facetRounded;
-+ (id)_facetRaggedLeft;
-+ (id)_facetRaggedRight;
-+ (unsigned long long)_themeRef;
 @property(getter=isAudioOnly) BOOL audioOnly; // @synthesize audioOnly=_audioOnly;
 @property int rightEdgeType; // @synthesize rightEdgeType=_rightEdgeType;
 @property int leftEdgeType; // @synthesize leftEdgeType=_leftEdgeType;

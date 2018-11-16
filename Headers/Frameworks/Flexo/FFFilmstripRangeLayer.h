@@ -4,25 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "TLKButtonLayer.h"
+#import "CALayer.h"
 
 @class FigTimeRangeAndObject;
 
 __attribute__((visibility("hidden")))
-@interface FFFilmstripRangeLayer : TLKButtonLayer
+@interface FFFilmstripRangeLayer : CALayer
 {
     FigTimeRangeAndObject *_range;
 }
 
 + (id)positionedRangeLayerForRange:(id)arg1 placementLayer:(id)arg2 superlayer:(id)arg3 timeToXCoordFunction:(CDUnknownBlockType)arg4;
 + (struct CGRect)frameForRangeLayer:(id)arg1 placementLayer:(id)arg2 superlayer:(id)arg3 timeToXCoordFunction:(CDUnknownBlockType)arg4;
-+ (id)_usedMediaFacet;
-+ (id)_analysisFacet;
-+ (id)_favoriteFacet;
-+ (id)_rejectFacet;
-+ (id)_keywordFacet;
-+ (id)_importedFacet;
-+ (unsigned long long)_themeRef;
 @property(retain, nonatomic) FigTimeRangeAndObject *range; // @synthesize range=_range;
 - (void)_updateFacetFromRangeProperties;
 - (void)dealloc;

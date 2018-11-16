@@ -6,14 +6,16 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
+#import "FFMediaEventFolderForMergeObject.h"
 #import "FFMediaEventFolderObject.h"
+#import "FFMergeObjectProtocol.h"
 #import "FFOrganizerItemDraggingSource.h"
 #import "FFOrganizerMasterItem.h"
 #import "FFOrganizerMasterItemDropTarget.h"
 
 @class FFMediaEventFolder, NSArray, NSDictionary, NSImage, NSString;
 
-@interface FFMediaEventKeyword : FFBaseDSObject <FFOrganizerMasterItem, FFOrganizerItemDraggingSource, FFOrganizerMasterItemDropTarget, FFMediaEventFolderObject>
+@interface FFMediaEventKeyword : FFBaseDSObject <FFMergeObjectProtocol, FFMediaEventFolderForMergeObject, FFOrganizerMasterItem, FFOrganizerItemDraggingSource, FFOrganizerMasterItemDropTarget, FFMediaEventFolderObject>
 {
     NSString *_name;
     FFMediaEventFolder *_parentFolder;
@@ -40,6 +42,10 @@
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
+@property NSString *collectionName;
+- (id)copyForMerge:(id)arg1;
+- (BOOL)merge:(id)arg1 withDelegate:(id)arg2;
+- (BOOL)merge:(id)arg1;
 - (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
 - (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
 - (id)pasteboardPropertyListForType:(id)arg1;

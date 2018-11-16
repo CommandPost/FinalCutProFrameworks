@@ -6,16 +6,12 @@
 
 #import "NSViewController.h"
 
-@class FFColorBoardImageView, FFColorBoardPanelView, FFColorBoardTabButton, NSView;
+@class FFColorBoardPanelView, LKSegmentedControl, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFColorBoardContentViewController : NSViewController
 {
-    FFColorBoardImageView *_tabBarView;
-    NSView *_tabBarGroupView;
-    FFColorBoardTabButton *_colorTabButton;
-    FFColorBoardTabButton *_saturationTabButton;
-    FFColorBoardTabButton *_exposureTabButton;
+    LKSegmentedControl *_colorSaturationExposureSegmentedControl;
     NSView *_panelContainerView;
     FFColorBoardPanelView *_colorPanel;
     FFColorBoardPanelView *_saturationPanel;
@@ -30,11 +26,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFColorBoardPanelView *saturationPanel; // @synthesize saturationPanel=_saturationPanel;
 @property(retain, nonatomic) FFColorBoardPanelView *colorPanel; // @synthesize colorPanel=_colorPanel;
 @property(retain, nonatomic) NSView *panelContainerView; // @synthesize panelContainerView=_panelContainerView;
-@property(retain, nonatomic) FFColorBoardTabButton *exposureTabButton; // @synthesize exposureTabButton=_exposureTabButton;
-@property(retain, nonatomic) FFColorBoardTabButton *saturationTabButton; // @synthesize saturationTabButton=_saturationTabButton;
-@property(retain, nonatomic) FFColorBoardTabButton *colorTabButton; // @synthesize colorTabButton=_colorTabButton;
-@property(retain, nonatomic) NSView *tabBarGroupView; // @synthesize tabBarGroupView=_tabBarGroupView;
-@property(retain, nonatomic) FFColorBoardImageView *tabBarView; // @synthesize tabBarView=_tabBarView;
+@property(retain, nonatomic) LKSegmentedControl *colorSaturationExposureSegmentedControl; // @synthesize colorSaturationExposureSegmentedControl=_colorSaturationExposureSegmentedControl;
 - (void)resetAllPucks;
 - (void)resetPucksOnCurrentBoard;
 - (void)resetSelectedPuck;
@@ -50,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)adjustViewLayouts;
 - (void)syncToClip;
 - (void)syncToCurrentColorCorrection;
-- (void)changeTabAction:(id)arg1;
+- (void)setColorBoardTab:(id)arg1;
 - (void)notificationHandler:(id)arg1;
 - (void)removeNotificationObservers;
 - (void)addNotificationObservers;

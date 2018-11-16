@@ -26,15 +26,15 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _flowVectorTime;
 }
 
++ (CDStruct_bdcb2b0d)getContextBasedMD5Adjustment:(id)arg1 forEffect:(id)arg2;
 + (_Bool)shouldCheckCacheForTime:(CDStruct_1b6d18a9)arg1 withEffect:(id)arg2 withInputStream:(id)arg3 context:(id)arg4 props:(id)arg5;
 + (id)newFrameInfoForMode:(long long)arg1 effectStreamTime:(CDStruct_1b6d18a9)arg2 untimedTime:(CDStruct_1b6d18a9)arg3 permittedInaccuracy:(CDStruct_1b6d18a9)arg4 withEffect:(id)arg5 effectStream:(id)arg6 context:(id)arg7 downstreamPT:(id)arg8;
 @property(readonly) BOOL proxyForMissingFV; // @synthesize proxyForMissingFV=_proxyForMissingFV;
-- (id).cxx_construct;
-- (id)newImageForFrameWithContext:(id)arg1 downstreamPT:(id)arg2 roi:(const struct CGRect *)arg3 graphBuildInfo:(id)arg4;
+- (id)newImageForFrameWithContext:(id)arg1 schedInfo:(id)arg2 downstreamPT:(id)arg3 roi:(const struct CGRect *)arg4 graphBuildInfo:(id)arg5;
 - (id)_newImageWithFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 inputImage:(id)arg2 graphBuildInfo:(id)arg3 context:(id)arg4;
-- (id)_newOpticalFlowImageWithContext:(id)arg1 downstreamPT:(id)arg2 roi:(const struct CGRect *)arg3 graphBuildInfo:(id)arg4;
-- (id)_newBlendedImageWithContext:(id)arg1 downstreamPT:(id)arg2 roi:(const struct CGRect *)arg3 graphBuildInfo:(id)arg4;
-- (id)newTokensForFrameWithContext:(id)arg1 downstreamPT:(id)arg2;
+- (id)_newOpticalFlowImageWithContext:(id)arg1 schedInfo:(id)arg2 downstreamPT:(id)arg3 roi:(const struct CGRect *)arg4 graphBuildInfo:(id)arg5;
+- (id)_newBlendedImageWithContext:(id)arg1 schedInfo:(id)arg2 downstreamPT:(id)arg3 roi:(const struct CGRect *)arg4 graphBuildInfo:(id)arg5;
+- (id)newTokensForFrameWithContext:(id)arg1 schedInfo:(id)arg2 downstreamPT:(id)arg3;
 - (void)dealloc;
 - (id)initForOpticalFlowFrame:(CDStruct_1b6d18a9)arg1 nextTime:(CDStruct_1b6d18a9)arg2 prevTime:(CDStruct_1b6d18a9)arg3 ratio:(double)arg4 flowVectorTime:(CDStruct_1b6d18a9)arg5 effectStream:(id)arg6 effectStreamTime:(CDStruct_1b6d18a9)arg7 flowRep:(id)arg8;
 - (id)initForBlendedFrame:(CDStruct_1b6d18a9)arg1 nextTime:(CDStruct_1b6d18a9)arg2 prevTime:(CDStruct_1b6d18a9)arg3 ratio:(double)arg4 effectStream:(id)arg5 effectStreamTime:(CDStruct_1b6d18a9)arg6 proxyForMissingFV:(BOOL)arg7;

@@ -4,30 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#pragma mark Blocks
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
-
-struct CATransform3D {
-    double m11;
-    double m12;
-    double m13;
-    double m14;
-    double m21;
-    double m22;
-    double m23;
-    double m24;
-    double m31;
-    double m32;
-    double m33;
-    double m34;
-    double m41;
-    double m42;
-    double m43;
-    double m44;
-};
 
 struct CGPoint {
     double x;
@@ -44,6 +27,13 @@ struct CGSize {
     double height;
 };
 
+struct NSEdgeInsets {
+    double top;
+    double left;
+    double bottom;
+    double right;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -57,6 +47,13 @@ struct _TLKRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
+
+typedef struct {
     long long value;
     int timescale;
     unsigned int flags;
@@ -67,4 +64,10 @@ typedef struct {
     CDStruct_1b6d18a9 start;
     CDStruct_1b6d18a9 duration;
 } CDStruct_e83c9415;
+
+// Ambiguous groups
+typedef struct {
+    unsigned int ignoresHitTesting:1;
+    unsigned int RESERVED:31;
+} CDStruct_f01f341c;
 

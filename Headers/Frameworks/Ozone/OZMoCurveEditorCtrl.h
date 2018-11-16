@@ -6,11 +6,12 @@
 
 #import "OZCurveEditorCtrl.h"
 
+#import "NSMenuDelegate.h"
 #import "NSSplitViewDelegate.h"
 
 @class NSString, NSView, OZCurveEditorModule, OZMoCurveEditorAudioDelegate, OZTimeAxis, OZTimelineModule, OZTimingControlModule, OZTimingCoordinator, OZTimingMarkers;
 
-@interface OZMoCurveEditorCtrl : OZCurveEditorCtrl <NSSplitViewDelegate>
+@interface OZMoCurveEditorCtrl : OZCurveEditorCtrl <NSSplitViewDelegate, NSMenuDelegate>
 {
     OZCurveEditorModule *_pOwner;
     OZTimingMarkers *_timingMarkers;
@@ -35,11 +36,10 @@
 @property(nonatomic) BOOL externalModuleIsSettingDividerPosition; // @synthesize externalModuleIsSettingDividerPosition=_externalModuleIsSettingDividerPosition;
 @property(readonly) struct OZCurveEditorState *curveEditorState; // @synthesize curveEditorState=_curveEditorState;
 @property(readonly) OZMoCurveEditorAudioDelegate *audioDelegate; // @synthesize audioDelegate=_pAudioDelegate;
-- (id).cxx_construct;
 - (BOOL)shouldConstrainToFrames;
 - (void)showHideTimeAxis:(BOOL)arg1;
 - (void)prepareForDraggingTab;
-- (void)findSnaps:(vector_7856d79e *)arg1 forceAllVisible:(BOOL)arg2;
+- (void)findSnaps:(vector_f7e3fd5f *)arg1 forceAllVisible:(BOOL)arg2;
 - (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
@@ -48,7 +48,7 @@
 - (void)magnifyGestureWithEvent:(id)arg1 andFactor:(double)arg2;
 - (void)keyDown:(id)arg1;
 - (void)currentViewVolumeChangedTo:(const struct CGRect *)arg1;
-- (void)displayRangeChangedTo:(CDStruct_5c5366e1)arg1;
+- (void)displayRangeChangedTo:(CDStruct_e83c9415)arg1;
 - (void)notify:(unsigned int)arg1;
 - (void)updateIfModifiedByBehaviors;
 - (void)setAutoZoom:(id)arg1;
@@ -57,12 +57,13 @@
 - (void)setTimeWindowOrigin:(CDStruct_1b6d18a9)arg1 andDuration:(CDStruct_1b6d18a9)arg2;
 - (void)resetDisplayRangeToProjectDuration:(id)arg1;
 - (void)resetDisplayRangeToPlayRange:(id)arg1;
-- (void)setDisplayRange:(CDStruct_5c5366e1)arg1;
+- (void)setDisplayRange:(CDStruct_e83c9415)arg1;
 - (void)setPCDisplayRange:(struct PCTimeRange)arg1;
 - (void)clearCustomCurveSet:(id)arg1;
 - (void)setSnapToTime:(id)arg1;
 - (void)setAutoPan:(id)arg1;
 - (void)frameAll:(id)arg1;
+- (void)setTrackID:(unsigned int)arg1;
 - (void)menuSetTrackID:(id)arg1;
 - (void)setShowAudio:(id)arg1;
 - (void)paste:(id)arg1;

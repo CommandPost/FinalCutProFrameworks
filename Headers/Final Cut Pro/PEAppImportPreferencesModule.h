@@ -4,13 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProPreferencesModule.h"
+#import "LKPreferencesModule.h"
 
 #import "NSOpenSavePanelDelegate.h"
 
-@class LKButton, NSMatrix, NSString;
+@class FFRoleGroupOverridePopupController, LKButton, LKPopUpButton, NSMatrix, NSString;
 
-@interface PEAppImportPreferencesModule : NSProPreferencesModule <NSOpenSavePanelDelegate>
+@interface PEAppImportPreferencesModule : LKPreferencesModule <NSOpenSavePanelDelegate>
 {
     NSMatrix *_importLocationRadioButtonMatrix;
     LKButton *_addFolderKeywordsCheckBox;
@@ -26,14 +26,22 @@
     LKButton *_autoEmptyTracksDetection;
     LKButton *_autoRelatedTracksDetection;
     LKButton *_autoCleanupAudio;
+    LKPopUpButton *_assignRoleGroupPopup;
+    LKButton *_useTrackNamesFromMetadata;
+    FFRoleGroupOverridePopupController *_roleGroupOverridePopupController;
 }
 
+- (void)_rolesInLibraryDidChange:(id)arg1;
+- (void)willBeDisplayed;
+- (void)_updateRoleGroupOverridePopup;
+- (void)roleGroupSelected:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)findPeopleEnabled;
 - (id)titleForIdentifier:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;
 - (BOOL)isResizable;
+- (id)imageForPreferenceNamed:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

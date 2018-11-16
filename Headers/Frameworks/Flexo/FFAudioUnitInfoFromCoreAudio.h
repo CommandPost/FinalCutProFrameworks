@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     struct AudioComponentDescription _description;
     struct OpaqueAudioComponent *_component;
-    int _validationResult;
+    unsigned int _validationResult;
     int _validationStatus;
     BOOL _validationComplete;
     BOOL _validationTimedOut;
@@ -21,12 +21,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)infoForComponent:(struct OpaqueAudioComponent *)arg1;
-- (id).cxx_construct;
 - (BOOL)passedValidation;
 - (BOOL)_validationComplete;
 - (void)_setValidationTimedOut;
-- (void)_setValidationCompleted:(int)arg1 validationResult:(int)arg2;
-- (int)validationResult;
+- (void)_setValidationCompleted:(int)arg1 validationResult:(unsigned int)arg2;
+- (unsigned int)validationResult;
 - (BOOL)sandboxSafe;
 - (void)setConfigurationInfo:(id)arg1;
 - (id)configurationInfo;

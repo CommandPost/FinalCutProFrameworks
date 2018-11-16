@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     FFAnchoredObject *_anchoredObject;
     id <FFLoudnessAnalyzerDelegate> _delegate;
+    int _analysisType;
     BOOL _analysisRunning;
     BOOL _analysisCanceled;
     BOOL _analysisCompleted;
@@ -22,17 +23,19 @@ __attribute__((visibility("hidden")))
     NSLock *_loudnessDataLock;
 }
 
++ (id)performSynchronousAnalysisForAnchoredObject:(id)arg1 analysisType:(int)arg2 progressBlock:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) BOOL analysisCompleted; // @synthesize analysisCompleted=_analysisCompleted;
 @property(readonly, nonatomic) BOOL analysisCanceled; // @synthesize analysisCanceled=_analysisCanceled;
 @property(readonly, nonatomic) BOOL analysisRunning; // @synthesize analysisRunning=_analysisRunning;
 @property(readonly, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObject;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)_analyzeLoudness:(id)arg1 onTask:(id)arg2;
+- (int)_analyzeLoudness:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) FFAudioLoudnessData *loudnessData;
 - (void)startAnalysis;
 - (void)dealloc;
-- (id)initWithAnchoredObject:(id)arg1 delegate:(id)arg2;
+- (id)initWithAnchoredObject:(id)arg1 delegate:(id)arg2 analysisType:(int)arg3;
 
 @end
 

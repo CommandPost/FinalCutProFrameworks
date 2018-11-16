@@ -24,10 +24,11 @@
 - (id)newEffectsWithProject:(id)arg1 forEffectType:(id)arg2 options:(id)arg3;
 - (id)newBinItemsWithProject:(id)arg1 options:(id)arg2;
 - (id)newMediaWithSequence:(id)arg1 fromURL:(char *)arg2 options:(id)arg3;
+- (void)_applyRoleImportOptionsToItems:(id)arg1 inLibrary:(id)arg2;
 - (id)_newMediaWithProject:(id)arg1 andSequence:(id)arg2 fromURL:(char *)arg3 options:(id)arg4;
 - (CDStruct_1b6d18a9)_playheadWithProject:(id)arg1 assetFlags:(int)arg2 options:(id)arg3;
-- (id)_newObjectsWithProject:(id)arg1 assetFlags:(int)arg2 fromURL:(char *)arg3 options:(id)arg4;
-- (id)_newObjectsWithProjectCore:(id)arg1 assetFlags:(int)arg2 fromURL:(char *)arg3 options:(id)arg4;
+- (id)_newObjectsWithProject:(id)arg1 assetFlags:(int)arg2 fromURL:(char *)arg3 options:(id)arg4 userInfoMap:(id *)arg5;
+- (id)_newObjectsWithProjectCore:(id)arg1 assetFlags:(int)arg2 fromURL:(char *)arg3 options:(id)arg4 userInfoMap:(id *)arg5;
 - (void)_addInfo:(id)arg1 infoKey:(id)arg2 forURL:(id)arg3 infoURLInfoDict:(id)arg4;
 - (void)_setCachedFromURL:(BOOL)arg1 forKey:(id)arg2;
 - (BOOL)_cachedFromURLForKey:(id)arg1;
@@ -52,10 +53,12 @@
 - (id)newEffectStacksWithProject:(id)arg1 options:(id)arg2;
 - (id)newKeyframesWithProject:(id)arg1 options:(id)arg2;
 - (id)newMarkersWithProject:(id)arg1 options:(id)arg2;
+- (id)newEditsWithProject:(id)arg1 mediaByReferenceOnly:(BOOL)arg2 options:(id)arg3 userInfoMap:(id *)arg4;
 - (id)newEditsWithProject:(id)arg1 mediaByReferenceOnly:(BOOL)arg2 options:(id)arg3;
 - (BOOL)writeKeyframes:(id)arg1 options:(id)arg2;
 - (BOOL)writeEffectStacks:(id)arg1 options:(id)arg2;
 - (BOOL)writeMarkers:(id)arg1 options:(id)arg2;
+- (BOOL)writeAnchoredObjects:(id)arg1 userInfo:(id)arg2 options:(id)arg3;
 - (BOOL)writeAnchoredObjects:(id)arg1 options:(id)arg2;
 - (BOOL)writeRangesOfMedia:(id)arg1 options:(id)arg2;
 - (BOOL)writeRangesOfMedia:(id)arg1 withPlayhead:(CDStruct_1b6d18a9)arg2 options:(id)arg3;

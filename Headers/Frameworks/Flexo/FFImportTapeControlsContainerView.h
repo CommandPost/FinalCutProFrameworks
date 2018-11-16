@@ -4,19 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
-
-@class NSProThemeFacet;
+#import "NSView.h"
 
 __attribute__((visibility("hidden")))
-@interface FFImportTapeControlsContainerView : NSProView
+@interface FFImportTapeControlsContainerView : NSView
 {
-    NSProThemeFacet *_backgroundFacet;
 }
 
-@property(retain) NSProThemeFacet *backgroundFacet; // @synthesize backgroundFacet=_backgroundFacet;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)dealloc;
 
 @end
 

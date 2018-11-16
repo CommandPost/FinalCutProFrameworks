@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFHGObjectInfo, FFSimpleTextureRecycler, NSMutableArray, Stopwatch;
+@class FFSimpleTextureRecycler, NSMutableArray, Stopwatch;
 
 __attribute__((visibility("hidden")))
 @interface FFImageDisplay : NSObject
@@ -18,10 +18,6 @@ __attribute__((visibility("hidden")))
     BOOL _useNearestNeighbor;
     BOOL _debugDrawing;
     BOOL _detailedDebugInfo;
-    FFHGObjectInfo *_inputNodeInfo;
-    FFHGObjectInfo *_xformNodeInfo;
-    FFHGObjectInfo *_colorMatrixNodeInfo;
-    long long _colorChannelforMatrixNode;
     Stopwatch *_watch;
     unsigned int _frameCount;
     int _interveningDrops;
@@ -30,7 +26,6 @@ __attribute__((visibility("hidden")))
     unsigned int _currentVirtualScreen;
     BOOL _virtualScreenHasBeenSet;
     struct _CGLContextObject *_renderContext;
-    void *_renderer;
     unsigned int _checkerBoardBackgroundTexture;
     struct _CGLContextObject *_overlayContext;
     unsigned int _overlayFBO;
@@ -52,17 +47,17 @@ __attribute__((visibility("hidden")))
     unsigned int _debugTextTexture;
 }
 
++ (id)zebraTrackerPhaseCounter;
 + (struct CGSize)getMaximumDrawingSizeForLocation:(int)arg1;
 + (float)getMaxVRAM:(int)arg1;
 + (struct FFImageDisplayContext *)sharedKVOContext;
 + (BOOL)highQualityViewerScaling;
 @property BOOL detailedDebugInfo; // @synthesize detailedDebugInfo=_detailedDebugInfo;
-- (id).cxx_construct;
-- (BOOL)drawImageHe:(id)arg1 CGLContext:(struct _CGLContextObject *)arg2 colorSpace:(struct CGColorSpace *)arg3 viewBounds:(struct CGRect)arg4 drawRect:(struct CGRect)arg5 imageSourceRect:(struct CGRect)arg6 angleSourceRects:(struct CGRect *)arg7 angleDrawRects:(struct CGRect *)arg8 angleCount:(long long)arg9 lockedContext:(char *)arg10 drawInterlaced:(BOOL)arg11 drawFieldsAlternately:(BOOL)arg12 overlayTextureBuffer:(id)arg13 forThumbnail:(BOOL)arg14 playbackQuality:(int)arg15 fieldType:(unsigned int)arg16 howLate:(double)arg17 backgroundColor:(id)arg18;
+- (BOOL)drawImageHe:(id)arg1 CGLContext:(struct _CGLContextObject *)arg2 colorSpace:(struct CGColorSpace *)arg3 viewBounds:(struct CGRect)arg4 drawRect:(struct CGRect)arg5 imageSourceRect:(struct CGRect)arg6 angleSourceRects:(struct CGRect *)arg7 angleDrawRects:(struct CGRect *)arg8 angleCount:(long long)arg9 lockedContext:(char *)arg10 drawInterlaced:(BOOL)arg11 drawFieldsAlternately:(BOOL)arg12 overlayTextureBuffer:(id)arg13 forThumbnail:(BOOL)arg14 playbackQuality:(int)arg15 fieldType:(unsigned int)arg16 howLate:(double)arg17 backgroundColor:(id)arg18 zebraMode:(unsigned int)arg19 backingScale:(float)arg20;
 - (unsigned int)drawInterlacedFrameToContext:(struct _CGLContextObject *)arg1 textureID:(unsigned int)arg2 fieldRect:(struct CGRect)arg3 fieldType:(unsigned int)arg4 imageIsUpright:(BOOL)arg5;
 - (void)setupFBOForInterlacing:(struct _CGLContextObject *)arg1 drawRect:(struct CGRect)arg2;
 - (unsigned int)makeNewStencilBufferForContext:(struct _CGLContextObject *)arg1 fbo:(unsigned int)arg2 drawRect:(struct CGRect)arg3 fieldOffset:(float)arg4;
-- (id)newHGGLTextureForImage:(id)arg1 virtualScreen:(int)arg2 context:(struct _CGLContextObject *)arg3 outputSize:(struct CGSize)arg4 colorChannelDisplayMode:(long long)arg5;
+- (id)newHGGLTextureForImage:(id)arg1 virtualScreen:(int)arg2 outputSize:(struct CGSize)arg3 colorChannelDisplayMode:(long long)arg4 zebraMode:(unsigned int)arg5 zebraScale:(float)arg6;
 - (void)updateObservedValuesForContext:(void *)arg1;
 - (void)setColorChannelDisplayMode:(long long)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

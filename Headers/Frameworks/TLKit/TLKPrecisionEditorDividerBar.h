@@ -10,7 +10,9 @@
 {
 }
 
-+ (id)backgroundThemeFacet;
++ (double)heightOfBar;
+- (id)init;
+- (id)nameForRootLayerMicaArchive;
 
 @end
 

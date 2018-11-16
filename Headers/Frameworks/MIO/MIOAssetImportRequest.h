@@ -10,7 +10,7 @@
 
 @interface MIOAssetImportRequest : NSObject
 {
-    struct OpaqueCMByteStream *_byteStream;
+    id _asset;
     CDStruct_e83c9415 _importRange;
     NSString *_clipID;
     NSString *_fileName;
@@ -41,10 +41,10 @@
 @property(readonly, copy) NSString *fileName; // @synthesize fileName=_fileName;
 @property(readonly, copy) NSString *clipID; // @synthesize clipID=_clipID;
 @property(readonly) CDStruct_e83c9415 importRange; // @synthesize importRange=_importRange;
-@property(readonly) struct OpaqueCMByteStream *byteStream; // @synthesize byteStream=_byteStream;
+@property(readonly, retain) id asset; // @synthesize asset=_asset;
 - (id)generateDestinationFilePathUsingTempFileExtension:(BOOL)arg1;
 - (void)dealloc;
-- (id)initWithByteStream:(struct OpaqueCMByteStream *)arg1 importRange:(CDStruct_e83c9415)arg2 clipID:(id)arg3 fileName:(id)arg4 destinationDirectoryPath:(id)arg5 tempFileExtension:(id)arg6 cameraName:(id)arg7 userData:(id)arg8;
+- (id)initWithAsset:(id)arg1 importRange:(CDStruct_e83c9415)arg2 clipID:(id)arg3 fileName:(id)arg4 destinationDirectoryPath:(id)arg5 tempFileExtension:(id)arg6 cameraName:(id)arg7 userData:(id)arg8;
 
 @end
 

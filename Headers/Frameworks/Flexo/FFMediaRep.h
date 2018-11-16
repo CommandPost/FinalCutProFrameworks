@@ -10,7 +10,7 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFAsset, FFAssetFileIdentifier, NSArray, NSMutableDictionary, NSString, NSURL;
+@class FFAsset, FFAssetFileIdentifier, FFMediaRepDownloadTask, NSArray, NSMutableDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaRep : FFBaseDSObject <NSCoding, NSCopying, FFMetadataProtocol>
@@ -28,9 +28,18 @@ __attribute__((visibility("hidden")))
     id _syncInfo;
     int _lastModifiedFileDate;
     NSArray *_additionalLocalFilenames;
+    int _downloadState;
+    NSURL *_downloadURL;
+    FFMediaRepDownloadTask *_mediaRepDownloadTask;
 }
 
++ (BOOL)syncBookmarkData:(id)arg1 forceUpdate:(BOOL)arg2 usingLock:(id)arg3;
++ (BOOL)syncBookmarkData:(id)arg1 forceUpdate:(BOOL)arg2;
++ (BOOL)initBookmarkData:(id)arg1 forceUpdate:(BOOL)arg2;
++ (int)syncWithMedia:(id)arg1 options:(unsigned long long)arg2 needsUpdate:(char *)arg3 error:(id *)arg4;
 + (int)syncStatusCount;
++ (void)incrementSyncStatusCount;
++ (int)checkSyncStatus:(id)arg1 syncInfo:(id)arg2 error:(id *)arg3;
 + (struct NSObject *)readSyncInfo:(id)arg1 error:(id *)arg2;
 + (id)uniqueExternalURLWithMediaRepType:(id)arg1 tempMediaURL:(id)arg2 srcMediaIdentifier:(id)arg3 proposedDstDirectoryURL:(id)arg4 dstFileName:(id)arg5 createdSymlink:(char *)arg6 error:(id *)arg7;
 + (id)createLinkToExistingExternalMediaRepType:(id)arg1 fileName:(id)arg2 forAsset:(id)arg3;
@@ -48,12 +57,21 @@ __attribute__((visibility("hidden")))
 + (id)baseFilenameFromURL:(id)arg1 fcpTag:(BOOL)arg2;
 + (id)filenameFromURL:(id)arg1;
 + (id)extensionFromURL:(id)arg1;
++ (id)localFilenameFromAdditionalFilename:(id)arg1;
 + (id)_adjustedAssetPath:(id)arg1 originalURL:(id)arg2;
 + (id)organizeStateStringFor:(int)arg1;
 + (id)_repTypeToFolderString:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property(readonly, nonatomic) int lastModifiedFileDate; // @synthesize lastModifiedFileDate=_lastModifiedFileDate;
+@property(nonatomic) int downloadState; // @synthesize downloadState=_downloadState;
+@property(retain, nonatomic) NSURL *downloadURL; // @synthesize downloadURL=_downloadURL;
 @property(readonly, nonatomic) BOOL showRepAsMissing; // @synthesize showRepAsMissing=_showRepAsMissing;
+- (void)resetDownloadTask;
+- (void)pauseDownload;
+- (void)downloadMediaIfMissing;
+- (void)performDownload:(id)arg1;
+- (void)postDownloadUpdate:(id)arg1;
 - (void)consolidateGPSMetadata;
 - (void)setMetadataContentCreated:(id)arg1;
 - (id)metadataContentCreated;
@@ -68,30 +86,27 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)mergeMetadataToMediaRep:(id)arg1 except:(id)arg2 include:(id)arg3;
 - (void)mergeMetadataToMediaRep:(id)arg1;
 - (void)setupProjectRelativeFileNamed:(id)arg1 manageFileType:(int)arg2 project:(id)arg3 externalFolderURL:(id)arg4 foundExistingFile:(char *)arg5;
 - (void)organizeIntoEvent:(id)arg1;
 @property(readonly, nonatomic) BOOL mediaAvailable;
 @property(readonly, nonatomic) int syncStatus;
 - (void)setSyncStatus:(int)arg1;
-- (BOOL)syncBookmarkData:(id)arg1 forceUpdate:(BOOL)arg2;
 - (void)purgeBookmarkData;
 - (id)bookmarkData;
 - (void)setBookmarkData:(id)arg1;
-- (int)syncWithMedia:(id)arg1 options:(unsigned long long)arg2 needsUpdate:(char *)arg3 error:(id *)arg4;
 - (BOOL)isRMD;
 - (BOOL)usingSubfolder;
 - (BOOL)_updateLastModifiedFileDate:(int)arg1;
 - (BOOL)updateSyncStatus:(int)arg1;
-- (int)checkSyncStatus:(id)arg1 error:(id *)arg2;
 - (BOOL)_initSyncInfo:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSString *md5Seed;
-- (BOOL)verifyFileContentIdentical;
+- (BOOL)verifyFileContentIdentical:(id)arg1;
 - (id)fileTypes;
 @property(readonly, nonatomic) NSArray *fileURLs;
 @property(readonly, nonatomic) NSURL *fileURL;
 - (id)assetFileIDForCopy;
-- (id)localFilenameFromAdditionalFilename:(id)arg1;
 - (id)additionalLocalFilenames;
 @property(readonly, nonatomic) NSArray *additionalFilenames;
 - (id)fileName;
@@ -107,8 +122,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithFileURL:(id)arg1 media:(id)arg2 repType:(id)arg3 manageFileType:(int)arg4 project:(id)arg5 showRepAsMissing:(BOOL)arg6;
 - (id)_projectRelativePathForURL:(id)arg1 recommendedName:(id)arg2 project:(id)arg3 usingExternalMedia:(BOOL)arg4;
 - (void)_checkCreationDate:(id)arg1;
-- (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2 copyQueued:(char *)arg3;
-- (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2 externalFolderURL:(id)arg3 copyQueued:(char *)arg4;
+- (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2 copyQueued:(char *)arg3 withLock:(BOOL)arg4;
+- (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2 externalFolderURL:(id)arg3 copyQueued:(char *)arg4 withLock:(BOOL)arg5;
 - (id)proposedExternalDirectoryURLWithSourceURL:(id)arg1 project:(id)arg2 proposedFileName:(id *)arg3;
 - (void)setPersistentFileURL:(id)arg1;
 - (id)persistentFileURL;

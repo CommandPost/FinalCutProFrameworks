@@ -15,11 +15,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) NSImage *image; // @synthesize image=_image;
+- (id)hitTest:(struct CGPoint)arg1;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)awakeFromNib;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

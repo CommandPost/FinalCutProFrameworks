@@ -6,7 +6,7 @@
 
 #import <MIO/MIOObject.h>
 
-@class MIOConfigurationManager, MIOOutputDevice, MIOPreviewView;
+@class MIOConfigurationManager, MIOOutputDevice, MIOPreviewView, NSLock;
 
 @interface MIOOutputCore : MIOObject
 {
@@ -14,6 +14,7 @@
     MIOOutputDevice *mOutputDevice;
     MIOPreviewView *mPreviewView;
     id mDelegate;
+    NSLock *mDelegateLock;
 }
 
 + (id)core;
@@ -23,6 +24,7 @@
 - (BOOL)printToTape:(unsigned int)arg1;
 - (void)outputDroppedFrames:(id)arg1;
 - (void)outputReachedEndOfData:(id)arg1;
+- (id)delegateLock;
 - (id)delegate;
 - (void)setDelegate:(id)arg1;
 @property(retain) MIOPreviewView *previewView;

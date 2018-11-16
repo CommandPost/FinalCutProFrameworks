@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
     CDStruct_554002f2 _action_opt;
 }
 
-- (id).cxx_construct;
 - (id)actionForKey:(id)arg1;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

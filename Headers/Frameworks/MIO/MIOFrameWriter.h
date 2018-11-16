@@ -6,17 +6,17 @@
 
 #import "NSObject.h"
 
-@class NSString;
+@class NSURL;
 
 @interface MIOFrameWriter : NSObject
 {
-    NSString *_outputPath;
+    NSURL *_outputURL;
 }
 
 + (id)frameWriter;
-@property(retain) NSString *outputPath; // @synthesize outputPath=_outputPath;
+@property(retain) NSURL *outputURL; // @synthesize outputURL=_outputURL;
 - (void)writeFrameToFile:(id)arg1 usingCMSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
-- (void)writeFrameToFile:(id)arg1 atPresentationTime:(CDStruct_1b6d18a9)arg2 usingFormatReader:(struct OpaqueFigFormatReader *)arg3 byteStream:(struct OpaqueCMByteStream *)arg4;
+- (void)writeFrameToFile:(id)arg1 atPresentationTime:(CDStruct_1b6d18a9)arg2 usingAsset:(id)arg3;
 - (void)writeFrameToFile:(id)arg1 atPresentationTime:(CDStruct_1b6d18a9)arg2 usingMovie:(id)arg3;
 - (void)dealloc;
 

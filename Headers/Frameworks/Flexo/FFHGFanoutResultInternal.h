@@ -6,13 +6,12 @@
 
 #import <Flexo/FFHGAsyncFanoutResult.h>
 
-@class FFHGAsyncFanoutJob, FFHGAsyncQueue, FFPixelBuffer, FFPixelFormat, FFTextureBuffer, PCMatrix44Double;
+@class FFHGAsyncFanoutJob, FFHGAsyncQueue, FFImageAbsoluteOutputFormat, FFPixelBuffer, FFTextureBuffer, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFHGFanoutResultInternal : FFHGAsyncFanoutResult
 {
-    FFPixelFormat *_pf;
-    struct CGColorSpace *_cs;
+    FFImageAbsoluteOutputFormat *_format;
     int _location;
     struct HGRect _roi;
     PCMatrix44Double *_pt;
@@ -27,8 +26,10 @@ __attribute__((visibility("hidden")))
     double _bufferCopyTime;
     BOOL _dithered;
     int _bg;
+    unsigned int _zebraAnalysisMode;
 }
 
+@property(readonly) unsigned int zebraAnalysisMode; // @synthesize zebraAnalysisMode=_zebraAnalysisMode;
 @property(readonly) int bg; // @synthesize bg=_bg;
 @property(readonly) BOOL dithered; // @synthesize dithered=_dithered;
 @property double bufferCopyTime; // @synthesize bufferCopyTime=_bufferCopyTime;
@@ -36,9 +37,7 @@ __attribute__((visibility("hidden")))
 @property int processingState; // @synthesize processingState=_processingState;
 @property(readonly) PCMatrix44Double *pt; // @synthesize pt=_pt;
 @property(readonly) struct HGRect roi; // @synthesize roi=_roi;
-@property(readonly) struct CGColorSpace *cs; // @synthesize cs=_cs;
-@property(readonly) FFPixelFormat *pf; // @synthesize pf=_pf;
-- (id).cxx_construct;
+@property(readonly) FFImageAbsoluteOutputFormat *format; // @synthesize format=_format;
 - (id)newImage;
 - (struct HGRenderNode *)renderNode;
 - (void)setRenderNode:(struct HGRenderNode *)arg1;
@@ -51,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)_nodeDidFinish;
 - (void)dealloc;
-- (id)initWithPF:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 location:(int)arg3 roi:(struct HGRect)arg4 pixelTransform:(id)arg5 field:(unsigned int)arg6 dithered:(BOOL)arg7 background:(int)arg8;
+- (id)initWithFormat:(id)arg1 location:(int)arg2 roi:(struct HGRect)arg3 pixelTransform:(id)arg4 field:(unsigned int)arg5 dithered:(BOOL)arg6 background:(int)arg7 zebraMode:(unsigned int)arg8;
 
 @end
 

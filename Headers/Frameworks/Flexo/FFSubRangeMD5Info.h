@@ -29,6 +29,7 @@
     NSDictionary *_flagDetails;
 }
 
++ (_Bool)plistIsSubjectTo25854435:(id)arg1;
 + (void)mergeFlagDetails:(id)arg1 into:(id *)arg2;
 + (CDStruct_bdcb2b0d)adjustedMD5ForTemporalInaccuracy:(CDStruct_1b6d18a9)arg1 fromBaseMD5:(CDStruct_bdcb2b0d)arg2 isConstantOffset:(_Bool)arg3;
 @property(readonly, retain, nonatomic) NSDictionary *flagDetails; // @synthesize flagDetails=_flagDetails;

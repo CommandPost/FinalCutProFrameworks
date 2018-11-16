@@ -9,19 +9,18 @@
 #import "NSMenuDelegate.h"
 #import "NSUserInterfaceValidations.h"
 
-@class FFFileSet, NSArray, NSMenu, NSMutableSet, NSString;
+@class FFFileSet, NSArray, NSMenu, NSString;
 
 @interface FFWorkspace : NSObject <NSMenuDelegate, NSUserInterfaceValidations>
 {
-    FFFileSet *_recentFileSet;
     NSMenu *_recentsMenu;
     NSMenu *_closeMenu;
     NSMenu *_copyToLibraryMenu;
     NSMenu *_moveToLibraryMenu;
     NSArray *_tagNames;
-    NSMutableSet *_documentsUpgradedAtLaunch;
     BOOL _closingDocumentsForAppTermination;
     BOOL _isRestoringDocuments;
+    FFFileSet *_recentFileSet;
 }
 
 + (id)defaultWorkspace;
@@ -42,15 +41,18 @@
 - (id)uniqueLibraryName:(id)arg1;
 - (id)defaultLibraryName;
 - (id)chooseNewLibraryLocation:(id)arg1 tagNames:(id *)arg2;
-- (BOOL)restoreActiveDocuments:(BOOL)arg1 error:(id *)arg2;
-- (void)restoreDocuments:(BOOL)arg1 urls:(id)arg2;
+- (BOOL)restoreActiveDocuments:(BOOL)arg1 mustRestore:(BOOL)arg2 error:(id *)arg3;
+- (void)restoreDocuments:(BOOL)arg1 urls:(id)arg2 mustRestore:(BOOL)arg3;
 - (BOOL)isRestoringDocuments;
 - (id)recentDocumentURLs;
 - (id)recentFileSet;
 - (void)noteNewRecentDocumentURL:(id)arg1;
+- (void)_saveRecentFileSet;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)clearRecentDocuments:(id)arg1;
 - (void)closeRecent:(id)arg1;
 - (void)openRecent:(id)arg1;
+- (void)closeLibrary:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)closeLibrary:(id)arg1;
 - (void)openLibrary:(id)arg1;
 - (void)document:(id)arg1 shouldClose:(BOOL)arg2 withBlock:(void *)arg3;
@@ -70,7 +72,6 @@
 - (void)_documentController:(id)arg1 didCloseAll:(BOOL)arg2 contextInfo:(void *)arg3;
 - (void)_rememberActiveDocuments;
 - (void)_rememberActiveDocumentsSoon;
-- (id)documentsUpgradedAtLaunch;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1;
 - (id)init;

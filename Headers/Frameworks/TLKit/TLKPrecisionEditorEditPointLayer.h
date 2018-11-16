@@ -10,8 +10,7 @@
 {
 }
 
-+ (id)transitionThemeFacet;
-+ (id)editPointThemeFacet;
+- (id)nameForRootLayerMicaArchive;
 
 @end
 

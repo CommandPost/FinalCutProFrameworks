@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_dummyIntrinsics;
 }
 
+- (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)effectStack;
 - (BOOL)sender:(id)arg1 willSetChannel:(id)arg2;
 - (id)effectsToDisplay;

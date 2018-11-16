@@ -15,9 +15,10 @@
 - (id)currentUser;
 - (BOOL)requiresLogin;
 - (id)iconTitle;
-- (long long)iconIndex;
 - (id)lightImage;
+- (id)smallImage;
 - (id)largeImage;
+- (id)pressedImage;
 - (id)image;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

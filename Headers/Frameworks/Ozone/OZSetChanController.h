@@ -11,7 +11,7 @@
 @interface OZSetChanController : OZChooseChanController
 {
     NSTextField *_pTF;
-    struct list<OZSingleChannelBehavior *, std::allocator<OZSingleChannelBehavior *>> *_pSingleChanBHs;
+    struct list<OZSingleChannelBehavior *, std::__1::allocator<OZSingleChannelBehavior *>> *_pSingleChanBHs;
 }
 
 - (id)getStringForExcludeFlags:(unsigned int)arg1;
@@ -26,7 +26,7 @@
 - (void)enable;
 - (void)update;
 - (void)dealloc;
-- (id)initWithBehaviors:(list_fc228e28 *)arg1 context:(id)arg2;
+- (id)initWithBehaviors:(list_de2015bc *)arg1 context:(id)arg2;
 
 @end
 

@@ -13,6 +13,8 @@
 @interface PEDataListContainerModule : LKViewModule <FFDataListDelegate>
 {
     FFDataListModule *_dataList;
+    BOOL _hiddenAfterLayout;
+    struct CGRect _desiredFrameAfterLayout;
     LKPaneCapView *topBar;
 }
 
@@ -25,6 +27,7 @@
 - (void)sequenceDidChange:(id)arg1;
 - (id)contentLayoutDictionary;
 - (void)takeContentLayoutFromDictionary:(id)arg1;
+- (void)displayPostAutoLayout;
 - (id)firstKeyView;
 - (BOOL)wantsFooterBar;
 - (BOOL)wantsHeaderBar;

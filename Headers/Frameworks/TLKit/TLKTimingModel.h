@@ -35,12 +35,14 @@
 - (unsigned long long)numberOfTimeSegments;
 - (void)enumerateTimeSegmentsInRange:(struct _TLKRange)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (CDStruct_1b6d18a9)timePerPointAtLocation:(double)arg1;
+- (struct _TLKRange)locationRangeForTimeInSeconds:(double)arg1;
 - (struct _TLKRange)locationRangeForTime:(CDStruct_1b6d18a9)arg1;
-- (struct _TLKRange)_locationRangeForTime:(CDStruct_1b6d18a9)arg1 inSpineItemAtIndex:(unsigned long long)arg2;
-- (struct _NSRange)_rangeOfTimeSegmentsAtTime:(CDStruct_1b6d18a9)arg1;
+- (struct _TLKRange)_locationRangeForTimeInSeconds:(double)arg1 inSpineItemAtIndex:(unsigned long long)arg2;
+- (struct _NSRange)_rangeOfTimeSegmentsAtTimeInSeconds:(double)arg1;
 - (struct _NSRange)_linearSearchForRangeOfTimeSegmentsAtTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)useTrimmingAdjustment;
 - (struct _TLKRange)_mappedLocationRange;
+- (void)reset;
 - (void)reloadWithContainer:(id)arg1 inLayoutDatabase:(id)arg2;
 - (void)setLocationRange:(struct _TLKRange)arg1 forTimeSegmentAtIndex:(unsigned long long)arg2;
 - (struct _TLKRange)locationRangeForTimeSegmentAtIndex:(unsigned long long)arg1;

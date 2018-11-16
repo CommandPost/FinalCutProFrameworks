@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     BOOL _requestedIcon;
 }
 
++ (void)setupLayoutConstants:(id)arg1;
++ (id)textLayerFont;
 @property(readonly) CALayer *skimmingLayer; // @synthesize skimmingLayer=_iconLayer;
 @property(nonatomic) BOOL selected; // @synthesize selected=_selected;
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
@@ -32,10 +34,15 @@ __attribute__((visibility("hidden")))
 - (void)addFavoriteAudioEffect:(id)arg1;
 - (void)removeFavoriteVideoEffect:(id)arg1;
 - (void)addFavoriteVideoEffect:(id)arg1;
+- (void)addDefaultGeneratorSet:(id)arg1;
+- (void)addDefaultLowerTitleSet:(id)arg1;
+- (void)addDefaultTitleSet:(id)arg1;
 - (void)addDefaultAudioEffectSet:(id)arg1;
 - (void)addDefaultVideoEffectSet:(id)arg1;
 - (void)openEffectInEditor:(id)arg1;
 - (void)revealInFinder:(id)arg1;
+- (void)installTemplate:(id)arg1;
+- (id)urlForEffectID:(id)arg1;
 - (id)menu;
 - (void)beginDraggingEffectIcon:(id)arg1;
 - (id)dragImage;

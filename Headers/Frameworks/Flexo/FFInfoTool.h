@@ -6,11 +6,12 @@
 
 #import <Flexo/FFAdjustmentTool.h>
 
+#import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKPopOverWindow, LKTextField, NSArray, NSButton, NSDateFormatter, NSImageView, NSString, NSView;
+@class LKTextField, NSArray, NSButton, NSDateFormatter, NSImageView, NSPopover, NSString, NSView;
 
-@interface FFInfoTool : FFAdjustmentTool <NSWindowDelegate>
+@interface FFInfoTool : FFAdjustmentTool <NSWindowDelegate, NSPopoverDelegate>
 {
     NSView *_adjustmentToolbarView;
     NSView *_infoView;
@@ -34,12 +35,16 @@
     CDStruct_1b6d18a9 _infoMaxDurationValue;
     NSDateFormatter *_dateFormatter;
     NSView *_currentView;
-    LKPopOverWindow *_sharePopoverWindow;
+    NSPopover *_sharePopover;
 }
 
 + (id)toolTip;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;
@@ -50,9 +55,8 @@
 @property(retain, nonatomic) NSImageView *eventClipInfoClipIcon; // @synthesize eventClipInfoClipIcon=_eventClipInfoClipIcon;
 - (void)_firstResponderChanged:(id)arg1;
 - (void)updateInfoDuration:(id)arg1;
-- (void)popOverWindowDidCancel:(id)arg1;
+- (void)popoverDidClose:(id)arg1;
 - (void)shareHistory:(id)arg1;
-- (void)sharePopoverWindowDidResignKey:(id)arg1;
 - (void)setAdjustmentStateFromDictionary:(id)arg1;
 - (id)adjustmentsToolbarView;
 - (id)newAdjustmentDictionaryForSelection:(id)arg1;

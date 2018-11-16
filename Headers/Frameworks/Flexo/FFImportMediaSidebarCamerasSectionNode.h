@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)updateChildNodes;
 - (id)_copyCameraSectionRepresentedObjects;
 - (id)title;
+- (id)titleFont:(BOOL)arg1;
 - (void)dealloc;
 - (id)init;
 

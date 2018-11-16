@@ -56,7 +56,6 @@
 + (Class)CKDVDExportPanelClass;
 + (Class)CKCreateDiscJobActionClass;
 + (Class)CKCNNJobActionClass;
-+ (Class)CKCNNExportPanelClass;
 + (Class)CKClusterBrowserClass;
 + (Class)CKClusterClass;
 + (Class)CKBluerayJobActionClass;

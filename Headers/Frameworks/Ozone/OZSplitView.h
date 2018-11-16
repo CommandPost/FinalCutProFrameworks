@@ -11,6 +11,7 @@
 }
 
 - (id)dividerColor;
+- (id)delegate;
 
 @end
 

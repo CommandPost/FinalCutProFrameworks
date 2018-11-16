@@ -20,8 +20,8 @@
 + (id)taskSerializationGroup;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)moveRequestToFrontOfQueue:(id)arg1;
 - (void)enqueueRequest:(id)arg1;
 - (void)_waitForBGTaskToFinish;

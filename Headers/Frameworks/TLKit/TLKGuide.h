@@ -6,13 +6,13 @@
 
 #import "NSObject.h"
 
-@class CALayer, NSMutableArray, NSProColor, TLKGuideLayer;
+@class CALayer, NSColor, NSMutableArray, TLKGuideLayer;
 
 @interface TLKGuide : NSObject
 {
     id _owner;
-    NSProColor *_backgroundColor;
-    NSProColor *_foregroundColor;
+    NSColor *_backgroundColor;
+    NSColor *_foregroundColor;
     TLKGuideLayer *_layer;
     CALayer *_backgroundLayer;
     NSMutableArray *_parts;
@@ -25,8 +25,8 @@
 @property id owner; // @synthesize owner=_owner;
 - (struct CGRect)frameForPart:(id)arg1;
 @property CDStruct_1b6d18a9 time; // @dynamic time;
-@property NSProColor *foregroundColor; // @dynamic foregroundColor;
-@property NSProColor *backgroundColor; // @dynamic backgroundColor;
+@property NSColor *foregroundColor; // @dynamic foregroundColor;
+@property NSColor *backgroundColor; // @dynamic backgroundColor;
 - (void)dealloc;
 - (id)initWithLayer:(id)arg1;
 

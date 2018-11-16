@@ -18,6 +18,7 @@
     BOOL _selectionHasAudio;
     BOOL _playing;
     FFContext *_observedContext;
+    BOOL _projectFilterMode;
 }
 
 + (id)displayNameForCell:(int)arg1;
@@ -28,12 +29,17 @@
 + (int)audioCellForEffect:(id)arg1;
 + (id)videoEffectIDs;
 + (id)toolTip;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;
 + (id)groups;
+@property(nonatomic) BOOL projectFilterMode; // @synthesize projectFilterMode=_projectFilterMode;
 - (void)runModalAudioEffectPicker:(id)arg1;
 - (int)_audioCellForEffect:(id)arg1;
 - (void)timeRateChangedForContext:(id)arg1;

@@ -6,18 +6,21 @@
 
 #import <Flexo/FFEventsDetailModule.h>
 
-@class FFGrayBackgroundView, FFImportTapeControlsContainerView, FFImportTapeDevice, FFImportTapePreviewTimecodeLayer, FFMIODeviceConnection, LKButton, LKSegmentedControl, MIOCaptureCore, MIOPreviewView, NSProView, NSTimer;
+@class FFGrayBackgroundView, FFImportTapeControlsContainerView, FFImportTapeDevice, FFImportTapePreviewTimecodeLayer, FFMIODeviceConnection, LKButton, MIOCaptureCore, MIOPreviewView, NSTimer, NSView;
 
 @interface FFImportTapeModule : FFEventsDetailModule
 {
     MIOPreviewView *_previewView;
     FFGrayBackgroundView *_previewViewContainerView;
     FFImportTapePreviewTimecodeLayer *_previewTimecodeLayer;
-    NSProView *_footerView;
-    NSProView *_transportControlsFooterView;
-    LKSegmentedControl *_playControl;
-    LKSegmentedControl *_previousNextFrameControl;
-    LKSegmentedControl *_previousNextEditControl;
+    NSView *_footerView;
+    NSView *_transportControlsFooterView;
+    LKButton *_playPauseButton;
+    LKButton *_stopButton;
+    LKButton *_previousFrameButton;
+    LKButton *_nextFrameButton;
+    LKButton *_previousEditButton;
+    LKButton *_nextEditButton;
     LKButton *_iMovieiSightRecordButton;
     FFImportTapeControlsContainerView *_iMovieTransportControlsContainerView;
     LKButton *_iMoviePlayPauseButton;
@@ -38,8 +41,6 @@
 }
 
 + (id)defaultModuleNibName;
-+ (id)viewTypeMenuGlyph;
-+ (id)viewTypeMenuLabel;
 @property(retain) FFMIODeviceConnection *deviceConnection; // @synthesize deviceConnection=_deviceConnection;
 @property(retain) FFImportTapePreviewTimecodeLayer *previewTimecodeLayer; // @synthesize previewTimecodeLayer=_previewTimecodeLayer;
 @property MIOCaptureCore *captureCore; // @synthesize captureCore=_captureCore;
@@ -54,7 +55,7 @@
 - (void)recordiSight:(id)arg1;
 - (void)previousNextEdit:(id)arg1;
 - (void)previousNextFrame:(id)arg1;
-- (void)playSegmentedControlAction:(id)arg1;
+- (void)stop:(id)arg1;
 - (void)playRateMinus32X:(id)arg1;
 - (void)playRateMinus16X:(id)arg1;
 - (void)playRateMinus8X:(id)arg1;

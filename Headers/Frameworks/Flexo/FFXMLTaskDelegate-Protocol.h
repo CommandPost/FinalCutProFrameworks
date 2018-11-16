@@ -4,15 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+#import "FFMergeTaskDelegate.h"
 #import "NSObject.h"
 
-@class FFLibrary, NSURL;
+@class FFXMLTranslationOptions, NSString, NSURL;
 
-@protocol FFXMLTaskDelegate <NSObject>
+@protocol FFXMLTaskDelegate <NSObject, FFMergeTaskDelegate>
 
 @optional
+@property(copy) FFXMLTranslationOptions *options;
+- (void)advanceTaskType;
+- (BOOL)foriMovie;
+- (BOOL)showLibraryColorProcessingModeConfirmationAlert:(NSString *)arg1 libraryMode:(int)arg2 importingMode:(int)arg3 error:(id *)arg4;
+- (BOOL)chooseLibraryForImport:(NSURL *)arg1 error:(id *)arg2;
 - (void)setForiMovie;
-- (FFLibrary *)runLibraryChooser:(NSURL *)arg1 importFileURL:(NSURL *)arg2 libraryIsNew:(char *)arg3 error:(id *)arg4;
 - (BOOL)userCancelled;
 - (void)hideProgressWindow;
 - (void)showProgressWindow;

@@ -36,7 +36,6 @@
 }
 
 @property(readonly) int firstSample; // @synthesize firstSample=_firstSample;
-- (id).cxx_construct;
 - (id)pixelTransformFromIndex:(unsigned long long)arg1;
 - (unsigned long long)pixelTransformIndexFromMatrix:(id)arg1 retAddedPT:(char *)arg2;
 - (id)copyFrameDataFileForSampleNumber:(int)arg1 createFile:(BOOL)arg2;

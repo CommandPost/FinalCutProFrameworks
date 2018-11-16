@@ -9,13 +9,15 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class NSString, TLKThemeBackedLayer;
+@class NSDictionary, NSString, TLKImageLayer, TLKTimelineView;
 
 @interface TLKPlayheadMarker : TLKAccessibilityLayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
-    TLKThemeBackedLayer *_head;
-    TLKThemeBackedLayer *_body;
-    long long _playheadState;
+    NSDictionary *_imagesForStates;
+    NSDictionary *_playheadDotImagesForStates;
+    TLKImageLayer *_playhead;
+    TLKImageLayer *_playheadDot;
+    int _playheadState;
     struct {
         unsigned int skimmingPlayhead:1;
         unsigned int skimming:1;
@@ -23,8 +25,15 @@
         unsigned int isPlaying:1;
         unsigned int reserved:28;
     } _pmFlags;
+    long long _playheadFocus;
+    double _rulerBottom;
 }
 
++ (id)_newPlayheadDotImagesForState:(int)arg1;
++ (id)_newImagesForState:(int)arg1;
+@property(retain, nonatomic) TLKImageLayer *playheadDot; // @synthesize playheadDot=_playheadDot;
+@property(nonatomic) double rulerBottom; // @synthesize rulerBottom=_rulerBottom;
+@property(nonatomic) long long playheadFocus; // @synthesize playheadFocus=_playheadFocus;
 - (BOOL)accessibilityIsIgnored;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
@@ -32,21 +41,23 @@
 - (id)accessibilityRole;
 - (struct CGRect)accessibilityRect;
 - (struct CGRect)elementFrame;
-@property BOOL snapped;
-@property BOOL skimming;
-@property BOOL skimmingPlayhead;
-@property long long playheadState;
-@property BOOL playing;
+@property(nonatomic) BOOL snapped;
+@property(nonatomic) BOOL skimming;
+@property(nonatomic) BOOL skimmingPlayhead;
+@property(nonatomic) int playheadState;
+@property(nonatomic) BOOL playing;
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)partIdentifier;
-- (void)layoutSublayers;
 - (struct CGRect)playheadFrame;
-- (void)setPosition:(struct CGPoint)arg1;
-- (id)init;
+- (void)updatePlayheadDotWithClipFrame:(struct CGRect)arg1;
 - (void)updatePlayhead;
-- (void)setDelegate:(id)arg1;
+- (void)updatePlayheadDotConstraints;
+- (void)updatePlayheadConstraints;
+@property __weak TLKTimelineView *delegate; // @dynamic delegate;
 - (id)timelineView;
+- (void)dealloc;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

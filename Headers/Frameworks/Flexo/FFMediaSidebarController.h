@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface FFMediaSidebarController : NSObject <NSOutlineViewDataSource, FFMediaSidebarOutlineViewDelegate>
 {
     BOOL _isConfigured;
+    BOOL _appLaunchCompleted;
     FFMediaSidebarNode *_mediaRootNode;
     LKViewModule *_containerModule;
     NSView *_containerView;
@@ -23,9 +24,14 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) FFMediaSidebarOutlineView *outlineView; // @synthesize outlineView=_outlineView;
 @property(retain, nonatomic) NSView *containerView; // @synthesize containerView=_containerView;
+@property(nonatomic) BOOL appLaunchCompleted; // @synthesize appLaunchCompleted=_appLaunchCompleted;
 @property(retain, nonatomic) LKViewModule *containerModule; // @synthesize containerModule=_containerModule;
 @property(retain, nonatomic) FFMediaSidebarNode *mediaRootNode; // @synthesize mediaRootNode=_mediaRootNode;
 @property(nonatomic) BOOL isConfigured; // @synthesize isConfigured=_isConfigured;
+- (void)_pauseResumeDownload:(BOOL)arg1;
+- (void)_pauseDownload:(id)arg1;
+- (void)_resumeDownload:(id)arg1;
+- (BOOL)_anyDownloadableMediaForSelectedEvent;
 - (void)_forceEmptySelection:(id)arg1;
 - (void)_printRootNode:(id)arg1;
 - (void)_printTargetedNodes:(id)arg1;
@@ -49,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateRepresentedObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)allowDisclosureTriangleForNode:(id)arg1;
+- (id)newContentRootNode;
 - (id)newMediaRootNode;
 - (void)prepareCell:(id)arg1 forNode:(id)arg2;
 - (id)cellForNode:(id)arg1 atTableColumn:(id)arg2;
@@ -109,6 +116,7 @@ __attribute__((visibility("hidden")))
 - (void)clearSelection;
 - (void)selectAndRevealNode:(id)arg1;
 - (void)_selectNode:(id)arg1;
+- (void)reloadSelectedNodes;
 - (void)setSelectedNodes:(id)arg1;
 - (id)selectedNodes;
 - (void)enumerateSelectedNodesUsingBlock:(CDUnknownBlockType)arg1;

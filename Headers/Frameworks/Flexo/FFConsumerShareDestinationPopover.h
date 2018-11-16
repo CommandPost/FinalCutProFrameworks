@@ -7,14 +7,15 @@
 #import "NSObject.h"
 
 #import "FFConsumerSharePopoverDelegate.h"
+#import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFCSDestinationPopoverViewController, LKPopOverWindow, NSString;
+@class FFCSDestinationPopoverViewController, NSPopover, NSString;
 
-@interface FFConsumerShareDestinationPopover : NSObject <FFConsumerSharePopoverDelegate, NSWindowDelegate>
+@interface FFConsumerShareDestinationPopover : NSObject <FFConsumerSharePopoverDelegate, NSWindowDelegate, NSPopoverDelegate>
 {
     FFCSDestinationPopoverViewController *_destinationsViewController;
-    LKPopOverWindow *_sharePopoverWindow;
+    NSPopover *_sharePopover;
     id _currentEditorModule;
     id _sender;
     SEL _senderAction;
@@ -22,8 +23,8 @@
 
 + (id)shareDestinationPopover;
 - (void)shareDestination:(id)arg1;
-- (void)popOverWindowDidCancel:(id)arg1;
-- (id)shareDestinationPopoverWindowWithDestiantions:(id)arg1 withTarget:(id)arg2 withSender:(id)arg3;
+- (void)popoverDidClose:(id)arg1;
+- (id)shareDestinationPopoverWithDestinations:(id)arg1 withTarget:(id)arg2 withSender:(id)arg3;
 - (void)_restoreSenderAction:(id)arg1;
 - (void)sharePopoverDidResignKey:(id)arg1;
 - (void)dealloc;

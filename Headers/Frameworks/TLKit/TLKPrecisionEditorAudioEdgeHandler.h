@@ -12,6 +12,7 @@
 
 - (BOOL)stopTracking:(id)arg1;
 - (void)adjustFramesOfItems:(id)arg1;
+- (BOOL)shouldPerformRipple:(id)arg1;
 - (BOOL)isSplitEdit;
 - (id)partToDrag:(id)arg1;
 

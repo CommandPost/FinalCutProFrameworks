@@ -23,10 +23,12 @@
 
 + (BOOL)needsOptimizationForFourCharCode:(unsigned int)arg1;
 + (BOOL)clipHasProxy:(id)arg1;
-+ (BOOL)_assetHasProxy:(id)arg1;
++ (BOOL)_assetHasProxy:(id)arg1 status:(int)arg2;
 + (BOOL)needsOptimizationForClip:(id)arg1;
 + (BOOL)_needsOptimizationForClip:(id)arg1 prefersOptimize:(BOOL)arg2;
-+ (BOOL)_needsOptimizationForAsset:(id)arg1 prefersOptimize:(BOOL)arg2;
++ (BOOL)_needOptimizationOrHasProxyForClip:(id)arg1 forEachAssetBlock:(CDUnknownBlockType)arg2;
++ (BOOL)_needsOptimizationForAsset:(id)arg1 status:(int)arg2 prefersOptimize:(BOOL)arg3;
++ (int)syncMedia:(id)arg1 repType:(id)arg2;
 + (BOOL)needsOptimizationForStill:(id)arg1;
 + (BOOL)_needsCacheForLargeStill:(id)arg1;
 + (BOOL)_needsOptimizationForAudioFormat:(id)arg1;
@@ -35,8 +37,8 @@
 + (unsigned int)videoCodecForURL:(id)arg1;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (BOOL)actionPerformAnalyzeAndOptimizeClips:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)analyzeAndOptimizeClips:(id)arg1 options:(id)arg2;
@@ -53,7 +55,6 @@
 - (void)_assetCopyQueueCompleted:(id)arg1;
 - (void)transcodeAudioOnlyAsset:(id)arg1;
 - (void)_analyzeAndOptimizeClip:(id)arg1 forAssetImport:(BOOL)arg2;
-- (void)_audioAnalyzeClipForAssetImport:(id)arg1;
 - (void)_audioAnalyzeClip:(id)arg1 forAssetImport:(BOOL)arg2;
 - (void)assetDone:(id)arg1;
 - (void)analyzeAndOptimizeClipBackgroundThreadDone;

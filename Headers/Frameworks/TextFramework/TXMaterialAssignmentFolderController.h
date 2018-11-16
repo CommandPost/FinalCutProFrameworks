@@ -27,7 +27,6 @@
 @property(readonly, nonatomic) TXMaterialAssignmentLabelController *materialAssignmentLabelCtrl; // @synthesize materialAssignmentLabelCtrl=_materialAssignmentLabelCtrl;
 @property(readonly, nonatomic) TXMaterialAssignmentController *materialAssignmentCtrl; // @synthesize materialAssignmentCtrl=_materialAssignmentCtrl;
 @property(readonly, nonatomic) NSMutableArray *materialCtrls; // @synthesize materialCtrls=_materialCtrls;
-- (id)getSubgroup;
 - (void)getSelectedControllers:(id)arg1 doShallowSearch:(BOOL)arg2;
 - (id)materialControllerForFacet:(unsigned int)arg1;
 - (BOOL)isSelected;
@@ -39,8 +38,6 @@
 - (void)createNewMaterial:(struct OZPasteList *)arg1 forFacet:(unsigned int)arg2;
 - (void)applyPresetInPasteList:(struct OZPasteList *)arg1 toStyle:(struct TXTextStyle *)arg2 newFacetAssignment:(unsigned int)arg3 makeNewMaterial:(BOOL)arg4;
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3 recursive:(BOOL)arg4;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
-- (void)updateMaterialModeChannel;
 - (void)update;
 - (void)didChangeMaterialAssignmentMode:(struct OZChannelEnum *)arg1;
 - (void)setMaterialAssignmentModeValue:(unsigned int)arg1 forChannel:(struct OZChannelEnum *)arg2;

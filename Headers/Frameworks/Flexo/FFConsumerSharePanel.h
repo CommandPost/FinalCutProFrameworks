@@ -6,18 +6,19 @@
 
 #import <Flexo/FFBaseSharePanel.h>
 
-@class FFAutoexpandingTextField, FFConsumerShareInfoController, LKButton, NSProScrollView, NSProTextField, NSTrackingArea, NSView;
+@class FFAutoexpandingTextField, FFConsumerShareInfoController, LKButton, LKScrollView, LKTextField, NSImageView, NSTrackingArea, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFConsumerSharePanel : FFBaseSharePanel
 {
-    NSProScrollView *_scrollView;
+    LKScrollView *_scrollView;
     LKButton *_signInButton;
     FFAutoexpandingTextField *_titleField;
     FFAutoexpandingTextField *_descriptionField;
     FFAutoexpandingTextField *_tagsField;
     FFConsumerShareInfoController *_shareInfoController;
-    NSProTextField *_errorField;
+    NSImageView *_errorImage;
+    LKTextField *_errorField;
     FFAutoexpandingTextField *_descriptionTitle;
     FFAutoexpandingTextField *_tagsTitle;
     NSView *_settingsView;
@@ -33,9 +34,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) FFAutoexpandingTextField *tagsField; // @synthesize tagsField=_tagsField;
 @property(nonatomic) FFAutoexpandingTextField *descriptionField; // @synthesize descriptionField=_descriptionField;
 @property(nonatomic) FFAutoexpandingTextField *titleField; // @synthesize titleField=_titleField;
-@property(nonatomic) NSProTextField *errorField; // @synthesize errorField=_errorField;
+@property(nonatomic) LKTextField *errorField; // @synthesize errorField=_errorField;
+@property(nonatomic) NSImageView *errorImage; // @synthesize errorImage=_errorImage;
 @property(nonatomic) LKButton *signInButton; // @synthesize signInButton=_signInButton;
-@property(nonatomic) NSProScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property(nonatomic) LKScrollView *scrollView; // @synthesize scrollView=_scrollView;
 - (void)showSignInPanel:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)windowDidLoad;

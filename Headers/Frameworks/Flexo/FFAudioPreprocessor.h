@@ -8,25 +8,21 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFAnchoredObject, FFAudioUnitAnalyzingEffect, FFSharedAudioUnit;
+@class FFAnchoredObject, FFAudioUnitAnalyzingEffect, FFSharedAudioUnit, NSMapTable;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioPreprocessor : NSObject <FFBackgroundTaskTarget>
 {
     FFAnchoredObject *_object;
     FFAudioUnitAnalyzingEffect *_effect;
-    FFSharedAudioUnit *_sharedUnit;
+    FFSharedAudioUnit *_sharedAudioUnit;
     unsigned int _index;
-    struct ComponentInstanceRecord *_audioUnit;
-    BOOL _cachedState;
+    NSMapTable *_propertyMap;
 }
 
 + (id)newPreprocessorFactory:(id)arg1 object:(id)arg2 index:(unsigned int)arg3;
-+ (void)performProcessingIfNecessary:(id)arg1 index:(unsigned long long)arg2;
-@property BOOL cachedState; // @synthesize cachedState=_cachedState;
-@property struct ComponentInstanceRecord *audioUnit; // @synthesize audioUnit=_audioUnit;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (int)setMatchEQToMatchMode;
 - (int)postRenderMatchEQForPass:(int)arg1;
 - (int)preRenderMatchEQForPass:(int)arg1;
@@ -41,6 +37,11 @@ __attribute__((visibility("hidden")))
 - (void)configureEffects:(id)arg1;
 - (void)kickoffBackgroundProcess;
 - (void)analyzeObject:(id)arg1 onTask:(id)arg2;
+- (struct ComponentInstanceRecord *)_audioUnit;
+- (id)propertyForKey:(id)arg1;
+- (void)setProperty:(id)arg1 forKey:(id)arg2;
+- (id)sharedAudioUnit;
+- (void)setSharedAudioUnit:(id)arg1;
 - (void)dealloc;
 - (id)initWithObject:(id)arg1 andEffect:(id)arg2 andIndex:(unsigned int)arg3;
 

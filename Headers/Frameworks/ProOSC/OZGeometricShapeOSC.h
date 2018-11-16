@@ -18,6 +18,7 @@
     BOOL _isMouseDown;
     PCVector3_457fd1f0 _priorRotHandlePos;
     double _rotHandleLength;
+    BOOL _pivotSelected;
 }
 
 - (id).cxx_construct;
@@ -27,6 +28,7 @@
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
+- (void)mouseIsDownInEditTool:(BOOL)arg1;
 - (unsigned int)processHits;
 - (int)hitCheck:(id)arg1;
 - (void)drawShapeHandlesWithTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;

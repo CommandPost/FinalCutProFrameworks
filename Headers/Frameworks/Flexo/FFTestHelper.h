@@ -19,7 +19,7 @@
 + (id)eventWithName:(id)arg1 events:(id)arg2;
 + (id)clipsInEvent:(id)arg1;
 + (id)clipsInProject:(id)arg1;
-+ (id)_projectsForUrl:(id)arg1 isEventProject:(BOOL)arg2 error:(id *)arg3;
++ (id)pathForTestFile:(id)arg1 inDomain:(unsigned long long)arg2;
 + (id)pathForTestFile:(id)arg1 inTestFileDir:(id)arg2 class:(Class)arg3;
 + (id)_pathForTestXMLDir:(Class)arg1;
 + (id)_pathForTestMediaDir:(Class)arg1;

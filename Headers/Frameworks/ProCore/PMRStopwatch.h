@@ -18,8 +18,7 @@
     unsigned long long _coreAnimationTotalTime;
 }
 
-+ (void)benchmarkBlockWithTitle:(id)arg1 outputTo:(id)arg2 iterations:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
-+ (void)benchmarkWithIterations:(unsigned long long)arg1 outputTo:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
++ (void)benchmarkBlockWithTitle:(id)arg1 iterations:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3 onCompletion:(CDUnknownBlockType)arg4;
 + (void)setSharedStopwatch:(id)arg1;
 + (id)sharedStopwatch;
 @property unsigned long long coreAnimationTotalTime; // @synthesize coreAnimationTotalTime=_coreAnimationTotalTime;
@@ -33,8 +32,7 @@
 - (void)logEvent:(id)arg1 comment:(id)arg2;
 - (void)addSplit:(id)arg1;
 - (void)logToLocation:(id)arg1 key:(id)arg2;
-- (void)benchmarkBlockWithTitle:(id)arg1 outputTo:(id)arg2 iterations:(unsigned long long)arg3 currentIteration:(unsigned long long)arg4 usingBlock:(CDUnknownBlockType)arg5;
-- (void)benchmarkWithIterations:(unsigned long long)arg1 outputTo:(id)arg2 currentIteration:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)benchmarkBlockWithTitle:(id)arg1 iterations:(unsigned long long)arg2 currentIteration:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4 onCompletion:(CDUnknownBlockType)arg5;
 - (void)endTimingGroup;
 - (void)beginTimingGroupForMethod:(SEL)arg1 inClass:(Class)arg2 comment:(id)arg3;
 - (void)_purgeOldestSplitTimeIfNeeded;

@@ -32,8 +32,8 @@
 
 @interface OZFxPlugParameterHandler : NSObject <FxParameterCreationAPI, FxParameterCreationAPI_v2, FxParameterCreationAPI_v3, FxParameterRetrievalAPI, FxParameterRetrievalAPI_v2, FxParameterRetrievalAPI_v3, FxParameterSettingAPI, FxParameterSettingAPI_v2, FxParameterSettingAPI_v3, FxOptionalParameterCreationAPI, FxOptionalParameterRetrievalAPI, FxOptionalParameterSettingAPI, PROAPIObject, FxPlugAPIDelegate, FxRenderNotificationAPI, FxUndoAPI, FxParameterRetrievalAPIPrivate, FxParameterSettingAPIPrivate, FxParameterAPIPrivate, FxMixingAPI, OZFxPlugInternalParamAPI>
 {
-    struct stack<OZChannelFolder *, std::deque<OZChannelFolder *, std::allocator<OZChannelFolder *>>> *_folderStack;
-    map_84d8bcc2 *_channelMap;
+    struct stack<OZChannelFolder *, std::__1::deque<OZChannelFolder *, std::__1::allocator<OZChannelFolder *>>> *_folderStack;
+    map_e9efb61c *_channelMap;
     struct OZChannelFolder *_baseChannel;
     struct PGContext *_context;
     struct GLRenderer *_renderer;
@@ -41,7 +41,7 @@
     BOOL _startActionCalled;
     BOOL _showedParameterSettingWarning;
     int _numWriteActions;
-    vector_20d56dda _customParameterList;
+    vector_7a4092a7 _customParameterList;
     unsigned int _flipCheckboxID;
     unsigned int _inputPointsCheckboxID;
     unsigned int _absPtCheckboxID;
@@ -56,7 +56,8 @@
     BOOL _isNewGradientColorize;
     BOOL _appTerminating;
     struct OZFxPlugRenderContextManager _threadContextManager;
-    struct map<unsigned int, unsigned long long, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned long long>>> *_flagMap;
+    struct map<unsigned int, unsigned long long, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, unsigned long long>>> *_flagMap;
+    BOOL _suppressChannelChanges;
 }
 
 - (id).cxx_construct;
@@ -66,17 +67,17 @@
 - (BOOL)isImageWellMediaFlexoMediaForSceneNode:(struct OZSceneNode *)arg1;
 - (struct GLRenderer *)renderer;
 - (BOOL)_setupRenderer;
-- (void)getLayerOffsetX:(double *)arg1 andOffsetY:(double *)arg2 fromSceneNode:(struct OZSceneNode *)arg3 withRenderParams:(struct OZRenderParams)arg4;
-- (void)finalizeImage:(id)arg1 withSceneNode:(struct OZSceneNode *)arg2 pixelBounds:(PCRect_07ce470f)arg3 agent:(struct LiAgent *)arg4 andRenderParams:(struct OZRenderParams)arg5 atTime:(CDUnion_2516e51e)arg6;
+- (void)getLayerOffsetX:(double *)arg1 andOffsetY:(double *)arg2 fromSceneNode:(struct OZSceneNode *)arg3 withRenderParams:(const struct OZRenderParams *)arg4;
+- (void)finalizeImage:(id)arg1 withSceneNode:(struct OZSceneNode *)arg2 pixelBounds:(PCRect_07ce470f)arg3 agent:(struct LiAgent *)arg4 andRenderParams:(const struct OZRenderParams *)arg5 atTime:(CDUnion_2516e51e)arg6;
 - (double)getPixelAspectRatioFromSceneNode:(struct OZSceneNode *)arg1;
-- (PCPtr_04d56345)makeSourceFromSceneNode:(struct OZSceneNode *)arg1 withRenderParams:(struct OZRenderParams)arg2;
+- (PCPtr_04d56345)makeSourceFromSceneNode:(struct OZSceneNode *)arg1 withRenderParams:(struct OZRenderParams *)arg2;
 - (PCRect_b601f9f3)getBoundsFromSceneNode:(struct OZSceneNode *)arg1 withRenderParams:(struct OZRenderParams *)arg2;
 - (BOOL)hasPointParameters;
 - (void)getPointChannel:(struct OZChannel **)arg1 nearestPoint:(PCVector2_79efa81a)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (struct OZRenderState)getTempContextRenderState;
 - (struct OZChannelFolder *)baseChannel;
 - (void)setIsNewGradientColorize:(BOOL)arg1;
-- (vector_20d56dda *)customParameterList;
+- (vector_7a4092a7 *)customParameterList;
 - (BOOL)isRendering;
 - (void)setIsRendering:(BOOL)arg1;
 - (BOOL)_intParameter:(int)arg1 hasValidMin:(int)arg2 max:(int)arg3 sliderMin:(int)arg4 sliderMax:(int)arg5 defaultValue:(int)arg6 paramFlags:(unsigned int)arg7;
@@ -117,8 +118,10 @@
 - (BOOL)_setIntValue:(int)arg1 toParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
 - (BOOL)_setFloatValue:(double)arg1 toParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
 - (BOOL)safeToSetParameters;
+- (BOOL)suppressUpdates;
 - (void)postChannelChange:(struct OZChannelBase *)arg1 flagsOnly:(BOOL)arg2;
 - (void)preChannelChange:(struct OZChannelBase *)arg1 flagsOnly:(BOOL)arg2;
+- (void)abortAndWait;
 - (id)findMotionEffect;
 - (BOOL)_getPathID:(void **)arg1 fromParm:(unsigned int)arg2 atTime:(CDUnion_2516e51e)arg3;
 - (BOOL)getStringParameterValue:(id *)arg1 fromParm:(unsigned int)arg2;
@@ -231,9 +234,9 @@
 - (void)restoreParameterFlagsForChannel:(struct OZChannelBase *)arg1;
 - (void)saveParameterFlags;
 - (BOOL)containsParameterWithID:(unsigned int)arg1;
-- (vector_77d837c3)imageParamIDs;
+- (vector_a9c0768e)imageParamIDs;
 - (void)updateChannelMap;
-- (map_84d8bcc2 *)channelMap;
+- (map_e9efb61c *)channelMap;
 - (void)sendNotifications:(id)arg1;
 - (void)sendUpdateEvent;
 - (struct OZFxPlugSharedBase *)getSharedBase;

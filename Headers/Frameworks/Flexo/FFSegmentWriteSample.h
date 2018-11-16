@@ -4,19 +4,35 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFSegmentSample.h>
+#import "NSObject.h"
+
+#import "FFPrioritizedWorkUnit.h"
+
+@class FFSegmentStore, FFSegmentStoreManagerRunLock, NSObject<OS_dispatch_group>;
 
 __attribute__((visibility("hidden")))
-@interface FFSegmentWriteSample : FFSegmentSample
+@interface FFSegmentWriteSample : NSObject <FFPrioritizedWorkUnit>
 {
+    long long _offset;
+    FFSegmentStore *_store;
+    id _sample;
     id _sample2;
     int _fieldOrder;
+    int _priority;
+    NSObject<OS_dispatch_group> *_writeGroup;
+    FFSegmentStoreManagerRunLock *_runLock;
+    int _runLockTag;
 }
 
-- (id)sample2;
-- (void)main;
++ (void)performBlockWhenPendingWritesFinish:(CDUnknownBlockType)arg1;
++ (void)initialize;
+@property(readonly) long long offset; // @synthesize offset=_offset;
+- (_Bool)isCancelled;
+- (_Bool)setSVPriority:(int)arg1;
+- (int)svPriority;
+- (void)performCompressAndWrite;
 - (void)dealloc;
-- (id)initWithSample:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3 segmentStore:(id)arg4 offset:(long long)arg5;
+- (id)initWithSample:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3 segmentStore:(id)arg4 offset:(long long)arg5 priority:(int)arg6;
 
 @end
 

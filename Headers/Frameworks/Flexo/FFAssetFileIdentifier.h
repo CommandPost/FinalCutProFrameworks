@@ -14,8 +14,10 @@
     NSString *_eventDocumentID;
     NSString *_path;
     NSURL *_url;
+    NSURL *_downloadURL;
 }
 
+@property(retain, nonatomic) NSURL *downloadURL; // @synthesize downloadURL=_downloadURL;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

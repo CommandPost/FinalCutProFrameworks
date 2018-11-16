@@ -8,7 +8,7 @@
 
 #import "NSCopying.h"
 
-@class NSString;
+@class FFRole, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFVirtualMediaSource : FFMediaSource <NSCopying>
@@ -16,8 +16,11 @@ __attribute__((visibility("hidden")))
     NSString *m_sourceName;
     NSString *m_sourceType;
     int m_playEnable;
+    FFRole *m_role;
 }
 
+- (void)setRole:(id)arg1;
+- (id)role;
 - (void)setPlayEnable:(int)arg1;
 - (void)setSourceName:(id)arg1;
 - (int)playEnable;

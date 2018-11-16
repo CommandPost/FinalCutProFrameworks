@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)isTemporary;
 - (void)documentWillClose;
+- (BOOL)removeExternalCache:(id *)arg1;
 
 @end
 

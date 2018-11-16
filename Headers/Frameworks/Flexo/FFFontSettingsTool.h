@@ -8,16 +8,16 @@
 
 #import "NSComboBoxDelegate.h"
 
-@class FFChannelChangeController, FFFontSettingsColorWell, FFFontSettingsSegmentedControl, FFTitleOSC, LKButton, LKColorWell, LKComboBox, LKMenu, LKPopUpButton, LKTextField, NSProView, NSString, NSView;
+@class FFChannelChangeController, FFFontSettingsColorWell, FFFontSettingsSegmentedControl, FFTitleOSC, LKButton, LKComboBox, LKMenu, LKPopUpButton, LKTextField, NSColorWell, NSString, NSView;
 
 @interface FFFontSettingsTool : FFAdjustmentTool <NSComboBoxDelegate>
 {
     NSView *_adjustmentToolbarView;
     FFFontSettingsSegmentedControl *_formatButton;
     FFFontSettingsSegmentedControl *_hAlignmentButton;
-    NSProView *_tailView;
-    LKColorWell *_colorPickerButton;
-    NSProView *_appPreviewTailView;
+    NSView *_tailView;
+    NSColorWell *_colorPickerButton;
+    NSView *_appPreviewTailView;
     FFFontSettingsColorWell *_textColorPickerButton;
     FFFontSettingsColorWell *_bckgColorPickerButton;
     LKTextField *_bckgColorLabel;
@@ -37,8 +37,12 @@
 }
 
 + (id)toolTip;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 + (id)groups;
@@ -53,7 +57,6 @@
 - (void)comboBoxSelectionIsChanging:(id)arg1;
 - (void)comboBoxSelectionDidChange:(id)arg1;
 - (void)controlTextDidEndEditing:(id)arg1;
-- (void)controlTextDidChange:(id)arg1;
 - (void)controlTextDidBeginEditing:(id)arg1;
 - (BOOL)skims;
 - (BOOL)allowsEffectOSCs;
@@ -96,7 +99,6 @@
 - (void)_handlePlayPause:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)awakeFromNib;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

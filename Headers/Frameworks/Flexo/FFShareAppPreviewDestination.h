@@ -11,9 +11,9 @@
 }
 
 + (id)defaultName;
+- (id)smallImage;
 - (id)iconTitle;
-- (long long)iconIndex;
-- (id)largeImage;
+- (id)pressedImage;
 - (id)image;
 - (void)dealloc;
 - (void)setStompSetting;

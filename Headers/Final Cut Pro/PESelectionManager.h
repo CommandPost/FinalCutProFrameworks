@@ -15,12 +15,15 @@
     NSMutableArray *_viewedClipStack;
     FFAnchoredObject *_timelineRootItem;
     FFContext *_timelineContext;
+    unsigned int _suspendSelectionChanges;
 }
 
 + (void)releaseSharedInstance;
 + (id)defaultSelectionManager;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 @property(readonly) NSArray *viewedClipsStack; // @synthesize viewedClipsStack=_viewedClipStack;
+- (void)endSuspendSelectionChanges;
+- (void)beginSuspendSelectionChanges;
 - (void)setTimelineRootItem:(id)arg1 context:(id)arg2;
 @property(readonly) FFContext *timelineContext;
 @property(readonly) FFAnchoredObject *timelineRootItem;

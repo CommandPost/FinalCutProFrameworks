@@ -23,8 +23,12 @@
 
 + (id)cursorForOrganizer;
 + (id)cursor;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 @property(nonatomic) id <FFAdjustmentToolDelegate> toolDelegate; // @synthesize toolDelegate=_toolDelegate;
@@ -33,6 +37,7 @@
 @property(retain, nonatomic) FFAnchoredObject *sourceCropObject; // @synthesize sourceCropObject=_sourceCropObject;
 @property(nonatomic) LKButton *acceptButton; // @synthesize acceptButton=_acceptButton;
 @property(nonatomic) NSView *adjustmentToolbarView; // @synthesize adjustmentToolbarView=_adjustmentToolbarView;
+- (BOOL)shouldMakeIntrinsicsForEffectStack;
 - (BOOL)isSourceCropTool;
 - (void)resetTool:(id)arg1;
 - (void)_enableApplyButton:(BOOL)arg1;

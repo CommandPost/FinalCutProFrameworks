@@ -6,7 +6,7 @@
 
 #import <Flexo/FFProvider.h>
 
-@class FFEffect, NSMutableDictionary, NSObject<OS_dispatch_queue>;
+@class FFEffect, NSMutableDictionary;
 
 @interface FFEffectNode : FFProvider
 {
@@ -14,12 +14,14 @@
     NSMutableDictionary *_inputInfos;
     CDStruct_1b6d18a9 _channelOffset;
     _Bool _inputsFrozen;
-    NSObject<OS_dispatch_queue> *_cachedUnionedMutex;
+    int _miscFlags;
+    struct FFSynchronizable *_cachedUnionedSynchronizable;
     CDStruct_e83c9415 _cachedUnionedInputRange;
     CDStruct_e83c9415 _cachedUnionedInputRangeInLocalCoords;
 }
 
-- (id).cxx_construct;
+- (int)effectNodeMiscFlags;
+- (void)setEffectNodeMiscFlags:(int)arg1;
 - (CDStruct_1b6d18a9)latestInputEnd;
 - (CDStruct_1b6d18a9)earliestInputStart;
 - (CDStruct_e83c9415)unionedInputTimeRangeInLocalCoords;

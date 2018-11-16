@@ -6,7 +6,7 @@
 
 #import "NSMatrix.h"
 
-@class NSCell, NSEvent, NSString, OZLibraryEntry;
+@class NSCell, NSEvent, NSImage, NSString, OZLibraryEntry;
 
 @interface OZLibraryThumbnailMatrix : NSMatrix
 {
@@ -21,8 +21,12 @@
     NSString *_oldDisplayName;
     NSString *_oldPath;
     NSCell *_dragHighlightedCell;
+    NSImage *_selectionBadgeNormal;
+    NSImage *_selectionBadgeInactive;
 }
 
+@property(retain, nonatomic) NSImage *selectionBadgeInactive; // @synthesize selectionBadgeInactive=_selectionBadgeInactive;
+@property(retain, nonatomic) NSImage *selectionBadgeNormal; // @synthesize selectionBadgeNormal=_selectionBadgeNormal;
 - (void)selectNone:(id)arg1;
 - (void)selectAll:(id)arg1;
 - (void)cancel:(id)arg1;
@@ -59,6 +63,7 @@
 - (void)startDrag:(id)arg1;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
 - (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

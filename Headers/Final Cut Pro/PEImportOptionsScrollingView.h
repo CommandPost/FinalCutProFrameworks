@@ -10,6 +10,7 @@
 {
 }
 
+- (void)scrollWheel:(id)arg1;
 - (BOOL)isFlipped;
 
 @end

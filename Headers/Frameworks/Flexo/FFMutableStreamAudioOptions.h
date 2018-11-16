@@ -10,20 +10,25 @@
 {
 }
 
-- (void)setComponentsPlaybackInfo:(id)arg1 forPlayObject:(id)arg2;
+- (void)removeStreamAudioPrivateFlags:(unsigned long long)arg1;
+- (void)addStreamAudioPrivateFlags:(unsigned long long)arg1;
+- (void)setStreamAudioPrivateFlags:(unsigned long long)arg1;
 - (void)setComponentsPlaybackInfo:(id)arg1;
-- (void)setSourceChannelMap:(id)arg1;
+- (void)setAudioChannelMap:(id)arg1;
 - (void)setAudioEffects:(id)arg1;
-- (void)setEffectPrerollScopeRange:(CDStruct_e83c9415)arg1;
 - (void)setPrerollScopeRange:(CDStruct_e83c9415)arg1;
 - (void)setPrimeDuration:(CDStruct_1b6d18a9)arg1;
+- (void)setPlayObjectsWithOptions:(id)arg1;
 - (void)clearStreamAudioFlagsForPlayObject:(id)arg1;
-- (void)setStreamAudioFlags:(unsigned long long)arg1 withMask:(unsigned long long)arg2 forPlayObject:(id)arg3;
+- (void)setStreamAudioFlags:(unsigned int)arg1 withMask:(unsigned int)arg2 forPlayObject:(id)arg3;
+- (void)setIndirectPlayObjects:(id)arg1;
 - (void)setPlayObjects:(id)arg1;
-- (void)removeStreamAudioFlags:(unsigned long long)arg1;
-- (void)addStreamAudioFlags:(unsigned long long)arg1;
-- (void)setStreamAudioFlags:(unsigned long long)arg1;
+- (void)setPlayRoles:(id)arg1;
+- (void)removeStreamAudioFlags:(unsigned int)arg1;
+- (void)addStreamAudioFlags:(unsigned int)arg1;
+- (void)setStreamAudioFlags:(unsigned int)arg1;
 - (void)setForPlayback:(BOOL)arg1;
+- (void)setChannelValenceID:(unsigned int)arg1;
 - (void)setNumChannels:(unsigned int)arg1;
 - (void)setSampleRate:(double)arg1;
 

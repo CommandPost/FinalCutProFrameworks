@@ -21,9 +21,10 @@
 - (id)augmentEnclosedGroup:(id)arg1 withFolder:(struct OZChannelFolder *)arg2 context:(id)arg3;
 - (void)didTwiddle:(BOOL)arg1;
 - (void)twiddle;
+- (void)buildOutSubControllers;
 - (void)createEnclosedGroupFromSubChannels;
 - (void)addAssociatedChannelsToEnclosedGroup:(id)arg1;
-- (void)getTargetChannels:(set_6801396c *)arg1;
+- (void)getTargetChannels:(set_759369c4 *)arg1;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (void)didBuildUI;
 - (void)dealloc;

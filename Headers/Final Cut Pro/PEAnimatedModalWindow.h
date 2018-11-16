@@ -25,7 +25,6 @@
 
 @property struct CGRect animationSourceRect; // @synthesize animationSourceRect=_animationSourceRect;
 @property BOOL shouldAnimate; // @synthesize shouldAnimate=_shouldAnimate;
-- (void)orderOut:(id)arg1;
 - (void)close;
 - (void)orderFront:(id)arg1;
 - (void)setupAnimation:(BOOL)arg1;

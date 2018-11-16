@@ -21,6 +21,7 @@
 }
 
 + (Class)animStatusClass;
+- (void)setFrame:(struct CGRect)arg1;
 - (struct OZChannelBase *)excludeChanForChanBase:(struct OZChannelBase *)arg1;
 - (void)setIsBold:(BOOL)arg1;
 - (void)setAnimStatusClass:(Class)arg1;

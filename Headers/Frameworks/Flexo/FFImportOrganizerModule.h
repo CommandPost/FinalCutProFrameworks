@@ -9,11 +9,12 @@
 #import "FFImportTapeModuleDelegate.h"
 #import "NSMenuDelegate.h"
 #import "NSOpenSavePanelDelegate.h"
+#import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFImportGoToFolderSheetController, FFImportNavigationController, FFImportOrganizerFilmstripModule, FFImportOrganizerSplitView, FFImportSeparator, FFImportTapeModule, FFLibrary, FFMediaEventProject, FFNavHeaderView, LKBox, LKButton, LKImageView, LKPaneCapView, LKPopOverWindow, LKPopUpButton, LKProgressIndicator, LKSegmentedControl, LKSlider, LKTextField, LKViewModule, NSProButton, NSProTextField, NSProThemeImageView, NSProView, NSSet, NSString, NSTextField, NSView, NSWindow, OKPaneCapItemView;
+@class FFImportGoToFolderSheetController, FFImportNavigationController, FFImportOrganizerFilmstripModule, FFImportOrganizerSplitView, FFImportPaneCapView, FFImportTapeModule, FFLibrary, FFMediaEventProject, FFNavHeaderView, LKButton, LKImageView, LKPopUpButton, LKProgressIndicator, LKSegmentedControl, LKSlider, LKTextField, LKViewModule, NSBox, NSImageView, NSPopover, NSSet, NSString, NSTextField, NSView, NSWindow, OKPaneCapItemView;
 
-@interface FFImportOrganizerModule : FFEventsSuperModule <NSWindowDelegate, FFImportTapeModuleDelegate, NSOpenSavePanelDelegate, NSMenuDelegate>
+@interface FFImportOrganizerModule : FFEventsSuperModule <NSWindowDelegate, FFImportTapeModuleDelegate, NSOpenSavePanelDelegate, NSMenuDelegate, NSPopoverDelegate>
 {
     FFImportGoToFolderSheetController *_goToFolderSheetController;
     BOOL _sidebarConfigured;
@@ -24,8 +25,7 @@
     LKViewModule *_playerContainerModule;
     FFImportOrganizerSplitView *_radSplitView;
     FFImportOrganizerSplitView *_tapeSplitView;
-    LKPaneCapView *_filmstripHeaderPaneCapView;
-    LKPaneCapView *_filmstripFooterPaneCapView;
+    FFImportPaneCapView *_filmstripFooterPaneCapView;
     LKTextField *_clipLoadingCountTextField;
     LKTextField *_itemsCountTextField;
     OKPaneCapItemView *_itemsCountPaneCapItemView;
@@ -39,27 +39,31 @@
     BOOL _canCreateQTCameraArchive;
     BOOL _updatingSplitViewPosition;
     BOOL _treeNodeIsProcessing;
-    LKPopOverWindow *_navClipAttributesPopOverWindow;
+    NSPopover *_clipAttributesPopOver;
     FFMediaEventProject *_initialEvent;
     NSSet *_initialKeywords;
-    NSProView *_clipAppearancePopOverView_Filmstrip;
-    NSProView *_clipAppearancePopOverView_List;
-    NSProView *_clipAppearancePopOverView_List_FileSystem;
-    NSProThemeImageView *_smallZoomImage;
-    NSProThemeImageView *_largeZoomImage;
+    NSView *_clipAppearancePopOverView_Filmstrip;
+    NSView *_clipAppearancePopOverView_List;
+    NSView *_clipAppearancePopOverView_List_FileSystem;
+    LKSlider *_frameDurationSlider;
+    LKTextField *_frameDurationTextField;
+    NSImageView *_smallZoomImage;
+    NSImageView *_largeZoomImage;
+    NSImageView *_clipDuration;
     LKSlider *_itemSizeSlider;
-    NSProTextField *_clipSizeLabel;
-    NSProTextField *_optionsLabel;
-    FFImportSeparator *_separatorBox;
-    NSProButton *_toggleAudioWaveformsCheckbox_Filmstrip;
-    NSProButton *_toggleAudioWaveformsCheckbox_List;
-    NSProButton *_toggleAudioWaveformsCheckbox_List_FileSystem;
-    NSProButton *_hideImportedClipsCheckbox_Filmstrip;
-    NSProButton *_hideImportedClipsCheckbox_List;
-    NSProView *_clipAppearancePaneCapItemView_List;
-    LKSegmentedControl *_clipAppearanceSegmentedControl_List;
-    OKPaneCapItemView *_clipAppearncePaneCapItem_FilmStrip;
-    OKPaneCapItemView *_clipAppearncePaneCapItem_List;
+    NSTextField *_clipSizeLabel;
+    NSTextField *_optionsLabel;
+    LKButton *_toggleAudioWaveformsCheckbox_Filmstrip;
+    LKButton *_toggleAudioWaveformsCheckbox_List;
+    LKButton *_toggleAudioWaveformsCheckbox_List_FileSystem;
+    LKButton *_hideImportedClipsCheckbox_Filmstrip;
+    LKButton *_hideImportedClipsCheckbox_List;
+    NSView *_clipAppearancePaneCapItemView;
+    LKButton *_clipAppearanceButton;
+    OKPaneCapItemView *_clipAppearncePaneCapItem;
+    NSView *_viewModePaneCapItemView;
+    LKButton *_viewModeToggleButton;
+    OKPaneCapItemView *_viewModePaneCapItem;
     FFNavHeaderView *_navHeaderView;
     LKSegmentedControl *_navBackForwardControl;
     LKPopUpButton *_navPathPopUpButton;
@@ -72,8 +76,9 @@
     NSWindow *_newEventPanel;
     LKPopUpButton *_photoVideoPopup;
     LKButton *_hideImportedClipsCheckbox_Nav;
-    LKBox *_hideImportedClipsDivider;
+    NSBox *_hideImportedClipsDivider;
     LKButton *_noItemsButton;
+    BOOL _implictlySwitchingViewType;
     FFLibrary *_eventLibrary;
     FFMediaEventProject *_currentEvent;
     NSString *_noFilteredItemsStatusString;
@@ -86,6 +91,7 @@
 @property(retain, nonatomic) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
 @property(retain, nonatomic) FFLibrary *eventLibrary; // @synthesize eventLibrary=_eventLibrary;
 @property NSTextField *eventTextField; // @synthesize eventTextField=_eventTextField;
+@property BOOL implictlySwitchingViewType; // @synthesize implictlySwitchingViewType=_implictlySwitchingViewType;
 @property(retain, nonatomic) NSSet *initialKeywords; // @synthesize initialKeywords=_initialKeywords;
 @property(retain, nonatomic) FFMediaEventProject *initialEvent; // @synthesize initialEvent=_initialEvent;
 @property LKPopUpButton *eventPopUpButton; // @synthesize eventPopUpButton=_eventPopUpButton;
@@ -109,11 +115,15 @@
 - (void)resetEventPopUpButtonAndTextField;
 - (void)resetEventPopUpButtonForNewEvent:(id)arg1;
 - (void)chooseNewEventLibrary:(id)arg1;
+- (id)activeProjectDefaultLibraryItem;
+- (void)addProjectMediaToMenu:(id)arg1;
 - (void)addEventsToMenu:(id)arg1;
 - (BOOL)canBeginPlaying;
+- (void)reloadListView;
 - (void)setDataReloadingSuspended:(BOOL)arg1;
 - (BOOL)clipLoadingSuspended;
 - (void)setClipLoadingSuspended:(BOOL)arg1;
+- (void)importAudioRoleGroupOverrideDidChange;
 - (void)importWindowWillClose;
 - (BOOL)isDisplayingFiles;
 - (void)didUninstallItemsModule;
@@ -129,6 +139,7 @@
 - (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (void)setNoItemsInfoTextVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)invalidateFilteredItemsIfNeeded;
 - (void)resetFilmstripFilters:(id)arg1;
 - (void)updateTreeNodeIsProcessing;
 - (void)treeNodeIsProcessing:(id)arg1;
@@ -136,10 +147,9 @@
 - (void)updateNavigationControls:(id)arg1;
 - (void)pathPopUpButtonMenuItemSelected:(id)arg1;
 - (void)treeNodeDoubleClicked:(id)arg1;
+- (void)sidebarRestorePreviousLocation:(id)arg1;
 - (void)outlineViewDidCollapse:(id)arg1;
 - (void)outlineViewItemWillExpand:(id)arg1;
-- (void)replaceFileSystemNodeDataWithRADVolume:(id)arg1;
-- (BOOL)isMountableRADFolder:(id)arg1;
 - (void)updateSelectedSidebarItemForTreeNode:(id)arg1;
 - (void)addItemToNavController:(id)arg1;
 - (void)updateQTCameraArchiveState:(id)arg1;
@@ -173,7 +183,6 @@
 - (void)revertCameraVolumeName:(id)arg1;
 - (void)renameCameraVolume:(id)arg1;
 - (void)revealVolumeInFinder:(id)arg1;
-- (void)stopUsingMedia:(id)arg1;
 - (void)unmountVolume:(id)arg1;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
@@ -181,6 +190,8 @@
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)keyDown:(id)arg1;
 - (void)goToFolderSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)restoreFilmstripViewType;
+- (void)implicitlySwitchDisplayViews:(int)arg1;
 - (void)setShowFilmstripView:(BOOL)arg1;
 - (BOOL)showFilmstripView;
 - (void)volumeWillUnmount:(id)arg1;
@@ -191,16 +202,11 @@
 - (id)newMediaSidebarModule;
 - (id)newItemsModule;
 - (void)photoVideoPopupAction:(id)arg1;
-- (void)popOverWindowDidCancel:(id)arg1;
-- (void)reenableNavClipAttributesButton;
-- (void)navClipAttributesDidResignKey:(id)arg1;
-- (void)popUpNavClipAttributes:(id)arg1;
-- (void)clipAttributesPopOverWindowDidResign:(id)arg1;
-- (void)reenableZoomBezel;
+- (void)reenableClipAttributesButton;
+- (void)popoverDidClose:(id)arg1;
 - (void)popUpClipAttributes:(id)arg1;
 - (id)customClipAttributesPopOverView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)removePaneCapItem:(id)arg1;
 - (void)addPaneCapItem:(id)arg1;
 - (void)unloadClipAppearanceNib;
 - (void)loadClipAppearanceNib;

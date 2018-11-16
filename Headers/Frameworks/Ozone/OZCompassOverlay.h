@@ -39,7 +39,6 @@
     float _lastBackingScale;
 }
 
-- (id).cxx_construct;
 - (BOOL)needsRightMouseEvents;
 - (void)setDisplayOffsetX:(int)arg1 andY:(int)arg2;
 - (_Bool)renderTexture;

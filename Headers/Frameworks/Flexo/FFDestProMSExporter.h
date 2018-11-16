@@ -19,13 +19,13 @@
     BOOL _disableDither;
 }
 
-- (_Bool)usesOSThrottlingForAllDiskIO;
+- (int)destRecommendedFFSVPriority;
 - (BOOL)wantsDithering:(id)arg1;
 - (unsigned long long)maxQueueSize;
 - (int)getFrameQueueStatus;
 - (void)pushFrame:(id)arg1;
 - (void)flush:(BOOL)arg1;
-- (id)copyFrameAtTime:(CDStruct_1b6d18a9)arg1 waitUntilFound:(BOOL)arg2;
+- (id)copyFrameAtTime:(CDStruct_1b6d18a9)arg1 beforeDate:(id)arg2;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
 - (void)dealloc;
 - (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderProps:(id)arg2 renderFilesPaths:(id)arg3 forWidth:(long long)arg4 forHeight:(long long)arg5 forceNoDither:(BOOL)arg6;

@@ -6,7 +6,7 @@
 
 #import <TLKit/TLKTimelineLane.h>
 
-@class CATiledLayer, NSArray, NSMutableArray, NSProTimecodeFormatter, TLKRulerLayer;
+@class CATiledLayer, LKTimecodeFormatter, NSArray, NSMutableArray, TLKRulerLayer;
 
 @interface TLKRulerLane : TLKTimelineLane
 {
@@ -20,7 +20,7 @@
     CDStruct_1b6d18a9 _frameDuration;
     int _numberSubTicks;
     double _timecodeLength;
-    NSProTimecodeFormatter *_timecodeFormatter;
+    LKTimecodeFormatter *_timecodeFormatter;
 }
 
 + (void)initialize;

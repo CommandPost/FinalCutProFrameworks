@@ -8,12 +8,18 @@
 
 @interface TLKContainerHandleLayer : CALayer
 {
-    CALayer *_selectionLayer;
+    double _topPadding;
+    CALayer *_containerOuterLayer;
 }
 
-- (void)setDelegate:(id)arg1;
-- (id)selectionLayer;
+@property(nonatomic) CALayer *containerOuterLayer; // @synthesize containerOuterLayer=_containerOuterLayer;
+@property(nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
+@property(readonly) struct CGSize containerSize;
 - (id)init;
+
+// Remaining properties
+@property(nonatomic) BOOL selected; // @dynamic selected;
+@property(nonatomic) struct CGColor *selectionColor; // @dynamic selectionColor;
 
 @end
 

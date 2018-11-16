@@ -28,7 +28,6 @@
 }
 
 + (id)sharedInstance;
-- (id).cxx_construct;
 - (void)abortRender:(id)arg1;
 - (void)closeProgressWhenDone:(id)arg1;
 - (void)updateRenderFailed:(const CDStruct_1b6d18a9 *)arg1;

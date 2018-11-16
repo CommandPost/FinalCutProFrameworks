@@ -11,6 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)_ensureDirectoryExists:(id)arg1 error:(id *)arg2;
+- (BOOL)ensureDirectoryExists:(id *)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithParent:(id)arg1 name:(id)arg2 error:(id *)arg3;
 - (id)initWithParent:(id)arg1 name:(id)arg2 document:(id)arg3 error:(id *)arg4;
 

@@ -16,6 +16,7 @@
     unsigned int _knownClearFlags;
 }
 
+- (id)_underlyingChildTokens;
 - (id)description;
 - (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
@@ -24,7 +25,6 @@
 - (void)hintCacheData:(unsigned int)arg1;
 - (_Bool)hintWillImageSoon;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 subTokens:(id)arg2 retainOnlyObjects:(id)arg3 flattenPassThrus:(BOOL)arg4;
 - (id)initWithStream:(id)arg1 subTokens:(id)arg2 retainOnlyObjects:(id)arg3;
 
 @end

@@ -11,6 +11,7 @@
     BOOL m_needToMigrateChannelFolder;
 }
 
++ (id)initialEffectBundlePartsForEffectID:(id)arg1;
 + (id)copyClassDescription;
 - (id)initWithEffectID:(id)arg1 andXMLDocument:(id)arg2;
 - (BOOL)update_migrateEffectBundleFormat;
@@ -24,7 +25,6 @@
 - (id)availableBundleParts;
 - (id)presetNames;
 - (unsigned long long)activePartIndex;
-- (id)initialEffectBundleParts;
 - (void)partChanged;
 - (id)channelFolder;
 - (int)activePresetIndex;

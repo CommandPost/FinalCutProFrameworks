@@ -4,14 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProView.h"
+#import "NSView.h"
 
-@class FFShareDestinationAddController, NSProThemeFacet, NSString;
+@class FFShareDestinationAddController, NSImage, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFShareDestinationAddControllerTileView : NSProView
+@interface FFShareDestinationAddControllerTileView : NSView
 {
-    NSProThemeFacet *_facet;
+    NSImage *_icon;
     NSString *_title;
     NSString *_destinationType;
     FFShareDestinationAddController *_controller;
@@ -36,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 @property(readonly, nonatomic) NSString *destinationType; // @synthesize destinationType=_destinationType;
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)_setPressed:(BOOL)arg1;
 - (void)_deselect;

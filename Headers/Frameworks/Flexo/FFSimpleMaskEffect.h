@@ -16,8 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)augmentChannelChangeDescriptionForNotification:(id)arg1;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
 - (struct HGNode *)newNodeForContext:(id)arg1;
-- (id)processingPixelFormat;
-- (struct CGColorSpace *)processingColorSpace;
+- (id)processingFormat:(int)arg1;
 - (BOOL)isAtDefaultSettings;
 - (BOOL)isNoOp;
 - (id)inputKeys;

@@ -23,7 +23,6 @@
 }
 
 + (id)basicPixelFormat;
-- (id).cxx_construct;
 - (BOOL)holdSpaceForViewTransformShortcuts;
 - (BOOL)isEnabled;
 - (void)draw;

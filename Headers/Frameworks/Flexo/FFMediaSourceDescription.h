@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)description:(id)arg1 withNumSourceChannels:(unsigned int)arg2 matchesSourceKey:(id)arg3 andChannelMap:(id)arg4;
++ (id)defaultAudioChannelRoutingMapForNumChannels:(int)arg1;
 + (BOOL)isEqualAudioChannelRoutingMaps:(id)arg1 compare:(id)arg2;
 + (BOOL)isEqualChannelMaps:(id)arg1 compare:(id)arg2;
 + (id)descriptionWithMedia:(id)arg1 sourceKey:(id)arg2 channelIndex:(int)arg3;

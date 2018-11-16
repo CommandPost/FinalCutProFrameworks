@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     LKPopUpButton *_popUpButton;
 }
 
-- (id)tileTypeFacet;
+- (id)tileGlyphString;
 - (id)filterDict;
 - (void)setFilterDict:(id)arg1;
 - (void)awakeFromNib;

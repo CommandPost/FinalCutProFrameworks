@@ -20,7 +20,6 @@
 }
 
 + (id)dividerWithRect:(struct CGRect)arg1 leftView:(id)arg2 rightView:(id)arg3;
-- (id).cxx_construct;
 - (void)addAttachedDivider:(id)arg1;
 - (void)addRightView:(id)arg1;
 - (void)addLeftView:(id)arg1;

@@ -14,6 +14,7 @@
     NSTextField *_formatTextField;
     NSTextField *_compressorTextField;
     NSTextField *_depthTextField;
+    NSTextField *_colorSpaceTextField;
     NSTextField *_durationTextField;
     NSTextField *_frameRateTextField;
     NSTextField *_frameSizeTextField;

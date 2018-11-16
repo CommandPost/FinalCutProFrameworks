@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     CDStruct_554002f2 _action_opt;
 }
 
-- (id).cxx_construct;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)setupDefaultProperties;
 - (id)actionForKey:(id)arg1;

@@ -9,10 +9,14 @@
 __attribute__((visibility("hidden")))
 @interface FFMDPhotoGroupView : FFMDAbstractLibraryView
 {
+    BOOL _mouseWithinView;
 }
 
 + (BOOL)shouldSortItems;
+@property BOOL mouseWithinView; // @synthesize mouseWithinView=_mouseWithinView;
+- (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
+- (void)_delayedMakeFirstResponder;
 
 @end
 

@@ -6,20 +6,24 @@
 
 #import "NSObject.h"
 
-@class NSButton, NSPanel, NSTableView;
+@class NSArray, NSButton, NSPanel, NSTableView;
 
 @interface OZMissingFootageController : NSObject
 {
-    NSPanel *_pMissingPanel;
+    NSPanel *_pMissingItemsPanel;
+    NSPanel *_pMissingMediaPanel;
     NSPanel *_pUnsupportedPanel;
     NSPanel *_pMissingAndUnsupportedPanel;
+    NSPanel *_pBlockedPluginsPanel;
     NSTableView *_pMissingAndUnsupportedTableView;
     NSTableView *_pUnsupportedTableView;
     NSTableView *_pMissingTableView;
+    NSTableView *_pBlockedPluginsTableView;
     NSButton *_pReconnectButton;
     NSButton *_pSearchButton;
     struct OZScene *_pScene;
     int _operation;
+    NSArray *_blockedPlugs;
 }
 
 - (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
@@ -30,6 +34,7 @@
 - (void)reconnectNotify:(id)arg1;
 - (int)askForOperation:(struct OZScene *)arg1;
 - (int)_open;
+- (void)setBlockedPlugs:(id)arg1;
 - (void)setScene:(struct OZScene *)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;

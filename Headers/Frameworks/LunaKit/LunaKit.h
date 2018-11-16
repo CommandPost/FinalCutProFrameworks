@@ -13,19 +13,18 @@
 + (BOOL)hasHUDContextMenus;
 + (BOOL)useSelectedSegmentedControlTextHUDColor;
 + (BOOL)hasHUDMenus;
-+ (BOOL)useAquaSecondarySelectedControlColor;
 + (unsigned int)smoothingStyleIsUsed:(char *)arg1 forFont:(id)arg2;
-+ (BOOL)swapSystemFontRegularForMedium;
-+ (BOOL)_applicationFontIsMedium;
-+ (long long)defaultFontAppearance;
-+ (Class)cursorTheme;
-+ (Class)windowTheme;
-+ (id)theme;
 + (void)install;
-+ (id)CarFileIdentifier;
 + (BOOL)_wantsConsumerLook;
 + (void)initialize;
 + (BOOL)_isInIBCocoaSimulator;
++ (id)viewerAppearance;
++ (id)proToolbarAppearance;
++ (id)proTokenAppearance;
++ (id)proInspectorAppearance;
++ (id)_MOTIONHUDAppearance;
++ (id)HUDAppearance;
++ (id)mainAppearance;
 
 @end
 

@@ -10,8 +10,8 @@
 
 @interface MEBackgroundLoadStylePreviewRequest : FFBackgroundLoadRequest
 {
-    struct TXTextStyle *_style;
-    list_d81b4758 _dependentObjs;
+    shared_ptr_e0e110e1 _style;
+    list_63a35edb _dependentObjs;
     struct OZRenderNode *_node;
     NSObject<MEBackgroundLoadPreviewClient> *_client;
     NSImage *_previewImage;
@@ -29,10 +29,10 @@
 - (void).cxx_destruct;
 - (void)executeRequestOnTask:(id)arg1;
 - (void)setPreviewBlock:(CDUnknownBlockType)arg1 node:(struct OZRenderNode *)arg2;
-- (void)setDependentObjects:(list_d81b4758 *)arg1;
-- (void)setStyle:(struct TXTextStyle *)arg1;
+- (void)setDependentObjects:(list_63a35edb *)arg1;
+- (void)setStyle:(const shared_ptr_e0e110e1 *)arg1;
 - (void)dealloc;
-- (id)initWithStyle:(struct TXTextStyle *)arg1 dependentObjects:(list_d81b4758 *)arg2 client:(id)arg3;
+- (id)initWithStyle:(const shared_ptr_e0e110e1 *)arg1 dependentObjects:(list_63a35edb *)arg2 client:(id)arg3;
 
 @end
 

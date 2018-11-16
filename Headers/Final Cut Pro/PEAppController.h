@@ -12,19 +12,21 @@
 #import "FFRolesMenuDelegate.h"
 #import "FFSharePanelAnimationProtocol.h"
 #import "FFSharedAppControllerInterface.h"
+#import "LKViewModuleDelegate.h"
 #import "NSApplicationDelegate.h"
 #import "NSMenuDelegate.h"
 #import "NSUserInterfaceValidations.h"
 #import "PEFullScreenWindowDelegate.h"
 
-@class FFAnchoredSequence, FFEditActionMgr, FFMessageTracer, LKWindow, NSAlert, NSMenu, NSMenuItem, NSMutableArray, NSString, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceOverWindowController, Stopwatch;
+@class FFAnchoredSequence, FFEditActionMgr, FFMessageTracer, LKWindow, NSAlert, NSMapTable, NSMenu, NSMenuItem, NSMutableArray, NSMutableSet, NSString, NSTimer, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceOverWindowController, PEWorkspacesMenuDelegate, Stopwatch;
 
-@interface PEAppController : NSObject <FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol, FFSharedAppControllerInterface>
+@interface PEAppController : NSObject <FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol, FFSharedAppControllerInterface, LKViewModuleDelegate>
 {
     NSMenuItem *_openLibraryMenuItem;
     NSMenuItem *_closeLibraryMenuItem;
     NSMenuItem *_copyToLibraryMenuItem;
     NSMenuItem *_moveToLibraryMenuItem;
+    NSMenuItem *_importiOSProject;
     NSMenuItem *_videoResolutionMenuItem;
     NSMenuItem *_audioResolutionMenuItem;
     NSMenu *_consumerAppMenu;
@@ -38,7 +40,8 @@
     NSMenu *_markMenu;
     NSMenuItem *_markSplitMenuItem;
     NSMenuItem *_clearSplitMenuItem;
-    NSMenuItem *_rolesMenuItem;
+    NSMenuItem *_assignAudioRolesMenuItem;
+    NSMenuItem *_assignVideoRolesMenuItem;
     NSMenuItem *_applyCustomNameMenuItem;
     NSMenuItem *_debugMenu;
     NSMenuItem *_avOutMenu;
@@ -52,6 +55,13 @@
     NSMenu *_shareMenu;
     NSMenuItem *_showProviderSettingsMenuItem;
     NSMenuItem *_sendToFCPXMenuItem;
+    NSMenu *_workspacesMenu;
+    NSMenuItem *_workspaceDefault;
+    NSMenuItem *_workspaceOrganize;
+    NSMenuItem *_workspaceColorEffects;
+    NSMenuItem *_workspaceDualDisplays;
+    NSMenuItem *_workspacesSeparator;
+    PEWorkspacesMenuDelegate *_workspacesMenuDelegate;
     PEEditorContainerModule *_activeEditorContainer;
     id _projectTranslator;
     PEVoiceOverWindowController *_voiceoverRecordController;
@@ -67,19 +77,40 @@
     BOOL _toggleAudioScrubbingIsDown;
     BOOL _toggleSkimmingIsDown;
     BOOL _toggleSnappingIsDown;
+    BOOL _toggleTrimAlignedEdgesIsDown;
     BOOL _cleanUpFromEventMerge;
     BOOL _userIsScrollingThroughFonts;
     NSAlert *_coRunningAlert;
     BOOL _showTheaterAfterLaunch;
+    NSTimer *_iOSiMovieProjectImportTimer;
+    NSMutableArray *_iOSiMovieProjectUrls;
     struct _flags {
         unsigned int inspectorWasVisible:1;
+        unsigned int doingModuleReload:1;
     } _flags;
     FFEditActionMgr *_editActionMgr;
     FFMessageTracer *_messageTracer;
+    NSMapTable *_openDocumentOriginForURL;
+    NSMutableSet *_fullscreenWindowModules;
+    BOOL _fullscreenViewerIsDisallowed;
+    BOOL _disablingOrganizerIsAllowed;
+    BOOL _disablingTimelineIsAllowed;
 }
 
++ (id)toolTip:(id)arg1 withKeyEquivalent:(id)arg2;
 + (id)appController;
+@property(nonatomic) BOOL disablingTimelineIsAllowed; // @synthesize disablingTimelineIsAllowed=_disablingTimelineIsAllowed;
+@property(nonatomic) BOOL disablingOrganizerIsAllowed; // @synthesize disablingOrganizerIsAllowed=_disablingOrganizerIsAllowed;
+@property(nonatomic) BOOL fullscreenViewerIsDisallowed; // @synthesize fullscreenViewerIsDisallowed=_fullscreenViewerIsDisallowed;
 @property(nonatomic) BOOL userIsScrollingThroughFonts; // @synthesize userIsScrollingThroughFonts=_userIsScrollingThroughFonts;
+- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)module:(id)arg1 didUnhideSubmodule:(id)arg2;
+- (void)module:(id)arg1 didHideSubmodule:(id)arg2;
+- (BOOL)allModulesHiddenOf:(id)arg1 except:(id)arg2;
+- (void)determineShouldDisablingTimelineBeAllowed;
+- (void)determineShouldDisablingOrganizerBeAllowed;
+- (void)determineShouldFullscreenViewerbeAllowed;
 - (struct CGRect)animationStartRectForEditAction:(id)arg1;
 - (id)animationViewForEditAction:(id)arg1;
 - (struct CGImage *)newAnimationImageForEditAction:(id)arg1;
@@ -96,13 +127,17 @@
 - (void)setupShareMenu;
 - (BOOL)shareSelectionSupportsAppPreview;
 - (void)_setupShareMenu;
-- (void)_removeShare:(long long)arg1;
 - (void)_moveWorkspaceModulesToFullscreen:(id)arg1 withLabel:(id)arg2 animate:(BOOL)arg3;
+- (void)_updateProjectTabOrOpenImportedIosProjects:(id)arg1;
+- (void)_importAndOpenIosImovieProjectAtUrls:(id)arg1;
+- (void)_triggerIosImovieProjectImport;
 - (void)_refreshHDMIVout;
 - (CDStruct_1b6d18a9)_playheadForMediaSelection;
 - (double)defaultEditDuration;
 - (id)_gatherMediaForInsertion;
 - (void)mainWindowChangedScreens:(id)arg1;
+- (unsigned long long)nextAvailableScreenIndexWithMainWindowScreenIndex:(unsigned long long)arg1;
+- (id)fullscreenModuleIfAny;
 - (void)appWillUnhide:(id)arg1;
 - (void)appWillHide:(id)arg1;
 - (void)documentRemoved:(id)arg1;
@@ -120,10 +155,7 @@
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (id)moduleForAction:(SEL)arg1;
 - (BOOL)_isActionDisallowed:(SEL)arg1 forModule:(id)arg2;
-- (void)removeFromYouTube:(id)arg1;
-- (void)removeFromVimeo:(id)arg1;
-- (void)removeFromFacebook:(id)arg1;
-- (void)removeFromCNNiReport:(id)arg1;
+- (void)showImportiOSProjectPanel:(id)arg1;
 - (void)newTrailer:(id)arg1;
 - (void)newAppStorePreviewProject:(id)arg1;
 - (void)newThemedProject:(id)arg1;
@@ -135,26 +167,38 @@
 - (void)exportEffectBrowserThumbnails:(id)arg1;
 - (void)editDestinations:(id)arg1;
 - (void)newDestination:(id)arg1;
+- (void)setShowFullscreenNavigationValue:(id)arg1;
+- (void)setOSCTimelineDisplayValue:(id)arg1;
+- (void)setOSCTimecodeDisplayValue:(id)arg1;
 - (void)summarizeObjectCacheToConsole:(id)arg1;
 - (void)showFFDataViewer:(id)arg1;
-- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 toAnchoredObjects:(id)arg3;
-- (id)anchoredObjectsForRolesMenuController:(id)arg1;
+- (void)dumpProjectClipStats:(id)arg1;
+- (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 forContext:(id)arg3;
+- (id)contextForRolesMenuController:(id)arg1;
+- (void)dumpAndVerifyRoleSet:(id)arg1;
 - (void)editRoles:(id)arg1;
+- (id)_targetLibrary;
 - (void)applyNamePreset:(id)arg1;
 - (void)showEditPresetsWindow:(id)arg1;
 - (void)showNewPresetsWindow:(id)arg1;
 - (void)_updateNamePresetMenuItems;
+- (void)chooseWorkspaceDualDisplays:(id)arg1;
+- (void)chooseWorkspaceColorEffects:(id)arg1;
+- (void)chooseWorkspaceOrganize:(id)arg1;
+- (void)chooseWorkspaceDefault:(id)arg1;
 - (void)favoriteToolAvailable:(BOOL)arg1;
 - (void)editToolAvailable:(BOOL)arg1;
 - (void)setShowBothFields:(id)arg1;
 - (void)showMultiangle:(id)arg1;
 - (void)toggleVideoScopes:(id)arg1;
+- (void)toggleHiddenEvents:(id)arg1;
 - (void)setDisplayBroadcastSafeZones:(id)arg1;
 - (void)toggleTimelineSelectionMovesPlayhead:(id)arg1;
 - (void)toggleTimelineItemTitlesShown:(id)arg1;
 - (void)avEditModeVideo:(id)arg1;
 - (void)avEditModeAudio:(id)arg1;
 - (void)avEditModeBoth:(id)arg1;
+- (void)toggleKeywordEditor:(id)arg1;
 - (id)_rangesOfMediaForTimelineEditing;
 - (id)_rangesOfMedia;
 - (void)insertGap:(id)arg1;
@@ -163,9 +207,6 @@
 - (void)lift:(id)arg1;
 - (void)whatsNew:(id)arg1;
 - (void)toggleSportsTeamEditor:(id)arg1;
-- (void)layoutForAudioEditing:(id)arg1;
-- (void)layoutForDefault:(id)arg1;
-- (void)layoutForCoreEditing:(id)arg1;
 - (void)revealProject:(id)arg1;
 - (BOOL)canRevealProject;
 - (void)snapshotProject:(id)arg1;
@@ -190,6 +231,12 @@
 - (void)goToBackgroundTaskList:(id)arg1;
 - (void)goToTimeline:(id)arg1;
 - (void)goToCanvas:(id)arg1;
+- (void)hideEventViewer:(id)arg1;
+- (void)showEventViewer:(id)arg1;
+- (void)toggleFullscreenDisplayArea:(id)arg1;
+- (void)exitFullscreenDisplayArea:(id)arg1;
+- (void)enterFullscreenDisplayArea:(id)arg1;
+- (void)toggleFullscreenOrganizer:(id)arg1;
 - (void)toggleEventViewer:(id)arg1;
 - (void)goToEventViewer:(id)arg1;
 - (void)goToViewer:(id)arg1;
@@ -197,6 +244,7 @@
 - (void)goToInspector:(id)arg1;
 - (void)auditionSelectedVariant:(id)arg1;
 - (void)openStack:(id)arg1 fromModule:(id)arg2;
+- (void)_closeAuditionHUDIfNecessary:(id)arg1;
 - (void)toggleVariantsPicker:(id)arg1;
 - (void)closeVariantsPicker:(id)arg1;
 - (void)showSpeedEditorForObjects:(id)arg1 orObjectsAndRanges:(id)arg2 segmentIndex:(int)arg3 forTransition:(BOOL)arg4 atTime:(CDStruct_1b6d18a9)arg5 forEditorModule:(id)arg6;
@@ -206,13 +254,18 @@
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2 forEditorModule:(id)arg3;
 - (BOOL)markerEditorIsShown;
 - (void)hideMarkerEditor:(id)arg1;
+- (void)toggleDataListAndSwitchTabs:(id)arg1;
 - (void)toggleDataList:(id)arg1;
 - (void)toggleEventsLibrary:(id)arg1;
+- (void)toggleOrganizerWithContentSidebarTab:(id)arg1;
+- (void)toggleOrganizerWithMediaSidebarTab:(id)arg1;
+- (void)toggleOrganizerWithLibrarySidebarTab:(id)arg1;
 - (void)toggleOrganizer:(id)arg1;
 - (void)hideOrganizer:(id)arg1;
 - (void)showOrganizer:(id)arg1;
-- (void)toggleMediaBrowserModeFromMenuTag:(id)arg1;
-- (void)toggleMediaBrowser:(id)arg1;
+- (void)toggleMediaEffectsBrowserModeFromMenuTag:(id)arg1;
+- (void)toggleMediaTransitionsBrowserModeFromMenuTag:(id)arg1;
+- (void)toggleMediaBrowserFromKeyCommandTag:(id)arg1;
 - (void)switchToInspector:(id)arg1;
 - (void)goToColorBoard:(id)arg1;
 - (BOOL)eventViewerScopesVisible;
@@ -221,10 +274,13 @@
 - (void)showWaveform:(id)arg1;
 - (void)showHistogram:(id)arg1;
 - (void)toggleEnhanceAudio:(id)arg1;
-- (void)goToAudioCleanup:(id)arg1;
 - (void)toggleAudioMeter:(id)arg1;
 - (void)setColorChannelDisplay:(id)arg1;
+- (void)showInspectorInfoTab:(id)arg1;
 - (void)toggleInspector:(id)arg1;
+- (void)toggleFullHeightInspector:(id)arg1;
+- (void)setFullHeightInspector:(id)arg1;
+- (void)setHalfHeightInspector:(id)arg1;
 - (void)findAndReplace:(id)arg1;
 - (void)_goToHelpPage:(id)arg1 anchorName:(id)arg2;
 - (void)showPreferencesForBackups:(id)arg1;
@@ -233,6 +289,7 @@
 - (void)_didResignKeyFocus:(id)arg1;
 - (void)windowWillClose:(id)arg1;
 - (void)orderFrontAboutBox:(id)arg1;
+- (void)toggleOrganizerPlaythrough:(id)arg1;
 - (void)toggleSkimmingUp:(id)arg1;
 - (void)toggleSkimmingDown:(id)arg1;
 - (void)toggleAudioScrubbingUp:(id)arg1;
@@ -243,8 +300,17 @@
 - (void)toggleSkimming:(id)arg1;
 - (void)toggleAudioScrubbing:(id)arg1;
 - (void)fullscreenWindow:(id)arg1 screenNotAvailable:(long long)arg2;
-- (void)toggleFullscreenDisplayArea:(id)arg1;
-- (void)toggleFullscreenOrganizer:(id)arg1;
+- (void)enterFullscreenOrganizer:(id)arg1;
+- (void)exitFullscreenOrganizer:(id)arg1;
+- (void)revertToSingleDisplayLayout:(id)arg1;
+- (void)exitFullscreenTimeline:(id)arg1;
+- (void)enterFullscreenTimeline:(id)arg1;
+- (void)toggleFullscreenTimeline:(id)arg1;
+- (void)window:(id)arg1 becameFullscreen:(BOOL)arg2;
+- (void)toggleTimeline:(id)arg1;
+- (void)hideTimeline:(id)arg1;
+- (void)showTimeline:(id)arg1;
+- (void)allowAVOutputForScreenWith:(id)arg1;
 - (void)showFCPServiceAndSupport:(id)arg1;
 - (void)showFCPFeedback:(id)arg1;
 - (void)showPreferencesHelp:(id)arg1;
@@ -252,8 +318,10 @@
 - (void)showLogicEffectsReference:(id)arg1;
 - (void)showKeyboardShortcuts:(id)arg1;
 - (void)showUpdatingToLibraries:(id)arg1;
+- (void)openWorkspacesFolder:(id)arg1;
+- (void)currentWorkspaceSave:(id)arg1;
+- (void)currentWorkspaceSaveAs:(id)arg1;
 - (void)resetWindowLayout:(id)arg1;
-- (void)swapEventsAndTimeline:(id)arg1;
 - (void)hideApplication:(id)arg1;
 - (void)exportPosterImage:(id)arg1;
 - (void)exportAllTrailers:(id)arg1;
@@ -283,7 +351,6 @@
 - (id)editorContainerWithID:(id)arg1 createIfNeeded:(BOOL)arg2 withFrame:(struct CGRect)arg3;
 - (id)dataListModule;
 - (id)colorModule;
-- (id)audioCleanupModule;
 - (id)audioMeterModule;
 - (id)backgroundTaskListModule;
 - (id)variantsPicker;
@@ -294,7 +361,6 @@
 - (id)consumerInspectorModule;
 - (id)inspectorModule;
 - (id)consumerToolbarModule;
-- (id)toolbarModule;
 - (BOOL)isMultiAngleEditor;
 - (BOOL)isEventBrowserHidden;
 - (BOOL)isMediaEventBrowserFullscreen;
@@ -304,7 +370,10 @@
 - (id)consumerActiveEditorContainer;
 @property(readonly) PEEditorContainerModule *activeEditorContainer;
 - (id)mainEditorContainer;
+- (id)lowerDeckContainer;
+- (id)upperDeckContainer;
 - (BOOL)isMainDisplayAreaFullscreen;
+- (BOOL)isTimelineFullscreen;
 - (id)eventViewer;
 - (id)mainDisplayArea;
 - (id)mainWorkspaceContainer;
@@ -325,12 +394,13 @@
 - (BOOL)disableGradationChanges;
 - (void)applicationWillBecomeActive:(id)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
+- (void)openXMLDocumentWithURL:(id)arg1 display:(BOOL)arg2 sender:(id)arg3;
 - (BOOL)application:(id)arg1 openFile:(id)arg2;
 - (void)applicationDidMiniaturizeAll:(id)arg1;
 - (BOOL)applicationShouldHandleReopen:(id)arg1 hasVisibleWindows:(BOOL)arg2;
 - (void)applicationWillTerminate:(id)arg1;
 - (unsigned long long)applicationShouldTerminate:(id)arg1;
-- (void)appHasStartedProcessing:(id)arg1;
+- (void)appHasStartedProcessingBlock:(CDUnknownBlockType)arg1;
 - (void)applicationDidFinishLaunching:(id)arg1;
 - (BOOL)_migratePreGodzillaColorPresets;
 - (void)restoreOpenDocuments;
@@ -344,9 +414,11 @@
 - (id)versionCreditsString;
 - (void)_registerDefaults;
 - (_Bool)_shouldUseHQPlayback;
+- (BOOL)_isPowerReducedPlayback;
 - (id)activeDestinationForEditAction:(id)arg1;
 - (id)activeSourceForEditAction:(id)arg1;
 - (id)activeEditSourceForToolBar;
+- (void)awakeFromNib;
 - (void)dealloc;
 - (id)init;
 

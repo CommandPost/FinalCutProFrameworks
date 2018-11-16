@@ -21,7 +21,7 @@
 
 + (id)allTrailerIDs;
 + (id)newTrailerPreviewForID:(id)arg1 inEvent:(id)arg2 withVideoProps:(id)arg3 displayName:(id)arg4 useAnimatics:(BOOL)arg5 error:(id *)arg6;
-+ (id)newTrailerSequenceForID:(id)arg1 inEvent:(id)arg2 withVideoProps:(id)arg3 displayName:(id)arg4 error:(id *)arg5;
++ (id)newTrailerSequenceForID:(id)arg1 inParent:(id)arg2 withVideoProps:(id)arg3 displayName:(id)arg4 error:(id *)arg5;
 + (id)canonicalTrailerDictForID:(id)arg1;
 + (id)trailerInfoForID:(id)arg1;
 + (id)legacyTrailers;

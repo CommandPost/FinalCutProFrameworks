@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) BOOL visible; // @synthesize visible=_shapeVisible;
 @property(nonatomic) BOOL active; // @synthesize active=_shapeActive;
-- (id).cxx_construct;
 - (id)cropMatrix;
 - (id)getCursor;
 - (void)endUndoTransaction;

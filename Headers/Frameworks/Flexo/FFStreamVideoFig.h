@@ -6,7 +6,7 @@
 
 #import <Flexo/FFStreamVideo.h>
 
-@class FFMovieInstanceFig, FFPMRLogFunnel, FFPrerollSync, FFPrerollSyncFig, FFSampleGenerator, FFVideoProps, NSMutableArray, NSRecursiveLock, NSURL;
+@class FFPMRLogFunnel, FFPrerollSync, FFPrerollSyncFig, FFVideoProps, NSMutableArray, NSRecursiveLock, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFStreamVideoFig : FFStreamVideo
@@ -15,15 +15,9 @@ __attribute__((visibility("hidden")))
     int _avchdGOPPattern;
     int _sampleContentAndFieldOrder;
     NSMutableArray *_pendingRequests;
-    FFMovieInstanceFig *_readerForStream;
-    struct OpaqueFigTrackReader *_trackReader;
     _Bool _isUnusableSource;
-    struct OpaqueFigSampleCursorService *_sampleCursorService;
-    FFSampleGenerator *_ffSampleGenerator;
-    struct OpaqueFigSampleGenerator *_appThrottledIOSampleGenerator;
-    int _requestedQuality;
-    int _actualQuality;
-    unsigned int _outputPixelFormat;
+    NSString *_eventDocumentIDAndPath;
+    void *_mediaReader;
     void *_videoDecoder;
     FFVideoProps *_videoProps;
     NSRecursiveLock *_lock;
@@ -31,12 +25,6 @@ __attribute__((visibility("hidden")))
     FFPrerollSync *_prerollSync;
     FFPrerollSyncFig *_prerollSyncFig;
     int _prerollDepth;
-    long long _currentEditIndex;
-    CDStruct_82206317 _currentEditSeg;
-    CDStruct_1b6d18a9 _currentEditSegTgtEnd;
-    struct OpaqueFigEditCursorService *_editCursorSvc;
-    _Bool _editSegmentValid;
-    CDStruct_82206317 _editSegment;
     FFPMRLogFunnel *_codecPMRFunnel;
     FFPMRLogFunnel *_figProviderPMRFunnel;
     NSURL *_cachedURL;
@@ -45,26 +33,23 @@ __attribute__((visibility("hidden")))
 
 @property(readonly) BOOL workaround15320638; // @synthesize workaround15320638=_workaround15320638;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_cachedURL;
-- (id).cxx_construct;
 - (int)_playbackDirection;
 - (BOOL)waitForCachedImageCharacteristics:(int)arg1 forSpatialQuality:(int)arg2 beforeDate:(id)arg3;
 - (void)storeCachedImageInfos:(id *)arg1 forQuality:(int)arg2 count:(int)arg3;
 - (struct CGColorSpace *)lookupCachedColorSpaceForQuality:(int)arg1;
-- (void)lookupCachedPixelSpaceBoundsForQuality:(int)arg1 lineSel:(int)arg2 retPixelSpaceBounds:(struct CGRect *)arg3;
-- (id)lookupCachedPixelFormatForQuality:(int)arg1;
 - (id)lookupCachedPTForQuality:(int)arg1 lineSel:(int)arg2;
-- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4 roi:(const struct CGRect *)arg5 graphBuildInfo:(id)arg6;
+- (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5 roi:(const struct CGRect *)arg6 graphBuildInfo:(id)arg7;
 - (void)setRate:(double)arg1;
 - (id)eventDocumentIDAndPath;
 - (void)removeToken:(id)arg1;
 - (void)_removeToken:(id)arg1 hintSearchBackwards:(_Bool)arg2;
-- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 downstreamPT:(id)arg4;
-- (id)_copyOrCreateScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 tQualOut:(int *)arg4 mediaTimeOut:(CDStruct_1b6d18a9 *)arg5 isGapOut:(char *)arg6;
+- (id)newScheduleTokenAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5;
+- (id)_copyOrCreateScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 outputPTS:(CDStruct_1b6d18a9)arg4 tQualOut:(int *)arg5 mediaTimeOut:(CDStruct_1b6d18a9 *)arg6 isGapOut:(char *)arg7;
 - (CDStruct_1b6d18a9)calculateMediaTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 tQual:(int)arg3;
 - (int)_getLineSelForTime:(CDStruct_1b6d18a9)arg1 presentationRange:(CDStruct_e83c9415)arg2 tQual:(int)arg3 sQual:(int)arg4 retIsTemporallySecond:(_Bool *)arg5;
 - (_Bool)_isValidRequest:(CDStruct_1b6d18a9)arg1 retDetails:(id *)arg2;
-- (void)fixOddballColorSpace:(struct __CVBuffer *)arg1;
-- (id)_newTokenWithSampleCursor:(id)arg1 actualQuality:(int)arg2 priority:(int)arg3;
+- (void)fixColorSpaceTags:(struct __CVBuffer *)arg1;
+- (id)_newTokenWithMediaTime:(CDStruct_1b6d18a9)arg1 videoCursor:(const struct FFVideoCursor *)arg2 decodedPixelFormat:(unsigned int)arg3 actualQuality:(int)arg4 priority:(int)arg5 outputPTS:(CDStruct_1b6d18a9)arg6;
 - (void)prerollEnd;
 - (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
 - (BOOL)_isPlaybackActive;
@@ -79,13 +64,10 @@ __attribute__((visibility("hidden")))
 - (int)fieldDominance;
 - (struct CGRect)pixelSpaceFrameBounds;
 - (CDStruct_1b6d18a9)mapEditTimeIntoMediaTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)getMediaTimeFromEditTime_EditCursor:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)getMediaTimeFromEditTime_TrackEditWithIndex:(CDStruct_1b6d18a9)arg1;
 - (id)videoProps;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 context:(id)arg2 flags:(long long)arg3 options:(id)arg4;
 - (id)_debugFileName;
-- (void)_markSBufsForReadFailure:(struct OpaqueFigSampleGenerator *)arg1 payload:(struct __CFDictionary *)arg2;
 - (id)description;
 
 @end

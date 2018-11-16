@@ -6,10 +6,16 @@
 
 #import <Flexo/FFMediaSidebarController.h>
 
+@class NSMutableSet;
+
 @interface FFEventMediaSidebarController : FFMediaSidebarController
 {
+    unsigned long long _mediaManagerLoadingCount;
+    NSMutableSet *_nonEmptyMediaManagers;
+    NSMutableSet *_emptyMediaManagers;
+    long long _nodeSet;
+    BOOL _observingEventProjectDataDidLoad;
     BOOL _silenceSelectionChange;
-    BOOL _appLaunchCompleted;
     BOOL _showYears;
     int _sortType;
     int _sortDirection;
@@ -25,13 +31,18 @@
 @property(nonatomic) int sortDirection; // @synthesize sortDirection=_sortDirection;
 @property(nonatomic) int sortType; // @synthesize sortType=_sortType;
 @property(nonatomic) BOOL showYears; // @synthesize showYears=_showYears;
-@property(nonatomic) BOOL appLaunchCompleted; // @synthesize appLaunchCompleted=_appLaunchCompleted;
 @property(nonatomic) BOOL silenceSelectionChange; // @synthesize silenceSelectionChange=_silenceSelectionChange;
 - (id)nodeToSelectAfterDeletionForTargetInfo:(const CDStruct_4cb9d06e *)arg1;
 - (BOOL)deleteLibraryFolderNode:(id)arg1 nodeToSelect:(id)arg2 error:(id *)arg3;
 - (BOOL)deleteFolderObjectNodes:(id)arg1 nodeToSelect:(id)arg2 error:(id *)arg3;
 - (void)addANode:(id)arg1 toMediaDetailSet:(id)arg2 ignoreIfNode:(id)arg3;
-- (id)newMediaRootNode;
+- (id)_newRootNodeWithNodeSet:(long long)arg1;
+- (void)loadSidebarNodes;
+- (BOOL)isCurrentSidebar;
+- (void)sidebarDragDidEnd;
+- (void)sidebarDragDidBegin;
+- (id)_eventLibraryModule;
+- (id)_containingSidebarModule;
 - (id)cellForNode:(id)arg1 atTableColumn:(id)arg2;
 - (id)outlineView:(id)arg1 toolTipForCell:(id)arg2 rect:(struct CGRect *)arg3 tableColumn:(id)arg4 item:(id)arg5 mouseLocation:(struct CGPoint)arg6;
 - (id)outlineView:(id)arg1 selectionIndexesForProposedSelection:(id)arg2;
@@ -43,7 +54,7 @@
 - (unsigned long long)validateDrop:(id)arg1 onNode:(id)arg2 atChildIndex:(long long)arg3;
 - (void)addNodes:(id)arg1 toPasteboard:(id)arg2;
 - (void)_addNodes:(id)arg1 toPasteboard:(id)arg2;
-- (id)_pasteboardTypeDictionariesForWritingNodes:(id)arg1 toPasteboard:(id)arg2;
+- (id)_pasteboardTypeDictionariesForWritingNodes:(id)arg1 toPasteboard:(id)arg2 xmlNodes:(id *)arg3;
 - (id)dragTypesForNodes:(id)arg1;
 - (BOOL)containsOnlyDraggableNodes:(id)arg1;
 - (id)supportedDragTypes;
@@ -51,6 +62,7 @@
 - (void)selectAndRevealAllProjects;
 - (void)selectAndRevealAllEvents;
 - (void)_selectAndRevealFirstNodeWithClass:(Class)arg1;
+- (id)_firstNodeWithClass:(Class)arg1;
 - (void)selectAndRevealEvents:(id)arg1;
 - (void)revealEvents:(id)arg1;
 - (void)_revealEvents:(id)arg1 select:(BOOL)arg2;
@@ -58,6 +70,7 @@
 - (void)revealEvent:(id)arg1;
 - (void)selectAndRevealEvent:(id)arg1;
 - (id)_parentNodeForEvent:(id)arg1;
+- (id)projectMediaNodeForEvent:(id)arg1;
 - (void)setSelectionToNodesWithParentNodeOfClass:(Class)arg1;
 - (id)allVideoEventRecords;
 - (id)selectedVideoEventRecords;
@@ -77,11 +90,21 @@
 - (void)configureSidebar;
 - (void)configureDefaultSelectionAndExpansionAfterUpgradeAtLaunch:(id)arg1;
 - (void)configureDefaultSelectionAndExpansion;
+- (void)_proConfigureDefaultSelectionAndExpansion;
+- (void)_consumerConfigureDefaultSelectionAndExpansion;
+- (void)_checkLibrary:(int)arg1;
+- (void)_consumerConfigurePhotoLibraryNodes;
+- (BOOL)_photoLibraryNonEmptyLibraryForNode:(id)arg1 libraryNodeClass:(Class)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)outlineDoubleClickAction:(id)arg1;
+- (id)persistentState;
+- (void)restorePersistentState:(id)arg1;
 - (void)notificationHandler:(id)arg1;
 - (void)removeNotifications;
 - (void)installNotifications;
+- (void)_eventProjectDataDidLoad:(id)arg1;
 - (void)dealloc;
+- (id)initWithNodeSet:(long long)arg1;
 - (id)init;
 
 @end

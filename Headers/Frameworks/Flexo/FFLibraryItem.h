@@ -22,14 +22,18 @@ __attribute__((visibility("hidden")))
     NSURL *_cachedURLAtClose;
 }
 
++ (BOOL)_removeFiles:(id)arg1 error:(id *)arg2;
++ (id)documentType;
 + (id)documents;
 + (id)copyClassDescription;
 @property(readonly, nonatomic) FFLibraryItem *parentItem; // @synthesize parentItem=_parentItem;
+- (void)_enumerateMediaEventProjectsWithOptions:(unsigned int)arg1 usingBlock:(CDUnknownBlockType)arg2 stop:(char *)arg3;
+- (void)enumerateMediaEventProjectsWithOptions:(unsigned int)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (BOOL)_verifyRoleSetsMatchLibraryRoleSet:(id)arg1 exactly:(BOOL)arg2;
 - (void)setOwningTrashLibrary:(id)arg1;
 - (id)owningTrashLibrary;
 - (BOOL)isTemporary;
 - (BOOL)isInTrash;
-- (BOOL)removeFiles:(id *)arg1;
 - (id)defaultLibraryItem;
 - (BOOL)hasEventRecords;
 - (id)allRecords;
@@ -70,9 +74,10 @@ __attribute__((visibility("hidden")))
 - (id)uniqueDisplayName;
 @property(readonly, nonatomic) NSString *displayName;
 - (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
 - (id)inspectorTabIdentifiers;
-- (id)inspectorTabClassNames;
 - (id)inspectorIdentifier;
+- (id)inspectorDisplayName;
 - (id)inspectorClassName;
 - (id)identifierForProxyEvent;
 - (void)setIdentifierForProxyEvent:(id)arg1;
@@ -84,9 +89,14 @@ __attribute__((visibility("hidden")))
 - (void)setPrimaryObject:(id)arg1;
 - (id)loadPrimaryObject;
 - (BOOL)isPrimaryObjectLoaded;
+- (BOOL)isHiddenEvent;
 - (id)documentIdentifier;
 @property(retain, nonatomic) FFModelDocument *document;
-- (BOOL)validateIdentifier:(id *)arg1;
+- (BOOL)syncStoreMetadata:(id)arg1 updated:(char *)arg2 error:(id *)arg3;
+- (BOOL)syncStoreMetadata:(id *)arg1;
+- (id)itemStorageURL;
+- (BOOL)isProject;
+- (BOOL)isEvent;
 - (BOOL)hasDocument;
 - (void)performWithoutUndo:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -94,7 +104,7 @@ __attribute__((visibility("hidden")))
 - (oneway void)release;
 - (void)willDealloc;
 - (void)dealloc;
-- (id)initWithIdentifier:(id)arg1 name:(id)arg2 error:(id *)arg3;
+- (id)initWithIdentifier:(id)arg1 filename:(id)arg2 error:(id *)arg3;
 - (id)initWithParent:(id)arg1 name:(id)arg2 error:(id *)arg3;
 - (id)initWithParent:(id)arg1 name:(id)arg2 document:(id)arg3 error:(id *)arg4;
 - (BOOL)allowChildName:(id)arg1 error:(id *)arg2;

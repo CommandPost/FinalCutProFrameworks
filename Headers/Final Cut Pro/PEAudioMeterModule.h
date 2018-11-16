@@ -6,10 +6,16 @@
 
 #import "LKViewModule.h"
 
-@interface PEAudioMeterModule : LKViewModule
+#import "PEAudioMeterControllerProtocol.h"
+
+@interface PEAudioMeterModule : LKViewModule <PEAudioMeterControllerProtocol>
 {
+    BOOL _useExternalControlMode;
 }
 
+@property(nonatomic) BOOL useExternalControlMode; // @synthesize useExternalControlMode=_useExternalControlMode;
+- (BOOL)shouldUseExternalControlMode;
+- (void)setMeteringContext:(id)arg1;
 - (void)resetOverloadIndicators;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;

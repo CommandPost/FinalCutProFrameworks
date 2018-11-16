@@ -9,17 +9,16 @@
 @interface OZHUDController : OZProViewModule
 {
     struct OZDocument *_pDocument;
-    list_4c5ca08a *_pObjects;
-    list_bbacc03b *_pObjectIDs;
-    vector_77d837c3 *_pMagicNumbers;
+    list_281b6609 *_pObjects;
+    list_45f779fc *_pObjectIDs;
+    vector_a9c0768e *_pMagicNumbers;
     struct CGRect _prevViewFrame;
 }
 
 @property(readonly, nonatomic) struct OZDocument *document; // @synthesize document=_pDocument;
-- (id).cxx_construct;
 - (void)updateViewFinalFrame;
 - (void)encloseInCenteringView;
-- (BOOL)allObjectsAreSameType:(const list_e68da02e *)arg1;
+- (BOOL)allObjectsAreSameType:(const list_2b134d54 *)arg1;
 - (void)windowDeminimized:(id)arg1;
 - (void)windowMinimized:(id)arg1;
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1;
@@ -30,12 +29,12 @@
 - (void)update;
 - (void)viewDidLoad;
 - (BOOL)representedObjectsExist;
-- (list_4c5ca08a *)objectList;
+- (list_281b6609 *)objectList;
 - (struct OZScene *)scene;
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (void)moduleViewWasInstalled:(id)arg1;
 - (void)dealloc;
-- (id)initWithObjectList:(list_e68da02e *)arg1;
+- (id)initWithObjectList:(list_2b134d54 *)arg1;
 
 @end
 

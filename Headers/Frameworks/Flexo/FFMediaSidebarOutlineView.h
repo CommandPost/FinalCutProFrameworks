@@ -6,10 +6,15 @@
 
 #import "LKOutlineView.h"
 
+#import "NSDraggingDestination.h"
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface FFMediaSidebarOutlineView : LKOutlineView
+@interface FFMediaSidebarOutlineView : LKOutlineView <NSDraggingDestination>
 {
     BOOL _isHandlingTabKeyDown;
+    BOOL _ignoreDraggingExited;
 }
 
 - (BOOL)isHandlingTabKeyDown;
@@ -17,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)_postRootDidDepopulate;
 - (id)menuForEvent:(id)arg1;
 - (void)keyDown:(id)arg1;
-- (void)highlightSelectionInClipRect:(struct CGRect)arg1;
 - (id)_selectionGradient;
 - (struct CGRect)frameOfCellAtColumn:(long long)arg1 row:(long long)arg2;
 - (struct CGRect)frameOfOutlineCellAtRow:(long long)arg1;
@@ -32,6 +36,15 @@ __attribute__((visibility("hidden")))
 - (void)setDelegate:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;
+- (void)draggingEnded:(id)arg1;
+- (void)draggingExited:(id)arg1;
+- (unsigned long long)draggingEntered:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,11 +8,11 @@
 
 @interface OZTimelineKeyframesDragMapWrapper : NSObject
 {
-    map_984ba245 *_map;
+    map_33eda3c7 *_map;
 }
 
-- (map_984ba245 *)getMap;
-- (id)initWithMap:(map_984ba245 *)arg1;
+- (map_33eda3c7 *)getMap;
+- (id)initWithMap:(map_33eda3c7 *)arg1;
 - (void)dealloc;
 
 @end

@@ -15,12 +15,14 @@
 }
 
 + (Class)enableButtonClass;
+- (void)setDisclosureTriangleIndentLevel:(id)arg1;
 - (void)setIsDisclosureButtonHidden:(BOOL)arg1;
 - (void)enableObject:(id)arg1;
 - (void)setEnable:(id)arg1;
 - (void)toggleDisclosure:(id)arg1;
 - (void)setBold:(BOOL)arg1;
 - (id)makeLabelTextWithFrame:(struct CGRect)arg1 context:(id)arg2;
+- (BOOL)hasVisibleDisclosureTriangle;
 - (void)didBuildUI;
 - (void)disable;
 - (void)enable;

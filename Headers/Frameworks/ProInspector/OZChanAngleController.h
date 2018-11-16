@@ -6,17 +6,19 @@
 
 #import <ProInspector/OZCommonScrubberController.h>
 
-@class LKDial, LKTextField, PISegmentedScrubber;
+@class LKTextField, NSSlider, PIClockToGeometricAngleTransformer, PISegmentedScrubber;
 
 @interface OZChanAngleController : OZCommonScrubberController
 {
     PISegmentedScrubber *_pTF;
-    LKDial *_pDial;
+    NSSlider *_pDial;
     LKTextField *_pSuffixTF;
+    PIClockToGeometricAngleTransformer *_pAngleTransformer;
     _Bool _isOffsetting;
-    struct vector<double, std::allocator<double>> *_pMouseDownValues;
+    struct vector<double, std::__1::allocator<double>> *_pMouseDownValues;
 }
 
+- (float)suggestedMinParamWidth;
 - (void)setChannelValue:(id)arg1;
 - (void)disable;
 - (void)enable;
@@ -32,6 +34,7 @@
 - (id)connectKeyViewsRec:(id)arg1;
 - (id)lastKeyView;
 - (id)firstKeyView;
+- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end

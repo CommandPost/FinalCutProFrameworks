@@ -7,15 +7,17 @@
 #import "NSObject.h"
 
 #import "FxHostPrivateAPI.h"
+#import "FxRenderModelAPIPrivate.h"
 #import "PROAPIObject.h"
 
 @class NSString;
 
-@interface OZFxPlugHostPrivateAPI : NSObject <PROAPIObject, FxHostPrivateAPI>
+@interface OZFxPlugHostPrivateAPI : NSObject <PROAPIObject, FxHostPrivateAPI, FxRenderModelAPIPrivate>
 {
     struct OZFxPlugSharedBase *_plugin;
 }
 
+- (float)blendingGamma;
 - (BOOL)giveEffectUIFocus;
 - (BOOL)navigateToTime:(CDUnion_2516e51e)arg1;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;

@@ -11,7 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (CDStruct_c3b9c2ee)locationForMediaObject:(id)arg1;
++ (void)revealMediaObjects:(id)arg1 forLibrary:(int)arg2;
++ (BOOL)canRevealMediaObjectsInFinder:(id)arg1;
++ (BOOL)canRevealMediaPathInFinder:(id)arg1;
++ (BOOL)canRevealMediaObjects:(id)arg1 forLibrary:(int)arg2;
++ (BOOL)canRevealMediaObject:(id)arg1 forLibrary:(int)arg2;
++ (id)originalMediaPathFromMediaObject:(id)arg1;
++ (struct CLLocationCoordinate2D)locationForMediaObject:(id)arg1;
 + (id)predicateForPlacesContaining:(id)arg1 libraryType:(int)arg2;
 + (id)predicateForObjectFavoriteMatching:(BOOL)arg1 libraryType:(int)arg2;
 + (id)predicateForObjectFlaggedMatching:(BOOL)arg1 libraryType:(int)arg2;
@@ -28,7 +34,7 @@ __attribute__((visibility("hidden")))
 + (id)searchTooltipForLibraryType:(int)arg1;
 + (id)displayNameForGroups:(id)arg1 plugin:(id)arg2;
 + (id)_clusteredNamesForGroups:(id)arg1 plugin:(id)arg2;
-+ (CDStruct_c3b9c2ee)centerCoordinateForCoordinateValues:(id)arg1 weights:(id)arg2;
++ (struct CLLocationCoordinate2D)centerCoordinateForCoordinateValues:(id)arg1 weights:(id)arg2;
 + (id)localizedToolTipForGroupType:(int)arg1;
 + (id)localizedStringForGroupType:(int)arg1;
 + (id)groupsOfTypes:(id)arg1 plugin:(id)arg2 includeEmptyGroups:(BOOL)arg3;
@@ -44,7 +50,8 @@ __attribute__((visibility("hidden")))
 + (int)libraryTypeForPlugin:(id)arg1;
 + (id)pluginForLibraryType:(int)arg1;
 + (int)photoLibraryTypeForILifeMediaGroup:(id)arg1;
-+ (BOOL)photoLibraryAvailiableForType:(int)arg1;
++ (BOOL)photoLibraryAvailableForType:(int)arg1;
++ (void)loadPhotoLibraryForType:(int)arg1;
 
 @end
 

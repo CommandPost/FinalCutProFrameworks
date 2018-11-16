@@ -6,18 +6,18 @@
 
 #import "NSView.h"
 
-@class NSProThemeFacet;
+@class NSImage;
 
 @interface FFIMovieHeaderView : NSView
 {
-    NSProThemeFacet *_middleThemeFacet;
-    NSProThemeFacet *_topThemeFacet;
+    NSImage *_middleThemeFacetImage;
+    NSImage *_topThemeFacetImage;
 }
 
 - (id)hitTest:(struct CGPoint)arg1;
 - (void)drawRect:(struct CGRect)arg1;
-@property(readonly, nonatomic) NSProThemeFacet *topThemeFacet; // @synthesize topThemeFacet=_topThemeFacet;
-@property(readonly, nonatomic) NSProThemeFacet *middleThemeFacet; // @synthesize middleThemeFacet=_middleThemeFacet;
+@property(readonly, nonatomic) NSImage *topThemeFacetImage; // @synthesize topThemeFacetImage=_topThemeFacetImage;
+@property(readonly, nonatomic) NSImage *middleThemeFacetImage; // @synthesize middleThemeFacetImage=_middleThemeFacetImage;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

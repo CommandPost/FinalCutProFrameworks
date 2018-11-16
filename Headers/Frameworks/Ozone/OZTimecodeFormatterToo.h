@@ -4,21 +4,28 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProTimecodeFormatter.h"
+#import "LKTimecodeFormatter.h"
 
-@interface OZTimecodeFormatterToo : NSProTimecodeFormatter
+@interface OZTimecodeFormatterToo : LKTimecodeFormatter
 {
     BOOL _isDuration;
     long long _startingFrame;
+    unsigned long long _minimumDigits;
 }
 
+@property(nonatomic) unsigned long long minimumDigits; // @synthesize minimumDigits=_minimumDigits;
 @property(nonatomic) BOOL isDuration; // @synthesize isDuration=_isDuration;
+- (struct _NSRange)substringRangeForSegmentWithTag:(long long)arg1 inObjectValue:(id)arg2;
 - (void)_invalidateObservation;
 - (void)_setupObservation;
 - (void)_setupInitialValues;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
 - (id)stringForObjectValue:(id)arg1;
+- (id)stringForObjectValue:(id)arg1 padWithZeroes:(BOOL)arg2;
+- (id)padWithZeroes:(id)arg1;
+- (unsigned long long)numPaddingZeroes:(id)arg1;
+- (struct _NSRange)secondaryColorRange:(id)arg1;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

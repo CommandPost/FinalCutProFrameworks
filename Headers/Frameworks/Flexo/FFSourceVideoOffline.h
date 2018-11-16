@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 
 + (Class)streamClass;
 + (id)type;
-- (id).cxx_construct;
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (CDStruct_1b6d18a9)fileTrackDuration;
 - (CDStruct_1b6d18a9)timecodeOffset;

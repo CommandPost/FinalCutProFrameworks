@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     double _gamma;
     double _gain;
     double _saturation;
-    double _hueShift;
     double _blackBalX;
     double _blackBalY;
     double _whiteBalX;
@@ -30,7 +29,6 @@ __attribute__((visibility("hidden")))
 @property double whiteBalX; // @synthesize whiteBalX=_whiteBalX;
 @property double blackBalY; // @synthesize blackBalY=_blackBalY;
 @property double blackBalX; // @synthesize blackBalX=_blackBalX;
-@property double hueShift; // @synthesize hueShift=_hueShift;
 @property double saturation; // @synthesize saturation=_saturation;
 @property double gain; // @synthesize gain=_gain;
 @property double gamma; // @synthesize gamma=_gamma;

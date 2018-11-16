@@ -6,32 +6,30 @@
 
 #import <Flexo/FFOrganizerFilterHUDTileModule.h>
 
-@class LKButtonCell, LKPopUpButton, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSProMatrix;
+@class LKPopUpButton, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilterHUDRoleTileModule : FFOrganizerFilterHUDTileModule
 {
-    NSArray *_roleSetsArray;
-    NSMutableSet *_selectedRolesSet;
+    NSMutableSet *_selectedRoleUIDsSet;
     NSMutableArray *_videoRoleCheckBoxes;
     NSMutableArray *_audioRoleCheckBoxes;
-    NSMutableDictionary *_checkBoxDictionary;
-    NSMutableDictionary *_keywordCheckBoxDictionary;
+    NSMutableArray *_allRolesCheckBoxes;
+    NSMutableArray *_roleCheckBoxes;
+    NSMutableDictionary *_roleByCheckBoxTagDictionary;
     LKPopUpButton *_comparisonPopup;
     LKPopUpButton *_selectionPopup;
-    NSProMatrix *_keywordMatrix;
-    LKButtonCell *_checkBoxCell;
 }
 
-@property(retain, nonatomic) NSMutableSet *selectedRolesSet; // @synthesize selectedRolesSet=_selectedRolesSet;
-@property(retain, nonatomic) NSArray *roleSetsArray; // @synthesize roleSetsArray=_roleSetsArray;
-- (void)keywordButtonClicked:(id)arg1;
+@property(retain, nonatomic) NSMutableSet *selectedRoleUIDsSet; // @synthesize selectedRoleUIDsSet=_selectedRoleUIDsSet;
+- (void)roleCheckBoxClicked:(id)arg1;
 - (id)comparisonTypesAllowed;
-- (void)deselectAllKeywords:(id)arg1;
-- (void)selectAllKeywords:(id)arg1;
-- (void)_setAllToState:(unsigned long long)arg1;
-- (id)tileTypeFacet;
-- (void)setRoleSets:(id)arg1 selectedRoles:(id)arg2;
+- (void)uncheckAllRoles:(id)arg1;
+- (void)checkAllRoles:(id)arg1;
+- (void)_checkAllRoles:(BOOL)arg1;
+- (id)tileGlyphString;
+- (void)syncCheckboxStatesToSelectedRoleUIDs;
+- (void)updateWithSelectedRoleUIDs:(id)arg1;
 - (void)setFilterDict:(id)arg1;
 - (id)filterDict;
 - (void)dealloc;

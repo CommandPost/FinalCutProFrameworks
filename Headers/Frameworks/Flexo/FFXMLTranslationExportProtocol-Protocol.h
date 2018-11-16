@@ -4,7 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFLibrary, NSArray, NSImage, NSNumber, NSString, NSURL;
+@class FFLibrary, FFXMLExportOptions, NSArray, NSData, NSImage, NSNumber, NSString, NSURL, NSXMLDocument;
 
 @protocol FFXMLTranslationExportProtocol
 - (NSArray *)selectedSequences;
@@ -12,7 +12,11 @@
 - (NSString *)defaultFilename;
 - (NSImage *)windowSourceIcon;
 - (NSString *)windowSourceName;
+- (FFLibrary *)libraryForExport;
 - (NSArray *)librariesForExport;
+- (NSData *)exportXMLDataForLibrary:(FFLibrary *)arg1 replace:(BOOL)arg2 usingVersion:(NSNumber *)arg3 withMetadataViewSet:(NSString *)arg4 taskDelegate:(id <FFXMLTaskDelegate>)arg5 error:(id *)arg6;
+- (NSString *)exportXMLStringForLibrary:(FFLibrary *)arg1 replace:(BOOL)arg2 usingVersion:(NSNumber *)arg3 withMetadataViewSet:(NSString *)arg4 taskDelegate:(id <FFXMLTaskDelegate>)arg5 error:(id *)arg6;
 - (BOOL)exportXMLForLibrary:(FFLibrary *)arg1 toURL:(NSURL *)arg2 replace:(BOOL)arg3 usingVersion:(NSNumber *)arg4 withMetadataViewSet:(NSString *)arg5 taskDelegate:(id <FFXMLTaskDelegate>)arg6 error:(id *)arg7;
+- (NSXMLDocument *)newXMLDocumentForLibrary:(FFLibrary *)arg1 withOptions:(FFXMLExportOptions *)arg2 taskDelegate:(id <FFXMLTaskDelegate>)arg3 error:(id *)arg4;
 @end
 

@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 + (id)effectInstanceForEffectStack:(id)arg1;
 + (id)effectIDForEffectStack:(id)arg1;
 + (id)copyClassDescription;
-- (id).cxx_construct;
 - (void)loadPersistentData:(id)arg1;
 - (void)setPersistentData:(id)arg1;
 - (id)persistentData;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)mediaFrameDuration;
 - (CDStruct_1b6d18a9)sourceSampleDuration;
 - (CDStruct_e83c9415)untimeRange:(CDStruct_e83c9415)arg1;
+- (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1 constrainToMediaRange:(BOOL)arg2;
 - (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_e83c9415)retimeRange:(CDStruct_e83c9415)arg1;
 - (CDStruct_1b6d18a9)retime:(CDStruct_1b6d18a9)arg1;

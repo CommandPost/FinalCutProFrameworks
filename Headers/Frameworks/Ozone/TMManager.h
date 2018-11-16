@@ -42,7 +42,7 @@
 - (BOOL)renameCollection:(id)arg1 name:(id)arg2;
 - (BOOL)trashCollection:(id)arg1;
 - (id)collectionForPath:(id)arg1;
-- (id)createCollectionWithName:(id)arg1 inCollection:(id)arg2;
+- (id)newCollectionWithName:(id)arg1 inCollection:(id)arg2;
 - (BOOL)isUniqueCollectionName:(id)arg1;
 - (id)generateUniqueCollectionName;
 - (id)collectionPathWithDomainMask:(unsigned long long)arg1;

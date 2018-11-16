@@ -4,20 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKThemeBackedLayer.h>
+#import "CALayer.h"
 
 #import "TLKAccessibilityProtocol.h"
 
 @class NSMutableArray;
 
-@interface TLKAbstractPrecisionEditorDividerBar : TLKThemeBackedLayer <TLKAccessibilityProtocol>
+@interface TLKAbstractPrecisionEditorDividerBar : CALayer <TLKAccessibilityProtocol>
 {
     NSMutableArray *_editPointLayers;
 }
 
-+ (double)dividerBarHeight;
 + (double)heightOfBar;
-+ (id)backgroundThemeFacet;
 + (Class)dividerBarLayerClass;
 + (void)setDividerBarClassLayer:(Class)arg1;
 - (void)accessibilityPerformAction:(id)arg1;
@@ -37,13 +35,16 @@
 - (id)accessibilityDescription;
 - (id)accessibilityRole;
 - (id)accessibilityPartAtPoint:(struct CGPoint)arg1;
+- (void)_enumerateEditPointsForContainerInfo:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_createEditPointLayersIfNecessary;
 - (void)layoutSublayers;
-- (double)offsetOfLastItem;
-- (double)offsetItem:(id)arg1 previousItem:(id)arg2;
+- (double)editPointOffset;
+- (double)editPointOffsetBeforeItem:(id)arg1;
 - (struct CGSize)preferredFrameSize;
 - (id)timelineView;
 - (void)dealloc;
 - (id)init;
+- (id)nameForRootLayerMicaArchive;
 
 @end
 

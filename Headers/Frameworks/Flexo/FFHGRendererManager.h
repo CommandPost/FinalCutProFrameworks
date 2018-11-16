@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-@class FFRendererPool, NSMutableArray;
+@class NSCondition, NSMutableArray;
 
 @interface FFHGRendererManager : NSObject
 {
-    FFRendererPool *_cpuRendererPool;
-    NSMutableArray *_gpuRendererPoolArray;
+    NSMutableArray *_rendererInfos;
+    NSCondition *_cond;
     BOOL _doLinear;
 }
 
@@ -21,6 +21,7 @@
 + (int)getPrimaryGPUImageLocation;
 + (id)sharedManager;
 - (unsigned long long)getMaximumVRAMOfAttachedGPUs;
+- (unsigned long long)getVRAMOfGPU:(unsigned int)arg1;
 - (const char *)getVendorNameOfGPU:(unsigned int)arg1;
 - (_Bool)hasOnlyIntegratedGPUs;
 - (_Bool)hasGPUPreventingMotionCompensatedDeinterlacing;
@@ -37,10 +38,12 @@
 - (BOOL)processLinear;
 - (_Bool)threadHoldsImmediateModeRenderer;
 - (void)releaseRenderer:(id)arg1;
+- (id)getRendererIfAvailable:(struct HGRenderer *)arg1;
 - (id)rendererForLocation:(int)arg1;
-- (id)rendererPoolForLocation:(int)arg1;
 - (int)resolveIfSingleImageLocation:(int)arg1;
 - (void)dealloc;
+- (void)_ensureRenderersSetup;
+- (void)_setupRenderers;
 - (id)init;
 
 @end

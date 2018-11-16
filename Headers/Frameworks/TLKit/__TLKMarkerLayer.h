@@ -4,14 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKThemeBackedLayer.h>
+#import "CALayer.h"
 
-@interface __TLKMarkerLayer : TLKThemeBackedLayer
+@interface __TLKMarkerLayer : CALayer
 {
     CDStruct_1b6d18a9 _markerTime;
 }
 
-@property CDStruct_1b6d18a9 markerTime; // @synthesize markerTime=_markerTime;
+@property(nonatomic) CDStruct_1b6d18a9 markerTime; // @synthesize markerTime=_markerTime;
+- (id)description;
 - (id)init;
 
 @end

@@ -12,7 +12,7 @@
 
 @interface OZMotionPathHUDController : OZAutoHUDController <OZUISupervisor>
 {
-    struct list<OZMotionPathBehavior *, std::allocator<OZMotionPathBehavior *>> *_pBehaviors;
+    struct list<OZMotionPathBehavior *, std::__1::allocator<OZMotionPathBehavior *>> *_pBehaviors;
     OZViewController *_pVelocityCtrl;
     OZViewController *_pFrequencyCtrl;
     OZViewController *_pFrequencyModeCtrl;
@@ -23,10 +23,10 @@
 - (void)viewDidLoad;
 - (void)hideAndShowForShape:(unsigned int)arg1;
 - (void)notify:(unsigned int)arg1;
-- (void)buildUIWithObjectList:(list_4c5ca08a *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)buildUIWithObjectList:(list_281b6609 *)arg1 viewController:(id)arg2 context:(id)arg3;
 - (void)channelChanged:(struct OZChannelBase *)arg1 groupController:(id)arg2 time:(CDStruct_1b6d18a9)arg3 qualifiers:(int)arg4;
 - (void)dealloc;
-- (id)initWithObjectList:(list_e68da02e *)arg1;
+- (id)initWithObjectList:(list_2b134d54 *)arg1;
 
 @end
 

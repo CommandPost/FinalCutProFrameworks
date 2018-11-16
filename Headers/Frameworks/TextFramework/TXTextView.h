@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSTextView.h"
+#import "LKTextView.h"
 
 @class FFAnchoredTimelineModule, TXTextViewController;
 
-@interface TXTextView : NSTextView
+@interface TXTextView : LKTextView
 {
     TXTextViewController *_controller;
     FFAnchoredTimelineModule *_timelineModule;
@@ -24,6 +24,7 @@
 - (void)closeOpenUndoGroup;
 - (BOOL)resignFirstResponder;
 - (BOOL)becomeFirstResponder;
+- (id)touchBar;
 - (id)colorFactory;
 - (BOOL)isFieldEditor;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

@@ -6,9 +6,10 @@
 
 #import "NSObject.h"
 
-@class FFMDPhotoAbstractViewController, NSArray;
+@class FFMDPhotoAbstractViewController, NSArray, NSString;
 
 @protocol FFMDPhotoViewControllerDelegate <NSObject>
+- (NSString *)mediaBrowserIdentifier;
 - (BOOL)editActionAllowed;
 - (id)delegate;
 - (void)setSelectedItems:(NSArray *)arg1;

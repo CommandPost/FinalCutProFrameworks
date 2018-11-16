@@ -34,6 +34,7 @@
 + (id)keyPathsForValuesAffectingImage;
 + (id)keyPathsForValuesAffectingPresetDescription;
 + (id)keyPathsForValuesAffectingVideoCodecType;
++ (id)keyPathsForValuesAffectingIsExportingBroadcast;
 + (id)keyPathsForValuesAffectingIsExportingPublishing;
 + (id)keyPathsForValuesAffectingIsExportingMastering;
 + (id)keyPathsForValuesAffectingIsExportingRoles;
@@ -66,6 +67,7 @@
 - (void)setVideoStompSettings:(id)arg1 applyPreset:(BOOL)arg2;
 - (void)setAudioStompSetting:(id)arg1 applyPreset:(BOOL)arg2;
 - (void)setAudioStompSettings:(id)arg1 applyPreset:(BOOL)arg2;
+- (BOOL)isExportingBroadcast;
 - (BOOL)isExportingPublishing;
 - (BOOL)isExportingMastering;
 - (BOOL)isExportingRoles;
@@ -73,11 +75,13 @@
 - (BOOL)isExportingVideo;
 - (id)targetFileNameSuffix;
 - (BOOL)requiresTargetDestinationURL;
-- (long long)iconIndex;
 - (id)iconTitle;
+- (id)smallImage;
 - (id)largeImage;
+- (id)pressedImage;
 - (id)image;
 - (id)customImage;
+- (void)clearCustomImage;
 - (void)setIsHelperApplicationForCurrentAction;
 - (id)_helperApp;
 - (void)setAction:(id)arg1;

@@ -32,8 +32,8 @@
 }
 
 @property BOOL useFullMediaRange; // @synthesize useFullMediaRange=_useFullMediaRange;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (BOOL)syncAngles:(BOOL)arg1 syncItems:(BOOL)arg2 taskCanceled:(char *)arg3;
 - (BOOL)syncItems:(char *)arg1;
 - (BOOL)syncAngles:(char *)arg1;

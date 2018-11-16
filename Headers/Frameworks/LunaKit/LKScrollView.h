@@ -4,15 +4,27 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProScrollView.h"
+#import "NSScrollView.h"
 
-@interface LKScrollView : NSProScrollView
+@class NSColor;
+
+@interface LKScrollView : NSScrollView
 {
+    NSColor *_cornerBackgroundColor;
+    NSColor *_cornerBorderColor;
+    unsigned long long _cornerBorderWidth;
+    BOOL _isOverlayScrollView;
 }
 
-+ (Class)_verticalScrollerClass;
-+ (Class)_horizontalScrollerClass;
-+ (Class)scrollerClass;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)setupOverlayScrollers;
+- (void)setupWithOverlayScrollers;
+- (void)setScrollerStyle:(long long)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_commonInit;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
 
 @end
 

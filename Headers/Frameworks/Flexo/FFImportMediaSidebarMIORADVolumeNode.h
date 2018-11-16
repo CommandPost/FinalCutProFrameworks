@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)updateState;
 - (void)volumeWillEject:(id)arg1;
 - (void)eject:(id)arg1;
+- (void)cancelMount:(id)arg1;
 - (id)volume;
 - (id)iconImage:(BOOL)arg1;
 - (id)persistentID;

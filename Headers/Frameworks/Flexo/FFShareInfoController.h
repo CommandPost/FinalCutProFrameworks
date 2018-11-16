@@ -68,9 +68,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFShareInfoView *shareInfoView; // @synthesize shareInfoView=_shareInfoView;
 @property(retain, nonatomic) CKSetting *setting; // @synthesize setting=_setting;
 @property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
-- (id)contentsAnimationWithLayer:(id)arg1 infoBarIcon:(long long)arg2;
+- (id)contentsAnimationWithLayer:(id)arg1 infoBarImageName:(id)arg2;
 - (id)contentsAnimation;
-- (id)infoBarIcon:(long long)arg1 state:(long long)arg2;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)stopObservingStompSettings:(id)arg1;
 - (void)startObservingStompSettings:(id)arg1;

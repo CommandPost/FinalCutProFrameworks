@@ -4,26 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProPopUpButtonCell.h"
+#import "NSPopUpButtonCell.h"
 
-@class NSProThemeFacet;
-
-@interface LKPopUpButtonCell : NSProPopUpButtonCell
+@interface LKPopUpButtonCell : NSPopUpButtonCell
 {
-    NSProThemeFacet *customFacet;
-    unsigned long long tintIndex;
     unsigned int hasSetTintIndex:1;
 }
 
-- (long long)themeStateInView:(id)arg1;
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
 - (struct CGRect)titleRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)drawingRectForBounds:(struct CGRect)arg1;
-- (id)_textColor;
-- (id)textColor;
-- (id)_baseFacet;
-@property unsigned long long tintIndex;
-@property(retain) NSProThemeFacet *customFacet;
 - (void)dealloc;
 
 @end

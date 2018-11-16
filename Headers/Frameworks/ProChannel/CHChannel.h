@@ -79,7 +79,7 @@
 - (void)retimeKeyframesWithScale:(double)arg1;
 - (BOOL)moveKeyframeAtTime:(CDStruct_198678f7)arg1 toTime:(CDStruct_198678f7)arg2;
 - (BOOL)removeKeyframeAtTime:(CDStruct_198678f7)arg1;
-- (void)removeAllKeyframes;
+- (void)removeAllKeyframes:(unsigned long long)arg1;
 - (BOOL)hasKeyframeAtTime:(CDStruct_198678f7)arg1;
 - (unsigned long long)keyframeCount;
 - (struct OZChannel *)ozChannel;

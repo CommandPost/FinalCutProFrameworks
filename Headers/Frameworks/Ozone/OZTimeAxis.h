@@ -26,7 +26,6 @@
     double _lastPixelsPerSecond;
 }
 
-- (id).cxx_construct;
 - (id)formatter;
 - (id)timingCoordinator;
 - (void)postFrameChanged:(BOOL)arg1;
@@ -41,19 +40,14 @@
 - (BOOL)oz_mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)mouseMoved:(id)arg1;
-- (struct CGRect)playRangeEndRect;
-- (struct CGRect)playRangeBeginRect;
-- (struct CGRect)playHeadRect;
 - (void)drawPlayhead:(struct CGRect)arg1;
 - (void)drawForeground:(struct CGRect)arg1;
 - (void)drawMidground:(struct CGRect)arg1;
-- (BOOL)hasTimebarShadow;
 - (void)drawBackground:(struct CGRect)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawPlayRangeHandles;
-- (id)inactiveRangeFacet;
-- (id)outPointFacet:(BOOL)arg1;
-- (id)inPointFacet:(BOOL)arg1;
+- (id)outPointImage;
+- (id)inPointImage;
 - (void)pause;
 - (void)play;
 - (BOOL)isPlaying;

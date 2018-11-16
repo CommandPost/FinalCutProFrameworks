@@ -6,15 +6,14 @@
 
 #import "CALayer.h"
 
-@class NSProThemeFacet, TLKThemeBackedLayer;
+@class TLKImageLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFSpeedTransitionLayer : CALayer
 {
     id _item;
     BOOL _isModelLayer;
-    TLKThemeBackedLayer *_backgroundLayer;
-    NSProThemeFacet *_transitionFacet;
+    TLKImageLayer *_backgroundLayer;
     CDStruct_e83c9415 _timeRange;
     struct CGSize _themeFacetImageSize;
     struct CGSize _themeFacetBottomLeft;

@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 @property(retain, nonatomic) FFAnchoredObject *rootObject; // @synthesize rootObject=_rootObject;
 - (void)dealloc;
-- (void)clearTempFilesFromEventFileSystem;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

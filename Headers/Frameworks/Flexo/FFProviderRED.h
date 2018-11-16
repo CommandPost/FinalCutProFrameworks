@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 + (Class)getPluginClass;
 + (id)extensions;
 + (id)utis;
-- (id).cxx_construct;
 - (id)displayName;
 - (id)clip;
 - (id)sidecarFileURL;

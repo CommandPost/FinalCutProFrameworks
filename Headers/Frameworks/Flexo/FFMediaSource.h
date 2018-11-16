@@ -14,8 +14,9 @@
     NSArray *m_audioChannelRoutingMap;
 }
 
++ (void)update_convertMergedClipMediaComponentsForObject:(id)arg1;
 + (id)newClipLayoutForMediaSources:(id)arg1 andMediaSourceChannels:(id)arg2;
-+ (id)newClipLayoutItemForMediaSource:(id)arg1 andMediaSourceChannels:(id)arg2;
++ (id)newClipLayoutItemForMediaSource:(id)arg1 andMediaSourceChannels:(id)arg2 useDefaultSourceEnable:(BOOL)arg3;
 + (id)inferAudioSourceDictForAssetID:(id)arg1 withMediaComponents:(id)arg2;
 + (id)mediaForMediaSourceObject:(id)arg1;
 + (id)defaultMediaSourceDescriptionsForAudioSourcePropertiesMap:(id)arg1 usingMedia:(id)arg2;
@@ -25,8 +26,9 @@
 + (id)audioMediaSourcesForObject:(id)arg1;
 + (id)mediaSourcesForObject:(id)arg1;
 + (id)mediaSourcesForObject:(id)arg1 forSourceTypes:(id)arg2;
-+ (id)audioMediaSourceChannelsForObject:(id)arg1;
-+ (id)mediaSourceChannelsForObject:(id)arg1 forSourceTypes:(id)arg2;
++ (id)sortedAudioMediaSourceChannelsForObject:(id)arg1;
++ (id)defaultAudioMediaSourceChannelsForObject:(id)arg1;
++ (id)defaultMediaSourceChannelsForObject:(id)arg1 forSourceTypes:(id)arg2;
 + (id)defaultMediaSourcesForObject:(id)arg1 forSourceTypes:(id)arg2;
 + (id)audioVideoItemsForObject:(id)arg1;
 + (id)defaultSourceDescriptionsForMedia:(id)arg1 sourceKey:(id)arg2;
@@ -37,14 +39,16 @@
 - (void)_channelsChanged;
 - (id)backingAnchoredObject;
 - (id)copySourceDescription;
+- (void)setRole:(id)arg1;
+- (id)role;
 - (void)setChannels:(id)arg1;
+- (id)channels;
 - (void)setPlayEnable:(int)arg1;
 - (int)playEnable;
 - (void)setSourceName:(id)arg1;
 - (id)sourceName;
 - (BOOL)isSourceType:(id)arg1;
 - (id)sourceType;
-- (id)channels;
 - (BOOL)isEquivalentSourceTo:(id)arg1;
 - (id)description;
 - (void)dealloc;

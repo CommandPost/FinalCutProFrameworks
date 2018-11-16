@@ -6,16 +6,18 @@
 
 #import <Flexo/FFAudioObjectComponentsLayoutMap.h>
 
-@class FFAudioComponentsLayout, NSArray, NSMapTable;
+@class FFAudioComponentsLayout, NSArray, NSMapTable, NSRecursiveLock;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioClipComponentsLayoutMap : FFAudioObjectComponentsLayoutMap
 {
+    int m_cachedClipType;
+    NSRecursiveLock *m_cachedClipTypeLock;
     FFAudioComponentsLayout *m_primaryLayout;
     FFAudioComponentsLayout *m_auxLayout;
-    unsigned int m_layoutType;
     NSArray *m_cachedAvailableMediaSources;
     NSArray *m_cachedAvailableMediaSourceChannels;
+    NSRecursiveLock *m_cachedAvailableMediaSourcesLock;
     NSMapTable *m_cachedReferenceLayouts;
 }
 
@@ -23,27 +25,36 @@ __attribute__((visibility("hidden")))
 + (id)copyClassDescription;
 @property(retain, nonatomic) FFAudioComponentsLayout *auxLayout; // @synthesize auxLayout=m_auxLayout;
 @property(retain, nonatomic) FFAudioComponentsLayout *primaryLayout; // @synthesize primaryLayout=m_primaryLayout;
-- (void)setLocalLayout:(id)arg1 forKey:(id)arg2;
-- (void)removeLocalLayoutForKey:(id)arg1;
+- (BOOL)isEqualToLayoutMap:(id)arg1;
+- (void)storeLocalLayout:(id)arg1 forKey:(id)arg2;
 - (id)localLayoutForKey:(id)arg1;
 - (id)allLocalKeys;
+- (void)_allocateCaches;
+- (void)_clearCaches;
 - (void)cachedAvailableMediaSources:(id *)arg1 andChannels:(id *)arg2;
 - (void)setCachedAvailableMediaSources:(id)arg1 andChannels:(id)arg2;
-- (void)notifyDelegateContainedItemsChanged;
-- (void)notifyReferenceLayoutMapChanged:(id)arg1;
-- (id)referenceRolesForKey:(id)arg1 layoutItemKey:(id)arg2;
+- (void)delegateRolesChanged:(id)arg1;
+- (void)delegateContainedItemsChanged;
+- (void)referenceLayoutMapChanged:(id)arg1;
+- (id)referenceRoleForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (id)referenceAudioComponentsLayoutForKey:(id)arg1;
 - (void)_clearCachedReferenceLayouts;
 - (id)_clipReferenceAudioComponentsLayoutForKey:(id)arg1;
 - (id)allReferenceKeys;
-- (BOOL)isPrimordialClipLayoutMap;
-- (void)demandLayoutType;
-- (void)updateLayoutType;
+- (void)setPersistedLayoutMode:(int)arg1;
+- (void)resetLayoutMap;
+- (BOOL)isLayoutMapEnabled;
+- (BOOL)isLegacyCompoundClipLayoutMap;
+- (BOOL)isCompoundClipLayoutMap;
+- (void)_updateClipType;
+- (void)resetClipType;
+- (int)clipType;
+- (int)_findClipType;
 - (BOOL)isReferenceLayoutMap;
-- (id)newAudioComponentSourceForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (BOOL)hasEnabledLayoutItems;
 - (id)sortKeys:(id)arg1;
 - (id)clip;
+- (void)setDelegate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

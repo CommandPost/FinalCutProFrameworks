@@ -22,13 +22,14 @@ __attribute__((visibility("hidden")))
     BOOL _verbose;
 }
 
++ (id)getAnalysisFormatAndWorkingSpace:(int *)arg1;
 @property(nonatomic) BOOL isReady; // @synthesize isReady=_isReady;
 @property(nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 @property(retain, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObj;
 @property(retain, nonatomic) FFFaceDetectionInfo *faceDetectionInfo; // @synthesize faceDetectionInfo=_faceDetectionInfo;
 - (void)canceledTask:(id)arg1;
-- (id)librariesInUse;
-- (id)assetsInUse;
+- (id)librariesInUse:(id)arg1;
+- (id)assetsInUse:(id)arg1;
 - (id)faceInfoDictAtTime:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 verbose:(BOOL)arg3;
 - (void)faceDetectionOnBackgroundThreadDone;
 - (void)faceDetectionOnBackgroundThread:(id)arg1 onTask:(id)arg2;

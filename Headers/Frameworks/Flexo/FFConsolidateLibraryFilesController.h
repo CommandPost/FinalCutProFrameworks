@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)consolidateFilesInEvents:(id)arg1;
 - (void)consolidateFilesInLibrary:(id)arg1;
 - (BOOL)consolidateMedia:(id)arg1 fromProject:(id)arg2 library:(id)arg3 taskName:(id)arg4 preparationName:(id)arg5 options:(int)arg6 hasOfflineFiles:(char *)arg7;
+- (id)externalURLForFile:(id)arg1 project:(id)arg2 createdSymlink:(char *)arg3 error:(id *)arg4;
 - (BOOL)hasDiskSpaceForEvents:(id)arg1 library:(id)arg2 options:(int)arg3;
 - (void)warnAboutError:(int)arg1 forTaskName:(id)arg2 library:(id)arg3 filesExist:(BOOL)arg4;
 - (void)warnAboutError:(id)arg1;

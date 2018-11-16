@@ -24,8 +24,8 @@
     _Bool _capturing;
     int _dragConstraint;
     struct OZTransformNode *_pMouseDownNode;
-    struct set<OZSceneNode *, std::less<OZSceneNode *>, std::allocator<OZSceneNode *>> *_originalSelection;
-    struct map<OZElement *, PCVector2<double>, std::less<OZElement *>, std::allocator<std::pair<OZElement *const, PCVector2<double>>>> *_starts;
+    struct set<OZSceneNode *, std::__1::less<OZSceneNode *>, std::__1::allocator<OZSceneNode *>> *_originalSelection;
+    struct map<OZElement *, PCVector2<double>, std::__1::less<OZElement *>, std::__1::allocator<std::__1::pair<OZElement *const, PCVector2<double>>>> *_starts;
     NSTimer *_keySnapTimer;
     double _startBoundsX1;
     double _startBoundsY1;
@@ -36,7 +36,7 @@
 }
 
 - (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
-- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_7e020609 *)arg2;
+- (void)renderNodeFinished:(struct OZHGRenderNode *)arg1 result:(const shared_ptr_3bf61ddf *)arg2;
 - (void)draw;
 - (BOOL)nudgeRightBig:(id)arg1;
 - (BOOL)nudgeLeftBig:(id)arg1;

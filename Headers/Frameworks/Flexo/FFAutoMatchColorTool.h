@@ -17,8 +17,12 @@
 
 + (id)keyPathsForValuesAffectingAdjustmentsInfoName;
 + (id)toolTip;
-+ (id)toolbarFacetSelected;
-+ (id)toolbarFacet;
++ (id)toolbarFacetSelectedImageMixed;
++ (id)toolbarFacetImageMixed;
++ (id)toolbarFacetSelectedImageOff;
++ (id)toolbarFacetImageOff;
++ (id)toolbarFacetSelectedImageOn;
++ (id)toolbarFacetImageOn;
 + (id)displayName;
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;
@@ -30,12 +34,11 @@
 - (void)toggleAutomaticBalance;
 - (void)_toggleBalanceUsingPreferredState:(BOOL)arg1;
 - (void)checkMediaAvailabilityForItems:(id)arg1;
-- (id)imageForAutoButtonWithState:(long long)arg1;
 - (void)resyncControls;
-- (void)activeToolChanged:(id)arg1;
 - (void)acceptChanges:(id)arg1;
 - (void)resetChanges:(id)arg1;
 - (void)changeCorrection:(id)arg1;
+- (void)_setActiveSubToolClass:(Class)arg1;
 - (void)awakeFromNib;
 - (BOOL)isToolClassOrSubToolClassOf:(Class)arg1;
 - (void)setAdjustmentStateFromDictionary:(id)arg1;
@@ -46,6 +49,8 @@
 - (BOOL)supportsMultipleSelection;
 - (BOOL)allowsEffectOSCs;
 - (BOOL)handlesSelection;
+- (void)subToolWasResigned:(id)arg1;
+- (void)subToolDidBecomeActive:(id)arg1;
 - (BOOL)autoBalanceApplied;
 - (void)toggleAutoCorrection;
 - (void)dealloc;

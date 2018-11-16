@@ -11,9 +11,15 @@
 @interface FFEventRecord : FFLibraryItem
 {
     NSURL *_cacheFolder;
+    int _isHiddenEvent;
 }
 
++ (int)readHiddenDirectoryStatus:(id)arg1 error:(id *)arg2;
++ (BOOL)setHiddenDirectoryStatus:(BOOL)arg1 URL:(id)arg2 error:(id *)arg3;
++ (id)documentType;
++ (id)copyClassDescription;
 @property(retain) NSURL *cacheFolder; // @synthesize cacheFolder=_cacheFolder;
+- (BOOL)update_resetHiddenEvents:(id *)arg1;
 - (BOOL)getKeyThumbnailMD5:(id *)arg1 offset:(long long *)arg2;
 - (id)displayOwnedClips;
 - (id)findCacheFolder:(id)arg1;
@@ -25,11 +31,15 @@
 @property(readonly, nonatomic) NSSet *sequenceRecords;
 @property(readonly, nonatomic) BOOL hasSequenceRecords;
 @property(readonly, nonatomic) FFEventInfo *eventInfo;
+@property(readonly, nonatomic) BOOL isHiddenEvent;
+- (BOOL)isEvent;
 - (void)documentWillClose;
-- (BOOL)removeFiles:(id *)arg1;
 @property(readonly, nonatomic) FFMediaEventProject *project;
-- (id)documentType;
 - (void)dealloc;
+- (id)initWithParent:(id)arg1 name:(id)arg2 hidden:(BOOL)arg3 error:(id *)arg4;
+- (id)initWithParent:(id)arg1 name:(id)arg2 error:(id *)arg3;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

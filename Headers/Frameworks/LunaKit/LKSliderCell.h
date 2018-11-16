@@ -4,14 +4,34 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSProSliderCell.h"
+#import "NSSliderCell.h"
 
-@interface LKSliderCell : NSProSliderCell
+@class NSColor;
+
+@interface LKSliderCell : NSSliderCell
 {
+    struct {
+        unsigned int needToSendEndSliderAction:1;
+        unsigned int reserved:31;
+    } _pscFlags;
+    NSColor *backgroundColor;
+    double _trackCenterValue;
+    unsigned long long _trackFillMode;
+    BOOL _drawCustom;
+    BOOL _lightBackground;
 }
 
-+ (id)_knobFacetForCell:(id)arg1;
-- (id)_baseFacet;
+@property(nonatomic) double trackCenterValue; // @synthesize trackCenterValue=_trackCenterValue;
+@property(nonatomic) unsigned long long trackFillMode; // @synthesize trackFillMode=_trackFillMode;
+@property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor;
+- (void)setDrawCustom:(BOOL)arg1;
+- (void)setLightBackground:(BOOL)arg1;
+- (void)drawKnob:(struct CGRect)arg1;
+- (void)drawBarInside:(struct CGRect)arg1 flipped:(BOOL)arg2;
+- (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
+- (BOOL)_sendActionFrom:(id)arg1;
+- (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

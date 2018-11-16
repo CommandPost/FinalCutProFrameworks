@@ -41,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)_continuousSetValue:(double)arg1;
 - (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
 - (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
-- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)calcTrackRectWithFrame:(struct CGRect)arg1 isFlipped:(BOOL)arg2 parentTrackRect:(struct CGRect)arg3;
 - (struct CGRect)thumbRectWithFrame:(struct CGRect)arg1 isFlipped:(BOOL)arg2 testCollisions:(BOOL)arg3;

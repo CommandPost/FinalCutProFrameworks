@@ -6,11 +6,11 @@
 
 #import "OZViewController.h"
 
-@class NSPopUpButton;
+@class LKPopUpButton;
 
 @interface OZAlphaTypeController : OZViewController
 {
-    NSPopUpButton *_pPopUp;
+    LKPopUpButton *_pPopUp;
 }
 
 - (void)setChannelValue:(id)arg1;

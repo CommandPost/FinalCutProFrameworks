@@ -12,7 +12,6 @@
 }
 
 @property int layerID; // @synthesize layerID=_layerID;
-- (void)addRotationToLayer:(id)arg1 from:(id)arg2 to:(id)arg3 animate:(BOOL)arg4;
 - (id)init;
 
 @end

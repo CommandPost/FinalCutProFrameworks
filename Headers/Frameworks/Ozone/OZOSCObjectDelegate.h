@@ -21,6 +21,8 @@
     BOOL _useAssociatedNode;
 }
 
+- (void)releaseWriteLock;
+- (void)acquireWriteLock;
 - (void)didSelectContextMenuItem;
 - (void)deleteObject;
 - (void)deleteSelectedObjects;
@@ -35,7 +37,7 @@
 - (struct OZChannelFolder *)generatorRoot;
 - (BOOL)absolutePoints;
 - (BOOL)shouldFlip;
-- (void)findCustomGradientChannels:(struct vector<OZChannelRef *, std::allocator<OZChannelRef *>> *)arg1;
+- (void)findCustomGradientChannels:(struct vector<OZChannelRef *, std::__1::allocator<OZChannelRef *>> *)arg1;
 - (BOOL)hasCustomGradientChannels;
 - (BOOL)shouldDrawGradientOSC;
 - (BOOL)switchViewToSelectedCamera;
@@ -52,12 +54,12 @@
 - (BOOL)showRotationOSC;
 - (void)drawGeometry:(_Bool)arg1;
 - (void)drawElementOutline:(const PCMatrix44Tmpl_e98c85ee *)arg1 red:(double)arg2 green:(double)arg3 blue:(double)arg4;
-- (void)clipOutline:(const PCVector2_79efa81a *)arg1 numPoints:(int)arg2 edges:(PCVector2_79efa81a *)arg3 returnVisible:(vector_69938c0b *)arg4;
-- (void)clipPoints:(const vector_8d17e539 *)arg1 returnVisible:(vector_69938c0b *)arg2;
+- (void)clipOutline:(const PCVector2_79efa81a *)arg1 numPoints:(int)arg2 edges:(PCVector2_79efa81a *)arg3 returnVisible:(vector_a7cf9eda *)arg4;
+- (void)clipPoints:(const vector_ced1dec3 *)arg1 returnVisible:(vector_a7cf9eda *)arg2;
 - (void)calculateSnapBounds:(double *)arg1 y1:(double *)arg2 x2:(double *)arg3 y2:(double *)arg4;
 - (PCRect_b601f9f3)getTransformedBounds;
 - (void)getTransformedCorner1:(PCVector2_79efa81a *)arg1 c2:(PCVector2_79efa81a *)arg2 c3:(PCVector2_79efa81a *)arg3 c4:(PCVector2_79efa81a *)arg4;
-- (BOOL)projectPoints:(vector_8d17e539 *)arg1 toSpaceOf:(int)arg2;
+- (BOOL)projectPoints:(vector_ced1dec3 *)arg1 toSpaceOf:(int)arg2;
 - (BOOL)projectPoint:(PCVector3_457fd1f0 *)arg1 toSpaceOf:(int)arg2;
 - (BOOL)projectPointToObjectX:(double *)arg1 y:(double *)arg2 z:(double *)arg3 transform:(PCMatrix44Tmpl_e98c85ee *)arg4;
 - (BOOL)projectPointToObjectX:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
@@ -97,7 +99,7 @@
 - (PCRect_b601f9f3)getInputBounds;
 - (PCRect_b601f9f3)getSceneBounds;
 - (PCRect_b601f9f3)getOriginalBounds;
-- (void)getCorners:(vector_9ae9b2a4 *)arg1 withFourCorner:(BOOL)arg2;
+- (void)getCorners:(vector_d8ace1c2 *)arg1 withFourCorner:(BOOL)arg2;
 - (PCRect_b601f9f3)getBounds;
 - (void)setRoundness:(double)arg1;
 - (double)getRoundness;
@@ -108,6 +110,7 @@
 - (BOOL)positionHasMotionPathBehavior:(struct OZChannelPosition3D *)arg1;
 - (BOOL)positionHasActiveBehaviors:(struct OZChannelPosition3D *)arg1;
 - (struct OZChannelPosition3D *)getPositionChannelBH;
+- (BOOL)shouldDrawAnimationPath;
 - (BOOL)shouldDrawMotionPath;
 - (struct OZChannelPosition3D *)getPositionChannel;
 - (void)enableDistort:(BOOL)arg1;

@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)_comparisonTypesAllowed;
 - (void)updateDurationTextField:(id)arg1;
 - (void)updateComparisonTypePopup:(id)arg1;
-- (id)tileTypeFacet;
+- (id)tileGlyphString;
 - (id)filterDict;
 - (void)setFilterDict:(id)arg1;
 - (void)dealloc;

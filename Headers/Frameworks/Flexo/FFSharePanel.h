@@ -6,16 +6,16 @@
 
 #import <Flexo/FFBaseSharePanel.h>
 
-@class FFShareInfoController, LKImageView, LKSegmentedControl, NSTabView, NSTrackingArea;
+#import "NSPopoverDelegate.h"
+
+@class FFShareInfoController, LKEmptyDFRController, LKImageView, LKSegmentedControl, NSString, NSTabView, NSTrackingArea;
 
 __attribute__((visibility("hidden")))
-@interface FFSharePanel : FFBaseSharePanel
+@interface FFSharePanel : FFBaseSharePanel <NSPopoverDelegate>
 {
     FFShareInfoController *_shareInfoController;
     LKSegmentedControl *_previousNextControl;
     LKSegmentedControl *_infoSettingsControl;
-    LKImageView *_leftTabBackgroundImageView;
-    LKImageView *_rightTabBackgroundImageView;
     NSTabView *_infoSettingsTabView;
     long long _selectedTabIndex;
     double _initialTabViewHeight;
@@ -24,14 +24,13 @@ __attribute__((visibility("hidden")))
     double _settingsWindowHeight;
     LKImageView *_errorView;
     NSTrackingArea *_errorViewTrackingArea;
+    LKEmptyDFRController *_dfrController;
 }
 
 + (id)sharePanelWithSource:(id)arg1 destination:(id)arg2 error:(id *)arg3;
 @property(retain, nonatomic) NSTrackingArea *errorViewTrackingArea; // @synthesize errorViewTrackingArea=_errorViewTrackingArea;
 @property(nonatomic) LKImageView *errorView; // @synthesize errorView=_errorView;
 @property(nonatomic) NSTabView *infoSettingsTabView; // @synthesize infoSettingsTabView=_infoSettingsTabView;
-@property(nonatomic) LKImageView *rightTabBackgroundImageView; // @synthesize rightTabBackgroundImageView=_rightTabBackgroundImageView;
-@property(nonatomic) LKImageView *leftTabBackgroundImageView; // @synthesize leftTabBackgroundImageView=_leftTabBackgroundImageView;
 @property(nonatomic) LKSegmentedControl *infoSettingsControl; // @synthesize infoSettingsControl=_infoSettingsControl;
 @property(nonatomic) long long selectedTabIndex; // @synthesize selectedTabIndex=_selectedTabIndex;
 @property(nonatomic) double settingsWindowHeight; // @synthesize settingsWindowHeight=_settingsWindowHeight;
@@ -45,12 +44,19 @@ __attribute__((visibility("hidden")))
 - (double)calcMaxSettingsViewHeight;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)mouseEntered:(id)arg1;
+- (id)touchBar;
 - (void)dealloc;
 - (void)windowDidLoad;
 - (void)layoutMetadataFields;
 - (id)newTokenFieldWithFrame:(struct CGRect)arg1 value:(id)arg2;
 - (id)newTextFieldWithFrame:(struct CGRect)arg1 value:(id)arg2;
 - (id)newLabelWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -14,7 +14,7 @@
     PISegmentedScrubber *_pYTF;
     PISegmentedScrubber *_pZTF;
     BOOL _isOffsetting;
-    struct list<PCVector3<double>, std::allocator<PCVector3<double>>> *_pMouseDownValues;
+    struct list<PCVector3<double>, std::__1::allocator<PCVector3<double>>> *_pMouseDownValues;
     double _xScale;
     double _yScale;
     double _zScale;

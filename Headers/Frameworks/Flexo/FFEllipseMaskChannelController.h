@@ -14,10 +14,11 @@ __attribute__((visibility("hidden")))
     LKButton *_activeMaskButton;
 }
 
+- (float)suggestedMinParamWidth;
+- (BOOL)shouldAddDisclosureButton;
 - (void)toggleOSC:(id)arg1;
 - (void)_syncActiveOSCState;
 - (void)update;
-- (id)facetForActiveMaskButton;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (id)_maskedEffect;

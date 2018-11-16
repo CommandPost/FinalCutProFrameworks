@@ -10,12 +10,6 @@
 {
 }
 
-+ (id)theatreBulletFacet;
-+ (id)editingBulletFacet;
-+ (id)newlyAddedThemesFacet;
-+ (id)sharingFacet;
-+ (id)designFacet;
-+ (id)welcomeButtonFacet;
 + (id)licenseFormatString;
 + (id)licenseLinkString;
 + (id)licenseURL;

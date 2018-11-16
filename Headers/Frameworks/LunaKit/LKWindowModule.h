@@ -20,7 +20,8 @@
         unsigned int windowState:3;
         unsigned int isHidden:1;
         unsigned int ignoreWindowNotification:1;
-        unsigned int RESERVED:27;
+        unsigned int updatingHiddenFlag:1;
+        unsigned int RESERVED:26;
     } _wmFlags;
     void *_reserved4;
     void *_reserved5;
@@ -36,10 +37,8 @@
 + (unsigned long long)windowStyleMask;
 + (Class)windowClass;
 + (Class)windowControllerClass;
-+ (unsigned long long)registeredStyleMaskForStringValue:(id)arg1;
-+ (id)registeredStringValueForStyleMask:(unsigned long long)arg1;
-+ (void)registerStyleMask:(unsigned long long)arg1 withStringValue:(id)arg2;
 - (void)windowDidUpdate:(id)arg1;
+@property(readonly) BOOL updatingHiddenFlag; // @dynamic updatingHiddenFlag;
 - (void)moduleDidChangeLabel:(id)arg1;
 - (void)moduleDidBecomeVisible:(id)arg1;
 - (void)moduleDidUnhide;
@@ -47,7 +46,6 @@
 - (id)toolbarAllowedItemIdentifiers:(id)arg1;
 - (id)toolbarDefaultItemIdentifiers:(id)arg1;
 - (void)_setViewForToolbar:(id)arg1 item:(id)arg2 info:(id)arg3;
-- (id)toolbarImageSource;
 - (void)_setImageForToolbarItem:(id)arg1 withInfo:(id)arg2;
 - (id)toolbar:(id)arg1 itemForItemIdentifier:(id)arg2 willBeInsertedIntoToolbar:(BOOL)arg3;
 - (void)_setupToolbar;
@@ -73,6 +71,7 @@
 - (struct CGSize)viewMinSize;
 - (void)updateWindow;
 - (void)setSupermodule:(id)arg1;
+- (BOOL)shouldSaveToLayout;
 - (void)setWindowController:(id)arg1;
 - (id)windowController;
 - (BOOL)isVisible;

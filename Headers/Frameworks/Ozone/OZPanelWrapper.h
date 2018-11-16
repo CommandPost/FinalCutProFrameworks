@@ -14,6 +14,7 @@
     BOOL _isFadingOut;
 }
 
+- (void)setContentView:(id)arg1;
 - (void)sendEvent:(id)arg1;
 - (void)setIsHUDFadingOut:(BOOL)arg1;
 - (void)restoreKeyWindow;

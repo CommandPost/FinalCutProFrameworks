@@ -6,13 +6,18 @@
 
 #import "LKWindow.h"
 
+@class LKEmptyDFRController;
+
 __attribute__((visibility("hidden")))
 @interface FFKeywordEditorWindow : LKWindow
 {
+    LKEmptyDFRController *_dfrController;
 }
 
 - (void)cancelOperation:(id)arg1;
 - (void)sendEvent:(id)arg1;
+- (id)touchBar;
+- (void)dealloc;
 - (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
 
 @end
