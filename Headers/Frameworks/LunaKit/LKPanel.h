@@ -21,8 +21,6 @@
 @property(nonatomic) BOOL useHUDStyle; // @synthesize useHUDStyle=_useHUDStyle;
 - (void)setTitle:(id)arg1;
 - (void)setToolbar:(id)arg1;
-- (void)setHUDMenu:(id)arg1;
-- (id)HUDMenu;
 - (void)setSnapsToEdges:(BOOL)arg1;
 - (BOOL)snapsToEdges;
 - (void)dealloc;

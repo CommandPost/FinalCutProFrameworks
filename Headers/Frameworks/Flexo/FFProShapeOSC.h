@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 + (Class)OZOSCClass;
 @property(readonly, nonatomic) id <FFProShapeOSCDelegate> shapeDelegate; // @synthesize shapeDelegate=_shapeDelegate;
 - (id)undoChannels;
-- (void)offsetPosition:(const PCVector3_515d8d1c *)arg1;
+- (void)offsetPosition:(const PCVector3_457fd1f0 *)arg1;
 - (BOOL)supportsTool:(Class)arg1;
 - (BOOL)isSelectionBased;
 - (struct FFShape *)shape;

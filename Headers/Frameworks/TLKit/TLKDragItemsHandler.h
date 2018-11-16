@@ -145,7 +145,6 @@
 - (void)_resolveCollisionsForAnchoredItems:(id)arg1 inLayoutContext:(id)arg2;
 - (void)_updateLayoutSegmentTablesForItemInfoIfNeeded:(id)arg1 aboveSpine:(BOOL)arg2;
 - (void)_populateCollisionRecordsForItems:(id)arg1 inLayoutContext:(id)arg2 isAboveSpine:(BOOL)arg3;
-- (double)_adjustForThinItemsWithCenterPoint:(double)arg1 frame1:(struct CGRect)arg2 frame2:(struct CGRect)arg3 spineFrame:(struct CGRect)arg4 itemSpacing:(double)arg5 isAboveSpine:(BOOL)arg6;
 - (id)_invalidItemsForItemInfo:(id)arg1 inLayoutContext:(id)arg2 withFrame:(struct CGRect)arg3;
 - (id)_OLD_invalidItemsForItemInfo:(id)arg1 inLayoutContext:(id)arg2 withFrame:(struct CGRect)arg3;
 - (id)itemComponentsInRect:(struct CGRect)arg1 forLayoutContext:(id)arg2;

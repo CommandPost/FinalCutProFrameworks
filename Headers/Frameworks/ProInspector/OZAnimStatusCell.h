@@ -12,7 +12,7 @@
 {
     CDStruct_1b6d18a9 _time;
     struct OZChannelBase *_pChan;
-    list_e5c8e430 *_pChanList;
+    list_9af5505e *_pChanList;
     OZViewController *_pViewCtlr;
     unsigned int _mouseOverLocation;
     BOOL _isMouseOverRow;
@@ -38,7 +38,8 @@
 - (id)imageForAnimState:(int)arg1 withIsMouseOver:(BOOL)arg2;
 - (void)updateTrackingAreasForView:(id)arg1;
 - (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
-- (list_e5c8e430 *)getChannelList;
+- (list_9af5505e *)getChannelList;
+- (BOOL)shouldShowKeyframeMenu;
 - (BOOL)allowsShowInCurveEditor;
 - (void)addCustomMenuItems:(id)arg1;
 - (void)postNotification:(unsigned int)arg1;

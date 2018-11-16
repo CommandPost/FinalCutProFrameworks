@@ -6,14 +6,14 @@
 
 #import "LKDFRController.h"
 
-@class FFVolumeViewController, NSButton, NSMutableArray, NSMutableDictionary, NSPopoverTouchBarItem, NSTouchBarItem;
+@class FFVolumeDFRController, NSButton, NSMutableArray, NSMutableDictionary, NSPopoverTouchBarItem, NSTouchBarItem;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerDFRController : LKDFRController
 {
     NSMutableArray *_selectedItems;
     NSPopoverTouchBarItem *_volumePopoverItem;
-    FFVolumeViewController *_volumeController;
+    FFVolumeDFRController *_volumeController;
     NSButton *_viewModeButton;
     NSTouchBarItem *_infoItem;
     NSPopoverTouchBarItem *_scrubberPopoverItem;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)updatePopoverVolumeButton;
 - (void)updateInfoButton;
 - (id)imageForIdentifier:(id)arg1;
-- (id)accessibilityForIdentifier:(id)arg1;
+- (id)accessibilityTitleForIdentifier:(id)arg1;
 - (id)displayNameForIdentifier:(id)arg1;
 - (id)targetForIdentifier:(id)arg1;
 - (SEL)selectorForIdentifier:(id)arg1;

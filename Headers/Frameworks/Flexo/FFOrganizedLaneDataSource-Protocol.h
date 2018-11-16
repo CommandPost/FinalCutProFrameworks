@@ -14,6 +14,7 @@
 - (void)addObserver:(id <FFOrganizedLaneObserving>)arg1;
 - (BOOL)moveChildLanes:(NSArray *)arg1 toIndex:(unsigned long long)arg2 forOrganizedLane:(id)arg3;
 - (BOOL)canMoveChildLanes:(NSArray *)arg1 toIndex:(unsigned long long)arg2 forOrganizedLane:(id)arg3;
+- (BOOL)canMoveOrganizedLane:(id)arg1;
 - (FFRoleColorScheme *)colorSchemeForOrganizedLane:(id)arg1;
 - (NSSet *)itemsForOrganizedLane:(id)arg1;
 - (NSString *)uidForOrganizedLane:(id)arg1;

@@ -6,12 +6,13 @@
 
 #import <Flexo/FFProvider.h>
 
+#import "FFProviderForceCloseFiles.h"
 #import "FFSeedProviderMD5Protocol.h"
 
 @class FFSubRangeMD5Info, FFVideoProps, NSRecursiveLock, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFProviderCG : FFProvider <FFSeedProviderMD5Protocol>
+@interface FFProviderCG : FFProvider <FFSeedProviderMD5Protocol, FFProviderForceCloseFiles>
 {
     struct __CFDictionary *_exif;
     struct __CFDictionary *_iptc;
@@ -36,6 +37,11 @@ __attribute__((visibility("hidden")))
     NSString *_colorModel;
     unsigned int _colorHandlingFlags;
     NSString *_uti;
+    _Bool _fileHasRecognizedCameraProjectionTagging;
+    int _file360Mode;
+    int _fileStereoMode;
+    int _fileDfeaultCameraProjectionMode;
+    int _overrideCameraProjectionMode;
     struct CGImageSource *_cachedImgSourceRef;
     double _cachedImgSourceDisposeAfterTime;
     unsigned int _emptyCachedImageSourceDispatchPending;
@@ -45,6 +51,9 @@ __attribute__((visibility("hidden")))
 + (void)appWillTerminate:(id)arg1;
 + (id)extensions;
 + (id)utis;
++ (BOOL)isStill;
++ (BOOL)canHaveAudio;
++ (BOOL)canHaveVideo;
 @property _Bool canFitAsTexture; // @synthesize canFitAsTexture=_canFitAsTexture;
 - (id)renderFilesPaths;
 - (_Bool)shouldUseTextureCacher:(int)arg1 size:(struct CGRect)arg2 shouldLog:(_Bool *)arg3 retUseIGMode:(char *)arg4;
@@ -67,6 +76,8 @@ __attribute__((visibility("hidden")))
 - (void)purgeCachedImagesForAllQualities;
 - (struct CGAffineTransform)_getTransformForOrientation:(int)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3;
 - (id)_newFFImageFromCGImageSource:(struct CGImageSource *)arg1 quality:(int)arg2 pixelSpaceFrameBounds:(struct CGRect)arg3;
+- (void)getTaggedProjection:(int *)arg1 stereo:(int *)arg2 recognizedProjection:(_Bool *)arg3 recognizedStereo:(_Bool *)arg4;
+- (int)fileTaggedCameraProjectionMode;
 - (struct CGColorSpace *)fileNativeColorSpace;
 - (void)setInvertAlpha:(_Bool)arg1;
 - (void)setOverrideAlphaValue:(int)arg1;
@@ -74,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithAssetFileID:(id)arg1;
 - (void)returnImageSourceToCache:(struct CGImageSource *)arg1;
+- (void)closeOpenFiles;
 - (void)emptyCachedImageSource;
 - (struct CGImageSource *)copyCachedOrCreatedImageSourceRefForURL:(id)arg1 reason:(const char *)arg2;
 - (void)renderFormat;

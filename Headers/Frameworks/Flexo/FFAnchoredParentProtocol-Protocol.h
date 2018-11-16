@@ -25,6 +25,6 @@
 - (void)informParentContainedItemsChanged:(unsigned int)arg1;
 - (void)invalidateStreamRange:(CDStruct_e83c9415)arg1 forType:(NSString *)arg2;
 - (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(NSString *)arg2;
-- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(NSString *)arg2;
+- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(NSString *)arg2 withUserInfo:(NSDictionary *)arg3;
 @end
 

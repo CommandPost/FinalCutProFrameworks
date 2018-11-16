@@ -44,6 +44,7 @@
 - (void)getKeyframeInputTangents:(void *)arg1 inTanTime:(double *)arg2 inTanValue:(double *)arg3;
 - (void)setKeyframeOutputTangents:(void *)arg1 outTanTime:(double)arg2 outTanValue:(double)arg3;
 - (void)setKeyframeInputTangents:(void *)arg1 inTanTime:(double)arg2 inTanValue:(double)arg3;
+- (void)getKeyframes:(void **)arg1 enabledOnly:(BOOL)arg2;
 - (void)appendKeyframes:(unsigned int)arg1 times:(CDStruct_198678f7 *)arg2 values:(double *)arg3;
 - (BOOL)moveKeyframe:(void *)arg1 toTime:(CDStruct_198678f7)arg2 constrainToOtherKeys:(BOOL)arg3;
 - (BOOL)removeKeyframe:(void *)arg1;

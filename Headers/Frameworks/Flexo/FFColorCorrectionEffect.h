@@ -6,52 +6,46 @@
 
 #import <Flexo/FFHeliumEffect.h>
 
-#import "FFColorBoardableObject.h"
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface FFColorCorrectionEffect : FFHeliumEffect <FFColorBoardableObject>
+@interface FFColorCorrectionEffect : FFHeliumEffect
 {
 }
 
 + (id)createChannelDoubleInFolder:(id)arg1 name:(id)arg2 channelID:(unsigned int)arg3 withDefaultValue:(id)arg4;
 + (id)createChannel2DInFolder:(id)arg1 name:(id)arg2 channelID:(unsigned int)arg3 withDefaultValue:(id)arg4;
++ (void)printInfoForFolder:(id)arg1;
 + (void)registerEffects;
+- (BOOL)projectUpdaterConvertToNewColorTabEffectsWithError:(BOOL)arg1 error:(id *)arg2;
 - (void)updateChannelsWithFolder:(id)arg1;
 - (void)_replaceChannelID:(unsigned int)arg1 withCopy:(id)arg2;
+- (void)fillSubMenuForKeyframeParamters:(id)arg1 curveEditor:(id)arg2;
 - (id)selectedChannels;
 - (BOOL)channelSelected:(id)arg1;
 - (void)setSelected:(BOOL)arg1 channel:(id)arg2;
+- (id)augmentChannelChangeDescriptionForNotification:(id)arg1;
 - (void)channelParameterChanged:(id)arg1;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
 - (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withChannelFolderID:(unsigned int)arg3 context:(id)arg4;
 - (struct HGNode *)newNodeForContext:(id)arg1;
-- (void)setValue:(id)arg1 forChannelFolderID:(unsigned int)arg2 forChannelID:(unsigned int)arg3 atTime:(CDStruct_1b6d18a9)arg4;
-- (id)valueForFolderID:(unsigned int)arg1 forChannelID:(unsigned int)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)setValue:(id)arg1 forChannelID:(unsigned int)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (id)valueForChannelID:(unsigned int)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (BOOL)supportsReentrancy;
 - (BOOL)effectIntroducesAlpha;
 - (void)createColorCorrectionChannelsInFolder:(id)arg1;
+- (BOOL)isNoOp;
 - (void)createChannelsInFolder:(id)arg1;
+- (id)newChannelFolderWithParent:(id)arg1 name:(id)arg2;
 - (id)keyframeableChannels;
 - (id)processingFormat:(int)arg1;
 - (id)inputKeys;
+- (id)channelIDsToKeyframe;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1;
-- (unsigned long long)maskCount;
-- (id)outerCorrectionChannels;
-- (id)innerCorrectionChannels;
 - (void)setAmericanSocietyOfCinematographersColorDecisionListContainer:(struct ASC_CDL_Container *)arg1;
 - (struct ASC_CDL_Container *)newAmericanSocietyOfCinematographersColorDecisionListContainerOldFormat:(BOOL)arg1;
 - (void)finishedSettingEffectParameters;
 - (id)designatedChannelsForXMLExport;
 - (BOOL)hasDesignatedChannelsForXMLExport;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

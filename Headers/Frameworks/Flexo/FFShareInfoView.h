@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL needsLayout; // @synthesize needsLayout=_needsLayout;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
+- (BOOL)isOpaque;
 - (void)viewWillDraw;
 - (void)dealloc;
 

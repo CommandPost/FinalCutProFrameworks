@@ -14,6 +14,7 @@
     LKSegmentedScrubber *transitionsDurationScrubber;
     LKSegmentedScrubber *stillImagesDurationScrubber;
     LKSegmentedScrubber *defaultAudioFadeDurationScrubber;
+    LKPopUpButton *defaultColorCorrection;
 }
 
 - (void)dealloc;
@@ -22,6 +23,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)awakeFromNib;
 - (void)moduleWasInstalled;
+- (void)selectColorEffect:(id)arg1;
 - (BOOL)isResizable;
 - (id)imageForPreferenceNamed:(id)arg1;
 

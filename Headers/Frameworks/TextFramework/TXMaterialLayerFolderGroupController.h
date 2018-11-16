@@ -22,7 +22,7 @@
 - (id)materialAssignmentController;
 - (id)materialController;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)doDrag:(list_e5c8e430 *)arg1 viewList:(id)arg2;
+- (void)doDrag:(list_9af5505e *)arg1 viewList:(id)arg2;
 - (void)select:(BOOL)arg1;
 - (void)select:(BOOL)arg1 excludeChannel:(struct OZChannelBase *)arg2;
 - (void)addAssociatedChannelsToEnclosedGroup:(id)arg1;

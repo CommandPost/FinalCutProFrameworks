@@ -25,8 +25,8 @@
 + (id)creationDateForCameraFile:(id)arg1;
 + (id)serialNumberForCameraDevice:(id)arg1;
 + (void)addMetadataToMetadataArray:(id)arg1 key:(id)arg2 object:(id)arg3;
-+ (id)metadataArrayFromMetadataReader:(struct OpaqueFigMetadataReader *)arg1;
-+ (struct OpaqueFigMetadataReader *)quicktimeMetadataReaderForFileURL:(id)arg1;
++ (BOOL)rewriteMetadata:(id)arg1 inMovieFile:(id)arg2;
++ (id)metadataFromMovieFile:(id)arg1;
 + (id)keyPathsForValuesAffectingPercentageDone;
 @property(readonly) NSArray *downloadRequests; // @synthesize downloadRequests=_downloadRequests;
 @property id <MIOPTPDownloadQueueDelegate> delegate; // @synthesize delegate=_delegate;

@@ -37,6 +37,7 @@
 - (void)exportAudio:(id)arg1;
 - (void)exportiTunes:(id)arg1;
 - (void)exportMediaBrowser:(id)arg1;
+- (void)toggleHMDRendering:(id)arg1;
 - (void)enableExposeObjects:(id)arg1;
 - (void)enableExposeAllObjects:(id)arg1;
 - (void)enableExposeLayers:(id)arg1;
@@ -120,9 +121,6 @@
 - (void)bakeObject:(id)arg1;
 - (BOOL)canBake;
 - (void)addRig:(id)arg1;
-- (void)addTitleDropZones:(id)arg1;
-- (void)addEffectDropZones:(id)arg1;
-- (void)addTransitionDropZones:(id)arg1;
 - (void)addLightSetup:(unsigned int)arg1;
 - (void)addLightSetupMenuAction:(id)arg1;
 - (void)addLight:(id)arg1;
@@ -264,6 +262,7 @@
 - (void)sendToBack:(id)arg1;
 - (void)bringToFront:(id)arg1;
 - (void)createDropZone:(id)arg1;
+- (void)create360Layer:(id)arg1;
 - (void)createLayer:(id)arg1;
 - (void)deleteKey:(id)arg1;
 - (void)selectNone:(id)arg1;

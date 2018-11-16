@@ -27,9 +27,16 @@
     int _paspV;
     struct CGRect _cachedImageSpaceBounds;
     BOOL _frameRateUndefined;
+    int _cameraMode;
     CDStruct_bdcb2b0d _cachedObjectMD5;
+    _Bool _inVidPropsCache;
+    int _internalMinRefCount;
 }
 
++ (id)displayNameForStereoscopicMode:(int)arg1;
++ (id)stereoscopicDisplayNames;
++ (id)displayNameForSphericalMode:(int)arg1;
++ (id)sphericalDisplayNames;
 + (BOOL)getPaspForAnamorphicType:(int)arg1 width:(int)arg2 height:(int)arg3 paspH:(int *)arg4 paspV:(int *)arg5;
 + (unsigned int)temporalFieldForTime:(CDStruct_1b6d18a9)arg1 withVideoProps:(id)arg2;
 + (BOOL)isReallyClose16x9s:(struct CGRect)arg1 bounds2:(struct CGRect)arg2;
@@ -41,6 +48,8 @@
 + (id)newPropsFromCType:(unsigned int)arg1 dimensions:(CDStruct_79c71658)arg2 extensionsDict:(id)arg3 frameDuration:(CDStruct_1b6d18a9)arg4 anamorphicHint:(BOOL)arg5 ambiguous:(char *)arg6;
 + (id)newPropsFromVideoFormatDescription:(struct opaqueCMFormatDescription *)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 anamorphicHint:(BOOL)arg3 isRotated:(BOOL)arg4 ambiguous:(char *)arg5;
 + (id)newPropsFromVideoFormat:(id)arg1;
++ (int)cameraModeDisplayStringToEnum:(id)arg1;
++ (id)displayCameraModeForValue:(int)arg1;
 + (id)newVideoPropsAfterRotation:(long long)arg1 videoProps:(id)arg2;
 + (CDStruct_1b6d18a9)sampleDurationFromFrameDuration:(CDStruct_1b6d18a9)arg1 fieldOrder:(int)arg2;
 + (CDStruct_1b6d18a9)frameDurationFromSampleDuration:(CDStruct_1b6d18a9)arg1 fieldOrder:(int)arg2;
@@ -48,6 +57,8 @@
 + (void)releaseSharedInstance;
 + (Class)classForKeyedUnarchiver;
 + (BOOL)classIsAbstract;
++ (id)suggestedTimelineVideoPropsForVideo:(id)arg1 allowWG:(BOOL)arg2 retHighConfidence:(char *)arg3;
++ (id)suggestedTimelineVideoPropsForStill:(id)arg1;
 + (id)videoPropsFrameRateUndefined;
 + (id)pixelTransformTo1440x1080iUpper;
 + (id)pixelTransformTo1440x1080iLower;
@@ -74,6 +85,9 @@
 + (id)pixelTransformToHalfWidth;
 + (id)pixelTransformIdentity;
 + (id)newVideoPropsAfterTrim:(double)arg1 right:(double)arg2 top:(double)arg3 bottom:(double)arg4 videoProps:(id)arg5 bounds:(struct CGRect)arg6;
++ (id)newPropsWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 fieldDominance:(int)arg3 frameDuration:(CDStruct_1b6d18a9)arg4 paspH:(int)arg5 paspV:(int)arg6 cameraMode:(int)arg7 forceIdentityTransform:(BOOL)arg8;
+@property(readonly) int cameraMode; // @synthesize cameraMode=_cameraMode;
+@property _Bool inVidPropsCache; // @synthesize inVidPropsCache=_inVidPropsCache;
 - (CDStruct_bdcb2b0d)vidPropsMD5;
 - (BOOL)canCacheMD5;
 - (id)bestSupportedFormatForEditing;
@@ -82,7 +96,7 @@
 - (BOOL)supportedForEditing;
 - (BOOL)isQuadHDOr4K;
 - (BOOL)supportsAnamorphicFormat;
-- (id)newPropsForFieldOverride:(long long)arg1 anamorphicType:(long long)arg2 colorSpaceOverride:(long long)arg3;
+- (id)newPropsForFieldOverride:(long long)arg1 anamorphicType:(long long)arg2 colorSpaceOverride:(long long)arg3 cameraProjectionOverride:(long long)arg4;
 - (id)matchingStandardGamutVideoFormat;
 - (id)bestGuessedVideoFormat:(BOOL)arg1;
 - (id)videoFormat;
@@ -96,8 +110,12 @@
 - (id)description;
 - (id)_propertyDescription;
 - (struct CGRect)imageSpaceBounds;
+- (id)copyImmutableProps;
+- (id)_copyImmutableVersion;
+- (id)_copyCachedImmutableVersion;
 - (void)_updateCachedImageSpaceBounds;
 - (void)_updateCachedPixelTransforms;
+- (void)_adjustInternalMinRefCount:(int)arg1;
 - (BOOL)possibleToDisplayDropFrame;
 @property(readonly, nonatomic) unsigned long long nominalFrameRate;
 - (BOOL)frameRateDefined;
@@ -107,14 +125,33 @@
 - (double)pixelAspect;
 - (int)paspV;
 - (int)paspH;
-- (id)sixteenth;
-- (id)quarter;
-- (id)field2;
-- (id)field1;
-- (id)frame;
+- (id)_sixteenth;
+- (id)_quarter;
+- (id)_field2;
+- (id)_field1;
+- (id)_frame;
+- (void)sixteenth;
+- (void)quarter;
+- (void)field2;
+- (void)field1;
+- (void)frame;
+- (double)getDoubleValueAtRow:(int)arg1 col:(int)arg2 forMatrixType:(int)arg3;
+- (void)getDoubleValues:(double [16])arg1 forMatrixType:(int)arg2;
+- (id)copySixteenth;
+- (id)copyQuarter;
+- (id)copyField2;
+- (id)copyField1;
+- (id)copyFrame;
+- (id)_internalMatrixFromSel:(int)arg1;
+- (id)displayCameraMode;
+- (id)displayColorSpace;
+- (id)displayRate;
+- (id)displaySize;
+- (id)displayFormat;
 - (CDStruct_1b6d18a9)frameDuration;
 - (CDStruct_1b6d18a9)sampleDuration;
 - (int)fieldDominance;
+- (BOOL)isHDR;
 - (id)colorSpaceData;
 - (id)colorSpaceName;
 - (struct CGColorSpace *)clampColorSpace:(int)arg1;
@@ -135,8 +172,11 @@
 - (void)setPixelSpaceFrameBounds:(struct CGRect)arg1;
 - (void)dealloc;
 - (id)copyPropsWithPreferredFrameDuration;
+- (id)copyPropsWithCameraProjectionMode:(int)arg1 adjustPaspForEquirect:(_Bool)arg2;
+- (id)copyPropsWithCameraProjectionMode:(int)arg1;
 - (id)copyPropsWithAdjustedPixelSpaceBounds:(struct CGRect)arg1;
-- (id)copyPropsWithAdjustedColorSpace:(struct CGColorSpace *)arg1;
+- (id)copyPropsWithAdjustedColorSpace:(struct CGColorSpace *)arg1 preferFormat:(BOOL)arg2;
+- (id)copyProgressivePropsWithFrameDur:(CDStruct_1b6d18a9)arg1;
 - (id)copyProgressiveProps;
 - (id)copyPropsWithAdjustedSampleDur:(CDStruct_1b6d18a9)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
@@ -144,7 +184,9 @@
 - (id)initWithProxyVideoProps:(id)arg1;
 - (id)initWithPList:(id)arg1;
 - (id)initWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 fieldDominance:(int)arg3 sampleDuration:(CDStruct_1b6d18a9)arg4 frame:(id)arg5 field1:(id)arg6 field2:(id)arg7 paspH:(int)arg8 paspV:(int)arg9 frameRateUndefined:(BOOL)arg10;
+- (id)initWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 fieldDominance:(int)arg3 sampleDuration:(CDStruct_1b6d18a9)arg4 frame:(id)arg5 field1:(id)arg6 field2:(id)arg7 paspH:(int)arg8 paspV:(int)arg9 frameRateUndefined:(BOOL)arg10 cameraMode:(int)arg11;
 - (void)_validateVideoProps;
+- (id)copyPropsWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 fieldDominance:(int)arg3 frameDuration:(CDStruct_1b6d18a9)arg4 paspH:(int)arg5 paspV:(int)arg6 cameraMode:(int)arg7;
 
 @end
 

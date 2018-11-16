@@ -19,11 +19,13 @@
     struct FFDestAudioOutputUnitIsRunningPropertyMgr *_isRunningPropertyMgr;
 }
 
++ (unsigned long long)getIOProcThreadKey;
 - (void)reset;
 - (BOOL)isRunning;
 - (void)stop;
 - (void)start:(id)arg1;
 - (void *)figClock;
+- (void)_createDestAudioOutputUnitTimebase;
 - (void)setPullCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 - (void)setPullGraph:(struct FFAudioGraph *)arg1 node:(struct FFAudioNode *)arg2 elem:(unsigned int)arg3;
 - (unsigned long long)maximumBufferFrames;

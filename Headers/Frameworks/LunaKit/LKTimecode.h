@@ -52,7 +52,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (int)_bestTimeScale;
+- (unsigned long long)_bestTimeScale;
 - (unsigned long long)privateSampleRemainder;
 - (void)privateSetSecondsWithClampedHours:(double)arg1;
 - (void)privateAddHMSHours:(long long)arg1 minutes:(long long)arg2 seconds:(double)arg3 isNegativeDelta:(BOOL)arg4;

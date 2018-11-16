@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     void *_refCon;
     NSObject *_observedObject;
     FFNotificationID_ *_notificationName;
+    BOOL _isGlobalObserver;
 }
 
 - (void)clearClient;
 - (void)dealloc;
+- (id)initGlobalObservingForName:(id)arg1 callback:(CDUnknownFunctionPointerType)arg2 refCon:(void *)arg3;
 - (id)initObserving:(id)arg1 name:(id)arg2 callback:(CDUnknownFunctionPointerType)arg3 refCon:(void *)arg4;
 - (void)_notifierCallback:(id)arg1;
 

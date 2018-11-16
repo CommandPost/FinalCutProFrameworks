@@ -11,8 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface FFStreamVideoFig : FFStreamVideo
 {
-    int _isMPEG2;
-    int _avchdGOPPattern;
     int _sampleContentAndFieldOrder;
     NSMutableArray *_pendingRequests;
     _Bool _isUnusableSource;
@@ -54,12 +52,8 @@ __attribute__((visibility("hidden")))
 - (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
 - (BOOL)_isPlaybackActive;
 - (int)_streamPriority;
-- (id)pixelTransformToField2ForQuality:(int)arg1;
-- (id)_pixelTransformToField2ForQuality:(int)arg1;
-- (id)pixelTransformToField1ForQuality:(int)arg1;
-- (id)_pixelTransformToField1ForQuality:(int)arg1;
-- (id)pixelTransformToFrameForQuality:(int)arg1;
-- (id)_pixelTransformToFrameForQuality:(int)arg1;
+- (id)copyPixelTransform:(int)arg1 forQuality:(int)arg2;
+- (id)_copyPixelTransform:(int)arg1 forQuality:(int)arg2;
 - (int)actualQualityFromRequestedQuality:(int)arg1;
 - (int)fieldDominance;
 - (struct CGRect)pixelSpaceFrameBounds;

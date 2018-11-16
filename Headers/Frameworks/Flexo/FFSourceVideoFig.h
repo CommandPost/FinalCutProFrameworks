@@ -6,16 +6,17 @@
 
 #import <Flexo/FFSourceVideo.h>
 
+#import "FFSourceVideoCameraLUTProcessingProtocol.h"
 #import "FFSourceVideoInvertAlphaProtocol.h"
-#import "FFSourceVideoLogProcessingProtocol.h"
 #import "FFSourceVideoOverrideAlphaProtocol.h"
+#import "FFSourceVideoOverrideCameraProjectionMode.h"
 #import "FFSourceVideoOverrideColorspace.h"
 #import "FFSourceVideoOverrideFieldDominance.h"
 
-@class FFLogProcessingInfo, FFVideoProps, NSCondition, NSMutableArray, NSObject<OS_dispatch_queue>;
+@class FFVideoProps, NSCondition, NSMutableArray, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
-@interface FFSourceVideoFig : FFSourceVideo <FFSourceVideoOverrideAlphaProtocol, FFSourceVideoInvertAlphaProtocol, FFSourceVideoOverrideFieldDominance, FFSourceVideoOverrideColorspace, FFSourceVideoLogProcessingProtocol>
+@interface FFSourceVideoFig : FFSourceVideo <FFSourceVideoOverrideAlphaProtocol, FFSourceVideoInvertAlphaProtocol, FFSourceVideoOverrideFieldDominance, FFSourceVideoOverrideColorspace, FFSourceVideoCameraLUTProcessingProtocol, FFSourceVideoOverrideCameraProjectionMode>
 {
     FFVideoProps *_trueNativeVideoProps;
     FFVideoProps *_nativeVideoProps;
@@ -35,17 +36,21 @@ __attribute__((visibility("hidden")))
     BOOL _isIFrameOnly;
     CDStruct_bdcb2b0d _providerMD5;
     CDStruct_bdcb2b0d _sourceMD5;
-    BOOL _codecMissing;
+    BOOL _codecIs64BitVT;
+    BOOL _codecIs32BitQT;
+    unsigned int _codecType;
     BOOL _isReferenceMovie;
     BOOL _unsupportedReferenceMovie;
     BOOL _wantsOptimize;
     BOOL _subSampled;
+    _Bool _recognizedFile360AndStereoTags;
+    int _projectionMode;
+    int _stereoscopicMode;
     NSCondition *_lockForImageInfoQualityCache;
     struct __CFDictionary *_imageInfoForQualityCache;
     struct CGRect _opaqueBounds;
-    FFLogProcessingInfo *_logProcessingInfo;
-    int _logProcessingTargetColorSpace;
-    _Bool _reportedNonStandardNCLC;
+    struct FFSourceColorConformBaseClass *_cameraLUTProcessingInfo;
+    int _cameraLUTProcessingTargetColorSpace;
     _Bool _reportedAwfulFigNCLCGuess;
     int _nativeAlphaType;
     int _overrideAlphaType;
@@ -65,7 +70,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) int sampleContentAndFieldOrder; // @synthesize sampleContentAndFieldOrder=_sampleContentAndFieldOrder;
 @property(readonly) BOOL unsupportedReferenceMovie; // @synthesize unsupportedReferenceMovie=_unsupportedReferenceMovie;
 @property _Bool reportedAwfulFigNCLCGuess; // @synthesize reportedAwfulFigNCLCGuess=_reportedAwfulFigNCLCGuess;
-@property _Bool reportedNonStandardNCLC; // @synthesize reportedNonStandardNCLC=_reportedNonStandardNCLC;
 - (BOOL)isValid;
 - (double)preferredScaleFactorForQuality:(int)arg1;
 - (id)codecName;
@@ -79,9 +83,11 @@ __attribute__((visibility("hidden")))
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)_newSubRangeMD5InfoForSampleDurationFromCache:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)_newSubRangeMD5InfoForSampleDurationUncached:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (void)setLogProcessingInfo:(id)arg1 targetColorSpace:(int)arg2;
-- (int)logProcessingTargetColorSpace;
-- (id)logProcessingInfo;
+- (void)getTaggedProjection:(int *)arg1 stereo:(int *)arg2 recognizedProjection:(_Bool *)arg3 recognizedStereo:(_Bool *)arg4;
+- (int)getNativeCameraMode;
+- (void)setCameraLUTProcessingInfo:(struct FFSourceColorConformBaseClass *)arg1 targetColorSpace:(int)arg2;
+- (int)cameraLUTProcessingTargetColorSpace;
+- (struct FFSourceColorConformBaseClass *)cameraLUTProcessingInfo;
 - (BOOL)isOverrideColorSpaceSupported:(struct CGColorSpace *)arg1;
 - (struct CGColorSpace *)getNativeColorSpace;
 - (int)getNativeTaggedDominance;
@@ -93,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (id)supportedOverrideAlphaModes;
 - (int)getNativeAlphaType;
 - (CDStruct_bdcb2b0d)_sourceMD5;
+- (_Bool)_fillInAdditionalMD5Overrides:(CDStruct_bdcb2b0d *)arg1;
 - (void)dealloc;
 - (id)initWithProvider:(id)arg1 URL:(id)arg2 persistentID:(int)arg3 baseTimecodeCounter:(int)arg4 editTimeForBaseTimecode:(CDStruct_1b6d18a9)arg5 retTimecodeOffset:(CDStruct_1b6d18a9 *)arg6 timecodeFrameDuration:(CDStruct_1b6d18a9)arg7 dropFrame:(BOOL)arg8 mediaReader:(void *)arg9;
 - (id)_debugFileName;
@@ -110,6 +117,9 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)fileNativeSampleDuration;
 - (BOOL)_isIFrameOnly;
 @property(readonly, nonatomic) BOOL isReferenceMovie;
+@property(readonly, nonatomic) unsigned int codecType;
+@property(readonly, nonatomic) BOOL codecIs32BitQT;
+@property(readonly, nonatomic) BOOL codecIs64BitVT;
 @property(readonly, nonatomic) BOOL codecMissing;
 - (int)persistentTrackID;
 - (struct CGColorSpace *)overrideColorSpace;

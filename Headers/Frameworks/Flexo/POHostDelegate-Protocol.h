@@ -10,7 +10,7 @@
 - (BOOL)proUI;
 - (BOOL)isMotion;
 - (id)createScaleOSCWithHostDelegate:(NSObject<POHostDelegate> *)arg1 andViewDelegate:(NSObject<POViewDelegate> *)arg2 andObjectDelegate:(NSObject<POObjectDelegate> *)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_e1ec2d4c *)arg2;
+- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_50fb8e68 *)arg2;
 - (void)deregisterOSC:(POOnScreenControl *)arg1 withID:(const struct PCUUID *)arg2;
 - (void)registerOSC:(POOnScreenControl *)arg1 withID:(const struct PCUUID *)arg2;
 - (BOOL)showToolTips;
@@ -56,8 +56,8 @@
 - (void)setIgnoreTransformationsForElement:(struct OZTransformNode *)arg1;
 - (const struct OZRenderState *)renderState;
 - (CDStruct_1b6d18a9)getTime;
-- (PCVector3_515d8d1c)filmCoords3DForEvent:(NSEvent *)arg1;
-- (PCVector3_515d8d1c)viewCoords3DForEvent:(NSEvent *)arg1;
+- (PCVector3_457fd1f0)filmCoords3DForEvent:(NSEvent *)arg1;
+- (PCVector3_457fd1f0)viewCoords3DForEvent:(NSEvent *)arg1;
 - (PCVector2_79a470e1)filmCoords2DForEvent:(NSEvent *)arg1;
 - (PCVector2_79a470e1)viewCoords2DForEvent:(NSEvent *)arg1;
 @end

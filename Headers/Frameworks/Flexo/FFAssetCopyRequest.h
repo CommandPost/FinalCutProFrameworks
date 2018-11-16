@@ -18,9 +18,6 @@
     FFAsset *_sourceAsset;
     long long _bytesToCopy;
     long long _bytesCopied;
-    struct __FSFileOperation *_fileOp;
-    BOOL _isDone;
-    BOOL _abortedByPause;
     id _clientInfo;
     id _customObject;
     id _customObject2;
@@ -32,9 +29,6 @@
 @property(readonly, nonatomic) unsigned long long sourceAndTargetPathHash; // @synthesize sourceAndTargetPathHash=_sourceAndTargetPathHash;
 @property(retain) FFAssetFileIdentifier *sourceFileID; // @synthesize sourceFileID=_sourceFileID;
 @property(retain) FFAssetFileIdentifier *targetFileID; // @synthesize targetFileID=_targetFileID;
-@property(nonatomic) BOOL isDone; // @synthesize isDone=_isDone;
-@property(nonatomic) struct __FSFileOperation *fileOp; // @synthesize fileOp=_fileOp;
-@property(nonatomic) BOOL abortedByPause; // @synthesize abortedByPause=_abortedByPause;
 @property(readonly) NSString *displayName; // @synthesize displayName=_displayName;
 @property(nonatomic) long long bytesCopied; // @synthesize bytesCopied=_bytesCopied;
 @property(nonatomic) long long bytesToCopy; // @synthesize bytesToCopy=_bytesToCopy;

@@ -11,7 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)isOpaque;
 - (void)drawRect:(struct CGRect)arg1;
+- (id)backgroundColor;
 - (id)borderColor;
 
 @end

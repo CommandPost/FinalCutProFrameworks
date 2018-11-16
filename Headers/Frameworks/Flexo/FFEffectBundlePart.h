@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSArray *_effectBundleSnapshots;
     NSSet *_unriggedChannelIndexPaths;
     int _missingElements;
+    BOOL TEMP_inEffectBundlePostInitScope;
     NSArray *_effectsDefaultData;
     NSString *_name;
     NSString *_description;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
+@property(nonatomic) BOOL TEMP_inEffectBundlePostInitScope; // @synthesize TEMP_inEffectBundlePostInitScope;
 @property(nonatomic) int effectBundleEncodingOptions; // @synthesize effectBundleEncodingOptions=_effectBundleEncodingOptions;
 @property(retain, nonatomic) CHChannelDouble *amountChannel; // @synthesize amountChannel=_channel;
 @property(nonatomic) double defaultValue; // @synthesize defaultValue=_defaultValue;
@@ -59,9 +61,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)isBundlePartModified;
 - (BOOL)isChannelUnrigged:(id)arg1;
 - (void)unrigChannel:(id)arg1 unrig:(BOOL)arg2;
-- (void)resetBundlePart:(BOOL)arg1 reloadEffect:(BOOL)arg2;
+- (void)resetBundlePart:(BOOL)arg1;
 - (void)resetEffect:(id)arg1;
-- (void)_resetEffect:(id)arg1 modifiedEffectsIndexList:(id)arg2 reloadEffect:(BOOL)arg3;
+- (void)_resetEffect:(id)arg1;
 - (BOOL)hasEffectChannelsInFolder:(id)arg1;
 - (void)deleteEffectChannelsInFolder:(id)arg1;
 - (void)createEffectChannelsInFolder:(id)arg1;

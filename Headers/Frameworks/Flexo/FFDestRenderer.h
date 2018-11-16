@@ -48,7 +48,7 @@
 - (void)startingToProcess:(CDStruct_1b6d18a9)arg1;
 - (void)flush:(BOOL)arg1;
 - (void)setPlayer:(id)arg1;
-- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
+- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
 - (void *)figClock;
 - (void)dealloc;
 - (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderInfo:(id)arg2 renderFilesPaths:(id)arg3;

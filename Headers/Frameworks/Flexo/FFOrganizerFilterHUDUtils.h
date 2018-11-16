@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 + (id)_rangesFromRangeArray:(id)arg1 thatContainKeyword:(id)arg2 forMakerType:(id)arg3;
 + (id)_roundedDateFromDate:(id)arg1 early:(BOOL)arg2;
 + (id)_coalesceRanges:(id)arg1;
++ (id)_perform360Filter:(id)arg1 onRange:(id)arg2;
 + (id)_performUsedFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performRoleUIDFilter:(id)arg1 onRange:(id)arg2;
 + (id)_performTimeFilter:(id)arg1 onRange:(id)arg2;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 + (id)_FigTimeRangesANDMask_AllowsEmpty:(id)arg1 mask:(id)arg2;
 + (id)_FigTimeRangesObjANDMask_AllowsEmpty:(id)arg1 mask:(id)arg2;
 + (CDStruct_e83c9415)_FigTimeRangesIntersectOrAreEmpty:(CDStruct_e83c9415)arg1 range2:(CDStruct_e83c9415)arg2;
++ (id)generate360DictActive:(BOOL)arg1 modeKey:(id)arg2 comparisonType:(int)arg3 modeValue:(id)arg4;
 + (id)generateUsedDictActive:(BOOL)arg1 showUsed:(BOOL)arg2;
 + (id)generateRoleUIDDictActive:(BOOL)arg1 comparisonType:(int)arg2 selectedRoleUIDs:(id)arg3;
 + (id)generateTimeDictActive:(BOOL)arg1 dateMetadataKey:(id)arg2 comparisonType:(int)arg3 timeString:(id)arg4 date:(id)arg5 timeUnits:(int)arg6 shouldRoundDate:(BOOL)arg7;

@@ -10,6 +10,7 @@
 {
 }
 
++ (unsigned int)fileTypeIDForWAVECreate;
 + (BOOL)renderAudioForObject:(id)arg1 range:(CDStruct_e83c9415)arg2 toPath:(id)arg3;
 + (BOOL)renderAudioForObject:(id)arg1 toPath:(id)arg2;
 + (BOOL)renderAudioForSequence:(id)arg1 toPath:(id)arg2;

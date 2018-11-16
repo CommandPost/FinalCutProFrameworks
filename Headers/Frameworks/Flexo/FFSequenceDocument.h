@@ -19,6 +19,7 @@
 - (BOOL)update_persistedAudioComponentsLayoutMap;
 - (BOOL)update_fixAudioLevelChannelIgnoreFadesFlag;
 - (BOOL)update_projectSequenceToSequenceInfo;
+- (BOOL)update_convertToNewColorTabEffects;
 - (BOOL)update_HeColorEffectToMaskedEffect;
 - (BOOL)update_redTintThumbnails;
 - (BOOL)update_fixAnalysisKeywords;

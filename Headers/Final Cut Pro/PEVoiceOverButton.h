@@ -23,6 +23,7 @@
 - (void)setEnabled:(BOOL)arg1;
 - (void)_updateButton:(BOOL)arg1;
 - (void)awakeFromNib;
+- (void)dealloc;
 
 @end
 

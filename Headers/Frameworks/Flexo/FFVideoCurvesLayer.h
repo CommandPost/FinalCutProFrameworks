@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)effectsToDisplay;
 - (void)dealloc;
 - (id)initWithObject:(id)arg1 topToBottom:(BOOL)arg2 timeline:(id)arg3;
+- (void)initializeIntrinsicDummys;
 - (id)intrinsicOrDummyWithID:(id)arg1;
 
 @end

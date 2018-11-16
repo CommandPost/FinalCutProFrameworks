@@ -24,13 +24,10 @@ __attribute__((visibility("hidden")))
     int _colorPrimaries;
     int _YCbCrMatrix;
     BOOL _isInterlaced;
-    unsigned int _depth;
-    unsigned int _alphaDepth;
-    int _alphaChannelType;
     int _fieldInfo;
-    id _subDescriptor;
     BOOL _isIndexIFrameOnly;
     long long _indexDataSize;
+    struct map<HPMPictureMetadataKey, const void *, std::__1::less<HPMPictureMetadataKey>, std::__1::allocator<std::__1::pair<const HPMPictureMetadataKey, const void *>>> *_pictureMetadataMap;
     int _indexEntryInterval;
     BOOL _hasDisplayOffsets;
     unsigned long long _usedIndexEntryCount;
@@ -44,12 +41,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long usedIndexEntryCount; // @synthesize usedIndexEntryCount=_usedIndexEntryCount;
 @property(readonly) BOOL hasDisplayOffsets; // @synthesize hasDisplayOffsets=_hasDisplayOffsets;
 @property(readonly) int indexEntryInterval; // @synthesize indexEntryInterval=_indexEntryInterval;
-@property(retain) id subDescriptor; // @synthesize subDescriptor=_subDescriptor;
 @property(readonly) BOOL isIFrameOnly; // @synthesize isIFrameOnly=_isIndexIFrameOnly;
 @property(readonly) int fieldInfo; // @synthesize fieldInfo=_fieldInfo;
-@property(readonly) int alphaChannelType; // @synthesize alphaChannelType=_alphaChannelType;
-@property(readonly) unsigned int alphaDepth; // @synthesize alphaDepth=_alphaDepth;
-@property(readonly) unsigned int depth; // @synthesize depth=_depth;
 @property(readonly) BOOL isInterlaced; // @synthesize isInterlaced=_isInterlaced;
 @property int YCbCrMatrix; // @synthesize YCbCrMatrix=_YCbCrMatrix;
 @property int colorPrimaries; // @synthesize colorPrimaries=_colorPrimaries;
@@ -67,6 +60,10 @@ __attribute__((visibility("hidden")))
 @property(readonly) long long displayPositionForLastDecodeSample;
 @property(readonly) long long displayPositionForFirstDecodeSample;
 - (long long)decodePositionWithDisplayPosition:(long long)arg1 mustLoadAtMediaIndexPosition:(long long *)arg2;
+- (unsigned int)uint32PictureMetadataWithKey:(int)arg1 failed:(char *)arg2;
+- (unsigned short)uint16PictureMetadataWithKey:(int)arg1 failed:(char *)arg2;
+- (unsigned char)uint8PictureMetadataWithKey:(int)arg1;
+- (void *)pictureMetadataWithKey:(int)arg1;
 - (void)setIndexEntryWithIndexPosition:(unsigned long long)arg1 filePosition:(long long)arg2 size:(unsigned int)arg3 isExactSize:(BOOL)arg4 unitsPerPacket:(unsigned int)arg5 packageStartUnit:(long long)arg6 temporalOffset:(BOOL)arg7 frameFlags:(unsigned char)arg8;
 - (void)addIndexEntryWithFilePosition:(long long)arg1 size:(unsigned int)arg2 isExactSize:(BOOL)arg3 unitsPerPacket:(unsigned int)arg4 temporalOffset:(BOOL)arg5 frameFlags:(unsigned char)arg6;
 - (void)setWithEssenceTransferCharacteristic:(const struct MXKey16 *)arg1;
@@ -80,7 +77,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) BOOL isMPEG4;
 @property(readonly) BOOL isMPEG2;
 @property(readonly) long long indexDataSize;
-@property(readonly) NSString *customColorSpace;
+- (struct __CFString *)newCustomColorSpace;
+- (struct __CFString *)createCustomColorSpace;
 @property(readonly) BOOL isMPEG;
 @property(readonly, copy) NSString *description;
 - (int)avcCodecWithDescriptor:(const struct MXKLV *)arg1 subDescriptor:(const struct MXKLV *)arg2;

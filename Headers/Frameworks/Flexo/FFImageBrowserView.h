@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowsEmptySelection;
     BOOL _allowsReordering;
     BOOL _useHighQualityScaling;
-    struct FFProcrastinatedDispatch_t _procrastinatedUpdateVisibleCells;
+    struct PCProcrastinatedDispatch_t _procrastinatedUpdateVisibleCells;
     int _cellStyleMask;
     CDStruct_83cd8af5 _margin;
     FFSkimmingModule *_skimmingModule;

@@ -10,7 +10,7 @@
 
 @interface OZTransform3DHUDController : OZHUDController
 {
-    list_3c5d753a *_pTNodes;
+    list_87f2377f *_pTNodes;
     OZZTranslate3DHUDButton *_zTransButton;
     OZXYTranslate3DHUDButton *_xyTransButton;
     OZXZTranslate3DHUDButton *_xzTransButton;
@@ -28,7 +28,7 @@
 - (int)getAxes;
 - (void)changeAxes:(id)arg1;
 - (void)dealloc;
-- (list_3c5d753a *)nodeList;
+- (list_87f2377f *)nodeList;
 - (void)notify:(unsigned int)arg1;
 - (BOOL)loadView;
 - (void)updateEnableState;
@@ -36,7 +36,7 @@
 - (BOOL)isRotateHiddenOrDisabled;
 - (BOOL)isTranslateHiddenOrDisabled;
 - (BOOL)isTransformationHiddenOrDisabled;
-- (id)initWithObjectList:(list_2b134d54 *)arg1;
+- (id)initWithObjectList:(list_93048c9c *)arg1;
 
 @end
 

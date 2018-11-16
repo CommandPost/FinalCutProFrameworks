@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
     unsigned int _textStyleCount;
     NSDictionary *_customMetadataRepresentationDict;
     FFMetadataViewSet *_metadataViewSet;
+    BOOL _use_asset_file_short_hand_syntax;
     struct {
         char _exclude_mod_date_on_sequences;
         char _exclude_asset_file_info;
@@ -108,7 +109,8 @@ __attribute__((visibility("hidden")))
 - (void)addRollingShutterAdjustment:(id)arg1 element:(id)arg2;
 - (void)addStabilizationAdjustment:(id)arg1 element:(id)arg2;
 - (void)addBlendAdjustment:(id)arg1 element:(id)arg2;
-- (id)addAdjustment:(id)arg1 name:(id)arg2 type:(CDUnknownFunctionPointerType)arg3 element:(id)arg4;
+- (void)add360TransformAdjustment:(id)arg1 element:(id)arg2;
+- (void)addAdjustment:(id)arg1 name:(id)arg2 type:(CDUnknownFunctionPointerType)arg3 element:(id)arg4;
 - (void)addColorInfo:(id)arg1 element:(id)arg2;
 - (void)addColorASCCDLInfoForCorrectionEffect:(id)arg1 element:(id)arg2;
 - (void)addFormat:(id)arg1 element:(id)arg2;
@@ -131,6 +133,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)addParameterNode:(id)arg1 attribute:(BOOL)arg2 addIfDefault:(BOOL)arg3 element:(id)arg4;
 - (id)newParameterNode:(id)arg1;
 - (void)addReservedElementForMediaComponent:(id)arg1 element:(id)arg2;
+- (id)encodeCustomLogProcessingMode:(long long)arg1 LUTProps:(id)arg2;
 - (id)registerMediaElementForMediaComponent:(id)arg1;
 - (id)newTitleNode:(id)arg1;
 - (id)newGapNode:(id)arg1;
@@ -155,7 +158,9 @@ __attribute__((visibility("hidden")))
 - (id)copyChannelStringValue:(id)arg1 withKeyframe:(void *)arg2 isRadians:(BOOL)arg3 isDefault:(char *)arg4;
 - (id)registerColorSpace:(struct CGColorSpace *)arg1;
 - (id)registerVideoProps:(id)arg1;
+- (id)encodeColorSpaceEnumToNCLCTripletWithName:(struct CGColorSpace *)arg1;
 - (id)registerMediaElement:(id)arg1;
+- (void)addAssetAttributes:(id)arg1 element:(id)arg2;
 - (id)registerProjectIDForMediaRef:(id)arg1;
 - (BOOL)addBookmarkForURL:(id)arg1 toElement:(id)arg2;
 - (void)addMetadataToElement:(id)arg1 forObject:(id)arg2;

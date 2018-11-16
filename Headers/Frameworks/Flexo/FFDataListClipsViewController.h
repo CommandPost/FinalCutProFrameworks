@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)setNote:(id)arg1;
 - (void)setDisplayName:(id)arg1;
 - (id)_itemForSender:(id)arg1;
+- (double)tableView:(id)arg1 sizeToFitWidthOfColumn:(long long)arg2;
 - (id)tableView:(id)arg1 viewForTableColumn:(id)arg2 row:(long long)arg3;
 - (void)tableViewSelectionDidChange:(id)arg1;
 - (BOOL)tableView:(id)arg1 shouldReorderColumn:(long long)arg2 toColumn:(long long)arg3;

@@ -6,7 +6,7 @@
 
 #import <Flexo/FFImageRep.h>
 
-@class FFImage, FFLogProcessingInfo, FFScheduleTokenVTDecode, FFStreamVideoFig;
+@class FFImage, FFScheduleTokenVTDecode, FFStreamVideoFig;
 
 __attribute__((visibility("hidden")))
 @interface FFImageRepFigSchedFrame : FFImageRep
@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
     struct CGRect _afterDecodeBounds;
     FFImage *_fillerImage;
     BOOL _disable422Filtering;
-    FFLogProcessingInfo *_logProcessingInfo;
-    int _logProcessingTargetColorSpace;
+    struct FFSourceColorConformBaseClass *_sourceColorConformer;
+    int _sourceCCTargetColorSpace;
 }
 
 - (int)errorCode;
@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 - (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
 - (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
 - (id)_fillerFrame;
-- (int)logProcessingTargetColorSpace;
-- (id)logProcessingInfo;
+- (int)sourceCCTargetColorSpace;
+- (struct FFSourceColorConformBaseClass *)sourceColorConformer;
 - (unsigned long long)approximateMemoryUsage;
 - (struct CGColorSpace *)colorSpace;
 - (struct CGColorSpace *)_internalColorSpace:(_Bool)arg1;
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)type;
 - (id)description;
 - (void)dealloc;
-- (id)initWithPixelTransform:(id)arg1 stream:(id)arg2 scheduleRecord:(id)arg3 lineSel:(int)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6 disable422Filtering:(BOOL)arg7 logProcessingInfo:(id)arg8 logProcessingTargetColorSpace:(int)arg9;
+- (id)initWithPixelTransform:(id)arg1 stream:(id)arg2 scheduleRecord:(id)arg3 lineSel:(int)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6 disable422Filtering:(BOOL)arg7 sourceColorConformer:(struct FFSourceColorConformBaseClass *)arg8 sourceCCTargetColorSpace:(int)arg9;
 
 @end
 

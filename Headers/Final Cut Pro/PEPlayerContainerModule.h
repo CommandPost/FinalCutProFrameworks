@@ -11,11 +11,12 @@
 #import "NSTouchBarProvider.h"
 #import "PEPlayerContainerViewDelegate.h"
 
-@class LKButton, LKContainerItemView, LKMenu, LKPopUpButton, LKSegmentedControl, LKTextField, LKWindow, NSArray, NSDictionary, NSImageView, NSLayoutConstraint, NSMenu, NSMutableArray, NSMutableDictionary, NSResponder, NSString, NSTextField, NSTouchBar, NSView, PEAudioMeterModule, PEPlayerDFRController, PETimecodeDisplayViewController, PEToolbarMetersButton, PEViewedClipSet;
+@class FFPlayerModule, LKButton, LKContainerItemView, LKMenu, LKPopUpButton, LKSegmentedControl, LKTextField, LKWindow, NSArray, NSDictionary, NSImageView, NSLayoutConstraint, NSMenu, NSMutableArray, NSMutableDictionary, NSResponder, NSStackView, NSString, NSTextField, NSTouchBar, NSView, PEAudioMeterModule, PEPlayerDFRController, PETimecodeDisplayViewController, PEToolbarMetersButton, PEViewedClipSet, PEViewerDFRController;
 
 @interface PEPlayerContainerModule : LKViewModule <PEPlayerContainerViewDelegate, FFErrorReportingProtocol, FFPlayerModuleDelegate, NSTouchBarProvider>
 {
     PEPlayerDFRController *_dfrController;
+    PEViewerDFRController *_viewerDfrController;
     int _mode;
     int _defaultMode;
     int _previousMode;
@@ -71,6 +72,8 @@
     LKPopUpButton *_retimePopup;
     NSView *_audioMeters;
     PEToolbarMetersButton *_audioMetersButton;
+    LKButton *_playerWarningButton;
+    NSStackView *_leftStackView;
     LKWindow *_matchWindow;
     NSView *_matchControlsFooterView;
     NSView *_matchAccessoryView;
@@ -95,8 +98,10 @@
     NSMutableArray *_cachedPlayers;
     long long _multiAngleEditStyle;
     PETimecodeDisplayViewController *_timecodeDisplayViewController;
-    struct FFProcrastinatedDispatch_t _procrastinatedSetNeedsDisplayContext;
+    struct PCProcrastinatedDispatch_t _procrastinatedSetNeedsDisplayContext;
+    double _playerSavedZoomFactor;
     BOOL _isInFullscreenMode;
+    FFPlayerModule *_playerInFullscreen;
     id _savedFirstResponder;
     id _savedActiveModule;
     NSResponder *_savedModuleNextResponder;
@@ -104,6 +109,8 @@
     NSDictionary *_fullScreenOptions;
     LKContainerItemView *_savedContainerItemView;
     int _savedDisplayAreaMode;
+    int _cameraMode;
+    BOOL _isKeyPathPEViewedClipsKey;
     BOOL _textOSCActive;
 }
 
@@ -116,6 +123,8 @@
 @property(nonatomic) BOOL viewerIsDominant; // @synthesize viewerIsDominant=_viewerIsDominant;
 @property(nonatomic) int defaultMode; // @synthesize defaultMode=_defaultMode;
 @property(nonatomic) int mode; // @synthesize mode=_mode;
+- (void)showWarningPopover:(id)arg1;
+- (void)updateToolMenuForSelectionChange:(id)arg1;
 - (void)layoutDidChange:(id)arg1;
 - (void)reconfigurePlayers;
 - (void)playerModule:(id)arg1 didExitFullScreenForEvent:(id)arg2;
@@ -123,6 +132,8 @@
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)_displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 preferAudio:(BOOL)arg4;
 - (void)_projectChanged:(id)arg1;
+- (void)_setupHMD;
+- (void)_teardownHMD;
 - (void)_setupVout;
 - (void)_ignoreObservingActivePlayer;
 - (void)_observeActivePlayer;
@@ -156,7 +167,9 @@
 - (void)_updateTwoUpViewerIcon;
 - (void)_updateOneUpViewerIcon;
 - (id)imageNameForType:(int)arg1;
-- (int)mediaBrowserModeIcon;
+- (int)mediaBrowserModeIcon:(id)arg1;
+- (int)clipTypeInBrowser;
+- (id)activeSkimmableEffectModule;
 - (void)_setViewedClips:(id)arg1 updatePlayers:(BOOL)arg2;
 - (void)updatePlayers;
 - (void)_addPlayerTabsToModule:(id)arg1 forMenu:(id)arg2 indentLevel:(long long)arg3 target:(id)arg4;
@@ -164,7 +177,7 @@
 - (void)numericEntryDidEndNotification:(id)arg1;
 - (void)numericEntryDidBeginNotification:(id)arg1;
 - (void)displayAreaFrameChanged:(id)arg1;
-- (void)userDefaultsChanged:(id)arg1;
+- (void)_updatePlayButtonForLooping;
 - (void)displayAreaDidBeginPlayback:(id)arg1;
 - (void)displayAreaGainedFocus:(id)arg1;
 - (void)textOSCBecameInActive:(id)arg1;
@@ -178,6 +191,7 @@
 - (void)toggleAudioMeters:(id)arg1;
 - (void)toggleEnhanceAudio:(id)arg1;
 - (void)toggleColorBoard:(id)arg1;
+- (BOOL)colorBoardVisible;
 - (void)activeToolChanged:(id)arg1;
 - (int)_preferredDisplayModeForToolClass:(Class)arg1;
 - (void)setupOptionsMenuKeyEquivalents:(id)arg1;
@@ -186,6 +200,7 @@
 - (void)selectTransformTool:(id)arg1;
 - (void)_setupToolPalette;
 - (BOOL)_shouldShowFancyControlsForCanvas;
+- (void)_updateTools:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)rangeCheckLabelMenuItem:(id)arg1;
 - (void)noopMenuItem:(id)arg1;
@@ -215,6 +230,7 @@
 - (void)toggleVerticalAngleViewerLayout:(id)arg1;
 - (void)setShowBothFields:(id)arg1;
 - (BOOL)showBothFields;
+- (void)setDisplay360Horizon:(id)arg1;
 - (void)setDisplayBroadcastSafeZones:(id)arg1;
 - (BOOL)displaysBroadcastSafeZones;
 - (void)setHighlightsExcessLuma:(id)arg1;
@@ -230,6 +246,7 @@
 - (void)showVectorscope:(id)arg1;
 - (void)showHistogram:(id)arg1;
 - (void)showEventsAndTimeline:(id)arg1;
+- (void)show360:(id)arg1;
 - (void)showMultiangle:(id)arg1;
 - (void)addPlayerTab:(id)arg1;
 - (void)selectPlayerTab:(id)arg1;

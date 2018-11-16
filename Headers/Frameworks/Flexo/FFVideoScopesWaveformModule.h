@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (struct CGSize)viewMinSize;
+- (void)colorspaceDidChangeForVideoScopes:(id)arg1;
 - (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (id)viewProperties;
 - (void)setViewProperties:(id)arg1;
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)changeColorSpaceRec601:(id)arg1;
 - (void)changeColorSpaceDefault:(id)arg1;
 - (void)_setOverrideColorSpace:(long long)arg1;
+- (void)changeUnitsNits:(id)arg1;
 - (void)changeUnitsMillivolts:(id)arg1;
 - (void)changeUnitsIRE:(id)arg1;
 - (void)_setCompositeVideoUnits:(long long)arg1;

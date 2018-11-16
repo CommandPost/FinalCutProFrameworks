@@ -41,7 +41,7 @@
 - (CDStruct_e83c9415)unclippedRange;
 - (CDStruct_e83c9415)untimedUnclippedRange;
 - (CDStruct_e83c9415)mediaRange;
-- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
+- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2 withUserInfo:(id)arg3;
 - (void)_refInvalidationChange:(id)arg1;
 - (void)_rangeInvalidated:(id)arg1;
 - (void)_stopObservingMedia;

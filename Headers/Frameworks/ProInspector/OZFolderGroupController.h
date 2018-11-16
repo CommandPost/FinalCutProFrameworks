@@ -24,7 +24,7 @@
 - (void)buildOutSubControllers;
 - (void)createEnclosedGroupFromSubChannels;
 - (void)addAssociatedChannelsToEnclosedGroup:(id)arg1;
-- (void)getTargetChannels:(set_759369c4 *)arg1;
+- (void)getTargetChannels:(set_8ca329ee *)arg1;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (void)didBuildUI;
 - (void)dealloc;

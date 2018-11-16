@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSNumber *token; // @synthesize token=_token;
 @property(readonly, nonatomic) double range; // @synthesize range=_range;
 @property(readonly, nonatomic) double start; // @synthesize start=_start;
+- (void)dealloc;
 - (id)initWithStart:(double)arg1 range:(double)arg2;
 
 @end

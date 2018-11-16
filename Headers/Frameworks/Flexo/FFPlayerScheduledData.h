@@ -9,7 +9,7 @@
 #import "HGRQCustomJobProtocol.h"
 #import "HGRQJobProtocol.h"
 
-@class FFGraphBuildInformation, FFHGAsyncCustomJob, FFHGAsyncFanoutJob, FFRenderedMD5InfoForFrame, FFSVContext, FFSchedInfo, FFScheduleToken, FFStreamVideo, FFSubRangeMD5Info, NSArray, NSCondition, NSDictionary, NSError, NSMutableArray, NSSet, NSString;
+@class FFGraphBuildInformation, FFHGAsyncCustomJob, FFHGAsyncFanoutJob, FFPendingHGCJSync, FFPlSchDCSCompareCache, FFRenderedMD5InfoForFrame, FFSVContext, FFSchedInfo, FFScheduleToken, FFStreamVideo, FFSubRangeMD5Info, NSArray, NSCondition, NSDictionary, NSError, NSMutableArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFPlayerScheduledData : NSObject <HGRQJobProtocol, HGRQCustomJobProtocol>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _time;
     CDStruct_1b6d18a9 _timeRepresented;
     NSString *_frameRepresentedString;
+    NSObject *_objectForCustomJobSyncer;
     CDStruct_1b6d18a9 _alwaysFwdTime;
     CDStruct_1b6d18a9 _duration;
     CDStruct_1b6d18a9 _nativeFrameDur;
@@ -32,8 +33,7 @@ __attribute__((visibility("hidden")))
     unsigned int _knownClearFlags;
     FFScheduleToken *_hintTokens[3];
     CDStruct_1b6d18a9 _schedTimes[3];
-    struct CGColorSpace *_cachedDestColorSpace[3];
-    _Bool _cachedDestColorSpaceCompareResult[3];
+    FFPlSchDCSCompareCache *_csCmpCache;
     CDStruct_1b6d18a9 _pushedToDestsTime;
     FFRenderedMD5InfoForFrame *_scheduledCachingInfo[3];
     FFRenderedMD5InfoForFrame *_graphedCachingInfo[3];
@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
     long long _distanceFromLoopPoint;
     float _skipLevelWhenCreated;
     FFSchedInfo *_schedInfo;
+    int _cameraMode;
     _Bool _sentPMRLogs;
     FFHGAsyncCustomJob *_generateImageJob;
     int _executionLocation;
@@ -98,12 +99,14 @@ __attribute__((visibility("hidden")))
     _Bool _canceledByLiveEdit;
     int _liveEditSpecialHandling;
     _Bool _wasUrgentlyScheduled;
+    FFPendingHGCJSync *_customJobSyncer;
     NSError *_errorInfo;
     NSMutableArray *_holdUntilDealloc;
     long long distanceFromLoopPoint;
 }
 
 + (void)initialize;
+@property(readonly) int cameraMode; // @synthesize cameraMode=_cameraMode;
 @property(readonly) FFSchedInfo *schedInfo; // @synthesize schedInfo=_schedInfo;
 @property _Bool bwIsUncertain; // @synthesize bwIsUncertain=_bwIsUncertain;
 @property unsigned long long bandwidthEstimate; // @synthesize bandwidthEstimate=_bandwidthEstimate;
@@ -204,7 +207,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)noLongerNeedsScheduling;
 - (_Bool)waitUntilScheduled:(id)arg1;
 - (_Bool)schedulingComplete;
-- (void)queueUrgentSchedule;
+- (void)queueUrgentSchedule:(id)arg1;
 - (_Bool)_scheduleInternal;
 - (_Bool)_precalculateMD5_magicFrame_andCheckForLoadingFX:(id)arg1;
 - (CDStruct_1b6d18a9)timeForContextNumber:(int)arg1;
@@ -222,7 +225,7 @@ __attribute__((visibility("hidden")))
 - (id)copyForNewGraph:(id)arg1;
 - (void)_checkSchedTokFlags:(_Bool)arg1;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 time:(CDStruct_1b6d18a9)arg2 timeRepresented:(CDStruct_1b6d18a9)arg3 duration:(CDStruct_1b6d18a9)arg4 nativeFrameDur:(CDStruct_1b6d18a9)arg5 nativeSampleDur:(CDStruct_1b6d18a9)arg6 context1:(id)arg7 context2:(id)arg8 aaContext:(id)arg9 aaRepeats:(int)arg10 bounds:(struct CGRect)arg11 schedQueue:(id)arg12 inRenderMode:(_Bool)arg13 forScrub:(_Bool)arg14 schedInfo:(id)arg15 waitForLoadingFX:(_Bool)arg16 isBlankFrame:(_Bool)arg17 isAudioFrame:(_Bool)arg18 frameRepString:(id)arg19;
+- (id)initWithStream:(id)arg1 time:(CDStruct_1b6d18a9)arg2 timeRepresented:(CDStruct_1b6d18a9)arg3 duration:(CDStruct_1b6d18a9)arg4 nativeFrameDur:(CDStruct_1b6d18a9)arg5 nativeSampleDur:(CDStruct_1b6d18a9)arg6 context1:(id)arg7 context2:(id)arg8 aaContext:(id)arg9 aaRepeats:(int)arg10 bounds:(struct CGRect)arg11 schedQueue:(id)arg12 inRenderMode:(_Bool)arg13 forScrub:(_Bool)arg14 schedInfo:(id)arg15 waitForLoadingFX:(_Bool)arg16 isBlankFrame:(_Bool)arg17 isAudioFrame:(_Bool)arg18 frameRepString:(id)arg19 customJobSyncer:(id)arg20;
 
 @end
 

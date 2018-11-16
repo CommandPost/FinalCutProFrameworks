@@ -14,6 +14,7 @@
 
 @property(nonatomic) struct CGSize viewMaxSize; // @synthesize viewMaxSize=_viewMaxSize;
 @property(nonatomic) struct CGSize viewMinSize; // @synthesize viewMinSize=_viewMinSize;
+- (void)postLayout:(id)arg1;
 - (void)_swapToModule:(id)arg1 animate:(BOOL)arg2;
 - (BOOL)wantsFocusIndicator;
 - (id)init;

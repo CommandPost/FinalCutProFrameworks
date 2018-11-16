@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
 + (void)_selectUserPreset:(id)arg1 forSelectedEffects:(id)arg2 titleForAction:(id)arg3;
 + (void)_revealPresetsForEffect:(id)arg1;
 + (void)_savePresetForEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-+ (void)_resetEffectsToDefaultPreset:(id)arg1;
++ (void)_selectDefaultPresetForSelectedEffects:(id)arg1;
 + (id)_uniqueMenuTitleInMenu:(id)arg1 forBaseMenuTitle:(id)arg2;
 + (void)_appendMenuTitles:(id)arg1 withPresetDirtyStates:(id)arg2 andBaseMenuTitle:(id)arg3;
-+ (BOOL)appendUserPresets:(id)arg1 toMenu:(id)arg2 selectedPresetsInfo:(id)arg3 selectedMenuItems:(id)arg4 menuTitles:(id)arg5 defaultPreset:(id)arg6 foundDefaultPreset:(char *)arg7;
++ (BOOL)appendUserPresets:(id)arg1 toMenu:(id)arg2 selectedPresetsMap:(id)arg3 selectedMenuItems:(id)arg4 menuTitles:(id)arg5 defaultPreset:(id)arg6 foundDefaultPreset:(char *)arg7;
 + (void)populateMenu:(id)arg1 withSelectedEffects:(id)arg2;
 - (void)selectPresetMenuCommandItem:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

@@ -11,7 +11,7 @@
 @interface OZTimerDelegate : NSObject
 {
     OZGLViewer *_viewer;
-    struct OZDisplayTimer *_displayTimer;
+    // Error parsing type: ^{OZDisplayTimer=^^?@^{OZFrameQueue}{shared_ptr<OZPlaybackClock>=^{OZPlaybackClock}^{__shared_weak_count}}{atomic<bool>=AB}@@}, name: _displayTimer
     double _lastCallTime;
     struct PCTimer _timer;
 }
@@ -19,7 +19,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)update:(id)arg1;
-- (id)initWithViewer:(id)arg1 andTimer:(struct OZDisplayTimer *)arg2;
+-     // Error parsing type: @32@0:8@16^{OZDisplayTimer=^^?@^{OZFrameQueue}{shared_ptr<OZPlaybackClock>=^{OZPlaybackClock}^{__shared_weak_count}}{atomic<bool>=AB}@@}24, name: initWithViewer:andTimer:
 
 @end
 

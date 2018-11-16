@@ -50,6 +50,7 @@
 - (void)notificationHandler:(id)arg1;
 - (void)removeNotifications;
 - (void)installNotifications;
+- (void)reloadDataOnMainThread;
 - (void)reloadData:(id)arg1;
 - (struct CGPoint)startPointConvertedToView;
 - (id)dragImage;

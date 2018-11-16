@@ -36,7 +36,6 @@
 }
 
 - (void)changeMediaEventGrouping:(id)arg1;
-- (id)newFormatter;
 - (void)_configureTimecodeFormatter:(id)arg1 forFormat:(long long)arg2;
 - (void)_installConfigurationViewForFormat:(long long)arg1;
 - (void)changeTimeFormatParameter:(id)arg1;

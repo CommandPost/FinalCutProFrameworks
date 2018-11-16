@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL itemDisplayNameEditable;
 - (void)setItemDisplayName:(id)arg1;
 @property(readonly, nonatomic) NSString *itemDisplayName;
+- (void)dealloc;
 - (id)initWithDeviceConnection:(id)arg1;
 
 // Remaining properties

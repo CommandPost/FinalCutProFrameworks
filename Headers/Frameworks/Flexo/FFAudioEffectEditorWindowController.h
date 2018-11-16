@@ -54,6 +54,9 @@ __attribute__((visibility("hidden")))
     FFUndoHandler *_disabledUndoWarning;
     BOOL _isKeyWindow;
     BOOL _observingAUViewFrameChanges;
+    BOOL _pendingBundleEffectPartChange;
+    BOOL _pendingHandleEffectChange;
+    BOOL _pendingParamsFolderChannelChange;
     unsigned long long _auScalePercentage;
 }
 
@@ -111,7 +114,7 @@ __attribute__((visibility("hidden")))
 - (void)windowDidLoad;
 - (void)unloadAudioUnit;
 - (void)loadAudioUnit;
-- (void)loadViewForAudioUnit:(struct ComponentInstanceRecord *)arg1;
+- (void)_loadViewForAudioUnit;
 - (void)_debugLogGeometryForView:(id)arg1 withText:(id)arg2;
 - (id)_cocoaViewForAudioUnit:(struct ComponentInstanceRecord *)arg1;
 - (void)timeRateChangedForContext:(id)arg1;
@@ -135,7 +138,8 @@ __attribute__((visibility("hidden")))
 - (void)_cleanupTrackersAndChannelChanges;
 - (void)dealloc;
 - (id)initWithEffectDelegate:(id)arg1 context:(id)arg2 preferGeneric:(BOOL)arg3;
-- (void)_bundleActivePartHasChanged:(id)arg1;
+- (void)_bundleActivePartDidChange:(id)arg1;
+- (void)_bundleActivePartWillChange:(id)arg1;
 - (void)_updateEffectDelegate:(id)arg1;
 - (void)updateFooterLabels;
 - (void)updateWindowTitleBar;
@@ -149,7 +153,11 @@ __attribute__((visibility("hidden")))
 - (void)_saveWindowFrame;
 - (void)_rolesInLibraryChanged:(id)arg1;
 - (void)_effectStackAnchoredObjectChanged:(id)arg1;
+- (void)_masterUnitInvalidated:(id)arg1;
+- (void)_effectDeactivated:(id)arg1;
 - (void)_effectsChanged:(id)arg1;
+- (void)_notifyEffectWindowShouldCloseOrReload:(id)arg1;
+- (void)_handleEffectRemovedOrConfigChanged;
 - (void)_registerPropertyChangeListener:(BOOL)arg1;
 - (void)_setEffectChannelFolder:(id)arg1;
 - (void)_channelChangedNotification:(id)arg1;

@@ -6,9 +6,11 @@
 
 #import <Flexo/FFEffect.h>
 
+#import "FFEffectPresetDirtyProtocol.h"
+
 @class FFAnchoredObject, FFSharedAudioUnit, NSDictionary, NSMutableSet;
 
-@interface FFAudioUnitEffect : FFEffect
+@interface FFAudioUnitEffect : FFEffect <FFEffectPresetDirtyProtocol>
 {
     BOOL _isSyncingChannelsToParameters;
     NSDictionary *_effectState;
@@ -25,6 +27,7 @@
     NSMutableSet *_slaveUnits;
     FFAnchoredObject *_observedObject;
     unsigned int _numObservedObjectChannels;
+    BOOL _performingUpdateAudioProperties;
 }
 
 + (void)clearAllPlaybackUnits;
@@ -60,6 +63,7 @@
 + (BOOL)componentDescription:(struct AudioComponentDescription *)arg1 forEffectIdentifier:(id)arg2;
 + (BOOL)update_disableAudioUnitEffectClumpFolderResetForEffectStack:(id)arg1;
 + (BOOL)update_useRelativeAudioPresetPathForEffectStack:(id)arg1;
++ (void)setParameterChannel:(id)arg1 toValue:(float)arg2 atTime:(CDStruct_1b6d18a9)arg3 withOptions:(unsigned int)arg4;
 + (void)_refreshEffectStackOnMainThread:(id)arg1;
 + (id)rootFolderForFilePresetType:(int)arg1 effect:(id)arg2;
 + (void)postPresetChangedNotificationForEffect:(id)arg1;
@@ -67,13 +71,14 @@
 + (void)selectUserPreset:(id)arg1 forSelectedEffects:(id)arg2;
 + (void)revealPresetsForEffect:(id)arg1;
 + (void)savePresetForEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-+ (void)resetEffectsToDefaultPreset:(id)arg1;
++ (void)selectDefaultPresetForSelectedEffects:(id)arg1;
 + (void)populateMenu:(id)arg1 withSelectedEffects:(id)arg2;
 + (unsigned int)unmapParameterID:(unsigned int)arg1;
 + (unsigned int)mapParameterID:(unsigned int)arg1;
 @property(nonatomic) BOOL presetDirty; // @synthesize presetDirty=_presetDirty;
 @property(readonly) unsigned int numChannels; // @synthesize numChannels=_numChannels;
 @property(readonly) double sampleRate; // @synthesize sampleRate=_sampleRate;
+- (void)update_PreEdelXAudioEffectKeyframes;
 - (id)fileURL;
 - (id)exportAsXMLElementWithDeprecatedEffectData:(id)arg1;
 - (id)exportAsXMLElement;
@@ -92,15 +97,19 @@
 - (id)masterUnitNoDemand;
 - (id)masterUnit;
 - (id)_masterUnit:(BOOL)arg1;
+- (void)DSObjectWasAddedToStore;
 - (void)effectStackAnchoredObjectDidChange;
-- (void)effectWillBeRemovedFromStack;
-- (void)effectWasAddedToStack:(int)arg1;
+- (void)effectDeactivated;
+- (void)effectActivated:(int)arg1;
 - (void)setEffectStack:(id)arg1;
+- (void)_updateAudioUnitAllocation;
 - (void)_removeAnchoredObjectObserving;
 - (void)_addAnchoredObjectObserving;
-- (void)_updateObjectAudioProperties;
+- (void)_notifyUpdateAudioProperties:(id)arg1;
+- (void)_updateAudioProperties:(BOOL)arg1;
 - (void)resetPlaybackUnits;
 - (unsigned int)_defaultNumEffectChannels;
+- (BOOL)isEDELEffect;
 - (void)loadEffectStateIntoAudioUnit:(struct ComponentInstanceRecord *)arg1;
 - (int)saveCurrentEffectState;
 - (id)effectState;
@@ -115,6 +124,7 @@
 - (id)preset;
 - (void)setPreset:(id)arg1;
 - (void)switchToPreset:(id)arg1;
+- (void)_switchToPreset:(id)arg1 preserveOptions:(unsigned int)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_postInit:(id)arg1;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
@@ -137,7 +147,8 @@
 - (BOOL)setXMLPresetPath:(id)arg1 forPresetType:(int)arg2;
 - (int)setFilePresetPath:(id)arg1 forFilePresetType:(int)arg2 withFullPath:(id)arg3;
 - (int)setFactoryPreset:(int)arg1;
-- (void *)_newAuPresetFromPst:(id)arg1;
+- (id)auPresetFromAUPresetFileAtPath:(id)arg1;
+- (id)auPresetFromPst:(id)arg1;
 - (int)savePresetNamed:(id)arg1 withPath:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (id)getFilePresets;
 - (id)fullPathForPresetPath:(id)arg1 forFilePresetType:(int)arg2;
@@ -145,8 +156,8 @@
 - (id)presetsForFilePresetType:(int)arg1 startingPath:(id)arg2;
 - (id)rootFolderForFilePresetType:(int)arg1;
 - (id)parameterFolder;
-- (void)syncChannelsToParameters;
-- (void)syncChannelsToParametersFromFolder:(id)arg1 isCreatingChannelFolder:(BOOL)arg2;
+- (void)syncChannelsToParametersWithPreserveOptions:(unsigned int)arg1;
+- (void)syncChannelsToParametersFromFolder:(id)arg1 isCreatingChannelFolder:(BOOL)arg2 preserveOptions:(unsigned int)arg3;
 - (id)newChannelFolderWithParent:(id)arg1 name:(id)arg2;
 
 @end

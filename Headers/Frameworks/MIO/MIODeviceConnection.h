@@ -6,10 +6,11 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSDictionary, NSNumber, NSString;
+@class AVCaptureDevice, NSArray, NSDictionary, NSNumber, NSString;
 
 @interface MIODeviceConnection : NSObject
 {
+    AVCaptureDevice *mAVCaptureDevice;
     unsigned int mCMIOObjectID;
     unsigned int mCMIOStreamID;
     unsigned int mFramerate;
@@ -62,7 +63,7 @@
 - (BOOL)isFileProxyDevice;
 - (int)format;
 - (unsigned int)height;
-- (id)colorspace;
+- (id)copyColorspace;
 - (unsigned int)width;
 @property BOOL inputting;
 - (void)setOutputDisplayOrder:(BOOL)arg1;
@@ -109,6 +110,7 @@
 - (void)setCMIOObjectID:(unsigned int)arg1;
 - (BOOL)isOpen;
 - (void)closeConnection;
+- (void)setAVCaptureDevice:(id)arg1;
 - (BOOL)openConnection;
 - (void)connectionWillBecomeUnavailable;
 - (void)connectionDidBecomeAvailable;
@@ -120,6 +122,7 @@
 - (void)removeDeviceListener;
 - (void)addDeviceListener;
 - (id)initWithCMIOObjectID:(unsigned int)arg1;
+- (id)avCaptureDevice;
 - (id)initWithCodecType:(unsigned int)arg1 forOutputToPath:(id)arg2;
 
 @end

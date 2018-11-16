@@ -36,9 +36,11 @@
     LKPopUpButton *_kernelType;
     LKSlider *_supersamples;
     LKTextField *_sceneHashTF;
+    LKButton *_allowDropZoneAsPlaceholderButton;
 }
 
 + (id)sharedController;
+- (void)allowDropZoneAsPlaceholder:(id)arg1;
 - (void)updateSceneHash:(id)arg1;
 - (void)skipSavingUISettings:(id)arg1;
 - (void)skipTemplatePreviews:(id)arg1;

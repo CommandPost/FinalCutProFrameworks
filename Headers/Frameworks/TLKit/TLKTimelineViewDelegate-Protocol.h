@@ -13,6 +13,7 @@
 @optional
 - (TLKItemLaneFragmentLayer *)timelineView:(TLKTimelineView *)arg1 layerForLane:(id)arg2;
 - (TLKTimelineLayer *)timelineView:(TLKTimelineView *)arg1 layerForItemComponent:(id)arg2;
+- (double)timelineView:(TLKTimelineView *)arg1 heightForItemComponent:(id)arg2 proposedHeight:(double)arg3;
 - (TLKContainerLayer *)timelineView:(TLKTimelineView *)arg1 layerForContainer:(id)arg2;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 validateUserInterfaceItem:(id <NSValidatedUserInterfaceItem>)arg2;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 shouldOpenClipTrimmerForItem:(id <TLKTimelineItem>)arg2;

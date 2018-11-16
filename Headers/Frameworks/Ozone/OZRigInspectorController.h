@@ -18,9 +18,9 @@
 - (void)dealloc;
 - (void)notify:(unsigned int)arg1;
 - (void)buildUI:(id)arg1;
-- (BOOL)buildUIWithSceneNodes:(list_63a35edb *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_752fd9b9 *)arg1 context:(id)arg2;
 - (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
-- (id)initWithSceneNodes:(list_63a35edb *)arg1 viewCtlrDelegate:(id)arg2;
+- (id)initWithSceneNodes:(list_752fd9b9 *)arg1 viewCtlrDelegate:(id)arg2;
 
 @end
 

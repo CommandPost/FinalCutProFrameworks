@@ -34,7 +34,7 @@
 @property double startSec; // @synthesize startSec=_startSec;
 @property CDStruct_1b6d18a9 end; // @synthesize end=_end;
 @property CDStruct_1b6d18a9 start; // @synthesize start=_start;
-@property id <FFVerticalOrdering> item; // @synthesize item=_item;
+@property(readonly) id <FFVerticalOrdering> item; // @synthesize item=_item;
 @property BOOL canFillGaps;
 - (id)description;
 - (id)shortDescription:(BOOL)arg1;

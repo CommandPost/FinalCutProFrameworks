@@ -6,12 +6,13 @@
 
 #import <MIO/MIORADClip.h>
 
-@class NSMutableArray, NSString;
+@class AVAsset, NSMutableArray, NSString;
 
 @interface MIORADSpannedClip : MIORADClip
 {
     NSMutableArray *_clips;
     NSString *_spannedClipID;
+    AVAsset *_spannedAsset;
 }
 
 + (id)spannedClipWithID:(id)arg1;
@@ -19,9 +20,10 @@
 - (id)valueForUndefinedKey:(id)arg1;
 - (void *)ingestObjectRefCon;
 - (id)ingestObject;
+- (BOOL)useAssetImportPath;
 - (id)ingestSourceFiles;
 - (id)valueForKeyPath:(id)arg1;
-- (void)willUnmount;
+- (void)willUnmount:(id)arg1;
 - (id)valueInMetadataFileForProperty:(id)arg1;
 - (void)setValue:(id)arg1 inMetadataFileForProperty:(id)arg2;
 - (id)reelName;
@@ -30,6 +32,7 @@
 - (unsigned int)memberCount;
 - (void)removeMemberClipsFromVolume:(id)arg1;
 - (void)addMemberClip:(id)arg1;
+- (id)newSpannedAsset;
 - (void)sortClips;
 - (id)findClipByID:(id)arg1;
 - (BOOL)isComplete;
@@ -94,6 +97,7 @@
 - (id)volume;
 - (id)firstClip;
 - (id)description;
+- (id)avAsset;
 - (void)dealloc;
 - (id)initWithID:(id)arg1;
 

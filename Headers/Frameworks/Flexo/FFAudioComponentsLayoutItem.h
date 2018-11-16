@@ -13,23 +13,28 @@
 
 @interface FFAudioComponentsLayoutItem : FFBaseDSObject <NSCoding, NSCopying>
 {
-    NSString *m_itemName;
-    NSArray *m_channelMap;
-    NSArray *m_audioChannelRoutingMap;
-    NSDictionary *m_cachedEquivalenceProperties;
+    NSString *_itemName;
+    NSArray *_channelMap;
+    NSArray *_audioChannelRoutingMap;
+    unsigned int _equivalenceID;
+    NSDictionary *_cachedEquivalenceProperties;
 }
 
 + (unsigned int)numOutputChannelsForLayoutItems:(id)arg1 withFlags:(unsigned int)arg2;
 + (id)itemWithName:(id)arg1 channelMap:(id)arg2 audioChannelRoutingMap:(id)arg3;
 + (id)itemWithName:(id)arg1 channelMap:(id)arg2;
 + (id)copyClassDescription;
-@property(readonly, nonatomic) NSArray *audioChannelRoutingMap; // @synthesize audioChannelRoutingMap=m_audioChannelRoutingMap;
-@property(readonly, nonatomic) NSArray *channelMap; // @synthesize channelMap=m_channelMap;
-@property(readonly, nonatomic) NSString *itemName; // @synthesize itemName=m_itemName;
+@property(nonatomic) unsigned int equivalenceID; // @synthesize equivalenceID=_equivalenceID;
+@property(readonly, nonatomic) NSArray *audioChannelRoutingMap; // @synthesize audioChannelRoutingMap=_audioChannelRoutingMap;
+@property(readonly, nonatomic) NSArray *channelMap; // @synthesize channelMap=_channelMap;
+@property(readonly, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
+- (id)equivalencePropertiesForVersion:(unsigned int)arg1;
 - (CDStruct_bdcb2b0d)equivalenceMD5;
 - (id)equivalenceProperties;
 - (void)clearCachedEquivalenceProperties;
 - (id)newEquivalenceProperties;
+- (id)_newEquivalenceProperties:(BOOL)arg1;
+- (BOOL)supportsEquivalenceID;
 - (BOOL)isEqualToLayoutItem:(id)arg1;
 - (BOOL)isEquivalentToEquivalenceProperties:(id)arg1;
 - (BOOL)isEquivalentToLayoutItem:(id)arg1;

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (float)suggestedMinParamWidth;
-- (BOOL)shouldAddDisclosureButton;
+- (int)shouldAddDisclosureButton;
 - (void)_indentMasksSubControllers;
 - (void)setParentController:(id)arg1;
 - (void)dealloc;

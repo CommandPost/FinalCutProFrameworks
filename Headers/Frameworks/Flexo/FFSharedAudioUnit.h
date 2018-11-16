@@ -25,7 +25,6 @@
 @property(readonly, nonatomic) NSString *effectID; // @synthesize effectID=_effectID;
 - (void)unlockAudioUnit:(void *)arg1;
 - (BOOL)lockAudioUnit:(void *)arg1;
-- (BOOL)setSampleRate:(double)arg1 numChannels:(unsigned int)arg2 effectState:(id)arg3;
 - (struct ComponentInstanceRecord *)audioUnit;
 - (void)setPurgeFlag;
 - (oneway void)release;

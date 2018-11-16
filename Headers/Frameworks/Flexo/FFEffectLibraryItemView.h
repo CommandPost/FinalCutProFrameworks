@@ -6,10 +6,12 @@
 
 #import "NSView.h"
 
-@class CALayer, CATextLayer, FFBKEffectLibraryItem, FFEffectLibrarySelectionLayer;
+#import "CALayerDelegate.h"
+
+@class CALayer, CATextLayer, FFBKEffectLibraryItem, FFEffectLibrarySelectionLayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFEffectLibraryItemView : NSView
+@interface FFEffectLibraryItemView : NSView <CALayerDelegate>
 {
     FFBKEffectLibraryItem *_effect;
     BOOL _selected;
@@ -59,6 +61,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithEffect:(id)arg1;
 - (void)viewDidChangeBackingProperties;
 - (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

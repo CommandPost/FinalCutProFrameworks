@@ -68,9 +68,9 @@ __attribute__((visibility("hidden")))
 
 + (id)_nameForAudioEnhancementEffectWithID:(id)arg1;
 + (id)removeAttributesIntrinsicVideoEffectIDs;
-+ (id)intrinsicEffectIDs:(BOOL)arg1;
++ (id)intrinsicEffectIDs:(BOOL)arg1 include360:(BOOL)arg2;
 + (id)intrinsicAudioEffectIDs;
-+ (id)intrinsicVideoEffectIDs:(BOOL)arg1;
++ (id)intrinsicVideoEffectIDs:(BOOL)arg1 include360:(BOOL)arg2;
 @property(readonly, nonatomic) long long selectedKeyframeMode; // @synthesize selectedKeyframeMode=_selectedKeyframeMode;
 @property(readonly, nonatomic) NSArray *selectedIntrinsics; // @synthesize selectedIntrinsics=_selectedIntrinsics;
 @property(readonly, nonatomic) NSArray *selectedChannels; // @synthesize selectedChannels=_selectedChannels;
@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)effectHasKeyframes:(id)arg1;
 - (BOOL)channelFolderHasKeyframes:(id)arg1;
 - (void)setupCheckboxArrays;
+- (BOOL)show360Intrinsics;
 - (id)newCheckboxWithFrame:(struct CGRect)arg1 andName:(id)arg2 video:(BOOL)arg3 enabled:(BOOL)arg4;
 - (void)audioCheckboxHandler:(id)arg1;
 - (void)videoCheckboxHandler:(id)arg1;

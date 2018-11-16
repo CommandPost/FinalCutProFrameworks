@@ -65,6 +65,7 @@
 - (void)resetMediaAvailable:(id)arg1;
 - (void)_deferredAssetChangedNotification:(id)arg1;
 - (void)bulkAssetChangeEnd:(id)arg1;
+- (void)clearMediaAndEffectFlags;
 - (void)_assetsChangedNotification:(id)arg1;
 - (BOOL)lastKnownMediaAvailable;
 - (BOOL)mediaAvailable;
@@ -136,6 +137,7 @@
 - (id)location;
 - (id)url;
 - (id)dataBaseFileURL;
+- (id)metadataContentModDate;
 @property(copy, nonatomic) NSDate *modDate;
 - (void)bumpModDate;
 - (id)contentType;

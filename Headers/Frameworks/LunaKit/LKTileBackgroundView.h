@@ -14,7 +14,6 @@
 }
 
 - (void)updateSpacing;
-- (void)resizeWithOldSuperviewSize:(struct CGSize)arg1;
 - (void)setFrameSize:(struct CGSize)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setTile:(id)arg1;

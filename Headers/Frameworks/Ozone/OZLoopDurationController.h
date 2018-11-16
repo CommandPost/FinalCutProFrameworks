@@ -9,7 +9,7 @@
 @interface OZLoopDurationController : OZChanDoubleController
 {
     struct OZChannelDouble *_loopDurationChannel;
-    map_d8745af3 *_pRoots;
+    map_3710aa94 *_pRoots;
 }
 
 - (void)setChannelValue:(id)arg1;

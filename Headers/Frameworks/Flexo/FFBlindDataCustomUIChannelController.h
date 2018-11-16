@@ -11,8 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)shouldDisplayAnimIndicator;
+- (float)suggestedMaxParamWidth;
 - (void)update;
-- (void)subviewsNeedDisplay:(id)arg1;
+- (void)_subviewsNeedDisplay:(id)arg1;
+- (void)didBuildUI;
+- (id)plugin;
+- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end

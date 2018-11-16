@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 + (void)initialize;
 - (void)setFrameSize:(struct CGSize)arg1;
-- (id)toolTipForCellClass:(Class)arg1;
 - (void)setToolTip:(id)arg1 forCellClass:(Class)arg2;
 @property double brightnessValue; // @dynamic brightnessValue;
 @property double contrastValue; // @dynamic contrastValue;

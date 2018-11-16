@@ -10,6 +10,7 @@
 
 @interface PEAudioMeterModule : LKViewModule <PEAudioMeterControllerProtocol>
 {
+    _Bool wasHidden;
     BOOL _useExternalControlMode;
 }
 
@@ -17,6 +18,8 @@
 - (BOOL)shouldUseExternalControlMode;
 - (void)setMeteringContext:(id)arg1;
 - (void)resetOverloadIndicators;
+- (void)moduleLayoutDidChange:(id)arg1;
+- (void)moduleLayoutWillChange:(id)arg1;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;
 - (void)moduleViewWillBeRemoved:(id)arg1;

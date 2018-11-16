@@ -9,11 +9,12 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class FFDominantMotionMediaRep, FFFlowMediaRep, FFMediaRep, FFProvider, FFVideoOverrideInfo, FFVideoProps, NSDictionary, NSString;
+@class FFCustomCameraLUTProps, FFDominantMotionMediaRep, FFFlowMediaRep, FFMediaRep, FFProvider, FFVideoOverrideInfo, FFVideoProps, NSDictionary, NSString;
 
 @interface FFAsset : FFMediaState <NSCoding, NSCopying>
 {
     NSString *_mediaIdentifier;
+    NSString *_md5String;
     float _rotationDegrees;
     FFVideoProps *_videoProps;
     NSString *_videoFormatName;
@@ -25,8 +26,8 @@
     long long _colorSpaceOverride;
     long long _anamorphicType;
     long long _logProcessingMode;
+    FFCustomCameraLUTProps *_customCameraLUTProps;
     BOOL _isUnmounting;
-    FFVideoOverrideInfo *_videoOverrides;
     FFMediaRep *_optimizedMediaRep;
     FFMediaRep *_proxyMediaRep;
     FFFlowMediaRep *_flowMediaRep;
@@ -37,17 +38,25 @@
     NSDictionary *_audioSourceDict;
     NSDictionary *_videoSourceDict;
     BOOL _isTrailerAsset;
+    FFVideoOverrideInfo *_videoOverrides;
     FFProvider *_provider;
     int _quality;
     BOOL _isObservingQuality;
     BOOL _forceNoProxy;
     BOOL _videoCodecMissing;
+    BOOL _videoCodecIs64BitVT;
+    BOOL _videoCodecIs32BitQT;
+    unsigned int _videoCodecType4CC;
     BOOL _isReferenceMovie;
+    BOOL _missingCameraLUT;
+    BOOL _observingLutAssets;
     BOOL _needsAudioPropertiesUpdate;
     BOOL _needsVideoPropertiesUpdate;
+    BOOL _mediaOnlineSinceLastNotification;
 }
 
 + (void)invalidateMultipleAssets:(id)arg1;
++ (BOOL)isMediaIdentifierExternal:(id)arg1;
 + (BOOL)playerQualityChanging;
 + (int)currentQuality;
 + (void)initialize;
@@ -55,17 +64,26 @@
 + (void)playerQualityChanged;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property(nonatomic) BOOL mediaOnlineSinceLastNotification; // @synthesize mediaOnlineSinceLastNotification=_mediaOnlineSinceLastNotification;
 @property(nonatomic) unsigned long long audioSourceCount; // @synthesize audioSourceCount=_audioSourceCount;
 @property(nonatomic) BOOL needsVideoPropertiesUpdate; // @synthesize needsVideoPropertiesUpdate=_needsVideoPropertiesUpdate;
 @property(readonly, nonatomic) BOOL needsAudioPropertiesUpdate; // @synthesize needsAudioPropertiesUpdate=_needsAudioPropertiesUpdate;
 @property(nonatomic) BOOL isUnmounting; // @synthesize isUnmounting=_isUnmounting;
 @property(nonatomic) BOOL isTrailerAsset; // @synthesize isTrailerAsset=_isTrailerAsset;
+@property(nonatomic) unsigned int videoCodecType4CC; // @synthesize videoCodecType4CC=_videoCodecType4CC;
+@property(readonly, nonatomic) BOOL videoCodecIs32BitQT; // @synthesize videoCodecIs32BitQT=_videoCodecIs32BitQT;
+@property(readonly, nonatomic) BOOL videoCodecIs64BitVT; // @synthesize videoCodecIs64BitVT=_videoCodecIs64BitVT;
 @property(readonly, nonatomic) BOOL isReferenceMovie; // @synthesize isReferenceMovie=_isReferenceMovie;
 @property(readonly, nonatomic) BOOL videoCodecMissing; // @synthesize videoCodecMissing=_videoCodecMissing;
 @property(readonly, nonatomic) NSDictionary *videoSourceDict; // @synthesize videoSourceDict=_videoSourceDict;
 @property(nonatomic) BOOL forceNoProxy; // @synthesize forceNoProxy=_forceNoProxy;
 @property(retain, nonatomic) NSString *uttype; // @synthesize uttype=_uttype;
+@property(readonly, nonatomic) NSString *md5String; // @synthesize md5String=_md5String;
 @property(readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
+- (int)_applyLogColorProfileNameWhenAppropriate;
+- (int)_logProcessingModeFromMediaRep;
+- (long long)logProcessingModeFromMediaRep;
+- (void)update_colorProfileMetadata;
 - (BOOL)update_removeBadTranscodedFiles;
 - (BOOL)update_rebuildAssetAudioProperties;
 - (BOOL)update_addAudioSourceDict;
@@ -110,6 +128,10 @@
 - (void)sourceRangeInvalidated:(id)arg1;
 - (void)_startObservingProvider:(id)arg1;
 - (void)_stopObservingProvider:(id)arg1;
+- (void)FFAssetLutCollectionNotification:(id)arg1;
+- (void)removeCustomCameraLUTObserving;
+- (void)addCustomCameraLUTObserving;
+- (void)addOrRemoveCustomCameraLUTObserving;
 - (void)_providerClosing:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)canIngest;
@@ -131,6 +153,7 @@
 - (void)invalidateProviders;
 - (void)invalidateWithUnknownActionScope:(CDUnknownBlockType)arg1;
 - (void)_invalidateProvider:(id)arg1;
+- (void)notifyIfMediaHasChangedSinceLastNotification;
 - (void)deferredInvalidate;
 - (void)_mainThreadInvalidate;
 - (void)purgeTranscodedMedia;
@@ -138,14 +161,29 @@
 - (void)purgeOptimizedMedia;
 - (void)purgeGeneratedMedia;
 - (BOOL)isPSD;
+- (id)mediaIndexingKey;
+- (BOOL)isMediaIdentifierExternal;
 - (void)setMediaIdentifierForOfflineAsset:(id)arg1;
 - (void)setOriginalRelativePath:(id)arg1;
 - (id)assetFilename;
+- (void)setVideoOverridesFromAsset:(id)arg1;
+- (id)supportedCameraProjectionModeOverrides;
+- (BOOL)supportsCameraProjectionOverride;
 - (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
-@property(nonatomic) long long logProcessingMode;
+- (void)_setCustomCameraLUTProps:(id)arg1;
+- (void)forceSetCustomCameraLUTProps:(id)arg1;
+- (void)setCustomCameraLUTProps:(id)arg1;
+- (void)_setLogProcessingMode:(long long)arg1;
+- (void)setLogProcessingMode:(long long)arg1;
+- (void)setCameraLUTStateWithLogProcessingMode:(long long)arg1 customCameraLUTProps:(id)arg2;
+- (id)customCameraLUTName;
+- (long long)customCameraLUTIdentifier;
+- (id)customCameraLUTProps;
+- (long long)logProcessingMode;
 - (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;
+- (void)_setColorSpaceOverride:(long long)arg1;
 @property(nonatomic) long long colorSpaceOverride; // @synthesize colorSpaceOverride=_colorSpaceOverride;
 - (BOOL)supportsAnamorphicType;
 @property(nonatomic) BOOL useTimecodeZero; // @synthesize useTimecodeZero=_useTimecodeZero;
@@ -189,6 +227,8 @@
 - (id)originalMediaRep;
 - (void)forceSetVideoProps:(id)arg1;
 @property(retain, nonatomic) FFVideoProps *videoProps;
+@property(readonly, nonatomic) FFVideoProps *videoPropsWithoutOverrides;
+- (int)_calculatedCameraModeFromMD;
 - (void)setVideoFormatName:(id)arg1;
 - (id)videoFormatName;
 - (id)originalMediaVolume;
@@ -202,8 +242,11 @@
 - (void)rebuildAudioProperties;
 - (void)rebuildAudioPropertiesWithProvider:(id)arg1;
 - (id)audioTrackNamesFromMetadataMadeUnique:(BOOL)arg1;
+- (void)_showLogTypeInColorProfileMetadata:(long long)arg1;
+- (int)_logProcessingModeFromCustomColorMetadataValue:(id)arg1;
 - (void)_setLogProcessingModeFromCustomcolorMetadataValue:(id)arg1;
 - (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 mediaIdentifier:(id)arg2 manageFileType:(int)arg3 project:(id)arg4;
 - (id)initWithURL:(id)arg1 manageFileType:(int)arg2 project:(id)arg3;
 - (id)_initWithBasics;
 - (id)init;

@@ -7,10 +7,6 @@
 #import "NSButton.h"
 
 @interface NSButton (LKDFR_NSButtonConvenience)
-+ (id)lkDFR_radioButtonWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3;
-+ (id)lkDFR_checkboxWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3;
-+ (id)lkDFR_buttonWithImage:(id)arg1 target:(id)arg2 action:(SEL)arg3;
-+ (id)lkDFR_buttonWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3;
 + (id)lkDFR_buttonWithTitle:(id)arg1 image:(id)arg2 target:(id)arg3 action:(SEL)arg4;
 @end
 

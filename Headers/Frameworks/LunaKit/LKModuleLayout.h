@@ -76,6 +76,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithCache:(id)arg1;
+- (id)initWithContentsOfFile:(id)arg1 deferLoading:(BOOL)arg2 updater:(id)arg3 error:(id *)arg4;
+- (id)initWithContentsOfFile:(id)arg1 updater:(id)arg2 error:(id *)arg3;
 - (id)initWithContentsOfFile:(id)arg1 deferLoading:(BOOL)arg2;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithName:(id)arg1;

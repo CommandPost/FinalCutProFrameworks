@@ -13,8 +13,8 @@
 - (void)willDeactivate;
 - (void)didActivate;
 - (void)snapEnd;
-- (void)snappedTo:(const set_f8d10c04 *)arg1;
-- (set_f8d10c04 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
+- (void)snappedTo:(const set_0cb42238 *)arg1;
+- (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 - (int)getDrawingOrder;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 

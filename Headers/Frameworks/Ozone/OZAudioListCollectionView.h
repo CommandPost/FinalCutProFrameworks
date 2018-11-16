@@ -20,6 +20,7 @@
 - (void)keyUp:(id)arg1;
 - (void)keyDown:(id)arg1;
 - (id)menuForEvent:(id)arg1;
+- (void)awakeFromNib;
 
 @end
 

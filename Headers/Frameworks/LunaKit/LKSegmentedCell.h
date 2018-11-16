@@ -23,7 +23,7 @@
 
 + (Class)popUpSliderClass;
 + (void)initialize;
-- (void)_drawMenuIndicatorForSegment:(long long)arg1 withRect:(struct CGRect)arg2 inView:(id)arg3;
+- (long long)interiorBackgroundStyleForSegment:(long long)arg1;
 - (void)_paneCapPopUpMenuItemRemoved:(id)arg1;
 - (void)_paneCapPopUpMenuItemChanged:(id)arg1;
 - (void)_paneCapPopUpMenuItemAdded:(id)arg1;
@@ -39,8 +39,6 @@
 - (void)setMenu:(id)arg1 forSegment:(long long)arg2;
 - (void)setMenu:(id)arg1 forSegment:(long long)arg2 isPopUp:(BOOL)arg3 useMenuDelay:(BOOL)arg4;
 - (void)_paneCapPopUpMenuItemAction:(id)arg1;
-- (BOOL)isProMenuIndicatorShownForSegment:(long long)arg1;
-- (void)setProMenuIndicatorShown:(BOOL)arg1 forSegment:(long long)arg2;
 - (void)setSlider:(id)arg1 forSegment:(long long)arg2;
 - (id)sliderForSegment:(long long)arg1;
 - (void)setTintIndex:(long long)arg1;
@@ -53,7 +51,6 @@
 - (id)initTextCell:(id)arg1;
 - (id)init;
 - (void)_initLKOptions;
-- (id)_segmentItems;
 
 @end
 

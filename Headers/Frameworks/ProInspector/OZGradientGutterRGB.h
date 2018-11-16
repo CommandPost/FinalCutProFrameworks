@@ -16,7 +16,7 @@
 - (id)color;
 - (void)takeColorFromTransientColorPicker:(id)arg1;
 - (void)startColorPicker:(id)arg1;
-- (void)getSamples:(map_c3cd15f6 *)arg1;
+- (void)getSamples:(map_512a1fea *)arg1;
 - (struct OZChannelGradientFolder *)getFolder;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -27,8 +27,8 @@
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;
 + (id)groups;
-@property(nonatomic) FFSegmentedControl *autoControl; // @synthesize autoControl=_autoControl;
-@property(nonatomic) NSView *adjustmentToolbarView; // @synthesize adjustmentToolbarView=_adjustmentToolbarView;
+@property(retain, nonatomic) FFSegmentedControl *autoControl; // @synthesize autoControl=_autoControl;
+@property(retain, nonatomic) NSView *adjustmentToolbarView; // @synthesize adjustmentToolbarView=_adjustmentToolbarView;
 - (void)disableBalanceWhiteBalance;
 - (void)disableBalanceFace;
 - (void)toggleAutomaticBalance;

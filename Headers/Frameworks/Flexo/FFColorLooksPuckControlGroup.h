@@ -16,11 +16,14 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-@property(retain, nonatomic) NSArray *puckControlValues; // @synthesize puckControlValues=_puckControlValues;
+@property(readonly, nonatomic) NSArray *values; // @synthesize values=_puckControlValues;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
 @property int boardType; // @dynamic boardType;
+- (void)removeObjectFromValuesAtIndex:(unsigned long long)arg1;
+- (void)insertObject:(id)arg1 inValuesAtIndex:(unsigned long long)arg2;
+@property(readonly, nonatomic) NSArray *puckControlValues; // @dynamic puckControlValues;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithColorLooksPuckControlValues:(id)arg1 boardType:(int)arg2;

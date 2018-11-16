@@ -11,15 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface FFAudioObjectComponentsLayoutMap : FFAudioComponentsLayoutMap
 {
-    BOOL m_enabled;
-    int m_persistedLayoutMode;
-    long long m_updateRoleComponentsSuspended;
-    NSMapTable *m_cachedReferenceRoles;
-    NSMapTable *m_cachedReferenceRoleComponents;
-    NSMapTable *m_componentSourceMap;
-    NSRecursiveLock *m_componentSourceMapLock;
-    BOOL m_observingRoleChanges;
-    BOOL m_showOrphans;
+    BOOL _enabled;
+    int _persistedLayoutMode;
+    long long _updateRoleComponentsSuspended;
+    NSMapTable *_cachedReferenceRoles;
+    NSMapTable *_cachedReferenceRoleComponents;
+    NSMapTable *_componentSourceMap;
+    NSRecursiveLock *_componentSourceMapLock;
+    BOOL _observingRoleChanges;
+    BOOL _showOrphans;
 }
 
 + (void)resetEffectStacksForAudioComponentsLayout:(id)arg1;
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 + (void)setShowOrphanedLayoutItems:(BOOL)arg1;
 + (BOOL)showOrphanedLayoutItems;
 + (void)initOrphanedDebugMethodValues;
-@property(nonatomic) BOOL enabled; // @synthesize enabled=m_enabled;
+@property(nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 - (void)performLoadSync;
 - (id)_orphanLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (BOOL)isOrphanEligibleLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;

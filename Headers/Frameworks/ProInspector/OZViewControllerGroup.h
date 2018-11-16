@@ -19,6 +19,9 @@
     BOOL _isEnclosedGroup;
     BOOL _isTargetingSubctlrChans;
     BOOL _isUserEffectsContainer;
+    BOOL _isColorEffectsContainer;
+    BOOL _isColorMaskEffectsContainer;
+    BOOL _isColorEffectsHeaderContainer;
     BOOL _isTextMaterialContainer;
     int _dragInsertionIndex;
     double _totalInsertionHeight;
@@ -31,6 +34,8 @@
 + (double)viewExpandedVerticalPadding;
 + (id)parameterControllerForChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 + (id)labelControllerForChan:(struct OZChannelBase *)arg1 context:(id)arg2;
++ (id)getControllerForChan:(struct OZChannelBase *)arg1 inControllerGroup:(id)arg2;
++ (id)getControllerWithClass:(Class)arg1 inControllerGroup:(id)arg2;
 @property(nonatomic) BOOL ignoreChanCollapsedState; // @synthesize ignoreChanCollapsedState=_ignoreChanCollapsedState;
 @property(nonatomic) BOOL isTargetingSubctlrChans; // @synthesize isTargetingSubctlrChans=_isTargetingSubctlrChans;
 @property(nonatomic) unsigned int resetType; // @synthesize resetType=_resetType;
@@ -82,10 +87,10 @@
 - (void)removeController:(id)arg1;
 - (void)addController:(id)arg1 appendSubview:(BOOL)arg2;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)doDrag:(list_e5c8e430 *)arg1 viewList:(id)arg2;
+- (void)doDrag:(list_9af5505e *)arg1 viewList:(id)arg2;
 - (void)doDrag:(id)arg1;
 - (void)getSelectedControllers:(id)arg1 doShallowSearch:(BOOL)arg2;
-- (void)getTargetChannels:(set_759369c4 *)arg1;
+- (void)getTargetChannels:(set_8ca329ee *)arg1;
 - (void)setIsTargetingSubctlrChans:(BOOL)arg1 recurse:(BOOL)arg2;
 - (void)reset;
 - (void)setResetType:(unsigned int)arg1 recurse:(BOOL)arg2;
@@ -107,6 +112,9 @@
 - (void)indent;
 - (int)indentLevel;
 - (void)setIsTextMaterialContainer:(BOOL)arg1;
+- (void)setIsColorEffectsHeaderContainer:(BOOL)arg1;
+- (void)setIsColorMaskEffectsContainer:(BOOL)arg1;
+- (void)setIsColorEffectsContainer:(BOOL)arg1;
 - (void)setIsUserEffectsContainer:(BOOL)arg1;
 - (BOOL)isEnclosedGroup;
 - (void)setIsEnclosedGroup:(BOOL)arg1;

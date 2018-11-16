@@ -37,7 +37,7 @@
 + (id)toOnePropertyDescriptions;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) ERLToOnePropertyValue *relationalTableValue; // @synthesize relationalTableValue=_relationalTableValue;
-@property(copy, nonatomic) NSMutableDictionary *managedPropertyValuesByName; // @synthesize managedPropertyValuesByName=_managedPropertyValuesByName;
+@property(readonly, nonatomic) NSMutableDictionary *managedPropertyValuesByName; // @synthesize managedPropertyValuesByName=_managedPropertyValuesByName;
 - (void)applyDeleteRules;
 @property(readonly, nonatomic) ERLRelationalModel *relationalModel;
 - (void)setUnsignedIntegerValue:(unsigned long long)arg1 forAttributeWithKey:(id)arg2 to:(unsigned long long *)arg3;

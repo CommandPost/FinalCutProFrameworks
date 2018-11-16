@@ -27,7 +27,7 @@
     BOOL _didCreateNewCollection;
     int _categoryType;
     TMTheme *_lastSelectedTheme;
-    map_c341eac7 _dropZonesFootageIDs;
+    map_30220020 _dropZonesFootageIDs;
 }
 
 + (void)initialize;

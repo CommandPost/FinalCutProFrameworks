@@ -6,9 +6,11 @@
 
 #import "NSView.h"
 
-@class NSImageView, NSMutableArray, ParentVerticalLayer;
+#import "CALayerDelegate.h"
 
-@interface PEAudioLayeredMeterView : NSView
+@class NSImageView, NSMutableArray, NSString, ParentVerticalLayer;
+
+@interface PEAudioLayeredMeterView : NSView <CALayerDelegate>
 {
     NSImageView *backgroundView;
     ParentVerticalLayer *_parent;
@@ -48,6 +50,12 @@
 - (void)addMeterSublayers;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

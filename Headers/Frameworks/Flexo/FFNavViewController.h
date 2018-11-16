@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
     BOOL _hidden;
     BOOL _savPlaying;
     FFNavView *_selectedView;
-    struct FFProcrastinatedDispatch_t _procrastinatedTimelineImageCreation;
+    struct PCProcrastinatedDispatch_t _procrastinatedTimelineImageCreation;
 }
 
 @property __weak FFAnchoredTimelineModule *module; // @synthesize module=_module;

@@ -25,8 +25,8 @@
     NSArray *_arrangedItems;
     NSMutableArray *_inProgressTranscodeOperations;
     double _contentsScaleFactor;
-    struct FFProcrastinatedDispatch_t _procrastinatedReload;
-    struct FFProcrastinatedDispatch_t _procrastinatedStatusPoll;
+    struct PCProcrastinatedDispatch_t _procrastinatedReload;
+    struct PCProcrastinatedDispatch_t _procrastinatedStatusPoll;
     BOOL _hasSetupLocalDatabase;
     BOOL _hasSetupUbiquitousDatabase;
     BOOL _hasSetupUbiquityProgressWatcher;

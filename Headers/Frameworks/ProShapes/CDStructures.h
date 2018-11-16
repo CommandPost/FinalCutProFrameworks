@@ -598,19 +598,19 @@ struct OZShape {
     struct OZChannelDiscreteColor _field59;
     struct OZChannelBool _field60;
     struct OZChannelText _field61;
-    struct OZChannelPosition _field62;
+    struct OZChannelBool _field62;
     struct OZChannelPosition _field63;
     struct OZChannelPosition _field64;
     struct OZChannelPosition _field65;
-    struct OZChannelDouble _field66;
-    struct OZChannelPosition _field67;
-    CDStruct_198678f7 _field68;
-    double _field69;
+    struct OZChannelPosition _field66;
+    struct OZChannelDouble _field67;
+    struct OZChannelPosition _field68;
+    CDStruct_198678f7 _field69;
     double _field70;
     double _field71;
-    struct vector<PSHVertexData, std::__1::allocator<PSHVertexData>> _field72;
-    _Bool _field73;
-    double _field74;
+    double _field72;
+    struct vector<PSHVertexData, std::__1::allocator<PSHVertexData>> _field73;
+    _Bool _field74;
     double _field75;
     double _field76;
     double _field77;
@@ -618,7 +618,8 @@ struct OZShape {
     double _field79;
     double _field80;
     double _field81;
-    struct OZGradientGroupShader *_field82;
+    double _field82;
+    struct OZGradientGroupShader *_field83;
 };
 
 struct OZShapeRenderParams;
@@ -655,7 +656,7 @@ struct PCRecursiveMutex {
 };
 
 struct PCSpinLock {
-    int _field1;
+    struct os_unfair_lock_s _field1;
 };
 
 struct PCString {
@@ -671,13 +672,19 @@ struct PSHVertexData;
 
 struct __CFString;
 
-struct __list_node<OZShapeContour *, void *>;
+struct __list_node_base<OZShapeContour *, void *> {
+    struct __list_node_base<OZShapeContour *, void *> *_field1;
+    struct __list_node_base<OZShapeContour *, void *> *_field2;
+};
 
-struct __list_node<OZShapeReparametrizedContour *, void *>;
+struct __list_node_base<OZShapeReparametrizedContour *, void *> {
+    struct __list_node_base<OZShapeReparametrizedContour *, void *> *_field1;
+    struct __list_node_base<OZShapeReparametrizedContour *, void *> *_field2;
+};
 
 struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long>> {
     struct __tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long> {
-        struct __tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
     } _field1;
 };
 
@@ -686,23 +693,21 @@ struct __wrap_iter<OZVertex **> {
 };
 
 struct list<OZShapeContour *, std::__1::allocator<OZShapeContour *>> {
-    struct __list_node_base<OZShapeContour *, void *> {
-        struct __list_node<OZShapeContour *, void *> *_field1;
-        struct __list_node<OZShapeContour *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZShapeContour *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZShapeContour *, void *>>> {
         unsigned long long _field1;
     } _field2;
 };
 
 struct list<OZShapeReparametrizedContour *, std::__1::allocator<OZShapeReparametrizedContour *>> {
-    struct __list_node_base<OZShapeReparametrizedContour *, void *> {
-        struct __list_node<OZShapeReparametrizedContour *, void *> *_field1;
-        struct __list_node<OZShapeReparametrizedContour *, void *> *_field2;
-    } _field1;
+    struct __list_node_base<OZShapeReparametrizedContour *, void *> _field1;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZShapeReparametrizedContour *, void *>>> {
         unsigned long long _field1;
     } _field2;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _field1;
 };
 
 struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>>;

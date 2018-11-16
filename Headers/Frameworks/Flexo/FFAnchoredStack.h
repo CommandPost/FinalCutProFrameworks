@@ -117,7 +117,6 @@
 - (void)_processDeferredUpdates;
 - (BOOL)_deferUpdates;
 - (void)_setDeferUpdates:(BOOL)arg1;
-- (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
 - (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;

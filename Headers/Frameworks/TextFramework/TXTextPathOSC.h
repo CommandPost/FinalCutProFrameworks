@@ -17,8 +17,8 @@
 - (struct TXTextLayout *)getTextLayout;
 - (id)returnCurveMenu:(id)arg1;
 - (id)returnPointMenu:(id)arg1;
-- (void)buildCurveMenu;
-- (void)buildPointMenu;
+- (id)buildCurveMenu;
+- (id)buildPointMenu;
 - (void)flipCurveNormal:(id)arg1;
 - (void)flipPointNormal:(id)arg1;
 - (_Bool)transformPath;
@@ -45,7 +45,7 @@
 - (BOOL)pointsAreInLocalSpace;
 - (BOOL)selectAll:(id)arg1;
 - (void)addVertexAtTime:(CDStruct_198678f7)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 handleX:(void **)arg5 handleY:(void **)arg6 handleZ:(void **)arg7;
-- (void)moveSelected:(list_54fac194 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
+- (void)moveSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
 - (void)notify:(unsigned int)arg1;
 - (void)drawVertices:(const PCMatrix44Tmpl_93ed1289 *)arg1 mode:(unsigned int)arg2;
 - (void)drawPath;

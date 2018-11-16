@@ -44,15 +44,14 @@
 - (id)init;
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (void)_runBackgroundTask:(id)arg1 onTask:(id)arg2;
-- (void)_statusCallback:(id)arg1 stage:(unsigned int)arg2 osstatus:(int)arg3;
+- (BOOL)_runCopyfile:(int)arg1 targetFD:(int)arg2 error:(id *)arg3;
+- (int)_statusCallback:(int)arg1 stage:(int)arg2 state:(struct _copyfile_state *)arg3;
 - (id)librariesInUse:(id)arg1;
 - (BOOL)usesLibrary:(id)arg1;
 - (id)assetsChanging:(id)arg1;
 - (id)assetsInUse:(id)arg1;
 - (void)canceledTask:(id)arg1;
 - (void)resumedTask:(id)arg1;
-- (BOOL)confirmIsPaused:(id)arg1;
-- (void)pausedTask:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(retain) FFBackgroundTaskWithPauseCondition *backgroundTask;
 - (void)_queueRequests:(id)arg1;

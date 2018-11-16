@@ -25,6 +25,8 @@
 - (BOOL)alwaysUseDefaultPreset;
 - (void)setIndexOfDefaultPreset:(int)arg1;
 - (int)indexOfDefaultPreset;
+- (id)tagOfDefaultPreset;
+- (int)indexOfPresetWithTag:(id)arg1;
 - (id)defaultPreset;
 - (BOOL)deletePresetAtIndex:(int)arg1;
 - (id)duplicatePresetAtIndex:(int)arg1;
@@ -38,6 +40,7 @@
 - (id)presetAtIndex:(int)arg1 includeHidden:(BOOL)arg2;
 - (unsigned int)numPresets;
 - (int)indexOfPreset:(id)arg1;
+- (id)presetWithTag:(id)arg1;
 - (id)presetAtIndex:(int)arg1;
 - (void)setLocPresetPath:(id)arg1;
 - (void)dealloc;

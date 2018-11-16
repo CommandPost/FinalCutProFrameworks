@@ -33,6 +33,10 @@
 + (id)pixelFormat_FullRangeLuma8;
 + (id)pixelFormat_420v;
 + (id)pixelFormat_420f;
++ (id)pixelFormat_x420;
++ (id)pixelFormat_xf20;
++ (id)pixelFormat_grey8LumaPlane;
++ (id)pixelFormat_cbCrChromaPlane;
 + (id)straightAlphaPixelFormatFor:(id)arg1;
 + (id)pixelFormatWithName:(id)arg1;
 + (id)pixelFormatWithFourCC:(unsigned int)arg1;
@@ -49,6 +53,7 @@
 - (BOOL)hasAlpha;
 - (BOOL)isSubsampled;
 - (BOOL)isYCbCr;
+- (BOOL)isRAW;
 - (unsigned long long)optimalBytesPerRowForWidth:(unsigned int)arg1;
 - (unsigned long long)packedBytesPerRowForWidth:(unsigned int)arg1;
 - (int)pixelBlockWidth;

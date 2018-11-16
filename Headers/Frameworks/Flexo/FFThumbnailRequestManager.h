@@ -8,12 +8,12 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFStreamVideoCache, NSConditionLock, NSMutableArray, NSMutableSet;
+@class FFStreamVideoCache, NSConditionLock, NSCountedSet, NSMutableArray, NSMutableSet;
 
 @interface FFThumbnailRequestManager : NSObject <FFBackgroundTaskTarget>
 {
-    struct FFLocklessQueue<FFThumbnailRequest *> *_incomingRequests;
-    struct FFLocklessQueue<FFThumbnailRequest *> *_incomingHighPriorityRequests;
+    NSMutableArray *_incomingRequests;
+    NSMutableArray *_incomingHighPriorityRequests;
     NSMutableArray *_requests;
     NSMutableArray *_highPriorityRequests;
     FFStreamVideoCache *_streamVideoCache;
@@ -32,6 +32,7 @@
     struct FFConditionLock *_inFlightRequestsCountLock;
     NSMutableSet *_inFlightRequests;
     BOOL _shuttingDown;
+    NSCountedSet *_libaryIdentifiersForRequests;
     struct FFPMRAutoTimer *PMR_currentTaskTimer;
     NSMutableSet *PMR_clipsProcessed;
     CDUnknownBlockType _pmrRequestBeginCallback;
@@ -57,7 +58,8 @@
 - (void)_notifyWillShutdown:(id)arg1;
 - (void)_handleTaskLoopPause:(BOOL)arg1;
 - (void)removeRequestsForAssets:(id)arg1;
-- (void)removeRequestsForLibraryIdentifier:(id)arg1;
+- (void)removeRequestsForLibrary:(id)arg1;
+- (BOOL)containsRequestsForLibrary:(id)arg1;
 - (void)_removeRequestsForIdentifier:(id)arg1 identifierType:(int)arg2;
 - (id)_removeRequestsForIdentifiers:(id)arg1 identifierType:(int)arg2 inRequestsQueue:(id)arg3;
 - (void)resume;

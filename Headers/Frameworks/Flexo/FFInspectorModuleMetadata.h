@@ -6,6 +6,7 @@
 
 #import <Flexo/FFInspectorModule.h>
 
+#import "FFCameraLUTControllerDelegate.h"
 #import "FFInspectorContainerDraggingDelegate.h"
 #import "FFInspectorLabelParameterAccessibilityDelegate.h"
 #import "FFInspectorLabelParameterContainerDataSource.h"
@@ -17,7 +18,7 @@
 @class FFInspectorFileInfoClipController, FFInspectorLabelParameterContainerController, FFInspectorMediaHeaderController, LKScrollView, LKSegmentedControl, NSArray, NSArrayController, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTextField, NSView, NSWindow;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorModuleMetadata : FFInspectorModule <NSMenuDelegate, FFRolesMenuDelegate, NSTokenFieldDelegate, FFInspectorLabelParameterContainerDataSource, FFInspectorLabelParameterAccessibilityDelegate, FFInspectorContainerDraggingDelegate, FFInspectorLabelParameterToolTipDelegate>
+@interface FFInspectorModuleMetadata : FFInspectorModule <NSMenuDelegate, FFRolesMenuDelegate, NSTokenFieldDelegate, FFInspectorLabelParameterContainerDataSource, FFInspectorLabelParameterAccessibilityDelegate, FFInspectorContainerDraggingDelegate, FFInspectorLabelParameterToolTipDelegate, FFCameraLUTControllerDelegate>
 {
     NSView *_footerView;
     LKSegmentedControl *_metadataViewSetControl;
@@ -41,19 +42,23 @@ __attribute__((visibility("hidden")))
     NSArray *_observedSequences;
     BOOL _cachedHasBinObjects;
     BOOL _cachedHasSetupItems;
-    struct FFProcrastinatedDispatch_t _procrastinatedReload;
+    struct PCProcrastinatedDispatch_t _procrastinatedReload;
+    struct PCProcrastinatedDispatch_t _procrastinatedMediaChanged;
     NSMutableDictionary *_info;
     NSArray *_backgroundObservedObjects;
     int _backgroundObservingPendingUpdate;
+    BOOL _isObservingMediaChange;
 }
 
+@property(nonatomic) BOOL isObservingMediaChange; // @synthesize isObservingMediaChange=_isObservingMediaChange;
 @property(nonatomic) NSWindow *saveMetadataViewWindow; // @synthesize saveMetadataViewWindow=_saveMetadataViewWindow;
 @property(nonatomic) NSTextField *customMetadataDescriptionTextField; // @synthesize customMetadataDescriptionTextField=_customMetadataDescriptionTextField;
 @property(nonatomic) NSTextField *customMetadataNameTextField; // @synthesize customMetadataNameTextField=_customMetadataNameTextField;
 @property(nonatomic) NSWindow *addCustomMetadataWindow; // @synthesize addCustomMetadataWindow=_addCustomMetadataWindow;
 @property(nonatomic) LKSegmentedControl *metadataActionControl; // @synthesize metadataActionControl=_metadataActionControl;
-@property(nonatomic) LKSegmentedControl *metadataViewSetControl; // @synthesize metadataViewSetControl=_metadataViewSetControl;
-@property(nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
+@property(retain, nonatomic) LKSegmentedControl *metadataViewSetControl; // @synthesize metadataViewSetControl=_metadataViewSetControl;
+@property(retain, nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
+- (id).cxx_construct;
 - (BOOL)container:(id)arg1 reorderItemAtRow:(unsigned long long)arg2 withRow:(unsigned long long)arg3;
 - (long long)_indexOfMetadataDefinitionInViewSet:(id)arg1 fromVisibleItemAtRow:(unsigned long long)arg2;
 - (BOOL)container:(id)arg1 shouldBeginDraggingSessionAtRow:(unsigned long long)arg2;
@@ -66,9 +71,11 @@ __attribute__((visibility("hidden")))
 - (id)container:(id)arg1 parameterViewControllerAtRow:(unsigned long long)arg2 context:(id)arg3;
 - (id)container:(id)arg1 labelViewControllerAtRow:(unsigned long long)arg2 context:(id)arg3;
 - (unsigned long long)countOfRowsInContainer:(id)arg1;
+- (void)controller:(id)arg1 itemDidChange:(id)arg2;
 - (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 forContext:(id)arg3;
 - (id)contextForRolesMenuController:(id)arg1;
 - (id)contentLayoutDictionary;
+- (void)showCameraLUTOfflineStatus:(id)arg1;
 - (void)editSettingsButtonPressed:(id)arg1;
 - (void)multiCamAngleSelected:(id)arg1;
 - (void)applyNamePreset:(id)arg1;
@@ -108,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (id)_menuForMetadataActionControl;
 - (id)_menuForMetadataViewSetControlWithItems:(id)arg1;
 - (void)rangeInvalidated:(id)arg1;
+- (void)assetMediaChanged:(id)arg1;
 - (void)_updateReferencedEventsForItems:(id)arg1;
 - (id)_referencesForItems:(id)arg1 owner:(id)arg2;
 - (id)_selectionOwner;
@@ -117,6 +125,7 @@ __attribute__((visibility("hidden")))
 - (void)_currentItemSettings:(char *)arg1 isCompundClip:(char *)arg2 isReferenceClip:(char *)arg3 isMultiAngleClip:(char *)arg4 isFreezeFrameClip:(char *)arg5;
 - (id)_currentViewSet;
 - (void)_notifyReloadDataForBackgroundObserving;
+- (void)_audioPanChanged:(id)arg1;
 - (void)_audioComponentsChanged:(id)arg1;
 - (void)_rolesInLibraryChanged:(id)arg1;
 - (void)_endBackgroundObserving;

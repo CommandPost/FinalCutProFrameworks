@@ -20,6 +20,7 @@
 + (void)teardown;
 + (void)initialize;
 - (struct HGGLTexture *)newHGTextureWithDetachFromRenderer;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setBackingObject:(id)arg1;
 - (double)height;
 - (double)width;

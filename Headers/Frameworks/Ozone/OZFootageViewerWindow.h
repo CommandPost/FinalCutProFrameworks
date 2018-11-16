@@ -8,21 +8,31 @@
 
 #import "NSWindowDelegate.h"
 
-@class NSString, QTMovieView;
+@class AVPlayerItem, AVPlayerView, NSImageView, NSString, QTMovieView;
 
 @interface OZFootageViewerWindow : NSWindowController <NSWindowDelegate>
 {
-    QTMovieView *_moviePlayer;
+    QTMovieView *_qtMovieView;
+    AVPlayerView *_avPlayerView;
+    NSImageView *_imageView;
     struct PCURL *_URL;
     unsigned int _movieW;
     unsigned int _movieH;
     double _moviePAR;
+    AVPlayerItem *_playerItem;
 }
 
 + (void)showViewer:(const struct PCURL *)arg1;
 + (void)showViewerWithNSURL:(id)arg1;
+@property(retain) AVPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
 - (struct CGSize)windowWillResize:(id)arg1 toSize:(struct CGSize)arg2;
+- (void)updateWindowSizeForMediaSize:(struct CGSize)arg1;
+- (float)controllerHeight;
 - (void)updateMovie;
+- (void)updateImage:(id)arg1;
+- (void)updateAVAsset:(id)arg1;
+- (void)updateQTMovie;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (const struct PCURL *)getURL;
 - (void)setURL:(const struct PCURL *)arg1;
 - (void)windowWillClose:(id)arg1;

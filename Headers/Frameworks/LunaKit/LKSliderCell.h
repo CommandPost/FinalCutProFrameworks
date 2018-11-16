@@ -14,16 +14,20 @@
         unsigned int needToSendEndSliderAction:1;
         unsigned int reserved:31;
     } _pscFlags;
-    NSColor *backgroundColor;
+    NSColor *_backgroundColor;
     double _trackCenterValue;
+    NSColor *_positiveDeltaTrackFillColor;
+    NSColor *_negativeDeltaTrackFillColor;
     unsigned long long _trackFillMode;
     BOOL _drawCustom;
     BOOL _lightBackground;
 }
 
+@property(copy, nonatomic) NSColor *negativeDeltaTrackFillColor; // @synthesize negativeDeltaTrackFillColor=_negativeDeltaTrackFillColor;
+@property(copy, nonatomic) NSColor *positiveDeltaTrackFillColor; // @synthesize positiveDeltaTrackFillColor=_positiveDeltaTrackFillColor;
 @property(nonatomic) double trackCenterValue; // @synthesize trackCenterValue=_trackCenterValue;
 @property(nonatomic) unsigned long long trackFillMode; // @synthesize trackFillMode=_trackFillMode;
-@property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor;
+@property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 - (void)setDrawCustom:(BOOL)arg1;
 - (void)setLightBackground:(BOOL)arg1;
 - (void)drawKnob:(struct CGRect)arg1;
@@ -31,6 +35,7 @@
 - (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
 - (BOOL)_sendActionFrom:(id)arg1;
 - (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 
 @end

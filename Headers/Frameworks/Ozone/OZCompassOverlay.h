@@ -31,8 +31,6 @@
     PGDrawableTexture *_cameraNameTexture;
     struct CompassSceneDescriptor _lastSceneDescriptor;
     unsigned long long _lastTimeRenderTextureCalled;
-    _Bool _bUsePBUFFER;
-    struct PGSimplePBuffer *_renderBuffer;
     int _textureSize;
     int _xOffset;
     int _yOffset;

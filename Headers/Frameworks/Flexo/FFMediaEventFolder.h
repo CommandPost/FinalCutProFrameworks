@@ -35,6 +35,7 @@
 + (id)keyPathsForValuesAffectingMasterSubitems;
 + (id)keyPathsForValuesAffectingItems;
 + (id)keyPathsForValuesAffectingItemDisplayName;
+- (BOOL)update_removeVideoMainRolesFromRoleFilters;
 - (BOOL)update_smartCollectionsRolesPerLibrary;
 - (void)reassignRoles:(id)arg1 renameExistingRoles:(id)arg2 changeColorOfExistingRoles:(id)arg3 removeRolesWithUIDs:(id)arg4;
 - (BOOL)mergeChild:(id)arg1;

@@ -21,10 +21,14 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_visibleShareMetadata;
     FFInspectorMediaHeaderController *_headerController;
     FFInspectorLabelParameterCollapsableContainerController *_attributesController;
+    FFInspectorLabelParameterCollapsableContainerController *_hdrMasteringDisplayController;
+    FFInspectorLabelParameterCollapsableContainerController *_hdrContentLightLevelController;
     FFInspectorContainerController *_exportsController;
     LKScrollView *_scrollView;
     NSMutableArray *_items;
     NSMutableArray *_visibleItems;
+    NSMutableArray *_hdrMasteringDisplayItems;
+    NSMutableArray *_hdrContentLightLevelItems;
     BOOL _cachedHasSetupItems;
     NSMutableDictionary *_info;
 }
@@ -34,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)container:(id)arg1 parameterViewControllerAtRow:(unsigned long long)arg2 context:(id)arg3;
 - (id)container:(id)arg1 labelViewControllerAtRow:(unsigned long long)arg2 context:(id)arg3;
 - (unsigned long long)countOfRowsInContainer:(id)arg1;
+- (id)_itemArrayForContainer:(id)arg1;
 - (void)changeEditState:(id)arg1;
 - (void)editShareFields:(id)arg1;
 - (void)updateToDefault:(id)arg1;
@@ -41,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)showDefaultFields:(id)arg1;
 - (void)showAllFields:(id)arg1;
 - (void)tellAFriendOfSharedItem:(id)arg1;
+- (id)selection;
 - (id)valueForKeyPath:(id)arg1;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
 - (BOOL)_areValuesForKeyPathSame:(id)arg1;

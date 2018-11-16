@@ -6,12 +6,13 @@
 
 #import "NSView.h"
 
+#import "CALayerDelegate.h"
 #import "FFResponderLayerHost.h"
 
-@class FFResponderLayer, FFResponderLayerHostViewTrackingAreaOwner, NSMapTable, NSTrackingArea;
+@class FFResponderLayer, FFResponderLayerHostViewTrackingAreaOwner, NSMapTable, NSString, NSTrackingArea;
 
 __attribute__((visibility("hidden")))
-@interface FFResponderLayerHostView : NSView <FFResponderLayerHost>
+@interface FFResponderLayerHostView : NSView <FFResponderLayerHost, CALayerDelegate>
 {
     NSTrackingArea *_trackingArea;
     FFResponderLayer *_trackedLayer;
@@ -76,6 +77,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_commonInit;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

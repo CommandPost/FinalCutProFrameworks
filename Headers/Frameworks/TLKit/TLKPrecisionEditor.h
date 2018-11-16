@@ -22,12 +22,20 @@
 @property(retain, nonatomic) TLKAbstractPrecisionEditorTrimBar *trimBar; // @synthesize trimBar=_trimBar;
 @property(retain, nonatomic) CALayer *dividerBar; // @synthesize dividerBar=_dividerBar;
 @property(readonly, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
+- (void)_timelineDatabaseDidReload:(id)arg1;
+- (void)_reloadTransitionItemIfNeeded;
+- (void)_closePrecisionEditorIfNeededAfterReload;
 - (void)_timelineViewDidReload:(id)arg1;
 - (void)updatePrecisionEditorTrimBar;
 - (int)editorState;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)stopObservingTimelineView:(id)arg1;
 - (void)startObservingTimelineView:(id)arg1;
+- (void)closePrecisionEditor;
+- (id)itemInfoAfterEditPoint;
+- (id)itemInfoBeforeEditPoint;
+- (id)containerInfo;
+- (int)precisionEditorState;
 - (void)dealloc;
 - (id)initWithTimelineView:(id)arg1;
 

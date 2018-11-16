@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     double _cursorOffset;
     CDStruct_8fe1bc83 _pstflags;
     NSString *_toolTip;
+    long long _toolTipTag;
 }
 
 + (BOOL)prefersTrackingUntilMouseUp;

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _showClipActions;
     BOOL _allowRangeSelection;
     FFResponderLayerPushButton *_editButtonLayer;
-    struct FFProcrastinatedDispatch_t _editButtonDispatchContext;
+    struct PCProcrastinatedDispatch_t _editButtonDispatchContext;
 }
 
 - (void)displayFloatingDurationString:(id)arg1 atPoint:(struct CGPoint)arg2 withHeight:(double)arg3 atStart:(BOOL)arg4;

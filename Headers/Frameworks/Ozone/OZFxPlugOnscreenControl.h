@@ -15,7 +15,6 @@
 
 @interface OZFxPlugOnscreenControl : POOnScreenControl <PROAPIObject, FxOnScreenControlAPI_v2, FxOnScreenControlAPI_v3, FxOnScreenControlAPI_v4>
 {
-    PCMatrix44Tmpl_e98c85ee _viewTransformation;
     const struct OZRenderState *_state;
     PCRect_b601f9f3 _bounds;
     void *_plugin;

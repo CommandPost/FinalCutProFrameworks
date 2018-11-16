@@ -11,11 +11,11 @@
 }
 
 + (BOOL)actionRemoveOnAnchoredObjects:(id)arg1 error:(id *)arg2;
-+ (BOOL)actionInsertOrEnableForAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
++ (BOOL)actionInsertOrEnableForAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 error:(id *)arg3 balanceOptions:(int)arg4;
 + (BOOL)actionToggleAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 error:(id *)arg3;
-+ (BOOL)_actionPerformOnAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 insertBalanceEffect:(BOOL)arg3 error:(id *)arg4;
++ (BOOL)_actionPerformOnAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 insertBalanceEffect:(BOOL)arg3 error:(id *)arg4 balanceOptions:(int)arg5;
 + (void)operationRemoveOnAnchoredObjects:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-+ (void)operationEnableOrInsertForAnchoredObjects:(id)arg1;
++ (void)operationEnableOrInsertForAnchoredObjects:(id)arg1 balanceOptions:(int)arg2;
 + (void)analyseAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 options:(struct ColorBalanceOptions)arg3 progressBlock:(CDUnknownBlockType)arg4;
 + (void)_queueEnableEffectForAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 options:(struct ColorBalanceOptions)arg3 progressBlock:(CDUnknownBlockType)arg4;
 + (id)_newAnalysesForAnchoredObjects:(id)arg1 time:(CDStruct_1b6d18a9)arg2 options:(struct ColorBalanceOptions)arg3;

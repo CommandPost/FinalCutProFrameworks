@@ -54,8 +54,6 @@
 @property(nonatomic) struct CGRect unusedMediaRect; // @synthesize unusedMediaRect=_unusedMediaRect;
 @property(nonatomic) unsigned long long selectionMask; // @synthesize selectionMask=_selectionMask;
 @property(nonatomic) TLKItemComponentFragment *itemComponentFragment; // @synthesize itemComponentFragment=_itemComponentFragment;
-- (void)setBounds:(struct CGRect)arg1;
-- (void)setPosition:(struct CGPoint)arg1;
 - (void)layoutAccessoryLayerWithBounds:(struct CGRect)arg1 backgroundFrame:(struct CGRect)arg2 audioOnlyOffSpineItem:(BOOL)arg3;
 - (void)createOverlayContentsLayerIfNeeded;
 - (struct CGRect)rectForPart:(id)arg1;
@@ -66,6 +64,8 @@
 - (void)setNeedsLayout;
 - (void)invalidate;
 - (CDStruct_e83c9415)dropHighlightRegion;
+- (void)mouseExited;
+- (void)mouseEntered;
 @property(nonatomic) BOOL mouseOverLayer;
 @property(nonatomic) BOOL hideUnusedMediaOverlay;
 @property(nonatomic) BOOL audioComponent;

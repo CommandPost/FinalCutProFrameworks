@@ -11,20 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface FFAudioClipComponentsLayoutMap : FFAudioObjectComponentsLayoutMap
 {
-    int m_cachedClipType;
-    NSRecursiveLock *m_cachedClipTypeLock;
-    FFAudioComponentsLayout *m_primaryLayout;
-    FFAudioComponentsLayout *m_auxLayout;
-    NSArray *m_cachedAvailableMediaSources;
-    NSArray *m_cachedAvailableMediaSourceChannels;
-    NSRecursiveLock *m_cachedAvailableMediaSourcesLock;
-    NSMapTable *m_cachedReferenceLayouts;
+    int _cachedClipType;
+    NSRecursiveLock *_cachedClipTypeLock;
+    FFAudioComponentsLayout *_primaryLayout;
+    FFAudioComponentsLayout *_auxLayout;
+    NSArray *_cachedAvailableMediaSources;
+    NSArray *_cachedAvailableMediaSourceChannels;
+    NSRecursiveLock *_cachedAvailableMediaSourcesLock;
+    NSMapTable *_cachedReferenceLayouts;
 }
 
 + (Class)layoutClass;
 + (id)copyClassDescription;
-@property(retain, nonatomic) FFAudioComponentsLayout *auxLayout; // @synthesize auxLayout=m_auxLayout;
-@property(retain, nonatomic) FFAudioComponentsLayout *primaryLayout; // @synthesize primaryLayout=m_primaryLayout;
+@property(retain, nonatomic) FFAudioComponentsLayout *auxLayout; // @synthesize auxLayout=_auxLayout;
+@property(retain, nonatomic) FFAudioComponentsLayout *primaryLayout; // @synthesize primaryLayout=_primaryLayout;
 - (BOOL)isEqualToLayoutMap:(id)arg1;
 - (void)storeLocalLayout:(id)arg1 forKey:(id)arg2;
 - (id)localLayoutForKey:(id)arg1;

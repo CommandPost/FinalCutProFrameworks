@@ -7,8 +7,11 @@
 #import "HPMMediaProtocol.h"
 
 @protocol HPMSoundMediaProtocol <HPMMediaProtocol>
+@property(readonly) BOOL hasChannelTags;
 @property(readonly) unsigned int bubbleSize;
 @property(readonly) unsigned int bitsPerChannel;
 @property(readonly) unsigned int channels;
+- (void)addChannelTag:(int)arg1;
+- (int)channelTagForChannelIndex:(unsigned long long)arg1;
 @end
 

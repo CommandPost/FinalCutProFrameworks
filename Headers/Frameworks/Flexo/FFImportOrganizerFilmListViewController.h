@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _isDragging;
     BOOL _showsClipLabels;
     BOOL _updatingSplitViewPosition;
-    struct FFProcrastinatedDispatch_t _importProcrastinatedUpdateItemsString;
+    struct PCProcrastinatedDispatch_t _importProcrastinatedUpdateItemsString;
     NSArray *_redURLs;
     FFOrganizerFilmstripView *_retainedRemovedFilmStripView;
 }

@@ -8,7 +8,7 @@
 
 #import "OZDocumentOwner.h"
 
-@class NSCalendarDate, NSMutableArray, NSString, NSTimer, OZDocumentKeyResponder, OZSaveAsTemplateController, OZTemporaryUndoHandler;
+@class NSDate, NSMutableArray, NSString, NSTimer, OZConvertProjectToEffectController, OZConvertProjectToTitleController, OZConvertProjectToTransitionController, OZDocumentKeyResponder, OZSaveAsTemplateController, OZTemporaryUndoHandler;
 
 @interface OZObjCDocument : NSDocument <OZDocumentOwner>
 {
@@ -18,7 +18,7 @@
     BOOL _isUntouched;
     struct PCURL *_savingToURL;
     NSTimer *_pAutosaveTimer;
-    NSCalendarDate *_pLastSaveDate;
+    NSDate *_pLastSaveDate;
     NSMutableArray *_pAutosaveHistory;
     NSString *_pAutosaveUntitledName;
     BOOL _isAutosaving;
@@ -33,6 +33,9 @@
     struct FFPMRSimpleTimer _pmrTimer;
     unsigned long long _numFramesToExport;
     OZSaveAsTemplateController *_saveAsTemplateController;
+    OZConvertProjectToEffectController *_convertProjectToEffectController;
+    OZConvertProjectToTitleController *_convertProjectToTitleController;
+    OZConvertProjectToTransitionController *_convertProjectToTransitionController;
     BOOL _isAppActive;
 }
 
@@ -103,10 +106,24 @@
 - (void)updateChangeCount:(unsigned long long)arg1;
 - (BOOL)hasMediaFolder;
 - (BOOL)isUntouched;
+- (id)localizedDocumentTypeName;
 - (struct OZDocument *)getDocument;
 - (void)restoreDocumentFromAutosave:(id)arg1;
 - (BOOL)revertToContentsOfURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
 - (void)revertDocumentToSaved:(id)arg1;
+- (void)convertProjectCompletedSavedDocument:(id)arg1 didSave:(BOOL)arg2 contextInfo:(void *)arg3;
+- (void)conditionallySaveConvertedDocumentFrom:(id)arg1 previousType:(int)arg2;
+- (void)convertProjectTypeWithBlock:(CDUnknownBlockType)arg1;
+- (struct OZDocumentTypeUndoParams)convertProjectToTransitionWithNodeIDA:(unsigned int)arg1 nodeIDB:(unsigned int)arg2 createNewA:(BOOL)arg3 createNewB:(BOOL)arg4;
+- (struct OZDocumentTypeUndoParams)convertProjectToTitleWithNodeID:(unsigned int)arg1 noTitleSource:(BOOL)arg2 createNewTitleSource:(BOOL)arg3;
+- (struct OZDocumentTypeUndoParams)convertProjectToEffectWithNodeID:(unsigned int)arg1 createNewEffectSource:(BOOL)arg2;
+- (struct OZDocumentTypeUndoParams)convertProjectToCompositionOrGenerator:(BOOL)arg1;
+- (void)convertProjectToTransition:(id)arg1;
+- (void)convertProjectToTitle:(id)arg1;
+- (void)convertProjectToEffect:(id)arg1;
+- (void)convertProjectToGenerator:(id)arg1;
+- (void)convertProjectToComposition:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)fileAttributesToWriteToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 originalContentsURL:(id)arg4 error:(id *)arg5;
 - (BOOL)writeToURL:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
 - (BOOL)writeSafelyToURL:(id)arg1 ofType:(id)arg2 forSaveOperation:(unsigned long long)arg3 error:(id *)arg4;
@@ -123,6 +140,8 @@
 - (void)saveDocumentAs:(id)arg1;
 - (void)addWindowController:(id)arg1;
 - (void)makeWindowControllers;
+- (void)windowDidResignMain:(id)arg1;
+- (void)windowBecameMain:(id)arg1;
 - (void)appBecameDeActive:(id)arg1;
 - (void)appBecameActiveDelayed:(id)arg1;
 - (void)appBecameActive:(id)arg1;

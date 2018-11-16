@@ -39,7 +39,7 @@
     BOOL _useRSRC;
 }
 
-- (void)_endLiveResize;
+- (void)viewDidEndLiveResize;
 - (void)_clearImageCache;
 - (id)_keyCapImageForDrawingLayer:(long long)arg1 size:(struct CGSize)arg2;
 - (struct CGSize)_borderSize;

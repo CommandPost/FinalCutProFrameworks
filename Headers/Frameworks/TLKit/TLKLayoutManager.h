@@ -21,13 +21,11 @@
         unsigned int RESERVED:31;
     } _layoutFlags;
     struct {
-        unsigned int heightForItemComponent:1;
-        unsigned int boxMetricsForLane:1;
         unsigned int willUseLayoutFrame:1;
         unsigned int didCompletLayoutForTile:1;
         unsigned int didEndLayout:1;
         unsigned int willBeginLayout:1;
-        unsigned int RESERVED:26;
+        unsigned int RESERVED:28;
     } _delegateRespondsTo;
     BOOL _wantsVerticalLayout;
     BOOL _autocollapsesLayoutContextsToFit;
@@ -65,7 +63,6 @@
 - (BOOL)_notifyDidEndLayout;
 - (BOOL)_notifyWillBeginLayout;
 - (BOOL)_notifyDidCompleteLayoutForTile:(id)arg1 atEnd:(BOOL)arg2;
-- (double)_requestHeightForItemComponent:(id)arg1 proposedHeight:(double)arg2;
 - (struct CGRect)_requestFrameForItemComponentFragment:(id)arg1 proposedFrame:(struct CGRect)arg2;
 - (id)layoutContextForPoint:(struct CGPoint)arg1;
 - (id)layoutContextForContainer:(id)arg1 atLocation:(double)arg2;
@@ -89,6 +86,8 @@
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromLineFragment:(id)arg2;
 - (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 fromContainer:(id)arg2;
 - (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 toContainer:(id)arg2;
+- (struct _TLKRange)convertTimeRangeInSeconds:(struct _TLKRange)arg1 fromContainer:(id)arg2;
+- (struct _TLKRange)convertTimeRangeInSeconds:(struct _TLKRange)arg1 toContainer:(id)arg2;
 - (struct _TLKRange)convertLocationRange:(struct _TLKRange)arg1 fromContainer:(id)arg2;
 - (struct _TLKRange)convertLocationRange:(struct _TLKRange)arg1 toContainer:(id)arg2;
 - (CDStruct_1b6d18a9)timeFromLocation:(double)arg1 inContainer:(id)arg2;
@@ -106,7 +105,6 @@
 - (struct CGRect)bounds;
 - (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 horizontally:(BOOL)arg4 vertically:(BOOL)arg5;
-- (void)_updatePrecisionEditors;
 - (id)_reloadSegmentTablesWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (id)_separateChangeListsBySegmentTableForItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)_performVerticalLayoutWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;

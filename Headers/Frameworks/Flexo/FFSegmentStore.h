@@ -20,8 +20,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)description;
-- (BOOL)writeTransferredData:(id)arg1 token2:(id)arg2 fieldOrder:(int)arg3 sampleNum:(long long)arg4 error:(id *)arg5;
+- (BOOL)writeTransferredData:(id)arg1 token2:(id)arg2 fieldOrder:(int)arg3 cameraMode:(int)arg4 sampleNum:(long long)arg5 error:(id *)arg6;
 - (BOOL)writeBuffer:(id)arg1 sampleNumber:(long long)arg2 mustWrite:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 cameraMode:(int)arg4 sampleNumber:(long long)arg5 cost:(double)arg6 mustWrite:(BOOL)arg7 error:(id *)arg8;
 - (BOOL)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 sampleNumber:(long long)arg4 cost:(double)arg5 mustWrite:(BOOL)arg6 error:(id *)arg7;
 - (id)newBufferAtOffset:(long long)arg1 priority:(int)arg2 error:(id *)arg3;
 - (id)newImageAtOffset:(long long)arg1 decodeQuality:(int)arg2 priority:(int)arg3 error:(id *)arg4;

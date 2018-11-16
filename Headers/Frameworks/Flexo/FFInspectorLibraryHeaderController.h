@@ -18,8 +18,9 @@ __attribute__((visibility("hidden")))
 
 - (void)setStorageInBytes:(unsigned long long)arg1;
 - (void)setStorageName:(id)arg1;
-- (void)setLibraryColorProcessingMode:(int)arg1;
-- (void)setLibraryName:(id)arg1;
+- (void)setModifyButtonAction:(SEL)arg1 target:(id)arg2;
+- (BOOL)nameHasChanged:(id)arg1;
+- (void)setLibraryName:(id)arg1 colorProcessingMode:(int)arg2;
 @property BOOL useMiBs; // @dynamic useMiBs;
 - (void)dealloc;
 - (id)init;

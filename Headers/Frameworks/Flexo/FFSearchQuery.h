@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(int)arg1 predicate:(id)arg2;
+- (void)dealloc;
 - (id)description;
 
 @end

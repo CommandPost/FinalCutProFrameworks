@@ -9,7 +9,7 @@
 #import "FFOutlineViewDataSource.h"
 #import "FFOutlineViewDelegate.h"
 
-@class FFOrganizerMasterItemNode, FFOutlineView, LKTableView, NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSObject<FFOrganizerItem><FFOrganizerMasterItem>, NSString;
+@class FFOrganizerMasterItemNode, FFOutlineView, LKTableView, NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSObject<FFOrganizerItem><FFOrganizerMasterItem>, NSString, NSTextField;
 
 __attribute__((visibility("hidden")))
 @interface FFSidebarModule : LKViewModule <FFOutlineViewDataSource, FFOutlineViewDelegate>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSArray *_tableViewData;
     FFOutlineView *_outlineView;
     LKTableView *_tableView;
+    NSTextField *_headerTextField;
     BOOL _tableViewCanSelectRow;
     long long _disableTableViewRowSelectionNotifications;
     NSMutableArray *_selection;

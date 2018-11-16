@@ -18,13 +18,14 @@ __attribute__((visibility("hidden")))
     FFInspectorContainerController *_propertiesController;
     LKScrollView *_scrollView;
     BOOL _cachedHasSetupItems;
-    struct FFProcrastinatedDispatch_t _procrastinatedReload;
+    struct PCProcrastinatedDispatch_t _procrastinatedReload;
     NSMutableDictionary *_info;
 }
 
 - (void)consolidateLibraryTemplates:(id)arg1;
 - (void)consolidateLibraryMedia:(id)arg1;
 - (void)modifyLibraryProperties:(id)arg1;
+- (void)modifyLibraryColorProcessingMode:(id)arg1;
 - (void)setCurrentItems:(id)arg1;
 - (void)moduleDidHide;
 - (void)moduleDidUnhide;

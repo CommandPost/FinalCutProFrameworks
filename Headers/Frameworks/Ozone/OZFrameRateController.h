@@ -14,7 +14,8 @@
     NSTextField *_pTF;
 }
 
-+ (void)initialize;
++ (id)presetFrameRates;
++ (int)customFrameRateIndex;
 - (void)setFromFile:(id)arg1;
 - (void)setCustom:(id)arg1;
 - (void)setPreset:(id)arg1;

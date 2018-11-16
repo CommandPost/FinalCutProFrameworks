@@ -14,6 +14,7 @@
 }
 
 - (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (int)virtualScreen;
 - (id)buffer;
 - (struct CGRect)pixelSpaceBounds;
 - (id)type;

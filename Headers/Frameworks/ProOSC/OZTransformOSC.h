@@ -41,6 +41,7 @@
 + (PCPtr_df275998)getPivotTexture:(int)arg1;
 + (PCPtr_df275998)getHandlesTexture:(int)arg1;
 + (id)allocInfoBarTextWithPosition:(const PCVector2_79efa81a *)arg1;
++ (BOOL)validate:(id)arg1;
 + (void)maybeInitResources;
 - (id).cxx_construct;
 - (void).cxx_destruct;

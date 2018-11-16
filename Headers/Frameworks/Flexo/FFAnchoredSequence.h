@@ -106,6 +106,7 @@
 + (BOOL)shouldHaveWrappedAudioAnchoredComponentsForContainer:(id)arg1;
 + (BOOL)pasteKenBurns:(id)arg1 sourceCrop:(id)arg2;
 + (BOOL)operationPasteAttributesToObject:(id)arg1 videoEffects:(id)arg2 audioEffects:(id)arg3 selectedChannels:(id)arg4 selectedIntrinsics:(id)arg5 moveKeyframesInfo:(id)arg6 error:(id *)arg7;
++ (BOOL)skipThis360Paste:(id)arg1 targetObject:(id)arg2;
 + (void)pasteTransformEffect:(id)arg1 dest:(id)arg2 selectedChannels:(id)arg3 moveKeyframesInfo:(id)arg4;
 + (void)syncTransformKeyframes:(id)arg1 destChannel:(id)arg2 sourceKeyframeTime:(CDStruct_1b6d18a9)arg3 destKeyframeTime:(CDStruct_1b6d18a9)arg4;
 + (void)pasteVolumeFromEffectStack:(id)arg1 toEffectStack:(id)arg2 moveKeyframesInfo:(id)arg3;
@@ -133,6 +134,7 @@
 + (id)clipsFromEdits:(id)arg1;
 + (void)setTrimMode:(int)arg1;
 + (int)trimMode;
+@property(retain, nonatomic) NSDictionary *cachedSequenceDictionary; // @synthesize cachedSequenceDictionary=_cachedSequenceDictionary;
 @property(nonatomic) BOOL disableResolveConflictsOnActionEnd; // @synthesize disableResolveConflictsOnActionEnd=_disableResolveConflictsOnActionEnd;
 @property(nonatomic) FFStoryTimelinePresentation *activeStoryTimelinePresentation; // @synthesize activeStoryTimelinePresentation=_activeStoryTimelinePresentation;
 @property(nonatomic) BOOL isAudioComponentsReferenceLayoutSequence; // @synthesize isAudioComponentsReferenceLayoutSequence=_isAudioComponentsReferenceLayoutSequence;
@@ -265,6 +267,7 @@
 - (void)addClipRefsToSet:(id)arg1;
 - (id)clipRefs;
 - (void)addAssetRefsToSet:(id)arg1;
+- (id)copyAssets;
 - (id)assetRefs;
 - (BOOL)compareMediaRefs:(id)arg1 withMediaRefsByIdentifier:(id)arg2;
 - (void)_updateMediaReferences:(BOOL)arg1;
@@ -272,6 +275,7 @@
 - (void)resetMediaReferences;
 - (id)cacheOfAllClipRefs;
 - (id)cacheOfAllAssetRefs;
+- (BOOL)has360Asset;
 - (void)gatherAllAssetRefsIntoSet:(id)arg1 visitedSet:(id)arg2;
 - (void)gatherAllClipRefsIntoSet:(id)arg1 visitedSet:(id)arg2;
 - (id)targetProjectFromClipRef:(id)arg1;
@@ -305,6 +309,7 @@
 - (BOOL)isSpine;
 - (BOOL)isSyncronized;
 - (BOOL)isMultiAngle;
+- (BOOL)isReferenceSequence;
 - (BOOL)isReferenceClip;
 - (BOOL)isAngle;
 - (BOOL)isCompoundClip;
@@ -316,6 +321,7 @@
 - (BOOL)isMediaRef;
 - (BOOL)isMarker;
 - (BOOL)isTransition;
+- (BOOL)is360;
 - (id)sequenceInflateIfNecessary:(BOOL)arg1;
 - (id)targetSequenceRecord;
 - (id)sequenceInfoIfProjectAndNotLoaded;
@@ -341,7 +347,7 @@
 - (void)forcePlayerContextChangeForSequence;
 - (void)invalidateStreamRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
-- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
+- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2 withUserInfo:(id)arg3;
 - (void)rangeInvalidated:(id)arg1;
 - (void)_processDeferredUpdates;
 - (void)_processDeferredUpdates:(id)arg1;
@@ -423,6 +429,7 @@
 - (void)informSequenceObjectWasRemoved:(id)arg1;
 - (void)informSequenceObjectWasAdded:(id)arg1;
 - (void)informSequenceObjectDidChange:(id)arg1 forKeyPath:(id)arg2;
+- (BOOL)whiteListForPathsNotNeedingRipple:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_endObservingEdits;
 - (void)updateModifiedObjectsForSourceChange:(id)arg1;
@@ -447,8 +454,8 @@
 - (void)resetMediaIdentifier;
 - (void)resetMediaIdentifier:(id)arg1;
 @property(readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
+- (id)mediaIndexingKey;
 - (id)organizerDataItem;
-- (void)_resolveLaneConflictsOnUndoRedo:(id)arg1;
 - (void)compressLaneIndexesInContainer:(id)arg1 resolveLaneConflicts:(BOOL)arg2;
 - (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3;
 - (void)notifyEffectsDidLoadInBackground:(id)arg1;
@@ -518,6 +525,7 @@
 - (id)sortByStartTime:(id)arg1 inContainer:(id)arg2;
 - (id)sortedItems;
 - (id)sortedItemsInContainer:(id)arg1;
+- (id)metadataContentModDate;
 - (BOOL)actionHideRange:(CDStruct_e83c9415)arg1 hidden:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)actionRemoveKeywordsWithNames:(id)arg1 error:(id *)arg2;
 - (BOOL)actionRenameKeywordWithName:(id)arg1 to:(id)arg2 error:(id *)arg3;
@@ -794,7 +802,7 @@
 - (BOOL)actionSetVideoProps:(id)arg1 error:(id *)arg2;
 - (BOOL)_changeSequenceSettingIfNeeded:(id)arg1 displayDropFrame:(long long)arg2 isStill:(BOOL)arg3;
 - (BOOL)_changeSequenceSizeTo:(id)arg1;
-- (long long)findEmptyLaneForItem:(id)arg1 inContainer:(id)arg2 belowSpine:(BOOL)arg3 excludedItems:(id)arg4;
+- (long long)findEmptyLaneForItem:(id)arg1 inContainer:(id)arg2 belowSpine:(BOOL)arg3 closestToSpine:(BOOL)arg4 excludedItems:(id)arg5;
 - (long long)_findEmptyLaneInAnchoredArray:(id)arg1 atTimeRange:(CDStruct_e83c9415)arg2 belowSpine:(BOOL)arg3 excludedItems:(id)arg4;
 - (BOOL)actionResolveLaneGapsInContainer:(id)arg1 error:(id *)arg2;
 - (BOOL)actionResolveLaneConflictsInContainer:(id)arg1 excludedItems:(id)arg2 error:(id *)arg3;
@@ -895,6 +903,7 @@
 - (BOOL)displayUngroupingAlertDialog:(char *)arg1;
 - (BOOL)displayTransitionResizeAlertDialog:(char *)arg1;
 - (BOOL)displayThreePointEditingAlertDialog:(char *)arg1;
+- (BOOL)displayMismatched360MediaAlertDialog:(char *)arg1 mediaCameraMode:(int)arg2 sequenceCameraMode:(int)arg3;
 - (void)actionSetObject:(id)arg1 smooth:(BOOL)arg2 forKeyframe:(int)arg3;
 - (void)actionRetimeSetInterpolation:(long long)arg1 edits:(id)arg2;
 - (BOOL)retimeAllLinearTransitions:(id)arg1;
@@ -985,9 +994,9 @@
 - (BOOL)operationTrimDuration:(CDStruct_1b6d18a9)arg1 forEdits:(id)arg2 isDelta:(BOOL)arg3 error:(id *)arg4;
 - (id)sortForDurationChange:(id)arg1 context:(CDStruct_399c9aed *)arg2;
 - (BOOL)operationTrimRanges:(id)arg1 rootItem:(id)arg2 error:(id *)arg3;
-- (BOOL)operationTrimEdgeAtContainerTime:(CDStruct_1b6d18a9)arg1 trimFlags:(int)arg2 selection:(id)arg3 atStartEdge:(BOOL)arg4 edgeType:(int)arg5 playheadTime:(CDStruct_1b6d18a9 *)arg6 rootItem:(id)arg7 error:(id *)arg8;
-- (BOOL)operationTrimEdgeAtContainerTime:(CDStruct_1b6d18a9)arg1 trimFlags:(int)arg2 startSelection:(id)arg3 endSelection:(id)arg4 edgeType:(int)arg5 playheadTime:(CDStruct_1b6d18a9 *)arg6 rootItem:(id)arg7 error:(id *)arg8;
-- (BOOL)operationExtendStartEdges:(id)arg1 endEdges:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3 playheadTime:(CDStruct_1b6d18a9 *)arg4 rootItem:(id)arg5 trimFlags:(int)arg6 error:(id *)arg7;
+- (BOOL)operationTrimEdgeAtContainerTime:(CDStruct_1b6d18a9)arg1 trimFlags:(int)arg2 selection:(id)arg3 atStartEdge:(BOOL)arg4 edgeType:(int)arg5 playheadTime:(CDStruct_1b6d18a9 *)arg6 editOffset:(CDStruct_1b6d18a9 *)arg7 rootItem:(id)arg8 error:(id *)arg9;
+- (BOOL)operationTrimEdgeAtContainerTime:(CDStruct_1b6d18a9)arg1 trimFlags:(int)arg2 startSelection:(id)arg3 endSelection:(id)arg4 edgeType:(int)arg5 playheadTime:(CDStruct_1b6d18a9 *)arg6 editOffset:(CDStruct_1b6d18a9 *)arg7 rootItem:(id)arg8 error:(id *)arg9;
+- (BOOL)operationExtendStartEdges:(id)arg1 endEdges:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3 playheadTime:(CDStruct_1b6d18a9 *)arg4 editOffset:(CDStruct_1b6d18a9 *)arg5 rootItem:(id)arg6 trimFlags:(int)arg7 error:(id *)arg8;
 - (BOOL)itemIsAudioSplit:(id)arg1;
 - (BOOL)itemIsAudioComponent:(id)arg1;
 - (BOOL)_operationTrimEdit:(id)arg1 endEdits:(id)arg2 edgeType:(int)arg3 byDelta:(CDStruct_1b6d18a9)arg4 temporalResolutionMode:(int)arg5 trimCommand:(int)arg6 trimFlags:(int)arg7 error:(id *)arg8;
@@ -997,7 +1006,7 @@
 - (BOOL)_operationTrimEditCalculateTimes:(BOOL)arg1 deltaTime:(CDStruct_1b6d18a9)arg2 trimCommand:(int)arg3 startDelta:(CDStruct_1b6d18a9 *)arg4 durationDelta:(CDStruct_1b6d18a9 *)arg5;
 - (void)adjustEffectsAfterTrimming:(id)arg1 left:(BOOL)arg2 right:(BOOL)arg3;
 - (BOOL)actionTrimTransitionDuration:(CDStruct_1b6d18a9)arg1 forEdits:(id)arg2 isDelta:(BOOL)arg3 error:(id *)arg4;
-- (BOOL)_hasSufficientHandlesForTransitionDuration:(CDStruct_1b6d18a9)arg1 forEdits:(id)arg2 isDelta:(BOOL)arg3;
+- (BOOL)hasSufficientHandlesForTransitionDuration:(CDStruct_1b6d18a9)arg1 forEdits:(id)arg2 isDelta:(BOOL)arg3;
 - (BOOL)actionTrimDuration:(CDStruct_1b6d18a9)arg1 forEdits:(id)arg2 isDelta:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)actionTrimRanges:(id)arg1 rootItem:(id)arg2 error:(id *)arg3;
 - (BOOL)actionTrimEdit:(id)arg1 endEdits:(id)arg2 edgeType:(int)arg3 byDelta:(CDStruct_1b6d18a9)arg4 trimCommand:(int)arg5 temporalResolutionMode:(int)arg6 animationHint:(id)arg7 error:(id *)arg8;

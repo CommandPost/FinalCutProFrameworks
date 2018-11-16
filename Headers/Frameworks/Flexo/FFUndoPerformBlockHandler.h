@@ -13,12 +13,16 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_blockDispatchQueue;
     int _suspendCount;
-    struct FFLocklessQueue<void (^)()> *_blockQueue;
+    struct queue<void (^)(), std::__1::deque<void (^)(), std::__1::allocator<void (^)()>>> _blockQueue;
+    struct FFLock _blockQueueLock;
 }
 
 + (id)instance;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)performNextBlock;
 - (void)performRemainingBlocks;
+- (CDUnknownBlockType)popBlock;
 - (void)performBlock:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;
 - (void)resumeHandler;
 - (void)suspendHandler;

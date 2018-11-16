@@ -6,32 +6,40 @@
 
 #import <Flexo/FFPlayerItemModule.h>
 
+#import "FFDestVideoDelegate.h"
 #import "FFFieldDisplaySetting.h"
 #import "FFSelectionHandler.h"
 #import "NSAnimationDelegate.h"
 
-@class FFDestVideo<FFDestVideoDeviceManaging>, FFDestVideoGL, FFHeaderBackgroundView, FFOSC, FFOpenGLNSImage, FFPlayerView, FFSnapGrid, FFTimecodeFormatter, LKButton, NSArray, NSDictionary, NSLock, NSMenu, NSMutableArray, NSRecursiveLock, NSString, NSView, NSViewAnimation, PCMatrix44Double, _FFPlayerModuleLineView;
+@class FF360FooterView, FFDestVideo<FFDestVideoDeviceManaging>, FFDestVideo<FFHMDPullFrameModelProtocol>, FFDestVideoGL, FFHeaderBackgroundView, FFOSC, FFOpenGLNSImage, FFPlayerView, FFSnapGrid, FFTimecodeFormatter, LKButton, LKReversedSlider, LKTextField, NSArray, NSDictionary, NSLock, NSMenu, NSMutableArray, NSRecursiveLock, NSString, NSTimer, NSView, NSViewAnimation, PCMatrix44Double, _FFPlayerModuleLineView;
 
-@interface FFPlayerVideoModule : FFPlayerItemModule <FFSelectionHandler, FFFieldDisplaySetting, NSAnimationDelegate>
+@interface FFPlayerVideoModule : FFPlayerItemModule <FFSelectionHandler, FFFieldDisplaySetting, FFDestVideoDelegate, NSAnimationDelegate>
 {
     FFPlayerView *_playerView;
     FFHeaderBackgroundView *_multiangleHeaderView;
     NSView *_multiangleFooterView;
+    FFHeaderBackgroundView *_360HeaderView;
+    FF360FooterView *_360FooterView;
     FFDestVideoGL *_destVideoGL;
     FFDestVideo<FFDestVideoDeviceManaging> *_destVideoCMIO;
+    FFDestVideo<FFHMDPullFrameModelProtocol> *_destHMD;
     BOOL _useDestVideoCMIO;
     BOOL _primaryDestVideoCMIO;
+    BOOL _hmdEnableThisModule;
     unsigned int _viewDisplay;
     struct CGColorSpace *_viewColorSpace;
     struct CGRect _savedViewBounds;
     struct CGRect _sequenceBounds;
+    int _sequenceCameraMode;
     float _zoomFactor;
     struct CGPoint _origin;
     long long _colorChannelDisplayMode;
     BOOL _displayBroadcastSafeZones;
     unsigned int _rangeCheckMode;
+    BOOL _display360Horizon;
     BOOL _showBothFields;
     BOOL _multipleSelection;
+    BOOL _useColorEffectOSCs;
     BOOL _inSetSkimmable;
     struct FFSynchronizable _oscsLock;
     NSMutableArray *_oscs;
@@ -57,18 +65,23 @@
     LKButton *_multiangleNextBankButton;
     LKButton *_multianglePrevBankButton;
     NSViewAnimation *_bankAreaAnimation;
+    LKReversedSlider *_360FoVSlider;
+    LKTextField *_360FoVLabel;
+    LKTextField *_360FoVDegreeLabel;
+    LKButton *_360ResetOrientationButton;
     FFSnapGrid *_snapGrid;
     NSArray *_effectChangedObservers;
     BOOL _isActiveModule;
     BOOL _contextualMenuEnabled;
     BOOL _destAddedToPlayer;
     BOOL _nrtPlayback;
-    struct FFProcrastinatedDispatch_t _OSCSelectionChangeDispatchContext;
+    struct PCProcrastinatedDispatch_t _OSCSelectionChangeDispatchContext;
     BOOL _ignoreSelectedStateChange;
     BOOL _hasVideo;
     BOOL _installedWindowObservers;
     BOOL _oscsEnabled;
     BOOL _transportControlsEnabled;
+    BOOL _internalIsMultiAngleViewer;
     NSRecursiveLock *_lastCommonDrawPropertiesLock;
     NSDictionary *_lastCommonDrawProperties;
     BOOL _bankSelectorNeedsUpdate;
@@ -78,8 +91,31 @@
     FFOpenGLNSImage *_audioIcon;
     _FFPlayerModuleLineView *_focusUnderBar;
     NSArray *_focusUnderBarConstraints;
+    id _eventMonitor;
+    NSTimer *_lookTimer;
+    struct CGPoint _lookDelta;
+    double _fovXDegrees;
+    double _fovXDelta;
+    double _360panDelta;
+    double _360tiltDelta;
+    double _360rollDelta;
+    double _360panDegrees;
+    double _360tiltDegrees;
+    double _360rollDegrees;
+    BOOL _is360Viewer;
+    BOOL _360LatchHMD;
+    BOOL _360ShowOSC;
+    unsigned int _has360UpdateQueued;
 }
 
+@property(nonatomic) int sequenceCameraMode; // @synthesize sequenceCameraMode=_sequenceCameraMode;
+@property(nonatomic) struct CGRect sequenceBounds; // @synthesize sequenceBounds=_sequenceBounds;
+@property(nonatomic) BOOL mirrorHMD; // @synthesize mirrorHMD=_360LatchHMD;
+@property(nonatomic) double rollDegrees360; // @synthesize rollDegrees360=_360rollDegrees;
+@property(nonatomic) double tiltDegrees360; // @synthesize tiltDegrees360=_360tiltDegrees;
+@property(nonatomic) double panDegrees360; // @synthesize panDegrees360=_360panDegrees;
+@property(nonatomic) double fovXDegrees; // @synthesize fovXDegrees=_fovXDegrees;
+@property(nonatomic) BOOL is360Viewer; // @synthesize is360Viewer=_is360Viewer;
 @property BOOL suppressToolManagerSelectionChanges; // @synthesize suppressToolManagerSelectionChanges=_suppressToolManagerSelectionChanges;
 @property(nonatomic) long long multiAngleEditStyle; // @synthesize multiAngleEditStyle=_multiAngleEditStyle;
 @property(nonatomic) BOOL primaryDestVideoCMIO; // @synthesize primaryDestVideoCMIO=_primaryDestVideoCMIO;
@@ -93,6 +129,8 @@
 - (void)snapshotPlayer:(id)arg1;
 - (void)convertToControlPoints:(id)arg1;
 - (void)setToolNone:(id)arg1;
+- (void)setToolOrientation:(id)arg1;
+- (void)setToolReorient:(id)arg1;
 - (void)setToolDistort:(id)arg1;
 - (void)setToolCrop:(id)arg1;
 - (void)setToolMotionPath:(id)arg1;
@@ -168,6 +206,32 @@
 - (BOOL)isMultiangleFooterVisible;
 - (void)setMultiangleHeaderVisible:(BOOL)arg1;
 - (BOOL)isMultiangleHeaderVisible;
+- (void)_updateIsMultiangleViewer;
+- (void)set360FooterVisible:(BOOL)arg1;
+- (BOOL)is360FooterVisible;
+- (void)set360HeaderVisible:(BOOL)arg1;
+- (BOOL)is360HeaderVisible;
+- (void)_updateFovSlider;
+- (void)updateFOVSliderAndResetButton:(id)arg1;
+- (void)player360OrientationOSCAction:(id)arg1;
+- (void)latchHmdAction:(id)arg1;
+- (void)fovSliderAction:(id)arg1;
+- (void)setPointOfViewDegreesPan:(double)arg1 tilt:(double)arg2 roll:(double)arg3;
+- (void)resetFieldOfView:(id)arg1;
+- (void)resetPointOfView:(id)arg1;
+- (void)rollCounterclockwise:(id)arg1;
+- (void)rollClockwise:(id)arg1;
+- (void)decreaseFOV:(id)arg1;
+- (void)increaseFOV:(id)arg1;
+- (void)panRight:(id)arg1;
+- (void)panLeft:(id)arg1;
+- (void)tiltDown:(id)arg1;
+- (void)tiltUp:(id)arg1;
+- (void)zeroDeltas;
+- (void)setupPanAndTiltDeltas;
+- (void)stopLooking;
+- (void)look;
+- (void)startLooking;
 - (void)cutSwitchAngle16:(id)arg1;
 - (void)cutSwitchAngle15:(id)arg1;
 - (void)cutSwitchAngle14:(id)arg1;
@@ -252,12 +316,17 @@
 - (void)setDrawingEnabled:(BOOL)arg1;
 - (struct CGRect)viewBoundsInPixels;
 - (BOOL)shouldDrawVideoDest:(id)arg1;
+- (void)setupDestHMDForModule:(id)arg1;
+- (void)_updateDestHMD;
+- (void)_teardownDestHMD;
+- (void)_setupDestHMD;
 - (void)deviceChangedFormat:(id)arg1;
 - (void)_updateDestVideoCMIO;
 - (void)_teardownDestVideoCMIO;
 - (void)_setupDestVideoCMIO;
 - (void)didExitFullScreenMode;
 - (void)didEnterFullScreenMode;
+@property(nonatomic) BOOL display360Horizon;
 @property(nonatomic) BOOL displayBroadcastSafeZones;
 @property(nonatomic) BOOL showBothFields;
 - (id)getRangeCheckColorSpaceLabel;
@@ -267,13 +336,14 @@
 - (void)setNextZoomFactor:(BOOL)arg1;
 @property(nonatomic) float zoomFactor;
 - (BOOL)forceShowAt100Percent;
-@property(nonatomic) struct CGRect sequenceBounds;
+- (void)setSequenceBounds:(struct CGRect)arg1 sequenceCameraMode:(int)arg2;
 - (void)updateLabel;
 - (double)backingScaleFactor;
 - (id)backgroundColor;
 - (id)layer;
 - (id)destVideo;
 - (void)_playerViewBoundsChanged:(struct CGRect)arg1;
+- (void)_recalcMultiAngleDisplaysAndBankSelector;
 - (BOOL)isSkimmingLens;
 - (id)playerView;
 - (void)playerViewDidMoveToWindow:(id)arg1;
@@ -302,6 +372,9 @@
 - (void)moduleViewWillBeRemoved:(id)arg1;
 - (id)init;
 - (id)tabLabel;
+- (void)resetHMDOrientation:(id)arg1;
+- (id)newProjectedImageForPlayerFrame:(id)arg1;
+- (void)updateHMDMatrices:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

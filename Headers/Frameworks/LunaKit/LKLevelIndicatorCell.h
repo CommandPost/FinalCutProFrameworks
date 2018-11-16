@@ -10,10 +10,11 @@
 
 @interface LKLevelIndicatorCell : NSLevelIndicatorCell
 {
-    NSColor *backgroundColor;
+    NSColor *_backgroundColor;
 }
 
-@property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor;
+@property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+- (void)dealloc;
 
 @end
 

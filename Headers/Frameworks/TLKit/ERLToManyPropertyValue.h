@@ -13,15 +13,13 @@
     BOOL _usesArrays;
     BOOL _settingInverseRelation;
     id _collection;
-    id _collectionCache;
     NSMutableDictionary *_indexesByName;
 }
 
 @property(nonatomic) BOOL settingInverseRelation; // @synthesize settingInverseRelation=_settingInverseRelation;
 @property(nonatomic) BOOL usesArrays; // @synthesize usesArrays=_usesArrays;
 @property(retain, nonatomic) NSMutableDictionary *indexesByName; // @synthesize indexesByName=_indexesByName;
-@property(nonatomic) id collectionCache; // @synthesize collectionCache=_collectionCache;
-@property(nonatomic) id collection; // @synthesize collection=_collection;
+@property(readonly, nonatomic) id collection; // @synthesize collection=_collection;
 - (void)applyDeleteRule;
 - (void)_applyCascadeDeleteRule;
 - (void)updateIndexesForObject:(id)arg1 changedKey:(id)arg2;

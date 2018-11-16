@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)newVideoEffectStackFromPresetUnarchiver:(id)arg1;
++ (void)unarchivePresetData:(id)arg1 videoEffects:(id *)arg2 audioEffectsObjectBundle:(id *)arg3 selectedIntrinsics:(id *)arg4 selectedChannels:(id *)arg5 keyframeMode:(long long *)arg6 sourceClippedRange:(CDStruct_e83c9415 *)arg7 sourceUnclippedStart:(CDStruct_1b6d18a9 *)arg8;
 + (id)directoryURL;
 + (BOOL)createPresetWithName:(id)arg1 presetCategory:(id)arg2 videoEffects:(id)arg3 audioEffects:(id)arg4 selectedChannels:(id)arg5 selectedIntrinsics:(id)arg6 keyframeMode:(long long)arg7 sourceClippedRange:(CDStruct_e83c9415)arg8 sourceUnclippedStart:(CDStruct_1b6d18a9)arg9;
 + (void)scanPresets:(id)arg1;

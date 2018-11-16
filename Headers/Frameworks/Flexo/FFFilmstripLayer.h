@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
     unsigned int _duckingChannelVisible:1;
     double _offset;
     double _savedOffset;
-    struct FFProcrastinatedDispatch_t _procrastinatedReload;
+    struct PCProcrastinatedDispatch_t _procrastinatedReload;
     id <FFFilmstripLayerDelegate> _filmstripDelegate;
     BOOL _forceNoUpdate;
     BOOL _cellsDirty;
@@ -61,6 +61,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double timePerHorizontalPixel; // @synthesize timePerHorizontalPixel=_timePerHorizontalPixel;
 @property(nonatomic) CDStruct_e83c9415 clippedRange; // @synthesize clippedRange=_clippedRange;
 @property(retain, nonatomic) FFAnchoredObject *skimmableObject; // @synthesize skimmableObject=_skimmableObject;
+- (id).cxx_construct;
+- (BOOL)filmstripCell:(id)arg1 isThumbnailGenerationPausedForRequest:(id)arg2;
 - (int)thumbnailAudioOptionsForFilmstripCell:(id)arg1;
 - (BOOL)filmstripCell:(id)arg1 shouldUpdateThumbnailWithSkimmable:(struct NSObject *)arg2;
 - (BOOL)useImageCache;

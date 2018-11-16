@@ -15,6 +15,11 @@
 
 + (id)iconForItems:(id)arg1;
 @property(retain, nonatomic) FFContext *context; // @synthesize context=_context;
+- (BOOL)shouldDisplayModuleWithItems:(id)arg1;
+- (id)getCurrentSelectedColorEffectFromCurrentItems:(id)arg1;
+- (id)getCurrentSelectedEffectFromCurrentItems:(id)arg1 needToCreateDummy:(char *)arg2 moreThanOnePossibleColorEffectStack:(char *)arg3;
+- (id)firstSelectedColorEffect:(id)arg1;
+- (id)_videoEffectsForItem:(id)arg1;
 - (id)inspectedItem;
 - (void)dealloc;
 

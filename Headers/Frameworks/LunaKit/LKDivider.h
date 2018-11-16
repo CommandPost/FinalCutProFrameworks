@@ -15,6 +15,7 @@
 
 @property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=m_backgroundColor;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)dealloc;
 
 @end
 

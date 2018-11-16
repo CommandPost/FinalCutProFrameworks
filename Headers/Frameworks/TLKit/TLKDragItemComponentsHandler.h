@@ -22,6 +22,7 @@
 - (void)_updateDraggedObjectsIfNeeded:(id)arg1;
 - (void)_removeItemComponentLayersFromDragPositionForObjects:(id)arg1;
 - (void)_moveItemComponentLayersToDragPositionForObjects:(id)arg1;
+- (void)dealloc;
 
 @end
 

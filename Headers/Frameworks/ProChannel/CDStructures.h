@@ -1455,7 +1455,7 @@ struct PCRecursiveMutex {
 };
 
 struct PCSpinLock {
-    int _field1;
+    struct os_unfair_lock_s _field1;
 };
 
 struct PCString {
@@ -1471,8 +1471,12 @@ struct __CFString;
 
 struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long>> {
     struct __tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long> {
-        struct __tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
     } _field1;
+};
+
+struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
+    struct __tree_node_base<void *> *_field1;
 };
 
 struct __wrap_iter<OZVertex **> {
@@ -1481,16 +1485,18 @@ struct __wrap_iter<OZVertex **> {
 
 struct map<PCUUID, OZFactory *, std::__1::less<PCUUID>, std::__1::allocator<std::__1::pair<const PCUUID, OZFactory *>>> {
     struct __tree<std::__1::__value_type<PCUUID, OZFactory *>, std::__1::__map_value_compare<PCUUID, std::__1::__value_type<PCUUID, OZFactory *>, std::__1::less<PCUUID>, true>, std::__1::allocator<std::__1::__value_type<PCUUID, OZFactory *>>> {
-        struct __tree_node<std::__1::__value_type<PCUUID, OZFactory *>, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<PCUUID, OZFactory *>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-                struct __tree_node_base<void *> *_field1;
-            } _field1;
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::__map_value_compare<PCUUID, std::__1::__value_type<PCUUID, OZFactory *>, std::__1::less<PCUUID>, true>> {
             unsigned long long _field1;
         } _field3;
     } _field1;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _field1;
 };
 
 struct pair<CMTime, void *>;

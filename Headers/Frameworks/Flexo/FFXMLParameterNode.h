@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     BOOL _canBeDisabled;
     BOOL _disabledByDefault;
     NSXMLElement *_sourceXMLElement;
+    NSString *_initialValue;
 }
 
 @property(retain, nonatomic) NSXMLElement *sourceXMLElement; // @synthesize sourceXMLElement=_sourceXMLElement;
@@ -34,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
 @property(nonatomic) BOOL alwaysSave; // @synthesize alwaysSave=_alwaysSave;
 @property(nonatomic) BOOL isDefault; // @synthesize isDefault=_isDefault;
-@property(retain, nonatomic) NSString *initialValue; // @synthesize initialValue=_value;
+@property(retain, nonatomic) NSString *initialValue; // @synthesize initialValue=_initialValue;
 @property(retain, nonatomic) NSString *paramKey; // @synthesize paramKey=_paramKey;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)copyAsVector;

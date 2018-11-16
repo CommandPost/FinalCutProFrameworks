@@ -21,6 +21,13 @@
     NSMutableArray *_changeInfoStack;
 }
 
+- (void)addHueSaturationEffect:(id)arg1;
+- (void)addColorCurvesEffect:(id)arg1;
+- (void)addColorWheelsEffect:(id)arg1;
+- (void)addColorBoardEffect:(id)arg1;
+- (void)addColorEffect:(id)arg1 effectID:(id)arg2 actionName:(id)arg3;
+- (void)toggleAllColorCorrectionOff;
+- (BOOL)canToggleAllColorEffects;
 - (void)toggleSelectedVideoEffects;
 - (BOOL)canToggleSelectedVideoEffects;
 - (CDStruct_1b6d18a9)griddedTimeForChannel:(struct OZChannelBase *)arg1;
@@ -36,7 +43,7 @@
 - (id)controller:(id)arg1 droppedTypes:(id)arg2;
 - (void)controllerFinishedDrag:(id)arg1;
 - (unsigned long long)controller:(id)arg1 draggingSourceOperationMaskForChannel:(struct OZChannelBase *)arg2 forLocal:(BOOL)arg3;
-- (void)controller:(id)arg1 writeChannels:(list_e5c8e430 *)arg2 toPasteboard:(id)arg3;
+- (void)controller:(id)arg1 writeChannels:(list_9af5505e *)arg2 toPasteboard:(id)arg3;
 - (BOOL)controller:(id)arg1 shouldDragChannel:(struct OZChannelBase *)arg2;
 - (unsigned int)controller:(id)arg1 checkboxTypeForChannel:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 setName:(id)arg2;
@@ -47,6 +54,8 @@
 - (void)startCaptureModifiedChannels:(const struct PCString *)arg1;
 - (void)controller:(id)arg1 didResetChannelFolder:(struct OZChannelFolder *)arg2 backupDescendants:(BOOL)arg3;
 - (void)controller:(id)arg1 willResetChannelFolder:(struct OZChannelFolder *)arg2 backupDescendants:(BOOL)arg3;
+- (void)controller:(id)arg1 didSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
+- (void)controller:(id)arg1 willSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
 - (void)controller:(id)arg1 didSetChannelValue:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 willSetChannelValue:(struct OZChannelBase *)arg2;
 - (void)controller:(id)arg1 didSetChannelFlags:(struct OZChannelBase *)arg2;
@@ -64,6 +73,7 @@
 - (BOOL)storesCollapsedStateForChannel:(struct OZChannelBase *)arg1;
 - (BOOL)willChangingValueKeyframe:(id)arg1;
 - (void)select:(BOOL)arg1 forChan:(struct OZChannelBase *)arg2;
+- (void)stopPlaybackForChannel:(struct OZChannelBase *)arg1;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1 forChannel:(struct OZChannelBase *)arg2;
 - (CDStruct_1b6d18a9)currentTimeForChannel:(struct OZChannelBase *)arg1;
 - (void)controller:(id)arg1 postNotification:(unsigned int)arg2;

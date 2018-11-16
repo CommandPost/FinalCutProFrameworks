@@ -16,6 +16,7 @@
     BOOL _moving;
 }
 
++ (BOOL)validate:(id)arg1;
 - (id).cxx_construct;
 - (BOOL)postRedisplayOnActivePartChange;
 - (void)draw;

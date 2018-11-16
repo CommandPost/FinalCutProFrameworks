@@ -6,12 +6,14 @@
 
 #import "NSObject.h"
 
-@class MIOAssetImportRequest, NSArray, NSMutableArray, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_semaphore>;
+#import "MIOAssetImportTrackMediatorDelegate.h"
 
-@interface MIOAssetImportQueue : NSObject
+@class AVAssetReader, AVAssetWriter, MIOAssetImportRequest, MIOAssetImportTrackMediator, NSArray, NSMutableArray, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_semaphore>, NSString;
+
+@interface MIOAssetImportQueue : NSObject <MIOAssetImportTrackMediatorDelegate>
 {
-    struct OpaqueCMByteStream *_sourceByteStream;
-    struct OpaqueFigRemaker *_remaker;
+    NSObject<OS_dispatch_queue> *_resourceLoaderQueue;
+    NSObject<OS_dispatch_queue> *_serializationQueue;
     NSMutableArray *_importRequests;
     MIOAssetImportRequest *_currentImportRequest;
     BOOL _paused;
@@ -21,12 +23,27 @@
     long long _bytesImported;
     long long _bytesPreviouslyImported;
     NSObject<OS_dispatch_queue> *_notificationQueue;
+    BOOL _clipIsMXFOp1A;
     id <MIOAssetImportQueueDelegate> _delegate;
+    BOOL _cancelled;
+    BOOL _writingSamples;
+    AVAssetReader *_assetReader;
+    AVAssetWriter *_assetWriter;
+    MIOAssetImportTrackMediator *_videoTrackMediator;
+    MIOAssetImportTrackMediator *_timecodeTrackMediator;
+    NSMutableArray *_audioTrackMediators;
+    CDStruct_e83c9415 _timeRange;
 }
 
-+ (id)_figRemakerNotificationNames;
 + (id)keyPathsForValuesAffectingPercentageDone;
-@property struct OpaqueFigRemaker *remaker; // @synthesize remaker=_remaker;
+@property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
+@property(nonatomic, getter=isWritingSamples) BOOL writingSamples; // @synthesize writingSamples=_writingSamples;
+@property BOOL cancelled; // @synthesize cancelled=_cancelled;
+@property(retain) NSMutableArray *audioTrackMediators; // @synthesize audioTrackMediators=_audioTrackMediators;
+@property(retain) MIOAssetImportTrackMediator *timecodeTrackMediator; // @synthesize timecodeTrackMediator=_timecodeTrackMediator;
+@property(retain) MIOAssetImportTrackMediator *videoTrackMediator; // @synthesize videoTrackMediator=_videoTrackMediator;
+@property(retain) AVAssetWriter *assetWriter; // @synthesize assetWriter=_assetWriter;
+@property(retain) AVAssetReader *assetReader; // @synthesize assetReader=_assetReader;
 @property long long totalBytes; // @synthesize totalBytes=_totalBytes;
 @property long long bytesImported; // @synthesize bytesImported=_bytesImported;
 @property(readonly) NSArray *importRequests; // @synthesize importRequests=_importRequests;
@@ -35,14 +52,18 @@
 @property(retain) MIOAssetImportRequest *currentImportRequest; // @synthesize currentImportRequest=_currentImportRequest;
 - (void)writeMetadata;
 - (void)addProAppsMetadataToMetadataArray:(id)arg1;
-- (void)addListeners;
-- (void)removeListeners;
-- (void)_asyncRemakerFinishedWithSuccess:(BOOL)arg1 importRequest:(id)arg2;
-- (void)remakerFinishedWithSuccess:(BOOL)arg1 importRequest:(id)arg2;
+- (void)remakerFinishedWithSuccess:(BOOL)arg1 importRequest:(id)arg2 error:(id)arg3;
 - (void)updateProgressForCurrentImportRequest:(float)arg1;
+- (void)sampleBufferChannel:(id)arg1 didReadSampleBuffer:(struct opaqueCMSampleBuffer **)arg2;
+- (BOOL)isValidSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)cancelCurrentImportRequest;
 - (void)removeImportRequest:(id)arg1;
 - (void)startNewImport;
+- (void)readingAndWritingDidFinish:(id)arg1 success:(BOOL)arg2 withError:(id)arg3;
+- (BOOL)startReadingAndWriting:(id)arg1 error:(id *)arg2;
+- (BOOL)setUpReaderInputsAndWriterOutputs:(id)arg1;
+- (BOOL)setUpWriter:(id)arg1 error:(id *)arg2;
+- (BOOL)setUpReader:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) double percentageDone;
 - (void)resume;
 - (void)pause;
@@ -53,6 +74,12 @@
 - (void)shutdown;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

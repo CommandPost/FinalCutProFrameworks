@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct HGRect roi; // @synthesize roi=_roi;
 @property(readonly) FFImageAbsoluteOutputFormat *format; // @synthesize format=_format;
 - (id)newImage;
-- (struct HGRenderNode *)renderNode;
 - (void)setRenderNode:(struct HGRenderNode *)arg1;
 - (struct CGColorSpace *)colorSpace;
 - (void)setLocation:(int)arg1;

@@ -6,7 +6,7 @@
 
 #import <Flexo/FFOSC.h>
 
-@class FFOpenGLInfoGrid, FFOpenGLNSImage, FFTextureBuffer, NSDictionary, NSMutableDictionary;
+@class FFOpenGLInfoGrid, FFOpenGLNSImage, NSDictionary, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FFOverlayOSC : FFOSC
@@ -18,8 +18,6 @@ __attribute__((visibility("hidden")))
     FFOpenGLNSImage *_clipOutFacet;
     FFOpenGLNSImage *_sequenceHeadFacet;
     FFOpenGLNSImage *_sequenceTailFacet;
-    FFTextureBuffer *_dominantMotionMessage;
-    FFTextureBuffer *_opticalFlowMessage;
     struct CGSize _dominantTextSize;
     struct CGSize _opticalFlowTextSize;
     double _magicRed;

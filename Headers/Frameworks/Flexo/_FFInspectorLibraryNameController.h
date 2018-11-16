@@ -6,7 +6,7 @@
 
 #import <Flexo/_FFInspectorHeaderSubController.h>
 
-@class LKTextField, NSString;
+@class LKButton, LKTextField, NSStackView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _FFInspectorLibraryNameController : _FFInspectorHeaderSubController
@@ -14,13 +14,16 @@ __attribute__((visibility("hidden")))
     NSString *_libraryName;
     int _colorProcessingMode;
     LKTextField *_libraryNameField;
-    LKTextField *_libraryColorProcessingField;
+    LKTextField *_colorProcessingModeField;
+    LKButton *_modifyButton;
+    NSStackView *_leftStackView;
 }
 
+- (void)_showWarningPopover:(id)arg1;
 - (id)view;
-- (void)setLibraryColorProcessingMode:(int)arg1;
-- (void)_updateLibraryColorProcessingModeTextField;
-- (void)setLibraryName:(id)arg1;
+- (void)setModifyButtonAction:(SEL)arg1 target:(id)arg2;
+- (id)libraryName;
+- (void)setLibraryName:(id)arg1 colorProcessingMode:(int)arg2;
 - (void)_updateLibraryNameTextField;
 - (void)dealloc;
 - (id)init;

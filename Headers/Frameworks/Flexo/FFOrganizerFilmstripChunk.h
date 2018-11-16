@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     CALayer *_multiCamClipBadgeLayer;
     CALayer *_synchedClipBadgeLayer;
     CALayer *_psdClipBadgeLayer;
+    CALayer *_360ClipBadgeLayer;
     CALayer *_clipBadgeLayer;
     CALayer *_hfrClipBadgeLayer;
     CALayer *_durationLayer;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldShowMultiCamBadge;
     BOOL _shouldShowSynchedClipBadge;
     BOOL _shouldShowPSDBadge;
+    BOOL _shouldShow360Badge;
     BOOL _shouldShowHFRBadge;
     BOOL _shouldShowDuration;
     BOOL _inImportWindow;
@@ -72,6 +74,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL shouldShowDuration; // @synthesize shouldShowDuration=_shouldShowDuration;
 @property(nonatomic) BOOL shouldShowHFRBadge; // @synthesize shouldShowHFRBadge=_shouldShowHFRBadge;
 @property(nonatomic) BOOL shouldShowClipBadge; // @synthesize shouldShowClipBadge=_shouldShowClipBadge;
+@property(nonatomic) BOOL shouldShow360Badge; // @synthesize shouldShow360Badge=_shouldShow360Badge;
 @property(nonatomic) BOOL shouldShowPSDBadge; // @synthesize shouldShowPSDBadge=_shouldShowPSDBadge;
 @property(nonatomic) BOOL shouldShowSynchedClipBadge; // @synthesize shouldShowSynchedClipBadge=_shouldShowSynchedClipBadge;
 @property(nonatomic) BOOL shouldShowMultiCamBadge; // @synthesize shouldShowMultiCamBadge=_shouldShowMultiCamBadge;

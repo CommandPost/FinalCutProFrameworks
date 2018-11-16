@@ -6,13 +6,14 @@
 
 #import "NSObject.h"
 
-@class FFFilmstripCell, FFFilmstripLayer;
+@class FFFilmstripCell, FFFilmstripLayer, FFThumbnailRequest;
 
 @protocol FFFilmstripLayerDelegate <NSObject>
 - (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
 
 @optional
 - (BOOL)filmstripLayerShouldUseMinimumNonLinearSpacerWorkaroundForFilmstripLayer:(FFFilmstripLayer *)arg1;
+- (BOOL)filmstripLayer:(FFFilmstripLayer *)arg1 isThumbnailGenerationPausedForRequest:(FFThumbnailRequest *)arg2;
 - (int)thumbnailAudioOptionsForFilmstripLayer:(FFFilmstripLayer *)arg1;
 - (BOOL)filmstripLayerShouldHighlight:(FFFilmstripLayer *)arg1;
 - (BOOL)filmstripLayer:(FFFilmstripLayer *)arg1 shouldStretchCellsInRange:(CDStruct_e83c9415)arg2;

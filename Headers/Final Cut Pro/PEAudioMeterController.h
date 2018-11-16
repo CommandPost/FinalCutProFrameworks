@@ -26,6 +26,7 @@
 }
 
 @property(nonatomic) NSObject<PEAudioMeterControllerProtocol> *delegate; // @synthesize delegate=_delegate;
+- (void)audioPlaybackStateChanged:(id)arg1;
 - (void)setMeteringContext:(id)arg1;
 - (void)playbackStopped:(id)arg1;
 - (void)playbackStarted:(id)arg1;

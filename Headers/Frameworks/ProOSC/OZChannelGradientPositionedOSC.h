@@ -36,7 +36,7 @@
 - (BOOL)postRedisplayOnActivePartChange;
 - (void)drawWithDrawProperties:(id)arg1;
 - (void)draw;
-- (void)drawTags:(map_a68768bf)arg1 color:(BOOL)arg2 renderMode:(int)arg3 start:(const PCVector3_457fd1f0 *)arg4 end:(const PCVector3_457fd1f0 *)arg5 matrix:(const PCMatrix44Tmpl_e98c85ee *)arg6 state:(const struct OZRenderState *)arg7 direction:(PCVector2_79efa81a)arg8 perpendicular:(PCVector2_79efa81a)arg9 handle:(int *)arg10;
+- (void)drawTags:(map_fc34610a)arg1 color:(BOOL)arg2 renderMode:(int)arg3 start:(const PCVector3_457fd1f0 *)arg4 end:(const PCVector3_457fd1f0 *)arg5 matrix:(const PCMatrix44Tmpl_e98c85ee *)arg6 state:(const struct OZRenderState *)arg7 direction:(PCVector2_79efa81a)arg8 perpendicular:(PCVector2_79efa81a)arg9 handle:(int *)arg10;
 - (id)menuForEvent:(id)arg1;
 - (void)fillInterpolationMenu:(id)arg1 from:(struct OZChannelGradientFolder *)arg2 interpolation:(struct OZChannelEnum **)arg3 at:(double)arg4 time:(CDStruct_1b6d18a9)arg5 action:(SEL)arg6;
 - (void)setOpacityInterpolation:(id)arg1;

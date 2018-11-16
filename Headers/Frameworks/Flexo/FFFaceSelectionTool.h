@@ -32,9 +32,9 @@
 + (id)groups;
 + (void)initialize;
 @property(nonatomic) FFSwitch *effectSwitch; // @synthesize effectSwitch=_effectSwitch;
-@property(nonatomic) LKButton *acceptButton; // @synthesize acceptButton=_acceptButton;
-@property(nonatomic) LKButton *cancelButton; // @synthesize cancelButton=_cancelButton;
-@property(nonatomic) NSView *adjustmentToolbarView; // @synthesize adjustmentToolbarView=_adjustmentToolbarView;
+@property(retain, nonatomic) LKButton *acceptButton; // @synthesize acceptButton=_acceptButton;
+@property(retain, nonatomic) LKButton *cancelButton; // @synthesize cancelButton=_cancelButton;
+@property(retain, nonatomic) NSView *adjustmentToolbarView; // @synthesize adjustmentToolbarView=_adjustmentToolbarView;
 - (void)selectedItemsChanged:(id)arg1 forParentTool:(id)arg2;
 - (void)timeRateChangedForContext:(id)arg1;
 - (BOOL)_timeInRangeOfCurrentItems:(CDStruct_1b6d18a9)arg1;

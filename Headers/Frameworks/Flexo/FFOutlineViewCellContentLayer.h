@@ -6,9 +6,11 @@
 
 #import "CALayer.h"
 
-@class CATextLayer, FFOutlineView, FFOutlineViewCell, NSMutableSet;
+#import "CALayerDelegate.h"
 
-@interface FFOutlineViewCellContentLayer : CALayer
+@class CATextLayer, FFOutlineView, FFOutlineViewCell, NSMutableSet, NSString;
+
+@interface FFOutlineViewCellContentLayer : CALayer <CALayerDelegate>
 {
     CALayer *_imageLayer;
     CATextLayer *_textLayer;
@@ -40,6 +42,13 @@
 @property(readonly, nonatomic) FFOutlineViewCell *outlineViewCell;
 @property(readonly, nonatomic) FFOutlineView *outlineView;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property __weak FFOutlineViewCell *delegate; // @dynamic delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

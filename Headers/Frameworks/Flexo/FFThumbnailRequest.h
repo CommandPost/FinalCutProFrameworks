@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class CHChannelDouble, FFBackgroundTask, FFMD5AndOffset, FFProject, FFRoleColorScheme, NSColor, NSMutableArray, NSMutableSet, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>, NSString;
+@class CHChannelDouble, FFBackgroundTask, FFMD5AndOffset, FFProject, FFRoleColorScheme, NSColor, NSMutableArray, NSMutableSet, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>, NSString, NSValue;
 
 @interface FFThumbnailRequest : NSObject
 {
@@ -36,7 +36,7 @@
     BOOL _audioIsFullyValid;
     NSMutableArray *_completionBlocks;
     int _imageRequestState;
-    NSString *_libraryIdentifier;
+    NSValue *_libraryIdentifier;
     NSMutableSet *_assetIdentifiers;
     BOOL _highlighted;
     FFRoleColorScheme *_audioWaveformColorScheme;
@@ -48,6 +48,7 @@
 @property(nonatomic) long long roleColorSchemeVariant; // @synthesize roleColorSchemeVariant=_roleColorSchemeVariant;
 @property(retain, nonatomic) FFRoleColorScheme *audioWaveformColorScheme; // @synthesize audioWaveformColorScheme=_audioWaveformColorScheme;
 @property(readonly, nonatomic) int audioOptions; // @synthesize audioOptions=_audioOptions;
+@property(readonly, nonatomic) NSValue *libraryIdentifier; // @synthesize libraryIdentifier=_libraryIdentifier;
 @property(nonatomic) BOOL audioIsFullyValid; // @synthesize audioIsFullyValid=_audioIsFullyValid;
 @property(copy, nonatomic) CHChannelDouble *duckingChannel; // @synthesize duckingChannel=_duckingChannel;
 @property(copy, nonatomic) CHChannelDouble *volumeChannel; // @synthesize volumeChannel=_volumeChannel;
@@ -65,8 +66,6 @@
 @property(readonly, nonatomic) FFProject *project; // @synthesize project=_project;
 @property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
 - (id)assetIdentifiers;
-- (id)libraryIdentifier;
-- (void)_findLibraryAndAssetIdentifiers;
 - (BOOL)deferredOrCanceled;
 - (void)deferRequest;
 - (int)incrementAttemptCount;

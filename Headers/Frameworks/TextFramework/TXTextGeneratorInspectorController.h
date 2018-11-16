@@ -17,7 +17,7 @@
 - (id)newGeneratorControllerWithSceneNode:(struct OZSceneNode *)arg1;
 - (void)switchPane:(id)arg1;
 - (void)dealloc;
-- (id)initWithSceneNodes:(list_63a35edb *)arg1 viewCtlrDelegate:(id)arg2;
+- (id)initWithSceneNodes:(list_752fd9b9 *)arg1 viewCtlrDelegate:(id)arg2;
 
 @end
 

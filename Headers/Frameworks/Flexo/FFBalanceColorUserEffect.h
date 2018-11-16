@@ -6,15 +6,27 @@
 
 #import <Flexo/FFBalanceColorBaseEffect.h>
 
+@class CHChannelEnum;
+
 __attribute__((visibility("hidden")))
 @interface FFBalanceColorUserEffect : FFBalanceColorBaseEffect
 {
+    CHChannelEnum *_balanceMethodChannel;
+    long long _eyedropperButtonState;
 }
 
 + (id)effectID;
 + (void)registerEffects;
++ (id)copyClassDescription;
 - (BOOL)isBalanceColorUserEffect;
 - (void)createChannelsInFolder:(id)arg1;
+- (id)balanceMethodChannel;
+- (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
+- (void)channelParameterChanged:(id)arg1;
+- (id)currentlySelectedInnnerOuterEffect;
+- (BOOL)isColorTabEffect;
+@property long long eyedropperButtonState;
+- (void)dealloc;
 
 @end
 

@@ -11,15 +11,16 @@
 @interface TLKItemLayerContentsOperation : NSOperation
 {
     PCChangeLog *_inputChangeLog;
+    PCChangeLog *_outputChangeLog;
     TLKTimelineView *_timelineView;
 }
 
 @property(nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
+@property(readonly, nonatomic) PCChangeLog *outputChangeLog; // @synthesize outputChangeLog=_outputChangeLog;
 @property(readonly, nonatomic) PCChangeLog *inputChangeLog; // @synthesize inputChangeLog=_inputChangeLog;
 - (void)main;
 - (id)modifiedItemFragments;
 - (void)_findThroughEditDependenciesForItems:(id)arg1 intoSet:(id)arg2;
-- (void)_updateItemLayersFromModifiedItemFragments:(id)arg1;
 - (void)dealloc;
 - (id)initWithChangeLog:(id)arg1 timelineView:(id)arg2;
 

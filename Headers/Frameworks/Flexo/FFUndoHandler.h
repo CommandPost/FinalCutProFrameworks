@@ -71,6 +71,7 @@
 - (void)_transactionCleanup;
 - (void)_transactionPrepare;
 - (unsigned long long)_actionLevel;
+- (void)_actionStackRemoveLast;
 - (id)_actionStack;
 - (void)assertNoUndoScope;
 - (id)undoManager;

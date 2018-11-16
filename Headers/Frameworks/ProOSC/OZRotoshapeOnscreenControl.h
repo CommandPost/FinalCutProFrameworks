@@ -106,9 +106,9 @@
 - (void)buildCurveMenu;
 - (void)buildPointMenu;
 - (void)clearSelectionInAllOSC;
-- (list_bf350f3c *)getSelection;
-- (list_bf350f3c *)getPreviousSelection;
-- (list_bf350f3c *)getCurrentSelection;
+- (list_2e9945f8 *)getSelection;
+- (list_2e9945f8 *)getPreviousSelection;
+- (list_2e9945f8 *)getCurrentSelection;
 - (BOOL)didHitOtherShapeVertex;
 - (BOOL)activeOnFullCanvas:(id)arg1;
 - (BOOL)processOSCSpecificHits:(unsigned int *)arg1 selection:(struct OZShapeOnScreenSelection *)arg2;

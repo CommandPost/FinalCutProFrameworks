@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)shouldAddDisclosureButton;
+- (int)shouldAddDisclosureButton;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 usingResetBlock:(CDUnknownBlockType)arg3;
 
 @end

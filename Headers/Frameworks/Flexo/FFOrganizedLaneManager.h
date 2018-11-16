@@ -86,7 +86,7 @@
 - (void)setFocusedState:(int)arg1 forOrganizedLane:(id)arg2;
 - (int)focusedStateForOrganizedLane:(id)arg1;
 - (BOOL)canFocusOrganizedLane:(id)arg1;
-- (BOOL)_canReorderOrganizedLane:(id)arg1;
+- (BOOL)canMoveOrganizedLane:(id)arg1;
 - (int)typeForOrganizedLane:(id)arg1;
 - (id)childLanesForOrganizedLane:(id)arg1;
 - (id)parentLaneForOrganizedLane:(id)arg1;

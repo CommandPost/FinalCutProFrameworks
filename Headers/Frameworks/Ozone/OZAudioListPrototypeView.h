@@ -17,6 +17,7 @@
 - (void)drawRect:(struct CGRect)arg1;
 - (void)viewWillDraw;
 - (id)hitTest:(struct CGPoint)arg1;
+- (void)dealloc;
 
 @end
 

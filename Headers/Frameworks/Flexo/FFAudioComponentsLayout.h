@@ -13,8 +13,8 @@
 
 @interface FFAudioComponentsLayout : FFBaseDSObject <NSCoding, NSCopying>
 {
-    unsigned int m_numChannels;
-    NSArray *m_layoutItems;
+    unsigned int _numChannels;
+    NSArray *_layoutItems;
 }
 
 + (BOOL)isRoutingMapDefault:(id)arg1 forNumChannels:(unsigned int)arg2;
@@ -56,12 +56,13 @@
 + (BOOL)supportsComponentsLayouts:(id)arg1;
 + (BOOL)isSupportedPrimordialClip:(id)arg1;
 + (BOOL)supportsAudioComponents:(id)arg1;
++ (void)update_preserveCurrentDefaultAudioComponentsLayout:(id)arg1 forCatalogVersion:(int)arg2;
 + (void)update_migrateLibraryToRoleComponents:(id)arg1 modalDocumentSession:(struct NSObject *)arg2;
 + (BOOL)update_demandLayoutMapForObject:(id)arg1;
 + (BOOL)update_createAudioComponentsLayoutMapForObject:(id)arg1;
 + (BOOL)update_setAudioComponentsLayoutMap:(id)arg1 forObject:(id)arg2;
-@property(readonly, nonatomic) NSArray *layoutItems; // @synthesize layoutItems=m_layoutItems;
-@property(readonly, nonatomic) unsigned int numChannels; // @synthesize numChannels=m_numChannels;
+@property(readonly, nonatomic) NSArray *layoutItems; // @synthesize layoutItems=_layoutItems;
+@property(readonly, nonatomic) unsigned int numChannels; // @synthesize numChannels=_numChannels;
 - (void)removeObjectFromLayoutItemsAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inLayoutItemsAtIndex:(unsigned long long)arg2;
 - (id)description;
@@ -70,6 +71,7 @@
 - (unsigned int)numOutputChannels:(unsigned int)arg1;
 - (unsigned int)numOutputChannels;
 - (void)setLayoutItems:(id)arg1;
+- (void)_setLayoutItems:(id)arg1 resetEquivalenceIDs:(BOOL)arg2;
 - (id)copyWithReplacementLayoutItems:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

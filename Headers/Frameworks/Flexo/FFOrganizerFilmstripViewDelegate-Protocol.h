@@ -6,7 +6,7 @@
 
 #import "FFOrganizerImportDropController.h"
 
-@class FFAnchoredTimeMarker, FFOrganizerFilmstripView, FigTimeRangeAndObject, LKViewModule, NSArray, NSDictionary, NSMenu, NSObject<FFOrganizerMarkerEditorDelegate>, NSObject<FFOrganizerSkimmingDelegate>, NSPasteboard, NSString, NSTreeNode;
+@class FFAnchoredSequence, FFAnchoredTimeMarker, FFOrganizerFilmstripView, FigTimeRangeAndObject, LKViewModule, NSArray, NSDictionary, NSMenu, NSObject<FFOrganizerMarkerEditorDelegate>, NSObject<FFOrganizerSkimmingDelegate>, NSPasteboard, NSString, NSTreeNode;
 
 @protocol FFOrganizerFilmstripViewDelegate <FFOrganizerImportDropController>
 - (BOOL)shouldAlwaysPlacePlayhead;
@@ -50,6 +50,7 @@
 - (NSArray *)filterRanges:(NSArray *)arg1;
 - (NSArray *)newSidebarRanges;
 - (NSArray *)unfilteredRanges;
+- (BOOL)isPersistentPlayheadAllowedOnSequence:(FFAnchoredSequence *)arg1;
 - (BOOL)shouldDisableRangeSelectionForObject:(id)arg1;
 - (NSTreeNode *)fileSystemRootNode;
 - (NSString *)defaultEditDurationString;

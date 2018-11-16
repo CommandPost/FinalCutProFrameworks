@@ -57,6 +57,7 @@
 + (void)closeEditor;
 + (BOOL)isEditorVisible;
 + (BOOL)isEditorKey;
++ (id)acceptedPasteboardTypes;
 + (void)_setSharedEditor:(id)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void)windowDidBecomeKey:(id)arg1;

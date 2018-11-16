@@ -122,7 +122,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (CDStruct_198678f7)_figTimeFromOldTimeValue:(unsigned long long)arg1 rate:(unsigned long long)arg2 isNegative:(BOOL)arg3;
-- (int)_bestTimeScale;
+- (unsigned long long)_bestTimeScale;
 - (int)_timeScaleForTimeRate:(unsigned long long)arg1;
 - (void)privateNormalizeSecondsValue;
 

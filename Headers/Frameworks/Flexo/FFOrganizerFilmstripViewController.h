@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property BOOL selectedRangesObserverAttached; // @synthesize selectedRangesObserverAttached=_selectedRangesObserverAttached;
-@property(retain) FFOrganizerFilmstripView *filmstripView; // @synthesize filmstripView=_filmstripView;
+@property(readonly) FFOrganizerFilmstripView *filmstripView; // @synthesize filmstripView=_filmstripView;
 - (void)performEditAction;
 - (BOOL)editActionAllowed;
 - (void)performPlayheadButton1Action;

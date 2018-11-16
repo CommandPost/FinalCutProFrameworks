@@ -52,7 +52,7 @@
 @property CDStruct_1b6d18a9 sampleDuration; // @synthesize sampleDuration=_sampleDuration;
 @property CDStruct_1b6d18a9 end; // @synthesize end=_end;
 @property CDStruct_1b6d18a9 start; // @synthesize start=_start;
-@property id <FFMultiAngleItemProtocol> item; // @synthesize item=_item;
+@property(readonly) id <FFMultiAngleItemProtocol> item; // @synthesize item=_item;
 - (CDStruct_1b6d18a9)clipTimeToWallClockTime:(CDStruct_1b6d18a9)arg1 managerDropTC:(BOOL)arg2;
 - (CDStruct_1b6d18a9)wallClockTimeToClipTime:(CDStruct_1b6d18a9)arg1 managerDropTC:(BOOL)arg2;
 - (int)dropFramesInTime:(CDStruct_1b6d18a9)arg1 ofNominalRate:(int)arg2;

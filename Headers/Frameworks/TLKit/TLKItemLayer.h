@@ -9,7 +9,7 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class CALayer, NSArray, NSColor, NSMutableArray, NSString, TLKAbstractEdgeSelectionLayer, TLKAbstractItemBackgroundLayer, TLKAbstractItemSelectionLayer, TLKFilmstripLayer, TLKItemContentsLayer, TLKPrecisionEditorTransitionClipLayer, TLKPrecisionEditorUnusedMediaOverlayLayer, TLKRoundedSideLayer, TLKTextLayer;
+@class CALayer, CIFilter, NSArray, NSColor, NSMutableArray, NSString, TLKAbstractEdgeSelectionLayer, TLKAbstractItemBackgroundLayer, TLKAbstractItemSelectionLayer, TLKFilmstripLayer, TLKItemContentsLayer, TLKPrecisionEditorTransitionClipLayer, TLKPrecisionEditorUnusedMediaOverlayLayer, TLKRoundedSideLayer, TLKTextLayer;
 
 @interface TLKItemLayer : TLKTimelineLayer <TLKAccessibilityProtocol, TLKPartInfo>
 {
@@ -42,6 +42,7 @@
     double _titleHeight;
     double _filmstripHeight;
     double _waveformHeight;
+    CIFilter *_textLayerInvertFilter;
     struct NSEdgeInsets _videoFilmstripEdgeInsets;
 }
 
@@ -51,6 +52,7 @@
 + (void)setWantsTitlesOnTransitions:(BOOL)arg1;
 + (struct CGRect)frameForItem:(struct CGRect)arg1 withType:(int)arg2 andContainmentType:(int)arg3;
 @property(readonly) TLKAbstractItemSelectionLayer *selectionLayer; // @synthesize selectionLayer=_selectionLayer;
+@property(retain, nonatomic) CIFilter *textLayerInvertFilter; // @synthesize textLayerInvertFilter=_textLayerInvertFilter;
 @property(readonly) double waveformHeight; // @synthesize waveformHeight=_waveformHeight;
 @property(readonly) double filmstripHeight; // @synthesize filmstripHeight=_filmstripHeight;
 @property(readonly) double titleHeight; // @synthesize titleHeight=_titleHeight;
@@ -64,7 +66,6 @@
 @property NSColor *textColor;
 - (void)_debugShowContentLayersIfNeeded;
 - (BOOL)layoutRangeItemLayers;
-- (void)updateTextLayerWithBadgeAreaBounds:(struct CGRect)arg1 andFilters:(id)arg2;
 - (void)layoutTextBadges;
 - (id)contextMenu;
 - (id)partIdentifier;

@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+#import "CAAnimationDelegate.h"
+
 @class CKSetting, CKSource, LKTextField, NSString, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFConsumerShareInfoController : NSObject
+@interface FFConsumerShareInfoController : NSObject <CAAnimationDelegate>
 {
     CKSource *_source;
     CKSetting *_setting;
@@ -50,6 +52,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *clipDuration;
 - (void)dealloc;
 - (void)awakeFromNib;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

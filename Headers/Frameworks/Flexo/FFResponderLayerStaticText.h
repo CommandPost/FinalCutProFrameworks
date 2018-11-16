@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     CATextLayer *_textLayer;
 }
 
-@property(retain, nonatomic) CATextLayer *textLayer; // @synthesize textLayer=_textLayer;
+@property(readonly, nonatomic) CATextLayer *textLayer; // @synthesize textLayer=_textLayer;
 - (BOOL)accessibilityIsIgnored;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
@@ -30,7 +30,9 @@ __attribute__((visibility("hidden")))
 - (void)sizeToFit;
 - (id)_nsFont;
 - (id)_nsString;
+- (void)setTextLayer:(id)arg1;
 - (void)setContentsScale:(double)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

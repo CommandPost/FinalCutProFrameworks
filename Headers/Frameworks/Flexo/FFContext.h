@@ -82,6 +82,7 @@
 - (BOOL)deferSelectionOSCUpdate;
 - (void)setShowMagicFrame:(BOOL)arg1;
 - (BOOL)showMagicFrame;
+- (void)notifyPlayCompletedWithHMDDrops:(id)arg1;
 - (void)notifyPlayCompletedWithDrops:(id)arg1;
 - (void)notifyStoppedDueToDroppedFrame:(id)arg1;
 - (BOOL)stopOnDroppedFrame;

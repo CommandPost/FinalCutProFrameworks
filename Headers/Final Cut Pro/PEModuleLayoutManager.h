@@ -23,6 +23,7 @@
 - (void)applyModuleLayout:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+- (void)_PEModuleLayoutManager_commonInit;
 
 @end
 

@@ -120,6 +120,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithFileURL:(id)arg1 media:(id)arg2 repType:(id)arg3 manageFileType:(int)arg4 project:(id)arg5;
 - (id)initWithFileURL:(id)arg1 media:(id)arg2 repType:(id)arg3 manageFileType:(int)arg4 project:(id)arg5 showRepAsMissing:(BOOL)arg6;
+- (void)setFF360Props:(id)arg1;
 - (id)_projectRelativePathForURL:(id)arg1 recommendedName:(id)arg2 project:(id)arg3 usingExternalMedia:(BOOL)arg4;
 - (void)_checkCreationDate:(id)arg1;
 - (void)_updateFileSystemRepForProject:(id)arg1 originalURL:(id)arg2 copyQueued:(char *)arg3 withLock:(BOOL)arg4;

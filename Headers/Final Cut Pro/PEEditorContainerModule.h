@@ -77,16 +77,18 @@
     NSLayoutConstraint *_timelineOptionsButtonYConstraint;
     NSLayoutConstraint *_mediaBrowserPaletteYConstraint;
     BOOL _duringLoadEditorForLastOpenSequence;
-    LKTimecodeFormatter *_timecodeFormatter;
     NSDictionary *_stringAttributes;
     NSDictionary *_monoAttributes;
+    struct PCProcrastinatedDispatch_t _procrastinatedDiamondUpdate;
+    LKTimecodeFormatter *_timecodeFormatter;
 }
 
 + (id)tools;
-@property FFEditorModule *editorModule; // @synthesize editorModule=_editorModule;
-@property(retain) PEAudioMeterModule *audioMeterModule; // @synthesize audioMeterModule=_audioMeterModule;
-@property(retain) PEMediaBrowserContainerModule *browserModule; // @synthesize browserModule=_browserModule;
-@property(retain) PEDataListContainerModule *timelineIndex; // @synthesize timelineIndex=_timelineIndex;
+@property(retain, nonatomic) LKTimecodeFormatter *timecodeFormatter; // @synthesize timecodeFormatter=_timecodeFormatter;
+@property(retain, nonatomic) FFEditorModule *editorModule; // @synthesize editorModule=_editorModule;
+@property(retain, nonatomic) PEAudioMeterModule *audioMeterModule; // @synthesize audioMeterModule=_audioMeterModule;
+@property(retain, nonatomic) PEMediaBrowserContainerModule *browserModule; // @synthesize browserModule=_browserModule;
+@property(retain, nonatomic) PEDataListContainerModule *timelineIndex; // @synthesize timelineIndex=_timelineIndex;
 - (void)playReverse:(id)arg1;
 - (void)playToOut:(id)arg1;
 - (void)playInToOut:(id)arg1;
@@ -103,6 +105,7 @@
 - (void)_pauseSkimming;
 - (void)_forwardSelectorToPlayer:(SEL)arg1 withObject:(id)arg2;
 - (id)contentViewMenuSegmentedControlAndIndex:(long long *)arg1;
+- (void)_updateIndexButtonDiamondIndicator;
 - (void)_updateWindowControllerDocument;
 - (void)_setProjectRelatedControlsEnabled:(BOOL)arg1;
 - (id)_timelineView;
@@ -152,9 +155,11 @@
 - (void)stopSkimmingForOwner:(id)arg1;
 - (BOOL)replaceSkimmedObject:(struct NSObject *)arg1 context:(id)arg2 withSkimmable:(struct NSObject *)arg3 context:(id)arg4 effectCount:(long long)arg5 allowPlayback:(BOOL)arg6 controlCanvas:(BOOL)arg7 showAngles:(BOOL)arg8 owner:(id)arg9;
 - (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 controlCanvas:(BOOL)arg5 showAngles:(BOOL)arg6 owner:(id)arg7;
+- (void)_storyPresentationChanged:(id)arg1;
+- (void)_stopObservingStoryPresentation;
+- (void)_startObservingStoryPresentation;
 - (void)_assetsChangedNotification:(id)arg1;
 - (void)_soloChangedNotification:(id)arg1;
-- (void)_timelineIndexStateChangedNotification:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_updateOpenSequenceIdentifier;
 - (void)_updateSoloState:(id)arg1;
@@ -212,7 +217,9 @@
 - (void)updateNameDurationField;
 - (void)focusChangedUpdateTimelineFooterString;
 - (void)updateActiveEditorModuleLabels:(id)arg1;
-- (id)footerLabelStringIncludingSelection;
+- (void)_initializeStringAttributesIfNeeded;
+- (void)_loadTimecodeFormatterIfNeeded;
+- (id)_sequenceAndSelectionDurationString;
 - (BOOL)isShortTitleStringWithDuration:(id)arg1;
 - (id)stringForFigTime:(CDStruct_1b6d18a9)arg1 sequence:(id)arg2 formatter:(id)arg3;
 - (id)stripLeadingZerosFromTimeString:(id)arg1;
@@ -235,7 +242,7 @@
 - (void)toggleAudioScrubbing:(id)arg1;
 - (void)toggleEditAccessoryPanel:(id)arg1;
 - (id)localModuleActions;
-@property(readonly) FFAnchoredTimelineModule *timelineModule;
+@property(readonly, nonatomic) FFAnchoredTimelineModule *timelineModule;
 - (void)_setBrowserHidden:(BOOL)arg1;
 - (BOOL)_browserHidden;
 - (void)_setTimelineIndexHidden:(BOOL)arg1;
@@ -243,6 +250,7 @@
 - (long long)sortView:(id)arg1 againstView:(id)arg2;
 - (BOOL)unhideSubmodule:(id)arg1;
 - (BOOL)hideSubmodule:(id)arg1;
+- (void)_updateSplitViewConstraints;
 - (BOOL)isSubmoduleVisible:(id)arg1;
 - (BOOL)isSubmoduleHidden:(id)arg1;
 - (id)visibleSubmodule;

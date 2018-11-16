@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     int _essenceType;
     int _codecType;
     long long _commonPacketUnits;
-    struct vector<HPMChunkEntry, std::__1::allocator<HPMChunkEntry>> *_index;
+    vector_40fa464a *_index;
     struct MXKey *_sourcePackID;
     int _wrapping;
     unsigned int _trackID;

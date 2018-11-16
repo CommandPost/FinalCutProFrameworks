@@ -8,12 +8,12 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBackgroundTask, FFSegmentStoreRef;
+@class FFBackgroundTask, FFSegmentStoreRef, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectLibraryThumbnailRequestManager : NSObject <FFBackgroundTaskTarget>
 {
-    struct FFLocklessQueue<FFEffectLibraryItemView *> *_requests;
+    NSMutableArray *_requests;
     FFBackgroundTask *_bTask;
     unsigned int _progressNumProcessed;
     unsigned int _progressTotal;

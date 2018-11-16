@@ -20,11 +20,11 @@ __attribute__((visibility("hidden")))
 - (void)createChannelsInFolder:(id)arg1;
 - (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2 pixelTransform:(id)arg3;
 - (void)modifyImageTransform:(id)arg1 andImageSpaceBounds:(struct CGRect *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
-- (void)calcTransform:(PCMatrix44Tmpl_93ed1289 *)arg1 withBounds:(struct CGRect)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
+- (void)calcTransform:(PCMatrix44Tmpl_e98c85ee *)arg1 withBounds:(struct CGRect)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (BOOL)isAnimated;
 - (struct CGRect)getFourCornerBounds:(struct CGRect)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)getFourCornerTransform:(PCMatrix44Tmpl_93ed1289 *)arg1 withBounds:(struct CGRect)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)getFourCornerTransform:(PCMatrix44Tmpl_e98c85ee *)arg1 withBounds:(struct CGRect)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (struct HGNode *)newNodeForContext:(id)arg1;
 - (id)fourCornerChannel;
 - (BOOL)writeDefaultChannels;

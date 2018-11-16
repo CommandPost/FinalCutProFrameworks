@@ -31,6 +31,7 @@
 + (id)copyClassDescription;
 + (id)keyPathsForValuesAffectingItemDisplayName;
 + (BOOL)compareFilter:(id)arg1 to:(id)arg2;
+- (void)update_removeVideoMainRolesFromRoleFilters;
 - (void)update_rolesPerLibrary;
 - (id)library;
 - (void)reassignRoles:(id)arg1 renameExistingRoles:(id)arg2 changeColorOfExistingRoles:(id)arg3 removeRolesWithUIDs:(id)arg4;

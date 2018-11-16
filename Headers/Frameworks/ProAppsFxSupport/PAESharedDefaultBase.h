@@ -28,6 +28,7 @@
 - (void)transform:(HGRef_0de1db7e *)arg1 fromImage:(id)arg2 toImage:(id)arg3 fit:(BOOL)arg4;
 - (HGRef_0de1db7e)smear:(HGRef_0de1db7e)arg1 fromImage:(id)arg2 toImage:(id)arg3;
 - (HGRef_0de1db7e)cropFromImage:(id)arg1 toImage:(id)arg2;
+- (void)crop:(HGRef_0de1db7e *)arg1 withRect:(PCRect_7f811c82)arg2;
 - (void)crop:(HGRef_0de1db7e *)arg1 fromImage:(id)arg2 toImage:(id)arg3;
 - (PCRect_7f811c82)getCropRectFromImage:(id)arg1 toImage:(id)arg2;
 - (PCRect_7f811c82)getImageBoundary:(id)arg1;

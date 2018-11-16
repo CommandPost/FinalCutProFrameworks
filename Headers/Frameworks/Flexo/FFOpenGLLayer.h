@@ -17,7 +17,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)shouldRenderOnBackgroundThread;
-- (void)setFrame:(struct CGRect)arg1;
+- (void)_frameUpdated:(struct CGRect)arg1 oldFrame:(struct CGRect)arg2;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setPosition:(struct CGPoint)arg1;
 - (void)setPlayerView:(id)arg1;
 - (int)virtualScreen;
 - (void)setVirtualScreen:(int)arg1;

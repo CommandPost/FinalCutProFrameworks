@@ -17,7 +17,7 @@
     NSURL *_baseURL;
     FFTheaterStore *_store;
     NSUndoManager *_undoManager;
-    struct FFProcrastinatedDispatch_t _procrastinatedSave;
+    struct PCProcrastinatedDispatch_t _procrastinatedSave;
     NSOperationQueue *_presenterQueue;
     BOOL _isUbiquitous;
     FFLibraryDocument *_theaterDocument;

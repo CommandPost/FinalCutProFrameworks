@@ -49,8 +49,8 @@
 - (_Bool)isComplete;
 - (_Bool)bypassComplete;
 - (_Bool)waitForCompletionBeforeDate:(id)arg1;
-- (id)newRequestedOutput:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 filterQuality:(int)arg5 dithered:(BOOL)arg6 background:(int)arg7 zebraMode:(unsigned int)arg8 zebraEpsilons:(struct FFRangeCheckEpsilonValues *)arg9 workingSpace:(int)arg10 clampColorSpace:(struct CGColorSpace *)arg11;
-- (id)_newImgWithBackground:(int)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 filterQuality:(int)arg5 workingSpace:(int)arg6;
+- (id)newRequestedOutput:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 scalingInfo:(struct FFAsyncFanoutScalingInfo)arg5 dithered:(BOOL)arg6 background:(int)arg7 zebraMode:(unsigned int)arg8 zebraEpsilons:(struct FFRangeCheckEpsilonValues *)arg9 workingSpace:(int)arg10 clampColorSpace:(struct CGColorSpace *)arg11;
+- (id)_newImgWithBackground:(int)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 scalingInfo:(struct FFAsyncFanoutScalingInfo)arg5 workingSpace:(int)arg6;
 - (id)_findExistingOutput:(id)arg1 location:(int)arg2 roi:(struct HGRect)arg3 pixelTransform:(id)arg4 dithered:(BOOL)arg5 background:(int)arg6 zebraMode:(unsigned int)arg7;
 - (id)description;
 - (void)dealloc;

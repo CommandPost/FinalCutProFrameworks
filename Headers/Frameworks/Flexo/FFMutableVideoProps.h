@@ -12,6 +12,7 @@
 
 - (BOOL)canCacheMD5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setCameraMode:(int)arg1;
 - (void)setPaspH:(int)arg1 paspV:(int)arg2 updateMatrices:(BOOL)arg3;
 - (void)setSixteenth:(id)arg1;
 - (void)setQuarter:(id)arg1;

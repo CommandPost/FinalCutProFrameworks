@@ -26,11 +26,14 @@
     struct OZTimeMarkerSet *_pInputMarkers;
     struct OZTimeMarkerSet *_pOutputMarkers;
     const struct OZTimeMarker *_pCurrentMarker;
+    const struct PCTimeRange *_pRange;
     struct OZDocument *_pDocument;
 }
 
 + (void)openWithRoot:(struct OZChannelObjectRoot *)arg1 currentMarker:(const struct OZTimeMarker *)arg2 range:(const struct PCTimeRange *)arg3 document:(struct OZDocument *)arg4;
 - (void)windowWillClose:(id)arg1;
+- (void)updateValidDuration:(_Bool)arg1;
+- (void)updateValidTimeRange:(_Bool)arg1;
 - (void)checkButtonEnables;
 - (void)copyCurrentMarkerToPanel;
 - (void)copyPanelToCurrentMarker;

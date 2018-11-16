@@ -11,7 +11,7 @@
 @interface LKCursorCache : NSObject
 {
     NSMutableDictionary *_cache;
-    int _cacheLock;
+    struct os_unfair_lock_s _cacheLock;
 }
 
 - (void)setCursor:(id)arg1 forKey:(id)arg2;

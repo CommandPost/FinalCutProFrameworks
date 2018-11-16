@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)newWrapTextArray:(id)arg1 textAttributes:(id)arg2 textRectWidth:(double)arg3 playerView:(id)arg4;
 + (void)drawImage:(id)arg1 intoGLContext:(struct _CGLContextObject *)arg2 atPoint:(struct CGPoint)arg3;
 + (void)initialize;
 + (void)registerForNSUD:(id)arg1;

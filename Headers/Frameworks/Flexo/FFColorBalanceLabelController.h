@@ -6,13 +6,17 @@
 
 #import <Flexo/FFColorBaseLabelController.h>
 
-@class LKButton, OZLabelText, OZViewCtlrRoot;
+#import "FFColorSelectionOSCDelegate.h"
+#import "FFModalToolDelegate.h"
+
+@class LKButton, NSString, OZLabelText, OZViewCtlrRoot;
 
 __attribute__((visibility("hidden")))
-@interface FFColorBalanceLabelController : FFColorBaseLabelController
+@interface FFColorBalanceLabelController : FFColorBaseLabelController <FFModalToolDelegate, FFColorSelectionOSCDelegate>
 {
     LKButton *_toggleButton;
     OZLabelText *_labelText;
+    LKButton *_eyeDropperButton;
     OZViewCtlrRoot *_observedControllerRoot;
     BOOL _allMediaIsAvailable;
     float _labelWidth;
@@ -21,12 +25,34 @@ __attribute__((visibility("hidden")))
 - (BOOL)isUserBalanceEffectEnabled;
 - (id)checkMediaAvailability;
 - (void)assetInvalidated:(id)arg1;
+- (id)stringForLabel;
 - (void)performBalanceOrToggle:(id)arg1;
+- (void)colorSelectionOSC:(id)arg1 didModifyAdjustmentsForToolClass:(Class)arg2;
+- (void)colorSelectionOSC:(id)arg1 willModifyAdjustmentsForToolClass:(Class)arg2;
+- (void)modifyAdjustmentsWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 bufferData:(char *)arg4 bufferWidth:(double)arg5 bufferHeight:(double)arg6 bytesPerRow:(unsigned int)arg7;
+- (id)effect;
+- (long long)effectCountForReference;
+- (void)modalTool:(id)arg1 selectedItemsChanged:(id)arg2;
+- (void)willResignModalTool:(id)arg1;
+- (id)modalTool:(id)arg1 handleFilteredEvent:(id)arg2;
+- (void)modalTool:(id)arg1 willUndoRedoWithNotification:(id)arg2;
+- (void)getEyeDropperTool:(id)arg1;
+- (void)setEyeDropperState:(long long)arg1;
+- (void)_cancelTools;
+- (id)getBalanceEffect;
 - (float)suggestedMaxLabelWidth;
 - (void)update;
 - (void)didBuildUI;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)_balanceEffects;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+@property(readonly, getter=wantsSaturatedResult) BOOL wantsSaturatedResult;
 
 @end
 

@@ -10,9 +10,9 @@
 
 @interface OZShapeOSC : POOnScreenControl
 {
-    list_bf350f3c *_previousSelection;
-    list_bf350f3c *_currentSelection;
-    list_bf350f3c *_selection;
+    list_2e9945f8 *_previousSelection;
+    list_2e9945f8 *_currentSelection;
+    list_2e9945f8 *_selection;
     struct OZShape *_shape;
     int _numHits;
     unsigned int _buffer[8192];
@@ -76,9 +76,9 @@
 - (void)clearSelection;
 - (void)clearPreviousSelection;
 - (void)clearCurrentSelection;
-- (list_bf350f3c *)getSelection;
-- (list_bf350f3c *)getCurrentSelection;
-- (void)cleanSelection:(list_bf350f3c *)arg1;
+- (list_2e9945f8 *)getSelection;
+- (list_2e9945f8 *)getCurrentSelection;
+- (void)cleanSelection:(list_2e9945f8 *)arg1;
 - (void)select:(id)arg1;
 - (int)hitCheck:(id)arg1;
 - (BOOL)activeOnFullCanvas:(id)arg1;

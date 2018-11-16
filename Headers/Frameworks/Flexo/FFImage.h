@@ -20,6 +20,7 @@
     NSMutableDictionary *_dict;
 }
 
++ (id)newStereoEquirect:(id)arg1 rightEye:(id)arg2 cameraMode:(int)arg3 downstreamPT:(id)arg4;
 + (id)newFrameAtLocation:(int)arg1 withField1:(id)arg2 field2:(id)arg3 fieldDominance:(int)arg4 framePixelTransform:(id)arg5;
 + (_Bool)isYdownPixelTransform:(id)arg1;
 + (void)allowExtractMultipleHGNodesForUseInSameGraphOnly:(CDUnknownBlockType)arg1;
@@ -31,10 +32,14 @@
 + (id)newPrimaryBlocksTestImage:(struct CGRect)arg1 pf:(id)arg2 cs:(struct CGColorSpace *)arg3;
 + (id)newImageFromTestColor_u64:(unsigned long long)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)new2vuyImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6;
-+ (id)new420ImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6;
++ (id)new420ImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6 style:(id)arg7;
++ (id)newHG420ImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6 style:(id)arg7;
++ (id)newCV420ImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6;
 + (id)newImageFromTestColor:(unsigned int)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)newImageFromTestColor:(unsigned int)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 markAsStraight:(_Bool)arg5;
 + (id)newImageFromTestColor:(unsigned int)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 markAsStraight:(_Bool)arg5 markAsNeedingClamp:(_Bool)arg6;
+- (id)newZeroZeroBasedImage;
+- (id)newShiftedCroppedImage:(struct CGRect)arg1;
 - (struct CGRect)updatePixelSpaceBounds:(struct CGRect)arg1 toPixelTransform:(id)arg2;
 - (unsigned long long)approximateMemoryUsage;
 - (BOOL)dumpImage;
@@ -74,11 +79,14 @@
 - (void)dealloc;
 - (id)initWithRepresentation:(id)arg1;
 - (struct HGNode *)newRangeCheckNodeForMode:(unsigned int)arg1 withFilterQuality:(int)arg2 workingSpace:(int)arg3 epsilonValues:(struct FFRangeCheckEpsilonValues *)arg4;
+- (id)newFFImageWithUpdatedPT:(id)arg1 psb:(struct CGRect)arg2 field:(unsigned int)arg3;
+- (id)newTextureWrappedImageWithMode:(int)arg1;
 - (id)newTextureWrappedImage;
 - (id)newCroppedImage:(struct CGRect)arg1;
 - (struct HGNode *)newHGNodeWithBackground:(struct CGRect)arg1 bgColor:(id)arg2 compositingFormat:(id)arg3;
 - (struct HGNode *)newHGNodeWithPreTransformAndCropInFormat:(id)arg1 pixelTransform:(id)arg2 filterQuality:(int)arg3 preTransform:(id)arg4 cropRect:(struct CGRect)arg5 workingSpace:(int)arg6;
 - (struct HGNode *)newLazyHGNodeWithPT:(id)arg1 workingSpace:(int)arg2 filterQuality:(int)arg3 filterToField:(BOOL)arg4 retPF:(id *)arg5 retCS:(struct CGColorSpace **)arg6;
+- (struct HGNode *)newLazyHGNodeRetPF:(id *)arg1 retCS:(struct CGColorSpace **)arg2;
 - (struct HGNode *)newUnmodifiedHGNodeRetPF:(id *)arg1 retCS:(struct CGColorSpace **)arg2;
 - (struct HGNode *)newUnscaledHGNodeInFormat:(id)arg1;
 - (struct HGNode *)newLazyHGNodeWithPT:(id)arg1 workingSpace:(int)arg2 retPF:(id *)arg3 retCS:(struct CGColorSpace **)arg4;
@@ -105,7 +113,9 @@
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1 origin:(struct CGPoint)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 overrideAlphaInfo:(int)arg5;
 - (id)initWithFFTextureBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
 - (id)initCacheNodeWithImage:(id)arg1 locationHint:(int)arg2 cacheMode:(unsigned int)arg3 md5:(CDStruct_bdcb2b0d)arg4 offset:(long long)arg5 cacheFmt:(id)arg6;
-- (id)initWithDeinterlaceImage:(CDUnknownBlockType)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 pixelSpaceBounds:(struct CGRect)arg4 field:(unsigned int)arg5 pixelFormat:(id)arg6;
+- (id)initBiplanarWithLumaTexture:(id)arg1 chromaTexture:(id)arg2 formatDesc:(id)arg3 pixelTransform:(id)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6;
+- (id)initBiplanarWithLumaPixelBuffer:(id)arg1 chromaPixelBuffer:(id)arg2 formatDesc:(id)arg3 pixelTransform:(id)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6;
+- (id)initWithDeferredBlock:(CDUnknownBlockType)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 pixelSpaceBounds:(struct CGRect)arg4 field:(unsigned int)arg5 pixelFormat:(id)arg6;
 
 @end
 

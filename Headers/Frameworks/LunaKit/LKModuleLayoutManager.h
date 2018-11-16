@@ -9,12 +9,13 @@
 #import "NSCoding.h"
 #import "NSMenuDelegate.h"
 
-@class LKCreateLayoutDialog, NSMenu, NSMutableArray, NSMutableSet, NSString;
+@class LKCreateLayoutDialog, LKModuleLayoutUpdater, NSMenu, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface LKModuleLayoutManager : NSObject <NSCoding, NSMenuDelegate>
 {
     NSString *_layoutRootFolderName;
     NSString *_customLayoutExtension;
+    LKModuleLayoutUpdater *_updater;
     NSMenu *_layoutMenu;
     id _delegate;
     LKCreateLayoutDialog *_createDialog;
@@ -35,6 +36,7 @@
         unsigned int RESERVED:11;
     } _flags;
     NSString *_currentLayoutName;
+    NSMutableDictionary *_errorsWhileLoadingLayout;
 }
 
 + (Class)_newMenuItemClass;
@@ -50,6 +52,7 @@
 + (BOOL)_sharedInstanceExists;
 + (id)sharedInstance;
 + (void)initialize;
+@property(retain, nonatomic) LKModuleLayoutUpdater *updater; // @synthesize updater=_updater;
 @property(retain, nonatomic) NSString *customLayoutExtension; // @synthesize customLayoutExtension=_customLayoutExtension;
 @property(retain, nonatomic) NSString *layoutRootFolderName; // @synthesize layoutRootFolderName=_layoutRootFolderName;
 - (id)tabModule:(id)arg1 contextMenuForSubmodule:(id)arg2;
@@ -110,6 +113,7 @@
 - (void)registerModule:(id)arg1;
 - (id)moduleWithIdentifier:(id)arg1;
 - (id)moduleLayoutWithName:(id)arg1 inCategory:(int)arg2;
+- (id)moduleLayoutWithName:(id)arg1 error:(id *)arg2;
 - (id)moduleLayoutWithName:(id)arg1;
 - (id)currentModuleLayout;
 - (BOOL)hasFactoryLayoutsOfType:(int)arg1;
@@ -121,6 +125,7 @@
 - (id)moduleLayoutsForCategory:(int)arg1;
 - (id)moduleLayouts;
 - (void)exposeViewModule:(id)arg1;
+- (BOOL)canApplyLayout:(id)arg1 error:(id *)arg2;
 - (BOOL)canApplyLayout:(id)arg1;
 - (void)applyLayout:(id)arg1;
 - (void)resetCurrentLayout:(id)arg1;

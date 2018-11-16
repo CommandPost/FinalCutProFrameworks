@@ -6,6 +6,7 @@
 
 #import "NSWindowController.h"
 
+#import "CAAnimationDelegate.h"
 #import "FFAutoexpandingTextFieldDelegate.h"
 #import "NSOpenSavePanelDelegate.h"
 #import "NSTextFieldDelegate.h"
@@ -14,7 +15,7 @@
 @class CALayer, CKBatch, CKSource, FFShareDestination, FFShareDestinationController, LKButton, NSArray, NSColor, NSDictionary, NSImage, NSImageView, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTrackingArea, NSURL, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFBaseSharePanel : NSWindowController <NSOpenSavePanelDelegate, NSTextFieldDelegate, NSTokenFieldDelegate, FFAutoexpandingTextFieldDelegate>
+@interface FFBaseSharePanel : NSWindowController <CAAnimationDelegate, NSOpenSavePanelDelegate, NSTextFieldDelegate, NSTokenFieldDelegate, FFAutoexpandingTextFieldDelegate>
 {
     CKSource *_source;
     FFShareDestination *_originalDestination;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
     NSImage *_previewImage;
     NSMutableSet *_validFileNames;
     NSArray *_errors;
+    BOOL _observingTargets;
 }
 
 + (id)keyPathsForValuesAffectingCanSelectPrevious;
@@ -91,7 +93,6 @@ __attribute__((visibility("hidden")))
 - (double)autoexpandingControl:(id)arg1 adjustHeight:(double)arg2 toFitSize:(struct CGSize)arg3;
 - (void)viewDidBecomeFirstResponder:(id)arg1;
 - (void)controlTextDidEndEditing:(id)arg1;
-- (void)targetValidationDidChange:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (double)sourceCurrentFrameTime;
 - (void)unbindMetadataFields;
@@ -114,12 +115,13 @@ __attribute__((visibility("hidden")))
 - (void)cancel:(id)arg1;
 - (void)showSavePanelForDestinationsAtIndexes:(id)arg1;
 - (void)progressCanceled:(id)arg1;
-- (void)configureExtraSettings:(char *)arg1 count:(unsigned long long)arg2 destinationURL:(id)arg3 libraryURL:(id)arg4;
+- (BOOL)configureExtraSettings:(char *)arg1 count:(unsigned long long)arg2 destinationURL:(id)arg3 libraryURL:(id)arg4;
 - (void)getHelperApplicationOutputLocation:(id)arg1 withHelperApp:(id)arg2;
 - (void)userAgreementPanelDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)showUserAgreementPanelForDestination:(id)arg1 contextInfo:(id)arg2;
 - (void)showPanelsWithContextInfo:(id)arg1;
 - (void)ok:(id)arg1;
+- (void)okButtonFinalize;
 @property(readonly, nonatomic) NSColor *errorDescriptionColor;
 @property(readonly, nonatomic) NSString *errorDescription;
 @property(readonly, nonatomic) NSImage *errorIcon;
@@ -148,6 +150,8 @@ __attribute__((visibility("hidden")))
 - (void)mouseMoved:(id)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
+- (void)stopObservingValidationErrors;
+- (void)startObservingValidationErrors;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 destination:(id)arg2 nibName:(id)arg3 error:(id *)arg4;
 

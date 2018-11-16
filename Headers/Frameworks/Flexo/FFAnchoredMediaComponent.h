@@ -22,6 +22,7 @@
     NSNumber *_cachedAudioSampleRate;
     long long _deinterlaceType;
     long long _rotationAngle;
+    long long _cameraProjectionMode;
     FFRenderStateTracker *_renderStateTracker;
     NSString *_deInterlaceProviderKey;
     FFVideoProps *_calculatedVideoProps;
@@ -30,7 +31,9 @@
 + (void)updateAudioMediaComponents:(id)arg1 fromAudioSourceDict:(id)arg2 toAudioSourceDict:(id)arg3;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)copyClassDescription;
-+ (void)updateMediaComponents:(id)arg1 forAsset:(id)arg2 forMeidaRep:(id)arg3 needReset:(BOOL)arg4;
++ (BOOL)verifyMediaComponents:(id)arg1 forMediaRange:(CDStruct_e83c9415)arg2 toAudioProperties:(id)arg3 fromAudioProperties:(id)arg4 mediaRepURL:(id)arg5;
++ (void)updateMediaComponents:(id)arg1 forAsset:(id)arg2 needReset:(BOOL)arg3;
+@property(nonatomic) long long cameraProjectionMode; // @synthesize cameraProjectionMode=_cameraProjectionMode;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5_NoIntrinsics; // @synthesize cachedAudioMD5_NoIntrinsics=_cachedAudioMD5_NoIntrinsics;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 @property(readonly, nonatomic) FFMedia *media; // @synthesize media=_media;
@@ -54,7 +57,7 @@
 - (void)_updateToAudioSourceDict:(id)arg1 oldAudioSourceDict:(id)arg2;
 - (void)invalidateStreamRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
-- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
+- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2 withUserInfo:(id)arg3;
 - (void)_clearCachedAudioSampleRate;
 - (double)nativeAudioSampleRate;
 - (unsigned int)nativeAudioChannelCount:(int)arg1;
@@ -75,6 +78,11 @@
 - (long long)metadataDeinterlaceType;
 - (void)setMetadataRotationAngle:(long long)arg1;
 - (long long)metadataRotationAngle;
+- (id)metadataContentModDate;
+- (long long)stereoscopicMode;
+- (void)setStereoscopicMode:(long long)arg1;
+- (long long)sphericalProjectionMode;
+- (void)setSphericalProjectionMode:(long long)arg1;
 @property(nonatomic) long long rotationAngle; // @synthesize rotationAngle=_rotationAngle;
 @property(nonatomic) long long deinterlaceType; // @synthesize deinterlaceType=_deinterlaceType;
 - (void)setAudioChannelRoutingMap:(id)arg1;
@@ -123,6 +131,7 @@
 - (id)initWithDescription:(id)arg1;
 - (void)_initIntrinsicMediaComponentEffects;
 - (CDStruct_e83c9415)unclippedRange;
+- (CDStruct_e83c9415)unclippedRangeGriddedToVideo;
 @property(readonly, nonatomic) NSSet *roleGroups;
 - (BOOL)hasSystemGeneratedSubRoleWithIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) BOOL reflectsMediaRange;

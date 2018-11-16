@@ -52,9 +52,10 @@
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5 roi:(const struct CGRect *)arg6 graphBuildInfo:(id)arg7;
 - (id)newTokOrImageFromCache:(CDStruct_1b6d18a9)arg1 context:(id)arg2 scheduleOnly:(_Bool)arg3 videoProps:(id)arg4 localCache:(struct cachedPathsForQuals *)arg5;
 - (id)copySegmentStoreImageAtTime:(CDStruct_1b6d18a9)arg1 lookupContext:(id)arg2 lookupInfo:(id)arg3 tagInfo:(id)arg4 decodeQuality:(int)arg5 videoProps:(id)arg6 costAtTime:(double)arg7 useIdeal:(_Bool)arg8 justSchedule:(_Bool)arg9 localCache:(struct cachedPathsForQuals *)arg10;
-- (id)pixelTransformToField2ForQuality:(int)arg1;
-- (id)pixelTransformToField1ForQuality:(int)arg1;
-- (id)pixelTransformToFrameForQuality:(int)arg1;
+- (void)pixelTransformToField2ForQuality:(int)arg1;
+- (void)pixelTransformToField1ForQuality:(int)arg1;
+- (void)pixelTransformToFrameForQuality:(int)arg1;
+- (id)copyPixelTransform:(int)arg1 forQuality:(int)arg2;
 - (CDStruct_e83c9415)timeRange;
 - (id)videoProps;
 - (void)dealloc;

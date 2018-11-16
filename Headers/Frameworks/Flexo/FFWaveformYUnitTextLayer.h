@@ -6,21 +6,37 @@
 
 #import <Flexo/FFWaveformUnitTextLayer.h>
 
+#import "FFVideoScopesWaveformYScaling.h"
 #import "FFVideoScopesZoomFactor.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface FFWaveformYUnitTextLayer : FFWaveformUnitTextLayer <FFVideoScopesZoomFactor>
+@interface FFWaveformYUnitTextLayer : FFWaveformUnitTextLayer <FFVideoScopesZoomFactor, FFVideoScopesWaveformYScaling>
 {
     float _zoomFactor;
     long long _code;
     long long _compositeVideoUnits;
+    BOOL _showGuides;
+    BOOL _yScaleIsCompatibleWithUnits;
 }
 
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
+- (BOOL)yScaleIsCompatibleWithUnits;
+- (void)setVideoScopesWaveformYScale:(long long)arg1;
 - (void)setCompositeVideoUnits:(long long)arg1;
 - (void)setCode:(long long)arg1;
+- (float)zoomFactor;
 - (void)setZoomFactor:(float)arg1;
+- (void)setShowGuides:(BOOL)arg1;
 - (void)setupDefaultProperties;
+- (int)fontColorPart;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

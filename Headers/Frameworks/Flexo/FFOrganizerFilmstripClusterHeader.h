@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
-@class FFOrganizerClusteringCollection, FFOrganizerFilmstripClusterHeaderLayer;
+#import "CALayerDelegate.h"
+
+@class FFOrganizerClusteringCollection, FFOrganizerFilmstripClusterHeaderLayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFOrganizerFilmstripClusterHeader : NSObject
+@interface FFOrganizerFilmstripClusterHeader : NSObject <CALayerDelegate>
 {
     BOOL _isDisclosed;
     BOOL _emphasized;
@@ -30,11 +32,15 @@ __attribute__((visibility("hidden")))
 - (void)releaseLayer;
 - (id)layer;
 - (BOOL)hasLayer;
-- (id)description;
-- (unsigned long long)hash;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)dealloc;
 - (id)initWithCluster:(id)arg1 width:(double)arg2 yCoord:(double)arg3 isDisclosed:(BOOL)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

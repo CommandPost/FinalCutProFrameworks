@@ -19,8 +19,8 @@
 
 @property(nonatomic) int displayMode; // @synthesize displayMode=_displayMode;
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
-@property(nonatomic) TLKRangeSelectionBackgroundLayer *backgroundLayer; // @synthesize backgroundLayer=_backgroundLayer;
-@property(nonatomic) NSMapTable *layoutContexts; // @synthesize layoutContexts=_layoutContexts;
+@property(retain, nonatomic) TLKRangeSelectionBackgroundLayer *backgroundLayer; // @synthesize backgroundLayer=_backgroundLayer;
+@property(retain, nonatomic) NSMapTable *layoutContexts; // @synthesize layoutContexts=_layoutContexts;
 @property(nonatomic) TLKLayoutContext *backgroundLayoutContext; // @synthesize backgroundLayoutContext=_backgroundLayoutContext;
 @property(readonly, nonatomic) NSArray *rangeSelectionFragments;
 - (id)debugDescription;

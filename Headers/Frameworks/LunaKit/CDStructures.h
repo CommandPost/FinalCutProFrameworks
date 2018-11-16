@@ -242,6 +242,10 @@ struct _proPSDGradientColor {
     double alpha;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -274,17 +278,4 @@ typedef struct {
     struct CGSize _field2;
     struct CGSize _field3;
 } CDStruct_1ba92a5e;
-
-typedef struct {
-    id _field1;
-    struct CGRect _field2;
-    struct CGSize _field3;
-    id _field4;
-    id _field5;
-    long long _field6;
-    struct CGRect _field7;
-    struct CGRect _field8;
-    struct CGRect *_field9;
-    char _field10;
-} CDStruct_09622b1b;
 

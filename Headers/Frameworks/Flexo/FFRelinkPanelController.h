@@ -57,7 +57,7 @@ __attribute__((visibility("hidden")))
     LKTableView *_matchedTableView;
     LKButton *_copyFilesCheckBox;
     LKButton *_connectMatchedButton;
-    struct FFProcrastinatedDispatch_t pdContext;
+    struct PCProcrastinatedDispatch_t pdContext;
 }
 
 + (void)showRelinkFilesPanel:(id)arg1;

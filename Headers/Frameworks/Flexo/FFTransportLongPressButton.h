@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) NSTrackingArea *trackingArea; // @synthesize trackingArea=_trackingArea;
 @property(nonatomic) BOOL handlePressure; // @synthesize handlePressure=_handlePressure;
-@property(nonatomic) NSTimer *longPressTimer; // @synthesize longPressTimer=_longPressTimer;
+@property(retain, nonatomic) NSTimer *longPressTimer; // @synthesize longPressTimer=_longPressTimer;
 @property(nonatomic) int currentPressureState; // @synthesize currentPressureState=_currentPressureState;
 @property(nonatomic) int numberOfPressureStates; // @synthesize numberOfPressureStates=_numberOfPressureStates;
 @property(nonatomic) BOOL isLongPress; // @synthesize isLongPress=_isLongPress;

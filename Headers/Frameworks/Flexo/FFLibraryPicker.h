@@ -11,15 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface FFLibraryPicker : NSViewController
 {
-    FFLibrary *library;
     LKPopUpButton *libraryPopup;
+    FFLibrary *_library;
 }
 
+@property(retain, nonatomic) FFLibrary *library; // @synthesize library=_library;
 @property(nonatomic) LKPopUpButton *libraryPopup; // @synthesize libraryPopup;
-@property(retain, nonatomic) FFLibrary *library; // @synthesize library;
 - (void)selectLibrary:(id)arg1;
 - (void)_updateLibraryPopup;
 - (void)viewDidLoad;
+- (void)dealloc;
 - (id)init;
 
 @end

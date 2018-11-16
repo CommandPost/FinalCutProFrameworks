@@ -30,9 +30,9 @@
 - (struct CGRect)markerRectFromBarRect:(struct CGRect)arg1;
 - (struct CGRect)barRectFrom:(const struct OZTimelineBar *)arg1 rowRect:(struct CGRect)arg2 pixelsPerSecond:(double)arg3;
 - (struct CGRect)barRectFrom:(const struct OZTimelineBar *)arg1 rowRect:(struct CGRect)arg2 pixelsPerSecond:(double)arg3 offset:(CDStruct_1b6d18a9)arg4 duration:(CDStruct_1b6d18a9)arg5;
-- (void)getAllKeyframes:(map_885c5d24 *)arg1 from:(struct OZChannelFolder *)arg2;
-- (void)findRootsFrom:(struct OZChannelObjectRoot *)arg1 mouseTime:(CDStruct_1b6d18a9)arg2 rootList:(set_001ccea2 *)arg3;
-- (void)findRootsFrom:(struct OZChannelObjectRoot *)arg1 matching:(const struct PCTimeRange *)arg2 includeRoot:(BOOL)arg3 rootList:(set_001ccea2 *)arg4 selectedOnly:(BOOL)arg5;
+- (void)getAllKeyframes:(map_42750fbc *)arg1 from:(struct OZChannelFolder *)arg2;
+- (void)findRootsFrom:(struct OZChannelObjectRoot *)arg1 mouseTime:(CDStruct_1b6d18a9)arg2 rootList:(set_ed6fc29a *)arg3;
+- (void)findRootsFrom:(struct OZChannelObjectRoot *)arg1 matching:(const struct PCTimeRange *)arg2 includeRoot:(BOOL)arg3 rootList:(set_ed6fc29a *)arg4 selectedOnly:(BOOL)arg5;
 - (int)checkMouseForKeyframes:(id)arg1 inBar:(struct OZTimelineBar *)arg2 startingLocation:(struct CGPoint)arg3;
 - (int)colorIndexOf:(struct OZChannelObjectRoot *)arg1;
 - (void)checkBarsForOverlaps:(vector_fe7b023d *)arg1 with:(vector_fe7b023d *)arg2 overlaps:(vector_93158a95 *)arg3 frameDuration:(CDStruct_1b6d18a9)arg4;
@@ -53,7 +53,7 @@
 - (BOOL)shouldDrawActive;
 - (void)findSnaps:(vector_f7e3fd5f *)arg1 forceAllVisible:(BOOL)arg2;
 - (void)resetCursorRects;
-- (int)checkMouseInBars:(id)arg1 startingLocation:(struct CGPoint)arg2 rootList:(set_001ccea2 *)arg3 selected:(char *)arg4 selectRange:(struct PCTimeRange *)arg5 dragRange:(struct PCTimeRange *)arg6;
+- (int)checkMouseInBars:(id)arg1 startingLocation:(struct CGPoint)arg2 rootList:(set_ed6fc29a *)arg3 selected:(char *)arg4 selectRange:(struct PCTimeRange *)arg5 dragRange:(struct PCTimeRange *)arg6;
 - (void)checkMouseInOverlaps:(CDStruct_1b6d18a9)arg1 selectRange:(struct PCTimeRange *)arg2 dragRange:(struct PCTimeRange *)arg3;
 - (void)clearKeyframeSelection;
 - (void)clearData;

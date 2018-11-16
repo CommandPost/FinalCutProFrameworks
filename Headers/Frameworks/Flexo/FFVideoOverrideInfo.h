@@ -6,25 +6,42 @@
 
 #import "NSObject.h"
 
-@class NSDictionary, NSIndexSet;
+#import "PAELUTRepositoryControllerObserver.h"
+
+@class NSDictionary, NSIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFVideoOverrideInfo : NSObject
+@interface FFVideoOverrideInfo : NSObject <PAELUTRepositoryControllerObserver>
 {
     NSIndexSet *_supportedAlphaHandlingModes;
     NSIndexSet *_supportedDominanceOverrides;
     NSIndexSet *_supportedColorSpaceOverrides;
     NSIndexSet *_supportedLogProcessingModes;
+    NSIndexSet *_supportedCameraProjectionModes;
     NSDictionary *_logProcessingInfoDictionary;
+    NSDictionary *_customCameraLUTProcessingInfoDictionary;
 }
 
++ (id)offlineCustomCameraLUTInfo;
+@property(readonly, nonatomic) NSIndexSet *supportedCameraProjectionModes; // @synthesize supportedCameraProjectionModes=_supportedCameraProjectionModes;
+@property(readonly, nonatomic) NSDictionary *customCameraLUTProcessingInfoDictionary; // @synthesize customCameraLUTProcessingInfoDictionary=_customCameraLUTProcessingInfoDictionary;
 @property(readonly, nonatomic) NSDictionary *logProcessingInfoDictionary; // @synthesize logProcessingInfoDictionary=_logProcessingInfoDictionary;
 @property(readonly, nonatomic) NSIndexSet *supportedLogProcessingModes; // @synthesize supportedLogProcessingModes=_supportedLogProcessingModes;
 @property(readonly, nonatomic) NSIndexSet *supportedColorSpaceOverrides; // @synthesize supportedColorSpaceOverrides=_supportedColorSpaceOverrides;
 @property(readonly, nonatomic) NSIndexSet *supportedDominanceOverrides; // @synthesize supportedDominanceOverrides=_supportedDominanceOverrides;
 @property(readonly, nonatomic) NSIndexSet *supportedAlphaHandlingModes; // @synthesize supportedAlphaHandlingModes=_supportedAlphaHandlingModes;
+- (void)controller:(id)arg1 didMoveItem:(id)arg2 toItem:(id)arg3;
+- (void)controller:(id)arg1 didChangeItem:(id)arg2;
+- (void)controller:(id)arg1 willRemoveItem:(id)arg2;
+- (void)controller:(id)arg1 didAddItem:(id)arg2;
 - (id)initWithProvider:(id)arg1 mediaRep:(id)arg2;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

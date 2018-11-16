@@ -32,12 +32,12 @@
 - (void)backgroundRequestCompleted:(id)arg1;
 - (void)display:(struct OZRenderNode *)arg1;
 - (void)viewDidMoveToWindow;
-- (struct OZRenderManager *)renderManagerForNode:(struct OZRenderNode *)arg1;
+-     // Error parsing type: ^{OZRenderManager={atomic<bool>=AB}^{GLRenderer}@I}24@0:8^{OZRenderNode=^^?{PCHash128=[4I]}}16, name: renderManagerForNode:
 - (id)motionEffect;
 - (id)image;
 - (void)delete:(id)arg1;
 - (double)getInset;
-- (struct OZRenderManager *)renderManager:(struct OZRenderNode *)arg1;
+-     // Error parsing type: ^{OZRenderManager={atomic<bool>=AB}^{GLRenderer}@I}24@0:8^{OZRenderNode=^^?{PCHash128=[4I]}}16, name: renderManager:
 - (void)dealloc;
 - (void)_init;
 

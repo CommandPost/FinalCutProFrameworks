@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (id)defaultIdentifiers;
 - (void)updateBar;
-- (id)accessibilityForIdentifier:(id)arg1;
+- (id)accessibilityTitleForIdentifier:(id)arg1;
 - (id)imageForIdentifier:(id)arg1;
 - (id)displayNameForIdentifier:(id)arg1;
 - (id)targetForIdentifier:(id)arg1;

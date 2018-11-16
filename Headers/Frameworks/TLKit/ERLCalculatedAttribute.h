@@ -19,8 +19,8 @@
 }
 
 @property(nonatomic) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
-@property(copy, nonatomic) NSMutableSet *toManyKeyPaths; // @synthesize toManyKeyPaths=_toManyKeyPaths;
-@property(copy, nonatomic) NSMutableSet *compliantKeyPaths; // @synthesize compliantKeyPaths=_compliantKeyPaths;
+@property(readonly, nonatomic) NSMutableSet *toManyKeyPaths; // @synthesize toManyKeyPaths=_toManyKeyPaths;
+@property(readonly, nonatomic) NSMutableSet *compliantKeyPaths; // @synthesize compliantKeyPaths=_compliantKeyPaths;
 @property(nonatomic) id observedObject; // @synthesize observedObject=_observedObject;
 @property(readonly, nonatomic) unsigned long long attributeType; // @synthesize attributeType=_attributeType;
 @property(readonly, nonatomic) void *storage; // @synthesize storage=_storage;

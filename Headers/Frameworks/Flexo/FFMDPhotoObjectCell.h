@@ -6,10 +6,12 @@
 
 #import <Flexo/FFImageBrowserCell.h>
 
-@class CALayer, CATextLayer, FFImageLayer, FFResponderLayerPushButton, LKTextField, NSPopover, TLKAbstractItemSelectionLayer, TLKSimpleItemSelectionLayer;
+#import "CALayerDelegate.h"
+
+@class CALayer, CATextLayer, FFImageLayer, FFResponderLayerPushButton, LKTextField, NSPopover, NSString, TLKAbstractItemSelectionLayer, TLKSimpleItemSelectionLayer;
 
 __attribute__((visibility("hidden")))
-@interface FFMDPhotoObjectCell : FFImageBrowserCell
+@interface FFMDPhotoObjectCell : FFImageBrowserCell <CALayerDelegate>
 {
     TLKAbstractItemSelectionLayer *_selectionRingLayer;
     TLKSimpleItemSelectionLayer *_skimmingHighlightLayer;
@@ -24,7 +26,7 @@ __attribute__((visibility("hidden")))
     LKTextField *_playheadInfoTextField;
     NSPopover *_playheadInfoPopover;
     FFResponderLayerPushButton *_editButtonLayer;
-    struct FFProcrastinatedDispatch_t _editButtonDispatchContext;
+    struct PCProcrastinatedDispatch_t _editButtonDispatchContext;
     BOOL _observingEditTool;
 }
 
@@ -80,6 +82,12 @@ __attribute__((visibility("hidden")))
 - (void)setSelected:(BOOL)arg1;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

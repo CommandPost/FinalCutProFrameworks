@@ -21,6 +21,7 @@
     BOOL _hasConsumerView;
     CDUnknownBlockType _completionHandler;
     NSString *_colorSpaceDisplayName;
+    NSString *_projectionTypeDisplayName;
 }
 
 + (id)inactiveHighlightGradient;
@@ -47,6 +48,8 @@
 - (BOOL)displaysDeviceCompatibilityInfo;
 - (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)colorSpaceDisplayName:(char *)arg1;
+@property(readonly, copy, nonatomic) NSString *projectionTypeDisplayName; // @synthesize projectionTypeDisplayName=_projectionTypeDisplayName;
+- (BOOL)sourceContains360Metadata;
 @property(readonly, copy, nonatomic) NSString *colorSpaceDisplayName; // @synthesize colorSpaceDisplayName=_colorSpaceDisplayName;
 - (id)theImageForResource:(id)arg1;
 - (void)dealloc;

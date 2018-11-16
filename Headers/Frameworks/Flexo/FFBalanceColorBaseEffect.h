@@ -11,6 +11,7 @@
 @interface FFBalanceColorBaseEffect : FFHeliumEffect
 {
     BOOL _deferOperation;
+    BOOL _HDRCompatible;
     FFLumaBumpContainer *_lumaBumps;
     int _balanceOptions;
     double _skinColorRed;
@@ -33,7 +34,8 @@
 - (void)effectiveRangeDidChange;
 - (BOOL)_cachedIsAtDefaultSettings;
 - (BOOL)isAtDefaultSettings;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
+- (void)_setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
 - (struct HGNode *)newNodeForContext:(id)arg1;
 - (id)processingFormat:(int)arg1;
 - (BOOL)writeDefaultChannels;
@@ -64,6 +66,7 @@
 @property double skinColorBlue; // @dynamic skinColorBlue;
 @property double skinColorGreen; // @dynamic skinColorGreen;
 @property double skinColorRed; // @dynamic skinColorRed;
+@property BOOL HDRCompatible; // @dynamic HDRCompatible;
 @property int balanceOptions; // @dynamic balanceOptions;
 - (void)setLumaBumpContainer:(id)arg1;
 @property(readonly, nonatomic) FFLumaBumpContainer *lumaBumps; // @dynamic lumaBumps;

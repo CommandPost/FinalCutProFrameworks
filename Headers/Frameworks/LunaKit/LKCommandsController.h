@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class LKCommandSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSString;
+@class LKCommandSet, LKMenuDelegateDispatcher, NSMapTable, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface LKCommandsController : NSObject <NSMenuDelegate>
 {
@@ -20,13 +20,14 @@
     NSMutableDictionary *_actionTable;
     NSMapTable *_representedObjects;
     LKCommandSet *_commandSet;
-    void *_menuPopulateHandler;
+    LKMenuDelegateDispatcher *_menuDispatcher;
     struct __LKPCCFlags {
         unsigned int changeSetsAlert:1;
         unsigned int areCommandsLoaded:1;
         unsigned int _proReserved:30;
     } _pccFlags;
     NSMutableDictionary *_pendingGroupCommands;
+    NSMapTable *_commandToMenuItemTable;
 }
 
 + (Class)commandClass;
@@ -39,6 +40,7 @@
 - (void)importCommandSet:(id)arg1;
 - (void)saveAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(id)arg3;
 - (void)_changeCommandSets:(id)arg1;
+- (id)menuItemForCommand:(id)arg1;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)_updateMenuItem:(id)arg1;
 - (void)menuNeedsUpdate:(id)arg1;
@@ -50,7 +52,10 @@
 - (BOOL)performCommand:(id)arg1 withTarget:(id)arg2;
 - (BOOL)performCommand:(id)arg1;
 - (BOOL)performKeyEquivalent:(id)arg1 withTarget:(id)arg2;
+- (void)_flashMenuItemForCommand:(id)arg1;
+- (void)_dummyNoOp:(id)arg1;
 - (BOOL)_handleKeyEquivalent:(id)arg1;
+- (void)setWantAppKit_handleKeyEquivalent:(BOOL)arg1 forCommand:(id)arg2;
 - (void)addCommandWithIdentifier:(id)arg1 toGroupWithIdentifier:(id)arg2;
 - (void)registerGroupWithIdentifier:(id)arg1 andProperties:(id)arg2;
 - (id)displayNameOfGroup:(id)arg1;
@@ -95,6 +100,10 @@
 - (void)finalize;
 - (void)dealloc;
 - (id)init;
+- (void)setMenuDelegateForCommandEditor:(id)arg1;
+- (void)setMenuDelegates;
+- (id)nextMenuItem:(id)arg1;
+- (id)checkSubmenu:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -21,8 +21,8 @@
 }
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
-@property(nonatomic) LKButton *resetButton; // @synthesize resetButton=_resetButton;
-@property(nonatomic) LKButton *okButton; // @synthesize okButton=_okButton;
+@property(retain, nonatomic) LKButton *resetButton; // @synthesize resetButton=_resetButton;
+@property(retain, nonatomic) LKButton *okButton; // @synthesize okButton=_okButton;
 @property(nonatomic) id <FFAdjustmentToolDelegate> toolDelegate; // @synthesize toolDelegate=_toolDelegate;
 - (void)onOK:(id)arg1;
 - (void)resetTool:(id)arg1;

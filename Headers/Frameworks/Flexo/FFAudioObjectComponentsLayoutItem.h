@@ -10,23 +10,23 @@
 
 @interface FFAudioObjectComponentsLayoutItem : FFAudioComponentsLayoutItem
 {
-    int m_itemType;
-    BOOL m_enabled;
-    BOOL m_muted;
-    FFEffectStack *m_effectStack;
-    FFRole *m_role;
-    struct PC_CMTimePair m_scopeStartEndTimes;
-    BOOL m_isOrphan;
+    int _itemType;
+    BOOL _enabled;
+    BOOL _muted;
+    FFEffectStack *_effectStack;
+    FFRole *_role;
+    struct PC_CMTimePair _scopeStartEndTimes;
+    BOOL _isOrphan;
 }
 
 + (id)copyClassDescription;
-@property(nonatomic) BOOL isOrphan; // @synthesize isOrphan=m_isOrphan;
-@property(readonly, nonatomic) struct PC_CMTimePair scopeStartEndTimes; // @synthesize scopeStartEndTimes=m_scopeStartEndTimes;
-@property(readonly, nonatomic) FFRole *role; // @synthesize role=m_role;
-@property(readonly, nonatomic) FFEffectStack *effectStack; // @synthesize effectStack=m_effectStack;
-@property(readonly, nonatomic) BOOL muted; // @synthesize muted=m_muted;
-@property(readonly, nonatomic) BOOL enabled; // @synthesize enabled=m_enabled;
-@property(readonly, nonatomic) int itemType; // @synthesize itemType=m_itemType;
+@property(nonatomic) BOOL isOrphan; // @synthesize isOrphan=_isOrphan;
+@property(readonly, nonatomic) struct PC_CMTimePair scopeStartEndTimes; // @synthesize scopeStartEndTimes=_scopeStartEndTimes;
+@property(readonly, nonatomic) FFEffectStack *effectStack; // @synthesize effectStack=_effectStack;
+@property(readonly, nonatomic) int itemType; // @synthesize itemType=_itemType;
+@property(readonly, nonatomic) FFRole *role; // @synthesize role=_role;
+@property(readonly, nonatomic) BOOL muted; // @synthesize muted=_muted;
+@property(readonly, nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 - (BOOL)isOrphanEligible;
 - (void)notifyRolesDidChangeForLibrary:(id)arg1 removedRoleUIDs:(id)arg2;
 - (void)_markRolePropertiesAsDirty;
@@ -41,8 +41,10 @@
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (unsigned int)numOutputChannels:(unsigned int)arg1;
 - (BOOL)isEquivalentLayoutItemUsingOrphanCriteria:(id)arg1;
+- (id)equivalencePropertiesForVersion:(unsigned int)arg1;
 - (CDStruct_bdcb2b0d)equivalenceMD5;
 - (id)newEquivalenceProperties;
+- (BOOL)supportsEquivalenceID;
 - (BOOL)isEqualToLayoutItem:(id)arg1;
 - (BOOL)hasFullPersistence;
 - (id)description;

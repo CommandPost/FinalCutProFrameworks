@@ -10,14 +10,13 @@
 
 @class NSObject<FFMetadataProtocol>;
 
-__attribute__((visibility("hidden")))
 @interface FFAnchoredObjectMetadataHelper : NSObject <FFMetadataProtocol>
 {
     NSObject<FFMetadataProtocol> *_ao;
     CDStruct_e83c9415 _range;
 }
 
-@property NSObject<FFMetadataProtocol> *wrapped; // @synthesize wrapped=_ao;
+@property(readonly) NSObject<FFMetadataProtocol> *wrapped; // @synthesize wrapped=_ao;
 - (BOOL)writerIsWaiting;
 - (void)_readUnlock;
 - (void)_readLock;

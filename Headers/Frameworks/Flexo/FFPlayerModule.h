@@ -6,12 +6,13 @@
 
 #import "LKViewModule.h"
 
+#import "CALayerDelegate.h"
 #import "NSTouchBarProvider.h"
 #import "NSWindowDelegate.h"
 
 @class FFContext, FFPlayer, FFPlayerModuleDFRController, FFProvider, FFSourceAudio, FFSourceVideo, LKModuleLayout, NSDictionary, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>, NSString, NSTouchBar, NSView;
 
-@interface FFPlayerModule : LKViewModule <NSWindowDelegate, NSTouchBarProvider>
+@interface FFPlayerModule : LKViewModule <NSWindowDelegate, CALayerDelegate, NSTouchBarProvider>
 {
     NSView *_submodulesView;
     struct NSObject *_skimmable;
@@ -89,6 +90,8 @@
 - (void)sequenceFormatChanged:(id)arg1;
 - (void)_conformStartAndDuration;
 - (void)_conformStartAndDurationWithIgnoreOldLoopRange:(BOOL)arg1;
+- (void)playCompletedWithHMDDropsForContext:(id)arg1 info:(id)arg2;
+- (void)_maybeReportHMDAtPlaybackCompleted:(id)arg1;
 - (void)playCompletedWithDropsForContext:(id)arg1 info:(id)arg2;
 - (void)_maybeReportAtPlaybackCompleted:(id)arg1;
 - (void)stoppedDueToDroppedFrameForContext:(id)arg1 dropInfo:(id)arg2;
@@ -97,7 +100,7 @@
 - (void)rangeChangedForContext:(id)arg1;
 - (void)timeRateChangedForContext:(id)arg1;
 - (void)_rebuildPlayerWithDrawingSuspension;
-- (void)_rebuildPlayer;
+- (void)_rebuildPlayerWithForceRedraw:(id)arg1;
 - (BOOL)_shouldLoadProviderForSkimmable:(struct NSObject *)arg1;
 - (BOOL)_isEventProject:(struct NSObject *)arg1;
 - (void)_teardownPlayer;

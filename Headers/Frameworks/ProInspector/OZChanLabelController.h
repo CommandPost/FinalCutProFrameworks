@@ -23,7 +23,7 @@
 - (void)setEnableColor:(id)arg1;
 - (void)setDisclosureTriangleIndentLevel:(id)arg1;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)doDrag:(list_e5c8e430 *)arg1 viewList:(id)arg2;
+- (void)doDrag:(list_9af5505e *)arg1 viewList:(id)arg2;
 - (void)highlightChannel:(struct OZChannelBase *)arg1;
 - (float)suggestedMinLabelWidth;
 - (float)suggestedMaxLabelWidth;

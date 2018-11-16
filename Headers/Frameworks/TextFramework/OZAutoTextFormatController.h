@@ -6,7 +6,7 @@
 
 #import <TextFramework/OZAutoTextInspectorController.h>
 
-@class OZChanFolderController, OZFolderGroupController, OZLabeledParamController, OZViewController, OZViewControllerGroup;
+@class OZChanFolderController, OZFolderGroupController, OZLabeledParamController, OZTextCtrlResetDelegate, OZViewController, OZViewControllerGroup;
 
 @interface OZAutoTextFormatController : OZAutoTextInspectorController
 {
@@ -45,9 +45,11 @@
     OZViewController *_allCapsSizeCtrl;
     OZViewControllerGroup *_rotateCtrl;
     OZViewControllerGroup *_rotateCtrlGrp;
+    OZTextCtrlResetDelegate *_basicFormatCtrlResetDelegate;
+    OZTextCtrlResetDelegate *_advancedFormatCtrlResetDelegate;
 }
 
-- (void)updateLayoutControllers:(list_63a35edb *)arg1;
+- (void)updateLayoutControllers:(list_752fd9b9 *)arg1;
 - (void)enableDisableUI:(unsigned int)arg1;
 - (void)notify:(unsigned int)arg1;
 - (shared_ptr_e0e110e1)getCurrentStyle;
@@ -55,7 +57,6 @@
 - (void)_saveDefaultFont:(int)arg1;
 - (void)update;
 - (void)resetOrAddAssociatedStyle:(const shared_ptr_e0e110e1 *)arg1 reset:(BOOL)arg2;
-- (void)resetChannel:(id)arg1;
 - (void)appendCustomTextUI:(struct TXTextLayout *)arg1 context:(id)arg2;
 - (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
 - (void)enableDisableLayoutUI:(int)arg1;

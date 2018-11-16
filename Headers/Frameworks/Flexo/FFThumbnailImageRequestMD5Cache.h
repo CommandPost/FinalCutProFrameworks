@@ -10,8 +10,6 @@ __attribute__((visibility("hidden")))
 @interface FFThumbnailImageRequestMD5Cache : NSObject
 {
     struct MD5Cache *_video;
-    struct MD5Cache *_audio;
-    struct MD5Cache *_transition;
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

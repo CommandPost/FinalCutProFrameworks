@@ -18,7 +18,7 @@
     BOOL _willCloseDown;
     BOOL _wasCancelled;
     NSMapTable *_clipAnalysesQueue;
-    struct FFProcrastinatedDispatch_t _procrastinatedOutOfDiskSpaceWarningContext;
+    struct PCProcrastinatedDispatch_t _procrastinatedOutOfDiskSpaceWarningContext;
 }
 
 + (BOOL)needsOptimizationForFourCharCode:(unsigned int)arg1;
@@ -50,7 +50,7 @@
 - (void)analyzeAndOptimizeClipBackgroundThread:(id)arg1 onTask:(id)arg2;
 - (id)_commitTemporaryMediaAtURL:(id)arg1 mediaRepType:(id)arg2 fileName:(id)arg3 forAsset:(id)arg4;
 - (id)_tmpFilenameFromName:(id)arg1 identifier:(id)arg2 proxy:(BOOL)arg3;
-- (id)_optimizedVideoFormatForCodec:(unsigned int)arg1;
+- (id)_optimizedVideoFormatForCodec:(unsigned int)arg1 colorSpace:(struct CGColorSpace *)arg2;
 - (struct AudioStreamBasicDescription)_optimizedAudioFileFormatForFormat:(struct AudioStreamBasicDescription)arg1;
 - (void)_assetCopyQueueCompleted:(id)arg1;
 - (void)transcodeAudioOnlyAsset:(id)arg1;

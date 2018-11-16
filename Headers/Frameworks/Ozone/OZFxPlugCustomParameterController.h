@@ -6,15 +6,15 @@
 
 #import "OZViewControllerGroup.h"
 
-@class OZAnimIndicator, PIParameterPulldown;
-
 @interface OZFxPlugCustomParameterController : OZViewControllerGroup
 {
-    OZAnimIndicator *_pAnim;
-    PIParameterPulldown *_pParamPulldown;
 }
 
++ (BOOL)shouldDisplayAnimIndicator;
+- (float)suggestedMaxParamWidth;
 - (void)update;
+- (void)_subviewsNeedDisplay:(id)arg1;
+- (id)plugin;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end

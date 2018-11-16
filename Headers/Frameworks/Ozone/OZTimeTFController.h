@@ -13,13 +13,13 @@
     LKScrubber *_pTF;
     BOOL _relativeValues;
     OZRetimingController *_retimingController;
-    map_d8745af3 *_pRoots;
+    map_3710aa94 *_pRoots;
 }
 
 - (void)setTimeValue:(id)arg1;
-- (double)getInitialValue:(__map_iterator_70a8c954 *)arg1;
+- (double)getInitialValue:(__map_iterator_0d6ec8d8 *)arg1;
 - (void)setValue:(double)arg1 forFootage:(struct OZFootage *)arg2;
-- (void)setValue:(double)arg1 forRoots:(map_d8745af3 *)arg2 constrainToDependents:(_Bool)arg3;
+- (void)setValue:(double)arg1 forRoots:(map_3710aa94 *)arg2 constrainToDependents:(_Bool)arg3;
 - (void)disable;
 - (void)enable;
 - (void)notify:(unsigned int)arg1;

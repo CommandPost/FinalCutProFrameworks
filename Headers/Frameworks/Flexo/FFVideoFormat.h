@@ -17,39 +17,39 @@
     NSString *_displaySize;
     NSString *_displayRate;
     NSString *_displayColorSpace;
-    _Bool _isInstalledFormat;
 }
 
-+ (id)displayColorSpacesForCustomWidth:(int)arg1 andHeight:(int)arg2 allowWideGamut:(BOOL)arg3;
-+ (id)displayColorSpacesForStandardGamutVideoFormat:(id)arg1 allowWideGamut:(BOOL)arg2;
-+ (BOOL)isWideGamutColorSpaceDisplayName:(id)arg1;
++ (BOOL)scanDisplaySizeString:(id)arg1 retWidth:(int *)arg2 retHeight:(int *)arg3;
++ (BOOL)isColorSpaceSupportedForProjects:(struct CGColorSpace *)arg1;
++ (BOOL)isColorSpaceSupportedForProjects:(struct CGColorSpace *)arg1 includeWideGamut:(BOOL)arg2 includeHDR:(BOOL)arg3;
++ (id)displayColorSpacesForCustomWidth:(int)arg1 andHeight:(int)arg2 includeWideGamut:(BOOL)arg3 includeHDR:(BOOL)arg4;
++ (id)displayColorSpacesForStandardGamutVideoFormat:(id)arg1 includeWideGamut:(BOOL)arg2 includeHDR:(BOOL)arg3;
++ (id)menuItemTitleForColorSpaceDisplayName:(id)arg1;
 + (struct CGColorSpace *)colorSpaceForDisplayName:(id)arg1;
 + (id)displayNameForColorSpace:(struct CGColorSpace *)arg1;
 + (struct CGSize)convertToAppPreviewSupportedSize:(struct CGSize)arg1;
 + (struct CGSize)_closestAppPreviewSupportedSize:(struct CGSize)arg1 portraitMode:(BOOL)arg2;
 + (id)displayRatesForFormat:(id)arg1 andSize:(id)arg2 andFrameDuration:(CDStruct_1b6d18a9)arg3;
-+ (id)displaySizesForFormat:(id)arg1 andFrameDuration:(CDStruct_1b6d18a9)arg2;
-+ (id)displaySizesForFormat:(id)arg1 andRate:(id)arg2;
++ (id)displaySizesForFormat:(id)arg1 projectionType:(id)arg2 andFrameDuration:(CDStruct_1b6d18a9)arg3;
 + (id)displayFormatsForFrameDuration:(CDStruct_1b6d18a9)arg1;
 + (id)displayFormatsForRate:(id)arg1;
 + (id)formatForDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 displayColorSpace:(id)arg4;
 + (id)formatForDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3;
 + (id)displayRatesForFormat:(id)arg1 andSize:(id)arg2;
-+ (id)displaySizesForFormat:(id)arg1;
-+ (id)displaySizesInOrderForFormat:(id)arg1;
++ (id)displaySizesForFormat:(id)arg1 projectionType:(id)arg2;
 + (id)displayRatesInOrder;
 + (id)displayRateForSampleDuration:(CDStruct_1b6d18a9)arg1 fieldOrder:(int)arg2;
 + (id)_displayInterlacedRateForSampleDuration:(CDStruct_1b6d18a9)arg1;
 + (id)_displayProgressiveRateForSampleDuration:(CDStruct_1b6d18a9)arg1;
 + (id)displayProgressiveRatesInOrder;
 + (id)displayFormatsInOrder;
++ (id)allFormats;
++ (id)allStandardGamutFormats;
 + (id)formats;
 + (id)formatForName:(id)arg1;
 + (id)formatsDict;
 + (id)FFCustomFormatDisplayName;
-+ (id)FFOtherFormatDisplayName;
 + (void)releaseSharedInstance;
-@property(nonatomic) _Bool isInstalledFormat; // @synthesize isInstalledFormat=_isInstalledFormat;
 - (id)newPList;
 - (BOOL)isReallyGoodGuessOf:(id)arg1;
 - (id)exactMatchVideoFormat;
@@ -64,12 +64,13 @@
 - (id)displayName;
 - (BOOL)isWideGamut;
 @property(readonly, nonatomic) NSString *name;
+- (oneway void)release;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPList:(id)arg1;
-- (id)initWithName:(id)arg1 displayFormat:(id)arg2 displaySize:(id)arg3 displayRate:(id)arg4 pixelSpaceFrameBounds:(struct CGRect)arg5 colorSpace:(struct CGColorSpace *)arg6 fieldDominance:(int)arg7 sampleDuration:(CDStruct_1b6d18a9)arg8 frame:(id)arg9 field1:(id)arg10 field2:(id)arg11 paspH:(int)arg12 paspV:(int)arg13 frameRateUndefined:(BOOL)arg14;
+- (id)initWithName:(id)arg1 displayFormat:(id)arg2 displaySize:(id)arg3 displayRate:(id)arg4 pixelSpaceFrameBounds:(struct CGRect)arg5 colorSpace:(struct CGColorSpace *)arg6 fieldDominance:(int)arg7 sampleDuration:(CDStruct_1b6d18a9)arg8 frame:(id)arg9 field1:(id)arg10 field2:(id)arg11 paspH:(int)arg12 paspV:(int)arg13 frameRateUndefined:(BOOL)arg14 cameraMode:(int)arg15;
 
 @end
 

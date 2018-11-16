@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)newSplineMaskEffectAtTime:(id)arg1 colorSpace:(struct CGColorSpace *)arg2;
 - (void)convertToSplineMaskEffect;
 - (void)dealloc;
-- (void)effectWasAddedToStack:(int)arg1;
+- (void)effectActivated:(int)arg1;
 - (id)newChannelFolderWithParent:(id)arg1 name:(id)arg2;
 - (void)createChannelsInFolder:(id)arg1;
 - (struct FFShape *)createShape;

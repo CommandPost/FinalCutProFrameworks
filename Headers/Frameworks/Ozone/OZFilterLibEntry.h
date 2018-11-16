@@ -14,6 +14,7 @@
 }
 
 + (void)buildInternalTreeWithRoot:(id)arg1;
++ (BOOL)FCPOnlyFilter:(Class)arg1;
 + (BOOL)groupContainsValidPlugins:(id)arg1;
 - (id)getSmallPreviewIconForEntry:(BOOL)arg1;
 - (id)getPreviewMovie;

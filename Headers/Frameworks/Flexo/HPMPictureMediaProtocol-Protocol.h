@@ -6,19 +6,12 @@
 
 #import "HPMMediaProtocol.h"
 
-@class NSString;
-
 @protocol HPMPictureMediaProtocol <HPMMediaProtocol>
 @property(readonly) BOOL isMPEG4;
 @property(readonly) BOOL isMPEG2;
 @property(readonly) BOOL isMPEG;
 @property(readonly) BOOL isIFrameOnly;
-@property(retain) id subDescriptor;
-@property(readonly) NSString *customColorSpace;
 @property(readonly) int fieldInfo;
-@property(readonly) int alphaChannelType;
-@property(readonly) unsigned int alphaDepth;
-@property(readonly) unsigned int depth;
 @property(readonly) BOOL isInterlaced;
 @property int YCbCrMatrix;
 @property int colorPrimaries;
@@ -29,6 +22,11 @@
 @property(readonly) unsigned int storedWidth;
 @property(readonly) unsigned int height;
 @property(readonly) unsigned int width;
+- (unsigned int)uint32PictureMetadataWithKey:(int)arg1 failed:(char *)arg2;
+- (unsigned short)uint16PictureMetadataWithKey:(int)arg1 failed:(char *)arg2;
+- (unsigned char)uint8PictureMetadataWithKey:(int)arg1;
+- (void *)pictureMetadataWithKey:(int)arg1;
+- (struct __CFString *)newCustomColorSpace;
 - (void)setIndexEntryWithIndexPosition:(unsigned long long)arg1 filePosition:(long long)arg2 size:(unsigned int)arg3 isExactSize:(BOOL)arg4 unitsPerPacket:(unsigned int)arg5 packageStartUnit:(long long)arg6 temporalOffset:(BOOL)arg7 frameFlags:(unsigned char)arg8;
 - (void)addIndexEntryWithFilePosition:(long long)arg1 size:(unsigned int)arg2 isExactSize:(BOOL)arg3 unitsPerPacket:(unsigned int)arg4 temporalOffset:(BOOL)arg5 frameFlags:(unsigned char)arg6;
 @end

@@ -17,7 +17,6 @@
     double _itemHeaderOnlyHeight;
     double _minimizedItemHeight;
     double _audioWaveFormProportion;
-    struct CGSize _itemSpacing;
     struct {
         unsigned int calculatesDynamicItemHeights:1;
         unsigned int showClipTitlesOnly:1;
@@ -25,9 +24,10 @@
     } _tlkContainerMetricsFlags;
     double _topPadding;
     double _bottomPadding;
+    double _defaultVerticalSpacing;
 }
 
-@property(nonatomic) struct CGSize itemSpacing; // @synthesize itemSpacing=_itemSpacing;
+@property(nonatomic) double defaultVerticalSpacing; // @synthesize defaultVerticalSpacing=_defaultVerticalSpacing;
 @property(nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
 @property(nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
 @property(nonatomic) double audioWaveFormProportion; // @synthesize audioWaveFormProportion=_audioWaveFormProportion;

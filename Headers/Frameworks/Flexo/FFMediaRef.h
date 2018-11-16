@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)legacyEventDocumentID;
 - (id)eventDocumentID;
+- (id)mediaIndexingKey;
 
 @end
 

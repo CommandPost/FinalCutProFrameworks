@@ -19,10 +19,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)chooseForDestination:(id)arg1 isCopy:(BOOL)arg2;
-@property(retain, nonatomic) NSPopUpButton *consolidatePopUp; // @synthesize consolidatePopUp=_consolidatePopUp;
-@property(retain, nonatomic) NSButton *consolidateButton; // @synthesize consolidateButton=_consolidateButton;
-@property(retain, nonatomic) NSButton *proxyButton; // @synthesize proxyButton=_proxyButton;
-@property(retain, nonatomic) NSButton *optimizedButton; // @synthesize optimizedButton=_optimizedButton;
 - (void)viewDidMoveToWindow;
 - (void)awakeFromNib;
 - (void)consolidateButtonPressed:(id)arg1;

@@ -6,11 +6,12 @@
 
 #import <Flexo/FFPlayerItemModule.h>
 
+#import "FFDestVideoDelegate.h"
 #import "FFFieldDisplaySetting.h"
 
 @class FFDestVideoScopesGL;
 
-@interface FFPlayerVideoScopesModule : FFPlayerItemModule <FFFieldDisplaySetting>
+@interface FFPlayerVideoScopesModule : FFPlayerItemModule <FFFieldDisplaySetting, FFDestVideoDelegate>
 {
     FFDestVideoScopesGL *_destVideo;
     BOOL _showBothFields;
@@ -22,6 +23,7 @@
 - (id)viewProperties;
 - (void)setViewProperties:(id)arg1;
 - (struct CGRect)bounds;
+- (BOOL)isMultiangleViewer;
 - (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
 - (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)setDrawingEnabled:(BOOL)arg1;
@@ -44,6 +46,7 @@
 - (void)_updateDestVideoScopesColorSpace:(struct NSObject *)arg1;
 @property(getter=isMonochrome) BOOL monochrome; // @dynamic monochrome;
 @property float traceBrightness; // @dynamic traceBrightness;
+- (BOOL)is360Viewer;
 @property BOOL showBothFields; // @dynamic showBothFields;
 - (void)dealloc;
 - (id)init;

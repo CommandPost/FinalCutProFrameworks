@@ -16,6 +16,9 @@
     NSString *_pPath;
 }
 
++ (id)generateTag;
++ (id)defaultTag;
+- (BOOL)isUserCreated;
 - (BOOL)isWritable;
 - (void)setIsHidden:(BOOL)arg1;
 - (BOOL)isHidden;
@@ -27,11 +30,13 @@
 - (void)setName:(id)arg1;
 - (id)name;
 - (BOOL)save;
+- (void)setTag:(id)arg1;
+- (id)tag;
 - (long long)compare:(id)arg1;
 - (BOOL)isEqualToPreset:(id)arg1;
 - (void)dealloc;
 - (id)initWithContentsOfFile:(id)arg1;
-- (id)initWithPath:(id)arg1 name:(id)arg2;
+- (id)initWithPath:(id)arg1 name:(id)arg2 tag:(id)arg3;
 
 @end
 

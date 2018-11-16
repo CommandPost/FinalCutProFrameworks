@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property FFAddEffectComponentChooserRoleColorEnableButton *checkboxButton; // @synthesize checkboxButton=_checkboxButton;
 - (void)mouseDown:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

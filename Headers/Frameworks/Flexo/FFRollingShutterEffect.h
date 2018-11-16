@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)setPersistentData:(id)arg1;
 - (void)setRequestPending:(BOOL)arg1;
 - (BOOL)requestPending;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
 - (int)frameFromTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)sampleTimeFromTime:(CDStruct_1b6d18a9)arg1;
 - (int)sampleFromTime:(CDStruct_1b6d18a9)arg1;

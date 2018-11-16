@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     CDStruct_bdcb2b0d _md5;
     NSRecursiveLock *_lock;
     NSString *_MD5Seed;
+    _Bool _unsupportedFileFeature;
 }
 
 + (id)extensions;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)MD5Seed;
 - (void)setMD5Seed:(id)arg1;
 - (CDStruct_bdcb2b0d)_md5;
+- (_Bool)unsupportedFileFeature;
 - (id)nativeVideoProps;
 - (void)_setupSources;
 - (unsigned long long)pageCount;

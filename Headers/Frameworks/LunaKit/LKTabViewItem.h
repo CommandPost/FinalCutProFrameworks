@@ -18,8 +18,6 @@
 }
 
 + (void)initialize;
-- (void)setAccessoryView:(id)arg1;
-- (id)accessoryView;
 - (void)setPreferredRodStyle:(int)arg1;
 - (int)preferredRodStyle;
 - (id)_labelColor;

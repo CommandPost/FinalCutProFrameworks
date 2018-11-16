@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     long long _displayMode;
     long long _compositeVideoUnits;
+    int _colorSpaceType;
     void *_FFVideoScopesWaveformViewPrivate;
 }
 
@@ -24,12 +25,21 @@ __attribute__((visibility("hidden")))
 - (void)scrollWheel:(id)arg1;
 - (void)rightMouseDown:(id)arg1;
 - (void)mouseDown:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)setShowGuides:(BOOL)arg1;
 - (void)setZoomFactor:(float)arg1;
 - (void)setFrameSize:(struct CGSize)arg1;
+- (void)setHidden:(BOOL)arg1;
 - (void)awakeFromNib;
 - (void)buildLayers;
+- (BOOL)videoScopesWaveformYScaleWantsPQNits;
+- (BOOL)videoScopesWaveformYScaleWantsPercentages;
+@property int colorSpaceType; // @dynamic colorSpaceType;
+- (void)_resyncMarkerVisibility;
 @property long long compositeVideoUnits; // @dynamic compositeVideoUnits;
 @property long long displayMode; // @dynamic displayMode;
+- (void)_setColorSpaceType:(int)arg1;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

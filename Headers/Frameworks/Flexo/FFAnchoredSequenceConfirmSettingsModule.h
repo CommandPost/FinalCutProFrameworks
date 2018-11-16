@@ -6,26 +6,20 @@
 
 #import <Flexo/FFAnchoredSequenceSettingsModule.h>
 
-@class FFVideoFormat;
+@class FFVideoProps;
 
 __attribute__((visibility("hidden")))
 @interface FFAnchoredSequenceConfirmSettingsModule : FFAnchoredSequenceSettingsModule
 {
-    FFVideoFormat *_bestGuess;
-    struct CGSize _clipSize;
-    CDStruct_1b6d18a9 _clipSampleDuration;
-    int _clipFieldDominance;
-    struct CGColorSpace *_clipColorSpace;
+    BOOL _suggestChoosingCustom;
+    FFVideoProps *_bestGuess;
 }
 
 - (void)closingWithCode:(int)arg1;
 - (BOOL)loadView;
 - (void)changeVideoFormat:(id)arg1;
-- (void)setClipColorSpace:(struct CGColorSpace *)arg1;
-- (void)setClipFieldDominance:(int)arg1;
-- (void)setClipSampleDuration:(CDStruct_1b6d18a9)arg1;
-- (void)setClipSize:(struct CGSize)arg1;
 - (void)setBestGuess:(id)arg1;
+- (void)setSuggestChoosingCustomText:(BOOL)arg1;
 - (BOOL)isEmptyProject;
 - (void)dealloc;
 - (id)initWithProvider:(id)arg1;

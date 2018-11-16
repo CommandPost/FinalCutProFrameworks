@@ -31,10 +31,10 @@
 + (BOOL)terminatesModalModeAsCompletion;
 + (BOOL)globalTransactionResignsTool;
 + (id)TLKEventHandlerID;
-@property(nonatomic) FFSwitch *effectSwitch; // @synthesize effectSwitch=_effectSwitch;
-@property(nonatomic) LKButton *acceptButton; // @synthesize acceptButton=_acceptButton;
-@property(nonatomic) LKButton *cancelButton; // @synthesize cancelButton=_cancelButton;
-@property(nonatomic) NSView *adjustmentToolbarView; // @synthesize adjustmentToolbarView=_adjustmentToolbarView;
+@property(retain, nonatomic) FFSwitch *effectSwitch; // @synthesize effectSwitch=_effectSwitch;
+@property(retain, nonatomic) LKButton *acceptButton; // @synthesize acceptButton=_acceptButton;
+@property(retain, nonatomic) LKButton *cancelButton; // @synthesize cancelButton=_cancelButton;
+@property(retain, nonatomic) NSView *adjustmentToolbarView; // @synthesize adjustmentToolbarView=_adjustmentToolbarView;
 - (void)_enableApplyButton:(BOOL)arg1;
 - (void)selectedItemsChanged:(id)arg1 forParentTool:(id)arg2 contextTime:(CDStruct_1b6d18a9)arg3;
 - (void)toggleEffectEnabled:(id)arg1;

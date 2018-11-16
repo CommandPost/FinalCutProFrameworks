@@ -14,8 +14,9 @@
 }
 
 @property(retain, nonatomic) NSMapTable *nodesMap; // @synthesize nodesMap=_nodesMap;
-- (void)unregisterLayoutGraphNodeForObject:(id)arg1;
-- (void)registerLayoutGraphNode:(id)arg1 forObject:(id)arg2;
+- (void)_breakRetainCyclesForLayoutGraphNode:(id)arg1;
+- (void)unregisterLayoutGraphNode:(id)arg1;
+- (void)registerLayoutGraphNode:(id)arg1;
 - (id)layoutGraphNodeForObject:(id)arg1;
 - (void)dealloc;
 - (id)init;

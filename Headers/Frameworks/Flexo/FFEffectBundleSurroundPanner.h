@@ -35,8 +35,8 @@ __attribute__((visibility("hidden")))
 - (id)presetNames;
 - (BOOL)effectImpactsAudioChannelValence;
 - (void)effectStackAnchoredObjectDidChange;
-- (void)effectWillBeRemovedFromStack;
-- (void)effectWasAddedToStack:(int)arg1;
+- (void)effectDeactivated;
+- (void)effectActivated:(int)arg1;
 - (void)_removeAnchoredObjectObserving;
 - (void)_addAnchoredObjectObserving;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

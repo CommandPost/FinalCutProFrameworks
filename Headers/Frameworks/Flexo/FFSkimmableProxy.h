@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasAudio;
 - (CDStruct_e83c9415)mediaRange;
 - (id)modelLockingObject;
+- (id)mediaIndexingKey;
 - (id)mediaIdentifier;
 - (id)displayName;
 - (id)skimmableDefaultProviderOptions;

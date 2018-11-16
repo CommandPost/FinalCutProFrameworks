@@ -42,6 +42,8 @@
 - (void)showSharePanelWithSource:(id)arg1 destination:(id)arg2 destinationURL:(id)arg3 parentWindow:(id)arg4;
 - (void)queueShareOperationsForBatches:(id)arg1 addToTheater:(BOOL)arg2;
 - (void)missingMediaAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)warnForMissingMediaInWindow:(id)arg1 withSelection:(id)arg2 andSource:(id)arg3 andDestination:(id)arg4 withDestinationURL:(id)arg5;
+- (void)warnForProxyMediaInWindow:(id)arg1 andMissingContent:(BOOL)arg2 withSelection:(id)arg3 andSource:(id)arg4 andDestination:(id)arg5 withDestinationURL:(id)arg6;
 - (void)shareToDestination:(id)arg1 parentWindow:(id)arg2;
 - (void)stopPlayback;
 - (void)registerMediaServer;

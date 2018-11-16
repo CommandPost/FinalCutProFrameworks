@@ -6,14 +6,17 @@
 
 #import <Flexo/FFResponderLayerHostView.h>
 
-@class FFDestVideoScopesGL, LKMenu;
+#import "CALayerDelegate.h"
 
-@interface FFVideoScopesView : FFResponderLayerHostView
+@class FFDestVideoScopesGL, LKMenu, NSString;
+
+@interface FFVideoScopesView : FFResponderLayerHostView <CALayerDelegate>
 {
     LKMenu *_contextualMenu;
     float _zoomFactor;
     BOOL _drawingEnabled;
     FFDestVideoScopesGL *_destVideo;
+    BOOL _showGuides;
     void *_FFVideoScopesViewPrivate;
 }
 
@@ -43,12 +46,20 @@
 - (void)_updateLayersToTraceBrightness:(float)arg1 showGuides:(BOOL)arg2 monochrome:(BOOL)arg3;
 - (BOOL)isDrawingEnabled;
 - (void)setDrawingEnabled:(BOOL)arg1;
+- (BOOL)showGuides;
+- (void)setShowGuides:(BOOL)arg1;
 - (float)zoomFactor;
 - (void)setZoomFactor:(float)arg1;
 - (struct _CGLContextObject *)cglContext;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

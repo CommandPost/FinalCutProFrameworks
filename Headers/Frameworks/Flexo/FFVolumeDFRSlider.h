@@ -6,17 +6,17 @@
 
 #import "NSSlider.h"
 
-@class FFVolumeViewController, NSTimer;
+@class NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface FFVolumeDFRSlider : NSSlider
 {
+    id _controller;
     NSTimer *_repeatingTimer;
-    FFVolumeViewController *_controller;
 }
 
 + (void)initialize;
-@property __weak FFVolumeViewController *controller; // @synthesize controller=_controller;
+@property __weak id controller; // @synthesize controller=_controller;
 @property(retain) NSTimer *repeatingTimer; // @synthesize repeatingTimer=_repeatingTimer;
 - (void)touchesCancelledWithEvent:(id)arg1;
 - (void)touchesMovedWithEvent:(id)arg1;

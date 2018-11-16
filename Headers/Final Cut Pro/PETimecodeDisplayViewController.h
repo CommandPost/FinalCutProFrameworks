@@ -22,8 +22,8 @@
     BOOL _numericEntryInProgress;
     BOOL _observersRegistered;
     int _displayMode;
-    struct FFProcrastinatedDispatch_t _procrastinatedContext;
-    struct FFProcrastinatedDispatch_t _procrastinatedClickContext;
+    struct PCProcrastinatedDispatch_t _procrastinatedContext;
+    struct PCProcrastinatedDispatch_t _procrastinatedClickContext;
     BOOL _useExternalControlMode;
     BOOL _canDoNumericEntry;
     LKTextField *_timecodeTextField;
@@ -53,6 +53,7 @@
 - (void)setNumericEntryValue:(id)arg1;
 - (void)numericEntryDidEnd;
 - (void)delayDisableNumericEntry;
+- (void)disableNumericEntry;
 @property(readonly) BOOL numericEntryOngoing;
 - (void)numericEntryWillBegin;
 - (void)toggleNumericEntryType:(id)arg1;

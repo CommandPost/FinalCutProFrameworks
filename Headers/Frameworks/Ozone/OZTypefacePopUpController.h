@@ -18,24 +18,36 @@
     _Bool _areAllFontsEqual;
     _Bool _selectionDidChange;
     _Bool _aboutToChangeCalled;
+    BOOL _isMenuOpen;
 }
 
-@property(retain, nonatomic) LKPopUpButton *popUpButton; // @synthesize popUpButton=_popUpButton;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
-- (void)menu:(id)arg1 willHighlightItem:(id)arg2;
+@property(nonatomic) LKPopUpButton *popUpButton; // @synthesize popUpButton=_popUpButton;
+- (void)removeNotifications;
+- (void)setupNotifications;
+- (id)nibName;
+- (void)setChannel:(struct OZChannel *)arg1 value:(int)arg2 time:(CDStruct_1b6d18a9)arg3;
 - (void)menuDidClose:(id)arg1;
 - (void)menuWillOpen:(id)arg1;
 - (void)setChannelValue:(id)arg1;
-- (void)changeChannel:(id)arg1;
 - (void)_saveDefaultFont:(int)arg1;
+- (struct OZFontFamily *)getCurrentFamily;
+- (struct OZFontCollection *)getCurrentCollection;
+- (struct OZFontFace *)getFontFaceForChannel:(struct OZChannel *)arg1;
+- (BOOL)areAllFontsEqual;
+- (void)updatePopUpMenu:(BOOL)arg1;
+- (void)changeChannel:(id)arg1;
 - (void)disable;
 - (void)enable;
 - (void)update;
 - (void)reset;
-- (BOOL)areAllFontsEqual;
+- (void)familyChanged;
+- (void)setMenuTitle;
 - (void)selectItemAtIndex:(int)arg1 setChannel:(_Bool)arg2;
-- (void)updatePopUpMenu:(BOOL)arg1;
+- (void)inspectorWillDealloc;
+- (BOOL)isMenuOpen;
+- (void)menu:(id)arg1 willHighlightItem:(id)arg2;
 - (void)familyChanged:(id)arg1;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

@@ -208,8 +208,6 @@
 - (id)moduleNibName;
 - (id)delegate;
 - (void)setDelegate:(id)arg1;
-- (oneway void)release;
-- (id)_autounbinder;
 - (void)dealloc;
 - (id)initWithModuleNibName:(id)arg1;
 - (id)initWithModuleNibName:(id)arg1 quarantined:(BOOL)arg2;

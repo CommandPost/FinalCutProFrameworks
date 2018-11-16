@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) FFEventRecord *currentEventRecord; // @synthesize currentEventRecord=_currentEventRecord;
-@property(retain, nonatomic) FFCPSClapperboardView *eventPosterView; // @synthesize eventPosterView=_eventPosterView;
-@property(retain, nonatomic) LKTextField *multiEventLabel; // @synthesize multiEventLabel=_multiEventLabel;
+@property(readonly, nonatomic) FFCPSClapperboardView *eventPosterView; // @synthesize eventPosterView=_eventPosterView;
+@property(readonly, nonatomic) LKTextField *multiEventLabel; // @synthesize multiEventLabel=_multiEventLabel;
 - (void)setPosterViewForEvent:(id)arg1;
 - (void)setDisplayToEvent:(id)arg1;
 - (void)clearDisplay;

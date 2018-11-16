@@ -43,7 +43,7 @@
 - (void)markerMenuNextPrevious:(id)arg1 markers:(const struct OZTimeMarkerSet *)arg2 offset:(CDStruct_1b6d18a9)arg3;
 - (void)markerMenuAddInfoDelete:(id)arg1 root:(struct OZChannelObjectRoot *)arg2 range:(const struct PCTimeRange *)arg3 offset:(CDStruct_1b6d18a9)arg4 startingLocation:(struct CGPoint)arg5;
 - (id)menuForEvent:(id)arg1 markers:(const struct OZTimeMarkerSet *)arg2 offset:(CDStruct_1b6d18a9)arg3 startingLocation:(struct CGPoint)arg4 boundsRect:(struct CGRect)arg5 gutterMenu:(BOOL)arg6;
-- (reverse_iterator_f99d9852)findMarker:(const struct OZTimeMarkerSet *)arg1 offset:(CDStruct_1b6d18a9)arg2 startingLocation:(struct CGPoint)arg3;
+- (reverse_iterator_ef69d940)findMarker:(const struct OZTimeMarkerSet *)arg1 offset:(CDStruct_1b6d18a9)arg2 startingLocation:(struct CGPoint)arg3;
 - (void)resetMarkerCursorRects:(const struct OZTimeMarkerSet *)arg1 offset:(CDStruct_1b6d18a9)arg2 boundsRect:(struct CGRect)arg3;
 - (void)updateMarkerToolTips:(const struct OZTimeMarkerSet *)arg1 offset:(CDStruct_1b6d18a9)arg2 boundsRect:(struct CGRect)arg3;
 - (CDStruct_1b6d18a9)findEmptySpot:(const struct OZTimeMarkerSet *)arg1 start:(CDStruct_1b6d18a9)arg2 delta:(CDStruct_1b6d18a9)arg3;

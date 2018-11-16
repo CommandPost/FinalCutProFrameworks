@@ -21,7 +21,7 @@
 - (void)enableItemForValue:(unsigned int)arg1 isEnabled:(BOOL)arg2;
 - (void)mapValue:(int)arg1 toDisplayValue:(int)arg2;
 - (void)deleteThis;
-- (void)doDrag:(list_e5c8e430 *)arg1 viewList:(id)arg2;
+- (void)doDrag:(list_9af5505e *)arg1 viewList:(id)arg2;
 - (id)labelTextForChannel:(struct OZChannelBase *)arg1;
 - (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 materialLayer:(struct OZMaterialLayerBase *)arg3 atTime:(CDStruct_198678f7)arg4;
 - (id)materialController;

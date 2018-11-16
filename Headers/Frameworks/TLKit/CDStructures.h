@@ -34,6 +34,10 @@ struct NSEdgeInsets {
     double right;
 };
 
+struct NSMapTable {
+    Class _field1;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;

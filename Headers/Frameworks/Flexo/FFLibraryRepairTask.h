@@ -22,6 +22,7 @@
 + (id)prepareTemporaryStore:(id)arg1 identifier:(id)arg2 error:(id *)arg3;
 + (BOOL)replaceStoreURL:(id)arg1 withURL:(id)arg2 error:(id *)arg3;
 + (id)scanForItemRecords:(id)arg1 error:(id *)arg2;
++ (BOOL)checkComponentsForReservedProjectOrEventName:(id)arg1;
 + (id)repair:(id)arg1 error:(id *)arg2;
 + (BOOL)validateOrDeleteDatabase:(id)arg1 error:(id *)arg2;
 - (id)newClipAssetsFromDirectory:(id)arg1 manageFileType:(int)arg2 forEvent:(id)arg3 error:(id *)arg4;

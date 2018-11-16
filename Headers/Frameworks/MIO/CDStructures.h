@@ -10,17 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct AudioBuffer {
-    unsigned int _field1;
-    unsigned int _field2;
-    void *_field3;
-};
-
-struct AudioBufferList {
-    unsigned int _field1;
-    struct AudioBuffer _field2[1];
-};
-
 struct AudioChannelDescription {
     unsigned int _field1;
     unsigned int _field2;
@@ -45,8 +34,6 @@ struct AudioStreamBasicDescription {
     unsigned int _field8;
     unsigned int _field9;
 };
-
-struct AudioStreamPacketDescription;
 
 struct BaseDevice {
     CDUnknownFunctionPointerType *_field1;
@@ -99,58 +86,6 @@ struct FSRef {
     unsigned char hidden[80];
 };
 
-struct ImageDescription;
-
-struct MIORADPlugInMediaSpecifier {
-    unsigned int _field1;
-    struct opaqueCMSampleBuffer *_field2;
-    struct opaqueCMSampleBuffer *_field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned char _field6;
-    unsigned char _field7;
-    unsigned char _field8;
-};
-
-struct MIORADPlugInMediaSpecifier_Deprecated {
-    unsigned int _field1;
-    char *_field2;
-    unsigned int _field3;
-    long long _field4;
-    long long _field5;
-    long long _field6;
-    int _field7;
-    struct ImageDescription *_field8;
-    unsigned int _field9;
-    id _field10;
-    void *_field11;
-    struct AudioBufferList *_field12;
-    unsigned int _field13;
-    struct AudioStreamPacketDescription *_field14;
-    long long _field15;
-    long long _field16;
-    long long _field17;
-    int _field18;
-    struct AudioStreamBasicDescription *_field19;
-    unsigned int _field20;
-    struct AudioChannelLayout *_field21;
-    unsigned int _field22;
-    char *_field23;
-    unsigned int _field24;
-    id _field25;
-    void *_field26;
-    unsigned int _field27;
-    unsigned int _field28;
-    unsigned char _field29;
-    unsigned char _field30;
-    unsigned char _field31;
-    unsigned int _field32;
-    struct __CFDictionary *_field33;
-    struct __CFDictionary *_field34;
-    struct __CFDictionary *_field35;
-    struct __CFDictionary *_field36;
-};
-
 struct SMPTETime {
     short mSubframes;
     short mSubframeDivisor;
@@ -177,19 +112,31 @@ struct Synchronizable {
     } _field5;
 };
 
-struct TimecodeInfo {
-    long long counter;
-    unsigned long long frameQuanta;
-    char isDropFrame;
-    CDStruct_1b6d18a9 frameDuration;
-    char isValid;
-};
-
 struct TimecodeObserverWrapper;
 
-struct __CFDictionary;
+struct __list_node_base<MIOOP1aReaderTrackOutput *, void *> {
+    struct __list_node_base<MIOOP1aReaderTrackOutput *, void *> *_field1;
+    struct __list_node_base<MIOOP1aReaderTrackOutput *, void *> *_field2;
+};
 
-struct opaqueCMSampleBuffer;
+struct __list_node_base<opaqueCMSampleBuffer *, void *> {
+    struct __list_node_base<opaqueCMSampleBuffer *, void *> *_field1;
+    struct __list_node_base<opaqueCMSampleBuffer *, void *> *_field2;
+};
+
+struct list<MIOOP1aReaderTrackOutput *, std::__1::allocator<MIOOP1aReaderTrackOutput *>> {
+    struct __list_node_base<MIOOP1aReaderTrackOutput *, void *> _field1;
+    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<MIOOP1aReaderTrackOutput *, void *>>> {
+        unsigned long long _field1;
+    } _field2;
+};
+
+struct list<opaqueCMSampleBuffer *, std::__1::allocator<opaqueCMSampleBuffer *>> {
+    struct __list_node_base<opaqueCMSampleBuffer *, void *> _field1;
+    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<opaqueCMSampleBuffer *, void *>>> {
+        unsigned long long _field1;
+    } _field2;
+};
 
 #pragma mark Typedef'd Structures
 
@@ -205,8 +152,18 @@ typedef struct {
     CDStruct_1b6d18a9 duration;
 } CDStruct_e83c9415;
 
-typedef struct {
-    CDStruct_e83c9415 source;
-    CDStruct_e83c9415 target;
-} CDStruct_82206317;
+// Template types
+typedef struct list<MIOOP1aReaderTrackOutput *, std::__1::allocator<MIOOP1aReaderTrackOutput *>> {
+    struct __list_node_base<MIOOP1aReaderTrackOutput *, void *> _field1;
+    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<MIOOP1aReaderTrackOutput *, void *>>> {
+        unsigned long long _field1;
+    } _field2;
+} list_931eae18;
+
+typedef struct list<opaqueCMSampleBuffer *, std::__1::allocator<opaqueCMSampleBuffer *>> {
+    struct __list_node_base<opaqueCMSampleBuffer *, void *> _field1;
+    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<opaqueCMSampleBuffer *, void *>>> {
+        unsigned long long _field1;
+    } _field2;
+} list_4609f400;
 

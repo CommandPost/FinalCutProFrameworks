@@ -23,6 +23,9 @@
     NSTextField *videoWidthField;
     NSTextField *videoHeightField;
     NSPopUpButton *videoRateMenu;
+    NSView *projectionTypeView;
+    NSPopUpButton *cameraModeMenu;
+    NSView *renderingAndAudioSettingsView;
     NSPopUpButton *colorSpaceMenu;
     NSPopUpButton *renderFormatMenu;
     NSPopUpButton *sampleRateMenu;
@@ -50,6 +53,7 @@
     NSTextField *setBasedOnPropertiesField;
     NSTextField *commonVideoPropField;
     NSTextField *defaultAudioPropField;
+    NSTextField *confirmUnrecognizedSettingsTextField;
     BOOL _mixedTCTracksClockTime;
     BOOL _automaticBasedOnMostCommon;
     BOOL _createAutomatically;
@@ -60,12 +64,21 @@
     FFProject *_project;
     NSInvocation *_completionCallback;
     NSString *_startTimeString;
+    struct CGSize _clipSize;
+    CDStruct_1b6d18a9 _clipSampleDuration;
+    int _clipFieldDominance;
+    struct CGColorSpace *_clipColorSpace;
     FFLibrary *_defaultSelectedLibrary;
 }
 
-+ (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 createAutomatically:(BOOL)arg9 createCompoundClipAutomatically:(BOOL)arg10 createSynchronizedClipAutomatically:(BOOL)arg11 syncClipSyncBy:(int)arg12 syncClipFineSyncByAudio:(BOOL)arg13 syncClipDisableAudioComponentsOnAVClips:(BOOL)arg14 createMultiCamAutomatically:(BOOL)arg15 multiAngleSyncBy:(int)arg16 multiAngleArrangeBy:(int)arg17 multiAngleOrderBy:(int)arg18 multiAngleFineSyncByAudio:(BOOL)arg19;
++ (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 createAutomatically:(BOOL)arg9 createCompoundClipAutomatically:(BOOL)arg10 createSynchronizedClipAutomatically:(BOOL)arg11 syncClipSyncBy:(int)arg12 syncClipFineSyncByAudio:(BOOL)arg13 syncClipDisableAudioComponentsOnAVClips:(BOOL)arg14 createMultiCamAutomatically:(BOOL)arg15 multiAngleSyncBy:(int)arg16 multiAngleArrangeBy:(int)arg17 multiAngleOrderBy:(int)arg18 multiAngleFineSyncByAudio:(BOOL)arg19 cameraMode:(int)arg20;
 @property(retain, nonatomic) FFLibrary *defaultSelectedLibrary; // @synthesize defaultSelectedLibrary=_defaultSelectedLibrary;
+@property(nonatomic) int sequenceType; // @synthesize sequenceType=_sequenceType;
 @property(nonatomic) BOOL canShowCustomSettings; // @synthesize canShowCustomSettings=_canShowCustomSettings;
+- (void)setClipColorSpace:(struct CGColorSpace *)arg1;
+- (void)setClipFieldDominance:(int)arg1;
+- (void)setClipSampleDuration:(CDStruct_1b6d18a9)arg1;
+- (void)setClipSize:(struct CGSize)arg1;
 - (BOOL)validate:(id *)arg1;
 - (void)closingWithCode:(int)arg1;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;
@@ -76,11 +89,15 @@
 @property(nonatomic) NSString *renderFormat;
 - (void)changeStartingTimecode:(id)arg1;
 - (void)changeTimecodeDisplay:(id)arg1;
+- (void)changeCameraMode:(id)arg1;
 - (void)changeColorSpace:(id)arg1;
+- (void)changeCustomSize:(id)arg1;
 - (void)changeVideoSize:(id)arg1;
 - (void)changeVideoFormat:(id)arg1;
+- (void)_updateUIForEquirectPaspScaling;
 - (void)changeVideoRate:(id)arg1;
 - (void)changeSyncByForMultiAngle:(id)arg1;
+- (void)setProjectionTypeSettingsHidden:(BOOL)arg1;
 - (void)setMultiAngleSettingsForSynchronizeClips;
 - (void)setMultiAngleSettingsHidden:(BOOL)arg1;
 - (void)setMultiAngleAudioSyncSettingsHidden:(BOOL)arg1;
@@ -102,6 +119,7 @@
 - (BOOL)createAutomatically;
 - (void)toggleCreationSettings;
 - (void)_validateEventNameForLibrary:(id)arg1;
+- (void)_buildCameraProjectionModeMenuBasedOnFormatAndMode:(id)arg1;
 - (void)_buildColorSpaceMenuBasedOnFormatAndSize:(id)arg1;
 - (void)_buildRateMenuBasedOnCurrentRateAndFormatAndSize;
 - (void)_buildSizeMenuBasedOnCurrentRateAndFormat;
@@ -119,6 +137,7 @@
 - (void)setUserModifySettings:(BOOL)arg1;
 - (void)setAutomaticBasedOnMostCommon:(BOOL)arg1;
 - (void)setCompletionCallback:(id)arg1;
+- (BOOL)disableCustomSettingsButton;
 - (BOOL)showCustomSettingsButton;
 - (BOOL)createProjectOrEvent;
 - (BOOL)createProject;

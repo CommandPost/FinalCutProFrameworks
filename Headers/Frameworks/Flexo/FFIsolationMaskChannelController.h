@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property FFIsoSoftnessSlider *softnessSlider; // @synthesize softnessSlider=_softnessSlider;
 @property OZColorWell *keyerWell; // @synthesize keyerWell=_keyerWell;
 - (float)suggestedMinParamWidth;
-- (BOOL)shouldAddDisclosureButton;
+- (int)shouldAddDisclosureButton;
 - (void)_syncActiveOSCState;
 - (void)toggleOSC:(id)arg1;
 - (void)validateSoftnessState:(id)arg1;
