@@ -4,17 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSScroller.h"
+#import "NSProScroller.h"
 
-@interface LKScroller : NSScroller
+@interface LKScroller : NSProScroller
 {
-    BOOL _isOverlayScroller;
 }
 
-+ (BOOL)isCompatibleWithOverlayScrollers;
-- (void)setIsOverlayScroller:(BOOL)arg1;
-- (struct CGRect)rectForPart:(unsigned long long)arg1;
-- (void)drawKnobSlotInRect:(struct CGRect)arg1 highlight:(BOOL)arg2;
+- (id)_slotFacet;
+- (id)_arrowFacetForArrowPosition:(unsigned long long)arg1 configuration:(int)arg2;
+- (id)_cornerFacet;
+- (id)_thumbFacet;
 
 @end
 

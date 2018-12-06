@@ -10,12 +10,10 @@
 {
 }
 
-+ (id)toolbarFacetImageOff;
-+ (id)toolbarFacetImageOn;
-+ (id)toolTip;
-+ (id)displayName;
 + (void)initialize;
-+ (id)TLKEventHandlerID;
++ (id)displayName;
++ (id)toolTip;
++ (id)toolbarFacet;
 - (BOOL)handlesSelection;
 
 @end

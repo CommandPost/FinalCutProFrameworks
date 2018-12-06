@@ -6,33 +6,24 @@
 
 #import <Flexo/FFHeliumEffect.h>
 
+@class CHChannelEnum;
+
 __attribute__((visibility("hidden")))
 @interface FFHeMultiCamEffect : FFHeliumEffect
 {
-    long long _angle;
-    long long _numberOfRows;
-    long long _numberOfCols;
+    CHChannelEnum *_chCameraAngleChannel;
 }
 
-+ (long long)adjustedAngleOffsetUsingCount:(long long)arg1 angleOffset:(long long)arg2 angleCount:(long long)arg3;
-+ (void)multiAngleRowsAndColumnCountFromNumberOfAngles:(long long)arg1 rows:(long long *)arg2 columns:(long long *)arg3;
-+ (long long)getAngleNumberForMulticamInputString:(id)arg1;
-+ (id)getInputKeyForMultiCamAngle:(long long)arg1;
-+ (id)getMultiCamNumberedInputKeysArray;
 + (void)registerEffects;
-- (BOOL)supportsReentrancy;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
-- (CDStruct_bdcb2b0d)md5;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
-- (int)_row;
-- (int)_column;
-- (long long)_workingScale;
-- (void)setNumberOfCols:(unsigned long long)arg1;
-- (void)setNumberOfRows:(unsigned long long)arg1;
-- (void)setAngle:(unsigned long long)arg1;
-- (id)inputKeys;
-- (struct HGNode *)newNodeForContext:(id)arg1;
 - (id)initWithEffectID:(id)arg1;
+- (void)dealloc;
+- (struct HGNode *)newNodeForContext:(id)arg1;
+- (id)cameraAngleChannel;
+- (void)createChannelsInFolder:(id)arg1;
+- (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
+- (id)inputKeys;
+-     // Error parsing type: ^{HGTransform=^^?I($_4944=[4][16f][16d])}64@0:8q16q24{CGRect={CGPoint=dd}{CGSize=dd}}32, name: newHGTransformForAngleCount:angle:bounds:
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(struct CGRect *)arg7;
 
 @end
 

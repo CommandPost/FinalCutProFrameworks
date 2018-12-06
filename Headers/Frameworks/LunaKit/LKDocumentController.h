@@ -19,19 +19,19 @@
     void *_reserved3;
 }
 
-- (BOOL)isInCloseAllCycle;
-- (void)closeDocuments:(id)arg1 startingWith:(id)arg2 shouldClose:(BOOL)arg3 closeAllContext:(void *)arg4;
-- (void)closeAllCycleDocument:(id)arg1 shouldClose:(BOOL)arg2 closeAllContext:(void *)arg3;
-- (void)closeAllCycleSheetDidClose:(id)arg1;
-- (void)closeDocuments:(id)arg1 withDelegate:(id)arg2 didCloseSelector:(SEL)arg3 contextInfo:(void *)arg4;
-- (void)closeAllDocumentsWithDelegate:(id)arg1 didCloseAllSelector:(SEL)arg2 contextInfo:(void *)arg3;
-- (void)document:(id)arg1 shouldClose:(BOOL)arg2 contextInfo:(void *)arg3;
-- (id)openDocumentWithContentsOfURL:(id)arg1 display:(BOOL)arg2 error:(id *)arg3;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)closeCurrentDocument:(id)arg1;
-- (void)removeDocument:(id)arg1;
-- (void)addDocument:(id)arg1;
 - (id)init;
+- (void)addDocument:(id)arg1;
+- (void)removeDocument:(id)arg1;
+- (void)closeCurrentDocument:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
+- (id)openDocumentWithContentsOfURL:(id)arg1 display:(BOOL)arg2 error:(id *)arg3;
+- (void)document:(id)arg1 shouldClose:(BOOL)arg2 contextInfo:(void *)arg3;
+- (void)closeAllDocumentsWithDelegate:(id)arg1 didCloseAllSelector:(SEL)arg2 contextInfo:(void *)arg3;
+- (void)closeDocuments:(id)arg1 withDelegate:(id)arg2 didCloseSelector:(SEL)arg3 contextInfo:(void *)arg4;
+- (void)closeAllCycleSheetDidClose:(id)arg1;
+- (void)closeAllCycleDocument:(id)arg1 shouldClose:(BOOL)arg2 closeAllContext:(void *)arg3;
+- (void)closeDocuments:(id)arg1 startingWith:(id)arg2 shouldClose:(BOOL)arg3 closeAllContext:(void *)arg4;
+- (BOOL)isInCloseAllCycle;
 
 @end
 

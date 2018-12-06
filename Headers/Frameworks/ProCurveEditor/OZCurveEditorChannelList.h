@@ -16,36 +16,36 @@
 }
 
 + (unsigned long long)defaultFocusRingType;
-@property(nonatomic) BOOL ignoreSetNeedsDisplay; // @synthesize ignoreSetNeedsDisplay=_ignoreSetNeedsDisplay;
-- (BOOL)canDragRowsWithIndexes:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (void)dragImage:(id)arg1 at:(struct CGPoint)arg2 offset:(struct CGSize)arg3 event:(id)arg4 pasteboard:(id)arg5 source:(id)arg6 slideBack:(BOOL)arg7;
-- (void)draggedImage:(id)arg1 endedAt:(struct CGPoint)arg2 operation:(unsigned long long)arg3;
-- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)updateTrackingAreas;
-- (void)mouseUp:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (BOOL)acceptsFirstMouse:(id)arg1;
-- (void)textDidEndEditing:(id)arg1;
-- (BOOL)resignFirstResponder;
-- (BOOL)becomeFirstResponder;
-- (BOOL)acceptsFirstResponder;
-- (void)keyDown:(id)arg1;
-- (void)selectNone:(id)arg1;
-- (void)selectAll:(id)arg1;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)paste:(id)arg1;
-- (void)delete:(id)arg1;
-- (void)cut:(id)arg1;
-- (void)copy:(id)arg1;
-- (void)setNeedsDisplayInRect:(struct CGRect)arg1;
-- (void)setNeedsDisplay:(BOOL)arg1;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
+- (void)setNeedsDisplay:(BOOL)arg1;
+- (void)setNeedsDisplayInRect:(struct CGRect)arg1;
+- (void)copy:(id)arg1;
+- (void)cut:(id)arg1;
+- (void)delete:(id)arg1;
+- (void)paste:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)selectAll:(id)arg1;
+- (void)selectNone:(id)arg1;
+- (void)keyDown:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)becomeFirstResponder;
+- (BOOL)resignFirstResponder;
+- (void)textDidEndEditing:(id)arg1;
+- (BOOL)acceptsFirstMouse:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)updateTrackingAreas;
+- (void)mouseMoved:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)arg1;
+- (void)draggedImage:(id)arg1 endedAt:(struct CGPoint)arg2 operation:(unsigned long long)arg3;
+- (void)dragImage:(id)arg1 at:(struct CGPoint)arg2 offset:(struct CGSize)arg3 event:(id)arg4 pasteboard:(id)arg5 source:(id)arg6 slideBack:(BOOL)arg7;
+- (BOOL)canDragRowsWithIndexes:(id)arg1 atPoint:(struct CGPoint)arg2;
+@property(nonatomic) BOOL ignoreSetNeedsDisplay; // @synthesize ignoreSetNeedsDisplay=_ignoreSetNeedsDisplay;
 
 @end
 

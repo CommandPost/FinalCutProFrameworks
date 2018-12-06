@@ -8,7 +8,7 @@
 
 #import "PROAPIAccessing.h"
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary;
 
 @interface OZFxPlugAPIManager : NSObject <PROAPIAccessing>
 {
@@ -16,19 +16,13 @@
     struct PCRecursiveMutex _mutex;
 }
 
+- (id)init;
+- (void)dealloc;
+- (void)registerAPIObject:(id)arg1 forProtocol:(id)arg2 version:(unsigned int)arg3;
+- (void)unregisterAPIForProtocol:(id)arg1;
+- (id)apiForProtocol:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)apiForProtocol:(id)arg1;
-- (void)unregisterAPIForProtocol:(id)arg1;
-- (void)registerAPIObject:(id)arg1 forProtocol:(id)arg2 version:(unsigned int)arg3;
-- (void)dealloc;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

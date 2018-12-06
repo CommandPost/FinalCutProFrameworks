@@ -6,32 +6,28 @@
 
 #import <Flexo/FFImageRep.h>
 
-@class FFHGRendererManager, FFImageRepBindingInfo, FFPixelFormat, NSMutableArray;
+@class FFHGRendererManager, FFPixelFormat, FFRendererInfo;
 
 __attribute__((visibility("hidden")))
 @interface FFImageRepHGNode : FFImageRep
 {
     struct HGNode *_hgNode;
     FFHGRendererManager *_rendererMgr;
-    NSMutableArray *_hgNodeReleasers;
+    FFRendererInfo *_rendererInfo;
     struct CGRect _pixelSpaceBounds;
     FFPixelFormat *_pixelFormat;
-    FFImageRepBindingInfo *_bindingInfo;
 }
 
-- (void)setImageRepBindingInfo:(id)arg1;
-- (id)imageRepBindingInfo;
-- (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
-- (struct HGNode *)_hgNode;
-- (struct CGRect)pixelSpaceBounds;
-- (id)type;
-- (id)nativePixelFormat;
-- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
-- (void)_checkImageFlattenOptions:(const CDStruct_302d8f15 *)arg1;
-- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
-- (void)dealloc;
-- (id)initWithRepresentation:(id)arg1;
 - (id)initWithHGNode:(struct HGNode *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 pixelSpaceBounds:(struct CGRect)arg4 field:(unsigned int)arg5 pixelFormat:(id)arg6;
+- (id)initWithRepresentation:(id)arg1;
+- (void)dealloc;
+- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
+- (id)nativePixelFormat;
+- (id)type;
+- (struct CGRect)pixelSpaceBounds;
+- (struct HGNode *)_hgNode;
+- (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
 
 @end
 

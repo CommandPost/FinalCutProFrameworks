@@ -13,11 +13,10 @@
     NSMenu *_objectMenu;
 }
 
-- (void)keyDown:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (id)menuForEvent:(id)arg1;
-- (void)awakeFromNib;
 - (void)dealloc;
+- (id)menuForEvent:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)keyDown:(id)arg1;
 
 @end
 

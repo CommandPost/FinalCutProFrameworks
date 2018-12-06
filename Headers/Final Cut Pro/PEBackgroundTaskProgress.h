@@ -15,13 +15,13 @@
     FFBackgroundTask *_backgroundTask;
 }
 
-@property(retain) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
-- (void)cancelManualRender:(id)arg1;
-- (void)runModal;
-- (void)close;
-- (void)windowDidLoad;
-- (void)dealloc;
 - (id)initWithTask:(id)arg1;
+- (void)dealloc;
+- (void)windowDidLoad;
+- (void)close;
+- (void)runModal;
+- (void)cancelManualRender:(id)arg1;
+@property(retain) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
 
 @end
 

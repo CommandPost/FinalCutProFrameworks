@@ -5,8 +5,8 @@
 //
 
 @protocol FxCustomParameterActionAPI
-- (double)currentTime;
-- (void)endAction:(id)arg1;
 - (void)startAction:(id)arg1;
+- (void)endAction:(id)arg1;
+- (double)currentTime;
 @end
 

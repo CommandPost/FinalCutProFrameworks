@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSLock, NSMutableArray, NSMutableDictionary, NSString;
+@class NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface PROConcretePlugInGroup : NSObject
@@ -16,23 +16,22 @@ __attribute__((visibility("hidden")))
     NSString *name;
     NSString *displayName;
     NSMutableDictionary *protocols;
-    NSLock *mutex;
 }
 
-- (id)plugInsForProtocols:(id)arg1;
-- (id)description;
-- (id)uuidString;
-- (struct __CFUUID *)uuid;
-- (id)plugIns;
-- (id)displayName;
-- (id)name;
-- (void)removePlugIn:(id)arg1;
-- (void)addPlugIn:(id)arg1;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToPlugInGroup:(id)arg1;
-- (void)dealloc;
 - (id)initWithUUID:(struct __CFUUID *)arg1 name:(id)arg2 bundle:(id)arg3;
+- (void)dealloc;
+- (BOOL)isEqualToPlugInGroup:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (void)addPlugIn:(id)arg1;
+- (void)removePlugIn:(id)arg1;
+- (id)name;
+- (id)displayName;
+- (id)plugIns;
+- (struct __CFUUID *)uuid;
+- (id)uuidString;
+- (id)description;
+- (id)plugInsForProtocols:(id)arg1;
 
 @end
 

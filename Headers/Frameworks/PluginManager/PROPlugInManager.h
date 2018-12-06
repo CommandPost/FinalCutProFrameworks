@@ -10,40 +10,28 @@
 {
 }
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)sharedPlugInManager;
-- (void)unregisterAPIForProtocol:(id)arg1;
-- (void)unregisterAPIForProtocol:(id)arg1 version:(unsigned int)arg2;
-- (void)registerAPIObject:(id)arg1 forProtocol:(id)arg2 version:(unsigned int)arg3;
-- (id)plugInGroupWithUUID:(struct __CFUUID *)arg1;
-- (id)plugInWithClassName:(id)arg1;
-- (id)plugInWithUUID:(struct __CFUUID *)arg1;
-- (id)plugInsForProtocols:(id)arg1;
-- (id)plugInsForProtocol:(id)arg1;
-- (id)blockedDocumentPlugins;
-- (id)blockedLibraryPlugins;
-- (id)plugIns;
-- (id)plugInGroupsMutable;
-- (id)plugInGroups;
-- (void)removeAllBlockedDocumentPlugins;
-- (void)getNameOverrides:(id)arg1 pluginName:(id *)arg2 bundleName:(id *)arg3;
-- (BOOL)checkIfShouldBlockPlugin:(id)arg1 returnPluginDictionary:(id *)arg2;
-- (BOOL)checkPluginVersionAgainstBlockList:(id)arg1 blockDict:(id)arg2;
-- (id)loadBlockPluginList:(struct __CFString *)arg1;
-- (void)addDocumentBlockedPlugin:(id)arg1;
-- (void)addLibraryBlockedPlugin:(id)arg1 bundleName:(id)arg2 pluginName:(id)arg3 version:(id)arg4;
-- (void)removeAllPlugIns;
-- (void)scanForPlugInsInBundle:(id)arg1 withPluginKitPlugIn:(id)arg2;
-- (void)scanForPlugInsInBundle:(id)arg1;
-- (void)scanForPlugInsInDirectory:(id)arg1;
-- (void)scanForPlugIns;
-- (id)plugInSearchDirectories;
-- (void)setPlugInSearchDirectories:(id)arg1;
-- (void)addPlugInSearchDirectory:(id)arg1;
-- (void)setRequiresProtocolsToBePresentWhenLoading:(BOOL)arg1;
-- (BOOL)requiresProtocolsToBePresentWhenLoading;
-- (void)setDelegate:(id)arg1;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)delegate;
+- (void)setDelegate:(id)arg1;
+- (BOOL)requiresProtocolsToBePresentWhenLoading;
+- (void)setRequiresProtocolsToBePresentWhenLoading:(BOOL)arg1;
+- (void)addPlugInSearchDirectory:(id)arg1;
+- (void)setPlugInSearchDirectories:(id)arg1;
+- (id)plugInSearchDirectories;
+- (void)scanForPlugIns;
+- (void)scanForPlugInsInDirectory:(id)arg1;
+- (void)removeAllPlugIns;
+- (id)plugInGroups;
+- (id)plugIns;
+- (id)plugInsForProtocol:(id)arg1;
+- (id)plugInsForProtocols:(id)arg1;
+- (id)plugInWithUUID:(struct __CFUUID *)arg1;
+- (id)plugInWithClassName:(id)arg1;
+- (id)plugInGroupWithUUID:(struct __CFUUID *)arg1;
+- (void)registerAPIObject:(id)arg1 forProtocol:(id)arg2 version:(unsigned int)arg3;
+- (void)unregisterAPIForProtocol:(id)arg1 version:(unsigned int)arg2;
+- (void)unregisterAPIForProtocol:(id)arg1;
 
 @end
 

@@ -6,12 +6,10 @@
 
 #import "TLKAccessoryLayer.h"
 
-#import "FFResponderLayerHost.h"
-
 @class FFResponderLayer, NSMapTable;
 
 __attribute__((visibility("hidden")))
-@interface FFResponderAccessoryLayer : TLKAccessoryLayer <FFResponderLayerHost>
+@interface FFResponderAccessoryLayer : TLKAccessoryLayer
 {
     BOOL _isModelLayer;
     FFResponderLayer *_responderLayer;
@@ -22,52 +20,49 @@ __attribute__((visibility("hidden")))
     struct CGPoint _mostRecentPartPoint;
 }
 
-- (BOOL)wantsToHandlePredominantDrag;
-- (id)stringForToolTipAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (id)accessibilityFocusedUIElement;
-- (id)accessibilityHitTest:(struct CGPoint)arg1;
-- (BOOL)accessibilityIsIgnored;
-- (void)accessibilityPerformAction:(id)arg1;
-- (id)accessibilityActionDescription:(id)arg1;
-- (id)accessibilityActionNames;
-- (void)accessibilitySetValue:(id)arg1 forAttribute:(id)arg2;
-- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)accessibilityAttributeNames;
-- (id)_accessibilityParent;
-- (BOOL)performKeyEquivalent:(id)arg1;
-- (BOOL)shouldAutoscroll:(id)arg1;
-- (void)flagsChanged:(id)arg1;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (void)exitRollover:(id)arg1;
-- (void)updateRollover:(id)arg1;
-- (BOOL)enterRollover:(id)arg1;
-- (void)_handleRolloverEvent:(id)arg1;
-- (void)_handleRolloverFlagsChangedEvent:(id)arg1;
-- (void)_handleRolloverMouseEvent:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
-- (void)cancelTracking:(id)arg1;
-- (BOOL)continueTracking:(id)arg1;
-- (BOOL)startTracking:(id)arg1;
-- (id)contextMenu;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (BOOL)partContainsPoint:(struct CGPoint)arg1;
-- (id)accessibilityParentForResponderLayer:(id)arg1;
-- (void)setSkimmingPlayheadHidden:(BOOL)arg1;
-- (void)hostLayerChanged;
-- (void)responderLayer:(id)arg1 needsHeightChanged:(double)arg2;
-@property id focusOwner;
-- (id)hostView;
-- (id)responderLayer;
-- (void)_clearTrackingInfoForLayer:(id)arg1;
-- (void)_setTrackingInfo:(id)arg1 forLayer:(id)arg2;
-- (struct CGPoint)_eventLocationInLayer:(id)arg1;
-- (id)_responderLayerAtPoint:(struct CGPoint)arg1;
-- (id)_responderLayersAtPoint:(struct CGPoint)arg1;
-- (void)_setTrackedLayer:(id)arg1 part:(id)arg2;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)dealloc;
 - (id)initWithResponderLayer:(id)arg1;
+- (void)dealloc;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_setTrackedLayer:(id)arg1 part:(id)arg2;
+- (id)_responderLayersAtPoint:(struct CGPoint)arg1;
+- (id)_responderLayerAtPoint:(struct CGPoint)arg1;
+- (struct CGPoint)_eventLocationInLayer:(id)arg1;
+- (void)_setTrackingInfo:(id)arg1 forLayer:(id)arg2;
+- (void)_clearTrackingInfoForLayer:(id)arg1;
+- (id)responderLayer;
+- (id)hostView;
+- (id)focusOwner;
+- (void)setFocusOwner:(id)arg1;
+- (void)responderLayer:(id)arg1 needsHeightChanged:(double)arg2;
+- (void)setSkimmingPlayheadHidden:(BOOL)arg1;
+- (id)accessibilityParentForResponderLayer:(id)arg1;
+- (BOOL)partContainsPoint:(struct CGPoint)arg1;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)contextMenu;
+- (BOOL)startTracking:(id)arg1;
+- (BOOL)continueTracking:(id)arg1;
+- (void)cancelTracking:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
+- (void)_handleRolloverMouseEvent:(id)arg1;
+- (void)_handleRolloverFlagsChangedEvent:(id)arg1;
+- (void)_handleRolloverEvent:(id)arg1;
+- (BOOL)enterRollover:(id)arg1;
+- (void)updateRollover:(id)arg1;
+- (void)exitRollover:(id)arg1;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (void)flagsChanged:(id)arg1;
+- (BOOL)performKeyEquivalent:(id)arg1;
+- (id)_accessibilityParent;
+- (id)accessibilityAttributeNames;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (void)accessibilitySetValue:(id)arg1 forAttribute:(id)arg2;
+- (id)accessibilityActionNames;
+- (id)accessibilityActionDescription:(id)arg1;
+- (void)accessibilityPerformAction:(id)arg1;
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (id)accessibilityFocusedUIElement;
 
 @end
 

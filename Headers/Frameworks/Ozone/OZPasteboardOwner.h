@@ -10,8 +10,8 @@
 {
 }
 
-- (void)pasteboardChangedOwner:(id)arg1;
 - (void)pasteboard:(id)arg1 provideDataForType:(id)arg2;
+- (void)pasteboardChangedOwner:(id)arg1;
 
 @end
 

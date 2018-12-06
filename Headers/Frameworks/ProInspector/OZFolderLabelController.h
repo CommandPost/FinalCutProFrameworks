@@ -15,26 +15,24 @@
 }
 
 + (Class)enableButtonClass;
-- (void)setDisclosureTriangleIndentLevel:(id)arg1;
-- (void)setIsDisclosureButtonHidden:(BOOL)arg1;
-- (void)enableObject:(id)arg1;
-- (void)setEnable:(id)arg1;
-- (void)toggleDisclosure:(id)arg1;
-- (void)setBold:(BOOL)arg1;
-- (id)makeLabelTextWithFrame:(struct CGRect)arg1 context:(id)arg2;
-- (BOOL)hasVisibleDisclosureTriangle;
-- (void)didBuildUI;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (BOOL)enableBadge;
-- (void)notify:(unsigned int)arg1;
-- (void)dealloc;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 hasDisclosureButton:(BOOL)arg3;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 hasDisclosureButton:(BOOL)arg3 hideEnableButton:(BOOL)arg4;
-- (id)initWithName:(id)arg1 context:(id)arg2;
 - (void)setName:(id)arg1 hasEnableButton:(BOOL)arg2 context:(id)arg3;
+- (id)initWithName:(id)arg1 context:(id)arg2;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 hasDisclosureButton:(BOOL)arg3 hideEnableButton:(BOOL)arg4;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 hasDisclosureButton:(BOOL)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)notify:(unsigned int)arg1;
+- (BOOL)enableBadge;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (void)didBuildUI;
+- (id)makeLabelTextWithFrame:(struct CGRect)arg1 context:(id)arg2;
+- (void)setBold:(BOOL)arg1;
+- (void)toggleDisclosure:(id)arg1;
+- (void)setEnable:(id)arg1;
+- (void)enableObject:(id)arg1;
+- (void)setIsDisclosureButtonHidden:(BOOL)arg1;
 
 @end
 

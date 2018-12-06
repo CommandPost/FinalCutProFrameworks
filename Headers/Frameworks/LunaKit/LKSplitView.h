@@ -4,15 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSSplitView.h"
+#import "NSProSplitView.h"
 
-@interface LKSplitView : NSSplitView
+@interface LKSplitView : NSProSplitView
 {
 }
 
-- (void)drawDividerInRect:(struct CGRect)arg1;
-- (id)_appearanceForSourceListTableView;
-- (void)mouseDown:(id)arg1;
++ (id)_grabberFacet;
++ (id)_dividerFacet;
 
 @end
 

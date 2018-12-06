@@ -4,22 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "LKPreferencesModule.h"
+#import "NSProPreferencesModule.h"
 
-@class LKButton, NSView;
+@class NSView;
 
-@interface PEAppDebugPreferencesModule : LKPreferencesModule
+@interface PEAppDebugPreferencesModule : NSProPreferencesModule
 {
     NSView *_view;
-    LKButton *_enableCreativeAnalysisButton;
 }
 
-- (id)titleForIdentifier:(id)arg1;
-- (void)clearUserDefaultsAlertsDidEnd:(id)arg1 returnCode:(int)arg2 contextInfo:(void *)arg3;
 - (void)clearUserDefaults:(id)arg1;
-- (void)awakeFromNib;
-- (BOOL)isResizable;
-- (id)imageForPreferenceNamed:(id)arg1;
+- (void)clearUserDefaultsAlertsDidEnd:(id)arg1 returnCode:(int)arg2 contextInfo:(void *)arg3;
+- (id)titleForIdentifier:(id)arg1;
 
 @end
 

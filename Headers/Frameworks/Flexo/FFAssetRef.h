@@ -4,48 +4,93 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFMediaRef.h>
+#import <Flexo/FFMedia.h>
+
+#import "FFSkimmableProtocol.h"
+#import "NSCoding.h"
+#import "NSCopying.h"
+
+@class FFAsset, FFVideoProps, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFAssetRef : FFMediaRef
+@interface FFAssetRef : FFMedia <NSCoding, NSCopying, FFSkimmableProtocol>
 {
+    NSString *_eventDocumentID;
+    NSString *_assetIdentifier;
+    NSString *_cameraClipID;
+    NSURL *_originalMediaURL;
+    FFVideoProps *_videoProps;
+    NSString *_videoFormatName;
+    FFAsset *_asset;
+    BOOL _changingAsset;
+    int _offlineReason;
 }
 
-+ (id)keyPathsForValuesAffectingAsset;
++ (BOOL)classIsAbstract;
 + (id)copyClassDescription;
-- (id)subtitlesInRange:(CDStruct_e83c9415)arg1;
-- (id)closedCaptionsInRange:(CDStruct_e83c9415)arg1;
-- (BOOL)hasSubtitles;
-- (BOOL)hasClosedCaptions;
-- (void)addClipRefsToSet:(id)arg1;
-- (id)clipRefs;
-- (id)eventName;
-- (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
-- (void)addAssetRefsToSet:(id)arg1;
-- (id)assetRefs;
-- (id)mdTargetForKey:(id)arg1;
-- (void)setFlow:(CDStruct_e83c9415)arg1 mode:(long long)arg2 info:(id)arg3;
-- (void)setFlowVectors:(CDStruct_e83c9415)arg1 mode:(long long)arg2;
-- (id)flowMediaRep;
-- (void)createFlowMediaRep;
-- (BOOL)isAssetRef;
-- (BOOL)isProject;
-- (int)highQualityOfflineReason;
-- (int)proxyOfflineReason;
-- (BOOL)isPSD;
-- (BOOL)mediaAvailable;
-- (BOOL)originalAvailable;
-- (BOOL)highQualityAvailable;
-- (BOOL)proxyAvailable;
-- (id)proxyMediaRep;
-- (id)optimizedMediaRep;
-- (id)originalMediaRep;
-- (id)originalMediaURL;
-- (BOOL)verifyFileCompatibility:(id)arg1 returnIsIdentical:(char *)arg2 returnIsGrowing:(char *)arg3 returnIsCompatible:(char *)arg4 returnNewMediaRange:(CDStruct_e83c9415 *)arg5 returnAssetID:(id *)arg6 returnAudioSourceDict:(id *)arg7 error:(id *)arg8;
-- (id)asset;
-- (id)newAssetProxyAttributesFromScrapedData:(id)arg1;
-- (id)initWithCoder:(id)arg1;
++ (id)assetRefComparisonSetFromAssetRefSet:(id)arg1;
++ (id)assetRefComparisonSetFromAssetRefArray:(id)arg1;
++ (BOOL)assetRefArrayContents:(id)arg1 matchArray:(id)arg2;
+- (id)eventDocumentID;
+- (void)setEventDocumentID:(id)arg1;
+- (id)init;
 - (id)initWithAsset:(id)arg1 assetEvent:(id)arg2;
+- (void)dealloc;
+- (void)_deferredNotification;
+- (id)asset;
+- (BOOL)isEqualToRef:(id)arg1;
+- (id)assetRefComparisonValue;
+- (id)originalMediaRep;
+- (id)optimizedMediaRep;
+- (id)proxyMediaRep;
+- (id)event;
+@property(readonly, nonatomic) BOOL proxyAvailable;
+@property(readonly, nonatomic) BOOL highQualityAvailable;
+- (BOOL)originalAvailable;
+@property(readonly, nonatomic) BOOL mediaAvailable;
+@property(readonly, nonatomic) int proxyOfflineReason;
+@property(readonly, nonatomic) int highQualityOfflineReason;
+- (void)createFlowMediaRep;
+- (void)setFlowVectors:(CDStruct_e83c9415)arg1;
+- (id)flowMediaRep;
+- (id)newDominantMotionMediaRep;
+- (id)dominantMotionMediaRep;
+- (void)setDescriptionText:(id)arg1;
+- (id)descriptionText;
+- (void)setDisplayName:(id)arg1;
+- (void)setMediaRange:(CDStruct_e83c9415)arg1;
+- (void)setHasAudio:(BOOL)arg1;
+- (void)setHasVideo:(BOOL)arg1;
+- (void)setTimecodeFrameDuration:(CDStruct_1b6d18a9)arg1;
+- (void)setAudioChannelCount:(long long)arg1;
+- (void)setAudioSampleRate:(double)arg1;
+- (void)setIsGood:(BOOL)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
+- (id)description;
+- (id)assets;
+- (id)assetRefs;
+- (id)fileURLs:(int)arg1;
+- (void)_forceSetVideoProps:(id)arg1;
+- (void)_updateRefState;
+- (id)_offlineCacheIdentifier;
+- (void)sourceRangeInvalidated:(id)arg1;
+- (void)undidMoveToTrash:(id)arg1;
+- (id)videoFormatName;
+- (void)setVideoFormatName:(id)arg1;
+- (id)originalMediaURL;
+- (void)setOriginalMediaURL:(id)arg1;
+- (id)newProvider;
+- (id)newProviderWithEffectCount:(long long)arg1 showObjects:(id)arg2;
+- (id)newProviderWithEffectCount:(long long)arg1;
+@property(readonly, retain, nonatomic) FFVideoProps *videoProps;
+- (id)eventName;
+- (id)mdMappedKeyPathForKey:(id)arg1;
+@property(readonly, nonatomic) int offlineReason; // @synthesize offlineReason=_offlineReason;
+@property(readonly, nonatomic) NSString *cameraClipID; // @synthesize cameraClipID=_cameraClipID;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_assetIdentifier;
 
 @end
 

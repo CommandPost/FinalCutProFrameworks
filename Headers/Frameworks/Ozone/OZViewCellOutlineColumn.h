@@ -16,15 +16,15 @@
 }
 
 + (id)newViewCell;
-- (void)willRemoveFromOutlineView:(id)arg1;
-- (void)noteNumberOfOutlineRowsChanged:(id)arg1;
-- (void)appendRows:(int)arg1;
-- (void)removeRows:(int)arg1;
-- (id)dataCellForRow:(long long)arg1;
-- (id)cells;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
+- (id)cells;
+- (id)dataCellForRow:(long long)arg1;
+- (void)removeRows:(int)arg1;
+- (void)appendRows:(int)arg1;
+- (void)noteNumberOfOutlineRowsChanged:(id)arg1;
+- (void)willRemoveFromOutlineView:(id)arg1;
 
 @end
 

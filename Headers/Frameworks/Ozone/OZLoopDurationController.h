@@ -9,16 +9,16 @@
 @interface OZLoopDurationController : OZChanDoubleController
 {
     struct OZChannelDouble *_loopDurationChannel;
-    map_3710aa94 *_pRoots;
+    map_fb141d32 *_pRoots;
 }
 
-- (void)setChannelValue:(id)arg1;
-- (void)endScrubberAction:(id)arg1;
-- (void)startScrubberAction:(id)arg1;
-- (void)endSliderAction:(id)arg1;
-- (void)startSliderAction:(id)arg1;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelObjectRoot *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)startSliderAction:(id)arg1;
+- (void)endSliderAction:(id)arg1;
+- (void)startScrubberAction:(id)arg1;
+- (void)endScrubberAction:(id)arg1;
+- (void)setChannelValue:(id)arg1;
 
 @end
 

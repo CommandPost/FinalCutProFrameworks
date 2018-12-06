@@ -4,17 +4,19 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Ozone/OZSuperEllipseTool.h>
+#import <Ozone/OZShapeTool.h>
 
-@interface OZCircleTool : OZSuperEllipseTool
+@interface OZCircleTool : OZShapeTool
 {
+    struct OZVertex2D _vertices[4];
 }
 
-- (double)getDefaultCurvature;
-- (struct PCUUID)getClassID;
-- (id)getTooltip;
-- (id)getName;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (id)getName;
+- (id)getTooltip;
+- (struct PCUUID)getClassID;
+- (void)draw;
+- (void)createShape:(CDStruct_1b6d18a9)arg1;
 
 @end
 

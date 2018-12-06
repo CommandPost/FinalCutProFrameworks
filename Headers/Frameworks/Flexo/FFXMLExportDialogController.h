@@ -6,48 +6,32 @@
 
 #import "NSViewController.h"
 
-#import "NSOpenSavePanelDelegate.h"
+@class NSString;
 
-@class FFXMLExportOptions, NSButton, NSImageView, NSMatrix, NSPopUpButton, NSString, NSTextField, NSView;
-
-@interface FFXMLExportDialogController : NSViewController <NSOpenSavePanelDelegate>
+@interface FFXMLExportDialogController : NSViewController
 {
-    NSTextField *mSourceProjectLine;
-    NSImageView *mSourceProjectIconView;
-    NSPopUpButton *mExportViewPoup;
-    NSMatrix *mXMLVersionRadioButtons;
-    BOOL mUseAlternateOptionsView;
-    NSView *mAlternateOptionsView;
-    NSPopUpButton *mAlternateMetadataViewPoup;
-    NSMatrix *mAlternateXMLVersionRadioButtons;
-    NSMatrix *mClipOrganizationRadioButtons;
-    NSButton *mUseAssetClipCheckBox;
-    NSButton *mExcludeModDateCheckBox;
-    FFXMLExportOptions *mOptions;
+    NSString *mFormat;
+    int mPrimaryVersion;
+    int mSecondaryVersion;
+    BOOL mExportingProject;
+    BOOL mExportMedia;
+    BOOL mRelativePaths;
+    id mPanel;
+    id mSourceProjectLine;
+    id mSourceProjectIconView;
+    id mFormatString;
+    id mExportMediaButton;
+    id mRelativePathsButton;
 }
 
-- (void)dealloc;
-- (BOOL)panel:(id)arg1 validateURL:(id)arg2 error:(id *)arg3;
-- (void)enableOptions:(BOOL)arg1;
-- (void)optionChanged:(id)arg1;
-@property(copy, nonatomic) FFXMLExportOptions *exportOptions;
-- (void)enableExcludeModDateOption:(BOOL)arg1;
-@property(nonatomic) BOOL excludeModDateOption;
-- (void)enableUseAssetClipOption:(BOOL)arg1;
-@property(nonatomic) BOOL useAssetClipOption;
-- (void)enableClipOrganizationOption:(BOOL)arg1;
-@property(nonatomic) unsigned long long clipOrganizationOption;
-- (void)setMetadataViewSet:(id)arg1;
-- (id)metadataViewSet;
-- (void)setXMLVersion:(id)arg1;
-- (id)XMLVersion;
-- (id)initWithDisplayName:(id)arg1 displayIcon:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)setupFormatVersions:(id)arg1;
+- (void)resetDefaults:(BOOL)arg1;
+- (id)initWithSavePanel:(id)arg1 rootObject:(id)arg2 curXMLVers:(id)arg3;
+- (void)export:(id)arg1;
+- (void)setExportMediaFiles:(id)arg1;
+- (void)setExportFormatVersion:(id)arg1;
+- (void)setUseRelativePaths:(id)arg1;
+- (id)optionsDict;
 
 @end
 

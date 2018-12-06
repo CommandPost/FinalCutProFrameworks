@@ -16,26 +16,25 @@ __attribute__((visibility("hidden")))
     NSString *_actionName;
     NSMapTable *_undoStateByChannel;
     NSMapTable *_oldState;
-    BOOL _mediaRefChannelChanged;
 }
 
-- (id)target;
-- (BOOL)isChangingChannelOrParent:(id)arg1;
-- (BOOL)hasChanges;
-- (void)didSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
-- (void)willSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
-- (void)unlockChannels;
-- (void)lockChannels;
-- (void)endChannelChanges;
-- (void)beginChannelChanges;
-- (id)actionName;
-- (void)_registerUndo:(SEL)arg1 withObject:(id)arg2;
-- (void)_resetChannelEnd:(id)arg1;
-- (void)_resetChannelBegin:(id)arg1;
-- (void)_restoreState:(id)arg1 map:(id)arg2;
-- (void)_saveState:(id)arg1 map:(id)arg2 flagsOnly:(BOOL)arg3;
-- (void)dealloc;
 - (id)initWithName:(id)arg1 target:(id)arg2;
+- (void)dealloc;
+- (void)_saveState:(id)arg1 map:(id)arg2 flagsOnly:(BOOL)arg3;
+- (void)_restoreState:(id)arg1 map:(id)arg2;
+- (void)_resetChannelBegin:(id)arg1;
+- (void)_resetChannelEnd:(id)arg1;
+- (void)_registerUndo:(SEL)arg1 withObject:(id)arg2;
+- (id)actionName;
+- (void)beginChannelChanges;
+- (void)endChannelChanges;
+- (void)lockChannels;
+- (void)unlockChannels;
+- (void)willSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
+- (void)didSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
+- (BOOL)hasChanges;
+- (BOOL)isChangingChannelOrParent:(id)arg1;
+- (id)target;
 
 @end
 

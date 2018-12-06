@@ -18,20 +18,20 @@
 }
 
 + (BOOL)shouldRegisterModule;
-- (void)windowDidResignKey:(id)arg1;
-- (void)windowWillClose:(id)arg1;
-- (void)_updateCurrentItemsForModule:(id)arg1 force:(BOOL)arg2;
-- (void)_updateCurrentItemsForce:(BOOL)arg1;
-- (id)inspectorModule;
-- (void)setInspectorModule:(id)arg1;
-- (id)currentItems;
-- (void)setCurrentItems:(id)arg1;
-- (id)currentModule;
-- (void)setCurrentModule:(id)arg1;
-- (void)_moduleViewWillBeRemoved:(id)arg1;
-- (void)_moduleViewWasInstalled:(id)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (void)_moduleViewWasInstalled:(id)arg1;
+- (void)_moduleViewWillBeRemoved:(id)arg1;
+- (void)setCurrentModule:(id)arg1;
+- (id)currentModule;
+- (void)setCurrentItems:(id)arg1;
+- (id)currentItems;
+- (void)setInspectorModule:(id)arg1;
+- (id)inspectorModule;
+- (void)_updateCurrentItemsForce:(BOOL)arg1;
+- (void)_updateCurrentItemsForModule:(id)arg1 force:(BOOL)arg2;
+- (void)windowWillClose:(id)arg1;
+- (void)windowDidResignKey:(id)arg1;
 
 @end
 

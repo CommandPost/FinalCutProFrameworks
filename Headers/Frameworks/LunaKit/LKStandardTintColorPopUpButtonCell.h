@@ -4,13 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <LunaKit/LKPopUpButtonCell.h>
+#import "NSProStandardTintColorPopUpButtonCell.h"
 
-@interface LKStandardTintColorPopUpButtonCell : LKPopUpButtonCell
+@interface LKStandardTintColorPopUpButtonCell : NSProStandardTintColorPopUpButtonCell
 {
 }
 
-- (void)setControlSize:(unsigned long long)arg1;
+- (id)_baseFacet;
 
 @end
 

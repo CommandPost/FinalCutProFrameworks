@@ -6,50 +6,43 @@
 
 #import <Ozone/OZProViewModule.h>
 
-@class NSView, NSWindow, OZPlaylineView, OZTimelineCurveEditorModule, OZTimingControlModule;
+@class LKModuleLayout, LKWindow, NSProView, OZPlaylineView, OZTimelineCurveEditorModule, OZTimingControlModule;
 
 @interface OZMainTimingModule : OZProViewModule
 {
-    NSView *_timingControlView;
-    NSView *_timingMainView;
+    LKModuleLayout *_moduleLayout;
+    NSProView *_timingControlView;
+    NSProView *_timingMainView;
     OZTimingControlModule *_timingControlModule;
     OZTimelineCurveEditorModule *_timelineCurveEditorModule;
     OZPlaylineView *_playlineView;
-    NSWindow *_playlineWindow;
+    LKWindow *_playlineWindow;
     char _viewStateOnHide[3];
 }
 
+- (id)init;
+- (void)dealloc;
+- (BOOL)wantsHeaderBar;
+- (struct CGSize)viewMinSize;
+- (void)moduleDidHide;
+- (void)moduleDidUnhide;
+- (BOOL)shouldToggleTimelineInstead;
+- (void)saveViewVisibilityState;
+- (void)willShow;
+- (void)willHide;
+- (void)viewDidLoad;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (BOOL)wantsFooterBar;
+- (id)timelineModule;
+- (void)setSplitViewDividerPositions:(double)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)fitInWindow:(id)arg1;
+- (void)togglePaneWithAnimation:(long long)arg1;
 @property(readonly) OZPlaylineView *playlineView; // @synthesize playlineView=_playlineView;
 @property(readonly) OZTimelineCurveEditorModule *timelineCurveEditorModule; // @synthesize timelineCurveEditorModule=_timelineCurveEditorModule;
 @property(readonly) OZTimingControlModule *timingControlModule; // @synthesize timingControlModule=_timingControlModule;
-- (BOOL)canBeCollapsed:(id)arg1;
-- (void)togglePaneWithAnimation:(long long)arg1;
-- (void)fitInWindow:(id)arg1;
-- (void)zoomTimelineOut:(id)arg1;
-- (void)zoomTimelineIn:(id)arg1;
-- (void)resetDisplayRangeToProjectDuration:(id)arg1;
-- (void)resetDisplayRangeToPlayRange:(id)arg1;
-- (double)getSplitViewDividerPosition;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)setSplitViewDividerPositions:(double)arg1;
-- (id)timelineModule;
-- (BOOL)wantsFooterBar;
-- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)viewDidLoad;
-- (void)willHide;
-- (void)willShow;
-- (void)saveViewVisibilityState;
-- (BOOL)shouldToggleTimelineInstead;
-- (void)moduleDidUnhide;
-- (void)moduleDidHide;
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
-- (BOOL)wantsHeaderBar;
-- (void)dealloc;
-- (id)init;
 
 @end
 

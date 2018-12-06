@@ -18,14 +18,20 @@
     float _horizontalScale;
 }
 
-@property float horizontalScale; // @synthesize horizontalScale=_horizontalScale;
-@property CDStruct_1b6d18a9 time; // @synthesize time=_time;
-@property(retain) NSBitmapImageRep *bitmap; // @synthesize bitmap=_bitmap;
-@property unsigned int channels; // @synthesize channels=_channels;
-@property unsigned int audioTrackID; // @synthesize audioTrackID=_audioTrackID;
-@property(retain) OZTimelineViewMulti *timelineView; // @synthesize timelineView=_timelineView;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)timelineView;
+- (void)setTimelineView:(id)arg1;
+- (unsigned int)audioTrackID;
+- (void)setAudioTrackID:(unsigned int)arg1;
+- (unsigned int)channels;
+- (void)setChannels:(unsigned int)arg1;
+- (id)bitmap;
+- (void)setBitmap:(id)arg1;
+- (CDStruct_1b6d18a9)time;
+- (void)setTime:(CDStruct_1b6d18a9)arg1;
+- (double)horizontalScale;
+- (void)setHorizontalScale:(double)arg1;
 
 @end
 

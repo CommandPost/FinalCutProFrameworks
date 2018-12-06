@@ -19,18 +19,13 @@ struct CGPoint {
     double _field2;
 };
 
-struct ColorComponents {
-    int _field1;
-    double _field2[5];
-};
-
 struct OZChannel {
     CDUnknownFunctionPointerType *_field1;
     struct OZFactory *_field2;
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -39,11 +34,13 @@ struct OZChannel {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannel2D {
@@ -52,7 +49,7 @@ struct OZChannel2D {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -61,7 +58,7 @@ struct OZChannel2D {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -75,7 +72,7 @@ struct OZChannel3D {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -84,7 +81,7 @@ struct OZChannel3D {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -99,7 +96,7 @@ struct OZChannelAngle {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -108,11 +105,13 @@ struct OZChannelAngle {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelAspectRatio {
@@ -121,7 +120,7 @@ struct OZChannelAspectRatio {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -130,11 +129,13 @@ struct OZChannelAspectRatio {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelAspectRatioFootage {
@@ -143,7 +144,7 @@ struct OZChannelAspectRatioFootage {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -152,11 +153,13 @@ struct OZChannelAspectRatioFootage {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelBase {
@@ -165,7 +168,7 @@ struct OZChannelBase {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -182,7 +185,7 @@ struct OZChannelBlindData {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -191,21 +194,23 @@ struct OZChannelBlindData {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
-    struct vector<std::__1::pair<CMTime, void *>, std::__1::allocator<std::__1::pair<CMTime, void *>>> _field20;
-    struct PCRecursiveMutex _field21;
-    CDStruct_198678f7 _field22;
-    struct PCLockSentry<PCMutex> *_field23;
-    void *_field24;
-    void *_field25;
-    _Bool _field26;
-    struct PCString _field27;
-    struct PCString _field28;
-    struct vector<PCString, std::__1::allocator<PCString>> _field29;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<std::pair<CMTime, void*>, std::allocator<std::pair<CMTime, void*>>> _field22;
+    struct PCRecursiveMutex _field23;
+    CDStruct_1b6d18a9 _field24;
+    struct PCLockSentry<PCMutex> *_field25;
+    void *_field26;
+    void *_field27;
+    _Bool _field28;
+    struct PCString _field29;
+    struct PCString _field30;
+    struct vector<PCString, std::allocator<PCString>> _field31;
 };
 
 struct OZChannelBool {
@@ -214,7 +219,7 @@ struct OZChannelBool {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -223,35 +228,13 @@ struct OZChannelBool {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
-};
-
-struct OZChannelBool3D {
-    CDUnknownFunctionPointerType *_field1;
-    struct OZFactory *_field2;
-    CDUnknownFunctionPointerType *_field3;
-    unsigned int _field4;
-    struct PCString _field5;
-    struct PCString *_field6;
-    struct OZChannelFolder *_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    void *_field10;
-    struct __CFString *_field11;
-    struct __CFString *_field12;
-    struct __CFString *_field13;
-    struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
-    unsigned int _field16;
-    unsigned int _field17;
-    _Bool _field18;
-    struct OZChannelBool _field19;
-    struct OZChannelBool _field20;
-    struct OZChannelBool _field21;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelButton {
@@ -260,7 +243,7 @@ struct OZChannelButton {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -269,15 +252,15 @@ struct OZChannelButton {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
-    CDUnknownFunctionPointerType _field20;
-    struct PCString _field21;
-    void *_field22;
-    struct PCString _field23;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    CDUnknownFunctionPointerType _field22;
+    void *_field23;
 };
 
 struct OZChannelColor {
@@ -286,7 +269,7 @@ struct OZChannelColor {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -295,7 +278,7 @@ struct OZChannelColor {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -313,7 +296,7 @@ struct OZChannelColorNoAlpha {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -322,7 +305,7 @@ struct OZChannelColorNoAlpha {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -339,7 +322,7 @@ struct OZChannelCrop {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -348,7 +331,7 @@ struct OZChannelCrop {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -364,7 +347,7 @@ struct OZChannelCurve {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -373,22 +356,24 @@ struct OZChannelCurve {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
-    struct OZChannelVertexFolder _field20;
-    struct OZDynamicCurve _field21;
-    struct OZDynamicCurve _field22;
-    double _field23;
-    double _field24;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct OZChannelVertexFolder _field22;
+    struct OZDynamicCurve _field23;
+    struct OZDynamicCurve _field24;
     double _field25;
     double _field26;
     double _field27;
-    _Bool _field28;
-    _Bool _field29;
-    void *_field30;
+    double _field28;
+    double _field29;
+    _Bool _field30;
+    _Bool _field31;
+    void *_field32;
 };
 
 struct OZChannelDecibel {
@@ -397,7 +382,7 @@ struct OZChannelDecibel {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -406,11 +391,13 @@ struct OZChannelDecibel {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelDiscreteColor {
@@ -419,7 +406,7 @@ struct OZChannelDiscreteColor {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -428,67 +415,67 @@ struct OZChannelDiscreteColor {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
-    struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long>> _field20;
-    struct PCString _field21;
-    struct vector<int, std::__1::allocator<int>> _field22;
-    unsigned int _field23;
-    struct PCString _field24;
-    struct vector<PCString, std::__1::allocator<PCString>> _field25;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<PCString, std::allocator<PCString>> _field22;
+    struct vector<int, std::allocator<int>> _field23;
+    unsigned int _field24;
 };
 
 struct OZChannelDouble {
-    CDUnknownFunctionPointerType *_field1;
-    struct OZFactory *_field2;
-    CDUnknownFunctionPointerType *_field3;
-    unsigned int _field4;
-    struct PCString _field5;
-    struct PCString *_field6;
-    struct OZChannelFolder *_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    void *_field10;
-    struct __CFString *_field11;
-    struct __CFString *_field12;
-    struct __CFString *_field13;
-    struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    CDUnknownFunctionPointerType *_vptr$OZFactoryBase;
+    struct OZFactory *_isa;
+    CDUnknownFunctionPointerType *_vptr$PCSerializer;
+    unsigned int _id;
+    struct PCString _name;
+    struct PCString _internalName;
+    struct OZChannelFolder *_parent;
+    unsigned long long _flags;
+    unsigned long long _defaultFlags;
+    void *_objCWrapper;
+    struct __CFString *_labelCtlrClassName;
+    struct __CFString *_parameterCtlrClassName;
+    struct __CFString *_inspectorCtlrClassName;
+    struct OZChannelTimeConverter *_pTimeConverterDelegate;
+    struct OZCurve *_curveInterface;
+    struct OZChannelInfo *_info;
+    CDStruct_1b6d18a9 _fadeInOffset;
+    CDStruct_1b6d18a9 _fadeOutOffset;
+    unsigned int _fadeInCurve;
+    unsigned int _fadeOutCurve;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
 };
 
 struct OZChannelEnum {
-    CDUnknownFunctionPointerType *_field1;
-    struct OZFactory *_field2;
-    CDUnknownFunctionPointerType *_field3;
-    unsigned int _field4;
-    struct PCString _field5;
-    struct PCString *_field6;
-    struct OZChannelFolder *_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    void *_field10;
-    struct __CFString *_field11;
-    struct __CFString *_field12;
-    struct __CFString *_field13;
-    struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
-    struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long>> _field20;
-    struct PCString _field21;
-    struct vector<int, std::__1::allocator<int>> _field22;
-    unsigned int _field23;
-    struct PCString _field24;
-    struct vector<PCString, std::__1::allocator<PCString>> _field25;
+    CDUnknownFunctionPointerType *_vptr$OZFactoryBase;
+    struct OZFactory *_isa;
+    CDUnknownFunctionPointerType *_vptr$PCSerializer;
+    unsigned int _id;
+    struct PCString _name;
+    struct PCString _internalName;
+    struct OZChannelFolder *_parent;
+    unsigned long long _flags;
+    unsigned long long _defaultFlags;
+    void *_objCWrapper;
+    struct __CFString *_labelCtlrClassName;
+    struct __CFString *_parameterCtlrClassName;
+    struct __CFString *_inspectorCtlrClassName;
+    struct OZChannelTimeConverter *_pTimeConverterDelegate;
+    struct OZCurve *_curveInterface;
+    struct OZChannelInfo *_info;
+    CDStruct_1b6d18a9 _fadeInOffset;
+    CDStruct_1b6d18a9 _fadeOutOffset;
+    unsigned int _fadeInCurve;
+    unsigned int _fadeOutCurve;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
+    struct vector<PCString, std::allocator<PCString>> _stringTable;
+    struct vector<int, std::allocator<int>> _tags;
+    unsigned int _stringsTableChangeCount;
 };
 
 struct OZChannelEnumInterpMode {
@@ -497,7 +484,7 @@ struct OZChannelEnumInterpMode {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -506,17 +493,16 @@ struct OZChannelEnumInterpMode {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
-    struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long>> _field20;
-    struct PCString _field21;
-    struct vector<int, std::__1::allocator<int>> _field22;
-    unsigned int _field23;
-    struct PCString _field24;
-    struct vector<PCString, std::__1::allocator<PCString>> _field25;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct vector<PCString, std::allocator<PCString>> _field22;
+    struct vector<int, std::allocator<int>> _field23;
+    unsigned int _field24;
 };
 
 struct OZChannelFolder {
@@ -525,7 +511,7 @@ struct OZChannelFolder {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -534,7 +520,7 @@ struct OZChannelFolder {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
 };
@@ -545,7 +531,7 @@ struct OZChannelFrame {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -554,11 +540,13 @@ struct OZChannelFrame {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelGammaFootage {
@@ -567,7 +555,7 @@ struct OZChannelGammaFootage {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -576,11 +564,13 @@ struct OZChannelGammaFootage {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelGradient {
@@ -589,7 +579,7 @@ struct OZChannelGradient {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -598,7 +588,7 @@ struct OZChannelGradient {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     struct OZChannelGradientRGBFolder _field18;
@@ -606,27 +596,26 @@ struct OZChannelGradient {
     struct OZChannelDouble _field20;
     struct OZChannelEnum _field21;
     int _field22;
-    _Bool _field23;
 };
 
 struct OZChannelGradientAlphaFolder {
-    CDUnknownFunctionPointerType *_field1;
-    struct OZFactory *_field2;
-    CDUnknownFunctionPointerType *_field3;
-    unsigned int _field4;
-    struct PCString _field5;
-    struct PCString *_field6;
-    struct OZChannelFolder *_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    void *_field10;
-    struct __CFString *_field11;
-    struct __CFString *_field12;
-    struct __CFString *_field13;
-    struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
-    unsigned int _field16;
-    unsigned int _field17;
+    CDUnknownFunctionPointerType *_vptr$OZFactoryBase;
+    struct OZFactory *_isa;
+    CDUnknownFunctionPointerType *_vptr$PCSerializer;
+    unsigned int _id;
+    struct PCString _name;
+    struct PCString _internalName;
+    struct OZChannelFolder *_parent;
+    unsigned long long _flags;
+    unsigned long long _defaultFlags;
+    void *_objCWrapper;
+    struct __CFString *_labelCtlrClassName;
+    struct __CFString *_parameterCtlrClassName;
+    struct __CFString *_inspectorCtlrClassName;
+    struct OZChannelTimeConverter *_pTimeConverterDelegate;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_descendants;
+    unsigned int _foldFlags;
+    unsigned int _defaultFoldFlags;
 };
 
 struct OZChannelGradientExtras {
@@ -635,7 +624,7 @@ struct OZChannelGradientExtras {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -644,7 +633,7 @@ struct OZChannelGradientExtras {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     struct OZChannelGradientRGBFolder _field18;
@@ -652,8 +641,7 @@ struct OZChannelGradientExtras {
     struct OZChannelDouble _field20;
     struct OZChannelEnum _field21;
     int _field22;
-    _Bool _field23;
-    struct OZChannelEnum _field24;
+    struct OZChannelEnum _field23;
 };
 
 struct OZChannelGradientFolder {
@@ -662,7 +650,7 @@ struct OZChannelGradientFolder {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -671,7 +659,7 @@ struct OZChannelGradientFolder {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
 };
@@ -682,7 +670,7 @@ struct OZChannelGradientPositioned {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -691,7 +679,7 @@ struct OZChannelGradientPositioned {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     struct OZChannelGradientRGBFolder _field18;
@@ -699,31 +687,29 @@ struct OZChannelGradientPositioned {
     struct OZChannelDouble _field20;
     struct OZChannelEnum _field21;
     int _field22;
-    _Bool _field23;
-    struct OZChannelEnum _field24;
+    struct OZChannelEnum _field23;
+    struct OZChannelPosition _field24;
     struct OZChannelPosition _field25;
-    struct OZChannelPosition _field26;
-    _Bool _field27;
 };
 
 struct OZChannelGradientRGBFolder {
-    CDUnknownFunctionPointerType *_field1;
-    struct OZFactory *_field2;
-    CDUnknownFunctionPointerType *_field3;
-    unsigned int _field4;
-    struct PCString _field5;
-    struct PCString *_field6;
-    struct OZChannelFolder *_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    void *_field10;
-    struct __CFString *_field11;
-    struct __CFString *_field12;
-    struct __CFString *_field13;
-    struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
-    unsigned int _field16;
-    unsigned int _field17;
+    CDUnknownFunctionPointerType *_vptr$OZFactoryBase;
+    struct OZFactory *_isa;
+    CDUnknownFunctionPointerType *_vptr$PCSerializer;
+    unsigned int _id;
+    struct PCString _name;
+    struct PCString _internalName;
+    struct OZChannelFolder *_parent;
+    unsigned long long _flags;
+    unsigned long long _defaultFlags;
+    void *_objCWrapper;
+    struct __CFString *_labelCtlrClassName;
+    struct __CFString *_parameterCtlrClassName;
+    struct __CFString *_inspectorCtlrClassName;
+    struct OZChannelTimeConverter *_pTimeConverterDelegate;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_descendants;
+    unsigned int _foldFlags;
+    unsigned int _defaultFoldFlags;
 };
 
 struct OZChannelGradientSample {
@@ -732,7 +718,7 @@ struct OZChannelGradientSample {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -741,7 +727,7 @@ struct OZChannelGradientSample {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     struct OZChannelPercent _field18;
@@ -755,7 +741,7 @@ struct OZChannelGradientSampleAlpha {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -764,7 +750,7 @@ struct OZChannelGradientSampleAlpha {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     struct OZChannelPercent _field18;
@@ -779,7 +765,7 @@ struct OZChannelGradientSampleRGB {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -788,7 +774,7 @@ struct OZChannelGradientSampleRGB {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     struct OZChannelPercent _field18;
@@ -803,7 +789,7 @@ struct OZChannelGradientWithAngle {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -812,7 +798,7 @@ struct OZChannelGradientWithAngle {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     struct OZChannelGradientRGBFolder _field18;
@@ -820,9 +806,8 @@ struct OZChannelGradientWithAngle {
     struct OZChannelDouble _field20;
     struct OZChannelEnum _field21;
     int _field22;
-    _Bool _field23;
-    struct OZChannelEnum _field24;
-    struct OZChannelAngle _field25;
+    struct OZChannelEnum _field23;
+    struct OZChannelAngle _field24;
 };
 
 struct OZChannelHistogram {
@@ -831,7 +816,7 @@ struct OZChannelHistogram {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -840,7 +825,7 @@ struct OZChannelHistogram {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -850,7 +835,6 @@ struct OZChannelHistogram {
     struct OZChannelHistogramSample _field22;
     struct OZChannelHistogramSample _field23;
     struct OZChannelHistogramSample _field24;
-    struct OZHistogramDelegate *_field25;
 };
 
 struct OZChannelHistogramSample {
@@ -859,7 +843,7 @@ struct OZChannelHistogramSample {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -868,7 +852,7 @@ struct OZChannelHistogramSample {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -879,8 +863,6 @@ struct OZChannelHistogramSample {
     struct OZChannelDouble _field23;
 };
 
-struct OZChannelImpl;
-
 struct OZChannelInfo;
 
 struct OZChannelLevels {
@@ -889,7 +871,7 @@ struct OZChannelLevels {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -898,7 +880,7 @@ struct OZChannelLevels {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -913,7 +895,7 @@ struct OZChannelObjectRootBase {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -922,35 +904,37 @@ struct OZChannelObjectRootBase {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
-    CDStruct_198678f7 _field18;
+    CDStruct_1b6d18a9 _field18;
     struct PCTimeRange _field19;
     _Bool _field20;
     _Bool _field21;
 };
 
 struct OZChannelPercent {
-    CDUnknownFunctionPointerType *_field1;
-    struct OZFactory *_field2;
-    CDUnknownFunctionPointerType *_field3;
-    unsigned int _field4;
-    struct PCString _field5;
-    struct PCString *_field6;
-    struct OZChannelFolder *_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    void *_field10;
-    struct __CFString *_field11;
-    struct __CFString *_field12;
-    struct __CFString *_field13;
-    struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    CDUnknownFunctionPointerType *_vptr$OZFactoryBase;
+    struct OZFactory *_isa;
+    CDUnknownFunctionPointerType *_vptr$PCSerializer;
+    unsigned int _id;
+    struct PCString _name;
+    struct PCString _internalName;
+    struct OZChannelFolder *_parent;
+    unsigned long long _flags;
+    unsigned long long _defaultFlags;
+    void *_objCWrapper;
+    struct __CFString *_labelCtlrClassName;
+    struct __CFString *_parameterCtlrClassName;
+    struct __CFString *_inspectorCtlrClassName;
+    struct OZChannelTimeConverter *_pTimeConverterDelegate;
+    struct OZCurve *_curveInterface;
+    struct OZChannelInfo *_info;
+    CDStruct_1b6d18a9 _fadeInOffset;
+    CDStruct_1b6d18a9 _fadeOutOffset;
+    unsigned int _fadeInCurve;
+    unsigned int _fadeOutCurve;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _recordingCallbacks;
 };
 
 struct OZChannelPosition {
@@ -959,7 +943,7 @@ struct OZChannelPosition {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -968,7 +952,7 @@ struct OZChannelPosition {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -976,11 +960,11 @@ struct OZChannelPosition {
     struct OZChannelDouble _field20;
     _Bool _field21;
     struct PCMatrix44Tmpl<double> _field22;
-    struct vector<double, std::__1::allocator<double>> _field23;
-    struct vector<double, std::__1::allocator<double>> _field24;
-    struct vector<double, std::__1::allocator<double>> _field25;
-    struct vector<double, std::__1::allocator<double>> _field26;
-    struct vector<double, std::__1::allocator<double>> _field27;
+    struct vector<double, std::allocator<double>> _field23;
+    struct vector<double, std::allocator<double>> _field24;
+    struct vector<double, std::allocator<double>> _field25;
+    struct vector<double, std::allocator<double>> _field26;
+    struct vector<double, std::allocator<double>> _field27;
     unsigned int _field28;
     struct PCSpinLock _field29;
 };
@@ -991,7 +975,7 @@ struct OZChannelPosition3D {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1000,7 +984,7 @@ struct OZChannelPosition3D {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -1008,14 +992,14 @@ struct OZChannelPosition3D {
     struct OZChannelDouble _field20;
     _Bool _field21;
     struct PCMatrix44Tmpl<double> _field22;
-    struct vector<double, std::__1::allocator<double>> _field23;
-    struct vector<double, std::__1::allocator<double>> _field24;
-    struct vector<double, std::__1::allocator<double>> _field25;
-    struct vector<double, std::__1::allocator<double>> _field26;
-    struct vector<double, std::__1::allocator<double>> _field27;
+    struct vector<double, std::allocator<double>> _field23;
+    struct vector<double, std::allocator<double>> _field24;
+    struct vector<double, std::allocator<double>> _field25;
+    struct vector<double, std::allocator<double>> _field26;
+    struct vector<double, std::allocator<double>> _field27;
     unsigned int _field28;
     struct PCSpinLock _field29;
-    struct vector<double, std::__1::allocator<double>> _field30;
+    struct vector<double, std::allocator<double>> _field30;
     _Bool _field31;
     _Bool _field32;
     struct OZChannelDouble _field33;
@@ -1027,7 +1011,7 @@ struct OZChannelPositionPercent {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1036,13 +1020,12 @@ struct OZChannelPositionPercent {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
     struct OZChannelDouble _field19;
     struct OZChannelDouble _field20;
-    _Bool _field21;
 };
 
 struct OZChannelQuad {
@@ -1051,7 +1034,7 @@ struct OZChannelQuad {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1060,7 +1043,7 @@ struct OZChannelQuad {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -1076,7 +1059,7 @@ struct OZChannelRotation3D {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1085,7 +1068,7 @@ struct OZChannelRotation3D {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -1102,7 +1085,7 @@ struct OZChannelScale {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1111,7 +1094,7 @@ struct OZChannelScale {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -1125,7 +1108,7 @@ struct OZChannelScale3D {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1134,7 +1117,7 @@ struct OZChannelScale3D {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -1149,7 +1132,7 @@ struct OZChannelSeed {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1158,11 +1141,13 @@ struct OZChannelSeed {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelShear {
@@ -1171,7 +1156,7 @@ struct OZChannelShear {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1180,7 +1165,7 @@ struct OZChannelShear {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -1194,7 +1179,7 @@ struct OZChannelShearAngle {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1203,11 +1188,13 @@ struct OZChannelShearAngle {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelText {
@@ -1216,7 +1203,7 @@ struct OZChannelText {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1225,13 +1212,14 @@ struct OZChannelText {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
-    struct PCString _field20;
-    _Bool _field21;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
+    struct PCString _field22;
 };
 
 struct OZChannelTimeConverter;
@@ -1242,7 +1230,7 @@ struct OZChannelTimecode {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1251,11 +1239,13 @@ struct OZChannelTimecode {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelUint16 {
@@ -1264,7 +1254,7 @@ struct OZChannelUint16 {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1273,11 +1263,13 @@ struct OZChannelUint16 {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelUint32 {
@@ -1286,7 +1278,7 @@ struct OZChannelUint32 {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1295,11 +1287,13 @@ struct OZChannelUint32 {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelVaryingFolder {
@@ -1308,7 +1302,7 @@ struct OZChannelVaryingFolder {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1317,7 +1311,7 @@ struct OZChannelVaryingFolder {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
 };
@@ -1328,7 +1322,7 @@ struct OZChannelVertexFolder {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1337,7 +1331,7 @@ struct OZChannelVertexFolder {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     struct OZChannel *_field18;
@@ -1349,7 +1343,7 @@ struct OZCompoundChannel {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -1358,7 +1352,7 @@ struct OZCompoundChannel {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> *_field15;
+    struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -1370,7 +1364,7 @@ struct OZCoreGlobals {
     _Bool _field3;
     _Bool _field4;
     _Bool _field5;
-    CDStruct_198678f7 _field6;
+    CDStruct_1b6d18a9 _field6;
 };
 
 struct OZCurve;
@@ -1378,61 +1372,56 @@ struct OZCurve;
 struct OZDynamicCurve {
     CDUnknownFunctionPointerType *_field1;
     struct OZDynamicSpline _field2;
-    struct OZSplineState _field3;
 };
 
 struct OZDynamicSpline {
     CDUnknownFunctionPointerType *_field1;
-    struct PCSpinLock _field2;
-    struct vector<OZVertex *, std::__1::allocator<OZVertex *>> _field3;
-    struct __wrap_iter<OZVertex **> _field4;
-    struct __wrap_iter<OZVertex **> _field5;
-    struct OZVertex *_field6;
-    struct OZVertex *_field7;
-    struct __wrap_iter<OZVertex **> _field8;
-    struct __wrap_iter<OZVertex **> _field9;
-    struct vector<OZVertex *, std::__1::allocator<OZVertex *>> _field10;
-    _Bool _field11;
-    long long _field12;
-    long long _field13;
-    long long _field14;
-    _Bool _field15;
+    double _field2;
+    struct OZVertex *_field3;
+    struct PCSpinLock _field4;
+    struct vector<OZVertex*, std::allocator<OZVertex*>> _field5;
+    struct __normal_iterator<OZVertex**, std::vector<OZVertex*, std::allocator<OZVertex*>>> _field6;
+    struct __normal_iterator<OZVertex**, std::vector<OZVertex*, std::allocator<OZVertex*>>> _field7;
+    struct OZVertex *_field8;
+    struct OZVertex *_field9;
+    struct __normal_iterator<OZVertex**, std::vector<OZVertex*, std::allocator<OZVertex*>>> _field10;
+    struct __normal_iterator<OZVertex**, std::vector<OZVertex*, std::allocator<OZVertex*>>> _field11;
+    struct vector<OZVertex*, std::allocator<OZVertex*>> _field12;
+    _Bool _field13;
+    unsigned int _field14;
+    unsigned int _field15;
     _Bool _field16;
-    struct OZInterpolators *_field17;
-    struct OZSplineNode *_field18;
-    struct OZSplineState *_field19;
+    int _field17;
+    int _field18;
+    _Bool _field19;
+    _Bool _field20;
+    _Bool _field21;
+    _Bool _field22;
+    _Bool _field23;
+    _Bool _field24;
+    _Bool _field25;
+    _Bool _field26;
+    CDStruct_1b6d18a9 _field27;
+    CDStruct_1b6d18a9 _field28;
+    struct OZInterpolators *_field29;
+    struct OZSplineNode *_field30;
 };
 
 struct OZFactories {
     CDUnknownFunctionPointerType *_field1;
-    struct map<PCUUID, OZFactory *, std::__1::less<PCUUID>, std::__1::allocator<std::__1::pair<const PCUUID, OZFactory *>>> _field2;
+    struct map<PCUUID, OZFactory*, std::less<PCUUID>, std::allocator<std::pair<const PCUUID, OZFactory*>>> _field2;
 };
 
 struct OZFactory;
-
-struct OZHistogramDelegate;
 
 struct OZInterpolators;
 
 struct OZSplineNode;
 
-struct OZSplineState {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-    _Bool _field5;
-    CDStruct_198678f7 _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    _Bool _field10;
-};
-
 struct OZVertex;
 
 struct PCColor {
-    struct ColorComponents _field1;
+    struct vector<double, std::allocator<double>> _field1;
     struct PCColorSpaceHandle _field2;
 };
 
@@ -1447,113 +1436,119 @@ struct PCMatrix44Tmpl<double> {
 };
 
 struct PCRecursiveMutex {
-    CDUnknownFunctionPointerType *_field1;
     struct _opaque_pthread_mutex_t {
         long long _field1;
         char _field2[56];
-    } _field2;
+    } _field1;
 };
 
 struct PCSpinLock {
-    struct os_unfair_lock_s _field1;
+    int _field1;
 };
 
 struct PCString {
-    struct __CFString *_field1;
+    struct __CFString *_string;
 };
 
 struct PCTimeRange {
-    CDStruct_198678f7 _field1;
-    CDStruct_198678f7 _field2;
+    CDStruct_1b6d18a9 _field1;
+    CDStruct_1b6d18a9 _field2;
+};
+
+struct RecordingCallbackData;
+
+struct _Rb_tree<PCUUID, std::pair<const PCUUID, OZFactory*>, std::_Select1st<std::pair<const PCUUID, OZFactory*>>, std::less<PCUUID>, std::allocator<std::pair<const PCUUID, OZFactory*>>> {
+    struct _Rb_tree_impl<std::less<PCUUID>, false> _M_impl;
+};
+
+struct _Rb_tree_impl<std::less<PCUUID>, false> {
+    struct less<PCUUID> _M_key_compare;
+    struct _Rb_tree_node_base _M_header;
+    unsigned long long _M_node_count;
+};
+
+struct _Rb_tree_node_base {
+    int _M_color;
+    struct _Rb_tree_node_base *_M_parent;
+    struct _Rb_tree_node_base *_M_left;
+    struct _Rb_tree_node_base *_M_right;
 };
 
 struct __CFString;
 
-struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long>> {
-    struct __tree_iterator<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, std::__1::__tree_node<std::__1::__value_type<PCString, std::__1::vector<PCString, std::__1::allocator<PCString>>>, void *>*, long> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-    } _field1;
-};
-
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *_field1;
-};
-
-struct __wrap_iter<OZVertex **> {
+struct __normal_iterator<OZVertex**, std::vector<OZVertex*, std::allocator<OZVertex*>>> {
     struct OZVertex **_field1;
 };
 
-struct map<PCUUID, OZFactory *, std::__1::less<PCUUID>, std::__1::allocator<std::__1::pair<const PCUUID, OZFactory *>>> {
-    struct __tree<std::__1::__value_type<PCUUID, OZFactory *>, std::__1::__map_value_compare<PCUUID, std::__1::__value_type<PCUUID, OZFactory *>, std::__1::less<PCUUID>, true>, std::__1::allocator<std::__1::__value_type<PCUUID, OZFactory *>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<PCUUID, OZFactory *>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<PCUUID, std::__1::__value_type<PCUUID, OZFactory *>, std::__1::less<PCUUID>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
+struct less<PCUUID>;
+
+struct map<PCUUID, OZFactory*, std::less<PCUUID>, std::allocator<std::pair<const PCUUID, OZFactory*>>> {
+    struct _Rb_tree<PCUUID, std::pair<const PCUUID, OZFactory*>, std::_Select1st<std::pair<const PCUUID, OZFactory*>>, std::less<PCUUID>, std::allocator<std::pair<const PCUUID, OZFactory*>>> _M_t;
 };
 
-struct os_unfair_lock_s {
-    unsigned int _field1;
+struct pair<CMTime, void*>;
+
+struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> {
+    struct _Vector_impl {
+        struct RecordingCallbackData *_M_start;
+        struct RecordingCallbackData *_M_finish;
+        struct RecordingCallbackData *_M_end_of_storage;
+    } _M_impl;
 };
 
-struct pair<CMTime, void *>;
+struct vector<OZChannelBase*, std::allocator<OZChannelBase*>>;
 
-struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>>;
-
-struct vector<OZVertex *, std::__1::allocator<OZVertex *>> {
-    struct OZVertex **_field1;
-    struct OZVertex **_field2;
-    struct __compressed_pair<OZVertex **, std::__1::allocator<OZVertex *>> {
+struct vector<OZVertex*, std::allocator<OZVertex*>> {
+    struct _Vector_impl {
         struct OZVertex **_field1;
-    } _field3;
+        struct OZVertex **_field2;
+        struct OZVertex **_field3;
+    } _field1;
 };
 
-struct vector<PCString, std::__1::allocator<PCString>> {
-    struct PCString *_field1;
-    struct PCString *_field2;
-    struct __compressed_pair<PCString *, std::__1::allocator<PCString>> {
-        struct PCString *_field1;
-    } _field3;
+struct vector<PCString, std::allocator<PCString>> {
+    struct _Vector_impl {
+        struct PCString *_M_start;
+        struct PCString *_M_finish;
+        struct PCString *_M_end_of_storage;
+    } _M_impl;
 };
 
-struct vector<double, std::__1::allocator<double>> {
-    double *_field1;
-    double *_field2;
-    struct __compressed_pair<double *, std::__1::allocator<double>> {
+struct vector<double, std::allocator<double>> {
+    struct _Vector_impl {
         double *_field1;
-    } _field3;
+        double *_field2;
+        double *_field3;
+    } _field1;
 };
 
-struct vector<int, std::__1::allocator<int>> {
-    int *_field1;
-    int *_field2;
-    struct __compressed_pair<int *, std::__1::allocator<int>> {
-        int *_field1;
-    } _field3;
+struct vector<int, std::allocator<int>> {
+    struct _Vector_impl {
+        int *_M_start;
+        int *_M_finish;
+        int *_M_end_of_storage;
+    } _M_impl;
 };
 
-struct vector<std::__1::pair<CMTime, void *>, std::__1::allocator<std::__1::pair<CMTime, void *>>> {
-    struct pair<CMTime, void *> *_field1;
-    struct pair<CMTime, void *> *_field2;
-    struct __compressed_pair<std::__1::pair<CMTime, void *>*, std::__1::allocator<std::__1::pair<CMTime, void *>>> {
-        struct pair<CMTime, void *> *_field1;
-    } _field3;
+struct vector<std::pair<CMTime, void*>, std::allocator<std::pair<CMTime, void*>>> {
+    struct _Vector_impl {
+        struct pair<CMTime, void*> *_field1;
+        struct pair<CMTime, void*> *_field2;
+        struct pair<CMTime, void*> *_field3;
+    } _field1;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    long long _field1;
-    int _field2;
-    unsigned int _field3;
-    long long _field4;
-} CDStruct_198678f7;
+    long long value;
+    int timescale;
+    unsigned int flags;
+    long long epoch;
+} CDStruct_1b6d18a9;
 
 typedef struct {
-    CDStruct_198678f7 _field1;
-    CDStruct_198678f7 _field2;
-} CDStruct_3c1748cc;
+    CDStruct_1b6d18a9 _field1;
+    CDStruct_1b6d18a9 _field2;
+} CDStruct_5c5366e1;
 

@@ -10,10 +10,10 @@
 {
 }
 
-- (BOOL)hasChildren;
-- (long long)numberOfChildren;
-- (BOOL)displayAsGroup;
 - (BOOL)isAudioTrack;
+- (BOOL)displayAsGroup;
+- (long long)numberOfChildren;
+- (BOOL)hasChildren;
 
 @end
 

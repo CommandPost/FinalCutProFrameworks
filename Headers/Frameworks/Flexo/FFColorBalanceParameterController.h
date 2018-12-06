@@ -6,29 +6,18 @@
 
 #import <Flexo/FFColorBaseViewController.h>
 
-@class CHChannelBase, NSArray, OZLabelText;
+@class OZLabelText;
 
 __attribute__((visibility("hidden")))
 @interface FFColorBalanceParameterController : FFColorBaseViewController
 {
     OZLabelText *_labelText;
-    CHChannelBase *_observedChannel;
-    float _paramWidth;
-    NSArray *_observedEffects;
 }
 
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)autoBalanceChanged:(id)arg1;
-- (id)stringForLabel;
-- (float)suggestedMaxParamWidth;
-- (float)suggestedMinParamWidth;
-- (void)update;
-- (void)didBuildUI;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)_unregisterObservers;
-- (void)_registerObservers;
-- (id)_balanceEffects;
+- (void)didBuildUI;
+- (void)update;
+- (id)stringForLabel;
 
 @end
 

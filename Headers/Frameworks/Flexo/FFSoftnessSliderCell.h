@@ -6,28 +6,21 @@
 
 #import "LKSliderCell.h"
 
-@class CHChannelDouble, FFAnchoredObject, FFChannelChangeController, FFColorSecondaryEffect, FFHeColorEffect;
+@class FFAnchoredObject, FFColorSecondaryEffect, FFHeColorEffect;
 
 __attribute__((visibility("hidden")))
 @interface FFSoftnessSliderCell : LKSliderCell
 {
-    FFHeColorEffect *_colorEffect;
-    FFAnchoredObject *_anchoredObject;
-    FFColorSecondaryEffect *_colorSecondaryEffect;
-    FFChannelChangeController *_changeController;
-    CHChannelDouble *_softnessChannel;
-    CDStruct_122fea49 _state;
+    FFHeColorEffect *colorEffect;
+    FFAnchoredObject *anchoredObject;
+    FFColorSecondaryEffect *colorSecondaryEffect;
 }
 
-@property(nonatomic) FFColorSecondaryEffect *colorSecondaryEffect; // @synthesize colorSecondaryEffect=_colorSecondaryEffect;
-@property(nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObject;
-@property(nonatomic) FFHeColorEffect *colorEffect; // @synthesize colorEffect=_colorEffect;
-- (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
-- (BOOL)continueTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3;
-- (BOOL)startTrackingAt:(struct CGPoint)arg1 inView:(id)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)init;
+- (void)stopTracking:(struct CGPoint)arg1 at:(struct CGPoint)arg2 inView:(id)arg3 mouseIsUp:(BOOL)arg4;
+@property(retain, nonatomic) FFColorSecondaryEffect *colorSecondaryEffect; // @synthesize colorSecondaryEffect;
+@property(retain, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject;
+@property(retain, nonatomic) FFHeColorEffect *colorEffect; // @synthesize colorEffect;
 
 @end
 

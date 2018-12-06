@@ -13,8 +13,8 @@
     TLKItemLayer *_changingLayer;
 }
 
-- (void)restoreClickedLayer:(id)arg1;
 - (void)updateClickedLayer:(id)arg1;
+- (void)restoreClickedLayer:(id)arg1;
 
 @end
 

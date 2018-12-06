@@ -6,7 +6,7 @@
 
 #import <ProOSC/POOnScreenControl.h>
 
-@class NSColor, NSMenu;
+@class NSColor;
 
 @interface POCombinedCrop : POOnScreenControl
 {
@@ -30,58 +30,70 @@
     int _activeKeyframe;
     BOOL _switchOnNothingChanged;
     BOOL _nothingChanged;
+    struct POColor _playerOSCKenBurnsBoxStartStroke;
+    struct POColor _playerOSCKenBurnsBoxStartShadow;
+    struct POColor _playerOSCKenBurnsBoxEndStroke;
+    struct POColor _playerOSCKenBurnsBoxEndShadow;
+    struct POColor _playerOSCKenBurnsTextStartOutline;
+    struct POColor _playerOSCKenBurnsTextEndOutline;
+    struct POColor _playerOSCBoxStrokeDashDark;
+    struct POColor _playerOSCBoxStrokeDashLight;
+    struct POColor _playerOSCCropBoxShadow;
+    struct POColor _playerOSCCropBoxStroke;
+    struct POColor _playerOSCKenBurnsBoxOutsideDimFill;
     NSColor *_playerStatusText;
     NSColor *_playerStatusTextUnit;
+    struct POCornerHandle *_cropKenBurnsHandle;
+    struct POCornerHandle *_cropHandle;
+    PCPtr_ca909b16 _handleFill;
+    PCPtr_ca909b16 _handleFillPressed;
+    PCPtr_ca909b16 _handleFillKBStart;
+    PCPtr_ca909b16 _handleFillPressedKBStart;
+    PCPtr_ca909b16 _handleFillKBEnd;
+    PCPtr_ca909b16 _handleFillPressedKBEnd;
+    PCPtr_ca909b16 _sideOutline;
+    PCPtr_ca909b16 _sideOutlinePressed;
+    PCPtr_ca909b16 _sideMask;
+    PCPtr_ca909b16 _sideMaskPressed;
     struct POAwesomeType *_awesomeType;
-    BOOL _isPro;
-    BOOL _isMotion;
-    PCRect_b601f9f3 _cornerRectInWorld;
-    NSMenu *_pEaseInOutMenu;
+    PCPtr_ca909b16 _OSCMessage[3][2];
 }
 
 + (BOOL)validate:(id)arg1;
-+ (id)textForCropTypeAndKeyFrame:(int)arg1 keyframe:(int)arg2;
-+ (struct POColor)textPOColorForCropTypeAndKeyFrame:(int)arg1 keyframe:(int)arg2 foreGround:(_Bool)arg3 proUI:(BOOL)arg4 active:(BOOL)arg5;
-+ (struct POColor)POColorForCropTypeAndKeyFrame:(int)arg1 keyframe:(int)arg2 foreGround:(_Bool)arg3;
-+ (void)maybeInitResources:(BOOL)arg1;
+- (void)_init;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)dealloc;
+- (struct POColor)POColorForCropTypeAndKeyFrame:(int)arg1 keyframe:(int)arg2 foreGround:(_Bool)arg3;
+- (struct POColor)textPOColorForCropTypeAndKeyFrame:(int)arg1 keyframe:(int)arg2 foreGround:(_Bool)arg3;
+- (id)textForCropTypeAndKeyFrame:(int)arg1 keyframe:(int)arg2;
+- (_Bool)shouldCropTypeDisplayNonActiveAreaGreying:(int)arg1;
+- (_Bool)showDrawCrossForCropMode:(int)arg1;
+- (_Bool)shouldDrawSideHandesForCropMode:(int)arg1;
+- (_Bool)shouldAllowShiftForCropType:(int)arg1;
+- (_Bool)shouldConstrainCropRectangleForCropType:(int)arg1;
+- (void)snapshotState:(id)arg1;
+- (BOOL)slidingObject;
+- (BOOL)translatingObject;
+- (id)eventMinusOptionKey:(id)arg1;
+- (id)accessibilityHandleName;
+- (int)keyFrameFromActivePart;
+- (void)updateInfoBar;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (BOOL)flagsChanged:(id)arg1;
+- (void)move:(const PCVector3_457fd1f0 *)arg1;
+- (struct CGRect)getCropBoundingRectangle:(int)arg1;
+- (void)crop:(PCVector3_457fd1f0)arg1 withEvent:(id)arg2;
+- (struct CGRect)activeHandleRect;
+- (void)drawArrowFrom:(const PCVector2_79efa81a *)arg1 to:(const PCVector2_79efa81a *)arg2;
+- (void)drawGreyedOutFrame:(const struct POCropMargins *)arg1 viewTransform:(const PCMatrix44Tmpl_e98c85ee *)arg2 originalBounds:(PCRect_b601f9f3)arg3 cropType:(int)arg4;
+- (void)drawKeyFrame:(int)arg1 margins:(const struct POCropMargins *)arg2 overlapCorners:(PCVector2_79efa81a *)arg3 viewTransform:(const PCMatrix44Tmpl_e98c85ee *)arg4 originalBounds:(PCRect_b601f9f3)arg5 cropType:(int)arg6 outCenter:(PCVector2_79efa81a *)arg7;
+- (void)drawHandles:(PCVector4_6435de47 *)arg1 forKeyframe:(int)arg2;
+- (void)draw;
+- (BOOL)postRedisplayOnActivePartChange;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)postRedisplayOnActivePartChange;
-- (void)draw;
-- (void)drawHandles:(PCVector4_6435de47 *)arg1 forKeyframe:(int)arg2;
-- (void)drawKeyFrame:(int)arg1 margins:(const struct POCropMargins *)arg2 overlapCorners:(PCVector2_79efa81a *)arg3 viewTransform:(const PCMatrix44Tmpl_e98c85ee *)arg4 originalBounds:(PCRect_b601f9f3)arg5 cropType:(int)arg6 outCenter:(PCVector2_79efa81a *)arg7;
-- (void)drawKeyFrameActiveAreaForSelect:(int)arg1 margins:(const struct POCropMargins *)arg2 overlapCorners:(PCVector2_79efa81a *)arg3 viewTransform:(const PCMatrix44Tmpl_e98c85ee *)arg4 originalBounds:(PCRect_b601f9f3)arg5 outCenter:(PCVector2_79efa81a *)arg6;
-- (void)drawGreyedOutFrame:(const struct POCropMargins *)arg1 viewTransform:(const PCMatrix44Tmpl_e98c85ee *)arg2 originalBounds:(PCRect_b601f9f3)arg3 cropType:(int)arg4;
-- (void)drawArrowFrom:(const PCVector2_79efa81a *)arg1 to:(const PCVector2_79efa81a *)arg2;
-- (struct CGRect)activeHandleRect;
-- (void)crop:(PCVector3_457fd1f0)arg1 withEvent:(id)arg2;
-- (struct CGRect)getCropBoundingRectangle:(int)arg1;
-- (void)move:(const PCVector3_457fd1f0 *)arg1;
-- (BOOL)oscFlagsChanged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)_getCropXYForPartFromCornerRect:(int)arg1 snapStartX:(double *)arg2 snapStartY:(double *)arg3;
-- (void)updateInfoBar;
-- (int)keyFrameFromActivePart;
-- (id)accessibilityHandleName;
-- (id)eventMinusOptionKey:(id)arg1;
-- (BOOL)translatingObject;
-- (BOOL)slidingObject;
-- (void)snapshotState:(id)arg1;
-- (_Bool)shouldConstrainCropRectangleForCropType:(int)arg1;
-- (_Bool)shouldAllowShiftForCropType:(int)arg1;
-- (_Bool)shouldDrawSideHandesForCropMode:(int)arg1;
-- (_Bool)showDrawCrossForCropMode:(int)arg1;
-- (_Bool)shouldCropTypeDisplayNonActiveAreaGreying:(int)arg1;
-- (void)setActiveKeyframe:(int)arg1;
-- (id)getCursorWithEvent:(id)arg1;
-- (void)dealloc;
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
-- (id)menuForEvent:(id)arg1;
-- (void)buildEaseInOutMenu;
-- (void)easeInAndOut:(id)arg1;
-- (void)_init:(BOOL)arg1 isMotion:(BOOL)arg2;
 
 @end
 

@@ -15,14 +15,14 @@
     unsigned long long _selectionMask;
 }
 
-- (unsigned long long)selectionMask;
-- (void)setSelectionMask:(unsigned long long)arg1;
-- (id)objects;
-- (void)setObjects:(id)arg1;
-- (CDStruct_e83c9415)timeRange;
-- (void)setTimeRange:(CDStruct_e83c9415)arg1;
-- (id)description;
 - (void)dealloc;
+- (id)description;
+- (void)setTimeRange:(CDStruct_e83c9415)arg1;
+- (CDStruct_e83c9415)timeRange;
+- (void)setObjects:(id)arg1;
+- (id)objects;
+- (void)setSelectionMask:(unsigned long long)arg1;
+- (unsigned long long)selectionMask;
 
 @end
 

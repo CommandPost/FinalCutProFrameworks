@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     LKPopUpButton *_mediaTypePopUpButton;
 }
 
-- (id)tileGlyphString;
-- (id)filterDict;
-- (void)setFilterDict:(id)arg1;
-- (void)mediaTypeFilterMenu:(id)arg1;
 - (void)awakeFromNib;
+- (void)mediaTypeFilterMenu:(id)arg1;
+- (void)setFilterDict:(id)arg1;
+- (id)filterDict;
+- (id)tileTypeFacet;
 
 @end
 

@@ -9,11 +9,14 @@
 @interface OZOpticalFlowMainThreadNotifier : NSObject
 {
     struct AnalyzerImpl *_analyzer;
-    // Error parsing type: , name: _mfp
+    struct {
+        void *__pfn;
+        long long __delta;
+    } _mfp;
 }
 
+- (id)initWithAnalyzer:(struct AnalyzerImpl *)arg1 andMFP:(CDStruct_d65495c1)arg2;
 - (void)notifyMainThread:(id)arg1;
-- (id)initWithAnalyzer:(struct AnalyzerImpl *)arg1 andMFP: /* Error: Ran out of types for this method. */;
 
 @end
 

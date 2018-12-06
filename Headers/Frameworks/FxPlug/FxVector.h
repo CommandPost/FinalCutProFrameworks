@@ -15,33 +15,33 @@
     } _u;
 }
 
-+ (id)vectorWithString:(id)arg1;
-+ (id)vectorWithX:(double)arg1 Y:(double)arg2 Z:(double)arg3 W:(double)arg4;
-+ (id)vectorWithX:(double)arg1 Y:(double)arg2 Z:(double)arg3;
-+ (id)vectorWithX:(double)arg1 Y:(double)arg2;
-+ (id)vectorWithX:(double)arg1;
-+ (id)vectorWithCIVector:(id)arg1;
 + (id)vectorWithValues:(const double *)arg1 count:(unsigned long long)arg2;
-- (id)stringRepresentation;
-- (id)ciVector;
-- (double)W;
-- (double)Z;
-- (double)Y;
-- (double)X;
-- (double)valueAtIndex:(unsigned long long)arg1;
-- (unsigned long long)count;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithString:(id)arg1;
-- (id)initWithValues:(const double *)arg1 count:(unsigned long long)arg2;
-- (id)initWithX:(double)arg1 Y:(double)arg2 Z:(double)arg3 W:(double)arg4;
-- (id)initWithX:(double)arg1 Y:(double)arg2 Z:(double)arg3;
-- (id)initWithX:(double)arg1 Y:(double)arg2;
-- (id)initWithX:(double)arg1;
-- (id)init;
++ (id)vectorWithCIVector:(id)arg1;
++ (id)vectorWithX:(double)arg1;
++ (id)vectorWithX:(double)arg1 Y:(double)arg2;
++ (id)vectorWithX:(double)arg1 Y:(double)arg2 Z:(double)arg3;
++ (id)vectorWithX:(double)arg1 Y:(double)arg2 Z:(double)arg3 W:(double)arg4;
++ (id)vectorWithString:(id)arg1;
 - (id)initWithCIVector:(id)arg1;
+- (id)init;
+- (id)initWithX:(double)arg1;
+- (id)initWithX:(double)arg1 Y:(double)arg2;
+- (id)initWithX:(double)arg1 Y:(double)arg2 Z:(double)arg3;
+- (id)initWithX:(double)arg1 Y:(double)arg2 Z:(double)arg3 W:(double)arg4;
+- (id)initWithValues:(const double *)arg1 count:(unsigned long long)arg2;
+- (id)initWithString:(id)arg1;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)count;
+- (double)valueAtIndex:(unsigned long long)arg1;
+- (double)X;
+- (double)Y;
+- (double)Z;
+- (double)W;
+- (id)ciVector;
+- (id)stringRepresentation;
 
 @end
 

@@ -6,32 +6,20 @@
 
 #import "NSObject.h"
 
-#import "NSCopying.h"
-
 @class NSArray, NSMapTable, NSMutableArray;
 
-@interface TLKItemEdgeTable : NSObject <NSCopying>
+@interface TLKItemEdgeTable : NSObject
 {
     NSMutableArray *_itemEdges;
-    NSMapTable *_leadingEdgesTOC;
-    NSMapTable *_trailingEdgesTOC;
+    NSMapTable *_itemEdgesTOC;
 }
 
-- (void)sort;
-- (id)trailingEdgeInfoForItem:(id)arg1;
-- (id)leadingEdgeInfoForItem:(id)arg1;
-- (void)noteTimeRangeChanged:(CDStruct_e83c9415)arg1 forItem:(id)arg2;
-- (void)removeItemEdgeInfoForItem:(id)arg1;
-- (void)addItemEdgeInfoForItem:(id)arg1 withTimeRange:(CDStruct_e83c9415)arg2 isAnchored:(BOOL)arg3;
-@property(copy, nonatomic) NSArray *itemEdges;
-- (void)_addTrailingEdgeInfo:(id)arg1 forItem:(id)arg2;
-- (void)_addLeadingEdgeInfo:(id)arg1 forItem:(id)arg2;
-- (id)description;
-- (void)reset;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithCapacity:(unsigned long long)arg1;
 - (id)init;
+- (void)dealloc;
+- (id)description;
+- (void)addItemEdgeInfoForItem:(id)arg1 layoutFrame:(struct CGRect)arg2 isAnchored:(BOOL)arg3;
+- (void)removeItemEdgeInfoForItem:(id)arg1;
+@property(copy, nonatomic) NSArray *itemEdges; // @synthesize itemEdges=_itemEdges;
 
 @end
 

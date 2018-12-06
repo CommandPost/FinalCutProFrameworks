@@ -7,8 +7,8 @@
 #import "NSMutableDictionary.h"
 
 @interface NSMutableDictionary (PROConveniences)
-- (id)objectsInAllSetsForKeys:(id)arg1;
-- (void)removeObject:(id)arg1 fromSetForKey:(id)arg2;
 - (void)addObject:(id)arg1 toSetForKey:(id)arg2;
+- (void)removeObject:(id)arg1 fromSetForKey:(id)arg2;
+- (id)objectsInAllSetsForKeys:(id)arg1;
 @end
 

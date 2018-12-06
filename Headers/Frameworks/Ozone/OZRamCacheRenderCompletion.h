@@ -11,18 +11,18 @@
 @interface OZRamCacheRenderCompletion : NSObject
 {
     OZRamCacheManager *_ramCacheManager;
-    shared_ptr_8628efdd *_image;
+    shared_ptr_211f3873 *_image;
     CDStruct_1b6d18a9 _time;
     unsigned int _renderTime;
 }
 
+- (id)init;
+- (void)dealloc;
+- (shared_ptr_211f3873)image;
+- (void)setImage:(shared_ptr_211f3873)arg1;
 @property unsigned int renderTime; // @synthesize renderTime=_renderTime;
 @property CDStruct_1b6d18a9 time; // @synthesize time=_time;
 @property(retain) OZRamCacheManager *ramCacheManager; // @synthesize ramCacheManager=_ramCacheManager;
-- (void)setImage:(shared_ptr_8628efdd)arg1;
-- (shared_ptr_8628efdd)image;
-- (void)dealloc;
-- (id)init;
 
 @end
 

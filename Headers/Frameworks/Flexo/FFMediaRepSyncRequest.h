@@ -4,15 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSOperation.h"
+#import "NSObject.h"
 
-@class FFDirectory, FFMediaEventProject, NSArray, NSDictionary, NSError, NSMapTable, NSURL;
+@class FFDirectory, NSArray, NSDictionary, NSError, NSMapTable, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFMediaRepSyncRequest : NSOperation
+@interface FFMediaRepSyncRequest : NSObject
 {
-    FFMediaEventProject *_mediaEvent;
-    CDStruct_b1640004 _mediaSelector;
     NSMapTable *_mediaReps;
     FFDirectory *_mediaDir;
     NSURL *_dirURL;
@@ -21,22 +19,19 @@ __attribute__((visibility("hidden")))
     NSError *_error;
 }
 
-- (BOOL)hasChanges;
-- (void)main;
-- (id)_newTableOfMediaRepsByFilename;
-- (id)_syncMediaRepsByFileName:(id)arg1 URLs:(id)arg2 error:(id *)arg3;
-- (id)_mediaURLsToScan:(id)arg1 error:(id *)arg2;
-- (id)keysInserted;
-- (id)keysMissing;
-- (id)keysModified;
-- (id)errorForKey:(id)arg1;
-- (id)errorsByKey;
-- (id)mediaRepForKey:(id)arg1;
-- (id)mediaDirectory;
-- (void)setError:(id)arg1 force:(BOOL)arg2;
-- (id)error;
+- (id)initWithMediaReps:(id)arg1 directoryURL:(id)arg2;
 - (void)dealloc;
-- (id)initWithMediaEvent:(id)arg1 mediaSelector:(const CDStruct_b1640004 *)arg2;
+- (void)setError:(id)arg1 force:(BOOL)arg2;
+- (id)mediaDirectory;
+- (id)mediaRepForKey:(id)arg1;
+- (id)errorsByKey;
+- (id)errorForKey:(id)arg1;
+- (id)keysModified;
+- (id)keysMissing;
+- (id)keysInserted;
+- (id)_readMediaURLs:(id)arg1 error:(id *)arg2;
+- (id)_syncMediaRepsByFileName:(id)arg1 URLs:(id)arg2 error:(id *)arg3;
+- (BOOL)execute:(id *)arg1;
 
 @end
 

@@ -6,19 +6,15 @@
 
 #import "FFModelLocking.h"
 
-@class FFMetadataDefinition, NSDictionary, NSObject<FFMetadataProtocol>, NSString;
-
 @protocol FFMetadataProtocol <FFModelLocking>
-- (NSObject<FFMetadataProtocol> *)mdTargetForKey:(NSString *)arg1;
-- (id)mdLocalValueForKey:(NSString *)arg1;
-- (id)mdValueForKey:(NSString *)arg1;
-- (void)mdSetLocalValue:(id)arg1 forKey:(NSString *)arg2;
-- (void)mdSetValue:(id)arg1 forKey:(NSString *)arg2;
+- (id)md;
+- (id)mdMappedKeyPathForKey:(id)arg1;
+- (void)mdSetValue:(id)arg1 forKey:(id)arg2;
+- (id)mdValueForKey:(id)arg1;
+- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
+- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
 
 @optional
-- (BOOL)mdHasSubsetValuesOf:(NSObject<FFMetadataProtocol> *)arg1;
-- (void)mdSetCollection:(NSDictionary *)arg1;
-- (NSDictionary *)mdCollection;
-- (BOOL)validateMetadataItem:(FFMetadataDefinition *)arg1;
+- (BOOL)validateMetadataItem:(id)arg1;
 @end
 

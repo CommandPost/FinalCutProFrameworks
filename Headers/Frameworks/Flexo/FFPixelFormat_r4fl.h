@@ -11,21 +11,18 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (int)convertToHeYCbCrFormat;
-- (int)convertToHeFormat;
-- (unsigned int)CGBitmapInfo;
-- (unsigned int)QTPixelFormat;
-- (int)alphaType;
-- (BOOL)hasAlpha;
-- (BOOL)isSubsampled;
-- (BOOL)isYCbCr;
-- (BOOL)isRAW;
-- (int)pixelBlockWidth;
-- (int)bitsPerBlock;
-- (int)bitsPerComponent;
-- (id)substituteOutputFormat;
-- (id)description;
 - (id)name;
+- (id)description;
+- (int)bitsPerComponent;
+- (int)bitsPerBlock;
+- (int)pixelBlockWidth;
+- (BOOL)isYCbCr;
+- (BOOL)hasAlpha;
+- (int)alphaType;
+- (unsigned int)QTPixelFormat;
+- (unsigned int)CGBitmapInfo;
+- (int)convertToHeFormat;
+- (int)convertToHeYCbCrFormat;
 
 @end
 

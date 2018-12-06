@@ -14,13 +14,13 @@
     struct OZChannelColorNoAlpha *_pColorChan;
 }
 
-- (void)setColorChannelValue:(id)arg1;
-- (float)suggestedMinParamWidth;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 colorChan:(struct OZChannelColorNoAlpha *)arg2 context:(id)arg3;
+- (void)dealloc;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (float)suggestedMinParamWidth;
+- (void)setColorChannelValue:(id)arg1;
 
 @end
 

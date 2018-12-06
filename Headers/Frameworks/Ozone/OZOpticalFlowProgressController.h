@@ -7,40 +7,31 @@
 #import "NSWindowController.h"
 
 #import "NSTableViewDataSource.h"
-#import "NSTableViewDelegate.h"
 
-@class LKButton, NSMutableArray, NSString, OZOpticalFlowTableView;
+@class LKButton, NSMutableArray, OZOpticalFlowTableView;
 
-@interface OZOpticalFlowProgressController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource>
+@interface OZOpticalFlowProgressController : NSWindowController <NSTableViewDataSource>
 {
     OZOpticalFlowTableView *_progressList;
     LKButton *_autocloseButton;
     NSMutableArray *_progress;
 }
 
-- (BOOL)tableView:(id)arg1 acceptDrop:(id)arg2 row:(long long)arg3 dropOperation:(unsigned long long)arg4;
-- (unsigned long long)tableView:(id)arg1 validateDrop:(id)arg2 proposedRow:(long long)arg3 proposedDropOperation:(unsigned long long)arg4;
-- (BOOL)tableView:(id)arg1 writeRowsWithIndexes:(id)arg2 toPasteboard:(id)arg3;
-- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
-- (long long)numberOfRowsInTableView:(id)arg1;
-- (id)entryByBackgroundTask:(id)arg1;
-- (id)entryByJobID:(const struct JobID *)arg1;
-- (id)entryAtIndex:(unsigned int)arg1;
-- (void)tickleProgressMainThread:(id)arg1;
-- (void)tickleProgress;
-- (void)toggleAutoClose:(id)arg1;
-- (id)windowFrameAutosaveName;
-- (BOOL)isVisible;
-- (void)toggleVisibility;
-- (void)dealloc;
-- (void)windowDidLoad;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (void)toggleVisibility;
+- (BOOL)isVisible;
+- (id)windowFrameAutosaveName;
+- (void)toggleAutoClose:(id)arg1;
+- (void)tickleProgress;
+- (void)tickleProgressMainThread:(id)arg1;
+- (id)entryAtIndex:(unsigned int)arg1;
+- (id)entryByJobID:(const struct JobID *)arg1;
+- (int)numberOfRowsInTableView:(id)arg1;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
+- (BOOL)tableView:(id)arg1 writeRowsWithIndexes:(id)arg2 toPasteboard:(id)arg3;
+- (unsigned long long)tableView:(id)arg1 validateDrop:(id)arg2 proposedRow:(int)arg3 proposedDropOperation:(unsigned long long)arg4;
+- (BOOL)tableView:(id)arg1 acceptDrop:(id)arg2 row:(int)arg3 dropOperation:(unsigned long long)arg4;
 
 @end
 

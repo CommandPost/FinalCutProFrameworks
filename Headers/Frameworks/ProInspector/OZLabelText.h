@@ -21,30 +21,28 @@
 }
 
 + (Class)animStatusClass;
-- (void)setFrame:(struct CGRect)arg1;
-- (struct OZChannelBase *)excludeChanForChanBase:(struct OZChannelBase *)arg1;
-- (void)setIsBold:(BOOL)arg1;
-- (void)setAnimStatusClass:(Class)arg1;
-- (void)setController:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (BOOL)acceptsFirstResponder;
-- (void)mouseDown:(id)arg1;
-- (id)findRetargetedViewForEvent:(id)arg1;
-- (id)hitTest:(struct CGPoint)arg1;
-- (void)setShouldDoMenu:(BOOL)arg1;
-- (void)setViewController:(id)arg1;
-- (void)stopPulsing;
-- (void)startPulsing;
-- (void)setAlignment:(unsigned long long)arg1;
-- (void)setStringValue:(id)arg1 andAlignment:(unsigned long long)arg2;
-- (void)setStringValue:(id)arg1;
-- (void)dealloc;
-- (void)setHidden:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)setStringValue:(id)arg1;
+- (void)setStringValue:(id)arg1 andAlignment:(unsigned long long)arg2;
+- (void)setAlignment:(unsigned long long)arg1;
+- (void)startPulsing;
+- (void)stopPulsing;
+- (void)setViewController:(id)arg1;
+- (void)setShouldDoMenu:(BOOL)arg1;
+- (id)hitTest:(struct CGPoint)arg1;
+- (id)findRetargetedViewForEvent:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)setController:(id)arg1;
+- (void)setAnimStatusClass:(Class)arg1;
+- (void)setIsBold:(BOOL)arg1;
+- (struct OZChannelBase *)excludeChanForChanBase:(struct OZChannelBase *)arg1;
 
 @end
 

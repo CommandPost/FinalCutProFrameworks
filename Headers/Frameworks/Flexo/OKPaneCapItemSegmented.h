@@ -6,34 +6,30 @@
 
 #import <Flexo/OKPaneCapItem.h>
 
-@class LKSegmentedControl, NSFont, NSString;
+@class NSProSegmentedControl, NSProThemeFacet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface OKPaneCapItemSegmented : OKPaneCapItem
 {
+    NSProThemeFacet *_glyph;
     NSString *_label;
     NSString *_tooltip;
-    LKSegmentedControl *_segmentedControl;
+    NSProSegmentedControl *_segmentedControl;
     unsigned long long _segmentIndex;
-    NSFont *_preferredFont;
     unsigned long long _trackingMode;
 }
 
-@property(retain, nonatomic) NSFont *preferredFont; // @synthesize preferredFont=_preferredFont;
-@property(nonatomic) unsigned long long trackingMode; // @synthesize trackingMode=_trackingMode;
-@property(copy, nonatomic) NSString *tooltip; // @synthesize tooltip=_tooltip;
-@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
-- (id)description;
-- (void)disconnectFromView;
-- (void)dealloc;
-- (void)setToolTip:(id)arg1;
-- (void)setEnabled:(BOOL)arg1;
-- (void)setHidden:(BOOL)arg1;
 - (id)init;
-- (void)refreshSegmentedControl;
-@property(readonly) unsigned long long segmentIndex;
-- (void)setSegmentedControl:(id)arg1 segmentIndex:(unsigned long long)arg2;
-@property(readonly) LKSegmentedControl *segmentedControl;
+- (void)setHidden:(BOOL)arg1;
+- (void)setEnabled:(BOOL)arg1;
+@property(retain, nonatomic) NSProThemeFacet *glyph; // @synthesize glyph=_glyph;
+@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
+- (void)setToolTip:(id)arg1;
+@property unsigned long long trackingMode; // @synthesize trackingMode=_trackingMode;
+- (void)dealloc;
+- (void)disconnectFromView;
+- (id)description;
+@property(copy, nonatomic) NSString *tooltip; // @synthesize tooltip=_tooltip;
 
 @end
 

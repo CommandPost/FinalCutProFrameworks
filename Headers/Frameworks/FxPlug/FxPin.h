@@ -11,23 +11,23 @@
     struct FxPinPriv *_priv;
 }
 
-- (void)setValueClass:(Class)arg1;
-- (Class)valueClass;
-- (void)setDirection:(int)arg1;
-- (int)direction;
-- (void)setDescription:(id)arg1;
-- (id)description;
-- (void)setDisplayName:(id)arg1;
-- (id)displayName;
-- (void)setUUID:(id)arg1;
-- (id)uuid;
-- (id)stream;
-- (void)setParentPlug:(id)arg1;
-- (id)parentPlug;
-- (id)properties;
-- (int)index;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (int)index;
+- (id)properties;
+- (id)parentPlug;
+- (void)setParentPlug:(id)arg1;
+- (id)stream;
+- (id)uuid;
+- (void)setUUID:(id)arg1;
+- (id)displayName;
+- (void)setDisplayName:(id)arg1;
+- (id)description;
+- (void)setDescription:(id)arg1;
+- (int)direction;
+- (void)setDirection:(int)arg1;
+- (Class)valueClass;
+- (void)setValueClass:(Class)arg1;
 
 @end
 

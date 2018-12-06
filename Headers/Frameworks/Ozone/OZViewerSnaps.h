@@ -10,19 +10,19 @@
 
 @interface OZViewerSnaps : NSObject
 {
-    struct map<OZOverlay *, std::__1::shared_ptr<std::__1::set<OZSnap, std::__1::less<OZSnap>, std::__1::allocator<OZSnap>>>, std::__1::less<OZOverlay *>, std::__1::allocator<std::__1::pair<OZOverlay *const, std::__1::shared_ptr<std::__1::set<OZSnap, std::__1::less<OZSnap>, std::__1::allocator<OZSnap>>>>>> *_snaps;
+    struct map<OZOverlay*, std::tr1::shared_ptr<std::set<OZSnap, std::less<OZSnap>, std::allocator<OZSnap>>>, std::less<OZOverlay*>, std::allocator<std::pair<OZOverlay* const, std::tr1::shared_ptr<std::set<OZSnap, std::less<OZSnap>, std::allocator<OZSnap>>>>>> *_snaps;
     OZGLViewerOSC *_viewer;
 }
 
-- (void)endSnapping;
-- (void)dismissSnaps;
-- (void)checkSnapsForX:(double)arg1 andY:(double)arg2 withDeltaX:(double *)arg3 andDeltaY:(double *)arg4 exact:(BOOL)arg5;
-- (void)checkSnapsFor:(PCRect_b601f9f3)arg1 withX:(double *)arg2 andY:(double *)arg3 exact:(BOOL)arg4;
-- (void)startSnapping:(id)arg1 selectedOnly:(BOOL)arg2;
-- (BOOL)isSnapping;
-- (void)setSnapping:(BOOL)arg1;
-- (void)dealloc;
 - (id)initWithViewerOSC:(id)arg1;
+- (void)dealloc;
+- (void)setSnapping:(BOOL)arg1;
+- (BOOL)isSnapping;
+- (void)startSnapping:(id)arg1 selectedOnly:(BOOL)arg2;
+- (void)checkSnapsFor:(PCRect_b601f9f3)arg1 withX:(double *)arg2 andY:(double *)arg3 exact:(BOOL)arg4;
+- (void)checkSnapsForX:(double)arg1 andY:(double)arg2 withDeltaX:(double *)arg3 andDeltaY:(double *)arg4 exact:(BOOL)arg5;
+- (void)dismissSnaps;
+- (void)endSnapping;
 
 @end
 

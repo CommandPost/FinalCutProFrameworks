@@ -18,41 +18,31 @@
     BOOL mEnterMoviesCalled;
     NSLock *mCaptureLock;
     NSLock *mDeviceAvailableLock;
-    unsigned int mHDMIplugInID;
 }
 
-+ (void)releaseSharedDeviceManager;
 + (id)sharedDeviceManager;
++ (void)releaseSharedDeviceManager;
+- (id)init;
+- (void)dealloc;
+- (void)addDeviceConnectionOnMainThread:(id)arg1;
+- (id)addDeviceConnectionForProMediaIODevice:(unsigned int)arg1;
+- (void)buildDeviceList;
+- (void)removeDeviceList;
+- (id)deviceConnectionForProMediaIODevice:(unsigned int)arg1;
+- (id)deviceConnectionWithFormat:(int)arg1 forInput:(BOOL)arg2;
+- (id)deviceConnectionWithCodecType:(unsigned int)arg1 forOutputToPath:(id)arg2;
+- (void)removeDeviceConnection:(id)arg1;
+- (void)removeDeviceConnectionOnMainThread:(id)arg1;
+- (void)captureLock;
+- (void)captureUnlock;
+- (BOOL)captureTrylock;
+- (void)deviceAvailableLock;
+- (void)deviceAvailableUnlock;
+- (BOOL)deviceAvailableTrylock;
 @property(retain) NSMutableArray *audioInputDevices; // @synthesize audioInputDevices=mAudioInputDevices;
 @property(retain) NSMutableArray *outputDeviceConnections; // @synthesize outputDeviceConnections=mOutputDeviceConnections;
 @property(retain) NSMutableArray *inputDeviceConnections; // @synthesize inputDeviceConnections=mInputDeviceConnections;
 @property(retain) NSMutableArray *deviceConnections; // @synthesize deviceConnections=mDeviceConnections;
-- (struct __CFArray *)copyNSScreenHDMIIgnoreList;
-- (void)removeNSScreenIndexFromHDMIIgnoreList:(unsigned long long)arg1;
-- (void)addNSScreenIndexToHDMIIgnoreList:(unsigned long long)arg1;
-- (unsigned int)getHDMIPluginID;
-- (BOOL)deviceAvailableTrylock;
-- (void)deviceAvailableUnlock;
-- (void)deviceAvailableLock;
-- (BOOL)captureTrylock;
-- (void)captureUnlock;
-- (void)captureLock;
-- (void)removeDeviceConnectionOnMainThread:(id)arg1;
-- (void)removeDeviceConnection:(id)arg1;
-- (id)deviceConnectionWithCodecType:(unsigned int)arg1 forOutputToPath:(id)arg2;
-- (id)deviceConnectionWithFormat:(int)arg1 forInput:(BOOL)arg2;
-- (id)deviceConnectionForProMediaIODevice:(unsigned int)arg1;
-- (void)populateOutputDeviceMenu:(id)arg1;
-- (BOOL)outputDeviceAvailable;
-- (void)removeDeviceList;
-- (int)deviceListChangedForProperty:(unsigned int)arg1 address:(struct CMIOObjectPropertyAddress)arg2;
-- (void)buildDeviceList;
-- (void)buildDeviceListEnd:(id)arg1;
-- (void)buildDeviceListStart:(id)arg1;
-- (id)addDeviceConnectionForProMediaIODevice:(unsigned int)arg1;
-- (void)addDeviceConnectionOnMainThread:(id)arg1;
-- (void)dealloc;
-- (id)init;
 
 @end
 

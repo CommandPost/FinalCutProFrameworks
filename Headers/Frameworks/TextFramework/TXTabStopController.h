@@ -16,14 +16,14 @@
     LKPopUpButton *_pPopUp;
 }
 
-- (void)dealloc;
-- (void)invalidateTabPointer;
-- (void)setIsEnabled:(BOOL)arg1;
-- (void)update;
-- (void)setChannelValue:(id)arg1;
-- (void)endSegmentedScrubberAction:(id)arg1;
-- (void)startSegmentedScrubberAction:(id)arg1;
 - (id)initWithTab:(struct TXTabStop *)arg1 text:(struct TXTextLayout *)arg2 context:(id)arg3;
+- (void)startSegmentedScrubberAction:(id)arg1;
+- (void)endSegmentedScrubberAction:(id)arg1;
+- (void)setChannelValue:(id)arg1;
+- (void)update;
+- (void)setIsEnabled:(BOOL)arg1;
+- (void)invalidateTabPointer;
+- (void)dealloc;
 
 @end
 

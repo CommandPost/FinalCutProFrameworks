@@ -6,41 +6,33 @@
 
 #import <LunaKit/LKTabModule.h>
 
-#import "LKTearOffTabViewDelegate.h"
+#import "NSProTearOffTabViewDelegate.h"
 
-@class NSString;
-
-@interface LKTearOffTabModule : LKTabModule <LKTearOffTabViewDelegate>
+@interface LKTearOffTabModule : LKTabModule <NSProTearOffTabViewDelegate>
 {
     void *_reserved11;
     void *_reserved12;
 }
 
-+ (Class)tabViewClass;
-+ (void)setDraggedModule:(id)arg1;
 + (id)draggedModule;
-- (id)newTabViewForWinModule:(id)arg1 usingLayout:(id)arg2;
-- (void)tabView:(id)arg1 stopDraggingTabViewItem:(id)arg2 withOperation:(unsigned long long)arg3;
-- (id)tabView:(id)arg1 startDraggingTabViewItem:(id)arg2;
-- (void)tabView:(id)arg1 didReorderTabViewItem:(id)arg2;
-- (void)tabView:(id)arg1 willRemoveTabViewItem:(id)arg2;
-- (BOOL)tabView:(id)arg1 canRemoveTabViewItem:(id)arg2;
-- (BOOL)tabView:(id)arg1 canInsertTabViewItem:(id)arg2;
-- (void)dealloc;
-- (BOOL)loadView;
-- (void)willCloseSubmodule:(id)arg1;
-- (void)_removeFromSupermoduleIfNeeded;
-- (void)endDraggingModule:(id)arg1;
-- (void)startDraggingModule:(id)arg1;
-- (void)tearOffModule:(id)arg1;
-- (void)tearOffSelectedTabViewItem:(id)arg1;
++ (void)setDraggedModule:(id)arg1;
++ (Class)tabViewClass;
 - (void)tearOffRepresentedObject:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)tearOffSelectedTabViewItem:(id)arg1;
+- (void)tearOffModule:(id)arg1;
+- (void)startDraggingModule:(id)arg1;
+- (void)endDraggingModule:(id)arg1;
+- (void)_removeFromSupermoduleIfNeeded;
+- (void)willCloseSubmodule:(id)arg1;
+- (BOOL)loadView;
+- (void)dealloc;
+- (BOOL)tabView:(id)arg1 canInsertTabViewItem:(id)arg2;
+- (BOOL)tabView:(id)arg1 canRemoveTabViewItem:(id)arg2;
+- (void)tabView:(id)arg1 willRemoveTabViewItem:(id)arg2;
+- (void)tabView:(id)arg1 didReorderTabViewItem:(id)arg2;
+- (id)tabView:(id)arg1 startDraggingTabViewItem:(id)arg2;
+- (void)tabView:(id)arg1 stopDraggingTabViewItem:(id)arg2 withOperation:(unsigned long long)arg3;
+- (id)newTabViewForWinModule:(id)arg1 usingLayout:(id)arg2;
 
 @end
 

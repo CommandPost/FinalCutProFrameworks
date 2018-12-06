@@ -7,7 +7,7 @@
 #import "FxParameterRetrievalAPI_v2.h"
 
 @protocol FxParameterRetrievalAPI_v3 <FxParameterRetrievalAPI_v2>
-- (BOOL)getPathID:(void **)arg1 fromParm:(unsigned int)arg2 atTime:(double)arg3;
 - (BOOL)getCustomParameterValue:(id *)arg1 fromParm:(unsigned int)arg2 atTime:(double)arg3;
+- (BOOL)getPathID:(void **)arg1 fromParm:(unsigned int)arg2 atTime:(double)arg3;
 @end
 

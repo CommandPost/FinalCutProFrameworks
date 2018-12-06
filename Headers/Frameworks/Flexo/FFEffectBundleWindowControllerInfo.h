@@ -18,12 +18,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)windowControllerInfoWithContext:(id)arg1 preferGeneric:(BOOL)arg2;
+- (id)initWithContext:(id)arg1 preferGeneric:(BOOL)arg2;
+- (void)dealloc;
 @property(retain, nonatomic) FFAudioUnitEffect *effect; // @synthesize effect=_effect;
 @property(retain, nonatomic) FFEffectBundlePart *effectBundlePart; // @synthesize effectBundlePart=_effectBundlePart;
 @property(readonly, nonatomic) BOOL preferGeneric; // @synthesize preferGeneric=_preferGeneric;
 @property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
-- (void)dealloc;
-- (id)initWithContext:(id)arg1 preferGeneric:(BOOL)arg2;
 
 @end
 

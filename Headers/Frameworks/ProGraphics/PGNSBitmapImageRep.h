@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)new8BitRGBAFromNSImage:(id)arg1 flip:(BOOL)arg2 size:(struct CGSize)arg3;
 + (id)new8BitRGBAFromNSImage:(id)arg1 flip:(BOOL)arg2;
 
 @end

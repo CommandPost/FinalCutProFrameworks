@@ -19,10 +19,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
-- (void)dealloc;
-- (void)_FFPMRScreenRefreshReporterNoMoreDrawing:(id)arg1;
-- (void)startWatchingForInstrument:(id)arg1 name:(struct __CFString *)arg2 comment:(struct __CFString *)arg3;
 - (void)_registerForNotifications;
+- (void)startWatchingForInstrument:(id)arg1 name:(struct __CFString *)arg2 comment:(struct __CFString *)arg3;
+- (void)_FFPMRScreenRefreshReporterNoMoreDrawing:(id)arg1;
+- (void)dealloc;
 
 @end
 

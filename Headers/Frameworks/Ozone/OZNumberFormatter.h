@@ -14,14 +14,14 @@
     BOOL _clampValue;
 }
 
-- (BOOL)isPartialStringValid:(id)arg1 newEditingString:(id *)arg2 errorDescription:(id *)arg3;
-- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
-- (BOOL)shouldClampValue;
-- (void)setShouldClampValue:(BOOL)arg1;
-- (id)validCharacterSet;
-- (void)setValidCharacterSet:(id)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (void)setValidCharacterSet:(id)arg1;
+- (id)validCharacterSet;
+- (void)setShouldClampValue:(BOOL)arg1;
+- (BOOL)shouldClampValue;
+- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
+- (BOOL)isPartialStringValid:(id)arg1 newEditingString:(id *)arg2 errorDescription:(id *)arg3;
 
 @end
 

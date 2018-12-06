@@ -11,30 +11,25 @@
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-- (void)setBlockedLookupKey:(id)arg1 pluginName:(id)arg2 version:(id)arg3;
-- (void)setIsBlocked:(BOOL)arg1;
-- (BOOL)isEqualToPlugIn:(id)arg1;
-- (void)setDelegate:(id)arg1;
-- (id)apiUsedByPlugInForProtocol:(id)arg1;
-- (id)blockedLookupKey;
-- (BOOL)isBlocked;
-- (id)pluginKitPlug;
-- (id)implementedProtocols;
-- (id)icon;
-- (id)infoString;
-- (id)version;
-- (id)helpURL;
-- (id)displayName;
-- (id)group;
-- (struct __CFUUID *)uuid;
-- (id)className;
-- (Class)plugInClass;
-- (id)sharedPlugInInstance;
-- (id)plugInInstance;
-- (id)delegate;
-- (id)infoDictionary;
-- (id)bundle;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2 delegate:(id)arg3;
+- (id)bundle;
+- (id)infoDictionary;
+- (id)delegate;
+- (id)plugInInstance;
+- (id)sharedPlugInInstance;
+- (Class)plugInClass;
+- (id)className;
+- (struct __CFUUID *)uuid;
+- (id)group;
+- (id)displayName;
+- (id)helpURL;
+- (id)version;
+- (id)infoString;
+- (id)icon;
+- (id)implementedProtocols;
+- (id)apiUsedByPlugInForProtocol:(id)arg1;
+- (void)setDelegate:(id)arg1;
+- (BOOL)isEqualToPlugIn:(id)arg1;
 
 @end
 

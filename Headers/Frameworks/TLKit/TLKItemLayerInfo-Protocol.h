@@ -4,22 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSArray, NSDictionary;
+@class NSDictionary;
 
 @protocol TLKItemLayerInfo
-@property(readonly) BOOL clipTrimmedClip;
 @property(readonly) double trailingEdgeInset;
 @property(readonly) double leadingEdgeInset;
-@property(readonly) BOOL audioComponent;
 @property(readonly) BOOL splitEdit;
-@property(readonly) BOOL draggedItem;
-@property(readonly) BOOL timelineZooming;
 @property(readonly) struct CGRect videoLayerFrame;
 @property(readonly) struct CGRect audioLayerFrame;
 @property(readonly) struct CGRect visibleBounds;
 @property(retain) NSDictionary *userInfoDictionary;
-- (NSArray *)timeSegmentTimePerPoints;
-- (NSArray *)timeSegmentTimeScalesegmentRanges;
-- (NSArray *)timeSegmentTimes;
 @end
 

@@ -4,13 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class CALayer, CKBaseExportPanel;
-
 @protocol CKBaseExportPanelDelegate
 
 @optional
-- (void)panel:(CKBaseExportPanel *)arg1 willCloseWithCode:(long long)arg2;
+- (id)previewLayer;
 - (void)setPreviewTime:(double)arg1;
-- (CALayer *)previewLayer;
+- (void)panel:(id)arg1 willCloseWithCode:(long long)arg2;
 @end
 

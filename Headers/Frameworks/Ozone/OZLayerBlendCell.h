@@ -11,10 +11,10 @@
     BOOL _showCell;
 }
 
-- (id)menuForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)setShowValue:(BOOL)arg1;
 - (id)initTextCell:(id)arg1 pullsDown:(BOOL)arg2;
+- (void)setShowValue:(BOOL)arg1;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)menuForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
 
 @end
 

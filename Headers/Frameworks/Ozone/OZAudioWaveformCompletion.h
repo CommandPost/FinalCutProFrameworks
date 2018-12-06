@@ -13,10 +13,10 @@
     OZAudioWaveform *_audioWaveform;
 }
 
-- (void)setAudioWaveform:(id)arg1;
-- (id)audioWaveform;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)audioWaveform;
+- (void)setAudioWaveform:(id)arg1;
 
 @end
 

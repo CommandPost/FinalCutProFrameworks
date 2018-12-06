@@ -4,53 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSSegmentedCell.h"
+#import "NSProSegmentedCell.h"
 
-@class NSMutableArray;
-
-@interface LKSegmentedCell : NSSegmentedCell
+@interface LKSegmentedCell : NSProSegmentedCell
 {
-    struct {
-        unsigned int tintIndex:4;
-        unsigned int proSegmentedCellType:4;
-        unsigned int reserved:24;
-    } _pscFlags;
-    long long _nibVersion;
-    NSMutableArray *_segmentsOptions;
-    void *reserved2;
-    void *reserved3;
 }
 
 + (Class)popUpSliderClass;
-+ (void)initialize;
-- (long long)interiorBackgroundStyleForSegment:(long long)arg1;
-- (void)_paneCapPopUpMenuItemRemoved:(id)arg1;
-- (void)_paneCapPopUpMenuItemChanged:(id)arg1;
-- (void)_paneCapPopUpMenuItemAdded:(id)arg1;
-- (void)_paneCapPopUpMenuDidSendAction:(id)arg1;
-- (void)_paneCapPopUpMenuWillSendAction:(id)arg1;
-- (double)displayWidthForSegment:(long long)arg1;
-- (double)_menuDelayTimeForSegment:(long long)arg1;
-- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
-- (long long)indexOfSelectedMenuItemInMenuForSegmentAtIndex:(long long)arg1;
-- (id)selectedMenuItemInMenuForSegmentAtIndex:(long long)arg1;
-- (void)selectMenuItemAtIndex:(long long)arg1 inMenuForSegmentAtIndex:(long long)arg2;
-- (void)selectMenuItem:(id)arg1 inMenuForSegmentAtIndex:(long long)arg2;
-- (void)setMenu:(id)arg1 forSegment:(long long)arg2;
-- (void)setMenu:(id)arg1 forSegment:(long long)arg2 isPopUp:(BOOL)arg3 useMenuDelay:(BOOL)arg4;
-- (void)_paneCapPopUpMenuItemAction:(id)arg1;
-- (void)setSlider:(id)arg1 forSegment:(long long)arg2;
-- (id)sliderForSegment:(long long)arg1;
-- (void)setTintIndex:(long long)arg1;
-- (long long)tintIndex;
-- (void)dealloc;
-- (void)setSegmentCount:(long long)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initTextCell:(id)arg1;
-- (id)init;
-- (void)_initLKOptions;
+- (id)_indicatorFacet;
+- (id)_separatorFacet;
+- (id)_baseFacet;
+- (id)_gradientFacet;
 
 @end
 

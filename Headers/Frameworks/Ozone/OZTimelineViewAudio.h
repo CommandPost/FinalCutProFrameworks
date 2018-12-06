@@ -6,13 +6,11 @@
 
 #import <Ozone/OZTimelineViewMulti.h>
 
-#import "OZHGUserJobClient.h"
-
 @class NSTimer;
 
-@interface OZTimelineViewAudio : OZTimelineViewMulti <OZHGUserJobClient>
+@interface OZTimelineViewAudio : OZTimelineViewMulti
 {
-    struct map<OZTimelineAudioImageTag, OZTimelineAudioImage, std::__1::less<OZTimelineAudioImageTag>, std::__1::allocator<std::__1::pair<const OZTimelineAudioImageTag, OZTimelineAudioImage>>> *_images;
+    struct map<OZTimelineAudioImageTag, OZTimelineAudioImage, std::less<OZTimelineAudioImageTag>, std::allocator<std::pair<const OZTimelineAudioImageTag, OZTimelineAudioImage>>> *_images;
     NSTimer *_sweepTimer;
     CDStruct_1b6d18a9 _audioChunkFrames;
     double _audioChunkPixels;
@@ -20,27 +18,25 @@
     BOOL _audioImagesUpdated;
 }
 
-- (void)stopTimers;
-- (void)imagesOutOfDate;
-- (unsigned int)rasterColor;
-- (id)createEmptyBitmapWithWidth:(unsigned int)arg1 withHeight:(unsigned int)arg2;
-- (void)audioReady:(id)arg1;
-- (void)sweepAudioImages:(id)arg1;
-- (void)clearAudioImages;
-- (id)allocRow:(int)arg1;
-- (void)verticalZoomChanged;
-- (id)imageForAudio:(struct OZAudioTrack *)arg1 startTime:(CDStruct_1b6d18a9)arg2 endTime:(CDStruct_1b6d18a9)arg3 size:(struct CGSize)arg4;
--     // Error parsing type: v24@0:8^{OZHGUserJob=^^?IiiIdQ^v*^{HGRenderQueue}^?{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}@^v}16, name: userJobCanceled:
--     // Error parsing type: v24@0:8^{OZHGUserJob=^^?IiiIdQ^v*^{HGRenderQueue}^?{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}@^v}16, name: userJobFinished:
-- (void)setNeedsDisplayInRect:(struct CGRect)arg1;
-- (void)timeDisplayRangeModified;
-- (void)timeDisplayRangeModificationEnd;
-- (double)audioChunkPixels;
-- (CDStruct_1b6d18a9)audioChunkFrames;
-- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 doOn:(BOOL)arg3;
-- (void)reloadData;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)reloadData;
+- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 doOn:(BOOL)arg3;
+- (CDStruct_1b6d18a9)audioChunkFrames;
+- (double)audioChunkPixels;
+- (void)timeDisplayRangeModificationEnd;
+- (void)timeDisplayRangeModified;
+- (void)setNeedsDisplayInRect:(struct CGRect)arg1;
+- (id)imageForAudio:(struct OZAudioTrack *)arg1 startTime:(CDStruct_1b6d18a9)arg2 endTime:(CDStruct_1b6d18a9)arg3 size:(struct CGSize)arg4;
+- (void)verticalZoomChanged;
+- (id)allocRow:(int)arg1;
+- (void)clearAudioImages;
+- (void)sweepAudioImages:(id)arg1;
+- (void)audioReady:(id)arg1;
+- (id)createEmptyBitmapWithWidth:(unsigned int)arg1 withHeight:(unsigned int)arg2;
+- (unsigned int)rasterColor;
+- (void)imagesOutOfDate;
+- (void)stopTimers;
 
 @end
 

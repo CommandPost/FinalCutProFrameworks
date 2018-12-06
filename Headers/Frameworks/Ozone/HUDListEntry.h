@@ -15,9 +15,9 @@
     OZHUDController *_pTransformController;
 }
 
-- (id)window;
-- (void)dealloc;
 - (id)initWithWindow:(id)arg1 controller:(id)arg2 transformController:(id)arg3;
+- (void)dealloc;
+- (id)window;
 
 @end
 

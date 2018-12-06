@@ -6,54 +6,39 @@
 
 #import "NSObject.h"
 
+#import "FxLayerInfoAPI.h"
 #import "FxTemporalImageAPI.h"
-#import "FxTemporalImageAPI_v2.h"
-#import "PROAPIObject.h"
 
-@class NSString;
-
-@interface OZFxPlugTemporalImageHandler : NSObject <PROAPIObject, FxTemporalImageAPI, FxTemporalImageAPI_v2>
+@interface OZFxPlugTemporalImageHandler : NSObject <FxTemporalImageAPI, FxLayerInfoAPI>
 {
     struct OZImageNode *_imageNode;
     struct GLRenderer *_renderer;
-    BOOL _appTerminating;
-    struct OZFxPlugRenderContextManager _threadContextManager;
+    struct vector<std::tr1::shared_ptr<PCImage>, std::allocator<std::tr1::shared_ptr<PCImage>>> *_imageList;
+    struct map<_opaque_pthread_t*, TemporalAPIContext, std::less<_opaque_pthread_t*>, std::allocator<std::pair<_opaque_pthread_t* const, TemporalAPIContext>>> _contexts;
 }
 
+- (id)init;
+- (void)setImageNode:(struct OZImageNode *)arg1;
+- (void)setLithiumInput:(PCPtr_2c56e3c4)arg1 withAgent:(struct LiAgent *)arg2 withRenderParams:(struct OZRenderParams *)arg3 withDOD:(PCRect_07ce470f)arg4;
+- (void)destroyTemporalContextForCurrentThread;
+- (void)_createTemporalContext:(struct TemporalAPIContext *)arg1 withRenderParams:(struct LiRenderParameters *)arg2;
+- (void)_teardownLithiumInputAndAgentWithRenderParams:(struct LiRenderParameters *)arg1;
+- (void)dealloc;
+- (BOOL)_setupRenderer;
+- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
+- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 appendHGGraph:(HGRef_265f9e4c)arg4;
+- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 withROI:(struct HGRect *)arg4;
+- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3 withROI:(struct HGRect *)arg4 appendHGGraph:(HGRef_265f9e4c)arg5;
+- (BOOL)getInputTexture:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
+- (BOOL)getSourceBitmap:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
+- (BOOL)getSourceTexture:(id *)arg1 withInfo:(CDStruct_8b442eb9)arg2 atTime:(double)arg3;
+- (BOOL)getHeliumImage:(id *)arg1 source:(BOOL)arg2 withInfo:(CDStruct_8b442eb9)arg3 atTime:(double)arg4;
+- (BOOL)getLayerGlobalOffsetX:(double *)arg1 OffsetY:(double *)arg2 atTime:(double)arg3;
+- (void)clearImageList;
+- (int)getFootageFieldOrder:(struct OZRenderParams *)arg1;
+- (struct TemporalAPIContext)getCurrentTemporalContext;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (void)setIsRendering:(BOOL)arg1;
-- (BOOL)isRendering;
-- (struct OZFxPlugRenderContextManager *)contextManager;
-- (struct OZRenderState)getTempContextRenderState;
-- (int)getFootageFieldOrder:(struct OZRenderParams *)arg1;
-- (void)clearImageList;
-- (BOOL)getHeliumImage:(id *)arg1 source:(BOOL)arg2 withInfo:(CDStruct_6b9ed609)arg3 atTime:(CDUnion_2516e51e)arg4;
-- (BOOL)getSourceTexture:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atFxTime:(CDUnion_2516e51e)arg3;
-- (BOOL)getSourceTexture:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atTime:(double)arg3;
-- (BOOL)getSourceBitmap:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atFxTime:(CDUnion_2516e51e)arg3;
-- (BOOL)getSourceBitmap:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atTime:(double)arg3;
-- (BOOL)getInputTexture:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atFxTime:(CDUnion_2516e51e)arg3;
-- (BOOL)getInputTexture:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atTime:(double)arg3;
-- (BOOL)retrieveInput:(id *)arg1 requestInfo:(CDStruct_6b9ed609)arg2 atTime:(CDUnion_2516e51e)arg3 imageType:(unsigned long long)arg4 useSource:(BOOL)arg5;
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atTime:(CDUnion_2516e51e)arg3 withROI:(struct HGRect *)arg4 appendHGGraph:(HGRef_0de1db7e)arg5;
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atTime:(CDUnion_2516e51e)arg3 withROI:(struct HGRect *)arg4;
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atTime:(CDUnion_2516e51e)arg3 appendHGGraph:(HGRef_0de1db7e)arg4;
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atFxTime:(CDUnion_2516e51e)arg3;
-- (BOOL)getInputBitmap:(id *)arg1 withInfo:(CDStruct_6b9ed609)arg2 atTime:(double)arg3;
-- (BOOL)_setupRenderer;
-- (void)appWillTerminate:(id)arg1;
-- (void)dealloc;
-- (void)setLithiumInput:(PCPtr_04d56345)arg1 withAgent:(struct LiAgent *)arg2 withRenderParams:(const struct OZRenderParams *)arg3;
-- (void)setImageNode:(struct OZImageNode *)arg1;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

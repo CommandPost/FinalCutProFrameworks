@@ -8,13 +8,13 @@
 
 @interface OZImageMaskInspectorController : OZAutoObjectTabController
 {
-    struct list<OZImageMask *, std::__1::allocator<OZImageMask *>> *_imageMasks;
+    struct list<OZImageMask*, std::allocator<OZImageMask*>> *_imageMasks;
 }
 
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (void)dealloc;
-- (BOOL)buildUIWithSceneNodes:(list_e89ce44a *)arg1 context:(id)arg2;
 - (void)enableDisableUI;
+- (BOOL)buildUIWithSceneNodes:(list_699e9227 *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
 
 @end
 

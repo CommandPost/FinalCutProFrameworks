@@ -10,13 +10,13 @@
 {
 }
 
-- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 targetNode:(struct OZObjectManipulator *)arg3 afterNode:(struct OZObjectManipulator *)arg4 dragLoc:(unsigned int)arg5 col:(id)arg6;
-- (id)newNodeWrapper:(struct OZChannelObjectRoot *)arg1;
-- (struct OZChannelFolder *)folderFilter:(struct OZChannelBase *)arg1;
-- (struct OZChannelObjectRoot *)rootFilter:(struct OZChannelBase *)arg1;
-- (void)updateSelection;
-- (id)outlineView:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;
 - (long long)outlineView:(id)arg1 numberOfChildrenOfItem:(id)arg2;
+- (id)outlineView:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;
+- (void)updateSelection;
+- (struct OZChannelObjectRoot *)rootFilter:(struct OZChannelBase *)arg1;
+- (struct OZChannelFolder *)folderFilter:(struct OZChannelBase *)arg1;
+- (id)nodeWrapper:(struct OZChannelObjectRoot *)arg1;
+- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 targetNode:(struct OZObjectManipulator *)arg3 afterNode:(struct OZObjectManipulator *)arg4 dragLoc:(unsigned int)arg5 col:(id)arg6;
 
 @end
 

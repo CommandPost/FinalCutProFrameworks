@@ -13,22 +13,22 @@
     NSString *_previewName;
 }
 
-+ (void)buildTreeWithRoot:(id)arg1;
-+ (BOOL)groupContainsValidPlugins:(id)arg1;
-+ (BOOL)isSnowflakeGeneratorOldVersion:(id)arg1;
-+ (id)snowflakeGeneratorParent:(id)arg1;
 + (BOOL)isSnowflakeGeneratorReplacement:(id)arg1;
-- (id)getPreviewController;
-- (int)getPreviewType;
-- (id)getPreviewPath;
-- (unsigned int)getPreviewOptions;
-- (void)setPreviewName:(id)arg1;
-- (id)getSmallPreviewIconForEntry:(BOOL)arg1;
-- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
-- (BOOL)getPasteEntries:(struct OZPasteList *)arg1;
-- (BOOL)shouldBeArchived;
-- (id)copyWithZone:(struct _NSZone *)arg1;
++ (id)snowflakeGeneratorParent:(id)arg1;
++ (BOOL)isSnowflakeGeneratorOldVersion:(id)arg1;
++ (void)buildTreeWithRoot:(id)arg1;
++ (void)buildImageUnitTreeWithRoot:(id)arg1;
 - (id)initWithParent:(id)arg1 name:(id)arg2 factory:(struct OZFactory *)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)shouldBeArchived;
+- (BOOL)getPasteEntries:(struct OZPasteList *)arg1;
+- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
+- (id)getSmallPreviewIconForEntry:(BOOL)arg1;
+- (void)setPreviewName:(id)arg1;
+- (unsigned int)getPreviewOptions;
+- (id)getPreviewPath;
+- (int)getPreviewType;
+- (id)getPreviewController;
 
 @end
 

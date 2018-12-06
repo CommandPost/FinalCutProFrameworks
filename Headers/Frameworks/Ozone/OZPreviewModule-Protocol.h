@@ -5,8 +5,8 @@
 //
 
 @protocol OZPreviewModule
-- (BOOL)hasSelection;
-- (BOOL)selectedObjectHasPlayablePreview;
 - (void)togglePreviewPlayback:(id)arg1;
+- (BOOL)selectedObjectHasPlayablePreview;
+- (BOOL)hasSelection;
 @end
 

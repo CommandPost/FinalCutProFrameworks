@@ -9,19 +9,15 @@
 @interface OZColorWell : LKColorWell
 {
     BOOL _hasAlpha;
-    BOOL _acceptEvents;
 }
 
-- (void)viewDidUnhide;
-- (void)mouseDown:(id)arg1;
-- (void)_takeColorFromTransientColorPicker:(id)arg1;
-- (void)awakeFromNib;
-- (BOOL)acceptEvents;
-- (void)setAcceptsEvents:(BOOL)arg1;
-- (BOOL)hasAlpha;
-- (void)setHasAlpha:(BOOL)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)setHasAlpha:(BOOL)arg1;
+- (BOOL)hasAlpha;
+- (void)popUpTransientColorPickerWithStyle:(unsigned long long)arg1 atLocation:(struct CGPoint)arg2;
+- (void)awakeFromNib;
+- (void)_takeColorFromTransientColorPicker:(id)arg1;
 
 @end
 

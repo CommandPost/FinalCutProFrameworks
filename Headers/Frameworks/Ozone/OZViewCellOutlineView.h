@@ -10,19 +10,19 @@
 {
 }
 
-- (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (BOOL)needsPanelToBecomeKey;
-- (BOOL)acceptsFirstResponder;
-- (void)removeTableColumn:(id)arg1;
-- (void)reloadData;
-- (void)noteNumberOfRowsChanged;
-- (void)outlineViewItemDidCollapse:(id)arg1;
-- (void)outlineViewItemDidExpand:(id)arg1;
-- (void)didReorderOrResizeNotification:(id)arg1;
-- (void)workaroundReorderResizeProblem;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
+- (void)workaroundReorderResizeProblem;
+- (void)didReorderOrResizeNotification:(id)arg1;
+- (void)outlineViewItemDidExpand:(id)arg1;
+- (void)outlineViewItemDidCollapse:(id)arg1;
+- (void)noteNumberOfRowsChanged;
+- (void)reloadData;
+- (void)removeTableColumn:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)needsPanelToBecomeKey;
+- (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
 
 @end
 

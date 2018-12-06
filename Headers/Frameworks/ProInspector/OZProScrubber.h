@@ -10,11 +10,11 @@
 {
 }
 
-- (BOOL)isEditing;
-- (void)keyDown:(id)arg1;
-- (BOOL)sendAction:(SEL)arg1 to:(id)arg2;
-- (void)resignTextFocus;
 - (void)resignTextFocusCB:(id)arg1;
+- (void)resignTextFocus;
+- (BOOL)sendAction:(SEL)arg1 to:(id)arg2;
+- (void)keyDown:(id)arg1;
+- (BOOL)isEditing;
 
 @end
 

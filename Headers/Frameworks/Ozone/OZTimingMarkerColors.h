@@ -10,9 +10,9 @@
 {
 }
 
-+ (id)light:(int)arg1;
-+ (id)medium:(int)arg1;
 + (id)solid:(int)arg1;
++ (id)medium:(int)arg1;
++ (id)light:(int)arg1;
 
 @end
 

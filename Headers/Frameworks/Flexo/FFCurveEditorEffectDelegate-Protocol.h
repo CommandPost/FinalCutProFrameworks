@@ -6,13 +6,7 @@
 
 #import "NSObject.h"
 
-@class CHChannelBase, FFEffect, NSArray;
-
 @protocol FFCurveEditorEffectDelegate <NSObject>
-- (void)setDefaultEffect:(FFEffect *)arg1 andChannel:(CHChannelBase *)arg2;
-- (NSArray *)effectsToDisplay;
-
-@optional
-- (BOOL)sender:(id)arg1 willSetChannel:(CHChannelBase *)arg2;
+- (id)effectsToDisplay;
 @end
 

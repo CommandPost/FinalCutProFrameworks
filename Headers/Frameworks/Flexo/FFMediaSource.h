@@ -14,47 +14,22 @@
     NSArray *m_audioChannelRoutingMap;
 }
 
-+ (void)update_convertMergedClipMediaComponentsForObject:(id)arg1;
-+ (id)newDefaultClipLayoutItemsForMediaSources:(id)arg1 mediaSourceChannels:(id)arg2 useDefaultSourceEnable:(BOOL)arg3 catalogVersion:(int)arg4;
-+ (id)newDefaultClipLayoutItemsForMediaSources:(id)arg1 mediaSourceChannels:(id)arg2 useDefaultSourceEnable:(BOOL)arg3;
-+ (id)_newClipLayoutItemForMediaSource:(id)arg1 mediaSourceChannels:(id)arg2 useDefaultSourceEnable:(BOOL)arg3;
-+ (id)newClipLayoutItemForMediaSource:(id)arg1 mediaSourceChannels:(id)arg2;
-+ (id)inferAudioSourceDictForAssetID:(id)arg1 withMediaComponents:(id)arg2;
-+ (id)mediaForMediaSourceObject:(id)arg1;
-+ (id)defaultMediaSourceDescriptionsForAudioSourcePropertiesMap:(id)arg1 usingMedia:(id)arg2;
-+ (id)mediaSourceChannelsForAudioSourcePropertiesMap:(id)arg1 usingMedia:(id)arg2;
-+ (int)numMediaSourceChannelsForAudioSourcePropertiesMap:(id)arg1;
-+ (id)sortMediaSourceChannels:(id)arg1;
-+ (id)audioMediaSourcesForObject:(id)arg1;
-+ (id)mediaSourcesForObject:(id)arg1;
-+ (id)mediaSourcesForObject:(id)arg1 forSourceTypes:(id)arg2;
-+ (id)sortedAudioMediaSourceChannelsForObject:(id)arg1;
-+ (id)defaultAudioMediaSourceChannelsForObject:(id)arg1;
-+ (id)defaultMediaSourceChannelsForObject:(id)arg1 forSourceTypes:(id)arg2;
-+ (id)defaultMediaSourcesForObject:(id)arg1 forSourceTypes:(id)arg2;
-+ (id)audioVideoItemsForObject:(id)arg1;
-+ (id)defaultSourceDescriptionsForMedia:(id)arg1 sourceKey:(id)arg2;
-+ (id)newSourceForSourceDescription:(id)arg1;
-+ (id)newSourceForMedia:(id)arg1 sourceKey:(id)arg2 channelMap:(id)arg3;
-@property(retain, nonatomic) NSArray *audioChannelRoutingMap; // @synthesize audioChannelRoutingMap=m_audioChannelRoutingMap;
-- (BOOL)defaultSourceEnable;
-- (void)_channelsChanged;
-- (id)backingAnchoredObject;
-- (id)copySourceDescription;
-- (void)setRole:(id)arg1;
-- (id)role;
-- (void)setChannels:(id)arg1;
-- (id)channels;
-- (void)setPlayEnable:(int)arg1;
-- (int)playEnable;
-- (void)setSourceName:(id)arg1;
-- (id)sourceName;
-- (BOOL)isSourceType:(id)arg1;
-- (id)sourceType;
-- (BOOL)isEquivalentSourceTo:(id)arg1;
-- (id)description;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)description;
+- (BOOL)isEquivalentSourceTo:(id)arg1;
+- (id)channels;
+- (id)sourceType;
+- (BOOL)isSourceType:(id)arg1;
+- (id)sourceName;
+- (void)setSourceName:(id)arg1;
+- (int)playEnable;
+- (void)setPlayEnable:(int)arg1;
+- (void)setChannels:(id)arg1;
+- (id)copySourceDescription;
+- (id)anchoredObject;
+- (void)_channelsChanged;
+@property(retain, nonatomic) NSArray *audioChannelRoutingMap; // @synthesize audioChannelRoutingMap=m_audioChannelRoutingMap;
 
 @end
 

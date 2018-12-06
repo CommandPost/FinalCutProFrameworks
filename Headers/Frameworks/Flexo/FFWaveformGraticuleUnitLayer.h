@@ -6,33 +6,21 @@
 
 #import <Flexo/FFWaveformGraticuleLayer.h>
 
-#import "FFVideoScopesWaveformYScaling.h"
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface FFWaveformGraticuleUnitLayer : FFWaveformGraticuleLayer <FFVideoScopesWaveformYScaling>
+@interface FFWaveformGraticuleUnitLayer : FFWaveformGraticuleLayer
 {
     long long _code;
     long long _compositeVideoUnits;
-    long long _displayMode;
-    long long _yScale;
+    long long _viewMode;
     CDStruct_554002f2 _action_opt;
 }
 
-- (void)drawInContext:(struct CGContext *)arg1;
-- (id)actionForKey:(id)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
-- (void)setVideoScopesWaveformYScale:(long long)arg1;
-- (void)setCompositeVideoUnits:(long long)arg1;
-- (void)setDisplayMode:(long long)arg1;
 - (void)setCode:(long long)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)setViewMode:(long long)arg1;
+- (void)setCompositeVideoUnits:(long long)arg1;
+- (struct CGRect)frameForBounds:(struct CGRect)arg1;
+- (id)actionForKey:(id)arg1;
+- (void)drawInContext:(struct CGContext *)arg1;
 
 @end
 

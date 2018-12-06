@@ -4,24 +4,26 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSView.h"
+#import "NSProView.h"
+
+@class NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorShareAutoresizingView : NSView
+@interface FFInspectorShareAutoresizingView : NSProView
 {
     NSView *resizableView;
     struct CGSize viewSize;
     struct CGSize minSize;
 }
 
-- (void)viewFrameChanged:(id)arg1;
-- (void)setMinSize:(struct CGSize)arg1;
-- (struct CGSize)minSize;
-- (void)setResizableView:(id)arg1;
-- (id)resizableView;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)drawRect:(struct CGRect)arg1;
+- (id)resizableView;
+- (void)setResizableView:(id)arg1;
+- (struct CGSize)minSize;
+- (void)setMinSize:(struct CGSize)arg1;
+- (void)viewFrameChanged:(id)arg1;
 
 @end
 

@@ -6,57 +6,98 @@
 
 #import <Flexo/FFInspectorModule.h>
 
-#import "FFInspectorLabelParameterContainerDataSource.h"
-
-@class FFAnchoredSequence, FFInspectorLabelParameterCollapsableContainerController, FFInspectorMediaHeaderController, LKScrollView, NSMutableArray, NSMutableDictionary, NSString;
+@class FFBox, FFColouredView, FFInspectorProjectEventsController, FFProFlippedView, FFSequenceProject, LKButton, LKSegmentedControl, LKTextField, NSMutableArray, NSProThemeImageView, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorModuleProjectProperties : FFInspectorModule <FFInspectorLabelParameterContainerDataSource>
+@interface FFInspectorModuleProjectProperties : FFInspectorModule
 {
+    LKSegmentedControl *_projectProperties;
+    NSView *_footerView;
     NSMutableArray *_references;
-    id _inspectedProject;
-    FFAnchoredSequence *_observedSequence;
-    FFInspectorMediaHeaderController *_headerController;
-    FFInspectorLabelParameterCollapsableContainerController *_detailsController;
-    LKScrollView *_scrollView;
-    NSMutableArray *_items;
-    NSMutableArray *_visibleItems;
-    BOOL _cachedHasSetupItems;
-    struct PCProcrastinatedDispatch_t _procrastinatedReload;
-    NSMutableDictionary *_info;
+    LKTextField *_projectName;
+    LKTextField *_projectLength;
+    LKTextField *_codec;
+    LKTextField *_audioFormat;
+    LKTextField *_referencedEventsTitle;
+    LKTextField *_defaultEvent;
+    LKButton *_referencedEventsIcon;
+    FFColouredView *_referencedEventsSep;
+    LKButton *_reprioritiseButton;
+    NSProThemeImageView *_metadataLCDHeader;
+    NSProThemeImageView *_metadataLCDFormatLeftBadge;
+    NSProThemeImageView *_metadataLCDFormatRightBadge;
+    LKTextField *_metadataLCDTextFormat1;
+    LKTextField *_metadataLCDTextFormat2;
+    LKTextField *_renderFilesSize;
+    FFProFlippedView *_referencedEventsView;
+    FFProFlippedView *_viewToSize;
+    LKTextField *_loudnessLevel;
+    LKButton *_calculateLoudnessButton;
+    int _dynamicItemOffset;
+    int _numCurrentMediaProjects;
+    FFSequenceProject *_inspectedProject;
+    FFInspectorProjectEventsController *_eventsController;
+    FFColouredView *_generalSep;
+    LKTextField *_generalText;
+    FFColouredView *_locationSep;
+    LKTextField *_locationText;
+    LKTextField *_projectLocation;
+    FFColouredView *_lastModSep;
+    LKTextField *_lastModText;
+    LKTextField *_lastModified;
+    FFColouredView *_createdSep;
+    LKTextField *_createdText;
+    LKTextField *_dateCreated;
+    LKTextField *_notes;
+    LKTextField *_notesText;
+    FFBox *_generalBox;
+    FFBox *_eventsBox;
+    FFBox *_effectsBox;
+    LKTextField *_missingEffectsTitle;
+    LKButton *_missingEffectsIcon;
+    FFColouredView *_missingEffectsSep;
+    FFProFlippedView *_missingEffectsView;
+    NSProThemeImageView *_projectIcon;
+    NSProThemeImageView *_eventIcon;
+    LKTextField *_defaultEventTitle;
+    LKTextField *_projectFormat;
+    LKTextField *_frameSize;
+    LKTextField *_frameRate;
 }
 
-- (id)container:(id)arg1 parameterObjectValueAtRow:(unsigned long long)arg2 context:(id)arg3;
-- (id)container:(id)arg1 labelObjectValueAtRow:(unsigned long long)arg2 context:(id)arg3;
-- (id)container:(id)arg1 parameterViewControllerAtRow:(unsigned long long)arg2 context:(id)arg3;
-- (id)container:(id)arg1 labelViewControllerAtRow:(unsigned long long)arg2 context:(id)arg3;
-- (unsigned long long)countOfRowsInContainer:(id)arg1;
-- (void)assetsChangedNotification:(id)arg1;
-- (void)setCurrentItems:(id)arg1;
-- (void)editSettingsButtonPressed:(id)arg1;
-- (void)sequenceSettingsChanged:(int)arg1 project:(id)arg2;
-- (void)rangeInvalidated:(id)arg1;
-- (void)moduleDidUnhide;
-- (void)moduleDidHide;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)_setupCurrentItems;
-- (void)_updateNotesFieldAndReload:(BOOL)arg1;
-- (void)_updateHeader;
-- (void)_rebuildVisibleItems;
-- (void)viewDidLoad;
-- (void)_reloadData;
-- (void)dealloc;
 - (id)init;
-- (void)_endObservingCurrentItems;
-- (void)_beginObservingCurrentItems;
-- (id)_sequenceForInspectedProject;
-- (id)inspectedProject;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (void)viewDidLoad;
+- (id)moduleFooterAccessoryView;
+- (void)_setCurrentProject:(id)arg1;
+- (void)_assetsChangedNotification:(id)arg1;
+- (void)setCurrentItems:(id)arg1;
+- (void)textFieldChangedSize:(id)arg1;
+- (void)notesFieldChanged:(id)arg1;
+- (void)_sequenceSettingsChanged:(int)arg1 project:(id)arg2;
+- (void)editSettingsButtonPressed:(id)arg1;
+- (void)reprioritiseButtonPressed:(id)arg1;
+- (void)_updateLoudness;
+- (void)_calculateLoudness:(id)arg1 onTask:(id)arg2;
+- (void)calculateLoudnessButtonPressed:(id)arg1;
+@property(retain, nonatomic) LKButton *referencedEventsIcon; // @synthesize referencedEventsIcon=_referencedEventsIcon;
+@property(retain, nonatomic) FFProFlippedView *viewToSize; // @synthesize viewToSize=_viewToSize;
+@property(retain, nonatomic) LKTextField *notes; // @synthesize notes=_notes;
+@property(retain, nonatomic) LKTextField *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property(retain, nonatomic) LKTextField *lastModified; // @synthesize lastModified=_lastModified;
+@property(retain, nonatomic) LKTextField *audioFormat; // @synthesize audioFormat=_audioFormat;
+@property(retain, nonatomic) LKTextField *codec; // @synthesize codec=_codec;
+@property(retain, nonatomic) LKTextField *frameRate; // @synthesize frameRate=_frameRate;
+@property(retain, nonatomic) LKTextField *frameSize; // @synthesize frameSize=_frameSize;
+@property(retain, nonatomic) LKTextField *projectFormat; // @synthesize projectFormat=_projectFormat;
+@property(retain, nonatomic) LKTextField *defaultEvent; // @synthesize defaultEvent=_defaultEvent;
+@property(retain, nonatomic) LKTextField *projectLength; // @synthesize projectLength=_projectLength;
+@property(retain, nonatomic) LKTextField *referencedEventsTitle; // @synthesize referencedEventsTitle=_referencedEventsTitle;
+@property(retain, nonatomic) FFProFlippedView *referencedEventsView; // @synthesize referencedEventsView=_referencedEventsView;
+@property(retain, nonatomic) LKTextField *renderFilesSize; // @synthesize renderFilesSize=_renderFilesSize;
+@property(retain, nonatomic) LKButton *reprioritiseButton; // @synthesize reprioritiseButton=_reprioritiseButton;
+@property(retain, nonatomic) LKTextField *projectLocation; // @synthesize projectLocation=_projectLocation;
+@property(retain, nonatomic) LKTextField *projectName; // @synthesize projectName=_projectName;
 
 @end
 

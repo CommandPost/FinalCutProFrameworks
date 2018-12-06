@@ -4,22 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSBox.h"
+#import "NSProBox.h"
 
-@class NSColor;
-
-@interface LKBox : NSBox
+@interface LKBox : NSProBox
 {
-    NSColor *_backgroundColor;
 }
 
-@property(copy, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-- (BOOL)isEnabled;
-- (void)setEnabled:(BOOL)arg1;
-- (void)drawSeparator:(struct CGRect)arg1;
-- (void)setBorderColor:(id)arg1;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
+- (id)_baseFacet;
 
 @end
 

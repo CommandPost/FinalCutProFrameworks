@@ -11,29 +11,23 @@
 }
 
 + (Class)streamClass;
-- (BOOL)isValid;
-- (id)audioTrackNamesFromMetadata;
-- (id)metadataAudioChannelLayout;
-- (id)audioChannelLayout;
-- (long long)timeInFrames:(CDStruct_1b6d18a9)arg1 roundingMethod:(unsigned int)arg2;
-- (long long)durationInFrames;
-- (long long)endInFrames;
-- (long long)startInFrames;
-- (BOOL)hasDurationInFrames;
-- (BOOL)hasEndInFrames;
-- (BOOL)hasStartInFrames;
-- (struct AudioStreamBasicDescription)formatInfo;
-- (id)audioFormatString;
-- (double)sampleRate;
-- (CDStruct_1b6d18a9)nativeSampleDuration;
-- (unsigned int)numberOfChannelsForStreamAudioFlags:(unsigned int)arg1;
-- (unsigned int)numberOfChannels;
-- (id)newUntimedSource;
+- (id)type;
+- (id)newStream:(id)arg1 options:(id)arg2;
 - (id)newStreamForRender;
 - (id)newStreamForRenderWithOptions:(id)arg1;
-- (id)newStreamForRender:(id)arg1 withOptions:(id)arg2;
-- (id)newStream:(id)arg1 options:(id)arg2;
-- (id)type;
+- (unsigned int)numberOfChannels;
+- (CDStruct_1b6d18a9)nativeSampleDuration;
+- (double)sampleRate;
+- (id)audioFormatString;
+- (struct AudioStreamBasicDescription)formatInfo;
+- (BOOL)hasStartInFrames;
+- (BOOL)hasEndInFrames;
+- (BOOL)hasDurationInFrames;
+- (long long)startInFrames;
+- (long long)endInFrames;
+- (long long)durationInFrames;
+- (long long)timeInFrames:(CDStruct_1b6d18a9)arg1 roundingMethod:(unsigned int)arg2;
+- (id)audioChannelLayout;
 
 @end
 

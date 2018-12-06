@@ -8,24 +8,28 @@
 
 @interface OZLineTool : OZSplineTool
 {
+    struct CGPoint _startPos;
+    struct CGPoint _originalMousePos;
+    struct CGPoint _currentMousePos;
+    _Bool _moving;
     struct CGPoint _begin;
     struct CGPoint _end;
 }
 
-- (BOOL)oscFlagsChanged:(id)arg1;
-- (BOOL)keyDownOSC:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)line:(CDStruct_1b6d18a9)arg1;
-- (void)draw;
-- (void)endWithDocument:(struct OZDocument *)arg1;
-- (id)getCursorWithEvent:(id)arg1;
-- (id)getDefaultCursor;
-- (struct PCUUID)getClassID;
-- (id)getTooltip;
-- (id)getName;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (id)getName;
+- (id)getTooltip;
+- (struct PCUUID)getClassID;
+- (id)getDefaultCursor;
+- (id)getCursorWithEvent:(id)arg1;
+- (void)endWithDocument:(struct OZDocument *)arg1;
+- (void)draw;
+- (void)line:(CDStruct_1b6d18a9)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (BOOL)keyDownOSC:(id)arg1;
+- (BOOL)flagsChanged:(id)arg1;
 
 @end
 

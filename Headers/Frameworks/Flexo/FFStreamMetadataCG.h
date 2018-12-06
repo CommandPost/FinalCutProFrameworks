@@ -11,12 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)metadata;
-- (id)dictionaryWithPrefixType:(id)arg1 forDictionary:(id)arg2;
-- (id)periodsvStringFromArray:(id)arg1;
-- (id)cfsvStringFromArray:(id)arg1;
 - (id)commasvStringFromArray:(id)arg1;
-- (id)_separatedStringFromArray:(id)arg1 separator:(id)arg2 justCallStringValue:(BOOL)arg3;
+- (id)cfsvStringFromArray:(id)arg1;
+- (id)periodsvStringFromArray:(id)arg1;
+- (id)dictionaryWithPrefixType:(id)arg1 forDictionary:(id)arg2;
+- (id)metadata;
+- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
+- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
 
 @end
 

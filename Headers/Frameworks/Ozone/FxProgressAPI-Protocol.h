@@ -5,7 +5,7 @@
 //
 
 @protocol FxProgressAPI
-- (BOOL)updateProgress:(float)arg1;
 - (BOOL)userHasCancelled;
+- (BOOL)updateProgress:(float)arg1;
 @end
 

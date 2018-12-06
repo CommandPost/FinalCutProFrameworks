@@ -11,8 +11,8 @@
     struct OZChannelGradientSampleAlpha *_pChannelGradientSampleAlpha;
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelGradientSampleAlpha *)ozChannel;
 
 @end

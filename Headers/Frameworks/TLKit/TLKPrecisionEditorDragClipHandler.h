@@ -10,17 +10,14 @@
 {
 }
 
-+ (void)initialize;
-- (int)movementType;
-- (BOOL)shouldMoveEdgeUsingDelta;
-- (CDStruct_1b6d18a9)timeToKeepStatic;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (id)cursorNameAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (BOOL)stopTracking:(id)arg1;
-- (BOOL)continueTracking:(id)arg1;
-- (BOOL)_shouldRescheduleMouseClickWithCurrentPoint:(struct CGPoint)arg1 previousPoint:(struct CGPoint)arg2 currentTimestamp:(double)arg3 previousTimestamp:(double)arg4;
-- (id)clickedItem:(id)arg1;
 - (id)partToDrag:(id)arg1;
+- (id)clickedItem:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
+- (id)cursorNameAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (CDStruct_1b6d18a9)timeToKeepStatic;
+- (BOOL)shouldMoveEdgeUsingDelta:(id)arg1;
+- (BOOL)shouldNegateTrimOffset:(id)arg1;
 
 @end
 

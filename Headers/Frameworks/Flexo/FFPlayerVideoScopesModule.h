@@ -6,50 +6,34 @@
 
 #import <Flexo/FFPlayerItemModule.h>
 
-#import "FFDestVideoDelegate.h"
 #import "FFFieldDisplaySetting.h"
 
 @class FFDestVideoScopesGL;
 
-@interface FFPlayerVideoScopesModule : FFPlayerItemModule <FFFieldDisplaySetting, FFDestVideoDelegate>
+@interface FFPlayerVideoScopesModule : FFPlayerItemModule <FFFieldDisplaySetting>
 {
     FFDestVideoScopesGL *_destVideo;
     BOOL _showBothFields;
-    BOOL _isDestAttached;
 }
 
-- (void)sequenceFormatChanged:(id)arg1;
-- (void)updatePlayerAndDest:(id)arg1;
-- (id)viewProperties;
-- (void)setViewProperties:(id)arg1;
-- (struct CGRect)bounds;
-- (BOOL)isMultiangleViewer;
-- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
-- (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setDrawingEnabled:(BOOL)arg1;
-- (BOOL)shouldDrawVideoDest:(id)arg1;
-- (void)moduleDidUnhide;
-- (void)moduleDidHide;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)context:(id)arg1 didRebuildPlayer:(id)arg2;
-- (void)context:(id)arg1 willTeardownPlayer:(id)arg2;
-- (void)didStartPlayingWithPlayer:(id)arg1;
-- (void)willStopPlayingWithPlayer:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
-- (void)setLayoutMode:(long long)arg1;
-- (void)setSelectedScope:(id)arg1;
-- (id)destVideo;
-- (void)_updateDestVideoScopesColorSpace:(struct NSObject *)arg1;
-@property(getter=isMonochrome) BOOL monochrome; // @dynamic monochrome;
-@property float traceBrightness; // @dynamic traceBrightness;
-- (BOOL)is360Viewer;
-@property BOOL showBothFields; // @dynamic showBothFields;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)destVideo;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)willStopPlayingWithPlayer:(id)arg1;
+- (void)didStartPlayingWithPlayer:(id)arg1;
+- (void)setSkimmable:(id)arg1 context:(id)arg2 effectCount:(long long)arg3;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleDidHide;
+- (void)moduleDidUnhide;
+@property(nonatomic) BOOL showBothFields;
+- (BOOL)shouldDrawVideoDest:(id)arg1;
+- (void)setDrawingEnabled:(BOOL)arg1;
+- (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (struct CGRect)bounds;
+- (void)updatePlayerAndDest:(id)arg1;
 
 @end
 

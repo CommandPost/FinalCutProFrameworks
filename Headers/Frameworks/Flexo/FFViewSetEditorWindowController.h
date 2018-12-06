@@ -11,7 +11,7 @@
 #import "NSTableViewDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKEmptyDFRController, LKPopUpButton, LKSearchField, LKTableView, LKTextField, NSArray, NSArrayController, NSMutableArray, NSMutableDictionary, NSPredicate, NSString, NSWindow;
+@class LKPopUpButton, LKSearchField, LKTableView, LKTextField, NSArray, NSArrayController, NSMutableArray, NSMutableDictionary, NSPredicate, NSString, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFViewSetEditorWindowController : NSWindowController <NSWindowDelegate, NSMenuDelegate, NSTableViewDelegate, NSTableViewDataSource>
@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
     LKTextField *_customMetadataNameTextField;
     LKTextField *_customMetadataDescriptionTextField;
     NSWindow *_saveMetadataViewWindow;
-    LKEmptyDFRController *_dfrController;
     NSArrayController *_extendedViewSetsController;
     NSMutableDictionary *_customMetadataDictionary;
     NSMutableDictionary *_removedCustomMetadataDictionary;
@@ -40,56 +39,61 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
+- (id)init;
+- (void)dealloc;
+- (long long)runModal;
+- (BOOL)setSelectionIndexes:(id)arg1;
+- (void)toggleCheckBoxOnSelectedItems;
+- (void)keyDown:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)addCustomMetadataWithName:(id)arg1 description:(id)arg2;
+- (void)removeCustomMetadataWithName:(id)arg1;
+- (void)setCustomMetadataAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)setCustomMetadataSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (unsigned long long)indexOfExtendedViewSetWithName:(id)arg1;
+- (void)saveMetadataViewAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)saveMetadataViewSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)setCustomMetadataAction:(id)arg1;
+- (void)addCustomMetadata:(id)arg1;
+- (void)editCustomMetadata:(id)arg1;
+- (void)deleteCustomMetadata:(id)arg1;
+- (void)saveMetadataView:(id)arg1;
+- (void)saveMetadataViewAction:(id)arg1;
+- (void)saveMetadataViewAs:(id)arg1;
+- (void)resetMetadataView:(id)arg1;
+- (void)insert:(id)arg1;
+- (void)remove:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)ok:(id)arg1;
+- (void)checkAll:(id)arg1;
+- (void)uncheckAll:(id)arg1;
+- (BOOL)isDefaultViewSet:(id)arg1;
+@property(retain) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
+- (id)filterCompoundPredicate;
+- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 row:(long long)arg4;
+- (long long)numberOfRowsInTableView:(id)arg1;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
+- (void)tableView:(id)arg1 sortDescriptorsDidChange:(id)arg2;
 @property(retain) NSString *filterCategoryValue; // @synthesize filterCategoryValue=_filterCategoryValue;
 @property(retain) NSString *filterCategoryFormat; // @synthesize filterCategoryFormat=_filterCategoryFormat;
 @property(retain) NSArray *filterCategories; // @synthesize filterCategories=_filterCategories;
 @property(retain) NSMutableArray *extendedViewSets; // @synthesize extendedViewSets=_extendedViewSets;
 @property(retain) NSMutableDictionary *removedCustomMetadataDictionary; // @synthesize removedCustomMetadataDictionary=_removedCustomMetadataDictionary;
 @property(retain) NSMutableDictionary *customMetadataDictionary; // @synthesize customMetadataDictionary=_customMetadataDictionary;
-- (void)tableView:(id)arg1 sortDescriptorsDidChange:(id)arg2;
-- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
-- (long long)numberOfRowsInTableView:(id)arg1;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 row:(long long)arg4;
-- (id)filterCompoundPredicate;
-@property(retain) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
-- (BOOL)isDefaultViewSet:(id)arg1;
-- (void)uncheckAll:(id)arg1;
-- (void)checkAll:(id)arg1;
-- (void)ok:(id)arg1;
-- (void)cancel:(id)arg1;
-- (void)remove:(id)arg1;
-- (void)insert:(id)arg1;
-- (void)resetMetadataView:(id)arg1;
-- (void)saveMetadataViewAs:(id)arg1;
-- (void)saveMetadataViewAction:(id)arg1;
-- (void)saveMetadataView:(id)arg1;
-- (void)deleteCustomMetadata:(id)arg1;
-- (void)editCustomMetadata:(id)arg1;
-- (void)addCustomMetadata:(id)arg1;
-- (void)setCustomMetadataAction:(id)arg1;
-- (void)saveMetadataViewSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)saveMetadataViewAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (unsigned long long)indexOfExtendedViewSetWithName:(id)arg1;
-- (void)setCustomMetadataSheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)setCustomMetadataAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)removeCustomMetadataWithKey:(id)arg1;
-- (void)addCustomMetadataWithName:(id)arg1 description:(id)arg2;
-- (void)windowWillClose:(id)arg1;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)keyDown:(id)arg1;
-- (void)toggleCheckBoxOnSelectedItems;
-- (BOOL)setSelectionIndexes:(id)arg1;
-- (long long)runModal;
-- (id)touchBar;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+@property(retain) NSArrayController *extendedViewSetsController; // @synthesize extendedViewSetsController=_extendedViewSetsController;
+@property(retain) NSWindow *saveMetadataViewWindow; // @synthesize saveMetadataViewWindow=_saveMetadataViewWindow;
+@property(retain) LKTextField *customMetadataDescriptionTextField; // @synthesize customMetadataDescriptionTextField=_customMetadataDescriptionTextField;
+@property(retain) LKTextField *customMetadataNameTextField; // @synthesize customMetadataNameTextField=_customMetadataNameTextField;
+@property(retain) NSWindow *addCustomMetadataWindow; // @synthesize addCustomMetadataWindow=_addCustomMetadataWindow;
+@property(retain) LKSearchField *propertiesSearchField; // @synthesize propertiesSearchField=_propertiesSearchField;
+@property(retain) LKPopUpButton *filterCategoriesPopUpButton; // @synthesize filterCategoriesPopUpButton=_filterCategoriesPopUpButton;
+@property(retain) LKTableView *propertiesTableView; // @synthesize propertiesTableView=_propertiesTableView;
+@property(retain) LKPopUpButton *extendedViewSetsActionPopUpButton; // @synthesize extendedViewSetsActionPopUpButton=_extendedViewSetsActionPopUpButton;
+@property(retain) LKPopUpButton *checkBoxColumnPopUpButton; // @synthesize checkBoxColumnPopUpButton=_checkBoxColumnPopUpButton;
+@property(retain) LKTableView *extendedViewSetsTableView; // @synthesize extendedViewSetsTableView=_extendedViewSetsTableView;
+@property(retain) NSArrayController *filterCategoriesController; // @synthesize filterCategoriesController=_filterCategoriesController;
+@property(retain) NSArrayController *propertiesController; // @synthesize propertiesController=_propertiesController;
 
 @end
 

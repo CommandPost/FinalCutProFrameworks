@@ -14,9 +14,9 @@
     int _tag;
 }
 
-@property(readonly) long long tag;
-@property(readonly) SEL action;
 - (id)initWithAction:(SEL)arg1 andTag:(int)arg2;
+- (SEL)action;
+- (int)tag;
 
 @end
 

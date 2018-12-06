@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
     FFProOSC *_resignOnMouseUpToOSC;
 }
 
-- (void)mouseUp:(id)arg1;
-- (void)channelParameterChanged:(id)arg1;
-- (void)setVisible:(BOOL)arg1;
-- (void)setDirty:(BOOL)arg1;
-- (BOOL)supportsTool:(Class)arg1;
-- (void)dealloc;
 - (id)initWithHeXFormEffect:(id)arg1 effectStack:(id)arg2 resignOnMouseUpToOSC:(id)arg3;
+- (void)dealloc;
+- (BOOL)supportsTool:(Class)arg1;
+- (void)setDirty:(BOOL)arg1;
+- (void)setVisible:(BOOL)arg1;
+- (void)channelParameterChanged:(id)arg1;
+- (void)mouseUp:(id)arg1;
 
 @end
 

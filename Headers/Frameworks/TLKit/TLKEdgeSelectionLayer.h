@@ -4,11 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKAbstractEdgeSelectionLayer.h>
+#import "CALayer.h"
 
-@class CALayer;
-
-@interface TLKEdgeSelectionLayer : TLKAbstractEdgeSelectionLayer
+@interface TLKEdgeSelectionLayer : CALayer
 {
     CALayer *_leadingEdge;
     CALayer *_leadingEdgeBorderLayer;
@@ -26,19 +24,26 @@
     } _tlkEdgeSelectionFlags;
 }
 
-- (void)setTrailingEdgeCornerRadius:(double)arg1;
-- (void)setLeadingEdgeCornerRadius:(double)arg1;
-- (void)setCornerRadius:(double)arg1;
-- (void)layoutSublayers;
-- (void)setContainingViewFirstResponder:(BOOL)arg1;
-- (BOOL)containingViewFirstResponder;
-- (BOOL)allowedOperationForEdge:(id)arg1;
-- (void)setUnaligned:(BOOL)arg1 forEdge:(id)arg2;
-- (void)setAllowedOperation:(BOOL)arg1 forEdge:(id)arg2;
-- (void)_updateEdgeColors;
-- (unsigned long long)selectionMask;
-- (void)setSelectionMask:(unsigned long long)arg1;
 - (id)init;
+- (void)setSelectionMask:(unsigned long long)arg1;
+- (unsigned long long)selectionMask;
+- (void)_updateEdgeColors;
+- (void)setAllowedOperation:(BOOL)arg1 forEdge:(id)arg2;
+- (void)setUnaligned:(BOOL)arg1 forEdge:(id)arg2;
+- (BOOL)allowedOperationForEdge:(id)arg1;
+@property BOOL containingViewFirstResponder;
+- (id)hitTest:(struct CGPoint)arg1;
+- (void)_updateLayers:(id)arg1;
+- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
+- (void)setDelegate:(id)arg1;
+- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
+- (void)addSublayer:(id)arg1;
+- (void)insertSublayer:(id)arg1 below:(id)arg2;
+- (void)insertSublayer:(id)arg1 above:(id)arg2;
+- (void)replaceSublayer:(id)arg1 with:(id)arg2;
+- (void)invalidate;
+- (void)layoutSublayers;
+- (void)setCornerRadius:(double)arg1;
 
 @end
 

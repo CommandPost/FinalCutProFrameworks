@@ -10,11 +10,11 @@
 {
 }
 
-- (id)getDescriptionLine5;
-- (id)getDescriptionLine4;
-- (id)getDescriptionLine3;
-- (id)getDescriptionLine2;
 - (id)getDescriptionLine1;
+- (id)getDescriptionLine2;
+- (id)getDescriptionLine3;
+- (id)getDescriptionLine4;
+- (id)getDescriptionLine5;
 
 @end
 

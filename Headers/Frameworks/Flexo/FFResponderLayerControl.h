@@ -6,43 +6,42 @@
 
 #import <Flexo/FFResponderLayer.h>
 
-@class FFImageLayer, NSString;
+@class FFThemeFacetLayer, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFResponderLayerControl : FFResponderLayer
 {
     BOOL _isModelLayer;
     BOOL _rolloverHighlightingDisabled;
-    FFImageLayer *_ffimageLayer;
+    FFThemeFacetLayer *_facetLayer;
     long long _themeState;
     NSString *_accessibilityDescription;
 }
 
+- (id)init;
+- (id)_initWithThemeFacetLayer:(id)arg1;
+- (id)initWithThemeFacet:(id)arg1;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2;
+- (id)initWithElement:(long long)arg1 part:(long long)arg2 dimension1:(long long)arg3;
+- (void)dealloc;
+- (void)configureNormal;
+- (void)configureRollover;
+- (void)configurePressed;
+- (void)configureInactive;
+- (void)configureDisabled;
+- (void)configureEmphasized;
+- (void)_configureWithThemeState:(long long)arg1;
+@property(nonatomic) BOOL enabled;
+@property(nonatomic) BOOL emphasized;
+@property(nonatomic) BOOL inactive;
+- (BOOL)_useRolloverHighlighting;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (BOOL)mouseEntered:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (id)accessibilityAttributeNames;
+- (id)accessibilityAttributeValue:(id)arg1;
 @property(copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property(nonatomic) BOOL rolloverHighlightingDisabled; // @synthesize rolloverHighlightingDisabled=_rolloverHighlightingDisabled;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)accessibilityAttributeNames;
-- (void)mouseExited:(id)arg1;
-- (BOOL)mouseEntered:(id)arg1;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (BOOL)_useRolloverHighlighting;
-@property(nonatomic) BOOL inactive;
-@property(nonatomic) BOOL emphasized;
-@property(nonatomic) BOOL enabled;
-- (void)_configureWithThemeState:(long long)arg1;
-- (void)configureEmphasized;
-- (void)configureDisabled;
-- (void)configureInactive;
-- (void)configurePressed;
-- (void)configureRollover;
-- (void)configureNormal;
-- (void)setContentsScale:(double)arg1;
-- (void)dealloc;
-- (id)initWithBundle:(id)arg1 valueOff:(id)arg2 valueOn:(id)arg3;
-- (id)initWithBundle:(id)arg1 normal:(id)arg2 pressed:(id)arg3;
-- (id)initWithBundle:(id)arg1 normalOff:(id)arg2 normalOn:(id)arg3 pressedOff:(id)arg4 pressedOn:(id)arg5;
-- (id)_initWithImageLayer:(id)arg1;
-- (id)init;
 
 @end
 

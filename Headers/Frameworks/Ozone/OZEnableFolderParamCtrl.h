@@ -13,16 +13,16 @@
     NSButton *_pCheckButton;
 }
 
-- (void)setChannelValue:(id)arg1;
-- (void)setIsLabelHidden:(BOOL)arg1;
-- (void)updateEnableState;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (void)notify:(unsigned int)arg1;
-- (BOOL)areAllChannelsEqual;
-- (id)initNoNIBWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)initNoNIBWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (BOOL)areAllChannelsEqual;
+- (void)notify:(unsigned int)arg1;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (void)updateEnableState;
+- (void)setIsLabelHidden:(BOOL)arg1;
+- (void)setChannelValue:(id)arg1;
 
 @end
 

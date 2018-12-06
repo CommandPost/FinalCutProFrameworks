@@ -11,8 +11,8 @@
     struct FxParameterAffineTransformPriv *_affineTransformPriv;
 }
 
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
 
 @end
 

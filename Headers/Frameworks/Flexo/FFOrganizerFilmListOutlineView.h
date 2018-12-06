@@ -6,36 +6,16 @@
 
 #import "LKOutlineView.h"
 
-@class NSMutableDictionary;
-
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmListOutlineView : LKOutlineView
 {
-    BOOL _ignoresCommandUpDownArrowKeys;
-    BOOL _overrideDisclosureTriangleBehaivor;
-    long long _lastRowClicked;
-    NSMutableDictionary *_lastEditableState;
 }
 
-@property(readonly) long long lastRowClicked; // @synthesize lastRowClicked=_lastRowClicked;
-@property BOOL ignoresCommandUpDownArrowKeys; // @synthesize ignoresCommandUpDownArrowKeys=_ignoresCommandUpDownArrowKeys;
-- (void)draggingExited:(id)arg1;
-- (unsigned long long)draggingEntered:(id)arg1;
-- (void)adjustSelectionForContextualMenu:(id)arg1;
-- (void)windowDidBecomeKey:(id)arg1;
-- (void)viewDidMoveToWindow;
-- (BOOL)becomeFirstResponder;
-- (void)reloadData;
-- (void)mouseUp:(id)arg1;
-- (void)collapseItem:(id)arg1 collapseChildren:(BOOL)arg2;
-- (void)expandItem:(id)arg1 expandChildren:(BOOL)arg2;
-- (void)keyDown:(id)arg1;
-- (id)menuForEvent:(id)arg1;
-- (void)didCloseMenu:(id)arg1 withEvent:(id)arg2;
-- (void)willOpenMenu:(id)arg1 withEvent:(id)arg2;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
+- (id)menuForEvent:(id)arg1;
+- (void)adjustSelectionForContextualMenu:(id)arg1;
 
 @end
 

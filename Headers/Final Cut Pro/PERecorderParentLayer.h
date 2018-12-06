@@ -6,29 +6,12 @@
 
 #import "PEParentMeterLayer.h"
 
-#import "CALayerDelegate.h"
-
-@class NSString, PEAudioLayeredMeterView;
-
-@interface PERecorderParentLayer : PEParentMeterLayer <CALayerDelegate>
+@interface PERecorderParentLayer : PEParentMeterLayer
 {
 }
 
-- (float)positionFromDBValue:(float)arg1;
-- (void)layoutSublayers;
-- (void)layoutDBlines;
-- (void)layoutDB;
-- (void)layoutIndicators;
 - (void)layoutMeters;
-- (double)widthOfEachMeter;
-- (double)widthOfMeterArea;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property __weak PEAudioLayeredMeterView *delegate; // @dynamic delegate;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (float)positionFromDBValue:(float)arg1;
 
 @end
 

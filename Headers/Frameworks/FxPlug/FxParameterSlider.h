@@ -11,20 +11,20 @@
     struct FxParameterSliderPriv *_sliderPriv;
 }
 
-- (void)setIsLogarithmic:(BOOL)arg1;
-- (BOOL)isLogarithmic;
-- (void)setMaxSliderValue:(double)arg1;
-- (double)maxSliderValue;
-- (void)setMinSliderValue:(double)arg1;
-- (double)minSliderValue;
-- (void)setStepValue:(double)arg1;
-- (double)stepValue;
-- (void)setMaxValue:(double)arg1;
-- (double)maxValue;
-- (void)setMinValue:(double)arg1;
-- (double)minValue;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (double)minValue;
+- (void)setMinValue:(double)arg1;
+- (double)maxValue;
+- (void)setMaxValue:(double)arg1;
+- (double)stepValue;
+- (void)setStepValue:(double)arg1;
+- (double)minSliderValue;
+- (void)setMinSliderValue:(double)arg1;
+- (double)maxSliderValue;
+- (void)setMaxSliderValue:(double)arg1;
+- (BOOL)isLogarithmic;
+- (void)setIsLogarithmic:(BOOL)arg1;
 
 @end
 

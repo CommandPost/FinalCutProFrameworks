@@ -17,29 +17,22 @@ __attribute__((visibility("hidden")))
     double _flattenTime;
     FFPixelFormat *_nativePixFormat;
     struct CGRect _initialPixelSpaceBounds;
-    int _underlyingAlphaType;
-    unsigned int _tokFlags;
-    _Bool _autoFlags;
+    _Bool _nativelyPremulBlack;
 }
 
-- (_Bool)alphaWantsClamping;
-- (_Bool)alphaWantsInversion;
-- (int)nativeAlphaType;
-- (id)newScheduleTokenForImageRep:(id)arg1;
-- (double)flattenTime;
-- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
-- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
-- (struct CGRect)pixelSpaceBounds;
-- (id)type;
-- (id)nativePixelFormat;
-- (id)performFlatten;
-- (void)clearTokFlags:(unsigned int)arg1;
-- (unsigned int)tokFlags;
-- (_Bool)_waitUntilFlattenedWithTimeout:(id)arg1;
-- (BOOL)isFlattened;
-- (void)_establishPFCS:(_Bool)arg1;
+- (id)initWithRepresentation:(id)arg1 force8Bit:(_Bool)arg2;
 - (void)dealloc;
-- (id)initWithRepresentation:(id)arg1 flattenMode:(int)arg2 initialFlags:(unsigned int)arg3 automaticFlags:(_Bool)arg4;
+- (void)_establishPFCS:(_Bool)arg1;
+- (BOOL)isFlattened;
+- (id)performFlatten;
+- (id)nativePixelFormat;
+- (id)type;
+- (struct CGRect)pixelSpaceBounds;
+- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
+- (double)flattenTime;
+- (id)newScheduleTokenForImageRep:(id)arg1;
+- (_Bool)nativelyPremulBlack;
 
 @end
 

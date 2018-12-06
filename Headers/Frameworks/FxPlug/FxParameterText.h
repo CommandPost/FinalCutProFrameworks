@@ -11,10 +11,10 @@
     struct FxParameterTextPriv *_textPriv;
 }
 
-- (void)setAllowsReturns:(BOOL)arg1;
-- (BOOL)allowsReturns;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (BOOL)allowsReturns;
+- (void)setAllowsReturns:(BOOL)arg1;
 
 @end
 

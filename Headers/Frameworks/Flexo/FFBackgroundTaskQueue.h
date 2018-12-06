@@ -4,107 +4,63 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import "NSOperationQueue.h"
 
-@class NSArray, NSCountedSet, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSOperation, NSOperationQueue, NSRecursiveLock;
+@class NSDate, NSMutableDictionary, NSMutableSet, NSOperation;
 
-@interface FFBackgroundTaskQueue : NSObject
+@interface FFBackgroundTaskQueue : NSOperationQueue
 {
     id _delegate;
-    NSCountedSet *_notedTasks;
+    NSMutableSet *_notedTasks;
     int _loCount;
-    unsigned long long _entryNumber;
     NSMutableSet *_pausedForLO;
     NSOperation *_blockerOperation;
-    NSOperationQueue *_generalQueue;
     NSMutableDictionary *_runGroups;
-    int _cleanupCounter;
     NSDate *_loExitTime;
     NSDate *_loEntryTime;
     double _aggregateProgress;
     BOOL _tasksPending;
-    int _queuedUpdateProgressPerformSelector;
     long long _completedTaskCount;
     long long _totalTaskCount;
-    NSArray *_performSelectorModes;
-    unsigned int _assertionID;
-    BOOL _hasPowerAssertion;
-    NSRecursiveLock *_mainThreadCoalesceLock;
-    NSMutableArray *_mainThreadCoalesceWork;
 }
 
-+ (void)removeThumbnailRequestsForAssets:(id)arg1;
-+ (void)enableThumbnailRequests:(BOOL)arg1 forLibrary:(id)arg2;
-+ (void)resumeThumbnailRequests;
-+ (void)pauseThumbnailRequests;
-+ (BOOL)canStartActionAffectingAsset:(id)arg1 forUseDictionary:(id)arg2 error:(id *)arg3;
-+ (id)alertForBlockingBackgroundTaskNamed:(id)arg1;
-+ (id)errorForBlockingTaskNamed:(id)arg1;
-+ (id)backgroundAssetsForUse:(int)arg1;
-+ (BOOL)canStartActionAffectingAssets:(id)arg1 forUse:(int)arg2;
-+ (void)releaseSharedInstance;
 + (id)sharedInstance;
++ (void)releaseSharedInstance;
++ (BOOL)canStartDestructiveAction;
+- (id)init;
+- (void)dealloc;
+- (id)_notableTasks;
+- (BOOL)notableTasksPending;
+- (BOOL)canStartDestructiveAction;
+- (BOOL)waitForTasksInSerializationGroup:(id)arg1 beforeDate:(id)arg2;
+- (BOOL)waitForLowOverheadAcknowledgementBeforeDate:(id)arg1;
+- (void)addNote:(id)arg1;
+- (void)removeNote:(id)arg1;
+- (void)_updateTasksPending;
+- (void)_incrementNotableTaskCount:(id)arg1;
+- (void)_decrementNotableTaskCount:(id)arg1;
+- (void)_updateAggregateProgress;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)notifyDelegateDidAddTask:(id)arg1;
+- (void)_clearFinishedRunGroupOps;
+- (void)_setupTask:(id)arg1 forGroup:(id)arg2;
+- (void)addOperation:(id)arg1;
+- (void)notifyDelegateDidStartTask:(id)arg1;
+- (void)didStartTask:(id)arg1;
+- (void)notifyDelegateCompletedTask:(id)arg1;
+- (void)completedTask:(id)arg1;
+- (void)notifyDelegateCanceledTask:(id)arg1;
+- (void)canceledTask:(id)arg1;
+- (void)incrementLowOverheadMode;
+- (void)decrementLowOverheadMode;
+- (void)_checkForLOExitTime;
+- (void)_forceExpireTimedLOMode;
+- (void)runLowOverHeadForTime:(double)arg1;
+- (id)pauseAllTasks;
+- (id)resumeAllTasks;
 @property BOOL tasksPending; // @synthesize tasksPending=_tasksPending;
 @property double aggregateProgress; // @synthesize aggregateProgress=_aggregateProgress;
 @property id delegate; // @synthesize delegate=_delegate;
-- (BOOL)cancelAllTasksUsingAssets:(id)arg1 forUse:(int)arg2 forUndoableBlock:(CDUnknownBlockType)arg3;
-- (void)_handleCancelAllTasksForUndoableBlock_UndoRedoOperationAfter:(id)arg1;
-- (void)_handleCancelAllTasksForUndoableBlock_UndoRedoOperationBefore:(id)arg1;
-- (id)cancelAndWaitForTasks:(id)arg1 timeout:(id)arg2;
-- (void)cancelTasks:(id)arg1 timeout:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (BOOL)waitUntilAllOperationsAreFinishedBeforeDate:(id)arg1;
-- (void)waitUntilAllOperationsAreFinished;
-- (void)cancelAllOperations;
-- (void)cancelAllOperationsInRunGroup:(id)arg1;
-- (void)setSuspended:(BOOL)arg1;
-- (BOOL)isSuspended;
-- (id)operations;
-- (id)_copyOperationsInternal;
-- (void)setRunGroupMaxSimultaneousOperations:(unsigned long long)arg1 forRunGroup:(id)arg2;
-- (void)resumeTasks:(id)arg1;
-- (void)pauseTasks:(id)arg1;
-- (unsigned long long)getLowOverheadEntryNumberAndCurrentState:(_Bool *)arg1;
-- (void)runLowOverHeadForTime:(double)arg1;
-- (void)_forceExitLOMode;
-- (void)_forceExpireTimedLOMode;
-- (void)_checkForLOExitTime;
-- (void)decrementLowOverheadMode;
-- (void)incrementLowOverheadMode;
-- (void)canceledTask:(id)arg1;
-- (void)completedTask:(id)arg1;
-- (void)didStartTask:(id)arg1;
-- (BOOL)addOperation:(id)arg1;
-- (void)_clearFinishedRunGroupOps;
-- (void)didAddTask:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)queueBlockToMainThread:(CDUnknownBlockType)arg1;
-- (void)_handleBlocksOnMainThread;
-- (void)_updateAggregateProgress:(id)arg1;
-- (void)_decrementVisibleTaskCount:(id)arg1;
-- (void)_incrementVisibleTaskCount:(id)arg1;
-- (void)_updateTasksPending;
-- (void)removeNote:(id)arg1;
-- (void)addNote:(id)arg1;
-- (BOOL)waitForLowOverheadAcknowledgementBeforeDate:(id)arg1;
-- (BOOL)waitForTasksInRunGroup:(id)arg1 beforeDate:(id)arg2;
-- (id)backgroundAssetsForUse:(int)arg1;
-- (BOOL)canStartActionAffectingAssets:(id)arg1 forUse:(int)arg2;
-- (id)tasksUsingAssets:(id)arg1 forUse:(int)arg2 notableTasksOnly:(BOOL)arg3;
-- (id)allTasksUsingAssets:(id)arg1 forUse:(int)arg2;
-- (id)notableTasksUsingAssets:(id)arg1 forUse:(int)arg2;
-- (id)allNotableTasks;
-- (id)_notableTaskNamesUsingAssets:(id)arg1 forUse:(int)arg2;
-- (BOOL)visibleTasksPending;
-- (BOOL)notableTasksPending;
-- (id)_notableTasks;
-- (id)_allTasks;
-@property(readonly) BOOL inLowOverheadMode;
-- (void)appWillTerminate:(id)arg1;
-- (void)finalizeShutdown;
-- (void)beginShutdown;
-- (void)dealloc;
-- (oneway void)release;
-- (id)init;
 
 @end
 

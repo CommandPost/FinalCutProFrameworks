@@ -15,27 +15,28 @@
     double _startDistance;
     double _startAngle;
     double _startBlur;
+    struct OZOSCTexture *_handlesTexture[2];
     BOOL _moving;
     BOOL _capturing;
 }
 
 + (BOOL)validate:(struct OZChannelBase *)arg1;
-- (BOOL)postRedisplayOnActivePartChange;
-- (void)draw;
-- (BOOL)isDependentOnBounds;
-- (void)move:(id)arg1 deltaX:(double)arg2 deltaY:(double)arg3;
-- (void)blur:(id)arg1 amount:(double)arg2;
-- (BOOL)oscFlagsChanged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)revertState:(id)arg1;
-- (void)snapshotState:(id)arg1;
-- (id)getDefaultCursor;
-- (void)updateInfoBar;
-- (void)updateInfoBarWithDistance:(float)arg1 andAngle:(float)arg2 andBlur:(float)arg3;
-- (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)dealloc;
+- (void)updateInfoBarWithDistance:(float)arg1 andAngle:(float)arg2 andBlur:(float)arg3;
+- (void)updateInfoBar;
+- (id)getDefaultCursor;
+- (void)snapshotState:(id)arg1;
+- (void)revertState:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (BOOL)flagsChanged:(id)arg1;
+- (void)blur:(id)arg1 amount:(double)arg2;
+- (void)move:(id)arg1 deltaX:(double)arg2 deltaY:(double)arg3;
+- (BOOL)isDependentOnBounds;
+- (void)draw;
+- (BOOL)postRedisplayOnActivePartChange;
 
 @end
 

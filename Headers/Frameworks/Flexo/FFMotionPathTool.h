@@ -10,12 +10,11 @@
 {
 }
 
-+ (id)toolbarFacetImageOff;
-+ (id)toolbarFacetImageOn;
-+ (id)displayName;
 + (void)initialize;
-- (void)becomeActiveTool;
++ (id)displayName;
++ (id)toolbarFacet;
 - (BOOL)handlesSelection;
+- (void)becomeActiveTool;
 
 @end
 

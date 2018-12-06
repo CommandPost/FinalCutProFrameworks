@@ -6,12 +6,10 @@
 
 #import "NSView.h"
 
-#import "CALayerDelegate.h"
-
-@class CALayer, CATextLayer, FFBKEffectLibraryItem, FFEffectLibrarySelectionLayer, NSString;
+@class CALayer, CATextLayer, FFBKEffectLibraryItem, FFEffectLibrarySelectionLayer;
 
 __attribute__((visibility("hidden")))
-@interface FFEffectLibraryItemView : NSView <CALayerDelegate>
+@interface FFEffectLibraryItemView : NSView
 {
     FFBKEffectLibraryItem *_effect;
     BOOL _selected;
@@ -23,50 +21,24 @@ __attribute__((visibility("hidden")))
     BOOL _requestedIcon;
 }
 
-+ (void)setupLayoutConstants:(id)arg1;
-+ (id)textLayerFont;
-@property(readonly) CALayer *skimmingLayer; // @synthesize skimmingLayer=_iconLayer;
-@property(nonatomic) BOOL selected; // @synthesize selected=_selected;
-- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)accessibilityAttributeNames;
-- (BOOL)accessibilityIsIgnored;
-- (void)makeDefaultVideoTransition:(id)arg1;
-- (void)removeFavoriteAudioEffect:(id)arg1;
-- (void)addFavoriteAudioEffect:(id)arg1;
-- (void)removeFavoriteVideoEffect:(id)arg1;
-- (void)addFavoriteVideoEffect:(id)arg1;
-- (void)addDefaultGeneratorSet:(id)arg1;
-- (void)addDefaultLowerTitleSet:(id)arg1;
-- (void)addDefaultTitleSet:(id)arg1;
-- (void)addDefaultAudioEffectSet:(id)arg1;
-- (void)addDefaultVideoEffectSet:(id)arg1;
-- (void)openEffectInEditor:(id)arg1;
-- (void)revealInFinder:(id)arg1;
-- (void)installTemplate:(id)arg1;
-- (id)urlForEffectID:(id)arg1;
-- (id)menu;
-- (void)beginDraggingEffectIcon:(id)arg1;
-- (id)dragImage;
-- (void)effectIconReady:(id)arg1;
-- (id)effectItem;
-- (BOOL)canBecomeKeyView;
-- (BOOL)acceptsFirstResponder;
-- (void)setEmphasized:(BOOL)arg1;
-- (BOOL)isFlipped;
-- (void)loadIcon;
-- (void)viewWillDraw;
-- (void)dealloc;
-- (void)updateStringIfNeeded;
 - (id)initWithEffect:(id)arg1;
-- (void)viewDidChangeBackingProperties;
-- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (void)viewWillDraw;
+- (void)loadIcon;
+@property(nonatomic) BOOL selected; // @synthesize selected=_selected;
+- (BOOL)isFlipped;
+- (void)setEmphasized:(BOOL)arg1;
+- (BOOL)acceptsFirstResponder;
+- (id)effectItem;
+- (void)effectIconReady:(id)arg1;
+- (void)beginDraggingEffectIcon:(id)arg1;
+- (id)menu;
+- (void)openEffectInEditor:(id)arg1;
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityAttributeNames;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+@property(readonly) CALayer *skimmingLayer; // @synthesize skimmingLayer=_iconLayer;
 
 @end
 

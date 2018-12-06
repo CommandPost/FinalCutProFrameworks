@@ -28,25 +28,19 @@
 }
 
 + (id)sharedInstance;
-- (void)abortRender:(id)arg1;
-- (void)closeProgressWhenDone:(id)arg1;
-- (void)updateRenderFailed:(const CDStruct_1b6d18a9 *)arg1;
-- (void)updateRenderDone;
-- (void)updateAudioInfo:(double)arg1 lastSample:(double)arg2 timeElapsed:(double)arg3;
-- (void)updatePreview:(struct PCBitmap *)arg1;
-- (void)updateVideoInfo:(const CDStruct_1b6d18a9 *)arg1 frameRenderTime:(unsigned int)arg2 timeElapsed:(double)arg3;
-- (void)closeDialog;
-- (BOOL)openDialog:(id)arg1 withTitle:(id)arg2 windowTitle:(id)arg3 withDoneMsg:(id)arg4 startTime:(const CDStruct_1b6d18a9 *)arg5 endTime:(const CDStruct_1b6d18a9 *)arg6 frameDuration:(const CDStruct_1b6d18a9 *)arg7 background:(id)arg8;
-- (void)windowWillClose:(id)arg1;
-- (void)windowDidLoad;
-- (void)dealloc;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (void)windowDidLoad;
+- (void)windowWillClose:(id)arg1;
+- (BOOL)openDialog:(id)arg1 withTitle:(id)arg2 windowTitle:(id)arg3 withDoneMsg:(id)arg4 startTime:(const CDStruct_1b6d18a9 *)arg5 endTime:(const CDStruct_1b6d18a9 *)arg6 frameDuration:(const CDStruct_1b6d18a9 *)arg7 background:(id)arg8;
+- (void)closeDialog;
+- (void)updateVideoInfo:(const CDStruct_1b6d18a9 *)arg1 frameRenderTime:(unsigned int)arg2 timeElapsed:(double)arg3;
+- (void)updatePreview:(struct PCBitmap *)arg1;
+- (void)updateAudioInfo:(double)arg1 lastSample:(double)arg2 timeElapsed:(double)arg3;
+- (void)updateRenderDone;
+- (void)updateRenderFailed:(const CDStruct_1b6d18a9 *)arg1;
+- (void)closeProgressWhenDone:(id)arg1;
+- (void)abortRender:(id)arg1;
 
 @end
 

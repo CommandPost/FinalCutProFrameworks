@@ -16,13 +16,13 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_frames;
 }
 
-- (void)flush;
-- (id)findFrameWithTime:(CDStruct_1b6d18a9)arg1;
-- (void)addFrame:(id)arg1;
-- (unsigned long long)cacheSize;
-- (void)dealloc;
-- (id)initWithCacheSize:(unsigned long long)arg1;
 - (id)init;
+- (id)initWithCacheSize:(unsigned long long)arg1;
+- (void)dealloc;
+- (unsigned long long)cacheSize;
+- (void)addFrame:(id)arg1;
+- (id)findFrameWithTime:(CDStruct_1b6d18a9)arg1;
+- (void)flush;
 
 @end
 

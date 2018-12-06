@@ -8,49 +8,31 @@
 
 #import "FFModelLocking.h"
 
-@class NSCondition, NSMutableArray, NSObject<OS_dispatch_queue>;
+@class NSCondition, NSString;
 
 @interface FFSharedLock : NSObject <FFModelLocking>
 {
     NSCondition *_guard;
-    unsigned long long _holdsReadLockKey;
+    NSString *_identifier;
     struct __CFBag *_readers;
     struct FFThread *_writer;
     int _writeRequested;
     int _readLockCount;
     int _readLockCountInsideWrite;
     int _writeLockCount;
-    _Bool _deferredWritePending;
-    NSMutableArray *_deferredWantToWriteBlocks;
-    _Bool _deferredWriteQueueIsSuspended;
-    NSObject<OS_dispatch_queue> *_deferredWriteQueue;
-    void *_deferredWriteOverrides;
-    int _disableDeferredWritePrioritization;
 }
 
-+ (id)globalLock;
 + (void)initialize;
-- (void)_deferredWriteHandler;
-- (void)queueDeferredWriteLockBlockOnMainThread:(CDUnknownBlockType)arg1;
-- (void)endDisableDeferredWritePrioritization;
-- (void)beginDisableDeferredWritePrioritization;
-- (id)_evenIfDeferredWritePending:(_Bool)arg1;
-- (BOOL)hasReadLockScope;
-- (BOOL)hasWriteLockScope;
-- (BOOL)writerIsWaiting;
-- (BOOL)_hasWriteLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
-- (void)_readLockEvenIfWriteRequestPending;
-- (void)_readLock;
-- (void)_readLock:(BOOL)arg1;
-- (void)_updateDeferredWriteOverrides;
-- (unsigned long long)collectThreadsBlockingRead:(struct FFThread **)arg1 maxCount:(unsigned long long)arg2;
-- (unsigned long long)collectThreadsBlockingWrite:(struct FFThread **)arg1 maxCount:(unsigned long long)arg2;
-- (void)_updateDWQStateWhileHoldingGuard;
-- (void)dealloc;
++ (id)globalLock;
 - (id)init;
+- (void)dealloc;
+- (void)_readLock:(BOOL)arg1;
+- (void)_readLock;
+- (void)_readLockEvenIfWriteRequestPending;
+- (void)_readUnlock;
+- (void)_writeLock;
+- (void)_writeUnlock;
+- (BOOL)_hasWriteLock;
 
 @end
 

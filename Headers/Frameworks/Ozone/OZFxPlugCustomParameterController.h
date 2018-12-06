@@ -4,23 +4,21 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "OZViewControllerGroup.h"
+#import "OZViewController.h"
 
-@class NSView;
+@class OZAnimIndicator, PIParameterPulldown;
 
-@interface OZFxPlugCustomParameterController : OZViewControllerGroup
+@interface OZFxPlugCustomParameterController : OZViewController
 {
-    NSView *_customView;
+    OZAnimIndicator *_pAnim;
+    PIParameterPulldown *_pParamPulldown;
 }
 
-+ (BOOL)shouldDisplayReset;
-+ (BOOL)shouldDisplayAnimIndicator;
-@property(readonly, nonatomic) NSView *customView; // @synthesize customView=_customView;
-- (float)suggestedMaxParamWidth;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 andView:(id)arg3;
+- (void)dealloc;
 - (void)update;
-- (void)_subviewsNeedDisplay:(id)arg1;
-- (id)plugin;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)enable;
+- (void)disable;
 
 @end
 

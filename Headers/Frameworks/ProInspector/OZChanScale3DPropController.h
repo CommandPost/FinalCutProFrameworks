@@ -10,12 +10,12 @@
 {
 }
 
-- (void)setChanValues:(struct OZChannelBase *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
-- (void)getChanValues:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
-- (struct OZChannelDouble *)getChannelZ:(struct OZChannelBase *)arg1;
-- (struct OZChannelDouble *)getChannelY:(struct OZChannelBase *)arg1;
-- (struct OZChannelDouble *)getChannelX:(struct OZChannelBase *)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (struct OZChannelDouble *)getChannelX:(struct OZChannelBase *)arg1;
+- (struct OZChannelDouble *)getChannelY:(struct OZChannelBase *)arg1;
+- (struct OZChannelDouble *)getChannelZ:(struct OZChannelBase *)arg1;
+- (void)getChanValues:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
+- (void)setChanValues:(struct OZChannelBase *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
 
 @end
 

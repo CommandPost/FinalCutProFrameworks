@@ -10,5 +10,7 @@
 {
 }
 
+- (void)setThemeVariant:(long long)arg1;
+
 @end
 

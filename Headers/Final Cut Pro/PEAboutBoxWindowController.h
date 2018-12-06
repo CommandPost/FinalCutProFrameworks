@@ -27,20 +27,13 @@
     BOOL _restartAtTop;
 }
 
-+ (id)controller;
-+ (void)dismissSplashScreen;
-+ (void)showSplashScreen;
 + (void)showAboutBox;
-- (void)awakeFromNib;
-- (void)dealloc;
++ (void)showSplashScreen;
++ (void)dismissSplashScreen;
++ (id)controller;
 - (id)init;
-- (void)hideSplashScreen:(id)arg1;
-- (void)endModalSession;
-- (void)scrollText:(id)arg1;
-- (void)updateAboutBoxText:(id)arg1;
-- (void)showAboutBox;
-- (void)showSplashScreen;
-- (void)allocWindow;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

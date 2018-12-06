@@ -10,8 +10,8 @@
 {
 }
 
-- (void)setLayerID:(int)arg1;
 - (id)init;
+- (void)setLayerID:(int)arg1;
 
 @end
 

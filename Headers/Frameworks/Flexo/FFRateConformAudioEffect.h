@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerEffects;
-- (double)rateConformFactor;
-- (id)newEffectNode;
-- (id)inputKeys;
 - (BOOL)isNoOp;
+- (id)inputKeys;
+- (id)newEffectNode;
+- (double)rateConformFactor;
 
 @end
 

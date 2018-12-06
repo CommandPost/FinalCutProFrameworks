@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
     void *_recycler;
 }
 
-- (void)deleteTexture:(unsigned int)arg1;
-- (unsigned int)genTexture:(struct _CGLContextObject *)arg1;
-- (void)setScreen:(int)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (void)setScreen:(int)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3;
+- (unsigned int)genTexture:(struct _CGLContextObject *)arg1;
+- (void)deleteTexture:(unsigned int)arg1;
 
 @end
 

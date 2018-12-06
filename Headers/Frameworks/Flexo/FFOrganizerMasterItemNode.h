@@ -11,13 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)treeNodeWithMasterItem:(id)arg1;
 + (id)keyPathsForValuesAffectingMasterItem;
-- (void)visitChildren:(CDUnknownBlockType)arg1;
-- (id)childNodesForMasterItems:(id)arg1;
-@property(readonly, nonatomic) id <FFOrganizerMasterItem> masterItem;
-- (id)initWithRepresentedObject:(id)arg1;
++ (id)treeNodeWithMasterItem:(id)arg1;
 - (id)initWithMasterItem:(id)arg1;
+- (id)initWithRepresentedObject:(id)arg1;
+@property(readonly, nonatomic) id <FFOrganizerMasterItem> masterItem;
+- (id)childNodesForMasterItems:(id)arg1;
+- (void)visitChildren:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -10,8 +10,8 @@
 {
 }
 
-- (void)didTwiddle:(BOOL)arg1;
 - (struct OZChannelAngle *)angleChannelFromChannel:(struct OZChannelBase *)arg1;
+- (void)didTwiddle:(BOOL)arg1;
 
 @end
 

@@ -20,19 +20,13 @@
     int _depth;
 }
 
-@property(readonly, nonatomic) NSDictionary *sceneSettings; // @synthesize sceneSettings=_settings;
-- (void)parser:(id)arg1 foundCharacters:(id)arg2;
-- (void)parser:(id)arg1 didEndElement:(id)arg2 namespaceURI:(id)arg3 qualifiedName:(id)arg4;
-- (void)parser:(id)arg1 didStartElement:(id)arg2 namespaceURI:(id)arg3 qualifiedName:(id)arg4 attributes:(id)arg5;
-- (BOOL)parse;
-- (void)dealloc;
 - (id)initWithContentsOfURL:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (BOOL)parse;
+- (void)parser:(id)arg1 didStartElement:(id)arg2 namespaceURI:(id)arg3 qualifiedName:(id)arg4 attributes:(id)arg5;
+- (void)parser:(id)arg1 didEndElement:(id)arg2 namespaceURI:(id)arg3 qualifiedName:(id)arg4;
+- (void)parser:(id)arg1 foundCharacters:(id)arg2;
+@property(readonly, nonatomic) NSDictionary *sceneSettings; // @synthesize sceneSettings=_settings;
 
 @end
 

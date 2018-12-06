@@ -9,12 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface FFVideoScopesLabelLayer : FFVideoScopesTextLayer
 {
-    id _settingsButtonLayer;
 }
 
-- (id)accessibilityAttributeValue:(id)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)setupDefaultProperties;
+- (struct CGRect)frameForBounds:(struct CGRect)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
 
 @end
 

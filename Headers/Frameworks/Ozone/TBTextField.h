@@ -12,9 +12,9 @@
     SEL _clickAction;
 }
 
-- (void)mouseDown:(id)arg1;
-- (void)setClickAction:(SEL)arg1;
 - (void)setClickTarget:(id)arg1;
+- (void)setClickAction:(SEL)arg1;
+- (void)mouseDown:(id)arg1;
 
 @end
 

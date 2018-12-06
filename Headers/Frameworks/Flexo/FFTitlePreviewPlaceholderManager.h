@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     FFAnchoredGeneratorComponent *_generator;
 }
 
-- (void)effectFinishedLoading:(id)arg1;
-- (void)dealloc;
-- (id)initWithBGComponent:(id)arg1 andGenerator:(id)arg2;
 - (void)configurePlaceholder;
+- (id)initWithBGComponent:(id)arg1 andGenerator:(id)arg2;
+- (void)dealloc;
+- (void)effectFinishedLoading:(id)arg1;
 
 @end
 

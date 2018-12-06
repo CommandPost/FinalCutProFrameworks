@@ -11,8 +11,8 @@
     struct Functor *_functor;
 }
 
-- (void)perform;
 - (void)setFunctor:(struct Functor *)arg1;
+- (void)perform;
 
 @end
 

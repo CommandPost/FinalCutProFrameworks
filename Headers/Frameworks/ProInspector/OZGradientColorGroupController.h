@@ -10,9 +10,9 @@
 {
 }
 
-- (BOOL)isCollapsed;
-- (void)expand;
 - (void)collapse;
+- (void)expand;
+- (BOOL)isCollapsed;
 
 @end
 

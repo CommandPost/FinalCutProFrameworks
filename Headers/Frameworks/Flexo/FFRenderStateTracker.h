@@ -6,103 +6,80 @@
 
 #import "NSObject.h"
 
-#import "FFBackgroundTaskTarget.h"
+@class FFBackgroundTask, FFPMRLogFunnel, FFProvider, FFSVContext, FFSourceVideo, NSMutableArray, NSMutableIndexSet, NSRecursiveLock, NSThread;
 
-@class FFBackgroundTask, FFPMRLogFunnel, FFProvider, FFSVContext, FFSourceVideo, NSLock, NSMutableArray, NSMutableIndexSet, NSThread;
-
-@interface FFRenderStateTracker : NSObject <FFBackgroundTaskTarget>
+__attribute__((visibility("hidden")))
+@interface FFRenderStateTracker : NSObject
 {
     FFSVContext *_scrubContext;
-    int _scrubContextQuality;
     FFSourceVideo *_source;
     FFProvider *_provider;
     NSMutableArray *_knownRanges;
     NSMutableArray *_dirtyRanges;
     NSMutableIndexSet *_statesEncountered;
-    NSLock *_rbLock;
-    _Bool _stateFullyKnownAtLockTime;
+    NSRecursiveLock *_rbLock;
+    int _rbLockCount;
+    int _stateFullyKnownAtLockTime;
     NSThread *_rbLockHolder;
-    CDStruct_e83c9415 _rawPrimaryInterestTimeRange;
     CDStruct_e83c9415 _primaryInterestTimeRange;
-    NSLock *_bgTaskIVarLock;
     FFBackgroundTask *_backgroundCalculationTask;
     _Bool _bgProcessingEnabled;
     _Bool _timelineIsDragging;
     _Bool _oscIsDragging;
     FFPMRLogFunnel *_pmrFunnel;
-    long long _UIPlayersPlayering;
     int _deferredRenderStateNotify;
-    struct set<FFMD5, std::__1::less<FFMD5>, std::__1::allocator<FFMD5>> *_segmentsWithDrops;
-    _Bool _temporaryHold;
-    BOOL _isShutdown;
 }
 
-+ (id)assetsInUseForSource:(id)arg1;
-+ (id)anchoredObjectInUseForSource:(id)arg1;
-@property _Bool temporaryHold; // @synthesize temporaryHold=_temporaryHold;
-@property(readonly, retain) FFSourceVideo *source; // @synthesize source=_source;
-- (id)librariesInUse:(id)arg1;
-- (id)assetsInUse:(id)arg1;
-- (id)description;
-- (void)runBackgroundCalculationTask:(id)arg1 onTask:(id)arg2;
-- (void)setPrimaryInterestTimeRange:(CDStruct_e83c9415)arg1;
-- (void)_recalculateInBackground;
-- (void)cancelBackgroundOps;
-- (BOOL)_calculateRenderStatesOnTask:(id)arg1 timeout:(CDStruct_1b6d18a9)arg2;
-- (BOOL)_analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
-- (int)_getStateForInfo:(id)arg1 startAt:(CDStruct_1b6d18a9)arg2 exitTime:(CDStruct_1b6d18a9)arg3 retRange:(CDStruct_e83c9415 *)arg4 segmentMD5s:(CDStruct_bdcb2b0d *)arg5 diskMD5s:(CDStruct_bdcb2b0d *)arg6 hasData:(char *)arg7 context:(id)arg8;
-- (BOOL)_analyzeSegmentStoreForInfo:(id)arg1 checkActual:(_Bool)arg2 startAt:(CDStruct_1b6d18a9)arg3 renderFilePaths:(id)arg4 exitTime:(CDStruct_1b6d18a9)arg5 retRange:(CDStruct_e83c9415 *)arg6 segmentMD5:(CDStruct_bdcb2b0d *)arg7 diskMD5:(CDStruct_bdcb2b0d *)arg8 context:(id)arg9;
-- (void)checkRangesAndMD5sForRecentlyCreatedRenderFiles:(id)arg1 md5s:(id)arg2;
-- (void)checkRangeAndMD5sForRecentlyCreatedRenderFiles:(CDStruct_e83c9415)arg1 md5s:(id)arg2;
-- (_Bool)analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
-- (id)md5sInUseInRange:(CDStruct_e83c9415)arg1 collectRenderedSegments:(BOOL)arg2 collectNeedsRenderSegments:(BOOL)arg3;
-- (id)_internalmd5sInUseInRange:(CDStruct_e83c9415)arg1 collectRenderedSegments:(BOOL)arg2 collectNeedsRenderSegments:(BOOL)arg3;
-- (id)md5sInUse;
-- (id)statesEncountered;
-- (_Bool)stateFullyKnown;
-- (_Bool)_stateFullyKnown;
-- (id)renderStateInRange:(CDStruct_e83c9415)arg1 wantDetailedSegmentation:(_Bool)arg2;
-- (id)renderState;
-- (id)copyConsolidatedRenderRangeState:(long long)arg1 endTime:(CDStruct_1b6d18a9)arg2 ignoreMD5:(_Bool)arg3;
-- (void)iterateOverRenderRanges:(CDStruct_e83c9415)arg1 inStates:(id)arg2 includingUnknown:(BOOL)arg3 iterator:(CDUnknownBlockType)arg4;
-- (void)_markRangeAsDirty:(CDStruct_e83c9415)arg1 allowDefer:(_Bool)arg2;
-- (void)_internalPostMarkRangeAsDirtyWithAllowDefer:(_Bool)arg1 removedKnown:(_Bool)arg2 addedDirty:(_Bool)arg3 infoCB:(CDUnknownBlockType)arg4;
-- (void)_internalMarkRangeAsDirty:(CDStruct_e83c9415)arg1 nativeSampleDur:(CDStruct_1b6d18a9)arg2 removedKnown:(_Bool *)arg3 addedDirty:(_Bool *)arg4;
-- (void)queueDeferredRenderStateNotify:(id)arg1;
-- (void)deferredRenderStateNotify:(id)arg1;
-- (void)rangeInvalidated:(id)arg1;
-- (void)setState:(int)arg1 forRange:(CDStruct_e83c9415)arg2 withSegmentMD5s:(CDStruct_bdcb2b0d *)arg3 diskMD5s:(CDStruct_bdcb2b0d *)arg4 hasData:(char *)arg5 nativeSampleDur:(CDStruct_1b6d18a9)arg6;
-- (CDStruct_e83c9415)_findNextDirtyInRange:(CDStruct_e83c9415)arg1;
-- (_Bool)_insertIntoKnownRange:(id)arg1;
-- (void)_removeFromDirtyRanges:(CDStruct_e83c9415)arg1;
-- (_Bool)_addToDirtyRanges:(CDStruct_e83c9415)arg1;
-- (_Bool)_removeRangeFromKnownRanges:(CDStruct_e83c9415)arg1;
-- (void)_validateKnownAndDirtyRanges:(id)arg1;
-- (_Bool)diskSpaceAvailableForRendering;
-- (id)_scrubContext;
-- (CDStruct_e83c9415)_videoTimeRange;
-- (_Bool)BGProcessingEnabled;
-- (void)setBGProcessingEnabled:(_Bool)arg1;
-- (void)segmentDroppedFrame:(id)arg1;
-- (BOOL)holdingRBLock;
-- (_Bool)hasKnownDropSegments;
-- (void)rbUnlock;
-- (void)rbLock;
-- (void)readUnlockSeq;
-- (void)readLockSeq:(id)arg1;
-- (id)lockableModelObject;
-- (id)sequence;
-- (void)dealloc;
-- (id)initWithSourceVideo:(id)arg1;
-- (id)init;
-- (void)uiPlaybackStateChange:(id)arg1;
-- (void)libraryClosed:(id)arg1;
-- (void)oscDidStopDragging:(id)arg1;
-- (void)oscWillStartDragging:(id)arg1;
-- (void)timelineDidStopDragging:(id)arg1;
-- (void)timelineWillStartDragging:(id)arg1;
-- (void)_delayedRestartCalc;
 - (_Bool)_draggingHoldActive;
+- (void)timelineWillStartDragging:(id)arg1;
+- (void)timelineDidStopDragging:(id)arg1;
+- (void)oscWillStartDragging:(id)arg1;
+- (void)oscDidStopDragging:(id)arg1;
+- (void)appWillTerminate:(id)arg1;
+- (id)init;
+- (id)initWithSourceVideo:(id)arg1;
+- (void)dealloc;
+- (id)sequence;
+- (id)lockableModelObject;
+- (void)readLockSeq:(id)arg1;
+- (void)readUnlockSeq;
+- (void)rbLock;
+- (void)rbUnlock;
+- (BOOL)holdingRBLock;
+- (void)setBGProcessingEnabled:(_Bool)arg1;
+- (_Bool)BGProcessingEnabled;
+- (CDStruct_e83c9415)_videoTimeRange;
+- (id)_scrubContext;
+- (_Bool)diskSpaceAvailableForRendering;
+- (void)_validateKnownAndDirtyRanges:(id)arg1;
+- (_Bool)_removeRangeFromKnownRanges:(CDStruct_e83c9415)arg1;
+- (_Bool)_addToDirtyRanges:(CDStruct_e83c9415)arg1;
+- (void)_removeFromDirtyRanges:(CDStruct_e83c9415)arg1;
+- (void)_insertIntoKnownRange:(id)arg1;
+- (CDStruct_e83c9415)_findAndRemoveNextDirtyInRange:(CDStruct_e83c9415)arg1;
+- (void)setState:(int)arg1 forRange:(CDStruct_e83c9415)arg2 withMD5s:(CDStruct_60067b7e *)arg3 nativeSampleDur:(CDStruct_1b6d18a9)arg4;
+- (void)rangeInvalidated:(id)arg1;
+- (void)deferredRenderStateNotify:(id)arg1;
+- (void)queueDeferredRenderStateNotify:(id)arg1;
+- (void)_markRangeAsDirty:(CDStruct_e83c9415)arg1 allowDefer:(_Bool)arg2;
+- (id)copyConsolidatedRenderRangeState:(long long)arg1 endTime:(CDStruct_1b6d18a9)arg2;
+- (id)renderState;
+- (id)renderStateInRange:(CDStruct_e83c9415)arg1;
+- (_Bool)stateFullyKnown;
+- (id)statesEncountered;
+- (id)md5sInUse;
+- (_Bool)analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
+- (void)checkRangeForRecentlyCreatedRenderFiles:(id)arg1;
+- (BOOL)_analyzeSegmentStoreForInfo:(id)arg1 checkActual:(_Bool)arg2 startAt:(CDStruct_1b6d18a9)arg3 renderFilePaths:(id)arg4 exitTime:(CDStruct_1b6d18a9)arg5 retRange:(CDStruct_e83c9415 *)arg6 diskMD5:(CDStruct_60067b7e *)arg7;
+- (int)_getStateForInfo:(id)arg1 startAt:(CDStruct_1b6d18a9)arg2 exitTime:(CDStruct_1b6d18a9)arg3 retRange:(CDStruct_e83c9415 *)arg4 diskMD5s:(CDStruct_60067b7e *)arg5;
+- (BOOL)_analyzeNextDirtyInRange:(CDStruct_e83c9415)arg1;
+- (BOOL)_calculateRenderStatesOnTask:(id)arg1 timeout:(CDStruct_1b6d18a9)arg2;
+- (void)cancelBackgroundOps;
+- (void)_recalculateInBackground;
+- (void)setPrimaryInterestTimeRange:(CDStruct_e83c9415)arg1;
+- (void)runBackgroundCalculationTask:(id)arg1 onTask:(id)arg2;
+- (id)description;
+@property(readonly, retain) FFSourceVideo *source; // @synthesize source=_source;
 
 @end
 

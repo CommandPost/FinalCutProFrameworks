@@ -16,21 +16,19 @@
 }
 
 + (id)partArrayWithParts:(id)arg1;
-- (id)description;
-- (id)partPathAtLevel:(unsigned long long)arg1;
-- (id)partPaths;
-- (id)partsAtLevel:(unsigned long long)arg1;
-- (id)partsWithIdentifier:(id)arg1;
-- (id)pathToPartWithIdentifier:(id)arg1;
-- (id)partWithIdentifier:(id)arg1;
-- (id)allParts;
-- (id)penultimateSubpart;
-- (id)penultimatePart;
-- (id)topSubpart;
-- (id)topPart;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithParts:(id)arg1;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)topPart;
+- (id)topSubpart;
+- (id)allParts;
+- (id)partWithIdentifier:(id)arg1;
+- (id)pathToPartWithIdentifier:(id)arg1;
+- (id)partsWithIdentifier:(id)arg1;
+- (id)partsAtLevel:(unsigned long long)arg1;
+- (id)partPaths;
+- (id)partPathAtLevel:(unsigned long long)arg1;
+- (id)description;
 
 @end
 

@@ -6,22 +6,19 @@
 
 #import <Ozone/OZMediaOpenPanelDelegate.h>
 
-@class NSButton, NSPopUpButton, NSTextField;
+@class NSPopUpButton, NSTextField;
 
 @interface OZImportMediaDelegate : OZMediaOpenPanelDelegate
 {
-    NSButton *_pIs360Button;
     NSTextField *_pAudioTracksTitle;
     NSPopUpButton *_pAudioTracksPopUp;
-    BOOL _shouldGuessAt360;
 }
 
 + (id)instanceWithOpenPanel:(id)arg1 flags:(unsigned int)arg2;
-- (void)panelSelectionDidChange:(id)arg1;
-- (BOOL)shouldImportAs360;
-- (BOOL)importAllTracks;
-- (id)view;
 - (id)initWithOpenPanel:(id)arg1 flags:(unsigned int)arg2;
+- (id)view;
+- (BOOL)importAllTracks;
+- (void)panelSelectionDidChange:(id)arg1;
 
 @end
 

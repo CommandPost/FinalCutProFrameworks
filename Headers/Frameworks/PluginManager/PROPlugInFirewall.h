@@ -17,18 +17,18 @@ __attribute__((visibility("hidden")))
     Protocol *secondaryProtocol;
 }
 
-+ (void)forwardInvocation:(id)arg1;
-+ (void)doesNotRecognizeSelector:(SEL)arg1;
-+ (id)methodSignatureForSelector:(SEL)arg1;
 + (void)deadMethod;
-- (void)doesNotRecognizeSelector:(SEL)arg1;
-- (void)forwardInvocation:(id)arg1;
-- (id)methodSignatureForSelector:(SEL)arg1;
-- (void)deadMethod;
-- (id)protectedObject;
-- (id)description;
-- (void)dealloc;
++ (id)methodSignatureForSelector:(SEL)arg1;
++ (void)doesNotRecognizeSelector:(SEL)arg1;
++ (void)forwardInvocation:(id)arg1;
 - (id)initWithProtectedObject:(id)arg1 protocol:(id)arg2 secondaryProtocol:(id)arg3 errorHandler:(id)arg4;
+- (void)dealloc;
+- (id)description;
+- (id)protectedObject;
+- (void)deadMethod;
+- (id)methodSignatureForSelector:(SEL)arg1;
+- (void)forwardInvocation:(id)arg1;
+- (void)doesNotRecognizeSelector:(SEL)arg1;
 
 @end
 

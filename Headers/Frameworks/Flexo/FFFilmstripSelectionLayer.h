@@ -6,62 +6,51 @@
 
 #import "CALayer.h"
 
-@class FFFilmstrip;
+@class CAGradientLayer, FFFilmstrip, TLKThemeBackedLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFFilmstripSelectionLayer : CALayer
 {
-    CALayer *_rangeSelectionLayer;
-    CALayer *_maskLayer;
-    CALayer *_leftHandleLayer;
-    CALayer *_rightHandleLayer;
+    CAGradientLayer *_outerGradientLayer;
+    CAGradientLayer *_innerGradientLayer;
+    CAGradientLayer *_autoKeywordGradientLayer;
+    CALayer *_outerLayerMask;
+    CALayer *_innerLayerMask;
+    TLKThemeBackedLayer *_leftHandleLayer;
+    TLKThemeBackedLayer *_rightHandleLayer;
     CDStruct_1b6d18a9 _leftTime;
     CDStruct_1b6d18a9 _rightTime;
     CDStruct_1b6d18a9 _leftBoundaryTime;
     CDStruct_1b6d18a9 _rightBoundaryTime;
     int _leftEdgeType;
     int _rightEdgeType;
-    BOOL _focused;
     BOOL _showHandles;
     BOOL _emphasized;
-    BOOL _ghosted;
-    int _highlight;
     struct CGRect _leftSelectionHandleRect;
     struct CGRect _rightSelectionHandleRect;
-    BOOL _forStillImage;
     BOOL _usesAutoKeywordsStyle;
     FFFilmstrip *_filmstrip;
 }
 
-+ (id)layer;
-+ (id)unusedLayerPool;
-@property(nonatomic) BOOL usesAutoKeywordsStyle; // @synthesize usesAutoKeywordsStyle=_usesAutoKeywordsStyle;
-@property(nonatomic) BOOL forStillImage; // @synthesize forStillImage=_forStillImage;
-@property(nonatomic) int highlight; // @synthesize highlight=_highlight;
-@property(nonatomic) BOOL ghosted; // @synthesize ghosted=_ghosted;
-@property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
-@property(nonatomic) BOOL focused; // @synthesize focused=_focused;
-@property(nonatomic) BOOL showHandles; // @synthesize showHandles=_showHandles;
-@property(nonatomic) int rightEdgeType; // @synthesize rightEdgeType=_rightEdgeType;
++ (unsigned long long)_themeRef;
++ (id)_facetHandle;
+- (id)init;
+- (void)layoutSublayers;
+- (void)setCornerRadius:(double)arg1;
+- (double)cornerRadius;
+- (void)_updateFrameProperties;
+@property(nonatomic) CDStruct_1b6d18a9 leftTime; // @synthesize leftTime=_leftTime;
+@property(nonatomic) CDStruct_1b6d18a9 rightTime; // @synthesize rightTime=_rightTime;
 @property(nonatomic) int leftEdgeType; // @synthesize leftEdgeType=_leftEdgeType;
+@property(nonatomic) int rightEdgeType; // @synthesize rightEdgeType=_rightEdgeType;
+@property(nonatomic) BOOL showHandles; // @synthesize showHandles=_showHandles;
+@property(nonatomic) BOOL usesAutoKeywordsStyle; // @synthesize usesAutoKeywordsStyle=_usesAutoKeywordsStyle;
+@property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
+@property(readonly, nonatomic) struct CGRect leftSelectionHandleRect; // @synthesize leftSelectionHandleRect=_leftSelectionHandleRect;
+@property(readonly, nonatomic) struct CGRect rightSelectionHandleRect; // @synthesize rightSelectionHandleRect=_rightSelectionHandleRect;
 @property(nonatomic) CDStruct_1b6d18a9 rightBoundaryTime; // @synthesize rightBoundaryTime=_rightBoundaryTime;
 @property(nonatomic) CDStruct_1b6d18a9 leftBoundaryTime; // @synthesize leftBoundaryTime=_leftBoundaryTime;
-@property(nonatomic) CDStruct_1b6d18a9 rightTime; // @synthesize rightTime=_rightTime;
-@property(nonatomic) CDStruct_1b6d18a9 leftTime; // @synthesize leftTime=_leftTime;
-@property(retain, nonatomic) FFFilmstrip *filmstrip; // @synthesize filmstrip=_filmstrip;
-- (BOOL)_shouldHideHandles;
-@property(readonly, nonatomic) struct CGRect rightSelectionHandleRect;
-@property(readonly, nonatomic) struct CGRect leftSelectionHandleRect;
-- (void)setTimeRange:(CDStruct_e83c9415)arg1 focused:(BOOL)arg2 emphasized:(BOOL)arg3;
-@property(nonatomic) CDStruct_e83c9415 timeRange;
-- (int)_selectionDisplayMode;
-- (void)_updateFrameProperties;
-- (void)layoutSublayers;
-- (void)dealloc;
-- (void)setContentsScale:(double)arg1;
-- (id)init;
-- (void)removeFromSuperlayer;
-- (void)resetToDefaults;
+@property(nonatomic) FFFilmstrip *filmstrip; // @synthesize filmstrip=_filmstrip;
 
 @end
 

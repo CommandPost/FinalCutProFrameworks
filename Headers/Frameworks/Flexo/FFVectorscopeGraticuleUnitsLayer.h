@@ -11,19 +11,15 @@ __attribute__((visibility("hidden")))
 {
     long long _phase;
     long long _barTarget;
-    int _YCbCrColorSpace;
     CDStruct_d36b2e56 _state;
 }
 
-- (void)drawInContext:(struct CGContext *)arg1;
-- (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;
-- (void)setContentsScale:(double)arg1;
-- (void)setYCbCrColorSpace:(int)arg1;
-- (void)hideGraticuleLabels:(BOOL)arg1;
-- (void)setShowSkinToneIndicator:(BOOL)arg1;
-- (void)setShowIandQ:(BOOL)arg1;
-- (void)setBarTarget:(long long)arg1;
 - (void)setPhase:(long long)arg1;
+- (void)setBarTarget:(long long)arg1;
+- (void)setShowIandQ:(BOOL)arg1;
+- (void)setShowSkinToneIndicator:(BOOL)arg1;
+- (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;
+- (void)drawInContext:(struct CGContext *)arg1;
 
 @end
 

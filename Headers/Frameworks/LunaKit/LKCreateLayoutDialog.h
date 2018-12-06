@@ -8,36 +8,25 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class LKModuleLayoutDisplayName, NSButton, NSString, NSTextField;
+@class NSButton, NSTextField;
 
 @interface LKCreateLayoutDialog : NSWindowController <NSTextFieldDelegate>
 {
-    id <LKCreateLayoutDialogDelegate> _delegate;
-    LKModuleLayoutDisplayName *_suggestedLayoutName;
-    LKModuleLayoutDisplayName *_displayName;
     NSButton *_cancelButton;
     NSButton *_saveButton;
-    NSTextField *_layoutNameTextField;
-    NSTextField *_descriptionTextField;
+    NSTextField *_layoutName;
+    void *_reserved4;
+    void *_reserved5;
+    void *_reserved6;
 }
 
-@property(copy, nonatomic) LKModuleLayoutDisplayName *displayName; // @synthesize displayName=_displayName;
-@property(copy, nonatomic) LKModuleLayoutDisplayName *suggestedLayoutName; // @synthesize suggestedLayoutName=_suggestedLayoutName;
-@property(nonatomic) id <LKCreateLayoutDialogDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)controlTextDidChange:(id)arg1;
-- (void)cancel:(id)arg1;
-- (void)save:(id)arg1;
-- (void)windowDidLoad;
-- (void)awakeFromNib;
-- (long long)runModal;
-- (void)dealloc;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)beginSheetForWindow:(id)arg1 modalDelegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
+- (void)awakeFromNib;
+- (void)windowDidLoad;
+- (void)save:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)controlTextDidChange:(id)arg1;
 
 @end
 

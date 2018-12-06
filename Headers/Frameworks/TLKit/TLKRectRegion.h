@@ -6,38 +6,31 @@
 
 #import "NSObject.h"
 
-#import "NSCopying.h"
-
-@interface TLKRectRegion : NSObject <NSCopying>
+@interface TLKRectRegion : NSObject
 {
     struct TLKCRectArray *_rectArray;
     struct CGRect _bounds;
 }
 
-- (id)pointsOnEdge:(unsigned int)arg1;
-- (void)insetRectEdge:(unsigned int)arg1 byAmount:(double)arg2;
-- (void)unionRect:(struct CGRect)arg1;
-- (unsigned long long)splitAtLocation:(double)arg1;
-- (struct CGRect)appendRect:(struct CGRect)arg1 toEdge:(unsigned int)arg2;
-- (struct _NSRange)_rangeOfRectsInLocationRange:(struct _TLKRange)arg1;
-- (unsigned long long)_insertionIndexOfRectAtLocation:(double)arg1;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
-- (id)description;
-- (void)removeAllRects;
-- (void)replaceRectAtIndex:(unsigned long long)arg1 withRect:(struct CGRect)arg2;
-- (void)insertRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
-- (unsigned long long)indexOfRectAtLocation:(double)arg1;
-- (struct CGRect)rectAtIndex:(unsigned long long)arg1;
-- (unsigned long long)count;
-- (void)_invalidateBounds;
-- (void)_setBounds:(struct CGRect)arg1;
-@property(readonly) struct CGRect bounds;
-- (struct CGRect)_calculatedBoundsInRange:(struct _NSRange)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithCapacity:(unsigned long long)arg1;
 - (id)init;
+- (void)dealloc;
+@property(readonly) struct CGRect bounds;
+- (void)_setBounds:(struct CGRect)arg1;
+- (struct CGRect)_calculatedBoundsInRange:(struct _NSRange)arg1;
+- (unsigned long long)count;
+- (struct CGRect)rectAtIndex:(unsigned long long)arg1;
+- (unsigned long long)indexOfRectAtLocation:(double)arg1;
+- (void)insertRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
+- (void)replaceRectAtIndex:(unsigned long long)arg1 withRect:(struct CGRect)arg2;
+- (void)removeAllRects;
+- (id)description;
+- (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (struct _NSRange)_rangeOfRectsFromLocation:(double)arg1 toLocation:(double)arg2;
+- (struct CGRect)appendRect:(struct CGRect)arg1 toEdge:(int)arg2;
+- (unsigned long long)splitAtLocation:(double)arg1;
+- (unsigned long long)_indexOfClosestRectAtLocation:(double)arg1;
+- (void)unionRect:(struct CGRect)arg1;
 
 @end
 

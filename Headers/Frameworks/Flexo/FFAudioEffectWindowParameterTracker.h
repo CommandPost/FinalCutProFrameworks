@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     FFAudioEffectEditorWindowController *_windowController;
     struct ComponentInstanceRecord *_audioUnit;
     BOOL _isPlaying;
+    BOOL _autoKeyframingEnabled;
     BOOL _shouldRecordKeyframes;
     unsigned int _parameterID;
     BOOL _inEventListener;
@@ -24,21 +25,23 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct AUListenerBase *)globalParameterListener;
-@property(readonly, nonatomic) NSString *channelModActionName; // @synthesize channelModActionName=_channelModActionName;
-- (void)dealloc;
-- (id)initWithController:(id)arg1 channel:(id)arg2;
-- (void)_handleParameterEvent:(const struct AudioUnitEvent *)arg1 newValue:(float)arg2;
-- (void)_unitParameterEnd;
-- (void)_unitParameterBegin;
-- (void)_unitParameterBegin:(id)arg1;
-- (void)_unitParameterChanged:(float)arg1;
-- (void)notifyChannelChanged;
-- (void)_updateToChannelValue;
-- (id)channel;
-- (void)_playbackEnded;
-- (void)_playbackBegan;
-- (void)_togglePlaybackForChannel:(BOOL)arg1;
++ (id)trackerWithController:(id)arg1 channel:(id)arg2;
 - (CDStruct_1b6d18a9)_currentTime;
+- (void)_autokeyframeDefaultChangedNotification:(id)arg1;
+- (void)_togglePlaybackForChannel:(BOOL)arg1;
+- (void)_playbackBegan;
+- (void)_playbackEnded;
+- (id)channel;
+- (void)_channelChanged;
+- (void)_channelChangeNotification:(id)arg1;
+- (void)_unitParameterChanged:(float)arg1;
+- (void)_unitParameterBegin:(id)arg1;
+- (void)_unitParameterBegin;
+- (void)_unitParameterEnd;
+- (void)_handleParameterEvent:(const struct AudioUnitEvent *)arg1 newValue:(float)arg2;
+- (id)initWithController:(id)arg1 channel:(id)arg2;
+- (void)dealloc;
+@property(readonly, nonatomic) NSString *channelModActionName; // @synthesize channelModActionName=_channelModActionName;
 
 @end
 

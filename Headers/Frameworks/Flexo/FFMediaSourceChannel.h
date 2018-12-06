@@ -18,26 +18,24 @@ __attribute__((visibility("hidden")))
     FFMedia *m_media;
     NSString *m_sourceKey;
     int m_channelIndex;
-    unsigned int m_generationCount;
 }
 
-@property(nonatomic) unsigned int generationCount; // @synthesize generationCount=m_generationCount;
+- (id)initChannelWithSourceType:(id)arg1 media:(id)arg2 sourceKey:(id)arg3 channelIndex:(int)arg4;
+- (id)initAudioChannel:(id)arg1 sourceKey:(id)arg2 channelIndex:(int)arg3;
+- (id)initVideoChannel:(id)arg1 sourceKey:(id)arg2;
+- (void)dealloc;
+- (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (BOOL)isEqualSource:(id)arg1;
+- (BOOL)isSourceType:(id)arg1;
+- (unsigned int)sourceChannelRouting;
 @property(readonly, nonatomic) int channelIndex; // @synthesize channelIndex=m_channelIndex;
 @property(readonly, nonatomic) NSString *sourceKey; // @synthesize sourceKey=m_sourceKey;
 @property(readonly, nonatomic) FFMedia *media; // @synthesize media=m_media;
 @property(readonly, nonatomic) NSString *sourceType; // @synthesize sourceType=m_sourceType;
 @property(copy, nonatomic) NSString *channelName; // @synthesize channelName=m_channelName;
-- (unsigned int)sourceChannelRouting;
-- (BOOL)isSourceType:(id)arg1;
-- (BOOL)isEqualSource:(id)arg1;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (void)dealloc;
-- (id)initVideoChannel:(id)arg1 sourceKey:(id)arg2;
-- (id)initAudioChannel:(id)arg1 sourceKey:(id)arg2 channelIndex:(int)arg3;
-- (id)initChannelWithSourceType:(id)arg1 media:(id)arg2 sourceKey:(id)arg3 channelIndex:(int)arg4;
 
 @end
 

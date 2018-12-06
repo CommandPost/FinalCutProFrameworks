@@ -10,17 +10,18 @@
 
 @interface OZTimeDurationSwitchCell : LKSegmentedCell
 {
-    NSImage *_currentTimeStateImage;
-    NSImage *_durationStateImage;
+    NSImage *_currentTimeStateImages[4];
+    NSImage *_durationStateImages[4];
+    unsigned int _currentImageState;
     OZToolbarModule *_toolbarModule;
 }
 
-@property(nonatomic) OZToolbarModule *toolbarModule; // @synthesize toolbarModule=_toolbarModule;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)initializeStateImages;
+- (void)dealloc;
+- (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+@property(nonatomic) unsigned int currentImageState; // @synthesize currentImageState=_currentImageState;
+@property(nonatomic) OZToolbarModule *toolbarModule; // @synthesize toolbarModule=_toolbarModule;
 
 @end
 

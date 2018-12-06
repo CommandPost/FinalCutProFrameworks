@@ -8,21 +8,15 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class NSString, OZTemplateBrowserController;
+@class OZTemplateBrowserController;
 
 @interface OZTBTextFieldDelegate : NSObject <NSTextFieldDelegate>
 {
     OZTemplateBrowserController *_templateBrowserController;
 }
 
-- (void)controlTextDidChange:(id)arg1;
 - (void)setTBController:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)controlTextDidChange:(id)arg1;
 
 @end
 

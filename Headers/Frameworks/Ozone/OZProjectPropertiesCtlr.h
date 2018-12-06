@@ -8,12 +8,12 @@
 
 #import "NSTextDelegate.h"
 
-@class LKButton, LKComboBox, LKPopUpButton, LKSegmentedScrubber, LKSlider, LKTextField, LKTextView, NSArray, NSBox, NSString, NSView, OZColorWell;
+@class LKButton, LKComboBox, LKPopUpButton, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSBox, NSProView, NSTextView, OZColorWell;
 
 @interface OZProjectPropertiesCtlr : OZAutoPropertiesTabController <NSTextDelegate>
 {
-    // Error parsing type: ^{OZScene=^^?^^?{PCHash128=[4I]}i{OZSceneSettings=^^?iiIBIdBdii{PCColor={ColorComponents=i[5d]}{PCColorSpaceHandle=^{CGColorSpace}}}iBIIdBBdi{PCString=^{__CFString}}IIdIIIBfiBiBiiBi}{OZExportSettings=^^?IIIIIIBiiBBBIIIIIIII}{OZPublishSettings=^^?{vector<OZPublishSettings::Entry *, std::__1::allocator<OZPublishSettings::Entry *> >=^^{Entry}^^{Entry}{__compressed_pair<OZPublishSettings::Entry **, std::__1::allocator<OZPublishSettings::Entry *> >=^^{Entry}}}{OZChannelVaryingFolder=^^?^{OZFactory}^^?I{PCString=^{__CFString}}^{PCString}^{OZChannelFolder}QQ^v^{__CFString}^{__CFString}^{__CFString}^{OZChannelTimeConverter}^{vector<OZChannelBase *, std::__1::allocator<OZChannelBase *> >}II}^{OZScene}BB{map<unsigned int, double, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, double> > >={__tree<std::__1::__value_type<unsigned int, double>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, double>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, double> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, double>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, double>, std::__1::less<unsigned int>, true> >=Q}}}}{OZChannelObjectRoot=^^?^{OZFactory}^^?I{PCString=^{__CFString}}^{PCString}^{OZChannelFolder}QQ^v^{__CFString}^{__CFString}^{__CFString}^{OZChannelTimeConverter}^{vector<OZChannelBase *, std::__1::allocator<OZChannelBase *> >}II{?=qiIq}{PCTimeRange={?=qiIq}{?=qiIq}}BB^{OZObjectManipulator}^{OZTimeMarkerSet}{list<OZSimulationBehavior *, std::__1::allocator<OZSimulationBehavior *> >={__list_node_base<OZSimulationBehavior *, void *>=^{__list_node_base<OZSimulationBehavior *, void *>}^{__list_node_base<OZSimulationBehavior *, void *>}}{__compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZSimulationBehavior *, void *> > >=Q}}{PCString=^{__CFString}}}{?=qiIq}{list<OZSceneNode *, std::__1::allocator<OZSceneNode *> >={__list_node_base<OZSceneNode *, void *>=^{__list_node_base<OZSceneNode *, void *>}^{__list_node_base<OZSceneNode *, void *>}}{__compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZSceneNode *, void *> > >=Q}}^{OZSceneNode}^{OZGroup}{set<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *> >={__tree<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<OZElement *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<OZElement *> >=Q}}}{map<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *> > >={__tree<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, std::__1::less<unsigned int>, true> >=Q}}}{OZNodeMap=^I^^{OZObjectManipulator}iiI^{OZObjectManipulator}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}}{PCTimeRange={?=qiIq}{?=qiIq}}{PCTimeRange={?=qiIq}{?=qiIq}}{PCTimeRange={?=qiIq}{?=qiIq}}{OZCurveSetListSerializer=^^?{vector<OZCurveSetSerializer *, std::__1::allocator<OZCurveSetSerializer *> >=^^{OZCurveSetSerializer}^^{OZCurveSetSerializer}{__compressed_pair<OZCurveSetSerializer **, std::__1::allocator<OZCurveSetSerializer *> >=^^{OZCurveSetSerializer}}}I}^{OZRenderManager}{OZGuideSet=^^?{__tree<OZGuide, std::__1::less<OZGuide>, std::__1::allocator<OZGuide> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<OZGuide, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<OZGuide> >=Q}}}II{vector<OZObjectManipulator *, std::__1::allocator<OZObjectManipulator *> >=^^{OZObjectManipulator}^^{OZObjectManipulator}{__compressed_pair<OZObjectManipulator **, std::__1::allocator<OZObjectManipulator *> >=^^{OZObjectManipulator}}}BBBB^{OZDocument}I{PCHash128=[4I]}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}{map<PCHash128, PCMutexRef, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCMutexRef> > >={__tree<std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::__map_value_compare<PCHash128, std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::less<PCHash128>, true>, std::__1::allocator<std::__1::__value_type<PCHash128, PCMutexRef> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<PCHash128, PCMutexRef>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<PCHash128, std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::less<PCHash128>, true> >=Q}}}{PCSpinLock={os_unfair_lock_s=I}}{list<OZCPPObserver *, std::__1::allocator<OZCPPObserver *> >={__list_node_base<OZCPPObserver *, void *>=^{__list_node_base<OZCPPObserver *, void *>}^{__list_node_base<OZCPPObserver *, void *>}}{__compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZCPPObserver *, void *> > >=Q}}{set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> >={__tree<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<unsigned int, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<unsigned int> >=Q}}}BiB{atomic<bool>=AB}i{vector<OZLockingGroup *, std::__1::allocator<OZLockingGroup *> >=^^{OZLockingGroup}^^{OZLockingGroup}{__compressed_pair<OZLockingGroup **, std::__1::allocator<OZLockingGroup *> >=^^{OZLockingGroup}}}{PCRenderModel=i{PCColorSpaceHandle=^{CGColorSpace}}f{PCColorSpaceHandle=^{CGColorSpace}}}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}BB}, name: _pScene
-    NSView *_pGeneralView;
+    struct OZScene *_pScene;
+    NSProView *_pGeneralView;
     LKSegmentedScrubber *_pWidthScrubber;
     LKSegmentedScrubber *_pHeightScrubber;
     LKPopUpButton *_pPixelARPopUp;
@@ -28,83 +28,55 @@
     LKTextField *_pOverrideFCDurCheckLabel;
     LKTextField *_pStartTimeTF;
     LKSegmentedScrubber *_pStartTimeScrubber;
-    LKTextField *_pGamutLabel;
-    LKPopUpButton *_pGamutPopUp;
     OZColorWell *_pBackgroundColorWell;
     LKPopUpButton *_pRenderBackgroundPopUp;
     LKTextField *_pRenderBackgroundDescTF;
-    LKButton *_pIsDesignedFor4kCheck;
-    LKTextField *_pIsDesignedFor4kCheckLabel;
-    LKButton *_pOverrideFCPColorSpaceCheck;
-    LKTextField *_pOverrideFCPColorSpaceLabel;
     LKPopUpButton *_pSelectPresetPopUp;
-    LKPopUpButton *_pProjectionModePopUp;
     LKPopUpButton *_pSelectThemePopUp;
-    NSView *_pMotionBlurView;
+    NSProView *_pMotionBlurView;
     LKSlider *_pMotionBlurSamplesSlider;
     LKSegmentedScrubber *_pMotionBlurSamplesScrubber;
     LKSlider *_pMotionBlurDurationSlider;
     LKSegmentedScrubber *_pMotionBlurDurationScrubber;
-    NSView *_pReflectionView;
+    NSProView *_pReflectionView;
     LKSlider *_pReflectionRecursionLimitSlider;
     LKSegmentedScrubber *_pReflectionRecursionLimitScrubber;
-    NSView *_pSharperScalingView;
-    LKPopUpButton *_pSharperScalingPopUp;
-    NSView *_pDescriptionView;
-    LKTextView *_pProjectDescTF;
+    NSProView *_pDescriptionView;
+    NSTextView *_pProjectDescTF;
     NSBox *_container;
     NSArray *_frameRates;
     _Bool _isSelectingPreset;
-    long long _lastSelectedGamut;
 }
 
-- (void)abortAndWait:(BOOL)arg1;
-- (void)setUIPixelAspectRatio:(double)arg1;
-- (void)updateRenderBackgroundControls:(unsigned int)arg1;
-- (void)updatePresetPopUp;
-- (void)textDidChange:(id)arg1;
-- (void)setReflectionRecursionLimit:(id)arg1;
-- (void)setMotionBlurDuration:(id)arg1;
-- (void)setMotionBlurSamples:(id)arg1;
-- (void)setSharpScaling:(id)arg1;
-- (void)endSliderAction:(id)arg1;
-- (void)startSliderAction:(id)arg1;
-- (void)setShouldOverrideFCPColorSpace:(id)arg1;
-- (void)setIsDesignedFor4k:(id)arg1;
-- (void)setBackgroundRenderingMode:(id)arg1;
-- (void)setWorkingGamut:(id)arg1;
-- (BOOL)colorIsGrayscale:(const struct PCColor *)arg1;
-- (void)finishSetWorkingGamut:(int)arg1;
-- (void)showGamutChangeAlert:(id)arg1 workingGamut:(int)arg2;
-- (void)setBackgroundColor:(id)arg1;
-- (void)update360ProjectModeRelatedUI;
-- (void)setProjectionMode:(id)arg1;
-- (void)setStartTime:(id)arg1;
-- (void)setShouldOverrideFCDuration:(id)arg1;
-- (void)setDurationFormat:(id)arg1;
-- (void)setProjectDuration:(id)arg1;
-- (void)setFieldDominance:(id)arg1;
-- (void)setPixelARFromTF:(id)arg1;
-- (void)setPixelARFromPopUp:(id)arg1;
-- (void)setProjectHeight:(id)arg1;
-- (void)setProjectWidth:(id)arg1;
-- (void)selectTheme:(id)arg1;
-- (void)selectPreset:(id)arg1;
-- (void)startSegmentedScrubberAction:(id)arg1;
-- (void)update;
-- (void)makeScrubberRevealed:(id)arg1;
-- (id)addFauxBrickForView:(id)arg1 label:(id)arg2 context:(id)arg3;
-- (void)buildPropertiesUI:(id)arg1;
-- (void)changeGeneralViewHeight:(double)arg1;
-- (void)awakeFromNib;
-- (BOOL)buildUIWithSceneNodes:(list_e89ce44a *)arg1 context:(id)arg2;
 - (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (BOOL)buildUIWithSceneNodes:(list_699e9227 *)arg1 context:(id)arg2;
+- (void)buildPropertiesUI:(id)arg1;
+- (id)addFauxBrickForView:(id)arg1 label:(id)arg2 context:(id)arg3;
+- (void)makeScrubberRevealed:(id)arg1;
+- (void)update;
+- (void)startSegmentedScrubberAction:(id)arg1;
+- (void)selectPreset:(id)arg1;
+- (void)selectTheme:(id)arg1;
+- (void)setProjectWidth:(id)arg1;
+- (void)setProjectHeight:(id)arg1;
+- (void)setPixelARFromPopUp:(id)arg1;
+- (void)setPixelARFromTF:(id)arg1;
+- (void)setFieldDominance:(id)arg1;
+- (void)setProjectDuration:(id)arg1;
+- (void)setDurationFormat:(id)arg1;
+- (void)setShouldOverrideFCDuration:(id)arg1;
+- (void)setStartTime:(id)arg1;
+- (void)setBackgroundColor:(id)arg1;
+- (void)setBackgroundRenderingMode:(id)arg1;
+- (void)startSliderAction:(id)arg1;
+- (void)setMotionBlurSamples:(id)arg1;
+- (void)setMotionBlurDuration:(id)arg1;
+- (void)setReflectionRecursionLimit:(id)arg1;
+- (void)textDidChange:(id)arg1;
+- (void)updatePresetPopUp;
+- (void)updateRenderBackgroundControls:(unsigned int)arg1;
+- (void)setUIPixelAspectRatio:(double)arg1;
+- (void)abortAndWait:(BOOL)arg1;
 
 @end
 

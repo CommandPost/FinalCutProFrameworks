@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
     double _idleStartTime;
 }
 
-@property(nonatomic) double idleStartTime; // @synthesize idleStartTime=_idleStartTime;
-- (BOOL)isCompatibleWithCodec:(unsigned int)arg1 dimensions:(CDStruct_1ef3fb1f)arg2 pixelFormat:(unsigned int)arg3 quality:(int)arg4;
+- (id)init:(void *)arg1 codec:(unsigned int)arg2 dimensions:(CDStruct_79c71658)arg3 pixelFormat:(unsigned int)arg4 quality:(int)arg5;
 - (id)description;
-- (id)init:(void *)arg1 codec:(unsigned int)arg2 dimensions:(CDStruct_1ef3fb1f)arg3 pixelFormat:(unsigned int)arg4 quality:(int)arg5;
+- (BOOL)isCompatibleWithCodec:(unsigned int)arg1 dimensions:(CDStruct_79c71658)arg2 pixelFormat:(unsigned int)arg3 quality:(int)arg4;
+@property(nonatomic) double idleStartTime; // @synthesize idleStartTime=_idleStartTime;
 
 @end
 

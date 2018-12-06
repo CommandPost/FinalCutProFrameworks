@@ -4,10 +4,8 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFMarkerEditorViewModule;
-
 @protocol FFMarkerEditorDelegate
-- (void)shouldDeleteMarkerDisplayedInEditor:(FFMarkerEditorViewModule *)arg1;
-- (void)markerEditorShouldClose:(FFMarkerEditorViewModule *)arg1;
+- (void)markerEditorShouldClose:(id)arg1;
+- (void)shouldDeleteMarkerDisplayedInEditor:(id)arg1;
 @end
 

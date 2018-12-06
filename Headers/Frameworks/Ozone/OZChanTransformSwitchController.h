@@ -13,10 +13,11 @@
     LKSegmentedControl *_pSwitch;
 }
 
-- (void)setChannelValue:(id)arg1;
-- (void)update;
-- (BOOL)isEnabled;
 - (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
+- (void)dealloc;
+- (BOOL)isEnabled;
+- (void)update;
+- (void)setChannelValue:(id)arg1;
 
 @end
 

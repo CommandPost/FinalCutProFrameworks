@@ -27,24 +27,24 @@
     OZInspectorModule *_pInspectorController;
 }
 
-- (BOOL)hasSelection;
-- (BOOL)selectedObjectHasPlayablePreview;
-- (void)togglePreviewPlayback:(id)arg1;
-- (void)toggleInspectorLock:(id)arg1;
-- (void)apply:(id)arg1;
-- (void)togglePlay:(id)arg1;
-- (void)updateText:(BOOL)arg1;
-- (void)updatePreview:(CDStruct_1b6d18a9)arg1;
-- (void)updateInspectorLock;
-- (void)setInspectorController:(id)arg1;
-- (void)setPreviewNode:(struct OZRenderNode *)arg1 multipleSelection:(BOOL)arg2;
-- (id)getDescriptionLine5:(struct OZFootage *)arg1;
-- (id)getDescriptionLine4:(struct OZFootage *)arg1;
-- (id)getDescriptionLine3:(struct OZFootage *)arg1;
-- (id)getDescriptionLine2:(struct OZFootage *)arg1;
-- (id)getDescriptionLine1:(struct OZFootage *)arg1;
-- (void)removeApplyButton;
 - (void)viewDidLoad;
+- (void)removeApplyButton;
+- (id)getDescriptionLine1:(struct OZFootage *)arg1;
+- (id)getDescriptionLine2:(struct OZFootage *)arg1;
+- (id)getDescriptionLine3:(struct OZFootage *)arg1;
+- (id)getDescriptionLine4:(struct OZFootage *)arg1;
+- (id)getDescriptionLine5:(struct OZFootage *)arg1;
+- (void)setPreviewNode:(struct OZRenderNode *)arg1 multipleSelection:(BOOL)arg2;
+- (void)setInspectorController:(id)arg1;
+- (void)updateInspectorLock;
+- (void)updatePreview:(CDStruct_1b6d18a9)arg1;
+- (void)updateText:(BOOL)arg1;
+- (void)togglePlay:(id)arg1;
+- (void)apply:(id)arg1;
+- (void)toggleInspectorLock:(id)arg1;
+- (void)togglePreviewPlayback:(id)arg1;
+- (BOOL)selectedObjectHasPlayablePreview;
+- (BOOL)hasSelection;
 
 @end
 

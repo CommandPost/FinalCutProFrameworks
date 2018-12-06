@@ -6,14 +6,14 @@
 
 #import <TextFramework/TXParagraphOverlay.h>
 
-@class LKCursor, NSMutableDictionary, NSTimer;
+@class NSMutableDictionary, NSProCursor, NSTimer;
 
 @interface TXRulersOverlay : TXParagraphOverlay
 {
-    LKCursor *_rulerCursor;
-    LKCursor *_tabCursor;
-    LKCursor *_smokeCursor;
-    struct vector<TXTabStop *, std::__1::allocator<TXTabStop *>> _tabStops;
+    NSProCursor *_rulerCursor;
+    NSProCursor *_tabCursor;
+    NSProCursor *_smokeCursor;
+    struct vector<TXTabStop*, std::allocator<TXTabStop*>> _tabStops;
     double _selectedTabStop;
     PCVector2_79efa81a _movedTabStopPosition;
     double _startX;
@@ -33,52 +33,42 @@
     PCVector2_79efa81a rulerCorners[4];
     PCVector2_79efa81a pbcorners[4];
     NSMutableDictionary *_textAttribs;
-    struct vector<PGDrawableTexture *, std::__1::allocator<PGDrawableTexture *>> _numberTextures;
+    struct vector<PGDrawableTexture*, std::allocator<PGDrawableTexture*>> _numberTextures;
     double scaleFactor;
-    float _lastBackingScale;
 }
 
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)setText:(struct TXTextLayout *)arg1;
+- (void)createNumberTexture:(unsigned int)arg1;
+- (void)dealloc;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)poofAtViewLocation:(const PCVector2_79a470e1 *)arg1;
+- (void)startDragTimer;
+- (void)stopDragTimer;
+- (_Bool)getOverlayIsOn;
+- (void)drawTab:(struct GL *)arg1 ofType:(unsigned int)arg2 atPos:(PCVector2_79efa81a *)arg3 transform:(PCMatrix44Tmpl_e98c85ee *)arg4 deletedTab:(_Bool)arg5;
+- (double)getDivisorForMarkLevel:(double)arg1;
+- (void)drawRulerNumbers:(struct GL *)arg1 state:(const struct OZRenderState *)arg2 objTransform:(PCMatrix44Tmpl_e98c85ee *)arg3 viewTransform:(PCMatrix44Tmpl_e98c85ee *)arg4;
+- (void)drawRulerMarks:(struct GL *)arg1 state:(const struct OZRenderState *)arg2 objTransform:(PCMatrix44Tmpl_e98c85ee *)arg3 viewTransform:(PCMatrix44Tmpl_e98c85ee *)arg4;
+- (void)drawRuler:(struct GL *)arg1;
+- (void)draw;
+- (id)getCursorWithEvent:(id)arg1;
+- (void)addToUndo;
+- (void)endUndo;
+- (id)menuForEvent:(id)arg1;
+- (void)menuChangeSelectedToLeft:(id)arg1;
+- (void)menuChangeSelectedToCenter:(id)arg1;
+- (void)menuChangeSelectedToRight:(id)arg1;
+- (void)menuChangeSelectedToDecimal:(id)arg1;
+- (void)menuDeleteSelectedTab:(id)arg1;
+- (void)menuCreateLeftTab:(id)arg1;
+- (void)menuCreateCenterTab:(id)arg1;
+- (void)menuCreateRightTab:(id)arg1;
+- (void)menuCreateDecimalTab:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)menuCreateDecimalTab:(id)arg1;
-- (void)menuCreateRightTab:(id)arg1;
-- (void)menuCreateCenterTab:(id)arg1;
-- (void)menuCreateLeftTab:(id)arg1;
-- (void)menuDeleteSelectedTab:(id)arg1;
-- (void)menuChangeSelectedToDecimal:(id)arg1;
-- (void)menuChangeSelectedToRight:(id)arg1;
-- (void)menuChangeSelectedToCenter:(id)arg1;
-- (void)menuChangeSelectedToLeft:(id)arg1;
-- (id)menuForEvent:(id)arg1;
-- (void)endUndo;
-- (void)addToUndo;
-- (id)getCursorWithEvent:(id)arg1;
-- (void)draw;
-- (void)drawRulerBackground:(struct GL *)arg1;
-- (void)transformCorners:(PCVector2_79efa81a *)arg1 transform:(PCMatrix44Tmpl_93ed1289 *)arg2;
-- (void)_computeMarkTop:(PCVector2_79efa81a *)arg1 markBottom:(PCVector2_79efa81a *)arg2 forMarkPos:(double)arg3 text:(struct TXTextLayout *)arg4 markHeight:(double)arg5;
-- (void)drawRulerNumbersAndMarks:(struct GL *)arg1 transform:(PCMatrix44Tmpl_93ed1289 *)arg2;
-- (PCVector2_79efa81a)_clipPercentageForCorners:(PCVector2_79efa81a *)arg1 clipEdge:(PCVector2_79efa81a *)arg2;
-- (void)_roundVector:(PCVector2_79efa81a *)arg1 offset:(double)arg2;
-- (void)_setCorners:(PCVector2_79efa81a *)arg1 forMarkerPosition:(double)arg2 textureSize:(PCVector2_79efa81a)arg3 text:(struct TXTextLayout *)arg4;
-- (void)_setupTexturesForIncrements:(int)arg1 rulerLength:(double)arg2;
-- (int)_getNumSubmarksForIncrement:(double)arg1 transform:(PCMatrix44Tmpl_93ed1289 *)arg2 text:(struct TXTextLayout *)arg3;
-- (PCVector2_79efa81a)_getReferencePointForScreenSpaceMeasurement:(struct TXTextLayout *)arg1 transform:(PCMatrix44Tmpl_93ed1289 *)arg2;
-- (float)backingScale;
-- (int)_getIncrementsForTransform:(PCMatrix44Tmpl_93ed1289 *)arg1 text:(struct TXTextLayout *)arg2;
-- (void)drawTab:(struct GL *)arg1 ofType:(unsigned int)arg2 atPos:(PCVector2_79efa81a *)arg3 deletedTab:(_Bool)arg4 transform:(PCMatrix44Tmpl_93ed1289 *)arg5;
-- (_Bool)getOverlayIsOn;
-- (struct CGSize)_getMaxTextSize;
-- (void)_drawTexture:(id)arg1 at:(PCVector2_79efa81a *)arg2 clipAt:(PCVector2_79efa81a)arg3 gl:(struct GL *)arg4;
-- (void)createNumberTexture:(unsigned int)arg1;
-- (void)stopDragTimer;
-- (void)startDragTimer;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)dealloc;
-- (void)setText:(struct TXTextLayout *)arg1;
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

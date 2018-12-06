@@ -6,31 +6,20 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSImage, NSNotificationCenter, NSString;
-
 @protocol MIORADPlugin <NSObject>
-- (NSArray *)invalidVolumesWithErrors:(id *)arg1;
-- (NSArray *)additionalVolumes;
-- (NSArray *)clipsForVolume:(id)arg1;
-- (NSImage *)iconForVolumeWithPath:(NSString *)arg1;
-- (id)volumeWithPath:(NSString *)arg1 error:(id *)arg2;
-- (BOOL)pathIsValidVolume:(NSString *)arg1;
-- (BOOL)shutdown;
-- (BOOL)deactivate;
-- (BOOL)activate;
-- (void)setNotificationCenter:(NSNotificationCenter *)arg1;
+- (id)uuid;
+- (id)name;
+- (id)version;
 - (BOOL)initialize;
-- (NSString *)version;
-- (NSString *)formatName;
-- (NSString *)name;
-- (NSString *)uuid;
-
-@optional
-- (void)flushCacheFile;
-- (void)mountiOSDevicesSynchronously;
-- (void)useAVFoundation;
-- (NSArray *)extendedMetadataDefinitions;
-- (BOOL)doesPath:(NSString *)arg1 containSomeOfClipsWithUIDs:(NSArray *)arg2;
-- (NSArray *)targetFormats;
+- (void)setNotificationCenter:(id)arg1;
+- (BOOL)activate;
+- (BOOL)deactivate;
+- (BOOL)shutdown;
+- (BOOL)pathIsValidVolume:(id)arg1;
+- (id)volumeWithPath:(id)arg1 error:(id *)arg2;
+- (id)iconForVolumeWithPath:(id)arg1;
+- (id)clipsForVolume:(id)arg1;
+- (id)additionalVolumes;
+- (id)invalidVolumesWithErrors:(id *)arg1;
 @end
 

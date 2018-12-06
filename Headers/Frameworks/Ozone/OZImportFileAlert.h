@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKPanel, NSArray, NSString;
+@class LKPanel, NSArray;
 
 @interface OZImportFileAlert : NSObject <NSWindowDelegate>
 {
@@ -16,19 +16,13 @@
     NSArray *_pFilenames;
 }
 
-- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
-- (int)numberOfRowsInTableView:(id)arg1;
-- (void)okNotify:(id)arg1;
-- (void)openWithFilenames:(id)arg1;
-- (void)windowWillClose:(id)arg1;
-- (void)awakeFromNib;
 - (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)awakeFromNib;
+- (void)windowWillClose:(id)arg1;
+- (void)openWithFilenames:(id)arg1;
+- (void)okNotify:(id)arg1;
+- (int)numberOfRowsInTableView:(id)arg1;
+- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
 
 @end
 

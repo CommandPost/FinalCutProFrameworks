@@ -6,7 +6,7 @@
 
 #import <ProInspector/OZViewControllerGroup.h>
 
-@class LKScrubbableNumberFormatter, LKTextField, OZMixedSlider, PISegmentedScrubber;
+@class LKTextField, OZInspNumberFormatter, OZMixedSlider, PISegmentedScrubber;
 
 @interface OZChan3DPropController : OZViewControllerGroup
 {
@@ -17,34 +17,34 @@
     double _aRatios[2];
     BOOL _isSliding;
     BOOL _isMultiplying;
-    LKScrubbableNumberFormatter *_pEqualFormatter;
-    LKScrubbableNumberFormatter *_pUnequalFormatter;
-    struct list<PCVector3<double>, std::__1::allocator<PCVector3<double>>> *_pMouseDownValues;
+    OZInspNumberFormatter *_pEqualFormatter;
+    OZInspNumberFormatter *_pUnequalFormatter;
+    struct list<PCVector3<double>, std::allocator<PCVector3<double>>> *_pMouseDownValues;
     int _decimalDigits;
 }
 
-- (void)setChanValues:(struct OZChannelBase *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
-- (void)getChanValues:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
-- (struct OZChannelDouble *)getChannelZ:(struct OZChannelBase *)arg1;
-- (struct OZChannelDouble *)getChannelY:(struct OZChannelBase *)arg1;
-- (struct OZChannelDouble *)getChannelX:(struct OZChannelBase *)arg1;
-- (void)setChannelValue:(id)arg1;
-- (BOOL)hasControls;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (void)notify:(unsigned int)arg1;
-- (BOOL)areAllChannelsEqual;
-- (void)endSegmentedScrubberAction:(id)arg1;
-- (void)startSegmentedScrubberAction:(id)arg1;
-- (void)endSliderAction:(id)arg1;
-- (void)startSliderAction:(id)arg1;
-- (void)calcRatios;
-- (void)dealloc;
-- (id)connectKeyViewsRec:(id)arg1;
-- (id)lastKeyView;
-- (id)firstKeyView;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)firstKeyView;
+- (id)lastKeyView;
+- (id)connectKeyViewsRec:(id)arg1;
+- (void)dealloc;
+- (void)calcRatios;
+- (void)startSliderAction:(id)arg1;
+- (void)endSliderAction:(id)arg1;
+- (void)startSegmentedScrubberAction:(id)arg1;
+- (void)endSegmentedScrubberAction:(id)arg1;
+- (BOOL)areAllChannelsEqual;
+- (void)notify:(unsigned int)arg1;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (BOOL)hasControls;
+- (void)setChannelValue:(id)arg1;
+- (struct OZChannelDouble *)getChannelX:(struct OZChannelBase *)arg1;
+- (struct OZChannelDouble *)getChannelY:(struct OZChannelBase *)arg1;
+- (struct OZChannelDouble *)getChannelZ:(struct OZChannelBase *)arg1;
+- (void)getChanValues:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
+- (void)setChanValues:(struct OZChannelBase *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
 
 @end
 

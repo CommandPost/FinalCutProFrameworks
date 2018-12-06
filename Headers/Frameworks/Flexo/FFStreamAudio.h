@@ -6,8 +6,6 @@
 
 #import <Flexo/FFStream.h>
 
-@class FFStreamAudioRenderContext;
-
 @interface FFStreamAudio : FFStream
 {
     struct AudioStreamBasicDescription _convertedFormat;
@@ -15,26 +13,25 @@
     struct FFAudioGraph *_graph;
     struct FFAudioNode *_pullNode;
     unsigned long long _pullElem;
-    FFStreamAudioRenderContext *_renderContext;
-    CDStruct_1b6d18a9 _lastMaxRenderTime;
+    struct FFAudioGraphRenderSession *_renderSession;
+    long long _lastRenderTime;
 }
 
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
-- (unsigned long long)pullElem;
-- (struct FFAudioNode *)pullNode;
-- (struct FFAudioGraph *)graph;
-- (unsigned int)maximumBufferSize;
-- (BOOL)setMaximumBufferSize:(unsigned int)arg1;
-- (unsigned int)render:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned int)arg3;
-- (unsigned int)render:(struct AudioBufferList *)arg1 withFormat:(const struct AudioStreamBasicDescription *)arg2 forTime:(CDStruct_1b6d18a9)arg3;
-- (unsigned int)render:(struct AudioBufferList *)arg1 withFormat:(const struct AudioStreamBasicDescription *)arg2 forTime:(CDStruct_1b6d18a9)arg3 andFrames:(unsigned int)arg4 channels:(unsigned int)arg5;
-- (void)preRenderEnd;
-- (void)preRenderBegin:(CDStruct_1b6d18a9)arg1 sync:(id)arg2;
-- (struct AudioStreamBasicDescription)streamFormatInfo;
-- (id)audioStreamOptions;
-- (void)dealloc;
 - (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3;
+- (void)dealloc;
+- (id)audioStreamOptions;
+- (struct AudioStreamBasicDescription)streamFormatInfo;
+- (unsigned int)render:(struct AudioBufferList *)arg1 withFormat:(const struct AudioStreamBasicDescription *)arg2 forTime:(CDStruct_1b6d18a9)arg3 andFrames:(unsigned int)arg4 channels:(unsigned int)arg5;
+- (unsigned int)render:(struct AudioBufferList *)arg1 withFormat:(const struct AudioStreamBasicDescription *)arg2 forTime:(CDStruct_1b6d18a9)arg3;
+- (unsigned int)render:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned int)arg3;
+- (BOOL)setMaximumBufferSize:(unsigned int)arg1;
+- (unsigned int)maximumBufferSize;
+- (struct FFAudioGraph *)graph;
+- (struct FFAudioNode *)pullNode;
+- (unsigned long long)pullElem;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
+- (id)samplesAsFloatsAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 channelBitmap:(unsigned int)arg3;
 
 @end
 

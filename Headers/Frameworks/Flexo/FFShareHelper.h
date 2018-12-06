@@ -8,33 +8,37 @@
 
 #import "NSUserInterfaceValidations.h"
 
+__attribute__((visibility("hidden")))
 @interface FFShareHelper : NSObject <NSUserInterfaceValidations>
 {
     id <NSObject><FFSharableContent> _owner;
 }
 
-+ (id)disabledAssignedAVRolesForSequence:(id)arg1 includeAudio:(BOOL)arg2;
-@property(nonatomic) id <NSObject><FFSharableContent> owner; // @synthesize owner=_owner;
-- (id)helperAppPathWithDestination:(id)arg1;
-- (unsigned long long)numberOfProjectsInShareSelection:(id)arg1;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)_dummyShareAction:(id)arg1;
-- (id)shareActions;
-- (void)openInCompressorAsITMSPackage:(BOOL)arg1;
-- (void)openITMSPackageInCompressor:(id)arg1;
-- (void)openInCompressor:(id)arg1;
-- (void)shareToDefaultDestination:(id)arg1;
-- (void)shareToDestination:(id)arg1;
-- (void)_shareToDestination:(id)arg1 isDefault:(BOOL)arg2;
-- (BOOL)_shouldExcludeDisabledRolesWithRangeAndObject:(id)arg1;
-- (id)_shouldExcludeDisabledRolesInShare:(id)arg1;
-- (void)_exportUsingSelector:(SEL)arg1 sender:(id)arg2;
-- (void)missingMediaAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)warnForMissingMedia:(id)arg1 withSender:(id)arg2 andSelector:(SEL)arg3;
-- (void)warnForProxyMedia:(BOOL)arg1 withSelection:(id)arg2 andSender:(id)arg3 andSelector:(SEL)arg4;
-- (void)exportUsingSelector:(SEL)arg1 sender:(id)arg2;
-- (void)dealloc;
 - (id)initWithOwner:(id)arg1;
+- (void)dealloc;
+- (void)exportUsingSelector:(SEL)arg1 sender:(id)arg2;
+- (void)missingMediaAlertDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)_exportUsingSelector:(SEL)arg1 sender:(id)arg2;
+- (void)exportMediaBrowser:(id)arg1;
+- (void)exportiTunes:(id)arg1;
+- (void)burnDVD:(id)arg1;
+- (void)burnBluray:(id)arg1;
+- (void)publishMobileMe:(id)arg1;
+- (void)publishPodcast:(id)arg1;
+- (void)sendEmail:(id)arg1;
+- (void)publishYouTube:(id)arg1;
+- (void)publishFacebook:(id)arg1;
+- (void)publishVimeo:(id)arg1;
+- (void)publishCNNiReport:(id)arg1;
+- (void)exportMovie:(id)arg1;
+- (void)exportAudio:(id)arg1;
+- (void)exportStillFrame:(id)arg1;
+- (void)exportImageSequence:(id)arg1;
+- (void)exportHTTPLiveStreaming:(id)arg1;
+- (void)openInCompressor:(id)arg1;
+- (void)exportUsingCompressorSetting:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+@property(nonatomic) id <NSObject><FFSharableContent> owner; // @synthesize owner=_owner;
 
 @end
 

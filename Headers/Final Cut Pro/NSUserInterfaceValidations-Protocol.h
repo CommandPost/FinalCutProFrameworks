@@ -5,6 +5,6 @@
 //
 
 @protocol NSUserInterfaceValidations
-- (BOOL)validateUserInterfaceItem:(id <NSValidatedUserInterfaceItem>)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
 @end
 

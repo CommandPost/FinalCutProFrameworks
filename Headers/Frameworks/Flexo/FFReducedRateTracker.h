@@ -14,25 +14,21 @@ __attribute__((visibility("hidden")))
     int _baseFrameRateReductionForDest;
     _Bool _enableAdaptiveFrameRate;
     CDStruct_1b6d18a9 _minimumInterval;
-    float _responsiveness;
     CDStruct_1b6d18a9 _lastPlayedFrame;
     CDStruct_1b6d18a9 _lastReceivedTime;
     float _lastRate;
-    _Bool _pow2Only;
-    int _maxReduction;
-    float _currentRateReduction;
+    int _currentRateReduction;
     NSMutableArray *_outstandingRequests;
 }
 
-- (int)currentRateReduction;
-- (void)recordSkippedFrame:(CDStruct_1b6d18a9)arg1 outOfSequence:(BOOL)arg2;
-- (void)recordSentFrame:(CDStruct_1b6d18a9)arg1;
-- (void)_removeTimeFromHistory:(CDStruct_1b6d18a9)arg1;
-- (id)copyTimeIfFound:(CDStruct_1b6d18a9)arg1;
-- (void)setLastHealthMetric:(float)arg1 diskHealth:(float)arg2;
-- (_Bool)shouldSkipFrame:(CDStruct_1b6d18a9)arg1 playRate:(float)arg2 targetFrameDuration:(CDStruct_1b6d18a9)arg3;
+- (id)initWithBaseReduction:(int)arg1 enableAdaptive:(_Bool)arg2 minimumUpdateInterval:(CDStruct_1b6d18a9)arg3;
 - (void)dealloc;
-- (id)initWithBaseReduction:(int)arg1 enableAdaptive:(_Bool)arg2 minimumUpdateInterval:(CDStruct_1b6d18a9)arg3 responsiveness:(float)arg4 maxReduction:(int)arg5 pow2ReductionsOnly:(_Bool)arg6;
+- (_Bool)shouldSkipFrame:(CDStruct_1b6d18a9)arg1 playRate:(float)arg2 targetFrameDuration:(CDStruct_1b6d18a9)arg3;
+- (void)setLastHealthMetric:(float)arg1;
+- (_Bool)wasExpectedFrame:(CDStruct_1b6d18a9)arg1;
+- (void)_removeTimeFromHistory:(CDStruct_1b6d18a9)arg1;
+- (void)recordSentFrame:(CDStruct_1b6d18a9)arg1;
+- (void)recordSkippedFrame:(CDStruct_1b6d18a9)arg1;
 
 @end
 

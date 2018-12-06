@@ -9,32 +9,27 @@
 #import "FFSourceVideoInvertAlphaProtocol.h"
 #import "FFSourceVideoOptional.h"
 #import "FFSourceVideoOverrideAlphaProtocol.h"
-#import "FFSourceVideoOverrideCameraProjectionMode.h"
 #import "FFSourceVideoOverrideColorspace.h"
 
 __attribute__((visibility("hidden")))
-@interface FFSourceVideoCG : FFSourceVideo <FFSourceVideoOverrideAlphaProtocol, FFSourceVideoInvertAlphaProtocol, FFSourceVideoOverrideColorspace, FFSourceVideoOverrideCameraProjectionMode, FFSourceVideoOptional>
+@interface FFSourceVideoCG : FFSourceVideo <FFSourceVideoOverrideAlphaProtocol, FFSourceVideoInvertAlphaProtocol, FFSourceVideoOverrideColorspace, FFSourceVideoOptional>
 {
 }
 
-+ (Class)streamClass;
 + (id)type;
-- (id)colorModel;
-- (BOOL)hasAlpha;
-- (int)depth;
-- (void)getTaggedProjection:(int *)arg1 stereo:(int *)arg2 recognizedProjection:(_Bool *)arg3 recognizedStereo:(_Bool *)arg4;
-- (int)getNativeCameraMode;
-- (BOOL)isOverrideColorSpaceSupported:(struct CGColorSpace *)arg1;
-- (struct CGColorSpace *)getNativeColorSpace;
-- (void)setInvertAlpha:(_Bool)arg1;
-- (void)setOverrideAlphaValue:(int)arg1;
-- (id)supportedOverrideAlphaModes;
-- (int)getNativeAlphaType;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (BOOL)nativelyFloat;
-- (id)nativeVideoProps;
-- (id)renderFormat:(id)arg1;
++ (Class)streamClass;
 - (CDStruct_e83c9415)timeRange;
+- (id)nativeVideoProps;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (int)getNativeAlphaType;
+- (id)supportedOverrideAlphaModes;
+- (void)setOverrideAlphaValue:(int)arg1;
+- (void)setInvertAlpha:(_Bool)arg1;
+- (struct CGColorSpace *)getNativeColorSpace;
+- (BOOL)isOverrideColorSpaceSupported:(struct CGColorSpace *)arg1;
+- (int)depth;
+- (BOOL)hasAlpha;
+- (id)colorModel;
 
 @end
 

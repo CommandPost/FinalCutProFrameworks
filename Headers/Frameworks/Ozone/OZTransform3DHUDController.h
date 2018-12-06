@@ -10,7 +10,7 @@
 
 @interface OZTransform3DHUDController : OZHUDController
 {
-    list_87f2377f *_pTNodes;
+    list_3d2807ac *_pTNodes;
     OZZTranslate3DHUDButton *_zTransButton;
     OZXYTranslate3DHUDButton *_xyTransButton;
     OZXZTranslate3DHUDButton *_xzTransButton;
@@ -24,19 +24,19 @@
     LKTextField *_instr2Text;
 }
 
-- (void)transformOSCFlagsChanged:(id)arg1;
-- (int)getAxes;
-- (void)changeAxes:(id)arg1;
-- (void)dealloc;
-- (list_87f2377f *)nodeList;
-- (void)notify:(unsigned int)arg1;
-- (BOOL)loadView;
-- (void)updateEnableState;
-- (BOOL)isScaleHiddenOrDisabled;
-- (BOOL)isRotateHiddenOrDisabled;
-- (BOOL)isTranslateHiddenOrDisabled;
+- (id)initWithObjectList:(list_34700237 *)arg1;
 - (BOOL)isTransformationHiddenOrDisabled;
-- (id)initWithObjectList:(list_93048c9c *)arg1;
+- (BOOL)isTranslateHiddenOrDisabled;
+- (BOOL)isRotateHiddenOrDisabled;
+- (BOOL)isScaleHiddenOrDisabled;
+- (void)updateEnableState;
+- (BOOL)loadView;
+- (void)notify:(unsigned int)arg1;
+- (list_3d2807ac *)nodeList;
+- (void)dealloc;
+- (void)changeAxes:(id)arg1;
+- (int)getAxes;
+- (void)transformOSCFlagsChanged:(id)arg1;
 
 @end
 

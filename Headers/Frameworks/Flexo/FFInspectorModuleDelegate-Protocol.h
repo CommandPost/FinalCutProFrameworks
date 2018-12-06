@@ -4,19 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFContext, FFInspectorModule, FFSettingsModule, NSArray;
-
 @protocol FFInspectorModuleDelegate
-- (void)openSettingsWithModule:(FFSettingsModule *)arg1;
 - (id)selectionOwner;
+- (void)openSettingsWithModule:(id)arg1;
 
 @optional
-- (void)endSuspendSelectionChangesForInspectorModule:(FFInspectorModule *)arg1;
-- (void)beginSuspendSelectionChangesForInspectorModule:(FFInspectorModule *)arg1;
-- (void)inspectorModule:(FFInspectorModule *)arg1 selectObjects:(NSArray *)arg2;
-- (BOOL)inspectorModule:(FFInspectorModule *)arg1 isSkimmingSkimmable:(struct NSObject *)arg2 owner:(id)arg3;
-- (void)inspectorModule:(FFInspectorModule *)arg1 stopSkimmingForOwner:(id)arg2;
-- (BOOL)inspectorModule:(FFInspectorModule *)arg1 startSkimmingWithSkimmable:(struct NSObject *)arg2 context:(FFContext *)arg3 effectCount:(long long)arg4 allowPlayback:(BOOL)arg5 owner:(id)arg6;
-- (BOOL)inspectorModule:(FFInspectorModule *)arg1 canBeginSkimmingForOwner:(id)arg2;
+- (BOOL)canBeginSkimming;
+- (BOOL)startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5;
+- (void)stopSkimmingForOwner:(id)arg1;
+- (BOOL)isSkimmingSkimmable:(struct NSObject *)arg1 owner:(id)arg2;
 @end
 

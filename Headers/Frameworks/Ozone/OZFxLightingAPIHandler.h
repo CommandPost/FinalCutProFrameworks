@@ -7,30 +7,23 @@
 #import "NSObject.h"
 
 #import "FxLightingAPI.h"
-#import "FxLightingAPI_v2.h"
-#import "PROAPIObject.h"
 
-@class NSString;
-
-@interface OZFxLightingAPIHandler : NSObject <PROAPIObject, FxLightingAPI, FxLightingAPI_v2>
+@interface OZFxLightingAPIHandler : NSObject <FxLightingAPI>
 {
     struct OZFxPlugSharedBase *_plugin;
+    BOOL _lightAccessValid;
+    struct OZRenderParams _renderParams;
+    struct LiLightSet *_lights;
 }
 
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (void)lightInfo:(struct FxLightInfo *)arg1 forLight:(unsigned long long)arg2 atFxTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
-- (unsigned long long)numberOfLightsAtFxTime:(CDUnion_2516e51e)arg1;
-- (void)lightInfo:(struct FxLightInfo *)arg1 forLight:(unsigned long long)arg2 atTime:(double)arg3 error:(id *)arg4;
-- (unsigned long long)numberOfLightsAtTime:(double)arg1;
-- (void)endLightAccess;
-- (void)beginLightAccess:(const struct OZRenderState *)arg1;
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)beginLightAccess:(struct OZRenderParams)arg1;
+- (void)endLightAccess;
+- (unsigned long long)numberOfLightsAtTime:(double)arg1;
+- (unsigned long long)lightModelToFxLightType:(struct LiLight)arg1;
+- (void)lightInfo:(struct FxLightInfo *)arg1 forLight:(unsigned long long)arg2 atTime:(double)arg3 error:(id *)arg4;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 
 @end
 

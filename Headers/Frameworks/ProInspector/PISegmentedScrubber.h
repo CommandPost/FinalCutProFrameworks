@@ -11,9 +11,8 @@
 }
 
 + (void)initialize;
-- (BOOL)isAutokeyTintEnabled;
 - (void)setIsAutokeyTintEnabled:(BOOL)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)isAutokeyTintEnabled;
 
 @end
 

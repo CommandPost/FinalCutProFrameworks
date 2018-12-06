@@ -17,13 +17,13 @@ __attribute__((visibility("hidden")))
     NSButton *_okButton;
 }
 
-- (void)awakeFromNib;
-- (void)dealloc;
-- (void)optionsChanged:(id)arg1;
-- (void)cancel:(id)arg1;
-- (void)OK:(id)arg1;
-- (void)showOptimizeSheetForClips:(id)arg1 modalForWindow:(id)arg2;
 - (void)didEndSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)showOptimizeSheetForClips:(id)arg1 modalForWindow:(id)arg2;
+- (void)OK:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)optionsChanged:(id)arg1;
+- (void)dealloc;
+- (void)awakeFromNib;
 
 @end
 

@@ -10,10 +10,9 @@
 {
 }
 
-+ (Class)_verticalScrollerClass;
-+ (Class)_horizontalScrollerClass;
 + (Class)scrollerClass;
-- (void)scrollWheel:(id)arg1;
++ (Class)_horizontalScrollerClass;
++ (Class)_verticalScrollerClass;
 - (void)setAutohidesScrollers:(BOOL)arg1;
 
 @end

@@ -6,14 +6,10 @@
 
 #import "LKViewModule.h"
 
-#import "NSControlTextEditingDelegate.h"
+@class FFAnchoredTimeMarker, LKButton, LKTextField;
 
-@class FFAnchoredTimeMarker, LKButton, LKSegmentedCell, LKSegmentedControl, LKTextField, NSString;
-
-@interface FFMarkerEditorViewModule : LKViewModule <NSControlTextEditingDelegate>
+@interface FFMarkerEditorViewModule : LKViewModule
 {
-    LKSegmentedControl *typeControl;
-    LKSegmentedCell *typeCell;
     LKTextField *displayNameField;
     LKTextField *timecodeField;
     LKButton *deleteButton;
@@ -22,35 +18,24 @@
     id <FFMarkerEditorDelegate> _markerEditorDelegate;
 }
 
-+ (void)initialize;
-@property(nonatomic) id <FFMarkerEditorDelegate> markerEditorDelegate; // @synthesize markerEditorDelegate=_markerEditorDelegate;
-@property(retain, nonatomic) FFAnchoredTimeMarker *marker; // @synthesize marker=_marker;
-- (void)controlTextDidEndEditing:(id)arg1;
-- (void)dealloc;
-- (void)_removeObserverForMarkerProperties;
-- (void)_addObserverForMarkerProperties;
-- (void)chapterPosterOffsetUpdated:(id)arg1;
-- (void)toggleCompleted:(id)arg1;
-- (void)changeType:(id)arg1;
-- (void)delete:(id)arg1;
-- (void)save:(id)arg1;
-- (void)close:(id)arg1;
-- (id)identifier;
-- (void)_setupNameFieldSelection;
-- (void)_updateTodoButton;
-- (void)_selectMarkerTypeCell;
-- (void)_reflectMarkerPropertiesInGUIWithChangedKey:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)windowDidShow;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)_updateTypeCellSegmentsWithActive:(unsigned long long)arg1;
 - (id)initWithMarker:(id)arg1 delegate:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)windowDidShow;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_reflectMarkerPropertiesInGUIWithChangedKey:(id)arg1;
+- (void)_updateTodoButton;
+- (void)_setupNameFieldSelection;
+- (id)identifier;
+- (void)close:(id)arg1;
+- (void)save:(id)arg1;
+- (void)delete:(id)arg1;
+- (void)makeToDo:(id)arg1;
+- (void)toggleCompleted:(id)arg1;
+@property(retain, nonatomic) FFAnchoredTimeMarker *marker; // @synthesize marker=_marker;
+- (void)_addObserverForMarkerProperties;
+- (void)_removeObserverForMarkerProperties;
+- (void)dealloc;
+@property(nonatomic) id <FFMarkerEditorDelegate> markerEditorDelegate; // @synthesize markerEditorDelegate=_markerEditorDelegate;
 
 @end
 

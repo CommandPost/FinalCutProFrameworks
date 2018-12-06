@@ -14,11 +14,11 @@
     LKTextField *_backgroundTaskLabel;
 }
 
-- (void)mouseDown:(id)arg1;
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
-- (void)viewWillBeRemoved;
 - (void)viewWasInstalled;
+- (void)viewWillBeRemoved;
+- (struct CGSize)viewMinSize;
+- (struct CGSize)viewMaxSize;
+- (void)mouseDown:(id)arg1;
 
 @end
 

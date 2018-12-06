@@ -13,22 +13,22 @@
     NSMutableArray *_directories;
 }
 
-- (BOOL)canRemoveItem;
-- (BOOL)canAddToItem;
-- (unsigned int)numDocumentsRecursiveSearch:(BOOL)arg1;
-- (id)allDocumentsInCollectionWithTheme:(id)arg1 scan:(BOOL)arg2;
-- (id)collectionAtIndex:(unsigned int)arg1;
-- (void)removeAllCollections;
-- (void)removeCollection:(id)arg1;
-- (void)addCollection:(id)arg1;
-- (unsigned int)numCollections;
-- (void)scan;
-- (void)scanDirectory:(id)arg1 knownArray:(id)arg2 lookingInSystemPath:(BOOL)arg3 depth:(unsigned int)arg4;
-- (void)flush;
-- (id)image;
-- (id)title;
-- (void)setTitle:(id)arg1;
 - (void)dealloc;
+- (void)setTitle:(id)arg1;
+- (id)title;
+- (id)image;
+- (void)flush;
+- (void)scanDirectory:(id)arg1 knownArray:(id)arg2 lookingInSystemPath:(BOOL)arg3 depth:(unsigned int)arg4;
+- (void)scan;
+- (unsigned int)numCollections;
+- (void)addCollection:(id)arg1;
+- (void)removeCollection:(id)arg1;
+- (void)removeAllCollections;
+- (id)collectionAtIndex:(unsigned int)arg1;
+- (id)allDocumentsInCollectionWithTheme:(id)arg1 scan:(BOOL)arg2;
+- (unsigned int)numDocumentsRecursiveSearch:(BOOL)arg1;
+- (BOOL)canAddToItem;
+- (BOOL)canRemoveItem;
 
 @end
 

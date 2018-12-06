@@ -6,10 +6,8 @@
 
 #import "NSPasteboardReading.h"
 
-@class LKViewModule;
-
 @protocol FFOrganizerMasterItemDropTarget <NSPasteboardReading>
-- (BOOL)performDrop:(id <NSDraggingInfo>)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(LKViewModule *)arg4;
-- (unsigned long long)validateDrop:(id <NSDraggingInfo>)arg1 newSubitemInsertionIndex:(long long)arg2;
+- (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
+- (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
 @end
 

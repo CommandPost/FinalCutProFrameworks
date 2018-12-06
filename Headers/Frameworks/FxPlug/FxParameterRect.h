@@ -11,8 +11,8 @@
     struct FxParameterRectPriv *_rectPriv;
 }
 
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
 
 @end
 

@@ -10,8 +10,8 @@
 {
 }
 
-- (BOOL)buildUIWithSceneNodes:(list_e89ce44a *)arg1 context:(id)arg2;
 - (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_699e9227 *)arg1 context:(id)arg2;
 
 @end
 

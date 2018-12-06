@@ -11,12 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (Class)streamClass;
 + (id)type;
-- (id)_newImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 createIfNotCached:(BOOL)arg3;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (id)nativeVideoProps;
++ (Class)streamClass;
 - (CDStruct_e83c9415)timeRange;
+- (id)nativeVideoProps;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 
 @end
 

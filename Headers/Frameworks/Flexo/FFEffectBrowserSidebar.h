@@ -11,9 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (double)outlineView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (id)outlineView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 viewForTableColumn:(id)arg2 row:(long long)arg3;
+- (double)outlineView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 
 @end
 

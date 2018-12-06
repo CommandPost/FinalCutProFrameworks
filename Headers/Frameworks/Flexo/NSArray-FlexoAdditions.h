@@ -7,7 +7,7 @@
 #import "NSArray.h"
 
 @interface NSArray (FlexoAdditions)
-- (id)arrayByGroupingObjects:(id)arg1;
 - (id)mutableDeepCopyWithZone:(struct _NSZone *)arg1;
+- (id)arrayByGroupingObjects:(id)arg1;
 @end
 

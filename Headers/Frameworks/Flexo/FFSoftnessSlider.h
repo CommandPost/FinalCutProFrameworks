@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
     _Bool optionKeyState;
 }
 
-@property _Bool optionKeyState; // @synthesize optionKeyState;
-- (void)mouseDown:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)mouseDown:(id)arg1;
+@property _Bool optionKeyState; // @synthesize optionKeyState;
 
 @end
 

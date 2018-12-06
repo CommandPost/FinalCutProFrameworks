@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)performProcessingIfNecessary:(id)arg1 index:(unsigned long long)arg2;
-- (void)prepareAndPostNotification;
 - (void)process:(id)arg1 onTask:(id)arg2;
+- (void)prepareAndPostNotification;
 
 @end
 

@@ -6,13 +6,12 @@
 
 #import <Flexo/FFProvider.h>
 
-#import "FFProviderForceCloseFiles.h"
 #import "FFSeedProviderMD5Protocol.h"
 
 @class FFSubRangeMD5Info, FFVideoProps, NSRecursiveLock, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFProviderCG : FFProvider <FFSeedProviderMD5Protocol, FFProviderForceCloseFiles>
+@interface FFProviderCG : FFProvider <FFSeedProviderMD5Protocol>
 {
     struct __CFDictionary *_exif;
     struct __CFDictionary *_iptc;
@@ -21,76 +20,52 @@ __attribute__((visibility("hidden")))
     BOOL _isOpaque;
     _Bool _canFitAsTexture;
     int _rotationDegrees;
-    char _unsupportedQuality[5];
-    CDStruct_bdcb2b0d _md5s[5];
-    FFSubRangeMD5Info *_md5Infos[5];
-    int _useTextureCacher[5];
+    char _unsupportedQuality[4];
+    CDStruct_bdcb2b0d _md5s[4];
+    FFSubRangeMD5Info *_md5Infos[4];
+    int _useTextureCacher[4];
     int _openStreams;
-    NSRecursiveLock *_privateLock;
+    NSRecursiveLock *_lock;
     NSString *_MD5Seed;
     _Bool _overrideAlpha;
     int _overrideAlphaValue;
-    unsigned int _nativeAlpha;
+    int _nativeAlpha;
     _Bool _invertAlpha;
-    _Bool _nativelyFloat;
     struct CGColorSpace *_fileNativeColorSpace;
     int _depth;
     NSString *_colorModel;
-    unsigned int _colorHandlingFlags;
     NSString *_uti;
-    _Bool _fileHasRecognizedCameraProjectionTagging;
-    int _file360Mode;
-    int _fileStereoMode;
-    int _fileDfeaultCameraProjectionMode;
-    int _overrideCameraProjectionMode;
-    struct CGImageSource *_cachedImgSourceRef;
-    double _cachedImgSourceDisposeAfterTime;
-    unsigned int _emptyCachedImageSourceDispatchPending;
 }
 
-+ (void)initialize;
-+ (void)appWillTerminate:(id)arg1;
-+ (id)extensions;
 + (id)utis;
-+ (BOOL)isStill;
-+ (BOOL)canHaveAudio;
-+ (BOOL)canHaveVideo;
-@property _Bool canFitAsTexture; // @synthesize canFitAsTexture=_canFitAsTexture;
-- (id)renderFilesPaths;
-- (_Bool)shouldUseTextureCacher:(int)arg1 size:(struct CGRect)arg2 shouldLog:(_Bool *)arg3 retUseIGMode:(char *)arg4;
-- (id)MD5Seed;
-- (void)setMD5Seed:(id)arg1;
-- (CDStruct_bdcb2b0d)_debugGetMD5WithoutCreating:(int)arg1;
-- (CDStruct_bdcb2b0d)_md5WithQualityIndex:(int)arg1 retInfo:(id *)arg2;
-- (id)uttype;
-- (id)colorModel;
-- (BOOL)hasAlpha;
-- (int)depth;
-- (int)rotationDegrees;
-- (BOOL)nativelyFloat;
-- (int)getNativeAlphaType;
-- (BOOL)isOpaque;
-- (id)nativeVideoProps;
-- (void)_setupSources;
-- (id)_newImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 retCacheKey:(CDStruct_bdcb2b0d *)arg3;
-- (id)_copyImage:(int)arg1 imageSource:(struct CGImageSource *)arg2 retCacheKey:(CDStruct_bdcb2b0d *)arg3;
-- (void)purgeCachedImageForQuality:(int)arg1;
-- (void)purgeCachedImagesForAllQualities;
-- (struct CGAffineTransform)_getTransformForOrientation:(int)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3;
-- (id)_newFFImageFromCGImageSource:(struct CGImageSource *)arg1 quality:(int)arg2 pixelSpaceFrameBounds:(struct CGRect)arg3;
-- (void)getTaggedProjection:(int *)arg1 stereo:(int *)arg2 recognizedProjection:(_Bool *)arg3 recognizedStereo:(_Bool *)arg4;
-- (int)fileTaggedCameraProjectionMode;
-- (struct CGColorSpace *)fileNativeColorSpace;
-- (void)setInvertAlpha:(_Bool)arg1;
-- (void)setOverrideAlphaValue:(int)arg1;
-- (id)supportedOverrideAlphaModes;
-- (void)dealloc;
++ (id)extensions;
 - (id)initWithAssetFileID:(id)arg1;
-- (void)returnImageSourceToCache:(struct CGImageSource *)arg1;
-- (void)closeOpenFiles;
-- (void)emptyCachedImageSource;
-- (struct CGImageSource *)copyCachedOrCreatedImageSourceRefForURL:(id)arg1 reason:(const char *)arg2;
-- (void)renderFormat;
+- (void)dealloc;
+- (id)supportedOverrideAlphaModes;
+- (void)setOverrideAlphaValue:(int)arg1;
+- (void)setInvertAlpha:(_Bool)arg1;
+- (struct CGColorSpace *)fileNativeColorSpace;
+- (id)_newFFImageFromCGImageSource:(struct CGImageSource *)arg1 quality:(int)arg2 pixelSpaceFrameBounds:(struct CGRect)arg3;
+- (struct CGAffineTransform)_getTransformForOrientation:(int)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3;
+- (void)purgeCachedImagesForAllQualities;
+- (void)purgeCachedImageForQuality:(int)arg1;
+- (id)_copyImage:(int)arg1 imageSource:(struct CGImageSource *)arg2 retCacheKey:(CDStruct_60067b7e *)arg3;
+- (id)_newImageAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2 retCacheKey:(CDStruct_60067b7e *)arg3;
+- (void)_setupSources;
+- (id)nativeVideoProps;
+- (BOOL)isOpaque;
+- (int)getNativeAlphaType;
+- (int)rotationDegrees;
+- (int)depth;
+- (BOOL)hasAlpha;
+- (id)colorModel;
+- (id)uttype;
+- (CDStruct_60067b7e)_md5WithQualityIndex:(int)arg1 retInfo:(id *)arg2;
+- (CDStruct_60067b7e)_debugGetMD5WithoutCreating:(int)arg1;
+- (void)setMD5Seed:(id)arg1;
+- (id)MD5Seed;
+- (_Bool)shouldUseTextureCacher:(int)arg1 size:(struct CGRect)arg2 shouldLog:(_Bool *)arg3;
+@property _Bool canFitAsTexture; // @synthesize canFitAsTexture=_canFitAsTexture;
 
 @end
 

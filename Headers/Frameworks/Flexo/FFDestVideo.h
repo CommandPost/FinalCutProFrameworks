@@ -6,77 +6,48 @@
 
 #import <Flexo/FFDest.h>
 
-@class FFPlayer, FFReducedRateTracker, NSMutableArray, NSObject<FFDestVideoDelegate>, NSObject<OS_dispatch_queue>;
+@class FFPlayer;
 
 __attribute__((visibility("hidden")))
 @interface FFDestVideo : FFDest
 {
-    NSObject<FFDestVideoDelegate> *_delegate;
+    id _delegate;
     FFPlayer *_player;
+    int _drawFieldsInterlaced;
     CDStruct_1b6d18a9 _sampleDuration;
     CDStruct_1b6d18a9 _frameDuration;
     int _fieldDominance;
     struct CGRect _sequenceBounds;
-    FFReducedRateTracker *_rrt;
-    BOOL _enableDrawAllAngles;
-    BOOL _enableDropDetection;
-    NSObject<OS_dispatch_queue> *_dropInfosLock;
-    NSMutableArray *_dropInfos;
 }
 
-+ (BOOL)automaticallyNotifiesObserversForEnableDrawAllAngles;
-+ (void)initialize;
-+ (void)registerForDrawInterlaced:(id)arg1;
-+ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-+ (int)drawInterlacedUserPref;
-@property(retain) FFReducedRateTracker *reducedRateTracker; // @synthesize reducedRateTracker=_rrt;
+- (id)init;
+- (void)dealloc;
+- (void)setDelegate:(id)arg1;
+- (id)delegate;
+- (void)setPlayer:(id)arg1;
+- (id)player;
+- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
+- (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (int)imageLocation;
+- (struct CGColorSpace *)colorSpace;
+- (id)supportedPixelFormats;
+- (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
+- (struct CGSize)maxSupportedSize;
+- (int)requestedBackground;
+- (BOOL)wantsDithering:(id)arg1;
+- (void)flush:(BOOL)arg1;
+- (void)pushFrame:(id)arg1;
+- (BOOL)wantsMoreFrames;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (int)drawFieldsInterlaced;
+- (struct CGRect)sequenceBounds;
+- (void)setNeedsUpdate:(BOOL)arg1;
+- (_Bool)shouldSkipFrame:(CDStruct_1b6d18a9)arg1 playRate:(double)arg2;
+- (void)skippedFrame:(CDStruct_1b6d18a9)arg1;
+- (void)setLastHealthMetric:(float)arg1;
+- (id)description;
 @property(readonly) CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
 @property(readonly) CDStruct_1b6d18a9 sampleDuration; // @synthesize sampleDuration=_sampleDuration;
-- (void)resetDropInfos;
-- (id)copyDropInfosByPopping;
-- (void)recordDropInfo:(id)arg1;
-- (BOOL)enableDropDetection;
-- (void)notifyDestPlayerChangedRenderLocation:(int)arg1;
-- (void)setEnableDropDetection:(BOOL)arg1;
-- (_Bool)performOverfullRecovery;
-- (_Bool)supportsOverfullRecovery;
-- (int)destRecommendedFFSVPriority;
-- (_Bool)inefficientFrameDurationWarning:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2;
-- (unsigned int)outputMaxLatencyInFrames;
-- (id)description;
-- (void)setLastHealthMetric:(float)arg1 diskHealth:(float)arg2;
-- (void)skippedFrame:(CDStruct_1b6d18a9)arg1 outOfSequence:(BOOL)arg2;
-- (_Bool)shouldSkipFrame:(CDStruct_1b6d18a9)arg1 playRate:(double)arg2;
-- (void)setNeedsUpdate:(BOOL)arg1;
-- (struct CGRect)sequenceBounds;
-- (void)setEnableDrawAllAngles:(BOOL)arg1;
-- (BOOL)enableDrawAllAngles;
-- (int)drawFieldsInterlaced;
-- (const char *)_getFrameQueueStatusString;
-- (int)getFrameQueueStatus;
-- (void)pushFrame:(id)arg1;
-- (void)liveFlushWithRunout:(unsigned int)arg1 playerTime:(CDStruct_1b6d18a9)arg2 rate:(double)arg3;
-- (void)flush:(BOOL)arg1;
-- (BOOL)wantsDithering:(id)arg1;
-- (BOOL)showHDRAsRawValues;
-- (unsigned int)rangeCheckZebraMode;
-- (int)requestedBackground;
-- (void)maxSupportedSize;
-- (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
-- (void)supportedPixelFormats;
-- (void)colorSpace;
-- (int)influenceOnExecLocation;
-- (void)imageLocation;
-- (id)requestedImageInfo;
-- (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (CDStruct_1b6d18a9)frameDurationForMaximumOutputRate;
-- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
-- (id)player;
-- (void)setPlayer:(id)arg1;
-- (id)delegate;
-- (void)setDelegate:(id)arg1;
-- (void)dealloc;
-- (id)init;
 
 @end
 

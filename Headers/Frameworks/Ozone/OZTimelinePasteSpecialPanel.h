@@ -17,12 +17,12 @@
     OZTimelineModule *_timelineController;
 }
 
-- (void)cancelNotify:(id)arg1;
-- (void)okNotify:(id)arg1;
-- (void)openWithTimelineController:(id)arg1;
-- (void)awakeFromNib;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (void)awakeFromNib;
+- (void)openWithTimelineController:(id)arg1;
+- (void)okNotify:(id)arg1;
+- (void)cancelNotify:(id)arg1;
 
 @end
 

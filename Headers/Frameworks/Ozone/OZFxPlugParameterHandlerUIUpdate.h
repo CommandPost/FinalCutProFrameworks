@@ -13,8 +13,8 @@
 }
 
 + (id)updateWithParamID:(int)arg1 notificationFlags:(unsigned int)arg2;
-- (unsigned int)notificationFlags;
 - (int)paramID;
+- (unsigned int)notificationFlags;
 
 @end
 

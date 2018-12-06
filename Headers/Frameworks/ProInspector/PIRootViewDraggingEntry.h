@@ -17,12 +17,12 @@
     BOOL _didRemoveCtlr;
 }
 
-- (void)unhideControllerFromParentIfNecessary;
-- (void)hideControllerFromParent;
-- (void)setDidRemoveCtlr:(BOOL)arg1;
-- (double)insertionHeight;
-- (void)dealloc;
 - (id)initWithController:(id)arg1;
+- (void)dealloc;
+- (double)insertionHeight;
+- (void)setDidRemoveCtlr:(BOOL)arg1;
+- (void)hideControllerFromParent;
+- (void)unhideControllerFromParentIfNecessary;
 
 @end
 

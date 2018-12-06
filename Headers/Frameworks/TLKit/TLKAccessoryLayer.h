@@ -6,12 +6,11 @@
 
 #import "CALayer.h"
 
-#import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class NSString, TLKAccessoryHandler, TLKEventDispatcher, TLKTimelineView;
+@class TLKAccessoryHandler, TLKEventDispatcher, TLKTimelineView;
 
-@interface TLKAccessoryLayer : CALayer <TLKPartInfo, TLKAccessibilityProtocol>
+@interface TLKAccessoryLayer : CALayer <TLKPartInfo>
 {
     TLKAccessoryHandler *_currentEventHandler;
     TLKEventDispatcher *_currentEventDispatcher;
@@ -19,40 +18,31 @@
     double _boundsHeight;
 }
 
-@property TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
-- (id)stringForToolTipAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (BOOL)shouldAutoscroll:(id)arg1;
-- (BOOL)performKeyEquivalent:(id)arg1;
-- (void)flagsChanged:(id)arg1;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (void)exitRollover:(id)arg1;
-- (void)updateRollover:(id)arg1;
-- (BOOL)enterRollover:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
-- (void)cancelTracking:(id)arg1;
-- (BOOL)continueTracking:(id)arg1;
-- (BOOL)startTracking:(id)arg1;
-- (id)partIdentifier;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (BOOL)wantsToHandlePredominantDrag;
-- (void)setSkimmingPlayheadHidden:(BOOL)arg1;
-- (BOOL)popUpMenu:(id)arg1 positioningItem:(id)arg2 atPoint:(struct CGPoint)arg3;
-- (struct CGPoint)convertPointFromTimeline:(struct CGPoint)arg1;
-- (void)_setCurrentEventHandler:(id)arg1 dispatcher:(id)arg2;
-- (id)initialAccessoryPart;
-- (id)currentAccessoryPart;
-- (id)currentEventHandler;
-- (void)hostLayerChanged;
-- (void)setNeedsHeightChanged:(double)arg1;
-@property(readonly) double height;
-- (void)layerDidBecomeVisible:(BOOL)arg1;
+- (id)init;
 - (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)layerDidBecomeVisible:(BOOL)arg1;
+@property(readonly) double height;
+- (void)setNeedsHeightChanged:(double)arg1;
+- (id)currentEventHandler;
+- (id)currentAccessoryPart;
+- (id)initialAccessoryPart;
+- (void)_setCurrentEventHandler:(id)arg1 dispatcher:(id)arg2;
+- (struct CGPoint)convertPointFromTimeline:(struct CGPoint)arg1;
+- (BOOL)popUpMenu:(id)arg1 positioningItem:(id)arg2 atPoint:(struct CGPoint)arg3;
+- (void)setSkimmingPlayheadHidden:(BOOL)arg1;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)partIdentifier;
+- (BOOL)startTracking:(id)arg1;
+- (BOOL)continueTracking:(id)arg1;
+- (void)cancelTracking:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
+- (BOOL)enterRollover:(id)arg1;
+- (void)updateRollover:(id)arg1;
+- (void)exitRollover:(id)arg1;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (void)flagsChanged:(id)arg1;
+- (BOOL)performKeyEquivalent:(id)arg1;
+@property TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 
 @end
 

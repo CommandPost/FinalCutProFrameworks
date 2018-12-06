@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
     void *_obj;
 }
 
-- (void *)obj;
-- (void)dealloc;
 - (id)init:(void *)arg1;
+- (void)dealloc;
+- (void *)obj;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKButton, LKSplashView, NSArray, NSButton, NSString, NSTextField, NSView, NSWindow;
+@class LKSplashView, NSButton, NSTextField, NSView, NSWindow;
 
 @interface LKAboutPanel : NSObject <NSWindowDelegate>
 {
@@ -18,51 +18,27 @@
     NSTextField *_versionText;
     NSTextField *_copyrightText;
     NSTextField *_statusText;
-    NSTextField *_trialText;
-    LKSplashView *_consumerSplashView;
-    NSTextField *_consumerVersionText;
-    NSTextField *_consumerCopyrightText;
-    LKButton *_consumerAcknowledgementsButton;
-    LKButton *_consumerLicenseButton;
-    NSArray *_topLevelObjects;
-    BOOL _trial;
-    BOOL _consumer;
-    BOOL _hideAppNameInCopyright;
     NSButton *_closeButton;
     BOOL _isSplash;
 }
 
-+ (id)sharedConsumerAboutPanel;
-+ (id)sharedTrialAboutPanel;
 + (id)sharedAboutPanel;
-@property BOOL hideAppNameInCopyright; // @synthesize hideAppNameInCopyright=_hideAppNameInCopyright;
-@property(nonatomic, getter=isConsumer) BOOL consumer; // @synthesize consumer=_consumer;
-@property(nonatomic, getter=isTrial) BOOL trial; // @synthesize trial=_trial;
-@property BOOL isSplash; // @synthesize isSplash=_isSplash;
-- (void)windowDidBecomeKey:(id)arg1;
-- (void)windowDidResignKey:(id)arg1;
-- (void)updateNib;
-- (void)consumerNibSetup;
-- (void)proNibSetup;
-- (void)loadNib;
-- (void)toggleAlternateVersion:(id)arg1;
-- (void)showAcknowledgements:(id)arg1;
-- (void)showLicenseAgreement:(id)arg1;
-- (void)orderOutAboutPanel:(id)arg1;
-- (void)setStatusText:(id)arg1;
-- (void)orderFrontAboutPanel:(id)arg1;
-- (void)orderOutSplash:(id)arg1;
-- (void)orderFrontSplash:(id)arg1;
-- (id)window;
-- (id)buildVersionString;
-- (id)versionString;
 - (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)versionString;
+- (id)buildVersionString;
+- (void)orderFrontSplash:(id)arg1;
+- (void)orderOutSplash:(id)arg1;
+- (void)orderFrontAboutPanel:(id)arg1;
+- (void)setStatusText:(id)arg1;
+- (void)orderOutAboutPanel:(id)arg1;
+- (void)showLicenseAgreement:(id)arg1;
+- (void)showAcknowledgements:(id)arg1;
+- (void)toggleAlternateVersion:(id)arg1;
+- (void)loadNib;
+- (void)updateNib;
+- (void)windowDidResignKey:(id)arg1;
+- (void)windowDidBecomeKey:(id)arg1;
+@property BOOL isSplash; // @synthesize isSplash=_isSplash;
 
 @end
 

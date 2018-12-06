@@ -4,11 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+@class MIODeviceConnection, MIOTimecode;
 
 #pragma mark Named Structures
+
+struct AudioBuffer {
+    unsigned int mNumberChannels;
+    unsigned int mDataByteSize;
+    void *mData;
+};
+
+struct AudioBufferList {
+    unsigned int _field1;
+    struct AudioBuffer _field2[1];
+};
 
 struct AudioChannelDescription {
     unsigned int _field1;
@@ -35,6 +44,8 @@ struct AudioStreamBasicDescription {
     unsigned int _field9;
 };
 
+struct AudioStreamPacketDescription;
+
 struct BaseDevice {
     CDUnknownFunctionPointerType *_field1;
     struct TimecodeObserverWrapper *_field2;
@@ -43,18 +54,23 @@ struct BaseDevice {
     _Bool _field5;
     _Bool _field6;
     char _field7;
-    struct Synchronizable _field8;
-    struct Synchronizable _field9;
+    struct Thread *_field8;
+    _Bool _field9;
     struct Synchronizable _field10;
-    struct Synchronizable _field11;
+    _Bool _field11;
     _Bool _field12;
-    double _field13;
-    double _field14;
-    _Bool _field15;
-    char _field16;
-    int _field17;
-    id _field18;
-    id _field19;
+    struct Synchronizable _field13;
+    struct Synchronizable _field14;
+    struct Synchronizable _field15;
+    struct Synchronizable _field16;
+    _Bool _field17;
+    double _field18;
+    double _field19;
+    _Bool _field20;
+    char _field21;
+    int _field22;
+    MIODeviceConnection *_field23;
+    MIOTimecode *_field24;
 };
 
 struct CGPoint {
@@ -86,6 +102,47 @@ struct FSRef {
     unsigned char hidden[80];
 };
 
+struct ImageDescription;
+
+struct MIORADPlugInMediaSpecifier {
+    unsigned int _field1;
+    char *_field2;
+    unsigned int _field3;
+    long long _field4;
+    long long _field5;
+    long long _field6;
+    int _field7;
+    struct ImageDescription *_field8;
+    unsigned int _field9;
+    id _field10;
+    void *_field11;
+    struct AudioBufferList *_field12;
+    unsigned int _field13;
+    struct AudioStreamPacketDescription *_field14;
+    long long _field15;
+    long long _field16;
+    long long _field17;
+    int _field18;
+    struct AudioStreamBasicDescription *_field19;
+    unsigned int _field20;
+    struct AudioChannelLayout *_field21;
+    unsigned int _field22;
+    char *_field23;
+    unsigned int _field24;
+    id _field25;
+    void *_field26;
+    unsigned int _field27;
+    unsigned int _field28;
+    unsigned char _field29;
+    unsigned char _field30;
+    unsigned char _field31;
+};
+
+struct MIORADTime64Specification {
+    long long _field1;
+    long long _field2;
+};
+
 struct SMPTETime {
     short mSubframes;
     short mSubframeDivisor;
@@ -99,46 +156,29 @@ struct SMPTETime {
 };
 
 struct Synchronizable {
-    CDUnknownFunctionPointerType *_field1;
-    struct _opaque_pthread_mutex_t _field2;
-    struct _opaque_pthread_t *_field3;
-    unsigned long long _field4;
+    CDUnknownFunctionPointerType *_vptr$Synchronizable;
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } mMutex;
+    struct _opaque_pthread_t *mWhichThread;
+    unsigned long long mRecursiveNesting;
     struct _opaque_pthread_cond_t {
-        long long _field1;
-        char _field2[40];
-    } _field5;
+        long long __sig;
+        char __opaque[40];
+    } mCondVar;
+};
+
+struct Thread;
+
+struct TimecodeInfo {
+    long long counter;
+    unsigned long long frameQuanta;
+    char isDropFrame;
+    char isValid;
 };
 
 struct TimecodeObserverWrapper;
-
-struct __list_node_base<MIOOP1aReaderTrackOutput *, void *> {
-    struct __list_node_base<MIOOP1aReaderTrackOutput *, void *> *_field1;
-    struct __list_node_base<MIOOP1aReaderTrackOutput *, void *> *_field2;
-};
-
-struct __list_node_base<opaqueCMSampleBuffer *, void *> {
-    struct __list_node_base<opaqueCMSampleBuffer *, void *> *_field1;
-    struct __list_node_base<opaqueCMSampleBuffer *, void *> *_field2;
-};
-
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
-};
-
-struct list<MIOOP1aReaderTrackOutput *, std::__1::allocator<MIOOP1aReaderTrackOutput *>> {
-    struct __list_node_base<MIOOP1aReaderTrackOutput *, void *> _field1;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<MIOOP1aReaderTrackOutput *, void *>>> {
-        unsigned long long _field1;
-    } _field2;
-};
-
-struct list<opaqueCMSampleBuffer *, std::__1::allocator<opaqueCMSampleBuffer *>> {
-    struct __list_node_base<opaqueCMSampleBuffer *, void *> _field1;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<opaqueCMSampleBuffer *, void *>>> {
-        unsigned long long _field1;
-    } _field2;
-};
 
 #pragma mark Typedef'd Structures
 
@@ -150,22 +190,19 @@ typedef struct {
 } CDStruct_1b6d18a9;
 
 typedef struct {
+    long long _field1;
+    int _field2;
+} CDStruct_87dc826d;
+
+typedef struct {
     CDStruct_1b6d18a9 start;
     CDStruct_1b6d18a9 duration;
 } CDStruct_e83c9415;
 
-// Template types
-typedef struct list<MIOOP1aReaderTrackOutput *, std::__1::allocator<MIOOP1aReaderTrackOutput *>> {
-    struct __list_node_base<MIOOP1aReaderTrackOutput *, void *> _field1;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<MIOOP1aReaderTrackOutput *, void *>>> {
-        unsigned long long _field1;
-    } _field2;
-} list_931eae18;
-
-typedef struct list<opaqueCMSampleBuffer *, std::__1::allocator<opaqueCMSampleBuffer *>> {
-    struct __list_node_base<opaqueCMSampleBuffer *, void *> _field1;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<opaqueCMSampleBuffer *, void *>>> {
-        unsigned long long _field1;
-    } _field2;
-} list_4609f400;
+typedef struct {
+    CDStruct_87dc826d _field1;
+    CDStruct_87dc826d _field2;
+    CDStruct_87dc826d _field3;
+    CDStruct_87dc826d _field4;
+} CDStruct_d6a0426d;
 

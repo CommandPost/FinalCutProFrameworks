@@ -8,12 +8,11 @@
 
 #import "NSPasteboardReading.h"
 #import "NSPasteboardWriting.h"
-#import "NSSecureCoding.h"
 #import "TMBrowserOutlineItem.h"
 
 @class NSDate, NSImage, NSMutableArray, NSMutableDictionary, NSString, TMCollectionHeader;
 
-@interface TMCollection : NSObject <TMBrowserOutlineItem, NSSecureCoding, NSPasteboardWriting, NSPasteboardReading>
+@interface TMCollection : NSObject <TMBrowserOutlineItem, NSPasteboardWriting, NSPasteboardReading>
 {
     NSString *_path;
     NSString *_resolvedPath;
@@ -30,63 +29,53 @@
     BOOL _isSystemCollection;
 }
 
-+ (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
-+ (id)readableTypesForPasteboard:(id)arg1;
-+ (BOOL)supportsSecureCoding;
-+ (id)collectionWithPath:(id)arg1 resolvedPath:(id)arg2 parent:(id)arg3;
-+ (BOOL)shouldSuppressNotifications;
 + (void)suppressNotifications:(BOOL)arg1;
-@property(nonatomic) TMCollectionHeader *parentCollection; // @synthesize parentCollection=_parentCollection;
++ (BOOL)shouldSuppressNotifications;
++ (id)readableTypesForPasteboard:(id)arg1;
++ (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
+- (id)initWithPath:(id)arg1 resolvedPath:(id)arg2 parent:(id)arg3;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)path;
+- (id)resolvedPath;
+- (id)userPathFromSystemPath;
+- (id)previewPath;
+- (id)documents;
+- (id)allDocumentsInCollectionWithTheme:(id)arg1 scan:(BOOL)arg2;
+- (id)title;
+- (id)image;
+- (id)modifiedDate;
+- (BOOL)expandable;
+- (BOOL)containsSystemTemplates;
+- (unsigned int)numDocuments;
+- (unsigned int)numDocumentsRecursiveSearch:(BOOL)arg1;
+- (id)documentAtIndex:(unsigned int)arg1;
+- (id)collectionTypeExtension;
+- (BOOL)_pathIsMotionTemplate:(id)arg1;
+- (BOOL)_pathIsSearchableDirectory:(id)arg1;
+- (void)scanDirectoryNoBookkeeping:(id)arg1 lookingInSystemPath:(BOOL)arg2 depth:(unsigned int)arg3;
+- (void)scanDirectory:(id)arg1 knownArray:(id)arg2 lookingInSystemPath:(BOOL)arg3 depth:(unsigned int)arg4;
+- (void)scan;
+- (void)flush;
+- (id)addTemplateFromPath:(id)arg1 resolvedPath:(id)arg2 isSystemTemplate:(BOOL)arg3 livesInThemeFolder:(BOOL)arg4;
+- (id)createTemplateWithName:(id)arg1;
+- (id)templateForPath:(id)arg1;
+- (BOOL)trashTemplate:(id)arg1;
+- (BOOL)renameTemplate:(id)arg1 name:(id)arg2;
+- (long long)compare:(id)arg1;
+- (long long)caseInsensitiveCompare:(id)arg1;
+- (id)writableTypesForPasteboard:(id)arg1;
+- (id)pasteboardPropertyListForType:(id)arg1;
+- (BOOL)canAddToItem;
+- (BOOL)canRemoveItem;
+- (void)addDocument:(id)arg1;
+- (void)removeTemplate:(id)arg1;
+- (BOOL)renameTo:(id)arg1;
+- (BOOL)trash;
+@property(retain, nonatomic) TMCollectionHeader *parentCollection; // @synthesize parentCollection=_parentCollection;
 @property(nonatomic) BOOL isSystemCollection; // @synthesize isSystemCollection=_isSystemCollection;
 @property(nonatomic) BOOL isTemplateCollection; // @synthesize isTemplateCollection=_isTemplateCollection;
 @property(nonatomic) int collectionType; // @synthesize collectionType=_collectionType;
-- (BOOL)trash;
-- (BOOL)renameTo:(id)arg1;
-- (void)removeTemplate:(id)arg1;
-- (void)addDocument:(id)arg1;
-- (BOOL)canRemoveItem;
-- (BOOL)canAddToItem;
-- (id)pasteboardPropertyListForType:(id)arg1;
-- (id)writableTypesForPasteboard:(id)arg1;
-- (long long)caseInsensitiveCompare:(id)arg1;
-- (long long)compare:(id)arg1;
-- (BOOL)renameTemplate:(id)arg1 name:(id)arg2;
-- (BOOL)trashTemplate:(id)arg1;
-- (id)templateForPath:(id)arg1;
-- (id)createTemplateWithName:(id)arg1;
-- (id)addTemplateFromPath:(id)arg1 resolvedPath:(id)arg2 isSystemTemplate:(BOOL)arg3 livesInThemeFolder:(BOOL)arg4;
-- (void)flush;
-- (void)scan;
-- (void)scanDirectory:(id)arg1 knownArray:(id)arg2 lookingInSystemPath:(BOOL)arg3 depth:(unsigned int)arg4;
-- (void)scanDirectoryNoBookkeeping:(id)arg1 lookingInSystemPath:(BOOL)arg2 depth:(unsigned int)arg3;
-- (BOOL)_pathIsSearchableDirectory:(id)arg1;
-- (BOOL)_pathIsMotionTemplate:(id)arg1;
-- (id)collectionTypeExtension;
-- (id)documentAtIndex:(unsigned int)arg1;
-- (unsigned int)numDocumentsRecursiveSearch:(BOOL)arg1;
-- (unsigned int)numDocuments;
-- (BOOL)containsSystemTemplates;
-- (BOOL)expandable;
-- (id)modifiedDate;
-- (id)image;
-- (id)title;
-- (id)allDocumentsInCollectionWithTheme:(id)arg1 scan:(BOOL)arg2;
-- (id)documents;
-- (id)previewPath;
-- (id)userPathFromSystemPath;
-- (id)resolvedPath;
-- (id)path;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithPath:(id)arg1 resolvedPath:(id)arg2 parent:(id)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

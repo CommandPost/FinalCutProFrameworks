@@ -10,10 +10,8 @@
 {
 }
 
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)toggleFullScreen:(id)arg1;
-- (BOOL)canBecomeMainWindow;
 - (BOOL)canBecomeKeyWindow;
+- (BOOL)canBecomeMainWindow;
 
 @end
 

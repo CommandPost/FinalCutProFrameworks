@@ -6,28 +6,26 @@
 
 #import "LKViewModule.h"
 
-@class OZInspectorSegmentedControl;
+@class LKModuleLayout, OZProTabPaneCapSegmentedControl;
 
 @interface OZProTabWrapperModule : LKViewModule
 {
-    OZInspectorSegmentedControl *_tabSegmentControl;
-    BOOL _hideMultipleTabs;
+    OZProTabPaneCapSegmentedControl *_tabSegmentControl;
+    LKModuleLayout *_moduleTabLayout;
 }
 
-@property(nonatomic) BOOL hideMultipleTabs; // @synthesize hideMultipleTabs=_hideMultipleTabs;
-- (void)toggleTabbedModuleAtIndex:(long long)arg1;
-- (void)showTabbedModuleAtIndex:(long long)arg1;
-- (void)togglePane;
-- (BOOL)isSubmoduleVisibleAtIndex:(long long)arg1;
-- (void)tabSelectionAction:(id)arg1;
-- (id)moduleHeaderAccessoryView;
-- (void)oz_refreshTabStatus;
-- (void)oz_buildPaneTabs;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)oz_buildPaneTabs;
+- (void)oz_refreshTabStatus;
+- (id)moduleHeaderAccessoryView;
+- (void)tabSelectionAction:(id)arg1;
+- (BOOL)isModuleShown:(id)arg1;
+- (void)togglePaneWithAnimation:(long long)arg1;
+- (void)showHideTabbedModuleAtIndex:(long long)arg1 withAnimation:(long long)arg2;
 
 @end
 

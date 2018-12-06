@@ -10,12 +10,12 @@
 {
 }
 
-- (id)title;
-- (id)contentView;
-- (BOOL)isEmpty;
-- (BOOL)loadView;
-- (void)setOSC:(id)arg1;
 - (id)initWithOSC:(id)arg1;
+- (void)setOSC:(id)arg1;
+- (BOOL)loadView;
+- (BOOL)isEmpty;
+- (id)contentView;
+- (id)title;
 
 @end
 

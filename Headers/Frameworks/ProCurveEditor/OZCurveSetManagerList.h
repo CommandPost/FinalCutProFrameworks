@@ -13,11 +13,11 @@
     OZCurveEditorCtrl *_mainCurveEditorController;
 }
 
-- (unsigned long long)draggingEntered:(id)arg1;
-- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)setController:(id)arg1;
-- (BOOL)acceptsFirstResponder;
 - (void)delete:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (void)setController:(id)arg1;
+- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)arg1;
+- (unsigned long long)draggingEntered:(id)arg1;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "CKMediaServerProtocol.h"
 
-@class FFDestProMSExporter, FFMedia, FFPixelBuffer, FFPixelFormat, FFRenderer, FFStreamAudio, ProMSFrameCache;
+@class FFDestProMSExporter, FFMedia, FFPixelBuffer, FFPixelFormat, FFRenderer, FFStreamAudio, FFThrottleFile, ProMSFrameCache;
 
 @interface ProMSMediaServer : NSObject <CKMediaServerProtocol>
 {
@@ -34,38 +34,30 @@
     BOOL _hasCrop;
     struct CGRect _cropBounds;
     BOOL _allowCancel;
+    FFThrottleFile *_throttleFile;
+    long long _throttleValue;
     ProMSFrameCache *_frameCache;
     long long _playerFramesToDumpImage;
     struct FFPMRSimpleTimer _timerSession;
     struct FFPMRSimpleTimer _timerRender;
 }
 
-+ (BOOL)unregisterMediaServerRenderer;
-+ (BOOL)registerMediaServerRenderer;
-+ (id)useGPUResourceChoiceMode;
-+ (void)setUseGPUResourceChoiceMode:(id)arg1;
-+ (BOOL)useGPU;
-+ (void)setUseGPU:(BOOL)arg1;
-+ (void)setIsStandaloneRenderer:(BOOL)arg1;
-+ (BOOL)isStandaloneRenderer;
-+ (BOOL)isCompressorKitPresent;
 + (id)loadMediaFromFile:(id)arg1 forItem:(id)arg2;
-+ (BOOL)isMotionProject:(id)arg1;
-- (id)makeNSErrorFromOSStatus:(int)arg1 andComment:(id)arg2;
-- (id)fillAudioBuffer:(unsigned long long)arg1 count:(int)arg2;
-- (id)renderVideoFrame:(unsigned int)arg1;
-- (int)frameAccessMode:(long long)arg1 lastFrame:(long long)arg2;
-- (id)end:(BOOL)arg1;
-- (void)deallocRenderSession;
-- (void)dealloc;
-- (void)DO_initWith:(id)arg1;
++ (BOOL)isCompressorKitPresent;
++ (BOOL)isStandaloneRenderer;
++ (void)setIsStandaloneRenderer:(BOOL)arg1;
++ (BOOL)registerMediaServerRenderer;
++ (BOOL)unregisterMediaServerRenderer;
 - (id)initWith:(id)arg1;
-- (id)localizedString:(id)arg1;
-- (void)logBoundsForFrame:(id)arg1 imageSelector:(SEL)arg2;
-- (int)copyPixelBufferData:(id)arg1 toField:(unsigned int)arg2;
-- (id)newRenderedSourceImage:(id)arg1 hasFields:(BOOL)arg2;
-- (int)copyPlayerFrame:(id)arg1;
-- (BOOL)computeCropForSession:(id)arg1 bounds:(struct CGRect *)arg2;
+- (void)DO_initWith:(id)arg1;
+- (void)dealloc;
+- (void)deallocRenderSession;
+- (id)end:(BOOL)arg1;
+- (int)frameAccessMode:(long long)arg1 lastFrame:(long long)arg2;
+- (id)renderVideoFrame:(unsigned int)arg1;
+- (id)fillAudioBuffer:(unsigned long long)arg1 count:(int)arg2;
+- (id)makeNSErrorFromOSStatus:(int)arg1 andComment:(id)arg2;
+- (BOOL)adjustRenderingForThrottle;
 
 @end
 

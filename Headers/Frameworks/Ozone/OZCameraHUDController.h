@@ -16,10 +16,10 @@
     struct OZCamera *_pCamera;
 }
 
-- (void)evalCompletion;
-- (void)update;
+- (void)buildUIWithObjectList:(list_2c251165 *)arg1 viewController:(id)arg2 context:(id)arg3;
 - (void)addFocalLengthIndicatorWithContext:(id)arg1 viewController:(id)arg2;
-- (void)buildUIWithObjectList:(list_5b338eba *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)update;
+- (void)evalCompletion;
 
 @end
 

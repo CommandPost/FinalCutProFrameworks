@@ -6,74 +6,53 @@
 
 #import "NSObject.h"
 
-#import "NSOpenSavePanelDelegate.h"
+@class NSArray, NSMutableSet, NSSet;
 
-@class NSArray, NSMutableSet, NSSet, NSString;
-
-@interface FFStorageManager : NSObject <NSOpenSavePanelDelegate>
+@interface FFStorageManager : NSObject
 {
     NSMutableSet *_availableLocations;
-    NSMutableSet *_hasWarnedForPaths;
-    BOOL _doneLaunching;
-    BOOL _refreshAvailableVolumesAfterQuarantine;
-    BOOL _inRefreshAvailableVolumesAlwaysWarnForPath;
+    int _kQueue;
+    struct kevent *_events;
+    struct kevent *_eventData;
+    char **_paths;
+    int _numEvents;
+    int _size;
+    int *_fds;
 }
 
-+ (id)customLocationDicts;
-+ (id)legacyFCPXLocationURLs;
-+ (id)legacyLocationURLs;
-+ (id)moviesURL;
-+ (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
-+ (BOOL)isQuarantined:(id)arg1;
-+ (BOOL)isReadOnly:(id)arg1;
-+ (BOOL)isFileURL:(id)arg1 descendantOfFileURL:(id)arg2;
-+ (BOOL)isFileURL:(id)arg1 equalToFileURL:(id)arg2;
-+ (BOOL)isFileURL:(id)arg1 pathEqualToFileURLPath:(id)arg2;
-+ (BOOL)isVolumeForURL:(id)arg1 sameAsVolumeForURL:(id)arg2;
-+ (BOOL)isWritable:(id)arg1;
-+ (BOOL)isNetworkPath:(id)arg1;
-+ (BOOL)isNetworkURL:(id)arg1;
++ (BOOL)volumeSupportsTrash:(short)arg1;
 + (short)volumeRefNumFromPath:(id)arg1;
-+ (BOOL)isURLInTrash:(id)arg1;
-+ (BOOL)volumeSupportsTrash:(id)arg1;
-+ (BOOL)volumeSupportsHardLinks:(id)arg1;
-+ (BOOL)URLIsSMBVolume:(id)arg1;
-+ (id)readVolumeID:(id)arg1;
-+ (void)releaseSharedInstance;
-+ (id)sharedInstance;
-@property(readonly, nonatomic) NSSet *availableLocations; // @synthesize availableLocations=_availableLocations;
-- (void)refreshAvailableVolumesAlwaysWarnForPath:(id)arg1;
-- (id)newAvailableLocationsWithLegacyBehavior:(BOOL)arg1 alwaysWarnPath:(id)arg2;
-- (id)locationWithVolumeRefNum:(short)arg1;
-- (id)locationFromVolumePath:(id)arg1 volumeRefNum:(short)arg2 diskUUID:(id)arg3 networkPath:(id)arg4 alwaysWarnPath:(id)arg5;
-- (BOOL)okayToUseQuarantinedLocation:(id)arg1 isAction:(BOOL)arg2;
-- (void)warnAboutNotWritableLocation:(id)arg1 isAction:(BOOL)arg2;
-- (void)warnAboutUnableToAccessSavedNetworkLocationPaths;
-- (id)locationFromURL:(id)arg1 resolveSymlinks:(BOOL)arg2;
-- (id)locationFromURL:(id)arg1;
-@property(readonly, nonatomic) NSArray *sortedAvailableLocations;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)volumeDidRename:(id)arg1;
-- (void)volumeDidUnmount:(id)arg1;
-- (void)volumeWillUnmount:(id)arg1;
-- (void)volumeDidMount:(id)arg1;
-- (id)locationFromVolumeRefNum:(short)arg1;
-- (id)locationForUUID:(id)arg1;
-- (void)removeAvailableLocations:(id)arg1;
-- (void)addAvailableLocations:(id)arg1;
-- (void)removeAvailableLocationsObject:(id)arg1;
-- (void)addAvailableLocationsObject:(id)arg1;
-- (void)postDeferredAccessWarnings;
-- (void)unlockStorageLocations;
-- (void)dealloc;
-- (oneway void)release;
++ (BOOL)isNetworkURL:(id)arg1;
++ (BOOL)isReadOnly:(id)arg1;
++ (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (void)addAvailableLocationsObject:(id)arg1;
+- (void)removeAvailableLocationsObject:(id)arg1;
+- (void)addAvailableLocations:(id)arg1;
+- (void)removeAvailableLocations:(id)arg1;
+- (id)locationForUUID:(id)arg1;
+- (id)locationFromVolumeRefNum:(short)arg1;
+- (void)writeSettingsToPrefs;
+- (void)volumeDidMount:(id)arg1;
+- (void)volumeWillUnmount:(id)arg1;
+- (void)volumeDidUnmount:(id)arg1;
+- (void)volumeDidRename:(id)arg1;
+- (void)RADManagerAvailable:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)currentLocation;
+@property(readonly, nonatomic) NSArray *sortedAvailableLocations;
+- (id)bootLocation;
+- (id)moviesLocation;
+- (id)locationFromURL:(id)arg1;
+- (void)refreshAvailableVolumes;
+- (void)setUse:(BOOL)arg1 forLocation:(id)arg2;
+- (void)_signalRestartKernelQueue;
+- (void)_createKernelQueue;
+- (void)_destroyKernelQueue;
+- (int)_monitorKernelQueue;
+- (void)_handleKernelQueueEvent:(int)arg1;
+@property(readonly, nonatomic) NSSet *availableLocations; // @synthesize availableLocations=_availableLocations;
 
 @end
 

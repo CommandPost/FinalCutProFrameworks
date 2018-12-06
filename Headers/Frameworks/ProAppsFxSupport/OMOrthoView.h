@@ -18,33 +18,29 @@
     } camera;
     _Bool _mouseDownHasBeenHandled;
     _Bool _spaceDown;
-    _Bool _didSmoothZoom;
-    int _orthManipTool;
+    _Bool _bZoomManip;
+    _Bool _bPanManip;
 }
 
 + (id)basicPixelFormat;
-- (BOOL)holdSpaceForViewTransformShortcuts;
-- (BOOL)isEnabled;
-- (void)draw;
-- (void)resizeGL;
-- (void)awakeFromNib;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)update;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)lockFocus;
-- (void)keyDown:(id)arg1;
-- (void)flagsChanged:(id)arg1;
-- (BOOL)customKeyEquivalent:(id)arg1;
-- (void)keyUp:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)activateTool:(int)arg1;
-- (void)resetCamera;
-- (void)mousePan:(struct CGPoint)arg1;
-- (void)mouseZoom:(struct CGPoint)arg1;
 - (void)prepareOpenGL;
+- (void)mouseZoom:(struct CGPoint)arg1;
+- (void)mousePan:(struct CGPoint)arg1;
+- (void)resetCamera;
+- (void)mouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)keyUp:(id)arg1;
+- (void)keyDown:(id)arg1;
+- (void)lockFocus;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)update;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)awakeFromNib;
+- (void)resizeGL;
+- (void)draw;
+- (BOOL)isEnabled;
 
 @end
 

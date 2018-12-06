@@ -9,25 +9,18 @@
 #import "FxProgressAPI.h"
 #import "PROAPIObject.h"
 
-@class NSString;
-
 @interface OZFxPlugProgressAPI : NSObject <FxProgressAPI, PROAPIObject>
 {
+    struct OZProcessControl *_control;
 }
 
-+ (void)releaseSharedProgressAPI;
 + (id)sharedProgressAPI;
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (BOOL)updateProgress:(float)arg1;
-- (BOOL)userHasCancelled;
--     // Error parsing type: v24@0:8r^{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}16, name: _setControl:
++ (void)releaseSharedProgressAPI;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)_setControl:(const struct OZProcessControl *)arg1;
+- (BOOL)userHasCancelled;
+- (BOOL)updateProgress:(float)arg1;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 
 @end
 

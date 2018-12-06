@@ -6,15 +6,13 @@
 
 #import "NSObject.h"
 
-@class NSAnimation;
-
 @protocol NSAnimationDelegate <NSObject>
 
 @optional
-- (void)animation:(NSAnimation *)arg1 didReachProgressMark:(float)arg2;
-- (float)animation:(NSAnimation *)arg1 valueForProgress:(float)arg2;
-- (void)animationDidEnd:(NSAnimation *)arg1;
-- (void)animationDidStop:(NSAnimation *)arg1;
-- (BOOL)animationShouldStart:(NSAnimation *)arg1;
+- (BOOL)animationShouldStart:(id)arg1;
+- (void)animationDidStop:(id)arg1;
+- (void)animationDidEnd:(id)arg1;
+- (float)animation:(id)arg1 valueForProgress:(float)arg2;
+- (void)animation:(id)arg1 didReachProgressMark:(float)arg2;
 @end
 

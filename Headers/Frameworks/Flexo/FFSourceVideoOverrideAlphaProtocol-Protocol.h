@@ -4,11 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSIndexSet;
-
 @protocol FFSourceVideoOverrideAlphaProtocol
-- (void)setOverrideAlphaValue:(int)arg1;
-- (NSIndexSet *)supportedOverrideAlphaModes;
 - (int)getNativeAlphaType;
+- (id)supportedOverrideAlphaModes;
+- (void)setOverrideAlphaValue:(int)arg1;
 @end
 

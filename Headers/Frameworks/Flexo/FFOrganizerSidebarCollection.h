@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
     BOOL _itemIsDisclosable;
 }
 
+- (id)initWithItemDisplayName:(id)arg1 itemProviderArray:(id)arg2;
+- (void)dealloc;
+- (id)itemIcon;
+- (BOOL)hasMasterSubitems;
 @property(nonatomic) BOOL itemIsDisclosable; // @synthesize itemIsDisclosable=_itemIsDisclosable;
 @property(readonly, nonatomic) NSString *itemDisplayName; // @synthesize itemDisplayName=_itemDisplayName;
-- (BOOL)hasMasterSubitems;
-- (id)itemIcon;
-- (void)dealloc;
-- (id)initWithItemDisplayName:(id)arg1 itemProviderArray:(id)arg2;
 
 @end
 

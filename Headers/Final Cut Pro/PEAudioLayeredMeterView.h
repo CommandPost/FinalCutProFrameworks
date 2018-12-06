@@ -6,56 +6,23 @@
 
 #import "NSView.h"
 
-#import "CALayerDelegate.h"
+@class NSImageView, ParentVerticalLayer;
 
-@class NSImageView, NSMutableArray, NSString, ParentVerticalLayer;
-
-@interface PEAudioLayeredMeterView : NSView <CALayerDelegate>
+@interface PEAudioLayeredMeterView : NSView
 {
     NSImageView *backgroundView;
     ParentVerticalLayer *_parent;
-    NSMutableArray *_meterLayers;
-    NSMutableArray *_overloadLayers;
-    NSMutableArray *_channelLabelLayers;
-    NSMutableArray *_dBLabelLayers;
-    NSMutableArray *_dBLineLayers;
-    NSMutableArray *_dBMiniLineLayers;
     int _numberOfChannels;
     BOOL _playing;
-    BOOL _miniMode;
-    BOOL _forRecordNotPlayback;
-    int _meterMode;
-    float _maxDBValue;
-    float _minDBValue;
-    float _relDBValue;
-    int _meterTaperType;
 }
 
-@property(readonly, retain, nonatomic) NSMutableArray *dBMiniLineLayers; // @synthesize dBMiniLineLayers=_dBMiniLineLayers;
-@property(readonly, retain, nonatomic) NSMutableArray *dBLineLayers; // @synthesize dBLineLayers=_dBLineLayers;
-@property(readonly, retain, nonatomic) NSMutableArray *dBLabelLayers; // @synthesize dBLabelLayers=_dBLabelLayers;
-@property(readonly, retain, nonatomic) NSMutableArray *channelLabelLayers; // @synthesize channelLabelLayers=_channelLabelLayers;
-@property(readonly, retain, nonatomic) NSMutableArray *overloadLayers; // @synthesize overloadLayers=_overloadLayers;
-@property(readonly, retain, nonatomic) NSMutableArray *meterLayers; // @synthesize meterLayers=_meterLayers;
-@property(nonatomic) BOOL miniMode; // @synthesize miniMode=_miniMode;
-@property(nonatomic) BOOL playing; // @synthesize playing=_playing;
-@property(nonatomic) int numberOfChannels; // @synthesize numberOfChannels=_numberOfChannels;
-- (void)awakeFromNib;
-- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
-- (void)mouseDown:(id)arg1;
-- (void)resetOverloadIndicator;
-- (void)setMeterMode:(int)arg1;
-- (void)_updateMeterMode:(int)arg1;
-- (void)setMeterPeakValue:(double)arg1 loudnessValue:(double)arg2 forChannel:(unsigned int)arg3;
 - (void)addMeterSublayers;
-- (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+@property(nonatomic) int numberOfChannels; // @synthesize numberOfChannels=_numberOfChannels;
+- (void)setMeterValue:(double)arg1 forChannel:(double)arg2;
+@property(nonatomic) BOOL playing; // @synthesize playing=_playing;
+- (void)resetOverloadIndicator;
+- (void)mouseDown:(id)arg1;
+- (void)awakeFromNib;
 
 @end
 

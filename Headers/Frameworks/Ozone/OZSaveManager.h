@@ -6,33 +6,35 @@
 
 #import "NSObject.h"
 
-@class OZObjCDocument;
+@class NSArray, OZObjCDocument;
 
 @interface OZSaveManager : NSObject
 {
-    struct NSMapTable *_fileURLToFootageInfoMap;
-    BOOL _includeUnused;
+    OZObjCDocument *_objCDoc;
     unsigned int _saveMethod;
     unsigned int _saveTemplateMethod;
-    OZObjCDocument *_doc;
+    BOOL _inclUnused;
+    struct vector<OZSceneNode*, std::allocator<OZSceneNode*>> *_footageList;
+    NSArray *_oldPathList;
 }
 
 + (id)sharedInstance;
-@property(nonatomic) BOOL includeUnused; // @synthesize includeUnused=_includeUnused;
-@property(nonatomic) unsigned int saveTemplateMethod; // @synthesize saveTemplateMethod=_saveTemplateMethod;
-@property(nonatomic) unsigned int saveMethod; // @synthesize saveMethod=_saveMethod;
-@property(nonatomic) OZObjCDocument *doc; // @synthesize doc=_doc;
-- (unsigned long long)footageListSize;
-- (unsigned long long)mediaSize;
-- (void)deleteUnusedFootage;
-- (BOOL)findExternalMediaForDocument:(id)arg1;
-- (void)buildFootageListForDocument:(id)arg1 destination:(id)arg2;
-- (void)collectMediaToDirectory:(id)arg1;
-- (BOOL)collectForTemplate:(id)arg1;
-- (void)collectForSaveAs:(id)arg1;
-- (void)collectForSave:(id)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (void)setDoc:(id)arg1;
+- (void)setSaveMethod:(unsigned int)arg1;
+- (void)setSaveTemplateMethod:(unsigned int)arg1;
+- (void)setIncludeUnused:(BOOL)arg1;
+- (unsigned int)saveMethod;
+- (unsigned int)saveTemplateMethod;
+- (BOOL)includeUnused;
+- (void)collectForSave:(id)arg1;
+- (void)collectForSaveAs:(id)arg1;
+- (BOOL)collectForTemplate:(id)arg1;
+- (void)buildFootageListForDocument:(id)arg1;
+- (BOOL)findExternalMediaForDocument:(id)arg1;
+- (unsigned long long)mediaSize;
+- (unsigned int)footageListSize;
 
 @end
 

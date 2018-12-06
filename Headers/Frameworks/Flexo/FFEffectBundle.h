@@ -6,86 +6,56 @@
 
 #import <Flexo/FFEffect.h>
 
-#import "FFAudioEffectChainDelegate.h"
-#import "FFEffectPresetDirtyProtocol.h"
+@class NSArray;
 
-@class CHChannelEnum, FFEffectBundlePart, NSArray;
-
-@interface FFEffectBundle : FFEffect <FFAudioEffectChainDelegate, FFEffectPresetDirtyProtocol>
+__attribute__((visibility("hidden")))
+@interface FFEffectBundle : FFEffect
 {
+    BOOL _initing;
     NSArray *_effectBundleParts;
-    CHChannelEnum *_presetChannel;
-    FFEffectBundlePart *_activeBundlePart;
-    NSArray *_activeEffects;
-    BOOL _initWithCoderScope;
 }
 
-+ (id)readEffectBundlePartsForEffectBundle:(id)arg1;
-+ (id)_documentForArchiveURL:(id)arg1;
-+ (id)effectBundlePartsFromXMLDocument:(id)arg1;
-+ (BOOL)writeEffectToFile:(id)arg1 error:(id *)arg2;
-+ (id)initialEffectBundlePartsForEffectID:(id)arg1;
-+ (id)partNamesForBundle:(id)arg1;
-+ (id)cachedPartNamesForBundle:(id)arg1;
-+ (BOOL)addEffects:(id)arg1 asSnapshotToPart:(unsigned long long)arg2 ofBundle:(id)arg3 atValue:(double)arg4 error:(id *)arg5;
-+ (BOOL)addEffects:(id)arg1 toBundle:(id)arg2 asPartWithName:(id)arg3 defaultValue:(double)arg4 error:(id *)arg5;
-+ (BOOL)saveEffects:(id)arg1 asBundleWithName:(id)arg2 partName:(id)arg3 effectType:(id)arg4 defaultValue:(double)arg5 error:(id *)arg6;
-+ (id)copyClassDescription;
 + (id)_userBundlesDirectory;
++ (id)copyClassDescription;
++ (void)registerBundleAtPath:(id)arg1;
 + (void)registerEffects;
-+ (void)registerBundleAtPath:(id)arg1 isUserBundle:(BOOL)arg2;
-@property(retain, nonatomic) NSArray *effectBundleParts; // @synthesize effectBundleParts=_effectBundleParts;
-- (BOOL)update_migrateEffectBundleFormat;
-- (BOOL)presetDirty;
-- (id)initWithEffectID:(id)arg1 andXMLDocument:(id)arg2;
-- (id)exportAsXMLDocument;
-- (id)effectChainModelObject;
-- (id)effectChainEffects;
-- (void)removeActiveBundlePartObserving;
-- (void)addActiveBundlePartObserving;
-- (void)removeActiveEffectsObserving;
-- (void)addActiveEffectsObserving;
-- (void)removePresetChannelObserving;
-- (void)addPresetChannelObserving;
-- (id)newAudioMD5AndOffset:(int)arg1;
-- (BOOL)hasEffectChannelsInFolder:(id)arg1;
-- (void)deleteEffectChannelsInFolder:(id)arg1;
-- (void)createEffectChannelsForEffectBundlePart:(id)arg1 inFolder:(id)arg2;
-- (id)presetChannel;
-- (id)primaryAnimationChannel;
-- (void)presetChanged:(id)arg1;
-- (void)partChanged;
-- (void)_undoPartChanged:(id)arg1;
-- (void)_showEffectWindow:(id)arg1;
-- (void)createChannelsInFolder:(id)arg1;
-- (id)newAmountChannelForEffectBundlePart:(id)arg1 inFolder:(id)arg2 withChannelID:(int)arg3;
-- (void)updatePresetsInEnumChannel:(id)arg1 withPresetNames:(id)arg2;
-- (id)availableBundleParts;
-- (id)presetNames;
-- (void)effectDeactivated;
-- (void)effectActivated:(int)arg1;
-- (void)effectStackAnchoredObjectDidChange;
-- (void)setEffectStack:(id)arg1;
-- (id)inputKeys;
-- (id)newEffectNodeWithInput:(id)arg1 forKey:(id)arg2 withOffset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4;
-- (id)allEffects;
-- (void)setEffects:(id)arg1;
-- (id)effects;
-- (void)_setActivePart:(id)arg1 initialize:(BOOL)arg2 notify:(BOOL)arg3;
-- (void)_updateActivePart:(BOOL)arg1;
-- (id)activePart;
-- (unsigned long long)activePartIndex;
-- (void)removeObjectFromEffectBundlePartsAtIndex:(unsigned long long)arg1;
-- (void)insertObject:(id)arg1 inEffectBundlePartsAtIndex:(unsigned long long)arg2;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)_postInit:(id)arg1;
-- (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
-- (void)dealloc;
-- (id)initWithEffectID:(id)arg1 effectBundleParts:(id)arg2;
++ (BOOL)writeEffectToFile:(id)arg1 error:(id *)arg2;
++ (BOOL)saveEffects:(id)arg1 asBundleWithName:(id)arg2 partName:(id)arg3 effectType:(id)arg4 defaultValue:(double)arg5 error:(id *)arg6;
++ (BOOL)addEffects:(id)arg1 toBundle:(id)arg2 asPartWithName:(id)arg3 defaultValue:(double)arg4 error:(id *)arg5;
++ (BOOL)addEffects:(id)arg1 asSnapshotToPart:(unsigned long long)arg2 ofBundle:(id)arg3 atValue:(double)arg4 error:(id *)arg5;
++ (id)cachedPartNamesForBundle:(id)arg1;
++ (id)partNamesForBundle:(id)arg1;
 - (id)initWithEffectID:(id)arg1;
+- (void)dealloc;
+- (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
+- (id)_initForCopy:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
+- (void)_postInit:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)saveCurrentEffectBundleDataAsDefault;
+- (void)insertObject:(id)arg1 inEffectBundlePartsAtIndex:(unsigned long long)arg2;
+- (void)removeObjectFromEffectBundlePartsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)activePartIndex;
+- (id)activePart;
+- (id)effectBundleParts;
+- (void)_setEffectBundleParts:(id)arg1;
+- (void)nonKVO_setEffectBundleParts:(id)arg1;
+- (id)effects;
+- (void)setEffects:(id)arg1;
+- (id)allEffects;
+- (id)newEffectNodeWithInput:(id)arg1 forKey:(id)arg2 withOffset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4;
+- (id)inputKeys;
+- (void)setEffectStack:(id)arg1;
+- (void)createPresetsInEnumChannel:(id)arg1 addItemForNone:(BOOL)arg2;
+- (void)createChannelsInFolder:(id)arg1;
+- (void)_showEffectWindow:(id)arg1;
+- (void)partChanged;
+- (void)channelParameterChanged:(id)arg1;
+- (id)primaryAnimationChannel;
+- (void)effectWasRemovedFromStack;
+- (CDStruct_60067b7e)audioMD5:(int)arg1;
 
 @end
 

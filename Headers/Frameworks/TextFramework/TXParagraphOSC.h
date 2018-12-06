@@ -6,39 +6,37 @@
 
 #import "POOnScreenControl.h"
 
-@class LKCursor;
+@class NSProCursor;
 
 @interface TXParagraphOSC : POOnScreenControl
 {
-    struct PCVector2<float> *_start;
+    PCVector2_79a470e1 *_start;
     double _anchorX;
     double _anchorY;
     _Bool _stretchX;
     _Bool _stretchY;
-    LKCursor *_cursor;
+    struct OZOSCTexture *_handlesTexture[2];
+    NSProCursor *_cursor;
     double _startObjX;
     double _startObjY;
     double _startObjZ;
     PCRect_b601f9f3 _startBounds;
     _Bool _capturingModifiedChannels;
-    _Bool _mouseIsDown;
 }
 
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)dealloc;
+- (void)setText:(struct TXTextLayout *)arg1;
+- (void)setNewObjectDelegateForSceneNode:(struct OZSceneNode *)arg1;
+- (struct TXTextLayout *)getTextLayout;
+- (void)draw;
+- (void)mouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (BOOL)postRedisplayOnActivePartChange;
+- (id)getCursorWithEvent:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)accessibilityHandleName;
-- (id)getCursorWithEvent:(id)arg1;
-- (BOOL)postRedisplayOnActivePartChange;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)draw;
-- (void)_computeCorners:(PCVector2_79efa81a *)arg1 fromBounds:(PCRect_b601f9f3)arg2 transform:(PCMatrix44Tmpl_93ed1289 *)arg3;
-- (struct TXTextLayout *)getTextLayout;
-- (void)setNewObjectDelegateForSceneNode:(struct OZSceneNode *)arg1;
-- (void)setText:(struct TXTextLayout *)arg1;
-- (void)dealloc;
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

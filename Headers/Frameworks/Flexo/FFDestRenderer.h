@@ -6,50 +6,46 @@
 
 #import <Flexo/FFDestVideo.h>
 
-#import "FFDestRenderProtocol.h"
+@class FFNRTFigClock, FFRenderProps, NSArray, NSLock, NSObject<FFDestRendererLastTimeReceivedProtocol>;
 
-@class FFNRTFigClock, FFOnDiskRenderInfo, FFRenderer, NSArray, NSLock;
-
-@interface FFDestRenderer : FFDestVideo <FFDestRenderProtocol>
+@interface FFDestRenderer : FFDestVideo
 {
     FFNRTFigClock *_clock;
     NSLock *_lock;
+    CDStruct_1b6d18a9 _lastTimeReceived;
     CDStruct_bdcb2b0d _lastUsedSegmentMD5;
     long long _lastUsedSegmentOffset;
     BOOL _isRunning;
     BOOL _needsUpdate;
-    FFOnDiskRenderInfo *_renderInfo;
+    FFRenderProps *_renderProps;
     NSArray *_renderFilesPaths;
-    FFRenderer *_renderer;
-    BOOL _isLastRenderDest;
+    NSObject<FFDestRendererLastTimeReceivedProtocol> *_lastTimeDelegate;
 }
 
-- (int)destRecommendedFFSVPriority;
-- (BOOL)wantsDithering:(id)arg1;
-- (int)requestedBackground;
-- (id)requestedImageInfo;
-- (int)drawFieldsInterlaced;
-- (void)setNeedsUpdate:(BOOL)arg1;
-- (int)getFrameQueueStatus;
-- (void)pushFrame:(id)arg1;
-- (void)writeFrame:(id)arg1;
-- (void)_updateSegmentStoreWhenWritesFinish;
-- (void)_notifyPlayer;
-- (BOOL)isRunning;
-- (void)stop;
-- (void)start:(id)arg1;
-- (void)endRender;
-- (void)beginRenderWithRenderer:(id)arg1 forLastDest:(BOOL)arg2;
-- (void)finishedProcessing:(CDStruct_1b6d18a9)arg1;
-- (_Bool)isPauseRequested;
-- (void)haveRenderCheckForPause;
-- (void)startingToProcess:(CDStruct_1b6d18a9)arg1;
-- (void)flush:(BOOL)arg1;
-- (void)setPlayer:(id)arg1;
-- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
-- (void *)figClock;
+- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderProps:(id)arg2 renderFilesPaths:(id)arg3;
 - (void)dealloc;
-- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 renderInfo:(id)arg2 renderFilesPaths:(id)arg3;
+- (struct OpaqueFigClock *)figClock;
+- (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3;
+- (void)setPlayer:(id)arg1;
+- (void)flush:(BOOL)arg1;
+- (CDStruct_1b6d18a9)lastTimeReceived;
+- (void)setLastTimeReceived:(CDStruct_1b6d18a9)arg1;
+- (void)setLastTimeDelegate:(id)arg1;
+- (void)start;
+- (void)stop;
+- (BOOL)isRunning;
+- (void)_notifyPlayer;
+- (void)_updateSegmentStoreWhenWritesFinish;
+- (void)writeFrame:(id)arg1;
+- (void)pushFrame:(id)arg1;
+- (BOOL)wantsMoreFrames;
+- (void)setNeedsUpdate:(BOOL)arg1;
+- (int)drawFieldsInterlaced;
+- (int)imageLocation;
+- (struct CGColorSpace *)colorSpace;
+- (id)supportedPixelFormats;
+- (int)requestedBackground;
+- (BOOL)wantsDithering:(id)arg1;
 
 @end
 

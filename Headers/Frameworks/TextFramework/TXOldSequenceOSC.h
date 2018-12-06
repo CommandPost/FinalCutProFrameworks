@@ -11,10 +11,10 @@
     struct TXTextSequenceBehavior *_sequenceBH;
 }
 
-- (void)draw;
-- (struct TXTextSequenceBehavior *)getSequenceBehavior;
-- (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)dealloc;
+- (struct TXTextSequenceBehavior *)getSequenceBehavior;
+- (void)draw;
 
 @end
 

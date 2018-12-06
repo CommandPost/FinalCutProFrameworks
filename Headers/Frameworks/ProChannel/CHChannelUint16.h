@@ -10,31 +10,31 @@
 {
 }
 
-+ (struct OZChannelUint16 *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (BOOL)getKeyframeBeforeTime:(CDStruct_198678f7)arg1 time:(CDStruct_198678f7 *)arg2 curveUint16Value:(unsigned short *)arg3;
-- (BOOL)getKeyframeAfterTime:(CDStruct_198678f7)arg1 time:(CDStruct_198678f7 *)arg2 curveUint16Value:(unsigned short *)arg3;
-- (BOOL)getLastKeyframeTime:(CDStruct_198678f7 *)arg1 curveUint16Value:(unsigned short *)arg2;
-- (BOOL)getFirstKeyframeTime:(CDStruct_198678f7 *)arg1 curveUint16Value:(unsigned short *)arg2;
-- (void)setFineDeltaUint16Value:(unsigned short)arg1;
-- (double)fineDeltaUint16Value;
-- (void)setCoarseDeltaUint16Value:(unsigned short)arg1;
-- (double)coarseDeltaUint16Value;
-- (void)setMaxUIUint16Value:(unsigned short)arg1;
-- (unsigned short)maxUIUint16Value;
-- (void)setMinUIUint16Value:(unsigned short)arg1;
-- (unsigned short)minUIUint16Value;
-- (void)setMaxCurveUint16Value:(unsigned short)arg1;
-- (unsigned short)maxCurveUint16Value;
-- (void)setMinCurveUint16Value:(unsigned short)arg1;
-- (unsigned short)minCurveUint16Value;
-- (void)setDefaultCurveUint16Value:(unsigned short)arg1;
-- (unsigned short)defaultCurveUint16Value;
-- (void)setCurveUint16Value:(unsigned short)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
-- (void)getExtremaBetweenStart:(CDStruct_198678f7)arg1 end:(CDStruct_198678f7)arg2 minUint16Value:(unsigned short *)arg3 maxUint16Value:(unsigned short *)arg4;
-- (unsigned short)curveUint16ValueAtTime:(CDStruct_198678f7)arg1;
-- (unsigned short)uint16ValueAtTime:(CDStruct_198678f7)arg1;
++ (struct OZChannelUint16 *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelUint16 *)ozChannel;
+- (unsigned short)uint16ValueAtTime:(CDStruct_1b6d18a9)arg1;
+- (unsigned short)curveUint16ValueAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)getExtremaBetweenStart:(CDStruct_1b6d18a9)arg1 end:(CDStruct_1b6d18a9)arg2 minUint16Value:(unsigned short *)arg3 maxUint16Value:(unsigned short *)arg4;
+- (void)setCurveUint16Value:(unsigned short)arg1 atTime:(CDStruct_1b6d18a9)arg2 options:(unsigned int)arg3;
+- (unsigned short)defaultCurveUint16Value;
+- (void)setDefaultCurveUint16Value:(unsigned short)arg1;
+- (unsigned short)minCurveUint16Value;
+- (void)setMinCurveUint16Value:(unsigned short)arg1;
+- (unsigned short)maxCurveUint16Value;
+- (void)setMaxCurveUint16Value:(unsigned short)arg1;
+- (unsigned short)minUIUint16Value;
+- (void)setMinUIUint16Value:(unsigned short)arg1;
+- (unsigned short)maxUIUint16Value;
+- (void)setMaxUIUint16Value:(unsigned short)arg1;
+- (double)coarseDeltaUint16Value;
+- (void)setCoarseDeltaUint16Value:(unsigned short)arg1;
+- (double)fineDeltaUint16Value;
+- (void)setFineDeltaUint16Value:(unsigned short)arg1;
+- (BOOL)getFirstKeyframeTime:(CDStruct_1b6d18a9 *)arg1 curveUint16Value:(unsigned short *)arg2;
+- (BOOL)getLastKeyframeTime:(CDStruct_1b6d18a9 *)arg1 curveUint16Value:(unsigned short *)arg2;
+- (BOOL)getKeyframeAfterTime:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9 *)arg2 curveUint16Value:(unsigned short *)arg3;
+- (BOOL)getKeyframeBeforeTime:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9 *)arg2 curveUint16Value:(unsigned short *)arg3;
 
 @end
 

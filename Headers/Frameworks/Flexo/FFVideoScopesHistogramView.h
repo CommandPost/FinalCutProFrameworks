@@ -6,31 +6,42 @@
 
 #import <Flexo/FFVideoScopesView.h>
 
-#import "FFDestVideoScopesGLDelegate.h"
+#import "FFPlayerVideoScopesModuleViewDelegate.h"
+
+@class LKMenu;
 
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesHistogramView : FFVideoScopesView <FFDestVideoScopesGLDelegate>
+@interface FFVideoScopesHistogramView : FFVideoScopesView <FFPlayerVideoScopesModuleViewDelegate>
 {
-    long long _displayMode;
+    LKMenu *_contextualMenu;
+    long long _viewMode;
+    long long _printerDensityLevels;
+    long long _displayColorMode;
+    CDStruct_3de7261d _state;
     void *_FFVideoScopesHistogramViewPrivate;
 }
 
-- (id)_initVideoScopesHistogramView;
-- (struct FFVideoScopesHistogramViewPrivate *)_Private;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)scrollWheel:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)setZoomFactor:(float)arg1;
-- (void)setFrameSize:(struct CGSize)arg1;
-- (void)awakeFromNib;
-- (void)buildLayers;
-@property long long displayMode; // @dynamic displayMode;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
+@property BOOL showGuides; // @dynamic showGuides;
+@property long long viewMode; // @dynamic viewMode;
+@property long long printerDensityLevels; // @dynamic printerDensityLevels;
+@property long long displayColorMode; // @dynamic displayColorMode;
+- (void)buildLayers;
+- (void)teardownLayers;
+- (void)awakeFromNib;
+- (void)removeFromSuperview;
+- (void)setZoomFactor:(float)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)scrollWheel:(id)arg1;
+- (void)drawScopeViewWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (id)menuForVideoScopeOptions;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (struct FFVideoScopesHistogramViewPrivate *)_Private;
+- (id)_initVideoScopesHistogramView;
 
 @end
 

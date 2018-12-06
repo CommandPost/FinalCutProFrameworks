@@ -4,22 +4,27 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKAbstractItemBackgroundLayer.h>
+#import <TLKit/TLKItemBackgroundLayer.h>
 
 @class CALayer;
 
-@interface TLKPlaceholderLayer : TLKAbstractItemBackgroundLayer
+@interface TLKPlaceholderLayer : TLKItemBackgroundLayer
 {
-    id <TLKTimelineItem> _representedObject;
-    CALayer *_itemBackgroundLayer;
-    BOOL _showTransitionsAsPlaceholder;
+    id _representedObject;
+    CALayer *_backgroundLayer;
 }
 
-@property BOOL showTransitionsAsPlaceholder; // @synthesize showTransitionsAsPlaceholder=_showTransitionsAsPlaceholder;
-- (void)setRepresentedObject:(id)arg1 contentsMask:(int)arg2;
-@property id <TLKTimelineItem> representedObject;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+@property(retain) id <TLKTimelineItem> representedObject;
+- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
+- (void)setDelegate:(id)arg1;
+- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
+- (void)addSublayer:(id)arg1;
+- (void)insertSublayer:(id)arg1 below:(id)arg2;
+- (void)insertSublayer:(id)arg1 above:(id)arg2;
+- (void)replaceSublayer:(id)arg1 with:(id)arg2;
+- (void)layoutSublayers;
 
 @end
 

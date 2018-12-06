@@ -6,18 +6,17 @@
 
 #import <Flexo/FFRiggedChannelFolderLabelController.h>
 
-@class FFAudioUnitEffectRootChannel, FFEffectBundlePart;
+@class FFAudioUnitEffectRootChannel;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioUnitEffectRootChannelLabelController : FFRiggedChannelFolderLabelController
 {
     FFAudioUnitEffectRootChannel *m_rootChannel;
-    FFEffectBundlePart *m_observedObject;
 }
 
-- (void)_updateControllerName;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)_updateControllerName;
 
 @end
 

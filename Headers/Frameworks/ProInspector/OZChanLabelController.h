@@ -6,42 +6,32 @@
 
 #import <ProInspector/OZViewController.h>
 
-@class NSColor, OZLabelText;
+@class OZLabelText;
 
 @interface OZChanLabelController : OZViewController
 {
     OZLabelText *_pLabelText;
     float _currIndentAmount;
     BOOL _isCustomLabelString;
-    NSColor *_enableColor;
-    float _cachedLabelTextWidth;
-    BOOL _cachedLabelTextWidthIsValid;
 }
 
 + (float)indentAmount;
-@property(readonly) OZLabelText *pLabelText; // @synthesize pLabelText=_pLabelText;
-- (void)setEnableColor:(id)arg1;
-- (void)setDisclosureTriangleIndentLevel:(id)arg1;
-- (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)doDrag:(list_9af5505e *)arg1 viewList:(id)arg2;
-- (void)highlightChannel:(struct OZChannelBase *)arg1;
-- (float)suggestedMinLabelWidth;
-- (float)suggestedMaxLabelWidth;
-- (void)invalidateCachedLabelTextWidth;
-- (float)labelTextWidth;
-- (void)didBuildUI;
-- (BOOL)rejectsTwoColumnLayout;
-- (BOOL)isLeftJustified;
-- (void)setChannelName:(id)arg1;
-- (void)setCustomLabelString:(id)arg1;
-- (id)labelTextForChannel:(struct OZChannelBase *)arg1;
-- (void)setAnimStatusClass:(Class)arg1;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (void)dealloc;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 generateUI:(BOOL)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (void)setAnimStatusClass:(Class)arg1;
+- (id)labelTextForChannel:(struct OZChannelBase *)arg1;
+- (void)setCustomLabelString:(id)arg1;
+- (void)setChannelName:(id)arg1;
+- (BOOL)isLeftJustified;
+- (void)didBuildUI;
+- (float)suggestedMinLabelWidth;
+- (void)highlightChannel:(struct OZChannelBase *)arg1;
+- (void)doDrag:(list_ee649c21 *)arg1 viewList:(id)arg2;
+- (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
 
 @end
 

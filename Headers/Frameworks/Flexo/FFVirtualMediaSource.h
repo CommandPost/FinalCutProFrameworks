@@ -8,7 +8,7 @@
 
 #import "NSCopying.h"
 
-@class FFRole, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFVirtualMediaSource : FFMediaSource <NSCopying>
@@ -16,24 +16,20 @@ __attribute__((visibility("hidden")))
     NSString *m_sourceName;
     NSString *m_sourceType;
     int m_playEnable;
-    FFRole *m_role;
 }
 
-- (void)setRole:(id)arg1;
-- (id)role;
-- (void)setPlayEnable:(int)arg1;
-- (void)setSourceName:(id)arg1;
-- (int)playEnable;
-- (id)sourceType;
-- (id)sourceName;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithAnchoredObject:(id)arg1 audioSourceDict:(id)arg2;
-- (id)initWithSourceDescription:(id)arg1;
-- (id)initWithName:(id)arg1 sourceType:(id)arg2;
 - (id)init;
+- (id)initWithName:(id)arg1 sourceType:(id)arg2;
+- (id)initWithSourceDescription:(id)arg1;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)sourceName;
+- (id)sourceType;
+- (int)playEnable;
+- (void)setSourceName:(id)arg1;
+- (void)setPlayEnable:(int)arg1;
 
 @end
 

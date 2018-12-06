@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)mouseMoved:(id)arg1;
-- (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)mouseMoved:(id)arg1;
 
 @end
 

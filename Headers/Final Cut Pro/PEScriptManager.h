@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class NSDate, NSMenu, NSString;
+@class NSDate, NSMenu;
 
 @interface PEScriptManager : NSObject <NSMenuDelegate>
 {
@@ -26,29 +26,23 @@
     NSMenu *_scriptMenu;
 }
 
-+ (id)userScriptsPath;
 + (id)sharedManager;
-- (void)runPythonScript:(id)arg1;
-- (void)executeScript:(id)arg1;
-- (void)openScriptsFolder:(id)arg1;
-- (void)scriptDirectoryDidChange:(id)arg1;
-- (void)sendScriptDirectoryDidChangeAppleEvent;
-- (void)scriptDidExecute:(id)arg1;
-- (void)appDidBecomeActive:(id)arg1;
-- (void)populateMenu:(id)arg1 atPath:(id)arg2 forMainMenu:(BOOL)arg3;
-- (void)rebuildScriptMenu:(id)arg1 forMainMenu:(BOOL)arg2;
-- (void)rebuildScriptMenu:(id)arg1;
-- (void)menuNeedsUpdate:(id)arg1;
-- (void)dealloc;
-- (id)init;
-- (id)scriptMenu;
++ (id)userScriptsPath;
 - (void)setScriptMenu:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)scriptMenu;
+- (id)init;
+- (void)dealloc;
+- (void)menuNeedsUpdate:(id)arg1;
+- (void)rebuildScriptMenu:(id)arg1;
+- (void)rebuildScriptMenu:(id)arg1 forMainMenu:(BOOL)arg2;
+- (void)populateMenu:(id)arg1 atPath:(id)arg2 forMainMenu:(BOOL)arg3;
+- (void)appDidBecomeActive:(id)arg1;
+- (void)scriptDidExecute:(id)arg1;
+- (void)sendScriptDirectoryDidChangeAppleEvent;
+- (void)scriptDirectoryDidChange:(id)arg1;
+- (void)openScriptsFolder:(id)arg1;
+- (void)executeScript:(id)arg1;
+- (void)runPythonScript:(id)arg1;
 
 @end
 

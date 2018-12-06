@@ -11,8 +11,8 @@
     struct OZDocument *_pDocument;
 }
 
-@property(nonatomic) struct OZDocument *document; // @synthesize document=_pDocument;
 - (id)stringForObjectValue:(id)arg1;
+@property(nonatomic) struct OZDocument *document; // @synthesize document=_pDocument;
 
 @end
 

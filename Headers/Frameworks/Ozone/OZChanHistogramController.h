@@ -13,8 +13,8 @@
     OZHistogramEditor *_histogramEditor;
 }
 
-- (void)update;
 - (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
+- (void)update;
 
 @end
 

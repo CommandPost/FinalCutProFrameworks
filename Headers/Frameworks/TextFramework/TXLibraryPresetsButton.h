@@ -11,10 +11,10 @@
 }
 
 + (void)initialize;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)viewDidMoveToWindow;
-- (void)_commonInit;
 - (void)addItemWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3;
+- (void)_commonInit;
+- (void)viewDidMoveToWindow;
+- (void)drawRect:(struct CGRect)arg1;
 
 @end
 

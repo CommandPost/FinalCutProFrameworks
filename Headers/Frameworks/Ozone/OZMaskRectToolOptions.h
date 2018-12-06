@@ -14,10 +14,10 @@
     LKTextField *_pRoundnessTF;
 }
 
-- (void)setRoundness:(id)arg1;
-- (id)contentView;
-- (id)optionsNibName;
 - (id)title;
+- (id)optionsNibName;
+- (id)contentView;
+- (void)setRoundness:(id)arg1;
 
 @end
 

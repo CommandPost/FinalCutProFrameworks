@@ -6,9 +6,7 @@
 
 #import "NSObject.h"
 
-@class Protocol;
-
 @protocol PROAPIObject <NSObject>
-- (BOOL)conformsToProtocol:(Protocol *)arg1 version:(unsigned int)arg2;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 @end
 

@@ -15,15 +15,13 @@
     PIParameterPulldown *_pParamPulldown;
 }
 
-- (float)suggestedMaxParamWidth;
-- (float)suggestedMinParamWidth;
-- (void)setChannelValue:(id)arg1;
-- (BOOL)hasControls;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (BOOL)hasControls;
+- (void)setChannelValue:(id)arg1;
 
 @end
 

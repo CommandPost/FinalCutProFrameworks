@@ -14,9 +14,9 @@
     OZViewController *_customSpeedCtrl;
 }
 
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
-- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
 - (void)_updateCustomSpeed:(struct TXTextFromFileGenerator *)arg1;
+- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
 
 @end
 

@@ -6,28 +6,19 @@
 
 #import "CALayer.h"
 
-@class CATextLayer, NSColor, NSDictionary, NSString, TLKButtonLayer, TLKTimelineView;
+@class CATextLayer, NSString, TLKButtonLayer;
 
 @interface TLKAccessoryTitleLayer : CALayer
 {
-    NSColor *_tintColor;
-    TLKButtonLayer *_closeButtonLayer;
-    NSDictionary *_titleLayerColorizedSublayers;
     CATextLayer *_titleLayer;
+    TLKButtonLayer *_closeButtonLayer;
 }
 
-@property CATextLayer *titleLayer; // @synthesize titleLayer=_titleLayer;
-@property(retain) NSDictionary *titleLayerColorizedSublayers; // @synthesize titleLayerColorizedSublayers=_titleLayerColorizedSublayers;
-@property(retain) TLKButtonLayer *closeButtonLayer; // @synthesize closeButtonLayer=_closeButtonLayer;
-@property(retain, nonatomic) NSColor *tintColor; // @synthesize tintColor=_tintColor;
-- (void)layoutSublayers;
-@property(retain) NSString *title;
-- (id)timelineView;
-- (void)dealloc;
 - (id)init;
-
-// Remaining properties
-@property __weak TLKTimelineView *delegate; // @dynamic delegate;
+- (id)timelineView;
+- (id)closeButtonLayer;
+@property(retain) NSString *title;
+- (void)layoutSublayers;
 
 @end
 

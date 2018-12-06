@@ -9,38 +9,32 @@
 #import "NSAnimationDelegate.h"
 #import "NSOpenSavePanelDelegate.h"
 
-@class FFLibrary, FFXMLImportOptions, NSButton, NSMatrix, NSOpenPanel, NSPopUpButton, NSString, NSView;
-
 @interface FFXMLImportDialogController : NSViewController <NSAnimationDelegate, NSOpenSavePanelDelegate>
 {
-    NSOpenPanel *_panel;
-    NSPopUpButton *_storagePopup;
-    FFLibrary *_storageLocation;
-    BOOL _useAlternateAccessoryView;
-    NSView *_alternateAccessoryView;
-    NSPopUpButton *_alternateStoragePopup;
-    NSButton *_incrementalImportCheckBox;
-    NSMatrix *_resolveConflictRadioButtons;
-    FFXMLImportOptions *_options;
+    BOOL mImportAllMedia;
+    BOOL mIncludeMarkers;
+    BOOL mIncludeFX;
+    BOOL mDebugExportAfterImport;
+    id mPanel;
+    id mAdvancedOptionsButton;
+    id mCheckboxOptionsView;
+    id mImportAllMediaButton;
+    id mIncludeMarkersButton;
+    id mIncludeFXButton;
+    id mDebugExportAfterImportButton;
 }
 
-- (void)dealloc;
-- (id)initWithOpenPanel:(id)arg1;
-- (void)optionChanged:(id)arg1;
-@property(copy, nonatomic) FFXMLImportOptions *importOptions;
-- (void)enableResolveConflictOption:(BOOL)arg1;
-@property(nonatomic) unsigned long long resolveConflictOption;
-- (void)enableIncrementalImportOption:(BOOL)arg1;
-@property(nonatomic) BOOL incrementalImportOption;
-- (void)storageChanged:(id)arg1;
-- (void)updateLocationPopup;
-- (id)library;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)refreshCheckboxes;
+- (void)resetDefaults:(BOOL)arg1;
+- (id)initWithOpenPanel:(id)arg1 openProjects:(id)arg2;
+- (id)optionsDict;
+- (void)setImportMediaForXML:(id)arg1;
+- (void)setIncludeMarkers:(id)arg1;
+- (void)setIncludeFX:(id)arg1;
+- (void)setDebugExportAfterImport:(id)arg1;
+- (void)revealHide:(BOOL)arg1 optionsView:(id)arg2;
+- (void)showCheckboxes:(BOOL)arg1;
+- (void)toggleRevealAdvancedOptions:(id)arg1;
 
 @end
 

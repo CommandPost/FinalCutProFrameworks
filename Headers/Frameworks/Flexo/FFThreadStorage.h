@@ -6,14 +6,16 @@
 
 #import "NSObject.h"
 
+@class NSMutableDictionary;
+
 __attribute__((visibility("hidden")))
 @interface FFThreadStorage : NSObject
 {
-    struct NSMutableDictionary *_dict;
+    NSMutableDictionary *_dict;
 }
 
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
 
 @end
 

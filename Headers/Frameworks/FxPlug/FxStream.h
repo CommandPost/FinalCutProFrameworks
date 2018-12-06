@@ -11,12 +11,12 @@
     struct FxStreamPriv *_priv;
 }
 
-- (id)createSampleAtTime:(double)arg1;
-- (id)provider;
-- (void)setPin:(id)arg1;
-- (id)pin;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)pin;
+- (void)setPin:(id)arg1;
+- (id)provider;
+- (id)createSampleAtTime:(double)arg1;
 
 @end
 

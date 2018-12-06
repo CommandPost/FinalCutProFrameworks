@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFPasteboardTaskDelegate, NSError, NSMapTable, NSPasteboard;
+@class NSMapTable, NSPasteboard;
 
 @interface FFPasteboard : NSObject
 {
@@ -16,64 +16,52 @@
     long long _cachedPBCount;
     long long _cachedFromURLPBCount;
     BOOL _cacheEnabled;
-    NSError *_importError;
-    FFPasteboardTaskDelegate *_taskDelegate;
 }
 
 + (id)readableTypes;
-@property(retain, nonatomic) NSError *importError; // @synthesize importError=_importError;
-@property(retain, nonatomic) NSPasteboard *pasteboard; // @synthesize pasteboard=_pasteboard;
-- (CDStruct_1b6d18a9)playhead:(id)arg1 options:(id)arg2;
-- (id)newEffectsWithProject:(id)arg1 forEffectType:(id)arg2 options:(id)arg3;
-- (id)newBinItemsWithProject:(id)arg1 options:(id)arg2;
-- (id)newMediaWithSequence:(id)arg1 fromURL:(char *)arg2 options:(id)arg3;
-- (void)_applyRoleImportOptionsToItems:(id)arg1 inLibrary:(id)arg2;
-- (id)_newMediaWithProject:(id)arg1 andSequence:(id)arg2 fromURL:(char *)arg3 options:(id)arg4;
-- (CDStruct_1b6d18a9)_playheadWithProject:(id)arg1 assetFlags:(int)arg2 options:(id)arg3;
-- (id)_newObjectsWithProject:(id)arg1 assetFlags:(int)arg2 fromURL:(char *)arg3 options:(id)arg4 userInfoMap:(id *)arg5;
-- (id)_newObjectsWithProjectCore:(id)arg1 assetFlags:(int)arg2 fromURL:(char *)arg3 options:(id)arg4 userInfoMap:(id *)arg5;
-- (void)_addInfo:(id)arg1 infoKey:(id)arg2 forURL:(id)arg3 infoURLInfoDict:(id)arg4;
-- (void)_setCachedFromURL:(BOOL)arg1 forKey:(id)arg2;
-- (BOOL)_cachedFromURLForKey:(id)arg1;
-- (id)_newCachedObjectsForKey:(id)arg1;
-- (id)_copyCacheKeyForProjectID:(id)arg1 assetFlags:(int)arg2 options:(id)arg3;
-- (BOOL)hasKeyframes;
-- (BOOL)hasEffectsWithType:(id)arg1;
-- (BOOL)hasMarkers;
-- (BOOL)hasPlayhead;
-- (BOOL)hasEdits:(BOOL)arg1;
-- (BOOL)hasBinObjects:(BOOL)arg1 options:(id)arg2;
-- (BOOL)hasMedia:(BOOL)arg1;
-- (BOOL)isNative;
-- (BOOL)hasSupportedPasteboardItems;
-- (id)_fileTypes:(id)arg1 options:(id)arg2;
-- (BOOL)_hasTextGenerator;
-- (BOOL)_isTextFile:(id)arg1;
-- (BOOL)writeEffects:(id)arg1;
-- (BOOL)writeEffectIDs:(id)arg1 project:(id)arg2;
-- (id)encodeKeyToTrackTypeKey:(id)arg1;
-- (id)trackTypeToEncodeKey:(id)arg1;
-- (id)newEffectStacksWithProject:(id)arg1 options:(id)arg2;
-- (id)newKeyframesWithProject:(id)arg1 options:(id)arg2;
-- (id)newMarkersWithProject:(id)arg1 options:(id)arg2;
-- (id)newEditsWithProject:(id)arg1 mediaByReferenceOnly:(BOOL)arg2 options:(id)arg3 userInfoMap:(id *)arg4;
-- (id)newEditsWithProject:(id)arg1 mediaByReferenceOnly:(BOOL)arg2 options:(id)arg3;
-- (BOOL)writeKeyframes:(id)arg1 options:(id)arg2;
-- (BOOL)writeEffectStacks:(id)arg1 options:(id)arg2;
-- (BOOL)writeMarkers:(id)arg1 options:(id)arg2;
-- (BOOL)writeAnchoredObjects:(id)arg1 userInfo:(id)arg2 options:(id)arg3;
-- (BOOL)writeAnchoredObjects:(id)arg1 options:(id)arg2;
-- (BOOL)writeRangesOfMedia:(id)arg1 options:(id)arg2;
-- (BOOL)writeRangesOfMedia:(id)arg1 withPlayhead:(CDStruct_1b6d18a9)arg2 options:(id)arg3;
-- (void)_getCopiedTypesFromBinObjects:(id)arg1 copiedTypes:(id)arg2;
-- (id)_copiedTypes:(id)arg1;
-- (unsigned long long)_copiedTypesCount:(id)arg1 category:(id)arg2 mediaType:(id)arg3;
-- (void)_copiedTypesAdd:(id)arg1 category:(id)arg2 mediaType:(id)arg3;
-- (BOOL)cacheEnabled;
-- (void)setCacheEnabled:(BOOL)arg1;
-- (void)dealloc;
-- (id)initWithPasteboard:(id)arg1;
 - (id)initWithName:(id)arg1;
+- (id)initWithPasteboard:(id)arg1;
+- (void)dealloc;
+- (void)setCacheEnabled:(BOOL)arg1;
+- (BOOL)cacheEnabled;
+- (void)_copiedTypesAdd:(id)arg1 category:(id)arg2 mediaType:(id)arg3;
+- (unsigned long long)_copiedTypesCount:(id)arg1 category:(id)arg2 mediaType:(id)arg3;
+- (id)_copiedTypes:(id)arg1;
+- (void)_getCopiedTypesFromBinObjects:(id)arg1 copiedTypes:(id)arg2;
+- (BOOL)writeRangesOfMedia:(id)arg1 withPlayhead:(CDStruct_1b6d18a9)arg2 options:(id)arg3;
+- (BOOL)writeRangesOfMedia:(id)arg1 options:(id)arg2;
+- (BOOL)writeAnchoredObjects:(id)arg1 options:(id)arg2;
+- (BOOL)writeMarkers:(id)arg1 options:(id)arg2;
+- (id)anchoredObjectsWithProject:(id)arg1 options:(id)arg2;
+- (id)markersWithProject:(id)arg1 options:(id)arg2;
+- (id)trackTypeToEncodeKey:(id)arg1;
+- (id)encodeKeyToTrackTypeKey:(id)arg1;
+- (BOOL)writeEffectIDs:(id)arg1 project:(id)arg2;
+- (BOOL)writeEffects:(id)arg1;
+- (BOOL)_isTextFile:(id)arg1;
+- (BOOL)_hasTextGenerator;
+- (id)_fileTypes:(id)arg1 options:(id)arg2;
+- (BOOL)hasSupportedPasteboardItems;
+- (BOOL)isNative;
+- (BOOL)hasMedia:(BOOL)arg1;
+- (BOOL)hasBinObjects:(BOOL)arg1 options:(id)arg2;
+- (BOOL)hasEdits:(BOOL)arg1;
+- (BOOL)hasPlayhead;
+- (BOOL)hasMarkers;
+- (BOOL)hasEffectsWithType:(id)arg1;
+- (id)_copyCacheKeyForProjectID:(id)arg1 assetFlags:(int)arg2 options:(id)arg3;
+- (id)_cachedObjectsForKey:(id)arg1;
+- (BOOL)_cachedFromURLForKey:(id)arg1;
+- (void)_setCachedFromURL:(BOOL)arg1 forKey:(id)arg2;
+- (id)_objectsWithProjectCore:(id)arg1 assetFlags:(int)arg2 fromURL:(char *)arg3 options:(id)arg4;
+- (id)_objectsWithProject:(id)arg1 assetFlags:(int)arg2 fromURL:(char *)arg3 options:(id)arg4;
+- (id)_playheadWithProject:(id)arg1 assetFlags:(int)arg2 options:(id)arg3;
+- (id)_mediaWithProject:(id)arg1 andSequence:(id)arg2 fromURL:(char *)arg3 options:(id)arg4;
+- (id)mediaWithSequence:(id)arg1 fromURL:(char *)arg2 options:(id)arg3;
+- (id)binItemsWithProject:(id)arg1 options:(id)arg2;
+- (id)effectsWithProject:(id)arg1 forEffectType:(id)arg2 options:(id)arg3;
+- (CDStruct_1b6d18a9)playhead:(id)arg1 options:(id)arg2;
+@property(retain, nonatomic) NSPasteboard *pasteboard; // @synthesize pasteboard=_pasteboard;
 
 @end
 

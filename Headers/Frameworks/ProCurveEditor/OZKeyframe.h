@@ -18,22 +18,22 @@
     double _outTanV;
 }
 
-- (double)outTanV;
-- (void)setOutTanV:(double)arg1;
-- (CDStruct_1b6d18a9)outTanU;
-- (void)setOutTanU:(CDStruct_1b6d18a9)arg1;
-- (double)inTanV;
-- (void)setInTanV:(double)arg1;
-- (CDStruct_1b6d18a9)inTanU;
-- (void)setInTanU:(CDStruct_1b6d18a9)arg1;
-- (double)v;
-- (void)setV:(double)arg1;
-- (CDStruct_1b6d18a9)u;
-- (void)setU:(CDStruct_1b6d18a9)arg1;
-- (unsigned int)curveId;
-- (void)setCurveId:(unsigned int)arg1;
-- (void *)handle;
 - (void)setHandle:(void *)arg1;
+- (void *)handle;
+- (void)setCurveId:(unsigned int)arg1;
+- (unsigned int)curveId;
+- (void)setU:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)u;
+- (void)setV:(double)arg1;
+- (double)v;
+- (void)setInTanU:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)inTanU;
+- (void)setInTanV:(double)arg1;
+- (double)inTanV;
+- (void)setOutTanU:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)outTanU;
+- (void)setOutTanV:(double)arg1;
+- (double)outTanV;
 
 @end
 

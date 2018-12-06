@@ -12,10 +12,10 @@
     BOOL _clickable;
 }
 
-- (void)stopAnimation:(id)arg1;
-- (void)startAnimation:(id)arg1;
-- (void)mouseDown:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)startAnimation:(id)arg1;
+- (void)stopAnimation:(id)arg1;
 
 @end
 

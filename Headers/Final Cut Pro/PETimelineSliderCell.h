@@ -10,5 +10,7 @@
 {
 }
 
++ (id)_knobFacetForCell:(id)arg1;
+
 @end
 

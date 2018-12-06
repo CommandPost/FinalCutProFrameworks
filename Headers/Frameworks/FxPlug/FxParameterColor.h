@@ -11,10 +11,10 @@
     struct FxParameterColorPriv *_colorPriv;
 }
 
-- (void)setHasAlpha:(BOOL)arg1;
-- (BOOL)hasAlpha;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (BOOL)hasAlpha;
+- (void)setHasAlpha:(BOOL)arg1;
 
 @end
 

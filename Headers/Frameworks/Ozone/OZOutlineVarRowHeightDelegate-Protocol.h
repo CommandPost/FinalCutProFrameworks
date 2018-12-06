@@ -6,15 +6,13 @@
 
 #import "NSObject.h"
 
-@class NSOutlineView;
-
 @protocol OZOutlineVarRowHeightDelegate <NSObject>
 
 @optional
-- (void)outlineView:(NSOutlineView *)arg1 changedHeightOfItem:(id)arg2 to:(double)arg3;
-- (void)outlineView:(NSOutlineView *)arg1 changingHeightOfItem:(id)arg2 to:(double)arg3;
-- (double)outlineView:(NSOutlineView *)arg1 checkChangeToHeightOfItem:(id)arg2 to:(double)arg3;
-- (BOOL)outlineView:(NSOutlineView *)arg1 canChangeHeightOfItem:(id)arg2;
-- (double)outlineView:(NSOutlineView *)arg1 heightForItem:(id)arg2;
+- (double)outlineView:(id)arg1 heightForItem:(id)arg2;
+- (BOOL)outlineView:(id)arg1 canChangeHeightOfItem:(id)arg2;
+- (double)outlineView:(id)arg1 checkChangeToHeightOfItem:(id)arg2 to:(double)arg3;
+- (void)outlineView:(id)arg1 changingHeightOfItem:(id)arg2 to:(double)arg3;
+- (void)outlineView:(id)arg1 changedHeightOfItem:(id)arg2 to:(double)arg3;
 @end
 

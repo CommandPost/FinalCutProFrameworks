@@ -11,33 +11,22 @@
     unsigned long long _screenNumber;
     BOOL _fullscreen;
     struct CGRect _nonFullscreenFrame;
-    struct CGRect _actualFullscreenFrame;
-    BOOL _handlingWindowDidMove;
 }
 
-+ (unsigned long long)windowStyleMask;
-+ (unsigned long long)nextAvailableScreenIndexExcludingIndexes:(id)arg1;
-+ (unsigned long long)nextAvailableScreenIndexExcluding:(unsigned long long)arg1;
-+ (Class)windowClass;
 + (id)fullScreenWindowModule;
-@property(readonly, nonatomic) struct CGRect actualFullscreenFrame; // @synthesize actualFullscreenFrame=_actualFullscreenFrame;
-@property(nonatomic) unsigned long long screenNumber; // @synthesize screenNumber=_screenNumber;
-@property(nonatomic, getter=isFullscreen) BOOL fullscreen; // @synthesize fullscreen=_fullscreen;
-- (void)windowDidMove:(id)arg1;
-- (void)dealloc;
-- (id)customWindowsToEnterFullScreenForWindow:(id)arg1;
-- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)takeContentLayoutFromDictionary:(id)arg1;
-- (id)contentLayoutDictionary;
-- (void)viewDidLoad;
-- (void)setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
-- (void)_setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
-- (void)_unregisterForFullScreenNotifications;
-- (void)_mainWindowDidEnterFullScreen:(id)arg1;
-- (void)_registerForFullScreenNotifications;
-- (void)screenParametersChanged:(id)arg1;
++ (Class)windowClass;
++ (unsigned long long)nextAvailableScreenIndexExcluding:(unsigned long long)arg1;
 - (id)initWithWindowClass:(Class)arg1 windowStyleMask:(unsigned long long)arg2;
+- (void)screenParametersChanged:(id)arg1;
+- (void)_setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
+- (void)setFullscreen:(BOOL)arg1 animate:(BOOL)arg2;
+@property(nonatomic, getter=isFullscreen) BOOL fullscreen; // @synthesize fullscreen=_fullscreen;
+@property(nonatomic) unsigned long long screenNumber; // @synthesize screenNumber=_screenNumber;
+- (void)viewDidLoad;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 
 @end
 

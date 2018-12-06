@@ -7,13 +7,13 @@
 #import "NSObject.h"
 
 @protocol OZTimelineLayerControllerIF <NSObject>
-- (BOOL)isSnappedAtTime:(CDStruct_1b6d18a9 *)arg1;
-- (void)setSnapped:(BOOL)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)findSnaps:(vector_f7e3fd5f *)arg1 forceAllVisible:(BOOL)arg2;
-- (void)clearGlobalTimeRangeSelection;
-- (void)setTimeRangeSelection:(const struct PCTimeRange *)arg1;
-- (const struct PCTimeRange *)getTimeRangeSelection;
-- (void)updateVerticalZoomButton;
 - (void)updateMinusButton;
+- (void)updateVerticalZoomButton;
+- (const struct PCTimeRange *)getTimeRangeSelection;
+- (void)setTimeRangeSelection:(const struct PCTimeRange *)arg1;
+- (void)clearGlobalTimeRangeSelection;
+- (void)findSnaps:(vector_3e79211d *)arg1 forceAllVisible:(BOOL)arg2;
+- (void)setSnapped:(BOOL)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (BOOL)isSnappedAtTime:(CDStruct_1b6d18a9 *)arg1;
 @end
 

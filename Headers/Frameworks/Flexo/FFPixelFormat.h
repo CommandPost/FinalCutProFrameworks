@@ -10,58 +10,20 @@
 {
 }
 
-+ (id)pixelFormat_2vuy;
-+ (id)pixelFormat_v210;
-+ (id)pixelFormat_v216;
-+ (id)pixelFormat_y408;
-+ (id)pixelFormat_y416;
-+ (id)pixelFormat_r408;
-+ (id)pixelFormat_r4fl;
-+ (id)pixelFormat_R10k;
-+ (id)pixelFormatRGBX8;
-+ (id)pixelFormatBGR8;
-+ (id)pixelFormatARGB8;
-+ (id)pixelFormatBGRA8;
-+ (id)pixelFormatRGBA8;
-+ (id)pixelFormatRGBA16;
-+ (id)pixelFormat_b64a;
-+ (id)pixelFormatRGBAh;
-+ (id)pixelFormatRGBAf;
-+ (id)pixelFormatARGB8StraightAlpha;
-+ (id)pixelFormatRGBAfStraightAlpha;
-+ (id)pixelFormat_y416StraightAlpha;
-+ (id)pixelFormat_FullRangeLuma8;
-+ (id)pixelFormat_420v;
-+ (id)pixelFormat_420f;
-+ (id)pixelFormat_n16b;
-+ (id)pixelFormat_n64b;
-+ (id)pixelFormat_x420;
-+ (id)pixelFormat_xf20;
-+ (id)pixelFormat_grey8LumaPlane;
-+ (id)pixelFormat_cbCrChromaPlane;
-+ (id)straightAlphaPixelFormatFor:(id)arg1;
-+ (id)pixelFormatWithName:(id)arg1;
-+ (id)pixelFormatWithFourCC:(unsigned int)arg1;
-+ (void)registerPixelFormats;
-- (BOOL)isFloatOrHalfFloatPixelFormat;
-- (BOOL)canOutputInColorSpace:(struct CGColorSpace *)arg1;
-- (id)preferredOutputFormat;
-- (id)substituteOutputFormat;
-- (int)convertToHeYCbCrFormat;
-- (int)convertToHeFormat;
-- (unsigned int)CGBitmapInfo;
-- (unsigned int)QTPixelFormat;
-- (int)alphaType;
-- (BOOL)hasAlpha;
-- (BOOL)isSubsampled;
-- (BOOL)isYCbCr;
-- (BOOL)isRAW;
-- (unsigned long long)optimalBytesPerRowForWidth:(unsigned int)arg1;
-- (unsigned long long)packedBytesPerRowForWidth:(unsigned int)arg1;
-- (int)pixelBlockWidth;
-- (int)bitsPerBlock;
-- (int)bitsPerComponent;
 - (id)name;
+- (int)bitsPerComponent;
+- (int)bitsPerBlock;
+- (int)pixelBlockWidth;
+- (unsigned long long)packedBytesPerRowForWidth:(unsigned int)arg1;
+- (unsigned long long)optimalBytesPerRowForWidth:(unsigned int)arg1;
+- (BOOL)isYCbCr;
+- (BOOL)hasAlpha;
+- (int)alphaType;
+- (unsigned int)QTPixelFormat;
+- (unsigned int)CGBitmapInfo;
+- (int)convertToHeFormat;
+- (int)convertToHeYCbCrFormat;
+- (BOOL)canOutputInColorSpace:(struct CGColorSpace *)arg1;
 
 @end
 

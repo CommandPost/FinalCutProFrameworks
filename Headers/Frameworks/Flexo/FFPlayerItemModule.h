@@ -6,7 +6,7 @@
 
 #import "LKViewModule.h"
 
-@class FFContext, FFPlayerModule, FFProvider, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>;
+@class FFContext, FFPlayerModule, FFProvider, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>;
 
 @interface FFPlayerItemModule : LKViewModule
 {
@@ -16,24 +16,23 @@
     long long _effectCount;
 }
 
-+ (id)keyPathsForValuesAffectingPlayerModule;
+- (id)init;
+- (id)initWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
+- (void)dealloc;
+- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
+- (void)setDelegate:(id)arg1;
+@property(readonly) FFPlayerModule *playerModule;
+- (void)willStopPlayingWithPlayer:(id)arg1;
+- (void)didStartPlayingWithPlayer:(id)arg1;
+- (void)didEnterFullScreenMode;
+- (void)didExitFullScreenMode;
+- (void)updateLabel;
+- (id)inspectorClassName;
+- (id)selectedItems;
 @property(readonly, nonatomic) long long effectCount; // @synthesize effectCount=_effectCount;
 @property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) FFProvider *provider; // @synthesize provider=_provider;
-@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
-- (id)selectedItems;
-- (id)inspectorClassName;
-- (void)updateLabel;
-- (void)didExitFullScreenMode;
-- (void)didEnterFullScreenMode;
-- (void)didStartPlayingWithPlayer:(id)arg1;
-- (void)willStopPlayingWithPlayer:(id)arg1;
-@property(readonly) FFPlayerModule *playerModule;
-- (void)setDelegate:(id)arg1;
-- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)dealloc;
-- (id)initWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (id)init;
+@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *skimmable; // @synthesize skimmable=_skimmable;
 
 @end
 

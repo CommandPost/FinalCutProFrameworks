@@ -7,7 +7,7 @@
 #import "NSApplication.h"
 
 @interface NSApplication (ModuleKitExtensions)
-- (id)mainWindowActiveModule;
 - (id)keyWindowActiveModule;
+- (id)mainWindowActiveModule;
 @end
 

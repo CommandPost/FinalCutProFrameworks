@@ -10,7 +10,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKButton, LKPopUpButton, LKTextField, NSMenuItem, NSString;
+@class LKButton, LKPopUpButton, LKTextField, NSMenuItem;
 
 @interface FFTextSearchController : NSWindowController <NSTabViewDelegate, NSWindowDelegate, NSTextFieldDelegate>
 {
@@ -29,40 +29,34 @@
     NSMenuItem *_thisTextObjectMenuItem;
     NSMenuItem *_projectTextObjectsMenuItem;
     NSMenuItem *_sequenceTextObjectsMenuItem;
-    vector_9fc01ff5 _results;
+    vector_2735d0ca _results;
 }
 
-+ (id)getInstance;
 + (id)getInstanceWithDelegate:(id)arg1;
-@property(readonly, nonatomic) vector_9fc01ff5 results; // @synthesize results=_results;
++ (id)getInstance;
+- (void)setDelegate:(id)arg1;
+- (id)initWithDelegate:(id)arg1;
+- (void)showWindow:(id)arg1;
+- (void)setSearchInPopUpItemTitles:(id)arg1;
+- (unsigned int)_getFlags;
+- (void)_doSearch:(BOOL)arg1 setSelection:(BOOL)arg2;
+- (void)textEdited:(id)arg1;
+- (void)_doReplace:(BOOL)arg1 replaceAll:(BOOL)arg2;
+- (void)replaceAll:(id)arg1;
+- (void)replace:(id)arg1;
+- (void)replaceAndFind:(id)arg1;
+- (void)replaceTextFieldEntry:(id)arg1;
+- (void)findTextFieldEntry:(id)arg1;
+- (void)findAndReplaceNext:(id)arg1;
+- (void)findAndReplacePrevious:(id)arg1;
+- (void)windowWillLoad;
+- (void)windowDidLoad;
+- (void)windowWillClose:(id)arg1;
+- (void)controlTextDidChange:(id)arg1;
+- (void)updateUI:(int)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)updateUI:(int)arg1;
-- (void)controlTextDidChange:(id)arg1;
-- (void)windowWillClose:(id)arg1;
-- (void)windowDidLoad;
-- (void)windowWillLoad;
-- (void)findAndReplacePrevious:(id)arg1;
-- (void)findAndReplaceNext:(id)arg1;
-- (void)findTextFieldEntry:(id)arg1;
-- (void)replaceTextFieldEntry:(id)arg1;
-- (void)replaceAndFind:(id)arg1;
-- (void)replace:(id)arg1;
-- (void)replaceAll:(id)arg1;
-- (void)_doReplace:(BOOL)arg1 replaceAll:(BOOL)arg2;
-- (void)textEdited:(id)arg1;
-- (void)_doSearch:(BOOL)arg1 setSelection:(BOOL)arg2;
-- (unsigned int)_getFlags;
-- (void)setSearchInPopUpItemTitles:(id)arg1;
-- (void)showWindow:(id)arg1;
-- (id)initWithDelegate:(id)arg1;
-- (void)setDelegate:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+@property(readonly, nonatomic) vector_2735d0ca results; // @synthesize results=_results;
 
 @end
 

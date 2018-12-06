@@ -6,15 +6,13 @@
 
 #import "NSObject.h"
 
-@class NSMenu, NSObject<TLKPartInfo>, NSString;
-
 @protocol TLKPartInfo <NSObject>
-- (NSString *)partIdentifier;
-- (NSObject<TLKPartInfo> *)subpartAtPoint:(struct CGPoint)arg1;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)partIdentifier;
 
 @optional
-- (NSMenu *)contextMenu;
-- (id <TLKPartInfo>)partWithIdentifier:(NSString *)arg1;
 - (BOOL)partContainsPoint:(struct CGPoint)arg1;
+- (id)partWithIdentifier:(id)arg1;
+- (id)contextMenu;
 @end
 

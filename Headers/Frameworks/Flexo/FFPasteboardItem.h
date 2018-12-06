@@ -25,34 +25,27 @@ __attribute__((visibility("hidden")))
     NSArray *_modelObjectIDs;
 }
 
-+ (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
 + (id)readableTypesForPasteboard:(id)arg1;
++ (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
+- (id)init;
+- (void)dealloc;
+- (void)_initHelperWithObject:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4;
+- (id)initWithArray:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4;
+- (void)setModelObjectIDs:(id)arg1;
+- (id)modelObjectIDs;
+- (id)_decodeObjectsWithProject:(id)arg1 assetFlags:(int)arg2;
+- (id)objectsWithProject:(id)arg1 assetFlags:(int)arg2;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)writableTypesForPasteboard:(id)arg1;
+- (id)pasteboardPropertyListForType:(id)arg1;
+- (id)description;
+- (id)initWithPasteboardPropertyList:(id)arg1 ofType:(id)arg2;
 @property(retain, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property(retain, nonatomic) NSDictionary *copiedTypes; // @synthesize copiedTypes=_copiedTypes;
 @property(retain, nonatomic) NSString *parentObjectID; // @synthesize parentObjectID=_parentObjectID;
 @property(retain, nonatomic) NSString *documentID; // @synthesize documentID=_documentID;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
-- (id)initWithPasteboardPropertyList:(id)arg1 ofType:(id)arg2;
-@property(readonly, copy) NSString *description;
-- (id)pasteboardPropertyListForType:(id)arg1;
-- (id)writableTypesForPasteboard:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)newObjectsWithProject:(id)arg1 assetFlags:(int)arg2 outUserInfo:(id *)arg3;
-- (id)newObjectsWithProject:(id)arg1 assetFlags:(int)arg2;
-- (id)_newDecodedDataWithProject:(id)arg1 assetFlags:(int)arg2;
-- (id)modelObjectIDs;
-- (void)setModelObjectIDs:(id)arg1;
-- (id)initWithArray:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4 userInfo:(id)arg5;
-- (id)initWithArray:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4;
-- (void)_initHelperWithObject:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4 userInfo:(id)arg5;
-- (void)dealloc;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

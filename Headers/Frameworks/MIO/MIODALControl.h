@@ -15,14 +15,14 @@
     NSString *mName;
 }
 
+- (id)initWithCMIODALControlID:(unsigned int)arg1 classID:(unsigned int)arg2;
+- (void)dealloc;
+- (id)exposedBindings;
+@property(readonly, retain) NSString *name;
+- (void)propertyDidChange:(const struct CMIOObjectPropertyAddress *)arg1;
+@property NSDictionary *properties;
 @property(readonly) unsigned int classID; // @synthesize classID=mCMIODALClassID;
 @property(readonly) unsigned int controlID; // @synthesize controlID=mCMIODALControlID;
-@property NSDictionary *properties;
-- (void)propertyDidChange:(const struct CMIOObjectPropertyAddress *)arg1;
-@property(readonly, retain) NSString *name;
-- (id)exposedBindings;
-- (void)dealloc;
-- (id)initWithCMIODALControlID:(unsigned int)arg1 classID:(unsigned int)arg2;
 
 @end
 

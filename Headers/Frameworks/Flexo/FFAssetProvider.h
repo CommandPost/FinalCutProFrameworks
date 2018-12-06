@@ -18,26 +18,24 @@ __attribute__((visibility("hidden")))
     int _quality;
 }
 
-+ (id)extensions;
 + (id)utis;
-- (void)_sourceInvalidated:(id)arg1;
-- (id)inputProvider;
-- (int)quality;
-- (id)asset;
-- (BOOL)writerIsWaiting;
-- (void)_readUnlock;
-- (void)_readLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (id)displayName;
-- (id)sourceKeys;
-- (id)sourceKeyForObject:(id)arg1;
-- (id)newSourceForKey:(id)arg1;
-- (void)_setupSources;
-- (void)_ensureInputProvider;
-- (void)dealloc;
-- (id)object;
++ (id)extensions;
 - (id)initWithMedia:(id)arg1 quality:(int)arg2;
+- (id)object;
+- (void)dealloc;
+- (void)_setupSources;
+- (id)newSourceForKey:(id)arg1;
+- (id)sourceKeyForObject:(id)arg1;
+- (id)sourceKeys;
+- (id)displayName;
+- (void)_writeLock;
+- (void)_writeUnlock;
+- (void)_readLock;
+- (void)_readUnlock;
+- (id)asset;
+- (int)quality;
+- (id)inputProvider;
+- (void)_sourceInvalidated:(id)arg1;
 
 @end
 

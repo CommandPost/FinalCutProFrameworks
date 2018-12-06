@@ -11,10 +11,10 @@
     struct OZFootage *_pFootage;
 }
 
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
-- (BOOL)buildUIWithSceneNodes:(list_e89ce44a *)arg1 context:(id)arg2;
 - (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_699e9227 *)arg1 context:(id)arg2;
+- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
 
 @end
 

@@ -6,44 +6,28 @@
 
 #import "NSObject.h"
 
-#import "FFBackgroundTaskTarget.h"
+@class FFAnchoredObject, FFAudioMatchRequest, FFBackgroundTask;
 
-@class FFAnchoredObject, FFAudioMatchRequest, FFAudioUnitAnalyzingEffect, NSDictionary, NSMutableArray, NSMutableSet;
-
-@interface FFAudioMatchTask : NSObject <FFBackgroundTaskTarget>
+__attribute__((visibility("hidden")))
+@interface FFAudioMatchTask : NSObject
 {
-    FFAnchoredObject *_object;
-    NSMutableArray *_pendingRequests;
-    NSMutableSet *_cancelledRequests;
-    FFAudioMatchRequest *_currentRequest;
-    FFAudioMatchRequest *_currentObjectToMatchRequest;
-    BOOL _taskRunning;
-    BOOL _taskCancelled;
-    CDUnknownBlockType _completionBlock;
-    NSDictionary *_matchEffectStateForObject;
-    FFAudioUnitAnalyzingEffect *_analyzedMatchEffect;
+    FFAnchoredObject *_objectToModify;
+    FFAudioMatchRequest *_pendingRequest;
+    FFBackgroundTask *_backgroundTask;
+    void *_preset;
+    id _delegate;
 }
 
-@property(readonly, nonatomic) FFAnchoredObject *object; // @synthesize object=_object;
-- (id)librariesInUse:(id)arg1;
-- (id)assetsInUse:(id)arg1;
-- (void)canceledTask:(id)arg1;
-- (id)_taskObjects;
-- (void)_backgroundTaskCompleted;
-- (void)_dispatchBackgroundTask;
-- (BOOL)_isCurrentRequestCancelled;
-- (BOOL)_isRequestCancelled:(id)arg1;
-- (id)popRequest;
-- (void)_addRequest:(id)arg1;
-- (void)_performCompletionBlock;
-- (void)setCompletionBlock:(CDUnknownBlockType)arg1;
-- (BOOL)isMatchingForEffectStack:(id)arg1;
-- (void)setObjectToMatch:(id)arg1;
-- (void)_matchRunLoop:(id)arg1 onTask:(id)arg2;
-- (void)match:(id)arg1 forPass:(int)arg2 onTask:(id)arg3;
-- (void)_setMatchParameterOnChannelFolder:(id)arg1 templateLearn:(BOOL)arg2 materialLearn:(BOOL)arg3 materialMatch:(BOOL)arg4;
+- (id)initWithObjectToModify:(id)arg1 withFirstRequest:(id)arg2;
 - (void)dealloc;
-- (id)initWithObject:(id)arg1;
+- (void)match:(id)arg1 forPass:(int)arg2 onTask:(id)arg3;
+- (void)_matchRunLoop:(id)arg1 onTask:(id)arg2;
+- (void)addRequest:(id)arg1;
+- (void)kickoffBackgroundTask;
+@property(retain) id delegate; // @synthesize delegate=_delegate;
+@property(retain) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
+@property(retain) FFAudioMatchRequest *pendingRequest; // @synthesize pendingRequest=_pendingRequest;
+@property(retain) FFAnchoredObject *objectToModify; // @synthesize objectToModify=_objectToModify;
 
 @end
 

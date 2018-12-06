@@ -4,10 +4,8 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSData;
-
 @protocol FxCustomParameterDefinition
-- (id)valueFromData:(NSData *)arg1;
-- (NSData *)dataFromValue:(id)arg1;
+- (id)dataFromValue:(id)arg1;
+- (id)valueFromData:(id)arg1;
 @end
 

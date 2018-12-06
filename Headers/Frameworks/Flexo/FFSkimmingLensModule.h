@@ -11,12 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)isSkimmingLens;
-- (BOOL)playerUsesLayers;
-- (BOOL)acceptsFirstResponder;
-- (void)addOSC:(id)arg1;
-- (BOOL)shouldDrawVideoDest:(id)arg1;
 - (id)init;
+- (BOOL)shouldDrawVideoDest:(id)arg1;
+- (void)addOSC:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)playerUsesLayers;
 
 @end
 

@@ -10,7 +10,8 @@
 
 @interface OZExposeOverlay : OZOverlay
 {
-    struct vector<OZExposeObject *, std::__1::allocator<OZExposeObject *>> *_exposeObjects;
+    struct vector<OZExposeObject*, std::allocator<OZExposeObject*>> *_exposeObjects;
+    struct PCConditionVariable *_cond;
     struct PCMutex *_mutex;
     NSTimer *_timer;
     int _numDone;
@@ -21,7 +22,7 @@
     struct OZGroup *_rootGroup;
     double _startTime;
     double _exposeTime;
-    id *_overlay;
+    OZExposeOverlay **_overlay;
     unsigned int _flags;
     struct PCPtr<LiGroup> _world;
     PCMatrix44Tmpl_e98c85ee _pixelTransform;
@@ -30,33 +31,34 @@
     _Bool _anythingExposed;
 }
 
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)dealloc;
+- (int)getDrawingOrder;
+- (void)incrementNumDone;
+- (void)heartbeat:(id)arg1;
+- (_Bool)isEnabled;
+- (_Bool)anythingExposed;
+- (void)enable:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
+- (void)disable;
+- (void)clearExposeList;
+- (void)clearSelection;
+- (void)createExposeObject:(struct OZImageNode *)arg1 index:(int)arg2;
+- (void)buildExposeList:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
+- (void)buildExposeListForDrilling:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
+- (void)calculateNewRects;
+- (void)renderElements;
+- (void)buildRenderGraph;
+- (void)updateRenderGraph:(double)arg1;
+- (void)draw;
+- (struct OZObjectManipulator *)hitCheckNode:(const PCVector2_7e488b7d *)arg1;
+- (int)hitCheck:(id)arg1;
+- (int)hitCheckPoint:(const PCVector2_7e488b7d *)arg1;
+- (void)highlightObjectWithID:(unsigned int)arg1;
+- (void)highlightObject:(struct OZExposeObject *)arg1;
+- (void)mouseDown:(id)arg1;
+- (BOOL)postRedisplayOnActivePartChange;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)postRedisplayOnActivePartChange;
-- (void)mouseDown:(id)arg1;
-- (void)highlightObject:(struct OZExposeObject *)arg1;
-- (void)highlightObjectWithID:(unsigned int)arg1;
-- (int)hitCheckPoint:(const PCVector2_7e488b7d *)arg1;
-- (int)hitCheck:(id)arg1;
-- (struct OZObjectManipulator *)hitCheckNode:(const PCVector2_7e488b7d *)arg1;
-- (void)draw;
-- (void)updateRenderGraph:(double)arg1;
-- (void)buildRenderGraph;
-- (void)calculateNewRects;
-- (void)buildExposeListForDrilling:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
-- (void)buildExposeList:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
-- (void)createExposeObject:(struct OZImageNode *)arg1 index:(int)arg2;
-- (void)clearSelection;
-- (void)clearExposeList;
-- (void)disable;
-- (void)enable:(unsigned int)arg1 pBoard:(void *)arg2 dropInfo:(struct OZDropTargetInfo *)arg3;
-- (_Bool)anythingExposed;
-- (_Bool)isEnabled;
-- (void)heartbeat:(id)arg1;
-- (void)incrementNumDone;
-- (int)getDrawingOrder;
-- (void)dealloc;
-- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

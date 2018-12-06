@@ -19,12 +19,12 @@
 }
 
 + (id)instanceWithOpenPanel:(id)arg1 flags:(unsigned int)arg2;
-- (void)panelSelectionDidChange:(id)arg1;
-- (id)sequenceSettings;
-- (double)getPARFromPopup;
-- (void)getFrameRate:(double *)arg1 andNTSC:(char *)arg2;
-- (id)view;
 - (id)initWithOpenPanel:(id)arg1 flags:(unsigned int)arg2;
+- (id)view;
+- (void)getFrameRate:(double *)arg1 andNTSC:(char *)arg2;
+- (double)getPARFromPopup;
+- (id)sequenceSettings;
+- (void)panelSelectionDidChange:(id)arg1;
 
 @end
 

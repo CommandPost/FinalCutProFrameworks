@@ -8,13 +8,12 @@
 
 #import "CKAccessoryView.h"
 
-@class CKBaseExportPanel, NSButton, NSPopUpButton, OZObjCDocument;
+@class NSButton, NSPopUpButton, OZObjCDocument;
 
 @interface OZShareController : NSViewController <CKAccessoryView>
 {
     NSPopUpButton *_resolutionPopUp;
     NSPopUpButton *_colorPopUp;
-    NSPopUpButton *_colorSpacePopUp;
     NSButton *_premultiplyAlphaButton;
     NSPopUpButton *_renderQualityPopUp;
     NSPopUpButton *_fieldsPopUp;
@@ -27,41 +26,29 @@
     NSPopUpButton *_depthOfFieldPopUp;
     OZObjCDocument *_objCDoc;
     struct OZExportSettings *_tmpSettings;
-    CKBaseExportPanel *_baseExportPanel;
-    BOOL _allowWideGamut;
 }
 
-- (void)disallowWideGamut;
-- (void)setUserInfo:(id)arg1;
-- (id)userInfoAndDescription:(id *)arg1;
-- (void)setDepthOfField:(id)arg1;
-- (void)setReflections:(id)arg1;
-- (void)setShadows:(id)arg1;
-- (void)setLighting:(id)arg1;
-- (void)setCamera:(id)arg1;
-- (void)setFrameBlending:(id)arg1;
-- (void)setMotionBlur:(id)arg1;
-- (void)setFields:(id)arg1;
-- (void)setCustomRenderQuality:(id)arg1;
-- (void)setRenderQuality:(id)arg1;
-- (void)_updateCustomQualityFromExportSettings;
-- (void)setPremultiplyAlpha:(id)arg1;
-- (void)setColorSpace:(id)arg1;
-- (void)setColor:(id)arg1;
-- (void)setResolution:(id)arg1;
-- (void)setUpDepthOfField;
-- (void)buildCameraList;
-- (void)setBaseExportPanel:(id)arg1;
-- (void)dealloc;
-- (void)awakeFromNib;
+- (id)init;
 - (id)initWithObjCDocument:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)setUpColorSpacePopup;
-- (set_364a5baf)getSelectedColorSpecs;
-- (id)getCKSetting;
-- (void)setUpOneColorSpacePopupItem:(long long)arg1 withColorSpecs:(const set_364a5baf *)arg2;
-- (void)removeObservers;
-- (void)observeSettings;
+- (void)dealloc;
+- (void)buildCameraList;
+- (void)setResolution:(id)arg1;
+- (void)setColor:(id)arg1;
+- (void)setPremultiplyAlpha:(id)arg1;
+- (void)_updateCustomQualityFromExportSettings;
+- (void)_updateCustomQualityFromUserInfo:(id)arg1;
+- (void)setRenderQuality:(id)arg1;
+- (void)setCustomRenderQuality:(id)arg1;
+- (void)setFields:(id)arg1;
+- (void)setMotionBlur:(id)arg1;
+- (void)setFrameBlending:(id)arg1;
+- (void)setCamera:(id)arg1;
+- (void)setLighting:(id)arg1;
+- (void)setShadows:(id)arg1;
+- (void)setReflections:(id)arg1;
+- (void)setDepthOfField:(id)arg1;
+- (id)userInfoAndDescription:(id *)arg1;
+- (void)setUserInfo:(id)arg1;
 
 @end
 

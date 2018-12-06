@@ -6,48 +6,38 @@
 
 #import <Flexo/FFRetimingEffect.h>
 
-#import "FFRateConformAndRetimingVideoProtocol.h"
-
-@class CHChannelBool, CHChannelEnum, FFSegmentStoreWriteLockIndexTracker;
+@class CHChannelBool, CHChannelEnum;
 
 __attribute__((visibility("hidden")))
-@interface FFRetimingVideoEffect : FFRetimingEffect <FFRateConformAndRetimingVideoProtocol>
+@interface FFRetimingVideoEffect : FFRetimingEffect
 {
     CHChannelEnum *_chFrameSamplingMode;
     CHChannelBool *_chFlowVectorDisplay;
-    unsigned int _pendingHQRescan;
-    FFSegmentStoreWriteLockIndexTracker *_hqFramesIndexTracker;
+    BOOL _waitingForAnalysis;
 }
 
 + (void)registerEffects;
-- (id)newEffectNode;
-- (CDStruct_bdcb2b0d)getContextBasedMD5Adjustment:(id)arg1;
-- (id)inputKeys;
-- (void)usePresetsChannelFolder:(struct CHChannelFolder *)arg1;
-- (void)createChannelsInFolder:(id)arg1;
-- (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
-- (_Bool)shouldCheckCacheForTime:(CDStruct_1b6d18a9)arg1 withInputStream:(id)arg2 context:(id)arg3 props:(id)arg4;
-- (CDStruct_1b6d18a9)sampleDurationForHQCaching;
-- (id)highQualityFlowFrameRequestsForRange:(CDStruct_e83c9415)arg1 outputStartTime:(CDStruct_1b6d18a9)arg2 outputFrameDuration:(CDStruct_1b6d18a9)arg3;
-- (id)hqOpticalFlowRenderFilePaths;
-- (id)hqOpticalFlowRenderProps;
-- (int)getEffectSchedulingFlags;
-- (void)recordOffsetNeedingUpdate:(long long)arg1 forKey:(id)arg2;
-- (BOOL)hasHQFlowFrameForKey:(id)arg1 atOffset:(long long)arg2;
-- (void)_queueHQSegmentStoreCheck;
-- (void)_rescanForHQRenderedFrames;
-- (BOOL)hasFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3 cachingStruct:(struct FFCachesForRepeatedRetimingCalculations *)arg4;
-- (BOOL)_checkTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3 mediaRep:(id)arg4 cachingStruct:(struct FFCachesForRepeatedRetimingCalculations *)arg5;
-- (BOOL)currentSettingsRequireFlowVectors;
-- (void)_performFlowAnalysis;
-- (void)setFrameSampleMode:(long long)arg1;
-- (long long)frameSampleMode;
-- (BOOL)isAtDefaultSettings;
-- (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
 - (void)dealloc;
-- (id)initWithEffectID:(id)arg1;
-- (void)markForRescanDueToDeletedRenderFiles;
+- (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
+- (BOOL)isAtDefaultSettings;
+- (long long)frameSampleMode;
+- (void)setFrameSampleMode:(long long)arg1;
+- (id)blendedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 frameDuration:(CDStruct_1b6d18a9)arg5 sampleDuration:(CDStruct_1b6d18a9)arg6 roi:(struct CGRect *)arg7;
+- (void)_performFlowAnalysis;
+- (id)flowInterpolatedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 frameDuration:(CDStruct_1b6d18a9)arg5 sampleDuration:(CDStruct_1b6d18a9)arg6 roi:(struct CGRect *)arg7;
+- (id)newImageWithFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 inputImage:(id)arg2 stream:(id)arg3;
+- (BOOL)currentSettingsRequireFlowVectors;
+- (BOOL)_checkTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3 mediaRep:(id)arg4;
+- (BOOL)hasFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(struct CGRect *)arg7;
+- (void)createSweetSpotPresetChannelsInFolder:(id)arg1;
+- (void)createPresetsChannelsInFolder:(id)arg1;
+- (void)createChannelsInFolder:(id)arg1;
+- (void)useSweetSpotPresetChannelFolder:(id)arg1;
+- (void)usePresetsChannelFolder:(id)arg1;
+- (id)inputKeys;
+- (id)newEffectNode;
+- (BOOL)waitingForAnalysis;
 
 @end
 

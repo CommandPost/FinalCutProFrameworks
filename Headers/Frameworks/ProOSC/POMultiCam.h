@@ -8,18 +8,16 @@
 
 @interface POMultiCam : POOnScreenControl
 {
-    struct PCPtr<POMultiResStringTexture> _cameraMessage[16];
+    PCPtr_ca909b16 _cameraMessage[16];
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (BOOL)postRedisplayOnActivePartChange;
-- (void)draw;
-- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
-- (BOOL)isDependentOnBounds;
-- (void)mouseDown:(id)arg1;
-- (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)dealloc;
+- (void)mouseDown:(id)arg1;
+- (BOOL)isDependentOnBounds;
+- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
+- (void)draw;
+- (BOOL)postRedisplayOnActivePartChange;
 
 @end
 

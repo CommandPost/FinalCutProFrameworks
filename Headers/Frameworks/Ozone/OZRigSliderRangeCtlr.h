@@ -12,11 +12,11 @@
     BOOL _isMinCtlr;
 }
 
-- (BOOL)isMinCtlr;
-- (void)setChannelValue:(id)arg1;
-- (void)didChangeChannel;
-- (void)aboutToChangeChannel;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)aboutToChangeChannel;
+- (void)didChangeChannel;
+- (void)setChannelValue:(id)arg1;
+- (BOOL)isMinCtlr;
 
 @end
 

@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _duration;
 }
 
-- (CDStruct_1b6d18a9)duration;
-- (long long)rate;
-- (CDStruct_1b6d18a9)time;
 - (id)initWithTime:(CDStruct_1b6d18a9)arg1 rate:(long long)arg2 duration:(CDStruct_1b6d18a9)arg3;
+- (CDStruct_1b6d18a9)time;
+- (long long)rate;
+- (CDStruct_1b6d18a9)duration;
 
 @end
 

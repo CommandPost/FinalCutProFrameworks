@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)generateWithFFImage:(id)arg1 outputMode:(long long)arg2 displayMode:(long long)arg3 widthOut:(int *)arg4 heightOut:(int *)arg5 vertexBufferOut:(float **)arg6 colorBufferOut:(float **)arg7 scaleFactor:(float)arg8;
++ (void)generateWithFFImage:(id)arg1 outputMode:(long long)arg2 viewMode:(long long)arg3 widthOut:(int *)arg4 heightOut:(int *)arg5 vertexBufferOut:(float **)arg6 colorBufferOut:(float **)arg7 scaleFactor:(float)arg8;
 
 @end
 

@@ -6,52 +6,31 @@
 
 #import <ProInspector/OZViewControllerGroup.h>
 
-#import "NSMenuDelegate.h"
+@class NSPopUpButton, PIParameterPulldown;
 
-@class LKPopUpButton, NSString, PIParameterPulldown;
-
-@interface OZChanEnumController : OZViewControllerGroup <NSMenuDelegate>
+@interface OZChanEnumController : OZViewControllerGroup
 {
-    LKPopUpButton *_pPopUp;
+    NSPopUpButton *_pPopUp;
     PIParameterPulldown *_pParamPulldown;
     BOOL _areAllChansEqual;
-    BOOL _needToUpdate;
-    struct set<int, std::__1::less<int>, std::__1::allocator<int>> *_pDisabledItemIndices;
-    struct map<int, int, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, int>>> *_pDisplayValueMap;
-    vector_f672cb0f *_pStringsTableChangeCounts;
+    struct set<int, std::less<int>, std::allocator<int>> *_pDisabledItemIndices;
+    struct map<int, int, std::less<int>, std::allocator<std::pair<const int, int>>> *_pDisplayValueMap;
+    struct vector<unsigned int, std::allocator<unsigned int>> *_pStringsTableChangeCounts;
 }
 
-@property(readonly, nonatomic) LKPopUpButton *popUp; // @synthesize popUp=_pPopUp;
-- (float)suggestedMaxParamWidth;
-- (float)suggestedMinParamWidth;
-- (id)imageForMenuItemIndex:(unsigned int)arg1;
-- (void)setImagesForPopUp:(BOOL)arg1;
-- (void)menuWillOpen:(id)arg1;
-- (void)menuDidClose:(id)arg1;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)enableItemForValue:(unsigned int)arg1 isEnabled:(BOOL)arg2;
-- (void)mapValue:(int)arg1 toDisplayValue:(int)arg2;
-- (int)valueForChannel:(struct OZChannelEnum *)arg1;
-- (void)updatePopUpMenu:(BOOL)arg1 force:(BOOL)arg2;
-- (void)updatePopUpMenu:(BOOL)arg1;
-- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setValue:(int)arg1;
-- (void)setChannelValue:(id)arg1;
-- (BOOL)hasControls;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (void)dealloc;
-- (void)setPopUpTitle:(id)arg1;
-- (void)setPopUpDisplay:(id)arg1;
-- (void)menuWillSendAction:(id)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (BOOL)hasControls;
+- (void)setChannelValue:(id)arg1;
+- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)updatePopUpMenu:(BOOL)arg1;
+- (int)valueForChannel:(struct OZChannelEnum *)arg1;
+- (void)mapValue:(int)arg1 toDisplayValue:(int)arg2;
+- (void)enableItemForValue:(unsigned int)arg1 isEnabled:(BOOL)arg2;
+- (BOOL)validateMenuItem:(id)arg1;
 
 @end
 

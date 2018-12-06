@@ -10,9 +10,10 @@
 {
 }
 
-- (BOOL)itemLevelSkimmingEnabled;
-- (void)pauseHandling:(id)arg1;
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (void)pauseHandling:(id)arg1;
+- (void)resumeHandling:(id)arg1;
+- (void)updateSkimming:(id)arg1;
 
 @end
 

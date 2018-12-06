@@ -13,16 +13,15 @@
     CHChannelBase *_activeChannel;
 }
 
-+ (id)toolbarFacetImageOff;
-+ (id)toolbarFacetImageOn;
-+ (id)displayName;
 + (void)initialize;
-@property(retain, nonatomic) CHChannelBase *activeChannel; // @synthesize activeChannel=_activeChannel;
-- (void)selectedItemsChanged:(id)arg1;
-- (void)resignActiveTool;
-- (id)getCursor;
-- (BOOL)handlesSelection;
++ (id)displayName;
++ (id)toolbarFacet;
 - (void)dealloc;
+- (BOOL)handlesSelection;
+- (id)getCursor;
+- (void)resignActiveTool;
+- (void)selectedItemsChanged:(id)arg1;
+@property(retain, nonatomic) CHChannelBase *activeChannel; // @synthesize activeChannel=_activeChannel;
 
 @end
 

@@ -17,14 +17,14 @@
 }
 
 + (long long)streamCount;
-- (id)options;
-- (void)setRate:(double)arg1;
-- (void)prerollEnd;
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
-- (id)source;
-- (id)context;
-- (void)dealloc;
 - (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3;
+- (void)dealloc;
+- (id)context;
+- (id)source;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
+- (void)prerollEnd;
+- (void)setRate:(double)arg1;
+- (id)options;
 
 @end
 

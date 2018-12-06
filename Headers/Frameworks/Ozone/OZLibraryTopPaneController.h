@@ -8,7 +8,7 @@
 
 #import "NSBrowserDelegate.h"
 
-@class NSCell, NSDictionary, NSMutableArray, NSString, OZLibraryModule, OZLibraryTopPaneEntry;
+@class NSCell, NSMutableArray, NSString, OZLibraryModule, OZLibraryTopPaneEntry;
 
 @interface OZLibraryTopPaneController : NSObject <NSBrowserDelegate>
 {
@@ -19,37 +19,30 @@
     NSCell *_hitCell;
     NSCell *_lastHitCell;
     NSString *_oldName;
-    NSDictionary *_stringAttributes;
 }
 
-+ (int)allDirectoryItems:(id)arg1 withFilter:(id)arg2;
 + (id)createAllDirectory:(id)arg1 inParent:(id)arg2 withFilter:(id)arg3;
-- (double)browser:(id)arg1 shouldSizeColumn:(long long)arg2 forUserResize:(BOOL)arg3 toWidth:(double)arg4;
-- (double)browser:(id)arg1 sizeToFitWidthOfColumn:(long long)arg2;
-- (id)getController;
-- (BOOL)category:(id)arg1 AcceptsPasteList:(id)arg2;
-- (id)findBestCategory:(id)arg1;
-- (id)switchToCategory:(id)arg1 withBrowser:(id)arg2;
-- (void)switchToAllDir:(id)arg1;
-- (void)browserSingleClick:(id)arg1;
-- (void)cancelEdit;
-- (void)textDidEndEditing:(id)arg1;
-- (void)textDidChange:(id)arg1;
-- (void)startEdit:(id)arg1 ofCell:(id)arg2;
-- (void)startEdit:(id)arg1;
-- (void)browser:(id)arg1 willDisplayCell:(id)arg2 atRow:(int)arg3 column:(int)arg4;
-- (int)browser:(id)arg1 numberOfRowsInColumn:(int)arg2;
-- (void)refreshDescendants;
-- (id)findTopPaneEntry:(id)arg1 retIndex:(int *)arg2;
-- (void)addTopPaneEntry:(id)arg1;
-- (void)dealloc;
++ (int)allDirectoryItems:(id)arg1 withFilter:(id)arg2;
 - (id)initWithLibraryController:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (void)addTopPaneEntry:(id)arg1;
+- (id)findTopPaneEntry:(id)arg1 retIndex:(int *)arg2;
+- (void)refreshDescendants;
+- (int)browser:(id)arg1 numberOfRowsInColumn:(int)arg2;
+- (void)browser:(id)arg1 willDisplayCell:(id)arg2 atRow:(int)arg3 column:(int)arg4;
+- (void)startEdit:(id)arg1;
+- (void)startEdit:(id)arg1 ofCell:(id)arg2;
+- (void)textDidChange:(id)arg1;
+- (void)textDidEndEditing:(id)arg1;
+- (void)cancelEdit;
+- (void)browserSingleClick:(id)arg1;
+- (void)switchToAllDir:(id)arg1;
+- (id)switchToCategory:(id)arg1 withBrowser:(id)arg2;
+- (id)findBestCategory:(id)arg1;
+- (BOOL)category:(id)arg1 AcceptsPasteList:(id)arg2;
+- (id)getController;
+- (double)browser:(id)arg1 sizeToFitWidthOfColumn:(long long)arg2;
+- (double)browser:(id)arg1 shouldSizeColumn:(long long)arg2 forUserResize:(BOOL)arg3 toWidth:(double)arg4;
 
 @end
 

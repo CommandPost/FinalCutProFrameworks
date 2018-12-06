@@ -6,51 +6,80 @@
 
 #import "CALayer.h"
 
-#import "CALayerDelegate.h"
+@class PEChannelLayer, PEMeterBackgroundLayer, PEMeterLayer, PEOverloadLayer;
 
-@class NSString, PEAudioLayeredMeterView, PEMeterBackgroundLayer;
-
-@interface PEParentMeterLayer : CALayer <CALayerDelegate>
+@interface PEParentMeterLayer : CALayer
 {
+    PEMeterLayer *_meter_L;
+    PEMeterLayer *_meter_R;
+    PEMeterLayer *_meter_C;
+    PEMeterLayer *_meter_Ls;
+    PEMeterLayer *_meter_Rs;
+    PEMeterLayer *_meter_LFE;
     PEMeterBackgroundLayer *_background;
+    PEChannelLayer *_channel_L;
+    PEChannelLayer *_channel_R;
+    PEChannelLayer *_channel_C;
+    PEChannelLayer *_channel_Ls;
+    PEChannelLayer *_channel_Rs;
+    PEChannelLayer *_channel_LFE;
+    PEOverloadLayer *_overload_L;
+    PEOverloadLayer *_overload_R;
+    PEOverloadLayer *_overload_C;
+    PEOverloadLayer *_overload_Ls;
+    PEOverloadLayer *_overload_Rs;
+    PEOverloadLayer *_overload_LFE;
+    PEOverloadLayer *_overload_master;
     BOOL _channelHidden;
     BOOL _dBHidden;
+    BOOL _stopped;
+    BOOL _peaked;
     BOOL _miniMode;
-    float _minDBValue;
-    float _maxDBValue;
-    int _meterTaperType;
+    BOOL _singleOverload;
+    PEOverloadLayer *_overload_RS;
 }
 
-@property(retain, nonatomic) PEMeterBackgroundLayer *background; // @synthesize background=_background;
-- (float)positionFromDBValue:(float)arg1;
-- (double)meterStart;
-- (double)widthOfLFEDivider:(double)arg1 widthRatio:(double)arg2;
-- (double)widthOfEachDividerForWidthRatio:(double)arg1;
-- (double)widthOfEachMeterForWidthRatio:(double)arg1;
-- (double)widthOfMeterAreaForWidthRatio:(double)arg1;
-- (double)interpolateFromMin:(double)arg1 toMax:(double)arg2 forRatio:(double)arg3;
-- (double)widthRatio;
-- (double)rightMarginWidth;
-- (double)leftMarginWidthForWidthRatio:(double)arg1;
-- (int)fontSizeToUse;
-- (void)setupLayersWithMeterTaperType:(int)arg1 minDBValue:(float)arg2 maxDBValue:(float)arg3;
-- (void)updatePeakMeterValue:(double)arg1 forChannel:(unsigned int)arg2;
-- (void)layoutMeters;
-- (void)layoutIndicators;
-- (void)layoutChannels;
-- (void)layoutBackground;
-- (void)layoutDBlines;
-- (void)layoutDB;
-- (void)layoutSublayers;
-- (void)dealloc;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property __weak PEAudioLayeredMeterView *delegate; // @dynamic delegate;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)layoutSublayers;
+- (void)layoutDB;
+- (void)layoutDBlines;
+- (void)layoutBackground;
+- (void)layoutChannels;
+- (void)layoutIndicators;
+- (void)layoutMeters;
+- (void)playbackChanged:(BOOL)arg1;
+- (void)updateMeterValue:(double)arg1 forChannel:(double)arg2;
+- (void)setupLayers;
+- (void)resetOverload;
+- (int)fontSizeToUse;
+- (double)leftMarginWidth;
+- (double)rightMarginWidth;
+- (double)widthOfMeterArea;
+- (double)widthOfEachMeter;
+- (double)widthOfLFEDivider;
+- (double)meterStart;
+- (float)positionFromDBValue:(float)arg1;
+- (float)calculateUntaperPosition:(float)arg1;
+@property(retain, nonatomic) PEMeterBackgroundLayer *background; // @synthesize background=_background;
+@property(retain, nonatomic) PEOverloadLayer *overloadMaster; // @synthesize overloadMaster=_overload_master;
+@property(retain, nonatomic) PEOverloadLayer *overloadLFE; // @synthesize overloadLFE=_overload_LFE;
+@property(retain, nonatomic) PEOverloadLayer *overloadRs; // @synthesize overloadRs=_overload_RS;
+@property(retain, nonatomic) PEOverloadLayer *overloadLs; // @synthesize overloadLs=_overload_Ls;
+@property(retain, nonatomic) PEOverloadLayer *overloadC; // @synthesize overloadC=_overload_C;
+@property(retain, nonatomic) PEOverloadLayer *overloadR; // @synthesize overloadR=_overload_R;
+@property(retain, nonatomic) PEOverloadLayer *overloadL; // @synthesize overloadL=_overload_L;
+@property(retain, nonatomic) PEChannelLayer *channelLFE; // @synthesize channelLFE=_channel_LFE;
+@property(retain, nonatomic) PEChannelLayer *channelRs; // @synthesize channelRs=_channel_Rs;
+@property(retain, nonatomic) PEChannelLayer *channelLs; // @synthesize channelLs=_channel_Ls;
+@property(retain, nonatomic) PEChannelLayer *channelC; // @synthesize channelC=_channel_C;
+@property(retain, nonatomic) PEChannelLayer *channelR; // @synthesize channelR=_channel_R;
+@property(retain, nonatomic) PEChannelLayer *channelL; // @synthesize channelL=_channel_L;
+@property(retain, nonatomic) PEMeterLayer *meterLFE; // @synthesize meterLFE=_meter_LFE;
+@property(retain, nonatomic) PEMeterLayer *meterRs; // @synthesize meterRs=_meter_Rs;
+@property(retain, nonatomic) PEMeterLayer *meterLs; // @synthesize meterLs=_meter_Ls;
+@property(retain, nonatomic) PEMeterLayer *meterC; // @synthesize meterC=_meter_C;
+@property(retain, nonatomic) PEMeterLayer *meterR; // @synthesize meterR=_meter_R;
+@property(retain, nonatomic) PEMeterLayer *meterL; // @synthesize meterL=_meter_L;
 
 @end
 

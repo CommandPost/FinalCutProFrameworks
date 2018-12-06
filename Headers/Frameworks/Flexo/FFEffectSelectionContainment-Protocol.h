@@ -6,14 +6,12 @@
 
 #import "NSObject.h"
 
-@class CHChannelBase, FFEffect, NSArray;
-
 @protocol FFEffectSelectionContainment <NSObject>
 
 @optional
-- (NSArray *)selectedChannels;
-- (void)setSelected:(BOOL)arg1 channel:(CHChannelBase *)arg2 effect:(FFEffect *)arg3;
-- (BOOL)shouldSelectChannel:(CHChannelBase *)arg1 selectedState:(BOOL)arg2 effect:(FFEffect *)arg3;
-- (FFEffect *)subEffectForChannel:(CHChannelBase *)arg1;
+- (id)subEffectForChannel:(id)arg1;
+- (BOOL)shouldSelectChannel:(id)arg1 selectedState:(BOOL)arg2 effect:(id)arg3;
+- (void)setSelected:(BOOL)arg1 channel:(id)arg2 effect:(id)arg3;
+- (id)selectedChannels;
 @end
 

@@ -4,58 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFEffectBundleInternalBundle.h>
+#import <Flexo/FFEffectBundle.h>
 
 #import "FFChannelChangeControllerDivorcedDelegate.h"
 
-@class FFAnchoredObject, NSString;
-
-@interface FFEffectBundleSurroundPanner : FFEffectBundleInternalBundle <FFChannelChangeControllerDivorcedDelegate>
+__attribute__((visibility("hidden")))
+@interface FFEffectBundleSurroundPanner : FFEffectBundle <FFChannelChangeControllerDivorcedDelegate>
 {
-    FFAnchoredObject *m_object;
-    BOOL m_defaultPartIsInMonoMode;
-    BOOL m_isInStereoMode;
-    BOOL m_isObserving;
 }
 
-+ (id)initialEffectBundlePartsForEffectID:(id)arg1;
 + (void)unrigChannel:(id)arg1 inPanner:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-+ (id)copyClassDescription;
-+ (id)descriptionForPreset:(id)arg1;
-+ (id)nonSurroundPresetNames;
-+ (id)surroundPresetNames;
-+ (id)bundlePresetNames;
-+ (id)pannerEffectBundleParts;
-- (int)bundleEncodingOptions;
-- (void)createEffectChannelsForEffectBundlePart:(id)arg1 inFodler:(id)arg2;
-- (void)partChanged;
-- (id)copyBundlePartAtIndex:(int)arg1;
-- (id)bundlePartAtIndex:(int)arg1;
-- (id)presetNames;
-- (BOOL)effectImpactsAudioChannelValence;
-- (void)effectStackAnchoredObjectDidChange;
-- (void)effectDeactivated;
-- (void)effectActivated:(int)arg1;
-- (void)_removeAnchoredObjectObserving;
-- (void)_addAnchoredObjectObserving;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_updateDefaultPanMode;
-- (BOOL)_isInDefaultPanMode;
-- (BOOL)isStereoMode;
-- (void)sender:(id)arg1 beginChannelChange:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (id)channelChangeDelegate;
-- (id)XMLNameForChannel:(id)arg1;
-- (id)channelByXMLName:(id)arg1;
-- (id)unriggedChannels;
 - (id)keyframeableChannels;
-- (void)_postInit:(id)arg1;
-- (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)channelChangeDelegate;
+- (void)sender:(id)arg1 beginChannelChange:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (BOOL)isStereoMode;
 
 @end
 

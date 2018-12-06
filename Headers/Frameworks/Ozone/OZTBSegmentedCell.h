@@ -10,7 +10,7 @@
 {
 }
 
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (id)_baseFacet;
 
 @end
 

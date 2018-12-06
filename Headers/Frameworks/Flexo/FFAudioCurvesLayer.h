@@ -12,19 +12,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)audioVolumeOverlay:(id)arg1 splitEdit:(BOOL)arg2 timeline:(id)arg3;
-- (BOOL)sender:(id)arg1 willSetChannel:(id)arg2;
-- (id)view:(id)arg1 stringForToolTip:(long long)arg2 point:(struct CGPoint)arg3 userData:(void *)arg4;
-- (void)_rangeChanged;
-- (void)_performRangeChangedOnMainThread;
-- (BOOL)_parentLayerHidden;
-- (id)effectsToDisplay;
-- (id)effectStack;
-- (id)selectedLayers;
-- (id)selectedLayer;
-- (BOOL)isValidAudioChannelForEffectStack:(id)arg1;
-- (void)dealloc;
-- (id)initAsOverlayWithObject:(id)arg1 splitEdit:(BOOL)arg2 timeline:(id)arg3;
 - (id)initWithObject:(id)arg1 topToBottom:(BOOL)arg2 timeline:(id)arg3;
+- (id)initWithItem:(id)arg1 splitEdit:(BOOL)arg2 timeline:(id)arg3;
+- (void)dealloc;
+- (BOOL)isValidAudioChannelForObject:(id)arg1;
+- (id)selectedLayer;
+- (id)selectedLayers;
+- (id)effectStack;
+- (id)effectsToDisplay;
+- (void)_rangeChanged;
 
 @end
 

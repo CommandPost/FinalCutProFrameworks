@@ -6,34 +6,31 @@
 
 #import "PEMeterLayerBase.h"
 
-@class CAGradientLayer, CALayer;
+@class CALayer, TLKThemeBackedLayer;
 
 @interface PEMeterLayer : PEMeterLayerBase
 {
     double _maskRatio;
     double _previousMaskRatio;
+    BOOL _stopAnimations;
+    BOOL _showPeak;
     BOOL _resetPeak;
-    BOOL _forceRedraw;
-    BOOL _isPlaying;
     int _meterNumber;
     double _peak;
     int _peakCounter;
     CALayer *_maskingLayer;
-    CAGradientLayer *_greenLayer;
-    CALayer *_redLayer;
+    TLKThemeBackedLayer *_greenLayer;
+    TLKThemeBackedLayer *_redLayer;
     CALayer *_backLayer;
-    CALayer *_peakLayer;
+    TLKThemeBackedLayer *_peakLayer;
 }
 
-- (void)setPlaying:(BOOL)arg1;
-- (void)maskToHeight:(double)arg1;
-- (void)_calculateMaskRatio:(double)arg1;
-- (void)layoutSublayers;
-- (void)setupMeterLayers;
-- (void)_setupGreenAndRedLayerColors;
-- (void)_frameChanged:(id)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)layoutSublayers;
+- (void)maskToHeight:(double)arg1;
+- (void)setPlaying:(BOOL)arg1;
+- (void)resizeLayer:(id)arg1 to:(struct CGSize)arg2;
+@property BOOL stopAnimations; // @synthesize stopAnimations=_stopAnimations;
 
 @end
 

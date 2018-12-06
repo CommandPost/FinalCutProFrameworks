@@ -13,11 +13,6 @@ struct CGPoint {
     double _field2;
 };
 
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
 struct PCBitmap {
     CDUnknownFunctionPointerType *_field1;
     struct weak_ptr<PCImage> _field2;
@@ -29,10 +24,9 @@ struct PCBitmap {
     int _field8;
     struct PCColorSpaceHandle _field9;
     _Bool _field10;
-    struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> _field11;
+    void *_field11;
+    int _field12;
 };
-
-struct PCBitmapRep;
 
 struct PCColorSpaceHandle {
     struct CGColorSpace *_field1;
@@ -40,21 +34,19 @@ struct PCColorSpaceHandle {
 
 struct PCImage;
 
-struct __shared_weak_count;
+struct _Sp_counted_base<_S_atomic>;
 
 struct shared_ptr<PCBitmap> {
     struct PCBitmap *_field1;
-    struct __shared_weak_count *_field2;
-};
-
-struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> {
-    struct __compressed_pair<PCBitmapRep *, std::__1::default_delete<PCBitmapRep>> {
-        struct PCBitmapRep *_field1;
-    } _field1;
+    struct __shared_count<_S_atomic> {
+        struct _Sp_counted_base<_S_atomic> *_M_pi;
+    } _field2;
 };
 
 struct weak_ptr<PCImage> {
     struct PCImage *_field1;
-    struct __shared_weak_count *_field2;
+    struct __weak_count<_S_atomic> {
+        struct _Sp_counted_base<_S_atomic> *_field1;
+    } _field2;
 };
 

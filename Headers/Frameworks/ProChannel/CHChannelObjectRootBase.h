@@ -10,15 +10,15 @@
 {
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (void)setOffset:(CDStruct_198678f7)arg1;
-- (CDStruct_198678f7)offset;
-- (void)setDuration:(CDStruct_198678f7)arg1;
-- (CDStruct_198678f7)duration;
-- (void)setTimeOffset:(CDStruct_198678f7)arg1;
-- (CDStruct_198678f7)timeOffset;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelObjectRootBase *)ozChannel;
+- (CDStruct_1b6d18a9)timeOffset;
+- (void)setTimeOffset:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)duration;
+- (void)setDuration:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)offset;
+- (void)setOffset:(CDStruct_1b6d18a9)arg1;
 
 @end
 

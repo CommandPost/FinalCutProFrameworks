@@ -11,8 +11,8 @@
     BOOL _myIsCollapsed;
 }
 
-- (void)setIsCollapsed:(BOOL)arg1;
 - (BOOL)isCollapsed;
+- (void)setIsCollapsed:(BOOL)arg1;
 
 @end
 

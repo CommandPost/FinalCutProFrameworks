@@ -8,7 +8,7 @@
 
 #import "NSMenuDelegate.h"
 
-@class NSPopUpButton, NSString;
+@class NSPopUpButton;
 
 @interface OZChooseChanController : OZViewController <NSMenuDelegate>
 {
@@ -17,27 +17,21 @@
     BOOL _didBuildMenu;
 }
 
-- (void)menuNeedsUpdate:(id)arg1;
-- (void)buildDummyMenu;
-- (void)buildMenu:(struct OZChannelBehavior *)arg1;
-- (id)buildChannelMenu:(struct OZChannelFolder *)arg1 depth:(int)arg2 ignoreChannel:(struct OZChannelBase *)arg3 inputMenu:(id)arg4;
-- (BOOL)canAddChannelItem:(struct OZChannelBase *)arg1;
-- (void)addToMenu:(id)arg1 forCompoundChannel:(struct OZCompoundChannel *)arg2;
-- (BOOL)shouldIgnoreSubchannels:(struct OZChannelFolder *)arg1;
-- (BOOL)shouldIgnoreChannel:(struct OZChannelBase *)arg1;
-- (void)setChannelCB:(id)arg1;
-- (struct OZObjectManipulator *)appliedToObject;
-- (struct OZDocument *)document;
-- (void)disable;
-- (void)enable;
-- (void)update;
 - (id)initWithContext:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (struct OZDocument *)document;
+- (struct OZObjectManipulator *)appliedToObject;
+- (void)setChannelCB:(id)arg1;
+- (BOOL)shouldIgnoreChannel:(struct OZChannelBase *)arg1;
+- (BOOL)shouldIgnoreSubchannels:(struct OZChannelFolder *)arg1;
+- (void)addToMenu:(id)arg1 forCompoundChannel:(struct OZCompoundChannel *)arg2;
+- (BOOL)canAddChannelItem:(struct OZChannelBase *)arg1;
+- (id)buildChannelMenu:(struct OZChannelFolder *)arg1 depth:(int)arg2 ignoreChannel:(struct OZChannelBase *)arg3 inputMenu:(id)arg4;
+- (void)buildMenu:(struct OZChannelBehavior *)arg1;
+- (void)buildDummyMenu;
+- (void)menuNeedsUpdate:(id)arg1;
 
 @end
 

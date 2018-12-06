@@ -4,55 +4,19 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFOSC.h>
+#import <Flexo/FFProOSC.h>
 
-@class FFOpenGLNSImage, NSCursor, NSDictionary, NSMutableDictionary, NSString;
+@class FFCHObservableFolder, POMultiCam;
 
 __attribute__((visibility("hidden")))
-@interface FFMultiCamOSC : FFOSC
+@interface FFMultiCamOSC : FFProOSC
 {
-    FFOpenGLNSImage *_angleEmpty;
-    FFOpenGLNSImage *_angleBezel;
-    FFOpenGLNSImage *_angleBezelRollover;
-    FFOpenGLNSImage *_angleBezelSelectionAudioVideo;
-    FFOpenGLNSImage *_angleBezelSelectionAudio;
-    FFOpenGLNSImage *_angleBezelSelectionVideo;
-    FFOpenGLNSImage *_angleAudioIcon;
-    struct CGSize _angleAudioIconSize;
-    NSDictionary *_timecodeTextAttributes;
-    NSDictionary *_angleClipTextAttributes;
-    NSMutableDictionary *_textTimeCodeImageCache;
-    NSMutableDictionary *_textNameImageCache;
-    NSCursor *_cursor;
-    NSString *_lastAngleIDOver;
-    int _LRUCount;
+    POMultiCam *_multiCamOSC;
+    FFCHObservableFolder *_undoChannel;
 }
 
-- (id)accessibilityHitTest:(struct CGPoint)arg1;
-- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (BOOL)isAccessorized;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)getCursor;
-- (void)flagsChanged:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (BOOL)passCommonOSCDrawProperties;
-- (void)mouseUp:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (BOOL)hitTest:(struct CGPoint)arg1;
-- (long long)handleAtEventLocation:(id)arg1;
-- (void)updateCursorForEvent:(id)arg1;
-- (id)objectUnderPlayheadAndAngle:(id)arg1 allowBlade:(char *)arg2 angleName:(id *)arg3 angleLocation:(struct CGRect *)arg4;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
-- (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
-- (void)simpleTextRectangle:(id)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(id)arg4 attributes:(id)arg5 attributeCode:(int)arg6 paddingX:(double)arg7 paddingY:(double)arg8;
-- (void)_setupDrawInfoAndTextures:(struct _CGLContextObject *)arg1;
-- (id)getAudioIconForSize:(float)arg1;
-- (BOOL)isAvailableForMultiAngleState:(BOOL)arg1;
-- (BOOL)isAvailableDuringPlayback;
-- (void)dealloc;
-- (id)init;
+- (id)initWithHeMultiCamEffect:(id)arg1 effectStack:(id)arg2;
+- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 
 @end
 

@@ -5,7 +5,7 @@
 //
 
 @protocol TMBrowserOutlineItem
-- (BOOL)canRemoveItem;
 - (BOOL)canAddToItem;
+- (BOOL)canRemoveItem;
 @end
 

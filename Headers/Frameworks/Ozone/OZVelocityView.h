@@ -29,34 +29,34 @@
 }
 
 + (void)drawRadialGridInBounds:(struct CGRect)arg1 radius:(double)arg2;
-- (int)radius;
-- (struct CGPoint)centerPoint;
-- (double)threeDSpeed;
-- (void)setVelocityFromSpeed:(double)arg1;
-- (void)set3D:(BOOL)arg1;
-- (void)setMaxValue:(double)arg1;
-- (double)maxValue;
-- (void)setVelocity:(PCVector3_457fd1f0 *)arg1;
-- (id)controller;
-- (void)setController:(id)arg1;
-- (void)mouseUp2D:(id)arg1;
-- (void)mouseDragged2D:(id)arg1;
-- (void)mouseDown2D:(id)arg1;
-- (void)mouseUp3D:(id)arg1;
-- (void)mouseDragged3D:(id)arg1;
-- (void)mouseDown3D:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (BOOL)mouseDownCanMoveWindow;
-- (BOOL)isOpaque;
-- (void)draw2DArrow:(struct CGRect)arg1;
-- (void)drawArrow:(struct CGRect)arg1;
-- (void)draw3DArrow:(struct CGRect)arg1;
-- (void)drawBackground:(struct CGRect)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)prepareOpenGL;
 - (id)initWithCoder:(id)arg1;
+- (void)prepareOpenGL;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)drawBackground:(struct CGRect)arg1;
+- (void)draw3DArrow:(struct CGRect)arg1;
+- (void)drawArrow:(struct CGRect)arg1;
+- (void)draw2DArrow:(struct CGRect)arg1;
+- (BOOL)isOpaque;
+- (BOOL)mouseDownCanMoveWindow;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown3D:(id)arg1;
+- (void)mouseDragged3D:(id)arg1;
+- (void)mouseUp3D:(id)arg1;
+- (void)mouseDown2D:(id)arg1;
+- (void)mouseDragged2D:(id)arg1;
+- (void)mouseUp2D:(id)arg1;
+- (void)setController:(id)arg1;
+- (id)controller;
+- (void)setVelocity:(PCVector3_457fd1f0 *)arg1;
+- (double)maxValue;
+- (void)setMaxValue:(double)arg1;
+- (void)set3D:(BOOL)arg1;
+- (void)setVelocityFromSpeed:(double)arg1;
+- (double)threeDSpeed;
+- (struct CGPoint)centerPoint;
+- (int)radius;
 
 @end
 

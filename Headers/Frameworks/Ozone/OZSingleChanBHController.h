@@ -10,7 +10,7 @@
 {
 }
 
-- (id)initWithBehaviors:(list_64b41211 *)arg1;
+- (id)initWithBehaviors:(list_06b59fe9 *)arg1;
 
 @end
 

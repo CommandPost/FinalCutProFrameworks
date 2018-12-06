@@ -6,17 +6,14 @@
 
 #import "NSObject.h"
 
-#import "FFBackgroundTaskTarget.h"
-#import "FFStorageLocationOutOfDiskSpaceProtocol.h"
+@class FFAssetCopyRequest, FFBackgroundTaskWithPauseCondition, NSMutableArray, NSRecursiveLock, NSString;
 
-@class FFAssetCopyRequest, FFBackgroundTaskWithPauseCondition, FFStorageLocation, NSMutableArray, NSMutableSet, NSRecursiveLock, NSString;
-
-@interface FFAssetCopyQueue : NSObject <FFStorageLocationOutOfDiskSpaceProtocol, FFBackgroundTaskTarget>
+__attribute__((visibility("hidden")))
+@interface FFAssetCopyQueue : NSObject
 {
     NSRecursiveLock *_lock;
     FFBackgroundTaskWithPauseCondition *_backgroundTask;
     NSMutableArray *_queuedRequests;
-    NSMutableSet *_queuedRequestSet;
     FFAssetCopyRequest *_processingRequest;
     int _backgroundProgressFilesCompleted;
     int _backgroundProgressFilesTotal;
@@ -24,47 +21,31 @@
     long long _backgroundProgressBytesTotal;
     NSString *_taskName;
     int _taskType;
-    id <FFAssetCopyQueueDelegateProtocol><NSObject> _delegate;
-    FFStorageLocation *_currentStorageLocation;
+    id <FFAssetCopyQueueDelegateProtocol> _delegate;
 }
 
-+ (void)releaseSharedInstance;
 + (id)sharedInstance;
-@property id <FFAssetCopyQueueDelegateProtocol><NSObject> delegate; // @synthesize delegate=_delegate;
-- (id)queuedRequests;
-- (id)processingRequest;
-- (BOOL)isProcessingAsset:(id)arg1;
-- (void)resumeTransactions;
-- (unsigned int)pendingTransactionCount;
-- (unsigned int)inFlightTransactionCount;
-- (void)queueRequest:(id)arg1;
-- (void)dealloc;
-- (oneway void)release;
-- (id)initWithTaskName:(id)arg1 taskType:(int)arg2;
-- (id)init;
-- (void)stopWritingFilesToLocation:(id)arg1;
-- (void)_runBackgroundTask:(id)arg1 onTask:(id)arg2;
-- (BOOL)_runCopyfile:(int)arg1 targetFD:(int)arg2 error:(id *)arg3;
-- (int)_statusCallback:(int)arg1 stage:(int)arg2 state:(struct _copyfile_state *)arg3;
-- (id)librariesInUse:(id)arg1;
-- (BOOL)usesLibrary:(id)arg1;
-- (id)assetsChanging:(id)arg1;
-- (id)assetsInUse:(id)arg1;
-- (void)canceledTask:(id)arg1;
-- (void)resumedTask:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-@property(retain) FFBackgroundTaskWithPauseCondition *backgroundTask;
-- (void)_queueRequests:(id)arg1;
-- (void)_unregisterAsDiskSpaceObserver;
-- (void)_registerAsDiskSpaceObserverForURL:(id)arg1;
-- (void)_ensureBackgroundTask;
-- (void)_updateProgress;
-- (void)_updateTaskPendingJobNamesForTask:(id)arg1;
-- (id)_jobNameForRequest:(id)arg1;
-- (void)_waitForBGTaskToFinish;
-- (void)_cancelBGTask;
-- (void)_unlock;
++ (void)releaseSharedInstance;
 - (void)_lock;
+- (void)_unlock;
+- (void)_cancelBGTask;
+- (void)_waitForBGTaskToFinish;
+- (void)_updateProgress;
+- (void)_ensureBackgroundTask;
+- (void)pausedTask:(id)arg1;
+- (void)resumedTask:(id)arg1;
+- (void)canceledTask:(id)arg1;
+- (void)_statusCallback:(id)arg1 stage:(unsigned int)arg2 osstatus:(int)arg3;
+- (void)_runBackgroundTask:(id)arg1 onTask:(id)arg2;
+- (id)init;
+- (id)initWithTaskName:(id)arg1 taskType:(int)arg2;
+- (void)dealloc;
+- (void)queueRequest:(id)arg1;
+- (unsigned int)inFlightTransactionCount;
+- (unsigned int)pendingTransactionCount;
+- (void)resumeTransactions;
+@property id <FFAssetCopyQueueDelegateProtocol> delegate; // @synthesize delegate=_delegate;
+@property(retain) FFBackgroundTaskWithPauseCondition *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
 
 @end
 

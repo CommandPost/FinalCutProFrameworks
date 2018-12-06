@@ -6,7 +6,7 @@
 
 #import "CALayer.h"
 
-@class FFFilmstrip;
+@class FFFilmstrip, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface FFFilmstripBezelLayer : CALayer
@@ -14,19 +14,26 @@ __attribute__((visibility("hidden")))
     FFFilmstrip *_filmstrip;
     int _leftEdgeType;
     int _rightEdgeType;
+    NSArray *_frameSpreadItems;
     BOOL _audioOnly;
     BOOL _isStill;
-    double _contentsScale;
 }
 
++ (unsigned long long)_themeRef;
++ (id)_facetRaggedRight;
++ (id)_facetRaggedLeft;
++ (id)_facetRounded;
++ (id)_facetSquare;
++ (id)_facetCrease;
+- (id)initWithFilmStrip:(id)arg1 frame:(struct CGRect)arg2 leftEdgeType:(int)arg3 rightEdgeType:(int)arg4 audioOnly:(BOOL)arg5;
+- (id)initWithFilmStrip:(id)arg1 frame:(struct CGRect)arg2 leftEdgeType:(int)arg3 rightEdgeType:(int)arg4 audioOnly:(BOOL)arg5 squaredCorners:(BOOL)arg6;
+- (void)dealloc;
+- (void)_updateWithProperties;
 @property(getter=isAudioOnly) BOOL audioOnly; // @synthesize audioOnly=_audioOnly;
+@property(retain) NSArray *frameSpreadItems; // @synthesize frameSpreadItems=_frameSpreadItems;
 @property int rightEdgeType; // @synthesize rightEdgeType=_rightEdgeType;
 @property int leftEdgeType; // @synthesize leftEdgeType=_leftEdgeType;
 @property(nonatomic) FFFilmstrip *filmstrip; // @synthesize filmstrip=_filmstrip;
-- (void)_updateWithProperties;
-- (void)setContentsScale:(double)arg1;
-- (void)dealloc;
-- (id)initWithFilmStrip:(id)arg1 frame:(struct CGRect)arg2 leftEdgeType:(int)arg3 rightEdgeType:(int)arg4 audioOnly:(BOOL)arg5 squaredCorners:(BOOL)arg6;
 
 @end
 

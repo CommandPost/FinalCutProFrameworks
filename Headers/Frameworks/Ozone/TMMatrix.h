@@ -16,34 +16,34 @@
     BOOL _didDrag;
 }
 
-- (void)openTemplate:(id)arg1;
-- (void)keyUp:(id)arg1;
-- (void)keyDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)startDrag:(id)arg1;
-- (void)setDownEvent:(id)arg1;
-- (id)downEvent;
-- (void)mouseDown:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (void)showInFinder:(id)arg1;
-- (id)menuForEvent:(id)arg1;
-- (void)resize;
-- (void)setFrame:(struct CGRect)arg1;
-- (void)reloadData;
-- (struct CGSize)defaultCellSize;
-- (void)setDefaultCellSize:(struct CGSize)arg1;
-- (void)checkDataSource;
-- (void)setDataSource:(id)arg1;
-- (BOOL)resignFirstResponder;
-- (BOOL)becomeFirstResponder;
-- (BOOL)acceptsFirstResponder;
-- (BOOL)needsPanelToBecomeKey;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)rippleDelete:(id)arg1;
-- (void)delete:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)delete:(id)arg1;
+- (void)rippleDelete:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
+- (BOOL)needsPanelToBecomeKey;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)becomeFirstResponder;
+- (BOOL)resignFirstResponder;
+- (void)setDataSource:(id)arg1;
+- (void)checkDataSource;
+- (void)setDefaultCellSize:(struct CGSize)arg1;
+- (struct CGSize)defaultCellSize;
+- (void)reloadData;
+- (void)setFrame:(struct CGRect)arg1;
+- (void)resize;
+- (id)menuForEvent:(id)arg1;
+- (void)showInFinder:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (id)downEvent;
+- (void)setDownEvent:(id)arg1;
+- (void)startDrag:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)keyDown:(id)arg1;
+- (void)keyUp:(id)arg1;
+- (void)openTemplate:(id)arg1;
 
 @end
 

@@ -6,26 +6,28 @@
 
 #import "NSObject.h"
 
-@class NSObject<OZListController>;
+@class NSObject<OZListController>, OZListNodeRenderer;
 
 @interface OZListImageCompletion : NSObject
 {
+    OZListNodeRenderer *_nodeRenderer;
     NSObject<OZListController> *_listController;
     unsigned int _renderNodeID;
-    shared_ptr_8628efdd _image;
+    shared_ptr_211f3873 _image;
     CDStruct_1b6d18a9 _time;
     double _pixelAspectRatio;
 }
 
-@property double pixelAspectRatio; // @synthesize pixelAspectRatio=_pixelAspectRatio;
-@property CDStruct_1b6d18a9 time; // @synthesize time=_time;
-@property(nonatomic, getter=imageRef, setter=setImageRef:) shared_ptr_8628efdd image; // @synthesize image=_image;
-@property unsigned int renderNodeID; // @synthesize renderNodeID=_renderNodeID;
-@property(retain) NSObject<OZListController> *listController; // @synthesize listController=_listController;
+- (id)init;
+- (void)dealloc;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)dealloc;
-- (id)init;
+@property double pixelAspectRatio; // @synthesize pixelAspectRatio=_pixelAspectRatio;
+@property CDStruct_1b6d18a9 time; // @synthesize time=_time;
+@property(nonatomic, getter=imageRef, setter=setImageRef:) shared_ptr_211f3873 image; // @synthesize image=_image;
+@property unsigned int renderNodeID; // @synthesize renderNodeID=_renderNodeID;
+@property(retain) NSObject<OZListController> *listController; // @synthesize listController=_listController;
+@property(retain) OZListNodeRenderer *nodeRenderer; // @synthesize nodeRenderer=_nodeRenderer;
 
 @end
 

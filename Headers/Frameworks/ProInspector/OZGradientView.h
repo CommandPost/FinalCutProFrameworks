@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSView.h"
+#import "NSProView.h"
 
 @class NSBitmapImageRep, NSColor, NSImage, OZViewController;
 
-@interface OZGradientView : NSView
+@interface OZGradientView : NSProView
 {
     struct OZChannelFolder *_pRootChan;
     struct OZChannelRef *_pGradientRef;
@@ -20,18 +20,18 @@
     BOOL _gradientOutOfDate;
 }
 
-- (void)allocateImage:(struct CGSize)arg1;
-- (void)updateImage:(struct CGSize)arg1;
-- (void)update;
-- (void)drawGradient:(struct CGRect)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (BOOL)isOpaque;
-- (void)dealloc;
-- (void)setRenderMode:(int)arg1;
-- (void)setViewController:(id)arg1;
-- (struct OZChannelGradient *)getGradientChannel;
-- (void)setGradientChannel:(struct OZChannelGradient *)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setGradientChannel:(struct OZChannelGradient *)arg1;
+- (struct OZChannelGradient *)getGradientChannel;
+- (void)setViewController:(id)arg1;
+- (void)setRenderMode:(int)arg1;
+- (void)dealloc;
+- (BOOL)isOpaque;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)drawGradient:(struct CGRect)arg1;
+- (void)update;
+- (void)updateImage:(struct CGSize)arg1;
+- (void)allocateImage:(struct CGSize)arg1;
 
 @end
 

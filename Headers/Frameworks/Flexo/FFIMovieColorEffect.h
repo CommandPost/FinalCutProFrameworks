@@ -8,7 +8,7 @@
 
 #import "FFColorSubEffect.h"
 
-@class FFHeColorEffect, NSString;
+@class FFHeColorEffect;
 
 __attribute__((visibility("hidden")))
 @interface FFIMovieColorEffect : FFHeliumEffect <FFColorSubEffect>
@@ -16,26 +16,22 @@ __attribute__((visibility("hidden")))
     FFHeColorEffect *_colorEffect;
 }
 
-+ (BOOL)isNoOpForSoleOpEffect:(id)arg1;
-+ (unsigned long long)numberOfAllowedInstances;
-+ (id)effectID;
 + (void)registerEffects;
-- (id)colorEffect;
-- (void)setColorEffect:(id)arg1;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
-- (struct HGNode *)newNodeForContext:(id)arg1;
-- (void)channelParameterChanged:(id)arg1;
-- (id)processingFormat:(int)arg1;
-- (BOOL)isNoOp;
-- (id)inputKeys;
-- (void)createChannelsInFolder:(id)arg1;
++ (id)effectID;
++ (unsigned long long)numberOfAllowedInstances;
++ (BOOL)isNoOpForSoleOpEffect:(id)arg1;
 - (id)initWithEffectID:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)createChannelsInFolder:(id)arg1;
+- (id)inputKeys;
+- (BOOL)isNoOp;
+- (struct CGColorSpace *)processingColorSpace;
+- (id)processingPixelFormat;
+- (void)channelParameterChanged:(id)arg1;
+- (struct HGNode *)newNodeForContext:(id)arg1;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (double)doubleValueForChannelID:(unsigned int)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)setDoubleValue:(double)arg1 forChannelID:(unsigned int)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)setColorEffect:(id)arg1;
 
 @end
 

@@ -12,11 +12,11 @@
     BOOL _flagsOnly;
 }
 
-@property(readonly, nonatomic) BOOL flagsOnly; // @synthesize flagsOnly=_flagsOnly;
-- (void)restoreChannel:(id)arg1;
-- (id)initWithChannel:(id)arg1 flagsOnly:(BOOL)arg2;
-- (id)initWithChannel:(id)arg1;
 - (void)dealloc;
+- (id)initWithChannel:(id)arg1;
+- (id)initWithChannel:(id)arg1 flagsOnly:(BOOL)arg2;
+- (void)restoreChannel:(id)arg1;
+@property(readonly, nonatomic) BOOL flagsOnly; // @synthesize flagsOnly=_flagsOnly;
 
 @end
 

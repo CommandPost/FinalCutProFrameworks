@@ -14,16 +14,16 @@
     struct PEValidNumberDescription m_positive;
 }
 
-- (id)initWithCoder:(id)arg1;
-- (void)_scanFormat:(id)arg1 intoDescription:(struct PEValidNumberDescription *)arg2;
-- (BOOL)isPartialStringValid:(id)arg1 newEditingString:(id *)arg2 errorDescription:(id *)arg3;
-- (void)setPositiveFormat:(id)arg1;
-- (void)updatePositiveFormat;
-- (void)setNegativeFormat:(id)arg1;
-- (void)updateNegativeFormat;
-- (id)init;
-- (void)setMaximumFromDouble:(double)arg1;
 - (void)setMinimumFromDouble:(double)arg1;
+- (void)setMaximumFromDouble:(double)arg1;
+- (id)init;
+- (void)updateNegativeFormat;
+- (void)setNegativeFormat:(id)arg1;
+- (void)updatePositiveFormat;
+- (void)setPositiveFormat:(id)arg1;
+- (BOOL)isPartialStringValid:(id)arg1 newEditingString:(id *)arg2 errorDescription:(id *)arg3;
+- (void)_scanFormat:(id)arg1 intoDescription:(struct PEValidNumberDescription *)arg2;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

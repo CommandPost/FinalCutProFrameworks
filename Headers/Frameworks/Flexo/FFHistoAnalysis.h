@@ -6,25 +6,19 @@
 
 #import "NSObject.h"
 
-@class FFPixelBuffer, NSDictionary;
+@class FFPixelBuffer;
 
 __attribute__((visibility("hidden")))
 @interface FFHistoAnalysis : NSObject
 {
     struct OMHistoAnalysis *_histo;
     FFPixelBuffer *_pixelBuffer;
-    NSDictionary *_faceInfo;
 }
 
-@property(readonly) int colorPrimaries; // @dynamic colorPrimaries;
-- (id)pixelBuffer;
-- (id)faceInfo;
-- (struct OMHistoAnalysis *)histo;
-- (void)analyseWithBuffer:(id)arg1;
-- (void)analyseWithBuffer:(id)arg1 andFaceInfo:(id)arg2;
-- (void)dealloc;
-- (id)initWithColorPrimaries:(int)arg1;
 - (id)init;
+- (void)dealloc;
+- (void)analyseWithBuffer:(id)arg1;
+- (struct OMHistoAnalysis *)histo;
 
 @end
 

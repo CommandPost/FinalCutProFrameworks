@@ -13,8 +13,8 @@
     OZTimelineModule *_timelineController;
 }
 
-- (void)setTimelineController:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setTimelineController:(id)arg1;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKPanel, LKSegmentedControl, NSString;
+@class LKPanel, LKSegmentedControl;
 
 @interface OZMarkerInfoPanel : NSObject <NSWindowDelegate>
 {
@@ -25,36 +25,27 @@
     struct OZChannelObjectRoot *_pRoot;
     struct OZTimeMarkerSet *_pInputMarkers;
     struct OZTimeMarkerSet *_pOutputMarkers;
-    const struct OZTimeMarker *_pCurrentMarker;
-    const struct PCTimeRange *_pRange;
+    struct OZTimeMarker *_pCurrentMarker;
     struct OZDocument *_pDocument;
 }
 
 + (void)openWithRoot:(struct OZChannelObjectRoot *)arg1 currentMarker:(const struct OZTimeMarker *)arg2 range:(const struct PCTimeRange *)arg3 document:(struct OZDocument *)arg4;
-- (void)windowWillClose:(id)arg1;
-- (void)updateValidDuration:(_Bool)arg1;
-- (void)updateValidTimeRange:(_Bool)arg1;
-- (void)checkButtonEnables;
-- (void)copyCurrentMarkerToPanel;
-- (void)copyPanelToCurrentMarker;
-- (BOOL)isMarkerType:(unsigned int)arg1 inTheSameClassAs:(unsigned int)arg2;
-- (void)typeNotify:(id)arg1;
-- (void)cancelNotify:(id)arg1;
-- (void)okNotify:(id)arg1;
-- (void)nextNotify:(id)arg1;
-- (void)previousNotify:(id)arg1;
-- (void)goBackForward:(id)arg1;
-- (void)deleteNotify:(id)arg1;
-- (void)timeNotify:(id)arg1;
-- (void)openWithRoot:(struct OZChannelObjectRoot *)arg1 currentMarker:(const struct OZTimeMarker *)arg2 range:(const struct PCTimeRange *)arg3;
-- (void)setDocument:(struct OZDocument *)arg1;
 - (void)awakeFromNib;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)setDocument:(struct OZDocument *)arg1;
+- (void)openWithRoot:(struct OZChannelObjectRoot *)arg1 currentMarker:(const struct OZTimeMarker *)arg2 range:(const struct PCTimeRange *)arg3;
+- (void)timeNotify:(id)arg1;
+- (void)deleteNotify:(id)arg1;
+- (void)goBackForward:(id)arg1;
+- (void)previousNotify:(id)arg1;
+- (void)nextNotify:(id)arg1;
+- (void)okNotify:(id)arg1;
+- (void)cancelNotify:(id)arg1;
+- (void)typeNotify:(id)arg1;
+- (BOOL)isMarkerType:(unsigned int)arg1 inTheSameClassAs:(unsigned int)arg2;
+- (void)copyPanelToCurrentMarker;
+- (void)copyCurrentMarkerToPanel;
+- (void)checkButtonEnables;
+- (void)windowWillClose:(id)arg1;
 
 @end
 

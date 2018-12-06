@@ -24,20 +24,20 @@
 }
 
 + (id)manager;
-- (void)invalidateDestructionTimer;
-- (void)destroyTargetWindowIfNotDragging:(id)arg1;
-- (struct CGPoint)dropPoint;
-- (void)setupDelayedDrop:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
-- (void)fireDelayedDrop:(id)arg1;
-- (void)draggingExited:(id)arg1 view:(id)arg2;
-- (BOOL)draggingUpdated:(id)arg1 operation:(unsigned long long)arg2 view:(id)arg3;
-- (void)draggingEntered:(id)arg1 operation:(unsigned long long)arg2;
-- (struct CGRect)dropMenuWindowFrame;
-- (BOOL)windowIsShowing;
-- (void)destroyTargetWindow;
-- (void)showDropMenuWindowWithLocation:(struct CGPoint)arg1 dropTarget:(id)arg2 numTargets:(int)arg3 selectorArray:(id)arg4 selectorTargetArray:(id)arg5 mainTextArray:(id)arg6 subTextArray:(id)arg7 iconArray:(id)arg8 indentArray:(id)arg9 dragInfo:(id)arg10;
-- (float)_determineWellWidth:(id)arg1 iconArray:(id)arg2 subTextArray:(id)arg3;
 - (id)init;
+- (float)_determineWellWidth:(id)arg1 iconArray:(id)arg2 subTextArray:(id)arg3;
+- (void)showDropMenuWindowWithLocation:(struct CGPoint)arg1 dropTarget:(id)arg2 numTargets:(int)arg3 selectorArray:(id)arg4 selectorTargetArray:(id)arg5 mainTextArray:(id)arg6 subTextArray:(id)arg7 iconArray:(id)arg8 indentArray:(id)arg9 dragInfo:(id)arg10;
+- (void)destroyTargetWindow;
+- (BOOL)windowIsShowing;
+- (struct CGRect)dropMenuWindowFrame;
+- (void)draggingEntered:(id)arg1 operation:(unsigned long long)arg2;
+- (BOOL)draggingUpdated:(id)arg1 operation:(unsigned long long)arg2 view:(id)arg3;
+- (void)draggingExited:(id)arg1 view:(id)arg2;
+- (void)fireDelayedDrop:(id)arg1;
+- (void)setupDelayedDrop:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
+- (struct CGPoint)dropPoint;
+- (void)destroyTargetWindowIfNotDragging:(id)arg1;
+- (void)invalidateDestructionTimer;
 
 @end
 

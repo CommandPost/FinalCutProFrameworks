@@ -8,32 +8,25 @@
 
 #import "FFApplicationEventFilter.h"
 
-@class NSException, NSMutableSet;
+@class NSMutableSet;
 
 @interface FFApplication : LKApplication <FFApplicationEventFilter>
 {
     NSMutableSet *_eventFilters;
     NSMutableSet *_actionRedirectionTargets;
-    NSException *_exception;
 }
 
-+ (BOOL)isTerminating;
-- (id)exceptionOnTerminate;
-- (void)setExceptionOnTerminate:(id)arg1;
-- (void)reportExceptionOnTerminate;
-- (void)terminate:(id)arg1;
-- (BOOL)_handleKeyEquivalent:(id)arg1;
-- (BOOL)_shouldSuppressEventInHandleKeyEquivalent:(id)arg1;
-- (void)sendEvent:(id)arg1;
-- (BOOL)sendAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;
-- (id)targetForAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;
-- (void)removeActionRedirectionTarget:(id)arg1;
-- (void)addActionRedirectionTarget:(id)arg1;
-- (void)removeEventFilter:(id)arg1;
-- (void)addEventFilter:(id)arg1;
-- (void)finishLaunching;
-- (id)willPresentError:(id)arg1;
++ (void)initialize;
 - (void)dealloc;
+- (void)finishLaunching;
+- (void)addEventFilter:(id)arg1;
+- (void)removeEventFilter:(id)arg1;
+- (void)addActionRedirectionTarget:(id)arg1;
+- (void)removeActionRedirectionTarget:(id)arg1;
+- (id)targetForAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;
+- (BOOL)sendAction:(SEL)arg1 to:(id)arg2 from:(id)arg3;
+- (void)sendEvent:(id)arg1;
+- (void)terminate:(id)arg1;
 
 @end
 

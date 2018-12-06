@@ -10,11 +10,12 @@
 {
 }
 
-+ (id)ReadSequenceFromFile:(id)arg1 forItem:(id)arg2 error:(id *)arg3;
-+ (id)EventProject;
-+ (void)ShutDown;
++ (BOOL)WriteSequenceSelection:(id)arg1 toPath:(id)arg2 error:(id *)arg3;
 + (void)Initialize;
-+ (BOOL)WriteSequence:(id)arg1 toPath:(id)arg2 excludeDisabledRolesInShare:(BOOL)arg3 error:(id *)arg4;
++ (void)ShutDown;
++ (id)EventProject;
++ (id)MediaEventDocument;
++ (id)ReadSequenceFromFile:(id)arg1 forItem:(id)arg2 error:(id *)arg3;
 
 @end
 

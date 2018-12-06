@@ -18,20 +18,20 @@
     TMCollectionHeader *_destination;
 }
 
-- (void)collectionListDidChange:(id)arg1;
-- (void)textDidChange:(id)arg1;
-- (void)windowWillClose:(id)arg1;
-- (void)windowDidBecomeKey:(id)arg1;
-- (void)sheetDidEnd:(id)arg1 returnCode:(int)arg2 contextInfo:(void *)arg3;
-- (void)validateName;
-- (void)create:(id)arg1;
-- (void)cancel:(id)arg1;
-- (id)newCollection;
-- (void)openModalDialogue;
-- (void)openModalSheetForWindow:(id)arg1;
-- (void)windowDidLoad;
-- (void)dealloc;
 - (id)initWithDestinationCollection:(id)arg1;
+- (void)dealloc;
+- (void)windowDidLoad;
+- (void)openModalSheetForWindow:(id)arg1;
+- (void)openModalDialogue;
+- (id)newCollection;
+- (void)cancel:(id)arg1;
+- (void)create:(id)arg1;
+- (void)validateName;
+- (void)sheetDidEnd:(id)arg1 returnCode:(int)arg2 contextInfo:(void *)arg3;
+- (void)windowDidBecomeKey:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)textDidChange:(id)arg1;
+- (void)collectionListDidChange:(id)arg1;
 
 @end
 

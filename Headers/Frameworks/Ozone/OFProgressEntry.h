@@ -6,13 +6,12 @@
 
 #import "NSObject.h"
 
-@class FFBackgroundTask, LKProgressIndicator, LKTextField, NSString;
+@class LKProgressIndicator, LKTextField, NSString;
 
 @interface OFProgressEntry : NSObject
 {
     struct JobID *_jobID;
     int _state;
-    FFBackgroundTask *_task;
     unsigned int _totalFrames;
     unsigned int _completedFrames;
     double _timeRemaining;
@@ -24,29 +23,25 @@
     BOOL _pressedState;
 }
 
-- (void)setPressedState:(BOOL)arg1;
-- (BOOL)pressedState;
-- (id)progressIndicator;
-- (id)row3Text;
-- (id)row2Text;
-- (id)row1Text;
-- (void)setFootageName:(id)arg1;
-- (id)footageName;
-- (double)timeRemaining;
-- (void)setCompletedFrames:(unsigned int)arg1;
-- (unsigned int)completedFrames;
-- (void)setTotalFrames:(unsigned int)arg1;
-- (unsigned int)totalFrames;
-- (id)task;
-- (void)setState:(int)arg1;
-- (int)state;
-- (struct JobID *)jobID;
-- (void)setFromBackgroundTask:(id)arg1;
-- (void)setFromJob:(const struct Job *)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithBackgroundTask:(id)arg1;
 - (id)initWithJob:(const struct Job *)arg1;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setFromJob:(const struct Job *)arg1;
+- (struct JobID *)jobID;
+- (int)state;
+- (void)setState:(int)arg1;
+- (unsigned int)totalFrames;
+- (void)setTotalFrames:(unsigned int)arg1;
+- (unsigned int)completedFrames;
+- (void)setCompletedFrames:(unsigned int)arg1;
+- (double)timeRemaining;
+- (id)footageName;
+- (id)row1Text;
+- (id)row2Text;
+- (id)row3Text;
+- (id)progressIndicator;
+- (BOOL)pressedState;
+- (void)setPressedState:(BOOL)arg1;
 
 @end
 

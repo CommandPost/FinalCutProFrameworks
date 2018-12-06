@@ -15,10 +15,10 @@
 }
 
 + (BOOL)pickLayer:(struct PMClip *)arg1 defaultLayer:(int)arg2 retLayer:(int *)arg3;
-- (void)loadLayerDoCancel:(id)arg1;
-- (void)loadLayerDoOK:(id)arg1;
-- (BOOL)pickLayer:(struct PMClip *)arg1 defaultLayer:(int)arg2 retLayer:(int *)arg3;
 - (void)dealloc;
+- (BOOL)pickLayer:(struct PMClip *)arg1 defaultLayer:(int)arg2 retLayer:(int *)arg3;
+- (void)loadLayerDoOK:(id)arg1;
+- (void)loadLayerDoCancel:(id)arg1;
 
 @end
 

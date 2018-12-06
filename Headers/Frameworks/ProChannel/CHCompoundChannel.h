@@ -10,16 +10,16 @@
 {
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (void)removeAllKeyframes;
-- (void)exchangeChildAtIndex:(unsigned long long)arg1 withChildAtIndex:(unsigned long long)arg2;
-- (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)removeAllChildren;
-- (void)removeChild:(id)arg1;
-- (void)addChild:(id)arg1;
-- (void)reset;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZCompoundChannel *)ozChannel;
+- (void)reset;
+- (void)addChild:(id)arg1;
+- (void)removeChild:(id)arg1;
+- (void)removeAllChildren;
+- (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)exchangeChildAtIndex:(unsigned long long)arg1 withChildAtIndex:(unsigned long long)arg2;
+- (void)removeAllKeyframes;
 
 @end
 

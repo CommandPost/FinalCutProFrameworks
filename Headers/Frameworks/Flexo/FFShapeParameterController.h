@@ -15,12 +15,11 @@ __attribute__((visibility("hidden")))
     LKButton *_toggleOSCButton;
 }
 
-- (void)maskOSCActiveChannelChanged:(id)arg1 old:(id)arg2;
-- (id)representedChannel;
-- (void)update;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
+- (void)update;
+- (id)representedChannel;
+- (void)maskOSCActiveChannelChanged:(id)arg1 old:(id)arg2;
 
 @end
 

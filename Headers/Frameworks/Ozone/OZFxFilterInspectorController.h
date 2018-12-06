@@ -10,8 +10,8 @@
 {
 }
 
-- (void)dealloc;
 - (id)initWithEffect:(struct OZEffect *)arg1;
+- (void)dealloc;
 
 @end
 

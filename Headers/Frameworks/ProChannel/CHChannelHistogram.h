@@ -10,20 +10,20 @@
 {
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (double)gammaValueAtTime:(CDStruct_198678f7)arg1 forHistogramChannel:(int)arg2;
-- (double)whiteOutValueAtTime:(CDStruct_198678f7)arg1 forHistogramChannel:(int)arg2;
-- (double)whiteInValueAtTime:(CDStruct_198678f7)arg1 forHistogramChannel:(int)arg2;
-- (double)blackOutValueAtTime:(CDStruct_198678f7)arg1 forHistogramChannel:(int)arg2;
-- (double)blackInValueAtTime:(CDStruct_198678f7)arg1 forHistogramChannel:(int)arg2;
-- (id)gammaChannelForHistogramChannel:(unsigned int)arg1;
-- (id)whiteOutChannelForHistogramChannel:(unsigned int)arg1;
-- (id)whiteInChannelForHistogramChannel:(unsigned int)arg1;
-- (id)blackOutChannelForHistogramChannel:(unsigned int)arg1;
-- (id)blackInChannelForHistogramChannel:(unsigned int)arg1;
-- (id)selectedChannel;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelHistogram *)ozChannel;
+- (id)selectedChannel;
+- (id)blackInChannelForHistogramChannel:(unsigned int)arg1;
+- (id)blackOutChannelForHistogramChannel:(unsigned int)arg1;
+- (id)whiteInChannelForHistogramChannel:(unsigned int)arg1;
+- (id)whiteOutChannelForHistogramChannel:(unsigned int)arg1;
+- (id)gammaChannelForHistogramChannel:(unsigned int)arg1;
+- (double)blackInValueAtTime:(CDStruct_1b6d18a9)arg1 forHistogramChannel:(int)arg2;
+- (double)blackOutValueAtTime:(CDStruct_1b6d18a9)arg1 forHistogramChannel:(int)arg2;
+- (double)whiteInValueAtTime:(CDStruct_1b6d18a9)arg1 forHistogramChannel:(int)arg2;
+- (double)whiteOutValueAtTime:(CDStruct_1b6d18a9)arg1 forHistogramChannel:(int)arg2;
+- (double)gammaValueAtTime:(CDStruct_1b6d18a9)arg1 forHistogramChannel:(int)arg2;
 
 @end
 

@@ -4,15 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import "TLKThemeBackedLayer.h"
 
-@interface PEMeterLayerBase : CALayer
+@interface PEMeterLayerBase : TLKThemeBackedLayer
 {
     int _layerID;
 }
 
-@property int layerID; // @synthesize layerID=_layerID;
 - (id)init;
+- (void)addRotationToLayer:(id)arg1 from:(id)arg2 to:(id)arg3 animate:(BOOL)arg4;
+@property int layerID; // @synthesize layerID=_layerID;
 
 @end
 

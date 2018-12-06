@@ -4,69 +4,77 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKAbstractItemBackgroundLayer.h>
+#import "CALayer.h"
 
-@class CALayer, NSDictionary, TLKItemShadowLayer;
+@class NSMutableArray;
 
-@interface TLKItemBackgroundLayer : TLKAbstractItemBackgroundLayer
+@interface TLKItemBackgroundLayer : CALayer
 {
-    TLKItemShadowLayer *_shadowLayer;
+    int _itemType;
+    int _avContainmentType;
+    double _textSize;
+    NSMutableArray *_roundingLayers;
+    NSMutableArray *_shadowRoundingLayers;
+    NSMutableArray *_darkRoundingLayers;
+    NSMutableArray *_shadowLayers;
     CALayer *_rootLayer;
-    NSDictionary *_mappingTable;
-    CALayer *_backgroundLayer;
-    CALayer *_backgroundFillLayer;
-    CALayer *_backgroundGlossLayer;
-    struct CGColor *_overrideBackgroundColor;
-    CALayer *_transitionHeaderGlyph;
+    CALayer *_headerTitleOnlyLayer;
+    CALayer *_headerLayer;
+    CALayer *_videoLayer;
+    CALayer *_audioLayer;
+    CALayer *_videoVideoOnlyLayer;
+    CALayer *_audioNoAudioLayer;
+    CALayer *_transitionGlossLayer;
     CALayer *_transitionRollTargetingLayer;
+    CALayer *_transitionHeaderOnlyRollTargetingLayer;
+    CALayer *_transitionHeaderLeadingEdgeLayer;
+    CALayer *_transitionHeaderTrailingEdgeLayer;
+    CALayer *_transitionHeaderOnlyLeadingEdgeLayer;
+    CALayer *_transitionHeaderOnlyTrailingEdgeLayer;
+    CALayer *_transitionHeaderOnlyGlyph;
+    CALayer *_transitionHeaderGlyph;
     CALayer *_transitionLeadingRollTargetingLayer;
     CALayer *_transitionTrailingRollTargetingLayer;
-    CALayer *_transitionLeadingEdgeLayer;
-    CALayer *_transitionTrailingEdgeLayer;
-    CALayer *_leadingEdgeVideoStitchingLayer;
-    CALayer *_trailingEdgeVideoStitchingLayer;
-    CALayer *_leadingEdgeAudioStitchingLayer;
-    CALayer *_trailingEdgeAudioStitchingLayer;
-    unsigned int _cacheStateFlags;
-    int _previousType;
-    int _previousMask;
-    BOOL _previousAudioOnly;
+    CALayer *_transitionHeaderOnlyLeadingRollTargetingLayer;
+    CALayer *_transitionHeaderOnlyTrailingRollTargetingLayer;
     struct {
-        unsigned int audioComponent:1;
-        unsigned int roundedBottomAudioComponent:1;
+        unsigned int sourceSplitEdit:1;
+        unsigned int splitEdit:1;
+        unsigned int forceVisualUpdate:1;
+        unsigned int spineItem:1;
         unsigned int leadingEdgeAllowedOperation:1;
         unsigned int trailingEdgeAllowedOperation:1;
-        unsigned int rollTargetingPartHidden:1;
-        unsigned int leadingEdgePartHidden:1;
-        unsigned int trailingEdgePartHidden:1;
-        unsigned int invalidated:1;
-        unsigned int RESERVED:24;
+        unsigned int RESERVED:26;
     } _tlkItemBackgroudflags;
 }
 
 + (double)cornerRadiusForWidth:(double)arg1;
-+ (struct CGRect)frameForItem:(struct CGRect)arg1 withType:(int)arg2 andContainmentType:(int)arg3;
-+ (void)initialize;
-@property(readonly) CALayer *backgroundFillLayer; // @synthesize backgroundFillLayer=_backgroundFillLayer;
-- (BOOL)allowedOperationForEdge:(id)arg1;
-- (void)setAllowedOperation:(BOOL)arg1 forEdge:(id)arg2;
-- (struct CGRect)rectForPart:(id)arg1;
-- (BOOL)partIsHidden:(id)arg1;
-- (void)setPart:(id)arg1 hidden:(BOOL)arg2;
-- (void)layoutSublayers;
-- (void)audioWaveFormProportionChanged;
-- (void)_adjustTransitionHandles;
-- (void)setItemType:(int)arg1 andContainmentMask:(int)arg2;
-- (void)updateAppearanceType:(int)arg1 withMask:(int)arg2;
-- (void)_updateBackgroundOfType:(int)arg1 withMask:(int)arg2;
-- (void)setOverideColorForBackgroundFill:(struct CGColor *)arg1;
-- (BOOL)roundedBottomAudioComponent;
-- (void)setRoundedBottomAudioComponent:(BOOL)arg1;
-- (BOOL)audioComponent;
-- (void)setAudioComponent:(BOOL)arg1;
-- (void)dealloc;
++ (double)itemHeaderHeight;
++ (double)itemHeaderOnlyHeight;
 - (id)init;
+- (void)dealloc;
+- (id)timelineView;
+- (int)itemType;
+- (int)aVContainmentType;
+@property BOOL splitEdit;
+@property BOOL sourceSplitEdit;
+@property BOOL spineItem;
+@property double textSize;
+- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
+- (void)setDelegate:(id)arg1;
+- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
+- (void)addSublayer:(id)arg1;
+- (void)insertSublayer:(id)arg1 below:(id)arg2;
+- (void)insertSublayer:(id)arg1 above:(id)arg2;
+- (void)replaceSublayer:(id)arg1 with:(id)arg2;
 - (void)invalidate;
+- (void)setItemType:(int)arg1 andContainmentMask:(int)arg2;
+- (id)actionForKey:(id)arg1;
+- (void)layoutSublayers;
+- (void)setPart:(id)arg1 hidden:(BOOL)arg2;
+- (struct CGRect)rectForPart:(id)arg1;
+- (void)setAllowedOperation:(BOOL)arg1 forEdge:(id)arg2;
+- (BOOL)allowedOperationForEdge:(id)arg1;
 
 @end
 

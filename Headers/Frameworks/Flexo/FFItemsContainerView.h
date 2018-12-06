@@ -4,44 +4,40 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSView.h"
+#import "NSProView.h"
 
-@class FFEventLibraryModule, FFOrganizerImportDropResponderLayerHostView, LKTextField, NSBox, NSString;
+@class LKTextField, NSBox, NSString, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFItemsContainerView : NSView
+@interface FFItemsContainerView : NSProView
 {
     NSView *_headerView;
     NSView *_mainView;
     NSView *_footerView;
-    FFOrganizerImportDropResponderLayerHostView *_infoView;
+    NSView *_infoView;
     LKTextField *_infoTextView;
-    NSView *_infoViewFirstLaunch;
+    NSProView *_infoViewFirstLaunch;
     NSBox *_emptyEventsOptions;
     BOOL _showsHeaderView;
     BOOL _showsInfoView;
     BOOL _showEmptyOptions;
     BOOL _showfirstLaunch;
-    FFEventLibraryModule *_eventLibraryModule;
 }
 
-@property(nonatomic) FFEventLibraryModule *eventLibraryModule; // @synthesize eventLibraryModule=_eventLibraryModule;
-@property(nonatomic) BOOL showEmptyOptions; // @synthesize showEmptyOptions=_showEmptyOptions;
-@property(nonatomic) BOOL showFirstLaunch; // @synthesize showFirstLaunch=_showfirstLaunch;
-@property(retain, nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
 @property(retain, nonatomic) NSView *mainView; // @synthesize mainView=_mainView;
 @property(retain, nonatomic) NSView *headerView; // @synthesize headerView=_headerView;
-- (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
-- (void)layoutSubviewsAnimated:(BOOL)arg1;
-- (BOOL)isFlipped;
-- (void)layoutSubviews;
-- (void)setShowsInfoView:(BOOL)arg1 animated:(BOOL)arg2;
-@property(nonatomic) BOOL showsInfoView;
+@property(retain, nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
 @property(copy, nonatomic) NSString *infoText;
-- (void)setShowsHeaderView:(BOOL)arg1 animated:(BOOL)arg2;
 @property(nonatomic) BOOL showsHeaderView;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
+- (void)setShowsHeaderView:(BOOL)arg1 animated:(BOOL)arg2;
+@property(nonatomic) BOOL showsInfoView;
+- (void)setShowsInfoView:(BOOL)arg1 animated:(BOOL)arg2;
+@property(nonatomic) BOOL showEmptyOptions; // @synthesize showEmptyOptions=_showEmptyOptions;
+@property(nonatomic) BOOL showFirstLaunch; // @synthesize showFirstLaunch=_showfirstLaunch;
+- (void)layoutSubviews;
+- (BOOL)isFlipped;
+- (void)layoutSubviewsAnimated:(BOOL)arg1;
+- (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
 
 @end
 

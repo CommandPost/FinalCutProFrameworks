@@ -4,13 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFAssetCopyQueue, FFAssetCopyRequest, NSArray;
-
 @protocol FFAssetCopyQueueDelegateProtocol
-
-@optional
-- (void)taskFinished:(FFAssetCopyQueue *)arg1;
-- (void)taskWasCancelled:(FFAssetCopyRequest *)arg1 queuedRequests:(NSArray *)arg2;
-- (BOOL)canCancelTask;
+- (void)taskWasCancelled:(id)arg1;
 @end
 

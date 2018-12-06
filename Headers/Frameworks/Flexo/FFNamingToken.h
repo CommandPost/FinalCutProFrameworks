@@ -17,16 +17,16 @@
     NSString *_displayString;
 }
 
-+ (id)tokenWithIdentifier:(id)arg1;
 + (id)namingTokens;
++ (id)tokenWithIdentifier:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
+- (void)dealloc;
+- (id)description;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(retain) NSString *displayString; // @synthesize displayString=_displayString;
 @property(retain) NSString *identifier; // @synthesize identifier=_identifier;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)description;
-- (void)dealloc;
-- (id)initWithIdentifier:(id)arg1;
 
 @end
 

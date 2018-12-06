@@ -13,25 +13,26 @@
     double _startCameraZ;
 }
 
-- (double)startCameraZ;
-- (void)startCameraZ:(double)arg1;
-- (double)startCameraY;
-- (void)startCameraY:(double)arg1;
-- (double)startCameraX;
-- (void)startCameraX:(double)arg1;
-- (basic_string_a1f69cfb)toolUndoString;
-- (void)performReset:(id)arg1;
-- (void)reset:(id)arg1;
-- (void)stopUndo:(id)arg1;
-- (void)startUndo:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (BOOL)displayDefaultOnScreenControls;
-- (BOOL)handlesMousingInOnScreenControls;
-- (float)getRefreshInterval;
-- (id)getDefaultCursor;
-- (struct PCUUID)getClassID;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (struct PCUUID)getClassID;
+- (id)getBundle;
+- (id)getDefaultCursor;
+- (float)getRefreshInterval;
+- (BOOL)handlesMousingInOnScreenControls;
+- (BOOL)displayDefaultOnScreenControls;
+- (void)mouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)startUndo:(id)arg1;
+- (void)stopUndo:(id)arg1;
+- (void)reset:(id)arg1;
+- (void)performReset:(id)arg1;
+- (basic_string_075b6133)toolUndoString;
+- (void)startCameraX:(double)arg1;
+- (double)startCameraX;
+- (void)startCameraY:(double)arg1;
+- (double)startCameraY;
+- (void)startCameraZ:(double)arg1;
+- (double)startCameraZ;
 
 @end
 

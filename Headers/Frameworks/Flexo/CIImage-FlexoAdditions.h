@@ -7,17 +7,17 @@
 #import "CIImage.h"
 
 @interface CIImage (FlexoAdditions)
-- (void)dumpImage32;
-- (void)dumpImage32WithPrefix:(id)arg1;
-- (void)dumpImage16;
-- (void)dumpImage16WithPrefix:(id)arg1;
-- (void)dumpImage14;
-- (void)dumpImage14WithPrefix:(id)arg1;
-- (void)dumpImage8;
-- (void)dumpImage8WithPrefix:(id)arg1;
-- (void)dumpImageWithPrefix:(id)arg1 compressRange:(BOOL)arg2 bitsPerSample:(unsigned long long)arg3;
-- (void)dumpImage;
-- (void)dumpImageWithPrefix:(id)arg1;
 - (BOOL)dumpImageWithPrefix:(id)arg1 andContext:(id)arg2;
+- (void)dumpImageWithPrefix:(id)arg1;
+- (void)dumpImage;
+- (void)dumpImageWithPrefix:(id)arg1 compressRange:(BOOL)arg2 bitsPerSample:(unsigned long long)arg3;
+- (void)dumpImage8WithPrefix:(id)arg1;
+- (void)dumpImage8;
+- (void)dumpImage14WithPrefix:(id)arg1;
+- (void)dumpImage14;
+- (void)dumpImage16WithPrefix:(id)arg1;
+- (void)dumpImage16;
+- (void)dumpImage32WithPrefix:(id)arg1;
+- (void)dumpImage32;
 @end
 

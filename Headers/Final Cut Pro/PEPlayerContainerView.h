@@ -4,28 +4,22 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "LKSplitView.h"
+#import "NSProView.h"
 
-@class NSImage, PEPlayerContainerModule;
+@class PEPlayerContainerModule;
 
-@interface PEPlayerContainerView : LKSplitView
+@interface PEPlayerContainerView : NSProView
 {
     PEPlayerContainerModule *_playerContainerModule;
     BOOL _hasMedia;
     BOOL _hasEffect;
-    NSImage *_shadowFacetImage;
 }
 
-- (void)viewDidMoveToWindow;
-- (void)viewWillMoveToWindow:(id)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (id)shadowFacetImage;
-- (double)dividerThickness;
-- (void)drawDividerInRect:(struct CGRect)arg1;
-- (void)mouseDown:(id)arg1;
-- (BOOL)_pasteboardHasEffect:(id)arg1;
-- (void)dealloc;
 - (void)awakeFromNib;
+- (void)dealloc;
+- (BOOL)_pasteboardHasEffect:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (BOOL)isOpaque;
 
 @end
 

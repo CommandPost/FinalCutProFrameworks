@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFMedia, FFRenderFormat, FFRenderer, NSArray, NSDictionary, NSError, NSNumber, NSObject<OS_dispatch_semaphore>, NSOperationQueue, NSString;
+@class FFMedia, FFRenderFormat, FFRenderer, NSDictionary, NSError, NSOperationQueue, NSString;
 
 @interface FFSequenceSettingsExporter : NSObject
 {
@@ -14,11 +14,7 @@
     NSString *_toFile;
     FFRenderFormat *_format;
     unsigned int _flags;
-    NSObject<OS_dispatch_semaphore> *_rendererSemaphore;
     FFRenderer *_renderer;
-    BOOL _trialRunPass;
-    float _endOfTrialRunPassProgress;
-    float _lastReportedProgress;
     float _audioProgress;
     NSOperationQueue *_operationQueue;
     BOOL _operationStarted;
@@ -26,50 +22,28 @@
     BOOL _operationFinished;
     NSError *_error;
     NSDictionary *_customData;
-    NSArray *_tracks;
     BOOL _usePlayRange;
-    int _startVideoFrame;
-    int _endVideoFrame;
+    unsigned long long _startFrame;
+    unsigned long long _endFrame;
     NSString *_appName;
-    BOOL _shouldConductUI;
-    BOOL _includeChapters;
-    NSDictionary *_metadata;
-    NSNumber *_cKExportOption;
-    NSString *_ckColorSpaceSetting;
-    NSArray *_captionSets;
 }
 
-+ (id)exporterForMedia:(id)arg1 toFile:(id)arg2 withFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5;
 + (id)exporterForSequence:(id)arg1 toFile:(id)arg2 flags:(unsigned int)arg3 application:(id)arg4;
-@property(readonly) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property(retain) NSArray *tracks; // @synthesize tracks=_tracks;
-@property(retain) NSArray *captionSets; // @synthesize captionSets=_captionSets;
-@property(retain) NSString *CKColorSpaceSetting; // @synthesize CKColorSpaceSetting=_ckColorSpaceSetting;
-@property(retain) NSNumber *cKExportOption; // @synthesize cKExportOption=_cKExportOption;
-@property(retain) NSDictionary *metadata; // @synthesize metadata=_metadata;
-@property(readonly) NSError *error; // @synthesize error=_error;
-@property BOOL includeChapters; // @synthesize includeChapters=_includeChapters;
-@property BOOL shouldConductUI; // @synthesize shouldConductUI=_shouldConductUI;
-@property(readonly) NSString *toFile; // @synthesize toFile=_toFile;
-@property(readonly) FFMedia *media; // @synthesize media=_media;
-@property(retain) NSDictionary *customData; // @synthesize customData=_customData;
-- (void)_runExport;
-- (void)_performAudioFileExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 fileNames:(id)arg4 fileFormat:(int)arg5;
-- (void)_performAudioOnlyMovieExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 movieWriter:(id)arg4;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)cancelWithError:(int)arg1 description:(id)arg2;
-- (void)cancelWithError:(id)arg1;
-- (void)waitUntilDone;
-- (BOOL)done;
-- (double)progress;
-- (BOOL)canceled;
-- (void)cancel;
-- (void)start;
-- (void)setExportRangeWithStartFrame:(unsigned long long)arg1 endFrame:(unsigned long long)arg2;
-- (void)dealloc;
-- (id)initWithMedia:(id)arg1 toFile:(id)arg2 withFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5;
++ (id)exporterForMedia:(id)arg1 toFile:(id)arg2 withFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5;
 - (id)initWithSequence:(id)arg1 toFile:(id)arg2 flags:(unsigned int)arg3 application:(id)arg4;
-@property(readonly) unsigned int flags;
+- (id)initWithMedia:(id)arg1 toFile:(id)arg2 withFormat:(id)arg3 flags:(unsigned int)arg4 application:(id)arg5;
+- (void)dealloc;
+- (void)setExportRangeWithStartFrame:(unsigned long long)arg1 endFrame:(unsigned long long)arg2;
+- (void)start;
+- (void)cancel;
+- (double)progress;
+- (BOOL)done;
+- (void)cancelWithError:(id)arg1;
+- (void)cancelWithError:(int)arg1 description:(id)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_performAudioOnlyExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 movieWriter:(id)arg4;
+- (void)_runExport;
+@property(retain) NSDictionary *customData; // @synthesize customData=_customData;
 
 @end
 

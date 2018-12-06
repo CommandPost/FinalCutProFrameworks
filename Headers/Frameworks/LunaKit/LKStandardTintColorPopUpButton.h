@@ -4,20 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <LunaKit/LKPopUpButton.h>
+#import "NSProStandardTintColorPopUpButton.h"
 
-@interface LKStandardTintColorPopUpButton : LKPopUpButton
+@interface LKStandardTintColorPopUpButton : NSProStandardTintColorPopUpButton
 {
 }
 
-+ (id)keyPathsForValuesAffectingStandardColorTint;
-+ (Class)cellClass;
 + (void)initialize;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 pullsDown:(BOOL)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)init;
-@property long long standardColorTint;
 
 @end
 

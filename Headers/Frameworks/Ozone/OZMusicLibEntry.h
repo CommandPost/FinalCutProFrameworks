@@ -6,34 +6,24 @@
 
 #import <Ozone/OZFileSystemLibEntry.h>
 
-@class MLMediaObject, NSString;
+@class NSString;
 
 @interface OZMusicLibEntry : OZFileSystemLibEntry
 {
     NSString *_artist;
     NSString *_album;
-    MLMediaObject *_mediaObject;
 }
 
-+ (id)libraryEntryFromMediaGroup:(id)arg1;
-+ (id)mediaSourceFromMediaLibrary:(id)arg1;
-+ (id)mediaLibrary;
-+ (BOOL)supportsSecureCoding;
-+ (BOOL)validateTree:(id)arg1;
 + (id)buildTree:(id)arg1;
-@property(retain) MLMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
-- (BOOL)shouldBeArchived;
-- (id)getThumbnailPath;
-- (id)getAlbum;
-- (id)getArtist;
-- (id)getAbsolutePath:(BOOL)arg1 rootFlags:(unsigned int)arg2;
-- (id)getSmallPreviewIconForEntry:(BOOL)arg1;
-- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
++ (BOOL)validateTree:(id)arg1;
 - (id)initWithParent:(id)arg1 name:(id)arg2 typeFlags:(unsigned int)arg3 artist:(id)arg4 album:(id)arg5 audioSamples:(unsigned long long)arg6 audioSampleRate:(double)arg7;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
+- (id)getAbsolutePath:(BOOL)arg1 rootFlags:(unsigned int)arg2;
+- (id)getArtist;
+- (id)getAlbum;
+- (BOOL)shouldBeArchived;
 
 @end
 

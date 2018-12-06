@@ -6,18 +6,15 @@
 
 #import "NSObject.h"
 
-@class NSString, OZObjCDocument;
+@class OZObjCDocument;
 
 @interface Opener : NSObject
 {
     OZObjCDocument *_doc;
-    NSString *_exc;
 }
 
-- (id)exception;
-- (id)get;
 - (id)open:(id)arg1;
-- (void)dealloc;
+- (id)get;
 
 @end
 

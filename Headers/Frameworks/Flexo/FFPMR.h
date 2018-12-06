@@ -10,11 +10,11 @@
 {
 }
 
-+ (BOOL)enabled;
-+ (void)setEnabled:(BOOL)arg1;
-+ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-+ (id)theContext;
 + (void)setup;
++ (id)theContext;
++ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
++ (void)setEnabled:(BOOL)arg1;
++ (BOOL)enabled;
 
 @end
 

@@ -10,22 +10,22 @@
 {
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (id)topLeftChannel;
-- (id)topRightChannel;
-- (id)bottomRightChannel;
-- (id)bottomLeftChannel;
-- (void)setDefaultQuad:(struct CGPoint)arg1 bottomRight:(struct CGPoint)arg2 topRight:(struct CGPoint)arg3 topLeft:(struct CGPoint)arg4;
-- (void)setTopLeftAtTime:(CDStruct_198678f7)arg1 value:(struct CGPoint)arg2 options:(unsigned int)arg3;
-- (void)setTopRightAtTime:(CDStruct_198678f7)arg1 value:(struct CGPoint)arg2 options:(unsigned int)arg3;
-- (void)setBottomRightAtTime:(CDStruct_198678f7)arg1 value:(struct CGPoint)arg2 options:(unsigned int)arg3;
-- (void)setBottomLeftAtTime:(CDStruct_198678f7)arg1 value:(struct CGPoint)arg2 options:(unsigned int)arg3;
-- (void)getTopLeftAtTime:(CDStruct_198678f7)arg1 x:(double *)arg2 y:(double *)arg3;
-- (void)getTopRightAtTime:(CDStruct_198678f7)arg1 x:(double *)arg2 y:(double *)arg3;
-- (void)getBottomRightAtTime:(CDStruct_198678f7)arg1 x:(double *)arg2 y:(double *)arg3;
-- (void)getBottomLeftAtTime:(CDStruct_198678f7)arg1 x:(double *)arg2 y:(double *)arg3;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelQuad *)ozChannel;
+- (void)getBottomLeftAtTime:(CDStruct_1b6d18a9)arg1 x:(double *)arg2 y:(double *)arg3;
+- (void)getBottomRightAtTime:(CDStruct_1b6d18a9)arg1 x:(double *)arg2 y:(double *)arg3;
+- (void)getTopRightAtTime:(CDStruct_1b6d18a9)arg1 x:(double *)arg2 y:(double *)arg3;
+- (void)getTopLeftAtTime:(CDStruct_1b6d18a9)arg1 x:(double *)arg2 y:(double *)arg3;
+- (void)setBottomLeftAtTime:(CDStruct_1b6d18a9)arg1 value:(struct CGPoint)arg2 options:(unsigned int)arg3;
+- (void)setBottomRightAtTime:(CDStruct_1b6d18a9)arg1 value:(struct CGPoint)arg2 options:(unsigned int)arg3;
+- (void)setTopRightAtTime:(CDStruct_1b6d18a9)arg1 value:(struct CGPoint)arg2 options:(unsigned int)arg3;
+- (void)setTopLeftAtTime:(CDStruct_1b6d18a9)arg1 value:(struct CGPoint)arg2 options:(unsigned int)arg3;
+- (void)setDefaultQuad:(struct CGPoint)arg1 bottomRight:(struct CGPoint)arg2 topRight:(struct CGPoint)arg3 topLeft:(struct CGPoint)arg4;
+- (id)bottomLeftChannel;
+- (id)bottomRightChannel;
+- (id)topRightChannel;
+- (id)topLeftChannel;
 
 @end
 

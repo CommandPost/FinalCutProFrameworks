@@ -4,31 +4,23 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "LKTextView.h"
+#import "NSTextView.h"
 
-@class FFAnchoredTimelineModule, TXTextViewController;
+@class TXTextViewController;
 
-@interface TXTextView : LKTextView
+@interface TXTextView : NSTextView
 {
     TXTextViewController *_controller;
-    FFAnchoredTimelineModule *_timelineModule;
 }
 
-@property(nonatomic) FFAnchoredTimelineModule *timelineModule; // @synthesize timelineModule=_timelineModule;
-@property(nonatomic) TXTextViewController *controller; // @synthesize controller=_controller;
-- (void)redo:(id)arg1;
-- (void)undo:(id)arg1;
-- (BOOL)validateMenuItem:(id)arg1;
-- (id)getUndoManager;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)closeOpenUndoGroup;
-- (BOOL)resignFirstResponder;
 - (BOOL)becomeFirstResponder;
-- (id)touchBar;
-- (id)colorFactory;
-- (BOOL)isFieldEditor;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)timelineModuleFromMotionEffect:(id)arg1;
+- (BOOL)resignFirstResponder;
+- (void)drawRect:(struct CGRect)arg1;
+- (id)getUndoManager;
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)undo:(id)arg1;
+- (void)redo:(id)arg1;
+@property(nonatomic) TXTextViewController *controller; // @synthesize controller=_controller;
 
 @end
 

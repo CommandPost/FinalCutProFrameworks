@@ -7,10 +7,10 @@
 #import "OZViewController.h"
 
 @interface OZViewController (OZViewControllerAdditions)
-- (id)channelChangeDelegate;
-- (void)setChannelChangeDelegate:(id)arg1;
-- (id)anchoredObjects;
-- (id)anchoredObject;
 - (id)rootBase;
+- (id)anchoredObject;
+- (id)anchoredObjects;
+- (void)setChannelChangeDelegate:(id)arg1;
+- (id)channelChangeDelegate;
 @end
 

@@ -15,26 +15,26 @@
     CDStruct_1b6d18a9 *_currentTime;
 }
 
-- (void)dragRoots:(struct CGPoint)arg1 flags:(unsigned int)arg2;
-- (void)notifyOthersOfSelectionChange;
-- (void)clearSelection;
-- (id)allocRow:(int)arg1;
-- (struct OZChannelFolder *)folderFilter:(struct OZChannelBase *)arg1;
-- (struct OZChannelObjectRoot *)rootFilter:(struct OZChannelBase *)arg1;
-- (struct OZChannelObjectRoot *)rootAtRow:(int)arg1;
-- (struct _NSRange)rowsInRect:(struct CGRect)arg1;
-- (int)numberOfRows;
-- (unsigned int)getFrameChangedDone;
-- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
-- (CDStruct_1b6d18a9)getCurrentTime;
-- (double)getPixelsPerSecond;
-- (CDStruct_1b6d18a9)getSecondsPerPixel;
-- (const struct PCTimeRange *)getDisplayRange;
-- (const struct PCTimeRange *)getSceneRange;
-- (void)setTimingCoordinator:(id)arg1;
-- (void)drawBackground:(struct CGRect)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)drawBackground:(struct CGRect)arg1;
+- (void)setTimingCoordinator:(id)arg1;
+- (const struct PCTimeRange *)getSceneRange;
+- (const struct PCTimeRange *)getDisplayRange;
+- (CDStruct_1b6d18a9)getSecondsPerPixel;
+- (double)getPixelsPerSecond;
+- (CDStruct_1b6d18a9)getCurrentTime;
+- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
+- (unsigned int)getFrameChangedDone;
+- (int)numberOfRows;
+- (struct _NSRange)rowsInRect:(struct CGRect)arg1;
+- (struct OZChannelObjectRoot *)rootAtRow:(int)arg1;
+- (struct OZChannelObjectRoot *)rootFilter:(struct OZChannelBase *)arg1;
+- (struct OZChannelFolder *)folderFilter:(struct OZChannelBase *)arg1;
+- (id)allocRow:(int)arg1;
+- (void)clearSelection;
+- (void)notifyOthersOfSelectionChange;
+- (void)dragRoots:(struct CGPoint)arg1 flags:(unsigned int)arg2;
 
 @end
 

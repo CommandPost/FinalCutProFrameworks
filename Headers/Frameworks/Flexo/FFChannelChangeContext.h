@@ -20,18 +20,18 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)contextForUndoHandler:(id)arg1;
-- (BOOL)isChangingChannelOrParent:(id)arg1;
-- (void)didSetChannels;
-- (void)willSetChannels;
-- (void)didSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
-- (void)willSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
-- (void)endChannelChanges:(id)arg1 forObject:(id)arg2;
-- (void)beginChannelChanges:(id)arg1 forObject:(id)arg2;
-- (id)actionName;
-- (id)_targetForObject:(id)arg1;
-- (void)dealloc;
-- (id)initWithUndoHandler:(id)arg1;
 - (id)init;
+- (id)initWithUndoHandler:(id)arg1;
+- (void)dealloc;
+- (id)_targetForObject:(id)arg1;
+- (id)actionName;
+- (void)beginChannelChanges:(id)arg1 forObject:(id)arg2;
+- (void)endChannelChanges:(id)arg1 forObject:(id)arg2;
+- (void)willSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
+- (void)didSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
+- (void)willSetChannels;
+- (void)didSetChannels;
+- (BOOL)isChangingChannelOrParent:(id)arg1;
 
 @end
 

@@ -6,18 +6,21 @@
 
 #import <Flexo/FFDestAnalyzerController.h>
 
+#import "FFDestVideoAnalyzerProtocol.h"
+
 __attribute__((visibility("hidden")))
-@interface FFDestVideoAnalyzerController : FFDestAnalyzerController
+@interface FFDestVideoAnalyzerController : FFDestAnalyzerController <FFDestVideoAnalyzerProtocol>
 {
 }
 
-- (int)analyzeImage:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (BOOL)reuseDataForAnalyzing;
-- (void)pushFrame:(id)arg1;
-- (BOOL)wantsDithering:(id)arg1;
-- (id)requestedImageInfo;
-- (BOOL)isAnalyzingStillImage;
 - (id)anchoredVideoMediaComponent;
+- (void)start;
+- (CDUnknownBlockType)analyzeImage;
+- (void)finish;
+- (void)cancel;
+- (void)pause;
+- (void)resume;
+- (BOOL)reuseDataForAnalyzing;
 
 @end
 

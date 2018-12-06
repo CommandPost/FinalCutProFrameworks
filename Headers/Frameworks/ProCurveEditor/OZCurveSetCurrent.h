@@ -10,8 +10,8 @@
 {
 }
 
-- (void)refresh:(unsigned int)arg1 snapshot:(BOOL)arg2;
 - (_Bool)containsOnlyChannels:(id)arg1;
+- (void)refresh:(unsigned int)arg1 snapshot:(BOOL)arg2;
 
 @end
 

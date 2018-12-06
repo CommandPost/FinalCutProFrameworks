@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)drawDividerInRect:(struct CGRect)arg1;
 - (double)dividerThickness;
+- (void)drawDividerInRect:(struct CGRect)arg1;
 
 @end
 

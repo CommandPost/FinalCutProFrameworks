@@ -6,51 +6,30 @@
 
 #import "NSObject.h"
 
-@class FFAsset, FFAssetFileIdentifier, NSString;
+@class FFAssetFileIdentifier;
 
+__attribute__((visibility("hidden")))
 @interface FFAssetCopyRequest : NSObject
 {
     FFAssetFileIdentifier *_sourceFileID;
     FFAssetFileIdentifier *_targetFileID;
     id _completionTarget;
     SEL _completionSelector;
-    FFAsset *_targetAsset;
-    FFAsset *_sourceAsset;
     long long _bytesToCopy;
     long long _bytesCopied;
-    id _clientInfo;
+    struct __FSFileOperation *_fileOp;
+    BOOL _isDone;
+    BOOL _abortedByPause;
     id _customObject;
-    id _customObject2;
-    FFAssetCopyRequest *_duplicateRequest;
-    NSString *_displayName;
-    unsigned long long _sourceAndTargetPathHash;
 }
 
-@property(readonly, nonatomic) unsigned long long sourceAndTargetPathHash; // @synthesize sourceAndTargetPathHash=_sourceAndTargetPathHash;
-@property(retain) FFAssetFileIdentifier *sourceFileID; // @synthesize sourceFileID=_sourceFileID;
-@property(retain) FFAssetFileIdentifier *targetFileID; // @synthesize targetFileID=_targetFileID;
-@property(readonly) NSString *displayName; // @synthesize displayName=_displayName;
-@property(nonatomic) long long bytesCopied; // @synthesize bytesCopied=_bytesCopied;
-@property(nonatomic) long long bytesToCopy; // @synthesize bytesToCopy=_bytesToCopy;
-@property(retain) id customObject2; // @synthesize customObject2=_customObject2;
-@property(retain) id customObject; // @synthesize customObject=_customObject;
-@property(retain) id clientInfo; // @synthesize clientInfo=_clientInfo;
-- (id)targetLibrary;
-- (void)reset;
-- (void)addDuplicateRequest:(id)arg1;
-- (void)asyncCopyCompleted;
-- (void)synchronousCopyCompleted;
-- (void)addLibrariesInUse:(id)arg1;
-- (BOOL)usesLibrary:(id)arg1;
-- (SEL)completionSelector;
-- (id)completionTarget;
-- (id)sourceAsset;
-- (id)targetAsset;
-- (void)queueRequest;
-- (id)description;
+- (id)initWithSourceFileID:(id)arg1 targetFileID:(id)arg2 completionTarget:(id)arg3 completionSelector:(SEL)arg4;
 - (void)dealloc;
-- (id)initWithSourceFileID:(id)arg1 targetFileID:(id)arg2 completionTarget:(id)arg3 completionSelector:(SEL)arg4 targetAsset:(id)arg5 sourceAsset:(id)arg6;
-- (id)initWithSourceFileID:(id)arg1 targetFileID:(id)arg2 completionTarget:(id)arg3 completionSelector:(SEL)arg4 targetAsset:(id)arg5;
+- (void)setTargetFileID:(id)arg1;
+- (id)targetFileID;
+- (id)description;
+- (void)queueRequest;
+@property(retain) id customObject; // @synthesize customObject=_customObject;
 
 @end
 

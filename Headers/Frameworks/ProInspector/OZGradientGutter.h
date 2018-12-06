@@ -23,32 +23,29 @@
     BOOL _needsToBeKeyframed;
     BOOL _enabled;
     BOOL _didMove;
-    BOOL _didOpenUndoScope;
-    struct OZChannelFolder *_channelToCopy;
 }
 
-- (void)update;
-- (void)viewDidEndLiveResize;
-- (void)setBounds:(struct CGRect)arg1;
-- (void)updateToolTips;
-- (void)getSamples:(map_512a1fea *)arg1;
-- (struct OZChannelGradientFolder *)getFolder;
-- (void)setEnabled:(BOOL)arg1;
-- (void)flagsChanged:(id)arg1;
-- (id)menuForEvent:(id)arg1;
-- (void)setInterpolation:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (void)startColorPicker:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (__map_iterator_9f9d9545)findSampleIn:(map_512a1fea *)arg1 location:(struct CGPoint)arg2 hitMiddle:(char *)arg3;
-- (BOOL)acceptsFirstMouse:(id)arg1;
-- (id)imageForDimension1:(long long)arg1 dimension2:(long long)arg2;
-- (void)drawGutter:(struct CGRect)arg1 sampleIndex:(int)arg2 middleIndex:(int)arg3;
-- (void)dealloc;
-- (void)setGradientEditor:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setGradientEditor:(id)arg1;
+- (void)dealloc;
+- (void)drawGutter:(struct CGRect)arg1 sampleIndex:(int)arg2 middleIndex:(int)arg3;
+- (BOOL)acceptsFirstMouse:(id)arg1;
+- (_Rb_tree_iterator_31a39c12)findSampleIn:(map_aecb1e76 *)arg1 location:(struct CGPoint)arg2 hitMiddle:(char *)arg3;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)startColorPicker:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)setInterpolation:(id)arg1;
+- (id)menuForEvent:(id)arg1;
+- (void)flagsChanged:(id)arg1;
+- (void)setEnabled:(BOOL)arg1;
+- (struct OZChannelGradientFolder *)getFolder;
+- (void)getSamples:(map_aecb1e76 *)arg1;
+- (void)updateToolTips;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)viewDidEndLiveResize;
+- (void)update;
 
 @end
 

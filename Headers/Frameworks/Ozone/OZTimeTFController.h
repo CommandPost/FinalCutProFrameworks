@@ -13,30 +13,30 @@
     LKScrubber *_pTF;
     BOOL _relativeValues;
     OZRetimingController *_retimingController;
-    map_3710aa94 *_pRoots;
+    map_fb141d32 *_pRoots;
 }
 
-- (void)setTimeValue:(id)arg1;
-- (double)getInitialValue:(__map_iterator_0d6ec8d8 *)arg1;
-- (void)setValue:(double)arg1 forFootage:(struct OZFootage *)arg2;
-- (void)setValue:(double)arg1 forRoots:(map_3710aa94 *)arg2 constrainToDependents:(_Bool)arg3;
-- (void)disable;
-- (void)enable;
-- (void)notify:(unsigned int)arg1;
-- (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
-- (void)update;
-- (void)endScrubberAction:(id)arg1;
-- (void)startScrubberAction:(id)arg1;
-- (double)getMaxValue;
-- (double)getMinValue;
-- (double)getMaxValueFromChannel:(struct OZChannelBase *)arg1;
-- (double)getMinValueFromChannel:(struct OZChannelBase *)arg1;
-- (double)getValueFromChannel:(struct OZChannelBase *)arg1;
-- (BOOL)areAllValuesEqual;
-- (id)lastKeyView;
-- (id)firstKeyView;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 withRetimeController:(id)arg2 useSceneStartTimecode:(BOOL)arg3 context:(id)arg4;
+- (void)dealloc;
+- (id)firstKeyView;
+- (id)lastKeyView;
+- (BOOL)areAllValuesEqual;
+- (double)getValueFromChannel:(struct OZChannelBase *)arg1;
+- (double)getMinValueFromChannel:(struct OZChannelBase *)arg1;
+- (double)getMaxValueFromChannel:(struct OZChannelBase *)arg1;
+- (double)getMinValue;
+- (double)getMaxValue;
+- (void)startScrubberAction:(id)arg1;
+- (void)endScrubberAction:(id)arg1;
+- (void)update;
+- (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)enable;
+- (void)disable;
+- (void)setValue:(double)arg1 forRoots:(map_fb141d32 *)arg2 constrainToDependents:(_Bool)arg3;
+- (void)setValue:(double)arg1 forFootage:(struct OZFootage *)arg2;
+- (double)getInitialValue:(_Rb_tree_iterator_844e2a22 *)arg1;
+- (void)setTimeValue:(id)arg1;
 
 @end
 

@@ -6,12 +6,12 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class LKCursor;
+@class NSProCursor;
 
 @interface OZGuidesOverlay : OZOverlay
 {
-    LKCursor *_horizontalCursor;
-    LKCursor *_verticalCursor;
+    NSProCursor *_horizontalCursor;
+    NSProCursor *_verticalCursor;
     float _movingMouseStart;
     float _movingLocationStart;
     float _movingLocation;
@@ -20,17 +20,18 @@
     BOOL _moving;
 }
 
-- (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
-- (id)getCursorWithEvent:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)updateTip;
-- (void)draw;
-- (void)getMinX:(float *)arg1 minY:(float *)arg2 maxX:(float *)arg3 maxY:(float *)arg4;
-- (int)getDrawingOrder;
-- (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)dealloc;
+- (int)getDrawingOrder;
+- (void)getMinX:(float *)arg1 minY:(float *)arg2 maxX:(float *)arg3 maxY:(float *)arg4;
+- (void)draw;
+- (void)updateTip;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)poofAtViewLocation:(const PCVector2_7e488b7d *)arg1;
+- (void)mouseUp:(id)arg1;
+- (id)getCursorWithEvent:(id)arg1;
+- (set_50872599 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 
 @end
 

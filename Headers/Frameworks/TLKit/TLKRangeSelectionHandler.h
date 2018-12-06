@@ -6,46 +6,34 @@
 
 #import <TLKit/TLKTimelineHandler.h>
 
-@class TLKAbstractRangeSelectionLayer, TLKItemLayer;
+@class TLKItemLayer, TLKRangeSelectionLayer;
 
 @interface TLKRangeSelectionHandler : TLKTimelineHandler
 {
     TLKItemLayer *_clickedLayer;
-    TLKAbstractRangeSelectionLayer *_rangeLayer;
-    struct CGPoint _initialPoint;
+    TLKRangeSelectionLayer *_rangeLayer;
+    double _initialX;
     struct {
-        unsigned int simpleCursors:1;
         unsigned int draggingLeftHandle:1;
         unsigned int draggingRightHandle:1;
         unsigned int draggingSelection:1;
         unsigned int rollover:1;
         unsigned int beginSelectionHistoryGrouping:1;
-        unsigned int singleClickSelectsClip:1;
-        unsigned int RESERVED:25;
+        unsigned int RESERVED:27;
     } _dhFlags;
 }
 
-- (BOOL)shouldAutoscroll:(id)arg1;
-- (void)clickedInBackground:(id)arg1;
-- (void)exitRollover:(id)arg1;
-- (BOOL)enterRollover:(id)arg1;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (void)cancelTracking:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
-- (void)trackingStoppedNothingEdited:(id)arg1;
-- (id)clickedItem;
-- (BOOL)shouldSkimItem:(id)arg1;
-- (BOOL)continueTracking:(id)arg1;
-- (BOOL)startTracking:(id)arg1;
-- (void)prepareForPressAndHold:(id)arg1;
-- (void)setSelectedRangeFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
-- (id)primaryItemForItem:(id)arg1;
-- (BOOL)_initializeTrackingState:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (id)rangeLayerAtCurrentPoint:(struct CGPoint)arg1;
-- (id)clickedLayer;
-- (void)applyConfiguration:(id)arg1;
+- (void)_setSelectedRangeStart:(double)arg1 andRangeEnd:(double)arg2;
 - (BOOL)isDraggingLeadingEdge;
-- (void)dealloc;
+- (BOOL)startTracking:(id)arg1;
+- (BOOL)continueTracking:(id)arg1;
+- (void)updateSkimming:(id)arg1;
+- (BOOL)stopTracking:(id)arg1;
+- (void)cancelTracking:(id)arg1;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (BOOL)enterRollover:(id)arg1;
+- (void)exitRollover:(id)arg1;
+- (void)clickedInBackground:(id)arg1;
 
 @end
 

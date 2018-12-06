@@ -7,61 +7,44 @@
 #import "CHChannel.h"
 
 #import "CHChannelHasCachedDataToPurgeProtocol.h"
-#import "TLKPosterFrameInfoProtocol.h"
 
-@class FFStreamVideo, NSString;
+@class FFStreamVideo;
 
-@interface FFMediaRefChannel : CHChannel <TLKPosterFrameInfoProtocol, CHChannelHasCachedDataToPurgeProtocol>
+@interface FFMediaRefChannel : CHChannel <CHChannelHasCachedDataToPurgeProtocol>
 {
     FFStreamVideo *_cachedStream;
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (void)addFactory;
-- (void)setRate:(double)arg1;
-- (void)prerollEnd;
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
-- (id)newNSThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 contentsScale:(double)arg3;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 priority:(int)arg3 spatialQuality:(int)arg4 temporalQuality:(int)arg5 graphBuildInfo:(id)arg6 workingSpace:(int)arg7;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 priority:(int)arg5 spatialQuality:(int)arg6 temporalQuality:(int)arg7 graphBuildInfo:(id)arg8 workingSpace:(int)arg9;
-- (id)newScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 priority:(int)arg5 spatialQuality:(int)arg6 temporalQuality:(int)arg7 workingSpace:(int)arg8;
-- (void)purgeChannelCachedData:(id)arg1;
-- (id)copyStreamForSourceObject:(id)arg1;
-- (id)sourceObjectForTime:(CDStruct_1b6d18a9 *)arg1;
-- (id)containingAnchoredObject;
-- (void)setShortName:(id)arg1;
-- (id)shortName;
-- (void)setDefaultMediaOffset:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)defaultMediaOffset;
-- (void)setMediaOffset:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)mediaOffset;
-- (void)setDefaultAutomatic:(BOOL)arg1;
-- (void)setAutomatic:(BOOL)arg1;
-- (BOOL)isAutomatic;
-- (void)setDefaultFreezeFrame:(BOOL)arg1;
-- (void)setFreezeFrame:(BOOL)arg1;
-- (BOOL)isFreezeFrame;
-- (void)setRequiresAudio:(BOOL)arg1;
-- (BOOL)requiresAudio;
-- (void)setRequiresVideo:(BOOL)arg1;
-- (BOOL)requiresVideo;
-- (void)setAnchoredObject:(id)arg1;
-- (id)anchoredObject;
-- (BOOL)canAcceptAnchoredObject:(id)arg1;
-- (void)setMediaRefChannelDelegate:(id)arg1;
-- (id)mediaRefChannelDelegate;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (void)dealloc;
-- (void)adjustMediaOffsetByUIOffset:(CDStruct_1b6d18a9)arg1;
-- (BOOL)defaultPosition;
-- (id)label;
-- (CDStruct_1b6d18a9)posterTime;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)mediaRefChannelDelegate;
+- (void)setMediaRefChannelDelegate:(id)arg1;
+- (id)anchoredObject;
+- (void)setAnchoredObject:(id)arg1;
+- (BOOL)requiresVideo;
+- (void)setRequiresVideo:(BOOL)arg1;
+- (BOOL)requiresAudio;
+- (void)setRequiresAudio:(BOOL)arg1;
+- (BOOL)isFreezeFrame;
+- (void)setFreezeFrame:(BOOL)arg1;
+- (void)setDefaultFreezeFrame:(BOOL)arg1;
+- (BOOL)isAutomatic;
+- (void)setAutomatic:(BOOL)arg1;
+- (void)setDefaultAutomatic:(BOOL)arg1;
+- (CDStruct_1b6d18a9)mediaOffset;
+- (void)setMediaOffset:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)defaultMediaOffset;
+- (void)setDefaultMediaOffset:(CDStruct_1b6d18a9)arg1;
+- (id)shortName;
+- (void)setShortName:(id)arg1;
+- (id)containingAnchoredObject;
+- (id)sourceObjectForTime:(CDStruct_1b6d18a9 *)arg1;
+- (id)copyStreamForSourceObject:(id)arg1;
+- (void)purgeChannelCachedData:(id)arg1;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2;
+- (id)newNSThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2;
 
 @end
 

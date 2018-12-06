@@ -6,19 +6,18 @@
 
 #import "NSView.h"
 
-@class NSImage;
+@class ProPSDImageRef;
 
 @interface LKSplashView : NSView
 {
-    NSImage *_aboutImage;
-    NSImage *_splashImage;
+    ProPSDImageRef *_psd;
     BOOL _isSplash;
 }
 
-@property BOOL isSplash; // @synthesize isSplash=_isSplash;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)drawRect:(struct CGRect)arg1;
+@property BOOL isSplash; // @synthesize isSplash=_isSplash;
 
 @end
 

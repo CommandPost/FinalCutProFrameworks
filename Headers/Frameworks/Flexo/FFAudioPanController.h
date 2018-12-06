@@ -8,53 +8,38 @@
 
 #import "FFOZViewControllerChannelChangeDelegate.h"
 
-@class FFAudioPanDishView, FFAudioPanModeController, FFChannelChangeController, NSArray, NSCountedSet, NSLayoutConstraint, NSMapTable, NSMutableSet, NSString, PIBuildContext;
+@class FFChannelChangeController, FFEffectStack, NSArray, NSCountedSet, NSMapTable, NSMutableArray, NSString, OZLabeledParamController, OZViewControllerGroup;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioPanController : OZFolderGroupController <FFOZViewControllerChannelChangeDelegate>
 {
-    PIBuildContext *m_buildContext;
-    NSArray *m_selectedEffectStacks;
+    FFEffectStack *m_primaryEffectStack;
     FFChannelChangeController *m_channelChangeController;
     NSString *m_channelChangeControllerActionName;
     NSCountedSet *m_channelChangeControllerObjects;
-    NSMapTable *m_channelToEffectStackMap;
-    NSMutableSet *m_observedBundleParts;
-    NSMutableSet *m_observedSurroundBundles;
-    OZFolderGroupController *m_panSettingsController;
-    FFAudioPanModeController *m_panModePopUpController;
-    NSLayoutConstraint *m_panModePopUpWidthConstraint;
-    FFAudioPanDishView *m_panDishView;
+    NSMapTable *m_channelToObjectMap;
+    NSMutableArray *m_selectedItems;
+    NSMutableArray *m_observedBundleParts;
+    OZViewControllerGroup *m_panGroupController;
+    OZLabeledParamController *m_panModeController;
+    OZLabeledParamController *m_panAmountController;
+    OZFolderGroupController *m_panParametersFolderController;
+    OZLabeledParamController *m_panDishController;
+    NSArray *m_advancedSettingsControllers;
 }
 
-- (void)controller:(id)arg1 didSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
-- (void)controller:(id)arg1 willSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
-- (void)controller:(id)arg1 didChangeChannel:(struct OZChannelBase *)arg2;
-- (void)controller:(id)arg1 willChangeChannel:(struct OZChannelBase *)arg2;
-- (void)_libraryClosed:(id)arg1;
-- (void)_removeLibraryCloseObserving;
-- (void)_addLibraryCloseObserving;
-- (void)_removeObservingForObservedSurroundPanners;
-- (void)_removeObservingForSurroundPanner:(id)arg1;
-- (void)_addObservingForSurroundPanner:(id)arg1;
-- (void)_updatePanModeMenu;
-- (void)selectPanMode:(id)arg1;
-- (void)update;
-- (void)_teardown;
-- (void)willTeardownUI;
-- (void)didBuildUI;
-- (void)_setupPanModePopUp;
-- (id)_newPanAmountControllerForChannels:(vector_b71873ec *)arg1;
-- (id)_newPanSettingsHeadingControllerUsingChannel:(struct OZChannelBase *)arg1 showResetButton:(BOOL)arg2;
-- (id)_newPanModeController;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (id)getSubgroup;
+- (void)update;
+- (void)selectPanMode:(id)arg1;
+- (void)_releaseSurroundControllers;
+- (void)_updatePanModeMenu;
+- (void)controller:(id)arg1 willChangeChannel:(struct OZChannelBase *)arg2;
+- (void)controller:(id)arg1 didChangeChannel:(struct OZChannelBase *)arg2;
+- (void)controller:(id)arg1 willSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
+- (void)controller:(id)arg1 didSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
 
 @end
 

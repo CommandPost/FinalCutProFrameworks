@@ -4,26 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSTabViewItem.h"
+#import "NSProTabViewItem.h"
 
-@class NSView;
-
-@interface LKTabViewItem : NSTabViewItem
+@interface LKTabViewItem : NSProTabViewItem
 {
-    NSView *_accessoryView;
-    int _rodStyle;
-    void *_proReserved1;
-    void *_proReserved2;
-    void *_proReserved3;
 }
-
-+ (void)initialize;
-- (void)setPreferredRodStyle:(int)arg1;
-- (int)preferredRodStyle;
-- (id)_labelColor;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
 
 @end
 

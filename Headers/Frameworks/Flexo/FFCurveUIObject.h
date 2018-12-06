@@ -6,24 +6,23 @@
 
 #import "NSObject.h"
 
-@class FFCurveAssetLayer;
+@class TLKThemeBackedLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFCurveUIObject : NSObject
 {
     CDStruct_1b6d18a9 _time;
-    FFCurveAssetLayer *_layer;
+    TLKThemeBackedLayer *_layer;
     BOOL _isModelLayer;
 }
 
-- (long long)relativePosition:(id)arg1;
-- (void)setLocation:(struct CGPoint)arg1;
-- (void)setTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)time;
-- (struct CGPoint)location;
-- (void)setAssets:(id)arg1;
+- (id)initWithLocation:(struct CGPoint)arg1 time:(CDStruct_1b6d18a9)arg2 asset:(id)arg3 parentLayer:(id)arg4 belowLayer:(id)arg5;
 - (id)layer;
-- (id)initWithLocation:(struct CGPoint)arg1 time:(CDStruct_1b6d18a9)arg2 assets:(id)arg3 parentLayer:(id)arg4 belowLayer:(id)arg5 timeline:(id)arg6;
+- (struct CGPoint)location;
+- (CDStruct_1b6d18a9)time;
+- (void)setTime:(CDStruct_1b6d18a9)arg1;
+- (void)setLocation:(struct CGPoint)arg1;
+- (long long)relativePosition:(id)arg1;
 
 @end
 

@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (Class)getSourceVideoEffectClass;
+- (void)_setupSources;
 
 @end
 

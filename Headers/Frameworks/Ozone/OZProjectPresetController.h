@@ -9,7 +9,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKPopUpButton, LKTextField, NSArray, NSString, OZProjectPreset;
+@class LKPopUpButton, LKTextField, NSArray, OZProjectPreset;
 
 @interface OZProjectPresetController : NSWindowController <NSWindowDelegate, NSTextFieldDelegate>
 {
@@ -21,28 +21,20 @@
     LKTextField *_pPixelARTF;
     LKPopUpButton *_pFieldDominancePopUp;
     LKPopUpButton *_pFrameRatePopUp;
-    LKPopUpButton *_pProjectionModePopUp;
     OZProjectPreset *_pPreset;
     NSArray *_frameRates;
 }
 
-- (BOOL)control:(id)arg1 isValidObject:(id)arg2;
-- (void)windowWillClose:(id)arg1;
-- (void)doneEdit:(id)arg1;
-- (void)cancelEdit:(id)arg1;
-- (void)selectProjectionModeFromPopUp:(id)arg1;
-- (void)setPixelARFromTF:(id)arg1;
-- (void)setPixelARFromPopUp:(id)arg1;
-- (int)editPreset:(id)arg1;
-- (void)windowDidLoad;
-- (void)dealloc;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (void)windowDidLoad;
+- (int)editPreset:(id)arg1;
+- (void)setPixelARFromPopUp:(id)arg1;
+- (void)setPixelARFromTF:(id)arg1;
+- (void)cancelEdit:(id)arg1;
+- (void)doneEdit:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (BOOL)control:(id)arg1 isValidObject:(id)arg2;
 
 @end
 

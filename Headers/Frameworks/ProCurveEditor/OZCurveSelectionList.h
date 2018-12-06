@@ -15,22 +15,22 @@
     NSMutableArray *_selection;
 }
 
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)purge:(unsigned int)arg1;
-- (BOOL)isCurveSelected:(unsigned int)arg1;
-- (BOOL)isKeypointSelected:(void *)arg1;
-- (BOOL)empty;
-- (void)reset;
-- (unsigned int)size;
-- (id)selectionAtIndex:(unsigned int)arg1;
-- (void)setSelection:(id)arg1;
-- (void)delSelection:(id)arg1;
-- (BOOL)isSelection:(id)arg1;
-- (void)addSelectionFront:(id)arg1;
-- (void)addSelection:(id)arg1;
-- (id)getSelectionArray;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)getSelectionArray;
+- (void)addSelection:(id)arg1;
+- (void)addSelectionFront:(id)arg1;
+- (BOOL)isSelection:(id)arg1;
+- (void)delSelection:(id)arg1;
+- (void)setSelection:(id)arg1;
+- (id)selectionAtIndex:(unsigned int)arg1;
+- (unsigned int)size;
+- (void)reset;
+- (BOOL)empty;
+- (BOOL)isKeypointSelected:(void *)arg1;
+- (BOOL)isCurveSelected:(unsigned int)arg1;
+- (void)purge:(unsigned int)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

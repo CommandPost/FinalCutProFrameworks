@@ -4,31 +4,36 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKAbstractRangeSelectionLayer.h>
+#import "CALayer.h"
 
-@class TLKImageLayer, TLKSelectionLayer;
+#import "TLKPartInfo.h"
 
-@interface TLKRangeSelectionLayer : TLKAbstractRangeSelectionLayer
+@class TLKSelectionLayer, TLKThemeBackedLayer;
+
+@interface TLKRangeSelectionLayer : CALayer <TLKPartInfo>
 {
     TLKSelectionLayer *_selectionLayer;
-    TLKImageLayer *_leftHandle;
-    TLKImageLayer *_rightHandle;
+    TLKThemeBackedLayer *_leftHandle;
+    TLKThemeBackedLayer *_rightHandle;
+    int _draggingHandle;
+    double _hitRegionHeight;
     unsigned int _containingViewFirstResponder:1;
     unsigned int RESERVED:31;
 }
 
-- (struct CGRect)_rightHandleFrame;
-- (struct CGRect)_leftHandleFrame;
-- (void)_layoutSelectionHandleSublayers;
-- (void)_layoutSelectionFrameSublayer;
-- (void)layoutSublayers;
-- (void)setContainingViewFirstResponder:(BOOL)arg1;
-- (BOOL)containingViewFirstResponder;
-- (struct CGPath *)_newPathForRoundedRect:(struct CGRect)arg1 radius:(double)arg2 lineWidth:(double)arg3;
-- (id)rightHandle;
-- (id)leftHandle;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (struct CGRect)_leftHandleFrame;
+- (struct CGRect)_rightHandleFrame;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)partIdentifier;
+- (void)layoutSublayers;
+- (id)hitTest:(struct CGPoint)arg1;
+@property int draggingHandle;
+@property BOOL containingViewFirstResponder;
+- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
+- (void)setDelegate:(id)arg1;
+@property double hitRegionHeight; // @synthesize hitRegionHeight=_hitRegionHeight;
 
 @end
 

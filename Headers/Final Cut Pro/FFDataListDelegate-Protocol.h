@@ -4,13 +4,10 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFAnchoredCaption, FFAnchoredObject, FFEditorModule, NSArray;
-
 @protocol FFDataListDelegate
-- (FFEditorModule *)activeEditorModule;
-- (void)showCaptionEditorForCaption:(FFAnchoredCaption *)arg1;
-- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(FFAnchoredObject *)arg2;
-- (NSArray *)selectedItems;
-- (void)selectItems:(NSArray *)arg1;
+- (void)selectItems:(id)arg1;
+- (id)selectedItems;
+- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
+- (id)activeEditorModule;
 @end
 

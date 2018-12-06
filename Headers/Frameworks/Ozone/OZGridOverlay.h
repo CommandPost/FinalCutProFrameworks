@@ -10,10 +10,10 @@
 {
 }
 
-- (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
-- (int)hitCheck:(id)arg1;
-- (int)getDrawingOrder;
 - (void)draw;
+- (int)getDrawingOrder;
+- (int)hitCheck:(id)arg1;
+- (set_50872599 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 
 @end
 

@@ -8,41 +8,40 @@
 
 #import "Fx3DAPI.h"
 #import "Fx3DAPI_v2.h"
-#import "Fx3DAPI_v3.h"
 #import "PROAPIObject.h"
 
-@class NSString;
-
-@interface OZFxPlug3DAPI : NSObject <Fx3DAPI, Fx3DAPI_v2, Fx3DAPI_v3, PROAPIObject>
+@interface OZFxPlug3DAPI : NSObject <Fx3DAPI, Fx3DAPI_v2, PROAPIObject>
 {
+    PCMatrix44Tmpl_e98c85ee _cameraMatrix;
+    PCMatrix44Tmpl_e98c85ee _worldToFilmMatrix;
+    PCMatrix44Tmpl_e98c85ee _layerMatrix;
+    PCMatrix44Tmpl_e98c85ee _worldToLayerMatrix;
+    PCMatrix44Tmpl_e98c85ee _worldToObjectMatrix;
+    PCMatrix44Tmpl_e98c85ee _worldToEyeMatrix;
     BOOL _is3D;
+    double _focalLength;
 }
 
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (double)focalLengthAtFxTime:(CDUnion_2516e51e)arg1;
-- (double)focalLengthAtTime:(double)arg1;
-- (BOOL)isUsingCamera;
-- (BOOL)is3D;
-- (id)worldToEyeMatrix;
-- (id)worldToObjectMatrix;
-- (id)worldToLayerMatrix;
-- (id)layerMatrixAtTime:(double)arg1;
-- (id)worldToFilmMatrix;
-- (id)cameraMatrixAtTime:(double)arg1;
-- (void)_setFocalLength:(double)arg1;
-- (void)_setIs3D:(BOOL)arg1;
-- (void)_setWorldToEyeMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
-- (void)_setWorldToObjectMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
-- (void)_setWorldToLayerMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
-- (void)_setLayerMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
-- (void)_setWorldToFilmMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
 - (void)_setCameraMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)_setWorldToFilmMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
+- (void)_setLayerMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
+- (void)_setWorldToLayerMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
+- (void)_setWorldToObjectMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
+- (void)_setWorldToEyeMatrix:(PCMatrix44Tmpl_e98c85ee)arg1;
+- (void)_setIs3D:(BOOL)arg1;
+- (void)_setFocalLength:(double)arg1;
+- (id)cameraMatrixAtTime:(double)arg1;
+- (id)worldToFilmMatrix;
+- (id)layerMatrixAtTime:(double)arg1;
+- (id)worldToLayerMatrix;
+- (id)worldToObjectMatrix;
+- (id)worldToEyeMatrix;
+- (BOOL)is3D;
+- (BOOL)isUsingCamera;
+- (double)focalLengthAtTime:(double)arg1;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 
 @end
 

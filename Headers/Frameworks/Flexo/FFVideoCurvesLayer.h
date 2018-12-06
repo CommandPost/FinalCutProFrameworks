@@ -6,22 +6,14 @@
 
 #import <Flexo/FFCurvesLayer.h>
 
-@class NSMutableDictionary;
-
 __attribute__((visibility("hidden")))
 @interface FFVideoCurvesLayer : FFCurvesLayer
 {
-    NSMutableDictionary *_dummyIntrinsics;
 }
 
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (id)effectStack;
-- (BOOL)sender:(id)arg1 willSetChannel:(id)arg2;
-- (id)effectsToDisplay;
-- (void)dealloc;
 - (id)initWithObject:(id)arg1 topToBottom:(BOOL)arg2 timeline:(id)arg3;
-- (void)initializeIntrinsicDummys;
-- (id)intrinsicOrDummyWithID:(id)arg1;
+- (id)effectsToDisplay;
+- (id)effectStack;
 
 @end
 

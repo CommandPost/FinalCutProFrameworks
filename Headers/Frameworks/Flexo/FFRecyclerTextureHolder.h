@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     FFSimpleTextureRecycler *_textureGenerator;
 }
 
-- (void)dealloc;
 - (id)initWithTexture:(unsigned int)arg1 recycler:(id)arg2;
+- (void)dealloc;
 
 @end
 

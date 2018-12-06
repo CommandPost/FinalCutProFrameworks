@@ -8,45 +8,36 @@
 
 #import "FFModelLocking.h"
 
-@class FFAnchoredObject<FFSegmentedSourceProtocol>, FFAnchoredSequence, NSDictionary, NSSet, NSString;
+@class FFAnchoredObject<FFSegmentedSourceProtocol>, FFAnchoredSequence, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface FFAnchoredObjectSegmentedProvider : FFProvider <FFModelLocking>
 {
     FFAnchoredObject<FFSegmentedSourceProtocol> *_anchoredObject;
     long long _effectCount;
-    NSSet *_audioAngles;
-    NSString *_videoAngle;
+    long long _angle;
     long long _toLane;
-    long long _angleOffset;
-    long long _angleCount;
     FFAnchoredSequence *_retainedSequence;
     NSSet *_showOnlyObjects;
-    NSSet *_roles;
-    NSDictionary *_audioComponentsPlaybackInfo;
 }
 
-+ (id)extensions;
 + (id)utis;
-@property(readonly, retain, nonatomic) NSSet *roles; // @synthesize roles=_roles;
-@property(readonly, retain, nonatomic) NSSet *showOnlyObjects; // @synthesize showOnlyObjects=_showOnlyObjects;
-- (id)anchoredObject;
-- (BOOL)writerIsWaiting;
-- (void)_readUnlock;
-- (void)_readLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (id)displayName;
-- (void)_setupSources;
-- (void)dealloc;
-@property(readonly, nonatomic) long long angleCount;
-@property(readonly, nonatomic) long long angleOffset;
-- (long long)toLane;
-- (id)audioAngles;
-- (id)videoAngle;
-- (long long)effectCount;
++ (id)extensions;
+- (id)initWithAnchoredObject:(id)arg1 effectCount:(long long)arg2 angle:(long long)arg3 toLane:(long long)arg4 showOnlyObjects:(id)arg5;
 - (id)object;
-- (id)initWithAnchoredObject:(id)arg1 effectCount:(long long)arg2 audioAngles:(id)arg3 videoAngle:(id)arg4 toLane:(long long)arg5 showOnlyObjects:(id)arg6 roles:(id)arg7 angleOffset:(long long)arg8 angleCount:(long long)arg9 audioComponentsPlaybackInfo:(id)arg10;
+- (long long)effectCount;
+- (long long)angle;
+- (long long)toLane;
+- (void)dealloc;
+- (void)_setupSources;
+- (id)displayName;
+- (void)_writeLock;
+- (void)_writeUnlock;
+- (void)_readLock;
+- (void)_readUnlock;
+- (id)newSettingsModule;
+- (id)newConfirmSettingsModule;
+- (id)anchoredObject;
 
 @end
 

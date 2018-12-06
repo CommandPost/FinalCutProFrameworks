@@ -12,22 +12,22 @@
 }
 
 + (id)_requiredSamplesForSamples:(id)arg1;
-- (id)evaluateWithOptions:(id)arg1;
-- (id)requiredSamples;
-- (BOOL)isPredetermined;
-- (void)setRegionOfInterest:(id)arg1;
-- (id)regionOfInterest;
-- (unsigned long long)fieldOrder;
-- (id)domainOfDefinition;
-- (BOOL)supportsContextType:(int)arg1;
-- (void)setContext:(id)arg1;
-- (id)context;
-- (void)setTime:(double)arg1;
-- (double)time;
-- (void)setStream:(id)arg1;
-- (id)stream;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)stream;
+- (void)setStream:(id)arg1;
+- (double)time;
+- (void)setTime:(double)arg1;
+- (id)context;
+- (void)setContext:(id)arg1;
+- (BOOL)supportsContextType:(int)arg1;
+- (id)domainOfDefinition;
+- (unsigned long long)fieldOrder;
+- (id)regionOfInterest;
+- (void)setRegionOfInterest:(id)arg1;
+- (BOOL)isPredetermined;
+- (id)requiredSamples;
+- (id)evaluateWithOptions:(id)arg1;
 
 @end
 

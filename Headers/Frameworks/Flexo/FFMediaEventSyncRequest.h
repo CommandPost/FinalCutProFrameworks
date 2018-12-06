@@ -6,26 +6,26 @@
 
 #import <Flexo/FFMediaRepSyncRequest.h>
 
-@class NSString;
+@class FFMediaEventProject, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaEventSyncRequest : FFMediaRepSyncRequest
 {
-    SEL _mediaSEL;
+    FFMediaEventProject *_mediaEvent;
+    SEL _mediaSelector;
     NSString *_identifier;
     NSString *_description;
-    unsigned long long _failedRelinkCount;
+    BOOL _executed;
 }
 
-@property(nonatomic) unsigned long long failedRelinkCount; // @synthesize failedRelinkCount=_failedRelinkCount;
-- (void)main;
-- (BOOL)executed;
-- (SEL)mediaSelector;
-- (id)mediaEvent;
-- (id)identifier;
-- (id)description;
+- (id)initWithMediaReps:(id)arg1 directoryURL:(id)arg2 mediaSelector:(SEL)arg3 identifier:(id)arg4 event:(id)arg5;
 - (void)dealloc;
-- (id)initWithMediaEvent:(id)arg1 mediaSelector:(const CDStruct_b1640004 *)arg2 identifier:(id)arg3;
+- (id)description;
+- (id)identifier;
+- (id)mediaEvent;
+- (SEL)mediaSelector;
+- (BOOL)executed;
+- (BOOL)execute:(id *)arg1;
 
 @end
 

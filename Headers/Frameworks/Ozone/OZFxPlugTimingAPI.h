@@ -7,81 +7,44 @@
 #import "NSObject.h"
 
 #import "FxTimingAPI.h"
-#import "FxTimingAPI_v2.h"
-#import "FxTimingAPI_v3.h"
 #import "PROAPIObject.h"
 
-@class NSString;
-
-@interface OZFxPlugTimingAPI : NSObject <FxTimingAPI, FxTimingAPI_v2, FxTimingAPI_v3, PROAPIObject>
+@interface OZFxPlugTimingAPI : NSObject <FxTimingAPI, PROAPIObject>
 {
     struct OZFxPlugSharedBase *_plugin;
 }
 
-- (const struct OZSceneSettings *)sceneSettings;
--     // Error parsing type: ^{OZScene=^^?^^?{PCHash128=[4I]}i{OZSceneSettings=^^?iiIBIdBdii{PCColor={ColorComponents=i[5d]}{PCColorSpaceHandle=^{CGColorSpace}}}iBIIdBBdi{PCString=^{__CFString}}IIdIIIBfiBiBiiBi}{OZExportSettings=^^?IIIIIIBiiBBBIIIIIIII}{OZPublishSettings=^^?{vector<OZPublishSettings::Entry *, std::__1::allocator<OZPublishSettings::Entry *> >=^^{Entry}^^{Entry}{__compressed_pair<OZPublishSettings::Entry **, std::__1::allocator<OZPublishSettings::Entry *> >=^^{Entry}}}{OZChannelVaryingFolder=^^?^{OZFactory}^^?I{PCString=^{__CFString}}^{PCString}^{OZChannelFolder}QQ^v^{__CFString}^{__CFString}^{__CFString}^{OZChannelTimeConverter}^{vector<OZChannelBase *, std::__1::allocator<OZChannelBase *> >}II}^{OZScene}BB{map<unsigned int, double, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, double> > >={__tree<std::__1::__value_type<unsigned int, double>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, double>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, double> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, double>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, double>, std::__1::less<unsigned int>, true> >=Q}}}}{OZChannelObjectRoot=^^?^{OZFactory}^^?I{PCString=^{__CFString}}^{PCString}^{OZChannelFolder}QQ^v^{__CFString}^{__CFString}^{__CFString}^{OZChannelTimeConverter}^{vector<OZChannelBase *, std::__1::allocator<OZChannelBase *> >}II{?=qiIq}{PCTimeRange={?=qiIq}{?=qiIq}}BB^{OZObjectManipulator}^{OZTimeMarkerSet}{list<OZSimulationBehavior *, std::__1::allocator<OZSimulationBehavior *> >={__list_node_base<OZSimulationBehavior *, void *>=^{__list_node_base<OZSimulationBehavior *, void *>}^{__list_node_base<OZSimulationBehavior *, void *>}}{__compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZSimulationBehavior *, void *> > >=Q}}{PCString=^{__CFString}}}{?=qiIq}{list<OZSceneNode *, std::__1::allocator<OZSceneNode *> >={__list_node_base<OZSceneNode *, void *>=^{__list_node_base<OZSceneNode *, void *>}^{__list_node_base<OZSceneNode *, void *>}}{__compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZSceneNode *, void *> > >=Q}}^{OZSceneNode}^{OZGroup}{set<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *> >={__tree<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<OZElement *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<OZElement *> >=Q}}}{map<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *> > >={__tree<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, std::__1::less<unsigned int>, true> >=Q}}}{OZNodeMap=^I^^{OZObjectManipulator}iiI^{OZObjectManipulator}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}}{PCTimeRange={?=qiIq}{?=qiIq}}{PCTimeRange={?=qiIq}{?=qiIq}}{PCTimeRange={?=qiIq}{?=qiIq}}{OZCurveSetListSerializer=^^?{vector<OZCurveSetSerializer *, std::__1::allocator<OZCurveSetSerializer *> >=^^{OZCurveSetSerializer}^^{OZCurveSetSerializer}{__compressed_pair<OZCurveSetSerializer **, std::__1::allocator<OZCurveSetSerializer *> >=^^{OZCurveSetSerializer}}}I}^{OZRenderManager}{OZGuideSet=^^?{__tree<OZGuide, std::__1::less<OZGuide>, std::__1::allocator<OZGuide> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<OZGuide, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<OZGuide> >=Q}}}II{vector<OZObjectManipulator *, std::__1::allocator<OZObjectManipulator *> >=^^{OZObjectManipulator}^^{OZObjectManipulator}{__compressed_pair<OZObjectManipulator **, std::__1::allocator<OZObjectManipulator *> >=^^{OZObjectManipulator}}}BBBB^{OZDocument}I{PCHash128=[4I]}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}{map<PCHash128, PCMutexRef, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCMutexRef> > >={__tree<std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::__map_value_compare<PCHash128, std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::less<PCHash128>, true>, std::__1::allocator<std::__1::__value_type<PCHash128, PCMutexRef> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<PCHash128, PCMutexRef>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<PCHash128, std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::less<PCHash128>, true> >=Q}}}{PCSpinLock={os_unfair_lock_s=I}}{list<OZCPPObserver *, std::__1::allocator<OZCPPObserver *> >={__list_node_base<OZCPPObserver *, void *>=^{__list_node_base<OZCPPObserver *, void *>}^{__list_node_base<OZCPPObserver *, void *>}}{__compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZCPPObserver *, void *> > >=Q}}{set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> >={__tree<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<unsigned int, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<unsigned int> >=Q}}}BiB{atomic<bool>=AB}i{vector<OZLockingGroup *, std::__1::allocator<OZLockingGroup *> >=^^{OZLockingGroup}^^{OZLockingGroup}{__compressed_pair<OZLockingGroup **, std::__1::allocator<OZLockingGroup *> >=^^{OZLockingGroup}}}{PCRenderModel=i{PCColorSpaceHandle=^{CGColorSpace}}f{PCColorSpaceHandle=^{CGColorSpace}}}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}BB}16@0:8, name: scene
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (void)imageFxTime:(CDUnion_2516e51e *)arg1 forParmId:(unsigned int)arg2 fromTimelineTime:(CDUnion_2516e51e)arg3;
-- (void)inputBFxTime:(CDUnion_2516e51e *)arg1 fromTimelineTime:(CDUnion_2516e51e)arg2;
-- (void)inputAFxTime:(CDUnion_2516e51e *)arg1 fromTimelineTime:(CDUnion_2516e51e)arg2;
-- (void)inputFxTime:(CDUnion_2516e51e *)arg1 fromTimelineTime:(CDUnion_2516e51e)arg2;
-- (void)timelineFxTime:(CDUnion_2516e51e *)arg1 fromImageTime:(CDUnion_2516e51e)arg2 forParmId:(unsigned int)arg3;
-- (void)timelineFxTime:(CDUnion_2516e51e *)arg1 fromInputBTime:(CDUnion_2516e51e)arg2;
-- (void)timelineFxTime:(CDUnion_2516e51e *)arg1 fromInputATime:(CDUnion_2516e51e)arg2;
-- (void)timelineFxTime:(CDUnion_2516e51e *)arg1 fromInputTime:(CDUnion_2516e51e)arg2;
-- (void)outPointFxTimeOfTimelineForEffect:(CDUnion_2516e51e *)arg1;
-- (void)inPointFxTimeOfTimelineForEffect:(CDUnion_2516e51e *)arg1;
-- (void)durationFxTime:(CDUnion_2516e51e *)arg1 ofImageParm:(unsigned int)arg2;
-- (void)startFxTime:(CDUnion_2516e51e *)arg1 ofImageParam:(unsigned int)arg2;
-- (void)durationFxTimeOfInputToFilter:(CDUnion_2516e51e *)arg1;
-- (void)startFxTimeOfInputToFilter:(CDUnion_2516e51e *)arg1;
-- (void)durationFxTimeOfInputBToTransition:(CDUnion_2516e51e *)arg1;
-- (void)durationFxTimeOfInputAToTransition:(CDUnion_2516e51e *)arg1;
-- (void)startFxTimeOfInputBToTransition:(CDUnion_2516e51e *)arg1;
-- (void)startFxTimeOfInputAToTransition:(CDUnion_2516e51e *)arg1;
-- (void)durationFxTimeForEffect:(CDUnion_2516e51e *)arg1;
-- (void)startFxTimeForEffect:(CDUnion_2516e51e *)arg1;
-- (void)sampleDuration:(CDUnion_2516e51e *)arg1;
-- (void)frameDuration:(CDUnion_2516e51e *)arg1;
-- (double)transitionTimeFractionAtTime:(double)arg1;
-- (unsigned long long)fieldOrderForImageParm:(unsigned int)arg1 forEffect:(id)arg2;
-- (unsigned long long)fieldOrderForInputBToTransition:(id)arg1;
-- (unsigned long long)fieldOrderForInputAToTransition:(id)arg1;
-- (unsigned long long)fieldOrderForInputToFilter:(id)arg1;
-- (double)imageTimeForParmId:(unsigned int)arg1 forEffect:(id)arg2 fromTimelineTime:(double)arg3;
-- (double)inputBTimeForTransition:(id)arg1 fromTimelineTime:(double)arg2;
-- (double)inputATimeForTransition:(id)arg1 fromTimelineTime:(double)arg2;
-- (double)inputTimeForFilter:(id)arg1 fromTimelineTime:(double)arg2;
-- (double)timelineTimeFromImageTime:(double)arg1 forParmId:(unsigned int)arg2 forEffect:(id)arg3;
-- (double)timelineTimeFromInputBTime:(double)arg1 forTransition:(id)arg2;
-- (double)timelineTimeFromInputATime:(double)arg1 forTransition:(id)arg2;
-- (double)timelineTimeFromInputTime:(double)arg1 forFilter:(id)arg2;
-- (double)durationForEffect:(id)arg1;
-- (double)startTimeForEffect:(id)arg1;
-- (double)timelineDurationForEffect:(id)arg1;
-- (double)outPointOfTimelineForEffect:(id)arg1;
-- (double)inPointOfTimelineForEffect:(id)arg1;
-- (unsigned long long)timelineFpsDenominatorForEffect:(id)arg1;
-- (unsigned long long)timelineFpsNumeratorForEffect:(id)arg1;
-- (id)_motionEffectSequence;
-- (double)durationOfImageParm:(unsigned int)arg1 forEffect:(id)arg2;
-- (double)durationOfInputBToTransition:(id)arg1;
-- (double)durationOfInputAToTransition:(id)arg1;
-- (double)durationOfInputToFilter:(id)arg1;
-- (double)startTimeOfImageParm:(unsigned int)arg1 forEffect:(id)arg2;
-- (double)startTimeOfInputBToTransition:(id)arg1;
-- (double)startTimeOfInputAToTransition:(id)arg1;
-- (double)startTimeOfInputToFilter:(id)arg1;
-- (CDUnion_2516e51e)zeroTime;
-- (CDUnion_2516e51e)invalidTime;
-- (void)copyFxTime:(CDUnion_2516e51e)arg1 toFxTime:(CDUnion_2516e51e *)arg2;
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (double)startTimeOfInputToFilter:(id)arg1;
+- (double)startTimeOfInputAToTransition:(id)arg1;
+- (double)startTimeOfInputBToTransition:(id)arg1;
+- (double)startTimeOfImageParm:(unsigned int)arg1 forEffect:(id)arg2;
+- (double)durationOfInputToFilter:(id)arg1;
+- (double)durationOfInputAToTransition:(id)arg1;
+- (double)durationOfInputBToTransition:(id)arg1;
+- (double)durationOfImageParm:(unsigned int)arg1 forEffect:(id)arg2;
+- (unsigned long long)timelineFpsNumeratorForEffect:(id)arg1;
+- (unsigned long long)timelineFpsDenominatorForEffect:(id)arg1;
+- (double)inPointOfTimelineForEffect:(id)arg1;
+- (double)outPointOfTimelineForEffect:(id)arg1;
+- (double)timelineDurationForEffect:(id)arg1;
+- (double)startTimeForEffect:(id)arg1;
+- (double)durationForEffect:(id)arg1;
+- (double)timelineTimeFromInputTime:(double)arg1 forFilter:(id)arg2;
+- (double)timelineTimeFromInputATime:(double)arg1 forTransition:(id)arg2;
+- (double)timelineTimeFromInputBTime:(double)arg1 forTransition:(id)arg2;
+- (double)timelineTimeFromImageTime:(double)arg1 forParmId:(unsigned int)arg2 forEffect:(id)arg3;
+- (double)inputTimeForFilter:(id)arg1 fromTimelineTime:(double)arg2;
+- (double)inputATimeForTransition:(id)arg1 fromTimelineTime:(double)arg2;
+- (double)inputBTimeForTransition:(id)arg1 fromTimelineTime:(double)arg2;
+- (double)imageTimeForParmId:(unsigned int)arg1 forEffect:(id)arg2 fromTimelineTime:(double)arg3;
+- (unsigned long long)fieldOrderForInputToFilter:(id)arg1;
+- (unsigned long long)fieldOrderForInputAToTransition:(id)arg1;
+- (unsigned long long)fieldOrderForInputBToTransition:(id)arg1;
+- (unsigned long long)fieldOrderForImageParm:(unsigned int)arg1 forEffect:(id)arg2;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
+- (struct OZScene *)scene;
+- (const struct OZSceneSettings *)sceneSettings;
 
 @end
 

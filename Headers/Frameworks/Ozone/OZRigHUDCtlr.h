@@ -14,9 +14,9 @@
     PIBuildContext *_pContext;
 }
 
-- (void)notify:(unsigned int)arg1;
-- (void)buildUIWithObjectList:(list_5b338eba *)arg1 viewController:(id)arg2 context:(id)arg3;
 - (void)dealloc;
+- (void)buildUIWithObjectList:(list_2c251165 *)arg1 viewController:(id)arg2 context:(id)arg3;
+- (void)notify:(unsigned int)arg1;
 
 @end
 

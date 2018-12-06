@@ -6,10 +6,11 @@
 
 #import "NSWindowController.h"
 
-@class LKPopUpButton, LKTextField, OZRigAspectRatioListCtlr;
+@class LKPopUpButton, LKTextField, NSView, OZRigAspectRatioListCtlr;
 
 @interface OZRigNewAspectRatioWindowCtlr : NSWindowController
 {
+    NSView *_pCustomDARGroup;
     LKTextField *_pDisplayAspectRatioTF;
     LKPopUpButton *_pPixelAspectPopUp;
     LKTextField *_pPixelAspectTF;
@@ -23,17 +24,17 @@
 }
 
 + (void)runModalForWidget:(struct OZRigWidget *)arg1 listCtlr:(id)arg2 time:(const CDStruct_1b6d18a9 *)arg3;
-- (void)updateCustomDisplayAspect;
-- (void)cancel:(id)arg1;
-- (void)done:(id)arg1;
-- (void)setSampleHeight:(id)arg1;
-- (void)setSampleWidth:(id)arg1;
-- (void)setPixelARFromTF:(id)arg1;
-- (void)setPixelARFromPopUp:(id)arg1;
-- (void)setAspectRatio:(id)arg1;
-- (void)setDARPreset:(id)arg1;
-- (void)setWidget:(struct OZRigWidget *)arg1 listCtlr:(id)arg2 time:(const CDStruct_1b6d18a9 *)arg3;
 - (void)windowDidLoad;
+- (void)setWidget:(struct OZRigWidget *)arg1 listCtlr:(id)arg2 time:(const CDStruct_1b6d18a9 *)arg3;
+- (void)setDARPreset:(id)arg1;
+- (void)setAspectRatio:(id)arg1;
+- (void)setPixelARFromPopUp:(id)arg1;
+- (void)setPixelARFromTF:(id)arg1;
+- (void)setSampleWidth:(id)arg1;
+- (void)setSampleHeight:(id)arg1;
+- (void)done:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)updateCustomDisplayAspect;
 
 @end
 

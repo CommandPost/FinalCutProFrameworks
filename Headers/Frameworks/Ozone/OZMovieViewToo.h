@@ -11,12 +11,12 @@
     BOOL _isUserInteractionEnabled;
 }
 
-@property(nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_isUserInteractionEnabled;
-- (id)menuForEvent:(id)arg1;
-- (id)hitTest:(struct CGPoint)arg1;
-- (BOOL)acceptsFirstResponder;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (id)hitTest:(struct CGPoint)arg1;
+- (id)menuForEvent:(id)arg1;
+@property(nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_isUserInteractionEnabled;
 
 @end
 

@@ -6,99 +6,43 @@
 
 #import <Flexo/FFDestVideo.h>
 
-#import "FFDestDisplayNameProtocol.h"
-#import "FFDestVideoDeviceManaging.h"
-#import "MIOCoreDelegateProtocol.h"
-
-@class FFPrerollSync, MIODeviceConnection, MIOOutputCore, NSLock, NSMutableArray, NSString;
+@class MIODeviceManager, MIOOutputCore, NSLock, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface FFDestVideoCMIO : FFDestVideo <FFDestDisplayNameProtocol, FFDestVideoDeviceManaging, MIOCoreDelegateProtocol>
+@interface FFDestVideoCMIO : FFDestVideo
 {
+    struct OpaqueFigClock *_clock;
     NSLock *_queueLock;
     NSMutableArray *_renderedFrames;
-    NSString *_deviceUID;
-    MIODeviceConnection *_deviceConnection;
     MIOOutputCore *_outputCore;
-    int _destRunningState;
+    MIODeviceManager *_deviceManager;
+    BOOL _isRunning;
     BOOL _needsUpdate;
-    struct OpaqueCMTimebase *_playerTimebase;
-    FFPrerollSync *_startSync;
-    BOOL _destStartedForPlayback;
-    CDStruct_1b6d18a9 _durationPulled;
-    CDStruct_1b6d18a9 _playerFrameDuration;
-    struct SMPTETime _playerFrameSMPTETime;
-    int _minInFlightFramesForThrottling;
-    CDStruct_1b6d18a9 _playbackAnchorTime;
-    CDStruct_1b6d18a9 _playbackLastHostTimestamp;
-    unsigned long long _playbackLastSequenceNumber;
-    unsigned long long _playbackFirstSequenceNumberPulled;
-    struct FFCMIOPlaybackTimebaseStartedSignalQueue *_timebaseStartedSignalQueue;
-    struct FFCMIOPlaybackTimingInfoQueue *_timingInfoQueue;
-    struct FFCMIOPlaybackTimestampQueue *_timestampQueue;
-    struct FFCMIOPlaybackErrorQueue *_errorQueue;
-    CDStruct_1b6d18a9 _currentErrorTime;
-    CDStruct_1b6d18a9 _errorAdjustedTime;
-    CDStruct_1b6d18a9 _errorLastTimingInfoPTS;
-    unsigned long long _errorLastTimingInfoSequenceNumber;
-    struct CGColorSpace *_deviceColorSpace;
-    double _pmrTotalCopyTime;
-    double _pmrMinCopyTime;
-    double _pmrMaxCopyTime;
-    int _pmrCopyTimeCt;
+    char *_testBuffer1;
+    char *_testBuffer2;
+    long long _lastPushTime;
 }
 
-- (void)mioOutputDroppedFrames:(id)arg1;
-- (id)description;
-- (struct SMPTETime)getPlayerFrameSMPTETime;
-- (CDStruct_1b6d18a9)getPlayerFrameduration;
-- (_Bool)inefficientFrameDurationWarning:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2;
-- (unsigned int)outputMaxLatencyInFrames;
-- (void *)figClock;
-- (void)_timebaseStarted;
-- (void)scheduledOutputNotification:(unsigned long long)arg1 outputHosttime:(unsigned long long)arg2;
-- (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
-- (int)requestedBackground;
-- (id)requestedImageInfo;
-- (id)tun_supportedPixelFormats;
-- (struct CGColorSpace *)tun_colorSpace;
-- (int)fieldDominance;
-- (int)drawFieldsInterlaced;
-- (BOOL)needsUpdate;
-- (void)setNeedsUpdate:(BOOL)arg1;
-- (int)getFrameQueueStatus;
-- (int)_getFrameQueueStatusInternal;
-- (void)stop;
-- (void)_stopInternal;
-- (void)start:(id)arg1;
-- (void)_startInternal:(BOOL)arg1;
-- (BOOL)getFrame:(char *)arg1 andDiscontinuityFlag:(char *)arg2 forSequenceNumber:(unsigned long long)arg3;
-- (BOOL)hasNextFrame;
-- (void)_processTimestampQueue;
-- (BOOL)hasData;
-- (void)pushFrame:(id)arg1;
-- (void)liveFlushWithRunout:(unsigned int)arg1 playerTime:(CDStruct_1b6d18a9)arg2 rate:(double)arg3;
-- (void)flush:(BOOL)arg1;
-- (void)_outputPMRReport;
-- (void)_logPMRCopyTime:(double)arg1;
-- (void)_resetPMRTracking;
-- (void)notifyDeviceAvailableWithConnection:(id)arg1;
-- (BOOL)hasConnection;
-- (void)disableVideoOutOnReleaseDirect;
-- (void)disableVideoOutOnRelease;
-- (unsigned long long)videoOutScreenIndex;
-- (BOOL)hasOutputDevice;
+- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1;
 - (void)releaseOutputDevice;
-- (void)_releaseOutputDeviceInternal;
-- (void)setupOutputDevice:(id)arg1;
-- (void)updateOutputDevice:(id)arg1;
-- (void)unregisterFromOutputDevice;
-- (void)registerForOutputDevice;
-- (void)setPlayer:(id)arg1;
-- (id)deviceUID;
-- (id)displayName;
 - (void)dealloc;
-- (id)initWithDeviceUID:(id)arg1;
+- (CDStruct_1b6d18a9)sampleDuration;
+- (void)flush:(BOOL)arg1;
+- (void)pushFrame:(id)arg1;
+- (unsigned char)hasData;
+- (id)newFrameFromField1:(id)arg1 field2:(id)arg2 fieldDominance:(int)arg3;
+- (unsigned char)getFrame:(char *)arg1;
+- (void)start;
+- (void)stop;
+- (BOOL)wantsMoreFrames;
+- (int)imageLocation;
+- (void)setNeedsUpdate:(BOOL)arg1;
+- (BOOL)needsUpdate;
+- (int)drawFieldsInterlaced;
+- (int)fieldDominance;
+- (struct CGColorSpace *)colorSpace;
+- (id)supportedPixelFormats;
+- (struct OpaqueFigClock *)figClock;
 
 @end
 

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     int shotSize;
 }
 
+- (long long)compareStartFrameIdx:(id)arg1;
 @property int shotSize; // @synthesize shotSize;
 @property int peopleType; // @synthesize peopleType;
 @property double largestFaceAreaRejectedButPossible; // @synthesize largestFaceAreaRejectedButPossible;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property int endingFrameIdx; // @synthesize endingFrameIdx;
 @property int startingFrameIdx; // @synthesize startingFrameIdx;
 @property CDStruct_e83c9415 timeRange; // @synthesize timeRange;
-- (long long)compareStartFrameIdx:(id)arg1;
 
 @end
 

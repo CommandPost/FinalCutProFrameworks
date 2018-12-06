@@ -6,29 +6,25 @@
 
 #import <Flexo/FFSourceVideo.h>
 
-@class FFVideoProps;
-
 __attribute__((visibility("hidden")))
 @interface FFSourceVideoOffline : FFSourceVideo
 {
     CDStruct_1b6d18a9 _start;
     CDStruct_1b6d18a9 _duration;
     CDStruct_bdcb2b0d _uniqueMD5;
-    FFVideoProps *_videoProps;
 }
 
-+ (Class)streamClass;
 + (id)type;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (CDStruct_1b6d18a9)fileTrackDuration;
-- (CDStruct_1b6d18a9)timecodeOffset;
-- (id)nativeVideoProps;
-- (CDStruct_e83c9415)timeRange;
-- (void)setVideoProps:(id)arg1;
-- (void)setDuration:(CDStruct_1b6d18a9)arg1;
-- (void)setStart:(CDStruct_1b6d18a9)arg1;
-- (void)dealloc;
++ (Class)streamClass;
 - (id)initWithProvider:(id)arg1;
+- (void)dealloc;
+- (void)setStart:(CDStruct_1b6d18a9)arg1;
+- (void)setDuration:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_e83c9415)timeRange;
+- (id)nativeVideoProps;
+- (CDStruct_1b6d18a9)timecodeOffset;
+- (CDStruct_1b6d18a9)fileTrackDuration;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 
 @end
 

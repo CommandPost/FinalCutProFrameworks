@@ -9,23 +9,14 @@
 #import "FxVersioningAPI.h"
 #import "PROAPIObject.h"
 
-@class NSString;
-
 @interface OZFxPlugVersioningAPI : NSObject <FxVersioningAPI, PROAPIObject>
 {
     struct OZFxPlugSharedBase *_plugin;
 }
 
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (BOOL)updateVersionAtCreation:(unsigned int)arg1;
-- (unsigned int)versionAtCreation;
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (unsigned int)versionAtCreation;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 
 @end
 

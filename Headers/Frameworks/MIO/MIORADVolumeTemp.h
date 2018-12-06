@@ -16,13 +16,13 @@
 }
 
 + (id)volumeWithPath:(id)arg1 icon:(id)arg2 undoManager:(id)arg3;
-- (id)path;
-- (void)cancelMount;
-- (void)setState:(id)arg1;
-- (id)state;
-- (id)name;
-- (void)dealloc;
 - (id)initWithPath:(id)arg1 icon:(id)arg2 undoManager:(id)arg3;
+- (void)dealloc;
+- (id)name;
+- (id)state;
+- (void)setState:(id)arg1;
+- (void)cancelMount;
+- (id)path;
 
 @end
 

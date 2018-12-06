@@ -6,23 +6,19 @@
 
 #import "NSWindowController.h"
 
-@class NSButton, NSProgressIndicator, NSTextField;
+@class NSProgressIndicator;
 
 __attribute__((visibility("hidden")))
 @interface FFFileImportProcessingFilesDialogController : NSWindowController
 {
-    NSProgressIndicator *mProgressIndicator;
-    NSTextField *mTextField;
-    NSButton *mCancelButton;
+    NSProgressIndicator *mProcessingProgressIndicator;
 }
 
-@property(readonly, nonatomic) NSButton *cancelButton; // @synthesize cancelButton=mCancelButton;
-@property(readonly, nonatomic) NSTextField *textField; // @synthesize textField=mTextField;
-@property(readonly, nonatomic) NSProgressIndicator *progressIndicator; // @synthesize progressIndicator=mProgressIndicator;
-- (void)cancel:(id)arg1;
-- (void)awakeFromNib;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (void)startAnimation;
+- (void)stopAnimation;
+- (void)setUsesThreadedAnimation:(BOOL)arg1;
 
 @end
 

@@ -8,41 +8,41 @@
 
 #import "FFMetadataProtocol.h"
 
-@class NSObject<FFMetadataProtocol>;
+@class FFMetadataProxy, NSObject<FFMetadataProtocol>;
 
+__attribute__((visibility("hidden")))
 @interface FFAnchoredObjectMetadataHelper : NSObject <FFMetadataProtocol>
 {
     NSObject<FFMetadataProtocol> *_ao;
     CDStruct_e83c9415 _range;
+    FFMetadataProxy *_md;
 }
 
-@property(readonly) NSObject<FFMetadataProtocol> *wrapped; // @synthesize wrapped=_ao;
-- (BOOL)writerIsWaiting;
-- (void)_readUnlock;
-- (void)_readLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (id)metadataSelectionDuration;
-- (void)setMetadataSelectionDuration:(id)arg1;
-- (BOOL)validateMetadataSelectionDuration:(id *)arg1 error:(id *)arg2;
-- (id)metadataSelectionEnd;
-- (void)setMetadataSelectionEnd:(id)arg1;
-- (BOOL)validateMetadataSelectionEnd:(id *)arg1 error:(id *)arg2;
-- (id)metadataSelectionStart;
-- (void)setMetadataSelectionStart:(id)arg1;
-- (BOOL)validateMetadataSelectionStart:(id *)arg1 error:(id *)arg2;
-- (id)mdTargetForKey:(id)arg1;
-- (id)mdLocalValueForKey:(id)arg1;
-- (id)mdValueForKey:(id)arg1;
-- (BOOL)actionEndSetMetadataValueWithError:(id *)arg1 forKey:(id)arg2;
-- (void)actionBeginSetMetadataValue:(id)arg1;
-- (void)mdSetLocalValue:(id)arg1 forKey:(id)arg2;
-- (void)mdSetValue:(id)arg1 forKey:(id)arg2;
-- (id)metadata;
-- (void)setMetadata:(id)arg1;
-- (id)ao;
-- (void)dealloc;
 - (id)initWithAnchoredObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2;
+- (void)dealloc;
+- (void)setMetadata:(id)arg1;
+- (id)metadata;
+- (id)md;
+- (void)mdSetValue:(id)arg1 forKey:(id)arg2;
+- (id)mdValueForKey:(id)arg1;
+- (id)mdMappedKeyPathForKey:(id)arg1;
+- (BOOL)validateMetadataSelectionStart:(id *)arg1 error:(id *)arg2;
+- (void)setMetadataSelectionStart:(id)arg1;
+- (id)metadataSelectionStart;
+- (BOOL)validateMetadataSelectionEnd:(id *)arg1 error:(id *)arg2;
+- (void)setMetadataSelectionEnd:(id)arg1;
+- (id)metadataSelectionEnd;
+- (BOOL)validateMetadataSelectionDuration:(id *)arg1 error:(id *)arg2;
+- (void)setMetadataSelectionDuration:(id)arg1;
+- (id)metadataSelectionDuration;
+- (id)valueForUndefinedKey:(id)arg1;
+- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
+- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
+- (void)_writeLock;
+- (void)_writeUnlock;
+- (void)_readLock;
+- (void)_readUnlock;
+@property NSObject<FFMetadataProtocol> *wrapped; // @synthesize wrapped=_ao;
 
 @end
 

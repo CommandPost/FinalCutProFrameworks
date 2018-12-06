@@ -10,31 +10,31 @@
 {
 }
 
-+ (struct OZChannelUint32 *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (BOOL)getKeyframeBeforeTime:(CDStruct_198678f7)arg1 time:(CDStruct_198678f7 *)arg2 curveUint32Value:(unsigned int *)arg3;
-- (BOOL)getKeyframeAfterTime:(CDStruct_198678f7)arg1 time:(CDStruct_198678f7 *)arg2 curveUint32Value:(unsigned int *)arg3;
-- (BOOL)getLastKeyframeTime:(CDStruct_198678f7 *)arg1 curveUint32Value:(unsigned int *)arg2;
-- (BOOL)getFirstKeyframeTime:(CDStruct_198678f7 *)arg1 curveUint32Value:(unsigned int *)arg2;
-- (void)setFineDeltaUint32Value:(unsigned int)arg1;
-- (double)fineDeltaUint32Value;
-- (void)setCoarseDeltaUint32Value:(unsigned int)arg1;
-- (double)coarseDeltaUint32Value;
-- (void)setMaxUIUint32Value:(unsigned int)arg1;
-- (unsigned int)maxUIUint32Value;
-- (void)setMinUIUint32Value:(unsigned int)arg1;
-- (unsigned int)minUIUint32Value;
-- (void)setMaxCurveUint32Value:(unsigned int)arg1;
-- (unsigned int)maxCurveUint32Value;
-- (void)setMinCurveUint32Value:(unsigned int)arg1;
-- (unsigned int)minCurveUint32Value;
-- (void)setDefaultCurveUint32Value:(unsigned int)arg1;
-- (unsigned int)defaultCurveUint32Value;
-- (void)setCurveUint32Value:(unsigned int)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
-- (void)getExtremaBetweenStart:(CDStruct_198678f7)arg1 end:(CDStruct_198678f7)arg2 minUint32Value:(unsigned int *)arg3 maxUint32Value:(unsigned int *)arg4;
-- (unsigned int)curveUint32ValueAtTime:(CDStruct_198678f7)arg1;
-- (unsigned int)uint32ValueAtTime:(CDStruct_198678f7)arg1;
++ (struct OZChannelUint32 *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelUint32 *)ozChannel;
+- (unsigned int)uint32ValueAtTime:(CDStruct_1b6d18a9)arg1;
+- (unsigned int)curveUint32ValueAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)getExtremaBetweenStart:(CDStruct_1b6d18a9)arg1 end:(CDStruct_1b6d18a9)arg2 minUint32Value:(unsigned int *)arg3 maxUint32Value:(unsigned int *)arg4;
+- (void)setCurveUint32Value:(unsigned int)arg1 atTime:(CDStruct_1b6d18a9)arg2 options:(unsigned int)arg3;
+- (unsigned int)defaultCurveUint32Value;
+- (void)setDefaultCurveUint32Value:(unsigned int)arg1;
+- (unsigned int)minCurveUint32Value;
+- (void)setMinCurveUint32Value:(unsigned int)arg1;
+- (unsigned int)maxCurveUint32Value;
+- (void)setMaxCurveUint32Value:(unsigned int)arg1;
+- (unsigned int)minUIUint32Value;
+- (void)setMinUIUint32Value:(unsigned int)arg1;
+- (unsigned int)maxUIUint32Value;
+- (void)setMaxUIUint32Value:(unsigned int)arg1;
+- (double)coarseDeltaUint32Value;
+- (void)setCoarseDeltaUint32Value:(unsigned int)arg1;
+- (double)fineDeltaUint32Value;
+- (void)setFineDeltaUint32Value:(unsigned int)arg1;
+- (BOOL)getFirstKeyframeTime:(CDStruct_1b6d18a9 *)arg1 curveUint32Value:(unsigned int *)arg2;
+- (BOOL)getLastKeyframeTime:(CDStruct_1b6d18a9 *)arg1 curveUint32Value:(unsigned int *)arg2;
+- (BOOL)getKeyframeAfterTime:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9 *)arg2 curveUint32Value:(unsigned int *)arg3;
+- (BOOL)getKeyframeBeforeTime:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9 *)arg2 curveUint32Value:(unsigned int *)arg3;
 
 @end
 

@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-+ (void)unregisterAudioPlayer:(struct FFAudioPlayer *)arg1;
-+ (void)registerAudioPlayer:(struct FFAudioPlayer *)arg1;
 + (void)setup;
++ (void)registerAudioPlayer:(struct FFAudioPlayer *)arg1;
++ (void)unregisterAudioPlayer:(struct FFAudioPlayer *)arg1;
++ (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end
 

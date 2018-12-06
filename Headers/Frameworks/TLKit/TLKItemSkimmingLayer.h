@@ -4,9 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKImageLayer.h>
+#import <TLKit/TLKThemeBackedLayer.h>
 
-@interface TLKItemSkimmingLayer : TLKImageLayer
+@interface TLKItemSkimmingLayer : TLKThemeBackedLayer
 {
     struct {
         unsigned int snapped:1;
@@ -14,9 +14,8 @@
     } _tlkItemSkimmingLayer;
 }
 
-- (id)hitTest:(struct CGPoint)arg1;
-@property(nonatomic) BOOL snapped;
 - (id)init;
+@property BOOL snapped;
 
 @end
 

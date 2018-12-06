@@ -4,28 +4,21 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFColorBaseLabelController.h>
+#import <Flexo/FFColorBaseViewController.h>
 
-@class LKButton, OZLabelText, OZViewCtlrRoot;
+@class LKButton, OZLabelText;
 
 __attribute__((visibility("hidden")))
-@interface FFColorMatchToLabelController : FFColorBaseLabelController
+@interface FFColorMatchToLabelController : FFColorBaseViewController
 {
     LKButton *_toggleButton;
     OZLabelText *_labelText;
-    OZViewCtlrRoot *_observedControllerRoot;
-    BOOL _allMediaIsAvailable;
 }
 
-- (BOOL)isMatchToEffectEnabled;
-- (id)checkMediaAvailability;
-- (void)assetInvalidated:(id)arg1;
-- (void)toggleMatchTo:(id)arg1;
-- (void)toggleDisclosure:(id)arg1;
-- (void)update;
-- (void)didBuildUI;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)update;
+- (void)toggleMatchTo:(id)arg1;
 
 @end
 

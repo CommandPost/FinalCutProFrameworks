@@ -14,6 +14,7 @@
     OZViewControllerGroup *_pCommonParentCtlr;
     double _insertionHeight;
     OZViewController *_pTargetCtlr;
+    struct CGRect _currTargetRect;
     NSArray *_pDraggingEntries;
     unsigned int _dropLocation;
     unsigned long long _dragOperation;
@@ -21,16 +22,16 @@
     BOOL _isInAnimGroup;
 }
 
-@property(nonatomic) OZViewCtlrRoot *rootCtlr; // @synthesize rootCtlr=_pRootCtlr;
-- (void)cancelDrag;
-- (void)concludeDragOperation:(id)arg1;
-- (BOOL)performDragOperation:(id)arg1;
-- (BOOL)prepareForDragOperation:(id)arg1;
-- (void)draggingEnded:(id)arg1;
-- (void)draggingExited:(id)arg1;
-- (unsigned long long)draggingUpdated:(id)arg1;
-- (unsigned long long)draggingEntered:(id)arg1;
 - (unsigned long long)commonDragging:(id)arg1 isInitial:(BOOL)arg2;
+- (unsigned long long)draggingEntered:(id)arg1;
+- (unsigned long long)draggingUpdated:(id)arg1;
+- (void)draggingExited:(id)arg1;
+- (void)draggingEnded:(id)arg1;
+- (BOOL)prepareForDragOperation:(id)arg1;
+- (BOOL)performDragOperation:(id)arg1;
+- (void)concludeDragOperation:(id)arg1;
+- (void)cancelDrag;
+@property(nonatomic) OZViewCtlrRoot *rootCtlr; // @synthesize rootCtlr=_pRootCtlr;
 
 @end
 

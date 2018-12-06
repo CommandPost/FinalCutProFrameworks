@@ -7,9 +7,9 @@
 #import "NSDocument.h"
 
 @interface NSDocument (ModuleKitExtensions)
-- (id)registeredModules;
-- (void)unregisterModule:(id)arg1;
-- (void)registerModule:(id)arg1;
 - (id)moduleWithIdentifier:(id)arg1;
+- (void)registerModule:(id)arg1;
+- (void)unregisterModule:(id)arg1;
+- (id)registeredModules;
 @end
 

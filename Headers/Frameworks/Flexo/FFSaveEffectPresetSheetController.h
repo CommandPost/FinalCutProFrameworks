@@ -6,27 +6,25 @@
 
 #import "NSWindowController.h"
 
-#import "NSOpenSavePanelDelegate.h"
-
-@class NSString;
+@class FFAudioUnitEffect, NSButton, NSTextField;
 
 __attribute__((visibility("hidden")))
-@interface FFSaveEffectPresetSheetController : NSWindowController <NSOpenSavePanelDelegate>
+@interface FFSaveEffectPresetSheetController : NSWindowController
 {
-    NSString *_presetPath;
+    NSTextField *_name;
+    NSButton *_ok;
+    FFAudioUnitEffect *_effect;
+    CDStruct_1b6d18a9 _contextTime;
 }
 
 + (BOOL)runSheetForItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 parentWindow:(id)arg3;
-@property(retain, nonatomic) NSString *presetPath; // @synthesize presetPath=_presetPath;
-- (void)panel:(id)arg1 didChangeToDirectoryURL:(id)arg2;
-- (id)presetPathForEffect:(id)arg1;
 - (id)initWithEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (void)windowDidLoad;
+- (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)OK:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)controlTextDidChange:(id)arg1;
 
 @end
 

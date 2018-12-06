@@ -4,53 +4,47 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFModelObject.h>
+#import "DSObject.h"
 
-#import "FFMergeObjectProtocol.h"
+#import "FFModelLocking.h"
 #import "FFObjectCompare.h"
+#import "NSCoding.h"
 
 @class FFUndoHandler, FFUserDefaults, NSString;
 
-@interface FFBaseDSObject : FFModelObject <FFMergeObjectProtocol, FFObjectCompare>
+@interface FFBaseDSObject : DSObject <NSCoding, FFModelLocking, FFObjectCompare>
 {
     NSString *_cacheIdentifier;
     FFUserDefaults *_userDefaults;
 }
 
++ (Class)DSClassDescriptionClass;
 + (id)copyClassDescription;
-+ (id)mergeDescription;
-+ (id)uniqueKeyFor:(id)arg1 among:(id)arg2;
-- (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
-- (id)loadUserDefaults:(BOOL)arg1;
-- (void)setUserDefaults:(id)arg1;
-- (id)userDefaults;
-@property(readonly, nonatomic) FFUndoHandler *undoHandler;
-- (id)mediaEventProject;
-- (id)projectDocument;
-- (id)project;
-- (id)libraryItem;
-- (id)libraryOrTargetLibrary;
-- (id)library;
-- (id)cacheIdentifier;
-- (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
++ (id)queryAllInstances;
++ (id)queryWithPredicate:(id)arg1;
++ (id)query:(id)arg1;
 - (id)init;
-- (BOOL)mergeChildObject:(id)arg1 with:(id)arg2 delegate:(id)arg3;
-- (BOOL)mergeValue:(id)arg1 forKey:(id)arg2;
-- (BOOL)merge:(id)arg1 withDelegate:(id)arg2;
-- (BOOL)merge:(id)arg1;
-- (BOOL)mergeEnumeratedCollection:(id)arg1 intoProxy:(id)arg2 withDescription:(id)arg3 delegate:(id)arg4;
-- (BOOL)mergeIndexedCollection:(id)arg1 intoProxy:(id)arg2 withDescription:(id)arg3 delegate:(id)arg4;
-- (BOOL)mergeKeyedCollection:(id)arg1 and:(id)arg2 into:(id)arg3 withDescription:(id)arg4 delegate:(id)arg5;
-- (BOOL)mergeScalerPropertyFrom:(id)arg1 forKey:(id)arg2 withDescription:(id)arg3 delegate:(id)arg4;
-- (id)uniqueKeyFor:(id)arg1 among:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)dealloc;
+- (id)cacheIdentifier;
+- (id)project;
+- (id)projectDocument;
+@property(readonly, nonatomic) FFUndoHandler *undoHandler;
+- (id)userDefaults;
+- (void)setUserDefaults:(id)arg1;
+- (id)loadUserDefaults:(BOOL)arg1;
+- (id)sharedLock;
+- (void)_readLock;
+- (void)_readUnlock;
+- (void)_writeLock;
+- (void)_writeUnlock;
+- (BOOL)_hasWriteLock;
+- (void)property:(id)arg1 change:(id)arg2;
+- (id)debugDescriptionWithIndentLevel:(unsigned int)arg1;
+- (BOOL)compareAttributeForSelector:(SEL)arg1 againstSameInObj:(id)arg2 description:(id *)arg3;
+- (BOOL)isEqual:(id)arg1 withPath:(id)arg2 log:(BOOL)arg3 alreadyProcessed:(id)arg4;
+- (BOOL)isEqualToFFBaseDSObject:(id)arg1;
 
 @end
 

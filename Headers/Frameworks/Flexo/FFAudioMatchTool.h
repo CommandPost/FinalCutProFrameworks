@@ -6,17 +6,33 @@
 
 #import <Flexo/FFMatchTool.h>
 
+@class FFBackgroundTask, FFEnhanceAudioManager, NSMutableArray, NSMutableDictionary;
+
 @interface FFAudioMatchTool : FFMatchTool
 {
+    NSMutableArray *_matchTasks;
+    NSMutableArray *_matchManagers;
+    FFBackgroundTask *_backgroundTaskForMatch;
+    FFEnhanceAudioManager *_analysisManager;
+    BOOL _matchCompleted;
+    NSMutableDictionary *_userInfo;
 }
 
-+ (id)cursor;
 + (id)displayName;
-+ (void)initialize;
-+ (id)TLKEventHandlerID;
++ (id)toolbarFacet;
++ (id)cursor;
+- (void)dealloc;
+- (void)undoRedoChanged:(id)arg1;
 - (void)becomeActiveTool;
-- (void)didRemoveAsHandlerForTimeline:(id)arg1;
-- (void)willSetAsHandlerForTimeline:(id)arg1;
+- (void)resign:(id)arg1;
+- (BOOL)skims;
+- (void)completedMatchOnSelection;
+- (void)cancelledMatchOnSelection;
+- (void)cancelAction;
+- (void)selectedItemsChanged:(id)arg1;
+- (void)referenceChanged:(id)arg1;
+@property BOOL matchCompleted; // @synthesize matchCompleted=_matchCompleted;
+@property(retain) FFEnhanceAudioManager *analysisManager; // @synthesize analysisManager=_analysisManager;
 
 @end
 

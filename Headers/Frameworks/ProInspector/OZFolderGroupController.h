@@ -6,35 +6,24 @@
 
 #import <ProInspector/OZViewControllerGroup.h>
 
-@class PIBuildContext;
-
 @interface OZFolderGroupController : OZViewControllerGroup
 {
     float _desiredLabelWidth;
     float _desiredParamWidth;
     BOOL _hasNoHeading;
-    PIBuildContext *_pContext;
 }
 
-- (void)didCreateEnclosedGroupFromSubChannels;
-- (void)setEnclosedGroup:(id)arg1 context:(id)arg2;
-- (id)augmentEnclosedGroup:(id)arg1 withFolder:(struct OZChannelFolder *)arg2 context:(id)arg3;
-- (void)didTwiddle:(BOOL)arg1;
-- (void)twiddle;
-- (void)buildOutSubControllers;
-- (void)createEnclosedGroupFromSubChannels;
-- (void)addAssociatedChannelsToEnclosedGroup:(id)arg1;
-- (void)getTargetChannels:(set_8ca329ee *)arg1;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (void)didBuildUI;
-- (void)dealloc;
-- (id)initWithHeading:(id)arg1 andEnclosedGroup:(id)arg2 context:(id)arg3;
-- (id)initWithChan:(struct OZChannelBase *)arg1 andEnclosedGroup:(id)arg2 context:(id)arg3;
-- (id)initWithChan:(struct OZChannelBase *)arg1 andEnclosedGroup:(id)arg2 customLabel:(id)arg3 context:(id)arg4;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (id)initWithChan:(struct OZChannelBase *)arg1 canDeferEnclosed:(BOOL)arg2 context:(id)arg3;
-- (id)newEnclosedGroup:(struct OZChannelFolder *)arg1 context:(id)arg2;
-- (id)newLabeledParamController:(struct OZChannelFolder *)arg1 context:(id)arg2;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)initWithChan:(struct OZChannelBase *)arg1 andEnclosedGroup:(id)arg2 customLabel:(id)arg3 context:(id)arg4;
+- (id)initWithChan:(struct OZChannelBase *)arg1 andEnclosedGroup:(id)arg2 context:(id)arg3;
+- (id)initWithHeading:(id)arg1 andEnclosedGroup:(id)arg2 context:(id)arg3;
+- (void)didBuildUI;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)getTargetChannels:(set_928275cf *)arg1;
+- (void)twiddle;
+- (void)didTwiddle:(BOOL)arg1;
+- (void)setEnclosedGroup:(id)arg1 context:(id)arg2;
 
 @end
 

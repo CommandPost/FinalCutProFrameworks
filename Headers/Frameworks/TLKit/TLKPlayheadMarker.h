@@ -4,20 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKAccessibilityLayer.h>
+#import "CALayer.h"
 
-#import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class NSDictionary, NSString, TLKImageLayer, TLKTimelineView;
+@class TLKThemeBackedLayer;
 
-@interface TLKPlayheadMarker : TLKAccessibilityLayer <TLKPartInfo, TLKAccessibilityProtocol>
+@interface TLKPlayheadMarker : CALayer <TLKPartInfo>
 {
-    NSDictionary *_imagesForStates;
-    NSDictionary *_playheadDotImagesForStates;
-    TLKImageLayer *_playhead;
-    TLKImageLayer *_playheadDot;
-    int _playheadState;
+    TLKThemeBackedLayer *_head;
+    TLKThemeBackedLayer *_body;
+    long long _playheadState;
     struct {
         unsigned int skimmingPlayhead:1;
         unsigned int skimming:1;
@@ -25,45 +22,21 @@
         unsigned int isPlaying:1;
         unsigned int reserved:28;
     } _pmFlags;
-    long long _playheadFocus;
-    double _rulerBottom;
 }
 
-+ (id)_newPlayheadDotImagesForState:(int)arg1;
-+ (id)_newImagesForState:(int)arg1;
-@property(retain, nonatomic) TLKImageLayer *playheadDot; // @synthesize playheadDot=_playheadDot;
-@property(nonatomic) double rulerBottom; // @synthesize rulerBottom=_rulerBottom;
-@property(nonatomic) long long playheadFocus; // @synthesize playheadFocus=_playheadFocus;
-- (BOOL)accessibilityIsIgnored;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)accessibilityAttributeNames;
-- (id)accessibilityDescription;
-- (id)accessibilityRole;
-- (struct CGRect)accessibilityRect;
-- (struct CGRect)elementFrame;
-@property(nonatomic) BOOL snapped;
-@property(nonatomic) BOOL skimming;
-@property(nonatomic) BOOL skimmingPlayhead;
-@property(nonatomic) int playheadState;
-@property(nonatomic) BOOL playing;
-- (id)hitTest:(struct CGPoint)arg1;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)partIdentifier;
-- (struct CGRect)playheadFrame;
-- (void)updatePlayheadDotWithClipFrame:(struct CGRect)arg1;
-- (void)updatePlayhead;
-- (void)updatePlayheadDotConstraints;
-- (void)updatePlayheadConstraints;
-@property __weak TLKTimelineView *delegate; // @dynamic delegate;
 - (id)timelineView;
-- (void)dealloc;
+- (void)updatePlayhead;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (struct CGRect)playheadFrame;
+- (void)layoutSublayers;
+- (id)partIdentifier;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)hitTest:(struct CGPoint)arg1;
+@property BOOL playing;
+@property long long playheadState;
+@property BOOL skimmingPlayhead;
+@property BOOL skimming;
+@property BOOL snapped;
 
 @end
 

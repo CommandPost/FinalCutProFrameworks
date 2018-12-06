@@ -8,32 +8,25 @@
 
 #import "FFOrganizerMasterItemDropTarget.h"
 
-@class FFStorageLocation, NSImage, NSString;
+@class NSImage, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FFVolumeSidebarProvider : FFBaseSidebarProvider <FFOrganizerMasterItemDropTarget>
 {
+    NSURL *_volumeURL;
     NSString *_itemDisplayName;
     NSImage *_itemIcon;
-    FFStorageLocation *_location;
 }
 
 + (id)readableTypesForPasteboard:(id)arg1;
-@property(readonly, nonatomic) FFStorageLocation *location; // @synthesize location=_location;
-- (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
-- (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
-- (void)dealloc;
-- (id)itemPersistentIdentifier;
-- (id)itemIcon;
+- (id)initWithVolumeURL:(id)arg1;
 - (id)itemDisplayName;
-- (id)volumeURL;
-- (id)initWithLocation:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)itemIcon;
+- (id)itemPersistentIdentifier;
+- (void)dealloc;
+- (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
+- (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
+@property(readonly, nonatomic) NSURL *volumeURL; // @synthesize volumeURL=_volumeURL;
 
 @end
 

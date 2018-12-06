@@ -6,28 +6,20 @@
 
 #import <ProCore/FigTimeRangeObj.h>
 
-#import "FigTimeRangeOperationCopying.h"
-#import "NSCoding.h"
-
-@interface FigTimeRangeAndObject : FigTimeRangeObj <FigTimeRangeOperationCopying, NSCoding>
+@interface FigTimeRangeAndObject : FigTimeRangeObj
 {
     id _object;
 }
 
 + (id)rangeAndObjectWithRange:(CDStruct_e83c9415)arg1 andObject:(id)arg2;
-- (id)description;
-- (BOOL)isEqual:(id)arg1;
-- (id)durationObject;
-- (id)startTimeObject;
-- (id)object;
-- (id)representedToolObject;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithCMTimeRange:(CDStruct_e83c9415)arg1 andObject:(id)arg2;
 - (id)initWithFigTimeRange:(CDStruct_e83c9415)arg1 andObject:(id)arg2;
-- (id)copyWithRange:(CDStruct_e83c9415)arg1;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)object;
+- (id)startTimeObject;
+- (id)durationObject;
+- (BOOL)isEqual:(id)arg1;
+- (id)description;
 
 @end
 

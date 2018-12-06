@@ -6,10 +6,8 @@
 
 #import "NSObject.h"
 
-@class NSArray;
-
 @protocol PROVersionedAPIAccess <NSObject>
-- (BOOL)validateProtocols:(NSArray *)arg1;
-- (id <PROAPIObject>)apiForProtocol:(id *)arg1 versions:(NSArray *)arg2;
+- (id)apiForProtocol:(id *)arg1 versions:(id)arg2;
+- (BOOL)validateProtocols:(id)arg1;
 @end
 

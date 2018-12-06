@@ -7,77 +7,54 @@
 #import "LKViewModule.h"
 
 #import "FFOrganizerFilterHUDTileDelegate.h"
-#import "NSTouchBarProvider.h"
 
-@class FFEventLibraryModule, LKBox, LKButton, LKEmptyDFRController, LKPopUpButton, NSArray, NSButton, NSDictionary, NSLayoutConstraint, NSMutableArray, NSObject<FFOrganizerFilterHUDDelegate>, NSString, NSTableView, NSTouchBar, NSView;
+@class FFEventsSuperModule, LKBox, LKButton, LKPopUpButton, LKTextField, LKTileView, NSArray, NSDictionary, NSObject<FFOrganizerFilterHUDDelegate>, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFOrganizerFilterHUD : LKViewModule <FFOrganizerFilterHUDTileDelegate, NSTouchBarProvider>
+@interface FFOrganizerFilterHUD : LKViewModule <FFOrganizerFilterHUDTileDelegate>
 {
-    NSMutableArray *_filterTileArray;
+    NSView *_topAccessoryView;
+    NSView *_tileContainerView;
     NSView *_bottomAccessoryView;
-    NSLayoutConstraint *_bottomAccessoryViewHeightConstraint;
-    LKBox *_topHorizontalLine;
-    LKBox *_bottomHorizontalLine;
+    LKTextField *_hudTitleTextField;
+    LKBox *_fancyLineBox;
     LKPopUpButton *_matchAnyAllPopUp;
+    LKButton *_stacksOnlyCheckBox;
     LKPopUpButton *_addFilterPullDown;
-    NSTableView *_filterTileTableView;
+    LKTileView *_filterTileView;
     LKButton *_newSmartCollectionButton;
+    LKButton *_closeButton;
     NSObject<FFOrganizerFilterHUDDelegate> *_HUDDelegate;
     NSArray *_tilePulldownClassArray;
     NSArray *_tilePulldownTitleArray;
     NSDictionary *_initialFiltersDictionary;
-    LKEmptyDFRController *_dfrController;
-    struct PCProcrastinatedDispatch_t _procrastinatedUpdate;
-    BOOL _observingNotifications;
-    FFEventLibraryModule *_organizerDelegate;
+    double _bottomAccessoryViewHeight;
+    struct FFProcrastinatedDispatch_t _procrastinatedUpdate;
+    FFEventsSuperModule *_organizerDelegate;
 }
 
-@property(readonly, nonatomic, getter=smartCollectionButton) NSButton *newSmartCollectionButton; // @synthesize newSmartCollectionButton=_newSmartCollectionButton;
-@property(retain, nonatomic) NSDictionary *initialFiltersDictionary; // @synthesize initialFiltersDictionary=_initialFiltersDictionary;
-@property(nonatomic) FFEventLibraryModule *organizerDelegate; // @synthesize organizerDelegate=_organizerDelegate;
-@property(nonatomic) NSObject<FFOrganizerFilterHUDDelegate> *HUDDelegate; // @synthesize HUDDelegate=_HUDDelegate;
-- (void)tileUpdated:(id)arg1;
-- (void)removeTile:(id)arg1;
-- (void)_invalidateFilters;
-- (void)_rolesInLibraryHaveChanged:(id)arg1;
-- (void)_updateRolesForTile:(id)arg1 selectedRoleUIDs:(id)arg2;
-- (void)focusFirstTextTileField;
-- (void)_updateDisplayedFilters:(id)arg1;
-- (id)filtersDict;
-- (void)setNewSmartCollecitonButtonHidden:(BOOL)arg1;
-- (void)newSmartCollectionButtonAction:(id)arg1;
-- (BOOL)selectionShouldChangeInTableView:(id)arg1;
-- (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
-- (long long)numberOfRowsInTableView:(id)arg1;
-- (double)tableView:(id)arg1 heightOfRow:(long long)arg2;
-- (id)tableView:(id)arg1 viewForTableColumn:(id)arg2 row:(long long)arg3;
-- (void)_addTileWithNibName:(id)arg1 filterDict:(id)arg2;
-- (id)_newTileWithNibName:(id)arg1 filterDict:(id)arg2;
-- (id)library;
-- (id)_keywordsForTile:(id)arg1;
-- (id)_nibNameForFilterType:(id)arg1;
-- (void)addFilterPullDownAction:(id)arg1;
-- (void)stacksOnlyCheckBoxAction:(id)arg1;
-- (void)matchAnyAllPopUpAction:(id)arg1;
-@property(readonly) NSTouchBar *touchBar;
-- (void)dealloc;
-- (void)removeNotificationObservers;
-- (void)addNotificationObservers;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)viewWillBeRemoved;
 - (void)awakeFromNib;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)_smartCollectionButtonTitle;
-- (id)_hudTitle;
-- (id)windowTitle;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)viewWillBeRemoved;
+- (void)dealloc;
+- (void)matchAnyAllPopUpAction:(id)arg1;
+- (void)stacksOnlyCheckBoxAction:(id)arg1;
+- (void)addFilterPullDownAction:(id)arg1;
+- (id)_nibNameForFilterType:(id)arg1;
+- (id)_keywordsForTile:(id)arg1;
+- (void)_addTileWithNibName:(id)arg1 filterDict:(id)arg2;
+- (void)newSmartCollectionButtonAction:(id)arg1;
+- (void)setHUDTitle:(id)arg1;
+- (void)setNewSmartCollecitonButtonHidden:(BOOL)arg1;
+- (id)filtersDict;
+- (void)setFiltersDict:(id)arg1;
+- (void)focusFirstTextTileField;
+- (void)updateKeywordsForTile:(id)arg1;
+- (void)_invalidateFilters;
+- (void)removeTile:(id)arg1;
+- (void)tileUpdated:(id)arg1;
+@property(retain, nonatomic) NSDictionary *initialFiltersDictionary; // @synthesize initialFiltersDictionary=_initialFiltersDictionary;
+@property(retain, nonatomic) FFEventsSuperModule *organizerDelegate; // @synthesize organizerDelegate=_organizerDelegate;
+@property(retain, nonatomic) NSObject<FFOrganizerFilterHUDDelegate> *HUDDelegate; // @synthesize HUDDelegate=_HUDDelegate;
 
 @end
 

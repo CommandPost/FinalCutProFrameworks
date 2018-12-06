@@ -11,11 +11,11 @@
     struct OZLight *_pLight;
 }
 
-- (void)notify:(unsigned int)arg1;
-- (void)delayedRelease;
-- (void)delayedReleaseCB:(id)arg1;
+- (BOOL)buildUIWithSceneNodes:(list_699e9227 *)arg1 context:(id)arg2;
 - (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (BOOL)buildUIWithSceneNodes:(list_e89ce44a *)arg1 context:(id)arg2;
+- (void)delayedReleaseCB:(id)arg1;
+- (void)delayedRelease;
+- (void)notify:(unsigned int)arg1;
 
 @end
 

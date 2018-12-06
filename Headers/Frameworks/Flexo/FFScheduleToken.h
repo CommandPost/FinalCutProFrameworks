@@ -6,33 +6,23 @@
 
 #import "NSObject.h"
 
-@class FFStreamVideo, NSDictionary, NSMutableDictionary;
+@class FFStreamVideo, NSMutableDictionary;
 
 @interface FFScheduleToken : NSObject
 {
     FFStreamVideo *_stream;
-    NSDictionary *_dict;
-    NSMutableDictionary *_dictm;
+    NSMutableDictionary *_dict;
 }
 
-+ (id)newScheduleTokenForGroupOfTokensForStream:(id)arg1 subTokens:(id)arg2 retainOnlyObjects:(id)arg3 flattenPassThrusInGroup:(BOOL)arg4;
-- (_Bool)hasErrorInfoRetIsTrans:(_Bool *)arg1;
-- (_Bool)hasErrorInfo;
-- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
-- (id)newTokenForPassThruStream:(id)arg1 retainOnlyObject:(id)arg2;
-- (id)objectForKey:(id)arg1;
-- (void)addEntriesFromDictionary:(id)arg1;
-- (void)setObject:(id)arg1 forKey:(id)arg2;
-- (id)description;
-- (void)hintCacheData:(unsigned int)arg1;
-- (_Bool)prepareDecodedImageWithTimeout:(id)arg1;
-- (_Bool)prepareForImagingWithTimeout:(id)arg1;
-- (_Bool)hintWillImageSoon;
-- (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
-- (_Bool)areStatusFlagsClear:(unsigned int)arg1;
-- (unsigned int)scheduleStatusInformation;
-- (void)dealloc;
 - (id)initWithStream:(id)arg1;
+- (void)dealloc;
+- (unsigned int)scheduleStatusInformation;
+- (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
+- (void)hintWillImageSoon;
+- (void)hintCacheData:(unsigned int)arg1;
+- (id)description;
+- (void)setObject:(id)arg1 forKey:(id)arg2;
+- (id)objectForKey:(id)arg1;
 
 @end
 

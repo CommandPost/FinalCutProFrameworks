@@ -10,7 +10,7 @@
 #import "FFDoubleClickableSliderProtocol.h"
 #import "NSWindowDelegate.h"
 
-@class FFAudioSurroundPannerView, FFDoubleClickableSlider, LKSegmentedScrubber, NSButton, NSImageView, NSObject<FFAudioSurroundPannerBuddy>, NSString, NSView;
+@class FFAudioSurroundPannerView, FFDoubleClickableSlider, LKSegmentedScrubber, NSButton, NSImageView, NSObject<FFAudioSurroundPannerBuddy>, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioSurroundPannerController : NSWindowController <FFDoubleClickableSliderProtocol, FFAudioSurroundPannerViewProtocol, NSWindowDelegate>
@@ -41,46 +41,37 @@ __attribute__((visibility("hidden")))
     NSImageView *m_centerBiasSliderRightLabelImage;
     NSButton *m_meterDisclosureButton;
     NSView *m_meterView;
-    BOOL m_viewIsTracking;
 }
 
-@property(readonly, nonatomic) FFAudioSurroundPannerView *surroundPannerView; // @synthesize surroundPannerView=m_surroundPannerView;
-- (unsigned long long)_parameterFromSliderAction:(SEL)arg1;
-- (void)parametersChanged:(id)arg1;
-- (void)parameterChanged:(unsigned long long)arg1;
-- (void)setTitle:(id)arg1;
-- (float)_currentEnvelopeValueForSurroundParameter:(unsigned long long)arg1;
-- (void)_updateUIToMatchEnvelopes;
-- (void)_updateSurroundPannerVisualData;
-- (void)updateSurroundPannerVisualData;
-- (void)_placeSourceWithGain:(float *)arg1 sourceAngle:(float)arg2 sourceGain:(float)arg3;
-- (float)_rotateFromAngle:(float)arg1 withRotation:(float)arg2;
-- (void)_calculateAdjacentSpeakersForAngle:(float)arg1 cwSpeaker:(int *)arg2 ccwSpeaker:(int *)arg3;
-- (void)toggleSpeakerBias:(id)arg1;
-- (void)setCenterBias:(id)arg1;
-- (void)setCollapse:(id)arg1;
-- (void)setWidth:(id)arg1;
-- (void)setRotation:(id)arg1;
-- (void)setLFE:(id)arg1;
-- (void)setSurroundPan:(id)arg1;
-- (void)windowWillClose:(id)arg1;
-- (void)windowDidLoad;
-- (void)surroundPannerTouched:(BOOL)arg1;
-- (void)sliderTouched:(SEL)arg1 touched:(BOOL)arg2;
-- (float)gainForSpeaker:(int)arg1;
-- (struct SurroundPannerVisualData)visualDataForSource:(int)arg1;
-- (void)_setupNumberFormatters;
-- (void)_addNotificationObservers;
-- (void)shutdownController;
-- (void)dealloc;
-- (id)initWithBuddy:(id)arg1 windowNibName:(id)arg2;
 - (id)initWithBuddy:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithBuddy:(id)arg1 windowNibName:(id)arg2;
+- (void)dealloc;
+- (void)shutdownController;
+- (void)_addNotificationObservers;
+- (void)_setupNumberFormatters;
+- (struct SurroundPannerVisualData)visualDataForSource:(int)arg1;
+- (float)gainForSpeaker:(int)arg1;
+- (void)sliderTouched:(SEL)arg1 touched:(BOOL)arg2;
+- (void)surroundPannerTouched:(BOOL)arg1;
+- (void)windowDidLoad;
+- (void)windowWillClose:(id)arg1;
+- (void)setSurroundPan:(id)arg1;
+- (void)setLFE:(id)arg1;
+- (void)setRotation:(id)arg1;
+- (void)setWidth:(id)arg1;
+- (void)setCollapse:(id)arg1;
+- (void)setCenterBias:(id)arg1;
+- (void)toggleSpeakerBias:(id)arg1;
+- (void)_calculateAdjacentSpeakersForAngle:(float)arg1 cwSpeaker:(int *)arg2 ccwSpeaker:(int *)arg3;
+- (float)_rotateFromAngle:(float)arg1 withRotation:(float)arg2;
+- (void)_placeSourceWithGain:(float *)arg1 sourceAngle:(float)arg2 sourceGain:(float)arg3;
+- (void)_updateSurroundPannerVisualData;
+- (void)_updateUIToMatchEnvelopes;
+- (float)_currentEnvelopeValueForSurroundParameter:(unsigned long long)arg1;
+- (void)setTitle:(id)arg1;
+- (void)parameterChanged:(unsigned long long)arg1;
+- (unsigned long long)_parameterFromSliderAction:(SEL)arg1;
+@property(readonly, nonatomic) FFAudioSurroundPannerView *surroundPannerView; // @synthesize surroundPannerView=m_surroundPannerView;
 
 @end
 

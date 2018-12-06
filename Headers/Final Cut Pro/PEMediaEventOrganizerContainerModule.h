@@ -6,65 +6,69 @@
 
 #import "PEOrganizerBaseContainerModule.h"
 
-#import "FFOrganizerDelegate.h"
-#import "FFOrganizerMarkerEditorDelegate.h"
+@class FFEventLibraryModule;
 
-@class FFEventLibraryModule, NSString;
-
-@interface PEMediaEventOrganizerContainerModule : PEOrganizerBaseContainerModule <FFOrganizerDelegate, FFOrganizerMarkerEditorDelegate>
+@interface PEMediaEventOrganizerContainerModule : PEOrganizerBaseContainerModule
 {
-    BOOL _isOrganizerActive;
-    BOOL _isSidebarActive;
+    BOOL _isActive;
 }
 
-- (id)mediaSidebarModule;
-- (id)defaultEventForNewProject;
-- (void)openSettingsWithModule:(id)arg1;
-- (double)defaultEditDuration;
-- (void)showInspectorForSidebarModule:(id)arg1;
-- (void)_showInspectorForSidebarModule:(id)arg1;
-- (void)sidebarModuleDidChangeSelection:(id)arg1;
-- (BOOL)canPerformEditAction:(id)arg1 withSource:(id)arg2;
-- (void)doubleClickWithEffectID:(id)arg1;
-- (BOOL)allItemsTitles:(id)arg1;
-- (BOOL)itemIsTitle:(id)arg1;
-- (id)getActiveMediaBrowser;
-- (void)setNumericEntryShowsSubframes:(BOOL)arg1;
-- (void)setNumericEntryDirection:(int)arg1;
-- (void)setNumericEntryType:(int)arg1;
-- (void)setNumericEntryValue:(id)arg1;
-- (void)numericEntryDidEnd;
-- (void)numericEntryWillBegin;
-- (void)_firstResponderChanged:(id)arg1;
-- (BOOL)markerEditorIsShown;
-- (void)hideMarkerEditor;
-- (void)showMarkerEditorForMarkerLayer:(id)arg1 object:(id)arg2;
-- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
-- (id)markerEditorDelegate;
-- (void)openStack:(id)arg1;
-- (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_5c5366e1)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)insertGap:(id)arg1;
-- (void)insertPlaceholder:(id)arg1;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)postLayout:(id)arg1;
-- (void)preLayout:(id)arg1;
-- (id)contentLayoutDictionary;
-- (void)takeContentLayoutFromDictionary:(id)arg1;
-- (void)ensureSidebarVisible;
-- (void)showImportPanelWithKeywords:(id)arg1 forEvent:(id)arg2;
-- (id)localModuleActions;
-- (id)targetModules;
-- (void)viewWillBeRemoved;
-- (void)viewWasInstalled;
-- (struct CGSize)viewMinSize;
-- (Class)organizerModuleClass;
 @property(readonly) FFEventLibraryModule *activeOrganizerModule;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (Class)organizerModuleClass;
+- (struct CGSize)viewMinSize;
+- (void)viewWasInstalled;
+- (void)viewWillBeRemoved;
+- (BOOL)validateMenuItem:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)insertKeyDown:(id)arg1;
+- (void)insertKeyDownAudio:(id)arg1;
+- (void)insertKeyDownVideo:(id)arg1;
+- (void)_replaceWithSelectedMedia:(id)arg1 replaceActionType:(int)arg2;
+- (void)_editWithSelectedMedia:(id)arg1 editAction:(int)arg2 backtimed:(BOOL)arg3;
+- (void)_editWithSelectedMedia:(id)arg1 editAction:(int)arg2 backtimed:(BOOL)arg3 trackType:(id)arg4;
+- (void)insertPlaceholder:(id)arg1;
+- (void)insertGap:(id)arg1;
+- (void)insertWithSelectedMedia:(id)arg1;
+- (void)insertWithSelectedMediaAudio:(id)arg1;
+- (void)insertWithSelectedMediaVideo:(id)arg1;
+- (void)overwriteWithSelectedMedia:(id)arg1;
+- (void)overwriteWithSelectedMediaAudio:(id)arg1;
+- (void)overwriteWithSelectedMediaVideo:(id)arg1;
+- (void)insertWithSelectedMediaBacktimed:(id)arg1;
+- (void)insertWithSelectedMediaAudioBacktimed:(id)arg1;
+- (void)insertWithSelectedMediaVideoBacktimed:(id)arg1;
+- (void)overwriteWithSelectedMediaBacktimed:(id)arg1;
+- (void)overwriteWithSelectedMediaAudioBacktimed:(id)arg1;
+- (void)overwriteWithSelectedMediaVideoBacktimed:(id)arg1;
+- (void)appendWithSelectedMedia:(id)arg1;
+- (void)appendWithSelectedMediaAudio:(id)arg1;
+- (void)appendWithSelectedMediaVideo:(id)arg1;
+- (void)anchorWithSelectedMedia:(id)arg1;
+- (void)anchorWithSelectedMediaAudio:(id)arg1;
+- (void)anchorWithSelectedMediaVideo:(id)arg1;
+- (void)anchorWithSelectedMediaBacktimed:(id)arg1;
+- (void)anchorWithSelectedMediaAudioBacktimed:(id)arg1;
+- (void)anchorWithSelectedMediaVideoBacktimed:(id)arg1;
+- (void)replaceWithSelectedMediaWhole:(id)arg1;
+- (void)replaceWithSelectedMediaAtPlayhead:(id)arg1;
+- (void)replaceWithSelectedMediaFromStart:(id)arg1;
+- (void)replaceWithSelectedMediaFromEnd:(id)arg1;
+- (void)replaceWithSelectedMediaAndAddToAudition:(id)arg1;
+- (void)addSelectedMediaToAudition:(id)arg1;
+- (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_5c5366e1)arg2;
+- (void)openStack:(id)arg1;
+- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
+- (void)showMarkerEditorForMarkerLayer:(id)arg1 object:(id)arg2;
+- (void)hideMarkerEditor;
+- (BOOL)markerEditorIsShown;
+- (void)setKeywordEditorVisible:(BOOL)arg1;
+- (void)_firstResponderChanged:(id)arg1;
+- (void)numericEntryWillBegin;
+- (void)numericEntryDidEnd;
+- (void)setNumericEntryValue:(id)arg1;
+- (void)setNumericEntryType:(unsigned long long)arg1;
+- (void)setNumericEntryDirection:(long long)arg1;
+- (void)setNumericEntryShowsSubframes:(BOOL)arg1;
 
 @end
 

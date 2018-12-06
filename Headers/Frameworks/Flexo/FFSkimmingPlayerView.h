@@ -11,12 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)cursorUpdate:(id)arg1;
-- (BOOL)acceptsFirstResponder;
-- (void)scrollWheel:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (void)mouseDown:(id)arg1;
 - (void)viewDidMoveToSuperview;
+- (void)mouseDown:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)scrollWheel:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (void)cursorUpdate:(id)arg1;
 
 @end
 

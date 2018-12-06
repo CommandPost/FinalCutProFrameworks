@@ -6,30 +6,32 @@
 
 #import "OZViewCtlrRoot.h"
 
-@class LKSegmentedControl, NSBox, NSView, OZProjectDARCtlr, OZProjectPublishingCtlr, OZViewControllerGroup, PIBuildContext;
+@class LKButtonCell, NSBox, NSMatrix, NSView, OZProjectPublishingCtlr, OZViewControllerGroup, PIBuildContext;
 
 @interface OZProjectObjectCtlr : OZViewCtlrRoot
 {
     NSView *_pMainView;
     NSBox *_pBox;
-    LKSegmentedControl *_pSegmentedControl;
+    NSMatrix *_pMatrix;
+    LKButtonCell *_pPublishingButtonCell;
+    LKButtonCell *_pSnapshotsButtonCell;
     OZProjectPublishingCtlr *_pPublishingCtlr;
-    OZProjectDARCtlr *_pDARSnapshotsCtlr;
+    OZProjectPublishingCtlr *_pDARSnapshotsCtlr;
     OZViewControllerGroup *_pCurrCtlr;
     PIBuildContext *_pContext;
-    list_e89ce44a *_pNodeList;
+    list_699e9227 *_pNodeList;
 }
 
-- (void)switchPane:(id)arg1;
-- (void)disable;
-- (void)enable;
-- (BOOL)isEnabled;
-- (void)notify:(unsigned int)arg1;
-- (id)mainView;
-- (void)select:(BOOL)arg1 excludeChannel:(struct OZChannelBase *)arg2;
+- (id)initWithSceneNodes:(list_699e9227 *)arg1 viewCtlrDelegate:(id)arg2;
+- (id)initWithSceneNodes:(list_699e9227 *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
 - (void)dealloc;
-- (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
-- (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2;
+- (void)select:(BOOL)arg1 excludeChannel:(struct OZChannelBase *)arg2;
+- (id)mainView;
+- (void)notify:(unsigned int)arg1;
+- (BOOL)isEnabled;
+- (void)enable;
+- (void)disable;
+- (void)switchPane:(id)arg1;
 
 @end
 

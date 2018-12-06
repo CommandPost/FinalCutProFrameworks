@@ -7,7 +7,7 @@
 @protocol FFControllerProtocol
 
 @optional
-- (void)restoreUndoState:(struct NSObject *)arg1;
 - (struct NSObject *)copyUndoState;
+- (void)restoreUndoState:(struct NSObject *)arg1;
 @end
 

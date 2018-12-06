@@ -12,15 +12,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-- (id)_describeAdditionalObjectsWithIndent:(long long)arg1 recurse:(BOOL)arg2;
-- (id)descriptionWithIndent:(long long)arg1;
-- (id)markerKeywordDisplayNames;
-- (void)setMarkerKeywords:(id)arg1;
-- (id)markerKeywords;
-- (void)setDisplayName:(id)arg1;
-- (id)displayName;
-- (id)trackType;
 - (id)type;
+- (id)trackType;
+- (id)displayName;
+- (void)setDisplayName:(id)arg1;
+- (id)markerKeywords;
+- (id)descriptionWithIndent:(long long)arg1;
+- (id)_describeAdditionalObjectsWithIndent:(long long)arg1 recurse:(BOOL)arg2;
 
 @end
 

@@ -7,29 +7,24 @@
 #import "NSObject.h"
 
 #import "FxPixelTransformsAPI.h"
-#import "PROAPIObject.h"
 
-@class NSString;
-
-@interface OZFxPixelTransformsHandler : NSObject <PROAPIObject, FxPixelTransformsAPI>
+@interface OZFxPixelTransformsHandler : NSObject <FxPixelTransformsAPI>
 {
+    struct LiAgent *_agent;
+    PCMatrix44Tmpl_e98c85ee _preTransform;
+    PCMatrix44Tmpl_e98c85ee _postTransform;
 }
 
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (PCMatrix44Tmpl_e98c85ee)destinationInversePixelTransform;
-- (PCMatrix44Tmpl_e98c85ee)destinationPixelTransform;
-- (PCMatrix44Tmpl_e98c85ee)inversePixelTransform;
-- (PCMatrix44Tmpl_e98c85ee)pixelTransform;
-- (void)setPostTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1;
-- (void)setPreTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1;
-- (void)setAgent:(const struct LiAgent *)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)setAgent:(struct LiAgent *)arg1;
+- (void)setPreTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1;
+- (void)setPostTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1;
+- (PCMatrix44Tmpl_e98c85ee)pixelTransform;
+- (PCMatrix44Tmpl_e98c85ee)inversePixelTransform;
+- (PCMatrix44Tmpl_e98c85ee)destinationPixelTransform;
+- (PCMatrix44Tmpl_e98c85ee)destinationInversePixelTransform;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 
 @end
 

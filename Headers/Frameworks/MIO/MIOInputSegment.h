@@ -16,27 +16,27 @@
 }
 
 + (id)segment;
-- (void)removeFromFlatSubSegmentsArray;
-- (void)addToFlatSubSegmentsArray;
-- (void)subSegmentErrorChanged:(int)arg1;
-- (void)subSegmentStatusChanged:(int)arg1;
-- (void)updateReelIndex:(unsigned int)arg1;
-- (id)parentReel;
-- (void)setParentReel:(id)arg1;
-- (id)subSegments;
-- (id)currentSubSegment;
-- (void)setCurrentSubSegment:(unsigned int)arg1;
-- (BOOL)isLastInReel;
-- (unsigned long long)count;
-- (id)subSegmentAtIndex:(unsigned int)arg1;
-- (unsigned int)indexOfSubSegment:(id)arg1;
-- (unsigned int)index;
-- (void)removeLastSubSegment;
-- (void)removeSubSegment:(id)arg1;
-- (void)addSubSegment:(id)arg1;
-- (id)description;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)description;
+- (void)addSubSegment:(id)arg1;
+- (void)removeSubSegment:(id)arg1;
+- (void)removeLastSubSegment;
+- (unsigned int)index;
+- (unsigned int)indexOfSubSegment:(id)arg1;
+- (id)subSegmentAtIndex:(unsigned int)arg1;
+- (unsigned long long)count;
+- (BOOL)isLastInReel;
+- (void)setCurrentSubSegment:(unsigned int)arg1;
+- (id)currentSubSegment;
+- (id)subSegments;
+- (void)setParentReel:(id)arg1;
+- (id)parentReel;
+- (void)updateReelIndex:(unsigned int)arg1;
+- (void)subSegmentStatusChanged:(int)arg1;
+- (void)subSegmentErrorChanged:(int)arg1;
+- (void)addToFlatSubSegmentsArray;
+- (void)removeFromFlatSubSegmentsArray;
 
 @end
 

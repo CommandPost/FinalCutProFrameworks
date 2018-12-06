@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
     BOOL _expanded;
 }
 
-- (void)dealloc;
-- (void)setExpanded:(BOOL)arg1;
-- (BOOL)isExpanded;
-- (id)sublayout;
-- (double)layoutHeight;
 - (id)initWithRowHeight:(double)arg1 sublayout:(id)arg2;
+- (double)layoutHeight;
+- (id)sublayout;
+- (BOOL)isExpanded;
+- (void)setExpanded:(BOOL)arg1;
+- (void)dealloc;
 
 @end
 

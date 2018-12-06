@@ -6,55 +6,44 @@
 
 #import "CALayer.h"
 
-@class CATextLayer, FFBackgroundTask, FFImageLayer, FFMIORADAsset, FigTimeRangeAndObject, NSDate, NSSet, NSString;
+@class CATextLayer, FFBackgroundTask, FFMIORADAsset, FFThemeFacetLayer;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripChunkImportProgressLayer : CALayer
 {
     int _leftEdgeType;
     int _rightEdgeType;
-    FFImageLayer *_progressIndicatorLayer;
-    FFImageLayer *_progressIndicatorCELayer;
-    CALayer *_cameraIconLayer;
-    FFImageLayer *_spannedClipLayer;
+    FFThemeFacetLayer *_progressIndicatorLayer;
+    FFThemeFacetLayer *_cameraIconLayer;
+    FFThemeFacetLayer *_spannedClipLayer;
     CATextLayer *_clipDurationTextLayer;
     CATextLayer *_clipDurationOutlineTextLayer;
     BOOL _isImporting;
     unsigned long long _progress;
     FFMIORADAsset *_radAsset;
     FFBackgroundTask *_processingTask;
-    NSSet *_processingAssets;
     BOOL _hasImportObserver;
     BOOL _inImportWindow;
     unsigned long long _spannedClipGlyphID;
-    NSString *_ptpPercentageDonePath;
-    NSString *_assetImportPercentageDonePath;
-    FigTimeRangeAndObject *_rangeOfMedia;
-    NSDate *_creationDate;
 }
 
 + (id)layerAsSubLayerOf:(id)arg1 filmstripCell:(id)arg2 rangeOfMedia:(id)arg3;
-+ (BOOL)shouldDrawStillAsMovie:(id)arg1;
-@property(retain) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+- (id)init;
+- (void)dealloc;
+@property int rightEdgeType;
+@property int leftEdgeType;
+- (void)addObservers;
+- (void)removeObservers;
+- (id)stringFromDuration:(double)arg1;
+- (void)prepareWithRangeOfMedia:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setIsImporting:(BOOL)arg1;
+- (void)updateProgressIndicatorLayer;
+- (void)updateCameraIconLayer;
+- (id)tooltipRects;
+- (id)tooltipStringAtPoint:(struct CGPoint)arg1;
 @property unsigned long long progress; // @synthesize progress=_progress;
 @property(retain) FFMIORADAsset *radAsset; // @synthesize radAsset=_radAsset;
-- (void)setContentsScale:(double)arg1;
-- (id)tooltipStringAtPoint:(struct CGPoint)arg1;
-- (id)tooltipRects;
-- (void)updateCameraIconLayer;
-- (void)updateProgressIndicatorLayer;
-- (long long)themeDimension1ForProgress;
-- (void)setIsImporting:(BOOL)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)prepareWithRangeOfMedia:(id)arg1;
-- (id)stringFromDuration:(double)arg1;
-- (void)removeObservers;
-- (void)addObservers;
-- (void)appWillTerminate:(id)arg1;
-@property int leftEdgeType;
-@property int rightEdgeType;
-- (void)dealloc;
-- (id)init;
 
 @end
 

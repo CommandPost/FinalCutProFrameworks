@@ -6,41 +6,28 @@
 
 #import "CALayer.h"
 
-@class NSArray, NSMutableDictionary;
+@class CAGradientLayer;
 
 @interface TLKSelectionLayer : CALayer
 {
-    NSMutableDictionary *_mapping;
-    CALayer *_rootLayer;
-    CALayer *_emphasizedLayer;
-    CALayer *_emphasizedRingLayer;
-    CALayer *_emphasizedInnerShadowLayer;
-    CALayer *_normalLayer;
-    CALayer *_normalRingLayer;
-    CALayer *_normalInnerShadowLayer;
-    int _displayMode;
-    NSArray *_roundingLayers;
-    unsigned int _containingViewFirstResponder:1;
+    CAGradientLayer *_outerGradientLayer;
+    CAGradientLayer *_innerGradientLayer;
+    CALayer *_outerLayerMask;
+    CALayer *_innerLayerMask;
     unsigned int _ignoresHitTesting:1;
-    unsigned int reserved:30;
+    unsigned int _containingViewFirstResponder:1;
+    unsigned int RESERVED:30;
 }
 
-- (id)trailingEdgeHandle;
-- (id)leadingEdgeHandle;
-- (id)shadowedLayer;
-- (id)hitTest:(struct CGPoint)arg1;
-@property BOOL ignoresHitTesting;
-- (void)setCornerRadius:(double)arg1;
-- (void)layoutSublayers;
+- (id)init;
 - (void)setDelegate:(id)arg1;
 - (void)invalidate;
-- (void)_updateLayers:(id)arg1;
+- (void)layoutSublayers;
+- (void)setCornerRadius:(double)arg1;
+- (double)cornerRadius;
+@property BOOL ignoresHitTesting;
+- (id)hitTest:(struct CGPoint)arg1;
 @property BOOL containingViewFirstResponder;
-- (void)_updateBackground;
-@property int displayMode;
-- (void)dealloc;
-- (id)init;
-- (id)initWithArchive:(id)arg1;
 
 @end
 

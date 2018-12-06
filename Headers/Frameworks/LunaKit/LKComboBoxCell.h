@@ -4,15 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSComboBoxCell.h"
+#import "NSProComboBoxCell.h"
 
-@interface LKComboBoxCell : NSComboBoxCell
+@interface LKComboBoxCell : NSProComboBoxCell
 {
-    BOOL _isRomanOnly;
 }
 
-- (void)setRomanOnly:(BOOL)arg1;
-- (BOOL)isRomanOnly;
+- (Class)scrollViewClass;
+- (long long)_basicButtonThemeElement;
+- (id)_baseFacet;
+- (int)_buttonThemeElementDependingOnControlView;
+- (id)_proThemeFacetForButtonCell;
 
 @end
 

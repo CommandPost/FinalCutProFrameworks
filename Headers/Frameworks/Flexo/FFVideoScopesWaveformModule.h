@@ -13,37 +13,25 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (struct CGSize)viewMinSize;
-- (void)colorspaceDidChangeForVideoScopes:(id)arg1;
-- (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (id)viewProperties;
-- (void)setViewProperties:(id)arg1;
-- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)updateLabel;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)viewWasInstalled;
-- (void)showWaveform:(id)arg1;
-- (void)showVectorscope:(id)arg1;
-- (void)showHistogram:(id)arg1;
-- (void)changeColorSpaceRec2020:(id)arg1;
-- (void)changeColorSpaceRec709:(id)arg1;
-- (void)changeColorSpaceRec601:(id)arg1;
-- (void)changeColorSpaceDefault:(id)arg1;
-- (void)_setOverrideColorSpace:(long long)arg1;
-- (void)changeUnitsNits:(id)arg1;
-- (void)changeUnitsMillivolts:(id)arg1;
-- (void)changeUnitsIRE:(id)arg1;
-- (void)_setCompositeVideoUnits:(long long)arg1;
-- (void)changeModeYCbCr:(id)arg1;
-- (void)changeModeChroma:(id)arg1;
-- (void)changeModeLuma:(id)arg1;
-- (void)changeModeBlueChannel:(id)arg1;
-- (void)changeModeGreenChannel:(id)arg1;
-- (void)changeModeRedChannel:(id)arg1;
-- (void)changeModeOverlay:(id)arg1;
 - (void)changeModeParade:(id)arg1;
-- (void)_setDisplayMode:(long long)arg1;
-- (void)_postPropertyChange;
+- (void)changeModeOverlay:(id)arg1;
+- (void)changeModeRedChannel:(id)arg1;
+- (void)changeModeGreenChannel:(id)arg1;
+- (void)changeModeBlueChannel:(id)arg1;
+- (void)changeModeLuma:(id)arg1;
+- (void)changeModeChroma:(id)arg1;
+- (void)changeModeYCbCr:(id)arg1;
+- (void)changeUnitsIRE:(id)arg1;
+- (void)changeUnitsMillivolts:(id)arg1;
+- (void)toggleGuides:(id)arg1;
+- (void)showHistogram:(id)arg1;
+- (void)showVectorscope:(id)arg1;
+- (void)showWaveform:(id)arg1;
+- (void)viewWasInstalled;
+- (void)viewWillBeRemoved;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)updateLabel;
+- (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 
 @end
 

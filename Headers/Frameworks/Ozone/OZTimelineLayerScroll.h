@@ -15,12 +15,12 @@
     BOOL _vScrollerStatus;
 }
 
-- (void)scrollWheel:(id)arg1;
-- (void)_doScroller:(id)arg1 hitPart:(int)arg2 multiplier:(float)arg3;
-- (void)reflectScrolledClipView:(id)arg1;
-- (void)setExternalVerticalScroller:(id)arg1;
-- (void)setTimelineLayerCoordinator:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setTimelineLayerCoordinator:(id)arg1;
+- (void)setExternalVerticalScroller:(id)arg1;
+- (void)reflectScrolledClipView:(id)arg1;
+- (void)_doScroller:(id)arg1 hitPart:(int)arg2 multiplier:(float)arg3;
+- (void)scrollWheel:(id)arg1;
 
 @end
 

@@ -4,16 +4,23 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "OZFontController.h"
+#import "OZViewControllerGroup.h"
 
-@interface TXFontController : OZFontController
+@class OZViewController, TXFontFamilyPopUpController, TXTypefacePopUpController;
+
+@interface TXFontController : OZViewControllerGroup
 {
+    TXFontFamilyPopUpController *_familyCtlr;
+    TXTypefacePopUpController *_typefaceCtlr;
+    OZViewController *_paramPulldownCtlr;
 }
 
-- (void)createTypefacePopUpController:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)createFontFamilyPopUpController:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (struct OZChannelEnum *)fontTypefaceChannelForChannel:(struct OZChannelBase *)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 indent:(BOOL)arg3;
+- (void)dealloc;
 - (struct OZChannelEnum *)fontFamilyChannelForChannel:(struct OZChannelBase *)arg1;
+- (struct OZChannelEnum *)fontTypefaceChannelForChannel:(struct OZChannelBase *)arg1;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 
 @end
 

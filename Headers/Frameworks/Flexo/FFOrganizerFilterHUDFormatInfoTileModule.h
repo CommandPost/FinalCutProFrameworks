@@ -6,7 +6,7 @@
 
 #import <Flexo/FFOrganizerFilterHUDTileModule.h>
 
-@class LKMenu, LKPopUpButton, LKTextField;
+@class LKPopUpButton, LKTextField;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilterHUDFormatInfoTileModule : FFOrganizerFilterHUDTileModule
@@ -14,26 +14,17 @@ __attribute__((visibility("hidden")))
     LKPopUpButton *_formatInfoPopup;
     LKPopUpButton *_comparisonPopup;
     LKTextField *_textField;
-    LKPopUpButton *_enumValuePopup;
-    LKMenu *_sphericalModesMenu;
-    LKMenu *_stereoModesMenu;
+    LKPopUpButton *_audioRolePopup;
 }
 
-@property(retain, nonatomic) LKMenu *stereoModesMenu; // @synthesize stereoModesMenu=_stereoModesMenu;
-@property(retain, nonatomic) LKMenu *sphericalModesMenu; // @synthesize sphericalModesMenu=_sphericalModesMenu;
-- (id)tileGlyphString;
-- (void)formatInfoPopupUpdated:(id)arg1;
-- (void)comparisonTypePopupUpdated:(id)arg1;
-- (void)formatChanged:(id)arg1;
-- (void)_showControlsForFormatInfo;
-- (void)controlTextDidChange:(id)arg1;
-- (id)filterDict;
-- (void)setFilterDict:(id)arg1;
-- (void)dealloc;
 - (void)awakeFromNib;
-- (void)setup360Menus;
-- (id)stringForEnumChoice;
-- (BOOL)formatSelectedIs360;
+- (void)dealloc;
+- (void)setFilterDict:(id)arg1;
+- (id)filterDict;
+- (void)controlTextDidChange:(id)arg1;
+- (void)_showControlsForFormatInfo;
+- (void)formatInfoPopupUpdated:(id)arg1;
+- (id)tileTypeFacet;
 
 @end
 

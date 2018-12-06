@@ -4,38 +4,33 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSView.h"
-
-#import "OZRenderClient.h"
+#import "NSProView.h"
 
 @class NSBitmapImageRep, NSImage;
 
-@interface OZHistogramView : NSView <OZRenderClient>
+@interface OZHistogramView : NSProView
 {
+    struct OZChannelHistogram *_pHistogramChannel;
     NSImage *_pHistogramImage;
     NSBitmapImageRep *_pHistogramRep;
     BOOL _histogramOutOfDate;
     struct PCHash128 *_imageHash;
     struct GLRenderer *_renderer;
-    id <OZHistogramManager> _histogramManager;
 }
 
-- (void)renderNodeCancelled:(const CDStruct_1b6d18a9 *)arg1 userData:(void *)arg2;
--     // Error parsing type: v32@0:8^{OZHGRenderNode=^^?I^{HGNode}^{HGBitmap}{HGRect=iiii}iBiii{HGRef<HGGLContext>=^{HGGLContext}}Bdd^{HGPixelBufferObj}Q^v*^?d^{HGRenderer}^{HGRenderJob}^{HGRenderQueue}{OZRenderParams={OZRenderState={?=qiIq}dddI^{OZTransformNode}B{PCMatrix44Tmpl<double>=[4[4d]]}BBBBBB^{OZRenderNode}iB^{OZElement}BBBBBBBBi{TransformSet=Q}^{set<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *> >}}B^{OZProcessControl}^{GLRenderer}i{PCImageAttributes=iIIIIi{PCColorSpaceHandle=^{CGColorSpace}}IiB^vQ^v}{PCHash128=[4I]}{PCHash128=[4I]}B{PCVector2<double>=dd}{PCVector2<double>=dd}iiiiBBBBBBBBBiBIdBBBBBB{PCColor={ColorComponents=i[5d]}{PCColorSpaceHandle=^{CGColorSpace}}}iB{PCRect<double>=dddd}{PCRect<double>=dddd}{PCRect<int>=iiii}{PCRect<double>=dddd}Bi^{CGColorSpace}f{PCColorSpaceHandle=^{CGColorSpace}}i{PCColorSpaceHandle=^{CGColorSpace}}{PCMatrix44Tmpl<double>=[4[4d]]}B{OZPlaybackEngine=ii}@@{?=qiIq}^{map<unsigned int, HGRef<HGNode>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, HGRef<HGNode> > > >}^{map<unsigned int, FFStreamVideo *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, FFStreamVideo *> > >}{map<unsigned int, CMTime, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, CMTime> > >={__tree<std::__1::__value_type<unsigned int, CMTime>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, CMTime>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, CMTime> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, CMTime>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, CMTime>, std::__1::less<unsigned int>, true> >=Q}}}{map<unsigned int, CMTime, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, CMTime> > >={__tree<std::__1::__value_type<unsigned int, CMTime>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, CMTime>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, CMTime> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, CMTime>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, CMTime>, std::__1::less<unsigned int>, true> >=Q}}}{map<unsigned int, PCRect<double>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, PCRect<double> > > >={__tree<std::__1::__value_type<unsigned int, PCRect<double> >, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, PCRect<double> >, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, PCRect<double> > > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, PCRect<double> >, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, PCRect<double> >, std::__1::less<unsigned int>, true> >=Q}}}{map<unsigned int, unsigned int, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, unsigned int> > >={__tree<std::__1::__value_type<unsigned int, unsigned int>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, unsigned int>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, unsigned int> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, unsigned int>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, unsigned int>, std::__1::less<unsigned int>, true> >=Q}}}{map<unsigned int, unsigned int, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, unsigned int> > >={__tree<std::__1::__value_type<unsigned int, unsigned int>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, unsigned int>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, unsigned int> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, unsigned int>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, unsigned int>, std::__1::less<unsigned int>, true> >=Q}}}d@{?=qiIq}{?=qiIq}{?=qiIq}{?=qiIq}{?=qiIq}BBBB{shared_ptr<PCImage>=^{PCImage}^{__shared_weak_count}}BB{PCPtr<OZRenderParams::SharedInfo>=^{SharedInfo}{PCSharedCount=^{PC_Sp_counted_base}}}ddB{PCPtr<LiCamera>=^{LiCamera}{PCSharedCount=^{PC_Sp_counted_base}}}{PCPtr<LiCamera>=^{LiCamera}{PCSharedCount=^{PC_Sp_counted_base}}}BB{LiRenderingTechnology=IiiiBiBBBBiiBBBii}{LiLightSet={PCArray<LiLight, PCArray_Traits<LiLight> >=^^?ii^{LiLight}}B}B{HGRef<HGCVBitmap>=^{HGCVBitmap}}BBB}{?=qiIq}{PCHash128=[4I]}@@{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}^vBBQd{shared_ptr<PCImage>=^{PCImage}^{__shared_weak_count}}}16r^{shared_ptr<OZRenderResult>=^{OZRenderResult}^{__shared_weak_count}}24, name: renderNodeFinished:result:
-- (void)renderCancel:(id)arg1;
-- (void)renderCompletion:(id)arg1;
-- (struct OZChannelHistogram *)histogramChannel;
-- (void)setHistogramManager:(id)arg1;
-- (void)setHistogramOutOfDate:(BOOL)arg1;
-- (void)allocateImage:(struct CGSize)arg1;
-- (void)computeHistogramImage:(struct PCBitmap *)arg1 size:(struct CGSize)arg2;
-- (void)updateImage:(struct CGSize)arg1;
-- (void)update:(BOOL)arg1;
-- (void)drawHistogram:(struct CGRect)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (BOOL)isOpaque;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
+- (void)dealloc;
+- (BOOL)isOpaque;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)drawHistogram:(struct CGRect)arg1;
+- (void)update:(BOOL)arg1;
+- (void)updateImage:(struct CGSize)arg1;
+- (void)computeHistogramImage:(struct PCBitmap *)arg1 size:(struct CGSize)arg2;
+- (void)allocateImage:(struct CGSize)arg1;
+- (void)setHistogramOutOfDate:(BOOL)arg1;
+- (void)renderCompletion:(id)arg1;
+- (void)renderCancel:(id)arg1;
 
 @end
 

@@ -6,35 +6,33 @@
 
 #import "OZViewCtlrRoot.h"
 
-@class LKScrollView, NSObject<OZViewCtlrDelegate>, NSView;
+@class LKScrollView, NSView;
 
 @interface OZAutoInspectorController : OZViewCtlrRoot
 {
     NSView *_pMainView;
     LKScrollView *_pScrollView;
     BOOL _isRoot;
-    NSObject<OZViewCtlrDelegate> *_pViewCtlrDelegate;
+    id <OZViewCtlrDelegate> *_pViewCtlrDelegate;
 }
 
-- (void)animView:(id)arg1 setFrameSize:(struct CGSize)arg2;
-- (void)animView:(id)arg1 setFrameOrigin:(struct CGPoint)arg2;
-- (void)animView:(id)arg1 setHidden:(BOOL)arg2;
-- (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
-- (void)scrollToOffset:(double)arg1;
-- (double)scrollOffset;
-- (void)scrollToChannel:(struct OZChannelBase *)arg1;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (id)mainView;
-- (BOOL)buildUIWithSceneNodes:(list_e89ce44a *)arg1 context:(id)arg2;
-- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
-- (void)didBuildUI;
-- (void)dealloc;
-- (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
-- (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2;
-- (id)initWithSceneNodes:(list_e89ce44a *)arg1;
-- (id)initWithNode:(struct OZSceneNode *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
-- (id)initWithNode:(struct OZSceneNode *)arg1;
 - (void)commonInit;
+- (id)initWithNode:(struct OZSceneNode *)arg1;
+- (id)initWithNode:(struct OZSceneNode *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
+- (id)initWithSceneNodes:(list_699e9227 *)arg1;
+- (id)initWithSceneNodes:(list_699e9227 *)arg1 viewCtlrDelegate:(id)arg2;
+- (id)initWithSceneNodes:(list_699e9227 *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
+- (void)dealloc;
+- (void)didBuildUI;
+- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
+- (BOOL)buildUIWithSceneNodes:(list_699e9227 *)arg1 context:(id)arg2;
+- (id)mainView;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)scrollToChannel:(struct OZChannelBase *)arg1;
+- (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
+- (void)animView:(id)arg1 setHidden:(BOOL)arg2;
+- (void)animView:(id)arg1 setFrameOrigin:(struct CGPoint)arg2;
+- (void)animView:(id)arg1 setFrameSize:(struct CGSize)arg2;
 
 @end
 

@@ -17,14 +17,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
-- (double)preferredScaleFactorForQuality:(int)arg1;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (CDStruct_e83c9415)timeRange;
-- (id)nativeVideoProps;
-- (int)frameExtractionMode;
-- (id)input;
-- (void)dealloc;
 - (id)initWithProvider:(id)arg1 input:(id)arg2 andMode:(int)arg3;
+- (void)dealloc;
+- (id)input;
+- (int)frameExtractionMode;
+- (id)nativeVideoProps;
+- (CDStruct_e83c9415)timeRange;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 
 @end
 

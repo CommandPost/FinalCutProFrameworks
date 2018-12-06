@@ -11,12 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)histogramBodyLayer;
-- (id)actionForKey:(id)arg1;
++ (id)histogramBody;
 - (void)setDelegate:(id)arg1;
-- (void)hideGraticuleLabels:(BOOL)arg1;
-- (void)setShowGuides:(BOOL)arg1;
-- (void)setTraceBrightness:(float)arg1;
+- (id)actionForKey:(id)arg1;
 
 @end
 

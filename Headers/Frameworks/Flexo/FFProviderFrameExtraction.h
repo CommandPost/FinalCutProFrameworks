@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
     int _frameExtractionMode;
 }
 
-- (void)_setupSources;
-- (void)dealloc;
 - (id)initWithInput:(id)arg1 andMode:(int)arg2;
+- (void)dealloc;
+- (void)_setupSources;
 
 @end
 

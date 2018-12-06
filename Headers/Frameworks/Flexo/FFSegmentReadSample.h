@@ -4,76 +4,33 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <Flexo/FFSegmentSample.h>
 
-#import "FFPrioritizedWorkUnit.h"
-
-@class FFSegmentStore, FFSegmentStoreManagerRunLock, NSCondition, NSDictionary, NSError, PCMatrix44Double;
+@class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FFSegmentReadSample : NSObject <FFPrioritizedWorkUnit>
+@interface FFSegmentReadSample : FFSegmentSample
 {
-    _Bool _cancelled;
-    NSCondition *_lock;
-    int _condition;
-    long long _offset;
-    FFSegmentStore *_store;
-    id _sample;
-    int _priority;
-    NSError *_errorInfo;
-    struct FFThread *_diskIOThread;
-    struct FFThread *_decodeThread;
     int _needCount;
-    FFSegmentStoreManagerRunLock *_runLock;
-    int _runLockTag;
+    _Bool _diskReadFinished;
     NSDictionary *_sampleData;
-    BOOL _needsDecompression;
+    BOOL _asyncDecomp;
     int _quality;
-    BOOL _propagateSampleBuf;
-    PCMatrix44Double *_pixelTransform;
 }
 
-+ (CDUnknownBlockType)processDecodeBlock;
-+ (CDUnknownBlockType)processDiskReadBlock;
-+ (CDUnknownBlockType)shouldRemoveFromDecodeQueueBlock;
-+ (CDUnknownBlockType)shouldRemoveFromDiskReadQueueBlock;
-@property(readonly) BOOL propagateSampleBuf; // @synthesize propagateSampleBuf=_propagateSampleBuf;
-@property(readonly) int quality; // @synthesize quality=_quality;
-@property(readonly) _Bool isCancelled; // @synthesize isCancelled=_cancelled;
-@property(readonly) long long offset; // @synthesize offset=_offset;
-- (id)store;
-- (id)newPendingImageForSampleNumber:(long long)arg1 requestedQuality:(int)arg2 colorSpace:(struct CGColorSpace *)arg3;
-- (id)description;
-- (id)pixelTransform;
-- (void)setPixelTransform:(id)arg1;
-- (struct CGRect)encodedBounds;
-- (id)decodePixelFormat;
-- (int)getFieldOrder;
-- (void)_doDecoding;
-- (id)copyReadResults:(_Bool)arg1;
-- (_Bool)hasErrorInfo;
-- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
-- (_Bool)waitForScheduleStatusFlags:(unsigned int)arg1 beforeDate:(id)arg2;
-- (unsigned int)scheduleStatusInformation;
-- (id)sampleData;
-- (void)setSample:(id)arg1;
-- (void)_setSample:(id)arg1;
-- (void)decrementNeedCount;
-- (id)copyAndIncrementNeedCountIfReusable:(id)arg1 offset:(long long)arg2 requestedQuality:(int)arg3;
+- (id)initWithOffset:(long long)arg1 store:(id)arg2 doAsynchronousDecompression:(BOOL)arg3 requestedQuality:(int)arg4;
 - (void)dealloc;
-- (id)initWithOffset:(long long)arg1 store:(id)arg2 needsDecompression:(BOOL)arg3 requestedQuality:(int)arg4 priority:(int)arg5;
-- (_Bool)setSVPriority:(int)arg1;
-- (int)svPriority;
-- (void)setErrorInfo:(id)arg1;
-- (id)errorInfo;
+- (id)copyAndIncrementNeedCountIfReusable:(id)arg1 offset:(long long)arg2 requestedQuality:(int)arg3;
+- (void)decrementNeedCount;
+- (void)_setSample:(id)arg1;
+- (void)setSample:(id)arg1;
+- (void)_setSampleData:(id)arg1;
+- (id)sampleData;
+- (void)main;
 - (void)cancel;
-- (id)sample;
-- (void)waitForFinished;
-- (void)waitForState:(int)arg1 enablePriorityInherit:(_Bool)arg2 why:(id)arg3;
-- (void)waitForState:(int)arg1 enablePriorityInherit:(_Bool)arg2 why:(id)arg3 beforeDate:(id)arg4;
-- (void)warnAboutWaitingForState:(int)arg1 why:(id)arg2 why2:(id)arg3;
-- (void)warnAboutWaitingForState:(int)arg1 why:(id)arg2 why2:(id)arg3 isIndefiniteWait:(_Bool)arg4 stateBeforeWaiting:(int)arg5;
-- (_Bool)sampleFinished;
+- (id)description;
+@property(readonly) int quality; // @synthesize quality=_quality;
+@property _Bool diskReadFinished; // @synthesize diskReadFinished=_diskReadFinished;
 
 @end
 

@@ -8,14 +8,19 @@
 
 @interface FFArrowTool : FFTool
 {
+    struct CGPoint _dragStartPoint;
+    BOOL _imageReady;
 }
 
-+ (id)toolbarFacetImageOff;
-+ (id)toolbarFacetImageOn;
-+ (id)toolTip;
 + (id)displayName;
-+ (id)TLKEventHandlerID;
++ (id)toolTip;
++ (id)toolbarFacet;
 - (id)cursor;
+- (BOOL)handlesSelection;
+- (void)mouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)thumbImageReady:(id)arg1;
+- (void)mouseDragged:(id)arg1;
 
 @end
 

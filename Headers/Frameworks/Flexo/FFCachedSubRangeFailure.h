@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
     int _temporalQuality;
 }
 
-- (_Bool)timeMatch:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2 spatialQ:(int)arg3 temporalQ:(int)arg4;
-- (void)dealloc;
 - (id)initWithTime:(CDStruct_1b6d18a9)arg1 forSampleDuration:(CDStruct_1b6d18a9)arg2 spatialQ:(int)arg3 temporalQ:(int)arg4;
+- (void)dealloc;
+- (_Bool)timeMatch:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2 spatialQ:(int)arg3 temporalQ:(int)arg4;
 
 @end
 

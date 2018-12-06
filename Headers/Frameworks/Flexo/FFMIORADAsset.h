@@ -9,7 +9,7 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@class MIOInputSubSegment, MIORADClip, NSDictionary, NSHashTable, NSNumber, NSString;
+@class MIOInputSubSegment, MIORADClip, NSDictionary, NSString;
 
 @interface FFMIORADAsset : FFAsset <NSCoding, NSCopying>
 {
@@ -19,18 +19,35 @@
     BOOL _canIngest;
     CDStruct_1b6d18a9 _startForOfflineProvider;
     CDStruct_1b6d18a9 _durationForOfflineProvider;
+    BOOL _isUnmounting;
     BOOL _isUnmounted;
     BOOL _isTempAsset;
     MIOInputSubSegment *_subSegment;
     CDStruct_1b6d18a9 _originalMediaStart;
-    NSHashTable *_radVolumes;
-    NSNumber *_assetImportPercentageDone;
 }
 
-+ (id)copyClassDescription;
 + (BOOL)classIsAbstract;
-@property(retain) NSNumber *assetImportPercentageDone; // @synthesize assetImportPercentageDone=_assetImportPercentageDone;
-@property(readonly, retain, nonatomic) NSHashTable *radVolumes; // @synthesize radVolumes=_radVolumes;
++ (id)copyClassDescription;
+- (id)initTempAssetWithMIORADClip:(id)arg1;
+- (id)initWithMIORADClip:(id)arg1;
+- (void)dealloc;
+- (void)copyMetadata;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)updateRADClip;
+- (id)newProvider;
+- (BOOL)isUnmounting;
+- (BOOL)isMounted;
+- (void)ingestFinishedWithURL:(id)arg1 event:(id)arg2;
+- (id)contentType;
+- (void)setInOutPair:(struct FigTimePair)arg1;
+- (void)invalidateAssetForNotification:(id)arg1 withClip:(id)arg2;
+@property(readonly) NSDictionary *customMetadata;
+- (id)fileURLs:(int)arg1;
+- (BOOL)mediaAvailable;
+- (int)highQualityOfflineReason;
+- (long long)timecodeDisplayDropFrame;
 @property(nonatomic) CDStruct_1b6d18a9 originalMediaStart; // @synthesize originalMediaStart=_originalMediaStart;
 @property(retain, nonatomic) MIOInputSubSegment *subSegment; // @synthesize subSegment=_subSegment;
 @property(nonatomic) CDStruct_1b6d18a9 durationForOfflineProvider; // @synthesize durationForOfflineProvider=_durationForOfflineProvider;
@@ -40,30 +57,6 @@
 @property BOOL ingested; // @synthesize ingested=_ingested;
 @property(retain, nonatomic) NSString *clipID; // @synthesize clipID=_clipID;
 @property(retain, nonatomic) MIORADClip *clip; // @synthesize clip=_clip;
-- (BOOL)canRebuildAudioProperties;
-- (void)updateGPSMetadata;
-- (long long)timecodeDisplayDropFrame;
-- (int)highQualityOfflineReason;
-- (BOOL)mediaAvailable;
-- (id)fileURLs:(int)arg1;
-@property(readonly) NSDictionary *customMetadata;
-- (void)invalidateAssetForNotification:(id)arg1;
-- (void)setInOutPair:(struct PC_CMTimePair)arg1;
-- (id)contentType;
-- (void)ingestCancelledWithURL:(id)arg1 event:(id)arg2;
-- (void)ingestFinishedWithURL:(id)arg1 event:(id)arg2 isIngestingToExternal:(BOOL)arg3;
-- (void)ingestFinishedWithURL:(id)arg1 event:(id)arg2 isIngestingToExternal:(BOOL)arg3 showRepAsMissing:(BOOL)arg4;
-- (BOOL)isMounted;
-- (id)newProvider;
-- (void)updateRADOverridesWithProvider:(id)arg1;
-- (void)updateRADClip;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)copyMetadata;
-- (void)dealloc;
-- (id)initWithMIORADClip:(id)arg1;
-- (id)initTempAssetWithMIORADClip:(id)arg1;
 
 @end
 

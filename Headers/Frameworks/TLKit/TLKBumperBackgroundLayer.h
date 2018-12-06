@@ -4,31 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKImageLayer.h>
+#import <TLKit/TLKThemeBackedLayer.h>
 
-#import "CALayerDelegate.h"
-
-@class NSImage, NSString;
-
-@interface TLKBumperBackgroundLayer : TLKImageLayer <CALayerDelegate>
+@interface TLKBumperBackgroundLayer : TLKThemeBackedLayer
 {
-    NSImage *_backgroundImage;
-    TLKImageLayer *_shadowLayer;
-    BOOL _drawsBackground;
+    TLKThemeBackedLayer *_shadowLayer;
 }
 
-- (BOOL)drawsBackground;
-- (void)setDrawsBackground:(BOOL)arg1;
-- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
-- (void)layoutSublayers;
-- (void)dealloc;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)layoutSublayers;
+- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 
 @end
 

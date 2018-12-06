@@ -20,40 +20,35 @@
     BOOL _isAutosizing;
     NSMutableArray *_pMouseInObservers;
     NSTrackingArea *_pTrackingArea;
-    vector_f672cb0f *_pAssociatedSceneNodeIDs;
+    struct vector<unsigned int, std::allocator<unsigned int>> *_pAssociatedSceneNodeIDs;
     NSString *_pAssociatedFolderChanPath;
     NSString *_pAssociatedChanPath;
 }
 
-@property(nonatomic) vector_f672cb0f *associatedSceneNodeIDs; // @synthesize associatedSceneNodeIDs=_pAssociatedSceneNodeIDs;
+- (void)setLabelController:(id)arg1 paramController:(id)arg2;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)initWithLabelController:(id)arg1 withParamController:(id)arg2 context:(id)arg3;
+- (void)dealloc;
+- (void)update;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)didBuildUI;
+- (void)twiddle;
+- (void)didTwiddle:(BOOL)arg1;
+- (id)getSubgroup;
+- (id)labelController;
+- (id)paramController;
+- (void)setIsAutosizing:(BOOL)arg1;
+- (void)flippedView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
+- (id)paramView;
+- (id)labelView;
+- (void)registerMouseInObserversForView:(id)arg1;
+- (void)registerMouseInObserversForController:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (void)addOrResetAssociatedID:(unsigned int)arg1 isAdd:(BOOL)arg2;
+- (void)reassociateChannels;
 @property(retain, nonatomic) NSString *associatedFolderChanPath; // @synthesize associatedFolderChanPath=_pAssociatedFolderChanPath;
 @property(retain, nonatomic) NSString *associatedChanPath; // @synthesize associatedChanPath=_pAssociatedChanPath;
-- (BOOL)reassociateChannels:(vector_b71873ec *)arg1;
-- (void)addOrResetAssociatedID:(unsigned int)arg1 isAdd:(BOOL)arg2;
-- (void)mouseExited:(id)arg1;
-- (void)mouseEntered:(id)arg1;
-- (void)registerMouseInObserver:(id)arg1;
-- (void)registerMouseInObserversForController:(id)arg1;
-- (void)registerMouseInObserversForView:(id)arg1;
-- (id)labelView;
-- (id)paramView;
-- (BOOL)isMouseInLabelView:(id)arg1;
-- (void)flippedView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
-- (double)minLabelWidth;
-- (void)setIsAutosizing:(BOOL)arg1;
-- (id)paramController;
-- (id)labelController;
-- (id)getSubgroup;
-- (void)didTwiddle:(BOOL)arg1;
-- (void)twiddle;
-- (void)didBuildUI;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (void)update;
-- (void)dealloc;
-- (void)setupFlippedViewWithChan:(struct OZChannelBase *)arg1;
-- (id)initWithLabelController:(id)arg1 withParamController:(id)arg2 context:(id)arg3;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)setLabelController:(id)arg1 paramController:(id)arg2;
 
 @end
 

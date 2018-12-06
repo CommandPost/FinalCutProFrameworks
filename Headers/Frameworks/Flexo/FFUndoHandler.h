@@ -6,78 +6,57 @@
 
 #import "NSObject.h"
 
-@class FFUndoGuard, FFUndoHistory, FFUndoManager, NSMutableArray, NSMutableSet, NSSet, NSString;
+#import "FFUndoHandler.h"
 
-@interface FFUndoHandler : NSObject
+@class FFUndoHistory, FFUndoManager, NSMutableArray, NSMutableSet, NSSet, NSString;
+
+__attribute__((visibility("hidden")))
+@interface FFUndoHandler : NSObject <FFUndoHandler>
 {
+    id <FFUndoHandlerDelegate> _delegate;
     NSString *_displayName;
     FFUndoManager *_undoMgr;
     NSMutableArray *_actionStack;
     unsigned long long _undoOrRedo;
     unsigned long long _rollbackLevel;
     FFUndoHistory *_history;
-    FFUndoGuard *_guard;
     NSMutableSet *_uiControllers;
-    id _runLoopObserver;
-    unsigned long long _undoErrorDisabled;
-    double _undoErrorDetected;
-    NSMutableArray *_debugActionNames;
 }
 
-+ (void)performDeferredBlocks;
-+ (void)performBlockOutsideUndoScope:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;
-+ (void)performBlockOutsideUndoScope:(CDUnknownBlockType)arg1;
-+ (void)registerGuardForLibraryItems:(id)arg1;
-+ (void)disableUndoWarningWhilePerformingBlock:(CDUnknownBlockType)arg1;
 + (id)fromCurrentTransaction;
-@property(retain, nonatomic) FFUndoGuard *guard; // @synthesize guard=_guard;
-@property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-- (void)appendGuardToStackIfNecessary;
-- (void)didOpenUndo:(id)arg1;
-- (void)didRedo:(id)arg1;
-- (void)willRedo:(id)arg1;
-- (void)didUndo:(id)arg1;
-- (void)willUndo:(id)arg1;
-- (void)didUndoOrRedo:(int)arg1;
-- (void)willUndoOrRedo;
-- (void)resetUIControllers;
-@property(readonly, nonatomic) NSSet *UIControllers;
-- (void)addUIControllersObject:(struct NSObject *)arg1;
-- (void)truncate;
-- (void)_dummyMethod;
-- (BOOL)undoableEnd:(id)arg1 option:(int)arg2 error:(id *)arg3;
-- (BOOL)undoableEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
-- (void)undoableBegin:(id)arg1;
-- (void)failedToCloseUndoScope;
-- (void)resetUndoWarningTimer;
-- (BOOL)isUndoWarningSuppressed;
-- (void)enableUndoWarning;
-- (void)disableUndoWarning;
-- (BOOL)isUndoWarningEnabled;
-- (void)logAction:(id)arg1;
-- (id)actionName;
-- (id)firstActionName;
-- (id)copyDebugActionNames;
-- (unsigned long long)actionLevel;
-- (BOOL)canceled;
-- (void)_performRollbackWithBlock:(CDUnknownBlockType)arg1;
-- (void)_performRollbackWithBlock0:(CDUnknownBlockType)arg1;
-- (void)_didRollback;
-- (void)_willRollback;
-- (BOOL)_transactionEnd:(int)arg1 error:(id *)arg2;
-- (void)_transactionEndUndoRedo;
-- (void)_transactionBeginUndoRedo;
-- (void)_transactionBegin;
-- (void)_transactionCleanup;
-- (void)_transactionPrepare;
-- (unsigned long long)_actionLevel;
-- (void)_actionStackRemoveLast;
-- (id)_actionStack;
-- (void)assertNoUndoScope;
-- (id)undoManager;
-- (void)dealloc;
-- (id)init;
 - (BOOL)_disableRemoveAllActions:(BOOL)arg1;
+- (id)init;
+- (id)initWithDelegate:(id)arg1;
+- (void)dealloc;
+- (id)undoManager;
+- (void)assertNoUndoScope;
+- (id)_actionStack;
+- (unsigned long long)_actionLevel;
+- (void)_transactionBegin;
+- (BOOL)_transactionEnd:(int)arg1 error:(id *)arg2;
+- (void)_willRollback;
+- (void)_didRollback;
+- (void)_performRollbackWithBlock0:(CDUnknownBlockType)arg1;
+- (void)_performRollbackWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)canceled;
+- (id)actionName;
+- (void)logAction:(id)arg1;
+- (void)undoableBegin:(id)arg1;
+- (BOOL)undoableEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)undoableEnd:(id)arg1 option:(int)arg2 error:(id *)arg3;
+- (void)_dummyMethod;
+- (void)truncate;
+- (void)addUIControllersObject:(id)arg1;
+@property(readonly, nonatomic) NSSet *UIControllers;
+- (void)resetUIControllers;
+- (void)willUndoOrRedo;
+- (void)didUndoOrRedo:(int)arg1;
+- (void)willUndo:(id)arg1;
+- (void)didUndo:(id)arg1;
+- (void)willRedo:(id)arg1;
+- (void)didRedo:(id)arg1;
+- (void)didOpenUndo:(id)arg1;
+@property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 
 @end
 

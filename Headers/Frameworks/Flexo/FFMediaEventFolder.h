@@ -6,110 +6,49 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
-#import "FFMediaEventFolderForMergeObject.h"
 #import "FFMediaEventFolderObject.h"
-#import "FFOrganizerItemDraggingSource.h"
-#import "FFOrganizerMasterItem.h"
-#import "FFOrganizerMasterItemDropTarget.h"
-#import "FFXMLTranslationTarget.h"
 
-@class FFLibrary, FFMediaEventProject, NSArray, NSImage, NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString;
 
-@interface FFMediaEventFolder : FFBaseDSObject <FFXMLTranslationTarget, FFMediaEventFolderForMergeObject, FFOrganizerMasterItem, FFOrganizerItemDraggingSource, FFOrganizerMasterItemDropTarget, FFMediaEventFolderObject>
+__attribute__((visibility("hidden")))
+@interface FFMediaEventFolder : FFBaseDSObject <FFMediaEventFolderObject>
 {
     NSString *_name;
     NSMutableArray *_children;
     FFMediaEventFolder *_parentFolder;
 }
 
-+ (int)matchingTypeIterationOption;
-+ (id)objectsSortedByName:(id)arg1;
-+ (id)newLibraryFolderWithDefaultSmartCollections:(BOOL)arg1;
 + (id)copyClassDescription;
-+ (id)mergeDescription;
-+ (id)collectionNameForDisplayName:(id)arg1 withClass:(Class)arg2;
-+ (Class)collectionNameClass:(id)arg1;
-+ (id)collectionNameDisplayName:(id)arg1;
-+ (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2 event:(id)arg3;
-+ (id)readableTypesForPasteboard:(id)arg1;
-+ (id)keyPathsForValuesAffectingMasterSubitems;
-+ (id)keyPathsForValuesAffectingItems;
-+ (id)keyPathsForValuesAffectingItemDisplayName;
-- (BOOL)update_removeVideoMainRolesFromRoleFilters;
-- (BOOL)update_smartCollectionsRolesPerLibrary;
-- (void)reassignRoles:(id)arg1 renameExistingRoles:(id)arg2 changeColorOfExistingRoles:(id)arg3 removeRolesWithUIDs:(id)arg4;
-- (BOOL)mergeChild:(id)arg1;
-- (id)addUntitledFolder;
-- (id)addUntitledSmartCollection;
-- (id)addUntitledKeyword;
-- (void)enumerateObjectsWithOptions:(int)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)_enumerateObjectsWithOptions:(int)arg1 stop:(char *)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (id)uniqueDuplicateName:(id)arg1 withSuffix:(id)arg2 usingIterationOptions:(int)arg3;
-- (id)uniqueName:(id)arg1 usingIterationOptions:(int)arg2;
-- (unsigned long long)indexOfChildWithName:(id)arg1 folderObjectClass:(Class)arg2;
-- (unsigned long long)indexOfChild:(id)arg1;
-- (void)removeObjectFromChildrenAtIndex:(unsigned long long)arg1;
-- (void)addObjectToChildren:(id)arg1;
-- (void)insertObject:(id)arg1 inChildrenAtIndex:(unsigned long long)arg2;
-- (id)objectInChildrenAtIndex:(unsigned long long)arg1;
-- (unsigned long long)countOfChildren;
-- (void)setChildren:(id)arg1;
-@property(readonly, nonatomic) NSArray *children;
-- (void)removeFromParentFolder;
-- (BOOL)isNameEqualToString:(id)arg1;
-- (id)project;
-@property(nonatomic) FFMediaEventFolder *parentFolder;
-@property(copy, nonatomic) NSString *name;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, copy) NSString *debugDescription;
-- (id)debugDescrptionWithIndentLevel:(unsigned int)arg1;
-@property(readonly, copy) NSString *description;
-- (void)dealloc;
-- (id)initWithName:(id)arg1;
++ (id)objectsSortedByName:(id)arg1;
++ (int)matchingTypeIterationOption;
 - (id)init;
-- (BOOL)isLibraryFolder;
-@property(readonly, nonatomic) FFMediaEventFolder *folder;
-@property(readonly, nonatomic) FFMediaEventProject *event;
-@property NSString *collectionName;
-- (id)copyForMerge:(id)arg1;
-- (BOOL)actionDropObjects:(id)arg1 atIndex:(unsigned long long)arg2 forceCopy:(BOOL)arg3 error:(id *)arg4;
-- (id)_droppingActionNameForObjects:(id)arg1;
-- (BOOL)_copyObject:(id)arg1 toIndex:(unsigned long long)arg2 inProject:(id)arg3;
-- (BOOL)_moveObject:(id)arg1 toIndex:(unsigned long long)arg2;
-- (BOOL)actionRename:(id)arg1 error:(id *)arg2;
-- (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
-- (void)actionBegin:(id)arg1;
-- (BOOL)_actionEndEditing:(BOOL)arg1 error:(id *)arg2;
-- (void)_actionBeginEditing;
-- (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
-- (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
-- (BOOL)_isThisFolderAnAncestor:(id)arg1;
-- (id)pasteboardPropertyListForType:(id)arg1;
-- (id)writableTypesForPasteboard:(id)arg1;
-@property(readonly, nonatomic) NSArray *detailSubitems;
-@property(readonly, nonatomic) NSArray *masterSubitems;
-@property(readonly, nonatomic) BOOL hasMasterSubitems;
-@property(readonly, nonatomic) NSArray *items;
-@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
-- (id)itemIconSelected:(BOOL)arg1;
-@property(readonly, nonatomic) NSImage *itemIcon;
-@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
-- (void)setItemDisplayName:(id)arg1;
-@property(readonly, nonatomic) NSString *itemDisplayName;
-
-// Remaining properties
-@property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
-@property(readonly, nonatomic) BOOL hasDetailSubitems;
-@property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
-@property(readonly, nonatomic) BOOL hasItems;
-@property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
-@property(readonly, nonatomic) BOOL itemIsPlaceholder;
-@property(readonly, nonatomic) double itemRowHeight;
-@property(readonly, nonatomic) FFLibrary *library;
-@property(readonly) Class superclass;
+- (id)initWithName:(id)arg1;
+- (void)dealloc;
+- (id)description;
+- (id)debugDescrptionWithIndentLevel:(unsigned int)arg1;
+- (id)debugDescription;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+@property(copy, nonatomic) NSString *name;
+@property(nonatomic) FFMediaEventFolder *parentFolder;
+- (id)project;
+- (BOOL)isNameEqualToString:(id)arg1;
+- (void)removeFromParentFolder;
+@property(readonly, nonatomic) NSArray *children;
+- (unsigned long long)countOfChildren;
+- (id)objectInChildrenAtIndex:(unsigned long long)arg1;
+- (void)insertObject:(id)arg1 inChildrenAtIndex:(unsigned long long)arg2;
+- (void)removeObjectFromChildrenAtIndex:(unsigned long long)arg1;
+- (unsigned long long)indexOfChild:(id)arg1;
+- (unsigned long long)indexOfChildWithName:(id)arg1 folderObjectClass:(Class)arg2;
+- (id)uniqueName:(id)arg1 usingIterationOptions:(int)arg2;
+- (id)uniqueDuplicateName:(id)arg1 withSuffix:(id)arg2 usingIterationOptions:(int)arg3;
+- (void)_enumerateObjectsWithOptions:(int)arg1 stop:(char *)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateObjectsWithOptions:(int)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)addUntitledKeyword;
+- (id)addUntitledSmartCollection;
+- (id)addUntitledFolder;
 
 @end
 

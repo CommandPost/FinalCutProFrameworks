@@ -12,11 +12,11 @@
 }
 
 + (void)loadStartupScript:(const char *)arg1;
-- (void)dealloc;
-- (void)applicationDidFinishLaunching;
-- (void)loadScriptsInDirectory:(id)arg1;
-- (void)loadScript:(const char *)arg1;
 - (id)init;
+- (void)loadScript:(const char *)arg1;
+- (void)loadScriptsInDirectory:(id)arg1;
+- (void)applicationDidFinishLaunching;
+- (void)dealloc;
 
 @end
 

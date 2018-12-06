@@ -11,10 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)displayNameForKeyword:(id)arg1;
-- (id)sortKeywords:(id)arg1;
-- (id)tileGlyphString;
 - (id)filterDict;
+- (id)tileTypeFacet;
+- (id)sortKeywords:(id)arg1;
 
 @end
 

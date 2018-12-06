@@ -8,23 +8,24 @@
 
 @interface POChannelPositionOSC : POChannel
 {
-    struct vector<std::__1::pair<OZChannelRef *, bool>, std::__1::allocator<std::__1::pair<OZChannelRef *, bool>>> *_positions;
+    struct vector<std::pair<OZChannelRef*, bool>, std::allocator<std::pair<OZChannelRef*, bool>>> *_positions;
+    PCPtr_ca909b16 _pointTexture[2];
     BOOL _moving;
 }
 
 + (BOOL)validate:(struct OZChannelBase *)arg1;
-- (PCRect_b601f9f3)_OSCBoundary;
-- (BOOL)postRedisplayOnActivePartChange;
-- (void)draw;
-- (BOOL)oscFlagsChanged:(id)arg1;
-- (void)menuAddTrack:(id)arg1;
-- (id)menuForEvent:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (id)getDefaultCursor;
-- (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)dealloc;
+- (id)getDefaultCursor;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (id)menuForEvent:(id)arg1;
+- (void)menuAddTrack:(id)arg1;
+- (BOOL)flagsChanged:(id)arg1;
+- (void)draw;
+- (BOOL)postRedisplayOnActivePartChange;
+- (PCRect_b601f9f3)_OSCBoundary;
 
 @end
 

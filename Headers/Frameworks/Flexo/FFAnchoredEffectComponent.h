@@ -12,28 +12,32 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-- (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
-- (id)classNameForInspectorTabIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)inspectorIdentifier;
-- (id)inspectorClassName;
-- (BOOL)hasVideo;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)effectStackDidLoad:(id)arg1;
-- (id)replaceWithEffectID:(id)arg1;
-- (void)setEffect:(id)arg1;
-- (CDStruct_e83c9415)unclippedRange;
-- (void)effectFinishedLoading:(id)arg1;
-- (id)audioComponentEffect;
-- (id)videoComponentEffect;
-- (id)effect;
-- (void)notifyAnchoredObjectRemovedFromSequence:(id)arg1;
-- (void)dealloc;
-- (id)initWithEffect:(id)arg1;
-- (id)initWithEffectID:(id)arg1 loadEffectInForeground:(BOOL)arg2;
 - (id)initWithEffectID:(id)arg1;
+- (id)initWithEffectID:(id)arg1 loadEffectInForeground:(BOOL)arg2;
+- (id)initWithEffect:(id)arg1;
+- (void)dealloc;
+- (void)notifyAnchoredObjectRemovedFromSequence:(id)arg1;
+- (id)effect;
+- (id)videoEffect;
+- (id)audioEffect;
+- (void)effectFinishedLoading:(id)arg1;
+- (CDStruct_e83c9415)unclippedRange;
+- (void)setEffect:(id)arg1;
+- (id)replaceWithEffectID:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)awakeAfterUsingCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)onScreenControls;
+- (BOOL)hasVideo;
+- (BOOL)hasAudio;
+- (id)inspectorClassName;
+- (id)inspectorIdentifier;
+- (id)inspectorTabClassNames;
+- (id)inspectorTabIdentifiers;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 
 @end
 

@@ -11,33 +11,19 @@
 @interface FFImageRepFFPixelBuffer : FFImageRep
 {
     FFPixelBuffer *_buffer;
-    BOOL _disable422Filtering;
-    BOOL _backedByCV;
-    struct FFSourceColorConformBaseClass *_sourceColorConformer;
-    int _sourceCCTargetColorSpace;
 }
 
-- (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
-- (_Bool)alphaWantsClamping;
-- (_Bool)alphaWantsInversion;
-- (int)nativeAlphaType;
-- (id)buffer;
-- (struct CGRect)pixelSpaceBounds;
-- (id)type;
-- (id)nativePixelFormat;
-- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
-- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
-- (BOOL)backedByPBO;
-- (void)setSourceColorConformer:(struct FFSourceColorConformBaseClass *)arg1 targetColorSpace:(int)arg2;
-- (int)sourceCCTargetColorSpace;
-- (struct FFSourceColorConformBaseClass *)sourceColorConformer;
-- (void)setBackedByCV:(BOOL)arg1;
-- (BOOL)backedByCV;
-- (BOOL)disable422InputFiltering;
-- (id)flipAboutYTransform:(double)arg1;
-- (void)dealloc;
 - (id)initWithFFPixelBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4;
-- (id)initWithFFPixelBuffer:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 field:(unsigned int)arg4 disable422Filtering:(BOOL)arg5;
+- (void)dealloc;
+- (id)flipAboutYTransform:(double)arg1;
+- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
+- (id)nativePixelFormat;
+- (id)type;
+- (struct CGRect)pixelSpaceBounds;
+- (id)buffer;
+- (_Bool)nativelyPremulBlack;
+- (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
 
 @end
 

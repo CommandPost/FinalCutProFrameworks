@@ -7,6 +7,6 @@
 #import "OZMiniCurveEditor.h"
 
 @interface OZMiniCurveEditor (appSpecific)
-- (id)allocCurveEditorController:(struct OZChannelBase *)arg1;
+- (id)createController:(struct OZChannelBase *)arg1;
 @end
 

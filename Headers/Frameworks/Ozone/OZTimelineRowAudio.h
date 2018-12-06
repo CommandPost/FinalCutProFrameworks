@@ -10,8 +10,8 @@
 {
 }
 
-- (void)drawMidground:(const struct OZTimelineBar *)arg1 clipRect:(struct CGRect)arg2 barRect:(struct CGRect)arg3 pixelsPerSecond:(double)arg4 secondsPerPixel:(CDStruct_1b6d18a9)arg5;
 - (void)audioImageReady:(unsigned int)arg1;
+- (void)drawMidground:(const struct OZTimelineBar *)arg1 clipRect:(struct CGRect)arg2 barRect:(struct CGRect)arg3 pixelsPerSecond:(double)arg4 secondsPerPixel:(CDStruct_1b6d18a9)arg5;
 
 @end
 

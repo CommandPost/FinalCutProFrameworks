@@ -10,7 +10,5 @@
 
 @protocol FFImportTapeModuleDelegate <FFEventsDetailModuleDelegate>
 @property(retain, nonatomic) NSView *itemsModuleBottomAccessoryView;
-- (void)stopImport:(id)arg1;
-- (void)importClips:(id)arg1;
 @end
 

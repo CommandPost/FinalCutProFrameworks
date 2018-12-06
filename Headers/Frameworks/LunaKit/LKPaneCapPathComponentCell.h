@@ -4,11 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <LunaKit/LKPathComponentCell.h>
+#import "NSProPaneCapPathComponentCell.h"
 
-@interface LKPaneCapPathComponentCell : LKPathComponentCell
+@interface LKPaneCapPathComponentCell : NSProPaneCapPathComponentCell
 {
 }
+
++ (id)_dividerArrowFacet;
 
 @end
 

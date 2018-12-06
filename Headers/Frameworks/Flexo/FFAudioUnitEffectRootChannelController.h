@@ -6,26 +6,21 @@
 
 #import <Flexo/FFRiggedChannelFolderController.h>
 
-@class CHChannelBase, FFAudioUnitEffectRootChannel, FFInspectorAudioEffectsControllerManager, NSButton;
+@class NSButton, NSProView;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioUnitEffectRootChannelController : FFRiggedChannelFolderController
 {
-    NSButton *_effectEditorButton;
-    FFInspectorAudioEffectsControllerManager *_effectsManager;
-    FFAudioUnitEffectRootChannel *_rootChannel;
-    CHChannelBase *_observedObject;
+    NSProView *customChannelView;
+    NSButton *effectEditorButton;
 }
 
-- (void)showEffectEditor:(id)arg1;
-- (id)_retrieveContext;
-- (float)suggestedMaxParamWidth;
-- (void)notifyParentEffectBundleEnableChanged:(id)arg1;
-- (void)updateUI;
-- (void)didBuildUI;
-- (int)shouldAddDisclosureButton;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)didBuildUI;
+- (float)suggestedMaxParamWidth;
+- (id)_retrieveContext;
+- (void)showEffectEditor:(id)arg1;
 
 @end
 

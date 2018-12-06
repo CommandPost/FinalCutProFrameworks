@@ -6,54 +6,37 @@
 
 #import <ProInspector/OZViewControllerGroup.h>
 
-#import "NSAnimationDelegate.h"
+@class NSMapTable, NSMutableArray, NSViewAnimation;
 
-@class NSMapTable, NSMutableArray, NSString, NSViewAnimation;
-
-@interface OZViewCtlrRoot : OZViewControllerGroup <NSAnimationDelegate>
+@interface OZViewCtlrRoot : OZViewControllerGroup
 {
     id <OZViewCtlrDelegate> _pDelegate;
     NSViewAnimation *_pViewAnimation;
     NSMutableArray *_pPendingAnimations;
     NSMapTable *_pViewFrameCache;
     BOOL _isInteractive;
-    NSMutableArray *_pAnimatingViewsIn;
-    NSMutableArray *_pAnimatingViewsOut;
 }
 
-+ (BOOL)isGlobalAnimationEnabled;
 + (void)setIsGlobalAnimationEnabled:(BOOL)arg1;
-- (void)adjustLabelAndParamWidthsForView:(id)arg1;
-- (void)encloseViewInScrollView;
-- (void)applyBrickMargins;
-- (void)animView:(id)arg1 setFrameSize:(struct CGSize)arg2;
-- (void)animView:(id)arg1 setFrameOrigin:(struct CGPoint)arg2;
-- (void)animView:(id)arg1 setFrame:(struct CGRect)arg2;
-- (void)animView:(id)arg1 setHidden:(BOOL)arg2;
-- (void)flushAnimation;
-- (void)startAnimation;
-- (void)addAnimation:(id)arg1;
-- (void)animationDidEnd:(id)arg1;
-- (void)animationDidStop:(id)arg1;
-- (void)addInFlightViewAnimations:(id)arg1;
-- (void)removeInFlightViewAnimations:(id)arg1;
-- (BOOL)viewIsAnimatingIn:(id)arg1;
-- (BOOL)viewIsAnimatingOut:(id)arg1;
-@property(nonatomic) BOOL isInteractive;
-- (_Bool)isAnimationEnabled;
-- (void)setDelegate:(id)arg1;
-- (id)delegate;
-- (void)resizedSubview:(id)arg1 byDeltaY:(float)arg2;
-- (void)didBuildUI;
-- (void)dealloc;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
++ (BOOL)isGlobalAnimationEnabled;
 - (id)initWithView:(id)arg1 context:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)didBuildUI;
+- (void)resizedSubview:(id)arg1 byDeltaY:(float)arg2;
+- (id)delegate;
+- (void)setDelegate:(id)arg1;
+- (_Bool)isAnimationEnabled;
+@property(nonatomic) BOOL isInteractive;
+- (void)addAnimation:(id)arg1;
+- (void)startAnimation;
+- (void)flushAnimation;
+- (void)animView:(id)arg1 setHidden:(BOOL)arg2;
+- (void)animView:(id)arg1 setFrame:(struct CGRect)arg2;
+- (void)animView:(id)arg1 setFrameOrigin:(struct CGPoint)arg2;
+- (void)animView:(id)arg1 setFrameSize:(struct CGSize)arg2;
+- (void)encloseViewInScrollView;
+- (void)adjustLabelAndParamWidthsForView:(id)arg1;
 
 @end
 

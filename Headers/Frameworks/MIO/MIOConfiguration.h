@@ -20,22 +20,22 @@
     BOOL mAutomatic;
 }
 
+- (id)initWithPath:(id)arg1 recentVideoDevices:(id)arg2 recentAudioDevices:(id)arg3 automatic:(BOOL)arg4;
+- (id)initWithPath:(id)arg1 recentVideoDevices:(id)arg2 recentAudioDevices:(id)arg3 videoDevice:(id)arg4 audioDevice:(id)arg5;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)validatePath:(id)arg1;
+@property(copy) NSString *name;
+- (BOOL)save;
+- (void)restoreDeviceProperties;
+@property(retain, nonatomic) MIODeviceConnection *videoDevice; // @synthesize videoDevice=mVideoDevice;
+@property(retain, nonatomic) MIOHALDevice *audioDevice; // @synthesize audioDevice=mAudioDevice;
+- (void)updateDeviceProperties:(id)arg1 inRecentDevices:(id)arg2;
+- (id)objectMatchingDeviceProperties:(id)arg1 inArray:(id)arg2;
 @property BOOL automatic; // @synthesize automatic=mAutomatic;
 @property(retain) NSMutableArray *recentAudioDevices; // @synthesize recentAudioDevices=mRecentAudioDevices;
 @property(retain) NSMutableArray *recentVideoDevices; // @synthesize recentVideoDevices=mRecentVideoDevices;
-@property(retain, nonatomic) MIOHALDevice *audioDevice; // @synthesize audioDevice=mAudioDevice;
-@property(retain, nonatomic) MIODeviceConnection *videoDevice; // @synthesize videoDevice=mVideoDevice;
 @property(copy) NSString *path; // @synthesize path=mPath;
-- (id)objectMatchingDeviceProperties:(id)arg1 inArray:(id)arg2;
-- (void)updateDeviceProperties:(id)arg1 inRecentDevices:(id)arg2;
-- (void)restoreDeviceProperties;
-- (BOOL)save;
-@property(copy) NSString *name;
-- (id)validatePath:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithPath:(id)arg1 recentVideoDevices:(id)arg2 recentAudioDevices:(id)arg3 videoDevice:(id)arg4 audioDevice:(id)arg5;
-- (id)initWithPath:(id)arg1 recentVideoDevices:(id)arg2 recentAudioDevices:(id)arg3 automatic:(BOOL)arg4;
 
 @end
 

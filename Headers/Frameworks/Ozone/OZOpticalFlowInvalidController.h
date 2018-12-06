@@ -15,11 +15,11 @@
     BOOL _reanalyze;
 }
 
-- (void)frameBlending:(id)arg1;
-- (void)reanalyze:(id)arg1;
-- (BOOL)askAboutReanalysis;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (BOOL)askAboutReanalysis;
+- (void)reanalyze:(id)arg1;
+- (void)frameBlending:(id)arg1;
 
 @end
 

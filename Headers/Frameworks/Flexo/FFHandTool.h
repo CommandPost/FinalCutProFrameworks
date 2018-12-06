@@ -11,16 +11,14 @@
     struct CGPoint _startPoint;
 }
 
-+ (id)cursor;
-+ (id)toolbarFacetImageOff;
-+ (id)toolbarFacetImageOn;
-+ (id)toolTip;
-+ (id)displayName;
 + (void)initialize;
-+ (id)TLKEventHandlerID;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
++ (id)displayName;
++ (id)toolTip;
++ (id)toolbarFacet;
++ (id)cursor;
 - (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
 
 @end
 

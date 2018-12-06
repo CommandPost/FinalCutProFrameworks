@@ -10,5 +10,7 @@
 {
 }
 
+- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
+
 @end
 

@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     CDStruct_69458254 _action_opt;
 }
 
-- (id)actionForKey:(id)arg1;
 - (void)setShowGuides:(BOOL)arg1;
+- (id)actionForKey:(id)arg1;
 
 @end
 

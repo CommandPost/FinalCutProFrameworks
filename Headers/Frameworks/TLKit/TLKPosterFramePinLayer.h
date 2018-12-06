@@ -8,11 +8,11 @@
 
 #import "TLKPartInfo.h"
 
-@class CATextLayer, NSString;
+@class CATextLayer;
 
 @interface TLKPosterFramePinLayer : CALayer <TLKPartInfo>
 {
-    id <TLKPosterFrameInfoProtocol> _representedObject;
+    id _representedObject;
     CALayer *_rootLayer;
     CALayer *_defaultLayer;
     CALayer *_manualLayer;
@@ -23,24 +23,16 @@
     CATextLayer *_textLayer;
 }
 
-+ (struct CGSize)posterPinHeadSize;
 + (struct CGSize)posterPinSize;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)partIdentifier;
-- (id)hitTest:(struct CGPoint)arg1;
-- (void)layoutSublayers;
-- (void)setContentsScale:(double)arg1;
+- (id)init;
+- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
+- (void)setDelegate:(id)arg1;
 @property id <TLKPosterFrameInfoProtocol> representedObject;
 - (void)updateAppearence;
-- (void)setDelegate:(id)arg1;
-- (id)init;
-- (struct CGColor *)_defaultPinTailColor;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)layoutSublayers;
+- (id)hitTest:(struct CGPoint)arg1;
+- (id)partIdentifier;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
 
 @end
 

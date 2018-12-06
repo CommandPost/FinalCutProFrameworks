@@ -19,15 +19,14 @@
     LKTextField *_pOutlineWidthTF;
 }
 
-- (void)setOutlineWidth:(id)arg1;
-- (void)setOutlineColor:(id)arg1;
-- (void)toggleOutline:(id)arg1;
-- (void)setFillColor:(id)arg1;
-- (void)toggleFill:(id)arg1;
-- (id)contentView;
-- (id)optionsNibName;
-- (void)dealloc;
 - (id)initWithOSC:(id)arg1;
+- (id)optionsNibName;
+- (id)contentView;
+- (void)toggleFill:(id)arg1;
+- (void)setFillColor:(id)arg1;
+- (void)toggleOutline:(id)arg1;
+- (void)setOutlineColor:(id)arg1;
+- (void)setOutlineWidth:(id)arg1;
 
 @end
 

@@ -12,10 +12,10 @@
     struct CGPoint _position;
 }
 
-- (struct CGPoint)getPosition;
-- (struct OZTimelineKeyframeDrag *)getKeyframe;
-- (id)initWithKeyframe:(const struct OZTimelineKeyframeDrag *)arg1 pos:(struct CGPoint)arg2;
 - (void)dealloc;
+- (id)initWithKeyframe:(const struct OZTimelineKeyframeDrag *)arg1 pos:(struct CGPoint)arg2;
+- (struct OZTimelineKeyframeDrag *)getKeyframe;
+- (struct CGPoint)getPosition;
 
 @end
 

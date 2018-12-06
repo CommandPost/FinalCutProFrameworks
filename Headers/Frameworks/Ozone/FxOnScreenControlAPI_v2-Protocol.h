@@ -6,16 +6,14 @@
 
 #import "FxOnScreenControlAPI.h"
 
-@class FxMatrix44;
-
 @protocol FxOnScreenControlAPI_v2 <FxOnScreenControlAPI>
-- (FxMatrix44 *)objectToScreenTransform;
-- (void)inputWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 pixelAspectRatio:(double *)arg3;
-- (void)objectWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 pixelAspectRatio:(double *)arg3;
-- (double)pixelAspectRatio;
-- (struct CGRect)inputBounds;
-- (struct CGRect)objectBounds;
-- (double)canvasPixelAspectRatio;
 - (double)canvasZoom;
+- (double)canvasPixelAspectRatio;
+- (struct CGRect)objectBounds;
+- (struct CGRect)inputBounds;
+- (double)pixelAspectRatio;
+- (void)objectWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 pixelAspectRatio:(double *)arg3;
+- (void)inputWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 pixelAspectRatio:(double *)arg3;
+- (id)objectToScreenTransform;
 @end
 

@@ -11,9 +11,9 @@
     struct OZChannelEnum *_endConditionChannel;
 }
 
-- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setChannelValue:(id)arg1;
 - (id)initWithChan:(struct OZChannelObjectRoot *)arg1 context:(id)arg2;
+- (void)setChannelValue:(id)arg1;
+- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 
 @end
 

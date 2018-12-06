@@ -8,17 +8,17 @@
 
 @interface OZGroupInspectorController : OZAutoObjectTabController
 {
-    struct list<OZGroup *, std::__1::allocator<OZGroup *>> *_groups;
+    struct list<OZGroup*, std::allocator<OZGroup*>> *_groups;
 }
 
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
-- (void)dealloc;
-- (void)delayedRelease;
-- (void)delayedReleaseCB:(id)arg1;
-- (BOOL)buildUIWithSceneNodes:(list_e89ce44a *)arg1 context:(id)arg2;
-- (BOOL)updateHiddenChannels;
-- (void)changeBlendModeToNormal;
 - (BOOL)updateRasterizationFlags;
+- (void)changeBlendModeToNormal;
+- (BOOL)updateHiddenChannels;
+- (BOOL)buildUIWithSceneNodes:(list_699e9227 *)arg1 context:(id)arg2;
+- (void)delayedReleaseCB:(id)arg1;
+- (void)delayedRelease;
+- (void)dealloc;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
 
 @end
 

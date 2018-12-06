@@ -17,21 +17,21 @@ __attribute__((visibility("hidden")))
     NSCountedSet *_cellsDisabledForReuse;
 }
 
-- (void)dealloc;
-- (id)allCells;
-- (BOOL)isReusabilityForCellEnabled:(id)arg1;
-- (void)enableReusabilityForCell:(id)arg1;
-- (void)disableReusabilityForCell:(id)arg1;
-@property(readonly, nonatomic) NSCountedSet *cellsDisabledForReuse;
-- (void)removeAllReusableCells;
-- (void)prepareForQueueReusableCells:(id)arg1;
-@property(readonly, nonatomic) NSMutableSet *cellsPendingForReuse; // @synthesize cellsPendingForReuse=_cellsPendingForReuse;
-- (void)finalizeQueue;
-- (void)queuePendingCellsForReuse;
-- (void)queueCellForReuseIfPossible:(id)arg1;
-- (id)dequeueReusableCellWithIdentifier:(id)arg1 preferredIndexPath:(id)arg2;
-- (id)dequeueReusableCellWithIdentifier:(id)arg1;
 - (id)init;
+- (id)dequeueReusableCellWithIdentifier:(id)arg1;
+- (id)dequeueReusableCellWithIdentifier:(id)arg1 preferredIndexPath:(id)arg2;
+- (void)queueCellForReuseIfPossible:(id)arg1;
+- (void)queuePendingCellsForReuse;
+- (void)finalizeQueue;
+@property(readonly, nonatomic) NSMutableSet *cellsPendingForReuse; // @synthesize cellsPendingForReuse=_cellsPendingForReuse;
+- (void)prepareForQueueReusableCells:(id)arg1;
+- (void)removeAllReusableCells;
+@property(readonly, nonatomic) NSCountedSet *cellsDisabledForReuse;
+- (void)disableReusabilityForCell:(id)arg1;
+- (void)enableReusabilityForCell:(id)arg1;
+- (BOOL)isReusabilityForCellEnabled:(id)arg1;
+- (id)allCells;
+- (void)dealloc;
 
 @end
 

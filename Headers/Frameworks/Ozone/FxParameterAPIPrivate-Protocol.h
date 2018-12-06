@@ -4,13 +4,8 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSArray, NSString;
-
 @protocol FxParameterAPIPrivate
-- (BOOL)hasPathParameters;
-- (NSArray *)getAllParameterValuesAtTime:(CDStruct_1b6d18a9)arg1;
-- (BOOL)add2DVectorWithName:(NSString *)arg1 parmId:(unsigned int)arg2 defaultX:(double)arg3 defaultY:(double)arg4 parmFlags:(unsigned int)arg5;
-- (BOOL)setCustomParameterDefaultValue:(id <NSCoding>)arg1 parmId:(unsigned int)arg2;
-- (BOOL)addLevelsWithName:(NSString *)arg1 parmId:(unsigned int)arg2 hideGamma:(BOOL)arg3 parmFlags:(unsigned int)arg4;
+- (BOOL)addLevelsWithName:(id)arg1 parmId:(unsigned int)arg2 hideGamma:(BOOL)arg3 parmFlags:(unsigned int)arg4;
+- (BOOL)setCustomParameterDefaultValue:(id)arg1 parmId:(unsigned int)arg2;
 @end
 

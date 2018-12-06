@@ -4,24 +4,27 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFMatchTool.h>
+#import <Flexo/FFTool.h>
 
-@interface FFMediaRefChannelPickerTool : FFMatchTool
+@class FFEventFilter;
+
+@interface FFMediaRefChannelPickerTool : FFTool
 {
-    CDStruct_1b6d18a9 _sourceOffset;
+    FFEventFilter *_eventFilter;
 }
 
-+ (id)cursor;
-+ (id)displayName;
 + (void)initialize;
-+ (id)TLKEventHandlerID;
-- (CDStruct_1b6d18a9)sourceOffset;
-- (void)setSourceOffset:(CDStruct_1b6d18a9)arg1;
++ (id)cursor;
++ (id)currentPickChannel;
++ (void)cancelSession;
++ (void)setCurrentPickChannel:(id)arg1;
 - (void)dealloc;
 - (void)becomeActiveTool;
-- (id)init;
-- (void)didRemoveAsHandlerForTimeline:(id)arg1;
-- (void)willSetAsHandlerForTimeline:(id)arg1;
+- (void)resignActiveTool;
+- (BOOL)skims;
+- (BOOL)allowInspectorToTrackSelection;
+- (id)filterEvents:(id)arg1;
+- (void)pickAnchoredObject:(id)arg1;
 
 @end
 

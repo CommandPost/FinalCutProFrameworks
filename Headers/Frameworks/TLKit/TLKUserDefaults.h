@@ -10,46 +10,28 @@
 {
 }
 
-+ (BOOL)colorizesLanes;
-+ (BOOL)itemLayerContentsOperations;
-+ (BOOL)enableUpdateFilmstripsForItemComponentFragments;
-+ (BOOL)optimizePerformance;
-+ (BOOL)viewStateUsesLanePositions;
-+ (BOOL)showRenderBar;
-+ (BOOL)showMisalignedEdges;
-+ (BOOL)showZeroHeightSpineItems;
-+ (BOOL)showUsedRegion;
-+ (BOOL)showRulerLabelCalls;
-+ (BOOL)showRulerBounds;
-+ (BOOL)showContainerBounds;
-+ (BOOL)showItemLayoutInfo;
-+ (BOOL)showInvalidLayoutRects;
-+ (BOOL)showHiddenItemHeaders;
-+ (BOOL)showHiddenGapItems;
-+ (BOOL)showContentLayers;
-+ (BOOL)debugLayoutConstraints;
-+ (BOOL)debugColorChangedObjects;
-+ (BOOL)debugErrorsAndWarnings;
-+ (BOOL)logSegmentationStatistics;
-+ (BOOL)logRecyclingLayerChanges;
-+ (BOOL)logVisibleRectChanges;
-+ (BOOL)logVisibleLayerChanges;
-+ (BOOL)logReloadRequests;
-+ (BOOL)logParts;
-+ (BOOL)performanceMonitorEnabled;
-+ (BOOL)loadDebugMicaAssets;
-+ (BOOL)forceLayoutOnDrag;
-+ (BOOL)showItemLaneIndex;
-+ (BOOL)disableOptimizedDrawing;
-+ (BOOL)optimizedZooming;
-+ (BOOL)optimizedReload;
-+ (BOOL)legacyLayout;
-+ (BOOL)disableItemContents;
-+ (void)setDebugLogLevel:(unsigned long long)arg1;
-+ (BOOL)debugLogLevel;
-+ (BOOL)allowNegativeTimeAfterTrim;
-+ (void)initialize;
 + (void)_loadUserDefaults;
++ (void)initialize;
++ (BOOL)allowNegativeTimeAfterTrim;
++ (BOOL)disableClipSublayers;
++ (BOOL)loadDebugMicaAssets;
++ (BOOL)enableIncrementalReload;
++ (BOOL)forceLayoutOnDrag;
++ (BOOL)logParts;
++ (BOOL)logReloadRequests;
++ (BOOL)logVisibleLayerChanges;
++ (BOOL)logVisibleRectChanges;
++ (BOOL)logRecyclingLayerChanges;
++ (BOOL)showContentLayers;
++ (BOOL)showInvalidLayoutRects;
++ (BOOL)showItemLayoutInfo;
++ (BOOL)showContainerBounds;
++ (BOOL)showRulerBounds;
++ (BOOL)showRulerLabelCalls;
++ (BOOL)showTransparentGapObject;
++ (BOOL)showUsedRegion;
++ (BOOL)showZeroHeightSpineItems;
++ (BOOL)showMisalignedEdges;
 
 @end
 

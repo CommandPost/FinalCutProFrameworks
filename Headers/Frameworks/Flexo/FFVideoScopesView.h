@@ -6,60 +6,32 @@
 
 #import <Flexo/FFResponderLayerHostView.h>
 
-#import "CALayerDelegate.h"
+@class FFDestVideoScopesGL;
 
-@class FFDestVideoScopesGL, LKMenu, NSString;
-
-@interface FFVideoScopesView : FFResponderLayerHostView <CALayerDelegate>
+__attribute__((visibility("hidden")))
+@interface FFVideoScopesView : FFResponderLayerHostView
 {
-    LKMenu *_contextualMenu;
     float _zoomFactor;
     BOOL _drawingEnabled;
     FFDestVideoScopesGL *_destVideo;
-    BOOL _showGuides;
     void *_FFVideoScopesViewPrivate;
 }
 
 + (id)defaultFontForMenu;
-+ (BOOL)isMonochrome;
-+ (void)setMonochrome:(BOOL)arg1;
-+ (BOOL)showGuides;
-+ (void)setShowGuides:(BOOL)arg1;
-+ (float)traceBrightness;
-+ (void)setTraceBrightness:(float)arg1;
-+ (void)_postPropertiesChangeNotification;
-@property(nonatomic) LKMenu *contextualMenu; // @synthesize contextualMenu=_contextualMenu;
-@property(nonatomic) id destVideo; // @synthesize destVideo=_destVideo;
-- (id)_initVideoScopesViewPriv;
-- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)accessibilityAttributeNames;
-- (BOOL)accessibilityIsIgnored;
-- (void)viewDidUnhide;
-- (void)removeFromSuperview;
-- (void)viewWillMoveToSuperview:(id)arg1;
-- (void)propsChanged:(id)arg1;
-- (void)updateToolTips;
-- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)teardownLayers;
-- (void)buildLayers;
-- (void)_updateLayersToTraceBrightness:(float)arg1 showGuides:(BOOL)arg2 monochrome:(BOOL)arg3;
-- (BOOL)isDrawingEnabled;
-- (void)setDrawingEnabled:(BOOL)arg1;
-- (BOOL)showGuides;
-- (void)setShowGuides:(BOOL)arg1;
-- (float)zoomFactor;
-- (void)setZoomFactor:(float)arg1;
-- (struct _CGLContextObject *)cglContext;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
+- (struct _CGLContextObject *)cglContext;
+- (void)setZoomFactor:(float)arg1;
+- (float)zoomFactor;
+- (void)setDrawingEnabled:(BOOL)arg1;
+- (BOOL)isDrawingEnabled;
+- (BOOL)accessibilityIsIgnored;
+- (id)accessibilityAttributeNames;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
+- (id)_initVideoScopesViewPriv;
+@property(nonatomic) id destVideo; // @synthesize destVideo=_destVideo;
 
 @end
 

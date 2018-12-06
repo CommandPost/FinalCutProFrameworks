@@ -18,25 +18,25 @@
     BOOL _hasDeprecatedKeys;
 }
 
-+ (void)releaseSharedInstance;
-+ (id)descriptionForClass:(Class)arg1;
 + (id)classMap;
-- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)requiredKeys;
-- (id)xmlProperties;
-- (id)xmlPropertiesByXMLKey;
-- (id)xmlPropertiesIncludeDepricated:(BOOL)arg1;
-- (void)addPropertySelector:(SEL)arg1 type:(int)arg2;
-- (void)setClassXMLKey:(id)arg1;
-- (id)classXMLKey;
-- (BOOL)addProperty:(SEL)arg1 type:(int)arg2 entity:(const char *)arg3 xmlInfo:(CDStruct_a8c8b80b)arg4 valueType:(CDUnknownFunctionPointerType)arg5 flags:(unsigned int)arg6;
-- (BOOL)addRelationship:(SEL)arg1 type:(int)arg2 entity:(const char *)arg3 xmlInfo:(CDStruct_a8c8b80b)arg4 flags:(unsigned int)arg5;
-- (BOOL)addAttribute:(SEL)arg1 valueType:(CDUnknownFunctionPointerType)arg2 xmlInfo:(CDStruct_a8c8b80b)arg3 flags:(unsigned int)arg4;
-- (void)dealloc;
-- (id)init;
++ (id)descriptionForClass:(Class)arg1;
++ (void)releaseSharedInstance;
 - (id)initWithClass:(Class)arg1;
+- (id)init;
+- (void)dealloc;
+- (void)addAttribute:(SEL)arg1 valueType:(CDUnknownFunctionPointerType)arg2 xmlInfo:(CDStruct_a8c8b80b)arg3 flags:(unsigned int)arg4;
+- (void)addRelationship:(SEL)arg1 type:(int)arg2 entity:(const char *)arg3 xmlInfo:(CDStruct_a8c8b80b)arg4 flags:(unsigned int)arg5;
+- (void)addProperty:(SEL)arg1 type:(int)arg2 entity:(const char *)arg3 xmlInfo:(CDStruct_a8c8b80b)arg4 valueType:(CDUnknownFunctionPointerType)arg5 flags:(unsigned int)arg6;
+- (id)classXMLKey;
+- (void)setClassXMLKey:(id)arg1;
+- (void)addPropertySelector:(SEL)arg1 type:(int)arg2;
+- (id)xmlPropertiesIncludeDepricated:(BOOL)arg1;
+- (id)xmlPropertiesByXMLKey;
+- (id)xmlProperties;
+- (id)requiredKeys;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

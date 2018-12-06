@@ -10,35 +10,18 @@
 {
 }
 
-+ (id)defaultDocumentName;
-+ (id)projectsRootName;
++ (id)projectInfo:(id)arg1;
 + (id)defaultFileExtension;
-- (void)updateWithHandler:(id)arg1;
-- (BOOL)update_sourceChannelMapToAudioChannelMap;
-- (void)update_disabledRangesFormatChange;
-- (BOOL)update_persistedAudioComponentsLayoutMap;
-- (BOOL)update_fixAudioLevelChannelIgnoreFadesFlag;
-- (BOOL)update_projectSequenceToSequenceInfo;
-- (BOOL)update_convertToNewColorTabEffects;
-- (BOOL)update_HeColorEffectToMaskedEffect;
-- (BOOL)update_redTintThumbnails;
-- (BOOL)update_fixAnalysisKeywords;
-- (BOOL)update_disableAudioUnitEffectClumpFolderReset;
-- (BOOL)update_useRelativeAudioPresetPath;
-- (BOOL)update_removeDisabledAudioEnhancementEffects;
-- (BOOL)update_migrateAudioDisabledChannel;
-- (BOOL)update_moveVolumePanFolder;
-- (BOOL)update_cleanupMediaComponentAudioRoutingMap;
-- (BOOL)update_removeZeroDurationClips;
-- (BOOL)update_clearStorylineClippedRange;
-- (BOOL)update_migrateAudioIntrinsics;
-- (BOOL)update_isTitle;
-- (BOOL)update_hasObjectReferenceAndNonIntrinsicEffects;
-- (BOOL)update_hasObjectNonDefaultEffectStack;
-- (BOOL)update_cropAndTrimEffect;
-- (BOOL)update_fixLoudnessAnalysisEffect;
-- (BOOL)update_migrateEffectBundleFormat;
-- (BOOL)update_conformLumaBumpsFromChannelsToData;
++ (id)projectsRootName;
++ (id)defaultLocation;
++ (void)setDefaultLocation:(id)arg1;
++ (id)defaultDocumentName;
++ (BOOL)canResetUniqueIdentifierAtOpen:(id)arg1;
+- (id)newDefaultProject:(id)arg1 type:(id)arg2;
+- (id)initWithType:(id)arg1 project:(id)arg2 sequence:(id)arg3 error:(id *)arg4;
+- (id)initWithCatalog:(id)arg1 store:(id)arg2 ofType:(id)arg3 validate:(BOOL)arg4 error:(id *)arg5;
+- (BOOL)applyUpdate:(SEL)arg1;
+- (BOOL)updateFromVersion:(int)arg1 error:(id *)arg2;
 
 @end
 

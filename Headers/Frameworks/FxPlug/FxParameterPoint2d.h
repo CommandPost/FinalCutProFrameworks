@@ -11,12 +11,12 @@
     struct FxParameterPoint2dPriv *_point2dPriv;
 }
 
-- (void)setIsTranslation:(BOOL)arg1;
-- (BOOL)isTranslation;
-- (void)setIsCanvasRelative:(BOOL)arg1;
-- (BOOL)isCanvasRelative;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (BOOL)isCanvasRelative;
+- (void)setIsCanvasRelative:(BOOL)arg1;
+- (BOOL)isTranslation;
+- (void)setIsTranslation:(BOOL)arg1;
 
 @end
 

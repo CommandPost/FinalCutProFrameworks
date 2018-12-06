@@ -15,17 +15,14 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _sourceStart;
     unsigned long long _sourceDurationInFrames;
     struct AudioStreamBasicDescription _outputFormat;
-    struct opaqueCMFormatDescription *_cmFormatDesc;
+    struct opaqueCMFormatDescription *_figFormatDesc;
 }
 
-- (struct opaqueCMSampleBuffer *)newSampleBufferAtFrame:(unsigned long long)arg1 count:(unsigned int)arg2;
-- (struct opaqueCMFormatDescription *)getFormatDescription;
-- (unsigned int)numOutputChannels;
-- (unsigned int)bytesPerFrame;
-- (float)sampleRate;
-- (id)roles;
+- (id)initWithSource:(id)arg1 outputFormat:(const struct AudioStreamBasicDescription *)arg2 channelLayout:(struct AudioChannelLayout *)arg3 layoutSize:(unsigned long long)arg4 startOffset:(CDStruct_1b6d18a9)arg5;
 - (void)dealloc;
-- (id)initWithSource:(id)arg1 outputFormat:(const struct AudioStreamBasicDescription *)arg2 channelLayout:(struct AudioChannelLayout *)arg3 layoutSize:(unsigned long long)arg4 startOffset:(CDStruct_1b6d18a9)arg5 roles:(id)arg6;
+- (float)sampleRate;
+- (unsigned int)bytesPerFrame;
+- (struct opaqueCMSampleBuffer *)createSampleBufferAtFrame:(unsigned long long)arg1 count:(unsigned int)arg2;
 
 @end
 

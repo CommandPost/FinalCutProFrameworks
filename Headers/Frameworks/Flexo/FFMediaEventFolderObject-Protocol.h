@@ -7,14 +7,14 @@
 #import "FFModelLocking.h"
 #import "NSCopying.h"
 
-@class FFMediaEventFolder, FFMediaEventProject, NSString;
+@class FFMediaEventFolder, NSString;
 
 @protocol FFMediaEventFolderObject <NSCopying, FFModelLocking>
 + (int)matchingTypeIterationOption;
+- (id)project;
+- (BOOL)isNameEqualToString:(id)arg1;
+- (void)removeFromParentFolder;
 @property(nonatomic) FFMediaEventFolder *parentFolder;
 @property(copy, nonatomic) NSString *name;
-- (void)removeFromParentFolder;
-- (BOOL)isNameEqualToString:(NSString *)arg1;
-- (FFMediaEventProject *)project;
 @end
 

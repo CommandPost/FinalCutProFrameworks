@@ -6,15 +6,10 @@
 
 #import "NSObject.h"
 
-#import "NSCopying.h"
-
-@class TLKLayoutSegment;
-
-@interface TLKItemEdgeInfo : NSObject <NSCopying>
+@interface TLKItemEdgeInfo : NSObject
 {
-    CDStruct_1b6d18a9 _time;
+    double _location;
     id _representedObject;
-    TLKLayoutSegment *_layoutSegment;
     struct {
         unsigned int isLeadingEdge:1;
         unsigned int isAnchoredItem:1;
@@ -23,16 +18,14 @@
 }
 
 + (CDUnknownBlockType)itemEdgeInfoComparator;
-@property(nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
-- (long long)compareItemEdgeInfo:(id)arg1;
-@property(readonly, nonatomic) BOOL isAnchoredItem;
-@property(readonly, nonatomic) BOOL isLeadingEdge;
-@property(retain, nonatomic) TLKLayoutSegment *layoutSegment;
-@property(readonly, nonatomic) id representedObject;
-- (id)description;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithEdgeLocation:(double)arg1 isLeading:(BOOL)arg2 isAnchored:(BOOL)arg3 representedObject:(id)arg4;
 - (void)dealloc;
-- (id)initWithRepresentedObject:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 isLeading:(BOOL)arg3 isAnchored:(BOOL)arg4;
+- (id)description;
+@property(readonly, nonatomic) BOOL isLeadingEdge;
+@property(readonly, nonatomic) BOOL isAnchoredItem;
+- (long long)compareItemEdgeInfo:(id)arg1;
+@property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
+@property(readonly, nonatomic) double location; // @synthesize location=_location;
 
 @end
 

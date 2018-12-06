@@ -14,12 +14,11 @@ __attribute__((visibility("hidden")))
     CHChannelGlobals *_channelGlobals;
 }
 
-+ (void)releaseSharedInstance;
 + (id)sharedInstance;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)appWillTerminate:(id)arg1;
-- (void)dealloc;
++ (void)releaseSharedInstance;
 - (id)init;
+- (void)dealloc;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end
 

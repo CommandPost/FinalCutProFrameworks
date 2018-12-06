@@ -14,12 +14,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _eventMask;
 }
 
+- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 eventMask:(unsigned long long)arg3;
+- (void)dealloc;
+- (id)filterEvent:(id)arg1;
 @property(nonatomic) unsigned long long eventMask; // @synthesize eventMask=_eventMask;
 @property(nonatomic) SEL selector; // @synthesize selector=_targetSelector;
 @property(nonatomic) id target; // @synthesize target=_target;
-- (id)filterEvent:(id)arg1;
-- (void)dealloc;
-- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 eventMask:(unsigned long long)arg3;
 
 @end
 

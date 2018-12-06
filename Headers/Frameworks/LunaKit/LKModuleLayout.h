@@ -8,59 +8,74 @@
 
 #import "NSCopying.h"
 
-@class LKModuleLayoutDisplayName, NSArray, NSMutableDictionary, NSUUID;
+@class NSMutableDictionary, NSString;
 
 @interface LKModuleLayout : NSObject <NSCopying>
 {
-    LKModuleLayoutDisplayName *_displayName;
-    NSUUID *_identifier;
-    NSUUID *_sourceName;
+    NSString *_name;
+    NSString *_displayName;
+    NSString *_keyEquivalent;
     struct CGRect _bounds;
-    unsigned long long _layoutVersion;
-    unsigned long long _appLayoutVersion;
+    struct CGSize _screenSize;
+    unsigned int _layoutVersion;
+    unsigned int _appLayoutVersion;
     NSMutableDictionary *_layoutDictionary;
     struct {
         unsigned int category:2;
+        unsigned int type:3;
         unsigned int autolayout:1;
         unsigned int wasInitFromFile:1;
         unsigned int wasInitFromCache:1;
-        unsigned int wasUpdatedOnInit:1;
-        unsigned int RESERVED:10;
+        unsigned int RESERVED:8;
     } _flags;
+    NSString *_sourceName;
 }
 
-@property(nonatomic) unsigned long long appLayoutVersion; // @synthesize appLayoutVersion=_appLayoutVersion;
-@property(copy, nonatomic) LKModuleLayoutDisplayName *displayName; // @synthesize displayName=_displayName;
-@property(copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property(copy, nonatomic) NSUUID *sourceName; // @synthesize sourceName=_sourceName;
-- (id)additionalLayoutInformationDictionary;
-- (void)setAdditionalLayoutInformationDictionary:(id)arg1;
-- (BOOL)wasUpdatedOnInit;
-- (id)description;
-- (void)_writeDictionary:(id)arg1 toFile:(id)arg2;
-- (void)writeToFile:(id)arg1;
-- (void)readStateFromDictionary:(id)arg1;
-- (void)writeStateToDictionary:(id)arg1;
-- (struct CGRect)bounds;
-@property(nonatomic) BOOL autoLayout; // @dynamic autoLayout;
-- (BOOL)screenArrangementIsAcceptable;
-@property(nonatomic) int category; // @dynamic category;
-- (struct CGRect)_boundsOfLayoutArray:(id)arg1;
-@property(retain, nonatomic) NSArray *layoutArray; // @dynamic layoutArray;
-- (id)_mutableDictionary;
-- (id)dictionary;
-- (void)setDictionary:(id)arg1;
-- (BOOL)canBeDeleted;
-- (id)cache;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithCache:(id)arg1;
-- (id)initWithContentsOfFile:(id)arg1 deferLoading:(BOOL)arg2 updater:(id)arg3 error:(id *)arg4;
-- (id)initWithContentsOfFile:(id)arg1 updater:(id)arg2 error:(id *)arg3;
-- (id)initWithContentsOfFile:(id)arg1 deferLoading:(BOOL)arg2;
-- (id)initWithContentsOfFile:(id)arg1;
-- (id)initWithDisplayName:(id)arg1;
 - (id)init;
+- (id)initWithName:(id)arg1;
+- (id)initWithContentsOfFile:(id)arg1;
+- (id)initWithContentsOfFile:(id)arg1 deferLoading:(BOOL)arg2;
+- (id)initWithCache:(id)arg1;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (long long)compareNames:(id)arg1;
+- (long long)compareDisplayNames:(id)arg1;
+- (long long)compareArrangement:(id)arg1;
+- (id)cache;
+- (void)setSourceName:(id)arg1;
+- (id)sourceName;
+- (void)setName:(id)arg1;
+- (id)name;
+- (id)displayName;
+- (void)setDisplayName:(id)arg1;
+- (BOOL)validateName:(id *)arg1 error:(id *)arg2;
+- (BOOL)validateDisplayName:(id *)arg1 error:(id *)arg2;
+- (BOOL)canBeDeleted;
+- (void)setDictionary:(id)arg1;
+- (id)dictionary;
+- (id)_mutableDictionary;
+- (void)setLayoutArray:(id)arg1;
+- (id)layoutArray;
+- (struct CGRect)_boundsOfLayoutArray:(id)arg1;
+- (void)setCategory:(int)arg1;
+- (int)category;
+- (void)setType:(int)arg1;
+- (int)type;
+- (void)setScreenSize:(struct CGSize)arg1;
+- (void)updateScreenSize;
+- (struct CGSize)screenSize;
+- (void)setAutolayout:(BOOL)arg1;
+- (BOOL)isAutolayout;
+- (void)setKeyEquivalent:(id)arg1;
+- (id)keyEquivalent;
+- (unsigned long long)appLayoutVersion;
+- (void)setAppLayoutVersion:(unsigned long long)arg1;
+- (struct CGRect)bounds;
+- (void)writeStateToDictionary:(id)arg1;
+- (void)readStateFromDictionary:(id)arg1;
+- (void)writeToFile:(id)arg1;
+- (void)_writeDictionary:(id)arg1 toFile:(id)arg2;
+- (id)description;
 
 @end
 

@@ -14,11 +14,9 @@ __attribute__((visibility("hidden")))
     FFImageRepFlattenNode *_flattenNode;
 }
 
-- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
-- (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
-- (unsigned int)scheduleStatusInformation;
-- (void)dealloc;
 - (id)initWithStream:(id)arg1 imageRep:(id)arg2;
+- (void)dealloc;
+- (unsigned int)scheduleStatusInformation;
 
 @end
 

@@ -19,19 +19,19 @@ __attribute__((visibility("hidden")))
     Class _class;
 }
 
-+ (id)forSearchClass:(Class)arg1 format:(id)arg2;
-+ (id)forSearchClass:(Class)arg1 predicate:(id)arg2;
 + (id)forSearchClass:(Class)arg1;
-- (Class)searchClass;
-- (id)searchClassName;
-- (id)predicate;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initCopy:(id)arg1 zone:(struct _NSZone *)arg2;
-- (id)initWithSearchClass:(Class)arg1 predicate:(id)arg2;
++ (id)forSearchClass:(Class)arg1 predicate:(id)arg2;
++ (id)forSearchClass:(Class)arg1 format:(id)arg2;
 - (id)initWithSearchClass:(Class)arg1;
+- (id)initWithSearchClass:(Class)arg1 predicate:(id)arg2;
+- (id)initCopy:(id)arg1 zone:(struct _NSZone *)arg2;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)predicate;
+- (id)searchClassName;
+- (Class)searchClass;
 
 @end
 

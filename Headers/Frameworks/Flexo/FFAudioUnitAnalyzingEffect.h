@@ -19,18 +19,17 @@
 }
 
 + (id)copyClassDescription;
-@property(retain, nonatomic) FFAudioPreprocessor *processor; // @synthesize processor=_processor;
-@property(nonatomic) CDStruct_1b6d18a9 startTimecode; // @synthesize startTimecode=_startTimecode;
-@property(nonatomic) double results; // @synthesize results=_results;
-@property(retain, nonatomic) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
-@property(retain, nonatomic) NSURL *renderfileURL; // @synthesize renderfileURL=_renderfileURL;
-@property(retain, nonatomic) NSString *processingState; // @synthesize processingState=_processingState;
-- (void)setEnabled:(BOOL)arg1;
-- (void)channelParameterChanged:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (unsigned int)makeParameterChannelsForAudioUnit:(struct ComponentInstanceRecord *)arg1 withinFolder:(id)arg2 addedParams:(struct FFAudioUnitParameterList *)arg3 createdParamFolder:(id *)arg4;
+@property(retain) FFAudioPreprocessor *processor; // @synthesize processor=_processor;
+@property CDStruct_1b6d18a9 startTimecode; // @synthesize startTimecode=_startTimecode;
+@property double results; // @synthesize results=_results;
+@property(retain) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
+@property(retain) NSURL *renderfileURL; // @synthesize renderfileURL=_renderfileURL;
+@property(retain) NSString *processingState; // @synthesize processingState=_processingState;
 
 @end
 

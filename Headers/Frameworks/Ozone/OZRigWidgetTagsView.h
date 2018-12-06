@@ -12,7 +12,7 @@
 {
     OZViewController *_pController;
     struct OZRigWidget *_pWidget;
-    struct OZDocument *_pDocument;
+    struct OZScene *_pScene;
     unsigned int _widgetID;
     struct OZRigSnapshot *_pDraggingSnapshot;
     BOOL _isSnapshotRemoved;
@@ -21,17 +21,17 @@
 }
 
 + (double)defaultHeight;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)moveSnapshotToMousePos:(double)arg1;
-- (void)moveSnapshotToValue:(double)arg1;
-- (struct OZRigSnapshot *)snapshotForMousePos:(double)arg1;
-- (double)tagPickRadiusInValue;
-- (double)valueForMousePos:(double)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)drawTagWithValue:(double)arg1 isSelected:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 andController:(id)arg2 andWidget:(struct OZRigWidget *)arg3;
+- (void)updateRenditionKey:(id)arg1 getFocus:(char *)arg2 userInfo:(id)arg3;
+- (void)drawTagWithValue:(double)arg1 isSelected:(BOOL)arg2;
+- (void)drawRect:(struct CGRect)arg1;
+- (double)valueForMousePos:(double)arg1;
+- (double)tagPickRadiusInValue;
+- (struct OZRigSnapshot *)snapshotForMousePos:(double)arg1;
+- (void)moveSnapshotToMousePos:(double)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
 
 @end
 

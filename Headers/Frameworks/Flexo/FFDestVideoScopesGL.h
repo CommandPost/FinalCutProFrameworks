@@ -6,25 +6,34 @@
 
 #import <Flexo/FFDestVideoGL.h>
 
+@class FFReducedRateTracker;
+
 __attribute__((visibility("hidden")))
 @interface FFDestVideoScopesGL : FFDestVideoGL
 {
-    long long _overrideColorSpace;
     struct CGColorSpace *_cs;
+    BOOL _useR4FL;
     void *_FFDestVideoScopesGLPrivate;
+    FFReducedRateTracker *_reducedRateTracker;
 }
 
-- (id)_initDestVideoScopesGLPriv;
-- (void)_drawImages:(id)arg1 forRate:(double)arg2 clockTime:(CDStruct_1b6d18a9)arg3 isStaleFrame:(BOOL)arg4 qSize:(float)arg5;
-- (void)_drawMissingImageAtTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
-- (void)setDelegate:(id)arg1;
-- (void)drawEmptyBackground;
-- (id)requestedImageInfo;
-- (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
-- (void)setColorspace:(struct CGColorSpace *)arg1;
-@property long long overrideColorSpace; // @dynamic overrideColorSpace;
-- (void)dealloc;
 - (id)initWithDisplayID:(unsigned int)arg1 andCGLContext:(struct _CGLContextObject *)arg2 usingCoreAnimation:(BOOL)arg3;
+- (void)dealloc;
+- (void)setPixelFormatToR4FL:(BOOL)arg1;
+- (void)setColorspace:(struct CGColorSpace *)arg1;
+- (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
+- (int)imageLocation;
+- (struct CGColorSpace *)colorSpace;
+- (id)supportedPixelFormats;
+- (void)drawEmptyBackground;
+- (void)setDelegate:(id)arg1;
+- (void)_drawMissingImageAtTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
+- (void)_drawImages:(id)arg1 forRate:(double)arg2 clockTime:(CDStruct_1b6d18a9)arg3;
+- (void)pushFrame:(id)arg1;
+- (void)skippedFrame:(CDStruct_1b6d18a9)arg1;
+- (_Bool)shouldSkipFrame:(CDStruct_1b6d18a9)arg1 playRate:(double)arg2;
+- (void)setLastHealthMetric:(float)arg1;
+- (id)_initDestVideoScopesGLPriv;
 
 @end
 

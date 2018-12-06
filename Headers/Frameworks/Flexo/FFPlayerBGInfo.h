@@ -10,14 +10,10 @@ __attribute__((visibility("hidden")))
 @interface FFPlayerBGInfo : NSObject
 {
     int _bg;
-    _Bool _fullyOpaque;
-    unsigned int _zebraAnalysisMode;
 }
 
-@property(readonly) unsigned int zebraAnalysisMode; // @synthesize zebraAnalysisMode=_zebraAnalysisMode;
-- (id)description;
-- (_Bool)usableForBG:(int)arg1 andZebraMode:(unsigned int)arg2;
-- (id)initWithBG:(int)arg1 imageFullyOpaque:(_Bool)arg2 zebraMode:(unsigned int)arg3;
+- (id)initWithBG:(int)arg1;
+- (_Bool)usableForBG:(int)arg1;
 
 @end
 

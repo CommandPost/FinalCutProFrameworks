@@ -6,29 +6,35 @@
 
 #import "NSObject.h"
 
+#import "NSCoding.h"
 #import "NSCopying.h"
-#import "NSSecureCoding.h"
 
-@interface FigTimeObj : NSObject <NSCopying, NSSecureCoding>
+@interface FigTimeObj : NSObject <NSCopying, NSCoding>
 {
     CDStruct_1b6d18a9 _time;
 }
 
-+ (BOOL)classIsAbstract;
 + (id)timeWithTime:(CDStruct_1b6d18a9)arg1;
-+ (BOOL)supportsSecureCoding;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (long long)compareWithTime:(id)arg1;
-- (long long)compare:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)getValue:(CDStruct_1b6d18a9 *)arg1;
-- (void)setTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)time;
-- (id)initWithCMTime:(CDStruct_1b6d18a9)arg1;
++ (BOOL)classIsAbstract;
 - (id)initWithFigTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)time;
+- (void)setTime:(CDStruct_1b6d18a9)arg1;
+- (void)getValue:(CDStruct_1b6d18a9 *)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (long long)compare:(id)arg1;
+- (long long)compareWithTime:(id)arg1;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
+- (long long)timevalue;
+- (void)setTimevalue:(long long)arg1;
+- (int)timescale;
+- (void)setTimescale:(int)arg1;
+- (unsigned int)flags;
+- (void)setFlags:(unsigned int)arg1;
+- (long long)epoch;
+- (void)setEpoch:(long long)arg1;
 
 @end
 

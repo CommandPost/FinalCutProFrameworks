@@ -6,26 +6,22 @@
 
 #import <Flexo/FFHGAsyncFanoutResult.h>
 
-@class FFImage, FFImageAbsoluteOutputFormat;
+@class FFImage, FFPixelFormat;
 
 __attribute__((visibility("hidden")))
 @interface FFHGFanoutResultBypass : FFHGAsyncFanoutResult
 {
     FFImage *_image;
-    FFImageAbsoluteOutputFormat *_outFmt;
+    FFPixelFormat *_pf;
     int _location;
-    int _workingSpace;
-    _Bool _cancelled;
 }
 
-@property _Bool cancelled; // @synthesize cancelled=_cancelled;
-- (id)description;
-- (id)newImage;
-- (void)ensureFlattened:(_Bool)arg1;
-- (struct CGColorSpace *)colorSpace;
-- (int)location;
+- (id)initWithImage:(id)arg1 pixelFormat:(id)arg2 location:(int)arg3;
 - (void)dealloc;
-- (id)initWithImage:(id)arg1 pixelFormat:(id)arg2 location:(int)arg3 workingSpace:(int)arg4;
+- (int)location;
+- (struct CGColorSpace *)colorSpace;
+- (id)newImage;
+- (id)description;
 
 @end
 

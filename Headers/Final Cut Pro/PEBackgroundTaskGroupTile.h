@@ -12,7 +12,6 @@
 {
     NSButton *_disclosureButton;
     NSTextField *_idleText;
-    NSTextField *_subtitleText;
     LKTileView *_tasksTileView;
     NSString *_taskGroup;
     long long _completedTaskCount;
@@ -27,33 +26,29 @@
     NSTimer *_timer;
 }
 
+- (id)initWithTitle:(id)arg1 taskGroup:(id)arg2 isProxy:(BOOL)arg3;
+- (void)awakeFromNib;
+- (void)dealloc;
+- (id)groupName;
+- (void)setCanExpand:(BOOL)arg1;
+- (void)updateUI;
+- (void)updateWithTimer:(id)arg1;
+- (id)_scheduleNewTimer;
+- (void)_resetTaskCount;
+- (void)_incrementTaskCount:(id)arg1;
+- (void)_decrementTaskCount:(id)arg1;
+- (void)addTileForTask:(id)arg1;
+- (void)removeTileForTask:(id)arg1;
+- (id)tileForTask:(id)arg1;
+- (BOOL)containsTileForTask:(id)arg1;
+- (void)showHideTasks:(id)arg1;
+- (void)cancelShowTasks:(id)arg1;
+- (void)pauseResumeTasks:(id)arg1;
 @property(nonatomic) SEL proxySelector; // @synthesize proxySelector=_proxySelector;
 @property(nonatomic) id proxyTarget; // @synthesize proxyTarget=_proxyTarget;
 @property(getter=isProxy) BOOL proxy; // @synthesize proxy=_isProxy;
 @property(getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property(retain) NSString *taskGroup; // @synthesize taskGroup=_taskGroup;
-- (void)pauseResumeTasks:(id)arg1;
-- (void)cancelShowTasks:(id)arg1;
-- (void)showHideTasks:(id)arg1;
-- (BOOL)shouldShowTimeRemaining;
-- (BOOL)containsTileForTask:(id)arg1;
-- (id)tileForTask:(id)arg1;
-- (unsigned long long)numberOfTaskTiles;
-- (void)removeTileForTask:(id)arg1;
-- (void)addTileForTask:(id)arg1;
-- (void)_decrementTaskCount:(id)arg1;
-- (void)_incrementTaskCount:(id)arg1;
-- (void)_resetTaskCount;
-- (id)_scheduleNewTimer;
-- (void)updateWithTimer:(id)arg1;
-- (void)updateActionView;
-- (void)updateUI;
-- (void)setExpanded:(BOOL)arg1;
-- (void)setCanExpand:(BOOL)arg1;
-- (id)groupName;
-- (void)dealloc;
-- (void)awakeFromNib;
-- (id)initWithTitle:(id)arg1 taskGroup:(id)arg2 isProxy:(BOOL)arg3;
 
 @end
 

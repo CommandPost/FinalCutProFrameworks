@@ -8,8 +8,6 @@
 
 #import "NSSplitViewDelegate.h"
 
-@class NSString;
-
 @interface LKSplitViewModule : LKViewModule <NSSplitViewDelegate>
 {
     BOOL _isVertical;
@@ -23,28 +21,24 @@
     void *_reserved6;
 }
 
-- (struct CGRect)splitView:(id)arg1 additionalEffectiveRectOfDividerAtIndex:(long long)arg2;
-- (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
-- (void)preLayout:(id)arg1;
-- (void)takeContentLayoutFromDictionary:(id)arg1;
-- (id)contentLayoutDictionary;
-- (BOOL)isVertical;
-- (void)setVertical:(BOOL)arg1;
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
-- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (BOOL)loadView;
-- (Class)splitviewClass;
-- (void)dealloc;
-- (void)_removeViewForModule:(id)arg1;
 - (void)_installViewForModule:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)_removeViewForModule:(id)arg1;
+- (void)dealloc;
+- (Class)splitviewClass;
+- (BOOL)loadView;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
+- (struct CGSize)viewMinSize;
+- (struct CGSize)viewMaxSize;
+- (void)setVertical:(BOOL)arg1;
+- (BOOL)isVertical;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
+- (void)preLayout:(id)arg1;
+- (double)_resizeSplitViewsTo:(double)arg1 dimensions:(double *)arg2 minDimensions:(double *)arg3 count:(unsigned long long)arg4;
+- (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
+- (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
+- (struct CGRect)splitView:(id)arg1 additionalEffectiveRectOfDividerAtIndex:(long long)arg2;
 
 @end
 

@@ -6,80 +6,70 @@
 
 #import <Flexo/FFAnchoredObject.h>
 
-#import "FFRoleChangeProtocol.h"
+#import "FFAssetContainerProtocol.h"
 
-@class FFEffectStack, FFRole, NSString;
+@class FFEffectStack;
 
-@interface FFAnchoredComponent : FFAnchoredObject <FFRoleChangeProtocol>
+@interface FFAnchoredComponent : FFAnchoredObject <FFAssetContainerProtocol>
 {
     FFEffectStack *_effectStack;
-    FFRole *_vendedRole;
 }
 
 + (id)copyClassDescription;
-+ (float)defaultStillDurationInSeconds;
-+ (float)defaultGeneratorDurationInSeconds;
-@property(retain, nonatomic) FFEffectStack *effectStack; // @synthesize effectStack=_effectStack;
-- (void)returnContainedComponentsIn:(id)arg1;
-- (CDStruct_1b6d18a9)sourceSampleDuration;
-- (struct CGRect)imageSpaceBoundsAtTime:(CDStruct_1b6d18a9)arg1;
-- (struct CGRect)squarePixelSourceRect;
-- (id)videoProps;
-- (CDStruct_1b6d18a9)timeOffset;
-- (CDStruct_e83c9415)mediaRange;
-- (id)newProvider;
-- (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
-- (void)actionBegin:(id)arg1 animationHint:(id)arg2 deferUpdates:(BOOL)arg3;
-- (id)mdTargetForKey:(id)arg1;
-- (id)onScreenControls;
-- (void)removeChannel:(id)arg1;
-- (BOOL)canRemoveChannel:(id)arg1;
-- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
-- (BOOL)canReorderChannel:(id)arg1;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)persistentID;
-- (BOOL)supportsRoles;
-- (id)rolesWithPlayEnable:(int)arg1;
-- (void)informEndRoleChanges:(id)arg1;
-- (id)defaultBuiltInMainRoleUID;
-- (id)guessVideoBuiltInMainRoleUID;
-- (id)guessAudioBuiltInMainRoleUID;
-- (BOOL)isRoleInferred;
-- (void)resetRoleToDefault;
-- (void)setRole:(id)arg1;
-- (void)setRoleUID:(id)arg1;
-@property(readonly, retain, nonatomic) NSString *roleUID;
-@property(readonly, retain, nonatomic) FFRole *vendedRole;
-- (void)initializeRoleUID:(id)arg1;
-- (void)_updateVendedRoleFromRoleUID:(id)arg1;
-- (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
-- (void)_collectDescendentCompositedObject:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 intoArray:(id)arg3 useAudioRange:(BOOL)arg4 container:(id)arg5;
-- (id)firstAudioAnchoredComponent;
-- (id)firstVideoAnchoredComponent;
-- (void)notifyAnchoredObjectRemovedFromSequence:(id)arg1;
-- (id)secondaryEffectStack;
-- (id)primaryEffectStack;
-- (id)videoEffects;
-- (id)localAudioEffects;
-- (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
-- (id)_newExtendedSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 sourceid:(id)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9 unclippedRangeRequired:(CDStruct_e83c9415)arg10;
-- (id)_newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 roles:(id)arg6 angleOffset:(long long)arg7 angleCount:(long long)arg8 clippedByContainer:(BOOL)arg9;
-- (BOOL)isComponent;
-- (BOOL)hasExtractableCaptions;
-@property BOOL hasVideo;
-- (BOOL)supportsAudio;
-@property BOOL hasAudio;
-- (CDStruct_e83c9415)unclippedRange;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (BOOL)shouldEncodeEffectStackWithCoder:(id)arg1;
-- (id)awakeAfterUsingCoder:(id)arg1;
-- (void)_markRolePropertiesAsDirty;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)initWithDisplayName:(id)arg1 andFilterType:(id)arg2;
++ (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 - (id)type;
+- (id)initWithDisplayName:(id)arg1 andFilterType:(id)arg2;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (CDStruct_e83c9415)unclippedRange;
+@property BOOL hasAudio;
+@property BOOL hasVideo;
+- (BOOL)isComponent;
+- (id)_newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 clippedByContainer:(BOOL)arg6;
+- (id)_newExtendedSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 sourceid:(id)arg4 effectCount:(long long)arg5 clippedByContainer:(BOOL)arg6 unclippedRangeRequired:(CDStruct_e83c9415)arg7;
+- (id)newSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 clippedByContainer:(BOOL)arg6;
+@property(retain, nonatomic) FFEffectStack *effectStack; // @synthesize effectStack=_effectStack;
+- (id)audioEffects;
+- (id)videoEffects;
+- (id)primaryEffectStack;
+- (id)secondaryEffectStack;
+- (void)notifyAnchoredObjectRemovedFromSequence:(id)arg1;
+- (id)firstVideoAnchoredComponent;
+- (id)firstAudioAnchoredComponent;
+- (void)_collectDescendentCompositedObject:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 intoArray:(id)arg3 useAudioRange:(BOOL)arg4 container:(id)arg5;
+- (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
+- (id)assets;
+- (id)assetRefs;
+- (id)fileURLs:(int)arg1;
+- (id)inspectorClassName;
+- (id)inspectorTabClassNames;
+- (id)inspectorTabIdentifiers;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (BOOL)canReorderChannel:(id)arg1;
+- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
+- (BOOL)canRemoveChannel:(id)arg1;
+- (void)removeChannel:(id)arg1;
+- (id)onScreenControls;
+- (id)mdMappedKeyPathForKey:(id)arg1;
+- (id)mdKeysInRange:(CDStruct_e83c9415)arg1;
+- (id)mdValuesForKeys:(id)arg1 inRange:(CDStruct_e83c9415)arg2;
+- (void)actionBegin:(id)arg1 animationHint:(id)arg2 deferUpdates:(BOOL)arg3;
+- (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)isEditing;
+- (void)beginEditing;
+- (void)endEditing;
+- (id)newProvider;
+- (CDStruct_e83c9415)mediaRange;
+- (CDStruct_1b6d18a9)timeOffset;
+- (id)videoProps;
+- (CDStruct_1b6d18a9)sampleDuration;
+- (struct CGRect)squarePixelSourceRect;
+- (struct CGRect)imageSpaceBoundsAtTime:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)sourceSampleDuration;
+- (void)returnContainedComponentsIn:(id)arg1;
 
 @end
 

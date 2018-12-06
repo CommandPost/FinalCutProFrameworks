@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKButton, NSString;
+@class LKButton;
 
 @interface OZRigEditWindowCtlr : NSWindowController <NSWindowDelegate>
 {
@@ -16,21 +16,15 @@
     struct OZRigWidget *_pWidget;
 }
 
-+ (void)cancelEditingModeForWidget:(struct OZRigWidget *)arg1;
-+ (void)startEditModeForWidget:(struct OZRigWidget *)arg1;
 + (id)widgetToCtlrMap;
-- (void)cancel:(id)arg1;
-- (void)stopEditMode:(id)arg1;
-- (void)cleanup;
-- (void)windowWillClose:(id)arg1;
-- (void)windowDidLoad;
++ (void)startEditModeForWidget:(struct OZRigWidget *)arg1;
++ (void)cancelEditingModeForWidget:(struct OZRigWidget *)arg1;
 - (id)initWithWidget:(struct OZRigWidget *)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)windowDidLoad;
+- (void)windowWillClose:(id)arg1;
+- (void)cleanup;
+- (void)stopEditMode:(id)arg1;
+- (void)cancel:(id)arg1;
 
 @end
 

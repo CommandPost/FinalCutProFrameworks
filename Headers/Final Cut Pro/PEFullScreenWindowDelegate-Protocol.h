@@ -4,9 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class PEFullScreenWindowModule;
-
 @protocol PEFullScreenWindowDelegate
-- (void)fullscreenWindow:(PEFullScreenWindowModule *)arg1 screenNotAvailable:(long long)arg2;
+- (void)fullscreenWindow:(id)arg1 screenNotAvailable:(long long)arg2;
 @end
 

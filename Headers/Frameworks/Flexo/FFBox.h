@@ -13,10 +13,11 @@ __attribute__((visibility("hidden")))
     int _elementId;
 }
 
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)_baseFacet;
 @property int elementID; // @synthesize elementID=_elementId;
 @property int partID; // @synthesize partID=_partId;
-- (id)initWithCoder:(id)arg1;
-- (id)init;
 
 @end
 

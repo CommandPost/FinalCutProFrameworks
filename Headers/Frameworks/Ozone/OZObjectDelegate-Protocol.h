@@ -5,7 +5,7 @@
 //
 
 @protocol OZObjectDelegate
-- (struct OZObjectManipulator *)getObjectManipulator;
 - (void)setChannel:(struct OZChannelBase *)arg1;
+- (struct OZObjectManipulator *)getObjectManipulator;
 @end
 

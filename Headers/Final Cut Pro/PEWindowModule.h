@@ -17,26 +17,18 @@
 }
 
 + (Class)windowClass;
-@property(getter=isReleasedWhenClosed) BOOL releasedWhenClosed; // @synthesize releasedWhenClosed=_releasedWhenClosed;
-- (void)toggleCoachTips:(id)arg1;
-- (void)windowDidExitFullScreen:(id)arg1;
-- (void)windowDidEnterFullScreen:(id)arg1;
-- (BOOL)window:(id)arg1 shouldPopUpDocumentPathMenu:(id)arg2;
-- (void)keyDown:(id)arg1;
-- (void)takeContentLayoutFromDictionary:(id)arg1;
-- (id)contentLayoutDictionary;
-- (id)windowWillReturnUndoManager:(id)arg1;
-- (void)windowWillClose:(id)arg1;
-- (void)setWindow:(id)arg1;
-- (id)windowTitle;
-- (void)viewDidLoad;
 - (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)viewDidLoad;
+- (id)windowTitle;
+- (void)setWindow:(id)arg1;
+- (void)windowWillClose:(id)arg1;
+- (id)windowWillReturnUndoManager:(id)arg1;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
+- (void)keyDown:(id)arg1;
+- (void)_setImageForToolbarItem:(id)arg1 withInfo:(id)arg2;
+- (BOOL)window:(id)arg1 shouldPopUpDocumentPathMenu:(id)arg2;
+@property(getter=isReleasedWhenClosed) BOOL releasedWhenClosed; // @synthesize releasedWhenClosed=_releasedWhenClosed;
 
 @end
 

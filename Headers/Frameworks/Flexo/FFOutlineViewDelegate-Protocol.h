@@ -6,25 +6,23 @@
 
 #import "NSObject.h"
 
-@class FFOutlineView, NSArray, NSEvent, NSIndexPath, NSMenu, NSWindow;
-
 @protocol FFOutlineViewDelegate <NSObject>
 
 @optional
-- (void)outlineView:(FFOutlineView *)arg1 willMoveToWindow:(NSWindow *)arg2;
-- (void)outlineViewDidMoveToWindow:(FFOutlineView *)arg1;
-- (void)outlineViewVisibleCellsDidChange:(FFOutlineView *)arg1;
-- (BOOL)outlineView:(FFOutlineView *)arg1 canEditRowAtIndexPath:(NSIndexPath *)arg2;
-- (NSMenu *)outlineView:(FFOutlineView *)arg1 menuForRowAtIndexPath:(NSIndexPath *)arg2 withEvent:(NSEvent *)arg3;
-- (BOOL)outlineView:(FFOutlineView *)arg1 keyDown:(NSEvent *)arg2;
-- (BOOL)outlineView:(FFOutlineView *)arg1 mouseDownForRowAtIndexPath:(NSIndexPath *)arg2 withEvent:(NSEvent *)arg3;
-- (void)outlineView:(FFOutlineView *)arg1 didCollapseRowsAtIndexPaths:(NSArray *)arg2;
-- (void)outlineView:(FFOutlineView *)arg1 didExpandRowsAtIndexPaths:(NSArray *)arg2;
-- (void)outlineView:(FFOutlineView *)arg1 willCollapseRowsAtIndexPaths:(NSArray *)arg2;
-- (void)outlineView:(FFOutlineView *)arg1 willExpandRowsAtIndexPaths:(NSArray *)arg2;
-- (NSArray *)outlineView:(FFOutlineView *)arg1 defaultSelectedRowIndexPaths:(NSArray *)arg2;
-- (void)outlineViewSelectionDidChange:(FFOutlineView *)arg1;
-- (BOOL)outlineView:(FFOutlineView *)arg1 shouldSelectRowAtIndexPath:(NSIndexPath *)arg2;
-- (double)outlineView:(FFOutlineView *)arg1 heightForRowAtIndexPath:(NSIndexPath *)arg2;
+- (double)outlineView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
+- (BOOL)outlineView:(id)arg1 shouldSelectRowAtIndexPath:(id)arg2;
+- (void)outlineViewSelectionDidChange:(id)arg1;
+- (id)outlineView:(id)arg1 defaultSelectedRowIndexPaths:(id)arg2;
+- (void)outlineView:(id)arg1 willExpandRowsAtIndexPaths:(id)arg2;
+- (void)outlineView:(id)arg1 willCollapseRowsAtIndexPaths:(id)arg2;
+- (void)outlineView:(id)arg1 didExpandRowsAtIndexPaths:(id)arg2;
+- (void)outlineView:(id)arg1 didCollapseRowsAtIndexPaths:(id)arg2;
+- (BOOL)outlineView:(id)arg1 mouseDownForRowAtIndexPath:(id)arg2 withEvent:(id)arg3;
+- (BOOL)outlineView:(id)arg1 keyDown:(id)arg2;
+- (id)outlineView:(id)arg1 menuForRowAtIndexPath:(id)arg2 withEvent:(id)arg3;
+- (BOOL)outlineView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
+- (void)outlineViewVisibleCellsDidChange:(id)arg1;
+- (void)outlineViewDidMoveToWindow:(id)arg1;
+- (void)outlineView:(id)arg1 willMoveToWindow:(id)arg2;
 @end
 

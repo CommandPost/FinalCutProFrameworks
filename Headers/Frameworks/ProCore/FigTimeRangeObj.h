@@ -6,36 +6,32 @@
 
 #import "NSObject.h"
 
-#import "FigTimeRangeOperationCopying.h"
+#import "NSCoding.h"
 #import "NSCopying.h"
-#import "NSSecureCoding.h"
 
-@interface FigTimeRangeObj : NSObject <FigTimeRangeOperationCopying, NSCopying, NSSecureCoding>
+@interface FigTimeRangeObj : NSObject <NSCopying, NSCoding>
 {
     CDStruct_e83c9415 _range;
 }
 
 + (id)rangeWithRange:(CDStruct_e83c9415)arg1;
-+ (BOOL)supportsSecureCoding;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
-- (long long)sortByStartTimeDescending:(id)arg1;
-- (long long)sortByStartTimeAscending:(id)arg1;
-- (id)description;
-- (void)getValue:(CDStruct_e83c9415 *)arg1;
-- (void)setDuration:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)duration;
-- (CDStruct_1b6d18a9)end;
-- (void)setStart:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)start;
-- (void)setRange:(CDStruct_e83c9415)arg1;
-- (CDStruct_e83c9415)range;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithCMTimeRange:(CDStruct_e83c9415)arg1;
 - (id)initWithFigTimeRange:(CDStruct_e83c9415)arg1;
-- (id)copyWithRange:(CDStruct_e83c9415)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (CDStruct_e83c9415)range;
+- (void)setRange:(CDStruct_e83c9415)arg1;
+- (CDStruct_1b6d18a9)start;
+- (void)setStart:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)end;
+- (CDStruct_1b6d18a9)duration;
+- (void)setDuration:(CDStruct_1b6d18a9)arg1;
+- (void)getValue:(CDStruct_e83c9415 *)arg1;
+- (id)description;
+- (long long)sortByStartTimeAscending:(id)arg1;
+- (long long)sortByStartTimeDescending:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
 
 @end
 

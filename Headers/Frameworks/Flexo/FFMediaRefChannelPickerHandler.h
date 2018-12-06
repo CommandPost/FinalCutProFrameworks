@@ -6,22 +6,13 @@
 
 #import "TLKTimelineHandler.h"
 
-@class FFContext, FFMedia;
-
 __attribute__((visibility("hidden")))
 @interface FFMediaRefChannelPickerHandler : TLKTimelineHandler
 {
-    FFContext *_context;
-    FFMedia *_media;
 }
 
-- (void)stopSkimming:(id)arg1;
-- (void)updateSkimming:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
 - (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
-- (void)stopHandling:(id)arg1;
-- (void)startHandling:(id)arg1;
-- (void)dealloc;
+- (BOOL)stopTracking:(id)arg1;
 
 @end
 

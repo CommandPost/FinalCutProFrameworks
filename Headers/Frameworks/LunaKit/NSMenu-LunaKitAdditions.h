@@ -7,6 +7,6 @@
 #import "NSMenu.h"
 
 @interface NSMenu (LunaKitAdditions)
-- (void)installProMenuImpl;
++ (id)menuArrowsFacet;
 @end
 

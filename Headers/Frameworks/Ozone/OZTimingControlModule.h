@@ -6,16 +6,13 @@
 
 #import <Ozone/OZProViewModule.h>
 
-@class LKButton, LKPopUpButton, LKSlider, LKZoomScroller, NSView, OZCurveEditorModule, OZMoCurveEditorAudioDelegate, OZMoCurveEditorView, OZSplitView, OZTimelineModule;
+@class LKPopUpButton, LKSplitView, LKZoomScroller, OZCurveEditorModule, OZMiniFooterView, OZMoCurveEditorAudioDelegate, OZMoCurveEditorView, OZTimelineModule;
 
 @interface OZTimingControlModule : OZProViewModule
 {
     LKZoomScroller *_horizontalZoomScroller;
-    OZSplitView *_verticalSplit;
-    NSView *_leftView;
-    LKSlider *_zoomSlider;
-    LKButton *_zoomOutButton;
-    LKButton *_zoomInButton;
+    LKSplitView *_verticalSplit;
+    OZMiniFooterView *_leftView;
     LKPopUpButton *_layerListSizePopUp;
     OZCurveEditorModule *_curveEditorModule;
     OZTimelineModule *_timelineModule;
@@ -25,44 +22,41 @@
     double _savedDividerPosition;
 }
 
+- (id)init;
+- (void)dealloc;
+- (BOOL)wantsHeaderBar;
+- (void)_setupButtonGlyphs;
+- (void)curveEditorDidSetDelegate;
+- (void)awakeFromNib;
+- (void)update;
+- (struct CGSize)viewMinSize;
+- (struct CGSize)viewMaxSize;
+- (BOOL)isBackgroundGrabbable;
+- (BOOL)isViewOrderedBelow;
+- (void)refreshFitButton;
+- (void)refreshClearListButton;
+- (void)notify:(unsigned int)arg1;
+- (void)updateVerticalZoomPopUp:(double)arg1;
+- (void)layerListSize:(id)arg1;
+- (void)frameAll:(id)arg1;
+- (void)setAutoPan:(id)arg1;
+- (void)setSnapToTime:(id)arg1;
+- (void)clearCustomCurveSet:(id)arg1;
+- (void)showHideAudio:(BOOL)arg1;
+- (void)setShowAudio:(id)arg1;
+- (void)menuSetTrackID:(id)arg1;
+- (void)snapshotChannels:(id)arg1;
+- (double)dividerThickness;
+- (double)dividerPosition;
+- (void)setDividerPosition:(double)arg1;
+- (void)splitViewDidResizeSubviews:(id)arg1;
+- (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
+- (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
+- (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
 @property(nonatomic) OZTimelineModule *timelineModule; // @synthesize timelineModule=_timelineModule;
 @property(nonatomic) OZCurveEditorModule *curveEditorModule; // @synthesize curveEditorModule=_curveEditorModule;
 @property(nonatomic) BOOL externalModuleIsSettingDividerPosition; // @synthesize externalModuleIsSettingDividerPosition=_externalModuleIsSettingDividerPosition;
-@property(readonly) LKSlider *zoomSlider; // @synthesize zoomSlider=_zoomSlider;
 @property(readonly) LKZoomScroller *horizontalZoomScroller; // @synthesize horizontalZoomScroller=_horizontalZoomScroller;
-- (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
-- (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(int)arg3;
-- (void)splitView:(id)arg1 resizeSubviewsWithOldSize:(struct CGSize)arg2;
-- (id)splitView;
-- (void)splitViewDidResizeSubviews:(id)arg1;
-- (void)splitViewWillResizeSubviews:(id)arg1;
-- (void)setDividerPosition:(double)arg1;
-- (double)dividerPosition;
-- (double)dividerThickness;
-- (void)zoomTimelineOut:(id)arg1;
-- (void)zoomTimelineIn:(id)arg1;
-- (void)snapshotChannels:(id)arg1;
-- (void)menuSetTrackID:(id)arg1;
-- (void)setShowAudio:(id)arg1;
-- (void)showHideAudio:(BOOL)arg1;
-- (void)clearCustomCurveSet:(id)arg1;
-- (void)setSnapToTime:(id)arg1;
-- (void)setAutoPan:(id)arg1;
-- (void)frameAll:(id)arg1;
-- (void)layerListSize:(id)arg1;
-- (void)updateVerticalZoomPopUp:(double)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)refreshClearListButton;
-- (void)refreshFitButton;
-- (void)viewDidLoad;
-- (BOOL)isViewOrderedBelow;
-- (BOOL)isBackgroundGrabbable;
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
-- (void)curveEditorDidSetDelegate;
-- (BOOL)wantsHeaderBar;
-- (void)dealloc;
-- (id)init;
 
 @end
 

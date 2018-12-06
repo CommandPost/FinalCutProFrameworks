@@ -4,17 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSPopUpButtonCell.h"
+#import "NSProPopUpButtonCell.h"
 
-@interface LKPopUpButtonCell : NSPopUpButtonCell
+@interface LKPopUpButtonCell : NSProPopUpButtonCell
 {
-    unsigned int hasSetTintIndex:1;
 }
 
-+ (double)_customArrowSpacingForControlSize:(unsigned long long)arg1;
-- (struct CGRect)titleRectForBounds:(struct CGRect)arg1;
-- (struct CGRect)drawingRectForBounds:(struct CGRect)arg1;
-- (void)dealloc;
+- (id)_baseFacet;
+- (id)_textColor;
 
 @end
 

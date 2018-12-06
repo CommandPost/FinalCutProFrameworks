@@ -9,13 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface FFAccessibilityTransparentView : NSView
 {
-    BOOL _flipped;
 }
 
-- (id)menuForEvent:(id)arg1;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
-- (BOOL)isFlipped;
-- (id)initWithFrame:(struct CGRect)arg1 flipped:(BOOL)arg2;
+- (id)menuForEvent:(id)arg1;
 
 @end
 

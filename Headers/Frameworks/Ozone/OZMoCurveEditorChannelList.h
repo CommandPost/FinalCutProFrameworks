@@ -14,12 +14,12 @@
     struct OZChannelBase *_pCurrentChan;
 }
 
-- (id)buildMenu:(const struct OZLibraryPresetsMap *)arg1;
-- (void)applyBehavior:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)applyBehavior:(id)arg1;
+- (id)buildMenu:(const struct OZLibraryPresetsMap *)arg1;
 
 @end
 

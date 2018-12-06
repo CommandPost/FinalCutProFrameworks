@@ -6,7 +6,7 @@
 
 #import <Flexo/FFHeliumEffect.h>
 
-@class CHChannelBool, CHChannelDouble, CHChannelEnum, FFDominantMotionMediaRep, NSMutableArray;
+@class CHChannelDouble, FFDominantMotionMediaRep, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFStabilizationEffect : FFHeliumEffect
@@ -14,84 +14,60 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_smoothTransforms;
     int _smoothTransformStartSample;
     CDStruct_e83c9415 _smoothingRange;
-    BOOL _canDoTripod;
-    int _algorithmUsed;
-    BOOL _fromLegacyProject;
     CHChannelDouble *_chTranslationSmooth;
     CHChannelDouble *_chRotationSmooth;
     CHChannelDouble *_chScaleSmooth;
-    CHChannelEnum *_chAlgorithmRequested;
-    CHChannelDouble *_chInertiaCamSmooth;
-    CHChannelBool *_chUseTripodMode;
     CDStruct_1b6d18a9 _mediaStartTime;
     FFDominantMotionMediaRep *_mediaRep;
     BOOL _requestPending;
     BOOL _analysisRequestInProgress;
     CDStruct_e83c9415 _requestedRange;
     id _notificationHandler;
-    BOOL _suppressChannelChangeUpdate;
 }
 
-+ (id)effectForEffectStack:(id)arg1;
-+ (id)effectInstanceForEffectStack:(id)arg1;
-+ (id)effectIDForEffectStack:(id)arg1;
-+ (void)registerEffects;
 + (id)copyClassDescription;
-- (void)analysisDataReady:(id)arg1;
-- (void)channelParameterChanged:(id)arg1;
-- (void)setSuppressChannelChangeUpdate:(BOOL)arg1;
-- (void)requestOrRetrieveSmoothTransform;
-- (BOOL)waitingForAnalysis;
-- (id)inputKeys;
-- (void)loadPersistentData:(id)arg1;
-- (id)persistentData;
-- (void)createChannelsInFolder:(id)arg1;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
-- (void)_maybeRequestSmoothTransform:(id)arg1;
-- (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6;
-- (void)_requestSmoothTransform;
-- (void)_retrieveSmoothTransformAndShakyRanges:(CDStruct_e83c9415)arg1 useInertiaCam:(BOOL)arg2;
-- (long long)_referenceFrameIndexForRange:(CDStruct_e83c9415)arg1;
-- (void)_addExcessiveShakeKeywords:(id)arg1;
-- (void)_setSmoothTransformsIfNoPendingRequest:(id)arg1 forSequence:(id)arg2;
-- (void)_setSmoothTransforms:(id)arg1 forSequence:(id)arg2;
-- (void)_setupChannels;
-- (void)_disableAllChannels;
-- (void)_establishMediaRep;
-- (void)setPersistentData:(id)arg1;
-- (void)setRequestPending:(BOOL)arg1;
-- (BOOL)requestPending;
-- (BOOL)_smoothingRangeChanged;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
-- (int)frameFromTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)sampleTimeFromTime:(CDStruct_1b6d18a9)arg1;
-- (int)sampleFromTime:(CDStruct_1b6d18a9)arg1;
-- (BOOL)canDoTripod;
-- (BOOL)useTripodMode;
-- (double)smoothingAmount;
-- (void)setAlgorithmUsed:(long long)arg1;
-- (long long)algorithmUsed;
-- (void)setAlgorithmRequest:(long long)arg1;
-- (long long)algorithmRequested;
-- (double)scaleSmooth;
-- (double)rotationSmooth;
-- (double)translationSmooth;
-- (CDStruct_1b6d18a9)mediaStartTime;
-- (struct HGNode *)newNodeForContext:(id)arg1;
-- (BOOL)analysisAvailable:(id)arg1 context:(id)arg2;
-- (BOOL)needsAnalysis:(id)arg1 context:(id)arg2;
-- (CDStruct_1b6d18a9)absoluteStartToUseForMD5Calcs;
-- (CDStruct_1b6d18a9)durationToUseForMD5Calcs;
-- (BOOL)effectStartAndDurationImpactMD5;
-- (BOOL)writeDefaultChannels;
-- (BOOL)effectIntroducesAlpha;
-- (BOOL)isNoOp;
-- (unsigned int)attributeCopyingFlags;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
++ (void)registerEffects;
++ (id)effectIDForEffectStack:(id)arg1;
++ (id)effectInstanceForEffectStack:(id)arg1;
++ (id)effectForEffectStack:(id)arg1;
 - (id)initWithEffectID:(id)arg1;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned int)attributeCopyingFlags;
+- (BOOL)isNoOp;
+- (BOOL)writeDefaultChannels;
+- (BOOL)effectStartAndDurationImpactMD5;
+- (CDStruct_1b6d18a9)durationToUseForMD5Calcs;
+- (BOOL)needsAnalysis;
+- (BOOL)analysisAvailable;
+- (struct HGNode *)newNodeForContext:(id)arg1;
+- (CDStruct_1b6d18a9)mediaStartTime;
+- (double)translationSmooth;
+- (double)rotationSmooth;
+- (double)scaleSmooth;
+- (int)sampleFromTime:(CDStruct_1b6d18a9)arg1;
+- (int)frameFromTime:(CDStruct_1b6d18a9)arg1;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (BOOL)_smoothingRangeChanged;
+- (BOOL)requestPending;
+- (void)setRequestPending:(BOOL)arg1;
+- (void)setPersistentData:(id)arg1;
+- (void)_establishMediaRep;
+- (void)_setSmoothTransforms:(id)arg1;
+- (void)_setSmoothTransformsIfNoPendingRequest:(id)arg1;
+- (void)_addExcessiveShakeKeywords:(id)arg1;
+- (void)_retrieveSmoothTransformAndShakyRanges:(CDStruct_e83c9415)arg1;
+- (void)requestSmoothTransform;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(struct CGRect *)arg7;
+- (void)createChannelsInFolder:(id)arg1;
+- (id)persistentData;
+- (void)loadPersistentData:(id)arg1;
+- (id)inputKeys;
+- (BOOL)waitingForAnalysis;
+- (void)channelParameterChanged:(id)arg1;
+- (void)analysisDataReady:(id)arg1;
 
 @end
 

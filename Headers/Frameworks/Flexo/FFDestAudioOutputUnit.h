@@ -12,30 +12,26 @@
     struct FFAudioNode *_channelConformer;
     struct ComponentInstanceRecord *_outputUnit;
     BOOL _connected;
-    struct OpaqueCMTimebase *_timebase;
+    struct OpaqueFigClock *_clock;
     struct FFAudioPerfRenderHook *_perfHook;
     struct FFAudioSignalClamper *_signalClamp;
-    struct FFDestAudioStartTimebaseRenderHook *_startTimebaseHook;
-    struct FFDestAudioOutputUnitIsRunningPropertyMgr *_isRunningPropertyMgr;
 }
 
-+ (unsigned long long)getIOProcThreadKey;
-- (void)reset;
-- (BOOL)isRunning;
-- (void)stop;
-- (void)start:(id)arg1;
-- (void *)figClock;
-- (void)_createDestAudioOutputUnitTimebase;
-- (void)setPullCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
-- (void)setPullGraph:(struct FFAudioGraph *)arg1 node:(struct FFAudioNode *)arg2 elem:(unsigned int)arg3;
-- (unsigned long long)maximumBufferFrames;
-- (void)setSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
-- (BOOL)matchesSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
-- (struct FFAudioNode *)_sourceNode;
-- (struct ComponentInstanceRecord *)outputUnit;
-- (void)dealloc;
-- (id)initWithOutputUnit:(const struct ComponentDescription *)arg1 playbackContext:(id)arg2;
 - (id)initWithDeviceID:(id)arg1 playbackContext:(id)arg2;
+- (id)initWithOutputUnit:(const struct ComponentDescription *)arg1 playbackContext:(id)arg2;
+- (void)dealloc;
+- (struct ComponentInstanceRecord *)outputUnit;
+- (BOOL)matchesSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
+- (void)setSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
+- (unsigned long long)maximumChannels;
+- (unsigned long long)maximumBufferFrames;
+- (void)setPullGraph:(struct FFAudioGraph *)arg1 node:(struct FFAudioNode *)arg2 elem:(unsigned int)arg3;
+- (void)setPullCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
+- (struct OpaqueFigClock *)figClock;
+- (void)start;
+- (void)stop;
+- (BOOL)isRunning;
+- (void)reset;
 
 @end
 

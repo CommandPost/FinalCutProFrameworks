@@ -8,25 +8,16 @@
 
 #import "NSWindowDelegate.h"
 
-@class NSString;
-
 @interface OZCurveEditorValueController : OZTimingMoveController <NSWindowDelegate>
 {
 }
 
-+ (BOOL)openWithLocation:(struct CGPoint)arg1 value:(double *)arg2;
-+ (BOOL)openWithLocation:(struct CGPoint)arg1 value:(double *)arg2 inWindow:(id)arg3 withRect:(struct CGRect)arg4;
 + (BOOL)openWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 timeValue:(double *)arg3 timeIsDelta:(char *)arg4;
-- (struct CGPoint)getPanelLocation:(struct CGPoint)arg1 parentFrame:(struct CGRect)arg2;
++ (BOOL)openWithLocation:(struct CGPoint)arg1 value:(double *)arg2 inWindow:(id)arg3 withRect:(struct CGRect)arg4;
++ (BOOL)openWithLocation:(struct CGPoint)arg1 value:(double *)arg2;
+- (id)init;
 - (void)valueFieldChanged:(id)arg1;
-- (void)buildUI;
-- (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (struct CGPoint)getPanelLocation:(struct CGPoint)arg1 parentFrame:(struct CGRect)arg2;
 
 @end
 

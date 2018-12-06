@@ -14,13 +14,11 @@
 }
 
 + (id)addAnimControllerToController:(id)arg1 channel:(struct OZChannelBase *)arg2 context:(id)arg3;
-+ (double)defaultWidth;
-- (void)reset;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (void)reset;
 
 @end
 

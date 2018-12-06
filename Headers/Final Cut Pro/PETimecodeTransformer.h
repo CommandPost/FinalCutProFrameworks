@@ -10,10 +10,10 @@
 {
 }
 
-+ (BOOL)allowsReverseTransformation;
 + (Class)transformedValueClass;
-- (id)reverseTransformedValue:(id)arg1;
++ (BOOL)allowsReverseTransformation;
 - (id)transformedValue:(id)arg1;
+- (id)reverseTransformedValue:(id)arg1;
 
 @end
 

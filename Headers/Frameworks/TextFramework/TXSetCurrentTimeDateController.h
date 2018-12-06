@@ -10,10 +10,10 @@
 {
 }
 
-- (void)setCurrentTimeDate:(id)arg1;
-- (void)setTimeDateValue:(struct OZChannelBase *)arg1;
-- (void)update;
 - (id)initWithNode:(struct OZSceneNode *)arg1 context:(id)arg2;
+- (void)update;
+- (void)setTimeDateValue:(struct OZChannelBase *)arg1;
+- (void)setCurrentTimeDate:(id)arg1;
 
 @end
 

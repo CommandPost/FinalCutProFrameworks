@@ -9,12 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface FFImportOrganizerSplitView : LKSplitView
 {
-    BOOL _hideDivider;
 }
 
-@property BOOL hideDivider; // @synthesize hideDivider=_hideDivider;
-- (id)dividerColor;
 - (double)dividerThickness;
+- (void)drawDividerInRect:(struct CGRect)arg1;
 
 @end
 

@@ -11,16 +11,16 @@
 @interface OZBehaviorInspectorController : OZViewCtlrRoot
 {
     struct OZBehavior *_pBehavior;
-    list_64b41211 *_pBehaviors;
+    list_06b59fe9 *_pBehaviors;
     OZMoViewCtlrDelegate *_pMyDelegate;
 }
 
-- (void)notify:(unsigned int)arg1;
-- (void)twiddle;
-- (void)dealloc;
+- (id)initWithBehaviors:(list_06b59fe9 *)arg1;
+- (id)initWithBehaviorsDontBuild:(list_06b59fe9 *)arg1;
 - (id)initWithBehaviorDontBuild:(struct OZBehavior *)arg1;
-- (id)initWithBehaviorsDontBuild:(list_64b41211 *)arg1;
-- (id)initWithBehaviors:(list_64b41211 *)arg1;
+- (void)dealloc;
+- (void)twiddle;
+- (void)notify:(unsigned int)arg1;
 
 @end
 

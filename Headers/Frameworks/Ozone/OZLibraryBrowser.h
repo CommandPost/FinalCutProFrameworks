@@ -10,19 +10,16 @@
 {
 }
 
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)selectNone:(id)arg1;
-- (void)selectAll:(id)arg1;
-- (void)librayDelete:(id)arg1;
-- (void)delete:(id)arg1;
-- (void)duplicate:(id)arg1;
-- (void)paste:(id)arg1;
-- (void)cut:(id)arg1;
-- (void)copy:(id)arg1;
 - (BOOL)needsPanelToBecomeKey;
-- (void)_drawEmptyColumnsForView:(id)arg1 inRect:(struct CGRect)arg2;
-- (id)_createColumn:(struct CGRect)arg1 empty:(BOOL)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)copy:(id)arg1;
+- (void)cut:(id)arg1;
+- (void)paste:(id)arg1;
+- (void)duplicate:(id)arg1;
+- (void)delete:(id)arg1;
+- (void)librayDelete:(id)arg1;
+- (void)selectAll:(id)arg1;
+- (void)selectNone:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
 
 @end
 

@@ -6,23 +6,20 @@
 
 #import <Flexo/FFAnchoredSequenceSettingsModule.h>
 
-@class FFVideoProps;
+@class FFVideoFormat;
 
 __attribute__((visibility("hidden")))
 @interface FFAnchoredSequenceConfirmSettingsModule : FFAnchoredSequenceSettingsModule
 {
-    BOOL _suggestChoosingCustom;
-    FFVideoProps *_bestGuess;
+    FFVideoFormat *_bestGuess;
 }
 
-- (void)closingWithCode:(int)arg1;
-- (BOOL)loadView;
-- (void)changeVideoFormat:(id)arg1;
-- (void)setBestGuess:(id)arg1;
-- (void)setSuggestChoosingCustomText:(BOOL)arg1;
-- (BOOL)isEmptyProject;
 - (void)dealloc;
-- (id)initWithProvider:(id)arg1;
+- (BOOL)manuallySetProperty;
+- (BOOL)isEmptyProject;
+- (void)setBestGuess:(id)arg1;
+- (BOOL)loadView;
+- (void)closingWithCode:(int)arg1;
 
 @end
 

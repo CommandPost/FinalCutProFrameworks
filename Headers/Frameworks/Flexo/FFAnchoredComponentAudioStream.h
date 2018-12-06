@@ -9,18 +9,18 @@
 __attribute__((visibility("hidden")))
 @interface FFAnchoredComponentAudioStream : FFStreamAudio
 {
+    FFStreamAudio *_stream;
     double _sampleRate;
-    struct FFAudioEffectsBuss *_effectsBuss;
-    struct FFAudioEffectsBussAnchoredObjectDelegate *_effectsBussDelegate;
-    struct FFAudioNode *_sequenceTimeNode;
+    struct FFGraphAttachedParameterChaser *_keyframeChaser;
+    struct FFAudioEffectChain *_effectChain;
+    struct FFAudioNode *_pannerNode;
 }
 
-- (void)preRenderEnd;
-- (void)preRenderBegin:(CDStruct_1b6d18a9)arg1 sync:(id)arg2;
-- (void)prerollEnd;
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
-- (void)dealloc;
 - (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3;
+- (void)dealloc;
+- (void)_invalidateStreamCacheForRange:(CDStruct_e83c9415)arg1 onChannel:(id)arg2;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
+- (void)prerollEnd;
 
 @end
 

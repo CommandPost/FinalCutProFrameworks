@@ -8,28 +8,21 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class LKTextField, NSLayoutConstraint, NSString;
+@class LKTextField;
 
 @interface OZChanTextController : OZViewController <NSTextFieldDelegate>
 {
     LKTextField *_textField;
-    NSLayoutConstraint *_trailingConstraint;
 }
 
-- (void)controlTextDidChange:(id)arg1;
-- (void)disable;
-- (void)enable;
-- (id)lastKeyView;
-- (id)firstKeyView;
-- (void)textDone:(id)arg1;
-- (void)update;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)update;
+- (void)textDone:(id)arg1;
+- (id)firstKeyView;
+- (id)lastKeyView;
+- (void)enable;
+- (void)disable;
+- (void)controlTextDidChange:(id)arg1;
 
 @end
 

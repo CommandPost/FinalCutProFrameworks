@@ -11,8 +11,8 @@
 }
 
 + (unsigned long long)defaultFocusRingType;
-- (void)delete:(id)arg1;
 - (BOOL)needsPanelToBecomeKey;
+- (void)delete:(id)arg1;
 
 @end
 

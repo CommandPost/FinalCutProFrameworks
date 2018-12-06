@@ -4,11 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <LunaKit/LKPathCell.h>
+#import "NSProPaneCapPathCell.h"
 
-@interface LKPaneCapPathCell : LKPathCell
+@interface LKPaneCapPathCell : NSProPaneCapPathCell
 {
 }
+
++ (Class)pathComponentCellClass;
 
 @end
 

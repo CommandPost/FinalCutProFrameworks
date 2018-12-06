@@ -23,25 +23,25 @@
     BOOL _showPauseButton;
 }
 
+- (void)_init;
+- (void)dealloc;
+- (void)resetMouseState;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (BOOL)acceptsFirstResponder;
+- (void)mouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseEntered:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (BOOL)showPauseButton;
+- (void)setShowPauseButton:(BOOL)arg1;
+- (void)_addTrackingArea;
+- (void)_startAnimationTimer;
+- (void)_stopAnimationTimer;
+- (void)updatePlayButtonOpacity;
 @property(nonatomic) NSObject<OZPreviewModule> *owner; // @synthesize owner=_owner;
 @property(nonatomic) CALayer *playButtonLayer; // @synthesize playButtonLayer=_playButtonLayer;
-- (void)updatePlayButtonOpacity;
-- (void)_stopAnimationTimer;
-- (void)_startAnimationTimer;
-- (void)_addTrackingArea;
-- (void)setShowPauseButton:(BOOL)arg1;
-- (BOOL)showPauseButton;
-- (void)mouseExited:(id)arg1;
-- (void)mouseEntered:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (BOOL)acceptsFirstResponder;
-- (void)drawRect:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)resetMouseState;
-- (void)dealloc;
-- (void)_init;
 
 @end
 

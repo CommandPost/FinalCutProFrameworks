@@ -6,97 +6,68 @@
 
 #import <Flexo/FFMediaRep.h>
 
-#import "FFBackgroundTaskTarget.h"
-
-@class FFBackgroundTask, FFPixelBuffer, FFRenderer, FFStreamVideo, NSMutableDictionary;
+@class FFBackgroundTask, FFPixelBuffer, FFStreamVideo, NSArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FFDominantMotionMediaRep : FFMediaRep <FFBackgroundTaskTarget>
+@interface FFDominantMotionMediaRep : FFMediaRep
 {
+    CDStruct_1b6d18a9 _streamStartTime;
+    CDStruct_1b6d18a9 _sampleDuration;
+    CDStruct_1b6d18a9 _frameDuration;
+    int _fieldDominance;
     FFStreamVideo *_stream;
     FFPixelBuffer *_pixelBuffer1;
     FFPixelBuffer *_pixelBuffer2;
     FFBackgroundTask *_backgroundTask;
-    FFRenderer *_renderer;
-    BOOL _wasCancelled;
     int _allFrames;
     float _finishedFrames;
-    int _handleForAnalysis;
-    NSMutableDictionary *_analysisData;
-    struct FFLocklessQueue<FigTimeRangeAndObject *> *_requests;
+    NSMutableDictionary *_transformData;
+    NSArray *_smoothTransforms;
+    NSArray *_correctionTransforms;
+    struct FFLocklessQueue<FigTimeRangeObj*> *_requests;
 }
 
 + (id)copyClassDescription;
-@property(retain, nonatomic) FFPixelBuffer *pixelBuffer2; // @synthesize pixelBuffer2=_pixelBuffer2;
-@property(retain, nonatomic) FFPixelBuffer *pixelBuffer1; // @synthesize pixelBuffer1=_pixelBuffer1;
-- (id)librariesInUse:(id)arg1;
-- (id)assetsInUse:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)analysisURLs;
-- (id)analysisURL;
-- (void)requestAnalysisForRange:(CDStruct_e83c9415)arg1 effect:(id)arg2 algorithmRequested:(long long)arg3;
-- (void)requestAnalysisForRange:(CDStruct_e83c9415)arg1 effect:(id)arg2;
-- (void)_requestAnalysisForRange:(CDStruct_e83c9415)arg1 effect:(id)arg2 algorithmRequested:(long long)arg3 inertiaCamLowConfidence:(BOOL)arg4;
-- (id)correctionTransformsForRange:(CDStruct_e83c9415)arg1 correctionAmount:(float)arg2;
-- (id)correctionTransformsForRangeDT:(CDStruct_e83c9415)arg1 correctionAmount:(float)arg2;
-- (id)smoothTransformsForRange:(CDStruct_e83c9415)arg1 smoothingAmount:(float)arg2 canDoTripod:(char *)arg3 wantToDoTripod:(BOOL)arg4 referenceFrameIndex:(long long)arg5;
-- (id)smoothTransformsForRange:(CDStruct_e83c9415)arg1 translationSmooth:(float)arg2 rotationSmooth:(float)arg3 scaleSmooth:(float)arg4;
-- (id)smoothTransformsForRangeDT2:(CDStruct_e83c9415)arg1 smoothingAmount:(float)arg2 canDoTripod:(char *)arg3 wantToDoTripod:(BOOL)arg4 referenceFrameIndex:(long long)arg5;
-- (id)smoothTransformsForRangeDT:(CDStruct_e83c9415)arg1 translationSmooth:(float)arg2 rotationSmooth:(float)arg3 scaleSmooth:(float)arg4;
-- (id)shakyRangesForRange:(CDStruct_e83c9415)arg1 smoothingAmount:(float)arg2 canDoTripod:(char *)arg3 wantToDoTripod:(BOOL)arg4 referenceFrameIndex:(long long)arg5;
-- (id)shakyRangesForRange:(CDStruct_e83c9415)arg1 translationSmooth:(float)arg2 rotationSmooth:(float)arg3 scaleSmooth:(float)arg4;
-- (id)shakyRangesForRangeDT2:(CDStruct_e83c9415)arg1 smoothingAmount:(float)arg2 canDoTripod:(char *)arg3 wantToDoTripod:(BOOL)arg4 referenceFrameIndex:(long long)arg5;
-- (id)shakyRangesForRangeDT:(CDStruct_e83c9415)arg1 translationSmooth:(float)arg2 rotationSmooth:(float)arg3 scaleSmooth:(float)arg4;
-- (id)_rangesFromIndexSet:(id)arg1;
-- (void)_closeIndexGapsSmallerThan:(unsigned long long)arg1 indexes:(id *)arg2;
-- (unsigned long long)_largestContiguousIndexGreaterThanOrEqualTo:(unsigned long long)arg1 indexes:(id)arg2;
-- (void)_checkShakinessDT2:(struct HFDominantMotionTracker2Interface *)arg1 index:(int)arg2 start:(int)arg3 end:(int)arg4 lastX:(double *)arg5 lastY:(double *)arg6 shakyIndexes:(id *)arg7 uncertainIndexes:(id *)arg8;
-- (void)_checkShakinessDT:(struct HFDominantMotionTrackerInterface *)arg1 index:(int)arg2 start:(int)arg3 end:(int)arg4 lastX:(double *)arg5 lastY:(double *)arg6 shakyIndexes:(id *)arg7 uncertainIndexes:(id *)arg8;
-- (BOOL)alreadyAnalyzedRange:(CDStruct_e83c9415)arg1 checkInertiaCam:(BOOL)arg2 lowConfidence:(char *)arg3;
-- (BOOL)alreadyAnalyzedRange:(CDStruct_e83c9415)arg1;
-- (struct _NSRange)indexRangeFromRange:(CDStruct_e83c9415)arg1;
-- (BOOL)alreadyAnalyzedRange:(CDStruct_e83c9415)arg1 checkInertiaCam:(BOOL)arg2 mediaStartTime:(CDStruct_1b6d18a9)arg3 sampleDuration:(CDStruct_1b6d18a9)arg4;
-- (void)offloadAnalysisDataFromTracker:(void *)arg1 useInertiaCam:(BOOL)arg2 lowConfidence:(BOOL)arg3 inSubRange:(struct _NSRange)arg4 info:(id)arg5;
-- (id)stream;
-- (int)fieldDominance;
-- (CDStruct_1b6d18a9)sampleDuration;
-- (CDStruct_1b6d18a9)frameDuration;
-- (CDStruct_1b6d18a9)mediaEndTime;
-- (CDStruct_1b6d18a9)mediaStartTime;
-- (void)dealloc;
-- (id)initWithMedia:(id)arg1;
-- (BOOL)_startBackgroundTask;
-- (void)_runBackgroundDominantmotionAnalysisTask:(id)arg1 onTask:(id)arg2;
-- (void)canceledTask:(id)arg1;
-- (void)resumedTask:(id)arg1;
-- (void)pausedTask:(id)arg1;
-- (BOOL)confirmIsPaused:(id)arg1;
-- (void)_performAnalysisOnRange:(CDStruct_e83c9415)arg1 onTask:(id)arg2 algorithmRequested:(int)arg3 inertiaCamLowConfidence:(BOOL)arg4 algorithmUsed:(int *)arg5;
-- (void)analyzeSubRange:(id)arg1 analysisRange:(struct _NSRange)arg2 visibleRange:(struct _NSRange)arg3 algorithmRequested:(int)arg4 inertiaCamLowConfidence:(BOOL)arg5 algorithmUsed:(int *)arg6;
-- (int)_analyzeUseRendererForRange:(struct _NSRange)arg1 visibleRange:(struct _NSRange)arg2 useInertiaCam:(BOOL)arg3 forceInertiaCam:(BOOL)arg4 runningTask:(id)arg5;
-- (void)_reportTime:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_notifyDoneWithRange:(CDStruct_e83c9415)arg1 effect:(id)arg2 algorithmUsed:(int)arg3 algorithmRequested:(int)arg4;
-- (id)backgroundTask;
-- (int)allFrames;
-- (void)increaseFinishedFrames:(float)arg1;
-- (float)finishedFrames;
-- (void)setupTrackerForRangeDT2:(CDStruct_e83c9415)arg1 tracker:(struct HFDominantMotionTracker2Interface *)arg2 startFrame:(int)arg3 endFrame:(int)arg4;
-- (void)setupTrackerForRangeDT:(CDStruct_e83c9415)arg1 tracker:(struct HFDominantMotionTrackerInterface *)arg2 startFrame:(int)arg3 endFrame:(int)arg4;
-- (void)cacheAnalysisDataForRange:(struct _NSRange)arg1 analysisData:(id)arg2;
-- (void)cacheAnalysisData;
-- (id)newMutableAnalysisDataForRange:(struct _NSRange)arg1;
-- (id)mutableAnalysisData;
-- (id)analysisDataForRange:(struct _NSRange)arg1;
-- (struct _NSRange)rangeGrownByHandleForAnalysis:(struct _NSRange)arg1;
-- (id)analysisData;
-- (id)stabilizationFileURLForRange:(struct _NSRange)arg1;
-- (id)stabilizationFileURLs;
-- (id)stabilizationFileURL;
-- (id)mediaFileName;
 - (id)stabilizationFolderURL;
-- (BOOL)_useInertiaCamOpenCL;
+- (id)stabilizationFileURL;
+- (id)transformData;
+- (id)mutableTransformData;
+- (void)cacheTransformData;
+- (void)setupTrackerForRange:(CDStruct_e83c9415)arg1 tracker:(struct IHDominantMotionTrackerInterface *)arg2 startFrame:(int)arg3 endFrame:(int)arg4;
+- (float)finishedFrames;
+- (void)increaseFinishedFrames:(float)arg1;
+- (int)allFrames;
+- (id)backgroundTask;
+- (void)_nofityDoneWithRange:(CDStruct_e83c9415)arg1;
+- (void)analyzeSubRange:(id)arg1 startFrame:(int)arg2 endFrame:(int)arg3;
+- (void)_performAnalysisOnRange:(CDStruct_e83c9415)arg1 onTask:(id)arg2;
+- (void)canceledTask:(id)arg1;
+- (void)_runBackgroundDominantmotionAnalysisTask:(id)arg1 onTask:(id)arg2;
+- (BOOL)_startBackgroundTask;
+- (id)initWithMedia:(id)arg1;
+- (void)dealloc;
+@property CDStruct_1b6d18a9 streamStartTime; // @synthesize streamStartTime=_streamStartTime;
+@property CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
+- (id)stream;
+- (void)setPixelBuffer1:(id)arg1;
+- (void)setPixelBuffer2:(id)arg1;
+- (void)offloadTransformDataFromTracker:(void *)arg1 inSubRange:(struct _NSRange)arg2 fieldDominance:(int)arg3 width:(int)arg4 squareWidth:(int)arg5 height:(int)arg6 rowBytes:(int)arg7 pixelFormat:(int)arg8;
+- (BOOL)alreadyAnalyzedRange:(CDStruct_e83c9415)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3;
+- (BOOL)alreadyAnalyzedRange:(CDStruct_e83c9415)arg1;
+- (void)_checkShakiness:(struct IHDominantMotionTrackerInterface *)arg1 index:(int)arg2 start:(int)arg3 end:(int)arg4 lastX:(double *)arg5 lastY:(double *)arg6 shakyIndexes:(id *)arg7 uncertainIndexes:(id *)arg8;
+- (unsigned long long)_largestContiguousIndexGreaterThanOrEqualTo:(unsigned long long)arg1 indexes:(id)arg2;
+- (void)_closeIndexGapsSmallerThan:(unsigned long long)arg1 indexes:(id *)arg2;
+- (id)_rangesFromIndexSet:(id)arg1;
+- (id)shakyRangesForRange:(CDStruct_e83c9415)arg1 translationSmooth:(float)arg2 rotationSmooth:(float)arg3 scaleSmooth:(float)arg4;
+- (id)smoothTransformsForRange:(CDStruct_e83c9415)arg1 translationSmooth:(float)arg2 rotationSmooth:(float)arg3 scaleSmooth:(float)arg4;
+- (id)correctionTransformsForRange:(CDStruct_e83c9415)arg1 correctionAmount:(float)arg2;
+- (void)_requestAnalysisForRange:(CDStruct_e83c9415)arg1;
+- (void)requestAnalysisForRange:(CDStruct_e83c9415)arg1;
+- (id)analysisURL;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyForMedia:(id)arg1;
+@property CDStruct_1b6d18a9 sampleDuration; // @synthesize sampleDuration=_sampleDuration;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class LKButton, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSArrayController, NSBox, NSButton, NSCollectionViewItem, NSImageView, NSLayoutConstraint, NSMutableArray, NSPredicate, NSScrollView, NSSlider, NSString, NSTimer, NSView, OZAudioListCollectionView, OZAudioListPrototypeView, OZAudioNodeWrapper, OZAudioPeakMeter;
+@class LKButton, LKDial, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSegmentedScrubber, LKSlider, LKTextField, NSArray, NSArrayController, NSCollectionViewItem, NSMutableArray, NSPredicate, NSProThemeImageView, NSScrollView, NSTimer, NSView, OZAudioListCollectionView, OZAudioListPrototypeView, OZAudioPeakMeter;
 
 @interface OZAudioListModule : OZProViewModule <NSTextFieldDelegate>
 {
@@ -16,34 +16,30 @@
     OZAudioListCollectionView *_collectionView;
     NSCollectionViewItem *_collectionViewItem;
     OZAudioListPrototypeView *_prototypeView;
-    NSButton *_enabledCheckbox;
+    LKButton *_enabledCheckbox;
     LKTextField *_nameTextField;
     LKSlider *_gainSlider;
     LKSegmentedScrubber *_gainSegmentedScrubber;
-    NSImageView *_minimumGainImage;
-    NSImageView *_maximumGainImage;
-    NSSlider *_balanceDial;
+    NSProThemeImageView *_minimumGainImage;
+    NSProThemeImageView *_maximumGainImage;
+    LKDial *_balanceDial;
     LKSegmentedScrubber *_balanceSegmentedScrubber;
     LKButton *_muteButton;
     LKButton *_soloButton;
     LKButton *_linkButton;
     LKButton *_lockButton;
     LKPopUpButton *_outputBusPopUpButton;
-    NSBox *_verticalSep1;
-    NSBox *_verticalSep2;
-    NSBox *_masterVerticalSep1;
-    NSBox *_masterVerticalSep2;
     NSView *_masterContainerView;
     OZAudioListCollectionView *_masterCollectionView;
     NSCollectionViewItem *_masterCollectionViewItem;
     OZAudioListPrototypeView *_masterPrototypeView;
-    NSButton *_masterEnabledCheckbox;
+    LKButton *_masterEnabledCheckbox;
     LKTextField *_masterNameTextField;
     LKSlider *_masterGainSlider;
     LKSegmentedScrubber *_masterGainSegmentedScrubber;
-    NSImageView *_masterMinimumGainImage;
-    NSImageView *_masterMaximumGainImage;
-    NSSlider *_masterBalanceDial;
+    NSProThemeImageView *_masterMinimumGainImage;
+    NSProThemeImageView *_masterMaximumGainImage;
+    LKDial *_masterBalanceDial;
     LKSegmentedScrubber *_masterBalanceSegmentedScrubber;
     LKButton *_masterMuteButton;
     LKButton *_masterLinkButton;
@@ -53,8 +49,8 @@
     OZAudioPeakMeter *_peakMeterRight;
     LKSearchField *_searchField;
     LKSlider *_zoomSlider;
-    NSImageView *_smallZoomImage;
-    NSImageView *_largeZoomImage;
+    NSProThemeImageView *_smallZoomImage;
+    NSProThemeImageView *_largeZoomImage;
     NSView *_slideUpSearchView;
     LKSegmentedControl *_contentsControl;
     NSArrayController *_contentArrayController;
@@ -66,64 +62,49 @@
     BOOL _dropClone;
     BOOL _dropReplace;
     NSTimer *_meteringTimer;
-    NSLayoutConstraint *_masterContainerViewBottomToBorderedViewTopConstraint;
-    NSLayoutConstraint *_searchSlideUpBottomConstraint;
-    OZAudioNodeWrapper *_placeholderAudioNode;
 }
 
-@property(retain, nonatomic) OZAudioNodeWrapper *placeholderAudioNode; // @synthesize placeholderAudioNode=_placeholderAudioNode;
-@property(retain, nonatomic) NSLayoutConstraint *searchSlideUpBottomConstraint; // @synthesize searchSlideUpBottomConstraint=_searchSlideUpBottomConstraint;
-@property(retain, nonatomic) NSLayoutConstraint *masterContainerViewBottomToBorderedViewTopConstraint; // @synthesize masterContainerViewBottomToBorderedViewTopConstraint=_masterContainerViewBottomToBorderedViewTopConstraint;
+- (id)init;
+- (void)dealloc;
+- (void)viewDidLoad;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)update;
+- (unsigned long long)countOfTracks;
+- (id)objectInTracksAtIndex:(unsigned long long)arg1;
+- (id)tracksAtIndexes:(id)arg1;
+- (void)insertObject:(id)arg1 inTracksAtIndex:(unsigned long long)arg2;
+- (void)insertTracks:(id)arg1 atIndexes:(id)arg2;
+- (void)removeObjectFromTracksAtIndex:(unsigned long long)arg1;
+- (void)removeTracksAtIndexes:(id)arg1;
+- (BOOL)collectionView:(id)arg1 canDragItemsAtIndexes:(id)arg2 withEvent:(id)arg3;
+- (BOOL)collectionView:(id)arg1 writeItemsAtIndexes:(id)arg2 toPasteboard:(id)arg3;
+- (id)collectionView:(id)arg1 draggingImageForItemsAtIndexes:(id)arg2 withEvent:(id)arg3 offset:(struct CGPoint *)arg4;
+- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 draggingInfo:(id)arg2 targetNode:(struct OZObjectManipulator *)arg3 afterNode:(struct OZSceneNode *)arg4 parentNode:(struct OZSceneNode *)arg5 dragLocation:(unsigned int)arg6 destinationChannel:(struct OZChannelBase *)arg7;
+- (unsigned long long)collectionView:(id)arg1 validateDrop:(id)arg2 proposedIndex:(long long *)arg3 dropOperation:(long long *)arg4;
+- (BOOL)collectionView:(id)arg1 acceptDrop:(id)arg2 index:(long long)arg3 dropOperation:(long long)arg4;
+- (BOOL)control:(id)arg1 textShouldBeginEditing:(id)arg2;
+- (BOOL)control:(id)arg1 textShouldEndEditing:(id)arg2;
+- (void)updateTracksArray;
+- (void)updateMasterTracksArray;
+- (void)updateSelection;
+- (void)updateKeyFramedChannels;
+- (void)updateAllChannels;
+- (void)contentsControlAction:(id)arg1;
+- (void)delete:(id)arg1;
+- (void)importFiles:(id)arg1;
+- (void)muteObjects:(id)arg1;
+- (void)soloObjects:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (void)setMeter:(double)arg1 right:(double)arg2;
+- (void)meterCallback:(id)arg1;
+- (void)startTimer;
+- (void)stopTimer;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)notify:(unsigned int)arg1;
 @property(retain, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
 @property(retain, nonatomic) NSArray *masterTracksArray; // @synthesize masterTracksArray=_masterTracksArray;
 @property(retain, nonatomic) NSArray *tracksArray; // @synthesize tracksArray=_tracksArray;
-- (void)notify:(unsigned int)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)collectionView:(id)arg1 selectionIndexesDidChange:(id)arg2;
-- (void)stopTimer;
-- (void)startTimer;
-- (void)meterCallback:(id)arg1;
-- (void)setMeter:(double)arg1 right:(double)arg2;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)soloObjects:(id)arg1;
-- (void)muteObjects:(id)arg1;
-- (void)importFiles:(id)arg1;
-- (void)delete:(id)arg1;
-- (void)contentsControlAction:(id)arg1;
-- (void)updateAllChannels;
-- (void)updateKeyFramedChannels;
-- (void)updateSelection;
-- (void)updateMasterTracksArray;
-- (void)updateTracksArray;
-- (BOOL)control:(id)arg1 textShouldEndEditing:(id)arg2;
-- (BOOL)control:(id)arg1 textShouldBeginEditing:(id)arg2;
-- (void)draggingEndedForCollectionView:(id)arg1;
-- (void)draggingEnteredForCollectionView:(id)arg1;
-- (BOOL)collectionView:(id)arg1 acceptDrop:(id)arg2 index:(long long)arg3 dropOperation:(long long)arg4;
-- (unsigned long long)collectionView:(id)arg1 validateDrop:(id)arg2 proposedIndex:(long long *)arg3 dropOperation:(long long *)arg4;
-- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 draggingInfo:(id)arg2 targetNode:(struct OZObjectManipulator *)arg3 afterNode:(struct OZSceneNode *)arg4 parentNode:(struct OZSceneNode *)arg5 dragLocation:(unsigned int)arg6 destinationChannel:(struct OZChannelBase *)arg7;
-- (id)collectionView:(id)arg1 draggingImageForItemsAtIndexes:(id)arg2 withEvent:(id)arg3 offset:(struct CGPoint *)arg4;
-- (BOOL)collectionView:(id)arg1 writeItemsAtIndexes:(id)arg2 toPasteboard:(id)arg3;
-- (BOOL)collectionView:(id)arg1 canDragItemsAtIndexes:(id)arg2 withEvent:(id)arg3;
-- (void)removeTracksAtIndexes:(id)arg1;
-- (void)removeObjectFromTracksAtIndex:(unsigned long long)arg1;
-- (void)insertTracks:(id)arg1 atIndexes:(id)arg2;
-- (void)insertObject:(id)arg1 inTracksAtIndex:(unsigned long long)arg2;
-- (id)tracksAtIndexes:(id)arg1;
-- (id)objectInTracksAtIndex:(unsigned long long)arg1;
-- (unsigned long long)countOfTracks;
-- (void)update;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)viewDidLoad;
-- (void)dealloc;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

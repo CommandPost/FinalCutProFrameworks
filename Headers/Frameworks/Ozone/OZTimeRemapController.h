@@ -11,8 +11,8 @@
     struct OZChannelEnum *_remapChannel;
 }
 
-- (void)setChannelValue:(id)arg1;
 - (id)initWithChan:(struct OZChannelObjectRoot *)arg1 context:(id)arg2;
+- (void)setChannelValue:(id)arg1;
 
 @end
 

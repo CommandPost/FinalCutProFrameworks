@@ -8,31 +8,20 @@
 
 #import "FxCustomParameterActionAPI.h"
 #import "FxCustomParameterActionAPI_v2.h"
-#import "FxCustomParameterActionAPI_v3.h"
 #import "PROAPIObject.h"
 
-@class NSString;
-
-@interface OZFxPlugCustomParameterActionAPI : NSObject <PROAPIObject, FxCustomParameterActionAPI, FxCustomParameterActionAPI_v2, FxCustomParameterActionAPI_v3>
+@interface OZFxPlugCustomParameterActionAPI : NSObject <PROAPIObject, FxCustomParameterActionAPI, FxCustomParameterActionAPI_v2>
 {
     struct OZFxPlugSharedBase *_plugin;
 }
 
-- (struct CGRect)documentBounds;
-- (id)_tempHandler;
-- (id)_parmHandler;
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (void)currentFxTime:(CDUnion_2516e51e *)arg1;
-- (double)currentTime;
-- (void)endAction:(id)arg1;
-- (void)startAction:(id)arg1;
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)startAction:(id)arg1;
+- (void)endAction:(id)arg1;
+- (double)currentTime;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
+- (id)_parmHandler;
+- (struct CGRect)documentBounds;
 
 @end
 

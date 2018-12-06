@@ -4,39 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <LunaKit/LKTabView.h>
+#import "NSProTearOffTabView.h"
 
-@interface LKTearOffTabView : LKTabView
+@interface LKTearOffTabView : NSProTearOffTabView
 {
-    void *_dragSourceData;
-    void *_dragDestinationData;
-    struct __LKTearOffTabViewFlags {
-        unsigned int RESERVED:20;
-        unsigned int delegateImplementsCreateWindowForTabViewItem:1;
-        unsigned int delegateImplementsStopDraggingTabViewItem:1;
-        unsigned int delegateImplementsStartDraggingTabViewItem:1;
-        unsigned int delegateImplementsDidReorderTabViewItem:1;
-        unsigned int delegateImplementsWillRemoveTabViewItem:1;
-        unsigned int delegateImplementsCanRemoveTabViewItem:1;
-        unsigned int delegateImplementsDidInsertTabViewItem:1;
-        unsigned int delegateImplementsCanInsertTabViewItem:1;
-        unsigned int acceptsDraggedTabViewItems:1;
-        unsigned int canDragTabs:1;
-        unsigned int dragState:2;
-    } _ptoFlags;
-    void *_proReserved4;
-    void *_proReserved5;
-    void *_proReserved6;
 }
-
-+ (void)_setAllowSelection:(BOOL)arg1;
-+ (BOOL)_allowSelection;
-- (BOOL)shouldDelayWindowOrderingForEvent:(id)arg1;
-- (void)selectTabViewItemAtIndex:(long long)arg1;
-- (void)insertTabViewItem:(id)arg1 atIndex:(long long)arg2;
-- (void)addTabViewItem:(id)arg1;
-- (void)setDelegate:(id)arg1;
-- (id)delegate;
 
 @end
 

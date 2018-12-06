@@ -11,22 +11,22 @@
     struct FxPlugDescriptorPriv *_priv;
 }
 
-+ (id)fxPlugDescriptorWithFxMetaPlug:(id)arg1;
 + (id)fxPlugDescriptorWithPROPlugIn:(void *)arg1;
-- (BOOL)requiresCoreImage;
-- (BOOL)canDoGPU;
-- (id)groupDescriptor;
-- (id)version;
-- (id)uuid;
-- (id)displayName;
-- (id)plugInTypeUUID;
-- (id)flavor;
-- (id)metaPlug;
-- (Class)plugInClass;
-- (id)properties;
-- (void)dealloc;
-- (id)initWithFxMetaPlug:(id)arg1;
++ (id)fxPlugDescriptorWithFxMetaPlug:(id)arg1;
 - (id)initWithPROPlugIn:(void *)arg1;
+- (id)initWithFxMetaPlug:(id)arg1;
+- (void)dealloc;
+- (id)properties;
+- (Class)plugInClass;
+- (id)metaPlug;
+- (id)flavor;
+- (id)plugInTypeUUID;
+- (id)displayName;
+- (id)uuid;
+- (id)version;
+- (id)groupDescriptor;
+- (BOOL)canDoGPU;
+- (BOOL)requiresCoreImage;
 
 @end
 

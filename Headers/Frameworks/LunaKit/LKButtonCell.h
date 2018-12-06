@@ -4,44 +4,31 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSButtonCell.h"
+#import "NSProButtonCell.h"
 
-@interface LKButtonCell : NSButtonCell
+@class NSProThemeFacet;
+
+@interface LKButtonCell : NSProButtonCell
 {
-    BOOL _ignoresBorderChangeOnDragEnter;
-    BOOL _drawsCustomBezel;
-    BOOL _changesBorderWhenMouseInside;
-    unsigned long long _tintIndex;
-    long long _partID;
-    long long _elementID;
-    long long _version;
-    int _code;
-    int _part;
-    int _imageIndex;
-    int _glyphIndex;
-    int _glyphPart;
-    int _variant;
-    int _tint;
-    BOOL _pulsing;
-    BOOL _isMouseInside;
+    long long elementID;
+    long long partID;
+    NSProThemeFacet *customFacet;
 }
 
-@property BOOL ignoresBorderChangeOnDragEnter; // @synthesize ignoresBorderChangeOnDragEnter=_ignoresBorderChangeOnDragEnter;
-@property long long partID; // @synthesize partID=_partID;
-@property long long elementID; // @synthesize elementID=_elementID;
-- (BOOL)isMouseInside;
-- (void)setMouseInside:(BOOL)arg1;
-@property(nonatomic) unsigned long long tintIndex; // @synthesize tintIndex=_tintIndex;
-- (void)setChangesBorderWhenMouseInside:(BOOL)arg1;
-- (BOOL)changesBorderWhenMouseInside;
-- (void)setDrawsCustomBezel:(BOOL)arg1;
-- (BOOL)drawsCustomBezel;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)setAlternateImage:(id)arg1;
-- (id)initImageCell:(id)arg1;
+- (void)dealloc;
+@property(retain) NSProThemeFacet *customFacet; // @synthesize customFacet;
+- (id)_baseFacet;
 - (id)initWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)_setupForProButtonType:(int)arg1;
+- (id)_gradientFacet;
+- (id)_disclosureKnobGlyphFacet;
+- (id)_disclosureTriangleFacet;
+- (void)setProButtonType:(int)arg1;
+- (float)_heightNeeded;
 - (void)autosizeControlHeight;
+- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+@property long long partID; // @synthesize partID;
+@property long long elementID; // @synthesize elementID;
 
 @end
 

@@ -8,31 +8,25 @@
 
 #import "NSCoding.h"
 
+__attribute__((visibility("hidden")))
 @interface FFMD5AndOffset : NSObject <NSCoding>
 {
     CDStruct_bdcb2b0d _baseMD5;
     long long _offset;
     CDStruct_bdcb2b0d _compositeMD5;
-    unsigned int _internalFlags;
-    BOOL _useBaseMD5Only;
 }
 
-+ (CDStruct_bdcb2b0d)compositeMD5FromMD5:(CDStruct_bdcb2b0d)arg1 andOffset:(long long)arg2;
++ (CDStruct_60067b7e)compositeMD5FromMD5:(CDStruct_60067b7e)arg1 andOffset:(long long)arg2;
+- (id)initWithMD5:(CDStruct_60067b7e)arg1 andOffset:(long long)arg2;
+- (id)description;
+- (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly) CDStruct_bdcb2b0d compositeMD5; // @synthesize compositeMD5=_compositeMD5;
 @property(readonly) long long offset; // @synthesize offset=_offset;
 @property(readonly) CDStruct_bdcb2b0d baseMD5; // @synthesize baseMD5=_baseMD5;
-- (BOOL)isNull;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)_internalIsEqual:(id)arg1;
-- (CDStruct_bdcb2b0d)compositeMD5;
-- (const CDStruct_bdcb2b0d *)compositeMD5Ptr;
-- (void)_ensureCompositeMD5;
-- (id)description;
-- (id)initWithMD5:(CDStruct_bdcb2b0d)arg1;
-- (id)initWithMD5:(CDStruct_bdcb2b0d)arg1 andOffset:(long long)arg2;
 
 @end
 

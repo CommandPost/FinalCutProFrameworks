@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)setPullGraph:(struct FFAudioGraph *)arg1 node:(struct FFAudioNode *)arg2 elem:(unsigned int)arg3;
-- (unsigned long long)maximumBufferFrames;
-- (void)setSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
 - (BOOL)matchesSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
+- (void)setSampleRate:(double)arg1 numChannels:(unsigned long long)arg2;
+- (unsigned long long)maximumBufferFrames;
+- (void)setPullGraph:(struct FFAudioGraph *)arg1 node:(struct FFAudioNode *)arg2 elem:(unsigned int)arg3;
 
 @end
 

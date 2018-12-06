@@ -6,15 +6,13 @@
 
 #import "NSObject.h"
 
-@class NSNotification, NSText;
-
 @protocol NSTextDelegate <NSObject>
 
 @optional
-- (void)textDidChange:(NSNotification *)arg1;
-- (void)textDidEndEditing:(NSNotification *)arg1;
-- (void)textDidBeginEditing:(NSNotification *)arg1;
-- (BOOL)textShouldEndEditing:(NSText *)arg1;
-- (BOOL)textShouldBeginEditing:(NSText *)arg1;
+- (BOOL)textShouldBeginEditing:(id)arg1;
+- (BOOL)textShouldEndEditing:(id)arg1;
+- (void)textDidBeginEditing:(id)arg1;
+- (void)textDidEndEditing:(id)arg1;
+- (void)textDidChange:(id)arg1;
 @end
 

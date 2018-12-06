@@ -12,11 +12,11 @@
 }
 
 + (id)sharedDrawingWatcher;
-- (double)timeSpentDrawing;
-- (void)_notifyDrawingIsAllDone:(id)arg1;
-- (void)_notifyOfFirstDrawing:(id)arg1;
-- (void)_startWatching;
 - (void)startWatching;
+- (void)_startWatching;
+- (void)_notifyOfFirstDrawing:(id)arg1;
+- (void)_notifyDrawingIsAllDone:(id)arg1;
+- (double)timeSpentDrawing;
 
 @end
 

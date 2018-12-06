@@ -22,32 +22,33 @@
 }
 
 + (void)resetColorIndex;
-- (void)takeCurveSnapshot:(BOOL)arg1;
-- (void)refresh;
-- (BOOL)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (struct OZChannel *)channel;
-- (struct OZChannelFolder *)folder;
-- (CDStruct_1b6d18a9)getCurrentTime;
-- (id)appDelegate;
-- (struct OZChannelRef *)channelRef;
-- (struct OZChannelBase *)channelBase;
-- (BOOL)ignoreHiddenChannels;
-- (BOOL)isHidden;
-- (BOOL)isAnyAncestorLocked;
-- (BOOL)isLocked;
-- (void)enableItemNoDescendants:(int)arg1;
-- (void)enableItem:(int)arg1;
-- (int)isEnabledItem;
-- (void)select:(BOOL)arg1;
-- (BOOL)isSelected;
-- (id)rootName;
-- (id)simpleName;
-- (unsigned int)channelId;
-- (BOOL)isValid;
-- (void)refreshNames;
-- (void)dealloc;
 - (id)initWithChannel:(struct OZChannelBase *)arg1 numberOfSamples:(double)arg2 appDelegate:(id)arg3 ignoreHiddenChannels:(BOOL)arg4;
+- (void)dealloc;
+- (void)refreshNames;
+- (BOOL)isValid;
+- (unsigned int)channelId;
+- (id)name;
+- (id)simpleName;
+- (id)rootName;
+- (BOOL)isSelected;
+- (void)select:(BOOL)arg1;
+- (int)isEnabledItem;
+- (void)enableItem:(int)arg1;
+- (void)enableItemNoDescendants:(int)arg1;
+- (BOOL)isLocked;
+- (BOOL)isAnyAncestorLocked;
+- (BOOL)isHidden;
+- (BOOL)ignoreHiddenChannels;
+- (struct OZChannelBase *)channelBase;
+- (struct OZChannelRef *)channelRef;
+- (id)appDelegate;
+- (CDStruct_1b6d18a9)getCurrentTime;
+- (struct OZChannelFolder *)folder;
+- (struct OZChannel *)channel;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (void)refresh;
+- (void)takeCurveSnapshot:(BOOL)arg1;
 
 @end
 

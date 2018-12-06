@@ -6,29 +6,35 @@
 
 #import "NSObject.h"
 
-#import "FFBackgroundTaskTarget.h"
+@class FFAnchoredSequence, FFBackgroundTaskWithPauseCondition, NSCondition;
 
-@class NSMapTable;
-
-@interface FFThumbnailGenerator : NSObject <FFBackgroundTaskTarget>
+__attribute__((visibility("hidden")))
+@interface FFThumbnailGenerator : NSObject
 {
-    NSMapTable *_activeRequestsMap;
-    BOOL _shuttingDown;
+    int _outstandingThumbRequests;
+    FFBackgroundTaskWithPauseCondition *_bTask;
+    float _totalThumbs;
+    float _thumbCount;
+    NSCondition *_lock;
+    unsigned long long _stopRequestCount;
+    struct FFLocklessQueue<FFAnchoredSequence*> *_requests;
+    _Bool _appShuttingDown;
+    FFAnchoredSequence *_currentClip;
 }
 
-+ (void)addVideoThumbnailToEventForRequest:(id)arg1;
-+ (void)releaseSharedInstance;
 + (id)sharedInstance;
-- (void)canceledTask:(id)arg1;
-- (id)librariesInUse:(id)arg1;
-- (id)assetsInUse:(id)arg1;
-- (void)generateThumbnailsForClips:(id)arg1;
-- (void)_notifyWillShutdown:(id)arg1;
-- (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
-- (void)_startBackgroundTaskForClips:(id)arg1;
-- (void)dealloc;
-- (oneway void)release;
++ (void)releaseSharedInstance;
+- (void)thumbImageReady:(id)arg1;
 - (id)init;
+- (void)dealloc;
+- (void)_startBackgroundTask;
+- (void)_cancelBGTask;
+- (void)_waitForBGTaskToFinish;
+- (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
+- (void)appWillTerminate:(id)arg1;
+- (void)generateThumbnailsForClips:(id)arg1;
+- (void)resume;
+- (void)stop;
 
 @end
 

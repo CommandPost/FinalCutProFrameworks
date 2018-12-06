@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     FFEffectStack *_pEffectStack;
 }
 
-- (void)imageWidth:(float *)arg1 andHeight:(float *)arg2 forTime:(const CDStruct_1b6d18a9 *)arg3;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)imageWidth:(float *)arg1 andHeight:(float *)arg2 forTime:(const CDStruct_1b6d18a9 *)arg3;
 
 @end
 

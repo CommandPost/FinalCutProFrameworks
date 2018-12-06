@@ -4,17 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSTextField.h"
+#import "NSProTextField.h"
 
-@interface LKTextField : NSTextField
+@interface LKTextField : NSProTextField
 {
 }
 
-- (void)setRomanOnly:(BOOL)arg1;
-- (BOOL)isRomanOnly;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)_LKSetUp;
++ (void)initialize;
 
 @end
 

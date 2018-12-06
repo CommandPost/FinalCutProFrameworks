@@ -13,19 +13,17 @@
     NSSet *_childTokens;
     NSSet *_retainOnlyObjects;
     _Bool _receivedNSNullChild;
-    unsigned int _knownClearFlags;
+    _Bool _assignedToCodec;
 }
 
-- (id)_underlyingChildTokens;
-- (id)description;
-- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
-- (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
-- (_Bool)areStatusFlagsClear:(unsigned int)arg1;
-- (unsigned int)scheduleStatusInformation;
-- (void)hintCacheData:(unsigned int)arg1;
-- (_Bool)hintWillImageSoon;
-- (void)dealloc;
 - (id)initWithStream:(id)arg1 subTokens:(id)arg2 retainOnlyObjects:(id)arg3;
+- (id)initWithStream:(id)arg1 andSubToken:(id)arg2;
+- (id)initWithStream:(id)arg1 andRetainOnlyObject:(id)arg2;
+- (void)dealloc;
+- (void)hintWillImageSoon;
+- (void)hintCacheData:(unsigned int)arg1;
+- (unsigned int)scheduleStatusInformation;
+- (id)description;
 
 @end
 

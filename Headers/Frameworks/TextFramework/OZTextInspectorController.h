@@ -6,62 +6,49 @@
 
 #import "OZViewCtlrRoot.h"
 
-#import "TXMaterialControllerDelegate.h"
+@class LKButtonCell, NSBox, NSMatrix, NSView, OZAutoTextFormatController, OZAutoTextLayoutController, OZAutoTextStyleController, OZViewControllerGroup, PIBuildContext;
 
-@class LKSegmentedControl, NSBox, NSView, OZAutoInspectorController, OZAutoTextFormatController, OZAutoTextLayoutController, OZAutoTextStyleController, PIBuildContext;
-
-@interface OZTextInspectorController : OZViewCtlrRoot <TXMaterialControllerDelegate>
+@interface OZTextInspectorController : OZViewCtlrRoot
 {
     struct TXTextLayout *_text;
-    list_bb601910 _styles;
+    list_6eff4338 *_styles;
     NSView *_pMainView;
     NSBox *_pBox;
-    LKSegmentedControl *_pSegmentedControl;
+    NSMatrix *_pMatrix;
+    LKButtonCell *_formatButtonCell;
+    LKButtonCell *_styleButtonCell;
+    LKButtonCell *_layoutButtonCell;
     OZAutoTextFormatController *_pFormatController;
     OZAutoTextStyleController *_pStyleController;
     OZAutoTextLayoutController *_pLayoutController;
-    OZAutoInspectorController *_pCurrController;
+    OZViewControllerGroup *_pCurrController;
     BOOL _capturingChannels;
-    list_e89ce44a *_textList;
+    list_699e9227 *_textList;
     PIBuildContext *_pContext;
-    BOOL _settingAssociatedStyles;
-    BOOL _repeatStyleReassociation;
 }
 
-@property BOOL repeatStyleReassociation; // @synthesize repeatStyleReassociation=_repeatStyleReassociation;
-@property BOOL settingAssociatedStyles; // @synthesize settingAssociatedStyles=_settingAssociatedStyles;
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (void)reassociateAllStyles;
-- (void)rebuildInspector;
-- (void)didChangeMaterial:(BOOL)arg1;
-- (void)willChangeMaterial;
-- (void)scrollToOffset:(double)arg1;
-- (double)scrollOffset;
-- (_Bool)useGlyphTool;
-- (id)newFormatControllerWithSceneNode:(struct OZSceneNode *)arg1;
-- (void)setAssociatedStyles:(list_bb601910 *)arg1 force:(BOOL)arg2;
-- (void)setAssociatedStyle:(const shared_ptr_e0e110e1 *)arg1;
-- (void)resetOrAddAssociatedStyle:(const shared_ptr_e0e110e1 *)arg1 reset:(BOOL)arg2;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
-- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
-- (void)switchPane:(id)arg1;
-- (void)disable;
-- (void)enable;
-- (BOOL)isEnabled;
-- (void)textSelectionChanged:(id)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)syncFontPanelIfNeeded:(BOOL)arg1;
-- (BOOL)isFontPanelVisible;
-- (id)newNSShadowForStyle:(const shared_ptr_e0e110e1 *)arg1 time:(CDStruct_198678f7)arg2;
-- (id)getNSFontForStyle:(const shared_ptr_e0e110e1 *)arg1 time:(CDStruct_198678f7)arg2;
-- (id)mainView;
+- (id)initWithSceneNodes:(list_699e9227 *)arg1 viewCtlrDelegate:(id)arg2;
+- (id)initWithSceneNodes:(list_699e9227 *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
 - (void)dealloc;
-- (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
-- (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2;
-- (void)didCreateNewMaterialLayerControllers;
-- (BOOL)isInhibitingUpdates;
-- (void)setInhibitUpdates:(BOOL)arg1;
+- (id)mainView;
+- (id)getNSFontForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_1b6d18a9)arg2;
+- (id)createNSShadowForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_1b6d18a9)arg2;
+- (BOOL)isFontPanelVisible;
+- (void)syncFontPanelIfNeeded:(BOOL)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)fontPanelWillOpen:(id)arg1;
+- (void)textSelectionChanged:(id)arg1;
+- (BOOL)isEnabled;
+- (void)enable;
+- (void)disable;
+- (void)switchPane:(id)arg1;
+- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
+- (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
+- (void)setAssociatedStyle:(struct TXTextStyle *)arg1;
+- (void)setAssociatedStyles:(list_6eff4338 *)arg1 force:(BOOL)arg2;
+- (id)createFormatControllerWithSceneNode:(struct OZSceneNode *)arg1;
+- (_Bool)useGlyphTool;
 
 @end
 

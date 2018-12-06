@@ -6,45 +6,51 @@
 
 #import "LKViewModule.h"
 
-@class NSView;
+@class NSProView;
 
 @interface PEColorModule : LKViewModule
 {
-    NSView *_headerView;
-    NSView *_footerView;
+    BOOL _observersInstalled;
+    NSProView *_headerView;
+    NSProView *_footerView;
 }
 
 + (id)defaultModuleNibName;
-@property(readonly, nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
-@property(readonly, nonatomic) NSView *headerView; // @synthesize headerView=_headerView;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)hideModule:(id)arg1;
-- (void)viewDidLoad;
-- (void)moduleDidUnhide;
-- (void)_resyncWithSelectionManager;
-- (void)_setCurrentSelectedItems:(id)arg1;
-- (void)moduleDidHide;
-- (void)_setupCurrentColorItems;
-- (id)_context;
-- (id)moduleFooterAccessoryView;
-- (BOOL)wantsFooterBar;
-- (id)moduleHeaderAccessoryView;
-- (BOOL)wantsHeaderBar;
-- (id)lastKeyView;
-- (id)firstKeyView;
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
-- (id)submoduleLayoutArray;
-- (id)targetModules;
-- (id)_currentContentModule;
-- (unsigned long long)revealAnimationStyle;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (id)identifier;
+- (id)init;
+- (id)initWithModuleNibName:(id)arg1;
 - (void)dealloc;
-- (void)_endObservingActiveVariants;
-- (void)_beginObservingActiveVariants;
-- (void)_endObservingSelection;
-- (void)_beginObservingSelection;
+- (id)identifier;
+- (id)context;
+- (void)viewDidLoad;
+- (void)viewWasInstalled;
+- (void)viewWillBeRemoved;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)hideModule:(id)arg1;
+- (unsigned long long)revealAnimationStyle;
+- (id)targetModules;
+- (id)submoduleLayoutArray;
+- (id)currentColorContentModule;
+- (Class)currentColorContentModuleClass;
+- (id)submodule;
+- (BOOL)hasSubmoduleWithClass:(Class)arg1;
+- (void)installSubmoduleContentView:(id)arg1;
+- (struct CGSize)viewMinSize;
+- (struct CGSize)viewMaxSize;
+- (id)firstKeyView;
+- (id)lastKeyView;
+- (BOOL)wantsHeaderBar;
+- (id)moduleHeaderAccessoryView;
+- (void)installSubmoduleHeaderView:(id)arg1;
+- (BOOL)wantsFooterBar;
+- (id)moduleFooterAccessoryView;
+- (void)installSubmoduleFooterView:(id)arg1;
+- (void)updateToCurrentSelection;
+- (void)addObservers;
+- (void)removeObservers;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+@property(retain) NSProView *footerView; // @synthesize footerView=_footerView;
+@property(retain) NSProView *headerView; // @synthesize headerView=_headerView;
+@property BOOL observersInstalled; // @synthesize observersInstalled=_observersInstalled;
 
 @end
 

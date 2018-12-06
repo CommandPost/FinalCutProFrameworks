@@ -9,18 +9,15 @@
 @interface OZLayerEnableCell : OZEnableCell
 {
     BOOL _showCell;
-    BOOL _showWarning;
 }
 
-+ (id)warningImage;
-- (void)setNextState;
-- (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
-- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
-- (long long)trackingRow;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)setShowWarning:(BOOL)arg1;
-- (void)setShowValue:(BOOL)arg1;
 - (id)initTextCell:(id)arg1;
+- (void)setShowValue:(BOOL)arg1;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (long long)trackingRow;
+- (BOOL)trackMouse:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3 untilMouseUp:(BOOL)arg4;
+- (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;
+- (void)setNextState;
 
 @end
 

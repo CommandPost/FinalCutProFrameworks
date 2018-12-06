@@ -10,15 +10,13 @@
 {
 }
 
-+ (id)toolbarFacetImageOff;
-+ (id)toolbarFacetImageOn;
-+ (id)toolTip;
-+ (id)displayName;
 + (void)initialize;
-+ (id)TLKEventHandlerID;
++ (id)displayName;
++ (id)toolTip;
++ (id)toolbarFacet;
+- (void)becomeActiveTool;
 - (BOOL)handlesSelection;
-- (void)willRemoveAsHandlerForTimeline:(id)arg1;
-- (void)willSetAsHandlerForTimeline:(id)arg1;
+- (void)resignActiveTool;
 
 @end
 

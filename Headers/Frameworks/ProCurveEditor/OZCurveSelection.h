@@ -21,25 +21,25 @@
     unsigned int _curveId;
 }
 
-- (long long)compareKeypointDescending:(id)arg1;
-- (long long)compareKeypointAscending:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isCurve;
-- (BOOL)isTangent;
-- (BOOL)setKeypointTangents:(double)arg1 inV:(double)arg2 outU:(double)arg3 outV:(double)arg4;
-- (BOOL)getKeypointTangents:(double *)arg1 inV:(double *)arg2 outU:(double *)arg3 outV:(double *)arg4;
-- (BOOL)setKeypointUV:(CDStruct_1b6d18a9)arg1 v:(double)arg2;
-- (BOOL)getKeypointUV:(CDStruct_1b6d18a9 *)arg1 pV:(double *)arg2;
-- (BOOL)isKeypoint;
-- (void)setCurveId:(unsigned int)arg1;
-- (void)resetFlags;
-- (void)setFlags:(unsigned long long)arg1;
-- (unsigned int)getCurveId;
-- (unsigned long long)getFlags;
-- (void)setHandle:(void *)arg1;
-- (void *)getHandle;
 - (id)init;
+- (void *)getHandle;
+- (void)setHandle:(void *)arg1;
+- (unsigned long long)getFlags;
+- (unsigned int)getCurveId;
+- (void)setFlags:(unsigned long long)arg1;
+- (void)resetFlags;
+- (void)setCurveId:(unsigned int)arg1;
+- (BOOL)isKeypoint;
+- (BOOL)getKeypointUV:(CDStruct_1b6d18a9 *)arg1 pV:(double *)arg2;
+- (BOOL)setKeypointUV:(CDStruct_1b6d18a9)arg1 v:(double)arg2;
+- (BOOL)getKeypointTangents:(double *)arg1 inV:(double *)arg2 outU:(double *)arg3 outV:(double *)arg4;
+- (BOOL)setKeypointTangents:(double)arg1 inV:(double)arg2 outU:(double)arg3 outV:(double)arg4;
+- (BOOL)isTangent;
+- (BOOL)isCurve;
+- (BOOL)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (long long)compareKeypointAscending:(id)arg1;
+- (long long)compareKeypointDescending:(id)arg1;
 
 @end
 

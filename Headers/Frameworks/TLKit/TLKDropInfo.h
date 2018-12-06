@@ -8,31 +8,27 @@
 
 #import "NSCopying.h"
 
-@class TLKItemLaneFragment, TLKLayoutContext;
+@class TLKLayoutManager;
 
 @interface TLKDropInfo : NSObject <NSCopying>
 {
     long long _dropIndex;
     CDStruct_1b6d18a9 _dropTime;
-    CDStruct_e83c9415 _highlightRange;
-    TLKLayoutContext *_targetLayoutContext;
-    id _targetItem;
-    TLKItemLaneFragment *_targetItemLaneFragment;
+    id <TLKTimelineItem> _targetItem;
+    TLKLayoutManager *_layoutManager;
 }
 
-@property(retain, nonatomic) TLKItemLaneFragment *targetItemLaneFragment; // @synthesize targetItemLaneFragment=_targetItemLaneFragment;
-@property(nonatomic) CDStruct_e83c9415 highlightRange; // @synthesize highlightRange=_highlightRange;
-@property(retain, nonatomic) id targetItem; // @synthesize targetItem=_targetItem;
-@property(retain, nonatomic) TLKLayoutContext *targetLayoutContext; // @synthesize targetLayoutContext=_targetLayoutContext;
-@property(nonatomic) CDStruct_1b6d18a9 dropTime; // @synthesize dropTime=_dropTime;
-@property(nonatomic) long long dropIndex; // @synthesize dropIndex=_dropIndex;
-- (id)debugDescription;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
-- (id)dictionaryRepresentation;
-- (id)_newDictionaryRepresentationForEquality:(BOOL)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_newDictionaryRepresentationForEquality:(BOOL)arg1;
+- (id)dictionaryRepresentation;
+- (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)debugDescription;
+@property(retain) id <TLKTimelineItem> targetItem; // @synthesize targetItem=_targetItem;
+@property(retain) TLKLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
+@property CDStruct_1b6d18a9 dropTime; // @synthesize dropTime=_dropTime;
+@property long long dropIndex; // @synthesize dropIndex=_dropIndex;
 
 @end
 

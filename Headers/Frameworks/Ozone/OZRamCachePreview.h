@@ -13,11 +13,11 @@
     NSColor *_backgroundColor;
 }
 
-- (void)drawRect:(struct CGRect)arg1;
-- (void)setBackgroundColor:(id)arg1;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
+- (void)setBackgroundColor:(id)arg1;
+- (void)drawRect:(struct CGRect)arg1;
 
 @end
 

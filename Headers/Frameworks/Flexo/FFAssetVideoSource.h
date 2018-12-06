@@ -13,16 +13,16 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)streamClass;
-- (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (long long)timecodeDisplayDropFrame;
-- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
-- (id)proxyContext:(id)arg1;
-- (id)inputVideoSource;
-- (void)dealloc;
-- (id)initWithProvider:(id)arg1 inputSource:(id)arg2;
-- (id)nativeVideoProps;
-- (CDStruct_e83c9415)timeRange;
 - (id)asset;
+- (CDStruct_e83c9415)timeRange;
+- (id)nativeVideoProps;
+- (id)initWithProvider:(id)arg1 inputSource:(id)arg2;
+- (void)dealloc;
+- (id)inputVideoSource;
+- (id)proxyContext:(id)arg1;
+- (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (long long)timecodeDisplayDropFrame;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
 
 @end
 

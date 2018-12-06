@@ -10,12 +10,12 @@
 {
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (void)setDefaultCurveBlindDataValue:(id)arg1;
-- (void)setPluginData:(id)arg1 atTime:(CDStruct_198678f7)arg2;
-- (id)pluginDataAtTime:(CDStruct_198678f7)arg1;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelBlindData *)ozChannel;
+- (id)pluginDataAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)setPluginData:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)setDefaultCurveBlindDataValue:(id)arg1;
 
 @end
 

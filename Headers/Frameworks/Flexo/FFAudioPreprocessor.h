@@ -6,45 +6,40 @@
 
 #import "NSObject.h"
 
-#import "FFBackgroundTaskTarget.h"
-
-@class FFAnchoredObject, FFAudioUnitAnalyzingEffect, FFSharedAudioUnit, NSMapTable;
+@class FFAnchoredObject, FFAudioUnitAnalyzingEffect, FFSharedAudioUnit;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioPreprocessor : NSObject <FFBackgroundTaskTarget>
+@interface FFAudioPreprocessor : NSObject
 {
     FFAnchoredObject *_object;
     FFAudioUnitAnalyzingEffect *_effect;
-    FFSharedAudioUnit *_sharedAudioUnit;
+    FFSharedAudioUnit *_sharedUnit;
     unsigned int _index;
-    NSMapTable *_propertyMap;
+    struct ComponentInstanceRecord *_audioUnit;
+    BOOL _cachedState;
 }
 
++ (void)performProcessingIfNecessary:(id)arg1 index:(unsigned long long)arg2;
 + (id)newPreprocessorFactory:(id)arg1 object:(id)arg2 index:(unsigned int)arg3;
-- (id)librariesInUse:(id)arg1;
-- (id)assetsInUse:(id)arg1;
-- (int)setMatchEQToMatchMode;
-- (int)postRenderMatchEQForPass:(int)arg1;
-- (int)preRenderMatchEQForPass:(int)arg1;
-- (id)_matchEQChannelForID:(unsigned int)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)enableEffect;
-- (int)storePreset;
-- (int)postRender;
-- (int)preRender;
-- (void)process:(id)arg1 onTask:(id)arg2;
-- (void)teardownEffects;
-- (void)configureEffects:(id)arg1;
-- (void)kickoffBackgroundProcess;
-- (void)analyzeObject:(id)arg1 onTask:(id)arg2;
-- (struct ComponentInstanceRecord *)_audioUnit;
-- (id)propertyForKey:(id)arg1;
-- (void)setProperty:(id)arg1 forKey:(id)arg2;
-- (id)sharedAudioUnit;
-- (void)setSharedAudioUnit:(id)arg1;
-- (void)dealloc;
 - (id)initWithObject:(id)arg1 andEffect:(id)arg2 andIndex:(unsigned int)arg3;
+- (void)dealloc;
+- (void)analyzeObject:(id)arg1 onTask:(id)arg2;
+- (void)kickoffBackgroundProcess;
+- (void)configureEffects:(id)arg1;
+- (void)process:(id)arg1 onTask:(id)arg2;
+- (int)preRender;
+- (int)postRender;
+- (int)loadPreset;
+- (int)storePreset;
+- (void)enableEffect;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)_matchEQChannelForID:(unsigned int)arg1;
+- (int)preRenderMatchEQForPass:(int)arg1;
+- (int)postRenderMatchEQForPass:(int)arg1;
+- (int)setMatchEQToMatchMode;
+@property BOOL cachedState; // @synthesize cachedState=_cachedState;
+@property struct ComponentInstanceRecord *audioUnit; // @synthesize audioUnit=_audioUnit;
 
 @end
 

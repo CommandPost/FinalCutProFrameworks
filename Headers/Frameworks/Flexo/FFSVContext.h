@@ -6,83 +6,35 @@
 
 #import "NSObject.h"
 
-#import "NSCopying.h"
+@class FFPixelFormat, FFStreamVideoOptions, PCMatrix44Double;
 
-@class FFStreamVideoOptions, PCMatrix44Double;
-
-@interface FFSVContext : NSObject <NSCopying>
+@interface FFSVContext : NSObject
 {
-    struct CGColorSpace *_effectOutputCS;
-    int _effectOutputCSEnum;
-    int _workingSpace;
+    struct CGColorSpace *_cs;
+    FFPixelFormat *_pf;
     PCMatrix44Double *_pt;
     unsigned int _tf;
-    int _sq;
     int _tq;
+    int _sq;
     int _priority;
     FFStreamVideoOptions *_options;
     int _locationHint;
-    unsigned int _additionalRenderingFlags;
-    FFSVContext *_cachedNoFieldPairingContext;
-    int _CGProviderCacheNodePolicy;
 }
 
-+ (int)getPreferredWorkingSpaceForColorSpace:(struct CGColorSpace *)arg1;
-+ (int)getPreferredWorkingSpaceForSource:(id)arg1 wsChoice:(int)arg2;
-@property(readonly, nonatomic) int getCGProviderCacheNodePolicy; // @synthesize getCGProviderCacheNodePolicy=_CGProviderCacheNodePolicy;
-@property(readonly, nonatomic) unsigned int additionalRenderingFlags; // @synthesize additionalRenderingFlags=_additionalRenderingFlags;
-- (id)description;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)compareTo:(id)arg1 withCompareFlags:(unsigned int)arg2;
-- (BOOL)pixelSpaceBounds:(struct CGRect *)arg1;
-- (BOOL)drawingInsideMultiAngleGrid;
-- (BOOL)allowCustomPreviewMode;
-- (BOOL)forLiveEdit;
-- (BOOL)pairFields;
-- (BOOL)effectsBestQuality;
-- (BOOL)disable422Filtering;
-- (BOOL)drawAllAnglesTopLevel;
-- (BOOL)draftTextMode;
-- (int)locationHint;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)copyForOtherField;
-- (id)copyWithAllowCustomPreviewMode:(BOOL)arg1;
-- (id)copyWithUpdatedWorkingSpace:(int)arg1;
-- (id)copyWithCGProviderCacheNodePolicy:(int)arg1;
-- (id)copyWithLiveEditFlag:(BOOL)arg1;
-- (id)copyWithPairFields:(BOOL)arg1;
-- (id)copyWithAdjustedPriority:(int)arg1 andLocationHint:(int)arg2;
-- (id)copyWithAdjustedPriority:(int)arg1;
-- (id)copyWithFxBestQuality:(BOOL)arg1;
-- (id)copyWithDraftTextMode:(BOOL)arg1;
-- (id)copyWithStrippedDrawAllAnglesAndAdjustedQuality:(int)arg1;
-- (id)copyForTopLevelMultiAngleGrid;
-- (id)copyWithUpdatedLocationHint:(int)arg1;
-- (id)copyWithSpatialQuality:(int)arg1 temporalQuality:(int)arg2;
-- (id)copyWithUpdatedFlags:(unsigned int)arg1;
-- (id)options;
-- (int)priority;
-- (int)spatialQuality;
-- (int)temporalQuality;
-- (unsigned int)field;
-- (unsigned int)temporalField;
-- (struct CGRect)transformRectThruPT:(struct CGRect)arg1;
-- (_Bool)hasYDownPixelTransform;
-- (_Bool)hasValidPixelTransform;
-- (id)copyPixelTransform;
-- (id)pixelTransform;
-- (int)workingSpace;
-- (int)effectOutputColorSpaceEnum;
-- (struct CGColorSpace *)effectOutputColorspace;
-- (void)colorSpace;
+- (id)initWithColorSpaceRef:(struct CGColorSpace *)arg1 pixelFormat:(id)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 spatialQuality:(int)arg5 temporalQuality:(int)arg6 priority:(int)arg7 options:(id)arg8;
 - (void)dealloc;
-- (id)initForStream:(id)arg1 field:(unsigned int)arg2 spatialQuality:(int)arg3 temporalQuality:(int)arg4 Ydown:(BOOL)arg5 priority:(int)arg6 wantSquarePixels:(BOOL)arg7 wsChoice:(int)arg8;
-- (id)initForStream:(id)arg1 field:(unsigned int)arg2 spatialQuality:(int)arg3 temporalQuality:(int)arg4 Ydown:(BOOL)arg5 priority:(int)arg6;
-- (id)initForHQFramesWithVideoProps:(id)arg1 priority:(int)arg2;
-- (id)initForFramesWithVideoProps:(id)arg1 spatialQuality:(int)arg2 temporalQuality:(int)arg3 priority:(int)arg4;
-- (id)initWithColorSpaceRef:(struct CGColorSpace *)arg1 pixelTransform:(id)arg2 temporalField:(unsigned int)arg3 spatialQuality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7 locationHint:(int)arg8;
-- (id)initWithColorSpaceRef:(struct CGColorSpace *)arg1 pixelTransform:(id)arg2 temporalField:(unsigned int)arg3 spatialQuality:(int)arg4 temporalQuality:(int)arg5 workingSpace:(int)arg6 priority:(int)arg7 options:(id)arg8 locationHint:(int)arg9;
-- (id)initWithColorSpaceRef:(struct CGColorSpace *)arg1 pixelTransform:(id)arg2 temporalField:(unsigned int)arg3 spatialQuality:(int)arg4 temporalQuality:(int)arg5 workingSpace:(int)arg6 priority:(int)arg7 options:(id)arg8 locationHint:(int)arg9 flags:(unsigned int)arg10 cgProviderCachePolicy:(int)arg11;
+- (struct CGColorSpace *)colorSpace;
+- (id)pixelFormat;
+- (id)pixelTransform;
+- (unsigned int)temporalField;
+- (unsigned int)field;
+- (int)temporalQuality;
+- (int)spatialQuality;
+- (int)priority;
+- (id)options;
+- (int)locationHint;
+- (void)setLocationHint:(int)arg1;
+- (struct CGRect)pixelSpaceBounds;
 
 @end
 

@@ -13,25 +13,29 @@
     struct FxTexturePriv *_texturePriv;
 }
 
-- (BOOL)_verifyImage;
-- (void)draw;
-- (void)getTextureCoords:(double *)arg1 right:(double *)arg2 bottom:(double *)arg3 top:(double *)arg4;
-- (void)setAsActiveTexture;
-- (void)disable;
-- (void)enable;
-- (void)bind;
-- (unsigned int)target;
-- (unsigned int)textureId;
-- (void *)createData:(unsigned int)arg1 withType:(unsigned int)arg2;
-- (BOOL)isInputImage;
-- (void)setIsInputImage:(BOOL)arg1;
-- (void)setTarget:(unsigned int)arg1;
-- (void)setTextureId:(unsigned int)arg1;
-- (void)setData:(void *)arg1;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithInfo:(CDStruct_4a07eeda)arg1 textureId:(unsigned int)arg2 andTarget:(unsigned int)arg3;
 - (id)init;
+- (id)initWithInfo:(CDStruct_d76d3d7a)arg1;
+- (id)initWithInfo:(CDStruct_d76d3d7a)arg1 andData:(void *)arg2;
+- (id)initWithInfo:(CDStruct_d76d3d7a)arg1 textureId:(unsigned int)arg2;
+- (id)initWithInfo:(CDStruct_d76d3d7a)arg1 textureId:(unsigned int)arg2 andTarget:(unsigned int)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (void)setData:(void *)arg1;
+- (void)setTextureId:(unsigned int)arg1;
+- (void)setTarget:(unsigned int)arg1;
+- (void)setIsInputImage:(BOOL)arg1;
+- (BOOL)isInputImage;
+- (void *)createData:(unsigned int)arg1 withType:(unsigned int)arg2;
+- (unsigned int)textureId;
+- (unsigned int)target;
+- (void)bind;
+- (void)enable;
+- (void)disable;
+- (void)setAsActiveTexture;
+- (void)setTextureCoords:(double)arg1 right:(double)arg2 bottom:(double)arg3 top:(double)arg4;
+- (void)getTextureCoords:(double *)arg1 right:(double *)arg2 bottom:(double *)arg3 top:(double *)arg4;
+- (void)draw;
+- (BOOL)_verifyImage;
 
 @end
 

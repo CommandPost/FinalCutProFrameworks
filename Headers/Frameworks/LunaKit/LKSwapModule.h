@@ -8,7 +8,7 @@
 
 #import "NSAnimationDelegate.h"
 
-@class NSString, NSView;
+@class NSView;
 
 @interface LKSwapModule : LKViewModule <NSAnimationDelegate>
 {
@@ -19,43 +19,37 @@
     BOOL _wasKeyBeforeAnimation;
 }
 
-- (id)_nextModuleFollowing:(id)arg1;
-- (void)_populateAccessoryViews;
-- (void)animationDidEnd:(id)arg1;
-- (void)_swapToModule:(id)arg1 animate:(BOOL)arg2;
-- (void)_newModuleStartFrame:(struct CGRect *)arg1 endFrame:(struct CGRect *)arg2 oldModuleStartFrame:(struct CGRect *)arg3 endFrame:(struct CGRect *)arg4 position:(long long *)arg5 forNewModule:(id)arg6 oldModule:(id)arg7;
-- (void)takeContentLayoutFromDictionary:(id)arg1;
-- (id)contentLayoutDictionary;
-- (void)toggleModuleVisibility:(id)arg1;
-- (BOOL)isSubmoduleVisible:(id)arg1;
-- (id)visibleSubmodule;
-- (id)visibleSubmodules;
-- (id)makeSubmoduleVisible:(id)arg1;
-- (id)_unhideSubmodule:(id)arg1;
-- (BOOL)unhideSubmodule:(id)arg1;
-- (BOOL)hideSubmodule:(id)arg1;
-- (BOOL)isSubmoduleHidden:(id)arg1;
-- (void)removeSubmodule:(id)arg1;
-- (id)activeModule;
-- (id)lastKeyView;
-- (id)firstKeyView;
-- (unsigned long long)revealAnimationStyle;
-- (id)moduleFooterAccessoryView;
-- (BOOL)wantsFooterBar;
-- (id)moduleHeaderAccessoryView;
-- (BOOL)wantsHeaderBar;
-- (BOOL)wantsDarkCapBar;
-- (unsigned long long)labelAlignment;
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
-- (BOOL)loadView;
 - (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (BOOL)loadView;
+- (void)viewDidLoad;
+- (struct CGSize)viewMinSize;
+- (struct CGSize)viewMaxSize;
+- (unsigned long long)labelAlignment;
+- (BOOL)wantsDarkCapBar;
+- (BOOL)wantsHeaderBar;
+- (id)moduleHeaderAccessoryView;
+- (BOOL)wantsFooterBar;
+- (id)moduleFooterAccessoryView;
+- (unsigned long long)revealAnimationStyle;
+- (id)firstKeyView;
+- (id)activeModule;
+- (void)removeSubmodule:(id)arg1;
+- (BOOL)isSubmoduleHidden:(id)arg1;
+- (BOOL)hideSubmodule:(id)arg1;
+- (BOOL)unhideSubmodule:(id)arg1;
+- (id)_unhideSubmodule:(id)arg1;
+- (id)makeSubmoduleVisible:(id)arg1;
+- (id)visibleSubmodules;
+- (id)visibleSubmodule;
+- (BOOL)isSubmoduleVisible:(id)arg1;
+- (void)toggleModuleVisibility:(id)arg1;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
+- (void)_newModuleStartFrame:(struct CGRect *)arg1 endFrame:(struct CGRect *)arg2 oldModuleStartFrame:(struct CGRect *)arg3 endFrame:(struct CGRect *)arg4 position:(long long *)arg5 forNewModule:(id)arg6 oldModule:(id)arg7;
+- (void)_swapToModule:(id)arg1 animate:(BOOL)arg2;
+- (void)animationDidEnd:(id)arg1;
+- (void)_populateAccessoryViews;
+- (id)_nextModuleFollowing:(id)arg1;
 
 @end
 

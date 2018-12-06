@@ -4,20 +4,21 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSOperation.h"
+#import <Flexo/FFMultithreadedAsyncOperation.h>
 
 __attribute__((visibility("hidden")))
-@interface FFScheduledFlatten : NSOperation
+@interface FFScheduledFlatten : FFMultithreadedAsyncOperation
 {
     CDStruct_bdcb2b0d _cacheKey;
     _Bool _doAsyncFlatten;
 }
 
-@property(nonatomic) _Bool doAsyncFlatten; // @synthesize doAsyncFlatten=_doAsyncFlatten;
-- (void)cancel;
-- (void)main;
+- (id)initWithCacheKey:(CDStruct_60067b7e)arg1;
 - (void)dealloc;
-- (id)initWithCacheKey:(CDStruct_bdcb2b0d)arg1;
+- (int)desiredThreads;
+- (BOOL)isReadyWithoutDependencies;
+- (void)main;
+@property(nonatomic) _Bool doAsyncFlatten; // @synthesize doAsyncFlatten=_doAsyncFlatten;
 
 @end
 

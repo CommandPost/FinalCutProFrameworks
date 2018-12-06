@@ -13,10 +13,10 @@ __attribute__((visibility("hidden")))
     Class _toolClass;
 }
 
-- (Class)toolClass;
-- (int)operation;
-- (void)dealloc;
 - (id)initWithOperation:(int)arg1 toolClass:(Class)arg2;
+- (void)dealloc;
+- (int)operation;
+- (Class)toolClass;
 
 @end
 

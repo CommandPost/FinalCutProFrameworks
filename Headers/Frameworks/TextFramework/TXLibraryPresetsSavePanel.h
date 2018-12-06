@@ -11,15 +11,13 @@
     struct OZFactoryBase *_pSaveItem;
 }
 
-+ (id)getPreviewImage:(id)arg1 resolution:(double)arg2 width:(unsigned int *)arg3 height:(unsigned int *)arg4 style:(const shared_ptr_e0e110e1 *)arg5 dependentObjects:(const list_e89ce44a *)arg6;
-+ (shared_ptr_1a5c5a10)getPreviewBitmap:(id)arg1 resolution:(double)arg2 style:(const shared_ptr_e0e110e1 *)arg3 dependentObjects:(const list_e89ce44a *)arg4;
-+ (double)getResolution:(id)arg1 style:(shared_ptr_e0e110e1 *)arg2;
-+ (void)openWithFactoryBase:(struct OZFactoryBase *)arg1 andPresetType:(const struct PCUUID *)arg2;
 + (struct CGSize)iconSize;
-- (void)cancelNotify:(id)arg1;
-- (_Bool)saveStylePreview:(const shared_ptr_e0e110e1 *)arg1 name:(id)arg2 resolution:(double)arg3 dependentObjects:(list_e89ce44a *)arg4;
-- (void)saveNotify:(id)arg1;
++ (void)openWithFactoryBase:(struct OZFactoryBase *)arg1 andPresetType:(const struct PCUUID *)arg2;
++ (double)getResolution:(id)arg1 style:(struct TXTextStyle *)arg2;
++ (id)getPreviewImage:(id)arg1 resolution:(double)arg2 width:(unsigned int *)arg3 height:(unsigned int *)arg4 style:(struct TXTextStyle *)arg5;
 - (void)_openWithFactoryBase:(struct OZFactoryBase *)arg1 andPresetType:(const struct PCUUID *)arg2;
+- (void)saveNotify:(id)arg1;
+- (void)cancelNotify:(id)arg1;
 
 @end
 

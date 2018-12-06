@@ -8,7 +8,7 @@
 
 #import "TLKPartInfo.h"
 
-@class FFAnchoredTimeMarker, NSString;
+@class FFAnchoredTimeMarker;
 
 __attribute__((visibility("hidden")))
 @interface FFTimelineMarkerLayer : FFMarkerLayer <TLKPartInfo>
@@ -20,34 +20,25 @@ __attribute__((visibility("hidden")))
     FFAnchoredTimeMarker *_representedObject;
 }
 
-@property(nonatomic) FFAnchoredTimeMarker *representedObject; // @synthesize representedObject=_representedObject;
-- (void)_triggerDeleteMarker:(id)arg1;
-- (void)_triggerCopyMarker:(id)arg1;
-- (void)_triggerCutMarker:(id)arg1;
-- (void)_triggerMakeChapterMarker:(id)arg1;
-- (void)_triggerCompleted:(id)arg1;
-- (void)_triggerMakeToDo:(id)arg1;
-- (void)_triggerMakeStandard:(id)arg1;
-- (void)_triggerModifyMarker:(id)arg1;
-- (id)contextMenu;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)partIdentifier;
-- (CDUnknownBlockType)deleteHandler;
-- (void)setDeleteHandler:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)copyHandler;
-- (void)setCopyHandler:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)cutHandler;
-- (void)setCutHandler:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)openHandler;
 - (void)setOpenHandler:(CDUnknownBlockType)arg1;
-- (id)initWithMarker:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (CDUnknownBlockType)openHandler;
+- (void)setCutHandler:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)cutHandler;
+- (void)setCopyHandler:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)copyHandler;
+- (void)setDeleteHandler:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)deleteHandler;
+- (id)partIdentifier;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (id)contextMenu;
+- (void)_triggerModifyMarker:(id)arg1;
+- (void)_triggerMakeToDo:(id)arg1;
+- (void)_triggerCompleted:(id)arg1;
+- (void)_triggerCutMarker:(id)arg1;
+- (void)_triggerCopyMarker:(id)arg1;
+- (void)_triggerDeleteMarker:(id)arg1;
+@property(nonatomic) FFAnchoredTimeMarker *representedObject; // @synthesize representedObject=_representedObject;
 
 @end
 

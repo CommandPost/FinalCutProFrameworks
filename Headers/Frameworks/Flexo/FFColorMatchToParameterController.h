@@ -6,25 +6,20 @@
 
 #import <Flexo/FFColorBaseViewController.h>
 
-@class LKButton, OZViewCtlrRoot;
+@class LKButton;
 
 __attribute__((visibility("hidden")))
 @interface FFColorMatchToParameterController : FFColorBaseViewController
 {
     LKButton *_chooseSourceClipButton;
-    OZViewCtlrRoot *_observedControllerRoot;
-    BOOL _allMediaIsAvailable;
 }
 
-- (id)checkMediaAvailability;
-- (void)assetInvalidated:(id)arg1;
-- (void)activeToolChanged:(id)arg1;
-- (BOOL)canPerformMatchTo;
-- (void)performMatchTo:(id)arg1;
-- (void)update;
-- (void)didBuildUI;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)update;
+- (void)performMatchTo:(id)arg1;
+- (BOOL)canPerformMatchTo;
+- (void)activeToolChanged:(id)arg1;
 
 @end
 

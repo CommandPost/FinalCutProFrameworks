@@ -12,10 +12,10 @@
     BOOL _isAutoresizing;
 }
 
-- (BOOL)isFlipped;
-- (void)setMinWidth:(float)arg1;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)resizeWithOldSuperviewSize:(struct CGSize)arg1;
+- (void)setFrame:(struct CGRect)arg1;
+- (void)setMinWidth:(float)arg1;
+- (BOOL)isFlipped;
 
 @end
 

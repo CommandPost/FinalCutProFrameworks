@@ -14,13 +14,8 @@
 }
 
 + (id)addPulldownControllerToController:(id)arg1 channel:(struct OZChannelBase *)arg2 context:(id)arg3;
-+ (double)defaultWidth;
-- (float)suggestedMaxParamWidth;
-- (float)suggestedMinParamWidth;
-- (void)setAnimStatusClass:(Class)arg1;
-- (void)setResetDelegateForParamPulldown:(id)arg1;
-- (void)reset;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)reset;
 
 @end
 

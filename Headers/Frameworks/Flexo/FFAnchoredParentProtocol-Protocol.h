@@ -4,27 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFAnchoredCollection, FFAnchoredObject, FFAnchoredSequence, FFNotificationID_, FFRoleChangeContext, NSDictionary, NSString;
-
 @protocol FFAnchoredParentProtocol
-- (void)informParentRoleChangeWillBegin:(FFRoleChangeContext *)arg1;
-- (void)informAudioComponentsLayoutChanged:(NSDictionary *)arg1;
-- (FFAnchoredSequence *)sequence;
-- (BOOL)canContainObject:(FFAnchoredObject *)arg1;
-- (FFAnchoredCollection *)container;
-- (void)removeAnchoredObjectFromParentObserving:(id)arg1 includingObject:(BOOL)arg2;
-- (void)addAnchoredObjectForParentObserving:(id)arg1 includingObject:(BOOL)arg2;
-- (void)passEffectNotificationUpChain:(FFNotificationID_ *)arg1 userInfo:(NSDictionary *)arg2 informParents:(BOOL)arg3;
-- (BOOL)canClippedItemRangeOnChildCausesRipple:(FFAnchoredObject *)arg1;
-- (BOOL)objectInContainedItems:(FFAnchoredObject *)arg1;
-- (CDStruct_e83c9415)localEffectiveRange;
-- (CDStruct_1b6d18a9)childToParentOffsetForChildCachingSiblings:(FFAnchoredObject *)arg1;
-- (long long)getFirstSetAnchoredLaneValueInParentsAndSelf:(FFAnchoredObject *)arg1;
+- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
+- (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
+- (void)invalidateStreamRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
+- (void)informParentContainedItemsChanged;
+- (void)informParentIsCompoundClipChanged;
 - (void)informParentEffectsChanged;
-- (void)informContainedItemsAddedRemovedOrPlayEnableChanged:(unsigned int)arg1;
-- (void)informParentContainedItemsChanged:(unsigned int)arg1;
-- (void)invalidateStreamRange:(CDStruct_e83c9415)arg1 forType:(NSString *)arg2;
-- (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(NSString *)arg2;
-- (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(NSString *)arg2 withUserInfo:(NSDictionary *)arg3;
+- (long long)getFirstSetAnchoredLaneValueInParentsAndSelf:(id)arg1;
+- (CDStruct_1b6d18a9)childToParentOffsetForChild:(id)arg1;
+- (CDStruct_e83c9415)localEffectiveRange;
+- (BOOL)objectInContainedItems:(id)arg1;
+- (BOOL)canClippedItemRangeOnChildCausesRipple:(id)arg1;
+- (void)passEffectNotificationUpChain:(id)arg1 userInfo:(id)arg2 informParents:(BOOL)arg3;
+- (void)addAnchoredObjectForParentObserving:(id)arg1 includingObject:(BOOL)arg2;
+- (void)removeAnchoredObjectFromParentObserving:(id)arg1 includingObject:(BOOL)arg2;
 @end
 

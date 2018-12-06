@@ -17,13 +17,12 @@
     OZColorPopUpButton *_pMaskColorPopUp;
 }
 
-- (void)setMaskColor:(id)arg1;
-- (void)setBlendMode:(id)arg1;
-- (void)setFeather:(id)arg1;
-- (id)optionsNibName;
-- (id)contentView;
-- (void)dealloc;
 - (id)initWithOSC:(id)arg1;
+- (id)contentView;
+- (id)optionsNibName;
+- (void)setFeather:(id)arg1;
+- (void)setBlendMode:(id)arg1;
+- (void)setMaskColor:(id)arg1;
 
 @end
 

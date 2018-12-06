@@ -11,17 +11,15 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)library;
-- (void)controlUpdated:(id)arg1;
-- (id)tileGlyphString;
-- (id)metadataKey;
-- (void)updateWithSelectedRoleUIDs:(id)arg1;
-- (void)setKeywords:(id)arg1 selectedKeywords:(id)arg2;
-- (id)filterDict;
-- (void)setFilterDict:(id)arg1;
-- (void)tileWasInstalled;
-- (BOOL)active;
 - (void)setActive:(BOOL)arg1;
+- (BOOL)active;
+- (void)tileWasInstalled;
+- (void)setFilterDict:(id)arg1;
+- (id)filterDict;
+- (void)setKeywords:(id)arg1 selectedKeywords:(id)arg2;
+- (id)metadataKey;
+- (id)tileTypeFacet;
+- (void)controlUpdated:(id)arg1;
 
 @end
 

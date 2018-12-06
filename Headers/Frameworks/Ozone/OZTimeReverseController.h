@@ -13,15 +13,15 @@
     NSButton *_pCheckButton;
 }
 
-- (struct OZDocument *)document;
-- (void)setReverseValue:(id)arg1;
-- (void)setReverse:(_Bool)arg1 forChannel:(struct OZChannelBase *)arg2;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (BOOL)areAllValuesEqual;
-- (BOOL)getValueFromChannel:(struct OZChannelBase *)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (BOOL)getValueFromChannel:(struct OZChannelBase *)arg1;
+- (BOOL)areAllValuesEqual;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (void)setReverse:(_Bool)arg1 forChannel:(struct OZChannelBase *)arg2;
+- (void)setReverseValue:(id)arg1;
+- (struct OZDocument *)document;
 
 @end
 

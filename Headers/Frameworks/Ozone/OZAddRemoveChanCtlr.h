@@ -15,20 +15,19 @@
     struct OZAddRemoveChanIF *_pAddRemoveIF;
 }
 
-- (void)buildRemoveChanMenu:(struct OZAddRemoveChanIF *)arg1;
-- (void)buildAddChanMenu:(struct OZAddRemoveChanIF *)arg1;
-- (id)buildChannelMenu:(id)arg1 withItems:(const vector_b71873ec *)arg2 isAdd:(_Bool)arg3;
-- (void)removeChannelCB:(id)arg1;
-- (void)addChannelCB:(id)arg1;
-- (void)delayedRelease;
-- (void)delayedReleaseCB:(id)arg1;
-- (struct OZObjectManipulator *)appliedToObject;
-- (struct OZDocument *)document;
-- (void)disable;
-- (void)enable;
-- (void)updateMenuNames:(id)arg1;
-- (void)update;
 - (id)initWithAddRemoveIF:(struct OZAddRemoveChanIF *)arg1 isHUD:(BOOL)arg2;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (struct OZDocument *)document;
+- (struct OZObjectManipulator *)appliedToObject;
+- (void)delayedReleaseCB:(id)arg1;
+- (void)delayedRelease;
+- (void)addChannelCB:(id)arg1;
+- (void)removeChannelCB:(id)arg1;
+- (id)buildChannelMenu:(id)arg1 withItems:(const vector_9cf4947a *)arg2 isAdd:(_Bool)arg3;
+- (void)buildAddChanMenu:(struct OZAddRemoveChanIF *)arg1;
+- (void)buildRemoveChanMenu:(struct OZAddRemoveChanIF *)arg1;
 
 @end
 

@@ -8,16 +8,17 @@
 
 @interface CHChannelGradient : CHChannelFolder
 {
+    struct OZChannelGradient *_pChannelGradient;
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (void)getGradientAtTime:(CDStruct_198678f7)arg1 inColorSpace:(struct CGColorSpace *)arg2 asFloats:(float [4])arg3 samples:(unsigned int)arg4;
-- (void)getGradientAtTime:(CDStruct_198678f7)arg1 inColorSpace:(struct CGColorSpace *)arg2 asShorts:(unsigned short [4])arg3 samples:(unsigned int)arg4;
-- (void)getGradientAtTime:(CDStruct_198678f7)arg1 inColorSpace:(struct CGColorSpace *)arg2 asChars:(unsigned char [4])arg3 samples:(unsigned int)arg4;
-- (id)colorAtTime:(CDStruct_198678f7)arg1 offset:(double)arg2;
-- (void)reset;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelGradient *)ozChannel;
+- (void)reset;
+- (id)colorAtTime:(CDStruct_1b6d18a9)arg1 offset:(double)arg2;
+- (void)getGradientAtTime:(CDStruct_1b6d18a9)arg1 inColorSpace:(struct CGColorSpace *)arg2 asChars:(unsigned char [4])arg3 samples:(unsigned int)arg4;
+- (void)getGradientAtTime:(CDStruct_1b6d18a9)arg1 inColorSpace:(struct CGColorSpace *)arg2 asShorts:(unsigned short [4])arg3 samples:(unsigned int)arg4;
+- (void)getGradientAtTime:(CDStruct_1b6d18a9)arg1 inColorSpace:(struct CGColorSpace *)arg2 asFloats:(float [4])arg3 samples:(unsigned int)arg4;
 
 @end
 

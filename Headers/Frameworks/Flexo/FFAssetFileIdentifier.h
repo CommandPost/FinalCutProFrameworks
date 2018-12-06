@@ -6,39 +6,35 @@
 
 #import "NSObject.h"
 
+#import "NSCoding.h"
+#import "NSCopying.h"
+
 @class NSString, NSURL;
 
-@interface FFAssetFileIdentifier : NSObject
+@interface FFAssetFileIdentifier : NSObject <NSCoding, NSCopying>
 {
-    NSString *_libraryID;
     NSString *_eventDocumentID;
     NSString *_path;
     NSURL *_url;
-    NSURL *_downloadURL;
 }
 
-@property(retain, nonatomic) NSURL *downloadURL; // @synthesize downloadURL=_downloadURL;
-- (id)description;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
-- (id)eventDocumentIDAndPath;
-- (id)projectRelativePath;
-- (id)owningLibraryItem;
-- (id)projectURL;
-- (id)libraryURL;
-- (void)resetURL;
-- (id)URL;
-@property(readonly, nonatomic) NSString *path;
-@property(readonly, nonatomic) NSString *eventDocumentID;
-@property(readonly, nonatomic) NSString *libraryID;
-- (id)newFileIdentifierWithPath:(id)arg1;
-- (id)copyFileIdentifierForProject:(id)arg1 libraryID:(id)arg2;
-- (void)dealloc;
-- (id)initWithPath:(id)arg1 eventDocumentID:(id)arg2 libraryID:(id)arg3;
-- (id)initWithPath:(id)arg1 document:(id)arg2;
 - (id)initWithPath:(id)arg1 project:(id)arg2;
-- (id)initWithAbsolutePath:(id)arg1 project:(id)arg2;
-- (id)initWithAbsolutePath:(id)arg1 document:(id)arg2;
+- (id)initWithPath:(id)arg1 eventDocumentID:(id)arg2;
+- (void)dealloc;
+- (id)newFileIdentifierWithPath:(id)arg1;
+- (id)eventDocumentID;
+- (void)setEventDocumentID:(id)arg1;
+- (id)path;
+- (void)setPath:(id)arg1;
+- (id)URL;
+- (void)resetURL;
+- (id)projectURL;
+- (id)projectRelativePath;
+- (BOOL)isEqual:(id)arg1;
+- (id)description;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

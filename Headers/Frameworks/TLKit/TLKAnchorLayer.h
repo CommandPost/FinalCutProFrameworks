@@ -4,44 +4,24 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import <TLKit/TLKThemeBackedLayer.h>
 
-@class TLKAnchorPart, TLKItemLayoutInfo;
-
-@interface TLKAnchorLayer : CALayer
+@interface TLKAnchorLayer : TLKThemeBackedLayer
 {
+    id _representedObject;
+    int _anchorDirection;
     int _itemType;
-    int _aVContainmentType;
-    TLKItemLayoutInfo *_item;
-    id <TLKTimelineItem> _representedObject;
-    TLKAnchorPart *_anchorBody;
-    TLKAnchorPart *_anchorHead;
-    TLKAnchorPart *_anchorTail;
+    int _avContainmentType;
 }
 
-@property(nonatomic) int aVContainmentType; // @synthesize aVContainmentType=_aVContainmentType;
-@property(nonatomic) int itemType; // @synthesize itemType=_itemType;
-@property(retain, nonatomic) TLKAnchorPart *anchorTail; // @synthesize anchorTail=_anchorTail;
-@property(retain, nonatomic) TLKAnchorPart *anchorHead; // @synthesize anchorHead=_anchorHead;
-@property(retain, nonatomic) TLKAnchorPart *anchorBody; // @synthesize anchorBody=_anchorBody;
-@property(retain, nonatomic) id <TLKTimelineItem> representedObject; // @synthesize representedObject=_representedObject;
-@property(nonatomic) TLKItemLayoutInfo *item; // @synthesize item=_item;
-- (void)replaceSublayer:(id)arg1 with:(id)arg2;
-- (void)insertSublayer:(id)arg1 above:(id)arg2;
-- (void)insertSublayer:(id)arg1 below:(id)arg2;
-- (void)addSublayer:(id)arg1;
-- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
-- (void)setDelegate:(id)arg1;
-- (void)_removeAttachedAnchors;
-- (void)invalidate;
-- (void)makeVisible:(BOOL)arg1;
-- (void)updateAppearance:(unsigned long long)arg1;
-- (void)updateAppearance;
-- (void)reflectChangedLayout;
-- (void)_loadAnchorPartLayersIfNeeded;
-- (id)timelineView;
-- (void)dealloc;
 - (id)init;
+- (void)setItemType:(int)arg1 andContainmentMask:(int)arg2;
+- (int)itemType;
+- (int)aVContainmentType;
+- (void)updateAppearance;
+- (void)invalidate;
+@property int anchorDirection; // @synthesize anchorDirection=_anchorDirection;
+@property id <TLKTimelineItem> representedObject; // @synthesize representedObject=_representedObject;
 
 @end
 

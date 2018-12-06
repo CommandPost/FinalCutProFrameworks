@@ -4,18 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSTableView.h"
+#import "NSProTableView.h"
 
-@interface LKTableView : NSTableView
+@interface LKTableView : NSProTableView
 {
 }
 
-- (id)menuForEvent:(id)arg1;
-- (id)_preferredAppearance;
-- (void)setMouseTrackingEnabled:(BOOL)arg1;
-- (BOOL)isMouseTrackingEnabled;
-- (id)enclosingScrollView;
-- (double)sizeToFitWidthOfColumn:(long long)arg1;
++ (Class)_headerViewClass;
++ (Class)_cornerCellClass;
+- (Class)ibDefaultTableColumnClassForInsertion;
 
 @end
 

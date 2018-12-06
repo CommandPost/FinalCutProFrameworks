@@ -6,21 +6,19 @@
 
 #import "NSObject.h"
 
-@class NSDictionary, NSString;
+@class NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectRegistryEntry : NSObject
 {
-    NSString *_effectID;
     Class _effectClass;
     NSDictionary *_effectProperties;
 }
 
-- (id)effectID;
-- (id)effectProperties;
-- (Class)effectClass;
+- (id)initWithClass:(Class)arg1 andProperties:(id)arg2;
 - (oneway void)dealloc;
-- (id)initWithClass:(Class)arg1 effectID:(id)arg2 andProperties:(id)arg3;
+- (Class)effectClass;
+- (id)effectProperties;
 
 @end
 

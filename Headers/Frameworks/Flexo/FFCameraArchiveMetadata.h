@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)cameraArchiveMetadataWithPath:(id)arg1 isPrimary:(BOOL)arg2;
-@property(readonly) NSString *uuid;
-@property(readonly) NSString *radPluginUUID;
-@property(readonly) NSArray *clipIDs;
-- (void)dealloc;
 - (id)initWithArchiveMetadataDictionary:(id)arg1;
+- (void)dealloc;
+@property(readonly) NSArray *clipIDs;
+@property(readonly) NSString *radPluginUUID;
+@property(readonly) NSString *uuid;
 
 @end
 

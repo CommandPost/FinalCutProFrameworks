@@ -14,11 +14,10 @@
     struct TXTextLayout *_text;
 }
 
-- (void)setIsEnabled:(BOOL)arg1;
-- (void)update;
-- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_198678f7)arg3;
-- (void)setChannelValue:(id)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)setChannelValue:(id)arg1;
+- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)update;
 
 @end
 

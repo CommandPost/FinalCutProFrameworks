@@ -10,13 +10,13 @@
 
 @interface OZFreeHandSplineTool : OZSplineTool
 {
-    vector_d8ace1c2 *_vertices;
-    vector_8f06c10f *_lengths;
-    vector_8f06c10f *_pressures;
-    vector_d8ace1c2 *_tilts;
-    vector_8f06c10f *_times;
+    vector_61369161 *_vertices;
+    vector_419cd555 *_lengths;
+    vector_419cd555 *_pressures;
+    vector_61369161 *_tilts;
+    vector_419cd555 *_times;
     struct PCMutex *_interactiveValuesLock;
-    vector_0839df23 *_missingFootage;
+    vector_58ebe158 *_missingFootage;
     struct OZFreeHandEvent _eventRingBuffer[4];
     int _currEventIndex;
     int _numEvents;
@@ -35,42 +35,42 @@
 }
 
 + (id)changedStrokeWidthNotificationString;
-- (id).cxx_construct;
-- (BOOL)shouldDrawStrokeWidthOSC;
-- (void)setMinStrokeWidth:(double)arg1;
-- (void)setCreationName:(id)arg1;
-- (void)loadPreset:(struct OZPasteList *)arg1;
-- (void)loadPasteboard:(id)arg1 intoSceneNode:(struct OZSceneNode *)arg2;
-- (void)handlePaintMouseDragged:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (BOOL)projectPoint:(id)arg1 xpos:(double *)arg2 ypos:(double *)arg3;
-- (void)addEventToRotoChans:(const struct OZFreeHandEvent *)arg1;
-- (void)didCancelDrawing;
--     // Error parsing type: v24@0:8^{OZScene=^^?^^?{PCHash128=[4I]}i{OZSceneSettings=^^?iiIBIdBdii{PCColor={ColorComponents=i[5d]}{PCColorSpaceHandle=^{CGColorSpace}}}iBIIdBBdi{PCString=^{__CFString}}IIdIIIBfiBiBiiBi}{OZExportSettings=^^?IIIIIIBiiBBBIIIIIIII}{OZPublishSettings=^^?{vector<OZPublishSettings::Entry *, std::__1::allocator<OZPublishSettings::Entry *> >=^^{Entry}^^{Entry}{__compressed_pair<OZPublishSettings::Entry **, std::__1::allocator<OZPublishSettings::Entry *> >=^^{Entry}}}{OZChannelVaryingFolder=^^?^{OZFactory}^^?I{PCString=^{__CFString}}^{PCString}^{OZChannelFolder}QQ^v^{__CFString}^{__CFString}^{__CFString}^{OZChannelTimeConverter}^{vector<OZChannelBase *, std::__1::allocator<OZChannelBase *> >}II}^{OZScene}BB{map<unsigned int, double, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, double> > >={__tree<std::__1::__value_type<unsigned int, double>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, double>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, double> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, double>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, double>, std::__1::less<unsigned int>, true> >=Q}}}}{OZChannelObjectRoot=^^?^{OZFactory}^^?I{PCString=^{__CFString}}^{PCString}^{OZChannelFolder}QQ^v^{__CFString}^{__CFString}^{__CFString}^{OZChannelTimeConverter}^{vector<OZChannelBase *, std::__1::allocator<OZChannelBase *> >}II{?=qiIq}{PCTimeRange={?=qiIq}{?=qiIq}}BB^{OZObjectManipulator}^{OZTimeMarkerSet}{list<OZSimulationBehavior *, std::__1::allocator<OZSimulationBehavior *> >={__list_node_base<OZSimulationBehavior *, void *>=^{__list_node_base<OZSimulationBehavior *, void *>}^{__list_node_base<OZSimulationBehavior *, void *>}}{__compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZSimulationBehavior *, void *> > >=Q}}{PCString=^{__CFString}}}{?=qiIq}{list<OZSceneNode *, std::__1::allocator<OZSceneNode *> >={__list_node_base<OZSceneNode *, void *>=^{__list_node_base<OZSceneNode *, void *>}^{__list_node_base<OZSceneNode *, void *>}}{__compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZSceneNode *, void *> > >=Q}}^{OZSceneNode}^{OZGroup}{set<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *> >={__tree<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<OZElement *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<OZElement *> >=Q}}}{map<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *> > >={__tree<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > *>, std::__1::less<unsigned int>, true> >=Q}}}{OZNodeMap=^I^^{OZObjectManipulator}iiI^{OZObjectManipulator}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}}{PCTimeRange={?=qiIq}{?=qiIq}}{PCTimeRange={?=qiIq}{?=qiIq}}{PCTimeRange={?=qiIq}{?=qiIq}}{OZCurveSetListSerializer=^^?{vector<OZCurveSetSerializer *, std::__1::allocator<OZCurveSetSerializer *> >=^^{OZCurveSetSerializer}^^{OZCurveSetSerializer}{__compressed_pair<OZCurveSetSerializer **, std::__1::allocator<OZCurveSetSerializer *> >=^^{OZCurveSetSerializer}}}I}^{OZRenderManager}{OZGuideSet=^^?{__tree<OZGuide, std::__1::less<OZGuide>, std::__1::allocator<OZGuide> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<OZGuide, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<OZGuide> >=Q}}}II{vector<OZObjectManipulator *, std::__1::allocator<OZObjectManipulator *> >=^^{OZObjectManipulator}^^{OZObjectManipulator}{__compressed_pair<OZObjectManipulator **, std::__1::allocator<OZObjectManipulator *> >=^^{OZObjectManipulator}}}BBBB^{OZDocument}I{PCHash128=[4I]}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}{map<PCHash128, PCMutexRef, std::__1::less<PCHash128>, std::__1::allocator<std::__1::pair<const PCHash128, PCMutexRef> > >={__tree<std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::__map_value_compare<PCHash128, std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::less<PCHash128>, true>, std::__1::allocator<std::__1::__value_type<PCHash128, PCMutexRef> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<PCHash128, PCMutexRef>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<PCHash128, std::__1::__value_type<PCHash128, PCMutexRef>, std::__1::less<PCHash128>, true> >=Q}}}{PCSpinLock={os_unfair_lock_s=I}}{list<OZCPPObserver *, std::__1::allocator<OZCPPObserver *> >={__list_node_base<OZCPPObserver *, void *>=^{__list_node_base<OZCPPObserver *, void *>}^{__list_node_base<OZCPPObserver *, void *>}}{__compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<OZCPPObserver *, void *> > >=Q}}{set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> >={__tree<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<unsigned int, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<unsigned int> >=Q}}}BiB{atomic<bool>=AB}i{vector<OZLockingGroup *, std::__1::allocator<OZLockingGroup *> >=^^{OZLockingGroup}^^{OZLockingGroup}{__compressed_pair<OZLockingGroup **, std::__1::allocator<OZLockingGroup *> >=^^{OZLockingGroup}}}{PCRenderModel=i{PCColorSpaceHandle=^{CGColorSpace}}f{PCColorSpaceHandle=^{CGColorSpace}}}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}BB}16, name: addToScene:
-- (void)setPreviewDelegate:(id)arg1;
-- (struct OZRotoshape *)getRotoshape;
-- (void)calculateLengths:(vector_8f06c10f *)arg1;
-- (void)applyTiming:(vector_8f06c10f *)arg1;
-- (void)applySpeeds:(vector_8f06c10f *)arg1;
-- (void)applyTilts:(vector_8f06c10f *)arg1;
-- (void)applyPressures:(vector_8f06c10f *)arg1;
-- (void)simplify:(CDStruct_1b6d18a9)arg1 isClosed:(_Bool)arg2;
-- (void)setupGaussianKernel:(double *)arg1 sigma:(double)arg2 radius:(int)arg3;
-- (void)addVertices:(CDStruct_1b6d18a9)arg1 isClosed:(_Bool)arg2;
-- (void)getCentrePoint:(PCVector2_79efa81a *)arg1;
-- (void)draw;
-- (void)setViewMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 state:(const struct OZRenderState *)arg2;
-- (void)endWithDocument:(struct OZDocument *)arg1;
-- (id)getCursorWithEvent:(id)arg1;
-- (id)getDefaultCursor;
-- (struct PCUUID)getClassID;
-- (id)getTooltip;
-- (id)getName;
-- (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)dealloc;
+- (id)getName;
+- (id)getTooltip;
+- (struct PCUUID)getClassID;
+- (id)getDefaultCursor;
+- (id)getCursorWithEvent:(id)arg1;
+- (void)endWithDocument:(struct OZDocument *)arg1;
+- (void)setViewMatrix:(const PCMatrix44Tmpl_e98c85ee *)arg1 state:(const struct OZRenderState *)arg2;
+- (void)draw;
+- (void)getCentrePoint:(PCVector2_79efa81a *)arg1;
+- (void)addVertices:(CDStruct_1b6d18a9)arg1 isClosed:(_Bool)arg2;
+- (void)setupGaussianKernel:(double *)arg1 sigma:(double)arg2 radius:(int)arg3;
+- (void)simplify:(CDStruct_1b6d18a9)arg1 isClosed:(_Bool)arg2;
+- (void)applyPressures:(vector_419cd555 *)arg1;
+- (void)applyTilts:(vector_419cd555 *)arg1;
+- (void)applySpeeds:(vector_419cd555 *)arg1;
+- (void)applyTiming:(vector_419cd555 *)arg1;
+- (void)calculateLengths:(vector_419cd555 *)arg1;
+- (struct OZRotoshape *)getRotoshape;
+- (void)setPreviewDelegate:(id)arg1;
+- (void)addToScene:(struct OZScene *)arg1;
+- (void)didCancelDrawing;
+- (void)addEventToRotoChans:(const struct OZFreeHandEvent *)arg1;
+- (BOOL)projectPoint:(id)arg1 xpos:(double *)arg2 ypos:(double *)arg3;
+- (void)mouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)handlePaintMouseDragged:(id)arg1;
+- (void)loadPasteboard:(id)arg1 intoSceneNode:(struct OZSceneNode *)arg2;
+- (void)loadPreset:(struct OZPasteList *)arg1;
+- (void)setCreationName:(id)arg1;
+- (void)setMinStrokeWidth:(double)arg1;
+- (BOOL)shouldDrawStrokeWidthOSC;
+- (id).cxx_construct;
 
 @end
 

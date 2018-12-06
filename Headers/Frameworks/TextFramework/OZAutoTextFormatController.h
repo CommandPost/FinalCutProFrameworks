@@ -6,7 +6,7 @@
 
 #import <TextFramework/OZAutoTextInspectorController.h>
 
-@class OZChanFolderController, OZFolderGroupController, OZLabeledParamController, OZTextCtrlResetDelegate, OZViewController, OZViewControllerGroup;
+@class OZChanFolderController, OZFolderGroupController, OZLabeledParamController, OZViewController, OZViewControllerGroup;
 
 @interface OZAutoTextFormatController : OZAutoTextInspectorController
 {
@@ -35,7 +35,6 @@
     OZViewController *_scaleParamCtrl;
     OZViewController *_scaleXCtrl;
     OZViewController *_scaleYCtrl;
-    OZViewController *_scaleZCtrl;
     OZViewController *_offsetCtrl;
     OZViewController *_scaleAffectsLayoutCtrl;
     OZViewController *_slantCtrl;
@@ -45,25 +44,23 @@
     OZViewController *_allCapsSizeCtrl;
     OZViewControllerGroup *_rotateCtrl;
     OZViewControllerGroup *_rotateCtrlGrp;
-    OZTextCtrlResetDelegate *_basicFormatCtrlResetDelegate;
-    OZTextCtrlResetDelegate *_advancedFormatCtrlResetDelegate;
 }
 
-- (void)updateLayoutControllers:(list_e89ce44a *)arg1;
-- (void)enableDisableUI:(unsigned int)arg1;
-- (void)notify:(unsigned int)arg1;
-- (shared_ptr_e0e110e1)getCurrentStyle;
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
-- (void)_saveDefaultFont:(int)arg1;
-- (void)update;
-- (void)resetOrAddAssociatedStyle:(const shared_ptr_e0e110e1 *)arg1 reset:(BOOL)arg2;
-- (void)appendCustomTextUI:(struct TXTextLayout *)arg1 context:(id)arg2;
-- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
-- (void)enableDisableLayoutUI:(int)arg1;
-- (void)buildTextView:(id)arg1;
-- (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
-- (void)dealloc;
 - (id)initWithNode:(struct OZSceneNode *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
+- (void)dealloc;
+- (struct OZChannelFolder *)getRootChan:(struct OZSceneNode *)arg1;
+- (void)buildTextView:(id)arg1;
+- (void)enableDisableLayoutUI:(int)arg1;
+- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
+- (void)appendCustomTextUI:(struct TXTextLayout *)arg1 context:(id)arg2;
+- (void)resetOrAddAssociatedStyle:(struct TXTextStyle *)arg1 reset:(BOOL)arg2;
+- (void)update;
+- (void)_saveDefaultFont:(int)arg1;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
+- (struct TXTextStyle *)getCurrentStyle;
+- (void)notify:(unsigned int)arg1;
+- (void)enableDisableUI:(unsigned int)arg1;
+- (void)updateLayoutControllers:(list_699e9227 *)arg1;
 
 @end
 

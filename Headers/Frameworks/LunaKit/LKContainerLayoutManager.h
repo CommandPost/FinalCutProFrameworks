@@ -11,12 +11,12 @@
 }
 
 + (id)sharedLayoutManager;
-- (BOOL)insertItem:(id)arg1 fromContainerView:(id)arg2 relativeToItem:(id)arg3 inContainerView:(id)arg4 withOperation:(id)arg5;
-- (BOOL)canAddNode:(id)arg1 inContainerView:(id)arg2 atIndexPath:(id)arg3;
-- (id)dropDestinationContainerView;
-- (void)setDropDestinationContainerView:(id)arg1;
-- (id)draggedContainerNode;
 - (void)setDraggedContainerNode:(id)arg1;
+- (id)draggedContainerNode;
+- (void)setDropDestinationContainerView:(id)arg1;
+- (id)dropDestinationContainerView;
+- (BOOL)canAddNode:(id)arg1 inContainerView:(id)arg2 atIndexPath:(id)arg3;
+- (BOOL)insertItem:(id)arg1 fromContainerView:(id)arg2 relativeToItem:(id)arg3 inContainerView:(id)arg4 withOperation:(id)arg5;
 
 @end
 

@@ -6,34 +6,27 @@
 
 #import <Flexo/FFStreamAudio.h>
 
-#import "FFStreamAudioScopingWindowProtocol.h"
-
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FFStreamAudioEffect : FFStreamAudio <FFStreamAudioScopingWindowProtocol>
+@interface FFStreamAudioEffect : FFStreamAudio
 {
     NSMutableDictionary *m_inputStreams;
     NSMutableDictionary *m_inputOffsets;
     NSMutableDictionary *m_inputIdentifiers;
 }
 
-- (void)closeInputStreamForKey:(id)arg1;
-- (id)openInputStreamForKey:(id)arg1 context:(id)arg2 options:(id)arg3;
-- (id)inputIdentifierForKey:(id)arg1;
-- (CDStruct_1b6d18a9)inputOffsetForKey:(id)arg1;
-- (id)inputStreamForKey:(id)arg1;
-- (id)allInputStreamKeys;
-- (id)firstInputStream;
-- (CDStruct_e83c9415)calculateScopingWindowTimeRange:(CDStruct_e83c9415)arg1 prerollRange:(CDStruct_e83c9415)arg2;
-- (void)findAssociatedMixBussScopingWindows:(id)arg1;
-- (void)advanceScopingWindow:(CDStruct_1b6d18a9)arg1 sync:(id)arg2;
-- (void)preRenderEnd;
-- (void)preRenderBegin:(CDStruct_1b6d18a9)arg1 sync:(id)arg2;
-- (void)prerollEnd;
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
-- (void)dealloc;
 - (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3;
+- (void)dealloc;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
+- (void)prerollEnd;
+- (id)firstInputStream;
+- (id)allInputStreamKeys;
+- (id)inputStreamForKey:(id)arg1;
+- (CDStruct_1b6d18a9)inputOffsetForKey:(id)arg1;
+- (id)inputIdentifierForKey:(id)arg1;
+- (id)openInputStreamForKey:(id)arg1 context:(id)arg2 options:(id)arg3;
+- (void)closeInputStreamForKey:(id)arg1;
 
 @end
 

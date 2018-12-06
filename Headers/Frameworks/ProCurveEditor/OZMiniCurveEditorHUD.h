@@ -10,8 +10,8 @@
 {
 }
 
-- (void)setChannel:(struct OZChannelBase *)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setChannel:(struct OZChannelBase *)arg1;
 
 @end
 

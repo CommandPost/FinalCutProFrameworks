@@ -11,13 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (void)addFactory;
-- (void)setDelegate:(id)arg1;
-- (id)delegate;
-- (void)dealloc;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (id)initWithOZChannel:(struct OZChannelBase *)arg1 freeWhenDone:(BOOL)arg2;
+- (void)dealloc;
+- (id)delegate;
+- (void)setDelegate:(id)arg1;
 
 @end
 

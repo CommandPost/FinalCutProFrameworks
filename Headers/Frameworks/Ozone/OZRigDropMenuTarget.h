@@ -12,11 +12,11 @@
 }
 
 + (id)rigDropMenuTargetForRig:(struct OZRig *)arg1;
-- (void)pasteHelper:(unsigned int)arg1;
-- (void)pasteToNewSlider;
-- (void)pasteToNewList;
-- (void)pasteToNewSwitch;
 - (void)setRig:(struct OZRig *)arg1;
+- (void)pasteToNewSwitch;
+- (void)pasteToNewList;
+- (void)pasteToNewSlider;
+- (void)pasteHelper:(unsigned int)arg1;
 
 @end
 

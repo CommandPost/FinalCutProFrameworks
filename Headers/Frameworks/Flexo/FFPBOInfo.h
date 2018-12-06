@@ -17,12 +17,12 @@ __attribute__((visibility("hidden")))
     void *_baseAddress;
 }
 
-- (id)initWithPBO:(unsigned int)arg1 context:(struct _CGLContextObject *)arg2 virtualScreen:(int)arg3 fbo:(unsigned int)arg4 size:(unsigned long long)arg5;
-- (unsigned long long)size;
-- (int)virtualScreen;
-- (unsigned int)fbo;
-- (unsigned int)pbo;
 - (struct _CGLContextObject *)context;
+- (unsigned int)pbo;
+- (unsigned int)fbo;
+- (int)virtualScreen;
+- (unsigned long long)size;
+- (id)initWithPBO:(unsigned int)arg1 context:(struct _CGLContextObject *)arg2 virtualScreen:(int)arg3 fbo:(unsigned int)arg4 size:(unsigned long long)arg5;
 
 @end
 

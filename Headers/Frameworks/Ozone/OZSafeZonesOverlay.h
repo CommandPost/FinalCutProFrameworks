@@ -10,12 +10,12 @@
 {
 }
 
-- (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
-- (int)hitCheck:(id)arg1;
-- (void)draw;
-- (void)dealloc;
-- (int)getDrawingOrder;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (int)getDrawingOrder;
+- (void)dealloc;
+- (void)draw;
+- (int)hitCheck:(id)arg1;
+- (set_50872599 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 
 @end
 

@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     NSArrayController *_arrayController;
 }
 
-- (BOOL)performKeyEquivalent:(id)arg1;
 - (id)menuForEvent:(id)arg1;
+- (BOOL)performKeyEquivalent:(id)arg1;
 
 @end
 

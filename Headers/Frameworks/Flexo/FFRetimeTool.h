@@ -10,10 +10,9 @@
 {
 }
 
-+ (id)toolbarFacetImageOff;
-+ (id)toolbarFacetImageOn;
-+ (id)displayName;
 + (void)initialize;
++ (id)displayName;
++ (id)toolbarFacet;
 
 @end
 

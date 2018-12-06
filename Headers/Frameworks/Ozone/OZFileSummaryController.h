@@ -14,7 +14,6 @@
     NSTextField *_formatTextField;
     NSTextField *_compressorTextField;
     NSTextField *_depthTextField;
-    NSTextField *_colorSpaceTextField;
     NSTextField *_durationTextField;
     NSTextField *_frameRateTextField;
     NSTextField *_frameSizeTextField;
@@ -27,17 +26,17 @@
     NSTextField *_filePathTextField;
 }
 
-- (struct OZDocument *)document;
-- (void)setChannelValue:(id)arg1;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (id)dateAsString:(id)arg1;
-- (id)fileSizeAsString:(double)arg1;
-- (id)dataRateAsString:(double)arg1;
-- (id)secondsToHHMMSS:(double)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (id)secondsToHHMMSS:(double)arg1;
+- (id)dataRateAsString:(double)arg1;
+- (id)fileSizeAsString:(double)arg1;
+- (id)dateAsString:(id)arg1;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
+- (void)setChannelValue:(id)arg1;
+- (struct OZDocument *)document;
 
 @end
 

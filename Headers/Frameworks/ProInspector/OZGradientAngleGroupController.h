@@ -13,9 +13,9 @@
     OZViewController *_pAngleController;
 }
 
-- (void)setIgnoreChanEnableStateYESRecursive:(id)arg1;
-- (void)updateEnableState;
 - (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
+- (void)updateEnableState;
+- (void)setIgnoreChanEnableStateYESRecursive:(id)arg1;
 
 @end
 

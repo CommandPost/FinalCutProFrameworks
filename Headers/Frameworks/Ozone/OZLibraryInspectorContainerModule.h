@@ -10,15 +10,17 @@
 {
 }
 
-- (void)toggleInspectorModule;
-- (void)toggleLibraryModule;
-- (void)showInspectorModule;
-- (void)showLibraryModule;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (BOOL)wantsFooterBar;
-- (struct CGSize)viewMinSize;
 - (id)init;
+- (struct CGSize)viewMinSize;
+- (BOOL)wantsFooterBar;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)showFileBrowserModule;
+- (void)showLibraryModule;
+- (void)showInspectorModule;
+- (void)toggleFileBrowserModule;
+- (void)toggleLibraryModule;
+- (void)toggleInspectorModule;
 
 @end
 

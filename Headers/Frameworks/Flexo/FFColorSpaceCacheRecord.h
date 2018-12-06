@@ -11,19 +11,18 @@ __attribute__((visibility("hidden")))
 {
     struct CGColorSpace *_colorSpace;
     struct ColorSyncProfile *_colorSyncProfile;
-    struct __CFArray *_colorProfRelevantTagSignatures;
-    struct __CFData *_iccData;
-    int _colorSpaceEnum;
+    struct {
+        unsigned char digest[16];
+    } _profileMD5;
 }
 
-@property(readonly, nonatomic) struct __CFData *iccColorSpaceData; // @synthesize iccColorSpaceData=_iccData;
-@property(readonly, nonatomic) int colorSpaceEnum; // @synthesize colorSpaceEnum=_colorSpaceEnum;
-@property(readonly, nonatomic) struct __CFArray *colorProfRelevantTagSignatures; // @synthesize colorProfRelevantTagSignatures=_colorProfRelevantTagSignatures;
-@property(readonly, nonatomic) struct ColorSyncProfile *colorSyncProfile; // @synthesize colorSyncProfile=_colorSyncProfile;
-@property(readonly, nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
-- (id)description;
+- (id)initWithColorSpace:(struct CGColorSpace *)arg1;
+- (id)initWithColorSyncProfile:(struct ColorSyncProfile *)arg1;
 - (void)dealloc;
-- (id)initWithColorSpace:(struct CGColorSpace *)arg1 andEnum:(int)arg2;
+- (struct CGColorSpace *)colorSpace;
+- (struct ColorSyncProfile *)colorSyncProfile;
+- (CDStruct_60067b7e)colorProfileMD5;
+- (struct __CFData *)copyICCColorSpaceData;
 
 @end
 

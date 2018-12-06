@@ -11,10 +11,10 @@
     struct FxParameterGroupPriv *_groupPriv;
 }
 
-- (void)setSubPins:(id)arg1;
-- (id)subPins;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)subPins;
+- (void)setSubPins:(id)arg1;
 
 @end
 

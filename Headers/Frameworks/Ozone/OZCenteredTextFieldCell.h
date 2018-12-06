@@ -10,11 +10,11 @@
 {
 }
 
-- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
-- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
-- (struct CGRect)adjustFrameToVerticallyCenterText:(struct CGRect)arg1;
 - (id)initTextCell:(id)arg1;
+- (struct CGRect)adjustFrameToVerticallyCenterText:(struct CGRect)arg1;
+- (void)editWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 event:(id)arg5;
+- (void)selectWithFrame:(struct CGRect)arg1 inView:(id)arg2 editor:(id)arg3 delegate:(id)arg4 start:(long long)arg5 length:(long long)arg6;
+- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 
 @end
 

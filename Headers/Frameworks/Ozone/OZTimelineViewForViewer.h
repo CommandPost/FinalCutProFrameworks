@@ -9,42 +9,42 @@
 @interface OZTimelineViewForViewer : OZTimelineView
 {
     struct PCTimeRange *_singleRange;
-    set_ed6fc29a *_singleSelected;
+    set_90ccbad6 *_singleSelected;
 }
 
-- (BOOL)isSnappedAtTime:(CDStruct_1b6d18a9 *)arg1;
-- (void)setSnapped:(BOOL)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (void)findCommonSnaps:(vector_f7e3fd5f *)arg1;
-- (void)notifyOthersOfSelectionChange;
-- (void)getSelectedRoots:(struct OZChannelFolder *)arg1 rootList:(set_ed6fc29a *)arg2;
-- (BOOL)isRootSelected:(struct OZChannelObjectRoot *)arg1;
-- (void)selectRoot:(struct OZChannelObjectRoot *)arg1 addToCurrent:(BOOL)arg2;
-- (void)clearSelection;
-- (void)updateSelection;
-- (void)drawDropBar:(struct CGRect)arg1;
-- (BOOL)dropEditing;
-- (BOOL)droppingOnLayer:(int)arg1;
-- (void)setDropInfoNodes:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 doOn:(BOOL)arg3;
-- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 doOn:(BOOL)arg3;
-- (id)allocRow:(int)arg1;
-- (struct OZChannelFolder *)folderFilter:(struct OZChannelBase *)arg1;
-- (struct OZChannelObjectRoot *)rootFilter:(struct OZChannelBase *)arg1;
-- (struct _NSRange)rowsInRect:(struct CGRect)arg1;
-- (int)numberOfRows;
-- (CDStruct_1b6d18a9)getCurrentTime;
-- (double)getPixelsPerSecond;
-- (CDStruct_1b6d18a9)getSecondsPerPixel;
-- (const struct PCTimeRange *)getDisplayRange;
-- (void)drawBackground:(struct CGRect)arg1;
-- (BOOL)useMiniTimebars;
-- (struct CGRect)rectOfRow:(int)arg1;
-- (struct PCTimeRange)getPlayRange;
-- (void)drawRowBackgroundAndGutters:(int)arg1 in:(struct CGRect)arg2;
-- (void)drawCurrentTime:(struct CGRect)arg1;
-- (const struct PCTimeRange *)getDropRange;
-- (BOOL)isOpaque;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (BOOL)isOpaque;
+- (const struct PCTimeRange *)getDropRange;
+- (void)drawCurrentTime:(struct CGRect)arg1;
+- (void)drawRowBackgroundAndGutters:(int)arg1 in:(struct CGRect)arg2;
+- (struct PCTimeRange)getPlayRange;
+- (struct CGRect)rectOfRow:(int)arg1;
+- (BOOL)useMiniTimebars;
+- (void)drawBackground:(struct CGRect)arg1;
+- (const struct PCTimeRange *)getDisplayRange;
+- (CDStruct_1b6d18a9)getSecondsPerPixel;
+- (double)getPixelsPerSecond;
+- (CDStruct_1b6d18a9)getCurrentTime;
+- (int)numberOfRows;
+- (struct _NSRange)rowsInRect:(struct CGRect)arg1;
+- (struct OZChannelObjectRoot *)rootFilter:(struct OZChannelBase *)arg1;
+- (struct OZChannelFolder *)folderFilter:(struct OZChannelBase *)arg1;
+- (id)allocRow:(int)arg1;
+- (void)createDropInfo:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 doOn:(BOOL)arg3;
+- (void)setDropInfoNodes:(struct OZDropTargetInfo *)arg1 sender:(id)arg2 doOn:(BOOL)arg3;
+- (BOOL)droppingOnLayer:(int)arg1;
+- (BOOL)dropEditing;
+- (void)drawDropBar:(struct CGRect)arg1;
+- (void)updateSelection;
+- (void)clearSelection;
+- (void)selectRoot:(struct OZChannelObjectRoot *)arg1 addToCurrent:(BOOL)arg2;
+- (BOOL)isRootSelected:(struct OZChannelObjectRoot *)arg1;
+- (void)getSelectedRoots:(struct OZChannelFolder *)arg1 rootList:(set_90ccbad6 *)arg2;
+- (void)notifyOthersOfSelectionChange;
+- (void)findCommonSnaps:(vector_3e79211d *)arg1;
+- (void)setSnapped:(BOOL)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (BOOL)isSnappedAtTime:(CDStruct_1b6d18a9 *)arg1;
 
 @end
 

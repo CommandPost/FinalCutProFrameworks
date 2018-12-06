@@ -5,7 +5,7 @@
 //
 
 @protocol FFFieldDisplaySetting
-- (void)setShowBothFields:(BOOL)arg1;
 - (BOOL)showBothFields;
+- (void)setShowBothFields:(BOOL)arg1;
 @end
 

@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     id _object;
 }
 
-- (void)dealloc;
 - (id)initWithObject:(id)arg1;
+- (void)dealloc;
 
 @end
 

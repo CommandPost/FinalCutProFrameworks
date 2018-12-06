@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (long long)_knobDirectionForCell:(id)arg1;
 - (struct CGRect)rectOfTickMarkAtIndex:(long long)arg1;
 
 @end

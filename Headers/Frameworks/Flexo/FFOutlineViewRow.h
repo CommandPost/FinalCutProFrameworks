@@ -19,19 +19,19 @@ __attribute__((visibility("hidden")))
     NSString *_lastEditingString;
 }
 
+- (id)initWithRowHeight:(double)arg1;
+- (void)dealloc;
+@property(readonly, nonatomic) double layoutHeight;
+@property(readonly, nonatomic) FFOutlineViewLayout *sublayout;
+@property(readonly, nonatomic) BOOL isExpandable;
+@property(nonatomic, getter=isExpanded) BOOL expanded;
+@property(readonly, nonatomic) NSIndexPath *indexPath;
 @property(copy, nonatomic) NSString *lastEditingString; // @synthesize lastEditingString=_lastEditingString;
 @property(nonatomic, getter=isEditing) BOOL editing; // @synthesize editing=_editing;
 @property(nonatomic, getter=isHighlightedForDrop) BOOL highlightedForDrop; // @synthesize highlightedForDrop=_highlightedForDrop;
 @property(nonatomic) FFOutlineViewLayout *superlayout; // @synthesize superlayout=_superlayout;
 @property(nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property(readonly, nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
-@property(readonly, nonatomic) NSIndexPath *indexPath;
-@property(nonatomic, getter=isExpanded) BOOL expanded;
-@property(readonly, nonatomic) BOOL isExpandable;
-@property(readonly, nonatomic) FFOutlineViewLayout *sublayout;
-@property(readonly, nonatomic) double layoutHeight;
-- (void)dealloc;
-- (id)initWithRowHeight:(double)arg1;
 
 @end
 

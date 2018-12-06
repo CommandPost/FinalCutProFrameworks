@@ -13,17 +13,14 @@ __attribute__((visibility("hidden")))
 {
     LKPopUpButton *_comparisonPopup;
     LKTextField *_textField;
-    struct PCProcrastinatedDispatch_t _textEntryProcrstinatedDispatch;
 }
 
-@property(readonly, nonatomic) LKTextField *textField; // @synthesize textField=_textField;
-- (id)tileGlyphString;
-- (void)controlTextDidChange:(id)arg1;
-- (id)filterDict;
-- (void)setFilterDict:(id)arg1;
-- (void)dealloc;
-- (void)viewWillBeRemoved;
 - (void)awakeFromNib;
+- (void)setFilterDict:(id)arg1;
+- (id)filterDict;
+- (void)controlTextDidChange:(id)arg1;
+- (id)tileTypeFacet;
+@property(readonly, nonatomic) LKTextField *textField; // @synthesize textField=_textField;
 
 @end
 

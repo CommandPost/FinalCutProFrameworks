@@ -6,7 +6,7 @@
 
 #import <Flexo/FFProvider.h>
 
-@class FFImage, FFMedia, NSError;
+@class FFMedia;
 
 @interface FFProviderOffline : FFProvider
 {
@@ -15,40 +15,29 @@
     BOOL _hasVideo;
     BOOL _hasAudio;
     double _audioSampleRate;
-    unsigned long long _audioChannelCount;
-    unsigned long long _audioSourceCount;
+    long long _audioChannelCount;
+    long long _audioSourceCount;
     int _offlineReason;
-    int _openStreamCount;
-    FFImage *_consumerOfflineImages[2];
-    NSError *_consumerOfflineImageTriedButFailed[2];
-    BOOL _hasConcreteMedia;
 }
 
 + (id)newProvider;
-@property(readonly) unsigned long long audioChannelCount; // @synthesize audioChannelCount=_audioChannelCount;
+- (id)init;
+- (void)_setupSourcesForVideo:(CDStruct_e83c9415)arg1 andAudio:(BOOL)arg2;
+- (void)_setupSourcesForAudio:(CDStruct_e83c9415)arg1;
+- (id)_imageNameForOfflineReason:(int)arg1;
+- (id)_imageForOfflineReason:(int)arg1 wants4x3:(BOOL)arg2;
+- (id)initWithMedia:(id)arg1 offlineReason:(int)arg2;
+- (id)initWithMedia:(id)arg1;
+- (void)dealloc;
+- (void)_setupSources;
+- (id)nativeVideoProps;
+- (id)displayName;
+- (id)newOfflineImage;
+@property(readonly) long long audioSourceCount; // @synthesize audioSourceCount=_audioSourceCount;
+@property(readonly) long long audioChannelCount; // @synthesize audioChannelCount=_audioChannelCount;
 @property(readonly) double audioSampleRate; // @synthesize audioSampleRate=_audioSampleRate;
 @property(readonly) int offlineReason; // @synthesize offlineReason=_offlineReason;
 @property(retain) FFMedia *media; // @synthesize media=_media;
-- (id)object;
-- (int)openStreamCount;
-- (void)_adjustStreamCount:(int)arg1;
-- (void)ensureOfflineImageForThumbnail:(BOOL)arg1 videoProps:(id)arg2 detailedDescription:(id)arg3;
-- (id)newOfflineImageForThumbnail:(BOOL)arg1 videoProps:(id)arg2 detailedDescription:(id)arg3;
-- (id)displayName;
-- (id)nativeVideoProps;
-- (void)_setupSources;
-- (void)dealloc;
-- (id)initWithMedia:(id)arg1;
-- (id)initWithMedia:(id)arg1 offlineReason:(int)arg2;
-- (BOOL)hasImageForThumb:(BOOL)arg1 retError:(id *)arg2;
-- (id)_imageForOfflineReason:(int)arg1 wants4x3:(BOOL)arg2 forThumbnail:(BOOL)arg3 detailedDescription:(id)arg4;
-- (id)_origImageForOfflineReason:(int)arg1 wants4x3:(BOOL)arg2 forThumbnail:(BOOL)arg3 detailedDescription:(id)arg4;
-- (id)_detailedDescriptionForOfflineReason:(int)arg1;
-- (id)_descriptionForOfflineReason:(int)arg1;
-- (id)_newImageForOfflineReason:(int)arg1;
-- (void)_setupSourcesForAudio:(CDStruct_e83c9415)arg1;
-- (void)_setupSourcesForVideo:(CDStruct_e83c9415)arg1 andAudio:(BOOL)arg2;
-- (id)init;
 
 @end
 

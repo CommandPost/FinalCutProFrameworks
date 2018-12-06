@@ -6,11 +6,11 @@
 
 #import "LKPopUpButtonCell.h"
 
-@class NSImage, NSString, OZViewController<OZPresetControllerIF>;
+@class NSImage, NSString;
 
 @interface OZLibraryPresetsCell : LKPopUpButtonCell
 {
-    OZViewController<OZPresetControllerIF> *_pController;
+    id _pController;
     struct OZFactoryBase *_pSaveObject;
     struct OZLibraryPresetsMap *_pPresets;
     NSString *_pSaveItemText;
@@ -21,27 +21,27 @@
     BOOL _isHUD;
 }
 
-- (id)alternateImage;
-- (void)setAlternateImage:(id)arg1;
-- (id)image;
-- (void)setImage:(id)arg1;
-- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (float)_extraWidthForCellHeight:(float)arg1;
-- (void)menuWillPopUp:(id)arg1;
-- (id)buildMenu:(const struct OZLibraryPresetsMap *)arg1;
-- (struct OZLibraryPresetsMap *)getPresetsMap;
-- (void)loadNotify:(id)arg1;
-- (void)doDelayedLoad:(id)arg1;
-- (void)saveNotify:(id)arg1;
-- (void)excludeType:(const struct PCUUID *)arg1;
-- (void)setPresetType:(const struct PCUUID *)arg1;
-- (void)setSaveItemText:(id)arg1;
-- (void)setSaveObject:(struct OZFactoryBase *)arg1;
-- (void)setViewController:(id)arg1;
-- (void)dealloc;
-- (id)initImageCell:(id)arg1;
-- (id)initTextCell:(id)arg1;
 - (id)init;
+- (id)initTextCell:(id)arg1;
+- (id)initImageCell:(id)arg1;
+- (void)dealloc;
+- (void)setViewController:(id)arg1;
+- (void)setSaveObject:(struct OZFactoryBase *)arg1;
+- (void)setSaveItemText:(id)arg1;
+- (void)setPresetType:(const struct PCUUID *)arg1;
+- (void)excludeType:(const struct PCUUID *)arg1;
+- (void)saveNotify:(id)arg1;
+- (void)doDelayedLoad:(id)arg1;
+- (void)loadNotify:(id)arg1;
+- (struct OZLibraryPresetsMap *)getPresetsMap;
+- (id)buildMenu:(const struct OZLibraryPresetsMap *)arg1;
+- (void)menuWillPopUp:(id)arg1;
+- (float)_extraWidthForCellHeight:(float)arg1;
+- (void)drawInteriorWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+- (void)setImage:(id)arg1;
+- (id)image;
+- (void)setAlternateImage:(id)arg1;
+- (id)alternateImage;
 
 @end
 

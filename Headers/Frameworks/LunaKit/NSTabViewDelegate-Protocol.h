@@ -6,14 +6,12 @@
 
 #import "NSObject.h"
 
-@class NSTabView, NSTabViewItem;
-
 @protocol NSTabViewDelegate <NSObject>
 
 @optional
-- (void)tabViewDidChangeNumberOfTabViewItems:(NSTabView *)arg1;
-- (void)tabView:(NSTabView *)arg1 didSelectTabViewItem:(NSTabViewItem *)arg2;
-- (void)tabView:(NSTabView *)arg1 willSelectTabViewItem:(NSTabViewItem *)arg2;
-- (BOOL)tabView:(NSTabView *)arg1 shouldSelectTabViewItem:(NSTabViewItem *)arg2;
+- (BOOL)tabView:(id)arg1 shouldSelectTabViewItem:(id)arg2;
+- (void)tabView:(id)arg1 willSelectTabViewItem:(id)arg2;
+- (void)tabView:(id)arg1 didSelectTabViewItem:(id)arg2;
+- (void)tabViewDidChangeNumberOfTabViewItems:(id)arg1;
 @end
 

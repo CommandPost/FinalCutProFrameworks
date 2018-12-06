@@ -17,26 +17,24 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)keyPathsForValuesAffectingMasterSubitems;
-- (void)dealloc;
-@property(readonly, nonatomic) BOOL hasDetailSubitems;
-@property(readonly, nonatomic) NSArray *detailSubitems;
-@property(readonly, nonatomic) BOOL hasMasterSubitems;
-@property(readonly, nonatomic) NSArray *masterSubitems;
-@property(readonly, nonatomic) BOOL hasItems;
-@property(readonly, copy) NSString *description;
-- (id)init;
-- (void)removeAllItems;
-- (void)removeItem:(id)arg1;
-- (void)insertItem:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)addItem:(id)arg1;
-@property(readonly, nonatomic) NSArray *items;
 - (id)initWithItems:(id)arg1;
+@property(readonly, nonatomic) NSArray *items;
+- (void)addItem:(id)arg1;
+- (void)insertItem:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)removeItem:(id)arg1;
+- (void)removeAllItems;
+- (id)init;
+- (id)description;
+@property(readonly, nonatomic) BOOL hasItems;
+@property(readonly, nonatomic) NSArray *masterSubitems;
+@property(readonly, nonatomic) BOOL hasMasterSubitems;
+@property(readonly, nonatomic) NSArray *detailSubitems;
+@property(readonly, nonatomic) BOOL hasDetailSubitems;
+- (void)dealloc;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) NSArray *detailSubitemsWhenSelected;
 @property(readonly, nonatomic) BOOL hasDetailSubitemsWhenSelected;
-@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSString *itemDisplayName; // @dynamic itemDisplayName;
 @property(readonly, nonatomic) BOOL itemDisplayNameEditable; // @dynamic itemDisplayNameEditable;
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
@@ -44,7 +42,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL itemIsPlaceholder;
 @property(readonly, nonatomic) NSString *itemPersistentIdentifier;
 @property(readonly, nonatomic) double itemRowHeight;
-@property(readonly) Class superclass;
 
 @end
 

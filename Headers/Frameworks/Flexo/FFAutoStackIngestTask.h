@@ -6,11 +6,9 @@
 
 #import "NSObject.h"
 
-#import "FFBackgroundTaskTarget.h"
-
 @class FFAnchoredSequence, FigTimeRangeAndObject, NSMutableArray, NSSet;
 
-@interface FFAutoStackIngestTask : NSObject <FFBackgroundTaskTarget>
+@interface FFAutoStackIngestTask : NSObject
 {
     NSSet *_rangesAndObjectsToSynchronize;
     FigTimeRangeAndObject *_referenceRangeAndObject;
@@ -21,17 +19,32 @@
     NSMutableArray *_offsetsToMerge;
 }
 
-+ (double)ZCRCompareClip:(id)arg1 toClip:(id)arg2 onTask:(id)arg3;
-+ (_Bool)_spectrallySimilar:(id)arg1 andClip:(id)arg2 wasStereo:(BOOL)arg3 onTask:(id)arg4;
-+ (double)getRMSFor:(id)arg1 onTask:(id)arg2;
-+ (_Bool)checkCancelOrPauseOn:(id)arg1;
 + (BOOL)checkHasAudio:(id)arg1;
-- (id)librariesInUse:(id)arg1;
-- (id)assetsChanging:(id)arg1;
-- (id)assetsInUse:(id)arg1;
-- (void)canceledTask:(id)arg1;
-- (void)dealloc;
++ (id)_getMarkersInRangeAndObject:(id)arg1;
++ (CDStruct_1b6d18a9)_getMarkerFigTimePos:(id)arg1;
++ (CDStruct_e83c9415)_getExtendedFigTimeRangeFromMarker:(id)arg1;
++ (BOOL)_checkDate:(id)arg1 isBetweenStart:(id)arg2 andEnd:(id)arg3;
++ (id)_getCreationDate:(id)arg1;
++ (_Bool)checkCancelOrPauseOn:(id)arg1;
++ (double)getRMSFor:(id)arg1 onTask:(id)arg2;
++ (_Bool)_spectrallySimilar:(id)arg1 andClip:(id)arg2 wasStereo:(BOOL)arg3 onTask:(id)arg4;
++ (double)ZCRCompareClip:(id)arg1 toClip:(id)arg2 onTask:(id)arg3;
++ (BOOL)timecodeOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)markerOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)creationDateOnlyCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)xCorrCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3 andDownsample:(_Bool)arg4;
++ (BOOL)markerCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)startingTimecodeCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (BOOL)creationDateCompareRAO:(id)arg1 toRangeAndObject:(id)arg2 withResults:(struct AnalysisResults *)arg3;
++ (void)synchronizeRnOWithAudio:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3;
 - (id)initWithRangesAndObjects:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3;
+- (void)dealloc;
+- (void)canceledTask:(id)arg1;
+- (void)postNotificationToRefresh;
+- (void)mergedClipTypeUpdate:(id)arg1;
+- (void)_adjustOffsetsOfItems:(id)arg1 withOffsets:(id)arg2;
+- (void)_synchronizeWithAudio:(id)arg1 onTask:(id)arg2;
+- (void)synchronizeRnO:(id)arg1 referenceRangeAndObject:(id)arg2 targetSequence:(id)arg3;
 
 @end
 

@@ -6,34 +6,33 @@
 
 #import "NSObject.h"
 
-@class FFProvider, NSString;
+@class FFCHObservableFolder, FFProvider, NSString;
 
 @interface FFSource : NSObject
 {
     FFProvider *_provider;
+    FFCHObservableFolder *_rootChannel;
     NSString *_identifier;
 }
 
-+ (Class)streamClass;
 + (long long)sourceCount;
-- (BOOL)sourceEnabled;
-- (id)displayName;
-- (BOOL)isValid;
-- (long long)timecodeDisplayDropFrame;
-- (CDStruct_1b6d18a9)timecodeFrameDuration;
-- (CDStruct_1b6d18a9)nativeSampleDuration;
-- (void)setIdentifier:(id)arg1;
-- (id)identifier;
-- (id)description;
-- (CDStruct_e83c9415)timeRange;
-- (id)type;
-- (int)providerRetainCount;
-- (id)provider;
-- (oneway void)release;
-- (id)retain;
-- (void)dealloc;
-- (id)initWithNoProvider;
++ (Class)streamClass;
 - (id)initWithProvider:(id)arg1;
+- (void)dealloc;
+- (id)retain;
+- (void)release;
+- (id)provider;
+- (id)type;
+- (CDStruct_e83c9415)timeRange;
+- (id)description;
+- (void)channelParameterChanged:(id)arg1;
+- (id)rootChannel;
+- (id)identifier;
+- (void)setIdentifier:(id)arg1;
+- (CDStruct_1b6d18a9)nativeSampleDuration;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
+- (long long)timecodeDisplayDropFrame;
+- (id)displayName;
 
 @end
 

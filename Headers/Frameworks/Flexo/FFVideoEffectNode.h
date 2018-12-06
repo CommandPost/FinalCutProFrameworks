@@ -9,14 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface FFVideoEffectNode : FFEffectNode
 {
-    unsigned int _nodeBasicMD5OringFlags;
 }
 
-- (unsigned int)nodeBasicMD5OringFlags;
-- (void)setNodeBasicMD5OringFlags:(unsigned int)arg1;
-- (id)sortedAllInputKeys;
 - (void)_setupSources;
-- (Class)getSourceVideoEffectClass;
+- (id)sortedAllInputKeys;
 
 @end
 

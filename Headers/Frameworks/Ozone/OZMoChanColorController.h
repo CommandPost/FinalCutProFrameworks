@@ -16,15 +16,14 @@
     OZEyeDropperTool *_pTool;
 }
 
-- (void)eyeDropperPickColor:(id)arg1;
-- (void)willDeleteEyeDropperTool:(id)arg1;
-- (void)setPickedColor:(struct PCColor *)arg1;
-- (void)endSettingPickedColor;
-- (void)startSettingPickedColor;
-- (void)setChannelValue:(id)arg1;
-- (void)dealloc;
-- (id)canvasModule;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)setChannelValue:(id)arg1;
+- (void)startSettingPickedColor;
+- (void)endSettingPickedColor;
+- (void)setPickedColor:(struct PCColor *)arg1;
+- (void)willDeleteEyeDropperTool:(id)arg1;
+- (void)eyeDropperPickColor:(id)arg1;
 
 @end
 

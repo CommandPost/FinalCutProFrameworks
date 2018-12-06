@@ -6,32 +6,23 @@
 
 #import "LKViewModule.h"
 
-#import "PEAudioMeterControllerProtocol.h"
-
-@interface PEAudioMeterModule : LKViewModule <PEAudioMeterControllerProtocol>
+@interface PEAudioMeterModule : LKViewModule
 {
-    _Bool wasHidden;
-    BOOL _useExternalControlMode;
 }
 
-@property(nonatomic) BOOL useExternalControlMode; // @synthesize useExternalControlMode=_useExternalControlMode;
-- (BOOL)shouldUseExternalControlMode;
-- (void)setMeteringContext:(id)arg1;
-- (void)resetOverloadIndicators;
-- (void)moduleLayoutDidChange:(id)arg1;
-- (void)moduleLayoutWillChange:(id)arg1;
-- (void)moduleDidUnhide;
-- (void)moduleDidHide;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
-- (unsigned long long)revealAnimationStyle;
-- (BOOL)wantsHeaderBar;
-- (BOOL)acceptsFirstResponder;
-- (BOOL)wantsFirstResponder;
-- (void)awakeFromNib;
 - (id)init;
+- (void)awakeFromNib;
+- (BOOL)wantsFirstResponder;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)wantsHeaderBar;
+- (unsigned long long)revealAnimationStyle;
+- (struct CGSize)viewMinSize;
+- (struct CGSize)viewMaxSize;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)moduleDidHide;
+- (void)moduleDidUnhide;
+- (void)resetOverloadIndicators;
 
 @end
 

@@ -9,24 +9,17 @@
 @interface FFPlaybackContext : NSObject
 {
     struct _CGLContextObject *_context;
-    BOOL _hasTopLevelScopingWindow;
-    BOOL _hasTopLevelMixBussScopingWindow;
-    struct FFAudioPlaybackMediator *_audioPlaybackMediator;
+    BOOL _hasTopLevelScoper;
 }
 
-- (struct FFAudioPlaybackMediator *)audioPlaybackMediator;
-- (void)deleteAudioPlaybackMediator;
-- (void)demandAudioPlaybackMediator:(BOOL)arg1;
-- (void)setHasTopLevelMixBussScopingWindow:(BOOL)arg1;
-- (BOOL)hasTopLevelMixBussScopingWindow;
-- (void)setHasTopLevelScopingWindow:(BOOL)arg1;
-- (BOOL)hasTopLevelScopingWindow;
-- (struct _CGLContextObject *)CGLContextObj;
-- (void)dealloc;
-- (id)initWithCGLContextObj:(struct _CGLContextObject *)arg1;
-- (unsigned long long)hash;
-- (BOOL)isEqualToPlaybackContext:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToPlaybackContext:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCGLContextObj:(struct _CGLContextObject *)arg1;
+- (void)dealloc;
+- (struct _CGLContextObject *)CGLContextObj;
+- (BOOL)hasTopLevelScoper;
+- (void)setHasTopLevelScoper:(BOOL)arg1;
 
 @end
 

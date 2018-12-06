@@ -5,11 +5,10 @@
 //
 
 @protocol FFModelLocking
-- (BOOL)writerIsWaiting;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
 - (void)_readLock;
+- (void)_readUnlock;
+- (void)_writeLock;
+- (void)_writeUnlock;
 
 @optional
 - (BOOL)_hasWriteLock;

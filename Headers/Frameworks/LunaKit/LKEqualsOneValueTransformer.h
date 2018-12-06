@@ -10,8 +10,8 @@
 {
 }
 
-+ (BOOL)allowsReverseTransformation;
 + (Class)transformedValueClass;
++ (BOOL)allowsReverseTransformation;
 - (id)transformedValue:(id)arg1;
 
 @end

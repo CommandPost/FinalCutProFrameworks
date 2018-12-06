@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)description;
-- (id)newImage;
-- (struct CGColorSpace *)colorSpace;
 - (int)location;
+- (struct CGColorSpace *)colorSpace;
+- (id)newImage;
+- (id)description;
 
 @end
 

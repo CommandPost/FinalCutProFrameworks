@@ -13,15 +13,15 @@
     NSImageView *_pPrecompBadge;
 }
 
-- (BOOL)anyChannelSelected:(struct OZChannelFolder *)arg1;
-- (void)paste;
-- (void)copyAction;
-- (void)cut;
-- (void)deleteThis;
-- (id)makeLabelTextWithFrame:(struct CGRect)arg1 context:(id)arg2;
-- (void)update;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (void)setName:(id)arg1 hasEnableButton:(BOOL)arg2 context:(id)arg3;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)update;
+- (id)makeLabelTextWithFrame:(struct CGRect)arg1 context:(id)arg2;
+- (void)deleteThis;
+- (void)cut;
+- (void)copy;
+- (void)paste;
+- (BOOL)anyChannelSelected:(struct OZChannelFolder *)arg1;
 
 @end
 

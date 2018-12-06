@@ -20,22 +20,21 @@
     CDStruct_1b6d18a9 _outPoint;
 }
 
-- (void)stopTimer;
-- (void)startTimer;
-- (void)timerCallback:(id)arg1;
-- (void)updateTimeRange;
-- (void)setPlaybackTime:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)getPlaybackTime;
-- (void)mainThreadCallback;
-- (void)mainThreadProcessAborted;
-- (void)mainThreadProcessDone;
-- (void)mainThreadUpdateProgress;
-- (void)setSamplesInChunk:(CDStruct_1b6d18a9)arg1;
-- (void)setLastSample:(CDStruct_1b6d18a9)arg1;
-- (void)setStartSample:(CDStruct_1b6d18a9)arg1;
-- (void)setOwner:(struct OZAudioBehavior *)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (void)setOwner:(struct OZAudioBehavior *)arg1;
+- (void)setStartSample:(CDStruct_1b6d18a9)arg1;
+- (void)setLastSample:(CDStruct_1b6d18a9)arg1;
+- (void)setSamplesInChunk:(CDStruct_1b6d18a9)arg1;
+- (void)mainThreadUpdateProgress;
+- (void)mainThreadProcessDone;
+- (void)mainThreadCallback;
+- (CDStruct_1b6d18a9)getPlaybackTime;
+- (void)setPlaybackTime:(CDStruct_1b6d18a9)arg1;
+- (void)updateTimeRange;
+- (void)timerCallback:(id)arg1;
+- (void)startTimer;
+- (void)stopTimer;
 
 @end
 

@@ -13,15 +13,15 @@
     LKViewModule *_containedModule;
 }
 
-- (struct CGSize)maxSize;
-- (struct CGSize)minSize;
-- (void)setFrameSize:(struct CGSize)arg1;
-- (BOOL)isFlipped;
-- (BOOL)autoresizesSubviews;
-- (void)setAutoresizesSubviews:(BOOL)arg1;
-- (void)setContainedModule:(id)arg1;
-- (id)containedModule;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)containedModule;
+- (void)setContainedModule:(id)arg1;
+- (void)setAutoresizesSubviews:(BOOL)arg1;
+- (BOOL)autoresizesSubviews;
+- (BOOL)isFlipped;
+- (void)setFrameSize:(struct CGSize)arg1;
+- (struct CGSize)minSize;
+- (struct CGSize)maxSize;
 
 @end
 

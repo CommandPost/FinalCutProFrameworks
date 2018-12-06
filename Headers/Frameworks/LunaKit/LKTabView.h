@@ -4,29 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSTabView.h"
+#import "NSProTabView.h"
 
-@interface LKTabView : NSTabView
+@interface LKTabView : NSProTabView
 {
-    int _rodStyle;
-    BOOL _showBezel;
 }
-
-+ (void)initialize;
-- (void)moveDown:(id)arg1;
-- (void)moveUp:(id)arg1;
-- (void)moveLeft:(id)arg1;
-- (void)moveRight:(id)arg1;
-- (BOOL)_wantsKeyDownForEvent:(id)arg1;
-- (void)_windowChangedKeyState;
-- (void)superSuperWindowChangedKeyState;
-- (void)insertTabViewItem:(id)arg1 atIndex:(long long)arg2;
-- (id)_findFirstValidKeyViewStartingFrom:(id)arg1 inTabViewItem:(id)arg2;
-- (void)setShowsBezel:(BOOL)arg1;
-- (int)_rodStyle;
-- (void)_changeRodStyle:(int)arg1;
-- (BOOL)isOpaque;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

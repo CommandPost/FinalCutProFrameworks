@@ -17,17 +17,16 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
+- (id)initWithPuckValue:(id)arg1 puckType:(int)arg2;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
+@property int puckType; // @dynamic puckType;
+- (void)encodeWithCoder:(id)arg1;
+- (id)displayName;
+- (id)value;
 @property double y; // @synthesize y=_y;
 @property double x; // @synthesize x=_x;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (id)value;
-- (id)displayName;
-- (void)encodeWithCoder:(id)arg1;
-@property int puckType; // @dynamic puckType;
-- (void)dealloc;
-- (id)initWithLegacyColorBoardPresetData:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithPuckValue:(id)arg1 puckType:(int)arg2;
 
 @end
 

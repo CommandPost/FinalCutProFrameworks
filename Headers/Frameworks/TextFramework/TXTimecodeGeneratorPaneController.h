@@ -6,20 +6,20 @@
 
 #import <TextFramework/OZAutoTextGeneratorController.h>
 
-@class OZLabeledParamController, TXChanTimecodeController;
+@class OZChanTimecodeController, OZViewController;
 
 @interface TXTimecodeGeneratorPaneController : OZAutoTextGeneratorController
 {
     struct TXTimecodeGenerator *_timecodeGenerator;
-    OZLabeledParamController *_valueLabelParamCtrl;
-    OZLabeledParamController *_offsetLabelParamCtrl;
-    TXChanTimecodeController *_timecodeFrameController;
-    TXChanTimecodeController *_timecodeOffsetController;
+    OZChanTimecodeController *_value;
+    OZChanTimecodeController *_offset;
+    OZViewController *_valueLabelParamCtrl;
+    OZViewController *_offsetLabelParamCtrl;
 }
 
-- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_198678f7)arg2 qualifiers:(int)arg3;
-- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
 - (void)_updateOnAnimateChange:(struct TXTimecodeGenerator *)arg1;
+- (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
+- (void)channelChanged:(struct OZChannelBase *)arg1 time:(CDStruct_1b6d18a9)arg2 qualifiers:(int)arg3;
 
 @end
 

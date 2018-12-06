@@ -10,14 +10,14 @@
 {
 }
 
-- (void)performReset:(id)arg1;
-- (_Bool)performMouseDragAction:(id)arg1;
-- (basic_string_a1f69cfb)toolUndoString;
-- (struct PCUUID)getClassID;
-- (id)getTooltip;
-- (id)getImageName;
-- (id)getName;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (id)getName;
+- (id)getImageName;
+- (id)getTooltip;
+- (struct PCUUID)getClassID;
+- (basic_string_075b6133)toolUndoString;
+- (_Bool)performMouseDragAction:(id)arg1;
+- (void)performReset:(id)arg1;
 
 @end
 

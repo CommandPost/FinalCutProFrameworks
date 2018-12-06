@@ -15,30 +15,26 @@
     unsigned long long _length;
 }
 
-+ (id)indexPathWithIndexes:(unsigned long long *)arg1 length:(unsigned long long)arg2;
 + (id)indexPathWithIndex:(unsigned long long)arg1;
-+ (id)indexPathWithString:(id)arg1;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
-- (id)description;
-- (BOOL)isAncestorOfIndexPath:(id)arg1;
-- (long long)compare:(id)arg1;
-- (unsigned long long)lastIndex;
-- (void)getIndexes:(unsigned long long *)arg1;
-- (unsigned long long)length;
-- (unsigned long long)indexAtPosition:(unsigned long long)arg1;
-- (id)indexPathByReversingIndexPath;
-- (id)indexPathByRemovingFirstIndex;
-- (id)indexPathByRemovingLastIndex;
-- (id)indexPathByAddingIndex:(unsigned long long)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithIndex:(unsigned long long)arg1;
-- (id)initWithIndexes:(unsigned long long *)arg1 length:(unsigned long long)arg2;
++ (id)indexPathWithIndexes:(unsigned long long *)arg1 length:(unsigned long long)arg2;
 - (id)_initWithIndexesPtr:(unsigned long long *)arg1 length:(unsigned long long)arg2;
-- (id)stringValue;
+- (id)initWithIndexes:(unsigned long long *)arg1 length:(unsigned long long)arg2;
+- (id)initWithIndex:(unsigned long long)arg1;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)indexPathByAddingIndex:(unsigned long long)arg1;
+- (id)indexPathByRemovingLastIndex;
+- (id)indexPathByRemovingFirstIndex;
+- (id)indexPathByReversingIndexPath;
+- (unsigned long long)indexAtPosition:(unsigned long long)arg1;
+- (unsigned long long)length;
+- (void)getIndexes:(unsigned long long *)arg1;
+- (long long)compare:(id)arg1;
+- (id)description;
+- (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
 
 @end
 

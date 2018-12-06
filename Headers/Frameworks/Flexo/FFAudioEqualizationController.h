@@ -4,66 +4,21 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "OZChanEnumController.h"
+#import "OZFolderGroupController.h"
 
-#import "FFEnhanceAudioDelegate.h"
-
-@class FFChannelChangeController, FFLibraryDocument, NSArray, NSButton, NSLayoutConstraint, NSMapTable, NSProgressIndicator, NSString;
+@class FFAudioEqualizationParameterController;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioEqualizationController : OZChanEnumController <FFEnhanceAudioDelegate>
+@interface FFAudioEqualizationController : OZFolderGroupController
 {
-    NSButton *_enableButton;
-    NSButton *_advancedUIButton;
-    NSButton *_matchButton;
-    NSProgressIndicator *_analysisSpinner;
-    NSLayoutConstraint *_eqPopUpWidthConstraint;
-    NSArray *_selectedObjects;
-    NSMapTable *_managerMap;
-    NSArray *_observedObjects;
-    NSArray *_observedEffectStacks;
-    FFLibraryDocument *_observedLibraryDocument;
-    FFChannelChangeController *_channelChangeController;
-    BOOL _matchToolIsActive;
-    BOOL _pendingUpdateUI;
-    BOOL _inDidBuildUIScope;
-    BOOL _builtUI;
+    FFAudioEqualizationParameterController *m_eqParameterController;
 }
 
-@property(retain, nonatomic) FFChannelChangeController *channelChangeController; // @synthesize channelChangeController=_channelChangeController;
-- (void)activeToolChanged:(id)arg1;
-- (void)openEqualizationCustomUI:(id)arg1;
-- (void)beginMatchAudio:(id)arg1;
-- (void)selectEQMenuItems:(id)arg1;
-- (void)setEnable:(id)arg1;
-- (id)retrieveContext;
-- (void)updatePopUpMenu:(BOOL)arg1 force:(BOOL)arg2;
-- (void)update;
-- (void)willTeardownUI;
-- (void)didBuildUI;
-- (void)_matchToolCompleted;
-- (void)_matchToolStarted;
-- (void)_animateSpinner:(id)arg1;
-- (void)_updateMatchEffectUI;
-- (void)_updateEQMenu;
-- (void)_updateEnableButton;
-- (void)_notifyUpdateUI;
-- (void)_updateUI;
-- (void)_libraryClosed:(id)arg1;
-- (void)_removeObserving;
-- (void)_addObserving;
-- (void)_teardownController;
-- (void)_setupController;
-- (void)setEnableButton:(id)arg1;
-- (void)resetEQEffect;
-- (void)dealloc;
++ (void)resetEqualizationOnEffectStack:(id)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (BOOL)supportsObject:(id)arg1;
 
 @end
 

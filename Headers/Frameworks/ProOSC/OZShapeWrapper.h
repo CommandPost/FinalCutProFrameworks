@@ -11,9 +11,9 @@
     struct OZShape *_shape;
 }
 
-- (struct OZShape *)shape;
-- (void)dealloc;
 - (id)initWithShape:(struct OZShape *)arg1;
+- (void)dealloc;
+- (struct OZShape *)shape;
 
 @end
 

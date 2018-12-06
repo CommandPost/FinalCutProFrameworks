@@ -6,9 +6,7 @@
 
 #import "NSObject.h"
 
-@class Protocol;
-
 @protocol PROAPIAccessing <NSObject>
-- (id)apiForProtocol:(Protocol *)arg1;
+- (id)apiForProtocol:(id)arg1;
 @end
 

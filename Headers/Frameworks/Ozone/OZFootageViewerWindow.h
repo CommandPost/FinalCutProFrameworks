@@ -8,44 +8,28 @@
 
 #import "NSWindowDelegate.h"
 
-@class AVPlayerItem, AVPlayerView, NSImageView, NSString, QTMovieView;
+@class QTMovieView;
 
 @interface OZFootageViewerWindow : NSWindowController <NSWindowDelegate>
 {
-    QTMovieView *_qtMovieView;
-    AVPlayerView *_avPlayerView;
-    NSImageView *_imageView;
+    QTMovieView *_moviePlayer;
     struct PCURL *_URL;
     unsigned int _movieW;
     unsigned int _movieH;
     double _moviePAR;
-    AVPlayerItem *_playerItem;
 }
 
-+ (void)showViewer:(const struct PCURL *)arg1;
 + (void)showViewerWithNSURL:(id)arg1;
-@property(retain) AVPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
-- (struct CGSize)windowWillResize:(id)arg1 toSize:(struct CGSize)arg2;
-- (void)updateWindowSizeForMediaSize:(struct CGSize)arg1;
-- (float)controllerHeight;
-- (void)updateMovie;
-- (void)updateImage:(id)arg1;
-- (void)updateAVAsset:(id)arg1;
-- (void)updateQTMovie;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (const struct PCURL *)getURL;
-- (void)setURL:(const struct PCURL *)arg1;
-- (void)windowWillClose:(id)arg1;
-- (void)windowDidLoad;
-- (id)windowNibName;
-- (void)dealloc;
++ (void)showViewer:(const struct PCURL *)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (id)windowNibName;
+- (void)windowDidLoad;
+- (void)windowWillClose:(id)arg1;
+- (void)setURL:(const struct PCURL *)arg1;
+- (const struct PCURL *)getURL;
+- (void)updateMovie;
+- (struct CGSize)windowWillResize:(id)arg1 toSize:(struct CGSize)arg2;
 
 @end
 

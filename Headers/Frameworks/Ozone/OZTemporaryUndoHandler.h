@@ -13,8 +13,8 @@
     OZObjCDocument *_document;
 }
 
-- (void)handleUndo:(id)arg1;
 - (id)initWithOZObjCDocument:(id)arg1;
+- (void)handleUndo:(id)arg1;
 
 @end
 

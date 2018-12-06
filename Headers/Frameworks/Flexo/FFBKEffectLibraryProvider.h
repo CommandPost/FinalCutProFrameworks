@@ -11,13 +11,13 @@
 }
 
 + (id)standardProvider;
-- (void)updateBrowserContents:(id)arg1;
-- (id)itemDisplayName;
-- (id)valueForUndefinedKey:(id)arg1;
-- (BOOL)hasMasterSubitems;
-- (void)dealloc;
-- (id)init;
 - (void)effectRegistryChanged:(id)arg1;
+- (id)init;
+- (void)dealloc;
+- (BOOL)hasMasterSubitems;
+- (id)valueForUndefinedKey:(id)arg1;
+- (id)itemDisplayName;
+- (void)updateBrowserContents:(id)arg1;
 
 @end
 

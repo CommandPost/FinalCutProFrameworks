@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)reversedSortDescriptor;
 - (long long)compareObject:(id)arg1 toObject:(id)arg2;
+- (id)reversedSortDescriptor;
 
 @end
 

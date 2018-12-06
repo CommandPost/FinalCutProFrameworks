@@ -6,11 +6,12 @@
 
 #import "NSView.h"
 
-@class LKContainerItemCapView, LKContainerItemDebugView, LKContainerItemHighlightView, LKContainerNode, LKContainerView, NSWindow;
+@class LKContainerItemCapView, LKContainerItemDebugView, LKContainerNode, LKContainerView;
 
 @interface LKContainerItemView : NSView
 {
     NSView *_contentView;
+    NSView *_borderView;
     LKContainerView *_containerView;
     LKContainerNode *_node;
     LKContainerItemDebugView *_debugView;
@@ -19,65 +20,25 @@
     unsigned int _hasFocus:1;
     struct CGRect _futureFrame;
     struct CGRect _futureFooterFrame;
-    BOOL _wantsTransparentBackground;
-    LKContainerItemHighlightView *_focusView;
-    NSWindow *_focusWindow;
-    long long _shouldHideFocusWindow;
-    struct CGRect _focusWindowFrameInView;
 }
 
-@property(nonatomic) BOOL wantsTransparentBackground; // @synthesize wantsTransparentBackground=_wantsTransparentBackground;
-- (void)drawRect:(struct CGRect)arg1;
-- (CDStruct_d2b197d1)_borderMetrics;
-- (void)setFrameSize:(struct CGSize)arg1;
-- (void)updateLabel;
-- (struct CGRect)draggingAreaFrame;
-- (id)node;
-- (void)setNode:(id)arg1;
-- (id)superContainerView;
-- (BOOL)isContainerItemView;
-- (void)setSuperContainerView:(id)arg1;
-- (id)contentView;
-- (void)setContentView:(id)arg1;
-- (void)willRemoveSubview:(id)arg1;
-- (BOOL)isEmphasized;
-- (void)_enableFocusWindow;
-- (void)_disableFocusWindow;
-- (void)_addFocusWindowIfNecessary;
-- (void)_removeFocusWindowIfNecessary;
-- (void)_windowDidDismissSheet:(id)arg1;
-- (void)_windowWillPresentSheet:(id)arg1;
-- (void)_setEmphasized:(BOOL)arg1 force:(BOOL)arg2;
-- (void)setEmphasized:(BOOL)arg1;
-- (void)setNeedsDisplayDeeply;
-- (void)dealloc;
-- (void)_focusDidChanged:(id)arg1;
-- (void)_notifyOtherContainerViewsOfFocusChange;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isOpaque;
-- (void)updateFrameAnimate:(BOOL)arg1;
-- (void)updateFrame;
-@property struct CGRect futureFrame;
-@property struct CGRect futureFooterFrame;
-- (id)description;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)accessibilityAttributeNames;
-- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
-- (BOOL)accessibilityIsIgnored;
-- (void)_recomputeFrames;
-- (void)setHidden:(BOOL)arg1;
-- (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
-- (void)_refreshPaneCaps;
-- (void)_updateFooterAccessoryView;
-- (id)_footerAccessoryView;
-- (double)_footerViewHeight;
-- (double)_headerViewHeight;
-- (BOOL)_useFacetForFooterSizing;
-- (BOOL)_useFacetForHeaderSizing;
-- (void)_updateHeaderAccessoryView;
-- (void)_installDebugView;
-- (id)footerView;
-- (id)capView;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)setEmphasized:(BOOL)arg1;
+- (BOOL)isEmphasized;
+- (void)willRemoveSubview:(id)arg1;
+- (void)setContentView:(id)arg1;
+- (id)contentView;
+- (void)setSuperContainerView:(id)arg1;
+- (BOOL)isContainerItemView;
+- (id)superContainerView;
+- (void)setNode:(id)arg1;
+- (id)node;
+- (struct CGRect)draggingAreaFrame;
+- (void)updateLabel;
+- (void)setFrameSize:(struct CGSize)arg1;
 
 @end
 

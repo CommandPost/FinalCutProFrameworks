@@ -5,7 +5,7 @@
 //
 
 @protocol FFSourceVideoOverrideColorspace
-- (BOOL)isOverrideColorSpaceSupported:(struct CGColorSpace *)arg1;
 - (struct CGColorSpace *)getNativeColorSpace;
+- (BOOL)isOverrideColorSpaceSupported:(struct CGColorSpace *)arg1;
 @end
 

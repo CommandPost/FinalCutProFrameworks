@@ -4,12 +4,10 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSData;
-
 @protocol Fx3DAPI
-- (BOOL)is3D;
+- (id)cameraMatrixAtTime:(double)arg1;
+- (id)layerMatrixAtTime:(double)arg1;
 - (double)focalLengthAtTime:(double)arg1;
-- (NSData *)layerMatrixAtTime:(double)arg1;
-- (NSData *)cameraMatrixAtTime:(double)arg1;
+- (BOOL)is3D;
 @end
 

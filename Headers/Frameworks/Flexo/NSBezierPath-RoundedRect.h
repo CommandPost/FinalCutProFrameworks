@@ -7,14 +7,14 @@
 #import "NSBezierPath.h"
 
 @interface NSBezierPath (RoundedRect)
-+ (void)drawBezeledWell:(struct CGRect)arg1 grayLevel:(float)arg2 radius:(float)arg3;
-+ (id)bezierPathWithRect:(struct CGRect)arg1 leftInset:(float)arg2 rightInset:(float)arg3;
-+ (id)bezierPathFrom:(struct CGPoint)arg1 to:(struct CGPoint)arg2 thickness:(float)arg3;
-+ (id)bezierPathWithCircleAtPoint:(struct CGPoint)arg1 radius:(float)arg2;
-+ (id)bezierPathWithRoundCaps:(struct CGRect)arg1 endCapInset:(float)arg2 leftCap:(BOOL)arg3 rightCap:(BOOL)arg4;
-+ (id)bezierPathForStackTray:(struct CGRect)arg1 radius:(float)arg2 tailInset:(struct CGSize)arg3;
-+ (id)bezierPathWithSingleRoundedCorner:(struct CGRect)arg1 radius:(float)arg2 corner:(int)arg3;
-+ (id)bezierPathWithRoundedRect:(struct CGRect)arg1 radius:(float)arg2 leftCap:(BOOL)arg3 rightCap:(BOOL)arg4;
 + (id)bezierPathWithRoundedRect:(struct CGRect)arg1 radius:(float)arg2;
++ (id)bezierPathWithRoundedRect:(struct CGRect)arg1 radius:(float)arg2 leftCap:(BOOL)arg3 rightCap:(BOOL)arg4;
++ (id)bezierPathWithSingleRoundedCorner:(struct CGRect)arg1 radius:(float)arg2 corner:(int)arg3;
++ (id)bezierPathForStackTray:(struct CGRect)arg1 radius:(float)arg2 tailInset:(struct CGSize)arg3;
++ (id)bezierPathWithRoundCaps:(struct CGRect)arg1 endCapInset:(float)arg2 leftCap:(BOOL)arg3 rightCap:(BOOL)arg4;
++ (id)bezierPathWithCircleAtPoint:(struct CGPoint)arg1 radius:(float)arg2;
++ (id)bezierPathFrom:(struct CGPoint)arg1 to:(struct CGPoint)arg2 thickness:(float)arg3;
++ (id)bezierPathWithRect:(struct CGRect)arg1 leftInset:(float)arg2 rightInset:(float)arg3;
++ (void)drawBezeledWell:(struct CGRect)arg1 grayLevel:(float)arg2 radius:(float)arg3;
 @end
 

@@ -16,21 +16,16 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)keyPathsForValuesAffectingDetailSubitems;
-@property(readonly, nonatomic) BOOL itemIsPlaceholder;
-- (id)itemIconSelected:(BOOL)arg1;
-@property(readonly, nonatomic) NSImage *itemIcon;
-@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
-- (void)setItemDisplayName:(id)arg1;
 @property(readonly, nonatomic) NSString *itemDisplayName;
+- (void)setItemDisplayName:(id)arg1;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
+@property(readonly, nonatomic) NSImage *itemIcon;
+@property(readonly, nonatomic) BOOL itemIsPlaceholder;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
 @property(readonly, nonatomic) NSString *itemPersistentIdentifier;
 @property(readonly, nonatomic) double itemRowHeight;
-@property(readonly) Class superclass;
 
 @end
 

@@ -13,10 +13,10 @@
     LKProgressIndicator *_pProgress;
 }
 
-- (void)disable;
-- (void)enable;
-- (void)update;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)update;
+- (void)enable;
+- (void)disable;
 
 @end
 

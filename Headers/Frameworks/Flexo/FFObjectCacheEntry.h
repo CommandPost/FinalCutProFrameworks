@@ -6,8 +6,6 @@
 
 #import "NSObject.h"
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface FFObjectCacheEntry : NSObject
 {
@@ -19,24 +17,22 @@ __attribute__((visibility("hidden")))
     float _freq;
     float _value;
     double _cost;
-    NSString *_cacheGroup;
 }
 
-- (id)cacheGroup;
-- (BOOL)canBePurgedFromCache;
-- (void)resetValue:(unsigned long long)arg1 responseRate:(float)arg2 penalty:(float)arg3;
-- (void)setValue:(unsigned long long)arg1 cost:(double)arg2 maxCacheSize:(unsigned long long)arg3;
-- (float)getValue:(unsigned long long)arg1 decayRate:(float)arg2;
-- (double)cost;
-- (unsigned long long)getSize;
-- (void)setLastAccess:(unsigned long long)arg1;
-- (unsigned long long)lastAccess;
-- (id)getItem;
-- (unsigned int)hashValue;
-- (void)setCacheKey:(CDStruct_bdcb2b0d)arg1;
-- (CDStruct_bdcb2b0d)cacheKey;
+- (id)initWithKey:(CDStruct_60067b7e)arg1 cacheItem:(id)arg2 size:(unsigned long long)arg3 cost:(double)arg4 forCache:(id)arg5;
 - (void)dealloc;
-- (id)initWithKey:(CDStruct_bdcb2b0d)arg1 cacheItem:(id)arg2 size:(unsigned long long)arg3 cost:(double)arg4 forCache:(id)arg5 group:(id)arg6;
+- (CDStruct_60067b7e)cacheKey;
+- (void)setCacheKey:(CDStruct_60067b7e)arg1;
+- (unsigned int)hashValue;
+- (id)getItem;
+- (unsigned long long)lastAccess;
+- (void)setLastAccess:(unsigned long long)arg1;
+- (unsigned long long)getSize;
+- (double)cost;
+- (float)getValue:(unsigned long long)arg1 decayRate:(float)arg2;
+- (void)setValue:(unsigned long long)arg1 cost:(double)arg2 maxCacheSize:(unsigned long long)arg3;
+- (void)resetValue:(unsigned long long)arg1 responseRate:(float)arg2 penalty:(float)arg3;
+- (BOOL)canBePurgedFromCache;
 
 @end
 

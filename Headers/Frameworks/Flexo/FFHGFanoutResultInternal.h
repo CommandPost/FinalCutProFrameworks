@@ -6,12 +6,13 @@
 
 #import <Flexo/FFHGAsyncFanoutResult.h>
 
-@class FFHGAsyncFanoutJob, FFHGAsyncQueue, FFImageAbsoluteOutputFormat, FFPixelBuffer, FFTextureBuffer, PCMatrix44Double;
+@class FFHGAsyncFanoutJob, FFHGAsyncQueue, FFPixelBuffer, FFPixelFormat, FFTextureBuffer, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFHGFanoutResultInternal : FFHGAsyncFanoutResult
 {
-    FFImageAbsoluteOutputFormat *_format;
+    FFPixelFormat *_pf;
+    struct CGColorSpace *_cs;
     int _location;
     struct HGRect _roi;
     PCMatrix44Double *_pt;
@@ -26,10 +27,21 @@ __attribute__((visibility("hidden")))
     double _bufferCopyTime;
     BOOL _dithered;
     int _bg;
-    unsigned int _zebraAnalysisMode;
 }
 
-@property(readonly) unsigned int zebraAnalysisMode; // @synthesize zebraAnalysisMode=_zebraAnalysisMode;
+- (id)initWithPF:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 location:(int)arg3 roi:(struct HGRect)arg4 pixelTransform:(id)arg5 field:(unsigned int)arg6 dithered:(BOOL)arg7 background:(int)arg8;
+- (void)dealloc;
+- (void)_nodeDidFinish;
+- (id)description;
+- (void)_callbackRan;
+- (void)registerForNodeCallbacks;
+- (void)setQueue:(id)arg1 job:(id)arg2;
+- (int)location;
+- (void)setLocation:(int)arg1;
+- (struct CGColorSpace *)colorSpace;
+- (void)setRenderNode:(struct HGRenderNode *)arg1;
+- (struct HGRenderNode *)renderNode;
+- (id)newImage;
 @property(readonly) int bg; // @synthesize bg=_bg;
 @property(readonly) BOOL dithered; // @synthesize dithered=_dithered;
 @property double bufferCopyTime; // @synthesize bufferCopyTime=_bufferCopyTime;
@@ -37,19 +49,8 @@ __attribute__((visibility("hidden")))
 @property int processingState; // @synthesize processingState=_processingState;
 @property(readonly) PCMatrix44Double *pt; // @synthesize pt=_pt;
 @property(readonly) struct HGRect roi; // @synthesize roi=_roi;
-@property(readonly) FFImageAbsoluteOutputFormat *format; // @synthesize format=_format;
-- (id)newImage;
-- (void)setRenderNode:(struct HGRenderNode *)arg1;
-- (struct CGColorSpace *)colorSpace;
-- (void)setLocation:(int)arg1;
-- (int)location;
-- (void)setQueue:(id)arg1 job:(id)arg2;
-- (void)registerForNodeCallbacks;
-- (void)_callbackRan;
-- (id)description;
-- (void)_nodeDidFinish;
-- (void)dealloc;
-- (id)initWithFormat:(id)arg1 location:(int)arg2 roi:(struct HGRect)arg3 pixelTransform:(id)arg4 field:(unsigned int)arg5 dithered:(BOOL)arg6 background:(int)arg7 zebraMode:(unsigned int)arg8;
+@property(readonly) struct CGColorSpace *cs; // @synthesize cs=_cs;
+@property(readonly) FFPixelFormat *pf; // @synthesize pf=_pf;
 
 @end
 

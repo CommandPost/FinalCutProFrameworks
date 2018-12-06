@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)bodyLayer;
-- (id)settingsButton;
 - (void)layoutSublayers;
+- (id)settingsButton;
 
 @end
 

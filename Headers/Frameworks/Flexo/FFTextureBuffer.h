@@ -15,21 +15,21 @@
     FFPixelFormat *_pixelFormat;
     int _virtualScreen;
     id _backingObject;
+    BOOL _flipped;
 }
 
-+ (void)teardown;
 + (void)initialize;
-- (struct HGGLTexture *)newHGTextureWithDetachFromRenderer;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)setBackingObject:(id)arg1;
-- (double)height;
-- (double)width;
-- (int)virtualScreen;
-- (id)pixelFormat;
-- (struct CGRect)bounds;
-- (unsigned int)texture;
++ (void)teardown;
+- (id)initWithTexture:(unsigned int)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 virtualScreen:(int)arg4 isFlipped:(BOOL)arg5;
 - (void)dealloc;
-- (id)initWithTexture:(unsigned int)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 virtualScreen:(int)arg4;
+- (unsigned int)texture;
+- (struct CGRect)bounds;
+- (id)pixelFormat;
+- (int)virtualScreen;
+- (double)width;
+- (double)height;
+- (BOOL)isFlipped;
+- (void)setBackingObject:(id)arg1;
 
 @end
 

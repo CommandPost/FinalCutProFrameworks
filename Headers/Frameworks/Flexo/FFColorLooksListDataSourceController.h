@@ -8,7 +8,7 @@
 
 #import "FFColorLooksListDataSource.h"
 
-@class NSMutableArray, NSString;
+@class NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFColorLooksListDataSourceController : NSObject <FFColorLooksListDataSource>
@@ -18,27 +18,21 @@ __attribute__((visibility("hidden")))
     unsigned long long _cachedListItemsTailIdx;
 }
 
-- (void)_insertColorLooksListItem:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)_addColorLooksListItem:(id)arg1;
-- (void)_replaceContent:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)_insertContent:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)_addContent:(id)arg1;
-- (id)uniqueFilePathForName:(id)arg1;
-- (id)listPath;
-- (id)colorLooksListItemAtIndex:(unsigned long long)arg1;
-- (unsigned long long)count;
-- (unsigned long long)indexForListItemWithContent:(id)arg1;
-- (unsigned long long)indexForContent:(id)arg1 inContents:(id)arg2;
-- (unsigned long long)indexForContent:(id)arg1;
-- (void)validateAndCacheOurRepository;
-- (void)_validateAndCacheOurRepositoryWithContents:(id)arg1;
 - (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)_validateAndCacheOurRepositoryWithContents:(id)arg1;
+- (void)validateAndCacheOurRepository;
+- (unsigned long long)indexForContent:(id)arg1;
+- (unsigned long long)indexForContent:(id)arg1 inContents:(id)arg2;
+- (unsigned long long)indexForListItemWithContent:(id)arg1;
+- (unsigned long long)count;
+- (id)colorLooksListItemAtIndex:(unsigned long long)arg1;
+- (id)listPath;
+- (id)uniqueFilePathForName:(id)arg1;
+- (void)_addContent:(id)arg1;
+- (void)_insertContent:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)_replaceContent:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)_addColorLooksListItem:(id)arg1;
+- (void)_insertColorLooksListItem:(id)arg1 atIndex:(unsigned long long)arg2;
 
 @end
 

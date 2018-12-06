@@ -6,64 +6,47 @@
 
 #import <Flexo/FFTool.h>
 
-@class FFEventFilter, LKButton, LKTextField, NSView;
+@class FFAnchoredObject, FFContext, FFEventFilter, NSArray, NSMutableArray;
 
 @interface FFMatchTool : FFTool
 {
+    NSArray *_selectedItems;
+    NSArray *_recordedItems;
     FFEventFilter *_matchEventFilter;
+    FFContext *_context;
     id _delegate;
-    float _canvasZoomFactor;
-    struct CGPoint _canvasOrigin;
-    BOOL _viewerWasDominant;
-    int _displayAreaMode;
-    NSView *_matchFooterView;
-    LKTextField *_matchFooterText;
-    NSView *_matchAccessoryView;
-    LKTextField *_matchAccessoryTitle;
-    LKButton *_matchOkButton;
+    FFAnchoredObject *_mainSelectedItem;
+    NSMutableArray *_records;
     struct {
         unsigned int isTrackingUndoRedoChanges:1;
-        unsigned int isSelectionInitialized:1;
-        unsigned int isReferenceChanged:1;
-        unsigned int wantsToResignToolUponTransaction:1;
     } _state;
-    long long _matchState;
 }
 
-+ (BOOL)terminatesModalModeAsCompletion;
-+ (BOOL)globalTransactionResignsTool;
-+ (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
-@property BOOL viewerWasDominant; // @synthesize viewerWasDominant=_viewerWasDominant;
-@property(nonatomic) int displayAreaMode; // @synthesize displayAreaMode=_displayAreaMode;
-@property(nonatomic) struct CGPoint canvasOrigin; // @synthesize canvasOrigin=_canvasOrigin;
-@property(nonatomic) float canvasZoomFactor; // @synthesize canvasZoomFactor=_canvasZoomFactor;
-@property(retain, nonatomic) id delegate; // @synthesize delegate=_delegate;
-- (BOOL)_shouldCloseOnUndo;
-- (void)matchCancel:(id)arg1;
-- (void)matchDone:(id)arg1;
-- (void)_enableApplyButton:(BOOL)arg1;
-- (id)playerAccessoryView;
-- (void)footerNeedsUpdate:(id)arg1;
-- (id)playerFooterView;
-- (BOOL)isMatchTool;
-- (BOOL)isModalTool;
-- (id)checkForMatchEvents:(id)arg1;
-- (void)setSelectedItems:(id)arg1 contextTime:(CDStruct_1b6d18a9)arg2;
-- (void)referenceChanged:(id)arg1;
-- (void)_stopObservingUndoRedoChangeNotifications;
-- (void)_startObservingUndoRedoChangeNotifications;
-- (void)handleNotification:(id)arg1;
-- (void)handleFFNotification:(id)arg1;
-- (void)cancelledMatchOnSelection;
++ (void)initialize;
+- (void)dealloc;
 - (void)completedMatchOnSelection;
-- (void)terminateModalMode;
+- (void)cancelledMatchOnSelection;
+- (id)_undoHandler;
+- (id)undoHandler;
+- (void)setIntermediateEffect:(id)arg1 forAnchoredObject:(id)arg2;
+- (void)setIntermediateChannelFolderID:(unsigned int)arg1 parentFolder:(id)arg2 forAnchoredObject:(id)arg3;
+- (void)startObservingUndoRedoChangeNotifications;
+- (void)stopObservingUndoRedoChangeNotifications;
+- (BOOL)hasIntermediateEffect;
 - (BOOL)skims;
-- (BOOL)allowsEffectOSCs;
-- (BOOL)allowInspectorToTrackSelection;
-- (void)selectedItemsChanged:(id)arg1;
-- (void)resignActiveTool;
+- (BOOL)handlesSelection;
 - (void)becomeActiveTool;
-@property(getter=isReferenceChanged) BOOL referenceChanged; // @dynamic referenceChanged;
+- (void)resignActiveTool;
+- (void)selectedItemsChanged:(id)arg1;
+- (BOOL)allowInspectorToTrackSelection;
+- (id)checkForMatchEvents:(id)arg1;
+- (void)undoRedoChanged:(id)arg1;
+- (id)storeAnyStateChanges;
+- (id)_rollbackChanges;
+- (id)rollbackChanges;
+- (id)saveChanges;
+@property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
+@property(nonatomic) id delegate; // @synthesize delegate=_delegate;
 
 @end
 

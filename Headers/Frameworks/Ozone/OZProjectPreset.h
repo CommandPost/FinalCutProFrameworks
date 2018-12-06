@@ -10,25 +10,23 @@
 {
 }
 
-- (void)applyToDocument:(struct OZDocument *)arg1;
-- (void)set360ProjectMode:(int)arg1;
-- (int)get360ProjectMode;
-- (void)setFrameRate:(double)arg1;
-- (double)frameRate;
-- (void)setFieldRenderingMode:(int)arg1;
-- (int)fieldRenderingMode;
-- (void)setPixelAspectRatio:(double)arg1;
-- (double)pixelAspectRatio;
-- (void)setHeight:(int)arg1;
-- (int)height;
-- (void)setWidth:(int)arg1;
-- (int)width;
-- (id)extendedDescription;
-- (long long)compare:(id)arg1;
-- (BOOL)isEqualToPreset:(id)arg1;
-- (void)dealloc;
+- (id)initWithPath:(id)arg1 name:(id)arg2;
 - (id)initWithContentsOfFile:(id)arg1;
-- (id)initWithPath:(id)arg1 name:(id)arg2 tag:(id)arg3;
+- (void)dealloc;
+- (BOOL)isEqualToPreset:(id)arg1;
+- (long long)compare:(id)arg1;
+- (id)extendedDescription;
+- (int)width;
+- (void)setWidth:(int)arg1;
+- (int)height;
+- (void)setHeight:(int)arg1;
+- (double)pixelAspectRatio;
+- (void)setPixelAspectRatio:(double)arg1;
+- (int)fieldRenderingMode;
+- (void)setFieldRenderingMode:(int)arg1;
+- (double)frameRate;
+- (void)setFrameRate:(double)arg1;
+- (void)applyToDocument:(struct OZDocument *)arg1;
 
 @end
 

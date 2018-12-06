@@ -23,18 +23,13 @@ struct CGSize {
     double height;
 };
 
-struct KeyframeAsset {
-    unsigned int texID;
-    struct CGPoint size;
-};
-
 struct OZChannel {
     CDUnknownFunctionPointerType *_field1;
     struct OZFactory *_field2;
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -43,11 +38,13 @@ struct OZChannel {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    struct OZChannelImpl *_field15;
-    struct OZChannelImpl *_field16;
-    struct OZChannelInfo *_field17;
-    struct OZChannelInfo *_field18;
-    struct OZCurve *_field19;
+    struct OZCurve *_field15;
+    struct OZChannelInfo *_field16;
+    CDStruct_1b6d18a9 _field17;
+    CDStruct_1b6d18a9 _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> _field21;
 };
 
 struct OZChannelBase {
@@ -56,7 +53,7 @@ struct OZChannelBase {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -73,7 +70,7 @@ struct OZChannelFolder {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -82,12 +79,10 @@ struct OZChannelFolder {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    vector_b71873ec *_field15;
+    vector_5ace8374 *_field15;
     unsigned int _field16;
     unsigned int _field17;
 };
-
-struct OZChannelImpl;
 
 struct OZChannelInfo;
 
@@ -97,7 +92,7 @@ struct OZChannelObjectRootBase {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -106,7 +101,7 @@ struct OZChannelObjectRootBase {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    vector_b71873ec *_field15;
+    vector_5ace8374 *_field15;
     unsigned int _field16;
     unsigned int _field17;
     CDStruct_1b6d18a9 _field18;
@@ -116,7 +111,8 @@ struct OZChannelObjectRootBase {
 };
 
 struct OZChannelRef {
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field1;
+    struct PCString _field2;
 };
 
 struct OZChannelTimeConverter;
@@ -127,7 +123,7 @@ struct OZCompoundChannel {
     CDUnknownFunctionPointerType *_field3;
     unsigned int _field4;
     struct PCString _field5;
-    struct PCString *_field6;
+    struct PCString _field6;
     struct OZChannelFolder *_field7;
     unsigned long long _field8;
     unsigned long long _field9;
@@ -136,7 +132,7 @@ struct OZCompoundChannel {
     struct __CFString *_field12;
     struct __CFString *_field13;
     struct OZChannelTimeConverter *_field14;
-    vector_b71873ec *_field15;
+    vector_5ace8374 *_field15;
     unsigned int _field16;
     unsigned int _field17;
     _Bool _field18;
@@ -146,32 +142,13 @@ struct OZCurve;
 
 struct OZCurveSetListSerializer {
     CDUnknownFunctionPointerType *_field1;
-    struct vector<OZCurveSetSerializer *, std::__1::allocator<OZCurveSetSerializer *>> _field2;
+    struct vector<OZCurveSetSerializer*, std::allocator<OZCurveSetSerializer*>> _field2;
     unsigned int _field3;
 };
 
 struct OZCurveSetSerializer;
 
 struct OZFactory;
-
-struct OZLine2Df;
-
-struct OZPoint2Df {
-    float _field1;
-    float _field2;
-};
-
-struct OZTexturedQuad2Df {
-    struct OZTexturedVertex2Df _field1;
-    struct OZTexturedVertex2Df _field2;
-    struct OZTexturedVertex2Df _field3;
-    struct OZTexturedVertex2Df _field4;
-};
-
-struct OZTexturedVertex2Df {
-    struct OZPoint2Df _field1;
-    struct OZPoint2Df _field2;
-};
 
 struct PCBitmap {
     CDUnknownFunctionPointerType *_field1;
@@ -184,19 +161,18 @@ struct PCBitmap {
     int _field8;
     struct PCColorSpaceHandle _field9;
     _Bool _field10;
-    struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> _field11;
+    void *_field11;
+    int _field12;
 };
 
-struct PCBitmapRep;
-
 struct PCColorSpaceHandle {
-    struct CGColorSpace *_field1;
+    struct CGColorSpace *_cgColorSpace;
 };
 
 struct PCImage;
 
 struct PCString {
-    struct __CFString *_field1;
+    struct __CFString *_string;
 };
 
 struct PCTimeRange {
@@ -204,102 +180,62 @@ struct PCTimeRange {
     CDStruct_1b6d18a9 _field2;
 };
 
+struct RecordingCallbackData;
+
+struct _Alloc_hider {
+    char *_M_p;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
 };
 
+struct _Sp_counted_base<_S_atomic>;
+
 struct __CFString;
 
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    unsigned long long _field1;
-                    unsigned long long _field2;
-                    char *_field3;
-                } _field1;
-                struct __short {
-                    union {
-                        unsigned char _field1;
-                        char _field2;
-                    } _field1;
-                    char _field2[23];
-                } _field2;
-                struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
+struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct _Alloc_hider _M_dataplus;
 };
 
-struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> {
-    struct __compressed_pair<PCBitmapRep *, std::__1::default_delete<PCBitmapRep>> {
-        struct PCBitmapRep *_field1;
-    } _field1;
+struct vector<OZChannel::RecordingCallbackData, std::allocator<OZChannel::RecordingCallbackData>> {
+    struct _Vector_impl {
+        struct RecordingCallbackData *_M_start;
+        struct RecordingCallbackData *_M_finish;
+        struct RecordingCallbackData *_M_end_of_storage;
+    } _M_impl;
 };
 
-struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> {
-    struct OZChannelBase **_field1;
-    struct OZChannelBase **_field2;
-    struct __compressed_pair<OZChannelBase **, std::__1::allocator<OZChannelBase *>> {
+struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> {
+    struct _Vector_impl {
         struct OZChannelBase **_field1;
-    } _field3;
+        struct OZChannelBase **_field2;
+        struct OZChannelBase **_field3;
+    } _field1;
 };
 
-struct vector<OZChannelRef, std::__1::allocator<OZChannelRef>> {
-    struct OZChannelRef *_field1;
-    struct OZChannelRef *_field2;
-    struct __compressed_pair<OZChannelRef *, std::__1::allocator<OZChannelRef>> {
-        struct OZChannelRef *_field1;
-    } _field3;
+struct vector<OZChannelRef, std::allocator<OZChannelRef>> {
+    struct _Vector_impl {
+        struct OZChannelRef *_M_start;
+        struct OZChannelRef *_M_finish;
+        struct OZChannelRef *_M_end_of_storage;
+    } _field1;
 };
 
-struct vector<OZCurveSetSerializer *, std::__1::allocator<OZCurveSetSerializer *>> {
-    struct OZCurveSetSerializer **_field1;
-    struct OZCurveSetSerializer **_field2;
-    struct __compressed_pair<OZCurveSetSerializer **, std::__1::allocator<OZCurveSetSerializer *>> {
+struct vector<OZCurveSetSerializer*, std::allocator<OZCurveSetSerializer*>> {
+    struct _Vector_impl {
         struct OZCurveSetSerializer **_field1;
-    } _field3;
-};
-
-struct vector<OZLine2Df, std::__1::allocator<OZLine2Df>> {
-    struct OZLine2Df *_field1;
-    struct OZLine2Df *_field2;
-    struct __compressed_pair<OZLine2Df *, std::__1::allocator<OZLine2Df>> {
-        struct OZLine2Df *_field1;
-    } _field3;
-};
-
-struct vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>> {
-    struct OZTexturedQuad2Df *_field1;
-    struct OZTexturedQuad2Df *_field2;
-    struct __compressed_pair<OZTexturedQuad2Df *, std::__1::allocator<OZTexturedQuad2Df>> {
-        struct OZTexturedQuad2Df *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>, std::__1::allocator<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>>> {
-    vector_c3eb4401 *_field1;
-    vector_c3eb4401 *_field2;
-    struct __compressed_pair<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>*, std::__1::allocator<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>>> {
-        vector_c3eb4401 *_field1;
-    } _field3;
-};
-
-struct vector<void *, std::__1::allocator<void *>> {
-    void **__begin_;
-    void **__end_;
-    struct __compressed_pair<void **, std::__1::allocator<void *>> {
-        void **__value_;
-    } __end_cap_;
+        struct OZCurveSetSerializer **_field2;
+        struct OZCurveSetSerializer **_field3;
+    } _field1;
 };
 
 struct weak_ptr<PCImage> {
-    struct PCImage *_field1;
-    struct __shared_weak_count *_field2;
+    struct PCImage *_M_ptr;
+    struct __weak_count<_S_atomic> {
+        struct _Sp_counted_base<_S_atomic> *_M_pi;
+    } _M_refcount;
 };
 
 #pragma mark Typedef'd Structures
@@ -317,51 +253,19 @@ typedef struct {
 } CDStruct_e83c9415;
 
 // Template types
-typedef struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> {
-    struct OZChannelBase **_field1;
-    struct OZChannelBase **_field2;
-    struct __compressed_pair<OZChannelBase **, std::__1::allocator<OZChannelBase *>> {
+typedef struct vector<OZChannelBase*, std::allocator<OZChannelBase*>> {
+    struct _Vector_impl {
         struct OZChannelBase **_field1;
-    } _field3;
-} vector_b71873ec;
+        struct OZChannelBase **_field2;
+        struct OZChannelBase **_field3;
+    } _field1;
+} vector_5ace8374;
 
-typedef struct vector<OZChannelRef, std::__1::allocator<OZChannelRef>> {
-    struct OZChannelRef *_field1;
-    struct OZChannelRef *_field2;
-    struct __compressed_pair<OZChannelRef *, std::__1::allocator<OZChannelRef>> {
-        struct OZChannelRef *_field1;
-    } _field3;
-} vector_cdb86442;
-
-typedef struct vector<OZLine2Df, std::__1::allocator<OZLine2Df>> {
-    struct OZLine2Df *_field1;
-    struct OZLine2Df *_field2;
-    struct __compressed_pair<OZLine2Df *, std::__1::allocator<OZLine2Df>> {
-        struct OZLine2Df *_field1;
-    } _field3;
-} vector_d5fe817d;
-
-typedef struct vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>> {
-    struct OZTexturedQuad2Df *_field1;
-    struct OZTexturedQuad2Df *_field2;
-    struct __compressed_pair<OZTexturedQuad2Df *, std::__1::allocator<OZTexturedQuad2Df>> {
-        struct OZTexturedQuad2Df *_field1;
-    } _field3;
-} vector_c3eb4401;
-
-typedef struct vector<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>, std::__1::allocator<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>>> {
-    vector_c3eb4401 *_field1;
-    vector_c3eb4401 *_field2;
-    struct __compressed_pair<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>*, std::__1::allocator<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>>> {
-        vector_c3eb4401 *_field1;
-    } _field3;
-} vector_bf37bbef;
-
-typedef struct vector<void *, std::__1::allocator<void *>> {
-    void **__begin_;
-    void **__end_;
-    struct __compressed_pair<void **, std::__1::allocator<void *>> {
-        void **__value_;
-    } __end_cap_;
-} vector_80acc5a3;
+typedef struct vector<OZChannelRef, std::allocator<OZChannelRef>> {
+    struct _Vector_impl {
+        struct OZChannelRef *_M_start;
+        struct OZChannelRef *_M_finish;
+        struct OZChannelRef *_M_end_of_storage;
+    } _field1;
+} vector_2ae100bf;
 

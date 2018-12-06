@@ -10,12 +10,12 @@
 {
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (int)gradientType:(CDStruct_198678f7)arg1 index:(double)arg2;
-- (int)gradientType:(CDStruct_198678f7)arg1;
-- (id)gradientTypeChannel;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelGradientExtras *)ozChannel;
+- (id)gradientTypeChannel;
+- (int)gradientType:(CDStruct_1b6d18a9)arg1;
+- (int)gradientType:(CDStruct_1b6d18a9)arg1 index:(double)arg2;
 
 @end
 

@@ -13,15 +13,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
-- (double)timeout;
-- (double)timeSpentDrawing;
-- (void)_notifyDrawingIsAllDone:(id)arg1;
-- (void)_notifyOfFirstDrawing:(id)arg1;
-- (void)_delayedRun:(id)arg1;
-- (void)_startWatching;
-- (void)startWatching;
-- (BOOL)isTiming;
 - (id)init;
+- (BOOL)isTiming;
+- (void)startWatching;
+- (void)_startWatching;
+- (void)_delayedRun:(id)arg1;
+- (void)_notifyOfFirstDrawing:(id)arg1;
+- (void)_notifyDrawingIsAllDone:(id)arg1;
+- (double)timeSpentDrawing;
+- (double)timeout;
 
 @end
 

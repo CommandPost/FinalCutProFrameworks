@@ -14,13 +14,12 @@
 }
 
 + (id)manager;
-@property(retain) NSMutableArray *namingPresets; // @synthesize namingPresets=_namingPresets;
-- (void)applyPreset:(id)arg1 toItems:(id)arg2;
-- (void)duplicatePresetAtIndex:(unsigned long long)arg1;
-- (void)loadPresets;
-- (void)savePresets;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (void)savePresets;
+- (void)loadPresets;
+- (void)duplicatePresetAtIndex:(unsigned long long)arg1;
+@property(retain) NSMutableArray *namingPresets; // @synthesize namingPresets=_namingPresets;
 
 @end
 

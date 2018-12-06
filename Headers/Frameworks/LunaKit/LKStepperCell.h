@@ -4,11 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSStepperCell.h"
+#import "NSProStepperCell.h"
 
-@interface LKStepperCell : NSStepperCell
+@interface LKStepperCell : NSProStepperCell
 {
 }
+
+- (id)_baseFacet;
 
 @end
 

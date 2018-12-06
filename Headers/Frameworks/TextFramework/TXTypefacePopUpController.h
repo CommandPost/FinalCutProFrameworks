@@ -4,32 +4,43 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "OZTypefacePopUpController.h"
+#import "OZViewController.h"
 
 #import "NSMenuDelegate.h"
 
-@class NSString;
+@class LKPopUpButton;
 
-@interface TXTypefacePopUpController : OZTypefacePopUpController <NSMenuDelegate>
+@interface TXTypefacePopUpController : OZViewController <NSMenuDelegate>
 {
+    LKPopUpButton *_popUpButton;
+    struct TXTextLayout *_text;
+    _Bool _isDragging;
+    int _fontType;
+    _Bool _areAllFontsEqual;
+    _Bool _selectionDidChange;
+    _Bool _aboutToChangeCalled;
+    unsigned int _textID;
+    struct OZScene *_scene;
 }
 
-- (void)removeNotifications;
-- (void)setupNotifications;
-- (id)nibName;
-- (void)setChannel:(struct OZChannel *)arg1 value:(int)arg2 time:(CDStruct_198678f7)arg3;
-- (void)menuDidClose:(id)arg1;
-- (void)menuWillOpen:(id)arg1;
-- (void)setChannelValue:(id)arg1;
+- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)setAssociatedTextLayout:(struct TXTextLayout *)arg1;
+- (void)dealloc;
+- (void)familyChanged:(id)arg1;
+- (void)updatePopUpMenu:(BOOL)arg1;
+- (void)selectItemAtIndex:(int)arg1 setChannel:(_Bool)arg2;
+- (BOOL)areAllFontsEqual;
+- (void)reset;
+- (void)update;
+- (void)enable;
+- (void)disable;
 - (void)_saveDefaultFont:(int)arg1;
-- (struct OZFontFamily *)getCurrentFamily;
-- (struct OZFontCollection *)getCurrentCollection;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)changeChannel:(id)arg1;
+- (void)setChannelValue:(id)arg1;
+- (void)menuWillOpen:(id)arg1;
+- (void)menuDidClose:(id)arg1;
+- (void)menu:(id)arg1 willHighlightItem:(id)arg2;
+@property(retain, nonatomic) LKPopUpButton *popUpButton; // @synthesize popUpButton=_popUpButton;
 
 @end
 

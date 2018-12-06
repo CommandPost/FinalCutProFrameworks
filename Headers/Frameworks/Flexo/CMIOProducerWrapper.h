@@ -18,24 +18,24 @@ __attribute__((visibility("hidden")))
             FFDestVideoCMIO *destCMIO;
             CDUnknownFunctionPointerType requestRenderCallback;
             void *requestRenderCallbackRefcon;
-            CDUnknownFunctionPointerType outputNotificationProc;
-            void *outputNotificationRefcon;
             struct opaqueCMFormatDescription *formatDesc;
+            struct {
+                CDStruct_1b6d18a9 duration;
+                CDStruct_1b6d18a9 presentationTimeStamp;
+                CDStruct_1b6d18a9 decodeTimeStamp;
+            } timingInfo;
+            CDStruct_1b6d18a9 sampleDuration;
             unsigned long long sequenceNumber;
             unsigned long long frameSize;
-            struct __CFDictionary *pixelBufferAttachments;
-            struct __CVPixelBufferPool *outputPixelBufferPool;
         } twovuy;
     } mStorage;
     CDStruct_15084369 mPcb;
-    struct CMIOStreamScheduledOutputNotificationProcAndRefCon mSonparc;
     int mStorageType;
 }
 
-- (int)setCMIORequestRenderCallbackAndRefCon:(struct CMIORequestRenderCallbackAndRefCon *)arg1;
-- (struct CMIOStreamScheduledOutputNotificationProcAndRefCon *)scheduledOutputNotificationProcAndRefcon;
-- (CDStruct_15084369 *)producerCallbacks;
 - (id)initWithStorage:(void *)arg1 ofType:(int)arg2;
+- (CDStruct_15084369 *)producerCallbacks;
+- (int)setCMIORequestRenderCallbackAndRefCon:(struct CMIORequestRenderCallbackAndRefCon *)arg1;
 
 @end
 

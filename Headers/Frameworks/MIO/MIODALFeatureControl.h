@@ -21,23 +21,23 @@
     BOOL mUsesAbsoluteValues;
 }
 
-- (void)setProperties:(id)arg1;
-- (id)properties;
-- (void)propertyDidChange:(const struct CMIOObjectPropertyAddress *)arg1;
-@property(readonly) BOOL hasTuning;
-@property BOOL tuning;
-@property(readonly, retain) NSString *unitName;
-@property(readonly) BOOL automaticSettable;
-@property(readonly) BOOL hasAutomatic;
-@property BOOL automatic;
-@property(readonly) BOOL onOffSettable;
-@property BOOL onOff;
-@property(readonly) BOOL valueSettable;
-@property(readonly) float maxValue;
-@property(readonly) float minValue;
-@property float value;
-- (id)exposedBindings;
 - (id)initWithCMIODALControlID:(unsigned int)arg1 classID:(unsigned int)arg2;
+- (id)exposedBindings;
+@property float value;
+@property(readonly) float minValue;
+@property(readonly) float maxValue;
+@property(readonly) BOOL valueSettable;
+@property BOOL onOff;
+@property(readonly) BOOL onOffSettable;
+@property BOOL automatic;
+@property(readonly) BOOL hasAutomatic;
+@property(readonly) BOOL automaticSettable;
+@property(readonly, retain) NSString *unitName;
+@property BOOL tuning;
+@property(readonly) BOOL hasTuning;
+- (void)propertyDidChange:(const struct CMIOObjectPropertyAddress *)arg1;
+- (id)properties;
+- (void)setProperties:(id)arg1;
 
 @end
 

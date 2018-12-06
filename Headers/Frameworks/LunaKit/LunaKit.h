@@ -10,23 +10,17 @@
 {
 }
 
-+ (BOOL)hasHUDContextMenus;
-+ (BOOL)useSelectedSegmentedControlTextHUDColor;
-+ (BOOL)hasHUDMenus;
-+ (unsigned int)smoothingStyleIsUsed:(char *)arg1 forFont:(id)arg2;
-+ (void)install;
-+ (BOOL)_wantsConsumerLook;
-+ (void)initialize;
 + (BOOL)_isInIBCocoaSimulator;
-+ (id)headerAppearanceLight;
-+ (id)viewerAppearance;
-+ (id)HUDRevealedAppearance;
-+ (id)proToolbarAppearance;
-+ (id)proTokenAppearance;
-+ (id)proInspectorAppearance;
-+ (id)_MOTIONHUDAppearance;
-+ (id)HUDAppearance;
-+ (id)mainAppearance;
++ (void)initialize;
++ (void)install;
++ (id)theme;
++ (Class)windowTheme;
++ (Class)cursorTheme;
++ (long long)defaultFontAppearance;
++ (BOOL)_applicationFontIsMedium;
++ (BOOL)swapSystemFontRegularForMedium;
++ (unsigned int)smoothingStyleIsUsed:(char *)arg1 forFont:(id)arg2;
++ (BOOL)useAquaSecondarySelectedControlColor;
 
 @end
 

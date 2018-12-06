@@ -6,63 +6,41 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSLock, NSMutableArray;
+@class NSData, NSLock, NSMutableArray, NSMutableDictionary;
 
 @interface FFColorSpaceCache : NSObject
 {
     NSMutableArray *_knownColorSpaces;
     NSLock *_cachedColorLock;
+    NSData *_linear709Data;
     struct CGColorSpace *_linear709ColorSpace;
     struct CGColorSpace *_709ColorSpace;
-    struct CGColorSpace *_601_170M_ColorSpace;
-    struct CGColorSpace *_601_EBU_ColorSpace;
-    struct CGColorSpace *_NCLC_1_1_6_ColorSpace;
-    struct CGColorSpace *_NCLC_6_1_1_ColorSpace;
-    struct CGColorSpace *_linear2020ColorSpace;
-    struct CGColorSpace *_2020ColorSpace;
-    struct CGColorSpace *_DCI_P3_ColorSpace;
-    struct CGColorSpace *_P3_D65_ColorSpace;
-    struct CGColorSpace *_NCLC_12_1_6_ColorSpace;
-    struct CGColorSpace *_2020_PQ_ColorSpace;
-    struct CGColorSpace *_2020_HLG_ColorSpace;
-    struct CGColorSpace *_CGColorSpaceGenericGray;
-    struct CGColorSpace *_CGColorSpaceGenericRGB;
-    struct CGColorSpace *_CGColorSpaceGenericRGBLinear;
-    NSArray *_standardEnumeratedSpaces;
-    NSMutableArray *_recentColorSpacesWithEnums;
+    struct CGColorSpace *_gamma20_709ColorSpace;
+    struct CGColorSpace *_canonDSLR_116_NCLC_Space;
+    struct CGColorSpace *_sanyo_611_NCLC_Space;
+    NSMutableDictionary *_oddballCachedColorSpaces;
 }
 
-+ (BOOL)testConversionFromColorSpace:(struct CGColorSpace *)arg1 toColorSpace:(struct CGColorSpace *)arg2;
-+ (struct CGColorSpace *)colorSpaceForNCLC:(int)arg1 transferFunction:(int)arg2 matrix:(int)arg3;
-+ (struct CGColorSpace *)newColorSpaceForOverrideIndex:(int)arg1;
-+ (void)releaseSharedInstance;
 + (id)sharedInstance;
-@property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericRGBLinear; // @synthesize CGColorSpaceGenericRGBLinear=_CGColorSpaceGenericRGBLinear;
-@property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericRGB; // @synthesize CGColorSpaceGenericRGB=_CGColorSpaceGenericRGB;
-@property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericGray; // @synthesize CGColorSpaceGenericGray=_CGColorSpaceGenericGray;
-@property(readonly, nonatomic) struct CGColorSpace *hdr2020_HLG_ColorSpace; // @synthesize hdr2020_HLG_ColorSpace=_2020_HLG_ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *hdr2020_PQ_ColorSpace; // @synthesize hdr2020_PQ_ColorSpace=_2020_PQ_ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *NCLC_12_1_6_ColorSpace; // @synthesize NCLC_12_1_6_ColorSpace=_NCLC_12_1_6_ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *P3_D65_ColorSpace; // @synthesize P3_D65_ColorSpace=_P3_D65_ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *DCI_P3_ColorSpace; // @synthesize DCI_P3_ColorSpace=_DCI_P3_ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *standard2020_ColorSpace; // @synthesize standard2020_ColorSpace=_2020ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *linear2020_ColorSpace; // @synthesize linear2020_ColorSpace=_linear2020ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *NCLC_6_1_1_ColorSpace; // @synthesize NCLC_6_1_1_ColorSpace=_NCLC_6_1_1_ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *NCLC_1_1_6_ColorSpace; // @synthesize NCLC_1_1_6_ColorSpace=_NCLC_1_1_6_ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *standard601_EBU_ColorSpace; // @synthesize standard601_EBU_ColorSpace=_601_EBU_ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *standard601_170M_ColorSpace; // @synthesize standard601_170M_ColorSpace=_601_170M_ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *standard709_ColorSpace; // @synthesize standard709_ColorSpace=_709ColorSpace;
-@property(readonly, nonatomic) struct CGColorSpace *linear709_ColorSpace; // @synthesize linear709_ColorSpace=_linear709ColorSpace;
-- (struct CGColorSpace *)colorSpaceForPrimaries:(id)arg1 transferFunc:(id)arg2 matrix:(id)arg3 gammaNumber:(id)arg4;
-- (_Bool)doesColorspace:(struct CGColorSpace *)arg1 matchStandard:(int)arg2;
-- (int)getMatchingStandardColorSpace:(struct CGColorSpace *)arg1 matchedColorSpace:(struct CGColorSpace **)arg2;
-- (int)getMatchingStandardColorSpace:(struct CGColorSpace *)arg1;
-- (id)_lookupInRecentsWhileHoldingThemSynchronized:(struct CGColorSpace *)arg1;
-- (struct CGColorSpace *)colorSpaceForICCProfileData:(id)arg1;
-- (id)copyICCProfileDataForColorSpace:(struct CGColorSpace *)arg1;
-- (void)dealloc;
++ (void)releaseSharedInstance;
++ (struct CGColorSpace *)newColorSpaceForOverrideIndex:(int)arg1;
++ (BOOL)testConversionFromColorSpace:(struct CGColorSpace *)arg1 toColorSpace:(struct CGColorSpace *)arg2;
 - (id)init;
-- (BOOL)_addCacheRecordForNovelColorSpace:(struct CGColorSpace *)arg1 withEnum:(int)arg2;
+- (void)dealloc;
+- (struct ColorSyncProfile *)colorSyncProfileForColorSpace:(struct CGColorSpace *)arg1;
+- (struct CGColorSpace *)colorSpaceForColorSyncProfile:(struct ColorSyncProfile *)arg1;
+- (id)newICCProfileDataForColorSpace:(struct CGColorSpace *)arg1;
+- (struct CGColorSpace *)colorSpaceForICCProfileData:(id)arg1;
+- (struct CGColorSpace *)createGamma20_709ColorSpace;
+- (struct CGColorSpace *)createGamma_709ColorSpace:(double)arg1;
+- (struct CGColorSpace *)createAndStoreColorProfile:(struct CGColorSpace *)arg1;
+- (struct CGColorSpace *)linear709ColorSpace;
+- (struct CGColorSpace *)gamma22_709ColorSpace;
+- (struct CGColorSpace *)gamma20_709ColorSpace;
+- (struct CGColorSpace *)canonDSLR_116_NCLC_Space;
+- (struct CGColorSpace *)sanyo_611_NCLC_Space;
+- (BOOL)isProdcutionLevelNCLC:(struct CGColorSpace *)arg1;
+- (struct CGColorSpace *)colorSpaceForPrimaries:(id)arg1 transferFunc:(id)arg2 matrix:(id)arg3 gammaNumber:(id)arg4 retIsNonStandard:(int *)arg5;
 
 @end
 

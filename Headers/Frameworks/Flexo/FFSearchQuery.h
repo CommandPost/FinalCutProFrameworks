@@ -15,17 +15,16 @@ __attribute__((visibility("hidden")))
     int searchType;
 }
 
-+ (id)searchQueryWithType:(int)arg1 predicate:(id)arg2;
 + (id)copyClassDescription;
++ (id)searchQueryWithType:(int)arg1 predicate:(id)arg2;
+- (id)description;
+- (id)initWithType:(int)arg1 predicate:(id)arg2;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)predicateFormatString;
+- (void)setPredicateFormatString:(id)arg1;
 @property int searchType; // @synthesize searchType;
 @property(retain, nonatomic) NSPredicate *predicate; // @synthesize predicate;
-- (void)setPredicateFormatString:(id)arg1;
-- (id)predicateFormatString;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithType:(int)arg1 predicate:(id)arg2;
-- (void)dealloc;
-- (id)description;
 
 @end
 

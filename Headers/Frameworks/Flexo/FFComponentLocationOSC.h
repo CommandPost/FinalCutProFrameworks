@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)propertiesKey;
-- (struct CGPoint)_oscPositionInFilmSpaceAtTime:(CDStruct_1b6d18a9)arg1;
-- (struct CGPoint)_oscPositionInViewSpaceAtTime:(CDStruct_1b6d18a9)arg1;
 - (id)_viewToPositionTransformAtTime:(CDStruct_1b6d18a9)arg1;
+- (struct CGPoint)_oscPositionInViewSpaceAtTime:(CDStruct_1b6d18a9)arg1;
+- (struct CGPoint)_oscPositionInFilmSpaceAtTime:(CDStruct_1b6d18a9)arg1;
+- (id)propertiesKey;
+- (id)accessibilityAttributeValue:(id)arg1;
 
 @end
 

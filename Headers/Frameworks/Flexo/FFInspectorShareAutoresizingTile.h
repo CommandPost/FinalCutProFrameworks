@@ -8,6 +8,7 @@
 
 @class NSView;
 
+__attribute__((visibility("hidden")))
 @interface FFInspectorShareAutoresizingTile : LKTile
 {
     NSView *resizableView;
@@ -16,12 +17,12 @@
     id proxy;
 }
 
-- (void)viewFrameChanged:(id)arg1;
-- (void)setMinViewHeight:(float)arg1;
-- (float)minViewHeight;
-- (void)setResizableView:(id)arg1;
-- (id)resizableView;
 - (void)dealloc;
+- (id)resizableView;
+- (void)setResizableView:(id)arg1;
+- (float)minViewHeight;
+- (void)setMinViewHeight:(float)arg1;
+- (void)viewFrameChanged:(id)arg1;
 
 @end
 

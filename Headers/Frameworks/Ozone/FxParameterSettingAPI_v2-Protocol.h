@@ -6,9 +6,7 @@
 
 #import "FxParameterSettingAPI.h"
 
-@class NSString;
-
 @protocol FxParameterSettingAPI_v2 <FxParameterSettingAPI>
-- (BOOL)setStringParameterValue:(NSString *)arg1 toParm:(unsigned int)arg2;
+- (BOOL)setStringParameterValue:(id)arg1 toParm:(unsigned int)arg2;
 @end
 

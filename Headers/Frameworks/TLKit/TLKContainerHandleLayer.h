@@ -8,15 +8,13 @@
 
 @interface TLKContainerHandleLayer : CALayer
 {
-    double _topPadding;
-    CALayer *_containerOuterLayer;
+    CALayer *_selectionLayer;
 }
 
-@property(nonatomic) CALayer *containerOuterLayer; // @synthesize containerOuterLayer=_containerOuterLayer;
-@property(nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
-@property(readonly) struct CGRect topShelfFrame;
-@property(readonly) struct CGSize containerSize;
 - (id)init;
+- (id)selectionLayer;
+- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
+- (void)setDelegate:(id)arg1;
 
 @end
 

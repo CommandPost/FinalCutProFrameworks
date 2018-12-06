@@ -11,15 +11,10 @@
     unsigned int _shouldBlade:1;
 }
 
-- (void)updateSkimming:(id)arg1;
-- (BOOL)isSplitAllModifierKeyPressed;
-- (void)splitAtCurrentLocation:(id)arg1;
-- (BOOL)itemLevelSkimmingEnabled;
-- (void)stopHandling:(id)arg1;
-- (void)startHandling:(id)arg1;
-- (void)flagsChanged:(id)arg1;
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 - (BOOL)respondsToSelector:(SEL)arg1;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (void)splitAtCurrentLocation:(id)arg1;
+- (void)updateSkimming:(id)arg1;
 
 @end
 

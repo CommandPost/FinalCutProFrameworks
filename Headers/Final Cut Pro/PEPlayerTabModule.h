@@ -15,20 +15,20 @@
     LKPaneCapSegmentedControl *_topRightSegmentedControl;
 }
 
-- (id)playerItemModuleWithIdentifier:(id)arg1;
-- (void)_rebuildViewMenu;
-- (id)moduleAccessoryView;
-- (BOOL)validateUserInterfaceItem:(id)arg1;
-- (void)selectPlayerTab:(id)arg1;
-- (void)_selectTabForItemOfClass:(Class)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (BOOL)tabView:(id)arg1 shouldSelectTabViewItem:(id)arg2;
-- (BOOL)tabView:(id)arg1 canInsertTabViewItem:(id)arg2;
-- (void)removeSubmodule:(id)arg1;
-- (void)insertSubmodule:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)setSupermodule:(id)arg1;
-- (void)viewDidLoad;
 - (void)dealloc;
+- (void)viewDidLoad;
+- (void)setSupermodule:(id)arg1;
+- (void)insertSubmodule:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)removeSubmodule:(id)arg1;
+- (BOOL)tabView:(id)arg1 canInsertTabViewItem:(id)arg2;
+- (BOOL)tabView:(id)arg1 shouldSelectTabViewItem:(id)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_selectTabForItemOfClass:(Class)arg1;
+- (void)selectPlayerTab:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (id)moduleAccessoryView;
+- (void)_rebuildViewMenu;
+- (id)playerItemModuleWithIdentifier:(id)arg1;
 
 @end
 

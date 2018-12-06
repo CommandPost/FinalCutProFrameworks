@@ -20,20 +20,20 @@ __attribute__((visibility("hidden")))
     } _state;
 }
 
-- (void)selectedItemEffectsChanged:(id)arg1;
-- (BOOL)_hasOtherCorrectionsSelected;
-- (BOOL)_hasOtherCorrectionsSelectedWithShapes:(id *)arg1;
-- (BOOL)_hasOtherShapesSelected:(id *)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)activeToolChanged:(id)arg1;
-- (void)showOSC:(id)arg1;
-- (void)didBuildUI;
-- (id)controlForChannel:(id)arg1;
-- (void)maskOSCActiveChannelChanged:(id)arg1 old:(id)arg2;
-- (id)representedChannel;
-@property(getter=isActiveOSC) BOOL activeOSC; // @dynamic activeOSC;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+@property(getter=isActiveOSC) BOOL activeOSC; // @dynamic activeOSC;
+- (id)representedChannel;
+- (void)maskOSCActiveChannelChanged:(id)arg1 old:(id)arg2;
+- (id)controlForChannel:(id)arg1;
+- (void)didBuildUI;
+- (void)showOSC:(id)arg1;
+- (void)activeToolChanged:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (BOOL)_hasOtherShapesSelected:(id *)arg1;
+- (BOOL)_hasOtherCorrectionsSelectedWithShapes:(id *)arg1;
+- (BOOL)_hasOtherCorrectionsSelected;
+- (void)selectedItemEffectsChanged:(id)arg1;
 
 @end
 

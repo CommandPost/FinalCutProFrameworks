@@ -17,25 +17,22 @@ __attribute__((visibility("hidden")))
     PDFDocument *_pdfDocument;
     unsigned long long _pageCount;
     CDStruct_bdcb2b0d _md5;
+    int _openStreams;
     NSRecursiveLock *_lock;
     NSString *_MD5Seed;
-    _Bool _unsupportedFileFeature;
 }
 
-+ (id)extensions;
 + (id)utis;
-- (id)MD5Seed;
-- (void)setMD5Seed:(id)arg1;
-- (CDStruct_bdcb2b0d)_md5;
-- (_Bool)unsupportedFileFeature;
-- (id)nativeVideoProps;
-- (void)_setupSources;
-- (unsigned long long)pageCount;
-- (void)_unlockPDFDoc;
-- (void)_lockPDFDoc;
-- (id)pdfDocument;
-- (void)dealloc;
++ (id)extensions;
 - (id)initWithAssetFileID:(id)arg1;
+- (void)dealloc;
+- (id)pdfDocument;
+- (unsigned long long)pageCount;
+- (void)_setupSources;
+- (id)nativeVideoProps;
+- (CDStruct_60067b7e)_md5;
+- (void)setMD5Seed:(id)arg1;
+- (id)MD5Seed;
 
 @end
 

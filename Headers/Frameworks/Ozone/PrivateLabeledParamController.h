@@ -13,10 +13,10 @@
     OZRetimingController *_owner;
 }
 
-- (void)resetOneChannel:(struct OZChannelBase *)arg1;
-- (void)resetChannel:(id)arg1;
-- (void)setRetimingController:(id)arg1;
 - (BOOL)isSelected;
+- (void)setRetimingController:(id)arg1;
+- (void)resetChannel:(id)arg1;
+- (void)resetOneChannel:(struct OZChannelBase *)arg1;
 
 @end
 

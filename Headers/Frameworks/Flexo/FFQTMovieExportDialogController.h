@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
     NSString *_audioFormatString;
 }
 
-- (id)selectedRenderFormat;
-- (void)renderFormatMenuAction:(id)arg1;
-- (void)dealloc;
 - (id)initWithSequence:(id)arg1;
+- (void)dealloc;
+- (void)renderFormatMenuAction:(id)arg1;
+- (id)selectedRenderFormat;
 
 @end
 

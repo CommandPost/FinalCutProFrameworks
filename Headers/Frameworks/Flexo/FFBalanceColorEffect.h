@@ -4,32 +4,36 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFBalanceColorBaseEffect.h>
+#import <Flexo/FFHeliumEffect.h>
 
 #import "FFColorSubEffect.h"
 
-@class FFHeColorEffect, NSString;
+@class FFHeColorEffect, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface FFBalanceColorEffect : FFBalanceColorBaseEffect <FFColorSubEffect>
+@interface FFBalanceColorEffect : FFHeliumEffect <FFColorSubEffect>
 {
     FFHeColorEffect *_colorEffect;
+    NSArray *_lumaBumps;
 }
 
-+ (BOOL)isNoOpForSoleOpEffect:(id)arg1;
-+ (unsigned long long)numberOfAllowedInstances;
-+ (id)effectID;
-+ (id)copyClassDescription;
 + (void)registerEffects;
-- (id)colorEffect;
-- (void)setColorEffect:(id)arg1;
++ (id)effectID;
++ (unsigned long long)numberOfAllowedInstances;
++ (BOOL)isNoOpForSoleOpEffect:(id)arg1;
+- (id)initWithEffectID:(id)arg1;
+- (void)dealloc;
+- (void)createChannelsInFolder:(id)arg1;
+- (id)inputKeys;
 - (BOOL)isNoOp;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (BOOL)writeDefaultChannels;
+- (struct CGColorSpace *)processingColorSpace;
+- (id)processingPixelFormat;
+- (void)channelParameterChanged:(id)arg1;
+- (struct HGNode *)newNodeForContext:(id)arg1;
+- (void)set:(id)arg1;
+- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5;
+- (void)setColorEffect:(id)arg1;
 
 @end
 

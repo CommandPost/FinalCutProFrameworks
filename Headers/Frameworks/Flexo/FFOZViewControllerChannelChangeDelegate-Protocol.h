@@ -6,16 +6,14 @@
 
 #import "NSObject.h"
 
-@class OZViewController;
-
 @protocol FFOZViewControllerChannelChangeDelegate <NSObject>
 
 @optional
-- (void)controller:(OZViewController *)arg1 didResetChannelFolder:(struct OZChannelBase *)arg2;
-- (void)controller:(OZViewController *)arg1 willResetChannelFolder:(struct OZChannelBase *)arg2;
-- (void)controller:(OZViewController *)arg1 didSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
-- (void)controller:(OZViewController *)arg1 willSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
-- (void)controller:(OZViewController *)arg1 didChangeChannel:(struct OZChannelBase *)arg2;
-- (void)controller:(OZViewController *)arg1 willChangeChannel:(struct OZChannelBase *)arg2;
+- (void)controller:(id)arg1 willChangeChannel:(struct OZChannelBase *)arg2;
+- (void)controller:(id)arg1 didChangeChannel:(struct OZChannelBase *)arg2;
+- (void)controller:(id)arg1 willSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
+- (void)controller:(id)arg1 didSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;
+- (void)controller:(id)arg1 willResetChannelFolder:(struct OZChannelBase *)arg2;
+- (void)controller:(id)arg1 didResetChannelFolder:(struct OZChannelBase *)arg2;
 @end
 

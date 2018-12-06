@@ -6,23 +6,15 @@
 
 #import "NSObject.h"
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface FFHGAsyncJob : NSObject
 {
     double _executionTime;
-    NSString *_userLabel;
-    double _enqueueTime;
-    double _jobStartTime;
 }
 
-@property(retain) NSString *userLabel; // @synthesize userLabel=_userLabel;
-- (double)jobWaitedInQueueTime;
-- (_Bool)dequeueJobIfNotStarted;
-- (double)executionTime;
 - (void)setExecutionTime:(double)arg1;
-- (void)dealloc;
+- (double)executionTime;
+- (_Bool)cancel;
 
 @end
 

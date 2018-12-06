@@ -11,15 +11,15 @@
 }
 
 + (void)initialize;
-- (void)_commonInit;
-- (void)viewDidMoveToWindow;
-- (void)excludeType:(const struct PCUUID *)arg1;
-- (void)setPresetType:(const struct PCUUID *)arg1;
-- (void)setSaveItemText:(id)arg1;
-- (void)setSaveObject:(struct OZFactoryBase *)arg1;
-- (void)setViewController:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)setViewController:(id)arg1;
+- (void)setSaveObject:(struct OZFactoryBase *)arg1;
+- (void)setSaveItemText:(id)arg1;
+- (void)setPresetType:(const struct PCUUID *)arg1;
+- (void)excludeType:(const struct PCUUID *)arg1;
+- (void)viewDidMoveToWindow;
+- (void)_commonInit;
 
 @end
 

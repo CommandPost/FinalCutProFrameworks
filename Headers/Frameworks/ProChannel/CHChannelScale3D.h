@@ -10,19 +10,19 @@
 {
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (id)zChannel;
-- (void)setMaxCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
-- (void)getMaxCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
-- (void)setMinCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
-- (void)getMinCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
-- (void)setDefaultCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
-- (void)getDefaultCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
-- (void)setScaleAtTime:(CDStruct_198678f7)arg1 curveX:(double)arg2 curveY:(double)arg3 curveZ:(double)arg4 options:(unsigned int)arg5;
-- (void)getScaleAtTime:(CDStruct_198678f7)arg1 curveX:(double *)arg2 curveY:(double *)arg3 curveZ:(double *)arg4;
-- (void)getScaleAtTime:(CDStruct_198678f7)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelScale3D *)ozChannel;
+- (void)getScaleAtTime:(CDStruct_1b6d18a9)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
+- (void)getScaleAtTime:(CDStruct_1b6d18a9)arg1 curveX:(double *)arg2 curveY:(double *)arg3 curveZ:(double *)arg4;
+- (void)setScaleAtTime:(CDStruct_1b6d18a9)arg1 curveX:(double)arg2 curveY:(double)arg3 curveZ:(double)arg4 options:(unsigned int)arg5;
+- (void)getDefaultCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
+- (void)setDefaultCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
+- (void)getMinCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
+- (void)setMinCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
+- (void)getMaxCurveX:(double *)arg1 curveY:(double *)arg2 curveZ:(double *)arg3;
+- (void)setMaxCurveX:(double)arg1 curveY:(double)arg2 curveZ:(double)arg3;
+- (id)zChannel;
 
 @end
 

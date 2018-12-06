@@ -7,12 +7,12 @@
 #import "OZGLViewer.h"
 
 @interface OZGLViewer (TXTextInteraction)
-- (unsigned long long)validModesForFontPanel:(id)arg1;
-- (void)changeFont:(id)arg1;
-- (void)changeAttributes:(id)arg1;
-- (BOOL)setDropShadowChannels:(id)arg1 time:(CDStruct_198678f7)arg2 style:(const shared_ptr_e0e110e1 *)arg3 text:(struct TXTextLayout *)arg4;
+- (id)getNSFontForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_1b6d18a9)arg2;
+- (id)createNSShadowForStyle:(struct TXTextStyle *)arg1 time:(CDStruct_1b6d18a9)arg2;
 - (id)getSelectedTextAttributes:(struct TXTextLayout *)arg1;
-- (id)newNSShadowForStyle:(const shared_ptr_e0e110e1 *)arg1 time:(CDStruct_198678f7)arg2;
-- (id)getNSFontForStyle:(const shared_ptr_e0e110e1 *)arg1 time:(CDStruct_198678f7)arg2;
+- (BOOL)setDropShadowChannels:(id)arg1 time:(CDStruct_1b6d18a9)arg2 style:(struct TXTextStyle *)arg3 text:(struct TXTextLayout *)arg4;
+- (void)changeAttributes:(id)arg1;
+- (void)changeFont:(id)arg1;
+- (unsigned long long)validModesForFontPanel:(id)arg1;
 @end
 

@@ -6,37 +6,30 @@
 
 #import <Flexo/FFProOSC.h>
 
-@class FFCHObservableFolder, FFOSCWindowView, LKSegmentedControl, NSMutableArray;
+@class FFCHObservableFolder, NSMutableArray, NSProSegmentedControl, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFDistortOSC : FFProOSC
 {
-    LKSegmentedControl *_keyframeButton;
-    LKSegmentedControl *_exitButton;
-    LKSegmentedControl *_resetButton;
-    FFOSCWindowView *_distortOverlayView;
+    NSProSegmentedControl *_keyframeButton;
+    NSProSegmentedControl *_exitButton;
+    NSView *_distortOverlayView;
     FFCHObservableFolder *_channelFolder;
     NSMutableArray *_channelsToCheckForkeyFrames;
-    BOOL _resetButtonHidden;
 }
 
-- (void)ensureIntrinsic;
-- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
-- (void)keyFramePreviousAddNext:(id)arg1;
-- (id)keyFrameButton;
-- (id)channelsToCheckForKeyframes;
-- (void)resetDistort:(id)arg1;
-- (void)exitOSC:(id)arg1;
-- (void)keyDown:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)enableOverlayWindowForNoRangeOverlap;
-- (void)removeOverlayWindowForNoRangeOverlap;
-- (BOOL)supportsTool:(Class)arg1;
-- (void)resizedOSCView;
-- (struct CGSize)minSize;
-- (void)dealloc;
 - (id)initWithDistortEffect:(id)arg1 effectStack:(id)arg2;
+- (void)dealloc;
+- (BOOL)supportsTool:(Class)arg1;
+- (void)removeOverlayWindowForNoRangeOverlap;
+- (void)enableOverlayWindowForNoRangeOverlap;
+- (void)mouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)exitOSC:(id)arg1;
+- (id)channelsToCheckForKeyframes;
+- (id)keyFrameButton;
+- (void)keyFramePreviousAddNext:(id)arg1;
+- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 
 @end
 

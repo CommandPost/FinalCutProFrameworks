@@ -10,31 +10,31 @@
 {
 }
 
-+ (struct OZChannelBool *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (BOOL)getKeyframeBeforeTime:(CDStruct_198678f7)arg1 time:(CDStruct_198678f7 *)arg2 curveBoolValue:(char *)arg3;
-- (BOOL)getKeyframeAfterTime:(CDStruct_198678f7)arg1 time:(CDStruct_198678f7 *)arg2 curveBoolValue:(char *)arg3;
-- (BOOL)getLastKeyframeTime:(CDStruct_198678f7 *)arg1 curveBoolValue:(char *)arg2;
-- (BOOL)getFirstKeyframeTime:(CDStruct_198678f7 *)arg1 curveBoolValue:(char *)arg2;
-- (void)setFineDeltaBoolValue:(BOOL)arg1;
-- (double)fineDeltaBoolValue;
-- (void)setCoarseDeltaBoolValue:(BOOL)arg1;
-- (double)coarseDeltaBoolValue;
-- (void)setMaxUIBoolValue:(BOOL)arg1;
-- (BOOL)maxUIBoolValue;
-- (void)setMinUIBoolValue:(BOOL)arg1;
-- (BOOL)minUIBoolValue;
-- (void)setMaxCurveBoolValue:(BOOL)arg1;
-- (BOOL)maxCurveBoolValue;
-- (void)setMinCurveBoolValue:(BOOL)arg1;
-- (BOOL)minCurveBoolValue;
-- (void)setDefaultCurveBoolValue:(BOOL)arg1;
-- (BOOL)defaultCurveBoolValue;
-- (void)setCurveBoolValue:(BOOL)arg1 atTime:(CDStruct_198678f7)arg2 options:(unsigned int)arg3;
-- (void)getExtremaBetweenStart:(CDStruct_198678f7)arg1 end:(CDStruct_198678f7)arg2 minBoolValue:(char *)arg3 maxBoolValue:(char *)arg4;
-- (BOOL)curveBoolValueAtTime:(CDStruct_198678f7)arg1;
-- (BOOL)boolValueAtTime:(CDStruct_198678f7)arg1;
++ (struct OZChannelBool *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelBool *)ozChannel;
+- (BOOL)boolValueAtTime:(CDStruct_1b6d18a9)arg1;
+- (BOOL)curveBoolValueAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)getExtremaBetweenStart:(CDStruct_1b6d18a9)arg1 end:(CDStruct_1b6d18a9)arg2 minBoolValue:(char *)arg3 maxBoolValue:(char *)arg4;
+- (void)setCurveBoolValue:(BOOL)arg1 atTime:(CDStruct_1b6d18a9)arg2 options:(unsigned int)arg3;
+- (BOOL)defaultCurveBoolValue;
+- (void)setDefaultCurveBoolValue:(BOOL)arg1;
+- (BOOL)minCurveBoolValue;
+- (void)setMinCurveBoolValue:(BOOL)arg1;
+- (BOOL)maxCurveBoolValue;
+- (void)setMaxCurveBoolValue:(BOOL)arg1;
+- (BOOL)minUIBoolValue;
+- (void)setMinUIBoolValue:(BOOL)arg1;
+- (BOOL)maxUIBoolValue;
+- (void)setMaxUIBoolValue:(BOOL)arg1;
+- (double)coarseDeltaBoolValue;
+- (void)setCoarseDeltaBoolValue:(BOOL)arg1;
+- (double)fineDeltaBoolValue;
+- (void)setFineDeltaBoolValue:(BOOL)arg1;
+- (BOOL)getFirstKeyframeTime:(CDStruct_1b6d18a9 *)arg1 curveBoolValue:(char *)arg2;
+- (BOOL)getLastKeyframeTime:(CDStruct_1b6d18a9 *)arg1 curveBoolValue:(char *)arg2;
+- (BOOL)getKeyframeAfterTime:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9 *)arg2 curveBoolValue:(char *)arg3;
+- (BOOL)getKeyframeBeforeTime:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9 *)arg2 curveBoolValue:(char *)arg3;
 
 @end
 

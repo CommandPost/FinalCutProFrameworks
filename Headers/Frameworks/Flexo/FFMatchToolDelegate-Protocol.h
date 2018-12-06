@@ -6,24 +6,20 @@
 
 #import "NSObject.h"
 
-@class FFMatchReference, FFMatchTool, NSArray, NSString;
-
 @protocol FFMatchToolDelegate <NSObject>
-- (BOOL)referenceChanged:(FFMatchTool *)arg1 reference:(FFMatchReference *)arg2;
-- (void)matchToolWasResigned:(FFMatchTool *)arg1;
-- (void)matchToolWasAssigned:(FFMatchTool *)arg1;
-- (void)completeOnSelectionOnMatchTool:(FFMatchTool *)arg1;
-- (void)cancelOnSelectionOnMatchTool:(FFMatchTool *)arg1;
+- (void)matchToolShouldResign:(id)arg1;
+- (id)actionStringForSaveChanges;
+- (id)effectStackToRecordForAnchoredObject:(id)arg1;
+- (id)effectToRecordForAnchoredObject:(id)arg1;
+- (id)channelFolderToRecordForAnchoredObject:(id)arg1;
 
 @optional
-- (CDStruct_1b6d18a9)contextTime;
-- (void)setSelectedItems:(NSArray *)arg1 withContextTime:(CDStruct_1b6d18a9)arg2;
-- (NSString *)okButtonTitle;
-- (NSString *)accessoryTitle;
-- (NSString *)footerText;
-- (NSString *)footerNibName;
-- (NSArray *)copyCompliantObjectsFromSelection:(NSArray *)arg1;
-- (BOOL)allowsReferenceChangeFromOrganizerListView;
-- (BOOL)matchToolShouldCancelOnUndo:(FFMatchTool *)arg1;
+- (void)matchToolWasAssigned:(id)arg1;
+- (void)matchToolWasResigned:(id)arg1;
+- (void)matchTool:(id)arg1 selectedItemsChanged:(id)arg2;
+- (void)matchTool:(id)arg1 contextChanged:(id)arg2;
+- (id)matchTool:(id)arg1 validateAndDispatchEvent:(id)arg2;
+- (id)effectContainerToRecordForAnchoredObject:(id)arg1;
+- (BOOL)shouldRecordAnchoredObject:(id)arg1;
 @end
 

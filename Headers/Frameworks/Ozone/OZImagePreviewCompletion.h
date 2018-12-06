@@ -6,23 +6,18 @@
 
 #import "NSObject.h"
 
-@class NSView, OZImagePreview;
+@class OZImagePreview;
 
 @interface OZImagePreviewCompletion : NSObject
 {
     OZImagePreview *_imagePreview;
     double _pixelAspect;
-    NSView *_destView;
-    shared_ptr_8628efdd _image;
 }
 
-@property(nonatomic) shared_ptr_8628efdd image; // @synthesize image=_image;
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (void)setImagePreview:(id)arg1;
-- (id)imagePreview;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)imagePreview;
+- (void)setImagePreview:(id)arg1;
 
 @end
 

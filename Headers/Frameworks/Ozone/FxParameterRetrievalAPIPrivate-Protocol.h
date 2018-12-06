@@ -5,6 +5,6 @@
 //
 
 @protocol FxParameterRetrievalAPIPrivate
-- (BOOL)getLevelsBlack:(double *)arg1 White:(double *)arg2 Gamma:(double *)arg3 fromParm:(unsigned int)arg4 atTime:(CDUnion_2516e51e)arg5;
+- (BOOL)getLevelsBlack:(double *)arg1 White:(double *)arg2 Gamma:(double *)arg3 fromParm:(unsigned int)arg4 atTime:(double)arg5;
 @end
 

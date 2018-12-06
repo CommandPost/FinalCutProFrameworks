@@ -10,7 +10,7 @@
 
 @interface TXGlyphToolHUDController : OZViewControllerGroup
 {
-    list_87f2377f *_pTNodes;
+    list_3d2807ac *_pTNodes;
     struct TXTextLayout *_text;
     TXZTranslate3DHUDButton *_zTransButton;
     TXXYTranslate3DHUDButton *_xyTransButton;
@@ -24,21 +24,20 @@
     LKPopUpButton *_oscPopUp;
     LKTextField *_instr1Text;
     LKTextField *_instr2Text;
-    LKTextField *_oscPopUpTextField;
     NSView *_view;
 }
 
-- (void)transformOSCFlagsChanged:(id)arg1;
-- (list_87f2377f *)nodeList;
-- (struct TXTextLayout *)getTextLayout;
-- (int)getOSCMode;
-- (int)getAxes;
-- (void)changeOSCMode:(id)arg1;
-- (void)changeAxes:(id)arg1;
-- (void)update;
-- (void)dealloc;
-- (void)updateEnableState;
 - (id)initWithChan:(struct OZChannelBase *)arg1 textLayout:(struct TXTextLayout *)arg2 context:(id)arg3;
+- (void)updateEnableState;
+- (void)dealloc;
+- (void)update;
+- (void)changeAxes:(id)arg1;
+- (void)changeOSCMode:(id)arg1;
+- (int)getAxes;
+- (int)getOSCMode;
+- (struct TXTextLayout *)getTextLayout;
+- (list_3d2807ac *)nodeList;
+- (void)transformOSCFlagsChanged:(id)arg1;
 
 @end
 

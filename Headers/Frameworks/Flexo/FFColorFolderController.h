@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
     OZLabeledParamController *_headingController;
 }
 
-- (void)didTwiddle:(BOOL)arg1;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
-- (void)didBuildUI;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)didBuildUI;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (void)didTwiddle:(BOOL)arg1;
 
 @end
 

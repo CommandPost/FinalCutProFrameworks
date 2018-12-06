@@ -11,17 +11,15 @@
 @interface TXHUDColorController : OZViewController
 {
     OZColorWell *_colorWell;
-    BOOL _isUpdatingColorWell;
 }
 
-- (void)update;
-- (void)updateColorWell;
-- (void)endColorChange:(id)arg1;
-- (void)startColorChange:(id)arg1;
-- (void)setColorValue:(id)arg1;
-- (void)setChannelColor:(struct PCColor *)arg1;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 colorWell:(id)arg3;
+- (void)setChannelColor:(struct PCColor *)arg1;
+- (void)setColorValue:(id)arg1;
+- (void)startColorChange:(id)arg1;
+- (void)endColorChange:(id)arg1;
+- (void)updateColorWell;
+- (void)update;
 
 @end
 

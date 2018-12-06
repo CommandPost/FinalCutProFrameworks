@@ -11,7 +11,6 @@
 }
 
 + (double)fadeDuration;
-- (id)init;
 
 @end
 

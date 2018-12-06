@@ -18,14 +18,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-- (void)setChannelPath:(id)arg1;
-- (id)channelPath;
-@property(readonly, nonatomic) FFAnchoredObject *referencedObject;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithReferencedObject:(id)arg1 andChannelPath:(id)arg2;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)referencedObject;
+- (void)setReferencedObject:(id)arg1;
+- (id)channelPath;
+- (void)setChannelPath:(id)arg1;
 
 @end
 

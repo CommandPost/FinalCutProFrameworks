@@ -4,17 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSLevelIndicatorCell.h"
+#import "NSProLevelIndicatorCell.h"
 
-@class NSColor;
-
-@interface LKLevelIndicatorCell : NSLevelIndicatorCell
+@interface LKLevelIndicatorCell : NSProLevelIndicatorCell
 {
-    NSColor *_backgroundColor;
 }
 
-@property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-- (void)dealloc;
+- (id)_gradientFacetWithPart:(long long)arg1;
+- (id)_backgroundFacet;
+- (id)_normalGradientFacet;
+- (id)_warningGradientFacet;
+- (id)_criticalGradientFacet;
 
 @end
 

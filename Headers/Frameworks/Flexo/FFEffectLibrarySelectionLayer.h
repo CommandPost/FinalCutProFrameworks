@@ -18,10 +18,10 @@ __attribute__((visibility("hidden")))
     BOOL _emphasized;
 }
 
-@property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
-- (void)_updateFrameProperties;
-- (void)layoutSublayers;
 - (id)init;
+- (void)layoutSublayers;
+- (void)_updateFrameProperties;
+@property(nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
 
 @end
 

@@ -16,40 +16,32 @@
     NSString *_predicate;
 }
 
-+ (void)clearAllCustomMetadataWithName:(id)arg1;
-+ (void)clearAllCustomMetadataWithKey:(id)arg1;
-+ (unsigned long long)indexOfViewSetWithName:(id)arg1;
-+ (id)defaultViewSetWithName:(id)arg1;
-+ (id)selectedViewSet;
-+ (void)setSelectedViewSet:(id)arg1;
-+ (id)viewSetNames;
-+ (id)viewSets;
-+ (void)setViewSets:(id)arg1;
-+ (id)viewSetForAllMetadataKeys;
-+ (id)defaultViewSets;
-+ (id)generalMetadataKeys;
-+ (id)externalViewSets;
-+ (id)localizedViewSetFromDict:(id)arg1;
-+ (id)viewSetFromDict:(id)arg1;
-+ (void)releaseSharedInstance;
 + (BOOL)classIsAbstract;
++ (void)releaseSharedInstance;
++ (id)defaultViewSets;
++ (void)setViewSets:(id)arg1;
++ (id)viewSets;
++ (void)setSelectedViewSet:(id)arg1;
++ (id)selectedViewSet;
++ (id)defaultViewSetWithName:(id)arg1;
++ (unsigned long long)indexOfViewSetWithName:(id)arg1;
++ (void)clearAllCustomMetadataWithName:(id)arg1;
+- (id)initWithName:(id)arg1 keys:(id)arg2 options:(id)arg3 predicate:(id)arg4;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasKey:(id)arg1;
+- (void)addKey:(id)arg1;
+- (void)removeKey:(id)arg1;
+- (void)moveKeyFromIndex:(long long)arg1 toIndex:(long long)arg2;
+- (void)resetUserModifiableViewSet;
+- (void)setUserModifiable:(BOOL)arg1;
+- (void)saveViewSet;
+- (void)saveViewSetAs:(id)arg1;
 @property(retain, nonatomic) NSString *predicate; // @synthesize predicate=_predicate;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property(retain, nonatomic) NSArray *keys; // @synthesize keys=_keys;
-- (void)saveViewSetAs:(id)arg1;
-- (void)saveViewSet;
-- (void)setUserModifiable:(BOOL)arg1;
-- (void)resetUserModifiableViewSet;
-- (void)moveKeyFromIndex:(long long)arg1 toIndex:(long long)arg2;
-- (void)removeKey:(id)arg1;
-- (void)addKey:(id)arg1;
-- (BOOL)hasKey:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)description;
-- (void)dealloc;
-- (id)initWithName:(id)arg1 keys:(id)arg2 options:(id)arg3 predicate:(id)arg4;
 
 @end
 

@@ -10,17 +10,14 @@
 {
 }
 
-- (double)getDefaultRoundness;
-- (BOOL)showEditToolOnCompletion;
-- (void)roundShape;
-- (void)createShape:(CDStruct_1b6d18a9)arg1;
-- (void)draw;
-- (void)smoothContour:(vector_8f06c10f *)arg1 y:(vector_8f06c10f *)arg2 amount:(int)arg3;
-- (struct PCUUID)getOSCClassID;
-- (struct PCUUID)getClassID;
-- (id)getTooltip;
-- (id)getName;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (id)getName;
+- (id)getTooltip;
+- (struct PCUUID)getClassID;
+- (void)smoothContour:(vector_419cd555 *)arg1 y:(vector_419cd555 *)arg2 amount:(int)arg3;
+- (void)draw;
+- (void)createShape:(CDStruct_1b6d18a9)arg1;
+- (void)roundShape;
 
 @end
 

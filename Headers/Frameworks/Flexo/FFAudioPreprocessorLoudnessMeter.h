@@ -12,9 +12,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (int)postRender;
-- (void)_setWarningLevelUsingAnalysisResults:(struct LoudnessAnalysisResults)arg1;
-- (void)_setParametersUsingAnalysisResults:(struct LoudnessAnalysisResults)arg1;
-- (float)_calculateRatioFromRange:(float)arg1;
 
 @end
 

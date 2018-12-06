@@ -4,39 +4,29 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSView.h"
+#import "NSProView.h"
 
-#import "HistogramReferrer.h"
-#import "OZHistogramManager.h"
+@class NSPopUpButton, OZHistogramGradientView, OZHistogramGutterIn, OZHistogramGutterOut, OZHistogramView;
 
-@class NSPopUpButton, NSString, OZHistogramGradientView, OZHistogramGutterIn, OZHistogramGutterOut, OZHistogramView;
-
-@interface OZHistogramEditor : NSView <OZHistogramManager, HistogramReferrer>
+@interface OZHistogramEditor : NSProView
 {
+    id _delegate;
     struct OZChannelHistogram *_histogramChannel;
     NSPopUpButton *_popUp;
-    NSView *_masterView;
+    NSProView *_masterView;
     OZHistogramView *_histogramView;
     OZHistogramGradientView *_gradientView;
     OZHistogramGutterIn *_gutterIn;
     OZHistogramGutterOut *_gutterOut;
 }
 
-- (void)removeReference:(struct OZChannelBase *)arg1;
-- (void)setChannelValue:(id)arg1;
-- (void)update;
-- (void)awakeFromNib;
-- (struct OZChannelHistogram *)histogramChannel;
-- (void)setViewController:(id)arg1;
-- (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (void)setDelegate:(id)arg1;
+- (void)setHistogramChannel:(struct OZChannelHistogram *)arg1;
+- (void)awakeFromNib;
+- (void)update;
+- (void)setChannelValue:(id)arg1;
 
 @end
 

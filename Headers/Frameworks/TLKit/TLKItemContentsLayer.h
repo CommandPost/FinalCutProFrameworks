@@ -8,55 +8,41 @@
 
 #import "TLKItemLayerInfo.h"
 
-@class NSArray, NSDictionary;
+@class NSDictionary;
 
 @interface TLKItemContentsLayer : TLKRoundedSideLayer <TLKItemLayerInfo>
 {
     NSDictionary *_userInfoDictionary;
-    NSArray *_segments;
-    NSArray *_times;
-    NSArray *_timePerPixels;
     struct CGRect _visibleBounds;
     struct CGRect _audioLayerFrame;
     struct CGRect _videoLayerFrame;
+    BOOL _splitEdit;
     double _leadingEdgeInset;
     double _trailingEdgeInset;
-    unsigned int _splitEdit:1;
-    unsigned int _audioComponent:1;
 }
 
-@property(retain) NSDictionary *userInfoDictionary; // @synthesize userInfoDictionary=_userInfoDictionary;
-- (void)replaceSublayer:(id)arg1 with:(id)arg2;
-- (void)insertSublayer:(id)arg1 above:(id)arg2;
-- (void)insertSublayer:(id)arg1 below:(id)arg2;
-- (void)addSublayer:(id)arg1;
-- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
-- (void)setDelegate:(id)arg1;
-- (id)timeSegmentTimePerPoints;
-- (id)timeSegmentTimeScalesegmentRanges;
-- (id)timeSegmentTimes;
-- (void)setSegmentRanges:(id)arg1 timePerPoint:(id)arg2 andTimes:(id)arg3;
-@property(readonly) BOOL clipTrimmedClip;
-@property(readonly) BOOL draggedItem;
-- (id)_timelineItem;
-@property(readonly) BOOL timelineZooming;
-@property(readonly) double trailingEdgeInset;
-- (void)setTrailingEdgeInset:(double)arg1;
-@property(readonly) double leadingEdgeInset;
-- (void)setLeadingEdgeInset:(double)arg1;
-@property(readonly) struct CGRect videoLayerFrame;
-- (void)setVideoLayerFrame:(struct CGRect)arg1;
-@property(readonly) struct CGRect audioLayerFrame;
-- (void)setAudioLayerFrame:(struct CGRect)arg1;
-@property(readonly) struct CGRect visibleBounds;
-- (void)setVisibleBounds:(struct CGRect)arg1;
-@property(readonly) BOOL audioComponent;
-- (void)setAudioComponent:(BOOL)arg1;
-@property(readonly) BOOL splitEdit;
-- (void)setSplitEdit:(BOOL)arg1;
-- (void)dealloc;
 - (id)init;
-- (id)timelineView;
+- (void)dealloc;
+- (void)setSplitEdit:(BOOL)arg1;
+@property(readonly) BOOL splitEdit;
+- (void)setVisibleBounds:(struct CGRect)arg1;
+@property(readonly) struct CGRect visibleBounds;
+- (void)setAudioLayerFrame:(struct CGRect)arg1;
+@property(readonly) struct CGRect audioLayerFrame;
+- (void)setVideoLayerFrame:(struct CGRect)arg1;
+@property(readonly) struct CGRect videoLayerFrame;
+- (void)setLeadingEdgeInset:(double)arg1;
+@property(readonly) double leadingEdgeInset;
+- (void)setTrailingEdgeInset:(double)arg1;
+@property(readonly) double trailingEdgeInset;
+- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
+- (void)setDelegate:(id)arg1;
+- (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
+- (void)addSublayer:(id)arg1;
+- (void)insertSublayer:(id)arg1 below:(id)arg2;
+- (void)insertSublayer:(id)arg1 above:(id)arg2;
+- (void)replaceSublayer:(id)arg1 with:(id)arg2;
+@property(retain) NSDictionary *userInfoDictionary; // @synthesize userInfoDictionary=_userInfoDictionary;
 
 @end
 

@@ -6,12 +6,11 @@
 
 #import <Ozone/OZTimingMarkersBase.h>
 
-#import "NSPopoverDelegate.h"
 #import "OZTimingView.h"
 
-@class NSPopover, NSString, NSTextField, NSTrackingArea, OZTimingCoordinator;
+@class LKPopOverWindow, NSTrackingArea, OZTimingCoordinator;
 
-@interface OZTimingMarkers : OZTimingMarkersBase <OZTimingView, NSPopoverDelegate>
+@interface OZTimingMarkers : OZTimingMarkersBase <OZTimingView>
 {
     OZTimingCoordinator *_timingCoordinator;
     unsigned int _frameChangedDelta;
@@ -19,57 +18,49 @@
     struct CGPoint _startingLocation;
     int _moving;
     NSTrackingArea *_trackingArea;
-    NSPopover *_markerInfoPopover;
-    NSTextField *_markerInfoPopoverTextField;
-    const struct OZTimeMarker *_hoveredMarker;
+    LKPopOverWindow *_markerInfoPopover;
+    struct OZTimeMarker *_hoveredMarker;
     BOOL _dragCursorsOn;
     BOOL _drawBackgroundFromSuperclass;
     BOOL _drawMarkers;
     BOOL _addMarker;
 }
 
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)setFrameChangedDelta:(unsigned int)arg1 done:(unsigned int)arg2;
+- (BOOL)isOpaque;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)mouseEntered:(id)arg1;
+- (id)_textImageForMarker:(struct OZTimeMarker *)arg1;
+- (id)_markerTitlePopoverWindow:(struct OZTimeMarker *)arg1;
+- (void)_dismissMarkerTitlePopover;
+- (void)mouseMoved:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseExited:(id)arg1;
+- (id)menuForEvent:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (void)flagsChanged:(id)arg1;
+- (void)notify:(unsigned int)arg1;
+- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)arg1;
+- (BOOL)ignoreModifierKeysWhileDragging;
+- (void)draggedImage:(id)arg1 endedAt:(struct CGPoint)arg2 operation:(unsigned long long)arg3;
+- (void)updateToolTips;
+- (void)resetCursorRects;
+- (void)menuAddInfoDelete:(id)arg1;
+- (void)menuNextPrevious:(id)arg1;
+- (void)setTimingCoordinator:(id)arg1;
+- (void)timeDisplayRangeModified;
+- (const struct PCTimeRange *)getDisplayRange;
+- (CDStruct_1b6d18a9)getSecondsPerPixel;
+- (double)getPixelsPerSecond;
+- (CDStruct_1b6d18a9)getCurrentTime;
+- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
+- (unsigned int)getFrameChangedDone;
 @property(nonatomic) BOOL drawMarkers; // @synthesize drawMarkers=_drawMarkers;
 @property(nonatomic) BOOL drawBackgroundFromSuperclass; // @synthesize drawBackgroundFromSuperclass=_drawBackgroundFromSuperclass;
-- (unsigned int)getFrameChangedDone;
-- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
-- (CDStruct_1b6d18a9)getCurrentTime;
-- (double)getPixelsPerSecond;
-- (CDStruct_1b6d18a9)getSecondsPerPixel;
-- (const struct PCTimeRange *)getDisplayRange;
-- (void)timeDisplayRangeModified;
-- (void)setTimingCoordinator:(id)arg1;
-- (void)menuNextPrevious:(id)arg1;
-- (void)menuAddInfoDelete:(id)arg1;
-- (void)resetCursorRects;
-- (void)updateToolTips;
-- (void)draggedImage:(id)arg1 endedAt:(struct CGPoint)arg2 operation:(unsigned long long)arg3;
-- (BOOL)ignoreModifierKeysWhileDragging;
-- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)setNeedsDisplay:(BOOL)arg1;
-- (void)flagsChanged:(id)arg1;
-- (BOOL)acceptsFirstResponder;
-- (id)menuForEvent:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)_dismissMarkerInfoPopover;
-- (id)_markerTitlePopover:(const struct OZTimeMarker *)arg1;
-- (id)_textImageForMarker:(const struct OZTimeMarker *)arg1;
-- (void)mouseEntered:(id)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (BOOL)isOpaque;
-- (void)setFrameChangedDelta:(unsigned int)arg1 done:(unsigned int)arg2;
-- (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

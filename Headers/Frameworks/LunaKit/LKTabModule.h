@@ -8,11 +8,8 @@
 
 #import "NSTabViewDelegate.h"
 
-@class LKTabView, NSString;
-
 @interface LKTabModule : LKViewModule <NSTabViewDelegate>
 {
-    LKTabView *_tabView;
     LKViewModule *_activeModule;
     unsigned int _bulkRemoval:1;
     unsigned int _unhiding:1;
@@ -21,55 +18,40 @@
     void *_reserved6;
 }
 
-+ (Class)tabViewItemClass;
-+ (Class)tabViewClass;
 + (void)setDraggedModule:(id)arg1;
-@property(retain, nonatomic) LKTabView *tabView; // @synthesize tabView=_tabView;
-- (void)tabView:(id)arg1 didInsertTabViewItem:(id)arg2;
-- (id)tabView:(id)arg1 contextMenuForTabViewItem:(id)arg2;
-- (void)tabView:(id)arg1 didSelectTabViewItem:(id)arg2;
-- (void)tabView:(id)arg1 willSelectTabViewItem:(id)arg2;
-- (BOOL)tabView:(id)arg1 shouldSelectTabViewItem:(id)arg2;
-- (void)takeContentLayoutFromDictionary:(id)arg1;
-- (id)contentLayoutDictionary;
-- (void)moduleDidBecomeVisible:(id)arg1;
-- (void)toggleModuleVisibility:(id)arg1;
-- (BOOL)isSubmoduleVisible:(id)arg1;
-- (id)visibleSubmodule;
-- (id)visibleSubmodules;
-- (id)makeSubmoduleVisible:(id)arg1;
-- (BOOL)unhideSubmodule:(id)arg1;
-- (BOOL)hideSubmodule:(id)arg1;
-- (BOOL)isSubmoduleHidden:(id)arg1;
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
-- (void)endDraggingModule:(id)arg1;
-- (void)startDraggingModule:(id)arg1;
-- (void)moduleDidChangeLabel:(id)arg1;
-- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)removeSubmodule:(id)arg1;
-- (void)removeSubmodules:(id)arg1;
-- (void)insertSubmodule:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)_updateInstalledModuleKeyView:(id)arg1;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (void)updateTabAccessoryView;
-- (void)viewDidLoad;
-- (BOOL)loadView;
-- (void)addRepresentedObject:(id)arg1;
++ (Class)tabViewClass;
++ (Class)tabViewItemClass;
 - (void)dealloc;
-- (void)_removeFromSupermoduleIfNeeded;
-- (void)_postWillDeactivateNotification:(id)arg1;
-- (void)_postDidActivateNotification:(id)arg1;
-- (void)_removeTabViewForModule:(id)arg1;
-- (void)_installTabViewForModule:(id)arg1;
-- (BOOL)_loadLazy;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)addRepresentedObject:(id)arg1;
+- (BOOL)loadView;
+- (void)viewDidLoad;
+- (void)updateTabAccessoryView;
+- (void)insertSubmodule:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)removeSubmodules:(id)arg1;
+- (void)removeSubmodule:(id)arg1;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
+- (void)moduleDidChangeLabel:(id)arg1;
+- (void)startDraggingModule:(id)arg1;
+- (void)endDraggingModule:(id)arg1;
+- (struct CGSize)viewMinSize;
+- (struct CGSize)viewMaxSize;
+- (BOOL)isSubmoduleHidden:(id)arg1;
+- (BOOL)hideSubmodule:(id)arg1;
+- (BOOL)unhideSubmodule:(id)arg1;
+- (id)makeSubmoduleVisible:(id)arg1;
+- (id)visibleSubmodules;
+- (id)visibleSubmodule;
+- (BOOL)isSubmoduleVisible:(id)arg1;
+- (void)toggleModuleVisibility:(id)arg1;
+- (void)moduleDidBecomeVisible:(id)arg1;
+- (id)contentLayoutDictionary;
+- (void)takeContentLayoutFromDictionary:(id)arg1;
+- (BOOL)tabView:(id)arg1 shouldSelectTabViewItem:(id)arg2;
+- (void)tabView:(id)arg1 willSelectTabViewItem:(id)arg2;
+- (void)tabView:(id)arg1 didSelectTabViewItem:(id)arg2;
+- (id)tabView:(id)arg1 contextMenuForTabViewItem:(id)arg2;
+- (void)tabView:(id)arg1 didInsertTabViewItem:(id)arg2;
 
 @end
 

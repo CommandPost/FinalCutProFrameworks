@@ -20,27 +20,29 @@
     NSString *_subText;
     NSMutableDictionary *_subTextAttributes;
     NSImage *_icon;
+    int _element;
+    int _part;
 }
 
-- (void)concludeDragOperation:(id)arg1;
-- (BOOL)performDragOperation:(id)arg1;
-- (BOOL)prepareForDragOperation:(id)arg1;
-- (void)draggingExited:(id)arg1;
-- (unsigned long long)draggingEntered:(id)arg1;
-- (void)setIsDefault:(BOOL)arg1;
-- (id)selectorTarget;
-- (SEL)selector;
-- (void)setIcon:(id)arg1;
-- (void)setSubText:(id)arg1;
-- (void)setMainText:(id)arg1;
-- (void)setDropTarget:(id)arg1;
-- (void)setSelectorTarget:(id)arg1;
-- (void)setSelector:(SEL)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (BOOL)isOpaque;
-- (BOOL)isFlipped;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (BOOL)isFlipped;
+- (BOOL)isOpaque;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)setSelector:(SEL)arg1;
+- (void)setSelectorTarget:(id)arg1;
+- (void)setDropTarget:(id)arg1;
+- (void)setMainText:(id)arg1;
+- (void)setSubText:(id)arg1;
+- (void)setIcon:(id)arg1;
+- (SEL)selector;
+- (id)selectorTarget;
+- (void)setIsDefault:(BOOL)arg1;
+- (unsigned long long)draggingEntered:(id)arg1;
+- (void)draggingExited:(id)arg1;
+- (BOOL)prepareForDragOperation:(id)arg1;
+- (BOOL)performDragOperation:(id)arg1;
+- (void)concludeDragOperation:(id)arg1;
 
 @end
 

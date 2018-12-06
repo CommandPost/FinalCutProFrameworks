@@ -8,12 +8,10 @@
 
 @interface PEChannelLayer : PETextLayerBase
 {
-    BOOL _isMono;
 }
 
-@property BOOL isMono; // @synthesize isMono=_isMono;
-- (void)setLayerID:(int)arg1;
 - (id)init;
+- (void)setLayerID:(int)arg1;
 
 @end
 

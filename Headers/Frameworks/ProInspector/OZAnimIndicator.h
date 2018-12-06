@@ -10,18 +10,18 @@
 {
 }
 
-+ (id)newAnimIndicatorWithFrame:(struct CGRect)arg1 channel:(struct OZChannelBase *)arg2 context:(id)arg3;
-- (id)newCellWithChannel:(struct OZChannelBase *)arg1 context:(id)arg2;
-- (void)mouseExitedRow:(id)arg1;
-- (void)mouseEnteredRow:(id)arg1;
-- (void)updateState:(id)arg1;
-- (void)updateTrackingAreas;
-- (BOOL)isOpaque;
-- (void)sizeToFit;
-- (void)setControlSize:(unsigned long long)arg1;
-- (void)setResetDelegate:(id)arg1;
-- (id)initWithCoder:(id)arg1;
++ (id)animIndicatorWithFrame:(struct CGRect)arg1 channel:(struct OZChannelBase *)arg2 context:(id)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 channel:(struct OZChannelBase *)arg2 context:(id)arg3;
+- (id)initWithCoder:(id)arg1;
+- (void)setResetDelegate:(id)arg1;
+- (void)setControlSize:(unsigned long long)arg1;
+- (void)sizeToFit;
+- (BOOL)isOpaque;
+- (void)updateTrackingAreas;
+- (void)updateState:(id)arg1;
+- (void)mouseEnteredRow:(id)arg1;
+- (void)mouseExitedRow:(id)arg1;
+- (id)createCellWithChannel:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end
 

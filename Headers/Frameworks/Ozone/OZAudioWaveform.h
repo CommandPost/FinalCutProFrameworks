@@ -6,9 +6,7 @@
 
 #import <Ozone/OZMoCurveEditorView.h>
 
-#import "OZHGUserJobClient.h"
-
-@interface OZAudioWaveform : OZMoCurveEditorView <OZHGUserJobClient>
+@interface OZAudioWaveform : OZMoCurveEditorView
 {
     char *_waveBuffer;
     unsigned int _numChannels;
@@ -29,44 +27,43 @@
     double _sampleRate;
 }
 
-- (BOOL)performDragOperation:(id)arg1;
-- (BOOL)prepareForDragOperation:(id)arg1;
-- (void)draggingExited:(id)arg1;
-- (unsigned long long)draggingEntered:(id)arg1;
-- (void)timeDisplayRangeModifiedKeepWaveform;
-- (void)timeDisplayRangeModified;
-- (void)resetSelection;
-- (void)resetAudioMixer;
-- (_Bool)initAudioMixer;
-- (void)rebuildWaveform;
-- (void)postRenderInstruction:(CDStruct_1b6d18a9)arg1 lastSample:(CDStruct_1b6d18a9)arg2;
--     // Error parsing type: v24@0:8^{OZHGUserJob=^^?IiiIdQ^v*^{HGRenderQueue}^?{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}@^v}16, name: userJobCanceled:
--     // Error parsing type: v24@0:8^{OZHGUserJob=^^?IiiIdQ^v*^{HGRenderQueue}^?{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}@^v}16, name: userJobFinished:
-- (void)processStereoBuffer:(char *)arg1 samples:(unsigned int)arg2;
-- (void)processMonoBuffer:(char *)arg1 samples:(unsigned int)arg2;
-- (void)processBuffer:(char *)arg1 samples:(unsigned int)arg2;
-- (void)drawCurrentTime:(struct CGRect)arg1;
-- (void)drawCurveEditor:(struct CGRect)arg1;
-- (void)displayRangeModified:(CDStruct_e83c9415)arg1;
-- (void)drawEndpoints;
-- (void)drawWaveform:(struct CGRect)arg1;
-- (void)drawChannel:(struct CGRect)arg1 withChannel:(int)arg2;
-- (void)drawDividerLine:(struct CGRect)arg1;
-- (void)postRedisplay2:(id)arg1;
-- (void)postRedisplay;
-- (CDStruct_1b6d18a9)getCurveEditorCurrentTime;
-- (CDStruct_e83c9415)getCurveEditorDisplayRange;
-- (CDStruct_e83c9415)getAudioEditorDisplayRange;
-- (struct PCTimer *)timer;
-- (void)setIndex:(unsigned int)arg1;
-- (struct OZAudioTrack *)getCurrTrack;
-- (unsigned int)getCurrTrackID;
-- (struct OZAudioMasterTrack *)getMasterTrack;
-- (unsigned int)getMasterTrackID;
-- (BOOL)drawingAborted;
-- (void)setShowInCurveEditor:(BOOL)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)setShowInCurveEditor:(BOOL)arg1;
+- (BOOL)drawingAborted;
+- (unsigned int)getMasterTrackID;
+- (struct OZAudioMasterTrack *)getMasterTrack;
+- (unsigned int)getCurrTrackID;
+- (struct OZAudioTrack *)getCurrTrack;
+- (void)setIndex:(unsigned int)arg1;
+- (struct PCTimer *)timer;
+- (CDStruct_e83c9415)getAudioEditorDisplayRange;
+- (CDStruct_e83c9415)getCurveEditorDisplayRange;
+- (CDStruct_1b6d18a9)getCurveEditorCurrentTime;
+- (void)postRedisplay;
+- (void)postRedisplay2:(id)arg1;
+- (void)drawDividerLine:(struct CGRect)arg1;
+- (void)drawChannel:(struct CGRect)arg1 withChannel:(int)arg2;
+- (void)drawWaveform:(struct CGRect)arg1;
+- (void)drawEndpoints;
+- (void)displayRangeModified:(CDStruct_e83c9415)arg1;
+- (void)drawGrid;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)drawCurrentTime:(struct CGRect)arg1;
+- (void)processBuffer:(char *)arg1 samples:(unsigned int)arg2;
+- (void)processMonoBuffer:(char *)arg1 samples:(unsigned int)arg2;
+- (void)processStereoBuffer:(char *)arg1 samples:(unsigned int)arg2;
+- (void)postRenderInstruction:(CDStruct_1b6d18a9)arg1 lastSample:(CDStruct_1b6d18a9)arg2;
+- (void)rebuildWaveform;
+- (_Bool)initAudioMixer;
+- (void)resetAudioMixer;
+- (void)resetSelection;
+- (void)timeDisplayRangeModified;
+- (void)timeDisplayRangeModifiedKeepWaveform;
+- (unsigned long long)draggingEntered:(id)arg1;
+- (void)draggingExited:(id)arg1;
+- (BOOL)prepareForDragOperation:(id)arg1;
+- (BOOL)performDragOperation:(id)arg1;
 
 @end
 

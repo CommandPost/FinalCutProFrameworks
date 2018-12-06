@@ -6,16 +6,10 @@
 
 #import "FxBaseEffect.h"
 
-@class FxImage;
-
 @protocol FxFilter <FxBaseEffect>
-- (BOOL)renderOutput:(FxImage *)arg1 withInput:(FxImage *)arg2 withInfo:(CDStruct_6b9ed609)arg3;
+- (BOOL)getOutputWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 withInput:(CDStruct_4a07eeda)arg3 withInfo:(CDStruct_8b442eb9)arg4;
+- (BOOL)frameSetup:(CDStruct_8b442eb9)arg1 inputInfo:(CDStruct_4a07eeda)arg2 hardware:(char *)arg3 software:(char *)arg4;
 - (BOOL)frameCleanup;
-- (BOOL)frameSetup:(CDStruct_6b9ed609)arg1 inputInfo:(CDStruct_4a07eeda)arg2 hardware:(char *)arg3 software:(char *)arg4;
-- (BOOL)getOutputWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 withInput:(CDStruct_4a07eeda)arg3 withInfo:(CDStruct_6b9ed609)arg4;
-
-@optional
-- (void)schedule:(unsigned long long)arg1 frames:(CDUnion_2516e51e *)arg2 forRenderAtTime:(CDUnion_2516e51e)arg3;
-- (unsigned long long)numberOfFramesToScheduleAtRenderTime:(CDUnion_2516e51e)arg1;
+- (BOOL)renderOutput:(id)arg1 withInput:(id)arg2 withInfo:(CDStruct_8b442eb9)arg3;
 @end
 

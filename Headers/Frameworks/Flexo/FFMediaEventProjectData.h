@@ -8,74 +8,60 @@
 
 #import "NSCoding.h"
 
-@class FFAnchoredSequence, FFMediaEventProject, NSMapTable, NSMutableSet, NSSet;
+@class FFMediaEventFolder, FFMediaEventProject, NSMapTable, NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaEventProjectData : FFBaseDSObject <NSCoding>
 {
-    NSMutableSet *_ownedClips;
-    NSMutableSet *_ownedMedia;
-    FFAnchoredSequence *_sequence;
-    NSMapTable *_mediaIdentifierToAssetMap;
+    NSMutableSet *_mediaSet;
+    NSMutableSet *_assetSet;
+    FFMediaEventFolder *_rootFolder;
+    NSMapTable *_identifierToAssetMap;
     NSMapTable *_fileNameToAssetMap;
-    NSMapTable *_md5StringToAssetMap;
-    NSMutableSet *_undoneOwnedMedia;
-    NSMutableSet *_ownedClipsToProcess;
-    NSMutableSet *_ownedClipsNotToDisplay;
+    NSMutableSet *_undoneAssetSet;
+    NSMutableSet *_mediaSetToProcess;
+    NSMutableSet *_mediaSetNotToDisplay;
     int _toProcessManageFileType;
     int _undoneAssetsState;
     BOOL _setupCatalogWillSaveObserver;
     BOOL _allowDuplicateClips;
-    BOOL _observeTasksPending;
 }
 
-+ (id)keyPathsForValuesAffectingDisplayOwnedClips;
-+ (id)copyClassDescription;
 + (BOOL)classIsAbstract;
-@property(retain, nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
-@property(nonatomic) BOOL allowDuplicateClips; // @synthesize allowDuplicateClips=_allowDuplicateClips;
-@property(readonly, nonatomic) NSSet *ownedMedia; // @synthesize ownedMedia=_ownedMedia;
-@property(readonly, nonatomic) NSSet *ownedClips; // @synthesize ownedClips=_ownedClips;
-- (id)addClipFromPasteboardCreatingReference:(id)arg1 displayName:(id)arg2 manageFileType:(int)arg3 processNow:(BOOL)arg4 validateFiles:(BOOL)arg5;
-- (id)addClipsWithRangesFromAssetRefs:(id)arg1 foundExistingFiles:(id)arg2 withURLsInfo:(id)arg3 manageFileType:(int)arg4 processNow:(BOOL)arg5 warnClipsAlreadyExist:(BOOL)arg6 isUserInitiatedImport:(BOOL)arg7 isImportingFromImovie:(BOOL)arg8 keywordSets:(id)arg9 metadata:(id)arg10 validateFiles:(BOOL)arg11;
-- (id)addClipsWithRangesFromURLs:(id)arg1 withURLsInfo:(id)arg2 manageFileType:(int)arg3 processNow:(BOOL)arg4 warnClipsAlreadyExist:(BOOL)arg5 isUserInitiatedImport:(BOOL)arg6 isImportingFromImovie:(BOOL)arg7 keywordSets:(id)arg8 metadata:(id)arg9 validateFiles:(BOOL)arg10;
-- (id)addClipsFromURLs:(id)arg1 withURLsInfo:(id)arg2 manageFileType:(int)arg3 processNow:(BOOL)arg4 warnClipsAlreadyExist:(BOOL)arg5 isUserInitiatedImport:(BOOL)arg6 isImportingFromImovie:(BOOL)arg7 keywordSets:(id)arg8 metadata:(id)arg9 validateFiles:(BOOL)arg10;
-- (void)cleanupInProject:(id)arg1;
-- (id)eventSimpleClipForClip:(id)arg1;
-- (id)md5StringToAssetMap;
-- (id)fileNameToAssetMap;
-- (id)mediaIdentifierToAssetMap;
-- (id)newAnchoredSequenceFromPasteboard:(id)arg1 displayName:(id)arg2 mediaByReferenceOnly:(BOOL)arg3 manageFileType:(int)arg4 validateFiles:(BOOL)arg5;
-- (id)newAnchoredSequenceFromAssetRef:(id)arg1 withURLInfo:(id)arg2 manageFileType:(int)arg3 keywords:(id)arg4 validateFiles:(BOOL)arg5;
-- (id)newAnchoredSequenceFromURL:(id)arg1 withURLInfo:(id)arg2 manageFileType:(int)arg3 keywords:(id)arg4 validateFiles:(BOOL)arg5 foundExistingFile:(char *)arg6;
-- (id)findMediaByMatchingIdentifierOrMD5String:(id)arg1;
-- (id)findAssetByMD5String:(id)arg1;
-- (id)resolveMediaIdentifier:(id)arg1;
-- (id)displayOwnedClips;
-- (void)removeOwnedMedia:(id)arg1;
-- (void)removeOwnedMediaObject:(id)arg1;
-- (void)addOwnedMedia:(id)arg1;
-- (void)addOwnedMediaObject:(id)arg1;
-- (void)removeOwnedClips:(id)arg1;
-- (void)removeOwnedClipsObject:(id)arg1;
-- (BOOL)addOwnedClips:(id)arg1;
-- (BOOL)addOwnedClipsObject:(id)arg1;
-@property(readonly, nonatomic) FFMediaEventProject *project;
-- (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)delayedInvalidateMedia:(id)arg1;
-- (void)_updateFileNameToAssetMap:(id)arg1 forRemovedAsset:(id)arg2;
-- (void)_updateFileNameToAssetMap:(id)arg1 forAddedAsset:(id)arg2;
-- (void)_setUndoneAssetsState:(int)arg1;
-- (void)_redidUndoneAsset:(id)arg1;
-- (void)_cleanupAndLockInProject:(id)arg1;
-- (void)_processAtSave:(id)arg1;
-- (void)_processClips:(id)arg1 isImportingFromImovie:(BOOL)arg2 existingLibraryClips:(id)arg3;
-- (void)_observeTasksPending:(BOOL)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)dealloc;
++ (id)copyClassDescription;
++ (id)keyPathsForValuesAffectingDisplayMediaSet;
 - (id)initWithProject:(id)arg1;
+- (void)dealloc;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_processClips:(id)arg1 isImportingFromImovie:(BOOL)arg2;
+- (void)_processAtSave:(id)arg1;
+- (void)_cleanupAndLockInDirectory:(id)arg1;
+- (void)_redidUndoneAsset:(id)arg1;
+- (void)_setUndoneAssetsState:(int)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)description;
+@property(readonly, nonatomic) FFMediaEventProject *project;
+- (BOOL)addMediaSetObject:(id)arg1;
+- (BOOL)addMediaSet:(id)arg1;
+- (void)removeMediaSetObject:(id)arg1;
+- (void)removeMediaSet:(id)arg1;
+- (void)addAssetSetObject:(id)arg1;
+- (void)addAssetSet:(id)arg1;
+- (void)removeAssetSetObject:(id)arg1;
+- (void)removeAssetSet:(id)arg1;
+- (id)displayMediaSet;
+- (id)resolveAsset:(id)arg1;
+- (id)newAnchoredSequenceFromURL:(id)arg1 manageFileType:(int)arg2 keywords:(id)arg3 validateFiles:(BOOL)arg4;
+- (id)identifierToAssetMap;
+- (id)fileNameToAssetMap;
+- (id)eventSimpleClipForClip:(id)arg1;
+- (void)cleanupInDirectory:(id)arg1;
+- (id)addClipsFromURLs:(id)arg1 manageFileType:(int)arg2 processNow:(BOOL)arg3 warnClipsAlreadyExist:(BOOL)arg4 isImportingFromImovie:(BOOL)arg5 keywordSets:(id)arg6 validateFiles:(BOOL)arg7;
+@property(nonatomic) BOOL allowDuplicateClips; // @synthesize allowDuplicateClips=_allowDuplicateClips;
+@property(readonly, nonatomic) FFMediaEventFolder *rootFolder; // @synthesize rootFolder=_rootFolder;
+@property(readonly, nonatomic) NSSet *assetSet; // @synthesize assetSet=_assetSet;
+@property(readonly, nonatomic) NSSet *mediaSet; // @synthesize mediaSet=_mediaSet;
 
 @end
 

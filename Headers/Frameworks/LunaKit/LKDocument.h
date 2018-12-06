@@ -19,19 +19,19 @@
 }
 
 + (Class)documentModuleClass;
-- (id)documentModule;
-- (id)documentView;
-- (void)shouldCloseWindowController:(id)arg1 delegate:(id)arg2 shouldCloseSelector:(SEL)arg3 contextInfo:(void *)arg4;
-- (void)showWindows;
-- (void)close;
-- (void)removeWindowController:(id)arg1;
-- (void)addWindowControllersFromDocument:(id)arg1;
-- (id)mainWindowController;
-- (id)windowForSheet;
-- (void)makeWindowControllers;
-- (id)windowNibName;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)windowNibName;
+- (void)makeWindowControllers;
+- (id)windowForSheet;
+- (id)mainWindowController;
+- (void)addWindowControllersFromDocument:(id)arg1;
+- (void)removeWindowController:(id)arg1;
+- (void)close;
+- (void)showWindows;
+- (void)shouldCloseWindowController:(id)arg1 delegate:(id)arg2 shouldCloseSelector:(SEL)arg3 contextInfo:(void *)arg4;
+- (id)documentView;
+- (id)documentModule;
 
 @end
 

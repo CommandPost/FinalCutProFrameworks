@@ -7,22 +7,10 @@
 #import "NSDictionary.h"
 
 @interface NSDictionary (FlexoAdditions)
-- (CDStruct_e83c9415)figTimeRangeForKey:(id)arg1;
-- (CDStruct_1b6d18a9)figTimeForKey:(id)arg1;
-- (id)objectForIndex:(int)arg1;
-- (id)objectOrNullForKey:(id)arg1;
-- (id)objectForKey:(id)arg1 defaultValue:(id)arg2;
-- (struct _NSRange)rangeForKey:(id)arg1;
-- (struct CGRect)rectForKey:(id)arg1 defaultValue:(struct CGRect)arg2;
-- (struct CGRect)rectForKey:(id)arg1;
-- (double)doubleForKey:(id)arg1 defaultValue:(double)arg2;
-- (double)doubleForKey:(id)arg1;
-- (long long)integerForKey:(id)arg1;
-- (float)floatForKey:(id)arg1 defaultValue:(float)arg2;
-- (float)floatForKey:(id)arg1;
-- (int)intForKey:(id)arg1 defaultValue:(int)arg2;
-- (int)intForKey:(id)arg1;
-- (BOOL)boolForKey:(id)arg1 defaultValue:(BOOL)arg2;
 - (BOOL)boolForKey:(id)arg1;
+- (long long)integerForKey:(id)arg1;
+- (double)doubleForKey:(id)arg1;
+- (CDStruct_1b6d18a9)figTimeForKey:(id)arg1;
+- (CDStruct_e83c9415)figTimeRangeForKey:(id)arg1;
 @end
 

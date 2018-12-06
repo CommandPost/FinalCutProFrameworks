@@ -4,125 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSTextField.h"
+#import "NSProSegmentedScrubber.h"
 
-@class LKScrubbingArrowsView, LKScrubbingArrowsWindow, NSMutableArray, NSString, NSTimer, NSTrackingArea;
-
-@interface LKSegmentedScrubber : NSTextField
+@interface LKSegmentedScrubber : NSProSegmentedScrubber
 {
-    long long _formatterType;
-    NSString *_stringValue;
-    double _normalSensitivity;
-    double _coarseSensitivity;
-    double _fineSensitivity;
-    NSTrackingArea *_mainTrackingArea;
-    NSTrackingArea *_leftTrackingArea;
-    NSTrackingArea *_rightTrackingArea;
-    NSMutableArray *_segmentsTrackingArea;
-    LKScrubbingArrowsView *_scrubbingArrowView;
-    LKScrubbingArrowsWindow *_overlayWindow;
-    BOOL _isOverlayUISetup;
-    NSTimer *_overlayWindowDismissTimer;
 }
 
-+ (double)overlayWindowInset;
 + (void)initialize;
-+ (unsigned long long)defaultFocusRingType;
-- (long long)style;
-- (void)setStyle:(long long)arg1;
-- (long long)formatterType;
-- (void)setFormatterType:(long long)arg1;
-- (id)initialValue;
-- (void)setInitialValue:(id)arg1;
-- (id)placeholderValue;
-- (void)setPlaceholderValue:(id)arg1;
-- (BOOL)isEditable;
-- (BOOL)editable;
-- (void)setEditable:(BOOL)arg1;
-- (double)fineSensitivity;
-- (void)setFineSensitivity:(double)arg1;
-- (double)coarseSensitivity;
-- (void)setCoarseSensitivity:(double)arg1;
-- (double)normalSensitivity;
-- (void)setNormalSensitivity:(double)arg1;
-- (id)customRolloverBackgroundColor;
-- (id)rolloverBackgroundColor;
-- (void)setCustomRolloverBackgroundColor:(id)arg1;
-- (id)customNonScrubbingTextColor;
-- (id)nonScrubbingTextColor;
-- (void)setCustomNonScrubbingTextColor:(id)arg1;
-- (id)customTextColor;
-- (id)textColor;
-- (void)setCustomTextColor:(id)arg1;
-- (BOOL)drawsBackground;
-- (void)setDrawsBackground:(BOOL)arg1;
-- (id)customBackgroundColor;
-- (id)backgroundColor;
-- (void)setCustomBackgroundColor:(id)arg1;
-- (BOOL)isDisplayStyle;
-- (BOOL)scalesTextToFit;
-- (void)setScalesTextToFit:(BOOL)arg1;
-- (double)dragTolerance;
-- (void)setDragTolerance:(double)arg1;
-- (BOOL)sendsActionOnEndEditing;
-- (void)setSendsActionOnEndEditing:(BOOL)arg1;
-- (long long)segmentedScrubberStyle;
-- (void)setSegmentedScrubberStyle:(long long)arg1;
-- (BOOL)isEditing;
-- (void)setControlSize:(unsigned long long)arg1;
-- (void)_dismissOverlayWindowIfNecesary:(id)arg1;
-- (void)_dismissOverlayView;
-- (void)_setupAndUpdateOverlayView;
-- (void)_displayArrowsScrubbingUp:(BOOL)arg1;
-- (void)_displayArrowsForScrubbing:(BOOL)arg1;
-- (struct CGRect)_frameForSegmentAtIndex:(long long)arg1;
-- (void)_displayScrubbingArrowsForSegmentIndex:(long long)arg1;
-- (void)_displayCaretForSegmentIndex:(long long)arg1;
-- (BOOL)resignFirstResponder;
-- (BOOL)becomeFirstResponder;
-- (BOOL)acceptsFirstResponder;
-- (BOOL)isFirstResponder;
-- (void)mouseDown:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (void)scrollWheel:(id)arg1;
-- (void)keyDown:(id)arg1;
-- (void)flagsChanged:(id)arg1;
-- (void)updateCell:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseEntered:(id)arg1;
-- (void)invalidateLayout;
-- (void)setFrameSize:(struct CGSize)arg1;
-- (void)viewDidMoveToWindow;
-- (void)viewWillMoveToWindow:(id)arg1;
-- (void)resetCursorRects;
-- (void)_updateRolloverTrackingAreas;
-- (void)_removeTrackingRects;
-- (BOOL)needsPanelToBecomeKey;
-- (BOOL)canBecomeKeyView;
-- (BOOL)acceptsFirstMouse:(id)arg1;
-- (BOOL)mouseDownCanMoveWindow;
-- (BOOL)sendAction:(SEL)arg1 to:(id)arg2;
-- (void)cancel:(id)arg1;
-- (BOOL)abortEditing;
-- (void)updateCellInside:(id)arg1;
-- (BOOL)isFlipped;
-- (void)setTintIndex:(long long)arg1;
-- (long long)tintIndex;
-- (BOOL)autorepeat;
-- (void)setAutorepeat:(BOOL)arg1;
-- (BOOL)hasMouseOverArrow;
-- (BOOL)hasMouseOverDecrementArrow;
-- (BOOL)hasMouseOverIncrementArrow;
-- (BOOL)hasMouse;
-- (struct CGSize)intrinsicContentSize;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)finalize;
-- (void)dealloc;
-- (void)prepareForInterfaceBuilder;
-- (id)squircleBezierPathInRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
-- (void)setObjectValue:(id)arg1;
-@property(copy) id scrubberValue;
 
 @end
 

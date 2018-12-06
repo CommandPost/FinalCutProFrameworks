@@ -23,26 +23,24 @@
     OZViewControllerGroup *_pEditorGroup;
     struct OZChannelRef *_selectedSampleRef;
     BOOL _middleSelected;
-    int _numSkipChannels;
 }
 
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
-- (void)update;
-- (void)willResetChannels;
-- (void)notify:(unsigned int)arg1;
-- (BOOL)getMiddleSelected;
-- (void)updateSelectedSampleAlphaFrom:(id)arg1;
-- (void)didChangeSelectedSampleAlpha;
-- (void)aboutToChangeSelectedSampleAlpha;
-- (void)updateSelectedSampleRGBFrom:(id)arg1;
-- (void)didChangeSelectedSampleRGB;
-- (void)aboutToChangeSelectedSampleRGB;
-- (struct OZChannelGradientSample *)getSelectedSample;
-- (void)setSelectedSample:(struct OZChannelGradientSample *)arg1 middleSelected:(BOOL)arg2 doubleClick:(BOOL)arg3;
-- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
-- (void)initHUD:(struct OZChannelGradient *)arg1 context:(id)arg2;
-- (void)initNormal:(struct OZChannelGradient *)arg1 context:(id)arg2;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)initNormal:(struct OZChannelGradient *)arg1 context:(id)arg2;
+- (void)initHUD:(struct OZChannelGradient *)arg1 context:(id)arg2;
+- (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
+- (void)setSelectedSample:(struct OZChannelGradientSample *)arg1 middleSelected:(BOOL)arg2 doubleClick:(BOOL)arg3;
+- (struct OZChannelGradientSample *)getSelectedSample;
+- (void)aboutToChangeSelectedSampleRGB;
+- (void)didChangeSelectedSampleRGB;
+- (void)updateSelectedSampleRGBFrom:(id)arg1;
+- (void)aboutToChangeSelectedSampleAlpha;
+- (void)didChangeSelectedSampleAlpha;
+- (void)updateSelectedSampleAlphaFrom:(id)arg1;
+- (BOOL)getMiddleSelected;
+- (void)notify:(unsigned int)arg1;
+- (void)update;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 
 @end
 

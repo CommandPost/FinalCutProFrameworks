@@ -12,27 +12,27 @@
 {
     LKSegmentedScrubber *_pScale;
     BOOL _relativeValues;
-    map_3710aa94 *_pRoots;
+    map_fb141d32 *_pRoots;
 }
 
-- (struct OZDocument *)document;
-- (void)setTimeScaleValue:(id)arg1;
-- (void)disable;
-- (void)enable;
-- (void)notify:(unsigned int)arg1;
-- (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
-- (void)update;
-- (void)endSegmentedScrubberAction:(id)arg1;
-- (void)startSegmentedScrubberAction:(id)arg1;
-- (id)getMaxValue;
-- (id)getMinValue;
-- (double)getMaxValueFromChannel:(struct OZChannelBase *)arg1;
-- (double)getMinValueFromChannel:(struct OZChannelBase *)arg1;
-- (BOOL)areAllScalesEqual;
-- (id)lastKeyView;
-- (id)firstKeyView;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (id)firstKeyView;
+- (id)lastKeyView;
+- (BOOL)areAllScalesEqual;
+- (double)getMinValueFromChannel:(struct OZChannelBase *)arg1;
+- (double)getMaxValueFromChannel:(struct OZChannelBase *)arg1;
+- (id)getMinValue;
+- (id)getMaxValue;
+- (void)startSegmentedScrubberAction:(id)arg1;
+- (void)endSegmentedScrubberAction:(id)arg1;
+- (void)update;
+- (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)enable;
+- (void)disable;
+- (void)setTimeScaleValue:(id)arg1;
+- (struct OZDocument *)document;
 
 @end
 

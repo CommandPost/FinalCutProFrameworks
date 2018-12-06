@@ -11,36 +11,34 @@
     struct OZDocument *_doc;
     double _startX;
     double _startY;
-    struct PCMutex _mutex;
     _Bool _hit;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (struct OZDocument *)document;
-- (double)startY;
-- (double)startX;
-- (_Bool)hit;
-- (void)reset:(id)arg1;
-- (BOOL)isOneShotTool;
-- (double)getDeltaY:(id)arg1;
-- (double)getDeltaX:(id)arg1;
-- (_Bool)performMouseDragAction:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)doubleClick:(struct OZSceneNode *)arg1;
-- (BOOL)displayDefaultOnScreenControls;
-- (BOOL)handlesMousingInOnScreenControls;
-- (void)iconDoubleClick;
-- (void)endWithDocument:(struct OZDocument *)arg1;
-- (void)beginWithDocument:(struct OZDocument *)arg1;
-- (float)getRefreshInterval;
-- (id)getDefaultCursor;
-- (id)getTooltip;
-- (id)getName;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (id)getName;
+- (id)getTooltip;
+- (id)getBundle;
+- (id)getDefaultCursor;
+- (float)getRefreshInterval;
+- (void)beginWithDocument:(struct OZDocument *)arg1;
+- (void)endWithDocument:(struct OZDocument *)arg1;
+- (void)iconDoubleClick;
+- (BOOL)handlesMousingInOnScreenControls;
+- (BOOL)displayDefaultOnScreenControls;
+- (void)doubleClick:(struct OZSceneNode *)arg1;
+- (void)mouseMoved:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (_Bool)performMouseDragAction:(id)arg1;
+- (double)getDeltaX:(id)arg1;
+- (double)getDeltaY:(id)arg1;
+- (BOOL)isOneShotTool;
+- (void)reset:(id)arg1;
+- (_Bool)hit;
+- (double)startX;
+- (double)startY;
+- (struct OZDocument *)document;
 
 @end
 

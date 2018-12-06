@@ -15,11 +15,10 @@ __attribute__((visibility("hidden")))
     int _pass;
 }
 
-@property(readonly, nonatomic) FFAnchoredObject *modelLockingObject; // @synthesize modelLockingObject=_object;
-@property(readonly, nonatomic) int pass; // @synthesize pass=_pass;
-- (id)objectForMatch;
+- (id)initWithRequestObject:(id)arg1 andPass:(int)arg2;
 - (void)dealloc;
-- (id)initWithObject:(id)arg1 andPass:(int)arg2;
+@property int pass; // @synthesize pass=_pass;
+@property(retain) FFAnchoredObject *object; // @synthesize object=_object;
 
 @end
 

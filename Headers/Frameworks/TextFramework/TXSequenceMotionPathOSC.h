@@ -10,11 +10,11 @@
 {
 }
 
-- (void)draw;
-- (struct TXTextLayout *)getTextLayout;
-- (struct OZChannelPosition3D *)getOffsetChannel:(struct TXTextStyle *)arg1;
-- (struct TXSequenceBehavior *)getSequenceBehavior;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (struct TXSequenceBehavior *)getSequenceBehavior;
+- (struct OZChannelPosition3D *)getOffsetChannel:(struct TXTextStyle *)arg1;
+- (struct TXTextLayout *)getTextLayout;
+- (void)draw;
 
 @end
 

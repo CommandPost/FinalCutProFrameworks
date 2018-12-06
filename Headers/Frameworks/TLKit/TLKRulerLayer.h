@@ -8,26 +8,14 @@
 
 #import "TLKPartInfo.h"
 
-@class NSString;
-
 @interface TLKRulerLayer : CALayer <TLKPartInfo>
 {
-    int _editingMode;
 }
 
-@property(nonatomic) int editingMode; // @synthesize editingMode=_editingMode;
-- (long long)themeState;
-- (void)setThemeState:(long long)arg1;
-- (id)partIdentifier;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)actionForKey:(id)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)actionForKey:(id)arg1;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)partIdentifier;
 
 @end
 

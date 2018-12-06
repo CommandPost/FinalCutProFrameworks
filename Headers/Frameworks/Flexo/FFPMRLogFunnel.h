@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSMutableDictionary, NSObject<OS_dispatch_queue>, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFPMRLogFunnel : NSObject
@@ -14,16 +14,14 @@ __attribute__((visibility("hidden")))
     NSString *_instrumentName;
     void *_instrument;
     int _queuedLogs;
-    NSObject<OS_dispatch_queue> *_loggingQueue;
+    struct dispatch_queue_s *_loggingQueue;
     int _discardedCount;
     int _highWaterMark;
-    NSMutableDictionary *_summaryKeys;
 }
 
-- (void)updateShutdownSummaryKey:(id)arg1 adjustment:(double)arg2;
-- (void)funnelLog:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)initWithInstrName:(id)arg1;
+- (void)dealloc;
+- (void)funnelLog:(CDUnknownBlockType)arg1;
 
 @end
 

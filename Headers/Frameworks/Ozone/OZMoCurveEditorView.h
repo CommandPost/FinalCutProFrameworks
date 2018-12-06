@@ -15,31 +15,31 @@
     OZTimingCoordinator *_timingCoordinator;
 }
 
-- (void)frameAll:(BOOL)arg1;
-- (void)setOrigin:(double)arg1 y:(double)arg2;
-- (void)drawMarkers:(struct CGRect)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (struct CGPoint)snapCursorTo:(struct CGPoint)arg1;
-- (void)renewGState;
-- (id)getMoCurveEditorCtrl;
-- (BOOL)openTimingMoveWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 timeValue:(double *)arg3 timeIsDelta:(char *)arg4;
-- (void)scrollWheel:(id)arg1;
-- (double)_scrollWheelMultiplier;
-- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
-- (CDStruct_e83c9415)getDisplayRange;
-- (CDStruct_e83c9415)getTotalRange;
-- (CDStruct_1b6d18a9)getCurveEditorCurrentTime;
-- (CDStruct_e83c9415)getCurveEditorDisplayRange;
-- (CDStruct_e83c9415)getAudioEditorDisplayRange;
-- (void)timeDisplayRangeModified;
-- (void)setTimingCoordinator:(id)arg1;
-- (BOOL)performDragOperation:(id)arg1;
-- (BOOL)prepareForDragOperation:(id)arg1;
-- (void)draggingExited:(id)arg1;
-- (unsigned long long)draggingEntered:(id)arg1;
-- (void)keyDown:(id)arg1;
-- (void)mouseDownEdit:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)mouseDownEdit:(id)arg1;
+- (void)keyDown:(id)arg1;
+- (unsigned long long)draggingEntered:(id)arg1;
+- (void)draggingExited:(id)arg1;
+- (BOOL)prepareForDragOperation:(id)arg1;
+- (BOOL)performDragOperation:(id)arg1;
+- (void)setTimingCoordinator:(id)arg1;
+- (void)timeDisplayRangeModified;
+- (CDStruct_e83c9415)getAudioEditorDisplayRange;
+- (CDStruct_e83c9415)getCurveEditorDisplayRange;
+- (CDStruct_1b6d18a9)getCurveEditorCurrentTime;
+- (CDStruct_e83c9415)getTotalRange;
+- (CDStruct_e83c9415)getDisplayRange;
+- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
+- (double)_scrollWheelMultiplier;
+- (void)scrollWheel:(id)arg1;
+- (BOOL)openTimingMoveWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 timeValue:(double *)arg3 timeIsDelta:(char *)arg4;
+- (id)getMoCurveEditorCtrl;
+- (void)renewGState;
+- (struct CGPoint)snapCursorTo:(struct CGPoint)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)drawMarkers:(struct CGRect)arg1;
+- (void)setOrigin:(double)arg1 y:(double)arg2;
+- (void)frameAll:(BOOL)arg1;
 
 @end
 

@@ -13,12 +13,12 @@
     NSMutableParagraphStyle *_paragraphStyle;
 }
 
-- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
-- (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
-- (id)stringForObjectValue:(id)arg1;
-- (void)setLineBreakMode:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (void)setLineBreakMode:(unsigned long long)arg1;
+- (id)stringForObjectValue:(id)arg1;
+- (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
+- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
 
 @end
 

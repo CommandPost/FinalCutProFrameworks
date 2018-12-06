@@ -7,30 +7,16 @@
 #import "NSString.h"
 
 @interface NSString (Utilities)
-- (id)rangesOfString:(id)arg1;
-- (id)rangesOfStringsSurroundedBy:(id)arg1;
-- (struct _NSRange)rangeOfStringSurroundedBy:(id)arg1;
-- (struct _NSRange)rangeOfStringSurroundedBy:(id)arg1 range:(struct _NSRange)arg2;
-- (struct _NSRange)range;
-- (long long)caseInsensitiveLocalizedNumericCompare:(id)arg1;
-- (long long)compareLiteral:(id)arg1;
-- (id)stringWithAttributes:(id)arg1;
-- (id)displayablePathString;
-- (id)stringByReplacingOccurancesOfString:(id)arg1 withString:(id)arg2;
-- (id)stringByDeletingPathExtensionInExtensions:(id)arg1;
-- (id)stringByResolvingSymlinksAndAliasesInPath;
-- (id)stringByReplacingRedundantWhiteSpaceWithSingleSpace;
-- (id)stringByChangingWhiteSpaceToSpace;
-- (id)stringByRemovingRedundantWhiteSpace;
-- (id)stringByRemovingSingleCharacterWords;
-- (id)stringByRemovingSuffix:(id)arg1;
-- (id)stringByRemovingPrefix:(id)arg1;
-- (id)stringByRemovingPathPrefix:(id)arg1;
-- (id)stringByPrefixingPathComponent:(id)arg1;
-- (id)stringByRemovingTrailingOccurrencesOfCharactersInSet:(id)arg1;
-- (BOOL)isCaseInsensitiveEqualToString:(id)arg1;
-- (long long)numericalCaseInsensitiveCompare:(id)arg1;
-- (id)stringByIncrementingTrailingCountWithDelimiter:(id)arg1;
-- (unsigned int)getTrailingCountWithDelimiter:(id)arg1 range:(struct _NSRange *)arg2;
++ (id)stringWithBytes:(const void *)arg1 length:(unsigned int)arg2 encoding:(unsigned long long)arg3;
++ (id)universallyUniqueString;
++ (unsigned int)universallyUniqueStringLength;
++ (id)universallyUniqueStringForFileNames;
++ (id)pseudoUniversallyUniqueAlphaNumericString;
++ (id)stringFromOSType:(unsigned int)arg1;
+- (long long)userFriendlyCompare:(id)arg1;
+- (long long)_longestPathCompare:(id)arg1;
+- (id)volumeName;
+- (id)uniqueDuplicateNameWithSet:(id)arg1 suffix:(id)arg2;
+- (id)uniqueNameWithSet:(id)arg1;
 @end
 

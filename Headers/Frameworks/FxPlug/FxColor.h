@@ -14,29 +14,29 @@
     void *_pad[3];
 }
 
-+ (id)colorWithString:(id)arg1;
-+ (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3;
-+ (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
-+ (id)colorWithCIColor:(id)arg1;
 + (id)colorWithCGColor:(struct CGColor *)arg1;
-- (id)description;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)ciColor;
-- (struct CGColor *)_cgColor;
-- (void)convertToRGBA:(double *)arg1;
-- (struct CGColorSpace *)colorSpace;
-- (id)stringRepresentation;
-- (double)blue;
-- (double)green;
-- (double)red;
-- (double)alpha;
-- (const double *)components;
-- (unsigned long long)numberOfComponents;
-- (void)dealloc;
-- (id)initWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
-- (id)initWithCGColor:(struct CGColor *)arg1;
++ (id)colorWithCIColor:(id)arg1;
++ (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
++ (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3;
++ (id)colorWithString:(id)arg1;
 - (id)initWithString:(id)arg1;
+- (id)initWithCGColor:(struct CGColor *)arg1;
+- (id)initWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
+- (void)dealloc;
+- (unsigned long long)numberOfComponents;
+- (const double *)components;
+- (double)alpha;
+- (double)red;
+- (double)green;
+- (double)blue;
+- (id)stringRepresentation;
+- (struct CGColorSpace *)colorSpace;
+- (void)convertToRGBA:(double *)arg1;
+- (struct CGColor *)_cgColor;
+- (id)ciColor;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)description;
 
 @end
 

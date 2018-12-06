@@ -4,35 +4,31 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
-
-@protocol FFSearchableText <NSObject>
-- (void)closeUndoGroup;
-- (void)openUndoGroup:(vector_9e9b204a *)arg1;
-- (void)addTXTextInputObjects:(vector_9e9b204a *)arg1 fromResults:(vector_1392cc16 *)arg2;
-- (BOOL)hasAtLeastOneInstanceOf:(const struct PCString *)arg1 withFlags:(unsigned int)arg2;
-- (void)insertText:(const struct PCString *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2 at:(unsigned int)arg3 ID:(unsigned int)arg4;
-- (void)deleteTextAtTime:(const CDStruct_1b6d18a9 *)arg1 at:(unsigned int)arg2 length:(unsigned int)arg3 ID:(unsigned int)arg4;
-- (CDStruct_1b6d18a9)getTimeForID:(unsigned int)arg1;
-- (vector_1392cc16)getTextIDs;
-- (unsigned int)getResultID;
-- (unsigned int)getParentID;
-- (unsigned int)getID;
-- (void)clearSearchResults;
-- (void)getSearchResults:(vector_1392cc16 *)arg1 forString:(const struct PCString *)arg2 withFlags:(unsigned int)arg3;
-- (void)resetSelection:(BOOL)arg1;
-- (void)resetSelectionRangeForResult:(struct FFTextSearchResult)arg1;
-- (void)setSelectionRangeForResult:(struct FFTextSearchResult)arg1;
-- (void)setSelectionRangeFrom:(unsigned int)arg1 to:(unsigned int)arg2;
-- (CDStruct_1b6d18a9)getTimeOffsetForResult:(id)arg1;
-- (CDStruct_1b6d18a9)getTimeOffset:(id)arg1;
-- (unsigned int)getLength;
-- (unsigned int)getSelectionLength;
-- (unsigned int)getRightSelectionOffset;
-- (unsigned int)getLeftSelectionOffset;
+@protocol FFSearchableText
 - (unsigned int)getCursorPosition;
-
-@optional
-- (void)updateDisplayName;
+- (unsigned int)getLeftSelectionOffset;
+- (unsigned int)getRightSelectionOffset;
+- (unsigned int)getSelectionLength;
+- (unsigned int)getLength;
+- (CDStruct_1b6d18a9)getTimeOffset:(id)arg1;
+- (CDStruct_1b6d18a9)getTimeOffsetForResult:(id)arg1;
+- (void)wLock;
+- (void)wUnlock;
+- (void)setSelectionRangeFrom:(unsigned int)arg1 to:(unsigned int)arg2;
+- (void)setSelectionRangeForResult:(struct FFTextSearchResult)arg1;
+- (void)resetSelection:(BOOL)arg1;
+- (void)getSearchResults:(vector_d1504541 *)arg1 forString:(const struct PCString *)arg2 withFlags:(unsigned int)arg3;
+- (void)clearSearchResults;
+- (unsigned int)getID;
+- (unsigned int)getParentID;
+- (unsigned int)getResultID;
+- (vector_d1504541)getTextIDs;
+- (CDStruct_1b6d18a9)getTimeForID:(unsigned int)arg1;
+- (void)deleteTextAtTime:(const CDStruct_1b6d18a9 *)arg1 at:(unsigned int)arg2 length:(unsigned int)arg3 ID:(unsigned int)arg4;
+- (void)insertText:(const struct PCString *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2 at:(unsigned int)arg3 ID:(unsigned int)arg4;
+- (BOOL)hasAtLeastOneInstanceOf:(const struct PCString *)arg1 withFlags:(unsigned int)arg2;
+- (void)addTXTextInputObjects:(vector_1e3759f0 *)arg1 fromResults:(vector_d1504541 *)arg2;
+- (void)openUndoGroup:(vector_1e3759f0 *)arg1;
+- (void)closeUndoGroup;
 @end
 

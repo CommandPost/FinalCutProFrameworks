@@ -6,36 +6,35 @@
 
 #import "LKTile.h"
 
-@class FFOrganizerFilterHUDTileModule, LKButton, LKImageView, NSView;
+@class FFOrganizerFilterHUDTileModule, LKButton, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilterHUDTile : LKTile
 {
     LKButton *_enabledCheckBox;
     LKButton *_removeTileButton;
-    LKImageView *_tileTypeGlyph;
+    LKButton *_tileTypeGlyph;
     NSView *_customView;
     FFOrganizerFilterHUDTileModule *_subModule;
     id <FFOrganizerFilterHUDTileDelegate> _delegate;
 }
 
-@property(nonatomic) id <FFOrganizerFilterHUDTileDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)subModule;
-- (void)setCustomViewFromNib:(id)arg1 filterDict:(id)arg2;
-- (id)library;
-- (void)tileModuleUpdated:(id)arg1;
-- (id)filterDict;
-- (id)metadataKey;
-- (void)updateWithSelectedRoleUIDs:(id)arg1;
-- (void)setKeywords:(id)arg1 selectedKeywords:(id)arg2;
-- (BOOL)active;
-- (void)setActive:(BOOL)arg1;
-- (BOOL)closeButtonHidden;
-- (void)setCloseButtonHidden:(BOOL)arg1;
-- (void)removeTileButtonAction:(id)arg1;
-- (void)enableCheckBoxAction:(id)arg1;
-- (void)dealloc;
 - (void)awakeFromNib;
+- (void)dealloc;
+- (void)enableCheckBoxAction:(id)arg1;
+- (void)removeTileButtonAction:(id)arg1;
+- (void)setCloseButtonHidden:(BOOL)arg1;
+- (BOOL)closeButtonHidden;
+- (void)setActive:(BOOL)arg1;
+- (BOOL)active;
+- (void)setKeywords:(id)arg1 selectedKeywords:(id)arg2;
+- (void)requestKeywordUpdate;
+- (id)metadataKey;
+- (id)filterDict;
+- (void)tileModuleUpdated:(id)arg1;
+- (void)setCustomViewFromNib:(id)arg1 filterDict:(id)arg2;
+- (id)subModule;
+@property(retain, nonatomic) id <FFOrganizerFilterHUDTileDelegate> delegate; // @synthesize delegate=_delegate;
 
 @end
 

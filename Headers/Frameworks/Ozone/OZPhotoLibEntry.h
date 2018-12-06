@@ -6,30 +6,22 @@
 
 #import <Ozone/OZFileSystemLibEntry.h>
 
-@class MLMediaObject, NSString;
+@class NSString;
 
 @interface OZPhotoLibEntry : OZFileSystemLibEntry
 {
     NSString *_thumbnailPath;
-    MLMediaObject *_mediaObject;
 }
 
-+ (BOOL)supportsSecureCoding;
-+ (id)libraryEntryFromMediaGroup:(id)arg1;
-+ (id)mediaSourceFromMediaLibrary:(id)arg1;
-+ (id)mediaLibrary;
-+ (BOOL)validateTree:(id)arg1;
 + (id)buildTree:(id)arg1;
-@property(retain) MLMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
-- (BOOL)shouldBeArchived;
-- (id)getThumbnailPath;
-- (id)getAbsolutePath:(BOOL)arg1 rootFlags:(unsigned int)arg2;
-- (id)getSmallPreviewIconForEntry:(BOOL)arg1;
-- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
-- (id)copyWithZone:(struct _NSZone *)arg1;
++ (BOOL)validateTree:(id)arg1;
 - (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
+- (id)getAbsolutePath:(BOOL)arg1 rootFlags:(unsigned int)arg2;
+- (void)setThumbnailPath:(id)arg1;
+- (id)getThumbnailPath;
+- (BOOL)shouldBeArchived;
 
 @end
 

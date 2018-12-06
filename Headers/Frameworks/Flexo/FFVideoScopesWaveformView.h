@@ -6,44 +6,40 @@
 
 #import <Flexo/FFVideoScopesView.h>
 
-#import "FFDestVideoScopesGLDelegate.h"
+#import "FFPlayerVideoScopesModuleViewDelegate.h"
+
+@class LKMenu;
 
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesWaveformView : FFVideoScopesView <FFDestVideoScopesGLDelegate>
+@interface FFVideoScopesWaveformView : FFVideoScopesView <FFPlayerVideoScopesModuleViewDelegate>
 {
-    long long _displayMode;
+    LKMenu *_contextualMenu;
+    long long _viewMode;
     long long _compositeVideoUnits;
-    int _colorSpaceType;
+    CDStruct_3de7261d _state;
     void *_FFVideoScopesWaveformViewPrivate;
 }
 
-- (id)_initVideoScopesWaveformView;
-- (struct FFVideoScopesWaveformViewPrivate *)_Private;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)scrollWheel:(id)arg1;
-- (void)rightMouseDown:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)setShowGuides:(BOOL)arg1;
-- (void)setZoomFactor:(float)arg1;
-- (void)setFrameSize:(struct CGSize)arg1;
-- (void)setHidden:(BOOL)arg1;
-- (void)awakeFromNib;
-- (void)buildLayers;
-- (BOOL)videoScopesWaveformYScaleWantsPQNits;
-- (BOOL)videoScopesWaveformYScaleWantsPercentages;
-@property int colorSpaceType; // @dynamic colorSpaceType;
-- (void)_resyncMarkerVisibility;
-- (BOOL)_isMarkerVisible:(double *)arg1;
-@property long long compositeVideoUnits; // @dynamic compositeVideoUnits;
-@property long long displayMode; // @dynamic displayMode;
-- (void)_setColorSpaceType:(int)arg1;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
+@property BOOL showGuides; // @dynamic showGuides;
+@property long long viewMode; // @dynamic viewMode;
+@property long long compositeVideoUnits; // @dynamic compositeVideoUnits;
+- (void)buildLayers;
+- (void)teardownLayers;
+- (void)awakeFromNib;
+- (void)removeFromSuperview;
+- (void)setZoomFactor:(float)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)scrollWheel:(id)arg1;
+- (void)drawScopeViewWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (id)menuForVideoScopeOptions;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (struct FFVideoScopesWaveformViewPrivate *)_Private;
+- (id)_initVideoScopesWaveformView;
 
 @end
 

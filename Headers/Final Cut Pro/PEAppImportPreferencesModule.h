@@ -4,20 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "LKPreferencesModule.h"
+#import "NSProPreferencesModule.h"
 
-#import "NSOpenSavePanelDelegate.h"
+@class LKButton;
 
-@class FFRoleGroupOverridePopupController, LKButton, LKPopUpButton, NSMatrix, NSString;
-
-@interface PEAppImportPreferencesModule : LKPreferencesModule <NSOpenSavePanelDelegate>
+@interface PEAppImportPreferencesModule : NSProPreferencesModule
 {
-    NSMatrix *_importLocationRadioButtonMatrix;
+    LKButton *_copyFilesCheckBox;
     LKButton *_addFolderKeywordsCheckBox;
-    LKButton *_addTagKeywordsCheckBox;
     LKButton *_optimizeMediaCheckBox;
     LKButton *_createProxyMediaCheckBox;
-    LKButton *_createStillCacheCheckBox;
     LKButton *_autoColorBalance;
     LKButton *_autoStabilization;
     LKButton *_autoFaceDetection;
@@ -26,28 +22,13 @@
     LKButton *_autoEmptyTracksDetection;
     LKButton *_autoRelatedTracksDetection;
     LKButton *_autoCleanupAudio;
-    LKPopUpButton *_assignRoleGroupPopup;
-    LKButton *_useTrackNamesFromMetadata;
-    FFRoleGroupOverridePopupController *_roleGroupOverridePopupController;
 }
 
-- (void)_rolesInLibraryDidChange:(id)arg1;
-- (void)willBeDisplayed;
-- (void)_updateRoleGroupOverridePopup;
-- (void)roleGroupSelected:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (BOOL)findPeopleEnabled;
-- (id)titleForIdentifier:(id)arg1;
-- (void)dealloc;
 - (void)awakeFromNib;
-- (BOOL)isResizable;
-- (id)imageForPreferenceNamed:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (id)titleForIdentifier:(id)arg1;
+- (BOOL)stabilizeOrFindPeopleEnabled;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end
 

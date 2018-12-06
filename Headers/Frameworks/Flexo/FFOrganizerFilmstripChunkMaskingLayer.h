@@ -12,16 +12,14 @@ __attribute__((visibility("hidden")))
     int _leftEdgeType;
     int _rightEdgeType;
     BOOL _isStill;
-    double _cornerRadius;
 }
 
-+ (id)makeNewLayerAsMaskLayerOf:(id)arg1 leftinset:(double)arg2 rightinset:(double)arg3;
-@property double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property BOOL isStill; // @synthesize isStill=_isStill;
-- (void)drawInContext:(struct CGContext *)arg1;
-@property int leftEdgeType;
-@property int rightEdgeType;
++ (id)makeNewLayerAsMaskLayerOf:(id)arg1;
 - (id)init;
+@property int rightEdgeType;
+@property int leftEdgeType;
+- (void)drawInContext:(struct CGContext *)arg1;
+@property BOOL isStill; // @synthesize isStill=_isStill;
 
 @end
 

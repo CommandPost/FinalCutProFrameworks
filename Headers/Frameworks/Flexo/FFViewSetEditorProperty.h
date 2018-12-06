@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     FFMetadataDefinition *_metadataDefinition;
 }
 
+- (id)stateAsNum;
+- (id)initWithMetadataDefinition:(id)arg1;
+- (void)dealloc;
 @property(retain) FFMetadataDefinition *metadataDefinition; // @synthesize metadataDefinition=_metadataDefinition;
 @property BOOL state; // @synthesize state=_state;
-- (void)dealloc;
-- (id)initWithMetadataDefinition:(id)arg1;
-- (id)stateAsNum;
 
 @end
 

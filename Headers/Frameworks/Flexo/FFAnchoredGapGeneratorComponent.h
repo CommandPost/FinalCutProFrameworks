@@ -6,22 +6,21 @@
 
 #import <Flexo/FFAnchoredGeneratorComponent.h>
 
+__attribute__((visibility("hidden")))
 @interface FFAnchoredGapGeneratorComponent : FFAnchoredGeneratorComponent
 {
 }
 
-+ (id)newGap:(CDStruct_1b6d18a9)arg1 ofSampleDuration:(CDStruct_1b6d18a9)arg2;
 + (id)copyClassDescription;
-- (id)onScreenControls;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (BOOL)supportsRoles;
-- (BOOL)supportsAudio;
-- (BOOL)hasAudio;
-- (BOOL)hasVideo;
-- (int)anchoredObjectUIType;
-- (BOOL)contributesToCompoundClip;
++ (id)newGap:(CDStruct_1b6d18a9)arg1 ofSampleDuration:(CDStruct_1b6d18a9)arg2;
 - (BOOL)isGap;
+- (BOOL)hasVideo;
+- (BOOL)hasAudio;
+- (id)inspectorTabClassNames;
+- (id)inspectorTabIdentifiers;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)onScreenControls;
 
 @end
 

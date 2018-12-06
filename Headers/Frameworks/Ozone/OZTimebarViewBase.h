@@ -4,13 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSView.h"
+#import "NSProView.h"
 
 #import "OZObjCObserver.h"
 
-@class NSDate, NSImage, OZCacheDisplayManager, OZViewRectCache;
+@class OZCacheDisplayManager, OZViewRectCache;
 
-@interface OZTimebarViewBase : NSView <OZObjCObserver>
+@interface OZTimebarViewBase : NSProView <OZObjCObserver>
 {
     struct PCTimeRange *_startingRange;
     CDStruct_1b6d18a9 *_cachedCurrentTime;
@@ -20,7 +20,7 @@
     struct CGPoint _startingLocation;
     struct CGPoint _currentLocation;
     int _moving;
-    vector_f7e3fd5f *_snaps;
+    vector_3e79211d *_snaps;
     id _snapsDelegate;
     OZViewRectCache *_viewRectCache;
     BOOL _useViewRectCache;
@@ -32,72 +32,68 @@
     struct OZDocument *_document;
     OZCacheDisplayManager *_pCacheDisplayManager;
     BOOL _livesInCanvas;
-    NSImage *_playheadImage;
-    NSImage *_inPointImage;
-    NSImage *_outPointImage;
-    NSDate *_lastMouseDragTime;
 }
 
-@property(nonatomic) BOOL livesInCanvas; // @synthesize livesInCanvas=_livesInCanvas;
-- (void)postFrameChanged:(BOOL)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)updateRectInPlayhead;
-- (void)addPlayRangeToUndo:(const struct PCString *)arg1;
-- (void)setPlayRange:(const struct PCTimeRange *)arg1;
-- (struct PCTimeRange)getPlayRange;
-- (const CDStruct_1b6d18a9 *)getDraggingTime;
-- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
-- (CDStruct_1b6d18a9)getCurrentTime;
-- (BOOL)scrubbingAudio;
-- (BOOL)scrubbing;
-- (void)findSnaps;
-- (BOOL)drawPlayHead;
-- (const struct PCTimeRange *)getTotalRange;
-- (const struct PCTimeRange *)getActiveRange;
-- (const struct PCTimeRange *)getDisplayRange;
-- (double)getPixelsPerSecond;
-- (CDStruct_1b6d18a9)getSecondsPerPixel;
-- (struct CGPoint)backingAlignedPoint:(struct CGPoint)arg1;
-- (struct CGRect)controlBounds;
-- (struct CGRect)playRangeEndRect;
-- (struct CGRect)playRangeBeginRect;
-- (struct CGRect)playRangeRect;
-- (struct CGRect)playHeadRect;
-- (BOOL)movePlayHeadWithPlayRange;
-- (void)flagsChanged:(id)arg1;
-- (BOOL)acceptsFirstResponder;
-- (BOOL)acceptsFirstMouse:(id)arg1;
-- (void)mouseAction:(struct CGPoint)arg1 snap:(BOOL)arg2 done:(BOOL)arg3;
-- (void)_checkSnapDelta:(CDStruct_1b6d18a9)arg1 value:(CDStruct_1b6d18a9)arg2 whichSide:(int)arg3 nearest:(CDStruct_1b6d18a9 *)arg4 nearestDelta:(CDStruct_1b6d18a9 *)arg5;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)_updateRovingTip:(CDStruct_1b6d18a9)arg1;
-- (void)pause;
-- (void)play;
-- (BOOL)isPlaying;
-- (id)outPointImage;
-- (id)inPointImage;
-- (id)playheadImage;
-- (void)drawPlayhead:(struct CGRect)arg1;
-- (void)drawForeground:(struct CGRect)arg1;
-- (void)drawPlayRangeHandles;
-- (void)drawMidground:(struct CGRect)arg1;
-- (void)drawBackground:(struct CGRect)arg1;
-- (void)drawCachedRange:(struct CGRect)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (BOOL)isOpaque;
-- (void)updateCacheDisplay;
-- (void)setSnapsDelegate:(id)arg1;
-- (void)setFrameChangedDelta:(unsigned int)arg1 done:(unsigned int)arg2;
-- (id)getCacheDisplayManager;
-- (void)setCacheDisplayManager:(id)arg1;
-- (void)viewWillMoveToWindow:(id)arg1;
-- (void)viewDidMoveToWindow;
-- (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)_canvasModule;
 - (struct OZDocument *)currentOZDocument;
+- (id)_canvasModule;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)setCacheDisplayManager:(id)arg1;
+- (id)getCacheDisplayManager;
+- (void)setFrameChangedDelta:(unsigned int)arg1 done:(unsigned int)arg2;
+- (void)setSnapsDelegate:(id)arg1;
+- (void)updateCacheDisplay;
+- (BOOL)isOpaque;
+- (void)drawRect:(struct CGRect)arg1;
+- (BOOL)hasTimebarShadow;
+- (void)drawCachedRange:(struct CGRect)arg1;
+- (void)drawBackground:(struct CGRect)arg1;
+- (void)drawMidground:(struct CGRect)arg1;
+- (void)drawPlayRangeHandles;
+- (void)drawForeground:(struct CGRect)arg1;
+- (void)drawPlayhead:(struct CGRect)arg1;
+- (id)playheadFacet:(BOOL)arg1;
+- (id)playlineFacet:(BOOL)arg1;
+- (id)inPointFacet:(BOOL)arg1;
+- (id)outPointFacet:(BOOL)arg1;
+- (id)inactiveRangeFacet;
+- (BOOL)isPlaying;
+- (void)play;
+- (void)pause;
+- (void)_updateRovingTip:(CDStruct_1b6d18a9)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)_checkSnapDelta:(CDStruct_1b6d18a9)arg1 value:(CDStruct_1b6d18a9)arg2 whichSide:(int)arg3 nearest:(CDStruct_1b6d18a9 *)arg4 nearestDelta:(CDStruct_1b6d18a9 *)arg5;
+- (void)mouseAction:(struct CGPoint)arg1 snap:(BOOL)arg2 done:(BOOL)arg3;
+- (BOOL)acceptsFirstMouse:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (void)flagsChanged:(id)arg1;
+- (BOOL)movePlayHeadWithPlayRange;
+- (struct CGRect)playHeadRect;
+- (struct CGRect)playRangeRect;
+- (struct CGRect)playRangeBeginRect;
+- (struct CGRect)playRangeEndRect;
+- (struct CGRect)controlBounds;
+- (CDStruct_1b6d18a9)getSecondsPerPixel;
+- (double)getPixelsPerSecond;
+- (const struct PCTimeRange *)getDisplayRange;
+- (const struct PCTimeRange *)getActiveRange;
+- (const struct PCTimeRange *)getTotalRange;
+- (BOOL)drawPlayHead;
+- (void)findSnaps;
+- (BOOL)scrubbing;
+- (BOOL)scrubbingAudio;
+- (CDStruct_1b6d18a9)getCurrentTime;
+- (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
+- (const CDStruct_1b6d18a9 *)getDraggingTime;
+- (struct PCTimeRange)getPlayRange;
+- (void)setPlayRange:(const struct PCTimeRange *)arg1;
+- (void)addPlayRangeToUndo:(const struct PCString *)arg1;
+- (void)updateRectInPlayhead;
+- (void)notify:(unsigned int)arg1;
+- (void)postFrameChanged:(BOOL)arg1;
+@property(nonatomic) BOOL livesInCanvas; // @synthesize livesInCanvas=_livesInCanvas;
 
 @end
 

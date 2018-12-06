@@ -17,15 +17,15 @@
     BOOL _isTemporaryTheme;
 }
 
+- (id)initWithName:(id)arg1 isSystemTheme:(BOOL)arg2;
+- (void)dealloc;
+- (long long)compare:(id)arg1;
+- (id)title;
+- (BOOL)canAddToItem;
+- (BOOL)canRemoveItem;
 @property(nonatomic) BOOL isTemporaryTheme; // @synthesize isTemporaryTheme=_isTemporaryTheme;
 @property(nonatomic) BOOL isSystemTheme; // @synthesize isSystemTheme=_isSystemTheme;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (BOOL)canRemoveItem;
-- (BOOL)canAddToItem;
-- (id)title;
-- (long long)compare:(id)arg1;
-- (void)dealloc;
-- (id)initWithName:(id)arg1 isSystemTheme:(BOOL)arg2;
+@property(nonatomic) NSString *name; // @synthesize name=_name;
 
 @end
 

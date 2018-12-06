@@ -7,12 +7,11 @@
 #import "NSObject.h"
 
 #import "CKBaseExportPanelDelegate.h"
-#import "FFBackgroundTaskTarget.h"
 #import "NSOpenSavePanelDelegate.h"
 
-@class CALayer, CKTranscodingOperation, FFBackgroundTask, LKButton, NSArray, NSConditionLock, NSError, NSPopUpButton, NSString, NSView, OZObjCDocument;
+@class CALayer, LKButton, NSArray, NSPopUpButton, NSView, OZObjCDocument;
 
-@interface OZShareManager : NSObject <CKBaseExportPanelDelegate, FFBackgroundTaskTarget, NSOpenSavePanelDelegate>
+@interface OZShareManager : NSObject <CKBaseExportPanelDelegate, NSOpenSavePanelDelegate>
 {
     NSView *_saveStillView;
     NSPopUpButton *_presetPopUp;
@@ -23,88 +22,69 @@
     CALayer *_panelLayer;
     _Bool _renderingSelected;
     _Bool _resetSoloFlag;
-    vector_12da65de _soloedNodeIDs;
-    NSConditionLock *_backgroundTaskConditionLock;
-    FFBackgroundTask *_backgroundTask;
-    CKTranscodingOperation *_transcodingOperation;
-    NSError *_transcodingError;
-    double _previewTime;
+    struct vector<unsigned int, std::allocator<unsigned int>> _soloedNodeIDs;
 }
 
-+ (void)initializeShareSubmenuInToolbarOverflowMenu:(id)arg1;
-+ (BOOL)isCompressorKitLoaded;
-+ (id)TemplatePreviewSetting;
-+ (id)shareHistoryDirectoryPath;
-+ (id)sharePathWithDocument:(id)arg1;
-+ (id)shareManagerWithDocument:(id)arg1;
 + (id)sharedInstance;
-@property(retain) NSError *transcodingError; // @synthesize transcodingError=_transcodingError;
-@property(retain) CKTranscodingOperation *transcodingOperation; // @synthesize transcodingOperation=_transcodingOperation;
++ (id)shareManagerWithDocument:(id)arg1;
++ (id)sharePathWithDocument:(id)arg1;
++ (id)CompressorSettingWithName:(id)arg1;
++ (id)TemplatePreviewSetting;
++ (BOOL)isCompressorKitLoaded;
+- (id)init;
+- (id)initWithSelection:(id)arg1;
+- (id)initWithObjCDocument:(id)arg1;
+- (void)cleanupRender;
+- (void)dealloc;
+- (void)saveSettings;
+- (void)restoreSettings;
+- (id)createUniquePath:(id)arg1 withFileName:(id)arg2;
+- (id)createUniqueName:(id)arg1;
+- (BOOL)_alertOverwrite:(id)arg1;
+- (BOOL)_alertNotWritable:(id)arg1;
+- (void)_alertSaveError:(id)arg1;
+- (id)createTmpProject:(id)arg1 path:(id)arg2;
+- (void)operationStatusChanged:(id)arg1;
+- (void)operationDidFinish:(id)arg1;
+- (void)storeSoloState;
+- (void)restoreSoloState;
+- (void)exclusivelySoloNode:(struct OZSceneNode *)arg1;
+@property(copy, nonatomic) NSArray *selection; // @synthesize selection=_selection;
 @property(copy, nonatomic) OZObjCDocument *document; // @synthesize document=_objCDoc;
+- (id)destinationURL:(BOOL)arg1;
+- (void)export:(CDUnknownBlockType)arg1;
+- (void)exportUsingPanelClass:(Class)arg1 window:(id)arg2 addRenderTab:(BOOL)arg3;
+- (void)exportMediaBrowserModalForWindow:(id)arg1;
+- (void)exportAudioModalForWindow:(id)arg1;
+- (void)exportPodCastProducerModalForWindow:(id)arg1;
+- (void)exportiTunesModalForWindow:(id)arg1;
+- (void)burnDVDModalForWindow:(id)arg1;
+- (void)burnBlurayModalForWindow:(id)arg1;
+- (void)publishMobileMeModalForWindow:(id)arg1;
+- (void)sendEmailModalForWindow:(id)arg1;
+- (void)publishYouTubeModalForWindow:(id)arg1;
+- (void)publishFacebookModalForWindow:(id)arg1;
+- (void)publishVimeoModalForWindow:(id)arg1;
+- (void)publishCNNiReportModalForWindow:(id)arg1;
+- (void)exportCurrentFrameModalForWindow:(id)arg1;
+- (void)exportMovieModalForWindow:(id)arg1;
+- (void)exportImageSequenceModalForWindow:(id)arg1;
+- (void)exportSelectionMovieModalForWindow:(id)arg1;
+- (void)exportHTTPLiveStreamingModalForWindow:(id)arg1;
+- (void)openInCompressor;
+- (void)exportUsingCompressorSettingsModalForWindow:(id)arg1;
+- (long long)_getTimecodeMode:(double)arg1 isNTSC:(BOOL)arg2;
+- (id)createExportBatch:(id)arg1 withSetting:(id)arg2 forTimeRange:(struct PCTimeRange)arg3;
+- (void)exportMovie:(id)arg1 withSetting:(id)arg2 forTimeRange:(struct PCTimeRange)arg3 toCluster:(id)arg4 progressIsIndeterminate:(BOOL)arg5;
+- (void)exportPreview:(id)arg1;
+- (void)exportImage:(id)arg1 withSetting:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)exportSequence:(id)arg1 withSetting:(id)arg2 atInTime:(CDStruct_1b6d18a9)arg3 outTime:(CDStruct_1b6d18a9)arg4;
+- (void)submitBatch:(id)arg1 toCluster:(id)arg2 progressIsIndeterminate:(BOOL)arg3 forWindow:(id)arg4;
+- (void)showShareMonitor;
+- (id)previewLayer;
+- (void)setPreviewTime:(double)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)logShareDestination:(Class)arg1;
-- (void)setPreviewTime:(double)arg1;
-- (void)redrawPreview;
-- (id)previewLayer;
-- (void)submitBatch:(id)arg1 toCluster:(id)arg2 progressIsIndeterminate:(BOOL)arg3 forWindow:(id)arg4;
-- (void)exportSequence:(id)arg1 withSetting:(id)arg2 atInTime:(CDStruct_1b6d18a9)arg3 outTime:(CDStruct_1b6d18a9)arg4;
-- (void)exportImage:(id)arg1 withSetting:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)exportPreview:(id)arg1;
-- (void)exportMovie:(id)arg1 withSetting:(id)arg2 forTimeRange:(struct PCTimeRange)arg3 toCluster:(id)arg4 progressIsIndeterminate:(BOOL)arg5;
-- (id)newExportBatch:(id)arg1 withSetting:(id)arg2 forTimeRange:(struct PCTimeRange)arg3;
-- (long long)_getTimecodeMode:(double)arg1 isNTSC:(BOOL)arg2;
-- (void)exportUsingCompressorSettingsModalForWindow:(id)arg1;
-- (void)openInCompressor;
-- (void)queueShareOperationsForBatches:(id)arg1;
-- (void)operationDidFinish:(id)arg1;
-- (void)operation:(id)arg1 didFailWithError:(id)arg2;
-- (void)operationStatusChanged:(id)arg1;
-- (void)performShareOperation:(id)arg1 task:(id)arg2;
-- (void)canceledTask:(id)arg1;
-- (id)librariesInUse:(id)arg1;
-- (id)assetsInUse:(id)arg1;
-- (void)exportHTTPLiveStreamingModalForWindow:(id)arg1;
-- (void)exportSelectionMovieModalForWindow:(id)arg1;
-- (void)exportImageSequenceModalForWindow:(id)arg1;
-- (void)exportMovieModalForWindow:(id)arg1;
-- (void)exportCurrentFrameModalForWindow:(id)arg1;
-- (void)publishVimeoModalForWindow:(id)arg1;
-- (void)publishYouTubeModalForWindow:(id)arg1;
-- (void)sendEmailModalForWindow:(id)arg1;
-- (void)burnBlurayModalForWindow:(id)arg1;
-- (void)burnDVDModalForWindow:(id)arg1;
-- (void)exportiTunesModalForWindow:(id)arg1;
-- (void)exportAudioModalForWindow:(id)arg1;
-- (void)exportMediaBrowserModalForWindow:(id)arg1;
-- (void)exportUsingPanelClass:(Class)arg1 window:(id)arg2 addRenderTab:(BOOL)arg3;
-- (void)export:(CDUnknownBlockType)arg1;
-- (id)ckSource;
-- (id)currentAppProjectMediaServerSourceWithURL:(id)arg1;
-- (id)destinationURL:(Class)arg1;
-@property(copy, nonatomic) NSArray *selection; // @synthesize selection=_selection;
-- (void)exclusivelySoloNode:(struct OZSceneNode *)arg1;
-- (void)restoreSoloState;
-- (void)storeSoloState;
-- (id)createTmpProject:(id)arg1 path:(id)arg2;
-- (void)_alertSaveError:(id)arg1;
-- (BOOL)_alertNotWritable:(id)arg1;
-- (BOOL)_alertOverwrite:(id)arg1;
-- (id)createUniqueName:(id)arg1;
-- (id)createUniquePath:(id)arg1 withFileName:(id)arg2;
-- (void)restoreSettings;
-- (void)saveSettings;
-- (void)dealloc;
-- (void)cleanupRender;
-- (id)initWithObjCDocument:(id)arg1;
-- (id)initWithSelection:(id)arg1;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

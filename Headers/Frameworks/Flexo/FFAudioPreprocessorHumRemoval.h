@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (int)postRender;
 - (int)preRender;
+- (int)postRender;
 
 @end
 

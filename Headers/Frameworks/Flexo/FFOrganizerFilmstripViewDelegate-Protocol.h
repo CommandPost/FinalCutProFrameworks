@@ -4,63 +4,34 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "FFOrganizerImportDropController.h"
+#import "NSObject.h"
 
-@class FFAnchoredSequence, FFAnchoredTimeMarker, FFOrganizerFilmstripView, FigTimeRangeAndObject, LKViewModule, NSArray, NSDictionary, NSMenu, NSMenuItem, NSObject<FFOrganizerMarkerEditorDelegate>, NSObject<FFOrganizerSkimmingDelegate>, NSPasteboard, NSString, NSTreeNode;
-
-@protocol FFOrganizerFilmstripViewDelegate <FFOrganizerImportDropController>
-- (BOOL)shouldAlwaysPlacePlayhead;
-- (void)performEditAction;
-- (BOOL)editActionAllowed;
-- (void)performPlayheadButton1Action;
-- (BOOL)action1OrAction2;
-- (BOOL)wantsPlayheadActions;
-- (BOOL)wantsRanges;
-- (BOOL)wantsSkimmerInfo;
-- (void)setMaintianFilmstripSelectionOnNextUpdate:(BOOL)arg1;
-- (void)deactivateActiveSelections;
-- (void)deactivateRangeOfMedia:(FigTimeRangeAndObject *)arg1;
-- (void)activateSelectionMarkers:(NSArray *)arg1 extendingSelection:(BOOL)arg2;
-- (void)removeAllSelectionMarkersFromClips:(NSArray *)arg1;
-- (void)removeSelectionMarkers:(NSArray *)arg1 onlyRemoveOverlap:(BOOL)arg2 addSelectionMarkers:(NSArray *)arg3 extendingSelection:(BOOL)arg4;
-- (void)modifySelectionMarkersFromClip:(FigTimeRangeAndObject *)arg1 removeRange:(CDStruct_e83c9415)arg2 onlyRemoveOverlap:(BOOL)arg3 rangeToAdd:(CDStruct_e83c9415)arg4 newSelection:(NSArray *)arg5 extending:(BOOL)arg6;
-- (BOOL)canDisplayPlayer;
-- (NSArray *)activeSelection;
-- (void)setActiveSelection:(NSArray *)arg1;
-- (void)selectionDidChangeToTime:(CDStruct_e83c9415)arg1 inObject:(id)arg2;
-- (void)selectionDidChangeToObject:(id)arg1;
-- (void)selectedRangesOfMediaDidChange;
-- (NSArray *)filteredRanges;
-- (void)invalidateFilteredItems;
-- (void)invalidateUnfilteredItems;
-- (NSMenu *)contextualMenuForSelection:(NSArray *)arg1;
-- (NSArray *)itemsClusteredByMetadataValue:(NSArray *)arg1;
+@protocol FFOrganizerFilmstripViewDelegate <NSObject>
+- (id)module;
+- (unsigned long long)filmstripView:(id)arg1 writeRangesOfMedia:(id)arg2 toPasteboard:(id)arg3;
+- (void)organizerFilmstripViewDidReloadData:(id)arg1;
+- (void)openItemFromRangeObject:(id)arg1;
+- (void)makeSequenceActive:(id)arg1;
 - (BOOL)isClustering;
-- (void)openItemFromRangeObject:(FigTimeRangeAndObject *)arg1;
-- (void)organizerFilmstripViewDidReloadData:(FFOrganizerFilmstripView *)arg1;
-- (unsigned long long)filmstripView:(FFOrganizerFilmstripView *)arg1 writeRangesOfMedia:(NSArray *)arg2 toPasteboard:(NSPasteboard *)arg3;
-- (NSObject<FFOrganizerMarkerEditorDelegate> *)markerEditorDelegate;
-- (NSObject<FFOrganizerSkimmingDelegate> *)skimmingDelegate;
-- (LKViewModule *)module;
+- (id)itemsClusteredByMetadataValue:(id)arg1;
+- (id)contextualMenuForSelection:(id)arg1;
+- (id)persistentModuleForFilmstripView:(id)arg1;
+- (void)invalidateUnfilteredItems;
+- (void)invalidateFilteredItems;
+- (id)filteredRanges;
+- (void)selectedRangesOfMediaDidChange;
+- (void)selectionDidChangeToObject:(id)arg1;
+- (BOOL)canBeginSkimming;
+- (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
+- (id)editorModule;
 
 @optional
-- (void)setupShareMenuForItem:(NSMenuItem *)arg1;
-- (void)moveToPreviusClip;
-- (void)moveToNextClip;
-- (NSDictionary *)filtersDictionary;
-- (NSArray *)filterRanges:(NSArray *)arg1;
-- (NSArray *)newSidebarRanges;
-- (NSArray *)unfilteredRanges;
-- (BOOL)isPersistentPlayheadAllowedOnSequence:(FFAnchoredSequence *)arg1;
-- (BOOL)shouldDisableRangeSelectionForObject:(id)arg1;
-- (NSTreeNode *)fileSystemRootNode;
-- (NSString *)defaultEditDurationString;
-- (BOOL)canEditDisplayName;
-- (void)playingRangeOfMediaDidChange;
-- (void)playingRangeOfMediaWillChange;
-- (void)persistentPlayheadRangeOfMediaDidChange;
-- (void)persistentPlayheadRangeOfMediaWillChange;
+- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
+- (void)showMarkerEditorForMarkerLayer:(id)arg1 object:(id)arg2;
+- (void)hideMarkerEditor;
+- (BOOL)markerEditorIsShown;
 - (void)showKeywordEditor;
-- (BOOL)actionMoveMarker:(FFAnchoredTimeMarker *)arg1 toRange:(FigTimeRangeAndObject *)arg2 error:(id *)arg3;
+- (void)playingRangeOfMediaDidChange;
+- (BOOL)canEditDisplayName;
 @end
 

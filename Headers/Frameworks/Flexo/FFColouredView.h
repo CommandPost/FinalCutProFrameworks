@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
     NSColor *_secondaryColour;
 }
 
-@property(retain, nonatomic) NSColor *colour; // @synthesize colour=_bgColour;
-- (void)setSecondaryColor:(id)arg1;
-- (void)setColor:(id)arg1;
-- (void)dealloc;
-- (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)dealloc;
+- (void)setColor:(id)arg1;
+- (void)setSecondaryColor:(id)arg1;
+@property(retain, nonatomic) NSColor *colour; // @synthesize colour=_bgColour;
 
 @end
 

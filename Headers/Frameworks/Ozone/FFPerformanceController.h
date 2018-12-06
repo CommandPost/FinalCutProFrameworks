@@ -24,26 +24,26 @@
     BOOL m_clickHorizontal;
 }
 
-+ (id)sharedPerformanceController;
 + (BOOL)performanceMonitoringEnabled;
-- (BOOL)dumpSaveTimes;
-- (BOOL)dumpPeaksManagerTimes;
-- (BOOL)dumpPlaybackTimes;
-- (BOOL)dumpEngineTimes;
-- (BOOL)dumpAllEventTimes;
-- (BOOL)dumpAFETimes;
-- (void)performance_recordDropFrames:(id)arg1;
-- (void)performance_recordRAMUsage:(id)arg1;
-- (void)createBogusLogEntry:(id)arg1;
-- (BOOL)validateMenuItem:(id)arg1;
-- (void)logItemKey:(id)arg1 value:(id)arg2;
-- (void)logItemKey:(id)arg1 doubleValue:(double)arg2;
-- (void)logItemKey:(id)arg1 SInt64Value:(long long)arg2;
-- (void *)PMRinstrument;
-- (void)_setCurrentEventDescription:(id)arg1;
-- (void)installPerformanceMenu;
-- (void)dealloc;
++ (id)sharedPerformanceController;
 - (id)init;
+- (void)dealloc;
+- (void)installPerformanceMenu;
+- (void)_setCurrentEventDescription:(id)arg1;
+- (void *)PMRinstrument;
+- (void)logItemKey:(id)arg1 SInt64Value:(long long)arg2;
+- (void)logItemKey:(id)arg1 doubleValue:(double)arg2;
+- (void)logItemKey:(id)arg1 value:(id)arg2;
+- (BOOL)validateMenuItem:(id)arg1;
+- (void)createBogusLogEntry:(id)arg1;
+- (void)performance_recordRAMUsage:(id)arg1;
+- (void)performance_recordDropFrames:(id)arg1;
+- (BOOL)dumpAFETimes;
+- (BOOL)dumpAllEventTimes;
+- (BOOL)dumpEngineTimes;
+- (BOOL)dumpPlaybackTimes;
+- (BOOL)dumpPeaksManagerTimes;
+- (BOOL)dumpSaveTimes;
 
 @end
 

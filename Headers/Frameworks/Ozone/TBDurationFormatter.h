@@ -13,19 +13,19 @@
     int _mode;
 }
 
-- (id)timecodeStringForFrame:(int)arg1;
-- (int)displayMode;
-- (void)setDisplayMode:(int)arg1;
-- (BOOL)isNTSC;
-- (void)setIsNTSC:(BOOL)arg1;
-- (double)frameRate;
-- (void)setFrameRate:(double)arg1;
-- (BOOL)isPartialStringValid:(id)arg1 newEditingString:(id *)arg2 errorDescription:(id *)arg3;
-- (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
-- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
-- (id)stringForObjectValue:(id)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)stringForObjectValue:(id)arg1;
+- (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
+- (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
+- (BOOL)isPartialStringValid:(id)arg1 newEditingString:(id *)arg2 errorDescription:(id *)arg3;
+- (void)setFrameRate:(double)arg1;
+- (double)frameRate;
+- (void)setIsNTSC:(BOOL)arg1;
+- (BOOL)isNTSC;
+- (void)setDisplayMode:(int)arg1;
+- (int)displayMode;
+- (id)timecodeStringForFrame:(int)arg1;
 
 @end
 

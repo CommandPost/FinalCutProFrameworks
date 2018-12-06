@@ -12,22 +12,19 @@ __attribute__((visibility("hidden")))
 @interface FFAnchoredObjectMediaSource : FFMediaSource
 {
     FFAnchoredObject *m_object;
-    BOOL m_allowAnchoredObjectModifications;
 }
 
-- (void)_channelsChanged;
-- (struct NSObject *)skimmableObject;
-- (id)backingAnchoredObject;
-- (void)setRole:(id)arg1;
-- (id)role;
-- (void)setPlayEnable:(int)arg1;
-- (int)playEnable;
-- (void)setSourceName:(id)arg1;
-- (id)sourceName;
-- (id)sourceType;
-- (void)setAllowsAnchoredObjectModifications:(BOOL)arg1;
-- (void)dealloc;
 - (id)initWithAnchoredObject:(id)arg1 referenceSourceChannels:(id)arg2;
+- (void)dealloc;
+- (id)sourceType;
+- (id)sourceName;
+- (void)setSourceName:(id)arg1;
+- (int)playEnable;
+- (void)setPlayEnable:(int)arg1;
+- (id)anchoredObject;
+- (BOOL)_readSourceChannels:(id)arg1;
+- (id)_findChannelWithSourceType:(id)arg1 media:(id)arg2 sourceKey:(id)arg3 channelIndex:(int)arg4 inSourceChannels:(id)arg5;
+- (void)_channelsChanged;
 
 @end
 

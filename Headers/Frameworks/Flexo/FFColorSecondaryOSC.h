@@ -6,7 +6,7 @@
 
 #import <Flexo/FFComponentOSC.h>
 
-@class CHChannelAngle, CHChannelDouble, CHChannelFolder, CHChannelPosition, CHChannelScale, FFChannelChangeController, FFColorSecondaryEffect, NSString;
+@class CHChannelAngle, CHChannelBase, CHChannelDouble, CHChannelFolder, CHChannelPosition, CHChannelScale, FFChannelChangeController, FFColorSecondaryEffect, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFColorSecondaryOSC : FFComponentOSC
@@ -21,40 +21,41 @@ __attribute__((visibility("hidden")))
     BOOL _scaleSelected;
     long long _activePart;
     int _dragCount;
-    struct CGPoint _mouseDownOffset;
     FFChannelChangeController *_changeController;
     BOOL _transactionStarted;
-    NSString *_transactionName;
+    CHChannelBase *_modifiedChannel;
     BOOL _shapeActive;
     BOOL _shapeVisible;
     NSString *_name;
+    struct PCPtr<POTexture> _handlesTexture[3];
+    struct PCPtr<POTexture> _pivotHandleTexture[3];
+    struct PCPtr<POTexture> _rotationHandleTexture[3];
+    struct PCPtr<POTexture> _curvatureHandleTexture[3];
 }
 
-@property(nonatomic) struct CGPoint mouseDownOffset; // @synthesize mouseDownOffset=_mouseDownOffset;
+- (id)initWithChannelFolder:(id)arg1 effectStack:(id)arg2 colorSecondaryEffect:(id)arg3;
+- (void)dealloc;
+- (BOOL)hitTest:(struct CGPoint)arg1;
+- (double)ellipseAngleForUserAngle:(double)arg1 withCurvature:(double)arg2;
+- (void)mouseDown:(id)arg1;
+- (long long)handleAtEventLocation:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)mouseMoved:(id)arg1;
+- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
+- (void)drawSuperEllipseToContext:(struct _CGLContextObject *)arg1 withTransform:(id)arg2 withCurvature:(double)arg3 withRadius:(struct CGPoint)arg4 withOffset:(struct CGPoint)arg5;
+- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (id)propertiesKey;
+- (void)calcTransform:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (void)calcTransform:(id)arg1 withScale:(BOOL)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)beginUndoTransactionOnChannel:(id)arg1 withName:(id)arg2;
+- (void)endUndoTransaction;
+- (id)getCursor;
+- (id)cropMatrix;
 @property(readonly, nonatomic) CHChannelFolder *parentChannel; // @synthesize parentChannel=_chShape;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) BOOL visible; // @synthesize visible=_shapeVisible;
 @property(nonatomic) BOOL active; // @synthesize active=_shapeActive;
-- (id)cropMatrix;
-- (id)getCursor;
-- (void)endUndoTransaction;
-- (void)beginUndoTransactionOnChannel:(id)arg1 withName:(id)arg2;
-- (void)calcTransform:(id)arg1 withScale:(BOOL)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)calcTransform:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-- (id)propertiesKey;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
-- (void)drawSuperEllipseToContext:(struct _CGLContextObject *)arg1 withTransform:(id)arg2 withCurvature:(double)arg3 withRadius:(struct CGPoint)arg4 withOffset:(struct CGPoint)arg5;
-- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
-- (void)mouseExited:(id)arg1;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (long long)handleAtEventLocation:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (double)ellipseAngleForUserAngle:(double)arg1 withCurvature:(double)arg2;
-- (BOOL)hitTest:(struct CGPoint)arg1;
-- (void)dealloc;
-- (id)initWithChannelFolder:(id)arg1 effectStack:(id)arg2 colorSecondaryEffect:(id)arg3;
 
 @end
 

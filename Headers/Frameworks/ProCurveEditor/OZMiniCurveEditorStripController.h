@@ -6,26 +6,27 @@
 
 #import "OZViewController.h"
 
-@class LKButton, OZMiniCurveEditor, OZMiniCurveEditorStripBorderView, OZMiniCurveEditorStripView;
+@class NSButton, OZMiniCurveEditor, OZMiniCurveEditorStripBorderView, OZMiniCurveEditorStripView;
 
 @interface OZMiniCurveEditorStripController : OZViewController
 {
     OZMiniCurveEditorStripView *_pMiniCurveEditorImage;
     OZMiniCurveEditorStripBorderView *_pMiniCurveEditorBorders;
-    LKButton *_pResetButton;
+    NSButton *_pResetButton;
     OZMiniCurveEditor *_pMiniCurveEditor;
 }
 
-- (id)getMiniCurveEditor;
-- (void)resetChannel:(id)arg1;
-- (void)disable;
-- (void)enable;
-- (void)initResetButton;
-- (void)update;
-- (void)didTwiddle:(BOOL)arg1;
-- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
-- (void)setMiniCurveEditor:(id)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
+- (void)dealloc;
+- (void)setMiniCurveEditor:(id)arg1;
+- (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
+- (void)didTwiddle:(BOOL)arg1;
+- (void)update;
+- (void)initResetButton;
+- (void)enable;
+- (void)disable;
+- (void)resetChannel:(id)arg1;
+- (id)getMiniCurveEditor;
 
 @end
 

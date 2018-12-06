@@ -13,26 +13,26 @@
     LKScrubber *_pRetimeFrameScrubber;
 }
 
-- (void)resetChannel:(id)arg1;
-- (void)setRetimeFrame:(id)arg1;
-- (void)setRetimeFrameForChannel:(double)arg1 forChannel:(struct OZChannelBase *)arg2;
-- (void)disable;
-- (void)enable;
-- (void)notify:(unsigned int)arg1;
-- (struct OZChannelBase *)associatedChannel;
-- (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
-- (void)update;
-- (double)getMaxValue;
-- (double)getMinValue;
-- (double)getMaxValueFromChannel:(struct OZChannelBase *)arg1;
-- (double)getMinValueFromChannel:(struct OZChannelBase *)arg1;
-- (double)getValueFromChannel:(struct OZChannelBase *)arg1;
-- (BOOL)areAllValuesEqual;
-- (id)connectKeyViewsRec:(id)arg1;
-- (id)lastKeyView;
-- (id)firstKeyView;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (id)firstKeyView;
+- (id)lastKeyView;
+- (id)connectKeyViewsRec:(id)arg1;
+- (BOOL)areAllValuesEqual;
+- (double)getValueFromChannel:(struct OZChannelBase *)arg1;
+- (double)getMinValueFromChannel:(struct OZChannelBase *)arg1;
+- (double)getMaxValueFromChannel:(struct OZChannelBase *)arg1;
+- (double)getMinValue;
+- (double)getMaxValue;
+- (void)update;
+- (BOOL)addAssociatedChannel:(struct OZChannelBase *)arg1;
+- (struct OZChannelBase *)associatedChannel;
+- (void)notify:(unsigned int)arg1;
+- (void)enable;
+- (void)disable;
+- (void)setRetimeFrameForChannel:(double)arg1 forChannel:(struct OZChannelBase *)arg2;
+- (void)setRetimeFrame:(id)arg1;
+- (void)resetChannel:(id)arg1;
 
 @end
 

@@ -6,33 +6,29 @@
 
 #import <Flexo/FFRateConformEffect.h>
 
-#import "FFRateConformAndRetimingVideoProtocol.h"
-
 @class CHChannelEnum;
 
 __attribute__((visibility("hidden")))
-@interface FFRateConformVideoEffect : FFRateConformEffect <FFRateConformAndRetimingVideoProtocol>
+@interface FFRateConformVideoEffect : FFRateConformEffect
 {
     CHChannelEnum *_chFrameSamplingMode;
+    BOOL _waitingForAnalysis;
 }
 
 + (void)registerEffects;
-- (BOOL)supportsReentrancy;
-- (id)newEffectNode;
-- (CDStruct_bdcb2b0d)getContextBasedMD5Adjustment:(id)arg1;
-- (id)inputKeys;
-- (void)createChannelsInFolder:(id)arg1;
-- (id)newEffectSpecificTokensAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
-- (int)getEffectSchedulingFlags;
-- (BOOL)hasFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3;
-- (BOOL)_checkTime:(CDStruct_1b6d18a9)arg1 mediaStartTime:(CDStruct_1b6d18a9)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3 mediaRep:(id)arg4;
-- (BOOL)currentSettingsRequireFlowVectors;
-- (void)_performFlowAnalysis;
-- (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
-- (void)setFrameSampleMode:(long long)arg1;
-- (long long)frameSampleMode;
 - (void)dealloc;
+- (long long)frameSampleMode;
+- (void)setFrameSampleMode:(long long)arg1;
+- (float)costAtTime:(CDStruct_1b6d18a9)arg1 context:(id)arg2;
+- (id)blendedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 sampleDuration:(CDStruct_1b6d18a9)arg5 roi:(struct CGRect *)arg6;
+- (void)_performFlowAnalysis;
+- (id)flowInterpolatedImageAtTime:(CDStruct_1b6d18a9)arg1 withStream:(id)arg2 context:(id)arg3 downstreamPT:(id)arg4 sampleDuration:(CDStruct_1b6d18a9)arg5 roi:(struct CGRect *)arg6;
+- (id)newImageWithFlowVectorAtTime:(CDStruct_1b6d18a9)arg1 inputImage:(id)arg2 stream:(id)arg3;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 downstreamPT:(id)arg5 channelOffset:(CDStruct_1b6d18a9)arg6 roi:(struct CGRect *)arg7;
+- (void)createChannelsInFolder:(id)arg1;
+- (BOOL)waitingForAnalysis;
+- (id)inputKeys;
+- (id)newEffectNode;
 
 @end
 

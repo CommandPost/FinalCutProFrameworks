@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)copyClassDescription;
-- (id)trackType;
 - (id)type;
+- (id)trackType;
 
 @end
 

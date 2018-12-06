@@ -6,24 +6,23 @@
 
 #import <Flexo/FFProOSC.h>
 
-@class FFAnchoredObject, FFCHObservableFolder, FFContext, FFEffect, FFOSCWindowView, LKSegmentedControl, NSMutableArray, POCombinedCrop;
+@class FFAnchoredObject, FFCHObservableFolder, FFContext, FFEffect, NSMutableArray, NSProSegmentedControl, NSView, POCombinedCrop;
 
 __attribute__((visibility("hidden")))
 @interface FFCombinedCropOSC : FFProOSC
 {
     POCombinedCrop *_combinedCropOSC;
-    LKSegmentedControl *_exitButton;
-    LKSegmentedControl *_playButton;
-    LKSegmentedControl *_flipButton;
-    LKSegmentedControl *_resetButton;
-    LKSegmentedControl *_cropTypeButton;
-    LKSegmentedControl *_keyFrameButton;
-    LKSegmentedControl *_interpolationButton;
-    FFOSCWindowView *_combinedCropOverlayView;
+    FFCHObservableFolder *_undoChannel;
+    NSProSegmentedControl *_exitButton;
+    NSProSegmentedControl *_playButton;
+    NSProSegmentedControl *_flipButton;
+    NSProSegmentedControl *_cropTypeButton;
+    NSProSegmentedControl *_keyFrameButton;
+    NSProSegmentedControl *_interpolationButton;
+    NSView *_combinedCropOverlayView;
     FFAnchoredObject *_anchoredObject;
     CDStruct_e83c9415 _prePlayingLoopRange;
     BOOL _preLoop;
-    BOOL _resetButtonHidden;
     FFContext *_playerContext;
     FFCHObservableFolder *_channelFolder;
     FFEffect *_cropEffect;
@@ -32,40 +31,31 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_channelsToCheckForkeyFramesTrim;
 }
 
-- (BOOL)isCropOSC;
-- (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_50fb8e68 *)arg2;
-- (void)ensureIntrinsic;
-- (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
-- (void)checkChannelParameterChanged:(id)arg1;
-- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
-- (void)timeRateChangedForContext:(id)arg1;
-- (void)setPlayerVideoModule:(id)arg1;
-- (void)keyFrameCombinedCrop:(id)arg1;
-- (id)keyFrameButton;
-- (id)channelsToCheckForKeyframes;
-- (void)playCombinedCropOSC:(id)arg1;
-- (void)exitCombinedCropOSC:(id)arg1;
-- (void)setCropTypeCombinedCropOSC:(id)arg1;
-- (void)resetCombinedCropOSC:(id)arg1;
-- (void)flipCombinedCropOSC:(id)arg1;
-- (void)_setButtonStateForCropType:(int)arg1;
-- (void)keyDown:(id)arg1;
-- (BOOL)shouldRespondInMouseLoopToKeyDown;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (void)enableOverlayWindowForNoRangeOverlap;
-- (void)removeOverlayWindowForNoRangeOverlap;
-- (BOOL)oscHandlesTranslation;
-- (id)undoChannels;
-- (BOOL)supportsTool:(Class)arg1;
-- (void)dealloc;
-- (void)addOSCSpecificSnappingPointsToVertical:(id)arg1 horizontal:(id)arg2;
-- (void)cleanUpPlayerLoop;
-- (void)setAnchoredObjectSingledOutValue:(BOOL)arg1 immediate:(BOOL)arg2;
-- (void)setKenBurnsObjectOnMainThread:(id)arg1;
-- (struct CGSize)minSize;
-- (void)resizedOSCView;
 - (id)initWithHeCropEffect:(id)arg1 effectStack:(id)arg2;
+- (void)setKenBurnsObjectOnMainThread:(id)arg1;
+- (void)setAnchoredObjectSingledOutValue:(BOOL)arg1 immediate:(BOOL)arg2;
+- (void)cleanUpPlayerLoop;
+- (void)dealloc;
+- (BOOL)supportsTool:(Class)arg1;
+- (struct OZChannelBase *)undoChannel;
+- (BOOL)oscHandlesTranslation;
+- (void)removeOverlayWindowForNoRangeOverlap;
+- (void)enableOverlayWindowForNoRangeOverlap;
+- (void)mouseDown:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (void)_setButtonStateForCropType:(int)arg1;
+- (void)flipCombinedCropOSC:(id)arg1;
+- (void)setCropTypeCombinedCropOSC:(id)arg1;
+- (void)exitCombinedCropOSC:(id)arg1;
+- (void)playCombinedCropOSC:(id)arg1;
+- (id)channelsToCheckForKeyframes;
+- (id)keyFrameButton;
+- (void)keyFrameCombinedCrop:(id)arg1;
+- (void)setPlayerVideoModule:(id)arg1;
+- (void)timeRateChangedForContext:(id)arg1;
+- (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
+- (void)checkChannelParameterChanged:(id)arg1;
+- (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
 
 @end
 

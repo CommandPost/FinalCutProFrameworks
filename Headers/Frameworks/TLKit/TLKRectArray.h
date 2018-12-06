@@ -6,34 +6,24 @@
 
 #import "NSObject.h"
 
-#import "NSCopying.h"
-
-@interface TLKRectArray : NSObject <NSCopying>
+@interface TLKRectArray : NSObject
 {
     struct TLKCRectArray *_rectArray;
 }
 
-+ (id)rectArray;
-- (id)reverseRectEnumerator;
-- (id)rectEnumerator;
-- (id)description;
-- (struct CGRect)boundingBox;
-- (BOOL)isEqualToRectArray:(id)arg1;
-- (void)setRectArray:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (void)replaceRectAtIndex:(unsigned long long)arg1 withRect:(struct CGRect)arg2;
-- (struct CGRect)rectAtIndex:(unsigned long long)arg1;
-- (struct CGRect)lastRect;
-- (void)removeAllRects;
-- (void)removeRectAtIndex:(unsigned long long)arg1;
-- (void)insertRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
-- (void)appendRect:(struct CGRect)arg1;
-- (void)addRect:(struct CGRect)arg1;
-- (unsigned long long)count;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithCapacity:(unsigned long long)arg1;
 - (id)init;
+- (id)initWithCapacity:(unsigned long long)arg1;
+- (void)dealloc;
+- (unsigned long long)count;
+- (void)appendRect:(struct CGRect)arg1;
+- (void)insertRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
+- (void)removeRectAtIndex:(unsigned long long)arg1;
+- (void)removeAllRects;
+- (struct CGRect)rectAtIndex:(unsigned long long)arg1;
+- (void)setRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToRectArray:(id)arg1;
+- (id)description;
 
 @end
 

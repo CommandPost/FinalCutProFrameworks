@@ -14,24 +14,23 @@
 }
 
 + (void)setGuaranteeMemoryCallback:(CDUnknownFunctionPointerType)arg1;
-- (void)_setOwned:(BOOL)arg1;
-- (void)_setOwnedDataPtr:(void *)arg1;
-- (BOOL)_ownsData;
-- (BOOL)_verifyImage;
-- (unsigned long long)rowBytes;
-- (void)setRowBytes:(unsigned long long)arg1;
-- (void *)dataPtrForPositionX:(unsigned long long)arg1 Y:(unsigned long long)arg2;
-- (void *)dataPtr;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCopy:(id)arg1 andInfo:(CDStruct_4a07eeda)arg2;
-- (id)initWithCopy:(id)arg1 andInfo:(CDStruct_4a07eeda)arg2 andRowBytes:(unsigned long long)arg3;
-- (id)initWithCopy:(id)arg1;
-- (id)initWithInfo:(CDStruct_4a07eeda)arg1 rowBytes:(unsigned long long)arg2 andData:(void *)arg3;
-- (id)initWithInfo:(CDStruct_4a07eeda)arg1 andData:(void *)arg2;
-- (id)initWithInfo:(CDStruct_4a07eeda)arg1;
-- (id)init;
 - (unsigned long long)_packedRowBytes;
+- (id)init;
+- (id)initWithInfo:(CDStruct_d76d3d7a)arg1;
+- (id)initWithInfo:(CDStruct_d76d3d7a)arg1 andData:(void *)arg2;
+- (id)initWithInfo:(CDStruct_d76d3d7a)arg1 rowBytes:(unsigned long long)arg2 andData:(void *)arg3;
+- (id)initWithCopy:(id)arg1;
+- (id)initWithCopy:(id)arg1 andInfo:(CDStruct_d76d3d7a)arg2 andRowBytes:(unsigned long long)arg3;
+- (id)initWithCopy:(id)arg1 andInfo:(CDStruct_d76d3d7a)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (void)setDataPtr:(void *)arg1;
+- (void *)dataPtr;
+- (void *)dataPtrForPositionX:(unsigned long long)arg1 Y:(unsigned long long)arg2;
+- (void)setRowBytes:(unsigned long long)arg1;
+- (unsigned long long)rowBytes;
+- (BOOL)_verifyImage;
+- (BOOL)_ownsData;
 
 @end
 

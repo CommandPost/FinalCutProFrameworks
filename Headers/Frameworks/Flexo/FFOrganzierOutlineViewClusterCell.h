@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     FFOrganizerClusterCountHelperCell *_itemsHelperCell;
 }
 
-@property(retain) NSObject<FFOrganizerItem><FFOrganizerMasterItem> *cluster; // @synthesize cluster=_cluster;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
+@property(retain) NSObject<FFOrganizerItem><FFOrganizerMasterItem> *cluster; // @synthesize cluster=_cluster;
 
 @end
 

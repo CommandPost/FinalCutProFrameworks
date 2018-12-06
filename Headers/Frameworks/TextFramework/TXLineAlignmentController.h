@@ -11,11 +11,11 @@
     struct TXTextLayout *_text;
 }
 
-- (void)update;
-- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_198678f7)arg3;
-- (BOOL)areAllChannelsEqual;
-- (void)setChannelValue:(id)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 text:(struct TXTextLayout *)arg2 context:(id)arg3;
+- (void)setChannelValue:(id)arg1;
+- (BOOL)areAllChannelsEqual;
+- (void)setValue:(int)arg1 forChannel:(struct OZChannelEnum *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (void)update;
 
 @end
 

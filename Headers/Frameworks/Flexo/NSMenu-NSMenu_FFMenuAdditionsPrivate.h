@@ -7,7 +7,7 @@
 #import "NSMenu.h"
 
 @interface NSMenu (NSMenu_FFMenuAdditionsPrivate)
-- (void)createAudioEffectsMenu:(SEL)arg1 channels:(id)arg2 module:(id)arg3 tag:(long long)arg4 allowOffline:(BOOL)arg5;
 - (void)createVideoEffectsMenuForEffectType:(id)arg1 action:(SEL)arg2 module:(id)arg3 tag:(long long)arg4;
+- (void)createAudioEffectsMenu:(SEL)arg1 channels:(id)arg2 module:(id)arg3 tag:(long long)arg4 allowOffline:(BOOL)arg5;
 @end
 

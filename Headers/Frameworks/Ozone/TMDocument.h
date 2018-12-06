@@ -8,11 +8,10 @@
 
 #import "NSPasteboardReading.h"
 #import "NSPasteboardWriting.h"
-#import "NSSecureCoding.h"
 
 @class NSDate, NSDictionary, NSImage, NSString, TMCollection;
 
-@interface TMDocument : NSObject <NSSecureCoding, NSPasteboardWriting, NSPasteboardReading>
+@interface TMDocument : NSObject <NSPasteboardWriting, NSPasteboardReading>
 {
     NSString *_path;
     NSString *_resolvedPath;
@@ -26,53 +25,41 @@
     BOOL _livesInThemeFolder;
     BOOL _suppressNotifications;
     BOOL _deleteable;
-    BOOL _isSystemDoc;
     int _type;
 }
 
-+ (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
-+ (id)readableTypesForPasteboard:(id)arg1;
-+ (BOOL)supportsSecureCoding;
 + (id)documentWithPath:(id)arg1 resolvedPath:(id)arg2 collection:(id)arg3;
-+ (int)templateTypeFromDocumentType:(int)arg1;
-+ (int)documentTypeFromTemplateType:(int)arg1;
++ (id)readableTypesForPasteboard:(id)arg1;
++ (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
+- (id)initWithPath:(id)arg1 resolvedPath:(id)arg2 collection:(id)arg3;
+- (void)dealloc;
+- (BOOL)belongsToTheme:(id)arg1;
+- (id)path;
+- (void)setPath:(id)arg1;
+- (id)resolvedPath;
+- (void)setResolvedPath:(id)arg1;
+- (BOOL)isDocumentOnDisk;
+- (id)collection;
+- (id)attributes;
+- (id)title;
+- (id)titleWithExtension:(BOOL)arg1;
+- (void)setTitle:(id)arg1;
+- (id)image;
+- (void)setImage:(id)arg1;
+- (id)previewPath;
+- (id)modifiedDate;
+- (id)writableTypesForPasteboard:(id)arg1;
+- (id)pasteboardPropertyListForType:(id)arg1;
+- (void)flush;
+- (long long)compare:(id)arg1;
+- (long long)caseInsensitiveCompare:(id)arg1;
+- (BOOL)renameTo:(id)arg1;
+- (BOOL)trash;
+- (void)setDescription:(id)arg1;
+- (id)description;
 @property(nonatomic) BOOL livesInThemeFolder; // @synthesize livesInThemeFolder=_livesInThemeFolder;
 @property(nonatomic) BOOL deleteable; // @synthesize deleteable=_deleteable;
 @property(nonatomic) int type; // @synthesize type=_type;
-@property(readonly, copy) NSString *description;
-- (void)setDescription:(id)arg1;
-- (BOOL)trash;
-- (BOOL)renameTo:(id)arg1;
-- (long long)caseInsensitiveCompare:(id)arg1;
-- (long long)compare:(id)arg1;
-- (void)flush;
-- (id)pasteboardPropertyListForType:(id)arg1;
-- (id)writableTypesForPasteboard:(id)arg1;
-- (id)modifiedDate;
-- (id)previewPath;
-- (void)setImage:(id)arg1;
-- (id)image;
-- (void)setTitle:(id)arg1;
-- (id)titleWithExtension:(BOOL)arg1;
-- (id)title;
-- (id)attributes;
-- (id)collection;
-- (BOOL)isSystemDoc;
-- (BOOL)isDocumentOnDisk;
-- (void)setResolvedPath:(id)arg1;
-- (id)resolvedPath;
-- (void)setPath:(id)arg1;
-- (id)path;
-- (BOOL)belongsToTheme:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)initWithPath:(id)arg1 resolvedPath:(id)arg2 collection:(id)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

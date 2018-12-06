@@ -6,46 +6,30 @@
 
 #import <Flexo/FFVideoScopesChannelLayerGL.h>
 
-#import "FFVideoScopesWaveformYScaling.h"
 #import "FFWaveformContextLayer.h"
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface FFWaveformChannelLayer : FFVideoScopesChannelLayerGL <FFWaveformContextLayer, FFVideoScopesWaveformYScaling>
+@interface FFWaveformChannelLayer : FFVideoScopesChannelLayerGL <FFWaveformContextLayer>
 {
     struct FFVideoScopesWaveformViewPrivate *_waveformContext;
-    long long _displayMode;
-    long long _yScale;
+    long long _viewMode;
     unsigned long long _option;
-    float _traceBrightness;
-    _Bool _monochrome;
     CDStruct_69458254 _action_opt;
 }
 
-- (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
-- (struct CGRect)_boundsAppliedByContentsScale;
-- (BOOL)canDrawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
-- (void)releaseCGLContext:(struct _CGLContextObject *)arg1;
-- (struct _CGLContextObject *)copyCGLContextForPixelFormat:(struct _CGLPixelFormatObject *)arg1;
-- (void)releaseCGLPixelFormat:(struct _CGLPixelFormatObject *)arg1;
-- (struct _CGLPixelFormatObject *)copyCGLPixelFormatForDisplayMask:(unsigned int)arg1;
-- (id)actionForKey:(id)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
-- (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;
-- (void)setVideoScopesWaveformYScale:(long long)arg1;
-- (void)setDisplayMode:(long long)arg1;
-- (void)setWaveformContext:(struct FFVideoScopesWaveformViewPrivate *)arg1;
-- (void)setMonochrome:(BOOL)arg1;
-- (void)setTraceBrightness:(float)arg1;
-- (void)dealloc;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
+- (void)setWaveformContext:(struct FFVideoScopesWaveformViewPrivate *)arg1;
+- (void)setViewMode:(long long)arg1;
+- (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;
+- (struct CGRect)frameForBounds:(struct CGRect)arg1;
+- (id)actionForKey:(id)arg1;
+- (struct _CGLPixelFormatObject *)copyCGLPixelFormatForDisplayMask:(unsigned int)arg1;
+- (void)releaseCGLPixelFormat:(struct _CGLPixelFormatObject *)arg1;
+- (struct _CGLContextObject *)copyCGLContextForPixelFormat:(struct _CGLPixelFormatObject *)arg1;
+- (void)releaseCGLContext:(struct _CGLContextObject *)arg1;
+- (BOOL)canDrawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
+- (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
 
 @end
 

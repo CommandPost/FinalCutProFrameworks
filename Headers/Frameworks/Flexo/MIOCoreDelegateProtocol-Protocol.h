@@ -4,20 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSNotification;
-
 @protocol MIOCoreDelegateProtocol
 
 @optional
-- (void)mioOutputDroppedFrames:(NSNotification *)arg1;
-- (void)mioOutputEndOfData:(NSNotification *)arg1;
-- (void)mioIngestError:(NSNotification *)arg1;
-- (void)mioSegmentIngestDidComplete:(NSNotification *)arg1;
-- (void)mioSegmentIngestDidBegin:(NSNotification *)arg1;
-- (void)mioSegmentIngestLookingForMedia:(NSNotification *)arg1;
-- (void)mioSegmentIngestWaitingForDevice:(NSNotification *)arg1;
-- (void)mioSegmentIngestCueingDidBegin:(NSNotification *)arg1;
-- (void)mioClipDidIngest:(NSNotification *)arg1;
-- (void)mioClipWillIngest:(NSNotification *)arg1;
+- (void)mioClipWillIngest:(id)arg1;
+- (void)mioClipDidIngest:(id)arg1;
+- (void)mioSegmentIngestCueingDidBegin:(id)arg1;
+- (void)mioSegmentIngestWaitingForDevice:(id)arg1;
+- (void)mioSegmentIngestLookingForMedia:(id)arg1;
+- (void)mioSegmentIngestDidBegin:(id)arg1;
+- (void)mioSegmentIngestDidComplete:(id)arg1;
+- (void)mioIngestError:(id)arg1;
+- (void)mioOutputEndOfData:(id)arg1;
+- (void)mioOutputDroppedFrames:(id)arg1;
 @end
 

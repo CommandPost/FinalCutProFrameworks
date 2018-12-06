@@ -8,25 +8,17 @@
 
 #import "NSWindowDelegate.h"
 
-@class NSString;
-
 @interface OZBakeSheetController : NSWindowController <NSWindowDelegate>
 {
     struct OZDocument *_pDoc;
 }
 
-- (void)cancelBake:(id)arg1;
-- (void)okBake:(id)arg1;
-- (void)windowWillClose:(id)arg1;
-- (void)doBake:(struct OZDocument *)arg1;
-- (void)windowDidLoad;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)windowDidLoad;
+- (void)doBake:(struct OZDocument *)arg1;
+- (void)windowWillClose:(id)arg1;
+- (void)okBake:(id)arg1;
+- (void)cancelBake:(id)arg1;
 
 @end
 

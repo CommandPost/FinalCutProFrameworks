@@ -6,128 +6,43 @@
 
 #import "CALayer.h"
 
-#import "FFFilmstripCellDelegate.h"
-
-@class CAReplicatorLayer, CAShapeLayer, FFAnchoredObject, NSArray, NSMutableArray, NSString;
+@class FFAnchoredObject, NSMapTable, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface FFFilmstripLayer : CALayer <FFFilmstripCellDelegate>
+@interface FFFilmstripLayer : CALayer
 {
-    double _timePerHorizontalPixel;
-    NSArray *_segments;
-    NSArray *_times;
-    NSArray *_timePerPoints;
-    int _filmstripMode;
-    CAReplicatorLayer *_creaseLayer;
-    CALayer *_videoLayerOverlay;
-    CAShapeLayer *_audioDuckingOverlay;
-    unsigned int _filmstripOverlay:1;
-    unsigned int _firstVideoFrameFull:1;
-    unsigned int _lastVideoFrameOffset:1;
-    unsigned int _usingTimePerPixel;
-    unsigned int _storedOffset:1;
-    unsigned int _duckingChannelVisible:1;
-    double _offset;
-    double _savedOffset;
-    struct PCProcrastinatedDispatch_t _procrastinatedReload;
-    id <FFFilmstripLayerDelegate> _filmstripDelegate;
-    BOOL _forceNoUpdate;
-    BOOL _cellsDirty;
-    BOOL _highlighted;
-    BOOL _forceReloadCells;
-    FFAnchoredObject *_skimmableObject;
-    long long _index;
-    CDUnknownBlockType _colorSchemeVariantForRole;
-    NSMutableArray *_cellArray;
-    long long _currentCell;
-    long long _roleColorSchemeVariant;
-    struct CGRect _visibleBounds;
+    FFAnchoredObject *_anchoredObject;
     CDStruct_e83c9415 _clippedRange;
-    CDStruct_e83c9415 _visibleTimeRange;
+    CDStruct_e83c9415 _unclippedRange;
+    double _timePerHorizontalPixel;
+    int _filmstripMode;
+    NSMutableArray *_cellArray;
+    NSMapTable *_creases;
+    CDStruct_1b6d18a9 _timePerCell;
+    struct CGRect _visibleBounds;
+    unsigned long long _totalCellCount;
+    double _totalWidth;
+    unsigned int _inited:1;
+    unsigned int _forceNoUpdate:1;
+    unsigned int _forceUpdate:1;
 }
 
-@property BOOL forceReloadCells; // @synthesize forceReloadCells=_forceReloadCells;
-@property(nonatomic) long long roleColorSchemeVariant; // @synthesize roleColorSchemeVariant=_roleColorSchemeVariant;
-@property(nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
-@property BOOL cellsDirty; // @synthesize cellsDirty=_cellsDirty;
-@property(nonatomic) long long currentCell; // @synthesize currentCell=_currentCell;
-@property(retain) NSMutableArray *cellArray; // @synthesize cellArray=_cellArray;
-@property CDStruct_e83c9415 visibleTimeRange; // @synthesize visibleTimeRange=_visibleTimeRange;
-@property(copy, nonatomic) CDUnknownBlockType colorSchemeVariantForRole; // @synthesize colorSchemeVariantForRole=_colorSchemeVariantForRole;
-@property(nonatomic) long long index; // @synthesize index=_index;
-@property(nonatomic) BOOL forceNoUpdate; // @synthesize forceNoUpdate=_forceNoUpdate;
-@property(nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
-@property(nonatomic) int filmstripMode; // @synthesize filmstripMode=_filmstripMode;
-@property(nonatomic) double timePerHorizontalPixel; // @synthesize timePerHorizontalPixel=_timePerHorizontalPixel;
-@property(nonatomic) CDStruct_e83c9415 clippedRange; // @synthesize clippedRange=_clippedRange;
-@property(retain, nonatomic) FFAnchoredObject *skimmableObject; // @synthesize skimmableObject=_skimmableObject;
-- (id).cxx_construct;
-- (BOOL)filmstripCell:(id)arg1 isThumbnailGenerationPausedForRequest:(id)arg2;
-- (int)thumbnailAudioOptionsForFilmstripCell:(id)arg1;
-- (BOOL)filmstripCell:(id)arg1 shouldUpdateThumbnailWithSkimmable:(struct NSObject *)arg2;
-- (BOOL)useImageCache;
-- (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
-@property(readonly) BOOL shouldStretchCells;
-- (void)setContentsScale:(double)arg1;
-- (void)updateRoleColor;
-- (void)updateIfNeeded;
-@property(readonly, nonatomic) BOOL updatesEnabled;
-- (void)_updateDuckingShape;
-- (void)_updateColorSchemeVariant;
-- (void)_updateHighlightedState;
-- (double)xLocationForTime:(CDStruct_1b6d18a9)arg1;
-- (void)_updateLayers:(id)arg1 withDelegate:(id)arg2;
-- (void)_invalidateCells;
-- (struct CGRect)_integralRect:(struct CGRect)arg1;
-- (double)_cellWidth;
-- (double)_frameAspectRatio;
-- (void)layoutSublayers;
-- (BOOL)updateRequired;
-- (void)_updateCellHeight;
-- (void)stretchCells;
-@property(nonatomic) BOOL showDuckingChannel;
-- (void)colorSchemeHasChanged;
-- (void)clearStoredOffset;
-@property(nonatomic) BOOL storeOffset;
-@property(nonatomic) BOOL lastVideoFrameOffset;
-@property(nonatomic) BOOL firstVideoFrameFull;
-@property(nonatomic) BOOL showFilmstripOverlay;
-- (void)computeNonLinearSpacerAudioWithSegment:(long long)arg1 segmentFrame:(struct CGRect)arg2 andTimeRange:(struct _TLKRange)arg3 endTime:(CDStruct_1b6d18a9)arg4 unclippedRange:(CDStruct_e83c9415)arg5;
-- (void)_removeCells:(id)arg1;
-- (void)_removeRemainingUnusedCells;
-- (void)_removeUnusedCells;
-- (void)_removeUnusedCells_PointsCalculation;
-- (void)_recomputeCells_PointsCalculation;
-- (void)_recomputeCells;
-- (void)_recomputeCellsRanges;
-- (void)_recomputeCellsTPP_PointsCalculation;
-- (void)_recomputeCellsTimePerPixel;
-- (struct CGRect)_boundsForRange:(CDStruct_e83c9415)arg1;
-- (struct CGRect)_alignRect:(struct CGRect)arg1;
-- (double)locationForTime:(CDStruct_1b6d18a9)arg1;
-- (void)_insertCell:(id)arg1;
-- (id)_filmstripCellWithFrame:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3;
-- (void)_updateColorSchemeVariantForCell:(id)arg1;
-- (id)_reuseCellWithFrame:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3;
-- (id)_pointsCalculationReuseCellWithFrame:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3;
-- (id)_prepareCellForReuse:(id)arg1 withframe:(struct CGRect)arg2 andTimeRange:(CDStruct_e83c9415)arg3 originalUnClippedRange:(CDStruct_e83c9415)arg4;
-- (void)_performIfVideoOnly:(CDUnknownBlockType)arg1;
-- (void)_performIfAudioOnly:(CDUnknownBlockType)arg1;
-- (void)_updateVisibleTimeRange;
-- (void)_setVisibleBounds_PointsCalculation;
-- (void)setSegmentRanges:(id)arg1 timePerPoints:(id)arg2 andTimes:(id)arg3;
-- (void)rangeInvalidated:(id)arg1;
-@property id <FFFilmstripLayerDelegate> filmstripDelegate; // @synthesize filmstripDelegate=_filmstripDelegate;
-- (void)addDebugInfo;
-- (id)_fullDescription;
-@property(readonly, copy) NSString *description;
-- (void)dealloc;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithLayer:(id)arg1;
+- (void)dealloc;
+@property(retain, nonatomic) FFAnchoredObject *anchoredObject;
+@property(nonatomic) CDStruct_e83c9415 clippedRange;
+@property(nonatomic) double timePerHorizontalPixel;
+@property(nonatomic) int filmstripMode;
+@property(nonatomic) struct CGRect visibleBounds;
+@property(nonatomic) BOOL forceNoUpdate;
+@property(nonatomic) BOOL forceUpdate;
+- (id)_createFilmstripCellWithframe:(struct CGRect)arg1 andTimeRange:(CDStruct_e83c9415)arg2 originalUnClippedRange:(CDStruct_e83c9415)arg3 startIndex:(unsigned long long *)arg4;
+- (void)_recomputeCells;
+- (void)layoutSublayers;
+- (double)_frameAspectRatio;
+- (double)_cellWidth;
+- (void)_invalidateCells;
 
 @end
 

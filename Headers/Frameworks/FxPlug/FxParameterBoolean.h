@@ -11,8 +11,8 @@
     struct FxParameterBooleanPriv *_booleanPriv;
 }
 
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
 
 @end
 

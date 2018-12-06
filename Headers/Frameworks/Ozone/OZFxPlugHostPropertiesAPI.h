@@ -9,22 +9,14 @@
 #import "FxHostPropertiesAPI.h"
 #import "PROAPIObject.h"
 
-@class NSString;
-
 @interface OZFxPlugHostPropertiesAPI : NSObject <FxHostPropertiesAPI, PROAPIObject>
 {
 }
 
-+ (void)releaseSharedHostPropertiesAPI;
 + (id)sharedHostPropertiesAPI;
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
++ (void)releaseSharedHostPropertiesAPI;
 - (id)hostProperties;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 
 @end
 

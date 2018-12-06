@@ -6,25 +6,11 @@
 
 #import "CALayer.h"
 
-#import "TLKPartInfo.h"
-
-@class NSString;
-
-@interface TLKBumperForegroundLayer : CALayer <TLKPartInfo>
+@interface TLKBumperForegroundLayer : CALayer
 {
-    BOOL _drawsBackground;
 }
 
-@property(nonatomic) BOOL drawsBackground; // @synthesize drawsBackground=_drawsBackground;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)partIdentifier;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

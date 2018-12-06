@@ -11,13 +11,14 @@
 }
 
 + (id)sharedInstance;
-- (id)presetMatchingSize:(struct CGSize)arg1 andFrameRate:(double)arg2;
-- (id)presetMatchingSize:(struct CGSize)arg1;
-- (int)presetIndexForDocument:(struct OZDocument *)arg1;
-- (id)defaultPresetKey;
-- (id)alwaysUseDefaultPresetKey;
-- (Class)presetClass;
 - (id)init;
+- (Class)presetClass;
+- (id)alwaysUseDefaultPresetKey;
+- (id)defaultPresetKey;
+- (int)presetIndexForDocument:(struct OZDocument *)arg1;
+- (id)presetMatchingSize:(struct CGSize)arg1;
+- (id)presetMatchingSize:(struct CGSize)arg1 andFrameRate:(double)arg2;
+- (id)presetForName:(id)arg1;
 
 @end
 

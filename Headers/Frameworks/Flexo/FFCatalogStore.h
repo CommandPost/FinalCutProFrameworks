@@ -15,19 +15,17 @@ __attribute__((visibility("hidden")))
     NSURL *_URI;
 }
 
-+ (void)initialize;
-- (BOOL)bringUpToDate:(id *)arg1;
-- (void)setClientVersion:(int)arg1;
-- (int)clientVersion;
-- (long long)catalogVersion;
-- (void)setRootObject:(id)arg1;
-- (id)objectWithID:(id)arg1 error:(id *)arg2;
-- (void)setIdentifier:(id)arg1;
-- (id)URI;
-- (id)catalog;
-- (void)dealloc;
-- (id)initWithCatalog:(id)arg1 url:(id)arg2 validate:(BOOL)arg3 error:(id *)arg4;
 - (id)initWithBridge:(id)arg1 url:(id)arg2 options:(id)arg3 error:(id *)arg4;
+- (id)initWithCatalog:(id)arg1 url:(id)arg2 validate:(BOOL)arg3 error:(id *)arg4;
+- (void)dealloc;
+- (id)catalog;
+- (id)URI;
+- (void)setIdentifier:(id)arg1;
+- (id)objectWithID:(id)arg1;
+- (void)setRootObject:(id)arg1;
+- (int)clientVersion;
+- (void)setClientVersion:(int)arg1;
+- (BOOL)bringUpToDate:(id *)arg1;
 
 @end
 

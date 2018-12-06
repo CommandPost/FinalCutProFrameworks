@@ -17,17 +17,17 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_properties;
 }
 
+- (id)initWithMetadataViewSet:(id)arg1;
+- (void)dealloc;
+- (void)setKeysFromMetadataViewSet:(id)arg1;
+- (void)setPropertiesFromMetadataViewSet:(id)arg1;
+- (void)addProperty:(id)arg1;
+- (void)removeProperty:(id)arg1;
+- (id)propertyFromKey:(id)arg1;
 @property(retain, nonatomic) NSArray *properties; // @synthesize properties=_properties;
 @property(retain, nonatomic) NSString *userModifiable; // @synthesize userModifiable=_userModifiable;
 @property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(retain, nonatomic) FFMetadataViewSet *representedObject; // @synthesize representedObject=_representedObject;
-- (id)propertyFromKey:(id)arg1;
-- (void)removeProperty:(id)arg1;
-- (void)addProperty:(id)arg1;
-- (void)setPropertiesFromMetadataViewSet:(id)arg1;
-- (void)setKeysFromMetadataViewSet:(id)arg1;
-- (void)dealloc;
-- (id)initWithMetadataViewSet:(id)arg1;
 
 @end
 

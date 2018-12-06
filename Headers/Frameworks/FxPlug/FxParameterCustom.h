@@ -13,10 +13,10 @@
     struct FxParameterCustomPriv *_customPriv;
 }
 
-- (id)valueFromData:(id)arg1;
-- (id)dataFromValue:(id)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)dataFromValue:(id)arg1;
+- (id)valueFromData:(id)arg1;
 
 @end
 

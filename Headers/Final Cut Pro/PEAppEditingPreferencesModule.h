@@ -4,24 +4,29 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "LKPreferencesModule.h"
+#import "NSProPreferencesModule.h"
 
-@class LKSegmentedScrubber;
+@class LKButton, LKPopUpButton, NSBox, NSProSegmentedScrubber, NSProView;
 
-@interface PEAppEditingPreferencesModule : LKPreferencesModule
+@interface PEAppEditingPreferencesModule : NSProPreferencesModule
 {
-    LKSegmentedScrubber *transitionsDurationScrubber;
-    LKSegmentedScrubber *stillImagesDurationScrubber;
-    LKSegmentedScrubber *defaultAudioFadeDurationScrubber;
+    LKPopUpButton *formatPopUp;
+    NSBox *configurationBox;
+    NSProView *HMSFConfigurationView;
+    LKButton *HMSF24HourRolloverCheckbox;
+    NSProView *secondsConfigurationView;
+    NSProSegmentedScrubber *secondsDecimalPlacesField;
 }
 
++ (id)newFormatter;
+- (void)moduleWasInstalled;
+- (void)awakeFromNib;
 - (void)dealloc;
 - (id)titleForIdentifier:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)awakeFromNib;
-- (void)moduleWasInstalled;
-- (BOOL)isResizable;
-- (id)imageForPreferenceNamed:(id)arg1;
+- (void)changeTimeFormatParameter:(id)arg1;
+- (void)resetDialogWarnings:(id)arg1;
+- (void)_installConfigurationViewForFormat:(long long)arg1;
+- (void)_configureTimecodeFormatter:(id)arg1 forFormat:(long long)arg2;
 
 @end
 

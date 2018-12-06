@@ -13,36 +13,31 @@
 @interface PEDataListContainerModule : LKViewModule <FFDataListDelegate>
 {
     FFDataListModule *_dataList;
-    BOOL _hiddenAfterLayout;
-    struct CGRect _desiredFrameAfterLayout;
     LKPaneCapView *topBar;
 }
 
-@property(readonly, nonatomic) FFDataListModule *dataList; // @synthesize dataList=_dataList;
-- (void)showCaptionEditorForCaption:(id)arg1;
-- (id)activeEditorModule;
-- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
-- (id)selectedItems;
-- (void)selectItems:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)sequenceDidChange:(id)arg1;
-- (id)contentLayoutDictionary;
-- (void)takeContentLayoutFromDictionary:(id)arg1;
-- (void)displayPostAutoLayout;
-- (id)firstKeyView;
-- (BOOL)wantsFooterBar;
-- (BOOL)wantsHeaderBar;
-- (id)moduleFooterAccessoryView;
-- (id)moduleHeaderAccessoryView;
-- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
-- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
-- (void)moduleViewWillBeRemoved:(id)arg1;
-- (void)moduleViewWasInstalled:(id)arg1;
-- (struct CGSize)viewMaxSize;
-- (struct CGSize)viewMinSize;
-- (unsigned long long)revealAnimationStyle;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (id)identifier;
+- (unsigned long long)revealAnimationStyle;
+- (struct CGSize)viewMinSize;
+- (struct CGSize)viewMaxSize;
+- (void)moduleViewWasInstalled:(id)arg1;
+- (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)module:(id)arg1 didAddSubmodule:(id)arg2;
+- (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
+- (id)moduleHeaderAccessoryView;
+- (id)moduleFooterAccessoryView;
+- (BOOL)wantsHeaderBar;
+- (BOOL)wantsFooterBar;
+- (id)firstKeyView;
+- (void)sequenceDidChange:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)selectItems:(id)arg1;
+- (id)selectedItems;
+- (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
+- (id)activeEditorModule;
+@property(readonly, retain, nonatomic) FFDataListModule *dataList; // @synthesize dataList=_dataList;
 
 @end
 

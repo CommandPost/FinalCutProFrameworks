@@ -11,8 +11,8 @@
     struct FxParameterImagePriv *_imagePriv;
 }
 
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
 
 @end
 

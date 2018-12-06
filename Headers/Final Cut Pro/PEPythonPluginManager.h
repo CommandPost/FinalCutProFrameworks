@@ -11,8 +11,8 @@
 }
 
 + (id)sharedManager;
-- (BOOL)loadPythonScriptAtPath:(id)arg1 runFunction:(id)arg2 withArguments:(id)arg3;
 - (BOOL)setupPythonEnvironment;
+- (BOOL)loadPythonScriptAtPath:(id)arg1 runFunction:(id)arg2 withArguments:(id)arg3;
 
 @end
 

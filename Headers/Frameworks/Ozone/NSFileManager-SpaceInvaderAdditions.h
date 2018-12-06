@@ -7,10 +7,10 @@
 #import "NSFileManager.h"
 
 @interface NSFileManager (SpaceInvaderAdditions)
-- (id)modificationDateForFileAtPath:(id)arg1;
-- (BOOL)trashFileAtPath:(id)arg1;
-- (BOOL)isRegularFile:(id)arg1;
-- (BOOL)isDirectory:(id)arg1;
 - (id)resolvePath:(id)arg1;
+- (BOOL)isDirectory:(id)arg1;
+- (BOOL)isRegularFile:(id)arg1;
+- (BOOL)trashFileAtPath:(id)arg1;
+- (id)modificationDateForFileAtPath:(id)arg1;
 @end
 

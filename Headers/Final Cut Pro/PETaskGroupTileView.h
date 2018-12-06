@@ -6,18 +6,13 @@
 
 #import "LKTileView.h"
 
-@class NSImage;
-
 @interface PETaskGroupTileView : LKTileView
 {
-    NSImage *_dividerImage;
 }
 
-- (void)scrollTileToVisible:(id)arg1;
-- (void)drawDividerForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
 - (void)drawBackgroundForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
-@property(readonly, nonatomic) NSImage *dividerImage; // @synthesize dividerImage=_dividerImage;
-- (void)dealloc;
+- (void)drawDividerForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
+- (void)scrollTileToVisible:(id)arg1;
 
 @end
 

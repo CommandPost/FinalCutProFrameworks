@@ -4,53 +4,22 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <TLKit/TLKImageLayer.h>
+#import <TLKit/TLKThemeBackedLayer.h>
 
 #import "TLKPartInfo.h"
 
-@class NSString, TLKTimelineView;
-
-@interface TLKButtonLayer : TLKImageLayer <TLKPartInfo>
+@interface TLKButtonLayer : TLKThemeBackedLayer <TLKPartInfo>
 {
     CDUnknownBlockType _pressedHandler;
     long long _tag;
-    NSString *_toolTip;
-    NSString *_accessibilityTitle;
 }
 
-@property(copy) NSString *accessibilityTitle; // @synthesize accessibilityTitle=_accessibilityTitle;
-@property(copy) NSString *toolTip; // @synthesize toolTip=_toolTip;
-@property long long tag; // @synthesize tag=_tag;
-- (BOOL)accessibilityIsAttributeSettable:(id)arg1;
-- (id)accessibilityFocusedUIElement;
-- (id)accessibilityHitTest:(struct CGPoint)arg1;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)accessibilityAttributeNames;
-- (struct CGRect)accessibilityRect;
-- (id)accessibilityEnabled;
-- (void)accessibilityPerformAction:(id)arg1;
-- (id)accessibilityActionDescription:(id)arg1;
-- (id)accessibilityActionNames;
-- (BOOL)accessibilityIsIgnored;
-- (id)accessibilityParent;
-- (id)accessibilityHelp;
-- (id)accessibilityDescription;
-- (id)accessibilityRole;
-- (id)timelineView;
-- (CDUnknownBlockType)pressedHandler;
-- (void)setPressedHandler:(CDUnknownBlockType)arg1;
-- (id)partIdentifier;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)hitTest:(struct CGPoint)arg1;
 - (void)dealloc;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property __weak TLKTimelineView *delegate; // @dynamic delegate;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)partIdentifier;
+- (void)setPressedHandler:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)pressedHandler;
+@property long long tag; // @synthesize tag=_tag;
 
 @end
 

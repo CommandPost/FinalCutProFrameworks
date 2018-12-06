@@ -16,21 +16,20 @@
     BOOL _renderFromOriginalMedia;
 }
 
-+ (id)formatForCodecType:(unsigned int)arg1;
-+ (id)formatForName:(id)arg1;
-+ (id)formatsForExportCompatibleWith:(id)arg1;
-+ (id)formatsForRender;
-+ (id)allFormats;
 + (void)releaseSharedInstance;
-- (id)renderPropsForVideoProps:(id)arg1 mismatchColorSpacePolicy:(int)arg2;
-- (id)renderPropsForVideoProps:(id)arg1;
-- (id)description;
-- (BOOL)renderFromOriginalMedia;
-- (id)renderProps;
-- (id)displayName;
-- (id)name;
-- (void)dealloc;
++ (id)allFormats;
++ (id)formatsForRender;
++ (id)formatsForExportCompatibleWith:(id)arg1;
++ (id)formatForName:(id)arg1;
++ (id)formatForCodecType:(unsigned int)arg1;
 - (id)initWithName:(id)arg1 displayName:(id)arg2 renderFromOriginalMedia:(BOOL)arg3 renderProps:(id)arg4;
+- (void)dealloc;
+- (id)name;
+- (id)displayName;
+- (id)renderProps;
+- (BOOL)renderFromOriginalMedia;
+- (id)description;
+- (id)renderPropsForVideoProps:(id)arg1;
 
 @end
 

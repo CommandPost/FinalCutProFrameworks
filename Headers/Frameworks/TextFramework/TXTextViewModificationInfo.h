@@ -18,8 +18,8 @@
     TXTextViewController *_textViewCtlr;
 }
 
-- (void)dealloc;
 - (void)setString:(id)arg1;
+- (void)dealloc;
 
 @end
 

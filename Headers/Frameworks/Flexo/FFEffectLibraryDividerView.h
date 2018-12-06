@@ -6,23 +6,18 @@
 
 #import "NSView.h"
 
-#import "CALayerDelegate.h"
-
-@class NSString;
+@class CALayer, CATextLayer;
 
 __attribute__((visibility("hidden")))
-@interface FFEffectLibraryDividerView : NSView <CALayerDelegate>
+@interface FFEffectLibraryDividerView : NSView
 {
+    CALayer *_rootLayer;
+    CATextLayer *_nameLayer;
+    CALayer *_dividerLayer;
 }
 
 - (id)initWithName:(id)arg1 andLine:(BOOL)arg2;
-- (BOOL)layer:(id)arg1 shouldInheritContentsScale:(double)arg2 fromWindow:(id)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)dealloc;
 
 @end
 

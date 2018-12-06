@@ -4,9 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFSource, NSSet, NSString;
-
 @protocol FFSegmentedSourceProtocol
-- (FFSource *)newSegmentedSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 audioAngles:(NSSet *)arg6 videoAngle:(NSString *)arg7 toLane:(long long)arg8 showOnlyObjects:(NSSet *)arg9 roles:(NSSet *)arg10 angleOffset:(long long)arg11 angleCount:(long long)arg12 clippedByContainer:(BOOL)arg13;
+- (id)newSegmentedSourceForTime:(CDStruct_1b6d18a9)arg1 offset:(CDStruct_1b6d18a9 *)arg2 range:(CDStruct_e83c9415 *)arg3 identifier:(id *)arg4 effectCount:(long long)arg5 angle:(long long)arg6 toLane:(long long)arg7 showOnlyObjects:(id)arg8 clippedByContainer:(BOOL)arg9;
 @end
 

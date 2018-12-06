@@ -4,36 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
-
-#import "FFPrioritizedWorkUnit.h"
-
-@class FFSegmentStore, FFSegmentStoreManagerRunLock, NSObject<OS_dispatch_group>;
+#import <Flexo/FFSegmentSample.h>
 
 __attribute__((visibility("hidden")))
-@interface FFSegmentWriteSample : NSObject <FFPrioritizedWorkUnit>
+@interface FFSegmentWriteSample : FFSegmentSample
 {
-    long long _offset;
-    FFSegmentStore *_store;
-    id _sample;
     id _sample2;
     int _fieldOrder;
-    int _cameraMode;
-    int _priority;
-    NSObject<OS_dispatch_group> *_writeGroup;
-    FFSegmentStoreManagerRunLock *_runLock;
-    int _runLockTag;
+    double _cost;
 }
 
-+ (void)performBlockWhenPendingWritesFinish:(CDUnknownBlockType)arg1;
-+ (void)initialize;
-@property(readonly) long long offset; // @synthesize offset=_offset;
-- (_Bool)isCancelled;
-- (_Bool)setSVPriority:(int)arg1;
-- (int)svPriority;
-- (void)performCompressAndWrite;
+- (id)initWithSample:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3 segmentStore:(id)arg4 offset:(long long)arg5 cost:(double)arg6;
 - (void)dealloc;
-- (id)initWithSample:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3 cameraMode:(int)arg4 segmentStore:(id)arg5 offset:(long long)arg6 priority:(int)arg7;
+- (void)main;
+- (id)sample2;
 
 @end
 

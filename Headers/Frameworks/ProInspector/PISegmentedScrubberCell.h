@@ -11,9 +11,8 @@
     BOOL _isAutokeyTintEnabled;
 }
 
-@property(nonatomic) BOOL isAutokeyTintEnabled; // @synthesize isAutokeyTintEnabled=_isAutokeyTintEnabled;
 - (id)textColor;
-- (void)resetDefaultAppearance;
+@property(nonatomic) BOOL isAutokeyTintEnabled; // @synthesize isAutokeyTintEnabled=_isAutokeyTintEnabled;
 
 @end
 

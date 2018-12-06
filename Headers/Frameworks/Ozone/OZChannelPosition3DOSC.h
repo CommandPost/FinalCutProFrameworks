@@ -8,7 +8,7 @@
 
 @interface OZChannelPosition3DOSC : POChannel
 {
-    struct vector<OZChannelRef *, std::__1::allocator<OZChannelRef *>> *_positions;
+    struct vector<OZChannelRef*, std::allocator<OZChannelRef*>> *_positions;
     BOOL _moving;
     double _mouseX;
     double _mouseY;
@@ -18,16 +18,16 @@
 }
 
 + (BOOL)validate:(struct OZChannelBase *)arg1;
-- (BOOL)postRedisplayOnActivePartChange;
-- (void)draw;
-- (BOOL)oscFlagsChanged:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)mouseDragged:(id)arg1;
-- (void)mouseDown:(id)arg1;
-- (id)getDefaultCursor;
-- (struct OZChannelObjectRoot *)getChannelObjectRoot;
-- (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)dealloc;
+- (struct OZChannelObjectRoot *)getChannelObjectRoot;
+- (id)getDefaultCursor;
+- (void)mouseDown:(id)arg1;
+- (void)mouseDragged:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (BOOL)flagsChanged:(id)arg1;
+- (void)draw;
+- (BOOL)postRedisplayOnActivePartChange;
 
 @end
 

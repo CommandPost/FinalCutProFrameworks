@@ -16,31 +16,22 @@
     NSString *_pPath;
 }
 
-+ (id)generateTag;
-+ (id)defaultTag;
-- (BOOL)isUserCreated;
-- (BOOL)isWritable;
-- (void)setIsHidden:(BOOL)arg1;
-- (BOOL)isHidden;
-- (id)extendedDescription;
-- (void)setDescription:(id)arg1;
-- (id)description;
-- (void)setDisplayName:(id)arg1;
-- (id)displayName;
-- (void)setIsRegionalDefault:(BOOL)arg1;
-- (BOOL)isRegionalDefault;
-- (void)setPath:(id)arg1;
-- (id)path;
-- (void)setName:(id)arg1;
-- (id)name;
-- (BOOL)save;
-- (void)setTag:(id)arg1;
-- (id)tag;
-- (long long)compare:(id)arg1;
-- (BOOL)isEqualToPreset:(id)arg1;
-- (void)dealloc;
+- (id)initWithPath:(id)arg1 name:(id)arg2;
 - (id)initWithContentsOfFile:(id)arg1;
-- (id)initWithPath:(id)arg1 name:(id)arg2 tag:(id)arg3;
+- (void)dealloc;
+- (BOOL)isEqualToPreset:(id)arg1;
+- (long long)compare:(id)arg1;
+- (BOOL)save;
+- (id)name;
+- (void)setName:(id)arg1;
+- (id)path;
+- (void)setPath:(id)arg1;
+- (id)description;
+- (void)setDescription:(id)arg1;
+- (id)extendedDescription;
+- (BOOL)isHidden;
+- (void)setIsHidden:(BOOL)arg1;
+- (BOOL)isWritable;
 
 @end
 

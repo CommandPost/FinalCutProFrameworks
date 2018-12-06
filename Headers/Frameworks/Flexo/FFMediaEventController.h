@@ -6,52 +6,66 @@
 
 #import "NSObject.h"
 
-@class NSMapTable, NSOperationQueue;
+@class FFCatalog, FFMediaEventProject, FFStorageManager, NSMapTable, NSMutableSet, NSSet;
 
 @interface FFMediaEventController : NSObject
 {
+    FFCatalog *_catalog;
+    NSMutableSet *_mediaEvents;
     NSMapTable *_syncRequests;
+    FFStorageManager *_storageManager;
+    FFMediaEventProject *_defaultMediaEvent;
+    unsigned int _mediaIsSyncing;
+    unsigned int _flags;
     BOOL _hasDoneInitialSyncMedia;
-    NSOperationQueue *_operationQueue;
 }
 
-+ (void)releaseSharedInstance;
-+ (id)sharedInstance;
++ (id)keyPathsForValuesAffectingMediaEvents;
 + (void)initialize;
-+ (id)mediaComponentReferencesToMediaID:(id)arg1 inLibrary:(id)arg2;
-+ (id)mediaComponentReferencesToMediaID:(id)arg1 inSelection:(id)arg2;
-+ (id)_mediaComponentReferencesInObject:(id)arg1 mediaID:(id)arg2 includeAnchored:(BOOL)arg3;
-+ (void)_addObject:(id)arg1 toArray:(id)arg2 ifMediaComponentFor:(id)arg3;
-@property(readonly, nonatomic) BOOL hasDoneInitialSyncMedia; // @synthesize hasDoneInitialSyncMedia=_hasDoneInitialSyncMedia;
-- (BOOL)deleteEvents:(id)arg1 error:(id *)arg2;
-- (void)setDefaultMediaEvent:(id)arg1;
-- (id)defaultMediaEvent;
-- (void)dealloc;
-- (oneway void)release;
-- (id)init;
-- (void)appWillBecomeActive:(id)arg1;
-- (void)mediaQualityChanged:(id)arg1;
-- (void)syncMediaForEventInBackground:(id)arg1;
-- (BOOL)syncMediaForEvent:(id)arg1 onlyAsset:(id)arg2 after:(unsigned long long)arg3 error:(id *)arg4;
-- (BOOL)syncMediaForEvent:(id)arg1 asynchronously:(BOOL)arg2 error:(id *)arg3;
-- (void)syncMedia;
-- (BOOL)syncLibraryDocument:(id)arg1 error:(id *)arg2;
-- (void)waitForSyncMediaRequestsToFinish;
-- (BOOL)_syncMedia:(id *)arg1;
-- (BOOL)_syncMediaForEvent:(id)arg1 onlyAsset:(id)arg2 selector:(const CDStruct_b1640004 *)arg3 after:(unsigned long long)arg4 error:(id *)arg5;
-- (void)_syncCameraClipsForEvent:(id)arg1;
-- (void)_invalidateAssets:(id)arg1;
-- (void)_syncMediaCompleted:(id)arg1;
-- (void)_unregisterSyncRequest:(id)arg1;
-- (void)_resetMediaAvailableInEvent:(id)arg1;
-- (void)_registerSyncRequest:(id)arg1;
++ (id)sharedInstance;
++ (void)releaseSharedInstance;
++ (id)identifierForEvent:(id)arg1;
++ (id)eventForIdentifier:(id)arg1;
+@property(readonly, nonatomic) NSSet *mediaEvents;
+- (void)_didAddMediaEventProject:(id)arg1;
+- (void)_didRemoveMediaEventProject:(id)arg1;
+- (void)addMediaEventsObject:(id)arg1;
+- (void)removeMediaEventsObject:(id)arg1;
+- (void)addMediaEvents:(id)arg1;
+- (void)removeMediaEvents:(id)arg1;
+@property(nonatomic) BOOL mediaIsSyncing;
+- (void)_updateModifiedMediaRep:(id)arg1 isCurrent:(BOOL)arg2;
 - (id)_findSyncInfo:(id)arg1 identifier:(id)arg2;
-- (void)_updateModifiedMediaRep:(id)arg1 forRequest:(id)arg2 finishedDownload:(BOOL)arg3 forceUpdateForProjUpdate:(BOOL)arg4;
-- (void)_updateModifiedMediaRep:(id)arg1 forRequest:(id)arg2 finishedDownload:(BOOL)arg3;
-- (void)downloadFinishedForMediaRep:(id)arg1;
-- (BOOL)actionAddSnapShotOfSkimmableItemToEventController:(CDStruct_1b6d18a9)arg1 skimmable:(struct NSObject *)arg2 error:(id *)arg3;
-- (BOOL)actionMoveClipsToTrash:(id)arg1 mediaRefsToDelete:(id)arg2 error:(id *)arg3;
+- (void)_registerSyncRequest:(id)arg1;
+- (void)_unregisterSyncRequest:(id)arg1;
+- (void)_syncMediaCompleted:(id)arg1;
+- (void)_invalidateAssets:(id)arg1;
+- (void)_syncsyncCameraClipsForEvent:(id)arg1;
+- (BOOL)_syncMediaEvent:(id)arg1 selector:(const CDStruct_335aa10f *)arg2 inBackground:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)_syncMedia:(id *)arg1;
+- (BOOL)syncMediaForEvent:(id)arg1 asynchronously:(BOOL)arg2 error:(id *)arg3;
+- (void)syncMediaForEventInBackground:(id)arg1;
+- (void)mediaQualityChanged:(id)arg1;
+- (void)appWillBecomeActive:(id)arg1;
+- (id)init;
+- (void)dealloc;
 - (id)undoHandler;
+- (id)eventsURLForLocation:(id)arg1;
+- (id)newTemporaryEvent:(id *)arg1;
+- (id)newEventAtURL:(id)arg1 error:(id *)arg2;
+- (id)newEventAtLocation:(id)arg1 name:(id)arg2 error:(id *)arg3;
+- (id)defaultMediaEvent;
+- (void)setDefaultMediaEvent:(id)arg1;
+- (id)loadEventAtURL:(id)arg1;
+- (BOOL)externalEventReferencesExistForAssetRef:(id)arg1 excludingTheseClips:(id)arg2;
+- (id)eventClipsForAssetRefs:(id)arg1;
+- (id)_eventsToAddForLocation:(id)arg1;
+@property(nonatomic) BOOL autoLoadEvents;
+- (void)loadAllEvents;
+- (void)_loadEvents;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)description;
+@property(readonly, nonatomic) BOOL hasDoneInitialSyncMedia; // @synthesize hasDoneInitialSyncMedia=_hasDoneInitialSyncMedia;
 
 @end
 

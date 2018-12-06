@@ -21,27 +21,27 @@ __attribute__((visibility("hidden")))
     unsigned int mTotalChannelCount;
 }
 
-@property(retain, nonatomic) NSArray *formats; // @synthesize formats=mFormats;
-@property(retain, nonatomic) NSDictionary *currentStream; // @synthesize currentStream=mCurrentStream;
-@property(retain, nonatomic) NSArray *streams; // @synthesize streams=mStreams;
-@property(retain, nonatomic) NSArray *sampleRates; // @synthesize sampleRates=mSampleRates;
+- (id)initWithAudioDeviceID:(unsigned int)arg1;
+- (void)dealloc;
+@property(readonly) NSString *displayName;
+- (id)propertyForSelector:(unsigned int)arg1;
+@property(readonly) NSString *deviceName;
+@property(readonly) NSString *vendor;
+@property(readonly) NSString *UID;
+@property(readonly) NSString *modelUID;
+- (void)addDeviceListener;
+- (void)removeDeviceListener;
 @property(retain, nonatomic) NSArray *dataSources; // @synthesize dataSources=mDataSources;
+@property(retain) NSDictionary *currentDataSource;
+@property(retain, nonatomic) NSArray *sampleRates; // @synthesize sampleRates=mSampleRates;
+@property(retain) NSNumber *currentSampleRate;
+@property(retain, nonatomic) NSArray *streams; // @synthesize streams=mStreams;
+@property(retain, nonatomic) NSDictionary *currentStream; // @synthesize currentStream=mCurrentStream;
+@property(retain, nonatomic) NSArray *formats; // @synthesize formats=mFormats;
+@property(retain) NSDictionary *currentFormat;
+@property NSDictionary *properties;
 @property BOOL available; // @synthesize available=mAvailable;
 @property(readonly) unsigned int audioDeviceID; // @synthesize audioDeviceID=mAudioDeviceID;
-@property NSDictionary *properties;
-@property(retain) NSDictionary *currentFormat;
-@property(retain) NSNumber *currentSampleRate;
-@property(retain) NSDictionary *currentDataSource;
-- (void)removeDeviceListener;
-- (void)addDeviceListener;
-@property(readonly) NSString *modelUID;
-@property(readonly) NSString *UID;
-@property(readonly) NSString *vendor;
-@property(readonly) NSString *deviceName;
-- (id)propertyForSelector:(unsigned int)arg1;
-@property(readonly) NSString *displayName;
-- (void)dealloc;
-- (id)initWithAudioDeviceID:(unsigned int)arg1;
 
 @end
 

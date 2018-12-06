@@ -4,34 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CAReplicatorLayer.h"
+#import "CALayer.h"
 
-@class CALayer, NSView;
-
-@interface TLKMainSpineDropZoneLayer : CAReplicatorLayer
+@interface TLKMainSpineDropZoneLayer : CALayer
 {
     CALayer *_videoIconLayer;
-    CAReplicatorLayer *_topLineLayer;
-    CAReplicatorLayer *_bottomLineLayer;
-    unsigned int _setInstanceCount;
-    int _editingMode;
-    unsigned long long _mode;
-    CALayer *_dropZoneVideoLayer;
 }
 
-@property CALayer *dropZoneVideoLayer; // @synthesize dropZoneVideoLayer=_dropZoneVideoLayer;
-@property unsigned long long mode; // @synthesize mode=_mode;
-@property(nonatomic) int editingMode; // @synthesize editingMode=_editingMode;
-- (void)layoutSublayers;
-- (void)layoutReplicatorLayers;
-@property(readonly) double segmentWidth;
-- (void)positionDropZoneVideoLayerCoveringVisibleRect;
-- (void)setDelegate:(id)arg1;
-- (void)setInstanceCount:(long long)arg1;
-@property(readonly) unsigned long long mainSpineSegmentPadding;
-@property(readonly) NSView *parentView;
-- (void)dealloc;
 - (id)init;
+- (void)layoutSublayers;
 
 @end
 

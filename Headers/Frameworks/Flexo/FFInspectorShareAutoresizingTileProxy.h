@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
     NSView *resizableView;
 }
 
-- (void)viewFrameChanged:(id)arg1;
-- (void)dealloc;
 - (id)initWithAutoResizingTile:(id)arg1 resizableView:(id)arg2;
+- (void)dealloc;
+- (void)viewFrameChanged:(id)arg1;
 
 @end
 

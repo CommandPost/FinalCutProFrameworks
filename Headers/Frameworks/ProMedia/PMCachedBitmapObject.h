@@ -8,12 +8,12 @@
 
 @interface PMCachedBitmapObject : NSObject
 {
-    shared_ptr_1a5c5a10 *_bitmap;
+    shared_ptr_6c3c6330 *_bitmap;
 }
 
-- (shared_ptr_1a5c5a10)bitmap;
+- (id)initWithBitmap:(const shared_ptr_6c3c6330 *)arg1;
 - (void)dealloc;
-- (id)initWithBitmap:(const shared_ptr_1a5c5a10 *)arg1;
+- (shared_ptr_6c3c6330)bitmap;
 
 @end
 

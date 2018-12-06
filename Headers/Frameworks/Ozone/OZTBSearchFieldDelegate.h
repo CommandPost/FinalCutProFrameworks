@@ -6,21 +6,11 @@
 
 #import <Ozone/OZTBTextFieldDelegate.h>
 
-#import "NSSearchFieldDelegate.h"
-
-@class NSString;
-
-@interface OZTBSearchFieldDelegate : OZTBTextFieldDelegate <NSSearchFieldDelegate>
+@interface OZTBSearchFieldDelegate : OZTBTextFieldDelegate
 {
 }
 
 - (void)controlTextDidChange:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

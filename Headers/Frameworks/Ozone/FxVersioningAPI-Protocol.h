@@ -5,7 +5,6 @@
 //
 
 @protocol FxVersioningAPI
-- (BOOL)updateVersionAtCreation:(unsigned int)arg1;
 - (unsigned int)versionAtCreation;
 @end
 

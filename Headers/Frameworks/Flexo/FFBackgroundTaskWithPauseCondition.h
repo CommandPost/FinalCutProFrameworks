@@ -14,12 +14,13 @@
     BOOL _ackedPause;
 }
 
-- (void)blockIfPaused;
-- (BOOL)hasPaused;
-- (BOOL)supportsPaused;
-- (void)setPaused:(BOOL)arg1;
-- (void)dealloc;
 - (id)init;
+- (void)dealloc;
+- (void)setPaused:(BOOL)arg1;
+- (BOOL)supportsPaused;
+- (BOOL)hasPaused;
+- (void)blockIfPaused;
+- (void)override_ackedPause:(BOOL)arg1;
 
 @end
 

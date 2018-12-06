@@ -18,13 +18,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)runSheetForItem:(id)arg1 parentWindow:(id)arg2;
-- (void)cancel:(id)arg1;
-- (void)OK:(id)arg1;
-- (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
-- (void)windowDidLoad;
-- (void)_buildBundlesPopup;
-- (void)dealloc;
 - (id)initWithAnchoredObject:(id)arg1;
+- (void)dealloc;
+- (void)_buildBundlesPopup;
+- (void)windowDidLoad;
+- (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+- (void)OK:(id)arg1;
+- (void)cancel:(id)arg1;
 
 @end
 

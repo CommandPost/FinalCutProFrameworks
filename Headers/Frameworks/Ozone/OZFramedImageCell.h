@@ -18,16 +18,16 @@
     _Bool _filledWithPattern;
 }
 
+- (id)initTextCell:(id)arg1 filled:(_Bool)arg2;
+- (id)initImageCell:(id)arg1 filled:(_Bool)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (void)setFrameColor:(id)arg1;
+- (void)setBackgroundColor:(id)arg1;
+- (void)setFillWithPattern:(_Bool)arg1;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 @property(retain, nonatomic) NSImage *fillPatternImage; // @synthesize fillPatternImage=_patternImage;
 @property(retain, nonatomic) NSShadow *frameShadow; // @synthesize frameShadow=_frameShadow;
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (void)setFillWithPattern:(_Bool)arg1;
-- (void)setBackgroundColor:(id)arg1;
-- (void)setFrameColor:(id)arg1;
-- (void)dealloc;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initImageCell:(id)arg1 filled:(_Bool)arg2;
-- (id)initTextCell:(id)arg1 filled:(_Bool)arg2;
 
 @end
 

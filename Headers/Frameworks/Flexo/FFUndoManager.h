@@ -6,7 +6,7 @@
 
 #import "NSUndoManager.h"
 
-@class FFUndoHandler, NSMutableSet;
+@class FFUndoHandler;
 
 __attribute__((visibility("hidden")))
 @interface FFUndoManager : NSUndoManager
@@ -14,19 +14,12 @@ __attribute__((visibility("hidden")))
     FFUndoHandler *_undoHandler;
     BOOL _removeAllActionsDisabled;
     BOOL _removeAllActionsRequested;
-    NSMutableSet *_removeAllActionsWithTargetDeferredList;
 }
 
-@property(nonatomic) FFUndoHandler *undoHandler; // @synthesize undoHandler=_undoHandler;
-- (id)prepareWithInvocationTarget:(id)arg1;
-- (void)registerUndoWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
-- (void)updateTargetModDate:(id)arg1;
-- (void)removeAllActionsWithTarget:(id)arg1;
-- (void)removeAllActions;
-- (void)handleDeferredRemovals;
-- (void)redo;
 - (void)undo;
-- (void)dealloc;
+- (void)redo;
+- (void)removeAllActions;
+@property(nonatomic) FFUndoHandler *undoHandler; // @synthesize undoHandler=_undoHandler;
 
 @end
 

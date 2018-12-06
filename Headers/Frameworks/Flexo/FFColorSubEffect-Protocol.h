@@ -6,15 +6,12 @@
 
 #import "NSObject.h"
 
-@class FFEffect, FFHeColorEffect, NSString;
-
 @protocol FFColorSubEffect <NSObject>
-+ (NSString *)effectID;
-- (FFHeColorEffect *)colorEffect;
-- (void)setColorEffect:(FFHeColorEffect *)arg1;
++ (id)effectID;
+- (void)setColorEffect:(id)arg1;
 
 @optional
-+ (BOOL)isNoOpForSoleOpEffect:(FFEffect *)arg1;
 + (unsigned long long)numberOfAllowedInstances;
++ (BOOL)isNoOpForSoleOpEffect:(id)arg1;
 @end
 

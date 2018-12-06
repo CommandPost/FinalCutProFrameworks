@@ -6,81 +6,48 @@
 
 #import "NSObject.h"
 
-#import "FFBackgroundTaskTarget.h"
+@class FFBackgroundTask, FFStreamVideoCache, NSConditionLock, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject>;
 
-@class FFStreamVideoCache, NSConditionLock, NSCountedSet, NSMutableArray, NSMutableSet;
-
-@interface FFThumbnailRequestManager : NSObject <FFBackgroundTaskTarget>
+__attribute__((visibility("hidden")))
+@interface FFThumbnailRequestManager : NSObject
 {
-    NSMutableArray *_incomingRequests;
-    NSMutableArray *_incomingHighPriorityRequests;
-    NSMutableArray *_requests;
-    NSMutableArray *_highPriorityRequests;
+    struct FFLocklessQueue<FFThumbnailRequest*> *_requests;
+    struct FFLocklessQueue<FFThumbnailRequest*> *_highPriorityRequests;
+    NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject> *_lastImageMedia;
+    CDStruct_1b6d18a9 _lastTimeInLastImageMedia;
     FFStreamVideoCache *_streamVideoCache;
-    NSConditionLock *_isPlayingLock;
-    BOOL _isPlaybackActive;
+    FFBackgroundTask *_bTask;
+    unsigned int _progressStep;
+    unsigned int _progressTotal;
+    _Bool _appShuttingDown;
+    NSConditionLock *_pause;
+    long long _playersPlayering;
     BOOL _isAudio;
-    struct CGImage *_offlineImage;
-    struct CGImage *_emptyClipImage;
-    int _numQueuedRequests;
-    long long _numTotalTaskRequests;
-    long long _numCompletedTaskRequests;
-    long long _numCurrentTaskBaseline;
-    struct FFSemaphore *_taskSemaphore;
-    struct FFConditionLock *_pauseCountLock;
-    struct FFConditionLock *_pausedStateLock;
-    struct FFConditionLock *_inFlightRequestsCountLock;
-    NSMutableSet *_inFlightRequests;
-    BOOL _shuttingDown;
-    NSCountedSet *_libaryIdentifiersForRequests;
-    NSMutableSet *_registeredLibraries;
-    struct FFPMRAutoTimer *PMR_currentTaskTimer;
-    NSMutableSet *PMR_clipsProcessed;
-    CDUnknownBlockType _pmrRequestBeginCallback;
-    CDUnknownBlockType _pmrRequestCompletionCallback;
 }
 
-+ (void)initialize;
-+ (void)FFRangeInvalidationNotification:(id)arg1;
-+ (void)addImageToSegmentStore:(struct CGImage *)arg1 forRequest:(id)arg2;
-+ (struct CGImage *)copyOldCachedImageForRequest:(id)arg1;
-+ (void)releaseSharedInstanceVideo;
-+ (id)sharedInstanceVideo;
-+ (void)releaseSharedInstanceAudio;
++ (struct CGImage *)_copyThemeCGImage:(long long)arg1;
 + (id)sharedInstanceAudio;
-+ (struct CGImage *)_copyImageIDCGImage:(id)arg1;
-@property(copy) CDUnknownBlockType pmrRequestCompletionCallback; // @synthesize pmrRequestCompletionCallback=_pmrRequestCompletionCallback;
-@property(copy) CDUnknownBlockType pmrRequestBeginCallback; // @synthesize pmrRequestBeginCallback=_pmrRequestBeginCallback;
-- (id)librariesInUse:(id)arg1;
-- (id)assetsInUse:(id)arg1;
-- (void)canceledTask:(id)arg1;
-- (void)_teardown;
-- (void)_notifyDidShutdown:(id)arg1;
-- (void)_notifyWillShutdown:(id)arg1;
-- (void)_handleTaskLoopPause:(BOOL)arg1;
-- (void)removeRequestsForAssets:(id)arg1;
-- (void)removeRequestsForLibrary:(id)arg1;
-- (BOOL)containsRequestsForLibrary:(id)arg1;
-- (void)_removeRequestsForIdentifier:(id)arg1 identifierType:(int)arg2;
-- (id)_removeRequestsForIdentifiers:(id)arg1 identifierType:(int)arg2 inRequestsQueue:(id)arg3;
-- (void)resume;
-- (void)pause;
-- (BOOL)newImage:(struct CGImage **)arg1 forRequest:(id)arg2 cacheOnly:(BOOL)arg3;
-- (void)queueImageRequest:(id)arg1;
-- (void)_resumeBackgroundTask;
-- (void)_backgroundTaskCompleted;
-- (void)_dispatchBackgroundTask;
-- (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
-- (void)_notifyRequestCompleted:(id)arg1 withImage:(struct CGImage *)arg2;
-- (void)_processCanceledRequestsInQueue;
-- (void)_migrateIncomingRequests;
-- (void)uiPlaybackStateChange:(id)arg1;
-- (id)streamVideoCache;
-- (void)unregisterLibrary:(id)arg1;
-- (void)registerLibrary:(id)arg1;
-- (void)dealloc;
-- (oneway void)release;
++ (void)releaseSharedInstanceAudio;
++ (id)sharedInstanceVideo;
++ (void)releaseSharedInstanceVideo;
+- (void)_waveformPreferenceChanged:(id)arg1;
 - (id)initForAudio:(BOOL)arg1;
+- (void)dealloc;
+- (id)streamVideoCache;
+- (struct CGImage *)_copyCachedCGImageForKey:(CDStruct_60067b7e)arg1;
+- (void)_cacheImage:(struct CGImage *)arg1 withKey:(CDStruct_60067b7e)arg2 cost:(double)arg3;
+- (struct CGImage *)_copySegmentStoreCGImageForMD5:(id)arg1 offset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4;
+- (struct CGImage *)_actuallyCreateAudioWaveformImageFromImageRequest:(id)arg1 andPeaks:(id)arg2;
+- (BOOL)_newAudioImage:(struct CGImage **)arg1 request:(id)arg2 synchronously:(BOOL)arg3;
+- (void)uiPlaybackStateChange:(id)arg1;
+- (void)canceledTask:(id)arg1;
+- (void)flushCompressorsWithOldStream:(id)arg1 segStore:(id)arg2 lastMD5:(CDStruct_60067b7e)arg3;
+- (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
+- (void)_startBackgroundTask;
+- (void)_cancelBGTask;
+- (void)_waitForBGTaskToFinish;
+- (BOOL)newImage:(struct CGImage **)arg1 forRequest:(id)arg2;
+- (void)appWillTerminate:(id)arg1;
 
 @end
 

@@ -10,12 +10,10 @@
 {
 }
 
-+ (id)sphericalMetadataForURL:(id)arg1;
-+ (id)prepareSphericalMetadata:(struct __CFDictionary *)arg1;
-+ (id)spotlightMetadataForURL:(id)arg1;
 + (Class)streamClass;
-- (id)newStream:(id)arg1 options:(id)arg2;
++ (id)spotlightMetadataForURL:(id)arg1;
 - (id)type;
+- (id)newStream:(id)arg1 options:(id)arg2;
 
 @end
 

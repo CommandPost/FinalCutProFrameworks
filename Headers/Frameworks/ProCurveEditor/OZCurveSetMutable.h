@@ -10,15 +10,15 @@
 {
 }
 
-- (void)clear;
-- (void)setItem:(id)arg1;
-- (_Bool)removeSelectedItem;
-- (_Bool)removeItemNotInList:(id)arg1;
-- (void)insertItem:(id)arg1 beforeItem:(unsigned int)arg2;
-- (void)appendItem:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCurveSet:(id)arg1;
 - (id)initWithName:(id)arg1 appDelegate:(id)arg2;
+- (id)initWithCurveSet:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)appendItem:(id)arg1;
+- (void)insertItem:(id)arg1 beforeItem:(unsigned int)arg2;
+- (_Bool)removeItemNotInList:(id)arg1;
+- (_Bool)removeSelectedItem;
+- (void)setItem:(id)arg1;
+- (void)clear;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import "OZViewController.h"
 
-@class FFEffectStack, FFMediaRefThumbnailContainer, LKButton, LKTextField, NSImageView, NSView;
+@class FFMediaRefThumbnailContainer, LKButton, LKTextField, NSImageView, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaRefChannelController : OZViewController
@@ -17,30 +17,25 @@ __attribute__((visibility("hidden")))
     LKTextField *_promptLabel;
     LKButton *_clearButton;
     NSView *_pickingHighlightView;
-    FFEffectStack *_effectStack;
-    CDStruct_bdcb2b0d _cachedMD5;
 }
 
-- (id)attributedStringForMediaName:(id)arg1;
-- (void)_effectsChanged:(id)arg1;
-- (void)mouseExitedThumbnailContainer:(id)arg1;
-- (void)mouseEnteredThumbnailContainer:(id)arg1;
-- (void)pick:(id)arg1;
-- (void)clearSelection:(id)arg1;
-- (void)paste:(id)arg1;
-- (void)setFromPasteboard:(id)arg1;
-- (void)setChannelAnchoredObject:(id)arg1;
-- (BOOL)requiresVideo;
-- (BOOL)requiresAudio;
-- (void)setHasFocusUI:(id)arg1;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (CDStruct_bdcb2b0d)_getThumbMD5ForTime:(CDStruct_1b6d18a9)arg1 stream:(id)arg2 sourceObject:(id)arg3 contentsScale:(double)arg4;
-- (void)activeToolChanged:(id)arg1;
-- (void)updatePlaceholderThumbnail;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)updatePlaceholderThumbnail;
+- (void)activeToolChanged:(id)arg1;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (void)setHasFocusUI:(id)arg1;
+- (BOOL)requiresAudio;
+- (BOOL)requiresVideo;
+- (void)setChannelAnchoredObject:(id)arg1;
+- (void)setFromPasteboard:(id)arg1;
+- (void)paste:(id)arg1;
+- (void)clearSelection:(id)arg1;
+- (void)pick:(id)arg1;
+- (void)mouseEnteredRow:(id)arg1;
+- (void)mouseExitedRow:(id)arg1;
 
 @end
 

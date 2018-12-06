@@ -14,11 +14,11 @@
     NSMutableArray *_tabCtrls;
 }
 
-- (void)deleteTabControllers;
-- (void)setIsEnabled:(BOOL)arg1;
-- (void)notify:(unsigned int)arg1;
-- (void)buildWithContext:(id)arg1;
 - (id)initWithChan:(struct OZChannelBase *)arg1 text:(struct TXTextLayout *)arg2 context:(id)arg3;
+- (void)buildWithContext:(id)arg1;
+- (void)notify:(unsigned int)arg1;
+- (void)setIsEnabled:(BOOL)arg1;
+- (void)deleteTabControllers;
 
 @end
 

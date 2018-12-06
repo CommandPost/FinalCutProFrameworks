@@ -4,18 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSArray;
-
 @protocol FFSelectionHandler
+- (id)selectedItems;
+- (void)setSelectedItems:(id)arg1;
 - (id)contextRootObject;
-- (void)setSelectedItems:(NSArray *)arg1;
-- (NSArray *)selectedItems;
 
 @optional
-- (id)getFirstObjectInRect:(struct CGRect)arg1;
-- (NSArray *)visibleItems;
-- (NSArray *)itemsInRect:(struct CGRect)arg1;
-- (id)itemAtPoint:(struct CGPoint)arg1 keepSelectionIfMultipleTextObjects:(BOOL)arg2;
 - (id)itemAtPoint:(struct CGPoint)arg1;
+- (id)itemAtPoint:(struct CGPoint)arg1 keepSelectionIfMultipleTextObjects:(BOOL)arg2;
+- (id)itemsInRect:(struct CGRect)arg1;
+- (id)visibleItems;
+- (id)getFirstObjectInRect:(struct CGRect)arg1;
 @end
 

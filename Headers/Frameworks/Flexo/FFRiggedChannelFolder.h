@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
-+ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (void)addFactory;
++ (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 
 @end
 

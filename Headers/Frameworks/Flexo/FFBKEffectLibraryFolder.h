@@ -14,27 +14,24 @@ __attribute__((visibility("hidden")))
     NSString *_effectType;
     NSString *_genre;
     NSMutableArray *_genres;
-    BOOL _isSubcategoryAll;
 }
 
 + (id)standardProvider;
-@property(readonly, nonatomic) NSString *effectType; // @synthesize effectType=_effectType;
-- (id)valueForUndefinedKey:(id)arg1;
-- (BOOL)hasMasterSubitems;
-- (id)masterSubitems;
-- (id)items;
-- (id)itemCategoryName;
-- (BOOL)itemIsPlaceholder;
-- (double)rowHeight;
-- (BOOL)drawAsTopLevel;
-- (id)itemDisplayName;
-- (void)effectIDWasRegistered:(id)arg1;
-- (void)dealloc;
-- (BOOL)isEqual:(id)arg1;
-- (id)initWithEffectType:(id)arg1 genre:(id)arg2 isSubcategoryAll:(BOOL)arg3;
-- (id)initWithEffectType:(id)arg1 genre:(id)arg2;
-- (void)setupAllAVFXFolder;
 - (void)setupThemesFolder;
+- (void)setupAllAVFXFolder;
+- (id)initWithEffectType:(id)arg1 genre:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (void)dealloc;
+- (void)effectIDWasRegistered:(id)arg1;
+- (id)itemDisplayName;
+- (BOOL)drawAsTopLevel;
+- (BOOL)itemIsPlaceholder;
+- (id)itemCategoryName;
+- (id)items;
+- (id)masterSubitems;
+- (BOOL)hasMasterSubitems;
+- (id)valueForUndefinedKey:(id)arg1;
+@property(readonly, nonatomic) NSString *effectType; // @synthesize effectType=_effectType;
 
 @end
 

@@ -6,32 +6,35 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredSequence, NSMutableArray, NSObject<FFMetadataActionProtocol>;
+@class NSMutableDictionary, NSMutableSet, NSObject<FFMetadataProtocol>;
 
 __attribute__((visibility("hidden")))
 @interface FFMetadataProxy : NSObject
 {
-    NSObject<FFMetadataActionProtocol> *_object;
-    NSMutableArray *_observedKeyPaths;
-    FFAnchoredSequence *_metaDataStartSequence;
-    BOOL _objectHasBeenInvalidated;
+    BOOL _changesIgnored;
+    NSObject<FFMetadataProtocol> *_object;
+    NSMutableDictionary *_mappedKeyPaths;
+    NSMutableDictionary *_observedKeyPaths;
+    NSMutableSet *_nonKVOCompliantKeyPaths;
+    BOOL _isNonKVOCompliantKeyPathObservingSuspended;
 }
 
-@property(nonatomic) BOOL objectHasBeenInvalidated; // @synthesize objectHasBeenInvalidated=_objectHasBeenInvalidated;
-@property(retain, nonatomic) NSMutableArray *observedKeyPaths; // @synthesize observedKeyPaths=_observedKeyPaths;
-- (BOOL)actionEndSetMetadataValueWithError:(id *)arg1;
-- (void)actionBeginSetMetadataValue;
-- (id)metaDataStartSequence;
-- (void)rangeInvalidated:(id)arg1;
-- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
-- (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
-- (id)valueForKeyPath:(id)arg1;
-- (void)setValue:(id)arg1 forKeyPath:(id)arg2;
-- (id)valueForKey:(id)arg1;
-- (void)setValue:(id)arg1 forKey:(id)arg2;
-- (BOOL)validateValue:(id *)arg1 forKey:(id)arg2 error:(id *)arg3;
-- (void)dealloc;
 - (id)initWithObject:(id)arg1;
+- (void)dealloc;
+- (BOOL)validateValue:(id *)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
+- (id)valueForKey:(id)arg1;
+- (void)setValue:(id)arg1 forKeyPath:(id)arg2;
+- (id)valueForKeyPath:(id)arg1;
+@property(retain, nonatomic) NSMutableDictionary *mappedKeyPaths; // @synthesize mappedKeyPaths=_mappedKeyPaths;
+@property(retain, nonatomic) NSMutableDictionary *observedKeyPaths; // @synthesize observedKeyPaths=_observedKeyPaths;
+- (id)mapKeyPath:(id)arg1;
+- (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
+- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)suspendNonKVOCompliantKeyPathObserving;
+- (void)resumeNonKVOCompliantKeyPathObserving;
+@property(nonatomic) BOOL changesIgnored; // @synthesize changesIgnored=_changesIgnored;
 
 @end
 

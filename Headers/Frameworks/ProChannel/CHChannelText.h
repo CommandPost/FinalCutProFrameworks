@@ -10,13 +10,13 @@
 {
 }
 
-+ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
-- (void)setAttributedString:(id)arg1;
-- (void)setString:(id)arg1 affectLayout:(BOOL)arg2;
-- (void)setString:(id)arg1;
-- (id)string;
++ (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 - (struct OZChannelText *)ozChannel;
+- (id)string;
+- (void)setString:(id)arg1;
+- (void)setString:(id)arg1 affectLayout:(BOOL)arg2;
+- (void)setAttributedString:(id)arg1;
 
 @end
 

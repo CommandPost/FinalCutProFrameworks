@@ -10,8 +10,8 @@
 {
 }
 
-- (void)drawBackgroundForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
 - (BOOL)shouldResizeToFit;
+- (void)drawBackgroundForTile:(id)arg1 inClipRect:(struct CGRect)arg2;
 
 @end
 

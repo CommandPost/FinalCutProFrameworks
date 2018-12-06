@@ -4,29 +4,28 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "CALayer.h"
+#import "PEMeterLayerBase.h"
 
-@class PEOverloadTextLayer;
+@class NSProThemeFacet, PEOverloadTextLayer;
 
-@interface PEOverloadLayer : CALayer
+@interface PEOverloadLayer : PEMeterLayerBase
 {
     BOOL _peaked;
+    int _peakCount;
     double _peakValue;
+    NSProThemeFacet *_normalFacet;
+    NSProThemeFacet *_peakedFacet;
     PEOverloadTextLayer *_dbValue;
-    double _barCornerRadius;
-    struct CGColor *_noPeakColor;
 }
 
-@property(nonatomic) double barCornerRadius; // @synthesize barCornerRadius=_barCornerRadius;
-- (void)setNoPeakColor:(struct CGColor *)arg1;
-- (void)setOverloaded:(BOOL)arg1;
-- (void)setMeterValue:(double)arg1;
-- (void)setPeakLabelValue:(double)arg1;
-- (void)layoutSublayers;
-- (void)setDelegateIncludingSublayers:(id)arg1;
-- (void)dealloc;
-- (id)initWithText:(BOOL)arg1;
 - (id)init;
+- (void)layoutSublayers;
+- (void)setMeterValue:(double)arg1;
+- (void)setOverloaded:(BOOL)arg1;
+- (void)dealloc;
+@property(retain, nonatomic) PEOverloadTextLayer *dbValue; // @synthesize dbValue=_dbValue;
+@property int peakCount; // @synthesize peakCount=_peakCount;
+@property BOOL peaked; // @synthesize peaked=_peaked;
 
 @end
 

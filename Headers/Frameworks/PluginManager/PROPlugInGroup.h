@@ -11,14 +11,14 @@
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-- (id)plugInsForProtocols:(id)arg1;
-- (struct __CFUUID *)uuid;
-- (id)plugIns;
-- (id)displayName;
-- (id)name;
-- (void)removePlugIn:(id)arg1;
-- (void)addPlugIn:(id)arg1;
 - (id)initWithUUID:(struct __CFUUID *)arg1 name:(id)arg2 bundle:(id)arg3;
+- (void)addPlugIn:(id)arg1;
+- (void)removePlugIn:(id)arg1;
+- (id)name;
+- (id)displayName;
+- (id)plugIns;
+- (struct __CFUUID *)uuid;
+- (id)plugInsForProtocols:(id)arg1;
 
 @end
 

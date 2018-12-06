@@ -5,9 +5,9 @@
 //
 
 @protocol FxPixelTransformsAPI
-- (PCMatrix44Tmpl_e98c85ee)destinationInversePixelTransform;
-- (PCMatrix44Tmpl_e98c85ee)destinationPixelTransform;
-- (PCMatrix44Tmpl_e98c85ee)inversePixelTransform;
 - (PCMatrix44Tmpl_e98c85ee)pixelTransform;
+- (PCMatrix44Tmpl_e98c85ee)inversePixelTransform;
+- (PCMatrix44Tmpl_e98c85ee)destinationPixelTransform;
+- (PCMatrix44Tmpl_e98c85ee)destinationInversePixelTransform;
 @end
 

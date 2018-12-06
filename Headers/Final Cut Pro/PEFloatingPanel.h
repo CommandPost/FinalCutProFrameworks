@@ -10,11 +10,8 @@
 {
 }
 
-- (void)dealloc;
-- (void)_appWillBecomeActive:(id)arg1;
-- (void)_appWillResignActive:(id)arg1;
-- (BOOL)worksWhenModal;
 - (id)initWithContentRect:(struct CGRect)arg1 styleMask:(unsigned long long)arg2 backing:(unsigned long long)arg3 defer:(BOOL)arg4;
+- (BOOL)worksWhenModal;
 
 @end
 

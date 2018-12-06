@@ -6,29 +6,23 @@
 
 #import "NSObject.h"
 
-#import "NSCopying.h"
-
 @class CALayer;
 
 __attribute__((visibility("hidden")))
-@interface FFCurveEditorSelection : NSObject <NSCopying>
+@interface FFCurveEditorSelection : NSObject
 {
+    unsigned int type;
     struct CGPoint location;
     CDStruct_1b6d18a9 time;
     CALayer *layer;
-    unsigned int type;
 }
 
-@property(nonatomic) unsigned int type; // @synthesize type;
+- (id)init;
+- (void)updateLocation:(struct CGPoint)arg1;
 @property(retain, nonatomic) CALayer *layer; // @synthesize layer;
 @property(nonatomic) struct CGPoint location; // @synthesize location;
 @property(nonatomic) CDStruct_1b6d18a9 time; // @synthesize time;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (long long)sortDescending:(id)arg1;
-- (long long)sortAscending:(id)arg1;
-- (void)dealloc;
-- (void)updateLocation:(struct CGPoint)arg1;
-- (id)init;
+@property(nonatomic) unsigned int type; // @synthesize type;
 
 @end
 

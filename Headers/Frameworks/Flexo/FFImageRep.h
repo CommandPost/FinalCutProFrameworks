@@ -13,47 +13,26 @@
     PCMatrix44Double *_pixelTransform;
     struct CGColorSpace *_colorSpace;
     unsigned int _field;
-    CDUnknownBlockType _approximateMemoryUsageBlock;
-    int _errorCode;
+    unsigned long long _approximateMemoryUsage;
 }
 
-- (void)getSampleBuffer:(struct opaqueCMSampleBuffer **)arg1 alphaKnownToBeFullyOpaque:(char *)arg2;
-- (BOOL)disable422InputFiltering;
-- (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
-- (_Bool)existingAlphaChannelCompatibleWithPremulBlack;
-- (_Bool)alphaWantsClamping;
-- (_Bool)alphaWantsInversion;
-- (int)nativeAlphaType;
-- (void)setColorSpace:(struct CGColorSpace *)arg1;
-- (int)sourceCCTargetColorSpace;
-- (struct FFSourceColorConformBaseClass *)sourceColorConformer;
-- (struct CGColorSpace *)colorSpace;
-- (void)setPixelTransform:(id)arg1;
-- (id)pixelTransform;
-- (void)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5 flattenOptions:(const CDStruct_302d8f15 *)arg6;
-- (void)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
-- (void)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
-- (void)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5 flattenOptions:(const CDStruct_302d8f15 *)arg6;
-- (void)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
-- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
-- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
-- (void)setImageRepBindingInfo:(id)arg1;
-- (id)imageRepBindingInfo;
-- (unsigned int)field;
-- (struct CGRect)pixelSpaceBounds;
-- (struct CGRect)imageSpaceBounds;
-- (id)type;
-- (id)getAbsoluteOutputFormatFromFormat:(id)arg1 workingSpace:(int)arg2;
-- (id)noConversionOutputFormat;
-- (id)nativePixelFormat;
-- (void)setErrorCode:(int)arg1;
-- (int)errorCode;
-- (unsigned long long)approximateMemoryUsage;
-- (void)setApproximateMemoryUsage:(unsigned long long)arg1;
-- (void)setApproximateMemoryUsageBlock:(CDUnknownBlockType)arg1;
-- (void)dealloc;
-- (id)initWithRepresentation:(id)arg1;
 - (id)initWithColorSpace:(struct CGColorSpace *)arg1 pixelTransform:(id)arg2;
+- (id)initWithRepresentation:(id)arg1;
+- (void)dealloc;
+- (id)nativePixelFormat;
+- (id)type;
+- (struct CGRect)imageSpaceBounds;
+- (struct CGRect)pixelSpaceBounds;
+- (unsigned int)field;
+- (id)newPixelBufferWithFormat:(id)arg1 roi:(struct CGRect)arg2 colorSpace:(struct CGColorSpace *)arg3 pixelTransform:(id)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (id)newTextureBufferWithFormat:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelTransform:(id)arg5;
+- (id)pixelTransform;
+- (void)setPixelTransform:(id)arg1;
+- (struct CGColorSpace *)colorSpace;
+- (void)setColorSpace:(struct CGColorSpace *)arg1;
+- (_Bool)nativelyPremulBlack;
+- (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
+@property unsigned long long approximateMemoryUsage; // @synthesize approximateMemoryUsage=_approximateMemoryUsage;
 
 @end
 

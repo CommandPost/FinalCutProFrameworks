@@ -11,9 +11,9 @@
     int _layerID;
 }
 
-@property int layerID; // @synthesize layerID=_layerID;
-- (void)setFontSize:(double)arg1;
 - (id)init;
+- (void)setFontSize:(double)arg1;
+@property int layerID; // @synthesize layerID=_layerID;
 
 @end
 

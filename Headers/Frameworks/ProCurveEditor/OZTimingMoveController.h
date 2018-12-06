@@ -8,32 +8,24 @@
 
 #import "NSWindowDelegate.h"
 
-@class LKTextField, NSPanel, NSString, NSView;
+@class LKPanel, LKTextField, NSProView;
 
 @interface OZTimingMoveController : NSObject <NSWindowDelegate>
 {
     LKTextField *_pValueField;
-    NSPanel *_pPanel;
-    NSView *_pView;
+    LKPanel *_pPanel;
+    NSProView *_pView;
 }
 
-+ (BOOL)openWithLocation:(struct CGPoint)arg1 value:(double *)arg2;
 + (BOOL)openWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 timeValue:(double *)arg3 timeIsDelta:(char *)arg4;
-- (void)valueFieldChanged:(id)arg1;
-- (void)okNotify:(id)arg1;
-- (void)cancelNotify:(id)arg1;
-- (void)windowWillClose:(id)arg1;
-- (BOOL)openWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 value:(double *)arg3 isDelta:(char *)arg4;
-- (void)buildUI;
-- (void)dealloc;
-- (id)init;
++ (BOOL)openWithLocation:(struct CGPoint)arg1 value:(double *)arg2;
 - (void)awakeFromNib;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)init;
+- (BOOL)openWithEvent:(id)arg1 parentRect:(struct CGRect)arg2 value:(double *)arg3 isDelta:(char *)arg4;
+- (void)windowWillClose:(id)arg1;
+- (void)cancelNotify:(id)arg1;
+- (void)okNotify:(id)arg1;
+- (void)valueFieldChanged:(id)arg1;
 
 @end
 

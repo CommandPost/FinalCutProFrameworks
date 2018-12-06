@@ -10,8 +10,8 @@
 {
 }
 
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (id)initWithHeight:(unsigned int)arg1;
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 
 @end
 

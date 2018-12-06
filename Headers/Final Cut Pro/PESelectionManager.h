@@ -15,33 +15,26 @@
     NSMutableArray *_viewedClipStack;
     FFAnchoredObject *_timelineRootItem;
     FFContext *_timelineContext;
-    unsigned int _suspendSelectionChanges;
 }
 
-+ (void)releaseSharedInstance;
-+ (id)defaultSelectionManager;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
-@property(readonly) NSArray *viewedClipsStack; // @synthesize viewedClipsStack=_viewedClipStack;
-- (void)endSuspendSelectionChanges;
-- (void)beginSuspendSelectionChanges;
-- (void)setTimelineRootItem:(id)arg1 context:(id)arg2;
-@property(readonly) FFContext *timelineContext;
-@property(readonly) FFAnchoredObject *timelineRootItem;
-- (void)removeAnyClipSetContainingObject:(id)arg1;
-- (BOOL)replaceViewedClips:(id)arg1 withViewedClips:(id)arg2;
-- (void)popViewedClips;
-- (void)pushViewedClips:(id)arg1;
-- (void)setViewedClips:(id)arg1;
-@property(readonly) PEViewedClipSet *persistentViewedClips;
-- (id)viewedClipsContexts;
-@property(readonly) PEViewedClipSet *viewedClips;
-- (void)setSelectedItems:(id)arg1;
-- (void)setSelectedItems:(id)arg1 owner:(id)arg2;
-- (id)selectionOwner;
-- (id)selectedItems;
-- (void)dealloc;
-- (oneway void)release;
++ (id)defaultSelectionManager;
++ (void)releaseSharedInstance;
 - (id)init;
+- (void)dealloc;
+- (id)selectedItems;
+- (id)selectionOwner;
+- (void)setSelectedItems:(id)arg1 owner:(id)arg2;
+@property(readonly) PEViewedClipSet *viewedClips;
+- (id)viewedClipsContexts;
+@property(readonly) PEViewedClipSet *persistentViewedClips;
+- (void)setViewedClips:(id)arg1;
+- (void)pushViewedClips:(id)arg1;
+- (void)popViewedClips;
+- (void)removeAnyClipSetContainingObject:(id)arg1;
+@property(readonly) FFAnchoredObject *timelineRootItem;
+@property(readonly) FFContext *timelineContext;
+- (void)setTimelineRootItem:(id)arg1 context:(id)arg2;
 
 @end
 

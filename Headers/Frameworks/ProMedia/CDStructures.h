@@ -8,9 +8,13 @@
 
 struct PCBitmap;
 
+struct _Sp_counted_base<_S_atomic>;
+
 struct shared_ptr<PCBitmap> {
     struct PCBitmap *_field1;
-    struct __shared_weak_count *_field2;
+    struct __shared_count<_S_atomic> {
+        struct _Sp_counted_base<_S_atomic> *_M_pi;
+    } _field2;
 };
 
 #pragma mark Typedef'd Structures
@@ -18,6 +22,8 @@ struct shared_ptr<PCBitmap> {
 // Template types
 typedef struct shared_ptr<PCBitmap> {
     struct PCBitmap *_field1;
-    struct __shared_weak_count *_field2;
-} shared_ptr_1a5c5a10;
+    struct __shared_count<_S_atomic> {
+        struct _Sp_counted_base<_S_atomic> *_M_pi;
+    } _field2;
+} shared_ptr_6c3c6330;
 

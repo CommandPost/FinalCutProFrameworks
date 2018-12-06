@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
     FFAnchoredObject *_matchComponent;
 }
 
-- (id)matchObject;
-- (void)setMatchObject:(id)arg1;
 - (void)setVoiceMatchMode:(int)arg1;
+- (void)setMatchObject:(id)arg1;
+- (id)matchObject;
 
 @end
 

@@ -12,27 +12,26 @@ __attribute__((visibility("hidden")))
 @interface FFSpeedLayer : CALayer
 {
     id _item;
-    struct CGRect _itemRect;
     id _module;
     CDStruct_e83c9415 _retimedRange;
+    CALayer *_backgroundLayer;
     NSMutableArray *_segmentLayers;
 }
 
-- (void)updateSegmentLayers;
-- (id)segmentAtGlobalIndex:(int)arg1;
-- (int)_visibleKeyframeCount:(id)arg1;
-- (int)segmentCount;
-- (id)segmentAtIndex:(unsigned long long)arg1;
-- (id)segmentLayers;
-- (void)deselectAllSpeedLabels;
-- (id)pointInSpeedLabelRect:(struct CGPoint)arg1 segmentIndex:(int *)arg2;
-- (void)setRetimedRange:(CDStruct_e83c9415)arg1;
-- (void)setActiveSegment:(int)arg1;
-- (int)pointInSegment:(struct CGPoint)arg1;
-- (void)dealloc;
-- (void)updateItemRect:(struct CGRect)arg1;
+- (id)initWithItem:(id)arg1 rect:(struct CGRect)arg2 module:(id)arg3 retimedRange:(CDStruct_e83c9415)arg4;
 - (void)updateRect:(struct CGRect)arg1;
-- (id)initWithItem:(id)arg1 rect:(struct CGRect)arg2 itemRect:(struct CGRect)arg3 module:(id)arg4 retimedRange:(CDStruct_e83c9415)arg5;
+- (void)dealloc;
+- (int)pointInSegment:(struct CGPoint)arg1;
+- (void)setActiveSegment:(int)arg1;
+- (void)setRetimedRange:(CDStruct_e83c9415)arg1;
+- (id)pointInSpeedLabelRect:(struct CGPoint)arg1 segmentIndex:(int *)arg2;
+- (void)deselectAllSpeedLabels;
+- (id)segmentAtIndex:(unsigned long long)arg1;
+- (int)segmentCount;
+- (int)_visibleKeyframeCount:(id)arg1;
+- (id)segmentAtGlobalIndex:(int)arg1;
+- (void)updateSegmentLayers;
+- (void)layoutSublayers;
 
 @end
 

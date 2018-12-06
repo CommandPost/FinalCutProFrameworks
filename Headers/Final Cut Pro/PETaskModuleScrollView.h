@@ -10,6 +10,7 @@
 {
 }
 
+- (void)setThemeVariant:(long long)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 
 @end

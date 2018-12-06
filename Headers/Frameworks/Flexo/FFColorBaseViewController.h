@@ -6,22 +6,15 @@
 
 #import "OZViewController.h"
 
-@class FFHeColorEffect, NSArray;
-
 __attribute__((visibility("hidden")))
 @interface FFColorBaseViewController : OZViewController
 {
-    FFHeColorEffect *_colorEffect;
-    NSArray *_colorEffects;
-    CDStruct_cb905f8c _base_state;
 }
 
-- (BOOL)isAllMediaOnline;
-- (BOOL)isAppointedFromOrganizer;
-- (BOOL)isAppointedFromSequenceProject;
-- (id)colorEffects;
 - (id)colorEffect;
-- (void)dealloc;
+- (id)colorEffects;
+- (BOOL)isAppointedFromSequenceProject;
+- (BOOL)isAppointedFromOrganizer;
 
 @end
 

@@ -11,8 +11,8 @@
     struct OZChannelObjectRoot *_root;
 }
 
-- (struct OZChannelObjectRoot *)getRoot;
 - (id)initWithRoot:(struct OZChannelObjectRoot *)arg1;
+- (struct OZChannelObjectRoot *)getRoot;
 
 @end
 

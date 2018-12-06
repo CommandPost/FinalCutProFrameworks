@@ -6,16 +6,8 @@
 
 #import "FFModelLocking.h"
 
-@class FFAnchoredSequence, FFProject, FFUndoHandler;
-
 @protocol FFDataModelProtocol <FFModelLocking>
-- (FFProject *)project;
-- (FFUndoHandler *)undoHandler;
-
-@optional
-- (FFAnchoredSequence *)sequence;
-- (void)endEditing;
-- (void)beginEditing;
-- (BOOL)isEditing;
+- (id)undoHandler;
+- (id)identifier;
 @end
 

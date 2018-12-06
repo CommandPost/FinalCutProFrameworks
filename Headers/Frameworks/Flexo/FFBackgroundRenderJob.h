@@ -6,18 +6,16 @@
 
 #import "NSObject.h"
 
-#import "FFBackgroundTaskTarget.h"
-
-@class FFBGRenderAutoStartInfo, FFBackgroundTask, FFRenderStateTracker, FFRenderer, FFSourceVideo, NSIndexSet, NSMutableArray, NSMutableSet, NSObject<OS_dispatch_queue>;
+@class FFBackgroundTask, FFRenderStateTracker, FFRenderer, FFSourceVideo, NSIndexSet;
 
 __attribute__((visibility("hidden")))
-@interface FFBackgroundRenderJob : NSObject <FFBackgroundTaskTarget>
+@interface FFBackgroundRenderJob : NSObject
 {
     FFRenderStateTracker *_tracker;
     FFSourceVideo *_source;
     NSIndexSet *_statesToRender;
     CDStruct_e83c9415 _range;
-    FFBGRenderAutoStartInfo *_autoStartInfo;
+    id _autoStartInfo;
     _Bool _programmaticallyCancelled;
     CDStruct_1b6d18a9 _bgRenderLastWallClockOfNotification;
     CDStruct_1b6d18a9 _bgRenderEndOfPreviousNotificationRange;
@@ -25,38 +23,28 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _rangeInProgress;
     FFBackgroundTask *_activeTask;
     CDStruct_1b6d18a9 _amtJobHasAlreadyRendered;
-    NSObject<OS_dispatch_queue> *_lockForDeferredChecks;
-    NSMutableArray *_deferredRanges;
-    NSMutableSet *_deferredMD5s;
 }
 
-+ (void)initialize;
+- (id)initWithStates:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 autoStartInfo:(id)arg4;
+- (void)dealloc;
+- (id)sequence;
+- (void)readLockSeq:(id)arg1;
+- (void)readUnlockSeq;
+- (_Bool)autoStarted;
+- (CDStruct_e83c9415)rangeInProgress;
+- (void)_updateProgress:(float)arg1 task:(id)arg2;
+- (CDStruct_e83c9415)getFirstKnownRangeInState:(id)arg1 searchRange:(CDStruct_e83c9415)arg2 onTask:(id)arg3;
+- (void)_renderOnTask:(id)arg1;
+- (void)pausedTask:(id)arg1;
+- (void)resumedTask:(id)arg1;
+- (BOOL)confirmIsPaused:(id)arg1;
+- (void)canceledTask:(id)arg1;
+- (void)renderToSegmentStore:(id)arg1 onTask:(id)arg2;
+- (void)_newRenderFilesAvailableTransferToMainThread:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property _Bool programmaticallyCancelled; // @synthesize programmaticallyCancelled=_programmaticallyCancelled;
 @property(readonly) FFRenderStateTracker *tracker; // @synthesize tracker=_tracker;
-@property(retain) FFBGRenderAutoStartInfo *autoStartInfo; // @synthesize autoStartInfo=_autoStartInfo;
-- (id)librariesInUse:(id)arg1;
-- (id)assetsInUse:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_newRenderFilesAvailableByMD5TransferToMainThread:(id)arg1;
-- (void)_newRenderFilesAvailableTransferToMainThread:(id)arg1;
-- (void)_queueMainThreadCheckOfRanges:(CDStruct_e83c9415)arg1 md5s:(id)arg2;
-- (void)_mainThreadProcessDeferredRangesAndMD5s;
-- (void)renderToSegmentStore:(id)arg1 onTask:(id)arg2;
-- (void)canceledTask:(id)arg1;
-- (BOOL)confirmIsPaused:(id)arg1;
-- (void)resumedTask:(id)arg1;
-- (void)pausedTask:(id)arg1;
-- (BOOL)_renderOnTask:(id)arg1;
-- (CDStruct_e83c9415)getFirstKnownRangeInState:(id)arg1 searchRange:(CDStruct_e83c9415)arg2 onTask:(id)arg3 doDetailedSegmentation:(_Bool)arg4;
-- (void)_updateProgress:(float)arg1 task:(id)arg2;
-- (CDStruct_e83c9415)rangeInProgress;
-- (_Bool)autoStarted;
-- (void)readUnlockSeq;
-- (void)readLockSeq:(id)arg1;
-- (id)lockableModelObject;
-- (id)sequence;
-- (void)dealloc;
-- (id)initWithStates:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 autoStartInfo:(id)arg4;
+@property(retain) id autoStartInfo; // @synthesize autoStartInfo=_autoStartInfo;
 
 @end
 

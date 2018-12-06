@@ -10,8 +10,11 @@
 {
 }
 
-- (void)helperInitWithBehavior:(struct OZBehavior *)arg1 context:(id)arg2;
-- (id)initWithBehaviors:(list_64b41211 *)arg1;
+- (id)initWithBehaviors:(list_06b59fe9 *)arg1;
+- (id)helperInitWithBehavior:(struct OZBehavior *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)delayedReleaseCB:(id)arg1;
+- (void)delayedRelease;
 
 @end
 

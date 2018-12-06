@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)newPlaceholder:(CDStruct_1b6d18a9)arg1 ofSampleDuration:(CDStruct_1b6d18a9)arg2;
 + (id)copyClassDescription;
++ (id)newPlaceholder:(CDStruct_1b6d18a9)arg1 ofSampleDuration:(CDStruct_1b6d18a9)arg2;
 - (BOOL)isPlaceholder;
 
 @end

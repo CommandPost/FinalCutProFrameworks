@@ -13,9 +13,9 @@
     SEL _selector;
 }
 
-- (void)performDrop;
-- (void)dealloc;
 - (id)initWithTarget:(id)arg1 selector:(SEL)arg2 param:(id)arg3;
+- (void)dealloc;
+- (void)performDrop;
 
 @end
 

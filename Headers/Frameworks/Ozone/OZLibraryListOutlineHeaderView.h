@@ -10,9 +10,9 @@
 {
 }
 
-- (BOOL)needsPanelToBecomeKey;
-- (BOOL)acceptsFirstMouse:(id)arg1;
 - (void)mouseDown:(id)arg1;
+- (BOOL)acceptsFirstMouse:(id)arg1;
+- (BOOL)needsPanelToBecomeKey;
 
 @end
 

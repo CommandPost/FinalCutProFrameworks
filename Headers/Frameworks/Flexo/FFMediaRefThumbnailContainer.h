@@ -14,19 +14,17 @@ __attribute__((visibility("hidden")))
     FFMediaRefChannelController *_controller;
 }
 
-- (void)mouseExited:(id)arg1;
-- (void)mouseEntered:(id)arg1;
-- (void)delete:(id)arg1;
-- (void)paste:(id)arg1;
-- (BOOL)resignFirstResponder;
-- (BOOL)becomeFirstResponder;
-- (BOOL)acceptsFirstResponder;
-- (void)mouseUp:(id)arg1;
-- (unsigned long long)draggingEntered:(id)arg1;
-- (BOOL)performDragOperation:(id)arg1;
-- (void)setController:(id)arg1;
-- (void)dealloc;
 - (void)awakeFromNib;
+- (void)dealloc;
+- (void)setController:(id)arg1;
+- (BOOL)performDragOperation:(id)arg1;
+- (unsigned long long)draggingEntered:(id)arg1;
+- (void)mouseUp:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)becomeFirstResponder;
+- (BOOL)resignFirstResponder;
+- (void)paste:(id)arg1;
+- (void)delete:(id)arg1;
 
 @end
 

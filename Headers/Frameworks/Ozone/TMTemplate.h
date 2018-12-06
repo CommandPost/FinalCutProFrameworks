@@ -13,16 +13,16 @@
     TMTheme *_theme;
 }
 
-- (id)description;
-- (id)attributes;
-- (id)modifiedDate;
-- (id)previewPath;
-- (id)title;
-- (id)resolvedPath;
-- (id)path;
-- (BOOL)belongsToTheme:(id)arg1;
-- (id)theme;
 - (void)dealloc;
+- (id)theme;
+- (BOOL)belongsToTheme:(id)arg1;
+- (id)path;
+- (id)resolvedPath;
+- (id)title;
+- (id)previewPath;
+- (id)modifiedDate;
+- (id)attributes;
+- (id)description;
 
 @end
 

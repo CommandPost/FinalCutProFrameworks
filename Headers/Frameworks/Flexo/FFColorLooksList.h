@@ -14,26 +14,23 @@
     NSMutableArray *_looks;
 }
 
-+ (void)convertToEffectPresets:(BOOL)arg1;
-+ (int)channelIDFromPuckType:(int)arg1 boardType:(int)arg2;
-+ (BOOL)migrateColorPresets:(id *)arg1;
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)sharedColorLooksList;
-- (id)presetNameFormatter;
-- (id)colorLooksDisplayNameAtIndex:(unsigned long long)arg1;
-- (id)colorLooksObjectAtIndex:(unsigned long long)arg1;
-- (id)colorLooksListItemOfDisplayName:(id)arg1;
-- (id)colorLooksListItemAtIndex:(unsigned long long)arg1;
-- (unsigned long long)count;
-- (void)reloadData;
-- (id)listPath;
-- (id)dataSource;
-- (void)setDataSource:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (BOOL)loadColorLooksAtIndex:(unsigned long long)arg1 colorLooksPuckControlObject:(id *)arg2 error:(id *)arg3;
-- (BOOL)saveColorLooksPuckControlObject:(id)arg1 name:(id)arg2 error:(id *)arg3;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setDataSource:(id)arg1;
+- (id)dataSource;
+- (id)listPath;
+- (void)reloadData;
+- (unsigned long long)count;
+- (id)colorLooksListItemAtIndex:(unsigned long long)arg1;
+- (id)colorLooksListItemOfDisplayName:(id)arg1;
+- (id)colorLooksObjectAtIndex:(unsigned long long)arg1;
+- (id)colorLooksDisplayNameAtIndex:(unsigned long long)arg1;
+- (id)presetNameFormatter;
+- (BOOL)saveColorLooksFromAnchoredObject:(id)arg1 name:(id)arg2 error:(id *)arg3;
+- (BOOL)loadColorLooksAtIndex:(unsigned long long)arg1 anchoredObject:(id)arg2 error:(id *)arg3;
 
 @end
 

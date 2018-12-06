@@ -6,13 +6,14 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class LKCursor, NSLayoutManager, NSMutableDictionary, NSTextContainer, NSTextStorage, PGDrawableTexture;
+@class NSBitmapImageRep, NSLayoutManager, NSMutableDictionary, NSProCursor, NSTextContainer, NSTextStorage, PGDrawableTexture;
 
 @interface OZRulersOverlay : OZOverlay
 {
-    LKCursor *_horizontalCursor;
-    LKCursor *_verticalCursor;
-    LKCursor *_bothCursor;
+    NSBitmapImageRep *_guideMarkers[4];
+    NSProCursor *_horizontalCursor;
+    NSProCursor *_verticalCursor;
+    NSProCursor *_bothCursor;
     double _movingLocation[2];
     double _movingMouseStart[2];
     double _movingLocationStart[2];
@@ -26,29 +27,23 @@
     NSTextStorage *_textStorage;
     NSLayoutManager *_layoutManager;
     NSTextContainer *_textContainer;
-    double _smallTickHeight;
-    double _largeTickHeight;
-    double _minimumTickDistance;
-    double _largeTickSkip;
-    double _fontHeight;
-    float _lastScale;
 }
 
-- (id)getCursorWithEvent:(id)arg1;
-- (void)mouseUp:(id)arg1;
-- (void)finishDraggingGuide:(id)arg1 vertical:(_Bool)arg2 poof:(BOOL)arg3;
-- (void)mouseDragged:(id)arg1;
-- (void)dragGuide:(id)arg1 vertical:(_Bool)arg2;
-- (void)mouseDown:(id)arg1;
-- (void)updateTip;
-- (void)addGuide:(_Bool)arg1;
-- (void)draw;
-- (BOOL)imageBoxX1:(double *)arg1 y1:(double *)arg2 x2:(double *)arg3 y2:(double *)arg4;
-- (struct CGRect)getAvailableViewBounds;
-- (void)dealloc;
-- (int)getDrawingOrder;
-- (void)setRulerAndMarkSizes;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (int)getDrawingOrder;
+- (void)dealloc;
+- (struct CGRect)getAvailableViewBounds;
+- (BOOL)imageBoxX1:(double *)arg1 y1:(double *)arg2 x2:(double *)arg3 y2:(double *)arg4;
+- (void)draw;
+- (void)addGuide:(_Bool)arg1;
+- (void)updateTip;
+- (void)mouseDown:(id)arg1;
+- (void)dragGuide:(id)arg1 vertical:(_Bool)arg2;
+- (void)mouseDragged:(id)arg1;
+- (void)poofAtViewLocation:(const PCVector2_7e488b7d *)arg1;
+- (void)finishDraggingGuide:(id)arg1 vertical:(_Bool)arg2 poof:(BOOL)arg3;
+- (void)mouseUp:(id)arg1;
+- (id)getCursorWithEvent:(id)arg1;
 
 @end
 

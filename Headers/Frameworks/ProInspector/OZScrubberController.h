@@ -14,31 +14,31 @@
     BOOL _isIntegerController;
     BOOL _isOffsetting;
     BOOL _is2DController;
-    struct list<double, std::__1::allocator<double>> *_pMouseDownValues;
-    struct list<PCVector2<double>, std::__1::allocator<PCVector2<double>>> *_pMouseDownValues2D;
+    struct list<double, std::allocator<double>> *_pMouseDownValues;
+    struct list<PCVector2<double>, std::allocator<PCVector2<double>>> *_pMouseDownValues2D;
     int _decimalDigits;
     Class _formatterClass;
     double _ratio;
     BOOL _isXMax;
 }
 
-- (id)formatterClassName;
-- (double)valueBias;
-- (double)sliderUserValueRange:(struct OZChannel *)arg1;
-- (void)getUIChanMin:(double *)arg1 chanMax:(double *)arg2 forChan:(struct OZChannel *)arg3;
-- (void)setMaxValue:(double)arg1;
-- (void)setMinValue:(double)arg1;
-- (void)setChannelValue:(id)arg1;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (void)endSegmentedScrubberAction:(id)arg1;
-- (void)startSegmentedScrubberAction:(id)arg1;
-- (BOOL)areAllChannelsEqual;
-- (void)get:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3;
-- (id)lastKeyView;
-- (id)firstKeyView;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2 scrubber:(id)arg3;
+- (id)firstKeyView;
+- (id)lastKeyView;
+- (void)get:(struct OZChannelBase *)arg1 x:(double *)arg2 y:(double *)arg3;
+- (BOOL)areAllChannelsEqual;
+- (void)startSegmentedScrubberAction:(id)arg1;
+- (void)endSegmentedScrubberAction:(id)arg1;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (void)setChannelValue:(id)arg1;
+- (void)setMinValue:(double)arg1;
+- (void)setMaxValue:(double)arg1;
+- (void)getUIChanMin:(double *)arg1 chanMax:(double *)arg2 forChan:(struct OZChannel *)arg3;
+- (double)sliderUserValueRange:(struct OZChannel *)arg1;
+- (double)valueBias;
+- (id)formatterClassName;
 
 @end
 

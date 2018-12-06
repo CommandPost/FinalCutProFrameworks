@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
     id <FFPMRRunLoopDelegate> mDelegate;
 }
 
-- (void)callback:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
+- (void)dealloc;
+- (void)callback:(unsigned long long)arg1;
 
 @end
 

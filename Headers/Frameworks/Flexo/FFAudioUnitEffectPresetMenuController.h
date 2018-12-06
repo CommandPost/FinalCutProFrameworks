@@ -4,39 +4,30 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "OZChanEnumController.h"
+#import "OZViewController.h"
 
-@class NSMapTable, NSPopUpButton;
+@class FFAnchoredObject, FFAudioUnitEffect, NSPopUpButton;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioUnitEffectPresetMenuController : OZChanEnumController
+@interface FFAudioUnitEffectPresetMenuController : OZViewController
 {
-    NSMapTable *m_objectToEffectMap;
+    FFAnchoredObject *m_object;
+    FFAudioUnitEffect *m_audioUnitEffect;
     NSPopUpButton *m_popUpButton;
     struct __FSEventStream *m_eventStream;
-    BOOL m_isObserving;
 }
 
-+ (void)_selectFactoryPreset:(id)arg1 forEffects:(id)arg2 withTitle:(id)arg3;
-+ (void)_selectUserPreset:(id)arg1 forSelectedEffects:(id)arg2 titleForAction:(id)arg3;
-+ (void)_revealPresetsForEffect:(id)arg1;
-+ (void)_savePresetForEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
-+ (void)_selectDefaultPresetForSelectedEffects:(id)arg1;
-+ (id)_uniqueMenuTitleInMenu:(id)arg1 forBaseMenuTitle:(id)arg2;
-+ (void)_appendMenuTitles:(id)arg1 withPresetDirtyStates:(id)arg2 andBaseMenuTitle:(id)arg3;
-+ (BOOL)appendUserPresets:(id)arg1 toMenu:(id)arg2 selectedPresetsMap:(id)arg3 selectedMenuItems:(id)arg4 menuTitles:(id)arg5 defaultPreset:(id)arg6 foundDefaultPreset:(char *)arg7;
-+ (void)populateMenu:(id)arg1 withSelectedEffects:(id)arg2;
-- (void)selectPresetMenuCommandItem:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_removeObservers;
-- (void)_addObservers;
-- (void)_configurePopUpMenuItems:(id)arg1;
-- (void)populateMenu;
-- (void)updatePopUpMenu:(BOOL)arg1 force:(BOOL)arg2;
-- (void)update;
-- (void)didBuildUI;
-- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)dealloc;
+- (void)populateMenu;
+- (id)appendUserPresets:(id)arg1 toMenu:(id)arg2 currentPreset:(id)arg3;
+- (void)_addObservers;
+- (void)_removeObservers;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_postPresetChangedNotification;
+- (void)selectPresetMenuCommandItem:(id)arg1;
+- (void)selectUserPresetMenuItem:(id)arg1;
+- (void)selectFactoryPresetMenuItem:(id)arg1;
 
 @end
 

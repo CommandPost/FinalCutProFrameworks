@@ -7,30 +7,20 @@
 #import "NSObject.h"
 
 #import "FxHostPrivateAPI.h"
-#import "FxRenderModelAPIPrivate.h"
 #import "PROAPIObject.h"
 
-@class NSString;
-
-@interface OZFxPlugHostPrivateAPI : NSObject <PROAPIObject, FxHostPrivateAPI, FxRenderModelAPIPrivate>
+@interface OZFxPlugHostPrivateAPI : NSObject <PROAPIObject, FxHostPrivateAPI>
 {
     struct OZFxPlugSharedBase *_plugin;
 }
 
-- (id)URLForHostResource:(id)arg1 withExtension:(id)arg2 subDirectory:(id)arg3 inBundleWithURL:(id)arg4;
-- (id)URLForHostResource:(id)arg1 withExtension:(id)arg2 subDirectory:(id)arg3 inBundleWithIdentifier:(id)arg4;
-- (id)URLForHostResource:(id)arg1 withExtension:(id)arg2 subDirectory:(id)arg3 inBundle:(id)arg4;
-- (float)blendingGamma;
-- (BOOL)giveEffectUIFocus;
-- (BOOL)navigateToTime:(CDUnion_2516e51e)arg1;
-- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 - (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
+- (BOOL)getLayerBlendMode:(int *)arg1;
+- (BOOL)setLayerBlendMode:(int)arg1;
+- (BOOL)enableLayerBlendModeChannel:(BOOL)arg1;
+- (BOOL)navigateToTime:(double)arg1;
+- (BOOL)giveEffectUIFocus;
 
 @end
 

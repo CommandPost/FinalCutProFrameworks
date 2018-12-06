@@ -6,9 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSString;
-
 @protocol FFColorLooksListItemProperties <NSObject>
-- (NSString *)displayName;
+- (id)displayName;
 @end
 

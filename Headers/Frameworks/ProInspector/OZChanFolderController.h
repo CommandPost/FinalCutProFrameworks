@@ -6,52 +6,33 @@
 
 #import <ProInspector/OZViewControllerGroup.h>
 
-@class LKButton, NSAttributedString, NSButton, NSMutableSet, PIAnimController, PIBuildContext, PIParamPulldownCtlr;
+@class LKButton, NSButton, NSMutableSet;
 
 @interface OZChanFolderController : OZViewControllerGroup
 {
     NSButton *_pResetButton;
     LKButton *_pDisclosureButton;
-    NSButton *_pCustomButton;
     NSMutableSet *_pCtlrsHiddenWhenCollapsed;
-    int _customButtonDisplayOption;
-    PIParamPulldownCtlr *_pParamPulldownCtlr;
-    PIAnimController *_pAnimCtlr;
-    PIBuildContext *_pBuildContext;
-    NSAttributedString *_pHideAttrStr;
-    NSAttributedString *_pShowAttrStr;
-    NSAttributedString *_pHideAttrStrInvisible;
-    NSAttributedString *_pShowAttrStrInvisible;
-    int _shouldAddDisclosureButton;
 }
 
-@property(nonatomic) int shouldAddDisclosureButton; // @synthesize shouldAddDisclosureButton=_shouldAddDisclosureButton;
-- (void)hideDisclosureButton;
-- (BOOL)hasCustomButton;
-- (void)toggleDisclosure:(id)arg1;
-- (void)mouseExitedRow:(id)arg1;
-- (void)mouseEnteredRow:(id)arg1;
-- (void)setDisplayCustomButton:(BOOL)arg1;
-- (id)newAttributedStringForString:(id)arg1 invisible:(BOOL)arg2;
-- (void)resetOneChannel:(struct OZChannelBase *)arg1;
-- (void)resetChannel:(id)arg1;
-- (BOOL)shouldBackUpEntireFolderOnReset;
-- (void)didTwiddle:(BOOL)arg1;
-- (void)hideSubcontrollerWhenCollapsed:(id)arg1;
-- (void)removeController:(id)arg1;
-- (void)setAnimStatusClass:(Class)arg1;
-- (void)setIsResetButtonHidden:(BOOL)arg1;
-- (float)suggestedMaxParamWidth;
-- (float)suggestedMinParamWidth;
-- (void)addButton:(id)arg1 display:(int)arg2;
-- (void)didBuildUI;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (void)setResetDelegateForPulldownCtlr:(id)arg1;
-- (void)dealloc;
-- (void)initResetButton;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)initResetButton;
+- (void)dealloc;
+- (void)update;
+- (void)enable;
+- (void)disable;
+- (void)didBuildUI;
+- (float)suggestedMaxParamWidth;
+- (void)setIsResetButtonHidden:(BOOL)arg1;
+- (void)removeController:(id)arg1;
+- (void)hideSubcontrollerWhenCollapsed:(id)arg1;
+- (void)didTwiddle:(BOOL)arg1;
+- (void)resetChannel:(id)arg1;
+- (void)resetOneChannel:(struct OZChannelBase *)arg1;
+- (id)blueBoldStringForString:(id)arg1;
+- (void)mouseEnteredRow:(id)arg1;
+- (void)mouseExitedRow:(id)arg1;
+- (void)toggleDisclosure:(id)arg1;
 
 @end
 

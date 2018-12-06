@@ -4,14 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSTextFieldCell.h"
+#import "NSProTextFieldCell.h"
 
-@interface LKTextFieldCell : NSTextFieldCell
+@interface LKTextFieldCell : NSProTextFieldCell
 {
 }
 
-- (void)setRomanOnly:(BOOL)arg1;
-- (BOOL)isRomanOnly;
++ (void)initialize;
+- (id)_baseFacet;
+- (void)drawWithExpansionFrame:(struct CGRect)arg1 inView:(id)arg2;
 
 @end
 

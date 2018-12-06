@@ -11,11 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)updateObservedValuesForContext:(void *)arg1;
-- (BOOL)isRunning;
+- (struct OpaqueFigClock *)figClock;
+- (void)start;
 - (void)stop;
-- (void)start:(id)arg1;
-- (void *)figClock;
+- (BOOL)isRunning;
+- (void)updateObservedValuesForContext:(void *)arg1;
 
 @end
 

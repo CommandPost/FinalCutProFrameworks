@@ -4,14 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSComboBox.h"
+#import "NSProComboBox.h"
 
-@interface LKComboBox : NSComboBox
+@interface LKComboBox : NSProComboBox
 {
 }
 
-- (void)setRomanOnly:(BOOL)arg1;
-- (BOOL)isRomanOnly;
++ (void)initialize;
 
 @end
 

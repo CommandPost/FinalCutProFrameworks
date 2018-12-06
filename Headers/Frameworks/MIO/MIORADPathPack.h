@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface MIORADPathPack : NSObject
 {
     NSMutableArray *mRecognizers;
-    NSMutableArray *mClaimedURLs;
     NSString *mName;
     NSString *mPath;
     BOOL mIsCustom;
@@ -22,17 +21,16 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)pathPackWithName:(id)arg1 path:(id)arg2 isCustom:(BOOL)arg3;
+- (id)initWithName:(id)arg1 path:(id)arg2 isCustom:(BOOL)arg3;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(nonatomic) BOOL cancelMount; // @synthesize cancelMount=mCancelMount;
 @property(nonatomic) BOOL mountSynchronously; // @synthesize mountSynchronously=mMountSynchronously;
 @property(nonatomic) int pluginCount; // @synthesize pluginCount=mPluginCount;
 @property(nonatomic) BOOL isCustom; // @synthesize isCustom=mIsCustom;
 @property(copy) NSString *path; // @synthesize path=mPath;
 @property(copy) NSString *name; // @synthesize name=mName;
-@property(retain) NSMutableArray *claimedURLs; // @synthesize claimedURLs=mClaimedURLs;
 @property(retain) NSMutableArray *recognizers; // @synthesize recognizers=mRecognizers;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithName:(id)arg1 path:(id)arg2 isCustom:(BOOL)arg3;
 
 @end
 

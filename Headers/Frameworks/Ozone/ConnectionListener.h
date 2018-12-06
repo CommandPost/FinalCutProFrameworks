@@ -11,8 +11,8 @@
     struct GreentreeServer *_server;
 }
 
-- (void)connectionAccepted:(id)arg1;
 - (id)initWithServer:(struct GreentreeServer *)arg1;
+- (void)connectionAccepted:(id)arg1;
 
 @end
 

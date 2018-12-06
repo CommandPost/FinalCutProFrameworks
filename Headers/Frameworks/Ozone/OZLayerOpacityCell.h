@@ -11,10 +11,10 @@
     BOOL _showCell;
 }
 
-- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
-- (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
-- (void)setShowValue:(BOOL)arg1;
 - (id)initTextCell:(id)arg1;
+- (void)setShowValue:(BOOL)arg1;
+- (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
+- (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 
 @end
 

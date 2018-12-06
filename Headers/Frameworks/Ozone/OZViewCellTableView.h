@@ -10,16 +10,16 @@
 {
 }
 
-- (BOOL)needsPanelToBecomeKey;
-- (BOOL)acceptsFirstResponder;
-- (void)removeTableColumn:(id)arg1;
-- (void)reloadData;
-- (void)noteNumberOfRowsChanged;
-- (void)didReorderOrResizeNotification:(id)arg1;
-- (void)workaroundReorderResizeProblem;
-- (void)dealloc;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
+- (void)workaroundReorderResizeProblem;
+- (void)didReorderOrResizeNotification:(id)arg1;
+- (void)noteNumberOfRowsChanged;
+- (void)reloadData;
+- (void)removeTableColumn:(id)arg1;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)needsPanelToBecomeKey;
 
 @end
 

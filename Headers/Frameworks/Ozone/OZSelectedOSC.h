@@ -12,10 +12,10 @@
     BOOL _effectSelected;
 }
 
-- (void)draw;
-- (void)setEffectSelected:(BOOL)arg1;
-- (void)setLocked:(BOOL)arg1;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)setLocked:(BOOL)arg1;
+- (void)setEffectSelected:(BOOL)arg1;
+- (void)draw;
 
 @end
 

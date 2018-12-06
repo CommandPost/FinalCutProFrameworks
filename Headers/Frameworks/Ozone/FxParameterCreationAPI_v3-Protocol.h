@@ -4,12 +4,10 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "FxParameterCreationAPI_v2.h"
+#import "FxParameterCreationAPI.h"
 
-@class NSString;
-
-@protocol FxParameterCreationAPI_v3 <FxParameterCreationAPI_v2>
-- (BOOL)addPathPickerWithName:(NSString *)arg1 parmId:(unsigned int)arg2 parmFlags:(unsigned int)arg3;
-- (BOOL)addPercentSliderWithName:(NSString *)arg1 parmId:(unsigned int)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 sliderMin:(double)arg6 sliderMax:(double)arg7 delta:(double)arg8 parmFlags:(unsigned int)arg9;
+@protocol FxParameterCreationAPI_v3 <FxParameterCreationAPI>
+- (BOOL)addPercentSliderWithName:(id)arg1 parmId:(unsigned int)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 sliderMin:(double)arg6 sliderMax:(double)arg7 delta:(double)arg8 parmFlags:(unsigned int)arg9;
+- (BOOL)addPathPickerWithName:(id)arg1 parmId:(unsigned int)arg2 parmFlags:(unsigned int)arg3;
 @end
 

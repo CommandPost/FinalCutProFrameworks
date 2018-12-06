@@ -6,29 +6,21 @@
 
 #import <Flexo/FFCommonSequenceAudioStream.h>
 
-@class FFAnchoredSequence;
-
 __attribute__((visibility("hidden")))
 @interface FFAnchoredSequenceAudioStream : FFCommonSequenceAudioStream
 {
+    BOOL _installedFormatObservers;
     BOOL _installedLiveUpdateObservers;
-    BOOL _installedMultiAngleEditorObservers;
-    FFAnchoredSequence *_liveUpdateObservedSequence;
-    BOOL _pendingUpdateSequenceTask;
 }
 
-- (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3;
-- (void)setRate:(double)arg1;
-- (void)preRenderEnd;
-- (void)preRenderBegin:(CDStruct_1b6d18a9)arg1 sync:(id)arg2;
-- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)sequenceAudioChannelCount:(id)arg1 didChange:(id)arg2;
+- (void)sequenceSoloedClips:(id)arg1 didChange:(id)arg2;
+- (void)_sequenceEditingDidChangeOnMainThread;
 - (void)sequenceEditing:(id)arg1 didChange:(id)arg2;
-- (void)_monitoredAngleAudioObjectsChanged:(id)arg1;
-- (void)_notifyRescopeObject:(id)arg1;
-- (void)_notifySequenceUpdated;
-- (void)clearPendingUpdateSequenceTask;
-- (void)_soloedClipsChanged:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
+- (void)setRate:(double)arg1;
+- (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3;
 
 @end
 

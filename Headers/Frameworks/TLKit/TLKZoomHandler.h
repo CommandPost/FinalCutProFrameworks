@@ -10,11 +10,10 @@
 {
 }
 
-- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
+- (BOOL)handleSelection;
+- (void)endSelection:(id)arg1;
 - (void)flagsChanged:(id)arg1;
-- (BOOL)stopTracking:(id)arg1;
-- (void)_zoomToRect:(struct CGRect)arg1;
-- (BOOL)shouldSkimItem:(id)arg1;
+- (id)cursorAtPoint:(struct CGPoint)arg1 dispatcher:(id)arg2;
 
 @end
 

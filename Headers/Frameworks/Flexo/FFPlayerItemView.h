@@ -4,21 +4,21 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSView.h"
+#import "NSProView.h"
 
 @class FFPlayerItemModule;
 
 __attribute__((visibility("hidden")))
-@interface FFPlayerItemView : NSView
+@interface FFPlayerItemView : NSProView
 {
     FFPlayerItemModule *_playerItemModule;
 }
 
-- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
-- (id)accessibilityHitTest:(struct CGPoint)arg1;
-- (id)accessibilityAttributeValue:(id)arg1;
-- (id)_imageElement;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
+- (id)_imageElement;
+- (id)accessibilityAttributeValue:(id)arg1;
+- (id)accessibilityHitTest:(struct CGPoint)arg1;
+- (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
 
 @end
 

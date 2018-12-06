@@ -8,30 +8,23 @@
 
 #import "TLKPartInfo.h"
 
-@class NSString, TLKImageLayer;
-
 @interface TLKInOutRangeMarker : CALayer <TLKPartInfo>
 {
-    TLKImageLayer *_head;
-    TLKImageLayer *_body;
+    CALayer *_head;
+    CALayer *_body;
+    long long _markerState;
     BOOL _isInMarker;
 }
 
-@property(nonatomic) BOOL isInMarker; // @synthesize isInMarker=_isInMarker;
-- (id)hitTest:(struct CGPoint)arg1;
-- (id)subpartAtPoint:(struct CGPoint)arg1;
-- (id)partIdentifier;
-- (void)layoutSublayers;
-- (struct CGRect)markerFrame;
-- (void)dealloc;
-- (id)init;
 - (void)_updateMarker;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)init;
+- (struct CGRect)markerFrame;
+- (void)layoutSublayers;
+- (id)partIdentifier;
+- (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)hitTest:(struct CGPoint)arg1;
+@property BOOL isInMarker;
+@property long long markerState;
 
 @end
 

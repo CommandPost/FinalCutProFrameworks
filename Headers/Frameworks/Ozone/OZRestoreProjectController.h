@@ -16,10 +16,11 @@
 }
 
 + (id)pickRestoreFrom:(id)arg1 projectName:(id)arg2 sheetWindow:(id)arg3;
-- (void)restore:(id)arg1;
-- (void)cancel:(id)arg1;
+- (id)shortTimeFormat;
+- (id)relativeDateString:(id)arg1 timeFormat:(id)arg2;
 - (id)openWithPairs:(id)arg1 projectName:(id)arg2 sheetWindow:(id)arg3;
-- (id)relativeDateString:(id)arg1;
+- (void)cancel:(id)arg1;
+- (void)restore:(id)arg1;
 
 @end
 

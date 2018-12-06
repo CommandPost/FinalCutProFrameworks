@@ -4,10 +4,8 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSException, TLKEventDispatcher, TLKPartArray;
-
 @protocol TLKEventDispatcherView
-- (BOOL)eventDispatcher:(TLKEventDispatcher *)arg1 shouldHandleException:(NSException *)arg2;
-- (TLKPartArray *)partArrayAtPoint:(struct CGPoint)arg1;
+- (id)partArrayAtPoint:(struct CGPoint)arg1;
+- (BOOL)eventDispatcher:(id)arg1 shouldHandleException:(id)arg2;
 @end
 

@@ -11,22 +11,22 @@
     struct FxTransformPriv *_priv;
 }
 
-+ (id)transformWithScale:(struct CGPoint)arg1 rotate:(float)arg2 translate:(struct CGPoint)arg3 shear:(struct CGPoint)arg4;
-+ (id)transformWithCGAffineTransform:(struct CGAffineTransform)arg1;
 + (id)identity;
-- (struct CGAffineTransform)cgAffineTransform;
-- (void)setCGAffineTransform:(struct CGAffineTransform)arg1;
-- (struct CGPoint)shear;
-- (void)setShear:(struct CGPoint)arg1;
-- (struct CGPoint)translation;
-- (void)setTranslation:(struct CGPoint)arg1;
-- (float)rotation;
-- (void)setRotation:(float)arg1;
-- (struct CGPoint)scale;
-- (void)setScale:(struct CGPoint)arg1;
-- (id)initWithScale:(struct CGPoint)arg1 rotate:(float)arg2 translate:(struct CGPoint)arg3 shear:(struct CGPoint)arg4;
-- (id)initWithCGAffineTransform:(struct CGAffineTransform)arg1;
++ (id)transformWithCGAffineTransform:(struct CGAffineTransform)arg1;
++ (id)transformWithScale:(struct CGPoint)arg1 rotate:(float)arg2 translate:(struct CGPoint)arg3 shear:(struct CGPoint)arg4;
 - (void)dealloc;
+- (id)initWithCGAffineTransform:(struct CGAffineTransform)arg1;
+- (id)initWithScale:(struct CGPoint)arg1 rotate:(float)arg2 translate:(struct CGPoint)arg3 shear:(struct CGPoint)arg4;
+- (void)setScale:(struct CGPoint)arg1;
+- (struct CGPoint)scale;
+- (void)setRotation:(float)arg1;
+- (float)rotation;
+- (void)setTranslation:(struct CGPoint)arg1;
+- (struct CGPoint)translation;
+- (void)setShear:(struct CGPoint)arg1;
+- (struct CGPoint)shear;
+- (void)setCGAffineTransform:(struct CGAffineTransform)arg1;
+- (struct CGAffineTransform)cgAffineTransform;
 
 @end
 

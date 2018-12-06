@@ -30,15 +30,28 @@
     NSMutableArray *_otherErrors;
 }
 
-+ (id)clipWithSubSegment:(id)arg1;
-+ (id)clip;
-+ (id)keyPathsForValuesAffectingShootingRate;
 + (id)keyPathsForValuesAffectingDurationTC;
++ (id)keyPathsForValuesAffectingShootingRate;
++ (id)clip;
++ (id)clipWithSubSegment:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (void)dealloc;
+- (BOOL)validateName:(id *)arg1 error:(id *)arg2;
+@property(nonatomic) double framerate; // @synthesize framerate=_framerate;
+- (void)setFormat:(int)arg1;
+@property(copy) MIOTimecode *inTC;
+@property(copy) MIOTimecode *outTC;
+@property(copy) MIOTimecode *durationTC;
+@property double shootingRate;
+- (BOOL)validateValue:(id *)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (id)valueForUndefinedKey:(id)arg1;
 @property(retain) NSMutableArray *otherErrors; // @synthesize otherErrors=_otherErrors;
 @property int fatalError; // @synthesize fatalError=_fatalError;
 @property int status; // @synthesize status=_status;
 @property int timecodeFormat; // @synthesize timecodeFormat=_timecodeFormat;
-@property(nonatomic) double framerate; // @synthesize framerate=_framerate;
 @property(copy) MIOAudioChannelMap *audioChannelMap; // @synthesize audioChannelMap=_audioChannelMap;
 @property(getter=isVideoEnabled) BOOL videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 @property(getter=isAudioEnabled) BOOL audioEnabled; // @synthesize audioEnabled=_audioEnabled;
@@ -47,19 +60,6 @@
 @property(copy) NSString *filePath; // @synthesize filePath=_filePath;
 @property(copy) NSString *reelName; // @synthesize reelName=_reelName;
 @property(copy) NSString *name; // @synthesize name=_name;
-- (id)valueForUndefinedKey:(id)arg1;
-- (BOOL)validateValue:(id *)arg1 forKey:(id)arg2 error:(id *)arg3;
-@property double shootingRate;
-@property(copy) MIOTimecode *durationTC;
-@property(copy) MIOTimecode *outTC;
-@property(copy) MIOTimecode *inTC;
-- (void)setFormat:(int)arg1;
-- (BOOL)validateName:(id *)arg1 error:(id *)arg2;
-- (void)dealloc;
-- (id)description;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

@@ -5,8 +5,8 @@
 //
 
 @protocol OZListController
-- (void)imageReady:(unsigned int)arg1;
-- (struct CGRect)imageRect;
 - (double)imageSize;
+- (struct CGRect)imageRect;
+- (void)imageReady:(unsigned int)arg1;
 @end
 

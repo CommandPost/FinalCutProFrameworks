@@ -8,7 +8,7 @@
 
 #import "MIOCoreDelegateProtocol.h"
 
-@class FFMediaEventProject, MIOCaptureCore, NSDate, NSMutableArray, NSSet, NSString, NSURL;
+@class FFMediaEventProject, MIOCaptureCore, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFImportTapeDevice : NSObject <MIOCoreDelegateProtocol>
@@ -17,55 +17,43 @@ __attribute__((visibility("hidden")))
     FFMediaEventProject *_currentEvent;
     NSString *_currentArchivePath;
     NSMutableArray *_currentClipIDs;
-    NSSet *_keywords;
-    NSURL *_externalLocation;
     BOOL _isRewinding;
     BOOL _captureEntireTape;
-    BOOL _addArchiveToFavorites;
     BOOL _isSeeking;
     BOOL _isProcessing;
     BOOL _canProcess;
     BOOL _isTapeRolling;
-    BOOL _ingestStopped;
-    int _tapeInLowOverheadCount;
-    BOOL _addArchiteToFavorites;
     BOOL _isArchivable;
-    NSDate *_captureStartDate;
 }
 
-+ (id)deviceWithDeviceConnection:(id)arg1;
-+ (id)keyPathsForValuesAffectingCanProcess;
 + (id)keyPathsForValuesAffectingIsProcessing;
-@property(retain) NSDate *captureStartDate; // @synthesize captureStartDate=_captureStartDate;
-@property(retain) NSURL *externalLocation; // @synthesize externalLocation=_externalLocation;
-@property(nonatomic) BOOL ingestStopped; // @synthesize ingestStopped=_ingestStopped;
-@property(nonatomic) BOOL isArchivable; // @synthesize isArchivable=_isArchivable;
++ (id)keyPathsForValuesAffectingCanProcess;
++ (id)deviceWithDeviceConnection:(id)arg1;
+- (id)initWithDeviceConnection:(id)arg1;
+- (void)dealloc;
+@property(retain, nonatomic) MIOCaptureCore *captureCore; // @synthesize captureCore=_captureCore;
+- (id)deviceSpecificKey:(id)arg1;
+- (id)displayName;
+- (void)startIngest;
+- (void)stopSeeking;
+- (void)captureNow;
+- (void)stopIngest;
+- (void)stopIngestImmediately;
+- (void)mioClipDidIngest:(id)arg1;
+- (void)mioIngestError:(id)arg1;
+- (void)setCoreDeviceConnection:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(nonatomic) BOOL isProcessing; // @synthesize isProcessing=_isProcessing;
+@property(readonly, nonatomic) BOOL canProcess;
+- (BOOL)isControllable;
+@property(nonatomic) BOOL isArchivable; // @synthesize isArchivable=_isArchivable;
 @property BOOL isSeeking; // @synthesize isSeeking=_isSeeking;
 @property BOOL isTapeRolling; // @synthesize isTapeRolling=_isTapeRolling;
 @property BOOL isRewinding; // @synthesize isRewinding=_isRewinding;
-@property BOOL addArchiveToFavorites; // @synthesize addArchiveToFavorites=_addArchiteToFavorites;
 @property BOOL captureEntireTape; // @synthesize captureEntireTape=_captureEntireTape;
-@property(retain) NSSet *keywords; // @synthesize keywords=_keywords;
 @property(retain) NSMutableArray *currentClipIDs; // @synthesize currentClipIDs=_currentClipIDs;
 @property(copy) NSString *currentArchivePath; // @synthesize currentArchivePath=_currentArchivePath;
 @property(retain) FFMediaEventProject *currentEvent; // @synthesize currentEvent=_currentEvent;
-@property(retain, nonatomic) MIOCaptureCore *captureCore; // @synthesize captureCore=_captureCore;
-- (BOOL)isControllable;
-@property(readonly, nonatomic) BOOL canProcess;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)setCoreDeviceConnection:(id)arg1;
-- (void)mioIngestError:(id)arg1;
-- (void)mioClipDidIngest:(id)arg1;
-- (void)stopIngestImmediately;
-- (void)stopIngest;
-- (void)captureNow;
-- (void)stopSeeking;
-- (void)startIngest;
-- (id)displayName;
-- (id)deviceSpecificKey:(id)arg1;
-- (void)dealloc;
-- (id)initWithDeviceConnection:(id)arg1;
 
 @end
 

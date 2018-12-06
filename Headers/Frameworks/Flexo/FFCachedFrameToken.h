@@ -15,14 +15,10 @@
     SEL _sel;
 }
 
-@property(readonly) FFSegmentStore *store; // @synthesize store=_store;
-@property(readonly) FFSegmentReadSample *sampleObj; // @synthesize sampleObj=_sampleObj;
-- (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
-- (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
-- (unsigned int)scheduleStatusInformation;
-- (id)description;
-- (void)dealloc;
 - (id)initWithSampleObj:(id)arg1 forStore:(id)arg2 selector:(SEL)arg3 requestedQuality:(int)arg4;
+- (void)dealloc;
+- (id)description;
+- (unsigned int)scheduleStatusInformation;
 
 @end
 
