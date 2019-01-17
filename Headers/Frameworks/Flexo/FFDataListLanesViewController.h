@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FFDataListLanesViewController : FFDataListModeViewController
 {
     BOOL _observingTimelineModule;
-    BOOL _observingStoryPresentation;
+    FFProStoryTimelinePresentation *_observedStoryPresentation;
     BOOL _pause;
     FFDataListLanesOutlineViewController *_timelineIndexLanesViewController;
     LKSegmentedControl *_editRolesSegmentedControl;
