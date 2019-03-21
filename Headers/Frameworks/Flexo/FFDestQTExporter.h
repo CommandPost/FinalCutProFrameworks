@@ -46,8 +46,10 @@ __attribute__((visibility("hidden")))
     FFDestVideoRequestInfo *_cachedRequestInfo;
     int _whichSegment;
     struct __CFArray *_reorderBuffer;
+    unsigned long long _audioFormat;
 }
 
+@property(nonatomic) unsigned long long audioFormat; // @synthesize audioFormat=_audioFormat;
 @property(retain) NSDictionary *hdrMetadata; // @synthesize hdrMetadata=_hdrMetadata;
 @property(nonatomic) BOOL requestStraightAlpha; // @synthesize requestStraightAlpha=_requestStraightAlpha;
 @property(nonatomic) BOOL ignoreAlphaChannel; // @synthesize ignoreAlphaChannel=_ignoreAlphaChannel;

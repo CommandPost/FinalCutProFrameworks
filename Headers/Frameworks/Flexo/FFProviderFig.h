@@ -25,7 +25,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _estimatedBandwidth;
 }
 
++ (struct opaqueCMFormatDescription *)_copyFirstVideoFormatDescriptionForURL:(id)arg1;
 + (unsigned int)videoCodecForURL:(id)arg1;
++ (BOOL)videoCodecGreaterThan8Bit:(id)arg1;
 + (id)extensions;
 + (id)utis;
 + (void)releaseSharedInstance;
@@ -52,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithMedia:(id)arg1;
 - (id)initWithAssetFileID:(id)arg1;
 - (struct FFMediaReader *)copyMediaReader;
+- (int)videoCodecBitRateInKbps;
 
 @end
 

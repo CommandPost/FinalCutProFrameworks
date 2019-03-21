@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (long long)translateRotationForEdit:(id)arg1;
 - (BOOL)_transformKenBurnsCropForVideoEdit:(id)arg1 error:(id *)arg2 crop:(struct FFSimpleCropParameters *)arg3;
 - (BOOL)transformVideoEffectForTransition:(id)arg1 error:(id *)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)transformEffectForChromaKeyCutaway:(id)arg1 error:(id *)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)transformEffectForSideBySideCutaway:(id)arg1 error:(id *)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)transformEffectForPipCutaway:(id)arg1 error:(id *)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_translateOriginFromCutaway:(struct CGRect *)arg1 intoSequenceFrame:(struct CGRect)arg2;

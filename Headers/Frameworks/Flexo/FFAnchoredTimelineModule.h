@@ -129,6 +129,8 @@
     SEL _deferredDropSelector;
     NSMutableArray *_deferredTimelineChangedNotifications;
     BOOL _deferImportOutOfDiskSpaceError;
+    BOOL _defer32BitTranscode;
+    NSArray *_deferred32BitTranscodeAssets;
     unsigned int _deferredRoleChangeOperationPreflightResults;
     FFAnchoredTimeMarker *_highlightedMarker;
     int _pendingSetRenderInfoNeedsDisplay;
@@ -276,6 +278,7 @@
 - (void)modifyContentCreationDate:(id)arg1;
 - (void)analyzeAndFix:(id)arg1;
 - (void)transcodeMedia:(id)arg1;
+- (void)transcodeLegacyMedia:(id)arg1;
 - (void)flashAndFreezeLastFrame:(id)arg1;
 - (void)doMute:(id)arg1;
 - (void)splitAtBeatMarkers:(id)arg1;
@@ -1023,6 +1026,7 @@
 - (void)_continuePerformanceTimerForHandler:(id)arg1;
 - (void)updateSelectionFilterForHandler:(id)arg1;
 - (void)handlerWillStartTracking:(id)arg1;
+- (void)_importScanFor32Bit:(id)arg1;
 - (void)_importOutOfDiskSpace:(id)arg1;
 - (void)_setupAnchoredFlags;
 - (id)timelineView:(id)arg1 layerForLane:(id)arg2;

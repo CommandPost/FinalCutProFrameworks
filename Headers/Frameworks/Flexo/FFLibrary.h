@@ -34,6 +34,7 @@
     NSMutableDictionary *_effectRegistryCache;
 }
 
++ (id)codecSubstringsThatIndicate64Bitness;
 + (void)registerConsolidatedEffectClass:(Class)arg1;
 + (id)consolidatedEffectClasses;
 + (void)addObject:(id)arg1 toSummary:(id)arg2;
@@ -77,6 +78,10 @@
 @property(readonly, retain, nonatomic) FFRoleSet *cachedRoleSet; // @synthesize cachedRoleSet=_cachedRoleSet;
 @property(retain, nonatomic) NSDictionary *updateHistory; // @synthesize updateHistory=_updateHistory;
 @property(readonly, nonatomic) FFLibraryFolder *tempFolder; // @synthesize tempFolder=_tempFolder;
+- (BOOL)_mediaShouldTrigger32BitWarning:(id)arg1;
+- (void)determineLegacyMediaStatus;
+- (id)legacyMedia;
+- (long long)legacyMediaStatus;
 - (BOOL)workingSpaceIsWideGamut;
 @property(nonatomic) int colorProcessingMode;
 - (void)consolidateMotionTemplates;

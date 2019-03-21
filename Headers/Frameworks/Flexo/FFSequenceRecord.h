@@ -17,6 +17,9 @@
 }
 
 + (id)documentType;
+- (void)determineLegacyMediaStatus;
+- (id)legacyMedia;
+- (long long)legacyMediaStatus;
 - (id)organizerDataItem;
 - (id)mdLocalValueForKey:(id)arg1;
 - (id)mdValueForKey:(id)arg1;

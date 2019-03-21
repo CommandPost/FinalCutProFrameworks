@@ -13,7 +13,6 @@
 
 @class FFLibrary, FFRelinkOpenAccessoryViewController, LKBox, LKButton, LKScrollView, LKTableView, LKTextField, NSArray, NSCondition, NSImageView, NSMatrix, NSMutableArray, NSString, NSTextView, NSURL, NSView;
 
-__attribute__((visibility("hidden")))
 @interface FFRelinkPanelController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSOpenSavePanelDelegate>
 {
     FFRelinkOpenAccessoryViewController *_accessoryViewController;
@@ -60,6 +59,7 @@ __attribute__((visibility("hidden")))
     struct PCProcrastinatedDispatch_t pdContext;
 }
 
++ (id)relinkAsset:(id)arg1 toFileURL:(id)arg2 propagatingMetadata:(id)arg3;
 + (void)showRelinkFilesPanel:(id)arg1;
 @property(retain, nonatomic) NSString *backgroundStatusString; // @synthesize backgroundStatusString=_backgroundStatusString;
 @property(retain, nonatomic) NSURL *lastStatusURL; // @synthesize lastStatusURL=_lastStatusURL;

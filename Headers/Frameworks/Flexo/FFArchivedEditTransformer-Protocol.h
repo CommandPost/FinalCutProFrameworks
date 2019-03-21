@@ -21,6 +21,7 @@
 - (BOOL)transformShotClipsForTrailer:(id)arg1 error:(id *)arg2 completion:(BOOL (^)(id, id, id *))arg3;
 - (BOOL)transformTrailerInfoForTrailer:(id)arg1 error:(id *)arg2 completion:(BOOL (^)(id, id *))arg3;
 - (BOOL)transformVideoEffectForTransition:(id)arg1 error:(id *)arg2 completion:(BOOL (^)(NSString *, struct, struct, struct, id *))arg3;
+- (BOOL)transformEffectForChromaKeyCutaway:(id)arg1 error:(id *)arg2 completion:(BOOL (^)(id, id, id, id, id, id, id *))arg3;
 - (BOOL)transformEffectForSideBySideCutaway:(id)arg1 error:(id *)arg2 completion:(BOOL (^)(int, id, id, id *))arg3;
 - (BOOL)transformEffectForPipCutaway:(id)arg1 error:(id *)arg2 completion:(BOOL (^)(struct CGRect, id, id, id, id *))arg3;
 - (BOOL)transformTitleForEdit:(id)arg1 error:(id *)arg2 completion:(BOOL (^)(NSArray *, NSString *, MapLocation *))arg3;

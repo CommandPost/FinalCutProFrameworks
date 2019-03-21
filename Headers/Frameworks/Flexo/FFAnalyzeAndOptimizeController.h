@@ -42,6 +42,7 @@
 + (id)sharedInstance;
 - (id)librariesInUse:(id)arg1;
 - (id)assetsInUse:(id)arg1;
+- (id)assetsChanging:(id)arg1;
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (BOOL)actionPerformAnalyzeAndOptimizeClips:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)analyzeAndOptimizeClips:(id)arg1 options:(id)arg2;
@@ -50,6 +51,8 @@
 - (id)preflightClip:(id)arg1 withOptions:(id)arg2;
 - (void)warnAboutOutOfDiskSpaceWithDetails:(id)arg1;
 - (BOOL)verifyDiskSpaceAvailable:(id)arg1;
+- (unsigned long long)audioFormatFor32BitClipTranscode:(id)arg1;
+- (id)renderFormatFor32BitClipTranscode:(id)arg1;
 - (void)analyzeAndOptimizeClipBackgroundThread:(id)arg1 onTask:(id)arg2;
 - (id)_commitTemporaryMediaAtURL:(id)arg1 mediaRepType:(id)arg2 fileName:(id)arg3 forAsset:(id)arg4;
 - (id)_tmpFilenameFromName:(id)arg1 identifier:(id)arg2 proxy:(BOOL)arg3;

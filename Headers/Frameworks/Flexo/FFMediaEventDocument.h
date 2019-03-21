@@ -34,6 +34,7 @@
 - (id)mediaEventProject;
 - (id)rootObject;
 - (void)updateWithHandler:(id)arg1;
+- (void)update_buildLegacyMediaCache;
 - (void)update_fixFFAnchoredAngleVideoEffectsAnchoredObject;
 - (void)update_fixMixdownRoleGroupForAnchoredMediaRefs;
 - (void)update_projectNotesLocation2;

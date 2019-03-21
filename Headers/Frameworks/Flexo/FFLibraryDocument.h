@@ -165,9 +165,6 @@
 - (BOOL)warnForBranchIDTag;
 - (void)showIncompatibleLibraryMessage:(id)arg1;
 - (BOOL)warnForUpdate;
-- (void)_checkFor32BitMedia;
-- (BOOL)_shouldShow32BitMediaWarning;
-- (BOOL)_mediaShouldTrigger32BitWarning:(id)arg1;
 - (id)addUpdateLine:(id)arg1 to:(id)arg2;
 - (BOOL)_bringUpToDate:(id *)arg1;
 - (void)_decrementIsPerformingPostLibraryUpdatersCount;

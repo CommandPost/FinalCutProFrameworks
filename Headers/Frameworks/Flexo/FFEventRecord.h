@@ -19,6 +19,9 @@
 + (id)documentType;
 + (id)copyClassDescription;
 @property(retain) NSURL *cacheFolder; // @synthesize cacheFolder=_cacheFolder;
+- (void)determineLegacyMediaStatus;
+- (id)legacyMedia;
+- (long long)legacyMediaStatus;
 - (BOOL)update_resetHiddenEvents_43585635:(id *)arg1;
 - (BOOL)update_resetHiddenEvents:(id *)arg1;
 - (BOOL)getKeyThumbnailMD5:(id *)arg1 offset:(long long *)arg2;

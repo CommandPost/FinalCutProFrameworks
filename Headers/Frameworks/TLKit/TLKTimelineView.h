@@ -256,6 +256,8 @@
 - (id)_expandSelectionForSelectAll:(id)arg1;
 - (void)_HACK_filterNonSelectableItems:(id)arg1;
 - (void)_selectAllInMultipleTracksMode;
+- (id)itemAtTrackTimeUnlessImplicitSelectionTakesPrecedence:(CDStruct_1b6d18a9)arg1;
+- (id)itemToTargetUserAction;
 - (void)selectClipAtPlayhead:(id)arg1;
 - (id)_itemAtTime:(CDStruct_1b6d18a9)arg1 inTrack:(id)arg2;
 - (void)selectClip:(id)arg1;

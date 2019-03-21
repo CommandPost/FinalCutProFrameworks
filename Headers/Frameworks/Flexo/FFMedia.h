@@ -8,6 +8,7 @@
 
 #import "FFAssetContainerProtocol.h"
 #import "FFDataModelProtocol.h"
+#import "FFLegacyMediaChecking.h"
 #import "FFMD5Protocol.h"
 #import "FFMediaDisplayProtocol.h"
 #import "FFMetadataProtocol.h"
@@ -15,7 +16,7 @@
 #import "NSCoding.h"
 #import "NSCopying.h"
 
-@interface FFMedia : FFBinObject <NSCoding, NSCopying, FFMediaDisplayProtocol, FFDataModelProtocol, FFSkimmableProtocol, FFAssetContainerProtocol, FFMD5Protocol, FFMetadataProtocol>
+@interface FFMedia : FFBinObject <NSCoding, NSCopying, FFMediaDisplayProtocol, FFDataModelProtocol, FFSkimmableProtocol, FFAssetContainerProtocol, FFMD5Protocol, FFMetadataProtocol, FFLegacyMediaChecking>
 {
 }
 
@@ -26,6 +27,9 @@
 + (id)newAudioSourcePropertiesMapForProvider:(id)arg1;
 + (void)sortSequences:(id)arg1 usingOptions:(unsigned long long)arg2;
 + (void)sortMedia:(id)arg1 usingOptions:(unsigned long long)arg2;
+- (void)determineLegacyMediaStatus;
+- (id)legacyMedia;
+- (long long)legacyMediaStatus;
 - (id)subtitlesInRange:(CDStruct_e83c9415)arg1;
 - (id)closedCaptionsInRange:(CDStruct_e83c9415)arg1;
 - (BOOL)hasSubtitles;

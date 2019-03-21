@@ -6,12 +6,13 @@
 
 #import <Flexo/FFMediaState.h>
 
+#import "FFLegacyMediaChecking.h"
 #import "NSCoding.h"
 #import "NSCopying.h"
 
 @class FFCustomCameraLUTProps, FFDominantMotionMediaRep, FFFlowMediaRep, FFMediaRep, FFProvider, FFVideoOverrideInfo, FFVideoProps, NSDictionary, NSString;
 
-@interface FFAsset : FFMediaState <NSCoding, NSCopying>
+@interface FFAsset : FFMediaState <NSCoding, NSCopying, FFLegacyMediaChecking>
 {
     NSString *_mediaIdentifier;
     NSString *_md5String;
@@ -56,6 +57,7 @@
     BOOL _mediaOnlineSinceLastNotification;
     int _hasClosedCaptionTrack;
     int _hasSubtitleTrack;
+    long long _legacyMediaStatusInternal;
 }
 
 + (void)invalidateMultipleAssets:(id)arg1;
@@ -67,6 +69,7 @@
 + (void)playerQualityChanged;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property long long legacyMediaStatusInternal; // @synthesize legacyMediaStatusInternal=_legacyMediaStatusInternal;
 @property(nonatomic) int hasSubtitleTrack; // @synthesize hasSubtitleTrack=_hasSubtitleTrack;
 @property(nonatomic) int hasClosedCaptionTrack; // @synthesize hasClosedCaptionTrack=_hasClosedCaptionTrack;
 @property(nonatomic) BOOL mediaOnlineSinceLastNotification; // @synthesize mediaOnlineSinceLastNotification=_mediaOnlineSinceLastNotification;
@@ -85,6 +88,9 @@
 @property(retain, nonatomic) NSString *uttype; // @synthesize uttype=_uttype;
 @property(readonly, nonatomic) NSString *md5String; // @synthesize md5String=_md5String;
 @property(readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
+- (void)determineLegacyMediaStatus;
+- (id)legacyMedia;
+- (long long)legacyMediaStatus;
 - (int)_applyLogColorProfileNameWhenAppropriate;
 - (int)_logProcessingModeFromMediaRep;
 - (long long)logProcessingModeFromMediaRep;
@@ -270,6 +276,7 @@
 - (BOOL)hasCameraTag;
 @property(readonly, nonatomic) unsigned long long expectedGrowthRefreshRate;
 @property(readonly, nonatomic) BOOL isGrowing;
+- (BOOL)originalMediaRepLivesInsideLibraryBundle:(id *)arg1;
 
 @end
 

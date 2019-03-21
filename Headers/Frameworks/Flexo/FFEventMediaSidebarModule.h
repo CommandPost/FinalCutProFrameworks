@@ -15,6 +15,7 @@
 }
 
 @property(retain, nonatomic) FFMediaEventProject *activeSequenceEvent; // @synthesize activeSequenceEvent=_activeSequenceEvent;
+- (void)transcodeLegacyMedia:(id)arg1;
 - (void)sidebarDidAutonomouslySelectNode:(id)arg1;
 - (void)sidebarDidSelectNodes:(id)arg1;
 - (void)importiMovieProject:(BOOL)arg1;
