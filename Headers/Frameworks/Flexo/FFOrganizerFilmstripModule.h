@@ -408,6 +408,7 @@
 - (void)revealAncestor:(id)arg1;
 - (void)modifyContentCreationDate:(id)arg1;
 - (void)analyzeAndFix:(id)arg1;
+- (void)transcodeLegacyMedia:(id)arg1;
 - (void)transcodeMedia:(id)arg1;
 - (void)addNewSelectionEnd:(id)arg1;
 - (void)addNewSelectionStart:(id)arg1;

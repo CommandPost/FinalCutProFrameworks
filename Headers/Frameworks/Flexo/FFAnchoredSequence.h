@@ -176,6 +176,8 @@
 @property(readonly, retain, nonatomic) FFSequenceInfo *sequenceInfo; // @synthesize sequenceInfo=_sequenceInfo;
 @property(readonly, nonatomic) NSString *sequenceType; // @synthesize sequenceType=_sequenceType;
 @property(retain, nonatomic) FFRenderFormat *renderFormat; // @synthesize renderFormat=_renderFormat;
+- (id)legacyMedia;
+- (long long)legacyMediaStatus;
 - (void)update_SequenceAudioChannelCountSampleRate;
 - (BOOL)update_simpleMotionTitles;
 - (BOOL)update_invalidatePanasonicAVCCAMThumbnails;
@@ -842,6 +844,7 @@
 - (BOOL)operationAnchorItem:(id)arg1 withAnchorInLocalTime:(CDStruct_1b6d18a9)arg2 toItem:(id)arg3 atItemTime:(CDStruct_1b6d18a9)arg4 inContainer:(id)arg5 inContainerAnchorLane:(long long)arg6 alignToParent:(BOOL)arg7 error:(id *)arg8;
 - (id)_parentForAnchor:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 inContainer:(id)arg3 lastEnd:(CDStruct_1b6d18a9 *)arg4;
 - (id)parentForAnchorAtTime:(CDStruct_1b6d18a9)arg1 inContainer:(id)arg2 lastEnd:(CDStruct_1b6d18a9 *)arg3;
+- (void)applyAudioOnlyBelowSpineConstraintForItem:(id)arg1;
 - (BOOL)_deleteAnchoredObjects:(id)arg1 rootItem:(id)arg2 preserveTime:(BOOL)arg3 preserveAnchors:(BOOL)arg4 playhead:(CDStruct_1b6d18a9 *)arg5 error:(id *)arg6;
 - (CDStruct_1b6d18a9)_calculatePlayheadOffsetForDeletion:(id)arg1 rootItem:(id)arg2 preserveTime:(BOOL)arg3 playhead:(CDStruct_1b6d18a9)arg4;
 - (BOOL)actionLiftAnchoredEdits:(id)arg1 rootItem:(id)arg2 error:(id *)arg3;

@@ -8,12 +8,13 @@
 
 #import "FFInspectableObject.h"
 #import "FFInspectorTabDataSource.h"
+#import "FFLegacyMediaChecking.h"
 #import "FFLibraryCocoaScripting.h"
 
 @class FFLibrary, FFMediaEventProject, FFModelDocument, NSDictionary, NSMutableSet, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFLibraryItem : FFModelObject <FFLibraryCocoaScripting, FFInspectableObject, FFInspectorTabDataSource>
+@interface FFLibraryItem : FFModelObject <FFLibraryCocoaScripting, FFInspectableObject, FFInspectorTabDataSource, FFLegacyMediaChecking>
 {
     FFLibraryItem *_parentItem;
     NSString *_relativePath;
@@ -28,6 +29,9 @@ __attribute__((visibility("hidden")))
 + (id)documents;
 + (id)copyClassDescription;
 @property(readonly, nonatomic) FFLibraryItem *parentItem; // @synthesize parentItem=_parentItem;
+- (void)determineLegacyMediaStatus;
+- (id)legacyMedia;
+- (long long)legacyMediaStatus;
 - (void)_enumerateMediaEventProjectsWithOptions:(unsigned int)arg1 usingBlock:(CDUnknownBlockType)arg2 stop:(char *)arg3;
 - (void)enumerateMediaEventProjectsWithOptions:(unsigned int)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)_verifyRoleSetsMatchLibraryRoleSet:(id)arg1 exactly:(BOOL)arg2;

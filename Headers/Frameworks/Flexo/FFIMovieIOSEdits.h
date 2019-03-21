@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)applyTitles:(id *)arg1;
 - (BOOL)anchorCutaway:(id)arg1 toTimelineClip:(id)arg2 edit:(id)arg3 error:(id *)arg4;
 - (BOOL)applyCutaway:(id)arg1 edit:(id)arg2 error:(id *)arg3;
+- (BOOL)applyChromaKeyCutaway:(id)arg1 edit:(id)arg2 error:(id *)arg3;
 - (BOOL)applySideBySideCutaway:(id)arg1 edit:(id)arg2 error:(id *)arg3;
 - (BOOL)applyPipCutaway:(id)arg1 edit:(id)arg2 error:(id *)arg3;
 - (BOOL)applyPipCutawayTransitionSource:(id)arg1 target:(id)arg2 edit:(id)arg3 error:(id *)arg4;

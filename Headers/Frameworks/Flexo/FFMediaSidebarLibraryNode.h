@@ -31,6 +31,7 @@
 - (id)libraryFolderNode;
 - (id)_updateChildNodesExpandingNodes;
 - (void)updateChildNodes;
+- (void)updateNodeAndChildrenAndReloadOutlineView;
 - (BOOL)isExpandable;
 - (id)toolTip;
 - (void)setTitle:(id)arg1;

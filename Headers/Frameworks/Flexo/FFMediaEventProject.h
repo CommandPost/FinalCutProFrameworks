@@ -6,6 +6,7 @@
 
 #import <Flexo/FFProject.h>
 
+#import "FFLegacyMediaChecking.h"
 #import "FFOrganizerItem.h"
 #import "FFOrganizerItemDraggingSource.h"
 #import "FFOrganizerMasterItem.h"
@@ -15,7 +16,7 @@
 
 @class FFEventInfo, FFLibrary, FFMediaEventFolder, FFMediaEventProjectData, FFMediaEventThumbnail, FFRoleSet, FFSequenceInfo, NSArray, NSData, NSDate, NSImage, NSMutableSet, NSSet, NSString, NSURL;
 
-@interface FFMediaEventProject : FFProject <FFXMLTranslationTarget, FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, NSCoding>
+@interface FFMediaEventProject : FFProject <FFXMLTranslationTarget, FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, NSCoding, FFLegacyMediaChecking>
 {
     NSString *_projectDataID;
     NSDate *_eventEarliestDate;
@@ -42,6 +43,7 @@
     NSMutableSet *_ownedMediaIdentifiersAndAssetMD5Strings;
     FFRoleSet *_cachedRoleSet;
     NSMutableSet *_mediaDescsForMakingOwnedClips;
+    long long _legacyMediaStatusInternal;
 }
 
 + (struct NSSet *)copyMediaDescForObject:(id)arg1;
@@ -65,6 +67,7 @@
 + (BOOL)_actionDeleteItems:(id)arg1 inProject:(id)arg2 error:(id *)arg3;
 + (id)_deletingActionNameForItems:(id)arg1;
 + (id)flattenMediaArray:(id)arg1;
+@property long long legacyMediaStatusInternal; // @synthesize legacyMediaStatusInternal=_legacyMediaStatusInternal;
 @property(retain, nonatomic) NSData *roleSetData; // @synthesize roleSetData=_roleSetData;
 @property(retain, nonatomic) NSString *legacyEventPath; // @synthesize legacyEventPath=_legacyEventPath;
 @property(readonly, nonatomic) BOOL isVideoEvent; // @synthesize isVideoEvent=_isVideoEvent;
@@ -77,6 +80,10 @@
 @property(readonly, nonatomic) NSDate *eventEarliestDate; // @synthesize eventEarliestDate=_eventEarliestDate;
 @property(readonly, nonatomic) NSDate *eventLatestDate; // @synthesize eventLatestDate=_eventLatestDate;
 @property(readonly, nonatomic) NSString *projectDataID; // @synthesize projectDataID=_projectDataID;
+- (void)determineLegacyMediaStatusOfUncheckedOwnedMedia;
+- (void)determineLegacyMediaStatus;
+- (id)legacyMedia;
+- (long long)legacyMediaStatus;
 - (BOOL)verifyRoleSetMatchesLibraryRoleSet:(id)arg1 exactly:(BOOL)arg2;
 - (void)syncToRolesFromLibrary;
 - (void)dumpRoleSet;
