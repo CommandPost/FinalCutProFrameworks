@@ -6,20 +6,28 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class NSMutableDictionary, PGDrawableTexture;
+@class NSDictionary, NSMutableArray, PODrawableTexture;
 
 @interface OZObjectHighlightOverlay : OZOverlay
 {
     _Bool _isEnabled;
     unsigned int _flags;
     unsigned int _hitNodeID;
-    NSMutableDictionary *_textAttribs;
-    PGDrawableTexture *_textTexture;
+    PODrawableTexture *_textTexture;
+    NSDictionary *_textAttributes1x;
+    NSDictionary *_textAttributes2x;
     vector_12da65de _objectsArray;
+    NSMutableArray *_textMDPs;
+    NSMutableArray *_boxMDPs;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)outlineHighlightPrimitive:(id)arg1 c1:(PCVector2_79efa81a *)arg2 c2:(PCVector2_79efa81a *)arg3 c3:(PCVector2_79efa81a *)arg4 c4:(PCVector2_79efa81a *)arg5;
+- (id)namePrimitive:(id)arg1 atPoint:(PCVector2_79efa81a *)arg2;
+- (id)getMetalDrawPrimitives:(id)arg1;
+- (BOOL)doesSupportMetal;
+- (BOOL)shouldDraw;
 - (void)drawName:(id)arg1 atPoint:(PCVector2_79efa81a *)arg2;
 - (void)drawOutlineHighlight:(PCVector2_79efa81a *)arg1 c2:(PCVector2_79efa81a *)arg2 c3:(PCVector2_79efa81a *)arg3 c4:(PCVector2_79efa81a *)arg4 color:(const struct PCColor *)arg5;
 - (int)hitCheck:(id)arg1;
@@ -30,6 +38,10 @@
 - (void)disable;
 - (void)enable:(unsigned int)arg1;
 - (_Bool)isEnabled;
+- (id)textAttributesForBackingScale:(int)arg1;
+- (id)textAttributes;
+- (id)fontForBackingScale:(int)arg1;
+- (id)shadowForBackingScale:(int)arg1;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 

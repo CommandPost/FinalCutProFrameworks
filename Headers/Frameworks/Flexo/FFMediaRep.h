@@ -7,13 +7,13 @@
 #import <Flexo/FFBaseDSObject.h>
 
 #import "FFMetadataProtocol.h"
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class FFAsset, FFAssetFileIdentifier, FFMediaRepDownloadTask, NSArray, NSMutableDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFMediaRep : FFBaseDSObject <NSCoding, NSCopying, FFMetadataProtocol>
+@interface FFMediaRep : FFBaseDSObject <NSSecureCoding, NSCopying, FFMetadataProtocol>
 {
     FFAsset *_media;
     NSMutableDictionary *_metadata;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     FFMediaRepDownloadTask *_mediaRepDownloadTask;
 }
 
++ (BOOL)supportsSecureCoding;
 + (BOOL)syncBookmarkData:(id)arg1 forceUpdate:(BOOL)arg2 usingLock:(id)arg3;
 + (BOOL)syncBookmarkData:(id)arg1 forceUpdate:(BOOL)arg2;
 + (BOOL)initBookmarkData:(id)arg1 forceUpdate:(BOOL)arg2;

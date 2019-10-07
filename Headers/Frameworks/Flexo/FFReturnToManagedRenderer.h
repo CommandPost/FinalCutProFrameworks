@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface FFReturnToManagedRenderer : NSObject
 {
-    struct HGObject *_obj;
+    // Error parsing type: ^{HGObject=^^?{atomic<unsigned int>=AI}}, name: _obj
     int _loc;
 }
 
 - (void)dealloc;
-- (id)initWithLocation:(int)arg1 hgObj:(struct HGObject *)arg2;
+-     // Error parsing type: @28@0:8i16^{HGObject=^^?{atomic<unsigned int>=AI}}20, name: initWithLocation:hgObj:
 
 @end
 

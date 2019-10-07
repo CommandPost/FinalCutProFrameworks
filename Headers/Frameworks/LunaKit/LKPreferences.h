@@ -65,6 +65,7 @@
 - (void)_setupToolbar;
 - (void)addPreferenceNamed:(id)arg1 owner:(id)arg2;
 - (void)dealloc;
+- (id)plistPath;
 - (id)init;
 
 // Remaining properties

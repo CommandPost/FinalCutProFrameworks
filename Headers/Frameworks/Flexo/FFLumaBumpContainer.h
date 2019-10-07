@@ -16,6 +16,7 @@
     NSArray *_lumaBumps;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(readonly, nonatomic) NSArray *bumps; // @synthesize bumps=_lumaBumps;
 @property(readonly, nonatomic) NSArray *lumaBumpChannels; // @synthesize lumaBumpChannels=_lumaBumpChannels;

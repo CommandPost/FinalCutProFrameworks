@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     int searchType;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)searchQueryWithType:(int)arg1 predicate:(id)arg2;
 + (id)copyClassDescription;
 @property int searchType; // @synthesize searchType;

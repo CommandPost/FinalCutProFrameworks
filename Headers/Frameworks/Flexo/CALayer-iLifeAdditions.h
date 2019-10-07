@@ -21,7 +21,6 @@
 - (int)numberOfGeometryFlipsUpToMicaRootLayer;
 - (int)numberOfGeometryFlips;
 - (void)scaleToDuration:(double)arg1;
-- (id)duplicateLayerTree;
 - (void)setDurationOfAllLayersTo:(double)arg1;
 - (void)takeAnimationsFromLayer:(id)arg1;
 - (void)takeMaskFromLayer:(id)arg1;

@@ -13,7 +13,7 @@
 #import "NSTextFieldDelegate.h"
 #import "NSTokenFieldDelegate.h"
 
-@class CALayer, CKBatch, CKSource, FFShareDataModel, FFShareDestination, FFShareDestinationController, FFShareExportPanelsHelper, FFShareSourcesListViewController, LKButton, LKScroller, NSArray, NSColor, NSDictionary, NSImage, NSImageView, NSMapTable, NSMutableDictionary, NSSet, NSString, NSTrackingArea, NSURL, NSView;
+@class CALayer, CKBatch, CKSource, FFShareDataModel, FFShareDestination, FFShareDestinationController, FFShareExportPanelsHelper, FFShareSourceDestinationMapping, FFShareSourcesListViewController, FFShareVideoPreviewViewController, LKButton, LKScroller, NSArray, NSColor, NSDictionary, NSImage, NSImageView, NSMapTable, NSMutableDictionary, NSSet, NSString, NSURL, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFBaseSharePanel : NSWindowController <CAAnimationDelegate, NSOpenSavePanelDelegate, NSTextFieldDelegate, NSTokenFieldDelegate, FFAutoexpandingTextFieldDelegate, FFShareExtraSettingsConfiguratorDelegate>
@@ -24,18 +24,7 @@ __attribute__((visibility("hidden")))
     NSArray *_batches;
     NSURL *_destinationURL;
     NSMutableDictionary *_reducedCollatedMetadata;
-    BOOL _usesVideoPreview;
-    NSView *_previewView;
-    CALayer *_topLayer;
-    CALayer *_previewLayer;
-    CALayer *_glossLayer;
-    CALayer *_skimmerLayer;
-    double _previewTime;
-    NSTrackingArea *_previewTrackingArea;
-    id _normalTransform;
-    id _skimmingTransform;
-    double _glossLayerOpacity;
-    struct CGPoint _glossLayerPosition;
+    FFShareVideoPreviewViewController *_videoPreviewViewController;
     FFShareSourcesListViewController *_sourcesListViewController;
     BOOL _sharingFromTheater;
     id <FFSharePanelDelegate> _delegate;
@@ -54,8 +43,11 @@ __attribute__((visibility("hidden")))
     NSArray *_errors;
     BOOL _observingTargets;
     FFShareExportPanelsHelper *_panelsHelper;
+    BOOL _canExportSelectedLayersOnly;
     FFShareDataModel *_dataModel;
+    double _previewTime;
     NSMapTable *_mapDestinationToMetadata;
+    FFShareSourceDestinationMapping *_sourceDestinationMapping;
 }
 
 + (id)sharePanelWithSources:(id)arg1 destination:(id)arg2 error:(id *)arg3;
@@ -71,11 +63,13 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingDestination;
 + (id)keyPathsForValuesAffectingHasMultipleDestinations;
 + (void)initialize;
+@property(retain, nonatomic) FFShareSourceDestinationMapping *sourceDestinationMapping; // @synthesize sourceDestinationMapping=_sourceDestinationMapping;
 @property(retain, nonatomic) FFShareExportPanelsHelper *panelsHelper; // @synthesize panelsHelper=_panelsHelper;
 @property(readonly, nonatomic) NSMapTable *mapDestinationToMetadata; // @synthesize mapDestinationToMetadata=_mapDestinationToMetadata;
+@property(nonatomic) BOOL canExportSelectedLayersOnly; // @synthesize canExportSelectedLayersOnly=_canExportSelectedLayersOnly;
 @property(nonatomic) double previewTime; // @synthesize previewTime=_previewTime;
 @property(retain, nonatomic) FFShareSourcesListViewController *sourcesListViewController; // @synthesize sourcesListViewController=_sourcesListViewController;
-@property(nonatomic) BOOL usesVideoPreview; // @synthesize usesVideoPreview=_usesVideoPreview;
+@property(retain, nonatomic) FFShareVideoPreviewViewController *videoPreviewViewController; // @synthesize videoPreviewViewController=_videoPreviewViewController;
 @property(retain, nonatomic) FFShareDataModel *dataModel; // @synthesize dataModel=_dataModel;
 @property(retain, nonatomic) NSArray *errors; // @synthesize errors=_errors;
 @property(retain, nonatomic) NSDictionary *metadataFields; // @synthesize metadataFields=_metadataFields;
@@ -88,21 +82,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) LKButton *okButton; // @synthesize okButton=_okButton;
 @property(nonatomic) unsigned long long selectedDestinationIndex; // @synthesize selectedDestinationIndex=_selectedDestinationIndex;
 @property(nonatomic) id <FFSharePanelDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) struct CGPoint glossLayerPosition; // @synthesize glossLayerPosition=_glossLayerPosition;
 @property(nonatomic) BOOL sharingFromTheater; // @synthesize sharingFromTheater=_sharingFromTheater;
-@property(nonatomic) double glossLayerOpacity; // @synthesize glossLayerOpacity=_glossLayerOpacity;
-@property(retain, nonatomic) id skimmingTransform; // @synthesize skimmingTransform=_skimmingTransform;
-@property(retain, nonatomic) id normalTransform; // @synthesize normalTransform=_normalTransform;
-@property(retain, nonatomic) NSTrackingArea *previewTrackingArea; // @synthesize previewTrackingArea=_previewTrackingArea;
-@property(retain, nonatomic) CALayer *skimmerLayer; // @synthesize skimmerLayer=_skimmerLayer;
-@property(retain, nonatomic) CALayer *glossLayer; // @synthesize glossLayer=_glossLayer;
-@property(retain, nonatomic) CALayer *previewLayer; // @synthesize previewLayer=_previewLayer;
-@property(retain, nonatomic) CALayer *topLayer; // @synthesize topLayer=_topLayer;
-@property(nonatomic) NSView *previewView; // @synthesize previewView=_previewView;
 @property(retain, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property(retain, nonatomic) NSArray *destinationControllers; // @synthesize destinationControllers=_destinationControllers;
 @property(retain, nonatomic) FFShareDestination *originalDestination; // @synthesize originalDestination=_originalDestination;
 @property(copy, nonatomic) NSArray *sources; // @synthesize sources=_sources;
+- (id)sourceForDestination:(id)arg1;
 - (void)didConfigureExtraSettings:(id)arg1;
 - (void)willConfigureExtraSettings:(id)arg1;
 - (id)helperAppPathWithDestination:(id)arg1;
@@ -117,13 +102,8 @@ __attribute__((visibility("hidden")))
 - (void)viewDidBecomeFirstResponder:(id)arg1;
 - (void)controlTextDidEndEditing:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (double)sourceCurrentFrameTime;
 - (void)unbindMetadataFields;
 - (void)bindMetadataFields;
-- (double)normalizedTimeFromPreviewTime:(double)arg1;
-- (double)previewTimeFromNormalizedTime:(double)arg1;
-- (BOOL)exportSelection;
-- (struct CGRect)previewFrame;
 - (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)doSubmitAnimation:(id)arg1 toDestination:(struct CGRect)arg2;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
@@ -140,6 +120,7 @@ __attribute__((visibility("hidden")))
 - (void)assignDestinationsToUserNotificationGroupsWithDestinationController:(id)arg1;
 - (void)assignDestinationsToUserNotificationGroups;
 - (void)closeWithCode:(long long)arg1;
+- (void)prepareForShareWithBatches:(id)arg1;
 - (BOOL)isSheet;
 - (void)beginSheetModalForWindow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)runModal;
@@ -159,8 +140,6 @@ __attribute__((visibility("hidden")))
 - (id)userVisibleErrors;
 @property(readonly, nonatomic) BOOL canSelectPrevious;
 @property(readonly, nonatomic) BOOL canSelectNext;
-- (void)refreshPreviewVideo;
-- (void)setPreviewTime:(double)arg1 rebuildContext:(BOOL)arg2;
 @property(readonly, nonatomic) NSString *okButtonTitle;
 @property(readonly, nonatomic) FFShareDestinationController *selectedDestinationController;
 @property(readonly, nonatomic) CKBatch *batch;
@@ -172,12 +151,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *batches;
 @property(readonly, retain, nonatomic) NSArray *destinations;
 @property(readonly, nonatomic) CKSource *source; // @dynamic source;
-- (void)hideVideoPreview;
-- (void)configureVideoPreview;
+@property(readonly, nonatomic) CALayer *previewLayer;
+@property(readonly, nonatomic) NSView *previewView;
+- (void)setupVideoPreviewViewController;
+- (void)setupShareSourcesListViewController;
+@property(readonly, nonatomic) BOOL isBatchExport;
+- (void)setupVideoPreviewOrSourcesList;
 - (void)windowDidLoad;
-- (void)mouseMoved:(id)arg1;
-- (void)mouseExited:(id)arg1;
-- (void)mouseEntered:(id)arg1;
 - (void)stopObservingValidationErrors;
 - (void)startObservingValidationErrors;
 - (void)dealloc;

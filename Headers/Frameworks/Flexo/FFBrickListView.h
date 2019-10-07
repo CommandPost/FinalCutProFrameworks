@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSColor *_backgroundColor;
 }
 
++ (BOOL)supportsSecureCoding;
 + (void)initialize;
 @property(copy, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;

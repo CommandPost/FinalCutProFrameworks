@@ -6,11 +6,11 @@
 
 #import <Flexo/FFBinObject.h>
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class NSDate, NSMutableDictionary, NSSet, NSString, NSURL;
 
-@interface FFProject : FFBinObject <NSCoding>
+@interface FFProject : FFBinObject <NSSecureCoding>
 {
     NSSet *_assetReferences;
     NSSet *_clipReferences;
@@ -49,6 +49,7 @@
 + (id)effectThumbnailPaths;
 + (id)globalRenderCache;
 + (id)_projectForObject:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 @property(readonly, nonatomic) NSSet *mediaRefsOfflineProxyQuality; // @synthesize mediaRefsOfflineProxyQuality=_mediaRefsOfflineProxyQuality;

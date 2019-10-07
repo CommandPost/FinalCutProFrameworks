@@ -11,17 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface FFHGAsyncJob : NSObject
 {
-    double _executionTime;
     NSString *_userLabel;
     double _enqueueTime;
     double _jobStartTime;
+    double _executionTime;
+    double _preloadTime;
 }
 
+@property double preloadTime; // @synthesize preloadTime=_preloadTime;
+@property double executionTime; // @synthesize executionTime=_executionTime;
 @property(retain) NSString *userLabel; // @synthesize userLabel=_userLabel;
 - (double)jobWaitedInQueueTime;
 - (_Bool)dequeueJobIfNotStarted;
-- (double)executionTime;
-- (void)setExecutionTime:(double)arg1;
 - (void)dealloc;
 
 @end

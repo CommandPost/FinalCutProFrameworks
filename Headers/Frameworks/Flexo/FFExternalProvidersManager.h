@@ -46,7 +46,7 @@
 - (void)_setupToolbarItem;
 @property(readonly) LKButton *toolbarItem;
 - (BOOL)validateMenuItem:(id)arg1;
-- (void)_precessServices:(id)arg1;
+- (void)_processServices:(id)arg1;
 - (void)_lookUpPlugIns:(id)arg1;
 - (void)_stopLookingForPlugIns;
 - (void)_startLookingForPlugIns;

@@ -6,14 +6,15 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 __attribute__((visibility("hidden")))
-@interface FFXMLTransitionReservedData : NSObject <NSCoding>
+@interface FFXMLTransitionReservedData : NSObject <NSSecureCoding>
 {
     BOOL _transitionTitles;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) BOOL transitionTitles; // @synthesize transitionTitles=_transitionTitles;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

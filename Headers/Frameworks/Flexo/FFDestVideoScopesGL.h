@@ -10,18 +10,22 @@ __attribute__((visibility("hidden")))
 @interface FFDestVideoScopesGL : FFDestVideoGL
 {
     long long _overrideColorSpace;
-    struct CGColorSpace *_cs;
+    struct CGColorSpace *_scopesColorSpace;
+    struct CGColorSpace *_cachedColorSpace;
     void *_FFDestVideoScopesGLPrivate;
 }
 
 - (id)_initDestVideoScopesGLPriv;
 - (void)_drawImages:(id)arg1 forRate:(double)arg2 clockTime:(CDStruct_1b6d18a9)arg3 isStaleFrame:(BOOL)arg4 qSize:(float)arg5;
+- (int)drawFieldsInterlaced;
 - (void)_drawMissingImageAtTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)drawEmptyBackground;
 - (id)requestedImageInfo;
+- (struct CGColorSpace *)_colorSpaceForRequestedImageInfo;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
-- (void)setColorspace:(struct CGColorSpace *)arg1;
+- (void)invalidateCachedColorSpace;
+@property struct CGColorSpace *scopesColorSpace; // @dynamic scopesColorSpace;
 @property long long overrideColorSpace; // @dynamic overrideColorSpace;
 - (void)dealloc;
 - (id)initWithDisplayID:(unsigned int)arg1 andCGLContext:(struct _CGLContextObject *)arg2 usingCoreAnimation:(BOOL)arg3;

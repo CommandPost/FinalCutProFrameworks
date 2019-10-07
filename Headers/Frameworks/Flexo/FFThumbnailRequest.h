@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class CHChannelDouble, FFBackgroundTask, FFMD5AndOffset, FFProject, FFRoleColorScheme, NSColor, NSMutableArray, NSMutableSet, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>, NSString, NSValue;
+@class CHChannelDouble, FFBackgroundTask, FFImage, FFMD5AndOffset, FFProject, FFRoleColorScheme, NSColor, NSMutableArray, NSMutableSet, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>, NSString, NSValue;
 
 @interface FFThumbnailRequest : NSObject
 {
@@ -19,6 +19,7 @@
     struct NSObject *_skimmable;
     long long _effectCount;
     int _temporalQuality;
+    int _workingSpace;
     int _audioOptions;
     FFProject *_project;
     CDStruct_e83c9415 _imageTimeRange;
@@ -26,7 +27,7 @@
     FFMD5AndOffset *_md5AndOffset;
     NSString *_segmentMD5String;
     long long _segmentOffset;
-    struct CGImage *_image;
+    FFImage *_image;
     BOOL _canceled;
     BOOL _pendingDeferRequest;
     int _attemptCount;
@@ -43,7 +44,7 @@
     long long _roleColorSchemeVariant;
 }
 
-+ (BOOL)requestCachedImageForProject:(id)arg1 segmentMD5String:(id)arg2 segmentOffset:(long long)arg3 isAudio:(BOOL)arg4 outImage:(struct CGImage **)arg5;
++ (BOOL)requestCachedImageForProject:(id)arg1 segmentMD5String:(id)arg2 segmentOffset:(long long)arg3 isAudio:(BOOL)arg4 outImage:(id *)arg5;
 @property(nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property(nonatomic) long long roleColorSchemeVariant; // @synthesize roleColorSchemeVariant=_roleColorSchemeVariant;
 @property(retain, nonatomic) FFRoleColorScheme *audioWaveformColorScheme; // @synthesize audioWaveformColorScheme=_audioWaveformColorScheme;
@@ -52,6 +53,7 @@
 @property(nonatomic) BOOL audioIsFullyValid; // @synthesize audioIsFullyValid=_audioIsFullyValid;
 @property(copy, nonatomic) CHChannelDouble *duckingChannel; // @synthesize duckingChannel=_duckingChannel;
 @property(copy, nonatomic) CHChannelDouble *volumeChannel; // @synthesize volumeChannel=_volumeChannel;
+@property(readonly, nonatomic) int workingSpace; // @synthesize workingSpace=_workingSpace;
 @property(readonly, nonatomic) long long effectCount; // @synthesize effectCount=_effectCount;
 @property(readonly, nonatomic) int temporalQuality; // @synthesize temporalQuality=_temporalQuality;
 @property(readonly, nonatomic) int imageQuality; // @synthesize imageQuality=_imageQuality;
@@ -81,7 +83,7 @@
 - (BOOL)canceled;
 - (void)cancelRequest;
 - (BOOL)requestCompleted;
-- (void)notifyImageRequestCompleted:(struct CGImage *)arg1;
+- (void)notifyImageRequestCompleted:(id)arg1 synchronouslyDispatchCompletionBlocks:(BOOL)arg2;
 - (void)requestImageWithOptions:(int)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)requestImage:(CDUnknownBlockType)arg1;
 - (id)description;

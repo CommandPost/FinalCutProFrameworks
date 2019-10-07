@@ -8,7 +8,7 @@
 
 #import "FFHMDPullFrameModelProtocol.h"
 
-@class FFPMRLogFunnel, FFPlayerFrame, NSLock, NSMutableArray;
+@class FFDestVideoRequestInfo, FFPMRLogFunnel, FFPlayerFrame, NSLock, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFDestHMD : FFDestVideo <FFHMDPullFrameModelProtocol>
@@ -20,12 +20,18 @@ __attribute__((visibility("hidden")))
     NSLock *_lock;
     BOOL _unsafeToReuse;
     unsigned int _normalQueueSize;
+    CDStruct_1b6d18a9 _normalQueueDuration;
     unsigned int _maxQueueCapacity;
     struct CGColorSpace *_gammaColorSpace;
+    struct FFSynchronizable *_curReqInfoLock;
+    FFDestVideoRequestInfo *_currentRequestInfo;
+    struct PCProcrastinatedDispatch_t _updateRequestInfo;
     FFPMRLogFunnel *_pmrFunnel;
 }
 
 + (void)initialize;
+- (id).cxx_construct;
+- (void)notifyDestPlayerChangedRenderLocation:(int)arg1;
 - (_Bool)performOverfullRecovery;
 - (_Bool)supportsOverfullRecovery;
 - (void)checkForUpdatedImageLocation;
@@ -40,8 +46,11 @@ __attribute__((visibility("hidden")))
 - (void)flush:(BOOL)arg1;
 - (void)_internalFlush:(BOOL)arg1 keepLastSelected:(BOOL)arg2;
 - (void)setPlayer:(id)arg1;
+- (CDStruct_1b6d18a9)queueDuration;
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
-- (BOOL)wantsDithering:(id)arg1;
+- (BOOL)internal_wantsDithering:(id)arg1;
+- (void)_recalculateRequestedImageInfo:(int)arg1;
+- (void)_queueRecalcRequestedImageInfo;
 - (id)requestedImageInfo;
 - (void)_establishHMDPrefColorSpace;
 - (int)influenceOnExecLocation;

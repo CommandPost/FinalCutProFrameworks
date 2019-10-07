@@ -6,12 +6,14 @@
 
 #import "NSOperation.h"
 
-@class FFAnchoredCollection, FFAnchoredSequence, NSArray, NSMutableArray, NSString;
+@class FFAnchoredCollection, FFAnchoredSequence, FFRole, NSArray, NSMutableArray, NSString;
 
 @interface FFDuplicateCaptionsOperation : NSOperation
 {
     NSMutableArray *_duplicatedCaptions;
     NSMutableArray *_allCaptionsInTargetRole;
+    FFRole *_mainRole;
+    FFRole *_subRole;
     NSString *_languageIdentifier;
     NSArray *_captions;
     FFAnchoredCollection *_container;
@@ -24,11 +26,11 @@
 @property(readonly, nonatomic) FFAnchoredCollection *container; // @synthesize container=_container;
 @property(readonly, nonatomic) NSArray *captions; // @synthesize captions=_captions;
 @property(readonly, nonatomic) NSString *languageIdentifier; // @synthesize languageIdentifier=_languageIdentifier;
+@property(readonly, nonatomic) FFRole *subRole; // @synthesize subRole=_subRole;
+@property(readonly, nonatomic) FFRole *mainRole; // @synthesize mainRole=_mainRole;
 @property(readonly, nonatomic) NSArray *duplicatedCaptions; // @synthesize duplicatedCaptions=_duplicatedCaptions;
-- (BOOL)_legacyDuplicateCaptions;
 - (id)_itemsForRoleUID:(id)arg1;
-- (void)_createTargetLanguageSubrolesIfNecessary;
-- (id)_mainRolesThatNeedLanguageSubRole;
+- (void)_createTargetLanguageSubroleIfNecessary;
 - (void)_assignAnchoredLaneForCaption:(id)arg1;
 - (void)_assignLanguageRoleForCaption:(id)arg1;
 - (void)_anchorCaption:(id)arg1 toItem:(id)arg2;
@@ -39,7 +41,7 @@
 - (BOOL)canDuplicateCaptions;
 - (void)dealloc;
 - (void)_initCaptionsWithTargetLanguageIdentifier;
-- (id)initWithCaptions:(id)arg1 languageWithIdentifier:(id)arg2;
+- (id)initWithCaptions:(id)arg1 languageWithIdentifier:(id)arg2 captionFormat:(id)arg3;
 
 @end
 

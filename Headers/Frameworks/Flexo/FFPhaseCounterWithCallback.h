@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_listLock;
 }
 
++ (id)zebraTrackerPhaseCounter;
 - (void)unregisterForPhaseChanges:(id)arg1;
 - (void)registerForPhaseChanges:(id)arg1;
 - (void)uiPlaybackStateChange:(id)arg1;

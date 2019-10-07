@@ -54,6 +54,7 @@
 }
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (void)initialize;
 + (id)storylineWithItems:(id)arg1;
@@ -266,6 +267,7 @@
 - (BOOL)isTrimmed;
 - (BOOL)isCollection;
 - (id)supportedLogProcessingModes;
+- (BOOL)isMissingCameraLUT;
 - (BOOL)supportsLogProcessing;
 - (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;

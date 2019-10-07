@@ -44,6 +44,7 @@
     BOOL _isKeyOrContainsKey;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) NSColor *emphasizedBackgroundColor; // @synthesize emphasizedBackgroundColor=_emphasizedBackgroundColor;
 @property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) double indentationPerLevel; // @synthesize indentationPerLevel=_indentationPerLevel;

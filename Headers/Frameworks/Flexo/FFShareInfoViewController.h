@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
     FFShareInfoFileSizePopoverViewController *_fileSizePopoverViewController;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) BOOL badgeAnimationInProgress; // @synthesize badgeAnimationInProgress=_badgeAnimationInProgress;
 @property(retain, nonatomic) FFShareInfoFileSizePopoverViewController *fileSizePopoverViewController; // @synthesize fileSizePopoverViewController=_fileSizePopoverViewController;
 @property(nonatomic) BOOL hasAudioSampleRate; // @synthesize hasAudioSampleRate=_hasAudioSampleRate;
@@ -90,6 +91,9 @@ __attribute__((visibility("hidden")))
 - (id)contentsAnimation;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)setImageForLayer:(id)arg1 normalImage:(id)arg2 highlightImage:(id)arg3 animate:(BOOL)arg4;
+- (BOOL)observeValueOnMainThreadForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)actuallyPerformBlockOnMainThread:(CDUnknownBlockType)arg1;
+- (void)performBlockOnMainThread:(CDUnknownBlockType)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)outputFileSizeToolTip;
 - (id)outputFileSize;

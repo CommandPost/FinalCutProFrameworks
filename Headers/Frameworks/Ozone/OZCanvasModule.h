@@ -6,12 +6,12 @@
 
 #import <Ozone/OZProViewModule.h>
 
-@class LKColorWell, LKPopUpButton, LKSegmentedControl, NSDictionary, NSLayoutConstraint, NSMenu, NSTextField, NSTimer, NSView, OZBorderedView, OZCacheDisplayManager, OZCanvasInactiveRangeView, OZCanvasTimingContainerView, OZCanvasView, OZClickableProgressIndicator, OZGLViewer, OZTimebarView, OZTimelineViewForViewer, OZTool, OZToolbarSegmentedControl;
+@class LKColorWell, LKPopUpButton, LKSegmentedControl, NSDictionary, NSLayoutConstraint, NSMenu, NSTextField, NSTimer, NSView, OZBorderedView, OZCacheDisplayManager, OZCanvasInactiveRangeView, OZCanvasTimingContainerView, OZCanvasView, OZClickableProgressIndicator, OZTimebarView, OZTimelineViewForViewer, OZTool, OZToolbarSegmentedControl, OZViewer;
 
 @interface OZCanvasModule : OZProViewModule
 {
     OZCanvasView *_canvasView;
-    OZGLViewer *_activeView;
+    OZViewer *_activeView;
     struct OZCanvasState *_canvasState;
     BOOL _donePostLoad;
     OZTool *_pCurrentTool;
@@ -41,39 +41,48 @@
     NSTextField *_rgbFloatGreenTextField;
     NSTextField *_rgbFloatBlueTextField;
     NSTextField *_rgbFloatAlphaTextField;
+    NSTextField *_rgbFloatLuminanceTextField;
     NSTextField *_rgbFloatRedLabelTextField;
     NSTextField *_rgbFloatGreenLabelTextField;
     NSTextField *_rgbFloatBlueLabelTextField;
     NSTextField *_rgbFloatAlphaLabelTextField;
+    NSTextField *_rgbFloatLuminanceLabelTextField;
+    NSTextField *_rgbFloatLuminanceStaticLabel;
     LKColorWell *_rgbFloatColorWell;
     NSTextField *_rgbOutOfGamutWarningStaticLabel;
     NSTextField *_rgbPercentRedTextField;
     NSTextField *_rgbPercentGreenTextField;
     NSTextField *_rgbPercentBlueTextField;
     NSTextField *_rgbPercentAlphaTextField;
+    NSTextField *_rgbPercentLuminanceTextField;
     NSTextField *_rgbPercentRedLabelTextField;
     NSTextField *_rgbPercentGreenLabelTextField;
     NSTextField *_rgbPercentBlueLabelTextField;
     NSTextField *_rgbPercentAlphaLabelTextField;
+    NSTextField *_rgbPercentLuminanceLabelTextField;
     NSTextField *_rgbPercentRedPercentStaticLabel;
     NSTextField *_rgbPercentGreenPercentStaticLabel;
     NSTextField *_rgbPercentBluePercentStaticLabel;
     NSTextField *_rgbPercentAlphaPercentStaticLabel;
+    NSTextField *_rgbPercentLuminanceStaticLabel;
     LKColorWell *_rgbPercentColorWell;
     NSTextField *_rgbPercentOutOfGamutWarningStaticLabel;
     NSTextField *_hsvHueTextField;
     NSTextField *_hsvSaturationTextField;
     NSTextField *_hsvValueTextField;
     NSTextField *_hsvAlphaTextField;
+    NSTextField *_hsvLuminanceTextField;
     NSTextField *_hsvHueLabelTextField;
     NSTextField *_hsvSaturationLabelTextField;
     NSTextField *_hsvValueLabelTextField;
     NSTextField *_hsvAlphaLabelTextField;
+    NSTextField *_hsvLuminanceLabelTextField;
     LKColorWell *_hsvColorWell;
     NSTextField *_hsvHueStaticLabel;
     NSTextField *_hsvSaturationStaticLabel;
     NSTextField *_hsvValueStaticLabel;
     NSTextField *_hsvAlphaStaticLabel;
+    NSTextField *_hsvLuminanceStaticLabel;
     NSTextField *_hsvOutOfGamutWarningStaticLabel;
     NSTextField *_fpsTextField;
     NSTextField *_objectStatusTextField;
@@ -156,7 +165,6 @@
 - (void)zoomFitToFill:(struct CGRect)arg1;
 - (void)zoomToFullScreen;
 - (void)zoomToFitInWindow;
-- (void)zoomToOneHundred;
 - (void)fitInWindow;
 - (double)getZoom;
 - (void)setZoom:(double)arg1 center:(const PCVector2_7e488b7d *)arg2;
@@ -187,12 +195,6 @@
 - (void)toggleSnapping:(id)arg1;
 - (struct OZAudioMixer *)getAudioMixer;
 - (void)updateDisplayAtCurrentFrame;
-- (void)toggleMiniInspector;
-- (void)gotoTailOfProject;
-- (void)gotoHeadOfProject;
-- (void)redoAction;
-- (void)undoAction;
-- (void)playOrStop:(BOOL)arg1;
 - (void)muteButtonPressed:(id)arg1;
 - (BOOL)isRecording;
 - (void)record:(id)arg1;
@@ -260,6 +262,10 @@
 - (struct CGColorSpace *)getColorSpaceForViewGamut;
 - (int)getSanitizedViewGamut;
 - (int)getViewGamut;
+- (void)setSchmozonjRaigsMode:(id)arg1;
+- (void)setToneMappingModeWithMode:(int)arg1;
+- (void)setToneMappingMode:(id)arg1;
+- (int)getToneMappingMode;
 - (void)setViewGamut:(id)arg1;
 - (void)setCustomRenderQuality:(id)arg1;
 - (int)getRenderQuality;
@@ -311,6 +317,9 @@
 - (void)updateInfoBarWithFilm:(const PCVector2_79efa81a *)arg1 view:(id)arg2;
 - (void)notify:(unsigned int)arg1;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1;
+- (void)screenParametersChanged:(id)arg1;
+- (void)handleColorProcessingChange:(id)arg1;
+- (void)updateOutputFormatOfSubViews:(int)arg1 newGamut:(int)arg2;
 - (void)postRedisplayToSubViews;
 - (void)resetAnticipateROI;
 - (void)setActiveView:(id)arg1;

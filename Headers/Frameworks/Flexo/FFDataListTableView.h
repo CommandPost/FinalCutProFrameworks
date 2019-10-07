@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     FFDataListPlayheadView *_playheadView;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) FFDataListPlayheadView *playheadView; // @synthesize playheadView=_playheadView;
 @property(nonatomic) int playheadPosition; // @synthesize playheadPosition=_playheadPosition;
 @property(nonatomic) long long playheadRow; // @synthesize playheadRow=_playheadRow;

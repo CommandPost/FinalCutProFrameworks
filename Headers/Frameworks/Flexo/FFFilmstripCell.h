@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+#import "PCUserDefaultsBroadcastObserving.h"
+
 @class CALayer, FFMD5AndOffset, FFThumbnailRequest, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>;
 
 __attribute__((visibility("hidden")))
-@interface FFFilmstripCell : NSObject
+@interface FFFilmstripCell : NSObject <PCUserDefaultsBroadcastObserving>
 {
     struct CGRect _frame;
     double _contentsScale;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
     long long _effectCount;
     id <FFFilmstripCellDelegate> _filmstripDelegate;
     BOOL _highlighted;
+    int _filmstripMode;
     struct NSObject *_skimmable;
     FFThumbnailRequest *_pendingPrimaryImageRequest;
     FFThumbnailRequest *_pendingSecondaryImageRequest;
@@ -45,10 +48,13 @@ __attribute__((visibility("hidden")))
 + (struct CGColor *)blueBackground;
 + (struct CGColor *)greenBackground;
 + (struct CGColor *)_placeholderAudioColorForScale:(double)arg1 startOffset:(double)arg2;
++ (void)initialize;
++ (id)userDefaultsObserved;
 @property(retain) FFMD5AndOffset *secondaryImageMD5; // @synthesize secondaryImageMD5=_secondaryImageMD5;
 @property(retain) FFMD5AndOffset *primaryImageMD5; // @synthesize primaryImageMD5=_primaryImageMD5;
 @property(nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property(nonatomic) long long roleColorSchemeVariant; // @synthesize roleColorSchemeVariant=_roleColorSchemeVariant;
+@property(readonly, nonatomic) int filmstripMode; // @synthesize filmstripMode=_filmstripMode;
 @property(nonatomic) double audioWidth; // @synthesize audioWidth=_audioWidth;
 @property(nonatomic) CDStruct_e83c9415 filmStripTimeRange; // @synthesize filmStripTimeRange=_filmStripTimeRange;
 @property(retain, nonatomic) FFThumbnailRequest *pendingSecondaryImageRequest; // @synthesize pendingSecondaryImageRequest=_pendingSecondaryImageRequest;
@@ -75,10 +81,12 @@ __attribute__((visibility("hidden")))
 - (void)updateIfNeeded;
 - (BOOL)updateRequired;
 @property(readonly, nonatomic) BOOL updatesEnabled;
-- (void)thumbImageReadyForRequest:(id)arg1 whichLayer:(int)arg2 newImage:(struct CGImage *)arg3 newImageMD5:(CDStruct_bdcb2b0d)arg4 requestCanceled:(BOOL)arg5;
-- (void)_setThumbImage:(struct CGImage *)arg1 forLayerIdentifier:(int)arg2;
+- (void)thumbImageReadyForRequest:(id)arg1 whichLayer:(int)arg2 newImage:(id)arg3 newImageMD5:(CDStruct_bdcb2b0d)arg4 requestCanceled:(BOOL)arg5;
+- (BOOL)_shouldRedrawThumbnailImage:(id)arg1 targetLayer:(id)arg2;
+- (void)_createEDRMetadataIntoMDCV:(id *)arg1 CLLI:(id *)arg2;
+- (void)_setThumbImage:(id)arg1 forLayerIdentifier:(int)arg2;
 - (id)_layerWithIdentifier:(int)arg1;
-- (void)_setThumbImage:(struct CGImage *)arg1 forLayer:(int)arg2;
+- (void)_setThumbImage:(id)arg1 forLayer:(int)arg2;
 @property id <FFFilmstripCellDelegate> filmstripDelegate;
 @property(readonly) CALayer *audioLayer;
 - (void)_updateAudioPlaceholderWaveformBackgroundColor;
@@ -90,12 +98,13 @@ __attribute__((visibility("hidden")))
 - (void)setSublayerIfExists:(id)arg1 toWidth:(double)arg2;
 - (struct CGImage *)newRepresentativeThumb;
 @property(readonly, nonatomic) struct CGRect thumbFrame;
+- (void)userDefaultDidChange:(id)arg1;
 - (void)_performLater:(CDUnknownBlockType)arg1;
 - (void)_performInBackground:(CDUnknownBlockType)arg1;
 - (id)debugDescription;
 - (id)description;
 - (void)dealloc;
-- (id)initWithSkimmable:(struct NSObject *)arg1 Frame:(struct CGRect)arg2 andTimeRange:(CDStruct_e83c9415)arg3 audioHeight:(double)arg4 requestTimeType:(int)arg5 filmStripTimeRange:(CDStruct_e83c9415)arg6 effectCount:(long long)arg7;
+- (id)initWithSkimmable:(struct NSObject *)arg1 Frame:(struct CGRect)arg2 andTimeRange:(CDStruct_e83c9415)arg3 audioHeight:(double)arg4 requestTimeType:(int)arg5 filmStripTimeRange:(CDStruct_e83c9415)arg6 effectCount:(long long)arg7 filmstripMode:(int)arg8;
 
 @end
 

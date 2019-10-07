@@ -34,6 +34,8 @@
 + (id)defaultFileExtension;
 + (id)projectInfo:(id)arg1;
 + (Class)_classForContentsOfURL:(id)arg1 error:(id *)arg2;
+- (BOOL)actionInvertEffectMasks:(id)arg1 actionName:(id)arg2 error:(id *)arg3;
+- (BOOL)actionAddMaskOfClass:(Class)arg1 toEffect:(id)arg2 actionName:(id)arg3 deselectActiveMasks:(BOOL)arg4 maskHandler:(CDUnknownBlockType)arg5 error:(id *)arg6;
 - (void)_operationResetFlag:(unsigned long long)arg1 onChannel:(id)arg2 delegate:(id)arg3;
 - (void)_operationSetFlag:(unsigned long long)arg1 onChannel:(id)arg2 delegate:(id)arg3;
 - (void)_operationMoveChannel:(id)arg1 inParentFolder:(id)arg2 toIndex:(unsigned long long)arg3 delegate:(id)arg4;

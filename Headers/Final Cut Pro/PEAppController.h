@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-#import "FFDupCaptionsToNewLanguageMenuDelegate.h"
+#import "FFDuplicateCaptionsMenuDelegate.h"
 #import "FFEditActionMgrDelegateProtocol.h"
 #import "FFEditActionSourceProtocol.h"
 #import "FFErrorReportingProtocol.h"
@@ -24,7 +24,7 @@
 
 @class FFAnchoredSequence, FFEditActionMgr, FFExternalProvidersManager, FFMessageTracer, LKWindow, NSAlert, NSArray, NSMapTable, NSMenu, NSMenuItem, NSMutableArray, NSMutableSet, NSString, NSTimer, PECaptionEditorContainerModule, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PEPlayerTimecodeWindowController, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceOverWindowController, PEWorkspacesMenuDelegate, Stopwatch;
 
-@interface PEAppController : NSObject <FFProExtensionHostTargetProtocol, FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol, FFSharedAppControllerInterface, LKViewModuleDelegate, FFDupCaptionsToNewLanguageMenuDelegate, NSUserNotificationCenterDelegate, LKModuleLayoutManagerDelegate>
+@interface PEAppController : NSObject <FFProExtensionHostTargetProtocol, FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol, FFSharedAppControllerInterface, LKViewModuleDelegate, FFDuplicateCaptionsMenuDelegate, NSUserNotificationCenterDelegate, LKModuleLayoutManagerDelegate>
 {
     NSMenuItem *_openLibraryMenuItem;
     NSMenuItem *_closeLibraryMenuItem;
@@ -48,10 +48,20 @@
     NSMenuItem *_assignVideoRolesMenuItem;
     NSMenuItem *_assignCaptionRolesMenuItem;
     NSMenuItem *_duplicateCaptionsToNewLanguageMenuItem;
+    NSMenuItem *_duplicateCaptionsToNewFormatMenuItem;
     NSMenuItem *_applyCustomNameMenuItem;
+    NSMenuItem *_workspacesMenuItem;
+    NSMenuItem *_advancedMetadataReelMenuItem;
+    NSMenuItem *_advancedMetadataSceneMenuItem;
+    NSMenuItem *_advancedMetadataTakeMenuItem;
+    NSMenuItem *_advancedMetadataCameraAngleMenuItem;
+    NSMenuItem *_retimeCustomSpeedMenuItem;
+    NSMenuItem *_retimeVideoQualityMenuItem;
+    NSMenuItem *_retimeSpeedRampMenuItem;
     NSMenuItem *_debugMenu;
     NSMenuItem *_avOutMenu;
     NSMenuItem *_outputToVRHeadsetMenu;
+    NSMenuItem *_displayOnSecondScreenMenu;
     NSMenu *_videoFiltersMenu;
     NSMenu *_audioEffectsMenu;
     NSMenu *_videoTransitionsMenu;
@@ -72,6 +82,8 @@
     NSMenuItem *_workspaceColorEffects;
     NSMenuItem *_workspaceDualDisplays;
     NSMenuItem *_workspacesSeparator;
+    NSMenuItem *_appMenuItem;
+    NSMenuItem *_helpMenuItem;
     PEWorkspacesMenuDelegate *_workspacesMenuDelegate;
     PEEditorContainerModule *_activeEditorContainer;
     id _projectTranslator;
@@ -113,10 +125,16 @@
     BOOL _fullscreenViewerIsDisallowed;
     BOOL _disablingOrganizerIsAllowed;
     BOOL _disablingTimelineIsAllowed;
+    NSMenuItem *_theaterMenuItem;
+    NSMenu *_menuForTheaterMenuItem;
+    long long _theaterMenuItemIndex;
 }
 
 + (id)toolTip:(id)arg1 withKeyEquivalent:(id)arg2;
 + (id)appController;
+@property(nonatomic) long long theaterMenuItemIndex; // @synthesize theaterMenuItemIndex=_theaterMenuItemIndex;
+@property(retain, nonatomic) NSMenu *menuForTheaterMenuItem; // @synthesize menuForTheaterMenuItem=_menuForTheaterMenuItem;
+@property(retain, nonatomic) NSMenuItem *theaterMenuItem; // @synthesize theaterMenuItem=_theaterMenuItem;
 @property(nonatomic) BOOL disablingTimelineIsAllowed; // @synthesize disablingTimelineIsAllowed=_disablingTimelineIsAllowed;
 @property(nonatomic) BOOL disablingOrganizerIsAllowed; // @synthesize disablingOrganizerIsAllowed=_disablingOrganizerIsAllowed;
 @property(nonatomic) BOOL fullscreenViewerIsDisallowed; // @synthesize fullscreenViewerIsDisallowed=_fullscreenViewerIsDisallowed;
@@ -213,6 +231,8 @@
 - (void)showEditPresetsWindow:(id)arg1;
 - (void)showNewPresetsWindow:(id)arg1;
 - (void)_updateNamePresetMenuItems;
+- (id)consumerActiveTimelineView;
+- (void)showHideTheaterAction:(id)arg1;
 - (void)chooseWorkspaceDualDisplays:(id)arg1;
 - (void)chooseWorkspaceColorEffects:(id)arg1;
 - (void)chooseWorkspaceOrganize:(id)arg1;
@@ -235,8 +255,6 @@
 - (id)_rangesOfMedia;
 - (void)insertGap:(id)arg1;
 - (void)insertPlaceholder:(id)arg1;
-- (void)stamp:(id)arg1;
-- (void)lift:(id)arg1;
 - (void)whatsNew:(id)arg1;
 - (void)toggleSportsTeamEditor:(id)arg1;
 - (void)revealProject:(id)arg1;
@@ -274,6 +292,7 @@
 - (void)toggleFullscreenOrganizer:(id)arg1;
 - (void)toggleEventViewer:(id)arg1;
 - (void)toggleCompareViewer:(id)arg1;
+- (void)toggleCompareFrameHUD:(id)arg1;
 - (void)toggleFocusCompareMainViewer:(id)arg1;
 - (void)addCompareFrame:(id)arg1;
 - (void)goToCompareViewer:(id)arg1;
@@ -464,10 +483,19 @@
 - (void)observeThePlugIns:(id)arg1;
 - (void)_plugInMenuAction:(id)arg1;
 - (void)_updateThirdPartyUI;
+- (void)theaterItemsDidChange:(id)arg1;
+- (void)removeTheaterMenuItem;
+- (void)restoreTheaterMenuItem;
+- (BOOL)hasTheaterContent;
+- (void)addOrRemoveTheaterMenuItemAppropriately;
+- (id)theaterModule;
+- (void)configureTheater;
+- (void)_checkGPUStatus;
 - (void)applicationDidFinishLaunching:(id)arg1;
 - (BOOL)_migratePreGodzillaColorPresets;
 - (void)restoreOpenDocuments;
 - (void)applicationWillFinishLaunching:(id)arg1;
+- (void)_adjustUserInterface;
 - (void)_appTerminated:(id)arg1;
 - (void)_appLaunched:(id)arg1;
 - (void)_checkOlderFinalCutRunning;

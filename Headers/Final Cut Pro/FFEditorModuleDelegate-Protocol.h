@@ -33,7 +33,7 @@
 - (void)editorModule:(FFEditorModule *)arg1 didSelectItems:(NSArray *)arg2;
 - (void)openSettingsWithModule:(FFSettingsModule *)arg1;
 - (void)makeSequenceActive:(id)arg1 withTime:(CDStruct_1b6d18a9)arg2;
-- (BOOL)revealBinObject:(FFAnchoredObject *)arg1 andRange:(CDStruct_5c5366e1)arg2;
+- (BOOL)revealBinObject:(FFAnchoredObject *)arg1 andRange:(CDStruct_e83c9415)arg2;
 - (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 loadingBlock:(void (^)(FFPlayerModule *))arg4 unloadingBlock:(void (^)(void))arg5;
 - (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3 unloadingBlock:(void (^)(void))arg4;
 - (void)displayMedia:(struct NSObject *)arg1 context:(FFContext *)arg2 effectCount:(long long)arg3;

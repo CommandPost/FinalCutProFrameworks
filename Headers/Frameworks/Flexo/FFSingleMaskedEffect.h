@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     FFEffect *_wrappedEffect;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (id)newMaskedEffect;
 + (void)registerEffects;

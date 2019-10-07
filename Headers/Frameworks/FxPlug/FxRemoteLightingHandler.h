@@ -6,25 +6,25 @@
 
 #import "NSObject.h"
 
-#import "FxLightingAPI_v2.h"
+#import "FxLightingAPI_v3.h"
 
 @class NSLock;
 
-@interface FxRemoteLightingHandler : NSObject <FxLightingAPI_v2>
+@interface FxRemoteLightingHandler : NSObject <FxLightingAPI_v3>
 {
     NSLock *threadLock;
-    map_fa897196 lightMap;
+    map_20f80b8a lightMap;
 }
 
-@property map_fa897196 lightMap; // @synthesize lightMap;
+@property map_20f80b8a lightMap; // @synthesize lightMap;
 @property(retain) NSLock *threadLock; // @synthesize threadLock;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (unsigned long long)numberOfLightsAtFxTime:(CDUnion_2516e51e)arg1;
-- (void)lightInfo:(struct FxLightInfo *)arg1 forLight:(unsigned long long)arg2 atFxTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
+- (unsigned long long)numberOfLightsAtTime:(CDStruct_1b6d18a9)arg1;
+- (BOOL)lightInfo:(struct FxLight *)arg1 forLight:(unsigned long long)arg2 atTime:(CDStruct_1b6d18a9)arg3 error:(id *)arg4;
 - (void)clearLightData;
 - (void)setLightData:(id)arg1;
-- (vector_85ccc8a3 *)getLights;
+- (vector_0394717d *)getLights;
 - (void)dealloc;
 - (id)init;
 

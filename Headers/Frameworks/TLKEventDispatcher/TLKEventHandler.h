@@ -20,10 +20,8 @@
         unsigned int RESERVED:28;
     } _ehFlags;
     NSString *_identifier;
-    BOOL _disableReload;
 }
 
-@property BOOL disableReload; // @synthesize disableReload=_disableReload;
 - (void)resetState;
 - (id)view;
 - (id)identifier;

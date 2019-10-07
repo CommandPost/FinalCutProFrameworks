@@ -23,7 +23,7 @@
     NSDate *_loEntryTime;
     double _aggregateProgress;
     BOOL _tasksPending;
-    int _queuedUpdateProgressPerformSelector;
+    unsigned int _queuedUpdateProgressPerformSelector;
     long long _completedTaskCount;
     long long _totalTaskCount;
     NSArray *_performSelectorModes;

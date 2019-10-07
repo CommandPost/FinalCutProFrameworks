@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     long long _contextualMenuColumnIndex;
 }
 
++ (BOOL)supportsSecureCoding;
 @property long long contextualMenuColumnIndex; // @synthesize contextualMenuColumnIndex=_contextualMenuColumnIndex;
 - (id)menuForEvent:(id)arg1;
 - (void)dealloc;

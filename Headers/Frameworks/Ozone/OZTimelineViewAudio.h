@@ -30,8 +30,8 @@
 - (id)allocRow:(int)arg1;
 - (void)verticalZoomChanged;
 - (id)imageForAudio:(struct OZAudioTrack *)arg1 startTime:(CDStruct_1b6d18a9)arg2 endTime:(CDStruct_1b6d18a9)arg3 size:(struct CGSize)arg4;
--     // Error parsing type: v24@0:8^{OZHGUserJob=^^?IiiIdQ^v*^{HGRenderQueue}^?{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}@^v}16, name: userJobCanceled:
--     // Error parsing type: v24@0:8^{OZHGUserJob=^^?IiiIdQ^v*^{HGRenderQueue}^?{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}@^v}16, name: userJobFinished:
+-     // Error parsing type: v24@0:8^{OZHGUserJob=^^?{atomic<unsigned int>=AI}iiIdQ^v*^{HGRenderQueue}^?{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}@^v}16, name: userJobCanceled:
+-     // Error parsing type: v24@0:8^{OZHGUserJob=^^?{atomic<unsigned int>=AI}iiIdQ^v*^{HGRenderQueue}^?{OZProcessControl=^^?{atomic<bool>=AB}^{PCSemaphore}^{PCMutex}q^?^{HGRenderer}}@^v}16, name: userJobFinished:
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)timeDisplayRangeModified;
 - (void)timeDisplayRangeModificationEnd;

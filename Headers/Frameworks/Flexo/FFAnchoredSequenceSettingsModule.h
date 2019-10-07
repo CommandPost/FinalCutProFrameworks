@@ -121,7 +121,7 @@
 - (void)toggleCreationSettings;
 - (void)_validateEventNameForLibrary:(id)arg1;
 - (void)_buildCameraProjectionModeMenuBasedOnFormatAndMode:(id)arg1;
-- (void)_buildColorSpaceMenuBasedOnFormatAndSize:(id)arg1;
+- (void)_buildColorSpaceMenuBasedOnFormatAndSize:(id)arg1 forceSelection:(BOOL)arg2;
 - (void)_buildRateMenuBasedOnCurrentRateAndFormatAndSize;
 - (void)_buildSizeMenuBasedOnCurrentRateAndFormat;
 - (void)_buildFormatMenuBasedOnCurrentRate;

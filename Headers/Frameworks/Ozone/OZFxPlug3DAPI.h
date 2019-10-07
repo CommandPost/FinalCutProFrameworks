@@ -15,7 +15,7 @@
 
 @interface OZFxPlug3DAPI : NSObject <Fx3DAPI, Fx3DAPI_v2, Fx3DAPI_v3, PROAPIObject>
 {
-    BOOL _is3D;
+    // Error parsing type: {atomic<bool>="__a_"AB}, name: _is3D
 }
 
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;

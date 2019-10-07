@@ -6,13 +6,20 @@
 
 #import "NSObject.h"
 
+@class NSMutableDictionary;
+
 @interface FxRemotePlugin : NSObject
 {
     id <PROAPIAccessing> apiManager;
     unsigned long long sessionID;
     id <FxTileableEffect> plugin;
+    NSMutableDictionary *viewControllers;
 }
 
+@property NSMutableDictionary *viewControllers; // @synthesize viewControllers;
+- (void)updateCustomViews;
+- (id)viewControllersForParameter:(unsigned int)arg1;
+- (void)setViewController:(id)arg1 forParameter:(unsigned int)arg2;
 - (void)performSelectorNamed:(id)arg1 forParameterID:(unsigned int)arg2;
 - (id)apiManager;
 - (id)pluginInstance;

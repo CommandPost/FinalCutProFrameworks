@@ -15,6 +15,8 @@
     unsigned int _field;
     CDUnknownBlockType _approximateMemoryUsageBlock;
     int _errorCode;
+    struct FFSourceColorConformBaseClass *_sourceColorConformer;
+    int _sourceCCTargetColorSpace;
 }
 
 - (void)getSampleBuffer:(struct opaqueCMSampleBuffer **)arg1 alphaKnownToBeFullyOpaque:(char *)arg2;

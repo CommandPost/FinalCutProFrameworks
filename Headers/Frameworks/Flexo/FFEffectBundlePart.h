@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     BOOL _bundlePartActivated;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(nonatomic) int effectBundleEncodingOptions; // @synthesize effectBundleEncodingOptions=_effectBundleEncodingOptions;
 @property(nonatomic) double defaultValue; // @synthesize defaultValue=_defaultValue;

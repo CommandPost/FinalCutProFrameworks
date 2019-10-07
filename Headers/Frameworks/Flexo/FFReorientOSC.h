@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
     FFOSCWindowView *_reorientOverlayView;
     NSMutableArray *_channelsToCheckForkeyFrames;
     NSNumberFormatter *_numberFormatter;
+    struct PCProcrastinatedDispatch_t _updateKeyframesProcrastDisp;
 }
 
+- (id).cxx_construct;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (void)keyFrameReorient:(id)arg1;
 - (void)resetReorient:(id)arg1;

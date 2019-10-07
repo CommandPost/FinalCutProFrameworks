@@ -6,11 +6,12 @@
 
 #import <Flexo/FFEventMediaSidebarModule.h>
 
-@class FFAnalyzeMediaWindowController, FFModifyContentCreationDateWindowController, FFTranscodeMediaWindowController, LKButton;
+@class FFAnalyzeMediaWindowController, FFModifyContentCreationDateWindowController, FFTranscodeMediaWindowController, LKButton, NSMenuItem;
 
 @interface FFProMediaSidebarModule : FFEventMediaSidebarModule
 {
     LKButton *_openLibraryButton;
+    NSMenuItem *_analyzeAndFixContextualMenuItem;
     FFTranscodeMediaWindowController *_transcodeController;
     FFAnalyzeMediaWindowController *_analyzeController;
     FFModifyContentCreationDateWindowController *_creationDateWindowController;

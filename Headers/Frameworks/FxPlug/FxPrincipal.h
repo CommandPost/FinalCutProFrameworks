@@ -19,6 +19,8 @@
 @property struct FxConnectionMap connectionMap; // @synthesize connectionMap;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)associateViewController:(id)arg1 withSessionID:(unsigned long long)arg2 andParameterID:(unsigned int)arg3 viewFrame:(struct CGRect *)arg4 viewSizingOptions:(unsigned long long *)arg5 error:(id *)arg6;
+- (void)viewServiceListenerEndPoint:(CDUnknownBlockType)arg1;
 - (void)createNewConnectionForProcessID:(int)arg1 minimumVersion:(unsigned long long)arg2 maximumVersion:(unsigned long long)arg3 hostCapabilities:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (id)errorForHostVersionTooNew:(unsigned long long)arg1;
 - (id)errorForHostVersionTooOld:(unsigned long long)arg1;

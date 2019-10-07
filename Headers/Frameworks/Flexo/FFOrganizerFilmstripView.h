@@ -73,7 +73,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _actionWindowSize;
     BOOL _skimmingDelayActive;
     FFOrganizerFilmstripChunk *_skimmingDelayPrevChunk;
-    unsigned long long _skimmingDelayPrevTime;
+    double _skimmingDelayPrevTime;
     NSEvent *_delayedMouseMovedEvent;
     BOOL _needsData;
     BOOL _ignoreTimeRateChanged;
@@ -89,7 +89,7 @@ __attribute__((visibility("hidden")))
     int _clipLabelSize;
     BOOL _analysis;
     BOOL _autoScrollDelayActive;
-    unsigned long long _autoScrollDelayPrevTime;
+    double _autoScrollDelayPrevTime;
     CDStruct_1b6d18a9 _skimmingHilightDuration;
     int _skimmingDurationPosition;
     FFOrganizerAbstractChunk *_mouseOverChunk;
@@ -135,6 +135,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) FigTimeRangeAndObject *activePaintToolRO; // @synthesize activePaintToolRO=_activePaintToolRO;
 @property NSView *actionOptionsView; // @synthesize actionOptionsView=_actionOptionsView;
 @property(nonatomic) BOOL activeWhenModuleIsActive; // @synthesize activeWhenModuleIsActive=_activeWhenModuleIsActive;

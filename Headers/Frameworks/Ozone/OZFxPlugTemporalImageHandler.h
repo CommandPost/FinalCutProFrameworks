@@ -7,21 +7,24 @@
 #import "NSObject.h"
 
 #import "FxTemporalImageAPI.h"
+#import "FxTemporalImageAPIPrivate.h"
 #import "FxTemporalImageAPI_v2.h"
 #import "PROAPIObject.h"
 
 @class NSString;
 
-@interface OZFxPlugTemporalImageHandler : NSObject <PROAPIObject, FxTemporalImageAPI, FxTemporalImageAPI_v2>
+@interface OZFxPlugTemporalImageHandler : NSObject <PROAPIObject, FxTemporalImageAPI, FxTemporalImageAPI_v2, FxTemporalImageAPIPrivate>
 {
     struct OZImageNode *_imageNode;
     struct GLRenderer *_renderer;
     BOOL _appTerminating;
     struct OZFxPlugRenderContextManager _threadContextManager;
+    struct PCMutex _rendererMutex;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)inputIsAStill;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
 - (void)setIsRendering:(BOOL)arg1;
 - (BOOL)isRendering;

@@ -8,7 +8,7 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFBackgroundTask, FFPMRLogFunnel, FFProvider, FFSVContext, FFSourceVideo, NSLock, NSMutableArray, NSMutableIndexSet, NSThread;
+@class FFBackgroundTask, FFPMRLogFunnel, FFProvider, FFSVContext, FFSourceVideo, NSMutableArray, NSMutableIndexSet;
 
 @interface FFRenderStateTracker : NSObject <FFBackgroundTaskTarget>
 {
@@ -19,19 +19,18 @@
     NSMutableArray *_knownRanges;
     NSMutableArray *_dirtyRanges;
     NSMutableIndexSet *_statesEncountered;
-    NSLock *_rbLock;
+    struct FFSynchronizable *_rbLock;
     _Bool _stateFullyKnownAtLockTime;
-    NSThread *_rbLockHolder;
     CDStruct_e83c9415 _rawPrimaryInterestTimeRange;
     CDStruct_e83c9415 _primaryInterestTimeRange;
-    NSLock *_bgTaskIVarLock;
+    struct FFSynchronizable *_bgTaskIVarLock;
     FFBackgroundTask *_backgroundCalculationTask;
     _Bool _bgProcessingEnabled;
     _Bool _timelineIsDragging;
     _Bool _oscIsDragging;
     FFPMRLogFunnel *_pmrFunnel;
     long long _UIPlayersPlayering;
-    int _deferredRenderStateNotify;
+    unsigned int _deferredRenderStateNotify;
     struct set<FFMD5, std::__1::less<FFMD5>, std::__1::allocator<FFMD5>> *_segmentsWithDrops;
     _Bool _temporaryHold;
     BOOL _isShutdown;
@@ -84,7 +83,6 @@
 - (_Bool)BGProcessingEnabled;
 - (void)setBGProcessingEnabled:(_Bool)arg1;
 - (void)segmentDroppedFrame:(id)arg1;
-- (BOOL)holdingRBLock;
 - (_Bool)hasKnownDropSegments;
 - (void)rbUnlock;
 - (void)rbLock;

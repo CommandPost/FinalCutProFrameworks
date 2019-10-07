@@ -27,11 +27,11 @@
 @property(readonly, nonatomic) BOOL verticalLayout; // @synthesize verticalLayout=_verticalLayout;
 @property(readonly, nonatomic) BOOL horizontalLayout; // @synthesize horizontalLayout=_horizontalLayout;
 @property(retain, nonatomic) NSSet *processedItemComponents; // @synthesize processedItemComponents=_processedItemComponents;
-@property(readonly, nonatomic) TLKLayoutGraph *layoutGraph; // @synthesize layoutGraph=_layoutGraph;
-@property(readonly, nonatomic) TLKLayoutDatabase *database; // @synthesize database=_database;
+@property(retain, nonatomic) TLKLayoutGraph *layoutGraph; // @synthesize layoutGraph=_layoutGraph;
+@property(retain, nonatomic) TLKLayoutDatabase *database; // @synthesize database=_database;
 @property(nonatomic) BOOL skipConstraints; // @synthesize skipConstraints=_skipConstraints;
 @property(readonly, nonatomic) PCChangeLog *outputChangeLog; // @synthesize outputChangeLog=_outputChangeLog;
-@property(readonly, nonatomic) PCChangeLog *inputChangeLog; // @synthesize inputChangeLog=_inputChangeLog;
+@property(retain, nonatomic) PCChangeLog *inputChangeLog; // @synthesize inputChangeLog=_inputChangeLog;
 - (void)_performLegacyLayout;
 - (void)_trackLayoutPerformedForItemComponents:(id)arg1;
 - (void)_makeLaneFragmentsIfNeededForLayoutContext:(id)arg1;
@@ -65,7 +65,7 @@
 - (void)main;
 - (void)dealloc;
 - (id)initWithChangeLog:(id)arg1 layoutDatabase:(id)arg2;
-- (id)initWithHorizontalLayout:(BOOL)arg1 verticalLayout:(BOOL)arg2 database:(id)arg3 changeLog:(id)arg4;
+- (id)init;
 
 @end
 

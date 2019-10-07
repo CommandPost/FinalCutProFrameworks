@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSArray *_sourceGroupIDs;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(readonly, copy, nonatomic) NSArray *sourceGroupIDs; // @synthesize sourceGroupIDs=_sourceGroupIDs;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_updateQueryResults;

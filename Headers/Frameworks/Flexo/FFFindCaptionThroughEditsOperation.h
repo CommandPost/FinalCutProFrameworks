@@ -11,17 +11,21 @@
 @interface FFFindCaptionThroughEditsOperation : NSOperation
 {
     NSMutableArray *_throughEditDescriptions;
+    NSMutableArray *_captionsWithoutThroughEdits;
     NSArray *_clips;
     FFCaptionsByRowTable *_itemsByRowTable;
     id <FFStoryline> _primaryStoryline;
     NSMutableArray *_rowOperations;
 }
 
-@property(readonly, nonatomic) NSMutableArray *rowOperations; // @synthesize rowOperations=_rowOperations;
+@property(retain, nonatomic) NSMutableArray *rowOperations; // @synthesize rowOperations=_rowOperations;
 @property(retain, nonatomic) id <FFStoryline> primaryStoryline; // @synthesize primaryStoryline=_primaryStoryline;
 @property(retain, nonatomic) FFCaptionsByRowTable *itemsByRowTable; // @synthesize itemsByRowTable=_itemsByRowTable;
+@property(retain, nonatomic) NSArray *captionsWithoutThroughEdits; // @synthesize captionsWithoutThroughEdits=_captionsWithoutThroughEdits;
 @property(retain, nonatomic) NSArray *throughEditDescriptions; // @synthesize throughEditDescriptions=_throughEditDescriptions;
 @property(copy, nonatomic) NSArray *clips; // @synthesize clips=_clips;
+- (void)releaseLibraryObjects;
+- (void)cancel;
 - (void)gatherThroughEditDescriptions;
 - (void)runOperationsInBackgroundAndWaitUntilFinished;
 - (void)runOperationsManuallyOnCurrentThread;

@@ -22,8 +22,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)autoBalanceChanged:(id)arg1;
-- (void)addIsolationMask:(id)arg1;
-- (void)addEllipseMask:(id)arg1;
 - (void)addGroup:(id)arg1;
 - (void)addColorEffects:(id)arg1;
 - (id)newMenuUseImagesForColor:(BOOL)arg1;
@@ -32,8 +30,6 @@ __attribute__((visibility("hidden")))
 - (id)newMenuUseImages:(BOOL)arg1;
 - (void)addFavoriteEffect:(id)arg1;
 - (BOOL)presentError:(id)arg1;
-- (void)addCorrection:(id)arg1;
-- (void)addMaskOfClass:(Class)arg1 actionName:(id)arg2;
 - (void)_effectSelectionStateChanged:(id)arg1;
 - (id)selectedUserEffectsFromEffectStack:(id)arg1;
 - (id)effectStack;

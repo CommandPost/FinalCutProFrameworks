@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSUUID *_sessionIdentifier;
 }
 
++ (void)discoverAllServicesFor:(id)arg1 handler:(CDUnknownBlockType)arg2;
 + (void)discoverServicesFor:(id)arg1 handler:(CDUnknownBlockType)arg2;
 @property(readonly) NSExtension *extension; // @synthesize extension=_nsExtension;
 - (void)deactivate;

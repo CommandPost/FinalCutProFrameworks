@@ -9,18 +9,19 @@
 #import "FFInspectableObject.h"
 #import "FFMetadataProtocol.h"
 #import "FFOrganizerItem.h"
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSImage, NSMutableDictionary, NSString;
 
-@interface FFBinObject : FFBaseDSObject <FFOrganizerItem, NSCoding, NSCopying, FFMetadataProtocol, FFInspectableObject>
+@interface FFBinObject : FFBaseDSObject <FFOrganizerItem, NSSecureCoding, NSCopying, FFMetadataProtocol, FFInspectableObject>
 {
     NSString *_displayName;
     NSMutableDictionary *_metadata;
 }
 
 + (id)objectFromUniqueIdentifier:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (id)keyPathsForValuesAffectingItemDisplayName;
 - (id)inspectorDisplayName;

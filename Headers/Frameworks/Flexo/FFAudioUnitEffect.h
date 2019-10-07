@@ -169,8 +169,9 @@
 - (id)presetsForFilePresetType:(int)arg1 startingPath:(id)arg2;
 - (id)rootFolderForFilePresetType:(int)arg1;
 - (id)parameterFolder;
+- (void)syncChannelsToParametersWithPreserveOptions:(unsigned int)arg1 isLoadingEffect:(BOOL)arg2;
 - (void)syncChannelsToParametersWithPreserveOptions:(unsigned int)arg1;
-- (void)syncChannelsToParametersFromFolder:(id)arg1 isCreatingChannelFolder:(BOOL)arg2 preserveOptions:(unsigned int)arg3;
+- (void)syncChannelsToParametersFromFolder:(id)arg1 isCreatingChannelFolder:(BOOL)arg2 isLoadingEffect:(BOOL)arg3 preserveOptions:(unsigned int)arg4;
 - (id)newChannelFolderWithParent:(id)arg1 name:(id)arg2;
 
 @end

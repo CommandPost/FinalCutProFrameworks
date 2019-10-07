@@ -18,8 +18,10 @@
 + (BOOL)FCPOnlyFilter:(Class)arg1;
 + (BOOL)groupContainsValidPlugins:(id)arg1;
 + (BOOL)isDynamicOrRemote:(id)arg1;
+- (id)moviePath;
+- (id)movieURL;
 - (id)getSmallPreviewIconForEntry:(BOOL)arg1;
-- (id)getPreviewMovie;
+- (id)previewAVPlayer;
 - (int)getPreviewType;
 - (id)getPreviewPath;
 - (void)setPreviewName:(id)arg1;

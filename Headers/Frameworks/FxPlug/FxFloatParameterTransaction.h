@@ -20,7 +20,7 @@
 }
 
 + (BOOL)supportsSecureCoding;
-+ (id)floatTransactionWithParameterID:(unsigned int)arg1;
++ (id)floatTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2;
 @property double value; // @synthesize value;
 @property double sliderDelta; // @synthesize sliderDelta;
 @property double sliderMax; // @synthesize sliderMax;
@@ -28,6 +28,7 @@
 @property double parameterMax; // @synthesize parameterMax;
 @property double parameterMin; // @synthesize parameterMin;
 @property double defaultValue; // @synthesize defaultValue;
+- (void)getPropertiesFromHost:(id)arg1;
 - (void)setPropertiesToHost:(id)arg1;
 - (void)setValueFromPlugin:(void *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)setValueToHost:(id)arg1;
@@ -37,7 +38,7 @@
 - (id)copy;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 sliderMin:(double)arg6 sliderMax:(double)arg7 sliderDelta:(double)arg8 parameterFlags:(unsigned int)arg9 transactionType:(int)arg10;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 sliderMin:(double)arg6 sliderMax:(double)arg7 sliderDelta:(double)arg8 parameterFlags:(unsigned int)arg9 transactionType:(int)arg10 transactionID:(unsigned long long)arg11;
 
 @end
 

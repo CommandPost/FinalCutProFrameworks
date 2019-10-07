@@ -6,14 +6,15 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 __attribute__((visibility("hidden")))
-@interface FFFaceFrame : FFBaseDSObject <NSCoding>
+@interface FFFaceFrame : FFBaseDSObject <NSSecureCoding>
 {
     struct CGImage *cgImage;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(nonatomic) struct CGImage *cgImage; // @synthesize cgImage;
 - (void)dealloc;

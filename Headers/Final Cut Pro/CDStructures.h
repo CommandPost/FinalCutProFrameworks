@@ -60,6 +60,13 @@ struct os_unfair_lock_s {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+} CDStruct_d2b197d1;
+
+typedef struct {
     float _field1;
     float _field2;
     float _field3;
@@ -74,7 +81,7 @@ typedef struct {
 } CDStruct_1b6d18a9;
 
 typedef struct {
-    CDStruct_1b6d18a9 _field1;
-    CDStruct_1b6d18a9 _field2;
-} CDStruct_5c5366e1;
+    CDStruct_1b6d18a9 start;
+    CDStruct_1b6d18a9 duration;
+} CDStruct_e83c9415;
 

@@ -16,6 +16,7 @@
     struct CGRect _bounds;
     FFPixelFormat *_pixelFormat;
     unsigned int _bytesPerRow;
+    unsigned int _allocatedSize;
     id _backingObject;
     double _cost;
     int _alphaType;
@@ -32,6 +33,8 @@
 - (BOOL)fillFrameWithFirstField:(id)arg1 secondField:(id)arg2 fieldDominance:(int)arg3;
 - (double)cost;
 - (void)setCost:(double)arg1;
+- (unsigned int)allocatedSize;
+- (id)backingObject;
 - (void)setBackingObject:(id)arg1;
 - (double)height;
 - (double)width;
@@ -51,6 +54,7 @@
 - (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4;
 - (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 alphaType:(int)arg5;
 - (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 alphaType:(int)arg5 backedByPBO:(BOOL)arg6;
+- (id)initWithPixels:(char *)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 bytesPerRow:(unsigned int)arg4 alphaType:(int)arg5 backedByPBO:(BOOL)arg6 allocatedSize:(unsigned int)arg7;
 - (id)newStringForPixelAtXLoc:(int)arg1 YLoc:(int)arg2;
 
 @end

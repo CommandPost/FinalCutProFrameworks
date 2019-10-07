@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSDictionary, NSURL;
 
-@interface FFLibraryTaskOptions : NSObject <NSCoding, NSCopying>
+@interface FFLibraryTaskOptions : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _consolidateMedia;
     _Bool _includeOptimizedMedia;
@@ -20,6 +20,7 @@
     NSURL *_consolidateMediaLocation;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) _Bool leaveExternalMediaInPlace; // @synthesize leaveExternalMediaInPlace=_leaveExternalMediaInPlace;
 @property(nonatomic) _Bool includeProxyMedia; // @synthesize includeProxyMedia=_includeProxyMedia;
 @property(nonatomic) _Bool includeOptimizedMedia; // @synthesize includeOptimizedMedia=_includeOptimizedMedia;

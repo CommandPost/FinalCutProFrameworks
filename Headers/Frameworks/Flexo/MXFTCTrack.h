@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     int trackType;
     NSString *name;
-    int editRate;
+    CDStruct_2689111f editRate;
     long long _editDuration;
     unsigned short roundedTC;
     BOOL dropFrame;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property(retain) NSMutableArray *components; // @synthesize components;
 @property(readonly) BOOL dropFrame; // @synthesize dropFrame;
 @property(readonly) unsigned short roundedTC; // @synthesize roundedTC;
-@property(readonly) int editRate; // @synthesize editRate;
+@property(readonly) CDStruct_2689111f editRate; // @synthesize editRate;
 @property(retain) NSString *name; // @synthesize name;
 @property(readonly) int trackType; // @synthesize trackType;
 - (int)stepInPresentationOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMEditCursor *)arg3;
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) long long dataByteCount;
 @property(readonly) float bytesPerSecond;
 - (void)dealloc;
-- (id)initWithName:(id)arg1 editRate:(int)arg2 roundedTC:(unsigned short)arg3 dropFrame:(BOOL)arg4;
+- (id)initWithName:(id)arg1 editRate:(CDStruct_2689111f)arg2 roundedTC:(unsigned short)arg3 dropFrame:(BOOL)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

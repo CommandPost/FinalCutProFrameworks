@@ -14,11 +14,15 @@ __attribute__((visibility("hidden")))
     FFOpenGLNSImageTextures *_facetTextures;
     NSImage *_imageLayer;
     NSString *_assetName;
+    NSString *_cacheKey;
 }
 
+- (void)setCacheKey:(id)arg1;
+- (id)cacheKey;
 - (void)setUseCenterPart:(BOOL)arg1;
 - (BOOL)useCenterPart;
 - (struct CGSize)imageSize;
+- (void)drawImageAtCorners:(struct CGPoint)arg1 tr:(struct CGPoint)arg2 bl:(struct CGPoint)arg3 br:(struct CGPoint)arg4 inContext:(struct _CGLContextObject *)arg5 destView:(id)arg6 transparency:(double)arg7 colorSync:(BOOL)arg8;
 - (void)drawImageScaledToRect:(struct CGRect)arg1 inContext:(struct _CGLContextObject *)arg2 destView:(id)arg3 colorSync:(BOOL)arg4;
 - (void)drawImage:(struct CGRect)arg1 inContext:(struct _CGLContextObject *)arg2 destView:(id)arg3 colorSync:(BOOL)arg4;
 - (void)drawImageTiledinRect:(struct CGRect)arg1 fromLeft:(BOOL)arg2 fromBottom:(BOOL)arg3 inContext:(struct _CGLContextObject *)arg4 destView:(id)arg5 colorSync:(BOOL)arg6;

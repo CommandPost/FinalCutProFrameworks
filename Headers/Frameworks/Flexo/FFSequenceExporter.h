@@ -35,7 +35,7 @@
 - (void)panel:(id)arg1 willCloseWithCode:(long long)arg2;
 - (id)previewLayer;
 - (void)setPreviewTime:(double)arg1 supportsAudio:(BOOL)arg2 rebuildContext:(BOOL)arg3;
-- (id)playerModule;
+@property(readonly) FFPlayerModule *playerModule;
 - (CDStruct_1b6d18a9)durationOfSequence:(id)arg1 mediaRange:(CDStruct_e83c9415)arg2;
 - (CDStruct_1b6d18a9)durationOfSequence:(id)arg1;
 - (CDStruct_1b6d18a9)durationOfSelection:(id)arg1;

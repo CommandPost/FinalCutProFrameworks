@@ -6,7 +6,7 @@
 
 #import <Flexo/FFDest.h>
 
-@class FFPlayer, FFReducedRateTracker, NSMutableArray, NSObject<FFDestVideoDelegate>, NSObject<OS_dispatch_queue>;
+@class FFPlayer, FFReducedRateTracker, FFSummaryDescCacher, NSMutableArray, NSObject<FFDestVideoDelegate>, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
 @interface FFDestVideo : FFDest
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     BOOL _enableDropDetection;
     NSObject<OS_dispatch_queue> *_dropInfosLock;
     NSMutableArray *_dropInfos;
+    FFSummaryDescCacher *_summaryDescCacher;
 }
 
 + (BOOL)automaticallyNotifiesObserversForEnableDrawAllAngles;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain) FFReducedRateTracker *reducedRateTracker; // @synthesize reducedRateTracker=_rrt;
 @property(readonly) CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
 @property(readonly) CDStruct_1b6d18a9 sampleDuration; // @synthesize sampleDuration=_sampleDuration;
+- (void)notifyDestOfUIDrawingParameterChange;
 - (void)resetDropInfos;
 - (id)copyDropInfosByPopping;
 - (void)recordDropInfo:(id)arg1;
@@ -40,9 +42,11 @@ __attribute__((visibility("hidden")))
 - (void)setEnableDropDetection:(BOOL)arg1;
 - (_Bool)performOverfullRecovery;
 - (_Bool)supportsOverfullRecovery;
+- (id)copyEstimatedVRAMRequirements:(int)arg1 reqInfoHint:(id)arg2;
 - (int)destRecommendedFFSVPriority;
 - (_Bool)inefficientFrameDurationWarning:(CDStruct_1b6d18a9)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2;
 - (unsigned int)outputMaxLatencyInFrames;
+- (id)summaryDescription;
 - (id)description;
 - (void)setLastHealthMetric:(float)arg1 diskHealth:(float)arg2;
 - (void)skippedFrame:(CDStruct_1b6d18a9)arg1 outOfSequence:(BOOL)arg2;
@@ -57,10 +61,10 @@ __attribute__((visibility("hidden")))
 - (void)pushFrame:(id)arg1;
 - (void)liveFlushWithRunout:(unsigned int)arg1 playerTime:(CDStruct_1b6d18a9)arg2 rate:(double)arg3;
 - (void)flush:(BOOL)arg1;
-- (BOOL)wantsDithering:(id)arg1;
-- (BOOL)showHDRAsRawValues;
-- (unsigned int)rangeCheckZebraMode;
-- (int)requestedBackground;
+- (BOOL)internal_wantsDithering:(id)arg1;
+- (void)wantsDithering:(id)arg1;
+- (void)rangeCheckZebraMode;
+- (void)requestedBackground;
 - (void)maxSupportedSize;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
 - (void)supportedPixelFormats;
@@ -68,7 +72,9 @@ __attribute__((visibility("hidden")))
 - (int)influenceOnExecLocation;
 - (void)imageLocation;
 - (id)requestedImageInfo;
+- (BOOL)drawsInUIWindow;
 - (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_1b6d18a9)queueDuration;
 - (CDStruct_1b6d18a9)frameDurationForMaximumOutputRate;
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
 - (id)player;

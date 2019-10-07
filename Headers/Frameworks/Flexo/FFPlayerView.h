@@ -4,31 +4,36 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSOpenGLView.h"
+#import <Flexo/FFVideoView.h>
 
-#import "NSTextInput.h"
+#import "NSTextInputClient.h"
 
-@class FFOpenGLLayer, FFPlayerVideoModule, NSLock;
+@class FFHitTestContextObject, FFPlayerVideoModule;
 
 __attribute__((visibility("hidden")))
-@interface FFPlayerView : NSOpenGLView <NSTextInput>
+@interface FFPlayerView : FFVideoView <NSTextInputClient>
 {
-    FFPlayerVideoModule *_playerVideoModule;
-    id _layerDelegate;
-    BOOL _mouseEntered;
-    struct _CGLContextObject *_viewContext;
-    BOOL _hasLayer;
     BOOL _drawingEnabled;
     BOOL _playerVideoModuleActive;
-    NSLock *_playerVideoModuleActiveLock;
-    struct __CFRunLoopObserver *_draggingIdleObserver;
+    BOOL _mouseEntered;
     float _windowBackingScaleFactor;
-    FFOpenGLLayer *_customBackingLayer;
+    unsigned int _windowDisplayID;
+    FFPlayerVideoModule *_playerVideoModule;
+    struct __CFRunLoopObserver *_draggingIdleObserver;
+    unsigned long long _pixelFormat;
+    FFHitTestContextObject *_hitTestObj;
 }
 
-+ (id)defaultPixelFormat;
+@property(retain, nonatomic) FFHitTestContextObject *hitTestObj; // @synthesize hitTestObj=_hitTestObj;
+@property(nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+@property(nonatomic) unsigned int windowDisplayID; // @synthesize windowDisplayID=_windowDisplayID;
+@property(nonatomic) struct __CFRunLoopObserver *draggingIdleObserver; // @synthesize draggingIdleObserver=_draggingIdleObserver;
+@property(nonatomic, getter=hasMouseEntered) BOOL mouseEntered; // @synthesize mouseEntered=_mouseEntered;
+@property(nonatomic) float windowBackingScaleFactor; // @synthesize windowBackingScaleFactor=_windowBackingScaleFactor;
+@property(nonatomic, getter=isPlayerVideoModuleActive) BOOL playerVideoModuleActive; // @synthesize playerVideoModuleActive=_playerVideoModuleActive;
+@property(getter=isDrawingEnabled) BOOL drawingEnabled; // @synthesize drawingEnabled=_drawingEnabled;
+@property(nonatomic) FFPlayerVideoModule *playerVideoModule; // @synthesize playerVideoModule=_playerVideoModule;
 - (void)updateCAView;
-- (void)updateVirtualScreenForDisplayID:(unsigned int)arg1 force:(BOOL)arg2;
 - (id)menuForEvent:(id)arg1;
 - (void)flagsChanged:(id)arg1;
 - (void)keyUp:(id)arg1;
@@ -51,17 +56,17 @@ __attribute__((visibility("hidden")))
 - (void)dragWentIdle;
 - (BOOL)multipleSelection;
 - (void)doCommandBySelector:(SEL)arg1;
-- (void)insertText:(id)arg1;
+- (void)insertText:(id)arg1 replacementRange:(struct _NSRange)arg2;
 - (id)validAttributesForMarkedText;
 - (unsigned long long)characterIndexForPoint:(struct CGPoint)arg1;
-- (struct CGRect)firstRectForCharacterRange:(struct _NSRange)arg1;
+- (struct CGRect)firstRectForCharacterRange:(struct _NSRange)arg1 actualRange:(struct _NSRange *)arg2;
 - (struct _NSRange)selectedRange;
 - (struct _NSRange)markedRange;
-- (id)attributedSubstringFromRange:(struct _NSRange)arg1;
+- (id)attributedSubstringForProposedRange:(struct _NSRange)arg1 actualRange:(struct _NSRange *)arg2;
 - (long long)conversationIdentifier;
 - (BOOL)hasMarkedText;
 - (void)unmarkText;
-- (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
+- (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2 replacementRange:(struct _NSRange)arg3;
 - (void)nudgeLeftMany:(id)arg1;
 - (void)nudgeRightMany:(id)arg1;
 - (void)nudgeUpMany:(id)arg1;
@@ -81,43 +86,30 @@ __attribute__((visibility("hidden")))
 - (void)undo:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
+- (struct CGColor *)backgroundColor;
 - (void)cursorUpdate:(id)arg1;
 - (void)oscCursorDidChange:(id)arg1;
 - (void)activeToolDidChange:(id)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (id)_imageFromGLPixels;
-- (BOOL)isDrawingEnabled;
-- (void)setDrawingEnabled:(BOOL)arg1;
-- (struct CGRect)bounds;
-- (void)prepareOpenGL;
-- (void)reshape;
-- (void)notifyLastTimeDisplayed:(id)arg1;
+- (void)viewDidChangeBackingProperties;
+- (void)reshape:(id)arg1;
 - (void)clearViewToBackgroundColor;
-- (BOOL)callDisplayCallback:(CDStruct_1b6d18a9)arg1 lastTimeDisplayed:(id)arg2 initialDraw:(BOOL)arg3;
-- (BOOL)checkDisplayCallback:(CDStruct_1b6d18a9)arg1;
-- (struct _CGLContextObject *)viewContext;
-- (void)usingCGLContext:(struct _CGLContextObject *)arg1;
-- (id)playerVideoModuleActiveLock;
-- (void)setPlayerVideoModuleActive:(BOOL)arg1;
-- (BOOL)playerVideoModuleActive;
-- (BOOL)hasLayer;
-- (void)setNeedsUpdate:(BOOL)arg1;
+@property(readonly, nonatomic) struct _CGLContextObject *hitTestContext;
+- (void)_updateMetalLayerDestVideo;
 - (void)viewWillDraw;
 - (int)virtualScreen;
 - (void)renewGState;
 - (void)viewDidMoveToWindow;
+- (BOOL)windowBackingScaleFactorIsZero;
 - (void)viewWillMoveToWindow:(id)arg1;
 - (BOOL)resignFirstResponder;
 - (BOOL)acceptsFirstResponder;
 - (void)dealloc;
+- (void)_resizeDrawableTo:(struct CGSize)arg1 draw:(BOOL)arg2;
 - (void)awakeFromNib;
-- (id)_customBackingLayer;
-- (id)_playerVideoModule;
-- (void)_setPlayerVideoModule:(id)arg1;
-- (BOOL)isSuperEllipseOSCActive;
-- (BOOL)isTextOSCActive;
+@property(readonly, nonatomic) BOOL isSuperEllipseOSCActive;
+@property(readonly, nonatomic) BOOL isTextOSCActive;
 - (BOOL)isOpaque;
-- (float)windowBackingScaleFactor;
+- (void)draw;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
 

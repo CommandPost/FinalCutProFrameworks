@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class LKColorWell, NSColor, NSColorSpace, NSDictionary;
+@class LKColorWell, NSBitmapImageRep, NSColor, NSColorSpace, NSDictionary;
 
 @interface LKTransientColorPickerView : NSView
 {
@@ -24,6 +24,7 @@
     unsigned long long _style;
     BOOL _isHUD;
     NSColorSpace *_currentColorSpace;
+    NSBitmapImageRep *_pixelsForColorSampling;
     LKColorWell *_colorWell;
 }
 

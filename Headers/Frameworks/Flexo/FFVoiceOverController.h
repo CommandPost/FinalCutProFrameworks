@@ -41,6 +41,7 @@
     BOOL _stoppingRecord;
     BOOL _isRecording;
     NSNumber *_userMonitoringGain;
+    NSString *_customFilename;
     BOOL _multiTakeActive;
     BOOL _multiTakeEnabled;
     BOOL _firstMultitake;
@@ -52,7 +53,6 @@
     FFAnchoredStack *_multiTakeClip;
     FFMediaEventProject *_previousEvent;
     FFAnchoredObject *_gapClip;
-    NSString *_customFilename;
     CDStruct_1b6d18a9 _prerolledTime;
     CDStruct_1b6d18a9 _previousTime;
     CDStruct_1b6d18a9 _playheadTime;
@@ -65,7 +65,6 @@
 + (void)_configurePopUpButton:(id)arg1 usingDeviceInfoDictionary:(id)arg2 includeChannelSubmenu:(BOOL)arg3 includeNoneOption:(BOOL)arg4 action:(SEL)arg5 input:(BOOL)arg6;
 @property(nonatomic) BOOL observingAppMinimize; // @synthesize observingAppMinimize=_observingAppMinimize;
 @property(nonatomic) BOOL observingAppHideUnhide; // @synthesize observingAppHideUnhide=_observingAppHideUnhide;
-@property(copy, nonatomic) NSString *customFilename; // @synthesize customFilename=_customFilename;
 @property(retain, nonatomic) FFAnchoredObject *gapClip; // @synthesize gapClip=_gapClip;
 @property(retain, nonatomic) FFMediaEventProject *previousEvent; // @synthesize previousEvent=_previousEvent;
 @property(retain, nonatomic) FFAnchoredStack *multiTakeClip; // @synthesize multiTakeClip=_multiTakeClip;
@@ -116,9 +115,14 @@
 - (void)disableMonitoring;
 - (void)enableMonitoringWithSystemSetting;
 - (void)enableMonitoringWithDeviceUID:(id)arg1 channelMap:(id)arg2;
+- (void)setTakeName:(id)arg1;
+- (id)defaultTakeName;
+- (id)takeName;
+- (void)setCustomFilename:(id)arg1;
 - (float)inputGain;
 - (void)setInputGain:(float)arg1;
-- (BOOL)supportsInputGain;
+- (struct AudioValueRange)inputGainDecibelRange;
+- (BOOL)supportsInputGainControl;
 - (id)inputDevicesInfo;
 - (id)inputDevices;
 - (id)currentInputDeviceInfo;

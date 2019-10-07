@@ -6,7 +6,7 @@
 
 #import "NSWindowController.h"
 
-@class NSButton, NSProgressIndicator, NSTextField;
+@class NSButton, NSObject<OS_dispatch_queue>, NSProgressIndicator, NSTextField;
 
 @interface OZImageSequenceProgressController : NSWindowController
 {
@@ -19,13 +19,21 @@
     unsigned int _totalFrames;
     double _elapsedTime;
     struct _NSModalSession *_modalSession;
+    int _defaultFPS;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_barrierQueue;
+    BOOL cancelled;
 }
 
+@property(getter=isCancelled) BOOL cancelled; // @synthesize cancelled;
+- (id)imageSequenceMovieWriter;
 - (void)stop:(id)arg1;
-- (id)createReferenceMovieForURL:(struct PCURL *)arg1;
-- (BOOL)updateProgressForCompletedFrame:(unsigned int)arg1 duration:(double)arg2;
+- (void)assetWithImageSequenceURL:(struct PCURL *)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updateProgressForCompletedFrame:(unsigned int)arg1 duration:(double)arg2;
 - (void)windowDidLoad;
 - (id)windowNibName;
+- (void)dealloc;
+- (id)init;
 
 @end
 

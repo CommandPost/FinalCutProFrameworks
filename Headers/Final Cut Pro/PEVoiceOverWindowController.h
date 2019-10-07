@@ -134,6 +134,8 @@
 - (void)_updateOutputDevicesMenu;
 - (void)_setupInputDevicesPopUp;
 - (void)_updateInputDevicesMenu;
+- (void)_teardownEventsPopUp;
+- (void)_teardownRolesPopUp;
 - (void)_setupRolesPopUp;
 - (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 forContext:(id)arg3;
 - (id)contextForRolesMenuController:(id)arg1;

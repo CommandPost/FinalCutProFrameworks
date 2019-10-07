@@ -11,14 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface FFIsolationSoftnessController : OZChanDoubleController
 {
-    FFEffectStack *_pEffectStack;
-    BOOL _sliding;
+    FFEffectStack *_effectStack;
 }
 
 - (void)endSliderAction:(id)arg1;
 - (void)startSliderAction:(id)arg1;
-- (void)didBuildUI;
-- (void)update;
 - (id)_isolationMask;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

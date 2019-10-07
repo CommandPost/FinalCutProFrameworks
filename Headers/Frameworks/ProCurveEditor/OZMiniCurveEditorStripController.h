@@ -25,6 +25,7 @@
 - (void)didTwiddle:(BOOL)arg1;
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (void)setMiniCurveEditor:(id)arg1;
+- (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 isHUD:(BOOL)arg2;
 
 @end

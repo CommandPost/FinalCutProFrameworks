@@ -7,12 +7,12 @@
 #import "NSObject.h"
 
 #import "FFModelLocking.h"
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class FFLibrary, NSArray, NSMutableArray, NSMutableDictionary, NSString;
 
-@interface FFRole : NSObject <NSCopying, NSCoding, FFModelLocking>
+@interface FFRole : NSObject <NSCopying, NSSecureCoding, FFModelLocking>
 {
     NSString *_uuid;
     BOOL _isSubRole;
@@ -56,6 +56,7 @@
 + (void)_generateBuiltInRoleCaches;
 + (int)roleTypeFromUID:(id)arg1;
 + (id)defaultRoleColor;
++ (BOOL)supportsSecureCoding;
 + (void)initialize;
 @property(retain, nonatomic) NSMutableDictionary *attributesByName; // @synthesize attributesByName=_attributesByName;
 @property(nonatomic) FFLibrary *library; // @synthesize library=_library;

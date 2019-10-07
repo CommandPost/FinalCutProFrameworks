@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     FFInlineColorBoardInspectorController *_ctr;
 }
 
++ (BOOL)supportsSecureCoding;
 @property __weak FFInlineColorBoardInspectorController *controller; // @synthesize controller=_ctr;
 @property(retain, nonatomic) NSImage *image; // @synthesize image=_image;
 - (void)selectPreviousPuck:(id)arg1;

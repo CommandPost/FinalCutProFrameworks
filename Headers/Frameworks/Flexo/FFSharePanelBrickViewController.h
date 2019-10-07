@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (Class)brickViewClass;
 @property(retain) FFSharePanelBrick *representedObject; // @dynamic representedObject;
 - (void)startObservingRepresentedObject:(id)arg1;

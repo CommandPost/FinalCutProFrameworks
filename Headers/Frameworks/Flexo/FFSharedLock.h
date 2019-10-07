@@ -46,8 +46,8 @@
 - (void)_readLock;
 - (void)_readLock:(BOOL)arg1;
 - (void)_updateDeferredWriteOverrides;
-- (unsigned long long)collectThreadsBlockingRead:(struct FFThread **)arg1 maxCount:(unsigned long long)arg2;
-- (unsigned long long)collectThreadsBlockingWrite:(struct FFThread **)arg1 maxCount:(unsigned long long)arg2;
+- (unsigned long long)_collectThreadsBlockingRead:(struct FFThread **)arg1 maxCount:(unsigned long long)arg2;
+- (unsigned long long)_collectThreadsBlockingWrite:(struct FFThread **)arg1 maxCount:(unsigned long long)arg2;
 - (void)_updateDWQStateWhileHoldingGuard;
 - (void)dealloc;
 - (id)init;

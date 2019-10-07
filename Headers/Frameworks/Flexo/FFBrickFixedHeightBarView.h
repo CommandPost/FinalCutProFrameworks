@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     double _height;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) double height; // @synthesize height=_height;
 - (void)viewDidMoveToSuperview;
 - (void)viewWillMoveToSuperview:(id)arg1;

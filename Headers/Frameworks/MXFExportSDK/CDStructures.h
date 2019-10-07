@@ -75,35 +75,49 @@ struct MXMovieDesc {
     unsigned int _field18;
     struct vector<MXF::MMTrack *, std::__1::allocator<MXF::MMTrack *>> _field19;
     struct map<MEMetadataKey, MXF::MXObject *, std::__1::less<MEMetadataKey>, std::__1::allocator<std::__1::pair<const MEMetadataKey, MXF::MXObject *>>> _field20;
-    struct MXGroup _field21;
-    struct MXKLV *_field22;
-    struct MXPartitionHeader *_field23;
+    unsigned long long _field21;
+    unsigned short _field22;
+    int _field23;
+    int _field24;
+    struct MXKLV *_field25;
+    struct MXPackage *_field26;
+    struct MXMetadata *_field27;
+    struct MXGroup _field28;
+    struct MXPartitionHeader *_field29;
 };
 
 struct MXObject;
+
+struct MXPackage;
 
 struct MXPartitionHeader {
     CDUnknownFunctionPointerType *_field1;
     int _field2;
     char *_field3;
     long long _field4;
-    int _field5;
-    unsigned char _field6[16];
-    _Bool _field7;
-    unsigned char _field8[16];
-    struct MXPrimerPack *_field9;
-    struct MXKLV *_field10;
-    struct MXMetadata *_field11;
-    struct MXGroup _field12;
+    unsigned char _field5[16];
+    _Bool _field6;
+    unsigned char _field7[16];
+    struct MXPrimerPack *_field8;
+    struct MXKLV *_field9;
+    struct MXMetadata *_field10;
+    struct MXGroup _field11;
 };
 
 struct MXPrimerPack;
 
-struct TimeStamp {
+struct MXTimeStamp {
     CDUnknownFunctionPointerType *_field1;
     int _field2;
     char *_field3;
     long long _field4;
+    char _field5;
+    char _field6;
+    short _field7;
+    char _field8;
+    char _field9;
+    char _field10;
+    char _field11;
 };
 
 struct __list_node_base<FrameEntry, void *> {
@@ -147,14 +161,14 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
 struct list<FrameEntry, std::__1::allocator<FrameEntry>> {
     struct __list_node_base<FrameEntry, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<FrameEntry, void *>>> {
-        unsigned long long __value_;
+        unsigned long long __first_;
     } __size_alloc_;
 };
 
 struct list<RIPEntry, std::__1::allocator<RIPEntry>> {
     struct __list_node_base<RIPEntry, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<RIPEntry, void *>>> {
-        unsigned long long __value_;
+        unsigned long long __first_;
     } __size_alloc_;
 };
 
@@ -187,6 +201,11 @@ struct vector<MXF::MXObject *, std::__1::allocator<MXF::MXObject *>> {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned int _field1;
+    unsigned int _field2;
+} CDStruct_c0454aff;
 
 typedef struct {
     char _field1;

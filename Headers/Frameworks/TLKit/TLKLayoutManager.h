@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class PCChangeLog, TLKContainerMetrics, TLKLayoutDatabase, TLKLayoutMetrics, TLKTimelineView;
+@class NSMapTable, PCChangeLog, TLKContainerMetrics, TLKLayoutDatabase, TLKLayoutMetrics, TLKTimelineView;
 
 @interface TLKLayoutManager : NSObject
 {
@@ -27,15 +27,16 @@
         unsigned int willBeginLayout:1;
         unsigned int RESERVED:28;
     } _delegateRespondsTo;
-    BOOL _wantsVerticalLayout;
     BOOL _autocollapsesLayoutContextsToFit;
     BOOL _keepsDraggedItemsVerticallyFixed;
     id <TLKLayoutManagerDelegate> _delegate;
     PCChangeLog *_changeLog;
     TLKLayoutMetrics *_layoutMetrics;
+    NSMapTable *_itemsPreviousContainerMap;
     struct CGSize _defaultTileSize;
 }
 
+@property(readonly, nonatomic) NSMapTable *itemsPreviousContainerMap; // @synthesize itemsPreviousContainerMap=_itemsPreviousContainerMap;
 @property(retain, nonatomic) TLKLayoutMetrics *layoutMetrics; // @synthesize layoutMetrics=_layoutMetrics;
 @property(retain, nonatomic) TLKContainerMetrics *sharedNestedContainerMetrics; // @synthesize sharedNestedContainerMetrics=_sharedNestedContainerMetrics;
 @property(retain, nonatomic) TLKContainerMetrics *sharedContainerMetrics; // @synthesize sharedContainerMetrics=_sharedContainerMetrics;
@@ -47,7 +48,6 @@
 @property(nonatomic) id <TLKLayoutManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) TLKLayoutDatabase *layoutDatabase; // @synthesize layoutDatabase=_layoutDatabase;
 @property(nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
-@property(nonatomic) BOOL wantsVerticalLayout; // @synthesize wantsVerticalLayout=_wantsVerticalLayout;
 @property(nonatomic) double hyphenationFactor; // @synthesize hyphenationFactor=_hyphenationFactor;
 - (void)_debugHideInvalidLayoutSegments;
 - (void)_debugShowInvalidLayoutSegments:(id)arg1;
@@ -56,10 +56,6 @@
 - (id)_subtreeDescription;
 - (id)debugDescription;
 - (void)_separateItems:(id)arg1 intoSpineItems:(id)arg2 anchoredItems:(id)arg3;
-- (void)exitPrecisionEditor;
-- (void)enterPrecisionEditorWithLeftItem:(id)arg1 rightItem:(id)arg2 transition:(id)arg3;
-- (void)_getPrecisionEditorLayoutContext:(id *)arg1 referenceTime:(CDStruct_1b6d18a9 *)arg2 forContainer:(id)arg3 leftItem:(id)arg4 rightItem:(id)arg5;
-- (void)_finishPrecisionEditorLayoutWithFinalState:(int)arg1 savedVisibleRectState:(id)arg2;
 - (BOOL)_notifyDidEndLayout;
 - (BOOL)_notifyWillBeginLayout;
 - (BOOL)_notifyDidCompleteLayoutForTile:(id)arg1 atEnd:(BOOL)arg2;
@@ -94,7 +90,6 @@
 - (CDStruct_1b6d18a9)timeFromLocation:(double)arg1;
 - (struct _TLKRange)locationRangeForTime:(CDStruct_1b6d18a9)arg1 inContainer:(id)arg2;
 - (struct _TLKRange)locationRangeForTime:(CDStruct_1b6d18a9)arg1;
-- (id)itemComponentsAtTime:(CDStruct_1b6d18a9)arg1;
 - (id)spineItemsAtTime:(CDStruct_1b6d18a9)arg1 inContainer:(id)arg2;
 - (struct CGRect)spineFrameAtLocation:(double)arg1 inContainer:(id)arg2;
 - (struct CGRect)_spineFrameForLayoutContext:(id)arg1 usedRect:(struct CGRect)arg2;
@@ -104,9 +99,14 @@
 - (double)heightForItemComponentFragment:(id)arg1;
 - (struct CGRect)bounds;
 - (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
+- (void)removeFromPreviousContainerMapForItem:(id)arg1;
+- (void)removeFromPreviousContainerMapForItems:(id)arg1;
+- (void)updateItemsPreviousContainerMapForItem:(id)arg1;
+- (void)updateItemsPreviousContainerMapForItems:(id)arg1;
 - (void)reloadWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 horizontally:(BOOL)arg4 vertically:(BOOL)arg5;
 - (id)_reloadSegmentTablesWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (id)_separateChangeListsBySegmentTableForItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
+- (void)adjustChangeLists:(id)arg1 forModifiedItems:(id)arg2;
 - (void)_performVerticalLayoutWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)_correctFirstLineFragmentForEmptyTimelineIfNeeded;
 - (void)_deleteEmptyLineFragments;

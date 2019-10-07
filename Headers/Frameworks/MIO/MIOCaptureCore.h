@@ -21,6 +21,7 @@
     BOOL mAudioEnabled;
     id mDelegate;
     BOOL mIsIngesting;
+    BOOL mIsProcessingFile;
     NSString *mDestinationPath;
 }
 
@@ -28,6 +29,7 @@
 + (void)initialize;
 @property(copy) NSString *destinationPath; // @synthesize destinationPath=mDestinationPath;
 @property int captureOperationType; // @synthesize captureOperationType=mCaptureOperationType;
+@property BOOL isProcessingFile; // @synthesize isProcessingFile=mIsProcessingFile;
 @property BOOL isIngesting; // @synthesize isIngesting=mIsIngesting;
 @property(getter=isAudioEnabled) BOOL audioEnabled; // @synthesize audioEnabled=mAudioEnabled;
 @property(getter=isVideoEnabled) BOOL videoEnabled; // @synthesize videoEnabled=mVideoEnabled;
@@ -37,6 +39,8 @@
 @property(retain) MIOClip *currentClip; // @synthesize currentClip=mCurrentClip;
 @property(retain) MIOConfigurationManager *configurationManager; // @synthesize configurationManager=mConfigurationManager;
 - (void)userDefaultsDidChange:(id)arg1;
+- (void)fileProcessingDidComplete:(id)arg1;
+- (void)fileProcessingDidBegin:(id)arg1;
 - (void)segmentIngestDidComplete:(id)arg1;
 - (void)segmentIngestDidBegin:(id)arg1;
 - (void)segmentIngestLookingForMedia:(id)arg1;

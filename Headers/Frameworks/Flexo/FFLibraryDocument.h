@@ -222,6 +222,7 @@
 - (void)applicationDidBecomeActive:(id)arg1;
 - (void)stopObservingAppBecameActive;
 - (void)startObservingAppBecameActive;
+- (void)_cancelAndWaitForLibraryBackgroundTasksToComplete;
 - (void)close;
 - (void)_closeWhenPossibleWithBlock:(CDUnknownBlockType)arg1;
 - (void)closeWhenPossibleWithBlock:(CDUnknownBlockType)arg1;

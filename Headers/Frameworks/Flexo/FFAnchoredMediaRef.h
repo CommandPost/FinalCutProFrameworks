@@ -21,6 +21,7 @@
     BOOL _audioComponentsLayoutMapNeedsLoadSync;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(nonatomic) int overrideAV; // @synthesize overrideAV=_overrideAV;
 @property(retain, nonatomic) FFMedia *media; // @synthesize media=_media;

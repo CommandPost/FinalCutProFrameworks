@@ -46,7 +46,7 @@
 @property(readonly, nonatomic) struct CGRect boundingBox;
 - (struct CGRect)lowerAccessoryFrame;
 - (struct CGRect)upperAccessoryFrame;
-@property(retain, nonatomic) TLKTimelineLayer *layer;
+@property(retain) TLKTimelineLayer *layer;
 @property(nonatomic) TLKItemLaneFragment *itemLaneFragment;
 @property(nonatomic) TLKLayoutContext *layoutContext;
 - (void)clearItemComponentInfo;

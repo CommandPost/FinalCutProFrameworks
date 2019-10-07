@@ -7,7 +7,7 @@
 #import "NSCoder.h"
 
 @interface NSCoder (Additions)
-- (void)decodeObjectsForKeys:(id)arg1 forObject:(id)arg2;
+- (void)decodeObjectsOfClasses:(id)arg1 forKeys:(id)arg2 forObject:(id)arg3;
 - (void)encodeObjectsForKeys:(id)arg1 forObject:(id)arg2;
 - (void)encodeObjectIfNotNil:(id)arg1 forKey:(id)arg2;
 @end

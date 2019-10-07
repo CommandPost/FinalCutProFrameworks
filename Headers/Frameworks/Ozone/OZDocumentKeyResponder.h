@@ -21,6 +21,9 @@
 @property(nonatomic) NSWindowController *windowController; // @synthesize windowController=_pWindowController;
 - (void)previewSceneAsCAAR:(id)arg1;
 - (void)exportSceneAsCAAR:(id)arg1;
+- (void)shareDestinationPicker:(id)arg1;
+- (void)shareToDefaultDestination:(id)arg1;
+- (void)shareToDestination:(id)arg1;
 - (void)exportCurrentFrame:(id)arg1;
 - (void)exportUsingCompressorSettings:(id)arg1;
 - (void)openInCompressor:(id)arg1;
@@ -218,6 +221,8 @@
 - (void)showMotionBlur:(id)arg1;
 - (void)toggleDoRenderFields:(id)arg1;
 - (void)setCustomRenderQuality:(id)arg1;
+- (void)setSchmozonjRaigsMode:(id)arg1;
+- (void)setToneMappingMode:(id)arg1;
 - (void)setViewGamut:(id)arg1;
 - (void)setRenderQuality:(id)arg1;
 - (void)setDynamicResolution:(id)arg1;

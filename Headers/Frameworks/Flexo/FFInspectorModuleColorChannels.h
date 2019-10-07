@@ -6,7 +6,7 @@
 
 #import <Flexo/FFInspectorModuleColorChannelsBase.h>
 
-@class FFEffect, NSView;
+@class FFEffect, LKButton, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorModuleColorChannels : FFInspectorModuleColorChannelsBase
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL _observingUserDefaultsForColor;
     NSView *_footerView;
     NSView *_noEffectsMessage;
+    LKButton *_effectsPresetButton;
 }
 
 - (void)resetAllPucks:(id)arg1;

@@ -11,6 +11,16 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)bottomCapWithOptions:(id)arg1;
++ (id)topCapWithOptions:(id)arg1;
++ (id)zigZagCapWithOptions:(id)arg1;
++ (id)roundedCapWithOptions:(id)arg1;
++ (id)_imagesWithHeight:(double)arg1 backgroundColor:(id)arg2 scaleFactor:(double)arg3;
++ (id)_cropImage:(id)arg1 toRect:(struct CGRect)arg2 scaleFactor:(double)arg3;
++ (id)_imageWithPath:(id)arg1 backgroundColor:(id)arg2 scaleFactor:(double)arg3 imageSize:(struct CGSize)arg4;
++ (void)cleanCurrentFilmstripMaskingImages;
++ (void)setCurrentFilmStripMaskImages:(id)arg1;
++ (id)currentFilmStripMaskImages;
 + (id)TemporaryFigTimeRangesCollapseRangeAndObjects:(id)arg1;
 + (_Bool)TemporaryFigTimeMutableRangeAndObjects:(id)arg1 addUnsortedRangeAndObjects:(id)arg2;
 + (CDStruct_1b6d18a9)adjustTime:(CDStruct_1b6d18a9)arg1 ToFrameBoundaryForSequence:(id)arg2;
@@ -57,6 +67,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)figTimeRangeObject:(id)arg1 exactlyEqualsFigTimeRangeObject:(id)arg2;
 + (BOOL)figTimeRangeAndObject:(id)arg1 overlapsFigTimeRangeObjectInArray:(id)arg2;
 + (BOOL)figTimeRangeObject:(id)arg1 intersectsWithOrIsEmptyLike:(id)arg2;
++ (void)populateOrganizerDebugMenu;
 
 @end
 

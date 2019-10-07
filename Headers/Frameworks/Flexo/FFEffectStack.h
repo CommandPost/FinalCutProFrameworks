@@ -10,12 +10,12 @@
 #import "FFCHChannelDelegate.h"
 #import "FFDataModelProtocol.h"
 #import "FFMD5Protocol.h"
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class FFAnchoredObject, FFCHObservableFolder, FFCHRootChannel, FFEffect, FFMD5AndOffset, NSArray, NSMutableArray, NSRecursiveLock, NSString;
 
-@interface FFEffectStack : FFBaseDSObject <NSCoding, NSCopying, FFCHChannelDelegate, FFDataModelProtocol, FFMD5Protocol, FFAnchoredSequenceDSObservedObject>
+@interface FFEffectStack : FFBaseDSObject <NSSecureCoding, NSCopying, FFCHChannelDelegate, FFDataModelProtocol, FFMD5Protocol, FFAnchoredSequenceDSObservedObject>
 {
     NSMutableArray *_effectInstances;
     NSMutableArray *_intrinsicEffectInstances;
@@ -50,6 +50,7 @@
 
 + (BOOL)effectIsNoiseReduction:(id)arg1;
 + (BOOL)subEffectIsNoiseReduction:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (BOOL)DSObjectCanProxy;
 + (id)_intrinsicEffectIDsAfterUserEffects;
@@ -253,7 +254,7 @@
 - (id)intrinsicChannels;
 - (unsigned long long)_indexOfFirstIntrinsicEffectAppliedAfterUserEffects;
 - (id)setToCheckForIntrinsics;
-- (id)_newSourceByAppendingComponentEffectsToSource:(id)arg1 effectCount:(long long)arg2 offset:(CDStruct_1b6d18a9)arg3;
+- (id)_newSourceByAppendingComponentEffectsToSource:(id)arg1 effectCount:(long long)arg2 offset:(CDStruct_1b6d18a9)arg3 context:(id)arg4;
 - (unsigned long long)_insertionPointForDropShadowInArray:(id)arg1;
 - (void)endDefaultIntrinsics:(void *)arg1;
 - (void *)beginDefaultIntrinsics;
@@ -295,6 +296,7 @@
 - (BOOL)_effectValidForColorMaskAnalysis:(id)arg1;
 - (BOOL)_effectValidForMatchingAnalysis:(id)arg1;
 - (BOOL)_effectValidForKenBurns:(id)arg1;
+- (BOOL)_effectValidForTransformImageOnly:(id)arg1;
 - (BOOL)compositeEffectValidForKenBurns:(id)arg1;
 - (id)visibleEffects;
 - (id)intrinsicEffects;
@@ -347,13 +349,13 @@
 - (BOOL)constantRetimeChannel:(id)arg1 rate:(double)arg2 currentRate:(double)arg3 timescale:(int)arg4 retimeEffect:(id)arg5 newStartTime:(CDStruct_1b6d18a9 *)arg6 newEndTime:(CDStruct_1b6d18a9 *)arg7 newInTime:(CDStruct_1b6d18a9 *)arg8 newOutTime:(CDStruct_1b6d18a9 *)arg9;
 - (id)_setupBeforeChangeChannel;
 - (void)checkChannelKeys:(id)arg1 msg:(id)arg2;
+- (BOOL)projectUpdaterFixUpColorIsolationMasksForHSLQualifiersWithError:(id *)arg1;
 - (BOOL)projectUpdaterConvertToNewColorTabEffectsWithError:(id *)arg1;
 - (BOOL)projectUpdaterConvertHeColorEffectToMaskedEffectWithError:(id *)arg1;
 - (void)removeShapeAndMaskSelectFromStack;
-- (BOOL)operationAddIsolationMaskToEffect:(id)arg1 error:(id *)arg2;
-- (BOOL)operationAddImprovedEllipseMaskToEffect:(id)arg1 error:(id *)arg2;
-- (BOOL)operationAddEllipseMaskToEffect:(id)arg1 error:(id *)arg2;
-- (BOOL)operationAddMaskToEffect:(id)arg1 maskClass:(Class)arg2 error:(id *)arg3;
+- (BOOL)operationAddIsolationMaskToEffect:(id)arg1 maskHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (BOOL)operationAddImprovedEllipseMaskToEffect:(id)arg1 maskHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (BOOL)operationAddMaskToEffect:(id)arg1 maskClass:(Class)arg2 maskHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (BOOL)operationGroupEffects:(id)arg1 error:(id *)arg2;
 - (id)maskedEffects;
 - (void)setShowMatte:(BOOL)arg1 forMaskedEffect:(id)arg2;

@@ -32,12 +32,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSIndexSet *supportedColorSpaceOverrides; // @synthesize supportedColorSpaceOverrides=_supportedColorSpaceOverrides;
 @property(readonly, nonatomic) NSIndexSet *supportedDominanceOverrides; // @synthesize supportedDominanceOverrides=_supportedDominanceOverrides;
 @property(readonly, nonatomic) NSIndexSet *supportedAlphaHandlingModes; // @synthesize supportedAlphaHandlingModes=_supportedAlphaHandlingModes;
-- (void)controller:(id)arg1 didMoveItem:(id)arg2 toItem:(id)arg3;
-- (void)controller:(id)arg1 didChangeItem:(id)arg2;
-- (void)controller:(id)arg1 willRemoveItem:(id)arg2;
-- (void)controller:(id)arg1 didAddItem:(id)arg2;
 - (id)initWithProvider:(id)arg1 mediaRep:(id)arg2;
 - (void)dealloc;
+- (void)moveCustomCameraLUTItems:(id)arg1;
+- (void)removeCustomCameraLUTItems:(id)arg1;
+- (void)addCustomCameraLUTItems:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSString *_anchoredObjectPersistentID;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(readonly) NSString *anchoredObjectPersistentID; // @synthesize anchoredObjectPersistentID=_anchoredObjectPersistentID;
 @property(readonly) NSString *projectDocumentID; // @synthesize projectDocumentID=_projectDocumentID;

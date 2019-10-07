@@ -7,12 +7,12 @@
 #import <Flexo/FFBaseDSObject.h>
 
 #import "FFAnchoredSequenceDSObservedObject.h"
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class FFAnchoredGeneratorComponent, FFAnchoredObject;
 
-@interface FFCollectionFades : FFBaseDSObject <NSCoding, NSCopying, FFAnchoredSequenceDSObservedObject>
+@interface FFCollectionFades : FFBaseDSObject <NSSecureCoding, NSCopying, FFAnchoredSequenceDSObservedObject>
 {
     CDStruct_1b6d18a9 _fadeInStartTime;
     CDStruct_1b6d18a9 _fadeInDuration;
@@ -23,6 +23,7 @@
     FFAnchoredObject *_parentItem;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(nonatomic) CDStruct_1b6d18a9 fadeOutDuration; // @synthesize fadeOutDuration=_fadeOutDuration;
 @property(nonatomic) CDStruct_1b6d18a9 fadeInDuration; // @synthesize fadeInDuration=_fadeInDuration;

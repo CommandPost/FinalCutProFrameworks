@@ -19,15 +19,16 @@ __attribute__((visibility("hidden")))
     FFOpenGLNSImage *_angleBezelSelectionVideo;
     FFOpenGLNSImage *_angleAudioIcon;
     struct CGSize _angleAudioIconSize;
-    NSDictionary *_timecodeTextAttributes;
-    NSDictionary *_angleClipTextAttributes;
     NSMutableDictionary *_textTimeCodeImageCache;
     NSMutableDictionary *_textNameImageCache;
     NSCursor *_cursor;
-    NSString *_lastAngleIDOver;
     int _LRUCount;
+    NSDictionary *_timecodeTextAttributes;
+    NSDictionary *_angleClipTextAttributes;
+    NSString *_lastAngleIDOver;
 }
 
+@property(retain) NSString *lastAngleIDOver; // @synthesize lastAngleIDOver=_lastAngleIDOver;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
 - (id)accessibilityAttributeValue:(id)arg1;

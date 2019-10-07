@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     FFAutoexpandingTextFieldImpl *_impl;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) id <FFAutoexpandingTextFieldDelegate> autoexpandingDelegate;
 @property(nonatomic) BOOL autoresizesSuperview;
 - (void)textDidChange:(id)arg1;

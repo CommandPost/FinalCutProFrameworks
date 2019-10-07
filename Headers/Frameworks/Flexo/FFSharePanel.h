@@ -8,9 +8,8 @@
 
 #import "NSPopoverDelegate.h"
 
-@class FFShareInfoDataSource, FFShareInfoViewController, FFSharePanelCaptionsExporter, FFSharePanelRolesViewController, LKEmptyDFRController, LKImageView, LKSegmentedControl, NSLayoutConstraint, NSMapTable, NSString, NSTabView, NSTrackingArea, NSView;
+@class FFShareInfoDataSource, FFShareInfoViewController, FFSharePanelRolesViewController, LKEmptyDFRController, LKImageView, LKSegmentedControl, NSLayoutConstraint, NSString, NSTabView, NSTrackingArea, NSView, NSViewController<FFSharePanelAccessoryProtocol>;
 
-__attribute__((visibility("hidden")))
 @interface FFSharePanel : FFBaseSharePanel <NSPopoverDelegate>
 {
     FFShareInfoViewController *_shareInfoController;
@@ -31,15 +30,18 @@ __attribute__((visibility("hidden")))
     NSTrackingArea *_errorViewTrackingArea;
     LKEmptyDFRController *_dfrController;
     FFSharePanelRolesViewController *_observedRolesViewController;
-    FFSharePanelCaptionsExporter *_captionsExporter;
+    NSViewController<FFSharePanelAccessoryProtocol> *_accessoryController;
+    NSView *_accessoryPreviewContainerView;
+    double _accessoryWindowHeight;
     NSLayoutConstraint *_errorViewHeightConstraint;
-    NSMapTable *_mapDestinationToCaptionsExporter;
     NSView *_shareInfoContainer;
 }
 
 @property(nonatomic) NSView *shareInfoContainer; // @synthesize shareInfoContainer=_shareInfoContainer;
-@property(retain, nonatomic) NSMapTable *mapDestinationToCaptionsExporter; // @synthesize mapDestinationToCaptionsExporter=_mapDestinationToCaptionsExporter;
 @property(retain, nonatomic) NSTrackingArea *errorViewTrackingArea; // @synthesize errorViewTrackingArea=_errorViewTrackingArea;
+@property(readonly, nonatomic) double accessoryWindowHeight; // @synthesize accessoryWindowHeight=_accessoryWindowHeight;
+@property(nonatomic) NSView *accessoryPreviewContainerView; // @synthesize accessoryPreviewContainerView=_accessoryPreviewContainerView;
+@property(retain, nonatomic) NSViewController<FFSharePanelAccessoryProtocol> *accessoryController; // @synthesize accessoryController=_accessoryController;
 @property(nonatomic) NSLayoutConstraint *errorViewHeightConstraint; // @synthesize errorViewHeightConstraint=_errorViewHeightConstraint;
 @property(retain, nonatomic) FFSharePanelRolesViewController *observedRolesViewController; // @synthesize observedRolesViewController=_observedRolesViewController;
 @property(nonatomic) LKImageView *errorView; // @synthesize errorView=_errorView;
@@ -59,22 +61,36 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) LKSegmentedControl *previousNextControl; // @synthesize previousNextControl=_previousNextControl;
 - (void)rolesViewFrameDidChange:(id)arg1;
 - (void)destinationViewFrameDidChange:(id)arg1;
-- (void)resizeWindowToFitSelectedTabIndex:(long long)arg1 animate:(BOOL)arg2;
+- (void)resizeWindowToFitSelectedTabViewItemWithIdentifier:(id)arg1 animate:(BOOL)arg2;
+- (double)windowHeightWithTabViewItemIdentifier:(id)arg1;
 - (BOOL)areAudioVideoRolesHeterogeneous;
 - (void)_updateDisabledRoles;
 - (double)calcMaxSettingsViewHeight;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)showVideoPreviewOrSourcesListDependingOnBatchExport;
+- (void)removeVideoPreviewFromAllTabs;
 - (void)placeView:(id)arg1 inContainerView:(id)arg2;
+- (void)moveVideoPreviewToAccessoryTab;
+- (void)moveVideoPreviewToSettingsTab;
+- (void)moveVideoPreviewToInfoTab;
+- (long long)accessoryTabIndex;
+- (long long)settingsTabIndex;
+- (long long)infoTabIndex;
+- (void)moveVideoPreviewToTab:(long long)arg1;
 - (void)updateSharePreviewForNewSelectedTabIndex:(long long)arg1;
+- (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 - (id)touchBar;
+- (id)rolesDataSourceForDestination:(id)arg1;
+- (id)captionMainRolesEnabledForExportForDestination:(id)arg1;
+- (id)targetForDestination:(id)arg1;
 - (id)captionSidecarFilesForDestination:(id)arg1;
 - (unsigned long long)numberOfOutputFilesForDestination:(id)arg1;
-- (id)captionsExporterForDestination:(id)arg1;
-- (void)setCaptionsExporter:(id)arg1 forDestination:(id)arg2;
 - (void)dealloc;
 - (void)postProcessErrors:(id)arg1;
 - (id)captionRolesWithValidationErrorsInSequence:(id)arg1 withinRange:(CDStruct_e83c9415)arg2;
+- (void)exportCaptionSidecarFilesWithDestination:(id)arg1 destinationController:(id)arg2;
+- (void)setupEmbeddedCaptionsWithSource:(id)arg1 destination:(id)arg2;
 - (void)postProcessSource:(id)arg1 withDestinationController:(id)arg2 andDestination:(id)arg3;
 - (void)reloadShareInfo;
 - (void)windowDidLoad;

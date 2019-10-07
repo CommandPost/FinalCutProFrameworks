@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     DSObject *_value;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (Class)DSClassDescriptionClass;
 @property(retain, nonatomic) DSObject *value; // @synthesize value=_value;

@@ -24,6 +24,8 @@
 - (id)newPopUpOptionsControllers:(id)arg1;
 - (id)newSliderOptionsControllers:(id)arg1;
 - (id)newSnapshotControllers:(id)arg1;
+- (void)updateSnapshotGroupControllerEnableState:(id)arg1;
+- (void)repopulateSnapshotsGroupController:(id)arg1;
 - (void)populateSnapshotsGroupController:(id)arg1 context:(id)arg2;
 - (void)startEditMode:(id)arg1;
 - (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
@@ -31,6 +33,7 @@
 - (void)removeUnregisteredRigControllers;
 - (void)updateEnableState;
 - (void)update;
+- (void)notify:(unsigned int)arg1;
 - (id)initHUDWithWidget:(struct OZRigWidget *)arg1 context:(id)arg2;
 - (id)initWithWidget:(struct OZRigWidget *)arg1 isNested:(BOOL)arg2 context:(id)arg3;
 

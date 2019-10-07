@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-@class OZGLViewerOSC;
+@class OZViewerOSC;
 
 @interface OZViewerSnaps : NSObject
 {
     struct map<OZOverlay *, std::__1::shared_ptr<std::__1::set<OZSnap, std::__1::less<OZSnap>, std::__1::allocator<OZSnap>>>, std::__1::less<OZOverlay *>, std::__1::allocator<std::__1::pair<OZOverlay *const, std::__1::shared_ptr<std::__1::set<OZSnap, std::__1::less<OZSnap>, std::__1::allocator<OZSnap>>>>>> *_snaps;
-    OZGLViewerOSC *_viewer;
+    OZViewerOSC *_viewer;
 }
 
 - (void)endSnapping;

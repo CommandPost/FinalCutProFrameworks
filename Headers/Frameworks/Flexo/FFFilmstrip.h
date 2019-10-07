@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)mediaTimeForPoint:(struct CGPoint)arg1 inSpaceOfLayer:(id)arg2;
 @property(readonly, nonatomic) CALayer *layer;
 - (void)_addThumbnailLayers;
+- (int)filmstripMode;
 - (void)populateThumbnails;
 @property(readonly, nonatomic) struct CGSize overallSize;
 @property(nonatomic) double contentsScale;

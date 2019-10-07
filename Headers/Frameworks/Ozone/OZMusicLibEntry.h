@@ -18,6 +18,7 @@
 + (id)libraryEntryFromMediaGroup:(id)arg1;
 + (id)mediaSourceFromMediaLibrary:(id)arg1;
 + (id)mediaLibrary;
++ (id)mediaLibraryLocalizedName;
 + (BOOL)supportsSecureCoding;
 + (BOOL)validateTree:(id)arg1;
 + (id)buildTree:(id)arg1;

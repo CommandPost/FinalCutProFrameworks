@@ -10,6 +10,7 @@
 - (void)drawScopeWithFrame:(FFImage *)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 
 @optional
-- (void)colorspaceDidChangeForVideoScopes:(FFDestVideoScopesGL *)arg1;
+- (struct CGColorSpace *)overrideColorSpaceForVideoScopes:(FFDestVideoScopesGL *)arg1;
+- (void)colorSpaceDidChangeForVideoScopes:(FFDestVideoScopesGL *)arg1;
 @end
 

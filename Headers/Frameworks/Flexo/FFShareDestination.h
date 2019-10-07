@@ -7,11 +7,12 @@
 #import "NSObject.h"
 
 #import "NSCopying.h"
+#import "NSPasteboardWriting.h"
 #import "NSSecureCoding.h"
 
 @class CKAction, CKSetting, NSImage, NSMutableSet, NSSet, NSString;
 
-@interface FFShareDestination : NSObject <NSSecureCoding, NSCopying>
+@interface FFShareDestination : NSObject <NSSecureCoding, NSCopying, NSPasteboardWriting>
 {
     NSString *_type;
     NSString *_name;
@@ -23,10 +24,15 @@
     BOOL _userHasChangedTheName;
     BOOL _storePassword;
     BOOL _includesChapterMarkers;
+    BOOL _canExportSelectedLayersOnly;
+    BOOL _exportSelectedLayersOnly;
+    BOOL _exportInOutRangeOnly;
     struct CGSize _videoResolution;
     NSString *_uuid;
     NSMutableSet *_destinationErrors;
     BOOL _canExcludeDisabledRoles;
+    long long _colorSpace;
+    long long _colorChannels;
     NSSet *_embeddedCaptionRoles;
     NSSet *_burnInCaptionRoles;
 }
@@ -35,6 +41,7 @@
 + (id)setting;
 + (id)defaultName;
 + (id)requiredMetatdataKeys;
++ (void)setAllDestinations:(id)arg1;
 + (id)allDestinations;
 + (void)setDefaultUserDestination:(id)arg1;
 + (id)defaultUserDestination;
@@ -43,7 +50,12 @@
 + (id)userDestinationsWithDefault:(id)arg1;
 + (id)userDestinationsShowAppPreview:(BOOL)arg1;
 + (id)userDestinations;
++ (BOOL)userDestinationsLoaded;
++ (void)loadUserDestinations;
++ (void)waitUntilUserDestinationsLoaded;
 + (void)filterDestinations;
++ (BOOL)shouldEnableTheaterShareDestination;
++ (void)setUserDestinationsDictionaryPathComponent:(id)arg1;
 + (id)newDestinationWithType:(id)arg1;
 + (id)addUserDestinationFromURL:(id)arg1;
 + (void)restoreStandardDestinations;
@@ -53,17 +65,24 @@
 @property(retain, nonatomic) NSSet *burnInCaptionRoles; // @synthesize burnInCaptionRoles=_burnInCaptionRoles;
 @property(retain, nonatomic) NSSet *embeddedCaptionRoles; // @synthesize embeddedCaptionRoles=_embeddedCaptionRoles;
 @property(nonatomic) BOOL canExcludeDisabledRoles; // @synthesize canExcludeDisabledRoles=_canExcludeDisabledRoles;
+@property(nonatomic) long long colorChannels; // @synthesize colorChannels=_colorChannels;
+@property(nonatomic) long long colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(copy, nonatomic) NSString *savedRenderFormatName; // @synthesize savedRenderFormatName=_savedRenderFormatName;
 @property(retain) NSMutableSet *destinationErrors; // @synthesize destinationErrors=_destinationErrors;
 @property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(nonatomic) struct CGSize videoResolution; // @synthesize videoResolution=_videoResolution;
 @property(copy) NSString *originalSettingsName; // @synthesize originalSettingsName=_originalSettingsName;
+@property(nonatomic) BOOL exportInOutRangeOnly; // @synthesize exportInOutRangeOnly=_exportInOutRangeOnly;
+@property(nonatomic) BOOL exportSelectedLayersOnly; // @synthesize exportSelectedLayersOnly=_exportSelectedLayersOnly;
+@property(nonatomic) BOOL canExportSelectedLayersOnly; // @synthesize canExportSelectedLayersOnly=_canExportSelectedLayersOnly;
 @property BOOL includesChapterMarkers; // @synthesize includesChapterMarkers=_includesChapterMarkers;
 @property BOOL storePassword; // @synthesize storePassword=_storePassword;
 @property BOOL userHasChangedTheName; // @synthesize userHasChangedTheName=_userHasChangedTheName;
 @property(retain, nonatomic) CKSetting *setting; // @synthesize setting=_setting;
 @property(retain) NSImage *customImage; // @synthesize customImage=_customImage;
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
+- (id)pasteboardPropertyListForType:(id)arg1;
+- (id)writableTypesForPasteboard:(id)arg1;
 - (void)removeAllDestinationErrors;
 - (void)removeDestinationError:(id)arg1;
 - (void)addDestinationError:(id)arg1;
@@ -108,6 +127,12 @@
 - (BOOL)validateName:(id *)arg1 error:(id *)arg2;
 - (BOOL)willExcludeDisabledRoles;
 @property(readonly, nonatomic) BOOL supportsBatchExport;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

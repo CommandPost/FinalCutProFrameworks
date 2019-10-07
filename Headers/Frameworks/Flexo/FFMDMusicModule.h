@@ -163,7 +163,7 @@
 - (void)appendGroupToPopup:(id)arg1 indentationLevel:(long long)arg2;
 - (id)localizedNameForGroup:(id)arg1;
 - (void)loadMusicPopup:(id)arg1;
-- (id)_iconForMediaGroup:(id)arg1;
+- (id)iconForMediaGroup:(id)arg1;
 - (void)togglePlayForDataItem:(id)arg1;
 - (void)markCurrentlyPlayingItem:(id)arg1;
 - (void)stopPlayback;

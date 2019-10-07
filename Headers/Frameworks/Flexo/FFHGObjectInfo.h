@@ -11,14 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface FFHGObjectInfo : NSObject
 {
-    struct HGObject *_hgObject;
+    // Error parsing type: ^{HGObject=^^?{atomic<unsigned int>=AI}}, name: _hgObject
     FFRendererInfo *_rendererInfo;
 }
 
 - (void)dealloc;
-- (id)initWithHGObject:(struct HGObject *)arg1 rendererInfo:(id)arg2;
+-     // Error parsing type: @32@0:8^{HGObject=^^?{atomic<unsigned int>=AI}}16@24, name: initWithHGObject:rendererInfo:
 - (id)rendererInfo;
-- (struct HGObject *)hgObject;
+-     // Error parsing type: ^{HGObject=^^?{atomic<unsigned int>=AI}}16@0:8, name: hgObject
 
 @end
 

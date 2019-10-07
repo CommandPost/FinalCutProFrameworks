@@ -8,7 +8,7 @@
 
 #import "FFOrganizerDelegatePassthrough.h"
 
-@class FFMDEffectsModule, FFMDEmptyModule, FFMDExternalServiceModule, FFMDGarageBandModule, FFMDGeneratorsModule, FFMDITunesModule, FFMDLogicProModule, FFMDPhotoLibraryModule, FFMDTitleModule, FFMDTransitionModule, FFOrganizerFilmstripModule, NSString, NSView;
+@class FFMDAppleTVModule, FFMDEffectsModule, FFMDEmptyModule, FFMDExternalServiceModule, FFMDGarageBandModule, FFMDGeneratorsModule, FFMDITunesModule, FFMDLogicProModule, FFMDMusicLibraryModule, FFMDPhotoLibraryModule, FFMDTitleModule, FFMDTransitionModule, FFOrganizerFilmstripModule, NSString, NSView;
 
 @interface FFMediaDetailContainerModule : LKTabModule <FFOrganizerDelegatePassthrough>
 {
@@ -20,6 +20,8 @@
     FFMDTitleModule *_titleModule;
     FFMDGeneratorsModule *_generatorsModule;
     FFMDITunesModule *_iTunesModule;
+    FFMDMusicLibraryModule *_musicModule;
+    FFMDAppleTVModule *_appleTVLibraryModule;
     FFMDTransitionModule *_transitionModule;
     FFMDEffectsModule *_effectsModule;
     FFMDLogicProModule *_logicProModule;
@@ -38,6 +40,8 @@
 @property(retain, nonatomic) FFMDLogicProModule *logicProModule; // @synthesize logicProModule=_logicProModule;
 @property(retain, nonatomic) FFMDEffectsModule *effectsModule; // @synthesize effectsModule=_effectsModule;
 @property(retain, nonatomic) FFMDTransitionModule *transitionModule; // @synthesize transitionModule=_transitionModule;
+@property(retain, nonatomic) FFMDAppleTVModule *appleTVLibraryModule; // @synthesize appleTVLibraryModule=_appleTVLibraryModule;
+@property(retain, nonatomic) FFMDMusicLibraryModule *musicModule; // @synthesize musicModule=_musicModule;
 @property(retain, nonatomic) FFMDITunesModule *iTunesModule; // @synthesize iTunesModule=_iTunesModule;
 @property(retain, nonatomic) FFMDGeneratorsModule *generatorsModule; // @synthesize generatorsModule=_generatorsModule;
 @property(retain, nonatomic) FFMDTitleModule *titleModule; // @synthesize titleModule=_titleModule;

@@ -6,6 +6,8 @@
 
 #import <ProOSC/POScaleControl.h>
 
+@class NSMutableArray, NSMutableDictionary;
+
 @interface OZTransformOSC : POScaleControl
 {
     double _startX;
@@ -35,6 +37,9 @@
     BOOL _elementBeingDragged;
     BOOL _rotationSnapped;
     BOOL _minimalDraw;
+    NSMutableArray *_lineMDPs;
+    NSMutableArray *_textureMDPs;
+    NSMutableDictionary *_pivotMDPs;
 }
 
 + (PCPtr_df275998)getRotationTexture:(int)arg1;
@@ -45,6 +50,11 @@
 + (void)maybeInitResources;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)getMetalDrawPrimitives:(id)arg1;
+- (id)getMetalMDPsForPivotHandleConnectorAtPos:(PCVector2_79efa81a)arg1;
+- (id)getMetalMDPsForRotationAtPos:(PCVector2_79efa81a)arg1 withMat:(PCMatrix44Tmpl_e98c85ee)arg2 metalHelper:(id)arg3;
+- (id)getMetalMDPsForPivotAtPos:(PCVector2_79efa81a)arg1 withMat:(PCMatrix44Tmpl_e98c85ee)arg2;
+- (BOOL)doesSupportMetal;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
 - (BOOL)postRedisplayOnActivePartChange;
 - (BOOL)acceptPassiveEvent:(id)arg1;
@@ -65,7 +75,6 @@
 - (struct POColor)getRotateLineStrokeColor;
 - (struct POColor)getBoxStrokeColor;
 - (PCMatrix44Tmpl_e98c85ee)getLocalToEyeRot;
-- (PCMatrix44Tmpl_e98c85ee)getViewTransformation;
 - (PCMatrix44Tmpl_e98c85ee)getPivotToView;
 - (PCVector2_7e488b7d)getRotHandlePos;
 - (PCVector2_7e488b7d)getRotHandlePosAtDist:(float)arg1;

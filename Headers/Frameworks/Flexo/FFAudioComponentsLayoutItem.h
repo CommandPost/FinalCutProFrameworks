@@ -6,12 +6,12 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSArray, NSDictionary, NSString;
 
-@interface FFAudioComponentsLayoutItem : FFBaseDSObject <NSCoding, NSCopying>
+@interface FFAudioComponentsLayoutItem : FFBaseDSObject <NSSecureCoding, NSCopying>
 {
     NSString *_itemName;
     NSArray *_channelMap;
@@ -21,6 +21,7 @@
 }
 
 + (unsigned int)numOutputChannelsForLayoutItems:(id)arg1 withFlags:(unsigned int)arg2;
++ (BOOL)supportsSecureCoding;
 + (id)itemWithName:(id)arg1 channelMap:(id)arg2 audioChannelRoutingMap:(id)arg3;
 + (id)itemWithName:(id)arg1 channelMap:(id)arg2;
 + (id)copyClassDescription;
@@ -46,8 +47,8 @@
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)copyLayoutItemUsingChannelMap:(id)arg1 audioChannelRoutingMap:(id)arg2;
-- (id)copyLayoutItemUsingChannelMap:(id)arg1;
+- (id)newLayoutItemUsingChannelMap:(id)arg1 audioChannelRoutingMap:(id)arg2;
+- (id)newLayoutItemUsingChannelMap:(id)arg1;
 - (id)newMonoSubsetLayoutItem:(int)arg1;
 - (id)initWithAudioComponentsLayoutItem:(id)arg1;
 - (id)initWithCoder:(id)arg1;

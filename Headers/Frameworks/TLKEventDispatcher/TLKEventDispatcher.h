@@ -20,7 +20,6 @@
     TLKEventContext *_potentialHandlerContext;
     NSArray *_rolloverDescriptions;
     NSView<TLKEventDispatcherView> *_view;
-    NSTrackingArea *_cursorTrackingArea;
     id _delegate;
     TLKToolTipManager *_toolTipManager;
     NSEvent *_initialEvent;
@@ -64,8 +63,10 @@
     NSEvent *_previousEvent;
     unsigned long long _countOfTrackingIterations;
     NSEvent *_queuedPreviousEvent;
+    NSTrackingArea *_cursorTrackingArea;
 }
 
+@property(retain, nonatomic) NSTrackingArea *cursorTrackingArea; // @synthesize cursorTrackingArea=_cursorTrackingArea;
 @property(retain) NSEvent *queuedPreviousEvent; // @synthesize queuedPreviousEvent=_queuedPreviousEvent;
 @property int thermalPressureToken; // @synthesize thermalPressureToken=_thermalPressureToken;
 @property(nonatomic) unsigned long long countOfTrackingIterations; // @synthesize countOfTrackingIterations=_countOfTrackingIterations;
@@ -190,7 +191,6 @@
 - (id)_cacheEventDescriptionPredicates:(id)arg1;
 - (id)_dictionaryByCachingPredicates:(id)arg1;
 - (void)writeEventDescriptionsToDictionary:(id)arg1;
-- (void)resetEventDescriptions;
 - (void)readEventDescriptionsFromDictionary:(id)arg1;
 - (id)_potentialHandlerForEvent:(id)arg1 eventContext:(id *)arg2;
 - (id)potentialHandler;

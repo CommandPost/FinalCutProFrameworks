@@ -6,17 +6,18 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSString;
 
-@interface FFNamingToken : NSObject <NSCoding, NSCopying>
+@interface FFNamingToken : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_identifier;
     NSString *_displayString;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)tokenWithIdentifier:(id)arg1;
 + (id)namingTokens;
 @property(retain) NSString *displayString; // @synthesize displayString=_displayString;

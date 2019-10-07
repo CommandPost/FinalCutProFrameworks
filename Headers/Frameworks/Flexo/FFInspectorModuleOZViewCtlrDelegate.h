@@ -75,6 +75,8 @@
 - (void)select:(BOOL)arg1 forChan:(struct OZChannelBase *)arg2;
 - (void)stopPlaybackForChannel:(struct OZChannelBase *)arg1;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1 forChannel:(struct OZChannelBase *)arg2;
+- (void)didChangeChannelGridEnd:(struct OZChannelBase *)arg1;
+- (void)aboutToChangeChannelGridStart:(struct OZChannelBase *)arg1 inSliderAction:(BOOL)arg2;
 - (CDStruct_1b6d18a9)currentTimeForChannel:(struct OZChannelBase *)arg1;
 - (void)controller:(id)arg1 postNotification:(unsigned int)arg2;
 - (void)abortAndWait;

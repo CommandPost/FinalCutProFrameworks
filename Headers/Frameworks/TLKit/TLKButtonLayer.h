@@ -6,11 +6,12 @@
 
 #import <TLKit/TLKImageLayer.h>
 
+#import "NSCopying.h"
 #import "TLKPartInfo.h"
 
 @class NSString, TLKTimelineView;
 
-@interface TLKButtonLayer : TLKImageLayer <TLKPartInfo>
+@interface TLKButtonLayer : TLKImageLayer <TLKPartInfo, NSCopying>
 {
     CDUnknownBlockType _pressedHandler;
     long long _tag;
@@ -42,6 +43,7 @@
 - (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)hitTest:(struct CGPoint)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
 

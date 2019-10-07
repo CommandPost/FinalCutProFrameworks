@@ -19,6 +19,7 @@
 }
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(retain, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
 @property(nonatomic) BOOL includesTitles; // @synthesize includesTitles=_includesTitles;

@@ -9,7 +9,7 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class CALayer, CIFilter, NSArray, NSColor, NSMutableArray, NSString, TLKAbstractEdgeSelectionLayer, TLKAbstractItemBackgroundLayer, TLKAbstractItemSelectionLayer, TLKFilmstripLayer, TLKItemContentsLayer, TLKPrecisionEditorTransitionClipLayer, TLKPrecisionEditorUnusedMediaOverlayLayer, TLKRoundedSideLayer, TLKTextLayer;
+@class CALayer, NSArray, NSColor, NSMutableArray, NSString, TLKAbstractEdgeSelectionLayer, TLKAbstractItemBackgroundLayer, TLKAbstractItemSelectionLayer, TLKFilmstripLayer, TLKItemContentsLayer, TLKItemContentsLayerMock, TLKPrecisionEditorTransitionClipLayer, TLKPrecisionEditorUnusedMediaOverlayLayer, TLKRoundedSideLayer;
 
 @interface TLKItemLayer : TLKTimelineLayer <TLKAccessibilityProtocol, TLKPartInfo>
 {
@@ -17,8 +17,8 @@
     CALayer *_filmstripDividerLayer;
     TLKAbstractEdgeSelectionLayer *_edgeSelectionLayer;
     CALayer *_transitionBorderLayer;
-    TLKTextLayer *_textLayer;
     TLKItemContentsLayer *_overlayContentsLayer;
+    TLKItemContentsLayerMock *_overlayContentsLayerMock;
     TLKFilmstripLayer *_videoContentsLayer;
     TLKFilmstripLayer *_audioContentsLayer;
     TLKAbstractItemSelectionLayer *_selectionLayer;
@@ -31,18 +31,19 @@
     CALayer *_trailingEdgeVideoStitchingLayer;
     CALayer *_leadingEdgeAudioStitchingLayer;
     CALayer *_trailingEdgeAudioStitchingLayer;
-    NSArray *_badgeArray;
     NSMutableArray *_rangeItemLayers;
     struct CGRect _transitionMediaRect;
     struct CGRect _unusedMediaRect;
     struct CGRect _unusedAudioMediaRect;
-    unsigned int _hideTextBadges:1;
     unsigned int _unusedAudioMediaRectChangedFromDefault:1;
+    BOOL _leadingVideoThroughEditVisible;
+    BOOL _trailingVideoThroughEditVisible;
+    BOOL _leadingAudioThroughEditVisible;
+    BOOL _trailingAudioThroughEditVisible;
     BOOL _disableTextBadges;
     double _titleHeight;
     double _filmstripHeight;
     double _waveformHeight;
-    CIFilter *_textLayerInvertFilter;
     struct NSEdgeInsets _videoFilmstripEdgeInsets;
 }
 
@@ -51,14 +52,17 @@
 + (BOOL)wantsTitlesOnTransitions;
 + (void)setWantsTitlesOnTransitions:(BOOL)arg1;
 + (struct CGRect)frameForItem:(struct CGRect)arg1 withType:(int)arg2 andContainmentType:(int)arg3;
+@property(retain, nonatomic) TLKItemContentsLayerMock *overlayContentsLayerMock; // @synthesize overlayContentsLayerMock=_overlayContentsLayerMock;
 @property(readonly) TLKAbstractItemSelectionLayer *selectionLayer; // @synthesize selectionLayer=_selectionLayer;
-@property(retain, nonatomic) CIFilter *textLayerInvertFilter; // @synthesize textLayerInvertFilter=_textLayerInvertFilter;
 @property(readonly) double waveformHeight; // @synthesize waveformHeight=_waveformHeight;
 @property(readonly) double filmstripHeight; // @synthesize filmstripHeight=_filmstripHeight;
 @property(readonly) double titleHeight; // @synthesize titleHeight=_titleHeight;
-@property(retain) TLKTextLayer *textLayer; // @synthesize textLayer=_textLayer;
 @property struct NSEdgeInsets videoFilmstripEdgeInsets; // @synthesize videoFilmstripEdgeInsets=_videoFilmstripEdgeInsets;
 @property BOOL disableTextBadges; // @synthesize disableTextBadges=_disableTextBadges;
+@property(readonly, nonatomic) BOOL trailingAudioThroughEditVisible; // @synthesize trailingAudioThroughEditVisible=_trailingAudioThroughEditVisible;
+@property(readonly, nonatomic) BOOL leadingAudioThroughEditVisible; // @synthesize leadingAudioThroughEditVisible=_leadingAudioThroughEditVisible;
+@property(readonly, nonatomic) BOOL trailingVideoThroughEditVisible; // @synthesize trailingVideoThroughEditVisible=_trailingVideoThroughEditVisible;
+@property(readonly, nonatomic) BOOL leadingVideoThroughEditVisible; // @synthesize leadingVideoThroughEditVisible=_leadingVideoThroughEditVisible;
 @property(nonatomic) struct CGRect unusedAudioMediaRect; // @synthesize unusedAudioMediaRect=_unusedAudioMediaRect;
 @property(nonatomic) struct CGRect unusedMediaRect; // @synthesize unusedMediaRect=_unusedMediaRect;
 @property(nonatomic) struct CGRect transitionMediaRect; // @synthesize transitionMediaRect=_transitionMediaRect;
@@ -66,23 +70,29 @@
 @property NSColor *textColor;
 - (void)_debugShowContentLayersIfNeeded;
 - (BOOL)layoutRangeItemLayers;
-- (void)layoutTextBadges;
 - (id)contextMenu;
 - (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)hitTest:(struct CGPoint)arg1;
 - (void)_updateTransitionAppearanceAsAudioOnly:(BOOL)arg1;
+- (BOOL)isTrailingAudioThroughEditVisible;
+- (BOOL)isLeadingAudioThroughEditVisible;
+- (BOOL)isTrailingVideoThroughEditVisible;
+- (BOOL)isLeadingVideoThroughEditVisible;
+- (struct CGColor *)backgroundColorForThroughEditInBetweenClipsWithDifferentAngles;
+- (struct CGColor *)backgroundColorForThroughEditInBetweenClipsWithSameAngle;
+- (struct CGColor *)throughEditDefaultBackgroundColor;
+- (struct CGColor *)throughEditBackgroundColorForAngle:(int)arg1;
+- (void)updateThroughEditLayer:(id *)arg1 name:(id)arg2 isVisible:(BOOL)arg3 angle:(int)arg4;
+- (void)updateLayerAppearanceForThroughEdit:(int)arg1;
+- (void)updateThroughEditsAppearance;
+- (int)containmentTypeMaskWithVideoThroughEditMasks;
 - (void)updateAppearance:(unsigned long long)arg1;
-- (void)_updateStitchingAppearance;
-- (void)_updateStitchingLayer:(id *)arg1 name:(id)arg2 isVisible:(BOOL)arg3 angleFlag:(int)arg4;
-- (void)_updateStitchingPatternForLayer:(id)arg1 angleFlag:(int)arg2;
-- (struct CGColor *)_verticalSameStitchingPattern;
-- (struct CGColor *)_verticalDiffStitchingPattern;
-- (BOOL)_isLayerWideEnoughForThroughEditStitchingLayer;
-- (BOOL)_shouldShowTrailingAudioStitchingLayer;
-- (BOOL)_shouldShowLeadingAudioStitchingLayer;
-- (BOOL)_shouldShowTrailingVideoStitchingLayer;
-- (BOOL)_shouldShowLeadingVideoStitchingLayer;
+- (BOOL)isLayerWideEnoughForThroughEditStitchingLayer;
+- (BOOL)shouldShowTrailingAudioStitchingLayer;
+- (BOOL)shouldShowLeadingAudioStitchingLayer;
+- (BOOL)shouldShowTrailingVideoStitchingLayer;
+- (BOOL)shouldShowLeadingVideoStitchingLayer;
 - (BOOL)_isTrailingAudioThroughEditVisible;
 - (BOOL)_isLeadingAudioThroughEditVisible;
 - (BOOL)_isTrailingVideoThroughEditVisible;
@@ -111,18 +121,24 @@
 @property BOOL splitEdit;
 @property(readonly) BOOL wantsFilmstripLayer;
 @property(readonly) BOOL showItemLaneIndex;
-@property BOOL hideTextBadges;
 @property(copy) NSString *displayName;
 - (void)layoutSublayers;
 - (void)_layoutSublayers;
-- (void)_updateContentsLayer_VideoOnlyAndAVClip:(int)arg1 containmentMask:(int)arg2 disableFilmstripLayerUpdates:(BOOL)arg3 splitEdit:(BOOL)arg4 backgroundFrame:(struct CGRect)arg5 videoFrame_p:(struct CGRect *)arg6 audioFrame_p:(struct CGRect *)arg7 audioWaveFormProportion:(double)arg8 audioComponent:(BOOL)arg9;
-- (void)_updateContentsLayer_AudioOnlyAndAudioComponents:(BOOL)arg1 audioFrame_p:(struct CGRect *)arg2 audioWaveFormProportion:(double)arg3 backgroundFrame:(struct CGRect)arg4 containmentMask:(int)arg5;
+- (void)todo_updateForNoFilmStripPlayerAudioFrame:(struct CGRect *)arg1 audioWaveFormProportion:(double)arg2;
+- (void)todo_layoutAudioVideoSublayersTimelineView:(id)arg1 representedObject:(id)arg2 audioWaveFormProportion:(double)arg3 sourceSplitEdit:(BOOL)arg4;
+- (void)todo_updateVideoPortionAudioWaveFormProportion:(double)arg1;
+- (void)todo_updateAudioPortionSourceSplitEdit:(BOOL)arg1 audioWaveFormProportion:(double)arg2;
+- (void)todo_updateAttributesOfContentsLayersSplitEdit:(BOOL)arg1 audioComponent:(BOOL)arg2;
+- (void)todo_updateContentsLayerItemHeight:(double)arg1 titleHeight:(double)arg2 showClipTitilesOnly:(BOOL)arg3 containmentMask:(int)arg4 splitEdit:(BOOL)arg5 audioComponent:(BOOL)arg6 disableFilmstripLayerUpdates:(BOOL)arg7 audioFrame:(struct CGRect *)arg8 videoFrame:(struct CGRect *)arg9 audioWaveFormProportion:(double)arg10 backgroundFrame:(struct CGRect)arg11 itemType:(int)arg12;
+- (void)updateBackgroundAndSelectionLayersBounds:(struct CGRect)arg1 itemType:(int)arg2 containmentMask:(int)arg3 sourceSplitEdit:(BOOL)arg4 spineItem:(BOOL)arg5 backgroundFrame:(struct CGRect *)arg6 selectionFrame:(struct CGRect *)arg7;
+- (void)todo_updateContentsLayer_VideoOnlyAndAVClip:(int)arg1 containmentMask:(int)arg2 disableFilmstripLayerUpdates:(BOOL)arg3 splitEdit:(BOOL)arg4 backgroundFrame:(struct CGRect)arg5 videoFrame_p:(struct CGRect *)arg6 audioFrame_p:(struct CGRect *)arg7 audioWaveFormProportion:(double)arg8 audioComponent:(BOOL)arg9;
+- (void)todo_updateContentsLayer_AudioOnlyAndAudioComponents:(BOOL)arg1 audioFrame_p:(struct CGRect *)arg2 audioWaveFormProportion:(double)arg3 backgroundFrame:(struct CGRect)arg4 containmentMask:(int)arg5;
 - (void)_updateSecondaryComponentAndClosedClipBackgroundAndSelectionLayers:(struct CGRect)arg1 selectionFrame:(struct CGRect)arg2 backgroundFrame_p:(struct CGRect *)arg3 selectionFrame_p:(struct CGRect *)arg4;
 - (void)_updatePrimaryComponentBackgroundAndSelectionLayer:(struct CGRect *)arg1 bounds:(struct CGRect)arg2 frame:(struct CGRect)arg3 selectionFrame_p:(struct CGRect *)arg4;
 - (void)_updateThroughEditsForNoContentLayers:(double)arg1 audioFrame_p:(struct CGRect *)arg2;
 - (void)_updateVideoThroughEditLayers:(struct CGRect *)arg1;
 - (void)_updateAudioThroughEditLayers:(struct CGRect)arg1 audioStitchingFrame:(struct CGRect)arg2 audioWaveFormProportion:(double)arg3;
-- (void)_setupAudioContentsLayer;
+- (void)todo_setupAudioContentsLayer;
 - (void)_updateSelectionLayers:(struct CGRect)arg1 selectionFrame:(struct CGRect)arg2 backgroundLayerFrame:(struct CGRect)arg3 backgroundFrame_p:(struct CGRect *)arg4 selectionFrame_p:(struct CGRect *)arg5;
 - (void)_updateGeneratorBackgroundAndSelectionLayer:(struct CGRect)arg1 backgroundFrame_p:(struct CGRect *)arg2 selectionFrame_p:(struct CGRect *)arg3;
 - (void)_updateOverlayContentsLayer:(BOOL)arg1 overlayFrame:(struct CGRect)arg2 overlayNeedsLayout_p:(char *)arg3 timelineView:(id)arg4 representedObject:(id)arg5;
@@ -131,12 +147,12 @@
 - (void)_legacyUpdateTextLayerWithBadgeAreaBounds:(struct CGRect)arg1 andFilters:(id)arg2;
 - (void)_legacyLayoutTextBadges;
 - (BOOL)isAudioOnlyOffSpineItem;
-- (void)_updateFilmstripDividersInBounds:(struct CGRect)arg1 audioFrame:(struct CGRect)arg2;
+- (void)todo_updateFilmstripDividersInBounds:(struct CGRect)arg1 audioFrame:(struct CGRect)arg2;
 - (void)_updateOverlayTimeSegments;
 - (void)_updateAVTimeSegments;
 - (void)_updateTimeSegmentsOfLayers:(id)arg1;
 - (void)layoutAccessoryLayerWithBounds:(struct CGRect)arg1 backgroundFrame:(struct CGRect)arg2 audioOnlyOffSpineItem:(BOOL)arg3;
-- (void)_applyFiltersForItemType:(int)arg1 containmentMask:(int)arg2;
+- (void)_applyFiltersForContainmentMask:(int)arg1;
 - (struct CGRect)rectForPart:(id)arg1;
 - (struct CGRect)_rectForTitlePart;
 @property(readonly, nonatomic) double audioWaveFormHeight;
@@ -148,6 +164,8 @@
 - (void)dealloc;
 - (id)initWithTimelineView:(id)arg1;
 - (BOOL)isContainingViewFirstResponder;
+- (double)minimumHeightRequiredForTitleArea;
+- (BOOL)shouldShowTitleArea;
 - (BOOL)showsVideoContent;
 - (BOOL)showsAudioContent;
 @property(readonly) BOOL audioOnly;
@@ -156,7 +174,6 @@
 - (id)syntheticUIElementActions:(id)arg1;
 - (void)syntheticUIElement:(id)arg1 setValue:(id)arg2 forAttribute:(id)arg3;
 - (BOOL)_nudgeItemByTimeOffset:(CDStruct_1b6d18a9)arg1;
-- (BOOL)_moveItemByTimeOffset:(CDStruct_1b6d18a9)arg1;
 - (BOOL)_trimEdge:(id)arg1 byTimeOffset:(CDStruct_1b6d18a9)arg2 trimType:(int)arg3;
 - (BOOL)syntheticUIElement:(id)arg1 isAttributeSettable:(id)arg2;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;

@@ -6,16 +6,20 @@
 
 #import "NSObject.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface FFDest : NSObject
 {
+    NSString *_DEBUG_DestLabel;
 }
 
-- (void)updateObservedValuesForContext:(void *)arg1;
+@property(retain) NSString *DEBUG_DestLabel; // @synthesize DEBUG_DestLabel=_DEBUG_DestLabel;
 - (BOOL)isRunning;
 - (void)stop;
 - (void)start:(id)arg1;
 - (void *)figClock;
+- (void)dealloc;
 
 @end
 

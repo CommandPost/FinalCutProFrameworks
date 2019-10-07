@@ -6,15 +6,27 @@
 
 #import <Ozone/OZOverlay.h>
 
+@class NSMutableArray;
+
 @interface OZSafeZonesOverlay : OZOverlay
 {
+    NSMutableArray *_titlezoneLines;
+    NSMutableArray *_actionzoneLines;
 }
 
+- (id)linesFromCollection:(id)arg1 topLeft:(PCVector2_79efa81a)arg2 topRight:(PCVector2_79efa81a *)arg3 bottomLeft:(PCVector2_79efa81a *)arg4 bottomRight:(PCVector2_79efa81a *)arg5 lineColor:(const struct POColor *)arg6;
+- (void)verticesFromMargin:(const PCVector2_79efa81a *)arg1 topLeft:(PCVector2_79efa81a *)arg2 topRight:(PCVector2_79efa81a *)arg3 bottomLeft:(PCVector2_79efa81a *)arg4 bottomRight:(PCVector2_79efa81a *)arg5;
+- (id)getMetalDrawPrimitives:(id)arg1;
+- (BOOL)doesSupportMetal;
+- (PCVector2_79efa81a)titleSafeZoneMargin;
+- (PCVector2_79efa81a)actionSafeZoneMargin;
+- (struct CGSize)documentSize;
+- (BOOL)shouldDraw;
 - (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 - (int)hitCheck:(id)arg1;
 - (void)draw;
-- (void)dealloc;
 - (int)getDrawingOrder;
+- (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end

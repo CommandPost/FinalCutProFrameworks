@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
     double _flattenTime;
     FFPixelFormat *_nativePixFormat;
     struct CGRect _initialPixelSpaceBounds;
+    _Bool _initialWantsAlphaClamp;
+    _Bool _initialWantsAlphaInvert;
     int _underlyingAlphaType;
-    unsigned int _tokFlags;
+    // Error parsing type: AI, name: _tokFlags
     _Bool _autoFlags;
 }
 

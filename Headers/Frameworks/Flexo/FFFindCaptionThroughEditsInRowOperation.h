@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
 @interface FFFindCaptionThroughEditsInRowOperation : NSOperation
 {
     NSMutableArray *_throughEditDescriptions;
+    NSMutableArray *_captionsWithoutThroughEdits;
     NSArray *_orderedItems;
 }
 
 + (void)initialize;
+@property(readonly, nonatomic) NSArray *captionsWithoutThroughEdits; // @synthesize captionsWithoutThroughEdits=_captionsWithoutThroughEdits;
 @property(readonly, nonatomic) NSArray *throughEditDescriptions; // @synthesize throughEditDescriptions=_throughEditDescriptions;
 @property(readonly, nonatomic) NSArray *orderedItems; // @synthesize orderedItems=_orderedItems;
 - (void)_addToThroughEditsWithItem:(id)arg1 nextItem:(id)arg2 previousItem:(id)arg3;

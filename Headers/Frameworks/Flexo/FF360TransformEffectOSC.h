@@ -24,7 +24,6 @@
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (void)_setupTextures:(struct _CGLContextObject *)arg1;
-- (void)simpleTextRectangle:(float)arg1 cgl_ctx:(struct _CGLContextObject *)arg2 string:(id)arg3 attributes:(id)arg4 glowAttributes:(id)arg5 paddingX:(double)arg6 paddingY:(double)arg7 roundRectBackground:(BOOL)arg8 drawProperties:(id)arg9;
 - (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
 - (id)anchoredObject;
 - (void)ensureIntrinsic;

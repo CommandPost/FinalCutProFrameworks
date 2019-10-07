@@ -24,6 +24,8 @@
     double _viewHeight;
     int _disclosureTriangleIndentLevel;
     BOOL _isLevelOneBrick;
+    BOOL _inSliderAction;
+    BOOL _griddingTime;
     NSMutableArray *_pDependents;
     BOOL _deferSelection;
 }
@@ -68,6 +70,13 @@
 - (void)aboutToChangeChannel;
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1;
 - (void)aboutToChangeChannel:(struct OZChannelBase *)arg1 isFirstController:(BOOL)arg2;
+- (void)didChangeChannelGridEnd:(struct OZChannelBase *)arg1;
+- (void)aboutToChangeChannelGridStart:(struct OZChannelBase *)arg1;
+- (void)didEndSliderAction;
+- (BOOL)inSliderAction;
+- (void)didEndSliderAction:(struct OZChannelBase *)arg1;
+- (void)aboutToStartSliderAction;
+- (void)aboutToStartSliderAction:(struct OZChannelBase *)arg1;
 - (void)aboutToChangeController;
 - (BOOL)ignoreDifferingRootIDs;
 - (BOOL)areMultipleAssociatedChannels;

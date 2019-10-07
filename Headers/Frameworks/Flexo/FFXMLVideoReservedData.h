@@ -6,17 +6,18 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FFXMLVideoReservedData : NSObject <NSCoding>
+@interface FFXMLVideoReservedData : NSObject <NSSecureCoding>
 {
     int _rotationAngle;
     NSDictionary *_HETrimValues;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) NSDictionary *HETrimValues; // @synthesize HETrimValues=_HETrimValues;
 @property(nonatomic) int rotationAngle; // @synthesize rotationAngle=_rotationAngle;
 - (void)dealloc;

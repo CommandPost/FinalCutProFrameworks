@@ -6,13 +6,13 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSData, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioLoudnessData : NSObject <NSCopying, NSCoding>
+@interface FFAudioLoudnessData : NSObject <NSCopying, NSSecureCoding>
 {
     CDStruct_bdcb2b0d m_audioMD5;
     CDStruct_1b6d18a9 m_startTime;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 m_cachedEndTime;
 }
 
++ (BOOL)supportsSecureCoding;
 + (CDStruct_bdcb2b0d)loudnessAudioMD5ForObject:(id)arg1 andClippedRange:(CDStruct_e83c9415)arg2;
 @property(readonly, nonatomic) CDStruct_bdcb2b0d audioMD5; // @synthesize audioMD5=m_audioMD5;
 - (void)_calculateCachedValues;

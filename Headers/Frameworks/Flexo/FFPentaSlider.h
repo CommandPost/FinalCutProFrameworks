@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (void)initialize;
 - (void)setFrameSize:(struct CGSize)arg1;
 - (void)setToolTip:(id)arg1 forCellClass:(Class)arg2;

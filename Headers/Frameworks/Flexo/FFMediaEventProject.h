@@ -12,11 +12,11 @@
 #import "FFOrganizerMasterItem.h"
 #import "FFOrganizerMasterItemDropTarget.h"
 #import "FFXMLTranslationTarget.h"
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
-@class FFEventInfo, FFLibrary, FFMediaEventFolder, FFMediaEventProjectData, FFMediaEventThumbnail, FFRoleSet, FFSequenceInfo, NSArray, NSData, NSDate, NSImage, NSMutableSet, NSSet, NSString, NSURL;
+@class FFEventInfo, FFLibrary, FFMediaEventFolder, FFMediaEventProjectData, FFMediaEventThumbnail, FFRoleSet, FFSequenceInfo, NSArray, NSData, NSDate, NSImage, NSLock, NSMutableSet, NSSet, NSString, NSURL;
 
-@interface FFMediaEventProject : FFProject <FFXMLTranslationTarget, FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, NSCoding, FFLegacyMediaChecking>
+@interface FFMediaEventProject : FFProject <FFXMLTranslationTarget, FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, NSSecureCoding, FFLegacyMediaChecking>
 {
     NSString *_projectDataID;
     NSDate *_eventEarliestDate;
@@ -43,12 +43,14 @@
     NSMutableSet *_ownedMediaIdentifiersAndAssetMD5Strings;
     FFRoleSet *_cachedRoleSet;
     NSMutableSet *_mediaDescsForMakingOwnedClips;
+    NSLock *_roleSetDataLock;
     long long _legacyMediaStatusInternal;
 }
 
 + (struct NSSet *)copyMediaDescForObject:(id)arg1;
 + (id)wrapperClipForProjectClip:(id)arg1 createIfMissing:(BOOL)arg2;
 + (id)newCopyOfMediaRanges:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)keyPathsForValuesAffectingProjectSet;
 + (id)keyPathsForValuesAffectingOwnedClips;
 + (id)setFromBinObjectsArray:(id)arg1;
@@ -68,7 +70,6 @@
 + (id)_deletingActionNameForItems:(id)arg1;
 + (id)flattenMediaArray:(id)arg1;
 @property long long legacyMediaStatusInternal; // @synthesize legacyMediaStatusInternal=_legacyMediaStatusInternal;
-@property(retain, nonatomic) NSData *roleSetData; // @synthesize roleSetData=_roleSetData;
 @property(retain, nonatomic) NSString *legacyEventPath; // @synthesize legacyEventPath=_legacyEventPath;
 @property(readonly, nonatomic) BOOL isVideoEvent; // @synthesize isVideoEvent=_isVideoEvent;
 @property(retain, nonatomic) FFSequenceInfo *sequenceInfo; // @synthesize sequenceInfo=_sequenceInfo;
@@ -84,6 +85,7 @@
 - (void)determineLegacyMediaStatus;
 - (id)legacyMedia;
 - (long long)legacyMediaStatus;
+@property(retain, nonatomic) NSData *roleSetData;
 - (BOOL)verifyRoleSetMatchesLibraryRoleSet:(id)arg1 exactly:(BOOL)arg2;
 - (void)syncToRolesFromLibrary;
 - (void)dumpRoleSet;

@@ -6,13 +6,21 @@
 
 #import "NSObject.h"
 
+@class NSMutableDictionary;
+
 @interface LKScrubberSupport : NSObject
 {
+    NSMutableDictionary *_cachedImages;
 }
 
-+ (id)segmentIndicatorImage;
-+ (id)transientArrowImageForState:(unsigned long long)arg1 size:(unsigned long long)arg2 andDirection:(unsigned long long)arg3;
-+ (id)controlArrowImageForState:(unsigned long long)arg1 size:(unsigned long long)arg2 andDirection:(unsigned long long)arg3;
++ (void)releaseSharedInstance;
++ (id)sharedInstance;
+- (id)_cachedImageForKey:(id)arg1;
+- (id)segmentIndicatorImage;
+- (id)transientArrowImageForState:(unsigned long long)arg1 size:(unsigned long long)arg2 andDirection:(unsigned long long)arg3;
+- (id)controlArrowImageForState:(unsigned long long)arg1 size:(unsigned long long)arg2 andDirection:(unsigned long long)arg3;
+- (void)dealloc;
+- (id)init;
 
 @end
 

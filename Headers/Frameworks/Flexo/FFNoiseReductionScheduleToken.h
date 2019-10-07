@@ -56,7 +56,7 @@
     struct FFThread *_threadToBoost;
     NSMutableArray *_arrayOfFlattenedBufs;
     FFScheduleToken *_inputsToken;
-    BOOL _hasBeenHinted;
+    // Error parsing type: AB, name: _hasBeenHinted
     BOOL _autoHinted;
     BOOL _hasBeenImaged;
     BOOL _libraryIsClosing;
@@ -80,7 +80,7 @@
 - (void)processForMode:(int)arg1;
 - (_Bool)readyToProcessForMode:(int)arg1;
 - (void)markForLibraryIsClosing;
-- (int)state;
+- (_Bool)tokenIsCompleteOrCanceled;
 - (id)_getFlatPreservedDataNow:(id)arg1;
 - (id)_getFlatImageNow;
 - (void)_prepFlatImageNow;

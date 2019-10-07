@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     FFProOSC *_resignOnMouseUpToOSC;
 }
 
+- (BOOL)oscDrawsAboveOtherOSCs;
 - (void)mouseUp:(id)arg1;
 - (void)channelParameterChanged:(id)arg1;
 - (void)setVisible:(BOOL)arg1;

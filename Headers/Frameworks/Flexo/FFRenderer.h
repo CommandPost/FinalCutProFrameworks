@@ -8,7 +8,7 @@
 
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 
-@class FFContext, FFProvider, NSArray, NSConditionLock, NSLock;
+@class FFContext, FFProvider, NSArray, NSLock;
 
 @interface FFRenderer : NSObject <FFStorageLocationOutOfDiskSpaceProtocol>
 {
@@ -35,9 +35,8 @@
     int _workingSpaceOverride;
     _Bool _stoppedDueToStorageLocFull;
     _Bool _stoppedDueToDestError;
-    NSConditionLock *_renderComplete;
-    NSConditionLock *_pause;
-    BOOL _ackedPause;
+    struct FFSynchronizable *_processingStateLock;
+    int _processingState;
 }
 
 @property _Bool stoppedDueToDestError; // @synthesize stoppedDueToDestError=_stoppedDueToDestError;
@@ -64,6 +63,7 @@
 - (void)checkForPauseWhileRenderingFrames;
 - (void)willRenderFrames;
 - (void)_blockRenderIfPausedAndCheckForRenderError;
+- (void)_updateProcessingState:(int)arg1;
 - (CDStruct_e83c9415)lastRenderedRange;
 - (void)resetLastRenderedRange;
 - (void)setLastRenderedRange:(CDStruct_e83c9415)arg1;

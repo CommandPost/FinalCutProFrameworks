@@ -6,7 +6,7 @@
 
 #import <Flexo/FFProOSC.h>
 
-@class FFCHObservableFolder, FFOSCWindowView, LKSegmentedControl, NSMutableArray;
+@class FFCHObservableFolder, FFOSCWindowView, LKSegmentedControl, NSImage, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFTransform2DOSC : FFProOSC
@@ -14,18 +14,33 @@ __attribute__((visibility("hidden")))
     LKSegmentedControl *_keyframeButton;
     LKSegmentedControl *_resetButton;
     LKSegmentedControl *_exitButton;
+    LKSegmentedControl *_transformOverscanButton;
     FFOSCWindowView *_transformOverlayView;
     FFCHObservableFolder *_channelFolder;
     NSMutableArray *_channelsToCheckForkeyFrames;
     BOOL _resetButtonHidden;
+    BOOL _showFullTransformImage;
+    NSImage *_localBitmap;
+    CDStruct_1b6d18a9 _currentBitmapTime;
+    struct PCProcrastinatedDispatch_t _updateKeyframesProcrastDisp;
 }
 
+- (id).cxx_construct;
+- (BOOL)oscNeedsLaneOrdering;
 - (void)ensureIntrinsic;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
+- (id)newImageForTime:(id)arg1 sourceTime:(CDStruct_1b6d18a9)arg2;
+- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (void)setOverscanFromUserDefault;
+- (void)showHideOverscan:(id)arg1;
+- (BOOL)shouldShowTransformHelperAlways;
+- (BOOL)shouldShowTransformHelper;
 - (void)keyFrameTransform:(id)arg1;
 - (void)reset2DTransform:(id)arg1;
 - (void)exitTransformOSC:(id)arg1;
 - (void)keyDown:(id)arg1;
+- (void)mouseUpFromAnotherOSC;
+- (void)mouseDownFromAnotherOSC;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (id)keyFrameButton;

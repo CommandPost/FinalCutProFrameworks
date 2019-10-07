@@ -8,7 +8,7 @@
 
 #import "OZObjCObserver.h"
 
-@class NSDate, NSImage, OZCacheDisplayManager, OZViewRectCache;
+@class NSDate, NSImage, OZCacheDisplayManager;
 
 @interface OZTimebarViewBase : NSView <OZObjCObserver>
 {
@@ -22,7 +22,6 @@
     int _moving;
     vector_f7e3fd5f *_snaps;
     id _snapsDelegate;
-    OZViewRectCache *_viewRectCache;
     BOOL _useViewRectCache;
     BOOL _viewRectCacheNeedsRedraw;
     BOOL _scrubbing;

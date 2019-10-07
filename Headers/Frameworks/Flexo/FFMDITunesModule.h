@@ -4,28 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFMDMusicModule.h>
+#import <Flexo/FFMDITunesBaseModule.h>
 
-@class LKProgressIndicator, NSImageView, NSTextField;
-
-@interface FFMDITunesModule : FFMDMusicModule
+@interface FFMDITunesModule : FFMDITunesBaseModule
 {
-    BOOL _emptyPaneViewInitialized;
-    NSImageView *_emptyPaneImageView;
-    NSTextField *_emptyPaneTextLabel;
-    LKProgressIndicator *_progressIndicator;
 }
 
-- (id)mediaBrowserIdentifier;
-- (BOOL)supportsMovie;
-- (BOOL)supportsAudio;
-- (id)mediaPlugInLoadCompletionNotificationName;
-- (id)mediaPlugInIdentifier;
-- (void)_showEmptyLibraryView:(BOOL)arg1;
-- (void)syncToMediaManager:(id)arg1;
-- (void)_initializeEmptyPaneView;
-- (void)dealloc;
-- (void)viewWasInstalled;
 - (id)init;
 
 @end

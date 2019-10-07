@@ -7,13 +7,13 @@
 #import <Flexo/FFMedia.h>
 
 #import "FFSkimmableProtocol.h"
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFMediaRef : FFMedia <NSCoding, NSCopying, FFSkimmableProtocol>
+@interface FFMediaRef : FFMedia <NSSecureCoding, NSCopying, FFSkimmableProtocol>
 {
     FFMedia *_media;
     NSString *_mediaIdentifier;
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)scrapedOldRefDataForObject:(id)arg1 createIfNotFound:(BOOL)arg2;
++ (BOOL)supportsSecureCoding;
 + (id)mediaIdentifiersForMediaRefs:(id)arg1;
 + (void)_notifyMediaAvailable:(id)arg1;
 + (void)updateMediaAvailable;

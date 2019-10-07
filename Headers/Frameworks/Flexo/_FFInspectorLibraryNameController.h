@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     NSStackView *_leftStackView;
 }
 
-- (void)_showWarningPopover:(id)arg1;
 - (id)view;
 - (void)setModifyButtonAction:(SEL)arg1 target:(id)arg2;
 - (id)libraryName;

@@ -38,6 +38,7 @@
 - (BOOL)showRotationOSC;
 - (void)drawGeometry:(_Bool)arg1;
 - (void)drawElementOutline:(const PCMatrix44Tmpl_e98c85ee *)arg1 red:(double)arg2 green:(double)arg3 blue:(double)arg4;
+- (vector_91526fd1)clippedBoundingLines:(const PCMatrix44Tmpl_e98c85ee *)arg1;
 - (void)clipOutline:(const PCVector2_79efa81a *)arg1 numPoints:(int)arg2 edges:(PCVector2_79efa81a *)arg3 returnVisible:(vector_a7cf9eda *)arg4;
 - (void)clipPoints:(const vector_ced1dec3 *)arg1 returnVisible:(vector_a7cf9eda *)arg2;
 - (void)calculateSnapBounds:(double *)arg1 y1:(double *)arg2 x2:(double *)arg3 y2:(double *)arg4;

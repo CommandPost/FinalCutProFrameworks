@@ -7,11 +7,11 @@
 #import "DSObject.h"
 
 #import "FFModelLocking.h"
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class FFModelDocument;
 
-@interface FFModelObject : DSObject <NSCoding, FFModelLocking>
+@interface FFModelObject : DSObject <NSSecureCoding, FFModelLocking>
 {
 }
 

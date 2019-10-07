@@ -10,7 +10,11 @@
 {
 }
 
-+ (id)newWrapTextArray:(id)arg1 textAttributes:(id)arg2 textRectWidth:(double)arg3 playerView:(id)arg4;
++ (void)dumpNSImage:(id)arg1;
++ (void)multiLineTextRectangle:(float)arg1 cgl_ctx:(struct _CGLContextObject *)arg2 string:(id)arg3 textAttributes:(id)arg4 glowAttributes:(id)arg5 paddingX:(double)arg6 paddingY:(double)arg7 roundRectBackground:(BOOL)arg8 drawProperties:(id)arg9 playerVideoModule:(id)arg10 textPositionRect:(struct CGRect *)arg11 textShouldDraw:(BOOL)arg12 textImage:(id *)arg13;
++ (void)wrapImageForTextProcessing:(id)arg1 imageSize:(struct CGSize)arg2 smoothFonts:(BOOL)arg3 backgroundColor:(id)arg4 cornerRadius:(float)arg5 processingBlock:(CDUnknownBlockType)arg6;
++ (void)removeFFLRUImageCacheObjectFromCascheIfFull:(id)arg1 maxCount:(int)arg2;
++ (id)newWrapTextArray:(id)arg1 textAttributes:(id)arg2 textRectWidth:(double)arg3 backingScaleFactor:(double)arg4;
 + (void)drawImage:(id)arg1 intoGLContext:(struct _CGLContextObject *)arg2 atPoint:(struct CGPoint)arg3;
 + (id)newClipDisplayObjectArrayFromObjects:(id)arg1 container:(id)arg2 time:(CDStruct_1b6d18a9)arg3 selectedItems:(id)arg4 selectionImplicit:(BOOL)arg5 timeCodeProjectColor:(id)arg6 requestedRoles:(id)arg7;
 + (void)initialize;

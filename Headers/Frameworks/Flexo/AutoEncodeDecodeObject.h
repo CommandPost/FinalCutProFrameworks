@@ -7,12 +7,14 @@
 #import "NSObject.h"
 
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 __attribute__((visibility("hidden")))
-@interface AutoEncodeDecodeObject : NSObject <NSCopying>
+@interface AutoEncodeDecodeObject : NSObject <NSCopying, NSSecureCoding>
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

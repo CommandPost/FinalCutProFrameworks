@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (struct HGNode *)newNodeAtTime:(CDStruct_1b6d18a9)arg1 pixelTransform:(id)arg2 pixelSpaceBounds:(struct CGRect)arg3 workingSpace:(int)arg4;
-- (void)drawMaskInGLNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 pixelTransform:(id)arg3;
+-     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}84@0:8{?=qiIq}16@40{CGRect={CGPoint=dd}{CGSize=dd}}48i80, name: newNodeAtTime:pixelTransform:pixelSpaceBounds:workingSpace:
+-     // Error parsing type: v56@0:8^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16{?=qiIq}24@48, name: drawMaskInGLNode:atTime:pixelTransform:
 - (id)onscreenControlsForEffectStack:(id)arg1;
 - (id)parameterControllerClassName;
 - (double)defaultShapeDimension;
@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (id)positionChannel;
 - (BOOL)updateChannelsWithFolder:(id)arg1;
 - (void)createChannelsInFolder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)addXMLNode:(id)arg1 toElement:(id)arg2 version:(unsigned int)arg3;
 - (void)populateAttributes:(id)arg1 fromElement:(id)arg2;
 - (void)populateContent:(id)arg1 fromElement:(id)arg2 toEffect:(id)arg3 toObject:(id)arg4;

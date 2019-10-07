@@ -16,11 +16,12 @@ __attribute__((visibility("hidden")))
     struct GZFileStream *_fileDriver;
     MXFFileWriter *_mxfFile;
     struct GZMemory *_myEssenceDataInterLeave;
-    int _aspectRatio;
+    CDStruct_2689111f _aspectRatio;
     int _timecodeDropFrame;
     unsigned long long _timecodeStartFrame;
     NSString *_videoFileType;
-    int _editRate;
+    CDStruct_2689111f _editRate;
+    CDStruct_2689111f _sampleRate;
     NSString *_pathOfExportFile;
     FFMedia *_media;
     long long _numberFrames;
@@ -59,9 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)setMasterDisplayData:(struct opaqueCMFormatDescription *)arg1;
 - (void)setHDR10Data:(struct opaqueCMFormatDescription *)arg1;
 - (void)setAdditionalColorSpaceData:(struct opaqueCMFormatDescription *)arg1;
-- (long long)_getSoundSamplesPerFrameRoundedDown:(int)arg1;
-- (long long)_getSoundSamplesPerFrameAtPosition:(unsigned int)arg1 atFrameRate:(int)arg2;
-- (int)getMTRatio:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_2689111f)getCTMRatio:(CDStruct_1b6d18a9)arg1;
 - (int)splitTrackAudioToFrameAudio;
 - (void)_putFrameDataTo:(struct GZMemory *)arg1 soundData:(char **)arg2 withSampleCount:(int)arg3;
 - (struct MXMovieDesc *)_getEdlWithDuration:(unsigned long long)arg1;

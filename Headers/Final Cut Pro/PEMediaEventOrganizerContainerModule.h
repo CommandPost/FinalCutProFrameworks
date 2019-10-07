@@ -42,7 +42,7 @@
 - (void)showMarkerEditorAtTime:(CDStruct_1b6d18a9)arg1 forObject:(id)arg2;
 - (id)markerEditorDelegate;
 - (void)openStack:(id)arg1;
-- (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_5c5366e1)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)insertGap:(id)arg1;
 - (void)insertPlaceholder:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;

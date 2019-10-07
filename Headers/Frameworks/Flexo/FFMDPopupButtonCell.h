@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     double _glyphTitleGap;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) double glyphTitleGap; // @synthesize glyphTitleGap=_glyphTitleGap;
 - (void)drawImageWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)drawBorderAndBackgroundWithFrame:(struct CGRect)arg1 inView:(id)arg2;

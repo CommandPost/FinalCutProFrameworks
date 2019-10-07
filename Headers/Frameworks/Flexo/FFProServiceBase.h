@@ -24,6 +24,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)plugInSupportFrameworkBookmarks;
++ (void)recordServiceUsage:(id)arg1;
++ (BOOL)serviceUsed;
++ (id)serviceUsage;
 @property(readonly) NSURL *containerURL; // @synthesize containerURL=_containerURL;
 @property(readonly) NSURL *URL; // @synthesize URL=_URL;
 @property(readonly) NSBundle *plugInBundle; // @synthesize plugInBundle=_plugInBundle;

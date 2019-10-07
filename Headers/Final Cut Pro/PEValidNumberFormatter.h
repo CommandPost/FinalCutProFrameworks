@@ -14,6 +14,7 @@
     struct PEValidNumberDescription m_positive;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)initWithCoder:(id)arg1;
 - (void)_scanFormat:(id)arg1 intoDescription:(struct PEValidNumberDescription *)arg2;
 - (BOOL)isPartialStringValid:(id)arg1 newEditingString:(id *)arg2 errorDescription:(id *)arg3;

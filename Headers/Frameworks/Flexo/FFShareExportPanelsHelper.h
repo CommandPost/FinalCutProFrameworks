@@ -8,7 +8,7 @@
 
 #import "FFShareProgressDelegate.h"
 
-@class FFCancelablePromise, FFShareDataModel, FFShareExtraSettingsConfigurator, NSArray, NSDictionary, NSMapTable, NSString, NSWindow;
+@class FFCancelablePromise, FFShareDataModel, FFShareExtraSettingsConfigurator, FFShareProgressController, NSArray, NSDictionary, NSMapTable, NSString, NSWindow;
 
 __attribute__((visibility("hidden")))
 @interface FFShareExportPanelsHelper : NSObject <FFShareProgressDelegate>
@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _numberOfOutputFilesForDestination;
     CDUnknownBlockType _captionSidecarFilesForDestination;
     FFCancelablePromise *_progressPromise;
+    FFShareProgressController *_progressController;
 }
 
+@property(retain, nonatomic) FFShareProgressController *progressController; // @synthesize progressController=_progressController;
 @property(retain) FFCancelablePromise *progressPromise; // @synthesize progressPromise=_progressPromise;
 @property(copy, nonatomic) CDUnknownBlockType captionSidecarFilesForDestination; // @synthesize captionSidecarFilesForDestination=_captionSidecarFilesForDestination;
 @property(copy, nonatomic) CDUnknownBlockType numberOfOutputFilesForDestination; // @synthesize numberOfOutputFilesForDestination=_numberOfOutputFilesForDestination;
@@ -39,6 +41,11 @@ __attribute__((visibility("hidden")))
 - (long long)panelsForSavePanel;
 - (void)progressCanceled:(id)arg1;
 - (long long)helperApplicationDidAddAssetWithDataOptions:(id)arg1 destination:(id)arg2 libraryInfo:(id)arg3 locationInfo:(id)arg4 metadata:(id)arg5;
+- (void)reactivateFCPX;
+- (void)actuallyStopProgressUI:(id)arg1;
+- (void)stopProgressUI;
+- (void)actuallyStartProgressUI:(id)arg1;
+- (void)startProgressUIWithPromise:(id)arg1;
 - (long long)helperApplicationOutputLocationForDestinations:(id)arg1 withHelperApp:(id)arg2;
 - (id)helperAppPathWithDestination:(id)arg1;
 - (long long)panelsForThirdPartyShareIntegration;

@@ -13,8 +13,10 @@
     LKPopUpButton *_exportAsPopup;
     LKButton *_scaleBtn;
     LKTextField *_exportInfoText;
+    LKButton *_createStickerBtn;
 }
 
+@property(nonatomic) LKButton *createStickerBtn; // @synthesize createStickerBtn=_createStickerBtn;
 @property(nonatomic) LKTextField *exportInfoText; // @synthesize exportInfoText=_exportInfoText;
 @property(nonatomic) LKButton *scaleBtn; // @synthesize scaleBtn=_scaleBtn;
 @property(nonatomic) LKPopUpButton *exportAsPopup; // @synthesize exportAsPopup=_exportAsPopup;

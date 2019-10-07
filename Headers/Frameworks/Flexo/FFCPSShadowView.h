@@ -11,12 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface FFCPSShadowView : NSView
 {
-    NSImage *_shadowImage;
     FFCPSClapperboardView *_clapperView;
+    NSImage *_shadowImage;
 }
 
-@property(nonatomic) FFCPSClapperboardView *clapperView; // @synthesize clapperView=_clapperView;
 @property(retain, nonatomic) NSImage *shadowImage; // @synthesize shadowImage=_shadowImage;
+@property(nonatomic) FFCPSClapperboardView *clapperView; // @synthesize clapperView=_clapperView;
 - (struct CGRect)scaleCenterClapperViewInRect:(struct CGRect)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;

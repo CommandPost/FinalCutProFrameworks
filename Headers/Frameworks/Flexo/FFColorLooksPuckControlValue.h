@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     double _y;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property double y; // @synthesize y=_y;
 @property double x; // @synthesize x=_x;

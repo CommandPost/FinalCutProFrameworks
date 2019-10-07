@@ -6,9 +6,11 @@
 
 #import "NSObject.h"
 
+#import "NSSecureCoding.h"
+
 @class NSArray, NSDictionary, NSMutableArray, NSString;
 
-@interface FFMetadataViewSet : NSObject
+@interface FFMetadataViewSet : NSObject <NSSecureCoding>
 {
     NSMutableArray *_keys;
     NSDictionary *_options;
@@ -33,6 +35,7 @@
 + (id)viewSetFromDict:(id)arg1;
 + (void)releaseSharedInstance;
 + (BOOL)classIsAbstract;
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) NSString *predicate; // @synthesize predicate=_predicate;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) NSDictionary *options; // @synthesize options=_options;

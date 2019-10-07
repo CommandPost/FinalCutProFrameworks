@@ -7,19 +7,19 @@
 #import "NSObject.h"
 
 #import "CKBaseExportPanelDelegate.h"
-#import "FFBackgroundTaskTarget.h"
+#import "FFSharePanelDelegate.h"
 #import "NSOpenSavePanelDelegate.h"
 
-@class CALayer, CKTranscodingOperation, FFBackgroundTask, LKButton, NSArray, NSConditionLock, NSError, NSPopUpButton, NSString, NSView, OZObjCDocument;
+@class CALayer, CKTranscodingOperation, FFBackgroundTask, FFSequenceSettingsExporter, LKButton, NSConditionLock, NSError, NSPopUpButton, NSString, NSView, OZObjCDocument, OZSharePanelAccessoryController;
 
-@interface OZShareManager : NSObject <CKBaseExportPanelDelegate, FFBackgroundTaskTarget, NSOpenSavePanelDelegate>
+@interface OZShareManager : NSObject <CKBaseExportPanelDelegate, FFSharePanelDelegate, NSOpenSavePanelDelegate>
 {
     NSView *_saveStillView;
     NSPopUpButton *_presetPopUp;
     LKButton *_usePlayRangeButton;
     OZObjCDocument *_objCDoc;
+    OZSharePanelAccessoryController *_sharePanelAccessoryController;
     struct OZExportSettings *_tmpSettings;
-    NSArray *_selection;
     CALayer *_panelLayer;
     _Bool _renderingSelected;
     _Bool _resetSoloFlag;
@@ -27,7 +27,9 @@
     NSConditionLock *_backgroundTaskConditionLock;
     FFBackgroundTask *_backgroundTask;
     CKTranscodingOperation *_transcodingOperation;
+    NSString *_transcodingMessage;
     NSError *_transcodingError;
+    FFSequenceSettingsExporter *_sequenceSettingsExporter;
     double _previewTime;
 }
 
@@ -37,16 +39,15 @@
 + (id)shareHistoryDirectoryPath;
 + (id)sharePathWithDocument:(id)arg1;
 + (id)shareManagerWithDocument:(id)arg1;
-+ (id)sharedInstance;
-@property(retain) NSError *transcodingError; // @synthesize transcodingError=_transcodingError;
-@property(retain) CKTranscodingOperation *transcodingOperation; // @synthesize transcodingOperation=_transcodingOperation;
-@property(copy, nonatomic) OZObjCDocument *document; // @synthesize document=_objCDoc;
+@property(retain, nonatomic) OZSharePanelAccessoryController *sharePanelAccessoryController; // @synthesize sharePanelAccessoryController=_sharePanelAccessoryController;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)logShareDestination:(Class)arg1;
+- (void)setPreviewTime:(double)arg1 supportsAudio:(BOOL)arg2 rebuildContext:(BOOL)arg3;
 - (void)setPreviewTime:(double)arg1;
 - (void)redrawPreview;
 - (id)previewLayer;
+- (void)postProcessSource:(id)arg1 andTarget:(id)arg2;
 - (void)submitBatch:(id)arg1 toCluster:(id)arg2 progressIsIndeterminate:(BOOL)arg3 forWindow:(id)arg4;
 - (void)exportSequence:(id)arg1 withSetting:(id)arg2 atInTime:(CDStruct_1b6d18a9)arg3 outTime:(CDStruct_1b6d18a9)arg4;
 - (void)exportImage:(id)arg1 withSetting:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
@@ -56,14 +57,9 @@
 - (long long)_getTimecodeMode:(double)arg1 isNTSC:(BOOL)arg2;
 - (void)exportUsingCompressorSettingsModalForWindow:(id)arg1;
 - (void)openInCompressor;
+- (void)shareToDestination:(id)arg1 parentWindow:(id)arg2;
+- (void)showSharePanelWithSource:(id)arg1 destination:(id)arg2 destinationURL:(id)arg3 parentWindow:(id)arg4;
 - (void)queueShareOperationsForBatches:(id)arg1;
-- (void)operationDidFinish:(id)arg1;
-- (void)operation:(id)arg1 didFailWithError:(id)arg2;
-- (void)operationStatusChanged:(id)arg1;
-- (void)performShareOperation:(id)arg1 task:(id)arg2;
-- (void)canceledTask:(id)arg1;
-- (id)librariesInUse:(id)arg1;
-- (id)assetsInUse:(id)arg1;
 - (void)exportHTTPLiveStreamingModalForWindow:(id)arg1;
 - (void)exportSelectionMovieModalForWindow:(id)arg1;
 - (void)exportImageSequenceModalForWindow:(id)arg1;
@@ -77,27 +73,27 @@
 - (void)exportiTunesModalForWindow:(id)arg1;
 - (void)exportAudioModalForWindow:(id)arg1;
 - (void)exportMediaBrowserModalForWindow:(id)arg1;
+- (BOOL)canExportSelectedLayersOnly;
 - (void)exportUsingPanelClass:(Class)arg1 window:(id)arg2 addRenderTab:(BOOL)arg3;
 - (void)export:(CDUnknownBlockType)arg1;
-- (id)ckSource;
-- (id)currentAppProjectMediaServerSourceWithURL:(id)arg1;
+- (id)ckSourceForDestination:(id)arg1;
+- (id)ckSourceWithMediaServerAttributes:(id)arg1;
 - (id)destinationURL:(Class)arg1;
-@property(copy, nonatomic) NSArray *selection; // @synthesize selection=_selection;
+- (id)selection;
 - (void)exclusivelySoloNode:(struct OZSceneNode *)arg1;
 - (void)restoreSoloState;
 - (void)storeSoloState;
-- (id)createTmpProject:(id)arg1 path:(id)arg2;
+- (id)writeTemporaryProjectToURL:(id)arg1;
+- (id)temporaryProjectURL:(id)arg1 path:(id)arg2;
 - (void)_alertSaveError:(id)arg1;
 - (BOOL)_alertNotWritable:(id)arg1;
 - (BOOL)_alertOverwrite:(id)arg1;
 - (id)createUniqueName:(id)arg1;
-- (id)createUniquePath:(id)arg1 withFileName:(id)arg2;
 - (void)restoreSettings;
 - (void)saveSettings;
 - (void)dealloc;
 - (void)cleanupRender;
 - (id)initWithObjCDocument:(id)arg1;
-- (id)initWithSelection:(id)arg1;
 - (id)init;
 
 // Remaining properties

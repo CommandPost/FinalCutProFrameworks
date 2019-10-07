@@ -6,14 +6,20 @@
 
 #import "CALayer.h"
 
+@class NSMutableArray;
+
 __attribute__((visibility("hidden")))
 @interface FFVideoScopesBodyLayer : CALayer
 {
+    NSMutableArray *_managedSublayers;
 }
 
 + (id)bodyLayer;
+- (void)dealloc;
+- (void)setContentsScale:(double)arg1;
 - (id)settingsButton;
 - (void)layoutSublayers;
+- (id)_managedSublayers;
 
 @end
 

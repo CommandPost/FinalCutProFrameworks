@@ -6,11 +6,16 @@
 
 #import "NSView.h"
 
+@class NSColor;
+
 __attribute__((visibility("hidden")))
 @interface FFHeaderBackgroundView : NSView
 {
+    NSColor *_backgroundColor;
 }
 
+@property(retain) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+- (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
 
 @end

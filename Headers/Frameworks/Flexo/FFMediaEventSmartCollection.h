@@ -23,6 +23,7 @@
 }
 
 + (int)matchingTypeIterationOption;
++ (BOOL)supportsSecureCoding;
 + (id)newFavoritesSmartCollection;
 + (id)newStillsSmartCollection;
 + (id)newAudioOnlySmartCollection;

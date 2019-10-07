@@ -22,8 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)preRenderEnd;
 - (void)preRenderBegin:(CDStruct_1b6d18a9)arg1 sync:(id)arg2;
 - (void)prerollBegin:(CDStruct_1b6d18a9)arg1 prerollDuration:(CDStruct_1b6d18a9)arg2 maxDuration:(CDStruct_1b6d18a9)arg3 rate:(double)arg4 sync:(id)arg5;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)sequenceEditing:(id)arg1 didChange:(id)arg2;
+- (void)_sequenceEdited:(id)arg1;
 - (void)_monitoredAngleAudioObjectsChanged:(id)arg1;
 - (void)_notifyRescopeObject:(id)arg1;
 - (void)_notifySequenceUpdated;

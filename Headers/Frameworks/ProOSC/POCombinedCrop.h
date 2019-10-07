@@ -49,7 +49,7 @@
 - (BOOL)postRedisplayOnActivePartChange;
 - (void)draw;
 - (void)drawHandles:(PCVector4_6435de47 *)arg1 forKeyframe:(int)arg2;
-- (void)drawKeyFrame:(int)arg1 margins:(const struct POCropMargins *)arg2 overlapCorners:(PCVector2_79efa81a *)arg3 viewTransform:(const PCMatrix44Tmpl_e98c85ee *)arg4 originalBounds:(PCRect_b601f9f3)arg5 cropType:(int)arg6 outCenter:(PCVector2_79efa81a *)arg7;
+- (void)drawKeyFrame:(int)arg1 margins:(const struct POCropMargins *)arg2 overlapCorners:(PCVector2_79efa81a *)arg3 viewTransform:(const PCMatrix44Tmpl_e98c85ee *)arg4 originalBounds:(PCRect_b601f9f3)arg5 cropType:(int)arg6 outCenter:(PCVector2_79efa81a *)arg7 contentsScale:(double)arg8;
 - (void)drawKeyFrameActiveAreaForSelect:(int)arg1 margins:(const struct POCropMargins *)arg2 overlapCorners:(PCVector2_79efa81a *)arg3 viewTransform:(const PCMatrix44Tmpl_e98c85ee *)arg4 originalBounds:(PCRect_b601f9f3)arg5 outCenter:(PCVector2_79efa81a *)arg6;
 - (void)drawGreyedOutFrame:(const struct POCropMargins *)arg1 viewTransform:(const PCMatrix44Tmpl_e98c85ee *)arg2 originalBounds:(PCRect_b601f9f3)arg3 cropType:(int)arg4;
 - (void)drawArrowFrom:(const PCVector2_79efa81a *)arg1 to:(const PCVector2_79efa81a *)arg2;

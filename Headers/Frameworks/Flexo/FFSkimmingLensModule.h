@@ -6,11 +6,16 @@
 
 #import <Flexo/FFPlayerVideoModule.h>
 
+@class NSView;
+
 __attribute__((visibility("hidden")))
 @interface FFSkimmingLensModule : FFPlayerVideoModule
 {
+    NSView *_viewForScreenID;
 }
 
+@property(nonatomic) NSView *viewForScreenID; // @synthesize viewForScreenID=_viewForScreenID;
+- (unsigned int)displayForPlayerView;
 - (BOOL)isSkimmingLens;
 - (BOOL)playerUsesLayers;
 - (BOOL)acceptsFirstResponder;

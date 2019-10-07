@@ -14,6 +14,7 @@
     NSLayoutConstraint *_rightMostViewConstraint;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) NSLayoutConstraint *rightMostViewConstraint; // @synthesize rightMostViewConstraint=_rightMostViewConstraint;
 @property(nonatomic) NSView *rightMostView; // @synthesize rightMostView=_rightMostView;
 - (void)dealloc;

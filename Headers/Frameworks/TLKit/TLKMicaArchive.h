@@ -10,6 +10,7 @@
 {
 }
 
++ (id)allowableClassesForDecodingMicaArchives;
 + (id)rootLayerFromArchiveNamed:(id)arg1 fromBundle:(id)arg2;
 + (id)rootLayerFromArchiveNamed:(id)arg1 fromBundle:(id)arg2 mappingTable:(id *)arg3;
 + (id)rootLayerFromArchiveNamed:(id)arg1 fromBundle:(id)arg2 prefetch:(BOOL)arg3 mappingTable:(id *)arg4;

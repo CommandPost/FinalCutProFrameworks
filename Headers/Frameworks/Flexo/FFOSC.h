@@ -18,8 +18,12 @@
     NSWindow *_observingPlayerWindow;
     NSView *_observingPlayerView;
     BOOL _orderOut;
+    struct PCProcrastinatedDispatch_t _updateViewVisibilityProcrastDisp;
 }
 
+- (BOOL)oscDrawsAboveOtherOSCs;
+- (BOOL)oscNeedsLaneOrdering;
+- (void)OSCSafelyHideView:(id)arg1 shouldHide:(BOOL)arg2;
 - (BOOL)isCropOSC;
 - (void)enableOverlayWindowForNoRangeOverlap;
 - (void)removeOverlayWindowForNoRangeOverlap;

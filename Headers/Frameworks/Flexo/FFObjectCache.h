@@ -32,7 +32,7 @@
     FFObjectCacheEntry *_localEntryForLookups;
     _Bool _isShuttingDown;
     NSObject<OS_dispatch_queue> *_maintQueue;
-    int _unstartedAsyncOp;
+    unsigned int _unstartedAsyncOp;
     NSMutableDictionary *_groupInfos;
     float _syncPurgeThreshhold;
     int _ariadneID;

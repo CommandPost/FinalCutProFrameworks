@@ -47,9 +47,6 @@ __attribute__((visibility("hidden")))
     unsigned int _debugTextTexture;
 }
 
-+ (id)zebraTrackerPhaseCounter;
-+ (struct CGSize)getMaximumDrawingSizeForLocation:(int)arg1;
-+ (float)getMaxVRAM:(int)arg1;
 + (struct FFImageDisplayContext *)sharedKVOContext;
 + (BOOL)highQualityViewerScaling;
 @property BOOL detailedDebugInfo; // @synthesize detailedDebugInfo=_detailedDebugInfo;
@@ -67,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)drawViewBorders:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2 drawRect:(struct CGRect)arg3 forMissingImage:(BOOL)arg4 howLate:(double)arg5 backgroundColor:(id)arg6;
 - (struct _CGLContextObject *)overlayContext:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2;
 - (void)updateInternalContexts:(struct _CGLContextObject *)arg1 viewBounds:(struct CGRect)arg2;
-- (id)newOverlayTextureBuffer;
+- (id)newOverlayTextureBufferUsingOpenGL;
 - (void)attachOverlayTexture:(struct CGRect)arg1;
 - (void)setUpOverlayContext:(struct CGRect)arg1;
 - (void)setUpBackgroundTexture;

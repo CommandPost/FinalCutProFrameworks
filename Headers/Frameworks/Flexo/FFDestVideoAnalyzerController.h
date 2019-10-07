@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 - (int)analyzeImage:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (BOOL)reuseDataForAnalyzing;
 - (void)pushFrame:(id)arg1;
-- (BOOL)wantsDithering:(id)arg1;
 - (id)requestedImageInfo;
 - (BOOL)isAnalyzingStillImage;
 - (id)anchoredVideoMediaComponent;

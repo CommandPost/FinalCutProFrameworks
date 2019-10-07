@@ -58,6 +58,7 @@
 - (id)initWithBundle:(id)arg1 normal:(id)arg2 pressed:(id)arg3;
 - (id)initWithBundle:(id)arg1 normal:(id)arg2;
 - (id)initWithBundle:(id)arg1 normalOff:(id)arg2 normalOn:(id)arg3 pressedOff:(id)arg4 pressedOn:(id)arg5 dim1Prefix:(id)arg6 dim1:(long long)arg7;
+- (void)setupLayerWithDim1:(long long)arg1 dim1Prefix:(id)arg2 imageBundle:(id)arg3 normalOffImage:(id)arg4 normalOnImage:(id)arg5 pressedOffImage:(id)arg6 pressedOnImage:(id)arg7;
 - (id)_loadImage:(id)arg1 fromBundle:(id)arg2;
 
 @end

@@ -60,6 +60,7 @@
 - (id)copyDebugActionNames;
 - (unsigned long long)actionLevel;
 - (BOOL)canceled;
+- (BOOL)performNonUndoableAction:(id *)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_performRollbackWithBlock:(CDUnknownBlockType)arg1;
 - (void)_performRollbackWithBlock0:(CDUnknownBlockType)arg1;
 - (void)_didRollback;

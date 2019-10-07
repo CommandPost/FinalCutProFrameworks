@@ -6,19 +6,20 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSPredicate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFQuery : NSObject <NSCoding, NSCopying>
+@interface FFQuery : NSObject <NSSecureCoding, NSCopying>
 {
     NSPredicate *_predicate;
     NSString *_className;
     Class _class;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)forSearchClass:(Class)arg1 format:(id)arg2;
 + (id)forSearchClass:(Class)arg1 predicate:(id)arg2;
 + (id)forSearchClass:(Class)arg1;

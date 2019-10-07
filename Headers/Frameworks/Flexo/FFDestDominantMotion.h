@@ -49,8 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)finishAnalyzing;
 - (void)startAnalyzing;
 - (int)analyzePlayerFrame:(id)arg1;
-- (BOOL)wantsDithering:(id)arg1;
-- (int)requestedBackground;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
 - (id)requestedImageInfo;
 - (int)analysisResultCode;

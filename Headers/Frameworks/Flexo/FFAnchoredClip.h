@@ -17,6 +17,7 @@
     FFAudioClipComponentsLayoutMap *_audioComponentsLayoutMap;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(readonly, retain, nonatomic) FFEffectStack *audioEffects; // @synthesize audioEffects=_audioEffects;
 - (id)createUsedRangesMediaIdentifier;

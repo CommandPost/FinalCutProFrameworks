@@ -37,6 +37,7 @@
 - (id)displayName;
 - (id)nativeVideoProps;
 - (void)_setupSources;
+- (id)description;
 - (void)dealloc;
 - (id)initWithMedia:(id)arg1;
 - (id)initWithMedia:(id)arg1 offlineReason:(int)arg2;

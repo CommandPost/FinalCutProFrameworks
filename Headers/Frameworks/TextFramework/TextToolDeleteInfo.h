@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-@class OZGLViewer;
+@class OZViewer;
 
 @interface TextToolDeleteInfo : NSObject
 {
     // Error parsing type: ^{OZRenderManager={atomic<bool>=AB}^{GLRenderer}@I}, name: _renderManager
-    OZGLViewer *_viewer;
+    OZViewer *_viewer;
     unsigned int _textID;
 }
 

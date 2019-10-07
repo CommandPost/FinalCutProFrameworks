@@ -9,7 +9,7 @@
 #import "NSCopying.h"
 #import "TLKLayoutConstraining.h"
 
-@class NSArray, NSColor, NSMutableArray, NSMutableSet, NSSet, NSString, TLKContainerInfo, TLKItemLaneInfo, TLKItemLayoutInfo, TLKLayoutDatabase, TLKVerticalIndexTable;
+@class NSArray, NSColor, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, TLKContainerInfo, TLKItemLaneInfo, TLKItemLayoutInfo, TLKLayoutDatabase, TLKVerticalIndexTable;
 
 @interface TLKItemComponentInfo : ERLRelationalObject <NSCopying, TLKLayoutConstraining>
 {
@@ -32,6 +32,7 @@
     BOOL _hidden;
     int _containmentTypeMask;
     int _itemComponentType;
+    NSMutableDictionary *_userInfo;
     unsigned long long _itemComponentIndex;
     double _height;
     NSColor *_backgroundColor;
@@ -78,6 +79,7 @@
 @property(nonatomic) double height; // @synthesize height=_height;
 @property(nonatomic) BOOL locationRangeNeedsUpdate; // @synthesize locationRangeNeedsUpdate=_locationRangeNeedsUpdate;
 @property(nonatomic) unsigned long long itemComponentIndex; // @synthesize itemComponentIndex=_itemComponentIndex;
+@property(readonly, retain) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(nonatomic) BOOL shouldHighlightComponent; // @synthesize shouldHighlightComponent=_shouldHighlightComponent;
 @property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 - (void)didInsertObjectsInItemComponentFragments:(id)arg1;
@@ -117,6 +119,7 @@
 - (long long)compareByTimeRange:(id)arg1;
 @property(nonatomic) struct _TLKRange locationRange;
 - (struct _TLKRange)locationRangeForSeconds:(double)arg1;
+@property(readonly, nonatomic) BOOL isAboveSpine;
 - (void)clearLaneInfo;
 @property(nonatomic) TLKItemLayoutInfo *itemInfo;
 @property(nonatomic) BOOL isAccessoryLayerVisible;
@@ -128,7 +131,6 @@
 - (id)init;
 @property(readonly) BOOL audioOnly;
 @property(readonly) BOOL disabled;
-@property(readonly) BOOL isPrimary;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

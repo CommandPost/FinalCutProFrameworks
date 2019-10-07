@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface FFErfCache : NSObject
 {
-    struct HGBitmapLoader *_lutsBitmapLoaderCache;
+    // Error parsing type: ^{HGBitmapLoader=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f{HGRef<HGBitmap>=^{HGBitmap}}{HGRef<HGBitmap>=^{HGBitmap}}{HGRef<HGBitmap>=^{HGBitmap}}BBBi^{HGBitmapLoader}^{HGNode}^{HGNode}^{HGNode}^{HGNode}^{HGNode}}, name: _lutsBitmapLoaderCache
 }
 
 - (void)dealloc;

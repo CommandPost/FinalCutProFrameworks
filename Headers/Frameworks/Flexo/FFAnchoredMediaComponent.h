@@ -30,6 +30,7 @@
 
 + (void)updateAudioMediaComponents:(id)arg1 fromAudioSourceDict:(id)arg2 toAudioSourceDict:(id)arg3;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (BOOL)verifyMediaComponents:(id)arg1 forMediaRange:(CDStruct_e83c9415)arg2 toAudioProperties:(id)arg3 fromAudioProperties:(id)arg4 mediaRepURL:(id)arg5;
 + (void)updateMediaComponents:(id)arg1 forAsset:(id)arg2 needReset:(BOOL)arg3;
@@ -107,6 +108,7 @@
 - (id)_newRotatedProviderWithInput:(id)arg1;
 - (id)_rotateCacheIdentifierWithSource:(id)arg1;
 - (id)supportedLogProcessingModes;
+- (BOOL)isMissingCameraLUT;
 - (BOOL)supportsLogProcessing;
 - (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;

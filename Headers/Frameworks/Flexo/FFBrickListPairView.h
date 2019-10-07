@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     struct NSEdgeInsets _edgeInsets;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) struct NSEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property(nonatomic) double spacing; // @synthesize spacing=_spacing;
 @property(retain, nonatomic) NSView *secondView; // @synthesize secondView=_secondView;

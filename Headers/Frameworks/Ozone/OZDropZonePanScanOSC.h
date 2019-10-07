@@ -71,7 +71,6 @@
 - (BOOL)isBeingTranslated;
 - (BOOL)isConstrained;
 - (PCMatrix44Tmpl_e98c85ee)getLocalToEyeRot;
-- (PCMatrix44Tmpl_e98c85ee)getViewTransformation;
 - (PCMatrix44Tmpl_e98c85ee)getPivotToView;
 - (PCVector2_7e488b7d)getRotHandlePos;
 - (PCVector2_7e488b7d)getRotHandlePosAtDist:(float)arg1;

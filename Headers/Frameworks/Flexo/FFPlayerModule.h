@@ -105,6 +105,9 @@
 - (BOOL)_shouldLoadProviderForSkimmable:(struct NSObject *)arg1;
 - (BOOL)_isEventProject:(struct NSObject *)arg1;
 - (void)_teardownPlayer;
+- (BOOL)_skimmableIsMultiAngle;
+- (BOOL)_skimmableIsCompoundClip;
+- (BOOL)_skimmableIsProject;
 - (void)_notifyAppWillTerminate;
 - (id)selectedItems;
 - (id)inspectorClassName;

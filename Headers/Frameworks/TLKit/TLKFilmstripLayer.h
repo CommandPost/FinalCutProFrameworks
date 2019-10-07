@@ -18,6 +18,7 @@
 - (id)contextMenu;
 - (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

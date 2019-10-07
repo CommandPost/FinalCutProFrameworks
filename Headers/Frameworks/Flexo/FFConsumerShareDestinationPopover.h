@@ -10,7 +10,7 @@
 #import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFCSDestinationPopoverViewController, NSPopover, NSString;
+@class FFCSDestinationPopoverViewController, NSArray, NSPopover, NSString;
 
 @interface FFConsumerShareDestinationPopover : NSObject <FFConsumerSharePopoverDelegate, NSWindowDelegate, NSPopoverDelegate>
 {
@@ -27,6 +27,7 @@
 - (id)shareDestinationPopoverWithDestinations:(id)arg1 withTarget:(id)arg2 withSender:(id)arg3;
 - (void)_restoreSenderAction:(id)arg1;
 - (void)sharePopoverDidResignKey:(id)arg1;
+@property(retain, nonatomic) NSArray *shareDestinations;
 - (void)dealloc;
 - (id)init;
 

@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 - (id)initWithCoder:(id)arg1;
 - (CDStruct_e83c9415)mediaRange;

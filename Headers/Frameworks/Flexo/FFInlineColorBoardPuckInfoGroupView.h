@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     FFInlineColorBoardInspectorController *_ctr;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(readonly, nonatomic) FFInlineColorBoardPuckInfoView *highlightsInfoView; // @synthesize highlightsInfoView=_highlightsInfoView;
 @property(readonly, nonatomic) FFInlineColorBoardPuckInfoView *midtonesInfoView; // @synthesize midtonesInfoView=_midtonesInfoView;
 @property(readonly, nonatomic) FFInlineColorBoardPuckInfoView *shadowsInfoView; // @synthesize shadowsInfoView=_shadowsInfoView;

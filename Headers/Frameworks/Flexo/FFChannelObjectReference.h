@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSString *_channelPath;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 - (void)setChannelPath:(id)arg1;
 - (id)channelPath;

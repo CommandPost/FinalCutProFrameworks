@@ -18,6 +18,8 @@
 - (BOOL)theaterMenu:(FFTheaterMenuViewController *)arg1 canSetUbiquitous:(BOOL)arg2 forItem:(FFTheaterItem *)arg3 error:(id *)arg4;
 - (void)theaterMenu:(FFTheaterMenuViewController *)arg1 goToProjectForItem:(FFTheaterItem *)arg2;
 - (BOOL)theaterMenu:(FFTheaterMenuViewController *)arg1 canGoToProjectForItem:(FFTheaterItem *)arg2;
+- (void)theaterMenu:(FFTheaterMenuViewController *)arg1 saveItem:(FFTheaterItem *)arg2;
+- (BOOL)theaterMenu:(FFTheaterMenuViewController *)arg1 canSaveItem:(FFTheaterItem *)arg2;
 - (void)theaterMenu:(FFTheaterMenuViewController *)arg1 renameItem:(FFTheaterItem *)arg2;
 - (BOOL)theaterMenu:(FFTheaterMenuViewController *)arg1 canRenameItem:(FFTheaterItem *)arg2;
 - (void)theaterMenu:(FFTheaterMenuViewController *)arg1 deleteItem:(FFTheaterItem *)arg2;

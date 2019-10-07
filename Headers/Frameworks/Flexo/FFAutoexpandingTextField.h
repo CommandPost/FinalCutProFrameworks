@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _trackingIsOn;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) BOOL trackingIsOn; // @synthesize trackingIsOn=_trackingIsOn;
 @property(nonatomic) id <FFAutoexpandingTextFieldDelegate> autoexpandingDelegate;
 @property(nonatomic) BOOL autoresizesSuperview;

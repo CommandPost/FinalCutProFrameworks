@@ -28,7 +28,7 @@
     NSMapTable *_mediaBlocksByID;
     int _loadingProjectData;
     BOOL _repairing;
-    BOOL _roleSetMirrorsNeedSyncing;
+    unsigned int _roleSetMirrorsNeedSyncing;
     NSDictionary *_updateHistory;
     BOOL _useLegacyChannelBasedAudioComponents;
     NSMutableDictionary *_effectRegistryCache;
@@ -58,6 +58,7 @@
 + (id)uniqueURLforURL:(id)arg1 preserveExtension:(BOOL)arg2 whitelist:(id)arg3;
 + (id)uniqueURLforURL:(id)arg1 preserveExtension:(BOOL)arg2;
 + (BOOL)isOriginalMediaRepURLOffline:(id)arg1 isSymlink:(char *)arg2;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (void)setDefaultEvent:(id)arg1;
 + (id)defaultEvent;
@@ -103,6 +104,8 @@
 - (id)_vendedRoleForRoleUID:(id)arg1;
 - (id)findRoleWithDefinition:(id)arg1 usingOptions:(unsigned int)arg2;
 - (void)syncRoleSetMirrorsToLibrary;
+- (void)setRoleSetMirrorsNeedSyncing:(BOOL)arg1;
+- (BOOL)roleSetMirrorsNeedSyncing;
 - (void)_notifyDidChangeRolesInLibrary:(id)arg1;
 - (void)_notifyWillChangeRolesInLibrary:(id)arg1;
 - (id)_deepLoadedSequences;
@@ -240,6 +243,9 @@
 - (id)events;
 - (id)containerPropertyName;
 - (id)containerObject;
+- (void)performWriteUsingBlock:(CDUnknownBlockType)arg1;
+- (void)performReadUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)performActionWithName:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)itemIconSelected:(BOOL)arg1;
 - (id)itemIcon;
 - (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;

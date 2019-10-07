@@ -6,16 +6,23 @@
 
 #import <Ozone/OZOverlay.h>
 
+@class NSMutableArray;
+
 @interface OZSmartGuidesOverlay : OZOverlay
 {
     set_0cb42238 *_drawSnaps;
+    NSMutableArray *_lines;
 }
 
+- (id)getMetalDrawPrimitives:(id)arg1;
+- (BOOL)doesSupportMetal;
 - (void)snapEnd;
 - (void)snappedTo:(const set_0cb42238 *)arg1;
 - (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
+- (BOOL)shouldDraw;
 - (void)draw;
 - (int)getDrawingOrder;
+- (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end

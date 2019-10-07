@@ -45,10 +45,12 @@ __attribute__((visibility("hidden")))
     AVAssetWriterInput *_captionInput;
     AVAssetWriterInputCaptionAdaptor *_captionInputAdapter;
     BOOL _captionInputMarkedAsFinished;
+    CDStruct_1b6d18a9 _captionStartTimeOffset;
     CDStruct_1b6d18a9 _movieFragmentInterval;
 }
 
 @property(nonatomic) CDStruct_1b6d18a9 movieFragmentInterval; // @synthesize movieFragmentInterval=_movieFragmentInterval;
+@property(nonatomic) CDStruct_1b6d18a9 captionStartTimeOffset; // @synthesize captionStartTimeOffset=_captionStartTimeOffset;
 @property(retain) NSArray *captionSets; // @synthesize captionSets=_captionSets;
 - (int)close;
 - (BOOL)_allInputsHaveBeenMarkedAsFinished;

@@ -18,6 +18,7 @@
     FFAudioPreprocessor *_processor;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(retain, nonatomic) FFAudioPreprocessor *processor; // @synthesize processor=_processor;
 @property(nonatomic) CDStruct_1b6d18a9 startTimecode; // @synthesize startTimecode=_startTimecode;

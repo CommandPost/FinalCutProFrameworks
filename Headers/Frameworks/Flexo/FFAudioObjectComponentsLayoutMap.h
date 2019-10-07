@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     int _persistedLayoutMode;
     long long _updateRoleComponentsSuspended;
     NSMapTable *_cachedReferenceRoles;
-    NSMapTable *_cachedReferenceRoleComponents;
     NSMapTable *_componentSourceMap;
     NSRecursiveLock *_componentSourceMapLock;
     BOOL _observingRoleChanges;
@@ -26,6 +25,7 @@ __attribute__((visibility("hidden")))
 + (void)resetEffectStacksForAudioComponentsLayout:(id)arg1;
 + (BOOL)_isIntrinsicObjectLayout:(id)arg1;
 + (BOOL)_isIntrinsicObjectLayoutItem:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (void)setOrphanedLayoutItemAdoptionEnabled:(BOOL)arg1;
 + (BOOL)orphanedLayoutItemAdoptionEnabled;
@@ -93,7 +93,8 @@ __attribute__((visibility("hidden")))
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
 - (id)demandMutableObjectLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (void)delegateContainedItemsChanged;
-- (void)delegateRolesChanged:(id)arg1;
+- (void)delegateDidChangeRoles:(id)arg1;
+- (void)delegateWillChangeRoles:(id)arg1;
 - (void)referenceLayoutMapChanged:(id)arg1;
 - (void)clearCachedReferenceLayouts;
 - (id)uncachedReferenceAudioComponentsLayoutForKey:(id)arg1;

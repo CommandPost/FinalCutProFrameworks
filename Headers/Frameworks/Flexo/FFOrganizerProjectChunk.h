@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     CALayer *_proSelectionLayer;
     CALayer *_proSelectionUnfocusedLayer;
     CALayer *_thumbnailLayer;
+    CALayer *_shadowLayer;
     BOOL _selected;
     BOOL _mouseInChunk;
     BOOL _temporarilySelected;

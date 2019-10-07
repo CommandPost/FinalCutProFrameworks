@@ -24,6 +24,11 @@
 + (void)showMoreInfoForLibraryUpgradeFailure:(id)arg1;
 + (BOOL)presentLibraryUpgradeError:(id *)arg1 selectBackup:(id *)arg2;
 + (void)stopBackgroundTasks:(id)arg1 forReason:(int)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
++ (void)endProgressModal:(id)arg1;
++ (void)endProgressModalWithError:(id)arg1 usingCompletionBlock:(CDUnknownBlockType)arg2;
++ (void)shutdownBackgroundTaskQueueUsingCompletionBlock:(CDUnknownBlockType)arg1;
++ (void)drainBackgroundTaskQueueUsingCompletionBlock:(CDUnknownBlockType)arg1;
++ (void)cleanlyShutdownBackgroundTaskQueueUsingCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)cancelTasks:(id)arg1 forReason:(int)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (id)cancelableTasksForDocument:(id)arg1 error:(id *)arg2;
 + (void)alert:(id)arg1 runModalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

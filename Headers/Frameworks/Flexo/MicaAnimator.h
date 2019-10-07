@@ -22,8 +22,8 @@
 
 + (id)updatePublishedObjects:(id)arg1 toReferenceLayersInTree:(id)arg2 ratherThanLayersInTree:(id)arg3;
 + (id)rootDictForPath:(id)arg1;
++ (id)micaArchiveClassWhitelist;
 + (id)archiver:(id)arg1 formatForImage:(struct CGImage *)arg2;
-+ (BOOL)writeRootDict:(id)arg1 toPath:(id)arg2;
 + (id)bestURLForProjectContentFileName:(id)arg1;
 + (id)bestURLForUserInterfaceFileName:(id)arg1;
 @property(nonatomic) double documentDuration; // @synthesize documentDuration=_documentDuration;

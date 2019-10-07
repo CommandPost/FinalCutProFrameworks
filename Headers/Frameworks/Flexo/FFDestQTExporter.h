@@ -6,7 +6,7 @@
 
 #import <Flexo/FFDestRenderer.h>
 
-@class FFDestVideoRequestInfo, FFMovieWriter, NSArray, NSDictionary, NSError, NSMutableArray, NSString;
+@class FFDestVideoRequestInfo, FFMovieWriter, NSArray, NSDictionary, NSError, NSMutableArray, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_semaphore>, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFDestQTExporter : FFDestRenderer
@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     unsigned int _clockAdvancesNeeded;
     unsigned long long *_audioFrameCounts;
     NSArray *_audioRenderers;
-    NSError *_exportError;
     int _callbackStatus;
     BOOL _downscaleToQuarterRes;
     BOOL _ignoreAlphaChannel;
@@ -28,6 +27,8 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _firstFrameTimeOffset;
     int _framesQueuedToEncoderButNotYetReturned;
     NSDictionary *_hdrMetadata;
+    NSObject<OS_dispatch_queue> *_pushFrameQueue;
+    NSObject<OS_dispatch_semaphore> *_asyncFrameInProgress;
     BOOL _trialRunPass;
     BOOL _smartMPEG2Export;
     int _bitRate;
@@ -42,14 +43,16 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _sampleBufferDuration;
     BOOL _previousSameStream;
     int _firstSampleOfCurrentSegment;
-    struct FFSynchronizable _cachedReqInfoLock;
+    struct FFSynchronizable *_cachedReqInfoLock;
     FFDestVideoRequestInfo *_cachedRequestInfo;
     int _whichSegment;
     struct __CFArray *_reorderBuffer;
+    NSError *exportError;
     unsigned long long _audioFormat;
 }
 
 @property(nonatomic) unsigned long long audioFormat; // @synthesize audioFormat=_audioFormat;
+@property(retain) NSError *exportError; // @synthesize exportError;
 @property(retain) NSDictionary *hdrMetadata; // @synthesize hdrMetadata=_hdrMetadata;
 @property(nonatomic) BOOL requestStraightAlpha; // @synthesize requestStraightAlpha=_requestStraightAlpha;
 @property(nonatomic) BOOL ignoreAlphaChannel; // @synthesize ignoreAlphaChannel=_ignoreAlphaChannel;

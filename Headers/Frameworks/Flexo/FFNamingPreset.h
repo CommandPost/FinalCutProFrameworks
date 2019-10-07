@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSArray, NSDate, NSNumber, NSString;
 
-@interface FFNamingPreset : NSObject <NSCoding, NSCopying>
+@interface FFNamingPreset : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_name;
     NSArray *_tokens;
@@ -22,6 +22,7 @@
     NSDate *_currentDate;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)presetWithName:(id)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 @property(retain) NSDate *currentDate; // @synthesize currentDate=_currentDate;

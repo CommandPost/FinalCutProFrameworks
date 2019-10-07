@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_viewsContentSizeDidChange:(struct CGSize)arg1;
-- (void)mouseExited:(id)arg1;
 
 @end
 

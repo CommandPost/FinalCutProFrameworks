@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (void)initialize;
 @property long long style; // @dynamic style;
 - (id)initWithCoder:(id)arg1;

@@ -7,14 +7,15 @@
 #import <Flexo/FFBaseDSObject.h>
 
 #import "FFColorLooksListItemProperties.h"
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class NSString;
 
-@interface FFColorLooksObject : FFBaseDSObject <NSCoding, FFColorLooksListItemProperties>
+@interface FFColorLooksObject : FFBaseDSObject <NSSecureCoding, FFColorLooksListItemProperties>
 {
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (Class)DSClassDescriptionClass;
 - (id)displayName;

@@ -25,6 +25,7 @@
 - (void)addDurationToTimelineProject:(double)arg1 toAnchoredObject:(id)arg2;
 - (void)resetTimelineProjectEditingTime;
 - (id)activeProjectTimelineAnchoredObject;
+- (void)logMessageTracer_ShowTheaterMenuInvoked:(long long)arg1;
 - (void)logMessageTracer_CaptionData:(BOOL)arg1;
 - (void)addUniqueCaptionFormatForLibrary:(id)arg1;
 - (void)logMessageTracer_FinalcutproProject:(id)arg1;

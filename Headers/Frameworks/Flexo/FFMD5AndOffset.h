@@ -6,9 +6,9 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
-@interface FFMD5AndOffset : NSObject <NSCoding>
+@interface FFMD5AndOffset : NSObject <NSSecureCoding>
 {
     CDStruct_bdcb2b0d _baseMD5;
     long long _offset;
@@ -17,6 +17,7 @@
     BOOL _useBaseMD5Only;
 }
 
++ (BOOL)supportsSecureCoding;
 + (CDStruct_bdcb2b0d)compositeMD5FromMD5:(CDStruct_bdcb2b0d)arg1 andOffset:(long long)arg2;
 @property(readonly) long long offset; // @synthesize offset=_offset;
 @property(readonly) CDStruct_bdcb2b0d baseMD5; // @synthesize baseMD5=_baseMD5;

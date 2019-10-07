@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (unsigned long long)alignmentFromString:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (Class)animatorClass;
 @property(nonatomic) BOOL disableEndAnimations; // @synthesize disableEndAnimations=m_disableEndAnimations;

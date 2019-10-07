@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     } plugInFlags;
     id <PROPlugInDelegate> delegate;
     id <PKPlugIn> pluginKitPlug;
+    BOOL entirelyOutOfProcess;
     BOOL _isBlocked;
     NSString *_blockedLookupKey;
 }

@@ -6,13 +6,13 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface FFEventInfo : NSObject <NSCopying, NSCoding>
+@interface FFEventInfo : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _countOfClips;
     unsigned long long _countOfProjects;
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _totalClipDuration;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 totalClipDuration; // @synthesize totalClipDuration=_totalClipDuration;
 @property(readonly, nonatomic) NSDate *eventLastImportDate; // @synthesize eventLastImportDate=_eventLastImportDate;
 @property(readonly, nonatomic) NSDate *eventLatestDate; // @synthesize eventLatestDate=_eventLatestDate;

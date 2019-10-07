@@ -6,7 +6,7 @@
 
 #import <TLKit/TLKTimelineHandler.h>
 
-@class NSSet, NSString, TLKItemLayer, TLKSimpleTrimEdgeBox;
+@class NSSet, NSString, TLKItemLayer;
 
 @interface TLKDragEdgesHandler : TLKTimelineHandler
 {
@@ -33,7 +33,6 @@
     double _savedMinimumItemComponentFragmentWidth;
     double _thumbnailAdjustment;
     struct CGRect _timecodeDisplayRect;
-    TLKSimpleTrimEdgeBox *_trimEdgeBoxLayer;
     double _clipWidth;
     CDStruct_1b6d18a9 _originalTPP;
     CDStruct_1b6d18a9 _draggingTPP;

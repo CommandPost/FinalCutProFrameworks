@@ -25,17 +25,16 @@
 @property(copy, nonatomic) NSSet *deselectedItemComponents; // @synthesize deselectedItemComponents=_deselectedItemComponents;
 @property(copy, nonatomic) NSSet *selectedItemComponents; // @synthesize selectedItemComponents=_selectedItemComponents;
 @property(readonly, nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
-@property(readonly, nonatomic) CALayer *offscreenIndicatorLayer; // @synthesize offscreenIndicatorLayer=_offscreenIndicatorLayer;
-@property(readonly, nonatomic) CALayer *mainDrawLayer; // @synthesize mainDrawLayer=_mainDrawLayer;
-@property(readonly, nonatomic) unsigned long long drawSelectionEventType; // @synthesize drawSelectionEventType=_drawSelectionEventType;
-@property(readonly, nonatomic) TLKLayoutDatabase *database; // @synthesize database=_database;
-@property(readonly, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
+@property(retain, nonatomic) CALayer *offscreenIndicatorLayer; // @synthesize offscreenIndicatorLayer=_offscreenIndicatorLayer;
+@property(retain, nonatomic) CALayer *mainDrawLayer; // @synthesize mainDrawLayer=_mainDrawLayer;
+@property(nonatomic) unsigned long long drawSelectionEventType; // @synthesize drawSelectionEventType=_drawSelectionEventType;
+@property(retain, nonatomic) TLKLayoutDatabase *database; // @synthesize database=_database;
+@property(retain, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 - (void)drawRangeSelection;
 - (void)drawEdgeSelection;
 - (void)drawItemSelection;
 - (void)main;
 - (void)dealloc;
-- (id)initWithSelectionManager:(id)arg1 database:(id)arg2 mainDrawLayer:(id)arg3 offscreenIndicatorLayer:(id)arg4 visibleRect:(struct CGRect)arg5 timelineView:(id)arg6 eventType:(unsigned long long)arg7;
 - (void)_initSelectedItemsInSelectionManager:(id)arg1;
 
 @end

@@ -63,8 +63,8 @@
 - (struct CGRect)_computedFrameForItemComponentFragment:(id)arg1;
 - (void)_updateLayerFramesForItemComponentFragments:(id)arg1;
 - (void)timelineView:(id)arg1 didChangeVisibleRect:(struct CGRect)arg2;
-- (void)layoutDatabaseDidChange:(id)arg1;
 - (id)_itemFragmentsIncludingLayoutDependencies:(id)arg1;
+- (void)removeOffScreenLayersForClipRect:(struct CGRect)arg1;
 - (void)processPendingChangesWithClipRect:(struct CGRect)arg1;
 - (void)_removeLayersForLineFragments:(id)arg1;
 - (void)_reloadLayersForModifiedLineFragments:(id)arg1;
@@ -72,7 +72,7 @@
 - (void)_addLayerForLineFragment:(id)arg1;
 - (void)reloadLayersForTracksAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
 - (void)_removeLayersForLayoutContexts:(id)arg1;
-- (void)_reloadLayersForLayoutContexts:(id)arg1;
+- (void)reloadLayersForTrackLayoutContexts:(id)arg1;
 - (void)reloadLayersForRangeSelection;
 - (void)reloadMarkerLayersForItemComponentFragment:(id)arg1;
 - (void)_reloadLayersForMarkers:(id)arg1 onItemComponentFragment:(id)arg2;
@@ -114,6 +114,7 @@
 - (id)_newLayerForLineFragment:(id)arg1;
 - (id)_newLayerForTrack:(id)arg1;
 - (id)_newContainerLayerForContainer:(id)arg1;
+@property(readonly, nonatomic) CALayer *selectionLayer;
 - (id)spineBackgroundLayer;
 - (id)rulerLayer;
 - (id)containerLayerForItem:(id)arg1;

@@ -6,13 +6,14 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 __attribute__((visibility("hidden")))
-@interface FFVideoPropsXMLBridge : NSObject <NSCoding>
+@interface FFVideoPropsXMLBridge : NSObject <NSSecureCoding>
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

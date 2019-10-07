@@ -6,12 +6,12 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class FFAnchoredSequence, FFMediaEventProject, NSMapTable, NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface FFMediaEventProjectData : FFBaseDSObject <NSCoding>
+@interface FFMediaEventProjectData : FFBaseDSObject <NSSecureCoding>
 {
     NSMutableSet *_ownedClips;
     NSMutableSet *_ownedMedia;
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)keyPathsForValuesAffectingDisplayOwnedClips;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 @property(retain, nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;

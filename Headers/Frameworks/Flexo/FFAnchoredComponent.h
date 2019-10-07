@@ -16,6 +16,7 @@
     FFRole *_vendedRole;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (float)defaultStillDurationInSeconds;
 + (float)defaultGeneratorDurationInSeconds;

@@ -6,17 +6,18 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFXMLAdjustBlendReservedData : NSObject <NSCoding>
+@interface FFXMLAdjustBlendReservedData : NSObject <NSSecureCoding>
 {
     NSString *_effectID;
     NSString *_effectParamsXMLString;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) NSString *effectParamsXMLString; // @synthesize effectParamsXMLString=_effectParamsXMLString;
 @property(retain, nonatomic) NSString *effectID; // @synthesize effectID=_effectID;
 - (void)encodeWithCoder:(id)arg1;

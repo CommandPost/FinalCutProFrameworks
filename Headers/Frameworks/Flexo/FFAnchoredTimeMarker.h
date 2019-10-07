@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     BOOL _displayNameIsDefault;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(nonatomic) BOOL displayNameIsDefault; // @synthesize displayNameIsDefault=_displayNameIsDefault;
 @property(nonatomic) BOOL isActive; // @synthesize isActive=_isActive;

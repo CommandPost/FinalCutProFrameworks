@@ -6,14 +6,15 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 __attribute__((visibility("hidden")))
-@interface FFBaseDSObjectReplacement : NSObject <NSCoding>
+@interface FFBaseDSObjectReplacement : NSObject <NSSecureCoding>
 {
 }
 
 + (id)initWithCoder:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

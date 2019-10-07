@@ -15,7 +15,7 @@
 @property(readonly) long long dataByteCount;
 @property(readonly) float bytesPerSecond;
 @property(readonly) long long editDuration;
-@property(readonly) int editRate;
+@property(readonly) CDStruct_2689111f editRate;
 @property(retain) NSString *name;
 @property(readonly) int trackType;
 - (int)stepInPresentationOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMEditCursor *)arg3;

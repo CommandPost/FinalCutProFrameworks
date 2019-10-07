@@ -7,7 +7,11 @@
 #import "NSString.h"
 
 @interface NSString (PCAdditions)
+- (id)stringByTrimmingLeadingWhitespace;
+- (id)stringByTrimmingLeadingCharactersInSet:(id)arg1;
 - (id)stringByRemovingCharactersInSet:(id)arg1;
+- (BOOL)isNewline;
+- (BOOL)isAllWhitespaceAndNewline;
 - (BOOL)isAllWhitespace;
 - (unsigned long long)UTF32CharacterCount;
 - (unsigned long long)glyphCount;

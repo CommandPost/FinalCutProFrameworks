@@ -8,7 +8,7 @@
 
 #import "CALayerDelegate.h"
 
-@class FFDestVideoScopesGL, LKMenu, NSString;
+@class CALayer, FFDestVideoScopesGL, LKMenu, NSString;
 
 @interface FFVideoScopesView : FFResponderLayerHostView <CALayerDelegate>
 {
@@ -17,6 +17,7 @@
     BOOL _drawingEnabled;
     FFDestVideoScopesGL *_destVideo;
     BOOL _showGuides;
+    CALayer *_bodyLayer;
     void *_FFVideoScopesViewPrivate;
 }
 
@@ -28,8 +29,10 @@
 + (float)traceBrightness;
 + (void)setTraceBrightness:(float)arg1;
 + (void)_postPropertiesChangeNotification;
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) LKMenu *contextualMenu; // @synthesize contextualMenu=_contextualMenu;
 @property(nonatomic) id destVideo; // @synthesize destVideo=_destVideo;
+@property(nonatomic) CALayer *bodyLayer; // @synthesize bodyLayer=_bodyLayer;
 - (id)_initVideoScopesViewPriv;
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;

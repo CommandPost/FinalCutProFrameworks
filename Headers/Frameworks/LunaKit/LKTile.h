@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class LKTileView, NSBundle, NSColor, NSMutableArray, NSString, NSView;
 
-@interface LKTile : NSObject <NSCopying, NSCoding>
+@interface LKTile : NSObject <NSCopying, NSSecureCoding>
 {
     NSView *_view;
     NSView *_expandableView;
@@ -40,6 +40,7 @@
     void *_proReserved3;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)tileNibName;
 + (void)initialize;
 - (BOOL)shouldHandleMouseDown:(id)arg1;

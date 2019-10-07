@@ -19,7 +19,6 @@
 + (BOOL)showMisalignedEdges;
 + (BOOL)showZeroHeightSpineItems;
 + (BOOL)showUsedRegion;
-+ (BOOL)showRulerLabelCalls;
 + (BOOL)showRulerBounds;
 + (BOOL)showContainerBounds;
 + (BOOL)showItemLayoutInfo;
@@ -44,11 +43,15 @@
 + (BOOL)optimizedZooming;
 + (BOOL)optimizedReload;
 + (BOOL)legacyLayout;
++ (BOOL)debugItemVideoFilmstripsDisabled;
++ (BOOL)debugItemBackgroundDisabled;
++ (BOOL)debugItemAudioWaveformsDisabled;
 + (BOOL)disableItemContents;
 + (void)setDebugLogLevel:(unsigned long long)arg1;
 + (BOOL)debugLogLevel;
 + (BOOL)allowNegativeTimeAfterTrim;
 + (void)initialize;
++ (void)_automaticallyEnableLoggingReloadIfColoringChangedObjects;
 + (void)_loadUserDefaults;
 
 @end

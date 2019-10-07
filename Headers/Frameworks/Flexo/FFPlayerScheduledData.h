@@ -9,7 +9,7 @@
 #import "HGRQCustomJobProtocol.h"
 #import "HGRQJobProtocol.h"
 
-@class FFGraphBuildInformation, FFHGAsyncCustomJob, FFHGAsyncFanoutJob, FFPendingHGCJSync, FFPlSchDCSCompareCache, FFRenderedMD5InfoForFrame, FFSVContext, FFSchedInfo, FFScheduleToken, FFStreamVideo, FFSubRangeMD5Info, NSArray, NSCondition, NSDictionary, NSError, NSMutableArray, NSSet, NSString;
+@class FFGraphBuildInformation, FFHGAsyncCustomJob, FFHGAsyncFanoutJob, FFPendingHGCJSync, FFPlSchDCSCompareCache, FFRenderedMD5InfoForFrame, FFSVContext, FFSchedInfo, FFScheduleToken, FFStreamVideo, FFSubRangeMD5Info, NSArray, NSCondition, NSDictionary, NSError, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFPlayerScheduledData : NSObject <HGRQJobProtocol, HGRQCustomJobProtocol>
@@ -42,9 +42,9 @@ __attribute__((visibility("hidden")))
     id _imgCost[3];
     NSDictionary *_imgDicts[3];
     int _aaRepeats;
-    NSArray *_assignedDests;
-    NSSet *_assignedDestsSet;
-    NSSet *_skippedDests;
+    // Error parsing type: A@, name: _assignedDests
+    // Error parsing type: A@, name: _assignedDestsSet
+    // Error parsing type: A@, name: _skippedDests
     NSMutableArray *_destBackgroundInfos[3];
     int _renderLocation;
     _Bool _inRenderMode;
@@ -62,9 +62,9 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _diskIOCompletionTime;
     double _scheduleTokenTime;
     double _generateGraphTime;
-    CDStruct_c0b5f609 _scheduleTokenBlockedInfo;
-    CDStruct_c0b5f609 _graphBuildBlockedInfo;
-    CDStruct_c0b5f609 _graphExecBlockedInfo;
+    // Error parsing type: {?="_nestDepth"i"_startTimes"[16q]"_blockedTimes"[24Aq]}, name: _scheduleTokenBlockedInfo
+    // Error parsing type: {?="_nestDepth"i"_startTimes"[16q]"_blockedTimes"[24Aq]}, name: _graphBuildBlockedInfo
+    // Error parsing type: {?="_nestDepth"i"_startTimes"[16q]"_blockedTimes"[24Aq]}, name: _graphExecBlockedInfo
     long long _readLockWait;
     _Bool _boundToRenderer;
     _Bool _notScheduledWhenChosen;
@@ -72,6 +72,7 @@ __attribute__((visibility("hidden")))
     _Bool _diskNotCompleteWhenChosen;
     _Bool _imagedWhileTokenBlockingFlagsSet;
     _Bool _hasStartedGraphing;
+    _Bool _notReadyAtPreload;
     _Bool _notReadyAtEnqueue;
     _Bool _notReadyAtJobStart;
     _Bool _fromSegmentStore;
@@ -154,33 +155,41 @@ __attribute__((visibility("hidden")))
 - (_Bool)inval;
 - (void)setInval:(_Bool)arg1;
 - (id)statusInfo;
+- (int)_execLocationPossiblyStale;
+- (int)_renderLocationPossiblyStale;
+- (const char *)_overlayInfoStr;
+- (int)_countHintTokens;
 - (void)sendPMRLogs:(id)arg1 scrubbing:(_Bool)arg2;
 - (double)bufferCopyTime;
 - (double)executeGraphBlockedTime;
 - (double)generateGraphBlockedTime;
 - (double)diskIOElapsedTime;
 - (double)rendererIdleIntervalBeforeThisJob;
+- (double)preloadTime;
 - (double)executeGraphTime;
 - (_Bool)_onlyPrimaryContext;
 - (BOOL)drawMultiAngle;
 - (id)f1Context;
 - (long long)readLockWait;
+- (long long)_arTraceFrameNumber;
 - (_Bool)partiallyFromSegmentStore;
+- (float)frameSegmentCost:(int)arg1;
 - (_Bool)isCancelled;
+- (void)cancel:(int)arg1;
 - (void)cancel;
 - (void)setHintTokens:(id *)arg1;
 - (void)hintCacheData:(unsigned int)arg1;
 - (_Bool)pushFramesToAssignedDests:(double)arg1 retDestsPushed:(id)arg2 currentTimecodeType:(unsigned int)arg3 healthLevels:(CDStruct_b80813c2)arg4;
 - (void)generateOverlayInfo:(double)arg1 currentTimecodeType:(unsigned int)arg2;
-- (id)_newPlayerFrameForDestNum:(int)arg1 forRate:(double)arg2 forTimecodeType:(unsigned int)arg3;
+- (id)_newPlayerFrameForDestNum:(int)arg1 forRate:(double)arg2 forTimecodeType:(unsigned int)arg3 originalDestRequest:(id)arg4;
 - (id)copyPushableImageForDest:(unsigned int)arg1 contextNum:(unsigned int)arg2;
 - (_Bool)_flattenedImagesCompatibleWithOwnDests:(_Bool)arg1;
 - (void)generateImageRepsAndQueueFlattenToExecuteOn:(int)arg1 withLocationPreference:(int)arg2;
 - (void)jobFinished:(id)arg1;
 - (void)jobStarted:(id)arg1;
-- (void)customHGRenderQueueJobCallback:(struct HGRenderer *)arg1 theJob:(id)arg2;
+-     // Error parsing type: v32@0:8^{HGRenderer=^^?{atomic<unsigned int>=AI}^{HGNode}^{HGBitmap}[8{HGRendererTextureUnit=^{HGBitmap}^{HGTransform}i}]{vector<DepthBufferManager *, std::__1::allocator<DepthBufferManager *> >=^^{DepthBufferManager}^^{DepthBufferManager}{__compressed_pair<DepthBufferManager **, std::__1::allocator<DepthBufferManager *> >=^^{DepthBufferManager}}}{vector<HGExecutionUnit *, std::__1::allocator<HGExecutionUnit *> >=^^{HGExecutionUnit}^^{HGExecutionUnit}{__compressed_pair<HGExecutionUnit **, std::__1::allocator<HGExecutionUnit *> >=^^{HGExecutionUnit}}}^{HGExecutionData}^{HGSyncData}{_opaque_pthread_rwlock_t=q[192c]}{_opaque_pthread_mutex_t=q[56c]}^{HGLUTCacheManager}^{GraphStats}^{RendererStats}iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii{HGCache=^^?i^{HGCacheEntry}^{HGCacheEntry}^{HGCacheEntry}{_opaque_pthread_mutex_t=q[56c]}}BBBI[2^{HGLimits}]i{HGDotGraph={map<unsigned long, HGDotGraph::Node, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, HGDotGraph::Node> > >={__tree<std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, HGDotGraph::Node> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, HGDotGraph::Node>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::less<unsigned long>, true> >=Q}}}{map<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge, std::__1::less<std::__1::tuple<unsigned long, unsigned long> >, std::__1::allocator<std::__1::pair<const std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge> > >={__tree<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::__map_value_compare<std::__1::tuple<unsigned long, unsigned long>, std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::less<std::__1::tuple<unsigned long, unsigned long> >, true>, std::__1::allocator<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::tuple<unsigned long, unsigned long>, std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::less<std::__1::tuple<unsigned long, unsigned long> >, true> >=Q}}}^{__sFILE}BB{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}}{HGBufferDumper={basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}iiB}IiQQi^{HGLimitsCache}^{HGRenderQueue}^v{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}}16@24, name: customHGRenderQueueJobCallback:theJob:
 - (BOOL)containsMisbehavingPluginTokens:(id [3])arg1;
-- (id)newFlattenImageJob:(id)arg1 bindingInfo:(id)arg2 contextNum:(int)arg3 renderer:(struct HGRenderer *)arg4 bgInfo:(id)arg5 streamProps:(id)arg6;
+-     // Error parsing type: @60@0:8@16@24i32^{HGRenderer=^^?{atomic<unsigned int>=AI}^{HGNode}^{HGBitmap}[8{HGRendererTextureUnit=^{HGBitmap}^{HGTransform}i}]{vector<DepthBufferManager *, std::__1::allocator<DepthBufferManager *> >=^^{DepthBufferManager}^^{DepthBufferManager}{__compressed_pair<DepthBufferManager **, std::__1::allocator<DepthBufferManager *> >=^^{DepthBufferManager}}}{vector<HGExecutionUnit *, std::__1::allocator<HGExecutionUnit *> >=^^{HGExecutionUnit}^^{HGExecutionUnit}{__compressed_pair<HGExecutionUnit **, std::__1::allocator<HGExecutionUnit *> >=^^{HGExecutionUnit}}}^{HGExecutionData}^{HGSyncData}{_opaque_pthread_rwlock_t=q[192c]}{_opaque_pthread_mutex_t=q[56c]}^{HGLUTCacheManager}^{GraphStats}^{RendererStats}iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii{HGCache=^^?i^{HGCacheEntry}^{HGCacheEntry}^{HGCacheEntry}{_opaque_pthread_mutex_t=q[56c]}}BBBI[2^{HGLimits}]i{HGDotGraph={map<unsigned long, HGDotGraph::Node, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, HGDotGraph::Node> > >={__tree<std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, HGDotGraph::Node> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, HGDotGraph::Node>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::less<unsigned long>, true> >=Q}}}{map<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge, std::__1::less<std::__1::tuple<unsigned long, unsigned long> >, std::__1::allocator<std::__1::pair<const std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge> > >={__tree<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::__map_value_compare<std::__1::tuple<unsigned long, unsigned long>, std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::less<std::__1::tuple<unsigned long, unsigned long> >, true>, std::__1::allocator<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::tuple<unsigned long, unsigned long>, std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::less<std::__1::tuple<unsigned long, unsigned long> >, true> >=Q}}}^{__sFILE}BB{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}}{HGBufferDumper={basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}iiB}IiQQi^{HGLimitsCache}^{HGRenderQueue}^v{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}}36@44@52, name: newFlattenImageJob:bindingInfo:contextNum:renderer:bgInfo:streamProps:
 - (id)_copyRenderPropsForContext:(int)arg1 props:(id)arg2;
 - (_Bool)doesDest:(id)arg1 needContext:(int)arg2;
 - (_Bool)betterThan:(id)arg1;
@@ -193,7 +202,7 @@ __attribute__((visibility("hidden")))
 - (id)assignedDests;
 - (_Bool)waitForFlattenedImagesBeforeDate:(id)arg1;
 - (_Bool)flattenedImagesReady;
-- (_Bool)waitAndCheckTokenForAsyncError:(id)arg1 contextNum:(int)arg2;
+- (_Bool)waitAndCheckTokenForAsyncError:(id)arg1 contextNum:(int)arg2 rendererForTrace:(unsigned long long)arg3;
 - (_Bool)codecHasStarted;
 - (_Bool)pushToCodecWithTestForAbort:(CDUnknownBlockType)arg1 retPreviouslyPushed:(_Bool *)arg2;
 - (_Bool)pushedToCodec;
@@ -222,12 +231,13 @@ __attribute__((visibility("hidden")))
 - (void)_getFlattenedImagesFrom:(id)arg1;
 - (_Bool)canUseFlattenedImagesFrom:(id)arg1 proposedDests:(id)arg2 willSkipDests:(id)arg3;
 - (void)_getFrameCacheInfoAlreadyHoldingLock:(id *)arg1;
-- (_Bool)noGridForGrid;
+- (_Bool)noGridForGrid:(_Bool)arg1;
 - (id)copyForLiveEdit:(id)arg1 saveGrid:(_Bool)arg2 saveF1F2:(_Bool)arg3;
 - (id)copyForNewOSCsForProposedDests:(id)arg1 withUnneededDests:(id)arg2 schedInfo:(id)arg3;
 - (id)copyForNewGraph:(id)arg1;
 - (void)_checkSchedTokFlags:(_Bool)arg1;
 - (void)dealloc;
+- (id)initWithStream:(id)arg1 time:(CDStruct_1b6d18a9)arg2 timeRepresented:(CDStruct_1b6d18a9)arg3 duration:(CDStruct_1b6d18a9)arg4 nativeFrameDur:(CDStruct_1b6d18a9)arg5 nativeSampleDur:(CDStruct_1b6d18a9)arg6 context1:(id)arg7 context2:(id)arg8 aaContext:(id)arg9 aaRepeats:(int)arg10 bounds:(struct CGRect)arg11 schedQueue:(id)arg12 inRenderMode:(_Bool)arg13 forScrub:(_Bool)arg14 schedInfo:(id)arg15 waitForLoadingFX:(_Bool)arg16 isBlankFrame:(_Bool)arg17 isAudioFrame:(_Bool)arg18 frameRepString:(id)arg19 displayName:(id)arg20 customJobSyncer:(id)arg21 owningPlayerThread:(struct _opaque_pthread_t *)arg22;
 - (id)initWithStream:(id)arg1 time:(CDStruct_1b6d18a9)arg2 timeRepresented:(CDStruct_1b6d18a9)arg3 duration:(CDStruct_1b6d18a9)arg4 nativeFrameDur:(CDStruct_1b6d18a9)arg5 nativeSampleDur:(CDStruct_1b6d18a9)arg6 context1:(id)arg7 context2:(id)arg8 aaContext:(id)arg9 aaRepeats:(int)arg10 bounds:(struct CGRect)arg11 schedQueue:(id)arg12 inRenderMode:(_Bool)arg13 forScrub:(_Bool)arg14 schedInfo:(id)arg15 waitForLoadingFX:(_Bool)arg16 isBlankFrame:(_Bool)arg17 isAudioFrame:(_Bool)arg18 frameRepString:(id)arg19 displayName:(id)arg20 customJobSyncer:(id)arg21;
 
 @end

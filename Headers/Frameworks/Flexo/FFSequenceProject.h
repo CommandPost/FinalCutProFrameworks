@@ -6,16 +6,17 @@
 
 #import <Flexo/FFProject.h>
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class FFAnchoredSequence, FFSequenceInfo, NSString;
 
-@interface FFSequenceProject : FFProject <NSCoding>
+@interface FFSequenceProject : FFProject <NSSecureCoding>
 {
     FFSequenceInfo *_sequenceInfo;
     NSString *_defaultMediaEventID;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 - (void)compressVerticalLaneIndexes:(BOOL)arg1;

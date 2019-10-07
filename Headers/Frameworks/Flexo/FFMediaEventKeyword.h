@@ -23,6 +23,7 @@
 
 + (id)keyPathsForValuesAffectingKeyword;
 + (int)matchingTypeIterationOption;
++ (BOOL)supportsSecureCoding;
 + (id)keywordForName:(id)arg1;
 + (id)filtersDictionaryForKeywords:(id)arg1;
 + (id)_filtersDictionaryUsingKeywords:(id)arg1;

@@ -16,6 +16,7 @@
     FFDestVideoScopesGL *_destVideo;
     BOOL _showBothFields;
     BOOL _isDestAttached;
+    BOOL _isVisible;
 }
 
 - (void)sequenceFormatChanged:(id)arg1;
@@ -46,6 +47,7 @@
 - (void)_updateDestVideoScopesColorSpace:(struct NSObject *)arg1;
 @property(getter=isMonochrome) BOOL monochrome; // @dynamic monochrome;
 @property float traceBrightness; // @dynamic traceBrightness;
+- (long long)colorChannelDisplayMode;
 - (BOOL)is360Viewer;
 @property BOOL showBothFields; // @dynamic showBothFields;
 - (void)dealloc;

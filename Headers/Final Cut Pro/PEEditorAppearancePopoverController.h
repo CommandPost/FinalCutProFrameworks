@@ -6,7 +6,7 @@
 
 #import "NSViewController.h"
 
-@class FFEditorModule, LKButton, LKSegmentedControl, LKSlider, NSArray, NSButton, NSImageView, NSMatrix, NSView, PEEditorContainerModule;
+@class FFEditorModule, LKButton, LKSegmentedControl, LKSlider, NSArray, NSBox, NSButton, NSImageView, NSLayoutConstraint, NSMatrix, NSView, PEEditorContainerModule;
 
 @interface PEEditorAppearancePopoverController : NSViewController
 {
@@ -21,6 +21,12 @@
     LKSlider *_cellDurationSlider;
     NSArray *_showOptionsCheckBoxes;
     NSMatrix *_checkBoxesMatrix;
+    NSBox *_horizontalLine1;
+    NSBox *_horizontalLine2;
+    NSBox *_horizontalLine3;
+    NSLayoutConstraint *_cellDurationSliderHeight;
+    NSLayoutConstraint *_audioPercentageControlHeight;
+    NSLayoutConstraint *_checkButtonGroupHeight;
     NSButton *anglesCheckBox;
     NSButton *clipNamesCheckBox;
     NSButton *rolesCheckBox;

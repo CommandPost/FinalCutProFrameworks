@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (BOOL)isAvailableDuringPlayback;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
 - (void)drawOrientation:(id)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 tiltValue:(float)arg4 panValue:(float)arg5 rollValue:(float)arg6 textAttributes:(id)arg7 valueAttributes:(id)arg8 cornerSize:(double)arg9;
 - (CDStruct_1b6d18a9)currentChannelTime;
 - (CDStruct_1b6d18a9)channelTimeForTime:(CDStruct_1b6d18a9)arg1;

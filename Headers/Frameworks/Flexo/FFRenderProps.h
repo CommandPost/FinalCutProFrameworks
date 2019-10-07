@@ -24,7 +24,8 @@
 @property(readonly, nonatomic) int colorSpaceEnum; // @synthesize colorSpaceEnum=_colorSpaceEnum;
 - (id)newImageConvertedToRenderPropsFormat:(id)arg1 doFlatten:(BOOL)arg2;
 - (id)copyPrefFormatForImage:(id)arg1;
-- (void)getPrefFormatForImage:(id)arg1 retPF:(id *)arg2 retCS:(struct CGColorSpace **)arg3;
+- (id)copyPrefFormatForImageFormat:(id)arg1;
+- (void)getPrefFormatForFormat:(id)arg1 retPF:(id *)arg2 retCS:(struct CGColorSpace **)arg3;
 - (id)description;
 - (BOOL)isEqualToRenderProps:(id)arg1;
 - (struct CGSize)explicitSizeRequirement;

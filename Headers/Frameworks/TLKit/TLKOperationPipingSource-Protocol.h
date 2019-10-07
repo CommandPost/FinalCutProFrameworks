@@ -7,6 +7,6 @@
 @class PCChangeLog;
 
 @protocol TLKOperationPipingSource
-@property(readonly, nonatomic) PCChangeLog *outputChangeLog;
+@property(readonly) PCChangeLog *outputChangeLog;
 @end
 

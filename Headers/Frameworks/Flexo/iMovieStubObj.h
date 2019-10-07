@@ -6,17 +6,18 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface iMovieStubObj : NSObject <NSCoding, NSCopying>
+@interface iMovieStubObj : NSObject <NSSecureCoding, NSCopying>
 {
     NSMutableDictionary *m_dictionary;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setDictionary:(id)arg1;
 - (id)dictionary;

@@ -4,14 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFDestVideo.h>
-
-#import "FFDestVideoOptionalMethods.h"
+#import <Flexo/FFDestVideoDrawsInUI.h>
 
 @class FFImage, FFImageDisplay, FFPMRLogFunnel, FFPlayerFrame, NSColor, NSLock, NSMutableArray, NSObject<OS_dispatch_semaphore>, Stopwatch;
 
 __attribute__((visibility("hidden")))
-@interface FFDestVideoGL : FFDestVideo <FFDestVideoOptionalMethods>
+@interface FFDestVideoGL : FFDestVideoDrawsInUI
 {
     NSLock *_queueLock;
     NSMutableArray *_renderedFrames;
@@ -76,7 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsUpdateFromTimer:(id)arg1;
 - (void)setNeedsUpdate:(BOOL)arg1;
 - (int)drawFieldsInterlaced;
-- (void)updateObservedValuesForContext:(void *)arg1;
+- (void)notifyDestOfUIDrawingParameterChange;
 - (void)_updateRenderBackground:(id)arg1;
 - (BOOL)isLayerBacked;
 - (BOOL)isRunning;
@@ -101,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (void)_pmrLogQueueDepth:(_Bool)arg1 count:(unsigned int)arg2;
 - (id)newOnScreenControlsTextureForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
 - (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_1b6d18a9)queueDuration;
 - (CDStruct_1b6d18a9)frameDurationForMaximumOutputRate;
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
 - (void)_notifyVisibleChanged;
@@ -108,9 +107,8 @@ __attribute__((visibility("hidden")))
 - (void)setPlayer:(id)arg1;
 - (BOOL)showHDRAsRawValues;
 - (void)setRangeCheckZebraMode:(unsigned int)arg1;
-- (unsigned int)rangeCheckZebraMode;
-- (int)requestedBackground;
-- (BOOL)wantsDithering:(id)arg1;
+- (int)internal_requestedBackground;
+- (BOOL)internal_wantsDithering:(id)arg1;
 - (id)requestedImageInfo;
 - (id)internal_tempSupPFs;
 - (struct CGColorSpace *)internal_tempColorSpace;

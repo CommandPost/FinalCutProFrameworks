@@ -9,15 +9,13 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class CALayer, NSString, TLKImageLayer, TLKTimelineView;
+@class CALayer, NSString, TLKTimelineView;
 
 @interface TLKRangeItemLayer : TLKAccessibilityLayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
     id _representedObject;
     id <TLKTimelineItem> _timelineItem;
     CALayer *_rootLayer;
-    TLKImageLayer *_leadingEdgeLayer;
-    TLKImageLayer *_trailingEdgeLayer;
     struct {
         unsigned int disabled:1;
         unsigned int firstItem:1;
@@ -27,7 +25,7 @@
 }
 
 @property(nonatomic) id <TLKTimelineItem> timelineItem; // @synthesize timelineItem=_timelineItem;
-@property(nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
+@property(retain, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
 - (id)syntheticUIElementAttributeNames:(id)arg1;
 - (id)syntheticUIElementHelp:(id)arg1;
@@ -48,10 +46,9 @@
 - (struct CGRect)accessibilityRectForPart:(id)arg1;
 - (id)accessibilityPartAtPoint:(struct CGPoint)arg1;
 - (void)layoutSublayers;
-- (void)_updateEdgeLayers;
+- (BOOL)shouldTrailingEdgeLayerBeHidden;
+- (BOOL)shouldLeadingEdgeLayerBeHidden;
 - (struct CGRect)rectForPart:(id)arg1;
-- (long long)stateForPart:(id)arg1;
-- (void)setState:(long long)arg1 forPart:(id)arg2;
 - (void)setDelegate:(id)arg1;
 @property(nonatomic) BOOL lastItem;
 @property(nonatomic) BOOL firstItem;
@@ -60,8 +57,9 @@
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)partIdentifier;
 - (BOOL)partContainsPoint:(struct CGPoint)arg1;
-- (id)hitTest:(struct CGPoint)arg1;
 - (void)invalidate;
+- (void)setupRootLayerBackgroundColor;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

@@ -25,8 +25,7 @@
 }
 
 - (int)destRecommendedFFSVPriority;
-- (BOOL)wantsDithering:(id)arg1;
-- (int)requestedBackground;
+- (BOOL)internal_wantsDithering:(id)arg1;
 - (id)requestedImageInfo;
 - (int)drawFieldsInterlaced;
 - (void)setNeedsUpdate:(BOOL)arg1;

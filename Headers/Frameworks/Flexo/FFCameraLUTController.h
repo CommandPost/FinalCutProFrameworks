@@ -9,7 +9,7 @@
 #import "PAELUTRepositoryControllerHandler.h"
 #import "PAELUTRepositoryControllerObserver.h"
 
-@class FFMetadataDefinition, NSArray, NSMenu, NSMutableIndexSet, NSString;
+@class FFMetadataDefinition, NSArray, NSMenu, NSMutableIndexSet, NSString, PAELUTRepositoryItem;
 
 __attribute__((visibility("hidden")))
 @interface FFCameraLUTController : NSObject <PAELUTRepositoryControllerObserver, PAELUTRepositoryControllerHandler>
@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
     NSArray *_currentItems;
     NSArray *_observedItems;
     NSMutableIndexSet *_supportedModes;
+    PAELUTRepositoryItem *_selectedRepositoryItem;
+    struct PCProcrastinatedDispatch_t _procrastinatedReload;
 }
 
 + (id)customCameraLUTItemsPassingTest:(CDUnknownBlockType)arg1;
@@ -28,7 +30,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSMutableIndexSet *supportedModes; // @synthesize supportedModes=_supportedModes;
 @property(readonly, nonatomic) NSArray *currentItems; // @synthesize currentItems=_currentItems;
 @property(readonly, nonatomic) NSMenu *menu; // @synthesize menu=_menu;
-@property(readonly, nonatomic) id <FFCameraLUTControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) id <FFCameraLUTControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (id).cxx_construct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)controller:(id)arg1 ownsMenu:(id)arg2 selectedItem:(id *)arg3;
 - (void)controller:(id)arg1 menu:(id)arg2 sender:(id)arg3 didSelectItem:(id)arg4;

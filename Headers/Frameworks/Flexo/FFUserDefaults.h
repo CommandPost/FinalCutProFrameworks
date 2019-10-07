@@ -6,11 +6,11 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class NSMutableDictionary, NSString;
 
-@interface FFUserDefaults : FFBaseDSObject <NSCoding>
+@interface FFUserDefaults : FFBaseDSObject <NSSecureCoding>
 {
     NSString *_objectIdentifier;
     NSMutableDictionary *_defaults;
@@ -19,6 +19,7 @@
 + (id)userDefaultsForObject:(id)arg1 createFromObject:(id)arg2;
 + (id)userDefaultsForObject:(id)arg1 create:(BOOL)arg2;
 + (id)userDefaultsForObject:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 - (void)removeObjectForKey:(id)arg1;

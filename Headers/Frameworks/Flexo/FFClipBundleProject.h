@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     FFAnchoredObject *_rootObject;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(retain, nonatomic) FFAnchoredObject *rootObject; // @synthesize rootObject=_rootObject;
 - (void)dealloc;

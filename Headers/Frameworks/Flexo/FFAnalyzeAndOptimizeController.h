@@ -13,10 +13,11 @@
 
 @interface FFAnalyzeAndOptimizeController : NSObject <FFStorageLocationOutOfDiskSpaceProtocol, FFBackgroundTaskTarget>
 {
-    FFRenderer *_renderer;
     NSMutableSet *_optimizationTasks;
     BOOL _willCloseDown;
     BOOL _wasCancelled;
+    FFRenderer *_renderer;
+    struct FFSynchronizable *_rendererLock;
     NSMapTable *_clipAnalysesQueue;
     struct PCProcrastinatedDispatch_t _procrastinatedOutOfDiskSpaceWarningContext;
 }
@@ -40,6 +41,7 @@
 + (unsigned int)videoCodecForURL:(id)arg1;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
+- (id).cxx_construct;
 - (id)librariesInUse:(id)arg1;
 - (id)assetsInUse:(id)arg1;
 - (id)assetsChanging:(id)arg1;

@@ -11,6 +11,8 @@
 }
 
 - (void)applyToDocument:(struct OZDocument *)arg1;
+- (void)setColorProcessing:(unsigned int)arg1;
+- (unsigned int)colorProcessing;
 - (void)set360ProjectMode:(int)arg1;
 - (int)get360ProjectMode;
 - (void)setFrameRate:(double)arg1;

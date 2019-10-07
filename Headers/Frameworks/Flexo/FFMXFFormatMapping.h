@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)getFCCByFileType:(int)arg1;
++ (BOOL)isSampleRateAllowed:(int)arg1 audioSampleRate:(double)arg2;
 + (BOOL)hasVideoFormatWideGammut:(id)arg1 videoFormatToTest:(id)arg2;
 + (int)getCountAdditionalFormats;
 + (int)getCountBasicFormats;
@@ -18,16 +20,16 @@ __attribute__((visibility("hidden")))
 + (int)checkException:(int)arg1 countAudioChannels:(int)arg2;
 + (int)isMXFAlowed:(id)arg1 audioSampleRate:(double)arg2;
 + (id)getRenderFormatByFCC:(id)arg1;
-+ (int)getApertureByFileType:(int)arg1 videoFormatKey:(id)arg2;
++ (CDStruct_2689111f)getApertureByFileType:(int)arg1 videoFormatKey:(id)arg2;
 + (id)getShortFormatByFileType:(int)arg1;
 + (id)getFileTypeStringByFileType:(int)arg1;
-+ (int)getFileTypeByRenderFormat:(id)arg1 videoFormat:(id)arg2 countAudioChannels:(int)arg3;
-+ (int)getFileTypeByRenderFormat:(id)arg1 videoFormat:(id)arg2;
++ (int)getFileTypeByRenderFormat:(id)arg1 videoFormat:(id)arg2 audioSampleRate:(double)arg3 countAudioChannels:(int)arg4;
++ (int)getFileTypeByRenderFormat:(id)arg1 videoFormat:(id)arg2 audioSampleRate:(double)arg3;
 + (int)getFileTypeByString:(id)arg1 countAudioChannels:(int)arg2;
 + (int)getFileTypeByString:(id)arg1;
 + (BOOL)isFCCAvailable:(id)arg1;
-+ (int)getFileTypeByFCC:(id)arg1 videoFormat:(id)arg2 countAudioChannels:(int)arg3;
-+ (int)getFileTypeByFCC:(id)arg1 videoFormat:(id)arg2;
++ (int)getFileTypeByFCC:(id)arg1 videoFormat:(id)arg2 audioSampleRate:(double)arg3 countAudioChannels:(int)arg4;
++ (int)getFileTypeByFCC:(id)arg1 videoFormat:(id)arg2 audioSampleRate:(double)arg3;
 
 @end
 

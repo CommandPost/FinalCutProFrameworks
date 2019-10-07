@@ -6,17 +6,18 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSArray;
 
-@interface FFAudioComponentsLayout : FFBaseDSObject <NSCoding, NSCopying>
+@interface FFAudioComponentsLayout : FFBaseDSObject <NSSecureCoding, NSCopying>
 {
     unsigned int _numChannels;
     NSArray *_layoutItems;
 }
 
++ (BOOL)supportsSecureCoding;
 + (BOOL)isRoutingMapDefault:(id)arg1 forNumChannels:(unsigned int)arg2;
 + (id)defaultRoutingMapForNumChannels:(unsigned int)arg1;
 + (BOOL)isChannelMapDefault:(id)arg1 forNumChannels:(unsigned int)arg2;

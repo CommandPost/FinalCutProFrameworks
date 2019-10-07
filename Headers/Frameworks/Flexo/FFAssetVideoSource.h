@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithProvider:(id)arg1 inputSource:(id)arg2;
 - (id)nativeVideoProps;
+- (BOOL)inNonIntegralFrameExtension:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_e83c9415)timeRange;
 - (id)asset;
 

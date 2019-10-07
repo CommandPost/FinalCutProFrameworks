@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface InfoForTracker : NSObject <FFStorageLocationOutOfDiskSpaceProtocol>
 {
     FFFlowMediaRep *_mediaRep;
+    struct CGRect _pixelSpaceFrameBounds;
     FFBackgroundTask *_runningTask;
     FFStreamVideo *_stream;
     int _allFrames;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
     NSError *_cancellationError;
 }
 
+@property(readonly) struct CGRect pixelSpaceFrameBounds; // @synthesize pixelSpaceFrameBounds=_pixelSpaceFrameBounds;
 @property(readonly) int workingSpace; // @synthesize workingSpace=_workingSpace;
 @property(readonly, retain) FFImageAbsoluteOutputFormat *formatToHandToAnalyzer; // @synthesize formatToHandToAnalyzer=_formatToHandToAnalyzer;
 @property(readonly, retain) FFOnDiskRenderInfo *renderInfo; // @synthesize renderInfo=_renderInfo;
@@ -66,7 +68,7 @@ __attribute__((visibility("hidden")))
 - (float)fractionComplete;
 - (void)incrementFinishedFrames:(int)arg1;
 - (void)dealloc;
-- (id)initWithMedia:(id)arg1 task:(id)arg2 stream:(id)arg3 framesToProcessCount:(int)arg4 mediaEndSampleNumber:(int)arg5 mode:(long long)arg6 frameTimes:(id)arg7 outputStartTime:(CDStruct_1b6d18a9)arg8 outputFrameDuration:(CDStruct_1b6d18a9)arg9 md5:(CDStruct_bdcb2b0d)arg10 segmentStoreRef:(id)arg11 renderInfo:(id)arg12;
+- (id)initWithMedia:(id)arg1 task:(id)arg2 stream:(id)arg3 framesToProcessCount:(int)arg4 mediaEndSampleNumber:(int)arg5 mode:(long long)arg6 frameTimes:(id)arg7 outputStartTime:(CDStruct_1b6d18a9)arg8 outputFrameDuration:(CDStruct_1b6d18a9)arg9 md5:(CDStruct_bdcb2b0d)arg10 segmentStoreRef:(id)arg11 renderInfo:(id)arg12 pixelSpaceFrameBounds:(struct CGRect)arg13;
 
 @end
 

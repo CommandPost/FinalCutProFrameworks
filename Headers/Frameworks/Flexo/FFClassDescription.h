@@ -18,6 +18,7 @@
     BOOL _hasDeprecatedKeys;
 }
 
++ (BOOL)supportsSecureCoding;
 + (void)releaseSharedInstance;
 + (id)descriptionForClass:(Class)arg1;
 + (id)classMap;

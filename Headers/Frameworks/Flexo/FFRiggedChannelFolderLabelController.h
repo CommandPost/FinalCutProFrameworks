@@ -6,12 +6,12 @@
 
 #import "OZFolderLabelController.h"
 
-@class FFAddMaskButton, LKButton;
+@class FFAddMaskButton, LKButton, LKSegmentedControl;
 
 __attribute__((visibility("hidden")))
 @interface FFRiggedChannelFolderLabelController : OZFolderLabelController
 {
-    LKButton *_viewMatteButton;
+    LKSegmentedControl *_viewMatteButton;
     FFAddMaskButton *_addMaskButton;
     LKButton *_addColorButton;
 }
@@ -19,14 +19,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)rejectsTwoColumnLayout;
 - (void)didBuildUI;
 - (BOOL)validateMenuItem:(id)arg1;
-- (void)showMatte:(id)arg1;
+- (void)changeViewMatteStyle:(id)arg1;
 - (void)pasteMasks:(id)arg1;
 - (void)copyMasks:(id)arg1;
 - (void)invertMasks:(id)arg1;
 - (void)addIsolationMask:(id)arg1;
+- (id)_addIsolationMaskWithHandler:(CDUnknownBlockType)arg1;
 - (void)addImprovedEllipseMask:(id)arg1;
-- (void)addEllipseMask:(id)arg1;
-- (void)addMaskOfClass:(Class)arg1 actionName:(id)arg2;
+- (BOOL)_addMaskOfClass:(Class)arg1 actionName:(id)arg2 maskHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (void)mouseExitedRow:(id)arg1;
 - (void)mouseEnteredRow:(id)arg1;
 - (void)setParentController:(id)arg1;

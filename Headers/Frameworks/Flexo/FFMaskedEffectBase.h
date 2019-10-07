@@ -20,15 +20,15 @@ __attribute__((visibility("hidden")))
     BOOL _showMatte;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (void)registerEffects;
 + (BOOL)isPassThruEffectWhenColorMasking;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
+- (BOOL)_mask:(id)arg1 wantsToBeMatteScreenedInContext:(id)arg2 averageLuma:(double *)arg3 atTime:(CDStruct_1b6d18a9)arg4;
 - (id)simplifiesToPassThruAtTime:(CDStruct_1b6d18a9)arg1 forInputSource:(id)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
 - (HGRef_265f9e4c)makeMaskNodeAtTime:(CDStruct_1b6d18a9)arg1 withInputImage:(id)arg2 workingSpace:(int)arg3;
-- (id)keyerPremulInputFormat:(int)arg1;
-- (id)keyerStraightInputFormat:(int)arg1;
-- (struct HGNode *)newBlendNodeForMask:(id)arg1;
+-     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}24@0:8@16, name: newBlendNodeForMask:
 - (id)newEffectNodeWithInput:(id)arg1 forKey:(id)arg2 withOffset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4;
 - (id)_newSourceForMaskInput:(id)arg1 offset:(CDStruct_1b6d18a9)arg2 identifier:(id)arg3 videoProps:(id)arg4;
 - (id)_newSourceForSubeffectArray:(id)arg1 input:(id)arg2 offset:(CDStruct_1b6d18a9)arg3 identifier:(id)arg4 videoProps:(id)arg5;
@@ -59,7 +59,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *masks;
 @property BOOL showMatte; // @dynamic showMatte;
 @property BOOL invertMasks; // @dynamic invertMasks;
-- (void)channelParameterChanged:(id)arg1;
 @property(readonly, nonatomic) NSArray *outerEffects;
 @property(readonly, nonatomic) NSArray *innerEffects;
 - (id)masksFolder;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     FFInlineColorBoardInspectorController *_ctr;
 }
 
++ (BOOL)supportsSecureCoding;
 @property __weak FFInlineColorBoardInspectorController *controller; // @synthesize controller=_ctr;
 @property(nonatomic) BOOL isMouseDown; // @synthesize isMouseDown=_isMouseDown;
 - (void)mouseDown:(id)arg1;

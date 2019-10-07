@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
     BOOL _mouseIsDownInCell;
 }
 
+- (BOOL)accessibilityIsIgnored;
+- (void)accessibilityPerformAction:(id)arg1;
+- (id)accessibilityActionNames;
+- (id)accessibilityAttributeValue:(id)arg1;
 - (id)_allProjectsModule;
 - (void)_showProjectTypeChooserWithEvent:(id)arg1;
 - (id)cellManagedThumbnail;

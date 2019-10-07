@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSString;
 
-@interface MapLocation : NSObject <NSCoding, NSCopying>
+@interface MapLocation : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *m_name;
     NSString *m_locationName;
@@ -22,6 +22,7 @@
     NSString *m_airportName;
 }
 
++ (BOOL)supportsSecureCoding;
 + (void)removeLocationsFromArray:(id)arg1 withinDistance:(float)arg2 ofSameLocationsInDictionary:(id)arg3;
 + (id)dictionaryFromArrayOfLocations:(id)arg1;
 + (id)parisLocation;

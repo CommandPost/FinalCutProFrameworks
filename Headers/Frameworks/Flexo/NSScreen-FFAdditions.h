@@ -8,5 +8,6 @@
 
 @interface NSScreen (FFAdditions)
 + (unsigned long long)availableScreens;
+- (BOOL)isHDRReferenceMode;
 @end
 
