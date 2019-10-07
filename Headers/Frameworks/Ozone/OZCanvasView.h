@@ -6,11 +6,11 @@
 
 #import "NSView.h"
 
-@class NSMutableArray, OZGLViewer, OZViewerDelegate;
+@class NSMutableArray, OZViewer, OZViewerDelegate;
 
 @interface OZCanvasView : NSView
 {
-    OZGLViewer *_loadedOZGLViewer;
+    OZViewer *_loadedOZViewer;
     int _loadingSubview;
     NSMutableArray *_dividers;
     int _draggingDividers[4];
@@ -21,7 +21,7 @@
     OZViewerDelegate *_viewerDelegate;
 }
 
-@property __weak OZGLViewer *loadedOZGLViewer; // @synthesize loadedOZGLViewer=_loadedOZGLViewer;
+@property __weak OZViewer *loadedOZViewer; // @synthesize loadedOZViewer=_loadedOZViewer;
 @property(retain) OZViewerDelegate *viewerDelegate; // @synthesize viewerDelegate=_viewerDelegate;
 @property BOOL isRebuilding; // @synthesize isRebuilding=_isRebuilding;
 - (void)resetCursorRects;

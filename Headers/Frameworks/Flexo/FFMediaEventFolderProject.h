@@ -16,6 +16,7 @@
 }
 
 + (int)matchingTypeIterationOption;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(readonly, nonatomic) NSDictionary *filtersDictionary;
 - (void)removeFromParentFolder;

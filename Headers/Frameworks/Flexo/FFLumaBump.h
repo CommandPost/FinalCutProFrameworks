@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)lumaBump;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property double whiteBalY; // @synthesize whiteBalY=_whiteBalY;
 @property double whiteBalX; // @synthesize whiteBalX=_whiteBalX;

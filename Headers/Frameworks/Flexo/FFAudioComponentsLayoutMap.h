@@ -6,13 +6,13 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class FFObjectDict, NSMapTable, NSMutableArray, NSObject<FFAudioComponentsLayoutMapDelegate>;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioComponentsLayoutMap : FFBaseDSObject <NSCoding, NSCopying>
+@interface FFAudioComponentsLayoutMap : FFBaseDSObject <NSSecureCoding, NSCopying>
 {
     NSObject<FFAudioComponentsLayoutMapDelegate> *_delegate;
     FFObjectDict *_layoutMap;
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_layoutItemCache;
 }
 
++ (BOOL)supportsSecureCoding;
 + (Class)layoutClass;
 + (id)copyClassDescription;
 @property(retain, nonatomic) FFObjectDict *layoutMap; // @synthesize layoutMap=_layoutMap;

@@ -58,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (void)_timebaseStarted;
 - (void)scheduledOutputNotification:(unsigned long long)arg1 outputHosttime:(unsigned long long)arg2;
 - (struct CGSize)requestedImageSizeWithFilterQuality:(int *)arg1;
-- (int)requestedBackground;
 - (id)requestedImageInfo;
 - (id)tun_supportedPixelFormats;
 - (struct CGColorSpace *)tun_colorSpace;

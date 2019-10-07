@@ -17,6 +17,7 @@
 + (int)readHiddenDirectoryStatus:(id)arg1 error:(id *)arg2;
 + (BOOL)setHiddenDirectoryStatus:(BOOL)arg1 URL:(id)arg2 error:(id *)arg3;
 + (id)documentType;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(retain) NSURL *cacheFolder; // @synthesize cacheFolder=_cacheFolder;
 - (void)determineLegacyMediaStatus;

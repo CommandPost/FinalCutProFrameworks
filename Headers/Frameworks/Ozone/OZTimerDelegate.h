@@ -6,11 +6,11 @@
 
 #import "NSObject.h"
 
-@class OZGLViewer;
+@class OZViewer;
 
 @interface OZTimerDelegate : NSObject
 {
-    OZGLViewer *_viewer;
+    OZViewer *_viewer;
     // Error parsing type: ^{OZDisplayTimer=^^?@^{OZFrameQueue}{shared_ptr<OZPlaybackClock>=^{OZPlaybackClock}^{__shared_weak_count}}{atomic<bool>=AB}@@}, name: _displayTimer
     double _lastCallTime;
     struct PCTimer _timer;

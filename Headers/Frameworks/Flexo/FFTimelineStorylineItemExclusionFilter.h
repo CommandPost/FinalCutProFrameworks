@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)proposedSelection:(id)arg1 containsIntrinsicStorylineOfItem:(id)arg2;
+- (BOOL)isItemPresentedInConnectedStoryline:(id)arg1;
 - (id)arrayWithStorylineItemsRemovedFromArray:(id)arg1;
 - (id)filteredItemsForProposedSelection:(id)arg1;
 

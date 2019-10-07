@@ -6,15 +6,16 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSMutableCopying.h"
+#import "NSSecureCoding.h"
 
 @class PCMatrix44Double;
 
-@interface FFVideoProps : NSObject <NSMutableCopying, NSCoding>
+@interface FFVideoProps : NSObject <NSMutableCopying, NSSecureCoding>
 {
     struct CGRect _pixelSpaceFrameBounds;
     struct CGColorSpace *_colorSpace;
+    int _colorSpaceEnum;
     int _fieldDominance;
     CDStruct_1b6d18a9 _sampleDuration;
     CDStruct_1b6d18a9 _frameDuration;
@@ -48,6 +49,7 @@
 + (id)newPropsFromCType:(unsigned int)arg1 dimensions:(CDStruct_1ef3fb1f)arg2 extensionsDict:(id)arg3 frameDuration:(CDStruct_1b6d18a9)arg4 anamorphicHint:(BOOL)arg5 ambiguous:(char *)arg6;
 + (id)newPropsFromVideoFormatDescription:(struct opaqueCMFormatDescription *)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 anamorphicHint:(BOOL)arg3 isRotated:(BOOL)arg4 ambiguous:(char *)arg5;
 + (id)newPropsFromVideoFormat:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (int)cameraModeDisplayStringToEnum:(id)arg1;
 + (id)displayCameraModeForValue:(int)arg1;
 + (id)newVideoPropsAfterRotation:(long long)arg1 videoProps:(id)arg2;
@@ -155,6 +157,7 @@
 - (id)colorSpaceData;
 - (id)colorSpaceName;
 - (struct CGColorSpace *)clampColorSpace:(int)arg1;
+- (int)colorSpaceEnum;
 - (struct CGColorSpace *)colorSpace;
 - (struct CGRect)pixelSpaceFrameBounds;
 - (void)setPaspV:(int)arg1;
@@ -168,6 +171,7 @@
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setFieldDominance:(int)arg1;
 - (void)setColorSpaceData:(id)arg1;
+- (void)setColorSpaceEnum:(int)arg1;
 - (void)setColorSpace:(struct CGColorSpace *)arg1;
 - (void)setPixelSpaceFrameBounds:(struct CGRect)arg1;
 - (void)dealloc;
@@ -185,7 +189,7 @@
 - (id)initWithProxyVideoProps:(id)arg1;
 - (id)initWithPList:(id)arg1;
 - (id)initWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 fieldDominance:(int)arg3 sampleDuration:(CDStruct_1b6d18a9)arg4 frame:(id)arg5 field1:(id)arg6 field2:(id)arg7 paspH:(int)arg8 paspV:(int)arg9 frameRateUndefined:(BOOL)arg10;
-- (id)initWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 fieldDominance:(int)arg3 sampleDuration:(CDStruct_1b6d18a9)arg4 frame:(id)arg5 field1:(id)arg6 field2:(id)arg7 paspH:(int)arg8 paspV:(int)arg9 frameRateUndefined:(BOOL)arg10 cameraMode:(int)arg11;
+- (id)initWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 colorSpaceEnum:(int)arg3 fieldDominance:(int)arg4 sampleDuration:(CDStruct_1b6d18a9)arg5 frame:(id)arg6 field1:(id)arg7 field2:(id)arg8 paspH:(int)arg9 paspV:(int)arg10 frameRateUndefined:(BOOL)arg11 cameraMode:(int)arg12;
 - (void)_validateVideoProps;
 - (id)copyPropsWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 fieldDominance:(int)arg3 frameDuration:(CDStruct_1b6d18a9)arg4 paspH:(int)arg5 paspV:(int)arg6 cameraMode:(int)arg7;
 

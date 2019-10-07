@@ -29,6 +29,7 @@
 @property(nonatomic) BOOL hasAudio; // @synthesize hasAudio=_hasAudio;
 @property(retain, nonatomic) NSString *collectionTimeInLocalTime; // @synthesize collectionTimeInLocalTime=_collectionTimeInLocalTime;
 @property(retain, nonatomic) NSString *clipName; // @synthesize clipName=_clipName;
+- (void)translateSourceAndDestRectsToScreen:(float)arg1 pixelTransform:(id)arg2 angleSourceRect:(struct CGRect *)arg3 angleDrawRect:(struct CGRect *)arg4;
 - (void)dealloc;
 - (id)initWithClipNameTimeCodeAndAV:(id)arg1 collectionTimeInLocalTime:(id)arg2 textColor:(id)arg3 hasAudio:(BOOL)arg4 hasVideo:(BOOL)arg5 imageRect:(struct CGRect)arg6 displayRect:(struct CGRect)arg7 persistentID:(id)arg8;
 

@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     BOOL _dropCountIsExact;
     int _dropCount;
     NSString *_dropSource;
+    BOOL _forScrubOrSkim;
 }
 
+@property(readonly) BOOL forScrubOrSkim; // @synthesize forScrubOrSkim=_forScrubOrSkim;
 @property(readonly, retain) NSString *dropSource; // @synthesize dropSource=_dropSource;
 @property(readonly) int dropCount; // @synthesize dropCount=_dropCount;
 @property(readonly) BOOL dropCountIsExact; // @synthesize dropCountIsExact=_dropCountIsExact;
@@ -26,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)dealloc;
-- (id)initForDroppedTime:(CDStruct_1b6d18a9)arg1 dropCount:(int)arg2 countIsExact:(BOOL)arg3 dest:(id)arg4;
+- (id)initForDroppedTime:(CDStruct_1b6d18a9)arg1 dropCount:(int)arg2 countIsExact:(BOOL)arg3 dest:(id)arg4 forScrubOrSkim:(BOOL)arg5;
 
 @end
 

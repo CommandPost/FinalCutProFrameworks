@@ -19,6 +19,7 @@
     BOOL _isOrphan;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(nonatomic) BOOL isOrphan; // @synthesize isOrphan=_isOrphan;
 @property(readonly, nonatomic) struct PC_CMTimePair scopeStartEndTimes; // @synthesize scopeStartEndTimes=_scopeStartEndTimes;

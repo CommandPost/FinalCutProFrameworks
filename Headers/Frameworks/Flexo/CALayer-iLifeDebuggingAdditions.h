@@ -7,7 +7,6 @@
 #import "CALayer.h"
 
 @interface CALayer (iLifeDebuggingAdditions)
-- (BOOL)saveToMicaFileWithPath:(id)arg1;
 - (id)keyframeAnimationsWithBadKeyTimes;
 - (id)keyframeAnimationsWithKeyTimesThatDontEndAtOne;
 - (id)keyframeAnimationsWithKeyTimesThatDontStartAtZero;

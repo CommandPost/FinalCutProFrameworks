@@ -8,7 +8,7 @@
 
 #import "NSWindowDelegate.h"
 
-@class FFComparePickerView, FFLibrary, LKButton, LKPopUpButton, LKTextField, NSString;
+@class FFComparePickerView, FFLibrary, LKButton, LKPopUpButton, LKTextField, NSString, NSWindow;
 
 @interface FFComparePickerWindowController : NSWindowController <NSWindowDelegate>
 {
@@ -17,6 +17,7 @@
     LKButton *_addSnapshot;
     FFLibrary *_library;
     LKTextField *_numberOfSlots;
+    NSWindow *_overlayWindow;
 }
 
 @property(readonly, nonatomic) FFComparePickerView *pickerView; // @synthesize pickerView=_snapshotPickerView;
@@ -32,6 +33,7 @@
 - (void)close;
 - (void)close:(id)arg1;
 - (void)windowDidLoad;
+- (void)_makePanelKey:(id)arg1;
 - (void)showWindow:(id)arg1;
 - (void)_assetChange:(id)arg1;
 @property(retain) FFLibrary *library;

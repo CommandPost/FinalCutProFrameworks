@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CDStruct_e83c9415 unmodifiedRange; // @synthesize unmodifiedRange=_unmodifiedRange;
 @property(readonly, nonatomic) NSString *inputIdentifier; // @synthesize inputIdentifier=_inputIdentifier;
 @property(readonly, nonatomic) FFSource *inputSource; // @synthesize inputSource=_inputSource;
+- (id)object;
 - (CDStruct_1b6d18a9)_mapRequestedTimeToInputTime:(CDStruct_1b6d18a9)arg1 adjustedDuration:(CDStruct_1b6d18a9 *)arg2;
 - (void)_setupSources;
 - (void)dealloc;

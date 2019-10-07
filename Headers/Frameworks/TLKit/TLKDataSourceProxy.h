@@ -117,7 +117,6 @@
 - (BOOL)shouldRollEdge:(id)arg1 ofItem:(id)arg2 adjacentItem:(id)arg3;
 - (void)draggingSessionEnded:(BOOL)arg1;
 - (id)acceptDrop:(id)arg1 onItem:(id)arg2 atIndex:(long long)arg3 inLane:(id)arg4 dropTime:(CDStruct_1b6d18a9)arg5 dropHighlight:(CDStruct_e83c9415 *)arg6;
-- (unsigned long long)validateDrop:(id)arg1 onItem:(id)arg2 atIndex:(long long)arg3 inLane:(id)arg4 dropTime:(CDStruct_1b6d18a9 *)arg5 proposedHighlightItems:(id *)arg6;
 - (unsigned long long)validateDrop:(id)arg1 onItem:(id)arg2 atIndex:(long long)arg3 inLane:(id)arg4 dropTime:(CDStruct_1b6d18a9 *)arg5;
 - (void)setDisplayName:(id)arg1 forItems:(id)arg2;
 - (id)orderItemInfosAbove:(id)arg1 itemInfosBelow:(id)arg2;
@@ -135,11 +134,13 @@
 - (void)moveTracks:(id)arg1 toIndex:(unsigned long long)arg2;
 - (void)endTransaction;
 - (void)beginTransaction;
+- (void)accessDataSourceForWritingUsingBlock:(CDUnknownBlockType)arg1;
+- (void)accessDataSourceForReadingUsingBlock:(CDUnknownBlockType)arg1;
 - (void)endDataAccess:(BOOL)arg1;
 - (void)beginDataAccess:(BOOL)arg1;
 - (int)fetchTypeForItem:(id)arg1;
 - (id)fetchDisplayNameForMarker:(id)arg1;
-- (id)fetchAccessibilityDisplayNameForContainerInfo:(id)arg1;
+- (id)fetchAccessibilityDisplayNameForContainer:(id)arg1;
 - (id)fetchAccessibilityDisplayNameForItemComponent:(id)arg1;
 - (id)fetchEditableNameForItemComponent:(id)arg1;
 - (id)fetchDisplayNameForItemComponent:(id)arg1;
@@ -154,12 +155,12 @@
 - (CDStruct_e83c9415)fetchTimeRangeForItemComponentInfo:(id)arg1;
 - (CDStruct_e83c9415)fetchPrecisionEditorTimeRangeForItem:(id)arg1 leftItem:(id)arg2 rightItem:(id)arg3;
 - (CDStruct_e83c9415)fetchClippedAudioTimeRangeForItem:(id)arg1;
-- (CDStruct_e83c9415)fetchTimeRangeForItem_HACK:(id)arg1;
+- (CDStruct_e83c9415)fetchTimeRangeForSecondaryItemComponent:(id)arg1;
 - (CDStruct_e83c9415)fetchTimeRangeLimitsForItem:(id)arg1;
 - (CDStruct_e83c9415)fetchClippedTimeRangeForItemComponent:(id)arg1;
 - (CDStruct_e83c9415)fetchTimeRangeForItem:(id)arg1;
 - (CDStruct_e83c9415)fetchTimeRangeForTrack:(id)arg1;
-- (id)fetchBackgroundColorForItemComponentInfo:(id)arg1;
+- (id)fetchBackgroundColorForItemComponent:(id)arg1;
 - (id)fetchAdjacentItemForItemComponent:(id)arg1 edgePart:(id)arg2;
 - (BOOL)fetchShouldHidePrimaryComponentForItem:(id)arg1;
 - (id)fetchBoxMetricsForLaneInfo:(id)arg1;
@@ -168,7 +169,7 @@
 - (id)fetchNameForLaneInfo:(id)arg1;
 - (long long)fetchLayoutRegionForLaneInfo:(id)arg1;
 - (id)fetchChildLanesForItemLaneInfo:(id)arg1;
-- (id)fetchLaneForItemComponentInfo:(id)arg1;
+- (id)fetchLaneForItemComponent:(id)arg1;
 - (id)fetchBackgroundMusicLaneForContainer:(id)arg1;
 - (id)fetchSpineLaneForContainer:(id)arg1;
 - (id)fetchItemLanesForContainer:(id)arg1;

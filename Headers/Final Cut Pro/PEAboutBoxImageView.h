@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)mouseDown:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

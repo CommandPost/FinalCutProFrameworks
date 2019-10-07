@@ -16,10 +16,8 @@
     CDStruct_1b6d18a9 _originalTime;
     struct CGRect _timecodeFrame;
     TLKRangeItemLayer *_activeLayer;
-    TLKRangeItemLayer *_highlightLayer;
 }
 
-@property(retain, nonatomic) TLKRangeItemLayer *highlightLayer; // @synthesize highlightLayer=_highlightLayer;
 @property(retain, nonatomic) TLKRangeItemLayer *activeLayer; // @synthesize activeLayer=_activeLayer;
 @property(nonatomic) struct CGRect timecodeFrame; // @synthesize timecodeFrame=_timecodeFrame;
 @property(retain, nonatomic) id <TLKTimelineItem> timelineItem; // @synthesize timelineItem=_timelineItem;
@@ -30,7 +28,6 @@
 - (void)_showTimecodeDisplayWithFrame:(struct CGRect)arg1 forMoveFromTime:(CDStruct_1b6d18a9)arg2 toTime:(CDStruct_1b6d18a9)arg3;
 - (CDStruct_1b6d18a9)_rollEdge:(id)arg1 ofRangeItem:(id)arg2 toPoint:(struct CGPoint)arg3;
 - (id)_findLayerForRangeItem:(id)arg1 inItemLayer:(id)arg2;
-- (id)_findHighlightLayerForEdge:(id)arg1 ofLayer:(id)arg2;
 - (void)_clearItemInfo;
 - (void)updateRollover:(id)arg1;
 - (void)exitRollover:(id)arg1;

@@ -13,7 +13,7 @@
     FFEffect *_effect;
     NSMutableDictionary *_inputInfos;
     CDStruct_1b6d18a9 _channelOffset;
-    _Bool _inputsFrozen;
+    // Error parsing type: AB, name: _inputsFrozen
     int _miscFlags;
     struct FFSynchronizable *_cachedUnionedSynchronizable;
     CDStruct_e83c9415 _cachedUnionedInputRange;

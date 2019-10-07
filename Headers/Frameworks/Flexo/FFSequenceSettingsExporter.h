@@ -53,6 +53,9 @@
 @property(readonly) NSString *toFile; // @synthesize toFile=_toFile;
 @property(readonly) FFMedia *media; // @synthesize media=_media;
 @property(retain) NSDictionary *customData; // @synthesize customData=_customData;
+- (CDStruct_1b6d18a9)captionStartTimeOffset;
+- (id)captionSetsForEmbedding;
+- (id)newQuickTimeMovieWriterWithPath:(id)arg1 status:(int *)arg2;
 - (void)_runExport;
 - (void)_performAudioFileExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 fileNames:(id)arg4 fileFormat:(int)arg5;
 - (void)_performAudioOnlyMovieExport:(id)arg1 sampleRate:(double)arg2 durationInFrames:(long long)arg3 movieWriter:(id)arg4;

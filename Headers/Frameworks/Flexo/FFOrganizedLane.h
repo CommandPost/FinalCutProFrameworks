@@ -7,12 +7,12 @@
 #import "NSObject.h"
 
 #import "FFStorylineLane.h"
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class FFRoleColorScheme, NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
-@interface FFOrganizedLane : NSObject <NSCopying, NSCoding, FFStorylineLane>
+@interface FFOrganizedLane : NSObject <NSCopying, NSSecureCoding, FFStorylineLane>
 {
     NSMutableSet *_items;
     NSMutableArray *_childLanes;
@@ -32,6 +32,7 @@
     FFOrganizedLane *_parentLane;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) FFOrganizedLane *parentLane; // @synthesize parentLane=_parentLane;
 @property(readonly, nonatomic) NSSet *items; // @synthesize items=_items;
 @property(copy, nonatomic) NSArray *childLanes; // @synthesize childLanes=_childLanes;

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     FFWeakPointerValue *_dataSourceWeakPointer;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) FFWeakPointerValue *dataSourceWeakPointer; // @synthesize dataSourceWeakPointer=_dataSourceWeakPointer;
 @property(nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property(copy, nonatomic) NSSet *roles; // @synthesize roles=_roles;

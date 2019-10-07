@@ -16,6 +16,7 @@
     PAEMD5Value *_identifierMD5Value;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)sharedOfflineProps;
 + (id)offlineCustomCameraLUTPropsWithName:(id)arg1;
 + (id)customCameraLUTPropsWithIdentifierMD5Value:(id)arg1 name:(id)arg2;

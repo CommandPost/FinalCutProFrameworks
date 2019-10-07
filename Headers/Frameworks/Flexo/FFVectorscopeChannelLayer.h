@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)releaseCGLPixelFormat:(struct _CGLPixelFormatObject *)arg1;
 - (struct _CGLPixelFormatObject *)copyCGLPixelFormatForDisplayMask:(unsigned int)arg1;
 - (id)actionForKey:(id)arg1;
-- (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;
+- (void)setNeedsUpdateFromDest:(unsigned long long)arg1;
 - (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)setVectorscopeContext:(struct FFVideoScopesVectorscopeViewPrivate *)arg1;
 - (void)dealloc;

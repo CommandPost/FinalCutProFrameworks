@@ -19,6 +19,7 @@
 - (void)redo:(id)arg1;
 - (void)undo:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)getUndoManager;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)closeOpenUndoGroup;

@@ -20,7 +20,7 @@
 }
 
 - (int)destRecommendedFFSVPriority;
-- (BOOL)wantsDithering:(id)arg1;
+- (BOOL)internal_wantsDithering:(id)arg1;
 - (unsigned long long)maxQueueSize;
 - (int)getFrameQueueStatus;
 - (void)pushFrame:(id)arg1;

@@ -7,6 +7,7 @@
 @class NSDictionary;
 
 @protocol FxXPCProtocol
+- (void)viewServiceListenerEndPoint:(void (^)(NSXPCListenerEndpoint *))arg1;
 - (void)createNewConnectionForProcessID:(int)arg1 minimumVersion:(unsigned long long)arg2 maximumVersion:(unsigned long long)arg3 hostCapabilities:(NSDictionary *)arg4 reply:(void (^)(NSXPCListenerEndpoint *, NSError *))arg5;
 @end
 

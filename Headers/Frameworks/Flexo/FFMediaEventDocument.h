@@ -69,6 +69,7 @@
 - (BOOL)update_removeBadTranscodedFiles;
 - (BOOL)update_projectNotesLocation;
 - (void)update_repairEffectStackAnchoredObjectReferences;
+- (BOOL)update_fixUpColorIsolationsForHSLQualifiers;
 - (BOOL)update_convertToNewColorTabEffects;
 - (BOOL)update_HeColorEffectToMaskedEffect;
 - (BOOL)update_dvClipCreationDates;

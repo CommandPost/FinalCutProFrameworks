@@ -37,6 +37,7 @@
 - (void)onCurrentDocumentOwnerChanged:(id)arg1;
 - (id)init;
 - (id)initWithDocumentOwner:(id)arg1 delegate:(id)arg2;
+- (void)invalidate;
 - (void)dealloc;
 
 // Remaining properties

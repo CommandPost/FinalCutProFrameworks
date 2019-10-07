@@ -4,13 +4,29 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "TLKDrawSelectionOperation.h"
+#import "NSOperation.h"
+
+@class CALayer, NSSet, TLKLayoutDatabase, TLKTimelineView;
 
 __attribute__((visibility("hidden")))
-@interface PEDrawSelectionOperation : TLKDrawSelectionOperation
+@interface PEDrawSelectionOperation : NSOperation
 {
+    TLKTimelineView *_timelineView;
+    NSSet *_selectedItemComponents;
+    NSSet *_deselectedItemComponents;
+    TLKLayoutDatabase *_database;
+    CALayer *_mainDrawLayer;
+    CALayer *_offscreenIndicatorLayer;
+    struct CGRect _visibleRect;
 }
 
+@property(nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
+@property(retain, nonatomic) CALayer *offscreenIndicatorLayer; // @synthesize offscreenIndicatorLayer=_offscreenIndicatorLayer;
+@property(retain, nonatomic) CALayer *mainDrawLayer; // @synthesize mainDrawLayer=_mainDrawLayer;
+@property(retain, nonatomic) TLKLayoutDatabase *database; // @synthesize database=_database;
+@property(copy, nonatomic) NSSet *deselectedItemComponents; // @synthesize deselectedItemComponents=_deselectedItemComponents;
+@property(copy, nonatomic) NSSet *selectedItemComponents; // @synthesize selectedItemComponents=_selectedItemComponents;
+@property(retain, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 - (void)_updateOffscreenItemIndicators;
 - (void)_discardOffscreenIndicatorsForItemComponents:(id)arg1;
 - (void)_discardOffscreenIndicatorForItemComponentFragment:(id)arg1;
@@ -29,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)selectionIndicatorStyleForItemComponent:(id)arg1;
 - (void)_updateSecondaryComponentWebbingIndicators;
 - (void)main;
+- (void)dealloc;
 
 @end
 

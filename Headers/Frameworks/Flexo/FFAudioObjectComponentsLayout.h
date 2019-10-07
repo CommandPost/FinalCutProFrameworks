@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_recentOrphanedLayoutItems;
 }
 
++ (BOOL)supportsSecureCoding;
 + (Class)mutableLayoutItemClass;
 + (Class)layoutItemClass;
 + (id)copyClassDescription;

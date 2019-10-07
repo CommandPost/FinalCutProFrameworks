@@ -11,7 +11,7 @@
 #import "NSOutlineViewDelegate.h"
 #import "OZPreviewModule.h"
 
-@class AVPlayerLayer, CALayer, LKButton, LKImageView, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSImageView, NSLayoutConstraint, NSMatrix, NSMutableArray, NSOutlineView, NSPasteboard, NSScrollView, NSSplitView, NSString, NSTimer, NSView, OZLibraryEntry, OZLibraryEntryFilter, OZLibraryPreviewCtrl, OZPreviewBackgroundView, OZPreviewPlayButtonView, OZQTMovieLayer, OZSelectedObjectPreview;
+@class AVPlayerLayer, CALayer, LKButton, LKImageView, LKPopUpButton, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSImageView, NSLayoutConstraint, NSMatrix, NSMutableArray, NSOutlineView, NSPasteboard, NSScrollView, NSSplitView, NSString, NSView, OZLibraryEntry, OZLibraryEntryFilter, OZLibraryPreviewCtrl, OZPreviewBackgroundView, OZPreviewPlayButtonView, OZSelectedObjectPreview;
 
 @interface OZLibraryModuleBase : OZProViewModule <NSMatrixDelegate, NSOutlineViewDataSource, NSOutlineViewDelegate, OZPreviewModule>
 {
@@ -30,7 +30,6 @@
     CALayer *_playButtonLayer;
     CALayer *_selectedObjPrevLayer;
     CALayer *_customPreviewCtrlLayer;
-    OZQTMovieLayer *_movieLayer;
     OZPreviewPlayButtonView *_playButtonView;
     LKImageView *_imagePreview;
     NSImageView *_previewSmallIcon;
@@ -62,13 +61,11 @@
     int _viewMode;
     int _previewMode;
     OZLibraryEntry *_previewedEntry;
-    NSTimer *_playTimer;
     OZLibraryPreviewCtrl *_customPreviewCtrl;
     NSMutableArray *_backList;
     NSMutableArray *_forwardList;
     BOOL _ignoreNotifications;
     OZLibraryEntryFilter *_viewFilter;
-    BOOL _collapseSequences;
     NSPasteboard *_dropSourcePasteboard;
     OZLibraryEntry *_dropParent;
     BOOL _listenToNotifications;
@@ -136,7 +133,6 @@
 - (void)startPreviewPlaying;
 - (void)setPreviewedEntry:(id)arg1;
 - (id)getPreviewedEntry;
-- (id)realMovieForMovieView:(id)arg1;
 - (void)showEntryPreview:(id)arg1 multipleSelection:(BOOL)arg2;
 - (void)showEntryPreview:(id)arg1;
 - (id)truncatedString:(id)arg1 fontStyle:(unsigned int)arg2;
@@ -179,8 +175,6 @@
 - (void)reReadDirectoryContents:(id)arg1;
 - (void)deleteSelected;
 - (void)deselectAll;
-- (void)setCollapseSequences:(BOOL)arg1;
-- (BOOL)collapseSequences;
 - (id)getSearchString;
 - (void)appendSearchString:(id)arg1 atTime:(double)arg2;
 - (void)setThumbnailSize:(int)arg1;
@@ -192,7 +186,6 @@
 - (id)getSelectedEntries;
 - (void)updateApplyButtonState;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)playCheck:(id)arg1;
 - (void)togglePlay:(id)arg1;
 - (void)playAudio:(id)arg1;
 - (void)addRemoveFavorite:(id)arg1;

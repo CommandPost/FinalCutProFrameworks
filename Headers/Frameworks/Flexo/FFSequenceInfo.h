@@ -6,13 +6,13 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class FFVideoFormat, NSDictionary, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFSequenceInfo : FFBaseDSObject <NSCoding, NSCopying>
+@interface FFSequenceInfo : FFBaseDSObject <NSSecureCoding, NSCopying>
 {
     CDStruct_e83c9415 _mediaRange;
     CDStruct_1b6d18a9 _frameDuration;
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     double _audioSampleRate;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)sequenceMDKeysToCache;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
@@ -84,7 +85,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)autoEdit;
 - (void)setThumbnailMD5:(id)arg1 forQuality:(int)arg2;
 - (id)thumbnailMD5ForQuality:(int)arg1;
-- (void)thumbImageReadyForRequest:(id)arg1 thumbnailImage:(struct CGImage *)arg2 requestCanceled:(BOOL)arg3 addThumbnailToEvent:(BOOL)arg4;
+- (void)thumbImageReadyForRequest:(id)arg1 thumbnailImage:(id)arg2 requestCanceled:(BOOL)arg3 addThumbnailToEvent:(BOOL)arg4;
 - (void)requestThumbnailImageForQuality:(int)arg1 addThumbnailToEvent:(BOOL)arg2 removeTitles:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)setModDate:(id)arg1;
 - (id)metadataContentModDate;

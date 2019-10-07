@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSRecursiveLock *_cachedAvailableMediaSourcesLock;
 }
 
++ (BOOL)supportsSecureCoding;
 + (Class)layoutClass;
 + (id)copyClassDescription;
 @property(retain, nonatomic) FFAudioComponentsLayout *auxLayout; // @synthesize auxLayout=_auxLayout;

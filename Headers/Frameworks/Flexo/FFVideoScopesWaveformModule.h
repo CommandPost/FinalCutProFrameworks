@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (struct CGSize)viewMinSize;
-- (void)colorspaceDidChangeForVideoScopes:(id)arg1;
+- (struct CGColorSpace *)overrideColorSpaceForVideoScopes:(id)arg1;
+- (void)colorSpaceDidChangeForVideoScopes:(id)arg1;
 - (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (id)viewProperties;
 - (void)setViewProperties:(id)arg1;
@@ -29,19 +30,19 @@ __attribute__((visibility("hidden")))
 - (void)changeColorSpaceRec709:(id)arg1;
 - (void)changeColorSpaceRec601:(id)arg1;
 - (void)changeColorSpaceDefault:(id)arg1;
-- (void)_setOverrideColorSpace:(long long)arg1;
 - (void)changeUnitsNits:(id)arg1;
 - (void)changeUnitsMillivolts:(id)arg1;
 - (void)changeUnitsIRE:(id)arg1;
-- (void)_setCompositeVideoUnits:(long long)arg1;
 - (void)changeModeYCbCr:(id)arg1;
 - (void)changeModeChroma:(id)arg1;
-- (void)changeModeLuma:(id)arg1;
+- (void)changeModeYOrYPrime:(id)arg1;
 - (void)changeModeBlueChannel:(id)arg1;
 - (void)changeModeGreenChannel:(id)arg1;
 - (void)changeModeRedChannel:(id)arg1;
 - (void)changeModeOverlay:(id)arg1;
 - (void)changeModeParade:(id)arg1;
+- (void)_setCompositeVideoUnits:(long long)arg1;
+- (void)_setOverrideColorSpace:(long long)arg1;
 - (void)_setDisplayMode:(long long)arg1;
 - (void)_postPropertyChange;
 

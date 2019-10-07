@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface MXFMedia : NSObject <HPMMediaProtocol>
 {
     int _typeID;
-    int _editRate;
+    CDStruct_2689111f _editRate;
     long long _frameDuration;
     long long _origin;
     long long _originInSamples;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     int _essenceType;
     int _codecType;
     long long _commonPacketUnits;
-    vector_40fa464a *_index;
+    struct vector<HPMChunkEntry, std::__1::allocator<HPMChunkEntry>> *_index;
     struct MXKey *_sourcePackID;
     int _wrapping;
     unsigned int _trackID;
@@ -54,13 +54,13 @@ __attribute__((visibility("hidden")))
 @property(readonly) long long originInSamples; // @synthesize originInSamples=_originInSamples;
 @property(readonly) long long origin; // @synthesize origin=_origin;
 @property(readonly) long long frameDuration; // @synthesize frameDuration=_frameDuration;
-@property(readonly) int editRate; // @synthesize editRate=_editRate;
+@property(readonly) CDStruct_2689111f editRate; // @synthesize editRate=_editRate;
 @property(readonly) int type; // @synthesize type=_typeID;
 - (int)unitsPerPacketWithIndexPosition:(unsigned long long)arg1;
 - (void)checkMediaWithIndexDuration:(long long)arg1;
-- (unsigned char)frameFlagsWithIndexPosition:(unsigned long long)arg1;
+- (unsigned char)frameTypeWithIndexPosition:(unsigned long long)arg1;
 - (BOOL)temporalFrameOffsetWithIndexPosition:(unsigned long long)arg1;
-- (BOOL)displayFrameOffsetWithIndexPosition:(unsigned long long)arg1;
+- (BOOL)displayFrameOffsetWithIndexPosition:(unsigned long long)arg1 mustLoadAtMediaIndexPosition:(long long *)arg2;
 - (long long)indexPositionWithSamplePosition:(long long)arg1 sampleOffset:(int *)arg2 mustLoadAtMediaIndexPosition:(long long *)arg3;
 - (CDStruct_37d50165 *)mutableIndexEntryWithEditPosition:(long long)arg1;
 - (const CDStruct_37d50165 *)indexEntryWithEditPosition:(long long)arg1;
@@ -81,7 +81,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) long long indexDataSize;
 @property long long indexSampleCount;
 @property(readonly) unsigned long long indexEntryCount;
-@property(readonly) int sampleRate;
+@property(readonly) CDStruct_2689111f sampleRate;
 - (void)dealloc;
 - (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXKey *)arg2 bodySID:(unsigned int)arg3 trackType:(int)arg4;
 

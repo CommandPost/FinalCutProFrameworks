@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _innerOuterEnabled;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (void)registerEffects;
 + (id)newInnerOuterGroupEffect;

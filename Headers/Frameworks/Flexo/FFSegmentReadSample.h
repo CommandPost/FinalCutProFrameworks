@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _cancelled;
     NSCondition *_lock;
-    int _condition;
+    // Error parsing type: Ai, name: _condition
     long long _offset;
     FFSegmentStore *_store;
     id _sample;

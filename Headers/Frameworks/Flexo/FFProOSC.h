@@ -32,8 +32,8 @@
     BOOL _doRegister;
     NSString *_registryKey;
     FFCHRootChannel *_rootChannel;
+    BOOL _HDRLibrary;
     BOOL _mouseIsDown;
-    BOOL _autoKeyframingEnabled;
     long long _dragCount;
     void *_moPathHandleX;
     void *_moPathHandleY;
@@ -58,6 +58,8 @@
 - (void)lock;
 - (void)releaseWriteLock;
 - (void)acquireWriteLock;
+- (double)isHDRLibraryFillMultiply;
+- (BOOL)isHDRLibrary;
 - (double)backingScaleFactor;
 - (void)resetKeyframeForCheckedChannels;
 - (void)toggleKeyframeForCheckedChannels;
@@ -107,6 +109,7 @@
 - (BOOL)showRotationOSC;
 - (void)drawGeometry:(_Bool)arg1;
 - (void)drawElementOutline:(const PCMatrix44Tmpl_e98c85ee *)arg1 red:(double)arg2 green:(double)arg3 blue:(double)arg4;
+- (vector_91526fd1)clippedBoundingLines:(const PCMatrix44Tmpl_e98c85ee *)arg1;
 - (void)clipOutline:(const PCVector2_5d498db0 *)arg1 numPoints:(int)arg2 edges:(PCVector2_5d498db0 *)arg3 returnVisible:(vector_a7cf9eda *)arg4;
 - (void)clipPoints:(const vector_ced1dec3 *)arg1 returnVisible:(vector_a7cf9eda *)arg2;
 - (BOOL)getTransformedBounds:(PCRect_3a266109 *)arg1;
@@ -248,6 +251,7 @@
 - (void)setCursorForOSC:(id)arg1 event:(id)arg2;
 - (void)setCursor:(id)arg1;
 - (int)oscMode;
+- (shared_ptr_d444a1e3)destinationDevice;
 - (struct _CGLContextObject *)glContext;
 - (CDStruct_1b6d18a9)getFrameDuration;
 - (float)getHeight;
@@ -300,6 +304,8 @@
 - (id)makeKeyForID:(const struct PCUUID *)arg1;
 - (void)drawElementOutline:(struct OZElement *)arg1 state:(const struct OZRenderState *)arg2 viewTransformation:(const PCMatrix44Tmpl_e98c85ee *)arg3 red:(double)arg4 green:(double)arg5 blue:(double)arg6;
 - (BOOL)showToolTips;
+- (void)mouseUpFromAnotherOSC;
+- (void)mouseDownFromAnotherOSC;
 - (void)undoEnd;
 - (void)undoBegin;
 - (void)clearTemporaryUndoItems;
@@ -410,8 +416,6 @@
 - (_Bool)isDistortAnimated;
 - (_Bool)isCropAnimated;
 - (_Bool)isTransformAnimated;
-- (int)isAutoKeframingEnabled;
-- (void)_autokeyframeChangedNotification:(id)arg1;
 - (id)findDistortEffect:(id)arg1;
 - (id)findCropEffect:(id)arg1;
 - (id)findTransformEffect:(id)arg1;

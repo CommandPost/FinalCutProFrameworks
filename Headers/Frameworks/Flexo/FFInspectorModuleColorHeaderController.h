@@ -73,9 +73,9 @@ __attribute__((visibility("hidden")))
 - (void)copyMasks:(id)arg1;
 - (void)invertMasks:(id)arg1;
 - (void)addIsolationMask:(id)arg1;
+- (id)_addIsolationMaskWithHandler:(CDUnknownBlockType)arg1;
 - (void)addImprovedEllipseMask:(id)arg1;
-- (void)addEllipseMask:(id)arg1;
-- (void)addMaskOfClass:(Class)arg1 actionName:(id)arg2;
+- (BOOL)_addMaskOfClass:(Class)arg1 actionName:(id)arg2 maskHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)addCustomMenuItems:(id)arg1;
 - (id)customKeyframeTitle;

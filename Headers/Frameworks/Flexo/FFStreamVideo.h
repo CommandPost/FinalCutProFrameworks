@@ -15,6 +15,7 @@
 }
 
 + (struct CGRect)computeROI:(id)arg1 forSquared:(BOOL)arg2 full:(BOOL)arg3 quality:(int)arg4;
++ (void)initialize;
 - (id)newPTforRequestSquared:(BOOL)arg1 field:(unsigned int)arg2 quality:(int)arg3 Ydown:(BOOL)arg4;
 - (int)actualQualityFromRequestedQuality:(int)arg1;
 - (id)newFlattenedImageViaRenderQueue:(int)arg1 atTime:(CDStruct_1b6d18a9)arg2 flattenFormat:(id)arg3 wantSquarePixels:(BOOL)arg4 wsChoice:(int)arg5 progressBlock:(CDUnknownBlockType)arg6 error:(id *)arg7;
@@ -31,8 +32,8 @@
 - (id)newSquaredFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 quality:(int)arg2 temporalQuality:(int)arg3 bypassSegmentStore:(BOOL)arg4 backgroundColor:(id)arg5 returnImageMD5:(id *)arg6;
 - (id)newSquaredFlattenedImageAtTime:(CDStruct_1b6d18a9)arg1 quality:(int)arg2 temporalQuality:(int)arg3 bypassSegmentStore:(BOOL)arg4 returnImageMD5:(id *)arg5;
 - (id)newThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 returnImageMD5:(id *)arg3 contentsScale:(double)arg4;
-- (void)_saveThumbnailImageForMD5AndOffset:(CDStruct_bdcb2b0d)arg1 sampleOffset:(long long)arg2 image:(id)arg3;
-- (id)_newThumbnailImageForMD5AndOffset:(CDStruct_bdcb2b0d)arg1 sampleOffset:(long long)arg2;
+- (void)_saveThumbnailImageForMD5AndOffset:(CDStruct_bdcb2b0d)arg1 sampleOffset:(long long)arg2 image:(id)arg3 context:(id)arg4;
+- (id)_newThumbnailImageForMD5AndOffset:(CDStruct_bdcb2b0d)arg1 sampleOffset:(long long)arg2 context:(id)arg3;
 - (BOOL)md5AndOffsetForCGThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 md5:(CDStruct_bdcb2b0d *)arg3 sampleOffset:(long long *)arg4 contentsScale:(double)arg5;
 - (void)newContextAndPixelTransformForQuality:(int)arg1 temporalQuality:(int)arg2 context:(id *)arg3 pixelTransform:(id *)arg4 wsChoice:(int)arg5;
 - (struct CGImage *)newCGThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 returnImageMD5:(id *)arg3 contentsScale:(double)arg4;

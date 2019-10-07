@@ -6,23 +6,31 @@
 
 #import <TLKit/ERLRelationalObject.h>
 
-@class ERLToManyPropertyValue, NSSet, PCChangeLog;
+#import "PCDispatchLocking.h"
 
-@interface ERLRelationalModel : ERLRelationalObject
+@class ERLToManyPropertyValue, NSSet, NSString, PCChangeLog, PCDispatchLock;
+
+@interface ERLRelationalModel : ERLRelationalObject <PCDispatchLocking>
 {
     PCChangeLog *_transactionChangeLog;
     unsigned long long _transactionLevel;
     ERLToManyPropertyValue *_relationalTablesPropertyValue;
+    PCDispatchLock *_dispatchLock;
 }
 
 + (void)registerRelationalObjectClasses:(id)arg1;
 + (id)registeredRelationalObjectClasses;
 + (id)toManyPropertyDescriptions;
 + (void)initialize;
+@property(readonly) PCDispatchLock *dispatchLock; // @synthesize dispatchLock=_dispatchLock;
 @property(retain, nonatomic) ERLToManyPropertyValue *relationalTablesPropertyValue; // @synthesize relationalTablesPropertyValue=_relationalTablesPropertyValue;
 @property(nonatomic) unsigned long long transactionLevel; // @synthesize transactionLevel=_transactionLevel;
 @property(retain, nonatomic) PCChangeLog *transactionChangeLog; // @synthesize transactionChangeLog=_transactionChangeLog;
-- (void)performTransactionWithBlock:(CDUnknownBlockType)arg1;
+- (void)modifyModelUsingBlock:(CDUnknownBlockType)arg1;
+- (void)lockForWritingUsingBlock:(CDUnknownBlockType)arg1;
+- (void)lockForReadingUsingBlock:(CDUnknownBlockType)arg1;
+- (void)requireWriteLock;
+- (void)requireReadLock;
 - (void)endTransaction;
 - (void)beginTransaction;
 - (id)relationalTableNamed:(id)arg1;
@@ -35,7 +43,11 @@
 - (id)init;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSSet *relationalTables; // @dynamic relationalTables;
+@property(readonly) Class superclass;
 
 @end
 

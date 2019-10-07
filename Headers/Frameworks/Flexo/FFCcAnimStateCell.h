@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
     FFColorCorrectionEffect *_cachedEffect;
 }
 
-@property __weak FFColorCorrectionEffect *cachedEffect; // @synthesize cachedEffect=_cachedEffect;
 - (void)resetHighlightMidtoneShadow:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)addCustomMenuItems:(id)arg1;
 - (id)_effect;
+- (void)dealloc;
 
 @end
 

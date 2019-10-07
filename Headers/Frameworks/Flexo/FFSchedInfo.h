@@ -8,22 +8,28 @@
 
 #import "NSCopying.h"
 
+@class FFSchedQueueingInfo;
+
 @interface FFSchedInfo : NSObject <NSCopying>
 {
     _Bool _forUIPlayback;
     _Bool _scheduledDuringPreroll;
     void *_baseClock;
     CDStruct_1b6d18a9 _baseClockDeadlineTime;
+    FFSchedQueueingInfo *_queueInfo;
 }
 
+@property(readonly, retain) FFSchedQueueingInfo *queueInfo; // @synthesize queueInfo=_queueInfo;
 @property(readonly) _Bool scheduledDuringPreroll; // @synthesize scheduledDuringPreroll=_scheduledDuringPreroll;
 @property(readonly) _Bool forUIPlayback; // @synthesize forUIPlayback=_forUIPlayback;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (CDStruct_1b6d18a9)hostClockSuggestDecodeCompleteTime;
+- (CDStruct_1b6d18a9)hostClockSuggestedHeliumCompleteTime;
 - (CDStruct_1b6d18a9)hostClockDeadlineTime;
 - (_Bool)hasDeadlineInfo;
 - (void)dealloc;
-- (id)initDeadlineInfoForBaseClock:(void *)arg1 deadlineTime:(CDStruct_1b6d18a9)arg2 forUI:(_Bool)arg3 scheduledDuringPreroll:(_Bool)arg4;
+- (id)initDeadlineInfoForBaseClock:(void *)arg1 deadlineTime:(CDStruct_1b6d18a9)arg2 forUI:(_Bool)arg3 scheduledDuringPreroll:(_Bool)arg4 playerQueueingInfo:(id)arg5;
 
 @end
 

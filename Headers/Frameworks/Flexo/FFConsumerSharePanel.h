@@ -6,7 +6,7 @@
 
 #import <Flexo/FFBaseSharePanel.h>
 
-@class FFAutoexpandingTextField, FFConsumerShareInfoController, LKButton, LKScrollView, LKTextField, NSImageView, NSTrackingArea, NSView;
+@class FFAutoexpandingTextField, FFConsumerShareInfoController, LKButton, LKScrollView, LKTextField, NSImageView, NSString, NSTrackingArea, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFConsumerSharePanel : FFBaseSharePanel
@@ -24,10 +24,12 @@ __attribute__((visibility("hidden")))
     NSView *_settingsView;
     NSTrackingArea *_compatibilityTrackingArea;
     NSTrackingArea *_errorTrackingArea;
+    NSView *_videoPreviewContainerView;
 }
 
 @property(nonatomic) FFAutoexpandingTextField *tagsTitle; // @synthesize tagsTitle=_tagsTitle;
 @property(nonatomic) FFAutoexpandingTextField *descriptionTitle; // @synthesize descriptionTitle=_descriptionTitle;
+@property(nonatomic) NSView *videoPreviewContainerView; // @synthesize videoPreviewContainerView=_videoPreviewContainerView;
 @property(nonatomic) NSView *settingsView; // @synthesize settingsView=_settingsView;
 @property(nonatomic) FFConsumerShareInfoController *shareInfoController; // @synthesize shareInfoController=_shareInfoController;
 @property(nonatomic) FFAutoexpandingTextField *tagsField; // @synthesize tagsField=_tagsField;
@@ -37,9 +39,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) NSImageView *errorImage; // @synthesize errorImage=_errorImage;
 @property(nonatomic) LKButton *signInButton; // @synthesize signInButton=_signInButton;
 @property(nonatomic) LKScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property(readonly) NSString *destinationName;
 - (id)batchNameWithBatch:(id)arg1 andDestination:(id)arg2;
 - (void)showSignInPanel:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (BOOL)shouldShowAddToTheaterButton;
+- (void)showOrHideAddToTheaterButton;
+- (void)placeView:(id)arg1 inContainerView:(id)arg2;
+- (void)installVideoPreviewView;
 - (void)windowDidLoad;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;

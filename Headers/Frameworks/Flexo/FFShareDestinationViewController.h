@@ -33,6 +33,7 @@
 - (void)viewDidLoad;
 - (void)expandPopoverToRevealFullContents;
 - (double)heightWhichFullyExpandsPopoverWithPositioningView:(id)arg1;
+- (void)updateDestinations;
 - (id)initWithSharePopoverDelegate:(id)arg1;
 
 // Remaining properties

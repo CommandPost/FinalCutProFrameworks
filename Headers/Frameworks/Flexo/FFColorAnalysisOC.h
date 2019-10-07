@@ -6,15 +6,16 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 __attribute__((visibility("hidden")))
-@interface FFColorAnalysisOC : NSObject <NSCopying, NSCoding>
+@interface FFColorAnalysisOC : NSObject <NSCopying, NSSecureCoding>
 {
     struct FFColorAnalysis *_colorAnalysis;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(readonly) struct FFColorAnalysis *colorAnalysis; // @synthesize colorAnalysis=_colorAnalysis;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

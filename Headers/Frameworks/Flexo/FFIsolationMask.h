@@ -6,29 +6,50 @@
 
 #import <Flexo/FFMaskBase.h>
 
+#import "FFMaskBaseMatteScreenable.h"
+
+@class CHChannelFolder, NSString;
+
 __attribute__((visibility("hidden")))
-@interface FFIsolationMask : FFMaskBase
+@interface FFIsolationMask : FFMaskBase <FFMaskBaseMatteScreenable>
 {
     BOOL _overlayAlpha;
     BOOL _soloing;
+    BOOL _HDRCompatible;
     int _analysisWorkingSpace;
+    CHChannelFolder *_hueQualifierChannel;
+    CHChannelFolder *_saturationQualifierChannel;
+    CHChannelFolder *_lumaQualifierChannel;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(getter=isSoloing) BOOL soloing; // @synthesize soloing=_soloing;
 @property BOOL overlayAlpha; // @synthesize overlayAlpha=_overlayAlpha;
+- (BOOL)fixUpHSLQualifiersWithError:(id *)arg1;
+- (BOOL)updateChannelsWithFolder:(id)arg1;
+- (double)averageLumaForMatteScreeningAtTime:(CDStruct_1b6d18a9)arg1;
+- (BOOL)wantsMatteScreening;
+- (void)channelParameterChanged:(id)arg1;
+- (void)_enableDisableHSLQualifiersOperationBeginEnd:(BOOL)arg1;
 - (CDStruct_bdcb2b0d)md5;
 - (int)overrideWorkingSpace:(int)arg1;
 - (id)processingFormat:(int)arg1;
-- (struct HGNode *)newNodeWithInputNode:(struct HGNode *)arg1 preMaskNode:(struct HGNode *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+-     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}60@0:8^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}24{?=qiIq}32i56, name: newNodeWithInputNode:preMaskNode:atTime:workingSpace:
+-     // Error parsing type: v40@0:8^{HGRef<HGNode>=^{HGNode}}16^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}24r^{?=qiIq}32, name: _setHSLQualifierNode:preMaskNode:atTime:
+-     // Error parsing type: c40@0:8^{HGRef<HGNode>=^{HGNode}}16^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}24r^{?=qiIq}32, name: _setNuvoKeyer:preMaskNode:atTime:
 - (BOOL)needsPreMaskInput;
 - (BOOL)isNoOp;
 - (void)OSCWasResigned:(id)arg1;
 - (id)onscreenControlsForEffectStack:(id)arg1;
 - (id)parameterControllerClassName;
-- (_Bool)setNuvoKeyer:(HGRef_265f9e4c *)arg1 initialNode:(HGRef_265f9e4c *)arg2 mBW:(struct Mat4f *)arg3 atTime:(CDStruct_1b6d18a9)arg4 shapeMaskBefore:(_Bool)arg5;
+- (BOOL)sharingSource;
+- (void)createChannelsInFolder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)colorIsolationAverageColor:(CDStruct_1b6d18a9)arg1;
-- (id)keyframeableChannels;
+- (BOOL)_isHue:(struct PAEColorQualifierSpread *)arg1 hueEnabled:(char *)arg2 saturation:(struct PAEColorQualifierSpread *)arg3 saturationEnabled:(char *)arg4 luma:(struct PAEColorQualifierSpread *)arg5 lumaEnabled:(char *)arg6 modifiedAtTime:(const CDStruct_1b6d18a9 *)arg7;
+- (void)_getBoundingBoxUnit:(struct m44_t *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
 - (id)matrixChannel23;
 - (id)matrixChannel22;
 - (id)matrixChannel21;
@@ -41,20 +62,40 @@ __attribute__((visibility("hidden")))
 - (id)matrixChannel02;
 - (id)matrixChannel01;
 - (id)matrixChannel00;
+- (id)lumaQualifierFalloffChannel;
+- (id)lumaQualifierSpreadChannel;
+- (id)saturationQualifierFalloffChannel;
+- (id)saturationQualifierSpreadChannel;
+- (id)hueQualifierFalloffChannel;
+- (id)hueQualifierSpreadChannel;
 - (id)softnessChannel;
 - (id)radiusChannel;
 - (id)positionChannel;
-- (BOOL)updateChannelsWithFolder:(id)arg1;
-- (BOOL)sharingSource;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithParentEffect:(id)arg1;
-- (void)setupSoftnessController;
-- (void)encodeWithCoder:(id)arg1;
+- (long long)type;
+- (void)setType:(long long)arg1 options:(unsigned int)arg2;
+- (id)typeChannel;
 @property int analysisWorkingSpace; // @dynamic analysisWorkingSpace;
+@property(getter=isHDRCompatible) BOOL HDRCompatible; // @dynamic HDRCompatible;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithParentEffect:(id)arg1;
+- (void)_insertQualifierChannels:(id)arg1 name:(id)arg2 channelBaseID:(unsigned int)arg3 defaultType:(int)arg4;
+- (void)_setupCustomControllers;
+- (BOOL)isLumaQualifierEnabled;
+- (id)_lumaQualifierChannel;
+- (BOOL)isSaturationQualifierEnabled;
+- (id)_saturationQualifierChannel;
+- (BOOL)isHueQualifierEnabled;
+- (id)_hueQualifierChannel;
+- (void)dealloc;
 - (void)addXMLNode:(id)arg1 toElement:(id)arg2 version:(unsigned int)arg3;
 - (void)populateAttributes:(id)arg1 fromElement:(id)arg2;
 - (void)populateContent:(id)arg1 fromElement:(id)arg2 toEffect:(id)arg3 toObject:(id)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,14 +6,23 @@
 
 #import <Ozone/OZOverlay.h>
 
+@class NSMutableArray;
+
 @interface OZFilmZonesOverlay : OZOverlay
 {
+    NSMutableArray *_lines;
 }
 
+- (id)getMetalDrawPrimitives:(id)arg1;
+- (BOOL)doesSupportMetal;
+- (void)filmZoneVerticesForline1Start:(PCVector2_7e488b7d *)arg1 line1End:(PCVector2_7e488b7d *)arg2 line2Start:(PCVector2_7e488b7d *)arg3 line2End:(PCVector2_7e488b7d *)arg4;
+- (BOOL)shouldDraw;
 - (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 - (int)hitCheck:(id)arg1;
 - (int)getDrawingOrder;
 - (void)draw;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

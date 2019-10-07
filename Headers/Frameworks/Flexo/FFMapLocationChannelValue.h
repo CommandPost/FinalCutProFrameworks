@@ -6,19 +6,20 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class MapLocation;
 
 __attribute__((visibility("hidden")))
-@interface FFMapLocationChannelValue : NSObject <NSCoding, NSCopying>
+@interface FFMapLocationChannelValue : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _hasEndLocation;
     MapLocation *_startLocation;
     MapLocation *_endLocation;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) BOOL hasEndLocation; // @synthesize hasEndLocation=_hasEndLocation;
 @property(retain, nonatomic) MapLocation *endLocation; // @synthesize endLocation=_endLocation;
 @property(retain, nonatomic) MapLocation *startLocation; // @synthesize startLocation=_startLocation;

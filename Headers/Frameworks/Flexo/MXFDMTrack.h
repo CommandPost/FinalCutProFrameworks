@@ -15,15 +15,20 @@ __attribute__((visibility("hidden")))
 {
     int trackType;
     NSString *name;
-    int editRate;
+    CDStruct_2689111f editRate;
     long long _editDuration;
     NSMutableArray *components;
 }
 
 @property(retain) NSMutableArray *components; // @synthesize components;
-@property(readonly) int editRate; // @synthesize editRate;
+@property(readonly) CDStruct_2689111f editRate; // @synthesize editRate;
 @property(retain) NSString *name; // @synthesize name;
 @property(readonly) int trackType; // @synthesize trackType;
+- (int)stepInPresentationOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMEditCursor *)arg3;
+- (int)stepInDecodeOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMEditCursor *)arg3;
+- (long long)decodePositionForDisplayPosition:(long long)arg1 cursor:(const struct HPMEditCursor *)arg2;
+@property(readonly) long long displayPositionForLastDecodeSample;
+@property(readonly) long long displayPositionForFirstDecodeSample;
 @property(readonly) long long editDuration;
 - (void)addComponent:(id)arg1;
 - (id)componentAtIndex:(unsigned long long)arg1;
@@ -31,13 +36,11 @@ __attribute__((visibility("hidden")))
 @property(readonly) long long dataByteCount;
 @property(readonly) float bytesPerSecond;
 - (void)dealloc;
-- (id)initWithName:(id)arg1 editRate:(int)arg2;
+- (id)initWithName:(id)arg1 editRate:(CDStruct_2689111f)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) long long displayPositionForFirstDecodeSample;
-@property(readonly) long long displayPositionForLastDecodeSample;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

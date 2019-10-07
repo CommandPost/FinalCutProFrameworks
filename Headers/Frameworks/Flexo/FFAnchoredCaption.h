@@ -24,6 +24,7 @@
 
 + (id)captionFormatForCaption:(id)arg1;
 + (id)fileExtensionForCaptionFormat:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 + (id)sortedByCellYTextBlocks:(id)arg1;

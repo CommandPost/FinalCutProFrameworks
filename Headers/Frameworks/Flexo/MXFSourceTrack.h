@@ -15,22 +15,23 @@ __attribute__((visibility("hidden")))
 {
     int trackType;
     NSString *name;
-    int editRate;
+    CDStruct_2689111f editRate;
     long long _firstEssenceComponent;
     NSMutableArray *components;
 }
 
 @property(retain) NSMutableArray *components; // @synthesize components;
-@property(readonly) int editRate; // @synthesize editRate;
+@property(readonly) CDStruct_2689111f editRate; // @synthesize editRate;
 @property(retain) NSString *name; // @synthesize name;
 @property(readonly) int trackType; // @synthesize trackType;
-- (vector_40fa464a *)createChunkEntriesWithStartCursor:(const struct HPMEditCursor *)arg1 endCursor:(const struct HPMEditCursor *)arg2 startOffset:(unsigned long long *)arg3 dataSize:(unsigned long long *)arg4;
-- (const CDStruct_37d50165 *)chunkEntryWithCursor:(const struct HPMEditCursor *)arg1 startOffset:(unsigned long long *)arg2;
+- (list_3f44f5c8 *)copyChunkEntriesWithStartCursor:(const struct HPMEditCursor *)arg1 endCursor:(const struct HPMEditCursor *)arg2 startOffset:(unsigned long long *)arg3 dataSize:(unsigned long long *)arg4;
+- (const CDStruct_37d50165 *)chunkEntryRefWithCursor:(const struct HPMEditCursor *)arg1 startOffset:(unsigned long long *)arg2;
+- (CDStruct_37d50165)chunkEntryWithCursor:(const struct HPMEditCursor *)arg1 startOffset:(unsigned long long *)arg2;
 - (int)codecTypeWithCursor:(const struct HPMEditCursor *)arg1;
 - (BOOL)samplesWithLaterDecodeTimeStampsThanCursor:(const struct HPMEditCursor *)arg1 mayHaveEarlierPresentationTimeStampsThanCursor:(const struct HPMEditCursor *)arg2;
 - (BOOL)samplesWithEarlierDecodeTimeStampsThanCursor:(const struct HPMEditCursor *)arg1 mayHaveLaterPresentationTimeStampsThanCursor:(const struct HPMEditCursor *)arg2;
 - (BOOL)isIFrameOnlyMedia:(const struct HPMEditCursor *)arg1;
-- (unsigned char)frameFlagsWithCursor:(const struct HPMEditCursor *)arg1;
+- (unsigned char)frameTypeWithCursor:(const struct HPMEditCursor *)arg1;
 - (int)stepInPresentationOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMEditCursor *)arg3;
 - (int)stepInDecodeOrder:(long long)arg1 stepsTaken:(long long *)arg2 cursor:(struct HPMEditCursor *)arg3;
 - (long long)decodePositionForDisplayPosition:(long long)arg1 cursor:(const struct HPMEditCursor *)arg2;
@@ -40,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (long long)originFromCheckWithStartPosition:(long long)arg1 duration:(long long)arg2;
 - (id)mediaAtIndex:(unsigned long long)arg1;
 @property(readonly) long long editDuration;
-@property(readonly) int sampleRate;
+@property(readonly) CDStruct_2689111f sampleRate;
 @property(readonly) BOOL hasDisplayOffsets;
 @property(readonly) id <HPMMediaProtocol><HPMMediaCursorProtocol> firstEssenceMedia;
 @property(readonly) BOOL hasMedia;

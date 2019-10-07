@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)xmlUpdaterConvertToLegacyShapeMask;
 - (BOOL)xmlUpdaterConvertFromLegacyShapeMask:(CDUnknownBlockType)arg1 effectStack:(id)arg2 error:(id *)arg3;
 - (BOOL)_updaterConvertFromLegacyShapeMask:(id)arg1 effectStack:(id)arg2 error:(id *)arg3;
-- (struct HGNode *)newNodeAtTime:(CDStruct_1b6d18a9)arg1 pixelTransform:(id)arg2 pixelSpaceBounds:(struct CGRect)arg3 workingSpace:(int)arg4;
+-     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}84@0:8{?=qiIq}16@40{CGRect={CGPoint=dd}{CGSize=dd}}48i80, name: newNodeAtTime:pixelTransform:pixelSpaceBounds:workingSpace:
 - (void)_getTransform:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 shape:(struct FFShape *)arg3;
 - (void)parentEffectWasAddedToEffectStack:(id)arg1;
 - (id)onscreenControlsForEffectStack:(id)arg1;
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)createChannelsInFolder:(id)arg1;
 - (void)_assignDefaultsUsingParentEffect:(id)arg1;
 - (void)_assignShapeDefaultsForSourceUsingEffectStack:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (struct FFShape *)_newShape;
 - (void)addXMLNode:(id)arg1 toElement:(id)arg2 version:(unsigned int)arg3;

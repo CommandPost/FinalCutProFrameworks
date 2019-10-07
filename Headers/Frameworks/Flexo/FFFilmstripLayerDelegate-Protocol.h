@@ -9,6 +9,7 @@
 @class FFFilmstripCell, FFFilmstripLayer, FFThumbnailRequest;
 
 @protocol FFFilmstripLayerDelegate <NSObject>
+- (BOOL)useImageCache;
 - (BOOL)highPriorityThumbnailGeneration:(BOOL)arg1;
 
 @optional
@@ -18,6 +19,5 @@
 - (BOOL)filmstripLayerShouldHighlight:(FFFilmstripLayer *)arg1;
 - (BOOL)filmstripLayer:(FFFilmstripLayer *)arg1 shouldStretchCellsInRange:(CDStruct_e83c9415)arg2;
 - (BOOL)filmstripLayer:(FFFilmstripLayer *)arg1 shouldUpdateCell:(FFFilmstripCell *)arg2;
-- (BOOL)useImageCache;
 @end
 

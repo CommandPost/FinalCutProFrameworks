@@ -6,77 +6,80 @@
 
 #import "NSOperation.h"
 
-@class NSArray, NSBlockOperation, NSDate, NSDateFormatter, NSMutableArray, PCChangeLog, TLKDataSourceProxy, TLKDataSyncOperation, TLKDelegateProxy, TLKDrawSelectionOperation, TLKItemLayerContentsOperation, TLKLayoutDatabase, TLKLayoutOperation, TLKReloadLayersOperation, TLKTimelineView;
+@class NSArray, NSMutableArray, NSOperationQueue, PCChangeLog, TLKDataSourceProxy, TLKDataSyncOperation, TLKDelegateProxy, TLKDrawSelectionOperation, TLKItemLayerContentsOperation, TLKLayoutDatabase, TLKLayoutOperation, TLKReloadLayersOperation, TLKReloadTimingModelOperation, TLKTimelineView;
 
 @interface TLKReloadOperation : NSOperation
 {
     NSMutableArray *_operations;
+    BOOL _performsOperationsConcurrently;
     BOOL _dataSyncWasGivenSomethingToDo;
-    BOOL _debugLogging;
     TLKLayoutDatabase *_database;
     TLKDataSourceProxy *_dataSourceProxy;
     TLKTimelineView *_timelineView;
     PCChangeLog *_changeLog;
     TLKDataSyncOperation *_dataSyncOperation;
-    TLKReloadLayersOperation *_reloadLayersOperation;
-    TLKDelegateProxy *_delegateProxy;
+    TLKReloadTimingModelOperation *_timingModelOperation;
     TLKLayoutOperation *_layoutOperation;
+    TLKReloadLayersOperation *_reloadLayersOperation;
     TLKItemLayerContentsOperation *_itemLayerContentsOperation;
     TLKDrawSelectionOperation *_drawSelectionOperation;
-    NSBlockOperation *_timingModelOperation;
-    NSMutableArray *_reloadLogEntries;
-    NSDate *_reloadLogStartTime;
-    NSDate *_reloadLogLastLogTime;
-    NSDateFormatter *_reloadLogDateFormatter;
+    NSOperationQueue *_backgroundOperationQueue;
+    TLKDelegateProxy *_delegateProxy;
+    NSOperationQueue *_asynchronousOperationQueue;
 }
 
++ (id)newReloadOperation;
 + (id)reloadOperationForZoomWithTimelineView:(id)arg1;
++ (id)reloadOperationForScrollWithTimelineView:(id)arg1;
++ (id)reloadOperationForDrawingSelectionInTimelineView:(id)arg1;
 + (id)reloadOperationForHeightChange:(id)arg1 changeLog:(id)arg2;
 + (id)reloadOperationForDatabase:(id)arg1 changeLog:(id)arg2;
++ (id)dataSyncOperationForDatabase:(id)arg1 changeLog:(id)arg2;
 + (id)reloadOperationForTimelineView:(id)arg1 changeLog:(id)arg2;
 + (id)legacyReloadOperationForLayoutDatabase:(id)arg1 changeLog:(id)arg2;
-@property(retain, nonatomic) NSDateFormatter *reloadLogDateFormatter; // @synthesize reloadLogDateFormatter=_reloadLogDateFormatter;
-@property(retain, nonatomic) NSDate *reloadLogLastLogTime; // @synthesize reloadLogLastLogTime=_reloadLogLastLogTime;
-@property(retain, nonatomic) NSDate *reloadLogStartTime; // @synthesize reloadLogStartTime=_reloadLogStartTime;
-@property(retain, nonatomic) NSMutableArray *reloadLogEntries; // @synthesize reloadLogEntries=_reloadLogEntries;
-@property(nonatomic) BOOL debugLogging; // @synthesize debugLogging=_debugLogging;
 @property(nonatomic) BOOL dataSyncWasGivenSomethingToDo; // @synthesize dataSyncWasGivenSomethingToDo=_dataSyncWasGivenSomethingToDo;
-@property(retain, nonatomic) NSBlockOperation *timingModelOperation; // @synthesize timingModelOperation=_timingModelOperation;
-@property(retain, nonatomic) TLKDrawSelectionOperation *drawSelectionOperation; // @synthesize drawSelectionOperation=_drawSelectionOperation;
-@property(retain, nonatomic) TLKItemLayerContentsOperation *itemLayerContentsOperation; // @synthesize itemLayerContentsOperation=_itemLayerContentsOperation;
-@property(retain, nonatomic) TLKLayoutOperation *layoutOperation; // @synthesize layoutOperation=_layoutOperation;
+@property(readonly, nonatomic) NSOperationQueue *asynchronousOperationQueue; // @synthesize asynchronousOperationQueue=_asynchronousOperationQueue;
 @property(retain, nonatomic) NSArray *operations; // @synthesize operations=_operations;
 @property(retain, nonatomic) TLKDelegateProxy *delegateProxy; // @synthesize delegateProxy=_delegateProxy;
+@property(retain, nonatomic) NSOperationQueue *backgroundOperationQueue; // @synthesize backgroundOperationQueue=_backgroundOperationQueue;
+@property(retain, nonatomic) TLKDrawSelectionOperation *drawSelectionOperation; // @synthesize drawSelectionOperation=_drawSelectionOperation;
+@property(retain, nonatomic) TLKItemLayerContentsOperation *itemLayerContentsOperation; // @synthesize itemLayerContentsOperation=_itemLayerContentsOperation;
 @property(readonly, nonatomic) TLKReloadLayersOperation *reloadLayersOperation; // @synthesize reloadLayersOperation=_reloadLayersOperation;
+@property(retain, nonatomic) TLKLayoutOperation *layoutOperation; // @synthesize layoutOperation=_layoutOperation;
+@property(retain, nonatomic) TLKReloadTimingModelOperation *timingModelOperation; // @synthesize timingModelOperation=_timingModelOperation;
 @property(retain, nonatomic) TLKDataSyncOperation *dataSyncOperation; // @synthesize dataSyncOperation=_dataSyncOperation;
+@property(nonatomic) BOOL performsOperationsConcurrently; // @synthesize performsOperationsConcurrently=_performsOperationsConcurrently;
 @property(copy, nonatomic) PCChangeLog *changeLog; // @synthesize changeLog=_changeLog;
 @property(nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 @property(retain, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
 @property(retain, nonatomic) TLKLayoutDatabase *database; // @synthesize database=_database;
-- (void)_queueEndDebugLoggingOperationIfNeeded;
-- (void)_queueBeginDebugLoggingOperationIfNeeded;
-- (void)endReloadLogging;
-- (void)logReloadOperationSummary:(id)arg1 forOperationName:(id)arg2;
-- (void)beginReloadLogging;
-- (void)_unselectDeletedObjects;
-- (void)_queueDrawSelectionOperationForTimelineView:(id)arg1;
-- (void)_queueReloadLayerContentsOperationForTimelineView:(id)arg1 withChangeLog:(id)arg2;
-- (void)_queueReloadLayersOperationForTimelineView:(id)arg1 withChangeLog:(id)arg2;
-- (void)_queueLayoutOperationWithChangeLog:(id)arg1;
+- (BOOL)dataSyncMightHaveDeletedObjects;
+- (void)_unselectDeletedObjectsSoRemovedLayersDontUpdate;
+- (void)_configureDrawSelectionOperationForTimelineView:(id)arg1;
+- (void)_configureLayerContentsOperationWithChangeLog:(id)arg1;
+- (void)_configReloadLayersOperationForTimelineView:(id)arg1 withChangeLog:(id)arg2;
+- (void)_configureLayoutOperation;
 - (id)_layoutChangeLogForDataSourceChangeLog:(id)arg1;
 - (id)layoutChangeLog;
-- (void)_queueDataSyncOperationWithChangeLog:(id)arg1;
+- (id)newSyncItemAppearancePropertiesOperation;
+- (void)scheduleSyncItemAppearanceOperationBetweenDataSyncAndItemLayerContents;
+- (void)_configureDataSyncOperation;
 - (id)dataSyncChangeLog;
+- (void)pipeOutputFromOperation:(id)arg1 toOperation:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)pipeOutputFromOperation:(id)arg1 toOperation:(id)arg2;
+- (void)pipeItemLayerContentsOutputToOperation:(id)arg1;
 - (void)pipeDataSyncOutputToOperation:(id)arg1;
+- (void)addAsynchronousOperation:(id)arg1;
 - (void)addOperation:(id)arg1 afterOperation:(id)arg2;
 - (void)addOperation:(id)arg1;
+- (void)breakRetainCyclesByReleasingOperationsImmediately;
 - (void)main;
 @property(nonatomic) id <TLKTimelineViewDelegate> delegate;
 - (void)dealloc;
 - (id)init;
-- (void)_buildOperationsWithMask:(unsigned long long)arg1;
-- (void)_queueTimingModelReloadForDatabase:(id)arg1;
+- (void)_configOperationsWithMask:(unsigned long long)arg1;
+- (void)_configTimingModelOperation;
+- (void)_scheduleTimingModelOperationBetweenDataSyncAndLayout;
 
 @end
 

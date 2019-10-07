@@ -6,51 +6,53 @@
 
 #import "NSObject.h"
 
-@class NSString;
-
 @interface MXFFileWriter : NSObject
 {
-    struct GZIOBase *mFileIO;
-    struct MXPartitionHeader *mHeader;
-    struct MXMovieDesc *mMovieDesc;
-    struct TimeStamp *mCreationDate;
-    int mFrameCount;
-    long long mFramesInIndex;
-    int mCurrentFrameCount;
-    unsigned long long mStreamSize;
-    BOOL mOldKeyFrameOffset;
-    BOOL mKeyFrameOffset;
-    BOOL mSeqLastBreak;
-    BOOL mSeqOffset;
-    unsigned char mSeqSize;
-    _Bool mSeqCanBroken;
-    _Bool mSeqFrames[32];
-    struct list<FrameEntry, std::__1::allocator<FrameEntry>> mIndexEntries;
-    struct list<RIPEntry, std::__1::allocator<RIPEntry>> mRIP;
-    long long mDummy;
-    NSString *title;
-    unsigned int mySequenceHeader2;
+    struct GZIOBase *_fileIO;
+    struct MXPartitionHeader *_headerPartitionHeader;
+    struct MXMovieDesc *_movieDesc;
+    struct MXTimeStamp *_creationDate;
+    int _processedFrameCount;
+    long long _framesInIndex;
+    int _processedFramesOfCurrentPartitionCount;
+    unsigned long long _streamSize;
+    BOOL _oldKeyFrameOffset;
+    BOOL _keyFrameOffset;
+    BOOL _seqLastBreak;
+    BOOL _seqOffset;
+    unsigned char _seqSize;
+    _Bool _seqCanBroken;
+    _Bool _seqFrames[32];
+    unsigned long long _audioSizeInBytes;
+    unsigned long long _writtenAudioInBytes;
+    struct list<FrameEntry, std::__1::allocator<FrameEntry>> _indexEntries;
+    struct list<RIPEntry, std::__1::allocator<RIPEntry>> _rIP;
+    unsigned int _sequenceHeader2;
 }
 
-@property(readonly) NSString *title; // @synthesize title;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (unsigned long long)getFileSize;
 - (struct MXMovieDesc *)getMovieDesc;
-- (void)getInfoH264Frame:(char *)arg1 dataSize:(unsigned int)arg2;
 - (void)setEDL:(struct MXMovieDesc *)arg1;
-- (void)setAlphaSampleDepth:(unsigned int)arg1;
+- (void)setAlphaSampleDepthKGW:(unsigned int)arg1;
 - (char *)findFillItemBackWard:(char *)arg1 inSize:(int)arg2;
 - (struct MXArray *)getDeltaEntryArrayAndMakeNewIndexEntries;
 - (void)setDVTimecode:(char *)arg1 inMemSize:(unsigned int)arg2 inPositionTc:(long long)arg3 inRoundedEditRate:(short)arg4 inDropFrame:(_Bool)arg5;
-- (void)generateAVCStreamHeader:(int)arg1 inEditRate:(int)arg2 outData:(char *)arg3;
+- (void)generateAVCStreamHeader:(int)arg1 inEditRate:(CDStruct_c0454aff)arg2 outData:(char *)arg3;
 - (unsigned long long)writeSoundFrameData:(unsigned int)arg1 inSoundFrame:(struct GZMemory *)arg2;
+- (unsigned long long)writeDataEssence:(unsigned int)arg1 inDataEssence:(struct GZMemory *)arg2;
 - (unsigned long long)writePictureFrameData:(unsigned int)arg1 inPictureFrame:(struct GZMemory *)arg2 inAdditionalData:(CDStruct_1b7e618c *)arg3 inError:(int *)arg4;
 - (void)writeSystemData:(unsigned int)arg1;
 - (unsigned int)getKAGOffset:(unsigned long long)arg1 inKAGSize:(unsigned int)arg2;
 - (unsigned int)getSoundSamplesPerFrame:(unsigned int)arg1 inFramePosition:(long long)arg2;
 - (int)finalize;
+- (int)pushDataEssence:(struct GZMemory *)arg1;
+- (int)pushAudioOnly:(struct GZMemory *)arg1;
 - (void)pushClipWrappedFrames:(struct GZMemory *)arg1 inFrameCount:(unsigned int)arg2;
 - (int)pushFrame:(struct GZMemory *)arg1 inAdditionalData:(CDStruct_1b7e618c *)arg2;
+- (void)writeHeaderForEssenceInBodyPartition;
+- (void)writeHeaderForIndexInBodyPartition;
 - (void)pushHeader;
 - (void)dealloc;
 - (id)initWithMovieDescAndIOBase:(struct GZIOBase *)arg1 movieDesc:(const struct MXMovieDesc *)arg2;

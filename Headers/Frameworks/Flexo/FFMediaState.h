@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _lastMarkerNumber;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 - (id)metadataNameForAudioChannel:(unsigned long long)arg1 withSourceKey:(id)arg2;
 - (void)setLastMarkerNumber:(unsigned long long)arg1;

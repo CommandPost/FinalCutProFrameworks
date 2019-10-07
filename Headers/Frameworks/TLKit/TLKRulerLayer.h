@@ -12,12 +12,8 @@
 
 @interface TLKRulerLayer : CALayer <TLKPartInfo>
 {
-    int _editingMode;
 }
 
-@property(nonatomic) int editingMode; // @synthesize editingMode=_editingMode;
-- (long long)themeState;
-- (void)setThemeState:(long long)arg1;
 - (id)partIdentifier;
 - (id)subpartAtPoint:(struct CGPoint)arg1;
 - (id)actionForKey:(id)arg1;

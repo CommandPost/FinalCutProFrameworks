@@ -9,6 +9,7 @@
 @protocol FFPlayerModuleDelegate
 
 @optional
+- (BOOL)playerLayoutIsNUpStyle;
 - (NSArray *)playerModuleOrderedZoomLevels:(FFPlayerModule *)arg1;
 - (void)playerModule:(FFPlayerModule *)arg1 didExitFullScreenForEvent:(NSEvent *)arg2;
 @end

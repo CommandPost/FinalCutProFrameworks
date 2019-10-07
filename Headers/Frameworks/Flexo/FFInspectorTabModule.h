@@ -76,6 +76,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)goToPreviousNextColorEffect:(BOOL)arg1;
 - (BOOL)canGoToPreviousNextColorEffect:(BOOL)arg1;
 - (void)toggleAllColorCorrectionOff:(id)arg1;
+- (void)toggleEffectViewMask:(id)arg1;
+- (void)addShapeMask:(id)arg1;
+- (void)toggleColorMaskModel:(id)arg1;
+- (void)addColorMask:(id)arg1;
+- (void)_modifySelectedMaskedEffectWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_addMaskOfClass:(Class)arg1 toEffect:(id)arg2 actionName:(id)arg3 maskHandler:(CDUnknownBlockType)arg4 error:(id *)arg5;
 - (void)addHueSaturationEffect:(id)arg1;
 - (void)addColorCurvesEffect:(id)arg1;
 - (void)addColorWheelsEffect:(id)arg1;

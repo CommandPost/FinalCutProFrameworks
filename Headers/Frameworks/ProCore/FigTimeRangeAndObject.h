@@ -7,13 +7,14 @@
 #import <ProCore/FigTimeRangeObj.h>
 
 #import "FigTimeRangeOperationCopying.h"
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
-@interface FigTimeRangeAndObject : FigTimeRangeObj <FigTimeRangeOperationCopying, NSCoding>
+@interface FigTimeRangeAndObject : FigTimeRangeObj <FigTimeRangeOperationCopying, NSSecureCoding>
 {
     id _object;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)rangeAndObjectWithRange:(CDStruct_e83c9415)arg1 andObject:(id)arg2;
 - (id)description;
 - (BOOL)isEqual:(id)arg1;

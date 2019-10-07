@@ -6,7 +6,7 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class CompassTimerHelper, NSTimer, PGDrawableTexture;
+@class CompassTimerHelper, NSTimer, PODrawableTexture;
 
 @interface OZCompassOverlay : OZOverlay
 {
@@ -28,7 +28,7 @@
     float _cameraNeutralAnimRatio;
     _Bool _cameraNeutralPosition;
     _Bool _cameraNeutralPositionAnim;
-    PGDrawableTexture *_cameraNameTexture;
+    PODrawableTexture *_cameraNameTexture;
     struct CompassSceneDescriptor _lastSceneDescriptor;
     unsigned long long _lastTimeRenderTextureCalled;
     int _textureSize;

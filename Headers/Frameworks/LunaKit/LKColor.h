@@ -10,6 +10,7 @@
 {
 }
 
++ (id)sharePanelVideoPreviewSkimmerColor;
 + (id)sharePanelInfoBarPillHighlightColor;
 + (id)sharePanelInfoBarPillNormalColor;
 + (id)sharePanelRoleListLabelColor;

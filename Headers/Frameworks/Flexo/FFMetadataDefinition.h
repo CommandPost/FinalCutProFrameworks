@@ -6,9 +6,11 @@
 
 #import "NSObject.h"
 
+#import "NSSecureCoding.h"
+
 @class NSArray, NSDictionary, NSFormatter, NSMutableSet, NSPredicate, NSSet, NSString, NSValueTransformer;
 
-@interface FFMetadataDefinition : NSObject
+@interface FFMetadataDefinition : NSObject <NSSecureCoding>
 {
     BOOL _editable;
     BOOL _hiddenFromViewsets;
@@ -65,6 +67,7 @@
 + (id)_defsDictFromDict:(id)arg1;
 + (id)defaultViewSetPredicate;
 + (void)releaseSharedInstance;
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) int whiteList; // @synthesize whiteList=_whiteList;
 @property(readonly, nonatomic) NSString *predicate; // @synthesize predicate=_predicate;
 @property(nonatomic) BOOL dontImportFromFile; // @synthesize dontImportFromFile=_dontImportFromFile;

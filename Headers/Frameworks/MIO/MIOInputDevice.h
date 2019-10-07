@@ -79,6 +79,7 @@
 - (void)abortOnCueingError:(id)arg1;
 - (void)timecodeChanged:(id)arg1;
 - (int)SMPTETimecode:(unsigned long long *)arg1 dropFrame:(char *)arg2 outFrameTolerance:(unsigned int *)arg3;
+- (void)fileProcessingDidBegin;
 - (id)deviceControl;
 - (void)setDeviceControl:(id)arg1;
 - (void)cleanupCaptureStateMainThread;

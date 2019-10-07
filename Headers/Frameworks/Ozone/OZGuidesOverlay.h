@@ -6,7 +6,7 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class LKCursor;
+@class LKCursor, NSMutableArray;
 
 @interface OZGuidesOverlay : OZOverlay
 {
@@ -18,8 +18,11 @@
     BOOL _movingVertical;
     BOOL _movingUndisplayed;
     BOOL _moving;
+    NSMutableArray *_lines;
 }
 
+- (id)getMetalDrawPrimitives:(id)arg1;
+- (BOOL)doesSupportMetal;
 - (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 - (id)getCursorWithEvent:(id)arg1;
 - (void)mouseUp:(id)arg1;

@@ -6,11 +6,11 @@
 
 #import "NSObject.h"
 
-#import "Fx3DAPI_v3.h"
+#import "Fx3DAPI_v4.h"
 
 @class NSLock;
 
-@interface FxRemote3DHandler : NSObject <Fx3DAPI_v3>
+@interface FxRemote3DHandler : NSObject <Fx3DAPI_v4>
 {
     NSLock *threadLock;
     map_fc121dd1 threeDInfoMap;
@@ -20,15 +20,11 @@
 @property(retain) NSLock *threadLock; // @synthesize threadLock;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)is3D;
-- (double)focalLengthAtTime:(double)arg1;
-- (id)layerMatrixAtTime:(double)arg1;
-- (id)cameraMatrixAtTime:(double)arg1;
 - (BOOL)isUsingCamera;
 - (id)worldToEyeMatrix;
 - (id)worldToObjectMatrix;
 - (id)worldToFilmMatrix;
-- (double)focalLengthAtFxTime:(CDUnion_2516e51e)arg1;
+- (double)focalLengthAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)set3DData:(id)arg1;
 - (void)clear3DData;
 - (struct Fx3DInfo *)threeDInfo;

@@ -15,7 +15,7 @@
 }
 
 + (BOOL)supportsSecureCoding;
-+ (id)pointParameterTransactionWithParameterID:(unsigned int)arg1;
++ (id)pointParameterTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2;
 @property struct CGPoint value; // @synthesize value;
 @property struct CGPoint defaultValue; // @synthesize defaultValue;
 - (void)setValueFromPlugin:(void *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
@@ -26,7 +26,7 @@
 - (id)copy;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultX:(double)arg3 defaultY:(double)arg4 parameterFlags:(unsigned int)arg5 transactionType:(int)arg6;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultX:(double)arg3 defaultY:(double)arg4 parameterFlags:(unsigned int)arg5 transactionType:(int)arg6 transactionID:(unsigned long long)arg7;
 
 @end
 

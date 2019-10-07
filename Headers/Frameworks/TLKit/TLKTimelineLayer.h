@@ -6,7 +6,7 @@
 
 #import <TLKit/TLKAccessibilityLayer.h>
 
-@class CALayer, CALayer<TLKItemLayerInfo>, NSArray, TLKAbstractEdgeSelectionLayer, TLKAbstractItemBackgroundLayer, TLKAnchorLayer, TLKItemComponentFragment, TLKTimelineView;
+@class CALayer, CALayer<TLKItemLayerInfo>, NSArray, TLKAbstractEdgeSelectionLayer, TLKAbstractItemBackgroundLayer, TLKAnchorLayer, TLKItemComponentFragment, TLKTextLayer, TLKTimelineView;
 
 @interface TLKTimelineLayer : TLKAccessibilityLayer
 {
@@ -24,6 +24,8 @@
         unsigned int mouseOverLayer:1;
         unsigned int RESERVED:18;
     } _tlkItemFlags;
+    TLKTextLayer *_textLayer;
+    NSArray *_badgeArray;
     BOOL _unusedAudioMediaRectChangedFromDefault;
     unsigned long long _selectionMask;
     TLKAbstractItemBackgroundLayer *_backgroundLayer;
@@ -49,12 +51,16 @@
 @property BOOL unusedAudioMediaRectChangedFromDefault; // @synthesize unusedAudioMediaRectChangedFromDefault=_unusedAudioMediaRectChangedFromDefault;
 @property(nonatomic) struct CGRect previousIntersectionRect; // @synthesize previousIntersectionRect=_previousIntersectionRect;
 @property(nonatomic) struct CGRect intersectionRect; // @synthesize intersectionRect=_intersectionRect;
+@property(retain, nonatomic) TLKTextLayer *textLayer; // @synthesize textLayer=_textLayer;
+@property(copy, nonatomic) NSArray *badgeArray; // @synthesize badgeArray=_badgeArray;
 @property(nonatomic) struct CGRect transitionMediaRect; // @synthesize transitionMediaRect=_transitionMediaRect;
 @property(nonatomic) struct CGRect unusedAudioMediaRect; // @synthesize unusedAudioMediaRect=_unusedAudioMediaRect;
 @property(nonatomic) struct CGRect unusedMediaRect; // @synthesize unusedMediaRect=_unusedMediaRect;
 @property(nonatomic) unsigned long long selectionMask; // @synthesize selectionMask=_selectionMask;
 @property(nonatomic) TLKItemComponentFragment *itemComponentFragment; // @synthesize itemComponentFragment=_itemComponentFragment;
 - (void)layoutAccessoryLayerWithBounds:(struct CGRect)arg1 backgroundFrame:(struct CGRect)arg2 audioOnlyOffSpineItem:(BOOL)arg3;
+- (void)invalidateTitleArea;
+- (BOOL)shouldShowTitleArea;
 - (void)createOverlayContentsLayerIfNeeded;
 - (struct CGRect)rectForPart:(id)arg1;
 - (void)audioWaveFormProportionChanged;
@@ -76,7 +82,7 @@
 - (void)setAnchoredLayerOpacity:(float)arg1;
 - (id)anchorLayers;
 - (id)newAnchorLayer;
-@property(retain, nonatomic) id <TLKTimelineItem> representedObject;
+@property(retain) id <TLKTimelineItem> representedObject;
 @property(readonly, nonatomic) TLKTimelineView *timelineView;
 - (void)dealloc;
 - (id)initWithTimelineView:(id)arg1;

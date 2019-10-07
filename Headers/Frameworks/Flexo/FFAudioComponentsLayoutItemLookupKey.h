@@ -6,18 +6,19 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioComponentsLayoutItemLookupKey : NSObject <NSCopying, NSCoding>
+@interface FFAudioComponentsLayoutItemLookupKey : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *m_layoutKey;
     NSDictionary *m_layoutItemProperties;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)description;
 - (id)_layoutItemProperties;
 - (id)_layoutItemKey;

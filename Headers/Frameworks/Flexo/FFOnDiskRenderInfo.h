@@ -16,6 +16,7 @@
 }
 
 + (id)rawUncompressedOnDiskRenderInfo;
++ (id)thumbnailOnDiskRenderInfoForColorSpaceEnum:(int)arg1 processingInfo:(int)arg2;
 + (id)thumbnailOnDiskRenderInfo;
 @property(readonly) CDStruct_bdcb2b0d onDiskMD5Adjustment; // @synthesize onDiskMD5Adjustment=_onDiskMD5Adjustment;
 @property(readonly) int processingInfo; // @synthesize processingInfo=_processingInfo;

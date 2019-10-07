@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     FFInlineColorBoardInspectorController *_ctr;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(readonly, nonatomic) NSTextField *yDataSuffix; // @synthesize yDataSuffix=_yDataSuffix;
 @property(readonly, nonatomic) FFInlineColorBoardPuckInfoScrubber *yDataScrubber; // @synthesize yDataScrubber=_yDataScrubber;
 @property(readonly, nonatomic) LKTextField *xDataSuffix; // @synthesize xDataSuffix=_xDataSuffix;

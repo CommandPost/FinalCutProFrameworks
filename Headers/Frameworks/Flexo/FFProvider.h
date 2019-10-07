@@ -42,7 +42,6 @@
 + (void)_registerBuiltInProviders;
 + (void)_registerProvidersInBundle:(id)arg1 atPath:(id)arg2;
 + (void)initialize;
-+ (long long)providerCount;
 + (BOOL)isStill;
 + (BOOL)canHaveAudio;
 + (BOOL)canHaveVideo;

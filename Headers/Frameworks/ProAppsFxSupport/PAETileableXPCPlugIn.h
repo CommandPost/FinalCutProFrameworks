@@ -6,41 +6,106 @@
 
 #import "NSObject.h"
 
+#import "FxCustomParameterViewHost.h"
 #import "FxFilter.h"
 #import "FxGenerator.h"
 #import "FxTileableEffect.h"
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSMutableArray, NSRecursiveLock, NSString, NSXPCConnection;
 
-@interface PAETileableXPCPlugIn : NSObject <FxTileableEffect, FxFilter, FxGenerator>
+@interface PAETileableXPCPlugIn : NSObject <FxTileableEffect, FxFilter, FxGenerator, FxCustomParameterViewHost>
 {
     id <PROAPIAccessing> apiManager;
-    id <FxRemoteTileablePluginProtocol><NSObject> remotePlugInSync;
-    id <FxRemoteTileablePluginProtocol><NSObject> remotePlugInAsync;
+    NSXPCConnection *xpcConnection;
     unsigned long long sessionID;
     NSString *pluginIdentifier;
+    NSString *pluginBundleIdentifier;
     NSDictionary *remoteProperties;
-    struct PCRecursiveMutex threadMutex;
-    struct map<_opaque_pthread_t *, NSData *, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, NSData *>>> threadState;
+    struct PCMutex threadMutex;
+    struct PCCache<CMTime, PAEStateCacheItem, PCNoLock> cachedState;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> imageParamIDs;
+    // Error parsing type: {atomic<bool>="__a_"AB}, name: allImagesAreNil
+    // Error parsing type: {atomic_flag="__a_"AB}, name: didSetupImageParamIDs
+    NSMutableArray *remoteViewControllers;
+    unsigned int optionalMethodSupport;
+    id <FxCustomParameterActionAPI_v3> customParamAPI;
+    NSRecursiveLock *transactionLock;
+    NSMutableArray *incomingTransactions;
+    NSMutableArray *outgoingTransactions;
+    BOOL listeningForTransactions;
+    unsigned long long nextTransactionID;
+    struct map<unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std::__1::deque<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>>>, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std::__1::deque<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>>>>>> transactionSemaphoreMap;
+    BOOL hostIsMotion;
+    BOOL appIsTerminating;
+    struct map<CMTime, PAECachedSize, std::__1::less<CMTime>, std::__1::allocator<std::__1::pair<const CMTime, PAECachedSize>>> cachedOutputSizes;
+    struct PCMutex outputSizesMutex;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)renderDestinationImage:(id)arg1 sourceImages:(id)arg2 pluginState:(id)arg3 atTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
-- (BOOL)pluginState:(id *)arg1 atTime:(CDUnion_2516e51e)arg2 error:(id *)arg3;
-- (BOOL)destinationImageRect:(struct FxRect *)arg1 sourceImages:(id)arg2 pluginState:(id)arg3 atTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
-- (BOOL)sourceTileRect:(struct FxRect *)arg1 sourceImageIndex:(unsigned long long)arg2 sourceImages:(id)arg3 destinationTileRect:(struct FxRect)arg4 destinationImage:(id)arg5 pluginState:(id)arg6 atTime:(CDUnion_2516e51e)arg7 error:(id *)arg8;
-- (BOOL)schedule:(unsigned long long)arg1 inputFrames:(CDUnion_2516e51e *)arg2 withPluginState:(id)arg3 forRenderAtTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
-- (BOOL)numberOfInputFramesToSchedule:(unsigned long long *)arg1 withPluginState:(id)arg2 atRenderTime:(CDUnion_2516e51e)arg3 error:(id *)arg4;
-- (BOOL)schedule:(unsigned long long)arg1 frames:(CDUnion_2516e51e *)arg2 forParam:(unsigned int)arg3 withPluginState:(id)arg4 forRenderAtTime:(CDUnion_2516e51e)arg5 error:(id *)arg6;
-- (BOOL)numberOfFrames:(unsigned long long *)arg1 toScheduleForParam:(unsigned int)arg2 withPluginState:(id)arg3 atRenderTime:(CDUnion_2516e51e)arg4 error:(id *)arg5;
-- (BOOL)parameterChanged:(unsigned int)arg1 atTime:(CDUnion_2516e51e)arg2 error:(id *)arg3;
+- (BOOL)renderDestinationImage:(id)arg1 sourceImages:(id)arg2 pluginState:(id)arg3 atTime:(CDStruct_198678f7)arg4 error:(id *)arg5;
+- (BOOL)pluginState:(id *)arg1 atTime:(CDStruct_198678f7)arg2 quality:(unsigned long long)arg3 error:(id *)arg4;
+- (BOOL)destinationImageRect:(struct FxRect *)arg1 sourceImages:(id)arg2 destinationImage:(id)arg3 pluginState:(id)arg4 atTime:(CDStruct_198678f7)arg5 error:(id *)arg6;
+- (BOOL)sourceTileRect:(struct FxRect *)arg1 sourceImageIndex:(unsigned long long)arg2 sourceImages:(id)arg3 destinationTileRect:(struct FxRect)arg4 destinationImage:(id)arg5 pluginState:(id)arg6 atTime:(CDStruct_198678f7)arg7 error:(id *)arg8;
+- (BOOL)schedule:(unsigned long long)arg1 inputFrames:(CDStruct_198678f7 *)arg2 withPluginState:(id)arg3 atTime:(CDStruct_198678f7)arg4 error:(id *)arg5;
+- (BOOL)numberOfInputFramesToSchedule:(unsigned long long *)arg1 withPluginState:(id)arg2 atTime:(CDStruct_198678f7)arg3 error:(id *)arg4;
+- (BOOL)schedule:(unsigned long long)arg1 frames:(CDStruct_198678f7 *)arg2 forParam:(unsigned int)arg3 withPluginState:(id)arg4 atTime:(CDStruct_198678f7)arg5 error:(id *)arg6;
+- (BOOL)numberOfFrames:(unsigned long long *)arg1 toScheduleForParam:(unsigned int)arg2 withPluginState:(id)arg3 atTime:(CDStruct_198678f7)arg4 error:(id *)arg5;
+- (BOOL)isLeftValue:(id)arg1 equalTo:(id)arg2 forParameterID:(unsigned int)arg3;
+- (id)interpolateLeftData:(id)arg1 rightData:(id)arg2 percent:(float)arg3 forParameterID:(unsigned int)arg4;
+- (BOOL)parameterChanged:(unsigned int)arg1 atTime:(CDStruct_198678f7)arg2 error:(id *)arg3;
+- (BOOL)listenForTransactionsWithID:(unsigned long long)arg1;
+- (BOOL)isListeningForTransactions;
+- (BOOL)safeToRunLiveTransactions;
+- (void)releaseTransactionSemaphore:(unsigned long long)arg1;
+- (void)signalTransactionSemaphore:(unsigned long long)arg1;
+- (void)clearOutgoingTransaction;
+- (id)nextIncomingTransactionWithID:(unsigned long long)arg1;
+- (id)nextOutgoingTransactionWithID:(unsigned long long)arg1;
+- (void)flushTransactionsWithID:(unsigned long long)arg1;
+- (void)addOutgoingTransaction:(id)arg1;
+- (id)addIncomingTransaction:(id)arg1;
+- (unsigned long long)generateNextTransactionID;
+- (id)transactionForParameter:(unsigned int)arg1 atTime:(CDStruct_198678f7)arg2 transactionID:(unsigned long long)arg3;
 - (id)getCurrentParameterValuesAtTime:(CDStruct_198678f7)arg1;
 - (BOOL)addParametersWithError:(id *)arg1;
 - (void)processParameterTransactions:(id)arg1;
+- (void)processOSCTransaction:(id)arg1;
+- (void)setCursorForTransaction:(id)arg1;
+- (void)getBackingScaleFactorForTransaction:(id)arg1;
+- (void)getObjectToScreenTransformForTransaction:(id)arg1;
+- (void)getInputInfoForTransaction:(id)arg1;
+- (void)getObjectInfoForTransaction:(id)arg1;
+- (void)getPixelAspectRatioForTransaction:(id)arg1;
+- (void)getInputBoundsForTransaction:(id)arg1;
+- (void)getObjectBoundsForTransaction:(id)arg1;
+- (void)getCanvasPixelAspectRatioForTransaction:(id)arg1;
+- (void)getCanvasZoomForTransaction:(id)arg1;
+- (void)convertPointForOSC:(id)arg1;
+- (void)processKeyframeTransaction:(id)arg1;
+- (void)setKeyframeForTransaction:(id)arg1;
+- (void)removeKeyframeForTransaction:(id)arg1;
+- (void)hasKeyframeForTransaction:(id)arg1;
+- (void)getKeyframeInfoAtOrAfterForTransaction:(id)arg1;
+- (void)getKeyframeInfoAtOrBeforeForTransaction:(id)arg1;
+- (void)getKeyframeInfoForTransaction:(id)arg1;
+- (void)copyV3Keyframe:(struct FxKeyframe *)arg1 toV2KeyframeInfo:(struct FxKeyframeInfo *)arg2 withV2Time:(CDStruct_198678f7 *)arg3;
+- (void)copyV2KeyframeInfo:(struct FxKeyframeInfo *)arg1 toV3Keyframe:(struct FxKeyframe *)arg2;
+- (void)getKeyframeCountForTransaction:(id)arg1;
+- (void)endKeyframeTransactionUpdates:(id)arg1;
+- (void)getKeyframeChannelCountForTransaction:(id)arg1;
+- (void)removeAllKeyframesForTransaction:(id)arg1;
+- (void)addKeyframeForTransaction:(id)arg1;
+- (void)getValueForTransaction:(id)arg1;
 - (void)handleUndoTransaction:(id)arg1;
+- (void)parameterPropertiesForTransaction:(id)arg1;
+- (void)currentTimeForTransaction:(id)arg1;
 - (void)setParameterDefaultsForTransaction:(id)arg1;
+- (void)parameterIDForIndexTransaction:(id)arg1;
+- (void)parameterCountForTransaction:(id)arg1;
+- (void)getParameterNameForTransaction:(id)arg1;
 - (void)setParameterNameFromTransaction:(id)arg1;
+- (void)getFlagsForTransaction:(id)arg1;
 - (void)setFlagsFromTransaction:(id)arg1;
 - (void)removeParameterForTransaction:(id)arg1;
 - (void)addParameterForTransaction:(id)arg1;
@@ -53,12 +118,19 @@
 - (unsigned long long)numberOfFramesToScheduleAtRenderTime:(CDUnion_2516e51e)arg1 forParam:(unsigned int)arg2;
 - (BOOL)frameCleanup;
 - (BOOL)renderOutput:(id)arg1 withInput:(id)arg2 withInfo:(CDStruct_6b9ed609)arg3;
-- (void)setupImageDescriptor:(struct ImageTileDescriptor *)arg1 forImage:(id)arg2;
+- (BOOL)setupInput:(id)arg1 frames:(unsigned long long *)arg2 withPluginState:(id)arg3 renderInfo:(CDStruct_6b9ed609)arg4 forHeliumRef:(HGRef_a9bb4a2e)arg5;
+- (void)setupImageDescriptor:(struct ImageTileDescriptor *)arg1 withSource:(unsigned long long)arg2 parameterID:(unsigned int)arg3 atTime:(const CDStruct_198678f7 *)arg4 forImage:(id)arg5;
 - (PCMatrix44Tmpl_93ed1289)pcMatrixFromFxMatrix:(id)arg1;
 - (BOOL)frameSetup:(CDStruct_6b9ed609)arg1 inputInfo:(CDStruct_4a07eeda)arg2 hardware:(char *)arg3 software:(char *)arg4;
 - (BOOL)getOutputWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 withInput:(CDStruct_4a07eeda)arg3 withInfo:(CDStruct_6b9ed609)arg4;
+- (BOOL)usesImagesAtOtherTimes;
+- (BOOL)setupProxySourceImages:(id)arg1 withPluginState:(id)arg2 inputInfo:(CDStruct_4a07eeda)arg3 renderInfo:(CDStruct_6b9ed609)arg4;
+- (id)heliumImageToFxImageTile:(id)arg1 requestSource:(unsigned long long)arg2 parameterID:(unsigned int)arg3 mediaTime:(const CDStruct_198678f7 *)arg4 requestError:(id)arg5;
 - (void)addPushButtonSelector:(id)arg1 forParameterID:(unsigned int)arg2;
 - (void)performButtonSelector:(id)arg1;
+- (void)updateRemoteViews;
+- (id)createViewForParm:(unsigned int)arg1;
+- (void)runRunLoopWithSemaphore:(id *)arg1;
 - (BOOL)parameterChanged:(unsigned int)arg1;
 - (BOOL)addParameters;
 - (id)properties;
@@ -66,17 +138,22 @@
 - (id)setupPathAPIWithParams:(id)arg1 atTime:(CDStruct_198678f7)arg2;
 - (BOOL)pathID:(void *)arg1 inUsedPaths:(const vector_9e9b204a *)arg2;
 - (id)setupLightingAPI:(CDStruct_198678f7)arg1;
+- (void)copyOldLight:(const struct FxLightInfo *)arg1 toNewLight:(struct FxLight *)arg2;
 - (id)setup3DAPI:(CDStruct_198678f7)arg1;
-- (id)setupTimingAPI;
-- (void)setupColorGamutAPI;
-- (void)removePluginStateForThread;
+- (id)setupTimingAPI:(CDStruct_198678f7)arg1;
+- (id)setupColorGamutAPI;
 - (void)setupPluginStateForThread:(CDStruct_198678f7 *)arg1;
-- (id)stateAtTime:(CDStruct_198678f7 *)arg1;
+- (struct PAEStateCacheItem)stateItemAtTime:(CDStruct_198678f7 *)arg1 quality:(unsigned long long)arg2;
+- (id)createStateAtTime:(CDStruct_198678f7 *)arg1 quality:(unsigned long long *)arg2;
+- (struct PAEStateCacheItem)findExistingStateItemAtTime:(const CDStruct_198678f7 *)arg1;
+- (void)checkAllImageParamsAtTime:(const CDStruct_198678f7 *)arg1;
 - (BOOL)finishInitialSetup:(id *)arg1;
-- (id)synchronousRemotePlugin;
-- (void)updateRemoteSyncPlugin:(id)arg1 andRemoteAsyncPlugin:(id)arg2;
+- (id)currentConnection;
+- (void)updateConnection:(id)arg1;
+- (id)asynchronousRemoteForMethod:(const char *)arg1;
+- (id)synchronousRemoteForMethod:(const char *)arg1;
 - (void)dealloc;
-- (id)initWithAPIManager:(id)arg1 remoteSyncPlugin:(id)arg2 remoteAsyncPlugin:(id)arg3 sessionID:(unsigned long long)arg4 pluginIdentifier:(id)arg5;
+- (id)initWithAPIManager:(id)arg1 connection:(id)arg2 sessionID:(unsigned long long)arg3 pluginIdentifier:(id)arg4 pluginBundleIdentifier:(id)arg5 optionalMethodSupport:(unsigned int)arg6;
 - (id)initWithAPIManager:(id)arg1;
 
 // Remaining properties

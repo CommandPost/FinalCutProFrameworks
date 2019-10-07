@@ -41,6 +41,7 @@
     BOOL _observingContext;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) BOOL observingContext; // @synthesize observingContext=_observingContext;
 @property(nonatomic) BOOL addingRemovingColumn; // @synthesize addingRemovingColumn=_addingRemovingColumn;
 - (void)setViewOptionDictionary:(id)arg1;

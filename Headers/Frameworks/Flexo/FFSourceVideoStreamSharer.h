@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     CDStruct_bdcb2b0d _baseMD5ForStream;
     BOOL _cacheTokens;
     long long _lastChannelChangeNumber;
+    struct FFSynchronizable _openStreamsLock;
     struct vector<FFStreamVideoStreamSharer *, std::__1::allocator<FFStreamVideoStreamSharer *>> _openStreams;
 }
 

@@ -29,6 +29,7 @@
 - (void)buildUI:(struct OZSceneNode *)arg1 context:(id)arg2;
 - (void)didBuildUI;
 - (void)dealloc;
+- (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3 shouldBuild:(BOOL)arg4;
 - (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2 context:(id)arg3;
 - (id)initWithSceneNodes:(list_e89ce44a *)arg1 viewCtlrDelegate:(id)arg2;
 - (id)initWithSceneNodes:(list_e89ce44a *)arg1;

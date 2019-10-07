@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSData *m_jpegData;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)compressedJPEGFromImage:(id)arg1 quality:(float)arg2;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

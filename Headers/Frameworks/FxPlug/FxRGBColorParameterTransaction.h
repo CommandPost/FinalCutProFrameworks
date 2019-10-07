@@ -13,7 +13,7 @@
 }
 
 + (BOOL)supportsSecureCoding;
-+ (id)rgbColorTransactionWithParameterID:(unsigned int)arg1;
++ (id)rgbColorTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2;
 - (void)setValueFromPlugin:(void *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)setValueToHost:(id)arg1;
 - (BOOL)setValueFromHost:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
@@ -22,7 +22,7 @@
 - (id)copy;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultRed:(double)arg3 defaultGreen:(double)arg4 defaultBlue:(double)arg5 parameterFlags:(unsigned int)arg6 transactionType:(int)arg7;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultRed:(double)arg3 defaultGreen:(double)arg4 defaultBlue:(double)arg5 parameterFlags:(unsigned int)arg6 transactionType:(int)arg7 transactionID:(unsigned long long)arg8;
 
 @end
 

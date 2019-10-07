@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSSet *_selectionIndexPaths;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(copy, nonatomic) NSSet *selectionIndexPaths; // @synthesize selectionIndexPaths=_selectionIndexPaths;
 @property(retain, nonatomic) id <FFBrickTreeDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) FFBrickTreeController *brickTreeController; // @synthesize brickTreeController=_brickTreeController;

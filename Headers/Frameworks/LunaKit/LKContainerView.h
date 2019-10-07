@@ -51,6 +51,8 @@
 }
 
 + (void)initialize;
++ (void)endLayout;
++ (void)beginLayout;
 @property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)syntheticUIElementAttributeNames:(id)arg1;
@@ -131,6 +133,8 @@
 - (void)_enableFocusUpdate:(id)arg1;
 - (void)_disableFocusUpdate:(id)arg1;
 - (void)_firstResponderChanged:(id)arg1;
+- (void)windowDidEndLiveResize:(id)arg1;
+- (void)windowWillStartLiveResize:(id)arg1;
 - (void)viewWillMoveToWindow:(id)arg1;
 - (BOOL)acceptsFirstMouse:(id)arg1;
 - (BOOL)acceptsFirstResponder;

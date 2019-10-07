@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFGraphBuildInformation, FFImage, FFSubRangeMD5Info, FFTextureBuffer, NSError, NSMapTable;
+@class FFDestVideoRequestInfo, FFGraphBuildInformation, FFImage, FFOnScreenControlsTexture, FFSubRangeMD5Info, NSError, NSMapTable;
 
 @interface FFPlayerFrame : NSObject
 {
@@ -29,8 +29,9 @@
     FFSubRangeMD5Info *_image2_MD5;
     FFGraphBuildInformation *_gBuildInfo1;
     FFGraphBuildInformation *_gBuildInfo2;
+    FFDestVideoRequestInfo *_originalDestRequest;
     int _cameraMode;
-    FFTextureBuffer *_overlayTexture;
+    FFOnScreenControlsTexture *_overlayTexture;
     NSMapTable *_drawProperties;
     struct {
         int _requestedExecLocation;
@@ -43,6 +44,7 @@
 @property(readonly) unsigned int zebraMode1; // @synthesize zebraMode1=_zebraMode1;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 nativeFrameDur; // @synthesize nativeFrameDur=_nativeFrameDur;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
+@property(readonly, retain, nonatomic) FFDestVideoRequestInfo *originalDestRequest; // @synthesize originalDestRequest=_originalDestRequest;
 @property(readonly, nonatomic) unsigned int timecodeType; // @synthesize timecodeType=_timecodeType;
 @property BOOL isAudioFrame; // @synthesize isAudioFrame=_isAudioFrame;
 @property BOOL isBlankFrame; // @synthesize isBlankFrame=_isBlankFrame;
@@ -65,6 +67,7 @@
 - (id)image1_MD5;
 - (void)setImage2:(id)arg1 withMD5:(id)arg2 graphBuildInfo:(id)arg3 zebraMode:(unsigned int)arg4;
 - (void)setImage1:(id)arg1 withMD5:(id)arg2 graphBuildInfo:(id)arg3 zebraMode:(unsigned int)arg4;
+- (void)_validateImageAgainstOriginalRequest:(id)arg1;
 - (id)image2;
 - (id)image1;
 - (BOOL)viewed;
@@ -74,7 +77,7 @@
 - (id)drawProperties;
 - (void)setDrawProperties:(id)arg1;
 - (BOOL)hasSecondField;
-- (id)initWithTime:(CDStruct_1b6d18a9)arg1 timeRepresented:(CDStruct_1b6d18a9)arg2 alwaysFwdTime:(CDStruct_1b6d18a9)arg3 nativeFrameDur:(CDStruct_1b6d18a9)arg4 bounds:(struct CGRect)arg5 forRate:(double)arg6 forTimecodeType:(unsigned int)arg7 cameraMode:(int)arg8;
+- (id)initWithTime:(CDStruct_1b6d18a9)arg1 timeRepresented:(CDStruct_1b6d18a9)arg2 alwaysFwdTime:(CDStruct_1b6d18a9)arg3 nativeFrameDur:(CDStruct_1b6d18a9)arg4 bounds:(struct CGRect)arg5 forRate:(double)arg6 forTimecodeType:(unsigned int)arg7 cameraMode:(int)arg8 originalDestRequest:(id)arg9;
 
 @end
 

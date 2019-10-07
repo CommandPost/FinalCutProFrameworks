@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     OZColorWell *_colorWell;
     LKButton *_activeMaskButton;
+    LKButton *_toggleIsolationModeButton;
     OZColorWell *_keyerWell;
     FFIsoSoftnessSlider *_softnessSlider;
 }

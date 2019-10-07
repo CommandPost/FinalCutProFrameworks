@@ -18,8 +18,11 @@
     NSMutableArray *_paths;
     int _decodeThreadCount;
     int _writeThreadCount;
+    BOOL _usePrefaultedPixelBufferPool;
+    int _prefaultSizeNormal;
+    int _prefaultSizeLargeDimensions;
     FFSegmentStoreManagerRunLock *_runLock;
-    int _segmentStoreIdleCompressors;
+    // Error parsing type: Ai, name: _segmentStoreIdleCompressors
     NSObject<OS_dispatch_source> *_idleCompressorTimer;
     unsigned int _idlerFlags;
     double _lastCheckedForAgedCompressors;
@@ -52,14 +55,13 @@
 - (BOOL)deleteSegment:(CDStruct_bdcb2b0d)arg1 path:(id)arg2 renderInfo:(id)arg3 error:(id *)arg4;
 - (id)copyCurrentPath;
 - (void)returnDecompressionSessionToPool:(id)arg1;
-- (id)newAcquireDecompressionSession:(struct opaqueCMFormatDescription *)arg1 pixelFormat:(unsigned int)arg2 quality:(int)arg3;
+- (id)newAcquireDecompressionSession:(struct opaqueCMFormatDescription *)arg1 pixelFormat:(unsigned int)arg2 quality:(int)arg3 forThumbnails:(BOOL)arg4 fieldMode:(struct __CFString *)arg5;
 - (void)adjustIdleCompressors:(int)arg1;
 - (void)decrementIdleCompressors;
 - (void)incrementIdleCompressors;
 - (id)findSegmentStore:(CDStruct_bdcb2b0d)arg1 paths:(id)arg2;
 - (id)copySegmentStoreForMD5:(CDStruct_bdcb2b0d)arg1 openFlags:(unsigned int)arg2 paths:(id)arg3 renderInfo:(id)arg4 error:(id *)arg5;
 - (id)copySegmentStoreForDiskMD5:(CDStruct_bdcb2b0d)arg1 openFlags:(unsigned int)arg2 paths:(id)arg3 renderPropsForCreation:(id)arg4 error:(id *)arg5;
-- (void)checkForAgingDecompressors;
 - (void)checkForAgingCompressors;
 - (CDStruct_bdcb2b0d)md5ForSegmentStore:(CDStruct_bdcb2b0d)arg1 renderInfo:(id)arg2;
 - (void)enqueueSegmentStoreWrite:(id)arg1 mustQueue:(BOOL)arg2 forPriority:(int)arg3;

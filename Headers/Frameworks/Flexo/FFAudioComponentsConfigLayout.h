@@ -14,6 +14,7 @@
 }
 
 + (id)layoutWithName:(id)arg1 numChannels:(int)arg2 layoutItems:(id)arg3;
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) NSString *layoutName; // @synthesize layoutName=m_layoutName;
 - (BOOL)isEqualToLayout:(id)arg1;
 - (id)description;

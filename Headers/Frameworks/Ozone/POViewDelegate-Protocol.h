@@ -49,6 +49,7 @@
 - (int)oscMode;
 - (BOOL)showToolInfo;
 - (struct OZSceneNode *)getIsolatedNode;
+- (shared_ptr_80358429)destinationDevice;
 - (struct _CGLContextObject *)glContext;
 - (void)gotoStartOrEndTime:(_Bool)arg1;
 - (void)setTime:(CDStruct_1b6d18a9)arg1;
@@ -71,6 +72,8 @@
 - (double)getPanY;
 - (double)getPanX;
 - (void)panToCenter;
+- (double)isHDRLibraryFillMultiply;
+- (BOOL)isHDRLibrary;
 - (double)backingScaleFactor;
 - (NSView *)getView;
 @end

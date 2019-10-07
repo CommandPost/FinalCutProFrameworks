@@ -12,7 +12,6 @@
 
 @class FFShareDestinationViewController, NSPopover, NSString;
 
-__attribute__((visibility("hidden")))
 @interface FFShareDestinationPopover : NSObject <FFSharePopoverDelegate, NSWindowDelegate, NSPopoverDelegate>
 {
     FFShareDestinationViewController *_sharePopoverViewController;

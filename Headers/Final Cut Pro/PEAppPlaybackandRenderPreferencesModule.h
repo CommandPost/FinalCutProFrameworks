@@ -6,30 +6,43 @@
 
 #import "LKPreferencesModule.h"
 
-@class LKButton, LKSegmentedScrubber, NSButton, NSPopUpButton, NSTextField;
+@class LKButton, LKSegmentedScrubber, NSButton, NSLayoutConstraint, NSMutableArray, NSPopUpButton, NSTextField;
 
 @interface PEAppPlaybackandRenderPreferencesModule : LKPreferencesModule
 {
     NSPopUpButton *_avDevicePopup;
     NSTextField *_avDeviceLabel;
+    NSButton *_avDeviceToneMappingCheckbox;
     NSTextField *_transcodingLabel;
     NSButton *_optimizedMediaButton;
     LKSegmentedScrubber *_prerollScrubber;
     LKSegmentedScrubber *_postrollScrubber;
     LKSegmentedScrubber *_renderingStartingDelayScrubber;
     LKButton *_createOptimizedForMulticamClipsCheckBox;
-    BOOL _avPopupAvailable;
+    NSPopUpButton *_gpuSelectionPopup;
+    NSTextField *_gpuSelectionPopupLabel;
+    NSLayoutConstraint *_gpuSelectionPopupHeight;
+    NSMutableArray *_fxGPUDictArray;
+    BOOL _singleInternalGPU;
+    BOOL _addGPULocationSuffix;
 }
 
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)moduleCanBeRemoved;
 - (BOOL)preferencesWindowShouldClose;
 - (void)willBeDisplayed;
+- (void)selectAVOutputToneMapping:(id)arg1;
 - (void)selectAVOutputDevice:(id)arg1;
 - (id)titleForIdentifier:(id)arg1;
 - (void)deviceChangedFormat:(id)arg1;
 - (void)existingOutputDevicesRemoved:(id)arg1;
 - (void)newOutputDevicesAvailable:(id)arg1;
+- (void)screenParametersChanged:(id)arg1;
+- (void)updateAVDeviceToneMappingCheckbox:(id)arg1 screenIndex:(unsigned long long)arg2;
+- (void)selectGPUDevice:(id)arg1;
+- (void)populateGPUSelectionMenu:(id)arg1;
+- (void)listAvailableGPUDevices;
+- (void)updateGPUDevicesPopup;
 - (void)dealloc;
 - (void)awakeFromNib;
 - (BOOL)isResizable;

@@ -20,14 +20,14 @@
 @property(readonly) long long originInSamples;
 @property(readonly) long long origin;
 @property(readonly) long long frameDuration;
-@property(readonly) int sampleRate;
-@property(readonly) int editRate;
+@property(readonly) CDStruct_2689111f sampleRate;
+@property(readonly) CDStruct_2689111f editRate;
 @property(readonly) int type;
 - (int)unitsPerPacketWithIndexPosition:(unsigned long long)arg1;
 - (void)checkMediaWithIndexDuration:(long long)arg1;
-- (unsigned char)frameFlagsWithIndexPosition:(unsigned long long)arg1;
+- (unsigned char)frameTypeWithIndexPosition:(unsigned long long)arg1;
 - (BOOL)temporalFrameOffsetWithIndexPosition:(unsigned long long)arg1;
-- (BOOL)displayFrameOffsetWithIndexPosition:(unsigned long long)arg1;
+- (BOOL)displayFrameOffsetWithIndexPosition:(unsigned long long)arg1 mustLoadAtMediaIndexPosition:(long long *)arg2;
 - (long long)indexPositionWithSamplePosition:(long long)arg1 sampleOffset:(int *)arg2 mustLoadAtMediaIndexPosition:(long long *)arg3;
 - (CDStruct_37d50165 *)mutableIndexEntryWithEditPosition:(long long)arg1;
 - (const CDStruct_37d50165 *)indexEntryWithEditPosition:(long long)arg1;

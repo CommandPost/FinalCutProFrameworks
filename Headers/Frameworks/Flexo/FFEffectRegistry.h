@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface FFEffectRegistry : NSObject
 {
+    struct FFSynchronizable *_registryLock;
     NSMutableDictionary *_registry;
     FFLibrary *_owner;
 }
@@ -25,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (id)objectForKey:(id)arg1;
-- (id)registry;
 - (void)dealloc;
 - (id)init;
 

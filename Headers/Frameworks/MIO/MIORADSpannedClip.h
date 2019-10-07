@@ -78,6 +78,7 @@
 - (unsigned int)videoWidth;
 - (id)displayFormat;
 - (id)format;
+- (id)timecodeStart;
 - (int)timecodeFormat;
 - (int)pulldown;
 - (double)frameRate;
@@ -93,6 +94,7 @@
 - (id)clipFileName;
 - (id)name;
 - (id)volumes;
+- (id)clipURLs;
 - (id)clips;
 - (id)volume;
 - (id)firstClip;

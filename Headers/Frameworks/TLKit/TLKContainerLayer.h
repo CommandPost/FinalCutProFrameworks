@@ -9,16 +9,14 @@
 #import "TLKAccessibilityProtocol.h"
 #import "TLKPartInfo.h"
 
-@class NSArray, NSString, TLKContainerHandleLayer, TLKContainerSelectionLayer, TLKImageLayer, TLKLayoutContext, TLKTextLayer, TLKTiledContainerBackgroundLayer;
+@class NSString, TLKContainerHandleLayer, TLKContainerSelectionLayer, TLKImageLayer, TLKLayoutContext, TLKTiledContainerBackgroundLayer;
 
 @interface TLKContainerLayer : TLKTimelineLayer <TLKAccessibilityProtocol, TLKPartInfo>
 {
     TLKContainerHandleLayer *_handleLayer;
     TLKTiledContainerBackgroundLayer *_backgroundLayer;
     TLKLayoutContext *_layoutContext;
-    TLKTextLayer *_textLayer;
     TLKImageLayer *_dragHandlelayer;
-    NSArray *_badgeArray;
     unsigned int _hasDragHeader:1;
     unsigned int _titlePresent:1;
     unsigned int _hideTextBadges:1;

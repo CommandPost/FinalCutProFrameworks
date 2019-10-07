@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)drawWithExpansionFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (struct CGRect)expansionFrameWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (unsigned long long)hitTestForEvent:(id)arg1 inRect:(struct CGRect)arg2 ofView:(id)arg3;

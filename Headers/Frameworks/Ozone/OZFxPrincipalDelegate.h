@@ -10,11 +10,11 @@
 
 @interface OZFxPrincipalDelegate : NSObject <FxPlugPrincipalDelegate>
 {
-    struct OZFxPlugSharedBase *_plugin;
+    // Error parsing type: ^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}B@BBQB{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}, name: _plugin
 }
 
 - (id)fxServiceProxy;
-- (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
+-     // Error parsing type: @24@0:8^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}B@BBQB{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}16, name: initWithPlugin:
 
 @end
 

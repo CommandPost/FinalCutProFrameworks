@@ -45,6 +45,9 @@ __attribute__((visibility("hidden")))
     BOOL _showUsedMediaRanges;
     NSArray *_selectedRangesOfMedia;
     id <FFOrganizerFilmstripClusteringDelegate> _clusteringDelegate;
+    BOOL _prelayoutDone;
+    CALayer *_prelayoutSuperlayer;
+    CALayer *_prelayoutReferenceLayer;
 }
 
 @property(nonatomic) long long emptyMediaLayerDisplayType; // @synthesize emptyMediaLayerDisplayType=_emptyMediaLayerDisplayType;
@@ -70,7 +73,9 @@ __attribute__((visibility("hidden")))
 - (void)setGhostSelection:(BOOL)arg1;
 - (void)setPersistentPlayheadHidden:(BOOL)arg1;
 - (void)setPlayheadHidden:(BOOL)arg1;
+- (void)setPlayheadTime:(CDStruct_1b6d18a9)arg1 inRangeOfMedia:(id)arg2 updatePlayerLayer:(BOOL)arg3 updateTree:(BOOL)arg4;
 - (void)setPlayheadTime:(CDStruct_1b6d18a9)arg1 inRangeOfMedia:(id)arg2 updatePlayerLayer:(BOOL)arg3;
+- (void)preLayoutForPlayheadTime:(CDStruct_1b6d18a9)arg1 inRangeOfMedia:(id)arg2;
 - (void)setPersistentPlayheadTime:(CDStruct_1b6d18a9)arg1 inRangeOfMedia:(id)arg2;
 - (void)setPlayerLayer:(id)arg1;
 - (id)playerLayer;

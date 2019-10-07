@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSView *_separator;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) NSView *separator; // @synthesize separator=_separator;
 @property(nonatomic) NSView *gradientView; // @synthesize gradientView=_gradientView;
 @property(nonatomic) NSImageView *titleGlyph; // @synthesize titleGlyph=_titleGlyph;

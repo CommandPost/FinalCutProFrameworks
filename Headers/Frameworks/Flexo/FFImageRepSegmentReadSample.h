@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (int)nativeAlphaType;
 - (id)nativePixelFormat;
 - (id)_ensureFinalImage:(id)arg1;
+- (unsigned long long)approximateMemoryUsage;
 - (id)type;
 - (id)description;
 - (void)dealloc;

@@ -48,8 +48,6 @@
 - (BOOL)isXML;
 - (BOOL)isSequence;
 - (id)previewAVPlayer;
-- (id)fullPreviewMovie;
-- (id)getPreviewMovie;
 - (void)extractClipMetadata:(id)arg1;
 - (id)getPreviewImage;
 - (BOOL)modifyOrAddXMLTag:(const char *)arg1 value:(id)arg2;

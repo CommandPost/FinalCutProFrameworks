@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     struct __CVBuffer *_buffer;
 }
 
+- (struct __CVBuffer *)cvPixelBuffer;
 - (void)dealloc;
 - (id)initWithCVImageBuffer:(struct __CVBuffer *)arg1;
 

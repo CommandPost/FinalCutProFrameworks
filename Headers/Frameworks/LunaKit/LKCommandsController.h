@@ -33,6 +33,7 @@
 + (Class)commandClass;
 + (id)sharedController;
 + (BOOL)_canUseCommands;
++ (void)inhibitCommandsMenu;
 - (void)orderFrontCommandCustomizationPanel:(id)arg1;
 - (void)exportPanelDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)exportCurrentCommandSet:(id)arg1;

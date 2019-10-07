@@ -4,32 +4,28 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFDestVideoGL.h>
+#import <Flexo/FFDestVideoDisplay.h>
 
 #import "FFDestVideoDeviceManaging.h"
 
-@class FFFullScreenGLView, NSString;
+@class FFFullScreenDCDView, NSString;
 
-__attribute__((visibility("hidden")))
-@interface FFDestVideoDCD : FFDestVideoGL <FFDestVideoDeviceManaging>
+@interface FFDestVideoDCD : FFDestVideoDisplay <FFDestVideoDeviceManaging>
 {
     NSString *_deviceUID;
-    FFFullScreenGLView *_dcdView;
+    FFFullScreenDCDView *_dcdView;
     BOOL _disableOnRelease;
-    BOOL _drawFloat16;
-    struct CGColorSpace *_outputColorSpace;
+    int _contentTransferFunction;
+    BOOL _updateDCDViewNeeded;
+    id _edrMetadata;
 }
 
 @property BOOL disableOnRelease; // @synthesize disableOnRelease=_disableOnRelease;
-- (void)_drawImages:(id)arg1 forRate:(double)arg2 clockTime:(CDStruct_1b6d18a9)arg3 isStaleFrame:(BOOL)arg4 qSize:(float)arg5;
-- (int)_displayTimerCallback:(const CDStruct_e50ab651 *)arg1 outTime:(const CDStruct_e50ab651 *)arg2;
-- (id)newOnScreenControlsTextureForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
-- (id)newDrawPropertiesForFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (unsigned int)outputMaxLatencyInFrames;
-- (BOOL)wantsDithering:(id)arg1;
-- (id)internal_tempSupPFs;
-- (struct CGColorSpace *)internal_tempColorSpace;
 - (void)windowPropertiesChanged:(id)arg1;
+- (unsigned int)displayForDCDView;
+- (void)_updateDCDView:(unsigned int)arg1;
+- (void)setContentTransferFunction:(int)arg1 edrMetadata:(id)arg2;
 - (void)updateOutputDevice:(id)arg1;
 - (BOOL)hasConnection;
 - (void)disableVideoOutOnRelease;
@@ -39,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)releaseView;
 - (void)dealloc;
 - (id)initWithDeviceUID:(id)arg1;
-- (void)_setOutputColorSpaceForDisplayColorSpace:(struct CGColorSpace *)arg1;
 
 @end
 

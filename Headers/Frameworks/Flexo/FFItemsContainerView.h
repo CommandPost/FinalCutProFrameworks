@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     FFEventLibraryModule *_eventLibraryModule;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) FFEventLibraryModule *eventLibraryModule; // @synthesize eventLibraryModule=_eventLibraryModule;
 @property(nonatomic) BOOL showEmptyOptions; // @synthesize showEmptyOptions=_showEmptyOptions;
 @property(nonatomic) BOOL showFirstLaunch; // @synthesize showFirstLaunch=_showfirstLaunch;

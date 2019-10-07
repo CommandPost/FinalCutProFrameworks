@@ -6,34 +6,34 @@
 
 #import <Flexo/FFImageRep.h>
 
-@class FFPixelBuffer, FFPixelFormat, FFTextureBuffer;
+#import "FFFlatImageRepWithPlanes.h"
+
+@class FFPixelFormat;
 
 __attribute__((visibility("hidden")))
-@interface FFImageRepBiPlanarHGBuffer : FFImageRep
+@interface FFImageRepBiPlanarHGBuffer : FFImageRep <FFFlatImageRepWithPlanes>
 {
-    FFPixelBuffer *_lumaPB;
-    FFPixelBuffer *_chromaPB;
-    FFTextureBuffer *_lumaTB;
-    FFTextureBuffer *_chromaTB;
     FFImageRep *_lumaRep;
     FFImageRep *_chromaRep;
     struct CGRect _pixelSpaceBounds;
     FFPixelFormat *_pixelFormat;
 }
 
-- (id)chromaRep;
-- (id)lumaRep;
+-     // Error parsing type: ^{HGBitmap=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}}20@0:8i16, name: copyHGBitmapForPlane:
+- (id)_copyRepForPlane:(int)arg1;
+- (int)numPlanes;
 - (int)locationOfPlanes;
 - (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
 - (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
 - (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
-- (struct HGNode *)newHGNode;
+-     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16@0:8, name: newHGNode
 - (struct CGRect)pixelSpaceBounds;
 - (id)type;
 - (id)nativePixelFormat;
 - (void)dealloc;
 - (id)initWithLumaTB:(id)arg1 chromaTB:(id)arg2 formatDesc:(id)arg3 pixelTransform:(id)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6;
 - (id)initWithLumaPB:(id)arg1 chromaPB:(id)arg2 formatDesc:(id)arg3 pixelTransform:(id)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6;
+- (id)initWithLumaRep:(id)arg1 chromaRep:(id)arg2 formatDesc:(id)arg3 pixelTransform:(id)arg4 pixelSpaceBounds:(struct CGRect)arg5 field:(unsigned int)arg6 sourceColorConformer:(struct FFSourceColorConformBaseClass *)arg7 sourceCCTargetColorSpace:(int)arg8;
 
 @end
 

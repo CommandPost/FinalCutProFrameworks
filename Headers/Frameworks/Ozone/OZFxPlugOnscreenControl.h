@@ -9,11 +9,12 @@
 #import "FxOnScreenControlAPI_v2.h"
 #import "FxOnScreenControlAPI_v3.h"
 #import "FxOnScreenControlAPI_v4.h"
+#import "PAEOSCXPCConnectionDelegate.h"
 #import "PROAPIObject.h"
 
 @class NSCursor, NSString;
 
-@interface OZFxPlugOnscreenControl : POOnScreenControl <PROAPIObject, FxOnScreenControlAPI_v2, FxOnScreenControlAPI_v3, FxOnScreenControlAPI_v4>
+@interface OZFxPlugOnscreenControl : POOnScreenControl <PROAPIObject, FxOnScreenControlAPI_v2, FxOnScreenControlAPI_v3, FxOnScreenControlAPI_v4, PAEOSCXPCConnectionDelegate>
 {
     const struct OZRenderState *_state;
     PCRect_b601f9f3 _bounds;
@@ -22,12 +23,14 @@
     NSCursor *_cursor;
     struct OZChannel *_trackChannel;
     int _startCaptureModifiedChannels;
+    PCVector2_7e488b7d _hitCheckCoords;
+    int _savedActivePart;
 }
 
 + (BOOL)validate:(struct OZChannelBase *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (struct OZFxPlugSharedBase *)_sharedBase;
+-     // Error parsing type: ^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}B@BBQB{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}16@0:8, name: _sharedBase
 - (void)menuAddTrack:(id)arg1;
 - (id)menuForEvent:(id)arg1;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
@@ -60,7 +63,11 @@
 - (void)lockCustomParameters;
 - (void)finishEvent:(id)arg1 update:(BOOL)arg2;
 - (BOOL)setupEvent:(id)arg1 x:(double *)arg2 y:(double *)arg3 modifiers:(unsigned long long *)arg4;
+- (int)hitCheckWithViewCoords:(PCVector2_7e488b7d *)arg1;
 - (void)draw;
+-     // Error parsing type: v48@0:8@16@24^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}B@BBQB{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}32@40, name: createPluginWithUUID:OSCClassName:sharedBase:forConnection:
+- (void)updateXPCConnection:(id)arg1 OSCPluginUUID:(id)arg2 OSCClassName:(id)arg3 sharedBase:(void *)arg4;
+-     // Error parsing type: v40@0:8@16@24^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}B@BBQB{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}32, name: setupRemoteOSCConnectionForUUID:OSCClassName:sharedBase:
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)_removeFiles:(id)arg1 error:(id *)arg2;
++ (BOOL)supportsSecureCoding;
 + (id)documentType;
 + (id)documents;
 + (id)copyClassDescription;

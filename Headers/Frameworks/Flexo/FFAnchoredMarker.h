@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)removeSelectionMarkersBeforePasteForObject:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 - (long long)timecodeDisplayDropFrame;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;

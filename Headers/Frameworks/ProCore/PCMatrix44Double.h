@@ -16,6 +16,8 @@
 }
 
 + (BOOL)supportsSecureCoding;
++     // Error parsing type: @144@0:8{?=[4]}16, name: matrixWithSIMDDouble4x4:
++     // Error parsing type: @80@0:8{?=[4]}16, name: matrixWithSIMDFloat4x4:
 - (id)newPlanarTransformTo:(id)arg1;
 - (id)newTransformTo:(id)arg1;
 - (id)newNSAffineTransform;
@@ -39,12 +41,19 @@
 - (void)leftTranslateX:(double)arg1 translateY:(double)arg2 translateZ:(double)arg3;
 - (void)makeIdentity;
 - (BOOL)isIdentity;
+// Error parsing type for property SIMDDouble4x4:
+// Property attributes: T{?=[4]},N
+
+// Error parsing type for property SIMDFloat4x4:
+// Property attributes: T{?=[4]},N
+
 - (id)array;
 - (void)setDoubles:(double [16])arg1;
 - (void)getDoubles:(double [16])arg1;
 - (void)setDoubleValue:(double)arg1 atRow:(unsigned int)arg2 col:(unsigned int)arg3;
 - (double)doubleValueAtRow:(unsigned int)arg1 col:(unsigned int)arg2;
 - (PCMatrix44Tmpl_93ed1289 *)pcMatrix;
+- (id)extendedDescription;
 - (id)compactDescription;
 - (id)debugDescription;
 - (id)description;
@@ -54,6 +63,8 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+-     // Error parsing type: @144@0:8{?=[4]}16, name: initWithSIMDDouble4x4:
+-     // Error parsing type: @80@0:8{?=[4]}16, name: initWithSIMDFloat4x4:
 - (id)initWithArray:(id)arg1;
 - (id)initWithDoubles:(double [16])arg1;
 - (id)initWithDoubles:(double [16])arg1 external:(BOOL)arg2;

@@ -7,12 +7,12 @@
 #import <Flexo/FFMediaState.h>
 
 #import "FFLegacyMediaChecking.h"
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class FFCustomCameraLUTProps, FFDominantMotionMediaRep, FFFlowMediaRep, FFMediaRep, FFProvider, FFVideoOverrideInfo, FFVideoProps, NSDictionary, NSString;
 
-@interface FFAsset : FFMediaState <NSCoding, NSCopying, FFLegacyMediaChecking>
+@interface FFAsset : FFMediaState <NSSecureCoding, NSCopying, FFLegacyMediaChecking>
 {
     NSString *_mediaIdentifier;
     NSString *_md5String;
@@ -60,6 +60,7 @@
     long long _legacyMediaStatusInternal;
 }
 
++ (BOOL)supportsSecureCoding;
 + (void)invalidateMultipleAssets:(id)arg1;
 + (BOOL)isMediaIdentifierExternal:(id)arg1;
 + (BOOL)playerQualityChanging;
@@ -74,6 +75,7 @@
 @property(nonatomic) int hasClosedCaptionTrack; // @synthesize hasClosedCaptionTrack=_hasClosedCaptionTrack;
 @property(nonatomic) BOOL mediaOnlineSinceLastNotification; // @synthesize mediaOnlineSinceLastNotification=_mediaOnlineSinceLastNotification;
 @property(nonatomic) unsigned long long audioSourceCount; // @synthesize audioSourceCount=_audioSourceCount;
+@property(readonly, nonatomic, getter=isMissingCameraLUT) BOOL missingCameraLUT; // @synthesize missingCameraLUT=_missingCameraLUT;
 @property(nonatomic) BOOL needsVideoPropertiesUpdate; // @synthesize needsVideoPropertiesUpdate=_needsVideoPropertiesUpdate;
 @property(readonly, nonatomic) BOOL needsAudioPropertiesUpdate; // @synthesize needsAudioPropertiesUpdate=_needsAudioPropertiesUpdate;
 @property(nonatomic) BOOL isUnmounting; // @synthesize isUnmounting=_isUnmounting;
@@ -142,9 +144,6 @@
 - (void)_startObservingProvider:(id)arg1;
 - (void)_stopObservingProvider:(id)arg1;
 - (void)FFAssetLutCollectionNotification:(id)arg1;
-- (void)removeCustomCameraLUTObserving;
-- (void)addCustomCameraLUTObserving;
-- (void)addOrRemoveCustomCameraLUTObserving;
 - (void)_providerClosing:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)canIngest;
@@ -162,6 +161,7 @@
 - (void)_assetCollection:(id)arg1;
 - (void)invalidate;
 - (void)invalidateProviderIncludingCache:(BOOL)arg1 andSourceRange:(CDStruct_e83c9415)arg2;
+- (void)_validateCustomCameraLUTIsMissing;
 - (void)invalidateAndSendSourceChange:(BOOL)arg1;
 - (void)invalidateProviders;
 - (void)invalidateWithUnknownActionScope:(CDUnknownBlockType)arg1;
@@ -245,7 +245,7 @@
 - (id)optimizedMediaRep;
 - (void)setOriginalMediaRep:(id)arg1;
 - (id)originalMediaRep;
-- (void)forceSetVideoProps:(id)arg1;
+- (void)forceSetVideoProps:(id)arg1 inInitialSetup:(_Bool)arg2;
 @property(retain, nonatomic) FFVideoProps *videoProps;
 @property(readonly, nonatomic) FFVideoProps *videoPropsWithoutOverrides;
 - (int)_calculatedCameraModeFromMD;
@@ -270,6 +270,8 @@
 - (id)initWithURL:(id)arg1 mediaIdentifier:(id)arg2 manageFileType:(int)arg3 project:(id)arg4;
 - (id)initWithURL:(id)arg1 manageFileType:(int)arg2 project:(id)arg3;
 - (id)_initWithBasics;
+- (void)_removeCustomCameraLUTObserving;
+- (void)_addCustomCameraLUTObserving;
 - (id)init;
 - (void)updateIdentity;
 - (id)_fileMD5StringForURL:(id)arg1 baseFilename:(id)arg2;

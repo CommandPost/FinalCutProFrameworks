@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_lastEditableState;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(readonly) long long lastRowClicked; // @synthesize lastRowClicked=_lastRowClicked;
 @property BOOL ignoresCommandUpDownArrowKeys; // @synthesize ignoresCommandUpDownArrowKeys=_ignoresCommandUpDownArrowKeys;
 - (void)draggingExited:(id)arg1;

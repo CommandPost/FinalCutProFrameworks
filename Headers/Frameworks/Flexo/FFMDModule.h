@@ -18,6 +18,9 @@
     NSString *_searchFieldText;
 }
 
++ (BOOL)shouldDisplayAppleTVApp;
++ (BOOL)shouldDisplayMusicApp;
++ (BOOL)shouldDisplayiTunesApp;
 @property(retain, nonatomic) NSString *searchFieldText; // @synthesize searchFieldText=_searchFieldText;
 @property(retain, nonatomic) LKSearchField *searchField; // @synthesize searchField=_searchField;
 @property(retain, nonatomic) NSView *proHeaderView; // @synthesize proHeaderView=_proHeaderView;

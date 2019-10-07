@@ -86,6 +86,8 @@ __attribute__((visibility("hidden")))
 - (id)_viewerSkimmingDelegate;
 - (void)doubleClickWithEffectID:(id)arg1;
 - (void)writeSelectionToPasteboard:(id)arg1;
+- (void)_firstResponderChanged:(id)arg1;
+- (BOOL)isActive;
 - (BOOL)acceptsFirstResponder;
 - (void)copy:(id)arg1;
 - (void)resizeWithOldSuperviewSize:(struct CGSize)arg1;
@@ -103,8 +105,6 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfColumns;
 - (long long)numberOfRows;
 - (void)getNumberOfRows:(long long *)arg1 columns:(long long *)arg2;
-- (void)moduleLayoutDidChange:(id)arg1;
-- (void)windowDidResignKey:(id)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (void)viewDidChangeBackingProperties;

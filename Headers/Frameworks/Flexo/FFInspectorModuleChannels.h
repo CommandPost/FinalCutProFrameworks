@@ -26,6 +26,8 @@
     BOOL _hideKeyframeBlocks;
     NSView *_customContainerView;
     FFEffect *_needsToReleaseThisDummyEffect;
+    BOOL _needsGriddedTime;
+    BOOL _inSliderAction;
     NSSet *_observedItems;
 }
 
@@ -83,7 +85,10 @@
 - (void)stopPlaybackForChannel:(id)arg1;
 - (void)setCurrentTime:(CDStruct_1b6d18a9)arg1 forChannel:(id)arg2;
 - (CDStruct_1b6d18a9)griddedTimeForChannel:(id)arg1;
+- (CDStruct_1b6d18a9)_currentTimeForChannel:(id)arg1;
 - (CDStruct_1b6d18a9)currentTimeForChannel:(id)arg1;
+- (void)didChangeChannelGridEnd:(struct OZChannelBase *)arg1;
+- (void)aboutToChangeChannelGridStart:(struct OZChannelBase *)arg1 inSliderAction:(BOOL)arg2;
 - (void)setContext:(id)arg1;
 - (void)setCurrentItems:(id)arg1;
 - (unsigned long long)labelAlignment;

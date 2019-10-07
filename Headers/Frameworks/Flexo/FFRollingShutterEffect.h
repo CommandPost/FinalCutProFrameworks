@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL _suppressChannelChangeUpdate;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)effectForEffectStack:(id)arg1;
 + (id)effectInstanceForEffectStack:(id)arg1;
 + (id)effectIDForEffectStack:(id)arg1;
@@ -48,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)setPersistentData:(id)arg1;
 - (void)setRequestPending:(BOOL)arg1;
 - (BOOL)requestPending;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
+-     // Error parsing type: v112@0:8^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16{?=qiIq}24@48@56@64@72{CGRect={CGPoint=dd}{CGSize=dd}}80, name: setParameterValuesForNode:atTime:withInputStream:context:pixelTransform:inputData:inputBounds:
 - (int)frameFromTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)sampleTimeFromTime:(CDStruct_1b6d18a9)arg1;
 - (int)sampleFromTime:(CDStruct_1b6d18a9)arg1;
@@ -56,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)setAmount:(int)arg1;
 - (int)amount;
 - (float)correctionAmount;
-- (struct HGNode *)newNodeForContext:(id)arg1;
+-     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}24@0:8@16, name: newNodeForContext:
 - (BOOL)analysisAvailable:(id)arg1 context:(id)arg2;
 - (BOOL)needsAnalysis:(id)arg1 context:(id)arg2;
 - (CDStruct_1b6d18a9)absoluteStartToUseForMD5Calcs;
@@ -65,7 +66,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)effectStartAndDurationImpactMD5;
 - (BOOL)writeDefaultChannels;
 - (BOOL)isNoOp;
-- (unsigned int)attributeCopyingFlags;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_values;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (Class)DSClassDescriptionClass;
 - (void)removeObjectForKey:(id)arg1;

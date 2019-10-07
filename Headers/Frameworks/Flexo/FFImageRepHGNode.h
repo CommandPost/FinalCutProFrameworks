@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface FFImageRepHGNode : FFImageRep
 {
-    struct HGNode *_hgNode;
+    // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}, name: _hgNode
     FFHGRendererManager *_rendererMgr;
     NSMutableArray *_hgNodeReleasers;
     struct CGRect _pixelSpaceBounds;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)setImageRepBindingInfo:(id)arg1;
 - (id)imageRepBindingInfo;
 - (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
-- (struct HGNode *)_hgNode;
+-     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16@0:8, name: _hgNode
 - (struct CGRect)pixelSpaceBounds;
 - (id)type;
 - (id)nativePixelFormat;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
 - (void)dealloc;
 - (id)initWithRepresentation:(id)arg1;
-- (id)initWithHGNode:(struct HGNode *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 pixelSpaceBounds:(struct CGRect)arg4 field:(unsigned int)arg5 pixelFormat:(id)arg6;
+-     // Error parsing type: @84@0:8^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16^{CGColorSpace=}24@32{CGRect={CGPoint=dd}{CGSize=dd}}40I72@76, name: initWithHGNode:colorSpace:pixelTransform:pixelSpaceBounds:field:pixelFormat:
 
 @end
 

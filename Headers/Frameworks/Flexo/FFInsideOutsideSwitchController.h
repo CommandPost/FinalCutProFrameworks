@@ -6,20 +6,21 @@
 
 #import "OZViewController.h"
 
-@class LKButton, LKSegmentedControl;
+@class LKSegmentedControl;
 
 __attribute__((visibility("hidden")))
 @interface FFInsideOutsideSwitchController : OZViewController
 {
     LKSegmentedControl *_insideOutsideControl;
-    LKButton *_viewMatteButton;
+    LKSegmentedControl *_viewMatteButton;
 }
 
 - (void)switchInsideOutside:(id)arg1;
 - (void)toggleInsideColorMask:(id)arg1;
+- (BOOL)validateMenuItem:(id)arg1;
 - (void)didBuildUI;
 - (void)update;
-- (void)showMatte:(id)arg1;
+- (void)changeViewMatteStyle:(id)arg1;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

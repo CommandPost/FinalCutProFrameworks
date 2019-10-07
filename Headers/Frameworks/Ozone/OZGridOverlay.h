@@ -6,14 +6,26 @@
 
 #import <Ozone/OZOverlay.h>
 
+@class NSMutableArray;
+
 @interface OZGridOverlay : OZOverlay
 {
+    NSMutableArray *_verticalLines;
+    NSMutableArray *_horizontalLines;
 }
 
+- (id)getMetalDrawPrimitives:(id)arg1;
+- (BOOL)doesSupportMetal;
+- (BOOL)shouldDraw;
 - (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 - (int)hitCheck:(id)arg1;
 - (int)getDrawingOrder;
 - (void)draw;
+- (id)horizontalLineAtIndex:(unsigned long long)arg1 start:(const PCVector2_79efa81a *)arg2 end:(const PCVector2_79efa81a *)arg3 width:(double)arg4 color:(const struct POColor *)arg5;
+- (id)verticalLineAtIndex:(unsigned long long)arg1 start:(const PCVector2_79efa81a *)arg2 end:(const PCVector2_79efa81a *)arg3 width:(double)arg4 color:(const struct POColor *)arg5;
+- (id)lineAtIndex:(unsigned long long)arg1 inCollection:(id)arg2 start:(const PCVector2_79efa81a *)arg3 end:(const PCVector2_79efa81a *)arg4 width:(double)arg5 color:(const struct POColor *)arg6;
+- (void)dealloc;
+- (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end
 

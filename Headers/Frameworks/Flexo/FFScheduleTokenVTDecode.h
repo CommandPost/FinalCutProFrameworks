@@ -15,37 +15,42 @@ __attribute__((visibility("hidden")))
 {
     struct FFVideoCursor *_videoCursor;
     NSObject<OS_dispatch_semaphore> *_sbSemaphore;
-    struct opaqueCMSampleBuffer *_sb;
-    _Bool _sbHasBeenSet;
+    // Error parsing type: {atomic<opaqueCMSampleBuffer *>="__a_"A^{opaqueCMSampleBuffer}}, name: _sb
     CDStruct_e83c9415 _presentationRange;
     int _playbackMode;
     unsigned int _decodedPixelFormat;
     int _spatialQuality;
     int _priority;
     CDStruct_1b6d18a9 _outputPTS;
+    CDStruct_1b6d18a9 _decodeDeadline;
     PCMatrix44Double *_xform[3];
     BOOL _canceled;
     int _whichDRJP;
-    BOOL _prefetchHasBeenCalled;
-    BOOL _prefetchHasBegun;
+    // Error parsing type: {atomic<signed char>="__a_"Ac}, name: _prefetchHasBeenCalled
+    // Error parsing type: {atomic<signed char>="__a_"Ac}, name: _prefetchHasBegun
     NSObject<OS_dispatch_queue> *_cduQueue;
-    BOOL _inCentralDecodingUnit;
-    BOOL _decompressionInProgress;
-    BOOL _hasCachedImageCharacteristics;
+    // Error parsing type: {atomic<signed char>="__a_"Ac}, name: _inCentralDecodingUnit
+    // Error parsing type: {atomic<signed char>="__a_"Ac}, name: _decompressionInProgress
+    // Error parsing type: {atomic<signed char>="__a_"Ac}, name: _hasCachedImageCharacteristics
     NSObject<OS_dispatch_semaphore> *_imageSemaphore;
     FFImage *_image[6];
     int _frameDecodeError;
-    BOOL _imageHasBeenSet;
+    // Error parsing type: {atomic<signed char>="__a_"Ac}, name: _imageHasBeenSet
     CDUnknownFunctionPointerType _decodeCallback;
     void *_videoDecoder;
     BOOL _needsReset;
     BOOL _fileIsGrowing;
     CDStruct_79c71658 _decodedFrameDimensions;
+    int _device;
+    int _numCompressedBytes;
+    long long _numDecodedBytes;
+    void *_decodeTimer;
+    float _decodeLatency;
+    struct DeviceStatus _storedDeviceStatus;
     _Bool _cropValuesInitialized;
     float _cropValues[4];
 }
 
-@property BOOL prefetchHasBegun; // @synthesize prefetchHasBegun=_prefetchHasBegun;
 - (struct opaqueCMFormatDescription *)copyFormatDescription;
 - (void)setImages:(id)arg1 upper:(id)arg2 lower:(id)arg3 allNoFilt:(id)arg4 upperNoFilt:(id)arg5 lowerNoFilt:(id)arg6 andError:(int)arg7;
 - (void)getXforms:(id *)arg1 upper:(id *)arg2 lower:(id *)arg3;
@@ -62,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (CDUnknownFunctionPointerType)decodeCallback;
 - (void)copyCropValues:(float *)arg1;
 - (void)setCropValues:(float *)arg1;
+- (CDStruct_1b6d18a9)decodeDeadline;
 - (CDStruct_1b6d18a9)outputPTS;
 - (_Bool)invertAlpha;
 - (int)overrideAlphaType;
@@ -73,6 +79,14 @@ __attribute__((visibility("hidden")))
 - (id)pixelTransform:(int)arg1;
 - (struct CGColorSpace *)colorSpace;
 - (id)nativePixelFormat;
+- (struct DeviceStatus)getStoredDeviceStatus;
+- (float)decodeLatency;
+- (long long)numDecodedBytes;
+- (int)numCompressedBytes;
+- (int)device;
+- (void)setDevice:(int)arg1 deviceStatus:(struct DeviceStatus)arg2;
+- (void)setNumCompressedBytes:(int)arg1 numDecodedBytes:(long long)arg2;
+- (long long)calculateNumDecodedBytes;
 - (_Bool)isIntraFrame;
 - (int)playbackMode;
 - (_Bool)isCanceled;
@@ -85,12 +99,14 @@ __attribute__((visibility("hidden")))
 - (void)setDecompressionInProgress;
 - (void)sendToDecoder;
 - (void)ensureInCDU;
+@property BOOL prefetchHasBegun;
 - (void)prefetch;
 - (int)whichDRJP;
 - (void)setWhichDRJP:(int)arg1;
 - (struct FFVideoCursor *)copyVideoCursor;
 - (struct opaqueCMSampleBuffer *)waitForSample;
 - (_Bool)waitForSampleFor:(long long)arg1;
+- (int)getSampleSize;
 - (struct opaqueCMSampleBuffer *)getSample;
 - (void)setSample:(struct opaqueCMSampleBuffer *)arg1;
 - (CDStruct_1b6d18a9)dts;
@@ -99,7 +115,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)includesPTS:(CDStruct_1b6d18a9)arg1;
 - (struct __CFString *)eventDocumentIDAndPath;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 videoCursor:(struct FFVideoCursor *)arg2 playbackMode:(int)arg3 decodedPixelFormat:(unsigned int)arg4 actualQuality:(int)arg5 priority:(int)arg6 outputPTS:(CDStruct_1b6d18a9)arg7 allLineXForm:(id)arg8 upperXForm:(id)arg9 lowerXForm:(id)arg10 outputCallback:(CDUnknownFunctionPointerType)arg11 fileIsGrowing:(BOOL)arg12;
+- (id)initWithStream:(id)arg1 videoCursor:(struct FFVideoCursor *)arg2 playbackMode:(int)arg3 decodedPixelFormat:(unsigned int)arg4 actualQuality:(int)arg5 priority:(int)arg6 outputPTS:(CDStruct_1b6d18a9)arg7 decodeDeadline:(CDStruct_1b6d18a9)arg8 allLineXForm:(id)arg9 upperXForm:(id)arg10 lowerXForm:(id)arg11 outputCallback:(CDUnknownFunctionPointerType)arg12 fileIsGrowing:(BOOL)arg13;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

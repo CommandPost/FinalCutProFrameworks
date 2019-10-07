@@ -22,6 +22,7 @@
     double _statusUpdate;
     int _catalogVersionBase;
     int _catalogVersion;
+    BOOL _statusVisible;
 }
 
 + (void)performWithoutUndo:(CDUnknownBlockType)arg1;
@@ -59,6 +60,7 @@
 + (id)newUniqueName:(id)arg1 extension:(id)arg2 iteration:(int)arg3;
 + (id)defaultFileExtension;
 + (void)initialize;
+@property BOOL statusVisible; // @synthesize statusVisible=_statusVisible;
 @property(nonatomic) BOOL isUpdating; // @synthesize isUpdating=_isUpdating;
 @property(nonatomic) FFLibraryItem *libraryItem; // @synthesize libraryItem=_libraryItem;
 - (void)_handleUndoRedoOperationBefore:(CDUnknownBlockType)arg1 operationAfter:(CDUnknownBlockType)arg2;
@@ -137,6 +139,7 @@
 - (void)progressBlock:(CDUnknownBlockType)arg1;
 - (void)store:(id)arg1 processing:(unsigned long long)arg2 of:(unsigned long long)arg3;
 - (void)setProgress:(id)arg1 current:(unsigned long long)arg2 max:(unsigned long long)arg3;
+- (void)setProgressCurrent:(unsigned long long)arg1 max:(unsigned long long)arg2;
 - (void)setProgress:(id)arg1;
 - (void)setProgressTitle:(id)arg1;
 - (void)showFetchProgress:(id)arg1 withBlock:(CDUnknownBlockType)arg2;

@@ -12,7 +12,7 @@
 {
 }
 
-- (void)colorspaceDidChangeForVideoScopes:(id)arg1;
+- (void)colorSpaceDidChangeForVideoScopes:(id)arg1;
 - (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (id)viewProperties;
 - (void)setViewProperties:(id)arg1;

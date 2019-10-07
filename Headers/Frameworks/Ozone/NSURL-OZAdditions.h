@@ -9,6 +9,8 @@
 @class NSOrderedSet;
 
 @interface NSURL (OZAdditions)
+- (BOOL)OZ_isUTIType:(struct __CFString *)arg1;
+- (id)OZ_UTIType;
 @property(readonly, nonatomic) NSOrderedSet *OZ_imageSequenceURLs;
 @property(readonly, nonatomic) BOOL OZ_isImageSequenceURL;
 @end

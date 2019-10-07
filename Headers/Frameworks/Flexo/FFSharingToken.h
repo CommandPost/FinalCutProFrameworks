@@ -6,17 +6,18 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSString;
 
-@interface FFSharingToken : NSObject <NSCoding, NSCopying>
+@interface FFSharingToken : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_identifier;
     NSString *_displayString;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)customIdentifier;
 + (id)tokenWithIdentifier:(id)arg1;
 + (id)sharingTokens;

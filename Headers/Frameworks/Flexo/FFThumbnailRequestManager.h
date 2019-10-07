@@ -8,7 +8,7 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFStreamVideoCache, NSConditionLock, NSCountedSet, NSMutableArray, NSMutableSet;
+@class FFImage, FFStreamVideoCache, NSConditionLock, NSCountedSet, NSMutableArray, NSMutableSet;
 
 @interface FFThumbnailRequestManager : NSObject <FFBackgroundTaskTarget>
 {
@@ -20,9 +20,10 @@
     NSConditionLock *_isPlayingLock;
     BOOL _isPlaybackActive;
     BOOL _isAudio;
-    struct CGImage *_offlineImage;
-    struct CGImage *_emptyClipImage;
-    int _numQueuedRequests;
+    FFImage *_offlineImage;
+    FFImage *_emptyClipImage;
+    struct FFLock *_requestsCountLock;
+    long long _numQueuedRequests;
     long long _numTotalTaskRequests;
     long long _numCompletedTaskRequests;
     long long _numCurrentTaskBaseline;
@@ -42,13 +43,14 @@
 
 + (void)initialize;
 + (void)FFRangeInvalidationNotification:(id)arg1;
-+ (void)addImageToSegmentStore:(struct CGImage *)arg1 forRequest:(id)arg2;
-+ (struct CGImage *)copyOldCachedImageForRequest:(id)arg1;
++ (void)addImageToSegmentStore:(id)arg1 forRequest:(id)arg2;
++ (id)copyOldCachedImageForRequest:(id)arg1;
 + (void)releaseSharedInstanceVideo;
 + (id)sharedInstanceVideo;
 + (void)releaseSharedInstanceAudio;
 + (id)sharedInstanceAudio;
-+ (struct CGImage *)_copyImageIDCGImage:(id)arg1;
++ (id)_copyImageIDCGImage:(id)arg1;
++ (struct CGImage *)newCGImageRefFromFFImage:(id)arg1 skimmable:(struct NSObject *)arg2 requestFlattenLocation:(int)arg3;
 @property(copy) CDUnknownBlockType pmrRequestCompletionCallback; // @synthesize pmrRequestCompletionCallback=_pmrRequestCompletionCallback;
 @property(copy) CDUnknownBlockType pmrRequestBeginCallback; // @synthesize pmrRequestBeginCallback=_pmrRequestBeginCallback;
 - (id)librariesInUse:(id)arg1;
@@ -65,13 +67,13 @@
 - (id)_removeRequestsForIdentifiers:(id)arg1 identifierType:(int)arg2 inRequestsQueue:(id)arg3;
 - (void)resume;
 - (void)pause;
-- (BOOL)newImage:(struct CGImage **)arg1 forRequest:(id)arg2 cacheOnly:(BOOL)arg3;
+- (BOOL)newImage:(id *)arg1 forRequest:(id)arg2 cacheOnly:(BOOL)arg3;
 - (void)queueImageRequest:(id)arg1;
 - (void)_resumeBackgroundTask;
 - (void)_backgroundTaskCompleted;
 - (void)_dispatchBackgroundTask;
 - (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
-- (void)_notifyRequestCompleted:(id)arg1 withImage:(struct CGImage *)arg2;
+- (void)_notifyRequestCompleted:(id)arg1 withImage:(id)arg2;
 - (void)_processCanceledRequestsInQueue;
 - (void)_migrateIncomingRequests;
 - (void)uiPlaybackStateChange:(id)arg1;

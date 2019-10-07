@@ -6,11 +6,11 @@
 
 #import "NSResponder.h"
 
-@class NSObject<POHostDelegate>, NSObject<POObjectDelegate>, NSObject<POViewDelegate>, OZGLViewer;
+@class NSObject<POHostDelegate>, NSObject<POObjectDelegate>, NSObject<POViewDelegate>, OZViewer;
 
 @interface POOnScreenControl : NSResponder
 {
-    OZGLViewer *_viewer;
+    OZViewer *_viewer;
     NSObject<POViewDelegate> *_viewDelegate;
     NSObject<POHostDelegate> *_delegate;
     NSObject<POObjectDelegate> *_objDelegate;
@@ -20,6 +20,12 @@
     struct OZChannelBase *_channel;
 }
 
+- (int)hitCheckMetal:(id)arg1 event:(id)arg2;
+- (void)renderMetal:(id)arg1;
+- (id)getMetalDrawPrimitives:(id)arg1;
+- (BOOL)doesSupportMetal;
+- (PCMatrix44Tmpl_e98c85ee)getModelViewTransform;
+- (PCMatrix44Tmpl_e98c85ee)getViewTransformation;
 - (BOOL)nudgeLeftBig:(id)arg1;
 - (BOOL)nudgeRightBig:(id)arg1;
 - (BOOL)nudgeDownBig:(id)arg1;

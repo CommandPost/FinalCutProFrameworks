@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) FFMaskBase *mask; // @synthesize mask=_mask;
 @property(nonatomic) FFEffectStack *effectStack; // @synthesize effectStack=_effectStack;
 @property(readonly, getter=wantsSaturatedResult) BOOL wantsSaturatedResult;
+- (int)HDRDelinearizedForWorkingSpace:(int)arg1;
+- (long long)colorSelectionOSCSampleModel;
 - (id)effect;
 - (long long)effectCountForReference;
 - (void)dealloc;

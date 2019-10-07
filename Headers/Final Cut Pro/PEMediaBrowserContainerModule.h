@@ -55,7 +55,7 @@
 - (id)skimmingDelegate;
 - (void)makeSequenceActive:(id)arg1;
 - (void)makeProjectActive:(id)arg1;
-- (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_5c5366e1)arg2;
+- (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2;
 - (void)toggle4k:(id)arg1;
 - (void)hideMediaBrowser:(id)arg1;
 - (void)selectBrowserMode:(id)arg1;

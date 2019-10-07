@@ -6,13 +6,13 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class FFFaceRegistryEntry;
 
 __attribute__((visibility("hidden")))
-@interface FFFaceDetectionInfo : NSObject <NSCopying, NSCoding>
+@interface FFFaceDetectionInfo : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long faceIndex;
     unsigned long long srcImageWidth;
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     FFFaceRegistryEntry *regEntry;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(readonly) unsigned long long srcImageHeight; // @synthesize srcImageHeight;
 @property(readonly) unsigned long long srcImageWidth; // @synthesize srcImageWidth;
 @property FFFaceRegistryEntry *regEntry; // @synthesize regEntry;

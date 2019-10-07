@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface FFSelectClosedCaptionsRoleInfoView : NSView
 {
-    BOOL _needsLayout;
     NSImageView *_disabledRolesImageView;
     NSTrackingArea *_disabledRolesTrackingArea;
     NSSet *_disabledRoles;
@@ -21,7 +20,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) NSTextField *disabledRolesTextField; // @synthesize disabledRolesTextField=_disabledRolesTextField;
 @property(nonatomic) NSImageView *disabledRolesImageView; // @synthesize disabledRolesImageView=_disabledRolesImageView;
 @property(retain, nonatomic) NSSet *disabledRoles; // @synthesize disabledRoles=_disabledRoles;
-@property(nonatomic) BOOL needsLayout; // @synthesize needsLayout=_needsLayout;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 - (BOOL)isOpaque;

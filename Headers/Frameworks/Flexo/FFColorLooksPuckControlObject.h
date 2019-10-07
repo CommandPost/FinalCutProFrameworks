@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSArray *_puckControlGroups;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(readonly, nonatomic) NSArray *groups; // @synthesize groups=_puckControlGroups;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;

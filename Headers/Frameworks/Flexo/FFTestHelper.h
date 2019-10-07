@@ -20,10 +20,10 @@
 + (id)clipsInEvent:(id)arg1;
 + (id)clipsInProject:(id)arg1;
 + (id)pathForTestFile:(id)arg1 inDomain:(unsigned long long)arg2;
-+ (id)pathForTestFile:(id)arg1 inTestFileDir:(id)arg2 class:(Class)arg3;
++ (id)pathForTestFile:(id)arg1 inTestFileDir:(id)arg2 objCClass:(Class)arg3;
 + (id)_pathForTestXMLDir:(Class)arg1;
 + (id)_pathForTestMediaDir:(Class)arg1;
-+ (id)_pathForTestFileDir:(id)arg1 class:(Class)arg2;
++ (id)_pathForTestFileDir:(id)arg1 objCClass:(Class)arg2;
 + (void)dumpItems:(id)arg1;
 + (id)descriptionForItem:(id)arg1;
 + (void)generateTestDataForContainer:(id)arg1 flags:(unsigned long long)arg2;

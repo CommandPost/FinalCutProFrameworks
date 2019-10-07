@@ -6,33 +6,32 @@
 
 #import "NSObject.h"
 
-#import "FxKeyframeAPI_v2.h"
+#import "FxKeyframeAPI_v3.h"
 
-@interface FxRemoteKeyframeHandler : NSObject <FxKeyframeAPI_v2>
+@class FxRemotePluginCoordinator;
+
+@interface FxRemoteKeyframeHandler : NSObject <FxKeyframeAPI_v3>
 {
-    id <FxRemoteHostAPIProtocol><NSObject> hostAPIHandlerSync;
-    id <FxRemoteHostAPIProtocol><NSObject> hostAPIHandlerAsync;
+    FxRemotePluginCoordinator *pluginCoordinator;
     unsigned long long sessionID;
 }
 
 @property unsigned long long sessionID; // @synthesize sessionID;
-@property(retain) id <FxRemoteHostAPIProtocol><NSObject> hostAPIHandlerAsync; // @synthesize hostAPIHandlerAsync;
-@property(retain) id <FxRemoteHostAPIProtocol><NSObject> hostAPIHandlerSync; // @synthesize hostAPIHandlerSync;
-- (id)keyframeInfo:(struct FxKeyframeInfo *)arg1 atOrAfterFxTime:(CDUnion_2516e51e)arg2 fromParam:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
-- (id)keyframeInfo:(struct FxKeyframeInfo *)arg1 atOrBeforeFxTime:(CDUnion_2516e51e)arg2 fromParam:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
-- (id)param:(unsigned long long)arg1 channel:(unsigned long long)arg2 hasKeyframe:(char *)arg3 atFxTime:(CDUnion_2516e51e)arg4;
-- (id)removeAllKeyframesForParam:(unsigned long long)arg1 andChannel:(unsigned long long)arg2;
-- (id)keyframeInfo:(struct FxKeyframeInfo *)arg1 atOrAfter:(double)arg2 fromParam:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
-- (id)keyframeInfo:(struct FxKeyframeInfo *)arg1 atOrBefore:(double)arg2 fromParam:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
-- (id)param:(unsigned long long)arg1 channel:(unsigned long long)arg2 hasKeyframe:(char *)arg3 atTime:(double)arg4;
-- (id)removeKeyframeAtIndex:(unsigned long long)arg1 fromParam:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
-- (id)addKeyframe:(struct FxKeyframeInfo)arg1 toParam:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
-- (id)setKeyframe:(unsigned long long)arg1 withInfo:(struct FxKeyframeInfo)arg2 forParam:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
-- (id)keyframeInfo:(struct FxKeyframeInfo *)arg1 forParam:(unsigned long long)arg2 channel:(unsigned long long)arg3 andIndex:(unsigned long long)arg4;
-- (id)keyframeCount:(unsigned long long *)arg1 forParam:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
-- (id)channelCount:(unsigned long long *)arg1 forParam:(unsigned long long)arg2;
+@property(retain) FxRemotePluginCoordinator *pluginCoordinator; // @synthesize pluginCoordinator;
+- (id)keyframe:(struct FxKeyframe *)arg1 atOrAfterTime:(CDStruct_1b6d18a9)arg2 fromParameter:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
+- (id)keyframe:(struct FxKeyframe *)arg1 atOrBeforeTime:(CDStruct_1b6d18a9)arg2 fromParameter:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
+- (id)parameter:(unsigned long long)arg1 channel:(unsigned long long)arg2 hasKeyframe:(char *)arg3 atTime:(CDStruct_1b6d18a9)arg4;
+- (id)removeAllKeyframesForParameter:(unsigned long long)arg1 andChannel:(unsigned long long)arg2;
+- (id)removeKeyframeAtIndex:(unsigned long long)arg1 fromParameter:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
+- (id)addKeyframe:(const struct FxKeyframe *)arg1 toParameter:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
+- (id)setKeyframeIndex:(unsigned long long)arg1 withKeyframe:(const struct FxKeyframe *)arg2 forParameter:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
+- (id)keyframe:(struct FxKeyframe *)arg1 forParameter:(unsigned long long)arg2 channel:(unsigned long long)arg3 andIndex:(unsigned long long)arg4;
+- (id)keyframeCount:(unsigned long long *)arg1 forParameter:(unsigned long long)arg2 andChannel:(unsigned long long)arg3;
+- (id)channelCount:(unsigned long long *)arg1 forParameter:(unsigned long long)arg2;
+- (id)hostAPIHandlerAsyncForFunction:(const char *)arg1;
+- (id)hostAPIHandlerSyncForFunction:(const char *)arg1;
 - (void)dealloc;
-- (id)initWithSyncHandler:(id)arg1 andAsyncHandler:(id)arg2 andHostSessionID:(unsigned long long)arg3;
+- (id)initWithPluginCoordinator:(id)arg1 andHostSessionID:(unsigned long long)arg2;
 
 @end
 

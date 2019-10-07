@@ -6,14 +6,14 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSPasteboardReading.h"
 #import "NSPasteboardWriting.h"
+#import "NSSecureCoding.h"
 
 @class NSArray, NSData, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFPasteboardItem : NSObject <NSCoding, NSPasteboardWriting, NSPasteboardReading>
+@interface FFPasteboardItem : NSObject <NSSecureCoding, NSPasteboardWriting, NSPasteboardReading>
 {
     NSData *_data;
     NSString *_documentID;
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 
 + (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
 + (id)readableTypesForPasteboard:(id)arg1;
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property(retain, nonatomic) NSDictionary *copiedTypes; // @synthesize copiedTypes=_copiedTypes;
 @property(retain, nonatomic) NSString *parentObjectID; // @synthesize parentObjectID=_parentObjectID;

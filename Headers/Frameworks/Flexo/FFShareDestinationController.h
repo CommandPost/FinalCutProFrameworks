@@ -6,7 +6,7 @@
 
 #import "NSViewController.h"
 
-@class FFShareDestination, FFSharePanelRolesViewController, LKImageView, LKPopUpButton, LKTextField, NSArray, NSSet, NSStackView, NSString, NSTextField, NSView;
+@class FFShareDestination, FFSharePanelRolesViewController, LKButton, LKImageView, LKPopUpButton, LKTextField, NSArray, NSPopUpButton, NSSet, NSStackView, NSString, NSTextField, NSView;
 
 @interface FFShareDestinationController : NSViewController
 {
@@ -20,6 +20,14 @@
     NSArray *_sources;
     BOOL _hasConsumerView;
     CDUnknownBlockType _completionHandler;
+    LKPopUpButton *_colorSpacePopUpButton;
+    LKPopUpButton *_colorChannelsPopUpButton;
+    LKButton *_entireProjectRadioButton;
+    LKButton *_playRangeRadioButton;
+    LKTextField *_projectionTypeTextField;
+    LKTextField *_projectionTypeLabelTextField;
+    LKTextField *_colorSpaceTextField;
+    LKTextField *_colorChannelsTextField;
     NSStackView *_captionsEmbedStackView;
     LKPopUpButton *_captionsPopup;
     NSTextField *_captionsLabel;
@@ -29,6 +37,9 @@
     NSSet *_applicableEmbedCaptionRoles;
     NSSet *_applicableBurnInCaptionRoles;
     NSString *_projectionTypeDisplayName;
+    NSStackView *_exportSelectedLayersStackView;
+    NSStackView *_durationStackView;
+    NSStackView *_colorChannelsStackView;
     FFSharePanelRolesViewController *_rolesViewController;
     NSSet *_applicableEmbedCaptionFormats;
     NSSet *_applicableBurnInCaptionFormats;
@@ -49,6 +60,17 @@
 @property(nonatomic) LKPopUpButton *captionsBurnInPopup; // @synthesize captionsBurnInPopup=_captionsBurnInPopup;
 @property(nonatomic) NSTextField *captionsLabel; // @synthesize captionsLabel=_captionsLabel;
 @property(nonatomic) LKPopUpButton *captionsPopup; // @synthesize captionsPopup=_captionsPopup;
+@property(nonatomic) NSStackView *colorChannelsStackView; // @synthesize colorChannelsStackView=_colorChannelsStackView;
+@property(nonatomic) NSStackView *durationStackView; // @synthesize durationStackView=_durationStackView;
+@property(nonatomic) NSStackView *exportSelectedLayersStackView; // @synthesize exportSelectedLayersStackView=_exportSelectedLayersStackView;
+@property(nonatomic) LKTextField *colorChannelsTextField; // @synthesize colorChannelsTextField=_colorChannelsTextField;
+@property(nonatomic) LKTextField *colorSpaceTextField; // @synthesize colorSpaceTextField=_colorSpaceTextField;
+@property(nonatomic) LKTextField *projectionTypeLabelTextField; // @synthesize projectionTypeLabelTextField=_projectionTypeLabelTextField;
+@property(nonatomic) LKTextField *projectionTypeTextField; // @synthesize projectionTypeTextField=_projectionTypeTextField;
+@property(nonatomic) LKButton *playRangeRadioButton; // @synthesize playRangeRadioButton=_playRangeRadioButton;
+@property(nonatomic) LKButton *entireProjectRadioButton; // @synthesize entireProjectRadioButton=_entireProjectRadioButton;
+@property(nonatomic) NSPopUpButton *colorChannelsPopUpButton; // @synthesize colorChannelsPopUpButton=_colorChannelsPopUpButton;
+@property(nonatomic) NSPopUpButton *colorSpacePopUpButton; // @synthesize colorSpacePopUpButton=_colorSpacePopUpButton;
 @property(copy, nonatomic) NSArray *sources; // @synthesize sources=_sources;
 @property(readonly, nonatomic) NSArray *destinations; // @synthesize destinations=_destinations;
 @property(nonatomic) BOOL hasConsumerView; // @synthesize hasConsumerView=_hasConsumerView;
@@ -70,6 +92,15 @@
 - (void)selectActiveCaptionRolesForBurnIn:(id)arg1;
 - (void)embedCaptionRole:(id)arg1 forDestination:(id)arg2;
 - (void)embedCaption:(id)arg1;
+- (void)selectColorChannels:(id)arg1;
+- (void)selectColorSpace:(id)arg1;
+- (void)updateDurationFields;
+- (BOOL)allDestinationsForCurrentFrameOnly;
+- (BOOL)canExportSelectedLayersOnly;
+- (void)updateColorChannelsMenu;
+- (void)updateColorSpaceMenu;
+- (id)colorSpaceMenu;
+- (void)updateProjectionTypeFields;
 - (void)selectActiveCaptionRolesForEmbed:(id)arg1;
 - (void)hideEmbedCaptionsControls;
 - (void)setupCaptionsControlsWithEmbedFormats:(id)arg1 andBurnInFormats:(id)arg2;
@@ -86,10 +117,12 @@
 - (id)colorSpaceDisplayNameWithDestination:(id)arg1 isWideGamut:(char *)arg2;
 @property(readonly, copy, nonatomic) NSString *projectionTypeDisplayName; // @synthesize projectionTypeDisplayName=_projectionTypeDisplayName;
 - (BOOL)sourceContains360Metadata;
+- (int)projectionModeFromSource:(id)arg1;
 - (id)colorSpaceDisplayNameWithDestination:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *colorSpaceDisplayName; // @dynamic colorSpaceDisplayName;
 - (id)theImageForResource:(id)arg1;
 - (id)newRolesViewControllerWithDestinations:(id)arg1 andSources:(id)arg2;
+- (void)awakeFromNib;
 - (void)dealloc;
 - (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 - (id)initWithNibName:(id)arg1 withDestination:(id)arg2 withSources:(id)arg3;

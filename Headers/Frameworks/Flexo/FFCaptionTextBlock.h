@@ -6,14 +6,13 @@
 
 #import <Flexo/FFBaseDSObject.h>
 
-#import "AVAssetWriterDataWritingDelegate.h"
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSArray, NSAttributedString, NSDictionary, NSMutableData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFCaptionTextBlock : FFBaseDSObject <NSCopying, NSCoding, AVAssetWriterDataWritingDelegate>
+@interface FFCaptionTextBlock : FFBaseDSObject <NSCopying, NSSecureCoding>
 {
     NSArray *_cachedAVCaptions;
     NSArray *_encodedAVCaptions;
@@ -23,12 +22,12 @@ __attribute__((visibility("hidden")))
     NSMutableData *_captionExportDataBuffer;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(retain, nonatomic) NSMutableData *captionExportDataBuffer; // @synthesize captionExportDataBuffer=_captionExportDataBuffer;
 @property(retain, nonatomic) NSDictionary *avCaptionsDictionary; // @synthesize avCaptionsDictionary=_avCaptionsDictionary;
 @property(nonatomic) long long justification; // @synthesize justification=_justification;
 @property(nonatomic) id <FFCaptionTextBlockDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)assetWriter:(id)arg1 didProduceDataOfLength:(unsigned long long)arg2 offset:(long long)arg3 bytes:(const char *)arg4 bytesWritten:(unsigned long long *)arg5;
 - (id)_setJustificationOnAVCaptions:(id)arg1;
 - (id)_setJustificationRight:(id)arg1;
 - (id)_setJustificationCenter:(id)arg1;
@@ -83,16 +82,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqualToTextBlock:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-@property(readonly, copy) NSString *description;
+- (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithCaptionArray:(id)arg1 justification:(long long)arg2 delegate:(id)arg3;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -12,7 +12,7 @@
 #import "NSTouchBarProvider.h"
 #import "PEPlayerContainerViewDelegate.h"
 
-@class FFComparePickerWindowController, FFContext, FFPlayerModule, FFTimecodeFormatter, LKButton, LKContainerItemView, LKMenu, LKPopUpButton, LKSegmentedControl, LKTextField, LKTimecode, LKWindow, NSArray, NSDateFormatter, NSDictionary, NSImageView, NSLayoutConstraint, NSMenu, NSMutableArray, NSMutableDictionary, NSResponder, NSStackView, NSString, NSTextField, NSTouchBar, NSView, PEAudioMeterModule, PEPlayerDFRController, PETimecodeDisplayViewController, PEToolbarMetersButton, PEViewedClipSet, PEViewerDFRController;
+@class FFComparePickerWindowController, FFContext, FFPlayerModule, FFTimecodeFormatter, LKButton, LKContainerItemView, LKMenu, LKPopUpButton, LKSegmentedControl, LKTextField, LKTimecode, LKWindow, NSArray, NSDateFormatter, NSDictionary, NSImageView, NSLayoutConstraint, NSMenu, NSMenuItem, NSMutableArray, NSMutableDictionary, NSResponder, NSStackView, NSString, NSTextField, NSTouchBar, NSView, PEAudioMeterModule, PEPlayerDFRController, PETimecodeDisplayViewController, PEToolbarMetersButton, PEViewedClipSet, PEViewerDFRController;
 
 @interface PEPlayerContainerModule : LKViewModule <PEPlayerContainerViewDelegate, FFErrorReportingProtocol, FFPlayerModuleDelegate, NSMenuDelegate, NSTouchBarProvider>
 {
@@ -65,6 +65,20 @@
     NSMenu *_twoUpScaleMenuHiDPI;
     NSMenu *_twoUpCanvasScaleMenu;
     NSMenu *_twoUpCanvasScaleMenuHiDPI;
+    NSMenuItem *_showHeaderMenuItem;
+    NSMenuItem *_showHeaderCompareMenuItem;
+    NSMenuItem *_captionsHeaderMenuItem;
+    NSMenuItem *_showAnglesMenuItem;
+    NSMenuItem *_show360ViewerMenuItem;
+    NSMenuItem *_showVideoScopesMenuItem;
+    NSMenuItem *_showVideoScopesCompareMenuItem;
+    NSMenuItem *_mediaProxyMenuItem;
+    NSMenuItem *_captionsShowCaptionsMenuItem;
+    NSMenuItem *_captionsLanguageMenuItem;
+    NSMenuItem *_showHDRAsRawValuesMenuItem;
+    NSMenuItem *_showHDRAsRawValuesCompareMenuItem;
+    NSMenuItem *_showHDRAsToneMappedMenuItem;
+    NSMenuItem *_showHDRAsToneMappedCompareMenuItem;
     NSMenu *_onScreenControlsMenu;
     NSMenu *_colorDisplayMenu;
     NSMenu *_selectedModeMenu;
@@ -84,7 +98,6 @@
     LKPopUpButton *_retimePopup;
     NSView *_audioMeters;
     PEToolbarMetersButton *_audioMetersButton;
-    LKButton *_playerWarningButton;
     NSStackView *_leftStackView;
     LKWindow *_matchWindow;
     NSView *_matchControlsFooterView;
@@ -168,7 +181,6 @@
 - (id)newSnapshot;
 - (void)_enableCompareControls:(BOOL)arg1;
 - (id)snapshotEventProject;
-- (void)showWarningPopover:(id)arg1;
 - (void)updateToolMenuForSelectionChange:(id)arg1;
 - (void)layoutDidChange:(id)arg1;
 - (void)reconfigurePlayers;
@@ -220,6 +232,7 @@
 - (void)updatePlayers;
 - (void)_addPlayerTabsToModule:(id)arg1 forMenu:(id)arg2 indentLevel:(long long)arg3 target:(id)arg4;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_screenParametersChanged:(id)arg1;
 - (void)_compareSequenceChanged;
 - (void)timeRateChangedForContext:(id)arg1;
 - (void)setTimelineContextForCompare:(id)arg1 rootItem:(id)arg2;
@@ -282,6 +295,7 @@
 - (void)cut:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)toggleVerticalAngleViewerLayout:(id)arg1;
+- (void)setHDRToneMapping:(id)arg1;
 - (void)setShowBothFields:(id)arg1;
 - (BOOL)showBothFields;
 - (void)setDisplay360Horizon:(id)arg1;
@@ -330,6 +344,7 @@
 - (void)menuNeedsUpdate:(id)arg1;
 - (void)hideSportsTeamOSC;
 - (id)fullscreenPlayerPresentationOptions;
+- (BOOL)playerLayoutIsNUpStyle;
 - (BOOL)isInFullScreenMode;
 - (BOOL)isLooping;
 - (BOOL)isPlaying;

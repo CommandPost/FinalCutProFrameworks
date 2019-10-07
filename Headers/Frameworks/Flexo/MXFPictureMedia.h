@@ -4,7 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/MXFMedia.h>
+#import <Flexo/MXFPictureMediaDecode.h>
 
 #import "HPMMediaCursorProtocol.h"
 #import "HPMPictureMediaProtocol.h"
@@ -12,47 +12,23 @@
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MXFPictureMedia : MXFMedia <HPMPictureMediaProtocol, HPMMediaCursorProtocol>
+@interface MXFPictureMedia : MXFPictureMediaDecode <HPMPictureMediaProtocol, HPMMediaCursorProtocol>
 {
-    unsigned int _width;
-    unsigned int _height;
-    unsigned int _storedWidth;
-    unsigned int _storedHeight;
-    int _displayYOffset;
-    int _aspectRatio;
-    int _gamma;
-    int _colorPrimaries;
-    int _YCbCrMatrix;
-    BOOL _isInterlaced;
-    int _fieldInfo;
     BOOL _isIndexIFrameOnly;
     long long _indexDataSize;
-    struct map<HPMPictureMetadataKey, const void *, std::__1::less<HPMPictureMetadataKey>, std::__1::allocator<std::__1::pair<const HPMPictureMetadataKey, const void *>>> *_pictureMetadataMap;
-    int _indexEntryInterval;
     BOOL _hasDisplayOffsets;
     unsigned long long _usedIndexEntryCount;
     unsigned long long _maxOffsetsAndFlags;
     char *_temporalOffsets;
     char *_displayOffsets;
-    char *_flags;
+    unsigned char *_frameTypes;
 }
 
 @property(readonly) unsigned long long maxOffsetsAndFlags; // @synthesize maxOffsetsAndFlags=_maxOffsetsAndFlags;
 @property(readonly) unsigned long long usedIndexEntryCount; // @synthesize usedIndexEntryCount=_usedIndexEntryCount;
 @property(readonly) BOOL hasDisplayOffsets; // @synthesize hasDisplayOffsets=_hasDisplayOffsets;
-@property(readonly) int indexEntryInterval; // @synthesize indexEntryInterval=_indexEntryInterval;
 @property(readonly) BOOL isIFrameOnly; // @synthesize isIFrameOnly=_isIndexIFrameOnly;
-@property(readonly) int fieldInfo; // @synthesize fieldInfo=_fieldInfo;
-@property(readonly) BOOL isInterlaced; // @synthesize isInterlaced=_isInterlaced;
-@property int YCbCrMatrix; // @synthesize YCbCrMatrix=_YCbCrMatrix;
-@property int colorPrimaries; // @synthesize colorPrimaries=_colorPrimaries;
-@property int gamma; // @synthesize gamma=_gamma;
-@property(readonly) int aspectRatio; // @synthesize aspectRatio=_aspectRatio;
-@property(readonly) int displayYOffset; // @synthesize displayYOffset=_displayYOffset;
-@property(readonly) unsigned int storedHeight; // @synthesize storedHeight=_storedHeight;
-@property(readonly) unsigned int storedWidth; // @synthesize storedWidth=_storedWidth;
-@property(readonly) unsigned int height; // @synthesize height=_height;
-@property(readonly) unsigned int width; // @synthesize width=_width;
+- (unsigned char)frameTypeWithFrameFlag:(unsigned char)arg1;
 - (BOOL)samplesWithLaterDecodePositionX:(long long)arg1 displayPositionX:(long long)arg2 mayHaveEarlierDisplayPositionY:(long long)arg3;
 - (BOOL)samplesWithEarlierDecodePositionX:(long long)arg1 displayPositionX:(long long)arg2 mayHaveLaterDisplayPositionY:(long long)arg3;
 - (int)stepInPresentationOrderWithCount:(long long)arg1 displayPosition:(long long *)arg2 decodePosition:(long long *)arg3 mustLoadAtMediaIndexPosition:(long long *)arg4;
@@ -60,51 +36,51 @@ __attribute__((visibility("hidden")))
 @property(readonly) long long displayPositionForLastDecodeSample;
 @property(readonly) long long displayPositionForFirstDecodeSample;
 - (long long)decodePositionWithDisplayPosition:(long long)arg1 mustLoadAtMediaIndexPosition:(long long *)arg2;
-- (unsigned int)uint32PictureMetadataWithKey:(int)arg1 failed:(char *)arg2;
-- (unsigned short)uint16PictureMetadataWithKey:(int)arg1 failed:(char *)arg2;
-- (unsigned char)uint8PictureMetadataWithKey:(int)arg1;
-- (void *)pictureMetadataWithKey:(int)arg1;
 - (void)setIndexEntryWithIndexPosition:(unsigned long long)arg1 filePosition:(long long)arg2 size:(unsigned int)arg3 isExactSize:(BOOL)arg4 unitsPerPacket:(unsigned int)arg5 packageStartUnit:(long long)arg6 temporalOffset:(BOOL)arg7 frameFlags:(unsigned char)arg8;
 - (void)addIndexEntryWithFilePosition:(long long)arg1 size:(unsigned int)arg2 isExactSize:(BOOL)arg3 unitsPerPacket:(unsigned int)arg4 temporalOffset:(BOOL)arg5 frameFlags:(unsigned char)arg6;
-- (void)setWithEssenceTransferCharacteristic:(const struct MXKey16 *)arg1;
-- (void)setWithJ2KBitDepth:(unsigned char)arg1 isLossLess:(BOOL)arg2;
-- (void)setWithMPEGWidth:(unsigned int)arg1 height:(unsigned int)arg2 bitRate:(unsigned int)arg3;
 - (void)checkMediaWithIndexDuration:(long long)arg1;
 - (void)checkDisplayOffsetsWithDecodeStartPosition:(long long)arg1;
-- (unsigned char)frameFlagsWithIndexPosition:(unsigned long long)arg1;
+- (unsigned char)frameTypeWithIndexPosition:(unsigned long long)arg1;
 - (BOOL)temporalFrameOffsetWithIndexPosition:(unsigned long long)arg1;
-- (BOOL)displayFrameOffsetWithIndexPosition:(unsigned long long)arg1;
+- (BOOL)displayFrameOffsetWithIndexPosition:(unsigned long long)arg1 mustLoadAtMediaIndexPosition:(long long *)arg2;
+- (struct __CFString *)newCustomColorSpace;
 @property(readonly) BOOL isMPEG4;
 @property(readonly) BOOL isMPEG2;
-@property(readonly) long long indexDataSize;
-- (struct __CFString *)newCustomColorSpace;
-- (struct __CFString *)createCustomColorSpace;
 @property(readonly) BOOL isMPEG;
+@property(readonly) long long indexDataSize;
 @property(readonly, copy) NSString *description;
-- (int)avcCodecWithDescriptor:(const struct MXKLV *)arg1 subDescriptor:(const struct MXKLV *)arg2;
-- (int)codecAndWrappingWithEssenceContainers:(const struct MXArray *)arg1 essenceContainer:(const struct MXKey16 *)arg2;
-- (int)codecTypeWithEssenceCodec:(const struct MXKey16 *)arg1;
 - (void)dealloc;
 - (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXKey *)arg2 bodySID:(unsigned int)arg3 descriptor:(const struct MXKLV *)arg4 subDescriptor:(const struct MXKLV *)arg5 essenceContainers:(const struct MXArray *)arg6 mxfVersion:(unsigned int)arg7;
 
 // Remaining properties
+@property int YCbCrMatrix;
+@property(readonly) CDStruct_2689111f aspectRatio;
 @property(readonly) unsigned int bytesPerSample;
 @property(readonly) int codecType;
+@property int colorPrimaries;
 @property(readonly, copy) NSString *debugDescription;
 @property struct __CFDictionary *descriptiveMetadata;
-@property(readonly) int editRate;
+@property(readonly) int displayYOffset;
+@property(readonly) CDStruct_2689111f editRate;
 @property(readonly) int essenceType;
+@property(readonly) int fieldInfo;
 @property(readonly) long long frameDuration;
+@property int gamma;
 @property(readonly) unsigned long long hash;
+@property(readonly) unsigned int height;
 @property(readonly) unsigned long long indexEntryCount;
 @property long long indexSampleCount;
+@property(readonly) BOOL isInterlaced;
 @property(readonly) BOOL isValid;
 @property(readonly) long long origin;
 @property(readonly) long long originInSamples;
-@property(readonly) int sampleRate;
+@property(readonly) CDStruct_2689111f sampleRate;
 @property(readonly) long long startPosition;
+@property(readonly) unsigned int storedHeight;
+@property(readonly) unsigned int storedWidth;
 @property(readonly) Class superclass;
 @property(readonly) int type;
+@property(readonly) unsigned int width;
 
 @end
 

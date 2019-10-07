@@ -10,8 +10,6 @@
 {
 }
 
-+ (id)exportToDataWithWriterDelegate:(id)arg1 toFileType:(id)arg2 languageIdentifier:(id)arg3 fromArray:(id)arg4 withFrameDuration:(CDStruct_1b6d18a9)arg5 andStartTimeOffset:(CDStruct_1b6d18a9)arg6;
-+ (id)importFromData:(id)arg1 intoArray:(id)arg2 withFileType:(id)arg3 andFrameDuration:(CDStruct_1b6d18a9)arg4 andStartTimeOffset:(CDStruct_1b6d18a9)arg5;
 + (id)exportToFileURL:(id)arg1 toFileType:(id)arg2 languageIdentifier:(id)arg3 fromArray:(id)arg4 withFrameDuration:(CDStruct_1b6d18a9)arg5 andStartTimeOffset:(CDStruct_1b6d18a9)arg6 includingFormatting:(BOOL)arg7;
 + (id)exportToFileURL:(id)arg1 toFileType:(id)arg2 languageIdentifier:(id)arg3 fromArray:(id)arg4 withFrameDuration:(CDStruct_1b6d18a9)arg5 andStartTimeOffset:(CDStruct_1b6d18a9)arg6;
 + (id)importFromFileURL:(id)arg1 intoArray:(id)arg2 withFrameDuration:(CDStruct_1b6d18a9)arg3 andStartTimeOffset:(CDStruct_1b6d18a9)arg4;

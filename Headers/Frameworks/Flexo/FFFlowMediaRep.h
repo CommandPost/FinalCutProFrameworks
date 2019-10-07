@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSIndexSet *_cachedHasMediumQualityVectors;
 }
 
++ (BOOL)supportsSecureCoding;
 + (void)_processQueuedInvals;
 + (id)copyClassDescription;
 - (id)librariesInUse:(id)arg1;

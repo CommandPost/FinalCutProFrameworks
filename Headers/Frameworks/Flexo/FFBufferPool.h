@@ -14,12 +14,6 @@ __attribute__((visibility("hidden")))
     BOOL _enabled;
     NSArray *_bufferListArray;
     unsigned long long _maximumSize;
-    long long _totalBuffersAllocated;
-    unsigned long long _totalMemoryAllocated;
-    long long _currentBuffersUsed;
-    unsigned long long _currentMemoryUsed;
-    long long _requestedBufferCount;
-    long long _returnedBufferCount;
 }
 
 + (void)dump;

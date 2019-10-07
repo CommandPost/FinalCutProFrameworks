@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)keyPathsForValuesAffectingAsset;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 - (id)subtitlesInRange:(CDStruct_e83c9415)arg1;
 - (id)closedCaptionsInRange:(CDStruct_e83c9415)arg1;

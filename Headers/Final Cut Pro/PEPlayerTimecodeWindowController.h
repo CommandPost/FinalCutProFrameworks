@@ -34,6 +34,8 @@
 @property(nonatomic) BOOL observingContext; // @synthesize observingContext=_observingContext;
 @property(nonatomic) NSLayoutConstraint *minHeightConstraint; // @synthesize minHeightConstraint=_minHeightConstraint;
 @property(nonatomic) NSLayoutConstraint *minWidthConstraint; // @synthesize minWidthConstraint=_minWidthConstraint;
+- (void)_appResignedActive:(id)arg1;
+- (void)_appBecameActive:(id)arg1;
 - (void)_playerDidExitFullScreen:(id)arg1;
 - (void)_playerWillEnterFullScreen:(id)arg1;
 - (id)videoModule;

@@ -22,8 +22,10 @@
 @property(retain, nonatomic) TLKAbstractPrecisionEditorTrimBar *trimBar; // @synthesize trimBar=_trimBar;
 @property(retain, nonatomic) CALayer *dividerBar; // @synthesize dividerBar=_dividerBar;
 @property(readonly, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
-- (void)_timelineDatabaseDidReload:(id)arg1;
-- (void)_reloadTransitionItemIfNeeded;
+- (id)newPrecisionEditorDataSyncOperation;
+- (void)schedulePrecisionEditorDataSyncOperationForReloadOperation:(id)arg1;
+- (void)_reloadOperationWillBegin:(id)arg1;
+- (void)reloadTransitionItemIfNeeded;
 - (void)_closePrecisionEditorIfNeededAfterReload;
 - (void)_timelineViewDidReload:(id)arg1;
 - (void)updatePrecisionEditorTrimBar;
@@ -36,6 +38,10 @@
 - (id)itemInfoBeforeEditPoint;
 - (id)containerInfo;
 - (int)precisionEditorState;
+- (void)_finishPrecisionEditorLayoutWithFinalState:(int)arg1 savedVisibleRectState:(id)arg2;
+- (void)exitPrecisionEditor;
+- (void)_getPrecisionEditorLayoutContext:(id *)arg1 referenceTime:(CDStruct_1b6d18a9 *)arg2 forContainer:(id)arg3 leftItem:(id)arg4 rightItem:(id)arg5;
+- (void)enterPrecisionEditorWithLeftItem:(id)arg1 rightItem:(id)arg2 transition:(id)arg3;
 - (void)dealloc;
 - (id)initWithTimelineView:(id)arg1;
 

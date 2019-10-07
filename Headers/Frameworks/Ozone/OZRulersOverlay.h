@@ -6,7 +6,7 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class LKCursor, NSLayoutManager, NSMutableDictionary, NSTextContainer, NSTextStorage, PGDrawableTexture;
+@class LKCursor, NSLayoutManager, NSMutableDictionary, NSTextContainer, NSTextStorage, PODrawableTexture;
 
 @interface OZRulersOverlay : OZOverlay
 {
@@ -19,8 +19,8 @@
     char _movingUndisplayed[2];
     unsigned int _moving;
     NSMutableDictionary *_textAttribs;
-    PGDrawableTexture *_horizontalTextTexture;
-    PGDrawableTexture *_verticalTextTexture;
+    PODrawableTexture *_horizontalTextTexture;
+    PODrawableTexture *_verticalTextTexture;
     int _previousSide;
     PCMatrix44Tmpl_e98c85ee *_previousTransformation;
     NSTextStorage *_textStorage;
@@ -34,6 +34,9 @@
     float _lastScale;
 }
 
+- (BOOL)shouldDraw;
+- (id)getMetalDrawPrimitives:(id)arg1;
+- (BOOL)doesSupportMetal;
 - (id)getCursorWithEvent:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)finishDraggingGuide:(id)arg1 vertical:(_Bool)arg2 poof:(BOOL)arg3;
@@ -47,7 +50,7 @@
 - (struct CGRect)getAvailableViewBounds;
 - (void)dealloc;
 - (int)getDrawingOrder;
-- (void)setRulerAndMarkSizes;
+- (void)setRulerAndMarkSizesApplyingScaleToFont:(BOOL)arg1;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end

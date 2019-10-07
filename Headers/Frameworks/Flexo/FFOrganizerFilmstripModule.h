@@ -41,6 +41,17 @@
     NSMenuItem *_stackRolesContextualMenuItem;
     NSMenuItem *_openProjectMenuItem;
     NSMenuItem *_duplicateProjectMenuItem;
+    NSMenuItem *_clipAnalyzeAndFixContextualMenuItem;
+    NSMenuItem *_stackAnalyzeAndFixContextualMenuItem;
+    NSMenuItem *_clipCompoundClipsContextualMenuItem;
+    NSMenuItem *_stackCompoundClipsContextualMenuItem;
+    NSMenuItem *_backgroundCompoundClipsContextualMenuItem;
+    NSMenuItem *_createMulticamClipContextualMenuItem;
+    NSMenuItem *_cameraAngleBackgroundContextualMenuItem;
+    NSMenuItem *_cameraAngleClipAppearanceMenuItem;
+    NSMenuItem *_clipSynchronizeClipsContextualMenuItem;
+    NSMenuItem *_stackSynchronizeClipsContextualMenuItem;
+    NSMenuItem *_createAuditionContextualMenuItem;
     LKTextField *_itemsCountTextField;
     NSView *_footerView;
     NSBox *_footerLine;
@@ -451,7 +462,6 @@
 - (void)copyTimecodeStringAtTimecode:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
-- (void)snapshotClip:(id)arg1;
 - (void)importClipsWithKeywords:(id)arg1 toEvent:(id)arg2;
 - (void)delayedPostImportDidBeginNotification;
 - (BOOL)performImportDropOperation:(id)arg1;

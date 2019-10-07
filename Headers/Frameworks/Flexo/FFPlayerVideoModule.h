@@ -11,23 +11,24 @@
 #import "FFSelectionHandler.h"
 #import "NSAnimationDelegate.h"
 
-@class FF360FooterView, FFDestVideo<FFDestVideoDeviceManaging>, FFDestVideo<FFHMDPullFrameModelProtocol>, FFDestVideoGL, FFHeaderBackgroundView, FFOSC, FFOpenGLNSImage, FFPlayerView, FFSnapGrid, FFTimecodeFormatter, LKButton, LKReversedSlider, LKTextField, NSArray, NSDictionary, NSLock, NSMenu, NSMutableArray, NSRecursiveLock, NSString, NSTimer, NSView, NSViewAnimation, PCMatrix44Double, _FFPlayerModuleLineView;
+@class FF360FooterView, FFDestVideo<FFDestVideoDeviceManaging>, FFDestVideo<FFHMDPullFrameModelProtocol>, FFDestVideoDrawsInUI, FFHeaderBackgroundView, FFOSC, FFOpenGLNSImage, FFPlayerView, FFSnapGrid, FFTimecodeFormatter, LKButton, LKReversedSlider, LKTextField, NSArray, NSDictionary, NSLock, NSMenu, NSMutableArray, NSRecursiveLock, NSString, NSTimer, NSView, NSViewAnimation, PCMatrix44Double, _FFPlayerModuleLineView;
 
 @interface FFPlayerVideoModule : FFPlayerItemModule <FFSelectionHandler, FFFieldDisplaySetting, FFDestVideoDelegate, NSAnimationDelegate>
 {
     FFPlayerView *_playerView;
+    struct CGRect _playerViewBounds;
+    double _viewContentsScale;
     FFHeaderBackgroundView *_multiangleHeaderView;
     NSView *_multiangleFooterView;
     FFHeaderBackgroundView *_360HeaderView;
     FF360FooterView *_360FooterView;
-    FFDestVideoGL *_destVideoGL;
+    FFDestVideoDrawsInUI *_destVideoOnScreen;
     FFDestVideo<FFDestVideoDeviceManaging> *_destVideoCMIO;
     FFDestVideo<FFHMDPullFrameModelProtocol> *_destHMD;
     BOOL _useDestVideoCMIO;
     BOOL _primaryDestVideoCMIO;
     BOOL _hmdEnableThisModule;
     unsigned int _viewDisplay;
-    struct CGColorSpace *_viewColorSpace;
     struct CGRect _savedViewBounds;
     struct CGRect _sequenceBounds;
     int _sequenceCameraMode;
@@ -36,6 +37,7 @@
     long long _colorChannelDisplayMode;
     BOOL _displayBroadcastSafeZones;
     unsigned int _rangeCheckMode;
+    int _userSelectedDrawMode;
     BOOL _display360Horizon;
     BOOL _showBothFields;
     BOOL _multipleSelection;
@@ -110,10 +112,13 @@
     BOOL _360LatchHMD;
     BOOL _360ShowOSC;
     unsigned int _has360UpdateQueued;
+    NSString *_observingUserDefaultsKey;
 }
 
 @property(nonatomic) int sequenceCameraMode; // @synthesize sequenceCameraMode=_sequenceCameraMode;
 @property(nonatomic) struct CGRect sequenceBounds; // @synthesize sequenceBounds=_sequenceBounds;
+@property(readonly) struct CGRect playerViewBounds; // @synthesize playerViewBounds=_playerViewBounds;
+@property(readonly) double viewContentsScale; // @synthesize viewContentsScale=_viewContentsScale;
 @property(nonatomic) double magicAlpha; // @synthesize magicAlpha=_magicAlpha;
 @property(nonatomic) double magicBlue; // @synthesize magicBlue=_magicBlue;
 @property(nonatomic) double magicGreen; // @synthesize magicGreen=_magicGreen;
@@ -123,7 +128,7 @@
 @property(nonatomic) double tiltDegrees360; // @synthesize tiltDegrees360=_360tiltDegrees;
 @property(nonatomic) double panDegrees360; // @synthesize panDegrees360=_360panDegrees;
 @property(nonatomic) double fovXDegrees; // @synthesize fovXDegrees=_fovXDegrees;
-@property(nonatomic) BOOL is360Viewer; // @synthesize is360Viewer=_is360Viewer;
+@property BOOL is360Viewer; // @synthesize is360Viewer=_is360Viewer;
 @property BOOL suppressToolManagerSelectionChanges; // @synthesize suppressToolManagerSelectionChanges=_suppressToolManagerSelectionChanges;
 @property(nonatomic) long long multiAngleEditStyle; // @synthesize multiAngleEditStyle=_multiAngleEditStyle;
 @property(nonatomic) BOOL primaryDestVideoCMIO; // @synthesize primaryDestVideoCMIO=_primaryDestVideoCMIO;
@@ -172,6 +177,7 @@
 - (void)setOSCForActiveTool:(id)arg1;
 - (BOOL)acceptPassiveOSCEvent:(id)arg1;
 - (BOOL)drawOSCsAtTime:(CDStruct_1b6d18a9)arg1 inRect:(struct CGRect)arg2 drawContext:(struct _CGLContextObject *)arg3 drawProperties:(id)arg4 isDisplaying:(BOOL)arg5;
+- (void)_clearOverlayBackground:(struct _CGLContextObject *)arg1;
 - (void)setSelectionBasedOSCsEnabled:(BOOL)arg1;
 - (BOOL)selectionBasedOSCsEnabled;
 - (id)OSCAtPoint:(struct CGPoint)arg1;
@@ -300,6 +306,8 @@
 - (void)removeFromSupermodule;
 - (void)firstResponderChanged:(id)arg1;
 - (unsigned int)displayForPlayerView;
+- (void)_sequenceFormatChanged:(id)arg1;
+- (void)_hdrMetadataChanged:(id)arg1;
 - (void)updatePlayerAndDest:(id)arg1;
 - (void)tearDownPlayerDest;
 - (void)userDefaultsChanged:(id)arg1;
@@ -322,6 +330,7 @@
 - (void)setLastTimeCallback:(id)arg1 callbackSel:(SEL)arg2;
 - (void)notifyLastTimeDisplayed:(id)arg1;
 - (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
+- (int)drawNow:(const CDStruct_e50ab651 *)arg1 outTime:(const CDStruct_e50ab651 *)arg2;
 - (BOOL)isDrawingEnabled;
 - (void)setDrawingEnabled:(BOOL)arg1;
 - (struct CGRect)viewBoundsInPixels;
@@ -339,6 +348,9 @@
 @property(nonatomic) BOOL display360Horizon;
 @property(nonatomic) BOOL displayBroadcastSafeZones;
 @property(nonatomic) BOOL showBothFields;
+- (int)onScreenDrawStyleForDisplayID:(unsigned int)arg1 isHDR:(BOOL)arg2 transferFunction:(int)arg3;
+- (void)setUserSelectedDrawMode:(int)arg1;
+- (int)userSelectedDrawMode;
 - (id)getRangeCheckColorSpaceLabel;
 @property(nonatomic) unsigned int rangeCheckMode;
 @property(nonatomic) long long colorChannelDisplayMode;
@@ -352,7 +364,7 @@
 - (id)backgroundColor;
 - (id)layer;
 - (id)destVideo;
-- (void)_playerViewBoundsChanged:(struct CGRect)arg1;
+- (void)playerViewBoundsChanged;
 - (void)_recalcMultiAngleDisplaysAndBankSelector;
 - (BOOL)isSkimmingLens;
 - (id)playerView;
@@ -380,6 +392,7 @@
 - (void)awakeFromNib;
 - (void)dealloc;
 - (void)moduleViewWillBeRemoved:(id)arg1;
+- (void)setDisableOSCs:(BOOL)arg1;
 - (id)init;
 - (id)tabLabel;
 - (void)resetHMDOrientation:(id)arg1;

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     double _lumRef;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 - (id)description;
 - (struct FFRefColorMatchInfo)info;

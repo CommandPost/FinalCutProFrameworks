@@ -10,7 +10,5 @@
 {
 }
 
-+ (struct __CFString *)CVImageBufferKey;
-
 @end
 

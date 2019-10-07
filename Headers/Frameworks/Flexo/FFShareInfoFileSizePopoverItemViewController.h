@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSTextField *_sizeLabel;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)sharedSizeFormatter;
 @property(retain, nonatomic) NSTextField *sizeLabel; // @synthesize sizeLabel=_sizeLabel;
 @property(retain, nonatomic) NSTextField *nameLabel; // @synthesize nameLabel=_nameLabel;

@@ -22,6 +22,7 @@
     LKPopUpButton *_pFieldDominancePopUp;
     LKPopUpButton *_pFrameRatePopUp;
     LKPopUpButton *_pProjectionModePopUp;
+    LKPopUpButton *_pColorProcessingPopUp;
     OZProjectPreset *_pPreset;
     NSArray *_frameRates;
 }

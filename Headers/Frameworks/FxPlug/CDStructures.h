@@ -37,13 +37,13 @@ struct CGPoint {
 };
 
 struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
+    struct CGPoint origin;
+    struct CGSize size;
 };
 
 struct CGSize {
-    double _field1;
-    double _field2;
+    double width;
+    double height;
 };
 
 struct Fx3DInfo {
@@ -144,14 +144,14 @@ struct FxImagePriv {
     int _field14;
 };
 
-struct FxKeyframeInfo {
-    unsigned long long _field1;
-    CDUnion_2516e51e _field2;
-    unsigned long long _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    double _field7;
+struct FxKeyframe {
+    unsigned long long version;
+    CDStruct_1b6d18a9 time;
+    unsigned long long style;
+    double inTangentX;
+    double inTangentY;
+    double outTangentX;
+    double outTangentY;
 };
 
 struct FxLevels {
@@ -162,9 +162,9 @@ struct FxLevels {
     double outputWhitePoint;
 };
 
-struct FxLightInfo {
+struct FxLight {
     unsigned long long _field1;
-    CDUnion_2516e51e _field2;
+    CDStruct_1b6d18a9 _field2;
     unsigned long long _field3;
     id _field4;
     float _field5;
@@ -276,22 +276,6 @@ struct FxRect {
     int top;
 };
 
-struct FxRemoteTiming {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    CDStruct_1b6d18a9 _field5;
-    CDStruct_1b6d18a9 _field6;
-    CDStruct_1b6d18a9 _field7;
-    CDStruct_1b6d18a9 _field8;
-    CDStruct_1b6d18a9 _field9;
-    CDStruct_1b6d18a9 _field10;
-    CDStruct_1b6d18a9 _field11;
-    CDStruct_1b6d18a9 _field12;
-    CDStruct_1b6d18a9 _field13;
-};
-
 struct FxSamplePriv {
     double _field1;
     id _field2;
@@ -354,13 +338,13 @@ struct map<_opaque_pthread_t *, Fx3DInfo, std::__1::less<_opaque_pthread_t *>, s
     } __tree_;
 };
 
-struct map<_opaque_pthread_t *, FxRemoteTiming, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, FxRemoteTiming>>> {
-    struct __tree<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming>>> {
+struct map<_opaque_pthread_t *, FxRemoteTiming *, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, FxRemoteTiming *>>> {
+    struct __tree<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming *>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming *>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming *>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming>, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming *>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming>, std::__1::less<_opaque_pthread_t *>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming *>, std::__1::less<_opaque_pthread_t *>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
@@ -390,13 +374,37 @@ struct map<_opaque_pthread_t *, NSArray<FxRemotePath *>*, std::__1::less<_opaque
     } __tree_;
 };
 
-struct map<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>>> {
-    struct __tree<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>>> {
+struct map<_opaque_pthread_t *, signed char, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, signed char>>> {
+    struct __tree<std::__1::__value_type<_opaque_pthread_t *, signed char>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, signed char>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, signed char>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, signed char>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>, std::__1::less<_opaque_pthread_t *>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, signed char>, std::__1::less<_opaque_pthread_t *>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
+struct map<_opaque_pthread_t *, std::__1::stack<unsigned long, std::__1::deque<unsigned long, std::__1::allocator<unsigned long>>>, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, std::__1::stack<unsigned long, std::__1::deque<unsigned long, std::__1::allocator<unsigned long>>>>>> {
+    struct __tree<std::__1::__value_type<_opaque_pthread_t *, std::__1::stack<unsigned long, std::__1::deque<unsigned long, std::__1::allocator<unsigned long>>>>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, std::__1::stack<unsigned long, std::__1::deque<unsigned long, std::__1::allocator<unsigned long>>>>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, std::__1::stack<unsigned long, std::__1::deque<unsigned long, std::__1::allocator<unsigned long>>>>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, std::__1::stack<unsigned long, std::__1::deque<unsigned long, std::__1::allocator<unsigned long>>>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, std::__1::stack<unsigned long, std::__1::deque<unsigned long, std::__1::allocator<unsigned long>>>>, std::__1::less<_opaque_pthread_t *>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
+struct map<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>>> {
+    struct __tree<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>, std::__1::less<_opaque_pthread_t *>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
@@ -426,11 +434,11 @@ struct map<int, FxConnectionMap::FxConnection, std::__1::less<int>, std::__1::al
     } __tree_;
 };
 
-struct vector<FxLightInfo, std::__1::allocator<FxLightInfo>> {
-    struct FxLightInfo *_field1;
-    struct FxLightInfo *_field2;
-    struct __compressed_pair<FxLightInfo *, std::__1::allocator<FxLightInfo>> {
-        struct FxLightInfo *_field1;
+struct vector<FxLight, std::__1::allocator<FxLight>> {
+    struct FxLight *_field1;
+    struct FxLight *_field2;
+    struct __compressed_pair<FxLight *, std::__1::allocator<FxLight>> {
+        struct FxLight *_field1;
     } _field3;
 };
 
@@ -459,16 +467,6 @@ typedef struct {
     long long epoch;
 } CDStruct_1b6d18a9;
 
-typedef struct {
-    CDUnion_2516e51e _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    double _field4;
-    double _field5;
-    struct _CGLContextObject *_field6;
-    unsigned long long _field7;
-} CDStruct_6b9ed609;
-
 // Template types
 typedef struct map<_opaque_pthread_t *, Fx3DInfo, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, Fx3DInfo>>> {
     struct __tree<std::__1::__value_type<_opaque_pthread_t *, Fx3DInfo>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, Fx3DInfo>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, Fx3DInfo>>> {
@@ -482,17 +480,17 @@ typedef struct map<_opaque_pthread_t *, Fx3DInfo, std::__1::less<_opaque_pthread
     } __tree_;
 } map_fc121dd1;
 
-typedef struct map<_opaque_pthread_t *, FxRemoteTiming, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, FxRemoteTiming>>> {
-    struct __tree<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming>>> {
+typedef struct map<_opaque_pthread_t *, FxRemoteTiming *, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, FxRemoteTiming *>>> {
+    struct __tree<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming *>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming *>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming *>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming>, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming *>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming>, std::__1::less<_opaque_pthread_t *>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, FxRemoteTiming *>, std::__1::less<_opaque_pthread_t *>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
-} map_8d734ddb;
+} map_167281da;
 
 typedef struct map<_opaque_pthread_t *, FxTransactionSet, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, FxTransactionSet>>> {
     struct __tree<std::__1::__value_type<_opaque_pthread_t *, FxTransactionSet>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, FxTransactionSet>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, FxTransactionSet>>> {
@@ -518,17 +516,29 @@ typedef struct map<_opaque_pthread_t *, NSArray<FxRemotePath *>*, std::__1::less
     } __tree_;
 } map_6caee8e2;
 
-typedef struct map<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>>> {
-    struct __tree<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>>> {
+typedef struct map<_opaque_pthread_t *, signed char, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, signed char>>> {
+    struct __tree<std::__1::__value_type<_opaque_pthread_t *, signed char>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, signed char>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, signed char>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, signed char>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLightInfo, std::__1::allocator<FxLightInfo>>>, std::__1::less<_opaque_pthread_t *>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, signed char>, std::__1::less<_opaque_pthread_t *>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
-} map_fa897196;
+} map_9d443cdb;
+
+typedef struct map<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>>> {
+    struct __tree<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, std::__1::vector<FxLight, std::__1::allocator<FxLight>>>, std::__1::less<_opaque_pthread_t *>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+} map_20f80b8a;
 
 typedef struct map<_opaque_pthread_t *, unsigned long long, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, unsigned long long>>> {
     struct __tree<std::__1::__value_type<_opaque_pthread_t *, unsigned long long>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, unsigned long long>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, unsigned long long>>> {
@@ -542,13 +552,13 @@ typedef struct map<_opaque_pthread_t *, unsigned long long, std::__1::less<_opaq
     } __tree_;
 } map_bfa44047;
 
-typedef struct vector<FxLightInfo, std::__1::allocator<FxLightInfo>> {
-    struct FxLightInfo *_field1;
-    struct FxLightInfo *_field2;
-    struct __compressed_pair<FxLightInfo *, std::__1::allocator<FxLightInfo>> {
-        struct FxLightInfo *_field1;
+typedef struct vector<FxLight, std::__1::allocator<FxLight>> {
+    struct FxLight *_field1;
+    struct FxLight *_field2;
+    struct __compressed_pair<FxLight *, std::__1::allocator<FxLight>> {
+        struct FxLight *_field1;
     } _field3;
-} vector_85ccc8a3;
+} vector_0394717d;
 
 #pragma mark Typedef'd Unions
 

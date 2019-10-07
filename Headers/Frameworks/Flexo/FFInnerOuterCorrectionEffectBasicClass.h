@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _nameIndex;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (BOOL)isPassThruEffectWhenColorMasking;
 @property unsigned long long nameIndex; // @synthesize nameIndex=_nameIndex;

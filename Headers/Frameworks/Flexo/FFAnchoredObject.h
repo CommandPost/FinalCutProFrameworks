@@ -19,13 +19,13 @@
 #import "FFMetadataProtocol.h"
 #import "FFSkimmableProtocol.h"
 #import "FFStorylineItem.h"
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 #import "TLKTimelineItem.h"
 
 @class FFRole, FFSplitAudioTimelineComponent, FFVideoProps, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
-@interface FFAnchoredObject : FFBaseDSObject <TLKTimelineItem, FFStorylineItem, NSCoding, NSCopying, FFDataModelProtocol, FFSkimmableProtocol, FFAnchoredParentProtocol, FFMetadataProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, FFMD5Protocol, FFAssetContainerProtocol, FFEffectContainerProtocol, FFAnchoredSequenceDSObservedObject>
+@interface FFAnchoredObject : FFBaseDSObject <TLKTimelineItem, FFStorylineItem, NSSecureCoding, NSCopying, FFDataModelProtocol, FFSkimmableProtocol, FFAnchoredParentProtocol, FFMetadataProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, FFMD5Protocol, FFAssetContainerProtocol, FFEffectContainerProtocol, FFAnchoredSequenceDSObservedObject>
 {
     NSString *_displayName;
     struct PC_CMTimePair _anchorPair;
@@ -50,6 +50,7 @@
     int _cachedAVContainmentType;
     NSDictionary *_cachedSortedLocalizedRoles;
     unsigned int _cachedFlags;
+    unsigned int _cachedContainmentFlags;
     int _cachedMultiangleDetail;
     NSDictionary *_audioProperties;
     FFRole *_mixdownRoleGroup;
@@ -86,6 +87,7 @@
 + (id)findOrCreateCaptionMainRoleOfFormat:(id)arg1 inLibrary:(id)arg2;
 + (id)activeRolesForObject:(id)arg1 excludeDisabledRoles:(BOOL)arg2;
 + (id)topLevelRolesForObject:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (BOOL)removeMarker:(id)arg1 error:(id *)arg2;
 + (BOOL)moveMarker:(id)arg1 toRange:(CDStruct_e83c9415)arg2 changeDict:(id)arg3 error:(id *)arg4;
@@ -101,6 +103,7 @@
 @property(readonly, nonatomic) NSSet *anchoredItems; // @synthesize anchoredItems=_anchoredItems;
 @property(nonatomic) struct PC_CMTimePair anchorPair; // @synthesize anchorPair=_anchorPair;
 @property(nonatomic) id parentItem; // @synthesize parentItem=_parentItem;
+- (BOOL)update_fixUpColorIsolationsForHSLQualifiers;
 - (void)update_audioComponentSourceAnchoredLaneKey;
 - (BOOL)update_convertToNewColorTabEffects;
 - (BOOL)update_convertHEColorEffectToMaskedEffects;
@@ -118,10 +121,6 @@
 - (unsigned long long)validateAndRepair:(BOOL)arg1 report:(int)arg2 error:(id *)arg3;
 - (unsigned long long)_basicValidateAndRepair:(BOOL)arg1 report:(int)arg2 error:(id *)arg3;
 - (unsigned long long)_basicTimingValidateAndRepair:(BOOL)arg1 report:(int)arg2 error:(id *)arg3;
-- (CDStruct_e83c9415)_convertRangeScale:(CDStruct_e83c9415)arg1 toTimescale:(CDStruct_1b6d18a9)arg2;
-- (struct PC_CMTimePair)_clearRoundingPair:(struct PC_CMTimePair)arg1;
-- (CDStruct_e83c9415)_clearRoundingRange:(CDStruct_e83c9415)arg1;
-- (CDStruct_1b6d18a9)_clearRoundingTime:(CDStruct_1b6d18a9)arg1;
 - (double)procrastinationDelayForThumbnails;
 - (void)addThumbMD5Info:(id)arg1 imageQuality:(int)arg2;
 - (id)thumbMD5InfoForTime:(CDStruct_1b6d18a9)arg1 imageQuality:(int)arg2;
@@ -353,6 +352,7 @@
 - (BOOL)isPullingSourceFromBelowForRight;
 - (BOOL)isPullingSourceFromBelowForLeft;
 - (id)supportedLogProcessingModes;
+- (BOOL)isMissingCameraLUT;
 - (BOOL)supportsLogProcessing;
 - (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;

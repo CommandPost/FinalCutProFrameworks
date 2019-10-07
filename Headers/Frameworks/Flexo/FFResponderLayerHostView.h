@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     FFResponderLayerHostViewTrackingAreaOwner *_trackingAreaOwner;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) BOOL cancelDragOnEscape; // @synthesize cancelDragOnEscape=_cancelDragOnEscape;
 - (id)accessibilityFocusedUIElement;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;

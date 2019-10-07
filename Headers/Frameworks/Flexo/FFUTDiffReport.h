@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSString;
+@class FFPixelFormat, NSString;
 
 @interface FFUTDiffReport : NSObject
 {
@@ -22,12 +22,17 @@
     int _channelIsZero_img1[4];
     int _channelIsZero_img2[4];
     int _alphaChannelIndex;
+    FFPixelFormat *_pf;
     NSString *_label;
+    NSString *_channelLabels[4];
+    int _channelsInReport;
     NSString *_firstDiff;
+    NSString *_firstDiffInChan[4];
     NSString *_maxDiffInfo[4];
     NSString *_minDiffInfo[4];
 }
 
+@property(readonly) int channelsInReport; // @synthesize channelsInReport=_channelsInReport;
 @property(readonly) int alphaChannelIndex; // @synthesize alphaChannelIndex=_alphaChannelIndex;
 @property(retain) NSString *label; // @synthesize label=_label;
 - (int)alphaIsZeroCountImg2;
@@ -36,12 +41,15 @@
 - (int)minAlphaValImg1;
 - (int)totalPixelCount;
 - (int)totalDiffCount;
+- (id)channelLabel:(int)arg1;
 - (id)channelDesc:(int)arg1;
 - (id)description;
 - (_Bool)withinTolerancesForChannelIndex:(int)arg1 tolerancesArray:(struct FFUTDiffReport_toleranceInfo *)arg2;
 - (_Bool)withinTolerancesForChannelIndex:(int)arg1 lower:(int)arg2 upper:(int)arg3;
 - (void)dealloc;
+- (id)initWithImage1:(id)arg1 image2:(id)arg2;
 - (id)initWithPB1:(id)arg1 PB2:(id)arg2;
+- (id)initWithPF:(id)arg1;
 
 @end
 

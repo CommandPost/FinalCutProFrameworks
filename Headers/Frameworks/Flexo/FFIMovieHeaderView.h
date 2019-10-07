@@ -14,6 +14,7 @@
     NSImage *_topThemeFacetImage;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)hitTest:(struct CGPoint)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 @property(readonly, nonatomic) NSImage *topThemeFacetImage; // @synthesize topThemeFacetImage=_topThemeFacetImage;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSArray *_puckControlValues;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(readonly, nonatomic) NSArray *values; // @synthesize values=_puckControlValues;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;

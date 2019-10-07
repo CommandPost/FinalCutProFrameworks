@@ -16,7 +16,7 @@
 @property int YCbCrMatrix;
 @property int colorPrimaries;
 @property int gamma;
-@property(readonly) int aspectRatio;
+@property(readonly) CDStruct_2689111f aspectRatio;
 @property(readonly) int displayYOffset;
 @property(readonly) unsigned int storedHeight;
 @property(readonly) unsigned int storedWidth;
@@ -27,7 +27,5 @@
 - (unsigned char)uint8PictureMetadataWithKey:(int)arg1;
 - (void *)pictureMetadataWithKey:(int)arg1;
 - (struct __CFString *)newCustomColorSpace;
-- (void)setIndexEntryWithIndexPosition:(unsigned long long)arg1 filePosition:(long long)arg2 size:(unsigned int)arg3 isExactSize:(BOOL)arg4 unitsPerPacket:(unsigned int)arg5 packageStartUnit:(long long)arg6 temporalOffset:(BOOL)arg7 frameFlags:(unsigned char)arg8;
-- (void)addIndexEntryWithFilePosition:(long long)arg1 size:(unsigned int)arg2 isExactSize:(BOOL)arg3 unitsPerPacket:(unsigned int)arg4 temporalOffset:(BOOL)arg5 frameFlags:(unsigned char)arg6;
 @end
 

@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class FFEffectStack;
 
 __attribute__((visibility("hidden")))
-@interface FFAudioEffectsObjectBundle : NSObject <NSCoding>
+@interface FFAudioEffectsObjectBundle : NSObject <NSSecureCoding>
 {
     FFEffectStack *_levelEffects;
     FFEffectStack *_enhancementEffects;
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     FFEffectStack *_panEffects;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(readonly, nonatomic) FFEffectStack *panEffects; // @synthesize panEffects=_panEffects;
 @property(readonly, nonatomic) FFEffectStack *userEffects; // @synthesize userEffects=_userEffects;
 @property(readonly, nonatomic) FFEffectStack *retimingEffects; // @synthesize retimingEffects=_retimingEffects;

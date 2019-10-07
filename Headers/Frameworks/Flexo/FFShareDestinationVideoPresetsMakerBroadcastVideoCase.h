@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL hasSetMxfSeparatorYet; // @synthesize hasSetMxfSeparatorYet=_hasSetMxfSeparatorYet;
 - (void)appendBroadcastPresetsForAddDestinationPanelToSet:(id)arg1 stompSetting:(id)arg2;
 - (void)appendRealBroadcastPresetsToSet:(id)arg1 stompSetting:(id)arg2;
+- (double)audioSampleRateFromSource;
 - (id)videoFormatKeyFromSource;
 - (void)appendPresetsToSet:(id)arg1 stompSetting:(id)arg2;
 

@@ -6,17 +6,18 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFKeyframe : NSObject <NSCoding>
+@interface FFKeyframe : NSObject <NSSecureCoding>
 {
     struct _OZKeyframeInfo *_info;
     NSString *ref;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) NSString *ref; // @synthesize ref;
 - (struct _OZKeyframeInfo *)getInfo;
 - (void)setInfo:(struct _OZKeyframeInfo *)arg1;

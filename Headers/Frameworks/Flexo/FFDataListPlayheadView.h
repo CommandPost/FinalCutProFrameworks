@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSImage *_playheadImage;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) FFDataListTableView *tableView; // @synthesize tableView=_tableView;
 @property(nonatomic) long long playheadRow; // @synthesize playheadRow=_playheadRow;
 - (void)drawRect:(struct CGRect)arg1;

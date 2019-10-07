@@ -28,6 +28,8 @@
     struct CGColorSpace *_CGColorSpaceGenericGray;
     struct CGColorSpace *_CGColorSpaceGenericRGB;
     struct CGColorSpace *_CGColorSpaceGenericRGBLinear;
+    struct CGColorSpace *_displayLinear2020ForCAMetalLayer;
+    struct CGColorSpace *_luminance2020_PQ_ColorSpace;
     NSArray *_standardEnumeratedSpaces;
     NSMutableArray *_recentColorSpacesWithEnums;
 }
@@ -37,6 +39,8 @@
 + (struct CGColorSpace *)newColorSpaceForOverrideIndex:(int)arg1;
 + (void)releaseSharedInstance;
 + (id)sharedInstance;
+@property(readonly, nonatomic) struct CGColorSpace *luminance2020_PQ_ColorSpace; // @synthesize luminance2020_PQ_ColorSpace=_luminance2020_PQ_ColorSpace;
+@property(readonly, nonatomic) struct CGColorSpace *displayLinear2020ForCAMetalLayer; // @synthesize displayLinear2020ForCAMetalLayer=_displayLinear2020ForCAMetalLayer;
 @property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericRGBLinear; // @synthesize CGColorSpaceGenericRGBLinear=_CGColorSpaceGenericRGBLinear;
 @property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericRGB; // @synthesize CGColorSpaceGenericRGB=_CGColorSpaceGenericRGB;
 @property(readonly, nonatomic) struct CGColorSpace *CGColorSpaceGenericGray; // @synthesize CGColorSpaceGenericGray=_CGColorSpaceGenericGray;
@@ -58,7 +62,7 @@
 - (int)getMatchingStandardColorSpace:(struct CGColorSpace *)arg1 matchedColorSpace:(struct CGColorSpace **)arg2;
 - (int)getMatchingStandardColorSpace:(struct CGColorSpace *)arg1;
 - (id)_lookupInRecentsWhileHoldingThemSynchronized:(struct CGColorSpace *)arg1;
-- (struct CGColorSpace *)colorSpaceForICCProfileData:(id)arg1;
+- (struct CGColorSpace *)colorSpaceForICCProfileData:(id)arg1 colorSpaceEnumOut:(int *)arg2;
 - (id)copyICCProfileDataForColorSpace:(struct CGColorSpace *)arg1;
 - (void)dealloc;
 - (id)init;

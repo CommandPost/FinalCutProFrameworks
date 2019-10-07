@@ -6,12 +6,12 @@
 
 #import <Flexo/FFAsset.h>
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class MIOInputSubSegment, MIORADClip, NSDictionary, NSHashTable, NSNumber, NSString;
 
-@interface FFMIORADAsset : FFAsset <NSCoding, NSCopying>
+@interface FFMIORADAsset : FFAsset <NSSecureCoding, NSCopying>
 {
     MIORADClip *_clip;
     NSString *_clipID;
@@ -27,6 +27,7 @@
     NSNumber *_assetImportPercentageDone;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
 @property(retain) NSNumber *assetImportPercentageDone; // @synthesize assetImportPercentageDone=_assetImportPercentageDone;

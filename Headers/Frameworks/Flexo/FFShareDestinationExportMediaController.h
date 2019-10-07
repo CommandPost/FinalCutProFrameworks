@@ -6,11 +6,12 @@
 
 #import <Flexo/FFShareDestinationController.h>
 
+#import "NSOpenSavePanelDelegate.h"
 #import "NSSaveRolePresetAsPanelDelegate.h"
 
-@class FFShareDestinationVideoResolutionMenuDelegate, LKTextField, NSPopUpButton, NSString, NSURL;
+@class FFShareDestinationVideoResolutionMenuDelegate, LKButton, LKTextField, NSPopUpButton, NSString, NSURL;
 
-@interface FFShareDestinationExportMediaController : FFShareDestinationController <NSSaveRolePresetAsPanelDelegate>
+@interface FFShareDestinationExportMediaController : FFShareDestinationController <NSSaveRolePresetAsPanelDelegate, NSOpenSavePanelDelegate>
 {
     NSURL *_userRolePresetsDirectoryURL;
     NSURL *_oldUserRolePresetsDirectoryURL;
@@ -19,18 +20,15 @@
     NSPopUpButton *_exportPopUpButton;
     NSPopUpButton *_videoPresetPopUpButton;
     NSPopUpButton *_videoResolutionPopUpButton;
-    NSPopUpButton *_colorSpacePopUpButton;
     NSPopUpButton *_audioPresetPopUpButton;
     NSPopUpButton *_openWithPopUpButton;
+    LKButton *_includeChapterMarkersCheckBox;
     LKTextField *_videoPresetTextField;
     LKTextField *_videoResolutionTextField;
-    LKTextField *_colorSpaceTextField;
     LKTextField *_audioPresetTextField;
     BOOL _sourcesOrExportOptionsHaveChangedDuringTransaction;
     BOOL _rolePresetModifiedDuringTransaction;
     BOOL _exportOptionsHaveChangedSinceCodecMenuWasRebuilt;
-    LKTextField *_projectionTypeTextField;
-    LKTextField *_projectionTypeLabelTextField;
     FFShareDestinationVideoResolutionMenuDelegate *_videoResolutionMenuDelegate;
     long long _transactionCount;
 }
@@ -46,15 +44,12 @@
 @property(nonatomic) long long transactionCount; // @synthesize transactionCount=_transactionCount;
 @property(retain, nonatomic) FFShareDestinationVideoResolutionMenuDelegate *videoResolutionMenuDelegate; // @synthesize videoResolutionMenuDelegate=_videoResolutionMenuDelegate;
 @property(nonatomic) BOOL replaceExistingRolePreset; // @synthesize replaceExistingRolePreset=_replaceExistingRolePreset;
-@property LKTextField *projectionTypeLabelTextField; // @synthesize projectionTypeLabelTextField=_projectionTypeLabelTextField;
-@property LKTextField *projectionTypeTextField; // @synthesize projectionTypeTextField=_projectionTypeTextField;
 @property(nonatomic) LKTextField *audioPresetTextField; // @synthesize audioPresetTextField=_audioPresetTextField;
-@property(nonatomic) LKTextField *colorSpaceTextField; // @synthesize colorSpaceTextField=_colorSpaceTextField;
 @property(nonatomic) LKTextField *videoResolutionTextField; // @synthesize videoResolutionTextField=_videoResolutionTextField;
 @property(nonatomic) LKTextField *videoPresetTextField; // @synthesize videoPresetTextField=_videoPresetTextField;
+@property(nonatomic) LKButton *includeChapterMarkersCheckBox; // @synthesize includeChapterMarkersCheckBox=_includeChapterMarkersCheckBox;
 @property(nonatomic) NSPopUpButton *openWithPopUpButton; // @synthesize openWithPopUpButton=_openWithPopUpButton;
 @property(nonatomic) NSPopUpButton *audioPresetPopUpButton; // @synthesize audioPresetPopUpButton=_audioPresetPopUpButton;
-@property(nonatomic) NSPopUpButton *colorSpacePopUpButton; // @synthesize colorSpacePopUpButton=_colorSpacePopUpButton;
 @property(nonatomic) NSPopUpButton *videoResolutionPopUpButton; // @synthesize videoResolutionPopUpButton=_videoResolutionPopUpButton;
 @property(nonatomic) NSPopUpButton *videoPresetPopUpButton; // @synthesize videoPresetPopUpButton=_videoPresetPopUpButton;
 @property(nonatomic) NSPopUpButton *exportPopUpButton; // @synthesize exportPopUpButton=_exportPopUpButton;
@@ -91,7 +86,6 @@
 - (void)setMultipassIndex:(long long)arg1;
 - (long long)multipassIndex;
 @property(readonly) NSString *actionMenuLabelName;
-- (id)actionMenuLabelNameWithDestination:(id)arg1;
 - (void)addRecentApplication:(id)arg1;
 - (id)recentApplications;
 - (void)updateVideoStompSetting:(id)arg1 destination:(id)arg2;
@@ -100,11 +94,13 @@
 - (void)updateVideoStompSetting:(id)arg1;
 - (void)updateApplicationMenu;
 - (void)updateAudioPresetsMenu;
+- (void)updateColorChannelsMenu;
 - (void)updateColorSpaceMenu;
+- (BOOL)allDestinationsExportingAudioOnly;
 - (id)colorSpaceAndLabelWithDestination:(id)arg1;
-- (void)updateProjectionTypeFields;
 - (void)setDoesntFitWarningForDestination:(id)arg1;
 - (void)updateVideoResolutionMenu;
+- (id)videoStompSetting;
 - (void)updateVideoPresetsMenu;
 - (void)updateVideoPresetsMenuIfNoDestinationsAreExportingRoles;
 - (BOOL)anyDestinationIsExportingRoles;
@@ -112,6 +108,7 @@
 - (void)setOpenWithApplicationByName:(id)arg1 forDestination:(id)arg2;
 - (void)setOpenWithApplicationByFileName:(id)arg1;
 - (void)chooseApplication:(id)arg1;
+- (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
 - (void)maybeRaiseErrorForDisabledBatchExportToThirdPartyAppWithDestination:(id)arg1;
 - (BOOL)isBatchExport;
 - (void)stripErrorForDisabledBatchExportToThirdPartyAppWithDestination:(id)arg1;

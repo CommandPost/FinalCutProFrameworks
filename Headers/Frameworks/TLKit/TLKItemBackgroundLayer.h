@@ -6,11 +6,10 @@
 
 #import <TLKit/TLKAbstractItemBackgroundLayer.h>
 
-@class CALayer, NSDictionary, TLKItemShadowLayer;
+@class CALayer, NSDictionary;
 
 @interface TLKItemBackgroundLayer : TLKAbstractItemBackgroundLayer
 {
-    TLKItemShadowLayer *_shadowLayer;
     CALayer *_rootLayer;
     NSDictionary *_mappingTable;
     CALayer *_backgroundLayer;
@@ -56,6 +55,8 @@
 - (void)layoutSublayers;
 - (void)audioWaveFormProportionChanged;
 - (void)_adjustTransitionHandles;
+- (void)releaseBecauseSublayersAlreadyRetainsLayer:(id)arg1;
+- (void)disableEdgeAntiAliasingToReduceLayerRenderingCost;
 - (void)setItemType:(int)arg1 andContainmentMask:(int)arg2;
 - (void)updateAppearanceType:(int)arg1 withMask:(int)arg2;
 - (void)_updateBackgroundOfType:(int)arg1 withMask:(int)arg2;

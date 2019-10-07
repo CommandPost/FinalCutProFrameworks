@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     void *_FFVideoScopesWaveformViewPrivate;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)_initVideoScopesWaveformView;
 - (struct FFVideoScopesWaveformViewPrivate *)_Private;
 - (id)accessibilityAttributeValue:(id)arg1;
@@ -40,7 +41,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isMarkerVisible:(double *)arg1;
 @property long long compositeVideoUnits; // @dynamic compositeVideoUnits;
 @property long long displayMode; // @dynamic displayMode;
-- (void)_setColorSpaceType:(int)arg1;
+- (void)_updateLayersCompositeVideoUnits;
+- (void)_updateLayersDisplayMode;
+- (void)_updateLayersYScale;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

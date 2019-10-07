@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)prefersTrackingUntilMouseUp;
++ (BOOL)supportsSecureCoding;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
 - (id)_accessibilityValueDescription;
 - (void)accessibilityPerformAction:(id)arg1;

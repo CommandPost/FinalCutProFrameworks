@@ -85,6 +85,7 @@
 - (void)_setupEmptyStoreUnlessOnOldOS:(BOOL)arg1;
 - (id)_readDatabaseCorruptError;
 - (void)_syncDatabaseWithFilesystemUsingBackup:(BOOL)arg1;
+- (void)startDownloadingUbiquitousTheaterContent;
 - (void)_syncDatabaseWithFilesystem;
 - (BOOL)_isSafeToDeleteArchiveURL:(id)arg1 ignoringItems:(id)arg2;
 - (void)_executePendingArchiveDeletions;

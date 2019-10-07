@@ -24,6 +24,7 @@
 + (id)stableSortAngleIDs:(id)arg1;
 + (id)displaySortAngleIDs:(id)arg1 forAnchoredAngle:(id)arg2;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(retain, nonatomic) NSString *videoAngle; // @synthesize videoAngle=_videoAngle;
 @property(retain, nonatomic) NSSet *audioAngles; // @synthesize audioAngles=_audioAngles;

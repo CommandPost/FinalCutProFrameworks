@@ -10,11 +10,13 @@
 
 @interface FxHistogramParameterTransaction : FxParameterTransaction <NSSecureCoding>
 {
+    unsigned long long whichChannel;
     struct FxAllLevels allLevels;
 }
 
 + (BOOL)supportsSecureCoding;
-+ (id)histogramTransactionWithParameterID:(unsigned int)arg1;
++ (id)histogramTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2;
+@property unsigned long long whichChannel; // @synthesize whichChannel;
 @property struct FxAllLevels allLevels; // @synthesize allLevels;
 - (void)setValueFromPlugin:(void *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (void)setValueToHost:(id)arg1;
@@ -26,7 +28,7 @@
 - (id)copy;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 parameterFlags:(unsigned int)arg3 transactionType:(int)arg4;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 parameterFlags:(unsigned int)arg3 transactionType:(int)arg4 transactionID:(unsigned long long)arg5;
 
 @end
 

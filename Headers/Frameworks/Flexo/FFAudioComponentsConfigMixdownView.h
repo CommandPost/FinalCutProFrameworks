@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *m_titleHeightConstraint;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setColorScheme:(id)arg1;

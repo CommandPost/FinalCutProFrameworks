@@ -26,9 +26,9 @@
     NSArray *_ranges;
     _Bool _effectHasDynamicParams;
     NSMutableArray *_channelObjectRefs;
-    unsigned char _cachedIsNoOp;
-    unsigned char _cachedHasAnimatedKeyframes;
-    unsigned char _cachedHasFadeHandles;
+    // Error parsing type: AC, name: _cachedIsNoOp
+    // Error parsing type: AC, name: _cachedHasAnimatedKeyframes
+    // Error parsing type: AC, name: _cachedHasFadeHandles
     unsigned char _cachedHasVideo;
     int _effectBundleEncodingOptions;
     CDStruct_bdcb2b0d _cachedEffectMD5;
@@ -49,6 +49,8 @@
 + (BOOL)shouldAllowEffectInEvents;
 + (BOOL)shouldAllowTimelineInTimecode;
 + (BOOL)shouldAllowEffectDropInEvents;
++ (BOOL)shouldShowTransformHelperAlways;
++ (BOOL)shouldShowTransformHelper;
 + (BOOL)shouldAllowDenoiseOnBlacklistedConfigs;
 + (id)messageTracerEffectCountData;
 + (id)colorEffectIDs:(BOOL)arg1;
@@ -64,6 +66,7 @@
 + (id)standardVideoGeneratorInputKeysArray;
 + (id)effectIDFromXMLElement:(id)arg1;
 + (id)newEffectWithXMLElement:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)generateFileUUID;
 + (void)registerEffects;
 + (id)copyClassDescription;
@@ -139,7 +142,7 @@
 + (void)removeEffectRegistry:(id)arg1;
 + (void)addEffectRegistry:(id)arg1 ownerKey:(id)arg2;
 + (id)registry:(id)arg1;
-+ (id)registries;
++ (id)registriesAndLock:(struct FFSynchronizable **)arg1;
 + (id)wrapperEffectIDFor:(id)arg1;
 + (id)innerOuterEffectIDFor:(id)arg1;
 + (void)initEffectRegistry;
@@ -246,6 +249,7 @@
 - (id)masks;
 - (id)activeMask;
 - (BOOL)selectedOrMaskSelected;
+- (BOOL)isReorientEffect;
 - (BOOL)isColorTabEffect;
 - (BOOL)selected;
 - (void)setEnabled:(BOOL)arg1;
@@ -253,7 +257,6 @@
 - (id)project;
 - (id)enabledChannel;
 - (CDStruct_1b6d18a9)suggestedDuration;
-- (unsigned int)attributeCopyingFlags;
 - (void)effectStackAnchoredObjectDidChange;
 - (void)setEffectStack:(id)arg1;
 - (id)effectStack;
@@ -290,6 +293,7 @@
 - (BOOL)shouldCacheSimplifesResults;
 - (id)simplifiesToPassThruAtTime:(CDStruct_1b6d18a9)arg1 forInputSource:(id)arg2 sampleDur:(CDStruct_1b6d18a9)arg3 context:(id)arg4 channelOffset:(CDStruct_1b6d18a9)arg5;
 - (id)anchoredObjectForChannelAssociateModelObject:(id)arg1;
+- (void)finishInitialSetup;
 - (BOOL)isEffectActivated;
 - (void)effectDeactivated;
 - (void)effectActivated:(int)arg1;

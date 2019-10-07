@@ -8,10 +8,11 @@
 
 #import "NSCopying.h"
 
-@class ERLCalculatedAttribute, NSArray, NSMutableArray, NSMutableSet, NSSet, NSString, TLKAnchorLayer, TLKContainerInfo, TLKItemComponentFragment, TLKItemComponentInfo, TLKItemComponentWebbingLayer;
+@class NSArray, NSMutableArray, NSMutableSet, NSSet, NSString, TLKAnchorLayer, TLKContainerInfo, TLKItemComponentFragment, TLKItemComponentInfo, TLKItemComponentWebbingLayer;
 
 @interface TLKItemLayoutInfo : ERLRelationalObject <NSCopying>
 {
+    int _containmentTypeMask;
     NSMutableArray *_itemComponentRecords;
     NSMutableSet *_anchoredItems;
     struct {
@@ -24,7 +25,6 @@
     TLKItemComponentInfo *_primaryItemComponent;
     NSArray *_secondaryItemComponentRecords;
     BOOL _anchorFollowsItemLayer;
-    int _containmentTypeMask;
     int _itemType;
     int _itemVisibility;
     id _representedObject;
@@ -33,13 +33,11 @@
     TLKAnchorLayer *_anchorLayer;
     TLKItemComponentWebbingLayer *_componentWebbingLayer;
     TLKContainerInfo *_enclosingContainerInfo;
-    ERLCalculatedAttribute *_anchorLocationAttribute;
     CDStruct_1b6d18a9 _relativeAnchorTime;
 }
 
 + (id)keyPathsForValuesAffectingSecondaryItemComponentRecords;
 + (id)keyPathsForValuesAffectingPrimaryItemComponentRecord;
-@property(readonly, nonatomic) ERLCalculatedAttribute *anchorLocationAttribute; // @synthesize anchorLocationAttribute=_anchorLocationAttribute;
 @property(nonatomic) TLKContainerInfo *enclosingContainerInfo; // @synthesize enclosingContainerInfo=_enclosingContainerInfo;
 @property(retain, nonatomic) TLKItemComponentWebbingLayer *componentWebbingLayer; // @synthesize componentWebbingLayer=_componentWebbingLayer;
 @property(retain, nonatomic) TLKAnchorLayer *anchorLayer; // @synthesize anchorLayer=_anchorLayer;
@@ -49,7 +47,7 @@
 @property(nonatomic) TLKItemLayoutInfo *anchoredToItem; // @synthesize anchoredToItem=_anchoredToItem;
 @property(nonatomic) int itemVisibility; // @synthesize itemVisibility=_itemVisibility;
 @property(nonatomic) int itemType; // @synthesize itemType=_itemType;
-@property(readonly, nonatomic) int containmentTypeMask; // @synthesize containmentTypeMask=_containmentTypeMask;
+@property(nonatomic) int containmentTypeMask; // @synthesize containmentTypeMask=_containmentTypeMask;
 @property(readonly, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 - (void)willRemoveObjectsFromItemComponentRecords:(id)arg1;
 - (void)willInsertObjectsInItemComponentRecords:(id)arg1;

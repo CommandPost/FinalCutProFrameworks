@@ -6,14 +6,15 @@
 
 #import "NSObject.h"
 
+#import "FxColorGamutAPI_v2.h"
+#import "FxCustomParameterActionAPI_v4.h"
 #import "PROAPIAccessing.h"
 
-@class FxMatrix44, FxRemote3DHandler, FxRemoteKeyframeHandler, FxRemoteLightingHandler, FxRemoteParameterHandler, FxRemotePathHandler, FxRemoteTimingHandler, NSString;
+@class FxMatrix44, FxRemote3DHandler, FxRemoteKeyframeHandler, FxRemoteLightingHandler, FxRemoteOSCHandler, FxRemoteParameterHandler, FxRemotePathHandler, FxRemotePluginCoordinator, FxRemoteTimingHandler, NSString;
 
-@interface FxAPIManagerShim : NSObject <PROAPIAccessing>
+@interface FxAPIManagerShim : NSObject <PROAPIAccessing, FxColorGamutAPI_v2, FxCustomParameterActionAPI_v4>
 {
-    id <FxRemoteHostAPIProtocol><NSObject> hostAPIHandlerSync;
-    id <FxRemoteHostAPIProtocol><NSObject> hostAPIHandlerAsync;
+    FxRemotePluginCoordinator *pluginCoordinator;
     FxRemoteParameterHandler *paramHandler;
     unsigned int pluginVersion;
     FxMatrix44 *rgbToYCbCr;
@@ -24,11 +25,16 @@
     FxRemoteLightingHandler *lightingHandler;
     FxRemotePathHandler *pathHandler;
     FxRemoteKeyframeHandler *keyframeHandler;
+    FxRemoteOSCHandler *oscHandler;
+    struct map<_opaque_pthread_t *, std::__1::stack<unsigned long, std::__1::deque<unsigned long, std::__1::allocator<unsigned long>>>, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, std::__1::stack<unsigned long, std::__1::deque<unsigned long, std::__1::allocator<unsigned long>>>>>> threadTransactionMap;
+    unsigned long long nextUnusedTransactionID;
     unsigned long long sessionID;
     map_bfa44047 allowedAPIMap;
+    map_9d443cdb liveThreadMap;
     struct _opaque_pthread_mutex_t allowedAPIMutex;
 }
 
+@property map_9d443cdb liveThreadMap; // @synthesize liveThreadMap;
 @property struct _opaque_pthread_mutex_t allowedAPIMutex; // @synthesize allowedAPIMutex;
 @property map_bfa44047 allowedAPIMap; // @synthesize allowedAPIMap;
 @property unsigned long long sessionID; // @synthesize sessionID;
@@ -41,12 +47,27 @@
 - (void)clear3DData;
 - (void)set3DData:(id)arg1;
 - (void)setTimingData:(id)arg1;
+- (void)endAction:(id)arg1;
+- (void)startAction:(id)arg1;
+- (void)runRunLoopUntilSemaphoreSignals:(id)arg1;
+- (struct CGRect)documentBounds;
+- (CDStruct_1b6d18a9)currentTime;
+- (id)colorMatrixFromYCbCrToDesiredRGB;
+- (id)colorMatrixFromDesiredRGBToYCbCr;
 - (unsigned long long)colorPrimaries;
 - (id)colorMatrixFromYCbCrToDesiredRGBAtTime:(CDUnion_2516e51e)arg1;
 - (id)colorMatrixFromDesiredRGBToYCbCrAtTime:(CDUnion_2516e51e)arg1;
 - (void)setColorGamutRGBToYCbCr:(id)arg1 YCbCrToRGB:(id)arg2 colorPrimaries:(unsigned long long)arg3;
+- (void)setColorGamutData:(id)arg1;
 - (BOOL)updateVersionAtCreation:(unsigned int)arg1;
 - (unsigned int)versionAtCreation;
+- (void)clearThreadTransactionID;
+- (unsigned long long)threadTransactionID;
+- (unsigned long long)newUnusedTransactionID;
+- (void)setThreadTransactionID:(unsigned long long)arg1;
+- (void)endLiveThreadUpdates;
+- (BOOL)isThreadLive;
+- (void)setThreadIsLive:(BOOL)arg1;
 - (unsigned long long)APIListForProtocol:(id)arg1;
 - (BOOL)allowedAPI:(unsigned long long)arg1;
 - (void)clearAllowedAPI;
@@ -55,10 +76,11 @@
 - (id)pendingParameterTransactions;
 - (void)setIncomingParameterTransactions:(id)arg1;
 - (id)apiForProtocol:(id)arg1;
-- (id)asyncHandler;
-- (id)syncHandler;
+- (id)getPluginCoordinator;
+- (id)asyncHandlerForFunction:(const char *)arg1;
+- (id)syncHandlerForFunction:(const char *)arg1;
 - (void)dealloc;
-- (id)initWithHostAPIHandlerSync:(id)arg1 hostAPIHandlerAsync:(id)arg2 pluginVersion:(unsigned int)arg3 andSessionID:(unsigned long long)arg4;
+- (id)initWithRemotePluginCoordinator:(id)arg1 pluginVersion:(unsigned int)arg2 andSessionID:(unsigned long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

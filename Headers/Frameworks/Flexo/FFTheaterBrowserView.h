@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)finishEditingTitle:(id)arg1;
 - (void)beginEditingTitleForCell:(id)arg1;
 - (id)newCellForRepresentedItem:(id)arg1;
+- (void)addDeprecationMessage;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

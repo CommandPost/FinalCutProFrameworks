@@ -25,6 +25,7 @@
 + (id)effectBundlePartsFromXMLDocument:(id)arg1;
 + (BOOL)writeEffectToFile:(id)arg1 error:(id *)arg2;
 + (id)initialEffectBundlePartsForEffectID:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)partNamesForBundle:(id)arg1;
 + (id)cachedPartNamesForBundle:(id)arg1;
 + (BOOL)addEffects:(id)arg1 asSnapshotToPart:(unsigned long long)arg2 ofBundle:(id)arg3 atValue:(double)arg4 error:(id *)arg5;

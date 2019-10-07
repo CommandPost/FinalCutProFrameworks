@@ -6,10 +6,12 @@
 
 #import <Flexo/FFImageRep.h>
 
+#import "FFFlatImageRepWithPlanes.h"
+
 @class FFImage, FFScheduleTokenVTDecode, FFStreamVideoFig;
 
 __attribute__((visibility("hidden")))
-@interface FFImageRepFigSchedFrame : FFImageRep
+@interface FFImageRepFigSchedFrame : FFImageRep <FFFlatImageRepWithPlanes>
 {
     FFStreamVideoFig *_stream;
     FFScheduleTokenVTDecode *_schedRec;
@@ -19,17 +21,16 @@ __attribute__((visibility("hidden")))
     struct CGRect _afterDecodeBounds;
     FFImage *_fillerImage;
     BOOL _disable422Filtering;
-    struct FFSourceColorConformBaseClass *_sourceColorConformer;
-    int _sourceCCTargetColorSpace;
 }
 
+- (_Bool)imageReadyWithoutBlocking;
 - (int)errorCode;
 - (void)getSampleBuffer:(struct opaqueCMSampleBuffer **)arg1 alphaKnownToBeFullyOpaque:(char *)arg2;
+-     // Error parsing type: ^{HGBitmap=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}}20@0:8i16, name: copyHGBitmapForPlane:
+- (int)numPlanes;
 - (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
 - (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
 - (id)_fillerFrame;
-- (int)sourceCCTargetColorSpace;
-- (struct FFSourceColorConformBaseClass *)sourceColorConformer;
 - (unsigned long long)approximateMemoryUsage;
 - (struct CGColorSpace *)colorSpace;
 - (struct CGColorSpace *)_internalColorSpace:(_Bool)arg1;

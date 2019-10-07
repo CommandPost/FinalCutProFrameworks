@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_propertyMap;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)newPreprocessorFactory:(id)arg1 object:(id)arg2 index:(unsigned int)arg3;
 - (id)librariesInUse:(id)arg1;
 - (id)assetsInUse:(id)arg1;

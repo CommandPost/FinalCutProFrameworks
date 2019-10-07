@@ -26,6 +26,9 @@ __attribute__((visibility("hidden")))
     struct FFLocklessQueue<FigTimeRangeAndObject *> *_requests;
 }
 
++ (BOOL)supportsSecureCoding;
++ (int)inertiaCamPickedCount;
++ (int)smoothCamPickedCount;
 + (id)copyClassDescription;
 @property(retain, nonatomic) FFPixelBuffer *pixelBuffer2; // @synthesize pixelBuffer2=_pixelBuffer2;
 @property(retain, nonatomic) FFPixelBuffer *pixelBuffer1; // @synthesize pixelBuffer1=_pixelBuffer1;
@@ -73,8 +76,8 @@ __attribute__((visibility("hidden")))
 - (void)pausedTask:(id)arg1;
 - (BOOL)confirmIsPaused:(id)arg1;
 - (void)_performAnalysisOnRange:(CDStruct_e83c9415)arg1 onTask:(id)arg2 algorithmRequested:(int)arg3 inertiaCamLowConfidence:(BOOL)arg4 algorithmUsed:(int *)arg5;
-- (void)analyzeSubRange:(id)arg1 analysisRange:(struct _NSRange)arg2 visibleRange:(struct _NSRange)arg3 algorithmRequested:(int)arg4 inertiaCamLowConfidence:(BOOL)arg5 algorithmUsed:(int *)arg6;
-- (int)_analyzeUseRendererForRange:(struct _NSRange)arg1 visibleRange:(struct _NSRange)arg2 useInertiaCam:(BOOL)arg3 forceInertiaCam:(BOOL)arg4 runningTask:(id)arg5;
+- (void)analyzeSubRange:(id)arg1 analysisRange:(struct _NSRange)arg2 visibleRange:(struct _NSRange)arg3 algorithmRequested:(int)arg4 inertiaCamLowConfidence:(BOOL)arg5 algorithmUsed:(int *)arg6 sampleDuration:(CDStruct_1b6d18a9)arg7;
+- (int)_analyzeUseRendererForRange:(struct _NSRange)arg1 visibleRange:(struct _NSRange)arg2 useInertiaCam:(BOOL)arg3 forceInertiaCam:(BOOL)arg4 runningTask:(id)arg5 sampleDuration:(CDStruct_1b6d18a9)arg6;
 - (void)_reportTime:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_notifyDoneWithRange:(CDStruct_e83c9415)arg1 effect:(id)arg2 algorithmUsed:(int)arg3 algorithmRequested:(int)arg4;

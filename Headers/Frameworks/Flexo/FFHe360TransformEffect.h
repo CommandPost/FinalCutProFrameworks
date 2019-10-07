@@ -40,16 +40,17 @@ __attribute__((visibility("hidden")))
 @property(readonly) CHChannelAngle *longitudeChannel; // @synthesize longitudeChannel=_chLongitude;
 @property(readonly) CHChannelAngle *latitudeChannel; // @synthesize latitudeChannel=_chLatitude;
 @property(readonly) CHChannelEnum *coordinatesChannel; // @synthesize coordinatesChannel=_chCoordinates;
+- (BOOL)supportsReentrancy;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (id)primaryAnimationChannel;
 - (id)new360TransformedImage:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 eye:(double)arg3 outputWidth:(double)arg4 outputHeight:(double)arg5 downstreamPT:(id)arg6;
 - (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 schedInfo:(id)arg5 downstreamPT:(id)arg6 channelOffset:(CDStruct_1b6d18a9)arg7 roi:(const struct CGRect *)arg8 graphBuildInfo:(id)arg9;
-- (void)effectActivated:(int)arg1;
+- (void)updateConvergenceAndInteraxial;
 - (void)channelParameterChanged:(id)arg1;
 - (void)setParameterValuesForCoordinates:(int)arg1;
 - (void)showHideChannel:(id)arg1 show:(BOOL)arg2;
 - (id)inputKeys;
-- (void)setParameterValuesForNode:(struct HGNode *)arg1 atTime:(CDStruct_1b6d18a9)arg2 withInputStream:(id)arg3 context:(id)arg4 pixelTransform:(id)arg5 inputData:(id)arg6 inputBounds:(struct CGRect)arg7;
+-     // Error parsing type: v112@0:8^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16{?=qiIq}24@48@56@64@72{CGRect={CGPoint=dd}{CGSize=dd}}80, name: setParameterValuesForNode:atTime:withInputStream:context:pixelTransform:inputData:inputBounds:
 - (PCMatrix44Tmpl_9c426645)getPlaneTranslationMatrixAtTime:(CDStruct_1b6d18a9)arg1;
 - (PCMatrix44Tmpl_9c426645)getPlaneScaleMatrixAtTime:(CDStruct_1b6d18a9)arg1;
 - (PCMatrix44Tmpl_9c426645)getPlaneOrientationMatrixAtTime:(CDStruct_1b6d18a9)arg1;
@@ -57,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAtDefaultSettings;
 - (BOOL)writeDefaultChannels;
 - (BOOL)isNoOp;
-- (struct HGNode *)newNodeForContext:(id)arg1;
+-     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}24@0:8@16, name: newNodeForContext:
 - (void)setup360TransformChannel:(id *)arg1 folder:(id)arg2 name:(id)arg3 channelID:(unsigned int)arg4 defaultCurve:(double)arg5 minCurve:(double)arg6 maxCurve:(double)arg7 minUI:(double)arg8 maxUI:(double)arg9 coarseDelta:(double)arg10 fineDelta:(double)arg11 hidden:(BOOL)arg12;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)reset;

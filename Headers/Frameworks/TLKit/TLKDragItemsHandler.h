@@ -102,7 +102,6 @@
 - (void)_updateLayersForDroppedItems:(id)arg1 atPoint:(struct CGPoint)arg2 dropInfo:(id)arg3;
 - (void)_clearDropFeedback;
 - (void)_clearDropFeedbackForItemLayers:(id)arg1;
-- (void)_showDropFeedback:(id)arg1 atPoint:(struct CGPoint)arg2 proposedHighlightItems:(id)arg3;
 - (void)_showDropFeedback:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)_setResetDragImageAlphaForDraggingInfo:(id)arg1;
 - (void)_setWantsDragImage:(BOOL)arg1 forDraggingInfo:(id)arg2;

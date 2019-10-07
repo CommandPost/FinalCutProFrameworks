@@ -11,6 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface FFTimelineCaptionItemLayer : PETimelineItemLayer
 {
+    BOOL _leadingThroughEditVisible;
+    BOOL _trailingThroughEditVisible;
     BOOL _isObservingAllErrors;
     FFAnchoredCollection *_anchoredCollection;
     CATextLayer *_titleLayer;
@@ -23,6 +25,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CATextLayer *debugLayer; // @synthesize debugLayer=_debugLayer;
 @property(retain, nonatomic) CATextLayer *titleLayer; // @synthesize titleLayer=_titleLayer;
 @property(readonly) FFAnchoredCollection *anchoredCollection; // @synthesize anchoredCollection=_anchoredCollection;
+@property(nonatomic) BOOL trailingThroughEditVisible; // @synthesize trailingThroughEditVisible=_trailingThroughEditVisible;
+@property(nonatomic) BOOL leadingThroughEditVisible; // @synthesize leadingThroughEditVisible=_leadingThroughEditVisible;
+- (struct CGColor *)throughEditBackgroundColorForAngle:(int)arg1;
+- (BOOL)isTrailingVideoThroughEditVisible;
+- (BOOL)isLeadingVideoThroughEditVisible;
+- (void)updateThroughEditsAppearance;
 - (id)validColorScheme;
 - (id)invalidColorScheme;
 - (id)colorScheme;

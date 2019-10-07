@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;

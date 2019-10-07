@@ -13,14 +13,32 @@ __attribute__((visibility("hidden")))
     int _rightEdgeType;
     BOOL _isStill;
     double _cornerRadius;
+    double _frameHeight;
+    CALayer *_topLayer;
+    CALayer *_bottomLayer;
+    CALayer *_leftImageLayer;
+    CALayer *_leftInsetLayer;
+    CALayer *_rightImageLayer;
+    CALayer *_rightInsetLayer;
+    double _filmstripHeight;
+    double _leftInset;
+    double _rightInset;
+    BOOL _maskFramesAreValid;
 }
 
 + (id)makeNewLayerAsMaskLayerOf:(id)arg1 leftinset:(double)arg2 rightinset:(double)arg3;
+@property double rightInset; // @synthesize rightInset=_rightInset;
+@property double leftInset; // @synthesize leftInset=_leftInset;
+@property double filmstripHeight; // @synthesize filmstripHeight=_filmstripHeight;
 @property double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property BOOL isStill; // @synthesize isStill=_isStill;
-- (void)drawInContext:(struct CGContext *)arg1;
+- (void)setContentsScale:(double)arg1;
 @property int leftEdgeType;
 @property int rightEdgeType;
+- (void)_resetImages;
+- (void)_resetCapImages;
+- (void)_resetTopAndBottomImages;
+- (void)layoutSublayers;
 - (id)init;
 
 @end

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSImage *_cellImage;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(retain, nonatomic) NSImage *cellImage; // @synthesize cellImage=_cellImage;
 - (id)flattenMultiLineString:(id)arg1;
 - (void)drawCellImage:(struct CGRect)arg1 inView:(id)arg2;

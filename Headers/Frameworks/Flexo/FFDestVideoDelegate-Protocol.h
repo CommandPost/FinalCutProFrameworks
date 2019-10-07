@@ -7,6 +7,7 @@
 @class FFDestVideo, FFImage, FFPlayerFrame, NSMapTable;
 
 @protocol FFDestVideoDelegate
+- (long long)colorChannelDisplayMode;
 - (BOOL)is360Viewer;
 - (BOOL)showBothFields;
 - (BOOL)isMultiangleViewer;
@@ -15,10 +16,10 @@
 - (void)addDrawProperties:(NSMapTable *)arg1 forFrame:(FFPlayerFrame *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 
 @optional
+- (int)drawNow:(const CDStruct_e50ab651 *)arg1 outTime:(const CDStruct_e50ab651 *)arg2;
 - (FFImage *)newProjectedImageForPlayerFrame:(FFPlayerFrame *)arg1;
 - (void)setDrawingEnabled:(BOOL)arg1;
 - (struct CGRect)getSourceRectAndDrawRect:(struct CGRect *)arg1 imageBounds:(struct CGRect)arg2 isFlipped:(BOOL)arg3;
-- (long long)colorChannelDisplayMode;
 - (void)setSequenceBounds:(struct CGRect)arg1 sequenceCameraMode:(int)arg2;
 @end
 

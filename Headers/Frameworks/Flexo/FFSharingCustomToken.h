@@ -13,6 +13,7 @@
     NSString *_customString;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(retain) NSString *customString; // @synthesize customString=_customString;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -17,6 +17,7 @@
     FFUserDefaults *_userDefaults;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (id)mergeDescription;
 + (id)uniqueKeyFor:(id)arg1 among:(id)arg2;

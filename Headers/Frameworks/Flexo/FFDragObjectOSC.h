@@ -15,15 +15,18 @@ __attribute__((visibility("hidden")))
     FFProOSC *_resignOnMouseUpToOSC;
     FFChannelChangeController *_changeController;
     struct CGPoint _mouseLast;
+    struct CGPoint _mouseFirst;
     long long _dragCount;
     BOOL _mouseIsDown;
     FFHeXForm3DEffect *_xformEffect;
+    int _shiftDirectionSet;
 }
 
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
 - (void)keyUp:(id)arg1;
 - (void)keyDown:(id)arg1;
 - (void)resignActiveOSC;
+- (void)flagsChanged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)endTransactionIfRequired;
 - (void)mouseDragged:(id)arg1;

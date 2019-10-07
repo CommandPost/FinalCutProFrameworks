@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithMedia:(id)arg1;
 - (id)initWithAssetFileID:(id)arg1;
-- (struct FFMediaReader *)copyMediaReader;
+-     // Error parsing type: ^{FFMediaReader=^^?^{__CFString}i{atomic<int>=Ai}df@{stat=iSSQIIi{timespec=qq}{timespec=qq}{timespec=qq}{timespec=qq}qqiIIi[2q]}{_opaque_pthread_mutex_t=q[56c]}{atomic<bool>=AB}{?=qiIq}@@{_opaque_pthread_mutex_t=q[56c]}@B[3@]}16@0:8, name: copyMediaReader
 - (int)videoCodecBitRateInKbps;
 
 @end

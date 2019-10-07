@@ -6,17 +6,18 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface OMKeyerOscSetup : NSObject <NSCoding>
+@interface OMKeyerOscSetup : NSObject <NSSecureCoding>
 {
     NSMutableArray *_rectangles;
     NSMutableArray *_edges;
 }
 
++ (BOOL)supportsSecureCoding;
 - (BOOL)isEqualTo:(id)arg1;
 - (id)interpolateBetween:(id)arg1 withWeight:(float)arg2;
 - (void)setEdges:(id)arg1;

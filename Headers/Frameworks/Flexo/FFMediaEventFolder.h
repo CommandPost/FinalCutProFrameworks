@@ -23,6 +23,7 @@
 }
 
 + (int)matchingTypeIterationOption;
++ (BOOL)supportsSecureCoding;
 + (id)objectsSortedByName:(id)arg1;
 + (id)newLibraryFolderWithDefaultSmartCollections:(BOOL)arg1;
 + (id)copyClassDescription;

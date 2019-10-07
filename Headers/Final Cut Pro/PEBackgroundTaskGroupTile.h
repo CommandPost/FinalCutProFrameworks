@@ -48,7 +48,6 @@
 - (void)updateWithTimer:(id)arg1;
 - (void)updateActionView;
 - (void)updateUI;
-- (void)setExpanded:(BOOL)arg1;
 - (void)setCanExpand:(BOOL)arg1;
 - (id)groupName;
 - (void)dealloc;

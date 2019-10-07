@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)drawInContext:(struct CGContext *)arg1;
-- (void)setNeedsUpdateFromDestInViewBounds:(struct CGRect)arg1 option:(unsigned long long)arg2;
+- (void)setNeedsUpdateFromDest:(unsigned long long)arg1;
 - (void)setContentsScale:(double)arg1;
 - (void)setYCbCrColorSpace:(int)arg1;
 - (void)hideGraticuleLabels:(BOOL)arg1;

@@ -24,6 +24,8 @@
 
 @property(retain, nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
 @property(nonatomic) BOOL shouldAllowPopoverToClose; // @synthesize shouldAllowPopoverToClose=_shouldAllowPopoverToClose;
+- (id)addCaptionAtTime:(CDStruct_1b6d18a9)arg1 withText:(id)arg2 mainRoleUID:(id)arg3 languageIdentifier:(id)arg4;
+- (id)addCaptionAtCurrentTimeWithText:(id)arg1 mainRoleUID:(id)arg2 languageIdentifier:(id)arg3;
 - (id)_firstCaptionInSelection;
 - (void)_reflectZoomChanged;
 - (void)captionEditorMoveToCaption:(id)arg1 mainRoleUID:(id)arg2 languageIdentifier:(id)arg3;

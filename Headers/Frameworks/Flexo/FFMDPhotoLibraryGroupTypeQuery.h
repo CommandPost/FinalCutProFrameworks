@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     int _groupType;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(readonly, nonatomic) int groupType; // @synthesize groupType=_groupType;
 - (void)_updateQueryResults;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -25,6 +25,7 @@
 - (void)setToIdentity;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)copy;
 - (id)initWithFxMatrix:(id)arg1;
 - (id)initWithColorMatrix44Data:(double [4][4])arg1;
 - (id)initWithMatrix44Data:(double [4][4])arg1;

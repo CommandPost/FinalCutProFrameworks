@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSDate *_creationDate;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)thumbnailWithSegmentStoreMD5:(id)arg1 segmentStoreOffset:(long long)arg2 media:(id)arg3;
 + (id)thumbnailWithSegmentStoreMD5:(id)arg1 segmentStoreOffset:(long long)arg2 mediaIdentifer:(id)arg3 creationDate:(id)arg4;
 + (id)copyClassDescription;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (BOOL)_ensureDirectoryExists:(id)arg1 error:(id *)arg2;
 - (BOOL)ensureDirectoryExists:(id *)arg1;
 - (id)initWithCoder:(id)arg1;

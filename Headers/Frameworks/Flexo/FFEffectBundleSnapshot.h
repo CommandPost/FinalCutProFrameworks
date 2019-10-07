@@ -20,6 +20,7 @@
 
 + (id)channelForSnapshotIndexPath:(id)arg1 inEffects:(id)arg2;
 + (id)snapshotIndexPathForChannel:(id)arg1 inEffects:(id)arg2;
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(nonatomic) int effectBundleEncodingOptions; // @synthesize effectBundleEncodingOptions=_effectBundleEncodingOptions;
 @property(readonly, nonatomic) NSDictionary *modifiedEffectValues; // @synthesize modifiedEffectValues=_modifiedEffectValues;

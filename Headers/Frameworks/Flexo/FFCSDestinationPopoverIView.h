@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class FFShareDestination, NSImage, NSString;
+@class FFShareDestination, NSDictionary, NSImage, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFCSDestinationPopoverIView : NSView
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSImage *_iconImageNormal;
     NSImage *_iconImagePressed;
     NSString *_title;
+    NSDictionary *_titleAttrs;
     FFShareDestination *_destination;
     id <FFConsumerSharePopoverDelegate> _delegate;
     BOOL _mouseInside;

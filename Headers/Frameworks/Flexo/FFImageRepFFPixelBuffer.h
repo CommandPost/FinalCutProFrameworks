@@ -6,17 +6,19 @@
 
 #import <Flexo/FFImageRep.h>
 
+#import "FFFlatImageRepWithPlanes.h"
+
 @class FFPixelBuffer;
 
-@interface FFImageRepFFPixelBuffer : FFImageRep
+@interface FFImageRepFFPixelBuffer : FFImageRep <FFFlatImageRepWithPlanes>
 {
     FFPixelBuffer *_buffer;
     BOOL _disable422Filtering;
     BOOL _backedByCV;
-    struct FFSourceColorConformBaseClass *_sourceColorConformer;
-    int _sourceCCTargetColorSpace;
 }
 
+-     // Error parsing type: ^{HGBitmap=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}}20@0:8i16, name: copyHGBitmapForPlane:
+- (int)numPlanes;
 - (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
 - (_Bool)alphaWantsClamping;
 - (_Bool)alphaWantsInversion;
@@ -29,8 +31,6 @@
 - (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
 - (BOOL)backedByPBO;
 - (void)setSourceColorConformer:(struct FFSourceColorConformBaseClass *)arg1 targetColorSpace:(int)arg2;
-- (int)sourceCCTargetColorSpace;
-- (struct FFSourceColorConformBaseClass *)sourceColorConformer;
 - (void)setBackedByCV:(BOOL)arg1;
 - (BOOL)backedByCV;
 - (BOOL)disable422InputFiltering;

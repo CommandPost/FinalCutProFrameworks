@@ -12,7 +12,7 @@
 
 @interface OZDFRProjectNavigatorViewController : OZDFRAbstractBaseViewController <NSGestureRecognizerDelegate>
 {
-    struct OZSceneSettings _currentSceneSettings;
+    // Error parsing type: {OZSceneSettings="_vptr$PCSerializer"^^?"_width"i"_height"i"_frames"I"_shouldOverrideFCDuration"B"_startTimecode"I"_frameRate"d"_isNTSC"B"_pixelAspectRatio"d"_workingGamut"{AtomicWorkingGamut="_gamut"{atomic<PCWorkingGamutValue>="__a_"Ai}}"_viewGamut"i"_toneMappingMode"i"_lastToneMappingMode"i"_bgColor"{PCColor="_components"{ColorComponents="_n"i"_v"[5d]}"_colorSpace"{PCColorSpaceHandle="_cgColorSpace"^{CGColorSpace}}}"_backgroundMode"i"_haveBackgroundMode"B"_fieldRenderingMode"I"_motionBlurSamples"I"_motionBlurDuration"d"_doSharpScaling"B"_useDither"B"_samplingBias"d"_reflectionRecursionLimit"i"_presetPath"{PCString="_string"^{__CFString}}"_audioChannels"I"_audioBytesPerSample"I"_audioSampleRate"d"_obsoleteAntialiasingMode"I"_glyphOSCMode"I"_visibleLightCompMode"I"_animated"B"_parameterDefaultGamma"f"_parameterDefaultColorSpaceID"i"_isResizing"B"_origWidth"i"_savePreviewMovie"B"_hostAppProjectWidth"i"_hostAppProjectHeight"i"_introducesAlpha"B"_360ProjectMode"i}, name: _currentSceneSettings
     BOOL _needsRecreateFrames;
     BOOL _needsRenderFrames;
     BOOL _needsUpdateImages;

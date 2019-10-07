@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface MXFSoundMedia : MXFMedia <HPMSoundMediaProtocol, HPMMediaCursorProtocol>
 {
-    int _sampleRate;
+    CDStruct_2689111f _sampleRate;
     unsigned int _channels;
     unsigned int _bitsPerChannel;
     unsigned int _bubbleSize;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned int bubbleSize; // @synthesize bubbleSize=_bubbleSize;
 @property(readonly) unsigned int bitsPerChannel; // @synthesize bitsPerChannel=_bitsPerChannel;
 @property(readonly) unsigned int channels; // @synthesize channels=_channels;
-@property(readonly) int sampleRate; // @synthesize sampleRate=_sampleRate;
+@property(readonly) CDStruct_2689111f sampleRate; // @synthesize sampleRate=_sampleRate;
 - (int)stepInPresentationOrderWithCount:(long long)arg1 displayPosition:(long long *)arg2 decodePosition:(long long *)arg3 mustLoadAtMediaIndexPosition:(long long *)arg4;
 - (int)stepInDecodeOrderWithCount:(long long)arg1 displayPosition:(long long *)arg2 decodePosition:(long long *)arg3 mustLoadAtMediaIndexPosition:(long long *)arg4;
 - (long long)decodePositionWithDisplayPosition:(long long)arg1 mustLoadAtMediaIndexPosition:(long long *)arg2;
@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property struct __CFDictionary *descriptiveMetadata;
-@property(readonly) int editRate;
+@property(readonly) CDStruct_2689111f editRate;
 @property(readonly) int essenceType;
 @property(readonly) long long frameDuration;
 @property(readonly) BOOL hasDisplayOffsets;

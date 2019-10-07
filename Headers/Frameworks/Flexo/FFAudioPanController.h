@@ -8,7 +8,7 @@
 
 #import "FFOZViewControllerChannelChangeDelegate.h"
 
-@class FFAudioPanDishView, FFAudioPanModeController, FFChannelChangeController, NSArray, NSCountedSet, NSLayoutConstraint, NSMapTable, NSMutableSet, NSString, PIBuildContext;
+@class FFAudioPanDishView, FFAudioPanModeController, FFChannelChangeController, FFLibraryDocument, NSArray, NSCountedSet, NSLayoutConstraint, NSMapTable, NSMutableSet, NSString, PIBuildContext;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioPanController : OZFolderGroupController <FFOZViewControllerChannelChangeDelegate>
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     FFAudioPanModeController *m_panModePopUpController;
     NSLayoutConstraint *m_panModePopUpWidthConstraint;
     FFAudioPanDishView *m_panDishView;
+    FFLibraryDocument *m_observedLibraryDocument;
 }
 
 - (void)controller:(id)arg1 didSetChannelValue:(struct OZChannelBase *)arg2 flagsOnly:(BOOL)arg3;

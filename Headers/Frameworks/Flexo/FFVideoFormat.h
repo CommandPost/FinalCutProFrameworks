@@ -47,6 +47,7 @@
 + (id)allStandardGamutFormats;
 + (id)formats;
 + (id)formatForName:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)formatsDict;
 + (id)FFCustomFormatDisplayName;
 + (void)releaseSharedInstance;
@@ -70,7 +71,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPList:(id)arg1;
-- (id)initWithName:(id)arg1 displayFormat:(id)arg2 displaySize:(id)arg3 displayRate:(id)arg4 pixelSpaceFrameBounds:(struct CGRect)arg5 colorSpace:(struct CGColorSpace *)arg6 fieldDominance:(int)arg7 sampleDuration:(CDStruct_1b6d18a9)arg8 frame:(id)arg9 field1:(id)arg10 field2:(id)arg11 paspH:(int)arg12 paspV:(int)arg13 frameRateUndefined:(BOOL)arg14 cameraMode:(int)arg15;
+- (id)initWithName:(id)arg1 displayFormat:(id)arg2 displaySize:(id)arg3 displayRate:(id)arg4 pixelSpaceFrameBounds:(struct CGRect)arg5 colorSpace:(struct CGColorSpace *)arg6 colorSpaceEnum:(int)arg7 fieldDominance:(int)arg8 sampleDuration:(CDStruct_1b6d18a9)arg9 frame:(id)arg10 field1:(id)arg11 field2:(id)arg12 paspH:(int)arg13 paspV:(int)arg14 frameRateUndefined:(BOOL)arg15 cameraMode:(int)arg16;
 
 @end
 

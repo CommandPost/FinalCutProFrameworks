@@ -6,44 +6,52 @@
 
 #import "LKPreferencesModule.h"
 
+#import "NSFilePromiseProviderDelegate.h"
 #import "NSOutlineViewDataSource.h"
 
 @class LKButton, LKTileView, NSArray, NSMutableArray, NSString, NSTreeController, NSUndoManager, PEAppSharePreferencesOutlineView;
 
-@interface PEAppSharePreferencesModule : LKPreferencesModule <NSOutlineViewDataSource>
+@interface PEAppSharePreferencesModule : LKPreferencesModule <NSOutlineViewDataSource, NSFilePromiseProviderDelegate>
 {
     NSTreeController *_destinationsController;
     PEAppSharePreferencesOutlineView *_destinationsView;
     LKTileView *_destinationTilesView;
+    LKButton *_addBtn;
     LKButton *_removeBtn;
     NSArray *_draggedFilePaths;
     BOOL _draggedFilePathsIncludesBundle;
+    BOOL _destinationsLoaded;
     NSMutableArray *_destinations;
     NSMutableArray *_destinationViewControllers;
     NSUndoManager *_undoManager;
 }
 
 @property(retain, nonatomic) NSMutableArray *destinations; // @synthesize destinations=_destinations;
+@property(nonatomic) BOOL destinationsLoaded; // @synthesize destinationsLoaded=_destinationsLoaded;
 @property(retain, nonatomic) NSTreeController *destinationsController; // @synthesize destinationsController=_destinationsController;
 - (void)userShareDestinationsDidChange:(id)arg1;
+- (void)filePromiseProvider:(id)arg1 writePromiseToURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)filePromiseProvider:(id)arg1 fileNameForType:(id)arg2;
 - (id)outlineView:(id)arg1 selectionIndexesForProposedSelection:(id)arg2;
 - (void)outlineViewSelectionDidChange:(id)arg1;
+- (void)outlineView:(id)arg1 didRemoveRowView:(id)arg2 forRow:(long long)arg3;
+- (void)outlineView:(id)arg1 didAddRowView:(id)arg2 forRow:(long long)arg3;
 - (BOOL)outlineView:(id)arg1 acceptDrop:(id)arg2 item:(id)arg3 childIndex:(long long)arg4;
 - (void)_dropDestinations:(id)arg1 onItem:(id)arg2 childIndex:(long long)arg3;
 - (void)_dropDestinationTypes:(id)arg1 onItem:(id)arg2 childIndex:(long long)arg3;
 - (void)_copyIndexPaths:(id)arg1 onItem:(id)arg2 childIndex:(long long)arg3;
 - (void)_moveIndexPaths:(id)arg1 onItem:(id)arg2 childIndex:(long long)arg3;
 - (unsigned long long)outlineView:(id)arg1 validateDrop:(id)arg2 proposedItem:(id)arg3 proposedChildIndex:(long long)arg4;
-- (BOOL)_draggedFilePathsIncludesBundle:(id)arg1;
-- (void)_setDraggedFilePaths:(id)arg1 includesBundle:(BOOL)arg2;
-- (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
-- (id)outlineView:(id)arg1 namesOfPromisedFilesDroppedAtDestination:(id)arg2 forDraggedItems:(id)arg3;
+- (BOOL)_draggedFileURLsIncludesBundle:(id)arg1;
+- (void)_setDraggedFileURLs:(id)arg1 includesBundle:(BOOL)arg2;
+- (id)outlineView:(id)arg1 pasteboardWriterForItem:(id)arg2;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
 - (id)_targetedIndexPaths:(id *)arg1;
 - (id)_targetedNodes:(id *)arg1;
 - (void)editCell:(id)arg1;
-- (void)_updateRemoveButtonEnabledState;
+- (void)_updateDestinationsRowHeight;
+- (void)_updateAddRemoveButtonEnabledState;
 - (void)selectAddDestination:(id)arg1;
 - (void)moveToTrash:(id)arg1;
 - (void)makeSelectedDestinationDefault:(id)arg1;

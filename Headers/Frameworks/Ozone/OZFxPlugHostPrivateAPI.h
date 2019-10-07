@@ -14,9 +14,10 @@
 
 @interface OZFxPlugHostPrivateAPI : NSObject <PROAPIObject, FxHostPrivateAPI, FxRenderModelAPIPrivate>
 {
-    struct OZFxPlugSharedBase *_plugin;
+    // Error parsing type: ^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}B@BBQB{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}, name: _plugin
 }
 
+- (void)pluginXPCConnectionBroken:(id)arg1;
 - (id)URLForHostResource:(id)arg1 withExtension:(id)arg2 subDirectory:(id)arg3 inBundleWithURL:(id)arg4;
 - (id)URLForHostResource:(id)arg1 withExtension:(id)arg2 subDirectory:(id)arg3 inBundleWithIdentifier:(id)arg4;
 - (id)URLForHostResource:(id)arg1 withExtension:(id)arg2 subDirectory:(id)arg3 inBundle:(id)arg4;
@@ -24,7 +25,7 @@
 - (BOOL)giveEffectUIFocus;
 - (BOOL)navigateToTime:(CDUnion_2516e51e)arg1;
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
-- (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
+-     // Error parsing type: @24@0:8^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}B@BBQB{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}16, name: initWithPlugin:
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

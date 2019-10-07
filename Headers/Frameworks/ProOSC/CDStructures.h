@@ -25,7 +25,66 @@ struct CGSize {
 
 struct FunctionParams;
 
+struct HGBlendingInfo {
+    unsigned long long m_HardwareSupportFlags;
+    int m_SrcRGBFactor;
+    int m_DstRGBFactor;
+    int m_SrcAlphaFactor;
+    int m_DstAlphaFactor;
+    int m_RGBOperation;
+    int m_AlphaOperation;
+};
+
+struct HGBuffer;
+
+struct HGGLRenderer;
+
+struct HGMTLDeviceType {
+    id _field1;
+};
+
+struct HGMTLFunctionType {
+    id _field1;
+};
+
+struct HGMTLRenderCommandEncoderType {
+    id _field1;
+};
+
+struct HGMTLRenderPipelineStateType {
+    id _field1;
+};
+
+struct HGMetalRenderPipelineStateCache;
+
+struct HGMetalShadersPair {
+    struct HGMTLFunctionType _field1;
+    struct HGMTLFunctionType _field2;
+};
+
+struct HGMetalTexture;
+
+struct HGRef<HGBuffer> {
+    struct HGBuffer *m_Obj;
+};
+
+struct HGRef<HGGLRenderer> {
+    struct HGGLRenderer *m_Obj;
+};
+
+struct HGRef<HGMetalTexture> {
+    struct HGMetalTexture *m_Obj;
+};
+
 struct HGRenderer;
+
+struct Info {
+    struct HGMetalShadersPair *_field1;
+    int _field2;
+    unsigned int _field3;
+    _Bool _field4;
+    struct HGBlendingInfo _field5;
+};
 
 struct OZChannel;
 
@@ -806,9 +865,34 @@ struct OZVertex2D {
     void *_field2;
 };
 
+struct PCArray<PCVector4<double>, PCArray_Traits<PCVector4<double>>> {
+    CDUnknownFunctionPointerType *_vptr$PCArray;
+    int _sz;
+    int _num;
+    PCVector4_6435de47 *_array;
+};
+
+struct PCBitmap {
+    CDUnknownFunctionPointerType *_field1;
+    struct weak_ptr<PCImage> _field2;
+    int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    int _field8;
+    struct PCColorSpaceHandle _field9;
+    _Bool _field10;
+    struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> _field11;
+};
+
+struct PCBitmapRep;
+
 struct PCColorSpaceHandle {
     struct CGColorSpace *_field1;
 };
+
+struct PCImage;
 
 struct PCMatrix44Tmpl<double> {
     double _mat[4][4];
@@ -895,6 +979,8 @@ struct PCVector4<double> {
 
 struct PC_Sp_counted_base;
 
+struct POAALineVertex;
+
 struct POAwesomeType {
     int _field1;
     unsigned int _field2;
@@ -922,6 +1008,8 @@ struct POCropMargins {
     double _field3;
     double _field4;
 };
+
+struct POHitIdVertex;
 
 struct POKeypoint {
     CDStruct_1b6d18a9 _field1;
@@ -1022,6 +1110,10 @@ struct POScale3DImpl {
 
 struct POScale3DOSC;
 
+struct POSolidVertex;
+
+struct POTextureVertex;
+
 struct POVertexAsset;
 
 struct PSHVertexData;
@@ -1055,6 +1147,8 @@ struct __map_iterator<std::__1::__tree_iterator<std::__1::__value_type<PCString,
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
     } _field1;
 };
+
+struct __shared_weak_count;
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *_field1;
@@ -1141,6 +1235,23 @@ struct pair<OZChannelRef *, bool>;
 
 struct pair<double, double>;
 
+struct shared_ptr<PCBitmap> {
+    struct PCBitmap *_field1;
+    struct __shared_weak_count *_field2;
+};
+
+struct unique_ptr<HGMetalRenderPipelineStateCache, std::__1::default_delete<HGMetalRenderPipelineStateCache>> {
+    struct __compressed_pair<HGMetalRenderPipelineStateCache *, std::__1::default_delete<HGMetalRenderPipelineStateCache>> {
+        struct HGMetalRenderPipelineStateCache *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> {
+    struct __compressed_pair<PCBitmapRep *, std::__1::default_delete<PCBitmapRep>> {
+        struct PCBitmapRep *_field1;
+    } _field1;
+};
+
 struct vector<FunctionParams, std::__1::allocator<FunctionParams>> {
     struct FunctionParams *_field1;
     struct FunctionParams *_field2;
@@ -1207,6 +1318,14 @@ struct vector<PCVector3<double>, std::__1::allocator<PCVector3<double>>> {
     } _field3;
 };
 
+struct vector<POAALineVertex, std::__1::allocator<POAALineVertex>> {
+    struct POAALineVertex *__begin_;
+    struct POAALineVertex *__end_;
+    struct __compressed_pair<POAALineVertex *, std::__1::allocator<POAALineVertex>> {
+        struct POAALineVertex *__value_;
+    } __end_cap_;
+};
+
 struct vector<POAwesomeType::Vertex, std::__1::allocator<POAwesomeType::Vertex>> {
     struct Vertex *_field1;
     struct Vertex *_field2;
@@ -1215,12 +1334,36 @@ struct vector<POAwesomeType::Vertex, std::__1::allocator<POAwesomeType::Vertex>>
     } _field3;
 };
 
+struct vector<POHitIdVertex, std::__1::allocator<POHitIdVertex>> {
+    struct POHitIdVertex *__begin_;
+    struct POHitIdVertex *__end_;
+    struct __compressed_pair<POHitIdVertex *, std::__1::allocator<POHitIdVertex>> {
+        struct POHitIdVertex *__value_;
+    } __end_cap_;
+};
+
 struct vector<POKeypoint, std::__1::allocator<POKeypoint>> {
     struct POKeypoint *__begin_;
     struct POKeypoint *__end_;
     struct __compressed_pair<POKeypoint *, std::__1::allocator<POKeypoint>> {
         struct POKeypoint *__value_;
     } __end_cap_;
+};
+
+struct vector<POSolidVertex, std::__1::allocator<POSolidVertex>> {
+    struct POSolidVertex *_field1;
+    struct POSolidVertex *_field2;
+    struct __compressed_pair<POSolidVertex *, std::__1::allocator<POSolidVertex>> {
+        struct POSolidVertex *_field1;
+    } _field3;
+};
+
+struct vector<POTextureVertex, std::__1::allocator<POTextureVertex>> {
+    struct POTextureVertex *_field1;
+    struct POTextureVertex *_field2;
+    struct __compressed_pair<POTextureVertex *, std::__1::allocator<POTextureVertex>> {
+        struct POTextureVertex *_field1;
+    } _field3;
 };
 
 struct vector<PSHVertexData, std::__1::allocator<PSHVertexData>> {
@@ -1247,12 +1390,18 @@ struct vector<double, std::__1::allocator<double>> {
     } _field3;
 };
 
+struct vector<float __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> {
+    struct __compressed_pair<float * __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> {
+        void *_field1;
+    } **_field1;
+};
+
 struct vector<int, std::__1::allocator<int>> {
-    int *_field1;
-    int *_field2;
+    int *__begin_;
+    int *__end_;
     struct __compressed_pair<int *, std::__1::allocator<int>> {
-        int *_field1;
-    } _field3;
+        int *__value_;
+    } __end_cap_;
 };
 
 struct vector<std::__1::pair<OZChannelRef *, bool>, std::__1::allocator<std::__1::pair<OZChannelRef *, bool>>> {
@@ -1271,12 +1420,25 @@ struct vector<std::__1::pair<double, double>, std::__1::allocator<std::__1::pair
     } _field3;
 };
 
+struct vector<unsigned short, std::__1::allocator<unsigned short>> {
+    unsigned short *__begin_;
+    unsigned short *__end_;
+    struct __compressed_pair<unsigned short *, std::__1::allocator<unsigned short>> {
+        unsigned short *__value_;
+    } __end_cap_;
+};
+
 struct vector<void *, std::__1::allocator<void *>> {
     void **__begin_;
     void **__end_;
     struct __compressed_pair<void **, std::__1::allocator<void *>> {
         void **__value_;
     } __end_cap_;
+};
+
+struct weak_ptr<PCImage> {
+    struct PCImage *_field1;
+    struct __shared_weak_count *_field2;
 };
 
 #pragma mark Typedef'd Structures
@@ -1388,6 +1550,38 @@ typedef struct vector<PCVector3<double>, std::__1::allocator<PCVector3<double>>>
     } _field3;
 } vector_ced1dec3;
 
+typedef struct vector<POAALineVertex, std::__1::allocator<POAALineVertex>> {
+    struct POAALineVertex *__begin_;
+    struct POAALineVertex *__end_;
+    struct __compressed_pair<POAALineVertex *, std::__1::allocator<POAALineVertex>> {
+        struct POAALineVertex *__value_;
+    } __end_cap_;
+} vector_b7b7eb50;
+
+typedef struct vector<POHitIdVertex, std::__1::allocator<POHitIdVertex>> {
+    struct POHitIdVertex *__begin_;
+    struct POHitIdVertex *__end_;
+    struct __compressed_pair<POHitIdVertex *, std::__1::allocator<POHitIdVertex>> {
+        struct POHitIdVertex *__value_;
+    } __end_cap_;
+} vector_a5783ac0;
+
+typedef struct vector<POSolidVertex, std::__1::allocator<POSolidVertex>> {
+    struct POSolidVertex *_field1;
+    struct POSolidVertex *_field2;
+    struct __compressed_pair<POSolidVertex *, std::__1::allocator<POSolidVertex>> {
+        struct POSolidVertex *_field1;
+    } _field3;
+} vector_38143739;
+
+typedef struct vector<POTextureVertex, std::__1::allocator<POTextureVertex>> {
+    struct POTextureVertex *_field1;
+    struct POTextureVertex *_field2;
+    struct __compressed_pair<POTextureVertex *, std::__1::allocator<POTextureVertex>> {
+        struct POTextureVertex *_field1;
+    } _field3;
+} vector_5814a728;
+
 typedef struct vector<bool, std::__1::allocator<bool>> {
     unsigned long long *_field1;
     unsigned long long _field2;
@@ -1404,6 +1598,12 @@ typedef struct vector<double, std::__1::allocator<double>> {
     } _field3;
 } vector_8f06c10f;
 
+typedef struct vector<float __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> {
+    struct __compressed_pair<float * __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> {
+        void *_field1;
+    } **_field1;
+} vector_8451d03a;
+
 typedef struct vector<std::__1::pair<double, double>, std::__1::allocator<std::__1::pair<double, double>>> {
     struct pair<double, double> *_field1;
     struct pair<double, double> *_field2;
@@ -1411,4 +1611,12 @@ typedef struct vector<std::__1::pair<double, double>, std::__1::allocator<std::_
         struct pair<double, double> *_field1;
     } _field3;
 } vector_3830c793;
+
+typedef struct vector<unsigned short, std::__1::allocator<unsigned short>> {
+    unsigned short *__begin_;
+    unsigned short *__end_;
+    struct __compressed_pair<unsigned short *, std::__1::allocator<unsigned short>> {
+        unsigned short *__value_;
+    } __end_cap_;
+} vector_8d85e9cb;
 

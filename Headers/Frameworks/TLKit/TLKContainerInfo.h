@@ -66,6 +66,7 @@
 - (void)removeItemLaneInfoRecordsObject:(id)arg1;
 - (void)addItemLaneInfoRecordsObject:(id)arg1;
 @property(copy, nonatomic) NSArray *itemLaneInfoRecords;
+- (id)nonWrappingLayoutContext;
 - (void)removeSubcontainerInfoRecordsObject:(id)arg1;
 - (void)addSubcontainerInfoRecordsObject:(id)arg1;
 @property(copy, nonatomic) NSSet *subcontainerInfoRecords;

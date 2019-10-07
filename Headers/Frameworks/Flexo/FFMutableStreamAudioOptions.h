@@ -18,8 +18,8 @@
 - (void)setAudioEffects:(id)arg1;
 - (void)setPrerollScopeRange:(CDStruct_e83c9415)arg1;
 - (void)setLeadingPrimeDuration:(CDStruct_1b6d18a9)arg1 trailingPrimeDuration:(CDStruct_1b6d18a9)arg2;
-- (void)clearStreamAudioFlagsForPlayObject:(id)arg1;
-- (void)setStreamAudioFlags:(unsigned int)arg1 withMask:(unsigned int)arg2 forPlayObject:(id)arg3;
+- (void)clearStreamAudioFlagsForObject:(id)arg1;
+- (void)setStreamAudioFlags:(unsigned int)arg1 withMask:(unsigned int)arg2 forObject:(id)arg3;
 - (void)setPlayObjectsWithOptions:(id)arg1;
 - (void)setIndirectPlayObjects:(id)arg1;
 - (void)setPlayObjects:(id)arg1;

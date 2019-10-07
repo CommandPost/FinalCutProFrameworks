@@ -9,11 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface FFHGSimpleObjectHolder : NSObject
 {
-    struct HGObject *_obj;
+    // Error parsing type: ^{HGObject=^^?{atomic<unsigned int>=AI}}, name: _obj
 }
 
 - (void)dealloc;
-- (id)initWithHGObject:(struct HGObject *)arg1;
+-     // Error parsing type: @24@0:8^{HGObject=^^?{atomic<unsigned int>=AI}}16, name: initWithHGObject:
 
 @end
 

@@ -13,7 +13,11 @@
 __attribute__((visibility("hidden")))
 @interface FFAssetCameraLUTMonitor : NSObject <PAELUTRepositoryControllerObserver>
 {
+    NSMutableSet *_allItems;
+    NSMutableSet *_insertedItems;
+    NSMutableSet *_removedItems;
     NSMutableSet *_changedItems;
+    NSMutableSet *_movedItems;
 }
 
 - (void)controller:(id)arg1 didMoveItem:(id)arg2 toItem:(id)arg3;

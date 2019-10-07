@@ -6,13 +6,13 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class FFMedia, NSArray, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFMediaSourceDescription : NSObject <NSCoding, NSCopying>
+@interface FFMediaSourceDescription : NSObject <NSSecureCoding, NSCopying>
 {
     FFMedia *m_media;
     NSString *m_sourceKey;
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 + (id)defaultAudioChannelRoutingMapForNumChannels:(int)arg1;
 + (BOOL)isEqualAudioChannelRoutingMaps:(id)arg1 compare:(id)arg2;
 + (BOOL)isEqualChannelMaps:(id)arg1 compare:(id)arg2;
++ (BOOL)supportsSecureCoding;
 + (id)descriptionWithMedia:(id)arg1 sourceKey:(id)arg2 channelIndex:(int)arg3;
 + (id)descriptionWithMedia:(id)arg1 sourceKey:(id)arg2 channelMap:(id)arg3;
 + (id)descriptionWithMedia:(id)arg1 sourceKey:(id)arg2;

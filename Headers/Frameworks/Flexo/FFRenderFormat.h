@@ -24,6 +24,7 @@
 + (void)releaseSharedInstance;
 - (id)renderPropsForVideoProps:(id)arg1 mismatchColorSpacePolicy:(int)arg2;
 - (id)renderPropsForVideoProps:(id)arg1;
+- (id)thumbnailRenderPropsForTransferFunction:(int)arg1;
 - (id)description;
 - (BOOL)renderFromOriginalMedia;
 - (id)renderProps;

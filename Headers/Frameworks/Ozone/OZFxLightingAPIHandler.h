@@ -14,7 +14,7 @@
 
 @interface OZFxLightingAPIHandler : NSObject <PROAPIObject, FxLightingAPI, FxLightingAPI_v2>
 {
-    struct OZFxPlugSharedBase *_plugin;
+    // Error parsing type: ^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}B@BBQB{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}, name: _plugin
 }
 
 - (BOOL)conformsToProtocol:(id)arg1 version:(unsigned int)arg2;
@@ -24,7 +24,7 @@
 - (unsigned long long)numberOfLightsAtTime:(double)arg1;
 - (void)endLightAccess;
 - (void)beginLightAccess:(const struct OZRenderState *)arg1;
-- (id)initWithPlugin:(struct OZFxPlugSharedBase *)arg1;
+-     // Error parsing type: @24@0:8^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}B@BBQB{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}16, name: initWithPlugin:
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

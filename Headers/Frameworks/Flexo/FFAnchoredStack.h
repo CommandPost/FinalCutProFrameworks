@@ -14,6 +14,7 @@
     FFAnchoredObject *_activeVariant;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 @property(retain, nonatomic) FFAnchoredObject *activeVariant; // @synthesize activeVariant=_activeVariant;
 @property(retain, nonatomic) NSArray *stackItems; // @synthesize stackItems=_stackItems;
@@ -117,6 +118,7 @@
 - (void)_processDeferredUpdates;
 - (BOOL)_deferUpdates;
 - (void)_setDeferUpdates:(BOOL)arg1;
+- (BOOL)isMissingCameraLUT;
 - (BOOL)supportsLogProcessing;
 - (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;

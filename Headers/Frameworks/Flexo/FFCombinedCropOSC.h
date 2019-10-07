@@ -30,8 +30,10 @@ __attribute__((visibility("hidden")))
     BOOL _ignoreChangedCropType;
     NSMutableArray *_channelsToCheckForkeyFramesCrop;
     NSMutableArray *_channelsToCheckForkeyFramesTrim;
+    struct PCProcrastinatedDispatch_t _updateKeyframesProcrastDisp;
 }
 
+- (id).cxx_construct;
 - (BOOL)isCropOSC;
 - (void)getActiveOSCsWithID:(const struct PCUUID *)arg1 inList:(list_50fb8e68 *)arg2;
 - (void)ensureIntrinsic;

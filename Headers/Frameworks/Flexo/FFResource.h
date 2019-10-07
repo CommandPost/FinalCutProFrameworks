@@ -6,18 +6,19 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class NSMutableDictionary, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFResource : NSObject <NSCoding>
+@interface FFResource : NSObject <NSSecureCoding>
 {
     NSURL *_url;
     NSObject *_indexValue;
     NSMutableDictionary *_md;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)indexValueForURL:(id)arg1;
 + (id)homeRelativeURLForPath:(id)arg1;
 + (id)homeURL;

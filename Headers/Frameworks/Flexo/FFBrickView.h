@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSColor *_selectedColor;
 }
 
++ (BOOL)supportsSecureCoding;
 + (void)initialize;
 @property(nonatomic) BOOL selected; // @synthesize selected=_selected;
 @property(copy, nonatomic) NSColor *selectedColor; // @synthesize selectedColor=_selectedColor;

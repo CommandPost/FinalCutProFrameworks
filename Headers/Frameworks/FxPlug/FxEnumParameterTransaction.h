@@ -18,6 +18,7 @@
 }
 
 + (BOOL)supportsSecureCoding;
++ (id)enumTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2;
 @property unsigned int value; // @synthesize value;
 @property unsigned int defaultValue; // @synthesize defaultValue;
 @property(retain) NSArray *entries; // @synthesize entries;
@@ -31,7 +32,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(unsigned int)arg3 menuEntries:(id)arg4 parameterFlags:(unsigned int)arg5 transactionType:(int)arg6;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(unsigned int)arg3 menuEntries:(id)arg4 parameterFlags:(unsigned int)arg5 transactionType:(int)arg6 transactionID:(unsigned long long)arg7;
 
 @end
 

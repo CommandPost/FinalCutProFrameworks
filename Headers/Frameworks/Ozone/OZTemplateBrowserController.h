@@ -8,11 +8,10 @@
 
 #import "NSSplitViewDelegate.h"
 #import "NSTouchBarDelegate.h"
-#import "OZCurrentVirtualScreenDelegate.h"
 
-@class LKBox, LKButton, LKPopUpButton, LKScrollView, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSArray, NSButton, NSImageView, NSStackView, NSString, OZSplitView, OZTBSearchFieldDelegate, OZTBTextFieldDelegate, OZTimecodeFormatter, QTMovieView, TBOutlineView, TMMatrix, TMScrollView, TMTemplate;
+@class AVPlayerView, LKBox, LKButton, LKPopUpButton, LKScrollView, LKSearchField, LKSegmentedControl, LKSlider, LKTextField, NSArray, NSButton, NSImageView, NSStackView, NSString, OZSplitView, OZTBSearchFieldDelegate, OZTBTextFieldDelegate, OZTimecodeFormatter, TBOutlineView, TMMatrix, TMScrollView, TMTemplate;
 
-@interface OZTemplateBrowserController : NSWindowController <NSTouchBarDelegate, NSSplitViewDelegate, OZCurrentVirtualScreenDelegate>
+@interface OZTemplateBrowserController : NSWindowController <NSTouchBarDelegate, NSSplitViewDelegate>
 {
     TBOutlineView *collectionTableView;
     LKPopUpButton *formatPopUp;
@@ -20,7 +19,7 @@
     LKScrollView *categoryScrollView;
     LKBox *templateDescriptionTextView;
     OZSplitView *splitView;
-    QTMovieView *movieView;
+    AVPlayerView *movieView;
     LKTextField *templateProjectTypeTextField;
     LKTextField *templateWidthTextField;
     LKTextField *templateHeightTextField;
@@ -30,6 +29,7 @@
     LKTextField *templateFieldOrderTextField;
     LKTextField *templatePARTextField;
     LKTextField *template360ProjectModeTextField;
+    LKTextField *templateColorProcessingTextField;
     LKSearchField *searchField;
     LKSegmentedControl *collectionSegmentedControl;
     LKButton *closeButton;
@@ -46,6 +46,7 @@
     LKPopUpButton *_durationTypePopUp;
     LKPopUpButton *_themePopUpButton;
     LKPopUpButton *_360ProjectModePopUpButton;
+    LKPopUpButton *_colorProcessingPopUp;
     NSImageView *_smallIcon;
     NSImageView *_bigIcon;
     TMMatrix *templateMatrix;
@@ -66,17 +67,16 @@
     OZTBSearchFieldDelegate *_sfDelegate;
     BOOL _observersRegistered;
     NSString *_selectedTheme;
+    id _playerObserver;
     NSButton *_dfrProjectBrowserButtonOpen;
     NSButton *_dfrProjectBrowserButtonCancel;
     NSButton *_dfrProjectBrowserButtonOpenOther;
     NSButton *_dfrProjectBrowserButtonCreateProjectFromFile;
-    int currentVirtualScreen;
 }
 
 + (id)sharedController;
 + (BOOL)isInitialized;
 + (void)closeBrowserIfOpen;
-@property int currentVirtualScreen; // @synthesize currentVirtualScreen;
 - (id)touchBar:(id)arg1 makeItemForIdentifier:(id)arg2;
 - (void)_callSelectorWithShortIdentifier:(id)arg1;
 - (void)_onDFRCreateProjectFromFile:(id)arg1;
@@ -131,6 +131,7 @@
 - (id)selectedTheme;
 - (id)selectedCollection;
 - (id)selectedFormat;
+- (void)setPlayerObserver:(id)arg1;
 - (void)setPreviewMovieForPath:(id)arg1;
 - (void)refreshTemplatePreview;
 - (void)refreshTemplateList:(BOOL)arg1;

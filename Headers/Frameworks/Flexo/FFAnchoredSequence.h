@@ -19,11 +19,11 @@
 #import "FFOrganizerClassTypeProtocol.h"
 #import "FFSkimmableItemProtocol.h"
 #import "FFSkimmableProtocol.h"
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 @class FFAnchoredGeneratorComponent, FFAnchoredObject, FFAudioLoudnessManager, FFProject, FFRenderFormat, FFSequenceInfo, FFShareKeyConverter, FFStoryTimelinePresentation, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSSet, NSString;
 
-@interface FFAnchoredSequence : FFMediaState <FFLibraryCocoaScripting, NSCoding, FFDataModelProtocol, FFCopyPasteProtocol, FFSkimmableProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, FFSkimmableItemProtocol, FFAnchoredParentProtocol, FFEffectContainerProtocol, FFMetadataActionProtocol, FFOrganizerClassTypeProtocol>
+@interface FFAnchoredSequence : FFMediaState <FFLibraryCocoaScripting, NSSecureCoding, FFDataModelProtocol, FFCopyPasteProtocol, FFSkimmableProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, FFSkimmableItemProtocol, FFAnchoredParentProtocol, FFEffectContainerProtocol, FFMetadataActionProtocol, FFOrganizerClassTypeProtocol>
 {
     FFRenderFormat *_renderFormat;
     FFAnchoredObject *_primaryObject;
@@ -99,6 +99,7 @@
 + (BOOL)processingUpdates;
 + (void)processingUpdates:(BOOL)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)newClipFromSpannedClips:(id)arg1;
 + (id)newClipRefWithMedia:(id)arg1 displayName:(id)arg2 mediaEvent:(id)arg3;
 + (id)newClipRefWithMedia:(id)arg1 mediaEvent:(id)arg2;
@@ -315,6 +316,7 @@
 - (id)allContainedItems;
 - (id)containedItems;
 - (id)supportedLogProcessingModes;
+- (BOOL)isMissingCameraLUT;
 - (BOOL)supportsLogProcessing;
 - (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;
@@ -444,11 +446,11 @@
 - (void)_performAlignCaptionToFrameRateOperationForCaptionsAdded:(id)arg1 modified:(id)arg2;
 - (void)processCaptionChanges;
 - (void)notifyAnchoredObjectsDependingOnStartTimeOrProjectNameOfPossibleChange;
+- (BOOL)hasStartChangedDuringAction;
 - (BOOL)hasDurationChangedDuringAction;
 - (void)_endStopInvalidationsFromCopy;
 - (void)_beginStopInvalidationsFromCopy;
 - (void)_actionBeginEditing;
-- (BOOL)performActionWithName:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)modifySequenceAndUpdateModDate:(BOOL)arg1 withoutUndo:(CDUnknownBlockType)arg2;
 - (void)endEditing;
 - (void)endEditing:(BOOL)arg1;
@@ -597,8 +599,8 @@
 - (void)setOwnedClipName:(id)arg1;
 - (id)ownedClipName;
 - (void)_switchActiveCaptionRoleToFirstRoleInCaptions:(id)arg1;
-- (id)_duplicateCaptions:(id)arg1 toLanguageWithIdentifier:(id)arg2;
-- (id)actionDuplicateCaptions:(id)arg1 toLanguageIdentifier:(id)arg2;
+- (id)_duplicateCaptions:(id)arg1 toLanguageWithIdentifier:(id)arg2 andCaptionFormat:(id)arg3;
+- (id)actionDuplicateCaptions:(id)arg1 toLanguageIdentifier:(id)arg2 andCaptionFormat:(id)arg3;
 - (BOOL)actionSetCaptionPlaybackEnabled:(BOOL)arg1;
 - (BOOL)operationSetCaptionPlaybackEnabled:(BOOL)arg1;
 - (BOOL)actionSetCaptionPlaybackRoleUID:(id)arg1;
@@ -844,7 +846,7 @@
 - (BOOL)operationAnchorItem:(id)arg1 withAnchorInLocalTime:(CDStruct_1b6d18a9)arg2 toItem:(id)arg3 atItemTime:(CDStruct_1b6d18a9)arg4 inContainer:(id)arg5 inContainerAnchorLane:(long long)arg6 alignToParent:(BOOL)arg7 error:(id *)arg8;
 - (id)_parentForAnchor:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 inContainer:(id)arg3 lastEnd:(CDStruct_1b6d18a9 *)arg4;
 - (id)parentForAnchorAtTime:(CDStruct_1b6d18a9)arg1 inContainer:(id)arg2 lastEnd:(CDStruct_1b6d18a9 *)arg3;
-- (void)applyAudioOnlyBelowSpineConstraintForItem:(id)arg1;
+- (void)applyAudioOnlyBelowSpineConstraintIfNeededForItem:(id)arg1;
 - (BOOL)_deleteAnchoredObjects:(id)arg1 rootItem:(id)arg2 preserveTime:(BOOL)arg3 preserveAnchors:(BOOL)arg4 playhead:(CDStruct_1b6d18a9 *)arg5 error:(id *)arg6;
 - (CDStruct_1b6d18a9)_calculatePlayheadOffsetForDeletion:(id)arg1 rootItem:(id)arg2 preserveTime:(BOOL)arg3 playhead:(CDStruct_1b6d18a9)arg4;
 - (BOOL)actionLiftAnchoredEdits:(id)arg1 rootItem:(id)arg2 error:(id *)arg3;
@@ -959,6 +961,7 @@
 - (BOOL)alertAndGetResponseToExternalLibraryClipOrAsssetRefs:(id *)arg1;
 - (void)didResolveExternalEffects:(BOOL)arg1;
 - (BOOL)resolveExternalEffects:(long long)arg1;
+- (void)displayHDRContentInSDRProjectsAlertDialog;
 - (BOOL)displayConsumerLowPerformance4KWarningDialog;
 - (BOOL)displayClipRefsNeedCopyingToLibraryAlertDialog:(long long *)arg1 clipRefs:(id)arg2 assetRefs:(id)arg3 clipRefInDestLibrary:(id)arg4;
 - (BOOL)displayConsolidatedEffectsNeedCopyingToLibraryAlertDialog:(long long *)arg1;
@@ -1107,6 +1110,9 @@
 - (BOOL)operationChangeEffectForTransitionObjectsOnSpineObject:(id)arg1 spineObjectsToAddTransition:(id)arg2 effects:(id)arg3 transitionOverlapType:(int)arg4 error:(id *)arg5;
 - (BOOL)actionToggleTransitionNilSourceFillTypeType:(id)arg1 error:(id *)arg2;
 - (BOOL)actionToggleEnabled:(id)arg1 error:(id *)arg2;
+- (void)performWriteUsingBlock:(CDUnknownBlockType)arg1;
+- (void)performReadUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)performActionWithName:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, nonatomic) FFProject *project; // @dynamic project;

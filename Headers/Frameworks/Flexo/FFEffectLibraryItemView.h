@@ -21,10 +21,12 @@ __attribute__((visibility("hidden")))
     CALayer *_iconLayer;
     CATextLayer *_nameLayer;
     BOOL _requestedIcon;
+    BOOL _hasSuperview;
 }
 
 + (void)setupLayoutConstants:(id)arg1;
 + (id)textLayerFont;
+@property(nonatomic) BOOL hasSuperview; // @synthesize hasSuperview=_hasSuperview;
 @property(readonly) CALayer *skimmingLayer; // @synthesize skimmingLayer=_iconLayer;
 @property(nonatomic) BOOL selected; // @synthesize selected=_selected;
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
@@ -55,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)setEmphasized:(BOOL)arg1;
 - (BOOL)isFlipped;
 - (void)loadIcon;
+- (void)viewDidMoveToSuperview;
 - (void)viewWillDraw;
 - (void)dealloc;
 - (void)updateStringIfNeeded;

@@ -17,13 +17,12 @@
 }
 
 - (void)layoutSublayers;
-@property(nonatomic) int roundedDirection;
+@property(nonatomic) int roundedVerticalSide;
 - (void)setCornerRadius:(double)arg1;
 @property(nonatomic) BOOL modifiedAudio;
 @property(nonatomic) BOOL showTrailingEdge;
 @property(nonatomic) BOOL showLeadingEdge;
 - (void)_updateEdge;
-@property(nonatomic) double edgeOffset;
 @property(nonatomic) BOOL hideOverlay;
 - (void)setDelegate:(id)arg1;
 - (id)init;

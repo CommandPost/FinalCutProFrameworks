@@ -13,6 +13,9 @@ __attribute__((visibility("hidden")))
     int _numSharing;
 }
 
++ (id)copyStreamSharingCacheForLibrary:(id)arg1;
++ (void)enableStreamSharing:(BOOL)arg1 forLibrary:(id)arg2;
+- (id)object;
 - (void)_setupSources;
 - (void)dealloc;
 - (id)initWithProvider:(id)arg1 numSharing:(int)arg2;

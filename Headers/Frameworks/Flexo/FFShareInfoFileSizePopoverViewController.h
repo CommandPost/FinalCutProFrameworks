@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     double _screenHeight;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(nonatomic) double screenHeight; // @synthesize screenHeight=_screenHeight;
 @property(retain, nonatomic) NSLayoutConstraint *stackViewWidthConstraint; // @synthesize stackViewWidthConstraint=_stackViewWidthConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *overflowTextFieldBottomConstraint; // @synthesize overflowTextFieldBottomConstraint=_overflowTextFieldBottomConstraint;

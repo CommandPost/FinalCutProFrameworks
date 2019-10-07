@@ -17,7 +17,7 @@
 - (id)copy;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 sliderMin:(double)arg6 sliderMax:(double)arg7 sliderDelta:(double)arg8 parameterFlags:(unsigned int)arg9 transactionType:(int)arg10;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 sliderMin:(double)arg6 sliderMax:(double)arg7 sliderDelta:(double)arg8 parameterFlags:(unsigned int)arg9 transactionType:(int)arg10 transactionID:(unsigned long long)arg11;
 
 @end
 

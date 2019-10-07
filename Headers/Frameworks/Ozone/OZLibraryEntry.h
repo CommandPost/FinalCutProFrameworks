@@ -44,6 +44,9 @@
 + (id)getDefaultFolderIcon;
 + (void)maybeInitThumbnailCache;
 + (void)loadIcons;
+- (id)previewMovieURL;
+- (BOOL)path:(id)arg1 isOfType:(id)arg2;
+- (id)stringByResolvingAliasInPath:(id)arg1;
 - (BOOL)checkForModifiedFolders;
 - (void)reReadSubDirectoryContents;
 - (void)reReadDirectoryContents;
@@ -91,12 +94,9 @@
 - (id)getPreviewPath;
 - (id)getPreviewName;
 - (id)previewAVPlayer;
-- (id)fullPreviewMovie;
-- (id)getPreviewMovie;
 - (id)getPreviewImage;
 - (id)getSmallPreviewIconForEntry:(BOOL)arg1;
 - (id)getIconForEntry:(struct CGSize)arg1 retainIt:(char *)arg2 forController:(id)arg3;
-- (id)getMovie;
 - (BOOL)getPasteEntries:(struct OZPasteList *)arg1;
 - (void)setParent:(id)arg1;
 - (id)getParent;
@@ -104,8 +104,6 @@
 - (id)getThumbnailPath;
 - (id)getDisplayPath;
 - (id)getAbsolutePath:(BOOL)arg1;
-- (BOOL)path:(id)arg1 isOfType:(id)arg2;
-- (id)stringByResolvingAliasInPath:(id)arg1;
 - (id)getAbsolutePath:(BOOL)arg1 rootFlags:(unsigned int)arg2;
 - (void)delete;
 - (BOOL)deleteSelected;

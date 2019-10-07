@@ -6,13 +6,13 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface FFFaceDetectionInfoCollection : NSObject <NSCopying, NSCoding>
+@interface FFFaceDetectionInfoCollection : NSObject <NSCopying, NSSecureCoding>
 {
     int numFrames;
     CDStruct_1b6d18a9 seqStartTime;
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     int GofSize;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)findOneLargeAndCentralAmongFaces:(id)arg1;
 + (id)findLargestAmongFaces:(id)arg1;
 + (id)faceDetectionInfoCollectionForObject:(id)arg1;

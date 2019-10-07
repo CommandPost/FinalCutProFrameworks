@@ -17,7 +17,7 @@
 }
 
 + (BOOL)supportsSecureCoding;
-+ (id)stringTransactionWithParameterID:(unsigned int)arg1;
++ (id)stringTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2;
 @property(retain) NSString *value; // @synthesize value;
 @property(retain) NSString *defaultValue; // @synthesize defaultValue;
 - (void)setValueFromPlugin:(void *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
@@ -29,7 +29,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 stringValue:(id)arg3 parameterFlags:(unsigned int)arg4 transactionType:(int)arg5;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 stringValue:(id)arg3 parameterFlags:(unsigned int)arg4 transactionType:(int)arg5 transactionID:(unsigned long long)arg6;
 
 @end
 

@@ -6,10 +6,10 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
 __attribute__((visibility("hidden")))
-@interface _REDClipMD5Wrapper : NSObject <NSCoding>
+@interface _REDClipMD5Wrapper : NSObject <NSSecureCoding>
 {
     int _colorSpace;
     int _gammaCurve;
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _ISO;
 }
 
++ (BOOL)supportsSecureCoding;
 @property(readonly) double exposure; // @synthesize exposure=_exposure;
 @property(readonly) double brightness; // @synthesize brightness=_brightness;
 @property(readonly) double contrast; // @synthesize contrast=_contrast;

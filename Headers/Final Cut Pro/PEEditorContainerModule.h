@@ -106,6 +106,7 @@
 - (void)_pauseSkimming;
 - (void)_forwardSelectorToPlayer:(SEL)arg1 withObject:(id)arg2;
 - (id)contentViewMenuSegmentedControlAndIndex:(long long *)arg1;
+- (void)_clearSelectedItems;
 - (void)_updateIndexButtonDiamondIndicator;
 - (void)_updateWindowControllerDocument;
 - (void)_setProjectRelatedControlsEnabled:(BOOL)arg1;
@@ -150,7 +151,7 @@
 - (void)startNUpViewerWithMedia:(id)arg1 contexts:(id)arg2 effectCounts:(id)arg3;
 - (void)openSettingsWithModule:(id)arg1;
 - (void)makeSequenceActive:(id)arg1 withTime:(CDStruct_1b6d18a9)arg2;
-- (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_5c5366e1)arg2;
+- (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2;
 - (void)performAction:(id)arg1 withProject:(id)arg2 andSelection:(id)arg3;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;

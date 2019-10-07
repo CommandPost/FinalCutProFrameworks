@@ -6,25 +6,30 @@
 
 #import "NSOperation.h"
 
-@class PCChangeLog, TLKTimelineView;
+#import "TLKOperationPipingDestination.h"
+#import "TLKOperationPipingSource.h"
 
-@interface TLKItemLayerContentsOperation : NSOperation
+@class PCChangeLog, TLKLayoutDatabase, TLKTimelineView;
+
+@interface TLKItemLayerContentsOperation : NSOperation <TLKOperationPipingSource, TLKOperationPipingDestination>
 {
     PCChangeLog *_inputChangeLog;
     PCChangeLog *_outputChangeLog;
+    TLKLayoutDatabase *_database;
     TLKTimelineView *_timelineView;
 }
 
 @property(nonatomic) TLKTimelineView *timelineView; // @synthesize timelineView=_timelineView;
-@property(readonly, nonatomic) PCChangeLog *outputChangeLog; // @synthesize outputChangeLog=_outputChangeLog;
-@property(readonly, nonatomic) PCChangeLog *inputChangeLog; // @synthesize inputChangeLog=_inputChangeLog;
+@property(retain, nonatomic) TLKLayoutDatabase *database; // @synthesize database=_database;
+@property(readonly) PCChangeLog *outputChangeLog; // @synthesize outputChangeLog=_outputChangeLog;
+@property(copy) PCChangeLog *inputChangeLog; // @synthesize inputChangeLog=_inputChangeLog;
 - (void)main;
 - (id)_expandItemsToItemFragments:(id)arg1;
 - (id)_allItemFragmentsWithUpdatedItems:(id)arg1;
 - (id)modifiedItemFragments;
 - (void)_findThroughEditDependenciesForItems:(id)arg1 intoSet:(id)arg2;
 - (void)dealloc;
-- (id)initWithChangeLog:(id)arg1 timelineView:(id)arg2;
+- (id)init;
 
 @end
 

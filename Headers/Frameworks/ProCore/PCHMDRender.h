@@ -70,6 +70,7 @@
 - (void)waitForHMDInitialization;
 - (void)postInit:(BOOL)arg1;
 - (void)initializeHMD;
+- (void)notifyNewHMD;
 - (void)_updateCumulativeStats:(struct PCHMDStats *)arg1;
 - (void)reinitializeHMD;
 - (void)dealloc;

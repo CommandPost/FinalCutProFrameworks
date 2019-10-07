@@ -40,6 +40,8 @@
 - (BOOL)storesCollapsedStateForChannel:(struct OZChannelBase *)arg1;
 - (BOOL)willChangingValueKeyframe:(OZViewController *)arg1;
 - (void)select:(BOOL)arg1 forChan:(struct OZChannelBase *)arg2;
+- (void)didChangeChannelGridEnd:(struct OZChannelBase *)arg1;
+- (void)aboutToChangeChannelGridStart:(struct OZChannelBase *)arg1 inSliderAction:(BOOL)arg2;
 - (void)stopPlaybackForChannel:(struct OZChannelBase *)arg1;
 - (void)setCurrentTime:(const CDStruct_1b6d18a9 *)arg1 forChannel:(struct OZChannelBase *)arg2;
 - (CDStruct_1b6d18a9)currentTimeForChannel:(struct OZChannelBase *)arg1;

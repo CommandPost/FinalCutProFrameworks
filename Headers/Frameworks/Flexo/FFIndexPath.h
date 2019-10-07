@@ -6,15 +6,16 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSCopying.h"
+#import "NSSecureCoding.h"
 
-@interface FFIndexPath : NSObject <NSCopying, NSCoding>
+@interface FFIndexPath : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long *_indexes;
     unsigned long long _length;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)indexPathWithIndexes:(unsigned long long *)arg1 length:(unsigned long long)arg2;
 + (id)indexPathWithIndex:(unsigned long long)arg1;
 + (id)indexPathWithString:(id)arg1;

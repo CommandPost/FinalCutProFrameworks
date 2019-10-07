@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
     FFCHObservableFolder *_channelFolder;
     NSMutableArray *_channelsToCheckForkeyFrames;
     BOOL _resetButtonHidden;
+    struct PCProcrastinatedDispatch_t _updateKeyframesProcrastDisp;
 }
 
+- (id).cxx_construct;
 - (void)ensureIntrinsic;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (void)keyFramePreviousAddNext:(id)arg1;

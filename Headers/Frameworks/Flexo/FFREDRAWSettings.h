@@ -58,10 +58,11 @@ __attribute__((visibility("hidden")))
         unsigned int isDirty:1;
     } _state;
     FFPlayer *_player;
-    BOOL _cachedScrubHQ;
+    int _cachedScrubSizeMode;
 }
 
 + (id)shared;
+@property(nonatomic) int cachedScrubSizeMode; // @synthesize cachedScrubSizeMode=_cachedScrubSizeMode;
 @property(nonatomic) LKTextField *itemLabel; // @synthesize itemLabel=_itemLabel;
 @property(nonatomic) NSImageView *itemIcon; // @synthesize itemIcon=_itemIcon;
 @property(nonatomic) LKPopUpButton *presetsControl; // @synthesize presetsControl=_presetsControl;

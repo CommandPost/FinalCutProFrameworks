@@ -6,13 +6,16 @@
 
 #import <Flexo/FFImageRep.h>
 
+#import "FFNewHGGLTextDetachedProtocol.h"
+
 @class FFTextureBuffer;
 
-@interface FFImageRepFFTextureBuffer : FFImageRep
+@interface FFImageRepFFTextureBuffer : FFImageRep <FFNewHGGLTextDetachedProtocol>
 {
     FFTextureBuffer *_buffer;
 }
 
+- (struct HGGLTexture *)newHGTextureWithDetachFromRenderer:(id)arg1;
 - (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
 - (int)virtualScreen;
 - (id)buffer;

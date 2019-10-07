@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     void *_FFVideoScopesHistogramViewPrivate;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)_initVideoScopesHistogramView;
 - (struct FFVideoScopesHistogramViewPrivate *)_Private;
 - (id)accessibilityAttributeValue:(id)arg1;

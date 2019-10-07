@@ -8,13 +8,14 @@
 
 #import "NSCopying.h"
 
-@class NSMutableArray, NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary, PCDispatchLock;
 
 @interface PCChangeLog : NSObject <NSCopying>
 {
     NSMutableArray *_changeLogRecords;
     BOOL _locked;
     NSMutableDictionary *_changesByTable;
+    PCDispatchLock *_dispatchLock;
 }
 
 + (id)changeLogWithUpdatedObjects:(id)arg1 inTable:(id)arg2;
@@ -22,9 +23,10 @@
 + (id)changeLogWithInsertedObjects:(id)arg1 inTable:(id)arg2;
 + (id)changeLogWithInsertedObjects:(id)arg1 deletedObjects:(id)arg2 updatedObjects:(id)arg3 inTable:(id)arg4;
 + (id)changeLog;
+@property(retain, nonatomic) PCDispatchLock *dispatchLock; // @synthesize dispatchLock=_dispatchLock;
 @property(retain, nonatomic) NSMutableDictionary *changesByTable; // @synthesize changesByTable=_changesByTable;
 @property(retain, nonatomic) NSMutableArray *changeLogRecords; // @synthesize changeLogRecords=_changeLogRecords;
-@property(nonatomic) BOOL locked; // @synthesize locked=_locked;
+@property BOOL locked; // @synthesize locked=_locked;
 - (id)deletedObjectsForTable:(id)arg1;
 - (id)updatedObjectsForTable:(id)arg1 changeType:(id)arg2;
 - (id)updatedObjectsForTable:(id)arg1;
@@ -38,6 +40,7 @@
 - (id)changeLogRecordsForTable:(id)arg1;
 - (unsigned long long)countOfChangeLogRecordsForTable:(id)arg1;
 - (unsigned long long)numberOfChangeLogRecordsForTable:(id)arg1;
+- (id)divideWithMaxRecordsPerLog:(unsigned long long)arg1;
 - (void)addRecordsFromChangeLog:(id)arg1;
 - (void)addChangeLogRecords:(id)arg1;
 - (void)logDeletedObjects:(id)arg1 inTable:(id)arg2;
@@ -48,6 +51,7 @@
 - (void)logUpdatedObject:(id)arg1 inTable:(id)arg2;
 - (void)logInsertedObjects:(id)arg1 inTable:(id)arg2;
 - (void)logInsertedObject:(id)arg1 inTable:(id)arg2;
+@property(readonly) BOOL isEmpty;
 - (void)removeAllChanges;
 - (void)addChangeLogRecord:(id)arg1;
 - (id)debugDescription;

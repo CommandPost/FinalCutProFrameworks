@@ -6,26 +6,32 @@
 
 #import "NSView.h"
 
-@class NSImage;
+@class AVSampleBufferDisplayLayer, CALayer, FFImage, NSImage;
 
 __attribute__((visibility("hidden")))
 @interface FFCPSClapperboardView : NSView
 {
-    NSImage *_posterImage;
+    BOOL _showClapper;
+    FFImage *_posterImage;
     NSImage *_clapperImage;
     NSView *_shadowView;
-    BOOL _showClapper;
+    CALayer *_darkOverlayLayer;
+    CALayer *_clapperLayer;
+    AVSampleBufferDisplayLayer *_imageLayer;
 }
 
+@property(retain, nonatomic) AVSampleBufferDisplayLayer *imageLayer; // @synthesize imageLayer=_imageLayer;
+@property(retain, nonatomic) CALayer *clapperLayer; // @synthesize clapperLayer=_clapperLayer;
+@property(retain, nonatomic) CALayer *darkOverlayLayer; // @synthesize darkOverlayLayer=_darkOverlayLayer;
 @property(nonatomic) NSView *shadowView; // @synthesize shadowView=_shadowView;
-@property(nonatomic) BOOL showClapper; // @synthesize showClapper=_showClapper;
 @property(retain, nonatomic) NSImage *clapperImage; // @synthesize clapperImage=_clapperImage;
-@property(retain, nonatomic) NSImage *posterImage; // @synthesize posterImage=_posterImage;
-- (void)drawDarkTransparentOverlay;
-- (void)drawClapper;
-- (void)drawPoster;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)setImageRef:(struct CGImage *)arg1;
+@property(retain, nonatomic) FFImage *posterImage; // @synthesize posterImage=_posterImage;
+@property(nonatomic) BOOL showClapper; // @synthesize showClapper=_showClapper;
+- (id)buildImageLayer;
+- (id)buildDarkOverlayLayer;
+- (id)buildClapperLayer;
+- (void)setCGImage:(struct CGImage *)arg1;
+- (void)setFFImage:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;
 - (id)initWithFrame:(struct CGRect)arg1;

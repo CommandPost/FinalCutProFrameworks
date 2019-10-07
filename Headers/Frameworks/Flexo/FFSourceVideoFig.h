@@ -109,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_fillInAdditionalMD5Overrides:(CDStruct_bdcb2b0d *)arg1;
 - (void)dealloc;
 - (id)initWithProvider:(id)arg1 URL:(id)arg2 persistentID:(int)arg3 baseTimecodeCounter:(int)arg4 editTimeForBaseTimecode:(CDStruct_1b6d18a9)arg5 retTimecodeOffset:(CDStruct_1b6d18a9 *)arg6 timecodeFrameDuration:(CDStruct_1b6d18a9)arg7 dropFrame:(BOOL)arg8 mediaReader:(void *)arg9;
+- (int)_getAlphaTypeFromFormatExtensions:(id)arg1;
 - (id)_debugFileName;
 - (id)flipAboutYTransform:(double)arg1;
 - (BOOL)isFlipped;

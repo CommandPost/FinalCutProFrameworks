@@ -13,13 +13,18 @@ __attribute__((visibility("hidden")))
     CDStruct_79c71658 _dimensions;
     unsigned int _pixelFormat;
     int _quality;
+    BOOL _forThumbnails;
+    struct __CFString *_fieldMode;
     double _idleStartTime;
+    BOOL _usingHardware;
 }
 
+@property(nonatomic) BOOL usingHardware; // @synthesize usingHardware=_usingHardware;
 @property(nonatomic) double idleStartTime; // @synthesize idleStartTime=_idleStartTime;
-- (BOOL)isCompatibleWithCodec:(unsigned int)arg1 dimensions:(CDStruct_1ef3fb1f)arg2 pixelFormat:(unsigned int)arg3 quality:(int)arg4;
+- (BOOL)isCompatibleWithCodec:(unsigned int)arg1 dimensions:(CDStruct_1ef3fb1f)arg2 pixelFormat:(unsigned int)arg3 quality:(int)arg4 forThumbnails:(BOOL)arg5 fieldMode:(struct __CFString *)arg6;
 - (id)description;
-- (id)init:(void *)arg1 codec:(unsigned int)arg2 dimensions:(CDStruct_1ef3fb1f)arg3 pixelFormat:(unsigned int)arg4 quality:(int)arg5;
+- (void)dealloc;
+- (id)init:(void *)arg1 codec:(unsigned int)arg2 dimensions:(CDStruct_1ef3fb1f)arg3 pixelFormat:(unsigned int)arg4 quality:(int)arg5 forThumbnails:(BOOL)arg6 fieldMode:(struct __CFString *)arg7;
 
 @end
 

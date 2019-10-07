@@ -6,7 +6,7 @@
 
 #import <Flexo/FFHGAsyncFanoutResult.h>
 
-@class FFHGAsyncFanoutJob, FFHGAsyncQueue, FFImageAbsoluteOutputFormat, FFPixelBuffer, FFTextureBuffer, PCMatrix44Double;
+@class FFHGAsyncFanoutJob, FFHGAsyncQueue, FFHGCVPB, FFImageAbsoluteOutputFormat, FFPixelBuffer, FFTextureBuffer, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFHGFanoutResultInternal : FFHGAsyncFanoutResult
@@ -16,10 +16,11 @@ __attribute__((visibility("hidden")))
     struct HGRect _roi;
     PCMatrix44Double *_pt;
     unsigned int _field;
-    struct HGRenderNode *_renderNode;
+    // Error parsing type: ^{HGRenderNode=^^?{atomic<unsigned int>=AI}^{HGNode}^{HGBitmap}{HGRect=iiii}iBiii{shared_ptr<const HGComputeDevice>=^{HGComputeDevice}^{__shared_weak_count}}{HGRef<HGGLContext>=^{HGGLContext}}Bdddd^{HGPixelBufferObj}Q^v*^?d^{HGRenderer}^{HGRenderJob}^{HGRenderQueue}}, name: _renderNode
     FFHGAsyncQueue *_queue;
     FFTextureBuffer *_flatTextureBuffer;
     FFPixelBuffer *_flatPixelBuffer;
+    FFHGCVPB *_flatCVPixelBuffer;
     int _processingState;
     FFHGAsyncFanoutJob *_job;
     _Bool _inFinalState;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct HGRect roi; // @synthesize roi=_roi;
 @property(readonly) FFImageAbsoluteOutputFormat *format; // @synthesize format=_format;
 - (id)newImage;
-- (void)setRenderNode:(struct HGRenderNode *)arg1;
+-     // Error parsing type: v24@0:8^{HGRenderNode=^^?{atomic<unsigned int>=AI}^{HGNode}^{HGBitmap}{HGRect=iiii}iBiii{shared_ptr<const HGComputeDevice>=^{HGComputeDevice}^{__shared_weak_count}}{HGRef<HGGLContext>=^{HGGLContext}}Bdddd^{HGPixelBufferObj}Q^v*^?d^{HGRenderer}^{HGRenderJob}^{HGRenderQueue}}16, name: setRenderNode:
 - (struct CGColorSpace *)colorSpace;
 - (void)setLocation:(int)arg1;
 - (int)location;

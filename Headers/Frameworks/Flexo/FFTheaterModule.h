@@ -110,6 +110,11 @@
 - (BOOL)theaterMenu:(id)arg1 itemIsEligibleForUbiquity:(id)arg2 error:(id *)arg3;
 - (void)theaterMenu:(id)arg1 goToProjectForItem:(id)arg2;
 - (BOOL)theaterMenu:(id)arg1 canGoToProjectForItem:(id)arg2;
+- (void)saveItemWithDatabase:(id)arg1 sourceURL:(id)arg2 destinationURL:(id)arg3;
+- (void)doSavePanelWithDatabase:(id)arg1 nameFieldStringValue:(id)arg2 sourceURL:(id)arg3;
+- (void)theaterMenu:(id)arg1 saveItem:(id)arg2;
+- (BOOL)canSaveItem:(id)arg1;
+- (BOOL)theaterMenu:(id)arg1 canSaveItem:(id)arg2;
 - (void)theaterMenu:(id)arg1 renameItem:(id)arg2;
 - (BOOL)theaterMenu:(id)arg1 canRenameItem:(id)arg2;
 - (void)theaterMenu:(id)arg1 deleteItem:(id)arg2;
@@ -142,6 +147,7 @@
 - (void)rearrangeItems;
 - (id)_arrangeItems:(id)arg1;
 - (void)_refreshErrorsAndProgressForCells:(id)arg1;
+- (BOOL)shouldUpdateMainViewNow;
 - (void)_reloadDataImmediately;
 - (void)reloadData;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -151,7 +157,6 @@
 - (void)windowBackingScaleFactorChanged:(id)arg1;
 - (void)doMute:(id)arg1;
 - (void)showHideLibraryAction:(id)arg1;
-- (void)showHideTheaterAction:(id)arg1;
 - (void)toggleInspector:(id)arg1;
 - (void)modifyContentCreationDate:(id)arg1;
 - (void)doEnhance:(id)arg1;
