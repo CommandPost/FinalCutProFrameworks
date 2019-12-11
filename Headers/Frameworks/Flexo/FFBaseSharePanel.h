@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
     BOOL _observingTargets;
     FFShareExportPanelsHelper *_panelsHelper;
     BOOL _canExportSelectedLayersOnly;
+    BOOL _arePanelsInProgress;
     FFShareDataModel *_dataModel;
     double _previewTime;
     NSMapTable *_mapDestinationToMetadata;
@@ -64,6 +65,7 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingHasMultipleDestinations;
 + (void)initialize;
 @property(retain, nonatomic) FFShareSourceDestinationMapping *sourceDestinationMapping; // @synthesize sourceDestinationMapping=_sourceDestinationMapping;
+@property(nonatomic) BOOL arePanelsInProgress; // @synthesize arePanelsInProgress=_arePanelsInProgress;
 @property(retain, nonatomic) FFShareExportPanelsHelper *panelsHelper; // @synthesize panelsHelper=_panelsHelper;
 @property(readonly, nonatomic) NSMapTable *mapDestinationToMetadata; // @synthesize mapDestinationToMetadata=_mapDestinationToMetadata;
 @property(nonatomic) BOOL canExportSelectedLayersOnly; // @synthesize canExportSelectedLayersOnly=_canExportSelectedLayersOnly;

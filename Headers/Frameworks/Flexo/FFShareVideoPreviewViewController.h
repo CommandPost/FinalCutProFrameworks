@@ -6,7 +6,7 @@
 
 #import "NSViewController.h"
 
-@class CALayer, CKSource, FFShareVideoPreviewTimeConverter, NSLayoutConstraint, NSTrackingArea, NSView;
+@class CALayer, CKSource, FFShareVideoPreviewTimeConverter, FFWeakPointerValue, NSLayoutConstraint, NSTrackingArea, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFShareVideoPreviewViewController : NSViewController
@@ -15,20 +15,20 @@ __attribute__((visibility("hidden")))
     BOOL _doesSupportAudio;
     NSView *_previewView;
     CKSource *_source;
-    id <FFSharePanelDelegate> _delegate;
     NSLayoutConstraint *_previewViewWidthConstraint;
     NSLayoutConstraint *_previewViewHeightConstraint;
     CALayer *_skimmerLayer;
     NSTrackingArea *_previewTrackingArea;
     FFShareVideoPreviewTimeConverter *_timeConverter;
+    FFWeakPointerValue *_weakDelegate;
 }
 
+@property(retain, nonatomic) FFWeakPointerValue *weakDelegate; // @synthesize weakDelegate=_weakDelegate;
 @property(retain, nonatomic) FFShareVideoPreviewTimeConverter *timeConverter; // @synthesize timeConverter=_timeConverter;
 @property(retain, nonatomic) NSTrackingArea *previewTrackingArea; // @synthesize previewTrackingArea=_previewTrackingArea;
 @property(retain, nonatomic) CALayer *skimmerLayer; // @synthesize skimmerLayer=_skimmerLayer;
 @property(retain, nonatomic) NSLayoutConstraint *previewViewHeightConstraint; // @synthesize previewViewHeightConstraint=_previewViewHeightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *previewViewWidthConstraint; // @synthesize previewViewWidthConstraint=_previewViewWidthConstraint;
-@property(nonatomic) id <FFSharePanelDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) CKSource *source; // @synthesize source=_source;
 @property(nonatomic) BOOL doesSupportAudio; // @synthesize doesSupportAudio=_doesSupportAudio;
 @property(retain, nonatomic) NSView *previewView; // @synthesize previewView=_previewView;
@@ -65,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)configurePreviewView;
 - (void)viewDidLoad;
 - (void)viewDidLayout;
+@property(nonatomic) id <FFSharePanelDelegate> delegate;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 

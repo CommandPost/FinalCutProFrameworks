@@ -6,25 +6,25 @@
 
 #import "CAMetalLayer.h"
 
-@class FFDestVideoDisplay, FFVideoView;
+@class FFDestVideoDisplay, FFWeakPointerValue;
 
 __attribute__((visibility("hidden")))
 @interface FFPlayerMetalLayer : CAMetalLayer
 {
     BOOL _observingScreenParameters;
     BOOL _insideDraw;
-    FFVideoView *_videoView;
     FFDestVideoDisplay *_destVideoDisplay;
     unsigned long long _missingImageAction;
     struct FFSynchronizable *_layerLock;
+    FFWeakPointerValue *_videoViewWeakPointer;
 }
 
+@property(nonatomic) FFWeakPointerValue *videoViewWeakPointer; // @synthesize videoViewWeakPointer=_videoViewWeakPointer;
 @property(nonatomic) BOOL insideDraw; // @synthesize insideDraw=_insideDraw;
 @property(nonatomic) struct FFSynchronizable *layerLock; // @synthesize layerLock=_layerLock;
 @property(nonatomic) BOOL observingScreenParameters; // @synthesize observingScreenParameters=_observingScreenParameters;
 @property(nonatomic) unsigned long long missingImageAction; // @synthesize missingImageAction=_missingImageAction;
 @property(nonatomic) FFDestVideoDisplay *destVideoDisplay; // @synthesize destVideoDisplay=_destVideoDisplay;
-@property FFVideoView *videoView; // @synthesize videoView=_videoView;
 - (id)actionForKey:(id)arg1;
 - (struct CGSize)drawableSize;
 - (void)setDrawableSize:(struct CGSize)arg1;

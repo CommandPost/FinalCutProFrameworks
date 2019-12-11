@@ -29,13 +29,13 @@
 + (void)addRotationToImageMatrix:(id *)arg1 rotation:(int)arg2 flipY:(BOOL)arg3;
 + (id)newSolidColorHeliumImageWithRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4 colorSpace:(struct CGColorSpace *)arg5 dod:(struct CGRect)arg6 pixelTransform:(id)arg7;
 +     // Error parsing type: v24@0:8^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16, name: releaseHGNode:
++ (id)newCV420ImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6;
 + (void)iterateFor420And422SimpleColorPatterns:(id)arg1 callback:(CDUnknownBlockType)arg2;
 + (id)newPrimaryBlocksTestImage:(struct CGRect)arg1 colorsToTest:(int)arg2 pf:(id)arg3 cs:(struct CGColorSpace *)arg4 retColorLabels:(id *)arg5;
 + (id)newImageFromTestColor_u64:(unsigned long long)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)new2vuyImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6;
 + (id)new420ImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6 style:(id)arg7;
 + (id)newHG420ImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6 style:(id)arg7;
-+ (id)newCV420ImageFromTestLuma:(int)arg1 cb:(unsigned char)arg2 cr:(unsigned char)arg3 rect:(struct CGRect)arg4 pixelFormat:(id)arg5 colorSpace:(struct CGColorSpace *)arg6;
 + (id)newImageFromTestColor:(unsigned int)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)newImageFromTestColor:(unsigned int)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 markAsStraight:(_Bool)arg5;
 + (id)newImageFromTestColor:(unsigned int)arg1 rect:(struct CGRect)arg2 pixelFormat:(id)arg3 colorSpace:(struct CGColorSpace *)arg4 markAsStraight:(_Bool)arg5 markAsNeedingClamp:(_Bool)arg6;
