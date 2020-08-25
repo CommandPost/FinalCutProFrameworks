@@ -39,8 +39,9 @@
     int _pendingVideoStreamCloses;
     FFEffectController *_effectController;
     unsigned int _contextCompareFlagsForMD5Caching;
-    BOOL _isOffline;
     int _effectActivateCount;
+    // Error parsing type: {atomic<bool>="__a_"AB}, name: _channelFolderAlreadyCreated
+    // Error parsing type: {atomic<signed char>="__a_"Ac}, name: _isOffline
 }
 
 + (BOOL)shouldAllowProjectPlayerInEvents;
@@ -49,8 +50,6 @@
 + (BOOL)shouldAllowEffectInEvents;
 + (BOOL)shouldAllowTimelineInTimecode;
 + (BOOL)shouldAllowEffectDropInEvents;
-+ (BOOL)shouldShowTransformHelperAlways;
-+ (BOOL)shouldShowTransformHelper;
 + (BOOL)shouldAllowDenoiseOnBlacklistedConfigs;
 + (id)messageTracerEffectCountData;
 + (id)colorEffectIDs:(BOOL)arg1;
@@ -66,6 +65,7 @@
 + (id)standardVideoGeneratorInputKeysArray;
 + (id)effectIDFromXMLElement:(id)arg1;
 + (id)newEffectWithXMLElement:(id)arg1;
++ (BOOL)isEffectOfflineForEffectID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)generateFileUUID;
 + (void)registerEffects;
@@ -116,6 +116,8 @@
 + (id)propertiesForEffect:(id)arg1;
 + (id)_registryEntryForEffectID:(id)arg1;
 + (BOOL)effectIDIsRegistered:(id)arg1;
++ (id)newEffectWithID:(id)arg1 skipsPostInit:(BOOL)arg2;
++ (id)newEffectWithID:(id)arg1 xmlConfigDict:(id)arg2;
 + (id)newEffectWithID:(id)arg1;
 + (id)effectRegistryFromEffectID:(id)arg1;
 + (id)ownerKeyFromEffectID:(id)arg1;
@@ -378,6 +380,9 @@
 - (BOOL)analysisAvailable:(id)arg1 context:(id)arg2;
 - (BOOL)needsAnalysis:(id)arg1 context:(id)arg2;
 - (BOOL)hasOfflineReferences;
+- (BOOL)effectCannotRender;
+- (BOOL)supportsLoadingChannelFolderForOfflineEffects;
+- (void)setIsOffline:(BOOL)arg1;
 - (BOOL)isOffline;
 - (id)categoryName;
 - (id)effectID;
@@ -393,15 +398,17 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
 - (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
-- (void)_postInit:(id)arg1;
+- (void)_postInit:(id)arg1 isXML:(BOOL)arg2;
 - (void)cleanUpChannelFolderDecendentsAsModelObjectsBackingHaveBeenDeleted;
 - (void)undoHandlerDidPerformAction:(id)arg1;
+- (unsigned int)intrinsicCacheFlag;
 - (BOOL)fileManagedByResourceMap;
 - (void)setFileUUID:(id)arg1;
 - (id)fileUUID;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1 url:(id)arg2;
 - (id)initWithEffectID:(id)arg1;
+- (void)buildXMLConfigDict:(id)arg1;
 - (BOOL)fileLivesInLibrary:(id)arg1;
 - (BOOL)fileLivesInDefaultLocation;
 - (BOOL)isBundledEffect;

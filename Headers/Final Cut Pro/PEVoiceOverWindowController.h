@@ -46,6 +46,7 @@
     NSResponder *_savedResponder;
     LKEmptyDFRController *_dfrController;
     FFRolesMenuController *_rolesMenuController;
+    double _defaultInputGain;
     BOOL _observingPlayPause;
     BOOL _observingContext;
     BOOL _observingTimelineRootItem;
@@ -106,6 +107,7 @@
 - (void)_updateOutputGain;
 - (void)setMonitoringGain:(id)arg1;
 - (void)setMonitoringDevice:(id)arg1;
+- (double)scaleFactorForTickMark;
 - (void)_updateInputGain;
 - (void)_setupInputGain;
 - (void)setInputGain:(id)arg1;
@@ -127,6 +129,8 @@
 - (void)awakeFromNib;
 - (void)toggleAdvancedView:(id)arg1;
 - (void)_setupDefaultEvent;
+- (id)_defaultEvent;
+- (void)_updateEvent;
 - (void)_setupEventsPopUp;
 - (void)_updateEventsPopUp;
 - (void)_updateMonitorCheckbox;

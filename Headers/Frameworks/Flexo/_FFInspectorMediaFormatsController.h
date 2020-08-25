@@ -6,7 +6,7 @@
 
 #import <Flexo/_FFInspectorHeaderSubController.h>
 
-@class LKTextField, NSString;
+@class FFMediaQualityViewController, LKTextField, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _FFInspectorMediaFormatsController : _FFInspectorHeaderSubController
@@ -19,8 +19,21 @@ __attribute__((visibility("hidden")))
     double _audioSampleRateInHz;
     LKTextField *_videoFormatField;
     LKTextField *_audioFormatField;
+    NSString *_qualityDisplayName;
+    FFMediaQualityViewController *_qualityViewController;
 }
 
+@property(retain) FFMediaQualityViewController *qualityViewController; // @synthesize qualityViewController=_qualityViewController;
+@property(retain, nonatomic) NSString *qualityDisplayName; // @synthesize qualityDisplayName=_qualityDisplayName;
+- (id)constraintsForEqualSizeFromView:(id)arg1 toView:(id)arg2;
+- (id)horizontalStackView;
+- (id)resizingBufferView;
+- (void)setupAudioFormatField;
+- (void)setupQualityField;
+- (void)setupVideoFormatField;
+- (id)audioFormatFieldConstraints;
+- (id)qualityFieldConstraints;
+- (id)videoFormatFieldConstraints;
 - (id)view;
 - (void)autoFillMultipleItems;
 - (void)autoFillNoItems;

@@ -59,12 +59,8 @@
 - (BOOL)supportsRoles;
 - (BOOL)isAnchored;
 - (int)timelineItemType;
-- (void)_writeUnlock:(const char *)arg1;
-- (void)_writeLock:(const char *)arg1 file:(const char *)arg2 line:(unsigned int)arg3;
-- (void)_readUnlock:(const char *)arg1;
 - (void)_readUnlock;
 - (void)_readLock;
-- (void)_readLock:(const char *)arg1 file:(const char *)arg2 line:(unsigned int)arg3;
 - (void)setTimeRangeInAsset:(CDStruct_e83c9415)arg1;
 - (CDStruct_e83c9415)timeRangeInAsset;
 - (BOOL)isMultiAngle;
@@ -82,7 +78,7 @@
 - (BOOL)isStill;
 - (BOOL)isGenerator;
 - (CDStruct_e83c9415)clippedAudioRangeInContainerSpace:(id)arg1;
-- (unsigned long long)storylineRegion;
+- (long long)storylineRegion;
 - (CDStruct_e83c9415)unclippedRangeInContainerSpace:(id)arg1;
 - (CDStruct_e83c9415)localToContainerTimeRange:(CDStruct_e83c9415)arg1 container:(id)arg2;
 - (CDStruct_e83c9415)containerToLocalTimeRange:(CDStruct_e83c9415)arg1 container:(id)arg2;

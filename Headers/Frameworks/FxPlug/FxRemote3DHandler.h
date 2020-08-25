@@ -7,19 +7,34 @@
 #import "NSObject.h"
 
 #import "Fx3DAPI_v4.h"
+#import "Fx3DAPI_v5.h"
 
-@class NSLock;
+@class FxRemotePluginCoordinator, NSLock;
 
-@interface FxRemote3DHandler : NSObject <Fx3DAPI_v4>
+@interface FxRemote3DHandler : NSObject <Fx3DAPI_v4, Fx3DAPI_v5>
 {
     NSLock *threadLock;
+    FxRemotePluginCoordinator *remoteCoordinator;
+    unsigned long long hostSessionID;
     map_fc121dd1 threeDInfoMap;
 }
 
+@property unsigned long long hostSessionID; // @synthesize hostSessionID;
+@property FxRemotePluginCoordinator *remoteCoordinator; // @synthesize remoteCoordinator;
 @property map_fc121dd1 threeDInfoMap; // @synthesize threeDInfoMap;
 @property(retain) NSLock *threadLock; // @synthesize threadLock;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)frustumLeft:(double *)arg1 right:(double *)arg2 bottom:(double *)arg3 top:(double *)arg4 near:(double *)arg5 far:(double *)arg6 atTime:(CDStruct_1b6d18a9)arg7 error:(id *)arg8;
+- (void)openGLFrustumLimits:(id)arg1 left:(double *)arg2 right:(double *)arg3 bottom:(double *)arg4 top:(double *)arg5 near:(double *)arg6 far:(double *)arg7;
+- (id)metalProjectionMatrixAtTime:(CDStruct_1b6d18a9)arg1 error:(id *)arg2;
+- (id)transpose:(id)arg1;
+- (id)metalProjectionMatrixFromGLLeft:(double)arg1 right:(double)arg2 bottom:(double)arg3 top:(double)arg4 near:(double)arg5 far:(double)arg6;
+- (id)viewMatrixAtTime:(CDStruct_1b6d18a9)arg1 error:(id *)arg2;
+- (id)layerMatrixAtTime:(CDStruct_1b6d18a9)arg1 error:(id *)arg2;
+- (id)dataToMatrix:(id)arg1;
+- (double)focalLengthAtTime:(CDStruct_1b6d18a9)arg1 error:(id *)arg2;
+- (id)getLive3DData:(unsigned long long)arg1 length:(unsigned long long)arg2 atTime:(CDStruct_1b6d18a9)arg3 error:(id *)arg4;
 - (BOOL)isUsingCamera;
 - (id)worldToEyeMatrix;
 - (id)worldToObjectMatrix;
@@ -29,7 +44,7 @@
 - (void)clear3DData;
 - (struct Fx3DInfo *)threeDInfo;
 - (void)dealloc;
-- (id)init;
+- (id)initWithRemotePluginCoordinator:(id)arg1 hostSessionID:(unsigned long long)arg2;
 
 @end
 

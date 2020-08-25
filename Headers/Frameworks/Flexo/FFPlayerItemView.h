@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
+- (id)_drawImageElement;
 - (id)_imageElement;
 - (unsigned long long)draggingSourceOperationMaskForLocal:(BOOL)arg1;
 

@@ -11,6 +11,7 @@
 }
 
 + (id)defaultName;
+- (void)setSetting:(id)arg1;
 - (BOOL)requiresTargetDestinationURL;
 - (id)iconTitle;
 - (id)smallImage;

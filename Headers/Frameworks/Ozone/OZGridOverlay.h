@@ -6,26 +6,33 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class NSMutableArray;
+#import "POOnScreenControlMetalRendering.h"
 
-@interface OZGridOverlay : OZOverlay
+@class NSMutableArray, NSString;
+
+@interface OZGridOverlay : OZOverlay <POOnScreenControlMetalRendering>
 {
     NSMutableArray *_verticalLines;
     NSMutableArray *_horizontalLines;
 }
 
-- (id)getMetalDrawPrimitives:(id)arg1;
-- (BOOL)doesSupportMetal;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (BOOL)shouldDraw;
 - (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 - (int)hitCheck:(id)arg1;
 - (int)getDrawingOrder;
 - (void)draw;
-- (id)horizontalLineAtIndex:(unsigned long long)arg1 start:(const PCVector2_79efa81a *)arg2 end:(const PCVector2_79efa81a *)arg3 width:(double)arg4 color:(const struct POColor *)arg5;
-- (id)verticalLineAtIndex:(unsigned long long)arg1 start:(const PCVector2_79efa81a *)arg2 end:(const PCVector2_79efa81a *)arg3 width:(double)arg4 color:(const struct POColor *)arg5;
-- (id)lineAtIndex:(unsigned long long)arg1 inCollection:(id)arg2 start:(const PCVector2_79efa81a *)arg3 end:(const PCVector2_79efa81a *)arg4 width:(double)arg5 color:(const struct POColor *)arg6;
+- (id)horizontalLineAtIndex:(unsigned long long)arg1 start:(const PCVector2_79efa81a *)arg2 end:(const PCVector2_79efa81a *)arg3 width:(double)arg4 color: /* Error: Ran out of types for this method. */;
+- (id)verticalLineAtIndex:(unsigned long long)arg1 start:(const PCVector2_79efa81a *)arg2 end:(const PCVector2_79efa81a *)arg3 width:(double)arg4 color: /* Error: Ran out of types for this method. */;
+- (id)lineAtIndex:(unsigned long long)arg1 inCollection:(id)arg2 start:(const PCVector2_79efa81a *)arg3 end:(const PCVector2_79efa81a *)arg4 width:(double)arg5 color: /* Error: Ran out of types for this method. */;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

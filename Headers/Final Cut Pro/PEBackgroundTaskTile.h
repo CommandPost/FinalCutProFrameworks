@@ -13,6 +13,7 @@
     NSTextField *_titleText;
     NSView *_actionView;
     NSTextField *_pausedText;
+    NSTextField *_waitingText;
     NSTextField *_progressText;
     NSProgressIndicator *_progressBar;
     PETaskActionButton *_pauseResumeButton;
@@ -32,9 +33,11 @@
     NSTrackingArea *_tileTrackingArea;
     NSArray *_originalPendingJobNames;
     unsigned long long _originalPendingJobNameIndex;
+    BOOL _waiting;
 }
 
 @property(getter=isReady) BOOL ready; // @synthesize ready=_ready;
+@property(getter=isWaiting) BOOL waiting; // @synthesize waiting=_waiting;
 @property(getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
 @property(retain) NSString *title; // @synthesize title=_title;
@@ -47,6 +50,7 @@
 @property(readonly, nonatomic) NSDictionary *timeRemainingTextLabelAttributes; // @synthesize timeRemainingTextLabelAttributes=_timeRemainingTextLabelAttributes;
 @property(readonly, nonatomic) NSDictionary *subtitleTextLabelAttributes;
 @property(readonly, nonatomic) NSDictionary *textLabelAttributes; // @synthesize textLabelAttributes=_textLabelAttributes;
+- (void)didRemoveFromTileView;
 - (void)willRemoveFromTileView;
 - (void)cancelShowTasks:(id)arg1;
 - (void)pauseResumeTasks:(id)arg1;

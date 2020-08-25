@@ -22,6 +22,9 @@ __attribute__((visibility("hidden")))
     _Bool _unsupportedFileFeature;
 }
 
++ (BOOL)supportsRemoteURLs;
++ (id)primeProviderForRemoteURL:(id)arg1;
++ (id)offlineVideoSourceKeysForVideoSourceCount:(long long)arg1 isStill:(BOOL)arg2;
 + (id)extensions;
 + (id)utis;
 - (id)MD5Seed;
@@ -35,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)_lockPDFDoc;
 - (id)pdfDocument;
 - (void)dealloc;
+- (id)initWithResourceLocator:(id)arg1;
 - (id)initWithAssetFileID:(id)arg1;
 
 @end

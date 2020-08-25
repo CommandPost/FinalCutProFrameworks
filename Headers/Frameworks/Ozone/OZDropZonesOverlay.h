@@ -6,9 +6,11 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class NSDictionary, NSMutableArray;
+#import "POOnScreenControlMetalRendering.h"
 
-@interface OZDropZonesOverlay : OZOverlay
+@class NSDictionary, NSMutableArray, NSString;
+
+@interface OZDropZonesOverlay : OZOverlay <POOnScreenControlMetalRendering>
 {
     _Bool _isEnabled;
     unsigned int _flags;
@@ -23,10 +25,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)texMDP:(id)arg1 center:(const PCVector2_79efa81a *)arg2;
-- (id)highlightBoxMDPFromCorners:(PCVector2_79efa81a *)arg1 c2:(PCVector2_79efa81a *)arg2 c3:(PCVector2_79efa81a *)arg3 c4:(PCVector2_79efa81a *)arg4 color:(id)arg5;
-- (id)getMetalDrawPrimitives:(id)arg1;
-- (BOOL)doesSupportMetal;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (void)draw;
 - (void)drawOutlineHighlight:(PCVector2_79efa81a *)arg1 c2:(PCVector2_79efa81a *)arg2 c3:(PCVector2_79efa81a *)arg3 c4:(PCVector2_79efa81a *)arg4 color:(const struct PCColor *)arg5;
 - (void)updateDropZonesArray:(const struct OZRenderState *)arg1;
@@ -42,6 +41,12 @@
 - (_Bool)isEnabled;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

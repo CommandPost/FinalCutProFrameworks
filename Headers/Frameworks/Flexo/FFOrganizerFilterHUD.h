@@ -7,12 +7,14 @@
 #import "LKViewModule.h"
 
 #import "FFOrganizerFilterHUDTileDelegate.h"
+#import "NSTableViewDataSource.h"
+#import "NSTableViewDelegate.h"
 #import "NSTouchBarProvider.h"
 
 @class FFEventLibraryModule, LKBox, LKButton, LKEmptyDFRController, LKPopUpButton, NSArray, NSButton, NSDictionary, NSLayoutConstraint, NSMutableArray, NSObject<FFOrganizerFilterHUDDelegate>, NSString, NSTableView, NSTouchBar, NSView;
 
 __attribute__((visibility("hidden")))
-@interface FFOrganizerFilterHUD : LKViewModule <FFOrganizerFilterHUDTileDelegate, NSTouchBarProvider>
+@interface FFOrganizerFilterHUD : LKViewModule <NSTableViewDelegate, NSTableViewDataSource, FFOrganizerFilterHUDTileDelegate, NSTouchBarProvider>
 {
     NSMutableArray *_filterTileArray;
     NSView *_bottomAccessoryView;
@@ -47,10 +49,9 @@ __attribute__((visibility("hidden")))
 - (id)filtersDict;
 - (void)setNewSmartCollecitonButtonHidden:(BOOL)arg1;
 - (void)newSmartCollectionButtonAction:(id)arg1;
-- (BOOL)selectionShouldChangeInTableView:(id)arg1;
 - (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
 - (long long)numberOfRowsInTableView:(id)arg1;
-- (double)tableView:(id)arg1 heightOfRow:(long long)arg2;
+- (BOOL)selectionShouldChangeInTableView:(id)arg1;
 - (id)tableView:(id)arg1 viewForTableColumn:(id)arg2 row:(long long)arg3;
 - (void)_addTileWithNibName:(id)arg1 filterDict:(id)arg2;
 - (id)_newTileWithNibName:(id)arg1 filterDict:(id)arg2;

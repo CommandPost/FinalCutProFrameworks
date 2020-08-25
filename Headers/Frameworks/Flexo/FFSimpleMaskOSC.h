@@ -18,6 +18,9 @@ __attribute__((visibility("hidden")))
     _Bool _p4Selected;
 }
 
+- (BOOL)supportsMetalRendering;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (void)doQuad:(double)arg1 color:(double)arg2 shadowWidth:(id)arg3 shadowColor:collection: /* Error: Ran out of types for this method. */;
 - (BOOL)isSelectionBased;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
 - (id)getView;

@@ -13,8 +13,6 @@
 + (id)newGap:(CDStruct_1b6d18a9)arg1 ofSampleDuration:(CDStruct_1b6d18a9)arg2;
 + (id)copyClassDescription;
 - (id)onScreenControls;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
 - (BOOL)supportsRoles;
 - (BOOL)supportsAudio;
 - (BOOL)hasAudio;
@@ -22,6 +20,8 @@
 - (int)anchoredObjectUIType;
 - (BOOL)contributesToCompoundClip;
 - (BOOL)isGap;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
 
 @end
 

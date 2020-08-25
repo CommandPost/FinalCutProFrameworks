@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)valueForKey:(id)arg1;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (BOOL)validateValue:(id *)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (id)modelLockingObject;
 - (void)dealloc;
 - (id)initWithObject:(id)arg1;
 

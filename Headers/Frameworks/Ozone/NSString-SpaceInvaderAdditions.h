@@ -8,5 +8,7 @@
 
 @interface NSString (SpaceInvaderAdditions)
 - (BOOL)isValidFilename;
+- (id)stringWithCharacterSeparator:(id)arg1;
+- (id)StringByReplacingInvalidFilenameChars;
 @end
 

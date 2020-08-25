@@ -17,7 +17,7 @@
 
 + (id)buttonWithTitle:(id)arg1 imageNamed:(id)arg2 accessibilityTitle:(id)arg3 target:(id)arg4 action:(SEL)arg5 customWidth:(unsigned long long)arg6;
 + (id)buttonWithTitle:(id)arg1 imageNamed:(id)arg2 accessibilityTitle:(id)arg3 target:(id)arg4 action:(SEL)arg5;
-+ (id)labelWithTitle:(id)arg1 alignment:(unsigned long long)arg2 customWidth:(unsigned long long)arg3;
++ (id)labelWithTitle:(id)arg1 alignment:(long long)arg2 customWidth:(unsigned long long)arg3;
 + (void)configureDefaultItemVCsForPopoverFunctionBarItem:(id)arg1;
 + (void)configureView:(id)arg1 withCustomWidth:(unsigned long long)arg2;
 + (void)configurePopoverFunctionBarItem:(id)arg1 title:(id)arg2 imageNamed:(id)arg3 accessibilityTitle:(id)arg4 showsCloseButton:(BOOL)arg5 supportsPressAndHold:(BOOL)arg6 customWidth:(unsigned long long)arg7 delegate:(id)arg8;
@@ -25,7 +25,7 @@
 + (id)functionBarItemWithIdentifier:(id)arg1 title:(id)arg2 imageNamed:(id)arg3 accessibilityTitle:(id)arg4 target:(id)arg5 action:(SEL)arg6 customWidth:(unsigned long long)arg7;
 + (id)functionBarItemWithIdentifier:(id)arg1 title:(id)arg2 imageNamed:(id)arg3 target:(id)arg4 action:(SEL)arg5 customWidth:(unsigned long long)arg6;
 + (id)functionBarItemWithIdentifier:(id)arg1 title:(id)arg2 imageNamed:(id)arg3 target:(id)arg4 action:(SEL)arg5;
-+ (id)functionBarItemWithIdentifier:(id)arg1 labelTitle:(id)arg2 alignment:(unsigned long long)arg3 customWidth:(unsigned long long)arg4;
++ (id)functionBarItemWithIdentifier:(id)arg1 labelTitle:(id)arg2 alignment:(long long)arg3 customWidth:(unsigned long long)arg4;
 + (BOOL)isFCP;
 + (id)touchBar:(id)arg1 makeItemsWithIdentifiers:(id)arg2 usingDelegate:(id)arg3;
 + (id)itemFactoryWithDocumentOwner:(id)arg1;

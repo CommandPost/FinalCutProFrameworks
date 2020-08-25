@@ -6,16 +6,22 @@
 
 #import <Flexo/FFRiggedChannelFolderLabelController.h>
 
-@class FFAudioUnitEffectRootChannel, FFEffectBundlePart;
+@class FFAudioUnitEffect, FFInspectorAudioEffectsControllerManager, NSImageView, NSProgressIndicator;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioUnitEffectRootChannelLabelController : FFRiggedChannelFolderLabelController
 {
-    FFAudioUnitEffectRootChannel *m_rootChannel;
-    FFEffectBundlePart *m_observedObject;
+    FFInspectorAudioEffectsControllerManager *_effectsManager;
+    FFAudioUnitEffect *_effect;
+    NSImageView *_warningBadgeView;
+    NSProgressIndicator *_loadingSpinner;
 }
 
-- (void)_updateControllerName;
+- (void)_masterUnitActiveStateChanged:(id)arg1;
+- (void)updateUI;
+- (void)setupControls;
+- (id)enableButton;
+- (void)didBuildUI;
 - (void)dealloc;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 

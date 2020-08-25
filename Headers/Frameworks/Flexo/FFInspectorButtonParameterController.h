@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface FFInspectorButtonParameterController : FFInspectorParameterController
 {
+    id <FFInspectorButtonParameterControllerDelegate> _delegate;
     NSView *_view;
     NSString *_title;
     NSString *_alternateTitle;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
     id _target;
     SEL _action;
     LKButton *_button;
+    LKButton *_resetButton;
     struct {
         unsigned int bordered:1;
         unsigned int transparent:1;
@@ -43,8 +45,11 @@ __attribute__((visibility("hidden")))
 + (double)verticalSpacingForButton;
 + (Class)cellClassForButton;
 + (Class)classForButton;
+@property(nonatomic) id <FFInspectorButtonParameterControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)resetValueToDefault:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)view;
+- (id)_resetButton;
 - (void)setPropertiesForControl:(id)arg1;
 - (void)unbindControl:(id)arg1;
 - (void)bindControl:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;

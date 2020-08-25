@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     int _offlineReason;
     FFMedia *_mediaForRefInvalidation;
     NSString *_cachedLibraryID;
+    // Error parsing type: AQ, name: _customReleaseState
 }
 
 + (id)scrapedOldRefDataForObject:(id)arg1 createIfNotFound:(BOOL)arg2;
@@ -67,14 +68,16 @@ __attribute__((visibility("hidden")))
 - (id)library;
 - (BOOL)isRefMediaCached;
 - (void)dealloc;
-- (void)releaseFinal;
-- (oneway void)release;
+- (void)willDealloc;
+-     // Error parsing type: ^AQ16@0:8, name: customReleaseState
 - (id)initWithMedia:(id)arg1 displayName:(id)arg2 mediaEvent:(id)arg3;
 - (id)initWithMedia:(id)arg1 mediaEvent:(id)arg2;
 - (id)init;
 - (id)legacyEventDocumentID;
 - (id)eventDocumentID;
 - (id)mediaIndexingKey;
+- (id)copySourceKeys;
+- (id)copyMediaSourceDiescriptionDictionary;
 
 @end
 

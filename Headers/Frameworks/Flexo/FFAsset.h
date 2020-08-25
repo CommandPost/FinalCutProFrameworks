@@ -6,13 +6,12 @@
 
 #import <Flexo/FFMediaState.h>
 
-#import "FFLegacyMediaChecking.h"
 #import "NSCopying.h"
 #import "NSSecureCoding.h"
 
-@class FFCustomCameraLUTProps, FFDominantMotionMediaRep, FFFlowMediaRep, FFMediaRep, FFProvider, FFVideoOverrideInfo, FFVideoProps, NSDictionary, NSString;
+@class FFCustomCameraLUTProps, FFDominantMotionMediaRep, FFFlowMediaRep, FFMediaRep, FFProvider, FFVideoOverrideInfo, FFVideoProps, NSArray, NSDictionary, NSSet, NSString;
 
-@interface FFAsset : FFMediaState <NSSecureCoding, NSCopying, FFLegacyMediaChecking>
+@interface FFAsset : FFMediaState <NSSecureCoding, NSCopying>
 {
     NSString *_mediaIdentifier;
     NSString *_md5String;
@@ -29,7 +28,13 @@
     long long _rawToLogConversion;
     long long _logProcessingMode;
     FFCustomCameraLUTProps *_customCameraLUTProps;
+    struct {
+        long long cct;
+        long long isoEI;
+        double exposureOffset;
+    } _prrConversionOverride;
     BOOL _isUnmounting;
+    NSDictionary *_videoSourceDict;
     FFMediaRep *_optimizedMediaRep;
     FFMediaRep *_proxyMediaRep;
     FFFlowMediaRep *_flowMediaRep;
@@ -38,11 +43,9 @@
     long long _frameExtractionMode;
     BOOL _useTimecodeZero;
     NSDictionary *_audioSourceDict;
-    NSDictionary *_videoSourceDict;
     BOOL _isTrailerAsset;
     FFVideoOverrideInfo *_videoOverrides;
     FFProvider *_provider;
-    int _quality;
     BOOL _isObservingQuality;
     BOOL _forceNoProxy;
     BOOL _videoCodecMissing;
@@ -52,26 +55,33 @@
     BOOL _isReferenceMovie;
     BOOL _missingCameraLUT;
     BOOL _observingLutAssets;
+    BOOL _isLogProcessingModeOverride;
+    BOOL _hasISOOverride;
+    BOOL _hasTemperatureOverride;
+    BOOL _hasExposureOffsetOverride;
+    // Error parsing type: Ai, name: _quality
     BOOL _needsAudioPropertiesUpdate;
     BOOL _needsVideoPropertiesUpdate;
+    NSArray *_observedSourceKeys;
+    BOOL _isLogProcessingModeNoneOverride;
     BOOL _mediaOnlineSinceLastNotification;
     int _hasClosedCaptionTrack;
-    int _hasSubtitleTrack;
-    long long _legacyMediaStatusInternal;
 }
 
++ (id)repTypeForMaskBit:(int)arg1;
 + (BOOL)supportsSecureCoding;
 + (void)invalidateMultipleAssets:(id)arg1;
 + (BOOL)isMediaIdentifierExternal:(id)arg1;
++ (id)primeAssetWithURL:(id)arg1 repType:(id)arg2 mediaIdentifier:(id)arg3 displayName:(id)arg4 filename:(id)arg5 extension:(id)arg6;
 + (BOOL)playerQualityChanging;
 + (int)currentQuality;
 + (void)initialize;
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-+ (void)playerQualityChanged;
++ (void)playerQualityChangedWithPreviousQuality:(id)arg1;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
-@property long long legacyMediaStatusInternal; // @synthesize legacyMediaStatusInternal=_legacyMediaStatusInternal;
-@property(nonatomic) int hasSubtitleTrack; // @synthesize hasSubtitleTrack=_hasSubtitleTrack;
++ (id)assetDisplayNameFromURL:(id)arg1;
++ (id)errorForHTTPStatusCode:(long long)arg1;
 @property(nonatomic) int hasClosedCaptionTrack; // @synthesize hasClosedCaptionTrack=_hasClosedCaptionTrack;
 @property(nonatomic) BOOL mediaOnlineSinceLastNotification; // @synthesize mediaOnlineSinceLastNotification=_mediaOnlineSinceLastNotification;
 @property(nonatomic) unsigned long long audioSourceCount; // @synthesize audioSourceCount=_audioSourceCount;
@@ -90,12 +100,10 @@
 @property(retain, nonatomic) NSString *uttype; // @synthesize uttype=_uttype;
 @property(readonly, nonatomic) NSString *md5String; // @synthesize md5String=_md5String;
 @property(readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
-- (void)determineLegacyMediaStatus;
-- (id)legacyMedia;
-- (long long)legacyMediaStatus;
 - (int)_applyLogColorProfileNameWhenAppropriate;
 - (int)_logProcessingModeFromMediaRep;
 - (long long)logProcessingModeFromMediaRep;
+- (void)update_logProcessingMode;
 - (void)update_colorProfileMetadata;
 - (BOOL)update_removeBadTranscodedFiles;
 - (BOOL)update_rebuildAssetAudioProperties;
@@ -115,6 +123,8 @@
 - (id)assetFileIDs:(unsigned int)arg1 forCopy:(id)arg2;
 - (id)analysisFileURLs;
 - (id)_analysisFileURLs:(BOOL)arg1 targetProject:(id)arg2;
+- (id)_destAnalysisURL:(BOOL)arg1 targetProject:(id)arg2 folderPath:(id)arg3 filePath:(id)arg4 pathExtension:(id)arg5;
+- (void)setMediaRep:(id)arg1 forRepType:(id)arg2;
 - (id)mediaRepForRepType:(id)arg1;
 - (id)fileURLs:(int)arg1;
 - (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
@@ -156,12 +166,12 @@
 - (BOOL)highQualityAvailable;
 - (BOOL)originalAvailable;
 - (BOOL)proxyAvailable;
+- (id)primaryRep;
 - (id)currentRep;
 - (BOOL)relinkMedia:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 fileContentChanged:(BOOL)arg4 error:(id *)arg5;
 - (void)_assetCollection:(id)arg1;
 - (void)invalidate;
 - (void)invalidateProviderIncludingCache:(BOOL)arg1 andSourceRange:(CDStruct_e83c9415)arg2;
-- (void)_validateCustomCameraLUTIsMissing;
 - (void)invalidateAndSendSourceChange:(BOOL)arg1;
 - (void)invalidateProviders;
 - (void)invalidateWithUnknownActionScope:(CDUnknownBlockType)arg1;
@@ -172,15 +182,14 @@
 - (void)purgeTranscodedMedia;
 - (void)purgeProxyMedia;
 - (void)purgeOptimizedMedia;
+- (void)purgeMediaForRepTypes:(id)arg1;
 - (void)purgeGeneratedMedia;
-- (id)subtitlesInRange:(CDStruct_e83c9415)arg1;
 - (id)closedCaptionsInRange:(CDStruct_e83c9415)arg1;
-- (BOOL)hasSubtitles;
 - (BOOL)hasClosedCaptions;
 - (BOOL)isPSD;
+@property(readonly, nonatomic) NSSet *md5Aliases;
 - (id)mediaIndexingKey;
 - (BOOL)isMediaIdentifierExternal;
-- (void)setMediaIdentifierForOfflineAsset:(id)arg1;
 - (void)setOriginalRelativePath:(id)arg1;
 - (id)assetFilename;
 - (void)setVideoOverridesFromAsset:(id)arg1;
@@ -188,12 +197,37 @@
 - (BOOL)supportsCameraProjectionOverride;
 - (id)supportedLogProcessingModes;
 - (BOOL)supportsLogProcessing;
+- (BOOL)supportsExposureOffsetOverride;
+@property(nonatomic) double exposureOffsetOverride;
+- (void)_setExposureOffsetOverride:(double)arg1;
+- (BOOL)supportsIsoEIOverride;
+@property(nonatomic) long long isoOverride;
+- (void)_setIsoOverride:(long long)arg1;
+- (BOOL)supportsTemperatureOverride;
+@property(nonatomic) double temperatureOverride;
+- (void)_setTemperatureOverride:(long long)arg1;
+- (long long)defaultISOOverride;
+- (long long)defaultTemperatureOverride;
+- (long long)maximumSupportedCCT;
+- (long long)minimumSupportedCCT;
+- (BOOL)cameraISOIsValid;
+- (long long)cameraISO;
+- (BOOL)cameraColorTemperatureIsValid;
+- (long long)cameraColorTemperature;
+- (BOOL)supportsProResRAWConversionAdjustment;
+- (BOOL)hasExposureOffsetOverride;
+- (BOOL)hasISOOverride;
+- (BOOL)hasTemperatureOverride;
+- (BOOL)currentProviderSupportsPRRSettings;
+- (void)setIsLogProcessingModeOverride:(BOOL)arg1;
+- (BOOL)isLogProcessingModeOverride;
 - (void)_setCustomCameraLUTProps:(id)arg1;
 - (void)forceSetCustomCameraLUTProps:(id)arg1;
 - (void)setCustomCameraLUTProps:(id)arg1;
 - (void)_setLogProcessingMode:(long long)arg1;
 - (void)setLogProcessingMode:(long long)arg1;
-- (void)setCameraLUTStateWithLogProcessingMode:(long long)arg1 customCameraLUTProps:(id)arg2;
+- (void)setLogProcessingMode:(long long)arg1 isOverride:(BOOL)arg2;
+- (void)setCameraLUTStateWithLogProcessingMode:(long long)arg1 customCameraLUTProps:(id)arg2 isOverride:(BOOL)arg3;
 - (id)customCameraLUTName;
 - (long long)customCameraLUTIdentifier;
 - (id)customCameraLUTProps;
@@ -256,29 +290,44 @@
 - (id)originalMediaURL;
 - (BOOL)_supportsProxyMedia;
 - (void)dealloc;
+- (id)addMediaRepForURL:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 project:(id)arg4 showRepAsMissing:(BOOL)arg5;
 - (id)addMediaRepForURL:(id)arg1 repType:(id)arg2 manageFileType:(int)arg3 project:(id)arg4;
 - (void)_updateVideoProps:(int)arg1;
 - (BOOL)canRebuildAudioProperties;
 - (void)rebuildAudioProperties;
+- (void)setupAudioPropertiesWithProvider:(id)arg1;
 - (void)rebuildAudioPropertiesWithProvider:(id)arg1;
 - (id)audioTrackNamesFromMetadataMadeUnique:(BOOL)arg1;
 - (void)_showLogTypeInColorProfileMetadata:(long long)arg1;
 - (int)_logProcessingModeFromCustomColorMetadataValue:(id)arg1;
 - (void)_setLogProcessingModeFromCustomcolorMetadataValue:(id)arg1;
 - (int)_defaultRAWToLogConversionModeFromMetadata;
+- (void)setMediaRep:(id)arg1;
 - (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 repType:(id)arg2 mediaIdentifier:(id)arg3 displayName:(id)arg4 manageFileType:(int)arg5 preferredBasename:(id)arg6 preferredExtension:(id)arg7 project:(id)arg8;
 - (id)initWithURL:(id)arg1 mediaIdentifier:(id)arg2 manageFileType:(int)arg3 project:(id)arg4;
 - (id)initWithURL:(id)arg1 manageFileType:(int)arg2 project:(id)arg3;
+- (void)_initMediaPropsWithProvider:(id)arg1;
 - (id)_initWithBasics;
 - (void)_removeCustomCameraLUTObserving;
 - (void)_addCustomCameraLUTObserving;
+- (void)_validateCustomCameraLUTIsMissing;
 - (id)init;
+- (id)_computeMediaMD5With:(id)arg1;
+- (void)updateIdentityWithMD5String:(id)arg1 externalMediaIdentifier:(id)arg2;
 - (void)updateIdentity;
-- (id)_fileMD5StringForURL:(id)arg1 baseFilename:(id)arg2;
 - (BOOL)hasCameraTag;
 @property(readonly, nonatomic) unsigned long long expectedGrowthRefreshRate;
 @property(readonly, nonatomic) BOOL isGrowing;
-- (BOOL)originalMediaRepLivesInsideLibraryBundle:(id *)arg1;
+- (BOOL)_needToReplaceMediaRepType:(id)arg1 fromNewAsset:(id)arg2 whenBothOnline:(BOOL)arg3 whenBothOffline:(BOOL)arg4 whenBothAbsent:(BOOL)arg5;
+- (BOOL)verifyRepTypeSupported:(id)arg1 error:(id *)arg2;
+- (BOOL)_verifyRepFileCompatibility:(id)arg1 asRepType:(id)arg2 error:(id *)arg3;
+- (BOOL)verifyAssetRepFileCompatibility:(id)arg1 asRepType:(id)arg2 error:(id *)arg3;
+- (BOOL)verifyMediaFileFormatSupported:(id)arg1 asRepType:(id)arg2 error:(id *)arg3;
+- (BOOL)verifyFileCompatibility:(id)arg1 mode:(int)arg2 returnIsIdentical:(char *)arg3 returnIsGrowing:(char *)arg4 returnIsCompatible:(char *)arg5 returnNewMediaRange:(CDStruct_e83c9415 *)arg6 returnAssetID:(id *)arg7 returnAudioSourceDict:(id *)arg8 error:(id *)arg9;
+- (id)copySourceKeys;
+- (id)copyMediaSourceDiescriptionDictionary;
+- (id)mediaProperties;
 
 @end
 

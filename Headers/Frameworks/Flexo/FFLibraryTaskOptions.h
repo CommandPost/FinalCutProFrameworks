@@ -14,16 +14,20 @@
 @interface FFLibraryTaskOptions : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _consolidateMedia;
+    _Bool _includeOriginalMedia;
     _Bool _includeOptimizedMedia;
     _Bool _includeProxyMedia;
+    _Bool _generateMissingMedia;
     _Bool _leaveExternalMediaInPlace;
     NSURL *_consolidateMediaLocation;
 }
 
 + (BOOL)supportsSecureCoding;
 @property(nonatomic) _Bool leaveExternalMediaInPlace; // @synthesize leaveExternalMediaInPlace=_leaveExternalMediaInPlace;
+@property(nonatomic) _Bool generateMissingMedia; // @synthesize generateMissingMedia=_generateMissingMedia;
 @property(nonatomic) _Bool includeProxyMedia; // @synthesize includeProxyMedia=_includeProxyMedia;
 @property(nonatomic) _Bool includeOptimizedMedia; // @synthesize includeOptimizedMedia=_includeOptimizedMedia;
+@property(nonatomic) _Bool includeOriginalMedia; // @synthesize includeOriginalMedia=_includeOriginalMedia;
 @property(nonatomic) _Bool consolidateMedia; // @synthesize consolidateMedia=_consolidateMedia;
 @property(copy, nonatomic) NSURL *consolidateMediaLocation; // @synthesize consolidateMediaLocation=_consolidateMediaLocation;
 @property(readonly, nonatomic) unsigned int assetFileIDMask;

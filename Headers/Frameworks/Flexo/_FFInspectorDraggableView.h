@@ -6,30 +6,29 @@
 
 #import "NSView.h"
 
-@class FFInspectorBaseController;
-
 __attribute__((visibility("hidden")))
 @interface _FFInspectorDraggableView : NSView
 {
-    FFInspectorBaseController *_subController;
+    long long _rowIndex;
     struct CGPoint _cursorBegin;
     struct {
         unsigned int didDrag:1;
         unsigned int mouseIsDown:1;
         unsigned int highlighted:1;
+        unsigned int viewHeightIsFixed:1;
     } _idv_flags;
 }
 
-@property(readonly, nonatomic) FFInspectorBaseController *subController; // @synthesize subController=_subController;
+@property(readonly, nonatomic) long long rowIndex; // @synthesize rowIndex=_rowIndex;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
-- (void)_sendBeginDraggingSessionWithEvent:(id)arg1;
+- (void)_sendBeginDraggingSessionWithIdentifier:(id)arg1 event:(id)arg2;
 - (void)mouseDown:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (BOOL)highlighted;
 @property(getter=isHighlighted) BOOL highlighted; // @dynamic highlighted;
 - (struct CGSize)intrinsicContentSize;
-- (id)initWithSubController:(id)arg1;
+- (id)initWithSubController:(id)arg1 rowIndex:(long long)arg2;
 
 @end
 

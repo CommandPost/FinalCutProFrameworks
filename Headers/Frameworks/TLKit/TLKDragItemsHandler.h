@@ -78,7 +78,7 @@
 @property(nonatomic) long long layoutRegionOverride; // @synthesize layoutRegionOverride=_layoutRegionOverride;
 @property(retain, nonatomic) TLKLayoutContext *deferredLayoutContext; // @synthesize deferredLayoutContext=_deferredLayoutContext;
 @property(copy, nonatomic) NSArray *itemLayersWithDropFeedback; // @synthesize itemLayersWithDropFeedback=_itemLayersWithDropFeedback;
-@property(nonatomic) TLKItemComponentInfo *savedClickedItemComponent; // @synthesize savedClickedItemComponent=_savedClickedItemComponent;
+@property(retain, nonatomic) TLKItemComponentInfo *savedClickedItemComponent; // @synthesize savedClickedItemComponent=_savedClickedItemComponent;
 @property CDStruct_1b6d18a9 startTime; // @synthesize startTime=_startTime;
 @property CDStruct_1b6d18a9 initialAnchorOffset; // @synthesize initialAnchorOffset=_initialAnchorOffset;
 @property struct CGPoint clickedPosition; // @synthesize clickedPosition=_clickedPosition;

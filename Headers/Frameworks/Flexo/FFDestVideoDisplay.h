@@ -6,12 +6,13 @@
 
 #import <Flexo/FFDestVideoDrawsInUI.h>
 
+#import "FFDestVideoCreateOnScreenControlsTextureProtocol.h"
 #import "FFDestVideoSuspendRequestInfoRecalcProtocol.h"
 
 @class FFDestVideoRequestInfo, FFPMRLogFunnel, FFPlayerFrame, NSColor, NSMutableArray, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
-@interface FFDestVideoDisplay : FFDestVideoDrawsInUI <FFDestVideoSuspendRequestInfoRecalcProtocol>
+@interface FFDestVideoDisplay : FFDestVideoDrawsInUI <FFDestVideoSuspendRequestInfoRecalcProtocol, FFDestVideoCreateOnScreenControlsTextureProtocol>
 {
     struct FFSynchronizable *_frameQueueLock;
     NSMutableArray *_frameQueue;
@@ -23,7 +24,7 @@ __attribute__((visibility("hidden")))
     unsigned int _rangeCheckMode;
     int _playbackUIBackgroundPref;
     BOOL _observingUserDefaults;
-    // Error parsing type: {?="_link"^{__CVDisplayLink}"_initialized"B"_queuedStopIsPending"{atomic<bool>="__a_"AB}"_displayLinkSync"^{FFSynchronizable}"_displayLinkIsRunning"c"_sleepIntervalStartTime"{atomic<double>="__a_"Ad}"_lastDisplayLinkCallTimeInSeconds"d"_threadInDisplayLinkCB"^{_opaque_pthread_t}"_queuedStopProcastinated"{PCProcrastinatedDispatch_t="lock"{os_unfair_lock_s="_os_unfair_lock_opaque"I}"executionTime"d"executionTimeLimit"d"queue"@"NSObject<OS_dispatch_queue>""block"@?"work"^?"workContext"^v"executionContext"^^{PCProcrastinatedDispatch_t}}"_queuedStopQueue"@"NSObject<OS_dispatch_queue>"}, name: _displayLink
+    // Error parsing type: {?="_link"^{__CVDisplayLink}"_initialized"B"_queuedStopIsPending"{atomic<bool>="__a_"AB}"_displayLinkSync"^{FFSynchronizable}"_displayLinkIsRunning"c"_sleepIntervalStartTime"{atomic<double>="__a_"Ad}"_lastDisplayLinkCallTimeInSeconds"d"_threadInDisplayLinkCB"^{_opaque_pthread_t}"_queuedStopProcastinated"{PCProcrastinatedDispatch_t="lock"{os_unfair_lock_s="_os_unfair_lock_opaque"I}"executionTime"d"executionTimeLimit"d"queue"@"NSObject<OS_dispatch_queue>""block"@?"work"^?"workContext"^v"executionContext"^^{PCProcrastinatedDispatch_t}}"_queuedStopQueue"@"NSObject<OS_dispatch_queue>""_lastDirectDisplayID"I}, name: _displayLink
     struct FFSynchronizable *_destLock;
     BOOL _unsafeToReuse;
     struct CGColorSpace *_deviceColorSpace;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
     struct FFTimingIntervalInfo *_intervalBetweenCallsDuringPlayback;
     struct FFTimingIntervalInfo *_drawingCompletedCostDuringPlayback;
     struct FFTimingIntervalInfo *_drawingQueuedCostDuringPlayback;
+    _Bool _hasFoundRealFrameSinceFlush;
     BOOL _disableOSCs;
 }
 
@@ -62,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)stop;
 - (void)start:(id)arg1 reason:(id)arg2;
 - (void)drawCurrentImageWithViewportSize:(struct CGSize)arg1 painter:(id)arg2 contextData:(id)arg3;
+- (void)drawEmptyImageWithViewportSize:(struct CGSize)arg1 painter:(id)arg2 contextData:(id)arg3;
 - (id)copyRenderHelper;
 - (void)setNeedsUpdate:(BOOL)arg1;
 - (void)setEnableDrawAllAngles:(BOOL)arg1;
@@ -70,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)delegate;
 - (void)setDisplay:(unsigned int)arg1;
 - (void)setDeviceColorSpace:(struct CGColorSpace *)arg1 backgroundColor:(id)arg2;
+- (void)updateDisplaySettings;
 - (void)setViewBounds:(struct CGRect)arg1;
 - (struct CGSize)viewSize;
 - (void)setViewSize:(struct CGSize)arg1;
@@ -97,7 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)_recalculateRequestedImageInfo;
 - (void)_queueRecalcRequestedImageInfo:(id)arg1;
 - (void)appWillTerminate:(id)arg1;
-- (int)_queueLocation;
+- (const struct FxDeviceSet *)_queueLocation;
 - (id)requestedImageInfo;
 - (void)_recordDroppedFrame:(id)arg1;
 - (void)notifyDestOfUIDrawingParameterChange;

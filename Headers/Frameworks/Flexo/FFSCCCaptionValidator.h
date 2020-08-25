@@ -21,9 +21,9 @@ __attribute__((visibility("hidden")))
 - (id)validate608CaptionCharacters:(id)arg1;
 - (id)validate608CaptionArrayTextPositions:(id)arg1;
 - (id)validate608CaptionArrayOverlap:(id)arg1 inTask:(id)arg2;
-- (BOOL)_avCaptionIsPopOn:(id)arg1;
-- (BOOL)_avCaptionIsPaintOn:(id)arg1;
-- (BOOL)_avCaptionIsRollUp:(id)arg1;
+- (BOOL)_captionIsPopOn:(id)arg1;
+- (BOOL)_captionIsPaintOn:(id)arg1;
+- (BOOL)_captionIsRollUp:(id)arg1;
 - (id)validate608CaptionTiming:(id)arg1 inTask:(id)arg2;
 - (id)_validateCaptionSequence:(id)arg1 forClass:(id)arg2 inTask:(id)arg3;
 - (id)_validateCaption:(id)arg1 forClass:(id)arg2;

@@ -8,7 +8,7 @@
 
 #import "TeamPopupTarget.h"
 
-@class HUDPopup, NSTextField, NSView, SportsCalloutView;
+@class LKPopUpButton, NSTextField, NSView, SportsCalloutView;
 
 @interface FFSportTitleOSC : FFTitleOSC <TeamPopupTarget>
 {
@@ -17,10 +17,10 @@
     SportsCalloutView *m_team2CalloutView;
     NSTextField *m_team1Label;
     NSTextField *m_team2Label;
-    HUDPopup *m_team1Popup;
-    HUDPopup *m_team2Popup;
+    LKPopUpButton *m_team1Popup;
+    LKPopUpButton *m_team2Popup;
     NSTextField *m_playerLabel;
-    HUDPopup *m_playerPopup;
+    LKPopUpButton *m_playerPopup;
     float m_buttonVerticalMargin;
     float m_originalTeam1CalloutViewWidth;
     float m_originalTeam2CalloutViewWidth;

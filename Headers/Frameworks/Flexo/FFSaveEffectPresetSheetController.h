@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *presetPath; // @synthesize presetPath=_presetPath;
 - (void)panel:(id)arg1 didChangeToDirectoryURL:(id)arg2;
 - (id)presetPathForEffect:(id)arg1;
+- (void)dealloc;
 - (id)initWithEffect:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 
 // Remaining properties

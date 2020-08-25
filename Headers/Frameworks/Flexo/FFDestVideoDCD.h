@@ -8,7 +8,7 @@
 
 #import "FFDestVideoDeviceManaging.h"
 
-@class FFFullScreenDCDView, NSString;
+@class FFFullScreenDCDView, FFVideoOutScreenBlocker, NSString;
 
 @interface FFDestVideoDCD : FFDestVideoDisplay <FFDestVideoDeviceManaging>
 {
@@ -18,13 +18,18 @@
     int _contentTransferFunction;
     BOOL _updateDCDViewNeeded;
     id _edrMetadata;
+    FFVideoOutScreenBlocker *_screenBlocker;
 }
 
+@property(retain, nonatomic) FFVideoOutScreenBlocker *screenBlocker; // @synthesize screenBlocker=_screenBlocker;
 @property BOOL disableOnRelease; // @synthesize disableOnRelease=_disableOnRelease;
+- (void)setPlayer:(id)arg1;
 - (unsigned int)outputMaxLatencyInFrames;
 - (void)windowPropertiesChanged:(id)arg1;
 - (unsigned int)displayForDCDView;
+- (void)updateDisplaySettings;
 - (void)_updateDCDView:(unsigned int)arg1;
+- (struct CGRect)dcdViewSeqBounds;
 - (void)setContentTransferFunction:(int)arg1 edrMetadata:(id)arg2;
 - (void)updateOutputDevice:(id)arg1;
 - (BOOL)hasConnection;

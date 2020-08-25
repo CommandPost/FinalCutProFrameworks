@@ -6,18 +6,26 @@
 
 #import <Flexo/FFProOSC.h>
 
+@class CHChannelFolder, FFOSCWindowView, LKSegmentedControl;
+
 __attribute__((visibility("hidden")))
 @interface FFProShapeOSC : FFProOSC
 {
     id <FFProShapeOSCDelegate> _shapeDelegate;
+    CHChannelFolder *_shapeFolder;
+    FFOSCWindowView *_shapeOverlayView;
+    LKSegmentedControl *_oscModeControl;
 }
 
 + (Class)OZOSCClass;
 @property(readonly, nonatomic) id <FFProShapeOSCDelegate> shapeDelegate; // @synthesize shapeDelegate=_shapeDelegate;
+- (void)oscModeControlAction:(id)arg1;
 - (id)undoChannels;
 - (void)offsetPosition:(const PCVector3_457fd1f0 *)arg1;
 - (BOOL)supportsTool:(Class)arg1;
 - (BOOL)isSelectionBased;
+- (void)updateTransformButtonOSC;
+- (void)addTransformOSCButton;
 - (struct FFShape *)shape;
 - (void)dealloc;
 - (id)initWithEffectStack:(id)arg1 shapeDelegate:(id)arg2;

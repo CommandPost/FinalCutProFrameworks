@@ -5,9 +5,9 @@
 //
 
 @protocol FxTimingAPI_v4
-- (unsigned long long)timelineFpsDenominatorForEffect:(id <FxBaseEffect>)arg1;
-- (unsigned long long)timelineFpsNumeratorForEffect:(id <FxBaseEffect>)arg1;
-- (unsigned long long)fieldOrderForInputToFilter:(id <FxFilter>)arg1;
+- (unsigned long long)timelineFpsDenominatorForEffect:(id <FxTileableEffect>)arg1;
+- (unsigned long long)timelineFpsNumeratorForEffect:(id <FxTileableEffect>)arg1;
+- (unsigned long long)fieldOrderForInputToFilter:(id <FxTileableEffect>)arg1;
 - (void)imageTime:(CDStruct_1b6d18a9 *)arg1 forParameterID:(unsigned int)arg2 fromTimelineTime:(CDStruct_1b6d18a9)arg3;
 - (void)inputTime:(CDStruct_1b6d18a9 *)arg1 fromTimelineTime:(CDStruct_1b6d18a9)arg2;
 - (void)timelineTime:(CDStruct_1b6d18a9 *)arg1 fromImageTime:(CDStruct_1b6d18a9)arg2 forParameterID:(unsigned int)arg3;

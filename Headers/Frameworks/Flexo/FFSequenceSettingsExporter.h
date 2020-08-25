@@ -53,6 +53,9 @@
 @property(readonly) NSString *toFile; // @synthesize toFile=_toFile;
 @property(readonly) FFMedia *media; // @synthesize media=_media;
 @property(retain) NSDictionary *customData; // @synthesize customData=_customData;
+- (void)notifyEffectAlert:(id)arg1;
+- (void)stopObservingEffectAlerts;
+- (void)startObservingEffectAlerts;
 - (CDStruct_1b6d18a9)captionStartTimeOffset;
 - (id)captionSetsForEmbedding;
 - (id)newQuickTimeMovieWriterWithPath:(id)arg1 status:(int *)arg2;

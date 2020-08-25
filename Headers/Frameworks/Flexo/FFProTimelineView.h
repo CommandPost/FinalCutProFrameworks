@@ -6,7 +6,6 @@
 
 #import "TLKTimelineView.h"
 
-__attribute__((visibility("hidden")))
 @interface FFProTimelineView : TLKTimelineView
 {
     struct CGColor *_itemSelectionColor;
@@ -14,6 +13,8 @@ __attribute__((visibility("hidden")))
     struct CGColor *_relatedIndicatorColorRef;
 }
 
+- (CDStruct_e83c9415)timeRangeOfAllTracksWithBakedInLogicalStartTime;
+- (void)zoomToFit:(id)arg1;
 - (BOOL)selectionCanMoveHorizontallyFromItem:(id)arg1 toItem:(id)arg2;
 - (void)_pinCaptionLanesToVisibleRect;
 - (void)viewDidChangeVisibleRect:(struct CGRect)arg1;

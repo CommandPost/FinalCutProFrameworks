@@ -49,8 +49,10 @@
 - (id)recentDocumentURLs;
 - (id)recentFileSet;
 - (void)noteNewRecentDocumentURL:(id)arg1;
+- (BOOL)shouldNoteNewRecentDocumentURL:(id)arg1;
 - (void)_saveRecentFileSet;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
+- (BOOL)validateUserInterfaceItem:(id)arg1 usingLibrary:(id)arg2;
 - (void)clearRecentDocuments:(id)arg1;
 - (void)closeRecent:(id)arg1;
 - (void)openRecent:(id)arg1;

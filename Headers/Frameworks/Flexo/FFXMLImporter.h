@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned int _version;
     FFLibrary *_library;
     NSMapTable *_resByResID;
+    NSMapTable *_preloadedAssetsByResID;
     NSMutableArray *_errors;
     NSMutableArray *_warnings;
     NSMutableSet *_warnedParamElements;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
     BOOL _libraryIsNew;
     int _contentType;
     NSMutableArray *_downloadAssetIDs;
+    BOOL _allow_proxy_only_assets;
 }
 
 - (void)dealloc;
@@ -46,18 +48,23 @@ __attribute__((visibility("hidden")))
 - (id)import:(id *)arg1;
 - (void)endXMLImportScopeFlag;
 - (void)beginXMLImportScopeFlag;
-- (void)validateCopyAssetsLocation;
 - (id)importPreV1_4Project:(id)arg1 error:(id *)arg2;
 - (id)importProjects:(id)arg1 event:(id)arg2 error:(id *)arg3;
 - (BOOL)processLibraryCollectionItems:(id)arg1 error:(id *)arg2;
 - (BOOL)processEventProjectContentsInto:(id)arg1 error:(id *)arg2;
+- (void)downloadMissingMedia;
 - (BOOL)cleanupUnusedEventProjects:(id)arg1 error:(id *)arg2;
 - (BOOL)populateEventProjectsFromXML:(id)arg1 error:(id *)arg2;
 - (id)insertNewEventProject:(id)arg1 error:(id *)arg2;
 - (id)findExistingEventProject:(id)arg1;
+- (void)postProcessUnusedResources;
+- (BOOL)preloadAssetResources:(id)arg1 progressCount:(long long *)arg2 progressMax:(unsigned long long)arg3 error:(id *)arg4;
+- (BOOL)warnIfURLRequiresDownload:(id)arg1 cancelled:(char *)arg2;
+- (id)copyCombinedAssetForOriginalMediaAsset:(id)arg1 andProxyMediaAsset:(id)arg2 offlineProperties:(id)arg3 error:(id *)arg4;
 - (BOOL)importResources:(id)arg1 error:(id *)arg2;
+- (BOOL)webAssetsEnabled;
 - (BOOL)importSequenceXMLElement:(id)arg1 intoSequenceProject:(id)arg2 error:(id *)arg3;
-- (BOOL)importEventXMLElement:(id)arg1 intoEventProject:(id)arg2 error:(id *)arg3;
+- (id)copyEventClipsByImportingEventXMLElement:(id)arg1 intoEventProject:(id)arg2 error:(id *)arg3;
 - (id)createSequenceProject:(id)arg1 name:(id)arg2 error:(id *)arg3;
 - (id)eventProjectForXMLUID:(id)arg1;
 - (id)createEventProject:(id)arg1 forXMLUID:(id)arg2 error:(id *)arg3;
@@ -76,7 +83,9 @@ __attribute__((visibility("hidden")))
 - (id)newClipOwnedClipsItem:(id)arg1;
 - (id)newAssetClipOwnedClipsItem:(id)arg1;
 - (id)newMulticamOwnedClipsItem:(id)arg1;
-- (BOOL)decodeCustomLogProcessingMode:(id)arg1 logProcessingMode:(long long *)arg2 custmLUTProps:(id *)arg3;
+- (id)mapFlexoAssetError:(id)arg1 forResource:(id)arg2;
+- (BOOL)decodeCustomLogProcessingMode:(id)arg1 logProcessingMode:(long long *)arg2 customLUTProps:(id *)arg3;
+- (void)applyResourceOverrideAttributes:(id)arg1 toAsset:(id)arg2;
 - (id)copyAssetRef:(id)arg1 error:(id *)arg2;
 - (id)copyClipRef:(id)arg1 type:(id)arg2 error:(id *)arg3;
 - (id)resolveEvent:(id)arg1 create:(BOOL)arg2 error:(id *)arg3;
@@ -86,7 +95,11 @@ __attribute__((visibility("hidden")))
 - (id)metadataValueForElement:(id)arg1 andKey:(id)arg2;
 - (id)getMetadataValueWithCustomRepresentationForKey:(id)arg1 FromElement:(id)arg2;
 - (BOOL)allowEditing:(id)arg1;
-- (id)newOfflineAssetRefFromURL:(id)arg1 andElement:(id)arg2 eventProject:(id)arg3 error:(id *)arg4;
+- (id)newAssetPropertiesFromResource:(id)arg1 mediaURL:(id)arg2 error:(id *)arg3;
+- (id)copyAssetURLFromResource:(id)arg1 repType:(id)arg2;
+- (id)mediaRepFilenameForResource:(id)arg1 repType:(id)arg2;
+- (id)mediaSourceElementInResource:(id)arg1 repType:(id)arg2;
+- (id)mediaRepElementForResource:(id)arg1 repType:(id)arg2;
 - (int)importAssetManageFileTypeWithEventProject:(id)arg1 forMediaMigration:(BOOL)arg2;
 - (void)setupEffectBundle:(id)arg1 withEffectNode:(id)arg2 toObject:(id)arg3;
 - (void)setupAudioUnitEffect:(id)arg1 withEffectNode:(id)arg2 toObject:(id)arg3;
@@ -106,6 +119,9 @@ __attribute__((visibility("hidden")))
 - (void)addEffectMask:(id)arg1 forEffect:(id)arg2 toObject:(id)arg3;
 - (void)addFilterNode:(id)arg1 toObject:(id)arg2;
 - (void)addFilterNode:(id)arg1 video:(id)arg2 audio:(id)arg3 toObject:(id)arg4;
+- (id)effectConfigForNode:(id)arg1;
+- (id)effectDataForNode:(id)arg1;
+- (id)dataParametersForNode:(id)arg1;
 - (void)addCaptionNode:(id)arg1 toObject:(id)arg2;
 - (id)newCaptionBlockFromTextNode:(id)arg1 forObject:(id)arg2;
 - (void)addTitleNode:(id)arg1 toObject:(id)arg2;
@@ -233,6 +249,8 @@ __attribute__((visibility("hidden")))
 - (id)warnings;
 - (void)log:(id)arg1 warningOnly:(BOOL)arg2;
 - (void)log:(id)arg1 warningOnly:(BOOL)arg2 minVersion:(unsigned int)arg3;
+- (id)errorWithPrimaryError:(id)arg1 underlyingError:(id)arg2;
+- (id)error:(id)arg1 node:(id)arg2 repType:(id)arg3 underlyingError:(id)arg4;
 - (id)error:(id)arg1 node:(id)arg2 elementName:(id)arg3;
 - (id)error:(id)arg1 node:(id)arg2 elementName:(id)arg3 underlyingError:(id)arg4;
 - (id)error:(id)arg1 node:(id)arg2 attr:(id)arg3 underlyingError:(id)arg4;

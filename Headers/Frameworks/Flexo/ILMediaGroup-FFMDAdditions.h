@@ -9,13 +9,17 @@
 #import "FFModelLocking.h"
 
 @interface ILMediaGroup (FFMDAdditions) <FFModelLocking>
-- (BOOL)writerIsWaiting;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
-- (void)_readLock;
+- (id)modelLockingObject;
 - (BOOL)canBeRetimed;
 - (BOOL)canBeEnhanced;
 - (BOOL)isEvent;
+- (id)ff_dateRange;
+- (id)ff_latestDate;
+- (id)ff_earliestDate;
+- (id)ff_name;
+- (id)ff_modificationDate;
+- (unsigned long long)ff_mediaObjectsCount;
+- (id)ff_keyPhoto;
+- (id)ff_comments;
 @end
 

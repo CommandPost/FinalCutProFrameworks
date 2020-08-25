@@ -27,16 +27,13 @@
 
 + (void)resetProgress:(float)arg1;
 + (_Bool)updateProgressCheckTaskCancelled;
-+ (void)setUpdateProgressGranularity:(unsigned long long)arg1;
 @property BOOL waitForPeakData; // @synthesize waitForPeakData=_waitForPeakData;
 - (_Bool)isSpectrallySimilar:(id)arg1 andUtilB:(id)arg2 wasStereo:(BOOL)arg3 onTask:(id)arg4;
 - (_Bool)hasSilence:(id)arg1 onTask:(id)arg2;
 - (double)getRMS:(id)arg1;
 - (double)doZeroCrossingRateAnalysis:(id)arg1 andUtilB:(id)arg2;
 - (float *)getHighOrderZCR:(float *)arg1 withDuration:(unsigned int)arg2;
-- (unsigned int)getDownsampleRate;
 - (void)setDownsampleRate:(unsigned int)arg1;
-- (BOOL)getDownsampling;
 - (void)setDownsampling:(BOOL)arg1;
 - (float)getCrossCorrelationFunctionConfidence;
 - (CDStruct_1b6d18a9)getCrossCorrelationFunctionPeakIndex;
@@ -54,14 +51,12 @@
 - (unsigned int)calculateDurationAndUpdateMax:(id)arg1 forXCorr:(_Bool)arg2;
 - (int)getXCorrZeroPaddedSize:(unsigned int)arg1;
 - (double)calculateCorrCoeff:(id)arg1 andUtilB:(id)arg2;
-- (double)getCorrCoeff;
 - (struct AudioStreamBasicDescription)monofyASBD:(struct AudioStreamBasicDescription)arg1;
 - (void)dealloc;
 - (id)initWithFigTimeRangeAndObject:(id)arg1 andFigTimeRangeAndObjectB:(id)arg2 andUtilA:(id *)arg3 andUtilB:(id *)arg4;
 - (id)initWithObjectA:(id)arg1 rangeA:(CDStruct_e83c9415)arg2 objectB:(id)arg3 rangeB:(CDStruct_e83c9415)arg4 utilA:(id *)arg5 utilB:(id *)arg6;
 - (id)initWithObject:(id)arg1 andObjectB:(id)arg2 andUtilA:(id *)arg3 andUtilB:(id *)arg4;
 - (id)initWithObject:(id)arg1 andUtil:(id *)arg2;
-- (struct AudioStreamBasicDescription)formatInfo:(id)arg1;
 
 @end
 

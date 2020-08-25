@@ -129,7 +129,7 @@
 - (void)todo_updateVideoPortionAudioWaveFormProportion:(double)arg1;
 - (void)todo_updateAudioPortionSourceSplitEdit:(BOOL)arg1 audioWaveFormProportion:(double)arg2;
 - (void)todo_updateAttributesOfContentsLayersSplitEdit:(BOOL)arg1 audioComponent:(BOOL)arg2;
-- (void)todo_updateContentsLayerItemHeight:(double)arg1 titleHeight:(double)arg2 showClipTitilesOnly:(BOOL)arg3 containmentMask:(int)arg4 splitEdit:(BOOL)arg5 audioComponent:(BOOL)arg6 disableFilmstripLayerUpdates:(BOOL)arg7 audioFrame:(struct CGRect *)arg8 videoFrame:(struct CGRect *)arg9 audioWaveFormProportion:(double)arg10 backgroundFrame:(struct CGRect)arg11 itemType:(int)arg12;
+- (void)todo_updateContentsLayerItemHeight:(double)arg1 titleHeight:(double)arg2 containmentMask:(int)arg3 splitEdit:(BOOL)arg4 audioComponent:(BOOL)arg5 disableFilmstripLayerUpdates:(BOOL)arg6 audioFrame:(struct CGRect *)arg7 videoFrame:(struct CGRect *)arg8 audioWaveFormProportion:(double)arg9 backgroundFrame:(struct CGRect)arg10 itemType:(int)arg11;
 - (void)updateBackgroundAndSelectionLayersBounds:(struct CGRect)arg1 itemType:(int)arg2 containmentMask:(int)arg3 sourceSplitEdit:(BOOL)arg4 spineItem:(BOOL)arg5 backgroundFrame:(struct CGRect *)arg6 selectionFrame:(struct CGRect *)arg7;
 - (void)todo_updateContentsLayer_VideoOnlyAndAVClip:(int)arg1 containmentMask:(int)arg2 disableFilmstripLayerUpdates:(BOOL)arg3 splitEdit:(BOOL)arg4 backgroundFrame:(struct CGRect)arg5 videoFrame_p:(struct CGRect *)arg6 audioFrame_p:(struct CGRect *)arg7 audioWaveFormProportion:(double)arg8 audioComponent:(BOOL)arg9;
 - (void)todo_updateContentsLayer_AudioOnlyAndAudioComponents:(BOOL)arg1 audioFrame_p:(struct CGRect *)arg2 audioWaveFormProportion:(double)arg3 backgroundFrame:(struct CGRect)arg4 containmentMask:(int)arg5;

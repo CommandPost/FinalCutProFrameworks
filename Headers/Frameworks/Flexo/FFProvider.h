@@ -6,27 +6,35 @@
 
 #import "NSObject.h"
 
-@class FFAssetFileIdentifier, NSArray, NSDictionary, NSString;
+@class FFResourceLocator, NSArray, NSDictionary, NSString;
 
 @interface FFProvider : NSObject
 {
-    FFAssetFileIdentifier *_assetFileID;
     NSString *_suiteID;
     NSString *_key;
+    FFResourceLocator *_resourceLocator;
     struct FFSynchronizable _sourcesLock;
     NSDictionary *_sources;
     NSArray *_sourceKeys;
     struct _opaque_pthread_t *_threadInSetupSources;
     long long _providerClusterRefcount;
-    int _sourcesState;
+    // Error parsing type: Ai, name: _sourcesState
     NSDictionary *_videoPropsOverrides;
     BOOL _isGoingAway;
     NSString *_libraryIdentifier;
 }
 
++ (id)primeProviderForRemoteURL:(id)arg1;
++ (id)newOfflineVideoSourceDictForSourceCount:(long long)arg1 isStill:(BOOL)arg2 videoProps:(id)arg3;
 + (id)newProviderWithMedia:(id)arg1;
-+ (id)newProviderWithAssetFileID:(id)arg1 utiType:(id)arg2;
++ (id)newProviderForURL:(id)arg1;
++ (id)newProviderWithRemoteURL:(id)arg1;
 + (id)newProviderWithAssetFileID:(id)arg1;
++ (Class)providerClassForResourceLocator:(id)arg1;
++ (BOOL)supportsRemoteURLs;
++ (Class)providerClassForURL:(id)arg1 extension:(id)arg2;
++ (id)offlineAudioSourceKeysForAudioSourceCount:(long long)arg1;
++ (id)offlineVideoSourceKeysForVideoSourceCount:(long long)arg1 isStill:(BOOL)arg2;
 + (id)getUTTypeForURL:(id)arg1;
 + (id)_getUTTypeForURL:(id)arg1;
 + (id)extensionForURL:(id)arg1;
@@ -46,21 +54,13 @@
 + (BOOL)canHaveAudio;
 + (BOOL)canHaveVideo;
 + (void)DEBUG_getCurrentInternalTokenCount:(int *)arg1 hwmInternal:(int *)arg2 externCount:(int *)arg3 externHWM:(int *)arg4;
++ (void)loadAVURLAssetPropertiesWithURL:(id)arg1 promiseOp:(id)arg2;
++ (id)primeAVURLAssetWithURL:(id)arg1;
 @property(readonly, nonatomic) NSString *libraryIdentifier; // @synthesize libraryIdentifier=_libraryIdentifier;
 - (id)newFirstVideoSource;
 - (id)firstVideoSource;
-- (BOOL)syncFromDocument;
-- (BOOL)saveToDocument;
-- (BOOL)hasUnsavedChanges;
-- (id)inspectorClassName;
-- (id)newPlayerModuleWithContext:(id)arg1 effectCount:(long long)arg2 sublayoutName:(id)arg3;
-- (id)newPlayerModuleWithContext:(id)arg1 effectCount:(long long)arg2 sublayout:(id)arg3;
-- (id)newPlayerModuleWithContext:(id)arg1 effectCount:(long long)arg2;
-- (id)newInspectorModule;
-- (id)newEditorModule;
-- (id)subtitlesInRange:(CDStruct_e83c9415)arg1;
+- (BOOL)isOfflineProvider;
 - (id)closedCaptionsInRange:(CDStruct_e83c9415)arg1;
-- (BOOL)hasSubtitles;
 - (BOOL)hasClosedCaptions;
 - (BOOL)hasAudio;
 - (id)displayName;
@@ -76,12 +76,14 @@
 - (id)_sourcesMakeIfNil;
 - (void)_setSource:(id)arg1 forKey:(id)arg2;
 - (void)_setupSources;
+- (id)contentIdentifier;
 - (id)eventDocumentIDAndPath;
-- (id)assetFileID;
+- (id)resourceLocator;
 - (id)suiteID;
 - (id)uttype;
 - (id)sidecarFileURL;
 - (id)url;
+- (BOOL)belongsToLibrary:(id)arg1;
 - (id)videoPropsOverride;
 - (void)setVideoPropsOverride:(id)arg1;
 - (BOOL)isPurgeable;
@@ -94,9 +96,9 @@
 - (id)object;
 - (id)initWithLibraryIdentifier:(id)arg1;
 - (id)initWithMedia:(id)arg1;
-- (id)initWithSuiteIdentifier:(id)arg1;
-- (id)initWithAssetFileID:(id)arg1;
+- (id)initWithResourceLocator:(id)arg1;
 - (id)init;
+- (void)_initCommon;
 - (id)key;
 - (void)setKey:(id)arg1;
 - (id)firstAudioSource;

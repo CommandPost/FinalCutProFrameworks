@@ -19,6 +19,7 @@
 + (id)projectsRootName;
 + (id)defaultFileExtension;
 + (id)newTemporaryDocument:(id *)arg1;
+- (BOOL)operationMoveAssetFilesToTrash:(id)arg1 mask:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)operationMoveAssetFilesToTrash:(id)arg1 error:(id *)arg2;
 - (id)operationMoveAssetOrAnalysisFilesToTrash:(id)arg1 error:(id *)arg2;
 - (void)_recycleURLs:(id)arg1;
@@ -34,6 +35,9 @@
 - (id)mediaEventProject;
 - (id)rootObject;
 - (void)updateWithHandler:(id)arg1;
+- (void)update_assetLogProcessingMode;
+- (void)update_avCaptionsToPCCaptions;
+- (void)update_assetIdentifierAliases;
 - (void)update_buildLegacyMediaCache;
 - (void)update_fixFFAnchoredAngleVideoEffectsAnchoredObject;
 - (void)update_fixMixdownRoleGroupForAnchoredMediaRefs;

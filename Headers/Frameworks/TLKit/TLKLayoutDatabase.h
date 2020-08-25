@@ -128,6 +128,7 @@
 - (void)setLayoutTiles:(id)arg1;
 - (id)layoutTiles;
 - (struct CGRect)boundingBox;
+@property(nonatomic, getter=isWrappingEnabled) BOOL wrappingEnabled;
 @property(readonly, nonatomic) PCChangeLog *changeLog;
 - (void)removeItemComponentInfoRecordsObject:(id)arg1;
 - (void)addItemComponentInfoRecordsObject:(id)arg1;
@@ -171,6 +172,8 @@
 - (id)timelineItemComponents;
 - (id)timelineItems;
 - (id)containers;
+- (id)trackContainers;
+@property(readonly) CDStruct_e83c9415 contentTimeRange;
 @property(readonly, nonatomic) TLKLayoutManager *layoutManager;
 @property(nonatomic) double defaultItemHeight;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -26,8 +26,9 @@
         unsigned int proStateHideResetButton:1;
         unsigned int indicatorHidden:1;
         unsigned int eyeDropperHidden:1;
+        unsigned int deferReplotting:1;
     } _paeftc_flags;
-    id _curvesLayer;
+    id _containerLayer;
 }
 
 + (id)curveWithLabel:(id)arg1;
@@ -123,14 +124,15 @@
 - (void)_setupToolTipRects;
 - (struct CGRect)_colorSelectionRect;
 @property long long type; // @dynamic type;
-- (id)_curvesLayer;
+- (void)_drawCurve;
+- (id)_containerLayer;
 - (void)_reframeLabelLayer:(id)arg1;
 - (struct CGRect)_selectionButtonRect;
 - (id)_selectionButtonLayer;
 - (id)_labelLayer;
 - (id)_colorSelectionLayer;
 - (id)_eyeDropperButtonLayer;
--     // Error parsing type: r^{paeftc_priv_t=AI^{impl_t}{color_t<double>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?ddd{bezier_t<double, false>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?}}{offsetcolor_t<double>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?dddd{bezier_t<double, false>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?}}{hue_t<double>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?d{bezier_t<double, true>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?}}{__wrap_iter<cc::point_t<double, false, false> *>=^{point_t<double, false, false>}}BBB[5q]}16@0:8, name: priv
+-     // Error parsing type: r^{PAECurvePrivate=AI^{impl_t}{color_t<double>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?ddd{bezier_t<double, false>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?}}{offsetcolor_t<double>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?dddd{bezier_t<double, false>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?}}{hue_t<double>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?d{bezier_t<double, true>=^^?^{point_t<double, false, false>}^{point_t<double, false, false>}{__compressed_pair<cc::point_t<double, false, false> *, std::__1::allocator<cc::point_t<double, false, false> > >=^{point_t<double, false, false>}}^^?}}{__wrap_iter<cc::point_t<double, false, false> *>=^{point_t<double, false, false>}}BBB[5q]}16@0:8, name: priv
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

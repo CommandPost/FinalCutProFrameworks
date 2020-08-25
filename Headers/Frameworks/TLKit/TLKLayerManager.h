@@ -8,12 +8,11 @@
 
 #import "TLKVisibleRectObserving.h"
 
-@class CALayer, NSMapTable, NSMutableArray, PCChangeLog, TLKEditorCloseView, TLKLayerRecyclePool, TLKLayoutDatabase, TLKTimelineView;
+@class CALayer, NSMapTable, NSMutableArray, PCChangeLog, TLKDelegateProxy, TLKLayerRecyclePool, TLKLayoutDatabase, TLKTimelineView;
 
 @interface TLKLayerManager : NSObject <TLKVisibleRectObserving>
 {
     CALayer *_rootLayer;
-    TLKEditorCloseView *_closeView;
     NSMutableArray *_transitionPlaceholderLayers;
     NSMutableArray *_recycledItemLayers;
     NSMutableArray *_recycledContainerLayers;
@@ -25,6 +24,7 @@
         unsigned int suspendLayerUpdatesForAnchoredClips:1;
         unsigned int RESERVED:31;
     } _lmFlags;
+    TLKDelegateProxy *_delegateProxy;
     PCChangeLog *_updatesQueue;
     TLKLayerRecyclePool *_layerRecyclePool;
 }
@@ -32,6 +32,7 @@
 @property(retain, nonatomic) TLKLayerRecyclePool *layerRecyclePool; // @synthesize layerRecyclePool=_layerRecyclePool;
 @property(retain) TLKLayoutDatabase *layoutDatabase; // @synthesize layoutDatabase=_layoutDatabase;
 @property(readonly, nonatomic) PCChangeLog *updatesQueue; // @synthesize updatesQueue=_updatesQueue;
+@property(retain, nonatomic) TLKDelegateProxy *delegateProxy; // @synthesize delegateProxy=_delegateProxy;
 - (void)restoreSavedFrameState:(id)arg1;
 - (id)savedFrameStateForTracks:(id)arg1;
 - (id)savedFrameStateForItemComponentFragments:(id)arg1;
@@ -64,6 +65,8 @@
 - (void)_updateLayerFramesForItemComponentFragments:(id)arg1;
 - (void)timelineView:(id)arg1 didChangeVisibleRect:(struct CGRect)arg2;
 - (id)_itemFragmentsIncludingLayoutDependencies:(id)arg1;
+- (BOOL)isDraggedItemFragment:(id)arg1;
+- (BOOL)isItemFragment:(id)arg1 outsideOfClipRect:(struct CGRect)arg2;
 - (void)removeOffScreenLayersForClipRect:(struct CGRect)arg1;
 - (void)processPendingChangesWithClipRect:(struct CGRect)arg1;
 - (void)_removeLayersForLineFragments:(id)arg1;
@@ -83,7 +86,6 @@
 - (void)reloadLayersForItem:(id)arg1;
 - (void)reloadLayersWithItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3 clipRect:(struct CGRect)arg4;
 - (void)queueLayerUpdatesForItemsAdded:(id)arg1 removed:(id)arg2 modified:(id)arg3;
-- (void)purgeLayersMarkedForRemoval;
 - (void)_removeLayersForItemInfo:(id)arg1;
 - (void)_removeLayersForItemComponentFragments:(id)arg1;
 - (void)reloadLayersForItemComponentFragments:(id)arg1 clipRect:(struct CGRect)arg2 force:(BOOL)arg3;
@@ -97,7 +99,6 @@
 - (void)_updateTransitionPlaceholderLayersInRect:(struct CGRect)arg1;
 - (void)updateMediaRectsForItemComponentFragment:(id)arg1;
 - (struct CGRect)_precisionEditorFrameForSpineItemComponentFragment:(id)arg1;
-- (void)_tilePrecisionEditorPieces;
 - (void)reloadAnchorLayersForItems:(id)arg1;
 - (void)reloadAnchorLayerForItem:(id)arg1;
 - (void)discardComponentWebbingLayerForItemInfo:(id)arg1;
@@ -129,8 +130,8 @@
 - (id)layoutManager;
 @property(readonly, nonatomic) TLKTimelineView *timelineView;
 - (void)dealloc;
-- (id)initWithTimelineView:(id)arg1;
-- (void)_setupLayerTree;
+- (void)_setupLayerTreeInSuperlayer:(id)arg1;
+- (id)initWithTimelineView:(id)arg1 visibleRectNotifier:(id)arg2;
 - (id)init;
 
 @end

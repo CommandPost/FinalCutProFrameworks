@@ -45,6 +45,8 @@
 + (id)customMetadataDefinitionWithName:(id)arg1 description:(id)arg2;
 + (id)customMetadataDictionary;
 + (void)setCustomMetadataDictionary:(id)arg1;
++ (id)canonMetadataDefinitions;
++ (id)redMetadataDefinitions;
 + (BOOL)loadSpotlightAsMetadefinitionInDictionary:(id)arg1 key:(id)arg2 metadataType:(id)arg3 displayName:(id)arg4 predicate:(id)arg5;
 + (id)unfilteredMetadataDefinitions;
 + (id)metadataFromSanitizedMetadata:(id)arg1;

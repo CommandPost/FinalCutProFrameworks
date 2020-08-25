@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)hideAudioProperties;
 - (void)showAudioProperties;
 - (void)setPixelFrameSize:(struct CGSize)arg1 sampleDuration:(CDStruct_1b6d18a9)arg2 fieldOrder:(int)arg3 colorSpaceDisplayName:(id)arg4;
+- (void)setQualityMode:(unsigned long long)arg1;
 - (void)hideVideoProperties;
 - (void)showVideoProperties;
 - (void)setEditAction:(SEL)arg1;

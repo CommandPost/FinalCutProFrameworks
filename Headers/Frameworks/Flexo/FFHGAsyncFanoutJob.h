@@ -14,7 +14,7 @@
     FFHGAsyncQueue *_assignedQueue;
     FFImage *_image;
     FFImageRepBindingInfo *_bindingInfo;
-    // Error parsing type: ^{HGRenderJob=^^?{atomic<unsigned int>=AI}iii{shared_ptr<const HGComputeDevice>=^{HGComputeDevice}^{__shared_weak_count}}{vector<std::__1::shared_ptr<const HGComputeDevice>, std::__1::allocator<std::__1::shared_ptr<const HGComputeDevice> > >=^{shared_ptr<const HGComputeDevice>}^{shared_ptr<const HGComputeDevice>}{__compressed_pair<std::__1::shared_ptr<const HGComputeDevice> *, std::__1::allocator<std::__1::shared_ptr<const HGComputeDevice> > >=^{shared_ptr<const HGComputeDevice>}}}{shared_ptr<const HGComputeDevice>=^{HGComputeDevice}^{__shared_weak_count}}iiiiiiQiiQddd^{HGRenderer}iiiBBBCQ^v*^{HGRenderQueue}^{HGRenderContext}^?QQQIII^{HGSynchronizable}^{HGSynchronizable}{vector<HGRenderNode *, std::__1::allocator<HGRenderNode *> >=^^{HGRenderNode}^^{HGRenderNode}{__compressed_pair<HGRenderNode **, std::__1::allocator<HGRenderNode *> >=^^{HGRenderNode}}}{vector<HGBitmapLoader *, std::__1::allocator<HGBitmapLoader *> >=^^{HGBitmapLoader}^^{HGBitmapLoader}{__compressed_pair<HGBitmapLoader **, std::__1::allocator<HGBitmapLoader *> >=^^{HGBitmapLoader}}}}, name: _renderJob
+    // Error parsing type: ^{HGRenderJob=^^?{atomic<unsigned int>=AI}iii{shared_ptr<const HGComputeDevice>=^{HGComputeDevice}^{__shared_weak_count}}{vector<std::__1::shared_ptr<const HGComputeDevice>, std::__1::allocator<std::__1::shared_ptr<const HGComputeDevice> > >=^{shared_ptr<const HGComputeDevice>}^{shared_ptr<const HGComputeDevice>}{__compressed_pair<std::__1::shared_ptr<const HGComputeDevice> *, std::__1::allocator<std::__1::shared_ptr<const HGComputeDevice> > >=^{shared_ptr<const HGComputeDevice>}}}{shared_ptr<const HGComputeDevice>=^{HGComputeDevice}^{__shared_weak_count}}{shared_ptr<const HGGPUComputeDevice>=^{HGGPUComputeDevice}^{__shared_weak_count}}iiiiiiQiiiQddd^{HGRenderer}iiiBBBCQ^v*^{HGRenderQueue}^{HGRenderContext}^?QQQIII^{HGSynchronizable}^{HGSynchronizable}{vector<HGRenderNode *, std::__1::allocator<HGRenderNode *> >=^^{HGRenderNode}^^{HGRenderNode}{__compressed_pair<HGRenderNode **, std::__1::allocator<HGRenderNode *> >=^^{HGRenderNode}}}{vector<HGBitmapLoader *, std::__1::allocator<HGBitmapLoader *> >=^^{HGBitmapLoader}^^{HGBitmapLoader}{__compressed_pair<HGBitmapLoader **, std::__1::allocator<HGBitmapLoader *> >=^^{HGBitmapLoader}}}}, name: _renderJob
     NSMutableArray *_outputs;
     NSMutableArray *_bypassOutputs;
     NSObject<OS_dispatch_group> *_bypassJobsGroup;
@@ -23,12 +23,12 @@
     NSObject<HGRQJobProtocol> *_cbObj;
     _Bool _dumpGraph;
     _Bool _dumpDotFile;
-    double _vScreenIdleTimeBeforeJob;
     // Error parsing type: {?="_nestDepth"i"_startTimes"[16q]"_blockedTimes"[24Aq]}, name: _blockedInfo
     struct _opaque_pthread_t *_threadThatInstalledBlockedInfo;
     long long _bypassCostUSec;
     // Error parsing type: {?="_nestDepth"i"_startTimes"[16q]"_blockedTimes"[24Aq]}, name: _bypassBlockedInfo
     int _amortizationCount;
+    double _gpuIdleTimeBeforeJob;
     _Bool _dumpRenderStats;
 }
 
@@ -48,17 +48,18 @@
 -     // Error parsing type: ^{?=i[16q][24Aq]}16@0:8, name: graphExecBlockedInfo
 - (double)totalBufferCopyTime;
 - (_Bool)dequeueJobIfNotStarted;
-- (_Bool)enqueueToRenderLocation:(int)arg1 priority:(int)arg2;
-- (double)vscreenIdleTimeBeforeJob;
+- (_Bool)enqueueToRenderLocationList:(const struct FxDeviceSet *)arg1 priority:(int)arg2;
+- (_Bool)enqueueToRenderLocation:(struct FxDevice *)arg1 priority:(int)arg2;
+- (double)gpuIdleTimeBeforeJob;
 - (void)_jobFinished;
 - (void)_nodeDidFinish:(id)arg1;
 - (void)_jobStarted;
 - (_Bool)isComplete;
 - (_Bool)bypassComplete;
 - (_Bool)waitForCompletionBeforeDate:(id)arg1;
-- (id)newRequestedOutput:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 scalingInfo:(struct FFAsyncFanoutScalingInfo)arg5 dithered:(BOOL)arg6 background:(int)arg7 zebraMode:(unsigned int)arg8 zebraEpsilons:(struct FFRangeCheckEpsilonValues *)arg9 workingSpace:(int)arg10 streamColorSpace:(int)arg11 clampColorSpace:(struct CGColorSpace *)arg12;
-- (id)_newImgWithBackground:(int)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 scalingInfo:(struct FFAsyncFanoutScalingInfo)arg5 workingSpace:(int)arg6;
-- (id)_findExistingOutput:(id)arg1 location:(int)arg2 roi:(struct HGRect)arg3 pixelTransform:(id)arg4 dithered:(BOOL)arg5 background:(int)arg6 zebraMode:(unsigned int)arg7;
+- (id)newRequestedOutput:(id)arg1 location:(const struct FxDeviceSet *)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 scalingInfo:(struct FFAsyncFanoutScalingInfo)arg5 dithered:(BOOL)arg6 background:(int)arg7 zebraMode:(unsigned int)arg8 zebraEpsilons:(struct FFRangeCheckEpsilonValues *)arg9 workingSpace:(int)arg10 streamColorSpace:(int)arg11 clampColorSpace:(struct CGColorSpace *)arg12;
+- (id)_newImgWithBackground:(int)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 scalingInfo:(struct FFAsyncFanoutScalingInfo)arg4 workingSpace:(int)arg5;
+- (id)_findExistingOutput:(id)arg1 locationOptions:(const struct FxDeviceSet *)arg2 roi:(struct HGRect)arg3 pixelTransform:(id)arg4 dithered:(BOOL)arg5 background:(int)arg6 zebraMode:(unsigned int)arg7;
 - (id)description;
 - (void)dealloc;
 - (id)initWithSourceImage:(id)arg1 bindingInfo:(id)arg2 object:(id)arg3;

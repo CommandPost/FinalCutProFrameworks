@@ -23,22 +23,18 @@ __attribute__((visibility("hidden")))
     FFDominantMotionMediaRep *_mediaRep;
     BOOL _forceInertiaCam;
     BOOL _useInertiaCamOpenCL;
-    struct {
-        unsigned int shouldTerminate:1;
-        unsigned int estimationInProgress:1;
-        unsigned int hasIncorrectLength:1;
-        unsigned int createSmartCollectionFolders:1;
-        unsigned int isReusingAnalysisResults:1;
-    } _state;
+    BOOL _track360;
+    BOOL _is360Stereo;
+    // Error parsing type: {?="shouldTerminate"AB"estimationInProgress"AB"hasIncorrectLength"AB"createSmartCollectionFolders"b1"isReusingAnalysisResults"b1}, name: _state
     void *_FFDestDominantMotionPrivate;
 }
 
 - (BOOL)isProgressive;
 - (void)setIncomingFrame:(id)arg1;
 - (id)newDominantMotionMediaRep;
-- (int)pushFrameFromDest:(void **)arg1 buffer2:(void **)arg2;
-- (int)pushFrameFromDest:(void **)arg1;
-- (int)_pushFrameFromDest:(void **)arg1 buffer2:(void **)arg2 isProgressive:(BOOL)arg3;
+- (int)pushFrameFromDest:(void **)arg1 buffer2:(void **)arg2 hgBitmap1:(HGRef_0776e7a8 *)arg3 hgBitmap2:(HGRef_0776e7a8 *)arg4;
+- (int)pushFrameFromDest:(void **)arg1 hgBitmap:(HGRef_0776e7a8 *)arg2;
+- (int)_pushFrameFromDest:(void **)arg1 buffer2:(void **)arg2 hgBitmap1:(HGRef_0776e7a8 *)arg3 hgBitmap2:(HGRef_0776e7a8 *)arg4 isProgressive:(BOOL)arg5;
 - (void)terminate;
 - (void)storeResultsInAsset;
 - (void)joinTrackerThread;
@@ -53,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)requestedImageInfo;
 - (int)analysisResultCode;
 - (void)dealloc;
-- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 mediaRep:(id)arg2 useInertiaCam:(BOOL)arg3 useInertiaCamOpenCL:(BOOL)arg4 forceInertiaCam:(BOOL)arg5 rangeToAnalyze:(struct _NSRange)arg6 visibleRange:(struct _NSRange)arg7;
+- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 mediaRep:(id)arg2 useInertiaCam:(BOOL)arg3 useInertiaCamOpenCL:(BOOL)arg4 forceInertiaCam:(BOOL)arg5 track360:(BOOL)arg6 is360Stereo:(BOOL)arg7 rangeToAnalyze:(struct _NSRange)arg8 visibleRange:(struct _NSRange)arg9;
 - (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 clip:(id)arg2 asset:(id)arg3 createSmartCollectionFolders:(BOOL)arg4;
 
 @end

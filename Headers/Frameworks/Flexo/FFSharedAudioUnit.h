@@ -16,20 +16,29 @@
     double _sampleRate;
     unsigned int _numChannels;
     BOOL _purgeFlag;
+    // Error parsing type: {atomic<long long>="__a_"Aq}, name: _retainCount
+    // Error parsing type: {atomic<bool>="__a_"AB}, name: _deactivateFlag
+    // Error parsing type: {atomic<bool>="__a_"AB}, name: _invalidatedFlag
 }
 
-+ (BOOL)loadAudioUnit:(struct ComponentInstanceRecord *)arg1 withClassInfo:(struct __CFDictionary *)arg2;
++ (BOOL)loadAudioUnit:(struct ComponentInstanceRecord *)arg1 withEffectState:(struct NSDictionary *)arg2;
++ (void)instantiateWithEffectID:(id)arg1 sampleRate:(double)arg2 numChannels:(unsigned int)arg3 completionBlock:(CDUnknownBlockType)arg4;
++ (id)newInstantiationInProcessWithEffectID:(id)arg1 sampleRate:(double)arg2 numChannels:(unsigned int)arg3;
 + (int)audioUnitCount;
 @property(readonly, nonatomic) unsigned int numChannels; // @synthesize numChannels=_numChannels;
 @property(readonly, nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 @property(readonly, nonatomic) NSString *effectID; // @synthesize effectID=_effectID;
+@property(readonly, nonatomic) struct ComponentInstanceRecord *audioUnit; // @synthesize audioUnit=_unit;
+- (void)notifyAudioUnitInvalidation;
 - (void)unlockAudioUnit:(void *)arg1;
 - (BOOL)lockAudioUnit:(void *)arg1;
-- (struct ComponentInstanceRecord *)audioUnit;
+- (void)clearDeactivatedFlag;
 - (void)setPurgeFlag;
 - (oneway void)release;
+- (BOOL)retainWeakReference;
+- (id)retain;
 - (void)dealloc;
-- (id)initWithEffectID:(id)arg1 sampleRate:(double)arg2 numChannels:(unsigned int)arg3;
+- (id)initWithEffectID:(id)arg1 sampleRate:(double)arg2 numChannels:(unsigned int)arg3 audioUnit:(struct ComponentInstanceRecord *)arg4;
 
 @end
 

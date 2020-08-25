@@ -20,8 +20,8 @@
     NSMutableArray *_newCacheKeysSharpness;
     NSArray *_sliderSettings;
     NSString *_outputCacheString;
-    struct VPA_NR_InstanceCreateParams_BM3D _createParamsNR;
-    struct VPA_NR_UserConfigParams_BM3D _userParamsNR;
+    struct HFVPA_NR_InstanceCreateParams_BM3D _createParamsNR;
+    struct HFVPA_NR_UserConfigParams_BM3D _userParamsNR;
     unsigned int _vpaPixelFormat;
     unsigned int _vpaBitDepth;
     FFImageAbsoluteOutputFormat *_vpaInOutFormat;
@@ -87,8 +87,8 @@
 - (HGRef_265f9e4c)newRearranged360OutputImageAfterDenoise:(id)arg1 retPF:(id *)arg2 retCS:(struct CGColorSpace **)arg3;
 - (HGRef_265f9e4c)newRearranged360OutputImage_StereoOverUnder:(id)arg1 retPF:(id *)arg2 retCS:(struct CGColorSpace **)arg3;
 - (HGRef_265f9e4c)newRearranged360OutputImage_mono:(id)arg1 retPF:(id *)arg2 retCS:(struct CGColorSpace **)arg3;
-- (int)denoiseSequentialMode:(char *)arg1 inputRowBytes:(long long)arg2 outputBaseAddress:(char *)arg3 outputRowBytes:(long long)arg4 filterParams:(struct VPA_NR_ProcessFrameParams_BM3D)arg5;
-- (int)denoiseRandomMode:(id)arg1 inputRowBytes:(long long)arg2 outputBaseAddress:(char *)arg3 outputRowBytes:(long long)arg4 filterParams:(struct VPA_NR_ProcessFrameParams_BM3D)arg5;
+- (int)denoiseSequentialMode:(char *)arg1 inputRowBytes:(long long)arg2 outputBaseAddress:(char *)arg3 outputRowBytes:(long long)arg4 filterParams:(struct HFVPA_NR_ProcessFrameParams_BM3D)arg5;
+- (int)denoiseRandomMode:(id)arg1 inputRowBytes:(long long)arg2 outputBaseAddress:(char *)arg3 outputRowBytes:(long long)arg4 filterParams:(struct HFVPA_NR_ProcessFrameParams_BM3D)arg5;
 - (id)newStoredDenoisedOutputBufferInCache:(id)arg1 outputImageCache:(id)arg2 outputImageKeyString:(id)arg3 originalAlpha:(id)arg4;
 - (id)newOutputCVBufferFromAppleVPA:(id)arg1 denoiseMode:(int)arg2;
 - (void)_storeDataFromNoiseReductionOutput:(id)arg1;
@@ -97,14 +97,14 @@
 - (void)setupInputsToAppleVPA:(long long)arg1 height:(long long)arg2;
 - (void)_dumpFFPixelBuffer:(id)arg1;
 - (id)_bitmapImageRep:(id)arg1;
-- (id)newArrayOfFlattenedPxBuffers:(CDStruct_302d8f15 *)arg1;
+- (id)newArrayOfFlattenedPxBuffers:(CDStruct_f51ed29d *)arg1;
 - (HGRef_265f9e4c)newRearranged360InputImage_mono:(id)arg1 pxNewBounds:(struct CGRect *)arg2;
 - (HGRef_265f9e4c)newRearranged360InputImage_StereoOverUnder:(id)arg1 pxNewBounds:(struct CGRect *)arg2;
 - (HGRef_265f9e4c)newRearranged360InputImageToDenoise:(id)arg1 pxNewBounds:(struct CGRect *)arg2 justBoundsNoGraph:(_Bool)arg3;
 - (id)copyNoiseReductionImageWithBuildInfo:(id)arg1;
 - (id)_newRepresentationalImage;
 - (void)_ensureUnderlyingImages:(id)arg1;
-- (id)_copyLockableForProvider:(id)arg1;
+- (struct FFSharedLock *)_copyLibraryLockForProvider:(id)arg1;
 - (id)newConformedImageToInputStreamSize:(id)arg1 expectedRect:(struct CGRect)arg2 streamPixelTransform:(id)arg3 workingSpace:(int)arg4;
 - (BOOL)needCompositeBackground:(struct CGRect)arg1 expectedRect:(struct CGRect)arg2;
 - (struct CGRect)appleVPAToOriginal_360Bounds:(struct CGRect)arg1;
@@ -132,6 +132,7 @@
 - (id)newCacheKeysForRequestedTimes:(id)arg1;
 - (id)newArrayOfMD5OsForRequestedTimesWithRetInfo:(struct FFFDenoiseInputTokenInfo *)arg1;
 - (id)newImageTimeArray:(CDStruct_1b6d18a9)arg1 inputStream:(id)arg2 samplesBefore:(int)arg3 samplesAfter:(int)arg4 frameDuration:(CDStruct_1b6d18a9)arg5 sampleDuration:(CDStruct_1b6d18a9)arg6;
+- (int)_internalGetStateWithLock;
 - (void)_setError:(int)arg1 info:(id)arg2 shouldUncache:(_Bool)arg3 uncacheReason:(const char *)arg4 alreadyHoldingLock:(_Bool)arg5;
 - (void)_setError:(int)arg1 info:(id)arg2 alreadyHoldingLock:(_Bool)arg3;
 - (void)_setError:(id)arg1 alreadyHoldingLock:(_Bool)arg2 alreadyCheckedState:(_Bool)arg3;

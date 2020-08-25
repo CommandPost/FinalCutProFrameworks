@@ -29,6 +29,7 @@
     BOOL _isAlternatingGroupContainer;
     BOOL _isAlternatingBlock;
     BOOL _noDividerLine;
+    BOOL _recursiveNoDividerLineEnabled;
     BOOL _forceDrawSelectionHighlight;
     BOOL _drawsGroupBox;
     unsigned int _containerFlags;
@@ -49,6 +50,7 @@
     BOOL _forceNonUserEffectsDrawing;
 }
 
+@property(nonatomic) BOOL recursiveNoDividerLineEnabled; // @synthesize recursiveNoDividerLineEnabled=_recursiveNoDividerLineEnabled;
 @property(nonatomic) BOOL forceNonUserEffectsDrawing; // @synthesize forceNonUserEffectsDrawing=_forceNonUserEffectsDrawing;
 @property(nonatomic) BOOL drawsBrick; // @synthesize drawsBrick=_drawsBrick;
 @property(retain, nonatomic) NSView *customContainerView; // @synthesize customContainerView=_customContainerView;
@@ -85,6 +87,7 @@
 - (unsigned long long)draggingEntered:(id)arg1;
 - (void)draggingExited:(id)arg1;
 - (BOOL)performDragOperation:(id)arg1;
+- (BOOL)hasNoDividerLine;
 - (BOOL)isRecursiveSecondarySeparatorDisabled;
 - (void)setIsSecondarySeparatorEnabled:(_Bool)arg1;
 - (void)setIsPrimarySeparatorEnabled:(_Bool)arg1;

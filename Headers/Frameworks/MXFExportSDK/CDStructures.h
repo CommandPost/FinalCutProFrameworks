@@ -21,69 +21,52 @@ struct MMTrack;
 struct MXArray {
     CDUnknownFunctionPointerType *_field1;
     int _field2;
-    char *_field3;
-    long long _field4;
-    struct vector<MXF::MXObject *, std::__1::allocator<MXF::MXObject *>> _field5;
-    unsigned int _field6;
+    struct vector<MXF::MXObject *, std::__1::allocator<MXF::MXObject *>> _field3;
+    unsigned int _field4;
 };
 
 struct MXGroup {
     CDUnknownFunctionPointerType *_field1;
     int _field2;
-    char *_field3;
-    long long _field4;
-    struct vector<MXF::MXObject *, std::__1::allocator<MXF::MXObject *>> _field5;
+    struct vector<MXF::MXObject *, std::__1::allocator<MXF::MXObject *>> _field3;
 };
 
 struct MXKLV;
 
-struct MXKey {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    char *_field3;
-    long long _field4;
-};
-
-struct MXKey16 {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    char *_field3;
-    long long _field4;
-    unsigned long long _field5[2];
-};
+struct MXKey16;
 
 struct MXMetadata;
 
 struct MXMovieDesc {
-    int _field1;
+    struct MXGroup *_field1;
     int _field2;
-    struct MXPrimerPack *_field3;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field4;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field5;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field6;
-    unsigned short *_field7;
-    struct MXKey _field8;
-    struct MXKey _field9;
-    unsigned int _field10;
-    struct MXKey16 _field11;
-    unsigned long long *_field12;
-    unsigned long long *_field13;
+    int _field3;
+    struct MXTimeStamp *_field4;
+    struct MXPrimerPack *_field5;
+    struct __CFString *_field6;
+    struct __CFString *_field7;
+    struct __CFString *_field8;
+    struct __CFString *_field9;
+    struct MXUMID *_field10;
+    struct MXUMID *_field11;
+    unsigned int _field12;
+    struct MXKey16 *_field13;
     unsigned long long *_field14;
-    unsigned long long _field15;
-    unsigned long long _field16;
-    struct MXKey16 _field17;
-    unsigned int _field18;
-    struct vector<MXF::MMTrack *, std::__1::allocator<MXF::MMTrack *>> _field19;
-    struct map<MEMetadataKey, MXF::MXObject *, std::__1::less<MEMetadataKey>, std::__1::allocator<std::__1::pair<const MEMetadataKey, MXF::MXObject *>>> _field20;
-    unsigned long long _field21;
-    unsigned short _field22;
-    int _field23;
-    int _field24;
-    struct MXKLV *_field25;
-    struct MXPackage *_field26;
-    struct MXMetadata *_field27;
-    struct MXGroup _field28;
-    struct MXPartitionHeader *_field29;
+    unsigned long long *_field15;
+    unsigned long long *_field16;
+    unsigned long long _field17;
+    unsigned long long _field18;
+    struct MXKey16 *_field19;
+    unsigned int _field20;
+    struct vector<MXF::MMTrack *, std::__1::allocator<MXF::MMTrack *>> _field21;
+    struct map<MEMetadataKey, MXF::MXObject *, std::__1::less<MEMetadataKey>, std::__1::allocator<std::__1::pair<const MEMetadataKey, MXF::MXObject *>>> _field22;
+    unsigned long long _field23;
+    unsigned short _field24;
+    int _field25;
+    int _field26;
+    struct MXKLV *_field27;
+    struct MXPackage *_field28;
+    struct MXMetadata *_field29;
 };
 
 struct MXObject;
@@ -93,32 +76,22 @@ struct MXPackage;
 struct MXPartitionHeader {
     CDUnknownFunctionPointerType *_field1;
     int _field2;
-    char *_field3;
-    long long _field4;
-    unsigned char _field5[16];
-    _Bool _field6;
-    unsigned char _field7[16];
-    struct MXPrimerPack *_field8;
-    struct MXKLV *_field9;
-    struct MXMetadata *_field10;
-    struct MXGroup _field11;
+    _Bool _field3;
+    unsigned long long _field4[2];
+    unsigned long long _field5[2];
+    struct MXPrimerPack *_field6;
+    struct MXKLV *_field7;
+    struct MXMetadata *_field8;
+    struct MXGroup _field9;
 };
 
 struct MXPrimerPack;
 
-struct MXTimeStamp {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    char *_field3;
-    long long _field4;
-    char _field5;
-    char _field6;
-    short _field7;
-    char _field8;
-    char _field9;
-    char _field10;
-    char _field11;
-};
+struct MXTimeStamp;
+
+struct MXUMID;
+
+struct __CFString;
 
 struct __list_node_base<FrameEntry, void *> {
     struct __list_node_base<FrameEntry, void *> *__prev_;
@@ -134,41 +107,17 @@ struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *_field1;
 };
 
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    unsigned long long _field1;
-                    unsigned long long _field2;
-                    char *_field3;
-                } _field1;
-                struct __short {
-                    union {
-                        unsigned char _field1;
-                        char _field2;
-                    } _field1;
-                    char _field2[23];
-                } _field2;
-                struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
-};
-
 struct list<FrameEntry, std::__1::allocator<FrameEntry>> {
     struct __list_node_base<FrameEntry, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<FrameEntry, void *>>> {
-        unsigned long long __first_;
+        unsigned long long __value_;
     } __size_alloc_;
 };
 
 struct list<RIPEntry, std::__1::allocator<RIPEntry>> {
     struct __list_node_base<RIPEntry, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<RIPEntry, void *>>> {
-        unsigned long long __first_;
+        unsigned long long __value_;
     } __size_alloc_;
 };
 

@@ -6,7 +6,7 @@
 
 #import <Ozone/OZLibraryBaseHistoryEntry.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface OZLibraryHistoryEntry : OZLibraryBaseHistoryEntry
 {
@@ -18,12 +18,14 @@
     unsigned int _includeType1[4];
     unsigned int _includeType2[4];
     unsigned int _excludeType[4];
+    NSArray *_allowedFileTypes;
     NSString *_column0Selection;
     NSString *_column1Selection;
     BOOL _col1AllItemSelected;
 }
 
 - (void)setDisplayState:(id)arg1;
+- (void)setAllowedFileTypes:(id)arg1;
 - (void)setExcludeType:(const struct PCUUID *)arg1;
 - (void)setIncludeType2:(const struct PCUUID *)arg1;
 - (void)setIncludeType1:(const struct PCUUID *)arg1;

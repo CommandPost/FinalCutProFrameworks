@@ -10,10 +10,10 @@
 {
 }
 
-+ (id)imageTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2;
++ (id)imageTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2 pluginUUID:(id)arg3 pluginSessionID:(unsigned long long)arg4;
 - (BOOL)addParameter:(id)arg1;
 - (id)copy;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 parameterFlags:(unsigned int)arg3 transactionType:(int)arg4 transactionID:(unsigned long long)arg5;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 parameterFlags:(unsigned int)arg3 transactionType:(int)arg4 transactionID:(unsigned long long)arg5 pluginUUID:(id)arg6 pluginSessionID:(unsigned long long)arg7;
 
 @end
 

@@ -4,20 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "OZChanFolderController.h"
-
-@class FFInspectorAudioEffectsControllerManager;
+#import <Flexo/FFInspectorOZEffectsController.h>
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorAudioEffectsController : OZChanFolderController
+@interface FFInspectorAudioEffectsController : FFInspectorOZEffectsController
 {
-    FFInspectorAudioEffectsControllerManager *_effectsManager;
 }
 
-- (float)suggestedMaxParamWidth;
-- (void)didBuildUI;
-- (void)dealloc;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
++ (Class)effectsManagerClass;
+- (id)newEffectsBrickWithEffect:(id)arg1 effectsRootDelegate:(id)arg2 context:(id)arg3;
+- (id)supportedDraggedEffectTypes;
+- (id)newEffectsFolderHeadingControllerWithOptions:(unsigned int)arg1 context:(id)arg2;
+- (id)effectStackForSelectedObject:(id)arg1;
 
 @end
 

@@ -18,18 +18,17 @@
     LKTextField *_lastFrameTF;
     LKTextField *_timeElapsedTF;
     LKTextField *_timeRemainingTF;
-    LKButton *_closeWhenDoneButton;
     LKButton *_cancelButton;
     OZRenderProgressManager *_exportManager;
     NSString *_finishedMsg;
     CDStruct_1b6d18a9 _startTime;
     CDStruct_1b6d18a9 _endTime;
     CDStruct_1b6d18a9 _frameDuration;
+    BOOL _modalLoopCompleted;
 }
 
 + (id)sharedInstance;
 - (void)abortRender:(id)arg1;
-- (void)closeProgressWhenDone:(id)arg1;
 - (void)updateRenderFailed:(const CDStruct_1b6d18a9 *)arg1;
 - (void)updateRenderDone;
 - (void)updateAudioInfo:(double)arg1 lastSample:(double)arg2 timeElapsed:(double)arg3;

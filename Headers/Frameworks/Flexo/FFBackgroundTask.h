@@ -6,7 +6,7 @@
 
 #import "NSOperation.h"
 
-@class FFBackgroundTaskQueue, NSArray, NSDate, NSString, Stopwatch;
+@class FFBackgroundTaskQueue, NSArray, NSDate, NSLock, NSString, Stopwatch;
 
 @interface FFBackgroundTask : NSOperation
 {
@@ -16,8 +16,7 @@
     id <FFBackgroundTaskTarget><NSObject> _target;
     SEL _taskSelector;
     id _taskObject;
-    BOOL _modalOnMainThread;
-    BOOL _paused;
+    // Error parsing type: Ac, name: _paused
     BOOL _performanceMonitoringEnabled;
     BOOL _hasStarted;
     NSArray *_pendingJobNames;
@@ -31,12 +30,14 @@
     float _progress;
     NSString *_taskRunGroup;
     BOOL _serializedFlag;
+    NSLock *_progressLock;
     NSString *_displayHeaderName;
 }
 
 + (double)progressForPendingTasks:(id)arg1 totalTaskCount:(long long)arg2 excludeIndeterminate:(BOOL)arg3 excludeUnremarkable:(BOOL)arg4;
 + (double)progressForTasks:(id)arg1;
 @property(copy) NSString *displayHeaderName; // @synthesize displayHeaderName=_displayHeaderName;
+@property(readonly) NSLock *progressLock; // @synthesize progressLock=_progressLock;
 @property(retain) NSArray *pendingJobNames; // @synthesize pendingJobNames=_pendingJobNames;
 @property int actionOptions; // @synthesize actionOptions=_actionOptions;
 @property int type; // @synthesize type=_taskType;
@@ -46,7 +47,6 @@
 @property(readonly) int lowOverheadBehavior; // @synthesize lowOverheadBehavior=_lowOverheadBehavior;
 @property(copy) NSString *areaName; // @synthesize areaName=_areaName;
 @property(retain) NSDate *addedTime; // @synthesize addedTime=_addedTime;
-@property(getter=isModalOnMainThread) BOOL modalOnMainThread; // @synthesize modalOnMainThread=_modalOnMainThread;
 @property(retain) id object; // @synthesize object=_taskObject;
 @property SEL taskSelector; // @synthesize taskSelector=_taskSelector;
 @property(retain) id <FFBackgroundTaskTarget><NSObject> target; // @synthesize target=_target;
@@ -60,11 +60,11 @@
 - (BOOL)waitUntilFinishedWithTimeout:(id)arg1;
 - (BOOL)isNotableTask;
 - (BOOL)performanceMonitoringEnabled;
-- (void)setProgress:(float)arg1;
-- (float)progress;
+@property float progress;
 - (BOOL)hasPaused;
 - (void)resume;
 - (void)pause;
+- (void)dequeueAndRun;
 - (void)setPaused:(BOOL)arg1;
 @property(readonly, getter=isPaused) BOOL paused;
 - (BOOL)supportsPaused;

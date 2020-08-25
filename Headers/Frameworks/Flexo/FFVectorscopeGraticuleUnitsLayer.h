@@ -4,26 +4,28 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFVectorscopeGraticuleLayer.h>
+#import "CALayer.h"
 
 __attribute__((visibility("hidden")))
-@interface FFVectorscopeGraticuleUnitsLayer : FFVectorscopeGraticuleLayer
+@interface FFVectorscopeGraticuleUnitsLayer : CALayer
 {
     long long _phase;
     long long _barTarget;
-    int _YCbCrColorSpace;
-    CDStruct_d36b2e56 _state;
+    int _colorSpace;
+    BOOL _showIandQ;
+    BOOL _showSkinToneIndicator;
 }
 
 - (void)drawInContext:(struct CGContext *)arg1;
-- (void)setNeedsUpdateFromDest:(unsigned long long)arg1;
+- (void)layoutSublayers;
+- (void)_layoutUnitsLabelLayer:(id)arg1 bounds:(struct CGRect)arg2;
 - (void)setContentsScale:(double)arg1;
-- (void)setYCbCrColorSpace:(int)arg1;
-- (void)hideGraticuleLabels:(BOOL)arg1;
-- (void)setShowSkinToneIndicator:(BOOL)arg1;
-- (void)setShowIandQ:(BOOL)arg1;
-- (void)setBarTarget:(long long)arg1;
-- (void)setPhase:(long long)arg1;
+- (void)showHideForGuidesVisibility:(BOOL)arg1;
+@property(nonatomic) BOOL showSkinToneIndicator; // @dynamic showSkinToneIndicator;
+@property(nonatomic) BOOL showIandQ; // @dynamic showIandQ;
+@property(nonatomic) int colorSpace; // @dynamic colorSpace;
+@property(nonatomic) long long barTarget; // @dynamic barTarget;
+@property(nonatomic) long long phase; // @dynamic phase;
 
 @end
 

@@ -29,14 +29,12 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)draggingSession:(id)arg1 sourceOperationMaskForDraggingContext:(long long)arg2;
 - (id)view;
 - (void)drawDividerInRect:(struct CGRect)arg1;
-- (BOOL)draggingSession:(id)arg1 acceptDrop:(id)arg2 subController:(id)arg3;
-- (BOOL)draggingSession:(id)arg1 validateDrop:(id)arg2 subController:(id)arg3;
-- (BOOL)draggingSession:(id)arg1 reorderSubController:(id)arg2 withRow:(unsigned long long)arg3;
-- (void)_reorderSubControllerAtIndex:(unsigned long long)arg1 newIndex:(unsigned long long)arg2;
-- (unsigned long long)draggingSession:(id)arg1 validateDrop:(id)arg2 subController:(id)arg3 proposedRow:(unsigned long long)arg4;
-- (void)draggingSession:(id)arg1 didEndWithSubController:(id)arg2;
-- (void)draggingSession:(id)arg1 willBeginWithSubController:(id)arg2;
-- (BOOL)shouldBeginDraggingSessionForSubController:(id)arg1;
+- (BOOL)draggingSession:(id)arg1 acceptDrop:(id)arg2 row:(long long)arg3;
+- (unsigned long long)draggingSession:(id)arg1 validateDrop:(id)arg2 proposedRow:(long long)arg3;
+- (id)_collectIdentifiersFromDraggingInfo:(id)arg1;
+- (void)didEndDraggingSession:(id)arg1;
+- (void)willBeginDraggingSession:(id)arg1;
+- (id)identifierForPasteboardWriterAtRow:(long long)arg1;
 - (id)registerDragTypes;
 - (id)headerController;
 - (unsigned long long)rowOfSubController:(id)arg1;
@@ -45,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)insertSubControllers:(id)arg1 atIndexes:(id)arg2;
 - (void)addSubControllersFromArray:(id)arg1;
 - (void)removeAllSubControllers;
+- (void)removeSubControllerAtIndex:(unsigned long long)arg1;
 - (void)removeSubController:(id)arg1;
 - (void)insertSubController:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)addSubController:(id)arg1;

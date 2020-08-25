@@ -98,17 +98,6 @@
 - (CDStruct_e83c9415)clippedRange;
 - (BOOL)hasInvalidClippedRange;
 - (void)informParentEffectsChanged;
-- (void)removeChannel:(id)arg1;
-- (BOOL)canRemoveChannel:(id)arg1;
-- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
-- (BOOL)canReorderChannel:(id)arg1;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)tabSplitIdentifiersForInspectorTabIdentifier:(id)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
-- (id)classNameForInspectorTabIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)inspectorIdentifier;
-- (id)inspectorClassName;
 - (BOOL)canBePlacedInSpine;
 - (BOOL)audioPlayEnable;
 - (BOOL)videoPlayEnable;
@@ -120,6 +109,11 @@
 - (void)_setDeferUpdates:(BOOL)arg1;
 - (BOOL)isMissingCameraLUT;
 - (BOOL)supportsLogProcessing;
+- (BOOL)supportsExposureOffsetOverride;
+- (BOOL)supportsIsoEIOverride;
+- (BOOL)supportsTemperatureOverride;
+- (BOOL)cameraISOIsValid;
+- (BOOL)cameraColorTemperatureIsValid;
 - (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;
@@ -188,7 +182,9 @@
 - (void)setAnchorPair:(struct PC_CMTimePair)arg1 alignedToParent:(id)arg2;
 - (void)setAnchorPair:(struct PC_CMTimePair)arg1;
 - (void)removeAllAnchoredItemsObjects;
+- (void)revealProxyInFinder:(id)arg1;
 - (void)revealInFinder:(id)arg1;
+- (BOOL)canRevealProxyInFinder;
 - (BOOL)canRevealInFinder;
 - (void)removeAnchoredItemsObject:(id)arg1;
 - (BOOL)hasAnchoredItemsObject:(id)arg1;
@@ -222,6 +218,17 @@
 - (BOOL)actionSelectPreviousVariantWithError:(id *)arg1 loopAround:(BOOL)arg2;
 - (BOOL)actionPrivate_SetVariantUsingBlock:(CDUnknownBlockType)arg1 actionName:(id)arg2 error:(id *)arg3;
 - (id)_newRoleChangeOperationForSetVariant;
+- (void)removeChannel:(id)arg1;
+- (BOOL)canRemoveChannel:(id)arg1;
+- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
+- (BOOL)canReorderChannel:(id)arg1;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)tabSplitIdentifiersForInspectorTabIdentifier:(id)arg1;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
+- (id)inspectorIdentifier;
+- (id)inspectorClassName;
 
 @end
 

@@ -9,9 +9,8 @@
 #import "FFMediaReaderBasedProvider.h"
 #import "FFSeedProviderMD5Protocol.h"
 
-@class FFMIORADAsset, NSObject<OS_dispatch_queue>, NSString, NSURL;
+@class AVURLAsset, FFMIORADAsset, NSObject<OS_dispatch_queue>, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface FFProviderFig : FFProvider <FFSeedProviderMD5Protocol, FFMediaReaderBasedProvider>
 {
     CDStruct_bdcb2b0d _md5;
@@ -23,8 +22,12 @@ __attribute__((visibility("hidden")))
     NSURL *_lastKnownURLStandardized;
     NSString *_lastKnownURLPath;
     unsigned long long _estimatedBandwidth;
+    AVURLAsset *_primedAVURLAsset;
+    NSURL *_sidecarFileURL;
 }
 
++ (BOOL)supportsRemoteURLs;
++ (id)primeProviderForRemoteURL:(id)arg1;
 + (struct opaqueCMFormatDescription *)_copyFirstVideoFormatDescriptionForURL:(id)arg1;
 + (unsigned int)videoCodecForURL:(id)arg1;
 + (BOOL)videoCodecGreaterThan8Bit:(id)arg1;
@@ -32,9 +35,10 @@ __attribute__((visibility("hidden")))
 + (id)utis;
 + (void)releaseSharedInstance;
 + (void)initialize;
-- (id)subtitlesInRange:(CDStruct_e83c9415)arg1;
+- (BOOL)pluginMissing;
+- (id)sidecarFileURL;
+- (void)setSidecarFileURL:(id)arg1;
 - (id)closedCaptionsInRange:(CDStruct_e83c9415)arg1;
-- (BOOL)hasSubtitles;
 - (BOOL)hasClosedCaptions;
 - (void)fixSpotlightMetadata:(id)arg1;
 - (void)sniffSpotlightMetadataFig:(id)arg1;
@@ -46,14 +50,17 @@ __attribute__((visibility("hidden")))
 - (CDStruct_e83c9415)_avRange;
 - (CDStruct_bdcb2b0d)_md5;
 - (id)displayName;
-- (id)eventDocumentIDAndPath;
+- (id)contentIdentifier;
 - (id)radAsset;
 - (void)_setupSources;
 - (id)_debugFileName;
 - (void)dealloc;
 - (id)initWithMedia:(id)arg1;
+- (id)_initSetup;
+- (id)initWithResourceLocator:(id)arg1;
 - (id)initWithAssetFileID:(id)arg1;
--     // Error parsing type: ^{FFMediaReader=^^?^{__CFString}i{atomic<int>=Ai}df@{stat=iSSQIIi{timespec=qq}{timespec=qq}{timespec=qq}{timespec=qq}qqiIIi[2q]}{_opaque_pthread_mutex_t=q[56c]}{atomic<bool>=AB}{?=qiIq}@@{_opaque_pthread_mutex_t=q[56c]}@B[3@]}16@0:8, name: copyMediaReader
+-     // Error parsing type: ^{FFMediaReader=^^?^{__CFString}{atomic<int>=Ai}{atomic<int>=Ai}{atomic<double>=Ad}f@{stat=iSSQIIi{timespec=qq}{timespec=qq}{timespec=qq}{timespec=qq}qqiIIi[2q]}{_opaque_pthread_mutex_t=q[56c]}{atomic<bool>=AB}{?=qiIq}@@{_opaque_pthread_mutex_t=q[56c]}@B[3@]}16@0:8, name: copyMediaReader
+- (id)initWithAVURLAsset:(id)arg1;
 - (int)videoCodecBitRateInKbps;
 
 @end

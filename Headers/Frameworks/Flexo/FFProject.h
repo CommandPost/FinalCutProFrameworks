@@ -25,21 +25,32 @@
     NSSet *_mediaReferences;
     NSURL *_directory;
     int _mediaAvailable;
+    BOOL _proxyFallback;
     unsigned int _mediaSyncStatusCount;
     int _effectsAvailable;
     NSMutableDictionary *_mediaReferencesDict;
     NSURL *_lastCachedDirectory;
     NSString *_pathForLastCachedDirectory;
+    BOOL _observingMediaChanges;
+    // Error parsing type: AQ, name: _customReleaseState
+    BOOL _disableModDateChange;
 }
 
 + (id)externalMediaFolderNames;
++ (id)folderNameForRep:(id)arg1;
 + (id)externalFolderPathForProjectFolderPath:(id)arg1;
 + (id)builtinColorPresetsPaths;
 + (id)colorPresetsPaths;
++ (id)faceTrackingFilePathForObject:(id)arg1;
++ (id)faceTrackingFolderPathForObject:(id)arg1;
++ (id)sceneFilePathForObject:(id)arg1;
++ (id)sceneFolderPathForObject:(id)arg1;
 + (id)colorFilePathForObject:(id)arg1;
 + (id)colorFolderPathForObject:(id)arg1;
 + (id)findPeopleFilePathForObject:(id)arg1;
 + (id)findPeopleFolderPathForObject:(id)arg1;
++ (id)_filePathForObject:(id)arg1 selectorPath:(SEL)arg2 filePathExtension:(id)arg3;
++ (id)_folderPathForObject:(id)arg1 selectorPath:(SEL)arg2;
 + (id)assetForObject:(id)arg1;
 + (id)renderFilesPeaksPathsForObject:(id)arg1;
 + (id)renderFilesThumbnailPathsForObject:(id)arg1;
@@ -52,6 +63,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (BOOL)classIsAbstract;
+@property(nonatomic) BOOL disableModDateChange; // @synthesize disableModDateChange=_disableModDateChange;
 @property(readonly, nonatomic) NSSet *mediaRefsOfflineProxyQuality; // @synthesize mediaRefsOfflineProxyQuality=_mediaRefsOfflineProxyQuality;
 @property(readonly, nonatomic) NSSet *mediaRefsOfflineHighQuality; // @synthesize mediaRefsOfflineHighQuality=_mediaRefsOfflineHighQuality;
 - (id)namesForKeywords:(id)arg1;
@@ -70,7 +82,7 @@
 - (void)_assetsChangedNotification:(id)arg1;
 - (BOOL)lastKnownMediaAvailable;
 - (BOOL)mediaAvailable;
-- (BOOL)_updateOfflineReasonsForQuality:(int)arg1;
+- (BOOL)_updateOfflineReasonsForQuality:(int)arg1 proxyFallback:(BOOL)arg2;
 - (void)_offlineMediaChanged;
 @property(readonly, nonatomic) int mediaStatus;
 - (int)mediaQuality;
@@ -122,17 +134,21 @@
 - (id)flowTransFolderPath;
 - (id)stabilizationFolderPath;
 - (id)opticalFlowFolderPath;
+- (id)faceTrackingFolderPath;
 - (id)colorFolderPath;
 - (id)findPeopleFolderPath;
 - (id)analysisFolderPath;
 - (id)proxyMediaURL;
 - (id)proxyMediaPath;
 - (id)proxyMediaURLForImport;
+- (id)proxyMediaURLForImport:(id)arg1;
 - (id)optimizedMediaPath;
 - (id)optimizedMediaURL;
 - (id)optimizedMediaURLForImport;
+- (id)optimizedMediaURLForImport:(id)arg1;
 - (id)originalMediaPath;
 - (id)originalMediaURL;
+- (id)originalMediaURLForImport:(id)arg1;
 - (id)originalMediaURLForImport;
 - (id)projectPath;
 - (id)location;
@@ -151,6 +167,10 @@
 - (BOOL)update_changeAssetRefToMediaRef;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+-     // Error parsing type: ^AQ16@0:8, name: customReleaseState
+- (void)_FFProjectObserveMediaChanges:(BOOL)arg1;
+- (void)willClose;
+- (void)willDealloc;
 - (void)dealloc;
 - (id)initWithDisplayName:(id)arg1;
 

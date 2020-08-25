@@ -11,7 +11,6 @@
 @interface FFProStoryTimelinePresentation : FFStoryTimelinePresentation
 {
     long long _organizedMode;
-    FFTimelineItemAppearanceTable *_titleOnlyAppearanceTable;
     FFTimelineItemAppearanceTable *_precisionEditorAppearanceTable;
     NSArray *_oldAudioLanes;
 }
@@ -60,7 +59,6 @@
 - (id)visibleCaptionLanes;
 - (id)allCaptionLanes;
 - (void)_populateAppearanceRulesPrecisionEditor;
-- (void)_populateAppearanceRulesTitleOnly;
 - (void)_populateAppearanceRulesStandard;
 - (void)_loadItemAppearanceRules;
 - (void)dealloc;

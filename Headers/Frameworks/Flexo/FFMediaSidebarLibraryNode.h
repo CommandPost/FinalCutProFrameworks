@@ -16,6 +16,7 @@
 - (unsigned long long)validateDrop:(id)arg1 childIndex:(long long)arg2;
 - (BOOL)_performDraggingProjectImport:(id)arg1 dragInfo:(id)arg2;
 - (unsigned long long)_validateDraggingProjectImport:(id)arg1 dragInfo:(id)arg2;
+- (id)pasteboardType;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)stopObservingChildNodes;
 - (void)startObservingChildNodes;

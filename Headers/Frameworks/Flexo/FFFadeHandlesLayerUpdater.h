@@ -12,8 +12,10 @@ __attribute__((visibility("hidden")))
 @interface FFFadeHandlesLayerUpdater : NSObject
 {
     NSCountedSet *_fadeHandlesLayers;
+    BOOL _ignoreLayerUpdateRequests;
 }
 
+@property(nonatomic) BOOL ignoreLayerUpdateRequests; // @synthesize ignoreLayerUpdateRequests=_ignoreLayerUpdateRequests;
 - (void)unregisterFadeLayer:(id)arg1;
 - (void)registerFadeLayer:(id)arg1;
 - (void)updateLayers;

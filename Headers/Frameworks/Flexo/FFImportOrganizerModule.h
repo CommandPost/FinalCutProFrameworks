@@ -84,7 +84,7 @@
     NSString *_noFilteredItemsStatusString;
 }
 
-+ (void)targetInfoForItems:(id)arg1 targetInfo:(CDStruct_7da301ea *)arg2 needsREDInfo:(BOOL)arg3;
++ (void)targetInfoForItems:(id)arg1 targetInfo:(CDStruct_508ba817 *)arg2 needsREDInfo:(BOOL)arg3;
 + (void)initialize;
 + (id)keyPathsForValuesAffectingCanArchive;
 @property(retain) NSString *noFilteredItemsStatusString; // @synthesize noFilteredItemsStatusString=_noFilteredItemsStatusString;
@@ -175,7 +175,7 @@
 - (id)volumeToArchiveAtCurrentNode;
 - (void)finishedLoadingChanged;
 - (BOOL)finishedLoading;
-- (void)scanTargetInfo:(CDStruct_7da301ea *)arg1 forSelectedItems:(id)arg2 needsREDInfo:(BOOL)arg3;
+- (void)scanTargetInfo:(CDStruct_508ba817 *)arg1 forSelectedItems:(id)arg2 needsREDInfo:(BOOL)arg3;
 - (void)importClips:(id)arg1;
 - (void)setShowListMode:(id)arg1;
 - (void)setShowFilmstripMode:(id)arg1;

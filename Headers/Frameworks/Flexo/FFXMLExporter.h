@@ -34,12 +34,7 @@ __attribute__((visibility("hidden")))
     unsigned int _textStyleCount;
     NSDictionary *_customMetadataRepresentationDict;
     FFMetadataViewSet *_metadataViewSet;
-    BOOL _use_asset_file_short_hand_syntax;
-    struct {
-        char _exclude_mod_date_on_sequences;
-        char _exclude_asset_file_info;
-        char _use_keyword_marker_keyword;
-    } _flags_for_compare;
+    CDStruct_508ba817 _flags_for_compare;
 }
 
 + (BOOL)isCensoredKeyForPreviousVersion:(id)arg1;
@@ -68,7 +63,8 @@ __attribute__((visibility("hidden")))
 - (void)addChildrenForMediaEventFolder:(id)arg1 element:(id)arg2;
 - (void)addMediaEventFolderObject:(id)arg1 element:(id)arg2;
 - (id)newMediaEventSmartCollectionElement:(id)arg1;
-- (id)newSmartCollectionRoleUIDFilterElement:(id)arg1;
+- (id)newSmartCollectionMediaUsageFilterElement:(id)arg1;
+- (id)newSmartCollectionRoleUIDFilterElement:(id)arg1 library:(id)arg2;
 - (id)newSmartCollectionTimeFilterElement:(id)arg1;
 - (id)newSmartCollectionPropertyFilterElement:(id)arg1;
 - (id)newSmartCollectionPeopleFilterElement:(id)arg1;

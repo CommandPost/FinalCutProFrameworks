@@ -10,13 +10,13 @@
 
 @interface FFTimelineLayoutMetrics : NSObject
 {
-    BOOL _showsItemHeadersOnly;
     BOOL _showsWaveformsForPrecisionEditor;
     BOOL _showsAudioLaneHeaders;
     FFStoryTimelinePresentation *_storyTimelinePresentation;
     double _itemHeight;
     double _itemHeaderHeight;
-    double _itemHeaderOnlyHeight;
+    double _minimumItemHeight;
+    double _minimumTitlesOnlyItemHeight;
     double _minimizedItemHeight;
     double _anchorHeightScaleFactor;
     double _audioWaveformRatio;
@@ -25,12 +25,12 @@
 @property(nonatomic) double audioWaveformRatio; // @synthesize audioWaveformRatio=_audioWaveformRatio;
 @property(nonatomic) double anchorHeightScaleFactor; // @synthesize anchorHeightScaleFactor=_anchorHeightScaleFactor;
 @property(nonatomic) double minimizedItemHeight; // @synthesize minimizedItemHeight=_minimizedItemHeight;
-@property(nonatomic) double itemHeaderOnlyHeight; // @synthesize itemHeaderOnlyHeight=_itemHeaderOnlyHeight;
+@property(nonatomic) double minimumTitlesOnlyItemHeight; // @synthesize minimumTitlesOnlyItemHeight=_minimumTitlesOnlyItemHeight;
+@property(nonatomic) double minimumItemHeight; // @synthesize minimumItemHeight=_minimumItemHeight;
 @property(nonatomic) double itemHeaderHeight; // @synthesize itemHeaderHeight=_itemHeaderHeight;
 @property(nonatomic) double itemHeight; // @synthesize itemHeight=_itemHeight;
 @property(nonatomic) BOOL showsAudioLaneHeaders; // @synthesize showsAudioLaneHeaders=_showsAudioLaneHeaders;
 @property(nonatomic) BOOL showsWaveformsForPrecisionEditor; // @synthesize showsWaveformsForPrecisionEditor=_showsWaveformsForPrecisionEditor;
-@property(nonatomic) BOOL showsItemHeadersOnly; // @synthesize showsItemHeadersOnly=_showsItemHeadersOnly;
 @property(nonatomic) FFStoryTimelinePresentation *storyTimelinePresentation; // @synthesize storyTimelinePresentation=_storyTimelinePresentation;
 - (id)boxMetricsForLane:(id)arg1;
 - (double)heightForItemComponent:(id)arg1 proposedHeight:(double)arg2;

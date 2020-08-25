@@ -33,9 +33,9 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _playbackLastHostTimestamp;
     unsigned long long _playbackLastSequenceNumber;
     unsigned long long _playbackFirstSequenceNumberPulled;
-    struct FFCMIOPlaybackTimebaseStartedSignalQueue *_timebaseStartedSignalQueue;
+    // Error parsing type: ^{FFCMIOPlaybackTimebaseStartedSignalQueue=^^?i{atomic<FFLocklessQueueBase::ElementBase *>=A^{ElementBase}}^{ElementBase}{atomic<FFLocklessQueueBase::ElementBase *>=A^{ElementBase}}^?^v}, name: _timebaseStartedSignalQueue
     struct FFCMIOPlaybackTimingInfoQueue *_timingInfoQueue;
-    struct FFCMIOPlaybackTimestampQueue *_timestampQueue;
+    // Error parsing type: ^{FFCMIOPlaybackTimestampQueue=^^?i{atomic<FFLocklessQueueBase::ElementBase *>=A^{ElementBase}}^{ElementBase}{atomic<FFLocklessQueueBase::ElementBase *>=A^{ElementBase}}^?^v}, name: _timestampQueue
     struct FFCMIOPlaybackErrorQueue *_errorQueue;
     CDStruct_1b6d18a9 _currentErrorTime;
     CDStruct_1b6d18a9 _errorAdjustedTime;

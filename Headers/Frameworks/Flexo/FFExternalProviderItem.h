@@ -6,11 +6,11 @@
 
 #import "NSObject.h"
 
-@class FFProServiceBase, NSImage, NSString;
+@class NSImage, NSString, PXProServiceBase;
 
 @interface FFExternalProviderItem : NSObject
 {
-    FFProServiceBase *_plugIn;
+    PXProServiceBase *_plugIn;
     NSString *_identifier;
     NSString *_name;
     NSImage *_icon;
@@ -19,7 +19,7 @@
 }
 
 @property(readonly, nonatomic) NSString *key; // @synthesize key=_key;
-@property(readonly, nonatomic) FFProServiceBase *plugIn; // @synthesize plugIn=_plugIn;
+@property(readonly, nonatomic) PXProServiceBase *plugIn; // @synthesize plugIn=_plugIn;
 @property(readonly, nonatomic) NSString *version; // @synthesize version=_version;
 @property(readonly, nonatomic) NSImage *icon; // @synthesize icon=_icon;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;

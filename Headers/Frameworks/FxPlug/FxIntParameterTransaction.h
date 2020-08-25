@@ -20,7 +20,7 @@
 }
 
 + (BOOL)supportsSecureCoding;
-+ (id)intTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2;
++ (id)intTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2 pluginUUID:(id)arg3 pluginSessionID:(unsigned long long)arg4;
 @property int value; // @synthesize value;
 @property int sliderDelta; // @synthesize sliderDelta;
 @property int sliderMax; // @synthesize sliderMax;
@@ -38,7 +38,7 @@
 - (id)copy;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(int)arg3 parameterMin:(int)arg4 parameterMax:(int)arg5 sliderMin:(int)arg6 sliderMax:(int)arg7 sliderDelta:(int)arg8 parameterFlags:(unsigned int)arg9 transactionType:(int)arg10 transactionID:(unsigned long long)arg11;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(int)arg3 parameterMin:(int)arg4 parameterMax:(int)arg5 sliderMin:(int)arg6 sliderMax:(int)arg7 sliderDelta:(int)arg8 parameterFlags:(unsigned int)arg9 transactionType:(int)arg10 transactionID:(unsigned long long)arg11 pluginUUID:(id)arg12 pluginSessionID:(unsigned long long)arg13;
 
 @end
 

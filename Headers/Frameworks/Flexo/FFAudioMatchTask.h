@@ -8,7 +8,7 @@
 
 #import "FFBackgroundTaskTarget.h"
 
-@class FFAnchoredObject, FFAudioMatchRequest, FFAudioUnitAnalyzingEffect, NSDictionary, NSMutableArray, NSMutableSet;
+@class FFAnchoredObject, FFAudioMatchRequest, FFAudioUnitAnalyzingEffect, NSMutableArray, NSMutableSet;
 
 @interface FFAudioMatchTask : NSObject <FFBackgroundTaskTarget>
 {
@@ -20,7 +20,7 @@
     BOOL _taskRunning;
     BOOL _taskCancelled;
     CDUnknownBlockType _completionBlock;
-    NSDictionary *_matchEffectStateForObject;
+    struct NSDictionary *_matchEffectStateForObject;
     FFAudioUnitAnalyzingEffect *_analyzedMatchEffect;
 }
 

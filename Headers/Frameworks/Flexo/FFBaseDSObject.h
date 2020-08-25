@@ -13,7 +13,7 @@
 
 @interface FFBaseDSObject : FFModelObject <FFMergeObjectProtocol, FFObjectCompare>
 {
-    NSString *_cacheIdentifier;
+    // Error parsing type: A@, name: _cacheIdentifier
     FFUserDefaults *_userDefaults;
 }
 

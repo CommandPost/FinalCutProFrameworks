@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (long long)activeSkimmableModuleType;
 - (void)_viewsContentSizeDidChange:(struct CGSize)arg1;
 
 @end

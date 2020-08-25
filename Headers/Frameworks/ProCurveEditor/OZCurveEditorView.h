@@ -30,7 +30,6 @@
 - (void)getCurveSnapshot:(id)arg1;
 - (void)drawMarkers:(struct CGRect)arg1;
 - (void)drawEndpoints;
-- (void)drawCurrentTime:(struct CGRect)arg1;
 - (void)drawOverlays:(struct CGRect)arg1;
 - (unsigned int)numberOfTickMarks;
 - (id)getCoordinates:(id)arg1 time:(CDStruct_1b6d18a9)arg2 value:(double)arg3;

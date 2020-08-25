@@ -7,7 +7,15 @@
 #import "NSArray.h"
 
 @interface NSArray (FlexoAdditions)
++ (id)scriptingUserListWithDescriptor:(id)arg1;
 - (id)arrayByGroupingObjects:(id)arg1;
 - (id)mutableDeepCopyWithZone:(struct _NSZone *)arg1;
+- (id)captionContainingPCCaption:(id)arg1;
+- (id)mutableDeepCopy;
+- (id)shortDescription;
+- (id)arrayOfNumbersScaledByAmount:(double)arg1;
+- (BOOL)containsObjectIdenticalTo:(id)arg1;
+- (id)objectAtIndexNoThrow:(long long)arg1;
+- (id)scriptingUserListDescriptor;
 @end
 

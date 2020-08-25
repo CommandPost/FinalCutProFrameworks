@@ -6,9 +6,10 @@
 
 #import "FFModelLocking.h"
 
-@class FFAnchoredSequence, FFProject, FFUndoHandler;
+@class FFAnchoredSequence, FFModelObject, FFProject, FFUndoHandler;
 
 @protocol FFDataModelProtocol <FFModelLocking>
+- (FFModelObject *)rangeInvalObject;
 - (FFProject *)project;
 - (FFUndoHandler *)undoHandler;
 

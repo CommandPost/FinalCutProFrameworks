@@ -13,6 +13,7 @@
 
 @interface FFOrganizedLaneManager : NSObject <FFOrganizedLaneDataSource, FFOrganizedLaneMakerProtocol>
 {
+    BOOL _isObservingLibraryRoleChanges;
     FFOrganizedLane *_rootLane;
     BOOL _reloadOfLanesInProgress;
     FFOrganizedLaneArranger *_arranger;

@@ -48,7 +48,7 @@
 - (id)channelByXMLName:(id)arg1;
 - (id)unriggedChannels;
 - (id)keyframeableChannels;
-- (void)_postInit:(id)arg1;
+- (void)_postInit:(id)arg1 isXML:(BOOL)arg2;
 - (void)dealloc;
 
 // Remaining properties

@@ -13,6 +13,8 @@
 + (BOOL)compareClip:(id)arg1 against:(id)arg2 includeResources:(BOOL)arg3 asMedia:(BOOL)arg4;
 + (BOOL)compareClip:(id)arg1 against:(id)arg2;
 + (BOOL)supportsObjectForExport:(id)arg1;
++ (id)newXMLDocumentWithContentsOfURL:(id)arg1 importOptions:(id)arg2 version:(unsigned long long *)arg3 contentType:(int *)arg4 error:(id *)arg5;
++ (id)newXMLDocumentWithData:(id)arg1 version:(unsigned long long *)arg2 contentType:(int *)arg3 error:(id *)arg4;
 + (BOOL)validateXMLDocument:(id)arg1 options:(id)arg2 version:(unsigned long long *)arg3 contentType:(int *)arg4 error:(id *)arg5;
 + (BOOL)isImportingXML;
 + (id)importFromXMLDoc:(id)arg1 options:(id)arg2 taskDelegate:(id)arg3 warnings:(id *)arg4 error:(id *)arg5;

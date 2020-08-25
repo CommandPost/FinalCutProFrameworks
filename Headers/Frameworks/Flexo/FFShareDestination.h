@@ -30,7 +30,6 @@
     struct CGSize _videoResolution;
     NSString *_uuid;
     NSMutableSet *_destinationErrors;
-    BOOL _canExcludeDisabledRoles;
     long long _colorSpace;
     long long _colorChannels;
     NSSet *_embeddedCaptionRoles;
@@ -49,22 +48,24 @@
 + (void)setUserDestinations:(id)arg1;
 + (id)userDestinationsWithDefault:(id)arg1;
 + (id)userDestinationsShowAppPreview:(BOOL)arg1;
++ (void)userDestinationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)userDestinations;
-+ (BOOL)userDestinationsLoaded;
 + (void)loadUserDestinations;
-+ (void)waitUntilUserDestinationsLoaded;
++ (BOOL)userDestinationsLoaded;
++ (void)waitUntilUserDestinationsFinishLoading;
 + (void)filterDestinations;
 + (BOOL)shouldEnableTheaterShareDestination;
 + (void)setUserDestinationsDictionaryPathComponent:(id)arg1;
++ (void)setShareDestinationFileExtension:(id)arg1;
 + (id)newDestinationWithType:(id)arg1;
 + (id)addUserDestinationFromURL:(id)arg1;
 + (void)restoreStandardDestinations;
 + (id)standardDestinations:(id *)arg1;
++ (id)userDestinationsLoadingOperation;
 + (id)keyPathsForValuesAffectingAction;
 + (id)keyPathsForValuesAffectingDisplayName;
 @property(retain, nonatomic) NSSet *burnInCaptionRoles; // @synthesize burnInCaptionRoles=_burnInCaptionRoles;
 @property(retain, nonatomic) NSSet *embeddedCaptionRoles; // @synthesize embeddedCaptionRoles=_embeddedCaptionRoles;
-@property(nonatomic) BOOL canExcludeDisabledRoles; // @synthesize canExcludeDisabledRoles=_canExcludeDisabledRoles;
 @property(nonatomic) long long colorChannels; // @synthesize colorChannels=_colorChannels;
 @property(nonatomic) long long colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(copy, nonatomic) NSString *savedRenderFormatName; // @synthesize savedRenderFormatName=_savedRenderFormatName;
@@ -125,7 +126,6 @@
 @property(readonly, nonatomic) NSString *displayName;
 @property(copy, nonatomic) NSString *name;
 - (BOOL)validateName:(id *)arg1 error:(id *)arg2;
-- (BOOL)willExcludeDisabledRoles;
 @property(readonly, nonatomic) BOOL supportsBatchExport;
 
 // Remaining properties

@@ -8,7 +8,7 @@
 
 #import "PCUserDefaultsBroadcastObserving.h"
 
-@class CALayer, FFMD5AndOffset, FFThumbnailRequest, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>;
+@class CALayer, FFMD5AndOffset, FFThumbnailRequest, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol>;
 
 __attribute__((visibility("hidden")))
 @interface FFFilmstripCell : NSObject <PCUserDefaultsBroadcastObserving>
@@ -69,7 +69,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 @property(nonatomic) double contentsScale; // @synthesize contentsScale=_contentsScale;
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
-@property(retain) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
+@property(retain) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (BOOL)isEquivalentToFilmstripCell:(id)arg1;
 - (void)cancelRequest;

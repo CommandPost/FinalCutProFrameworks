@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
 - (void)keyUp:(id)arg1;
 - (void)keyDown:(id)arg1;
 - (void)resignActiveOSC;

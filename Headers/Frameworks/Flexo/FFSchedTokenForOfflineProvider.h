@@ -22,7 +22,8 @@ __attribute__((visibility("hidden")))
 - (id)copyErrorInfoStoppingAfterFirstError:(BOOL)arg1;
 - (_Bool)waitForStatusFlagsToClear:(unsigned int)arg1 beforeDate:(id)arg2;
 - (unsigned int)scheduleStatusInformation;
-- (unsigned int)_internal_scheduleStatusInformation:(_Bool)arg1;
+- (unsigned int)_internal_scheduleStatusInformationNotHoldingLock;
+- (unsigned int)_internal_scheduleStatusInformationAlreadyHoldingLock;
 - (void)dealloc;
 - (id)initWithStream:(id)arg1 forThumb:(BOOL)arg2 videoProps:(id)arg3;
 

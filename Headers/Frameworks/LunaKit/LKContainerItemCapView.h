@@ -11,7 +11,7 @@
 @interface LKContainerItemCapView : LKPaneCapView
 {
     NSString *_itemTitle;
-    unsigned long long _itemAlignment;
+    long long _itemAlignment;
     unsigned int _emphasized:1;
     BOOL _useFacetForBackgroung;
     BOOL _isFooter;
@@ -26,8 +26,8 @@
 - (BOOL)accessibilityIsIgnored;
 - (BOOL)isEmphasized;
 - (void)setEmphasized:(BOOL)arg1;
-- (unsigned long long)itemTitleAlignment;
-- (void)setItemTitleAlignment:(unsigned long long)arg1;
+- (long long)itemTitleAlignment;
+- (void)setItemTitleAlignment:(long long)arg1;
 - (id)itemTitle;
 - (void)setItemTitle:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;

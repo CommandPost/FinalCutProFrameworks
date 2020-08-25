@@ -14,8 +14,6 @@
 }
 
 - (id).cxx_construct;
-- (id)getCursorWithEvent:(id)arg1 addCursor:(BOOL)arg2;
-- (id)getCursorWithEvent:(id)arg1;
 - (double)ellipseAngleForUserAngle:(double)arg1 withCurvature:(double)arg2 sizeX:(double)arg3 sizeY:(double)arg4;
 - (void)mouseDragged:(id)arg1;
 - (void)drawShapeHandlesWithTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;

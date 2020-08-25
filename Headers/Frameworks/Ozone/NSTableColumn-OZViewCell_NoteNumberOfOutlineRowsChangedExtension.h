@@ -9,5 +9,7 @@
 @interface NSTableColumn (OZViewCell_NoteNumberOfOutlineRowsChangedExtension)
 - (void)willRemoveFromOutlineView:(id)arg1;
 - (void)noteNumberOfOutlineRowsChanged:(id)arg1;
+- (void)willRemoveFromTableView:(id)arg1;
+- (void)noteNumberOfTableRowsChanged:(id)arg1;
 @end
 

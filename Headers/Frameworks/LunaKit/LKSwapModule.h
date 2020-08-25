@@ -45,7 +45,7 @@
 - (id)moduleHeaderAccessoryView;
 - (BOOL)wantsHeaderBar;
 - (BOOL)wantsDarkCapBar;
-- (unsigned long long)labelAlignment;
+- (long long)labelAlignment;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
 - (BOOL)loadView;

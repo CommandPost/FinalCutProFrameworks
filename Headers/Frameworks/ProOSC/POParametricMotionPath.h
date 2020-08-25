@@ -17,21 +17,20 @@
     double _startBoundsY2;
 }
 
-- (CDStruct_1b6d18a9)getTimeOffset;
-- (void)addVertexAtTime:(CDStruct_1b6d18a9)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 handleX:(void **)arg5 handleY:(void **)arg6 handleZ:(void **)arg7;
-- (BOOL)offsetSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
-- (void)moveSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
-- (_Bool)useTangents;
-- (_Bool)useControlPolygon;
 - (void)disableSelected:(list_9b90a499 *)arg1;
 - (void)deleteSelected:(list_9b90a499 *)arg1;
+- (BOOL)offsetSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
+- (void)moveSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
+- (void)addVertexAtTime:(CDStruct_1b6d18a9)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 handleX:(void **)arg5 handleY:(void **)arg6 handleZ:(void **)arg7;
+- (_Bool)useTangents;
+- (_Bool)useControlPolygon;
 - (_Bool)getSamples:(const PCMatrix44Tmpl_e98c85ee *)arg1;
+- (void)calculateSnapBounds:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseDown:(id)arg1;
-- (void)calculateSnapBounds:(id)arg1;
 - (unsigned int)getPathActivePart;
 - (struct OZChannelPosition3D *)getPosition;
-- (void)dealloc;
+- (CDStruct_1b6d18a9)getTimeOffset;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 
 @end

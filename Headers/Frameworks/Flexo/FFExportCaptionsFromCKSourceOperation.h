@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _shouldIncludeFormatting;
     BOOL _isDryRun;
+    BOOL _allowsEmptyCaptionFile;
     BOOL _wereAnyCaptionsToWrite;
     int _timingMode;
     NSURL *_url;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 @property(nonatomic) CDStruct_1b6d18a9 startTimeOffset; // @synthesize startTimeOffset=_startTimeOffset;
 @property(nonatomic) BOOL wereAnyCaptionsToWrite; // @synthesize wereAnyCaptionsToWrite=_wereAnyCaptionsToWrite;
+@property(nonatomic) BOOL allowsEmptyCaptionFile; // @synthesize allowsEmptyCaptionFile=_allowsEmptyCaptionFile;
 @property(nonatomic) BOOL isDryRun; // @synthesize isDryRun=_isDryRun;
 @property(nonatomic) BOOL shouldIncludeFormatting; // @synthesize shouldIncludeFormatting=_shouldIncludeFormatting;
 @property(nonatomic) int timingMode; // @synthesize timingMode=_timingMode;

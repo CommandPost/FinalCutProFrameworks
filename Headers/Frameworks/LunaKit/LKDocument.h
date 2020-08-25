@@ -21,7 +21,6 @@
 + (Class)documentModuleClass;
 - (id)documentModule;
 - (id)documentView;
-- (void)shouldCloseWindowController:(id)arg1 delegate:(id)arg2 shouldCloseSelector:(SEL)arg3 contextInfo:(void *)arg4;
 - (void)showWindows;
 - (void)close;
 - (void)removeWindowController:(id)arg1;

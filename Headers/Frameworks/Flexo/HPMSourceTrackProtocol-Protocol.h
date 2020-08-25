@@ -13,7 +13,6 @@
 @property(readonly) id <HPMMediaProtocol><HPMMediaCursorProtocol> firstEssenceMedia;
 @property(readonly) BOOL hasMedia;
 - (list_3f44f5c8 *)copyChunkEntriesWithStartCursor:(const struct HPMEditCursor *)arg1 endCursor:(const struct HPMEditCursor *)arg2 startOffset:(unsigned long long *)arg3 dataSize:(unsigned long long *)arg4;
-- (const CDStruct_37d50165 *)chunkEntryRefWithCursor:(const struct HPMEditCursor *)arg1 startOffset:(unsigned long long *)arg2;
 - (CDStruct_37d50165)chunkEntryWithCursor:(const struct HPMEditCursor *)arg1 startOffset:(unsigned long long *)arg2;
 - (BOOL)samplesWithLaterDecodeTimeStampsThanCursor:(const struct HPMEditCursor *)arg1 mayHaveEarlierPresentationTimeStampsThanCursor:(const struct HPMEditCursor *)arg2;
 - (BOOL)samplesWithEarlierDecodeTimeStampsThanCursor:(const struct HPMEditCursor *)arg1 mayHaveLaterPresentationTimeStampsThanCursor:(const struct HPMEditCursor *)arg2;

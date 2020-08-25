@@ -25,6 +25,11 @@
 - (void)selectTile:(id)arg1 byExtendingSelection:(BOOL)arg2;
 - (id)selectedDestinationTypes;
 - (id)selectedTiles;
+- (struct CGRect)boundingRectOfAttributedString:(id)arg1;
+- (id)destinationLabelAttributes;
+- (struct CGRect)boundingRectForIconTitle:(id)arg1;
+- (double)determineTextHeightForDestinationNames;
+- (struct CGSize)determineTileSize;
 - (void)loadView;
 - (void)dealloc;
 - (id)initWithDestination:(id)arg1 withSources:(id)arg2;

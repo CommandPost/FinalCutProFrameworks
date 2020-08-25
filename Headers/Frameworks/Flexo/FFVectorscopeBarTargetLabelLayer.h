@@ -6,20 +6,14 @@
 
 #import <Flexo/FFVideoScopesLabelLayer.h>
 
-@class FFVectorscopeModeLabelLayer;
-
 __attribute__((visibility("hidden")))
 @interface FFVectorscopeBarTargetLabelLayer : FFVideoScopesLabelLayer
 {
     long long _barTarget;
-    FFVectorscopeModeLabelLayer *_modeLayer;
-    CDStruct_554002f2 _action_opt;
 }
 
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
 - (void)setupDefaultProperties;
-- (id)actionForKey:(id)arg1;
-- (void)setBarTarget:(long long)arg1;
+@property(nonatomic) long long barTarget; // @dynamic barTarget;
 
 @end
 

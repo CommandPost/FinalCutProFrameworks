@@ -7,5 +7,8 @@
 #import "NSScreen.h"
 
 @interface NSScreen (FFScreen)
++ (unsigned long long)availableScreens;
+- (BOOL)isHDRReferenceMode;
+- (BOOL)isVoutScreen;
 @end
 

@@ -15,7 +15,6 @@
     CDStruct_1b6d18a9 _time;
     double _rate;
     BOOL _forSingleStreamSkimming;
-    int _timeRateChanged;
     int _quality;
     int _qualityChanged;
     int _temporalQuality;
@@ -35,14 +34,9 @@
     int _showObjectsOptionsChanged;
     int _rolesChanged;
     id selectionHandler;
-    BOOL _isScrubbing;
-    CDStruct_1b6d18a9 _preScrubbingPlayheadLocation;
-    float _preScrubbingPlaybackRate;
-    CDStruct_e83c9415 _preScrubbingPlaybackLoopRange;
     BOOL _isSkimming;
     BOOL _inStepPlayback;
     BOOL shouldTakeFocusOnLoad;
-    BOOL _scrubEnteredLOMode;
     BOOL _showMagicFrame;
     BOOL _stopOnDrop;
     BOOL _dontRedrawOnInvals;
@@ -59,6 +53,7 @@
     long long _numDraftTextModeRequests;
     NSMutableSet *_registeredPlayerModules;
     BOOL _pendingRebuildPlayers;
+    // Error parsing type: Ai, name: _timeRateChanged
 }
 
 + (int)temporalQualityForFramesPerPixel:(unsigned int)arg1;
@@ -102,9 +97,6 @@
 - (void)endSkimming;
 - (void)beginSkimming;
 - (BOOL)isSkimming;
-- (BOOL)isScrubbing;
-- (void)endScrubbing:(BOOL)arg1 resumePlayback:(BOOL)arg2;
-- (void)beginScrubbing:(CDStruct_1b6d18a9)arg1;
 - (void)_teardownPlayer;
 - (void)doneUsingPlayer:(id)arg1;
 - (void)startUsingPlayer:(id)arg1;
@@ -137,6 +129,7 @@
 - (CDStruct_1b6d18a9)time;
 - (void)setTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 forSingleStreamSkimming:(BOOL)arg3;
 - (void)setTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
+- (void)setRate:(double)arg1;
 - (void)_streamAudioFlagsChanged;
 - (void)_rolesChanged;
 - (void)_showObjectsOptionsChanged;

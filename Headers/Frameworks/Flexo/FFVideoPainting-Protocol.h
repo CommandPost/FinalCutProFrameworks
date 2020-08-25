@@ -6,16 +6,17 @@
 
 #import "NSObject.h"
 
-@class FFImage, FFOnScreenControlsTexture, NSArray, NSColor;
+@class FFImage, FFOnScreenControlsTexture, NSArray, NSColor, NSMapTable, NSObject<FFDestVideoDelegate>, PCMatrix44Double;
 
 @protocol FFVideoPainting <NSObject>
 @property(readonly) int onScreenDrawStyle;
 - (struct CGColorSpace *)rawColorSpace;
+- (FFOnScreenControlsTexture *)newOSCDrawTextureAtTime:(CDStruct_1b6d18a9)arg1 viewSize:(struct CGSize)arg2 delegate:(NSObject<FFDestVideoDelegate> *)arg3 drawProperties:(NSMapTable *)arg4 destIsDrawing:(BOOL)arg5 filmToViewTransform:(PCMatrix44Double *)arg6 backingScale:(float)arg7;
 - (void)drawMissingImageWithViewPortSize:(struct CGSize)arg1 sourceRect:(struct CGRect)arg2 drawRect:(struct CGRect)arg3 contextData:(id <FFVideoPaintingContextData>)arg4;
 - (void)drawField1:(FFImage *)arg1 field2:(FFImage *)arg2 isNewFrame:(_Bool)arg3 viewPortSize:(struct CGSize)arg4 sourceRect:(struct CGRect)arg5 drawRect:(struct CGRect)arg6 fieldMode:(long long)arg7 channelMode:(long long)arg8 checkerboardBG:(_Bool)arg9 overlayTexture:(FFOnScreenControlsTexture *)arg10 multiCamAngles:(NSArray *)arg11 backgroundColor:(NSColor *)arg12 zebraMode:(unsigned int)arg13 backingScale:(float)arg14 contextData:(id <FFVideoPaintingContextData>)arg15 completedBlock:(void (^)(void))arg16;
 
 @optional
-@property(readonly) int imageLocation;
+@property(readonly) const struct FxDevice *imageLocation;
 - (FFOnScreenControlsTexture *)newOverlayTextureBuffer:(BOOL)arg1;
 - (void)attachOverlayTexture:(struct CGSize)arg1;
 - (struct _CGLContextObject *)overlayContext:(struct CGSize)arg1;

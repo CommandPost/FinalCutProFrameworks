@@ -10,7 +10,7 @@
 #import "NSTouchBarProvider.h"
 #import "NSWindowDelegate.h"
 
-@class CALayer, FFContext, FFPlayer, FFPlayerModuleDFRController, FFProvider, FFSourceAudio, FFSourceVideo, LKModuleLayout, NSDictionary, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>, NSString, NSTouchBar, NSView;
+@class CALayer, FFContext, FFPlayer, FFPlayerModuleDFRController, FFProvider, FFSourceAudio, FFSourceVideo, LKModuleLayout, NSDictionary, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol>, NSString, NSTouchBar, NSView;
 
 @interface FFPlayerModule : LKViewModule <NSWindowDelegate, CALayerDelegate, NSTouchBarProvider>
 {
@@ -61,7 +61,7 @@
 @property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
 @property(nonatomic) FFProvider *provider; // @synthesize provider=_provider;
 @property(readonly, nonatomic) long long effectCount; // @synthesize effectCount=_effectCount;
-@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
+@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
 - (void)pasteTimecode:(id)arg1;
 - (void)copyTimecode:(id)arg1;
 - (id)orderedZoomLevels;
@@ -121,8 +121,6 @@
 - (BOOL)isSkimming;
 - (void)endSkimming;
 - (void)beginSkimming;
-- (void)endScrubbing:(BOOL)arg1 resumePlayback:(BOOL)arg2;
-- (void)beginScrubbing:(CDStruct_1b6d18a9)arg1;
 - (void)playAtTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
 - (void)playRange:(CDStruct_e83c9415)arg1;
 - (void)playRateMinus32X:(id)arg1;
@@ -168,6 +166,7 @@
 - (void)playPause:(id)arg1;
 - (void)setShowBothFields:(BOOL)arg1;
 - (BOOL)showBothFields;
+@property(nonatomic) BOOL displayCustomOverlay;
 @property(nonatomic) BOOL displayBroadcastSafeZones;
 - (id)getRangeCheckColorSpaceLabel;
 @property(nonatomic) unsigned int rangeCheckMode;

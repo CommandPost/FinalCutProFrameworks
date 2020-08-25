@@ -6,25 +6,36 @@
 
 #import "NSObject.h"
 
-@class NSMutableDictionary;
+@class FxRemoteTiming, NSDate, NSLock, NSMutableDictionary, NSString, NSTimer;
 
 @interface FxRemotePlugin : NSObject
 {
     id <PROAPIAccessing> apiManager;
     unsigned long long sessionID;
+    NSString *uuid;
+    unsigned long long transactionID;
     id <FxTileableEffect> plugin;
+    NSLock *oscTimingLock;
+    FxRemoteTiming *oscTimingData;
+    NSDate *lastUpdate;
+    NSTimer *updateTimer;
     NSMutableDictionary *viewControllers;
+    long long analysisLocation;
 }
 
-@property NSMutableDictionary *viewControllers; // @synthesize viewControllers;
+@property long long analysisLocation; // @synthesize analysisLocation;
+@property(retain) NSMutableDictionary *viewControllers; // @synthesize viewControllers;
+- (id)OSCTiming;
+- (void)setupOSCTiming:(id)arg1;
 - (void)updateCustomViews;
 - (id)viewControllersForParameter:(unsigned int)arg1;
 - (void)setViewController:(id)arg1 forParameter:(unsigned int)arg2;
 - (void)performSelectorNamed:(id)arg1 forParameterID:(unsigned int)arg2;
+- (id)pluginUUID;
 - (id)apiManager;
 - (id)pluginInstance;
 - (void)dealloc;
-- (id)initWithPlugin:(id)arg1 APIManager:(id)arg2 sessionID:(unsigned long long)arg3;
+- (id)initWithPlugin:(id)arg1 APIManager:(id)arg2 pluginUUID:(id)arg3 sessionID:(unsigned long long)arg4;
 
 @end
 

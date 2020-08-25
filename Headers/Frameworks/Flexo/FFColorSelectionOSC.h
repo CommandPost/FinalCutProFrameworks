@@ -25,8 +25,12 @@
 - (id)getCursor;
 - (void)flagsChanged:(id)arg1;
 - (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
-- (void)extraDrawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (BOOL)supportsMetalRendering;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (void)renderOSC:(id)arg1 drawProperties:(id)arg2;
+- (void)drawOnScreenForContexts:(id)arg1 drawProperties:(id)arg2 drawRect:(struct CGRect)arg3;
+- (void)drawMetalCircle:(id)arg1 objToView:(PCMatrix44Tmpl_e98c85ee *)arg2 radius:(double)arg3 color:(BOOL)arg4 thick: /* Error: Ran out of types for this method. */;
+- (void)extraDrawRect:(struct CGRect)arg1 renderer:(id)arg2 drawProperties:(id)arg3;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)proOSCMouseDownInitialize:(id)arg1;

@@ -89,6 +89,8 @@ __attribute__((visibility("hidden")))
 - (void)imageCellWillDealloc:(id)arg1;
 - (void)delayStartSkimming:(id)arg1;
 - (BOOL)imageBrowser:(id)arg1 writeItemsAtIndexes:(id)arg2 toPasteboard:(id)arg3;
+- (void)imageBrowser:(id)arg1 willWriteItemsAtIndex:(id)arg2 toPasteboard:(id)arg3;
+- (id)imageBrowser:(id)arg1 pasteboardWritersForItemsAtIndexes:(id)arg2;
 - (BOOL)imageBrowser:(id)arg1 canDragItemsAtIndexes:(id)arg2 withEvent:(id)arg3;
 - (void)imageBrowserSelectionDidChange:(id)arg1;
 - (id)imageBrowser:(id)arg1 menuForItemAtIndex:(long long)arg2;

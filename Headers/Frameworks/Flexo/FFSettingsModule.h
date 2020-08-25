@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 {
     FFProvider *_provider;
     BOOL _enableAutomaticCustomSettingsButton;
+    BOOL _callCompletionAfterClose;
 }
 
+@property(nonatomic) BOOL callCompletionAfterClose; // @synthesize callCompletionAfterClose=_callCompletionAfterClose;
 @property(nonatomic) BOOL enableAutomaticCustomSettingsButton; // @synthesize enableAutomaticCustomSettingsButton=_enableAutomaticCustomSettingsButton;
 @property(retain, nonatomic) FFProvider *provider; // @synthesize provider=_provider;
 - (BOOL)createAutomatically;
@@ -22,7 +24,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)disableCustomSettingsButton;
 - (BOOL)showCustomSettingsButton;
 - (BOOL)validate:(id *)arg1;
-- (void)closingWithCode:(int)arg1;
+- (void)executeCompletionAfterClose:(id)arg1 returnCode:(int)arg2;
+- (int)closingWithCode:(int)arg1;
 - (void)dealloc;
 - (id)initWithProvider:(id)arg1;
 

@@ -35,6 +35,7 @@
 + (id)pixelFormat_420f;
 + (id)pixelFormat_bp16;
 + (id)pixelFormat_bp64;
++ (id)pixelFormat_bred;
 + (id)pixelFormat_x420;
 + (id)pixelFormat_xf20;
 + (id)pixelFormat_grey8LumaPlane;
@@ -50,6 +51,7 @@
 - (id)getPixelFormatForPlaneIndex:(int)arg1;
 - (id)preferredOutputFormat;
 - (id)substituteOutputFormat;
+- (BOOL)isEqualToPixelFormat:(id)arg1;
 - (int)convertToHeYCbCrFormat;
 - (int)convertToHeFormat;
 - (unsigned int)CGBitmapInfo;

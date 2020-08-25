@@ -11,7 +11,6 @@
 @interface FFXMLImportOptions : FFXMLTranslationOptions
 {
     NSNumber *_manageFileTypeObj;
-    NSURL *_assetImportURL;
     NSURL *_libraryURL;
     FFLibrary *_library;
     BOOL _newLibrary;
@@ -22,15 +21,19 @@
     NSNumber *_incrementalImportObj;
     NSNumber *_conflictResolutionTypeObj;
     NSNumber *_metadataRemovalTypeObj;
+    NSNumber *_proxyOnlyImportObj;
     NSRunningApplication *_origin;
     NSURL *_documentURL;
+    NSURL *_baseURL;
     FFModelObject<FFXMLTranslationTarget> *_target;
 }
 
 + (id)propertyKeys;
+@property(retain, nonatomic) NSNumber *proxyOnlyImportObj; // @synthesize proxyOnlyImportObj=_proxyOnlyImportObj;
 @property(retain, nonatomic) NSNumber *metadataRemovalTypeObj; // @synthesize metadataRemovalTypeObj=_metadataRemovalTypeObj;
 @property(retain, nonatomic) NSNumber *conflictResolutionTypeObj; // @synthesize conflictResolutionTypeObj=_conflictResolutionTypeObj;
 @property(retain, nonatomic) NSNumber *incrementalImportObj; // @synthesize incrementalImportObj=_incrementalImportObj;
+@property(retain, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property(retain, nonatomic) NSURL *documentURL; // @synthesize documentURL=_documentURL;
 @property(retain, nonatomic) NSRunningApplication *origin; // @synthesize origin=_origin;
 @property(nonatomic) BOOL suppressWarnings; // @synthesize suppressWarnings=_suppressWarnings;
@@ -40,9 +43,11 @@
 @property(retain, nonatomic) NSNumber *manageFileTypeObj; // @synthesize manageFileTypeObj=_manageFileTypeObj;
 - (void)writeAsUserDefaults;
 - (id)initWithUserDefaults;
-@property(retain, nonatomic) NSURL *assetImportURL; // @synthesize assetImportURL=_assetImportURL;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)clearProxyOnlyImport;
+@property(readonly, nonatomic) BOOL hasProxyOnlyImport;
+@property(nonatomic) BOOL proxyOnlyImport;
 - (void)clearMetadataRemovalType;
 @property(readonly, nonatomic) BOOL hasMetadataRemovalType;
 @property(nonatomic) int metadataRemovalType;

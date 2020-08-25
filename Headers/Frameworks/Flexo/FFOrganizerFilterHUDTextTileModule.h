@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) LKTextField *textField; // @synthesize textField=_textField;
+- (id)tileNameString;
 - (id)tileGlyphString;
 - (void)controlTextDidChange:(id)arg1;
 - (id)filterDict;

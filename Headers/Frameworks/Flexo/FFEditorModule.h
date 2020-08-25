@@ -55,6 +55,8 @@
 - (id)nextRootItems;
 - (id)previousRootItems;
 - (id)rootItemsHierarchy;
+- (void)removeOthersFromHistory;
+- (void)removeCurrentRootItemFromHistory;
 - (id)rootItems;
 - (id)currentItemInfo;
 - (void)setCurrentItemInfo:(id)arg1;

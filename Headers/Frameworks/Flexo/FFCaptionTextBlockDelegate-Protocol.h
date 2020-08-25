@@ -7,6 +7,7 @@
 @class FFCaptionTextBlock;
 
 @protocol FFCaptionTextBlockDelegate
+- (unsigned long long)captionFormatFromVendedRole;
 - (void)contentsHasChangedForTextBlock:(FFCaptionTextBlock *)arg1;
 - (BOOL)canMoveBlock:(FFCaptionTextBlock *)arg1 toCellY:(long long)arg2;
 - (BOOL)canMoveBlock:(FFCaptionTextBlock *)arg1 toCellX:(long long)arg2;

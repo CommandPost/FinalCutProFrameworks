@@ -36,6 +36,8 @@
 + (id)defaultSourceDescriptionsForMedia:(id)arg1 sourceKey:(id)arg2;
 + (id)newSourceForSourceDescription:(id)arg1;
 + (id)newSourceForMedia:(id)arg1 sourceKey:(id)arg2 channelMap:(id)arg3;
++ (id)defaultVideoSourceDescriptionsForOfflineMedia:(id)arg1 sourceKey:(id)arg2;
++ (id)defaultAudioSourceDescriptionsForOfflineMedia:(id)arg1 sourceKey:(id)arg2 channelLayout:(id)arg3 numChannels:(unsigned long long)arg4;
 @property(retain, nonatomic) NSArray *audioChannelRoutingMap; // @synthesize audioChannelRoutingMap=m_audioChannelRoutingMap;
 - (BOOL)defaultSourceEnable;
 - (void)_channelsChanged;

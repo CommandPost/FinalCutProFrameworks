@@ -17,9 +17,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) BOOL drawAllSnaps; // @synthesize drawAllSnaps;
+- (BOOL)supportsMetalRendering;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
 - (void)dealloc;
 - (id)init;
 

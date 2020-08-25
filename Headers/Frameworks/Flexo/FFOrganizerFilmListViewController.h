@@ -280,7 +280,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)outlineView:(id)arg1 shouldReorderColumn:(long long)arg2 toColumn:(long long)arg3;
 - (double)outlineView:(id)arg1 sizeToFitWidthOfColumn:(long long)arg2;
 - (id)outlineView:(id)arg1 menuForColumn:(id)arg2 item:(id)arg3;
-- (id)outlineView:(id)arg1 rowViewForItem:(id)arg2;
 - (id)outlineView:(id)arg1 viewForTableColumn:(id)arg2 item:(id)arg3;
 - (double)outlineView:(id)arg1 heightOfRowByItem:(id)arg2;
 - (BOOL)isDefaultColumn:(id)arg1;
@@ -332,6 +331,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLoad;
 - (void)removeUnsupportedColumns;
 - (void)loadView;
+- (void)originalOrProxyAssetDidChange:(id)arg1;
 - (void)_rolesInLibraryChanged:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;

@@ -12,6 +12,7 @@
 
 + (id)copyClassDescription;
 + (void)registerEffects;
+- (unsigned int)intrinsicCacheFlag;
 - (void)createChannelsInFolder:(id)arg1;
 
 @end

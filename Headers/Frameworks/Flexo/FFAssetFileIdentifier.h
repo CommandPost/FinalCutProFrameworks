@@ -4,29 +4,26 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <Flexo/FFResourceLocator.h>
 
-@class NSString, NSURL;
+@class NSString;
 
-@interface FFAssetFileIdentifier : NSObject
+@interface FFAssetFileIdentifier : FFResourceLocator
 {
     NSString *_libraryID;
     NSString *_eventDocumentID;
     NSString *_path;
-    NSURL *_url;
-    NSURL *_downloadURL;
 }
 
-@property(retain, nonatomic) NSURL *downloadURL; // @synthesize downloadURL=_downloadURL;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)uniqueIdentifier;
 - (id)eventDocumentIDAndPath;
 - (id)projectRelativePath;
 - (id)owningLibraryItem;
 - (id)projectURL;
 - (id)libraryURL;
-- (void)resetURL;
 - (id)URL;
 @property(readonly, nonatomic) NSString *path;
 @property(readonly, nonatomic) NSString *eventDocumentID;

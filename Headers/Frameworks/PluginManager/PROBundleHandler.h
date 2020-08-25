@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     id <PROVersionedAPIAccess> apiManager;
     PROPlugInFirewall *apiAccessPoint;
     id <PKPlugIn> pluginKitPlug;
+    id <PROPluginDynamicRegCompletion> setupCallbackObject;
 }
 
 - (BOOL)plugInShouldLoadPlugInInstanceForTheFirstTime:(id)arg1;
@@ -38,8 +39,17 @@ __attribute__((visibility("hidden")))
 - (void)plugInFirewall:(id)arg1 receivedBadMessage:(SEL)arg2;
 - (id)apiForProtocol:(id)arg1;
 - (void)registerPlugIns;
+- (void)finishRegisteringPlugIns;
+- (void)loadDeferredPlugins;
+- (BOOL)shouldDeferLoading;
+- (BOOL)loadingInProMSRendererTool;
+- (void)completeRegistrationWithGroups:(id *)arg1 plugIns:(id *)arg2 requestedProtocols:(id *)arg3;
+- (BOOL)dynamicPluginRequestedProtocolArray:(id *)arg1 groupArray:(id *)arg2 plugInArray:(id *)arg3;
+- (BOOL)dynamicXPCPluginRequestedProtocolArray:(id *)arg1 groupArray:(id *)arg2 pluginArray:(id *)arg3;
+- (void)registerDynamicPlugInsAsynch:(id)arg1;
 - (void)addPlugIn:(id)arg1;
 - (BOOL)_plugInHasReservedUUID:(id)arg1;
+- (void)setRegistrationCallbackObject:(id)arg1;
 - (id)apiManagerForPlugInInstances;
 - (id)principalClassInstance;
 - (BOOL)isPrincipalClassAvailable;
@@ -54,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToBundleHandler:(id)arg1;
 - (void)reportError:(id)arg1;
+- (id)getBundle;
 - (void)dealloc;
 - (id)initWithBundle:(id)arg1;
 

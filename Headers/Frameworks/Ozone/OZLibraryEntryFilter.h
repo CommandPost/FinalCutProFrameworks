@@ -6,13 +6,14 @@
 
 #import "NSObject.h"
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface OZLibraryEntryFilter : NSObject
 {
     int _typeOfEntry;
     NSString *_name;
     NSString *_theme;
+    NSArray *_allowedFileTypes;
     unsigned int _includeType1[4];
     unsigned int _includeType2[4];
     unsigned int _excludeType[4];
@@ -22,6 +23,8 @@
 - (BOOL)isAllowed:(id)arg1;
 - (id)getTheme;
 - (void)setTheme:(id)arg1;
+- (id)getAllowedFileTypes;
+- (void)setAllowedFileTypes:(id)arg1;
 - (id)getName;
 - (void)setName:(id)arg1;
 - (struct PCUUID)getExcludeType;
@@ -32,7 +35,7 @@
 - (void)setIncludeType1:(const struct PCUUID *)arg1;
 - (int)getEntryType;
 - (void)setEntryType:(int)arg1;
-- (id)initWithType:(int)arg1 includeID1:(const struct PCUUID *)arg2 includeID2:(const struct PCUUID *)arg3 excludeID:(const struct PCUUID *)arg4 name:(id)arg5 theme:(id)arg6;
+- (id)initWithType:(int)arg1 includeID1:(const struct PCUUID *)arg2 includeID2:(const struct PCUUID *)arg3 excludeID:(const struct PCUUID *)arg4 allowedFileTypes:(id)arg5 name:(id)arg6 theme:(id)arg7;
 - (id)init;
 
 @end

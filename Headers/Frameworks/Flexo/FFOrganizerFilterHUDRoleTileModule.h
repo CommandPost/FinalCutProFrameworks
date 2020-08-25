@@ -6,30 +6,39 @@
 
 #import <Flexo/FFOrganizerFilterHUDTileModule.h>
 
-@class LKPopUpButton, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class LKPopUpButton, NSMutableArray, NSMutableDictionary, NSMutableSet, NSStackView;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilterHUDRoleTileModule : FFOrganizerFilterHUDTileModule
 {
-    NSMutableSet *_selectedRoleUIDsSet;
-    NSMutableArray *_videoRoleCheckBoxes;
-    NSMutableArray *_audioRoleCheckBoxes;
-    NSMutableArray *_allRolesCheckBoxes;
-    NSMutableArray *_roleCheckBoxes;
-    NSMutableDictionary *_roleByCheckBoxTagDictionary;
     LKPopUpButton *_comparisonPopup;
     LKPopUpButton *_selectionPopup;
+    NSStackView *_videoRolesStackView;
+    NSStackView *_audioRolesStackView;
+    NSMutableArray *_allRolesCheckboxes;
+    NSMutableArray *_roleCheckboxes;
+    NSMutableDictionary *_roleByCheckboxTagDictionary;
+    NSMutableSet *_selectedRoleUIDsSet;
 }
 
-@property(retain, nonatomic) NSMutableSet *selectedRoleUIDsSet; // @synthesize selectedRoleUIDsSet=_selectedRoleUIDsSet;
-- (void)roleCheckBoxClicked:(id)arg1;
+@property(retain) NSMutableSet *selectedRoleUIDsSet; // @synthesize selectedRoleUIDsSet=_selectedRoleUIDsSet;
+@property(retain) NSMutableDictionary *roleByCheckboxTagDictionary; // @synthesize roleByCheckboxTagDictionary=_roleByCheckboxTagDictionary;
+@property(retain) NSMutableArray *roleCheckboxes; // @synthesize roleCheckboxes=_roleCheckboxes;
+@property(retain) NSMutableArray *allRolesCheckboxes; // @synthesize allRolesCheckboxes=_allRolesCheckboxes;
+@property NSStackView *audioRolesStackView; // @synthesize audioRolesStackView=_audioRolesStackView;
+@property NSStackView *videoRolesStackView; // @synthesize videoRolesStackView=_videoRolesStackView;
+@property LKPopUpButton *selectionPopup; // @synthesize selectionPopup=_selectionPopup;
+@property LKPopUpButton *comparisonPopup; // @synthesize comparisonPopup=_comparisonPopup;
+- (void)roleCheckboxClicked:(id)arg1;
 - (id)comparisonTypesAllowed;
 - (void)uncheckAllRoles:(id)arg1;
 - (void)checkAllRoles:(id)arg1;
 - (void)_checkAllRoles:(BOOL)arg1;
+- (id)tileNameString;
 - (id)tileGlyphString;
 - (void)syncCheckboxStatesToSelectedRoleUIDs;
 - (BOOL)isVideoMainRoleWithSoleDefaultSystemGeneratedSubRole:(id)arg1 soleDefaultSystemGeneratedRoleUID:(id *)arg2;
+- (id)newCheckboxWithTitle:(id)arg1 Tag:(unsigned long long)arg2 andTintIndex:(unsigned long long)arg3;
 - (void)updateWithSelectedRoleUIDs:(id)arg1;
 - (void)setFilterDict:(id)arg1;
 - (id)filterDict;

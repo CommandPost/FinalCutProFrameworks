@@ -31,7 +31,7 @@
 @property(readonly, nonatomic) BOOL hasAudio;
 @property(readonly, nonatomic) BOOL isCaption;
 @property(readonly, nonatomic) BOOL hasVideo;
-@property(readonly, nonatomic) unsigned long long storylineRegion;
+@property(readonly, nonatomic) long long storylineRegion;
 @property(readonly, nonatomic) BOOL isStorylineClip;
 @property(readonly, nonatomic) unsigned long long storyItemSubType;
 @property(readonly, nonatomic) unsigned long long storyItemType;

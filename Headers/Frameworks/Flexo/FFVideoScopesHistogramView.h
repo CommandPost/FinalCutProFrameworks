@@ -6,32 +6,28 @@
 
 #import <Flexo/FFVideoScopesView.h>
 
-#import "FFDestVideoScopesGLDelegate.h"
-
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesHistogramView : FFVideoScopesView <FFDestVideoScopesGLDelegate>
+@interface FFVideoScopesHistogramView : FFVideoScopesView
 {
     long long _displayMode;
-    void *_FFVideoScopesHistogramViewPrivate;
+    int _colorSpaceType;
 }
 
 + (BOOL)supportsSecureCoding;
-- (id)_initVideoScopesHistogramView;
-- (struct FFVideoScopesHistogramViewPrivate *)_Private;
 - (id)accessibilityAttributeValue:(id)arg1;
-- (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)scrollWheel:(id)arg1;
+- (void)colorSpaceDidChangeForVideoScopes:(id)arg1;
 - (void)rightMouseDown:(id)arg1;
 - (void)mouseDown:(id)arg1;
-- (void)setZoomFactor:(float)arg1;
 - (void)setFrameSize:(struct CGSize)arg1;
 - (void)awakeFromNib;
 - (void)buildLayers;
+@property int colorSpaceType; // @dynamic colorSpaceType;
 @property long long displayMode; // @dynamic displayMode;
+- (id)_histogramLayer;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)_initVideoScopesHistogramView;
 
 @end
 

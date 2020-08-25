@@ -66,6 +66,13 @@ struct IVRCompositor;
 
 struct IVRSystem;
 
+struct NSEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+};
+
 struct PCHMDStats {
     _Bool statsValid;
     CDStruct_1b6d18a9 statsTaken;
@@ -111,6 +118,13 @@ struct PCQuat<double> {
     struct PCVector3<double> _vector;
 };
 
+struct PCRect<int> {
+    int _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+};
+
 struct PCSemaphore {
     long long _field1;
     struct _opaque_pthread_cond_t {
@@ -153,6 +167,11 @@ struct TrackedDevicePose_t {
     int _field4;
     _Bool _field5;
     _Bool _field6;
+};
+
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct _opaque_pthread_mutex_t {
@@ -215,4 +234,11 @@ typedef struct PCMatrix44Parameters<double> {
 typedef struct PCMatrix44Tmpl<double> {
     double _field1[4][4];
 } PCMatrix44Tmpl_93ed1289;
+
+typedef struct PCRect<int> {
+    int _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+} PCRect_54d5786f;
 

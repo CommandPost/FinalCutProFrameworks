@@ -12,7 +12,7 @@
 - (BOOL)showBothFields;
 - (BOOL)isMultiangleViewer;
 - (BOOL)shouldDrawVideoDest:(FFDestVideo *)arg1;
-- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(NSMapTable *)arg3 isDisplaying:(BOOL)arg4;
+- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawDestination:(struct FFOSCDrawDestination *)arg2 drawProperties:(NSMapTable *)arg3 isDisplaying:(BOOL)arg4;
 - (void)addDrawProperties:(NSMapTable *)arg1 forFrame:(FFPlayerFrame *)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 
 @optional

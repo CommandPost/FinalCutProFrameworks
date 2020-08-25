@@ -13,14 +13,7 @@
     NSTextField *_fileNameTextField;
     NSTextField *_formatTextField;
     NSTextField *_compressorTextField;
-    NSTextField *_depthTextField;
-    NSTextField *_colorSpaceTextField;
     NSTextField *_durationTextField;
-    NSTextField *_frameRateTextField;
-    NSTextField *_frameSizeTextField;
-    NSTextField *_audioSampleRateTextField;
-    NSTextField *_audioBitDepthTextField;
-    NSTextField *_audioFormatTextField;
     NSTextField *_fileSizeTextField;
     NSTextField *_createdTextField;
     NSTextField *_modifiedTextField;
@@ -37,6 +30,7 @@
 - (id)fileSizeAsString:(double)arg1;
 - (id)dataRateAsString:(double)arg1;
 - (id)secondsToHHMMSS:(double)arg1;
+- (id)xibName;
 - (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
 
 @end

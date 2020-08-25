@@ -6,12 +6,14 @@
 
 #import "DSObject.h"
 
+#import "FFCustomRelease.h"
+#import "FFModelLock.h"
 #import "FFModelLocking.h"
 #import "NSSecureCoding.h"
 
-@class FFModelDocument;
+@class FFModelDocument, NSString;
 
-@interface FFModelObject : DSObject <NSSecureCoding, FFModelLocking>
+@interface FFModelObject : DSObject <NSSecureCoding, FFModelLocking, FFModelLock, FFCustomRelease>
 {
 }
 
@@ -30,8 +32,23 @@
 - (void)_writeLock;
 - (void)_readUnlock;
 - (void)_readLock;
+- (id)modelLockingObject;
+- (struct FFSharedLock *)libraryLock;
 - (id)sharedLock;
 @property(readonly, nonatomic) FFModelDocument *modelDocument;
+- (void)willDealloc;
+- (void)willReleaseFinal;
+- (void)customFinalize;
+- (oneway void)release;
+- (id)retain;
+- (BOOL)retainWeakReference;
+-     // Error parsing type: ^AQ16@0:8, name: customReleaseState
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

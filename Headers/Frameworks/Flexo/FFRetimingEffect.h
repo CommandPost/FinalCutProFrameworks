@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 + (id)effectIDForEffectStack:(id)arg1;
 - (BOOL)suppressChannelChangeUpdate;
 - (void)setSuppressChannelChangeUpdate:(BOOL)arg1;
+- (unsigned int)intrinsicCacheFlag;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)retimingReset;
 - (CDStruct_1b6d18a9)lastKeyValueInTime;

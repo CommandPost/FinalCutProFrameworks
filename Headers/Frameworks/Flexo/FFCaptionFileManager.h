@@ -18,7 +18,7 @@
 + (id)_importWithAsset:(id)arg1 intoArray:(id)arg2 withFrameDuration:(CDStruct_1b6d18a9)arg3 andStartTimeOffset:(CDStruct_1b6d18a9)arg4 withFileType:(id)arg5;
 + (id)truncateOverlappingCaptions:(id)arg1;
 + (id)captionFromArray:(id)arg1 atIndex:(unsigned long long)arg2;
-+ (long long)_modeOFCaption:(id)arg1;
++ (long long)animationStyleForCEA608Caption:(id)arg1;
 
 @end
 

@@ -38,6 +38,8 @@
 - (id)imageWithSize:(int)arg1;
 - (BOOL)validateName:(id *)arg1 error:(id *)arg2;
 - (id)label;
+- (id)keysToSetToNil;
+- (void)dealloc;
 
 @end
 

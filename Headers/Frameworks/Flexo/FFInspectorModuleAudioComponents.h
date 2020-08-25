@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)audioComponentsConfigViewModule:(id)arg1 selectObjects:(id)arg2;
 - (BOOL)audioComponentsConfigViewModule:(id)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
 - (void)stopSkimmingInViewerInAudioComponentsConfigViewModule:(id)arg1;
+- (BOOL)audioComponentsConfigViewModule:(id)arg1 startSkimmingInViewerReplacingSkimmable:(struct NSObject *)arg2 withSkimmable:(struct NSObject *)arg3 context:(id)arg4 effectCount:(long long)arg5;
 - (BOOL)audioComponentsConfigViewModule:(id)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4;
 - (BOOL)canStartSkimmingInAudioComponentsConfigViewModule:(id)arg1;
 - (void)_getInspectorModuleDelegate:(id *)arg1 inspectorModule:(id *)arg2;

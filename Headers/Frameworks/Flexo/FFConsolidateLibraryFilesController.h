@@ -8,33 +8,52 @@
 
 #import "FFAssetCopyQueueDelegateProtocol.h"
 
-@class FFAssetCopyQueue, FFConsolidateTaskSerializer, NSMutableArray;
+@class FFAssetCopyQueue, FFConsolidateTaskSerializer, NSMutableArray, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface FFConsolidateLibraryFilesController : NSObject <FFAssetCopyQueueDelegateProtocol>
 {
+    BOOL _isQueueingCopyRequests;
+    BOOL _isTempConsolidateToInLibrary;
     NSMutableArray *_assetCopyRequests;
     FFAssetCopyQueue *_assetCopyQueue;
     FFConsolidateTaskSerializer *_taskSerializer;
+    NSURL *_tempExternalMediaLocation;
 }
 
++ (void)consolidateFilesInSelectedMedia:(id)arg1;
 + (void)consolidateFilesInProjects:(id)arg1;
 + (void)consolidateFilesInEvents:(id)arg1;
++ (BOOL)needsToIncludeOriginalMediaOnAsset:(id)arg1 consolidateOptions:(id)arg2;
 + (void)consolidateFilesInLibrary:(id)arg1;
 + (id)alertMessageDescriptionWithLibrary:(id)arg1;
 + (id)fileAttributesForMediaRep:(id)arg1 fileURL:(id)arg2;
++ (BOOL)_hasDiskSpaceForMedia:(id)arg1 atDestinationURL:(id)arg2 isToExternalMediaLocation:(BOOL)arg3 consolidationOptions:(int)arg4 availableSpaceInBytes:(long long)arg5 requiredSpaceInBytes:(long long *)arg6;
+@property(retain) NSURL *tempExternalMediaLocation; // @synthesize tempExternalMediaLocation=_tempExternalMediaLocation;
+@property BOOL isTempConsolidateToInLibrary; // @synthesize isTempConsolidateToInLibrary=_isTempConsolidateToInLibrary;
+@property BOOL isQueueingCopyRequests; // @synthesize isQueueingCopyRequests=_isQueueingCopyRequests;
 @property(retain) FFConsolidateTaskSerializer *taskSerializer; // @synthesize taskSerializer=_taskSerializer;
 @property(retain) FFAssetCopyQueue *assetCopyQueue; // @synthesize assetCopyQueue=_assetCopyQueue;
 @property(retain) NSMutableArray *assetCopyRequests; // @synthesize assetCopyRequests=_assetCopyRequests;
 - (void)taskFinished:(id)arg1;
 - (BOOL)canCancelTask;
 - (void)taskWasCancelled:(id)arg1 queuedRequests:(id)arg2;
+- (void)postConsolidateLibraryFilesDidCompleteNotification;
 - (void)_copyCompleted:(id)arg1;
+- (BOOL)setUpLibraryMediaLocation:(id)arg1 inLibrary:(id)arg2 updateLibraryMediaLocation:(BOOL)arg3;
+- (void)consolidateFilesInSelectedMedia:(id)arg1;
 - (void)consolidateFilesInProjects:(id)arg1;
 - (void)consolidateFilesInEvents:(id)arg1;
 - (void)consolidateFilesInLibrary:(id)arg1;
-- (BOOL)consolidateMedia:(id)arg1 fromProject:(id)arg2 library:(id)arg3 taskName:(id)arg4 preparationName:(id)arg5 options:(int)arg6 hasOfflineFiles:(char *)arg7;
-- (id)externalURLForFile:(id)arg1 project:(id)arg2 createdSymlink:(char *)arg3 error:(id *)arg4;
+- (BOOL)consolidateMedia:(id)arg1 fromProject:(id)arg2 library:(id)arg3 taskName:(id)arg4 preparationName:(id)arg5 consolidateOptions:(id)arg6 hasOfflineFiles:(char *)arg7;
+- (id)externalURLForFile:(id)arg1 project:(id)arg2 library:(id)arg3 createdSymlink:(char *)arg4 error:(id *)arg5;
+- (BOOL)showMediaMissingAlertsForEvents:(id)arg1 consolidateOptions:(id)arg2;
+- (BOOL)showTranscodedMediaMissingAlertForClips:(id)arg1 consolidateOptions:(id)arg2;
+- (BOOL)showOriginalMediaMissingAlertWithConsolidateOptions:(id)arg1;
+- (BOOL)showMediaMissingAlertsForClips:(id)arg1 consolidateOptions:(id)arg2;
+- (void)scanMissingMediaRepsOnEvents:(id)arg1 consolidateOptions:(id)arg2;
+- (void)scanMissingMediaRepsOnClips:(id)arg1 consolidateOptions:(id)arg2;
+- (id)destinationURLForLibrary:(id)arg1 isToExternalMediaLocation:(char *)arg2;
+- (BOOL)hasDiskSpaceForMedia:(id)arg1 library:(id)arg2 options:(int)arg3;
 - (BOOL)hasDiskSpaceForEvents:(id)arg1 library:(id)arg2 options:(int)arg3;
 - (void)warnAboutError:(int)arg1 forTaskName:(id)arg2 library:(id)arg3 filesExist:(BOOL)arg4;
 - (void)warnAboutError:(id)arg1;

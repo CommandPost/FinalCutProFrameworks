@@ -6,7 +6,6 @@
 
 #import <Flexo/FFProject.h>
 
-#import "FFLegacyMediaChecking.h"
 #import "FFOrganizerItem.h"
 #import "FFOrganizerItemDraggingSource.h"
 #import "FFOrganizerMasterItem.h"
@@ -16,7 +15,7 @@
 
 @class FFEventInfo, FFLibrary, FFMediaEventFolder, FFMediaEventProjectData, FFMediaEventThumbnail, FFRoleSet, FFSequenceInfo, NSArray, NSData, NSDate, NSImage, NSLock, NSMutableSet, NSSet, NSString, NSURL;
 
-@interface FFMediaEventProject : FFProject <FFXMLTranslationTarget, FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, NSSecureCoding, FFLegacyMediaChecking>
+@interface FFMediaEventProject : FFProject <FFXMLTranslationTarget, FFOrganizerItem, FFOrganizerMasterItem, FFOrganizerMasterItemDropTarget, FFOrganizerItemDraggingSource, NSSecureCoding>
 {
     NSString *_projectDataID;
     NSDate *_eventEarliestDate;
@@ -36,7 +35,6 @@
     NSString *_legacyEventPath;
     NSData *_roleSetData;
     FFMediaEventProjectData *_projectData;
-    BOOL _mediaIsSyncing;
     BOOL _isLoadingProjectData;
     BOOL _isVideoEvent;
     NSMutableSet *_undoOwnedAssetIdentifiersAndAssetMD5Strings;
@@ -44,7 +42,7 @@
     FFRoleSet *_cachedRoleSet;
     NSMutableSet *_mediaDescsForMakingOwnedClips;
     NSLock *_roleSetDataLock;
-    long long _legacyMediaStatusInternal;
+    BOOL _mediaIsSyncingStatus;
 }
 
 + (struct NSSet *)copyMediaDescForObject:(id)arg1;
@@ -69,7 +67,7 @@
 + (BOOL)_actionDeleteItems:(id)arg1 inProject:(id)arg2 error:(id *)arg3;
 + (id)_deletingActionNameForItems:(id)arg1;
 + (id)flattenMediaArray:(id)arg1;
-@property long long legacyMediaStatusInternal; // @synthesize legacyMediaStatusInternal=_legacyMediaStatusInternal;
+@property BOOL mediaIsSyncingStatus; // @synthesize mediaIsSyncingStatus=_mediaIsSyncingStatus;
 @property(retain, nonatomic) NSString *legacyEventPath; // @synthesize legacyEventPath=_legacyEventPath;
 @property(readonly, nonatomic) BOOL isVideoEvent; // @synthesize isVideoEvent=_isVideoEvent;
 @property(retain, nonatomic) FFSequenceInfo *sequenceInfo; // @synthesize sequenceInfo=_sequenceInfo;
@@ -81,10 +79,6 @@
 @property(readonly, nonatomic) NSDate *eventEarliestDate; // @synthesize eventEarliestDate=_eventEarliestDate;
 @property(readonly, nonatomic) NSDate *eventLatestDate; // @synthesize eventLatestDate=_eventLatestDate;
 @property(readonly, nonatomic) NSString *projectDataID; // @synthesize projectDataID=_projectDataID;
-- (void)determineLegacyMediaStatusOfUncheckedOwnedMedia;
-- (void)determineLegacyMediaStatus;
-- (id)legacyMedia;
-- (long long)legacyMediaStatus;
 @property(retain, nonatomic) NSData *roleSetData;
 - (BOOL)verifyRoleSetMatchesLibraryRoleSet:(id)arg1 exactly:(BOOL)arg2;
 - (void)syncToRolesFromLibrary;
@@ -124,7 +118,9 @@
 - (void)addThumbnail:(id)arg1;
 - (void)updateMedianDate;
 - (void)updateDateRangeWithClips:(id)arg1;
-- (id)recommendedAssetOriginalURLForURL:(id)arg1 fileIsAlreadyAtURL:(BOOL)arg2 assetID:(id)arg3 returnRecommendedRelativePath:(id *)arg4;
+- (id)mediaFolderURLForRepType:(id)arg1;
+- (id)recommendedMediaRepURLForURL:(id)arg1 preferredBasename:(id)arg2 preferredExtension:(id)arg3 repType:(id)arg4 fileIsAlreadyAtURL:(BOOL)arg5 assetMD5:(id)arg6 returnRecommendedRelativePath:(id *)arg7;
+- (id)recommendedAssetOriginalURLForURL:(id)arg1 fileIsAlreadyAtURL:(BOOL)arg2 assetMD5:(id)arg3 returnRecommendedRelativePath:(id *)arg4;
 - (id)eventClipsForMediaIdentifiers:(id)arg1;
 - (id)eventClipsForReferencedMediaIdentifiers:(id)arg1;
 - (id)eventClipForReferencedClipMediaIdentifier:(id)arg1;
@@ -137,6 +133,7 @@
 - (BOOL)referencesExistForMediaIdentifier:(id)arg1 excludingTheseClips:(id)arg2 projectsInExcludeSet:(id)arg3 targetSeqRecsInExcludeSet:(id)arg4;
 - (BOOL)referencesExistForMediaIdentifiers:(id)arg1 excludingTheseClips:(id)arg2;
 - (void)thumbnailMediaSet:(id)arg1;
+- (void)_removeStaleOwnedMediaIdentifierAndAssetMD5StringsObject:(id)arg1;
 - (id)findMediaByIdentifierOrMD5string:(id)arg1;
 - (id)findAssetByMD5String:(id)arg1 includeTrash:(BOOL)arg2;
 - (id)findAssetByMD5String:(id)arg1;
@@ -197,7 +194,9 @@
 - (void)removeThumbnailsObject:(id)arg1;
 - (void)addThumbnails:(id)arg1;
 - (void)addThumbnailsObject:(id)arg1;
+- (void)didRemoveMD5Alias:(id)arg1 forOwnedMedia:(id)arg2;
 - (void)didRemoveOwnedMedia:(id)arg1 inUndo:(BOOL)arg2;
+- (void)didAddMD5Alias:(id)arg1 forOwnedMedia:(id)arg2;
 - (void)didAddOwnedMedia:(id)arg1 inUndo:(BOOL)arg2;
 - (void)_removePersistentOwnedAssetMD5StringsObject:(id)arg1;
 - (void)_addPersistentOwnedAssetMD5StringsObject:(id)arg1;
@@ -219,8 +218,10 @@
 - (void)_addOwnedMediaIdentifiersAndAssetMD5StringsObject:(id)arg1;
 - (unsigned long long)ownedMediaIdentifierCount;
 - (id)ownedMediaIdentifiersAndAssetMD5Strings;
+- (void)removeMD5StringAlias:(id)arg1 forMediaObject:(id)arg2;
 - (void)removeOwnedMedia:(id)arg1;
 - (void)removeOwnedMediaObject:(id)arg1;
+- (void)addMD5StringAlias:(id)arg1 forMediaObject:(id)arg2;
 - (void)addOwnedMedia:(id)arg1;
 - (void)addOwnedMediaObject:(id)arg1;
 @property(readonly, nonatomic) NSSet *ownedMedia;
@@ -239,8 +240,12 @@
 - (void)setEventLatestDate:(id)arg1;
 - (void)setEventEarliestDate:(id)arg1;
 - (id)newAssetRefFromURL:(id)arg1 manageFileType:(int)arg2 foundExistingFile:(char *)arg3;
-- (id)newAssetRefFromAsset:(id)arg1 replacingAsset:(id)arg2 manageFileType:(int)arg3 prefersExistingRep:(BOOL)arg4 externalFolderURL:(id)arg5 foundExistingFile:(char *)arg6 error:(id *)arg7;
+- (id)newAssetRefFromAsset:(id)arg1 preexistingAsset:(id)arg2 manageFileType:(int)arg3 prefersExistingRep:(BOOL)arg4 externalFolderURL:(id)arg5 foundExistingFile:(char *)arg6 error:(id *)arg7;
 - (id)newAssetRefFromAsset:(id)arg1 manageFileType:(int)arg2 prefersExistingRep:(BOOL)arg3 externalFolderURL:(id)arg4 foundExistingFile:(char *)arg5 error:(id *)arg6;
+- (BOOL)relinkAndReplaceAsset:(id)arg1 withNewAsset:(id)arg2 error:(id *)arg3;
+- (BOOL)_needsReplaceMediaRep:(id)arg1 withNewMediaRep:(id)arg2 whenBothOnline:(BOOL)arg3 whenBothOffline:(BOOL)arg4 whenBothAbsent:(BOOL)arg5;
+- (BOOL)_mediaRepNeedsReplaceInAsset:(id)arg1 repType:(id)arg2 fromNewAsset:(id)arg3 whenBothOnline:(BOOL)arg4 whenBothOffline:(BOOL)arg5 whenBothAbsent:(BOOL)arg6;
+- (BOOL)_mediaRepNeedsReplaceInAsset:(id)arg1 repType:(id)arg2 newMediaURL:(id)arg3 manageFileType:(int)arg4 externalFolderURL:(id)arg5;
 - (id)newAssetRefFromURL:(id)arg1 mediaIdentifier:(id)arg2 manageFileType:(int)arg3 prefersExistingRep:(BOOL)arg4 externalFolderURL:(id)arg5 foundExistingFile:(char *)arg6 error:(id *)arg7;
 - (BOOL)ownedMediaObjectIsInTrashOrDifferentEventUndo:(id)arg1;
 - (BOOL)ownedMediaObjectIsInUndo:(id)arg1;

@@ -6,8 +6,6 @@
 
 #pragma mark Named Structures
 
-struct CGColorSpace;
-
 struct CGPoint {
     double x;
     double y;
@@ -24,8 +22,8 @@ struct CGSize {
 };
 
 struct KeyframeAsset {
-    unsigned int texID;
-    struct CGPoint size;
+    id texture;
+    struct CGSize size;
 };
 
 struct OZChannel {
@@ -154,47 +152,6 @@ struct OZCurveSetSerializer;
 
 struct OZFactory;
 
-struct OZLine2Df;
-
-struct OZPoint2Df {
-    float _field1;
-    float _field2;
-};
-
-struct OZTexturedQuad2Df {
-    struct OZTexturedVertex2Df _field1;
-    struct OZTexturedVertex2Df _field2;
-    struct OZTexturedVertex2Df _field3;
-    struct OZTexturedVertex2Df _field4;
-};
-
-struct OZTexturedVertex2Df {
-    struct OZPoint2Df _field1;
-    struct OZPoint2Df _field2;
-};
-
-struct PCBitmap {
-    CDUnknownFunctionPointerType *_field1;
-    struct weak_ptr<PCImage> _field2;
-    int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-    int _field8;
-    struct PCColorSpaceHandle _field9;
-    _Bool _field10;
-    struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> _field11;
-};
-
-struct PCBitmapRep;
-
-struct PCColorSpaceHandle {
-    struct CGColorSpace *_field1;
-};
-
-struct PCImage;
-
 struct PCString {
     struct __CFString *_field1;
 };
@@ -235,12 +192,6 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
     } _field1;
 };
 
-struct unique_ptr<PCBitmapRep, std::__1::default_delete<PCBitmapRep>> {
-    struct __compressed_pair<PCBitmapRep *, std::__1::default_delete<PCBitmapRep>> {
-        struct PCBitmapRep *_field1;
-    } _field1;
-};
-
 struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>> {
     struct OZChannelBase **_field1;
     struct OZChannelBase **_field2;
@@ -265,41 +216,12 @@ struct vector<OZCurveSetSerializer *, std::__1::allocator<OZCurveSetSerializer *
     } _field3;
 };
 
-struct vector<OZLine2Df, std::__1::allocator<OZLine2Df>> {
-    struct OZLine2Df *_field1;
-    struct OZLine2Df *_field2;
-    struct __compressed_pair<OZLine2Df *, std::__1::allocator<OZLine2Df>> {
-        struct OZLine2Df *_field1;
-    } _field3;
-};
-
-struct vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>> {
-    struct OZTexturedQuad2Df *_field1;
-    struct OZTexturedQuad2Df *_field2;
-    struct __compressed_pair<OZTexturedQuad2Df *, std::__1::allocator<OZTexturedQuad2Df>> {
-        struct OZTexturedQuad2Df *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>, std::__1::allocator<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>>> {
-    vector_c3eb4401 *_field1;
-    vector_c3eb4401 *_field2;
-    struct __compressed_pair<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>*, std::__1::allocator<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>>> {
-        vector_c3eb4401 *_field1;
-    } _field3;
-};
-
 struct vector<void *, std::__1::allocator<void *>> {
     void **__begin_;
     void **__end_;
     struct __compressed_pair<void **, std::__1::allocator<void *>> {
         void **__value_;
     } __end_cap_;
-};
-
-struct weak_ptr<PCImage> {
-    struct PCImage *_field1;
-    struct __shared_weak_count *_field2;
 };
 
 #pragma mark Typedef'd Structures
@@ -332,30 +254,6 @@ typedef struct vector<OZChannelRef, std::__1::allocator<OZChannelRef>> {
         struct OZChannelRef *_field1;
     } _field3;
 } vector_cdb86442;
-
-typedef struct vector<OZLine2Df, std::__1::allocator<OZLine2Df>> {
-    struct OZLine2Df *_field1;
-    struct OZLine2Df *_field2;
-    struct __compressed_pair<OZLine2Df *, std::__1::allocator<OZLine2Df>> {
-        struct OZLine2Df *_field1;
-    } _field3;
-} vector_d5fe817d;
-
-typedef struct vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>> {
-    struct OZTexturedQuad2Df *_field1;
-    struct OZTexturedQuad2Df *_field2;
-    struct __compressed_pair<OZTexturedQuad2Df *, std::__1::allocator<OZTexturedQuad2Df>> {
-        struct OZTexturedQuad2Df *_field1;
-    } _field3;
-} vector_c3eb4401;
-
-typedef struct vector<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>, std::__1::allocator<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>>> {
-    vector_c3eb4401 *_field1;
-    vector_c3eb4401 *_field2;
-    struct __compressed_pair<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>*, std::__1::allocator<std::__1::vector<OZTexturedQuad2Df, std::__1::allocator<OZTexturedQuad2Df>>>> {
-        vector_c3eb4401 *_field1;
-    } _field3;
-} vector_bf37bbef;
 
 typedef struct vector<void *, std::__1::allocator<void *>> {
     void **__begin_;

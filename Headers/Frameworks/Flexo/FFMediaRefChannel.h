@@ -23,9 +23,9 @@
 - (void)prerollEnd;
 - (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
 - (id)newNSThumbnailAtTime:(CDStruct_1b6d18a9)arg1 temporalQuality:(int)arg2 contentsScale:(double)arg3;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 priority:(int)arg3 spatialQuality:(int)arg4 temporalQuality:(int)arg5 graphBuildInfo:(id)arg6 workingSpace:(int)arg7;
-- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 priority:(int)arg5 spatialQuality:(int)arg6 temporalQuality:(int)arg7 graphBuildInfo:(id)arg8 workingSpace:(int)arg9;
-- (id)newScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 location:(int)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 priority:(int)arg5 spatialQuality:(int)arg6 temporalQuality:(int)arg7 workingSpace:(int)arg8;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(struct FFImageLocationHint)arg2 priority:(int)arg3 spatialQuality:(int)arg4 temporalQuality:(int)arg5 graphBuildInfo:(id)arg6 workingSpace:(int)arg7;
+- (id)newImageAtTime:(CDStruct_1b6d18a9)arg1 location:(struct FFImageLocationHint)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 priority:(int)arg5 spatialQuality:(int)arg6 temporalQuality:(int)arg7 graphBuildInfo:(id)arg8 workingSpace:(int)arg9;
+- (id)newScheduleTokenAtTime:(CDStruct_1b6d18a9)arg1 location:(struct FFImageLocationHint)arg2 pixelTransform:(id)arg3 temporalField:(unsigned int)arg4 priority:(int)arg5 spatialQuality:(int)arg6 temporalQuality:(int)arg7 workingSpace:(int)arg8;
 - (void)purgeChannelCachedData:(id)arg1;
 - (id)copyStreamForSourceObject:(id)arg1;
 - (id)sourceObjectForTime:(CDStruct_1b6d18a9 *)arg1;

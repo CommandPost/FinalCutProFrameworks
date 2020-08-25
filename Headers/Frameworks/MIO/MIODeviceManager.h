@@ -23,6 +23,7 @@
 
 + (void)releaseSharedDeviceManager;
 + (id)sharedDeviceManager;
++ (void)initialize;
 @property(retain) NSMutableArray *audioInputDevices; // @synthesize audioInputDevices=mAudioInputDevices;
 @property(retain) NSMutableArray *outputDeviceConnections; // @synthesize outputDeviceConnections=mOutputDeviceConnections;
 @property(retain) NSMutableArray *inputDeviceConnections; // @synthesize inputDeviceConnections=mInputDeviceConnections;

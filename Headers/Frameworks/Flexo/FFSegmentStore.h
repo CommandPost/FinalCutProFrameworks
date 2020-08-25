@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     FFSegmentStoreInfo *_segmentInfo;
     NSLock *_pendingReadsLock;
     NSMutableArray *_pendingReads;
-    unsigned int _hasBeenWrittenTo;
+    // Error parsing type: AI, name: _hasBeenWrittenTo
 }
 
 - (id)description;

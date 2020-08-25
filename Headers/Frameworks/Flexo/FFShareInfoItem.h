@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface FFShareInfoItem : NSObject <FFShareInfoItemProtocol>
 {
+    BOOL _isExportingAudio;
     unsigned long long numberOfCaptionSidecarFiles;
     CKSource *_source;
     CKSetting *_setting;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingVideoDimensions;
 + (id)keyPathsForValuesAffectingCompatibility;
 + (id)propertiesDependentOnStompSettingProperties;
+@property(nonatomic) BOOL isExportingAudio; // @synthesize isExportingAudio=_isExportingAudio;
 @property(copy, nonatomic) NSSet *disabledRoles; // @synthesize disabledRoles=_disabledRoles;
 @property(readonly, nonatomic) CKSetting *setting; // @synthesize setting=_setting;
 @property(readonly, nonatomic) CKSource *source; // @synthesize source=_source;
@@ -60,10 +62,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *audioSampleRateTooltip;
 @property(readonly, nonatomic) NSString *audioSampleRate;
 @property(readonly, nonatomic) NSString *audioChannelLayoutTooltip;
+- (id)audioChannelLayoutViaStompSettings;
+- (id)reduceSetOfAudioChannelLayouts:(id)arg1;
+- (id)convertAudioChannelLayoutTag:(unsigned int)arg1;
+- (void)enumerateAudioRoleOutputs:(CDUnknownBlockType)arg1;
+- (id)audioChannelLayoutViaRoleOutputs;
+- (unsigned long long)countRoleOutputs;
 @property(readonly, nonatomic) NSString *audioChannelLayout;
+- (BOOL)shouldIncludeAudioInfo;
 @property(readonly, nonatomic) NSString *videoFrameRateTooltip;
 @property(readonly, nonatomic) NSString *videoFrameRate;
 @property(readonly, nonatomic) NSString *videoDimensionsTooltip;
+- (id)formattedVideoResolution:(struct CGSize)arg1;
 @property(readonly, nonatomic) NSString *videoDimensions;
 @property(readonly, nonatomic) NSArray *compatibility;
 @property(readonly, nonatomic) NSImage *videoDimensionsHighlightedIcon;

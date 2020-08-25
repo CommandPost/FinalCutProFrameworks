@@ -17,6 +17,7 @@
     BOOL _selectionHasVideo;
     BOOL _selectionHasAudio;
     BOOL _playing;
+    BOOL _effectPickerVisible;
     FFContext *_observedContext;
     BOOL _projectFilterMode;
 }

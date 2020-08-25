@@ -8,6 +8,7 @@
 
 @interface NSError (FFPlaybackAndSchedulingErrorReporting)
 + (id)ffPlaybackAndSchedulingError:(int)arg1 time:(CDStruct_1b6d18a9)arg2 frameDur:(CDStruct_1b6d18a9)arg3 sourceURL:(id)arg4 info:(id)arg5 details:(id)arg6 underlyingErrors:(id)arg7;
++ (id)ffCoreMediaOriginatedError:(int)arg1 time:(CDStruct_1b6d18a9)arg2 frameDur:(CDStruct_1b6d18a9)arg3 sourceURL:(id)arg4 info:(id)arg5 details:(id)arg6 underlyingErrors:(id)arg7;
 - (BOOL)nsErrorRepresentsTransientFlexoError;
 @end
 

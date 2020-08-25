@@ -13,13 +13,10 @@ __attribute__((visibility("hidden")))
 {
     struct CGImage *_cgImage;
     void *_source;
-    unsigned long long _index;
     BOOL _hasAlpha;
     FFPixelFormat *_pixelFormat;
-    CDStruct_bdcb2b0d _md5;
     double _imageWidth;
     double _imageHeight;
-    struct CGColor *_backgroundColor;
     struct CGRect _pixelSpaceBounds;
     int _alphaType;
     _Bool _needPremultClamp;
@@ -38,9 +35,10 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)pixelSpaceBounds;
 - (id)type;
 - (id)nativePixelFormat;
-- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
-- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
+- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(struct FxDevice *)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_f51ed29d *)arg5 workingSpace:(int)arg6;
+- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_f51ed29d *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
 - (void)dealloc;
+- (id)initWithRepresentation:(id)arg1 options:(id)arg2;
 - (id)initWithRepresentation:(id)arg1;
 - (id)initWithCGImageRef:(struct CGImage *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;
 - (id)initWithCGImageRef:(struct CGImage *)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 overrideAlphaInfo:(int)arg4;

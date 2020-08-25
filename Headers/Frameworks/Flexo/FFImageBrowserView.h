@@ -94,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (void)movePersistentPlayheadToCell:(id)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)dragImage:(id)arg1 at:(struct CGPoint)arg2 offset:(struct CGSize)arg3 event:(id)arg4 pasteboard:(id)arg5 source:(id)arg6 slideBack:(BOOL)arg7;
+- (id)draggingImageForImageBrowserCell:(id)arg1;
 - (id)draggingImageForItemsAtIndexes:(id)arg1 withEvent:(id)arg2 offset:(struct CGPoint *)arg3;
 - (void)updateDraggingItemsForDrag:(id)arg1;
 - (BOOL)wantsPeriodicDraggingUpdates;

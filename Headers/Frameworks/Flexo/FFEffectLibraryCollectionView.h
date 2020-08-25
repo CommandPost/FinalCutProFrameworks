@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
     long long _numRows;
     long long _numCols;
     BOOL _observing;
+    BOOL _observingPrefs;
 }
 
 @property(retain, nonatomic) NSString *effectViewToolTip; // @synthesize effectViewToolTip=_effectViewToolTip;
@@ -67,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)mouseEntered:(id)arg1;
 - (struct CGPoint)_convertCollectionViewPointToSkimmingLayerPoint:(struct CGPoint)arg1 forEffectItemView:(id)arg2;
 - (id)_effectItemViewForPoint:(struct CGPoint)arg1;
+- (long long)activeSkimmableModuleType;
 - (void)_effectPreviewObservedObjectChanged:(id)arg1;
 - (void)_cleanupEffectPreview;
 - (void)setupEffectPreviewSelectedClip;
@@ -90,6 +92,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isActive;
 - (BOOL)acceptsFirstResponder;
 - (void)copy:(id)arg1;
+- (void)_loadVisibleIcons;
+- (void)viewDidLiveScroll:(id)arg1;
 - (void)resizeWithOldSuperviewSize:(struct CGSize)arg1;
 - (void)setSelectedView:(id)arg1;
 - (BOOL)isFlipped;

@@ -6,16 +6,21 @@
 
 #import <ProAppsFxSupport/_PAEFTColorWheelArcLayer.h>
 
+@class MDPRenderingContext;
+
 @interface _PAEFTColorWheelSaturationLayer : _PAEFTColorWheelArcLayer
 {
     double _radiusValue;
     double _thetaValue;
+    id <MTLRenderPipelineState> _pipeline;
+    MDPRenderingContext *_mdp_ctx;
 }
 
-- (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
+- (void)display;
 - (void)layoutSublayers;
 - (void)setThetaValue:(double)arg1;
 - (void)setRadiusValue:(double)arg1;
+- (void)dealloc;
 
 @end
 

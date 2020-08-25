@@ -29,7 +29,6 @@
 + (id)audioRoleStompSettings;
 + (id)audioOutputStompSettings;
 + (id)defaultName;
-+ (id)keyPathsForValuesAffectingWillExcludeDisabledRoles;
 + (id)keyPathsForValuesAffectingTargetFileNameSuffix;
 + (id)keyPathsForValuesAffectingRequiresTargetDestinationURL;
 + (id)keyPathsForValuesAffectingName;
@@ -78,6 +77,7 @@
 - (BOOL)isExportingVideo;
 - (id)firstMultitrackRolePreset;
 - (void)setDestinationRolePresetToMultitrackWhenExportingAsMXF;
+- (id)videoResolutionAsString;
 - (id)targetFileNameSuffix;
 - (BOOL)requiresTargetDestinationURL;
 - (id)iconTitle;
@@ -95,7 +95,6 @@
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
-- (BOOL)willExcludeDisabledRoles;
 - (id)taskIdentifier;
 
 @end

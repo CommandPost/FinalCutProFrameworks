@@ -6,7 +6,7 @@
 
 #import "LKTile.h"
 
-@class FFOrganizerFilterHUDTileModule, LKButton, LKImageView, NSView;
+@class FFOrganizerFilterHUDTileModule, LKButton, LKImageView, LKTextField, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilterHUDTile : LKTile
@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
     NSView *_customView;
     FFOrganizerFilterHUDTileModule *_subModule;
     id <FFOrganizerFilterHUDTileDelegate> _delegate;
+    LKTextField *_tileName;
 }
 
+@property LKTextField *tileName; // @synthesize tileName=_tileName;
 @property(nonatomic) id <FFOrganizerFilterHUDTileDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)subModule;
 - (void)setCustomViewFromNib:(id)arg1 filterDict:(id)arg2;

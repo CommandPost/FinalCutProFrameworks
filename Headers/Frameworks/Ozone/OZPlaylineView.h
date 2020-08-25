@@ -27,13 +27,13 @@
 - (const struct PCTimeRange *)getDisplayRange;
 - (double)getPixelsPerSecond;
 - (CDStruct_1b6d18a9)getSecondsPerPixel;
-- (void)_setViewPositionAndSize;
+- (void)setViewPositionAndSize;
 - (void)renewGState;
 - (void)timeDisplayRangeModified;
 - (id)timingCoordinator;
 - (void)setTimingCoordinator:(id)arg1;
 - (void)notify:(unsigned int)arg1;
-- (struct CGRect)_playLineRect;
+- (struct CGRect)private_playLineRect;
 - (void)drawRect:(struct CGRect)arg1;
 - (struct CGRect)playLineRect;
 - (struct PCTimeRange)getPlayRange;

@@ -19,8 +19,7 @@
     double _audioWaveFormProportion;
     struct {
         unsigned int calculatesDynamicItemHeights:1;
-        unsigned int showClipTitlesOnly:1;
-        unsigned int RESERVED:30;
+        unsigned int RESERVED:31;
     } _tlkContainerMetricsFlags;
     double _topPadding;
     double _bottomPadding;
@@ -40,7 +39,6 @@
 @property(nonatomic) double itemHeight;
 @property(readonly, nonatomic) double audioWaveFormHeight;
 @property(readonly, nonatomic) double spineItemHeight;
-@property(nonatomic) BOOL showClipTitlesOnly;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

@@ -10,37 +10,35 @@
 
 @interface PODrawableTexture : NSObject
 {
-    int _width;
-    int _height;
+    struct CGSize _size;
     unsigned int _textureID;
-    struct shared_ptr<PCBitmap> *_bitmap;
+    struct shared_ptr<PCBitmap> _bitmap;
     NSBitmapImageRep *_pImageRep;
     NSGraphicsContext *_pContext;
     _Bool _hasDrawingBegun;
 }
 
+@property(nonatomic) struct CGSize size; // @synthesize size=_size;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)newMetalTexture:(id)arg1;
 - (unsigned int)getTextureID;
-- (void)drawGLTextureWithTransform:(struct PODrawableTextureTransform)arg1;
+- (void)drawGLTextureInQuad:(struct POQuad)arg1;
 - (void)dumpBitmapDataToGLTexture;
+- (BOOL)isValidBitmap:(id)arg1;
 - (char *)finalizedBitmapData;
 - (void)prepareContext;
+- (id)newBitmap8BitRGBAWithPixelSize:(struct CGSize)arg1 colorSpaceName:(id)arg2;
 - (void)endDrawingInto;
 - (void)beginDrawingInto;
-- (struct PODrawableTextureTransform)transformFromPoint:(struct CGPoint)arg1 rotatedBy:(double)arg2 aroundPivot:(struct CGPoint)arg3 withScaleX:(double)arg4 withScaleY:(double)arg5 withOpacity:(double)arg6;
-- (struct PODrawableTextureTransform)transformFromPoint:(struct CGPoint)arg1 rotatedBy:(double)arg2 aroundPivot:(struct CGPoint)arg3;
-- (struct PODrawableTextureTransform)transformFromPoint:(struct CGPoint)arg1 withScaleX:(double)arg2 withScaleY:(double)arg3;
-- (struct PODrawableTextureTransform)transformFromPoint:(struct CGPoint)arg1 withOpacity:(double)arg2;
-- (struct PODrawableTextureTransform)transformFromPoint:(struct CGPoint)arg1;
-- (int)getHeight;
-- (int)getWidth;
-- (struct PCBitmap *)getBitmap;
-- (void)setWidth:(int)arg1 andHeight:(int)arg2;
+- (void)render:(CDUnknownBlockType)arg1;
+- (struct POQuad)quadFromCenter:(struct CGPoint)arg1 rotatedBy:(float)arg2 aroundPivot:(struct CGPoint)arg3 opacity:(float)arg4;
+- (struct POQuad)quadFromCenter:(struct CGPoint)arg1 rotatedBy:(float)arg2 aroundPivot:(struct CGPoint)arg3;
+- (struct POQuad)quadFromCenter:(struct CGPoint)arg1 opacity:(float)arg2;
+- (struct POQuad)quadFromCenter:(struct CGPoint)arg1;
+- (struct PCBitmap *)bitmap;
 - (void)dealloc;
-- (id)initWithNSImage:(id)arg1 size:(struct CGSize)arg2;
-- (id)initWithNSImage:(id)arg1;
 - (id)initWithSize:(struct CGSize)arg1;
-- (id)init;
 
 @end
 

@@ -32,7 +32,6 @@
         unsigned int labelHidden:1;
         unsigned int grabbedThumb:1;
     } _cw_flags;
-    id _eventMonitor;
     struct {
         double radius;
         double theta;

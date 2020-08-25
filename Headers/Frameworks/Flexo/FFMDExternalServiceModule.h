@@ -6,16 +6,16 @@
 
 #import <Flexo/FFMDModule.h>
 
-@class FFProServiceBase, NSString, NSView, PlugInViewController, _FFExternalServiceHostingWindow;
+@class NSString, NSView, PXPluginViewController, PXProServiceBase, _FFExternalServiceHostingWindow;
 
 @interface FFMDExternalServiceModule : FFMDModule
 {
     NSView *_placeholderView;
     _FFExternalServiceHostingWindow *_remoteViewHostingWindow;
-    PlugInViewController *_plugInHostViewController;
+    PXPluginViewController *_plugInHostViewController;
     NSString *_serviceBundleIdentifier;
     NSString *_serviceClassName;
-    FFProServiceBase *_plugIn;
+    PXProServiceBase *_plugIn;
     BOOL _plugInActive;
 }
 

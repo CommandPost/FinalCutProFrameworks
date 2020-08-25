@@ -9,10 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface FFHistogramSettingsButtonLayer : FFVideoScopesSettingsButtonLayer
 {
-    CDStruct_554002f2 _action_opt;
 }
-
-- (id)actionForKey:(id)arg1;
 
 @end
 

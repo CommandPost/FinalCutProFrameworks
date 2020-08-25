@@ -6,17 +6,13 @@
 
 #import "NSObject.h"
 
-#import "CKBaseExportPanelDelegate.h"
 #import "FFSharePanelDelegate.h"
 #import "NSOpenSavePanelDelegate.h"
 
-@class CALayer, CKTranscodingOperation, FFBackgroundTask, FFSequenceSettingsExporter, LKButton, NSConditionLock, NSError, NSPopUpButton, NSString, NSView, OZObjCDocument, OZSharePanelAccessoryController;
+@class CALayer, CKTranscodingOperation, FFBackgroundTask, FFSequenceSettingsExporter, NSConditionLock, NSError, NSString, OZObjCDocument, OZSharePanelAccessoryController;
 
-@interface OZShareManager : NSObject <CKBaseExportPanelDelegate, FFSharePanelDelegate, NSOpenSavePanelDelegate>
+@interface OZShareManager : NSObject <FFSharePanelDelegate, NSOpenSavePanelDelegate>
 {
-    NSView *_saveStillView;
-    NSPopUpButton *_presetPopUp;
-    LKButton *_usePlayRangeButton;
     OZObjCDocument *_objCDoc;
     OZSharePanelAccessoryController *_sharePanelAccessoryController;
     struct OZExportSettings *_tmpSettings;
@@ -33,53 +29,29 @@
     double _previewTime;
 }
 
-+ (void)initializeShareSubmenuInToolbarOverflowMenu:(id)arg1;
 + (BOOL)isCompressorKitLoaded;
 + (id)TemplatePreviewSetting;
 + (id)shareHistoryDirectoryPath;
-+ (id)sharePathWithDocument:(id)arg1;
 + (id)shareManagerWithDocument:(id)arg1;
 @property(retain, nonatomic) OZSharePanelAccessoryController *sharePanelAccessoryController; // @synthesize sharePanelAccessoryController=_sharePanelAccessoryController;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)logShareDestination:(Class)arg1;
 - (void)setPreviewTime:(double)arg1 supportsAudio:(BOOL)arg2 rebuildContext:(BOOL)arg3;
 - (void)setPreviewTime:(double)arg1;
 - (void)redrawPreview;
 - (id)previewLayer;
 - (void)postProcessSource:(id)arg1 andTarget:(id)arg2;
-- (void)submitBatch:(id)arg1 toCluster:(id)arg2 progressIsIndeterminate:(BOOL)arg3 forWindow:(id)arg4;
-- (void)exportSequence:(id)arg1 withSetting:(id)arg2 atInTime:(CDStruct_1b6d18a9)arg3 outTime:(CDStruct_1b6d18a9)arg4;
-- (void)exportImage:(id)arg1 withSetting:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (void)exportPreview:(id)arg1;
-- (void)exportMovie:(id)arg1 withSetting:(id)arg2 forTimeRange:(struct PCTimeRange)arg3 toCluster:(id)arg4 progressIsIndeterminate:(BOOL)arg5;
 - (id)newExportBatch:(id)arg1 withSetting:(id)arg2 forTimeRange:(struct PCTimeRange)arg3;
 - (long long)_getTimecodeMode:(double)arg1 isNTSC:(BOOL)arg2;
-- (void)exportUsingCompressorSettingsModalForWindow:(id)arg1;
 - (void)openInCompressor;
 - (void)shareToDestination:(id)arg1 parentWindow:(id)arg2;
 - (void)showSharePanelWithSource:(id)arg1 destination:(id)arg2 destinationURL:(id)arg3 parentWindow:(id)arg4;
 - (void)queueShareOperationsForBatches:(id)arg1;
-- (void)exportHTTPLiveStreamingModalForWindow:(id)arg1;
-- (void)exportSelectionMovieModalForWindow:(id)arg1;
-- (void)exportImageSequenceModalForWindow:(id)arg1;
-- (void)exportMovieModalForWindow:(id)arg1;
-- (void)exportCurrentFrameModalForWindow:(id)arg1;
-- (void)publishVimeoModalForWindow:(id)arg1;
-- (void)publishYouTubeModalForWindow:(id)arg1;
-- (void)sendEmailModalForWindow:(id)arg1;
-- (void)burnBlurayModalForWindow:(id)arg1;
-- (void)burnDVDModalForWindow:(id)arg1;
-- (void)exportiTunesModalForWindow:(id)arg1;
-- (void)exportAudioModalForWindow:(id)arg1;
-- (void)exportMediaBrowserModalForWindow:(id)arg1;
 - (BOOL)canExportSelectedLayersOnly;
-- (void)exportUsingPanelClass:(Class)arg1 window:(id)arg2 addRenderTab:(BOOL)arg3;
 - (void)export:(CDUnknownBlockType)arg1;
 - (id)ckSourceForDestination:(id)arg1;
 - (id)ckSourceWithMediaServerAttributes:(id)arg1;
-- (id)destinationURL:(Class)arg1;
-- (id)selection;
 - (void)exclusivelySoloNode:(struct OZSceneNode *)arg1;
 - (void)restoreSoloState;
 - (void)storeSoloState;

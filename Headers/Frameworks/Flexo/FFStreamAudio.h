@@ -6,8 +6,6 @@
 
 #import <Flexo/FFStream.h>
 
-@class FFStreamAudioRenderContext;
-
 @interface FFStreamAudio : FFStream
 {
     struct AudioStreamBasicDescription _convertedFormat;
@@ -15,8 +13,6 @@
     struct FFAudioGraph *_graph;
     struct FFAudioNode *_pullNode;
     unsigned long long _pullElem;
-    FFStreamAudioRenderContext *_renderContext;
-    CDStruct_1b6d18a9 _lastMaxRenderTime;
 }
 
 - (void)prerollBegin:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 sync:(id)arg3;
@@ -26,13 +22,12 @@
 - (struct FFAudioGraph *)graph;
 - (unsigned int)maximumBufferSize;
 - (BOOL)setMaximumBufferSize:(unsigned int)arg1;
-- (unsigned int)render:(struct AudioBufferList *)arg1 forTime:(CDStruct_1b6d18a9)arg2 andFrames:(unsigned int)arg3;
-- (unsigned int)render:(struct AudioBufferList *)arg1 withFormat:(const struct AudioStreamBasicDescription *)arg2 forTime:(CDStruct_1b6d18a9)arg3;
-- (unsigned int)render:(struct AudioBufferList *)arg1 withFormat:(const struct AudioStreamBasicDescription *)arg2 forTime:(CDStruct_1b6d18a9)arg3 andFrames:(unsigned int)arg4 channels:(unsigned int)arg5;
 - (void)preRenderEnd;
 - (void)preRenderBegin:(CDStruct_1b6d18a9)arg1 sync:(id)arg2;
 - (struct AudioStreamBasicDescription)streamFormatInfo;
 - (id)audioStreamOptions;
+- (id)newStreamForRenderWithOptions:(id)arg1;
+- (id)newStreamForRender;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 context:(id)arg2 options:(id)arg3;
 

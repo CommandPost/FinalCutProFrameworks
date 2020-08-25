@@ -6,7 +6,7 @@
 
 #import "NSViewController.h"
 
-@class CALayer, CKSource, FFShareVideoPreviewTimeConverter, FFWeakPointerValue, NSLayoutConstraint, NSTrackingArea, NSView;
+@class CALayer, CKSource, FFShareVideoPreviewTimeConverter, NSLayoutConstraint, NSTrackingArea, NSView, PCWeakPointerValue;
 
 __attribute__((visibility("hidden")))
 @interface FFShareVideoPreviewViewController : NSViewController
@@ -20,10 +20,10 @@ __attribute__((visibility("hidden")))
     CALayer *_skimmerLayer;
     NSTrackingArea *_previewTrackingArea;
     FFShareVideoPreviewTimeConverter *_timeConverter;
-    FFWeakPointerValue *_weakDelegate;
+    PCWeakPointerValue *_weakDelegate;
 }
 
-@property(retain, nonatomic) FFWeakPointerValue *weakDelegate; // @synthesize weakDelegate=_weakDelegate;
+@property(retain, nonatomic) PCWeakPointerValue *weakDelegate; // @synthesize weakDelegate=_weakDelegate;
 @property(retain, nonatomic) FFShareVideoPreviewTimeConverter *timeConverter; // @synthesize timeConverter=_timeConverter;
 @property(retain, nonatomic) NSTrackingArea *previewTrackingArea; // @synthesize previewTrackingArea=_previewTrackingArea;
 @property(retain, nonatomic) CALayer *skimmerLayer; // @synthesize skimmerLayer=_skimmerLayer;
@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillAppear;
 - (id)makeTrackingArea;
 - (void)setupTrackingArea;
+- (void)updateSkimmerHeight;
 - (struct CGRect)initialSkimmerFrame;
 - (id)makeSkimmerLayer;
 - (void)configureSkimmerLayer;
@@ -62,9 +63,10 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear;
 - (void)configurePreviewLayer;
 - (BOOL)canDelegateProvidePreviewLayer;
+- (BOOL)sourceHasImage;
+- (struct CGRect)calculateSourceDisplayBounds;
 - (void)configurePreviewView;
 - (void)viewDidLoad;
-- (void)viewDidLayout;
 @property(nonatomic) id <FFSharePanelDelegate> delegate;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

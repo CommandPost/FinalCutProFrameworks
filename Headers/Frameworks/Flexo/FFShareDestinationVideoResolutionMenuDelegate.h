@@ -17,20 +17,13 @@ __attribute__((visibility("hidden")))
 
 @property(copy, nonatomic) NSArray *sources; // @synthesize sources=_sources;
 @property(copy, nonatomic) NSArray *destinations; // @synthesize destinations=_destinations;
+- (BOOL)doesPotentialSizeImplyUpscaling:(struct CGSize)arg1;
+- (BOOL)shouldEnableMenuItemForSelectVideoResolutionWithRepresentedObject:(id)arg1;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)selectVideoResolution:(id)arg1;
+- (id)makeMenuMakerFactory;
+- (id)makeMenuMaker;
 - (long long)buildVideoResolutionMenu:(id)arg1;
-- (id)enabledVideoResolutionsForMXFWithoutDestination:(id)arg1;
-- (id)enabledVideoResolutionsForMXFWithDestination:(id)arg1;
-- (id)enabledVideoResolutionsForMXF;
-- (id)enabledVideoResolutionForWebWithDestination:(id)arg1;
-- (id)enabledVideoResolutionForWeb;
-- (BOOL)notInPreferences;
-- (id)enabledVideoResolutionWithSetting:(id)arg1;
-- (id)enabledVideoResolution;
-- (long long)exportOption;
-- (BOOL)isExportingPublishing;
-- (BOOL)concatenateByLogicalAndWithKey:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

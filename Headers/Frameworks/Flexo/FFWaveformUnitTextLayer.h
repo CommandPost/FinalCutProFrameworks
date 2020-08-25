@@ -9,11 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface FFWaveformUnitTextLayer : FFVideoScopesTextLayer
 {
-    CDStruct_69458254 _action_opt;
 }
-
-- (id)actionForKey:(id)arg1;
-- (void)setShowGuides:(BOOL)arg1;
 
 @end
 

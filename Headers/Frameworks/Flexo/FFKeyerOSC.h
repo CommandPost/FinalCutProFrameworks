@@ -20,7 +20,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct CGColorSpace *)processingColorSpace;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (BOOL)supportsMetalRendering;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (void)drawOnScreenForContexts:(id)arg1 drawProperties:(id)arg2;
+- (void)drawMetalCircle:(id)arg1 radius:(double)arg2 color:(BOOL)arg3 thick:(double)arg4 offsetX:(double)arg5 offsetY:(double)arg6 thickness:(BOOL)arg7 drawWithArc: /* Error: Ran out of types for this method. */;
 - (BOOL)hitTest:(struct CGPoint)arg1;
 - (void)mouseMoved:(id)arg1;
 - (void)mouseUp:(id)arg1;

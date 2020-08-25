@@ -4,16 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <ProAppsFxSupport/PAEOpenGLLayer.h>
+#import "CAMetalLayer.h"
 
 @class _PAEFTColorWheelArcMarkerLayer, _PAEFTColorWheelArcValueIndicatorLayer;
 
-@interface _PAEFTColorWheelArcLayer : PAEOpenGLLayer
+@interface _PAEFTColorWheelArcLayer : CAMetalLayer
 {
-    _PAEFTColorWheelArcMarkerLayer *_markerLayer;
-    _PAEFTColorWheelArcValueIndicatorLayer *_valueIndicatorLayer;
     double _value;
     double _sliderMinMaxRange;
+    _PAEFTColorWheelArcMarkerLayer *_markerLayer;
+    _PAEFTColorWheelArcValueIndicatorLayer *_valueIndicatorLayer;
 }
 
 @property double sliderMinMaxRange; // @synthesize sliderMinMaxRange=_sliderMinMaxRange;

@@ -47,6 +47,7 @@
 - (id)_eventLibraryModule;
 - (id)_containingSidebarModule;
 - (id)cellForNode:(id)arg1 atTableColumn:(id)arg2;
+- (id)outlineView:(id)arg1 viewForTableColumn:(id)arg2 item:(id)arg3;
 - (id)outlineView:(id)arg1 toolTipForCell:(id)arg2 rect:(struct CGRect *)arg3 tableColumn:(id)arg4 item:(id)arg5 mouseLocation:(struct CGPoint)arg6;
 - (id)outlineView:(id)arg1 selectionIndexesForProposedSelection:(id)arg2;
 - (void)outlineViewSelectionDidChangeAutonomously:(id)arg1;
@@ -59,7 +60,10 @@
 - (void)_setupSpringLoadingForNode:(id)arg1;
 - (void)_springLoadingAction:(id)arg1;
 - (void)_invalidateSpringLoading;
+- (void)addNodes:(id)arg1 toPasteboardItem:(id)arg2 inDraggingPasteboard:(id)arg3;
+- (void)_addNodes:(id)arg1 toPasteboardItem:(id)arg2;
 - (void)addNodes:(id)arg1 toPasteboard:(id)arg2;
+- (id)_xmlTranslationTaskForXmlNodes:(id)arg1 exportOptions:(id)arg2;
 - (void)_addNodes:(id)arg1 toPasteboard:(id)arg2;
 - (id)_pasteboardTypeDictionariesForWritingNodes:(id)arg1 toPasteboard:(id)arg2 xmlNodes:(id *)arg3;
 - (id)dragTypesForNodes:(id)arg1;

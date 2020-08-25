@@ -8,18 +8,18 @@
 
 #import "FFInspectorFileInfoReferencesTile.h"
 
-@class FFAnchoredSequence, FFMedia, LKButton, LKImageView, LKTextField, NSArray, NSString, NSView;
+@class FFAnchoredSequence, FFMedia, FFTranscodeMediaWindowController, LKButton, LKImageView, LKTextField, NSArray, NSStackView, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFInspectorFileInfoMediaRepsInfoTile : FFInspectorFileInfoBaseTile <FFInspectorFileInfoReferencesTile>
 {
-    FFAnchoredSequence *_sequenceToProxy;
+    struct PCProcrastinatedDispatch_t _procrastinatedReload;
+    FFAnchoredSequence *_sequenceToTranscode;
     FFMedia *_media;
     NSArray *_currentRefs;
     NSArray *_currentItems;
     id _currentOwner;
-    struct PCProcrastinatedDispatch_t _procrastinatedReload;
-    NSView *_rowView;
+    NSStackView *_rowView;
     LKImageView *_originalImage;
     LKTextField *_originalField;
     LKImageView *_optimizedImage;
@@ -27,11 +27,26 @@ __attribute__((visibility("hidden")))
     LKImageView *_proxyImage;
     LKTextField *_proxyField;
     LKButton *_generateProxyButton;
+    FFTranscodeMediaWindowController *_transcodeController;
 }
 
+@property(retain, nonatomic) FFTranscodeMediaWindowController *transcodeController; // @synthesize transcodeController=_transcodeController;
+@property(nonatomic) LKButton *generateProxyButton; // @synthesize generateProxyButton=_generateProxyButton;
+@property(nonatomic) LKTextField *proxyField; // @synthesize proxyField=_proxyField;
+@property(nonatomic) LKImageView *proxyImage; // @synthesize proxyImage=_proxyImage;
+@property(nonatomic) LKTextField *optimizedField; // @synthesize optimizedField=_optimizedField;
+@property(nonatomic) LKImageView *optimizedImage; // @synthesize optimizedImage=_optimizedImage;
+@property(nonatomic) LKTextField *originalField; // @synthesize originalField=_originalField;
+@property(nonatomic) LKImageView *originalImage; // @synthesize originalImage=_originalImage;
+@property(retain, nonatomic) NSStackView *rowView; // @synthesize rowView=_rowView;
+@property(retain, nonatomic) id currentOwner; // @synthesize currentOwner=_currentOwner;
+@property(retain, nonatomic) NSArray *currentItems; // @synthesize currentItems=_currentItems;
+@property(retain, nonatomic) NSArray *currentRefs; // @synthesize currentRefs=_currentRefs;
+@property(retain, nonatomic) FFMedia *media; // @synthesize media=_media;
+@property(retain, nonatomic) FFAnchoredSequence *sequenceToTranscode; // @synthesize sequenceToTranscode=_sequenceToTranscode;
 - (id)view;
 - (void)rangeInvalidated:(id)arg1;
-- (void)generateProxy:(id)arg1;
+- (void)showTranscodeSheet:(id)arg1;
 - (void)updateWithItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
 - (void)dealloc;
 - (void)_endObservingMedia;

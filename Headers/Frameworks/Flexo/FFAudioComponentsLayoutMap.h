@@ -48,6 +48,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)canResetLayoutMap;
 - (BOOL)isIntrinsicLayoutMap;
 - (BOOL)isIntrinsicLayoutForKey:(id)arg1;
+- (void)enumerateLayoutItemsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateLayoutItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)demandMutableLayoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (id)layoutItemForKey:(id)arg1 layoutItemKey:(id)arg2;
 - (id)layoutItemForKey:(id)arg1 layoutItemKey:(id)arg2 localOnly:(BOOL)arg3;

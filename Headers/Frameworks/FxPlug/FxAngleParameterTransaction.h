@@ -15,7 +15,7 @@
 - (id)copy;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 parameterFlags:(unsigned int)arg6 transactionType:(int)arg7 transactionID:(unsigned long long)arg8;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(double)arg3 parameterMin:(double)arg4 parameterMax:(double)arg5 parameterFlags:(unsigned int)arg6 transactionType:(int)arg7 transactionID:(unsigned long long)arg8 pluginUUID:(id)arg9 pluginSessionID:(unsigned long long)arg10;
 
 @end
 

@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 + (struct OZChannelBase *)_newOZChannelWithName:(id)arg1 channelID:(unsigned int)arg2 flags:(unsigned int)arg3;
 + (BOOL)_isOZChannelClassOK:(struct OZChannelBase *)arg1;
 + (void)addFactory;
+- (struct FFShape *)shape;
+- (void)setShape:(struct FFShape *)arg1;
 - (void)setOSCClass:(unsigned int)arg1;
 - (unsigned int)OSCClass;
-- (void)setDisplayOSC:(BOOL)arg1;
-- (BOOL)displayOSC;
+- (void)setOSCToDisplay:(unsigned int)arg1;
+- (unsigned int)oscToDisplay;
 
 @end
 

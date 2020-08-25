@@ -100,7 +100,7 @@ __attribute__((visibility("hidden")))
 - (void)_notifyResyncTabs;
 - (void)_rangeInvalidation:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (unsigned long long)labelAlignment;
+- (long long)labelAlignment;
 - (id)moduleFooterAccessoryView;
 - (id)moduleAccessoryView;
 - (void)effectFinishedLoading:(id)arg1;

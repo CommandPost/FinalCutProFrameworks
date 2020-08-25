@@ -6,11 +6,11 @@
 
 #import "NSObject.h"
 
-#import "FFModelLocking.h"
+#import "FFModelLock.h"
 
-@class NSCondition, NSMutableArray, NSObject<OS_dispatch_queue>;
+@class NSCondition, NSMutableArray, NSObject<OS_dispatch_queue>, NSString;
 
-@interface FFSharedLock : NSObject <FFModelLocking>
+@interface FFSharedLock : NSObject <FFModelLock>
 {
     NSCondition *_guard;
     unsigned long long _holdsReadLockKey;
@@ -25,15 +25,15 @@
     _Bool _deferredWriteQueueIsSuspended;
     NSObject<OS_dispatch_queue> *_deferredWriteQueue;
     void *_deferredWriteOverrides;
-    int _disableDeferredWritePrioritization;
+    int _disableWritePrioritization;
 }
 
 + (id)globalLock;
 + (void)initialize;
 - (void)_deferredWriteHandler;
 - (void)queueDeferredWriteLockBlockOnMainThread:(CDUnknownBlockType)arg1;
-- (void)endDisableDeferredWritePrioritization;
-- (void)beginDisableDeferredWritePrioritization;
+- (void)endDisableWritePrioritization;
+- (void)beginDisableWritePrioritization;
 - (id)_evenIfDeferredWritePending:(_Bool)arg1;
 - (BOOL)hasReadLockScope;
 - (BOOL)hasWriteLockScope;
@@ -51,6 +51,12 @@
 - (void)_updateDWQStateWhileHoldingGuard;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -9,16 +9,17 @@
 @class NSArray, NSColor, NSDictionary, NSSet, NSString, TLKDragContext, TLKTimelineView;
 
 @protocol TLKTimelineViewDataSource <NSObject>
+- (NSArray *)timelineView:(TLKTimelineView *)arg1 itemComponentsForItem:(id)arg2;
 - (id <NSCopying>)timelineView:(TLKTimelineView *)arg1 verticalIndexValueForItemComponent:(id)arg2;
 - (long long)timelineView:(TLKTimelineView *)arg1 layoutRegionForItemComponent:(id)arg2;
-- (CDStruct_e83c9415)timelineView:(TLKTimelineView *)arg1 audioSummaryTimeRangeForItem:(id)arg2;
-- (CDStruct_e83c9415)timelineView:(TLKTimelineView *)arg1 timeRangeLimitsForItem:(id)arg2;
-- (CDStruct_e83c9415)timelineView:(TLKTimelineView *)arg1 clippedTimeRangeForItem:(id)arg2;
-- (CDStruct_e83c9415)timelineView:(TLKTimelineView *)arg1 timeRangeForItem:(id)arg2;
-- (CDStruct_e83c9415)timelineView:(TLKTimelineView *)arg1 timeRangeForTrack:(id)arg2;
-- (NSSet *)timelineView:(TLKTimelineView *)arg1 anchoredItemsForItem:(id)arg2;
 - (id)timelineView:(TLKTimelineView *)arg1 containerForItemComponent:(id)arg2;
+- (CDStruct_e83c9415)timelineView:(TLKTimelineView *)arg1 clippedTimeRangeForItem:(id)arg2;
+- (CDStruct_e83c9415)timelineView:(TLKTimelineView *)arg1 audioSummaryTimeRangeForItem:(id)arg2;
+- (NSSet *)timelineView:(TLKTimelineView *)arg1 anchoredItemsForItem:(id)arg2;
+- (CDStruct_e83c9415)timelineView:(TLKTimelineView *)arg1 timeRangeLimitsForItem:(id)arg2;
+- (CDStruct_e83c9415)timelineView:(TLKTimelineView *)arg1 timeRangeForItem:(id)arg2;
 - (NSArray *)timelineView:(TLKTimelineView *)arg1 itemsForContainer:(id)arg2;
+- (CDStruct_e83c9415)timelineView:(TLKTimelineView *)arg1 timeRangeForTrack:(id)arg2;
 - (id)timelineView:(TLKTimelineView *)arg1 trackAtIndex:(unsigned long long)arg2;
 - (unsigned long long)numberOfTracksInTimelineView:(TLKTimelineView *)arg1;
 
@@ -88,7 +89,6 @@
 - (CDStruct_e83c9415)timelineView:(TLKTimelineView *)arg1 timeRangeForAudioComponentRangeItem:(id)arg2 inContainer:(id)arg3;
 - (NSArray *)timelineView:(TLKTimelineView *)arg1 rangeItemsForAudioComponent:(id)arg2;
 - (BOOL)timelineView:(TLKTimelineView *)arg1 shouldHidePrimaryComponentForItem:(id)arg2;
-- (NSArray *)timelineView:(TLKTimelineView *)arg1 itemComponentsForItem:(id)arg2;
 - (id)timelineView:(TLKTimelineView *)arg1 adjacentItemForItemComponent:(id)arg2 edgePart:(NSString *)arg3;
 - (NSColor *)timelineView:(TLKTimelineView *)arg1 backgroundColorForItemComponent:(id)arg2;
 - (id)timelineView:(TLKTimelineView *)arg1 boxMetricsForLane:(id)arg2;

@@ -8,7 +8,7 @@
 
 #import "FFFilmstripLayerDelegate.h"
 
-@class FFFilmstripLayer, FFWeakPointerValue, NSString;
+@class FFFilmstripLayer, NSString, PCWeakPointerValue;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioComponentsConfigWaveformLayer : CALayer <FFFilmstripLayerDelegate>
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     struct NSObject *m_skimmable;
     CDStruct_e83c9415 m_filmstripClippedRange;
     int m_thumbnailAudioOptions;
-    FFWeakPointerValue *m_delegate;
+    PCWeakPointerValue *m_delegate;
 }
 
 @property(readonly, nonatomic) FFFilmstripLayer *filmstripLayer; // @synthesize filmstripLayer=m_filmstripLayer;

@@ -6,12 +6,12 @@
 
 #import <Flexo/FFRiggedChannelFolderController.h>
 
-@class NSButton;
+@class LKButton;
 
 __attribute__((visibility("hidden")))
 @interface FFShapeMaskFolderController : FFRiggedChannelFolderController
 {
-    NSButton *_displayOSCButton;
+    LKButton *_oscToDisplayButton;
 }
 
 - (void)actionSetOSCClassButton:(id)arg1;

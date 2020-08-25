@@ -16,6 +16,11 @@
     BOOL appIsTerminating;
 }
 
+- (void)hostSession:(unsigned long long)arg1 performCommand:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)lkCommandForFxCommand:(unsigned long long)arg1;
+- (void)hostSession:(unsigned long long)arg1 get3DDataAtTime:(CDStruct_1b6d18a9)arg2 reply:(CDUnknownBlockType)arg3;
+-     // Error parsing type: v56@0:8^{OZRenderState={?=qiIq}dddI^{OZTransformNode}B{PCMatrix44Tmpl<double>=[4[4d]]}BBBBBB^{OZRenderNode}iB^{OZElement}BBBBBBBBi{TransformSet=Q}^{set<OZElement *, std::__1::less<OZElement *>, std::__1::allocator<OZElement *> >}}16{?=qiIq}24^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}BA@BBQBQ{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}48, name: renderState:atTime:forPluginInstance:
+- (void)hostSession:(unsigned long long)arg1 startAnalysis:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 processOSCTransaction:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 handleUndoTransaction:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 currentTime:(CDUnknownBlockType)arg3;
@@ -23,13 +28,14 @@
 - (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 startCustomParameterAction:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 processKeyframeTransaction:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 processDynamic:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)hostSession:(unsigned long long)arg1 parametersAtTime:(CDStruct_1b6d18a9)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 getFlagsFromParameter:(unsigned int)arg2 transactionID:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)hostSession:(unsigned long long)arg1 setValue:(id)arg2 toParameter:(unsigned int)arg3 atTime:(CDStruct_1b6d18a9)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)hostSession:(unsigned long long)arg1 getValueFromParameter:(unsigned int)arg2 atTime:(CDStruct_1b6d18a9)arg3 transactionID:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)hostSession:(unsigned long long)arg1 addParameter:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)hostSession:(unsigned long long)arg1 setVersionAtCreation:(unsigned int)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)waitForTransactionsToClearForInstance:(id)arg1 transactionID:(unsigned long long)arg2 transactionSemaphore:(id)arg3;
--     // Error parsing type: ^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}B@BBQB{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}32@0:8Q16^@24, name: pluginInstanceForSessionID:withError:
+-     // Error parsing type: ^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}BA@BBQBQ{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}32@0:8Q16^@24, name: pluginInstanceForSessionID:withError:
 - (void)dealloc;
 - (id)initWithPluginUUID:(id)arg1;
 

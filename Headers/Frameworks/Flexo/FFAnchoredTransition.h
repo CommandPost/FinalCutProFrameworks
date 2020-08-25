@@ -27,17 +27,8 @@
 @property(nonatomic) int transitionNilSourceFillType; // @synthesize transitionNilSourceFillType=_transitionNilSourceFillType;
 @property(nonatomic) int transitionOverlapType; // @synthesize transitionOverlapType=_transitionOverlapType;
 - (void)checkForBlendModeChangeRequired;
-- (void)removeChannel:(id)arg1;
-- (BOOL)canRemoveChannel:(id)arg1;
-- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
-- (BOOL)canReorderChannel:(id)arg1;
 - (void)invalidateSourceRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
 - (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
-- (id)classNameForInspectorTabIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)inspectorIdentifier;
 - (id)onScreenControls;
 - (id)replaceWithAudioTransitionID:(id)arg1;
 - (id)replaceWithVideoTransitionID:(id)arg1;
@@ -92,6 +83,15 @@
 - (id)type;
 - (id)initWithEffectIDs:(id)arg1 transitionDuration:(CDStruct_1b6d18a9)arg2 transitionOverlapType:(int)arg3 hasVideo:(BOOL)arg4 hasAudio:(BOOL)arg5 loadEffectInForeground:(BOOL)arg6;
 - (id)initWithEffectIDs:(id)arg1 transitionDuration:(CDStruct_1b6d18a9)arg2 transitionOverlapType:(int)arg3 hasVideo:(BOOL)arg4 hasAudio:(BOOL)arg5;
+- (void)removeChannel:(id)arg1;
+- (BOOL)canRemoveChannel:(id)arg1;
+- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
+- (BOOL)canReorderChannel:(id)arg1;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
+- (id)inspectorIdentifier;
 
 @end
 

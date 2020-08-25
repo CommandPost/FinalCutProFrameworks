@@ -131,6 +131,7 @@
 - (id)newLibrarySidebarModule;
 @property(readonly, nonatomic) FFOrganizerFilmstripModule *filmstripModule;
 @property(readonly, nonatomic) FFEventsDetailModule *itemsModule;
+- (void)syncToNewSidebarState:(BOOL)arg1 forSidebarModule:(id)arg2;
 - (void)syncToNewSidebarState:(BOOL)arg1;
 - (double)_sidebarMaxWidth;
 - (double)_sidebarWidth;

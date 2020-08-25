@@ -7,12 +7,14 @@
 #import "NSImage.h"
 
 @interface NSImage (PCAdditions)
-- (id)newBitmap8BitRGBA:(unsigned long long)arg1 colorSpace:(id)arg2 size:(struct CGSize)arg3 scale:(double)arg4 isFlipped:(BOOL)arg5;
+- (id)representationForBackingScale:(float)arg1;
+- (struct CGImage *)CGImage;
+- (id)imageWithRect:(struct CGRect)arg1;
+- (id)resizableImageWithSize:(struct CGSize)arg1 capInsets:(struct NSEdgeInsets)arg2;
+- (id)drawSliceImageInRect:(struct CGRect)arg1 fromRect:(struct CGRect)arg2;
 - (id)newBitmap8BitRGBA:(unsigned long long)arg1 colorSpace:(id)arg2 scale:(double)arg3 isFlipped:(BOOL)arg4;
 - (id)newBitmap8BitRGBA:(unsigned long long)arg1 scale:(double)arg2 isFlipped:(BOOL)arg3;
-- (id)newBitmap8BitRGBA:(unsigned long long)arg1 size:(struct CGSize)arg2 isFlipped:(BOOL)arg3;
-- (id)newBitmap8BitRGBA:(unsigned long long)arg1 isFlipped:(BOOL)arg2;
+- (id)newBitmap8BitRGBA:(unsigned long long)arg1 scale:(double)arg2;
 - (id)newBitmap8BitRGBA:(unsigned long long)arg1;
-- (id)newBitmap8BitRGBA;
 @end
 

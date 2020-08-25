@@ -20,16 +20,18 @@
 }
 
 + (void)createUnitTestCaseForItems:(id)arg1 fixedItems:(id)arg2;
+@property int flags; // @synthesize flags=_flags;
+@property(readonly) NSArray *itemInfos; // @synthesize itemInfos=_itemInfos;
 - (void)endOperationOnMainThread:(id)arg1;
 - (void)updateItems;
 - (void)updateItemsReturnChanged:(id)arg1;
 - (BOOL)resolveOrder;
 - (BOOL)resolveGaps;
 - (BOOL)resolveGaps:(long long)arg1;
-- (BOOL)resolveAudioConflicts;
 - (BOOL)resolveConflicts;
 - (BOOL)_resolveGapsForLaneIndex:(long long)arg1 flags:(long long)arg2;
-- (BOOL)_resolveAudioConflictsForLaneIndex:(long long)arg1;
+- (long long)validateProposedLane:(long long)arg1 forItem:(id)arg2;
+- (long long)newLaneForItem:(id)arg1 lane:(long long)arg2;
 - (BOOL)_resolveConflictForLaneIndex:(long long)arg1;
 - (void)setup;
 - (id)initWithItems:(id)arg1 fixedItems:(id)arg2;
@@ -41,17 +43,18 @@
 - (void)sortAudioItemInfosByPriority:(id)arg1;
 - (void)sortItemInfosByPriority:(id)arg1;
 - (void)sortItemInfos:(id)arg1;
-- (void)sortItemsByDuration:(id)arg1;
 - (id)_groupedItemsByVerticalIndex:(id)arg1;
 - (id)description;
 - (id)_itemsAtVerticalIndex:(long long)arg1;
 - (BOOL)isInitialized;
 - (id)_keyForIndex:(int)arg1;
 - (void)_releaseItems;
-- (void)main;
 - (void)dealloc;
 - (id)init;
 - (void)_initLanes;
+- (BOOL)isResolveStairSteppingDisabled;
+- (BOOL)resolveVerticalConflictsAndFillOriginal;
+- (BOOL)resolveVerticalConflictsAndFill;
 @property(readonly) BOOL compressLanes;
 @property(readonly) BOOL iMovieMode;
 @property(readonly) BOOL isTesting;

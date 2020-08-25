@@ -26,6 +26,8 @@
 - (id)init;
 - (BOOL)validateName:(id *)arg1 error:(id *)arg2;
 - (id)keysToEncode;
+- (id)keysToSetToNil;
+- (void)dealloc;
 
 @end
 

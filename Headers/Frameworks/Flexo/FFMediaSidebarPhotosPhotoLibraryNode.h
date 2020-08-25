@@ -11,6 +11,7 @@
 }
 
 - (id)iconImage:(BOOL)arg1;
+- (id)toolTip;
 - (id)title;
 - (int)libraryType;
 

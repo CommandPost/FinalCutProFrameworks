@@ -6,7 +6,11 @@
 
 #import <Ozone/OZTool.h>
 
-@interface OZMagnifyTool : OZTool
+#import "POOnScreenControlMetalRendering.h"
+
+@class MDPMultiline, NSString;
+
+@interface OZMagnifyTool : OZTool <POOnScreenControlMetalRendering>
 {
     PCVector2_7e488b7d *_viewCenter;
     PCVector2_7e488b7d *_filmMouseDown;
@@ -19,8 +23,11 @@
     BOOL _showBoundingBox;
     BOOL _zoomOut;
     BOOL _spacebarMode;
+    MDPMultiline *_line;
+    MDPMultiline *_quad;
 }
 
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (void)draw;
 - (BOOL)oscFlagsChanged:(id)arg1;
 - (void)mouseDragged:(id)arg1;
@@ -35,6 +42,12 @@
 - (void)setSpacebarMode:(BOOL)arg1 zoomOut:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

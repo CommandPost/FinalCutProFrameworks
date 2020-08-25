@@ -9,14 +9,9 @@
 __attribute__((visibility("hidden")))
 @interface FFWaveformRasterLabelLayer : FFVideoScopesTextLayer
 {
-    CDStruct_554002f2 _action_opt;
 }
 
-- (id)actionForKey:(id)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)ignoreObservingLayer:(id)arg1;
-- (void)observeLayer:(id)arg1;
+- (void)setDisplayMode:(long long)arg1 paradeLayoutAlignment:(long long)arg2;
 - (void)setupDefaultProperties;
 
 @end

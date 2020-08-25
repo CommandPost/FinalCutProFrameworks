@@ -39,6 +39,7 @@
     int _currentProgress;
     int _maxProgress;
     BOOL _abort;
+    BOOL _isProxyOnly;
     NSImageView *_relinkBadge;
     LKTextField *_titleTextField;
     NSTextView *_introTextView;
@@ -60,7 +61,7 @@
 }
 
 + (id)relinkAsset:(id)arg1 toFileURL:(id)arg2 propagatingMetadata:(id)arg3;
-+ (void)showRelinkFilesPanel:(id)arg1;
++ (void)showRelinkFilesPanel:(id)arg1 proxyOnly:(BOOL)arg2;
 @property(retain, nonatomic) NSString *backgroundStatusString; // @synthesize backgroundStatusString=_backgroundStatusString;
 @property(retain, nonatomic) NSURL *lastStatusURL; // @synthesize lastStatusURL=_lastStatusURL;
 - (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
@@ -116,7 +117,7 @@
 - (void)_showRelinkFilesPanel;
 - (void)windowDidLoad;
 - (void)dealloc;
-- (id)initWithSelection:(id)arg1;
+- (id)initWithSelection:(id)arg1 proxyOnly:(BOOL)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

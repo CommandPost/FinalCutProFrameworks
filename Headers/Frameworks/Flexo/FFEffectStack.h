@@ -32,7 +32,6 @@
     FFEffect *_selectedColorEffect;
     FFAnchoredObject *_anchoredObject;
     NSString *_filterType;
-    unsigned int _noOpIntrinsicFlags;
     unsigned int _insertingDefaultIntrinsics:1;
     unsigned int _defaultIntrinsics:1;
     BOOL _hasVideo;
@@ -46,6 +45,7 @@
     NSMutableArray *_deactivateEffectsScopeList;
     int _deactivateEffectsNestCount;
     NSString *_persistedAnchoredObjectID;
+    // Error parsing type: {atomic<unsigned int>="__a_"AI}, name: _noOpIntrinsicFlags
 }
 
 + (BOOL)effectIsNoiseReduction:(id)arg1;
@@ -117,6 +117,7 @@
 - (void)beginEditing;
 - (BOOL)isEditing;
 - (id)undoHandler;
+- (id)rangeInvalObject;
 - (id)augmentChannelChangeDescriptionForNotification:(id)arg1;
 - (id)storeForUndo;
 - (id)modelDocument;
@@ -159,10 +160,6 @@
 - (id)colorCorrectionEffects;
 - (id)_colorCorrectionEffects:(int)arg1;
 - (BOOL)requiresOpticalFlow;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
-- (void)_readLock;
 - (BOOL)operationRemoveEffectAtIndex:(unsigned long long)arg1 error:(id *)arg2;
 - (BOOL)operationAddEffectID:(id)arg1 ranges:(id)arg2 error:(id *)arg3;
 - (BOOL)operationAddEffect:(id)arg1 ranges:(id)arg2 error:(id *)arg3;
@@ -190,13 +187,7 @@
 - (void)_undoableNotifyEffectsStackAnchoredObjectAdded:(id)arg1 sequence:(id)arg2;
 - (BOOL)actionEnd:(id)arg1 save:(BOOL)arg2 error:(id *)arg3;
 - (void)actionBegin:(id)arg1 animationHint:(id)arg2 deferUpdates:(BOOL)arg3;
-- (void)removeChannel:(id)arg1;
 - (void)fixColorSelectionIfEffectRemoval:(id)arg1;
-- (BOOL)canRemoveChannel:(id)arg1;
-- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
-- (BOOL)canReorderChannel:(id)arg1;
-- (BOOL)containsChannel:(id)arg1 associatedModelObject:(id)arg2;
-- (id)_effectForChannel:(id)arg1;
 - (id)objectChannels;
 - (id)effectChannels;
 - (id)propertyChannels;
@@ -230,6 +221,7 @@
 - (void)removeEffects:(id)arg1;
 - (void)removeEffect:(id)arg1;
 - (void)removeEffectAtIndex:(unsigned long long)arg1;
+- (void)moveEffects:(id)arg1 toIndex:(unsigned long long)arg2;
 - (void)moveEffect:(id)arg1 toIndex:(unsigned long long)arg2;
 - (void)_moveEffect:(id)arg1 fromIndex:(long long)arg2 toIndex:(unsigned long long)arg3;
 - (long long)firstOccuranceOfEffectID:(id)arg1;
@@ -255,6 +247,7 @@
 - (unsigned long long)_indexOfFirstIntrinsicEffectAppliedAfterUserEffects;
 - (id)setToCheckForIntrinsics;
 - (id)_newSourceByAppendingComponentEffectsToSource:(id)arg1 effectCount:(long long)arg2 offset:(CDStruct_1b6d18a9)arg3 context:(id)arg4;
+- (id)newDefaultIntrinsicsToRemove:(unsigned int *)arg1;
 - (unsigned long long)_insertionPointForDropShadowInArray:(id)arg1;
 - (void)endDefaultIntrinsics:(void *)arg1;
 - (void *)beginDefaultIntrinsics;
@@ -316,7 +309,6 @@
 - (void)setUserEffectsDisabled:(BOOL)arg1;
 - (BOOL)userEffectsDisabled;
 - (id)effects;
-- (void)_moveObjectInEffectsArray:(id)arg1 atIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)_removeObjectFromEffectsArray:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_insertObject:(id)arg1 inEffectsArray:(id)arg2 atIndex:(unsigned long long)arg3 postNotification:(BOOL)arg4 reason:(int)arg5;
 - (void)_notifyEffectAddedRemovedOrMoved:(id)arg1 inEffectsArray:(id)arg2;
@@ -449,6 +441,12 @@
 - (BOOL)hasColorTabEffect;
 - (BOOL)canGoToPreviousNextColorEffect:(BOOL)arg1;
 - (id)newColorEffectsInStack:(id *)arg1;
+- (void)removeChannel:(id)arg1;
+- (BOOL)canRemoveChannel:(id)arg1;
+- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
+- (BOOL)canReorderChannel:(id)arg1;
+- (BOOL)containsChannel:(id)arg1 associatedModelObject:(id)arg2;
+- (id)_effectForChannel:(id)arg1;
 
 @end
 

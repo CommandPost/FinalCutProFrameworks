@@ -28,7 +28,9 @@
 @property(nonatomic) unsigned long long startTime; // @synthesize startTime=_startTime;
 - (void)writeToFile:(id)arg1 key:(id)arg2 comment:(id)arg3 fileFormat:(int)arg4;
 - (void)logWithFormat:(int)arg1;
+- (id)formattedUserInfoForSplitTime:(id)arg1;
 - (id)descriptionWithFormat:(int)arg1 key:(id)arg2 comment:(id)arg3;
+- (void)logEvent:(id)arg1 comment:(id)arg2 userInfo:(id)arg3;
 - (void)logEvent:(id)arg1 comment:(id)arg2;
 - (void)addSplit:(id)arg1;
 - (void)logToLocation:(id)arg1 key:(id)arg2;

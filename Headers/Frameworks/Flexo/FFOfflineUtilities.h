@@ -6,41 +6,20 @@
 
 #import "NSObject.h"
 
-#import "FFBackgroundTaskTarget.h"
-
-@class CHChannelFolder, FFAnchoredObject, FFStreamAudio, NSString;
+@class FFAnchoredObject, FFStreamAudioRenderSession;
 
 __attribute__((visibility("hidden")))
-@interface FFOfflineUtilities : NSObject <FFBackgroundTaskTarget>
+@interface FFOfflineUtilities : NSObject
 {
     FFAnchoredObject *_object;
-    BOOL _copied;
-    FFStreamAudio *_stream;
+    FFStreamAudioRenderSession *_renderSession;
     CDStruct_1b6d18a9 _startPosition;
     CDStruct_1b6d18a9 _duration;
-    NSString *_inputFilePath;
-    NSString *_outputFilePath;
-    void *_presetDict;
-    id _delegate;
-    long long _sourceLengthFrames;
-    CHChannelFolder *_effectChannelFolder;
     struct FFAudioBufferList *_buffer;
     unsigned int downsampledRate;
 }
 
 + (void)updateAUFromChannel:(id)arg1 andAudioUnit:(struct ComponentInstanceRecord *)arg2;
-+ (id)newRenderStream:(id)arg1;
-+ (BOOL)needsRenderFor:(id)arg1;
-- (id)librariesInUse:(id)arg1;
-- (id)assetsInUse:(id)arg1;
-- (void)prepareAndPostNotification:(id)arg1;
-- (void)prerollRenderFile:(id)arg1;
-- (int)renderAUOL:(struct AudioComponentDescription)arg1 WithPreset:(void *)arg2 andDuration:(CDStruct_1b6d18a9)arg3 onTask:(id)arg4;
-- (void)updateEffect:(id)arg1 atIndex:(unsigned int)arg2;
-- (int)pullToFilePath:(id)arg1 onTask:(id)arg2 taskPercentage:(float)arg3;
-- (int)pullToFilePath:(id)arg1 onTask:(id)arg2;
-- (int)pullOnTask:(id)arg1;
-- (int)pull;
 - (void)setDownsampledRate:(unsigned int)arg1;
 - (unsigned int)downsampledRate;
 - (void)setBuffer:(struct FFAudioBufferList *)arg1;
@@ -49,17 +28,10 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)duration;
 - (void)setStart:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)start;
-- (id)stream;
-- (void)pokeStream;
-- (void)createStream;
-- (void)createStreamWithOptionFlags:(unsigned long long)arg1;
-- (id)inputFilePath;
-- (void)makeIOFiles;
-- (id)addEffect:(id)arg1;
-- (id)removeEffectsUpTo:(int)arg1;
-- (id)copiedObject;
+- (id)renderSession;
+- (void)createRenderSession;
+- (void)createRenderSessionWithStreamAudioFlags:(unsigned int)arg1;
 - (void)dealloc;
-- (id)initWithObjectCopy:(id)arg1;
 - (id)initWithObject:(id)arg1;
 
 @end

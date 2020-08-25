@@ -66,6 +66,8 @@ __attribute__((visibility("hidden")))
 - (void)_channelChanged:(id)arg1;
 - (id)_newHandleImagesDict;
 - (void)setCurveType:(id)arg1;
+- (void)stopObservingRangeInvalidationNotifications;
+- (void)startObservingRangeInvalidationNotifications;
 - (id)roleColorScheme;
 - (id)initWithDataSource:(id)arg1;
 - (BOOL)shouldAutoscroll:(id)arg1;
@@ -83,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)layoutSublayers;
+- (void)setNeedsLayout;
 - (void)colorSchemeHasChanged;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)hideFadeHandlesAndCurveLayers;

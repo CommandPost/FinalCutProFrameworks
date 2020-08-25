@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
 + (id)clippingPathForRect:(struct CGRect)arg1 leftEdgeType:(int)arg2 rightEdgeType:(int)arg3 cornerRadius:(double)arg4;
 + (void)writeDebugTiffFromCGImageRef:(struct CGImage *)arg1 toFileName:(id)arg2;
 + (void)writeDebugTiffFromNSImage:(id)arg1 toFileName:(id)arg2;
++ (id)sequenceInTimeline;
++ (id)newFigTimeRangeAndObjectFromTimelineSequence;
 + (BOOL)objectOfFigTimeRangeAndObject:(id)arg1 isEqualToObjectOfFigTimeRangeAndObject:(id)arg2;
 + (id)rangesFromArray:(id)arg1 withMatchingSequence:(id)arg2;
 + (BOOL)figTimeRangeAndObjectIsProject:(id)arg1;

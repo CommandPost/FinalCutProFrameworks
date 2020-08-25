@@ -28,9 +28,6 @@
 - (void)clearRolesCacheIfSet;
 - (void)logContent;
 - (id)_describeAdditionalObjectsWithIndent:(long long)arg1 recurse:(BOOL)arg2;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)inspectorClassName;
 - (id)referenceAudioComponentsLayoutMap;
 - (id)anchoredObjectsForAudioComponentsLayoutKey:(id)arg1;
 - (id)audioComponentsLayoutMap;
@@ -83,6 +80,9 @@
 - (void)dealloc;
 - (id)initWithDisplayName:(id)arg1 clipRef:(id)arg2;
 - (id)initWithDisplayName:(id)arg1 media:(id)arg2;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
+- (id)inspectorClassName;
 
 @end
 

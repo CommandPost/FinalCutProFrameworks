@@ -24,21 +24,7 @@
 - (void)shareDestinationPicker:(id)arg1;
 - (void)shareToDefaultDestination:(id)arg1;
 - (void)shareToDestination:(id)arg1;
-- (void)exportCurrentFrame:(id)arg1;
-- (void)exportUsingCompressorSettings:(id)arg1;
 - (void)openInCompressor:(id)arg1;
-- (void)exportHTTPLiveStreaming:(id)arg1;
-- (void)exportSelectionMovie:(id)arg1;
-- (void)exportImageSequence:(id)arg1;
-- (void)exportMovie:(id)arg1;
-- (void)sendEmail:(id)arg1;
-- (void)publishVimeo:(id)arg1;
-- (void)publishYouTube:(id)arg1;
-- (void)burnBluray:(id)arg1;
-- (void)burnDVD:(id)arg1;
-- (void)exportAudio:(id)arg1;
-- (void)exportiTunes:(id)arg1;
-- (void)exportMediaBrowser:(id)arg1;
 - (void)toggleHMDRendering:(id)arg1;
 - (void)enableExposeObjects:(id)arg1;
 - (void)enableExposeAllObjects:(id)arg1;
@@ -127,6 +113,7 @@
 - (void)addLightSetupMenuAction:(id)arg1;
 - (void)addLight:(id)arg1;
 - (void)addCamera:(id)arg1;
+- (void)add3DSceneObject:(id)arg1;
 - (unsigned int)checkFor3DSceneWithType:(unsigned int)arg1;
 - (void)addClone:(id)arg1;
 - (BOOL)canAddClone;
@@ -221,7 +208,6 @@
 - (void)showMotionBlur:(id)arg1;
 - (void)toggleDoRenderFields:(id)arg1;
 - (void)setCustomRenderQuality:(id)arg1;
-- (void)setSchmozonjRaigsMode:(id)arg1;
 - (void)setToneMappingMode:(id)arg1;
 - (void)setViewGamut:(id)arg1;
 - (void)setRenderQuality:(id)arg1;

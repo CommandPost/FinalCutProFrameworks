@@ -11,7 +11,7 @@
 @interface FFRAWProcessingInfo : FFSourceColorConformBaseClass <FFSourceColorConformProtocol>
 {
     int _bayerPattern;
-    unsigned int _lowResScale;
+    unsigned int _downscaleShift;
     unsigned int _blackLevel;
     unsigned int _whiteLevel;
     float _whiteBalanceRedFactor;
@@ -22,25 +22,19 @@
     float _gainFactor;
     float _compressionMSE;
     float _digitizationMSE;
+    float _senselSitingOffsets[8];
     int _rawToLogConversion;
     struct FFSourceColorConformBaseClass *_cameraLUTConformer;
     int _cameraLUTTargetCS;
-    BOOL _cameraLUTInvertsRAWToLog;
 }
 
 - (BOOL)isEquivalentTo:(struct FFSourceColorConformBaseClass *)arg1 forTargetColorSpace:(int)arg2;
 - (BOOL)specifiesOrdinaryProcessing;
--     // Error parsing type: v32@0:8^{HGColorConform=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f^{HGNode}^{HGNode}^{HGColorConformNodeListCacheItem}BBiiiii{HGRect=iiii}BBffiiiiiiiiiiiiIIffffffffff[4]iii^{__CFData}iffQQQBi{vector<unsigned char, std::__1::allocator<unsigned char> >=**{__compressed_pair<unsigned char *, std::__1::allocator<unsigned char> >=*}}ffffBiii[3f][3f][3f]fBIfB}16i24c28, name: setColorConformPresetAndParameters:toConvertToColorSpace:fromYCbCr:
+-     // Error parsing type: ^{HGColorConform=^^?{atomic<unsigned int>=AI}ii^viIii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f^{HGNode}^{HGNode}^{HGColorConformNodeListCacheItem}BBBiiiii{HGRect=iiii}BBffiiiiiiiiiiii^{HGColorConformLook3DLUT}iiIIffffffffff[8f][4]iii[3f][3f][3f]fBIfB}48@0:8^{HGNode=^^?{atomic<unsigned int>=AI}ii^viIii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16c24i28^^{CGColorSpace}32^i40, name: newColorConformGraph:fromYCbCr:toTargetColorSpace:outputCS:outputCSEnum:
 - (BOOL)canConvertToColorSpace:(int)arg1;
 - (int)targetColorSpaceFor:(int)arg1;
-- (int)cameraLUTTargetCS;
-- (struct FFSourceColorConformBaseClass *)cameraLUTConformer;
-- (void)setCameraLUTConformer:(struct FFSourceColorConformBaseClass *)arg1 targetCS:(int)arg2;
-- (int)rawToLogConversion;
-- (void)setRAWToLogConversion:(int)arg1;
-- (void)_updateCameraLUTInvertsRAWToLog;
 - (void)dealloc;
-- (id)initWithBayerPattern:(int)arg1 lowResScale:(unsigned int)arg2 blackLevel:(unsigned int)arg3 whiteLevel:(unsigned int)arg4 whiteBalanceRedFactor:(float)arg5 whiteBalanceBlueFactor:(float)arg6 imageWidth:(unsigned int)arg7 imageHeight:(unsigned int)arg8 M00:(float)arg9 M01:(float)arg10 M02:(float)arg11 M10:(float)arg12 M11:(float)arg13 M12:(float)arg14 M20:(float)arg15 M21:(float)arg16 M22:(float)arg17 gainFactor:(float)arg18 compressionMSE:(float)arg19 digitizationMSE:(float)arg20;
+- (id)initWithBayerPattern:(int)arg1 downscaleShift:(unsigned int)arg2 blackLevel:(unsigned int)arg3 whiteLevel:(unsigned int)arg4 whiteBalanceRedFactor:(float)arg5 whiteBalanceBlueFactor:(float)arg6 imageWidth:(unsigned int)arg7 imageHeight:(unsigned int)arg8 colorTranslationMatrix:(float [9])arg9 gainFactor:(float)arg10 compressionMSE:(float)arg11 digitizationMSE:(float)arg12 senselSitingOffsets:(float [8])arg13 rawToLogConversion:(int)arg14 cameraLUTConformer:(struct FFSourceColorConformBaseClass *)arg15 cameraLUTTargetCS:(int)arg16;
 
 @end
 

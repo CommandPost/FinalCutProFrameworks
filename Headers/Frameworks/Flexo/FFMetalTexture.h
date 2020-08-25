@@ -17,7 +17,6 @@
 @property(readonly, nonatomic) FFPixelFormat *pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 - (id)newMtlTextureWithHoldUntilCompleteList:(id)arg1;
 - (id)mtlDevice;
-- (int)location;
 - (struct CGRect)bounds;
 - (void)dealloc;
 -     // Error parsing type: @32@0:8^{HGMetalTexture=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}^{HGMetalTexturePool}{HGMTLDeviceType=@}{HGMTLTextureType=@}{HGRect=iiii}BBBB{mutex={_opaque_pthread_mutex_t=q[56c]}}{condition_variable={_opaque_pthread_cond_t=q[40c]}}}16@24, name: initWithHGMetalTexture:pixelFormat:

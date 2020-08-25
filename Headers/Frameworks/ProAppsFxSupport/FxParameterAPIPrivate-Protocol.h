@@ -7,12 +7,13 @@
 @class FxParameterTransaction, NSArray, NSString;
 
 @protocol FxParameterAPIPrivate
-- (FxParameterTransaction *)transactionForParameterID:(unsigned int)arg1 atTime:(CDStruct_198678f7)arg2 transactionID:(unsigned long long)arg3;
+- (FxParameterTransaction *)transactionForParameterID:(unsigned int)arg1 atTime:(CDStruct_198678f7)arg2 transactionID:(unsigned long long)arg3 pluginSessionID:(unsigned long long)arg4;
 - (BOOL)hasPathParameters;
 - (void)setupImageParamIDs:(void *)arg1;
-- (NSArray *)getAllParameterValuesAtTime:(CDStruct_198678f7)arg1 transactionID:(unsigned long long)arg2;
+- (NSArray *)getAllParameterValuesAtTime:(CDStruct_198678f7)arg1 transactionID:(unsigned long long)arg2 pluginSessionID:(unsigned long long)arg3;
 - (BOOL)add2DVectorWithName:(NSString *)arg1 parmId:(unsigned int)arg2 defaultX:(double)arg3 defaultY:(double)arg4 parmFlags:(unsigned int)arg5;
 - (BOOL)setCustomParameterDefaultValue:(id <NSCoding>)arg1 parmId:(unsigned int)arg2;
+- (BOOL)addPopupMenuWithNameAndTags:(NSString *)arg1 parmId:(unsigned int)arg2 defaultValue:(unsigned int)arg3 menuEntries:(NSArray *)arg4 tags:(const int *)arg5 tagCount:(int)arg6 parmFlags:(unsigned int)arg7;
 - (BOOL)addLevelsWithName:(NSString *)arg1 parmId:(unsigned int)arg2 hideGamma:(BOOL)arg3 parmFlags:(unsigned int)arg4;
 @end
 

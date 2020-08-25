@@ -6,13 +6,14 @@
 
 #import "NSViewController.h"
 
-@class LKWhatsNewFeatureEntry, NSImageView, NSTextView;
+@class LKWhatsNewFeatureEntry, NSImageView, NSLayoutConstraint, NSTextView;
 
 @interface LKWelcomeScreenFeatureViewController : NSViewController
 {
     LKWhatsNewFeatureEntry *_feature;
     NSImageView *_iconImageView;
     NSTextView *_nameDetailsTextView;
+    NSLayoutConstraint *heightConstraint;
 }
 
 @property(nonatomic) NSTextView *nameDetailsTextView; // @synthesize nameDetailsTextView=_nameDetailsTextView;

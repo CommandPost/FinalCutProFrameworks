@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (id)view;
 - (void)revealButtonPressed:(id)arg1;
+- (void)enableRevealInFinderIfMediaAvailable:(id)arg1;
 - (void)updateWithItems:(id)arg1 references:(id)arg2 owner:(id)arg3;
 - (void)dealloc;
 

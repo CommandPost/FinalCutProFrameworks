@@ -13,6 +13,7 @@
     LKTextField *_textField;
 }
 
+- (void)viewWasInstalled;
 - (void)awakeFromNib;
 
 @end

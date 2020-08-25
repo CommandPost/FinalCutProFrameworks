@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FFHMDRender : PCHMDRender
 {
     struct __IOSurface *_ioSurfaces[2];
-    struct HGRef<HGBitmap> _lastRen[6];
+    HGRef_0776e7a8 _lastRen[6];
     int _lastRenOffset;
     BOOL _hmdOutputEnabled;
     struct HMDMatrices _eyeMatrices[2];
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (PCQuat_8a184614)defaultRotation;
 - (void)resetHMDRotation;
-- (void)generateFrameForEye:(int)arg1 equirect:(id)arg2 equiRectLoc:(int)arg3 arrayOffset:(int)arg4 eyeMatrices:(struct HMDMatrices *)arg5 equirectProcessingFormat:(id)arg6;
+- (void)generateFrameForEye:(int)arg1 equirect:(id)arg2 equiRectLoc:(struct FxDevice *)arg3 arrayOffset:(int)arg4 eyeMatrices:(struct HMDMatrices *)arg5 equirectProcessingFormat:(id)arg6;
 - (id)pullDelegate;
 - (void)setPullDelegate:(id)arg1;
 - (struct __IOSurface **)getFrame:(struct HMDMatrices *)arg1 statisticsData:(struct PCHMDStats *)arg2;

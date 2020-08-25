@@ -6,7 +6,7 @@
 
 #import <Flexo/FFDest.h>
 
-@class FFPlayer, FFReducedRateTracker, FFSummaryDescCacher, NSMutableArray, NSObject<FFDestVideoDelegate>, NSObject<OS_dispatch_queue>;
+@class FFPlayer, FFReducedRateTracker, FFSummaryDescCacher, NSMutableArray, NSObject<FFDestVideoDelegate>;
 
 __attribute__((visibility("hidden")))
 @interface FFDestVideo : FFDest
@@ -18,13 +18,14 @@ __attribute__((visibility("hidden")))
     int _fieldDominance;
     struct CGRect _sequenceBounds;
     FFReducedRateTracker *_rrt;
-    BOOL _enableDrawAllAngles;
-    BOOL _enableDropDetection;
-    NSObject<OS_dispatch_queue> *_dropInfosLock;
+    BOOL _enableDropReporting;
+    struct FFSynchronizable *_dropInfosLock;
     NSMutableArray *_dropInfos;
     FFSummaryDescCacher *_summaryDescCacher;
+    BOOL enableDrawAllAngles;
 }
 
++ (BOOL)supportsOSCs;
 + (BOOL)automaticallyNotifiesObserversForEnableDrawAllAngles;
 + (void)initialize;
 + (void)registerForDrawInterlaced:(id)arg1;
@@ -33,13 +34,14 @@ __attribute__((visibility("hidden")))
 @property(retain) FFReducedRateTracker *reducedRateTracker; // @synthesize reducedRateTracker=_rrt;
 @property(readonly) CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
 @property(readonly) CDStruct_1b6d18a9 sampleDuration; // @synthesize sampleDuration=_sampleDuration;
+@property BOOL enableDrawAllAngles; // @synthesize enableDrawAllAngles;
 - (void)notifyDestOfUIDrawingParameterChange;
 - (void)resetDropInfos;
-- (id)copyDropInfosByPopping;
+- (id)copyDropInfosByPoppingAndReturnEnableReporting:(char *)arg1;
 - (void)recordDropInfo:(id)arg1;
-- (BOOL)enableDropDetection;
-- (void)notifyDestPlayerChangedRenderLocation:(int)arg1;
-- (void)setEnableDropDetection:(BOOL)arg1;
+- (BOOL)enableDropReporting;
+- (void)notifyDestPlayerChangedRenderLocation:(const struct FxDeviceSet *)arg1;
+- (void)setEnableDropReporting:(BOOL)arg1;
 - (_Bool)performOverfullRecovery;
 - (_Bool)supportsOverfullRecovery;
 - (id)copyEstimatedVRAMRequirements:(int)arg1 reqInfoHint:(id)arg2;
@@ -53,8 +55,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldSkipFrame:(CDStruct_1b6d18a9)arg1 playRate:(double)arg2;
 - (void)setNeedsUpdate:(BOOL)arg1;
 - (struct CGRect)sequenceBounds;
-- (void)setEnableDrawAllAngles:(BOOL)arg1;
-- (BOOL)enableDrawAllAngles;
 - (int)drawFieldsInterlaced;
 - (const char *)_getFrameQueueStatusString;
 - (int)getFrameQueueStatus;

@@ -6,18 +6,25 @@
 
 #import "NSObject.h"
 
+@class MDPRenderController;
+
 __attribute__((visibility("hidden")))
 @interface FFHitTestContextObject : NSObject
 {
     struct _CGLContextObject *_hitTestContext;
     unsigned int _hitTestFBO;
     unsigned int _hitTestTexture;
-    int _currentVirtualScreenForHitTest;
+    struct FxDevice *_currentGPUImageLocationForHitTest;
     struct CGSize _currentSizeForHitTest;
+    struct HGRef<HGMetalTexture> _hitTestMtlTexture;
+    float _hitTestBackingScale;
+    MDPRenderController *_hitTestMDPRenderController;
 }
 
-- (struct _CGLContextObject *)hitTestContext:(struct CGSize)arg1 virtualScreen:(int)arg2;
-- (void)updateInternalHitTestContext:(struct CGSize)arg1 virtualScreen:(int)arg2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (pair_2a2d2e3d)hitTestContext:(struct CGSize)arg1 imageLocation:(const struct FxDevice *)arg2 backingScale:(float)arg3;
+- (void)updateInternalHitTestContext:(struct CGSize)arg1 imageLocation:(const struct FxDevice *)arg2 backingScale:(float)arg3;
 - (void)setUpContextWithSize:(struct _CGLContextObject *)arg1 viewSize:(struct CGSize)arg2;
 - (void)dealloc;
 - (id)init;

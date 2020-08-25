@@ -6,7 +6,7 @@
 
 #import "NSResponder.h"
 
-@class NSObject<POHostDelegate>, NSObject<POObjectDelegate>, NSObject<POViewDelegate>, OZViewer;
+@class MDPRenderController, NSObject<POHostDelegate>, NSObject<POObjectDelegate>, NSObject<POViewDelegate>, OZViewer;
 
 @interface POOnScreenControl : NSResponder
 {
@@ -18,12 +18,15 @@
     BOOL _drawInFilmSpace;
     id _retainedObject;
     struct OZChannelBase *_channel;
+    _Bool _hasDrawn;
+    MDPRenderController *_privateRenderController;
 }
 
-- (int)hitCheckMetal:(id)arg1 event:(id)arg2;
-- (void)renderMetal:(id)arg1;
-- (id)getMetalDrawPrimitives:(id)arg1;
-- (BOOL)doesSupportMetal;
+@property(retain, nonatomic) MDPRenderController *privateRenderController; // @synthesize privateRenderController=_privateRenderController;
+@property(readonly) _Bool hasDrawn; // @synthesize hasDrawn=_hasDrawn;
+- (void)removeViewScaleFactorFromTransform:(PCMatrix44Tmpl_e98c85ee *)arg1;
+- (PCMatrix44Tmpl_e98c85ee)getUnscaledFilmToViewOrModelViewTransform;
+- (PCMatrix44Tmpl_e98c85ee)getFilmToViewOrModelViewTransform;
 - (PCMatrix44Tmpl_e98c85ee)getModelViewTransform;
 - (PCMatrix44Tmpl_e98c85ee)getViewTransformation;
 - (BOOL)nudgeLeftBig:(id)arg1;
@@ -59,6 +62,7 @@
 - (void)mouseIsDownInEditTool:(BOOL)arg1;
 - (void)initSelectionInOSC:(id)arg1;
 - (BOOL)updateSelectionInOSC:(id)arg1 withRect:(PCRect_b601f9f3 *)arg2;
+- (struct CGRect)viewerPointBounds;
 - (void)setViewer:(id)arg1;
 - (id)viewer;
 - (BOOL)handleRecordWhilePlayback;
@@ -101,6 +105,9 @@
 - (id)hostDelegate;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (id)hitTestResultWithEvent:(id)arg1 userInfo:(id)arg2;
+- (void)renderOSC:(id)arg1;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 
 @end
 

@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isMetadataVisible:(id)arg1;
 - (BOOL)_isDefaultKey:(id)arg1;
 - (void)_dequeueShareStatus;
+- (void)setHeaderQualityModeFromSequence:(id)arg1;
 - (void)_updateHeader;
 - (void)viewDidLoad;
 - (void)_reloadData;

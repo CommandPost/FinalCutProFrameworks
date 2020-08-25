@@ -6,12 +6,17 @@
 
 #import <ProAppsFxSupport/_PAEFTColorWheelArcLayer.h>
 
+@class MDPRenderingContext;
+
 @interface _PAEFTColorWheelLightLayer : _PAEFTColorWheelArcLayer
 {
+    id <MTLRenderPipelineState> _pipeline;
+    MDPRenderingContext *_mdp_ctx;
 }
 
-- (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
+- (void)display;
 - (void)layoutSublayers;
+- (void)dealloc;
 
 @end
 

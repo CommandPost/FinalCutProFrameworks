@@ -8,7 +8,7 @@
 
 #import "NSDraggingDestination.h"
 
-@class FFInspectorContainerController, NSArray, NSDraggingSession, NSLayoutConstraint, NSString, _FFInspectorDraggableView;
+@class FFInspectorContainerController, NSArray, NSDraggingSession, NSIndexSet, NSLayoutConstraint, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _FFInspectorContainerStackView : NSView <NSDraggingDestination>
@@ -18,11 +18,14 @@ __attribute__((visibility("hidden")))
     float _verticalHuggingPriority;
     double _spacing;
     NSArray *_cachedViewOrder;
-    NSDraggingSession *_draggingSession;
-    _FFInspectorDraggableView *_draggingView;
-    NSView *_draggingInsertionView;
-    int _draggingInsertionLocation;
-    _FFInspectorDraggableView *_acceptingPasteboardView;
+    struct {
+        NSDraggingSession *session;
+        NSIndexSet *rowIndexes;
+        int insertionLocation;
+        long long insertionRowIndex;
+        double insertionCoord;
+        long long acceptingRowIndex;
+    } _draggingInfo;
     NSLayoutConstraint *_topConstraint;
     NSLayoutConstraint *_bottomConstraint;
 }
@@ -30,16 +33,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FFInspectorContainerController *delegate; // @synthesize delegate=_delegate;
 - (void)draggingEnded:(id)arg1;
 - (BOOL)performDragOperation:(id)arg1;
-- (BOOL)prepareForDragOperation:(id)arg1;
 - (void)draggingExited:(id)arg1;
 - (unsigned long long)draggingUpdated:(id)arg1;
+- (void)_deselectLastAcceptingRowIndex;
+- (id)_acceptingRowIndexView;
 - (unsigned long long)draggingEntered:(id)arg1;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)draggingSession:(id)arg1 willBeginWithView:(id)arg2;
-- (id)sourceForDraggingSession;
-- (BOOL)shouldBeginDraggingSessionForView:(id)arg1;
-- (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
 - (void)setSpacing:(double)arg1;
 - (void)setDistribution:(long long)arg1;
 - (void)setOrientation:(long long)arg1;
@@ -51,6 +49,13 @@ __attribute__((visibility("hidden")))
 - (void)removeView:(id)arg1;
 - (void)insertView:(id)arg1 atIndex:(unsigned long long)arg2 inGravity:(long long)arg3;
 - (void)setViews:(id)arg1 inGravity:(long long)arg2;
+- (void)drawRect:(struct CGRect)arg1;
+- (void)draggingSession:(id)arg1 willBeginAtRow:(long long)arg2;
+- (id)sourceForDraggingSession;
+- (id)identifierForPasteboardWriterAtRow:(long long)arg1;
+- (BOOL)isDraggingInSession;
+- (void)dealloc;
+- (id)initWithDelegate:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

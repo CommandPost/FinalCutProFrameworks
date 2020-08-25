@@ -18,6 +18,7 @@
 - (id)description;
 - (struct FxPoint3D)transform3DPoint:(struct FxPoint3D)arg1;
 - (struct CGPoint)transform2DPoint:(struct CGPoint)arg1;
+- (BOOL)invertColorMatrixWithTolerance:(double)arg1;
 - (BOOL)invert;
 - (BOOL)_planarInverseZ;
 - (double (*)[4][4])matrix;

@@ -418,6 +418,7 @@ __attribute__((visibility("hidden")))
 - (void)_delayedReflowPlayer;
 - (void)_reflowPlayer;
 - (void)reloadData;
+- (void)selectOrganizerItemWithRange:(id)arg1;
 - (void)_syncToFilteredRanges;
 - (void)_toggleEmptyAndSearchViews:(BOOL)arg1;
 - (void)_hideEmptyPaneView:(BOOL)arg1 hideEmptySearchResultsView:(BOOL)arg2;

@@ -44,6 +44,7 @@
 - (void)saveViewSet;
 - (void)setUserModifiable:(BOOL)arg1;
 - (void)resetUserModifiableViewSet;
+- (void)moveKeyFromIndexes:(id)arg1 toIndex:(long long)arg2;
 - (void)moveKeyFromIndex:(long long)arg1 toIndex:(long long)arg2;
 - (void)removeKey:(id)arg1;
 - (void)addKey:(id)arg1;

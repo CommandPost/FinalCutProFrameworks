@@ -91,7 +91,7 @@
 - (void)aboutToChangeChannelGridStart:(struct OZChannelBase *)arg1 inSliderAction:(BOOL)arg2;
 - (void)setContext:(id)arg1;
 - (void)setCurrentItems:(id)arg1;
-- (unsigned long long)labelAlignment;
+- (long long)labelAlignment;
 - (id)moduleAccessoryView;
 - (void)moduleDidUnhide;
 - (void)viewDidLoad;

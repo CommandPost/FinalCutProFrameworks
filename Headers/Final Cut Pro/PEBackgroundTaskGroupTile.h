@@ -6,7 +6,7 @@
 
 #import "PEBackgroundTaskTile.h"
 
-@class LKTileView, NSButton, NSMutableArray, NSMutableDictionary, NSString, NSTextField, NSTimer;
+@class LKTileView, NSButton, NSMutableArray, NSMutableDictionary, NSStackView, NSString, NSTextField, NSTimer;
 
 @interface PEBackgroundTaskGroupTile : PEBackgroundTaskTile
 {
@@ -25,8 +25,10 @@
     NSMutableDictionary *_serializationGroups;
     NSMutableArray *_tasksToAdd;
     NSTimer *_timer;
+    NSStackView *_progressBarAndTextAndPauseStackView;
 }
 
+@property NSStackView *progressBarAndTextAndPauseStackView; // @synthesize progressBarAndTextAndPauseStackView=_progressBarAndTextAndPauseStackView;
 @property(nonatomic) SEL proxySelector; // @synthesize proxySelector=_proxySelector;
 @property(nonatomic) id proxyTarget; // @synthesize proxyTarget=_proxyTarget;
 @property(getter=isProxy) BOOL proxy; // @synthesize proxy=_isProxy;

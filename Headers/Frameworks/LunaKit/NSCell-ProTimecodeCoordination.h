@@ -8,5 +8,8 @@
 
 @interface NSCell (ProTimecodeCoordination)
 - (id)proObjectValueContents;
+- (void)syncFontToControlSize;
+- (void)didRequestObjectValueFromFormatter;
+- (void)willRequestObjectValueFromFormatter;
 @end
 

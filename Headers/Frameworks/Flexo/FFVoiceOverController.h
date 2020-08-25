@@ -34,7 +34,7 @@
     NSMutableSet *_outputFormatListenerStreamIDSet;
     CDUnknownBlockType _listenerBlock;
     NSMutableDictionary *_deviceListeners;
-    struct FFLocklessQueue<NSArray *> *_propertyChangedAddressInfoQueue;
+    // Error parsing type: ^{FFLocklessQueue<NSArray *>=^^?i{atomic<FFLocklessQueueBase::ElementBase *>=A^{ElementBase}}^{ElementBase}{atomic<FFLocklessQueueBase::ElementBase *>=A^{ElementBase}}^?^v}, name: _propertyChangedAddressInfoQueue
     id _observedTimelineObject;
     BOOL _voiceoverDisabled;
     BOOL _startingRecord;
@@ -119,6 +119,7 @@
 - (id)defaultTakeName;
 - (id)takeName;
 - (void)setCustomFilename:(id)arg1;
+- (float)defaultInputGain;
 - (float)inputGain;
 - (void)setInputGain:(float)arg1;
 - (struct AudioValueRange)inputGainDecibelRange;

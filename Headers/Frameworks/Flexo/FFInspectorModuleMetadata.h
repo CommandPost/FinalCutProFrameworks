@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_multicamItems;
     NSArray *_observedItems;
     NSSet *_observedSequences;
+    NSMutableArray *_cachedCurrentAssets;
     BOOL _cachedHasBinObjects;
     BOOL _cachedHasSetupItems;
     struct PCProcrastinatedDispatch_t _procrastinatedReload;
@@ -47,10 +48,13 @@ __attribute__((visibility("hidden")))
     struct PCProcrastinatedDispatch_t _procrastinatedNotifyMetaDataChanged;
     NSMutableDictionary *_info;
     NSArray *_backgroundObservedObjects;
+    NSArray *_backgroundObservedEffectStacks;
     int _backgroundObservingPendingUpdate;
     BOOL _isObservingMediaChange;
+    BOOL _isObservingPlaybackQualityChange;
 }
 
+@property(nonatomic) BOOL isObservingPlaybackQualityChange; // @synthesize isObservingPlaybackQualityChange=_isObservingPlaybackQualityChange;
 @property(nonatomic) BOOL isObservingMediaChange; // @synthesize isObservingMediaChange=_isObservingMediaChange;
 @property(nonatomic) NSWindow *saveMetadataViewWindow; // @synthesize saveMetadataViewWindow=_saveMetadataViewWindow;
 @property(nonatomic) NSTextField *customMetadataDescriptionTextField; // @synthesize customMetadataDescriptionTextField=_customMetadataDescriptionTextField;
@@ -61,9 +65,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSView *footerView; // @synthesize footerView=_footerView;
 - (id).cxx_construct;
 - (void)textFieldBecameFirstResponder:(id)arg1;
-- (BOOL)container:(id)arg1 reorderItemAtRow:(unsigned long long)arg2 withRow:(unsigned long long)arg3;
-- (long long)_indexOfMetadataDefinitionInViewSet:(id)arg1 fromVisibleItemAtRow:(unsigned long long)arg2;
-- (BOOL)container:(id)arg1 shouldBeginDraggingSessionAtRow:(unsigned long long)arg2;
+- (BOOL)container:(id)arg1 acceptDrop:(id)arg2 row:(long long)arg3 identifiers:(id)arg4;
+- (unsigned long long)container:(id)arg1 validateDrop:(id)arg2 proposedRow:(long long)arg3 identifiers:(id)arg4;
+- (unsigned long long)_indexInDefinitionsWithViewSet:(id)arg1 row:(long long)arg2;
+- (id)_indexesInDefinitionsWithViewSet:(id)arg1 identifiers:(id)arg2;
+- (id)container:(id)arg1 identifierForPasteboardWriterAtRow:(long long)arg2;
 - (id)controllerToolTip:(id)arg1;
 - (id)controller:(id)arg1 accessibilityValueForAttribute:(id)arg2;
 - (id)accessibilityAttributeNamesForController:(id)arg1;
@@ -101,10 +107,13 @@ __attribute__((visibility("hidden")))
 - (void)_notifySequenceEdited:(id)arg1;
 - (void)_notifyMetaDataChange;
 - (void)setCurrentItems:(id)arg1;
+- (id)_currentAssets;
+- (id)_assetFromItem:(id)arg1;
 - (void)_reloadData;
 - (void)_setupMetadataWithItems:(id)arg1;
 - (void)_resyncMetadataViewSetControlWithItems:(id)arg1;
 - (void)_setMetadataViewSet:(id)arg1 items:(id)arg2;
+- (void)_refreshMetadataViewSet;
 - (id)moduleFooterAccessoryView;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;
@@ -113,13 +122,18 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLoad;
 - (void)awakeFromNib;
 - (void)_setupCurrentItems;
+- (id)assetsFromItem:(id)arg1;
+- (void)setupHeaderControllerQualityFromAssets:(id)arg1;
+- (void)setupHeaderControllerQualityFromItem:(id)arg1;
 - (void)_updateHeaderForItems:(id)arg1;
 - (id)_menuForMetadataActionControl;
 - (id)_menuForMetadataViewSetControlWithItems:(id)arg1;
 - (void)rangeInvalidated:(id)arg1;
 - (void)assetMediaChanged:(id)arg1;
+- (void)playbackQualityChanged:(id)arg1;
 - (void)_updateReferencedEventsForItems:(id)arg1;
 - (id)_referencesForItems:(id)arg1 owner:(id)arg2;
+- (void)_addReferences:(id)arg1 forItem:(id)arg2 flatten:(BOOL)arg3 referenceIDs:(id)arg4;
 - (id)_selectionOwner;
 - (void)showEditCompoundClipSettings;
 - (void)_openSettingsWithItem:(id)arg1 sequenceType:(int)arg2;

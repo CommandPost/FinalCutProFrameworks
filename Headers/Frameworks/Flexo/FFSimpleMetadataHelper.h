@@ -26,15 +26,7 @@ __attribute__((visibility("hidden")))
 @property BOOL hasAudio; // @synthesize hasAudio=_hasAudio;
 @property BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
 @property(retain) NSMutableDictionary *metadata; // @synthesize metadata=_metadata;
-- (void)_writeUnlock:(const char *)arg1;
-- (void)_writeLock:(const char *)arg1 file:(const char *)arg2 line:(unsigned int)arg3;
-- (void)_readUnlock:(const char *)arg1;
-- (void)_readLock:(const char *)arg1 file:(const char *)arg2 line:(unsigned int)arg3;
-- (BOOL)writerIsWaiting;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
-- (void)_readLock;
+- (id)modelLockingObject;
 - (void)mdSetLocalValue:(id)arg1 forKey:(id)arg2;
 - (void)mdSetValue:(id)arg1 forKey:(id)arg2;
 - (id)mdTargetForKey:(id)arg1;

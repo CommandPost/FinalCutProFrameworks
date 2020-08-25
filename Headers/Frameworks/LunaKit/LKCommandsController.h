@@ -77,7 +77,9 @@
 - (id)_commandWithRepresentedObject:(id)arg1;
 - (id)commands;
 - (void)_cacheCommand:(id)arg1 forRepresentedObject:(id)arg2;
+- (void)unregisterCommands:(id)arg1;
 - (void)unregisterCommand:(id)arg1;
+- (void)registerCommands:(id)arg1;
 - (void)registerCommand:(id)arg1;
 - (id)_uniqueCommandSetNameWithDesiredName:(id)arg1 withDefaultSet:(BOOL)arg2;
 - (id)_commandSetWithName:(id)arg1;

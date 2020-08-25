@@ -23,11 +23,7 @@ __attribute__((visibility("hidden")))
     float _highlightsDetail;
 }
 
-- (BOOL)writerIsWaiting;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
-- (void)_readLock;
+- (id)modelLockingObject;
 - (void)writeAdjustment;
 - (void)analyseAdjustment;
 - (void)dealloc;

@@ -9,7 +9,7 @@
 #import "NSOpenSavePanelDelegate.h"
 #import "NSSaveRolePresetAsPanelDelegate.h"
 
-@class FFShareDestinationVideoResolutionMenuDelegate, LKButton, LKTextField, NSPopUpButton, NSString, NSURL;
+@class FFShareDestinationVideoResolutionMenuDelegate, FFShareInfoDataSource, LKButton, LKTextField, NSPopUpButton, NSString, NSTextField, NSURL;
 
 @interface FFShareDestinationExportMediaController : FFShareDestinationController <NSSaveRolePresetAsPanelDelegate, NSOpenSavePanelDelegate>
 {
@@ -29,8 +29,11 @@
     BOOL _sourcesOrExportOptionsHaveChangedDuringTransaction;
     BOOL _rolePresetModifiedDuringTransaction;
     BOOL _exportOptionsHaveChangedSinceCodecMenuWasRebuilt;
+    FFShareInfoDataSource *_shareInfoDataSource;
     FFShareDestinationVideoResolutionMenuDelegate *_videoResolutionMenuDelegate;
     long long _transactionCount;
+    NSTextField *_descriptionTitle;
+    NSTextField *_resolutionLabel;
 }
 
 + (id)keyPathsForValuesAffectingMultipassIndex;
@@ -38,12 +41,15 @@
 + (id)keyPathsForValuesAffectingCanIncludeChapter;
 + (id)keyPathsForValuesAffectingIsExportingAudio;
 + (id)keyPathsForValuesAffectingIncludesChapterMarkers;
+@property(retain, nonatomic) NSTextField *resolutionLabel; // @synthesize resolutionLabel=_resolutionLabel;
+@property(retain, nonatomic) NSTextField *descriptionTitle; // @synthesize descriptionTitle=_descriptionTitle;
 @property(nonatomic) BOOL exportOptionsHaveChangedSinceCodecMenuWasRebuilt; // @synthesize exportOptionsHaveChangedSinceCodecMenuWasRebuilt=_exportOptionsHaveChangedSinceCodecMenuWasRebuilt;
 @property(nonatomic) BOOL rolePresetModifiedDuringTransaction; // @synthesize rolePresetModifiedDuringTransaction=_rolePresetModifiedDuringTransaction;
 @property(nonatomic) BOOL sourcesOrExportOptionsHaveChangedDuringTransaction; // @synthesize sourcesOrExportOptionsHaveChangedDuringTransaction=_sourcesOrExportOptionsHaveChangedDuringTransaction;
 @property(nonatomic) long long transactionCount; // @synthesize transactionCount=_transactionCount;
 @property(retain, nonatomic) FFShareDestinationVideoResolutionMenuDelegate *videoResolutionMenuDelegate; // @synthesize videoResolutionMenuDelegate=_videoResolutionMenuDelegate;
 @property(nonatomic) BOOL replaceExistingRolePreset; // @synthesize replaceExistingRolePreset=_replaceExistingRolePreset;
+@property(retain, nonatomic) FFShareInfoDataSource *shareInfoDataSource; // @synthesize shareInfoDataSource=_shareInfoDataSource;
 @property(nonatomic) LKTextField *audioPresetTextField; // @synthesize audioPresetTextField=_audioPresetTextField;
 @property(nonatomic) LKTextField *videoResolutionTextField; // @synthesize videoResolutionTextField=_videoResolutionTextField;
 @property(nonatomic) LKTextField *videoPresetTextField; // @synthesize videoPresetTextField=_videoPresetTextField;
@@ -76,6 +82,7 @@
 - (void)setConformingSettingsForAllSourceDestinationPairs;
 - (void)updateInResponseToChangedSourcesOrExportOptions;
 - (void)sourcesOrExportOptionsHaveChanged;
+- (BOOL)doExportArtifactsIncludeAudioContent;
 @property(readonly, nonatomic) BOOL isExportingAudio; // @dynamic isExportingAudio;
 - (void)updateIncludeChapter;
 @property(nonatomic) BOOL includesChapterMarkers; // @dynamic includesChapterMarkers;
@@ -137,6 +144,8 @@
 - (BOOL)isTransactionInProgress;
 - (BOOL)displaysDeviceCompatibilityInfo;
 - (void)dealloc;
+- (void)applyOptimalSizeToEachItem;
+- (BOOL)hasHomogeneousAspectRatios;
 - (void)awakeFromNib;
 - (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 

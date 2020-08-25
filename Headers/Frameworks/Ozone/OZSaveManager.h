@@ -24,9 +24,9 @@
 @property(nonatomic) OZObjCDocument *doc; // @synthesize doc=_doc;
 - (unsigned long long)footageListSize;
 - (unsigned long long)mediaSize;
-- (void)deleteUnusedFootage;
+- (void)deleteUnusedSceneNodeFiles;
 - (BOOL)findExternalMediaForDocument:(id)arg1;
-- (void)buildFootageListForDocument:(id)arg1 destination:(id)arg2;
+- (void)buildSceneNodeFileListForDocument:(id)arg1 destination:(id)arg2;
 - (void)collectMediaToDirectory:(id)arg1;
 - (BOOL)collectForTemplate:(id)arg1;
 - (void)collectForSaveAs:(id)arg1;

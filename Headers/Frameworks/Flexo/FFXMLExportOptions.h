@@ -21,11 +21,16 @@ __attribute__((visibility("hidden")))
     NSNumber *_excludeAssetFileInfoObj;
     NSNumber *_useKeywordMarkerKeywordObj;
     NSNumber *_importConsumerProjectInFCPXObj;
+    NSNumber *_excludeAssetBookmarkObj;
+    NSNumber *_exludeEventProjectUIDObj;
     NSURL *_documentURL;
+    NSNumber *_excludeEventProjectUIDObj;
 }
 
 + (id)propertyKeys;
 @property(retain, nonatomic) NSURL *documentURL; // @synthesize documentURL=_documentURL;
+@property(retain, nonatomic) NSNumber *excludeEventProjectUIDObj; // @synthesize excludeEventProjectUIDObj=_excludeEventProjectUIDObj;
+@property(retain, nonatomic) NSNumber *excludeAssetBookmarkObj; // @synthesize excludeAssetBookmarkObj=_excludeAssetBookmarkObj;
 @property(retain, nonatomic) NSNumber *importConsumerProjectInFCPXObj; // @synthesize importConsumerProjectInFCPXObj=_importConsumerProjectInFCPXObj;
 @property(retain, nonatomic) NSNumber *useKeywordMarkerKeywordObj; // @synthesize useKeywordMarkerKeywordObj=_useKeywordMarkerKeywordObj;
 @property(retain, nonatomic) NSNumber *excludeAssetFileInfoObj; // @synthesize excludeAssetFileInfoObj=_excludeAssetFileInfoObj;
@@ -38,6 +43,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithUserDefaults;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)clearExcludeEventProjectUID;
+@property(readonly, nonatomic) BOOL hasExcludeEventProjectUID;
+@property(nonatomic) BOOL excludeEventProjectUID;
+- (void)clearExcludeAssetBookmark;
+@property(readonly, nonatomic) BOOL hasExcludeAssetBookmark;
+@property(nonatomic) BOOL excludeAssetBookmark;
 - (void)clearImportConsumerProjectInFCPX;
 @property(readonly, nonatomic) BOOL hasImportConsumerProjectInFCPX;
 @property(nonatomic) BOOL importConsumerProjectInFCPX;

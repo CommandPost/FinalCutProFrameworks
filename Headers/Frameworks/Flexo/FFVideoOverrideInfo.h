@@ -8,7 +8,7 @@
 
 #import "PAELUTRepositoryControllerObserver.h"
 
-@class NSDictionary, NSIndexSet, NSString;
+@class NSArray, NSDictionary, NSIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFVideoOverrideInfo : NSObject <PAELUTRepositoryControllerObserver>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSIndexSet *_supportedDominanceOverrides;
     NSIndexSet *_supportedColorSpaceOverrides;
     NSIndexSet *_supportedRAWToLogConversions;
+    NSArray *_prrConversionAdjustmentParams;
     NSIndexSet *_supportedLogProcessingModes;
     NSIndexSet *_supportedCameraProjectionModes;
     NSDictionary *_logProcessingInfoDictionary;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSIndexSet *supportedColorSpaceOverrides; // @synthesize supportedColorSpaceOverrides=_supportedColorSpaceOverrides;
 @property(readonly, nonatomic) NSIndexSet *supportedDominanceOverrides; // @synthesize supportedDominanceOverrides=_supportedDominanceOverrides;
 @property(readonly, nonatomic) NSIndexSet *supportedAlphaHandlingModes; // @synthesize supportedAlphaHandlingModes=_supportedAlphaHandlingModes;
+- (id)prrConversionAdjustmentParams;
 - (id)initWithProvider:(id)arg1 mediaRep:(id)arg2;
 - (void)dealloc;
 - (void)moveCustomCameraLUTItems:(id)arg1;

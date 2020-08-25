@@ -6,7 +6,7 @@
 
 #import <Flexo/FFMaskedEffectBase.h>
 
-@class FFEffect;
+@class FFEffect, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FFInnerOuterCorrectionEffectBasicClass : FFMaskedEffectBase
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     FFEffect *_innerCorrection;
     FFEffect *_outerCorrection;
     unsigned long long _nameIndex;
+    NSDictionary *_xmlConfig;
 }
 
 + (BOOL)supportsSecureCoding;
@@ -44,6 +45,9 @@ __attribute__((visibility("hidden")))
 - (id)visibleKeyframeableChannels;
 - (void)modifyDisplayNameForEffectStack:(id)arg1;
 - (BOOL)isInnerOuterCorrectionEffect;
+- (id)outerCorrectionXMLConfig;
+- (id)innerCorrectionXMLConfig;
+- (void)_postInit:(id)arg1 isXML:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithEffectID:(id)arg1;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)mouseDragCanceled:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (BOOL)mouseDown:(id)arg1;
+- (id)init;
 - (BOOL)canSelectCell;
 
 @end

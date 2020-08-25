@@ -8,7 +8,6 @@
 
 @class NSArray, NSButton, NSControl, NSImageView, NSMatrix, NSTextField;
 
-__attribute__((visibility("hidden")))
 @interface FFPurgeRenderFilesWindowController : NSWindowController
 {
     NSMatrix *_purgeTypeMatrix;
@@ -24,8 +23,12 @@ __attribute__((visibility("hidden")))
     NSButton *_deleteProxyMedia;
     NSArray *_events;
     NSArray *_projects;
+    NSArray *_clips;
+    NSArray *_timelineClips;
 }
 
++ (BOOL)runSheetForTimelineClips:(id)arg1 parentWindow:(id)arg2;
++ (BOOL)runSheetForClips:(id)arg1 parentWindow:(id)arg2;
 + (BOOL)runSheetForProjects:(id)arg1 parentWindow:(id)arg2;
 + (BOOL)runSheetForEvents:(id)arg1 parentWindow:(id)arg2;
 + (BOOL)runSheetForLibrary:(id)arg1 parentWindow:(id)arg2;
@@ -36,10 +39,17 @@ __attribute__((visibility("hidden")))
 - (void)OK:(id)arg1;
 - (void)sheetDidEnd:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
 - (void)_purgeRenderFiles:(BOOL)arg1;
+- (void)hideView:(id)arg1;
+- (void)hideDeleteRenderFilesRadioOptionsGroup;
+- (void)hideDeleteRenderFilesButton;
+- (void)setupTimelineClipViewOptions;
+- (void)setupClipViewOptions;
 - (void)setupProjectViewOptions;
 - (void)setupLibraryViewOptions;
 - (void)windowDidLoad;
 - (void)dealloc;
+- (id)initWithTimelineClips:(id)arg1;
+- (id)initWithClips:(id)arg1;
 - (id)initWithProjects:(id)arg1;
 - (id)initWithEvents:(id)arg1;
 - (id)initWithLibrary:(id)arg1;

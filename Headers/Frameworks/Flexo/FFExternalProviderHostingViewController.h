@@ -6,18 +6,19 @@
 
 #import "NSTabViewController.h"
 
-@class FFExternalProviderCrashingViewController, FFExternalProviderItem, FFExternalProviderLoadingViewController, NSString, PlugInViewController;
+@class FFExternalProviderCrashingViewController, FFExternalProviderItem, FFExternalProviderLoadingViewController, NSString, PXPluginViewController;
 
 @interface FFExternalProviderHostingViewController : NSTabViewController
 {
     FFExternalProviderItem *_providerItem;
     FFExternalProviderLoadingViewController *_placeHolderViewController;
     FFExternalProviderCrashingViewController *_crashingViewController;
-    PlugInViewController *_plugInViewController;
+    PXPluginViewController *_plugInViewController;
     NSString *_statusString;
 }
 
 @property(copy, nonatomic) NSString *statusString; // @synthesize statusString=_statusString;
+- (void)configureWindowForPlugin:(id)arg1;
 - (void)dealloc;
 - (void)_detachPlugInViewController;
 - (void)viewServiceDidTerminateWithError:(id)arg1;

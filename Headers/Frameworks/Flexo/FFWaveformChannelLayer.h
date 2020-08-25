@@ -4,48 +4,22 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFVideoScopesChannelLayerGL.h>
-
-#import "FFVideoScopesWaveformYScaling.h"
-#import "FFWaveformContextLayer.h"
-
-@class NSString;
+#import "CAMetalLayer.h"
 
 __attribute__((visibility("hidden")))
-@interface FFWaveformChannelLayer : FFVideoScopesChannelLayerGL <FFWaveformContextLayer, FFVideoScopesWaveformYScaling>
+@interface FFWaveformChannelLayer : CAMetalLayer
 {
-    struct FFVideoScopesWaveformViewPrivate *_waveformContext;
-    long long _displayMode;
-    long long _yScale;
-    unsigned long long _option;
-    float _traceBrightness;
-    _Bool _monochrome;
-    CDStruct_69458254 _action_opt;
+    long long _compositeVideoUnits;
+    // Error parsing type: Af, name: _traceBrightness
+    // Error parsing type: Ac, name: _monochrome
 }
 
-- (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
-- (struct CGRect)_boundsAppliedByContentsScale;
-- (BOOL)canDrawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
-- (void)releaseCGLContext:(struct _CGLContextObject *)arg1;
-- (struct _CGLContextObject *)copyCGLContextForPixelFormat:(struct _CGLPixelFormatObject *)arg1;
-- (void)releaseCGLPixelFormat:(struct _CGLPixelFormatObject *)arg1;
-- (struct _CGLPixelFormatObject *)copyCGLPixelFormatForDisplayMask:(unsigned int)arg1;
-- (id)actionForKey:(id)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
-- (void)setNeedsUpdateFromDest:(unsigned long long)arg1;
-- (void)setVideoScopesWaveformYScale:(long long)arg1;
-- (void)setDisplayMode:(long long)arg1;
-- (void)setWaveformContext:(struct FFVideoScopesWaveformViewPrivate *)arg1;
-- (void)setMonochrome:(BOOL)arg1;
-- (void)setTraceBrightness:(float)arg1;
-- (void)dealloc;
+@property(nonatomic) long long compositeVideoUnits; // @synthesize compositeVideoUnits=_compositeVideoUnits;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)drawWithMtlContext:(struct PAEMtlContext *)arg1 renderer:(const struct Instance *)arg2 completionBlock:(CDUnknownBlockType)arg3;
+@property(nonatomic) BOOL monochrome; // @dynamic monochrome;
+@property(nonatomic) float traceBrightness; // @dynamic traceBrightness;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -20,6 +20,8 @@
     FFPasteboardTaskDelegate *_taskDelegate;
 }
 
++ (id)newPasteboardItemForEffects:(id)arg1;
++ (void)_copiedTypesAdd:(id)arg1 category:(id)arg2 mediaType:(id)arg3;
 + (id)readableTypes;
 @property(retain, nonatomic) NSError *importError; // @synthesize importError=_importError;
 @property(retain, nonatomic) NSPasteboard *pasteboard; // @synthesize pasteboard=_pasteboard;
@@ -38,6 +40,7 @@
 - (id)_newCachedObjectsForKey:(id)arg1;
 - (id)_copyCacheKeyForProjectID:(id)arg1 assetFlags:(int)arg2 options:(id)arg3;
 - (BOOL)hasKeyframes;
+- (BOOL)hasEffectPresets;
 - (BOOL)hasEffectsWithType:(id)arg1;
 - (BOOL)hasMarkers;
 - (BOOL)hasPlayhead;
@@ -68,7 +71,6 @@
 - (void)_getCopiedTypesFromBinObjects:(id)arg1 copiedTypes:(id)arg2;
 - (id)_copiedTypes:(id)arg1;
 - (unsigned long long)_copiedTypesCount:(id)arg1 category:(id)arg2 mediaType:(id)arg3;
-- (void)_copiedTypesAdd:(id)arg1 category:(id)arg2 mediaType:(id)arg3;
 - (BOOL)cacheEnabled;
 - (void)setCacheEnabled:(BOOL)arg1;
 - (void)dealloc;

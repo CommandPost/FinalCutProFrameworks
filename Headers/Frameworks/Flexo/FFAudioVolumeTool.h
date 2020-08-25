@@ -29,7 +29,6 @@
     LKTextField *_duckingText;
     LKButton *_volumeResetButton;
     long long _previousMuteState;
-    long long _previousAutoEnhanceState;
     BOOL _isActiveTool;
     NSNumber *_lastDuckingThreshold;
     BOOL _suspendUpdates;
@@ -91,6 +90,7 @@
 - (id)_duckingActionString;
 - (void)_clearDuckingDefaultThreshold;
 - (double)_duckingDefaultThreshold;
+- (void)_enableLoudness:(BOOL)arg1 forObjects:(id)arg2;
 - (void)_enableLoudness:(BOOL)arg1;
 - (void)volumeSliderChanged:(id)arg1;
 - (id)_volumeActionString;

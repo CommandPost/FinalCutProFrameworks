@@ -6,12 +6,17 @@
 
 #import <ProOSC/POOnScreenControl.h>
 
-@interface POScaleControl : POOnScreenControl
+#import "POOnScreenControlMetalRendering.h"
+
+@class NSString;
+
+@interface POScaleControl : POOnScreenControl <POOnScreenControlMetalRendering>
 {
     BOOL _scaling;
     BOOL _scaleOnly;
 }
 
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (void)snapshotState;
 - (void)updateScale:(const PCVector3_457fd1f0 *)arg1 translate:(const PCVector3_457fd1f0 *)arg2;
 - (void)updateScale:(const PCVector3_457fd1f0 *)arg1 scaleFromCentre:(_Bool)arg2 hitPart:(int)arg3;
@@ -21,6 +26,12 @@
 - (BOOL)hasFocus;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

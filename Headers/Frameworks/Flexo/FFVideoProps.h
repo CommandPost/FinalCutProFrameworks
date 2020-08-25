@@ -46,7 +46,7 @@
 + (BOOL)isHorizontalPanorama:(struct CGRect)arg1;
 + (CDStruct_1b6d18a9)defaultSampleDurationForStillImage;
 + (struct CGColorSpace *)guessYCbCrColorSpaceFromHeight:(int)arg1;
-+ (id)newPropsFromCType:(unsigned int)arg1 dimensions:(CDStruct_1ef3fb1f)arg2 extensionsDict:(id)arg3 frameDuration:(CDStruct_1b6d18a9)arg4 anamorphicHint:(BOOL)arg5 ambiguous:(char *)arg6;
++ (id)newPropsFromCType:(unsigned int)arg1 dimensions:(CDStruct_79c71658)arg2 extensionsDict:(id)arg3 frameDuration:(CDStruct_1b6d18a9)arg4 anamorphicHint:(BOOL)arg5 ambiguous:(char *)arg6;
 + (id)newPropsFromVideoFormatDescription:(struct opaqueCMFormatDescription *)arg1 frameDuration:(CDStruct_1b6d18a9)arg2 anamorphicHint:(BOOL)arg3 isRotated:(BOOL)arg4 ambiguous:(char *)arg5;
 + (id)newPropsFromVideoFormat:(id)arg1;
 + (BOOL)supportsSecureCoding;
@@ -90,6 +90,7 @@
 + (id)newPropsWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 fieldDominance:(int)arg3 frameDuration:(CDStruct_1b6d18a9)arg4 paspH:(int)arg5 paspV:(int)arg6 cameraMode:(int)arg7 forceIdentityTransform:(BOOL)arg8;
 @property(readonly) int cameraMode; // @synthesize cameraMode=_cameraMode;
 @property _Bool inVidPropsCache; // @synthesize inVidPropsCache=_inVidPropsCache;
+- (BOOL)isReallyGoodGuessOf:(id)arg1;
 - (CDStruct_bdcb2b0d)vidPropsMD5;
 - (BOOL)canCacheMD5;
 - (id)bestSupportedFormatForEditing;
@@ -106,7 +107,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqualIgnoringColorSpace:(id)arg1;
+- (BOOL)isEqualToVideoProps:(id)arg1 compareFlags:(int)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToVideoProps:(id)arg1;
 - (unsigned long long)hash;
 - (id)newPList;
 - (id)description;
@@ -191,6 +194,8 @@
 - (id)initWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 fieldDominance:(int)arg3 sampleDuration:(CDStruct_1b6d18a9)arg4 frame:(id)arg5 field1:(id)arg6 field2:(id)arg7 paspH:(int)arg8 paspV:(int)arg9 frameRateUndefined:(BOOL)arg10;
 - (id)initWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 colorSpaceEnum:(int)arg3 fieldDominance:(int)arg4 sampleDuration:(CDStruct_1b6d18a9)arg5 frame:(id)arg6 field1:(id)arg7 field2:(id)arg8 paspH:(int)arg9 paspV:(int)arg10 frameRateUndefined:(BOOL)arg11 cameraMode:(int)arg12;
 - (void)_validateVideoProps;
+- (BOOL)isImageSpaceBoundVertical;
+- (BOOL)isImageSpaceBoundSquare;
 - (id)copyPropsWithPixelSpaceFrameBounds:(struct CGRect)arg1 colorSpace:(struct CGColorSpace *)arg2 fieldDominance:(int)arg3 frameDuration:(CDStruct_1b6d18a9)arg4 paspH:(int)arg5 paspV:(int)arg6 cameraMode:(int)arg7;
 
 @end

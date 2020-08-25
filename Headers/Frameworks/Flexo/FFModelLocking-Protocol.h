@@ -4,14 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@protocol FFModelLocking
-- (BOOL)writerIsWaiting;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
-- (void)_readLock;
+@class FFModelObject;
 
-@optional
-- (BOOL)_hasWriteLock;
+@protocol FFModelLocking
+- (FFModelObject *)modelLockingObject;
 @end
 

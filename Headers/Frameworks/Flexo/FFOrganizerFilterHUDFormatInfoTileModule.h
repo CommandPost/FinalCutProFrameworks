@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) LKMenu *stereoModesMenu; // @synthesize stereoModesMenu=_stereoModesMenu;
 @property(retain, nonatomic) LKMenu *sphericalModesMenu; // @synthesize sphericalModesMenu=_sphericalModesMenu;
+- (id)tileNameString;
 - (id)tileGlyphString;
 - (void)formatInfoPopupUpdated:(id)arg1;
 - (void)comparisonTypePopupUpdated:(id)arg1;

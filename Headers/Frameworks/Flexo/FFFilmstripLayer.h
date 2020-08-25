@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     double _savedOffset;
     struct PCProcrastinatedDispatch_t _procrastinatedReload;
     id <FFFilmstripLayerDelegate> _filmstripDelegate;
+    FFAnchoredObject *_observedSkimmableObject;
     BOOL _forceNoUpdate;
     BOOL _cellsDirty;
     BOOL _highlighted;
@@ -117,6 +118,7 @@ __attribute__((visibility("hidden")))
 - (void)_setVisibleBounds_PointsCalculation;
 - (void)setSegmentRanges:(id)arg1 timePerPoints:(id)arg2 andTimes:(id)arg3;
 - (void)rangeInvalidated:(id)arg1;
+- (id)_observedSkimmableObjectForSkimmableObject:(id)arg1;
 @property id <FFFilmstripLayerDelegate> filmstripDelegate; // @synthesize filmstripDelegate=_filmstripDelegate;
 - (void)addDebugInfo;
 - (id)_fullDescription;

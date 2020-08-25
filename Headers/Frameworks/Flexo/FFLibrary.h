@@ -6,12 +6,14 @@
 
 #import <Flexo/FFLibraryItem.h>
 
+#import "FFOrganizerItem.h"
+#import "FFOrganizerItemDraggingSource.h"
 #import "FFOrganizerMasterItemDropTarget.h"
 #import "FFXMLTranslationTarget.h"
 
-@class FFEffectRegistry, FFLibraryFolder, FFMediaEventFolder, FFMediaEventProject, FFRoleSet, NSData, NSDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class FFEffectRegistry, FFLibraryFolder, FFMediaEventFolder, FFMediaEventProject, FFRoleSet, NSData, NSDictionary, NSImage, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 
-@interface FFLibrary : FFLibraryItem <FFXMLTranslationTarget, FFOrganizerMasterItemDropTarget>
+@interface FFLibrary : FFLibraryItem <FFXMLTranslationTarget, FFOrganizerItemDraggingSource, FFOrganizerMasterItemDropTarget, FFOrganizerItem>
 {
     FFLibraryFolder *_tempFolder;
     FFMediaEventFolder *_mediaEventFolder;
@@ -34,7 +36,6 @@
     NSMutableDictionary *_effectRegistryCache;
 }
 
-+ (id)codecSubstringsThatIndicate64Bitness;
 + (void)registerConsolidatedEffectClass:(Class)arg1;
 + (id)consolidatedEffectClasses;
 + (void)addObject:(id)arg1 toSummary:(id)arg2;
@@ -79,10 +80,7 @@
 @property(readonly, retain, nonatomic) FFRoleSet *cachedRoleSet; // @synthesize cachedRoleSet=_cachedRoleSet;
 @property(retain, nonatomic) NSDictionary *updateHistory; // @synthesize updateHistory=_updateHistory;
 @property(readonly, nonatomic) FFLibraryFolder *tempFolder; // @synthesize tempFolder=_tempFolder;
-- (BOOL)_mediaShouldTrigger32BitWarning:(id)arg1;
-- (void)determineLegacyMediaStatus;
-- (id)legacyMedia;
-- (long long)legacyMediaStatus;
+- (void)dumpUnreferencedMedia;
 - (BOOL)workingSpaceIsWideGamut;
 @property(nonatomic) int colorProcessingMode;
 - (void)consolidateMotionTemplates;
@@ -158,12 +156,15 @@
 - (id)directoryFromUniqueIdentifier:(id)arg1;
 - (id)eventForName:(id)arg1;
 - (id)eventForIdentifier:(id)arg1;
+- (id)findMediaByIdentifierOrMD5Alias:(id)arg1;
 - (id)findMediaByIdentifierOrMD5String:(id)arg1;
 - (id)findAssetByMD5String:(id)arg1 includeTrash:(BOOL)arg2;
 - (id)findAssetByMD5String:(id)arg1;
 - (id)resolveMediaIdentifier:(id)arg1 includeTrash:(BOOL)arg2;
 - (id)resolveMediaIdentifier:(id)arg1;
+- (void)didRemoveMediaAlias:(id)arg1 withMedia:(id)arg2 forItem:(id)arg3;
 - (void)didRemoveMedia:(id)arg1 forItem:(id)arg2;
+- (void)didAddMediaAlias:(id)arg1 withMedia:(id)arg2 forItem:(id)arg3;
 - (void)didAddMedia:(id)arg1 forItem:(id)arg2;
 - (void)didLoadProjectData:(id)arg1;
 - (void)willLoadProjectData:(id)arg1;
@@ -189,6 +190,7 @@
 - (id)insertNewEvent:(id)arg1 name:(id)arg2 hidden:(BOOL)arg3 error:(id *)arg4;
 - (id)insertNewEvent:(id)arg1 name:(id)arg2 error:(id *)arg3;
 - (id)insertHiddenEvent:(id)arg1 error:(id *)arg2;
+- (id)insertHiddenEvent:(id)arg1 overwriteExisting:(BOOL)arg2 error:(id *)arg3;
 - (id)insertTemporaryEvent:(id)arg1 error:(id *)arg2;
 - (void)relinkProxyAssetsUsingRealAssets:(id)arg1;
 - (BOOL)isUpdating;
@@ -239,22 +241,31 @@
 @property(readonly, nonatomic) FFMediaEventFolder *folder;
 @property(readonly, nonatomic) FFMediaEventProject *event;
 - (id)objectSpecifier;
+- (id)essentialProperties;
 - (id)uniqueIdentifier;
 - (id)events;
 - (id)containerPropertyName;
 - (id)containerObject;
-- (void)performWriteUsingBlock:(CDUnknownBlockType)arg1;
-- (void)performReadUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)performActionWithName:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) BOOL itemDisplayNameEditable;
+@property(readonly, nonatomic) NSString *itemDisplayName;
 - (id)itemIconSelected:(BOOL)arg1;
-- (id)itemIcon;
+@property(readonly, nonatomic) NSImage *itemIcon;
 - (BOOL)performDrop:(id)arg1 validatedDragOperation:(unsigned long long)arg2 newSubitemInsertionIndex:(long long)arg3 organizerModule:(id)arg4;
 - (unsigned long long)validateDrop:(id)arg1 newSubitemInsertionIndex:(long long)arg2;
+- (id)readEventObjectIDsFromLibraryBookmark:(id)arg1;
+- (id)readEventObjectIDsFromLibraryBookmarkForPasteboard:(id)arg1;
+- (id)pasteboardPropertyListForType:(id)arg1;
+- (id)writableTypesForPasteboard:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSString *itemDisplayNameExtraText;
+@property(readonly, nonatomic) BOOL itemIsPlaceholder;
+@property(readonly, nonatomic) NSString *itemPersistentIdentifier;
+@property(readonly, nonatomic) double itemRowHeight;
 @property(readonly) Class superclass;
 
 @end

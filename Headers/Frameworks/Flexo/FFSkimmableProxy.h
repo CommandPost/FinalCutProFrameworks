@@ -8,25 +8,17 @@
 
 #import "FFAssetContainerProtocol.h"
 #import "FFDataModelProtocol.h"
-#import "FFInspectableObject.h"
 #import "FFSkimmableProtocol.h"
 
-@class NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>;
+@class NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol>;
 
 __attribute__((visibility("hidden")))
-@interface FFSkimmableProxy : NSObject <FFSkimmableProtocol, FFDataModelProtocol, FFInspectableObject, FFAssetContainerProtocol>
+@interface FFSkimmableProxy : NSObject <FFSkimmableProtocol, FFDataModelProtocol, FFAssetContainerProtocol>
 {
     struct NSObject *m_rootSkimmable;
 }
 
-@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol> *rootSkimmable; // @synthesize rootSkimmable=m_rootSkimmable;
-- (BOOL)writerIsWaiting;
-- (void)_readUnlock;
-- (void)_readLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (id)inspectorDisplayName;
-- (id)inspectorClassName;
+@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol> *rootSkimmable; // @synthesize rootSkimmable=m_rootSkimmable;
 - (id)fileURLs:(int)arg1;
 - (id)mediaRefs;
 - (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
@@ -39,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)assets;
 - (id)project;
 - (id)undoHandler;
+- (id)rangeInvalObject;
 - (id)skimmableRolesWithPlayEnable:(int)arg1;
 - (id)skimmableAudioLevelEffects;
 - (void)addThumbMD5Info:(id)arg1 imageQuality:(int)arg2;

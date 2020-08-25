@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class FFDataListTableView, NSImage, NSLayoutConstraint;
+@class FFDataListTableView, NSLayoutConstraint;
 
 __attribute__((visibility("hidden")))
 @interface FFDataListPlayheadView : NSView
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     long long _playheadRow;
     FFDataListTableView *_tableView;
     NSLayoutConstraint *_yContraint;
-    NSImage *_playheadImage;
 }
 
 + (BOOL)supportsSecureCoding;
@@ -25,8 +24,6 @@ __attribute__((visibility("hidden")))
 - (void)movePlayheadToRow:(long long)arg1 position:(int)arg2 animate:(BOOL)arg3;
 - (void)awakeFromNib;
 - (void)dealloc;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

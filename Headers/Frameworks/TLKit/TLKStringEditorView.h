@@ -58,8 +58,8 @@
 - (id)attributedStringValue;
 - (void)setStringValue:(id)arg1;
 - (id)stringValue;
-- (void)setAlignment:(unsigned long long)arg1;
-- (unsigned long long)alignment;
+- (void)setAlignment:(long long)arg1;
+- (long long)alignment;
 - (void)setFont:(id)arg1;
 - (id)font;
 - (BOOL)isFlipped;

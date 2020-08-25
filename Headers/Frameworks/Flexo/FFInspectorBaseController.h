@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     FFInspectorBaseController *_parentController;
     NSView *_view;
-    NSString *_identifier;
+    // Error parsing type: A@, name: _identifier
     struct {
         unsigned int nibIsLoading:1;
         unsigned int nibWasLoaded:1;

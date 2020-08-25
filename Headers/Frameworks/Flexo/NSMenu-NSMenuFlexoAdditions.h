@@ -9,5 +9,17 @@
 @interface NSMenu (NSMenuFlexoAdditions)
 - (id)addItemWithCommandSelector:(SEL)arg1 tag:(long long)arg2;
 - (id)addItemWithCommandSelector:(SEL)arg1;
+- (void)configureTimelineRowHeightMenuForModule:(id)arg1;
+- (void)configureVideoGeneratorsMenuForModule:(id)arg1;
+- (void)configureAudioTransitionsMenuForModule:(id)arg1;
+- (void)configureDefaultVideoTransitionsMenuForModule:(id)arg1;
+- (void)configureVideoTransitionsMenuForModule:(id)arg1;
+- (void)configureAudioEffectsMenuForModule:(id)arg1 items:(id)arg2;
+- (void)configureAudioEffectsMenuForModule:(id)arg1 action:(SEL)arg2 channelCount:(long long)arg3 tag:(long long)arg4;
+- (void)configureVideoFiltersMenuForModule:(id)arg1;
+- (void)alphabatizeMenu;
+- (id)submenuItemWithTitle:(id)arg1 createIfNeeded:(BOOL)arg2;
+- (void)createAudioEffectsMenu:(SEL)arg1 channels:(id)arg2 module:(id)arg3 tag:(long long)arg4 allowOffline:(BOOL)arg5;
+- (void)createVideoEffectsMenuForEffectType:(id)arg1 action:(SEL)arg2 module:(id)arg3 tag:(long long)arg4;
 @end
 

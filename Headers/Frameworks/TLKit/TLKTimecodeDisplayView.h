@@ -46,7 +46,7 @@
 - (void)displayTime:(CDStruct_1b6d18a9)arg1 deltaTime:(CDStruct_1b6d18a9)arg2 type:(unsigned long long)arg3 mode:(unsigned long long)arg4 subframes:(BOOL)arg5 inRect:(struct CGRect)arg6;
 - (id)_stringFromTime:(CDStruct_1b6d18a9)arg1 displaySubframes:(BOOL)arg2 displaySign:(BOOL)arg3;
 - (void)reload;
-- (void)setAlignment:(unsigned long long)arg1;
+- (void)setAlignment:(long long)arg1;
 - (void)setTextColor:(int)arg1;
 - (id)attributedStringValue;
 - (id)stringValue;

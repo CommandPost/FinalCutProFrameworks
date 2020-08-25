@@ -7,13 +7,13 @@
 #import "LKViewModule.h"
 
 #import "FFEditorModuleDelegate.h"
-#import "FFProExtensionHostTimelineProtocol.h"
 #import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
+#import "PXProExtensionHostTimelineProtocol.h"
 
-@class FFAnchoredTimelineModule, FFEditorModule, LKButton, LKMenu, LKPaneCapSegmentedControl, LKSegmentedControl, LKTextField, LKTimecodeFormatter, NSArray, NSButton, NSDictionary, NSLayoutConstraint, NSPopover, NSString, NSView, PEAudioMeterModule, PEDataListContainerModule, PEEditorAppearancePopoverController, PEEditorContainerSplitView, PEEditorMenuDelayButton, PEMediaBrowserContainerModule, PETimelineIndexToggleButton, PEViewedClipSet, PEWindowBackgroundColoredView;
+@class FFAnchoredTimelineModule, FFEditorModule, LKButton, LKMenu, LKPaneCapSegmentedControl, LKSegmentedControl, LKTextField, LKTimecodeFormatter, NSArray, NSButton, NSDictionary, NSLayoutConstraint, NSPopover, NSString, NSView, PEAudioMeterModule, PEDataListContainerModule, PEEditorAppearancePopoverController, PEEditorContainerSplitView, PEEditorMenuDelayButton, PEMediaBrowserContainerModule, PETimelineHeaderPopUpButton, PETimelineIndexToggleButton, PETimelineUserSettings, PEViewedClipSet, PEWindowBackgroundColoredView;
 
-@interface PEEditorContainerModule : LKViewModule <FFProExtensionHostTimelineProtocol, FFEditorModuleDelegate, NSWindowDelegate, NSPopoverDelegate>
+@interface PEEditorContainerModule : LKViewModule <PXProExtensionHostTimelineProtocol, FFEditorModuleDelegate, NSWindowDelegate, NSPopoverDelegate>
 {
     NSView *_timelineView;
     NSView *_timelineIndexView;
@@ -29,9 +29,9 @@
     PEEditorAppearancePopoverController *_popoverController;
     NSPopover *_clipAttributesPopOver;
     BOOL viewInitialized;
-    LKTextField *_projectNameField;
     LKTextField *_durationField;
     NSLayoutConstraint *_durationFieldWidthConstraint;
+    PETimelineHeaderPopUpButton *_timelineHeaderPopUpButton;
     LKSegmentedControl *_mediaBrowserPalette;
     PEEditorMenuDelayButton *_timelineNavigationBackButton;
     PEEditorMenuDelayButton *_timelineNavigationForwardButton;
@@ -82,9 +82,11 @@
     NSDictionary *_monoAttributes;
     struct PCProcrastinatedDispatch_t _procrastinatedDiamondUpdate;
     LKTimecodeFormatter *_timecodeFormatter;
+    PETimelineUserSettings *_userSettings;
 }
 
 + (id)tools;
+@property(readonly, nonatomic) PETimelineUserSettings *userSettings; // @synthesize userSettings=_userSettings;
 @property(retain, nonatomic) LKTimecodeFormatter *timecodeFormatter; // @synthesize timecodeFormatter=_timecodeFormatter;
 @property(retain, nonatomic) FFEditorModule *editorModule; // @synthesize editorModule=_editorModule;
 @property(retain, nonatomic) PEAudioMeterModule *audioMeterModule; // @synthesize audioMeterModule=_audioMeterModule;
@@ -152,7 +154,6 @@
 - (void)openSettingsWithModule:(id)arg1;
 - (void)makeSequenceActive:(id)arg1 withTime:(CDStruct_1b6d18a9)arg2;
 - (BOOL)revealBinObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2;
-- (void)performAction:(id)arg1 withProject:(id)arg2 andSelection:(id)arg3;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 unloadingBlock:(CDUnknownBlockType)arg4;
 - (void)displayMedia:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 loadingBlock:(CDUnknownBlockType)arg4 unloadingBlock:(CDUnknownBlockType)arg5;
@@ -212,8 +213,15 @@
 - (void)showHideWaveForms:(id)arg1;
 - (void)searchAction:(id)arg1;
 - (void)showProjectShareStatusInfo:(id)arg1;
+- (void)toggleDisplayCustomOverlay:(id)arg1;
+- (void)setDisplayCustomOverlay:(id)arg1;
 - (void)setDisplayBroadcastSafeZones:(id)arg1;
 - (void)setColorChannelDisplay:(id)arg1;
+- (void)timelineHeaderMenuItemDuplicateProject:(id)arg1;
+- (void)updateTimelineHeaderPopUpButton:(id)arg1;
+- (void)purgeRenderFiles:(id)arg1;
+- (BOOL)isPlaybackUserInterfaceItem:(id)arg1;
+- (BOOL)isPlaybackDisabled;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (id)moduleForAction:(SEL)arg1;
 - (void)setLabel:(id)arg1;
@@ -226,7 +234,6 @@
 - (void)_initializeStringAttributesIfNeeded;
 - (void)_loadTimecodeFormatterIfNeeded;
 - (id)_sequenceAndSelectionDurationString;
-- (BOOL)isShortTitleStringWithDuration:(id)arg1;
 - (id)stringForFigTime:(CDStruct_1b6d18a9)arg1 sequence:(id)arg2 formatter:(id)arg3;
 - (id)stripLeadingZerosFromTimeString:(id)arg1;
 - (id)buildNavPathControls:(id)arg1;
@@ -236,6 +243,7 @@
 - (id)moduleFooterAccessoryView;
 - (BOOL)wantsFooterBar;
 - (void)updateControlSelectionState;
+- (void)closeLibrary:(id)arg1;
 - (void)selectNextTimelineItem:(id)arg1;
 - (void)selectPreviousTimelineItem:(id)arg1;
 - (void)setRootItem:(id)arg1;
@@ -286,6 +294,7 @@
 - (void)loadEditorForLastOpenSequence;
 - (struct CGSize)viewMinSize;
 - (void)dealloc;
+- (id)initWithModuleNibName:(id)arg1;
 - (BOOL)wantsFocusIndicator;
 - (BOOL)wantsHeaderBar;
 - (CDStruct_1b6d18a9)playheadSequenceTime;

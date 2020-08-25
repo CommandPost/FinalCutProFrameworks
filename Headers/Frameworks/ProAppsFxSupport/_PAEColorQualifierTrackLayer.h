@@ -4,16 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <ProAppsFxSupport/PAEOpenGLLayer.h>
+#import "CAMetalLayer.h"
 
 @class PAEColorQualifier;
 
-@interface _PAEColorQualifierTrackLayer : PAEOpenGLLayer
+@interface _PAEColorQualifierTrackLayer : CAMetalLayer
 {
     PAEColorQualifier *_qualifier;
+    id <MTLRenderPipelineState> _pipeline;
 }
 
-- (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
+- (void)display;
 - (BOOL)_isEnabled;
 - (BOOL)_isHighlighted;
 - (double)_maxRangeValue;
@@ -24,6 +25,7 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (struct rgb_t<double>)_color;
 - (id)_saturationColor;
+- (void)dealloc;
 - (id)initWithQualifier:(id)arg1;
 
 @end

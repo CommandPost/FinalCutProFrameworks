@@ -46,8 +46,8 @@
 - (void)_resetMediaAvailableInEvent:(id)arg1;
 - (void)_registerSyncRequest:(id)arg1;
 - (id)_findSyncInfo:(id)arg1 identifier:(id)arg2;
+- (void)_updateModifiedMediaRep:(id)arg1 forRequest:(id)arg2 finishedDownload:(BOOL)arg3 forceUpdateForProjUpdate:(BOOL)arg4 retryIfFileIsChanging:(BOOL)arg5;
 - (void)_updateModifiedMediaRep:(id)arg1 forRequest:(id)arg2 finishedDownload:(BOOL)arg3 forceUpdateForProjUpdate:(BOOL)arg4;
-- (void)_updateModifiedMediaRep:(id)arg1 forRequest:(id)arg2 finishedDownload:(BOOL)arg3;
 - (void)downloadFinishedForMediaRep:(id)arg1;
 - (BOOL)actionAddSnapShotOfSkimmableItemToEventController:(CDStruct_1b6d18a9)arg1 skimmable:(struct NSObject *)arg2 error:(id *)arg3;
 - (BOOL)actionMoveClipsToTrash:(id)arg1 mediaRefsToDelete:(id)arg2 error:(id *)arg3;

@@ -17,7 +17,7 @@
 }
 
 + (BOOL)supportsSecureCoding;
-+ (id)customTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2;
++ (id)customTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2 pluginUUID:(id)arg3 pluginSessionID:(unsigned long long)arg4;
 @property(retain) NSObject<NSSecureCoding><NSCopying> *value; // @synthesize value;
 @property(retain) NSObject<NSSecureCoding><NSCopying> *defaultValue; // @synthesize defaultValue;
 - (void)setValueFromPlugin:(void *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
@@ -29,7 +29,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(id)arg3 parameterFlags:(unsigned int)arg4 transactionType:(int)arg5 transactionID:(unsigned long long)arg6;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultValue:(id)arg3 parameterFlags:(unsigned int)arg4 transactionType:(int)arg5 transactionID:(unsigned long long)arg6 pluginUUID:(id)arg7 pluginSessionID:(unsigned long long)arg8;
 
 @end
 

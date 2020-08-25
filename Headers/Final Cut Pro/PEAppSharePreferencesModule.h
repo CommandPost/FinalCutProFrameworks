@@ -9,7 +9,7 @@
 #import "NSFilePromiseProviderDelegate.h"
 #import "NSOutlineViewDataSource.h"
 
-@class LKButton, LKTileView, NSArray, NSMutableArray, NSString, NSTreeController, NSUndoManager, PEAppSharePreferencesOutlineView;
+@class LKButton, LKTileView, NSArray, NSLayoutConstraint, NSMutableArray, NSString, NSTreeController, NSUndoManager, PEAppSharePreferencesOutlineView;
 
 @interface PEAppSharePreferencesModule : LKPreferencesModule <NSOutlineViewDataSource, NSFilePromiseProviderDelegate>
 {
@@ -18,6 +18,9 @@
     LKTileView *_destinationTilesView;
     LKButton *_addBtn;
     LKButton *_removeBtn;
+    NSLayoutConstraint *_moduleViewWidthConstraint;
+    double _originalModuleViewWidth;
+    double _originalSettingsViewWidth;
     NSArray *_draggedFilePaths;
     BOOL _draggedFilePathsIncludesBundle;
     BOOL _destinationsLoaded;
@@ -84,6 +87,7 @@
 - (id)_uniqueDestinationName:(id)arg1 forBundle:(id)arg2;
 - (id)_uniqueDuplicateDestinationName:(id)arg1 forBundle:(id)arg2;
 - (void)_configureTileViewForCurrentSelection;
+- (void)updatePanelFrameAnimated:(BOOL)arg1;
 - (void)_configureTileViewForDestinations:(id)arg1;
 - (long long)_addDestinationRowIndex;
 - (long long)_addDestinationNodeIndex;
@@ -97,6 +101,7 @@
 - (id)preferencesNibName;
 - (void)dealloc;
 - (void)awakeFromNib;
+- (id)init;
 - (id)imageForPreferenceNamed:(id)arg1;
 
 // Remaining properties

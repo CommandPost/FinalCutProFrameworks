@@ -27,6 +27,7 @@
 @property(retain) NSColor *backgroundColor;
 - (id)attributedStringWithFormattingDefaults:(id)arg1;
 - (id)captionWithStringAndFormattingDefaults:(id)arg1 timeRange:(CDStruct_e83c9415)arg2;
+- (unsigned long long)captionFormat;
 - (id)_colorForKey:(id)arg1;
 - (void)_setColor:(id)arg1 forKey:(id)arg2;
 - (id)_objectForKey:(id)arg1;

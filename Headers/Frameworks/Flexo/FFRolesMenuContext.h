@@ -19,8 +19,10 @@
     BOOL _selectionSupportsShowingAudioSubRoles;
     BOOL _selectionSupportsAssigningAudioSubRoles;
     BOOL _selectionSupportsAssigningAudioMainRoles;
+    BOOL _selectionContainsAtleastOneProject;
 }
 
+@property(nonatomic) BOOL selectionContainsAtleastOneProject; // @synthesize selectionContainsAtleastOneProject=_selectionContainsAtleastOneProject;
 @property(readonly, nonatomic) BOOL selectionSupportsAssigningAudioMainRoles; // @synthesize selectionSupportsAssigningAudioMainRoles=_selectionSupportsAssigningAudioMainRoles;
 @property(readonly, nonatomic) BOOL selectionSupportsAssigningAudioSubRoles; // @synthesize selectionSupportsAssigningAudioSubRoles=_selectionSupportsAssigningAudioSubRoles;
 @property(readonly, nonatomic) BOOL selectionSupportsShowingAudioSubRoles; // @synthesize selectionSupportsShowingAudioSubRoles=_selectionSupportsShowingAudioSubRoles;

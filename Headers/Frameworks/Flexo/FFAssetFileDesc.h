@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     FFAssetFileIdentifier *_assetFileID;
 }
 
++ (id)URLsFromDescs:(id)arg1;
 @property(readonly, nonatomic) FFAssetFileIdentifier *assetFileID; // @synthesize assetFileID=_assetFileID;
 @property(readonly, nonatomic) FFMediaRep *mediaRep; // @synthesize mediaRep=_mediaRep;
 @property(retain, nonatomic) FFMediaEventDocument *document; // @synthesize document=_document;

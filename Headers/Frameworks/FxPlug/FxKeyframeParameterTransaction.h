@@ -18,7 +18,7 @@
 }
 
 + (BOOL)supportsSecureCoding;
-+ (id)keyframeTransactionWithParameterID:(unsigned int)arg1 channelIndex:(unsigned long long)arg2 transactionID:(unsigned long long)arg3;
++ (id)keyframeTransactionWithParameterID:(unsigned int)arg1 channelIndex:(unsigned long long)arg2 transactionID:(unsigned long long)arg3 pluginUUID:(id)arg4 pluginSessionID:(unsigned long long)arg5;
 @property unsigned long long kfIndex; // @synthesize kfIndex;
 @property unsigned long long count; // @synthesize count;
 @property struct FxKeyframe info; // @synthesize info;
@@ -29,7 +29,7 @@
 - (id)copy;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithParameterID:(unsigned int)arg1 channelIndex:(unsigned long long)arg2 keyframeTransactionType:(int)arg3 transactionID:(unsigned long long)arg4;
+- (id)initWithParameterID:(unsigned int)arg1 channelIndex:(unsigned long long)arg2 keyframeTransactionType:(int)arg3 transactionID:(unsigned long long)arg4 pluginUUID:(id)arg5 pluginSessionID:(unsigned long long)arg6;
 
 @end
 

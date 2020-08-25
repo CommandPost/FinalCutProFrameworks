@@ -13,6 +13,7 @@
     OZViewController *_pViewCtlr;
     OZAnimStatusCell *_pAnimStatusCell;
     BOOL _isMouseInRow;
+    BOOL _useResetButtonBehavior;
 }
 
 + (id)parameterPulldownWithFrame:(struct CGRect)arg1 viewController:(id)arg2 context:(id)arg3;

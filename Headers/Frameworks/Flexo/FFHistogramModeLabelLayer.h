@@ -10,12 +10,10 @@ __attribute__((visibility("hidden")))
 @interface FFHistogramModeLabelLayer : FFVideoScopesLabelLayer
 {
     long long _displayMode;
-    CDStruct_554002f2 _action_opt;
 }
 
 - (id)accessibilityAttributeValue:(id)arg1;
-- (id)actionForKey:(id)arg1;
-- (void)setDisplayMode:(long long)arg1;
+@property(nonatomic) long long displayMode; // @dynamic displayMode;
 
 @end
 

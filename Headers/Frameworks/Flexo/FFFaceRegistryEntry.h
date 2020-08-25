@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)incNumOfAppearancesByN:(int)arg1;
 - (void)incNumOfAppearances;
 - (BOOL)mustKeep;
-- (id)init:(int)arg1;
+- (id)initWithUniqueID:(int)arg1;
 
 @end
 

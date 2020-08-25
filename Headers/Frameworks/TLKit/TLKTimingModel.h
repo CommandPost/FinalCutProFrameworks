@@ -23,6 +23,7 @@
 }
 
 @property(copy, nonatomic) NSSet *staticItems; // @synthesize staticItems=_staticItems;
+@property(nonatomic) long long zoomStep; // @synthesize zoomStep=_zoomStep;
 @property(nonatomic) double timeSegmentPadding; // @synthesize timeSegmentPadding=_timeSegmentPadding;
 @property(nonatomic) double minimumTimeSegmentFactor; // @synthesize minimumTimeSegmentFactor=_minimumTimeSegmentFactor;
 @property(nonatomic) CDStruct_e83c9415 trimmingAdjustment; // @synthesize trimmingAdjustment=_trimmingAdjustment;
@@ -54,7 +55,6 @@
 - (void)_setTimeUnitDuration:(CDStruct_1b6d18a9)arg1;
 @property(readonly, nonatomic) int timeUnits; // @synthesize timeUnits=_timeUnits;
 - (long long)closestZoomStep:(CDStruct_1b6d18a9)arg1;
-@property(nonatomic) long long zoomStep;
 @property(readonly, nonatomic) long long numberZoomSteps;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

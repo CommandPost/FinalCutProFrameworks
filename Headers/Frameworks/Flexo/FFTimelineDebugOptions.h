@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)debugAllowAudioInNegativeTime;
 + (BOOL)debugItemVideoFilmstripsDisabled;
 + (BOOL)debugItemBackgroundDisabled;
 + (BOOL)debugItemAudioWaveformsDisabled;

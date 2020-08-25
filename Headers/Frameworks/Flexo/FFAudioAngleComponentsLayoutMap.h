@@ -6,12 +6,22 @@
 
 #import <Flexo/FFAudioObjectComponentsLayoutMap.h>
 
+@class NSDictionary;
+
 __attribute__((visibility("hidden")))
 @interface FFAudioAngleComponentsLayoutMap : FFAudioObjectComponentsLayoutMap
 {
+    NSDictionary *_savedEnabledAudioComponentLayoutItemsMap;
 }
 
++ (BOOL)supportsSecureCoding;
 + (Class)layoutClass;
++ (id)copyClassDescription;
+@property(retain, nonatomic) NSDictionary *savedEnabledAudioComponentLayoutItemsMap; // @synthesize savedEnabledAudioComponentLayoutItemsMap=_savedEnabledAudioComponentLayoutItemsMap;
+- (void)clearSavedEnabledAudioComponentLayoutItemsForAngleID:(id)arg1;
+- (void)updateSavedEnabledAudioComponentLayoutItemsForAngleID:(id)arg1;
+- (void)setSavedEnabledAudioComponentLayoutItems:(id)arg1 forAngleID:(id)arg2;
+- (id)savedEnabledAudioComponentLayoutItemsForAngleID:(id)arg1;
 - (BOOL)hasEnabledLayoutItems;
 - (void)notifyDidChangeLayoutMap:(id)arg1;
 - (void)_updateAudioAnglesForAngleIDs:(id)arg1;
@@ -19,6 +29,10 @@ __attribute__((visibility("hidden")))
 - (id)uncachedReferenceAudioComponentsLayoutForKey:(id)arg1;
 - (id)sortKeys:(id)arg1;
 - (id)_anchoredAngle;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)initWithAnchoredAngle:(id)arg1;
 
 @end

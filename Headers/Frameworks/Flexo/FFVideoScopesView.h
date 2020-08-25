@@ -7,18 +7,22 @@
 #import <Flexo/FFResponderLayerHostView.h>
 
 #import "CALayerDelegate.h"
+#import "FFDestVideoDelegate.h"
+#import "FFDestVideoScopesDelegate.h"
 
-@class CALayer, FFDestVideoScopesGL, LKMenu, NSString;
+@class FFDestVideoScopes, LKMenu, NSString;
 
-@interface FFVideoScopesView : FFResponderLayerHostView <CALayerDelegate>
+@interface FFVideoScopesView : FFResponderLayerHostView <FFDestVideoDelegate, FFDestVideoScopesDelegate, CALayerDelegate>
 {
     LKMenu *_contextualMenu;
     float _zoomFactor;
     BOOL _drawingEnabled;
-    FFDestVideoScopesGL *_destVideo;
+    FFDestVideoScopes *_destVideo;
     BOOL _showGuides;
-    CALayer *_bodyLayer;
-    void *_FFVideoScopesViewPrivate;
+    id <FFVideoScopesMetalLayers> _mtlSupportLayer;
+    // Error parsing type: {atomic<(anonymous namespace)::VideoScopesViewPrivate *>="__a_"A^{VideoScopesViewPrivate}}, name: _vsv_priv
+    BOOL _isHidden;
+    BOOL _isInFullScreenMode;
 }
 
 + (id)defaultFontForMenu;
@@ -30,22 +34,39 @@
 + (void)setTraceBrightness:(float)arg1;
 + (void)_postPropertiesChangeNotification;
 + (BOOL)supportsSecureCoding;
-@property(nonatomic) LKMenu *contextualMenu; // @synthesize contextualMenu=_contextualMenu;
 @property(nonatomic) id destVideo; // @synthesize destVideo=_destVideo;
-@property(nonatomic) CALayer *bodyLayer; // @synthesize bodyLayer=_bodyLayer;
-- (id)_initVideoScopesViewPriv;
+@property(nonatomic) LKMenu *contextualMenu; // @synthesize contextualMenu=_contextualMenu;
 - (BOOL)accessibilityIsAttributeSettable:(id)arg1;
 - (id)accessibilityAttributeValue:(id)arg1;
 - (id)accessibilityAttributeNames;
 - (BOOL)accessibilityIsIgnored;
+- (int)drawNow:(const CDStruct_e50ab651 *)arg1 outTime:(const CDStruct_e50ab651 *)arg2;
+- (long long)colorChannelDisplayMode;
+- (BOOL)is360Viewer;
+- (BOOL)showBothFields;
+- (BOOL)isMultiangleViewer;
+- (BOOL)shouldDrawVideoDest:(id)arg1;
+- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawDestination:(struct FFOSCDrawDestination *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
+- (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
+- (const struct FxDevice *)imageLocationForVideoScopes;
+- (void)drawVideoScopeWithField1:(id)arg1 field2:(id)arg2 fieldMode:(long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)setFrameSize:(struct CGSize)arg1;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setNeedsDisplay:(BOOL)arg1;
+- (void)_needsDisplayForRenderer;
+- (void)exitFullScreenModeWithOptions:(id)arg1;
+- (BOOL)enterFullScreenMode:(id)arg1 withOptions:(id)arg2;
 - (void)viewDidUnhide;
+- (void)viewDidHide;
 - (void)removeFromSuperview;
 - (void)viewWillMoveToSuperview:(id)arg1;
 - (void)propsChanged:(id)arg1;
 - (void)updateToolTips;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
+- (void)_fetchVideoScopesMetalLayer:(CDUnknownBlockType)arg1;
 - (void)teardownLayers;
 - (void)buildLayers;
+- (void)setLayer:(id)arg1;
 - (void)_updateLayersToTraceBrightness:(float)arg1 showGuides:(BOOL)arg2 monochrome:(BOOL)arg3;
 - (BOOL)isDrawingEnabled;
 - (void)setDrawingEnabled:(BOOL)arg1;
@@ -53,10 +74,9 @@
 - (void)setShowGuides:(BOOL)arg1;
 - (float)zoomFactor;
 - (void)setZoomFactor:(float)arg1;
-- (struct _CGLContextObject *)cglContext;
+- (struct PAEMtlContext *)metalContext;
 - (void)dealloc;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (struct VideoScopesViewPrivate *)_videoScopesViewPriv;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

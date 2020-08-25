@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)newImage;
 - (struct CGColorSpace *)colorSpace;
-- (int)location;
+- (const struct FxDeviceSet *)location;
 
 @end
 

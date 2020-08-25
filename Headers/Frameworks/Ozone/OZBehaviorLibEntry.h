@@ -24,7 +24,7 @@
 - (BOOL)getPasteEntries:(struct OZPasteList *)arg1;
 - (BOOL)shouldBeArchived;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithParent:(id)arg1 name:(id)arg2 factory:(struct OZFactory *)arg3;
+-     // Error parsing type: @40@0:8@16@24^{OZFactory=^^?{PCUUID=IIII}{PCUUID=IIII}I{atomic<OZFactory *>=A^{OZFactory}}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}}32, name: initWithParent:name:factory:
 
 @end
 

@@ -24,9 +24,11 @@
 @property(readonly) _Bool forUIPlayback; // @synthesize forUIPlayback=_forUIPlayback;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void *)copySuggestedDecodeCompleteTimebaseAndTime:(CDStruct_1b6d18a9 *)arg1;
 - (CDStruct_1b6d18a9)hostClockSuggestDecodeCompleteTime;
-- (CDStruct_1b6d18a9)hostClockSuggestedHeliumCompleteTime;
-- (CDStruct_1b6d18a9)hostClockDeadlineTime;
+- (void *)copySuggestedHeliumCompleteTimebaseAndTime:(CDStruct_1b6d18a9 *)arg1;
+- (CDStruct_1b6d18a9)DEBUG_hostClockDeadlineTime;
+- (void *)copyDeadlineTimebaseAndTime:(CDStruct_1b6d18a9 *)arg1;
 - (_Bool)hasDeadlineInfo;
 - (void)dealloc;
 - (id)initDeadlineInfoForBaseClock:(void *)arg1 deadlineTime:(CDStruct_1b6d18a9)arg2 forUI:(_Bool)arg3 scheduledDuringPreroll:(_Bool)arg4 playerQueueingInfo:(id)arg5;

@@ -13,7 +13,6 @@
 __attribute__((visibility("hidden")))
 @interface FFFetchItemTitlePropertiesOperation : NSOperation <FFTimelineReloadOperationCancelingDelegate>
 {
-    BOOL _wantsBadgeReload;
     FFTimelineReloadOperationCancelingNotifier *_cancelingNotifier;
     NSArray *_timelineLayerTitleUpdateRequests;
     FFAnchoredTimelineModule *_timelineModule;
@@ -28,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property(retain) FFAnchoredTimelineModule *timelineModule; // @synthesize timelineModule=_timelineModule;
 @property(copy, nonatomic) NSArray *timelineLayerTitleUpdateRequests; // @synthesize timelineLayerTitleUpdateRequests=_timelineLayerTitleUpdateRequests;
 @property(retain, nonatomic) FFTimelineReloadOperationCancelingNotifier *cancelingNotifier; // @synthesize cancelingNotifier=_cancelingNotifier;
-@property(nonatomic) BOOL wantsBadgeReload; // @synthesize wantsBadgeReload=_wantsBadgeReload;
 - (void)_loadCaptionBadges:(id)arg1 anchoredObject:(id)arg2 roleTintColor:(id)arg3;
 - (void)_loadMixdownBadge:(id)arg1 anchoredObject:(id)arg2 isMixdownClip:(BOOL)arg3 containmentType:(int)arg4 roleTintColor:(id)arg5;
 - (void)_loadReferenceClipBadges:(id)arg1 anchoredObject:(id)arg2 isReferenceClip:(BOOL)arg3 containmentType:(int)arg4 roleTintColor:(id)arg5;

@@ -36,6 +36,7 @@
 @property(retain) id customObject; // @synthesize customObject=_customObject;
 @property(retain) id clientInfo; // @synthesize clientInfo=_clientInfo;
 - (id)targetLibrary;
+- (void)clearAssetPreDownloadURL;
 - (void)reset;
 - (void)addDuplicateRequest:(id)arg1;
 - (void)asyncCopyCompleted;

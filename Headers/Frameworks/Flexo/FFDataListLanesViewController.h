@@ -6,7 +6,7 @@
 
 #import <Flexo/FFDataListModeViewController.h>
 
-@class FFAnchoredTimelineModule, FFDataListLanesDataSource, FFDataListLanesOutlineViewController, FFProStoryTimelinePresentation, LKPaneCapView, LKSegmentedControl, NSView;
+@class FFAnchoredTimelineModule, FFDataListLanesDataSource, FFDataListLanesOutlineViewController, FFProStoryTimelinePresentation, LKButton, LKPaneCapView, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFDataListLanesViewController : FFDataListModeViewController
@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     FFProStoryTimelinePresentation *_observedStoryPresentation;
     BOOL _pause;
     FFDataListLanesOutlineViewController *_timelineIndexLanesViewController;
-    LKSegmentedControl *_editRolesSegmentedControl;
-    LKSegmentedControl *_organizedModeControl;
+    LKButton *_editRolesButton;
+    LKButton *_organizedModeButton;
     LKPaneCapView *_buttonTray;
     NSView *_containerView;
     FFAnchoredTimelineModule *_timelineModule;
@@ -30,10 +30,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FFAnchoredTimelineModule *timelineModule; // @synthesize timelineModule=_timelineModule;
 @property(nonatomic) NSView *containerView; // @synthesize containerView=_containerView;
 @property(nonatomic) LKPaneCapView *buttonTray; // @synthesize buttonTray=_buttonTray;
-@property(nonatomic) LKSegmentedControl *organizedModeControl; // @synthesize organizedModeControl=_organizedModeControl;
-@property(nonatomic) LKSegmentedControl *editRolesSegmentedControl; // @synthesize editRolesSegmentedControl=_editRolesSegmentedControl;
+@property(nonatomic) LKButton *organizedModeButton; // @synthesize organizedModeButton=_organizedModeButton;
+@property(nonatomic) LKButton *editRolesButton; // @synthesize editRolesButton=_editRolesButton;
 @property(retain, nonatomic) FFDataListLanesOutlineViewController *timelineIndexLanesViewController; // @synthesize timelineIndexLanesViewController=_timelineIndexLanesViewController;
-- (void)_adjustTrayButtonWidths;
 - (void)_reloadStoryOutlets;
 - (void)_storyPresentationChanged:(id)arg1;
 - (void)_timelineModuleWillBeRemoved:(id)arg1;

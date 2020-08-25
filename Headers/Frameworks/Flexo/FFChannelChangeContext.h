@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)didSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
 - (void)willSetChannel:(id)arg1 flagsOnly:(BOOL)arg2;
 - (void)endChannelChanges:(id)arg1 forObject:(id)arg2;
-- (void)beginChannelChanges:(id)arg1 forObject:(id)arg2;
+- (void)beginChannelChanges:(id)arg1 forObject:(id)arg2 channels:(id)arg3;
 - (id)actionName;
 - (id)_targetForObject:(id)arg1;
 - (void)dealloc;

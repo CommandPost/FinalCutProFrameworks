@@ -18,9 +18,10 @@
 + (BOOL)_wantsConsumerLook;
 + (void)initialize;
 + (BOOL)_isInIBCocoaSimulator;
++ (id)_proToolbarBAppearance;
 + (id)headerAppearanceLight;
 + (id)viewerAppearance;
-+ (id)HUDRevealedAppearance;
++ (id)revealedAppearance;
 + (id)proToolbarAppearance;
 + (id)proTokenAppearance;
 + (id)proInspectorAppearance;

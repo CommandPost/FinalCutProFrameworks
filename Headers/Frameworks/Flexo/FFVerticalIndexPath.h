@@ -7,11 +7,8 @@
 #import "NSObject.h"
 
 #import "NSCopying.h"
-#import "TLKVerticalIndexing.h"
 
-@class NSString;
-
-@interface FFVerticalIndexPath : NSObject <NSCopying, TLKVerticalIndexing>
+@interface FFVerticalIndexPath : NSObject <NSCopying>
 {
     long long _indexes[10];
     unsigned long long _length;
@@ -36,23 +33,22 @@
 @property(retain, nonatomic) id <FFStorylineLane> intrinsicLane; // @synthesize intrinsicLane=_intrinsicLane;
 @property(retain, nonatomic) id <FFStorylineItem> storylineItem; // @synthesize storylineItem=_storylineItem;
 - (void)_raiseIfLengthOutOfBounds:(unsigned long long)arg1;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-- (id)_indexPathDescription;
-- (long long)compareVisualOrder:(id)arg1;
+- (id)description;
+- (long long)compareByLayoutRegion:(id)arg1;
 - (long long)compare:(id)arg1;
+- (long long)compareIndexes:(id)arg1;
 - (unsigned long long)length;
 - (long long)indexAtPosition:(long long)arg1;
-- (id)indexPathByAddingIndex:(long long)arg1;
 - (id)audioComponentsForItem:(id)arg1;
 - (BOOL)useDefaultIndexValueForItemComponent:(id)arg1;
 - (void)_updatePrimaryComponentInSpineIndexes;
 - (void)updateOrganizedIndexValueForItemComponent:(id)arg1;
 - (void)updateDefaultVerticalIndexValueForItemComponent:(id)arg1;
-- (long long)_intrinsicComponentIndexForItemComponent:(id)arg1 isFlipped:(BOOL)arg2;
-- (unsigned long long)_flattenIndexPathForLane:(id)arg1 intoIndexes:(long long *)arg2 isFlipped:(BOOL)arg3;
+- (long long)_channelIndexForItemComponent:(id)arg1;
+- (long long)_laneIndexForTopLevelLane:(id)arg1;
+- (unsigned long long)_flattenIndexPathForLane:(id)arg1 intoIndexes:(long long *)arg2;
 - (void)_updateIndexes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -60,9 +56,6 @@
 - (id)initWithIndexes:(long long *)arg1 length:(long long)arg2;
 - (id)initWithStorylineItem:(id)arg1 intrinsicLane:(id)arg2 presentedLane:(id)arg3 primaryLane:(id)arg4 laneFolderAboveSpine:(id)arg5 laneFolderBelowSpine:(id)arg6 layoutRegion:(long long)arg7 rootItem:(id)arg8;
 - (id)init;
-
-// Remaining properties
-@property(readonly) Class superclass;
 
 @end
 

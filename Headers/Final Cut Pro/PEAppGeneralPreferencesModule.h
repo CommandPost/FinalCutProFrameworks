@@ -25,6 +25,7 @@
 - (void)resetAUCache:(id)arg1;
 - (void)resetDialogWarnings:(id)arg1;
 - (void)changeTimeFormat:(id)arg1;
+- (struct CGSize)minSize;
 - (void)moduleWasInstalled;
 - (void)_configureTimecodeFormatter:(id)arg1 forFormat:(long long)arg2;
 - (void)_installConfigurationViewForFormat:(long long)arg1;

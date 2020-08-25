@@ -8,5 +8,10 @@
 
 @interface NSArray (Group_Comparison)
 - (long long)compareGroupNames:(id)arg1;
+- (id)safeObjectAtIndex:(unsigned long long)arg1;
+- (BOOL)objectExistsAtIndex:(unsigned long long)arg1;
+- (id)indexesOfObjects:(id)arg1;
+- (id)objectsForInvocation:(id)arg1;
+- (id)arrayByExcludingIdenticalObjectsInArray:(id)arg1;
 @end
 

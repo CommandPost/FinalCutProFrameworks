@@ -24,10 +24,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) FFInspectorContainerController *dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic) FFInspectorContainerController *delegate; // @synthesize delegate=_delegate;
 - (void)updateCollapsedViews:(BOOL)arg1;
+- (BOOL)isDraggingInSession;
 - (id)headerController;
 - (void)setTitle:(id)arg1;
 - (void)reloadData;
-- (void)removeSubControllerView:(id)arg1;
+- (void)removeSubControllerViewAtIndex:(unsigned long long)arg1;
 - (void)insertSubControllerView:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)buildViews;
 - (BOOL)_isCollapsed;

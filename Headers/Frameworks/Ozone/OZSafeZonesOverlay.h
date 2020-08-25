@@ -6,18 +6,19 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class NSMutableArray;
+#import "POOnScreenControlMetalRendering.h"
 
-@interface OZSafeZonesOverlay : OZOverlay
+@class NSMutableArray, NSString;
+
+@interface OZSafeZonesOverlay : OZOverlay <POOnScreenControlMetalRendering>
 {
     NSMutableArray *_titlezoneLines;
     NSMutableArray *_actionzoneLines;
 }
 
-- (id)linesFromCollection:(id)arg1 topLeft:(PCVector2_79efa81a)arg2 topRight:(PCVector2_79efa81a *)arg3 bottomLeft:(PCVector2_79efa81a *)arg4 bottomRight:(PCVector2_79efa81a *)arg5 lineColor:(const struct POColor *)arg6;
+- (id)linesFromCollection:(id)arg1 topLeft:(PCVector2_79efa81a)arg2 topRight:(PCVector2_79efa81a *)arg3 bottomLeft:(PCVector2_79efa81a *)arg4 bottomRight:(PCVector2_79efa81a *)arg5 lineColor: /* Error: Ran out of types for this method. */;
 - (void)verticesFromMargin:(const PCVector2_79efa81a *)arg1 topLeft:(PCVector2_79efa81a *)arg2 topRight:(PCVector2_79efa81a *)arg3 bottomLeft:(PCVector2_79efa81a *)arg4 bottomRight:(PCVector2_79efa81a *)arg5;
-- (id)getMetalDrawPrimitives:(id)arg1;
-- (BOOL)doesSupportMetal;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (PCVector2_79efa81a)titleSafeZoneMargin;
 - (PCVector2_79efa81a)actionSafeZoneMargin;
 - (struct CGSize)documentSize;
@@ -28,6 +29,12 @@
 - (int)getDrawingOrder;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

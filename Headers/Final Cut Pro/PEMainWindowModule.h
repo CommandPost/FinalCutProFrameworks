@@ -66,8 +66,10 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_removeObservers;
 - (void)_addObservers;
+- (void)_selectedItemsChanged:(id)arg1;
 - (void)_restoreImportButtonState:(id)arg1;
 - (void)_updateImportButtonState:(id)arg1;
+- (void)windowDidBecomeKey:(id)arg1;
 - (void)module:(id)arg1 willRemoveSubmodule:(id)arg2;
 - (void)module:(id)arg1 didAddSubmodule:(id)arg2;
 - (void)takeGeometryLayoutFromDictionary:(id)arg1;

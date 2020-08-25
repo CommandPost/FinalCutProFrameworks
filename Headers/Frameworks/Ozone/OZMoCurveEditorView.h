@@ -18,7 +18,6 @@
 - (void)frameAll:(BOOL)arg1;
 - (void)setOrigin:(double)arg1 y:(double)arg2;
 - (void)drawMarkers:(struct CGRect)arg1;
-- (void)drawRect:(struct CGRect)arg1;
 - (struct CGPoint)snapCursorTo:(struct CGPoint)arg1;
 - (void)renewGState;
 - (id)getMoCurveEditorCtrl;

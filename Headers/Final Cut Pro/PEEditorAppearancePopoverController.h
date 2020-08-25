@@ -6,7 +6,7 @@
 
 #import "NSViewController.h"
 
-@class FFEditorModule, LKButton, LKSegmentedControl, LKSlider, NSArray, NSBox, NSButton, NSImageView, NSLayoutConstraint, NSMatrix, NSView, PEEditorContainerModule;
+@class FFEditorModule, LKButton, LKSegmentedControl, LKSlider, NSArray, NSBox, NSButton, NSImageView, NSLayoutConstraint, NSMatrix, NSView, PEEditorContainerModule, PETimelineUserSettings;
 
 @interface PEEditorAppearancePopoverController : NSViewController
 {
@@ -31,16 +31,19 @@
     NSButton *clipNamesCheckBox;
     NSButton *rolesCheckBox;
     PEEditorContainerModule *_editorContainerModule;
+    PETimelineUserSettings *_userSettings;
     NSButton *_laneHeadersButton;
 }
 
 @property(nonatomic) NSButton *laneHeadersButton; // @synthesize laneHeadersButton=_laneHeadersButton;
+@property(retain, nonatomic) PETimelineUserSettings *userSettings; // @synthesize userSettings=_userSettings;
 @property(retain) PEEditorContainerModule *editorContainerModule; // @synthesize editorContainerModule=_editorContainerModule;
 @property(nonatomic) NSButton *rolesCheckBox; // @synthesize rolesCheckBox;
 @property(nonatomic) NSButton *clipNamesCheckBox; // @synthesize clipNamesCheckBox;
 @property(nonatomic) NSButton *anglesCheckBox; // @synthesize anglesCheckBox;
 - (void)zoomOut:(id)arg1;
 - (void)zoomIn:(id)arg1;
+- (void)updateItemHeightSliderMinValueForTitlesOnlyMode;
 - (void)updateClipAdjustmentValuesFromTimelineView;
 - (void)setAudioPercentage:(int)arg1;
 - (void)selectAudioPercentage:(id)arg1;

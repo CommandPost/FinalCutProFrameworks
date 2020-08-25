@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)getSampleBuffer:(struct opaqueCMSampleBuffer **)arg1 alphaKnownToBeFullyOpaque:(char *)arg2;
 -     // Error parsing type: ^{HGBitmap=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}}20@0:8i16, name: copyHGBitmapForPlane:
 - (int)numPlanes;
-- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
-- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
+- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(struct FxDevice *)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_f51ed29d *)arg5 workingSpace:(int)arg6;
+- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_f51ed29d *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
 - (id)_fillerFrame;
 - (unsigned long long)approximateMemoryUsage;
 - (struct CGColorSpace *)colorSpace;

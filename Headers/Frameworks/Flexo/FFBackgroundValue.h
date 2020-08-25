@@ -8,7 +8,7 @@
 
 @interface FFBackgroundValue : NSObject
 {
-    id <NSObject> _ref;
+    // Error parsing type: A@, name: _ref
 }
 
 + (id)waitUntilDispatch:(unsigned long long)arg1 forValue:(CDUnknownBlockType)arg2;

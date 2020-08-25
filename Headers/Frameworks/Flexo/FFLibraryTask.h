@@ -9,7 +9,7 @@
 #import "FFAssetCopyQueueDelegateProtocol.h"
 #import "FFMergeTaskDelegate.h"
 
-@class FFAssetCopyQueue, FFLibrary, FFLibraryDocument, FFLibraryTaskOptions, FFMediaIdentifierAliasMap, NSDictionary, NSMapTable, NSMutableArray, NSMutableSet, NSObject<FFMergeTaskDelegate>, NSString, NSURL;
+@class FFAssetCopyQueue, FFAssetTranscodeRequest, FFLibrary, FFLibraryDocument, FFLibraryTaskOptions, FFMediaIdentifierAliasMap, NSDictionary, NSMapTable, NSMutableArray, NSMutableSet, NSObject<FFMergeTaskDelegate>, NSString, NSURL;
 
 @interface FFLibraryTask : DSObject <FFAssetCopyQueueDelegateProtocol, FFMergeTaskDelegate>
 {
@@ -20,8 +20,10 @@
     FFLibraryTaskOptions *_options;
     unsigned int _fileIDMask;
     NSMutableArray *_copyRequests;
+    FFAssetTranscodeRequest *_transcodeRequest;
     NSMutableArray *_completedCopyRequests;
     NSMutableArray *_failedCopyRequests;
+    NSMutableSet *_invalidatedAssets;
     FFAssetCopyQueue *_copyQueue;
     FFLibraryDocument *_dstDoc;
     FFLibrary *_sourceLibrary;
@@ -39,6 +41,7 @@
 + (BOOL)mergeEvents:(id)arg1 into:(id)arg2 error:(id *)arg3;
 + (id)prepareMoveOwnedMedia:(id)arg1 copy:(BOOL)arg2 consolidate:(BOOL)arg3 aliases:(id)arg4 taskDelegate:(id)arg5 error:(id *)arg6;
 + (id)prepareMoveOwnedMedia:(id)arg1 copy:(BOOL)arg2 error:(id *)arg3;
++ (id)prepareMove:(id)arg1 to:(id)arg2 options:(id)arg3 copy:(BOOL)arg4 isSnapshot:(BOOL)arg5 moveLibrary:(BOOL)arg6 error:(id *)arg7;
 + (id)prepareMove:(id)arg1 to:(id)arg2 options:(id)arg3 copy:(BOOL)arg4 isSnapshot:(BOOL)arg5 error:(id *)arg6;
 + (BOOL)showDifferentLibraryColorProcessingAlert:(int)arg1 targetMode:(int)arg2 isCopy:(BOOL)arg3;
 + (void)consolidateProjectEffectsAndURLs:(id)arg1 newProject:(id)arg2 sourceLibrary:(id)arg3 destLibrary:(id)arg4;
@@ -55,10 +58,12 @@
 + (id)allVideoEffectsInAnchoredObject:(id)arg1 options:(unsigned long long)arg2;
 + (id)externalConsolidatedEffectsInAnchoredObject:(id)arg1 targetLibrary:(id)arg2;
 + (BOOL)timeRangeAndObjectOrAnchoredObjectsContainsClipRefsOrMediaRefsNotInDestSequenceLibrary:(id)arg1 timeRangeAndObjectOrAnchoredObjects:(id)arg2 search:(int)arg3;
++ (void)processInvalidatedAssets:(id)arg1;
 + (id)readLink:(id)arg1 error:(id *)arg2;
 + (void)consolidateCollidingEffects:(id)arg1 sourceLibrary:(id)arg2 destLibrary:(id)arg3 sourceCollidingEffectFileUUIDs:(id)arg4;
 + (id)consolidateNonCollidingEffectsFromProjectEffectsAndURLs:(id)arg1 sourceLibrary:(id)arg2 destLibrary:(id)arg3;
 + (id)projectEffectsAndURLs:(id)arg1;
++ (id)copyAsset:(id)arg1 withReps:(unsigned int)arg2 forLibraryItem:(id)arg3 error:(id *)arg4;
 + (id)copyObject:(id)arg1 forLibraryItem:(id)arg2 error:(id *)arg3;
 + (long long)calcFileSize:(id)arg1 error:(id *)arg2;
 + (void)calcFileSize:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
@@ -89,6 +94,7 @@
 - (BOOL)preflightCopy:(id *)arg1;
 - (id)errorCopyingToURL:(id)arg1 bytesNeeded:(long long)arg2 bytesAvailable:(long long)arg3;
 - (void)_copyCompleted:(id)arg1;
+- (void)scheduleInvalidatedAsset:(id)arg1 forItem:(id)arg2;
 - (void)request:(id)arg1 deleteSourceAfterCopy:(int)arg2;
 - (void)taskWasCancelled:(id)arg1 queuedRequests:(id)arg2;
 - (void)updateIdentifiersInClips:(id)arg1 forIdentifier:(id)arg2 withMedia:(id)arg3;
@@ -97,13 +103,12 @@
 - (BOOL)_findAdditionalReferencedMediaForSequence:(id)arg1 targetLibraryItem:(id)arg2 mediaToLibraryItemMap:(id)arg3 error:(id *)arg4;
 - (BOOL)move:(BOOL)arg1 clips:(id)arg2 event:(id)arg3 error:(id *)arg4;
 - (BOOL)moveOwnedMedia:(id)arg1 copy:(BOOL)arg2 error:(id *)arg3;
-- (id)prepareCopyRequest:(id)arg1 to:(id)arg2 targetAsset:(id)arg3 error:(id *)arg4;
-- (id)prepareAsyncMediaURLForImport:(id)arg1 to:(id)arg2;
+- (id)prepareAsyncMediaURLForImport:(id)arg1 to:(id)arg2 alreadyExists:(char *)arg3;
 - (id)calcExternalMediaFileName:(id)arg1;
 - (BOOL)isMediaFileType:(id)arg1;
-- (BOOL)moveAssetFilesFromAsset:(id)arg1 toAsset:(id)arg2 toLibraryItem:(id)arg3 copy:(BOOL)arg4 overwrite:(BOOL)arg5 error:(id *)arg6;
+- (BOOL)moveAssetFilesFromAsset:(id)arg1 toAsset:(id)arg2 toLibraryItem:(id)arg3 copy:(BOOL)arg4 overwrite:(BOOL)arg5 mask:(unsigned int)arg6 error:(id *)arg7;
+- (BOOL)addTranscodesForAsset:(id)arg1 toLibraryItem:(id)arg2 updateFilesMask:(unsigned int *)arg3 isCopy:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)moveAssetFile_legacy:(id)arg1 targetAssetFile:(id)arg2 fromAsset:(id)arg3 targetAsset:(id)arg4 copy:(BOOL)arg5 error:(id *)arg6;
-- (BOOL)moveAssetFile:(id)arg1 targetAssetFile:(id)arg2 targetAsset:(id)arg3 copy:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)moveLibraryItem:(id)arg1 targetLibraryItem:(id)arg2 copy:(BOOL)arg3 override:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)moveLibraryItem:(id)arg1 targetLibraryItem:(id)arg2 copy:(BOOL)arg3 error:(id *)arg4;
 - (id)newURLForRoot:(id)arg1 scheme:(id)arg2;

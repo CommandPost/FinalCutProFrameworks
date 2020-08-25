@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupSources;
 - (void)dealloc;
 - (id)initWithAssetFileID:(id)arg1;
+- (id)assetFileID;
 
 @end
 

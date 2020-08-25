@@ -47,6 +47,7 @@
 - (int)writeBuffer:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3;
 - (int)writeTransferredImageData:(id)arg1 secondFieldData:(id)arg2 from:(id)arg3 sampleNumber:(long long)arg4;
 - (int)writeFrame:(id)arg1 image2:(id)arg2 fieldOrder:(int)arg3 cameraMode:(int)arg4 sampleNumber:(long long)arg5 threadInfo:(id)arg6;
+- (CDStruct_33b3f954)_getCachedSegStoreInfoValues;
 - (BOOL)validateDimensions:(id)arg1 sample2:(id)arg2 fieldOrder:(int)arg3;
 - (id)newImageFromFrameData:(id)arg1 sampleNumber:(long long)arg2 threadInfo:(id)arg3 requestedQuality:(int)arg4 propagateSampleBuf:(BOOL)arg5 error:(id *)arg6;
 - (struct CGRect)getExpectedEncodedPixelBounds:(int)arg1;

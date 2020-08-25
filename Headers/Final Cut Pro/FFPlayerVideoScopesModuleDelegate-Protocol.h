@@ -12,7 +12,6 @@
 
 @optional
 - (NSArray *)availableLayoutModes;
-- (void)didChangeGlobalPropertiesForVideoScopes;
 - (void)didChangePropertiesForVideoScope:(FFPlayerVideoScopesModule *)arg1;
 - (void)videoScope:(FFPlayerVideoScopesModule *)arg1 wantsToChangeSelectedScope:(id)arg2;
 - (BOOL)isLayoutDisplayAreaVertically;

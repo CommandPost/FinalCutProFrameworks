@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)setMessage:(id)arg1;
 - (id)header;
 - (void)setHeader:(id)arg1;
+- (void)dealloc;
 - (id)progressIndicator;
 
 @end

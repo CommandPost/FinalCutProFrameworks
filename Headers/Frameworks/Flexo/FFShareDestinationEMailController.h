@@ -6,15 +6,20 @@
 
 #import <Flexo/FFShareDestinationController.h>
 
-@class LKPopUpButton;
+@class LKPopUpButton, NSTextField;
 
 @interface FFShareDestinationEMailController : FFShareDestinationController
 {
     LKPopUpButton *_compressionPopup;
+    NSTextField *_descriptionTitle;
+    NSTextField *_resolutionTitle;
 }
 
+@property(retain, nonatomic) NSTextField *resolutionTitle; // @synthesize resolutionTitle=_resolutionTitle;
+@property(retain, nonatomic) NSTextField *descriptionTitle; // @synthesize descriptionTitle=_descriptionTitle;
 @property(nonatomic) LKPopUpButton *compressionPopup; // @synthesize compressionPopup=_compressionPopup;
 - (void)awakeFromNib;
+- (void)dealloc;
 - (id)initWithDestination:(id)arg1 withSources:(id)arg2;
 
 @end

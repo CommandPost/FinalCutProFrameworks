@@ -49,6 +49,8 @@ __attribute__((visibility("hidden")))
 - (id)formattedMetaDataValueFromObject:(id)arg1 forKey:(id)arg2;
 - (void)setMetaDataValue:(id)arg1 onObject:(id)arg2 forKey:(id)arg3;
 - (id)metaDataValueFromObject:(id)arg1 forKey:(id)arg2;
+- (id)modifiedDate;
+- (id)modifiedNSDate;
 - (id)colorProfile;
 - (id)audioConfiguration;
 - (id)sizeNum;

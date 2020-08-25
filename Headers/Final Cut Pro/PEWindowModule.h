@@ -27,6 +27,7 @@
 - (id)contentLayoutDictionary;
 - (id)windowWillReturnUndoManager:(id)arg1;
 - (void)windowWillClose:(id)arg1;
+- (BOOL)windowShouldClose:(id)arg1;
 - (void)setWindow:(id)arg1;
 - (id)windowTitle;
 - (void)viewDidLoad;

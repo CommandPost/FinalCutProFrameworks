@@ -15,13 +15,13 @@
 __attribute__((visibility("hidden")))
 @interface _FFInspectorPasteboardItem : NSObject <NSSecureCoding, NSPasteboardWriting, NSPasteboardReading>
 {
-    NSString *_representedObject;
+    NSString *_identifier;
 }
 
 + (unsigned long long)readingOptionsForType:(id)arg1 pasteboard:(id)arg2;
 + (id)readableTypesForPasteboard:(id)arg1;
 + (BOOL)supportsSecureCoding;
-@property(retain, nonatomic) NSString *representedObject; // @synthesize representedObject=_representedObject;
+@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)pasteboardPropertyListForType:(id)arg1;
 - (id)writableTypesForPasteboard:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

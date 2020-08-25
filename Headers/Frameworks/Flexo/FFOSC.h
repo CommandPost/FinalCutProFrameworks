@@ -21,7 +21,12 @@
     struct PCProcrastinatedDispatch_t _updateViewVisibilityProcrastDisp;
 }
 
++ (void)renderSpecificOSC:(id)arg1 renderController:(id)arg2 drawProperties:(id)arg3;
++ (BOOL)enableMetalOSCs;
+- (void)updateUIForItemSelections:(id)arg1;
+- (BOOL)oscIsFirstOSC;
 - (BOOL)oscDrawsAboveOtherOSCs;
+- (BOOL)oscNeedsBottomLaneOrdering;
 - (BOOL)oscNeedsLaneOrdering;
 - (void)OSCSafelyHideView:(id)arg1 shouldHide:(BOOL)arg2;
 - (BOOL)isCropOSC;
@@ -78,10 +83,15 @@
 - (BOOL)isAvailableForMultiAngleState:(BOOL)arg1;
 - (BOOL)isAvailableDuringPlayback;
 - (BOOL)supportsTool:(Class)arg1;
+- (void)renderOSC:(id)arg1 drawProperties:(id)arg2;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (BOOL)supportsMetalRendering;
 - (void)setSelectionBased:(BOOL)arg1;
 - (BOOL)isToolBased;
 - (BOOL)isSelectionBased;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (BOOL)displayingMessage;
+- (BOOL)needsOtherOSCs;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (BOOL)passCommonOSCDrawProperties;
 - (BOOL)oscHandlesScroll;

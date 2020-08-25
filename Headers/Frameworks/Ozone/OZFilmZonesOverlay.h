@@ -6,16 +6,18 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class NSMutableArray;
+#import "POOnScreenControlMetalRendering.h"
 
-@interface OZFilmZonesOverlay : OZOverlay
+@class NSMutableArray, NSString;
+
+@interface OZFilmZonesOverlay : OZOverlay <POOnScreenControlMetalRendering>
 {
     NSMutableArray *_lines;
 }
 
-- (id)getMetalDrawPrimitives:(id)arg1;
-- (BOOL)doesSupportMetal;
-- (void)filmZoneVerticesForline1Start:(PCVector2_7e488b7d *)arg1 line1End:(PCVector2_7e488b7d *)arg2 line2Start:(PCVector2_7e488b7d *)arg3 line2End:(PCVector2_7e488b7d *)arg4;
+@property(retain, nonatomic) NSMutableArray *lines; // @synthesize lines=_lines;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (void)filmzoneTopLineStart:(PCVector2_7e488b7d *)arg1 topLineEnd:(PCVector2_7e488b7d *)arg2 bottomLineStart:(PCVector2_7e488b7d *)arg3 bottomLineEnd:(PCVector2_7e488b7d *)arg4;
 - (BOOL)shouldDraw;
 - (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 - (int)hitCheck:(id)arg1;
@@ -23,6 +25,12 @@
 - (void)draw;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

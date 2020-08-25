@@ -4,11 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSOpenGLView.h"
+#import "MTKView.h"
 
-@class OZMiniCurveEditorStripController;
+#import "MTKViewDelegate.h"
 
-@interface OZMiniCurveEditorStripView : NSOpenGLView
+@class MDPRenderController, NSMutableArray, NSString, OZMiniCurveEditorStripController;
+
+@interface OZMiniCurveEditorStripView : MTKView <MTKViewDelegate>
 {
     OZMiniCurveEditorStripController *_pController;
     unsigned int _numberOfSamples;
@@ -19,15 +21,32 @@
     double *_keypointsY;
     double _minVal;
     double _maxVal;
+    id <MTLLibrary> _library;
+    id <MTLCommandQueue> _commandQueue;
+    id <MTLRenderCommandEncoder> _encoder;
+    NSMutableArray *_primitives;
+    MDPRenderController *_renderController;
 }
 
+@property(retain, nonatomic) MDPRenderController *renderController; // @synthesize renderController=_renderController;
+@property(retain, nonatomic) NSMutableArray *primitives; // @synthesize primitives=_primitives;
+@property(retain, nonatomic) id <MTLRenderCommandEncoder> encoder; // @synthesize encoder=_encoder;
+@property(retain, nonatomic) id <MTLCommandQueue> commandQueue; // @synthesize commandQueue=_commandQueue;
+@property(retain, nonatomic) id <MTLLibrary> library; // @synthesize library=_library;
 - (void)setController:(id)arg1;
 - (void)update;
 - (void)sample;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)reshape;
+- (void)drawCurve;
+- (void)mtkView:(id)arg1 drawableSizeWillChange:(struct CGSize)arg2;
+- (void)drawInMTKView:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

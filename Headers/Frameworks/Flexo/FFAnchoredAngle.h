@@ -61,9 +61,6 @@
 - (void)_enumerateDescendentAnchoredObjectsWithOptions:(unsigned int)arg1 includeAnchored:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 descend:(char *)arg4 stop:(char *)arg5;
 - (void)_descendentAnchoredComponent:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 useAudioRange:(BOOL)arg3 intoArray:(id)arg4 container:(id)arg5 includeAnchored:(BOOL)arg6;
 - (void)_collectDescendentCompositedObject:(BOOL)arg1 containerTimeRange:(const CDStruct_e83c9415 *)arg2 intoArray:(id)arg3 useAudioRange:(BOOL)arg4 container:(id)arg5;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)videoInfoInspectorText;
-- (id)audioInfoInspectorText;
 - (int)anchoredObjectUIType;
 - (id)_newProviderWithOptions:(id)arg1;
 - (id)_newProviderWithOptions:(id)arg1 audioAngles:(id)arg2 videoAngle:(id)arg3;
@@ -94,6 +91,9 @@
 - (id)initWithDisplayName:(id)arg1 clipRef:(id)arg2 audioAngle:(id)arg3 videoAngle:(id)arg4;
 - (id)initWithDisplayName:(id)arg1 media:(id)arg2;
 - (id)type;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)videoInfoInspectorText;
+- (id)audioInfoInspectorText;
 
 @end
 

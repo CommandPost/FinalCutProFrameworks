@@ -8,7 +8,7 @@
 
 #import "SampleBufferProvider.h"
 
-@class FFImage, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_semaphore>, NSString, PCMatrix44Double;
+@class FFImage, FFSchedInfo, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_semaphore>, NSString, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface FFScheduleTokenVTDecode : FFScheduleToken <SampleBufferProvider>
@@ -21,8 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned int _decodedPixelFormat;
     int _spatialQuality;
     int _priority;
-    CDStruct_1b6d18a9 _outputPTS;
-    CDStruct_1b6d18a9 _decodeDeadline;
+    FFSchedInfo *_schedInfo;
     PCMatrix44Double *_xform[3];
     BOOL _canceled;
     int _whichDRJP;
@@ -49,8 +48,14 @@ __attribute__((visibility("hidden")))
     struct DeviceStatus _storedDeviceStatus;
     _Bool _cropValuesInitialized;
     float _cropValues[4];
+    CDStruct_bdcb2b0d _vendorSpecificMD5;
+    void *_vendorSpecificData;
 }
 
+- (void *)vendorSpecificData;
+- (void)setVendorSpecificData:(void *)arg1;
+- (CDStruct_bdcb2b0d)vendorSpecificMD5;
+- (void)setVendorSpecificMD5:(CDStruct_bdcb2b0d)arg1;
 - (struct opaqueCMFormatDescription *)copyFormatDescription;
 - (void)setImages:(id)arg1 upper:(id)arg2 lower:(id)arg3 allNoFilt:(id)arg4 upperNoFilt:(id)arg5 lowerNoFilt:(id)arg6 andError:(int)arg7;
 - (void)getXforms:(id *)arg1 upper:(id *)arg2 lower:(id *)arg3;
@@ -72,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)invertAlpha;
 - (int)overrideAlphaType;
 - (int)nativeAlphaType;
+- (unsigned long long)streamID;
 - (id)stream;
 - (struct CGRect)pixelSpaceBounds:(int)arg1;
 - (BOOL)_waitForCachedCharacteristicsBeforeDate:(id)arg1;
@@ -115,7 +121,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)includesPTS:(CDStruct_1b6d18a9)arg1;
 - (struct __CFString *)eventDocumentIDAndPath;
 - (void)dealloc;
-- (id)initWithStream:(id)arg1 videoCursor:(struct FFVideoCursor *)arg2 playbackMode:(int)arg3 decodedPixelFormat:(unsigned int)arg4 actualQuality:(int)arg5 priority:(int)arg6 outputPTS:(CDStruct_1b6d18a9)arg7 decodeDeadline:(CDStruct_1b6d18a9)arg8 allLineXForm:(id)arg9 upperXForm:(id)arg10 lowerXForm:(id)arg11 outputCallback:(CDUnknownFunctionPointerType)arg12 fileIsGrowing:(BOOL)arg13;
+- (id)initWithStream:(id)arg1 videoCursor:(struct FFVideoCursor *)arg2 playbackMode:(int)arg3 decodedPixelFormat:(unsigned int)arg4 actualQuality:(int)arg5 priority:(int)arg6 schedInfo:(id)arg7 allLineXForm:(id)arg8 upperXForm:(id)arg9 lowerXForm:(id)arg10 outputCallback:(CDUnknownFunctionPointerType)arg11 fileIsGrowing:(BOOL)arg12;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

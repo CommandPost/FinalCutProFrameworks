@@ -6,12 +6,19 @@
 
 #import "CALayer.h"
 
+@class NSColor;
+
 @interface _PAEFTCurveColorPickerBorderLayer : CALayer
 {
+    NSColor *_color;
 }
 
 - (void)drawInContext:(struct CGContext *)arg1;
+- (double)_colorTheta;
 - (id)actionForKey:(id)arg1;
+- (id)color;
+- (void)setColor:(id)arg1;
+- (void)dealloc;
 
 @end
 

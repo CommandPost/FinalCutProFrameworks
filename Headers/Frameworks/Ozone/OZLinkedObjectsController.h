@@ -4,29 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "OZViewController.h"
+#import <Ozone/OZLinkedResourcesController.h>
 
-@class LKTableView, NSMutableArray;
-
-@interface OZLinkedObjectsController : OZViewController
+@interface OZLinkedObjectsController : OZLinkedResourcesController
 {
-    LKTableView *_objectsTableView;
-    NSMutableArray *_objectsArray;
-    struct OZDocument *_pDocument;
 }
 
-- (struct OZDocument *)document;
 - (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(int)arg3;
-- (int)numberOfRowsInTableView:(id)arg1;
-- (void)updateLinkedObjectsArray;
-- (void)setChannelValue:(id)arg1;
-- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
-- (void)disable;
-- (void)enable;
-- (void)update;
-- (void)notify:(unsigned int)arg1;
-- (void)dealloc;
-- (id)initWithChan:(struct OZChannelBase *)arg1 context:(id)arg2;
+- (void)updateLinkedResourcesArray;
+- (id)formatString;
+- (id)xibName;
 
 @end
 

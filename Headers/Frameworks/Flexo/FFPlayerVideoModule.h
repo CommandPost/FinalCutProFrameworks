@@ -11,7 +11,7 @@
 #import "FFSelectionHandler.h"
 #import "NSAnimationDelegate.h"
 
-@class FF360FooterView, FFDestVideo<FFDestVideoDeviceManaging>, FFDestVideo<FFHMDPullFrameModelProtocol>, FFDestVideoDrawsInUI, FFHeaderBackgroundView, FFOSC, FFOpenGLNSImage, FFPlayerView, FFSnapGrid, FFTimecodeFormatter, LKButton, LKReversedSlider, LKTextField, NSArray, NSDictionary, NSLock, NSMenu, NSMutableArray, NSRecursiveLock, NSString, NSTimer, NSView, NSViewAnimation, PCMatrix44Double, _FFPlayerModuleLineView;
+@class FF360FooterView, FFDestVideo<FFDestVideoDeviceManaging>, FFDestVideo<FFHMDPullFrameModelProtocol>, FFDestVideoDrawsInUI, FFHeaderBackgroundView, FFOSC, FFPlayerView, FFSnapGrid, FFTimecodeFormatter, LKButton, LKReversedSlider, LKTextField, NSArray, NSDictionary, NSLock, NSMenu, NSMutableArray, NSRecursiveLock, NSString, NSTimer, NSView, NSViewAnimation, PCMatrix44Double, _FFPlayerModuleLineView;
 
 @interface FFPlayerVideoModule : FFPlayerItemModule <FFSelectionHandler, FFFieldDisplaySetting, FFDestVideoDelegate, NSAnimationDelegate>
 {
@@ -36,6 +36,7 @@
     struct CGPoint _origin;
     long long _colorChannelDisplayMode;
     BOOL _displayBroadcastSafeZones;
+    BOOL _displayCustomOverlay;
     unsigned int _rangeCheckMode;
     int _userSelectedDrawMode;
     BOOL _display360Horizon;
@@ -78,19 +79,18 @@
     BOOL _destAddedToPlayer;
     BOOL _nrtPlayback;
     struct PCProcrastinatedDispatch_t _OSCSelectionChangeDispatchContext;
+    struct PCProcrastinatedDispatch_t _CaptionRedrawDispatchContext;
     BOOL _ignoreSelectedStateChange;
     BOOL _hasVideo;
     BOOL _installedWindowObservers;
     BOOL _oscsEnabled;
     BOOL _transportControlsEnabled;
-    BOOL _internalIsMultiAngleViewer;
     NSRecursiveLock *_lastCommonDrawPropertiesLock;
     NSDictionary *_lastCommonDrawProperties;
     BOOL _bankSelectorNeedsUpdate;
     FFTimecodeFormatter *_timecodeFormatter;
     unsigned long long _suspendEffectsChangedNotification;
     BOOL _suppressToolManagerSelectionChanges;
-    FFOpenGLNSImage *_audioIcon;
     _FFPlayerModuleLineView *_focusUnderBar;
     NSArray *_focusUnderBarConstraints;
     double _magicRed;
@@ -109,12 +109,16 @@
     double _360tiltDegrees;
     double _360rollDegrees;
     BOOL _is360Viewer;
+    BOOL _isCompareViewer;
     BOOL _360LatchHMD;
     BOOL _360ShowOSC;
     unsigned int _has360UpdateQueued;
+    long long _stereoBlendType;
     NSString *_observingUserDefaultsKey;
+    BOOL __internalIsMultiAngleViewer;
 }
 
+@property BOOL _internalIsMultiAngleViewer; // @synthesize _internalIsMultiAngleViewer=__internalIsMultiAngleViewer;
 @property(nonatomic) int sequenceCameraMode; // @synthesize sequenceCameraMode=_sequenceCameraMode;
 @property(nonatomic) struct CGRect sequenceBounds; // @synthesize sequenceBounds=_sequenceBounds;
 @property(readonly) struct CGRect playerViewBounds; // @synthesize playerViewBounds=_playerViewBounds;
@@ -128,7 +132,7 @@
 @property(nonatomic) double tiltDegrees360; // @synthesize tiltDegrees360=_360tiltDegrees;
 @property(nonatomic) double panDegrees360; // @synthesize panDegrees360=_360panDegrees;
 @property(nonatomic) double fovXDegrees; // @synthesize fovXDegrees=_fovXDegrees;
-@property BOOL is360Viewer; // @synthesize is360Viewer=_is360Viewer;
+@property(nonatomic) BOOL isCompareViewer; // @synthesize isCompareViewer=_isCompareViewer;
 @property BOOL suppressToolManagerSelectionChanges; // @synthesize suppressToolManagerSelectionChanges=_suppressToolManagerSelectionChanges;
 @property(nonatomic) long long multiAngleEditStyle; // @synthesize multiAngleEditStyle=_multiAngleEditStyle;
 @property(nonatomic) BOOL primaryDestVideoCMIO; // @synthesize primaryDestVideoCMIO=_primaryDestVideoCMIO;
@@ -151,7 +155,6 @@
 - (void)setToolTransform:(id)arg1;
 - (id)toolsContextMenu:(id)arg1;
 - (void)buildToolsContextMenu;
-- (void)drawAudioIcon:(struct CGRect)arg1 inContext:(struct _CGLContextObject *)arg2 backgroundColor:(id)arg3;
 - (id)itemsInRect:(struct CGRect)arg1;
 - (id)itemAtPoint:(struct CGPoint)arg1;
 - (id)itemAtPoint:(struct CGPoint)arg1 keepSelectionIfMultipleTextObjects:(BOOL)arg2;
@@ -176,8 +179,9 @@
 - (void)_addOSCsForItem:(id)arg1;
 - (void)setOSCForActiveTool:(id)arg1;
 - (BOOL)acceptPassiveOSCEvent:(id)arg1;
-- (BOOL)drawOSCsAtTime:(CDStruct_1b6d18a9)arg1 inRect:(struct CGRect)arg2 drawContext:(struct _CGLContextObject *)arg3 drawProperties:(id)arg4 isDisplaying:(BOOL)arg5;
-- (void)_clearOverlayBackground:(struct _CGLContextObject *)arg1;
+- (BOOL)drawOSCsAtTime:(CDStruct_1b6d18a9)arg1 inRect:(struct CGRect)arg2 drawDestination:(struct FFOSCDrawDestination *)arg3 drawProperties:(id)arg4 isDisplaying:(BOOL)arg5;
+- (void)_clearOverlayBackgroundMetal:(id)arg1 drawRect:(struct CGRect)arg2;
+- (void)_clearOverlayBackgroundGL:(struct _CGLContextObject *)arg1;
 - (void)setSelectionBasedOSCsEnabled:(BOOL)arg1;
 - (BOOL)selectionBasedOSCsEnabled;
 - (id)OSCAtPoint:(struct CGPoint)arg1;
@@ -194,6 +198,7 @@
 - (void)_addOSC:(id)arg1 playerUpdate:(BOOL)arg2;
 - (void)insertOSC:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_insertOSC:(id)arg1 atIndex:(unsigned long long)arg2 playerUpdate:(BOOL)arg3;
+- (void)_performPlayerUpdateForCaptionOSC;
 - (void)_performPlayerUpdateForOSC;
 - (void)_insertOSC:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)makeActiveOSC:(id)arg1;
@@ -228,6 +233,13 @@
 - (BOOL)is360HeaderVisible;
 - (void)_updateFovSlider;
 - (void)updateFOVSliderAndResetButton:(id)arg1;
+- (void)player360DifferenceAction:(id)arg1;
+- (void)player360SuperimposeAction:(id)arg1;
+- (void)player360AnaglyphOutlineAction:(id)arg1;
+- (void)player360AnaglyphMonochromeAction:(id)arg1;
+- (void)player360AnaglyphColorAction:(id)arg1;
+- (void)player360RightOnlyAction:(id)arg1;
+- (void)player360LeftOnlyAction:(id)arg1;
 - (void)player360OrientationOSCAction:(id)arg1;
 - (void)latchHmdAction:(id)arg1;
 - (void)fovSliderAction:(id)arg1;
@@ -317,6 +329,7 @@
 - (struct CGRect)getSourceRectAndDrawRect:(struct CGRect *)arg1 imageBounds:(struct CGRect)arg2 isFlipped:(BOOL)arg3;
 - (struct CGRect)filmBoundsInViewSpace;
 - (id)retainedViewToFilmTransform;
+- (id)retainedFilmToViewTransformRemovingScaleFactorFromTransform;
 - (id)retainedFilmToViewTransform;
 - (id)_retainedFilmToViewTransform:(BOOL)arg1;
 - (float)_updateReportedZoomFactor;
@@ -329,7 +342,7 @@
 - (id)destVideoCMIOUID;
 - (void)setLastTimeCallback:(id)arg1 callbackSel:(SEL)arg2;
 - (void)notifyLastTimeDisplayed:(id)arg1;
-- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
+- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawDestination:(struct FFOSCDrawDestination *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
 - (int)drawNow:(const CDStruct_e50ab651 *)arg1 outTime:(const CDStruct_e50ab651 *)arg2;
 - (BOOL)isDrawingEnabled;
 - (void)setDrawingEnabled:(BOOL)arg1;
@@ -346,6 +359,11 @@
 - (void)didExitFullScreenMode;
 - (void)didEnterFullScreenMode;
 @property(nonatomic) BOOL display360Horizon;
+- (void)toggleDisplayCustomOverlay:(BOOL)arg1;
+- (void)setupCustomOverlayFromUserDefaults;
+@property(nonatomic) BOOL displayCustomOverlay;
+- (void)addAndRemoveDisplayCustomOverlay:(BOOL)arg1;
+@property BOOL is360Viewer; // @synthesize is360Viewer=_is360Viewer;
 @property(nonatomic) BOOL displayBroadcastSafeZones;
 @property(nonatomic) BOOL showBothFields;
 - (int)onScreenDrawStyleForDisplayID:(unsigned int)arg1 isHDR:(BOOL)arg2 transferFunction:(int)arg3;
@@ -359,6 +377,7 @@
 @property(nonatomic) float zoomFactor;
 - (BOOL)forceShowAt100Percent;
 - (void)setSequenceBounds:(struct CGRect)arg1 sequenceCameraMode:(int)arg2;
+- (void)_deferredNeedsUpdate;
 - (void)updateLabel;
 - (double)backingScaleFactor;
 - (id)backgroundColor;

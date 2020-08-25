@@ -6,7 +6,7 @@
 
 #import <Flexo/FFHeliumEffect.h>
 
-@class CHChannelAngle, CHChannelBool, CHChannelDouble, CHChannelEnum;
+@class CHChannelAngle, CHChannelBool, CHChannelDouble, CHChannelEnum, CHChannelScale3D;
 
 __attribute__((visibility("hidden")))
 @interface FFHe360TransformEffect : FFHeliumEffect
@@ -24,9 +24,11 @@ __attribute__((visibility("hidden")))
     CHChannelAngle *_chZOrientation;
     CHChannelDouble *_chConvergence;
     CHChannelDouble *_chInteraxial;
+    CHChannelScale3D *_chScale;
 }
 
 + (void)registerEffects;
+@property(readonly) CHChannelScale3D *scaleChannel; // @synthesize scaleChannel=_chScale;
 @property(readonly) CHChannelDouble *interaxialChannel; // @synthesize interaxialChannel=_chInteraxial;
 @property(readonly) CHChannelDouble *convergenceChannel; // @synthesize convergenceChannel=_chConvergence;
 @property(readonly) CHChannelAngle *zOrientationChannel; // @synthesize zOrientationChannel=_chZOrientation;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) CHChannelAngle *latitudeChannel; // @synthesize latitudeChannel=_chLatitude;
 @property(readonly) CHChannelEnum *coordinatesChannel; // @synthesize coordinatesChannel=_chCoordinates;
 - (BOOL)supportsReentrancy;
+- (CDStruct_bdcb2b0d)md5;
 - (id)onScreenControlsForChannelFolder:(id)arg1 effectStack:(id)arg2;
 - (id)primaryAnimationChannel;
 - (id)new360TransformedImage:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 eye:(double)arg3 outputWidth:(double)arg4 outputHeight:(double)arg5 downstreamPT:(id)arg6;
@@ -50,16 +53,22 @@ __attribute__((visibility("hidden")))
 - (void)setParameterValuesForCoordinates:(int)arg1;
 - (void)showHideChannel:(id)arg1 show:(BOOL)arg2;
 - (id)inputKeys;
--     // Error parsing type: v112@0:8^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16{?=qiIq}24@48@56@64@72{CGRect={CGPoint=dd}{CGSize=dd}}80, name: setParameterValuesForNode:atTime:withInputStream:context:pixelTransform:inputData:inputBounds:
+-     // Error parsing type: v112@0:8^{HGNode=^^?{atomic<unsigned int>=AI}ii^viIii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16{?=qiIq}24@48@56@64@72{CGRect={CGPoint=dd}{CGSize=dd}}80, name: setParameterValuesForNode:atTime:withInputStream:context:pixelTransform:inputData:inputBounds:
+- (PCMatrix44Tmpl_9c426645)getPlaneTranslationMatrixAtTimeV2:(CDStruct_1b6d18a9)arg1;
 - (PCMatrix44Tmpl_9c426645)getPlaneTranslationMatrixAtTime:(CDStruct_1b6d18a9)arg1;
+- (PCMatrix44Tmpl_9c426645)getPlaneScaleMatrixAtTimeV2:(CDStruct_1b6d18a9)arg1;
 - (PCMatrix44Tmpl_9c426645)getPlaneScaleMatrixAtTime:(CDStruct_1b6d18a9)arg1;
+- (PCMatrix44Tmpl_9c426645)getPlaneOrientationMatrixAtTimeV2:(CDStruct_1b6d18a9)arg1;
 - (PCMatrix44Tmpl_9c426645)getPlaneOrientationMatrixAtTime:(CDStruct_1b6d18a9)arg1;
-- (PCMatrix44Tmpl_9c426645)getPlaneLocalOrientationMatrix:(CDStruct_1b6d18a9)arg1;
+- (PCMatrix44Tmpl_9c426645)getPlaneLocalOrientationMatrixAtTimeV2:(CDStruct_1b6d18a9)arg1;
+- (PCMatrix44Tmpl_9c426645)getPlaneLocalOrientationMatrixAtTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)isAtDefaultSettings;
 - (BOOL)writeDefaultChannels;
 - (BOOL)isNoOp;
--     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}24@0:8@16, name: newNodeForContext:
+-     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^viIii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}24@0:8@16, name: newNodeForContext:
+- (void)setup360ScaleChannel:(id *)arg1 folder:(id)arg2 name:(id)arg3 channelID:(unsigned int)arg4 defaultCurve:(double)arg5 minCurve:(double)arg6 maxCurve:(double)arg7;
 - (void)setup360TransformChannel:(id *)arg1 folder:(id)arg2 name:(id)arg3 channelID:(unsigned int)arg4 defaultCurve:(double)arg5 minCurve:(double)arg6 maxCurve:(double)arg7 minUI:(double)arg8 maxUI:(double)arg9 coarseDelta:(double)arg10 fineDelta:(double)arg11 hidden:(BOOL)arg12;
+- (unsigned int)intrinsicCacheFlag;
 - (void)createChannelsInFolder:(id)arg1;
 - (void)reset;
 - (void)dealloc;

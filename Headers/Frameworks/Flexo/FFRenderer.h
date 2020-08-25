@@ -33,13 +33,15 @@
     BOOL _autoCancelWhenEndTimeReached;
     BOOL _enableWorkingSpaceOverride;
     int _workingSpaceOverride;
-    _Bool _stoppedDueToStorageLocFull;
-    _Bool _stoppedDueToDestError;
     struct FFSynchronizable *_processingStateLock;
     int _processingState;
+    // Error parsing type: {atomic<bool>="__a_"AB}, name: _stoppedDueToStorageLocFull
+    // Error parsing type: {atomic<bool>="__a_"AB}, name: _stoppedDueToDestError
+    BOOL _rendererGoingAway;
 }
 
-@property _Bool stoppedDueToDestError; // @synthesize stoppedDueToDestError=_stoppedDueToDestError;
+@property BOOL rendererGoingAway; // @synthesize rendererGoingAway=_rendererGoingAway;
+- (_Bool)stoppedDueToDestError;
 - (_Bool)stoppedDueToStorageLocFull;
 - (id)description;
 - (void)setWaitForThreadToAck:(_Bool)arg1;
@@ -53,16 +55,18 @@
 - (void)_conformStartAndDuration;
 - (void)_rebuildPlayer;
 - (void)_teardownPlayer;
+- (void)shutdownPlayer;
 - (id)player;
+- (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2 storageLocationsToWatch:(id)arg3 renderReverse:(BOOL)arg4;
 - (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2 storageLocationsToWatch:(id)arg3;
 - (BOOL)renderRange:(CDStruct_e83c9415)arg1 cancelAtRangeEnd:(BOOL)arg2;
 - (void)renderFrame:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
 - (void)stopWritingFilesToLocation:(id)arg1;
 - (void)destUnableToProcessFrame:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 error:(id)arg3;
 - (void)didRenderFrames:(CDStruct_e83c9415)arg1 forLastDest:(BOOL)arg2;
-- (void)checkForPauseWhileRenderingFrames;
+- (_Bool)checkForPauseWhileRenderingFrames;
 - (void)willRenderFrames;
-- (void)_blockRenderIfPausedAndCheckForRenderError;
+- (_Bool)_blockRenderIfPausedAndCheckForRenderError;
 - (void)_updateProcessingState:(int)arg1;
 - (CDStruct_e83c9415)lastRenderedRange;
 - (void)resetLastRenderedRange;

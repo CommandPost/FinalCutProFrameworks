@@ -45,7 +45,6 @@
 + (void)_completeAnalyzeForCleanupOnMainThread:(id)arg1;
 + (void)analyzeForCleanup:(id)arg1 analysisType:(int)arg2 analysisInitialEffects:(id)arg3 onTask:(id)arg4;
 + (BOOL)renderAudioUsingEffectRenderer:(id)arg1 startTime:(CDStruct_1b6d18a9)arg2 duration:(CDStruct_1b6d18a9)arg3 backgroundTask:(id)arg4 withBackgroundTaskProgressScale:(float)arg5 isCancelledBlock:(CDUnknownBlockType)arg6;
-+ (int)renderAudioToFilePath:(id)arg1 atStartTime:(CDStruct_1b6d18a9)arg2 withDuration:(CDStruct_1b6d18a9)arg3 usingStream:(id)arg4 onTask:(id)arg5 withTaskScale:(float)arg6;
 + (void)_updateEffect:(id)arg1 withAnalysisEffect:(id)arg2;
 + (void)updateAutomaticSettingsForAnalysisOperation:(int)arg1 forEffectStack:(id)arg2;
 + (id)enhancementEffectStacksForItems:(id)arg1;
@@ -60,7 +59,7 @@
 - (void)setMatchEnabled:(BOOL)arg1;
 - (BOOL)matchEnabled;
 - (BOOL)matchEdited;
-- (id)matchEffectState:(BOOL)arg1;
+- (struct NSDictionary *)matchEffectState:(BOOL)arg1;
 - (BOOL)hasMatchData;
 - (BOOL)usingMatchEffect;
 - (void)enterMatchMode:(id)arg1;

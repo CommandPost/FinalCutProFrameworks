@@ -21,6 +21,10 @@ __attribute__((visibility("hidden")))
     BOOL m_pendingFadeLinkChanged;
 }
 
+- (void)handleAudioCrossfadesCommandDidEndNotification:(id)arg1;
+- (void)handleAudioCrossfadesCommandWillBeginNotification:(id)arg1;
+- (void)stopObservingAudioCrossfadesCommandNotifications;
+- (void)startObservingAudioCrossfadesCommandNotifications;
 - (void)_updateVolumeChannelObserving;
 - (BOOL)_updateVolumeChannelFadeState;
 - (void)_fadeLinkedChanged:(id)arg1;

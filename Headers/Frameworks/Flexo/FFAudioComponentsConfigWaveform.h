@@ -8,7 +8,7 @@
 
 #import "FFSkimmingModuleDelegate.h"
 
-@class CALayer, FFAudioComponentsConfigViewModule, FFAudioComponentsConfigWaveformManager, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>, NSString, NSView;
+@class CALayer, FFAudioComponentsConfigViewModule, FFAudioComponentsConfigWaveformManager, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol>, NSString, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioComponentsConfigWaveform : NSViewController <FFSkimmingModuleDelegate>
@@ -29,10 +29,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <FFAudioComponentsConfigTileDelegate> delegate; // @synthesize delegate=m_delegate;
 @property(readonly, nonatomic) FFAudioComponentsConfigWaveformManager *waveformManager; // @synthesize waveformManager=m_waveformManager;
 @property(readonly, nonatomic) CDStruct_e83c9415 playbackSkimmableRange; // @synthesize playbackSkimmableRange=m_playbackSkimmableRange;
-@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol> *playbackSkimmable; // @synthesize playbackSkimmable=m_playbackSkimmable;
+@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol> *playbackSkimmable; // @synthesize playbackSkimmable=m_playbackSkimmable;
 - (id)skimmingModule:(id)arg1 newContextForSkimmable:(struct NSObject *)arg2;
 - (BOOL)skimmingModule:(id)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
 - (void)skimmingModuleStopSkimmingInViewer:(id)arg1;
+- (BOOL)skimmingModule:(id)arg1 startSkimmingInViewerReplacingSkimmable:(struct NSObject *)arg2 withSkimmable:(struct NSObject *)arg3 context:(id)arg4 effectCount:(long long)arg5;
 - (BOOL)skimmingModule:(id)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4;
 - (BOOL)skimmingModuleCanStartSkimming:(id)arg1;
 - (double)skimmingModule:(id)arg1 timePerHorizontalPixelForSkimmingLayer:(id)arg2;

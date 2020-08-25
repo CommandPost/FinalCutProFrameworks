@@ -71,6 +71,8 @@
 + (BOOL)editableExportRenderOptions;
 + (void)setMediaShareHelpersDisabled:(BOOL)arg1;
 + (BOOL)mediaShareHelpersDisabled;
++ (void)setDownloadToDestinationEnabled:(BOOL)arg1;
++ (BOOL)downloadToDestinationEnabled;
 + (void)setWebAssetsEnabled:(BOOL)arg1;
 + (BOOL)webAssetsEnabled;
 + (void)setRemoveProjectPreviewTitles:(BOOL)arg1;

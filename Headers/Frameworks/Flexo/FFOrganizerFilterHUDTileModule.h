@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (id)library;
 - (void)controlUpdated:(id)arg1;
+- (id)tileNameString;
 - (id)tileGlyphString;
 - (id)metadataKey;
 - (void)updateWithSelectedRoleUIDs:(id)arg1;

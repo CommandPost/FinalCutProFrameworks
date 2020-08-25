@@ -9,7 +9,7 @@
 #import "FFRoleChangeProtocol.h"
 #import "FFStorylineItem.h"
 
-@class FFAudioComponentsLayoutItem, FFEffectStack, FFWeakPointerValue, NSArray, NSRecursiveLock, NSSet, NSString;
+@class FFAudioComponentsLayoutItem, FFEffectStack, NSArray, NSRecursiveLock, NSSet, NSString, PCWeakPointerValue;
 
 @interface FFAudioComponentSource : FFAnchoredObject <FFStorylineItem, FFRoleChangeProtocol>
 {
@@ -19,7 +19,7 @@
     BOOL m_retired;
     FFEffectStack *m_placeholderEffectStack;
     NSRecursiveLock *m_placeholderEffectStackLock;
-    FFWeakPointerValue *m_skimmable;
+    PCWeakPointerValue *m_skimmable;
     NSRecursiveLock *m_skimmableLock;
     NSRecursiveLock *m_cacheLock;
     NSArray *m_cachedDisabledRanges;
@@ -48,11 +48,7 @@
 @property(readonly, nonatomic) FFAudioComponentsLayoutItem *layoutItemKey; // @synthesize layoutItemKey=m_layoutItemKey;
 @property(readonly, nonatomic) NSString *layoutKey; // @synthesize layoutKey=m_layoutKey;
 - (void)update_disabledRangesFormatChange;
-- (BOOL)writerIsWaiting;
-- (void)_readUnlock;
-- (void)_readLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
+- (id)modelLockingObject;
 - (id)storeForUndo;
 - (id)modelDocument;
 - (void)notifyDidChange:(int)arg1 userInfo:(id)arg2;
@@ -61,16 +57,6 @@
 - (void)willChange:(int)arg1;
 - (void)_didChange:(id)arg1;
 - (void)_willChange:(id)arg1;
-- (void)removeChannel:(id)arg1;
-- (BOOL)canRemoveChannel:(id)arg1;
-- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
-- (BOOL)canReorderChannel:(id)arg1;
-- (BOOL)containsChannel:(id)arg1 associatedModelObject:(id)arg2;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)classNameForInspectorTabIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)inspectorDisplayName;
-- (id)audioInfoInspectorText;
 - (CDStruct_e83c9415)untimedUnclippedRange;
 - (CDStruct_e83c9415)untimeRange:(CDStruct_e83c9415)arg1;
 - (CDStruct_1b6d18a9)untime:(CDStruct_1b6d18a9)arg1;
@@ -87,9 +73,11 @@
 - (void)setClippedRange:(CDStruct_e83c9415)arg1;
 - (CDStruct_e83c9415)clippedRange;
 - (BOOL)hasInvalidClippedRange;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (id)videoProps;
 - (id)sequence;
 - (id)container;
+- (void)informEffectStackAudioChannelCountChanged;
 - (id)timelineContainer;
 - (int)timelineItemType;
 - (id)anchoredTimelineItems;
@@ -112,7 +100,6 @@
 - (id)cachedSortedLocalizedRoles;
 - (id)transitionTimelineItemNext;
 - (id)transitionTimelineItemPrevious;
-- (id)modelLockingObject;
 - (id)trackType;
 - (id)type;
 - (id)mdValueForKey:(id)arg1;
@@ -176,6 +163,16 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithRootObject:(id)arg1 layoutKey:(id)arg2 layoutItemKey:(id)arg3;
+- (void)removeChannel:(id)arg1;
+- (BOOL)canRemoveChannel:(id)arg1;
+- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
+- (BOOL)canReorderChannel:(id)arg1;
+- (BOOL)containsChannel:(id)arg1 associatedModelObject:(id)arg2;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
+- (id)inspectorDisplayName;
+- (id)audioInfoInspectorText;
 - (CDStruct_e83c9415)timeRangeInContainerSpace:(id)arg1;
 @property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
 @property(readonly, nonatomic) BOOL isPrimaryComponent;
@@ -208,7 +205,7 @@
 @property(readonly, nonatomic) id <FFStorylineItem> nextStoryItem;
 @property(readonly, nonatomic) id <FFStorylineItem> previousStoryItem;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 sourceAnchorTime;
-@property(readonly, nonatomic) unsigned long long storylineRegion;
+@property(readonly, nonatomic) long long storylineRegion;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 targetAnchorTime;
 @property(nonatomic) CDStruct_e83c9415 timeRangeInAsset;

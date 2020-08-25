@@ -8,5 +8,35 @@
 
 @interface NSImage (Ragnarok_Temp_images)
 + (id)swatchWithColor:(id)arg1 size:(struct CGSize)arg2;
++ (id)newImageForPixelSize:(struct CGSize)arg1 withBlock:(CDUnknownBlockType)arg2;
++ (id)imageNamed:(id)arg1 fromBundle:(id)arg2;
++ (id)imageWithContentsOfFile:(id)arg1 respectOrientation:(BOOL)arg2;
++ (struct CGImage *)newCGImageByApplyingOrientation:(int)arg1 toCGImage:(struct CGImage *)arg2;
++ (struct CGAffineTransform)affineTransformWithImageOrientation:(int)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3;
++ (id)imageWithPath:(id)arg1 placement:(id)arg2 size:(int)arg3;
+- (id)initWithCGImage:(struct CGImage *)arg1;
+- (void)removeCachedImageReps;
+- (void)useOptimalDPI;
+- (BOOL)writeToTIFFFile:(id)arg1;
+- (BOOL)writeToPNGFile:(id)arg1;
+- (BOOL)writeToJPEGFile:(id)arg1 quality:(float)arg2;
+- (id)compressedPNG;
+- (id)compressedJPEG:(float)arg1;
+- (id)imageLetterBoxedOrPillarBoxedForAspectRatio:(float)arg1;
+- (id)imageWithAlpha:(float)arg1;
+- (id)imageCroppedAndResized:(struct CGSize)arg1 allowEnlarging:(BOOL)arg2;
+- (id)imageScaledToWidth:(float)arg1 maintainAspectRatio:(BOOL)arg2;
+- (id)imageScaledByAmount:(float)arg1;
+- (id)imageScaledToSize:(struct CGSize)arg1;
+- (id)imageScaledToSize:(struct CGSize)arg1 highQuality:(BOOL)arg2;
+- (id)deinterlacedImage:(int)arg1;
+- (void)tileInRect:(struct CGRect)arg1 inView:(id)arg2 operation:(unsigned long long)arg3 fraction:(float)arg4;
+- (void)tileInRect:(struct CGRect)arg1 inView:(id)arg2 operation:(unsigned long long)arg3 fraction:(float)arg4 offset:(struct CGPoint)arg5;
+- (void)drawInRect:(struct CGRect)arg1 inView:(id)arg2 fromRect:(struct CGRect)arg3 operation:(unsigned long long)arg4 fraction:(float)arg5 mode:(int)arg6;
+- (void)drawInRect:(struct CGRect)arg1 inView:(id)arg2 fromRect:(struct CGRect)arg3 operation:(unsigned long long)arg4 fraction:(float)arg5;
+- (float)aspectRatio;
+- (struct CGRect)bounds;
+- (struct CGRect)imageRectForRect:(struct CGRect)arg1 placement:(id)arg2;
+- (id)imageForScalingFactor:(double)arg1;
 @end
 

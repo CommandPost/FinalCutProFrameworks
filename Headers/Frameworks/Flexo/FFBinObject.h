@@ -14,7 +14,7 @@
 
 @class NSImage, NSMutableDictionary, NSString;
 
-@interface FFBinObject : FFBaseDSObject <FFOrganizerItem, NSSecureCoding, NSCopying, FFMetadataProtocol, FFInspectableObject>
+@interface FFBinObject : FFBaseDSObject <FFOrganizerItem, FFInspectableObject, NSSecureCoding, NSCopying, FFMetadataProtocol>
 {
     NSString *_displayName;
     NSMutableDictionary *_metadata;
@@ -24,8 +24,6 @@
 + (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (id)keyPathsForValuesAffectingItemDisplayName;
-- (id)inspectorDisplayName;
-- (id)inspectorClassName;
 - (void)setUserDefaultFigTime:(CDStruct_1b6d18a9)arg1 forKey:(id)arg2;
 - (CDStruct_1b6d18a9)userDefaultFigTimeForKey:(id)arg1;
 - (void)setUserDefaultInteger:(long long)arg1 forKey:(id)arg2;
@@ -71,6 +69,8 @@
 - (void)actionBegin:(id)arg1;
 - (BOOL)_actionEndEditing:(BOOL)arg1 error:(id *)arg2;
 - (void)_actionBeginEditing;
+- (id)inspectorDisplayName;
+- (id)inspectorClassName;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

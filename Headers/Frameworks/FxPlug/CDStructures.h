@@ -4,7 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FxMatrix44;
+@class FxMatrix44, FxRemotePluginCoordinator, FxXPCListenerDelegate, NSXPCListener, NSXPCListenerEndpoint;
 
 #pragma mark Function Pointers and Blocks
 
@@ -79,8 +79,15 @@ struct FxBitmapPriv {
     char _field3;
 };
 
+struct FxConnection {
+    NSXPCListener *listener;
+    FxXPCListenerDelegate *listenerDelegate;
+    NSXPCListenerEndpoint *endpoint;
+    FxRemotePluginCoordinator *coordinator;
+};
+
 struct FxConnectionMap {
-    struct map<int, FxConnectionMap::FxConnection, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, FxConnectionMap::FxConnection>>> connections;
+    struct FxConnection connection;
 };
 
 struct FxContextPriv {
@@ -147,7 +154,7 @@ struct FxImagePriv {
 struct FxKeyframe {
     unsigned long long version;
     CDStruct_1b6d18a9 time;
-    unsigned long long style;
+    unsigned long long segmentStyle;
     double inTangentX;
     double inTangentY;
     double outTangentX;
@@ -326,6 +333,18 @@ struct _opaque_pthread_mutex_t {
     char __opaque[56];
 };
 
+struct map<FxColorSpace, CGColorSpace *, std::__1::less<FxColorSpace>, std::__1::allocator<std::__1::pair<const FxColorSpace, CGColorSpace *>>> {
+    struct __tree<std::__1::__value_type<FxColorSpace, CGColorSpace *>, std::__1::__map_value_compare<FxColorSpace, std::__1::__value_type<FxColorSpace, CGColorSpace *>, std::__1::less<FxColorSpace>, true>, std::__1::allocator<std::__1::__value_type<FxColorSpace, CGColorSpace *>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<FxColorSpace, CGColorSpace *>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<FxColorSpace, std::__1::__value_type<FxColorSpace, CGColorSpace *>, std::__1::less<FxColorSpace>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
 struct map<_opaque_pthread_t *, Fx3DInfo, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, Fx3DInfo>>> {
     struct __tree<std::__1::__value_type<_opaque_pthread_t *, Fx3DInfo>, std::__1::__map_value_compare<_opaque_pthread_t *, std::__1::__value_type<_opaque_pthread_t *, Fx3DInfo>, std::__1::less<_opaque_pthread_t *>, true>, std::__1::allocator<std::__1::__value_type<_opaque_pthread_t *, Fx3DInfo>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
@@ -422,18 +441,6 @@ struct map<_opaque_pthread_t *, unsigned long long, std::__1::less<_opaque_pthre
     } __tree_;
 };
 
-struct map<int, FxConnectionMap::FxConnection, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, FxConnectionMap::FxConnection>>> {
-    struct __tree<std::__1::__value_type<int, FxConnectionMap::FxConnection>, std::__1::__map_value_compare<int, std::__1::__value_type<int, FxConnectionMap::FxConnection>, std::__1::less<int>, true>, std::__1::allocator<std::__1::__value_type<int, FxConnectionMap::FxConnection>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<int, FxConnectionMap::FxConnection>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<int, std::__1::__value_type<int, FxConnectionMap::FxConnection>, std::__1::less<int>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
 struct vector<FxLight, std::__1::allocator<FxLight>> {
     struct FxLight *_field1;
     struct FxLight *_field2;
@@ -466,6 +473,11 @@ typedef struct {
     unsigned int flags;
     long long epoch;
 } CDStruct_1b6d18a9;
+
+typedef struct {
+    CDStruct_1b6d18a9 _field1;
+    CDStruct_1b6d18a9 _field2;
+} CDStruct_5c5366e1;
 
 // Template types
 typedef struct map<_opaque_pthread_t *, Fx3DInfo, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, Fx3DInfo>>> {

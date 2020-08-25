@@ -23,7 +23,7 @@
 
 @class FFAnchoredGeneratorComponent, FFAnchoredObject, FFAudioLoudnessManager, FFProject, FFRenderFormat, FFSequenceInfo, FFShareKeyConverter, FFStoryTimelinePresentation, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSSet, NSString;
 
-@interface FFAnchoredSequence : FFMediaState <FFLibraryCocoaScripting, NSSecureCoding, FFDataModelProtocol, FFCopyPasteProtocol, FFSkimmableProtocol, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, FFSkimmableItemProtocol, FFAnchoredParentProtocol, FFEffectContainerProtocol, FFMetadataActionProtocol, FFOrganizerClassTypeProtocol>
+@interface FFAnchoredSequence : FFMediaState <FFLibraryCocoaScripting, FFInspectableObject, FFInspectorTabDataSource, FFInspectorToolDataSource, FFInspectorChannelDataSource, NSSecureCoding, FFDataModelProtocol, FFCopyPasteProtocol, FFSkimmableProtocol, FFSkimmableItemProtocol, FFAnchoredParentProtocol, FFEffectContainerProtocol, FFMetadataActionProtocol, FFOrganizerClassTypeProtocol>
 {
     FFRenderFormat *_renderFormat;
     FFAnchoredObject *_primaryObject;
@@ -83,6 +83,7 @@
     BOOL _soloedClipsObservingAudioComponentsChanged;
     BOOL _captionPlaybackEnabled;
     BOOL _disableResolveConflictsOnActionEnd;
+    BOOL _allowAudioInNegativeTime;
     BOOL _pendingActiveCaptionRoleChanged;
     BOOL _pendingActiveCaptionsChanged;
     NSString *_captionPlaybackRoleUID;
@@ -107,7 +108,7 @@
 + (id)newSequenceWithVariant:(id)arg1;
 + (id)newClipWithMedia:(id)arg1;
 + (id)copyClassDescription;
-+ (id)ckRolesForObject:(id)arg1 excludeDisabledRoles:(BOOL)arg2;
++ (id)ckRolesForObject:(id)arg1 useTimelinePlayback:(BOOL)arg2;
 + (id)sequenceFrom:(id)arg1 getRange:(CDStruct_e83c9415 *)arg2;
 + (id)sequenceFrom:(id)arg1;
 + (id)sequenceFromCKItemName:(id)arg1;
@@ -148,6 +149,7 @@
 @property(nonatomic) BOOL pendingActiveCaptionsChanged; // @synthesize pendingActiveCaptionsChanged=_pendingActiveCaptionsChanged;
 @property(nonatomic) BOOL pendingActiveCaptionRoleChanged; // @synthesize pendingActiveCaptionRoleChanged=_pendingActiveCaptionRoleChanged;
 @property(retain, nonatomic) NSDictionary *cachedSequenceDictionary; // @synthesize cachedSequenceDictionary=_cachedSequenceDictionary;
+@property(nonatomic) BOOL allowAudioInNegativeTime; // @synthesize allowAudioInNegativeTime=_allowAudioInNegativeTime;
 @property(nonatomic) BOOL disableResolveConflictsOnActionEnd; // @synthesize disableResolveConflictsOnActionEnd=_disableResolveConflictsOnActionEnd;
 @property(nonatomic) FFStoryTimelinePresentation *activeStoryTimelinePresentation; // @synthesize activeStoryTimelinePresentation=_activeStoryTimelinePresentation;
 @property(retain, nonatomic) NSString *captionPlaybackRoleUID; // @synthesize captionPlaybackRoleUID=_captionPlaybackRoleUID;
@@ -164,7 +166,6 @@
 @property(nonatomic) BOOL isAppPreview; // @synthesize isAppPreview=_isAppPreview;
 @property(retain, nonatomic) NSMutableDictionary *trailerInfo; // @synthesize trailerInfo=_trailerInfo;
 @property(nonatomic) BOOL wasTrailer; // @synthesize wasTrailer=_wasTrailer;
-@property(nonatomic) BOOL isTrailer; // @synthesize isTrailer=_isTrailer;
 @property(copy, nonatomic) NSDate *modDate; // @synthesize modDate=_modDate;
 @property(nonatomic) BOOL updateChangeListsOutsideOfWritelock; // @synthesize updateChangeListsOutsideOfWritelock=_updateChangeListsOutsideOfWritelock;
 @property(nonatomic) BOOL deferResetMediaForAssetInval; // @synthesize deferResetMediaForAssetInval=_deferResetMediaForAssetInval;
@@ -177,8 +178,6 @@
 @property(readonly, retain, nonatomic) FFSequenceInfo *sequenceInfo; // @synthesize sequenceInfo=_sequenceInfo;
 @property(readonly, nonatomic) NSString *sequenceType; // @synthesize sequenceType=_sequenceType;
 @property(retain, nonatomic) FFRenderFormat *renderFormat; // @synthesize renderFormat=_renderFormat;
-- (id)legacyMedia;
-- (long long)legacyMediaStatus;
 - (void)update_SequenceAudioChannelCountSampleRate;
 - (BOOL)update_simpleMotionTitles;
 - (BOOL)update_invalidatePanasonicAVCCAMThumbnails;
@@ -318,12 +317,19 @@
 - (id)supportedLogProcessingModes;
 - (BOOL)isMissingCameraLUT;
 - (BOOL)supportsLogProcessing;
+- (BOOL)supportsExposureOffsetOverride;
+- (BOOL)supportsIsoEIOverride;
+- (BOOL)supportsTemperatureOverride;
+- (BOOL)cameraISOIsValid;
+- (BOOL)cameraColorTemperatureIsValid;
 - (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;
 - (BOOL)supportsAnamorphicFormat;
 - (BOOL)supportsDropFrame;
 - (int)clipType;
+- (BOOL)hasInvalidClippedRange;
+- (BOOL)isHFR;
 - (BOOL)isComponent;
 - (BOOL)isCollection;
 - (BOOL)isSequence;
@@ -355,6 +361,8 @@
 - (BOOL)isFreezeFrame;
 - (BOOL)isStill;
 - (BOOL)hasDefinedVideoRate;
+@property(nonatomic) BOOL isTrailer; // @synthesize isTrailer=_isTrailer;
+- (BOOL)hasArtisticRetime;
 - (BOOL)hasExtractableCaptions;
 - (BOOL)hasVideo;
 - (BOOL)hasAudio;
@@ -398,26 +406,6 @@
 - (void)_removeSoloedClipsAudioComponentsChangedObserving;
 - (void)_addSoloedClipsAudioComponentsChangedObserving;
 @property(retain, nonatomic) NSSet *soloedClips;
-- (void)removeChannel:(id)arg1;
-- (BOOL)canRemoveChannel:(id)arg1;
-- (BOOL)containsChannel:(id)arg1 associatedModelObject:(id)arg2;
-- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
-- (BOOL)canReorderChannel:(id)arg1;
-- (id)representedToolObject;
-- (id)inspectorToolMapsClassNames;
-- (id)inspectorToolTitleClassNames;
-- (id)inspectorToolOverlayClassNames;
-- (id)inspectorToolInfoClassNames;
-- (id)inspectorToolAudioClassNames;
-- (id)inspectorToolVideoClassNames;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)tabSplitIdentifiersForInspectorTabIdentifier:(id)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
-- (id)classNameForInspectorTabIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)inspectableObjectForAudioComponents;
-- (id)inspectableAnchoredObject;
-- (id)inspectorClassName;
 - (id)rangesOfMediaFromArray:(id)arg1;
 - (id)itemIcon;
 - (id)skimmableRolesWithPlayEnable:(int)arg1;
@@ -545,6 +533,7 @@
 - (id)awakeAfterUsingCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
+- (id)currentWebMediaRepAsOnlyComponent;
 - (id)radAsset;
 - (BOOL)isCameraClip;
 - (id)initClipWithMedia:(id)arg1;
@@ -584,11 +573,11 @@
 - (BOOL)actionAddMarkerToAnchoredObject:(id)arg1 isToDo:(BOOL)arg2 isChapter:(BOOL)arg3 withRange:(CDStruct_e83c9415)arg4 error:(id *)arg5;
 - (BOOL)actionAddMarkerToAnchoredObject:(id)arg1 withRange:(CDStruct_e83c9415)arg2 error:(id *)arg3;
 - (BOOL)actionAddMarkerWithRange:(CDStruct_e83c9415)arg1 error:(id *)arg2;
-- (id)ckRoleOutputsWithAudioChannelLayout:(unsigned int)arg1 excludeDisabledRoles:(BOOL)arg2;
-- (id)ckSourceWithCurrentSequenceTime:(CDStruct_1b6d18a9)arg1 andRange:(CDStruct_e83c9415 *)arg2 forSendToCompressor:(BOOL)arg3 indexForDifferentiation:(unsigned long long)arg4;
+- (id)ckRoleOutputsWithAudioChannelLayout:(unsigned int)arg1 useTimelinePlayback:(BOOL)arg2;
+- (id)ckSourceWithCurrentSequenceTime:(CDStruct_1b6d18a9)arg1 andRange:(CDStruct_e83c9415 *)arg2 forSendToCompressor:(BOOL)arg3 indexForDifferentiation:(unsigned long long)arg4 useTimelinePlayback:(BOOL)arg5;
 - (id)ckSourceWithCurrentSequenceTime:(CDStruct_1b6d18a9)arg1 andRange:(CDStruct_e83c9415 *)arg2 forSendToCompressor:(BOOL)arg3;
 - (id)ckSourceWithCurrentSequenceTime:(CDStruct_1b6d18a9)arg1 forSendToCompressor:(BOOL)arg2;
-- (CDStruct_e83c9415)_mediaRangeWithLock;
+- (id)essentialProperties;
 - (id)durationDict;
 - (id)startTimeDict;
 - (long long)timecodeFormat;
@@ -598,6 +587,7 @@
 - (id)containerObject;
 - (void)setOwnedClipName:(id)arg1;
 - (id)ownedClipName;
+- (BOOL)isAudioVisibleInObject:(id)arg1;
 - (void)_switchActiveCaptionRoleToFirstRoleInCaptions:(id)arg1;
 - (id)_duplicateCaptions:(id)arg1 toLanguageWithIdentifier:(id)arg2 andCaptionFormat:(id)arg3;
 - (id)actionDuplicateCaptions:(id)arg1 toLanguageIdentifier:(id)arg2 andCaptionFormat:(id)arg3;
@@ -757,11 +747,13 @@
 - (BOOL)hasItemForDetachAudio:(id)arg1;
 - (BOOL)canDetachAudio:(id)arg1;
 - (BOOL)actionCanFreezeItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3;
+- (BOOL)alignAudioToVideo:(id)arg1 endEdits:(id)arg2;
 - (BOOL)actionAlignAudioToVideo:(id)arg1 endEdits:(id)arg2 container:(id)arg3;
 - (BOOL)actionSplitItems:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 error:(id *)arg4;
 - (BOOL)actionCanSplitItems:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3;
 - (BOOL)actionSplitItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 error:(id *)arg4;
 - (BOOL)actionCanSplitItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 isAudioOnly:(char *)arg3 forContainer:(id)arg4;
+- (BOOL)actionAutoReframe:(id)arg1 forContainer:(id)arg2 error:(id *)arg3;
 - (BOOL)operationSplitItem:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 shouldBladeSplitAudio:(BOOL)arg4 newObjectsCreated:(id)arg5 error:(id *)arg6;
 - (BOOL)timeIsVideoAligned:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2;
 - (void)_clipSplitAudioTailsOfSpine:(id)arg1 afterTime:(CDStruct_1b6d18a9)arg2;
@@ -812,6 +804,7 @@
 - (BOOL)_canAddItemsOnPasteboard:(id)arg1 pasteMode:(int)arg2 atTime:(CDStruct_1b6d18a9)arg3 error:(id *)arg4;
 - (int)_pasteboardActionWithPasteboard:(id)arg1 editMode:(int)arg2;
 - (BOOL)operationAddAnchoredEdits:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 atIndex:(long long)arg3 editMode:(int)arg4 backtimed:(BOOL)arg5 rangeOfMedia:(CDStruct_e83c9415 *)arg6 rootItem:(id)arg7 videoProps:(id)arg8 displayDropFrame:(long long)arg9 error:(id *)arg10;
+- (void)actionAddEdits:(id)arg1;
 - (CDStruct_1b6d18a9)_durationForNextMusicMarkerEdit;
 - (CDStruct_1b6d18a9)_nextMinimumMusicSyncTime;
 - (CDStruct_1b6d18a9)_endOfSpine;
@@ -877,6 +870,7 @@
 - (long long)_findEmptyLaneInAnchoredArray:(id)arg1 atTimeRange:(CDStruct_e83c9415)arg2 belowSpine:(BOOL)arg3 excludedItems:(id)arg4;
 - (BOOL)actionResolveLaneGapsInContainer:(id)arg1 error:(id *)arg2;
 - (BOOL)actionResolveLaneConflictsInContainer:(id)arg1 excludedItems:(id)arg2 error:(id *)arg3;
+- (BOOL)operationResolveLaneConflictsAfterUIChangeInContainer:(id)arg1 excludedItems:(id)arg2 error:(id *)arg3;
 - (BOOL)operationResolveLaneGapsInContainer:(id)arg1 error:(id *)arg2;
 - (BOOL)operationResolveLaneConflictsInContainer:(id)arg1 excludedItems:(id)arg2 error:(id *)arg3;
 - (BOOL)operationResolveLaneConflictsInContainer:(id)arg1 excludedItems:(id)arg2 selectedItems:(id)arg3 changedItems:(id)arg4 verticalOrderFlags:(long long)arg5 error:(id *)arg6;
@@ -978,6 +972,26 @@
 - (BOOL)displayTransitionResizeAlertDialog:(char *)arg1;
 - (BOOL)displayThreePointEditingAlertDialog:(char *)arg1;
 - (BOOL)displayMismatched360MediaAlertDialog:(char *)arg1 mediaCameraMode:(int)arg2 sequenceCameraMode:(int)arg3;
+- (void)removeChannel:(id)arg1;
+- (BOOL)canRemoveChannel:(id)arg1;
+- (BOOL)containsChannel:(id)arg1 associatedModelObject:(id)arg2;
+- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
+- (BOOL)canReorderChannel:(id)arg1;
+- (id)representedToolObject;
+- (id)inspectorToolMapsClassNames;
+- (id)inspectorToolTitleClassNames;
+- (id)inspectorToolOverlayClassNames;
+- (id)inspectorToolInfoClassNames;
+- (id)inspectorToolAudioClassNames;
+- (id)inspectorToolVideoClassNames;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)tabSplitIdentifiersForInspectorTabIdentifier:(id)arg1;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
+- (id)inspectableObjectForAudioComponents;
+- (id)inspectableAnchoredObject;
+- (id)inspectorClassName;
 - (void)actionSetObject:(id)arg1 smooth:(BOOL)arg2 forKeyframe:(int)arg3;
 - (void)actionRetimeSetInterpolation:(long long)arg1 edits:(id)arg2;
 - (BOOL)retimeAllLinearTransitions:(id)arg1;
@@ -1090,9 +1104,17 @@
 - (id)reportNameForTrimCommand:(int)arg1;
 - (id)_nextItem:(id)arg1;
 - (id)_previousItem:(id)arg1;
-- (id)objectSpecifierForChild:(id)arg1;
-- (id)seqDuration;
-- (id)newScriptingObjectOfClass:(Class)arg1 forValueForKey:(id)arg2 withContentsValue:(id)arg3 properties:(id)arg4;
+- (CDStruct_1b6d18a9)halfOfTransitionDuration:(CDStruct_1b6d18a9)arg1;
+- (CDStruct_1b6d18a9)durationForTransition:(id)arg1 withDuration:(CDStruct_1b6d18a9)arg2;
+- (CDStruct_e83c9415)effectiveAudioRangeOfObjectIncludingTransitionsInLocalTime:(id)arg1;
+- (CDStruct_e83c9415)effectiveRangeOfObjectIncludingTransitionsInLocalTime:(id)arg1;
+- (void)setAudioClippedRangeNoReset:(CDStruct_e83c9415)arg1 ifNotSameAsAudioClippedRangeOfObject:(id)arg2;
+- (BOOL)objectHasAudioWithExplicitTimeRange:(id)arg1;
+- (CDStruct_1b6d18a9)audioStartTimeExtendedByTransitionDuration:(CDStruct_1b6d18a9)arg1 ifVideoTimeRange:(CDStruct_e83c9415)arg2 andAudioTimeRange:(CDStruct_e83c9415)arg3 startAtSameTimeInObject:(id)arg4;
+- (void)extendStartOfAudioTimeRangeByTransitionDuration:(CDStruct_1b6d18a9)arg1 ifVideoTimeRange:(CDStruct_e83c9415)arg2 andAudioTimeRange:(CDStruct_e83c9415)arg3 startAtSameTimeInObject:(id)arg4;
+- (CDStruct_1b6d18a9)audioEndTimeExtendedByTransitionDuration:(CDStruct_1b6d18a9)arg1 ifVideoTimeRange:(CDStruct_e83c9415)arg2 andAudioTimeRange:(CDStruct_e83c9415)arg3 endAtSameTimeInObject:(id)arg4;
+- (void)extendEndOfAudioTimeRangeByTransitionDuration:(CDStruct_1b6d18a9)arg1 ifVideoTimeRange:(CDStruct_e83c9415)arg2 andAudioTimeRange:(CDStruct_e83c9415)arg3 endAtSameTimeInObject:(id)arg4;
+- (void)extendAudioTimeRangeByTransitionDuration:(CDStruct_1b6d18a9)arg1 ifVideoTimeRange:(CDStruct_e83c9415)arg2 andAudioTimeRange:(CDStruct_e83c9415)arg3 startAndEndAtSameTimesInObject:(id)arg4 withPreviousObject:(id)arg5 withNextObject:(id)arg6;
 - (BOOL)operationChangeTransitionObjectsOnSpineObjectOverlapType:(id)arg1 spineObjectsToChange:(id)arg2 transitionOverlapType:(int)arg3 error:(id *)arg4;
 - (BOOL)actionAddGeneratorObjects:(id)arg1 before:(BOOL)arg2 after:(BOOL)arg3 generatorEffect:(id)arg4 generatorDuration:(CDStruct_1b6d18a9)arg5 rootItem:(id)arg6 error:(id *)arg7;
 - (BOOL)operationAddGeneratorsBeforeAndAfterObjectsOnSpineObject:(id)arg1 spineObjectsToAddTransition:(id)arg2 before:(BOOL)arg3 after:(BOOL)arg4 generatorEffect:(id)arg5 generatorDuration:(CDStruct_1b6d18a9)arg6 error:(id *)arg7;
@@ -1110,8 +1132,6 @@
 - (BOOL)operationChangeEffectForTransitionObjectsOnSpineObject:(id)arg1 spineObjectsToAddTransition:(id)arg2 effects:(id)arg3 transitionOverlapType:(int)arg4 error:(id *)arg5;
 - (BOOL)actionToggleTransitionNilSourceFillTypeType:(id)arg1 error:(id *)arg2;
 - (BOOL)actionToggleEnabled:(id)arg1 error:(id *)arg2;
-- (void)performWriteUsingBlock:(CDUnknownBlockType)arg1;
-- (void)performReadUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)performActionWithName:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 
 // Remaining properties

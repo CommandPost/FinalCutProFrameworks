@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)updateState:(id)arg1;
-- (BOOL)useResetButtonBehavior;
+- (BOOL)defaultUseResetButtonBehavior;
 
 @end
 

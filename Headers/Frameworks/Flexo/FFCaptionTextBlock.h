@@ -36,8 +36,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long animationStyle;
 - (long long)non608RegionPosition;
 - (void)setNon608RegionPosition:(long long)arg1;
-- (void)setNon608Region:(id)arg1;
-- (id)non608Region;
 - (void)moveTextToHorizontalCenter;
 - (void)moveTextToVerticalCenter;
 - (void)moveTextToRight;
@@ -45,6 +43,13 @@ __attribute__((visibility("hidden")))
 - (void)moveTextToTop;
 - (void)moveTextToBottom;
 - (void)resetPositionToDefault;
+- (void)resetPositionToSRTDefault;
+- (void)resetPositionToiTTDefault;
+- (void)setPositionToiTTRight;
+- (void)setPositionToiTTLeft;
+- (void)setPositionToiTTBottom;
+- (void)setPositionToiTTTop;
+- (void)setiTTRegion:(id)arg1;
 - (long long)_smallestPossibleCellY;
 - (long long)_largestPossibleCellY;
 - (void)_replaceAVCaptions:(id)arg1;
@@ -55,7 +60,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) NSAttributedString *attributedString;
 - (id)attributedStrings;
 - (void)rebuildCaptionsForDisplay;
-- (id)_copyAVCaptionsWithCurrentTimeRange:(id)arg1;
+- (id)_copyCaptionsWithCurrentTimeRange:(id)arg1;
 - (id)copyWithCurrentTimeRange:(id)arg1;
 - (id)captionsForExport;
 - (id)captionsForValidation;
@@ -70,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)setUnformattedText:(id)arg1;
 @property(nonatomic) long long cellY;
 @property(nonatomic) long long cellX;
+- (void)simpleSetCellX:(long long)arg1 andCellY:(long long)arg2;
 @property(readonly, nonatomic) long long cellHeight;
 @property(readonly, nonatomic) long long cellWidth;
 @property(readonly, nonatomic) long long maxCellY;
@@ -77,6 +83,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long maxCellX;
 @property(readonly, nonatomic) long long minCellX;
 @property(readonly, nonatomic) BOOL hasCellXY;
+- (unsigned long long)format;
 - (BOOL)hasRuby;
 @property(readonly, nonatomic) unsigned long long lineCount;
 - (BOOL)isEqualToTextBlock:(id)arg1;
@@ -87,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithCaptionArray:(id)arg1 justification:(long long)arg2 delegate:(id)arg3;
 - (id)init;
+- (void)update_avCaptionsToPCCaptions;
 
 @end
 

@@ -26,11 +26,7 @@ __attribute__((visibility("hidden")))
 + (id)extensions;
 + (id)utis;
 - (id)anchoredObject;
-- (BOOL)writerIsWaiting;
-- (void)_readUnlock;
-- (void)_readLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
+- (id)modelLockingObject;
 - (id)displayName;
 - (void)_setupSources;
 - (void)dealloc;

@@ -7,10 +7,11 @@
 #import "NSObject.h"
 
 #import "FFPhaseCounterChanged.h"
+#import "FFPlayerLockInteractions.h"
 
-@class FFContext, FFPMRLogFunnel, FFPendingHGCJSync, FFPlaybackContext, FFPlayerDropTracker, FFPlayerHeliumUsageRequest, FFPlayerSchedTokenQueue, FFPlayerScheduledData, FFProvider, FFSVContext, FFSchedQueueingInfo, FFSourceVideo, FFStreamVideo, FFStreamVideoCache, FFStreamVideoOptions, FFVideoProps, NSConditionLock, NSLock, NSMutableArray, NSMutableSet, NSObject<OS_dispatch_group>, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_source>, NSThread;
+@class FFContext, FFPMRLogFunnel, FFPendingHGCJSync, FFPlaybackContext, FFPlayerDropTracker, FFPlayerHeliumUsageRequest, FFPlayerSchedTokenQueue, FFPlayerScheduledData, FFProvider, FFSVContext, FFSchedQueueingInfo, FFSourceVideo, FFStreamVideo, FFStreamVideoCache, FFStreamVideoOptions, FFVideoProps, NSMutableArray, NSMutableSet, NSObject<OS_dispatch_queue>, NSObject<OS_dispatch_source>, NSString, NSThread;
 
-@interface FFPlayer : NSObject <FFPhaseCounterChanged>
+@interface FFPlayer : NSObject <FFPhaseCounterChanged, FFPlayerLockInteractions>
 {
     FFContext *_ffContext;
     FFPlaybackContext *_context;
@@ -28,7 +29,6 @@
     NSObject<OS_dispatch_queue> *_queueUrgentScheduleQueue;
     FFPMRLogFunnel *_detailPMRFunnel;
     FFPMRLogFunnel *_summaryPMRFunnel;
-    FFPMRLogFunnel *_queueDepthFunnel;
     int _loopMode;
     CDStruct_e83c9415 _loopRange;
     CDStruct_e83c9415 _loopRangeWithoutPrePostRoll;
@@ -46,12 +46,6 @@
     struct PCProcrastinatedDispatch_t _destUpdateProcrastinatedDisp;
     NSObject<OS_dispatch_queue> *_destUpdateQueue;
     BOOL _inited;
-    NSConditionLock *_threadCondition;
-    NSLock *_playerLock;
-    NSLock *_flushPushLock;
-    NSMutableSet *_blockingDests;
-    NSMutableSet *_starvingDests;
-    NSLock *_cachedPropsLock;
     long long _currentScheduleFrameIndex;
     NSMutableArray *_scheduledFrames;
     FFPlayerScheduledData *_currentScrubFrame;
@@ -60,9 +54,7 @@
     double _rate;
     NSMutableArray *_savedFramesForRateChange;
     _Bool _stopping;
-    NSThread *_localThread;
     _Bool _waitForThreadToAck;
-    NSObject<OS_dispatch_group> *_shutdownGroupToLeave;
     FFStreamVideoOptions *_currentVideoOptions;
     struct __CFDictionary *_ptsForCurrentStream[2];
     FFSVContext *_scrubContexts[3];
@@ -83,17 +75,8 @@
     struct CGColorSpace *_colorSpace;
     int _mode;
     BOOL _destsStarted;
-    BOOL _abortPreroll;
     _Bool _enteredLOHMode;
-    struct FFAudioPlayer *_audioPlayer;
-    struct {
-        int _requestLocation;
-        int _preferredLocation;
-        int _destVideoRecommendedPriority;
-        int _activeGPUs;
-        int _destCount;
-        CDStruct_1b6d18a9 _maxDestQueueDepth;
-    } _renderLocation;
+    // Error parsing type: ^{FFAudioPlayer=@@@@@{CAStreamBasicDescription=dIIIIIIII}I@{CAStreamBasicDescription=dIIIIIIII}{unique_ptr<FFAudioGraph, std::__1::default_delete<FFAudioGraph> >={__compressed_pair<FFAudioGraph *, std::__1::default_delete<FFAudioGraph> >=^{FFAudioGraph}}}^{FFAudioNode}^{FFAudioNode}^{FFAudioNode}^{FFAudioNode}{map<unsigned int, FFAudioPlayerSourceInfo *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, FFAudioPlayerSourceInfo *> > >={__tree<std::__1::__value_type<unsigned int, FFAudioPlayerSourceInfo *>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, FFAudioPlayerSourceInfo *>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, FFAudioPlayerSourceInfo *> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, FFAudioPlayerSourceInfo *>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, FFAudioPlayerSourceInfo *>, std::__1::less<unsigned int>, true> >=Q}}}{map<std::__1::basic_string<char>, FFAudioPlayerMeteringHook *, std::__1::less<std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, FFAudioPlayerMeteringHook *> > >={__tree<std::__1::__value_type<std::__1::basic_string<char>, FFAudioPlayerMeteringHook *>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, FFAudioPlayerMeteringHook *>, std::__1::less<std::__1::basic_string<char> >, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, FFAudioPlayerMeteringHook *> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, FFAudioPlayerMeteringHook *>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, FFAudioPlayerMeteringHook *>, std::__1::less<std::__1::basic_string<char> >, true> >=Q}}}{unique_ptr<FFAudioPlaybackUnit, std::__1::default_delete<FFAudioPlaybackUnit> >={__compressed_pair<FFAudioPlaybackUnit *, std::__1::default_delete<FFAudioPlaybackUnit> >=^{FFAudioPlaybackUnit}}}^{FFAudioPlaybackUnit}i{?=qiIq}ddBBBBB{unique_ptr<FFAudioBufferList, std::__1::default_delete<FFAudioBufferList> >={__compressed_pair<FFAudioBufferList *, std::__1::default_delete<FFAudioBufferList> >=^{FFAudioBufferList}}}{unique_ptr<FFAudioBufferList, std::__1::default_delete<FFAudioBufferList> >={__compressed_pair<FFAudioBufferList *, std::__1::default_delete<FFAudioBufferList> >=^{FFAudioBufferList}}}@{?=qiIq}{?=qiIq}{unique_ptr<FFAudioBufferList, std::__1::default_delete<FFAudioBufferList> >={__compressed_pair<FFAudioBufferList *, std::__1::default_delete<FFAudioBufferList> >=^{FFAudioBufferList}}}{Synchronizable=^^?{_opaque_pthread_mutex_t=q[56c]}^{_opaque_pthread_t}Q{_opaque_pthread_cond_t=q[40c]}}Bi@B{atomic<bool>=AB}{atomic<bool>=AB}{atomic<bool>=AB}{atomic<int>=Ai}{FFSemaphore=^^?@}}, name: _audioPlayer
     int _hmdSharingConfig;
     FFSchedQueueingInfo *_playerQueueInfo;
     // Error parsing type: AB, name: _recalcRenderLoc
@@ -102,30 +85,15 @@
     BOOL _playsSelected;
     BOOL _showMagicFrame;
     CDStruct_1b6d18a9 _lastSpotlightHoldoff;
-    CDStruct_1b6d18a9 _lastUpdateSystemActivity;
     int _scrubSizeMode;
     int _scrubFxMode;
     BOOL _fxQualityShortCutCurrentlyActive;
     BOOL _sizeShortCutCurrentlyActive;
     CDStruct_1b6d18a9 _earliestSnapBackRedrawTime;
     NSObject *_lastLiveEditInvalCause;
-    int _framesPushedDuringPB;
-    int _framesDroppedOrSkippedDuringPB;
-    int _diskRelatedDropSkips;
-    int _latePushesDuringPB;
-    unsigned long long _pmrPeakKnownBandwidth;
-    unsigned long long _pmrPeakUncertainBandwidth;
-    int _framesFromSegmentStore;
-    int _framesPartiallyFromSegmentStore;
-    int _framesFromRAMCache;
-    int _framesWithNewImageError;
-    int _nThrottled;
-    unsigned int _nLiveEditsThisPlayback;
-    unsigned int _prerollAbortCount;
-    _Bool _sufferedLockHoldoff;
     CDStruct_1b6d18a9 _DEBUG_lastPBStartTime;
     // Error parsing type: Ai, name: _throttlePlayheadAmount
-    int _throttlePlayheadCounter;
+    // Error parsing type: Ai, name: _throttlePlayheadCounter
     int _frameSentSincePreroll;
     _Bool _waitingForInitialFill;
     CDStruct_1b6d18a9 _renderVideoLastReturned;
@@ -142,7 +110,6 @@
     NSMutableArray *_specialLiveEditFrames;
     int _framesSkippedLastLiveEdit;
     BOOL _unprocessedStopDueToDrop;
-    unsigned int _framesSinceFlush;
     BOOL _changingRate;
     FFPlayerHeliumUsageRequest *_heliumUsageMode;
     _Bool _waitForLoadingFX;
@@ -151,26 +118,44 @@
     struct TimeRateChangeController *_timeRateChangeController;
     BOOL _playPastLoopEnd;
     CDStruct_1b6d18a9 _playbackPreroll;
+    // Error parsing type: ^{FFPlayerLockable={timed_mutex={mutex={_opaque_pthread_mutex_t=q[56c]}}{condition_variable={_opaque_pthread_cond_t=q[40c]}}B}{atomic<NSThread *>=A@}@}, name: _playerLock
+    NSString *_shutdownBlockerString;
+    // Error parsing type: {atomic<unsigned int>="__a_"AI}, name: _framesSinceFlush
+    struct FFPlayerHeliumRenderLocInfo _renderLocation;
+    _Bool _sufferedDataModelLockHoldoff;
+    int _channelChangeBeginCount;
+    int _channelChangeBeginOldScrubSize;
+    struct {
+        _Bool _active;
+        unsigned int _ID;
+    } _uiPlaybackPowerMgrAssertion;
+    struct FFPlaybackCounters _playbackCounters;
+    struct FFSynchronizable *_flushPushLock;
+    struct FFSynchronizable *_cachedPropsLock;
+    NSThread *_playerThread;
+    // Error parsing type: ^{FFPlayerThreadStateManager={FFSynchronizable={_opaque_pthread_mutex_t=q[56c]}{_opaque_pthread_cond_t=q[40c]}^{_opaque_pthread_t}I^?^v}{atomic<FFPlayerThreadStateValue>=Ai}@}, name: _threadState
+    NSMutableSet *_blockingDests;
+    NSMutableSet *_starvingDests;
+    _Bool sufferedDataModelLockHoldoff;
 }
 
-+ (id)newHeliumUsageRequestForUserDefault:(id)arg1 playerMode:(int)arg2 debugInfo:(id)arg3;
 + (id)_newEmptySrcForProps:(id)arg1;
 + (void)notifyAppWillTerminate;
 + (void)waitForPendingShutdownsToComplete;
 + (void)_internalwaitForPendingShutdownsToComplete;
-+ (void)callbackWhenPendingShutdownsComplete:(CDUnknownBlockType)arg1;
 + (void)teardown;
 + (BOOL)suspendBackgroundOperationsDuringPlayback;
 + (id)newReducedRateTrackerForMultiAngle;
 + (id)newHighQualityContextForSource:(id)arg1 field:(unsigned int)arg2 workingSpace:(int)arg3;
 + (id)newHighQualityContextForSource:(id)arg1 field:(unsigned int)arg2;
 + (id)newContextForStream:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7 workingSpace:(int)arg8;
-+ (id)newContextForPT:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7 workingSpace:(int)arg8;
-+ (id)newContextForPT:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7 locationHint:(int)arg8 workingSpace:(int)arg9;
++ (id)newContextForPT:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 field:(unsigned int)arg3 quality:(int)arg4 temporalQuality:(int)arg5 priority:(int)arg6 options:(id)arg7 locationHint:(struct FFImageLocationHint)arg8 workingSpace:(int)arg9;
 + (_Bool)UIPlaybackIsActive;
 + (void)uiPlayStateChanged;
 + (void)initialize;
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
++ (id)newHeliumUsageRequestForUserDefault:(id)arg1 playerMode:(int)arg2 debugInfo:(id)arg3;
+@property(nonatomic) _Bool sufferedDataModelLockHoldoff; // @synthesize sufferedDataModelLockHoldoff;
 @property(nonatomic) CDStruct_1b6d18a9 playbackPreroll; // @synthesize playbackPreroll=_playbackPreroll;
 @property(nonatomic) BOOL playPastLoopEnd; // @synthesize playPastLoopEnd=_playPastLoopEnd;
 @property(readonly, nonatomic) FFPMRLogFunnel *jklFunnel; // @synthesize jklFunnel=_summaryPMRFunnel;
@@ -180,6 +165,8 @@
 @property BOOL dontRedrawOnInvals; // @synthesize dontRedrawOnInvals=_dontRedrawOnInvals;
 @property _Bool waitForThreadToAck; // @synthesize waitForThreadToAck=_waitForThreadToAck;
 - (id).cxx_construct;
+- (void).cxx_destruct;
+- (_Bool)measureDataModelLockHoldoff;
 - (void)setDropTrackerWarningLimit:(int)arg1;
 - (int)dropTrackerWarningLimit;
 - (void)_idleThreadIfSatisfied:(int)arg1;
@@ -200,14 +187,7 @@
 - (void)beginSkimming;
 - (void)endStepPlayback;
 - (void)beginStepPlayback:(CDStruct_1b6d18a9)arg1;
-- (void)endScrubbing;
-- (void)beginScrubbing:(CDStruct_1b6d18a9)arg1;
-- (void)unlockPlayer;
-- (void)lockPlayer;
-- (void)lockPlayer:(const char *)arg1;
-- (void)lockPlayer:(const char *)arg1 inOutWorkToDo:(id)arg2;
-- (void)readUnlockSequence;
-- (void)readLockSequence;
+-     // Error parsing type: ^{FFPlayerLockable={timed_mutex={mutex={_opaque_pthread_mutex_t=q[56c]}}{condition_variable={_opaque_pthread_cond_t=q[40c]}}B}{atomic<NSThread *>=A@}@}16@0:8, name: _internalPlayerLock
 - (id)_sharedLock;
 - (void)_setupFromSourceVideo;
 - (struct __CFDictionary *)copyPixelTransforms:(id)arg1 forField:(int)arg2;
@@ -234,8 +214,6 @@
 - (void)setHighSpeedPlayReducesTQual:(BOOL)arg1;
 - (void)setTemporalQuality:(int)arg1;
 - (void)setQuality:(int)arg1;
-- (void)_unlockAndResumeForQualityChange:(double)arg1;
-- (double)_stopAndLockForQualityChange;
 - (void)_getContextsForRate:(double)arg1 f1Context:(id *)arg2 f2Context:(id *)arg3 allAnglesContext:(id *)arg4;
 - (id)ptForQuality:(int)arg1 field:(int)arg2;
 - (_Bool)waitForLoadingFX;
@@ -264,12 +242,11 @@
 - (void)getHMDWarningIndicatorsState:(_Bool *)arg1 sticky:(_Bool *)arg2;
 - (void)updateHMDDropOrReprojCount:(unsigned long long)arg1 dropRateLastSecond:(float)arg2;
 - (void)updateHMDHealthWithEquirectProjectionCost:(CDStruct_1b6d18a9)arg1;
-- (int)requestedExecutionLocation;
+- (const struct FxDeviceSet *)requestedExecutionLocation;
 @property unsigned int timecodeType; // @synthesize timecodeType=_timecodeType;
 - (unsigned int)currentTimecodeType;
 - (double)playerRate;
 - (double)rate;
-- (void)setTimeRateDuration:(id)arg1;
 - (void)setTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 duration:(CDStruct_1b6d18a9)arg3;
 - (void)setTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2 duration:(CDStruct_1b6d18a9)arg3 forceRedraw:(BOOL)arg4;
 - (void)setTime:(CDStruct_1b6d18a9)arg1 rate:(double)arg2;
@@ -285,7 +262,6 @@
 - (void)muteAudioPlayback:(BOOL)arg1;
 - (unsigned int)numAudioOutputChannels;
 - (unsigned int)meterAudioLevelsForRole:(id)arg1 channels:(unsigned int)arg2 peakValues:(float *)arg3 loudnessValues:(CDStruct_818bb265 *)arg4;
-- (BOOL)_debugOnly_destsUpToDate;
 - (void)destAudioRenderCallback;
 - (void)videoDestCallback:(BOOL)arg1 forVideoDest:(id)arg2;
 - (void)_rebuildDestLists;
@@ -294,7 +270,7 @@
 - (void)_waitForNextNInputs:(unsigned long long)arg1 beforeDate:(id)arg2;
 - (void)idle;
 - (int)_renderVideo;
-- (void)_checkForPause:(id)arg1;
+- (_Bool)_checkForPause:(id)arg1;
 - (void)_updateZebraTimer;
 - (void)counterPhaseChangedWithSender:(id)arg1;
 - (void)maybeInstallSnapBack;
@@ -302,12 +278,12 @@
 - (_Bool)lastFrameWantsSnapBackRedraw;
 - (BOOL)videoDestsWantFrame;
 - (void)_ensureScheduledFramesHaveUsableDests;
-- (_Bool)_maybeQueueFrame:(id)arg1 referenceFrames:(id)arg2 dests:(id)arg3 renderLocation:(int)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5 outOfOrderCount:(int *)arg6 qInfo:(id)arg7;
+- (_Bool)_maybeQueueFrame:(id)arg1 referenceFrames:(id)arg2 dests:(id)arg3 renderLocation:(const struct FxDeviceSet *)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5 outOfOrderCount:(int *)arg6 qInfo:(id)arg7;
 - (id)_copyDestsToSkipForTime:(CDStruct_1b6d18a9)arg1 destList:(id)arg2;
 - (void)_transferReusableFlattenedFrames:(id)arg1 dests:(id)arg2 last:(id)arg3;
 - (void)_advanceFramesWhileDestsFull:(id)arg1 destsCopy:(id)arg2 allowedWait:(double)arg3 frameDur:(CDStruct_1b6d18a9)arg4 qInfo:(id)arg5;
-- (int)_advanceFrames:(id)arg1 rate:(double)arg2 destsCopy:(id)arg3 renderLocation:(int)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5 testForAbort:(CDUnknownBlockType)arg6 retAnythingLeftToAdvance:(_Bool *)arg7 qInfo:(id)arg8;
-- (_Bool)_maybeQueueFrameFrom:(id)arg1 referenceFrames:(id)arg2 dests:(id)arg3 renderLocation:(int)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5 testForAbort:(CDUnknownBlockType)arg6 qInfo:(id)arg7;
+- (int)_advanceFrames:(id)arg1 rate:(double)arg2 destsCopy:(id)arg3 renderLocation:(const struct FxDeviceSet *)arg4 testForAbort:(CDUnknownBlockType)arg5 retAnythingLeftToAdvance:(_Bool *)arg6 qInfo:(id)arg7;
+- (_Bool)_maybeQueueFrameFrom:(id)arg1 referenceFrames:(id)arg2 dests:(id)arg3 renderLocation:(const struct FxDeviceSet *)arg4 onlyGiveHeliumFullyDecoded:(_Bool)arg5 testForAbort:(CDUnknownBlockType)arg6 qInfo:(id)arg7;
 - (void)_logHeliumQueueLevels:(id)arg1;
 - (BOOL)_buildOneFrame:(double)arg1 isPrerolling:(_Bool)arg2 retSchedTime:(CDStruct_1b6d18a9 *)arg3 maxDestLatency:(unsigned int)arg4;
 - (BOOL)_currentScheduleIndexOutOfBounds:(double)arg1 frameDur:(CDStruct_1b6d18a9)arg2 maxDestLatency:(unsigned int)arg3 retSchedulableRange:(CDStruct_e83c9415 *)arg4;
@@ -317,15 +293,14 @@
 - (id)_copyCurrentFrames;
 - (id)newFramesToQueue:(id)arg1 qInfo:(id)arg2;
 - (id)_newChosenAndAlternates:(id)arg1 rate:(double)arg2 nowTime:(CDStruct_1b6d18a9)arg3 chosenFrame:(id)arg4 maxDestLatency:(unsigned int)arg5;
-- (int)_countCompletedReadAheads:(id)arg1 currentFrames:(id)arg2 retDecodeAheadCount:(int *)arg3 retSchedAhead:(int *)arg4 retHintedCount:(int *)arg5 retInH:(int *)arg6 retComplete:(int *)arg7 retReadThruTime:(CDStruct_1b6d18a9 *)arg8 retDecodeTime:(CDStruct_1b6d18a9 *)arg9 retGraphInHelium:(int *)arg10 retDecodeWaitInHelium:(int *)arg11 retPreloadInHelium:(int *)arg12 retExecOrQueuedInHelium:(int *)arg13;
-- (int)_countCompletedReadAheads:(id)arg1 retDecodeAheadCount:(int *)arg2 retSchedAhead:(int *)arg3 retHintedCount:(int *)arg4 retInH:(int *)arg5 retComplete:(int *)arg6 retReadThruTime:(CDStruct_1b6d18a9 *)arg7 retDecodeTime:(CDStruct_1b6d18a9 *)arg8;
+- (struct FFPlayerQueueInfoReport)_collectReadAheadInfoForFrames:(id)arg1 ignoringFrame:(id)arg2;
 - (int)_cancelMostLateFrames:(id)arg1 rate:(double)arg2 nowTime:(CDStruct_1b6d18a9)arg3 chosenFrame:(id)arg4 maxDestLatency:(unsigned int)arg5 dests:(id)arg6 allowances:(CDStruct_869f9c67 *)arg7 reason:(int)arg8;
 - (void)_cancelFrame:(id)arg1 andUpdateDropInfoDict:(id *)arg2 originalChoice:(id)arg3 originalChoiceString:(id *)arg4;
 - (id)copyFirstOnTimeFrameFromArray:(id)arg1 rate:(double)arg2 nowTime:(CDStruct_1b6d18a9)arg3 maxDestLatency:(unsigned int)arg4 slowGraphBuildWorkaround:(_Bool)arg5;
 - (void)_noteDroppedFrames:(id)arg1 dropReason:(int)arg2 effectiveRate:(double)arg3 alreadyHoldingPlayerLock:(_Bool)arg4;
 - (void)_stopDueToDrop:(id)arg1;
 - (void)fillStopDueToDropDict:(CDStruct_1b6d18a9)arg1 cause:(struct __CFString *)arg2 infoDict:(id)arg3 alreadyHoldingPlayerLock:(_Bool)arg4;
-- (void)maybeReportPlaybackCompleteDropSkipWarningForTotalDropCount:(int)arg1 totalPushed:(int)arg2 diskRelated:(int)arg3 oldRate:(float)arg4 showAllAngles:(BOOL)arg5 hmdActive:(BOOL)arg6 reportHMDDrops:(BOOL)arg7 viewer360Active:(BOOL)arg8;
+- (void)maybeReportPlaybackCompleteDropSkipWarning:(struct FFPlaybackCounterValues)arg1 oldRate:(float)arg2 canvasInfo:(struct FFPlaybackReportingCanvasUIInfo)arg3 hmdInfo:(struct FFPlaybackReportingHMD360Info)arg4;
 - (void)_playCompletedWithHMDDrops:(id)arg1;
 - (void)_playCompletedWithDrops:(id)arg1;
 - (void)_generateOverlayTextures:(id)arg1 pmrMsg:(struct __CFString *)arg2;
@@ -353,7 +328,7 @@
 - (void)delRecentlyPushedAtIndex:(unsigned long long)arg1;
 - (void)_forgetAllFrames;
 - (void)_forgetGraphedFrames:(int)arg1;
-- (BOOL)_needAllAngles:(id)arg1;
+- (_Bool)_needAllAngles:(id)arg1;
 - (BOOL)_needSecondField:(id)arg1;
 - (void)_updateMasterClockForCurrentDests;
 - (void)removeAllDestAudioRenders;
@@ -366,18 +341,19 @@
 - (_Bool)_debug_startedPlayingRecently;
 - (CDStruct_1b6d18a9)_calculateMinimumFrameDurForDests;
 - (void)cancelWorkIfNoDestsRemain;
-- (long long)videoDestCount;
 - (void)setupComplete;
-- (id)_sequenceName:(id *)arg1 seqSize:(struct CGSize *)arg2 camMode:(int *)arg3;
+- (struct FFPlaybackReportingHMD360Info)_collectHMDInfo:(id)arg1;
+- (struct FFPlaybackReportingCanvasUIInfo)_collectCanvasInfo;
+- (struct FFPlaybackReportingSequenceInfo)_collectSequenceInfo:(BOOL)arg1;
 - (void)setSourceAudio:(id)arg1;
 - (id)audioSource;
 - (id)videoStream;
 - (id)videoSource;
 - (void)channelChangeEnd:(id)arg1;
 - (void)channelChangeBegin:(id)arg1;
-- (void)setEnableSnapBackToBestForChannelManipulation:(BOOL)arg1;
+- (void)setEnableSnapBackModeForChannelManipulationFX:(int)arg1 sizeMode:(int)arg2;
 - (void)videoRangeInvalidated:(id)arg1;
-- (void)_videoRangeInvalidatedDuringPlayback:(id)arg1 workToDoUponLocking:(id)arg2 invalResponse:(int *)arg3;
+- (void)_videoRangeInvalidatedDuringPlayback:(id)arg1 workToDoUponLocking:(struct FFPlayerLockDeferredWork *)arg2 invalResponse:(int *)arg3;
 - (void)_markAllDestsAsNeedingRedraw;
 - (void)_forceAllDestsToRedraw;
 - (void)setNeedsUpdate:(BOOL)arg1;
@@ -389,14 +365,11 @@
 - (BOOL)playsSelected;
 - (void)setPlaysSelected:(BOOL)arg1;
 - (id)initWithVideoSource:(id)arg1 fallbackVideoProps:(id)arg2 quality:(int)arg3 playbackContext:(id)arg4 mode:(int)arg5 overrideWorkingSpace:(int *)arg6;
-- (id)initWithVideoSource:(id)arg1 quality:(int)arg2 playbackContext:(id)arg3 mode:(int)arg4;
 - (id)initWithMode:(int)arg1;
 - (void)_suspendBGOpsDuringPlayObserver:(id)arg1;
 - (int)_holdOffOSServicesForUIPlayback;
 - (void)playerRenderThreadMain:(id)arg1;
-- (_Bool)establishOGLContextForThread;
-- (_Bool)getOGLContextForThread;
-- (void)resetPMRStats;
+- (void)resetCurrentPlayInfo;
 - (id)description;
 - (void)_addDestDropInfo:(id)arg1 forDests:(id)arg2;
 - (void)_summarizeLastLiveEdits;

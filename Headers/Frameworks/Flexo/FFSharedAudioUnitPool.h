@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)setAudioUnitAllocation:(unsigned int)arg1 effectID:(id)arg2 sampleRate:(double)arg3 numChannels:(unsigned int)arg4 object:(id)arg5;
 - (void)_purgeAudioUnit:(id)arg1;
 - (void)returnAudioUnit:(id)arg1;
-- (id)reserveAudioUnitForEffectID:(id)arg1 sampleRate:(double)arg2 numChannels:(unsigned int)arg3 effectState:(id)arg4 forPlayback:(BOOL)arg5 defaultPreset:(id *)arg6;
+- (void)reserveAudioUnitForEffectID:(id)arg1 sampleRate:(double)arg2 numChannels:(unsigned int)arg3 effectState:(struct NSDictionary *)arg4 allowAllocatedUnit:(BOOL)arg5 wantsDefaultPreset:(BOOL)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)_releasePoolEntry:(id)arg1;
 - (id)_poolEntryForEffectID:(id)arg1 demand:(BOOL)arg2;
 - (void)_disablePool;

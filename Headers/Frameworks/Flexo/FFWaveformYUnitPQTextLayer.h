@@ -11,9 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)setVideoScopesWaveformYScale:(long long)arg1;
-- (void)setCompositeVideoUnits:(long long)arg1;
-- (void)setCode:(long long)arg1;
+- (void)showHideForGuidesVisibility:(BOOL)arg1;
 
 @end
 
