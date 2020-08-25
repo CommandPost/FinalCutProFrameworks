@@ -10,13 +10,10 @@ __attribute__((visibility("hidden")))
 @interface FFHistogramUnitTextLayer : FFVideoScopesTextLayer
 {
     float _unitPercent;
-    CDStruct_69458254 _action_opt;
 }
 
-- (id)actionForKey:(id)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
-- (void)setShowGuides:(BOOL)arg1;
-- (void)setUnitPercent:(float)arg1;
+- (void)showHideForGuidesVisibility:(BOOL)arg1;
+@property(nonatomic) float unitPercent; // @dynamic unitPercent;
 - (void)setupDefaultPropertiesWithOptions:(long long)arg1;
 
 @end

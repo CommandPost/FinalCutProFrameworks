@@ -6,19 +6,19 @@
 
 #import "NSObject.h"
 
-@class FFWeakPointerValue;
+@class PCWeakPointerValue;
 
 @interface FFCaptionTextSearchResult : NSObject
 {
-    FFWeakPointerValue *_caption;
-    FFWeakPointerValue *_textBlock;
+    PCWeakPointerValue *_caption;
+    PCWeakPointerValue *_textBlock;
     struct _NSRange _textRange;
 }
 
 + (id)searchResultWithCaption:(id)arg1 andTextBlock:(id)arg2 andRange:(struct _NSRange)arg3;
 @property(nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
-@property(retain, nonatomic) FFWeakPointerValue *textBlock; // @synthesize textBlock=_textBlock;
-@property(retain, nonatomic) FFWeakPointerValue *caption; // @synthesize caption=_caption;
+@property(retain, nonatomic) PCWeakPointerValue *textBlock; // @synthesize textBlock=_textBlock;
+@property(retain, nonatomic) PCWeakPointerValue *caption; // @synthesize caption=_caption;
 - (void)dealloc;
 - (id)initWithCaption:(id)arg1 andTextBlock:(id)arg2 andTextRange:(struct _NSRange)arg3;
 

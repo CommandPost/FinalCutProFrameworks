@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)resetQuery;
 - (void)reloadData;
 @property(readonly, nonatomic) BOOL isHidden;
+- (void)viewDidAppear;
 - (void)awakeFromNib;
 - (void)dealloc;
 

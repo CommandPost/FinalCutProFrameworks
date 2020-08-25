@@ -11,7 +11,7 @@
 @interface OZCurveEditorCtrlBase : NSObject
 {
     id <OZCurveEditorAppDelegate> _pAppDelegate;
-    OZCurveEditorViewBase *_oglView;
+    OZCurveEditorViewBase *_view;
     unsigned int _currentTool;
     OZCurveSet *_selectedCurveSet;
     LKMenu *_keyframeMenu;
@@ -36,6 +36,7 @@
 - (void)dumpKeypoints;
 - (void)updateUI;
 - (void)update;
+- (void)redrawCurveEditor;
 - (void)didModifyValue:(id)arg1;
 - (void)willModifyValue:(id)arg1;
 - (void)didModify:(id)arg1;
@@ -164,7 +165,7 @@
 - (void)setAppDelegate:(id)arg1;
 - (void)setSnapshotChannels:(_Bool)arg1;
 - (_Bool)snapshotChannels;
-- (id)getOGLView;
+- (id)getView;
 - (id)appDelegate;
 - (id)allocAppDelegate;
 - (void)dealloc;

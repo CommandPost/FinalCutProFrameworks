@@ -46,9 +46,8 @@ __attribute__((visibility("hidden")))
 - (void)setModelObjectIDs:(id)arg1;
 - (id)initWithArray:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4 userInfo:(id)arg5;
 - (id)initWithArray:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4;
-- (void)_initHelperWithObject:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4 userInfo:(id)arg5;
+- (void)_initHelperWithObjects:(id)arg1 parent:(id)arg2 copiedTypes:(id)arg3 options:(id)arg4 userInfo:(id)arg5 encodeObjects:(BOOL)arg6;
 - (void)dealloc;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

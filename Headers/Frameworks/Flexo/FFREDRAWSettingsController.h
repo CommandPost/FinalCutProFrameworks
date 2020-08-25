@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_assets;
     NSMutableSet *_clips;
     NSMapTable *_clipToAssetMap;
-    Class _REDImageProcessingClass;
     id <FFREDRAWPropertyChangeController> _colorSpaceChangeController;
     id <FFREDRAWPropertyChangeController> _gammaCurveChangeController;
     id <FFREDRAWPropertyChangeController> _kelvinChangeController;
@@ -79,9 +78,6 @@ __attribute__((visibility("hidden")))
 - (double)REDRAWShadowMinValue;
 - (double)REDRAWFLUTControlMaxValue;
 - (double)REDRAWFLUTControlMinValue;
-- (unsigned long long)REDRAWISOMaxValue;
-- (unsigned long long)REDRAWISOMinValue;
-- (unsigned long long)REDRAWISOCount;
 - (double)REDRAWTintMaxValue;
 - (double)REDRAWTintMinValue;
 - (double)REDRAWKelvinMaxValue;

@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>;
+@class NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol>;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectLibrarySkimmableCacheItem : NSObject
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (id)cacheItemWithSkimmable:(struct NSObject *)arg1;
 @property(readonly, nonatomic) double lastAccessTime; // @synthesize lastAccessTime=_lastAccessTime;
-@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
+@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
 - (void)updateLastAccessTime;
 - (void)dealloc;
 - (id)initWithSkimmable:(struct NSObject *)arg1;

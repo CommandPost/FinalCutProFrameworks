@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) NSString *roleString; // @synthesize roleString=_roleString;
 @property(retain, nonatomic) FFRoleColorScheme *colorScheme; // @synthesize colorScheme=_colorScheme;
+- (void)dealloc;
 
 @end
 

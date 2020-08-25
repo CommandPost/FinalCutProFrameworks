@@ -33,8 +33,8 @@
 - (void)setAnimationHeightFromSender:(id)arg1;
 - (long long)animationStyle;
 - (void)setAnimationStyle:(long long)arg1;
-- (unsigned long long)textAlignment;
-- (void)setTextAlignment:(unsigned long long)arg1;
+- (long long)textAlignment;
+- (void)setTextAlignment:(long long)arg1;
 - (void)setTextAlignmentFromSender:(id)arg1;
 - (NSArray *)backgroundTextColors;
 - (NSArray *)textColors;

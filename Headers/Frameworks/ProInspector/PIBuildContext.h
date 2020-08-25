@@ -8,7 +8,7 @@
 
 #import "NSCopying.h"
 
-@class NSMutableDictionary, NSValue, NSView;
+@class NSArray, NSMutableDictionary, NSValue, NSView;
 
 @interface PIBuildContext : NSObject <NSCopying>
 {
@@ -22,6 +22,7 @@
     struct __CFString *_bundleID;
     NSMutableDictionary *_pValues;
     NSView *_customContainerView;
+    NSArray *_ozChannelDontBuildList;
     BOOL isRoot;
     BOOL shouldDisplayAnimIndicator;
 }
@@ -45,6 +46,8 @@
 + (double)audioControlSpinnerWidth;
 + (double)audioControlHeight;
 + (double)audioControlWidth;
++ (double)labelTextFieldLeadingOffset;
++ (double)enableButtonLeadingOffset;
 + (double)disclosureMaxWidth;
 + (double)disclosureTriangleIndent;
 + (double)popupAlignmentAdjustment;
@@ -63,9 +66,11 @@
 + (id)inspectorFont10Regular;
 + (id)inspectorTabIconSelectedColor;
 + (id)inspectorTabIconNormalColor;
++ (id)inspectorMissingTextColorRed;
 + (id)inspectorTextColorGrey215;
 + (id)inspectorTextColorGrey193;
 + (id)inspectorTextColorGrey179;
++ (id)inspectorTextColorGrey153;
 + (id)inspectorTextColorGrey178;
 + (id)inspectorTextColorGrey83;
 + (id)inspectorBackgroundColorGrey51;
@@ -78,6 +83,7 @@
 + (double)valueMaxXRightOffset:(BOOL)arg1;
 + (double)rowHeight;
 + (BOOL)isMotion;
+@property(retain, nonatomic) NSArray *ozChannelDontBuildList; // @synthesize ozChannelDontBuildList=_ozChannelDontBuildList;
 @property(retain, nonatomic) NSValue *topSelectableChannel; // @synthesize topSelectableChannel=_topSelectableChannel;
 @property(nonatomic) unsigned int buildContextVisibilityFlags; // @synthesize buildContextVisibilityFlags=_buildContextVisibilityFlags;
 @property(retain, nonatomic) NSView *customContainerView; // @synthesize customContainerView=_customContainerView;

@@ -8,7 +8,7 @@
 
 #import "CALayerDelegate.h"
 
-@class CALayer, CATextLayer, FFBKEffectLibraryItem, FFEffectLibrarySelectionLayer, NSString;
+@class CALayer, CATextLayer, FFBKEffectLibraryItem, FFEffectLibraryIconLayerDelegate, FFEffectLibrarySelectionLayer, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectLibraryItemView : NSView <CALayerDelegate>
@@ -22,10 +22,12 @@ __attribute__((visibility("hidden")))
     CATextLayer *_nameLayer;
     BOOL _requestedIcon;
     BOOL _hasSuperview;
+    FFEffectLibraryIconLayerDelegate *_iconLayerDelegate;
 }
 
 + (void)setupLayoutConstants:(id)arg1;
 + (id)textLayerFont;
+@property(retain, nonatomic) FFEffectLibraryIconLayerDelegate *iconLayerDelegate; // @synthesize iconLayerDelegate=_iconLayerDelegate;
 @property(nonatomic) BOOL hasSuperview; // @synthesize hasSuperview=_hasSuperview;
 @property(readonly) CALayer *skimmingLayer; // @synthesize skimmingLayer=_iconLayer;
 @property(nonatomic) BOOL selected; // @synthesize selected=_selected;
@@ -56,9 +58,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)acceptsFirstResponder;
 - (void)setEmphasized:(BOOL)arg1;
 - (BOOL)isFlipped;
-- (void)loadIcon;
+- (id)iconNotLoadedImage;
+- (void)loadIconIfVisible;
 - (void)viewDidMoveToSuperview;
-- (void)viewWillDraw;
+- (void)layerWillDraw:(id)arg1;
 - (void)dealloc;
 - (void)updateStringIfNeeded;
 - (id)initWithEffect:(id)arg1;

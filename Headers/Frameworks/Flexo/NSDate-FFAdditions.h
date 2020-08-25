@@ -8,5 +8,6 @@
 
 @interface NSDate (FFAdditions)
 + (id)GMTDateFromLocalTime:(unsigned long long)arg1 timeZone:(id)arg2;
+- (double)timeHourMinuteSecond;
 @end
 

@@ -6,12 +6,11 @@
 
 #import <Flexo/FFAudioUnitEffect.h>
 
-@class FFAudioPreprocessor, FFBackgroundTask, NSString, NSURL;
+@class FFAudioPreprocessor, FFBackgroundTask, NSString;
 
 @interface FFAudioUnitAnalyzingEffect : FFAudioUnitEffect
 {
     NSString *_processingState;
-    NSURL *_renderfileURL;
     FFBackgroundTask *_backgroundTask;
     double _results;
     CDStruct_1b6d18a9 _startTimecode;
@@ -24,8 +23,8 @@
 @property(nonatomic) CDStruct_1b6d18a9 startTimecode; // @synthesize startTimecode=_startTimecode;
 @property(nonatomic) double results; // @synthesize results=_results;
 @property(retain, nonatomic) FFBackgroundTask *backgroundTask; // @synthesize backgroundTask=_backgroundTask;
-@property(retain, nonatomic) NSURL *renderfileURL; // @synthesize renderfileURL=_renderfileURL;
 @property(retain, nonatomic) NSString *processingState; // @synthesize processingState=_processingState;
+- (id)newMasterUnitForModelUpdates;
 - (void)setEnabled:(BOOL)arg1;
 - (void)channelParameterChanged:(id)arg1;
 - (id)initWithCoder:(id)arg1;

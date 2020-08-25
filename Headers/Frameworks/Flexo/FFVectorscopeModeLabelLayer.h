@@ -11,13 +11,11 @@ __attribute__((visibility("hidden")))
 {
     long long _phase;
     long long _barTarget;
-    CDStruct_554002f2 _action_opt;
 }
 
 - (id)accessibilityAttributeValue:(id)arg1;
-- (id)actionForKey:(id)arg1;
-- (void)setBarTarget:(long long)arg1;
-- (void)setPhase:(long long)arg1;
+@property(nonatomic) long long barTarget; // @dynamic barTarget;
+@property(nonatomic) long long phase; // @dynamic phase;
 
 @end
 

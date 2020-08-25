@@ -17,6 +17,7 @@
     FFRole *_role;
     struct PC_CMTimePair _scopeStartEndTimes;
     BOOL _isOrphan;
+    int _cachedNumPanChannels;
 }
 
 + (BOOL)supportsSecureCoding;
@@ -27,6 +28,11 @@
 @property(readonly, nonatomic) int itemType; // @synthesize itemType=_itemType;
 @property(readonly, nonatomic) BOOL muted; // @synthesize muted=_muted;
 @property(readonly, nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
+- (void)informEffectStackAudioChannelCountChanged;
+- (void)clearCachedNumPanChannels;
+- (int)cachedNumPanChannels;
+- (void)setCachedNumPanChannels:(int)arg1;
+- (void)setEffectStackInternal:(id)arg1;
 - (BOOL)isOrphanEligible;
 - (void)notifyRolesDidChangeForLibrary:(id)arg1 removedRoleUIDs:(id)arg2;
 - (void)_markRolePropertiesAsDirty;

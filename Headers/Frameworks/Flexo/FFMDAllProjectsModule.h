@@ -80,7 +80,7 @@
 - (long long)numberOfItemsInImageBrowser:(id)arg1;
 - (void)imageBrowserSelectionDidChange:(id)arg1;
 - (id)shareHelper;
-- (BOOL)supportsExcludingDisabledRolesInShareOfSequence:(id)arg1;
+- (BOOL)useTimelinePlaybackInShareOfSequence:(id)arg1;
 - (id)shareSelection:(id)arg1;
 - (id)shareDestinationsSansImage:(id)arg1;
 - (void)shareDestinationPicker:(id)arg1;

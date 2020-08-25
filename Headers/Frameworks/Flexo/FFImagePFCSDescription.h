@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) FFPixelFormat *pixelFormat; // @synthesize pixelFormat=_pf;
 - (BOOL)isEqualToPFCS:(id)arg1;
 - (void)dealloc;
+- (id)initWithPixelFormat:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 silence8BitWarnings:(_Bool)arg3;
 - (id)initWithPixelFormat:(id)arg1 colorSpace:(struct CGColorSpace *)arg2;
 
 @end

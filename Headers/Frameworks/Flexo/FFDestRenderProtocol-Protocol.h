@@ -9,8 +9,5 @@
 @protocol FFDestRenderProtocol
 - (void)endRender;
 - (void)beginRenderWithRenderer:(FFRenderer *)arg1 forLastDest:(BOOL)arg2;
-
-@optional
-- (_Bool)isPauseRequested;
 @end
 

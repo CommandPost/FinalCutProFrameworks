@@ -33,15 +33,14 @@
     int _cameraMode;
     FFOnScreenControlsTexture *_overlayTexture;
     NSMapTable *_drawProperties;
-    struct {
-        int _requestedExecLocation;
-        int _actualExecLocation;
-    } _execLocInfo;
     NSError *_errorInfo;
+    _Bool _execLocInfoHasBeenSet;
+    CDStruct_17afb55d _execLocInfo;
 }
 
 @property(readonly) unsigned int zebraMode2; // @synthesize zebraMode2=_zebraMode2;
 @property(readonly) unsigned int zebraMode1; // @synthesize zebraMode1=_zebraMode1;
+@property(readonly) int cameraMode; // @synthesize cameraMode=_cameraMode;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 nativeFrameDur; // @synthesize nativeFrameDur=_nativeFrameDur;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(readonly, retain, nonatomic) FFDestVideoRequestInfo *originalDestRequest; // @synthesize originalDestRequest=_originalDestRequest;
@@ -58,9 +57,8 @@
 - (void)updateHealthLevels:(CDStruct_b80813c2 *)arg1;
 - (void)dealloc;
 - (id)description;
-@property(readonly) int cameraMode; // @synthesize cameraMode=_cameraMode;
-- (CDStruct_1ef3fb1f)execLocInfo;
-- (void)setExecLocInfo:(CDStruct_1ef3fb1f)arg1;
+- (CDStruct_17afb55d)execLocInfo;
+- (void)setExecLocInfo:(CDStruct_17afb55d)arg1;
 - (id)graphBuildInfo2;
 - (id)graphBuildInfo1;
 - (id)image2_MD5;

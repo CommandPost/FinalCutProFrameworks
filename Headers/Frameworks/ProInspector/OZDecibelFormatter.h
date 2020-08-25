@@ -15,6 +15,7 @@
 - (BOOL)isPartialStringValid:(id)arg1 newEditingString:(id *)arg2 errorDescription:(id *)arg3;
 - (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
 - (id)stringForObjectValue:(id)arg1;
+- (void)getObjectValue:(id *)arg1 incrementingSegmentWithTag:(long long)arg2 byIncrement:(long long)arg3 inObjectValue:(id)arg4;
 - (void)getObjectValue:(id *)arg1 incrementingSegmentWithTag:(long long)arg2 byFloatIncrement:(double)arg3 inObjectValue:(id)arg4;
 - (id)initWithSuffix:(id)arg1 min:(double)arg2 max:(double)arg3 decimalDigits:(unsigned int)arg4;
 

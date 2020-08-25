@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)_halfSecondTime;
 - (CDStruct_1b6d18a9)_newCMTime:(long long)arg1;
 - (id)translateVisualFilterForEntity:(id)arg1 error:(id *)arg2;
+- (id)mapHulkTitleEffectUUID:(id)arg1;
 - (id)translateEffectIDForTitle:(id)arg1 error:(id *)arg2;
 - (id)translateEffectIDForTransition:(id)arg1 error:(id *)arg2;
 - (id)translateTitleLabels:(id)arg1 error:(id *)arg2;

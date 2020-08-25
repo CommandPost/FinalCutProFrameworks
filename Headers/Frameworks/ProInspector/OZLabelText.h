@@ -39,8 +39,8 @@
 - (void)setViewController:(id)arg1;
 - (void)stopPulsing;
 - (void)startPulsing;
-- (void)setAlignment:(unsigned long long)arg1;
-- (void)setStringValue:(id)arg1 andAlignment:(unsigned long long)arg2;
+- (void)setAlignment:(long long)arg1;
+- (void)setStringValue:(id)arg1 andAlignment:(long long)arg2;
 - (void)setStringValue:(id)arg1;
 - (void)dealloc;
 - (void)setHidden:(BOOL)arg1;

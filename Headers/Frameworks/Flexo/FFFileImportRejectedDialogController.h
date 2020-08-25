@@ -6,33 +6,19 @@
 
 #import "NSWindowController.h"
 
-#import "NSBrowserDelegate.h"
-
-@class NSArray, NSBrowser, NSString;
+@class NSMutableArray, NSTableView;
 
 __attribute__((visibility("hidden")))
-@interface FFFileImportRejectedDialogController : NSWindowController <NSBrowserDelegate>
+@interface FFFileImportRejectedDialogController : NSWindowController
 {
-    NSBrowser *_browser;
-    NSArray *_listSource;
+    NSTableView *_tableView;
+    NSMutableArray *_dataSources;
 }
 
-- (id)browser:(id)arg1 selectionIndexesForProposedSelection:(id)arg2 inColumn:(long long)arg3;
-- (void)browser:(id)arg1 willDisplayCell:(id)arg2 atRow:(long long)arg3 column:(long long)arg4;
-- (id)browser:(id)arg1 objectValueForItem:(id)arg2;
-- (BOOL)browser:(id)arg1 isLeafItem:(id)arg2;
-- (id)browser:(id)arg1 child:(long long)arg2 ofItem:(id)arg3;
-- (long long)browser:(id)arg1 numberOfChildrenOfItem:(id)arg2;
 - (void)ok:(id)arg1;
 - (void)cancel:(id)arg1;
 - (void)dealloc;
-- (id)initWithListSource:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithURLs:(id)arg1;
 
 @end
 

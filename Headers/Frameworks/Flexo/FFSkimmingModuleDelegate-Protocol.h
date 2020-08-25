@@ -21,6 +21,7 @@
 - (CALayer *)skimmingModule:(FFSkimmingModule *)arg1 skimmingLensLayerForSkimmingLayer:(CALayer *)arg2;
 - (BOOL)skimmingModule:(FFSkimmingModule *)arg1 isSkimmingInViewerWithSkimmable:(struct NSObject *)arg2;
 - (void)skimmingModuleStopSkimmingInViewer:(FFSkimmingModule *)arg1;
+- (BOOL)skimmingModule:(FFSkimmingModule *)arg1 startSkimmingInViewerReplacingSkimmable:(struct NSObject *)arg2 withSkimmable:(struct NSObject *)arg3 context:(FFContext *)arg4 effectCount:(long long)arg5;
 - (BOOL)skimmingModule:(FFSkimmingModule *)arg1 startSkimmingInViewerWithSkimmable:(struct NSObject *)arg2 context:(FFContext *)arg3 effectCount:(long long)arg4;
 - (CALayer *)skimmingModule:(FFSkimmingModule *)arg1 videoThumbnailLayerForSkimmingLayer:(CALayer *)arg2;
 - (struct CGRect)skimmingModule:(FFSkimmingModule *)arg1 videoThumbnailFrameForLayer:(CALayer *)arg2 atTime:(CDStruct_1b6d18a9)arg3;

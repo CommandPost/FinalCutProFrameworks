@@ -6,13 +6,14 @@
 
 #import "NSObject.h"
 
-@class NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString;
 
 @interface OZLibraryTopPaneEntry : NSObject
 {
     NSString *_name;
     NSString *_path;
     NSString *_iconName;
+    NSArray *_allowedFileTypes;
     unsigned int _includeType1[4];
     unsigned int _includeType2[4];
     unsigned int _excludeType[4];
@@ -26,7 +27,7 @@
 
 - (id)getLibraryEntryFromRoot:(id)arg1;
 - (int)getInheritanceLevel;
-- (BOOL)IsObjectTypeAllowed:(struct OZFactory *)arg1;
+-     // Error parsing type: c24@0:8^{OZFactory=^^?{PCUUID=IIII}{PCUUID=IIII}I{atomic<OZFactory *>=A^{OZFactory}}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}}16, name: IsObjectTypeAllowed:
 - (void)setIsInUserDir:(BOOL)arg1;
 - (BOOL)getIsInUserDir;
 - (void)setIsAllItem:(BOOL)arg1;
@@ -47,6 +48,8 @@
 - (void)setIncludeType1:(const struct PCUUID *)arg1;
 - (struct PCUUID)getIncludeType2;
 - (struct PCUUID)getIncludeType1;
+- (id)getAllowedFileTypes;
+- (void)setAllowedFileTypes:(id)arg1;
 - (void)setIconName:(id)arg1;
 - (void)setPath:(id)arg1;
 - (id)getPath;
@@ -55,7 +58,7 @@
 - (void)setName:(id)arg1;
 - (id)getName;
 - (void)dealloc;
-- (id)initWithName:(id)arg1 path:(id)arg2 iconName:(id)arg3 includeType1:(const struct PCUUID *)arg4 includeType2:(const struct PCUUID *)arg5 excludeType:(const struct PCUUID *)arg6 parent:(id)arg7;
+- (id)initWithName:(id)arg1 path:(id)arg2 iconName:(id)arg3 includeType1:(const struct PCUUID *)arg4 includeType2:(const struct PCUUID *)arg5 excludeType:(const struct PCUUID *)arg6 allowedFileTypes:(id)arg7 parent:(id)arg8;
 
 @end
 

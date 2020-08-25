@@ -53,7 +53,7 @@
 - (BOOL)ingestProjectArchive:(id)arg1 error:(id *)arg2 progress:(CDUnknownBlockType)arg3;
 - (id)_parseArchiveEntry:(id)arg1 error:(id *)arg2;
 - (void)_removeCreatedTempDirectory;
-- (BOOL)_createAndSetTempDirectory;
+- (BOOL)_createAndSetTempDirectoryWithError:(id *)arg1;
 - (BOOL)lossyVersionCheck;
 - (BOOL)appVersionCheckWithError:(id *)arg1;
 - (int)_oldestSupportedVersion;

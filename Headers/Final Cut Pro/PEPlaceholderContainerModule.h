@@ -22,7 +22,7 @@
 - (double)topDraggableMargin;
 - (id)localModuleActions;
 - (id)targetModules;
-- (unsigned long long)labelAlignment;
+- (long long)labelAlignment;
 - (BOOL)wantsDarkCapBar;
 - (BOOL)wantsTransparentBackground;
 - (id)moduleFooterAccessoryView;

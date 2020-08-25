@@ -27,6 +27,7 @@
     LKButton *_doNotSaveUISettingsButton;
     LKButton *_enableMetalRenderingButton;
     LKButton *_enableMetalOSCsButton;
+    LKButton *_reduceMetalShaderPrecisionButton;
     LKButton *_animalStyleButton;
 }
 

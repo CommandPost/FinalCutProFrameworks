@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class CHChannelDouble, FFBackgroundTask, FFImage, FFMD5AndOffset, FFProject, FFRoleColorScheme, NSColor, NSMutableArray, NSMutableSet, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>, NSString, NSValue;
+@class CHChannelDouble, FFBackgroundTask, FFImage, FFMD5AndOffset, FFProject, FFRoleColorScheme, FFVideoProps, NSColor, NSMutableArray, NSMutableSet, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol>, NSString, NSValue;
 
 @interface FFThumbnailRequest : NSObject
 {
@@ -28,7 +28,7 @@
     NSString *_segmentMD5String;
     long long _segmentOffset;
     FFImage *_image;
-    BOOL _canceled;
+    // Error parsing type: Ac, name: _canceled
     BOOL _pendingDeferRequest;
     int _attemptCount;
     FFBackgroundTask *_taskThatInitiatedRequest;
@@ -39,12 +39,15 @@
     int _imageRequestState;
     NSValue *_libraryIdentifier;
     NSMutableSet *_assetIdentifiers;
+    FFVideoProps *_videoProps;
     BOOL _highlighted;
     FFRoleColorScheme *_audioWaveformColorScheme;
     long long _roleColorSchemeVariant;
 }
 
-+ (BOOL)requestCachedImageForProject:(id)arg1 segmentMD5String:(id)arg2 segmentOffset:(long long)arg3 isAudio:(BOOL)arg4 outImage:(id *)arg5;
++ (id)copyCachedImageForProject:(id)arg1 segmentMD5String:(id)arg2 segmentOffset:(long long)arg3 isAudio:(BOOL)arg4 videoProps:(id)arg5;
++ (id)copyCachedImageForProject:(id)arg1 segmentMD5String:(id)arg2 segmentOffset:(long long)arg3 isAudio:(BOOL)arg4;
++ (id)copyCachedImageFrom:(id)arg1 isAudio:(BOOL)arg2;
 @property(nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property(nonatomic) long long roleColorSchemeVariant; // @synthesize roleColorSchemeVariant=_roleColorSchemeVariant;
 @property(retain, nonatomic) FFRoleColorScheme *audioWaveformColorScheme; // @synthesize audioWaveformColorScheme=_audioWaveformColorScheme;
@@ -53,6 +56,7 @@
 @property(nonatomic) BOOL audioIsFullyValid; // @synthesize audioIsFullyValid=_audioIsFullyValid;
 @property(copy, nonatomic) CHChannelDouble *duckingChannel; // @synthesize duckingChannel=_duckingChannel;
 @property(copy, nonatomic) CHChannelDouble *volumeChannel; // @synthesize volumeChannel=_volumeChannel;
+@property(readonly, nonatomic) FFVideoProps *videoProps; // @synthesize videoProps=_videoProps;
 @property(readonly, nonatomic) int workingSpace; // @synthesize workingSpace=_workingSpace;
 @property(readonly, nonatomic) long long effectCount; // @synthesize effectCount=_effectCount;
 @property(readonly, nonatomic) int temporalQuality; // @synthesize temporalQuality=_temporalQuality;
@@ -66,9 +70,10 @@
 @property(readonly, nonatomic) CDStruct_e83c9415 imageTimeRange; // @synthesize imageTimeRange=_imageTimeRange;
 @property(readonly, nonatomic) CDStruct_e83c9415 sampleTimeRange; // @synthesize sampleTimeRange=_sampleTimeRange;
 @property(readonly, nonatomic) FFProject *project; // @synthesize project=_project;
-@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
+@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
 - (id)assetIdentifiers;
 - (BOOL)deferredOrCanceled;
+- (BOOL)_hasPendingDeferRequest;
 - (void)deferRequest;
 - (int)incrementAttemptCount;
 - (void)forceAVClip;
@@ -90,7 +95,7 @@
 @property(readonly, nonatomic) NSColor *referenceWaveformColor;
 - (oneway void)release;
 - (void)dealloc;
-- (id)initWithSegmentMD5String:(id)arg1 segmentOffset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4;
+- (id)initWithSegmentMD5String:(id)arg1 segmentOffset:(long long)arg2 project:(id)arg3 isAudio:(BOOL)arg4 videoProps:(id)arg5;
 - (id)initWithSkimmable:(struct NSObject *)arg1 imageTimeRange:(CDStruct_e83c9415)arg2 imageSize:(struct CGSize)arg3 imageQuality:(int)arg4 requestAudio:(BOOL)arg5 requestTimeType:(int)arg6 constrainedTimeRange:(CDStruct_e83c9415)arg7 highPriority:(BOOL)arg8 useImageCache:(BOOL)arg9 effectCount:(long long)arg10 audioOptions:(int)arg11 taskThatInitiatedRequest:(id)arg12;
 
 @end

@@ -6,26 +6,85 @@
 
 #import "NSView.h"
 
-@class FFImportLocationPopUpController, NSButton, NSPopUpButton;
+#import "FFLibraryMediaLocationChooserDelegate.h"
+
+@class FFAssetTranscodeRequest, FFAssetTranscodeStatus, FFImportLocationPopUpController, FFLibrary, FFLibraryMediaLocationChooserController, NSButton, NSConditionLock, NSImageView, NSLayoutConstraint, NSPopUpButton, NSStackView, NSString, NSTextField;
 
 __attribute__((visibility("hidden")))
-@interface FFLibraryTaskOptionsView : NSView
+@interface FFLibraryTaskOptionsView : NSView <FFLibraryMediaLocationChooserDelegate>
 {
+    NSButton *_originalButton;
     NSButton *_optimizedButton;
     NSButton *_proxyButton;
     NSButton *_consolidateButton;
     NSPopUpButton *_consolidatePopUp;
+    NSPopUpButton *_mediaDestinationPopupButton;
+    NSImageView *_warningView;
+    NSButton *_mediaOptionButton;
+    NSButton *_databaseOnlyButton;
+    NSTextField *_mediaTypeDescription;
+    NSTextField *_mediaDestinationDescription;
+    NSStackView *_mediaIncludeOptionsView;
+    NSLayoutConstraint *_widthConstraint;
+    NSLayoutConstraint *_heightConstraint;
+    NSLayoutConstraint *_mediaTypeDescriptionHeightConstraint;
+    NSLayoutConstraint *_mediaDestinationDescriptionHeightConstraint;
     FFImportLocationPopUpController *_importer;
+    double _minHeight;
+    BOOL _isCopy;
+    BOOL _transcodeOnCopy;
+    int _mediaType;
+    NSStackView *_mediaCopyOnlyOptionsView;
+    FFLibrary *_sourceLibrary;
+    FFLibrary *_targetLibrary;
+    FFLibraryMediaLocationChooserController *_mediaLocationChooserController;
+    FFAssetTranscodeRequest *_scanRequest;
+    FFAssetTranscodeStatus *_scanStatus;
+    NSConditionLock *_scanCompleteLock;
+    NSButton *_okButton;
+    SEL _okSel;
+    id _okTarget;
 }
 
-+ (id)chooseForDestination:(id)arg1 isCopy:(BOOL)arg2;
++ (BOOL)prepareTranscodingWithOptions:(id)arg1 assetTranscodeStatus:(id)arg2 isCopy:(BOOL)arg3 targetLibrary:(id)arg4 externalMediaLocation:(id)arg5;
++ (id)chooseObjects:(id)arg1 forDestination:(id)arg2 isCopy:(BOOL)arg3 moveLibrary:(BOOL)arg4;
+@property(nonatomic) id okTarget; // @synthesize okTarget=_okTarget;
+@property(nonatomic) SEL okSel; // @synthesize okSel=_okSel;
+@property(nonatomic) NSButton *okButton; // @synthesize okButton=_okButton;
+@property(retain, nonatomic) NSConditionLock *scanCompleteLock; // @synthesize scanCompleteLock=_scanCompleteLock;
+@property(retain) FFAssetTranscodeStatus *scanStatus; // @synthesize scanStatus=_scanStatus;
+@property(retain, nonatomic) FFAssetTranscodeRequest *scanRequest; // @synthesize scanRequest=_scanRequest;
+@property(nonatomic) int mediaType; // @synthesize mediaType=_mediaType;
+@property(nonatomic) BOOL transcodeOnCopy; // @synthesize transcodeOnCopy=_transcodeOnCopy;
+@property(retain, nonatomic) FFLibraryMediaLocationChooserController *mediaLocationChooserController; // @synthesize mediaLocationChooserController=_mediaLocationChooserController;
+@property(retain, nonatomic) FFLibrary *targetLibrary; // @synthesize targetLibrary=_targetLibrary;
+@property(retain, nonatomic) FFLibrary *sourceLibrary; // @synthesize sourceLibrary=_sourceLibrary;
+@property(nonatomic) BOOL isCopy; // @synthesize isCopy=_isCopy;
+@property(retain, nonatomic) NSStackView *mediaCopyOnlyOptionsView; // @synthesize mediaCopyOnlyOptionsView=_mediaCopyOnlyOptionsView;
+- (void)locationChooser:(id)arg1 didChangeValidationState:(BOOL)arg2;
+- (void)locationChooser:(id)arg1 didChangeMediaLocation:(id)arg2;
+- (void)setUpMediaDesinationPopup;
+- (void)copyExternalMedia:(id)arg1;
+- (void)selectMediaType:(id)arg1;
+- (void)optionChanged:(id)arg1;
+- (void)okPressed:(id)arg1;
+- (void)updateOptionButtons;
+- (void)updateDescriptions;
+- (void)updateOKButton;
+- (void)resizeIfNeeded;
+- (BOOL)waitForScan;
+- (void)scanForMissingAndUnsupportedMediasAsync;
 - (void)viewDidMoveToWindow;
 - (void)awakeFromNib;
-- (void)consolidateButtonPressed:(id)arg1;
 - (id)options;
-- (void)setOptions:(id)arg1;
-- (void)update;
+- (void)setOptions:(id)arg1 targetLibrary:(id)arg2;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

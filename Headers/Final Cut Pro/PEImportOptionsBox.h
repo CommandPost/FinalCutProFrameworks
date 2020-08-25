@@ -4,31 +4,30 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "LKBox.h"
+#import "NSView.h"
 
-@class LKButton, NSString, PEImportOptionsCollapsableView;
+@class LKButton, NSLayoutConstraint, NSString, PEImportOptionsCollapsableView;
 
-@interface PEImportOptionsBox : LKBox
+@interface PEImportOptionsBox : NSView
 {
     LKButton *_showHideButton;
     PEImportOptionsCollapsableView *_optionsView;
+    NSView *_titleView;
     BOOL _viewHidden;
     NSString *_userDefaultsKey;
-    double _minHeight;
-    double _maxHeight;
+    NSLayoutConstraint *_collapsedConstraint;
+    NSLayoutConstraint *_expendedConstraint;
 }
 
-@property(nonatomic) double maxHeight; // @synthesize maxHeight=_maxHeight;
-@property(nonatomic) double minHeight; // @synthesize minHeight=_minHeight;
+@property(retain, nonatomic) NSLayoutConstraint *expendedConstraint; // @synthesize expendedConstraint=_expendedConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *collapsedConstraint; // @synthesize collapsedConstraint=_collapsedConstraint;
 @property(nonatomic, getter=isViewHidden) BOOL viewHidden; // @synthesize viewHidden=_viewHidden;
 @property(retain, nonatomic) NSString *userDefaultsKey; // @synthesize userDefaultsKey=_userDefaultsKey;
-- (double)currentTargetHeight;
 - (void)setOptionsViewHidden:(BOOL)arg1 animate:(BOOL)arg2;
 - (BOOL)isOptionsViewHidden;
 - (void)updateShowHideButtonTitle;
 - (void)mouseExited:(id)arg1;
 - (void)mouseEntered:(id)arg1;
-- (void)drawRect:(struct CGRect)arg1;
 - (void)awakeFromNib;
 - (void)dealloc;
 

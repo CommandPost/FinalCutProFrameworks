@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     FFVideoProps *_bestGuess;
 }
 
-- (void)closingWithCode:(int)arg1;
+- (int)closingWithCode:(int)arg1;
 - (BOOL)loadView;
 - (void)changeVideoFormat:(id)arg1;
 - (void)setBestGuess:(id)arg1;

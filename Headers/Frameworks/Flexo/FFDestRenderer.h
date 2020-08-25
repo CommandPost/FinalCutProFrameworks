@@ -7,10 +7,11 @@
 #import <Flexo/FFDestVideo.h>
 
 #import "FFDestRenderProtocol.h"
+#import "FFPausableDestRenderProtocol.h"
 
 @class FFNRTFigClock, FFOnDiskRenderInfo, FFRenderer, NSArray, NSLock;
 
-@interface FFDestRenderer : FFDestVideo <FFDestRenderProtocol>
+@interface FFDestRenderer : FFDestVideo <FFDestRenderProtocol, FFPausableDestRenderProtocol>
 {
     FFNRTFigClock *_clock;
     NSLock *_lock;
@@ -24,6 +25,7 @@
     BOOL _isLastRenderDest;
 }
 
++ (BOOL)supportsOSCs;
 - (int)destRecommendedFFSVPriority;
 - (BOOL)internal_wantsDithering:(id)arg1;
 - (id)requestedImageInfo;
@@ -41,7 +43,7 @@
 - (void)beginRenderWithRenderer:(id)arg1 forLastDest:(BOOL)arg2;
 - (void)finishedProcessing:(CDStruct_1b6d18a9)arg1;
 - (_Bool)isPauseRequested;
-- (void)haveRenderCheckForPause;
+- (_Bool)haveRenderCheckForPause;
 - (void)startingToProcess:(CDStruct_1b6d18a9)arg1;
 - (void)flush:(BOOL)arg1;
 - (void)setPlayer:(id)arg1;

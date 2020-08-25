@@ -6,13 +6,15 @@
 
 #import <Flexo/FFSharePanelParentBrick.h>
 
-@class NSString;
+@class NSImage, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFSharePanelMultitrackParentBrick : FFSharePanelParentBrick
 {
 }
 
+@property(readonly, nonatomic) NSImage *typeIcon;
+- (id)stompSettings;
 @property(readonly, nonatomic) NSString *typeString;
 - (id)initWithDataSource:(id)arg1;
 

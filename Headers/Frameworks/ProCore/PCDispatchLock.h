@@ -8,28 +8,22 @@
 
 #import "PCDispatchLocking.h"
 
-@class NSObject<OS_dispatch_queue>, NSString, NSThread;
+@class NSObject<OS_dispatch_queue>, NSString;
 
 @interface PCDispatchLock : NSObject <PCDispatchLocking>
 {
     NSObject<OS_dispatch_queue> *_synchronizationQueue;
-    const char *_label;
-    NSThread *_writerThread;
 }
 
-@property(retain) NSThread *writerThread; // @synthesize writerThread=_writerThread;
-- (BOOL)currentDispatchQueueIsMyQueue;
-- (BOOL)isBeingInvokedWhileHoldingWriteLock;
-- (BOOL)isBeingInvokedWhileHoldingReadLock;
-- (void)raiseRecursiveLockException;
-- (void)raiseMissingWriteLockException;
-- (void)raiseMissingReadLockException;
+- (id)synchronizationQueue;
 - (void)lockForWritingUsingBlock:(CDUnknownBlockType)arg1;
 - (void)lockForReadingUsingBlock:(CDUnknownBlockType)arg1;
 - (void)requireWriteLock;
 - (void)requireReadLock;
 - (void)dealloc;
 - (id)newDispatchQueueLabel;
+- (id)newDispatchQueueWithConcurrentReadAccess:(BOOL)arg1;
+- (id)initForConcurrentReadAccess:(BOOL)arg1;
 - (id)init;
 
 // Remaining properties

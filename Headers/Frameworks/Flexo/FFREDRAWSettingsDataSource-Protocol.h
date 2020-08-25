@@ -23,9 +23,6 @@
 - (double)REDRAWShadowMinValue;
 - (double)REDRAWFLUTControlMaxValue;
 - (double)REDRAWFLUTControlMinValue;
-- (unsigned long long)REDRAWISOMaxValue;
-- (unsigned long long)REDRAWISOMinValue;
-- (unsigned long long)REDRAWISOCount;
 - (double)REDRAWTintMaxValue;
 - (double)REDRAWTintMinValue;
 - (double)REDRAWKelvinMaxValue;

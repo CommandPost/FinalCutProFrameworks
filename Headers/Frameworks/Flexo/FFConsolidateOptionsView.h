@@ -11,11 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface FFConsolidateOptionsView : NSView
 {
+    NSButton *_originalMediaCheckbox;
     NSButton *_optimizedMediaCheckbox;
     NSButton *_proxyMediaCheckbox;
+    NSButton *_okButton;
 }
 
 + (BOOL)runConsolidateDialogWithTitle:(id)arg1 description:(id)arg2 library:(id)arg3 options:(int *)arg4;
+- (void)updateOKButton;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (int)consolidateOptions;
 - (id)options;
 - (void)setOptions:(id)arg1;

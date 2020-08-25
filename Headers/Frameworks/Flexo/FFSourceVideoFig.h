@@ -12,12 +12,13 @@
 #import "FFSourceVideoOverrideCameraProjectionMode.h"
 #import "FFSourceVideoOverrideColorspace.h"
 #import "FFSourceVideoOverrideFieldDominance.h"
+#import "FFSourceVideoProResRAWConversionAdjustmentProtocol.h"
 #import "FFSourceVideoRAWToLogProtocol.h"
 
-@class FFVideoProps, NSCondition, NSMutableArray, NSObject<OS_dispatch_queue>;
+@class FFProResRAWConversionAdjustmentInfo, FFREDSettings, FFVideoProps, NSCondition, NSMutableArray, NSObject<OS_dispatch_queue>;
 
 __attribute__((visibility("hidden")))
-@interface FFSourceVideoFig : FFSourceVideo <FFSourceVideoOverrideAlphaProtocol, FFSourceVideoInvertAlphaProtocol, FFSourceVideoOverrideFieldDominance, FFSourceVideoOverrideColorspace, FFSourceVideoRAWToLogProtocol, FFSourceVideoCameraLUTProcessingProtocol, FFSourceVideoOverrideCameraProjectionMode>
+@interface FFSourceVideoFig : FFSourceVideo <FFSourceVideoOverrideAlphaProtocol, FFSourceVideoInvertAlphaProtocol, FFSourceVideoOverrideFieldDominance, FFSourceVideoOverrideColorspace, FFSourceVideoRAWToLogProtocol, FFSourceVideoProResRAWConversionAdjustmentProtocol, FFSourceVideoCameraLUTProcessingProtocol, FFSourceVideoOverrideCameraProjectionMode>
 {
     FFVideoProps *_trueNativeVideoProps;
     FFVideoProps *_nativeVideoProps;
@@ -53,8 +54,10 @@ __attribute__((visibility("hidden")))
     struct __CFDictionary *_imageInfoForQualityCache;
     struct CGRect _opaqueBounds;
     int _rawToLogConversion;
+    FFProResRAWConversionAdjustmentInfo *_prrConversionAdjustmentInfo;
     struct FFSourceColorConformBaseClass *_cameraLUTProcessingInfo;
     int _cameraLUTProcessingTargetColorSpace;
+    FFREDSettings *_redSettings;
     _Bool _reportedAwfulFigNCLCGuess;
     int _nativeAlphaType;
     int _overrideAlphaType;
@@ -74,6 +77,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) int sampleContentAndFieldOrder; // @synthesize sampleContentAndFieldOrder=_sampleContentAndFieldOrder;
 @property(readonly) BOOL unsupportedReferenceMovie; // @synthesize unsupportedReferenceMovie=_unsupportedReferenceMovie;
 @property _Bool reportedAwfulFigNCLCGuess; // @synthesize reportedAwfulFigNCLCGuess=_reportedAwfulFigNCLCGuess;
+- (id)redSettings;
 - (BOOL)isValid;
 - (double)preferredScaleFactorForQuality:(int)arg1;
 - (id)codecName;
@@ -85,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (id)_getCachedInfo:(int)arg1;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
+- (CDStruct_bdcb2b0d)_vendorSpecificDecodeMD5Adjustment:(id)arg1;
 - (id)_newSubRangeMD5InfoForSampleDurationFromCache:(CDStruct_1b6d18a9)arg1 time:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (id)_newSubRangeMD5InfoForSampleDurationUncached:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;
 - (void)getTaggedProjection:(int *)arg1 stereo:(int *)arg2 recognizedProjection:(_Bool *)arg3 recognizedStereo:(_Bool *)arg4;
@@ -92,6 +97,9 @@ __attribute__((visibility("hidden")))
 - (void)setCameraLUTProcessingInfo:(struct FFSourceColorConformBaseClass *)arg1 targetColorSpace:(int)arg2;
 - (int)cameraLUTProcessingTargetColorSpace;
 - (struct FFSourceColorConformBaseClass *)cameraLUTProcessingInfo;
+- (void)setProResRAWConversionAdjustmentInfo:(id)arg1;
+- (id)proResRAWConversionAdjustmentInfo;
+- (BOOL)supportsProResRAWConversionAdjustment;
 - (void)setRAWToLogConversion:(int)arg1;
 - (int)rawToLogConversion;
 - (id)supportedRAWToLogConversions;

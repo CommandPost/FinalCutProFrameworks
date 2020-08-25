@@ -8,7 +8,7 @@
 
 #import "CKMediaServerProtocol.h"
 
-@class FFDestProMSExporter, FFMedia, FFPixelBuffer, FFPixelFormat, FFRenderer, FFStreamAudio, ProMSFrameCache;
+@class FFDestProMSExporter, FFMedia, FFPixelBuffer, FFPixelFormat, FFRenderer, FFStreamAudioRenderSession, ProMSFrameCache;
 
 @interface ProMSMediaServer : NSObject <CKMediaServerProtocol>
 {
@@ -25,7 +25,7 @@
     void *_serverAudioBuffer;
     int _serverAudioBufferSize;
     struct AudioStreamBasicDescription _asbd;
-    FFStreamAudio *_audioStream;
+    FFStreamAudioRenderSession *_audioStreamRenderSession;
     FFMedia *_renderSequence;
     BOOL _sequenceFromFile;
     CDStruct_1b6d18a9 _timeCodeDuration;

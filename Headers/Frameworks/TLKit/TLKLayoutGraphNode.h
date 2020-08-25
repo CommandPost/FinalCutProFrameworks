@@ -23,6 +23,8 @@
     TLKVerticalIndexTable *_verticalIndexTableBelowSpine;
     struct _TLKRange _timeRangeInSeconds;
     struct _TLKRange _nonOverlappingTimeRangeInSeconds;
+    CDStruct_e83c9415 _timeRange;
+    CDStruct_e83c9415 _nonOverlappingTimeRange;
 }
 
 @property(retain, nonatomic) TLKVerticalIndexTable *verticalIndexTableBelowSpine; // @synthesize verticalIndexTableBelowSpine=_verticalIndexTableBelowSpine;
@@ -38,6 +40,8 @@
 @property(nonatomic) long long layoutRegion; // @synthesize layoutRegion=_layoutRegion;
 @property(nonatomic) struct _TLKRange nonOverlappingTimeRangeInSeconds; // @synthesize nonOverlappingTimeRangeInSeconds=_nonOverlappingTimeRangeInSeconds;
 @property(nonatomic) struct _TLKRange timeRangeInSeconds; // @synthesize timeRangeInSeconds=_timeRangeInSeconds;
+@property(nonatomic) CDStruct_e83c9415 nonOverlappingTimeRange; // @synthesize nonOverlappingTimeRange=_nonOverlappingTimeRange;
+@property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 - (void)removeChildrenLayoutGraphNodesObject:(id)arg1;
 - (void)addChildrenLayoutGraphNodesObject:(id)arg1;
 - (id)description;

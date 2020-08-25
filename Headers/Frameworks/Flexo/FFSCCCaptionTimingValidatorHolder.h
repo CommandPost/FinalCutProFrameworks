@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_warningArray;
 }
 
-@property(readonly) BOOL finished; // @synthesize finished=_finished;
+@property BOOL finished; // @synthesize finished=_finished;
 @property(retain, nonatomic) NSMutableArray *warningArray; // @synthesize warningArray=_warningArray;
 @property(retain, nonatomic) NSArray *anchoredCaptions; // @synthesize anchoredCaptions=_anchoredCaptions;
 @property(retain, nonatomic) AVCaptionConversionValidator *validator; // @synthesize validator=_validator;

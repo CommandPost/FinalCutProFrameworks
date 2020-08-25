@@ -18,9 +18,8 @@
     struct {
         unsigned int isContainerItem:1;
         unsigned int isDraggedItem:1;
-        unsigned int markLayersForRemoval:1;
         unsigned int nestingLevel:2;
-        unsigned int RESERVED:27;
+        unsigned int RESERVED:28;
     } _layoutFlags;
     TLKItemComponentInfo *_primaryItemComponent;
     NSArray *_secondaryItemComponentRecords;
@@ -80,7 +79,6 @@
 - (void)removeItemComponentRecordsObject:(id)arg1;
 - (void)addItemComponentRecordsObject:(id)arg1;
 @property(copy, nonatomic) NSArray *itemComponentRecords;
-@property(nonatomic) BOOL markLayersForRemoval;
 @property unsigned long long nestingLevel;
 - (void)_updateContainmentMask;
 - (id)_subtreeDescription;

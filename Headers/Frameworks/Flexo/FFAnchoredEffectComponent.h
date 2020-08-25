@@ -13,12 +13,6 @@ __attribute__((visibility("hidden")))
 
 + (id)copyClassDescription;
 - (void)invalidateSampleRange:(CDStruct_e83c9415)arg1 forType:(id)arg2;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
-- (id)classNameForInspectorTabIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)inspectorIdentifier;
-- (id)inspectorClassName;
 - (BOOL)hasVideo;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)effectStackDidLoad:(id)arg1;
@@ -34,6 +28,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithEffect:(id)arg1;
 - (id)initWithEffectID:(id)arg1 loadEffectInForeground:(BOOL)arg2;
 - (id)initWithEffectID:(id)arg1;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
+- (id)inspectorIdentifier;
+- (id)inspectorClassName;
 
 @end
 

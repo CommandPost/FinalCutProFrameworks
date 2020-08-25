@@ -6,18 +6,16 @@
 
 #import "NSObject.h"
 
-@class FFInspectorContainerController, NSArray, NSDraggingSession;
+@class FFInspectorContainerController, NSArray, NSDraggingSession, NSString;
 
 @protocol FFInspectorContainerDraggingDelegate <NSObject>
 
 @optional
-- (BOOL)container:(FFInspectorContainerController *)arg1 acceptDrop:(id <NSDraggingInfo>)arg2 atRow:(unsigned long long)arg3;
-- (BOOL)container:(FFInspectorContainerController *)arg1 validateDrop:(id <NSDraggingInfo>)arg2 atRow:(unsigned long long)arg3;
-- (BOOL)container:(FFInspectorContainerController *)arg1 reorderItemAtRow:(unsigned long long)arg2 withRow:(unsigned long long)arg3;
-- (unsigned long long)container:(FFInspectorContainerController *)arg1 validateDrop:(id <NSDraggingInfo>)arg2 row:(unsigned long long)arg3 proposedRow:(unsigned long long)arg4;
-- (void)container:(FFInspectorContainerController *)arg1 didEndDraggingSession:(NSDraggingSession *)arg2 atRow:(unsigned long long)arg3;
-- (void)container:(FFInspectorContainerController *)arg1 willBeginDraggingSession:(NSDraggingSession *)arg2 atRow:(unsigned long long)arg3;
-- (BOOL)container:(FFInspectorContainerController *)arg1 shouldBeginDraggingSessionAtRow:(unsigned long long)arg2;
+- (BOOL)container:(FFInspectorContainerController *)arg1 acceptDrop:(id <NSDraggingInfo>)arg2 row:(long long)arg3 identifiers:(NSArray *)arg4;
+- (unsigned long long)container:(FFInspectorContainerController *)arg1 validateDrop:(id <NSDraggingInfo>)arg2 proposedRow:(long long)arg3 identifiers:(NSArray *)arg4;
+- (void)container:(FFInspectorContainerController *)arg1 didEndDraggingSession:(NSDraggingSession *)arg2;
+- (void)container:(FFInspectorContainerController *)arg1 willBeginDraggingSession:(NSDraggingSession *)arg2;
+- (NSString *)container:(FFInspectorContainerController *)arg1 identifierForPasteboardWriterAtRow:(long long)arg2;
 - (NSArray *)registerDragTypesForContainer:(FFInspectorContainerController *)arg1;
 @end
 

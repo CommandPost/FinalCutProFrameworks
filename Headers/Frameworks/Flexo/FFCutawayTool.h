@@ -6,7 +6,7 @@
 
 #import <Flexo/FFAdjustmentTool.h>
 
-@class FFAdjustmentToolSlider, FFChannelChangeController, FFKeyerOSC, FFProOSC, FFSegmentedControl, FFSimpleMaskOSC, LKButton, LKMenu, LKSegmentedControl, LKTextField, NSArray, NSColorWell, NSMutableArray, NSPopUpButton, NSTextField, NSView;
+@class FFAdjustmentToolSlider, FFChannelChangeController, FFKeyerOSC, FFProOSC, FFSegmentedControl, FFSimpleMaskOSC, LKButton, LKMenu, LKSegmentedControl, LKTextField, NSArray, NSColorWell, NSMutableArray, NSPopUpButton, NSStackView, NSTextField, NSView;
 
 @interface FFCutawayTool : FFAdjustmentTool
 {
@@ -21,20 +21,14 @@
     FFAdjustmentToolSlider *_cutawayFade;
     LKTextField *_cutawayFadeInSeconds;
     NSPopUpButton *_pipEffect;
-    FFAdjustmentToolSlider *_pipEffectTransition;
     LKTextField *_pipEffectTransitionInSeconds;
     FFSegmentedControl *_pipBorderWidthIndex;
     NSColorWell *_pipBorderColor;
     LKButton *_pipBorderColorDisabled;
     LKButton *_pipDropShadow;
-    FFSegmentedControl *_sbsLeftRight;
     NSPopUpButton *_sbsPosition;
     FFAdjustmentToolSlider *_sbsSlide;
     LKTextField *_sbsSlideInSeconds;
-    NSView *_cutawayView;
-    NSView *_keyerView;
-    NSView *_pipView;
-    NSView *_sbsView;
     LKMenu *_modeMenu;
     LKMenu *_pipEffectMenu;
     LKMenu *_sbsMenu;
@@ -46,6 +40,15 @@
     BOOL _colorSliderChange;
     NSMutableArray *_cutawayModeTitles;
     NSMutableArray *_pipEffectTitles;
+    NSStackView *_contentStackView;
+    NSView *_cutawayOptionsLeadingView;
+    NSView *_cutawayOptionsTraillingView;
+    NSView *_keyerOptionsLeadingView;
+    NSView *_keyerOptionsTraillingView;
+    NSView *_pipOptionsLeadingView;
+    NSView *_pipOptionsTraillingView;
+    NSView *_sbsOptionsLeadingView;
+    NSView *_sbsOptionsTraillingView;
     NSArray *_selectedItems;
 }
 
@@ -72,6 +75,15 @@
 + (void)initialize;
 + (id)groups;
 @property(copy, nonatomic) NSArray *selectedItems; // @synthesize selectedItems=_selectedItems;
+@property(retain, nonatomic) NSView *sbsOptionsTraillingView; // @synthesize sbsOptionsTraillingView=_sbsOptionsTraillingView;
+@property(retain, nonatomic) NSView *sbsOptionsLeadingView; // @synthesize sbsOptionsLeadingView=_sbsOptionsLeadingView;
+@property(retain, nonatomic) NSView *pipOptionsTraillingView; // @synthesize pipOptionsTraillingView=_pipOptionsTraillingView;
+@property(retain, nonatomic) NSView *pipOptionsLeadingView; // @synthesize pipOptionsLeadingView=_pipOptionsLeadingView;
+@property(retain, nonatomic) NSView *keyerOptionsTraillingView; // @synthesize keyerOptionsTraillingView=_keyerOptionsTraillingView;
+@property(retain, nonatomic) NSView *keyerOptionsLeadingView; // @synthesize keyerOptionsLeadingView=_keyerOptionsLeadingView;
+@property(retain, nonatomic) NSView *cutawayOptionsTraillingView; // @synthesize cutawayOptionsTraillingView=_cutawayOptionsTraillingView;
+@property(retain, nonatomic) NSView *cutawayOptionsLeadingView; // @synthesize cutawayOptionsLeadingView=_cutawayOptionsLeadingView;
+@property(nonatomic) NSStackView *contentStackView; // @synthesize contentStackView=_contentStackView;
 - (void)resetChannelsForObject:(id)arg1;
 - (void)setAdjustmentStateFromDictionary:(id)arg1;
 - (int)_updateChannelsAndAdjustmentStateForSingleSelection:(id)arg1;
@@ -99,12 +111,10 @@
 - (void)setSlideDurationInSeconds:(id)arg1;
 - (void)slideDuration:(id)arg1;
 - (void)changeSideBySidePosition:(id)arg1;
-- (void)changeLeftRight:(id)arg1;
 - (void)dropShadow:(id)arg1;
 - (void)borderColor:(id)arg1;
 - (void)setBorderWidth:(id)arg1;
 - (void)setPIPEffectTransitionInSeconds:(id)arg1;
-- (void)changePIPEffectTransition:(id)arg1;
 - (void)changePIPEffect:(id)arg1;
 - (void)setPIPEffect:(int)arg1 forObject:(id)arg2;
 - (void)setFadeInSeconds:(id)arg1;
@@ -139,6 +149,7 @@
 - (id)changeController;
 - (void)dealloc;
 - (void)_removeAllOSCs;
+- (void)awakeFromNib;
 - (id)init;
 
 @end

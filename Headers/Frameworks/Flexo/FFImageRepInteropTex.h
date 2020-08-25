@@ -23,13 +23,13 @@
 - (id)copyHGCVPB;
 - (id)getHGCVPB;
 -     // Error parsing type: ^{HGCVBitmap=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}{HGRef<HGCVPixelBuffer>=^{HGCVPixelBuffer}}Q}16@0:8, name: getHGCVBitmap
-- (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(int)arg4 nonStandardAlphaOK:(_Bool)arg5;
-- (int)imageLocation;
+- (BOOL)isSimpleConversionTo:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 location:(struct FxDevice *)arg4 nonStandardAlphaOK:(_Bool)arg5;
+- (struct FxDevice *)imageLocation;
 - (struct CGRect)pixelSpaceBounds;
 - (id)type;
 - (id)nativePixelFormat;
-- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(int)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 workingSpace:(int)arg6;
-- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_302d8f15 *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
+- (id)newTextureBufferWithFormatByFlatteningIfNeeded:(id)arg1 location:(struct FxDevice *)arg2 roi:(struct CGRect)arg3 pixelTransform:(id)arg4 flattenOptions:(const CDStruct_f51ed29d *)arg5 workingSpace:(int)arg6;
+- (id)newPixelBufferWithFormatByFlatteningIfNeeded:(id)arg1 roi:(struct CGRect)arg2 pixelTransform:(id)arg3 nonStandardAlphaOK:(_Bool)arg4 flattenOptions:(const CDStruct_f51ed29d *)arg5 getRawPixelsWithoutSourceConform:(_Bool)arg6 workingSpace:(int)arg7;
 - (void)dealloc;
 - (id)initWithFFHGCVPB:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3 sourceColorConformer:(struct FFSourceColorConformBaseClass *)arg4 sourceCCTargetColorSpace:(int)arg5;
 - (id)initWithFFHGCVPB:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 pixelTransform:(id)arg3;

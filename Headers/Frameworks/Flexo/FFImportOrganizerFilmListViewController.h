@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)outlineView:(id)arg1 shouldExpandItem:(id)arg2;
 - (void)outlineView:(id)arg1 draggingDidEnd:(id)arg2;
 - (void)outlineView:(id)arg1 draggingDidBegin:(id)arg2;
-- (BOOL)outlineView:(id)arg1 writeItems:(id)arg2 toPasteboard:(id)arg3;
+- (id)outlineView:(id)arg1 pasteboardWriterForItem:(id)arg2;
 - (id)outlineView:(id)arg1 objectValueForTableColumn:(id)arg2 byItem:(id)arg3;
 - (BOOL)shouldEditTableColumn:(id)arg1 item:(id)arg2;
 - (void)outlineViewItemDidCollapse:(id)arg1;

@@ -4,27 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <ProOSC/POOnScreenControl.h>
+#import <ProOSC/OZShapeTransformOSC.h>
 
 @class NSMapTable;
 
-@interface OZShapeOSC : POOnScreenControl
+@interface OZShapeOSC : OZShapeTransformOSC
 {
     list_2e9945f8 *_previousSelection;
     list_2e9945f8 *_currentSelection;
     list_2e9945f8 *_selection;
-    struct OZShape *_shape;
-    int _numHits;
-    unsigned int _buffer[8192];
-    struct CGPoint _mouseOrigin;
-    struct CGPoint _lastMousePos;
     struct CGPoint _snapOrigin;
     _Bool _creating;
     _Bool _isTool;
     _Bool _selecting;
-    _Bool _startDrag;
     _Bool _outlineOnly;
-    _Bool _mouseWasDragged;
     _Bool _drawTangents;
     _Bool _eventAlreadyHandled;
     NSMapTable *_GLNames;
@@ -55,14 +48,13 @@
 - (void).cxx_destruct;
 - (struct OZShapeRenderState)makeShapeRenderState;
 - (void)calculateSnapBounds:(id)arg1;
-- (void)translate:(id)arg1 move:(struct CGPoint)arg2;
-- (PCMatrix44Tmpl_e98c85ee)getViewTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1;
 - (void)updateDrag:(double *)arg1 y:(double *)arg2;
 - (void)initDrag:(double)arg1 y:(double)arg2;
+- (struct CGRect)shapeBoundsAtTime:(CDStruct_1b6d18a9 *)arg1;
+- (struct CGSize)shapeDimensionsAtTime:(CDStruct_1b6d18a9 *)arg1;
 - (void)setOutlineOnly:(_Bool)arg1;
 - (void)drawSelectionRect;
 - (void)drawControlPolygonWithTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
-- (void)drawOSCSpecificHandlesWithTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
 - (void)drawVerticesWithTransform:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
 - (void)drawWithDrawProperties:(id)arg1;
 - (void)draw;
@@ -83,7 +75,7 @@
 - (int)hitCheck:(id)arg1;
 - (BOOL)activeOnFullCanvas:(id)arg1;
 - (BOOL)processOSCSpecificHits:(unsigned int *)arg1 selection:(struct OZShapeOnScreenSelection *)arg2;
-- (void)processHits;
+- (unsigned int)processHits;
 - (BOOL)selectNone:(id)arg1;
 - (BOOL)selectAll:(id)arg1;
 - (BOOL)isSelected:(struct OZVertex2D)arg1;

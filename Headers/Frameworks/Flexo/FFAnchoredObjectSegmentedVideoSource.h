@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface FFAnchoredObjectSegmentedVideoSource : FFSourceVideo
 {
-    struct list<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem *, std::__1::allocator<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem *>> _segmentSourceCache;
-    struct list<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem *, std::__1::allocator<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem *>> _segmentMD5InfoCache;
+    struct list<std::__1::unique_ptr<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem, std::__1::default_delete<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem>>, std::__1::allocator<std::__1::unique_ptr<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem, std::__1::default_delete<PEObjectSegmentedVideoStreamUtils::SegmentSourceCacheItem>>>> _segmentSourceCache;
+    struct list<std::__1::unique_ptr<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem, std::__1::default_delete<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem>>, std::__1::allocator<std::__1::unique_ptr<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem, std::__1::default_delete<PEObjectSegmentedVideoStreamUtils::SegmentMD5InfoCacheItem>>>> _segmentMD5InfoCache;
     struct vector<FFAnchoredObjectSegmentedVideoStream *, std::__1::allocator<FFAnchoredObjectSegmentedVideoStream *>> _openStreams;
     long long _effectCount;
     NSString *_videoAngle;
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)nativeVideoProps;
 - (id)_videoProps;
 - (CDStruct_e83c9415)timeRange;
+- (id)modelLockingObject;
 - (id)anchoredObject;
 
 @end

@@ -10,20 +10,26 @@
 {
 }
 
++ (id)newAssetFromURL:(id)arg1 isFileOnline:(BOOL)arg2 repType:(id)arg3 properties:(id)arg4 mediaIdentifier:(id)arg5 displayName:(id)arg6 manageFileType:(int)arg7 preferredBasename:(id)arg8 preferredExtension:(id)arg9 error:(id *)arg10;
 + (id)copyClassDescription;
 - (void)setCustomCameraLUTProps:(id)arg1;
-- (void)setLogProcessingMode:(long long)arg1;
 - (void)setRawToLogConversion:(long long)arg1;
 - (void)setColorSpaceOverride:(long long)arg1;
-- (unsigned long long)audioSourceCount;
 - (BOOL)canRebuildAudioProperties;
 - (BOOL)isUpgradeProxyAsset;
-- (id)initWithAttributes:(id)arg1 mediaIdentifier:(id)arg2 displayName:(id)arg3 manageFileType:(int)arg4 project:(id)arg5;
+- (void)setupIdentityWithMediaIdentifier:(id)arg1 repType:(id)arg2 displayName:(id)arg3 forceMediaProps:(BOOL)arg4;
+- (void)setupPropertiesFromAttributes:(id)arg1 URL:(id)arg2;
+- (id)initWithMediaRep:(id)arg1 attributes:(id)arg2 mediaIdentifier:(id)arg3 displayName:(id)arg4 manageFileType:(int)arg5 showRepAsMissing:(BOOL)arg6;
+- (id)_initWithURL:(id)arg1 repType:(id)arg2 attributes:(id)arg3 mediaIdentifier:(id)arg4 displayName:(id)arg5 manageFileType:(int)arg6 preferredBasename:(id)arg7 preferredExtension:(id)arg8 showRepAsMissing:(BOOL)arg9 project:(id)arg10;
+- (id)initWithURL:(id)arg1 repType:(id)arg2 attributes:(id)arg3 mediaIdentifier:(id)arg4 displayName:(id)arg5 manageFileType:(int)arg6 preferredBasename:(id)arg7 preferredExtension:(id)arg8 showRepAsMissing:(BOOL)arg9;
+- (id)initWithURL:(id)arg1 attributes:(id)arg2 mediaIdentifier:(id)arg3 displayName:(id)arg4 manageFileType:(int)arg5 project:(id)arg6;
+- (id)initWithProvider:(id)arg1 repType:(id)arg2 mediaIdentifier:(id)arg3 displayName:(id)arg4 preferredBasename:(id)arg5 preferredExtension:(id)arg6 cancelationDelegate:(id)arg7 error:(id *)arg8;
 - (BOOL)mediaAvailable;
 - (BOOL)highQualityAvailable;
 - (BOOL)originalAvailable;
 - (BOOL)proxyAvailable;
 - (int)highQualityOfflineReason;
+- (id)copySourceKeys;
 
 @end
 

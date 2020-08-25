@@ -20,6 +20,7 @@
 + (id)instance;
 - (void)panelSelectionDidChange:(id)arg1;
 - (BOOL)panel:(id)arg1 shouldEnableURL:(id)arg2;
+- (BOOL)allows3DScenes;
 - (BOOL)doSequenceSearch;
 
 // Remaining properties

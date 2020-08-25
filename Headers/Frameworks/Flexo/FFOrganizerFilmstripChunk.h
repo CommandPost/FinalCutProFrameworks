@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     CALayer *_clipBadgeLayer;
     CALayer *_hfrClipBadgeLayer;
     CALayer *_ccClipBadgeLayer;
+    CALayer *_metadataClipBadgeLayer;
     CALayer *_durationLayer;
     CALayer *_shadowLayer;
     CATextLayer *_durationTextLayer;

@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class CALayer, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>;
+@class CALayer, NSMutableArray, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol>;
 
 __attribute__((visibility("hidden")))
 @interface FFFilmstrip : NSObject
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BOOL singleFilmstripMode; // @synthesize singleFilmstripMode=_singleFilmstripMode;
 @property(readonly, nonatomic) double audioHeight; // @synthesize audioHeight=_audioHeight;
 @property(readonly, nonatomic) struct CGSize thumbSize; // @synthesize thumbSize=_thumbSize;
-@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
+@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
 @property(readonly, nonatomic) CDStruct_e83c9415 range; // @synthesize range=_range;
 @property(readonly, nonatomic) NSMutableArray *filmstripCells; // @synthesize filmstripCells=_filmstripCells;
 - (long long)effectCount;

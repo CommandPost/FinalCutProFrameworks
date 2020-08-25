@@ -6,19 +6,15 @@
 
 #import "NSOperation.h"
 
-@class FFAnchoredTimelineModule, NSMapTable, NSSet, TLKDragContext;
+@class FFAnchoredTimelineModule, TLKDragContext;
 
 __attribute__((visibility("hidden")))
 @interface FFResolveCollisionsOperation : NSOperation
 {
     FFAnchoredTimelineModule *_timelineModule;
     TLKDragContext *_dragContext;
-    NSMapTable *_collisionInfo;
-    NSSet *_otherObjects;
 }
 
-@property(copy, nonatomic) NSSet *otherObjects; // @synthesize otherObjects=_otherObjects;
-@property(copy, nonatomic) NSMapTable *collisionInfo; // @synthesize collisionInfo=_collisionInfo;
 @property(readonly, nonatomic) TLKDragContext *dragContext; // @synthesize dragContext=_dragContext;
 @property(readonly, nonatomic) FFAnchoredTimelineModule *timelineModule; // @synthesize timelineModule=_timelineModule;
 - (void)_populateCollisionRecordsForItems:(id)arg1 inLayoutContext:(id)arg2 isAboveSpine:(BOOL)arg3;

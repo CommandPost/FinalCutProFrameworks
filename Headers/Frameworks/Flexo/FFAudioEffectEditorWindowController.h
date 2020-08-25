@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
     FFAudioUnitEffect *_effect;
     FFEffectBundle *_effectBundle;
     FFSharedAudioUnit *_effectAudioUnit;
+    unsigned long long _effectBundleEffectIndex;
     FFContext *_context;
     id _selectionHandler;
     BOOL _isPlaying;
@@ -57,9 +58,11 @@ __attribute__((visibility("hidden")))
     BOOL _isKeyWindow;
     unsigned long long _auScalePercentage;
     BOOL _pendingBundleEffectPartChange;
-    BOOL _pendingHandleEffectChange;
     BOOL _pendingParamsFolderChannelChange;
     BOOL _pendingUpdateDisplayNames;
+    BOOL _pendingHandleEffectChange;
+    BOOL _pendingHandleEffectChange_ForceCloseWindowFlag;
+    void *_eventHandlerToken;
 }
 
 + (void)prepareForShutdown;
@@ -113,12 +116,13 @@ __attribute__((visibility("hidden")))
 - (void)_windowResignedKey:(id)arg1;
 - (void)_windowBecameKey:(id)arg1;
 - (void)windowWillClose:(id)arg1;
-- (void)windowDidLoad;
 - (void)unloadAudioUnit;
 - (void)loadAudioUnit;
+- (void)setupAudioUnitView:(id)arg1 isGeneric:(BOOL)arg2;
 - (void)_loadViewForAudioUnit;
 - (void)_debugLogGeometryForView:(id)arg1 withText:(id)arg2;
-- (id)_cocoaViewForAudioUnit:(struct ComponentInstanceRecord *)arg1;
+- (BOOL)_setupGenericViewForAudioUnit:(struct ComponentInstanceRecord *)arg1;
+- (void)_loadCocoaViewForAudioUnit:(struct ComponentInstanceRecord *)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)timeRateChangedForContext:(id)arg1;
 - (void)_handleParameterEvent:(id)arg1 event:(const struct AudioUnitEvent *)arg2 newValue:(float)arg3;
 - (void)_storeEffectState:(BOOL)arg1;
@@ -160,7 +164,7 @@ __attribute__((visibility("hidden")))
 - (void)_effectDeactivated:(id)arg1;
 - (void)_effectsChanged:(id)arg1;
 - (void)_notifyEffectWindowShouldCloseOrReload:(id)arg1;
-- (void)_handleEffectRemovedOrConfigChanged;
+- (void)_handleEffectRemovedOrConfigChanged:(BOOL)arg1;
 - (void)_registerPropertyChangeListener:(BOOL)arg1;
 - (void)_setEffectChannelFolder:(id)arg1;
 - (void)_channelChangedNotification:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFAnchoredSequence, FFOrganizedLaneManager, FFStorySequenceBridge, FFTimelineItemAppearanceTable, FFTimelineLayoutMetrics, FFUserDefaults, NSMapTable, NSMutableArray, NSMutableSet, NSSet;
+@class FFAnchoredSequence, FFOrganizedLaneManager, FFStorySequenceBridge, FFTimelineItemAppearanceTable, FFTimelineLayoutMetrics, FFUserDefaults, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSSet;
 
 @interface FFStoryTimelinePresentation : NSObject
 {
@@ -49,7 +49,6 @@
 - (id)sequenceDefaults;
 - (BOOL)timelineIndexSimpleClipMode;
 @property(nonatomic) BOOL shouldShowWaveformsForPrecisionEditor;
-@property(nonatomic) BOOL isTitleOnly;
 - (void)stopListeningToSequence;
 - (void)startListeningToSequence;
 - (void)postStoryChanged:(id)arg1;
@@ -115,6 +114,7 @@
 - (id)allStoryLanesIncludingPrimaryLane;
 - (id)allStoryLanes;
 - (id)itemComponentsForItem:(id)arg1;
+- (BOOL)shouldDisplayObject:(id)arg1;
 - (BOOL)shouldHidePrimaryComponentForItem:(id)arg1;
 - (BOOL)shouldArrangeComponentsForClip:(id)arg1;
 - (id)intrinsicLaneForItem:(id)arg1;
@@ -138,6 +138,7 @@
 - (id)_emptyLanesPredicateRespectingHidden:(BOOL)arg1;
 - (id)emptyAudioLanesInLanes:(id)arg1;
 - (id)orderedChildLanesForLane:(id)arg1;
+@property(readonly, nonatomic) NSArray *tracks;
 - (void)dealloc;
 - (id)initWithRootItem:(id)arg1 inSequence:(id)arg2;
 

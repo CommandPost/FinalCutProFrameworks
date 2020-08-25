@@ -6,13 +6,17 @@
 
 #import "NSObject.h"
 
-#import "FxXPCProtocol.h"
+#import "PROXPCProtocol.h"
 
-@interface FxPrincipal : NSObject <FxXPCProtocol>
+@class FxDynamicRegListenerDelegate;
+
+@interface FxPrincipal : NSObject <PROXPCProtocol>
 {
+    FxDynamicRegListenerDelegate *dynamicRegListenerDelegate;
     struct FxConnectionMap connectionMap;
 }
 
++ (void)startServicePrincipalWithDelegate:(id)arg1;
 + (void)startServicePrincipal;
 + (id)embeddedPrincipal;
 + (id)sharedPrincipal;
@@ -20,8 +24,11 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)associateViewController:(id)arg1 withSessionID:(unsigned long long)arg2 andParameterID:(unsigned int)arg3 viewFrame:(struct CGRect *)arg4 viewSizingOptions:(unsigned long long *)arg5 error:(id *)arg6;
+- (void)dynamicRegistrationEndpointForProcessID:(int)arg1 version:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)viewServiceListenerEndPoint:(CDUnknownBlockType)arg1;
+- (void)newConnectionForProcessID:(int)arg1 minimumVersion:(unsigned long long)arg2 maximumVersion:(unsigned long long)arg3 hostCapabilities:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)createNewConnectionForProcessID:(int)arg1 minimumVersion:(unsigned long long)arg2 maximumVersion:(unsigned long long)arg3 hostCapabilities:(id)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)notifyDelegateWithProcessID:(int)arg1;
 - (id)errorForHostVersionTooNew:(unsigned long long)arg1;
 - (id)errorForHostVersionTooOld:(unsigned long long)arg1;
 - (void)dealloc;

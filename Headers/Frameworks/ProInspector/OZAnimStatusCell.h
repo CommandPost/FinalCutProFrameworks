@@ -33,7 +33,7 @@
 @property(nonatomic) BOOL isMouseOverRow; // @synthesize isMouseOverRow=_isMouseOverRow;
 @property(nonatomic) unsigned int mouseOverLocation; // @synthesize mouseOverLocation=_mouseOverLocation;
 @property(nonatomic) unsigned int mouseDownLocation; // @synthesize mouseDownLocation=_mouseDownLocation;
-- (BOOL)useResetButtonBehavior;
+- (BOOL)defaultUseResetButtonBehavior;
 - (void)gridTime;
 - (id)imageForAnimState:(int)arg1 withIsMouseOver:(BOOL)arg2;
 - (void)updateTrackingAreasForView:(id)arg1;

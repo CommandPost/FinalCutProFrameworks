@@ -15,7 +15,6 @@
     BOOL _vScrollerStatus;
 }
 
-- (void)scrollWheel:(id)arg1;
 - (void)_doScroller:(id)arg1 hitPart:(int)arg2 multiplier:(float)arg3;
 - (void)reflectScrolledClipView:(id)arg1;
 - (void)setExternalVerticalScroller:(id)arg1;

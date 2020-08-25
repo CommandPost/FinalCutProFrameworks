@@ -27,15 +27,15 @@
     long long _numTotalTaskRequests;
     long long _numCompletedTaskRequests;
     long long _numCurrentTaskBaseline;
-    struct FFSemaphore *_taskSemaphore;
+    struct unique_ptr<FFSemaphore, std::__1::default_delete<FFSemaphore>> _taskSemaphore;
     struct FFConditionLock *_pauseCountLock;
     struct FFConditionLock *_pausedStateLock;
     struct FFConditionLock *_inFlightRequestsCountLock;
     NSMutableSet *_inFlightRequests;
-    BOOL _shuttingDown;
+    // Error parsing type: {atomic<signed char>="__a_"Ac}, name: _shuttingDown
     NSCountedSet *_libaryIdentifiersForRequests;
     NSMutableSet *_registeredLibraries;
-    struct FFPMRAutoTimer *PMR_currentTaskTimer;
+    struct FFPMRFunnelAutoTimer *PMR_currentTaskTimer;
     NSMutableSet *PMR_clipsProcessed;
     CDUnknownBlockType _pmrRequestBeginCallback;
     CDUnknownBlockType _pmrRequestCompletionCallback;
@@ -50,11 +50,14 @@
 + (void)releaseSharedInstanceAudio;
 + (id)sharedInstanceAudio;
 + (id)_copyImageIDCGImage:(id)arg1;
-+ (struct CGImage *)newCGImageRefFromFFImage:(id)arg1 skimmable:(struct NSObject *)arg2 requestFlattenLocation:(int)arg3;
++ (struct CGImage *)newCGImageRefFromFFImage:(id)arg1 skimmable:(struct NSObject *)arg2 requestFlattenLocation:(struct FxDevice *)arg3;
 @property(copy) CDUnknownBlockType pmrRequestCompletionCallback; // @synthesize pmrRequestCompletionCallback=_pmrRequestCompletionCallback;
 @property(copy) CDUnknownBlockType pmrRequestBeginCallback; // @synthesize pmrRequestBeginCallback=_pmrRequestBeginCallback;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)librariesInUse:(id)arg1;
 - (id)assetsInUse:(id)arg1;
+- (void)completedTask:(id)arg1;
 - (void)canceledTask:(id)arg1;
 - (void)_teardown;
 - (void)_notifyDidShutdown:(id)arg1;
@@ -70,7 +73,7 @@
 - (BOOL)newImage:(id *)arg1 forRequest:(id)arg2 cacheOnly:(BOOL)arg3;
 - (void)queueImageRequest:(id)arg1;
 - (void)_resumeBackgroundTask;
-- (void)_backgroundTaskCompleted;
+- (void)_backgroundTaskCompleted:(id)arg1;
 - (void)_dispatchBackgroundTask;
 - (void)_backgroundTask:(id)arg1 onTask:(id)arg2;
 - (void)_notifyRequestCompleted:(id)arg1 withImage:(id)arg2;

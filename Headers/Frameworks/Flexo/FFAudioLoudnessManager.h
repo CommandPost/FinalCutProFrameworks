@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *m_duckingMasterClips;
     struct Synchronizable m_duckingMasterClipsLock;
     BOOL m_pendingUpdateTask;
-    struct FFLocklessQueue<NSSet *> m_updateObjectsQueue;
+    // Error parsing type: {FFLocklessQueue<NSSet *>="_vptr$FFLocklessQueueBase"^^?"m_sortOption"i"m_pushList"{atomic<FFLocklessQueueBase::ElementBase *>="__a_"A^{ElementBase}}"m_popList"^{ElementBase}"m_freeList"{atomic<FFLocklessQueueBase::ElementBase *>="__a_"A^{ElementBase}}"m_freeElementProc"^?"m_freeElementProcRefCon"^v}, name: m_updateObjectsQueue
     NSMutableArray *m_loudnessAnalyzerTasks;
     struct Synchronizable m_loudnessAnalyzerTasksLock;
     NSObject<OS_dispatch_queue> *m_duckingDispatchQueue;

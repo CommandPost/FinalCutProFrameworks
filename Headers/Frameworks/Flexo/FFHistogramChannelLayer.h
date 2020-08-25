@@ -4,35 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFVideoScopesChannelLayerGL.h>
-
-#import "FFHistogramContextLayer.h"
+#import "CAMetalLayer.h"
 
 __attribute__((visibility("hidden")))
-@interface FFHistogramChannelLayer : FFVideoScopesChannelLayerGL <FFHistogramContextLayer>
+@interface FFHistogramChannelLayer : CAMetalLayer
 {
-    struct FFVideoScopesHistogramViewPrivate *_histogramContext;
-    unsigned long long _histogramIsaIndex;
     long long _displayMode;
-    float _traceBrightness;
-    CDStruct_3de7261d _state;
-    CDStruct_69458254 _action_opt;
+    // Error parsing type: Af, name: _traceBrightness
 }
 
 - (id)accessibilityAttributeValue:(id)arg1;
-- (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
-- (struct CGRect)_boundsAppliedByContentsScale;
-- (void)releaseCGLContext:(struct _CGLContextObject *)arg1;
-- (struct _CGLContextObject *)copyCGLContextForPixelFormat:(struct _CGLPixelFormatObject *)arg1;
-- (void)releaseCGLPixelFormat:(struct _CGLPixelFormatObject *)arg1;
-- (struct _CGLPixelFormatObject *)copyCGLPixelFormatForDisplayMask:(unsigned int)arg1;
-- (id)actionForKey:(id)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
-- (void)setNeedsUpdateFromDest:(unsigned long long)arg1;
-- (void)setShowGuides:(BOOL)arg1;
-- (void)setDisplayMode:(long long)arg1;
-- (void)setHistogramContext:(struct FFVideoScopesHistogramViewPrivate *)arg1;
-- (void)setTraceBrightness:(float)arg1;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)drawWithMtlContext:(struct PAEMtlContext *)arg1 renderer:(const struct Instance *)arg2 completionBlock:(CDUnknownBlockType)arg3;
+@property(nonatomic) long long displayMode; // @dynamic displayMode;
+@property(nonatomic) float traceBrightness; // @dynamic traceBrightness;
 - (id)init;
 
 @end

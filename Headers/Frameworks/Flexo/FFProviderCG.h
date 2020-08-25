@@ -48,6 +48,9 @@ __attribute__((visibility("hidden")))
     unsigned int _emptyCachedImageSourceDispatchPending;
 }
 
++ (id)primeProviderForRemoteURL:(id)arg1;
++ (id)offlineVideoSourceKeysForVideoSourceCount:(long long)arg1 isStill:(BOOL)arg2;
++ (BOOL)supportsRemoteURLs;
 + (void)initialize;
 + (void)appWillTerminate:(id)arg1;
 + (id)extensions;
@@ -85,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (void)setOverrideAlphaValue:(int)arg1;
 - (id)supportedOverrideAlphaModes;
 - (void)dealloc;
+- (id)initWithResourceLocator:(id)arg1;
 - (id)initWithAssetFileID:(id)arg1;
 - (void)returnImageSourceToCache:(struct CGImageSource *)arg1;
 - (void)closeOpenFiles;

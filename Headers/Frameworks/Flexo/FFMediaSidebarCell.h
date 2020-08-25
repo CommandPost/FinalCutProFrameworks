@@ -6,13 +6,13 @@
 
 #import "LKTextFieldCell.h"
 
-@class FFWeakPointerValue;
+@class PCWeakPointerValue;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaSidebarCell : LKTextFieldCell
 {
     int _lastEditableState;
-    FFWeakPointerValue *_node;
+    PCWeakPointerValue *_node;
 }
 
 - (void)showDefinitionForAttributedString:(id)arg1 range:(struct _NSRange)arg2 options:(id)arg3 baselineOriginProvider:(CDUnknownBlockType)arg4;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     int _fadeInType;
     int _fadeOutType;
     BOOL _isDefault;
-    BOOL _alwaysSave;
+    BOOL _saveWhenAtDefaultState;
     BOOL _disabled;
     BOOL _canBeDisabled;
     BOOL _disabledByDefault;
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL disabledByDefault; // @synthesize disabledByDefault=_disabledByDefault;
 @property(nonatomic) BOOL canBeDisabled; // @synthesize canBeDisabled=_canBeDisabled;
 @property(nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
-@property(nonatomic) BOOL alwaysSave; // @synthesize alwaysSave=_alwaysSave;
+@property(nonatomic) BOOL saveWhenAtDefaultState; // @synthesize saveWhenAtDefaultState=_saveWhenAtDefaultState;
 @property(nonatomic) BOOL isDefault; // @synthesize isDefault=_isDefault;
 @property(retain, nonatomic) NSString *initialValue; // @synthesize initialValue=_initialValue;
 @property(retain, nonatomic) NSString *paramKey; // @synthesize paramKey=_paramKey;

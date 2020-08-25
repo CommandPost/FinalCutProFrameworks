@@ -6,10 +6,13 @@
 
 #import "NSWindowController.h"
 
-@class NSButton, NSWindow;
+#import "NSTableViewDataSource.h"
+#import "NSTableViewDelegate.h"
+
+@class NSButton, NSString, NSTableView, NSWindow;
 
 __attribute__((visibility("hidden")))
-@interface FFAnalyzeMediaWindowController : NSWindowController
+@interface FFAnalyzeMediaWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate>
 {
     NSWindow *_sheet;
     NSButton *_colorAutoCorrectCheckBox;
@@ -20,8 +23,10 @@ __attribute__((visibility("hidden")))
     NSButton *_cleanupAudioCheckBox;
     NSButton *_removeSilentChannelsBox;
     NSButton *_okButton;
+    NSTableView *_analysisExtensionsTableView;
 }
 
+@property NSTableView *analysisExtensionsTableView; // @synthesize analysisExtensionsTableView=_analysisExtensionsTableView;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (void)findPeopleAction:(id)arg1;
@@ -30,6 +35,12 @@ __attribute__((visibility("hidden")))
 - (void)OK:(id)arg1;
 - (void)showAnalyzeSheetForClips:(id)arg1 modalForWindow:(id)arg2;
 - (void)didEndSheet:(id)arg1 returnCode:(long long)arg2 contextInfo:(void *)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

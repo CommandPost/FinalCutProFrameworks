@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
     FFMediaEventDocument *_tempEventDocument;
 }
 
-+ (id)sharingSnapshotWithSequence:(id)arg1 excludeDisabledRolesInShare:(BOOL)arg2;
++ (id)sharingSnapshotWithSequence:(id)arg1 useTimelinePlaybackInShare:(BOOL)arg2;
 + (void)closeTemporaryDocument:(id)arg1;
 @property(readonly) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;
 - (void)dealloc;
-- (id)initWithSequence:(id)arg1 excludeDisabledRolesInShare:(BOOL)arg2;
+- (id)initWithSequence:(id)arg1 useTimelinePlaybackInShare:(BOOL)arg2;
 - (void)copyReferencedClips;
 - (void)copyReferencedClips:(id)arg1 targetEvent:(id)arg2;
 

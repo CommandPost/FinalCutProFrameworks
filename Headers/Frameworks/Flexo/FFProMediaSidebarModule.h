@@ -6,21 +6,29 @@
 
 #import <Flexo/FFEventMediaSidebarModule.h>
 
-@class FFAnalyzeMediaWindowController, FFModifyContentCreationDateWindowController, FFTranscodeMediaWindowController, LKButton, NSMenuItem;
+#import "NSMenuDelegate.h"
 
-@interface FFProMediaSidebarModule : FFEventMediaSidebarModule
+@class FFAnalyzeMediaWindowController, FFModifyContentCreationDateWindowController, FFTranscodeMediaWindowController, LKButton, NSMenuItem, NSString;
+
+@interface FFProMediaSidebarModule : FFEventMediaSidebarModule <NSMenuDelegate>
 {
     LKButton *_openLibraryButton;
     NSMenuItem *_analyzeAndFixContextualMenuItem;
+    NSMenuItem *_copyToLibraryMenuItem;
     FFTranscodeMediaWindowController *_transcodeController;
     FFAnalyzeMediaWindowController *_analyzeController;
     FFModifyContentCreationDateWindowController *_creationDateWindowController;
 }
 
++ (id)ownedAssetsInNodes:(id)arg1;
 + (id)defaultModuleNibName;
 @property(retain, nonatomic) FFModifyContentCreationDateWindowController *creationDateWindowController; // @synthesize creationDateWindowController=_creationDateWindowController;
 @property(retain, nonatomic) FFAnalyzeMediaWindowController *analyzeController; // @synthesize analyzeController=_analyzeController;
 @property(retain, nonatomic) FFTranscodeMediaWindowController *transcodeController; // @synthesize transcodeController=_transcodeController;
+- (void)menuNeedsUpdate:(id)arg1;
+- (id)newCopyToLibraryMenuWithTarget:(id)arg1 action:(SEL)arg2;
+- (void)redownloadWebAssets:(id)arg1;
+- (BOOL)canRedownloadWebAssetsForNodes:(id)arg1;
 - (void)importFinalCutXML:(id)arg1;
 - (void)restoreLibrary:(id)arg1;
 - (void)backupLibrary:(id)arg1;
@@ -46,6 +54,12 @@
 - (void)viewDidLoad;
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

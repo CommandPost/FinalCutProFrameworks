@@ -39,11 +39,11 @@ __attribute__((visibility("hidden")))
     BOOL _chapterNameInputMarkedAsFinished;
     NSArray *_chapterMarkers;
     int _status;
-    NSArray *_captionSets;
     NSArray *_captionArray;
     unsigned long long _currentCaptionIndex;
     AVAssetWriterInput *_captionInput;
     AVAssetWriterInputCaptionAdaptor *_captionInputAdapter;
+    NSArray *_captionSets;
     BOOL _captionInputMarkedAsFinished;
     CDStruct_1b6d18a9 _captionStartTimeOffset;
     CDStruct_1b6d18a9 _movieFragmentInterval;

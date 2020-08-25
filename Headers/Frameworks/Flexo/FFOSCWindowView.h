@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     id _delegate;
 }
 
+- (void)viewDidMoveToWindow;
 - (void)setFrameSize:(struct CGSize)arg1;
 - (void)setDelegate:(id)arg1;
 

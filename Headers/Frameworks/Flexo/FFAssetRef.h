@@ -6,7 +6,6 @@
 
 #import <Flexo/FFMediaRef.h>
 
-__attribute__((visibility("hidden")))
 @interface FFAssetRef : FFMediaRef
 {
 }
@@ -42,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (id)optimizedMediaRep;
 - (id)originalMediaRep;
 - (id)originalMediaURL;
-- (BOOL)verifyFileCompatibility:(id)arg1 returnIsIdentical:(char *)arg2 returnIsGrowing:(char *)arg3 returnIsCompatible:(char *)arg4 returnNewMediaRange:(CDStruct_e83c9415 *)arg5 returnAssetID:(id *)arg6 returnAudioSourceDict:(id *)arg7 error:(id *)arg8;
 - (id)asset;
 - (id)newAssetProxyAttributesFromScrapedData:(id)arg1;
 - (id)initWithCoder:(id)arg1;

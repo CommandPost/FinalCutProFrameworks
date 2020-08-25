@@ -6,14 +6,13 @@
 
 #import <Flexo/FFPlayerItemModule.h>
 
-#import "FFDestVideoDelegate.h"
 #import "FFFieldDisplaySetting.h"
 
-@class FFDestVideoScopesGL;
+@class FFDestVideoScopes;
 
-@interface FFPlayerVideoScopesModule : FFPlayerItemModule <FFFieldDisplaySetting, FFDestVideoDelegate>
+@interface FFPlayerVideoScopesModule : FFPlayerItemModule <FFFieldDisplaySetting>
 {
-    FFDestVideoScopesGL *_destVideo;
+    FFDestVideoScopes *_destVideo;
     BOOL _showBothFields;
     BOOL _isDestAttached;
     BOOL _isVisible;
@@ -24,11 +23,6 @@
 - (id)viewProperties;
 - (void)setViewProperties:(id)arg1;
 - (struct CGRect)bounds;
-- (BOOL)isMultiangleViewer;
-- (BOOL)didDrawVideoAtTime:(CDStruct_1b6d18a9)arg1 drawContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3 isDisplaying:(BOOL)arg4;
-- (void)addDrawProperties:(id)arg1 forFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setDrawingEnabled:(BOOL)arg1;
-- (BOOL)shouldDrawVideoDest:(id)arg1;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;
 - (void)moduleViewWillBeRemoved:(id)arg1;
@@ -43,8 +37,8 @@
 - (struct CGSize)viewMinSize;
 - (void)setLayoutMode:(long long)arg1;
 - (void)setSelectedScope:(id)arg1;
-- (id)destVideo;
 - (void)_updateDestVideoScopesColorSpace:(struct NSObject *)arg1;
+@property(readonly, nonatomic) FFDestVideoScopes *destVideo; // @dynamic destVideo;
 @property(getter=isMonochrome) BOOL monochrome; // @dynamic monochrome;
 @property float traceBrightness; // @dynamic traceBrightness;
 - (long long)colorChannelDisplayMode;

@@ -6,7 +6,7 @@
 
 #import "LKViewModule.h"
 
-@class FFAnchoredCollection, FFContext, FFDataListHeaderView, FFDataListModeViewController, LKSearchField, LKSegmentedControl, LKTextField, NSArray, NSMutableDictionary, NSSet, NSView;
+@class FFAnchoredCollection, FFAnchoredSequence, FFContext, FFDataListHeaderView, FFDataListModeViewController, LKSearchField, LKSegmentedControl, LKTextField, NSArray, NSMutableDictionary, NSSet, NSView;
 
 @interface FFDataListModule : LKViewModule
 {
@@ -39,8 +39,10 @@
     long long _tagFilterType;
     long long _captionFilterType;
     FFDataListModeViewController *_curModeViewController;
+    FFAnchoredSequence *_observedSequence;
 }
 
+@property(readonly, nonatomic) FFAnchoredSequence *observedSequence; // @synthesize observedSequence=_observedSequence;
 @property(nonatomic) BOOL debugDisplayPlayheadOnItem; // @synthesize debugDisplayPlayheadOnItem=_debugDisplayPlayheadOnItem;
 @property(nonatomic) long long captionFilterType; // @synthesize captionFilterType=_captionFilterType;
 @property(nonatomic) long long tagFilterType; // @synthesize tagFilterType=_tagFilterType;
@@ -101,6 +103,7 @@
 - (void)switchTabs:(id)arg1;
 - (void)switchModes:(int)arg1;
 - (int)currentMode;
+- (void)activeCaptionRoleChanged;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)rangeInvalidated:(id)arg1;
 - (id)contentLayoutDictionary;
@@ -109,6 +112,10 @@
 - (void)showOrHideCaptionsTabWithCurrentMode:(int)arg1;
 - (BOOL)shouldShowCaptionsTab;
 - (long long)integerFromDict:(id)arg1 withKey:(id)arg2 orDefaultValue:(long long)arg3;
+- (void)removeSequenceObservers;
+- (void)addSequenceObservers;
+- (void)removeModelObservers;
+- (void)addModelObservers;
 - (void)dealloc;
 - (id)init;
 

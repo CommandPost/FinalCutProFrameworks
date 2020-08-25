@@ -24,6 +24,7 @@
 + (BOOL)isColorSpaceSupportedForProjects:(struct CGColorSpace *)arg1 includeWideGamut:(BOOL)arg2 includeHDR:(BOOL)arg3;
 + (id)displayColorSpacesForCustomWidth:(int)arg1 andHeight:(int)arg2 includeWideGamut:(BOOL)arg3 includeHDR:(BOOL)arg4;
 + (id)displayColorSpacesForStandardGamutVideoFormat:(id)arg1 includeWideGamut:(BOOL)arg2 includeHDR:(BOOL)arg3;
++ (id)menuItemTitleForVideoFormatDisplayName:(id)arg1;
 + (id)menuItemTitleForColorSpaceDisplayName:(id)arg1;
 + (struct CGColorSpace *)colorSpaceForDisplayName:(id)arg1;
 + (id)displayNameForColorSpace:(struct CGColorSpace *)arg1;
@@ -37,10 +38,13 @@
 + (id)formatForDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3;
 + (id)displayRatesForFormat:(id)arg1 andSize:(id)arg2;
 + (id)displaySizesForFormat:(id)arg1 projectionType:(id)arg2;
++ (id)getPropsBasedFormats:(int)arg1;
++ (void)getPropsBasedFormats;
 + (id)displayRatesInOrder;
 + (id)displayRateForSampleDuration:(CDStruct_1b6d18a9)arg1 fieldOrder:(int)arg2;
 + (id)_displayInterlacedRateForSampleDuration:(CDStruct_1b6d18a9)arg1;
 + (id)_displayProgressiveRateForSampleDuration:(CDStruct_1b6d18a9)arg1;
++ (CDStruct_1b6d18a9)_sampleDurationFromProgressiveDisplayRateString:(id)arg1;
 + (id)displayProgressiveRatesInOrder;
 + (id)displayFormatsInOrder;
 + (id)allFormats;
@@ -52,7 +56,6 @@
 + (id)FFCustomFormatDisplayName;
 + (void)releaseSharedInstance;
 - (id)newPList;
-- (BOOL)isReallyGoodGuessOf:(id)arg1;
 - (id)exactMatchVideoFormat;
 - (int)fieldDominance;
 - (CDStruct_1b6d18a9)frameDuration;

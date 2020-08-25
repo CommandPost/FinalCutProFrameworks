@@ -10,8 +10,12 @@
 {
 }
 
++ (id)newTextureQuadWithInvertedDestinationRect:(struct CGRect)arg1 texture:(id)arg2;
++ (id)newMetalTextureFromCGImageRef:(struct CGImage *)arg1 device:(id)arg2;
++ (id)newMetalTextureFromNSImage:(id)arg1 device:(id)arg2;
++ (id)_newMetalTextureFromFFImage:(id)arg1 device:(id)arg2;
 + (void)dumpNSImage:(id)arg1;
-+ (void)multiLineTextRectangle:(float)arg1 cgl_ctx:(struct _CGLContextObject *)arg2 string:(id)arg3 textAttributes:(id)arg4 glowAttributes:(id)arg5 paddingX:(double)arg6 paddingY:(double)arg7 roundRectBackground:(BOOL)arg8 drawProperties:(id)arg9 playerVideoModule:(id)arg10 textPositionRect:(struct CGRect *)arg11 textShouldDraw:(BOOL)arg12 textImage:(id *)arg13;
++ (void)multiLineTextRectangle:(float)arg1 renderer:(id)arg2 string:(id)arg3 textAttributes:(id)arg4 glowAttributes:(id)arg5 paddingX:(double)arg6 paddingY:(double)arg7 roundRectBackground:(BOOL)arg8 drawProperties:(id)arg9 playerVideoModule:(id)arg10 textPositionRect:(struct CGRect *)arg11 textShouldDraw:(BOOL)arg12 textImage:(id *)arg13;
 + (void)wrapImageForTextProcessing:(id)arg1 imageSize:(struct CGSize)arg2 smoothFonts:(BOOL)arg3 backgroundColor:(id)arg4 cornerRadius:(float)arg5 processingBlock:(CDUnknownBlockType)arg6;
 + (void)removeFFLRUImageCacheObjectFromCascheIfFull:(id)arg1 maxCount:(int)arg2;
 + (id)newWrapTextArray:(id)arg1 textAttributes:(id)arg2 textRectWidth:(double)arg3 backingScaleFactor:(double)arg4;

@@ -22,10 +22,18 @@ __attribute__((visibility("hidden")))
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)selectSetting:(id)arg1;
 - (void)selectPerSourceSetting:(id)arg1;
+- (long long)preferredStompSettingIndexForDestination:(id)arg1 stompSettingMaps:(id)arg2;
 - (long long)preferredStompSettingIndexWithSettings:(id)arg1;
 - (long long)optimalStompSettingIndexWithDestination:(id)arg1 andSource:(id)arg2;
+- (BOOL)doesPotentialSizeImplyUpscaling:(struct CGSize)arg1 withSourceSize:(struct CGSize)arg2;
+- (BOOL)doesPotentialSizeImplyUpscaling:(struct CGSize)arg1;
+- (struct CGSize)potentialSizeWithMap:(id)arg1;
 - (long long)optimalStompSettingIndexWithSettings:(id)arg1;
 - (id)stompSettingsApplicableToAllItems;
+- (id)optimalVideoResolutionDeterminer;
+- (id)formattedVideoResolution:(struct CGSize)arg1;
+- (id)potentialVideoResolutionConverter;
+- (struct CGSize)convertPotentialToActualVideoResolution:(struct CGSize)arg1;
 - (long long)buildSettingsMenu:(id)arg1 withSize:(BOOL)arg2;
 - (void)dealloc;
 - (id)init;

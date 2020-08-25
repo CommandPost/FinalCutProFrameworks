@@ -6,19 +6,14 @@
 
 #import <Flexo/FFPlayerVideoScopesModule.h>
 
-#import "FFDestVideoScopesGLDelegate.h"
-
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesWaveformModule : FFPlayerVideoScopesModule <FFDestVideoScopesGLDelegate>
+@interface FFVideoScopesWaveformModule : FFPlayerVideoScopesModule
 {
 }
 
-- (struct CGSize)viewMinSize;
-- (struct CGColorSpace *)overrideColorSpaceForVideoScopes:(id)arg1;
-- (void)colorSpaceDidChangeForVideoScopes:(id)arg1;
-- (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (id)viewProperties;
 - (void)setViewProperties:(id)arg1;
+- (struct CGSize)viewMinSize;
 - (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
 - (void)updateLabel;
 - (BOOL)validateUserInterfaceItem:(id)arg1;

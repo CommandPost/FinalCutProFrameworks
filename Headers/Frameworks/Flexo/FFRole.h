@@ -69,12 +69,7 @@
 @property(readonly, nonatomic) BOOL isSystemGeneratedSubRole; // @synthesize isSystemGeneratedSubRole=_isSystemGeneratedSubRole;
 @property(retain, nonatomic) NSString *internalName; // @synthesize internalName=_internalName;
 @property(readonly, retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
-- (BOOL)_hasWriteLock;
-- (BOOL)writerIsWaiting;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
-- (void)_readLock;
+- (id)modelLockingObject;
 - (BOOL)syncWithRole:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isIdenticalToRole:(id)arg1;

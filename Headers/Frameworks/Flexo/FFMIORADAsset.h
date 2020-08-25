@@ -41,6 +41,7 @@
 @property BOOL ingested; // @synthesize ingested=_ingested;
 @property(retain, nonatomic) NSString *clipID; // @synthesize clipID=_clipID;
 @property(retain, nonatomic) MIORADClip *clip; // @synthesize clip=_clip;
+- (void)updateIdentity;
 - (BOOL)canRebuildAudioProperties;
 - (void)updateGPSMetadata;
 - (long long)timecodeDisplayDropFrame;

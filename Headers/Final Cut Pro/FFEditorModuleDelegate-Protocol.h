@@ -49,6 +49,5 @@
 
 @optional
 - (void)hideSportsTeamOSC;
-- (void)performAction:(NSString *)arg1 withProject:(FFAnchoredSequence *)arg2 andSelection:(NSArray *)arg3;
 @end
 

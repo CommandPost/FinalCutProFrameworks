@@ -14,11 +14,7 @@
 
 + (id)newArrayOfAdjustmentToolRangeAndObjectFromArray:(id)arg1;
 + (id)adjustmentToolRangeAndObjectWithRangeAndObject:(id)arg1;
-- (BOOL)writerIsWaiting;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
-- (void)_readLock;
+- (id)modelLockingObject;
 - (id)valueForUndefinedKey:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)forwardInvocation:(id)arg1;

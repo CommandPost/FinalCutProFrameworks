@@ -6,12 +6,11 @@
 
 #import "LKViewModule.h"
 
-@class LKTileView, NSArray, PEBackgroundTaskProgress;
+@class LKTileView, NSArray;
 
 @interface PEBackgroundTaskModule : LKViewModule
 {
     NSArray *_tasks;
-    PEBackgroundTaskProgress *_modalTaskProgress;
     LKTileView *_tileView;
     BOOL _unhideAfterFullScreen;
     BOOL _hiddenAfterLayout;
@@ -32,8 +31,6 @@
 - (void)playerWillEnterFullScreen:(id)arg1;
 - (void)updateWindowSize;
 - (void)_setTasks:(id)arg1;
-- (void)closeModalProgressSheet;
-- (void)openModalProgressSheetForTask:(id)arg1;
 - (void)moduleDidUnhide;
 - (void)moduleDidHide;
 - (void)hideModule:(id)arg1;

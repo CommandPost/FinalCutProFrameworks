@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     int _codecType;
     long long _commonPacketUnits;
     struct vector<HPMChunkEntry, std::__1::allocator<HPMChunkEntry>> *_index;
-    struct MXKey *_sourcePackID;
+    struct MXUMID *_sourcePackID;
     int _wrapping;
     unsigned int _trackID;
     unsigned int _trackNumber;
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned int trackNumber; // @synthesize trackNumber=_trackNumber;
 @property(readonly) unsigned int trackID; // @synthesize trackID=_trackID;
 @property(readonly) int wrapping; // @synthesize wrapping=_wrapping;
-@property(readonly) const struct MXKey *sourcePackID; // @synthesize sourcePackID=_sourcePackID;
+@property(readonly) const struct MXUMID *sourcePackID; // @synthesize sourcePackID=_sourcePackID;
 @property long long commonPacketUnits; // @synthesize commonPacketUnits=_commonPacketUnits;
 @property(readonly) int codecType; // @synthesize codecType=_codecType;
 @property(readonly) int essenceType; // @synthesize essenceType=_essenceType;
@@ -83,7 +83,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long indexEntryCount;
 @property(readonly) CDStruct_2689111f sampleRate;
 - (void)dealloc;
-- (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXKey *)arg2 bodySID:(unsigned int)arg3 trackType:(int)arg4;
+- (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXUMID *)arg2 bodySID:(unsigned int)arg3 trackType:(int)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

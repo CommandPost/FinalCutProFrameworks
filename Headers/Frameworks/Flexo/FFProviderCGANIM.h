@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     _Bool _unsupportedFileFeature;
 }
 
++ (id)offlineVideoSourceKeysForVideoSourceCount:(long long)arg1 isStill:(BOOL)arg2;
 + (id)extensions;
 + (id)utis;
 - (id)MD5Seed;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)frameCount;
 - (struct CGImageSource *)imageSourceRef;
 - (void)dealloc;
+- (id)initWithResourceLocator:(id)arg1;
 - (id)initWithAssetFileID:(id)arg1;
 
 @end

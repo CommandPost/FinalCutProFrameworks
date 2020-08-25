@@ -8,25 +8,21 @@
 
 #import "NSUserInterfaceValidations.h"
 
-@class FFSegmentedControl, LKButton, LKMenu, LKPopUpButton, LKTextField, NSMutableArray, NSView;
+@class FFSegmentedControl, LKButton, LKPopUpButton, LKTextField, NSMutableArray, NSTabView, NSView;
 
 @interface FFRetimeSettingsTool : FFAdjustmentTool <NSUserInterfaceValidations>
 {
+    NSMutableArray *_retimeStateTitles;
     NSView *_adjustmentToolbarView;
     LKPopUpButton *_retimeState;
-    NSView *_retimeSlowView;
-    NSView *_retimeFastView;
-    NSView *_retimeCustomView;
-    NSView *_retimeFreezeFrameView;
+    NSTabView *_retimeTabView;
     FFSegmentedControl *_slowPresets;
     FFSegmentedControl *_fastPresets;
-    LKTextField *_customSpeed;
     LKTextField *_freezeFrameDuration;
+    LKTextField *_customSpeed;
     LKButton *_smooth;
     LKButton *_reverse;
     LKButton *_preservePitch;
-    LKMenu *_retimeStateMenu;
-    NSMutableArray *_retimeStateTitles;
 }
 
 + (int)retimeStateForObject:(id)arg1 andRange:(CDStruct_e83c9415)arg2;
@@ -43,10 +39,20 @@
 + (void)initialize;
 + (long long)sortOrderForGroup:(id)arg1;
 + (id)groups;
-- (void)setFreezeFrameDuration:(id)arg1;
-- (void)setCustomSpeed:(id)arg1;
-- (void)setFastSpeed:(id)arg1;
-- (void)setSlowSpeed:(id)arg1;
+@property LKButton *preservePitch; // @synthesize preservePitch=_preservePitch;
+@property LKButton *reverse; // @synthesize reverse=_reverse;
+@property LKButton *smooth; // @synthesize smooth=_smooth;
+@property LKTextField *customSpeed; // @synthesize customSpeed=_customSpeed;
+@property LKTextField *freezeFrameDuration; // @synthesize freezeFrameDuration=_freezeFrameDuration;
+@property FFSegmentedControl *fastPresets; // @synthesize fastPresets=_fastPresets;
+@property FFSegmentedControl *slowPresets; // @synthesize slowPresets=_slowPresets;
+@property NSTabView *retimeTabView; // @synthesize retimeTabView=_retimeTabView;
+@property LKPopUpButton *retimeState; // @synthesize retimeState=_retimeState;
+@property NSView *adjustmentToolbarView; // @synthesize adjustmentToolbarView=_adjustmentToolbarView;
+- (void)setFreezeFrameDurationAction:(id)arg1;
+- (void)setCustomSpeedAction:(id)arg1;
+- (void)setFastSpeedAction:(id)arg1;
+- (void)setSlowSpeedAction:(id)arg1;
 - (id)_objectToRetimeWithRange:(CDStruct_e83c9415 *)arg1;
 - (void)setAutomaticSpeed;
 - (void)setSpeedForRangeAndObjects:(id)arg1 rateArray:(id)arg2;
@@ -55,7 +61,7 @@
 - (void)toggleSmoothInterpolation:(id)arg1;
 - (void)retimeHold:(id)arg1;
 - (void)changeRetimeState:(id)arg1;
-- (void)setRetimeState:(int)arg1;
+- (void)_setRetimeState:(int)arg1;
 - (void)setSpeed:(double)arg1;
 - (void)setSpeedForRangeAndObjects:(id)arg1 rate:(double)arg2;
 - (BOOL)validateUserInterfaceItem:(id)arg1;

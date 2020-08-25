@@ -4,9 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSOpenGLView.h"
+#import "NSView.h"
 
-@interface OZVelocityView : NSOpenGLView
+@class NSOpenGLView;
+
+@interface OZVelocityView : NSView
 {
     double _direction[3];
     double _startDirection[3];
@@ -26,9 +28,11 @@
     BOOL _is3D;
     BOOL _onlySetXOrY;
     id <OZVelocityController> _pController;
+    NSOpenGLView *_openGLView;
 }
 
 + (void)drawRadialGridInBounds:(struct CGRect)arg1 radius:(double)arg2;
+@property NSOpenGLView *openGLView; // @synthesize openGLView=_openGLView;
 - (int)radius;
 - (struct CGPoint)centerPoint;
 - (double)threeDSpeed;
@@ -55,7 +59,8 @@
 - (void)draw3DArrow:(struct CGRect)arg1;
 - (void)drawBackground:(struct CGRect)arg1;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)prepareOpenGL;
+- (void)makeOpenGLContextCurrent;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

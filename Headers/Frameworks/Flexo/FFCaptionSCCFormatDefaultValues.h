@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 - (id)captionWithStringAndFormattingDefaults:(id)arg1 timeRange:(CDStruct_e83c9415)arg2;
+- (unsigned long long)captionFormat;
 - (void)restoreToDefaults;
 - (id)userDefaultsKey;
 

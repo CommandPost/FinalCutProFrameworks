@@ -6,30 +6,22 @@
 
 #import <Flexo/FFVideoScopesView.h>
 
-#import "FFDestVideoScopesGLDelegate.h"
-
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesWaveformView : FFVideoScopesView <FFDestVideoScopesGLDelegate>
+@interface FFVideoScopesWaveformView : FFVideoScopesView
 {
     long long _displayMode;
     long long _compositeVideoUnits;
     int _colorSpaceType;
-    void *_FFVideoScopesWaveformViewPrivate;
 }
 
 + (BOOL)supportsSecureCoding;
-- (id)_initVideoScopesWaveformView;
-- (struct FFVideoScopesWaveformViewPrivate *)_Private;
 - (id)accessibilityAttributeValue:(id)arg1;
-- (void)drawScopeWithFrame:(id)arg1 forRate:(double)arg2 atTime:(CDStruct_1b6d18a9)arg3;
-- (void)setSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3;
-- (void)scrollWheel:(id)arg1;
+- (void)colorSpaceDidChangeForVideoScopes:(id)arg1;
 - (void)rightMouseDown:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)mouseMoved:(id)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)setShowGuides:(BOOL)arg1;
-- (void)setZoomFactor:(float)arg1;
 - (void)setFrameSize:(struct CGSize)arg1;
 - (void)setHidden:(BOOL)arg1;
 - (void)awakeFromNib;
@@ -42,11 +34,10 @@ __attribute__((visibility("hidden")))
 @property long long compositeVideoUnits; // @dynamic compositeVideoUnits;
 @property long long displayMode; // @dynamic displayMode;
 - (void)_updateLayersCompositeVideoUnits;
-- (void)_updateLayersDisplayMode;
-- (void)_updateLayersYScale;
-- (void)dealloc;
+- (id)_waveformLayer;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)_initVideoScopesWaveformView;
 
 @end
 

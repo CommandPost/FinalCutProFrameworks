@@ -6,10 +6,15 @@
 
 #import <Ozone/OZTool.h>
 
-@interface OZPanTool : OZTool
+#import "POOnScreenControlMetalRendering.h"
+
+@class NSString;
+
+@interface OZPanTool : OZTool <POOnScreenControlMetalRendering>
 {
 }
 
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (_Bool)performMouseDragAction:(id)arg1;
 - (BOOL)displayDefaultOnScreenControls;
 - (void)iconDoubleClick;
@@ -17,6 +22,12 @@
 - (struct PCUUID)getClassID;
 - (id)getTooltip;
 - (id)getName;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

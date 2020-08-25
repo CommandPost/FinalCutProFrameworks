@@ -24,11 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)inputProvider;
 - (int)quality;
 - (id)asset;
-- (BOOL)writerIsWaiting;
-- (void)_readUnlock;
-- (void)_readLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
+- (id)modelLockingObject;
 - (id)displayName;
 - (id)sourceKeys;
 - (id)sourceKeyForObject:(id)arg1;

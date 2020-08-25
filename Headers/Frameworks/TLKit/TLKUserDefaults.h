@@ -21,7 +21,6 @@
 + (BOOL)showUsedRegion;
 + (BOOL)showRulerBounds;
 + (BOOL)showContainerBounds;
-+ (BOOL)showItemLayoutInfo;
 + (BOOL)showInvalidLayoutRects;
 + (BOOL)showHiddenItemHeaders;
 + (BOOL)showHiddenGapItems;

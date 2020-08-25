@@ -8,12 +8,12 @@
 
 #import "FFREDRAWPropertyChangeController.h"
 
-@class NSString;
+@class FFSharedLock, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _REDRAWPropertyChangeController : NSObject <FFREDRAWPropertyChangeController>
 {
-    id <FFModelLocking> _modelLockingObject;
+    FFSharedLock *_modelLockingObject;
     CDUnknownBlockType _setter;
     CDUnknownBlockType _invalidateBlock;
 }

@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)setAllocation:(unsigned int)arg1 sampleRate:(double)arg2 numChannels:(unsigned int)arg3 forObject:(id)arg4;
 - (void)purgeAudioUnit:(id)arg1;
 - (void)returnAudioUnit:(id)arg1;
-- (id)reserveAudioUnitWithSampleRate:(double)arg1 andNumChannels:(unsigned int)arg2 forPlayback:(BOOL)arg3 defaultPreset:(id *)arg4 isFreeListUnit:(char *)arg5;
+- (void)reserveAudioUnitWithSampleRate:(double)arg1 numChannels:(unsigned int)arg2 allowAllocatedUnit:(BOOL)arg3 wantsDefaultPreset:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)dealloc;
 - (id)initWithEffectID:(id)arg1;
 

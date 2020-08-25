@@ -13,7 +13,8 @@ __attribute__((visibility("hidden")))
 {
     FFImage *_image;
     FFImageAbsoluteOutputFormat *_outFmt;
-    int _location;
+    struct FxDevice *_singleLocation;
+    const struct FxDeviceSet *_locList;
     int _workingSpace;
     _Bool _cancelled;
 }
@@ -23,9 +24,9 @@ __attribute__((visibility("hidden")))
 - (id)newImage;
 - (void)ensureFlattened:(_Bool)arg1;
 - (struct CGColorSpace *)colorSpace;
-- (int)location;
+- (const struct FxDeviceSet *)location;
 - (void)dealloc;
-- (id)initWithImage:(id)arg1 pixelFormat:(id)arg2 location:(int)arg3 workingSpace:(int)arg4;
+- (id)initWithImage:(id)arg1 pixelFormat:(id)arg2 location:(struct FxDevice *)arg3 workingSpace:(int)arg4;
 
 @end
 

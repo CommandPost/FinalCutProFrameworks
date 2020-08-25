@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     LKPopUpButton *_popUpButton;
 }
 
+- (id)tileNameString;
 - (id)tileGlyphString;
 - (id)filterDict;
 - (void)setFilterDict:(id)arg1;

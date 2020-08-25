@@ -36,7 +36,7 @@
 - (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
-- (void)_postInit:(id)arg1;
+- (void)_postInit:(id)arg1 isXML:(BOOL)arg2;
 - (void)dealloc;
 
 @end

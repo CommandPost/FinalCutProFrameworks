@@ -45,6 +45,7 @@
 - (void)viewDidLoad;
 - (struct CGSize)viewMaxSize;
 - (struct CGSize)viewMinSize;
+- (id)firstKeyView;
 
 @end
 

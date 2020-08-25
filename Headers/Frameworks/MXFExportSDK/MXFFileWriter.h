@@ -11,7 +11,6 @@
     struct GZIOBase *_fileIO;
     struct MXPartitionHeader *_headerPartitionHeader;
     struct MXMovieDesc *_movieDesc;
-    struct MXTimeStamp *_creationDate;
     int _processedFrameCount;
     long long _framesInIndex;
     int _processedFramesOfCurrentPartitionCount;
@@ -40,12 +39,15 @@
 - (struct MXArray *)getDeltaEntryArrayAndMakeNewIndexEntries;
 - (void)setDVTimecode:(char *)arg1 inMemSize:(unsigned int)arg2 inPositionTc:(long long)arg3 inRoundedEditRate:(short)arg4 inDropFrame:(_Bool)arg5;
 - (void)generateAVCStreamHeader:(int)arg1 inEditRate:(CDStruct_c0454aff)arg2 outData:(char *)arg3;
+- (long long)writeAudioData:(unsigned long long)arg1 inSoundFrame:(struct GZMemory *)arg2;
 - (unsigned long long)writeSoundFrameData:(unsigned int)arg1 inSoundFrame:(struct GZMemory *)arg2;
 - (unsigned long long)writeDataEssence:(unsigned int)arg1 inDataEssence:(struct GZMemory *)arg2;
 - (unsigned long long)writePictureFrameData:(unsigned int)arg1 inPictureFrame:(struct GZMemory *)arg2 inAdditionalData:(CDStruct_1b7e618c *)arg3 inError:(int *)arg4;
 - (void)writeSystemData:(unsigned int)arg1;
 - (unsigned int)getKAGOffset:(unsigned long long)arg1 inKAGSize:(unsigned int)arg2;
+- (CDStruct_c0454aff)getSampleRate;
 - (unsigned int)getSoundSamplesPerFrame:(unsigned int)arg1 inFramePosition:(long long)arg2;
+- (int)finalizeWriter;
 - (int)finalize;
 - (int)pushDataEssence:(struct GZMemory *)arg1;
 - (int)pushAudioOnly:(struct GZMemory *)arg1;

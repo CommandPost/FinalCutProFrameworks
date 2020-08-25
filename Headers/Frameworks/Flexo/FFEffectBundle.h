@@ -59,6 +59,7 @@
 - (void)_undoPartChanged:(id)arg1;
 - (void)_showEffectWindow:(id)arg1;
 - (void)createChannelsInFolder:(id)arg1;
+- (id)newChannelFolderWithParent:(id)arg1 name:(id)arg2;
 - (id)newAmountChannelForEffectBundlePart:(id)arg1 inFolder:(id)arg2 withChannelID:(int)arg3;
 - (void)updatePresetsInEnumChannel:(id)arg1 withPresetNames:(id)arg2;
 - (id)availableBundleParts;
@@ -80,7 +81,7 @@
 - (void)insertObject:(id)arg1 inEffectBundlePartsAtIndex:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)_postInit:(id)arg1;
+- (void)_postInit:(id)arg1 isXML:(BOOL)arg2;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;

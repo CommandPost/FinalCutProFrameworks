@@ -13,14 +13,14 @@
     unsigned long long _storylineContentsMask;
     unsigned long long _storylineItemType;
     unsigned long long _storylineItemSubType;
-    unsigned long long _storylineRegion;
+    long long _storylineRegion;
     unsigned long long _nestingLevel;
 }
 
 + (unsigned long long)transitiveClosureForStorylineContentsMask:(unsigned long long)arg1;
 @property(readonly, nonatomic) BOOL isAudioMinimized; // @synthesize isAudioMinimized=_isAudioMinimized;
 @property(readonly, nonatomic) unsigned long long nestingLevel; // @synthesize nestingLevel=_nestingLevel;
-@property(readonly, nonatomic) unsigned long long storylineRegion; // @synthesize storylineRegion=_storylineRegion;
+@property(readonly, nonatomic) long long storylineRegion; // @synthesize storylineRegion=_storylineRegion;
 @property(readonly, nonatomic) unsigned long long storylineItemSubType; // @synthesize storylineItemSubType=_storylineItemSubType;
 @property(readonly, nonatomic) unsigned long long storylineItemType; // @synthesize storylineItemType=_storylineItemType;
 @property(readonly, nonatomic) unsigned long long storylineContentsMask; // @synthesize storylineContentsMask=_storylineContentsMask;
@@ -31,8 +31,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithStorylineItemType:(unsigned long long)arg1 itemSubType:(unsigned long long)arg2 storylineRegion:(unsigned long long)arg3 clipContentsMask:(unsigned long long)arg4 storylineContentsMask:(unsigned long long)arg5 isAudioMinimized:(BOOL)arg6;
-- (id)initWithStorylineItemType:(unsigned long long)arg1 itemSubType:(unsigned long long)arg2 storylineRegion:(unsigned long long)arg3 clipContentsMask:(unsigned long long)arg4 storylineContentsMask:(unsigned long long)arg5 nestingLevel:(unsigned long long)arg6 isAudioMinimized:(BOOL)arg7;
+- (id)initWithStorylineItemType:(unsigned long long)arg1 itemSubType:(unsigned long long)arg2 storylineRegion:(long long)arg3 clipContentsMask:(unsigned long long)arg4 storylineContentsMask:(unsigned long long)arg5 isAudioMinimized:(BOOL)arg6;
+- (id)initWithStorylineItemType:(unsigned long long)arg1 itemSubType:(unsigned long long)arg2 storylineRegion:(long long)arg3 clipContentsMask:(unsigned long long)arg4 storylineContentsMask:(unsigned long long)arg5 nestingLevel:(unsigned long long)arg6 isAudioMinimized:(BOOL)arg7;
 - (id)init;
 
 @end

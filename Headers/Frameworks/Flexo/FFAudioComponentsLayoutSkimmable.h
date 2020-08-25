@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_e83c9415)audioClippedRange;
 - (id)description;
 - (void)dealloc;
+- (id)audioComponentSource;
 - (id)initWithRootObject:(id)arg1 layoutKey:(id)arg2 layoutItemKey:(id)arg3;
 
 @end

@@ -18,12 +18,10 @@
     PCChangeLog *_outputChangeLog;
     TLKLayoutDatabase *_database;
     TLKLayoutGraph *_layoutGraph;
-    double _verticalSpacing;
     double _defaultItemHeight;
 }
 
 @property(readonly, nonatomic) double defaultItemHeight; // @synthesize defaultItemHeight=_defaultItemHeight;
-@property(readonly, nonatomic) double verticalSpacing; // @synthesize verticalSpacing=_verticalSpacing;
 @property(readonly, nonatomic) BOOL verticalLayout; // @synthesize verticalLayout=_verticalLayout;
 @property(readonly, nonatomic) BOOL horizontalLayout; // @synthesize horizontalLayout=_horizontalLayout;
 @property(retain, nonatomic) NSSet *processedItemComponents; // @synthesize processedItemComponents=_processedItemComponents;
@@ -41,27 +39,11 @@
 - (void)_layoutAnchoredItemComponentsBelowSpine:(id)arg1 inLayoutContext:(id)arg2;
 - (void)_layoutAnchoredItemComponentsAboveSpine:(id)arg1 inLayoutContext:(id)arg2;
 - (void)_layoutSpineItemComponents:(id)arg1 inLayoutContext:(id)arg2 changeLog:(id)arg3;
-- (void)_reloadLayoutConstraintsForItemComponents:(id)arg1;
-- (double)_innerPaddingOffsetForLane:(id)arg1;
-- (BOOL)_reloadLayoutConstraintsForItemComponent:(id)arg1;
-- (void)_clearLayoutConstraintsForItemComponents:(id)arg1;
-- (BOOL)_shouldAddSpineFrameDependencyForItemComponent:(id)arg1 withDependencies:(id)arg2;
-- (void)_removeCircularDependenciesForNode:(id)arg1 inProposedInnerNodes:(id)arg2;
-- (void)_reloadDependenciesForLayoutGraphNodes:(id)arg1;
-- (void)_reloadVerticalIndexTable:(id)arg1 forContainer:(id)arg2 withInsertedNodes:(id)arg3 deletedNodes:(id)arg4 updatedNodes:(id)arg5;
-- (void)_findOuterLayoutDependenciesForNode:(id)arg1 inVerticalIndexTable:(id)arg2 searchRange:(struct _NSRange)arg3 intoMutableSet:(id)arg4;
-- (void)_findInnerLayoutDependenciesForNode:(id)arg1 inVerticalIndexTable:(id)arg2 searchRange:(struct _NSRange)arg3 intoMutableSet:(id)arg4;
-- (void)_findLayoutDependenciesInVerticalIndexTable:(id)arg1 forTimeRange:(struct _TLKRange)arg2 searchRange:(struct _NSRange)arg3 inReverse:(BOOL)arg4 initialLane:(id)arg5 layoutRegion:(long long)arg6 unusedRanges:(id *)arg7 intoMutableSet:(id)arg8;
-- (void)_timeRangesBySubtractingNodes:(id)arg1 fromRange:(struct _TLKRange)arg2 intoArray:(id)arg3;
-- (id)_findNodesIntersectingRange:(struct _TLKRange)arg1 inArray:(id)arg2;
 - (void)_tileTracksInLineFragment:(id)arg1;
 - (double)_timelineStartTimeInSeconds;
-- (void)_reloadLayoutGraphForContainer:(id)arg1 withInsertedItemComponents:(id)arg2 deletedItemComponents:(id)arg3 updatedItemComponents:(id)arg4;
 - (void)_createFirstLineFragment;
 - (void)_createFirstLineFragmentIfNeeded;
 - (void)_performLayoutForItemComponents:(id)arg1;
-- (void)_reloadIndexTablesForContainer:(id)arg1 withInsertedNodes:(id)arg2 deletedNodes:(id)arg3 updatedNodes:(id)arg4;
-- (id)_innerLayoutNodesForNodes:(id)arg1;
 - (void)main;
 - (void)dealloc;
 - (id)initWithChangeLog:(id)arg1 layoutDatabase:(id)arg2;

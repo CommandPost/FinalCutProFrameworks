@@ -20,7 +20,6 @@
 @property(retain, nonatomic) FFPentaSlider *lumaSlider; // @synthesize lumaSlider=_lumaSlider;
 @property(retain, nonatomic) FFColorSlider *tintSlider; // @synthesize tintSlider=_tintSlider;
 @property(retain, nonatomic) FFColorSlider *saturationSlider; // @synthesize saturationSlider=_saturationSlider;
-- (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
 - (void)dealloc;
 
 @end

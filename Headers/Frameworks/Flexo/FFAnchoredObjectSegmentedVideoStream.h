@@ -6,12 +6,14 @@
 
 #import <Flexo/FFStreamVideo.h>
 
+#import "FFModelLocking.h"
+
 @class FFPrerollSync;
 
 __attribute__((visibility("hidden")))
-@interface FFAnchoredObjectSegmentedVideoStream : FFStreamVideo
+@interface FFAnchoredObjectSegmentedVideoStream : FFStreamVideo <FFModelLocking>
 {
-    struct list<PEObjectSegmentedVideoStreamUtils::SegmentStreamCacheItem *, std::__1::allocator<PEObjectSegmentedVideoStreamUtils::SegmentStreamCacheItem *>> _segmentStreamCache;
+    struct list<std::__1::unique_ptr<PEObjectSegmentedVideoStreamUtils::SegmentStreamCacheItem, std::__1::default_delete<PEObjectSegmentedVideoStreamUtils::SegmentStreamCacheItem>>, std::__1::allocator<std::__1::unique_ptr<PEObjectSegmentedVideoStreamUtils::SegmentStreamCacheItem, std::__1::default_delete<PEObjectSegmentedVideoStreamUtils::SegmentStreamCacheItem>>>> _segmentStreamCache;
     BOOL _prerolling;
     double _rate;
     FFPrerollSync *_prerollSync;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)newImageAtTimeIgnoringCache:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 context:(id)arg3 schedInfo:(id)arg4 downstreamPT:(id)arg5 roi:(const struct CGRect *)arg6 graphBuildInfo:(id)arg7;
 - (void)dealloc;
 - (id)objectVideoSource;
+- (id)modelLockingObject;
 - (id)videoProps;
 - (id)anchoredObject;
 

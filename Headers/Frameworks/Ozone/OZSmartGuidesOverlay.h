@@ -6,16 +6,17 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class NSMutableArray;
+#import "POOnScreenControlMetalRendering.h"
 
-@interface OZSmartGuidesOverlay : OZOverlay
+@class NSMutableArray, NSString;
+
+@interface OZSmartGuidesOverlay : OZOverlay <POOnScreenControlMetalRendering>
 {
     set_0cb42238 *_drawSnaps;
     NSMutableArray *_lines;
 }
 
-- (id)getMetalDrawPrimitives:(id)arg1;
-- (BOOL)doesSupportMetal;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (void)snapEnd;
 - (void)snappedTo:(const set_0cb42238 *)arg1;
 - (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
@@ -24,6 +25,12 @@
 - (int)getDrawingOrder;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

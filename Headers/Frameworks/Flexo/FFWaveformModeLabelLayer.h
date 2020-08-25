@@ -6,29 +6,17 @@
 
 #import <Flexo/FFVideoScopesLabelLayer.h>
 
-#import "FFVideoScopesWaveformYScaling.h"
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface FFWaveformModeLabelLayer : FFVideoScopesLabelLayer <FFVideoScopesWaveformYScaling>
+@interface FFWaveformModeLabelLayer : FFVideoScopesLabelLayer
 {
     long long _displayMode;
-    long long _yScale;
-    CDStruct_554002f2 _action_opt;
+    long long _compositeVideoUnits;
 }
 
 - (id)accessibilityAttributeValue:(id)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
-- (id)actionForKey:(id)arg1;
-- (void)setVideoScopesWaveformYScale:(long long)arg1;
+@property(nonatomic) long long compositeVideoUnits;
 - (void)setDisplayMode:(long long)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)_reloadContents;
 
 @end
 

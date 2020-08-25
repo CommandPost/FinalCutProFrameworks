@@ -29,7 +29,7 @@
     double _selectedTime;
     NSString *_displayName;
     NSString *_lastPathComponent;
-    struct OZFactory *_factory;
+    // Error parsing type: ^{OZFactory=^^?{PCUUID=IIII}{PCUUID=IIII}I{atomic<OZFactory *>=A^{OZFactory}}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}}, name: _factory
     OZLibraryEntry *_cloneOfEntry;
     NSString *_theme;
     BOOL _isFullyBlocked;
@@ -145,7 +145,7 @@
 - (void)setIsFullyBlocked:(BOOL)arg1;
 - (BOOL)getIsFullyBlocked;
 - (BOOL)isTypeOfObject:(const struct PCUUID *)arg1;
-- (struct OZFactory *)getFactory;
+-     // Error parsing type: ^{OZFactory=^^?{PCUUID=IIII}{PCUUID=IIII}I{atomic<OZFactory *>=A^{OZFactory}}{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}}16@0:8, name: getFactory
 - (struct PCUUID)getFactoryID;
 - (void)setFactoryID:(const struct PCUUID *)arg1;
 - (void)setTheme:(id)arg1 modifyFile:(BOOL)arg2;

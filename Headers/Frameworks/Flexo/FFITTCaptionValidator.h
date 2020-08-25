@@ -19,15 +19,14 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) NSCharacterSet *ittInvalidVerticalCharacterSet; // @synthesize ittInvalidVerticalCharacterSet=_ittInvalidVerticalCharacterSet;
 @property(retain, nonatomic) NSCharacterSet *ittInvalidCharacterSet; // @synthesize ittInvalidCharacterSet=_ittInvalidCharacterSet;
-- (id)_validateJapaneseITTCaptionArrayOverlap:(id)arg1 inTask:(id)arg2 withErrorMap:(id)arg3;
-- (id)_validateNonJapaneseITTCaptionArrayOverlap:(id)arg1 inTask:(id)arg2 withErrorMap:(id)arg3;
-- (id)_validateITTSimpleCaptionArrayOverlap:(id)arg1 errorCode:(unsigned long long)arg2 inTask:(id)arg3 withErrorMap:(id)arg4;
+- (void)_validateJapaneseITTCaptionArrayOverlap:(id)arg1 inTask:(id)arg2 intoErrorMap:(id)arg3;
+- (void)_validateNonJapaneseITTCaptionArrayOverlap:(id)arg1 inTask:(id)arg2 intoErrorMap:(id)arg3;
+- (void)_validateITTSimpleCaptionArrayOverlap:(id)arg1 errorCode:(unsigned long long)arg2 inTask:(id)arg3 intoErrorMap:(id)arg4;
 - (id)validateITTCaptionArrayOverlap:(id)arg1 inTask:(id)arg2;
 - (BOOL)_isInRightRegion:(id)arg1;
 - (BOOL)_isInLeftRegion:(id)arg1;
 - (BOOL)_isInBottomRegion:(id)arg1;
 - (BOOL)_isInTopRegion:(id)arg1;
-- (BOOL)_isCaption:(id)arg1 inRegion:(id)arg2;
 - (id)validateITTCaptionPosition:(id)arg1;
 - (id)validateITTCaptionJapaneseCharacters:(id)arg1;
 - (id)validateITTCaptionCharacters:(id)arg1;

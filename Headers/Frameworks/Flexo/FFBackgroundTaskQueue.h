@@ -60,10 +60,12 @@
 - (BOOL)isSuspended;
 - (id)operations;
 - (id)_copyOperationsInternal;
+- (void)incrementMaxSimultaneousOperationsForRunGroup:(id)arg1;
 - (void)setRunGroupMaxSimultaneousOperations:(unsigned long long)arg1 forRunGroup:(id)arg2;
 - (void)resumeTasks:(id)arg1;
 - (void)pauseTasks:(id)arg1;
 - (unsigned long long)getLowOverheadEntryNumberAndCurrentState:(_Bool *)arg1;
+- (void)performBlockInLowOverheadMode:(CDUnknownBlockType)arg1;
 - (void)runLowOverHeadForTime:(double)arg1;
 - (void)_forceExitLOMode;
 - (void)_forceExpireTimedLOMode;

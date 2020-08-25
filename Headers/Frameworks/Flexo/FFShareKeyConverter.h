@@ -16,16 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)defaultValueForKey:(id)arg1;
 + (id)defaultConsumerValueForKey:(id)arg1;
-- (void)_writeUnlock:(const char *)arg1;
-- (void)_writeLock:(const char *)arg1 file:(const char *)arg2 line:(unsigned int)arg3;
-- (void)_readUnlock:(const char *)arg1;
-- (void)_readLock:(const char *)arg1 file:(const char *)arg2 line:(unsigned int)arg3;
-- (BOOL)_hasWriteLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (BOOL)writerIsWaiting;
-- (void)_readUnlock;
-- (void)_readLock;
+- (id)modelLockingObject;
 - (id)mdTargetForKey:(id)arg1;
 - (id)mdLocalValueForKey:(id)arg1;
 - (id)mdValueForKey:(id)arg1;

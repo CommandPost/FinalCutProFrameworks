@@ -13,16 +13,16 @@
 __attribute__((visibility("hidden")))
 @interface FFWakeupTracker : NSObject <HGRQJobProtocol>
 {
-    int _loc;
+    struct FxDevice *_loc;
     NSMutableArray *_completions;
 }
 
-@property(readonly) int loc; // @synthesize loc=_loc;
+@property(readonly) struct FxDevice *loc; // @synthesize loc=_loc;
 - (void)jobFinished:(id)arg1;
 - (void)jobStarted:(id)arg1;
 - (void)addCallback:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)initWithForLocation:(int)arg1;
+- (id)initWithForLocation:(struct FxDevice *)arg1;
 
 @end
 

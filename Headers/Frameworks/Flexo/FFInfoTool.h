@@ -9,7 +9,7 @@
 #import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class LKTextField, NSArray, NSButton, NSDateFormatter, NSImageView, NSPopover, NSString, NSView;
+@class LKTextField, NSArray, NSButton, NSDateFormatter, NSImageView, NSLayoutConstraint, NSString, NSView;
 
 @interface FFInfoTool : FFAdjustmentTool <NSWindowDelegate, NSPopoverDelegate>
 {
@@ -35,7 +35,10 @@
     CDStruct_1b6d18a9 _infoMaxDurationValue;
     NSDateFormatter *_dateFormatter;
     NSView *_currentView;
-    NSPopover *_sharePopover;
+    NSLayoutConstraint *_leadingConstraint;
+    NSLayoutConstraint *_trailingConstraint;
+    NSLayoutConstraint *_horizontalCenteringConstraint;
+    NSLayoutConstraint *_verticalCenteringConstraint;
 }
 
 + (id)toolTip;
@@ -53,10 +56,10 @@
 @property(retain, nonatomic) NSButton *eventClipInfoShareIcon; // @synthesize eventClipInfoShareIcon=_eventClipInfoShareIcon;
 @property(retain, nonatomic) NSImageView *eventClipInfoDurationIcon; // @synthesize eventClipInfoDurationIcon=_eventClipInfoDurationIcon;
 @property(retain, nonatomic) NSImageView *eventClipInfoClipIcon; // @synthesize eventClipInfoClipIcon=_eventClipInfoClipIcon;
+- (void)_teardownCurrentViewConstraints;
+- (void)_setupCurrentViewConstraints;
 - (void)_firstResponderChanged:(id)arg1;
 - (void)updateInfoDuration:(id)arg1;
-- (void)popoverDidClose:(id)arg1;
-- (void)shareHistory:(id)arg1;
 - (void)setAdjustmentStateFromDictionary:(id)arg1;
 - (id)adjustmentsToolbarView;
 - (id)newAdjustmentDictionaryForSelection:(id)arg1;

@@ -4,9 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FxImageTile, FxRemoteTiming, NSArray, NSData, NSMutableArray, NSString, NSViewController;
+@class FxImageTile, FxRemoteTiming, NSArray, NSData, NSDictionary, NSMutableArray, NSString, NSViewController;
 
 @protocol FxRemoteTileablePluginProtocol
+- (void)pluginSession:(unsigned long long)arg1 setHostKeyCommands:(NSArray *)arg2;
+- (void)pluginSession:(unsigned long long)arg1 setAnalysisState:(unsigned long long)arg2;
+- (void)pluginSession:(unsigned long long)arg1 endAnalysisWithReply:(void (^)(BOOL, NSError *))arg2;
+- (void)pluginSession:(unsigned long long)arg1 analyzeFrame:(FxImageTile *)arg2 atTime:(CDStruct_1b6d18a9)arg3 reply:(void (^)(BOOL, NSError *))arg4;
+- (void)pluginSession:(unsigned long long)arg1 startAnalysisForRange:(CDStruct_e83c9415)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3 reply:(void (^)(BOOL, NSError *))arg4;
+- (void)pluginSession:(unsigned long long)arg1 desiredAnalysisTimeRange:(CDStruct_e83c9415)arg2 timingData:(FxRemoteTiming *)arg3 reply:(void (^)(BOOL, struct, NSError *))arg4;
+- (void)pluginSession:(unsigned long long)arg1 analysisLocation:(void (^)(BOOL, long long, unsigned long long, unsigned long long, NSError *))arg2;
 - (void)tileablePlugin:(unsigned long long)arg1 isLeftValue:(NSData *)arg2 equalTo:(NSData *)arg3 forParameterID:(unsigned int)arg4 reply:(void (^)(BOOL, BOOL, NSError *))arg5;
 - (void)tileablePlugin:(unsigned long long)arg1 interpolateLeftData:(NSData *)arg2 rightData:(NSData *)arg3 atPercent:(float)arg4 forParameter:(unsigned int)arg5 reply:(void (^)(NSData *, NSError *))arg6;
 - (void)OSCPlugin:(unsigned long long)arg1 mouseExitedAtPositionX:(double)arg2 positionY:(double)arg3 modifiers:(unsigned long long)arg4 atTime:(CDStruct_1b6d18a9)arg5 transactionID:(unsigned long long)arg6 reply:(void (^)(BOOL, BOOL, NSError *))arg7;
@@ -19,6 +26,7 @@
 - (void)OSCPlugin:(unsigned long long)arg1 keyDownAtPositionX:(double)arg2 positionY:(double)arg3 keyPressed:(unsigned short)arg4 modifiers:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(void (^)(BOOL, BOOL, BOOL, NSError *))arg8;
 - (void)OSCPlugin:(unsigned long long)arg1 hitTestAtPositionX:(double)arg2 positionY:(double)arg3 atTime:(CDStruct_1b6d18a9)arg4 transactionID:(unsigned long long)arg5 reply:(void (^)(BOOL, long long, NSError *))arg6;
 - (void)OSCPlugin:(unsigned long long)arg1 drawWithWidth:(long long)arg2 height:(long long)arg3 activePart:(long long)arg4 destinationImage:(FxImageTile *)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(void (^)(BOOL, NSError *))arg8;
+- (void)OSCPlugin:(unsigned long long)arg1 setTimingData:(FxRemoteTiming *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)OSCPlugin:(unsigned long long)arg1 drawingCoordinates:(void (^)(unsigned long long))arg2;
 - (void)restartOSCSession:(unsigned long long)arg1 pluginSessionID:(unsigned long long)arg2 forPlugInWithClass:(NSString *)arg3 version:(unsigned int)arg4 reply:(void (^)(BOOL, NSError *))arg5;
 - (void)createOSCPlugInWithClass:(NSString *)arg1 OSCUUID:(NSString *)arg2 pluginSessionID:(unsigned long long)arg3 reply:(void (^)(unsigned long long, unsigned int, NSError *))arg4;
@@ -35,7 +43,10 @@
 - (void)tileablePluginUpdateCustomViews:(unsigned long long)arg1;
 - (void)tileablePlugin:(unsigned long long)arg1 createViewForParameter:(unsigned int)arg2 andViewController:(NSViewController *)arg3;
 - (void)addTileableParameters:(unsigned long long)arg1 withReply:(void (^)(BOOL, NSArray *, NSError *))arg2;
+- (void)removePluginSession:(unsigned long long)arg1;
 - (void)restartSession:(unsigned long long)arg1 forPlugInWithClass:(NSString *)arg2 version:(unsigned int)arg3 reply:(void (^)(BOOL, NSError *))arg4;
 - (void)createTileablePlugInWithClass:(NSString *)arg1 UUID:(NSString *)arg2 version:(unsigned int)arg3 reply:(void (^)(unsigned long long, unsigned int, NSError *))arg4;
+- (void)tileablePlugin:(unsigned long long)arg1 fontURLsReply:(void (^)(NSArray *, NSError *))arg2;
+- (void)setRenderingColorSpaces:(NSDictionary *)arg1;
 @end
 

@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFFileImportProcessingFilesDialogController, FFFileImportRejectedDialogController, FFFileImportValidateFilesDialogController, FFMediaEventProject, NSArray, NSDictionary, NSMutableArray, NSSet, NSThread;
+@class FFFileImportProcessingFilesDialogController, FFFileImportRejectedDialogController, FFFileImportValidateFilesDialogController, FFMediaEventProject, NSArray, NSDictionary, NSMutableArray, NSMutableSet, NSSet, NSThread;
 
 @interface FFFileImporter : NSObject
 {
@@ -17,6 +17,7 @@
     NSSet *_initialEventKeywordNames;
     FFMediaEventProject *_initialEvent;
     NSMutableArray *_rejectedURLs;
+    NSMutableSet *_rejectedURLExtensions;
     FFFileImportValidateFilesDialogController *_validateFilesController;
     FFFileImportProcessingFilesDialogController *_processingFilesController;
     FFFileImportRejectedDialogController *_rejectedDialogController;
@@ -28,6 +29,9 @@
 + (void)_startBackgroundTask:(id)arg1;
 + (void)_importBackgroundTask:(id)arg1;
 + (id)urlsToSkip:(id)arg1;
++ (BOOL)isIncompatibleCanonRAWPluginVersion;
++ (BOOL)CanonRAWPluginBundleExists;
++ (BOOL)REDPluginBundleExists;
 + (BOOL)suppressWarnings;
 + (void)setSuppressWarnings:(BOOL)arg1;
 @property(nonatomic) long long windowCloseCounter; // @synthesize windowCloseCounter=_windowCloseCounter;
@@ -38,7 +42,7 @@
 - (BOOL)validateURLs:(id)arg1 withURLsInfo:(id)arg2 forImportToLocation:(id)arg3 showWarnings:(BOOL)arg4 window:(id)arg5 copyFiles:(BOOL)arg6 acceptedURLs:(id *)arg7 options:(id)arg8;
 - (void)stopValidationModal:(id)arg1;
 - (void)preflightFilesBackgroundThread:(id)arg1;
-- (void)scanURLForFiles:(id)arg1 fileURLs:(id)arg2 keywordSets:(id)arg3 keywords:(id)arg4 rejectedURLs:(id)arg5;
+- (void)scanURLForFiles:(id)arg1 fileURLs:(id)arg2 keywordSets:(id)arg3 keywords:(id)arg4 rejectedURLs:(id)arg5 rejectedURLExtensions:(id)arg6;
 - (id)importToEvent:(id)arg1 manageFileType:(int)arg2 processNow:(BOOL)arg3 warnClipsAlreadyExist:(BOOL)arg4 error:(id *)arg5;
 - (void)setInitialEvent:(id)arg1 keywordNames:(id)arg2;
 - (void)dealloc;

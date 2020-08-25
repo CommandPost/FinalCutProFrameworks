@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)performNextBlock;
 - (void)performRemainingBlocks;
 - (CDUnknownBlockType)popBlock;
-- (void)performBlock:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;
+- (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)resumeHandler;
 - (void)suspendHandler;
 - (void)dealloc;

@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
     long long _barTarget;
 }
 
+@property(nonatomic) long long barTarget; // @synthesize barTarget=_barTarget;
+@property(nonatomic) long long phase; // @synthesize phase=_phase;
 - (void)drawInContext:(struct CGContext *)arg1;
-- (id)actionForKey:(id)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
 
 @end
 

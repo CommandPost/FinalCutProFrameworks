@@ -6,15 +6,24 @@
 
 #import "CALayer.h"
 
-#import "FFVideoScopesZoomFactor.h"
+@class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesLayer : CALayer <FFVideoScopesZoomFactor>
+@interface FFVideoScopesLayer : CALayer
 {
-    float _zoomFactor;
+    NSMutableArray *_managedSublayers;
 }
 
-- (void)setZoomFactor:(float)arg1;
+- (void)setContentsScale:(double)arg1;
+- (void)setNeedsUpdateFromDest;
+- (id)settingsButton;
+- (id)label;
+- (id)managedSublayers;
+- (void)addToManagedSublayers:(id)arg1;
+- (void)layoutSettingsButtonAndLabelLayers;
+- (void)_layoutLabel:(id)arg1 settingsButton:(id)arg2 bounds:(struct CGRect)arg3;
+- (void)_layoutSettingsButton:(id)arg1 bounds:(struct CGRect)arg2;
+- (void)dealloc;
 
 @end
 

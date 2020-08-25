@@ -6,11 +6,16 @@
 
 #import <ProOSC/POOnScreenControl.h>
 
-@interface PORotate3D : POOnScreenControl
+#import "POOnScreenControlMetalRendering.h"
+
+@class NSString;
+
+@interface PORotate3D : POOnScreenControl <POOnScreenControlMetalRendering>
 {
     struct PORotate3DImpl *_pImpl;
 }
 
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (BOOL)postRedisplayOnActivePartChange;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
@@ -25,6 +30,12 @@
 - (void)updateInfoBarWithRotation:(const PCVector3_457fd1f0 *)arg1 andChange:(const PCVector3_457fd1f0 *)arg2;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

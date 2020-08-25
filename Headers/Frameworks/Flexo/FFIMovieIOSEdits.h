@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_editIndexToClip;
 }
 
++ (int)generatorTypeFromEdit:(id)arg1;
 + (int)getClipTypeFromEdit:(id)arg1;
 + (void)removeVideoComponentsFromClip:(id)arg1;
 @property(retain, nonatomic) NSMutableArray *editIndexToClip; // @synthesize editIndexToClip=_editIndexToClip;
@@ -62,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)processBackgroundAudioEdit:(id)arg1 atTime:(CDStruct_1b6d18a9 *)arg2 error:(id *)arg3;
 - (BOOL)processForegroundAudioClip:(id)arg1 edit:(id)arg2 error:(id *)arg3;
 - (BOOL)applyAudio:(id *)arg1;
+- (id)newGeneratorWithEdit:(id)arg1;
 - (id)newMovieClipWithEdit:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 previousEat:(CDStruct_1b6d18a9)arg3 nextEat:(CDStruct_1b6d18a9)arg4 error:(id *)arg5;
 - (BOOL)applyMovieClipWithEdit:(id)arg1 index:(int)arg2 atTime:(CDStruct_1b6d18a9 *)arg3 error:(id *)arg4;
 - (BOOL)applyVideoCropToClip:(id)arg1 edit:(id)arg2 overrideKenBurnsWithCrop:(BOOL)arg3 error:(id *)arg4;

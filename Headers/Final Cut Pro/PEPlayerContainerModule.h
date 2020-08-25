@@ -12,7 +12,7 @@
 #import "NSTouchBarProvider.h"
 #import "PEPlayerContainerViewDelegate.h"
 
-@class FFComparePickerWindowController, FFContext, FFPlayerModule, FFTimecodeFormatter, LKButton, LKContainerItemView, LKMenu, LKPopUpButton, LKSegmentedControl, LKTextField, LKTimecode, LKWindow, NSArray, NSDateFormatter, NSDictionary, NSImageView, NSLayoutConstraint, NSMenu, NSMenuItem, NSMutableArray, NSMutableDictionary, NSResponder, NSStackView, NSString, NSTextField, NSTouchBar, NSView, PEAudioMeterModule, PEPlayerDFRController, PETimecodeDisplayViewController, PEToolbarMetersButton, PEViewedClipSet, PEViewerDFRController;
+@class FFComparePickerWindowController, FFContext, FFMediaQualityViewController, FFPlayerModule, FFTimecodeFormatter, LKButton, LKContainerItemView, LKMenu, LKPopUpButton, LKSegmentedControl, LKTextField, LKTimecode, LKWindow, NSArray, NSDateFormatter, NSDictionary, NSImageView, NSLayoutConstraint, NSMenu, NSMenuItem, NSMutableArray, NSMutableDictionary, NSResponder, NSStackView, NSString, NSTextField, NSTouchBar, NSView, PEAudioMeterModule, PEPlayerDFRController, PETimecodeDisplayViewController, PEToolbarMetersButton, PEViewedClipSet, PEViewerDFRController;
 
 @interface PEPlayerContainerModule : LKViewModule <PEPlayerContainerViewDelegate, FFErrorReportingProtocol, FFPlayerModuleDelegate, NSMenuDelegate, NSTouchBarProvider>
 {
@@ -99,6 +99,7 @@
     NSView *_audioMeters;
     PEToolbarMetersButton *_audioMetersButton;
     NSStackView *_leftStackView;
+    NSMenuItem *_customOverlaysMenuItem;
     LKWindow *_matchWindow;
     NSView *_matchControlsFooterView;
     NSView *_matchAccessoryView;
@@ -149,10 +150,12 @@
     id _currentTimelineRootItemSequenceForCompare;
     FFComparePickerWindowController *_comparePickerWindowController;
     BOOL _textOSCActive;
+    FFMediaQualityViewController *_qualityViewController;
 }
 
 + (id)tools;
 + (id)makeDisplayArea;
+@property(retain) FFMediaQualityViewController *qualityViewController; // @synthesize qualityViewController=_qualityViewController;
 @property(nonatomic) BOOL layoutAngleViewerVertically; // @synthesize layoutAngleViewerVertically=_layoutAngleViewerVertically;
 @property(nonatomic) BOOL showMatchControls; // @synthesize showMatchControls=_showMatchControls;
 @property(nonatomic) BOOL showColorControls; // @synthesize showColorControls=_showColorControls;
@@ -198,6 +201,7 @@
 - (void)_setupPaneCapControls;
 - (void)_rebuildPaneCapMenus;
 - (void)_statusInfoChanged:(id)arg1;
+- (void)updateQualityLabelWithMedia:(id)arg1;
 - (void)_updateLabel;
 - (id)displayVideoFormat:(id)arg1;
 - (void)_updateZoomLabel;
@@ -225,9 +229,8 @@
 - (void)_updateTwoUpViewerIcon;
 - (void)_updateOneUpViewerIcon;
 - (id)imageNameForType:(int)arg1;
-- (int)mediaBrowserModeIcon:(id)arg1;
+- (int)mediaBrowserModeIcon;
 - (int)clipTypeInBrowser;
-- (id)activeSkimmableEffectModule;
 - (void)_setViewedClips:(id)arg1 updatePlayers:(BOOL)arg2;
 - (void)updatePlayers;
 - (void)_addPlayerTabsToModule:(id)arg1 forMenu:(id)arg2 indentLevel:(long long)arg3 target:(id)arg4;
@@ -289,6 +292,7 @@
 - (void)toggleAdvancedColorControls:(id)arg1;
 - (void)selectPlaybackQuality:(id)arg1;
 - (void)selectPlaybackMedia:(id)arg1;
+- (BOOL)warnUserAboutBackgroundShareTaskIfNeeded;
 - (void)_warnUserAboutBackgroundShareProcessAndProxyMedia;
 - (void)toggleBalance:(id)arg1;
 - (void)paste:(id)arg1;
@@ -299,6 +303,11 @@
 - (void)setShowBothFields:(id)arg1;
 - (BOOL)showBothFields;
 - (void)setDisplay360Horizon:(id)arg1;
+- (void)toggleTransformOverscan:(id)arg1;
+- (void)toggleDisplayCustomOverlay:(id)arg1;
+- (void)setDisplayCustomOverlay:(id)arg1;
+- (BOOL)displaysCustomOverlay;
+- (void)customOverlayScan:(id)arg1;
 - (void)setDisplayBroadcastSafeZones:(id)arg1;
 - (BOOL)displaysBroadcastSafeZones;
 - (void)setColorChannelDisplay:(id)arg1;

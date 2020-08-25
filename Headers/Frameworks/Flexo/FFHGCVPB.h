@@ -10,23 +10,23 @@
 
 @interface FFHGCVPB : NSObject
 {
-    int _originalLocation;
+    struct FxDevice *_originalLocation;
     FFPixelFormat *_pixelFormat;
     // Error parsing type: ^{HGCVBitmap=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}{HGRef<HGCVPixelBuffer>=^{HGCVPixelBuffer}}Q}, name: _cvbm
     _Bool _lockedForCPUAccess;
 }
 
-@property(readonly, nonatomic) int originalLocation; // @synthesize originalLocation=_originalLocation;
+@property(readonly, nonatomic) struct FxDevice *originalLocation; // @synthesize originalLocation=_originalLocation;
 @property(readonly, nonatomic) FFPixelFormat *pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 -     // Error parsing type: ^{HGCVBitmap=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}{HGRef<HGCVPixelBuffer>=^{HGCVPixelBuffer}}Q}16@0:8, name: getHGCVBitmap
--     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^vii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16@0:8, name: newBitmapLoaderNode
+-     // Error parsing type: ^{HGNode=^^?{atomic<unsigned int>=AI}ii^viIii^fi^{HGShaderEntry}^^{HGNodeInput}i^{HGBitmap}BBBBB{set<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >={__tree<HGNodeInput *, std::__1::less<HGNodeInput *>, std::__1::allocator<HGNodeInput *> >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<HGNodeInput *, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::less<HGNodeInput *> >=Q}}}i^{HGNode}{HGRect=iiii}{HGRect=iiii}^{HGRenderer}^{HGBitmap}^{HGNode}iii{HGRect=iiii}ii^{HGBitmap}{HGShaderBinding=[1i]iiiiiII}^{HGNodeChain}^{HGShaderEntry}iB{HGBlendingInfo=Qiiiiii}f}16@0:8, name: newBitmapLoaderNode
 - (id)newMtlTextureOnDevice:(id)arg1 withHoldUntilCompleteList:(id)arg2;
 - (id)newFFMetalTexture:(id)arg1;
 - (id)newReadOnlyPixelBuffer;
 - (id)newTextureBufferForContext:(struct HGGLContextPtr)arg1;
 - (struct CGRect)bounds;
 - (void)dealloc;
--     // Error parsing type: @36@0:8^{HGCVBitmap=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}{HGRef<HGCVPixelBuffer>=^{HGCVPixelBuffer}}Q}16@24i32, name: initWithHGCVBitmap:pixelFormat:originalLocation:
+-     // Error parsing type: @40@0:8^{HGCVBitmap=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}{HGRef<HGCVPixelBuffer>=^{HGCVPixelBuffer}}Q}16@24^{FxDevice=}32, name: initWithHGCVBitmap:pixelFormat:originalLocation:
 
 @end
 

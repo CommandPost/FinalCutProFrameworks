@@ -4,23 +4,24 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <ProAppsFxSupport/PAEOpenGLLayer.h>
+#import "CAMetalLayer.h"
 
 @class NSColor, _PAEFTCurveColorPickerBorderLayer, _PAEFTCurveColorPickerCenterLayer, _PAEFTCurveColorPickerIndicatorLayer;
 
-@interface _PAEFTCurveColorPickerLayer : PAEOpenGLLayer
+@interface _PAEFTCurveColorPickerLayer : CAMetalLayer
 {
     NSColor *_color;
     _PAEFTCurveColorPickerBorderLayer *_borderLayer;
     _PAEFTCurveColorPickerCenterLayer *_centerLayer;
     _PAEFTCurveColorPickerIndicatorLayer *_indicatorLayer;
+    id <MTLRenderPipelineState> _pipeline;
 }
 
-- (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
 - (id)actionForKey:(id)arg1;
 - (void)layoutSublayers;
 - (double)_colorTheta;
 - (void)setNeedsDisplay;
+- (void)display;
 - (void)setContentsScale:(double)arg1;
 - (void)buildSublayers;
 @property(retain, nonatomic) NSColor *color; // @dynamic color;

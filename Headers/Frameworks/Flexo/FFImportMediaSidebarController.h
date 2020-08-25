@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)validateDrop:(id)arg1 onNode:(id)arg2 atChildIndex:(long long)arg3;
 - (id)supportedDragTypes;
 - (void)ensureSidebarSelection;
+- (id)outlineView:(id)arg1 viewForTableColumn:(id)arg2 item:(id)arg3;
 - (void)outlineViewSelectionDidChange:(id)arg1;
 - (BOOL)selectionShouldChangeInOutlineView:(id)arg1;
 - (id)newMediaRootNode;

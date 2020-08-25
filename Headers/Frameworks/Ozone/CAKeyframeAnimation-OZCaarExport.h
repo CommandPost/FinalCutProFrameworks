@@ -8,5 +8,7 @@
 
 @interface CAKeyframeAnimation (OZCaarExport)
 + (id)animationWithChannel:(struct OZChannel *)arg1;
+- (void)convertToChannel:(struct OZChannel *)arg1;
+- (id)keyCMTimes;
 @end
 

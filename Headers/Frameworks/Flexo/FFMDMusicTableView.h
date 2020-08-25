@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSTrackingArea *rolloverTrackingArea; // @synthesize rolloverTrackingArea=_rolloverTrackingArea;
 @property(nonatomic) long long rolledOverRowIndex; // @synthesize rolledOverRowIndex=_rolledOverRowIndex;
 @property(nonatomic, getter=isModuleFocused) BOOL moduleFocused; // @synthesize moduleFocused=_moduleFocused;
+- (id)beginDraggingSessionWithItems:(id)arg1 event:(id)arg2 source:(id)arg3;
+- (struct CGRect)frameOfCellAtColumn:(long long)arg1 row:(long long)arg2;
 - (void)updateTrackingAreas;
 - (void)removeMouseTracking;
 - (void)addMouseTracking;

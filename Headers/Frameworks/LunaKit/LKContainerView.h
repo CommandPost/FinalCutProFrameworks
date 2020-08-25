@@ -6,7 +6,7 @@
 
 #import "NSView.h"
 
-@class LKContainerItemView, LKContainerNode, LKPaneCapView, LKWindow, NSColor, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
+@class LKContainerItemView, LKContainerNode, LKPaneCapView, NSColor, NSDictionary, NSMutableArray, NSMutableDictionary;
 
 @interface LKContainerView : NSView
 {
@@ -29,21 +29,14 @@
     struct CGRect _currentSeamTrackingAreaRect;
     int _currentSeamTrackingOrientation;
     struct CGPoint _dragOffset;
-    LKContainerNode *_previousDraggingNode;
-    NSString *_previousDraggingOperation;
     LKContainerNode *_draggedReplacementNode;
     LKContainerNode *_draggedNode;
-    LKContainerItemView *_draggedItemView;
-    LKWindow *_draggedContainerWindow;
-    LKContainerView *_draggingContainerView;
-    LKWindow *_windowToClose;
     NSMutableDictionary *_layoutCustomizationOperation;
     NSColor *_backgroundColor;
     unsigned int _highlightCurrentSeamArea:1;
     unsigned int _useLayerBacking:1;
     unsigned int _isAnimating:1;
     unsigned int _canCustomizeLayout:1;
-    unsigned int _isPerformingDrag:1;
     BOOL _delegate_implements_backgroundColor;
     BOOL _delegate_implements_inactive_backgroundColor;
     id _appearanceDelegate;
@@ -66,7 +59,6 @@
 - (id)_layoutCustomizationOperationForPoint:(struct CGPoint)arg1;
 - (void)_moveSubmodulesInNode:(id)arg1 fromContainerView:(id)arg2 toContainerView:(id)arg3;
 - (void)_addSubmodulesFromNode:(id)arg1 toContainerView:(id)arg2;
-- (BOOL)_detachAndDragNode:(id)arg1 withTracker:(id)arg2 andEvent:(id)arg3;
 - (id)_itemViewAtPoint:(struct CGPoint)arg1;
 - (void)_updatePropotionsForSubnodesOfNode:(id)arg1;
 - (void)_initalizeProportions:(id)arg1;
@@ -83,12 +75,8 @@
 - (void)_computeSeamDraggingAreas;
 - (void)_determineSeamDraggingAreasForNode:(id)arg1;
 - (void)_redisplaySeamAreas;
-- (BOOL)mouseTracker:(id)arg1 didStopTrackingWithEvent:(id)arg2;
-- (BOOL)mouseTracker:(id)arg1 shouldContinueTrackingWithEvent:(id)arg2;
-- (void)_updateDraggingContainerWindowWithMouseTracker:(id)arg1;
 - (void)_removeDraggedReplacementNode;
 - (id)_containerViewAtScreenPoint:(struct CGPoint)arg1;
-- (BOOL)mouseTracker:(id)arg1 shouldStartTrackingWithEvent:(id)arg2;
 @property BOOL canRearrangeLayout;
 - (id)viewForIdentifier:(id)arg1;
 - (void)removeContainerItemWithIdentifier:(id)arg1;
@@ -103,7 +91,6 @@
 - (void)showContainerItemWithIdentifier:(id)arg1 revealStyle:(unsigned long long)arg2;
 - (void)showContainerItemWithIdentifier:(id)arg1;
 - (void)startTrackingAt:(struct CGPoint)arg1 withModifierFlags:(unsigned int)arg2;
-- (void)mouseDragged:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (BOOL)mouseDownCanMoveWindow;

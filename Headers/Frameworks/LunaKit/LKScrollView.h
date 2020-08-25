@@ -16,7 +16,6 @@
     BOOL _isOverlayScrollView;
 }
 
-- (void)drawRect:(struct CGRect)arg1;
 - (void)setupOverlayScrollers;
 - (void)setupWithOverlayScrollers;
 - (void)setScrollerStyle:(long long)arg1;

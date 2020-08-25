@@ -7,6 +7,7 @@
 #import "NSArray.h"
 
 @interface NSArray (POAdditions)
+- (BOOL)PO_isEmpty;
 - (id)PO_safeObjectAtIndex:(unsigned long long)arg1;
 @end
 

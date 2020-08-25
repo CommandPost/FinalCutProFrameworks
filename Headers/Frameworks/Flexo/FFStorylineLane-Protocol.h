@@ -32,8 +32,6 @@
 - (void)removeStoryItemsObject:(id <FFStorylineItem>)arg1;
 - (void)addStoryItemsObject:(id <FFStorylineItem>)arg1;
 - (id <FFStorylineLane>)childStoryLaneWithName:(NSString *)arg1;
-- (void)enumerateStorylineItemsRecursivelyUsingBlock:(void (^)(id <FFStorylineItem>, char *))arg1;
-- (void)enumerateStorylineLanesRecursivelyUsingBlock:(void (^)(id <FFStorylineLane>, char *))arg1;
 - (void)addChildStoryLanesObject:(id <FFStorylineLane>)arg1;
 - (void)removeChildStoryLanesObject:(id <FFStorylineLane>)arg1;
 - (void)insertObject:(id <FFStorylineLane>)arg1 inChildStoryLanesAtIndex:(unsigned long long)arg2;

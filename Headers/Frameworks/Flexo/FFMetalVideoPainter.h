@@ -38,13 +38,14 @@ __attribute__((visibility("hidden")))
     unsigned int _overlayFbo;
     BOOL _overlayContextRequired;
     struct FFSynchronizable _lockForContextCharacteristics;
-    int _currentVirtualScreenForOverlay;
+    struct FxDevice *_currentImageLocForOverlay;
     struct CGSize _currentSizeForOverlay;
     struct __CVOpenGLTextureCache *_cvglCache;
     // Error parsing type: {atomic<int>="__a_"Ai}, name: _cvglCacheOpCounter
     FFTextureBuffer *_overlayTexture;
     struct HGRef<HGCVPixelBuffer> _overlayHGCVPB;
-    int _imageLocation;
+    id <MTLCommandQueue> _oscCmdQueue;
+    const struct FxDevice *_imageLocation;
 }
 
 + (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -55,7 +56,7 @@ __attribute__((visibility("hidden")))
 + (struct FFMetalVideoPainterContext *)sharedKVOContext;
 @property(readonly) unsigned long long layerPixelFormat; // @synthesize layerPixelFormat=_layerPixelFormat;
 @property(readonly) int onScreenDrawStyle; // @synthesize onScreenDrawStyle=_onScreenDrawStyle;
-@property(readonly) int imageLocation; // @synthesize imageLocation=_imageLocation;
+@property(readonly) const struct FxDevice *imageLocation; // @synthesize imageLocation=_imageLocation;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)generateRenderPassDescriptorFromDrawable:(id)arg1;
@@ -70,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (id)newMergedFieldsTexture:(id)arg1 field2:(id)arg2 fieldMode:(long long)arg3 frameRect:(struct CGRect)arg4 inOutViaRAM:(_Bool *)arg5 withHoldToCompletionList:(id)arg6;
 - (id)newMtlTextureFromImage:(id)arg1 inOutViaRAM:(_Bool *)arg2 withHoldToCompletionList:(id)arg3;
 - (void)drawOSCOverlay:(id)arg1 renderEncoder:(id)arg2 viewPortSize:(struct CGSize)arg3 holdUntilCompleted:(id)arg4;
+- (id)newOSCDrawTextureAtTime:(CDStruct_1b6d18a9)arg1 viewSize:(struct CGSize)arg2 delegate:(id)arg3 drawProperties:(id)arg4 destIsDrawing:(BOOL)arg5 filmToViewTransform:(id)arg6 backingScale:(float)arg7;
 - (void)drawMissingImageWithViewPortSize:(struct CGSize)arg1 sourceRect:(struct CGRect)arg2 drawRect:(struct CGRect)arg3 contextData:(id)arg4;
 - (void)_drawQueueStateLines:(struct CGSize)arg1 renderEncoder:(id)arg2;
 - (void)aboutToDrawFrame:(_Bool)arg1 viaRAMWorkaround:(_Bool)arg2;

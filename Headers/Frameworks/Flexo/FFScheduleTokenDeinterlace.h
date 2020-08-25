@@ -37,8 +37,6 @@ __attribute__((visibility("hidden")))
     int _state;
     NSError *_deinterlaceError;
     FFGraphBuildInformation *_buildInfo;
-    int _heliumFormat;
-    int _heliumycbcrFormat;
     int _ws;
     FFImageAbsoluteOutputFormat *_fmt;
     FFImage *_img1;
@@ -47,6 +45,8 @@ __attribute__((visibility("hidden")))
     FFImage *_img4;
     FFImage *_flattenResult;
     FFLibraryDocument *_observedLibraryDocument;
+    int _heliumFormat;
+    int _heliumycbcrFormat;
 }
 
 + (id)sharedCache;

@@ -25,12 +25,9 @@
     NSMutableArray *_cachedMultiAngleObjects;
     NSMutableDictionary *_cachedMultiAngleIDToObjectLookups;
     FFVideoProps *_videoProps;
-    FFVideoProps *_calculatedVideoProps;
     int _cachedHasVideo;
     int _cachedHasAudio;
     int _cachedHasVideoIncludingVariants;
-    double _cacheAudioSampleRate;
-    int _cacheAudioChannelCount;
     BOOL _ignoreClearForContained;
     FFEffectStack *_audioEffects;
     FFEffectStack *_videoEffects;
@@ -49,19 +46,21 @@
     FFAudioClipComponentsLayoutMap *_audioComponentsLayoutMap;
     FFRoleCache *_roleCache;
     FFMD5AndOffset *_cachedAudioMD5;
-    FFMD5AndOffset *_cachedAudioMD5_NoIntrinsics;
+    FFMD5AndOffset *_cachedAudioMD5_PeaksData;
+    // Error parsing type: Ad, name: _cacheAudioSampleRate
+    // Error parsing type: Ai, name: _cacheAudioChannelCount
     BOOL _audioComponentsLayoutMapNeedsLoadSync;
+    // Error parsing type: A@, name: _calculatedVideoProps
 }
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
-+ (void)initialize;
 + (id)storylineWithItems:(id)arg1;
 @property(readonly, nonatomic) FFCollectionFades *fades; // @synthesize fades=_fades;
 @property(nonatomic) BOOL isSyncronized; // @synthesize isSyncronized=_isSyncronized;
 @property(retain, nonatomic) NSDate *contentCreated; // @synthesize contentCreated=_contentCreated;
-@property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5_NoIntrinsics; // @synthesize cachedAudioMD5_NoIntrinsics=_cachedAudioMD5_NoIntrinsics;
+@property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5_NoIntrinsics; // @synthesize cachedAudioMD5_NoIntrinsics=_cachedAudioMD5_PeaksData;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 @property(nonatomic) BOOL isProject; // @synthesize isProject=_isProject;
 @property(nonatomic) BOOL isMultiAngle; // @synthesize isMultiAngle=_isMultiAngle;
@@ -76,7 +75,6 @@
 - (id)newTopLevelObjectsAtTimeSortedByLaneIndex:(CDStruct_1b6d18a9)arg1 includeAnchorsOnAnchors:(BOOL)arg2;
 - (id)newTopLevelObjectsAtTimeSortedByLaneIndex:(CDStruct_1b6d18a9)arg1;
 - (id)createUsedRangesMediaIdentifier;
-- (void)_angleCountOrBankChanged;
 - (void)setUserDefaultsToCurrentVideoAndAudioAnglesIfUnset;
 - (void)setAudioAngles:(id)arg1;
 - (id)audioAngles;
@@ -117,11 +115,6 @@
 - (id)audioComponentsLayoutMap;
 - (void)_ensureMediaRefAudioComponentsLayoutMapLoadSynced:(id)arg1;
 - (id)onScreenControls;
-- (id)inspectableObjectForAudioComponents;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
-- (id)classNameForInspectorTabIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
 - (void)addAnyTransitionRelationshipsForContainedObject:(id)arg1;
 - (BOOL)supportsSegmentation;
 - (BOOL)validateAmbiguousCompositingOrderWithError:(id *)arg1;
@@ -269,6 +262,11 @@
 - (id)supportedLogProcessingModes;
 - (BOOL)isMissingCameraLUT;
 - (BOOL)supportsLogProcessing;
+- (BOOL)supportsExposureOffsetOverride;
+- (BOOL)supportsIsoEIOverride;
+- (BOOL)supportsTemperatureOverride;
+- (BOOL)cameraISOIsValid;
+- (BOOL)cameraColorTemperatureIsValid;
 - (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;
@@ -295,6 +293,7 @@
 - (id)initWithDisplayName:(id)arg1 multiClip:(BOOL)arg2;
 - (id)allContainedItems;
 - (id)type;
+- (id)newGapWithDuration:(CDStruct_1b6d18a9)arg1;
 @property(readonly, nonatomic) BOOL reflectsEntireMedia;
 - (id)clipWithURL:(id)arg1 timeRange:(CDStruct_e83c9415)arg2 name:(id)arg3;
 - (id)clipWithURL:(id)arg1 timeRange:(CDStruct_e83c9415)arg2;
@@ -305,6 +304,11 @@
 - (void)removeMediaSources:(id)arg1;
 - (void)addMediaSources:(id)arg1 useMediaSourceRole:(BOOL)arg2;
 - (void)addMediaSources:(id)arg1;
+- (id)inspectableObjectForAudioComponents;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
 
 // Remaining properties
 @property(readonly, nonatomic) NSSet *anchoredStoryItems;
@@ -334,7 +338,7 @@
 @property(readonly, nonatomic) unsigned long long storyItemType;
 @property(readonly, nonatomic) id <FFStoryline> storyline;
 @property(readonly, nonatomic) id <FFStorylineClip> storylineClip;
-@property(readonly, nonatomic) unsigned long long storylineRegion;
+@property(readonly, nonatomic) long long storylineRegion;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 targetAnchorTime;
 @property(readonly, nonatomic) CDStruct_e83c9415 timeRange;

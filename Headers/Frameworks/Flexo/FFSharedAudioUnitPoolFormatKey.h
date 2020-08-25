@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     unsigned int _numChannels;
 }
 
++ (id)newFormatKeyForSharedAudioUnit:(id)arg1;
 @property(readonly, nonatomic) unsigned int numChannels; // @synthesize numChannels=_numChannels;
 @property(readonly, nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 - (unsigned long long)hash;

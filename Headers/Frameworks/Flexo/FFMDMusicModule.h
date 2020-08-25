@@ -119,7 +119,9 @@
 - (id)filteredRanges;
 - (id)displayedItemRangeAndSequenceObjectWithJustSelectionRange:(BOOL)arg1;
 - (unsigned long long)writeSelectedDataItemsToPasteboard:(id)arg1 checkPaintTool:(BOOL)arg2;
+- (unsigned long long)writeDataItems:(id)arg1 toPasteboard:(id)arg2 checkPaintTool:(BOOL)arg3 writeURL:(BOOL)arg4;
 - (unsigned long long)writeDataItems:(id)arg1 toPasteboard:(id)arg2 checkPaintTool:(BOOL)arg3;
+- (unsigned long long)writeDisplayedItemToPasteboard:(id)arg1 checkPaintTool:(BOOL)arg2 writeURL:(BOOL)arg3;
 - (unsigned long long)writeDisplayedItemToPasteboard:(id)arg1 checkPaintTool:(BOOL)arg2;
 - (void)invalidateFilteredItems;
 - (void)invalidateUnfilteredItems;
@@ -225,6 +227,8 @@
 - (id)init;
 - (id)customGenreForGroupID:(id)arg1;
 - (void)tableView:(id)arg1 sortDescriptorsDidChange:(id)arg2;
+- (void)tableView:(id)arg1 draggingSession:(id)arg2 willBeginAtPoint:(struct CGPoint)arg3 forRowIndexes:(id)arg4;
+- (id)tableView:(id)arg1 pasteboardWriterForRow:(long long)arg2;
 - (BOOL)tableView:(id)arg1 writeRowsWithIndexes:(id)arg2 toPasteboard:(id)arg3;
 - (id)tableView:(id)arg1 objectValueForTableColumn:(id)arg2 row:(long long)arg3;
 - (long long)numberOfRowsInTableView:(id)arg1;

@@ -7,6 +7,7 @@
 #import "NSView.h"
 
 @interface NSView (Additions)
++ (id)bufferView;
 - (void)recursiveToggleWantsLayer;
 - (void)_recursiveToggleWantsLayerInner;
 - (id)_highestLayeredAncestor;

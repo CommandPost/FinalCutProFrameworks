@@ -30,5 +30,8 @@
 - (void)encodeFigTime:(CDStruct_1b6d18a9)arg1 forKey:(id)arg2;
 - (CDStruct_1b6d18a9)_decodedFigTimeForString:(id)arg1;
 - (id)_copyEncodedStringForFigTime:(CDStruct_1b6d18a9)arg1;
+- (void)decodeObjectsOfClasses:(id)arg1 forKeys:(id)arg2 forObject:(id)arg3;
+- (void)encodeObjectsForKeys:(id)arg1 forObject:(id)arg2;
+- (void)encodeObjectIfNotNil:(id)arg1 forKey:(id)arg2;
 @end
 

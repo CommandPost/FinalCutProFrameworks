@@ -15,18 +15,18 @@ __attribute__((visibility("hidden")))
 {
     long long frameCount;
     long long startPosition;
-    struct MXKey *_sourcePackID;
+    struct MXUMID *_sourcePackID;
     unsigned int _sourceTrackID;
     id <HPMMediaProtocol><HPMMediaCursorProtocol> media;
 }
 
 @property(retain) id <HPMMediaProtocol><HPMMediaCursorProtocol> media; // @synthesize media;
 @property(readonly) unsigned int sourceTrackID; // @synthesize sourceTrackID=_sourceTrackID;
-@property(readonly) const struct MXKey *sourcePackID; // @synthesize sourcePackID=_sourcePackID;
+@property(readonly) const struct MXUMID *sourcePackID; // @synthesize sourcePackID=_sourcePackID;
 @property long long startPosition; // @synthesize startPosition;
 @property long long frameCount; // @synthesize frameCount;
 - (void)dealloc;
-- (id)initWithStartPosition:(long long)arg1 duration:(long long)arg2 sourcePackID:(const struct MXKey *)arg3 sourceTrackID:(unsigned int)arg4;
+- (id)initWithStartPosition:(long long)arg1 duration:(long long)arg2 sourcePackID:(const struct MXUMID *)arg3 sourceTrackID:(unsigned int)arg4;
 - (id)initWithDuration:(long long)arg1;
 
 // Remaining properties

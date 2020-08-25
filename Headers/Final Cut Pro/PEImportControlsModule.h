@@ -6,7 +6,7 @@
 
 #import "LKViewModule.h"
 
-@class LKButton, LKTextField, NSMutableSet;
+@class LKButton, LKTextField, NSLayoutConstraint, NSMutableSet;
 
 @interface PEImportControlsModule : LKViewModule
 {
@@ -14,6 +14,8 @@
     LKButton *_stopImportButton;
     LKButton *_importButton;
     LKTextField *_statusText;
+    NSLayoutConstraint *_stopButtonTailConstraint;
+    NSLayoutConstraint *_stopButtonTailToImportConstraint;
     BOOL _closeWindowAfterImport;
     BOOL _fileOrRADIsImporting;
     NSMutableSet *_importBackgroundTasks;
@@ -26,6 +28,8 @@
 @property BOOL closingImportWindow; // @synthesize closingImportWindow=_closingImportWindow;
 @property double stopImportButtonOffset; // @synthesize stopImportButtonOffset=_stopImportButtonOffset;
 @property BOOL hasSidebarSelection; // @synthesize hasSidebarSelection=_hasSidebarSelection;
+@property(retain, nonatomic) NSLayoutConstraint *stopButtonTailToImportConstraint; // @synthesize stopButtonTailToImportConstraint=_stopButtonTailToImportConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *stopButtonTailConstraint; // @synthesize stopButtonTailConstraint=_stopButtonTailConstraint;
 @property BOOL fileOrRADIsImporting; // @synthesize fileOrRADIsImporting=_fileOrRADIsImporting;
 - (id)importString;
 - (id)importSelectedString;

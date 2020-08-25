@@ -8,5 +8,7 @@
 
 @interface NSDictionary (Mapping_Comparision)
 - (long long)compareMappingDict:(id)arg1;
+- (id)terseDescription;
+- (BOOL)boolForKey:(id)arg1;
 @end
 

@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)updateChangeCount:(unsigned long long)arg1;
 - (void)canCloseDocumentWithDelegate:(id)arg1 shouldCloseSelector:(SEL)arg2 contextInfo:(void *)arg3;
 - (void)syncCatalogIfPossible;
+- (void)dispatchDeferredSyncCatalog;
 - (void)syncCatalogIfNecessary;
 - (BOOL)allowsDeferredSync;
 - (void)syncCatalog:(id)arg1;

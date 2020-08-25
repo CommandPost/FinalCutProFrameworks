@@ -31,7 +31,7 @@
 - (void)getWorldToLocal:(PCMatrix44Tmpl_93ed1289 *)arg1 atTime:(const CDStruct_198678f7 *)arg2;
 - (void)getLocalToWorld:(PCMatrix44Tmpl_93ed1289 *)arg1 atTime:(const CDStruct_198678f7 *)arg2;
 - (void)clipPath:(vector_ced1dec3 *)arg1 edges:(vector_ced1dec3 *)arg2 visible:(vector_a7cf9eda *)arg3;
-- (void)drawCurve:(const struct OZRenderState *)arg1 viewTransformation:(const PCMatrix44Tmpl_93ed1289 *)arg2 mode:(unsigned int)arg3 keyPoints:(BOOL)arg4 positionChannel:(struct OZChannelPosition3D *)arg5;
+- (id)getCurvePrimitives:(const PCMatrix44Tmpl_93ed1289 *)arg1 keyPoints:(BOOL)arg2 device:(id)arg3 positionChannel:(struct OZChannelPosition3D *)arg4;
 - (struct OZChannelPosition3D *)getPosition;
 - (shared_ptr_a6fe21d1)getTextObject;
 - (void)setTextObject:(const shared_ptr_a6fe21d1 *)arg1;

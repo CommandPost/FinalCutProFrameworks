@@ -25,7 +25,6 @@
 + (_Bool)_spectrallySimilar:(id)arg1 andClip:(id)arg2 wasStereo:(BOOL)arg3 onTask:(id)arg4;
 + (double)getRMSFor:(id)arg1 onTask:(id)arg2;
 + (_Bool)checkCancelOrPauseOn:(id)arg1;
-+ (BOOL)checkHasAudio:(id)arg1;
 - (id)librariesInUse:(id)arg1;
 - (id)assetsChanging:(id)arg1;
 - (id)assetsInUse:(id)arg1;

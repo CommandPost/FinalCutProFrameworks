@@ -40,7 +40,7 @@
 - (void)configureAsRootOfOutlineView:(id)arg1;
 - (void)stopObservingChildNodes;
 - (void)startObservingChildNodes;
-- (void)setObservingChildNodes:(BOOL)arg1 includeChildren:(BOOL)arg2;
+- (void)setObservingChildNodes:(BOOL)arg1 includeChildrenAtDepth:(int)arg2;
 - (BOOL)allowsContextMenu;
 - (BOOL)isSelectable;
 - (BOOL)displaysDisclosureGlyph;

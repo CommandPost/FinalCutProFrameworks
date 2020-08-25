@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface FFRendererInfo : NSObject
 {
-    int _location;
+    struct FxDevice *_location;
     // Error parsing type: ^{HGRenderer=^^?{atomic<unsigned int>=AI}^{HGNode}^{HGBitmap}[8{HGRendererTextureUnit=^{HGBitmap}^{HGTransform}i}]{vector<DepthBufferManager *, std::__1::allocator<DepthBufferManager *> >=^^{DepthBufferManager}^^{DepthBufferManager}{__compressed_pair<DepthBufferManager **, std::__1::allocator<DepthBufferManager *> >=^^{DepthBufferManager}}}{vector<HGExecutionUnit *, std::__1::allocator<HGExecutionUnit *> >=^^{HGExecutionUnit}^^{HGExecutionUnit}{__compressed_pair<HGExecutionUnit **, std::__1::allocator<HGExecutionUnit *> >=^^{HGExecutionUnit}}}^{HGExecutionData}^{HGSyncData}{_opaque_pthread_rwlock_t=q[192c]}{_opaque_pthread_mutex_t=q[56c]}^{HGLUTCacheManager}^{GraphStats}^{RendererStats}iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii{HGCache=^^?i^{HGCacheEntry}^{HGCacheEntry}^{HGCacheEntry}{_opaque_pthread_mutex_t=q[56c]}}BBBI[2^{HGLimits}]i{HGDotGraph={map<unsigned long, HGDotGraph::Node, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, HGDotGraph::Node> > >={__tree<std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, HGDotGraph::Node> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, HGDotGraph::Node>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, HGDotGraph::Node>, std::__1::less<unsigned long>, true> >=Q}}}{map<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge, std::__1::less<std::__1::tuple<unsigned long, unsigned long> >, std::__1::allocator<std::__1::pair<const std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge> > >={__tree<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::__map_value_compare<std::__1::tuple<unsigned long, unsigned long>, std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::less<std::__1::tuple<unsigned long, unsigned long> >, true>, std::__1::allocator<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::tuple<unsigned long, unsigned long>, std::__1::__value_type<std::__1::tuple<unsigned long, unsigned long>, HGDotGraph::Edge>, std::__1::less<std::__1::tuple<unsigned long, unsigned long> >, true> >=Q}}}^{__sFILE}BB{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}}{HGBufferDumper={basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}iiB}IiQQi^{HGLimitsCache}^{HGRenderQueue}^v{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}}, name: _renderer
     struct __CFArray *_hgObjectsForRelease;
     NSLock *_hgObjectsLock;
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)unclaimForCurrentThread;
 - (id)claimForCurrentThread;
 - (void)checkForRecursiveRenderDeadlock;
-- (BOOL)compatibleWithExecLoc:(int)arg1;
+- (BOOL)compatibleWithExecLocs:(const struct FxDeviceSet *)arg1;
 - (BOOL)available;
 - (void)releaseHGObjects;
 - (void)setManager:(id)arg1;
@@ -44,10 +44,10 @@ __attribute__((visibility("hidden")))
 - (id)gpuName;
 - (id)getMTLDeviceForRenderer;
 - (id)_gpuNameInternal;
-- (int)location;
+- (struct FxDevice *)location;
 - (void)_heliumDebugSettingsChanged:(id)arg1;
 - (void)dealloc;
-- (id)initWithLocation:(int)arg1;
+- (id)initWithLocation:(struct FxDevice *)arg1;
 
 @end
 

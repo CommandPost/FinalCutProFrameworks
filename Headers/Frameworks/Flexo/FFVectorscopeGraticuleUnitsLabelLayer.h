@@ -10,19 +10,10 @@ __attribute__((visibility("hidden")))
 @interface FFVectorscopeGraticuleUnitsLabelLayer : FFVideoScopesTextLayer
 {
     long long _unitsType;
-    long long _phase;
-    long long _barTarget;
-    int _YCbCrColorSpace;
-    CDStruct_69458254 _action_opt;
 }
 
-@property int YCbCrColorSpace; // @synthesize YCbCrColorSpace=_YCbCrColorSpace;
-@property long long unitsType; // @synthesize unitsType=_unitsType;
-- (id)actionForKey:(id)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
+@property(nonatomic) long long unitsType; // @synthesize unitsType=_unitsType;
 - (void)setupDefaultProperties;
-- (void)setBarTarget:(long long)arg1;
-- (void)setPhase:(long long)arg1;
 
 @end
 

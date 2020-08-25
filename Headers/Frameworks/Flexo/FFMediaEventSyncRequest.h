@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
     NSString *_identifier;
     NSString *_description;
     unsigned long long _failedRelinkCount;
+    unsigned long long _failedProxyRelinkCount;
 }
 
+@property(nonatomic) unsigned long long failedProxyRelinkCount; // @synthesize failedProxyRelinkCount=_failedProxyRelinkCount;
 @property(nonatomic) unsigned long long failedRelinkCount; // @synthesize failedRelinkCount=_failedRelinkCount;
 - (void)main;
 - (BOOL)executed;

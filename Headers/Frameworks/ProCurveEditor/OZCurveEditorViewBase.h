@@ -4,11 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSOpenGLView.h"
+#import "NSView.h"
 
-@class NSDate, NSImage, NSMapTable, NSMutableDictionary, NSTrackingArea, OZCurveEditorCtrlBase, OZCurveSelectionList, PCEDrawableTexture;
+#import "CALayerDelegate.h"
 
-@interface OZCurveEditorViewBase : NSOpenGLView
+@class CAMetalLayer, MDPRenderController, NSDate, NSMutableArray, NSMutableDictionary, NSString, NSTrackingArea, OZCurveEditorCtrlBase, OZCurveSelectionList;
+
+@interface OZCurveEditorViewBase : NSView <CALayerDelegate>
 {
     OZCurveEditorCtrlBase *_controller;
     struct CGRect _currentViewVolume;
@@ -30,14 +32,9 @@
     struct CGRect _lastTimeRect;
     struct CGPoint _lastMousePos;
     struct CGPoint _lastPoint;
-    int _numHits;
-    unsigned int _buffer[65536];
     OZCurveSelectionList *_selection;
-    NSMapTable *_GLNames;
-    unsigned int _nextGLName;
     OZCurveSelectionList *_currentSelection;
     OZCurveSelectionList *_previousSelection;
-    BOOL _useAlternateColorScheme;
     NSTrackingArea *_trackingArea;
     BOOL _space;
     BOOL _selecting;
@@ -63,10 +60,8 @@
     BOOL _shouldDrawProcessedCurve;
     BOOL _needsAutoZoom;
     NSMutableDictionary *_textAttribs;
-    PCEDrawableTexture *_horizontalTextTexture;
-    NSImage *_keyframeAssets[8][4][2];
-    struct KeyframeAsset _keyframeTextures[8][4][2];
-    NSImage *_tangentAssets[2];
+    struct KeyframeAsset _keyframeAssets[8][4][2];
+    struct KeyframeAsset _tangentAsset;
     struct CGPoint _fourCornersTopLeft;
     struct CGPoint _fourCornersTopRight;
     struct CGPoint _fourCornersBottomLeft;
@@ -94,8 +89,34 @@
     CDStruct_1b6d18a9 _currentTime;
     CDStruct_1b6d18a9 _lastTime;
     NSDate *_lastMouseDraggedEvent;
+    double _lastDrawTime;
+    BOOL _firedFutureDisplayEvent;
+    BOOL _metalRenderReady;
+    id <MTLDevice> _device;
+    CAMetalLayer *_metalLayer;
+    id <MTLTexture> _currentTexture;
+    id <MTLLibrary> _library;
+    id <MTLCommandQueue> _commandQueue;
+    id <MTLRenderCommandEncoder> _encoder;
+    NSMutableArray *_primitives;
+    NSMutableArray *_backgroundPrimitives;
+    NSMutableDictionary *_keypointsPrimitives;
+    NSMutableArray *_selectionPrimitives;
+    MDPRenderController *_renderController;
 }
 
+@property(nonatomic) BOOL metalRenderReady; // @synthesize metalRenderReady=_metalRenderReady;
+@property(retain, nonatomic) MDPRenderController *renderController; // @synthesize renderController=_renderController;
+@property(retain, nonatomic) NSMutableArray *selectionPrimitives; // @synthesize selectionPrimitives=_selectionPrimitives;
+@property(retain, nonatomic) NSMutableDictionary *keypointsPrimitives; // @synthesize keypointsPrimitives=_keypointsPrimitives;
+@property(retain, nonatomic) NSMutableArray *backgroundPrimitives; // @synthesize backgroundPrimitives=_backgroundPrimitives;
+@property(retain, nonatomic) NSMutableArray *primitives; // @synthesize primitives=_primitives;
+@property(retain, nonatomic) id <MTLRenderCommandEncoder> encoder; // @synthesize encoder=_encoder;
+@property(retain, nonatomic) id <MTLCommandQueue> commandQueue; // @synthesize commandQueue=_commandQueue;
+@property(retain, nonatomic) id <MTLLibrary> library; // @synthesize library=_library;
+@property(retain, nonatomic) id <MTLTexture> currentTexture; // @synthesize currentTexture=_currentTexture;
+@property(retain, nonatomic) CAMetalLayer *metalLayer; // @synthesize metalLayer=_metalLayer;
+@property(retain, nonatomic) id <MTLDevice> device; // @synthesize device=_device;
 - (void)panWithPage:(double)arg1 y:(double)arg2;
 - (void)pan:(double)arg1 y:(double)arg2;
 - (void)setVerticalZoom:(double)arg1 offsetPercentage:(double)arg2;
@@ -132,7 +153,6 @@
 - (id)getCurrentSelection;
 - (id)getSelection;
 - (void)setController:(id)arg1;
-- (struct CGRect)getCurrentViewport;
 - (struct CGRect)getOriginalViewVolume;
 - (struct CGRect)getCurrentViewVolume;
 - (void)setProcessedCurveDirty:(id)arg1 enable:(BOOL)arg2;
@@ -196,10 +216,7 @@
 - (void)cursorUpdate:(id)arg1;
 - (void)updateTrackingAreas;
 - (void)setCursor:(id)arg1;
-- (void)clearGLNamesForObjects;
-- (void *)objectForGLName:(unsigned int)arg1;
-- (unsigned int)createGLNameForObject:(void *)arg1;
-- (void)processHits;
+- (void)processHits:(id)arg1 keyframesOnly:(BOOL)arg2;
 - (void)pick:(struct CGPoint)arg1;
 - (void)select;
 - (BOOL)lockKeyframesInU;
@@ -214,27 +231,23 @@
 - (double)getZoomPadding;
 - (id)getCoordinates:(id)arg1 time:(CDStruct_1b6d18a9)arg2 value:(double)arg3;
 - (void)drawOverlays:(struct CGRect)arg1;
-- (void)drawPoints:(id)arg1 mode:(unsigned int)arg2 drawTangents:(BOOL)arg3;
-- (void)drawKeypoint:(void **)arg1 tangentU:(double)arg2 tangentV:(double)arg3 u:(const CDStruct_1b6d18a9 *)arg4 v:(double)arg5 whichTangent:(unsigned int)arg6 withItem:(id)arg7 tangentSize:(struct CGPoint)arg8 rasterSize:(struct CGPoint)arg9 tangentTextureID:(unsigned int)arg10 tangentLineArray:(vector_d5fe817d *)arg11 tangentHandleArray:(vector_c3eb4401 *)arg12;
-- (void)drawSelectedKeypoint:(void **)arg1 tangentU:(double)arg2 tangentV:(double)arg3 u:(const CDStruct_1b6d18a9 *)arg4 v:(double)arg5 whichTangent:(unsigned int)arg6 withItem:(id)arg7 tangentSize:(struct CGPoint)arg8 rasterSize:(struct CGPoint)arg9;
+- (void)drawPoints:(id)arg1 drawTangents:(BOOL)arg2;
+- (void)drawTangent:(void **)arg1 tangentU:(double)arg2 tangentV:(double)arg3 u:(const CDStruct_1b6d18a9 *)arg4 v:(double)arg5 whichTangent:(unsigned int)arg6 withItem:(id)arg7 rasterSize:(struct CGPoint)arg8;
 - (void)calculateDrawTangentU:(double *)arg1 tangentV:(double *)arg2 deltaU:(double *)arg3 deltaV:(double *)arg4 forU:(const CDStruct_1b6d18a9 *)arg5 v:(double)arg6 rasterSize:(struct CGPoint)arg7 withItem:(id)arg8;
-- (void)drawKeypoint:(void **)arg1 u:(const CDStruct_1b6d18a9 *)arg2 v:(double)arg3 selected:(_Bool)arg4 enabled:(_Bool)arg5 locked:(_Bool)arg6 forItem:(id)arg7 assets:(struct KeyframeAsset [6])arg8 rasterSize:(struct CGPoint *)arg9 quadVector:(vector_bf37bbef *)arg10;
-- (void)drawSelectedKeypoint:(void **)arg1 u:(const CDStruct_1b6d18a9 *)arg2 v:(double)arg3 forItem:(id)arg4 colorIndex:(unsigned int)arg5;
-- (void)assetQuad:(struct OZTexturedQuad2Df *)arg1 atPos:(struct CGPoint)arg2 withSize:(struct CGPoint)arg3 texSize:(struct CGPoint)arg4;
+- (void)drawKeypoint:(void **)arg1 u:(const CDStruct_1b6d18a9 *)arg2 v:(double)arg3 selected:(_Bool)arg4 enabled:(_Bool)arg5 locked:(_Bool)arg6 forItem:(id)arg7 assets:(struct KeyframeAsset [6])arg8 rasterSize:(struct CGPoint *)arg9;
 - (void)drawProcessedCurve:(id)arg1;
-- (void)drawOriginalCurve:(id)arg1 mode:(unsigned int)arg2;
-- (void)drawCurveEditor:(struct CGRect)arg1;
-- (void)drawBackground;
-- (void)drawFourCornerBox:(unsigned int)arg1;
+- (void)drawOriginalCurve:(id)arg1;
+- (void)drawCurveEditor;
+- (void)drawFourCornerBox;
 - (id)getScale:(id)arg1 value:(double)arg2;
-- (void)drawProjection:(unsigned int)arg1;
+- (void)drawBackground;
+- (void)drawProjection;
 - (void)drawSelectionRect;
-- (void)glPrint:(id)arg1 atPos:(struct CGPoint)arg2;
+- (void)metalPrint:(id)arg1 atPos:(struct CGPoint)arg2;
 - (void)computeVerticalTickMarks;
 - (unsigned int)numberOfTickMarks;
 - (void)loadAssets;
-- (unsigned int)tangentAsset:(struct CGPoint *)arg1;
-- (unsigned int)keyframeAsset:(unsigned int)arg1 state:(unsigned int)arg2 index:(unsigned int)arg3 assetSize:(struct CGPoint *)arg4;
+- (struct KeyframeAsset)keyframeAssetWithImageName:(id)arg1 andBundle:(id)arg2;
 - (id)curveColor:(unsigned int)arg1;
 - (id)lockedColor;
 - (id)backgroundColor;
@@ -242,13 +255,19 @@
 - (id)textColor;
 - (id)endpointsColor;
 - (id)gridColor;
-- (id)playheadColor;
-- (BOOL)wantsBestResolutionOpenGLSurface;
-- (void)reshape;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)viewDidMoveToWindow;
+- (void)setupMetalRender;
+- (void)displayLayer:(id)arg1;
+- (void)viewDidChangeBackingProperties;
+- (void)setFrameSize:(struct CGSize)arg1;
+- (id)makeBackingLayer;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

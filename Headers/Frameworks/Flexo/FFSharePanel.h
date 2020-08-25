@@ -33,12 +33,16 @@
     NSViewController<FFSharePanelAccessoryProtocol> *_accessoryController;
     NSView *_accessoryPreviewContainerView;
     double _accessoryWindowHeight;
+    BOOL _hasClippingSettingsUI;
     NSLayoutConstraint *_errorViewHeightConstraint;
+    double _originalWindowWidth;
     NSView *_shareInfoContainer;
 }
 
 @property(nonatomic) NSView *shareInfoContainer; // @synthesize shareInfoContainer=_shareInfoContainer;
 @property(retain, nonatomic) NSTrackingArea *errorViewTrackingArea; // @synthesize errorViewTrackingArea=_errorViewTrackingArea;
+@property(nonatomic) BOOL hasClippingSettingsUI; // @synthesize hasClippingSettingsUI=_hasClippingSettingsUI;
+@property(nonatomic) double originalWindowWidth; // @synthesize originalWindowWidth=_originalWindowWidth;
 @property(readonly, nonatomic) double accessoryWindowHeight; // @synthesize accessoryWindowHeight=_accessoryWindowHeight;
 @property(nonatomic) NSView *accessoryPreviewContainerView; // @synthesize accessoryPreviewContainerView=_accessoryPreviewContainerView;
 @property(retain, nonatomic) NSViewController<FFSharePanelAccessoryProtocol> *accessoryController; // @synthesize accessoryController=_accessoryController;
@@ -65,6 +69,7 @@
 - (double)windowHeightWithTabViewItemIdentifier:(id)arg1;
 - (BOOL)areAudioVideoRolesHeterogeneous;
 - (void)_updateDisabledRoles;
+- (BOOL)needsSettingsViewWidthSizable;
 - (double)calcMaxSettingsViewHeight;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)showVideoPreviewOrSourcesListDependingOnBatchExport;

@@ -12,11 +12,7 @@ __attribute__((visibility("hidden")))
     float _unitPercent;
 }
 
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)ignoreObservingLayer:(id)arg1;
-- (void)observeLayer:(id)arg1;
-- (void)setUnitPercent:(float)arg1;
+@property(nonatomic) float unitPercent; // @synthesize unitPercent=_unitPercent;
 - (void)setupDefaultPropertiesWithOptions:(long long)arg1;
 
 @end

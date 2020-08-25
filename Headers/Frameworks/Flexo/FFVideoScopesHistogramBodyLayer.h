@@ -4,19 +4,47 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFVideoScopesBodyLayer.h>
+#import <Flexo/FFVideoScopesLayer.h>
+
+#import "FFVideoScopesMetalLayers.h"
+
+@class FFHistogramChannelLayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesHistogramBodyLayer : FFVideoScopesBodyLayer
+@interface FFVideoScopesHistogramBodyLayer : FFVideoScopesLayer <FFVideoScopesMetalLayers>
 {
+    BOOL _showGuides;
+    BOOL _hideLabels;
+    // Error parsing type: Aq, name: _displayMode
+    // Error parsing type: Ai, name: _colorSpaceType
+    FFHistogramChannelLayer *_channelLayer;
+    // Error parsing type: ^{FFVideoScopesHistogramRenderer=^{Instance}{FFVideoScopesLocking<FFVideoScopesHistogramRenderer::Instance>=^{Instance}{FFConditionLock=^^?^{_opaque_pthread_t}I{_opaque_pthread_mutex_t=q[56c]}{_opaque_pthread_cond_t=q[40c]}q}{atomic<unsigned int>=AI}{atomic<unsigned int>=AI}}}, name: _renderer
 }
 
-+ (id)histogramBodyLayer;
-- (id)actionForKey:(id)arg1;
-- (void)setDelegate:(id)arg1;
-- (void)hideGraticuleLabels:(BOOL)arg1;
++ (id)layer;
+- (void)drawVideoScopesWithMtlContext:(struct PAEMtlContext *)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)invalidateVideoScopesRenderer;
+- (void)updateVideoScopesWithWithField1:(id)arg1 field2:(id)arg2 fieldMode:(long long)arg3 mtlContext:(struct PAEMtlContext *)arg4;
+- (void)layoutSublayers;
+- (void)_layoutParadeBackgroundLayer:(id)arg1 bounds:(struct CGRect)arg2;
+- (void)_layoutUnitTextLayer:(id)arg1 bounds:(struct CGRect)arg2;
+- (void)setBounds:(struct CGRect)arg1;
+- (id)settingsButton;
+- (id)label;
+- (void)setColorSpaceType:(int)arg1;
+- (void)setDisplayMode:(long long)arg1;
 - (void)setShowGuides:(BOOL)arg1;
+- (void)_changeVisibilityForUnitTextLayer:(id)arg1 showGuides:(BOOL)arg2;
 - (void)setTraceBrightness:(float)arg1;
+- (void)_buildSublayers;
+- (void)dealloc;
+- (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

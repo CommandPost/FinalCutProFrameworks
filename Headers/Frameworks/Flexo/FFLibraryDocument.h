@@ -6,7 +6,7 @@
 
 #import <Flexo/FFModelDocument.h>
 
-@class FFLibraryBackupTask, FFModelUpdateHandler, FFResourceMap, NSError, NSMutableDictionary, NSURL;
+@class FFLibraryBackupTask, FFMediaRepDownloadController, FFModelUpdateHandler, FFResourceMap, NSError, NSMutableDictionary, NSURL;
 
 @interface FFLibraryDocument : FFModelDocument
 {
@@ -28,6 +28,7 @@
     FFModelUpdateHandler *_updateHandler;
     NSError *_lastBackupError;
     int _lastBackupErrorCount;
+    FFMediaRepDownloadController *_mediaRepDownloadController;
     BOOL _libraryNeedsValidation;
     BOOL _reopening;
     BOOL _incompatibleLibraryMessageShown;
@@ -69,6 +70,7 @@
 + (id)displayNameForURLBookmark:(id)arg1;
 + (id)modificationDateForURL:(id)arg1;
 + (BOOL)isLibraryURL:(id)arg1;
++ (id)openedDocumentForURL:(id)arg1;
 + (id)copyActiveLibraries;
 + (void)initialize;
 @property(nonatomic) BOOL incompatibleLibraryMessageShown; // @synthesize incompatibleLibraryMessageShown=_incompatibleLibraryMessageShown;
@@ -77,6 +79,7 @@
 @property(retain, nonatomic) FFLibraryBackupTask *backupTask; // @synthesize backupTask=_backupTask;
 @property(nonatomic, getter=isReopening) BOOL reopening; // @synthesize reopening=_reopening;
 @property BOOL libraryNeedsValidation; // @synthesize libraryNeedsValidation=_libraryNeedsValidation;
+- (id)mediaRepDownloadController;
 - (void)stopObservingCatalog;
 - (void)startObservingCatalog;
 - (void)libraryCatalogWillSaveNotification:(id)arg1;
@@ -114,7 +117,7 @@
 - (BOOL)syncLocation:(int)arg1 error:(id *)arg2;
 - (BOOL)findDisplayName:(id *)arg1 forLocation:(int)arg2 error:(id *)arg3;
 - (BOOL)findURL:(id *)arg1 forLocation:(int)arg2 error:(id *)arg3;
-- (BOOL)setURL:(id)arg1 forLocation:(int)arg2 error:(id *)arg3;
+- (BOOL)setURL:(id)arg1 forLocation:(int)arg2 didChange:(char *)arg3 error:(id *)arg4;
 - (id)libraryRelativeURLForPath:(id)arg1;
 - (id)effectsMapURL;
 - (id)effectMapRelativeURLForPath:(id)arg1;
@@ -135,6 +138,7 @@
 - (id)readSettingsValueForKey:(id)arg1;
 - (BOOL)writeSettingsValue:(id)arg1 forKey:(id)arg2;
 - (BOOL)syncSettings:(id *)arg1;
+- (id)modelLockingObject;
 - (void)projectChanged:(id)arg1;
 - (void)item:(id)arg1 asyncFailure:(id)arg2;
 - (id)runLibraryRepairTask:(id *)arg1;
@@ -224,9 +228,10 @@
 - (void)startObservingAppBecameActive;
 - (void)_cancelAndWaitForLibraryBackgroundTasksToComplete;
 - (void)close;
-- (void)_closeWhenPossibleWithBlock:(CDUnknownBlockType)arg1;
-- (void)closeWhenPossibleWithBlock:(CDUnknownBlockType)arg1;
+- (void)_closeWhenPossible:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)closeWhenPossible:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)closeWhenPossible;
+- (void)closeWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (BOOL)flushStorage:(id *)arg1;
 - (void)dealloc;
 - (id)initForURL:(id)arg1 withContentsOfURL:(id)arg2 ofType:(id)arg3 error:(id *)arg4;

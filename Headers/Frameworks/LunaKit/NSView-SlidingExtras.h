@@ -8,5 +8,13 @@
 
 @interface NSView (SlidingExtras)
 - (void)setFrameOriginWithRedraw:(struct CGPoint)arg1;
+- (BOOL)_LKTileIsAncestorOfViewIdenticalTo:(void *)arg1;
+- (void)_setNeedsDisplayDeeplyIfLayerBacked;
+- (void)_setNeedsDisplayDeeply;
+- (BOOL)usesLayerBackedContainerItemView;
+- (id)enclosingContainerItemView;
+- (BOOL)isContainerItemView;
+- (void)LKSetCoachTipKey:(id)arg1;
+- (id)LKCoachTipKey;
 @end
 

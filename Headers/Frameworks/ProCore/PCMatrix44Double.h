@@ -58,6 +58,7 @@
 - (id)debugDescription;
 - (id)description;
 - (unsigned long long)hash;
+- (BOOL)isEqualToPCMatrix44Double:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

@@ -8,7 +8,7 @@
 
 #import "FFSkimmingModuleDelegate.h"
 
-@class CALayer, FFAnchoredCollection, FFAnchoredObject, FFAnchoredSequence, FFEffect, FFSkimmingModule, FFThumbnailRequest, NSArray, NSDictionary, NSImage, NSMutableArray, NSString;
+@class CALayer, FFAnchoredCollection, FFAnchoredObject, FFAnchoredSequence, FFEffect, FFEffectPickerRestartPlayerInfo, FFSkimmingModule, FFThumbnailRequest, NSArray, NSDictionary, NSImage, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFEffectPickerView : NSView <FFSkimmingModuleDelegate>
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
     double _timePerHorizontalPixel;
     int _flippedEffectCell;
     FFAnchoredCollection *_projectFilterCollection;
+    FFEffectPickerRestartPlayerInfo *_currentRestartPlayerInfo;
     BOOL _projectFilterMode;
 }
 
@@ -91,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)_applyProjectFilterEffectID:(id)arg1 forCollection:(id)arg2;
 - (void)_addImageToSequenceIfNoItemsAndSetProjectFilterFlag:(id)arg1;
 - (void)mouseExited:(id)arg1;
+- (void)_dispatchPlayerRestart;
 - (void)mouseMoved:(id)arg1;
 - (void)_auditionEffectUsingCellIndex:(int)arg1;
 - (void)drawCell:(int)arg1 current:(BOOL)arg2;

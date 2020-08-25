@@ -16,6 +16,12 @@ __attribute__((visibility("hidden")))
     float _savedRate;
 }
 
+- (BOOL)supportsMetalRendering;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (void)addFrameRectangle:(struct CGRect)arg1 width:(double)arg2 color:(id)arg3 collection:(float)arg4 backingScale: /* Error: Ran out of types for this method. */;
+- (void)_addLineToArray:(id)arg1 point:color: /* Error: Ran out of types for this method. */;
+- (void)addSolidRectangle:(struct CGRect)arg1 color:(id)arg2 collection: /* Error: Ran out of types for this method. */;
+- (id)newMatixToRemoveScaleFactor;
 - (id)cursorAtPoint:(struct CGPoint)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
@@ -24,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)hitTest:(struct CGPoint)arg1;
 - (BOOL)isAvailableDuringPlayback;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
 - (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
 - (void)dealloc;
 

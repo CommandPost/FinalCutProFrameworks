@@ -9,18 +9,14 @@
 #import "NSCopying.h"
 #import "NSSecureCoding.h"
 
-@class FFVideoFormat, NSDictionary, NSMutableDictionary, NSString;
+@class FFVideoFormat, FFVideoProps, NSDictionary, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFSequenceInfo : FFBaseDSObject <NSSecureCoding, NSCopying>
 {
     CDStruct_e83c9415 _mediaRange;
-    CDStruct_1b6d18a9 _frameDuration;
     CDStruct_1b6d18a9 _timecodeFrameDuration;
     long long _timecodeDisplayDropFrame;
-    int _fieldDominance;
-    struct CGSize _frameSize;
-    struct CGSize _pixelFrameSize;
     NSDictionary *_metadata;
     NSMutableDictionary *_thumbnailMD5sKeyedByQuality;
     NSString *_mediaIdentifier;
@@ -37,6 +33,8 @@ __attribute__((visibility("hidden")))
     long long _transitionCount;
     NSMutableDictionary *_thumbnailRequestsKeyedByQuality;
     NSMutableDictionary *_thumbnailReadyBlocksKeyedByQuality;
+    FFVideoProps *_videoProps;
+    FFVideoProps *_cachedVideoProps;
     unsigned int _audioChannelCount;
     double _audioSampleRate;
 }
@@ -57,11 +55,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL isAppPreview; // @synthesize isAppPreview=_isAppPreview;
 @property(nonatomic) BOOL isTrailer; // @synthesize isTrailer=_isTrailer;
 @property(retain, nonatomic) NSMutableDictionary *thumbnailMD5sKeyedByQuality; // @synthesize thumbnailMD5sKeyedByQuality=_thumbnailMD5sKeyedByQuality;
-@property(nonatomic) struct CGSize frameSize; // @synthesize frameSize=_frameSize;
-@property(nonatomic) int fieldDominance; // @synthesize fieldDominance=_fieldDominance;
 @property long long timecodeDisplayDropFrame; // @synthesize timecodeDisplayDropFrame=_timecodeDisplayDropFrame;
 @property CDStruct_1b6d18a9 timecodeFrameDuration; // @synthesize timecodeFrameDuration=_timecodeFrameDuration;
-@property(nonatomic) CDStruct_1b6d18a9 frameDuration; // @synthesize frameDuration=_frameDuration;
 @property(copy, nonatomic) NSString *videoFormatKey; // @synthesize videoFormatKey=_videoFormatKey;
 @property(copy, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
 - (id)description;
@@ -77,9 +72,13 @@ __attribute__((visibility("hidden")))
 - (void)setMetadata:(id)arg1;
 - (BOOL)shouldCacheMDValueForKey:(id)arg1;
 - (id)legacySequenceID;
+@property(retain, nonatomic) FFVideoProps *videoProps; // @synthesize videoProps=_videoProps;
 @property(readonly, nonatomic) FFVideoFormat *videoFormat;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 sampleDuration;
-@property(nonatomic) struct CGSize pixelFrameSize; // @synthesize pixelFrameSize=_pixelFrameSize;
+- (int)fieldDominance;
+- (CDStruct_1b6d18a9)frameDuration;
+- (struct CGSize)pixelFrameSize;
+- (struct CGSize)frameSize;
 - (id)loadSequence:(id *)arg1;
 - (BOOL)isSequenceLoaded;
 - (BOOL)autoEdit;

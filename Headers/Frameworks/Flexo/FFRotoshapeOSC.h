@@ -23,10 +23,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldSetContextAttributesOnMouseMoved;
 - (BOOL)supportsTool:(Class)arg1;
 - (void)setShouldDrawVertices:(BOOL)arg1;
+- (BOOL)supportsMetalRendering;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (void)renderOSC:(id)arg1 drawProperties:(id)arg2;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
-- (void)drawTextOverlayWithContext:(struct _CGLContextObject *)arg1;
-- (void)simpleTextRectangle:(float)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(id)arg4 attributes:(id)arg5 glowAttributes:(id)arg6 paddingX:(double)arg7 paddingY:(double)arg8 roundRectBackground:(BOOL)arg9;
-- (void)_setupTextures:(struct _CGLContextObject *)arg1;
+- (void)drawOnScreenForContexts:(id)arg1 drawProperties:(id)arg2 drawRect:(struct CGRect)arg3;
+- (void)drawTextOverlayWithContext:(id)arg1;
+- (void)simpleTextRectangle:(float)arg1 rect:(struct CGRect)arg2 renderer:(id)arg3 string:(id)arg4 attributes:(id)arg5 glowAttributes:(id)arg6 paddingX:(double)arg7 paddingY:(double)arg8 roundRectBackground:(BOOL)arg9;
+- (void)_setupTextures;
 - (void)dealloc;
 
 @end

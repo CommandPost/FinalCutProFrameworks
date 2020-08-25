@@ -18,10 +18,14 @@
     int parameterTransactionType;
     NSString *parameterName;
     unsigned long long transactionID;
+    unsigned long long pluginSessionID;
+    NSString *pluginUUID;
     CDStruct_1b6d18a9 parameterTime;
 }
 
 + (BOOL)supportsSecureCoding;
+@property(readonly) NSString *pluginUUID; // @synthesize pluginUUID;
+@property(readonly) unsigned long long pluginSessionID; // @synthesize pluginSessionID;
 @property(readonly) unsigned long long transactionID; // @synthesize transactionID;
 @property CDStruct_1b6d18a9 parameterTime; // @synthesize parameterTime;
 @property int parameterTransactionType; // @synthesize parameterTransactionType;
@@ -42,7 +46,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 parameterFlags:(unsigned int)arg3 transactionType:(int)arg4 transactionID:(unsigned long long)arg5;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 parameterFlags:(unsigned int)arg3 transactionType:(int)arg4 transactionID:(unsigned long long)arg5 pluginUUID:(id)arg6 pluginSessionID:(unsigned long long)arg7;
 
 @end
 

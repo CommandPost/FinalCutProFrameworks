@@ -29,9 +29,9 @@
 + (id)ozTXGlyphOSCSecondaryLineColor;
 + (id)ozTXGlyphOSCBoxSelectionOutlineColor;
 + (id)ozTXGlyphOSCBoxSelectionColor;
-+ (id)ozClassicTrackerDefaultColor;
-+ (id)ozClassicTrackerSelectionCurveColor;
-+ (id)ozClassicTrackerSelectionGridColor;
++ (id)ozCorrelationTrackerDefaultColor;
++ (id)ozCorrelationTrackerSelectionCurveColor;
++ (id)ozCorrelationTrackerSelectionGridColor;
 + (id)ozSensoTrackerRenderOutlineColor;
 + (id)ozSensoTrackerRenderColor;
 + (id)ozSensoTrackerMaskColor;

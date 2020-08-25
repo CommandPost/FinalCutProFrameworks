@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned long long *_audioFrameCounts;
     NSArray *_audioRenderers;
     int _callbackStatus;
-    BOOL _downscaleToQuarterRes;
+    double _proxyScaleDownFactor;
     BOOL _ignoreAlphaChannel;
     BOOL _requestStraightAlpha;
     CDStruct_1b6d18a9 _firstFrameTimeOffset;
@@ -47,16 +47,18 @@ __attribute__((visibility("hidden")))
     FFDestVideoRequestInfo *_cachedRequestInfo;
     int _whichSegment;
     struct __CFArray *_reorderBuffer;
+    BOOL _enableProxySizeFastPath;
     NSError *exportError;
     unsigned long long _audioFormat;
 }
 
+@property(nonatomic) BOOL enableProxySizeFastPath; // @synthesize enableProxySizeFastPath=_enableProxySizeFastPath;
+@property(nonatomic) double proxyScaleDownFactor; // @synthesize proxyScaleDownFactor=_proxyScaleDownFactor;
 @property(nonatomic) unsigned long long audioFormat; // @synthesize audioFormat=_audioFormat;
 @property(retain) NSError *exportError; // @synthesize exportError;
 @property(retain) NSDictionary *hdrMetadata; // @synthesize hdrMetadata=_hdrMetadata;
 @property(nonatomic) BOOL requestStraightAlpha; // @synthesize requestStraightAlpha=_requestStraightAlpha;
 @property(nonatomic) BOOL ignoreAlphaChannel; // @synthesize ignoreAlphaChannel=_ignoreAlphaChannel;
-@property(nonatomic) BOOL downscaleToQuarterRes; // @synthesize downscaleToQuarterRes=_downscaleToQuarterRes;
 - (int)destRecommendedFFSVPriority;
 - (void)pushFrame:(id)arg1;
 - (BOOL)_isProRes4444AlphaModeCompatible:(struct opaqueCMSampleBuffer *)arg1;

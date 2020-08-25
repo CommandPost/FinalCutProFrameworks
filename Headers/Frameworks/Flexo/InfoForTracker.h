@@ -8,7 +8,7 @@
 
 #import "FFStorageLocationOutOfDiskSpaceProtocol.h"
 
-@class FFBackgroundTask, FFFlowMediaRep, FFImageAbsoluteOutputFormat, FFOnDiskRenderInfo, FFPixelBuffer, FFPixelFormat, FFSegmentStoreRef, FFStreamVideo, NSArray, NSError, NSMutableArray, NSObject<OS_dispatch_queue>, PCMatrix44Double;
+@class FFBackgroundTask, FFFlowMediaRep, FFImageAbsoluteOutputFormat, FFOnDiskRenderInfo, FFPixelBuffer, FFPixelFormat, FFSegmentStoreRef, FFStreamVideo, NSArray, NSError, NSMutableArray, PCMatrix44Double;
 
 __attribute__((visibility("hidden")))
 @interface InfoForTracker : NSObject <FFStorageLocationOutOfDiskSpaceProtocol>
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
     FFPixelFormat *_nativeFramePF;
     FFImageAbsoluteOutputFormat *_formatToHandToAnalyzer;
     int _workingSpace;
-    NSObject<OS_dispatch_queue> *_lockForScheduled;
+    struct FFSynchronizable *_lockForScheduled;
     NSMutableArray *_scheduled;
     unsigned int _hasDeferredRehint;
     NSError *_cancellationError;

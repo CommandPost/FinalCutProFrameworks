@@ -75,7 +75,7 @@
 @property long long type; // @dynamic type;
 - (void)_redisplayLayers;
 - (id)_rangeLayer;
--     // Error parsing type: r^{paefthslq_priv_t=AI}16@0:8, name: priv
+-     // Error parsing type: r^{PAEColorQualifierPrivate=AI}16@0:8, name: priv
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

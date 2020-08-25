@@ -18,8 +18,10 @@
     id <FFSharePopoverDelegate> _sharePopoverDelegate;
     NSView *_positioningView;
     NSLayoutConstraint *_heightConstraint;
+    NSLayoutConstraint *_widthConstraint;
 }
 
+@property NSLayoutConstraint *widthConstraint; // @synthesize widthConstraint=_widthConstraint;
 @property NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property(retain) NSView *positioningView; // @synthesize positioningView=_positioningView;
 @property id <FFSharePopoverDelegate> sharePopoverDelegate; // @synthesize sharePopoverDelegate=_sharePopoverDelegate;
@@ -31,8 +33,9 @@
 - (void)close:(id)arg1;
 - (void)dealloc;
 - (void)viewDidLoad;
-- (void)expandPopoverToRevealFullContents;
+- (double)widthWhichFullyRevealsTableColumn;
 - (double)heightWhichFullyExpandsPopoverWithPositioningView:(id)arg1;
+- (void)expandPopoverToRevealFullContents;
 - (void)updateDestinations;
 - (id)initWithSharePopoverDelegate:(id)arg1;
 

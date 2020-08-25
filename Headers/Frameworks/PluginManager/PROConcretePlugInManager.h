@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *api;
     PROReadWriteLock *apiLock;
     NSMutableArray *plugInSearchDirectories;
+    NSMutableArray *deferredPluginBundles;
     NSMutableDictionary *blockedLibraryPlugins;
     NSMutableDictionary *blockedDocumentPlugins;
     id delegate;
@@ -62,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)scanForPlugInsInDirectory:(id)arg1;
 - (void)scanForPlugIns;
 - (void)scanForPlugInsInBundleHelper:(id)arg1 zone:(struct _NSZone *)arg2 withPluginKitPlugIn:(id)arg3;
+- (void)finishPluginSetupForBundle:(id)arg1 handler:(id)arg2;
 - (void)mergeGroupsDictionaryWith:(id)arg1;
 - (void)removeAllBlockedDocumentPlugins;
 - (void)getNameOverrides:(id)arg1 pluginName:(id *)arg2 bundleName:(id *)arg3;
@@ -70,6 +72,9 @@ __attribute__((visibility("hidden")))
 - (id)newBlockPluginList:(struct __CFString *)arg1;
 - (void)addDocumentBlockedPlugin:(id)arg1;
 - (void)addLibraryBlockedPlugin:(id)arg1 bundleName:(id)arg2 pluginName:(id)arg3 version:(id)arg4;
+- (void)loadDeferredPlugins;
+- (id)deferredPluginKitPlugs;
+- (void)addDeferredPluginBundle:(id)arg1;
 - (void)addPlugIn:(id)arg1;
 - (void)removeAllPlugIns;
 - (id)plugInSearchDirectories;

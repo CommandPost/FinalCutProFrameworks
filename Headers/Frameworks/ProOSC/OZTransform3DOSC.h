@@ -6,9 +6,11 @@
 
 #import <ProOSC/POOnScreenControl.h>
 
-@class POMove3D, PORotate3D, POScaleControl;
+#import "POOnScreenControlMetalRendering.h"
 
-@interface OZTransform3DOSC : POOnScreenControl
+@class NSString, POMove3D, PORotate3D, POScaleControl;
+
+@interface OZTransform3DOSC : POOnScreenControl <POOnScreenControlMetalRendering>
 {
     POMove3D *_translationOSC;
     PORotate3D *_rotationOSC;
@@ -22,6 +24,7 @@
 }
 
 + (BOOL)validate:(id)arg1;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (_Bool)isTranslateHandleActive:(int)arg1;
 - (_Bool)isRotateHandleActive:(int)arg1;
 - (_Bool)isFreeMoveHandleActive:(int)arg1;
@@ -52,6 +55,12 @@
 - (BOOL)isDependentOnBounds;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

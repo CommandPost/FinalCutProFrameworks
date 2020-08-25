@@ -8,7 +8,7 @@
 
 #import "FFDestAnalyzerProtocol.h"
 
-@class FCEFaceDetector, FFFaceDetectionInfoCollection, NSMutableArray;
+@class FFFaceDetectionInfoCollection, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFFaceDetection : FFDestVideoAnalyzerController <FFDestAnalyzerProtocol>
@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
     BOOL _skipPerFrameAnalysis;
     BOOL _createSmartCollectionFolders;
     BOOL _consolidateFindPeopleResults;
-    FCEFaceDetector *_fcFaceDetector;
 }
 
 - (BOOL)doesSupportDataFilesWithMediaEventProject:(id)arg1 subPath:(id *)arg2 type:(id *)arg3;

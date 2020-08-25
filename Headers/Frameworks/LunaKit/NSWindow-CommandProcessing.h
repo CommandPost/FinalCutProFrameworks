@@ -8,5 +8,6 @@
 
 @interface NSWindow (CommandProcessing)
 - (void)keyUp:(id)arg1;
+- (id)activeModule;
 @end
 

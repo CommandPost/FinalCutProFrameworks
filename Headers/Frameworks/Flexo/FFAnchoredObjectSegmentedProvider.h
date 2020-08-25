@@ -31,11 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) NSSet *roles; // @synthesize roles=_roles;
 @property(readonly, retain, nonatomic) NSSet *showOnlyObjects; // @synthesize showOnlyObjects=_showOnlyObjects;
 - (id)anchoredObject;
-- (BOOL)writerIsWaiting;
-- (void)_readUnlock;
-- (void)_readLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
+- (id)modelLockingObject;
 - (id)displayName;
 - (void)_setupSources;
 - (void)dealloc;

@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 -     // Error parsing type: v24@0:8^{HGRenderNode=^^?{atomic<unsigned int>=AI}^{HGNode}^{HGBitmap}{HGRect=iiii}iBiii{shared_ptr<const HGComputeDevice>=^{HGComputeDevice}^{__shared_weak_count}}{HGRef<HGGLContext>=^{HGGLContext}}Bdddd^{HGPixelBufferObj}Q^v*^?d^{HGRenderer}^{HGRenderJob}^{HGRenderQueue}}16, name: _nodeDidFinish:
 - (struct FFSynchronizable *)localLock;
 - (void)dealloc;
-- (id)initWithFormat:(id)arg1 location:(int)arg2 roi:(struct HGRect)arg3 pixelTransform:(id)arg4 field:(unsigned int)arg5 dithered:(BOOL)arg6 background:(int)arg7 zebraMode:(unsigned int)arg8;
+- (id)initWithFormat:(id)arg1 location:(const struct FxDeviceSet *)arg2 roi:(struct HGRect)arg3 pixelTransform:(id)arg4 field:(unsigned int)arg5 dithered:(BOOL)arg6 background:(int)arg7 zebraMode:(unsigned int)arg8;
 
 @end
 

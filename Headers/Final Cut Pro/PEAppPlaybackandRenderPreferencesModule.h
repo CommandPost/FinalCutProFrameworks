@@ -22,7 +22,7 @@
     NSPopUpButton *_gpuSelectionPopup;
     NSTextField *_gpuSelectionPopupLabel;
     NSLayoutConstraint *_gpuSelectionPopupHeight;
-    NSMutableArray *_fxGPUDictArray;
+    NSMutableArray *_FxDeviceDictArray;
     BOOL _singleInternalGPU;
     BOOL _addGPULocationSuffix;
 }

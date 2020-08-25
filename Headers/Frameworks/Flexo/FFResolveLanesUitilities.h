@@ -10,7 +10,6 @@
 {
 }
 
-+ (BOOL)resolveLaneConflictsForItemInfos:(id)arg1 changedItems:(id)arg2 verticalOrderFlags:(long long)arg3;
 + (BOOL)resolveLaneConflictsForItems:(id)arg1 excludedItems:(id)arg2 changedItems:(id)arg3 verticalOrderFlags:(long long)arg4 error:(id *)arg5;
 
 @end

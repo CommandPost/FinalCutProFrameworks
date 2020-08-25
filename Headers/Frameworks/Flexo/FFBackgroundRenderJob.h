@@ -28,9 +28,11 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_lockForDeferredChecks;
     NSMutableArray *_deferredRanges;
     NSMutableSet *_deferredMD5s;
+    CDStruct_e83c9415 _intersectedRange;
 }
 
 + (void)initialize;
+@property CDStruct_e83c9415 intersectedRange; // @synthesize intersectedRange=_intersectedRange;
 @property _Bool programmaticallyCancelled; // @synthesize programmaticallyCancelled=_programmaticallyCancelled;
 @property(readonly) FFRenderStateTracker *tracker; // @synthesize tracker=_tracker;
 @property(retain) FFBGRenderAutoStartInfo *autoStartInfo; // @synthesize autoStartInfo=_autoStartInfo;
@@ -51,9 +53,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateProgress:(float)arg1 task:(id)arg2;
 - (CDStruct_e83c9415)rangeInProgress;
 - (_Bool)autoStarted;
-- (void)readUnlockSeq;
-- (void)readLockSeq:(id)arg1;
-- (id)lockableModelObject;
 - (id)sequence;
 - (void)dealloc;
 - (id)initWithStates:(id)arg1 onObject:(id)arg2 range:(CDStruct_e83c9415)arg3 autoStartInfo:(id)arg4;

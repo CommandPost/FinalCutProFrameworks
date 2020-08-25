@@ -14,7 +14,7 @@
 + (id)EventProject;
 + (void)ShutDown;
 + (void)Initialize;
-+ (BOOL)WriteSequence:(id)arg1 toPath:(id)arg2 excludeDisabledRolesInShare:(BOOL)arg3 error:(id *)arg4;
++ (BOOL)WriteSequence:(id)arg1 toPath:(id)arg2 useTimelinePlaybackInShare:(BOOL)arg3 error:(id *)arg4;
 + (BOOL)WriteSequence:(id)arg1 toPath:(id)arg2 error:(id *)arg3;
 
 @end

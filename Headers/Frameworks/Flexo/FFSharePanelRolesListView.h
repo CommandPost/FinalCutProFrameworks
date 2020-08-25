@@ -6,18 +6,18 @@
 
 #import "NSView.h"
 
-@class FFSharePanelRolesDataSource, FFWeakPointerValue, NSLayoutConstraint, NSSet;
+@class FFSharePanelRolesDataSource, NSLayoutConstraint, NSSet, PCWeakPointerValue;
 
 __attribute__((visibility("hidden")))
 @interface FFSharePanelRolesListView : NSView
 {
     NSSet *_roles;
     NSLayoutConstraint *_heightConstraint;
-    FFWeakPointerValue *_dataSourceWeakPointer;
+    PCWeakPointerValue *_dataSourceWeakPointer;
 }
 
 + (BOOL)supportsSecureCoding;
-@property(retain, nonatomic) FFWeakPointerValue *dataSourceWeakPointer; // @synthesize dataSourceWeakPointer=_dataSourceWeakPointer;
+@property(retain, nonatomic) PCWeakPointerValue *dataSourceWeakPointer; // @synthesize dataSourceWeakPointer=_dataSourceWeakPointer;
 @property(nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property(copy, nonatomic) NSSet *roles; // @synthesize roles=_roles;
 @property(nonatomic) __weak FFSharePanelRolesDataSource *dataSource;

@@ -9,7 +9,7 @@
 #import "NSPopoverDelegate.h"
 #import "NSWindowDelegate.h"
 
-@class FFAnchoredSequence, FFCPSClapperboardView, FFCPSShadowView, FFSequenceRecord, LKButton, LKTextField, NSButton, NSImageView, NSPopover, NSString, NSView;
+@class FFAnchoredSequence, FFCPSClapperboardView, FFCPSShadowView, FFSequenceRecord, LKButton, LKTextField, NSButton, NSImageView, NSString, NSView;
 
 __attribute__((visibility("hidden")))
 @interface FFCPSProjectInfoVC : FFCPSViewController <NSWindowDelegate, NSPopoverDelegate>
@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
     NSImageView *_projectClockIcon;
     NSButton *_projectShareIcon;
     LKButton *_projectEditButton;
-    NSPopover *_sharePopover;
     NSView *_fileInfoFormatLeftBadge;
     NSView *_fileInfoFormatRightBadge;
     LKTextField *_fileInfoTextFormat1;
@@ -72,8 +71,6 @@ __attribute__((visibility("hidden")))
 - (void)installNotifications;
 - (void)viewControllerDidUnhide;
 - (void)viewControllerWillHide;
-- (void)popoverDidClose:(id)arg1;
-- (void)showShareHistoryPopover:(id)arg1;
 - (void)projectEditAction:(id)arg1;
 - (id)eventRecord;
 - (id)sequenceRecord;

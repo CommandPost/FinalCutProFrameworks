@@ -15,7 +15,7 @@
     struct OpaqueCMTimebase *_timebase;
     struct FFAudioPerfRenderHook *_perfHook;
     struct FFAudioSignalClamper *_signalClamp;
-    struct FFDestAudioStartTimebaseRenderHook *_startTimebaseHook;
+    // Error parsing type: ^{FFDestAudioStartTimebaseRenderHook=^^?{auto_cfref<OpaqueCMTimebase *>=^{OpaqueCMTimebase}}{auto_cfref<OpaqueCMClock *>=^{OpaqueCMClock}}{FFWorkerQueue=@@{atomic<bool>=AB}{map<void *, FFWorkerQueue::ReferenceMapInfo, std::__1::less<void *>, std::__1::allocator<std::__1::pair<void *const, FFWorkerQueue::ReferenceMapInfo> > >={__tree<std::__1::__value_type<void *, FFWorkerQueue::ReferenceMapInfo>, std::__1::__map_value_compare<void *, std::__1::__value_type<void *, FFWorkerQueue::ReferenceMapInfo>, std::__1::less<void *>, true>, std::__1::allocator<std::__1::__value_type<void *, FFWorkerQueue::ReferenceMapInfo> > >=^{__tree_end_node<std::__1::__tree_node_base<void *> *>}{__compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<void *, FFWorkerQueue::ReferenceMapInfo>, void *> > >={__tree_end_node<std::__1::__tree_node_base<void *> *>=^{__tree_node_base<void *>}}}{__compressed_pair<unsigned long, std::__1::__map_value_compare<void *, std::__1::__value_type<void *, FFWorkerQueue::ReferenceMapInfo>, std::__1::less<void *>, true> >=Q}}}{FFLock=^^?^{_opaque_pthread_t}I{_opaque_pthread_mutex_t=q[56c]}}}{unique_ptr<FFDestAudioStartTimebaseRenderHook::StartTimebaseTask, std::__1::default_delete<FFDestAudioStartTimebaseRenderHook::StartTimebaseTask> >={__compressed_pair<FFDestAudioStartTimebaseRenderHook::StartTimebaseTask *, std::__1::default_delete<FFDestAudioStartTimebaseRenderHook::StartTimebaseTask> >=^{StartTimebaseTask}}}{FFLock=^^?^{_opaque_pthread_t}I{_opaque_pthread_mutex_t=q[56c]}}}, name: _startTimebaseHook
     struct FFDestAudioOutputUnitIsRunningPropertyMgr *_isRunningPropertyMgr;
 }
 
@@ -34,7 +34,7 @@
 - (struct FFAudioNode *)_sourceNode;
 - (struct ComponentInstanceRecord *)outputUnit;
 - (void)dealloc;
-- (id)initWithOutputUnit:(const struct ComponentDescription *)arg1 playbackContext:(id)arg2;
+- (id)initWithOutputUnit:(const struct AudioComponentDescription *)arg1 playbackContext:(id)arg2;
 - (id)initWithDeviceID:(id)arg1 playbackContext:(id)arg2;
 
 @end

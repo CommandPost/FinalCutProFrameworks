@@ -11,15 +11,12 @@
 @interface OZFxPlugCustomParameterController : OZViewControllerGroup
 {
     NSView *_customView;
-    BOOL _needsFloatingWindow;
     NSView *_viewBridgeView;
 }
 
-+     // Error parsing type: c24@0:8^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}B@BBQB{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}16, name: needsFloatingWindowForCustomView:
++     // Error parsing type: c24@0:8^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}BA@BBQBQ{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}16, name: needsViewBridgeView:
 + (BOOL)shouldDisplayReset;
 + (BOOL)shouldDisplayAnimIndicator;
-@property(readonly, nonatomic) NSView *viewBridgeView; // @synthesize viewBridgeView=_viewBridgeView;
-@property(readonly, nonatomic) BOOL needsFloatingWindow; // @synthesize needsFloatingWindow=_needsFloatingWindow;
 @property(readonly, nonatomic) NSView *customView; // @synthesize customView=_customView;
 - (float)suggestedMaxParamWidth;
 - (void)update;

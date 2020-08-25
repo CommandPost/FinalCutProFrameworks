@@ -7,7 +7,15 @@
 #import "NSURL.h"
 
 @interface NSURL (symlinkAdditions)
+- (BOOL)checkForSymlinkWithError:(id *)arg1;
 - (id)URLByResolvingSymlinksAndAliases;
 - (id)URLByReallyResolvingSymlinksInPath;
+- (id)relativePathFromURL:(id)arg1 workaroundDirectoryEnumerator:(BOOL)arg2;
+- (id)relativePathFromURL:(id)arg1;
+- (id)volumeName;
+- (id)volumePath;
+- (BOOL)isLoading:(BOOL)arg1;
+- (BOOL)isFullyLoaded:(BOOL)arg1 assumeUbiquitous:(BOOL)arg2;
+- (BOOL)isFullyLoaded:(BOOL)arg1;
 @end
 

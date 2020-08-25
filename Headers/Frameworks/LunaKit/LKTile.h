@@ -71,6 +71,7 @@
 - (id)expandableView;
 - (void)_viewFrameDidChange:(id)arg1;
 - (void)setView:(id)arg1;
+- (void)loadView;
 - (id)view;
 - (BOOL)_loadView;
 - (id)_backgroundView;

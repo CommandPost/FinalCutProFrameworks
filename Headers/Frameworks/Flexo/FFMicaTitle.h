@@ -18,13 +18,12 @@ __attribute__((visibility("hidden")))
     BOOL m_creditsNeedUpdating;
     BOOL m_disableStartAnimations;
     BOOL m_disableEndAnimations;
-    BOOL m_shouldRasterize;
     BOOL m_editMode;
     double m_editFieldHeight;
     BOOL m_haveFlattenedStartEndAnimations;
 }
 
-+ (unsigned long long)alignmentFromString:(id)arg1;
++ (long long)alignmentFromString:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
 + (Class)animatorClass;

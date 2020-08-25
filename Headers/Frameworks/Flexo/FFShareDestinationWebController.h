@@ -6,10 +6,17 @@
 
 #import <Flexo/FFShareDestinationController.h>
 
+@class NSTextField;
+
 @interface FFShareDestinationWebController : FFShareDestinationController
 {
+    NSTextField *_descriptionTitle;
+    NSTextField *_resolutionTitle;
 }
 
++ (id)keyPathsForValuesAffectingColorSpaceDisplayName;
+@property(retain, nonatomic) NSTextField *resolutionTitle; // @synthesize resolutionTitle=_resolutionTitle;
+@property(retain, nonatomic) NSTextField *descriptionTitle; // @synthesize descriptionTitle=_descriptionTitle;
 - (void)dealloc;
 - (void)awakeFromNib;
 - (id)initWithNibName:(id)arg1 destination:(id)arg2 withSources:(id)arg3;

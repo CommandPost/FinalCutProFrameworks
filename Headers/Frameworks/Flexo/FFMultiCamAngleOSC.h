@@ -25,13 +25,15 @@ __attribute__((visibility("hidden")))
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
 - (BOOL)isAvailableDuringPlayback;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
-- (void)renderCaptionsWithinBounds:(struct CGRect)arg1 intoContext:(struct _CGLContextObject *)arg2;
-- (void)simpleTextRectangle:(id)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(id)arg4 attributes:(id)arg5 attributeCode:(int)arg6 paddingX:(double)arg7 paddingYT:(double)arg8 paddingYB:(double)arg9 cornerSize:(double)arg10;
+- (BOOL)supportsMetalRendering;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (void)drawOnScreenForContexts:(id)arg1 drawProperties:(id)arg2;
+- (void)renderCaptionsWithinBounds:(struct CGRect)arg1 renderer:(id)arg2;
+- (void)simpleTextRectangle:(id)arg1 rect:(struct CGRect)arg2 renderer:(id)arg3 string:(id)arg4 attributes:(id)arg5 attributeCode:(int)arg6 paddingX:(double)arg7 paddingYT:(double)arg8 paddingYB:(double)arg9 cornerSize:(double)arg10;
 - (CDStruct_1b6d18a9)currentChannelTime;
 - (CDStruct_1b6d18a9)channelTimeForTime:(CDStruct_1b6d18a9)arg1;
 - (void)dealloc;
-- (void)_setupTextures:(struct _CGLContextObject *)arg1 bounds:(struct CGRect)arg2;
+- (void)_setupTextures:(struct CGRect)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)init;
 

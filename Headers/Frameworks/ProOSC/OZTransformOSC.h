@@ -6,9 +6,11 @@
 
 #import <ProOSC/POScaleControl.h>
 
-@class NSMutableArray, NSMutableDictionary;
+#import "POOnScreenControlMetalRendering.h"
 
-@interface OZTransformOSC : POScaleControl
+@class NSMutableArray, NSMutableDictionary, NSString;
+
+@interface OZTransformOSC : POScaleControl <POOnScreenControlMetalRendering>
 {
     double _startX;
     double _startY;
@@ -38,6 +40,7 @@
     BOOL _rotationSnapped;
     BOOL _minimalDraw;
     NSMutableArray *_lineMDPs;
+    NSMutableArray *_fixedBoundLineMDPs;
     NSMutableArray *_textureMDPs;
     NSMutableDictionary *_pivotMDPs;
 }
@@ -50,11 +53,10 @@
 + (void)maybeInitResources;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)getMetalDrawPrimitives:(id)arg1;
-- (id)getMetalMDPsForPivotHandleConnectorAtPos:(PCVector2_79efa81a)arg1;
-- (id)getMetalMDPsForRotationAtPos:(PCVector2_79efa81a)arg1 withMat:(PCMatrix44Tmpl_e98c85ee)arg2 metalHelper:(id)arg3;
-- (id)getMetalMDPsForPivotAtPos:(PCVector2_79efa81a)arg1 withMat:(PCMatrix44Tmpl_e98c85ee)arg2;
-- (BOOL)doesSupportMetal;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (id)getMetalMDPsForPivotHandleConnectorAtPos:(PCVector2_79efa81a)arg1 brush:(id)arg2 device:(id)arg3 backingScale:(float)arg4;
+- (id)getMetalMDPsForRotationAtPos:(PCVector2_79efa81a)arg1 withMat:(PCMatrix44Tmpl_e98c85ee)arg2 device:(id)arg3 backingScale:(float)arg4;
+- (id)getMetalMDPsForPivotAtPos:(PCVector2_79efa81a)arg1 device:(id)arg2 brush:(id)arg3 withMat:(PCMatrix44Tmpl_e98c85ee)arg4;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
 - (BOOL)postRedisplayOnActivePartChange;
 - (BOOL)acceptPassiveEvent:(id)arg1;
@@ -81,8 +83,12 @@
 - (float)getRotHandleDistance;
 - (PCVector2_7e488b7d)getHandleDirection;
 - (PCVector2_7e488b7d)getPivotSize;
+- (PCVector2_7e488b7d)getPivotSize:(id)arg1 backingScale:(float)arg2;
+- (id)newRotationTexture:(id)arg1;
 - (PCPtr_df275998)getCurrentRotationTexture;
+- (id)newPivotTexture:(id)arg1;
 - (PCPtr_df275998)getCurrentPivotTexture;
+- (id)newHandlesTexture:(int)arg1 device:(id)arg2;
 - (PCPtr_df275998)getCurrentHandlesTexture:(int)arg1;
 - (BOOL)isActiveHandle:(int)arg1;
 - (void)move:(const PCVector3_457fd1f0 *)arg1;
@@ -105,6 +111,12 @@
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4 scaleOnly:(BOOL)arg5;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (void)_init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

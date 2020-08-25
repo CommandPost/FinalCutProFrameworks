@@ -23,6 +23,7 @@
 - (id)sequenceSettings;
 - (double)getPARFromPopup;
 - (void)getFrameRate:(double *)arg1 andNTSC:(char *)arg2;
+- (BOOL)allows3DScenes;
 - (id)view;
 - (id)initWithOpenPanel:(id)arg1 flags:(unsigned int)arg2;
 

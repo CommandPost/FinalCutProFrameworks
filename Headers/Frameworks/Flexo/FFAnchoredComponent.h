@@ -33,12 +33,6 @@
 - (void)actionBegin:(id)arg1 animationHint:(id)arg2 deferUpdates:(BOOL)arg3;
 - (id)mdTargetForKey:(id)arg1;
 - (id)onScreenControls;
-- (void)removeChannel:(id)arg1;
-- (BOOL)canRemoveChannel:(id)arg1;
-- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
-- (BOOL)canReorderChannel:(id)arg1;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
 - (id)persistentID;
 - (BOOL)supportsRoles;
 - (id)rolesWithPlayEnable:(int)arg1;
@@ -81,6 +75,12 @@
 - (void)dealloc;
 - (id)initWithDisplayName:(id)arg1 andFilterType:(id)arg2;
 - (id)type;
+- (void)removeChannel:(id)arg1;
+- (BOOL)canRemoveChannel:(id)arg1;
+- (BOOL)reorderChannel:(id)arg1 relativeToChannel:(id)arg2 above:(BOOL)arg3;
+- (BOOL)canReorderChannel:(id)arg1;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
 
 @end
 

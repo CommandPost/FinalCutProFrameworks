@@ -13,17 +13,18 @@
 
 @interface TLKRangeItemLayer : TLKAccessibilityLayer <TLKPartInfo, TLKAccessibilityProtocol>
 {
-    id _representedObject;
-    id <TLKTimelineItem> _timelineItem;
-    CALayer *_rootLayer;
     struct {
         unsigned int disabled:1;
         unsigned int firstItem:1;
         unsigned int lastItem:1;
         unsigned int RESERVED:29;
     } _tlkRangeItemFlags;
+    id _representedObject;
+    id <TLKTimelineItem> _timelineItem;
+    CALayer *_rootLayer;
 }
 
+@property(readonly, retain, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 @property(nonatomic) id <TLKTimelineItem> timelineItem; // @synthesize timelineItem=_timelineItem;
 @property(retain, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 - (id)syntheticUIElement:(id)arg1 attributeValue:(id)arg2;

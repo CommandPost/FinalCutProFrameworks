@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property unsigned long long preferredEdge; // @dynamic preferredEdge;
 @property BOOL autoenablesItems; // @dynamic autoenablesItems;
 @property BOOL pullsDown; // @dynamic pullsDown;
-@property(nonatomic) NSMenu *menu; // @dynamic menu;
+@property(retain, nonatomic) NSMenu *menu; // @dynamic menu;
 - (void)dealloc;
 
 @end

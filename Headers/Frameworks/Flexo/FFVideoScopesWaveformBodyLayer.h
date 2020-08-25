@@ -4,38 +4,70 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFVideoScopesBodyLayer.h>
+#import <Flexo/FFVideoScopesLayer.h>
+
+#import "FFVideoScopesMetalLayers.h"
+
+@class FFWaveformChannelLayer, FFWaveformMarkerYUnitTextLayer, FFWaveformTransientYUnitTextLayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesWaveformBodyLayer : FFVideoScopesBodyLayer
+@interface FFVideoScopesWaveformBodyLayer : FFVideoScopesLayer <FFVideoScopesMetalLayers>
 {
+    FFWaveformChannelLayer *_channelLayer;
+    FFWaveformMarkerYUnitTextLayer *_markerLayer;
+    FFWaveformTransientYUnitTextLayer *_transientMarkerLayer;
+    BOOL _markerLayerVisible;
+    BOOL _hideLabels;
     BOOL _showGuides;
-    id _markerLayer;
-    id _transientMarkerLayer;
+    // Error parsing type: Aq, name: _displayMode
+    // Error parsing type: Ai, name: _colorSpaceType
+    // Error parsing type: ^{FFVideoScopesWaveformRenderer=^{Instance}{FFVideoScopesLocking<FFVideoScopesWaveformRenderer::Instance>=^{Instance}{FFConditionLock=^^?^{_opaque_pthread_t}I{_opaque_pthread_mutex_t=q[56c]}{_opaque_pthread_cond_t=q[40c]}q}{atomic<unsigned int>=AI}{atomic<unsigned int>=AI}}}, name: _renderer
 }
 
-+ (id)waveformBodyLayer;
-- (void)setDelegate:(id)arg1;
++ (id)layer;
+- (void)drawVideoScopesWithMtlContext:(struct PAEMtlContext *)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)invalidateVideoScopesRenderer;
+- (void)updateVideoScopesWithWithField1:(id)arg1 field2:(id)arg2 fieldMode:(long long)arg3 mtlContext:(struct PAEMtlContext *)arg4;
+- (void)layoutSublayers;
+- (void)_layoutParadeBackgroundLayer:(id)arg1 bounds:(struct CGRect)arg2;
+- (void)setBounds:(struct CGRect)arg1;
+- (id)settingsButton;
+- (id)label;
+- (void)setColorSpaceType:(int)arg1;
+- (void)setCompositeVideoUnits:(long long)arg1;
+- (void)_layoutUnitLayer:(id)arg1 bounds:(struct CGRect)arg2;
+- (void)_layoutMarkerYUnitTextLayer:(id)arg1 bounds:(struct CGRect)arg2;
+- (void)_layoutYUnitTextLayer:(id)arg1 bounds:(struct CGRect)arg2;
+- (struct CGRect)_frameForYUnitTextLayer:(id)arg1 bounds:(struct CGRect)arg2;
+- (void)setDisplayMode:(long long)arg1;
 - (void)highlightMarker:(BOOL)arg1;
 - (void)animateOutTransientMarkerAssignment;
 - (void)hideTransientMarker;
-- (void)showTransientMarkerInGraticuleAtYPos:(double)arg1;
+- (void)showTransientMarkerInGraticuleAtCoord:(double)arg1;
 - (void)hideMarker;
-- (void)showMarkerInGraticuleAtYPos:(double)arg1;
+- (void)showMarkerInGraticuleAtCoord:(double)arg1;
 - (void)_hideMarker:(id)arg1;
-- (void)_showMarker:(id)arg1 inGraticuleAtYPos:(double)arg2 strongStyle:(BOOL)arg3;
+- (void)_showMarker:(id)arg1 inGraticuleAtCoord:(double)arg2 strongStyle:(BOOL)arg3;
+- (struct CGRect)_frameForMarkerYUnitTextLayer:(id)arg1 bounds:(struct CGRect)arg2;
 - (id)_waveformYUnitTextLayers;
-- (double)transformYPosFromIREOrNits:(double)arg1;
-- (double)transformYPosToIREOrNits:(double)arg1;
+- (double)transformCoordFromIREOrNits:(double)arg1;
+- (double)transformCoordToIREOrNits:(double)arg1;
 - (id)_waveformBackgroundLayers;
 - (struct CGPoint)convertPointFromGraticule:(struct CGPoint)arg1;
 - (struct CGPoint)convertPointToGraticule:(struct CGPoint)arg1;
-- (void)hideGraticuleLabels:(BOOL)arg1;
 - (void)setMonochrome:(BOOL)arg1;
 - (void)setShowGuides:(BOOL)arg1;
+- (void)_changeVisibilityForUnitTextLayer:(id)arg1 showGuides:(BOOL)arg2;
 - (void)setTraceBrightness:(float)arg1;
-- (void)setTransientMarkerLayer:(id)arg1;
-- (void)setMarkerLayer:(id)arg1;
+- (void)_buildSublayers;
+- (void)dealloc;
+- (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

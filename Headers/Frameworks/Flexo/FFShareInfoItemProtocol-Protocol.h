@@ -32,6 +32,7 @@
 @property(readonly, nonatomic) BOOL hasMultipleOutputFiles;
 @property(nonatomic) unsigned long long numberOfCaptionSidecarFiles;
 @property(readonly, nonatomic) unsigned long long numberOfOutputFiles;
+@property(nonatomic) BOOL isExportingAudio;
 - (NSArray *)allStompSettings;
 - (NSArray *)nameSizePairs;
 @end

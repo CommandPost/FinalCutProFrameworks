@@ -8,5 +8,11 @@
 
 @interface NSObject (MutableDeepCopy)
 - (id)mutableDeepCopy;
+- (void)didChangeValueForKeys:(id)arg1;
+- (void)willChangeValueForKeys:(id)arg1;
+- (void)setValuesForKeysToNil:(id)arg1;
+- (void)changeClassTo:(Class)arg1;
+- (void)setValue:(id)arg1 forBinding:(id)arg2;
+- (void)setValue:(id)arg1 forBinding:(id)arg2 onlyWhenFloatValueChanged:(BOOL)arg3;
 @end
 

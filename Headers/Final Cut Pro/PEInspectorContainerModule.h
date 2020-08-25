@@ -55,13 +55,15 @@
 - (void)inspectorModule:(id)arg1 selectObjects:(id)arg2;
 - (BOOL)inspectorModule:(id)arg1 isSkimmingSkimmable:(struct NSObject *)arg2 owner:(id)arg3;
 - (void)inspectorModule:(id)arg1 stopSkimmingForOwner:(id)arg2;
+- (BOOL)inspectorModule:(id)arg1 startSkimmingReplacingSkimmable:(struct NSObject *)arg2 withSkimmable:(struct NSObject *)arg3 context:(id)arg4 effectCount:(long long)arg5 allowPlayback:(BOOL)arg6 owner:(id)arg7;
 - (BOOL)inspectorModule:(id)arg1 startSkimmingWithSkimmable:(struct NSObject *)arg2 context:(id)arg3 effectCount:(long long)arg4 allowPlayback:(BOOL)arg5 owner:(id)arg6;
+- (BOOL)_startSkimmingWithSkimmable:(struct NSObject *)arg1 context:(id)arg2 effectCount:(long long)arg3 allowPlayback:(BOOL)arg4 owner:(id)arg5 replacingSkimmable:(struct NSObject *)arg6;
 - (BOOL)inspectorModule:(id)arg1 canBeginSkimmingForOwner:(id)arg2;
 - (void)openSettingsWithModule:(id)arg1;
 - (id)selectionOwner;
 - (id)moduleFooterAccessoryView;
 - (id)moduleAccessoryView;
-- (unsigned long long)labelAlignment;
+- (long long)labelAlignment;
 - (id)layoutForTornOffWindow:(id)arg1;
 - (id)lastKeyView;
 - (id)firstKeyView;

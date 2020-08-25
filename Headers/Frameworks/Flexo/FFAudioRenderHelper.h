@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-@class FFStreamAudio;
+@class FFStreamAudioRenderSession;
 
 __attribute__((visibility("hidden")))
 @interface FFAudioRenderHelper : NSObject
 {
-    FFStreamAudio *_audioStream;
+    FFStreamAudioRenderSession *_audioStreamRenderSession;
     CDStruct_1b6d18a9 _sourceStart;
     unsigned long long _sourceDurationInFrames;
     struct AudioStreamBasicDescription _outputFormat;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (float)sampleRate;
 - (id)roles;
 - (void)dealloc;
-- (id)initWithSource:(id)arg1 outputFormat:(const struct AudioStreamBasicDescription *)arg2 channelLayout:(struct AudioChannelLayout *)arg3 layoutSize:(unsigned long long)arg4 startOffset:(CDStruct_1b6d18a9)arg5 roles:(id)arg6;
+- (id)initWithSource:(id)arg1 outputFormat:(const struct AudioStreamBasicDescription *)arg2 channelLayout:(struct AudioChannelLayout *)arg3 layoutSize:(unsigned long long)arg4 startOffset:(CDStruct_1b6d18a9)arg5 roles:(id)arg6 useTimelinePlayback:(BOOL)arg7;
 
 @end
 

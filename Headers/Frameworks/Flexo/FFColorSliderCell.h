@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)_drawTicksWithFrame:(struct CGRect)arg1;
 - (void)_drawThumbWithFrame:(struct CGRect)arg1;
 - (void)_drawTrackWithFrame:(struct CGRect)arg1;
-- (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
 - (BOOL)_calcTrackRect:(struct CGRect *)arg1 andAdjustRect:(BOOL)arg2;
 - (struct CGRect)knobRectFlipped:(BOOL)arg1;
 - (double)knobThickness;

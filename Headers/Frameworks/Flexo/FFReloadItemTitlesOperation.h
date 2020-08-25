@@ -13,7 +13,6 @@
 __attribute__((visibility("hidden")))
 @interface FFReloadItemTitlesOperation : NSOperation <TLKOperationPipingDestination>
 {
-    BOOL _wantsBadgeReload;
     PCChangeLog *_inputChangeLog;
     id _rootItem;
     FFAnchoredSequence *_sequence;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 + (id)operationQueue;
 @property(retain) NSMutableArray *timelineLayerTitleUpdateRequests; // @synthesize timelineLayerTitleUpdateRequests=_timelineLayerTitleUpdateRequests;
 @property(retain) NSMutableSet *itemComponentFragmentsNeedingUpdate; // @synthesize itemComponentFragmentsNeedingUpdate=_itemComponentFragmentsNeedingUpdate;
-@property(nonatomic) BOOL wantsBadgeReload; // @synthesize wantsBadgeReload=_wantsBadgeReload;
 @property(retain, nonatomic) FFAnchoredTimelineModule *timelineModule; // @synthesize timelineModule=_timelineModule;
 @property(retain, nonatomic) FFContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) FFAnchoredSequence *sequence; // @synthesize sequence=_sequence;

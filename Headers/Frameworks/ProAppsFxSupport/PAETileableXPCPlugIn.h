@@ -6,21 +6,24 @@
 
 #import "NSObject.h"
 
+#import "FxCommandHandler.h"
 #import "FxCustomParameterViewHost.h"
 #import "FxFilter.h"
 #import "FxGenerator.h"
 #import "FxTileableEffect.h"
 
-@class NSDictionary, NSMutableArray, NSRecursiveLock, NSString, NSXPCConnection;
+@class NSDictionary, NSMutableArray, NSString, NSXPCConnection;
 
-@interface PAETileableXPCPlugIn : NSObject <FxTileableEffect, FxFilter, FxGenerator, FxCustomParameterViewHost>
+@interface PAETileableXPCPlugIn : NSObject <FxTileableEffect, FxFilter, FxGenerator, FxCustomParameterViewHost, FxCommandHandler>
 {
     id <PROAPIAccessing> apiManager;
     NSXPCConnection *xpcConnection;
     unsigned long long sessionID;
     NSString *pluginIdentifier;
     NSString *pluginBundleIdentifier;
+    NSString *pluginUUID;
     NSDictionary *remoteProperties;
+    unsigned long long xpcVersion;
     struct PCMutex threadMutex;
     struct PCCache<CMTime, PAEStateCacheItem, PCNoLock> cachedState;
     struct vector<unsigned int, std::__1::allocator<unsigned int>> imageParamIDs;
@@ -29,12 +32,6 @@
     NSMutableArray *remoteViewControllers;
     unsigned int optionalMethodSupport;
     id <FxCustomParameterActionAPI_v3> customParamAPI;
-    NSRecursiveLock *transactionLock;
-    NSMutableArray *incomingTransactions;
-    NSMutableArray *outgoingTransactions;
-    BOOL listeningForTransactions;
-    unsigned long long nextTransactionID;
-    struct map<unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std::__1::deque<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>>>, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std::__1::deque<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>>>>>> transactionSemaphoreMap;
     BOOL hostIsMotion;
     BOOL appIsTerminating;
     struct map<CMTime, PAECachedSize, std::__1::less<CMTime>, std::__1::allocator<std::__1::pair<const CMTime, PAECachedSize>>> cachedOutputSizes;
@@ -43,6 +40,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)setPluginAnalysisState:(unsigned long long)arg1;
+- (BOOL)desiredAnalysisTimeRange:(CDStruct_3c1748cc *)arg1 forInputWithTimeRange:(CDStruct_3c1748cc)arg2 error:(id *)arg3;
 - (BOOL)renderDestinationImage:(id)arg1 sourceImages:(id)arg2 pluginState:(id)arg3 atTime:(CDStruct_198678f7)arg4 error:(id *)arg5;
 - (BOOL)pluginState:(id *)arg1 atTime:(CDStruct_198678f7)arg2 quality:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)destinationImageRect:(struct FxRect *)arg1 sourceImages:(id)arg2 destinationImage:(id)arg3 pluginState:(id)arg4 atTime:(CDStruct_198678f7)arg5 error:(id *)arg6;
@@ -54,23 +53,10 @@
 - (BOOL)isLeftValue:(id)arg1 equalTo:(id)arg2 forParameterID:(unsigned int)arg3;
 - (id)interpolateLeftData:(id)arg1 rightData:(id)arg2 percent:(float)arg3 forParameterID:(unsigned int)arg4;
 - (BOOL)parameterChanged:(unsigned int)arg1 atTime:(CDStruct_198678f7)arg2 error:(id *)arg3;
-- (BOOL)listenForTransactionsWithID:(unsigned long long)arg1;
-- (BOOL)isListeningForTransactions;
-- (BOOL)safeToRunLiveTransactions;
-- (void)releaseTransactionSemaphore:(unsigned long long)arg1;
-- (void)signalTransactionSemaphore:(unsigned long long)arg1;
-- (void)clearOutgoingTransaction;
-- (id)nextIncomingTransactionWithID:(unsigned long long)arg1;
-- (id)nextOutgoingTransactionWithID:(unsigned long long)arg1;
-- (void)flushTransactionsWithID:(unsigned long long)arg1;
-- (void)addOutgoingTransaction:(id)arg1;
-- (id)addIncomingTransaction:(id)arg1;
 - (unsigned long long)generateNextTransactionID;
 - (id)transactionForParameter:(unsigned int)arg1 atTime:(CDStruct_198678f7)arg2 transactionID:(unsigned long long)arg3;
 - (id)getCurrentParameterValuesAtTime:(CDStruct_198678f7)arg1;
 - (BOOL)addParametersWithError:(id *)arg1;
-- (void)processParameterTransactions:(id)arg1;
-- (void)processOSCTransaction:(id)arg1;
 - (void)setCursorForTransaction:(id)arg1;
 - (void)getBackingScaleFactorForTransaction:(id)arg1;
 - (void)getObjectToScreenTransformForTransaction:(id)arg1;
@@ -82,7 +68,6 @@
 - (void)getCanvasPixelAspectRatioForTransaction:(id)arg1;
 - (void)getCanvasZoomForTransaction:(id)arg1;
 - (void)convertPointForOSC:(id)arg1;
-- (void)processKeyframeTransaction:(id)arg1;
 - (void)setKeyframeForTransaction:(id)arg1;
 - (void)removeKeyframeForTransaction:(id)arg1;
 - (void)hasKeyframeForTransaction:(id)arg1;
@@ -91,13 +76,17 @@
 - (void)getKeyframeInfoForTransaction:(id)arg1;
 - (void)copyV3Keyframe:(struct FxKeyframe *)arg1 toV2KeyframeInfo:(struct FxKeyframeInfo *)arg2 withV2Time:(CDStruct_198678f7 *)arg3;
 - (void)copyV2KeyframeInfo:(struct FxKeyframeInfo *)arg1 toV3Keyframe:(struct FxKeyframe *)arg2;
+- (unsigned long long)segmentStyleToKeyframeStyle:(unsigned long long)arg1;
+- (unsigned long long)keyframeStyleToSegmentStyle:(unsigned long long)arg1;
 - (void)getKeyframeCountForTransaction:(id)arg1;
 - (void)endKeyframeTransactionUpdates:(id)arg1;
 - (void)getKeyframeChannelCountForTransaction:(id)arg1;
 - (void)removeAllKeyframesForTransaction:(id)arg1;
 - (void)addKeyframeForTransaction:(id)arg1;
 - (void)getValueForTransaction:(id)arg1;
+- (void)setValueForTransaction:(id)arg1;
 - (void)handleUndoTransaction:(id)arg1;
+- (void)setParameterPropertiesForTransaction:(id)arg1;
 - (void)parameterPropertiesForTransaction:(id)arg1;
 - (void)currentTimeForTransaction:(id)arg1;
 - (void)setParameterDefaultsForTransaction:(id)arg1;
@@ -126,11 +115,12 @@
 - (BOOL)usesImagesAtOtherTimes;
 - (BOOL)setupProxySourceImages:(id)arg1 withPluginState:(id)arg2 inputInfo:(CDStruct_4a07eeda)arg3 renderInfo:(CDStruct_6b9ed609)arg4;
 - (id)heliumImageToFxImageTile:(id)arg1 requestSource:(unsigned long long)arg2 parameterID:(unsigned int)arg3 mediaTime:(const CDStruct_198678f7 *)arg4 requestError:(id)arg5;
+- (unsigned long long)colorSpaceForRendering;
 - (void)addPushButtonSelector:(id)arg1 forParameterID:(unsigned int)arg2;
 - (void)performButtonSelector:(id)arg1;
 - (void)updateRemoteViews;
 - (id)createViewForParm:(unsigned int)arg1;
-- (void)runRunLoopWithSemaphore:(id *)arg1;
+- (void)runRunLoopWithSemaphore:(id *)arg1 runLoopTimeout:(double)arg2;
 - (BOOL)parameterChanged:(unsigned int)arg1;
 - (BOOL)addParameters;
 - (id)properties;
@@ -142,18 +132,24 @@
 - (id)setup3DAPI:(CDStruct_198678f7)arg1;
 - (id)setupTimingAPI:(CDStruct_198678f7)arg1;
 - (id)setupColorGamutAPI;
+- (void)updateHostKeyCommands:(id)arg1;
+- (void)setHostKeyCommands:(id)arg1;
 - (void)setupPluginStateForThread:(CDStruct_198678f7 *)arg1;
 - (struct PAEStateCacheItem)stateItemAtTime:(CDStruct_198678f7 *)arg1 quality:(unsigned long long)arg2;
 - (id)createStateAtTime:(CDStruct_198678f7 *)arg1 quality:(unsigned long long *)arg2;
 - (struct PAEStateCacheItem)findExistingStateItemAtTime:(const CDStruct_198678f7 *)arg1;
 - (void)checkAllImageParamsAtTime:(const CDStruct_198678f7 *)arg1;
 - (BOOL)finishInitialSetup:(id *)arg1;
+- (void)setXPCVersion:(unsigned long long)arg1;
+- (unsigned long long)getSessionID;
+- (id)getPluginUUID;
+- (id)loadPluginFonts;
 - (id)currentConnection;
 - (void)updateConnection:(id)arg1;
 - (id)asynchronousRemoteForMethod:(const char *)arg1;
 - (id)synchronousRemoteForMethod:(const char *)arg1;
 - (void)dealloc;
-- (id)initWithAPIManager:(id)arg1 connection:(id)arg2 sessionID:(unsigned long long)arg3 pluginIdentifier:(id)arg4 pluginBundleIdentifier:(id)arg5 optionalMethodSupport:(unsigned int)arg6;
+- (id)initWithAPIManager:(id)arg1 connection:(id)arg2 sessionID:(unsigned long long)arg3 pluginIdentifier:(id)arg4 pluginBundleIdentifier:(id)arg5 pluginUUID:(id)arg6 optionalMethodSupport:(unsigned int)arg7;
 - (id)initWithAPIManager:(id)arg1;
 
 // Remaining properties

@@ -13,6 +13,7 @@
     LKSegmentedScrubber *transitionsDurationScrubber;
     LKSegmentedScrubber *stillImagesDurationScrubber;
     LKSegmentedScrubber *defaultAudioFadeDurationScrubber;
+    LKSegmentedScrubber *defaultCrossfadeDurationScrubber;
 }
 
 - (void)dealloc;

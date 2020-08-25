@@ -8,15 +8,19 @@
 
 #import "NSOpenSavePanelDelegate.h"
 
-@class FFRoleGroupOverridePopupController, LKButton, LKPopUpButton, NSMatrix, NSString;
+@class FFRoleGroupOverridePopupController, LKButton, LKPopUpButton, NSString;
 
 @interface PEAppImportPreferencesModule : LKPreferencesModule <NSOpenSavePanelDelegate>
 {
-    NSMatrix *_importLocationRadioButtonMatrix;
+    LKButton *_importLocationCopyToLibraryRadioButton;
+    LKButton *_importLocationLeaveInPlaceRadioButton;
     LKButton *_addFolderKeywordsCheckBox;
     LKButton *_addTagKeywordsCheckBox;
     LKButton *_optimizeMediaCheckBox;
     LKButton *_createProxyMediaCheckBox;
+    LKButton *_createProResProxyRadioButton;
+    LKButton *_createH264ProxyRadioButton;
+    LKPopUpButton *_proxySizingPopup;
     LKButton *_createStillCacheCheckBox;
     LKButton *_autoColorBalance;
     LKButton *_autoStabilization;
@@ -36,7 +40,6 @@
 - (void)_updateRoleGroupOverridePopup;
 - (void)roleGroupSelected:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (BOOL)findPeopleEnabled;
 - (id)titleForIdentifier:(id)arg1;
 - (void)dealloc;
 - (void)awakeFromNib;

@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (void)_setTintColorImages:(id)arg1 tintedRollover:(id)arg2;
 - (void)dealloc;
 - (id)init;
-- (void)_generateInitialImageDictionary;
 
 @end
 

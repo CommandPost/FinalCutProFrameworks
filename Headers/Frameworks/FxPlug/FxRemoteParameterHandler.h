@@ -18,9 +18,11 @@
 {
     FxAPIManagerShim *apiManager;
     NSLock *threadLock;
+    NSString *pluginUUID;
     map_dba1109d threadTransactions;
 }
 
+@property(retain) NSString *pluginUUID; // @synthesize pluginUUID;
 @property map_dba1109d threadTransactions; // @synthesize threadTransactions;
 @property(retain) NSLock *threadLock; // @synthesize threadLock;
 - (id).cxx_construct;
@@ -95,7 +97,7 @@
 - (id)outgoingTransactions;
 - (id)incomingTransactions;
 - (void)dealloc;
-- (id)initWithAPIManager:(id)arg1;
+- (id)initWithAPIManager:(id)arg1 pluginUUID:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -16,6 +16,7 @@
 - (void)inspectorModule:(FFInspectorModule *)arg1 selectObjects:(NSArray *)arg2;
 - (BOOL)inspectorModule:(FFInspectorModule *)arg1 isSkimmingSkimmable:(struct NSObject *)arg2 owner:(id)arg3;
 - (void)inspectorModule:(FFInspectorModule *)arg1 stopSkimmingForOwner:(id)arg2;
+- (BOOL)inspectorModule:(FFInspectorModule *)arg1 startSkimmingReplacingSkimmable:(struct NSObject *)arg2 withSkimmable:(struct NSObject *)arg3 context:(FFContext *)arg4 effectCount:(long long)arg5 allowPlayback:(BOOL)arg6 owner:(id)arg7;
 - (BOOL)inspectorModule:(FFInspectorModule *)arg1 startSkimmingWithSkimmable:(struct NSObject *)arg2 context:(FFContext *)arg3 effectCount:(long long)arg4 allowPlayback:(BOOL)arg5 owner:(id)arg6;
 - (BOOL)inspectorModule:(FFInspectorModule *)arg1 canBeginSkimmingForOwner:(id)arg2;
 @end

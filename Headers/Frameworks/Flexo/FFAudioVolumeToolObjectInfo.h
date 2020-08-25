@@ -6,19 +6,14 @@
 
 #import "NSObject.h"
 
-@class FFEnhanceAudioManager;
-
 __attribute__((visibility("hidden")))
 @interface FFAudioVolumeToolObjectInfo : NSObject
 {
-    FFEnhanceAudioManager *_enhanceAudioManager;
     CDStruct_e83c9415 _range;
 }
 
 @property(readonly, nonatomic) CDStruct_e83c9415 range; // @synthesize range=_range;
-@property(readonly, nonatomic) FFEnhanceAudioManager *enhanceAudioManager; // @synthesize enhanceAudioManager=_enhanceAudioManager;
-- (void)dealloc;
-- (id)initWithRange:(CDStruct_e83c9415)arg1 enhanceAudioManager:(id)arg2;
+- (id)initWithRange:(CDStruct_e83c9415)arg1;
 
 @end
 

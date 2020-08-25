@@ -8,8 +8,10 @@
 
 @interface OZFxGeneratorInspectorController : OZViewControllerGroup
 {
+    // Error parsing type: ^{OZFxPlugSharedBase=^^?@@@^v@@@@@@@@@@@@@@@{PCString=^{__CFString}}{basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >={__compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> >={__rep=(?={__long=QQ*}{__short=(?=Cc)[23c]}{__raw=[3Q]})}}}BB{atomic<bool>=AB}BBBiBBBBB^{OZChannelBase}BA@BBQBQ{PCMutex=^^?{_opaque_pthread_mutex_t=q[56c]}}I}, name: sharedBase
 }
 
+- (void)notify:(unsigned int)arg1;
 - (void)dealloc;
 - (id)initWithGenerator:(struct OZImageGenerator *)arg1;
 

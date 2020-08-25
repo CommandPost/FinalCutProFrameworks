@@ -4,7 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class FFAnchoredProviderOptions, FFEffectStack, FFProvider, FFSubRangeMD5Info, FFVideoProps, NSSet, NSString;
+@class FFAnchoredProviderOptions, FFEffectStack, FFModelObject, FFProvider, FFSubRangeMD5Info, FFVideoProps, NSSet, NSString;
 
 @protocol FFSkimmableProtocol
 - (NSSet *)skimmableRolesWithPlayEnable:(int)arg1;
@@ -30,7 +30,7 @@
 - (BOOL)hasVideo;
 - (BOOL)hasAudio;
 - (CDStruct_e83c9415)mediaRange;
-- (id <FFModelLocking>)modelLockingObject;
+- (FFModelObject *)modelLockingObject;
 - (NSString *)mediaIndexingKey;
 - (NSString *)mediaIdentifier;
 - (NSString *)displayName;

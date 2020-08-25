@@ -118,12 +118,14 @@
     CATextLayer *_trailerButtonLabel;
     CATextLayer *_importButtonLabel;
     CATextLayer *_emptyProjectModeInstructions;
+    NSDictionary *_smartCollectionFiltersDictionary;
     NSMenuItem *_projectShareMenuItem;
 }
 
 + (id)viewTypeMenuLabel;
 + (id)keyPathsForValuesAffectingSelectedItems;
 @property NSMenuItem *projectShareMenuItem; // @synthesize projectShareMenuItem=_projectShareMenuItem;
+@property(retain, nonatomic) NSDictionary *smartCollectionFiltersDictionary; // @synthesize smartCollectionFiltersDictionary=_smartCollectionFiltersDictionary;
 @property(nonatomic) CATextLayer *emptyProjectModeInstructions; // @synthesize emptyProjectModeInstructions=_emptyProjectModeInstructions;
 @property(nonatomic) CATextLayer *importButtonLabel; // @synthesize importButtonLabel=_importButtonLabel;
 @property(nonatomic) CATextLayer *trailerButtonLabel; // @synthesize trailerButtonLabel=_trailerButtonLabel;
@@ -271,17 +273,28 @@
 - (id)_mediaRefsToDeleteForClips:(id)arg1;
 - (BOOL)_pasteFromPasteboardWithName:(id)arg1 error:(id *)arg2;
 - (BOOL)_canPasteFromPasteboardWithName:(id)arg1;
+- (void)revealProxyInFinder:(id)arg1;
 - (void)revealInFinder:(id)arg1;
+- (BOOL)canRevealProxyInFinder;
 - (BOOL)canRevealInFinder;
 - (void)breakApartClipItems:(id)arg1;
 - (BOOL)canBreakApartClipItems;
+- (void)openSettingsModuleForProjectAfterDuplicateAs:(id)arg1 undohandler:(id)arg2 encompassingActionName:(id)arg3;
+- (void)_postDuplicateAsActions:(int)arg1 project:(id)arg2 undoHandler:(id)arg3 encompassingActionName:(id)arg4;
+- (void)openSettingsModuleForProject:(id)arg1;
+- (void)duplicateProjectInTimelineAndLoadNewProjectInTimeline;
+- (BOOL)duplicateAndRevealProjectsFromSelectedItems;
+- (void)disableModBumpDate:(BOOL)arg1 forProjects:(id)arg2;
 - (void)duplicate:(id)arg1;
+- (void)duplicateProjectAs:(id)arg1;
 - (void)snapshotProject:(id)arg1;
 - (void)snapshotProjects:(id)arg1;
 - (BOOL)canSnapshotProject;
 - (void)_updateBrowserWithObject:(id)arg1;
 - (void)consolidateFiles:(id)arg1;
-- (void)purgeProjectRenderFiles:(id)arg1;
+- (id)filteredSelectedItemsToPurge:(CDUnknownBlockType)arg1;
+- (void)purgeGeneratedClipFiles:(id)arg1;
+- (void)purgeGeneratedProjectFiles:(id)arg1;
 - (void)purgeRenderFiles:(id)arg1;
 - (void)_duplicateMediaRanges:(id)arg1 intoArray:(id)arg2;
 - (id)createNewSequence:(int)arg1 withName:(id)arg2 wantsSettings:(BOOL)arg3 defaultLibrary:(id)arg4;
@@ -303,7 +316,6 @@
 - (BOOL)_workOnSynchronizedClipCreationSequence:(id)arg1 event:(id)arg2 actionName:(id)arg3 selection:(id)arg4;
 - (BOOL)_workOnMultiAngleCreationSequence:(id)arg1 project:(id)arg2 actionName:(id)arg3 selection:(id)arg4;
 - (id)_editsFromSelection:(id)arg1 inEvent:(id)arg2;
-- (void)_addSelectedEdits:(id)arg1 toSequence:(id)arg2;
 - (BOOL)_arrangeEditsIntoAnglesForSynchronizedClip:(id)arg1 itemsToSync:(id)arg2 syncBy:(int)arg3 fineSyncByAudio:(int)arg4 isMixedTCTracksClockTime:(BOOL)arg5;
 - (BOOL)_arrangeEditsIntoAngles:(id)arg1 itemsToSync:(id)arg2 arrangeBy:(int)arg3 orderBy:(int)arg4 syncBy:(int)arg5 fineSyncByAudio:(int)arg6 isMixedTCTracksClockTime:(BOOL)arg7;
 - (void)extendFavoriteRangeFromPreviousMoment:(id)arg1;
@@ -416,10 +428,12 @@
 - (void)playPause:(id)arg1;
 - (void)goToTimelineAndPlay;
 - (BOOL)canDisplayPlayer;
+- (void)redownloadWebAssets:(id)arg1;
+- (BOOL)canRedownloadWebAssets;
+- (id)selectedAssets;
 - (void)revealAncestor:(id)arg1;
 - (void)modifyContentCreationDate:(id)arg1;
 - (void)analyzeAndFix:(id)arg1;
-- (void)transcodeLegacyMedia:(id)arg1;
 - (void)transcodeMedia:(id)arg1;
 - (void)addNewSelectionEnd:(id)arg1;
 - (void)addNewSelectionStart:(id)arg1;
@@ -491,6 +505,7 @@
 - (double)frameDuration;
 - (void)setFrameDuration:(double)arg1;
 - (void)performColorMatch:(id)arg1;
+- (void)autoReframe:(id)arg1;
 - (void)shiftDelete:(id)arg1;
 - (void)bladeAll:(id)arg1;
 - (void)modifySolo:(id)arg1;
@@ -545,7 +560,7 @@
 - (id)mediaRangesForClipSet:(id)arg1;
 - (void)addMediaRangesForClipArrayToArray:(id)arg1 toArray:(id)arg2;
 - (id)mediaRangesForClipArray:(id)arg1;
-- (BOOL)supportsExcludingDisabledRolesInShareOfSequence:(id)arg1;
+- (BOOL)useTimelinePlaybackInShareOfSequence:(id)arg1;
 - (void)shareDestinationPicker:(id)arg1;
 - (BOOL)doesRangeObjectHaveMedia:(id)arg1;
 - (id)predicateRemovingEmptyShareItems;

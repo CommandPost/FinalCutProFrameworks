@@ -17,12 +17,12 @@
     FFFileLock *_fileLock;
     NSURL *_documentDirectory;
     BOOL _isUpdating;
-    NSString *_statusString;
-    NSString *_statusTitle;
     double _statusUpdate;
     int _catalogVersionBase;
     int _catalogVersion;
     BOOL _statusVisible;
+    NSString *_statusString;
+    NSString *_statusTitle;
 }
 
 + (void)performWithoutUndo:(CDUnknownBlockType)arg1;
@@ -60,6 +60,8 @@
 + (id)newUniqueName:(id)arg1 extension:(id)arg2 iteration:(int)arg3;
 + (id)defaultFileExtension;
 + (void)initialize;
+@property(retain) NSString *statusTitle; // @synthesize statusTitle=_statusTitle;
+@property(retain) NSString *statusString; // @synthesize statusString=_statusString;
 @property BOOL statusVisible; // @synthesize statusVisible=_statusVisible;
 @property(nonatomic) BOOL isUpdating; // @synthesize isUpdating=_isUpdating;
 @property(nonatomic) FFLibraryItem *libraryItem; // @synthesize libraryItem=_libraryItem;
@@ -135,7 +137,6 @@
 - (void)_loadCatalogVersionInfo;
 - (void)showModalProgress:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)showModalProgress:(CDUnknownBlockType)arg1;
-- (id)statusString;
 - (void)progressBlock:(CDUnknownBlockType)arg1;
 - (void)store:(id)arg1 processing:(unsigned long long)arg2 of:(unsigned long long)arg3;
 - (void)setProgress:(id)arg1 current:(unsigned long long)arg2 max:(unsigned long long)arg3;

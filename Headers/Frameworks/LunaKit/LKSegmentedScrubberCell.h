@@ -50,7 +50,7 @@
     BOOL _isEditing;
 }
 
-+ (void)getXOffset:(double *)arg1 yOffset:(double *)arg2 forFont:(id)arg3 withAlignment:(unsigned long long)arg4 inFrameWidth:(double)arg5 typesetterBehavior:(long long)arg6;
++ (void)getXOffset:(double *)arg1 yOffset:(double *)arg2 forFont:(id)arg3 withAlignment:(long long)arg4 inFrameWidth:(double)arg5 typesetterBehavior:(long long)arg6;
 + (void)initialize;
 - (void)setAttributedStringValue:(id)arg1;
 - (id)_placeHolderStringformatterTypeBased;
@@ -103,7 +103,7 @@
 - (struct CGRect)editBezelFrameForBounds:(struct CGRect)arg1;
 - (struct CGRect)roundBezelRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)titleRectForBounds:(struct CGRect)arg1;
-- (void)setAlignment:(unsigned long long)arg1;
+- (void)setAlignment:(long long)arg1;
 - (void)setFont:(id)arg1;
 - (void)setStringValue:(id)arg1;
 - (void)setObjectValue:(id)arg1;

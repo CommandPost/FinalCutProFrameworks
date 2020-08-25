@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)loadPersistentData:(id)arg1;
 - (void)setPersistentData:(id)arg1;
 - (id)persistentData;
+- (unsigned int)intrinsicCacheFlag;
 - (void)createChannelsInFolder:(id)arg1;
 - (CDStruct_1b6d18a9)intermediateSampleDuration;
 - (BOOL)shouldTimeScale;
@@ -54,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (void)_decodeFromCoder:(id)arg1 into:(id)arg2;
 - (void)_copyWithZone:(struct _NSZone *)arg1 into:(id)arg2;
-- (void)_postInit:(id)arg1;
+- (void)_postInit:(id)arg1 isXML:(BOOL)arg2;
 - (void)dealloc;
 
 @end

@@ -6,15 +6,15 @@
 
 #import "NSObject.h"
 
-@class FFSharePanelRolesDataSource, FFWeakPointerValue;
+@class FFSharePanelRolesDataSource, PCWeakPointerValue;
 
 __attribute__((visibility("hidden")))
 @interface FFSharePanelRolesTreeBuilder : NSObject
 {
-    FFWeakPointerValue *_dataSourceWeakPointer;
+    PCWeakPointerValue *_dataSourceWeakPointer;
 }
 
-@property(retain, nonatomic) FFWeakPointerValue *dataSourceWeakPointer; // @synthesize dataSourceWeakPointer=_dataSourceWeakPointer;
+@property(retain, nonatomic) PCWeakPointerValue *dataSourceWeakPointer; // @synthesize dataSourceWeakPointer=_dataSourceWeakPointer;
 - (id)collectChildBricksOfType:(unsigned long long)arg1 andBrickClass:(Class)arg2;
 - (id)collectRoleOutputsAtIndex:(unsigned long long)arg1;
 - (id)audioChildBrickViewControllerWithRoleOutputs:(id)arg1;

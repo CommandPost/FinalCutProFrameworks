@@ -8,5 +8,9 @@
 
 @interface NSAppleEventDescriptor (FFAdditions)
 + (id)selfTargetedAppleEventWithSelector:(id)arg1 parameter:(id)arg2;
++ (id)descriptorWithObject:(id)arg1;
++ (id)descriptorWithURL:(id)arg1;
+- (id)objectValue;
+- (id)urlValue;
 @end
 

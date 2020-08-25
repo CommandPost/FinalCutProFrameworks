@@ -9,11 +9,7 @@
 #import "FFModelLocking.h"
 
 @interface FigTimeRangeAndObject (FFModelLocking) <FFModelLocking>
-- (BOOL)_hasWriteLock;
-- (BOOL)writerIsWaiting;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
-- (void)_readLock;
+- (id)modelLockingObject;
+- (id)description;
 @end
 

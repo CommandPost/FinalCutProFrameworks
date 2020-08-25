@@ -23,6 +23,7 @@
     BOOL _continuous;
     unsigned long long _style;
     BOOL _isHUD;
+    NSBitmapImageRep *_cachedViewImage;
     NSColorSpace *_currentColorSpace;
     NSBitmapImageRep *_pixelsForColorSampling;
     LKColorWell *_colorWell;

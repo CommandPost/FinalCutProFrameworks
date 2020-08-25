@@ -6,9 +6,11 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class LKCursor, NSMutableArray;
+#import "POOnScreenControlMetalRendering.h"
 
-@interface OZGuidesOverlay : OZOverlay
+@class LKCursor, NSMutableArray, NSString;
+
+@interface OZGuidesOverlay : OZOverlay <POOnScreenControlMetalRendering>
 {
     LKCursor *_horizontalCursor;
     LKCursor *_verticalCursor;
@@ -21,8 +23,8 @@
     NSMutableArray *_lines;
 }
 
-- (id)getMetalDrawPrimitives:(id)arg1;
-- (BOOL)doesSupportMetal;
+@property(retain, nonatomic) NSMutableArray *lines; // @synthesize lines=_lines;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (set_0cb42238 *)snapStartWithCenters:(BOOL)arg1 andSides:(BOOL)arg2 selectedOnly:(BOOL)arg3;
 - (id)getCursorWithEvent:(id)arg1;
 - (void)mouseUp:(id)arg1;
@@ -34,6 +36,12 @@
 - (int)getDrawingOrder;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

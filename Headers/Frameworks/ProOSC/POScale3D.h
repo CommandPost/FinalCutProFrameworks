@@ -6,12 +6,17 @@
 
 #import <ProOSC/POScaleControl.h>
 
-@interface POScale3D : POScaleControl
+#import "POOnScreenControlMetalRendering.h"
+
+@class NSString;
+
+@interface POScale3D : POScaleControl <POOnScreenControlMetalRendering>
 {
     struct POScale3DImpl *_pImpl;
     BOOL _mouseDown;
 }
 
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (BOOL)postRedisplayOnActivePartChange;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
@@ -27,6 +32,12 @@
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
 - (struct POScale3DImpl *)makeNewScale3DImpl;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

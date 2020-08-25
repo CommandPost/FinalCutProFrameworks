@@ -8,7 +8,7 @@
 
 #import "FFMediaSourceProtocol.h"
 
-@class FFMD5AndOffset, FFMedia, FFRenderStateTracker, FFVideoProps, NSArray, NSNumber, NSSet, NSString;
+@class FFMD5AndOffset, FFMedia, FFRenderStateTracker, NSArray, NSNumber, NSSet, NSString;
 
 @interface FFAnchoredMediaComponent : FFAnchoredComponent <FFMediaSourceProtocol>
 {
@@ -16,8 +16,6 @@
     NSString *_providerSourceKey;
     NSArray *_audioChannelMap;
     NSArray *_audioChannelRoutingMap;
-    FFMD5AndOffset *_cachedAudioMD5;
-    FFMD5AndOffset *_cachedAudioMD5_NoIntrinsics;
     long long _cachedDefaultAudioChannelCount;
     NSNumber *_cachedAudioSampleRate;
     long long _deinterlaceType;
@@ -25,17 +23,19 @@
     long long _cameraProjectionMode;
     FFRenderStateTracker *_renderStateTracker;
     NSString *_deInterlaceProviderKey;
-    FFVideoProps *_calculatedVideoProps;
+    // Error parsing type: {atomic<FFVideoProps *>="__a_"A@}, name: _calculatedVideoProps
+    FFMD5AndOffset *_cachedAudioMD5;
+    FFMD5AndOffset *_cachedAudioMD5_PeaksData;
 }
 
 + (void)updateAudioMediaComponents:(id)arg1 fromAudioSourceDict:(id)arg2 toAudioSourceDict:(id)arg3;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
-+ (BOOL)verifyMediaComponents:(id)arg1 forMediaRange:(CDStruct_e83c9415)arg2 toAudioProperties:(id)arg3 fromAudioProperties:(id)arg4 mediaRepURL:(id)arg5;
++ (BOOL)verifyMediaComponents:(id)arg1 originalAsset:(id)arg2 incomingAsset:(id)arg3 toAudioProperties:(id)arg4 fromAudioProperties:(id)arg5 mediaRepURL:(id)arg6;
 + (void)updateMediaComponents:(id)arg1 forAsset:(id)arg2 needReset:(BOOL)arg3;
 @property(nonatomic) long long cameraProjectionMode; // @synthesize cameraProjectionMode=_cameraProjectionMode;
-@property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5_NoIntrinsics; // @synthesize cachedAudioMD5_NoIntrinsics=_cachedAudioMD5_NoIntrinsics;
+@property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5_NoIntrinsics; // @synthesize cachedAudioMD5_NoIntrinsics=_cachedAudioMD5_PeaksData;
 @property(retain, nonatomic) FFMD5AndOffset *cachedAudioMD5; // @synthesize cachedAudioMD5=_cachedAudioMD5;
 @property(readonly, nonatomic) FFMedia *media; // @synthesize media=_media;
 - (id)createUsedRangesMediaIdentifier;
@@ -45,6 +45,8 @@
 - (id)newDeinterlaceProviderWithEffectCount:(long long)arg1;
 - (id)_newProviderWithOptions:(id)arg1;
 - (CDStruct_bdcb2b0d)audioMD5:(int)arg1;
+- (CDStruct_bdcb2b0d)_audioMD5:(int)arg1;
+- (BOOL)_isMediaOnlineForAsset:(id)arg1;
 - (void)_clearCachedAudioProperties;
 - (CDStruct_1b6d18a9)localToRateConformedTime:(CDStruct_1b6d18a9)arg1 withTargetSampleDuration:(CDStruct_1b6d18a9)arg2;
 - (CDStruct_e83c9415)untimedUnclippedRange;
@@ -110,6 +112,11 @@
 - (id)supportedLogProcessingModes;
 - (BOOL)isMissingCameraLUT;
 - (BOOL)supportsLogProcessing;
+- (BOOL)supportsExposureOffsetOverride;
+- (BOOL)supportsIsoEIOverride;
+- (BOOL)supportsTemperatureOverride;
+- (BOOL)cameraISOIsValid;
+- (BOOL)cameraColorTemperatureIsValid;
 - (BOOL)supportsRAWToLogConversion;
 - (id)supportedColorSpaceOverrides;
 - (BOOL)supportsColorSpaceOverride;
@@ -117,11 +124,6 @@
 - (id)firstAssetIfOnlyOneVideo;
 - (id)_newDeinterlaceProviderWithInput:(id)arg1;
 - (id)_deinterlaceCacheIdentifierWithSource:(id)arg1;
-- (id)inspectableChannelsForIdentifier:(id)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
-- (id)classNameForInspectorTabIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)inspectorClassName;
 - (void)_mediaChanged:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -131,6 +133,9 @@
 - (void)_teardownRenderStateTracker;
 - (void)_libraryClosed:(id)arg1;
 - (void)notifyAnchoredObjectRemovedFromSequence:(id)arg1;
+- (BOOL)canRevealInFinderWithProxy:(BOOL)arg1;
+- (BOOL)canRevealProxyInFinder;
+- (BOOL)canRevealInFinder;
 - (void)dealloc;
 - (id)initWithMedia:(id)arg1 sourceKey:(id)arg2;
 - (id)initWithDescription:(id)arg1;
@@ -140,6 +145,11 @@
 @property(readonly, nonatomic) NSSet *roleGroups;
 - (BOOL)hasSystemGeneratedSubRoleWithIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) BOOL reflectsMediaRange;
+- (id)inspectableChannelsForIdentifier:(id)arg1;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
+- (id)inspectorClassName;
 
 @end
 

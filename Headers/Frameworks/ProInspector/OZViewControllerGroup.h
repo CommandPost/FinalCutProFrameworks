@@ -74,6 +74,7 @@
 - (BOOL)addOrResetAssociatedChannel:(struct OZChannelBase *)arg1 isAdd:(BOOL)arg2 force:(BOOL)arg3;
 - (void)addAnimIndicatorAndPulldownMenu:(struct OZChannelBase *)arg1 context:(id)arg2;
 - (id)controllerForLocation:(struct CGPoint)arg1 useFinalFrame:(BOOL)arg2;
+- (id)getControllerForChan:(struct OZChannelBase *)arg1 exhaustiveSearch:(BOOL)arg2;
 - (id)getControllerForChan:(struct OZChannelBase *)arg1;
 - (id)augmentUIWithFolder:(struct OZChannelFolder *)arg1 context:(id)arg2;
 - (id)augmentUIWithChan:(struct OZChannelBase *)arg1 insertAtIndex:(unsigned long long)arg2 context:(id)arg3;

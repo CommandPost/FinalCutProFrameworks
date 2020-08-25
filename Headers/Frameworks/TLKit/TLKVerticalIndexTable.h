@@ -15,28 +15,29 @@
     NSMapTable *_objectsTable;
     NSMapTable *_reverseObjectsTable;
     NSMutableSet *_keysNeedingSort;
+    NSArray *_orderedRows;
     NSArray *_orderedVerticalIndexTableKeys;
 }
 
 @property(copy, nonatomic) NSArray *orderedVerticalIndexTableKeys; // @synthesize orderedVerticalIndexTableKeys=_orderedVerticalIndexTableKeys;
+@property(copy, nonatomic) NSArray *orderedRows; // @synthesize orderedRows=_orderedRows;
 @property(readonly, nonatomic) NSMutableSet *keysNeedingSort; // @synthesize keysNeedingSort=_keysNeedingSort;
 @property(readonly, nonatomic) NSMapTable *reverseObjectsTable; // @synthesize reverseObjectsTable=_reverseObjectsTable;
 @property(readonly, nonatomic) NSMapTable *objectsTable; // @synthesize objectsTable=_objectsTable;
 @property(nonatomic) unsigned long long sortOrder; // @synthesize sortOrder=_sortOrder;
 @property(nonatomic) BOOL allowsDuplicateObjects; // @synthesize allowsDuplicateObjects=_allowsDuplicateObjects;
-- (BOOL)isNodeOccluded:(id)arg1;
 - (BOOL)isRangeOccluded:(struct _TLKRange)arg1 inOcclusionRanges:(id)arg2;
 - (id)occlusionRangesForNode:(id)arg1 withNodeProcessingBlock:(CDUnknownBlockType)arg2;
-- (id)findNextLayoutGraphNode:(id)arg1 delta:(long long)arg2 inRange:(struct _TLKRange)arg3;
-- (id)findNodesOnNextRow:(id)arg1 delta:(long long)arg2 inRange:(struct _TLKRange)arg3;
+- (id)findNextLayoutGraphNode:(id)arg1 delta:(long long)arg2 inRange:(CDStruct_e83c9415)arg3;
 - (id)nextVerticalIndexTableKey:(long long)arg1 fromVerticalIndexTableKey:(id)arg2;
+- (id)findNodesOnNextRow:(id)arg1 delta:(long long)arg2 inRange:(CDStruct_e83c9415)arg3;
 - (void)sortRowsByTimeRange;
 - (void)sortRowsUsingComparator:(CDUnknownBlockType)arg1;
 - (void)_noteObjectsChangedForVerticalIndexTableKey:(id)arg1;
 - (BOOL)containsLayoutGraphNode:(id)arg1;
 - (void)removeLayoutGraphNodeObjects:(id)arg1;
-- (BOOL)removeLayoutGraphNode:(id)arg1;
-- (BOOL)_removeLayoutGraphNode:(id)arg1 forVerticalIndexTableKey:(id)arg2;
+- (void)removeLayoutGraphNode:(id)arg1;
+- (void)_removeLayoutGraphNode:(id)arg1 forVerticalIndexTableKey:(id)arg2;
 - (void)updateLayoutGraphNodeObjects:(id)arg1;
 - (void)updateLayoutGraphNode:(id)arg1;
 - (void)addLayoutGraphNodeObjects:(id)arg1;
@@ -46,6 +47,7 @@
 @property(readonly, nonatomic) NSArray *orderedLayoutGraphNodes;
 - (id)layoutGraphNodesForVerticalIndexTableKey:(id)arg1;
 - (id)verticalIndexTableKeyForLayoutGraphNode:(id)arg1;
+- (id)rowForVerticalIndexTableKey:(id)arg1;
 @property(readonly, nonatomic) NSSet *verticalIndexTableKeys;
 - (BOOL)_isDuplicateLayoutGraphNode:(id)arg1;
 - (id)debugDescription;

@@ -19,11 +19,7 @@ __attribute__((visibility("hidden")))
 
 + (id)recordWithAnchoredObject:(id)arg1;
 @property(readonly, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObject;
-- (BOOL)writerIsWaiting;
-- (void)_writeUnlock;
-- (void)_writeLock;
-- (void)_readUnlock;
-- (void)_readLock;
+- (id)modelLockingObject;
 - (BOOL)rollbackWithRecordData:(id)arg1;
 - (id)recordData;
 - (id)matchToEffect;

@@ -50,6 +50,8 @@ __attribute__((visibility("hidden")))
     CALayer *_prelayoutReferenceLayer;
 }
 
+@property(retain, nonatomic) CALayer *prelayoutSuperlayer; // @synthesize prelayoutSuperlayer=_prelayoutSuperlayer;
+@property(retain, nonatomic) CALayer *prelayoutReferenceLayer; // @synthesize prelayoutReferenceLayer=_prelayoutReferenceLayer;
 @property(nonatomic) long long emptyMediaLayerDisplayType; // @synthesize emptyMediaLayerDisplayType=_emptyMediaLayerDisplayType;
 @property(nonatomic) id <FFOrganizerFilmstripClusteringDelegate> clusteringDelegate; // @synthesize clusteringDelegate=_clusteringDelegate;
 @property(retain, nonatomic) NSArray *selectedRangesOfMedia; // @synthesize selectedRangesOfMedia=_selectedRangesOfMedia;

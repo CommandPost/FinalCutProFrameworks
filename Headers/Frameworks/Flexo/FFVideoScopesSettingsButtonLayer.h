@@ -6,30 +6,41 @@
 
 #import <Flexo/FFResponderLayerPopupButton.h>
 
-@class FFImageLayer;
+#import "FFVideoScopesIntrinsics.h"
+
+@class FFImageLayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesSettingsButtonLayer : FFResponderLayerPopupButton
+@interface FFVideoScopesSettingsButtonLayer : FFResponderLayerPopupButton <FFVideoScopesIntrinsics>
 {
-    FFImageLayer *_glyphLayer;
     struct CGSize _topRightMargin;
     struct CGSize _bottomLeftMargin;
+    FFImageLayer *_glyphLayer;
+    struct CGSize _intrinsicContentSize;
 }
 
-+ (id)videoScopesSettingsButtonLayer;
-@property struct CGSize bottomLeftMargin; // @synthesize bottomLeftMargin=_bottomLeftMargin;
-@property struct CGSize topRightMargin; // @synthesize topRightMargin=_topRightMargin;
++ (id)layer;
+@property(nonatomic) struct CGSize bottomLeftMargin; // @synthesize bottomLeftMargin=_bottomLeftMargin;
+@property(nonatomic) struct CGSize topRightMargin; // @synthesize topRightMargin=_topRightMargin;
 - (id)accessibilityAttributeValue:(id)arg1;
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
+- (void)invalidateIntrinsicContentSize;
+- (struct CGSize)intrinsicContentSize;
+- (struct CGSize)fittingSize;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)configureEmphasized;
 - (void)configureDisabled;
 - (void)configureInactive;
 - (void)configurePressed;
 - (void)configureRollover;
 - (void)configureNormal;
-- (void)setMenu:(id)arg1;
-- (id)buildSublayers;
 - (void)setContentsScale:(double)arg1;
+- (void)_buildSublayers;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

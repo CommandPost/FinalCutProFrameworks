@@ -6,9 +6,11 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class LKCursor, NSLayoutManager, NSMutableDictionary, NSTextContainer, NSTextStorage, PODrawableTexture;
+#import "POOnScreenControlMetalRendering.h"
 
-@interface OZRulersOverlay : OZOverlay
+@class LKCursor, MDPLine, MDPMultiline, MDPQuadTexture, MDPScreenspaceQuad, NSLayoutManager, NSMutableArray, NSMutableDictionary, NSString, NSTextContainer, NSTextStorage, PODrawableTexture;
+
+@interface OZRulersOverlay : OZOverlay <POOnScreenControlMetalRendering>
 {
     LKCursor *_horizontalCursor;
     LKCursor *_verticalCursor;
@@ -32,11 +34,28 @@
     double _largeTickSkip;
     double _fontHeight;
     float _lastScale;
+    MDPMultiline *_hatchMarksMDP;
+    MDPLine *_cornerVerticalTickMarkLine;
+    MDPLine *_cornerHorizontalTickMarkLine;
+    MDPScreenspaceQuad *_cornerJointQuad;
+    MDPScreenspaceQuad *_verticalRulerQuad;
+    MDPScreenspaceQuad *_horizontalRulerQuad;
+    MDPQuadTexture *_verticalTextMDP;
+    MDPQuadTexture *_horizontalTextMDP;
+    NSMutableArray *_guideMarkerMDPs;
 }
 
+@property(retain, nonatomic) NSMutableArray *guideMarkerMDPs; // @synthesize guideMarkerMDPs=_guideMarkerMDPs;
+@property(retain, nonatomic) MDPQuadTexture *horizontalTextMDP; // @synthesize horizontalTextMDP=_horizontalTextMDP;
+@property(retain, nonatomic) MDPQuadTexture *verticalTextMDP; // @synthesize verticalTextMDP=_verticalTextMDP;
+@property(retain, nonatomic) MDPScreenspaceQuad *horizontalRulerQuad; // @synthesize horizontalRulerQuad=_horizontalRulerQuad;
+@property(retain, nonatomic) MDPScreenspaceQuad *verticalRulerQuad; // @synthesize verticalRulerQuad=_verticalRulerQuad;
+@property(retain, nonatomic) MDPScreenspaceQuad *cornerJointQuad; // @synthesize cornerJointQuad=_cornerJointQuad;
+@property(retain, nonatomic) MDPLine *cornerHorizontalTickMarkLine; // @synthesize cornerHorizontalTickMarkLine=_cornerHorizontalTickMarkLine;
+@property(retain, nonatomic) MDPLine *cornerVerticalTickMarkLine; // @synthesize cornerVerticalTickMarkLine=_cornerVerticalTickMarkLine;
+@property(retain, nonatomic) MDPMultiline *hatchMarksMDP; // @synthesize hatchMarksMDP=_hatchMarksMDP;
 - (BOOL)shouldDraw;
-- (id)getMetalDrawPrimitives:(id)arg1;
-- (BOOL)doesSupportMetal;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (id)getCursorWithEvent:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)finishDraggingGuide:(id)arg1 vertical:(_Bool)arg2 poof:(BOOL)arg3;
@@ -48,10 +67,16 @@
 - (void)draw;
 - (BOOL)imageBoxX1:(double *)arg1 y1:(double *)arg2 x2:(double *)arg3 y2:(double *)arg4;
 - (struct CGRect)getAvailableViewBounds;
-- (void)dealloc;
 - (int)getDrawingOrder;
 - (void)setRulerAndMarkSizesApplyingScaleToFont:(BOOL)arg1;
+- (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

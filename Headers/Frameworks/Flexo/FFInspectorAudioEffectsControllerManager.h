@@ -4,30 +4,25 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <Flexo/FFInspectorEffectsControllerManager.h>
 
-@class NSSet;
+@class NSMapTable;
 
 __attribute__((visibility("hidden")))
-@interface FFInspectorAudioEffectsControllerManager : NSObject
+@interface FFInspectorAudioEffectsControllerManager : FFInspectorEffectsControllerManager
 {
-    NSSet *_selectedEffectStacks;
-    BOOL _hasNoEffects;
-    BOOL _hasMismatchingEffects;
     BOOL _showEffectParameters;
-    BOOL _hasSingleEffectStack;
+    BOOL _showEffectEditorButton;
+    NSMapTable *_masterUnitStateEffectMap;
 }
 
-@property(readonly, nonatomic) BOOL hasSingleEffectStack; // @synthesize hasSingleEffectStack=_hasSingleEffectStack;
+@property(readonly, nonatomic) BOOL showEffectEditorButton; // @synthesize showEffectEditorButton=_showEffectEditorButton;
 @property(readonly, nonatomic) BOOL showEffectParameters; // @synthesize showEffectParameters=_showEffectParameters;
-@property(readonly, nonatomic) BOOL hasMismatchingEffects; // @synthesize hasMismatchingEffects=_hasMismatchingEffects;
-@property(readonly, nonatomic) BOOL hasNoEffects; // @synthesize hasNoEffects=_hasNoEffects;
-@property(readonly, nonatomic) NSSet *selectedEffectStacks; // @synthesize selectedEffectStacks=_selectedEffectStacks;
-- (void)_libraryClosed:(id)arg1;
-- (void)_removeLibraryCloseObserving;
-- (void)_addLibraryCloseObserving;
-- (void)setSelectedEffectStacks:(id)arg1;
+- (unsigned long long)masterUnitStateForEffect:(id)arg1;
+- (void)setMasterUnitState:(unsigned long long)arg1 forEffect:(id)arg2;
+- (void)selectedEffectStacksChanged;
 - (void)dealloc;
+- (id)init;
 
 @end
 

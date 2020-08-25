@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSView *_view;
     NSString *_stringValue;
     NSAttributedString *_attributedStringValue;
-    unsigned long long _alignment;
+    long long _alignment;
     NSFont *_font;
     unsigned long long _lineBreakMode;
     NSString *_placeholderString;
@@ -83,7 +83,7 @@ __attribute__((visibility("hidden")))
 @property BOOL usesSingleLineMode;
 @property unsigned long long lineBreakMode;
 @property(copy, nonatomic) NSFont *font; // @dynamic font;
-@property unsigned long long alignment; // @dynamic alignment;
+@property long long alignment; // @dynamic alignment;
 @property(copy, nonatomic) NSAttributedString *attributedStringValue; // @dynamic attributedStringValue;
 @property(copy, nonatomic) NSString *stringValue; // @dynamic stringValue;
 - (void)_invalidateTrackingArea;

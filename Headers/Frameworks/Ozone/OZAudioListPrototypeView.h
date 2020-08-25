@@ -15,7 +15,6 @@
 @property(nonatomic) BOOL selected; // @synthesize selected=_selected;
 @property(retain, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)viewWillDraw;
 - (id)hitTest:(struct CGPoint)arg1;
 - (void)dealloc;
 

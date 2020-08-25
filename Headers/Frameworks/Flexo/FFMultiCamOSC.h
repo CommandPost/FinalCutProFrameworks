@@ -6,18 +6,18 @@
 
 #import <Flexo/FFOSC.h>
 
-@class FFOpenGLNSImage, NSCursor, NSDictionary, NSMutableDictionary, NSString;
+@class FFGPUNSImage, NSCursor, NSDictionary, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFMultiCamOSC : FFOSC
 {
-    FFOpenGLNSImage *_angleEmpty;
-    FFOpenGLNSImage *_angleBezel;
-    FFOpenGLNSImage *_angleBezelRollover;
-    FFOpenGLNSImage *_angleBezelSelectionAudioVideo;
-    FFOpenGLNSImage *_angleBezelSelectionAudio;
-    FFOpenGLNSImage *_angleBezelSelectionVideo;
-    FFOpenGLNSImage *_angleAudioIcon;
+    FFGPUNSImage *_angleEmpty;
+    FFGPUNSImage *_angleBezel;
+    FFGPUNSImage *_angleBezelRollover;
+    FFGPUNSImage *_angleBezelSelectionAudioVideo;
+    FFGPUNSImage *_angleBezelSelectionAudio;
+    FFGPUNSImage *_angleBezelSelectionVideo;
+    FFGPUNSImage *_angleAudioIcon;
     struct CGSize _angleAudioIconSize;
     NSMutableDictionary *_textTimeCodeImageCache;
     NSMutableDictionary *_textNameImageCache;
@@ -45,10 +45,12 @@ __attribute__((visibility("hidden")))
 - (long long)handleAtEventLocation:(id)arg1;
 - (void)updateCursorForEvent:(id)arg1;
 - (id)objectUnderPlayheadAndAngle:(id)arg1 allowBlade:(char *)arg2 angleName:(id *)arg3 angleLocation:(struct CGRect *)arg4;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (BOOL)supportsMetalRendering;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (void)drawOnScreenForContexts:(id)arg1 drawProperties:(id)arg2;
 - (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
-- (void)simpleTextRectangle:(id)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3 string:(id)arg4 attributes:(id)arg5 attributeCode:(int)arg6 paddingX:(double)arg7 paddingY:(double)arg8;
-- (void)_setupDrawInfoAndTextures:(struct _CGLContextObject *)arg1;
+- (void)simpleTextRectangle:(id)arg1 rect:(struct CGRect)arg2 renderer:(id)arg3 string:(id)arg4 attributes:(id)arg5 attributeCode:(int)arg6 paddingX:(double)arg7 paddingY:(double)arg8;
+- (void)_setupDrawInfoAndTextures:(id)arg1;
 - (id)getAudioIconForSize:(float)arg1;
 - (BOOL)isAvailableForMultiAngleState:(BOOL)arg1;
 - (BOOL)isAvailableDuringPlayback;

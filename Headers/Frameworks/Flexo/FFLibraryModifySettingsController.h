@@ -6,11 +6,12 @@
 
 #import "NSWindowController.h"
 
+#import "FFLibraryMediaLocationChooserDelegate.h"
 #import "NSOpenSavePanelDelegate.h"
 
-@class FFLibraryCacheMigrater, FFLibraryDocument, LKImageView, NSButton, NSDictionary, NSImageView, NSPopUpButton, NSString, NSTextField, NSURL, NSWindow;
+@class FFLibraryCacheMigrater, FFLibraryDocument, FFLibraryMediaLocationChooserController, LKImageView, NSButton, NSDictionary, NSImageView, NSPopUpButton, NSString, NSTextField, NSURL, NSWindow;
 
-@interface FFLibraryModifySettingsController : NSWindowController <NSOpenSavePanelDelegate>
+@interface FFLibraryModifySettingsController : NSWindowController <NSOpenSavePanelDelegate, FFLibraryMediaLocationChooserDelegate>
 {
     FFLibraryDocument *_libraryDocument;
     NSWindow *_parentWindow;
@@ -45,11 +46,16 @@
     NSString *_errorDescription;
     unsigned long long _necessarySpaceAvailable;
     BOOL _isOpenPanelShown;
+    FFLibraryMediaLocationChooserController *_mediaLocationChooserController;
 }
 
 + (void)repairSettingsForLibrary:(id)arg1 parentWindow:(id)arg2 errorDescription:(id)arg3 canCancel:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 + (void)showLibraryModifySettingsForLibrary:(id)arg1 parentWindow:(id)arg2 errorDescription:(id)arg3 canCloseLibrary:(BOOL)arg4 necessarySpaceAvailable:(unsigned long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (void)showLibraryModifySettingsForLibrary:(id)arg1 parentWindow:(id)arg2 errorDescription:(id)arg3 canCloseLibrary:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)locationChooserDidEndOpenPanel:(id)arg1;
+- (void)locationChooserWillStartOpenPanel:(id)arg1;
+- (void)locationChooser:(id)arg1 didChangeValidationState:(BOOL)arg2;
+- (void)locationChooser:(id)arg1 didChangeMediaLocation:(id)arg2;
 - (void)updateSheet;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)observeLibraryForLocationErrors:(BOOL)arg1;

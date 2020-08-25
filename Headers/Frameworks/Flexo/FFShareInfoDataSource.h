@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _hasDisabledRoles;
     BOOL _hasHomogeneousDisabledRoles;
     BOOL _isDeviceCompatibilityInfoValid;
+    BOOL _isExportingAudio;
     BOOL _supportsPrivate;
     BOOL _isObservingItems;
     NSArray *_sourceSettingPairs;
@@ -77,6 +78,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *clipDuration; // @synthesize clipDuration=_clipDuration;
 @property(nonatomic) unsigned long long numberOfCaptionSidecarFiles; // @synthesize numberOfCaptionSidecarFiles=_numberOfCaptionSidecarFiles;
 @property(nonatomic) unsigned long long numberOfOutputFiles; // @synthesize numberOfOutputFiles=_numberOfOutputFiles;
+@property(nonatomic) BOOL isExportingAudio; // @synthesize isExportingAudio=_isExportingAudio;
 @property(nonatomic) BOOL isDeviceCompatibilityInfoValid; // @synthesize isDeviceCompatibilityInfoValid=_isDeviceCompatibilityInfoValid;
 @property(copy, nonatomic) NSSet *disabledRoles; // @synthesize disabledRoles=_disabledRoles;
 @property(nonatomic) BOOL hasHomogeneousDisabledRoles; // @synthesize hasHomogeneousDisabledRoles=_hasHomogeneousDisabledRoles;

@@ -64,6 +64,7 @@
 - (BOOL)is3DOSC;
 - (int)getDrawingOrder;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+- (void)setupTextureSize:(float)arg1;
 - (void)setupDrawingBuffer;
 
 @end

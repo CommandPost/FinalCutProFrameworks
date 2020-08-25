@@ -46,7 +46,6 @@
     id <FFShareDestinationSettingsMenuDelegate> _settingsMenuDelegate;
 }
 
-+ (id)keyPathsForValuesAffectingDisplaysDisabledRolesInfo;
 + (id)inactiveHighlightGradient;
 + (id)activeHighlightGradient;
 + (id)shareDestinationControllerForDestination:(id)arg1 withSources:(id)arg2;
@@ -112,7 +111,6 @@
 - (long long)buildSettingsMenu:(id)arg1 withSize:(BOOL)arg2;
 - (BOOL)isAppStorePreview;
 - (BOOL)displaysDeviceCompatibilityInfo;
-- (BOOL)displaysDisabledRolesInfo;
 - (void)showPanel:(BOOL)arg1 modalForWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)colorSpaceDisplayNameWithDestination:(id)arg1 isWideGamut:(char *)arg2;
 @property(readonly, copy, nonatomic) NSString *projectionTypeDisplayName; // @synthesize projectionTypeDisplayName=_projectionTypeDisplayName;

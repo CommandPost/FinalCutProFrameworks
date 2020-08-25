@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) BOOL usingHardware; // @synthesize usingHardware=_usingHardware;
 @property(nonatomic) double idleStartTime; // @synthesize idleStartTime=_idleStartTime;
-- (BOOL)isCompatibleWithCodec:(unsigned int)arg1 dimensions:(CDStruct_1ef3fb1f)arg2 pixelFormat:(unsigned int)arg3 quality:(int)arg4 forThumbnails:(BOOL)arg5 fieldMode:(struct __CFString *)arg6;
+- (BOOL)isCompatibleWithCodec:(unsigned int)arg1 dimensions:(CDStruct_79c71658)arg2 pixelFormat:(unsigned int)arg3 quality:(int)arg4 forThumbnails:(BOOL)arg5 fieldMode:(struct __CFString *)arg6;
 - (id)description;
 - (void)dealloc;
-- (id)init:(void *)arg1 codec:(unsigned int)arg2 dimensions:(CDStruct_1ef3fb1f)arg3 pixelFormat:(unsigned int)arg4 quality:(int)arg5 forThumbnails:(BOOL)arg6 fieldMode:(struct __CFString *)arg7;
+- (id)init:(void *)arg1 codec:(unsigned int)arg2 dimensions:(CDStruct_79c71658)arg3 pixelFormat:(unsigned int)arg4 quality:(int)arg5 forThumbnails:(BOOL)arg6 fieldMode:(struct __CFString *)arg7;
 
 @end
 

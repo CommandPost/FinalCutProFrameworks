@@ -21,7 +21,6 @@
     NSError *_error;
     NSMapTable *_importResults;
     unsigned long long _contentVersion;
-    NSSet *_allImportedClips;
 }
 
 + (id)translationTaskForFile:(id)arg1 origin:(id)arg2;
@@ -29,19 +28,19 @@
 + (id)translationTaskForClips:(id)arg1;
 + (id)translationTaskForEvents:(id)arg1;
 + (id)translationTaskForLibrary:(id)arg1;
-@property(readonly) NSSet *allImportedClips; // @synthesize allImportedClips=_allImportedClips;
 @property unsigned long long contentVersion; // @synthesize contentVersion=_contentVersion;
 @property int contentType; // @synthesize contentType=_contentType;
 @property(readonly, retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, retain, nonatomic) NSArray *warnings; // @synthesize warnings=_warnings;
 - (id)newXMLDocumentWithOptions:(id)arg1;
 - (BOOL)exportToFile:(id)arg1 withOptions:(id)arg2;
+- (BOOL)exportToPasteboardItem:(id)arg1 withOptions:(id)arg2;
 - (BOOL)exportToPasteboard:(id)arg1 withOptions:(id)arg2;
 - (BOOL)exportToUserSelectedFile;
 - (id)configuredSavePanel;
 - (id)newPasteboardItem;
-- (id)allImportedClip;
-- (id)clipsImportedInEvent:(id)arg1;
+@property(readonly) NSSet *allImportedClipsAndRanges;
+- (id)clipsAndRangesImportedInEvent:(id)arg1;
 @property(readonly) NSArray *importedEvents;
 - (BOOL)importClipsWithOptions:(id)arg1 taskDelegate:(id)arg2;
 - (BOOL)importClipsWithOptions:(id)arg1;

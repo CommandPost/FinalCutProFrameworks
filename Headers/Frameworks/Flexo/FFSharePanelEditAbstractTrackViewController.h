@@ -8,7 +8,7 @@
 
 #import "NSOutlineViewDelegate.h"
 
-@class FFSharePanelChildBrick, FFSharePanelRolesDataSource, FFWeakPointerValue, NSButton, NSOutlineView, NSString, NSTreeController, NSView, NSViewController<FFSharePanelEditTrackAccessoryViewControllerProtocol>;
+@class FFSharePanelChildBrick, FFSharePanelRolesDataSource, NSButton, NSOutlineView, NSString, NSTreeController, NSView, NSViewController<FFSharePanelEditTrackAccessoryViewControllerProtocol>, PCWeakPointerValue;
 
 __attribute__((visibility("hidden")))
 @interface FFSharePanelEditAbstractTrackViewController : NSViewController <NSOutlineViewDelegate>
@@ -19,10 +19,10 @@ __attribute__((visibility("hidden")))
     NSOutlineView *_roleEditorOutlineView;
     NSButton *_uncheckAllButton;
     NSViewController<FFSharePanelEditTrackAccessoryViewControllerProtocol> *_accessoryController;
-    FFWeakPointerValue *_dataSourceWeakPointer;
+    PCWeakPointerValue *_dataSourceWeakPointer;
 }
 
-@property(retain, nonatomic) FFWeakPointerValue *dataSourceWeakPointer; // @synthesize dataSourceWeakPointer=_dataSourceWeakPointer;
+@property(retain, nonatomic) PCWeakPointerValue *dataSourceWeakPointer; // @synthesize dataSourceWeakPointer=_dataSourceWeakPointer;
 @property(retain, nonatomic) NSViewController<FFSharePanelEditTrackAccessoryViewControllerProtocol> *accessoryController; // @synthesize accessoryController=_accessoryController;
 @property(nonatomic) NSButton *uncheckAllButton; // @synthesize uncheckAllButton=_uncheckAllButton;
 @property(nonatomic) NSOutlineView *roleEditorOutlineView; // @synthesize roleEditorOutlineView=_roleEditorOutlineView;

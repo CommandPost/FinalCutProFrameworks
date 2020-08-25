@@ -9,13 +9,13 @@
 #import "FFColorSelectionOSCDelegate.h"
 #import "FFModalToolDelegate.h"
 
-@class FFOpenGLNSImage, NSDictionary, NSString;
+@class FFGPUNSImage, NSDictionary, NSString;
 
 @interface FFBalanceColorUserEffectOSC : FFColorSelectionOSC <FFModalToolDelegate, FFColorSelectionOSCDelegate>
 {
     NSDictionary *_balanceUserEffectMessageTextAttribute;
     NSDictionary *_balanceUserEffectMessageTextAttributeGlow;
-    FFOpenGLNSImage *_textImage;
+    FFGPUNSImage *_textImage;
     int _textWidth;
     int _textHeight;
     struct CGRect _textRect;
@@ -23,14 +23,15 @@
     BOOL _hasOpenTransaction;
 }
 
-- (void)extraDrawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (void)extraDrawRect:(struct CGRect)arg1 renderer:(id)arg2 drawProperties:(id)arg3;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDragged:(id)arg1;
 - (void)mouseMoved:(id)arg1;
 - (void)proOSCMouseDownInitialize:(id)arg1;
 - (id)_actionNameForChannelChange;
+- (BOOL)displayingMessage;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
-- (void)_setupTextures:(struct _CGLContextObject *)arg1;
+- (void)_setupTextures;
 - (id)getCursor;
 - (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
 - (void)modifyAdjustmentsWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 bufferData:(char *)arg4 bufferWidth:(double)arg5 bufferHeight:(double)arg6 bytesPerRow:(unsigned int)arg7;

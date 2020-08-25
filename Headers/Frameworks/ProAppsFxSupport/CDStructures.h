@@ -25,18 +25,6 @@ struct CGSize {
     double _field2;
 };
 
-struct CVSMPTETime {
-    short _field1;
-    short _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    short _field6;
-    short _field7;
-    short _field8;
-    short _field9;
-};
-
 struct FxHeliumImagePriv {
     HGRef_0de1db7e _field1;
 };
@@ -159,6 +147,7 @@ struct ImageTileDescriptor {
     unsigned int _field10;
     CDStruct_198678f7 _field11;
     id _field12;
+    unsigned long long _field13;
 };
 
 struct OZChannel {
@@ -1284,6 +1273,7 @@ struct _CGLContextObject {
         CDUnknownFunctionPointerType _field972;
         CDUnknownFunctionPointerType _field973;
         CDUnknownFunctionPointerType _field974;
+        CDUnknownFunctionPointerType _field975;
     } _field2;
     struct _CGLPrivateObject *_field3;
     void *_field4;
@@ -1301,6 +1291,21 @@ struct __wrap_iter<cc::point_t<double, false, false>*> {
     struct point_t<double, false, false> *_field1;
 };
 
+struct deque<FxParameterTransaction *, std::__1::allocator<FxParameterTransaction *>> {
+    struct __split_buffer<FxParameterTransaction **, std::__1::allocator<FxParameterTransaction **>> {
+        id **__first_;
+        id **__begin_;
+        id **__end_;
+        struct __compressed_pair<FxParameterTransaction ***, std::__1::allocator<FxParameterTransaction **>> {
+            id **__value_;
+        } __end_cap_;
+    } __map_;
+    unsigned long long __start_;
+    struct __compressed_pair<unsigned long, std::__1::allocator<FxParameterTransaction *>> {
+        unsigned long long __value_;
+    } __size_;
+};
+
 struct map<CMTime, PAECachedSize, std::__1::less<CMTime>, std::__1::allocator<std::__1::pair<const CMTime, PAECachedSize>>> {
     struct __tree<std::__1::__value_type<CMTime, PAECachedSize>, std::__1::__map_value_compare<CMTime, std::__1::__value_type<CMTime, PAECachedSize>, std::__1::less<CMTime>, true>, std::__1::allocator<std::__1::__value_type<CMTime, PAECachedSize>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
@@ -1308,6 +1313,18 @@ struct map<CMTime, PAECachedSize, std::__1::less<CMTime>, std::__1::allocator<st
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
         } __pair1_;
         struct __compressed_pair<unsigned long, std::__1::__map_value_compare<CMTime, std::__1::__value_type<CMTime, PAECachedSize>, std::__1::less<CMTime>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
+struct map<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>>> {
+    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>, std::__1::less<std::__1::basic_string<char>>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
@@ -1327,10 +1344,22 @@ struct map<unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std:
 
 struct point_t<double, false, false>;
 
+struct queue<FxParameterTransaction *, std::__1::deque<FxParameterTransaction *, std::__1::allocator<FxParameterTransaction *>>> {
+    struct deque<FxParameterTransaction *, std::__1::allocator<FxParameterTransaction *>> c;
+};
+
 struct unique_ptr<PCCacheImpl<CMTime, PAEStateCacheItem, PCNoLock>, std::__1::default_delete<PCCacheImpl<CMTime, PAEStateCacheItem, PCNoLock>>> {
     struct __compressed_pair<PCCacheImpl<CMTime, PAEStateCacheItem, PCNoLock>*, std::__1::default_delete<PCCacheImpl<CMTime, PAEStateCacheItem, PCNoLock>>> {
         struct PCCacheImpl<CMTime, PAEStateCacheItem, PCNoLock> *__value_;
     } __ptr_;
+};
+
+struct vector<FxParameterTransaction *, std::__1::allocator<FxParameterTransaction *>> {
+    id *__begin_;
+    id *__end_;
+    struct __compressed_pair<FxParameterTransaction **, std::__1::allocator<FxParameterTransaction *>> {
+        id *__value_;
+    } __end_cap_;
 };
 
 struct vector<OZChannelBase *, std::__1::allocator<OZChannelBase *>>;
@@ -1373,16 +1402,9 @@ typedef struct {
 } CDStruct_198678f7;
 
 typedef struct {
-    unsigned int _field1;
-    int _field2;
-    long long _field3;
-    unsigned long long _field4;
-    double _field5;
-    long long _field6;
-    struct CVSMPTETime _field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-} CDStruct_e50ab651;
+    CDStruct_198678f7 _field1;
+    CDStruct_198678f7 _field2;
+} CDStruct_3c1748cc;
 
 typedef struct {
     CDUnion_2516e51e _field1;
@@ -1443,6 +1465,42 @@ typedef struct PCVector2<float> {
 typedef struct __wrap_iter<cc::point_t<double, false, false>*> {
     struct point_t<double, false, false> *_field1;
 } __wrap_iter_c1a1a0b4;
+
+typedef struct map<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>>> {
+    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::map<unsigned long, PAETileableXPCPlugIn *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, PAETileableXPCPlugIn *>>>>, std::__1::less<std::__1::basic_string<char>>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+} map_9151994f;
+
+typedef struct map<unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std::__1::deque<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>>>, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std::__1::deque<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>>>>>> {
+    struct __tree<std::__1::__value_type<unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std::__1::deque<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>>>>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std::__1::deque<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>>>>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std::__1::deque<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>>>>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std::__1::deque<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>>>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, std::__1::stack<NSObject<OS_dispatch_semaphore>*, std::__1::deque<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>>>>, std::__1::less<unsigned long>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+} map_8bb409b5;
+
+typedef struct queue<FxParameterTransaction *, std::__1::deque<FxParameterTransaction *, std::__1::allocator<FxParameterTransaction *>>> {
+    struct deque<FxParameterTransaction *, std::__1::allocator<FxParameterTransaction *>> c;
+} queue_a1617091;
+
+typedef struct vector<FxParameterTransaction *, std::__1::allocator<FxParameterTransaction *>> {
+    id *__begin_;
+    id *__end_;
+    struct __compressed_pair<FxParameterTransaction **, std::__1::allocator<FxParameterTransaction *>> {
+        id *__value_;
+    } __end_cap_;
+} vector_17e0fc00;
 
 typedef struct vector<void *, std::__1::allocator<void *>> {
     void **_field1;

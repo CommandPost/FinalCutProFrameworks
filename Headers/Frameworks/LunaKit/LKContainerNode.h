@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class LKContainerItemView, LKViewModule, NSMutableArray, NSString;
+@class LKContainerItemView, LKViewModule, NSMutableArray, NSString, PCWeakPointerValue;
 
 @interface LKContainerNode : NSObject
 {
@@ -22,7 +22,7 @@
     struct CGSize _originalSize;
     struct CGSize _newSize;
     double _proportion;
-    LKViewModule *_representedModule;
+    PCWeakPointerValue *_representedModuleWeakPointer;
     NSString *_title;
     id _relatedView;
     unsigned long long _revealStyle;
@@ -35,7 +35,6 @@
 
 @property unsigned long long revealStyle; // @synthesize revealStyle=_revealStyle;
 @property id relatedView; // @synthesize relatedView=_relatedView;
-@property LKViewModule *representedModule; // @synthesize representedModule=_representedModule;
 @property double proportion; // @synthesize proportion=_proportion;
 @property struct CGSize newSize; // @synthesize newSize=_newSize;
 @property struct CGSize aspectRatio; // @synthesize aspectRatio=_aspectRatio;
@@ -56,7 +55,7 @@
 - (BOOL)wantsFooterBar;
 - (BOOL)wantsHeaderBar;
 - (BOOL)isViewOrderedBelow;
-- (unsigned long long)labelAlignment;
+- (long long)labelAlignment;
 - (id)label;
 @property BOOL allowSeamDragging;
 @property BOOL isPlaceHolder;
@@ -92,6 +91,7 @@
 - (id)initWithDictionary:(id)arg1;
 - (void)dealloc;
 - (id)init;
+@property LKViewModule *representedModule;
 @property(copy) NSString *identifier;
 - (id)description;
 - (void)_printWithOffset:(int)arg1;

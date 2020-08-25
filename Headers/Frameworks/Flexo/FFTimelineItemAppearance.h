@@ -24,8 +24,6 @@
 + (id)sharedFilmstripBoxMetrics;
 + (id)sharedTitleBoxMetrics;
 + (id)anchoredCaptionClipAppearance;
-+ (id)titleOnlyDefaultMinimizedAppearance;
-+ (id)titleOnlyDefaultAppearance;
 + (id)transitionInAudioOnlyStorylineMinimizedAppearance;
 + (id)transitionInVideoOnlyStorylineMinimizedAppearance;
 + (id)transitionInAVStorylineMinimizedAppearance;
@@ -108,7 +106,7 @@
 - (void)setCompletionHandlerForAllAudioLanes:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) BOOL isAudioMinimized;
 @property(readonly, nonatomic) unsigned long long nestingLevel;
-@property(readonly, nonatomic) unsigned long long storylineRegion;
+@property(readonly, nonatomic) long long storylineRegion;
 @property(readonly, nonatomic) unsigned long long storylineItemType;
 @property(readonly, nonatomic) unsigned long long clipContentsMask;
 @property(readonly, nonatomic) unsigned long long storylineContentsMask;

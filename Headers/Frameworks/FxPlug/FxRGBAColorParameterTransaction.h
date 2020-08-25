@@ -21,7 +21,7 @@
 }
 
 + (BOOL)supportsSecureCoding;
-+ (id)rgbaColorTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2;
++ (id)rgbaColorTransactionWithParameterID:(unsigned int)arg1 transactionID:(unsigned long long)arg2 pluginUUID:(id)arg3 pluginSessionID:(unsigned long long)arg4;
 @property double alphaValue; // @synthesize alphaValue;
 @property double blueValue; // @synthesize blueValue;
 @property double greenValue; // @synthesize greenValue;
@@ -38,7 +38,7 @@
 - (id)copy;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultRed:(double)arg3 defaultGreen:(double)arg4 defaultBlue:(double)arg5 defaultAlpha:(double)arg6 parameterFlags:(unsigned int)arg7 transactionType:(int)arg8 transactionID:(unsigned long long)arg9;
+- (id)initWithParameterID:(unsigned int)arg1 parameterName:(id)arg2 defaultRed:(double)arg3 defaultGreen:(double)arg4 defaultBlue:(double)arg5 defaultAlpha:(double)arg6 parameterFlags:(unsigned int)arg7 transactionType:(int)arg8 transactionID:(unsigned long long)arg9 pluginUUID:(id)arg10 pluginSessionID:(unsigned long long)arg11;
 
 @end
 

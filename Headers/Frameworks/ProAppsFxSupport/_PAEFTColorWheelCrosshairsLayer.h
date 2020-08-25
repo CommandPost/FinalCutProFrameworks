@@ -4,20 +4,24 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <ProAppsFxSupport/PAEOpenGLLayer.h>
+#import "CAMetalLayer.h"
 
-@interface _PAEFTColorWheelCrosshairsLayer : PAEOpenGLLayer
+@class MDPRenderingContext;
+
+@interface _PAEFTColorWheelCrosshairsLayer : CAMetalLayer
 {
     long long _phase;
     double _radiusValue;
     double _thetaValue;
+    MDPRenderingContext *_mdp_ctx;
 }
 
-- (void)drawInCGLContext:(struct _CGLContextObject *)arg1 pixelFormat:(struct _CGLPixelFormatObject *)arg2 forLayerTime:(double)arg3 displayTime:(const CDStruct_e50ab651 *)arg4;
+- (void)display;
 - (id)actionForKey:(id)arg1;
 - (void)setThetaValue:(double)arg1;
 - (void)setRadiusValue:(double)arg1;
 - (void)setPhase:(long long)arg1;
+- (void)dealloc;
 
 @end
 

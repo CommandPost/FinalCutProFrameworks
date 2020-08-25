@@ -6,7 +6,7 @@
 
 #import "CALayer.h"
 
-@class CATextLayer, FFBackgroundTask, FFImageLayer, FFMIORADAsset, FigTimeRangeAndObject, NSDate, NSSet, NSString;
+@class CATextLayer, FFAnchoredSequence, FFBackgroundTask, FFImageLayer, FFMIORADAsset, FFMediaRep, FFMediaRepDownloadController, FigTimeRangeAndObject, NSDate, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FFOrganizerFilmstripChunkImportProgressLayer : CALayer
@@ -29,13 +29,19 @@ __attribute__((visibility("hidden")))
     unsigned long long _spannedClipGlyphID;
     NSString *_ptpPercentageDonePath;
     NSString *_assetImportPercentageDonePath;
+    NSString *_repDLProgressPath;
+    FFAnchoredSequence *_cachedAnchoredSequence;
     FigTimeRangeAndObject *_rangeOfMedia;
+    FFMediaRep *_webMediaRep;
     NSDate *_creationDate;
+    FFMediaRepDownloadController *_dlController;
 }
 
 + (id)layerAsSubLayerOf:(id)arg1 filmstripCell:(id)arg2 rangeOfMedia:(id)arg3;
 + (BOOL)shouldDrawStillAsMovie:(id)arg1;
+@property(retain) FFMediaRepDownloadController *dlController; // @synthesize dlController=_dlController;
 @property(retain) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property(retain) FFMediaRep *webMediaRep; // @synthesize webMediaRep=_webMediaRep;
 @property unsigned long long progress; // @synthesize progress=_progress;
 @property(retain) FFMIORADAsset *radAsset; // @synthesize radAsset=_radAsset;
 - (void)setContentsScale:(double)arg1;
@@ -45,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)updateProgressIndicatorLayer;
 - (long long)themeDimension1ForProgress;
 - (void)setIsImporting:(BOOL)arg1;
+- (void)resetObserverAfterWebMediaAssetRelink;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)prepareWithRangeOfMedia:(id)arg1;
 - (id)stringFromDuration:(double)arg1;

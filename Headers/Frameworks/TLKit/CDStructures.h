@@ -48,6 +48,14 @@ struct _TLKRange {
     double length;
 };
 
+struct vector<CMTimeRange, std::__1::allocator<CMTimeRange>> {
+    CDStruct_183601bc *__begin_;
+    CDStruct_183601bc *__end_;
+    struct __compressed_pair<CMTimeRange *, std::__1::allocator<CMTimeRange>> {
+        CDStruct_183601bc *__value_;
+    } __end_cap_;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -63,6 +71,8 @@ typedef struct {
     unsigned int flags;
     long long epoch;
 } CDStruct_1b6d18a9;
+
+typedef struct CDStruct_183601bc;
 
 typedef struct {
     CDStruct_1b6d18a9 start;

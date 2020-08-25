@@ -63,6 +63,8 @@
 - (id)copyWithAdditionalOrFlags:(int)arg1;
 - (id)newSubRangeByReplacingActualMD5:(CDStruct_bdcb2b0d)arg1 idealMD5:(CDStruct_bdcb2b0d)arg2 replacementOpaqueBounds:(struct CGRect)arg3 replacementCost:(double)arg4;
 - (id)newSubRangeByReplacingActualMD5:(CDStruct_bdcb2b0d)arg1 idealMD5:(CDStruct_bdcb2b0d)arg2;
+- (id)newSubRangeByArbitaryData:(void *)arg1 length:(unsigned long long)arg2;
+- (id)newSubRangeByMergingMD5:(CDStruct_bdcb2b0d)arg1;
 - (id)newSubRangeByAddingOffset:(CDStruct_1b6d18a9)arg1 thenIntersectingWith:(CDStruct_e83c9415)arg2;
 - (id)newSubRangeByIntersectingWith:(CDStruct_e83c9415)arg1;
 - (id)newSubRangeByAddingOffset:(CDStruct_1b6d18a9)arg1;

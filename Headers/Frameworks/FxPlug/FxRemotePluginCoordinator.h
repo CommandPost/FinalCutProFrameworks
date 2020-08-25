@@ -18,6 +18,13 @@
     NSLock *sessionLock;
 }
 
+- (void)pluginSession:(unsigned long long)arg1 setHostKeyCommands:(id)arg2;
+- (void)pluginSession:(unsigned long long)arg1 endAnalysisWithReply:(CDUnknownBlockType)arg2;
+- (void)pluginSession:(unsigned long long)arg1 analyzeFrame:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)pluginSession:(unsigned long long)arg1 startAnalysisForRange:(CDStruct_5c5366e1)arg2 sampleDuration:(CDStruct_1b6d18a9)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)pluginSession:(unsigned long long)arg1 desiredAnalysisTimeRange:(CDStruct_5c5366e1)arg2 timingData:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)pluginSession:(unsigned long long)arg1 setAnalysisState:(unsigned long long)arg2;
+- (void)pluginSession:(unsigned long long)arg1 analysisLocation:(CDUnknownBlockType)arg2;
 - (void)tileablePlugin:(unsigned long long)arg1 isLeftValue:(id)arg2 equalTo:(id)arg3 forParameterID:(unsigned int)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)tileablePlugin:(unsigned long long)arg1 interpolateLeftData:(id)arg2 rightData:(id)arg3 atPercent:(float)arg4 forParameter:(unsigned int)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)OSCPlugin:(unsigned long long)arg1 mouseExitedAtPositionX:(double)arg2 positionY:(double)arg3 modifiers:(unsigned long long)arg4 atTime:(CDStruct_1b6d18a9)arg5 transactionID:(unsigned long long)arg6 reply:(CDUnknownBlockType)arg7;
@@ -30,6 +37,7 @@
 - (void)OSCPlugin:(unsigned long long)arg1 keyDownAtPositionX:(double)arg2 positionY:(double)arg3 keyPressed:(unsigned short)arg4 modifiers:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(CDUnknownBlockType)arg8;
 - (void)OSCPlugin:(unsigned long long)arg1 hitTestAtPositionX:(double)arg2 positionY:(double)arg3 atTime:(CDStruct_1b6d18a9)arg4 transactionID:(unsigned long long)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)OSCPlugin:(unsigned long long)arg1 drawWithWidth:(long long)arg2 height:(long long)arg3 activePart:(long long)arg4 destinationImage:(id)arg5 atTime:(CDStruct_1b6d18a9)arg6 transactionID:(unsigned long long)arg7 reply:(CDUnknownBlockType)arg8;
+- (void)OSCPlugin:(unsigned long long)arg1 setTimingData:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)OSCPlugin:(unsigned long long)arg1 drawingCoordinates:(CDUnknownBlockType)arg2;
 - (void)viewServiceListenerEndPoint:(CDUnknownBlockType)arg1;
 - (void)tileablePlugin:(unsigned long long)arg1 renderWithState:(id)arg2 withImageInputs:(id)arg3 withOutput:(id)arg4 rendererRegistryID:(unsigned long long)arg5 atTime:(CDStruct_1b6d18a9)arg6 withReply:(CDUnknownBlockType)arg7;
@@ -46,8 +54,12 @@
 - (void)addTileableParameters:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)restartOSCSession:(unsigned long long)arg1 pluginSessionID:(unsigned long long)arg2 forPlugInWithClass:(id)arg3 version:(unsigned int)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)restartSession:(unsigned long long)arg1 forPlugInWithClass:(id)arg2 version:(unsigned int)arg3 reply:(CDUnknownBlockType)arg4;
+- (id)pluginUUIDForClassName:(id)arg1;
 - (void)createOSCPlugInWithClass:(id)arg1 OSCUUID:(id)arg2 pluginSessionID:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)removePluginSession:(unsigned long long)arg1;
 - (void)createTileablePlugInWithClass:(id)arg1 UUID:(id)arg2 version:(unsigned int)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)tileablePlugin:(unsigned long long)arg1 fontURLsReply:(CDUnknownBlockType)arg2;
+- (void)setRenderingColorSpaces:(id)arg1;
 - (unsigned long long)threadTransactionID:(unsigned long long)arg1;
 - (id)apiManagerForPluginSessionID:(unsigned long long)arg1;
 - (unsigned int)checkOptionalMethods:(id)arg1;

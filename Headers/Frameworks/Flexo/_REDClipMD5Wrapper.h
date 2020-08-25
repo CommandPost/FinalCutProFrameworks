@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _REDClipMD5Wrapper : NSObject <NSSecureCoding>
 {
+    CDStruct_bdcb2b0d _md5Cache;
     int _colorSpace;
     int _gammaCurve;
     double _kelvin;
@@ -23,8 +24,7 @@ __attribute__((visibility("hidden")))
     double _contrast;
     double _brightness;
     double _exposure;
-    CDStruct_bdcb2b0d _md5Cache;
-    unsigned long long _ISO;
+    int _ISO;
 }
 
 + (BOOL)supportsSecureCoding;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) double DRX; // @synthesize DRX=_DRX;
 @property(readonly) double shadow; // @synthesize shadow=_shadow;
 @property(readonly) double FLUTControl; // @synthesize FLUTControl=_FLUTControl;
-@property(readonly) unsigned long long ISO; // @synthesize ISO=_ISO;
+@property(readonly) int ISO; // @synthesize ISO=_ISO;
 @property(readonly) double tint; // @synthesize tint=_tint;
 @property(readonly) double kelvin; // @synthesize kelvin=_kelvin;
 @property(readonly) int gammaCurve; // @synthesize gammaCurve=_gammaCurve;

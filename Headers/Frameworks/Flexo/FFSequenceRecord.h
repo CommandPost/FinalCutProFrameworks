@@ -17,9 +17,6 @@
 }
 
 + (id)documentType;
-- (void)determineLegacyMediaStatus;
-- (id)legacyMedia;
-- (long long)legacyMediaStatus;
 - (id)organizerDataItem;
 - (id)mdLocalValueForKey:(id)arg1;
 - (id)mdValueForKey:(id)arg1;
@@ -33,6 +30,7 @@
 - (id)sequenceInfo;
 - (id)sequence;
 - (id)project;
+- (id)essentialProperties;
 - (id)uniqueIdentifier;
 - (id)containerPropertyName;
 - (id)containerObject;

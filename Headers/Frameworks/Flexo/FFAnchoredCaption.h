@@ -7,12 +7,11 @@
 #import <Flexo/FFAnchoredComponent.h>
 
 #import "FFCaptionTextBlockDelegate.h"
-#import "FFInspectorTabDataSource.h"
 #import "NSCopying.h"
 
 @class NSMutableArray, NSMutableDictionary, NSString;
 
-@interface FFAnchoredCaption : FFAnchoredComponent <NSCopying, FFInspectorTabDataSource, FFCaptionTextBlockDelegate>
+@interface FFAnchoredCaption : FFAnchoredComponent <NSCopying, FFCaptionTextBlockDelegate>
 {
     NSMutableArray *_captionTextBlocks;
     NSString *_cachedText;
@@ -38,7 +37,6 @@
 - (long long)avCaptionCount;
 - (BOOL)canSplit;
 - (BOOL)hasSufficientDurationToSplitNumberOfCaptions:(long long)arg1;
-- (long long)captionITTRegionGroup;
 - (BOOL)isInSameITTRegionGroupAsCaption:(id)arg1;
 - (BOOL)allowsOverlapInITTRegionGroup;
 - (BOOL)isInSameITTRegionAsCaption:(id)arg1;
@@ -80,6 +78,7 @@
 - (id)textBlockAtIndex:(long long)arg1;
 - (void)setClippedRange:(CDStruct_e83c9415)arg1;
 - (CDStruct_e83c9415)unclippedRange;
+- (unsigned long long)captionFormatFromVendedRole;
 - (void)contentsHasChangedForTextBlock:(id)arg1;
 - (void)captionHasChanged;
 - (BOOL)canMoveBlock:(id)arg1 toCellY:(long long)arg2;
@@ -94,10 +93,6 @@
 - (BOOL)hasExtractableCaptions;
 - (BOOL)isCaption;
 - (void)setFormattingToDefaults;
-- (id)classNameForInspectorTabIdentifier:(id)arg1;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)inspectorTabClassNames;
 - (void)removeObjectFromCaptionTextBlocksAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 inCaptionTextBlocksAtIndex:(unsigned long long)arg2;
 - (id)initWithCoder:(id)arg1;
@@ -108,6 +103,11 @@
 - (BOOL)setErrors:(id)arg1 forClass:(id)arg2;
 - (BOOL)setErrors:(id)arg1;
 - (void)setupHasValidationErrors;
+- (void)update_avCaptionsToPCCaptions;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
+- (id)inspectorTabClassNames;
 
 @end
 

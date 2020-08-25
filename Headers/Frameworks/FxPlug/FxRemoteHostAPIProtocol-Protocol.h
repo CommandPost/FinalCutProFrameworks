@@ -7,6 +7,9 @@
 @class FxKeyframeParameterTransaction, FxOSCTransaction, FxParameterTransaction;
 
 @protocol FxRemoteHostAPIProtocol
+- (void)hostSession:(unsigned long long)arg1 performCommand:(unsigned long long)arg2 reply:(void (^)(BOOL, NSError *))arg3;
+- (void)hostSession:(unsigned long long)arg1 get3DDataAtTime:(CDStruct_1b6d18a9)arg2 reply:(void (^)(BOOL, NSError *, NSData *))arg3;
+- (void)hostSession:(unsigned long long)arg1 startAnalysis:(BOOL)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 processOSCTransaction:(FxOSCTransaction *)arg2 reply:(void (^)(FxOSCTransaction *))arg3;
 - (void)hostSession:(unsigned long long)arg1 handleUndoTransaction:(FxParameterTransaction *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 currentTime:(void (^)(struct, NSError *))arg3;
@@ -14,6 +17,7 @@
 - (void)hostSession:(unsigned long long)arg1 transactionID:(unsigned long long)arg2 startCustomParameterAction:(void (^)(NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 processKeyframeTransaction:(FxKeyframeParameterTransaction *)arg2 reply:(void (^)(BOOL, FxParameterTransaction *, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 processDynamic:(FxParameterTransaction *)arg2 atTime:(CDStruct_1b6d18a9)arg3 reply:(void (^)(BOOL, FxParameterTransaction *, NSError *))arg4;
+- (void)hostSession:(unsigned long long)arg1 parametersAtTime:(CDStruct_1b6d18a9)arg2 reply:(void (^)(BOOL, NSArray *, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 getFlagsFromParameter:(unsigned int)arg2 transactionID:(unsigned long long)arg3 reply:(void (^)(BOOL, unsigned int, NSError *))arg4;
 - (void)hostSession:(unsigned long long)arg1 addParameter:(FxParameterTransaction *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)hostSession:(unsigned long long)arg1 setValue:(FxParameterTransaction *)arg2 toParameter:(unsigned int)arg3 atTime:(CDStruct_1b6d18a9)arg4 reply:(void (^)(BOOL, NSError *))arg5;

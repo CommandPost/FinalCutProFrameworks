@@ -18,7 +18,7 @@
     BOOL _isSameVolume;
     BOOL _canOverwrite;
     unsigned long long _progressCounter;
-    float _progress;
+    // Error parsing type: Af, name: _progress
     BOOL _shouldValidate;
     int _operation;
     NSError *_error;

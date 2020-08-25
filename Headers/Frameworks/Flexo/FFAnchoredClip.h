@@ -37,7 +37,6 @@
 - (void)_clipRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)_assetRefs:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3 insideClipRefs:(BOOL)arg4 acrossEvents:(BOOL)arg5;
 - (void)_assets:(id)arg1 includeAnchored:(BOOL)arg2 activeOnly:(BOOL)arg3;
-- (long long)timecodeDisplayDropFrame;
 - (void)setTimecodeDisplayDropFrame:(long long)arg1;
 - (void)setOverrideAV:(int)arg1;
 - (void)_enumerateDescendentAnchoredObjectsWithOptions:(unsigned int)arg1 includeAnchored:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 descend:(char *)arg4 stop:(char *)arg5;

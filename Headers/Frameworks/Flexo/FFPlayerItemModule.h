@@ -6,7 +6,7 @@
 
 #import "LKViewModule.h"
 
-@class FFContext, FFPlayerModule, FFProvider, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol>;
+@class FFContext, FFPlayerModule, FFProvider, NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol>;
 
 @interface FFPlayerItemModule : LKViewModule
 {
@@ -20,7 +20,7 @@
 @property(readonly, nonatomic) long long effectCount; // @synthesize effectCount=_effectCount;
 @property(readonly, nonatomic) FFContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) FFProvider *provider; // @synthesize provider=_provider;
-@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFInspectableObject><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
+@property(readonly, nonatomic) NSObject<FFSkimmableProtocol><FFDataModelProtocol><FFAssetContainerProtocol> *skimmable; // @synthesize skimmable=_skimmable;
 - (id)selectedItems;
 - (id)inspectorClassName;
 - (void)updateLabel;

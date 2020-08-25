@@ -7,9 +7,19 @@
 #import "NSAttributedString.h"
 
 @interface NSAttributedString (FlexoUtilities)
++ (id)attributedStringWithString:(id)arg1 fontName:(id)arg2 pointSize:(double)arg3 color:(struct CGColor *)arg4 lineBreakMode:(unsigned char)arg5;
 - (id)capitalizedString;
 - (id)lowercaseString;
 - (id)uppercaseString;
 - (struct _NSRange)range;
+- (id)attributedStringsByLine;
+- (id)attributedStringByRemovingFirstLine;
+- (long long)glyphCountExcludingGlyphsWithoutPath;
+- (int)glyphCount;
+- (id)fixSpaceAndNewlineCharacters;
+- (id)fixBackSpaceCharacters;
+- (id)removeOriginalFontAttribute;
+- (id)substrings;
+- (id)attributedSubstrings;
 @end
 

@@ -12,6 +12,9 @@
 
 + (BOOL)supportsSecureCoding;
 + (id)copyClassDescription;
+- (id)videoProps;
+- (long long)timecodeDisplayDropFrame;
+- (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (id)initWithCoder:(id)arg1;
 - (CDStruct_e83c9415)mediaRange;
 - (BOOL)hasVideo;

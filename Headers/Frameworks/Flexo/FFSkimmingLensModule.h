@@ -6,21 +6,24 @@
 
 #import <Flexo/FFPlayerVideoModule.h>
 
-@class NSView;
+@class PCWeakPointerValue;
 
 __attribute__((visibility("hidden")))
 @interface FFSkimmingLensModule : FFPlayerVideoModule
 {
-    NSView *_viewForScreenID;
+    PCWeakPointerValue *_viewForScreenIDWeakPointer;
 }
 
-@property(nonatomic) NSView *viewForScreenID; // @synthesize viewForScreenID=_viewForScreenID;
+@property(retain) PCWeakPointerValue *viewForScreenIDWeakPointer; // @synthesize viewForScreenIDWeakPointer=_viewForScreenIDWeakPointer;
+- (void)setViewForScreenID:(id)arg1;
+- (id)copyViewForScreenID;
 - (unsigned int)displayForPlayerView;
 - (BOOL)isSkimmingLens;
 - (BOOL)playerUsesLayers;
 - (BOOL)acceptsFirstResponder;
 - (void)addOSC:(id)arg1;
 - (BOOL)shouldDrawVideoDest:(id)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

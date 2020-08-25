@@ -6,7 +6,12 @@
 
 #import "ILMediaObject.h"
 
-@interface ILMediaObject (FFAdditions)
+#import "FFImageBrowserRepresentedItem.h"
+#import "FFModelLocking.h"
+
+@class NSString;
+
+@interface ILMediaObject (FFAdditions) <FFModelLocking, FFImageBrowserRepresentedItem>
 - (id)ff_imagePath;
 - (id)ff_thumbnailPath;
 - (id)ff_originalPath;
@@ -30,5 +35,19 @@
 - (id)ff_displayDate;
 - (id)ff_contentType;
 - (id)ff_comments;
+- (id)modelLockingObject;
+- (BOOL)canBeRetimed;
+- (BOOL)canBeEnhanced;
+- (BOOL)isEvent;
+- (id)ffImageBrowserSubtitle;
+- (id)ffImageBrowserTitle;
+- (struct CGImage *)ffImageBrowserRepresentation;
+- (id)ffImageBrowserUID;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

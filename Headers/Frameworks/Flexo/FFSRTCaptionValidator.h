@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) NSCharacterSet *srtInvalidCharacterSet; // @synthesize srtInvalidCharacterSet=_srtInvalidCharacterSet;
 - (id)validateSRTCaptionArrayOverlap:(id)arg1 inTask:(id)arg2;
-- (BOOL)_topOrBottomRegion:(id)arg1;
 - (id)validateSRTCaptionCharacters:(id)arg1;
 - (id)_validateCaptionSequence:(id)arg1 forClass:(id)arg2 inTask:(id)arg3;
 - (id)_validateCaption:(id)arg1 forClass:(id)arg2;

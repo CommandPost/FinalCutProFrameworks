@@ -11,13 +11,16 @@
 @interface OZButtonCtlr : OZViewController
 {
     LKButton *_pButton;
+    BOOL _isFullWidth;
 }
 
+- (void)resizeColumnsLabelWidth:(float)arg1 paramWidth:(float)arg2;
 - (void)disable;
 - (void)enable;
 - (void)dealloc;
-- (id)initWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3 context:(id)arg4;
+- (id)initWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3 isFullWidth:(BOOL)arg4 context:(id)arg5;
 - (id)initWithChan:(struct OZChannelBase *)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4 context:(id)arg5;
+- (id)initWithChan:(struct OZChannelBase *)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4 isFullWidth:(BOOL)arg5 context:(id)arg6;
 
 @end
 

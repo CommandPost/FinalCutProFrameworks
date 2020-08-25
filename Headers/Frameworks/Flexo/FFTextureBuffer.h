@@ -31,6 +31,8 @@
 - (struct CGRect)bounds;
 - (unsigned int)texture;
 - (void)dealloc;
+-     // Error parsing type: @32@0:8^{HGMetalTexture=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}^{HGMetalTexturePool}{HGMTLDeviceType=@}{HGMTLTextureType=@}{HGRect=iiii}BBBB{mutex={_opaque_pthread_mutex_t=q[56c]}}{condition_variable={_opaque_pthread_cond_t=q[40c]}}}16@24, name: initWithMetalTexture:pixelFormat:
+- (id)initWithGLTexture:(unsigned int)arg1 bounds:(struct CGRect)arg2 pixelFormat:(id)arg3 virtualScreen:(int)arg4;
 -     // Error parsing type: @72@0:8I16{CGRect={CGPoint=dd}{CGSize=dd}}20@52i60^{HGMetalTexture=^^?{atomic<unsigned int>=AI}ii{HGRect=iiii}{HGRect=iiii}QQQ^v^v{HGEdgePolicy=i[4f]}^{HGObject}^{HGMetalTexturePool}{HGMTLDeviceType=@}{HGMTLTextureType=@}{HGRect=iiii}BBBB{mutex={_opaque_pthread_mutex_t=q[56c]}}{condition_variable={_opaque_pthread_cond_t=q[40c]}}}64, name: initWithTexture:bounds:pixelFormat:virtualScreen:metalTexture:
 
 @end

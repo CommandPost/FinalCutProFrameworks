@@ -113,10 +113,6 @@
         unsigned int respondsToIsPlayheadSkimming:1;
         unsigned int respondsToShouldSkimPlayhead:1;
         unsigned int respondsToChangedPlayheadTimeWithEmptySelection:1;
-        unsigned int respondsToLayoutSublayers:1;
-        unsigned int respondsToLayoutSublayersOfVideoLayer:1;
-        unsigned int respondsToLayoutSublayersOfAudioLayer:1;
-        unsigned int respondsToBadgeLayersForItem:1;
         unsigned int respondsToTimelineViewFrameDuration:1;
         unsigned int respondsToTimelineViewAudioSampleDuration:1;
         unsigned int respondsToUpdateItemSkimming:1;
@@ -129,7 +125,7 @@
         unsigned int respondsToDidSetCurrentHandler:1;
         unsigned int respondsToShouldOpenClipTrimmerForItem:1;
         unsigned int respondsToWillOpenClosePrecisionEditor:1;
-        unsigned int RESERVED:2;
+        unsigned int RESERVED:6;
     } _tlkDelegateFlags;
     struct {
         NSArray *items;
@@ -138,7 +134,7 @@
     } _tlkTrackingItems;
     NSMutableArray *_accessibilityChildrenCache;
     NSMutableArray *_accessibilityVisibleChildrenCache;
-    NSMutableSet *_visibleRectObservers;
+    BOOL _wantsFilmstrips;
     BOOL _enablePlayheadFocus;
     BOOL _showsSecondaryComponentConnectorOnSelectionOnly;
     BOOL _filmstripUpdatesEnabled;
@@ -151,6 +147,7 @@
     NSColor *_backgroundColor;
     long long _rulerStyle;
     long long _playheadType;
+    double _zoomPaddingFactor;
     double _topMargin;
     double _bottomMargin;
     TLKItemComponentInfo *_mainSelectedItemForNavigation;
@@ -163,19 +160,23 @@
     struct NSMapTable *_selectPreviousCache;
     NSHashTable *_backgroundOperations;
     NSHashTable *_foregroundOperations;
+    id <TLKVisibleRectNotifying> _visibleRectNotifier;
     TLKDelegateProxy *_delegateProxy;
     PCChangeLog *_pendingChangesForReload;
     struct CGRect _previousVisibleRect;
     struct CGRect _visibleRectForCurrentReloadOperation;
+    CDStruct_e83c9415 _visibleTimeRangeAfterZoom;
 }
 
 + (id)defaultOperationQueue;
++ (void)replaceAutoscrollAmountForEventMethodWith_tlkit_autoscrollAmountForEventMethod;
 @property(nonatomic) BOOL ignoresSizeToFitOnResizeWithOldSuperviewSize; // @synthesize ignoresSizeToFitOnResizeWithOldSuperviewSize=_ignoresSizeToFitOnResizeWithOldSuperviewSize;
-@property(readonly, nonatomic) NSSet *visibleRectObservers; // @synthesize visibleRectObservers=_visibleRectObservers;
 @property struct CGRect visibleRectForCurrentReloadOperation; // @synthesize visibleRectForCurrentReloadOperation=_visibleRectForCurrentReloadOperation;
+@property(nonatomic) CDStruct_e83c9415 visibleTimeRangeAfterZoom; // @synthesize visibleTimeRangeAfterZoom=_visibleTimeRangeAfterZoom;
 @property(readonly, nonatomic) PCChangeLog *pendingChangesForReload; // @synthesize pendingChangesForReload=_pendingChangesForReload;
 @property(retain, nonatomic) TLKDelegateProxy *delegateProxy; // @synthesize delegateProxy=_delegateProxy;
 @property(retain, nonatomic) TLKDataSourceProxy *dataSourceProxy; // @synthesize dataSourceProxy=_dataSourceProxy;
+@property(readonly, nonatomic) id <TLKVisibleRectNotifying> visibleRectNotifier; // @synthesize visibleRectNotifier=_visibleRectNotifier;
 @property(readonly, retain) NSHashTable *foregroundOperations; // @synthesize foregroundOperations=_foregroundOperations;
 @property(readonly, retain) NSHashTable *backgroundOperations; // @synthesize backgroundOperations=_backgroundOperations;
 @property(readonly) NSMapTable *selectPreviousCache; // @synthesize selectPreviousCache=_selectPreviousCache;
@@ -193,6 +194,7 @@
 @property(readonly, nonatomic) BOOL showsSecondaryComponentConnectorOnSelectionOnly; // @synthesize showsSecondaryComponentConnectorOnSelectionOnly=_showsSecondaryComponentConnectorOnSelectionOnly;
 @property(nonatomic) double bottomMargin; // @synthesize bottomMargin=_bottomMargin;
 @property(nonatomic) double topMargin; // @synthesize topMargin=_topMargin;
+@property(nonatomic) double zoomPaddingFactor; // @synthesize zoomPaddingFactor=_zoomPaddingFactor;
 @property(nonatomic) double rightPadding; // @synthesize rightPadding=_rightPadding;
 @property(nonatomic) double leftPadding; // @synthesize leftPadding=_leftPadding;
 @property CDStruct_1b6d18a9 minimumEditDuration; // @synthesize minimumEditDuration=_minimumEditDuration;
@@ -201,6 +203,7 @@
 @property TLKPlayheadMarker *playheadMarker; // @synthesize playheadMarker=_playheadMarker;
 @property double minEnforcedWidth; // @synthesize minEnforcedWidth=_minEnforcedWidth;
 @property(nonatomic) long long rulerStyle; // @synthesize rulerStyle=_rulerStyle;
+@property BOOL wantsFilmstrips; // @synthesize wantsFilmstrips=_wantsFilmstrips;
 @property(retain) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) struct CGRect previousVisibleRect; // @synthesize previousVisibleRect=_previousVisibleRect;
 @property(nonatomic) long long playheadFocus; // @synthesize playheadFocus=_playheadFocus;
@@ -214,10 +217,6 @@
 - (struct CGColor *)dependantItemSelectionColorRef;
 - (struct CGColor *)itemSelectionColorRef;
 - (void)updatePlayheadFocus:(long long)arg1;
-- (void)releaseWriteLock;
-- (void)aquireWriteLock;
-- (void)releaseReadLock;
-- (void)aquireReadLock;
 - (void)setCurveEditorDraggedItem:(id)arg1;
 - (void)setSuspendLayerUpdatesForAnchoredClips:(BOOL)arg1;
 @property(readonly) BOOL isScrolling;
@@ -293,6 +292,7 @@
 - (BOOL)canOpenPrecisionEditor;
 - (BOOL)canOpenPrecisionEditorForItem:(id)arg1;
 - (BOOL)_isItemValidForPrecisionEditor:(id)arg1;
+- (void)openPrecisionEditorImmediately;
 - (void)openPrecisionEditor;
 - (void)closePrecisionEditor;
 - (void)openPreviousPrecisionEditorItem;
@@ -421,6 +421,8 @@
 - (void)_setLegacyScrollers;
 - (CDStruct_1b6d18a9)staticTimeWhenTrimmingEdge:(id)arg1 trimType:(int)arg2 ofItem:(id)arg3;
 - (BOOL)_isUsingTrimHandlerWithDispatcher:(id)arg1;
+- (id)newFormattedTimecodeStringForTime:(CDStruct_1b6d18a9)arg1;
+- (void)logPMREventIfEnabledForDidScrollToStopwatch:(id)arg1;
 - (id)findItemLayersNeedingUpdateScrollingFromVisibleRect:(struct CGRect)arg1 toRect:(struct CGRect)arg2;
 - (void)_optimisedUpdateLayerFramesFromRect:(struct CGRect)arg1 toRect:(struct CGRect)arg2;
 - (void)_optionallyUpdateLayerFrames;
@@ -442,6 +444,7 @@
 - (void)setDisableAutoZooming:(BOOL)arg1;
 - (void)_delayHeightUpdate;
 @property double audioWaveFormProportion;
+- (BOOL)hasLayerTreeBeenInitializedForSizeToFitOperation;
 - (void)resizeWithOldSuperviewSize:(struct CGSize)arg1;
 - (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
 - (void)sizeToFit;
@@ -475,7 +478,7 @@
 @property BOOL waitToBecomeFirstResponder;
 @property BOOL scrollDuringPlayback;
 @property int clipDisplayContents; // @synthesize clipDisplayContents=_clipDisplayContents;
-@property BOOL showClipTitlesOnly;
+@property(readonly) BOOL showClipTitlesOnly;
 - (CDStruct_1b6d18a9)timePerPointAtLocation:(double)arg1;
 - (CDStruct_e83c9415)visibleTimeRangeForItem:(id)arg1;
 - (CDStruct_e83c9415)visibleTimeRange;
@@ -553,11 +556,13 @@
 - (BOOL)shouldUpdateLayerFrames;
 - (void)_delayEnableAnimations;
 @property BOOL disableAnimations;
+- (void)enableAnimationsImmediately;
 - (id)precisionEditorTrimBar;
 - (id)precisionEditorDividerBar;
 @property(readonly) TLKGuideLayer *guideLayer;
 - (struct CGRect)nonWrappingFrameForItemComponent:(id)arg1;
 - (id)framesForItemComponent:(id)arg1;
+- (struct CGRect)nonWrappingFrameForItem:(id)arg1;
 - (id)framesForItem:(id)arg1;
 - (struct CGRect)_layerFrameForPotentiallyOffscreenItemComponentFragment:(id)arg1;
 - (id)framesForComponentInfo:(id)arg1;
@@ -615,6 +620,8 @@
 @property id <TLKTimelineViewDelegate> delegate;
 @property(readonly, copy) NSString *debugDescription;
 - (void)dealloc;
+- (void)performCommonInitialization;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)updateAccessibilityCache;
 - (void)invalidateAccessibilityCache;
@@ -653,10 +660,6 @@
 - (void)eventDispatcher:(id)arg1 didSetCurrentHandler:(id)arg2;
 - (void)eventDispatcher:(id)arg1 willSetCurrentHandler:(id)arg2;
 - (CDStruct_e83c9415)_subframeRoundedRangeForTime:(CDStruct_1b6d18a9)arg1;
-- (id)badgeLayersForItem:(id)arg1 currentBadges:(id)arg2;
-- (void)layoutSublayersOfAudioLayer:(id)arg1 forItem:(id)arg2;
-- (void)layoutSublayersOfVideoLayer:(id)arg1 forItem:(id)arg2;
-- (void)layoutSublayers:(id)arg1 forItem:(id)arg2 needsLayout:(BOOL)arg3;
 - (void)_autoscrollNonWrappedTimelineForFrame:(struct CGRect)arg1 scroll:(BOOL)arg2;
 - (void)_updatePlayheadPositionAnimate:(BOOL)arg1 scroll:(BOOL)arg2;
 - (void)_updateXPositionOfPlayhead;
@@ -670,8 +673,7 @@
 - (void)setZoomStep:(long long)arg1;
 - (void)zoomInByStep:(long long)arg1;
 - (void)zoomToFit:(id)arg1;
-- (void)zoomToRange:(CDStruct_e83c9415)arg1 withPadding:(double)arg2;
-- (void)zoomToRange:(CDStruct_e83c9415)arg1;
+- (void)zoomToRange:(CDStruct_e83c9415)arg1 withPaddingFactor:(double)arg2;
 @property double zoomFactor;
 @property int viewMaximumZoomAmount;
 - (void)zoomByFactor:(double)arg1;

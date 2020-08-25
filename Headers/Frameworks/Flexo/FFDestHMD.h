@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 
 + (void)initialize;
 - (id).cxx_construct;
-- (void)notifyDestPlayerChangedRenderLocation:(int)arg1;
+- (void)notifyDestPlayerChangedRenderLocation:(const struct FxDeviceSet *)arg1;
 - (_Bool)performOverfullRecovery;
 - (_Bool)supportsOverfullRecovery;
 - (void)checkForUpdatedImageLocation;
@@ -49,13 +49,13 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)queueDuration;
 - (void)setSampleDuration:(CDStruct_1b6d18a9)arg1 fieldDominance:(int)arg2 sequenceBounds:(struct CGRect)arg3 sequenceCameraMode:(int)arg4;
 - (BOOL)internal_wantsDithering:(id)arg1;
-- (void)_recalculateRequestedImageInfo:(int)arg1;
+- (void)_recalculateRequestedImageInfo:(const struct FxDeviceSet *)arg1;
 - (void)_queueRecalcRequestedImageInfo;
 - (id)requestedImageInfo;
 - (void)_establishHMDPrefColorSpace;
 - (int)influenceOnExecLocation;
-- (int)_queueLocation;
-- (int)_actualHMDLocation;
+- (struct FxDevice *)_queueLocation;
+- (struct FxDevice *)_actualHMDLocation;
 - (void)_recordDroppedFrame:(id)arg1;
 - (void)dealloc;
 - (id)init;

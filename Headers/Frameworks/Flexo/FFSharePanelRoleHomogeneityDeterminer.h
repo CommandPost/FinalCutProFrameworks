@@ -21,10 +21,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long filter; // @synthesize filter=_filter;
 @property(copy, nonatomic) NSArray *destinations; // @synthesize destinations=_destinations;
 @property(copy, nonatomic) NSArray *sources; // @synthesize sources=_sources;
-- (id)allRolesForObject:(id)arg1;
-- (id)unlockedActiveRolesWithSequence:(id)arg1 canExcludeDisabledRoles:(BOOL)arg2;
-- (id)activeRolesWithSequence:(id)arg1 canExcludeDisabledRoles:(BOOL)arg2;
-- (id)activeRolesWithSource:(id)arg1 canExcludeDisabledRoles:(BOOL)arg2;
+- (id)activeRolesWithSource:(id)arg1 canUseTimelinePlayback:(BOOL)arg2;
 - (void)iterateFFRolesWithRoot:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)unlockedRoleDefinitionsWithRole:(id)arg1;
 - (id)roleDefintionsWithRole:(id)arg1;

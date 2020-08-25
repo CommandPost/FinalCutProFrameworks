@@ -9,7 +9,7 @@
 #import "FFPlayerVideoScopesModuleDelegate.h"
 #import "NSSplitViewDelegate.h"
 
-@class LKButton, LKTextField, NSArray, NSMapTable, NSString, NSView, PEScopesContainerView, PEScopesSettingsViewController;
+@class LKButton, LKTextField, NSArray, NSMapTable, NSMutableDictionary, NSString, NSView, PEScopesContainerView, PEScopesSettingsViewController;
 
 @interface PEScopesContainerModule : LKViewModule <FFPlayerVideoScopesModuleDelegate, NSSplitViewDelegate>
 {
@@ -19,7 +19,10 @@
     LKTextField *_colorSpaceLabel;
     long long _scopesLayoutMode;
     BOOL _layoutScopesVertically;
+    BOOL _ignoreSplitViewResizing;
+    BOOL _ignoreGlobalPropsChanges;
     NSMapTable *_scopesSpecifiedViews;
+    NSMutableDictionary *_scopesSplitterPositions;
     PEScopesContainerView *_1x2SplitView;
     NSArray *_2x2SplitViews;
     PEScopesSettingsViewController *_settingsViewController;
@@ -29,12 +32,13 @@
 @property(nonatomic) LKButton *layoutButton; // @synthesize layoutButton=_layoutButton;
 @property(nonatomic) PEScopesContainerView *scopesView; // @synthesize scopesView=_scopesView;
 @property(nonatomic) NSView *paneCapView; // @synthesize paneCapView=_paneCapView;
+- (void)splitViewDidResizeSubviews:(id)arg1;
+- (unsigned long long)_indexForSplitView:(id)arg1;
 - (double)splitView:(id)arg1 constrainMaxCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (double)splitView:(id)arg1 constrainMinCoordinate:(double)arg2 ofSubviewAt:(long long)arg3;
 - (BOOL)splitView:(id)arg1 canCollapseSubview:(id)arg2;
 - (BOOL)splitView:(id)arg1 shouldAdjustSizeOfSubview:(id)arg2;
 - (id)availableLayoutModes;
-- (void)didChangeGlobalPropertiesForVideoScopes;
 - (void)didChangePropertiesForVideoScope:(id)arg1;
 - (void)videoScope:(id)arg1 wantsToChangeSelectedScope:(id)arg2;
 - (BOOL)isLayoutDisplayAreaVertically;
@@ -61,16 +65,23 @@
 - (void)updateColorSpaceLabelForSkimmable:(struct NSObject *)arg1;
 - (void)updateScopesInfo:(id)arg1 withPlayerModules:(id)arg2;
 - (void)updatePlayerModules:(id)arg1 withScopesInfo:(id)arg2;
+- (void)_syncViewsToSplitterPositions;
+- (void)_assignSplitterPosition:(double)arg1 atIndex:(unsigned long long)arg2 layoutMode:(long long)arg3;
 - (id)_identifierForLayoutMode:(long long)arg1;
 - (void)_videoScope:(id)arg1 wantsToChangeSelectedScope:(id)arg2 forLayoutMode:(long long)arg3;
 - (id)_selectedScopeAtIndex:(unsigned long long)arg1 forLayoutMode:(long long)arg2;
 - (void)_setSelectedScope:(id)arg1 atIndex:(unsigned long long)arg2 forLayoutMode:(long long)arg3;
 - (void)_assignDefaultScopesSpecifiedViews;
 - (void)_assignDefaultScopesSpecifiedViewsForLayoutMode:(long long)arg1;
-- (unsigned long long)_neededScopesCountForLayoutMode:(long long)arg1;
+- (unsigned long long)_expectedSplitterPositionsCountForLayoutMode:(long long)arg1;
+- (unsigned long long)_expectedScopesCountForLayoutMode:(long long)arg1;
+- (void)_updateSplitterPositionsForLayoutMode:(long long)arg1 splitterPositions:(id)arg2;
+- (id)_splitterPositionsForLayoutMode:(long long)arg1 vertically:(BOOL)arg2;
 - (id)_specifiedScopesViewsForLayoutMode:(long long)arg1;
 - (void)dealloc;
 - (id)initWithScopesInfo:(id)arg1;
+- (void)_globalPropsChanged:(id)arg1;
+- (BOOL)_tryUpdateScopesInfo:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

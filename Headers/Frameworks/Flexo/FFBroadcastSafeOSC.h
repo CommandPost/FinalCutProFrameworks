@@ -11,8 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)supportsMetalRendering;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (void)addRectangle:(struct CGRect)arg1 width:(double)arg2 color:(id)arg3 collection: /* Error: Ran out of types for this method. */;
+- (void)_addLineToArray:(id)arg1 point:color: /* Error: Ran out of types for this method. */;
 - (BOOL)isAvailableDuringPlayback;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 
 @end

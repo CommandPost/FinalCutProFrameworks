@@ -58,7 +58,6 @@
 - (void)timelineIndex:(id)arg1 setHighlightedState:(BOOL)arg2 forLanes:(id)arg3;
 - (void)timelineIndex:(id)arg1 setFocusState:(BOOL)arg2 forLanes:(id)arg3 extendFocus:(BOOL)arg4;
 - (void)timelineIndex:(id)arg1 setArrangedState:(BOOL)arg2 forLanes:(id)arg3;
-- (void)_setAudioVideoEnabledState:(BOOL)arg1 forLanes:(id)arg2;
 - (void)timelineIndex:(id)arg1 setEnabledState:(BOOL)arg2 forLanes:(id)arg3;
 - (void)forceTimelineDataSyncWithChangeLog:(id)arg1;
 - (void)resolveLaneConflicts;

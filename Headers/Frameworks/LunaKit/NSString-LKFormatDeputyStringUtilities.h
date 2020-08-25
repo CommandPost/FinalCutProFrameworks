@@ -11,5 +11,7 @@
 - (id)stringWithLocalizedDecimalSeparatorForDot;
 - (id)stringWithDigitSpacesForLeadingZeroes;
 - (unsigned long long)unsignedLongLongValue;
+- (id)stringByRemovingModifiers;
+- (long long)compareStringLength:(id)arg1;
 @end
 

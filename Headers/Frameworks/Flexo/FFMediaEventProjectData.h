@@ -8,7 +8,7 @@
 
 #import "NSSecureCoding.h"
 
-@class FFAnchoredSequence, FFMediaEventProject, NSMapTable, NSMutableSet, NSSet;
+@class FFAnchoredSequence, FFMediaEventProject, NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface FFMediaEventProjectData : FFBaseDSObject <NSSecureCoding>
@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_ownedClips;
     NSMutableSet *_ownedMedia;
     FFAnchoredSequence *_sequence;
-    NSMapTable *_mediaIdentifierToAssetMap;
-    NSMapTable *_fileNameToAssetMap;
-    NSMapTable *_md5StringToAssetMap;
+    // Error parsing type: A@, name: _mediaIdentifierToAssetMap
+    // Error parsing type: A@, name: _fileNameToAssetMap
+    // Error parsing type: A@, name: _md5StringToAssetMap
     NSMutableSet *_undoneOwnedMedia;
     NSMutableSet *_ownedClipsToProcess;
     NSMutableSet *_ownedClipsNotToDisplay;
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)addClipsWithRangesFromURLs:(id)arg1 withURLsInfo:(id)arg2 manageFileType:(int)arg3 processNow:(BOOL)arg4 warnClipsAlreadyExist:(BOOL)arg5 isUserInitiatedImport:(BOOL)arg6 isImportingFromImovie:(BOOL)arg7 keywordSets:(id)arg8 metadata:(id)arg9 validateFiles:(BOOL)arg10;
 - (id)addClipsFromURLs:(id)arg1 withURLsInfo:(id)arg2 manageFileType:(int)arg3 processNow:(BOOL)arg4 warnClipsAlreadyExist:(BOOL)arg5 isUserInitiatedImport:(BOOL)arg6 isImportingFromImovie:(BOOL)arg7 keywordSets:(id)arg8 metadata:(id)arg9 validateFiles:(BOOL)arg10;
 - (void)cleanupInProject:(id)arg1;
+- (id)_simpleClipForClip:(id)arg1 withinClips:(id)arg2;
 - (id)eventSimpleClipForClip:(id)arg1;
 - (id)md5StringToAssetMap;
 - (id)fileNameToAssetMap;
@@ -53,8 +54,10 @@ __attribute__((visibility("hidden")))
 - (id)findAssetByMD5String:(id)arg1;
 - (id)resolveMediaIdentifier:(id)arg1;
 - (id)displayOwnedClips;
+- (void)removeMD5StringAlias:(id)arg1 forMediaObject:(id)arg2;
 - (void)removeOwnedMedia:(id)arg1;
 - (void)removeOwnedMediaObject:(id)arg1;
+- (void)addMD5StringAlias:(id)arg1 forMediaObject:(id)arg2;
 - (void)addOwnedMedia:(id)arg1;
 - (void)addOwnedMediaObject:(id)arg1;
 - (void)removeOwnedClips:(id)arg1;

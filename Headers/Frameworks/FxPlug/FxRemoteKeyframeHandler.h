@@ -8,14 +8,16 @@
 
 #import "FxKeyframeAPI_v3.h"
 
-@class FxRemotePluginCoordinator;
+@class FxRemotePluginCoordinator, NSString;
 
 @interface FxRemoteKeyframeHandler : NSObject <FxKeyframeAPI_v3>
 {
     FxRemotePluginCoordinator *pluginCoordinator;
     unsigned long long sessionID;
+    NSString *pluginUUID;
 }
 
+@property(retain) NSString *pluginUUID; // @synthesize pluginUUID;
 @property unsigned long long sessionID; // @synthesize sessionID;
 @property(retain) FxRemotePluginCoordinator *pluginCoordinator; // @synthesize pluginCoordinator;
 - (id)keyframe:(struct FxKeyframe *)arg1 atOrAfterTime:(CDStruct_1b6d18a9)arg2 fromParameter:(unsigned long long)arg3 andChannel:(unsigned long long)arg4;
@@ -31,7 +33,7 @@
 - (id)hostAPIHandlerAsyncForFunction:(const char *)arg1;
 - (id)hostAPIHandlerSyncForFunction:(const char *)arg1;
 - (void)dealloc;
-- (id)initWithPluginCoordinator:(id)arg1 andHostSessionID:(unsigned long long)arg2;
+- (id)initWithPluginCoordinator:(id)arg1 pluginUUID:(id)arg2 andHostSessionID:(unsigned long long)arg3;
 
 @end
 

@@ -24,8 +24,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) CDStruct_2689111f editRate; // @synthesize editRate;
 @property(retain) NSString *name; // @synthesize name;
 @property(readonly) int trackType; // @synthesize trackType;
+- (long long)editPositionWithMedia:(id)arg1 cursor:(const struct HPMEditCursor *)arg2 chunkStartPosition:(int *)arg3;
 - (list_3f44f5c8 *)copyChunkEntriesWithStartCursor:(const struct HPMEditCursor *)arg1 endCursor:(const struct HPMEditCursor *)arg2 startOffset:(unsigned long long *)arg3 dataSize:(unsigned long long *)arg4;
-- (const CDStruct_37d50165 *)chunkEntryRefWithCursor:(const struct HPMEditCursor *)arg1 startOffset:(unsigned long long *)arg2;
 - (CDStruct_37d50165)chunkEntryWithCursor:(const struct HPMEditCursor *)arg1 startOffset:(unsigned long long *)arg2;
 - (int)codecTypeWithCursor:(const struct HPMEditCursor *)arg1;
 - (BOOL)samplesWithLaterDecodeTimeStampsThanCursor:(const struct HPMEditCursor *)arg1 mayHaveEarlierPresentationTimeStampsThanCursor:(const struct HPMEditCursor *)arg2;

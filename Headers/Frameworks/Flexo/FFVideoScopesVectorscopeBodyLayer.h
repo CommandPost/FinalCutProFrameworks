@@ -4,19 +4,51 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Flexo/FFVideoScopesBodyLayer.h>
+#import <Flexo/FFVideoScopesLayer.h>
+
+#import "FFVideoScopesMetalLayers.h"
+
+@class FFVectorscopeChannelLayer, FFVectorscopeGraticuleUnitsLayer, FFVectorscopeHueRingLayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFVideoScopesVectorscopeBodyLayer : FFVideoScopesBodyLayer
+@interface FFVideoScopesVectorscopeBodyLayer : FFVideoScopesLayer <FFVideoScopesMetalLayers>
 {
+    FFVectorscopeChannelLayer *_channelLayer;
+    FFVectorscopeHueRingLayer *_hueRingLayer;
+    FFVectorscopeGraticuleUnitsLayer *_graticuleUnitsLayer;
+    BOOL _hideLabels;
+    // Error parsing type: Aq, name: _phase
+    // Error parsing type: Aq, name: _barTarget
+    // Error parsing type: Ai, name: _colorSpaceType
+    // Error parsing type: ^{FFVideoScopesVectorscopeRenderer=^{Instance}{FFVideoScopesLocking<FFVideoScopesVectorscopeRenderer::Instance>=^{Instance}{FFConditionLock=^^?^{_opaque_pthread_t}I{_opaque_pthread_mutex_t=q[56c]}{_opaque_pthread_cond_t=q[40c]}q}{atomic<unsigned int>=AI}{atomic<unsigned int>=AI}}}, name: _renderer
 }
 
-+ (id)vectorscopeBodyLayer;
-- (id)actionForKey:(id)arg1;
-- (void)setDelegate:(id)arg1;
-- (void)hideGraticuleLabels:(BOOL)arg1;
++ (id)layer;
+- (void)drawVideoScopesWithMtlContext:(struct PAEMtlContext *)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)invalidateVideoScopesRenderer;
+- (void)updateVideoScopesWithWithField1:(id)arg1 field2:(id)arg2 fieldMode:(long long)arg3 mtlContext:(struct PAEMtlContext *)arg4;
+- (void)layoutSublayers;
+- (void)_layoutGraticuleUnitsLayer:(id)arg1 bounds:(struct CGRect)arg2;
+- (void)_layoutBarTargetLabelLayer:(id)arg1 bounds:(struct CGRect)arg2;
+- (void)setBounds:(struct CGRect)arg1;
+- (id)settingsButton;
+- (id)label;
+- (void)setColorSpaceType:(int)arg1;
+- (void)setBarTarget:(long long)arg1;
+- (void)setPhase:(long long)arg1;
+- (void)setShowSkinToneIndicator:(BOOL)arg1;
+- (void)setShowIandQ:(BOOL)arg1;
 - (void)setMonochrome:(BOOL)arg1;
 - (void)setTraceBrightness:(float)arg1;
+- (void)_buildSublayers;
+- (void)dealloc;
+- (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

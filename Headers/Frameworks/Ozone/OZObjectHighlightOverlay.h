@@ -6,9 +6,11 @@
 
 #import <Ozone/OZOverlay.h>
 
-@class NSDictionary, NSMutableArray, PODrawableTexture;
+#import "POOnScreenControlMetalRendering.h"
 
-@interface OZObjectHighlightOverlay : OZOverlay
+@class NSDictionary, NSMutableArray, NSString, PODrawableTexture;
+
+@interface OZObjectHighlightOverlay : OZOverlay <POOnScreenControlMetalRendering>
 {
     _Bool _isEnabled;
     unsigned int _flags;
@@ -23,12 +25,10 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)outlineHighlightPrimitive:(id)arg1 c1:(PCVector2_79efa81a *)arg2 c2:(PCVector2_79efa81a *)arg3 c3:(PCVector2_79efa81a *)arg4 c4:(PCVector2_79efa81a *)arg5;
-- (id)namePrimitive:(id)arg1 atPoint:(PCVector2_79efa81a *)arg2;
-- (id)getMetalDrawPrimitives:(id)arg1;
-- (BOOL)doesSupportMetal;
+- (id)newNamePrimitive:(id)arg1 atPoint:(PCVector2_79efa81a *)arg2;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (BOOL)shouldDraw;
-- (void)drawName:(id)arg1 atPoint:(PCVector2_79efa81a *)arg2;
+- (void)drawName:(id)arg1 atPoint:(const PCVector2_79efa81a *)arg2;
 - (void)drawOutlineHighlight:(PCVector2_79efa81a *)arg1 c2:(PCVector2_79efa81a *)arg2 c3:(PCVector2_79efa81a *)arg3 c4:(PCVector2_79efa81a *)arg4 color:(const struct PCColor *)arg5;
 - (int)hitCheck:(id)arg1;
 - (struct OZObjectManipulator *)hitCheckNode:(id)arg1;
@@ -44,6 +44,12 @@
 - (id)shadowForBackingScale:(int)arg1;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

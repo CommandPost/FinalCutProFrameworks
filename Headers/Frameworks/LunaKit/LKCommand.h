@@ -72,6 +72,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_initWithCommandIdentifier:(id)arg1 dictionary:(id)arg2 bundle:(id)arg3;
 - (id)initWithCommandIdentifier:(id)arg1 dictionary:(id)arg2;
+- (id)initWithCommandIdentifier:(id)arg1 action:(SEL)arg2;
 
 @end
 

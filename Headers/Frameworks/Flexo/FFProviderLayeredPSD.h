@@ -21,8 +21,14 @@ __attribute__((visibility("hidden")))
     CDStruct_bdcb2b0d _md5;
 }
 
++ (id)primeProviderForRemoteURL:(id)arg1;
++ (BOOL)supportsRemoteURLs;
++ (id)offlineVideoSourceKeysForVideoSourceCount:(long long)arg1 isStill:(BOOL)arg2;
 + (id)extensions;
 + (id)utis;
++ (BOOL)isStill;
++ (BOOL)canHaveAudio;
++ (BOOL)canHaveVideo;
 @property(readonly) unsigned int layerCount; // @synthesize layerCount=_layerCount;
 - (CDStruct_bdcb2b0d)_md5WithContext:(id)arg1;
 - (id)nativeVideoProps;
@@ -35,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)setFlat;
 - (id)initWithAssetFileID:(id)arg1;
+- (id)assetFileID;
 
 @end
 

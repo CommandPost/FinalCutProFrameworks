@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface FFHGFanoutResultInternal : FFHGAsyncFanoutResult
 {
     FFImageAbsoluteOutputFormat *_format;
-    int _location;
+    const struct FxDeviceSet *_location;
     struct HGRect _roi;
     PCMatrix44Double *_pt;
     unsigned int _field;
@@ -42,15 +42,15 @@ __attribute__((visibility("hidden")))
 - (id)newImage;
 -     // Error parsing type: v24@0:8^{HGRenderNode=^^?{atomic<unsigned int>=AI}^{HGNode}^{HGBitmap}{HGRect=iiii}iBiii{shared_ptr<const HGComputeDevice>=^{HGComputeDevice}^{__shared_weak_count}}{HGRef<HGGLContext>=^{HGGLContext}}Bdddd^{HGPixelBufferObj}Q^v*^?d^{HGRenderer}^{HGRenderJob}^{HGRenderQueue}}16, name: setRenderNode:
 - (struct CGColorSpace *)colorSpace;
-- (void)setLocation:(int)arg1;
-- (int)location;
+- (void)setLocation:(const struct FxDeviceSet *)arg1;
+- (const struct FxDeviceSet *)location;
 - (void)setQueue:(id)arg1 job:(id)arg2;
 - (void)registerForNodeCallbacks;
 - (void)_callbackRan;
 - (id)description;
 - (void)_nodeDidFinish;
 - (void)dealloc;
-- (id)initWithFormat:(id)arg1 location:(int)arg2 roi:(struct HGRect)arg3 pixelTransform:(id)arg4 field:(unsigned int)arg5 dithered:(BOOL)arg6 background:(int)arg7 zebraMode:(unsigned int)arg8;
+- (id)initWithFormat:(id)arg1 location:(const struct FxDeviceSet *)arg2 roi:(struct HGRect)arg3 pixelTransform:(id)arg4 field:(unsigned int)arg5 dithered:(BOOL)arg6 background:(int)arg7 zebraMode:(unsigned int)arg8;
 
 @end
 

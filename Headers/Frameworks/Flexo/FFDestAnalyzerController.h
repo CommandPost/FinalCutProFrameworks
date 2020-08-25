@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FFAnchoredObject *anchoredObject; // @synthesize anchoredObject=_anchoredObject;
 - (int)createDataFiles;
 - (void)dealloc;
+- (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 anchoredObject:(id)arg2 asset:(id)arg3;
 - (id)initWithSampleDuration:(CDStruct_1b6d18a9)arg1 clip:(id)arg2 asset:(id)arg3;
 
 @end

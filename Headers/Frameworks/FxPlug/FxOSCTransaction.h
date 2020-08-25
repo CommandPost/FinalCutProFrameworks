@@ -35,11 +35,13 @@
 @property unsigned long long toSpace; // @synthesize toSpace;
 @property unsigned long long fromSpace; // @synthesize fromSpace;
 @property int oscTransactionType; // @synthesize oscTransactionType;
+- (id)description;
+- (id)stringForSubTransactionType;
 - (id)copy;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)initWithTransactionID:(unsigned long long)arg1;
+- (id)initWithTransactionID:(unsigned long long)arg1 pluginUUID:(id)arg2 pluginSessionID:(unsigned long long)arg3;
 - (id)init;
 
 @end

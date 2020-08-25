@@ -8,14 +8,16 @@
 
 #import "FxOnScreenControlAPI_v4.h"
 
-@class FxRemotePluginCoordinator;
+@class FxRemotePluginCoordinator, NSString;
 
 @interface FxRemoteOSCHandler : NSObject <FxOnScreenControlAPI_v4>
 {
     FxRemotePluginCoordinator *pluginCoordinator;
     unsigned long long hostSessionID;
+    NSString *pluginUUID;
 }
 
+@property(retain) NSString *pluginUUID; // @synthesize pluginUUID;
 @property unsigned long long hostSessionID; // @synthesize hostSessionID;
 @property FxRemotePluginCoordinator *pluginCoordinator; // @synthesize pluginCoordinator;
 - (void)setCursor:(id)arg1;
@@ -31,7 +33,8 @@
 - (void)convertPointFromSpace:(unsigned long long)arg1 fromX:(double)arg2 fromY:(double)arg3 toSpace:(unsigned long long)arg4 toX:(double *)arg5 toY:(double *)arg6;
 - (id)hostAPIHandlerAsyncForFunction:(const char *)arg1;
 - (id)hostAPIHandlerSyncForFunction:(const char *)arg1;
-- (id)initWithPluginCoordinator:(id)arg1 andHostSessionID:(unsigned long long)arg2;
+- (void)dealloc;
+- (id)initWithPluginCoordinator:(id)arg1 pluginUUID:(id)arg2 andHostSessionID:(unsigned long long)arg3;
 
 @end
 

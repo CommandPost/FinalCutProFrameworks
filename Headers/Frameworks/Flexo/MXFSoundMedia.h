@@ -27,6 +27,9 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned int bitsPerChannel; // @synthesize bitsPerChannel=_bitsPerChannel;
 @property(readonly) unsigned int channels; // @synthesize channels=_channels;
 @property(readonly) CDStruct_2689111f sampleRate; // @synthesize sampleRate=_sampleRate;
+- (void)decodeChannelMappingWithDescriptor:(const struct MXKLV *)arg1 sourcePack:(const struct MXPackage *)arg2;
+- (unsigned int)bubbleSizeWithTrackEditRate:(CDStruct_2689111f)arg1;
+- (void)decodeWithEssenceContainer:(const struct MXKey16 *)arg1;
 - (int)stepInPresentationOrderWithCount:(long long)arg1 displayPosition:(long long *)arg2 decodePosition:(long long *)arg3 mustLoadAtMediaIndexPosition:(long long *)arg4;
 - (int)stepInDecodeOrderWithCount:(long long)arg1 displayPosition:(long long *)arg2 decodePosition:(long long *)arg3 mustLoadAtMediaIndexPosition:(long long *)arg4;
 - (long long)decodePositionWithDisplayPosition:(long long)arg1 mustLoadAtMediaIndexPosition:(long long *)arg2;
@@ -37,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) BOOL hasChannelTags;
 @property(readonly) long long indexDataSize;
 - (void)dealloc;
-- (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXKey *)arg2 bodySID:(unsigned int)arg3 sourcePack:(const struct MXPackage *)arg4 sourceTrackIndex:(int)arg5;
+- (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXUMID *)arg2 bodySID:(unsigned int)arg3 sourcePack:(const struct MXPackage *)arg4 sourceTrackIndex:(int)arg5;
 
 // Remaining properties
 @property(readonly) unsigned int bytesPerSample;

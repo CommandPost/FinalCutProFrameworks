@@ -14,16 +14,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_streamProcessedMD5AndOffsets;
     struct FFSynchronizable *_denoiseLock;
     struct FFThread *_denoiseLockHolder;
-    struct _VPA_NR_AcceleratorInterface *_appleVPAApi;
+    struct _HFVPA_NR_AcceleratorInterface *_appleVPAApi;
     void *_filter;
-    struct VPA_NR_InstanceCreateParams_BM3D _createParams;
-    struct VPA_NR_UserConfigParams_BM3D _userParams;
-    struct VPA_NR_UserConfigParams_BM3D _outUserParams;
+    struct HFVPA_NR_InstanceCreateParams_BM3D _createParams;
+    struct HFVPA_NR_UserConfigParams_BM3D _userParams;
+    struct HFVPA_NR_UserConfigParams_BM3D _outUserParams;
     unsigned long long _sourceProcessedNumber;
 }
 
 + (id)sharedInstance:(int)arg1;
-- (int)processFrame:(struct VPA_NR_ProcessFrameParams_BM3D)arg1 processKey:(id)arg2;
+- (int)processFrame:(struct HFVPA_NR_ProcessFrameParams_BM3D)arg1 processKey:(id)arg2;
 - (void)unLock;
 - (void)lock;
 - (void)removeMd5AndOffsetFromBotom;
@@ -31,13 +31,13 @@ __attribute__((visibility("hidden")))
 - (void)addMd5AndOffset:(id)arg1;
 - (BOOL)currentProcessedMD5sMatchToProcessMD5sApartFromLast:(id)arg1;
 - (BOOL)currentProcessedMD5sMatchToProcessMD5s:(id)arg1;
-- (BOOL)createFilterWithParams:(struct VPA_NR_InstanceCreateParams_BM3D)arg1 userParams:(struct VPA_NR_UserConfigParams_BM3D)arg2;
-- (void)updateUserParams:(struct VPA_NR_UserConfigParams_BM3D)arg1;
-- (struct VPA_NR_UserConfigParams_BM3D)getFilterAutomaticParams;
-- (BOOL)setUserParams:(struct VPA_NR_UserConfigParams_BM3D)arg1;
+- (BOOL)createFilterWithParams:(struct HFVPA_NR_InstanceCreateParams_BM3D)arg1 userParams:(struct HFVPA_NR_UserConfigParams_BM3D)arg2;
+- (void)updateUserParams:(struct HFVPA_NR_UserConfigParams_BM3D)arg1;
+- (struct HFVPA_NR_UserConfigParams_BM3D)getFilterAutomaticParams;
+- (BOOL)setUserParams:(struct HFVPA_NR_UserConfigParams_BM3D)arg1;
 - (long long)sourceProcessedNumber:(BOOL)arg1;
 - (void)resetFilter;
-- (BOOL)filterCreateParamsEqual:(struct VPA_NR_InstanceCreateParams_BM3D)arg1 userParams:(struct VPA_NR_UserConfigParams_BM3D)arg2;
+- (BOOL)filterCreateParamsEqual:(struct HFVPA_NR_InstanceCreateParams_BM3D)arg1 userParams:(struct HFVPA_NR_UserConfigParams_BM3D)arg2;
 - (void)dealloc;
 - (id)init;
 

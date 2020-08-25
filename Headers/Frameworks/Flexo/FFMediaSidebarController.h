@@ -28,10 +28,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LKViewModule *containerModule; // @synthesize containerModule=_containerModule;
 @property(retain, nonatomic) FFMediaSidebarNode *mediaRootNode; // @synthesize mediaRootNode=_mediaRootNode;
 @property(nonatomic) BOOL isConfigured; // @synthesize isConfigured=_isConfigured;
-- (void)_pauseResumeDownload:(BOOL)arg1;
-- (void)_pauseDownload:(id)arg1;
-- (void)_resumeDownload:(id)arg1;
-- (BOOL)_anyDownloadableMediaForSelectedEvent;
+- (void)_startDownloads:(id)arg1;
+- (BOOL)_canStartDownloads;
+- (id)_assetsForSelectedEvents;
 - (void)_forceEmptySelection:(id)arg1;
 - (void)_printRootNode:(id)arg1;
 - (void)_printTargetedNodes:(id)arg1;
@@ -48,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)validateUserInterfaceItem:(id)arg1;
 - (void)addDebugMenuItems:(id)arg1;
 - (BOOL)sidebarIsVisible;
+- (void)addItem:(id)arg1 toPasteboardItem:(id)arg2 forType:(id)arg3;
 - (void)addItem:(id)arg1 toPasteboard:(id)arg2 forType:(id)arg3;
 - (BOOL)hasSectionNodes;
 - (void)addNodes:(id)arg1 toArray:(id)arg2 includingStartingNode:(BOOL)arg3 recursively:(BOOL)arg4;
@@ -75,8 +75,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)outlineView:(id)arg1 shouldEditTableColumn:(id)arg2 item:(id)arg3;
 - (BOOL)outlineView:(id)arg1 shouldShowOutlineCellForItem:(id)arg2;
 - (double)outlineView:(id)arg1 heightOfRowByItem:(id)arg2;
-- (void)outlineView:(id)arg1 willDisplayCell:(id)arg2 forTableColumn:(id)arg3 item:(id)arg4;
-- (id)outlineView:(id)arg1 dataCellForTableColumn:(id)arg2 item:(id)arg3;
 - (id)outlineView:(id)arg1 namesOfPromisedFilesDroppedAtDestination:(id)arg2 forDraggedItems:(id)arg3;
 - (BOOL)outlineView:(id)arg1 acceptDrop:(id)arg2 item:(id)arg3 childIndex:(long long)arg4;
 - (unsigned long long)outlineView:(id)arg1 validateDrop:(id)arg2 proposedItem:(id)arg3 proposedChildIndex:(long long)arg4;
@@ -84,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)setupDragAndDropSupport;
 - (BOOL)acceptDrop:(id)arg1 onNode:(id)arg2 atChildIndex:(long long)arg3;
 - (unsigned long long)validateDrop:(id)arg1 onNode:(id)arg2 atChildIndex:(long long)arg3;
+- (void)addNodes:(id)arg1 toPasteboardItem:(id)arg2 inDraggingPasteboard:(id)arg3;
 - (void)addNodes:(id)arg1 toPasteboard:(id)arg2;
 - (id)dragTypesForNodes:(id)arg1;
 - (BOOL)containsOnlyDraggableNodes:(id)arg1;

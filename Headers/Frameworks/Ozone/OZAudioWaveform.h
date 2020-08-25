@@ -45,8 +45,7 @@
 - (void)processStereoBuffer:(char *)arg1 samples:(unsigned int)arg2;
 - (void)processMonoBuffer:(char *)arg1 samples:(unsigned int)arg2;
 - (void)processBuffer:(char *)arg1 samples:(unsigned int)arg2;
-- (void)drawCurrentTime:(struct CGRect)arg1;
-- (void)drawCurveEditor:(struct CGRect)arg1;
+- (void)drawBackground;
 - (void)displayRangeModified:(CDStruct_e83c9415)arg1;
 - (void)drawEndpoints;
 - (void)drawWaveform:(struct CGRect)arg1;

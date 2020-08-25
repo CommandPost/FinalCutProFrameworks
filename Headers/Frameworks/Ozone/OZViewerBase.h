@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <Ozone/OZMTKView.h>
+#import <Ozone/OZMetalLayerView.h>
 
 #import "OZObjCObserver.h"
 
-@interface OZViewerBase : OZMTKView <OZObjCObserver>
+@interface OZViewerBase : OZMetalLayerView <OZObjCObserver>
 {
     struct OZDocument *_document;
     struct OZViewerState *_pViewerState;

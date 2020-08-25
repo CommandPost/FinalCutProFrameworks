@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <MTLDevice> device; // @synthesize device=_device;
 @property struct CGSize FFViewportSize; // @synthesize FFViewportSize=_FFViewportSize;
 - (void)dealloc;
+- (unsigned long long)missingImageAction;
 - (struct CGColor *)backgroundColor;
 - (void)_updateBackgroundColorIfNeeded;
 - (void)viewDidChangeBackingProperties;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillMoveToWindow:(id)arg1;
 - (struct CGSize)_pixelSizeFromPointSize:(struct CGSize)arg1;
 - (float)_backingScale;
+- (void)_drawEmptyFrame:(id)arg1;
 - (void)__containerViewDidUpdateFrames:(id)arg1;
 - (void)__containerViewWillUpdateFrames:(id)arg1;
 - (void)__containerViewDidChangeLayout:(id)arg1;
@@ -55,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1 device:(id)arg2;
 - (void)__initCommon;
 - (BOOL)displayLinkCanDraw;
+- (void)drawEmptyFrame;
 - (void)draw;
 
 @end

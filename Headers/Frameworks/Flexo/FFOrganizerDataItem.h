@@ -6,13 +6,14 @@
 
 #import "NSObject.h"
 
+#import "FFModelLock.h"
 #import "FFModelLocking.h"
 #import "FFOrganizerClassTypeProtocol.h"
 
 @class FFAnchoredSequence, FFLibrary, FFSequenceInfo, FFSequenceRecord, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FFOrganizerDataItem : NSObject <FFModelLocking, FFOrganizerClassTypeProtocol>
+@interface FFOrganizerDataItem : NSObject <FFModelLock, FFModelLocking, FFOrganizerClassTypeProtocol>
 {
     FFAnchoredSequence *_sequence;
     FFSequenceRecord *_sequenceRecord;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_readUnlock;
 - (void)_readLock;
 - (id)modelObject;
+- (id)modelLockingObject;
 - (id)sequenceInflateIfNecessary:(BOOL)arg1;
 - (CDStruct_1b6d18a9)sampleDurationForTemporalResolutionMode:(int)arg1;
 @property(readonly, nonatomic) NSString *persistentID;
@@ -51,6 +53,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithSequenceRecord:(id)arg1;
 - (id)initWithSequence:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

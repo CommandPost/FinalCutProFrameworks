@@ -26,16 +26,17 @@
 @property(nonatomic) unsigned int prerollTime; // @synthesize prerollTime=_prerollTime;
 @property(nonatomic) BOOL showOSC; // @synthesize showOSC=_showOSC;
 @property(nonatomic) CDStruct_1b6d18a9 startTime; // @synthesize startTime=_startTime;
+- (BOOL)supportsMetalRendering;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (void)reset;
 - (void)startAnimation;
 - (BOOL)shouldDrawUsingDrawProperties:(id)arg1;
 - (BOOL)isAvailableDuringPlayback;
-- (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
-- (void)consumerVoiceOverCircleWithColors:(id)arg1 rect:(struct CGRect)arg2 cgl_ctx:(struct _CGLContextObject *)arg3;
+- (void)consumerVoiceOverCircleWithColors:(id)arg1 rect:(struct CGRect)arg2 renderer:(id)arg3;
 - (void)_resetConsumerCircles:(BOOL)arg1;
 - (void)_setCountdownTextAttributes;
-- (void)_setupTextures:(struct _CGLContextObject *)arg1;
+- (void)_setupTextures;
 - (void)dealloc;
 - (id)init;
 

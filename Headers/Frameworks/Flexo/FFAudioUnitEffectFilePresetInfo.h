@@ -11,14 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface FFAudioUnitEffectFilePresetInfo : NSObject
 {
-    NSString *m_presetPath;
-    int m_presetType;
+    NSString *_presetPath;
+    unsigned long long _presetType;
 }
 
-@property(readonly, nonatomic) int presetType; // @synthesize presetType=m_presetType;
-@property(readonly, nonatomic) NSString *presetPath; // @synthesize presetPath=m_presetPath;
+@property(readonly, nonatomic) NSString *presetPath; // @synthesize presetPath=_presetPath;
+@property(readonly, nonatomic) unsigned long long presetType; // @synthesize presetType=_presetType;
+- (BOOL)isEqualToFilePresetInfo:(id)arg1;
 - (void)dealloc;
-- (id)initWithPresetPath:(id)arg1 andPresetType:(int)arg2;
+- (id)initWithPresetType:(unsigned long long)arg1 presetPath:(id)arg2;
 
 @end
 

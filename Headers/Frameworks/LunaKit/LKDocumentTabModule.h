@@ -4,9 +4,9 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <LunaKit/LKTearOffTabModule.h>
+#import <LunaKit/LKTabModule.h>
 
-@interface LKDocumentTabModule : LKTearOffTabModule
+@interface LKDocumentTabModule : LKTabModule
 {
     void *_reserved13;
     void *_reserved14;
@@ -19,7 +19,6 @@
 - (BOOL)_loadLazy;
 - (void)windowWillClose:(id)arg1;
 - (id)tabView:(id)arg1 contextMenuForTabViewItem:(id)arg2;
-- (id)newTabViewForWinModule:(id)arg1 usingLayout:(id)arg2;
 - (void)tabView:(id)arg1 willSelectTabViewItem:(id)arg2;
 - (BOOL)tabView:(id)arg1 canInsertTabViewItem:(id)arg2;
 - (void)_documentController:(id)arg1 didCloseDocuments:(BOOL)arg2 contextInfo:(void *)arg3;

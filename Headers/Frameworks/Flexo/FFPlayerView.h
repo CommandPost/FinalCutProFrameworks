@@ -8,7 +8,7 @@
 
 #import "NSTextInputClient.h"
 
-@class FFHitTestContextObject, FFPlayerVideoModule;
+@class FFHitTestContextObject, FFPlayerVideoModule, MDPRenderController;
 
 __attribute__((visibility("hidden")))
 @interface FFPlayerView : FFVideoView <NSTextInputClient>
@@ -92,10 +92,10 @@ __attribute__((visibility("hidden")))
 - (void)activeToolDidChange:(id)arg1;
 - (void)viewDidChangeBackingProperties;
 - (void)reshape:(id)arg1;
-- (void)clearViewToBackgroundColor;
+@property(readonly, nonatomic) MDPRenderController *hitTestMDPContext;
 @property(readonly, nonatomic) struct _CGLContextObject *hitTestContext;
+- (pair_2a2d2e3d)_internalHitTestContext;
 - (void)_updateMetalLayerDestVideo;
-- (void)viewWillDraw;
 - (int)virtualScreen;
 - (void)renewGState;
 - (void)viewDidMoveToWindow;

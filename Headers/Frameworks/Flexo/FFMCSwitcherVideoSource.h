@@ -23,11 +23,8 @@ __attribute__((visibility("hidden")))
 + (void)_sendAngleCountNotification:(id)arg1;
 @property(readonly, nonatomic) FFSourceVideo *chosen; // @synthesize chosen=_chosen;
 - (void)_multiAngleOffsetOrCountHasChangedSelectorOnMainThread:(id)arg1;
-- (BOOL)writerIsWaiting;
-- (void)_readUnlock;
-- (void)_readLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
+- (id)modelObject;
+- (id)modelLockingObject;
 - (CDStruct_1b6d18a9)timecodeFrameDuration;
 - (long long)timecodeDisplayDropFrame;
 - (id)newSubRangeMD5InfoForSampleDuration:(CDStruct_1b6d18a9)arg1 atTime:(CDStruct_1b6d18a9)arg2 context:(id)arg3;

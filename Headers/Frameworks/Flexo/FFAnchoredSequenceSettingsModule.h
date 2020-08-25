@@ -8,7 +8,7 @@
 
 #import "NSTextFieldDelegate.h"
 
-@class FFLibrary, FFProject, NSButton, NSInvocation, NSPopUpButton, NSString, NSTextField, NSView;
+@class FFLibrary, FFProject, NSButton, NSInvocation, NSPopUpButton, NSSet, NSString, NSTextField, NSView;
 
 @interface FFAnchoredSequenceSettingsModule : FFSettingsModule <NSTextFieldDelegate>
 {
@@ -40,6 +40,7 @@
     NSButton *multiAngleDisableAudioComponentsOnAVClips;
     NSButton *timecodeDisplayDropFrame;
     NSTextField *startingTimecode;
+    NSButton *autoReframeProcessing;
     NSView *locationGroup;
     NSView *customSettingsGroup;
     NSView *mediaEventSettingsGroup;
@@ -59,6 +60,7 @@
     BOOL _createAutomatically;
     BOOL _userModifySettings;
     BOOL _canShowCustomSettings;
+    BOOL _canShowAutoReframe;
     int _sequenceType;
     BOOL _createNotModify;
     FFProject *_project;
@@ -68,12 +70,15 @@
     CDStruct_1b6d18a9 _clipSampleDuration;
     int _clipFieldDominance;
     struct CGColorSpace *_clipColorSpace;
+    NSSet *_supportedPropsBasedFormatNames;
     FFLibrary *_defaultSelectedLibrary;
 }
 
 + (void)updateDefaultSettingsDisplayFormat:(id)arg1 displaySize:(id)arg2 displayRate:(id)arg3 timecodeDisplayDropFrame:(BOOL)arg4 startTimeString:(id)arg5 renderFormat:(id)arg6 audioSampleRate:(unsigned long long)arg7 audioChannelCount:(unsigned long long)arg8 createAutomatically:(BOOL)arg9 createCompoundClipAutomatically:(BOOL)arg10 createSynchronizedClipAutomatically:(BOOL)arg11 syncClipSyncBy:(int)arg12 syncClipFineSyncByAudio:(BOOL)arg13 syncClipDisableAudioComponentsOnAVClips:(BOOL)arg14 createMultiCamAutomatically:(BOOL)arg15 multiAngleSyncBy:(int)arg16 multiAngleArrangeBy:(int)arg17 multiAngleOrderBy:(int)arg18 multiAngleFineSyncByAudio:(BOOL)arg19 cameraMode:(int)arg20;
 @property(retain, nonatomic) FFLibrary *defaultSelectedLibrary; // @synthesize defaultSelectedLibrary=_defaultSelectedLibrary;
+@property(retain, nonatomic) NSSet *supportedPropsBasedFormatNames; // @synthesize supportedPropsBasedFormatNames=_supportedPropsBasedFormatNames;
 @property(nonatomic) int sequenceType; // @synthesize sequenceType=_sequenceType;
+@property(nonatomic) BOOL canShowAutoReframe; // @synthesize canShowAutoReframe=_canShowAutoReframe;
 @property(nonatomic) BOOL canShowCustomSettings; // @synthesize canShowCustomSettings=_canShowCustomSettings;
 - (void)setClipColorSpace:(struct CGColorSpace *)arg1;
 - (void)setClipFieldDominance:(int)arg1;
@@ -81,7 +86,8 @@
 - (void)setClipSize:(struct CGSize)arg1;
 - (BOOL)validate:(id *)arg1;
 - (void)_clearStrongReferencesToLibraryObjectsOnClose;
-- (void)closingWithCode:(int)arg1;
+- (void)executeCompletionAfterClose:(id)arg1 returnCode:(int)arg2;
+- (int)closingWithCode:(int)arg1;
 - (BOOL)control:(id)arg1 textView:(id)arg2 doCommandBySelector:(SEL)arg3;
 @property(nonatomic) unsigned int audioChannelCount;
 - (BOOL)automaticAudioChannelCount;
@@ -89,6 +95,7 @@
 - (BOOL)automaticAudioSampleRate;
 @property(nonatomic) NSString *renderFormat;
 - (void)changeStartingTimecode:(id)arg1;
+- (void)changeAutoReframeProcessing:(id)arg1;
 - (void)changeTimecodeDisplay:(id)arg1;
 - (void)changeCameraMode:(id)arg1;
 - (void)changeColorSpace:(id)arg1;
@@ -117,6 +124,7 @@
 - (void)viewWasInstalled;
 - (BOOL)loadView;
 - (void)_configCreationSettings;
+- (BOOL)createNotModifyPreferExistingSettings;
 - (BOOL)createAutomatically;
 - (void)toggleCreationSettings;
 - (void)_validateEventNameForLibrary:(id)arg1;
@@ -132,6 +140,7 @@
 - (void)_buildFormatMenu;
 - (void)_updateStartTimeString;
 - (void)_updateTimecodeDisplay;
+- (void)_updateUIForAutoReframe;
 - (void)_updateStartingTimecodeWithFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)_setStartingTimecode:(CDStruct_1b6d18a9)arg1 timeString:(id)arg2 frameDuration:(CDStruct_1b6d18a9)arg3;
 - (void)setMixedTCTracksClockTime:(BOOL)arg1;

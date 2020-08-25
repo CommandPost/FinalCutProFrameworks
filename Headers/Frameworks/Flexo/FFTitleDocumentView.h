@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property(retain) NSString *name; // @synthesize name=_name;
 - (void)mouseDown:(id)arg1;
+- (void)dealloc;
 
 @end
 

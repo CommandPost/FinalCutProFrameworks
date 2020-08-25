@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class FFContext, FFImageBrowserCell, FFImageBrowserView, NSArray, NSEvent, NSImage, NSIndexSet, NSMenu, NSPasteboard, NSURL;
+@class FFContext, FFImageBrowserCell, FFImageBrowserView, NSArray, NSArray<NSPasteboardWriting>, NSEvent, NSImage, NSIndexSet, NSMenu, NSPasteboard, NSURL;
 
 @protocol FFImageBrowserDelegate <NSObject>
 
@@ -23,8 +23,11 @@
 - (void)imageBrowser:(FFImageBrowserView *)arg1 mouseExited:(NSEvent *)arg2;
 - (NSArray *)imageBrowser:(FFImageBrowserView *)arg1 namesOfPromisedFilesDroppedAtDestination:(NSURL *)arg2 forItemsAtIndexes:(NSIndexSet *)arg3;
 - (NSArray *)imageBrowser:(FFImageBrowserView *)arg1 promisedFileTypesForDraggingItemsAtIndexes:(NSIndexSet *)arg2;
+- (void)imageBrowser:(FFImageBrowserView *)arg1 willWriteItemsAtIndex:(NSIndexSet *)arg2 toPasteboard:(NSPasteboard *)arg3;
+- (NSArray<NSPasteboardWriting> *)imageBrowser:(FFImageBrowserView *)arg1 pasteboardWritersForItemsAtIndexes:(NSIndexSet *)arg2;
 - (BOOL)imageBrowser:(FFImageBrowserView *)arg1 writeItemsAtIndexes:(NSIndexSet *)arg2 toPasteboard:(NSPasteboard *)arg3;
 - (unsigned long long)imageBrowser:(FFImageBrowserView *)arg1 sourceOperationMaskForDraggingContext:(long long)arg2;
+- (NSArray *)imageBrowser:(FFImageBrowserView *)arg1 draggingImageComponentsForItemAtIndex:(long long)arg2;
 - (NSImage *)imageBrowser:(FFImageBrowserView *)arg1 draggingImageForItemsAtIndexes:(NSIndexSet *)arg2 withEvent:(NSEvent *)arg3 offset:(struct CGPoint *)arg4;
 - (BOOL)imageBrowser:(FFImageBrowserView *)arg1 canDragItemsAtIndexes:(NSIndexSet *)arg2 withEvent:(NSEvent *)arg3;
 - (void)imageBrowser:(FFImageBrowserView *)arg1 willAddCell:(FFImageBrowserCell *)arg2;

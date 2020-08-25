@@ -17,11 +17,7 @@
 }
 
 @property(readonly) NSObject<FFMetadataProtocol> *wrapped; // @synthesize wrapped=_ao;
-- (BOOL)writerIsWaiting;
-- (void)_readUnlock;
-- (void)_readLock;
-- (void)_writeUnlock;
-- (void)_writeLock;
+- (id)modelLockingObject;
 - (id)metadataSelectionDuration;
 - (void)setMetadataSelectionDuration:(id)arg1;
 - (BOOL)validateMetadataSelectionDuration:(id *)arg1 error:(id *)arg2;

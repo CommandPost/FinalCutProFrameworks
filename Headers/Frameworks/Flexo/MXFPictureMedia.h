@@ -50,31 +50,29 @@ __attribute__((visibility("hidden")))
 @property(readonly) long long indexDataSize;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXKey *)arg2 bodySID:(unsigned int)arg3 descriptor:(const struct MXKLV *)arg4 subDescriptor:(const struct MXKLV *)arg5 essenceContainers:(const struct MXArray *)arg6 mxfVersion:(unsigned int)arg7;
+- (id)initWithTrack:(const struct MXTrack *)arg1 sourcePackID:(const struct MXUMID *)arg2 bodySID:(unsigned int)arg3 descriptor:(const struct MXKLV *)arg4 subDescriptor:(const struct MXKLV *)arg5 essenceContainers:(const struct MXArray *)arg6 mxfVersion:(unsigned int)arg7;
 
 // Remaining properties
-@property int YCbCrMatrix;
 @property(readonly) CDStruct_2689111f aspectRatio;
 @property(readonly) unsigned int bytesPerSample;
 @property(readonly) int codecType;
-@property int colorPrimaries;
+@property(readonly) struct MXFColorComponents *colorComponents;
+@property(readonly) struct MXFColorSpace *colorSpace;
 @property(readonly, copy) NSString *debugDescription;
 @property struct __CFDictionary *descriptiveMetadata;
 @property(readonly) int displayYOffset;
 @property(readonly) CDStruct_2689111f editRate;
 @property(readonly) int essenceType;
-@property(readonly) int fieldInfo;
 @property(readonly) long long frameDuration;
-@property int gamma;
+@property(readonly) unsigned int frameHeight;
 @property(readonly) unsigned long long hash;
-@property(readonly) unsigned int height;
 @property(readonly) unsigned long long indexEntryCount;
 @property long long indexSampleCount;
-@property(readonly) BOOL isInterlaced;
 @property(readonly) BOOL isValid;
 @property(readonly) long long origin;
 @property(readonly) long long originInSamples;
 @property(readonly) CDStruct_2689111f sampleRate;
+@property(readonly) const struct CTMScanInfo *scanInfo;
 @property(readonly) long long startPosition;
 @property(readonly) unsigned int storedHeight;
 @property(readonly) unsigned int storedWidth;

@@ -63,7 +63,7 @@
 - (void)selectTransitionsMode:(id)arg1;
 - (void)selectEffectsMode:(id)arg1;
 - (void)selectBrowserModeCore:(int)arg1;
-- (unsigned long long)labelAlignment;
+- (long long)labelAlignment;
 - (id)lastKeyView;
 - (id)firstKeyView;
 - (void)moduleDidUnhide;

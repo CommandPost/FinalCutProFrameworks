@@ -8,13 +8,12 @@
 
 #import "FFInspectableObject.h"
 #import "FFInspectorTabDataSource.h"
-#import "FFLegacyMediaChecking.h"
 #import "FFLibraryCocoaScripting.h"
 
 @class FFLibrary, FFMediaEventProject, FFModelDocument, NSDictionary, NSMutableSet, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FFLibraryItem : FFModelObject <FFLibraryCocoaScripting, FFInspectableObject, FFInspectorTabDataSource, FFLegacyMediaChecking>
+@interface FFLibraryItem : FFModelObject <FFInspectableObject, FFInspectorTabDataSource, FFLibraryCocoaScripting>
 {
     FFLibraryItem *_parentItem;
     NSString *_relativePath;
@@ -22,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_childItems;
     FFModelDocument *_document;
     NSURL *_cachedURLAtClose;
+    // Error parsing type: AQ, name: _customReleaseState
 }
 
 + (BOOL)_removeFiles:(id)arg1 error:(id *)arg2;
@@ -30,9 +30,6 @@ __attribute__((visibility("hidden")))
 + (id)documents;
 + (id)copyClassDescription;
 @property(readonly, nonatomic) FFLibraryItem *parentItem; // @synthesize parentItem=_parentItem;
-- (void)determineLegacyMediaStatus;
-- (id)legacyMedia;
-- (long long)legacyMediaStatus;
 - (void)_enumerateMediaEventProjectsWithOptions:(unsigned int)arg1 usingBlock:(CDUnknownBlockType)arg2 stop:(char *)arg3;
 - (void)enumerateMediaEventProjectsWithOptions:(unsigned int)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)_verifyRoleSetsMatchLibraryRoleSet:(id)arg1 exactly:(BOOL)arg2;
@@ -68,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)addChildItemsObject:(id)arg1;
 - (void)didRemoveChildItemsObject:(id)arg1 fromParent:(id)arg2;
 - (void)didAddChildItemsObject:(id)arg1 toParent:(id)arg2;
+- (id)childItemNamed:(id)arg1;
 - (id)childItems;
 - (void)applyItemsToBlock:(CDUnknownBlockType)arg1;
 - (void)setMetaValue:(id)arg1 forKey:(id)arg2;
@@ -79,12 +77,6 @@ __attribute__((visibility("hidden")))
 - (id)uniqueRelativePath:(id)arg1;
 - (id)uniqueDisplayName;
 @property(readonly, nonatomic) NSString *displayName;
-- (id)labelForInspectorTabIdentifier:(id)arg1;
-- (id)classNameForInspectorTabIdentifier:(id)arg1;
-- (id)inspectorTabIdentifiers;
-- (id)inspectorIdentifier;
-- (id)inspectorDisplayName;
-- (id)inspectorClassName;
 - (id)identifierForProxyEvent;
 - (void)setIdentifierForProxyEvent:(id)arg1;
 @property(copy, nonatomic) NSString *relativePath;
@@ -107,8 +99,9 @@ __attribute__((visibility("hidden")))
 - (void)performWithoutUndo:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (oneway void)release;
 - (void)willDealloc;
+- (void)customFinalize;
+-     // Error parsing type: ^AQ16@0:8, name: customReleaseState
 - (void)dealloc;
 - (id)initWithIdentifier:(id)arg1 filename:(id)arg2 error:(id *)arg3;
 - (id)initWithParent:(id)arg1 name:(id)arg2 error:(id *)arg3;
@@ -118,9 +111,17 @@ __attribute__((visibility("hidden")))
 - (id)newDocument:(id)arg1 catalog:(id)arg2 create:(int)arg3 error:(id *)arg4;
 - (Class)_documentClassForType:(id)arg1;
 - (id)documentType;
+- (id)labelForInspectorTabIdentifier:(id)arg1;
+- (id)classNameForInspectorTabIdentifier:(id)arg1;
+- (id)inspectorTabIdentifiers;
+- (id)inspectorIdentifier;
+- (id)inspectorDisplayName;
+- (id)inspectorClassName;
 - (id)objectSpecifier;
 - (id)containerPropertyName;
 - (id)containerObject;
+- (id)essentialProperties;
+- (id)uniqueIdentifier;
 
 @end
 

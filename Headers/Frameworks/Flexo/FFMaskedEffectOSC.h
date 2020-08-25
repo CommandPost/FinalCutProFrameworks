@@ -6,7 +6,7 @@
 
 #import <Flexo/FFComponentOSC.h>
 
-@class FFMaskedEffectBase, FFOSC<FFMaskOSC>, NSMutableArray;
+@class FFMaskedEffectBase, FFOSC<FFMaskOSC>, FFOSCWindowView, LKSegmentedControl, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface FFMaskedEffectOSC : FFComponentOSC
@@ -14,8 +14,11 @@ __attribute__((visibility("hidden")))
     FFMaskedEffectBase *_maskedEffect;
     NSMutableArray *_OSCs;
     FFOSC<FFMaskOSC> *_activeOSC;
+    FFOSCWindowView *_shapeOverlayView;
+    LKSegmentedControl *_oscModeControl;
 }
 
+- (void)oscModeControlAction:(id)arg1;
 - (void)flagsChanged:(id)arg1;
 - (id)getCursor;
 - (void)setPlayerVideoModule:(id)arg1;

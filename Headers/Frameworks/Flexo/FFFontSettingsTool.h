@@ -76,7 +76,7 @@
 - (void)changeAttributes:(id)arg1;
 - (void)locationButton:(id)arg1;
 - (void)alignmentButtonChanged:(id)arg1;
-- (void)changeAlignmentForField:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 alignment:(unsigned long long)arg3;
+- (void)changeAlignmentForField:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 alignment:(long long)arg3;
 - (void)formatButtonChanged:(id)arg1;
 - (void)changeFormatForField:(unsigned long long)arg1 inRange:(struct _NSRange)arg2;
 - (void)fontNameChanged:(id)arg1;

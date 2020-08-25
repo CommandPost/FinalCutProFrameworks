@@ -19,8 +19,6 @@
     BOOL _inRefreshAvailableVolumesAlwaysWarnForPath;
 }
 
-+ (id)customLocationDicts;
-+ (id)legacyFCPXLocationURLs;
 + (id)legacyLocationURLs;
 + (id)moviesURL;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
@@ -46,9 +44,6 @@
 - (id)newAvailableLocationsWithLegacyBehavior:(BOOL)arg1 alwaysWarnPath:(id)arg2;
 - (id)locationWithVolumeRefNum:(short)arg1;
 - (id)locationFromVolumePath:(id)arg1 volumeRefNum:(short)arg2 diskUUID:(id)arg3 networkPath:(id)arg4 alwaysWarnPath:(id)arg5;
-- (BOOL)okayToUseQuarantinedLocation:(id)arg1 isAction:(BOOL)arg2;
-- (void)warnAboutNotWritableLocation:(id)arg1 isAction:(BOOL)arg2;
-- (void)warnAboutUnableToAccessSavedNetworkLocationPaths;
 - (id)locationFromURL:(id)arg1 resolveSymlinks:(BOOL)arg2;
 - (id)locationFromURL:(id)arg1;
 @property(readonly, nonatomic) NSArray *sortedAvailableLocations;

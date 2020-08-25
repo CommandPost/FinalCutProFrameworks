@@ -18,12 +18,12 @@ __attribute__((visibility("hidden")))
 + (void)maybeInitResources;
 - (void)menu:(id)arg1 willHighlightItem:(id)arg2;
 - (id)buildPointMenu;
-- (void)drawVertices:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
 - (PCPtr_ca97d389)initAsset:(unsigned int)arg1 largeAssets:(_Bool)arg2;
 - (void)inverseConvertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
 - (void)convertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
 - (PCPtr_ca97d389)getVertexAsset:(int)arg1;
-- (void)drawPath;
+- (id)drawPath:(id)arg1;
+- (BOOL)drawDashed;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
 - (_Bool)transformPath;
 - (unsigned int)getShape;
@@ -54,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (struct OZChannelPosition3D *)getPosition;
 - (struct OZObjectManipulator *)getObjectManipulator;
 - (_Bool)getSamples:(const PCMatrix44Tmpl_e98c85ee *)arg1;
-- (id)motionPathOSCColor;
 - (BOOL)shouldShowSpeed;
 - (struct OZSceneNode *)getAssociatedSceneNode;
 - (struct OZSceneNode *)getSceneNode;

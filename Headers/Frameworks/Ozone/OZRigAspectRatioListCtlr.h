@@ -23,7 +23,8 @@
 }
 
 + (id)stringForAspectRatio:(double)arg1;
-+ (id)getARToStringMap;
++ (id)aspectRatioToImageNameMap;
++ (id)aspectRatioToNameMap;
 - (id)newDARMenu;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)addCustomDAR:(id)arg1;

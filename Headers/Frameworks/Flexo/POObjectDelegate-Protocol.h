@@ -18,6 +18,7 @@
 - (struct OZChannelFolder *)generatorRoot;
 - (BOOL)absolutePoints;
 - (BOOL)shouldFlip;
+- (BOOL)shouldDetachGradientOSCFromObject;
 - (void)findCustomGradientChannels:(struct vector<OZChannelRef *, std::__1::allocator<OZChannelRef *>> *)arg1;
 - (BOOL)hasCustomGradientChannels;
 - (BOOL)shouldDrawGradientOSC;
@@ -36,6 +37,7 @@
 - (BOOL)handleBGTranslates;
 - (BOOL)showSideScaleOSC;
 - (BOOL)showRotationOSC;
+- (void)getPrimitivesForContextAndResult:(struct PORenderContextAndResult *)arg1;
 - (void)drawGeometry:(_Bool)arg1;
 - (void)drawElementOutline:(const PCMatrix44Tmpl_e98c85ee *)arg1 red:(double)arg2 green:(double)arg3 blue:(double)arg4;
 - (vector_91526fd1)clippedBoundingLines:(const PCMatrix44Tmpl_e98c85ee *)arg1;
@@ -46,6 +48,7 @@
 - (void)convertXYZSamplesPercentageToPixelValuesXYZSamplesIfRequired:(int)arg1 samplesX:(double *)arg2 samplesY:(double *)arg3 samplesZ:(double *)arg4;
 - (BOOL)getTransformedBounds:(PCRect_3a266109 *)arg1;
 - (void)getTransformedCorner1:(PCVector2_5d498db0 *)arg1 c2:(PCVector2_5d498db0 *)arg2 c3:(PCVector2_5d498db0 *)arg3 c4:(PCVector2_5d498db0 *)arg4;
+- (BOOL)allowsScaleZConstraints;
 - (PCBox_dd92ab54)getLocalVolume;
 - (PCRect_3a266109)getInputBounds;
 - (PCRect_3a266109)getSceneBounds;

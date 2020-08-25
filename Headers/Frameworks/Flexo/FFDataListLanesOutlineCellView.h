@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSButton *_focusButton;
     NSButton *_arrangeButton;
     NSButton *_hideButton;
+    NSLayoutConstraint *_containerViewBottomConstraint;
     NSString *_originalContainerViewToolTip;
     NSImage *_originalFocusButtonAltImage;
     NSImage *_originalArrangeButtonAltImage;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSImage *originalArrangeButtonAltImage; // @synthesize originalArrangeButtonAltImage=_originalArrangeButtonAltImage;
 @property(retain, nonatomic) NSImage *originalFocusButtonAltImage; // @synthesize originalFocusButtonAltImage=_originalFocusButtonAltImage;
 @property(retain, nonatomic) NSString *originalContainerViewToolTip; // @synthesize originalContainerViewToolTip=_originalContainerViewToolTip;
+@property(nonatomic) NSLayoutConstraint *containerViewBottomConstraint; // @synthesize containerViewBottomConstraint=_containerViewBottomConstraint;
 @property(nonatomic) NSButton *hideButton; // @synthesize hideButton=_hideButton;
 @property(nonatomic) NSButton *arrangeButton; // @synthesize arrangeButton=_arrangeButton;
 @property(nonatomic) NSButton *focusButton; // @synthesize focusButton=_focusButton;

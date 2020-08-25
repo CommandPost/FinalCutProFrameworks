@@ -23,9 +23,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
 - (id)panel:(id)arg1 userEnteredFilename:(id)arg2 confirmed:(BOOL)arg3;
 - (BOOL)panel:(id)arg1 validateURL:(id)arg2 error:(id *)arg3;
-- (id)filterStringRemovingUnsafeCharacters:(id)arg1;
-- (void)doSavePanelForDestinations:(id)arg1 promise:(id)arg2;
+- (void)recordLastCurrentDirectory:(id)arg1;
+- (id)lastCurrentDirectory;
 - (void)setURL:(id)arg1 forDestination:(id)arg2;
+- (void)setURL:(id)arg1 forDestinations:(id)arg2;
+- (id)allowedFileTypes;
+- (id)filterStringRemovingUnsafeCharacters:(id)arg1;
+- (id)determineDefaultPathExtension;
+- (id)determineDefaultFileNameForSavePanel;
+- (void)doSavePanelForDestinations:(id)arg1 promise:(id)arg2;
 - (void)dealloc;
 - (id)init;
 

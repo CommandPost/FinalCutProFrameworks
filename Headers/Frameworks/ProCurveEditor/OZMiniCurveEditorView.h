@@ -29,7 +29,6 @@
 - (void)setEnabled:(BOOL)arg1;
 - (double)getZoomPadding;
 - (void)update;
-- (void)HUDifyView;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

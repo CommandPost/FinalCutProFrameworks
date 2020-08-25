@@ -6,13 +6,13 @@
 
 #import <Flexo/FFProOSC.h>
 
-@class FFOpenGLNSImage, NSDictionary, NSString;
+@class FFGPUNSImage, NSDictionary, NSString;
 
 @interface FF360TransformEffectOSC : FFProOSC
 {
     NSDictionary *_360EffectMessageTextAttribute;
     NSDictionary *_360EffectMessageTextAttributeGlow;
-    FFOpenGLNSImage *_textImage;
+    FFGPUNSImage *_textImage;
     NSString *_lastTextKey;
     int _textWidth;
     int _textHeight;
@@ -21,9 +21,11 @@
     BOOL _hasOpenTransaction;
 }
 
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
 - (void)drawRect:(struct CGRect)arg1 toContext:(struct _CGLContextObject *)arg2 drawProperties:(id)arg3;
+- (void)drawOnScreenForContexts:(id)arg1 drawProperties:(id)arg2;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 forContainer:(id)arg3 viewBounds:(struct CGRect)arg4;
-- (void)_setupTextures:(struct _CGLContextObject *)arg1;
+- (void)_setupTextures;
 - (BOOL)containsTime:(CDStruct_1b6d18a9)arg1 forContainer:(id)arg2 useEntireTransitionRange:(BOOL)arg3;
 - (id)anchoredObject;
 - (void)ensureIntrinsic;

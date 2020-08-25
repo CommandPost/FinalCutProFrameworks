@@ -6,17 +6,16 @@
 
 #import <ProOSC/POOnScreenControl.h>
 
-@class NSColor, NSMapTable, NSTimer;
+#import "POOnScreenControlMetalRendering.h"
 
-@interface POMotionPathBase : POOnScreenControl
+@class NSColor, NSString, NSTimer;
+
+@interface POMotionPathBase : POOnScreenControl <POOnScreenControlMetalRendering>
 {
     list_9b90a499 *_previousSelection;
     list_9b90a499 *_currentSelection;
     list_9b90a499 *_selection;
     int _numHits;
-    unsigned int _buffer[512];
-    NSMapTable *_GLNames;
-    unsigned int _nextGLName;
     struct CGPoint _mouseOrigin;
     struct CGPoint _lastMousePos;
     struct CGPoint _clickOrigin;
@@ -68,7 +67,6 @@
     PCVector2_7e488b7d _menuFilmCoords;
     NSColor *_playerStatusText;
     NSColor *_playerStatusTextUnit;
-    struct POPath _path;
     struct POColor _playerOSCMotionPathControlPolygon;
     struct POColor _playerOSCMotionPathFrame;
     struct POColor _playerOSCMotionPathLocked;
@@ -77,6 +75,8 @@
     struct POColor _playerOSCMotionPathSelectionGrid;
     struct POColor _playerOSCMotionPathStroke;
     struct POColor _playerOSCKeyframePathShadow;
+    struct POColor _playerOSCKeyframePathStroke;
+    struct POColor _playerOSCKeyframePathStrokeDash;
     const struct POMultiResBrush1D *_brush;
     struct CGPoint _direction;
     struct CGPoint _origin;
@@ -84,30 +84,30 @@
     NSTimer *_keySnapTimer;
 }
 
-+ (PCPtr_df275998)getTangentImage;
 + (void)maybeInitResources;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)shouldShowSpeed;
-- (void)setPlayerOSCMotionPathStroke:(struct POColor *)arg1;
-- (BOOL)allowsCurveOffset;
-- (void)updateSpeedCurve;
-- (BOOL)canAddVertex;
+- (void)encodeWithCoder:(id)arg1;
 - (CDStruct_1b6d18a9)getVertexUInfo:(CDStruct_1b6d18a9)arg1;
 - (id)controlPointInfoString;
 - (double)calculateBiasFromMousePosition:(id)arg1;
 - (struct CGPoint)getVertexNormalInFilmSpace:(id)arg1 u:(CDStruct_1b6d18a9)arg2;
 - (double)getParameterU:(struct POPathSelection *)arg1 x:(double *)arg2 y:(double *)arg3 z:(double *)arg4;
-- (void)drawVertexInViewCoords:(const PCMatrix44Tmpl_e98c85ee *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
-- (void)calcMouseDelta:(const PCVector3_457fd1f0 *)arg1 newPos:(const PCVector3_457fd1f0 *)arg2 planePoint:(const PCVector3_457fd1f0 *)arg3 result:(PCVector3_457fd1f0 *)arg4;
-- (BOOL)pointsAreInLocalSpace;
+- (id)getVertexInViewCoords:(const PCMatrix44Tmpl_e98c85ee *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 curveColor: /* Error: Ran out of types for this method. */;
 - (void)convertPixelDeltaToPercentageIfRequired:(PCVector3_457fd1f0 *)arg1;
 - (PCMatrix44Tmpl_e98c85ee)correctViewTransformationForAspectRatio;
-- (void)drawCurve:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2 keyPoints:(BOOL)arg3;
 - (void)addVertexAtTime:(CDStruct_1b6d18a9)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 handleX:(void **)arg5 handleY:(void **)arg6 handleZ:(void **)arg7;
 - (_Bool)getSamples:(const PCMatrix44Tmpl_e98c85ee *)arg1;
-- (void)draw;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
+- (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
+- (BOOL)pointsAreInLocalSpace;
+- (BOOL)shouldShowSpeed;
+- (void)setPlayerOSCKeyframePathStrokeDash:(struct POColor *)arg1;
+- (void)setPlayerOSCKeyframePathStroke:(struct POColor *)arg1;
+- (void)setPlayerOSCMotionPathStroke:(struct POColor *)arg1;
+- (BOOL)canAddVertex;
+- (BOOL)allowsCurveOffset;
+- (void)updateSpeedCurve;
 - (void)applyObjectTransform:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
 - (void)inverseConvertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
 - (void)convertPoint:(double *)arg1 y:(double *)arg2 z:(double *)arg3;
@@ -141,22 +141,21 @@
 - (BOOL)offsetCurve:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4;
 - (BOOL)offsetSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
 - (void)moveSelected:(list_9b90a499 *)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 ignoreFirstVertex:(_Bool)arg5;
-- (void)drawSelectionRect;
 - (void)getWorldToLocal:(PCMatrix44Tmpl_e98c85ee *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
 - (void)getLocalToWorld:(PCMatrix44Tmpl_e98c85ee *)arg1 atTime:(const CDStruct_1b6d18a9 *)arg2;
 - (void)update;
 - (void)setSamplingResolution:(unsigned int)arg1;
-- (void)drawControlPolygon:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
+- (id)getControlPolygonPrimitives:(const PCMatrix44Tmpl_e98c85ee *)arg1 device:(id)arg2 backingScale:(double)arg3;
+- (id)getCurvePrimitives:(const PCMatrix44Tmpl_e98c85ee *)arg1 keyPoints:(BOOL)arg2 device:(id)arg3;
+- (id)getVerticesPrimitives:(const PCMatrix44Tmpl_e98c85ee *)arg1 device:(id)arg2;
 - (void)setPathBrush:(const struct POMultiResBrush1D *)arg1;
-- (void)drawVertices:(const PCMatrix44Tmpl_e98c85ee *)arg1 mode:(unsigned int)arg2;
-- (void)drawTangent:(int)arg1 atIndex:(unsigned int)arg2 supportsTangents:(_Bool)arg3 position:(struct OZChannelPosition3D *)arg4 bias:(double)arg5 keypointPosition:(PCVector3_457fd1f0)arg6 mode:(unsigned int)arg7 localToView:(const PCMatrix44Tmpl_e98c85ee *)arg8 transformVector:(const PCVector3_457fd1f0 *)arg9;
-- (void)drawPickedTangent:(int)arg1 atIndex:(unsigned int)arg2 supportsTangents:(_Bool)arg3 position:(struct OZChannelPosition3D *)arg4 bias:(double)arg5 keypointPosition:(PCVector3_457fd1f0)arg6 localToView:(const PCMatrix44Tmpl_e98c85ee *)arg7 transformVector:(const PCVector3_457fd1f0 *)arg8;
+- (id)getTangentPrimitves:(int)arg1 atIndex:(unsigned int)arg2 supportsTangents:(_Bool)arg3 position:(struct OZChannelPosition3D *)arg4 bias:(double)arg5 keypointPosition:(PCVector3_457fd1f0)arg6 localToView:(const PCMatrix44Tmpl_e98c85ee *)arg7 transformVector:(const PCVector3_457fd1f0 *)arg8 device:(id)arg9;
 - (PCVector3_457fd1f0)calculatePositionOfTangent:(int)arg1 atIndex:(unsigned int)arg2 supportsTangents:(_Bool)arg3 position:(struct OZChannelPosition3D *)arg4 bias:(double)arg5;
-- (void)drawPickingVertices:(unsigned int)arg1 withTransformVector:(const PCVector3_457fd1f0 *)arg2 selected:(_Bool)arg3 themeState:(int)arg4 numPoints:(unsigned int)arg5 andDirection:(const PCVector2_79efa81a *)arg6;
-- (PCVector2_79efa81a)directionAtStartOrEndOfPath:(_Bool)arg1;
+- (PCVector2_79efa81a)directionAtStartOrEndOfPath:(_Bool)arg1 transform:(PCMatrix44Tmpl_e98c85ee *)arg2;
 - (BOOL)sameKeyPoint:(struct POPathSelection *)arg1 keyPoint:(const struct POKeypoint *)arg2;
 - (void)updateKeypoints;
 - (void)clipPoints:(const vector_ced1dec3 *)arg1 visible:(vector_a7cf9eda *)arg2;
+- (PCPtr_fc939811)getTangentAsset;
 - (PCPtr_fc939811)getVertexAsset:(int)arg1;
 - (void)setLargeAssets:(_Bool)arg1;
 - (_Bool)largeAssets;
@@ -177,6 +176,7 @@
 - (BOOL)nudgeLeft:(id)arg1;
 - (BOOL)nudgeDown:(id)arg1;
 - (BOOL)nudgeUp:(id)arg1;
+- (void)calcMouseDelta:(const PCVector3_457fd1f0 *)arg1 newPos:(const PCVector3_457fd1f0 *)arg2 planePoint:(const PCVector3_457fd1f0 *)arg3 result:(PCVector3_457fd1f0 *)arg4;
 - (void)_snapTimer:(id)arg1;
 - (void)constrainMove:(double *)arg1 y:(double *)arg2 nx:(double)arg3 ny:(double)arg4;
 - (void)updateDrag:(double *)arg1 y:(double *)arg2;
@@ -216,18 +216,18 @@
 - (void)cleanSelection:(list_9b90a499 *)arg1;
 - (list_9b90a499 *)getSelection;
 - (list_9b90a499 *)getCurrentSelection;
-- (void)clearGLNamesForObjects;
-- (void *)objectForGLName:(unsigned int)arg1;
-- (unsigned int)createGLNameForObject:(void *)arg1;
-- (void)processHits;
-- (double)timeVal:(unsigned int)arg1 u1:(unsigned int)arg2 u2:(unsigned int)arg3;
-- (void)pushNameForTime:(const CDStruct_1b6d18a9 *)arg1;
-- (void)select:(id)arg1;
-- (int)hitCheckPoint:(const PCVector2_7e488b7d *)arg1;
+- (void)processHits:(id)arg1 keyframesOnly:(BOOL)arg2;
 - (int)hitCheck:(id)arg1;
+- (id)hitTestResultWithEvent:(id)arg1 userInfo:(id)arg2;
 - (struct OZChannelPosition3D *)getPosition;
 - (void)dealloc;
 - (id)initWithHostDelegate:(id)arg1 andViewDelegate:(id)arg2 andObjectDelegate:(id)arg3 andChannel:(struct OZChannelBase *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

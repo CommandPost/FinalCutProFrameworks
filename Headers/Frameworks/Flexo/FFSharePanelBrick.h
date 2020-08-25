@@ -6,15 +6,15 @@
 
 #import "NSObject.h"
 
-@class FFSharePanelRolesDataSource, FFWeakPointerValue;
+@class FFSharePanelRolesDataSource, PCWeakPointerValue;
 
 __attribute__((visibility("hidden")))
 @interface FFSharePanelBrick : NSObject
 {
-    FFWeakPointerValue *_dataSourceWeakPointer;
+    PCWeakPointerValue *_dataSourceWeakPointer;
 }
 
-@property(retain, nonatomic) FFWeakPointerValue *dataSourceWeakPointer; // @synthesize dataSourceWeakPointer=_dataSourceWeakPointer;
+@property(retain, nonatomic) PCWeakPointerValue *dataSourceWeakPointer; // @synthesize dataSourceWeakPointer=_dataSourceWeakPointer;
 @property(readonly, nonatomic) FFSharePanelRolesDataSource *dataSource;
 - (void)dealloc;
 - (id)initWithDataSource:(id)arg1;

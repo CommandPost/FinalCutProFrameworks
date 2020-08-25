@@ -6,35 +6,18 @@
 
 #import <Flexo/FFWaveformYUnitTextLayer.h>
 
-#import "FFVideoScopesWaveformYScaling.h"
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface FFWaveformMarkerYUnitTextLayer : FFWaveformYUnitTextLayer <FFVideoScopesWaveformYScaling>
+@interface FFWaveformMarkerYUnitTextLayer : FFWaveformYUnitTextLayer
 {
-    long long _yScale;
-    double _yPos;
+    double _coord;
 }
 
-- (struct CGRect)frameForBounds:(struct CGRect)arg1;
-- (long long)videoScopesWaveformYScale;
-- (double)yPos;
-- (void)setYPos:(double)arg1;
+@property(nonatomic) double coord;
 - (BOOL)yScaleIsCompatibleWithUnits;
-- (void)setVideoScopesWaveformYScale:(long long)arg1;
-- (void)setString:(id)arg1;
-- (void)setCompositeVideoUnits:(long long)arg1;
-- (void)_resyncContents;
+- (void)showHideForGuidesVisibility:(BOOL)arg1;
+- (void)reloadContents;
 - (void)setCode:(long long)arg1;
-- (void)setShowGuides:(BOOL)arg1;
 - (int)fontColorPart;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

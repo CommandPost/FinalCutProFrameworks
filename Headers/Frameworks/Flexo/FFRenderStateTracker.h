@@ -86,9 +86,7 @@
 - (_Bool)hasKnownDropSegments;
 - (void)rbUnlock;
 - (void)rbLock;
-- (void)readUnlockSeq;
-- (void)readLockSeq:(id)arg1;
-- (id)lockableModelObject;
+- (struct FFSharedLock *)libraryLockForModelObject;
 - (id)sequence;
 - (void)dealloc;
 - (id)initWithSourceVideo:(id)arg1;

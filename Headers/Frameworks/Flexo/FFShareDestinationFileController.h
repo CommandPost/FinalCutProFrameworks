@@ -6,33 +6,41 @@
 
 #import <Flexo/FFShareDestinationController.h>
 
-@class NSArrayController, NSPopUpButton, NSTextField;
+#import "NSTabViewDelegate.h"
 
-@interface FFShareDestinationFileController : FFShareDestinationController
+@class NSArrayController, NSLayoutConstraint, NSPopUpButton, NSString, NSTextField;
+
+@interface FFShareDestinationFileController : FFShareDestinationController <NSTabViewDelegate>
 {
+    BOOL _observing;
     NSPopUpButton *_formatPopUpButton;
     NSPopUpButton *_videoResolutionPopUpButton;
     NSTextField *_multipassLabel;
-    NSPopUpButton *_multipassPopUpButton;
-    double _multipassLabelYLocation;
-    double _multipassPopUpButtonYLocation;
     NSArrayController *_audioSettingsController;
     NSArrayController *_videoSettingsController;
-    BOOL _observing;
+    NSLayoutConstraint *_titleAlignmentConstraint;
+    NSTextField *_descriptionTitle;
+    NSTextField *_formatLabel;
+    NSTextField *_fileFormatLabel;
 }
 
 + (id)keyPathsForValuesAffectingMultipassIndex;
 + (id)settingVideoResolutions:(id)arg1;
+@property(retain, nonatomic) NSTextField *fileFormatLabel; // @synthesize fileFormatLabel=_fileFormatLabel;
+@property(retain, nonatomic) NSTextField *formatLabel; // @synthesize formatLabel=_formatLabel;
+@property(retain, nonatomic) NSTextField *descriptionTitle; // @synthesize descriptionTitle=_descriptionTitle;
+@property(retain, nonatomic) NSLayoutConstraint *titleAlignmentConstraint; // @synthesize titleAlignmentConstraint=_titleAlignmentConstraint;
+@property(nonatomic) BOOL observing; // @synthesize observing=_observing;
 @property(nonatomic) NSArrayController *videoSettingsController; // @synthesize videoSettingsController=_videoSettingsController;
 @property(nonatomic) NSArrayController *audioSettingsController; // @synthesize audioSettingsController=_audioSettingsController;
-@property(nonatomic) NSPopUpButton *multipassPopUpButton; // @synthesize multipassPopUpButton=_multipassPopUpButton;
 @property(nonatomic) NSTextField *multipassLabel; // @synthesize multipassLabel=_multipassLabel;
 @property(nonatomic) NSPopUpButton *videoResolutionPopUpButton; // @synthesize videoResolutionPopUpButton=_videoResolutionPopUpButton;
 @property(nonatomic) NSPopUpButton *formatPopUpButton; // @synthesize formatPopUpButton=_formatPopUpButton;
 - (id)stringFromVideoResolution:(struct CGSize)arg1;
 - (struct CGSize)optimalVideoResolution;
-- (void)updateMultipassControls;
 - (void)updateVideoResolutionMenu;
+- (void)tabView:(id)arg1 didSelectTabViewItem:(id)arg2;
+- (void)updateTitleAlignmentConstraint;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)validateMenuItem:(id)arg1;
 - (void)selectVideoResolution:(id)arg1;
@@ -43,6 +51,12 @@
 - (void)dealloc;
 - (void)awakeFromNib;
 - (id)initWithDestination:(id)arg1 withSources:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

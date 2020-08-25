@@ -10,7 +10,6 @@
 #import "FFEditActionMgrDelegateProtocol.h"
 #import "FFEditActionSourceProtocol.h"
 #import "FFErrorReportingProtocol.h"
-#import "FFProExtensionHostTargetProtocol.h"
 #import "FFRolesMenuDelegate.h"
 #import "FFSharePanelAnimationProtocol.h"
 #import "FFSharedAppControllerInterface.h"
@@ -21,10 +20,11 @@
 #import "NSUserInterfaceValidations.h"
 #import "NSUserNotificationCenterDelegate.h"
 #import "PEFullScreenWindowDelegate.h"
+#import "PXProExtensionHostTargetProtocol.h"
 
 @class FFAnchoredSequence, FFEditActionMgr, FFExternalProvidersManager, FFMessageTracer, LKWindow, NSAlert, NSArray, NSMapTable, NSMenu, NSMenuItem, NSMutableArray, NSMutableSet, NSString, NSTimer, PECaptionEditorContainerModule, PEEditorContainerModule, PEMarkerEditorContainerModule, PEMediaSourceEditorContainerModule, PEPlayerTimecodeWindowController, PESpeedEditorContainerModule, PEVariantsContainerModule, PEVoiceOverWindowController, PEWorkspacesMenuDelegate, Stopwatch;
 
-@interface PEAppController : NSObject <FFProExtensionHostTargetProtocol, FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol, FFSharedAppControllerInterface, LKViewModuleDelegate, FFDuplicateCaptionsMenuDelegate, NSUserNotificationCenterDelegate, LKModuleLayoutManagerDelegate>
+@interface PEAppController : NSObject <PXProExtensionHostTargetProtocol, FFErrorReportingProtocol, NSApplicationDelegate, NSUserInterfaceValidations, NSMenuDelegate, PEFullScreenWindowDelegate, FFRolesMenuDelegate, FFEditActionMgrDelegateProtocol, FFEditActionSourceProtocol, FFSharePanelAnimationProtocol, FFSharedAppControllerInterface, LKViewModuleDelegate, FFDuplicateCaptionsMenuDelegate, NSUserNotificationCenterDelegate, LKModuleLayoutManagerDelegate>
 {
     NSMenuItem *_openLibraryMenuItem;
     NSMenuItem *_closeLibraryMenuItem;
@@ -81,6 +81,8 @@
     NSMenuItem *_workspaceOrganize;
     NSMenuItem *_workspaceColorEffects;
     NSMenuItem *_workspaceDualDisplays;
+    NSMenuItem *_customOverlaysMenuItemCanvas;
+    NSMenuItem *_customOverlaysMenuItemViewer;
     NSMenuItem *_workspacesSeparator;
     NSMenuItem *_appMenuItem;
     NSMenuItem *_helpMenuItem;
@@ -179,7 +181,7 @@
 - (void)mainWindowChangedScreens:(id)arg1;
 - (unsigned long long)nextAvailableScreenIndexWithMainWindowScreenIndex:(unsigned long long)arg1;
 - (id)fullscreenModuleIfAny;
-- (void)appWillUnhide:(id)arg1;
+- (void)appDidUnhide:(id)arg1;
 - (void)appWillHide:(id)arg1;
 - (void)documentRemoved:(id)arg1;
 - (void)documentAdded:(id)arg1;
@@ -203,8 +205,8 @@
 - (void)newAppStorePreviewProject:(id)arg1;
 - (void)newThemedProject:(id)arg1;
 - (void)exportMovieModal:(id)arg1;
-- (void)_exportShareArchive:(id)arg1 excludeDisabledRoles:(BOOL)arg2;
-- (void)exportShareArchiveExcludeDisabledRoles:(id)arg1;
+- (void)_exportShareArchive:(id)arg1 useTimelinePlayback:(BOOL)arg2;
+- (void)exportShareArchiveUseTimelinePlayback:(id)arg1;
 - (void)exportShareArchiveAllRoles:(id)arg1;
 - (void)shareAnimationDidEnd;
 - (void)shareAnimationWillBegin;
@@ -223,6 +225,7 @@
 - (void)dumpProjectClipStats:(id)arg1;
 - (void)rolesMenuController:(id)arg1 shouldAddRole:(id)arg2 forContext:(id)arg3;
 - (id)contextForRolesMenuController:(id)arg1;
+- (BOOL)activeSelectionContainsAtleastOneProject:(char *)arg1;
 - (void)dumpAndVerifyRoleSet:(id)arg1;
 - (void)editRoles:(id)arg1;
 - (id)_targetLibrary;
@@ -244,6 +247,9 @@
 - (void)showMultiangle:(id)arg1;
 - (void)toggleVideoScopes:(id)arg1;
 - (void)toggleHiddenEvents:(id)arg1;
+- (void)toggleDisplayCustomOverlay:(id)arg1;
+- (void)customOverlayScan:(id)arg1;
+- (void)setDisplayCustomOverlay:(id)arg1;
 - (void)setDisplayBroadcastSafeZones:(id)arg1;
 - (void)toggleTimelineSelectionMovesPlayhead:(id)arg1;
 - (void)toggleTimelineItemTitlesShown:(id)arg1;
@@ -257,14 +263,16 @@
 - (void)insertPlaceholder:(id)arg1;
 - (void)whatsNew:(id)arg1;
 - (void)toggleSportsTeamEditor:(id)arg1;
+- (void)_revealProject:(id)arg1;
 - (void)revealProject:(id)arg1;
 - (BOOL)canRevealProject;
+- (void)setupOrganizerForDuplicationFromSender:(id)arg1 andPerformDuplicationUsingSelector:(SEL)arg2;
 - (void)snapshotProject:(id)arg1;
-- (BOOL)canSnapshotProject:(id)arg1;
+- (void)duplicateProjectAs:(id)arg1;
 - (void)duplicate:(id)arg1;
-- (BOOL)canDuplicate:(id)arg1;
-- (BOOL)timelineHasExplicitSelection;
+- (BOOL)timelineSequenceIsProject;
 - (void)showProviderSettings:(id)arg1;
+- (BOOL)canShowProviderSettings;
 - (void)showLibraryProperties:(id)arg1;
 - (id)currentLibraryInSidebar;
 - (id)_libraryForCurrentSelectionIncludingOtherModules:(BOOL)arg1;
@@ -383,6 +391,7 @@
 - (void)showFCPServiceAndSupport:(id)arg1;
 - (void)showFCPFeedback:(id)arg1;
 - (void)showPreferencesHelp:(id)arg1;
+- (void)showFCPEcosystem:(id)arg1;
 - (void)showSupportedCameras:(id)arg1;
 - (void)showLogicEffectsReference:(id)arg1;
 - (void)showKeyboardShortcuts:(id)arg1;
@@ -402,8 +411,6 @@
 - (id)_findOrMakeCaptionSubRoleForMainRole:(id)arg1 andLanguageIdentifier:(id)arg2 inLibrary:(id)arg3;
 - (id)_findOrMakeCaptionMainRoleForUID:(id)arg1 andFormat:(id)arg2 inLibrary:(id)arg3 withImportMode:(int)arg4;
 - (void)importCaptions:(id)arg1;
-- (void)importClipBundle:(id)arg1;
-- (void)exportClipBundle:(id)arg1;
 - (void)dumpSelectionAsModelObjectToDotFile:(id)arg1;
 - (void)dumpSelectedEventAsModelObjectToDotFile:(id)arg1;
 - (BOOL)_dumpSingleObjectToDotFile:(id)arg1;
@@ -491,6 +498,7 @@
 - (id)theaterModule;
 - (void)configureTheater;
 - (void)_checkGPUStatus;
+- (void)unusedLibraryMedia;
 - (void)applicationDidFinishLaunching:(id)arg1;
 - (BOOL)_migratePreGodzillaColorPresets;
 - (void)restoreOpenDocuments;

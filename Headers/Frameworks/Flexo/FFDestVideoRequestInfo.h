@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface FFDestVideoRequestInfo : NSObject
 {
-    int _imageLocation;
     int _requestedBackground;
     unsigned int _rangeCheckZebraMode;
+    const struct FxDeviceSet *_imageLocationList;
     NSArray *_outputFormats;
     struct CGSize _maxSupportedSize;
 }
@@ -22,16 +22,17 @@ __attribute__((visibility("hidden")))
 + (id)nowhereInfo;
 @property(nonatomic) unsigned int rangeCheckZebraMode; // @synthesize rangeCheckZebraMode=_rangeCheckZebraMode;
 @property(nonatomic) int requestedBackground; // @synthesize requestedBackground=_requestedBackground;
-@property(readonly, nonatomic) struct CGSize maxSupportedSize; // @synthesize maxSupportedSize=_maxSupportedSize;
+@property(nonatomic) struct CGSize maxSupportedSize; // @synthesize maxSupportedSize=_maxSupportedSize;
 @property(retain, nonatomic) NSArray *outputFormats; // @synthesize outputFormats=_outputFormats;
-@property(nonatomic) int imageLocation; // @synthesize imageLocation=_imageLocation;
+@property(nonatomic) const struct FxDeviceSet *imageLocationList; // @synthesize imageLocationList=_imageLocationList;
 - (id)description;
 - (struct CGColorSpace *)colorSpace;
 - (void)dealloc;
-- (id)initWithPFInfos:(CDStruct_02fb8bfc *)arg1 count:(unsigned long long)arg2 colorSpace:(struct CGColorSpace *)arg3 imageLocation:(int)arg4 requestedBackground:(int)arg5 rangeCheckMode:(unsigned int)arg6 maxSupportedSize:(struct CGSize)arg7;
-- (id)initWithPFInfos:(CDStruct_02fb8bfc *)arg1 count:(unsigned long long)arg2 colorSpace:(struct CGColorSpace *)arg3 imageLocation:(int)arg4 requestedBackground:(int)arg5 maxSupportedSize:(struct CGSize)arg6;
-- (id)initWithPFInfos:(CDStruct_02fb8bfc *)arg1 count:(unsigned long long)arg2 colorSpace:(struct CGColorSpace *)arg3 imageLocation:(int)arg4 maxSupportedSize:(struct CGSize)arg5;
-- (id)initWithPFInfos:(CDStruct_02fb8bfc *)arg1 count:(unsigned long long)arg2 colorSpace:(struct CGColorSpace *)arg3 imageLocation:(int)arg4;
+- (id)initWithPFInfos:(CDStruct_02fb8bfc *)arg1 count:(unsigned long long)arg2 colorSpace:(struct CGColorSpace *)arg3 imageLocationList:(const struct FxDeviceSet *)arg4 requestedBackground:(int)arg5 rangeCheckMode:(unsigned int)arg6 maxSupportedSize:(struct CGSize)arg7;
+- (id)initWithPFInfos:(CDStruct_02fb8bfc *)arg1 count:(unsigned long long)arg2 colorSpace:(struct CGColorSpace *)arg3 imageLocationList:(const struct FxDeviceSet *)arg4 requestedBackground:(int)arg5 maxSupportedSize:(struct CGSize)arg6;
+- (id)initWithPFInfos:(CDStruct_02fb8bfc *)arg1 count:(unsigned long long)arg2 colorSpace:(struct CGColorSpace *)arg3 imageLocationList:(const struct FxDeviceSet *)arg4 maxSupportedSize:(struct CGSize)arg5;
+- (id)initWithPFInfos:(CDStruct_02fb8bfc *)arg1 count:(unsigned long long)arg2 colorSpace:(struct CGColorSpace *)arg3 imageLocationList:(const struct FxDeviceSet *)arg4;
+- (id)initWithPFInfos:(CDStruct_02fb8bfc *)arg1 count:(unsigned long long)arg2 colorSpace:(struct CGColorSpace *)arg3 imageLocation:(struct FxDevice *)arg4;
 
 @end
 

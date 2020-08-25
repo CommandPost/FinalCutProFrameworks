@@ -6,13 +6,15 @@
 
 #import "NSObject.h"
 
+#import "FxAnalysisAPI.h"
 #import "FxColorGamutAPI_v2.h"
+#import "FxCommandAPI.h"
 #import "FxCustomParameterActionAPI_v4.h"
 #import "PROAPIAccessing.h"
 
-@class FxMatrix44, FxRemote3DHandler, FxRemoteKeyframeHandler, FxRemoteLightingHandler, FxRemoteOSCHandler, FxRemoteParameterHandler, FxRemotePathHandler, FxRemotePluginCoordinator, FxRemoteTimingHandler, NSString;
+@class FxMatrix44, FxRemote3DHandler, FxRemoteKeyframeHandler, FxRemoteLightingHandler, FxRemoteOSCHandler, FxRemoteParameterHandler, FxRemotePathHandler, FxRemotePluginCoordinator, FxRemoteTimingHandler, NSLock, NSString;
 
-@interface FxAPIManagerShim : NSObject <PROAPIAccessing, FxColorGamutAPI_v2, FxCustomParameterActionAPI_v4>
+@interface FxAPIManagerShim : NSObject <PROAPIAccessing, FxColorGamutAPI_v2, FxCustomParameterActionAPI_v4, FxAnalysisAPI, FxCommandAPI>
 {
     FxRemotePluginCoordinator *pluginCoordinator;
     FxRemoteParameterHandler *paramHandler;
@@ -28,7 +30,10 @@
     FxRemoteOSCHandler *oscHandler;
     struct map<_opaque_pthread_t *, std::__1::stack<unsigned long, std::__1::deque<unsigned long, std::__1::allocator<unsigned long>>>, std::__1::less<_opaque_pthread_t *>, std::__1::allocator<std::__1::pair<_opaque_pthread_t *const, std::__1::stack<unsigned long, std::__1::deque<unsigned long, std::__1::allocator<unsigned long>>>>>> threadTransactionMap;
     unsigned long long nextUnusedTransactionID;
+    unsigned long long analysisState;
+    NSLock *analysisLock;
     unsigned long long sessionID;
+    NSString *pluginUUID;
     map_bfa44047 allowedAPIMap;
     map_9d443cdb liveThreadMap;
     struct _opaque_pthread_mutex_t allowedAPIMutex;
@@ -37,6 +42,7 @@
 @property map_9d443cdb liveThreadMap; // @synthesize liveThreadMap;
 @property struct _opaque_pthread_mutex_t allowedAPIMutex; // @synthesize allowedAPIMutex;
 @property map_bfa44047 allowedAPIMap; // @synthesize allowedAPIMap;
+@property(retain) NSString *pluginUUID; // @synthesize pluginUUID;
 @property unsigned long long sessionID; // @synthesize sessionID;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -47,6 +53,11 @@
 - (void)clear3DData;
 - (void)set3DData:(id)arg1;
 - (void)setTimingData:(id)arg1;
+- (BOOL)performCommand:(unsigned long long)arg1 error:(id *)arg2;
+- (BOOL)startBackwardAnalysis:(long long)arg1 error:(id *)arg2;
+- (BOOL)startForwardAnalysis:(long long)arg1 error:(id *)arg2;
+- (unsigned long long)analysisStateForEffect;
+- (void)setAnalysisState:(unsigned long long)arg1;
 - (void)endAction:(id)arg1;
 - (void)startAction:(id)arg1;
 - (void)runRunLoopUntilSemaphoreSignals:(id)arg1;
@@ -72,6 +83,7 @@
 - (BOOL)allowedAPI:(unsigned long long)arg1;
 - (void)clearAllowedAPI;
 - (void)setAllowedAPI:(unsigned long long)arg1;
+- (unsigned long long)getAllowedAPI;
 - (void)clearAllParameterTransactions;
 - (id)pendingParameterTransactions;
 - (void)setIncomingParameterTransactions:(id)arg1;
@@ -80,7 +92,7 @@
 - (id)asyncHandlerForFunction:(const char *)arg1;
 - (id)syncHandlerForFunction:(const char *)arg1;
 - (void)dealloc;
-- (id)initWithRemotePluginCoordinator:(id)arg1 pluginVersion:(unsigned int)arg2 andSessionID:(unsigned long long)arg3;
+- (id)initWithRemotePluginCoordinator:(id)arg1 pluginVersion:(unsigned int)arg2 pluginUUID:(id)arg3 andSessionID:(unsigned long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
