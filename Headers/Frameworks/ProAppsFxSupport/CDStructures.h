@@ -1372,6 +1372,14 @@ struct vector<unsigned int, std::__1::allocator<unsigned int>> {
     } __end_cap_;
 };
 
+struct vector<unsigned long, std::__1::allocator<unsigned long>> {
+    unsigned long long *__begin_;
+    unsigned long long *__end_;
+    struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
+        unsigned long long *__value_;
+    } __end_cap_;
+};
+
 struct vector<void *, std::__1::allocator<void *>> {
     void **_field1;
     void **_field2;

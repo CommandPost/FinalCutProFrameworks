@@ -279,6 +279,7 @@
 - (id)activeEditorModule;
 - (BOOL)useTimelinePlaybackInShareOfSequence:(id)arg1;
 - (void)shareDestinationPicker:(id)arg1;
+- (BOOL)isSequenceShareable:(id)arg1 withRootItem:(id)arg2;
 - (id)shareSelection:(id)arg1;
 - (void)activeToolDidChange:(id)arg1;
 - (void)displayKenBurnsModeForObject:(id)arg1;

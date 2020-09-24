@@ -8,7 +8,7 @@
 
 #import "POOnScreenControlMetalRendering.h"
 
-@class NSMutableArray, NSMutableDictionary, NSString;
+@class NSString;
 
 @interface OZTransformOSC : POScaleControl <POOnScreenControlMetalRendering>
 {
@@ -39,10 +39,6 @@
     BOOL _elementBeingDragged;
     BOOL _rotationSnapped;
     BOOL _minimalDraw;
-    NSMutableArray *_lineMDPs;
-    NSMutableArray *_fixedBoundLineMDPs;
-    NSMutableArray *_textureMDPs;
-    NSMutableDictionary *_pivotMDPs;
 }
 
 + (PCPtr_df275998)getRotationTexture:(int)arg1;
@@ -54,9 +50,9 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)newPrimitivesForContext:(id)arg1 userInfo:(id)arg2;
-- (id)getMetalMDPsForPivotHandleConnectorAtPos:(PCVector2_79efa81a)arg1 brush:(id)arg2 device:(id)arg3 backingScale:(float)arg4;
-- (id)getMetalMDPsForRotationAtPos:(PCVector2_79efa81a)arg1 withMat:(PCMatrix44Tmpl_e98c85ee)arg2 device:(id)arg3 backingScale:(float)arg4;
-- (id)getMetalMDPsForPivotAtPos:(PCVector2_79efa81a)arg1 device:(id)arg2 brush:(id)arg3 withMat:(PCMatrix44Tmpl_e98c85ee)arg4;
+- (id)newMDPForPivotHandleConnectorAtPos:(PCVector2_79efa81a)arg1 brush:(id)arg2 device:(id)arg3 backingScale:(float)arg4;
+- (id)newMDPsForRotationAtPos:(PCVector2_79efa81a)arg1 withMat:(PCMatrix44Tmpl_e98c85ee)arg2 device:(id)arg3 backingScale:(float)arg4;
+- (id)newMDPForPivotAtPos:(PCVector2_79efa81a)arg1 device:(id)arg2 brush:(id)arg3 withMat:(PCMatrix44Tmpl_e98c85ee)arg4;
 - (void)addDrawProperties:(id)arg1 forTime:(CDStruct_1b6d18a9)arg2 viewBounds:(struct CGRect)arg3;
 - (BOOL)postRedisplayOnActivePartChange;
 - (BOOL)acceptPassiveEvent:(id)arg1;
