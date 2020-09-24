@@ -36,6 +36,8 @@
     BOOL appIsTerminating;
     struct map<CMTime, PAECachedSize, std::__1::less<CMTime>, std::__1::allocator<std::__1::pair<const CMTime, PAECachedSize>>> cachedOutputSizes;
     struct PCMutex outputSizesMutex;
+    struct vector<unsigned long, std::__1::allocator<unsigned long>> oscTransactionIDs;
+    // Error parsing type: {PCSharedMutex="_mtx"{mutex="__m_"{_opaque_pthread_mutex_t="__sig"q"__opaque"[56c]}}"_writerThreadId"{atomic<std::__1::__thread_id>="__a_"A{__thread_id}}"_numWriterLocks"I"_numReadLocks"{vector<PCSharedMutex::ReaderInfo, std::__1::allocator<PCSharedMutex::ReaderInfo> >="__begin_"^{ReaderInfo}"__end_"^{ReaderInfo}"__end_cap_"{__compressed_pair<PCSharedMutex::ReaderInfo *, std::__1::allocator<PCSharedMutex::ReaderInfo> >="__value_"^{ReaderInfo}}}}, name: oscTransactionMutex
 }
 
 - (id).cxx_construct;
@@ -68,6 +70,9 @@
 - (void)getCanvasPixelAspectRatioForTransaction:(id)arg1;
 - (void)getCanvasZoomForTransaction:(id)arg1;
 - (void)convertPointForOSC:(id)arg1;
+- (BOOL)isOSCTransationID:(unsigned long long)arg1;
+- (void)removeOSCTransactionID:(unsigned long long)arg1;
+- (void)addOSCTransactionID:(unsigned long long)arg1;
 - (void)setKeyframeForTransaction:(id)arg1;
 - (void)removeKeyframeForTransaction:(id)arg1;
 - (void)hasKeyframeForTransaction:(id)arg1;

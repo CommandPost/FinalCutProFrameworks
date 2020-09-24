@@ -7,6 +7,7 @@
 @class FxParameterTransaction, NSArray, NSString;
 
 @protocol FxParameterAPIPrivate
+- (void)setHandlingOSCEvents:(BOOL)arg1;
 - (FxParameterTransaction *)transactionForParameterID:(unsigned int)arg1 atTime:(CDStruct_198678f7)arg2 transactionID:(unsigned long long)arg3 pluginSessionID:(unsigned long long)arg4;
 - (BOOL)hasPathParameters;
 - (void)setupImageParamIDs:(void *)arg1;
